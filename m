@@ -1,170 +1,1075 @@
-Received: by 2002:a19:ee12:0:0:0:0:0 with SMTP id g18csp849511lfb;
-        Sun, 5 Jun 2022 09:16:15 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxBsvhjpB17Httu/tsVMxp7kcDheteE4tgWk8A7xzi4lluHO074qbZUvh9oeOUGi4iYMwP7
-X-Received: by 2002:a05:622a:1346:b0:304:d512:afe5 with SMTP id w6-20020a05622a134600b00304d512afe5mr13668748qtk.622.1654445775660;
-        Sun, 05 Jun 2022 09:16:15 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1654445775; cv=none;
+Received: by 2002:a19:ee12:0:0:0:0:0 with SMTP id g18csp1198631lfb;
+        Mon, 6 Jun 2022 00:58:32 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJx3zauYqGgsomy55T7E6DUurpj1tZy5k2RrNCcTYRGOQwXlOgjy0Kjbd+omdgEmwbYGmr8Z
+X-Received: by 2002:a05:622a:1181:b0:304:eb7b:5e16 with SMTP id m1-20020a05622a118100b00304eb7b5e16mr3301126qtk.313.1654502311894;
+        Mon, 06 Jun 2022 00:58:31 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1654502311; cv=none;
         d=google.com; s=arc-20160816;
-        b=Qpy1xWt5gcKh9CUL6nrBt7bPyuP8NS1dPG3C84KEQR12ZheW5RxpBS8kMNeebFv066
-         4ebYXEPxi9IBY7eq5eEu/POiRCbXOI08lX+1wLQnxVeIHKlpBYUTInJ+YaRRJrplZsfG
-         AjVSTyhiaXBJZMrle83uHU7CZJb3hy/TqKyn14IGP9a+LiIb4PbTTUbGi8aN3AoNOOYE
-         Vjl/nYvibU3BzGj9x0a466Lw+CRxj0OgGV3V12VOVclp6mNdq+k/uf1t6kfr2C6MIRaH
-         XTLJkjL/si+jNUcw9MsNppPg4HiWOTr2ed9EAHPiWzyFS7sQp2cQ5LxMhU/raHYDgJrN
-         k5hQ==
+        b=o8+JD5Y1LSf7+1MowbHLTwHvqCHfVG5cqDpf8KV1yQcfk/7L3S12XdhVXf+qujGzC5
+         GqWQIvy3juqwXnwW+t0crq/Vh6igHdzQSiPDhUoVHJZnm8GHiMOMBY8k9s0UXLp6YIYh
+         z3FG1OQkBOPAa+vYQUrhBaxqHEXlm3rW92oFh9bGpCNkraO3srFhXOsBuZkzI2SqMLWR
+         9SAbIUiTVzR+w9Yz4PqMHqJZoCdylM6cG0JmzVnlRASNjGV0JXiDvVMYWn8uNoyuaI8z
+         SByOOFX0OV37ErFGUlovxnfXdDH2WkC+sbVBW/DDOun/84OjrWwMk0UgSS/rEZwi2yWP
+         eTZA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=BiCy+cPE5Fp9O9R0zWpEP/6dC1PqcMNp2AcNLHCUCp0=;
-        b=NLZFyVjf0yF8crB7MdxSfaNn1LV7abxMNScUIFjvaC6zNsKFLuCVaXvb5Eaa5f5H6A
-         Dt7rhnjW6RH05kWebRpUU7PavR4Iv1MKXUa4VT1Wme5XkOyjSK9Lp6kvr7EpIwpwZ7Jr
-         In0E298XE5IFj2zXsN8kGHqE0/gHcsV8kGCHSKgoCv17Q76zlkQ5kAbei+VkTcRQ/Kad
-         tro5qr4+z7Kh3yEA5GMQBOoGmdg7IouXtXJhzZIPzjNzzJoxnZejuxFb0Lc115e1cxFs
-         DtiaSLrVuDp6z9LsVh2iPL7BVqeXdYX9M7lWrz0ZM8VkU5AhYchL8oQiLAVfHbn/ZXDo
-         VjdQ==
+        bh=MdZiD5OwDclY+MboeH30aQCl3kOAEhwyjG1wV8cHeTU=;
+        b=iChq6N9EUq19KBBe3SAhUaCLcUp2QWe7Ygndp6vFLytlzmCM/pixo4fEKbPaf4ak/m
+         /jUwClj9h94fFl8BQC99yrqklzSFtFG7yZpEd3HMf5KsF3IL7CiWYDxruemcwBrW5z3o
+         OK0zyiTSD99ZDcHPKdcXb7OnNCOdXeaB2/90sfUbI/HgcNmsbnWGLMPOgDeH4dnpcjBo
+         4U1yWjuf/TSCymAwYkBHW6ID7qO03z+RKcrTKFCL8WdUunZ2o0JJW97trzqG7BCkOCY0
+         59vs+rQDHrwNuyENhC4tz613y1QtKuHxwIvjjNntJXZIx5PHICOG8T63UWRUrXM2OPc4
+         XBGA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=d1L4lCEg;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@yandex-team.ru header.s=default header.b=scHmt2K3;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=yandex-team.ru
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id kj25-20020a056214529900b0046436db0406si6330920qvb.76.2022.06.05.09.16.15
+        by mx.google.com with ESMTPS id v20-20020a05622a145400b002fbe220458fsi7352067qtx.189.2022.06.06.00.58.31
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 05 Jun 2022 09:16:15 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 06 Jun 2022 00:58:31 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=d1L4lCEg;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:37762 helo=lists1p.gnu.org)
+       dkim=pass header.i=@yandex-team.ru header.s=default header.b=scHmt2K3;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=yandex-team.ru
+Received: from localhost ([::1]:38406 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nxsvH-0000IO-3N
-	for alex.bennee@linaro.org; Sun, 05 Jun 2022 12:16:15 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:47482)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1ny7d9-0003qO-Bl
+	for alex.bennee@linaro.org; Mon, 06 Jun 2022 03:58:31 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:48852)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1nxsqH-0004Wi-Eu
- for qemu-arm@nongnu.org; Sun, 05 Jun 2022 12:11:07 -0400
-Received: from mail-pj1-x102c.google.com ([2607:f8b0:4864:20::102c]:40907)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1nxsqE-0000Th-Of
- for qemu-arm@nongnu.org; Sun, 05 Jun 2022 12:11:04 -0400
-Received: by mail-pj1-x102c.google.com with SMTP id
- v3-20020a17090a0c8300b001e862664a08so2090307pja.5
- for <qemu-arm@nongnu.org>; Sun, 05 Jun 2022 09:11:02 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=BiCy+cPE5Fp9O9R0zWpEP/6dC1PqcMNp2AcNLHCUCp0=;
- b=d1L4lCEgThGbpoyUeAz9yp1S+/oerstTHGDhWx2Fq+NQlyb6TXlBrhXjv2WBdBeP5o
- /tb9QHIGIKdZfaoRlsqzhOM3UEnq0W4zq8bXa2YUWxuFch6P4KyBwHOy7vSHGj+jjFxS
- eqDnFqWmBFV00krWPbRTJ/K2zLt23WcaeYo32YirjITkdTHBydlRYfs49vnNOtpBia7e
- m85QVjTAaNa9KKPaVJjMyL4zkj9IWdu5s/ABy17AeUfqIrw2WnYRWK8h2J8xrH1FLy+2
- lYnjuY3Rhx+ccMKRcJY2e3X9nllmqJfT70Jt35zfBPiahJSMbxKX80Kmlra1ceBJcTCZ
- l0NA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=BiCy+cPE5Fp9O9R0zWpEP/6dC1PqcMNp2AcNLHCUCp0=;
- b=MYkM3aQ1KnP8SrmYEzmVO4UITcIGFASROyQ3IKOJy2Nkn9wRteeLCTOB/QoS+gPKJ7
- SOgNXUImKCpoOi+JLpHqwJSQENtaAVHPdporN/+h0cIYCZspfl57uXy91b3oImmlnHh/
- DMiIjI/XB9HZAhzDtoiWLYZAyvXbHTv7DFehk4gi6Vu3ylxAxYY3Idjt8NwRXborZm0f
- HHIFo5ijM4Kfk4q3IpKm+01B0BUb+3qktWhmKRKeX/Ckq41ncmNYBYvXUX8ei7326yi7
- NPclkVX1lAPZ7hMlCzyqpivf0C9TERCy9EoUavFMEoGbZMUUyeIcZWQMzXmB9p6U2Lfp
- yDOg==
-X-Gm-Message-State: AOAM5304hn8Tm7PSgQH/I4u6iL5Zf0svLZqjrXPDS+SkTLlt7lkzUurO
- WZPZE/zXq2+VbHc6faVQacvjBA==
-X-Received: by 2002:a17:902:ef45:b0:155:cede:5a9d with SMTP id
- e5-20020a170902ef4500b00155cede5a9dmr20010175plx.93.1654445461455; 
- Sun, 05 Jun 2022 09:11:01 -0700 (PDT)
-Received: from stoup.. ([2602:ae:1547:e101:3fb8:a3e1:bf34:75a2])
- by smtp.gmail.com with ESMTPSA id
- q133-20020a632a8b000000b003c14af505fesm8932165pgq.22.2022.06.05.09.11.00
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 05 Jun 2022 09:11:00 -0700 (PDT)
-From: Richard Henderson <richard.henderson@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org
-Subject: [PATCH 2/2] target/arm: SCR_EL3.RW is RAO/WI without AArch32 EL[12]
-Date: Sun,  5 Jun 2022 09:10:56 -0700
-Message-Id: <20220605161056.293920-3-richard.henderson@linaro.org>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20220605161056.293920-1-richard.henderson@linaro.org>
-References: <20220605161056.293920-1-richard.henderson@linaro.org>
+ (Exim 4.90_1) (envelope-from <vsementsov@yandex-team.ru>)
+ id 1ny79t-0005TH-Ta; Mon, 06 Jun 2022 03:28:17 -0400
+Received: from forwardcorp1j.mail.yandex.net ([5.45.199.163]:50810)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <vsementsov@yandex-team.ru>)
+ id 1ny79i-0002Xl-JU; Mon, 06 Jun 2022 03:28:17 -0400
+Received: from sas1-9c28cd37d27b.qloud-c.yandex.net
+ (sas1-9c28cd37d27b.qloud-c.yandex.net
+ [IPv6:2a02:6b8:c14:309b:0:640:9c28:cd37])
+ by forwardcorp1j.mail.yandex.net (Yandex) with ESMTP id 7DAA12E19C0;
+ Mon,  6 Jun 2022 10:27:51 +0300 (MSK)
+Received: from sas1-7470331623bb.qloud-c.yandex.net
+ (sas1-7470331623bb.qloud-c.yandex.net [2a02:6b8:c08:bd1e:0:640:7470:3316])
+ by sas1-9c28cd37d27b.qloud-c.yandex.net (mxbackcorp/Yandex) with ESMTP id
+ 7AbuEYRBvB-RoKCDgpA; Mon, 06 Jun 2022 10:27:51 +0300
+X-Yandex-Fwd: 2
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=yandex-team.ru;
+ s=default; 
+ t=1654500471; bh=MdZiD5OwDclY+MboeH30aQCl3kOAEhwyjG1wV8cHeTU=;
+ h=Message-Id:References:Date:Subject:In-Reply-To:Cc:To:From;
+ b=scHmt2K35/nfKtfRWi03idprJmNXqTmHivVA2Mm5eMjwtDAjaN5Yk7XxMWsG6ak87
+ 4YNrTJv6951mn9jENAjkn9JB/sYqaAmYvEhBIr1w9NnqOXffCRvkOSusfPFl+NYoTt
+ Kz2eKny3RwA5CrF8wgpg8kIYr2ARkcqnTOBl92Vg=
+Authentication-Results: sas1-9c28cd37d27b.qloud-c.yandex.net;
+ dkim=pass header.i=@yandex-team.ru
+Received: from vsementsov-win.yandex-team.ru (unknown
+ [2a02:6b8:b081:b6b6::1:2c])
+ by sas1-7470331623bb.qloud-c.yandex.net (smtpcorp/Yandex) with ESMTPSA id
+ Y8SDrjDjAj-RnM4IYgA; Mon, 06 Jun 2022 10:27:50 +0300
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits))
+ (Client certificate not present)
+From: Vladimir Sementsov-Ogievskiy <vsementsov@yandex-team.ru>
+To: qemu-block@nongnu.org
+Cc: qemu-devel@nongnu.org, vsementsov@yandex-team.ru, eblake@redhat.com,
+ jsnow@redhat.com, Cleber Rosa <crosa@redhat.com>,
+ Beraldo Leal <bleal@redhat.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+ Wainer dos Santos Moschetta <wainersm@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Aurelien Jarno <aurelien@aurel32.net>, Halil Pasic <pasic@linux.ibm.com>,
+ Christian Borntraeger <borntraeger@linux.ibm.com>,
+ Eric Farman <farman@linux.ibm.com>, Juan Quintela <quintela@redhat.com>,
+ "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
+ Kevin Wolf <kwolf@redhat.com>, Hanna Reitz <hreitz@redhat.com>,
+ qemu-arm@nongnu.org (open list:Integrator CP),
+ qemu-s390x@nongnu.org (open list:S390 Virtio-ccw)
+Subject: [PATCH v2 02/11] python/qemu: rename command() to cmd()
+Date: Mon,  6 Jun 2022 10:27:22 +0300
+Message-Id: <20220606072731.878226-3-vsementsov@yandex-team.ru>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20220606072731.878226-1-vsementsov@yandex-team.ru>
+References: <20220606072731.878226-1-vsementsov@yandex-team.ru>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::102c;
- envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x102c.google.com
+Received-SPF: pass client-ip=5.45.199.163;
+ envelope-from=vsementsov@yandex-team.ru; helo=forwardcorp1j.mail.yandex.net
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: wWeltjTxr54F
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: wN0G2sRwIDLq
 
-Since DDI0487F.a, the RW bit is RAO/WI.  When specifically
-targeting such a cpu, e.g. cortex-a76, it is legitimate to
-ignore the bit within the secure monitor.
+Use a shorter name. We are going to move in iotests from qmp() to
+command() where possible. But command() is longer than qmp() and don't
+look better. Let's rename.
 
-Resolves: https://gitlab.com/qemu-project/qemu/-/issues/1062
-Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+You can simply grep for '\.command(' and for 'def command(' to check
+that everything is updated (command() in tests/docker/docker.py is
+unrelated).
+
+Signed-off-by: Vladimir Sementsov-Ogievskiy <vsementsov@yandex-team.ru>
 ---
- target/arm/cpu.h    | 5 +++++
- target/arm/helper.c | 4 ++++
- 2 files changed, 9 insertions(+)
+ docs/devel/testing.rst                    |  10 +-
+ python/qemu/machine/machine.py            |   8 +-
+ python/qemu/qmp/legacy.py                 |   2 +-
+ python/qemu/qmp/qmp_shell.py              |   2 +-
+ python/qemu/utils/qemu_ga_client.py       |   2 +-
+ python/qemu/utils/qom.py                  |   8 +-
+ python/qemu/utils/qom_common.py           |   2 +-
+ python/qemu/utils/qom_fuse.py             |   6 +-
+ scripts/cpu-x86-uarch-abi.py              |   8 +-
+ scripts/device-crash-test                 |   8 +-
+ scripts/render_block_graph.py             |   8 +-
+ tests/avocado/avocado_qemu/__init__.py    |   4 +-
+ tests/avocado/cpu_queries.py              |   4 +-
+ tests/avocado/hotplug_cpu.py              |  10 +-
+ tests/avocado/info_usernet.py             |   4 +-
+ tests/avocado/machine_arm_integratorcp.py |   6 +-
+ tests/avocado/machine_m68k_nextcube.py    |   4 +-
+ tests/avocado/machine_mips_malta.py       |   6 +-
+ tests/avocado/machine_s390_ccw_virtio.py  |  28 ++--
+ tests/avocado/migration.py                |  10 +-
+ tests/avocado/pc_cpu_hotplug_props.py     |   2 +-
+ tests/avocado/version.py                  |   4 +-
+ tests/avocado/virtio_check_params.py      |   6 +-
+ tests/avocado/virtio_version.py           |   4 +-
+ tests/avocado/x86_cpu_model_versions.py   |  10 +-
+ tests/migration/guestperf/engine.py       | 150 +++++++++++-----------
+ tests/qemu-iotests/256                    |  34 ++---
+ tests/qemu-iotests/257                    |  36 +++---
+ 28 files changed, 193 insertions(+), 193 deletions(-)
 
-diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index c1865ad5da..a7c45d0d66 100644
---- a/target/arm/cpu.h
-+++ b/target/arm/cpu.h
-@@ -3947,6 +3947,11 @@ static inline bool isar_feature_aa64_aa32_el1(const ARMISARegisters *id)
-     return FIELD_EX64(id->id_aa64pfr0, ID_AA64PFR0, EL1) >= 2;
- }
+diff --git a/docs/devel/testing.rst b/docs/devel/testing.rst
+index 3f6ebd5073..980c0690ec 100644
+--- a/docs/devel/testing.rst
++++ b/docs/devel/testing.rst
+@@ -958,8 +958,8 @@ class.  Here's a simple usage example:
+       """
+       def test_qmp_human_info_version(self):
+           self.vm.launch()
+-          res = self.vm.command('human-monitor-command',
+-                                command_line='info version')
++          res = self.vm.cmd('human-monitor-command',
++                            command_line='info version')
+           self.assertRegexpMatches(res, r'^(\d+\.\d+\.\d)')
  
-+static inline bool isar_feature_aa64_aa32_el2(const ARMISARegisters *id)
-+{
-+    return FIELD_EX64(id->id_aa64pfr0, ID_AA64PFR0, EL2) >= 2;
-+}
+ To execute your test, run:
+@@ -1009,15 +1009,15 @@ and hypothetical example follows:
+           first_machine.launch()
+           second_machine.launch()
+ 
+-          first_res = first_machine.command(
++          first_res = first_machine.cmd(
+               'human-monitor-command',
+               command_line='info version')
+ 
+-          second_res = second_machine.command(
++          second_res = second_machine.cmd(
+               'human-monitor-command',
+               command_line='info version')
+ 
+-          third_res = self.get_vm(name='third_machine').command(
++          third_res = self.get_vm(name='third_machine').cmd(
+               'human-monitor-command',
+               command_line='info version')
+ 
+diff --git a/python/qemu/machine/machine.py b/python/qemu/machine/machine.py
+index 8b5848a94e..65703176e5 100644
+--- a/python/qemu/machine/machine.py
++++ b/python/qemu/machine/machine.py
+@@ -648,16 +648,16 @@ def qmp(self, cmd: str,
+             self._quit_issued = True
+         return ret
+ 
+-    def command(self, cmd: str,
+-                conv_keys: bool = True,
+-                **args: Any) -> QMPReturnValue:
++    def cmd(self, cmd: str,
++            conv_keys: bool = True,
++            **args: Any) -> QMPReturnValue:
+         """
+         Invoke a QMP command.
+         On success return the response dict.
+         On failure raise an exception.
+         """
+         qmp_args = self._qmp_args(conv_keys, args)
+-        ret = self._qmp.command(cmd, **qmp_args)
++        ret = self._qmp.cmd(cmd, **qmp_args)
+         if cmd == 'quit':
+             self._quit_issued = True
+         return ret
+diff --git a/python/qemu/qmp/legacy.py b/python/qemu/qmp/legacy.py
+index 9b2399966d..c46b8da907 100644
+--- a/python/qemu/qmp/legacy.py
++++ b/python/qemu/qmp/legacy.py
+@@ -199,7 +199,7 @@ def cmd_raw(self, name: str,
+             qmp_cmd['arguments'] = args
+         return self.cmd_obj(qmp_cmd)
+ 
+-    def command(self, cmd: str, **kwds: object) -> QMPReturnValue:
++    def cmd(self, cmd: str, **kwds: object) -> QMPReturnValue:
+         """
+         Build and send a QMP command to the monitor, report errors if any
+         """
+diff --git a/python/qemu/qmp/qmp_shell.py b/python/qemu/qmp/qmp_shell.py
+index 5c0d87a0ec..5c578b50e2 100644
+--- a/python/qemu/qmp/qmp_shell.py
++++ b/python/qemu/qmp/qmp_shell.py
+@@ -195,7 +195,7 @@ def close(self) -> None:
+ 
+     def _fill_completion(self) -> None:
+         try:
+-            cmds = self.command('query-commands')
++            cmds = self.cmd('query-commands')
+             for cmd in cmds:
+                 self._completer.append(cmd['name'])
+         except ExecuteError:
+diff --git a/python/qemu/utils/qemu_ga_client.py b/python/qemu/utils/qemu_ga_client.py
+index 8c38a7ac9c..34598410b6 100644
+--- a/python/qemu/utils/qemu_ga_client.py
++++ b/python/qemu/utils/qemu_ga_client.py
+@@ -64,7 +64,7 @@
+ class QemuGuestAgent(QEMUMonitorProtocol):
+     def __getattr__(self, name: str) -> Callable[..., Any]:
+         def wrapper(**kwds: object) -> object:
+-            return self.command('guest-' + name.replace('_', '-'), **kwds)
++            return self.cmd('guest-' + name.replace('_', '-'), **kwds)
+         return wrapper
+ 
+ 
+diff --git a/python/qemu/utils/qom.py b/python/qemu/utils/qom.py
+index bcf192f477..426a0f245f 100644
+--- a/python/qemu/utils/qom.py
++++ b/python/qemu/utils/qom.py
+@@ -84,7 +84,7 @@ def __init__(self, args: argparse.Namespace):
+         self.value = args.value
+ 
+     def run(self) -> int:
+-        rsp = self.qmp.command(
++        rsp = self.qmp.cmd(
+             'qom-set',
+             path=self.path,
+             property=self.prop,
+@@ -129,7 +129,7 @@ def __init__(self, args: argparse.Namespace):
+         self.prop = tmp[1]
+ 
+     def run(self) -> int:
+-        rsp = self.qmp.command(
++        rsp = self.qmp.cmd(
+             'qom-get',
+             path=self.path,
+             property=self.prop
+@@ -231,8 +231,8 @@ def _list_node(self, path: str) -> None:
+             if item.child:
+                 continue
+             try:
+-                rsp = self.qmp.command('qom-get', path=path,
+-                                       property=item.name)
++                rsp = self.qmp.cmd('qom-get', path=path,
++                                   property=item.name)
+                 print(f"  {item.name}: {rsp} ({item.type})")
+             except ExecuteError as err:
+                 print(f"  {item.name}: <EXCEPTION: {err!s}> ({item.type})")
+diff --git a/python/qemu/utils/qom_common.py b/python/qemu/utils/qom_common.py
+index 80da1b2304..dd2c8b1908 100644
+--- a/python/qemu/utils/qom_common.py
++++ b/python/qemu/utils/qom_common.py
+@@ -140,7 +140,7 @@ def qom_list(self, path: str) -> List[ObjectPropertyInfo]:
+         """
+         :return: a strongly typed list from the 'qom-list' command.
+         """
+-        rsp = self.qmp.command('qom-list', path=path)
++        rsp = self.qmp.cmd('qom-list', path=path)
+         # qom-list returns List[ObjectPropertyInfo]
+         assert isinstance(rsp, list)
+         return [ObjectPropertyInfo.make(x) for x in rsp]
+diff --git a/python/qemu/utils/qom_fuse.py b/python/qemu/utils/qom_fuse.py
+index 8dcd59fcde..cf7e344bd5 100644
+--- a/python/qemu/utils/qom_fuse.py
++++ b/python/qemu/utils/qom_fuse.py
+@@ -137,7 +137,7 @@ def read(self, path: str, size: int, offset: int, fh: IO[bytes]) -> bytes:
+         if path == '':
+             path = '/'
+         try:
+-            data = str(self.qmp.command('qom-get', path=path, property=prop))
++            data = str(self.qmp.cmd('qom-get', path=path, property=prop))
+             data += '\n'  # make values shell friendly
+         except ExecuteError as err:
+             raise FuseOSError(EPERM) from err
+@@ -152,8 +152,8 @@ def readlink(self, path: str) -> Union[bool, str]:
+             return False
+         path, prop = path.rsplit('/', 1)
+         prefix = '/'.join(['..'] * (len(path.split('/')) - 1))
+-        return prefix + str(self.qmp.command('qom-get', path=path,
+-                                             property=prop))
++        return prefix + str(self.qmp.cmd('qom-get', path=path,
++                                         property=prop))
+ 
+     def getattr(self, path: str,
+                 fh: Optional[IO[bytes]] = None) -> Mapping[str, object]:
+diff --git a/scripts/cpu-x86-uarch-abi.py b/scripts/cpu-x86-uarch-abi.py
+index 893afd1b35..f6baeeff24 100644
+--- a/scripts/cpu-x86-uarch-abi.py
++++ b/scripts/cpu-x86-uarch-abi.py
+@@ -69,7 +69,7 @@
+ shell = QEMUMonitorProtocol(sock)
+ shell.connect()
+ 
+-models = shell.command("query-cpu-definitions")
++models = shell.cmd("query-cpu-definitions")
+ 
+ # These QMP props don't correspond to CPUID fatures
+ # so ignore them
+@@ -93,9 +93,9 @@
+ models = {}
+ 
+ for name in sorted(names):
+-    cpu = shell.command("query-cpu-model-expansion",
+-                        { "type": "static",
+-                          "model": { "name": name }})
++    cpu = shell.cmd("query-cpu-model-expansion",
++                    { "type": "static",
++                      "model": { "name": name }})
+ 
+     got = {}
+     for (feature, present) in cpu["model"]["props"].items():
+diff --git a/scripts/device-crash-test b/scripts/device-crash-test
+index a203b3fdea..cb7122021c 100755
+--- a/scripts/device-crash-test
++++ b/scripts/device-crash-test
+@@ -261,14 +261,14 @@ def formatTestCase(t):
+ 
+ def qomListTypeNames(vm, **kwargs):
+     """Run qom-list-types QMP command, return type names"""
+-    types = vm.command('qom-list-types', **kwargs)
++    types = vm.cmd('qom-list-types', **kwargs)
+     return [t['name'] for t in types]
+ 
+ 
+ def infoQDM(vm):
+     """Parse 'info qdm' output"""
+     args = {'command-line': 'info qdm'}
+-    devhelp = vm.command('human-monitor-command', **args)
++    devhelp = vm.cmd('human-monitor-command', **args)
+     for l in devhelp.split('\n'):
+         l = l.strip()
+         if l == '' or l.endswith(':'):
+@@ -296,9 +296,9 @@ class QemuBinaryInfo(object):
+             # there's no way to query DeviceClass::user_creatable using QMP,
+             # so use 'info qdm':
+             self.no_user_devs = set([d['name'] for d in infoQDM(vm, ) if d['no-user']])
+-            self.machines = list(m['name'] for m in vm.command('query-machines'))
++            self.machines = list(m['name'] for m in vm.cmd('query-machines'))
+             self.user_devs = self.alldevs.difference(self.no_user_devs)
+-            self.kvm_available = vm.command('query-kvm')['enabled']
++            self.kvm_available = vm.cmd('query-kvm')['enabled']
+         finally:
+             vm.shutdown()
+ 
+diff --git a/scripts/render_block_graph.py b/scripts/render_block_graph.py
+index 8f731a5cfe..3e1a2e3fa7 100755
+--- a/scripts/render_block_graph.py
++++ b/scripts/render_block_graph.py
+@@ -43,13 +43,13 @@ def render_block_graph(qmp, filename, format='png'):
+     representation in @format into "@filename.@format"
+     '''
+ 
+-    bds_nodes = qmp.command('query-named-block-nodes')
++    bds_nodes = qmp.cmd('query-named-block-nodes')
+     bds_nodes = {n['node-name']: n for n in bds_nodes}
+ 
+-    job_nodes = qmp.command('query-block-jobs')
++    job_nodes = qmp.cmd('query-block-jobs')
+     job_nodes = {n['device']: n for n in job_nodes}
+ 
+-    block_graph = qmp.command('x-debug-query-block-graph')
++    block_graph = qmp.cmd('x-debug-query-block-graph')
+ 
+     graph = Digraph(comment='Block Nodes Graph')
+     graph.format = format
+@@ -94,7 +94,7 @@ class LibvirtGuest():
+     def __init__(self, name):
+         self.name = name
+ 
+-    def command(self, cmd):
++    def cmd(self, cmd):
+         # only supports qmp commands without parameters
+         m = {'execute': cmd}
+         ar = ['virsh', 'qemu-monitor-command', self.name, json.dumps(m)]
+diff --git a/tests/avocado/avocado_qemu/__init__.py b/tests/avocado/avocado_qemu/__init__.py
+index 39f15c1d51..42327b54b2 100644
+--- a/tests/avocado/avocado_qemu/__init__.py
++++ b/tests/avocado/avocado_qemu/__init__.py
+@@ -371,8 +371,8 @@ class LinuxSSHMixIn:
+ 
+     def ssh_connect(self, username, credential, credential_is_key=True):
+         self.ssh_logger = logging.getLogger('ssh')
+-        res = self.vm.command('human-monitor-command',
+-                              command_line='info usernet')
++        res = self.vm.cmd('human-monitor-command',
++                          command_line='info usernet')
+         port = get_info_usernet_hostfwd_port(res)
+         self.assertIsNotNone(port)
+         self.assertGreater(port, 0)
+diff --git a/tests/avocado/cpu_queries.py b/tests/avocado/cpu_queries.py
+index cf69f69b11..f37028380c 100644
+--- a/tests/avocado/cpu_queries.py
++++ b/tests/avocado/cpu_queries.py
+@@ -23,12 +23,12 @@ def test(self):
+         self.vm.add_args('-S')
+         self.vm.launch()
+ 
+-        cpus = self.vm.command('query-cpu-definitions')
++        cpus = self.vm.cmd('query-cpu-definitions')
+         for c in cpus:
+             self.log.info("Checking CPU: %s", c)
+             self.assertNotIn('', c['unavailable-features'], c['name'])
+ 
+         for c in cpus:
+             model = {'name': c['name']}
+-            e = self.vm.command('query-cpu-model-expansion', model=model, type='full')
++            e = self.vm.cmd('query-cpu-model-expansion', model=model, type='full')
+             self.assertEquals(e['model']['name'], c['name'])
+diff --git a/tests/avocado/hotplug_cpu.py b/tests/avocado/hotplug_cpu.py
+index 6374bf1b54..292bb43e4d 100644
+--- a/tests/avocado/hotplug_cpu.py
++++ b/tests/avocado/hotplug_cpu.py
+@@ -29,9 +29,9 @@ def test(self):
+         with self.assertRaises(AssertionError):
+             self.ssh_command('test -e /sys/devices/system/cpu/cpu1')
+ 
+-        self.vm.command('device_add',
+-                        driver='Haswell-x86_64-cpu',
+-                        socket_id=0,
+-                        core_id=1,
+-                        thread_id=0)
++        self.vm.cmd('device_add',
++                    driver='Haswell-x86_64-cpu',
++                    socket_id=0,
++                    core_id=1,
++                    thread_id=0)
+         self.ssh_command('test -e /sys/devices/system/cpu/cpu1')
+diff --git a/tests/avocado/info_usernet.py b/tests/avocado/info_usernet.py
+index dc01f74150..2b32d68c74 100644
+--- a/tests/avocado/info_usernet.py
++++ b/tests/avocado/info_usernet.py
+@@ -18,8 +18,8 @@ class InfoUsernet(QemuSystemTest):
+     def test_hostfwd(self):
+         self.vm.add_args('-netdev', 'user,id=vnet,hostfwd=:127.0.0.1:0-:22')
+         self.vm.launch()
+-        res = self.vm.command('human-monitor-command',
+-                              command_line='info usernet')
++        res = self.vm.cmd('human-monitor-command',
++                          command_line='info usernet')
+         port = get_info_usernet_hostfwd_port(res)
+         self.assertIsNotNone(port,
+                              ('"info usernet" output content does not seem to '
+diff --git a/tests/avocado/machine_arm_integratorcp.py b/tests/avocado/machine_arm_integratorcp.py
+index 1ffe1073ef..87f5cf3953 100644
+--- a/tests/avocado/machine_arm_integratorcp.py
++++ b/tests/avocado/machine_arm_integratorcp.py
+@@ -81,9 +81,9 @@ def test_framebuffer_tux_logo(self):
+         self.boot_integratorcp()
+         framebuffer_ready = 'Console: switching to colour frame buffer device'
+         wait_for_console_pattern(self, framebuffer_ready)
+-        self.vm.command('human-monitor-command', command_line='stop')
+-        self.vm.command('human-monitor-command',
+-                        command_line='screendump %s' % screendump_path)
++        self.vm.cmd('human-monitor-command', command_line='stop')
++        self.vm.cmd('human-monitor-command',
++                    command_line='screendump %s' % screendump_path)
+         logger = logging.getLogger('framebuffer')
+ 
+         cpu_count = 1
+diff --git a/tests/avocado/machine_m68k_nextcube.py b/tests/avocado/machine_m68k_nextcube.py
+index 6790e7d9cd..d6da2fbb01 100644
+--- a/tests/avocado/machine_m68k_nextcube.py
++++ b/tests/avocado/machine_m68k_nextcube.py
+@@ -43,8 +43,8 @@ def check_bootrom_framebuffer(self, screenshot_path):
+         #       'displaysurface_create 1120x832' trace-event.
+         time.sleep(2)
+ 
+-        self.vm.command('human-monitor-command',
+-                        command_line='screendump %s' % screenshot_path)
++        self.vm.cmd('human-monitor-command',
++                    command_line='screendump %s' % screenshot_path)
+ 
+     @skipUnless(PIL_AVAILABLE, 'Python PIL not installed')
+     def test_bootrom_framebuffer_size(self):
+diff --git a/tests/avocado/machine_mips_malta.py b/tests/avocado/machine_mips_malta.py
+index f1895d59f3..fe2662e32d 100644
+--- a/tests/avocado/machine_mips_malta.py
++++ b/tests/avocado/machine_mips_malta.py
+@@ -69,9 +69,9 @@ def do_test_i6400_framebuffer_logo(self, cpu_cores_count):
+         framebuffer_ready = 'Console: switching to colour frame buffer device'
+         wait_for_console_pattern(self, framebuffer_ready,
+                                  failure_message='Kernel panic - not syncing')
+-        self.vm.command('human-monitor-command', command_line='stop')
+-        self.vm.command('human-monitor-command',
+-                        command_line='screendump %s' % screendump_path)
++        self.vm.cmd('human-monitor-command', command_line='stop')
++        self.vm.cmd('human-monitor-command',
++                    command_line='screendump %s' % screendump_path)
+         logger = logging.getLogger('framebuffer')
+ 
+         match_threshold = 0.95
+diff --git a/tests/avocado/machine_s390_ccw_virtio.py b/tests/avocado/machine_s390_ccw_virtio.py
+index 438a6f4321..bfd7bacb48 100644
+--- a/tests/avocado/machine_s390_ccw_virtio.py
++++ b/tests/avocado/machine_s390_ccw_virtio.py
+@@ -106,10 +106,10 @@ def test_s390x_devices(self):
+                         'dd if=/dev/hwrng of=/dev/null bs=1k count=10',
+                         '10+0 records out')
+         self.clear_guest_dmesg()
+-        self.vm.command('device_del', id='rn1')
++        self.vm.cmd('device_del', id='rn1')
+         self.wait_for_crw_reports()
+         self.clear_guest_dmesg()
+-        self.vm.command('device_del', id='rn2')
++        self.vm.cmd('device_del', id='rn2')
+         self.wait_for_crw_reports()
+         exec_command_and_wait_for_pattern(self,
+                         'dd if=/dev/hwrng of=/dev/null bs=1k count=10',
+@@ -131,8 +131,8 @@ def test_s390x_devices(self):
+                         '0x0000000c')
+         # add another device
+         self.clear_guest_dmesg()
+-        self.vm.command('device_add', driver='virtio-net-ccw',
+-                        devno='fe.0.4711', id='net_4711')
++        self.vm.cmd('device_add', driver='virtio-net-ccw',
++                    devno='fe.0.4711', id='net_4711')
+         self.wait_for_crw_reports()
+         exec_command_and_wait_for_pattern(self, 'for i in 1 2 3 4 5 6 7 ; do '
+                     'if [ -e /sys/bus/ccw/devices/*4711 ]; then break; fi ;'
+@@ -140,7 +140,7 @@ def test_s390x_devices(self):
+                     '0.0.4711')
+         # and detach it again
+         self.clear_guest_dmesg()
+-        self.vm.command('device_del', id='net_4711')
++        self.vm.cmd('device_del', id='net_4711')
+         self.vm.event_wait(name='DEVICE_DELETED',
+                            match={'data': {'device': 'net_4711'}})
+         self.wait_for_crw_reports()
+@@ -150,10 +150,10 @@ def test_s390x_devices(self):
+         # test the virtio-balloon device
+         exec_command_and_wait_for_pattern(self, 'head -n 1 /proc/meminfo',
+                                           'MemTotal:         115640 kB')
+-        self.vm.command('human-monitor-command', command_line='balloon 96')
++        self.vm.cmd('human-monitor-command', command_line='balloon 96')
+         exec_command_and_wait_for_pattern(self, 'head -n 1 /proc/meminfo',
+                                           'MemTotal:          82872 kB')
+-        self.vm.command('human-monitor-command', command_line='balloon 128')
++        self.vm.cmd('human-monitor-command', command_line='balloon 128')
+         exec_command_and_wait_for_pattern(self, 'head -n 1 /proc/meminfo',
+                                           'MemTotal:         115640 kB')
+ 
+@@ -243,7 +243,7 @@ def test_s390x_fedora(self):
+             '12+0 records out')
+         with tempfile.NamedTemporaryFile(suffix='.ppm',
+                                          prefix='qemu-scrdump-') as ppmfile:
+-            self.vm.command('screendump', filename=ppmfile.name)
++            self.vm.cmd('screendump', filename=ppmfile.name)
+             ppmfile.seek(0)
+             line = ppmfile.readline()
+             self.assertEqual(line, b"P6\n")
+@@ -257,16 +257,16 @@ def test_s390x_fedora(self):
+         # Hot-plug a virtio-crypto device and see whether it gets accepted
+         self.log.info("Test hot-plug virtio-crypto device")
+         self.clear_guest_dmesg()
+-        self.vm.command('object-add', qom_type='cryptodev-backend-builtin',
+-                        id='cbe0')
+-        self.vm.command('device_add', driver='virtio-crypto-ccw', id='crypdev0',
+-                        cryptodev='cbe0', devno='fe.0.2342')
++        self.vm.cmd('object-add', qom_type='cryptodev-backend-builtin',
++                    id='cbe0')
++        self.vm.cmd('device_add', driver='virtio-crypto-ccw', id='crypdev0',
++                    cryptodev='cbe0', devno='fe.0.2342')
+         exec_command_and_wait_for_pattern(self,
+                         'while ! (dmesg -c | grep Accelerator.device) ; do'
+                         ' sleep 1 ; done', 'Accelerator device is ready')
+         exec_command_and_wait_for_pattern(self, 'lscss', '0.0.2342')
+-        self.vm.command('device_del', id='crypdev0')
+-        self.vm.command('object-del', id='cbe0')
++        self.vm.cmd('device_del', id='crypdev0')
++        self.vm.cmd('object-del', id='cbe0')
+         exec_command_and_wait_for_pattern(self,
+                         'while ! (dmesg -c | grep Start.virtcrypto_remove) ; do'
+                         ' sleep 1 ; done', 'Start virtcrypto_remove.')
+diff --git a/tests/avocado/migration.py b/tests/avocado/migration.py
+index 584d6ef53f..88e6865071 100644
+--- a/tests/avocado/migration.py
++++ b/tests/avocado/migration.py
+@@ -28,7 +28,7 @@ class Migration(QemuSystemTest):
+ 
+     @staticmethod
+     def migration_finished(vm):
+-        return vm.command('query-migrate')['status'] in ('completed', 'failed')
++        return vm.cmd('query-migrate')['status'] in ('completed', 'failed')
+ 
+     def assert_migration(self, src_vm, dst_vm):
+         wait.wait_for(self.migration_finished,
+@@ -39,10 +39,10 @@ def assert_migration(self, src_vm, dst_vm):
+                       timeout=self.timeout,
+                       step=0.1,
+                       args=(dst_vm,))
+-        self.assertEqual(src_vm.command('query-migrate')['status'], 'completed')
+-        self.assertEqual(dst_vm.command('query-migrate')['status'], 'completed')
+-        self.assertEqual(dst_vm.command('query-status')['status'], 'running')
+-        self.assertEqual(src_vm.command('query-status')['status'],'postmigrate')
++        self.assertEqual(src_vm.cmd('query-migrate')['status'], 'completed')
++        self.assertEqual(dst_vm.cmd('query-migrate')['status'], 'completed')
++        self.assertEqual(dst_vm.cmd('query-status')['status'], 'running')
++        self.assertEqual(src_vm.cmd('query-status')['status'],'postmigrate')
+ 
+     def do_migrate(self, dest_uri, src_uri=None):
+         dest_vm = self.get_vm('-incoming', dest_uri)
+diff --git a/tests/avocado/pc_cpu_hotplug_props.py b/tests/avocado/pc_cpu_hotplug_props.py
+index 52b878188e..b56f51d02a 100644
+--- a/tests/avocado/pc_cpu_hotplug_props.py
++++ b/tests/avocado/pc_cpu_hotplug_props.py
+@@ -32,4 +32,4 @@ def test_no_die_id(self):
+         self.vm.add_args('-smp', '1,sockets=2,cores=2,threads=2,maxcpus=8')
+         self.vm.add_args('-device', 'qemu64-x86_64-cpu,socket-id=1,core-id=0,thread-id=0')
+         self.vm.launch()
+-        self.assertEquals(len(self.vm.command('query-cpus-fast')), 2)
++        self.assertEquals(len(self.vm.cmd('query-cpus-fast')), 2)
+diff --git a/tests/avocado/version.py b/tests/avocado/version.py
+index ded7f039c1..b8ce739743 100644
+--- a/tests/avocado/version.py
++++ b/tests/avocado/version.py
+@@ -19,6 +19,6 @@ class Version(QemuSystemTest):
+     def test_qmp_human_info_version(self):
+         self.vm.add_args('-nodefaults')
+         self.vm.launch()
+-        res = self.vm.command('human-monitor-command',
+-                              command_line='info version')
++        res = self.vm.cmd('human-monitor-command',
++                          command_line='info version')
+         self.assertRegexpMatches(res, r'^(\d+\.\d+\.\d)')
+diff --git a/tests/avocado/virtio_check_params.py b/tests/avocado/virtio_check_params.py
+index e869690473..eeefc169dd 100644
+--- a/tests/avocado/virtio_check_params.py
++++ b/tests/avocado/virtio_check_params.py
+@@ -52,8 +52,8 @@ def query_virtqueue(self, vm, dev_type_name):
+         error = None
+         props = None
+ 
+-        output = vm.command('human-monitor-command',
+-                            command_line = 'info qtree')
++        output = vm.cmd('human-monitor-command',
++                        command_line = 'info qtree')
+         props_list = DEV_TYPES[dev_type_name].values();
+         pattern = self.make_pattern(props_list)
+         res = re.findall(pattern, output)
+@@ -122,7 +122,7 @@ def test_machine_types(self):
+         # collect all machine types except 'none', 'isapc', 'microvm'
+         with QEMUMachine(self.qemu_bin) as vm:
+             vm.launch()
+-            machines = [m['name'] for m in vm.command('query-machines')]
++            machines = [m['name'] for m in vm.cmd('query-machines')]
+             vm.shutdown()
+         machines.remove('none')
+         machines.remove('isapc')
+diff --git a/tests/avocado/virtio_version.py b/tests/avocado/virtio_version.py
+index 208910bb84..24e2720599 100644
+--- a/tests/avocado/virtio_version.py
++++ b/tests/avocado/virtio_version.py
+@@ -49,7 +49,7 @@ def pci_modern_device_id(virtio_devid):
+     return virtio_devid + 0x1040
+ 
+ def devtype_implements(vm, devtype, implements):
+-    return devtype in [d['name'] for d in vm.command('qom-list-types', implements=implements)]
++    return devtype in [d['name'] for d in vm.cmd('qom-list-types', implements=implements)]
+ 
+ def get_pci_interfaces(vm, devtype):
+     interfaces = ('pci-express-device', 'conventional-pci-device')
+@@ -79,7 +79,7 @@ def run_device(self, devtype, opts=None, machine='pc'):
+             vm.add_args('-S')
+             vm.launch()
+ 
+-            pcibuses = vm.command('query-pci')
++            pcibuses = vm.cmd('query-pci')
+             alldevs = [dev for bus in pcibuses for dev in bus['devices']]
+             devfortest = [dev for dev in alldevs
+                           if dev['qdev_id'] == 'devfortest']
+diff --git a/tests/avocado/x86_cpu_model_versions.py b/tests/avocado/x86_cpu_model_versions.py
+index a6edf74c1c..fdbef229f2 100644
+--- a/tests/avocado/x86_cpu_model_versions.py
++++ b/tests/avocado/x86_cpu_model_versions.py
+@@ -84,7 +84,7 @@ def test_4_0_alias_compatibility(self):
+         # with older QEMU versions that didn't have the versioned CPU model
+         self.vm.add_args('-S')
+         self.vm.launch()
+-        cpus = dict((m['name'], m) for m in self.vm.command('query-cpu-definitions'))
++        cpus = dict((m['name'], m) for m in self.vm.cmd('query-cpu-definitions'))
+ 
+         self.assertFalse(cpus['Cascadelake-Server']['static'],
+                          'unversioned Cascadelake-Server CPU model must not be static')
+@@ -115,7 +115,7 @@ def test_4_1_alias(self):
+         self.vm.add_args('-S')
+         self.vm.launch()
+ 
+-        cpus = dict((m['name'], m) for m in self.vm.command('query-cpu-definitions'))
++        cpus = dict((m['name'], m) for m in self.vm.cmd('query-cpu-definitions'))
+ 
+         self.assertFalse(cpus['Cascadelake-Server']['static'],
+                          'unversioned Cascadelake-Server CPU model must not be static')
+@@ -220,7 +220,7 @@ def test_none_alias(self):
+         self.vm.add_args('-S')
+         self.vm.launch()
+ 
+-        cpus = dict((m['name'], m) for m in self.vm.command('query-cpu-definitions'))
++        cpus = dict((m['name'], m) for m in self.vm.cmd('query-cpu-definitions'))
+ 
+         self.assertFalse(cpus['Cascadelake-Server']['static'],
+                          'unversioned Cascadelake-Server CPU model must not be static')
+@@ -246,8 +246,8 @@ class CascadelakeArchCapabilities(avocado_qemu.QemuSystemTest):
+     :avocado: tags=arch:x86_64
+     """
+     def get_cpu_prop(self, prop):
+-        cpu_path = self.vm.command('query-cpus-fast')[0].get('qom-path')
+-        return self.vm.command('qom-get', path=cpu_path, property=prop)
++        cpu_path = self.vm.cmd('query-cpus-fast')[0].get('qom-path')
++        return self.vm.cmd('qom-get', path=cpu_path, property=prop)
+ 
+     def test_4_1(self):
+         """
+diff --git a/tests/migration/guestperf/engine.py b/tests/migration/guestperf/engine.py
+index 87a6ab2009..580f62f8e4 100644
+--- a/tests/migration/guestperf/engine.py
++++ b/tests/migration/guestperf/engine.py
+@@ -78,7 +78,7 @@ def _cpu_timing(self, pid):
+             return TimingRecord(pid, now, 1000 * (stime + utime) / jiffies_per_sec)
+ 
+     def _migrate_progress(self, vm):
+-        info = vm.command("query-migrate")
++        info = vm.cmd("query-migrate")
+ 
+         if "ram" not in info:
+             info["ram"] = {}
+@@ -110,7 +110,7 @@ def _migrate(self, hardware, scenario, src, dst, connect_uri):
+         src_vcpu_time = []
+         src_pid = src.get_pid()
+ 
+-        vcpus = src.command("query-cpus-fast")
++        vcpus = src.cmd("query-cpus-fast")
+         src_threads = []
+         for vcpu in vcpus:
+             src_threads.append(vcpu["thread-id"])
+@@ -129,82 +129,82 @@ def _migrate(self, hardware, scenario, src, dst, connect_uri):
+         if self._verbose:
+             print("Starting migration")
+         if scenario._auto_converge:
+-            resp = src.command("migrate-set-capabilities",
+-                               capabilities = [
+-                                   { "capability": "auto-converge",
+-                                     "state": True }
+-                               ])
+-            resp = src.command("migrate-set-parameters",
+-                               cpu_throttle_increment=scenario._auto_converge_step)
++            resp = src.cmd("migrate-set-capabilities",
++                           capabilities = [
++                               { "capability": "auto-converge",
++                                 "state": True }
++                           ])
++            resp = src.cmd("migrate-set-parameters",
++                           cpu_throttle_increment=scenario._auto_converge_step)
+ 
+         if scenario._post_copy:
+-            resp = src.command("migrate-set-capabilities",
+-                               capabilities = [
+-                                   { "capability": "postcopy-ram",
+-                                     "state": True }
+-                               ])
+-            resp = dst.command("migrate-set-capabilities",
+-                               capabilities = [
+-                                   { "capability": "postcopy-ram",
+-                                     "state": True }
+-                               ])
+-
+-        resp = src.command("migrate-set-parameters",
+-                           max_bandwidth=scenario._bandwidth * 1024 * 1024)
+-
+-        resp = src.command("migrate-set-parameters",
+-                           downtime_limit=scenario._downtime)
++            resp = src.cmd("migrate-set-capabilities",
++                           capabilities = [
++                               { "capability": "postcopy-ram",
++                                 "state": True }
++                           ])
++            resp = dst.cmd("migrate-set-capabilities",
++                           capabilities = [
++                               { "capability": "postcopy-ram",
++                                 "state": True }
++                           ])
 +
- static inline bool isar_feature_aa64_ras(const ARMISARegisters *id)
- {
-     return FIELD_EX64(id->id_aa64pfr0, ID_AA64PFR0, RAS) != 0;
-diff --git a/target/arm/helper.c b/target/arm/helper.c
-index c262b00c3c..84232a6437 100644
---- a/target/arm/helper.c
-+++ b/target/arm/helper.c
-@@ -1755,6 +1755,10 @@ static void scr_write(CPUARMState *env, const ARMCPRegInfo *ri, uint64_t value)
-         value |= SCR_FW | SCR_AW;      /* RES1 */
-         valid_mask &= ~SCR_NET;        /* RES0 */
++        resp = src.cmd("migrate-set-parameters",
++                       max_bandwidth=scenario._bandwidth * 1024 * 1024)
++
++        resp = src.cmd("migrate-set-parameters",
++                       downtime_limit=scenario._downtime)
  
-+        if (!cpu_isar_feature(aa64_aa32_el1, cpu) &&
-+            !cpu_isar_feature(aa64_aa32_el2, cpu)) {
-+            value |= SCR_RW;           /* RAO/WI*/
-+        }
-         if (cpu_isar_feature(aa64_ras, cpu)) {
-             valid_mask |= SCR_TERR;
-         }
+         if scenario._compression_mt:
+-            resp = src.command("migrate-set-capabilities",
+-                               capabilities = [
+-                                   { "capability": "compress",
+-                                     "state": True }
+-                               ])
+-            resp = src.command("migrate-set-parameters",
+-                               compress_threads=scenario._compression_mt_threads)
+-            resp = dst.command("migrate-set-capabilities",
+-                               capabilities = [
+-                                   { "capability": "compress",
+-                                     "state": True }
+-                               ])
+-            resp = dst.command("migrate-set-parameters",
+-                               decompress_threads=scenario._compression_mt_threads)
++            resp = src.cmd("migrate-set-capabilities",
++                           capabilities = [
++                               { "capability": "compress",
++                                 "state": True }
++                           ])
++            resp = src.cmd("migrate-set-parameters",
++                           compress_threads=scenario._compression_mt_threads)
++            resp = dst.cmd("migrate-set-capabilities",
++                           capabilities = [
++                               { "capability": "compress",
++                                 "state": True }
++                           ])
++            resp = dst.cmd("migrate-set-parameters",
++                           decompress_threads=scenario._compression_mt_threads)
+ 
+         if scenario._compression_xbzrle:
+-            resp = src.command("migrate-set-capabilities",
+-                               capabilities = [
+-                                   { "capability": "xbzrle",
+-                                     "state": True }
+-                               ])
+-            resp = dst.command("migrate-set-capabilities",
+-                               capabilities = [
+-                                   { "capability": "xbzrle",
+-                                     "state": True }
+-                               ])
+-            resp = src.command("migrate-set-parameters",
+-                               xbzrle_cache_size=(
+-                                   hardware._mem *
+-                                   1024 * 1024 * 1024 / 100 *
+-                                   scenario._compression_xbzrle_cache))
++            resp = src.cmd("migrate-set-capabilities",
++                           capabilities = [
++                               { "capability": "xbzrle",
++                                 "state": True }
++                           ])
++            resp = dst.cmd("migrate-set-capabilities",
++                           capabilities = [
++                               { "capability": "xbzrle",
++                                 "state": True }
++                           ])
++            resp = src.cmd("migrate-set-parameters",
++                           xbzrle_cache_size=(
++                               hardware._mem *
++                               1024 * 1024 * 1024 / 100 *
++                               scenario._compression_xbzrle_cache))
+ 
+         if scenario._multifd:
+-            resp = src.command("migrate-set-capabilities",
+-                               capabilities = [
+-                                   { "capability": "multifd",
+-                                     "state": True }
+-                               ])
+-            resp = src.command("migrate-set-parameters",
+-                               multifd_channels=scenario._multifd_channels)
+-            resp = dst.command("migrate-set-capabilities",
+-                               capabilities = [
+-                                   { "capability": "multifd",
+-                                     "state": True }
+-                               ])
+-            resp = dst.command("migrate-set-parameters",
+-                               multifd_channels=scenario._multifd_channels)
+-
+-        resp = src.command("migrate", uri=connect_uri)
++            resp = src.cmd("migrate-set-capabilities",
++                           capabilities = [
++                               { "capability": "multifd",
++                                 "state": True }
++                           ])
++            resp = src.cmd("migrate-set-parameters",
++                           multifd_channels=scenario._multifd_channels)
++            resp = dst.cmd("migrate-set-capabilities",
++                           capabilities = [
++                               { "capability": "multifd",
++                                 "state": True }
++                           ])
++            resp = dst.cmd("migrate-set-parameters",
++                           multifd_channels=scenario._multifd_channels)
++
++        resp = src.cmd("migrate", uri=connect_uri)
+ 
+         post_copy = False
+         paused = False
+@@ -229,7 +229,7 @@ def _migrate(self, hardware, scenario, src, dst, connect_uri):
+ 
+             if progress._status in ("completed", "failed", "cancelled"):
+                 if progress._status == "completed" and paused:
+-                    dst.command("cont")
++                    dst.cmd("cont")
+                 if progress_history[-1] != progress:
+                     progress_history.append(progress)
+ 
+@@ -257,13 +257,13 @@ def _migrate(self, hardware, scenario, src, dst, connect_uri):
+             if progress._ram._iterations > scenario._max_iters:
+                 if self._verbose:
+                     print("No completion after %d iterations over RAM" % scenario._max_iters)
+-                src.command("migrate_cancel")
++                src.cmd("migrate_cancel")
+                 continue
+ 
+             if time.time() > (start + scenario._max_time):
+                 if self._verbose:
+                     print("No completion after %d seconds" % scenario._max_time)
+-                src.command("migrate_cancel")
++                src.cmd("migrate_cancel")
+                 continue
+ 
+             if (scenario._post_copy and
+@@ -271,7 +271,7 @@ def _migrate(self, hardware, scenario, src, dst, connect_uri):
+                 not post_copy):
+                 if self._verbose:
+                     print("Switching to post-copy after %d iterations" % scenario._post_copy_iters)
+-                resp = src.command("migrate-start-postcopy")
++                resp = src.cmd("migrate-start-postcopy")
+                 post_copy = True
+ 
+             if (scenario._pause and
+@@ -279,7 +279,7 @@ def _migrate(self, hardware, scenario, src, dst, connect_uri):
+                 not paused):
+                 if self._verbose:
+                     print("Pausing VM after %d iterations" % scenario._pause_iters)
+-                resp = src.command("stop")
++                resp = src.cmd("stop")
+                 paused = True
+ 
+     def _get_common_args(self, hardware, tunnelled=False):
+diff --git a/tests/qemu-iotests/256 b/tests/qemu-iotests/256
+index 13666813bd..fffc8ef055 100755
+--- a/tests/qemu-iotests/256
++++ b/tests/qemu-iotests/256
+@@ -40,25 +40,25 @@ with iotests.FilePath('img0') as img0_path, \
+     def create_target(filepath, name, size):
+         basename = os.path.basename(filepath)
+         nodename = "file_{}".format(basename)
+-        log(vm.command('blockdev-create', job_id='job1',
+-                       options={
+-                           'driver': 'file',
+-                           'filename': filepath,
+-                           'size': 0,
+-                       }))
++        log(vm.cmd('blockdev-create', job_id='job1',
++                   options={
++                       'driver': 'file',
++                       'filename': filepath,
++                       'size': 0,
++                   }))
+         vm.run_job('job1')
+-        log(vm.command('blockdev-add', driver='file',
+-                       node_name=nodename, filename=filepath))
+-        log(vm.command('blockdev-create', job_id='job2',
+-                       options={
+-                           'driver': iotests.imgfmt,
+-                           'file': nodename,
+-                           'size': size,
+-                       }))
++        log(vm.cmd('blockdev-add', driver='file',
++                   node_name=nodename, filename=filepath))
++        log(vm.cmd('blockdev-create', job_id='job2',
++                   options={
++                       'driver': iotests.imgfmt,
++                       'file': nodename,
++                       'size': size,
++                   }))
+         vm.run_job('job2')
+-        log(vm.command('blockdev-add', driver=iotests.imgfmt,
+-                       node_name=name,
+-                       file=nodename))
++        log(vm.cmd('blockdev-add', driver=iotests.imgfmt,
++                   node_name=name,
++                   file=nodename))
+ 
+     log('--- Preparing images & VM ---\n')
+     vm.add_object('iothread,id=iothread0')
+diff --git a/tests/qemu-iotests/257 b/tests/qemu-iotests/257
+index e7e7a2317e..7d3720b8e5 100755
+--- a/tests/qemu-iotests/257
++++ b/tests/qemu-iotests/257
+@@ -160,26 +160,26 @@ class Drive:
+         file_node_name = "file_{}".format(basename)
+         vm = self.vm
+ 
+-        log(vm.command('blockdev-create', job_id='bdc-file-job',
+-                       options={
+-                           'driver': 'file',
+-                           'filename': self.path,
+-                           'size': 0,
+-                       }))
++        log(vm.cmd('blockdev-create', job_id='bdc-file-job',
++                   options={
++                       'driver': 'file',
++                       'filename': self.path,
++                       'size': 0,
++                   }))
+         vm.run_job('bdc-file-job')
+-        log(vm.command('blockdev-add', driver='file',
+-                       node_name=file_node_name, filename=self.path))
+-
+-        log(vm.command('blockdev-create', job_id='bdc-fmt-job',
+-                       options={
+-                           'driver': fmt,
+-                           'file': file_node_name,
+-                           'size': size,
+-                       }))
++        log(vm.cmd('blockdev-add', driver='file',
++                   node_name=file_node_name, filename=self.path))
++
++        log(vm.cmd('blockdev-create', job_id='bdc-fmt-job',
++                   options={
++                       'driver': fmt,
++                       'file': file_node_name,
++                       'size': size,
++                   }))
+         vm.run_job('bdc-fmt-job')
+-        log(vm.command('blockdev-add', driver=fmt,
+-                       node_name=name,
+-                       file=file_node_name))
++        log(vm.cmd('blockdev-add', driver=fmt,
++                   node_name=name,
++                   file=file_node_name))
+         self.fmt = fmt
+         self.size = size
+         self.node = name
 -- 
-2.34.1
+2.25.1
 

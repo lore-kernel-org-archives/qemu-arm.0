@@ -1,87 +1,87 @@
-Received: by 2002:a19:ee12:0:0:0:0:0 with SMTP id g18csp1737093lfb;
-        Mon, 6 Jun 2022 16:58:24 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxFbnkqGMAe4YhdOKFSg2swBQJR1sz3YlresoVSAkbPQ1c1vZMDus0bunznHLCee1XMaNmA
-X-Received: by 2002:ac8:5804:0:b0:2ff:3c7d:2bec with SMTP id g4-20020ac85804000000b002ff3c7d2becmr20889994qtg.331.1654559904028;
-        Mon, 06 Jun 2022 16:58:24 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1654559904; cv=none;
+Received: by 2002:a19:ee12:0:0:0:0:0 with SMTP id g18csp1737126lfb;
+        Mon, 6 Jun 2022 16:58:27 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxojj3Xqc16WVs67BDD75jEajhO1M8N1BbaDofjzdDrq/BJ8aP1xFt7pLQIqOg9WDg+O4sk
+X-Received: by 2002:ac8:578b:0:b0:304:e781:3734 with SMTP id v11-20020ac8578b000000b00304e7813734mr10002984qta.44.1654559907702;
+        Mon, 06 Jun 2022 16:58:27 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1654559907; cv=none;
         d=google.com; s=arc-20160816;
-        b=ASJBI3+99M4+/R1KA7zxNqHcDjRXmrQkXq4j+hYrHUKPMr1qNk9Cic1fbWx+OOVxv9
-         Dh8ns9EHF2qXbr4EKyyLmZXnhZF1spemkBbi+D0MVTf3MxrX5moGxAGFtKYgnuY6IkdC
-         vleukni/kIMgfZjiIoqkc+vl9423ZPCGcMkFGeLojTTYPQeY39rwLDuTShlZJrVoIvVJ
-         40DUbBcmK8C8FzlTmZuPE3Nk9EauSOPjIsEGEizVeidN8gD5mVCtW0Dh0FLBu0G5GK+h
-         lS4zZHoHClXZZY8/DUfQWhTvH7Cj1DYYlXtovWHZJz9P48wkgezDkPyIHsiBUpm9chd2
-         FsiA==
+        b=xogoWwpy3q+TRLe0qpWR1jbQj50oaAIE1tz3ag4xqwa6fdQYH8XldfE+bzXvMZAkYH
+         ydFvHRsl+r4AB4N4eOFsKBDcAXp+UeqgTdCbpP1cewgz7anvTBB8t8vL2rfD4wOd/T1o
+         TlNvb/Pwtr0Vw0tu382p/zzeD513rKhU3VIjZo4D1dbMQK+Pwo6TiFKtp0JaKonkmzlh
+         5FJ/YrRbUrrEdWHYL6iCz/nILUvGJS8JrRpbn3gGnS/4VIbwLJk+c13aYpWKyh56vzke
+         L3fZQUOpnJCYMOe58AHsMo5qNng2gwlCkm3nCjRTz7KM/C6hAFKwpEEDFjUpaV3IEDKT
+         OO6Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
          :subject:message-id:date:from:in-reply-to:references:mime-version
          :dkim-signature;
-        bh=EEXQgJNMNd8PoHGdHAcmZLGIoeML5qu1BpQ+gfg1nlA=;
-        b=Xsbfu6ZRnaW68X8ZEflbHRwhSQUiqXgKjRku/Ib83zK9/xRUKjPR1grnojh5+c78Pw
-         VYZgVTXDKgwErekkpGhjg+NoXLAO0rUIbKOpYpAaNNWHyP6OOS8YaLgxGi3WxXuK10pF
-         W2qlFI23VF9IPuKpvdA8/mA1nIaknw/dNFDR6Y8fH23l3/uHE+9uG+26U3alGLASmLTS
-         Lf/tVenZxZR/VdSua7RuFNnxH+JsdhPyv5taoIUAxTyQo+lB1YwZxvKwLdA8AGvAvcJp
-         AkgKeTv3Vt5S5Y69SeThsQgqWjN1NCI7dYblEViRPaiKPC4IijtnaEfwJ+jYcJMpCv4H
-         glPw==
+        bh=H8k9fFKFjQw9pubzVp6SvoQ2qYfox4LemA0BqkC0FUI=;
+        b=dmaxvSCcrFVmRbflHTHWskzRaUdiv1HGkfnS3rlH0yOyRHW51sT8nXywp7PBxcR4hn
+         n7J4iNMzn1gpR3Yv6y/k1IKJYmIF4GUwbSKaKMJtuKgnpSZ4FhLjmWHt7UmMJLWSjUu4
+         0aaPZhROcfd6HVDoMDoPs84QmGqVyiE/fuqpY8Y8kqCghqBY/ski4rbu1xSnmBmC92Hy
+         uKsB9T/zy7zxHJm0+0dJYisroAZq0KdD71RkYPnOMvqU7BeHcEw8a567nRE+z/5Sk6cF
+         1iGZi23TDSB4iBwaSQWSIkbQbYCtFpVPXMWSrgaDf5PR2J5LqGM43qMW8yQL/rNbvDcD
+         5HqQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@jms.id.au header.s=google header.b=irzlRX8T;
+       dkim=pass header.i=@jms.id.au header.s=google header.b=ceUmkcyQ;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id b68-20020a379947000000b006a025a56694si8745812qke.569.2022.06.06.16.58.23
+        by mx.google.com with ESMTPS id 2-20020a0562140cc200b0046444942e40si10647240qvx.184.2022.06.06.16.58.27
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 06 Jun 2022 16:58:24 -0700 (PDT)
+        Mon, 06 Jun 2022 16:58:27 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@jms.id.au header.s=google header.b=irzlRX8T;
+       dkim=pass header.i=@jms.id.au header.s=google header.b=ceUmkcyQ;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:56218 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:56330 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nyMc3-0002en-HM
-	for alex.bennee@linaro.org; Mon, 06 Jun 2022 19:58:23 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:35472)
+	id 1nyMc6-0002ix-60
+	for alex.bennee@linaro.org; Mon, 06 Jun 2022 19:58:27 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:36214)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <joel.stan@gmail.com>)
- id 1nyLxj-0003n5-83; Mon, 06 Jun 2022 19:16:43 -0400
-Received: from mail-wr1-x432.google.com ([2a00:1450:4864:20::432]:37449)
+ id 1nyM3O-0007x9-Ti; Mon, 06 Jun 2022 19:22:35 -0400
+Received: from mail-wm1-x32a.google.com ([2a00:1450:4864:20::32a]:51158)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <joel.stan@gmail.com>)
- id 1nyLxg-0004HG-Ir; Mon, 06 Jun 2022 19:16:42 -0400
-Received: by mail-wr1-x432.google.com with SMTP id m26so10318571wrb.4;
- Mon, 06 Jun 2022 16:16:38 -0700 (PDT)
+ id 1nyM3N-0004y3-7l; Mon, 06 Jun 2022 19:22:34 -0400
+Received: by mail-wm1-x32a.google.com with SMTP id e5so1566393wma.0;
+ Mon, 06 Jun 2022 16:22:32 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=jms.id.au; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
  :cc:content-transfer-encoding;
- bh=EEXQgJNMNd8PoHGdHAcmZLGIoeML5qu1BpQ+gfg1nlA=;
- b=irzlRX8Toroak8BVl1STzOji4DrW6843y3IWsgfomte9a9iJ/LLY5CJCnXvBfjh80F
- xOwvKNvw2luY+0tdARTM4TXd4aNNhNoBkWkoYU1eD1CvdkK5oFMC0jyI8YS9/3Fo2WSn
- dyM05NyODXqszNFQ15H5WwVTqH0o5s44yB6S4=
+ bh=H8k9fFKFjQw9pubzVp6SvoQ2qYfox4LemA0BqkC0FUI=;
+ b=ceUmkcyQFFwRbHIcp5E1OSjPxvXDi4VvAwCXoSEuArd+U0uggCLmFM20keqSD+oDlT
+ yftcV/JSdcXnHLvpk8wOVGQAjiXA1R4NApRob6B9Md/ElLXnhkL7jbxE9emrXKv1h6hl
+ WMo/NRw0U+xk2k/VUzAH8hDnnkpdQGQBLPkEs=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc:content-transfer-encoding;
- bh=EEXQgJNMNd8PoHGdHAcmZLGIoeML5qu1BpQ+gfg1nlA=;
- b=i7BA2cM21YAnxGt2aizeGq7EyACovjFmFhYL59le2NeEjI7ZgnRRVpU2WeotDlPj4Y
- W9RwsNsNcfFoFN/Vd6JP+tlOwius36+p/CoitGEoGaXNseHRI7R360c8ego3sDAZPzT8
- 7fSzL4R6FCqSPIHiZjqDLkve2foKomhQAlCGQ35cMgtjVSAATw67b/dK5zm4aaizHJvv
- I6Xrt5uT761RyJ13XFWUXaHw7vmRAV/MArNKor8DmYFKYtzVTl17nm9RsmjUjqjAGoXR
- J3ZOztzR7n443kCKaDtqgiWcHnPBgpoHd5Dg2Zx/N5KAeXQIQAMGR87nwed0bCGQcSUf
- QqEg==
-X-Gm-Message-State: AOAM531l2g8SbQIsbwdYHww9uhPQfMz8zJuF79PsU6d9I1u4cgtrQXxC
- QW5VwWavvdXzrSbLZavYBN5dBP39BAcwW1nm0lk=
-X-Received: by 2002:a5d:6510:0:b0:216:f04d:3c50 with SMTP id
- x16-20020a5d6510000000b00216f04d3c50mr12141843wru.628.1654557397448; Mon, 06
- Jun 2022 16:16:37 -0700 (PDT)
+ bh=H8k9fFKFjQw9pubzVp6SvoQ2qYfox4LemA0BqkC0FUI=;
+ b=2DCMBeOJ9dzZGHm3uOYhI4QdtfifJ5Px06PvYdOfj+zWNpPmTD+BLLys9pPnvUGDQd
+ 5zLGPcg2CYszbKAda2vIe2gU+FpygcdpS7niDpDWVcp505ojrvBqI/+QpCCdQURLQsgC
+ EzkOsy7BWklTykA6lMUBtxe54aLOKEf2w0oTjMhHQb4/Eabo0SOpQaJfekUBgX5nWFXk
+ chnKONMBY1PHs4dw7xTf76+v1QoPbvqdpBKpe5IhBGN6Ll0F0t58N/Lfa/3/Smzl93TI
+ E0BzQ/YCqkYYhiQaLd5T0qqWXOwV+uR8ceOvhH8sjgwPOBFNAqsC7DTaYoUuUCNLdBUn
+ IfqA==
+X-Gm-Message-State: AOAM5316VUkda7Rl9uy/Xok8wtRNUtHDW/9p53adAHi/75hDWOzrLuSq
+ oAJkXJYYkif328XeIplzk7iBi3mDCd+4kjUdTEI=
+X-Received: by 2002:a05:600c:5d3:b0:39c:506d:c987 with SMTP id
+ p19-20020a05600c05d300b0039c506dc987mr7246479wmd.10.1654557751130; Mon, 06
+ Jun 2022 16:22:31 -0700 (PDT)
 MIME-Version: 1.0
 References: <20220606150732.2282041-1-clg@kaod.org>
- <20220606150732.2282041-12-clg@kaod.org>
-In-Reply-To: <20220606150732.2282041-12-clg@kaod.org>
+ <20220606150732.2282041-13-clg@kaod.org>
+In-Reply-To: <20220606150732.2282041-13-clg@kaod.org>
 From: Joel Stanley <joel@jms.id.au>
-Date: Mon, 6 Jun 2022 23:16:25 +0000
-Message-ID: <CACPK8Xerxw2s20971XBVVGbSruwAgbJAi=84DGhnKnnXQJzMXg@mail.gmail.com>
-Subject: Re: [PATCH 11/21] test/avocado/machine_aspeed.py: Add an I2C RTC test
+Date: Mon, 6 Jun 2022 23:22:19 +0000
+Message-ID: <CACPK8XdE87Agi9z_hPno-1E-eRFfD-ooQMkFy3tM-0xu9OMKZA@mail.gmail.com>
+Subject: Re: [PATCH 12/21] aspeed/i2c: Add ast1030 controller models
 To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
 Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>, 
  Peter Maydell <peter.maydell@linaro.org>, Joe Komlodi <komlodi@google.com>,
@@ -96,8 +96,8 @@ Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>,
  Beraldo Leal <bleal@redhat.com>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::432;
- envelope-from=joel.stan@gmail.com; helo=mail-wr1-x432.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32a;
+ envelope-from=joel.stan@gmail.com; helo=mail-wm1-x32a.google.com
 X-Spam_score_int: -14
 X-Spam_score: -1.5
 X-Spam_bar: -
@@ -120,59 +120,84 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: sSa0t2aIqpYG
+X-TUID: bA+GX18m5YxE
 
-On Mon, 6 Jun 2022 at 15:08, C=C3=A9dric Le Goater <clg@kaod.org> wrote:
+On Mon, 6 Jun 2022 at 15:09, C=C3=A9dric Le Goater <clg@kaod.org> wrote:
 >
-> Add a RTC device on bus 15 and check that the ouput of the hwclock
+> Based on :
+>   https://lists.nongnu.org/archive/html/qemu-devel/2022-03/msg06017.html
 
-spelling: output
+Perhaps use the link to lore (which also includes the message id):
 
-> command matches the current year.
->
-> Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
+https://lore.kernel.org/qemu-devel/20220324100439.478317-2-troy_lee@aspeedt=
+ech.com/
 
 Reviewed-by: Joel Stanley <joel@jms.id.au>
 
+>
+> Cc: Troy Lee <troy_lee@aspeedtech.com>
+> Cc: Jamin Lin <jamin_lin@aspeedtech.com>
+> Cc: Steven Lee <steven_lee@aspeedtech.com>
+> Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
 > ---
->  tests/avocado/machine_aspeed.py | 8 ++++++++
->  1 file changed, 8 insertions(+)
+>  include/hw/i2c/aspeed_i2c.h |  1 +
+>  hw/i2c/aspeed_i2c.c         | 24 ++++++++++++++++++++++++
+>  2 files changed, 25 insertions(+)
 >
-> diff --git a/tests/avocado/machine_aspeed.py b/tests/avocado/machine_aspe=
-ed.py
-> index a3b4b9e5093c..28b8a4c8124b 100644
-> --- a/tests/avocado/machine_aspeed.py
-> +++ b/tests/avocado/machine_aspeed.py
-> @@ -136,10 +136,18 @@ def test_arm_ast2600_evb_builroot(self):
+> diff --git a/include/hw/i2c/aspeed_i2c.h b/include/hw/i2c/aspeed_i2c.h
+> index 506bcf1a9daf..79c6779c6c1e 100644
+> --- a/include/hw/i2c/aspeed_i2c.h
+> +++ b/include/hw/i2c/aspeed_i2c.h
+> @@ -30,6 +30,7 @@
+>  #define TYPE_ASPEED_2400_I2C TYPE_ASPEED_I2C "-ast2400"
+>  #define TYPE_ASPEED_2500_I2C TYPE_ASPEED_I2C "-ast2500"
+>  #define TYPE_ASPEED_2600_I2C TYPE_ASPEED_I2C "-ast2600"
+> +#define TYPE_ASPEED_1030_I2C TYPE_ASPEED_I2C "-ast1030"
+>  OBJECT_DECLARE_TYPE(AspeedI2CState, AspeedI2CClass, ASPEED_I2C)
 >
->          self.vm.add_args('-device',
->                           'tmp423,bus=3Daspeed.i2c.bus.15,address=3D0x4c'=
-);
-> +        self.vm.add_args('-device',
-> +                         'ds1338,bus=3Daspeed.i2c.bus.15,address=3D0x32'=
-);
-
-Is there any value running this on the 2400 and 2500 machine types
-too? They all use the same model so perhaps not?
-
->          self.do_test_arm_aspeed_buidroot_start(image_path, '0xf00')
->          exec_command_and_wait_for_pattern(self,
->                                            'i2cget -y 15 0x4c 0xff', '0x2=
-3');
->          exec_command_and_wait_for_pattern(self,
->                                            'i2cget -y 15 0x4c 0xfe', '0x5=
-5');
+>  #define ASPEED_I2C_NR_BUSSES 16
+> diff --git a/hw/i2c/aspeed_i2c.c b/hw/i2c/aspeed_i2c.c
+> index 8425e928890a..5fce516517a5 100644
+> --- a/hw/i2c/aspeed_i2c.c
+> +++ b/hw/i2c/aspeed_i2c.c
+> @@ -1185,6 +1185,29 @@ static const TypeInfo aspeed_2600_i2c_info =3D {
+>      .class_init =3D aspeed_2600_i2c_class_init,
+>  };
 >
-> +        exec_command_and_wait_for_pattern(self,
-> +             'echo ds1307 0x32 > /sys/class/i2c-dev/i2c-15/device/new_de=
-vice',
-> +             'i2c i2c-15: new_device: Instantiated device ds1307 at 0x32=
-');
-> +        year =3D time.strftime("%Y")
-> +        exec_command_and_wait_for_pattern(self, 'hwclock -f /dev/rtc1', =
-year);
+> +static void aspeed_1030_i2c_class_init(ObjectClass *klass, void *data)
+> +{
+> +    DeviceClass *dc =3D DEVICE_CLASS(klass);
+> +    AspeedI2CClass *aic =3D ASPEED_I2C_CLASS(klass);
 > +
->          self.do_test_arm_aspeed_buidroot_poweroff()
+> +    dc->desc =3D "ASPEED 1030 I2C Controller";
+> +
+> +    aic->num_busses =3D 14;
+> +    aic->reg_size =3D 0x80;
+> +    aic->gap =3D -1; /* no gap */
+> +    aic->bus_get_irq =3D aspeed_2600_i2c_bus_get_irq;
+> +    aic->pool_size =3D 0x200;
+> +    aic->pool_base =3D 0xC00;
+> +    aic->bus_pool_base =3D aspeed_2600_i2c_bus_pool_base;
+> +    aic->has_dma =3D true;
+> +}
+> +
+> +static const TypeInfo aspeed_1030_i2c_info =3D {
+> +    .name =3D TYPE_ASPEED_1030_I2C,
+> +    .parent =3D TYPE_ASPEED_I2C,
+> +    .class_init =3D aspeed_1030_i2c_class_init,
+> +};
+> +
+>  static void aspeed_i2c_register_types(void)
+>  {
+>      type_register_static(&aspeed_i2c_bus_info);
+> @@ -1192,6 +1215,7 @@ static void aspeed_i2c_register_types(void)
+>      type_register_static(&aspeed_2400_i2c_info);
+>      type_register_static(&aspeed_2500_i2c_info);
+>      type_register_static(&aspeed_2600_i2c_info);
+> +    type_register_static(&aspeed_1030_i2c_info);
+>  }
+>
+>  type_init(aspeed_i2c_register_types)
 > --
 > 2.35.3
 >

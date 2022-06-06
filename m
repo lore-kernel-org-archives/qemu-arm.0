@@ -1,151 +1,178 @@
-Received: by 2002:a19:ee12:0:0:0:0:0 with SMTP id g18csp1580345lfb;
-        Mon, 6 Jun 2022 11:38:54 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyeY19DulKUppbelX60otDcscncQCZWN9FzMJGdeHaNK9F0Kfc0PX+gGrY6WHObvz13+ylX
-X-Received: by 2002:ac8:5893:0:b0:304:c7d2:f8bd with SMTP id t19-20020ac85893000000b00304c7d2f8bdmr19243156qta.627.1654540734030;
-        Mon, 06 Jun 2022 11:38:54 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1654540734; cv=none;
+Received: by 2002:a19:ee12:0:0:0:0:0 with SMTP id g18csp1737093lfb;
+        Mon, 6 Jun 2022 16:58:24 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxFbnkqGMAe4YhdOKFSg2swBQJR1sz3YlresoVSAkbPQ1c1vZMDus0bunznHLCee1XMaNmA
+X-Received: by 2002:ac8:5804:0:b0:2ff:3c7d:2bec with SMTP id g4-20020ac85804000000b002ff3c7d2becmr20889994qtg.331.1654559904028;
+        Mon, 06 Jun 2022 16:58:24 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1654559904; cv=none;
         d=google.com; s=arc-20160816;
-        b=xTFEklwYNSgyCrQHXBlQL3NSEJ9ajUWHQXWCYftiX997EOvvhB3xyAjDaB9jwLmoXE
-         sruBAPJ4Ih2EHNnIqKrYaylJwxP98ckIExiZ6FxSXprK4KYMkYPeo+zmL5CJ95p33git
-         5fkYZ18nn7ZvzN6bsTxSq9ChLl8fZJWypQM2OQJ2Pbpnq6xLYGCp7pLMhJIW7xq6itbf
-         WLKglchXvHuEIC50eThCI06ne9aSqblYN0MrFkpGf3SkkwcCax4A3NSn1AQfLIsvkR3Y
-         X9SGFy/vaq/E87CBYYCp+VzZXM0kWFmTd0iDC8i8R56w8+DVuwomhoTrHF+WPPH+McFA
-         SJsg==
+        b=ASJBI3+99M4+/R1KA7zxNqHcDjRXmrQkXq4j+hYrHUKPMr1qNk9Cic1fbWx+OOVxv9
+         Dh8ns9EHF2qXbr4EKyyLmZXnhZF1spemkBbi+D0MVTf3MxrX5moGxAGFtKYgnuY6IkdC
+         vleukni/kIMgfZjiIoqkc+vl9423ZPCGcMkFGeLojTTYPQeY39rwLDuTShlZJrVoIvVJ
+         40DUbBcmK8C8FzlTmZuPE3Nk9EauSOPjIsEGEizVeidN8gD5mVCtW0Dh0FLBu0G5GK+h
+         lS4zZHoHClXZZY8/DUfQWhTvH7Cj1DYYlXtovWHZJz9P48wkgezDkPyIHsiBUpm9chd2
+         FsiA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:cc:to:content-language:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=OjOOGVLnPH2vWP2wTHBhloqMc7lXhV+RIAhsYXRiH3U=;
-        b=fHsM26s07ebbUsvqlXIXYfNPPLmx1Ocs2+BrrzEyrf6FTHeSa9s6Dmw88yLwHmoCR+
-         bX/P3JXK0Z4XMy7pf9zynB2dRdoXuZvW/gw1Zo+2bnLEFwuzr8VZ2ttYjSWoPrMr8eZF
-         z4rhq52BIh8PiMnRizqe714ghrm7zCU14PD83lYXPuyvdXHFlyZl734JAdLnJj518C0f
-         d1At+Sq61CzTu0L/Jr7AEUCmENEUvFlXSSYsgKPCbAVtTJBA9OJjY4hGPThYqrGB7Ivb
-         U1siBVbLMGePnmNTex63om16/tMHwKYX8JmSpoMNLmrV5XP29yJBx5VA8dW7lo8RzfgY
-         LG0g==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=EEXQgJNMNd8PoHGdHAcmZLGIoeML5qu1BpQ+gfg1nlA=;
+        b=Xsbfu6ZRnaW68X8ZEflbHRwhSQUiqXgKjRku/Ib83zK9/xRUKjPR1grnojh5+c78Pw
+         VYZgVTXDKgwErekkpGhjg+NoXLAO0rUIbKOpYpAaNNWHyP6OOS8YaLgxGi3WxXuK10pF
+         W2qlFI23VF9IPuKpvdA8/mA1nIaknw/dNFDR6Y8fH23l3/uHE+9uG+26U3alGLASmLTS
+         Lf/tVenZxZR/VdSua7RuFNnxH+JsdhPyv5taoIUAxTyQo+lB1YwZxvKwLdA8AGvAvcJp
+         AkgKeTv3Vt5S5Y69SeThsQgqWjN1NCI7dYblEViRPaiKPC4IijtnaEfwJ+jYcJMpCv4H
+         glPw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=ak5z4z5G;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@jms.id.au header.s=google header.b=irzlRX8T;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 8-20020ac85908000000b002f9261a0de6si8701746qty.190.2022.06.06.11.38.53
+        by mx.google.com with ESMTPS id b68-20020a379947000000b006a025a56694si8745812qke.569.2022.06.06.16.58.23
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 06 Jun 2022 11:38:54 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 06 Jun 2022 16:58:24 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=ak5z4z5G;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:44374 helo=lists1p.gnu.org)
+       dkim=pass header.i=@jms.id.au header.s=google header.b=irzlRX8T;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:56218 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nyHcr-0006CA-I2
-	for alex.bennee@linaro.org; Mon, 06 Jun 2022 14:38:53 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:47476)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1nyMc3-0002en-HM
+	for alex.bennee@linaro.org; Mon, 06 Jun 2022 19:58:23 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:35472)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1nyHaZ-0004ns-R1
- for qemu-devel@nongnu.org; Mon, 06 Jun 2022 14:36:31 -0400
-Received: from mail-pf1-x42b.google.com ([2607:f8b0:4864:20::42b]:44848)
+ (Exim 4.90_1) (envelope-from <joel.stan@gmail.com>)
+ id 1nyLxj-0003n5-83; Mon, 06 Jun 2022 19:16:43 -0400
+Received: from mail-wr1-x432.google.com ([2a00:1450:4864:20::432]:37449)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1nyHaY-0005p2-0f
- for qemu-devel@nongnu.org; Mon, 06 Jun 2022 14:36:31 -0400
-Received: by mail-pf1-x42b.google.com with SMTP id g205so13360673pfb.11
- for <qemu-devel@nongnu.org>; Mon, 06 Jun 2022 11:36:29 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=message-id:date:mime-version:user-agent:subject:content-language:to
- :cc:references:from:in-reply-to:content-transfer-encoding;
- bh=OjOOGVLnPH2vWP2wTHBhloqMc7lXhV+RIAhsYXRiH3U=;
- b=ak5z4z5Gl0ym0KDnaQnsxgdChTOrh7bgT6VbYIXlbcNfeqTS8pG/ViqZvJToToKBv8
- rZVojbqermoAktYyA8kVzTLdQZMwh15vJPvaEiW0BfiB2SznhZ76RuSCJTmbcKs0rpez
- 9xQb7+MP9c1/NvkLNUuFl/lkrBdjYnX9mhx0vnCKLNwTGI/AXgDWigGkeDge5OnUenwH
- 4ZI2GXXE6FF7ZaGs94NATvv50r7tHSrIFkYz1eCmwlSu01IYP9dzzSmdL2vx0tULRO8m
- /FHfT7m3wGNtOtb7Q75gAgJ0dcEnjsoQVJf+qaayyilDJIFzEN82SG36v7k2oRXu3p9j
- pY3Q==
+ (Exim 4.90_1) (envelope-from <joel.stan@gmail.com>)
+ id 1nyLxg-0004HG-Ir; Mon, 06 Jun 2022 19:16:42 -0400
+Received: by mail-wr1-x432.google.com with SMTP id m26so10318571wrb.4;
+ Mon, 06 Jun 2022 16:16:38 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=jms.id.au; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=EEXQgJNMNd8PoHGdHAcmZLGIoeML5qu1BpQ+gfg1nlA=;
+ b=irzlRX8Toroak8BVl1STzOji4DrW6843y3IWsgfomte9a9iJ/LLY5CJCnXvBfjh80F
+ xOwvKNvw2luY+0tdARTM4TXd4aNNhNoBkWkoYU1eD1CvdkK5oFMC0jyI8YS9/3Fo2WSn
+ dyM05NyODXqszNFQ15H5WwVTqH0o5s44yB6S4=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
- :content-language:to:cc:references:from:in-reply-to
- :content-transfer-encoding;
- bh=OjOOGVLnPH2vWP2wTHBhloqMc7lXhV+RIAhsYXRiH3U=;
- b=r6ikxIFE5RnKrzIaSTQFi3Lz9SyhF3j0jOflbwQ+9zJ9UL+0spLOmhDi9Xk5rFAJes
- 2KAuEiDrkJzbmYh0tlNXrCD28vMU99SXnVtxIY9tPc5h8N98a2e+RhERzxDFrzL6Jt90
- 60VIGrIj5vI16V7K7XMgEHJbokmfvD3JGbqNvqInmUcQF4f/Vh7BdDHWydz804Hu+31O
- OdUuIf3ACkn26utMROi1Cdp/J/3k0fU8GfxToES/yGx0JLg1+Oy008BFQ89PT3qmXWbR
- 4uF12czBGQMCXIZtMfHNhH/fSlZ2Bk9UPFZX0jFyIpFRkDX/swlvKCFha5/+sBZj2RYz
- 8H3Q==
-X-Gm-Message-State: AOAM531HMy87mb7Y54gPFPZ9p7Wyo/6GqcWReGdEk9Rb5tnRUPwZTE1R
- xbwWQmlZ/X08o8Qwu2yhJk1fnA==
-X-Received: by 2002:aa7:88cc:0:b0:51c:319e:772c with SMTP id
- k12-20020aa788cc000000b0051c319e772cmr1378035pff.41.1654540588513; 
- Mon, 06 Jun 2022 11:36:28 -0700 (PDT)
-Received: from ?IPV6:2602:ae:1547:e101:dd1c:9738:3e40:ffe0?
- ([2602:ae:1547:e101:dd1c:9738:3e40:ffe0])
- by smtp.gmail.com with ESMTPSA id
- a4-20020a1709027e4400b00163ac8673edsm10865885pln.35.2022.06.06.11.36.27
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 06 Jun 2022 11:36:28 -0700 (PDT)
-Message-ID: <16e44159-089c-8967-6746-906649ae2f91@linaro.org>
-Date: Mon, 6 Jun 2022 09:50:37 -0700
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=EEXQgJNMNd8PoHGdHAcmZLGIoeML5qu1BpQ+gfg1nlA=;
+ b=i7BA2cM21YAnxGt2aizeGq7EyACovjFmFhYL59le2NeEjI7ZgnRRVpU2WeotDlPj4Y
+ W9RwsNsNcfFoFN/Vd6JP+tlOwius36+p/CoitGEoGaXNseHRI7R360c8ego3sDAZPzT8
+ 7fSzL4R6FCqSPIHiZjqDLkve2foKomhQAlCGQ35cMgtjVSAATw67b/dK5zm4aaizHJvv
+ I6Xrt5uT761RyJ13XFWUXaHw7vmRAV/MArNKor8DmYFKYtzVTl17nm9RsmjUjqjAGoXR
+ J3ZOztzR7n443kCKaDtqgiWcHnPBgpoHd5Dg2Zx/N5KAeXQIQAMGR87nwed0bCGQcSUf
+ QqEg==
+X-Gm-Message-State: AOAM531l2g8SbQIsbwdYHww9uhPQfMz8zJuF79PsU6d9I1u4cgtrQXxC
+ QW5VwWavvdXzrSbLZavYBN5dBP39BAcwW1nm0lk=
+X-Received: by 2002:a5d:6510:0:b0:216:f04d:3c50 with SMTP id
+ x16-20020a5d6510000000b00216f04d3c50mr12141843wru.628.1654557397448; Mon, 06
+ Jun 2022 16:16:37 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.9.1
-Subject: Re: [PATCH 28/71] target/arm: Add PSTATE.{SM,ZA} to TB flags
-Content-Language: en-US
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
-References: <20220602214853.496211-1-richard.henderson@linaro.org>
- <20220602214853.496211-29-richard.henderson@linaro.org>
- <CAFEAcA_+-xbJkN8uBCL0UyJUmu+wrU1i5EMnwSu6pjC++gjg5Q@mail.gmail.com>
-From: Richard Henderson <richard.henderson@linaro.org>
-In-Reply-To: <CAFEAcA_+-xbJkN8uBCL0UyJUmu+wrU1i5EMnwSu6pjC++gjg5Q@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::42b;
- envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x42b.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.001,
+References: <20220606150732.2282041-1-clg@kaod.org>
+ <20220606150732.2282041-12-clg@kaod.org>
+In-Reply-To: <20220606150732.2282041-12-clg@kaod.org>
+From: Joel Stanley <joel@jms.id.au>
+Date: Mon, 6 Jun 2022 23:16:25 +0000
+Message-ID: <CACPK8Xerxw2s20971XBVVGbSruwAgbJAi=84DGhnKnnXQJzMXg@mail.gmail.com>
+Subject: Re: [PATCH 11/21] test/avocado/machine_aspeed.py: Add an I2C RTC test
+To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
+Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>, 
+ Peter Maydell <peter.maydell@linaro.org>, Joe Komlodi <komlodi@google.com>,
+ Troy Lee <troy_lee@aspeedtech.com>, Jamin Lin <jamin_lin@aspeedtech.com>, 
+ Steven Lee <steven_lee@aspeedtech.com>, Klaus Jensen <k.jensen@samsung.com>, 
+ Peter Delevoryas <pdel@fb.com>, Corey Minyard <cminyard@mvista.com>, 
+ Jonathan Cameron <Jonathan.Cameron@huawei.com>,
+ Damien Hedde <damien.hedde@greensocs.com>, 
+ Andrew Jeffery <andrew@aj.id.au>, Cleber Rosa <crosa@redhat.com>, 
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>, 
+ Wainer dos Santos Moschetta <wainersm@redhat.com>,
+ Beraldo Leal <bleal@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::432;
+ envelope-from=joel.stan@gmail.com; helo=mail-wr1-x432.google.com
+X-Spam_score_int: -14
+X-Spam_score: -1.5
+X-Spam_bar: -
+X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: spXLDaLffMYr
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: sSa0t2aIqpYG
 
-On 6/6/22 08:58, Peter Maydell wrote:
->> +        if (FIELD_EX64(env->svcr, SVCR, SM)) {
->> +            DP_TBFLAG_A64(flags, PSTATE_SM, 1);
->> +        }
->> +        DP_TBFLAG_A64(flags, PSTATE_ZA, FIELD_EX64(env->svcr, SVCR, ZA));
-> 
-> Why did you write these two differently? Don't they do the same
-> thing (set the tb flag to the value of the bit in env->svcr) ?
+On Mon, 6 Jun 2022 at 15:08, C=C3=A9dric Le Goater <clg@kaod.org> wrote:
+>
+> Add a RTC device on bus 15 and check that the ouput of the hwclock
 
-A later patch adds to the IF.
+spelling: output
 
-r~
+> command matches the current year.
+>
+> Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
 
-> 
-> Otherwise
-> Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
-> 
-> thanks
-> -- PMM
+Reviewed-by: Joel Stanley <joel@jms.id.au>
 
+> ---
+>  tests/avocado/machine_aspeed.py | 8 ++++++++
+>  1 file changed, 8 insertions(+)
+>
+> diff --git a/tests/avocado/machine_aspeed.py b/tests/avocado/machine_aspe=
+ed.py
+> index a3b4b9e5093c..28b8a4c8124b 100644
+> --- a/tests/avocado/machine_aspeed.py
+> +++ b/tests/avocado/machine_aspeed.py
+> @@ -136,10 +136,18 @@ def test_arm_ast2600_evb_builroot(self):
+>
+>          self.vm.add_args('-device',
+>                           'tmp423,bus=3Daspeed.i2c.bus.15,address=3D0x4c'=
+);
+> +        self.vm.add_args('-device',
+> +                         'ds1338,bus=3Daspeed.i2c.bus.15,address=3D0x32'=
+);
+
+Is there any value running this on the 2400 and 2500 machine types
+too? They all use the same model so perhaps not?
+
+>          self.do_test_arm_aspeed_buidroot_start(image_path, '0xf00')
+>          exec_command_and_wait_for_pattern(self,
+>                                            'i2cget -y 15 0x4c 0xff', '0x2=
+3');
+>          exec_command_and_wait_for_pattern(self,
+>                                            'i2cget -y 15 0x4c 0xfe', '0x5=
+5');
+>
+> +        exec_command_and_wait_for_pattern(self,
+> +             'echo ds1307 0x32 > /sys/class/i2c-dev/i2c-15/device/new_de=
+vice',
+> +             'i2c i2c-15: new_device: Instantiated device ds1307 at 0x32=
+');
+> +        year =3D time.strftime("%Y")
+> +        exec_command_and_wait_for_pattern(self, 'hwclock -f /dev/rtc1', =
+year);
+> +
+>          self.do_test_arm_aspeed_buidroot_poweroff()
+> --
+> 2.35.3
+>

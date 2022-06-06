@@ -1,181 +1,197 @@
-Received: by 2002:a19:ee12:0:0:0:0:0 with SMTP id g18csp1482349lfb;
-        Mon, 6 Jun 2022 09:12:14 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyKJZoXL3wMeTi9hR+LLGJqfy2DT5MY4sRfCqSHQ6meBTRjABzU00wu35GZwMg8inZYs0pK
-X-Received: by 2002:ac8:5cd2:0:b0:304:e740:d444 with SMTP id s18-20020ac85cd2000000b00304e740d444mr8418820qta.341.1654531934139;
-        Mon, 06 Jun 2022 09:12:14 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1654531934; cv=none;
+Received: by 2002:a19:ee12:0:0:0:0:0 with SMTP id g18csp1485603lfb;
+        Mon, 6 Jun 2022 09:17:25 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzC6FOAMlb4Gld5izlWR3HZUAWf71WnXRqV+pB7NK7ocGkz8Yj9KuZDIMGTOZsxKvhDTsWg
+X-Received: by 2002:a0c:f1d3:0:b0:46b:87b8:d1e1 with SMTP id u19-20020a0cf1d3000000b0046b87b8d1e1mr6637018qvl.42.1654532245618;
+        Mon, 06 Jun 2022 09:17:25 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1654532245; cv=none;
         d=google.com; s=arc-20160816;
-        b=MVeCjEbvRwszeitnN7SvG34p3NuTW6fkpRmetYNglA/bkbEs665pjHiYmt3EntPyqB
-         MfIgkBGYkZUSIrfz2Wr3lGaXByq+REsGGhhiyUAEsNFHvp28ZclqnAFCkGWraVEQ3cH2
-         y3KPzWKzF5LsM+zO6qeur9Uprv1tnHYtj+QtUx6FTjRXj2odP23EG0Ob1B9y/uI79CU6
-         10rF6p7MEEoufDEpzIV1HNM+1INygz7jLZckxpDD0Uw5mgZIc1vh0ze2oCOPPZRNfo0J
-         xhczIn3wZ0hBJfRzlPawwZQ4FirP2+zsf5ptMN7iajMXxUXZycxSl/fglbPNPZ/te82s
-         ngvg==
+        b=fXtZ0rgN+Yox/W7P0vxSJEdoFE89rCmV1TSiGf6xPo8WrQYBUwsE//LqevfmIyNjYI
+         kicQdv+5mg1UXUUfPGArz360DcvR7UNveOKGQN7GaKVzzfVW5U9uIxaf0+C7Rtj1aDiW
+         zrsfjoYYnbA2IDsGFwZd/wR1vSUDmkxDm626WTPSIppMc7G67TGxUkYMNdsS4Wyz33bk
+         uA08i7OEqnyWhpANZVDllSYPTrjFQ2ENKlggg/EwFlYFD4FLCSjXPnxdCIs0oG3pgBQO
+         TgvoI+Ll2yoYMTy3L4t7oMZrnHMT8XKxVxxDjon1M9sImLyIUPC9fwI46Yg2yolIg4Hx
+         sKdw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
          :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=eKRfOqP25EiRc9vL44tKEywJYxx78TNx5KgYXH5Keeo=;
-        b=XGayLFO8C6+XQ9LXYyQi6GQFE0PpBzbh1VaIr8CVZfOXZH8qBfv/3CgvtcISplCepn
-         H0iEtxt4T/z5/soLPaL8S4LbnShDyGaRQp3QKgNULnEbz5879ylOaK8S1FIKON5ATnh/
-         KI+YG/YSj2gpiCN9eRyuEVzVNyyp3HYFUO7O567+hczw149bnLtpbtNu2tQV1LdwqI3L
-         KNDnfgfAJFki1crPKQYgayDxMVs5KR5mveqgiBEDi9XBKPoDIf/sIIGwqhcsYuovxivf
-         TbjKj+2tpBhgHxlZxIWewIMQQHG+c1zTLR7sjqXrNm+I+LB7S0R5PEyFMr7Ehei75GK5
-         8wAg==
+        bh=C9Ibxt2Yr57J/IPe0MB9shGKYiH7rIZfONTXOrtDmLM=;
+        b=U/N25RUOWNSD6vrcp37Gc6Z1b/tX2cSixsLq+ssfPPDcWe1Cc0AYAPAYQ9AlBhX2gJ
+         V+FwrGFv1g5B3rkv0dskgPl+cPSSWARm/LXaKUYTMLSEy7GGKwQ1VatCv/fINAW4EgM6
+         hlUGvWq32UyXmcQRgx3qv9hUuqeSb6K4EKF1KYT/Rsp1YxQynI08hi/n6uXcX9JQVJOC
+         UunjJ0yRTIiXXw3w7sXzQ3C5poVjec9eoZdh2ZuA9Ap0UL+qY4zlHUOXMSVExqEoQIUh
+         VwzKGNXXcykphNoWexSKbbtJ3RJura1psa955ooRSbRQ4oCe7DGyjbf3awMrjbmrblup
+         LgsQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=VAg2MPjk;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=jchq83uJ;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id h17-20020a05622a171100b002f3c5e0f3e8si8035592qtk.663.2022.06.06.09.12.13
+        by mx.google.com with ESMTPS id b28-20020a05620a271c00b006a6bf226fc5si1491287qkp.362.2022.06.06.09.17.25
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 06 Jun 2022 09:12:14 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 06 Jun 2022 09:17:25 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=VAg2MPjk;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=jchq83uJ;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:50364 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:58056 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nyFKv-0004WQ-ML
-	for alex.bennee@linaro.org; Mon, 06 Jun 2022 12:12:13 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45018)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1nyFPx-0001KL-4H
+	for alex.bennee@linaro.org; Mon, 06 Jun 2022 12:17:25 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:49284)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1nyF7d-00084O-Tl
- for qemu-arm@nongnu.org; Mon, 06 Jun 2022 11:58:30 -0400
-Received: from mail-yw1-x1131.google.com ([2607:f8b0:4864:20::1131]:46969)
+ id 1nyFMR-0007LE-RH
+ for qemu-devel@nongnu.org; Mon, 06 Jun 2022 12:13:47 -0400
+Received: from mail-yw1-x1134.google.com ([2607:f8b0:4864:20::1134]:37791)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1nyF7c-00063o-6G
- for qemu-arm@nongnu.org; Mon, 06 Jun 2022 11:58:29 -0400
-Received: by mail-yw1-x1131.google.com with SMTP id
- 00721157ae682-30c1c9b9b6cso147314067b3.13
- for <qemu-arm@nongnu.org>; Mon, 06 Jun 2022 08:58:27 -0700 (PDT)
+ id 1nyFMQ-0000WS-61
+ for qemu-devel@nongnu.org; Mon, 06 Jun 2022 12:13:47 -0400
+Received: by mail-yw1-x1134.google.com with SMTP id
+ 00721157ae682-31332df12a6so173567b3.4
+ for <qemu-devel@nongnu.org>; Mon, 06 Jun 2022 09:13:45 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=eKRfOqP25EiRc9vL44tKEywJYxx78TNx5KgYXH5Keeo=;
- b=VAg2MPjkVE97yViRFVGeMvOD/3FnRQsM1mEqZklU3V9+bDlukFK8G2wIkHYXShhj28
- wBsOaNRjNzPSS8t9IGZqvglzVCxAWLYAn0DnOd911+45bggpSeYoOj4QOc9sK/SEXnhq
- z+3Wx1es/6YO4wbs3rWuMYhxgw9pppticKiJJxj9HqNCajLvcTi+ioNqvO9zF2uDsOsi
- 8U7xhVnWj9RCv6XpE53joCWpBZbQ7l8l+zi2+BR2zjKEAja1/9lhsCNYW0+ZhqruBzBH
- XlU0D/Tecpt80j/mkK2V1WtIsfFpakX8bqtqiMQOVMLlpflbmuc+bShvm8EPa0kf738F
- NmNw==
+ :cc; bh=C9Ibxt2Yr57J/IPe0MB9shGKYiH7rIZfONTXOrtDmLM=;
+ b=jchq83uJLBHyhpq+jQuaDdfiJcxpDo+TlnITA02efReSdgKXkCWuixHJ43pvph1BeH
+ 1ND+TFpBMEShelMjnN5YnuPDJi/F3nIB1wspEXcu9qacG2/HO4hQkJJ+R7vVXrLSHf4d
+ MEKWN1YS7ex63fnSIN/vRQsx2d0aKG7AZOH7la2M/Hyf08GGPioEXKOA9J+rzVlhpMUy
+ jnmlJl3ryQ1ZrpVb/ymbMAm4nvJOve53wpLYqCIkiyR7CtNjpP5tFSlk8e3HeMOSFs2t
+ 7zYgKRVD2iOb9RbYCutLxccSTBll6ATwJEwjIUwuh9cDVp1JKz35nN5PK2YfgaS1mJ6E
+ 48qg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=eKRfOqP25EiRc9vL44tKEywJYxx78TNx5KgYXH5Keeo=;
- b=P0jsrMX6rubPPQAasI6PUqX0sc6azFzTNZxzKYGhBIgtN296F9elg3ZbYZ7QH+NOC+
- oLWrRk876VSLSBEJT69ISUVK16xsm4XSvvn/HeT/iR1SQM6e9sSbV/aXHgJ+w7hYL1Vw
- qP338eTap+canCIIf4vAih2HickydbwjGA10Ubvefrm9h7z2N/esajgwn+tSvcG2So7j
- PlIiwWkrLQXMw/88dkwQaCCemzhNmNGHWwoBPVEVz2NqMT3UYdB86Vq736hhU79Z290b
- xadP4LO8YhnDhlbRXtiYzC7ra4/UO9t3E7/xhP/yzAEAKPX84ria1tVYy7jhNnmH8JZE
- A6kQ==
-X-Gm-Message-State: AOAM530Qf+hrOPmZJdWXwmvkXwgCmjuHTZqJqbyxK8O4cV9oJdpa6YbT
- aI93Hn9WX4Q6xQq8mF5idiICP2910e+eZ49TO63Gog==
-X-Received: by 2002:a81:6904:0:b0:2fe:e670:318a with SMTP id
- e4-20020a816904000000b002fee670318amr26278980ywc.329.1654531106587; Mon, 06
- Jun 2022 08:58:26 -0700 (PDT)
+ bh=C9Ibxt2Yr57J/IPe0MB9shGKYiH7rIZfONTXOrtDmLM=;
+ b=6c2vUcJ408hxeGxtokk2dufRi97jLH7POO9UV7A6y74saxWJoEQwkMuWj7N0GUicDB
+ jQFgtslox8icNU74Dq+dun00l7R853SnYMtCDNenNHkq7bWpsdjZRYC9pQCzs5GdnLD5
+ /ZMR3jYqAPCxCYXLg16V57yViWrH3ZUe+H7lEOFBFWtm/sI3ciOw/mbuuL7surc2HCWI
+ 9z0z2Ogcw9X2OE59NN2UiRvdkmulH4nkwCY+JaH78N25vqFZQ4dee2XdgluWmWaU8lAM
+ WtXixJZRNBmrbjgRwUjIkyM6Msjux3dSnrDv2lfV3clSyCNb5gh+ot6E6llVBE4cSiIB
+ j7oA==
+X-Gm-Message-State: AOAM530Z+RApMeFxBDGxWKpTzOt+3wdYURVmWpWD5ml1kBzwW3o2xW4I
+ nJKEkqE0WxQAg8c5BneQ4eWBkNFAk1qMoELgkUkizQ==
+X-Received: by 2002:a81:6589:0:b0:2ff:e11d:3fb3 with SMTP id
+ z131-20020a816589000000b002ffe11d3fb3mr26918347ywb.10.1654532025016; Mon, 06
+ Jun 2022 09:13:45 -0700 (PDT)
 MIME-Version: 1.0
 References: <20220602214853.496211-1-richard.henderson@linaro.org>
- <20220602214853.496211-29-richard.henderson@linaro.org>
-In-Reply-To: <20220602214853.496211-29-richard.henderson@linaro.org>
+ <20220602214853.496211-30-richard.henderson@linaro.org>
+In-Reply-To: <20220602214853.496211-30-richard.henderson@linaro.org>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 6 Jun 2022 16:58:16 +0100
-Message-ID: <CAFEAcA_+-xbJkN8uBCL0UyJUmu+wrU1i5EMnwSu6pjC++gjg5Q@mail.gmail.com>
-Subject: Re: [PATCH 28/71] target/arm: Add PSTATE.{SM,ZA} to TB flags
+Date: Mon, 6 Jun 2022 17:13:34 +0100
+Message-ID: <CAFEAcA-eHDnphV14x=7gqezjJzurD_qd9aqaUQL==pcUSEb-jA@mail.gmail.com>
+Subject: Re: [PATCH 29/71] target/arm: Add the SME ZA storage to CPUARMState
 To: Richard Henderson <richard.henderson@linaro.org>
 Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1131;
- envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x1131.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1134;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x1134.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: IqXAnckikF8h
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: lvt0RImK93te
 
-On Thu, 2 Jun 2022 at 23:22, Richard Henderson
+On Thu, 2 Jun 2022 at 23:26, Richard Henderson
 <richard.henderson@linaro.org> wrote:
 >
-> These are required to determine if various insns
-> are allowed to issue.
+> Place this late in the resettable section of the structure,
+> to keep the most common element offsets from being > 64k.
 >
 > Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 > ---
->  target/arm/cpu.h           | 2 ++
->  target/arm/translate.h     | 4 ++++
->  target/arm/helper.c        | 4 ++++
->  target/arm/translate-a64.c | 2 ++
->  4 files changed, 12 insertions(+)
->
-> diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-> index 1ae1b7122b..9bd8058afe 100644
-> --- a/target/arm/cpu.h
-> +++ b/target/arm/cpu.h
-> @@ -3284,6 +3284,8 @@ FIELD(TBFLAG_A64, TCMA, 16, 2)
->  FIELD(TBFLAG_A64, MTE_ACTIVE, 18, 1)
->  FIELD(TBFLAG_A64, MTE0_ACTIVE, 19, 1)
->  FIELD(TBFLAG_A64, SMEEXC_EL, 20, 2)
-> +FIELD(TBFLAG_A64, PSTATE_SM, 22, 1)
-> +FIELD(TBFLAG_A64, PSTATE_ZA, 23, 1)
->
->  /*
->   * Helpers for using the above.
-> diff --git a/target/arm/translate.h b/target/arm/translate.h
-> index a492e4217b..fbd6713572 100644
-> --- a/target/arm/translate.h
-> +++ b/target/arm/translate.h
-> @@ -101,6 +101,10 @@ typedef struct DisasContext {
->      bool align_mem;
->      /* True if PSTATE.IL is set */
->      bool pstate_il;
-> +    /* True if PSTATE.SM is set. */
-> +    bool pstate_sm;
-> +    /* True if PSTATE.ZA is set. */
-> +    bool pstate_za;
->      /* True if MVE insns are definitely not predicated by VPR or LTPSIZE */
->      bool mve_no_pred;
->      /*
-> diff --git a/target/arm/helper.c b/target/arm/helper.c
-> index f852fd7644..3edecb56b6 100644
-> --- a/target/arm/helper.c
-> +++ b/target/arm/helper.c
-> @@ -13857,6 +13857,10 @@ static CPUARMTBFlags rebuild_hflags_a64(CPUARMState *env, int el, int fp_el,
+>  target/arm/cpu.h     |  8 ++++++++
+>  target/arm/machine.c | 36 ++++++++++++++++++++++++++++++++++++
+>  2 files changed, 44 insertions(+)
+
+> diff --git a/target/arm/machine.c b/target/arm/machine.c
+> index 285e387d2c..d9dff6576d 100644
+> --- a/target/arm/machine.c
+> +++ b/target/arm/machine.c
+> @@ -167,6 +167,39 @@ static const VMStateDescription vmstate_sve = {
+>          VMSTATE_END_OF_LIST()
 >      }
->      if (cpu_isar_feature(aa64_sme, env_archcpu(env))) {
->          DP_TBFLAG_A64(flags, SMEEXC_EL, sme_exception_el(env, el));
-> +        if (FIELD_EX64(env->svcr, SVCR, SM)) {
-> +            DP_TBFLAG_A64(flags, PSTATE_SM, 1);
-> +        }
-> +        DP_TBFLAG_A64(flags, PSTATE_ZA, FIELD_EX64(env->svcr, SVCR, ZA));
+>  };
+> +
+> +static const VMStateDescription vmstate_za_row = {
+> +    .name = "cpu/sme/za_row",
 
-Why did you write these two differently? Don't they do the same
-thing (set the tb flag to the value of the bit in env->svcr) ?
+This isn't a subsection, so it doesn't need to have the hierarchical
+name. What it actually is is just the VMStateDescription for
+an ARMVectorReg, right? We could give it a name that facilitates
+maybe reusing it later if we have other ARMVectorRegs we want to
+migrate. (The SVE ones are an awkward special case because of the
+overlap with the FP regs.)
 
-Otherwise
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+> +    .version_id = 1,
+> +    .minimum_version_id = 1,
+> +    .fields = (VMStateField[]) {
+> +        VMSTATE_UINT64_ARRAY(d, ARMVectorReg, ARM_MAX_VQ * 2),
+> +        VMSTATE_END_OF_LIST()
+> +    }
+> +};
+> +
+> +static bool za_needed(void *opaque)
+> +{
+> +    ARMCPU *cpu = opaque;
+> +
+> +    /*
+> +     * When ZA storage is disabled, its contents are discarded.
+> +     * It will be zeroed when ZA storage is re-enabled.
+> +     */
+> +    return FIELD_EX64(cpu->env.svcr, SVCR, ZA);
+> +}
+> +
+> +static const VMStateDescription vmstate_za = {
+> +    .name = "cpu/sme",
+> +    .version_id = 1,
+> +    .minimum_version_id = 1,
+> +    .needed = za_needed,
+> +    .fields = (VMStateField[]) {
+> +        VMSTATE_STRUCT_ARRAY(env.zarray, ARMCPU, ARM_MAX_VQ * 16, 0,
+> +                             vmstate_za_row, ARMVectorReg),
+> +        VMSTATE_END_OF_LIST()
+> +    }
+> +};
+>  #endif /* AARCH64 */
+>
+>  static bool serror_needed(void *opaque)
+> @@ -887,6 +920,9 @@ const VMStateDescription vmstate_arm_cpu = {
+>  #endif
+>          &vmstate_serror,
+>          &vmstate_irq_line_state,
+> +#ifdef TARGET_AARCH64
+> +        &vmstate_za,
+> +#endif
+>          NULL
+
+I don't think there's any requirement for subsections to
+be added only at the end of the list, so we could put this
+next to the SVE one to avoid the extra ifdef.
 
 thanks
 -- PMM

@@ -1,118 +1,93 @@
-Received: by 2002:a19:ee12:0:0:0:0:0 with SMTP id g18csp1432215lfb;
-        Mon, 6 Jun 2022 08:01:54 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzBF6h1UdBrVJdjvx6QXxetzxnzC1DjFZBBdsDP6KOiaylyS9h31z5Larp9xEbVmAciY14B
-X-Received: by 2002:ad4:596d:0:b0:464:f983:f7bf with SMTP id eq13-20020ad4596d000000b00464f983f7bfmr19766720qvb.88.1654527714241;
-        Mon, 06 Jun 2022 08:01:54 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1654527714; cv=none;
+Received: by 2002:a19:ee12:0:0:0:0:0 with SMTP id g18csp1443551lfb;
+        Mon, 6 Jun 2022 08:15:54 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwFSDuSMNSD3n5g4WXjrEO+vLQa0L5ygHfbDxcHOoz6YTUoBQfsSm+LJj3ectEFq3G8M/f1
+X-Received: by 2002:a05:622a:11d5:b0:304:d91c:cfac with SMTP id n21-20020a05622a11d500b00304d91ccfacmr15903604qtk.35.1654528554158;
+        Mon, 06 Jun 2022 08:15:54 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1654528554; cv=none;
         d=google.com; s=arc-20160816;
-        b=QEcZx+QzFu6Js8wMIa/wyH8LTfYKnAepa+czykJc9UiIoucDSG1G236nc7+MHbL9MQ
-         p7zvSQu3Dbr9bs2hLuuxaueB+q8pc+NWluL6i3ApkmSlDYzobvUJACJiYFmueQoq1sc8
-         Egl5AkCkk92vP2ZsAMGSs+wXvow0teg3AM5U3cuSecBDDOATzbJ9wLx5N0D5jdDyBPXO
-         DH2Qg7tVIZ9ttR5kXTa6f5oVH+tWMFYGazo4y3zjGhqtep+He9O04QoBEjLZYUtE89NU
-         rvw6kRVJVvcr3uTUvtzDVdIPr1qx0rLoJL5yE+DXFSUqtfnnXv64wOCyqg7T8M2siY3F
-         1AiQ==
+        b=gWfoBaicEQrT0DDP20TLLa63iMBMH1DaMjsjwsxKgT6j5Xmjh7TiZZ2cYSW3Saf+qX
+         U/9yFvjS2lqi4UNA9ZpS3ve9SzRx0dSZkOpXi1OB/tawScSpSkaq2hdbV1YubP9Gx7oI
+         VyPDw5U529enUuLqTxkKPEp/SAB4FDdQNW+y8f4CME5AIqr7ti7HtyviGvPUbzHeHWVV
+         R0eODxWzpRbkw9hGVJ909du8RipTDJPFCkjd8WEy2a/PHc5TijR1AOjaPosS1fS5l8U/
+         lv7vW0uAI96NQ2cwrekWsP/3fmcPvTFhbNn80fxRMeMuadI9EIERMyjk6Uv5HfSz/JM/
+         HkPw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:cc:to:content-language:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=LAZqLghCm/i7dTss0BdB9gKflCCyU1Ag7Sq14FLF994=;
-        b=gyDoaUVhw8wWnSpUh5HJRbKwznAKpQ5q0mEnpO6hnv+TSdVEbbBxhq7TjJjmMgs+aB
-         RZn4wCYPk/fs4tLYLNdwDAweQiy1ruT4aIfZnwA8Rm3iT1CIM4Uh/hGxwt/vwY2CA1mw
-         wkdddPuoslS1onI9moUBHaDLKfnVmQNUUj9S6VkqwNE3/F15C3zVxHToxKXWZtW8c/0T
-         lAsOKcj59G0lGPdesmLFBG5dCPQZicz7kYWcxypsFcg5LXWytq8PckU4m1tODkQz70g0
-         eYC+pn2pqJI6MOK6V3PIsncntAMnX6kVf2PVsKlkmWN+HkXQX/9eXCSH1jMqbY1IjXVf
-         yljQ==
+         :mime-version:message-id:date:subject:cc:to:from;
+        bh=nuN7nc8WZ+VFxXx+4iS26T5A2PGqTDJM7QqOSjvNCEs=;
+        b=oz45E1E2E2Bfbyw+HWPTCyLjeaQv28gb9M8aqsF3divtGqAcT1FJdlyF9ouhgzJNa7
+         K5ISVSMoBSLtX8CJFBXGqyfAe2oWSpkrpwjLJ4OoWOeeUiuwcVJpkza3iSY+obVUPKDL
+         NVSyP1hMDTUskbsiAgBTvNd1oGVMnCz0SFKYMvKvP++sGeBKidX2Yfj7a0rx4aZM32nb
+         y7T/UrNvk+woJQu4ecObKULmM3sOlszxwa27x09y7tbiIF//Cl6eRAfccDEDCmDVyyqT
+         CGjYZKuYVaqyIJDHupJ11P1bdGO7ww2+8HruPb+k6HTn2qSU0ct97l+LFD1SmO05AZ7l
+         67zw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=pMdwACp6;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id dv14-20020ad44eee000000b0046468973fefsi7758787qvb.131.2022.06.06.08.01.53
+        by mx.google.com with ESMTPS id s4-20020a05620a29c400b006a66c9cc7dbsi9052471qkp.68.2022.06.06.08.15.53
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 06 Jun 2022 08:01:54 -0700 (PDT)
+        Mon, 06 Jun 2022 08:15:54 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=pMdwACp6;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:43976 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:50476 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nyEEr-00022d-I2
-	for alex.bennee@linaro.org; Mon, 06 Jun 2022 11:01:53 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53032)
+	id 1nyESP-0001IY-JM
+	for alex.bennee@linaro.org; Mon, 06 Jun 2022 11:15:53 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:58526)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1nyDv6-0006Gm-JV
- for qemu-arm@nongnu.org; Mon, 06 Jun 2022 10:41:28 -0400
-Received: from mail-pg1-x534.google.com ([2607:f8b0:4864:20::534]:39543)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1nyDv4-0001Vx-UJ
- for qemu-arm@nongnu.org; Mon, 06 Jun 2022 10:41:28 -0400
-Received: by mail-pg1-x534.google.com with SMTP id q123so13066770pgq.6
- for <qemu-arm@nongnu.org>; Mon, 06 Jun 2022 07:41:26 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=message-id:date:mime-version:user-agent:subject:content-language:to
- :cc:references:from:in-reply-to:content-transfer-encoding;
- bh=LAZqLghCm/i7dTss0BdB9gKflCCyU1Ag7Sq14FLF994=;
- b=pMdwACp6ng+/BaldQcMtW0QS5u+pqN++hblyik8Y9VW2NHmSJNkksx5vqr+729+sYr
- /BDMaH1nPdtaUvRAeN4aGjxZtueH0qNW1MEc0UFTxpjN8y7uWvlEQirlQZTCbxX/9qJx
- 5JvqV6D/Vl+9EDLbRjWYanv0Gl6FmquxU1N3IfZJzmkesVBN8/wLDjbEZF7jTw2c7RFv
- gq67WsHAWWHlT9iyPSgsFKPA44vgcvvrcX9OX9ICRfL+WW1aoNjVZFOHn+F9zCpgy9jR
- aiP9jpGuSfCMjZ+NeZ1h7ufFFEE9+N3IvJ/HdHhrvKGlKm6PZtazTKBjgq2vf2phSS+D
- 0vWA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
- :content-language:to:cc:references:from:in-reply-to
- :content-transfer-encoding;
- bh=LAZqLghCm/i7dTss0BdB9gKflCCyU1Ag7Sq14FLF994=;
- b=lk7Fq3IlD6+bQfKAzV+0Xhimmn4DBHTiFTZQuRAtfj5RY1brO2XEGaAHcLUwgBQF2d
- a6evHmXJEOuQwnk8xjPh6OfCedA32orfU6hLMKr+4zjmFGHcBC6hG/tuT+llh/fw1Kj6
- TGjx3BYcLZO/76tHsrp8lHpS7v9VIH4XyoTdnxHnl2FPHHo4DfqXu/XPc9LslGn6Ro+J
- 4x/EmQWZjpwRWNJIqQRTm8feDMzPzpcAUql3+0TCTVbG/Hh9C7Rnd+mr8JqUZg8t0nr7
- BuatrdJvs/vA6keztaA2XrjFuia8x23rq8V8/EPxFeY4tTPPQG/f3u+IlNy10g0DC+dP
- 3K9A==
-X-Gm-Message-State: AOAM531SGJBboieJ2qNh0FSY+6WRANdN6S52vdpS4CwAH/DhUf4Xua1h
- HuHcsxAFoj4O1f5zxu+1AKsqdg==
-X-Received: by 2002:a63:e114:0:b0:3fd:97a1:7a5 with SMTP id
- z20-20020a63e114000000b003fd97a107a5mr7566843pgh.178.1654526485456; 
- Mon, 06 Jun 2022 07:41:25 -0700 (PDT)
-Received: from ?IPV6:2602:ae:1547:e101:dd1c:9738:3e40:ffe0?
- ([2602:ae:1547:e101:dd1c:9738:3e40:ffe0])
- by smtp.gmail.com with ESMTPSA id
- q6-20020a170902a3c600b00163f36005e1sm10628503plb.42.2022.06.06.07.41.24
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 06 Jun 2022 07:41:25 -0700 (PDT)
-Message-ID: <14816c96-e9bc-2c12-a558-eda3df15f36e@linaro.org>
-Date: Mon, 6 Jun 2022 07:41:22 -0700
+ (Exim 4.90_1) (envelope-from <SRS0=gtQ3=WN=kaod.org=clg@ozlabs.org>)
+ id 1nyEKq-0004ph-UI; Mon, 06 Jun 2022 11:08:04 -0400
+Received: from mail.ozlabs.org ([2404:9400:2221:ea00::3]:45919
+ helo=gandalf.ozlabs.org)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <SRS0=gtQ3=WN=kaod.org=clg@ozlabs.org>)
+ id 1nyEKo-0005ws-Cy; Mon, 06 Jun 2022 11:08:04 -0400
+Received: from gandalf.ozlabs.org (mail.ozlabs.org
+ [IPv6:2404:9400:2221:ea00::3])
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4LGxgT4p5fz4xDK;
+ Tue,  7 Jun 2022 01:07:49 +1000 (AEST)
+Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4LGxgF0mrqz4xD5;
+ Tue,  7 Jun 2022 01:07:36 +1000 (AEST)
+From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>, Joe Komlodi <komlodi@google.com>,
+ Troy Lee <troy_lee@aspeedtech.com>, Jamin Lin <jamin_lin@aspeedtech.com>,
+ Steven Lee <steven_lee@aspeedtech.com>,
+ Klaus Jensen <k.jensen@samsung.com>, Peter Delevoryas <pdel@fb.com>,
+ Corey Minyard <cminyard@mvista.com>,
+ Jonathan Cameron <Jonathan.Cameron@huawei.com>,
+ Damien Hedde <damien.hedde@greensocs.com>,
+ Andrew Jeffery <andrew@aj.id.au>, Joel Stanley <joel@jms.id.au>,
+ Cleber Rosa <crosa@redhat.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+ Wainer dos Santos Moschetta <wainersm@redhat.com>,
+ Beraldo Leal <bleal@redhat.com>,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
+Subject: [PATCH 00/21] aspeed: Extend ast2600 I2C model with new mode 
+Date: Mon,  6 Jun 2022 17:07:11 +0200
+Message-Id: <20220606150732.2282041-1-clg@kaod.org>
+X-Mailer: git-send-email 2.35.3
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.9.1
-Subject: Re: [PATCH 25/71] target/arm: Add SVCR
-Content-Language: en-US
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
-References: <20220602214853.496211-1-richard.henderson@linaro.org>
- <20220602214853.496211-26-richard.henderson@linaro.org>
- <CAFEAcA80uRfdLR+4pJU6p8wDBgottFUaKDOCmgiHPj7B-qL=qQ@mail.gmail.com>
-From: Richard Henderson <richard.henderson@linaro.org>
-In-Reply-To: <CAFEAcA80uRfdLR+4pJU6p8wDBgottFUaKDOCmgiHPj7B-qL=qQ@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::534;
- envelope-from=richard.henderson@linaro.org; helo=mail-pg1-x534.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2404:9400:2221:ea00::3;
+ envelope-from=SRS0=gtQ3=WN=kaod.org=clg@ozlabs.org; helo=gandalf.ozlabs.org
+X-Spam_score_int: -16
+X-Spam_score: -1.7
+X-Spam_bar: -
+X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.249, SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -127,14 +102,88 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: +Or+zElEztmv
+X-TUID: sH8HP+KRs2RE
 
-On 6/6/22 06:40, Peter Maydell wrote:
-> What about the "MSR SVCR*, #<imm>" forms ? I had a quick scan
-> through the subject lines of the rest of the patchset and didn't
-> see them.
+Hello,
 
-They get alias names of SMSTART and SMSTOP.  Patch 30.
+Here is a series aggregating recent changes proposed on the Aspeed
+ast2600 I2C controller model. 
 
+First comes a large set of changes converting the model to use the
+registerfield interface and adding the I2C new register mode
+(Joe). Since this is complex to review, extra tests are added to the
+acceptance test suite to check that I2C devices are still functional
+in the ast2600-evb machine. These tests use small buildroot images
+available on GH. 
 
-r~
+The ast1030 and ast2600 SoC share the same I2C logic. This series adds
+I2C support to the ast1030 now that new register mode is supported.
+There was a previous proposal from Troy doing the same but Joe's
+patchset covers the same need (and converts the model to registerfield)
+
+Follows a proposal from Klaus adding support for multi master in the
+I2C core and the Aspeed I2C model, for the old register mode only. The
+new register mode still needs to be addressed but this shouldn't take
+too long once old register mode is merged.
+
+Last, I have added the I2C echo device and test provided by Klaus. I
+think it would be interesting to keep them for tests. Please, tell me.
+
+Thanks,
+
+C.
+
+Cédric Le Goater (7):
+  test/avocado/machine_aspeed.py: Move OpenBMC tests
+  test/avocado/machine_aspeed.py: Add tests using buildroot images
+  test/avocado/machine_aspeed.py: Add I2C tests to ast2600-evb
+  test/avocado/machine_aspeed.py: Add an I2C RTC test
+  aspeed/i2c: Add ast1030 controller models
+  aspeed/i2c: Enable SLAVE_ADDR_RX_MATCH always
+  test/avocado/machine_aspeed.py: Add I2C slave tests
+
+Joe Komlodi (7):
+  hw/registerfields: Add shared fields macros
+  aspeed: i2c: Add ctrl_global_rsvd property
+  aspeed: i2c: Migrate to registerfields API
+  aspeed: i2c: Use reg array instead of individual vars
+  aspeed: i2c: Add new mode support
+  aspeed: i2c: Add PKT_DONE IRQ to trace
+  aspeed: i2c: Move regs and helpers to header file
+
+Klaus Jensen (6):
+  hw/i2c/aspeed: rework raise interrupt trace event
+  hw/i2c/aspeed: add DEV_ADDR in old register mode
+  hw/i2c: support multiple masters
+  hw/i2c: add asynchronous send
+  hw/i2c/aspeed: add slave device in old register mode
+  hw/misc: add a toy i2c echo device [DO NOT PULL]
+
+Troy Lee (1):
+  aspeed: Add I2C buses to AST1030 model
+
+ include/hw/i2c/aspeed_i2c.h         | 299 ++++++++-
+ include/hw/i2c/i2c.h                |  30 +
+ include/hw/registerfields.h         |  70 +++
+ hw/arm/aspeed.c                     |  13 +
+ hw/arm/aspeed_ast10x0.c             |  18 +
+ hw/arm/aspeed_ast2600.c             |   2 +
+ hw/arm/pxa2xx.c                     |   2 +
+ hw/display/sii9022.c                |   2 +
+ hw/display/ssd0303.c                |   2 +
+ hw/i2c/aspeed_i2c.c                 | 901 ++++++++++++++++++----------
+ hw/i2c/core.c                       |  70 ++-
+ hw/i2c/smbus_slave.c                |   4 +
+ hw/misc/i2c-echo.c                  | 162 +++++
+ hw/nvram/eeprom_at24c.c             |   2 +
+ hw/sensor/lsm303dlhc_mag.c          |   2 +
+ hw/i2c/trace-events                 |   4 +-
+ hw/misc/meson.build                 |   2 +
+ tests/avocado/boot_linux_console.py |  43 --
+ tests/avocado/machine_aspeed.py     | 128 ++++
+ 19 files changed, 1393 insertions(+), 363 deletions(-)
+ create mode 100644 hw/misc/i2c-echo.c
+
+-- 
+2.35.3
+

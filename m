@@ -1,62 +1,63 @@
-Received: by 2002:a19:ee12:0:0:0:0:0 with SMTP id g18csp1457267lfb;
-        Mon, 6 Jun 2022 08:36:09 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzlcM43xHGSJKjpMeaRLXTLcUpEZD0fF1hYIfZ19pMKjxrxycbLop8cXbqymd7aWCMRG9Fv
-X-Received: by 2002:ad4:560d:0:b0:464:63bf:f0dd with SMTP id ca13-20020ad4560d000000b0046463bff0ddmr17740296qvb.51.1654529768803;
-        Mon, 06 Jun 2022 08:36:08 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1654529768; cv=none;
+Received: by 2002:a19:ee12:0:0:0:0:0 with SMTP id g18csp1460380lfb;
+        Mon, 6 Jun 2022 08:41:19 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwKJlAzTikzPdKQoEV022jJF9euPyrdc+XGRj4VVxjELz4jvzCpe4PKStRR/8v9tigS70rO
+X-Received: by 2002:ac8:5c94:0:b0:304:c37f:422e with SMTP id r20-20020ac85c94000000b00304c37f422emr18395472qta.531.1654530079782;
+        Mon, 06 Jun 2022 08:41:19 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1654530079; cv=none;
         d=google.com; s=arc-20160816;
-        b=JfDCrwbqqPh50xQgiS6m1aI9KJ1m8TxJONQpz2ZrmZMBNIfTyL6naR0wj26ufIzBM6
-         y7tY0XySp3vuEJJFB42dSN9DynWGePDA4cNNQ1fmCOnRO+atra0JleR6zcJo/6q41DXo
-         exGbja9QVXqESBVEzUuHTtqaUyufDOW9lyqsceIRCq1quo/otHMYS2N1IOcUAAkUhEEJ
-         G5Tb0yqxM7aeupSJ8CYwPchdtJc2sPkbTFAm11lDDDE84VBeADvsPt0d5hw6YzO5PLfY
-         G2rC7KqQYiJ90fzMgDj9M9Iao1xeiy11ZqUrYzHSDRRzhBfgAyYDQvRjumrPHJwfThKP
-         3Iqg==
+        b=fWfjj0ZvnDoZBN5ARFbSQrQH/+B+AxLXT+RH0Um7ThwG4cVBV5BOIZKwdIr310nrWF
+         W50NYcg2ANhfIcqA+B1JgMqp32ht7EpW2iNYdCLlrZgP67q24ETQqVjZb4wY14suUfHT
+         +d1UMoBc2hn/OiRnL+QpdH6dxMuWjpItAqfTP7zj9e4fyeAmc2ZbdVwKLxVUJVvvBiEF
+         Zoxk++6uSzcTpOD4jBbzlhK8tV0bzs0iBC/A6GAsRxpc+Lzp2wojKO0i/pe1xNZLFZvU
+         HBv6eCq84BuGV+Mx+/OlLcmQ/1rYBZTMbp53bIHKFgLXMwbf/DQNYYe9fQYcscGn2ugW
+         p2nA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from;
-        bh=Z8O7ioGaLS6ZM8TlPtQczcFxMphuZhwU+i6BI4m2k/E=;
-        b=lzeOnWrpAXPPN4EexUUp8uqoIw+v+OPzGhjzxKXLkBwWtNuHh18+4IbMSHAvksWn9J
-         oSaQ0E+/APPpuw0atqCgrzfr2SZRNunAtrcwFQdL0qVBdDcD6cJjC0ozgSGC1Ng/si4x
-         3nkCkcoVLcjE4nykpHg2FrtIUVN/y2h23L5fGEt1ebVgXs4tK79rGKrXrGKY5fQLC1x/
-         8zxGyI5xMVqAKeL9WHtXguVEXt6Tu9PVx4c4UjYw+I282P+ofkKnfAYLS2sxQd39N9vW
-         TqxAIsb3TE7xpxKjpOAFAh43/GClkFxRAVlPwft73FHqzu4oMjIp/8HQMHgh8jEFCw9T
-         LoCw==
+        bh=nlnTCjz3SezvPlioP0ewZdYN6kdI99OCyJwaAdlJB6U=;
+        b=LC0f1iuHPa/3mJerWka+uTjX112zWIPqDrM8yehQ3WoOmKDMhPKnkaLQYbJ8c4wtxa
+         qGBsIdgFImOxG5aZDc5XBiEIOmSQcN+QMJOKb0gVikf6qJ94BHsedu1wpanEiI1wC9Gx
+         UtAw6KinuxZxp6LHYsALJETtiF/+/bi2zl5mKdyGxRu8gjV7AwqBPZlZFe9fQNCwnHDI
+         GfMIyAQinBtW+TbmQ+c3jdT3GDlhu88kbJDD3EhZGE38C4cZ433cKNzp7DYqnY9734wa
+         OlK/zVQRcGTLFAHqfyDqDd/oVtFBpUzVvX1XlzfHC6+Ufe/zXF3HNy6chPogrVFqHyZ4
+         luoA==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d5-20020a05622a15c500b00304d2576efesi6587011qty.92.2022.06.06.08.36.08
+        by mx.google.com with ESMTPS id l15-20020a05622a174f00b00304c4d3aa3csi7959952qtk.446.2022.06.06.08.41.19
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 06 Jun 2022 08:36:08 -0700 (PDT)
+        Mon, 06 Jun 2022 08:41:19 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:37354 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:47876 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nyEm0-0005vr-71
-	for alex.bennee@linaro.org; Mon, 06 Jun 2022 11:36:08 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:58602)
+	id 1nyEr1-0005gh-8k
+	for alex.bennee@linaro.org; Mon, 06 Jun 2022 11:41:19 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:58780)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=gtQ3=WN=kaod.org=clg@ozlabs.org>)
- id 1nyEKz-0005BB-8K; Mon, 06 Jun 2022 11:08:13 -0400
-Received: from gandalf.ozlabs.org ([150.107.74.76]:40007)
+ id 1nyELR-0005p7-Js; Mon, 06 Jun 2022 11:08:41 -0400
+Received: from mail.ozlabs.org ([2404:9400:2221:ea00::3]:42547
+ helo=gandalf.ozlabs.org)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=gtQ3=WN=kaod.org=clg@ozlabs.org>)
- id 1nyEKv-0005y5-Sr; Mon, 06 Jun 2022 11:08:12 -0400
+ id 1nyELP-00063M-Ae; Mon, 06 Jun 2022 11:08:41 -0400
 Received: from gandalf.ozlabs.org (mail.ozlabs.org
  [IPv6:2404:9400:2221:ea00::3])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4LGxgq3ZYvz4xD5;
- Tue,  7 Jun 2022 01:08:07 +1000 (AEST)
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4LGxhP06dWz4xZ4;
+ Tue,  7 Jun 2022 01:08:37 +1000 (AEST)
 Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
  (No client certificate requested)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4LGxgj6XzXz4xZ0;
- Tue,  7 Jun 2022 01:08:01 +1000 (AEST)
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4LGxhH4wSlz4xZK;
+ Tue,  7 Jun 2022 01:08:31 +1000 (AEST)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
@@ -73,16 +74,16 @@ Cc: Peter Maydell <peter.maydell@linaro.org>, Joe Komlodi <komlodi@google.com>,
  Wainer dos Santos Moschetta <wainersm@redhat.com>,
  Beraldo Leal <bleal@redhat.com>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
-Subject: [PATCH 03/21] aspeed: i2c: Migrate to registerfields API
-Date: Mon,  6 Jun 2022 17:07:14 +0200
-Message-Id: <20220606150732.2282041-4-clg@kaod.org>
+Subject: [PATCH 08/21] test/avocado/machine_aspeed.py: Move OpenBMC tests
+Date: Mon,  6 Jun 2022 17:07:19 +0200
+Message-Id: <20220606150732.2282041-9-clg@kaod.org>
 X-Mailer: git-send-email 2.35.3
 In-Reply-To: <20220606150732.2282041-1-clg@kaod.org>
 References: <20220606150732.2282041-1-clg@kaod.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=150.107.74.76;
+Received-SPF: pass client-ip=2404:9400:2221:ea00::3;
  envelope-from=SRS0=gtQ3=WN=kaod.org=clg@ozlabs.org; helo=gandalf.ozlabs.org
 X-Spam_score_int: -16
 X-Spam_score: -1.7
@@ -104,725 +105,130 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: tWEiqdRI5OxH
+X-TUID: nBxk4y7MmzC6
 
-From: Joe Komlodi <komlodi@google.com>
+It's easier to run. Keep test_arm_ast2600_debian() under the
+boot_linux_console.py file because it requires the extract_from_deb()
+helper. We could remove it when we have tests for the AST2600.
 
-This cleans up some of the field accessing, setting, and clearing
-bitwise operations, and wraps them in macros instead.
-
-Signed-off-by: Joe Komlodi <komlodi@google.com>
-Change-Id: I33018d6325fa04376e7c29dc4a49ab389a8e333a
-Message-Id: <20220331043248.2237838-4-komlodi@google.com>
 Signed-off-by: Cédric Le Goater <clg@kaod.org>
 ---
- hw/i2c/aspeed_i2c.c | 393 ++++++++++++++++++++++----------------------
- 1 file changed, 196 insertions(+), 197 deletions(-)
+ tests/avocado/boot_linux_console.py | 43 -------------------------
+ tests/avocado/machine_aspeed.py     | 50 +++++++++++++++++++++++++++++
+ 2 files changed, 50 insertions(+), 43 deletions(-)
 
-diff --git a/hw/i2c/aspeed_i2c.c b/hw/i2c/aspeed_i2c.c
-index 97eb9d57929c..be81a798cc35 100644
---- a/hw/i2c/aspeed_i2c.c
-+++ b/hw/i2c/aspeed_i2c.c
-@@ -28,70 +28,61 @@
- #include "hw/i2c/aspeed_i2c.h"
- #include "hw/irq.h"
- #include "hw/qdev-properties.h"
-+#include "hw/registerfields.h"
- #include "trace.h"
+diff --git a/tests/avocado/boot_linux_console.py b/tests/avocado/boot_linux_console.py
+index 45a2ceda2227..6b1533c17c8b 100644
+--- a/tests/avocado/boot_linux_console.py
++++ b/tests/avocado/boot_linux_console.py
+@@ -1043,49 +1043,6 @@ def test_arm_vexpressa9(self):
+         self.vm.add_args('-dtb', self.workdir + '/day16/vexpress-v2p-ca9.dtb')
+         self.do_test_advcal_2018('16', tar_hash, 'winter.zImage')
  
- /* I2C Global Register */
+-    def test_arm_ast2400_palmetto_openbmc_v2_9_0(self):
+-        """
+-        :avocado: tags=arch:arm
+-        :avocado: tags=machine:palmetto-bmc
+-        """
 -
--#define I2C_CTRL_STATUS         0x00        /* Device Interrupt Status */
--#define I2C_CTRL_ASSIGN         0x08        /* Device Interrupt Target
--                                               Assignment */
--#define I2C_CTRL_GLOBAL         0x0C        /* Global Control Register */
--#define   I2C_CTRL_SRAM_EN                 BIT(0)
-+REG32(I2C_CTRL_STATUS, 0x0) /* Device Interrupt Status */
-+REG32(I2C_CTRL_ASSIGN, 0x8) /* Device Interrupt Target Assignment */
-+REG32(I2C_CTRL_GLOBAL, 0xC) /* Global Control Register */
-+    FIELD(I2C_CTRL_GLOBAL, SRAM_EN, 0, 1)
- 
- /* I2C Device (Bus) Register */
+-        image_url = ('https://github.com/openbmc/openbmc/releases/download/2.9.0/'
+-                     'obmc-phosphor-image-palmetto.static.mtd')
+-        image_hash = ('3e13bbbc28e424865dc42f35ad672b10f2e82cdb11846bb28fa625b48beafd0d')
+-        image_path = self.fetch_asset(image_url, asset_hash=image_hash,
+-                                      algorithm='sha256')
 -
--#define I2CD_FUN_CTRL_REG       0x00       /* I2CD Function Control  */
--#define   I2CD_POOL_PAGE_SEL(x)            (((x) >> 20) & 0x7)  /* AST2400 */
--#define   I2CD_M_SDA_LOCK_EN               (0x1 << 16)
--#define   I2CD_MULTI_MASTER_DIS            (0x1 << 15)
--#define   I2CD_M_SCL_DRIVE_EN              (0x1 << 14)
--#define   I2CD_MSB_STS                     (0x1 << 9)
--#define   I2CD_SDA_DRIVE_1T_EN             (0x1 << 8)
--#define   I2CD_M_SDA_DRIVE_1T_EN           (0x1 << 7)
--#define   I2CD_M_HIGH_SPEED_EN             (0x1 << 6)
--#define   I2CD_DEF_ADDR_EN                 (0x1 << 5)
--#define   I2CD_DEF_ALERT_EN                (0x1 << 4)
--#define   I2CD_DEF_ARP_EN                  (0x1 << 3)
--#define   I2CD_DEF_GCALL_EN                (0x1 << 2)
--#define   I2CD_SLAVE_EN                    (0x1 << 1)
--#define   I2CD_MASTER_EN                   (0x1)
+-        self.do_test_arm_aspeed(image_path)
 -
--#define I2CD_AC_TIMING_REG1     0x04       /* Clock and AC Timing Control #1 */
--#define I2CD_AC_TIMING_REG2     0x08       /* Clock and AC Timing Control #1 */
--#define I2CD_INTR_CTRL_REG      0x0c       /* I2CD Interrupt Control */
--#define I2CD_INTR_STS_REG       0x10       /* I2CD Interrupt Status */
+-    def test_arm_ast2500_romulus_openbmc_v2_9_0(self):
+-        """
+-        :avocado: tags=arch:arm
+-        :avocado: tags=machine:romulus-bmc
+-        """
 -
--#define   I2CD_INTR_SLAVE_ADDR_MATCH       (0x1 << 31) /* 0: addr1 1: addr2 */
--#define   I2CD_INTR_SLAVE_ADDR_RX_PENDING  (0x1 << 30)
--/* bits[19-16] Reserved */
+-        image_url = ('https://github.com/openbmc/openbmc/releases/download/2.9.0/'
+-                     'obmc-phosphor-image-romulus.static.mtd')
+-        image_hash = ('820341076803f1955bc31e647a512c79f9add4f5233d0697678bab4604c7bb25')
+-        image_path = self.fetch_asset(image_url, asset_hash=image_hash,
+-                                      algorithm='sha256')
 -
--/* All bits below are cleared by writing 1 */
--#define   I2CD_INTR_SLAVE_INACTIVE_TIMEOUT (0x1 << 15)
--#define   I2CD_INTR_SDA_DL_TIMEOUT         (0x1 << 14)
--#define   I2CD_INTR_BUS_RECOVER_DONE       (0x1 << 13)
--#define   I2CD_INTR_SMBUS_ALERT            (0x1 << 12) /* Bus [0-3] only */
--#define   I2CD_INTR_SMBUS_ARP_ADDR         (0x1 << 11) /* Removed */
--#define   I2CD_INTR_SMBUS_DEV_ALERT_ADDR   (0x1 << 10) /* Removed */
--#define   I2CD_INTR_SMBUS_DEF_ADDR         (0x1 << 9)  /* Removed */
--#define   I2CD_INTR_GCALL_ADDR             (0x1 << 8)  /* Removed */
--#define   I2CD_INTR_SLAVE_ADDR_RX_MATCH    (0x1 << 7)  /* use RX_DONE */
--#define   I2CD_INTR_SCL_TIMEOUT            (0x1 << 6)
--#define   I2CD_INTR_ABNORMAL               (0x1 << 5)
--#define   I2CD_INTR_NORMAL_STOP            (0x1 << 4)
--#define   I2CD_INTR_ARBIT_LOSS             (0x1 << 3)
--#define   I2CD_INTR_RX_DONE                (0x1 << 2)
--#define   I2CD_INTR_TX_NAK                 (0x1 << 1)
--#define   I2CD_INTR_TX_ACK                 (0x1 << 0)
+-        self.do_test_arm_aspeed(image_path)
 -
--#define I2CD_CMD_REG            0x14       /* I2CD Command/Status */
--#define   I2CD_SDA_OE                      (0x1 << 28)
--#define   I2CD_SDA_O                       (0x1 << 27)
--#define   I2CD_SCL_OE                      (0x1 << 26)
--#define   I2CD_SCL_O                       (0x1 << 25)
--#define   I2CD_TX_TIMING                   (0x1 << 24)
--#define   I2CD_TX_STATUS                   (0x1 << 23)
+-    def do_test_arm_aspeed(self, image):
+-        self.vm.set_console()
+-        self.vm.add_args('-drive', 'file=' + image + ',if=mtd,format=raw',
+-                         '-net', 'nic')
+-        self.vm.launch()
 -
--#define   I2CD_TX_STATE_SHIFT              19 /* Tx State Machine */
-+REG32(I2CD_FUN_CTRL, 0x0) /* I2CD Function Control  */
-+    FIELD(I2CD_FUN_CTRL, POOL_PAGE_SEL, 20, 3) /* AST2400 */
-+    FIELD(I2CD_FUN_CTRL, M_SDA_LOCK_EN, 16, 1)
-+    FIELD(I2CD_FUN_CTRL, MULTI_MASTER_DIS, 15, 1)
-+    FIELD(I2CD_FUN_CTRL, M_SCL_DRIVE_EN, 14, 1)
-+    FIELD(I2CD_FUN_CTRL, MSB_STS, 9, 1)
-+    FIELD(I2CD_FUN_CTRL, SDA_DRIVE_IT_EN, 8, 1)
-+    FIELD(I2CD_FUN_CTRL, M_SDA_DRIVE_IT_EN, 7, 1)
-+    FIELD(I2CD_FUN_CTRL, M_HIGH_SPEED_EN, 6, 1)
-+    FIELD(I2CD_FUN_CTRL, DEF_ADDR_EN, 5, 1)
-+    FIELD(I2CD_FUN_CTRL, DEF_ALERT_EN, 4, 1)
-+    FIELD(I2CD_FUN_CTRL, DEF_ARP_EN, 3, 1)
-+    FIELD(I2CD_FUN_CTRL, DEF_GCALL_EN, 2, 1)
-+    FIELD(I2CD_FUN_CTRL, SLAVE_EN, 1, 1)
-+    FIELD(I2CD_FUN_CTRL, MASTER_EN, 0, 1)
-+REG32(I2CD_AC_TIMING1, 0x04) /* Clock and AC Timing Control #1 */
-+REG32(I2CD_AC_TIMING2, 0x08) /* Clock and AC Timing Control #2 */
-+REG32(I2CD_INTR_CTRL, 0x0C)  /* I2CD Interrupt Control */
-+REG32(I2CD_INTR_STS, 0x10)   /* I2CD Interrupt Status */
-+    FIELD(I2CD_INTR_STS, SLAVE_ADDR_MATCH, 31, 1)    /* 0: addr1 1: addr2 */
-+    FIELD(I2CD_INTR_STS, SLAVE_ADDR_RX_PENDING, 29, 1)
-+    FIELD(I2CD_INTR_STS, SLAVE_INACTIVE_TIMEOUT, 15, 1)
-+    FIELD(I2CD_INTR_STS, SDA_DL_TIMEOUT, 14, 1)
-+    FIELD(I2CD_INTR_STS, BUS_RECOVER_DONE, 13, 1)
-+    FIELD(I2CD_INTR_STS, SMBUS_ALERT, 12, 1)            /* Bus [0-3] only */
-+    FIELD(I2CD_INTR_STS, SMBUS_ARP_ADDR, 11, 1)         /* Removed */
-+    FIELD(I2CD_INTR_STS, SMBUS_DEV_ALERT_ADDR, 10, 1)   /* Removed */
-+    FIELD(I2CD_INTR_STS, SMBUS_DEF_ADDR, 9, 1)          /* Removed */
-+    FIELD(I2CD_INTR_STS, GCALL_ADDR, 8, 1)              /* Removed */
-+    FIELD(I2CD_INTR_STS, SLAVE_ADDR_RX_MATCH, 7, 1)     /* use RX_DONE */
-+    FIELD(I2CD_INTR_STS, SCL_TIMEOUT, 6, 1)
-+    FIELD(I2CD_INTR_STS, ABNORMAL, 5, 1)
-+    FIELD(I2CD_INTR_STS, NORMAL_STOP, 4, 1)
-+    FIELD(I2CD_INTR_STS, ARBIT_LOSS, 3, 1)
-+    FIELD(I2CD_INTR_STS, RX_DONE, 2, 1)
-+    FIELD(I2CD_INTR_STS, TX_NAK, 1, 1)
-+    FIELD(I2CD_INTR_STS, TX_ACK, 0, 1)
-+REG32(I2CD_CMD, 0x14) /* I2CD Command/Status */
-+    FIELD(I2CD_CMD, SDA_OE, 28, 1)
-+    FIELD(I2CD_CMD, SDA_O, 27, 1)
-+    FIELD(I2CD_CMD, SCL_OE, 26, 1)
-+    FIELD(I2CD_CMD, SCL_O, 25, 1)
-+    FIELD(I2CD_CMD, TX_TIMING, 23, 2)
-+    FIELD(I2CD_CMD, TX_STATE, 19, 4)
-+/* Tx State Machine */
- #define   I2CD_TX_STATE_MASK                  0xf
- #define     I2CD_IDLE                         0x0
- #define     I2CD_MACTIVE                      0x8
-@@ -108,51 +99,47 @@
- #define     I2CD_STXD                         0x6
- #define     I2CD_SRXACK                       0x7
- #define     I2CD_RECOVER                      0x3
+-        self.wait_for_console_pattern("U-Boot 2016.07")
+-        self.wait_for_console_pattern("## Loading kernel from FIT Image at 20080000")
+-        self.wait_for_console_pattern("Starting kernel ...")
+-        self.wait_for_console_pattern("Booting Linux on physical CPU 0x0")
+-        self.wait_for_console_pattern(
+-                "aspeed-smc 1e620000.spi: read control register: 203b0641")
+-        self.wait_for_console_pattern("ftgmac100 1e660000.ethernet eth0: irq ")
+-        self.wait_for_console_pattern("systemd[1]: Set hostname to")
 -
--#define   I2CD_SCL_LINE_STS                (0x1 << 18)
--#define   I2CD_SDA_LINE_STS                (0x1 << 17)
--#define   I2CD_BUS_BUSY_STS                (0x1 << 16)
--#define   I2CD_SDA_OE_OUT_DIR              (0x1 << 15)
--#define   I2CD_SDA_O_OUT_DIR               (0x1 << 14)
--#define   I2CD_SCL_OE_OUT_DIR              (0x1 << 13)
--#define   I2CD_SCL_O_OUT_DIR               (0x1 << 12)
--#define   I2CD_BUS_RECOVER_CMD_EN          (0x1 << 11)
--#define   I2CD_S_ALT_EN                    (0x1 << 10)
--
--/* Command Bit */
--#define   I2CD_RX_DMA_ENABLE               (0x1 << 9)
--#define   I2CD_TX_DMA_ENABLE               (0x1 << 8)
--#define   I2CD_RX_BUFF_ENABLE              (0x1 << 7)
--#define   I2CD_TX_BUFF_ENABLE              (0x1 << 6)
--#define   I2CD_M_STOP_CMD                  (0x1 << 5)
--#define   I2CD_M_S_RX_CMD_LAST             (0x1 << 4)
--#define   I2CD_M_RX_CMD                    (0x1 << 3)
--#define   I2CD_S_TX_CMD                    (0x1 << 2)
--#define   I2CD_M_TX_CMD                    (0x1 << 1)
--#define   I2CD_M_START_CMD                 (0x1)
--
--#define I2CD_DEV_ADDR_REG       0x18       /* Slave Device Address */
--#define I2CD_POOL_CTRL_REG      0x1c       /* Pool Buffer Control */
--#define   I2CD_POOL_RX_COUNT(x)            (((x) >> 24) & 0xff)
--#define   I2CD_POOL_RX_SIZE(x)             ((((x) >> 16) & 0xff) + 1)
--#define   I2CD_POOL_TX_COUNT(x)            ((((x) >> 8) & 0xff) + 1)
--#define   I2CD_POOL_OFFSET(x)              (((x) & 0x3f) << 2)  /* AST2400 */
--#define I2CD_BYTE_BUF_REG       0x20       /* Transmit/Receive Byte Buffer */
--#define   I2CD_BYTE_BUF_TX_SHIFT           0
--#define   I2CD_BYTE_BUF_TX_MASK            0xff
--#define   I2CD_BYTE_BUF_RX_SHIFT           8
--#define   I2CD_BYTE_BUF_RX_MASK            0xff
--#define I2CD_DMA_ADDR           0x24       /* DMA Buffer Address */
--#define I2CD_DMA_LEN            0x28       /* DMA Transfer Length < 4KB */
-+    FIELD(I2CD_CMD, SCL_LINE_STS, 18, 1)
-+    FIELD(I2CD_CMD, SDA_LINE_STS, 17, 1)
-+    FIELD(I2CD_CMD, BUS_BUSY_STS, 16, 1)
-+    FIELD(I2CD_CMD, SDA_OE_OUT_DIR, 15, 1)
-+    FIELD(I2CD_CMD, SDA_O_OUT_DIR, 14, 1)
-+    FIELD(I2CD_CMD, SCL_OE_OUT_DIR, 13, 1)
-+    FIELD(I2CD_CMD, SCL_O_OUT_DIR, 12, 1)
-+    FIELD(I2CD_CMD, BUS_RECOVER_CMD_EN, 11, 1)
-+    FIELD(I2CD_CMD, S_ALT_EN, 10, 1)
-+    /* Command Bits */
-+    FIELD(I2CD_CMD, RX_DMA_EN, 9, 1)
-+    FIELD(I2CD_CMD, TX_DMA_EN, 8, 1)
-+    FIELD(I2CD_CMD, RX_BUFF_EN, 7, 1)
-+    FIELD(I2CD_CMD, TX_BUFF_EN, 6, 1)
-+    FIELD(I2CD_CMD, M_STOP_CMD, 5, 1)
-+    FIELD(I2CD_CMD, M_S_RX_CMD_LAST, 4, 1)
-+    FIELD(I2CD_CMD, M_RX_CMD, 3, 1)
-+    FIELD(I2CD_CMD, S_TX_CMD, 2, 1)
-+    FIELD(I2CD_CMD, M_TX_CMD, 1, 1)
-+    FIELD(I2CD_CMD, M_START_CMD, 0, 1)
-+REG32(I2CD_DEV_ADDR, 0x18) /* Slave Device Address */
-+REG32(I2CD_POOL_CTRL, 0x1C) /* Pool Buffer Control */
-+    FIELD(I2CD_POOL_CTRL, RX_COUNT, 24, 5)
-+    FIELD(I2CD_POOL_CTRL, RX_SIZE, 16, 5)
-+    FIELD(I2CD_POOL_CTRL, TX_COUNT, 9, 5)
-+    FIELD(I2CD_POOL_CTRL, OFFSET, 2, 6) /* AST2400 */
-+REG32(I2CD_BYTE_BUF, 0x20) /* Transmit/Receive Byte Buffer */
-+    FIELD(I2CD_BYTE_BUF, RX_BUF, 8, 8)
-+    FIELD(I2CD_BYTE_BUF, TX_BUF, 0, 8)
-+REG32(I2CD_DMA_ADDR, 0x24) /* DMA Buffer Address */
-+REG32(I2CD_DMA_LEN, 0x28) /* DMA Transfer Length < 4KB */
- 
- static inline bool aspeed_i2c_bus_is_master(AspeedI2CBus *bus)
- {
--    return bus->ctrl & I2CD_MASTER_EN;
-+    return FIELD_EX32(bus->ctrl, I2CD_FUN_CTRL, MASTER_EN);
- }
- 
- static inline bool aspeed_i2c_bus_is_enabled(AspeedI2CBus *bus)
- {
--    return bus->ctrl & (I2CD_MASTER_EN | I2CD_SLAVE_EN);
-+    return FIELD_EX32(bus->ctrl, I2CD_FUN_CTRL, MASTER_EN) ||
-+           FIELD_EX32(bus->ctrl, I2CD_FUN_CTRL, SLAVE_EN);
- }
- 
- static inline void aspeed_i2c_bus_raise_interrupt(AspeedI2CBus *bus)
-@@ -160,11 +147,13 @@ static inline void aspeed_i2c_bus_raise_interrupt(AspeedI2CBus *bus)
-     AspeedI2CClass *aic = ASPEED_I2C_GET_CLASS(bus->controller);
- 
-     trace_aspeed_i2c_bus_raise_interrupt(bus->intr_status,
--          bus->intr_status & I2CD_INTR_TX_NAK ? "nak|" : "",
--          bus->intr_status & I2CD_INTR_TX_ACK ? "ack|" : "",
--          bus->intr_status & I2CD_INTR_RX_DONE ? "done|" : "",
--          bus->intr_status & I2CD_INTR_NORMAL_STOP ? "normal|" : "",
--          bus->intr_status & I2CD_INTR_ABNORMAL ? "abnormal" : "");
-+        FIELD_EX32(bus->intr_status, I2CD_INTR_STS, TX_NAK) ? "nak|" : "",
-+        FIELD_EX32(bus->intr_status, I2CD_INTR_STS, TX_ACK) ? "ack|" : "",
-+        FIELD_EX32(bus->intr_status, I2CD_INTR_STS, RX_DONE) ? "done|" : "",
-+        FIELD_EX32(bus->intr_status, I2CD_INTR_STS, NORMAL_STOP) ? "normal|"
-+                                                                 : "",
-+        FIELD_EX32(bus->intr_status, I2CD_INTR_STS, ABNORMAL) ? "abnormal"
-+                                                              : "");
- 
-     bus->intr_status &= bus->intr_ctrl;
-     if (bus->intr_status) {
-@@ -181,38 +170,38 @@ static uint64_t aspeed_i2c_bus_read(void *opaque, hwaddr offset,
-     uint64_t value = -1;
- 
-     switch (offset) {
--    case I2CD_FUN_CTRL_REG:
-+    case A_I2CD_FUN_CTRL:
-         value = bus->ctrl;
-         break;
--    case I2CD_AC_TIMING_REG1:
-+    case A_I2CD_AC_TIMING1:
-         value = bus->timing[0];
-         break;
--    case I2CD_AC_TIMING_REG2:
-+    case A_I2CD_AC_TIMING2:
-         value = bus->timing[1];
-         break;
--    case I2CD_INTR_CTRL_REG:
-+    case A_I2CD_INTR_CTRL:
-         value = bus->intr_ctrl;
-         break;
--    case I2CD_INTR_STS_REG:
-+    case A_I2CD_INTR_STS:
-         value = bus->intr_status;
-         break;
--    case I2CD_POOL_CTRL_REG:
-+    case A_I2CD_POOL_CTRL:
-         value = bus->pool_ctrl;
-         break;
--    case I2CD_BYTE_BUF_REG:
-+    case A_I2CD_BYTE_BUF:
-         value = bus->buf;
-         break;
--    case I2CD_CMD_REG:
-+    case A_I2CD_CMD:
-         value = bus->cmd | (i2c_bus_busy(bus->bus) << 16);
-         break;
--    case I2CD_DMA_ADDR:
-+    case A_I2CD_DMA_ADDR:
-         if (!aic->has_dma) {
-             qemu_log_mask(LOG_GUEST_ERROR, "%s: No DMA support\n",  __func__);
-             break;
-         }
-         value = bus->dma_addr;
-         break;
--    case I2CD_DMA_LEN:
-+    case A_I2CD_DMA_LEN:
-         if (!aic->has_dma) {
-             qemu_log_mask(LOG_GUEST_ERROR, "%s: No DMA support\n",  __func__);
-             break;
-@@ -233,13 +222,12 @@ static uint64_t aspeed_i2c_bus_read(void *opaque, hwaddr offset,
- 
- static void aspeed_i2c_set_state(AspeedI2CBus *bus, uint8_t state)
- {
--    bus->cmd &= ~(I2CD_TX_STATE_MASK << I2CD_TX_STATE_SHIFT);
--    bus->cmd |= (state & I2CD_TX_STATE_MASK) << I2CD_TX_STATE_SHIFT;
-+    bus->cmd = FIELD_DP32(bus->cmd, I2CD_CMD, TX_STATE, state);
- }
- 
- static uint8_t aspeed_i2c_get_state(AspeedI2CBus *bus)
- {
--    return (bus->cmd >> I2CD_TX_STATE_SHIFT) & I2CD_TX_STATE_MASK;
-+    return FIELD_EX32(bus->cmd, I2CD_CMD, TX_STATE);
- }
- 
- static int aspeed_i2c_dma_read(AspeedI2CBus *bus, uint8_t *data)
-@@ -265,21 +253,21 @@ static int aspeed_i2c_bus_send(AspeedI2CBus *bus, uint8_t pool_start)
-     AspeedI2CClass *aic = ASPEED_I2C_GET_CLASS(bus->controller);
-     int ret = -1;
-     int i;
-+    int pool_tx_count = FIELD_EX32(bus->pool_ctrl, I2CD_POOL_CTRL, TX_COUNT);
- 
--    if (bus->cmd & I2CD_TX_BUFF_ENABLE) {
--        for (i = pool_start; i < I2CD_POOL_TX_COUNT(bus->pool_ctrl); i++) {
-+    if (FIELD_EX32(bus->cmd, I2CD_CMD, TX_BUFF_EN)) {
-+        for (i = pool_start; i < pool_tx_count; i++) {
-             uint8_t *pool_base = aic->bus_pool_base(bus);
- 
--            trace_aspeed_i2c_bus_send("BUF", i + 1,
--                                      I2CD_POOL_TX_COUNT(bus->pool_ctrl),
-+            trace_aspeed_i2c_bus_send("BUF", i + 1, pool_tx_count,
-                                       pool_base[i]);
-             ret = i2c_send(bus->bus, pool_base[i]);
-             if (ret) {
-                 break;
-             }
-         }
--        bus->cmd &= ~I2CD_TX_BUFF_ENABLE;
--    } else if (bus->cmd & I2CD_TX_DMA_ENABLE) {
-+        bus->cmd = FIELD_DP32(bus->cmd, I2CD_CMD, TX_BUFF_EN, 0);
-+    } else if (FIELD_EX32(bus->cmd, I2CD_CMD, TX_DMA_EN)) {
-         while (bus->dma_len) {
-             uint8_t data;
-             aspeed_i2c_dma_read(bus, &data);
-@@ -289,7 +277,7 @@ static int aspeed_i2c_bus_send(AspeedI2CBus *bus, uint8_t pool_start)
-                 break;
-             }
-         }
--        bus->cmd &= ~I2CD_TX_DMA_ENABLE;
-+        bus->cmd = FIELD_DP32(bus->cmd, I2CD_CMD, TX_DMA_EN, 0);
-     } else {
-         trace_aspeed_i2c_bus_send("BYTE", pool_start, 1, bus->buf);
-         ret = i2c_send(bus->bus, bus->buf);
-@@ -304,22 +292,22 @@ static void aspeed_i2c_bus_recv(AspeedI2CBus *bus)
-     AspeedI2CClass *aic = ASPEED_I2C_GET_CLASS(s);
-     uint8_t data;
-     int i;
-+    int pool_rx_count = FIELD_EX32(bus->pool_ctrl, I2CD_POOL_CTRL, RX_COUNT);
- 
--    if (bus->cmd & I2CD_RX_BUFF_ENABLE) {
-+    if (FIELD_EX32(bus->cmd, I2CD_CMD, RX_BUFF_EN)) {
-         uint8_t *pool_base = aic->bus_pool_base(bus);
- 
--        for (i = 0; i < I2CD_POOL_RX_SIZE(bus->pool_ctrl); i++) {
-+        for (i = 0; i < pool_rx_count; i++) {
-             pool_base[i] = i2c_recv(bus->bus);
--            trace_aspeed_i2c_bus_recv("BUF", i + 1,
--                                      I2CD_POOL_RX_SIZE(bus->pool_ctrl),
-+            trace_aspeed_i2c_bus_recv("BUF", i + 1, pool_rx_count,
-                                       pool_base[i]);
-         }
- 
-         /* Update RX count */
--        bus->pool_ctrl &= ~(0xff << 24);
--        bus->pool_ctrl |= (i & 0xff) << 24;
--        bus->cmd &= ~I2CD_RX_BUFF_ENABLE;
--    } else if (bus->cmd & I2CD_RX_DMA_ENABLE) {
-+        bus->pool_ctrl = FIELD_DP32(bus->pool_ctrl, I2CD_POOL_CTRL, RX_COUNT,
-+                                    i & 0xff);
-+        bus->cmd = FIELD_DP32(bus->cmd, I2CD_CMD, RX_BUFF_EN, 0);
-+    } else if (FIELD_EX32(bus->cmd, I2CD_CMD, RX_DMA_EN)) {
-         uint8_t data;
- 
-         while (bus->dma_len) {
-@@ -337,11 +325,11 @@ static void aspeed_i2c_bus_recv(AspeedI2CBus *bus)
-             bus->dma_addr++;
-             bus->dma_len--;
-         }
--        bus->cmd &= ~I2CD_RX_DMA_ENABLE;
-+        bus->cmd = FIELD_DP32(bus->cmd, I2CD_CMD, RX_DMA_EN, 0);
-     } else {
-         data = i2c_recv(bus->bus);
-         trace_aspeed_i2c_bus_recv("BYTE", 1, 1, bus->buf);
--        bus->buf = (data & I2CD_BYTE_BUF_RX_MASK) << I2CD_BYTE_BUF_RX_SHIFT;
-+        bus->buf = FIELD_DP32(bus->buf, I2CD_BYTE_BUF, RX_BUF, data);
-     }
- }
- 
-@@ -349,11 +337,12 @@ static void aspeed_i2c_handle_rx_cmd(AspeedI2CBus *bus)
- {
-     aspeed_i2c_set_state(bus, I2CD_MRXD);
-     aspeed_i2c_bus_recv(bus);
--    bus->intr_status |= I2CD_INTR_RX_DONE;
--    if (bus->cmd & I2CD_M_S_RX_CMD_LAST) {
-+    bus->intr_status = FIELD_DP32(bus->intr_status, I2CD_INTR_STS, RX_DONE, 1);
-+    if (FIELD_EX32(bus->cmd, I2CD_CMD, M_S_RX_CMD_LAST)) {
-         i2c_nack(bus->bus);
-     }
--    bus->cmd &= ~(I2CD_M_RX_CMD | I2CD_M_S_RX_CMD_LAST);
-+    bus->cmd = FIELD_DP32(bus->cmd, I2CD_CMD, M_RX_CMD, 0);
-+    bus->cmd = FIELD_DP32(bus->cmd, I2CD_CMD, M_S_RX_CMD_LAST, 0);
-     aspeed_i2c_set_state(bus, I2CD_MACTIVE);
- }
- 
-@@ -361,11 +350,11 @@ static uint8_t aspeed_i2c_get_addr(AspeedI2CBus *bus)
- {
-     AspeedI2CClass *aic = ASPEED_I2C_GET_CLASS(bus->controller);
- 
--    if (bus->cmd & I2CD_TX_BUFF_ENABLE) {
-+    if (FIELD_EX32(bus->cmd, I2CD_CMD, TX_BUFF_EN)) {
-         uint8_t *pool_base = aic->bus_pool_base(bus);
- 
-         return pool_base[0];
--    } else if (bus->cmd & I2CD_TX_DMA_ENABLE) {
-+    } else if (FIELD_EX32(bus->cmd, I2CD_CMD, TX_DMA_EN)) {
-         uint8_t data;
- 
-         aspeed_i2c_dma_read(bus, &data);
-@@ -379,7 +368,10 @@ static bool aspeed_i2c_check_sram(AspeedI2CBus *bus)
- {
-     AspeedI2CState *s = bus->controller;
-     AspeedI2CClass *aic = ASPEED_I2C_GET_CLASS(s);
--
-+    bool dma_en = FIELD_EX32(bus->cmd, I2CD_CMD, RX_DMA_EN)  ||
-+                  FIELD_EX32(bus->cmd, I2CD_CMD, TX_DMA_EN)  ||
-+                  FIELD_EX32(bus->cmd, I2CD_CMD, RX_BUFF_EN) ||
-+                  FIELD_EX32(bus->cmd, I2CD_CMD, TX_BUFF_EN);
-     if (!aic->check_sram) {
-         return true;
-     }
-@@ -388,9 +380,7 @@ static bool aspeed_i2c_check_sram(AspeedI2CBus *bus)
-      * AST2500: SRAM must be enabled before using the Buffer Pool or
-      * DMA mode.
-      */
--    if (!(s->ctrl_global & I2C_CTRL_SRAM_EN) &&
--        (bus->cmd & (I2CD_RX_DMA_ENABLE | I2CD_TX_DMA_ENABLE |
--                     I2CD_RX_BUFF_ENABLE | I2CD_TX_BUFF_ENABLE))) {
-+    if (!FIELD_EX32(s->ctrl_global, I2C_CTRL_GLOBAL, SRAM_EN) && dma_en) {
-         qemu_log_mask(LOG_GUEST_ERROR, "%s: SRAM is not enabled\n", __func__);
-         return false;
-     }
-@@ -402,25 +392,24 @@ static void aspeed_i2c_bus_cmd_dump(AspeedI2CBus *bus)
- {
-     g_autofree char *cmd_flags = NULL;
-     uint32_t count;
--
--    if (bus->cmd & (I2CD_RX_BUFF_ENABLE | I2CD_RX_BUFF_ENABLE)) {
--        count = I2CD_POOL_TX_COUNT(bus->pool_ctrl);
--    } else if (bus->cmd & (I2CD_RX_DMA_ENABLE | I2CD_RX_DMA_ENABLE)) {
-+    if (FIELD_EX32(bus->cmd, I2CD_CMD, RX_BUFF_EN)) {
-+        count = FIELD_EX32(bus->pool_ctrl, I2CD_POOL_CTRL, TX_COUNT);
-+    } else if (FIELD_EX32(bus->cmd, I2CD_CMD, RX_DMA_EN)) {
-         count = bus->dma_len;
-     } else { /* BYTE mode */
-         count = 1;
-     }
- 
-     cmd_flags = g_strdup_printf("%s%s%s%s%s%s%s%s%s",
--                                bus->cmd & I2CD_M_START_CMD ? "start|" : "",
--                                bus->cmd & I2CD_RX_DMA_ENABLE ? "rxdma|" : "",
--                                bus->cmd & I2CD_TX_DMA_ENABLE ? "txdma|" : "",
--                                bus->cmd & I2CD_RX_BUFF_ENABLE ? "rxbuf|" : "",
--                                bus->cmd & I2CD_TX_BUFF_ENABLE ? "txbuf|" : "",
--                                bus->cmd & I2CD_M_TX_CMD ? "tx|" : "",
--                                bus->cmd & I2CD_M_RX_CMD ? "rx|" : "",
--                                bus->cmd & I2CD_M_S_RX_CMD_LAST ? "last|" : "",
--                                bus->cmd & I2CD_M_STOP_CMD ? "stop" : "");
-+             FIELD_EX32(bus->cmd, I2CD_CMD, M_START_CMD) ? "start|" : "",
-+             FIELD_EX32(bus->cmd, I2CD_CMD, RX_DMA_EN) ? "rxdma|" : "",
-+             FIELD_EX32(bus->cmd, I2CD_CMD, TX_DMA_EN) ? "txdma|" : "",
-+             FIELD_EX32(bus->cmd, I2CD_CMD, RX_BUFF_EN) ? "rxbuf|" : "",
-+             FIELD_EX32(bus->cmd, I2CD_CMD, TX_BUFF_EN) ? "txbuf|" : "",
-+             FIELD_EX32(bus->cmd, I2CD_CMD, M_TX_CMD) ? "tx|" : "",
-+             FIELD_EX32(bus->cmd, I2CD_CMD, M_RX_CMD) ? "rx|" : "",
-+             FIELD_EX32(bus->cmd, I2CD_CMD, M_S_RX_CMD_LAST) ? "last|" : "",
-+             FIELD_EX32(bus->cmd, I2CD_CMD, M_STOP_CMD) ? "stop" : "");
- 
-     trace_aspeed_i2c_bus_cmd(bus->cmd, cmd_flags, count, bus->intr_status);
- }
-@@ -444,7 +433,7 @@ static void aspeed_i2c_bus_handle_cmd(AspeedI2CBus *bus, uint64_t value)
-         aspeed_i2c_bus_cmd_dump(bus);
-     }
- 
--    if (bus->cmd & I2CD_M_START_CMD) {
-+    if (FIELD_EX32(bus->cmd, I2CD_CMD, M_START_CMD)) {
-         uint8_t state = aspeed_i2c_get_state(bus) & I2CD_MACTIVE ?
-             I2CD_MSTARTR : I2CD_MSTART;
-         uint8_t addr;
-@@ -455,21 +444,23 @@ static void aspeed_i2c_bus_handle_cmd(AspeedI2CBus *bus, uint64_t value)
- 
-         if (i2c_start_transfer(bus->bus, extract32(addr, 1, 7),
-                                extract32(addr, 0, 1))) {
--            bus->intr_status |= I2CD_INTR_TX_NAK;
-+            bus->intr_status = FIELD_DP32(bus->intr_status, I2CD_INTR_STS,
-+                                          TX_NAK, 1);
-         } else {
--            bus->intr_status |= I2CD_INTR_TX_ACK;
-+            bus->intr_status = FIELD_DP32(bus->intr_status, I2CD_INTR_STS,
-+                                          TX_ACK, 1);
-         }
- 
--        bus->cmd &= ~I2CD_M_START_CMD;
-+        bus->cmd = FIELD_DP32(bus->cmd, I2CD_CMD, M_START_CMD, 0);
- 
-         /*
-          * The START command is also a TX command, as the slave
-          * address is sent on the bus. Drop the TX flag if nothing
-          * else needs to be sent in this sequence.
-          */
--        if (bus->cmd & I2CD_TX_BUFF_ENABLE) {
--            if (I2CD_POOL_TX_COUNT(bus->pool_ctrl) == 1) {
--                bus->cmd &= ~I2CD_M_TX_CMD;
-+        if (FIELD_EX32(bus->cmd, I2CD_CMD, TX_BUFF_EN)) {
-+            if (FIELD_EX32(bus->pool_ctrl, I2CD_POOL_CTRL, TX_COUNT) == 1) {
-+                bus->cmd = FIELD_DP32(bus->cmd, I2CD_CMD, M_TX_CMD, 0);
-             } else {
-                 /*
-                  * Increase the start index in the TX pool buffer to
-@@ -477,12 +468,12 @@ static void aspeed_i2c_bus_handle_cmd(AspeedI2CBus *bus, uint64_t value)
-                  */
-                 pool_start++;
-             }
--        } else if (bus->cmd & I2CD_TX_DMA_ENABLE) {
-+        } else if (FIELD_EX32(bus->cmd, I2CD_CMD, TX_DMA_EN)) {
-             if (bus->dma_len == 0) {
--                bus->cmd &= ~I2CD_M_TX_CMD;
-+                bus->cmd = FIELD_DP32(bus->cmd, I2CD_CMD, M_TX_CMD, 0);
-             }
-         } else {
--            bus->cmd &= ~I2CD_M_TX_CMD;
-+            bus->cmd = FIELD_DP32(bus->cmd, I2CD_CMD, M_TX_CMD, 0);
-         }
- 
-         /* No slave found */
-@@ -492,33 +483,38 @@ static void aspeed_i2c_bus_handle_cmd(AspeedI2CBus *bus, uint64_t value)
-         aspeed_i2c_set_state(bus, I2CD_MACTIVE);
-     }
- 
--    if (bus->cmd & I2CD_M_TX_CMD) {
-+    if (FIELD_EX32(bus->cmd, I2CD_CMD, M_TX_CMD)) {
-         aspeed_i2c_set_state(bus, I2CD_MTXD);
-         if (aspeed_i2c_bus_send(bus, pool_start)) {
--            bus->intr_status |= (I2CD_INTR_TX_NAK);
-+            bus->intr_status = FIELD_DP32(bus->intr_status, I2CD_INTR_STS,
-+                                          TX_NAK, 1);
-             i2c_end_transfer(bus->bus);
-         } else {
--            bus->intr_status |= I2CD_INTR_TX_ACK;
-+            bus->intr_status = FIELD_DP32(bus->intr_status, I2CD_INTR_STS,
-+                                          TX_ACK, 1);
-         }
--        bus->cmd &= ~I2CD_M_TX_CMD;
-+        bus->cmd = FIELD_DP32(bus->cmd, I2CD_CMD, M_TX_CMD, 0);
-         aspeed_i2c_set_state(bus, I2CD_MACTIVE);
-     }
- 
--    if ((bus->cmd & (I2CD_M_RX_CMD | I2CD_M_S_RX_CMD_LAST)) &&
--        !(bus->intr_status & I2CD_INTR_RX_DONE)) {
-+    if ((FIELD_EX32(bus->cmd, I2CD_CMD, M_RX_CMD) ||
-+         FIELD_EX32(bus->cmd, I2CD_CMD, M_S_RX_CMD_LAST)) &&
-+        !FIELD_EX32(bus->intr_status, I2CD_INTR_STS, RX_DONE)) {
-         aspeed_i2c_handle_rx_cmd(bus);
-     }
- 
--    if (bus->cmd & I2CD_M_STOP_CMD) {
-+    if (FIELD_EX32(bus->cmd, I2CD_CMD, M_STOP_CMD)) {
-         if (!(aspeed_i2c_get_state(bus) & I2CD_MACTIVE)) {
-             qemu_log_mask(LOG_GUEST_ERROR, "%s: abnormal stop\n", __func__);
--            bus->intr_status |= I2CD_INTR_ABNORMAL;
-+            bus->intr_status = FIELD_DP32(bus->intr_status, I2CD_INTR_STS,
-+                                          ABNORMAL, 1);
-         } else {
-             aspeed_i2c_set_state(bus, I2CD_MSTOP);
-             i2c_end_transfer(bus->bus);
--            bus->intr_status |= I2CD_INTR_NORMAL_STOP;
-+            bus->intr_status = FIELD_DP32(bus->intr_status, I2CD_INTR_STS,
-+                                          NORMAL_STOP, 1);
-         }
--        bus->cmd &= ~I2CD_M_STOP_CMD;
-+        bus->cmd = FIELD_DP32(bus->cmd, I2CD_CMD, M_STOP_CMD, 0);
-         aspeed_i2c_set_state(bus, I2CD_IDLE);
-     }
- }
-@@ -533,49 +529,50 @@ static void aspeed_i2c_bus_write(void *opaque, hwaddr offset,
-     trace_aspeed_i2c_bus_write(bus->id, offset, size, value);
- 
-     switch (offset) {
--    case I2CD_FUN_CTRL_REG:
--        if (value & I2CD_SLAVE_EN) {
-+    case A_I2CD_FUN_CTRL:
-+        if (FIELD_EX32(value, I2CD_FUN_CTRL, SLAVE_EN)) {
-             qemu_log_mask(LOG_UNIMP, "%s: slave mode not implemented\n",
-                           __func__);
-             break;
-         }
-         bus->ctrl = value & 0x0071C3FF;
-         break;
--    case I2CD_AC_TIMING_REG1:
-+    case A_I2CD_AC_TIMING1:
-         bus->timing[0] = value & 0xFFFFF0F;
-         break;
--    case I2CD_AC_TIMING_REG2:
-+    case A_I2CD_AC_TIMING2:
-         bus->timing[1] = value & 0x7;
-         break;
--    case I2CD_INTR_CTRL_REG:
-+    case A_I2CD_INTR_CTRL:
-         bus->intr_ctrl = value & 0x7FFF;
-         break;
--    case I2CD_INTR_STS_REG:
--        handle_rx = (bus->intr_status & I2CD_INTR_RX_DONE) &&
--                (value & I2CD_INTR_RX_DONE);
-+    case A_I2CD_INTR_STS:
-+        handle_rx = FIELD_EX32(bus->intr_status, I2CD_INTR_STS, RX_DONE) &&
-+                    FIELD_EX32(value, I2CD_INTR_STS, RX_DONE);
-         bus->intr_status &= ~(value & 0x7FFF);
-         if (!bus->intr_status) {
-             bus->controller->intr_status &= ~(1 << bus->id);
-             qemu_irq_lower(aic->bus_get_irq(bus));
-         }
--        if (handle_rx && (bus->cmd & (I2CD_M_RX_CMD | I2CD_M_S_RX_CMD_LAST))) {
-+        if (handle_rx && (FIELD_EX32(bus->cmd, I2CD_CMD, M_RX_CMD) ||
-+                         FIELD_EX32(bus->cmd, I2CD_CMD, M_S_RX_CMD_LAST))) {
-             aspeed_i2c_handle_rx_cmd(bus);
-             aspeed_i2c_bus_raise_interrupt(bus);
-         }
-         break;
--    case I2CD_DEV_ADDR_REG:
-+    case A_I2CD_DEV_ADDR:
-         qemu_log_mask(LOG_UNIMP, "%s: slave mode not implemented\n",
-                       __func__);
-         break;
--    case I2CD_POOL_CTRL_REG:
-+    case A_I2CD_POOL_CTRL:
-         bus->pool_ctrl &= ~0xffffff;
-         bus->pool_ctrl |= (value & 0xffffff);
-         break;
- 
--    case I2CD_BYTE_BUF_REG:
--        bus->buf = (value & I2CD_BYTE_BUF_TX_MASK) << I2CD_BYTE_BUF_TX_SHIFT;
-+    case A_I2CD_BYTE_BUF:
-+        bus->buf = FIELD_DP32(bus->buf, I2CD_BYTE_BUF, TX_BUF, value);
-         break;
--    case I2CD_CMD_REG:
-+    case A_I2CD_CMD:
-         if (!aspeed_i2c_bus_is_enabled(bus)) {
-             break;
-         }
-@@ -587,7 +584,8 @@ static void aspeed_i2c_bus_write(void *opaque, hwaddr offset,
-         }
- 
-         if (!aic->has_dma &&
--            value & (I2CD_RX_DMA_ENABLE | I2CD_TX_DMA_ENABLE)) {
-+            (FIELD_EX32(value, I2CD_CMD, RX_DMA_EN) ||
-+             FIELD_EX32(value, I2CD_CMD, TX_DMA_EN))) {
-             qemu_log_mask(LOG_GUEST_ERROR, "%s: No DMA support\n",  __func__);
-             break;
-         }
-@@ -595,7 +593,7 @@ static void aspeed_i2c_bus_write(void *opaque, hwaddr offset,
-         aspeed_i2c_bus_handle_cmd(bus, value);
-         aspeed_i2c_bus_raise_interrupt(bus);
-         break;
--    case I2CD_DMA_ADDR:
-+    case A_I2CD_DMA_ADDR:
-         if (!aic->has_dma) {
-             qemu_log_mask(LOG_GUEST_ERROR, "%s: No DMA support\n",  __func__);
-             break;
-@@ -604,7 +602,7 @@ static void aspeed_i2c_bus_write(void *opaque, hwaddr offset,
-         bus->dma_addr = value & 0x3ffffffc;
-         break;
- 
--    case I2CD_DMA_LEN:
-+    case A_I2CD_DMA_LEN:
-         if (!aic->has_dma) {
-             qemu_log_mask(LOG_GUEST_ERROR, "%s: No DMA support\n",  __func__);
-             break;
-@@ -628,9 +626,9 @@ static uint64_t aspeed_i2c_ctrl_read(void *opaque, hwaddr offset,
-     AspeedI2CState *s = opaque;
- 
-     switch (offset) {
--    case I2C_CTRL_STATUS:
-+    case A_I2C_CTRL_STATUS:
-         return s->intr_status;
--    case I2C_CTRL_GLOBAL:
-+    case A_I2C_CTRL_GLOBAL:
-         return s->ctrl_global;
-     default:
-         qemu_log_mask(LOG_GUEST_ERROR, "%s: Bad offset 0x%" HWADDR_PRIx "\n",
-@@ -647,11 +645,11 @@ static void aspeed_i2c_ctrl_write(void *opaque, hwaddr offset,
-     AspeedI2CState *s = opaque;
- 
-     switch (offset) {
--    case I2C_CTRL_GLOBAL:
-+    case A_I2C_CTRL_GLOBAL:
-         value &= ~s->ctrl_global_rsvd;
-         s->ctrl_global = value;
-         break;
--    case I2C_CTRL_STATUS:
-+    case A_I2C_CTRL_STATUS:
-     default:
-         qemu_log_mask(LOG_GUEST_ERROR, "%s: Bad offset 0x%" HWADDR_PRIx "\n",
-                       __func__, offset);
-@@ -923,9 +921,10 @@ static qemu_irq aspeed_2400_i2c_bus_get_irq(AspeedI2CBus *bus)
- static uint8_t *aspeed_2400_i2c_bus_pool_base(AspeedI2CBus *bus)
- {
-     uint8_t *pool_page =
--        &bus->controller->pool[I2CD_POOL_PAGE_SEL(bus->ctrl) * 0x100];
-+        &bus->controller->pool[FIELD_EX32(bus->ctrl, I2CD_FUN_CTRL,
-+                                          POOL_PAGE_SEL) * 0x100];
- 
--    return &pool_page[I2CD_POOL_OFFSET(bus->pool_ctrl)];
-+    return &pool_page[FIELD_EX32(bus->pool_ctrl, I2CD_POOL_CTRL, OFFSET)];
- }
- 
- static void aspeed_2400_i2c_class_init(ObjectClass *klass, void *data)
+     def test_arm_ast2600_debian(self):
+         """
+         :avocado: tags=arch:arm
+diff --git a/tests/avocado/machine_aspeed.py b/tests/avocado/machine_aspeed.py
+index 33090af19940..89bfad307661 100644
+--- a/tests/avocado/machine_aspeed.py
++++ b/tests/avocado/machine_aspeed.py
+@@ -34,3 +34,53 @@ def test_ast1030_zephyros(self):
+         wait_for_console_pattern(self, "Booting Zephyr OS")
+         exec_command_and_wait_for_pattern(self, "help",
+                                           "Available commands")
++
++class AST2x00Machine(QemuSystemTest):
++
++    def wait_for_console_pattern(self, success_message, vm=None):
++        wait_for_console_pattern(self, success_message,
++                                 failure_message='Kernel panic - not syncing',
++                                 vm=vm)
++
++    def do_test_arm_aspeed(self, image):
++        self.vm.set_console()
++        self.vm.add_args('-drive', 'file=' + image + ',if=mtd,format=raw',
++                         '-net', 'nic')
++        self.vm.launch()
++
++        self.wait_for_console_pattern("U-Boot 2016.07")
++        self.wait_for_console_pattern("## Loading kernel from FIT Image at 20080000")
++        self.wait_for_console_pattern("Starting kernel ...")
++        self.wait_for_console_pattern("Booting Linux on physical CPU 0x0")
++        wait_for_console_pattern(self,
++                "aspeed-smc 1e620000.spi: read control register: 203b0641")
++        self.wait_for_console_pattern("ftgmac100 1e660000.ethernet eth0: irq ")
++        self.wait_for_console_pattern("systemd[1]: Set hostname to")
++
++    def test_arm_ast2400_palmetto_openbmc_v2_9_0(self):
++        """
++        :avocado: tags=arch:arm
++        :avocado: tags=machine:palmetto-bmc
++        """
++
++        image_url = ('https://github.com/openbmc/openbmc/releases/download/2.9.0/'
++                     'obmc-phosphor-image-palmetto.static.mtd')
++        image_hash = ('3e13bbbc28e424865dc42f35ad672b10f2e82cdb11846bb28fa625b48beafd0d')
++        image_path = self.fetch_asset(image_url, asset_hash=image_hash,
++                                      algorithm='sha256')
++
++        self.do_test_arm_aspeed(image_path)
++
++    def test_arm_ast2500_romulus_openbmc_v2_9_0(self):
++        """
++        :avocado: tags=arch:arm
++        :avocado: tags=machine:romulus-bmc
++        """
++
++        image_url = ('https://github.com/openbmc/openbmc/releases/download/2.9.0/'
++                     'obmc-phosphor-image-romulus.static.mtd')
++        image_hash = ('820341076803f1955bc31e647a512c79f9add4f5233d0697678bab4604c7bb25')
++        image_path = self.fetch_asset(image_url, asset_hash=image_hash,
++                                      algorithm='sha256')
++
++        self.do_test_arm_aspeed(image_path)
 -- 
 2.35.3
 

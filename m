@@ -1,106 +1,105 @@
-Received: by 2002:a19:ee12:0:0:0:0:0 with SMTP id g18csp2430258lfb;
-        Tue, 7 Jun 2022 14:36:59 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJz/9krorxlRbINJX8Ye5BuDcHjKaFP5meWNF57XrTpVAVNw3eH3of7YRtDq0EvrCjKT4aCk
-X-Received: by 2002:a05:620a:b42:b0:6a6:ab7a:8d0d with SMTP id x2-20020a05620a0b4200b006a6ab7a8d0dmr13159132qkg.515.1654637818881;
-        Tue, 07 Jun 2022 14:36:58 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1654637818; cv=none;
+Received: by 2002:a19:ee12:0:0:0:0:0 with SMTP id g18csp2430505lfb;
+        Tue, 7 Jun 2022 14:37:26 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJz8EV9EWDb89KkViqBQ4niyF99Or1ktPoYQElGSD7uVo9BiNkKy3h4HdfjvXXYi4l6seVQC
+X-Received: by 2002:ac8:5cc6:0:b0:304:c86f:c281 with SMTP id s6-20020ac85cc6000000b00304c86fc281mr25230211qta.639.1654637846370;
+        Tue, 07 Jun 2022 14:37:26 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1654637846; cv=none;
         d=google.com; s=arc-20160816;
-        b=xPsukdCVDgm+6A2yZ6+cMmjX8ftcfhek0h25Nh0m+/QwId3cv1MW0Fcs6RoLcX3owv
-         YnrylEevLlJ3l5csdupGekJIyF0nYcU5d27lYHYbtzoJHM6SYNhUMy5+hTqV/DxAyFAP
-         9iCoOGHO3WgGaGrQn2wUR++zsOXsWsW0nUrp2altRXTZjByCldJ+GHZy4aB+AEfo1gVu
-         acqPtxv/c8KQrayZ/4LCNG2JKU1nMzyA6z/ewWjP+k0lGwq/WfQg+MJFYtxxg/dS9Wiu
-         QjM4TAq/hh6psDYAON2RqaeWujfu54DknSNd+Sl7yDGTcw2YuVXF2+eYqHgxprQmtv0P
-         ObIQ==
+        b=NbdhUsgZEK2iigei2qV9SiZQ42PyzQVLdLR8tICrnI1Hd75hYMAVM+IPCizAVKddTZ
+         /aJrWlHAGHpyceYun1t/Iqp0vXLMf8dth7A5S0GGGfyMqwSHjO01VPvLmDnyZ0ne1sxF
+         zA/Yi/g9mDKqeZnIy1N40AVITAH8JO1K+YRXC4NJhlxAoxQzwzmRfxndr7upIjLx3bew
+         7e8zeVg0dplvpRi3co5h/O8Fbbte/oD6DxVZxYT4ccl/lhiqoufOb824IO4VI89lU5BX
+         RLFyTfHPZLd+C7TU1+cpwdlgii6PRzP5YkraBjYDbMyU8YNjaDL5LOUlu6zK2va3d7V6
+         Aauw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=pyZCOGTvs2PmDR4WHKguGZ+NHJT+1M/Dn/XfXNcerpI=;
-        b=mIsqEZEKlmUQAD5fC/oxtbfZGm+nrBTTTN0/QoB7u9jlXBxFkj5lobFjj8O79fUzd2
-         iBJcRu9zcTOAadLxEBDFriB3/TMJjKp3Zssfzj+1Agn1/cXy1x8SfNyGV9voVhD/Dyow
-         1SMeUN4pwfAyKrSuRfO+obkgckqff7LvLL1RR23oU5+Iyacx2Y8hUaDV+khA6HdE2uJk
-         pt/OZhtrBXg4rKUmrvkB50g7SE/F+68JAB5jUYL0cWrG1s63zaw6k97VPP6SqBOCcKuY
-         jWrsflyr/nt8XkP6CQz/0+bUJne1/yKbSvhR20xPnoZEAT6TlWsnGjfm3s7rb2scgmK5
-         a+dA==
+        bh=DNBS91YwaJoAlRAqtjXfPNlaKmUk7UCXcyJzeo6grF4=;
+        b=gj1GmBz4mh20ptD3DRTdQCgQOEGbgy/TXaJUt6dpYiEjXArjA1iqZpotooBZsz1oVe
+         uFYCDhmW5t08TsTvRZRrJnZnH5AOYyRzrgw6ywKMKF82EuRGdnTap8nyu9C0Gy2J0nm+
+         WEHxO+Pv8o7imNJ5Rp3Otz6WnSSiKnyJr4ZaOvbsMY7seBQgixHGDGVWoPtrgcWWmuz9
+         AWGShmif53zfIXKSgRrWGTpIAfyD2jMRnbZJnZdpEzh6sdLzv1ubZLcN7wJhF+6IZqpD
+         VQCdvB6db+hgQJyGqbkvOgFlwrQx9EoOamo4UDEIZKdUA6FAkN7loNDWB55pTeKFcKED
+         81qw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=q8spuEpN;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=aqprBCe4;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id k2-20020a05620a414200b006a6b9378a5esi4589147qko.15.2022.06.07.14.36.58
+        by mx.google.com with ESMTPS id l82-20020a37a255000000b006a6a6c26de2si456363qke.575.2022.06.07.14.37.26
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 07 Jun 2022 14:36:58 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 07 Jun 2022 14:37:26 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=q8spuEpN;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=aqprBCe4;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:59646 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:60466 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nygsk-000881-BL
-	for alex.bennee@linaro.org; Tue, 07 Jun 2022 17:36:58 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:36458)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1nygtB-0000EA-QQ
+	for alex.bennee@linaro.org; Tue, 07 Jun 2022 17:37:25 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:35924)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1nyfwz-0007Vg-AM
- for qemu-arm@nongnu.org; Tue, 07 Jun 2022 16:37:17 -0400
-Received: from mail-pf1-x436.google.com ([2607:f8b0:4864:20::436]:37858)
+ id 1nyfwl-0006if-86
+ for qemu-devel@nongnu.org; Tue, 07 Jun 2022 16:37:03 -0400
+Received: from mail-pg1-x536.google.com ([2607:f8b0:4864:20::536]:40851)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1nyfwq-0008I7-Lh
- for qemu-arm@nongnu.org; Tue, 07 Jun 2022 16:37:17 -0400
-Received: by mail-pf1-x436.google.com with SMTP id bo5so16515071pfb.4
- for <qemu-arm@nongnu.org>; Tue, 07 Jun 2022 13:37:08 -0700 (PDT)
+ id 1nyfwe-0008Hc-Ji
+ for qemu-devel@nongnu.org; Tue, 07 Jun 2022 16:37:02 -0400
+Received: by mail-pg1-x536.google.com with SMTP id f65so6759585pgc.7
+ for <qemu-devel@nongnu.org>; Tue, 07 Jun 2022 13:36:56 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=pyZCOGTvs2PmDR4WHKguGZ+NHJT+1M/Dn/XfXNcerpI=;
- b=q8spuEpNSiC5KQFE3GOsN7tYvcrEC/bl2kgFDlo/ElW12e4k7pylrE2D9twSnFWeYU
- X1tzK2EFh75lJs5PTpwVG7eCl9oCDxPnKZz9ZeMlkcv4OrEa8EZanBxWRj7OMNlMHlIX
- cza+ZHx6QaKRu/dkwVsUPXLL+ZdDCglXRwwx4SP5UHrTCuUe4MBFAM3OgaHETTVqwsWj
- 9+hZJneML3V8njnfVxwjuhAPxtOfy4pzMxoY+UE0BiIpbDuWILEaUUPiRPa0lXOA4qk/
- SwDnU1swwLPtnf6XBoo/oLl0HGARQfCiwRMQnqKL/Ox9DYFprPOvNs1tAQECVInmQKu6
- j7Lg==
+ bh=DNBS91YwaJoAlRAqtjXfPNlaKmUk7UCXcyJzeo6grF4=;
+ b=aqprBCe4ntY4enFLuGnDhQ3tpPd5Av44LCdqRRy8mTjoNGT/rdbTI+19f3Ox4ZtILy
+ 0RFBkD1zjdrbDO17QJ20AqZqS3Z9eCkQds98M0B0p+uk7HYvbLgaWbyuVJ+MXm1hzoie
+ X0xTWY5QgtSUrws+6UUSIfUvGJ7epHOfrJh56e7+TRoq9xthgQdM2BoQ+GyJIRslMA9R
+ f/ydM7mHZF0Xh6817ByLM9bIBYarY8XukJmCZIoJvYcE6hTqYA9I408oJwbBoxm8yqCi
+ SYiJhUKVdA3UHO+aUGXtCalwYreBc8FTcqtaiqQhPEXRRjreT1rGiDcBEiRyK6GKu8f3
+ pC8Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=pyZCOGTvs2PmDR4WHKguGZ+NHJT+1M/Dn/XfXNcerpI=;
- b=cr2Wn1/bpqu4RAD77dRFzmZEunXs9QdmF5saDlbUK/1iG7Xrjq67v/ZU7nchdRIMzv
- L0/ZoOWWmFTuid6DOX1XD9oJSX6w87IW9H0PAoQCudMnWSa20JRJLrV54wReUiIXxvZj
- o/o7OP+qDFFxjmC0zq6qsna0oWH9V1RIkXtoDf4Sq3Cz7eRQnYFXsgGV3Qe81DAH1nk7
- RZuND1NW2oHem78lFz8dl/fDRzCFT60+S2bghSldUhEkTeojOtMAg8vRdjy6N5N/+Opi
- egN50vw5duBXtqcRMpbI8ZGHkotNCCx1DYH7naL1axuE37696xfSQjiuuDfnIJBEhT9l
- zMKA==
-X-Gm-Message-State: AOAM5339kqkIryX67oDjnh00nR+MHIIBXvBmvgdHfOmSJS9S9yGrSn9q
- AHgr7AbDN0Agh0OuDfeTuo5XWA==
-X-Received: by 2002:a63:f915:0:b0:3fd:876b:808e with SMTP id
- h21-20020a63f915000000b003fd876b808emr14116646pgi.403.1654634227784; 
- Tue, 07 Jun 2022 13:37:07 -0700 (PDT)
+ bh=DNBS91YwaJoAlRAqtjXfPNlaKmUk7UCXcyJzeo6grF4=;
+ b=5tXsJPfnt/9Mr93AGURWk/xA72AGhjplcTPF2xJ7zw9e7ZcaGNUPdtBz/c7lnVATr0
+ v89MY3jL/MVJCTqkk+gUPEymSE6dBurHFsyXkn07mVUHh9HqxA21DsVQMhswVwA+Zuyx
+ v9v8o+f7AasgUrjFNi7FBH29wPtwybsaqCJj4e66omrdar7U7Norh4etMMRBZ3oFVCy/
+ g9rMfLBPpzrROZR32LwKrv6EBgy4XxgGuXDtOCPmvFeSahXX7rKem4ihKXaBZwOYI9ja
+ q1mTpBRJxI+7lmZghVZLr+pWH2npjgad762AUCDZpQsKZ7hxfyUT46tO1XG1XG+ejBJj
+ Hgbw==
+X-Gm-Message-State: AOAM532N0yWtLX1miTWmiGaV9wApPImi9Ps1G2wgDpvlqkfLpw69jDVv
+ IfOfO77/E1PC8KswYYYxryk7gMOtQVweSw==
+X-Received: by 2002:a05:6a00:22cf:b0:51c:11c2:4bb with SMTP id
+ f15-20020a056a0022cf00b0051c11c204bbmr13842715pfj.54.1654634215295; 
+ Tue, 07 Jun 2022 13:36:55 -0700 (PDT)
 Received: from stoup.. ([2602:ae:1547:e101:3cf2:c634:5b19:25f6])
  by smtp.gmail.com with ESMTPSA id
- s18-20020aa78d52000000b0050dc76281fdsm13235645pfe.215.2022.06.07.13.37.07
+ s18-20020aa78d52000000b0050dc76281fdsm13235645pfe.215.2022.06.07.13.36.54
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 07 Jun 2022 13:37:07 -0700 (PDT)
+ Tue, 07 Jun 2022 13:36:54 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: peter.maydell@linaro.org,
 	qemu-arm@nongnu.org
-Subject: [PATCH v2 65/71] linux-user/aarch64: Move sve record checks into
- restore
-Date: Tue,  7 Jun 2022 13:33:00 -0700
-Message-Id: <20220607203306.657998-66-richard.henderson@linaro.org>
+Subject: [PATCH v2 51/71] target/arm: Implement BFMOPA, BFMOPS
+Date: Tue,  7 Jun 2022 13:32:46 -0700
+Message-Id: <20220607203306.657998-52-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20220607203306.657998-1-richard.henderson@linaro.org>
 References: <20220607203306.657998-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::436;
- envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x436.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::536;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pg1-x536.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -109,124 +108,153 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: lTp2wa9OJKzL
-
-Move the checks out of the parsing loop and into the
-restore function.  This more closely mirrors the code
-structure in the kernel, and is slightly clearer.
-
-Reject rather than silently skip incorrect VL and SVE record sizes.
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: OiVL+MRivPEP
 
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- linux-user/aarch64/signal.c | 51 +++++++++++++++++++++++++------------
- 1 file changed, 35 insertions(+), 16 deletions(-)
+ target/arm/helper-sme.h    |  2 ++
+ target/arm/sme_helper.c    | 52 ++++++++++++++++++++++++++++++++++++++
+ target/arm/translate-sme.c | 29 +++++++++++++++++++++
+ target/arm/sme.decode      |  2 ++
+ 4 files changed, 85 insertions(+)
 
-diff --git a/linux-user/aarch64/signal.c b/linux-user/aarch64/signal.c
-index 9ff79da4be..22d0b8b4ec 100644
---- a/linux-user/aarch64/signal.c
-+++ b/linux-user/aarch64/signal.c
-@@ -250,12 +250,36 @@ static void target_restore_fpsimd_record(CPUARMState *env,
-     }
+diff --git a/target/arm/helper-sme.h b/target/arm/helper-sme.h
+index 727095a3eb..6b36542133 100644
+--- a/target/arm/helper-sme.h
++++ b/target/arm/helper-sme.h
+@@ -124,3 +124,5 @@ DEF_HELPER_FLAGS_7(sme_fmopa_s, TCG_CALL_NO_RWG,
+                    void, ptr, ptr, ptr, ptr, ptr, ptr, i32)
+ DEF_HELPER_FLAGS_7(sme_fmopa_d, TCG_CALL_NO_RWG,
+                    void, ptr, ptr, ptr, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_6(sme_bfmopa, TCG_CALL_NO_RWG,
++                   void, ptr, ptr, ptr, ptr, ptr, i32)
+diff --git a/target/arm/sme_helper.c b/target/arm/sme_helper.c
+index 62d9690cae..61bab73cb7 100644
+--- a/target/arm/sme_helper.c
++++ b/target/arm/sme_helper.c
+@@ -964,3 +964,55 @@ void HELPER(sme_fmopa_d)(void *vza, void *vzn, void *vzm, void *vpn,
+ 
+     set_default_nan_mode(save_dn, vst);
  }
- 
--static void target_restore_sve_record(CPUARMState *env,
--                                      struct target_sve_context *sve, int vq)
-+static bool target_restore_sve_record(CPUARMState *env,
-+                                      struct target_sve_context *sve,
-+                                      int size)
- {
--    int i, j;
-+    int i, j, vl, vq;
- 
--    /* Note that SVE regs are stored as a byte stream, with each byte element
-+    if (!cpu_isar_feature(aa64_sve, env_archcpu(env))) {
-+        return false;
++
++/*
++ * Alter PAIR as needed for controlling predicates being false,
++ * and for NEG on an enabled row element.
++ */
++static inline uint32_t f16mop_adj_pair(uint32_t pair, uint32_t pg, uint32_t neg)
++{
++    pair ^= neg;
++    if (!(pg & 1)) {
++        pair &= 0xffff0000u;
 +    }
-+
-+    __get_user(vl, &sve->vl);
-+    vq = sve_vq(env);
-+
-+    /* Reject mismatched VL. */
-+    if (vl != vq * TARGET_SVE_VQ_BYTES) {
-+        return false;
++    if (!(pg & 4)) {
++        pair &= 0x0000ffffu;
 +    }
++    return pair;
++}
 +
-+    /* Accept empty record -- used to clear PSTATE.SM. */
-+    if (size <= sizeof(*sve)) {
++void HELPER(sme_bfmopa)(void *vza, void *vzn, void *vzm, void *vpn,
++                        void *vpm, uint32_t desc)
++{
++    intptr_t row, col, oprsz = simd_maxsz(desc);
++    uint32_t neg = simd_data(desc) << 15;
++    uint16_t *pn = vpn, *pm = vpm;
++
++    for (row = 0; row < oprsz; ) {
++        uint16_t pa = pn[H2(row >> 4)];
++        do {
++            void *vza_row = vza + row * sizeof(ARMVectorReg);
++            uint32_t n = *(uint32_t *)(vzn + row);
++
++            n = f16mop_adj_pair(n, pa, neg);
++
++            for (col = 0; col < oprsz; ) {
++                uint16_t pb = pm[H2(col >> 4)];
++                do {
++                    if ((pa & 0b0101) == 0b0101 || (pb & 0b0101) == 0b0101) {
++                        uint32_t *a = vza_row + col;
++                        uint32_t m = *(uint32_t *)(vzm + col);
++
++                        m = f16mop_adj_pair(m, pb, neg);
++                        *a = bfdotadd(*a, n, m);
++
++                        col += 4;
++                        pb >>= 4;
++                    }
++                } while (col & 15);
++            }
++            row += 4;
++            pa >>= 4;
++        } while (row & 15);
++    }
++}
+diff --git a/target/arm/translate-sme.c b/target/arm/translate-sme.c
+index e6e4541e76..581bf9174f 100644
+--- a/target/arm/translate-sme.c
++++ b/target/arm/translate-sme.c
+@@ -274,6 +274,32 @@ TRANS_FEAT(ADDVA_s, aa64_sme, do_adda, a, MO_32, gen_helper_sme_addva_s)
+ TRANS_FEAT(ADDHA_d, aa64_sme_i16i64, do_adda, a, MO_64, gen_helper_sme_addha_d)
+ TRANS_FEAT(ADDVA_d, aa64_sme_i16i64, do_adda, a, MO_64, gen_helper_sme_addva_d)
+ 
++static bool do_outprod(DisasContext *s, arg_op *a, MemOp esz,
++                       gen_helper_gvec_5 *fn)
++{
++    uint32_t desc = simd_desc(s->svl, s->svl, a->sub);
++    TCGv_ptr za, zn, zm, pn, pm;
++
++    if (!sme_smza_enabled_check(s)) {
 +        return true;
 +    }
 +
-+    /* Reject non-empty but incomplete record. */
-+    if (size < TARGET_SVE_SIG_CONTEXT_SIZE(vq)) {
-+        return false;
-+    }
++    /* Sum XZR+zad to find ZAd. */
++    za = get_tile_rowcol(s, esz, 31, a->zad, false);
++    zn = vec_full_reg_ptr(s, a->zn);
++    zm = vec_full_reg_ptr(s, a->zm);
++    pn = pred_full_reg_ptr(s, a->pn);
++    pm = pred_full_reg_ptr(s, a->pm);
 +
-+    /*
-+     * Note that SVE regs are stored as a byte stream, with each byte element
-      * at a subsequent address.  This corresponds to a little-endian load
-      * of our 64-bit hunks.
-      */
-@@ -277,6 +301,7 @@ static void target_restore_sve_record(CPUARMState *env,
-             }
-         }
-     }
++    fn(za, zn, zm, pn, pm, tcg_constant_i32(desc));
++
++    tcg_temp_free_ptr(za);
++    tcg_temp_free_ptr(zn);
++    tcg_temp_free_ptr(pn);
++    tcg_temp_free_ptr(pm);
 +    return true;
- }
++}
++
+ static bool do_outprod_fpst(DisasContext *s, arg_op *a, MemOp esz,
+                             gen_helper_gvec_5_ptr *fn)
+ {
+@@ -306,3 +332,6 @@ TRANS_FEAT(FMOPA_s, aa64_sme, do_outprod_fpst,
+            a, MO_32, gen_helper_sme_fmopa_s)
+ TRANS_FEAT(FMOPA_d, aa64_sme_f64f64, do_outprod_fpst,
+            a, MO_64, gen_helper_sme_fmopa_d)
++
++/* TODO: FEAT_EBF16 */
++TRANS_FEAT(BFMOPA, aa64_sme, do_outprod, a, MO_32, gen_helper_sme_bfmopa)
+diff --git a/target/arm/sme.decode b/target/arm/sme.decode
+index ba4774d174..afd9c0dffd 100644
+--- a/target/arm/sme.decode
++++ b/target/arm/sme.decode
+@@ -73,3 +73,5 @@ ADDVA_d         11000000 11 01000 1 ... ... ..... 00 ...        @adda_64
  
- static int target_restore_sigframe(CPUARMState *env,
-@@ -287,7 +312,7 @@ static int target_restore_sigframe(CPUARMState *env,
-     struct target_sve_context *sve = NULL;
-     uint64_t extra_datap = 0;
-     bool used_extra = false;
--    int vq = 0, sve_size = 0;
-+    int sve_size = 0;
- 
-     target_restore_general_frame(env, sf);
- 
-@@ -321,15 +346,9 @@ static int target_restore_sigframe(CPUARMState *env,
-             if (sve || size < sizeof(struct target_sve_context)) {
-                 goto err;
-             }
--            if (cpu_isar_feature(aa64_sve, env_archcpu(env))) {
--                vq = sve_vq(env);
--                sve_size = QEMU_ALIGN_UP(TARGET_SVE_SIG_CONTEXT_SIZE(vq), 16);
--                if (size == sve_size) {
--                    sve = (struct target_sve_context *)ctx;
--                    break;
--                }
--            }
--            goto err;
-+            sve = (struct target_sve_context *)ctx;
-+            sve_size = size;
-+            break;
- 
-         case TARGET_EXTRA_MAGIC:
-             if (extra || size != sizeof(struct target_extra_context)) {
-@@ -362,8 +381,8 @@ static int target_restore_sigframe(CPUARMState *env,
-     }
- 
-     /* SVE data, if present, overwrites FPSIMD data.  */
--    if (sve) {
--        target_restore_sve_record(env, sve, vq);
-+    if (sve && !target_restore_sve_record(env, sve, sve_size)) {
-+        goto err;
-     }
-     unlock_user(extra, extra_datap, 0);
-     return 0;
+ FMOPA_s         10000000 100 ..... ... ... ..... . 00 ..        @op_32
+ FMOPA_d         10000000 110 ..... ... ... ..... . 0 ...        @op_64
++
++BFMOPA          10000001 100 ..... ... ... ..... . 00 ..        @op_32
 -- 
 2.34.1
 

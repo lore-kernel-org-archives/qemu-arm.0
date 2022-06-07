@@ -1,105 +1,105 @@
-Received: by 2002:a19:ee12:0:0:0:0:0 with SMTP id g18csp1975148lfb;
-        Tue, 7 Jun 2022 03:14:34 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzQggkxLAwWWkJiVzV+mxQDva3wlWr3TnmoyfZNj7rL+WCOZSnNWe3xNWqwzOlrU3absVHO
-X-Received: by 2002:a05:622a:188d:b0:304:e2f9:867b with SMTP id v13-20020a05622a188d00b00304e2f9867bmr15296249qtc.199.1654596874450;
-        Tue, 07 Jun 2022 03:14:34 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1654596874; cv=none;
+Received: by 2002:a19:ee12:0:0:0:0:0 with SMTP id g18csp1980925lfb;
+        Tue, 7 Jun 2022 03:24:28 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJz2jwOSjREjdbkmHN2emFY3BawfipGxopp1nYRaoyaJtM/2A3kgmdsC+ZRWrqV53KkUZzdx
+X-Received: by 2002:a05:622a:207:b0:304:da75:438d with SMTP id b7-20020a05622a020700b00304da75438dmr18185561qtx.669.1654597468379;
+        Tue, 07 Jun 2022 03:24:28 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1654597468; cv=none;
         d=google.com; s=arc-20160816;
-        b=PA8CydNkbpdOxigw8/He/oK4zH5zM7oPLejmKcGdBJxScr/B+2aPwbYwq3nBXkANPq
-         BDf8sdIL3k5WQlnYkl7+vzXcoWt2TVHEqrQB3rc68cBtvOoCaBltqsnkpAo9ExjGLMay
-         VEFoO9x0do0DifTg8wMueTKT94+n6xXVsP4hwK+YjfCyT4eeJYO6I1NL3u4CT6d1cF6G
-         YrY/1yG0oeq7bNKnRXDh9WL1tHFSTFBWNBE9yp8RBfnH1ACVxoFilHDf6u2njBAMK311
-         7GiRPJge9FMkZiT2538RYs+gFS3hBTNQ1Tule5Hw9lWKA9EQVF7dTmgAqeoiUtKXoEhv
-         ca7w==
+        b=qjoXKbaz5B/63Ktn8AfWXElkcdNVpHTCdy5gEV0VFEsKU9c9Ab5VhNg09BT7LFT98p
+         k3cHyIHreUHwkYcjDkOPAxujjlb4teyjrZu/RrKQMl75UhH145wPbieL6pSq+ZoRkSoD
+         RD3C8jfpzNk/Ol9+IYJtceCGoWFfVa+LzV142pdebGz6xGkVl4Wi/ZXL49fSRgslqXbQ
+         /3S96nqEQMYq31/wgXe0Rsux/aVojk/NGvDTOo0bwEFvuzcD+YE0inY5N7oDrXVcb+ZL
+         mwtgwL+n3+oXX2tPtjhf86gVJZE1W9crV4LglwTFX+IdZ4P8k2oHwKwt/yp0pECqEq/h
+         BE6w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:cc:to:content-language:subject
-         :user-agent:mime-version:date:message-id;
-        bh=cex/puEx29qazyDUz354W6beCRYOsSbtjfJa+PAkG+s=;
-        b=eeCYsETGnW0JweiUREt5/LWRAvwpfaUccaLupr3BkyxnLAQH32H2N7W0DF17vYqd5X
-         N/zNstlUP1JQsWiQB2RtdJ4xbU2NwauAYiWtsOQB5cZLLS7h2qEuXzsF04Q8yY0nxudd
-         OY7kE7MnlVR21VO/1DtpN00b96l8u1cU857YELQiZzGxOe1JSGvm1G5Ti+I3KBQOAmlq
-         wqXOwim8M+PI68JIUByK64YiFfsubmuhTjkqPMgBCpe4JrcA5/lzkV96j5r8dlus8dWp
-         xZQdyb+YZHMlTLcLXDlRqKfYo4BY4IT9GMSeG3jaSA6A/1AU+2mbveka7MsXyXi8hn7z
-         +WJA==
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=158CzHbpaTbWJqQiRq3juohgXzQ6HLt89e6fhzrQJ2Q=;
+        b=ryxj238aYrZN7Dp20C9fxjd4ZrsT5HeGhkbIkj645BfOLDfq6cwSTw4gp92W0mNfPt
+         KDLKMoVTr+5P16guJRvJhxMB27cgMViwoCs2GBLDPJMRwp+TliDaImV5hW3XCD18NXbT
+         9Ny/jNqvEIZX8CcYRKDJlHY0k+PgPG6gG0+AlFY2/ZPktQW4KbVHpuJCc06oW5fdtJv3
+         d/hxfzHPhqICT7Zi6xsWeB/9hL/XWBy5yU9AEUccoABT632qlWYPS0U3Hy2lvYufUZEu
+         XtotdRx0X0FjjEBYS529upjYcrDJrw7/vF2Ejz8jjf2IyzorsMnHFdw9vW3oAbAybWOJ
+         NKiQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@linaro.org header.s=google header.b=s4AtW5AF;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v3-20020a37dc03000000b006a6afed0b5bsi4105094qki.383.2022.06.07.03.14.34
+        by mx.google.com with ESMTPS id g4-20020a37e204000000b006a6afd621f3si4035576qki.720.2022.06.07.03.24.28
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 07 Jun 2022 03:14:34 -0700 (PDT)
+        Tue, 07 Jun 2022 03:24:28 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:49354 helo=lists1p.gnu.org)
+       dkim=pass header.i=@linaro.org header.s=google header.b=s4AtW5AF;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:59982 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nyWEL-00006m-VA
-	for alex.bennee@linaro.org; Tue, 07 Jun 2022 06:14:33 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34084)
+	id 1nyWNv-0000EO-Rq
+	for alex.bennee@linaro.org; Tue, 07 Jun 2022 06:24:27 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:34514)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1nyVyG-00023k-VY
- for qemu-devel@nongnu.org; Tue, 07 Jun 2022 05:58:01 -0400
-Received: from smtpout2.mo529.mail-out.ovh.net ([79.137.123.220]:56263)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1nyVyD-0004Wx-Ck
- for qemu-devel@nongnu.org; Tue, 07 Jun 2022 05:57:56 -0400
-Received: from mxplan5.mail.ovh.net (unknown [10.108.4.12])
- by mo529.mail-out.ovh.net (Postfix) with ESMTPS id 82DAF10858136;
- Tue,  7 Jun 2022 11:57:44 +0200 (CEST)
-Received: from kaod.org (37.59.142.109) by DAG4EX1.mxp5.local (172.16.2.31)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.9; Tue, 7 Jun 2022
- 11:57:42 +0200
-Authentication-Results: garm.ovh; auth=pass
- (GARM-109S00394ed4ecc-cff8-4b05-95fa-e8513ab5fe67,
- B3A9F5ABA359FFEAA5F192A1B4EC97B2EEB111D0) smtp.auth=clg@kaod.org
-X-OVh-ClientIp: 82.64.250.170
-Message-ID: <d244b9d9-3907-132c-cad3-ff31393b31fe@kaod.org>
-Date: Tue, 7 Jun 2022 11:57:42 +0200
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1nyVyx-0003KX-By
+ for qemu-devel@nongnu.org; Tue, 07 Jun 2022 05:58:39 -0400
+Received: from mail-yw1-x112a.google.com ([2607:f8b0:4864:20::112a]:46340)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1nyVyv-0004fs-Lg
+ for qemu-devel@nongnu.org; Tue, 07 Jun 2022 05:58:38 -0400
+Received: by mail-yw1-x112a.google.com with SMTP id
+ 00721157ae682-30c1c9b9b6cso169308697b3.13
+ for <qemu-devel@nongnu.org>; Tue, 07 Jun 2022 02:58:37 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=158CzHbpaTbWJqQiRq3juohgXzQ6HLt89e6fhzrQJ2Q=;
+ b=s4AtW5AFDmTl44w4YQ+vm27DJGHGdyDKDEJqx+zAC1odLJPwFL0OY+mNOoRFNC6wC3
+ Y+kgJ7mnWKqjwncJ85+nk+W2lMzximpaefH2PGKE7DWPM4FjW9cZmvMu9gASo6ia4xK2
+ Qb49SK9sLkIoPDG4SPd5wGolMzvpCQk+X3pZgos6BsLqrlK9jt/JQImcTXl0HXSFA4Qg
+ bmqtWRmArVrq0oWE1nmzoLOnQ8p5cIc26E8F50U9kgpW8Xr7ZZvJy7PO/q2jEwQJCSf2
+ UKYym/9DShU/rTSU+HZv/iVqUNgQGqmWZJhbtzmsbHdEc9OoMFwVnah+50mk89heMt3/
+ BVkg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=158CzHbpaTbWJqQiRq3juohgXzQ6HLt89e6fhzrQJ2Q=;
+ b=GU5qLhH5tW3/HTUIG7Mx0pf/VMo58hIUi9nM4rN6MVWkMeC4xRWHsNOYEMEHZleKRa
+ ux+SaS7Abjm5JESq6lklFTTG+zo8Vls2aj0llBYoHaCzQnmB+C7/LDbMVBZ5wY5AvGVE
+ 5j5H1ZF5wa6a5KHhpXxuryqxq18TGu2kSw6xeB8nMLHHkSkkTrLcrl62nxUCMw7aeHzx
+ cgC+TUXZa09axYDQIA2djkvuuRRGuKjhI3Wu1quSM2/2MGpm/WwCUnHTd3f504b5b+jU
+ PHF+KEyne96NR/DpxjiCT7YfKXP8FwfbflsM0j7HCaFS/7R3GNNJnxOQ4t8OYxZqPd0L
+ MIdQ==
+X-Gm-Message-State: AOAM530CcNKeKYTShllmHa/Ye8tI7eJr4gApUwGdZRxDULaHgyzLTnKx
+ bo14NGa8DlNJplohRc31P1zYW0824kCeU/QKIsMj8g==
+X-Received: by 2002:a0d:fc83:0:b0:2e5:b0f4:c125 with SMTP id
+ m125-20020a0dfc83000000b002e5b0f4c125mr31278848ywf.347.1654595916542; Tue, 07
+ Jun 2022 02:58:36 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.9.0
-Subject: Re: [PATCH 04/21] aspeed: i2c: Use reg array instead of individual
- vars
-Content-Language: en-US
-To: Joel Stanley <joel@jms.id.au>
-CC: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>,
- Peter Maydell <peter.maydell@linaro.org>, Joe Komlodi <komlodi@google.com>,
- Troy Lee <troy_lee@aspeedtech.com>, Jamin Lin <jamin_lin@aspeedtech.com>,
- Steven Lee <steven_lee@aspeedtech.com>, Klaus Jensen <k.jensen@samsung.com>,
- Peter Delevoryas <pdel@fb.com>, Corey Minyard <cminyard@mvista.com>, Jonathan
- Cameron <Jonathan.Cameron@huawei.com>, Damien Hedde
- <damien.hedde@greensocs.com>, Andrew Jeffery <andrew@aj.id.au>, Cleber Rosa
- <crosa@redhat.com>, =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?=
- <f4bug@amsat.org>, Wainer dos Santos Moschetta <wainersm@redhat.com>, Beraldo
- Leal <bleal@redhat.com>
-References: <20220606150732.2282041-1-clg@kaod.org>
- <20220606150732.2282041-5-clg@kaod.org>
- <CACPK8Xe1n-N157r9Ea8DR_7TK6qDbe4Z-9z+qvRfOWU+RxJuSg@mail.gmail.com>
-From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
-In-Reply-To: <CACPK8Xe1n-N157r9Ea8DR_7TK6qDbe4Z-9z+qvRfOWU+RxJuSg@mail.gmail.com>
-Content-Type: text/plain; charset="UTF-8"; format=flowed
-Content-Transfer-Encoding: 8bit
-X-Originating-IP: [37.59.142.109]
-X-ClientProxiedBy: DAG8EX1.mxp5.local (172.16.2.71) To DAG4EX1.mxp5.local
- (172.16.2.31)
-X-Ovh-Tracer-GUID: df2abb35-4f88-4d2f-b4de-a344acc4b0b2
-X-Ovh-Tracer-Id: 2384656005477338058
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvfedruddthedgvdduucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhepkfffgggfuffvvehfhfgjtgfgihesthekredttdefjeenucfhrhhomhepveorughrihgtpgfnvggpifhorghtvghruceotghlgheskhgrohgurdhorhhgqeenucggtffrrghtthgvrhhnpeekteejtdelkeejvdevffduhfetteelieefgeefffeugffhfeekheffueefledujeenucfkpheptddrtddrtddrtddpfeejrdehledrudegvddruddtleenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhhouggvpehsmhhtphhouhhtpdhhvghlohepmhigphhlrghnhedrmhgrihhlrdhovhhhrdhnvghtpdhinhgvtheptddrtddrtddrtddpmhgrihhlfhhrohhmpegtlhhgsehkrghougdrohhrghdpnhgspghrtghpthhtohepuddprhgtphhtthhopegslhgvrghlsehrvgguhhgrthdrtghomhdpoffvtefjohhsthepmhhohedvle
-Received-SPF: pass client-ip=79.137.123.220; envelope-from=clg@kaod.org;
- helo=smtpout2.mo529.mail-out.ovh.net
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
+References: <20220602214853.496211-1-richard.henderson@linaro.org>
+ <20220602214853.496211-40-richard.henderson@linaro.org>
+In-Reply-To: <20220602214853.496211-40-richard.henderson@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 7 Jun 2022 10:58:26 +0100
+Message-ID: <CAFEAcA-UeGqXp4wUSoR73pCUBm9_WEB_MeAKsdXQOvnK+ajWVg@mail.gmail.com>
+Subject: Re: [PATCH 39/71] target/arm: Add SVL to TB flags
+To: Richard Henderson <richard.henderson@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::112a;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x112a.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -114,78 +114,57 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 49fvHvPGPw9C
+X-TUID: jHIMQ79HHYFt
 
-On 6/7/22 01:49, Joel Stanley wrote:
-> On Mon, 6 Jun 2022 at 15:08, Cédric Le Goater <clg@kaod.org> wrote:
->>
->> From: Joe Komlodi <komlodi@google.com>
->>
->> Using a register array will allow us to represent old-mode and new-mode
->> I2C registers by using the same underlying register array, instead of
->> adding an entire new set of variables to represent new mode.
-> 
-> The downside of this approach is you lose the safety of having
-> discrete types. A write to s->regs[R_FOO] can overwrite R_BAR.
-> 
-> 
->>
->> As part of this, we also do additional cleanup to use ARRAY_FIELD_
->> macros instead of FIELD_ macros on registers.
->>
->> Signed-off-by: Joe Komlodi <komlodi@google.com>
->> Change-Id: Ib94996b17c361b8490c042b43c99d8abc69332e3
->> Message-Id: <20220331043248.2237838-5-komlodi@google.com>
->> Signed-off-by: Cédric Le Goater <clg@kaod.org>
->> ---
->>   include/hw/i2c/aspeed_i2c.h |  11 +-
->>   hw/i2c/aspeed_i2c.c         | 286 +++++++++++++++++-------------------
->>   2 files changed, 133 insertions(+), 164 deletions(-)
-> 
->> @@ -858,12 +834,12 @@ static void aspeed_i2c_bus_reset(DeviceState *dev)
->>   {
->>       AspeedI2CBus *s = ASPEED_I2C_BUS(dev);
->>
->> -    s->intr_ctrl = 0;
->> -    s->intr_status = 0;
->> -    s->cmd = 0;
->> -    s->buf = 0;
->> -    s->dma_addr = 0;
->> -    s->dma_len = 0;
->> +    s->regs[R_I2CD_INTR_CTRL] = 0;
->> +    s->regs[R_I2CD_INTR_STS] = 0;
->> +    s->regs[R_I2CD_CMD] = 0;
->> +    s->regs[R_I2CD_BYTE_BUF] = 0;
->> +    s->regs[R_I2CD_DMA_ADDR] = 0;
->> +    s->regs[R_I2CD_DMA_LEN] = 0;
-> 
-> Could this become a memset of s->regs?
+On Thu, 2 Jun 2022 at 23:18, Richard Henderson
+<richard.henderson@linaro.org> wrote:
+>
+> We need SVL separate from VL for RDSVL at al, as well as
 
-yes. It should. I can take care of it.
+"et al"
 
-Thanks,
+> ZA storage loads and stores, which do not require PSTATE.SM.
+>
+> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+> ---
+>  target/arm/cpu.h           | 12 ++++++++++++
+>  target/arm/translate.h     |  1 +
+>  target/arm/helper.c        |  8 +++++++-
+>  target/arm/translate-a64.c |  1 +
+>  4 files changed, 21 insertions(+), 1 deletion(-)
+>
+> diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+> index e41a75a3a3..0c32c3afaa 100644
+> --- a/target/arm/cpu.h
+> +++ b/target/arm/cpu.h
+> @@ -3292,6 +3292,7 @@ FIELD(TBFLAG_A64, MTE0_ACTIVE, 19, 1)
+>  FIELD(TBFLAG_A64, SMEEXC_EL, 20, 2)
+>  FIELD(TBFLAG_A64, PSTATE_SM, 22, 1)
+>  FIELD(TBFLAG_A64, PSTATE_ZA, 23, 1)
+> +FIELD(TBFLAG_A64, SVL, 24, 4)
 
-C.
+Given that both SVE and SME start with an 'S', maybe
+"SME_VL" would be less prone to confusion? On the other hand,
+SVL is the architectural name, so maybe that's best.
 
-> 
->>       i2c_end_transfer(s->bus);
->>   }
->>
->> @@ -921,10 +897,10 @@ static qemu_irq aspeed_2400_i2c_bus_get_irq(AspeedI2CBus *bus)
->>   static uint8_t *aspeed_2400_i2c_bus_pool_base(AspeedI2CBus *bus)
->>   {
->>       uint8_t *pool_page =
->> -        &bus->controller->pool[FIELD_EX32(bus->ctrl, I2CD_FUN_CTRL,
->> -                                          POOL_PAGE_SEL) * 0x100];
->> +        &bus->controller->pool[ARRAY_FIELD_EX32(bus->regs, I2CD_FUN_CTRL,
->> +                                                POOL_PAGE_SEL) * 0x100];
->>
->> -    return &pool_page[FIELD_EX32(bus->pool_ctrl, I2CD_POOL_CTRL, OFFSET)];
->> +    return &pool_page[ARRAY_FIELD_EX32(bus->regs, I2CD_POOL_CTRL, OFFSET)];
->>   }
->>
->>   static void aspeed_2400_i2c_class_init(ObjectClass *klass, void *data)
->> --
->> 2.35.3
->>
+>  /*
+>   * Helpers for using the above.
+> @@ -3337,6 +3338,17 @@ static inline int sve_vq_cached(CPUARMState *env)
+>      return EX_TBFLAG_A64(env->hflags, VL) + 1;
+>  }
+>
+> +/**
+> + * sme_vq_cached
+> + * @env: the cpu context
+> + *
+> + * Return the SVL cached within env->hflags, in units of quadwords.
+> + */
+> +static inline int sme_vq_cached(CPUARMState *env)
 
+Same remark as earlier about not needing to put "cached" in the function name.
+
+Otherwise
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+
+thanks
+-- PMM

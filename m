@@ -1,106 +1,106 @@
-Received: by 2002:a19:ee12:0:0:0:0:0 with SMTP id g18csp2415695lfb;
-        Tue, 7 Jun 2022 14:04:56 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyIOUTaOH05y7kToeMrpXRoijAM2cSPkmYvCUed6wuOR6AIJsK1f7Kbm14PUt0JcnR7uP7U
-X-Received: by 2002:a05:622a:130b:b0:2fc:1be0:711f with SMTP id v11-20020a05622a130b00b002fc1be0711fmr24220973qtk.517.1654635895874;
-        Tue, 07 Jun 2022 14:04:55 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1654635895; cv=none;
+Received: by 2002:a19:ee12:0:0:0:0:0 with SMTP id g18csp2416936lfb;
+        Tue, 7 Jun 2022 14:07:14 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJw6lafX7qSQchhx8Dtf+J6dFJy2geDKuy/xzEgRv/ppNcm5/WFYOgP6Tt2CH2FI+XpVjn5H
+X-Received: by 2002:a0c:fbc4:0:b0:467:d5e3:af2d with SMTP id n4-20020a0cfbc4000000b00467d5e3af2dmr20741774qvp.115.1654636034637;
+        Tue, 07 Jun 2022 14:07:14 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1654636034; cv=none;
         d=google.com; s=arc-20160816;
-        b=WITNoAZxTCnB2xHfgPzOWtCBhEshc5Nt2gOInSVpXkiEHIeK2V+Iwg2nDWceSvDFxd
-         xUrhrdSdY8+PR/BS8U6dxyGvr16c5Yxb4voyV+1CRheRujUhlwc51hPzLj+cX91sDu+g
-         5ebnLls6lqUp/WaQTCp2cW32RbDib9lrCdnZVg6nu+zQyvacyskHzRrCHN8DgkbWhoYZ
-         pYwgjaI8xbYO6nkQuNRv9Y9rqcAL1Q+vJ86+bCyKjym4sghkiRHtV/QQcoN/LrXG6xxl
-         WEI199SY9w8BYH5fdPX867S6LowaAsd2XFYHVvsg8BCRCvsrBOrJp+cKYopoCeWlT6XJ
-         5aAg==
+        b=LUpjD2RdcE0tpuNa34Wnx3Nml/Uz6Hi+6YcT2PfAiThc3SZiQMVWLZ+iX9gtvGyARx
+         5CGCPztgLjTCLYhKzMHs13rBUXf1PO6hxuogop8/5HgD5doo3chwBPN+5mhvvaCQ7pDk
+         zMP6JIYmag/fPnIFGISoqp2/Pg4bv3u6g9nhkAGZ4OIdTkjnThnn8uzuBBN/LgarNj+j
+         7p0cHdCwmH4xCWKcjqV8dOs1//CftKmFLBiv1WmDxLIUF5xngsU9pBx92OCgyOPqKOFb
+         oCVEWVG/CxXsGf7tIi1aAhhkH6ryPYmkcOdLSXJ0lYBYy1qF7W9evwu1E3zXkAA6mUYC
+         rRHw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=9o/b8H5uwznoVSQFJWAs54gwTyIT2NUPwpnhLmyD5pU=;
-        b=evc8NnaLVpGMW9y1pAiotVjt+K4qpl86ISjLExPhtBRE8N8ogLlestNoq8hJFnZovr
-         c52apnPNWHraz2nDJeTJS7GVniTMW5U9KVMD1O7+GxgbBIdeSm3MU72kuXGdJbQ+w45o
-         fjDSDILkp/RM23JZu1V2niKpDVl/mShK803XGYPGdWjXOEnZROYUvPr0K70am/xmDT5X
-         JIVitbcJEzjC0PEU9NBsJcE97GnTasQzY7CQLiYxTtlSogrLTM1MHd0GcEPrmPjc4Qki
-         Tkub0E6wjPLd6cCL9sc0gtdt+17bbyi+WExYT2SwqxOfjyx1BkJ08mXemWpi2GEhO7zS
-         AFBQ==
+        bh=u3mG8wDmfQDUdFmC25VMT57BuuE4O0ooDRoJ9UT54UY=;
+        b=M7VkU9T2YMr3dab6ze7ZmwuQ98EAdyDdQH27kITmcAP6r8DYz+n6bVBbbjWMAL60EL
+         VPSRO7PFcHJ6N5b2/ZezqdFqNeSe/uRgNpUovoQ7imE6X8BIhEUktK1V8RGeIZV0Dbkx
+         TNcgpvPQ1KHytRmGDSwaDwVwf4CJY2BhiQolslAdWx1JyzrSRVaHzgbX7gNAYFYhl/fw
+         W8LzgIAMMUOS4wdtmJrycTxIOuI3ax+a0b+5X4d3gkcTWj3CtNo5R5Ti5UH42Fohl7qP
+         n9WERHyV/Ow9dqgMwJ3QSWyqF4ePLyKhy1pwK647glU4cOywJWbH5uGh3j0oHaau8n0K
+         fZug==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=ITe3JCHL;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=CTYYilsQ;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s35-20020a05622a1aa300b0030500035135si359536qtc.99.2022.06.07.14.04.55
+        by mx.google.com with ESMTPS id m3-20020a05622a118300b00304da33ef29si8091568qtk.314.2022.06.07.14.07.14
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 07 Jun 2022 14:04:55 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 07 Jun 2022 14:07:14 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=ITe3JCHL;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=CTYYilsQ;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:56208 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:34282 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nygNj-0008Pr-Bf
-	for alex.bennee@linaro.org; Tue, 07 Jun 2022 17:04:55 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34132)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1nygPy-0004L5-3t
+	for alex.bennee@linaro.org; Tue, 07 Jun 2022 17:07:14 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:34228)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1nyftR-00089B-Oi
- for qemu-devel@nongnu.org; Tue, 07 Jun 2022 16:33:37 -0400
-Received: from mail-pj1-x1034.google.com ([2607:f8b0:4864:20::1034]:46976)
+ id 1nyftU-0008Hd-Jx
+ for qemu-arm@nongnu.org; Tue, 07 Jun 2022 16:33:40 -0400
+Received: from mail-pj1-x1029.google.com ([2607:f8b0:4864:20::1029]:39876)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1nyftM-0007Bp-15
- for qemu-devel@nongnu.org; Tue, 07 Jun 2022 16:33:37 -0400
-Received: by mail-pj1-x1034.google.com with SMTP id
- k5-20020a17090a404500b001e8875e6242so5675467pjg.5
- for <qemu-devel@nongnu.org>; Tue, 07 Jun 2022 13:33:31 -0700 (PDT)
+ id 1nyftN-0007Er-FW
+ for qemu-arm@nongnu.org; Tue, 07 Jun 2022 16:33:40 -0400
+Received: by mail-pj1-x1029.google.com with SMTP id
+ q12-20020a17090a304c00b001e2d4fb0eb4so21871585pjl.4
+ for <qemu-arm@nongnu.org>; Tue, 07 Jun 2022 13:33:32 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=9o/b8H5uwznoVSQFJWAs54gwTyIT2NUPwpnhLmyD5pU=;
- b=ITe3JCHLzVhOr+UyrjeRoG1Tsre/E2JO0xH6C8f470B9+V/OX4e3WIo/3rTYzPWD1g
- Qwa2aOXbLJX+R9EHZh/CkLc7h4KwD9odPVwmrCw1FG7sfHhjS466bZx4h8wiUwtzC8dw
- ME4cU9k/vW9iCY85yOJJTLTFdrQM0RE105CU8s9O9b/EyFNuWdjxckIZN19z/z/+8EMv
- o+cp09LHAVO8dpZVUTzhmXy1LcnjMwIjfhRuGgT3NnoKd72UBwUjevbB7WK63oMPkxSW
- m563E7GO7U/gHi5qCPnJ2/ccJBICBI8g8jlLicYs5eRFdPAn9lNGsG2onkqdBB7lcSDI
- QnWQ==
+ bh=u3mG8wDmfQDUdFmC25VMT57BuuE4O0ooDRoJ9UT54UY=;
+ b=CTYYilsQNzBZqcdO4ar0ypDz5XZ1HXOYderHcVkiFB0jXBbSWFi4bUoAo7VXRitVVv
+ 61nFUoZ8nqPyekHUfDHZB/F37jEcQ/zP4GChaB7g9iTZRopCIX9Vnr0NzIYi7D6uk/ct
+ K1+DSehphgD8MB5S0GefEEKa80oi9qRPlQpLaj2isJ6j761YqiHZTl9miOAE30yYjzEb
+ zVKwJNeVPj0Z0DfVcE19QIJufcnKlOwljCL/45jjjHiAH3ZEZl9/I3QUwpsoCgZfMJgR
+ oTnYZ2ievOWB2FNlx6ic0dttj32ApYl41HyK0uedVJnJbBIOEkCMEXhGRXVE0x3vaBx+
+ YObg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=9o/b8H5uwznoVSQFJWAs54gwTyIT2NUPwpnhLmyD5pU=;
- b=Dzjb1nEeUQvWLo/CJHRB2iAM1YxxrLzdehZx5z8evhLZOtG3kN2ghTewN3KqA5gZce
- CncPp4INn4SzDk7pmWN+TnBYDA7tvARVvNjFnM5gmvYlmP1IUor4BXAU/Wx42ktWolaJ
- Jm3QDK3+xARJQZJac0LQLcNIa5DmSZxrOZ+UQPELzp6O3BZtnt1pf1CwgqYVpKLqaOr2
- 8exDd6hGQ7cihF4fXbbzqtX/uIughKJj+nT875PlWhNRRDdpj3Vw6dodInlOHlCBXs+p
- ppRV8mm+BFqSlmSkTiqYPxe1qYqUqNvNTBB0uFEiSk/nnCor6fzaSXa2Rq5+/MrnwKRA
- RnXQ==
-X-Gm-Message-State: AOAM5321qJP8diWpoUWLsDEj3F0K10buDsBL2DDiupuqqaeJ4QsFcLGU
- EfJu2VaRp85JiX1wxwez0BivxWiPdht5XA==
-X-Received: by 2002:a17:902:d504:b0:167:756a:f99d with SMTP id
- b4-20020a170902d50400b00167756af99dmr13702910plg.6.1654634011200; 
- Tue, 07 Jun 2022 13:33:31 -0700 (PDT)
+ bh=u3mG8wDmfQDUdFmC25VMT57BuuE4O0ooDRoJ9UT54UY=;
+ b=DA4KOK0k/J6H/63KYOaRbUXeIu/3ez32b8ar6WmmGW17+LF1v2BWQlFJ3H6eRkCV7c
+ ZEw082EBtc+s9S3soCZx6KkjggiDI1PRRMfnhG+Fv9Nv+L1YVN3Dm47CXs23fgxHAhkq
+ 0b+ROdpzQCQUGJyCWWpEQ/AAXZYUBIow5fCbz/G0dJJcYtFHQbGc82gcAn8dmUh8q5MV
+ OjP1oEELNfSLxc0/oBlzg4FTab7c+TzympTBjsP0gv5q+CX5ZTdD1fVZ0XeYTuFNu8IE
+ KVk6/57RLD3+RzSJpPsnR2C0zdOF27LdV+2KBfWR7cs0jXKIAH1OTMBsjSyj5oisGED5
+ g0mQ==
+X-Gm-Message-State: AOAM531HIg0Tt5a5/sko0/PqOVdQYxJZOCNlT4pYL2YeQ3zByAux2OxR
+ oLhAtcIu+c8j3fiSTFL1lsbztw==
+X-Received: by 2002:a17:90a:ce07:b0:1e3:50eb:64d with SMTP id
+ f7-20020a17090ace0700b001e350eb064dmr41160732pju.22.1654634012639; 
+ Tue, 07 Jun 2022 13:33:32 -0700 (PDT)
 Received: from stoup.. ([2602:ae:1547:e101:3cf2:c634:5b19:25f6])
  by smtp.gmail.com with ESMTPSA id
- s22-20020a17090aba1600b001d9780b7779sm4227856pjr.15.2022.06.07.13.33.30
+ s22-20020a17090aba1600b001d9780b7779sm4227856pjr.15.2022.06.07.13.33.31
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 07 Jun 2022 13:33:30 -0700 (PDT)
+ Tue, 07 Jun 2022 13:33:32 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: peter.maydell@linaro.org,
 	qemu-arm@nongnu.org
-Subject: [PATCH v2 26/71] target/arm: Add SMCR_ELx
-Date: Tue,  7 Jun 2022 13:32:21 -0700
-Message-Id: <20220607203306.657998-27-richard.henderson@linaro.org>
+Subject: [PATCH v2 27/71] target/arm: Add SMIDR_EL1, SMPRI_EL1, SMPRIMAP_EL2
+Date: Tue,  7 Jun 2022 13:32:22 -0700
+Message-Id: <20220607203306.657998-28-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20220607203306.657998-1-richard.henderson@linaro.org>
 References: <20220607203306.657998-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1034;
- envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x1034.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1029;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x1029.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -109,120 +109,78 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: XM+GQUmC3WjR
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: rvrCkfA9wddt
 
-These cpregs control the streaming vector length and whether the
-full a64 instruction set is allowed while in streaming mode.
+Implement the streaming mode identification register, and the
+two streaming priority registers.  For QEMU, they are all RES0.
 
 Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/cpu.h    |  8 ++++++--
- target/arm/helper.c | 41 +++++++++++++++++++++++++++++++++++++++++
- 2 files changed, 47 insertions(+), 2 deletions(-)
+ target/arm/helper.c | 33 +++++++++++++++++++++++++++++++++
+ 1 file changed, 33 insertions(+)
 
-diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index f1a459af8b..2f43b00843 100644
---- a/target/arm/cpu.h
-+++ b/target/arm/cpu.h
-@@ -669,8 +669,8 @@ typedef struct CPUArchState {
-         float_status standard_fp_status;
-         float_status standard_fp_status_f16;
- 
--        /* ZCR_EL[1-3] */
--        uint64_t zcr_el[4];
-+        uint64_t zcr_el[4];   /* ZCR_EL[1-3] */
-+        uint64_t smcr_el[4];  /* SMCR_EL[1-3] */
-     } vfp;
-     uint64_t exclusive_addr;
-     uint64_t exclusive_val;
-@@ -1434,6 +1434,10 @@ FIELD(CPTR_EL3, TCPAC, 31, 1)
- FIELD(SVCR, SM, 0, 1)
- FIELD(SVCR, ZA, 1, 1)
- 
-+/* Fields for SMCR_ELx. */
-+FIELD(SMCR, LEN, 0, 4)
-+FIELD(SMCR, FA64, 31, 1)
-+
- /* Write a new value to v7m.exception, thus transitioning into or out
-  * of Handler mode; this may result in a change of active stack pointer.
-  */
 diff --git a/target/arm/helper.c b/target/arm/helper.c
-index e2d6d89a5d..46318515a8 100644
+index 46318515a8..e7e94213b1 100644
 --- a/target/arm/helper.c
 +++ b/target/arm/helper.c
-@@ -5883,6 +5883,8 @@ static void define_arm_vh_e2h_redirects_aliases(ARMCPU *cpu)
-          */
-         { K(3, 0,  1, 2, 0), K(3, 4,  1, 2, 0), K(3, 5, 1, 2, 0),
-           "ZCR_EL1", "ZCR_EL2", "ZCR_EL12", isar_feature_aa64_sve },
-+        { K(3, 0,  1, 2, 6), K(3, 4,  1, 2, 6), K(3, 5, 1, 2, 6),
-+          "SMCR_EL1", "SMCR_EL2", "SMCR_EL12", isar_feature_aa64_sme },
- 
-         { K(3, 0,  5, 6, 0), K(3, 4,  5, 6, 0), K(3, 5, 5, 6, 0),
-           "TFSR_EL1", "TFSR_EL2", "TFSR_EL12", isar_feature_aa64_mte },
-@@ -6361,6 +6363,30 @@ static void svcr_write(CPUARMState *env, const ARMCPRegInfo *ri,
-     env->svcr = value;
+@@ -6355,6 +6355,18 @@ static CPAccessResult access_tpidr2(CPUARMState *env, const ARMCPRegInfo *ri,
+     return CP_ACCESS_OK;
  }
  
-+static void smcr_write(CPUARMState *env, const ARMCPRegInfo *ri,
-+                       uint64_t value)
++static CPAccessResult access_esm(CPUARMState *env, const ARMCPRegInfo *ri,
++                                 bool isread)
 +{
-+    int cur_el = arm_current_el(env);
-+    int old_len = sve_vqm1_for_el(env, cur_el);
-+    int new_len;
-+
-+    QEMU_BUILD_BUG_ON(ARM_MAX_VQ > R_SMCR_LEN_MASK + 1);
-+    value &= R_SMCR_LEN_MASK | R_SMCR_FA64_MASK;
-+    raw_write(env, ri, value);
-+
-+    /*
-+     * Note that it is CONSTRAINED UNPREDICTABLE what happens to ZA storage
-+     * when SVL is widened (old values kept, or zeros).  Choose to keep the
-+     * current values for simplicity.  But for QEMU internals, we must still
-+     * apply the narrower SVL to the Zregs and Pregs -- see the comment
-+     * above aarch64_sve_narrow_vq.
-+     */
-+    new_len = sve_vqm1_for_el(env, cur_el);
-+    if (new_len < old_len) {
-+        aarch64_sve_narrow_vq(env, new_len + 1);
++    /* TODO: FEAT_FGT for SMPRI_EL1 but not SMPRIMAP_EL2 */
++    if (arm_current_el(env) < 3
++        && arm_feature(env, ARM_FEATURE_EL3)
++        && !FIELD_EX64(env->cp15.cptr_el[3], CPTR_EL3, ESM)) {
++        return CP_ACCESS_TRAP_EL3;
 +    }
++    return CP_ACCESS_OK;
 +}
 +
- static const ARMCPRegInfo sme_reginfo[] = {
-     { .name = "TPIDR2_EL0", .state = ARM_CP_STATE_AA64,
-       .opc0 = 3, .opc1 = 3, .crn = 13, .crm = 0, .opc2 = 5,
-@@ -6371,6 +6397,21 @@ static const ARMCPRegInfo sme_reginfo[] = {
-       .access = PL0_RW, .type = ARM_CP_SME,
-       .fieldoffset = offsetof(CPUARMState, svcr),
-       .writefn = svcr_write, .raw_writefn = raw_write },
-+    { .name = "SMCR_EL1", .state = ARM_CP_STATE_AA64,
-+      .opc0 = 3, .opc1 = 0, .crn = 1, .crm = 2, .opc2 = 6,
-+      .access = PL1_RW, .type = ARM_CP_SME,
-+      .fieldoffset = offsetof(CPUARMState, vfp.smcr_el[1]),
-+      .writefn = smcr_write, .raw_writefn = raw_write },
-+    { .name = "SMCR_EL2", .state = ARM_CP_STATE_AA64,
-+      .opc0 = 3, .opc1 = 4, .crn = 1, .crm = 2, .opc2 = 6,
-+      .access = PL2_RW, .type = ARM_CP_SME,
-+      .fieldoffset = offsetof(CPUARMState, vfp.smcr_el[2]),
-+      .writefn = smcr_write, .raw_writefn = raw_write },
-+    { .name = "SMCR_EL3", .state = ARM_CP_STATE_AA64,
-+      .opc0 = 3, .opc1 = 6, .crn = 1, .crm = 2, .opc2 = 6,
-+      .access = PL3_RW, .type = ARM_CP_SME,
-+      .fieldoffset = offsetof(CPUARMState, vfp.smcr_el[3]),
-+      .writefn = smcr_write, .raw_writefn = raw_write },
+ static void svcr_write(CPUARMState *env, const ARMCPRegInfo *ri,
+                        uint64_t value)
+ {
+@@ -6412,6 +6424,27 @@ static const ARMCPRegInfo sme_reginfo[] = {
+       .access = PL3_RW, .type = ARM_CP_SME,
+       .fieldoffset = offsetof(CPUARMState, vfp.smcr_el[3]),
+       .writefn = smcr_write, .raw_writefn = raw_write },
++    { .name = "SMIDR_EL1", .state = ARM_CP_STATE_AA64,
++      .opc0 = 3, .opc1 = 1, .crn = 0, .crm = 0, .opc2 = 6,
++      .access = PL1_R, .accessfn = access_aa64_tid1,
++      /*
++       * IMPLEMENTOR = 0 (software)
++       * REVISION    = 0 (implementation defined)
++       * SMPS        = 0 (no streaming execution priority in QEMU)
++       * AFFINITY    = 0 (streaming sve mode not shared with other PEs)
++       */
++      .type = ARM_CP_CONST, .resetvalue = 0, },
++    /*
++     * Because SMIDR_EL1.SMPS is 0, SMPRI_EL1 and SMPRIMAP_EL2 are RES 0.
++     */
++    { .name = "SMPRI_EL1", .state = ARM_CP_STATE_AA64,
++      .opc0 = 3, .opc1 = 0, .crn = 1, .crm = 2, .opc2 = 4,
++      .access = PL1_RW, .accessfn = access_esm,
++      .type = ARM_CP_CONST, .resetvalue = 0 },
++    { .name = "SMPRIMAP_EL2", .state = ARM_CP_STATE_AA64,
++      .opc0 = 3, .opc1 = 4, .crn = 1, .crm = 2, .opc2 = 5,
++      .access = PL2_RW, .accessfn = access_esm,
++      .type = ARM_CP_CONST, .resetvalue = 0 },
  };
  #endif /* TARGET_AARCH64 */
  

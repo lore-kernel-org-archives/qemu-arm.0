@@ -1,105 +1,105 @@
-Received: by 2002:a19:ee12:0:0:0:0:0 with SMTP id g18csp2418304lfb;
-        Tue, 7 Jun 2022 14:10:03 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxhT2xf03WH72Dyh0K4ayhOrLyLf3ErmsFMe73sw3OLDgYoTgl9RMuNkc+pCnOk2XpmVZG3
-X-Received: by 2002:ad4:5c4a:0:b0:464:5920:7c1a with SMTP id a10-20020ad45c4a000000b0046459207c1amr34042707qva.58.1654636203053;
-        Tue, 07 Jun 2022 14:10:03 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1654636203; cv=none;
+Received: by 2002:a19:ee12:0:0:0:0:0 with SMTP id g18csp2419366lfb;
+        Tue, 7 Jun 2022 14:12:05 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxCErEU8ZqZe6kSEnnA0E5mNjj1UafMsZvG822ufvI4lRm86vx5cdK6eoxcrZ/ahV5LCcvH
+X-Received: by 2002:a05:622a:4:b0:2fb:4e40:e82d with SMTP id x4-20020a05622a000400b002fb4e40e82dmr24876353qtw.362.1654636325348;
+        Tue, 07 Jun 2022 14:12:05 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1654636325; cv=none;
         d=google.com; s=arc-20160816;
-        b=hqOvewIxpZl+/I7l1gS4WOOqeek1dxKtSkshnU7VkwK0BVUr76tDeOh7nOOxWSQAq0
-         UfJCgtseWmzj05ns9rRjFUPu8/aS5K9bJv2cIaWEduqqzl3rZ+F3NsMy9ygZPSnV38hP
-         W2iLsAi8IPW9B/9Xc2uTKr8FXPDlgIGRLEuc5tEstUurppMIBqL8j7M41gszauOsnOoS
-         OMU8OzKbltHF3d1g20hJvsJjghrrSgAME4fQZ5WRnwW/7YJ9Ver7/O8h7XBYPZZSwG7H
-         hlbpmC1soxqfYFLJHAHVbdQ+RS1W1xFM3IVUu1J1kfTGtUKPLoz3tbVHLEYbKWYELGk+
-         +Duw==
+        b=NA9qDc5IjckBY1pmTxdVWC5r0tmYijySQnNu5b/G79fEN7QWtbtEdxtohLYl73fDzx
+         h5MH7bRCVaYr1tDc6XEDm28zuR2RCsRoo0l2T7sLITAg9FRtSFL6qliwWcg9Dd0+X5Fg
+         OBrTsQBHURGaot0dcgwD9LT9XQHnwlhS9HHQhsCRbkkwL2m+H3D5dKBpgTb44az9pAP1
+         JDOyY7wTJA8fp3TwYQFvUCwMxUpZSpFCeBAc1/lJGIOxKeqS7eu0C8GG4SgqQEQOGNvk
+         H9zgCQFPK9mLFgKj3SIfhj5RI9CmTyuF0iWW1sYrzGMBQB2Jgz+dinHkLJznWS4WxtgU
+         K7vw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=cAXNgU4itZ2dsKiiTmySi2ECsBUf4c+rnmlAuTmxdmU=;
-        b=bIVte7hYiVrjIYNcbcUW/VZym8BD2V/K3yUiXKBaTNu5Fhfpbrdqp5ZYje0UiWk7SQ
-         DTWyJXX+Kt/RzC3zNQoDKE8af+e4rJsplyDYVJCmEr5EU/bKWa0wiAF4OUZtXk8BUxen
-         cWyyuJc/b4Q3TE0ZgZgQ9q+47Bd49UV6O5sWcgVJhCwoEo34VVTOa5Hpaerd4YN9ik+7
-         Y2tz2zPJ5GPKdLZtyhlh0EVfSZrozE0DZE9UUNrkBw7pNd3RHYrY900Jow/L799m5Geb
-         asgu8xbGepAHS8XgnZf3PZnjsBcfCQ5vIWxkH5Za//qBV8XNBXSgDS+HqVJ8Ear9POy2
-         Pd/Q==
+        bh=03rd4A4qLn1D1mjrmymRetC77V7qJ8iA+zPBzz1Ln/A=;
+        b=FQc5lSuYLjSfZf4AzgUhLqVeZEIhmwcwrf27lGk4PqRg8wQR1pIKzgTw5UOSTLCyfy
+         HMyCgb6CkdJltwalDDj2Hayg7wgglSD6htJm+jlme6DmScce3FsCGpMFTDgZHxJvEHu6
+         cwHSkqaw/p79JzU3uT9yllclvTvWzT6/y13nxlLRefOUp5qBzIjWc0m0VT8Om2iFPfmJ
+         GEsD3E3SZokoB3Ni6ilm5ZI7PP2kJMTQwynlQZvSbmUkp6G/SGUaa6Il4NlPJVH+Zz4C
+         QfTFtSxFwN8d4P+yBWCZC7HAFy2ZhySE7q9lcFI3FIH7Id0H/Zv4B3V/IagU11JzaGkU
+         4DKQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=shkv9biQ;
+       dkim=pass header.i=@linaro.org header.s=google header.b=AFPsI8EM;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id c11-20020a056214224b00b00467538eebeasi1731452qvc.18.2022.06.07.14.10.02
+        by mx.google.com with ESMTPS id i26-20020ae9ee1a000000b006a6b3f6ca4asi4334245qkg.376.2022.06.07.14.12.05
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 07 Jun 2022 14:10:03 -0700 (PDT)
+        Tue, 07 Jun 2022 14:12:05 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=shkv9biQ;
+       dkim=pass header.i=@linaro.org header.s=google header.b=AFPsI8EM;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:37486 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:39128 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nygSd-0006V2-SV
-	for alex.bennee@linaro.org; Tue, 07 Jun 2022 17:09:59 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:35530)
+	id 1nygUd-0007lx-Vu
+	for alex.bennee@linaro.org; Tue, 07 Jun 2022 17:12:04 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:34406)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1nyfwZ-0006MA-2R
- for qemu-arm@nongnu.org; Tue, 07 Jun 2022 16:36:52 -0400
-Received: from mail-pl1-x636.google.com ([2607:f8b0:4864:20::636]:39697)
+ id 1nyfta-00008X-Dc
+ for qemu-arm@nongnu.org; Tue, 07 Jun 2022 16:33:46 -0400
+Received: from mail-pg1-x536.google.com ([2607:f8b0:4864:20::536]:45963)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1nyfwV-0008DV-3v
- for qemu-arm@nongnu.org; Tue, 07 Jun 2022 16:36:49 -0400
-Received: by mail-pl1-x636.google.com with SMTP id o17so15814318pla.6
- for <qemu-arm@nongnu.org>; Tue, 07 Jun 2022 13:36:46 -0700 (PDT)
+ id 1nyftR-0007R7-7G
+ for qemu-arm@nongnu.org; Tue, 07 Jun 2022 16:33:46 -0400
+Received: by mail-pg1-x536.google.com with SMTP id 184so1002498pga.12
+ for <qemu-arm@nongnu.org>; Tue, 07 Jun 2022 13:33:36 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=cAXNgU4itZ2dsKiiTmySi2ECsBUf4c+rnmlAuTmxdmU=;
- b=shkv9biQ1xROZfbWiQQAtQJu+TZv880hKnX232zJm2FcEt7nUhCvgU33I9oyHPxLTS
- CNPLAOj9BwVyeC+zbXO8LI9kJH5c4Nc1hBP6Hbb6eY5yDpnB0mqSd2YFRcX1dvb/7LrM
- LpDdIFDaSJlifduZShcm5WiNa8cNPGxYQkGl7W9n5NDBeONlxz2SXeiR0daJzQsGyP8a
- gBsS/9jWOn6ljOv2vf+g3sZ9RaHvjeV/clda+ShVaF9NAx0GGX/4miDBREnc69IudhOj
- IbXOPfpMAySj9Bp5ZD6w/rDBpPJjfca1w08nQEM2qvBZJGU1r/dNBSuS7fjuOu3sYd1M
- LBdw==
+ bh=03rd4A4qLn1D1mjrmymRetC77V7qJ8iA+zPBzz1Ln/A=;
+ b=AFPsI8EMP2OouL7V8nW2DcLpV/7xF6hbSsvSGZZNfAPCl3ifNKm0u1kXZoIhBOl9sD
+ GT7/aX+zj4EKWBC9yLZo1eBvcbkfRVXtj5ak3AyKkhZO4nyqqI2/Rd3jZnnxT7eQtk0u
+ rjGyq7ymexCL8VUMq2CuaktTag6XshuckvdkRZrmIxDCqnKZVEJCfxAY2UWopiv9MoVr
+ 3+WKWjzqfvjM07deFGCC05FlpPj/GoJKvWQ6Im/JBUlqmU6wTrYOkdoRLeTLzVH35HTY
+ GjfbIxzZ2y3zL2DnfBxnBVbq1mXURPGZxjmEbsufuosY5AZvFEiMa7h199kAZJoqJfZb
+ mFwA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=cAXNgU4itZ2dsKiiTmySi2ECsBUf4c+rnmlAuTmxdmU=;
- b=dsO6FSSKUrXTB+myuEW0Pk0ATqSqfobXuh5lbxoV09AU5fqwB72Avu+fowzZCeSf+2
- gYNdrTBc4njccG5yNpjN8EZ9JwS8+U2Gn+JhXrrp/K6MIa4HymkwDndfEf0UnLoKgUPx
- dq6nngEyF/RoIHaJoOE+he18Dpn3t8inPEcTIKDK/sZS2ikh0KJevJwZ4zdWS/qkBhjt
- 1aS+eXFyI+m99wBGZjIEuoI+e7WCc5xGDKwBG63mb2jQxZWUXadtJtRf2Y5an4OZVaaE
- TV9sP2Mq6xEpyv2utdPQRdCTR2ZMZk28NXN9i7O+1cnoBke8nDjdplQhGZ+KHvsLDWDM
- dYjw==
-X-Gm-Message-State: AOAM531ajYtJj7OL4qSdQX5DHE0MD84Gc0W6+HPLJdixm/mCKc/2BXUB
- /9pRmhdQWkjrDsNUnr8+S/oxnA==
-X-Received: by 2002:a17:903:248b:b0:160:f4b0:e663 with SMTP id
- p11-20020a170903248b00b00160f4b0e663mr30490511plw.49.1654634205692; 
- Tue, 07 Jun 2022 13:36:45 -0700 (PDT)
+ bh=03rd4A4qLn1D1mjrmymRetC77V7qJ8iA+zPBzz1Ln/A=;
+ b=T9BTq7CNY2d/DVDBBC9VSY11PAgKuPtLw1F82JOH4hPoyr7jdZ/QSm9eT8xrCuaC+R
+ hku9laHD+695sOxJPNkVvRSZAWoDBQKKRKMuEZrx3xz25m29U0VaQypocwmc5N5LX3zm
+ zl1zAXLxiThneC9Zs7NlrwbwOZc/faPXaN8FJqiCjV0bUXP/JJSyVmk/1UazqUWpg1vh
+ D5WdkuBI9V4iUs7qYQyJY+TjouPAStR0uOJy0lRdu1xNsZSaenTUaKj5oq0NZXSWEdpU
+ PTlxgOBQ3Ac3Qvks2BGXwM/u4qD5krbYduEsJ6TbpXCXwBFaLBj5ODWJcjdpwUXXivGZ
+ y6bg==
+X-Gm-Message-State: AOAM533pGJ9QFdNJmSn3hvIpcjeU5OTtdBV0GsN8gIy5CAiijF0yijy/
+ B8liUxYvol5U0VzF3vorSfBnFg==
+X-Received: by 2002:a63:2b8b:0:b0:3fc:c510:7941 with SMTP id
+ r133-20020a632b8b000000b003fcc5107941mr27669275pgr.47.1654634015606; 
+ Tue, 07 Jun 2022 13:33:35 -0700 (PDT)
 Received: from stoup.. ([2602:ae:1547:e101:3cf2:c634:5b19:25f6])
  by smtp.gmail.com with ESMTPSA id
- s18-20020aa78d52000000b0050dc76281fdsm13235645pfe.215.2022.06.07.13.36.44
+ s22-20020a17090aba1600b001d9780b7779sm4227856pjr.15.2022.06.07.13.33.34
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 07 Jun 2022 13:36:45 -0700 (PDT)
+ Tue, 07 Jun 2022 13:33:35 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: peter.maydell@linaro.org,
 	qemu-arm@nongnu.org
-Subject: [PATCH v2 41/71] target/arm: Add infrastructure for disas_sme
-Date: Tue,  7 Jun 2022 13:32:36 -0700
-Message-Id: <20220607203306.657998-42-richard.henderson@linaro.org>
+Subject: [PATCH v2 30/71] target/arm: Implement SMSTART, SMSTOP
+Date: Tue,  7 Jun 2022 13:32:25 -0700
+Message-Id: <20220607203306.657998-31-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20220607203306.657998-1-richard.henderson@linaro.org>
 References: <20220607203306.657998-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::636;
- envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x636.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::536;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pg1-x536.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -121,62 +121,103 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: RxV5Z/R+YrPY
+X-TUID: DCi3UuA3XxA4
 
-This includes the build rules for the decoder, and the
-new file for translation, but excludes any instructions.
+These two instructions are aliases of MSR (immediate).
+Use the two helpers to properly implement svcr_write.
 
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/translate-a64.h |  1 +
- target/arm/translate-a64.c |  7 ++++++-
- target/arm/translate-sme.c | 35 +++++++++++++++++++++++++++++++++++
- target/arm/meson.build     |  2 ++
- target/arm/sme.decode      | 20 ++++++++++++++++++++
- 5 files changed, 64 insertions(+), 1 deletion(-)
- create mode 100644 target/arm/translate-sme.c
- create mode 100644 target/arm/sme.decode
+ target/arm/cpu.h           |  1 +
+ target/arm/helper-sme.h    | 21 +++++++++++++
+ target/arm/helper.h        |  1 +
+ target/arm/helper.c        |  6 ++--
+ target/arm/sme_helper.c    | 61 ++++++++++++++++++++++++++++++++++++++
+ target/arm/translate-a64.c | 24 +++++++++++++++
+ target/arm/meson.build     |  1 +
+ 7 files changed, 112 insertions(+), 3 deletions(-)
+ create mode 100644 target/arm/helper-sme.h
+ create mode 100644 target/arm/sme_helper.c
 
-diff --git a/target/arm/translate-a64.h b/target/arm/translate-a64.h
-index f0970c6b8c..789b6e8e78 100644
---- a/target/arm/translate-a64.h
-+++ b/target/arm/translate-a64.h
-@@ -146,6 +146,7 @@ static inline int pred_gvec_reg_size(DisasContext *s)
+diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+index ef374eefe8..e7ec03a8a7 100644
+--- a/target/arm/cpu.h
++++ b/target/arm/cpu.h
+@@ -1106,6 +1106,7 @@ void aarch64_sve_change_el(CPUARMState *env, int old_el,
+                            int new_el, bool el0_a64);
+ void aarch64_add_sve_properties(Object *obj);
+ void aarch64_add_pauth_properties(Object *obj);
++void arm_reset_sve_state(CPUARMState *env);
+ 
+ /*
+  * SVE registers are encoded in KVM's memory in an endianness-invariant format.
+diff --git a/target/arm/helper-sme.h b/target/arm/helper-sme.h
+new file mode 100644
+index 0000000000..3bd48c235f
+--- /dev/null
++++ b/target/arm/helper-sme.h
+@@ -0,0 +1,21 @@
++/*
++ *  AArch64 SME specific helper definitions
++ *
++ *  Copyright (c) 2022 Linaro, Ltd
++ *
++ * This library is free software; you can redistribute it and/or
++ * modify it under the terms of the GNU Lesser General Public
++ * License as published by the Free Software Foundation; either
++ * version 2.1 of the License, or (at your option) any later version.
++ *
++ * This library is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
++ * Lesser General Public License for more details.
++ *
++ * You should have received a copy of the GNU Lesser General Public
++ * License along with this library; if not, see <http://www.gnu.org/licenses/>.
++ */
++
++DEF_HELPER_FLAGS_2(set_pstate_sm, TCG_CALL_NO_RWG, void, env, i32)
++DEF_HELPER_FLAGS_2(set_pstate_za, TCG_CALL_NO_RWG, void, env, i32)
+diff --git a/target/arm/helper.h b/target/arm/helper.h
+index b1334e0c42..5bca7255f1 100644
+--- a/target/arm/helper.h
++++ b/target/arm/helper.h
+@@ -1020,6 +1020,7 @@ DEF_HELPER_FLAGS_6(gvec_bfmlal_idx, TCG_CALL_NO_RWG,
+ #ifdef TARGET_AARCH64
+ #include "helper-a64.h"
+ #include "helper-sve.h"
++#include "helper-sme.h"
+ #endif
+ 
+ #include "helper-mve.h"
+diff --git a/target/arm/helper.c b/target/arm/helper.c
+index bec7e47b78..e065a1deb8 100644
+--- a/target/arm/helper.c
++++ b/target/arm/helper.c
+@@ -6370,9 +6370,9 @@ static CPAccessResult access_esm(CPUARMState *env, const ARMCPRegInfo *ri,
+ static void svcr_write(CPUARMState *env, const ARMCPRegInfo *ri,
+                        uint64_t value)
+ {
+-    value &= R_SVCR_SM_MASK | R_SVCR_ZA_MASK;
+-    /* TODO: Side effects. */
+-    env->svcr = value;
++    helper_set_pstate_sm(env, FIELD_EX64(value, SVCR, SM));
++    helper_set_pstate_za(env, FIELD_EX64(value, SVCR, ZA));
++    arm_rebuild_hflags(env);
  }
  
- bool disas_sve(DisasContext *, uint32_t);
-+bool disas_sme(DisasContext *, uint32_t);
- 
- void gen_gvec_rax1(unsigned vece, uint32_t rd_ofs, uint32_t rn_ofs,
-                    uint32_t rm_ofs, uint32_t opr_sz, uint32_t max_sz);
-diff --git a/target/arm/translate-a64.c b/target/arm/translate-a64.c
-index b1d2840819..8a38fbc33b 100644
---- a/target/arm/translate-a64.c
-+++ b/target/arm/translate-a64.c
-@@ -14814,7 +14814,12 @@ static void aarch64_tr_translate_insn(DisasContextBase *dcbase, CPUState *cpu)
-     }
- 
-     switch (extract32(insn, 25, 4)) {
--    case 0x0: case 0x1: case 0x3: /* UNALLOCATED */
-+    case 0x0:
-+        if (!disas_sme(s, insn)) {
-+            unallocated_encoding(s);
-+        }
-+        break;
-+    case 0x1: case 0x3: /* UNALLOCATED */
-         unallocated_encoding(s);
-         break;
-     case 0x2:
-diff --git a/target/arm/translate-sme.c b/target/arm/translate-sme.c
+ static void smcr_write(CPUARMState *env, const ARMCPRegInfo *ri,
+diff --git a/target/arm/sme_helper.c b/target/arm/sme_helper.c
 new file mode 100644
-index 0000000000..786c93fb2d
+index 0000000000..b215725594
 --- /dev/null
-+++ b/target/arm/translate-sme.c
-@@ -0,0 +1,35 @@
++++ b/target/arm/sme_helper.c
+@@ -0,0 +1,61 @@
 +/*
-+ * AArch64 SME translation
++ * ARM SME Operations
 + *
-+ * Copyright (c) 2022 Linaro, Ltd
++ * Copyright (c) 2022 Linaro, Ltd.
 + *
 + * This library is free software; you can redistribute it and/or
 + * modify it under the terms of the GNU Lesser General Public
@@ -194,65 +235,93 @@ index 0000000000..786c93fb2d
 +
 +#include "qemu/osdep.h"
 +#include "cpu.h"
-+#include "tcg/tcg-op.h"
-+#include "tcg/tcg-op-gvec.h"
-+#include "tcg/tcg-gvec-desc.h"
-+#include "translate.h"
-+#include "exec/helper-gen.h"
-+#include "translate-a64.h"
-+#include "fpu/softfloat.h"
++#include "internals.h"
++#include "exec/helper-proto.h"
 +
++/* ResetSVEState */
++void arm_reset_sve_state(CPUARMState *env)
++{
++    memset(env->vfp.zregs, 0, sizeof(env->vfp.zregs));
++    /* Recall that FFR is stored as pregs[16]. */
++    memset(env->vfp.pregs, 0, sizeof(env->vfp.pregs));
++    vfp_set_fpcr(env, 0x0800009f);
++}
 +
-+/*
-+ * Include the generated decoder.
-+ */
++void helper_set_pstate_sm(CPUARMState *env, uint32_t i)
++{
++    if (i == FIELD_EX64(env->svcr, SVCR, SM)) {
++        return;
++    }
++    env->svcr ^= R_SVCR_SM_MASK;
++    arm_reset_sve_state(env);
++}
 +
-+#include "decode-sme.c.inc"
++void helper_set_pstate_za(CPUARMState *env, uint32_t i)
++{
++    if (i == FIELD_EX64(env->svcr, SVCR, ZA)) {
++        return;
++    }
++    env->svcr ^= R_SVCR_ZA_MASK;
++
++    /*
++     * ResetSMEState.
++     *
++     * SetPSTATE_ZA zeros on enable and disable.  We can zero this only
++     * on enable: while disabled, the storage is inaccessible and the
++     * value does not matter.  We're not saving the storage in vmstate
++     * when disabled either.
++     */
++    if (i) {
++        memset(env->zarray, 0, sizeof(env->zarray));
++    }
++}
+diff --git a/target/arm/translate-a64.c b/target/arm/translate-a64.c
+index fdc035ad9a..40f2e53983 100644
+--- a/target/arm/translate-a64.c
++++ b/target/arm/translate-a64.c
+@@ -1761,6 +1761,30 @@ static void handle_msr_i(DisasContext *s, uint32_t insn,
+         }
+         break;
+ 
++    case 0x1b: /* SVCR* */
++        if (!dc_isar_feature(aa64_sme, s) || crm < 2 || crm > 7) {
++            goto do_unallocated;
++        }
++        if (sme_access_check(s)) {
++            bool i = crm & 1;
++            bool changed = false;
++
++            if ((crm & 2) && i != s->pstate_sm) {
++                gen_helper_set_pstate_sm(cpu_env, tcg_constant_i32(i));
++                changed = true;
++            }
++            if ((crm & 4) && i != s->pstate_za) {
++                gen_helper_set_pstate_za(cpu_env, tcg_constant_i32(i));
++                changed = true;
++            }
++            if (changed) {
++                gen_rebuild_hflags(s);
++            } else {
++                s->base.is_jmp = DISAS_NEXT;
++            }
++        }
++        break;
++
+     default:
+     do_unallocated:
+         unallocated_encoding(s);
 diff --git a/target/arm/meson.build b/target/arm/meson.build
-index 02c91f72bb..c47d86c609 100644
+index 50f152214a..02c91f72bb 100644
 --- a/target/arm/meson.build
 +++ b/target/arm/meson.build
-@@ -1,5 +1,6 @@
- gen = [
-   decodetree.process('sve.decode', extra_args: '--decode=disas_sve'),
-+  decodetree.process('sme.decode', extra_args: '--decode=disas_sme'),
-   decodetree.process('neon-shared.decode', extra_args: '--decode=disas_neon_shared'),
-   decodetree.process('neon-dp.decode', extra_args: '--decode=disas_neon_dp'),
-   decodetree.process('neon-ls.decode', extra_args: '--decode=disas_neon_ls'),
-@@ -50,6 +51,7 @@ arm_ss.add(when: 'TARGET_AARCH64', if_true: files(
-   'sme_helper.c',
+@@ -47,6 +47,7 @@ arm_ss.add(when: 'TARGET_AARCH64', if_true: files(
+   'mte_helper.c',
+   'pauth_helper.c',
+   'sve_helper.c',
++  'sme_helper.c',
    'translate-a64.c',
    'translate-sve.c',
-+  'translate-sme.c',
  ))
- 
- arm_softmmu_ss = ss.source_set()
-diff --git a/target/arm/sme.decode b/target/arm/sme.decode
-new file mode 100644
-index 0000000000..c25c031a71
---- /dev/null
-+++ b/target/arm/sme.decode
-@@ -0,0 +1,20 @@
-+# AArch64 SME instruction descriptions
-+#
-+#  Copyright (c) 2022 Linaro, Ltd
-+#
-+# This library is free software; you can redistribute it and/or
-+# modify it under the terms of the GNU Lesser General Public
-+# License as published by the Free Software Foundation; either
-+# version 2.1 of the License, or (at your option) any later version.
-+#
-+# This library is distributed in the hope that it will be useful,
-+# but WITHOUT ANY WARRANTY; without even the implied warranty of
-+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-+# Lesser General Public License for more details.
-+#
-+# You should have received a copy of the GNU Lesser General Public
-+# License along with this library; if not, see <http://www.gnu.org/licenses/>.
-+
-+#
-+# This file is processed by scripts/decodetree.py
-+#
 -- 
 2.34.1
 

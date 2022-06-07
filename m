@@ -1,116 +1,119 @@
-Received: by 2002:a19:ee12:0:0:0:0:0 with SMTP id g18csp2130448lfb;
-        Tue, 7 Jun 2022 07:01:50 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxX4Pyra36BPfIJpMyhFlob3/zEFqbN1BTugkbHYvF5gJEHQ8w2ERpVn8lBiZ+rwv+iFoaW
-X-Received: by 2002:a05:6214:2aac:b0:46b:b44c:8e4d with SMTP id js12-20020a0562142aac00b0046bb44c8e4dmr3819284qvb.124.1654610506624;
-        Tue, 07 Jun 2022 07:01:46 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1654610506; cv=none;
+Received: by 2002:a19:ee12:0:0:0:0:0 with SMTP id g18csp2164755lfb;
+        Tue, 7 Jun 2022 07:46:03 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyMN6p56U/KWfQtqLdmNNEYZzh2CFsDt4/D/V440tZX8Fo7GDcZ/1ewZ7LEJWtlpLuCVSUA
+X-Received: by 2002:a05:620a:4043:b0:6a3:9cf7:f73d with SMTP id i3-20020a05620a404300b006a39cf7f73dmr19585303qko.416.1654613162834;
+        Tue, 07 Jun 2022 07:46:02 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1654613162; cv=none;
         d=google.com; s=arc-20160816;
-        b=oAqF+ASiaqcl8rEGojrFrtlJm86UsqP33G2G6+5Ncp09H27f0OWrFbzlbW5eGKduC8
-         D0eMMRG25mYFO7o+X69F4mQk2hxdgazDuLl3KB37ZJ7Crxsji53V1RCEQ8opuPYCjyN7
-         C10FdKPgr6Lc+KvjEXs6RujrTO8kdu3r23P1yiRsZVIQedrn3GJllOzzSDRuidZvWR5z
-         1KmRt/pIklgSRGf8I7q4Ch26acg+dLX+upP/g1wH9FR6Sw0YnuTmngmZz190PwzLdAfc
-         j10Angp4GY3eSCWT7eug4LzjndMej47RXZCQ6iSV4N9YWrI4se9rnI2wlyqo/acHQa+W
-         jYTA==
+        b=iCDbnyUUKDgj3a/GoaHKuPwcho+XpQG2f+VqnQsZkuUyq+1CPL6snjdnemYnjutUoq
+         7KNUafFpNyJAQBBESmc/v/8zo6INtLqIC7GHA6VG3cpzLymb22rQl6ik6rbIMmZvJta4
+         ec9Qm8JLQgFH8grNx9jyFC2ApNRvojMYIAnB3vZbA4W68rEi9vnua92Drn0mv/ov82zw
+         LRXf4yPhbDEDB0icus5Rq55huS8JC5tL79B/zmyGWALTNlcCo+EOdacOmrBlQ/oHl6Ng
+         EECgUgelI6kpzMVkec5CFKyYmE76S4RR7AeqrAvfxQbz8c4crorzbTIZ4I9K72SQRU1A
+         3hiQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :in-reply-to:from:references:cc:to:content-language:subject
          :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=oXgybdcYtYZuzCG91L7ihvaqawohrOipKmT+HQ/vK0A=;
-        b=HCDIwT8XCYSiPWRy9ScaRXHKCOQMLTErIUa8myYFZOxLu/46qeIUEYB0OF422G5UCy
-         aewfHi06ZjqZExk2r8C4pUWi1aCS/7T1b3P3L+Fi1Zokv7+ubEz3TWshmuEp6cUmWdN9
-         00NnsTaA6Iq+4u1mo6hhM4AaFRQkqIAPQr4bdRyp7dYvLZuv6/A7UKaRMxvl/OLK9NoI
-         w50Ef3YmgECHkOfKiu0VVGRy1TbnzcKILuphaEjllZ162detBsxGsevlJCy3InApDcDU
-         vCH1w68zfpKDh402SQSTtCuu27Wt3g5Fbchjc55NCbosfuD86ivkwe2CNTJ/WZv2Wte8
-         tgUQ==
+        bh=NYP6EcGuYyM5Kx6C24nF/gjKPhCAJ+oZI03GFIBNpwA=;
+        b=VICohLAel/qPBPsyENbKXa3fj318qv+1ccOFAzfjoHAadKllxQm2fXAFcFhKmCEH4X
+         FCuksjAuk/TH6PUaKTs54bswg7eCqdxG3QONwe4+qtxnVtjFZDcDnYo9T7/JmrWhPdqs
+         K84/Q1VmE4drbaKVFTw7DZY21hCOcQw8YASKj7qyHNHPheqG6MWSAZRRljMhedA9ZoAG
+         l2M/+38sRiAF9pku/KIuV3WGF2badkjGJyj4cfV06v0StH0vipsEDYLhTSX36vSbYTT+
+         1xsNTbX/6eW1iCsd57meFVakmlq6jz/iBWU53gMsblrtkx6opZZqQjhNDFMqZ3EBig8+
+         GHiw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=pg5GM3XR;
+       dkim=pass header.i=@linaro.org header.s=google header.b=WKqRxD9S;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id j17-20020a05622a039100b00304feff7e68si33515qtx.387.2022.06.07.07.01.46
+        by mx.google.com with ESMTPS id u13-20020a05622a010d00b00304ca068af0si9687766qtw.212.2022.06.07.07.46.02
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 07 Jun 2022 07:01:46 -0700 (PDT)
+        Tue, 07 Jun 2022 07:46:02 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=pg5GM3XR;
+       dkim=pass header.i=@linaro.org header.s=google header.b=WKqRxD9S;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:50352 helo=lists1p.gnu.org)
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:47414 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nyZmE-0001dw-2V
-	for alex.bennee@linaro.org; Tue, 07 Jun 2022 10:01:46 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44626)
+	id 1nyaT4-0006gv-A0
+	for alex.bennee@linaro.org; Tue, 07 Jun 2022 10:46:02 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:57250)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <redha.gouicem@gmail.com>)
- id 1nyZlr-0001bk-BN; Tue, 07 Jun 2022 10:01:23 -0400
-Received: from mail-ej1-x635.google.com ([2a00:1450:4864:20::635]:36365)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1nyaSb-0006Yw-Hi
+ for qemu-arm@nongnu.org; Tue, 07 Jun 2022 10:45:33 -0400
+Received: from mail-pj1-x1033.google.com ([2607:f8b0:4864:20::1033]:45773)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <redha.gouicem@gmail.com>)
- id 1nyZll-0006ZN-K5; Tue, 07 Jun 2022 10:01:23 -0400
-Received: by mail-ej1-x635.google.com with SMTP id s12so28191798ejx.3;
- Tue, 07 Jun 2022 07:01:15 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1nyaSZ-0006du-6a
+ for qemu-arm@nongnu.org; Tue, 07 Jun 2022 10:45:33 -0400
+Received: by mail-pj1-x1033.google.com with SMTP id
+ w2-20020a17090ac98200b001e0519fe5a8so15609724pjt.4
+ for <qemu-arm@nongnu.org>; Tue, 07 Jun 2022 07:45:30 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=message-id:date:mime-version:user-agent:subject:content-language:to
  :cc:references:from:in-reply-to:content-transfer-encoding;
- bh=oXgybdcYtYZuzCG91L7ihvaqawohrOipKmT+HQ/vK0A=;
- b=pg5GM3XRTV8jecwFeWNuEjp456TSy3SmiTFl1REyinlma1KYgztVa/Ah29ny7Wnyht
- xzaLJu8dxJZalZx6s2fKiK77ojAFZa9cjdKmMjqsyxpKQ13Ln3vI5MfaQgCVrEu/Rj4j
- 976i6+OrPGC8QA8iJN5kVJyKo2vJDMm5/f/3X2MqLzHkcblIqvyRmkVtvE8Clkeg+8QB
- tFskOwfoRQ0BNJST5/T8Qeg1xVZNaWSkhwPGD69+eKdoEru6k5uPenbKtHDoJgGBNn63
- Z3cxeJTAIVRKVrK5kxjS4Bw+7HzetQb+WXo75PcvJ62hpehUFS155IweAR6L1eSwVQQ7
- wSsg==
+ bh=NYP6EcGuYyM5Kx6C24nF/gjKPhCAJ+oZI03GFIBNpwA=;
+ b=WKqRxD9SYbRwm/ksYVMtdGY05WMMzCQzXfnOoGufUDd8zWVuE7QX0NHsY3Cz660sD5
+ iYOGYf0AxAxrixykk9GMjvRyJusTewihHnbcAz1dTT1qfvQ4/KGBteiap6O/pxHfjaf/
+ 4Ln+jHKj0iqf7+RFCoGwH5EmZXuP4j2s3HTgbh2gJr5LWQVFw/wZUl0AKOK+VhUYc8r5
+ gW5iyoE1jOJMluLH7suhGpaWd43sguz5BXOw7fnSOGR1EWBoGfcjJdzEB3lCK2XSRLPC
+ kPJYjfmfmpsNsFl+dmWPgrXVPiM2kmXoipFqyeMv5SEirLaFsBgKPSN55XkqYMu+dbzy
+ fYrQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
  :content-language:to:cc:references:from:in-reply-to
  :content-transfer-encoding;
- bh=oXgybdcYtYZuzCG91L7ihvaqawohrOipKmT+HQ/vK0A=;
- b=VggL7rdwPSSDWWFB9I3ulSvMbpFfyMFXTjM/jAChFyefttIC0z3y1SFWLuEJLtMqfO
- JEiZzWyajhoGzBKFuKPNDtA8DJkdsLOp8QqCRvzt0mPAgISLl3auQ26eWw+Nymc1Hc0H
- UXm4i5Uv6/s8Tb3vgiLkSqfcIJrb4AYvGCLkwvr+bAQv0TW6yINfDc+/ml0IBZMWTvAt
- SSn/ZigQl6hQ+ysfhYPDuy+d2Qg3Pd+90gTDqquEduwYHUGJS6YRnA34JCESutxELXqg
- d47ie6svFpwCAowihNUBvULF5hDtXI2KZOaijsPa43s3xh9KTT4ccSoeUfxd/u6DSYiE
- iiDg==
-X-Gm-Message-State: AOAM531fFjoEWczxUHfnFaCwp+9duf8Gaib4/LRp0IM8l4wul3lR6HL2
- Wg14IgbhjB6JRgy+SD5iloE=
-X-Received: by 2002:a17:907:7212:b0:706:fd77:86cb with SMTP id
- dr18-20020a170907721200b00706fd7786cbmr26603497ejc.69.1654610473863; 
- Tue, 07 Jun 2022 07:01:13 -0700 (PDT)
-Received: from ?IPV6:2001:a61:240a:e01:3b2e:e985:60ef:f421?
- ([2001:a61:240a:e01:3b2e:e985:60ef:f421])
+ bh=NYP6EcGuYyM5Kx6C24nF/gjKPhCAJ+oZI03GFIBNpwA=;
+ b=fZ2t8278c1fkpkl9r2REyMP8X9gQ1HbIvylEEF/LxYJrptLVf7SFK4EG6aqpDKctEa
+ fifXSjIJRRWZyvwzsgaoFLV4Se/v16AEmVfKDalpxSrbhRBbTp2jCXxggqJuM1YUuZDB
+ 8gTenU0EC5gepEWS8Drf6hnsjcwEnw7XV/hEDr+Bk/d/7o6eb+DBvn73GuRfybLF7Fi/
+ DChHpXPKNJWpqu/tCiQmqgw9cmWfXSeoEq3cpO8Po857NcdyUGaRcKdQAgcT32FrirxB
+ k2D+2TsyQE6B3RG1u4jWWuqX05FAy5qeGNHwN+7utWwpFeQOZAMdnSWgTbEuO6Qcmkm2
+ ED7A==
+X-Gm-Message-State: AOAM53115mGZq5A5Ew3BuQjOSXIsr1N5sGMvX+Eu13oz4ppERVfR65Kb
+ sho7VO+khvX1GSjwo5gJlQa1rA==
+X-Received: by 2002:a17:902:ed53:b0:166:3e43:7522 with SMTP id
+ y19-20020a170902ed5300b001663e437522mr28701095plb.170.1654613129210; 
+ Tue, 07 Jun 2022 07:45:29 -0700 (PDT)
+Received: from ?IPV6:2602:ae:1547:e101:3cf2:c634:5b19:25f6?
+ ([2602:ae:1547:e101:3cf2:c634:5b19:25f6])
  by smtp.gmail.com with ESMTPSA id
- e1-20020a1709062c0100b0070bdc059ab2sm6277467ejh.138.2022.06.07.07.01.12
+ bg13-20020a17090b0d8d00b001e08461ceaesm14666078pjb.37.2022.06.07.07.45.27
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 07 Jun 2022 07:01:13 -0700 (PDT)
-Message-ID: <d1916722-6a1a-4e21-cd95-4ffbd09e943c@gmail.com>
-Date: Tue, 7 Jun 2022 16:01:11 +0200
+ Tue, 07 Jun 2022 07:45:28 -0700 (PDT)
+Message-ID: <dd67c361-9721-17c9-0d6f-0118a7a9ab0e@linaro.org>
+Date: Tue, 7 Jun 2022 07:45:26 -0700
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
  Thunderbird/91.9.1
-Subject: Re: [PATCH] tcg: Special case split barriers before/after load
+Subject: Re: [PATCH 37/71] target/arm: Add cpu properties for SME
 Content-Language: en-US
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
- Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, qemu-ppc@nongnu.org
-References: <20220430234534.446733-1-richard.henderson@linaro.org>
- <e22c20ff-d6dd-66e6-4143-d60f81609261@amsat.org>
-From: Redha <redha.gouicem@gmail.com>
-In-Reply-To: <e22c20ff-d6dd-66e6-4143-d60f81609261@amsat.org>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::635;
- envelope-from=redha.gouicem@gmail.com; helo=mail-ej1-x635.google.com
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
+References: <20220602214853.496211-1-richard.henderson@linaro.org>
+ <20220602214853.496211-38-richard.henderson@linaro.org>
+ <CAFEAcA-JFvMM3yY=q=nBbrs_Y47056NLgtQTqdYqTKmgLZfWYA@mail.gmail.com>
+From: Richard Henderson <richard.henderson@linaro.org>
+In-Reply-To: <CAFEAcA-JFvMM3yY=q=nBbrs_Y47056NLgtQTqdYqTKmgLZfWYA@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1033;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x1033.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -125,188 +128,34 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: yrfCYv98frbq
+X-TUID: zCHJlmjroOR5
 
-Hi Richard and Philippe,
-
-I was finally able to test the patch.
-
-As expected, the fences generated by TCG with your patch are the same
-ones as in mine.
-
-However, I was not able to reproduce the failure with the ahci-test on
-my ARM system (2x 28-core Thunder X2, 4 threads per core).  I ran 500
-tests concurrently to load the system, but I did not get the assert
-failure.  However, I got another qemu error 229 times:
-
-  qemu-system-x86_64: Failed to get "write" lock
-  Is another process using the image [/tmp/qtest.IksKVs]?
-
-Each time with a different temporary path. Not sure if that is directly 
-related to the actual test.
-
-Also, are we sure the test failure on the gitlab runner is due to memory
-ordering issues with regular memory accesses?  Is there a way to check
-the code generated by TCG for this test, similar to `-d op,out_asm`?
-
-
-Redha
-
-
-
-On 30/05/2022 17:10, Philippe Mathieu-Daudé wrote:
-> Hi Richard,
-> 
-> On 1/5/22 01:45, Richard Henderson wrote:
->> When st:ld is not required by the guest but ld:st is, we can
->> put ld:ld+ld:st barriers after loads, and then st:st barriers
->> before stores to enforce all required barriers.
->>
->> The st:st barrier is often special cased by hosts, and that
->> is expected to be more efficient than a full barrier.
->>
->> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
->> ---
->>
->> Redha, I expect this to produce exactly the same barriers as you
->> did with your 'fix guest memory ordering enforcement' patch.
->>
->> While this compiles, it does not fix the failures that I see
->> occasionally with our private gitlab runner.  The standalone
->> version of this failure is
->>
->>    export QTEST_QEMU_BINARY=./qemu-system-i386
->>    for i in `seq 1 100`; do
->>      ./tests/qtest/ahci-test > /dev/null &
->>    done
->>    wait
->>
->> About 10 to 15% of the runs will fail with
->>
->> ERROR:../src/tests/qtest/ahci-test.c:92:verify_state: assertion failed (ahci_fingerprint == ahci->fingerprint): (0xe0000000 == 0x29228086)
->>
->> Note that this test never seems to fail unless the system is under
->> load, thus starting 100 tests on my 80 core neoverse-n1 system.
->>
->>
->> r~
->>
->>
->> ---
->>   tcg/tcg-op.c | 55 +++++++++++++++++++++++++++++++++++++++++++++-------
->>   1 file changed, 48 insertions(+), 7 deletions(-)
->>
->> diff --git a/tcg/tcg-op.c b/tcg/tcg-op.c
->> index 5d48537927..4c568a2592 100644
->> --- a/tcg/tcg-op.c
->> +++ b/tcg/tcg-op.c
->> @@ -2834,9 +2834,6 @@ static void gen_ldst_i64(TCGOpcode opc, TCGv_i64 val, TCGv addr,
->>     static void tcg_gen_req_mo(TCGBar type)
->>   {
->> -#ifdef TCG_GUEST_DEFAULT_MO
->> -    type &= TCG_GUEST_DEFAULT_MO;
->> -#endif
->>       type &= ~TCG_TARGET_DEFAULT_MO;
->>       if (type) {
->>           tcg_gen_mb(type | TCG_BAR_SC);
->> @@ -2868,12 +2865,49 @@ static void plugin_gen_mem_callbacks(TCGv vaddr, MemOpIdx oi,
->>   #endif
->>   }
->>   +typedef enum {
->> +    BAR_LD_BEFORE,
->> +    BAR_LD_AFTER,
->> +    BAR_ST_BEFORE,
->> +} ChooseBarrier;
->> +
->> +static TCGBar choose_barrier(ChooseBarrier which)
+On 6/7/22 02:47, Peter Maydell wrote:
+>> +void arm_cpu_sme_finalize(ARMCPU *cpu, Error **errp)
 >> +{
->> +#ifdef TCG_GUEST_DEFAULT_MO
->> +    const TCGBar guest_mo = TCG_GUEST_DEFAULT_MO;
->> +#else
->> +    const TCGBar guest_mo = TCG_MO_ALL;
->> +#endif
->> +    TCGBar ret[3];
+>> +    uint32_t vq_map = cpu->sme_vq.map;
+>> +    uint32_t vq_init = cpu->sme_vq.init;
+>> +    uint32_t vq_supported = cpu->sme_vq.supported;
+>> +    uint32_t vq;
 >> +
->> +    if (guest_mo == 0) {
->> +        return 0;
->> +    }
+>> +    if (vq_map == 0) {
+>> +        if (!cpu_isar_feature(aa64_sme, cpu)) {
+>> +            cpu->isar.id_aa64smfr0 = 0;
+>> +            return;
+>> +        }
+>> +
+>> +        /* TODO: KVM will require limitations via SMCR_EL2. */
+>> +        vq_map = vq_supported & ~vq_init;
 > 
-> This part ...:
-> 
->> +    /*
->> +     * Special case for i386 and s390x.  Because store-load is not
->> +     * required by the guest, we can split the barriers such that we
->> +     * wind up with a store-store barrier, which is expected to be
->> +     * quicker on some hosts.
->> +     */
->> +    if (guest_mo == (TCG_MO_ALL & ~TCG_MO_ST_LD)) {
->> +        ret[BAR_LD_BEFORE] = 0;
->> +        ret[BAR_LD_AFTER]  = TCG_MO_LD_LD | TCG_MO_LD_ST;
->> +        ret[BAR_ST_BEFORE] = TCG_MO_ST_ST;
->> +    } else {
-> 
-> ... could deserve another patch.
-> 
->> +        ret[BAR_LD_BEFORE] = (TCG_MO_LD_LD | TCG_MO_ST_LD) & guest_mo;
->> +        ret[BAR_ST_BEFORE] = (TCG_MO_LD_ST | TCG_MO_ST_ST) & guest_mo;
->> +        ret[BAR_LD_AFTER]  = 0;
->> +    }
->> +    return ret[which];
->> +}
->> +
->>   void tcg_gen_qemu_ld_i32(TCGv_i32 val, TCGv addr, TCGArg idx, MemOp memop)
->>   {
->>       MemOp orig_memop;
->>       MemOpIdx oi;
->>   -    tcg_gen_req_mo(TCG_MO_LD_LD | TCG_MO_ST_LD);
->> +    tcg_gen_req_mo(choose_barrier(BAR_LD_BEFORE));
->> +
->>       memop = tcg_canonicalize_memop(memop, 0, 0);
->>       oi = make_memop_idx(memop, idx);
->>   @@ -2904,6 +2938,8 @@ void tcg_gen_qemu_ld_i32(TCGv_i32 val, TCGv addr, TCGArg idx, MemOp memop)
->>               g_assert_not_reached();
->>           }
->>       }
->> +
->> +    tcg_gen_req_mo(choose_barrier(BAR_LD_AFTER));
->>   }
->>     void tcg_gen_qemu_st_i32(TCGv_i32 val, TCGv addr, TCGArg idx, MemOp memop)
->> @@ -2911,7 +2947,8 @@ void tcg_gen_qemu_st_i32(TCGv_i32 val, TCGv addr, TCGArg idx, MemOp memop)
->>       TCGv_i32 swap = NULL;
->>       MemOpIdx oi;
->>   -    tcg_gen_req_mo(TCG_MO_LD_ST | TCG_MO_ST_ST);
->> +    tcg_gen_req_mo(choose_barrier(BAR_ST_BEFORE));
->> +
->>       memop = tcg_canonicalize_memop(memop, 0, 1);
->>       oi = make_memop_idx(memop, idx);
->>   @@ -2959,7 +2996,8 @@ void tcg_gen_qemu_ld_i64(TCGv_i64 val, TCGv addr, TCGArg idx, MemOp memop)
->>           return;
->>       }
->>   -    tcg_gen_req_mo(TCG_MO_LD_LD | TCG_MO_ST_LD);
->> +    tcg_gen_req_mo(choose_barrier(BAR_LD_BEFORE));
->> +
->>       memop = tcg_canonicalize_memop(memop, 1, 0);
->>       oi = make_memop_idx(memop, idx);
->>   @@ -2994,6 +3032,8 @@ void tcg_gen_qemu_ld_i64(TCGv_i64 val, TCGv addr, TCGArg idx, MemOp memop)
->>               g_assert_not_reached();
->>           }
->>       }
->> +
->> +    tcg_gen_req_mo(choose_barrier(BAR_LD_AFTER));
->>   }
->>     void tcg_gen_qemu_st_i64(TCGv_i64 val, TCGv addr, TCGArg idx, MemOp memop)
->> @@ -3006,7 +3046,8 @@ void tcg_gen_qemu_st_i64(TCGv_i64 val, TCGv addr, TCGArg idx, MemOp memop)
->>           return;
->>       }
->>   -    tcg_gen_req_mo(TCG_MO_LD_ST | TCG_MO_ST_ST);
->> +    tcg_gen_req_mo(choose_barrier(BAR_ST_BEFORE));
->> +
->>       memop = tcg_canonicalize_memop(memop, 1, 1);
->>       oi = make_memop_idx(memop, idx);
->>   
-> 
-> Redha, could you test this patch?
-> 
-> Regards,
-> 
-> Phil.
+> Do we currently forbid setting these properties entirely for KVM
+> (or just not provide them) ?
+
+I do not provide them.
+
+> These new properties should be documented in
+> docs/system/arm/cpu-features.rst, similar to the SVE ones.
+
+Oops, yes.
+
+
+r~

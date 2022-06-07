@@ -1,220 +1,198 @@
-Received: by 2002:a19:ee12:0:0:0:0:0 with SMTP id g18csp1742507lfb;
-        Mon, 6 Jun 2022 17:09:13 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzrQ91eJb+8ewhRK6dyYb4uPtqkAZ90fnS+l8ZThT422TsiZPc8bwRqE2xJlwTz2a2H5wNp
-X-Received: by 2002:a05:620a:166f:b0:6a6:c230:f5ba with SMTP id d15-20020a05620a166f00b006a6c230f5bamr4121876qko.280.1654560553041;
-        Mon, 06 Jun 2022 17:09:13 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1654560553; cv=none;
+Received: by 2002:a19:ee12:0:0:0:0:0 with SMTP id g18csp1802760lfb;
+        Mon, 6 Jun 2022 19:47:57 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyhvlOOo5bb9PPkIChY6UsNGDSrqFBYFOgWebcnI57pHWdkqR+nQBf5Xo8fn8E+OmeiEt6+
+X-Received: by 2002:a37:510:0:b0:6a6:ab9e:1b80 with SMTP id 16-20020a370510000000b006a6ab9e1b80mr10280840qkf.770.1654570077335;
+        Mon, 06 Jun 2022 19:47:57 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1654570077; cv=none;
         d=google.com; s=arc-20160816;
-        b=klOv8wB+e8SVNU2DmWlAN6g4gfk09N1qUqEWNI7Rxk//rysR13leCg9sP+tmHKy10e
-         bMENHI/+rSTR9qzMSyXLZ1RMB+4+sQ3FPtobPD18bA4fvky+bONCviAXZhas8zKIH8wX
-         haJm8BQbsOmg3fHDq2vHIM6nibtVqMPU8Aox7gY8OcC2z3samGkmmewJENACvwPJvud1
-         JrAlJIzfxH67AgRcLM2CFFyiL9LEVFvzNxcMtyWGO2cTvTnfp1Cs7XmzpZKHdgKu6YMe
-         dqk6ChLmGf6vbNGm0xUUAouiOXBmb4T/XDHJv0rEO1uSzuFMWy9SUeovu2tRmJuUzBGK
-         7DcA==
+        b=ylH/GinRCoeps5DDbmduQpu+wf+MQ0PG8RG1vId6ICqghYlh/piiVPIDFwQRZZv5VW
+         zaDMvEiWWVgzBsmT9uTaaVjegHHyzBk/gO4s2couYl/X9W9qtoHMWMdFFiwqDr+Z8GDM
+         WSXSy38aHYS1cr03Y5bS7QFqvdeDHuvtToMbDLlQJwjTqNVTyPzccMTJpzFEm9R+RHNx
+         IDMyMeQNAFdYswVfx1U8mirMdfa+BpaxJ51k9K7NtLCCTwBlAx1vvzqCOsiHTcK8y+lN
+         rhZBDDvrofsO5ndudVM3VfhO8A1pv6A39m5CxwsuMLijl4uu3gIJReP6gMjNFLg8DKK4
+         Hp1w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=XC8nlfUJgK7ezOMtieKWSSVFE0uv6XMBx3SKEajzm7M=;
-        b=I3nygk95JzmGgQDrA83lKMyr6hpebC2cPP19eFCHXrptyUnBOTF0zzFyEPLeN/AJyD
-         2hWf+K0ul8JF40b+kgiBaI1/ruNw5XNZJnnXjJQd6OBIXVfrpW3afGEN3nI5Epx+itX7
-         nfmoLmKyuU86FOtZMasol4zvVETyVpfG8WeVuzRMu9/H4hmSweOZ4U76zMpSqK3zKSRv
-         +coNz+2ahDLtvrYlpD4nqOSPvvZWWUI9K6r8IhwyihDR2BE31CxLnVvie0woQaoJ+NRu
-         xo2raYc+Gi91UQLWlNuAszYmtvRN5UohxpHDCKxzJu8A6c7v2ymVkrNYc0CPZev3eOT/
-         k8pg==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=T8AfpmQwL0+E6fQxm6ojECpdw/9TThJiZv66f6M94Xg=;
+        b=njrP5cJr2Mq80x7kKkhRaRJUcdwUA96gRuK1PUByh3RJcEUr/Zn/xEkVLbaa6lIT3n
+         xmuZ/3vBRk/VfbV9URUr9+Fki+2ljX2VJ7IH8GhtPgPIFpn+seU+VAVOhN5nqXEAcNZ8
+         dbmxgyXV8AQqo+fdrLy6muA1cxr8YOHJryt5XaiIvCIPzGqjV0NF+d/OXT4lCbfDG8Iq
+         dUex9VgdmpXsr2ddWKCqWSUdVyY/mEbL+Yc8icFt0xA9RhkuL4tp2JbFCwPrCmllmRwC
+         O6y9TCq5CBXpju5atmJcABZfoDVXYVLScydi9vuwoblzaZTqiTJlzhgtV0ITYcowFa47
+         OXCQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@jms.id.au header.s=google header.b=XoGd+ynE;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@linaro.org header.s=google header.b=YTsaaHAY;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s16-20020ac85cd0000000b00304efb674dbsi1691972qta.667.2022.06.06.17.09.12
+        by mx.google.com with ESMTPS id s14-20020ac85cce000000b00304f1f952bdsi1513630qta.531.2022.06.06.19.47.57
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 06 Jun 2022 17:09:13 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 06 Jun 2022 19:47:57 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@jms.id.au header.s=google header.b=XoGd+ynE;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:38998 helo=lists1p.gnu.org)
+       dkim=pass header.i=@linaro.org header.s=google header.b=YTsaaHAY;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:51108 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nyMmW-0002B8-EN
-	for alex.bennee@linaro.org; Mon, 06 Jun 2022 20:09:12 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:41014)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1nyPG8-0006Vb-O7
+	for alex.bennee@linaro.org; Mon, 06 Jun 2022 22:47:56 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:60960)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <joel.stan@gmail.com>)
- id 1nyMj9-0000Yv-DM; Mon, 06 Jun 2022 20:05:45 -0400
-Received: from mail-wr1-x436.google.com ([2a00:1450:4864:20::436]:34664)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1nyPFs-0006US-W4
+ for qemu-arm@nongnu.org; Mon, 06 Jun 2022 22:47:41 -0400
+Received: from mail-pj1-x1036.google.com ([2607:f8b0:4864:20::1036]:54931)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <joel.stan@gmail.com>)
- id 1nyMj5-0002Mq-Jv; Mon, 06 Jun 2022 20:05:42 -0400
-Received: by mail-wr1-x436.google.com with SMTP id q26so11477382wra.1;
- Mon, 06 Jun 2022 17:05:38 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=jms.id.au; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=XC8nlfUJgK7ezOMtieKWSSVFE0uv6XMBx3SKEajzm7M=;
- b=XoGd+ynE6KtN41qqjOxwR7jD1AlfsvhJZWUGvvGx1CusBblsBRZ3DR1A1pNC+nc5u+
- WPSjX72+7MuAsvXn5GroDWLKvkUlX/Mu4cWxlE+JPOguw162h7kN5/m6z2dIpncztaGP
- enbxiqhZfCUPRZQbGmWaVacKxxjt/a/h1R8UQ=
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1nyPFq-0000Gv-OZ
+ for qemu-arm@nongnu.org; Mon, 06 Jun 2022 22:47:40 -0400
+Received: by mail-pj1-x1036.google.com with SMTP id j7so14418215pjn.4
+ for <qemu-arm@nongnu.org>; Mon, 06 Jun 2022 19:47:38 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=T8AfpmQwL0+E6fQxm6ojECpdw/9TThJiZv66f6M94Xg=;
+ b=YTsaaHAYR0BLZT+M420CbUXR8IC/0ANMMBDZrQ+OedSOF513xc0LHmg0tad5fb4OWw
+ v8xVuOYgfqnMLjuBwnYsAdlWPDBKgSvL5GpNjsNNsFB3K0d5jtmzih4Mrh5d+4tu0DPj
+ ZHPTp+F78A1LuFeaV5VmvHIgSasmiXPVIIYPA4BserO+kLGzqwYigOFkT7lEeD3eNWuq
+ n+6/JRNELAJL34DgUPbSi6susoiAdjUmd+tCGO8GPC7cB00dnqTczc69c6qCg8UQ3+IE
+ 92U5oGzWYCwqt4kI7imXzsYB9quay9rDpnFwDkudS4iOjCe60BTK1RFJDyoCAEjfkIJq
+ MHrw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=XC8nlfUJgK7ezOMtieKWSSVFE0uv6XMBx3SKEajzm7M=;
- b=CFSb79LPwSa6hje7QjTcpMWr9gQ1NurxmszKn4xYvdrkMeNi2qGo6LLuYuwf9JElkQ
- sfnyzVnh2lb1Zp1E02BZmBsqe6d3XI5MzV5lFqIbKVBYIKkaQU2NGvf5ov/Zwa4QR83R
- qEHOXILRRlWfF+L0RkbMZDQmLCR14Tfle4vqJryOJoruYSPIdjzKgOroCcpkSTRqkc0L
- ebus6cWH0JbGZ9ZyD8b1G6HdfmPVFrajLwGNuzgiT5ckTXk50SR6AzeCizBNb6v1xYGE
- Dh70HZbLsdTKijAOM60/AzBUYG3Rz/npqzoAGxhQOREM4KzBH2FrtnbH6IYBLPa7YRLb
- 9JLQ==
-X-Gm-Message-State: AOAM5336Et7hH3nuv/9BHMrLXDEca9scrv14co6xiKJpCVW4Sd625+fq
- 0IG7Fp1avZNHWggTjY75lj4nfzQ33UzVEXPOqUM=
-X-Received: by 2002:a5d:58ed:0:b0:217:dd5:7508 with SMTP id
- f13-20020a5d58ed000000b002170dd57508mr11936294wrd.606.1654560336854; Mon, 06
- Jun 2022 17:05:36 -0700 (PDT)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=T8AfpmQwL0+E6fQxm6ojECpdw/9TThJiZv66f6M94Xg=;
+ b=SzXQWndUpL14SE6d1RekNL8g4k5JC/Gj/umUlrHJyGNfPxrRXor6kvZWo69aSdYByq
+ n2nBrATSYlzAlDBLovNujnAvloH0VTmGompWxJZWoe9CyL/Qike9uVzlaHnhchy3MIwP
+ 8uIMsV1Uswl7haBK9L8b8gCVIHsHfn+D/BctVerNSn1XPPF1ZGYjqdeN18i5Ien/wYV1
+ ddfC2l+5vz7/keWdrvXgn4icl/LbZWX5tmQZb3BtBcBjz3XZvheByYLjtgWlqEcf4Rhe
+ hXY4ndg5ps0y+uH7Z8t16CxU1W83b2eRbfbYYrlbJjGI/El1LTWgd2F6BXkIsZoG4tIh
+ 5OAg==
+X-Gm-Message-State: AOAM531u6J0gaJSi7muPoTQ/PcWKmFn+C9L+jNksAeks+ikTL4BOqhI+
+ w5b84cw6M0Ah0IFrekh1D6ckyQ==
+X-Received: by 2002:a17:902:e80b:b0:167:5e77:e697 with SMTP id
+ u11-20020a170902e80b00b001675e77e697mr15713154plg.93.1654570057544; 
+ Mon, 06 Jun 2022 19:47:37 -0700 (PDT)
+Received: from stoup.. ([2602:ae:1547:e101:d3db:cca:e5c9:6531])
+ by smtp.gmail.com with ESMTPSA id
+ y26-20020aa7805a000000b0051876d83714sm7476904pfm.196.2022.06.06.19.47.36
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 06 Jun 2022 19:47:37 -0700 (PDT)
+From: Richard Henderson <richard.henderson@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org
+Subject: [PATCH v2 02/25] target/arm: Add coproc parameter to
+ syn_fp_access_trap
+Date: Mon,  6 Jun 2022 19:47:11 -0700
+Message-Id: <20220607024734.541321-3-richard.henderson@linaro.org>
+X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20220607024734.541321-1-richard.henderson@linaro.org>
+References: <20220607024734.541321-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
-References: <20220606150732.2282041-1-clg@kaod.org>
- <20220606150732.2282041-3-clg@kaod.org>
-In-Reply-To: <20220606150732.2282041-3-clg@kaod.org>
-From: Joel Stanley <joel@jms.id.au>
-Date: Tue, 7 Jun 2022 00:05:23 +0000
-Message-ID: <CACPK8Xe_9octsmpZwbGQFpYijgVWyED_n1UjXxjUj-fDRHdp1Q@mail.gmail.com>
-Subject: Re: [PATCH 02/21] aspeed: i2c: Add ctrl_global_rsvd property
-To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>, 
- Peter Maydell <peter.maydell@linaro.org>, Joe Komlodi <komlodi@google.com>,
- Troy Lee <troy_lee@aspeedtech.com>, Jamin Lin <jamin_lin@aspeedtech.com>, 
- Steven Lee <steven_lee@aspeedtech.com>, Klaus Jensen <k.jensen@samsung.com>, 
- Peter Delevoryas <pdel@fb.com>, Corey Minyard <cminyard@mvista.com>, 
- Jonathan Cameron <Jonathan.Cameron@huawei.com>,
- Damien Hedde <damien.hedde@greensocs.com>, 
- Andrew Jeffery <andrew@aj.id.au>, Cleber Rosa <crosa@redhat.com>, 
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>, 
- Wainer dos Santos Moschetta <wainersm@redhat.com>,
- Beraldo Leal <bleal@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::436;
- envelope-from=joel.stan@gmail.com; helo=mail-wr1-x436.google.com
-X-Spam_score_int: -14
-X-Spam_score: -1.5
-X-Spam_bar: -
-X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249,
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1036;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x1036.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: AoOgBjmAN2NU
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: F0OdGlB+Xn12
 
-On Mon, 6 Jun 2022 at 15:08, C=C3=A9dric Le Goater <clg@kaod.org> wrote:
->
-> From: Joe Komlodi <komlodi@google.com>
->
-> The Aspeed I2C controller is used across other SKUs that have different
-> reserved bits for the ctrl_global_rsvd register.
+With ARMv8, this field is always RES0.
+With ARMv7, targeting EL2 and TA=0, it is always 0xA.
 
-I think rsvd stands for reserved? Lets spell out the full name in the
-variable to keep it clear.
+Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+---
+ target/arm/syndrome.h      |  7 ++++---
+ target/arm/translate-a64.c |  3 ++-
+ target/arm/translate-vfp.c | 14 ++++++++++++--
+ 3 files changed, 18 insertions(+), 6 deletions(-)
 
-You could also call global_control_mask (or ctrl_global_mask if you
-prefer), as it's a mask of valid bits.
+diff --git a/target/arm/syndrome.h b/target/arm/syndrome.h
+index 0cb26dde7d..c105f9e6ba 100644
+--- a/target/arm/syndrome.h
++++ b/target/arm/syndrome.h
+@@ -185,12 +185,13 @@ static inline uint32_t syn_cp15_rrt_trap(int cv, int cond, int opc1, int crm,
+         | (rt2 << 10) | (rt << 5) | (crm << 1) | isread;
+ }
+ 
+-static inline uint32_t syn_fp_access_trap(int cv, int cond, bool is_16bit)
++static inline uint32_t syn_fp_access_trap(int cv, int cond, bool is_16bit,
++                                          int coproc)
+ {
+-    /* AArch32 FP trap or any AArch64 FP/SIMD trap: TA == 0 coproc == 0xa */
++    /* AArch32 FP trap or any AArch64 FP/SIMD trap: TA == 0 */
+     return (EC_ADVSIMDFPACCESSTRAP << ARM_EL_EC_SHIFT)
+         | (is_16bit ? 0 : ARM_EL_IL)
+-        | (cv << 24) | (cond << 20) | 0xa;
++        | (cv << 24) | (cond << 20) | coproc;
+ }
+ 
+ static inline uint32_t syn_simd_access_trap(int cv, int cond, bool is_16bit)
+diff --git a/target/arm/translate-a64.c b/target/arm/translate-a64.c
+index 935e1929bb..14b90a37ea 100644
+--- a/target/arm/translate-a64.c
++++ b/target/arm/translate-a64.c
+@@ -1162,7 +1162,8 @@ static bool fp_access_check(DisasContext *s)
+         s->fp_access_checked = true;
+ 
+         gen_exception_insn(s, s->pc_curr, EXCP_UDEF,
+-                           syn_fp_access_trap(1, 0xe, false), s->fp_excp_el);
++                           syn_fp_access_trap(1, 0xe, false, 0),
++                           s->fp_excp_el);
+         return false;
+     }
+     s->fp_access_checked = true;
+diff --git a/target/arm/translate-vfp.c b/target/arm/translate-vfp.c
+index 40a513b822..0f797c56fd 100644
+--- a/target/arm/translate-vfp.c
++++ b/target/arm/translate-vfp.c
+@@ -219,8 +219,18 @@ static void gen_update_fp_context(DisasContext *s)
+ static bool vfp_access_check_a(DisasContext *s, bool ignore_vfp_enabled)
+ {
+     if (s->fp_excp_el) {
+-        gen_exception_insn(s, s->pc_curr, EXCP_UDEF,
+-                           syn_fp_access_trap(1, 0xe, false), s->fp_excp_el);
++        /*
++         * The full syndrome is only used for HSR when HCPTR traps:
++         * For v8, when TA==0, coproc is RES0.
++         * For v7, any use of a Floating-point instruction or access
++         * to a Floating-point Extension register that is trapped to
++         * Hyp mode because of a trap configured in the HCPTR sets
++         * this field to 0xA.
++         */
++        int coproc = arm_dc_feature(s, ARM_FEATURE_V8) ? 0 : 0xa;
++        uint32_t syn = syn_fp_access_trap(1, 0xe, false, coproc);
++
++        gen_exception_insn(s, s->pc_curr, EXCP_UDEF, syn, s->fp_excp_el);
+         return false;
+     }
+ 
+-- 
+2.34.1
 
->
-> Signed-off-by: Joe Komlodi <komlodi@google.com>
-> Change-Id: I606c5933c527274a9d2b0afe559b2e895767636c
-> Message-Id: <20220331043248.2237838-3-komlodi@google.com>
-> Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
-> ---
->  include/hw/i2c/aspeed_i2c.h | 2 ++
->  hw/arm/aspeed_ast2600.c     | 2 ++
->  hw/i2c/aspeed_i2c.c         | 4 ++++
->  3 files changed, 8 insertions(+)
->
-> diff --git a/include/hw/i2c/aspeed_i2c.h b/include/hw/i2c/aspeed_i2c.h
-> index 4b9be09274c7..3912fcc3ff53 100644
-> --- a/include/hw/i2c/aspeed_i2c.h
-> +++ b/include/hw/i2c/aspeed_i2c.h
-> @@ -71,6 +71,8 @@ struct AspeedI2CState {
->      MemoryRegion pool_iomem;
->      uint8_t pool[ASPEED_I2C_MAX_POOL_SIZE];
->
-> +    uint32_t ctrl_global_rsvd;
-> +
->      AspeedI2CBus busses[ASPEED_I2C_NR_BUSSES];
->      MemoryRegion *dram_mr;
->      AddressSpace dram_as;
-> diff --git a/hw/arm/aspeed_ast2600.c b/hw/arm/aspeed_ast2600.c
-> index b0a4199b6960..cc57c8b437d8 100644
-> --- a/hw/arm/aspeed_ast2600.c
-> +++ b/hw/arm/aspeed_ast2600.c
-> @@ -375,6 +375,8 @@ static void aspeed_soc_ast2600_realize(DeviceState *d=
-ev, Error **errp)
->      aspeed_soc_uart_init(s);
->
->      /* I2C */
-> +    object_property_set_int(OBJECT(&s->i2c), "ctrl-global-rsvd", 0xfffc3=
-e00,
-> +                            &error_abort);
->      object_property_set_link(OBJECT(&s->i2c), "dram", OBJECT(s->dram_mr)=
-,
->                               &error_abort);
->      if (!sysbus_realize(SYS_BUS_DEVICE(&s->i2c), errp)) {
-> diff --git a/hw/i2c/aspeed_i2c.c b/hw/i2c/aspeed_i2c.c
-> index 03a4f5a91010..97eb9d57929c 100644
-> --- a/hw/i2c/aspeed_i2c.c
-> +++ b/hw/i2c/aspeed_i2c.c
-> @@ -648,6 +648,7 @@ static void aspeed_i2c_ctrl_write(void *opaque, hwadd=
-r offset,
->
->      switch (offset) {
->      case I2C_CTRL_GLOBAL:
-> +        value &=3D ~s->ctrl_global_rsvd;
-
-Is there value in printing a guest error when the reserved bits are set?
-
-If not, is it worth having this property at all? It doesn't affect the
-ability to model it.
-
->          s->ctrl_global =3D value;
->          break;
->      case I2C_CTRL_STATUS:
-> @@ -730,6 +731,7 @@ static const VMStateDescription aspeed_i2c_vmstate =
-=3D {
->      .minimum_version_id =3D 2,
->      .fields =3D (VMStateField[]) {
->          VMSTATE_UINT32(intr_status, AspeedI2CState),
-> +        VMSTATE_UINT32(ctrl_global_rsvd, AspeedI2CState),
->          VMSTATE_STRUCT_ARRAY(busses, AspeedI2CState,
->                               ASPEED_I2C_NR_BUSSES, 1, aspeed_i2c_bus_vms=
-tate,
->                               AspeedI2CBus),
-> @@ -828,6 +830,8 @@ static void aspeed_i2c_realize(DeviceState *dev, Erro=
-r **errp)
->  static Property aspeed_i2c_properties[] =3D {
->      DEFINE_PROP_LINK("dram", AspeedI2CState, dram_mr,
->                       TYPE_MEMORY_REGION, MemoryRegion *),
-> +    DEFINE_PROP_UINT32("ctrl-global-rsvd", AspeedI2CState, ctrl_global_r=
-svd,
-> +                       0xfffffffe),
->      DEFINE_PROP_END_OF_LIST(),
->  };
->
-> --
-> 2.35.3
->

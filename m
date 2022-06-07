@@ -1,102 +1,107 @@
-Received: by 2002:a19:ee12:0:0:0:0:0 with SMTP id g18csp2294940lfb;
-        Tue, 7 Jun 2022 10:32:43 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxkTJY6SV0aD8ycBgaNxRGi2DJDoWsprbCm8IDKJiw5CWiqmBWiqStujP5zNKbhhtY9Dfeg
-X-Received: by 2002:a05:620a:cda:b0:6a6:8e47:8901 with SMTP id b26-20020a05620a0cda00b006a68e478901mr18311070qkj.231.1654623163572;
-        Tue, 07 Jun 2022 10:32:43 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1654623163; cv=none;
+Received: by 2002:a19:ee12:0:0:0:0:0 with SMTP id g18csp2401895lfb;
+        Tue, 7 Jun 2022 13:33:36 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwkBMWQlTLmYVd2ay24cZtSWjiIYxBRhZGuCEcm1NpUb/PxLOoIjbC92fcxORhznc+5V44X
+X-Received: by 2002:ac8:5f0e:0:b0:304:fe44:4800 with SMTP id x14-20020ac85f0e000000b00304fe444800mr2977232qta.599.1654634016774;
+        Tue, 07 Jun 2022 13:33:36 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1654634016; cv=none;
         d=google.com; s=arc-20160816;
-        b=wBhNL/MmKJU53oNwPt9nz2LvyxAHEewLLWz8wZuBpYhO10dZodQKlsAhY9WYkv8C6v
-         OPqrEgKYjUpEUOXP/4tqUsi3DlXipZzJnY73+cApjJPZRH2N2Q6IZZiCpcD+Cw4yno8b
-         Nu2efiY281Jha5g35HUfbZvBqKHnJGJDV6hxuFbQlvzZn3vfIDzeeM/2FNiJDEHn9+s+
-         uLHVUSK76xukXbdXq/dUoI14o4q+u6vYhYj7CI4KHOZ9ivLu/9buZPdXXCGDO6g9wmmP
-         ktQIfxTqGEdjE1OfdfefkHIk+80Vw+bTpqBJyB6sDUtdiEeRfRlI79t4Q/D//xpBbMxM
-         KIOw==
+        b=nISvj+JYOugzfLUIY2hHeIKqGNcf2AxEqt7ys6LTbVGeoEJgVhaUwAEdj+/zME2Sfu
+         yRScGTNvjAsDlci/UAq7Mka1uxDuStxifghs9aDoMMhqEcIfNDfeU+dvigXY9N0u7eof
+         n9NfBa6n0u0kjyjPmSXaa+rvYh5BL25hG59+CYVZqQfqWP3x0ugRxYrsVzHSnrNTZRJ+
+         rvBNLiTvm9vN3xOqFnyutpsTh1rzzUwGyq6kM5Q0/uuln99vwM5oBLevZEmCUt+7xMPY
+         XSiFp4wf0grjS6vY9lXam36SsYjjS3GB4pt6WXyXOYdskN/8OQ4jWPJlo+Z2KO0q3HsP
+         eZRA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:cc:to:content-language:subject
-         :user-agent:mime-version:date:message-id;
-        bh=PTjWIlM8lqZWLwEjbgGIvnl6gXWfri0ioLjuMgRRryY=;
-        b=X92c4pE/gACB+v+gffo9apz1VL6NmpKG+eSGoRhOK6t3UFLiTZZV8gux9vV+RM5USn
-         zMtmuqjGN6ke/poa0qnd4+lLHF+opO4Br01Ug0xxX3enn9l1WduxAKLVqPW3paJi/2gQ
-         5KPaHz4htBz/w33o0cARKuGHUQIfS8+WPO/LNZg/gAT3IpDT1z5OciCpUzctQn1hnmjP
-         Nci3wATw0eKQdokK5D5gP8TJw1wumGDsb34eQvrgIM0OzfZmHIp74slESIded8CKsUHp
-         1YQVCBUmuhjb0+uWtlA5etQ0dkwVm7WjlJHm1TcAr1+LO2oOkG7v1QVHOZeau7YKXkUT
-         Kjqw==
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
+        bh=Ed9JFTEYd7SsdzZGCE/RmvNlZJcvRGpiz4cIrZPdhw0=;
+        b=ABZTWFNggx8LHXmltA4lAtlZiaEJ/4wY1GKbVoqfCBmFNY/hGZC/vbqOynm21JAiRW
+         e9bMguroCtvBO/ZdmzO8/zZxFbVIeiNHT+6mfkKmkjaoCHTseSc/EEWdZ+dBHacyPu+F
+         xqhUYATiieBTInqJgfP6mBwxj8yJrnjj71LfunTOSEs/AooILzbiKmjX04bwLyUTrgpm
+         +dwQIxZfpNna9UsaE5fTfx6GEBgRP9A7CTL77tmkvNE3GJFIr0iDudM68h7JOcYsPyy3
+         BDj5eXpB6/KQEqMSC5NGrlzPemGhGZAp1PkXtxzAdflUgF7YYkaEh6buCnT9JB9XAKjC
+         8OKA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@linaro.org header.s=google header.b=hkzGjbAS;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id j22-20020ac85c56000000b002f93de11d38si9688100qtj.360.2022.06.07.10.32.43
+        by mx.google.com with ESMTPS id gw5-20020a0562140f0500b00461cd9b328asi12157297qvb.246.2022.06.07.13.33.36
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 07 Jun 2022 10:32:43 -0700 (PDT)
+        Tue, 07 Jun 2022 13:33:36 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:47492 helo=lists1p.gnu.org)
+       dkim=pass header.i=@linaro.org header.s=google header.b=hkzGjbAS;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:39476 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nyd4N-0006QI-04
-	for alex.bennee@linaro.org; Tue, 07 Jun 2022 13:32:43 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44306)
+	id 1nyftQ-0007AY-7J
+	for alex.bennee@linaro.org; Tue, 07 Jun 2022 16:33:36 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33190)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>)
- id 1nyd4B-0006Pp-3M; Tue, 07 Jun 2022 13:32:31 -0400
-Received: from smtpout1.mo529.mail-out.ovh.net ([178.32.125.2]:57263)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>)
- id 1nyd48-0001wJ-4T; Tue, 07 Jun 2022 13:32:30 -0400
-Received: from mxplan5.mail.ovh.net (unknown [10.109.138.109])
- by mo529.mail-out.ovh.net (Postfix) with ESMTPS id C16F110883CE0;
- Tue,  7 Jun 2022 19:32:15 +0200 (CEST)
-Received: from kaod.org (37.59.142.107) by DAG4EX1.mxp5.local (172.16.2.31)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.9; Tue, 7 Jun 2022
- 19:32:13 +0200
-Authentication-Results: garm.ovh; auth=pass
- (GARM-107S0013f56a9fe-e4e8-4b64-b0cb-32386039e059,
- B3A9F5ABA359FFEAA5F192A1B4EC97B2EEB111D0) smtp.auth=clg@kaod.org
-X-OVh-ClientIp: 82.64.250.170
-Message-ID: <567f9a16-9ebc-0140-5137-378f6923968d@kaod.org>
-Date: Tue, 7 Jun 2022 19:32:12 +0200
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1nyft1-00078M-OK
+ for qemu-arm@nongnu.org; Tue, 07 Jun 2022 16:33:11 -0400
+Received: from mail-pg1-x530.google.com ([2607:f8b0:4864:20::530]:39884)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1nyfsz-0007BW-Lc
+ for qemu-arm@nongnu.org; Tue, 07 Jun 2022 16:33:11 -0400
+Received: by mail-pg1-x530.google.com with SMTP id q140so1893817pgq.6
+ for <qemu-arm@nongnu.org>; Tue, 07 Jun 2022 13:33:09 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=Ed9JFTEYd7SsdzZGCE/RmvNlZJcvRGpiz4cIrZPdhw0=;
+ b=hkzGjbASxIT0IT5Hoj7la51uCMyheqffS6F1V3p0Zn6TOF1eyNeKlsqxO6LaSZ0AVU
+ Zm5d/wKkD9PMGs1AWKLN2hyHt+sqmIs6K1j5e3cZQ4eZwnXJryL/2C5zkXhtVt+AewWd
+ HkjeaC5pXFrS+A/nkJIsAHDCWhcDgKIwNX67R3aDhW1ZJ6btAtFtDSm7Zy3i80Mnn/MV
+ D2A1YkKo3pqQC6zx5CdC8EpOWdHsXkPm5OCjpWkwrtDogtGsZGMmeQ0jkojkVReZBvqk
+ YZF4NU9RmRffL+5flHpsHujSgF0i3qBi8Yebx1X2Alr0+YqNEB0BHcBd9ddazjvou+5F
+ MzRw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=Ed9JFTEYd7SsdzZGCE/RmvNlZJcvRGpiz4cIrZPdhw0=;
+ b=2JhmRMHRLo4KhUznXLWBmgm4UyH0/x0zyfr/j5WXCRLvfEadP6APy1WrVyWAa1la5M
+ Rwgo0z29sITGNgcVtKssQlwq5Srl/uZ9q76Vcmfx9y7/xRkfhzQ8lb45NsoDP9HoQ+aX
+ p0XifbVIEbjlCa1hIBedfz8/p73DdOinSGirUOrotUgSdgqN954Aei3Upp5uoJlddUsE
+ MvG636O3N8PLl94NAxGFb9F235wF7oMtIRdEhTqsMyHT3ysNl2i5iyWnpYTNwebhF8MA
+ GU870Hdn6GWhC262KmshC6REvZ6Igg3Bd6D7XAq9xqek3kx70YVj9nAcB4vEDeA9rBt7
+ DWPg==
+X-Gm-Message-State: AOAM530Fn8xG2SS7TEk7cqScJ+REFO00BImT0VxufcM1Zc1t0DvnFcFd
+ a5zt/WJAQzPTjl9Z7z4DUjQDzg==
+X-Received: by 2002:a63:84c3:0:b0:3fc:8810:f0a7 with SMTP id
+ k186-20020a6384c3000000b003fc8810f0a7mr27773068pgd.605.1654633988049; 
+ Tue, 07 Jun 2022 13:33:08 -0700 (PDT)
+Received: from stoup.. ([2602:ae:1547:e101:3cf2:c634:5b19:25f6])
+ by smtp.gmail.com with ESMTPSA id
+ s22-20020a17090aba1600b001d9780b7779sm4227856pjr.15.2022.06.07.13.33.07
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 07 Jun 2022 13:33:07 -0700 (PDT)
+From: Richard Henderson <richard.henderson@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: peter.maydell@linaro.org,
+	qemu-arm@nongnu.org
+Subject: [PATCH v2 00/71] target/arm: Scalable Matrix Extension
+Date: Tue,  7 Jun 2022 13:31:55 -0700
+Message-Id: <20220607203306.657998-1-richard.henderson@linaro.org>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.9.0
-Subject: Re: [PATCH 02/21] aspeed: i2c: Add ctrl_global_rsvd property
-Content-Language: en-US
-To: Joel Stanley <joel@jms.id.au>
-CC: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>,
- Peter Maydell <peter.maydell@linaro.org>, Joe Komlodi <komlodi@google.com>,
- Troy Lee <troy_lee@aspeedtech.com>, Jamin Lin <jamin_lin@aspeedtech.com>,
- Steven Lee <steven_lee@aspeedtech.com>, Klaus Jensen <k.jensen@samsung.com>,
- Peter Delevoryas <pdel@fb.com>, Corey Minyard <cminyard@mvista.com>, Jonathan
- Cameron <Jonathan.Cameron@huawei.com>, Damien Hedde
- <damien.hedde@greensocs.com>, Andrew Jeffery <andrew@aj.id.au>, Cleber Rosa
- <crosa@redhat.com>, =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?=
- <f4bug@amsat.org>, Wainer dos Santos Moschetta <wainersm@redhat.com>, Beraldo
- Leal <bleal@redhat.com>
-References: <20220606150732.2282041-1-clg@kaod.org>
- <20220606150732.2282041-3-clg@kaod.org>
- <CACPK8Xe_9octsmpZwbGQFpYijgVWyED_n1UjXxjUj-fDRHdp1Q@mail.gmail.com>
-From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
-In-Reply-To: <CACPK8Xe_9octsmpZwbGQFpYijgVWyED_n1UjXxjUj-fDRHdp1Q@mail.gmail.com>
-Content-Type: text/plain; charset="UTF-8"; format=flowed
 Content-Transfer-Encoding: 8bit
-X-Originating-IP: [37.59.142.107]
-X-ClientProxiedBy: DAG6EX1.mxp5.local (172.16.2.51) To DAG4EX1.mxp5.local
- (172.16.2.31)
-X-Ovh-Tracer-GUID: 7df6c07e-7525-4083-9ece-e8599fda4a62
-X-Ovh-Tracer-Id: 10060760093656386506
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvfedruddthedguddugecutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemucehtddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpefkffggfgfuvfevfhfhjggtgfhisehtkeertddtfeejnecuhfhrohhmpeevrogurhhitggpnfgvpgfiohgrthgvrhcuoegtlhhgsehkrghougdrohhrgheqnecuggftrfgrthhtvghrnhepkeetjedtleekjedvveffudfhteetleeifeegfeffuefghfefkeehffeufeeludejnecukfhppedtrddtrddtrddtpdefjedrheelrddugedvrddutdejnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmohguvgepshhmthhpohhuthdphhgvlhhopehmgihplhgrnhehrdhmrghilhdrohhvhhdrnhgvthdpihhnvghtpedtrddtrddtrddtpdhmrghilhhfrhhomheptghlgheskhgrohgurdhorhhgpdhnsggprhgtphhtthhopedupdhrtghpthhtohepsghlvggrlhesrhgvughhrghtrdgtohhmpdfovfetjfhoshhtpehmohehvdel
-Received-SPF: pass client-ip=178.32.125.2; envelope-from=clg@kaod.org;
- helo=smtpout1.mo529.mail-out.ovh.net
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
+Received-SPF: pass client-ip=2607:f8b0:4864:20::530;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pg1-x530.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
@@ -113,109 +118,131 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Sa8ezdMuZwse
+X-TUID: CFMo+akCgXy3
 
-Hello Joe,
+Changes for v2: 
+  * Incorporate feedback from v1.
 
-On 6/7/22 02:05, Joel Stanley wrote:
-> On Mon, 6 Jun 2022 at 15:08, Cédric Le Goater <clg@kaod.org> wrote:
->>
->> From: Joe Komlodi <komlodi@google.com>
->>
->> The Aspeed I2C controller is used across other SKUs that have different
->> reserved bits for the ctrl_global_rsvd register.
-> 
-> I think rsvd stands for reserved? Lets spell out the full name in the
-> variable to keep it clear.
-> 
-> You could also call global_control_mask (or ctrl_global_mask if you
-> prefer), as it's a mask of valid bits.
-> 
->>
->> Signed-off-by: Joe Komlodi <komlodi@google.com>
->> Change-Id: I606c5933c527274a9d2b0afe559b2e895767636c
->> Message-Id: <20220331043248.2237838-3-komlodi@google.com>
->> Signed-off-by: Cédric Le Goater <clg@kaod.org>
->> ---
->>   include/hw/i2c/aspeed_i2c.h | 2 ++
->>   hw/arm/aspeed_ast2600.c     | 2 ++
->>   hw/i2c/aspeed_i2c.c         | 4 ++++
->>   3 files changed, 8 insertions(+)
->>
->> diff --git a/include/hw/i2c/aspeed_i2c.h b/include/hw/i2c/aspeed_i2c.h
->> index 4b9be09274c7..3912fcc3ff53 100644
->> --- a/include/hw/i2c/aspeed_i2c.h
->> +++ b/include/hw/i2c/aspeed_i2c.h
->> @@ -71,6 +71,8 @@ struct AspeedI2CState {
->>       MemoryRegion pool_iomem;
->>       uint8_t pool[ASPEED_I2C_MAX_POOL_SIZE];
->>
->> +    uint32_t ctrl_global_rsvd;
->> +
->>       AspeedI2CBus busses[ASPEED_I2C_NR_BUSSES];
->>       MemoryRegion *dram_mr;
->>       AddressSpace dram_as;
->> diff --git a/hw/arm/aspeed_ast2600.c b/hw/arm/aspeed_ast2600.c
->> index b0a4199b6960..cc57c8b437d8 100644
->> --- a/hw/arm/aspeed_ast2600.c
->> +++ b/hw/arm/aspeed_ast2600.c
->> @@ -375,6 +375,8 @@ static void aspeed_soc_ast2600_realize(DeviceState *dev, Error **errp)
->>       aspeed_soc_uart_init(s);
->>
->>       /* I2C */
->> +    object_property_set_int(OBJECT(&s->i2c), "ctrl-global-rsvd", 0xfffc3e00,
->> +                            &error_abort);
->>       object_property_set_link(OBJECT(&s->i2c), "dram", OBJECT(s->dram_mr),
->>                                &error_abort);
->>       if (!sysbus_realize(SYS_BUS_DEVICE(&s->i2c), errp)) {
->> diff --git a/hw/i2c/aspeed_i2c.c b/hw/i2c/aspeed_i2c.c
->> index 03a4f5a91010..97eb9d57929c 100644
->> --- a/hw/i2c/aspeed_i2c.c
->> +++ b/hw/i2c/aspeed_i2c.c
->> @@ -648,6 +648,7 @@ static void aspeed_i2c_ctrl_write(void *opaque, hwaddr offset,
->>
->>       switch (offset) {
->>       case I2C_CTRL_GLOBAL:
->> +        value &= ~s->ctrl_global_rsvd;
-> 
-> Is there value in printing a guest error when the reserved bits are set?
-> 
-> If not, is it worth having this property at all? It doesn't affect the
-> ability to model it.
+Richard Henderson (71):
+  target/arm: Rename TBFLAG_A64 ZCR_LEN to VL
+  linux-user/aarch64: Introduce sve_vq
+  target/arm: Remove route_to_el2 check from sve_exception_el
+  target/arm: Remove fp checks from sve_exception_el
+  target/arm: Add el_is_in_host
+  target/arm: Use el_is_in_host for sve_zcr_len_for_el
+  target/arm: Use el_is_in_host for sve_exception_el
+  target/arm: Hoist arm_is_el2_enabled check in sve_exception_el
+  target/arm: Do not use aarch64_sve_zcr_get_valid_len in reset
+  target/arm: Merge aarch64_sve_zcr_get_valid_len into caller
+  target/arm: Use uint32_t instead of bitmap for sve vq's
+  target/arm: Rename sve_zcr_len_for_el to sve_vqm1_for_el
+  target/arm: Split out load/store primitives to sve_ldst_internal.h
+  target/arm: Export sve contiguous ldst support functions
+  target/arm: Move expand_pred_b to vec_internal.h
+  target/arm: Use expand_pred_b in mve_helper.c
+  target/arm: Move expand_pred_h to vec_internal.h
+  target/arm: Export bfdotadd from vec_helper.c
+  target/arm: Add isar_feature_aa64_sme
+  target/arm: Add ID_AA64SMFR0_EL1
+  target/arm: Implement TPIDR2_EL0
+  target/arm: Add SMEEXC_EL to TB flags
+  target/arm: Add syn_smetrap
+  target/arm: Add ARM_CP_SME
+  target/arm: Add SVCR
+  target/arm: Add SMCR_ELx
+  target/arm: Add SMIDR_EL1, SMPRI_EL1, SMPRIMAP_EL2
+  target/arm: Add PSTATE.{SM,ZA} to TB flags
+  target/arm: Add the SME ZA storage to CPUARMState
+  target/arm: Implement SMSTART, SMSTOP
+  target/arm: Move error for sve%d property to arm_cpu_sve_finalize
+  target/arm: Create ARMVQMap
+  target/arm: Generalize cpu_arm_{get,set}_vq
+  target/arm: Generalize cpu_arm_{get,set}_default_vec_len
+  target/arm: Move arm_cpu_*_finalize to internals.h
+  target/arm: Unexport aarch64_add_*_properties
+  target/arm: Add cpu properties for SME
+  target/arm: Introduce sve_vqm1_for_el_sm
+  target/arm: Add SVL to TB flags
+  target/arm: Move pred_{full,gvec}_reg_{offset,size} to translate-a64.h
+  target/arm: Add infrastructure for disas_sme
+  target/arm: Trap AdvSIMD usage when Streaming SVE is active
+  target/arm: Implement SME RDSVL, ADDSVL, ADDSPL
+  target/arm: Implement SME ZERO
+  target/arm: Implement SME MOVA
+  target/arm: Implement SME LD1, ST1
+  target/arm: Export unpredicated ld/st from translate-sve.c
+  target/arm: Implement SME LDR, STR
+  target/arm: Implement SME ADDHA, ADDVA
+  target/arm: Implement FMOPA, FMOPS (non-widening)
+  target/arm: Implement BFMOPA, BFMOPS
+  target/arm: Implement FMOPA, FMOPS (widening)
+  target/arm: Implement SME integer outer product
+  target/arm: Implement PSEL
+  target/arm: Implement REVD
+  target/arm: Implement SCLAMP, UCLAMP
+  target/arm: Reset streaming sve state on exception boundaries
+  target/arm: Enable SME for -cpu max
+  linux-user/aarch64: Clear tpidr2_el0 if CLONE_SETTLS
+  linux-user/aarch64: Reset PSTATE.SM on syscalls
+  linux-user/aarch64: Add SM bit to SVE signal context
+  linux-user/aarch64: Tidy target_restore_sigframe error return
+  linux-user/aarch64: Do not allow duplicate or short sve records
+  linux-user/aarch64: Verify extra record lock succeeded
+  linux-user/aarch64: Move sve record checks into restore
+  linux-user/aarch64: Implement SME signal handling
+  linux-user: Rename sve prctls
+  linux-user/aarch64: Implement PR_SME_GET_VL, PR_SME_SET_VL
+  target/arm: Only set ZEN in reset if SVE present
+  target/arm: Enable SME for user-only
+  linux-user/aarch64: Add SME related hwcap entries
 
+ linux-user/aarch64/target_cpu.h   |    5 +-
+ linux-user/aarch64/target_prctl.h |   76 +-
+ target/arm/cpregs.h               |    5 +
+ target/arm/cpu.h                  |  146 +++-
+ target/arm/helper-sme.h           |  146 ++++
+ target/arm/helper-sve.h           |    4 +
+ target/arm/helper.h               |   19 +
+ target/arm/internals.h            |   22 +-
+ target/arm/kvm_arm.h              |    7 +-
+ target/arm/sve_ldst_internal.h    |  221 ++++++
+ target/arm/syndrome.h             |   14 +
+ target/arm/translate-a64.h        |   55 +-
+ target/arm/translate.h            |   16 +-
+ target/arm/vec_internal.h         |   28 +-
+ linux-user/aarch64/cpu_loop.c     |    9 +
+ linux-user/aarch64/signal.c       |  242 +++++-
+ linux-user/elfload.c              |   20 +
+ linux-user/syscall.c              |   28 +-
+ target/arm/arch_dump.c            |    2 +-
+ target/arm/cpu.c                  |   39 +-
+ target/arm/cpu64.c                |  311 +++++---
+ target/arm/gdbstub64.c            |    2 +-
+ target/arm/helper.c               |  395 ++++++++--
+ target/arm/kvm64.c                |   47 +-
+ target/arm/machine.c              |   34 +
+ target/arm/mve_helper.c           |    6 +-
+ target/arm/sme_helper.c           | 1174 +++++++++++++++++++++++++++++
+ target/arm/sve_helper.c           |  260 ++-----
+ target/arm/translate-a64.c        |  147 +++-
+ target/arm/translate-sme.c        |  353 +++++++++
+ target/arm/translate-sve.c        |  283 +++++--
+ target/arm/translate-vfp.c        |   13 +
+ target/arm/translate.c            |    1 +
+ target/arm/vec_helper.c           |   52 +-
+ docs/system/arm/emulation.rst     |    4 +
+ target/arm/meson.build            |    4 +
+ target/arm/sme-fa64.decode        |   89 +++
+ target/arm/sme.decode             |   88 +++
+ target/arm/sve.decode             |   31 +-
+ 39 files changed, 3804 insertions(+), 594 deletions(-)
+ create mode 100644 target/arm/helper-sme.h
+ create mode 100644 target/arm/sve_ldst_internal.h
+ create mode 100644 target/arm/sme_helper.c
+ create mode 100644 target/arm/translate-sme.c
+ create mode 100644 target/arm/sme-fa64.decode
+ create mode 100644 target/arm/sme.decode
 
-Could you tell us more about the 0xfffc3e00 value. It doesn't match
-any documents I have access to. If it is for a specific board, then
-it should be added to QEMU. We can keep the property to begin with,
-if that helps
-
-Thanks,
-
-C.
-
-
-> 
->>           s->ctrl_global = value;
->>           break;
->>       case I2C_CTRL_STATUS:
->> @@ -730,6 +731,7 @@ static const VMStateDescription aspeed_i2c_vmstate = {
->>       .minimum_version_id = 2,
->>       .fields = (VMStateField[]) {
->>           VMSTATE_UINT32(intr_status, AspeedI2CState),
->> +        VMSTATE_UINT32(ctrl_global_rsvd, AspeedI2CState),
->>           VMSTATE_STRUCT_ARRAY(busses, AspeedI2CState,
->>                                ASPEED_I2C_NR_BUSSES, 1, aspeed_i2c_bus_vmstate,
->>                                AspeedI2CBus),
->> @@ -828,6 +830,8 @@ static void aspeed_i2c_realize(DeviceState *dev, Error **errp)
->>   static Property aspeed_i2c_properties[] = {
->>       DEFINE_PROP_LINK("dram", AspeedI2CState, dram_mr,
->>                        TYPE_MEMORY_REGION, MemoryRegion *),
->> +    DEFINE_PROP_UINT32("ctrl-global-rsvd", AspeedI2CState, ctrl_global_rsvd,
->> +                       0xfffffffe),
->>       DEFINE_PROP_END_OF_LIST(),
->>   };
->>
->> --
->> 2.35.3
->>
+-- 
+2.34.1
 

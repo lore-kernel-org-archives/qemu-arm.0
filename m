@@ -1,181 +1,169 @@
-Received: by 2002:a19:ee12:0:0:0:0:0 with SMTP id g18csp481966lfb;
-        Thu, 9 Jun 2022 07:34:20 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwWnzl8FzAqp/brdrhWS0Tmim4Vm9izS7yNprvvk8LKiYVQjgLUPqhmVPTpSJjvrwCBgmU8
-X-Received: by 2002:ac8:5f0a:0:b0:304:dffc:b657 with SMTP id x10-20020ac85f0a000000b00304dffcb657mr26454076qta.448.1654785260258;
-        Thu, 09 Jun 2022 07:34:20 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1654785260; cv=none;
+Received: by 2002:a19:ee12:0:0:0:0:0 with SMTP id g18csp514495lfb;
+        Thu, 9 Jun 2022 08:25:04 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJw+7WzAoe2SV3V2TAJXJylSamP7j51rwYU18fHbjlQVKYTAQuR5QQvS5DZuKqIKvdUxogb1
+X-Received: by 2002:a05:620a:25cd:b0:699:c467:fab0 with SMTP id y13-20020a05620a25cd00b00699c467fab0mr26755347qko.395.1654788304130;
+        Thu, 09 Jun 2022 08:25:04 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1654788304; cv=none;
         d=google.com; s=arc-20160816;
-        b=RuVXSS2wRsrlEquz254OHWlhSdEDJ9F4Xp4u02BrTtQvTILEgujwH1NsTsZ7J7kbLD
-         dKtezLEZwQWT9gX0BQf6F+6Q858PXul9XhPt2kJQLML0rlBgfZAFBuNv3Qz8NXK+IKLN
-         UGYXL7bM46mJQf6/RUVa/ZEqaItU/5nJat6HfAoNVZ2PCK8luA66aoaDUd1xMZTYcxGh
-         bwnZtSf3MCFRWBVlv6hxsF2Wnbj3NVwESW4JNJ3UEkzCgiAthKo/N/DVvamfAunlcrhf
-         gBbRb706G2otInecfdMpBsYtbS53eXuStQpNznjGpqCBS3/ZVfjRMDgK84PwQA8r9LWZ
-         utXw==
+        b=HoMlH6Zy86NrVXfqs2yS/ikQXmuP5BX1OqPBD6A2J+VqQ09FBVSZ6ccDotZRuNNkBI
+         O/yu+58YvDIGYBMWRyx/oH51x+HBzLs1eC00FTa9qx4Ydui2yXuDCLPMzbfu4XoYJ5EZ
+         Sl7jtSPJMBAs05ZPEiyq7cdQirx5cERXlBklT1TcRO7eBPmAHoKPD9FRsmsHFMX7pOOB
+         o665AfpsB/HBPIJfRduzAO1QA5Cr5HR6jfCm4iKXbxm08ls1fgcg42Nk3XxrEcZMT0tO
+         ckVX5Sv8R4E3ZPa74fQ1Cas9pwYI+x0hM4aZy8BsoNSqm/tywhj6ODgYqLu1PCOmWcXJ
+         /3Ww==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:subject:from
-         :references:cc:to:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=vPW+5faa2QW+8Z/lK9Y/JDyNDJu0hl5AZwrGuRsAXbc=;
-        b=GGxWPcDCTZoxqnFUjAg0ZrLLvT4cryCKC0e2BiOb89/PGJ9R4rBNxW6hhxSBHCecN+
-         7OeiweoBFzf9lWCsZ3SdC/kegTG5Zi2a5oNObB9IY+hzWG+GbJhWWFGzmn6K6U03nKYT
-         SanUcfsp3wLGfgbC+cuoLPIE6QQUyh3BrB9/2nh9HFSoZ4ynAxNCF4+h3LG5aiz16gdN
-         WjeNZDHTOgcvcVMah/ORkPA/Hx0oEOfyWTqaVilSaQzfmqOs6bmduQYYWNHyHxs5I7q3
-         XrasCJFi9+QsadZMxmTzWcxGrKjCbinz5GMvrQ+DSbbKIkUwynpViBfFkzKE5H7LXTq1
-         rUIg==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=AyICTKbmfFWPtVchwZ2x5SPndxhOMyGcxD9CcnVxnmE=;
+        b=xohu3RnoLAW0740iJR2PCRZGLxehJzulIYcpQ1Ev70uqexWfnShsAVlJ7KiITD6r8c
+         NkwDl/LRWdBqoaL8q/CGz2+6EQcyN4QvAvjI1WsWbvijN+3WRKF5UGBR0EW1wePxgQmG
+         K7dAzIbbXzOqfID9tdnF2/W4SZnuJ2RuzY+dsnWmL0gA//qdfwUPCxt8vomK6G/xnN2X
+         e1DryMxIF6vGBg/RdI9r821bKtJsIAs6ARgSCFufK+9v1dguwbSZBLZ2bXxaLRF9hQ5Z
+         zxKZ8SOArCNUyo2eDhXi40ZShCqaMfoXsxy4mcMFRcLdsCpvrCYKcQln/ysyooXMw2dA
+         8gzw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=iBVNj3IE;
-       spf=pass (google.com: domain of thuth@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <thuth@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
-        by mx.google.com with ESMTPS id gc11-20020a056214230b00b00461f624eafcsi12915067qvb.104.2022.06.09.07.34.20
+       dkim=pass header.i=@linaro.org header.s=google header.b=eaLOjCEy;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id a8-20020a056214062800b0046b938bfa35si3061914qvx.576.2022.06.09.08.25.03
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 09 Jun 2022 07:34:20 -0700 (PDT)
-Received-SPF: pass (google.com: domain of thuth@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 09 Jun 2022 08:25:04 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=iBVNj3IE;
-       spf=pass (google.com: domain of thuth@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1654785259;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=vPW+5faa2QW+8Z/lK9Y/JDyNDJu0hl5AZwrGuRsAXbc=;
-	b=iBVNj3IEWoTvGjwURSzNuh7bUcdH7Yoc+weTWEHiGUrtSTU5kp85Hbk1gh5GHltdsvbLKG
-	fzF1Vs4FQTwoFhFT0nyOJ8v2Fpbn+sSmxKf+V3kb4/ksGSa+n/deNNm/oHuwx0eir0d9/e
-	PaITwmFL4W92U7uuLcbU9U8uSDMlJBA=
-Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
- [209.85.221.71]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-515-NU6tU1mbNQKLTP9T_VrJ5Q-1; Thu, 09 Jun 2022 10:34:16 -0400
-X-MC-Unique: NU6tU1mbNQKLTP9T_VrJ5Q-1
-Received: by mail-wr1-f71.google.com with SMTP id bw25-20020a0560001f9900b002175d64fd29so3745873wrb.9
-        for <alex.bennee@linaro.org>; Thu, 09 Jun 2022 07:34:16 -0700 (PDT)
+       dkim=pass header.i=@linaro.org header.s=google header.b=eaLOjCEy;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:56346 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1nzK1v-0002O9-J5
+	for alex.bennee@linaro.org; Thu, 09 Jun 2022 11:25:03 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:49102)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1nzJqu-0002AI-4M
+ for qemu-arm@nongnu.org; Thu, 09 Jun 2022 11:13:42 -0400
+Received: from mail-yw1-x1133.google.com ([2607:f8b0:4864:20::1133]:33465)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1nzJqs-0006J2-LX
+ for qemu-arm@nongnu.org; Thu, 09 Jun 2022 11:13:39 -0400
+Received: by mail-yw1-x1133.google.com with SMTP id
+ 00721157ae682-30fa61b1a83so238959207b3.0
+ for <qemu-arm@nongnu.org>; Thu, 09 Jun 2022 08:13:38 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=AyICTKbmfFWPtVchwZ2x5SPndxhOMyGcxD9CcnVxnmE=;
+ b=eaLOjCEybBW6jWcLR6qZjYg2TrJLZcgvhYjBhdJ3OIKrpkG4K3rh4sB59RSlqj3IcP
+ evmT+/gQl5iMEzDA2vQrb5M0VDWSgcF8lEN+uqEw7WkPZjG83mz1lnyz2coFFni8xQ0L
+ T4WwFMGG02i10pgJW/wkvFCF8incizJXe1kVM+3BSSzqjOvKtkhIBou7eDlPlYWKxUUI
+ J7uIUae2M3QHDODodHYgotlsQr8nMVgj9va/s3FrA7wZl9K95Udgsos6MP3rTcYLp+Ik
+ uYlinx0ovZjfDFbiLYv9CNL4w9S5g8ru2AjBDJfUoQ5WtGcfREgiXPR+nmDLsou6hiGW
+ Bfpg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=x-gm-message-state:message-id:date:mime-version:user-agent
-         :content-language:to:cc:references:from:subject:in-reply-to
-         :content-transfer-encoding;
-        bh=vPW+5faa2QW+8Z/lK9Y/JDyNDJu0hl5AZwrGuRsAXbc=;
-        b=pXYwFZDk4Fyimv1jU9xQOezxoob9PBoik1EvyLwQ9JBmY99sw5rxkAwDeu+xmFaPd+
-         9t9US8EKexe95R3HCG/zmwsDQ4azoBNWXFLtHCLUug0XilOJcbz5WaAKDpasUkfVJ7Tg
-         n84jYjv3k2+ZcZjpspCY9W/yFVyYSfTmJufELrO7Eej/UOAcW/8buzn5Knw96tWBitHV
-         g7mDmex/5zKY3VoXvwF80SRxxyliUBOdMkQ3+7HLltdRH0UwBFSHO3E5Bhk/Zr2pADnO
-         PEk/i9/qfGdDFhWwNw7Y6uw+GLs83wq9qWhtXxcFyJ3vfFNK74YWBuw4dX0oZv7fkp7a
-         kSVQ==
-X-Gm-Message-State: AOAM533qY7FMDsAWaM1VZ55IX43oTC5obrDR6F5cJvlTnEJTEy0vvNIh
-	30OZMODophrkN8yO5q33y0+29HcmlVQe9Q1jRNcJpVdwUdzCgZ3NUEZgCpFbaIiJiS3XO52BjVC
-	kocaJwboQP/qkQpc8
-X-Received: by 2002:a05:600c:3d1b:b0:39b:1743:4d84 with SMTP id bh27-20020a05600c3d1b00b0039b17434d84mr3601505wmb.118.1654785255630;
-        Thu, 09 Jun 2022 07:34:15 -0700 (PDT)
-X-Received: by 2002:a05:600c:3d1b:b0:39b:1743:4d84 with SMTP id bh27-20020a05600c3d1b00b0039b17434d84mr3601464wmb.118.1654785255252;
-        Thu, 09 Jun 2022 07:34:15 -0700 (PDT)
-Return-Path: <thuth@redhat.com>
-Received: from [192.168.0.3] (ip-109-42-115-130.web.vodafone.de. [109.42.115.130])
-        by smtp.gmail.com with ESMTPSA id h7-20020a05600c350700b0039c3b05540fsm26425084wmq.27.2022.06.09.07.34.13
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 09 Jun 2022 07:34:14 -0700 (PDT)
-Message-ID: <4d58f632-df78-b709-37b8-f7d86ae536f6@redhat.com>
-Date: Thu, 9 Jun 2022 16:34:13 +0200
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=AyICTKbmfFWPtVchwZ2x5SPndxhOMyGcxD9CcnVxnmE=;
+ b=ZWI2FQO5wkdMj/7oIubtgteH7Uw9jJ5Eh7dpEbvbggBWOJ1VS8SSYVLtFMpWn0rbNR
+ +Nj2rmUMswe0DLW6OveElXBJue3i9K2Vp44teJXvpblQrfP6byFVaMBr9rzPnncjLGRI
+ BeSVC14XuXEx9ot6Ws2DWwKrbirroOfeNJFjoB5KYqlk1vEXdwTMmpg7vC/wgBQ0wESa
+ a/2aGFeH4MWsHhiGqjQRolbtskBdFIRqd0qLG+o03i8LFhnOJ1gPdg0abSjTw2BiteoK
+ tEaNSYF4tRLWZK8wEO87Fk+kCYhdvSiP0BECwnAIiw+nLXDXNrudHBeUV8sBo/IwGw4I
+ ghHg==
+X-Gm-Message-State: AOAM532LaUQRulW8xeGXkCngo6hHaFdMgucexfPbMvVQGz0xTQFfCTIU
+ KNBl9IzEjOraXxlAIRMsw/7xK48yhdlpAwLRbkjK8xYMBGs=
+X-Received: by 2002:a81:6904:0:b0:2fe:e670:318a with SMTP id
+ e4-20020a816904000000b002fee670318amr42262598ywc.329.1654787616959; Thu, 09
+ Jun 2022 08:13:36 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.10.0
-To: Claudio Fontana <cfontana@suse.de>, Stefan Pejic
- <stefan.pejic@syrmia.com>, ot_dragan.mladjenovic@mediatek.com
-Cc: Paolo Bonzini <pbonzini@redhat.com>, qemu-devel@nongnu.org,
- Richard Henderson <richard.henderson@linaro.org>,
- Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
- Stefan Weil <sw@weilnetz.de>, Aleksandar Markovic <amarkovic@wavecomp.com>,
- Matthew Fortune <matthew.fortune@mips.com>,
- =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?= <berrange@redhat.com>,
- ot_stefan.pejic@mediatek.com, =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?=
- <f4bug@amsat.org>
-References: <20220603164249.112459-1-thuth@redhat.com>
- <07f021e7-1346-c6b3-3bd1-ef0d0f0e2ff5@suse.de>
- <52c51ac4-5598-faf2-d5e5-638cab0dc1fd@redhat.com>
- <7ae17984-89c4-2247-57a7-fde6206e41e0@redhat.com>
- <03a1e04e-45c7-5002-6920-d04e29fd48fd@redhat.com>
- <YqG2Anwtba+MfxfH@redhat.com> <209c7aaf-bc7b-cbc2-c6d0-002bbe31258a@suse.de>
- <e29d83e6-e7bb-b370-33d0-88d22aa2eddb@suse.de>
-From: Thomas Huth <thuth@redhat.com>
-Subject: What to do with the nanomips disassembler (was: [PATCH] disas: Remove
- libvixl disassembler)
-In-Reply-To: <e29d83e6-e7bb-b370-33d0-88d22aa2eddb@suse.de>
-Authentication-Results: relay.mimecast.com;
-	auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=thuth@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-TUID: 0z9JIR5ouIdD
+References: <20220605161056.293920-1-richard.henderson@linaro.org>
+ <20220605161056.293920-3-richard.henderson@linaro.org>
+In-Reply-To: <20220605161056.293920-3-richard.henderson@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 9 Jun 2022 16:13:26 +0100
+Message-ID: <CAFEAcA-YtGEHj5vsnK31qUXDvc8WerVafPBYzEOA5NH5kyL1-g@mail.gmail.com>
+Subject: Re: [PATCH 2/2] target/arm: SCR_EL3.RW is RAO/WI without AArch32
+ EL[12]
+To: Richard Henderson <richard.henderson@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1133;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x1133.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: psyoURojUGrK
 
-On 09/06/2022 16.15, Claudio Fontana wrote:
-> On 6/9/22 13:27, Claudio Fontana wrote:
->> On 6/9/22 10:57, Daniel P. Berrangé wrote:
->>> On Thu, Jun 09, 2022 at 10:47:24AM +0200, Thomas Huth wrote:
->>>> On 08/06/2022 17.51, Paolo Bonzini wrote:
->>>>> On 6/3/22 19:35, Thomas Huth wrote:
->>>>>> On 03/06/2022 19.26, Claudio Fontana wrote:
-[...]
->>>>>>> maybe something we can now drop if there are no more C++ users?
->>>>>>
->>>>>> I thought about that, too, but we still have disas/nanomips.cpp left
->>>>>> and the Windows-related files in qga/vss-win32/* .
->>>>>
->>>>> That is pure C++ so it does not need the extra complication of "detect
->>>>> whether the C and C++ compiler are ABI-compatible" (typically due to
->>>>> different libasan/libtsan implementation between gcc and clang).  So
->>>>> it's really just nanoMIPS that's left.
->>>>
->>>> Ok, so the next theoretical question is: If we get rid of the nanomips.cpp
->>>> file or convert it to plain C, would we then simplify the code in configure
->>>> again (and forbid C++ for the main QEMU code), or would we rather keep the
->>>> current settings in case we want to re-introduce more C++ code again in the
->>>> future?
->>>
->>> It doesn't feel very compelling to have just 1 source file that's
->>> C++ in QEMU. I'm curious how we ended up with this nanomips.cpp
->>> file - perhaps it originated from another project that was C++
->>> based ?
->>>
->>> The code itself doesn't look like it especially needs to be using
->>> C++. There's just 1 class there and every method is associated
->>> with that class, and external entry point from the rest of QEMU
->>> is just one boring method. Feels like it could easily have been
->>> done in C.
->>>
->>> Personally I'd prefer it to be converted to C, and if we want to
->>> add any C++ in future it should be justified & debated on its
->>> merits, rather than as an artifact of any historical artifacts
->>> such as the code in configure happening to still exist.
->>
->> I'll take a look at it, maybe I can turn it to C fairly quickly.
-> 
-> It seems to be generated code, getting the original authors involved in the thread.
+On Sun, 5 Jun 2022 at 17:16, Richard Henderson
+<richard.henderson@linaro.org> wrote:
+>
+> Since DDI0487F.a, the RW bit is RAO/WI.  When specifically
+> targeting such a cpu, e.g. cortex-a76, it is legitimate to
+> ignore the bit within the secure monitor.
+>
+> Resolves: https://gitlab.com/qemu-project/qemu/-/issues/1062
+> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+> ---
+>  target/arm/cpu.h    | 5 +++++
+>  target/arm/helper.c | 4 ++++
+>  2 files changed, 9 insertions(+)
+>
+> diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+> index c1865ad5da..a7c45d0d66 100644
+> --- a/target/arm/cpu.h
+> +++ b/target/arm/cpu.h
+> @@ -3947,6 +3947,11 @@ static inline bool isar_feature_aa64_aa32_el1(const ARMISARegisters *id)
+>      return FIELD_EX64(id->id_aa64pfr0, ID_AA64PFR0, EL1) >= 2;
+>  }
+>
+> +static inline bool isar_feature_aa64_aa32_el2(const ARMISARegisters *id)
+> +{
+> +    return FIELD_EX64(id->id_aa64pfr0, ID_AA64PFR0, EL2) >= 2;
+> +}
+> +
+>  static inline bool isar_feature_aa64_ras(const ARMISARegisters *id)
+>  {
+>      return FIELD_EX64(id->id_aa64pfr0, ID_AA64PFR0, RAS) != 0;
+> diff --git a/target/arm/helper.c b/target/arm/helper.c
+> index c262b00c3c..84232a6437 100644
+> --- a/target/arm/helper.c
+> +++ b/target/arm/helper.c
+> @@ -1755,6 +1755,10 @@ static void scr_write(CPUARMState *env, const ARMCPRegInfo *ri, uint64_t value)
+>          value |= SCR_FW | SCR_AW;      /* RES1 */
+>          valid_mask &= ~SCR_NET;        /* RES0 */
+>
+> +        if (!cpu_isar_feature(aa64_aa32_el1, cpu) &&
+> +            !cpu_isar_feature(aa64_aa32_el2, cpu)) {
+> +            value |= SCR_RW;           /* RAO/WI*/
+> +        }
 
-Not sure whether the original mips folks are still around ... but the folks 
-from MediaTek recently expressed their interest in nanoMIPS:
+True in principle, but we probably need to do something to handle
+the reset case for AArch32 CPUs, where cpu_isar_feature() will
+return false becaese id_aa64pfr0 is zero but the bit should
+nonetheless be RES0.
 
- 
-https://lore.kernel.org/qemu-devel/20220504110403.613168-8-stefan.pejic@syrmia.com/
-
-Maybe they could help with the nanoMIPS disassembler?
-
-I know it's likely a lot of work, but the best solution would maybe be to 
-add nanoMIPS support to capstone instead, then other projects could benefit 
-from the support in this library, too...
-
-If I googled that right, there is a LLVM implementation of nanoMIPS 
-available here:
-
- 
-https://github.com/milos1397/nanomips-outliner/tree/master/llvm/lib/Target/Mips
-
-... so maybe that could be used as input for capstone (which is based on llvm)?
-
-  Thomas
+thanks
+-- PMM

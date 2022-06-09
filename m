@@ -1,218 +1,360 @@
-Received: by 2002:a19:ee12:0:0:0:0:0 with SMTP id g18csp684826lfb;
-        Thu, 9 Jun 2022 13:37:32 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwE9lfpXzn4zt+ebYPRsVaszKHg5cmx1XRgY1AoUxQWp3Z8qg45W7IDY8VFDx1emRutQxrb
-X-Received: by 2002:a05:6214:761:b0:441:196:795e with SMTP id f1-20020a056214076100b004410196795emr86193671qvz.67.1654807052545;
-        Thu, 09 Jun 2022 13:37:32 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1654807052; cv=none;
+Received: by 2002:a19:ee12:0:0:0:0:0 with SMTP id g18csp685596lfb;
+        Thu, 9 Jun 2022 13:39:12 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxXfJU9DXceKKI33EAXlRVL6rVrFiwXfrdPZgtaVX9B+C+o8wzTkvFqe/+rzTtiBc/oP/TI
+X-Received: by 2002:ac8:7d46:0:b0:2f3:dd89:5557 with SMTP id h6-20020ac87d46000000b002f3dd895557mr33426402qtb.567.1654807152775;
+        Thu, 09 Jun 2022 13:39:12 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1654807152; cv=none;
         d=google.com; s=arc-20160816;
-        b=0M8WIzU3o7VkUqBZyAQ/HM81vj4ABmkpZOsNbTNiEZ3R9DQZGgcZrzR7rp0ZQ3TpsR
-         PejqrIv4SsLlXN8phY7zpQ5c0OvpAYIKCRQrVSAWOnhULmGS9nu4w4pD+0VhQpN59mEl
-         UHn+4EyqAvLjm1WTPuFaxJtGCQD22l76oH6tzSKcUYttSIw5Dl6q4SDB3frkwzhmB8Qd
-         7ideHXTu4EOJ5VLOxziRCeKWTCFF3oaMcJM4sUvCrxexYs0IsiWW0GZxWyF0iIIJUw46
-         B0p/rUUZBsuooGA1v3YkZHz2Xq6RdOemds+kQF6JCbAq34PadQq30OBVk8VmVNu37YLb
-         oB/w==
+        b=F4babIgqZ2XUo6qwQcJtJqRRFOV0whwpIUjyvp6uuMi445ILHsvL8eT6ZpTVBIGFwi
+         egu6nNbYfRtdkeYKQtyoao8Q6hlRBilQQShd3CRcmhcsYmxeZduENNu63EOMU4J/Fy2l
+         Nsn/Kw516sMJQR/xff1gvi78amZeWVwDXmOcETGDWm67DLODSDvDCuPczPwLNe10KdNP
+         4WyjsRhp0evgo9YIbr6eilE6YNzyWW3pw9HFGrFcEXIWTjUJ2RzMkCX3kkyguhOoNKgl
+         fSzSWYa1aZs0silfXSk4MPqXs2W7JV65hN4F43tTDcUoFKJxYdoMQCpxq70KSEKHfiqL
+         oNgQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=kj2ZYfRQGSWcXMLkNM8zljFGjh4Y1FzFkf5hNzLBiyI=;
-        b=tgqg66z91yf/gL8peGS22FJwHBTh3qxjCanX4nVJTPjosfGVwFJu+fcXOJ9BOjHzp1
-         0bDaGnZTkxPUBXQ//EjYofFz4aHGisQrvrxaFxkIHIP98XDJ8ZdDgVQ9TtTRnZ3G9Zuj
-         XnX52/wwhXrSokA1n934ND6M6BHCfYCCdw7U3j55RUwnri4JTLkpZy29t/lSSLfH5dkS
-         qeJ4Pd1QvOyMvhfmlb3P0kW1DALL9LZr9Kni0B8wZ/ur6+uX46u3ONcuwxPW81agaHkV
-         1BZDNqs1V88ZXPCqWV91qw8JUVtHkMc+Oej3+AjU5XoFTMSvJxMBXW/AljtMuVy1i2J6
-         PxHw==
+        bh=DvjfME7+Ka5kNm2PWO6mtYjQ90LhCIioEZBbUU3Qie4=;
+        b=gnNYnfY+l0DBdw1WZ+UMTq4YUd8lNsoLQHe+L2HAJ3nrJfuBma1zia9WXforMT4rhY
+         AttMU/1DXKcMmKiUeug3hoBXzRedYk9dZ7Na2h/TYK/Ho6WbHyUX3xeQWJH9sNWU91FZ
+         AWAapCRCSJjjoa+Khh5dqAVJegn87ay7vUQ7cqgouCFAy/F6DDu/i+Kx8QxC3F5jxjuG
+         y47udBUaxyva6ya2FarlvThw5MaOEXlpBTZYvdDSeSIR2f0X26UfA7rZAK70kZEAckLt
+         I6dTDYxsAudX8jQgvCljMgpqV0dZGyH9w47ORD+NRJuDKAhxM9WkjUKuh2EiNk/x5Vxm
+         G2mQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=QmusMp69;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=HRyPnQsw;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id c20-20020a05622a025400b00304e9cde18fsi8305230qtx.609.2022.06.09.13.37.32
+        by mx.google.com with ESMTPS id i63-20020a375442000000b006a5fd471b03si12448804qkb.402.2022.06.09.13.39.12
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 09 Jun 2022 13:37:32 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 09 Jun 2022 13:39:12 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=QmusMp69;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=HRyPnQsw;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:47436 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:49356 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nzOuJ-0004q9-UH
-	for alex.bennee@linaro.org; Thu, 09 Jun 2022 16:37:31 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:43116)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1nzOvw-000665-5F
+	for alex.bennee@linaro.org; Thu, 09 Jun 2022 16:39:12 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:43174)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1nzOmG-0003fH-De
- for qemu-arm@nongnu.org; Thu, 09 Jun 2022 16:29:12 -0400
-Received: from mail-pl1-x635.google.com ([2607:f8b0:4864:20::635]:45050)
+ id 1nzOmH-0003iw-JY
+ for qemu-devel@nongnu.org; Thu, 09 Jun 2022 16:29:13 -0400
+Received: from mail-pj1-x102c.google.com ([2607:f8b0:4864:20::102c]:54110)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1nzOmE-0008SR-A9
- for qemu-arm@nongnu.org; Thu, 09 Jun 2022 16:29:12 -0400
-Received: by mail-pl1-x635.google.com with SMTP id h1so21111454plf.11
- for <qemu-arm@nongnu.org>; Thu, 09 Jun 2022 13:29:09 -0700 (PDT)
+ id 1nzOmC-0008Rf-Dl
+ for qemu-devel@nongnu.org; Thu, 09 Jun 2022 16:29:13 -0400
+Received: by mail-pj1-x102c.google.com with SMTP id a10so22309580pju.3
+ for <qemu-devel@nongnu.org>; Thu, 09 Jun 2022 13:29:08 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=kj2ZYfRQGSWcXMLkNM8zljFGjh4Y1FzFkf5hNzLBiyI=;
- b=QmusMp69D93YwXt/7TOjJMXhkbte6nFaynuJ6DlS9+82QVE5I5dDyJD5/7g7pdGmyE
- xmhHthrgXobgre1xJCfHsEetJzDucay2DV2f9WO+dOWK+IxmHFNNe1nkmqQmE5WQlWtX
- AdlXXmxOfJL2DOWKlZjpZnIuufHv1yzuaqtqcVoHolZUaG0e8+QWTuMvxL0wPNjrq/xO
- Pb4ldVG9UXXj3axqtqKb4e9sFuc8hAjTzLQAU39ChG1itLNDaz/WtszMs7hSRO8q+FgV
- 1CNinAGTpSyub7lZjUuwJCXTkmsgVIIoM7YdF2FQ8dAbbOPbmRFWLGh+3JHX4iiE4Lir
- gEAw==
+ bh=DvjfME7+Ka5kNm2PWO6mtYjQ90LhCIioEZBbUU3Qie4=;
+ b=HRyPnQswkDWpijO56F5AUjckxyFYu/uFG7bizMhvWa0jtwMwfzEl3ymxnPVKDCpfwj
+ 7HewtWqFqPez0ynjzum667bI/HWCmWMlIJrAfuw0zx9rtia4HBlqNRiy1RsVTgDOmyux
+ qijo0YykQfa5tJem3BfF8wdidUXyXB1NalRIi+5ZwbE261SOjKGXdJb++kjW1wyzUFaO
+ uYJFRNM41n516vN2wD9rY8zT7rJ3w+r0OXKuFvkE4FWUbxKV/8/cqjMhHDa6V6ogI/hQ
+ qKM3au5v1rRPgs0Z7GBfe3hAlcIR+a9Z3bS990eDsH3r6B9PK0sttt2DZehVY8FPvhuM
+ inQA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=kj2ZYfRQGSWcXMLkNM8zljFGjh4Y1FzFkf5hNzLBiyI=;
- b=pxLrDesVawRbHcr7yuIRnBaq24deAMYjfdF7LdhrXZThdKQsgn8IieuaPdSr/fEdql
- g6Tw6/BDmnUjHUUIN+Zuou8dic3ESRAws3dF48/U1pqAjvu1iuGgUeOhd7HlumYxw4sa
- n+i2i6ARTJLCL7UNn/A1FkpBUvdfhvxwRxN1eiRHEzXZv/i4BRGrwY4Auk9e8DiSdjCd
- 0fFm+Cfj/7IpdVlsmRnD9Gk0+GGlL4a7hmFPqC1O5nV+p+qDQ0gsaWPLfSRCD2bEaUjI
- vR3uW/OR4Asbll2qOAKCRxLNXflGg0xW6Urn9ngCyvBNhHGG24e706YUVKQ3kvzuFYcB
- 13rg==
-X-Gm-Message-State: AOAM532m45ozZudeM+bMLt4TQcor8VCGDDiaYxie96jCo/qbcGxhVlEw
- dgBRozPWzB4pwbb2aWEOQXQkng==
-X-Received: by 2002:a17:902:eb85:b0:167:987e:2686 with SMTP id
- q5-20020a170902eb8500b00167987e2686mr14360987plg.33.1654806548944; 
- Thu, 09 Jun 2022 13:29:08 -0700 (PDT)
+ bh=DvjfME7+Ka5kNm2PWO6mtYjQ90LhCIioEZBbUU3Qie4=;
+ b=3ri5wTzUfiJU4NkDV/kCPnyBKk8m0Cyb8odvubkvWDU2/lNd3zciJGbvzJ80dQ3fZ8
+ hYg57pjFlZa+17qkOW9VHUDAQrTGxjZDZrU0MomxIemgZRRteF0MpqYBB4KNceGKVtkW
+ DuQAWVJpUH4HKZh7JwFPI8EtsZ+NBKDRS28AEEQR0XJq+IGs/e84OCHo6KJeTSgCOrOu
+ ZXpZcgIyUlldhpUKT/JItuN8OrBE9hOVQpodOVMIVjAdX6EOPRvIv2zKrgsSH/zhX7sc
+ jpBSp54DD4iAaULl9pRW2oEVovQKwpoc6hiMolw8g5f0U5V+givIem4C8e5Nhej1fLkT
+ ti6w==
+X-Gm-Message-State: AOAM532RqfIj7HpPyIlb/SqYhYz40wq5M+tzSke9FjqwbJw1WrvWnJvv
+ JGeuat5Qd9zSvPrdqik0QKSBoQbYb+yAcw==
+X-Received: by 2002:a17:902:d2c1:b0:165:d4cd:e118 with SMTP id
+ n1-20020a170902d2c100b00165d4cde118mr42385400plc.4.1654806547118; 
+ Thu, 09 Jun 2022 13:29:07 -0700 (PDT)
 Received: from stoup.. ([2602:ae:1547:e101:839f:476f:678:38a])
  by smtp.gmail.com with ESMTPSA id
- r20-20020a635d14000000b003fded88238esm7528139pgb.36.2022.06.09.13.29.08
+ r20-20020a635d14000000b003fded88238esm7528139pgb.36.2022.06.09.13.29.06
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 09 Jun 2022 13:29:08 -0700 (PDT)
+ Thu, 09 Jun 2022 13:29:06 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org,
 	Peter Maydell <peter.maydell@linaro.org>
-Subject: [PATCH v3 07/23] target/arm: Move exception_bkpt_insn to
- debug_helper.c
-Date: Thu,  9 Jun 2022 13:28:45 -0700
-Message-Id: <20220609202901.1177572-8-richard.henderson@linaro.org>
+Subject: [PATCH v3 05/23] target/arm: Move arm_generate_debug_exceptions out
+ of line
+Date: Thu,  9 Jun 2022 13:28:43 -0700
+Message-Id: <20220609202901.1177572-6-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20220609202901.1177572-1-richard.henderson@linaro.org>
 References: <20220609202901.1177572-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::635;
- envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x635.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::102c;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x102c.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01,
+ T_SPF_HELO_TEMPERROR=0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: +25l4KGNL1v6
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: CTqaPH6Re0i+
+
+Move arm_generate_debug_exceptions and its two subroutines,
+{aa32,aa64}_generate_debug_exceptions into debug_helper.c,
+and the one interface declaration to internals.h.
 
 Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/debug_helper.c | 31 +++++++++++++++++++++++++++++++
- target/arm/op_helper.c    | 29 -----------------------------
- 2 files changed, 31 insertions(+), 29 deletions(-)
+ target/arm/cpu.h          | 91 -------------------------------------
+ target/arm/internals.h    |  1 +
+ target/arm/debug_helper.c | 94 +++++++++++++++++++++++++++++++++++++++
+ 3 files changed, 95 insertions(+), 91 deletions(-)
 
-diff --git a/target/arm/debug_helper.c b/target/arm/debug_helper.c
-index a18a09a0c3..80dff0788b 100644
---- a/target/arm/debug_helper.c
-+++ b/target/arm/debug_helper.c
-@@ -430,6 +430,37 @@ void arm_debug_excp_handler(CPUState *cs)
-     }
+diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+index bb1dc3289a..50b5a9c9fd 100644
+--- a/target/arm/cpu.h
++++ b/target/arm/cpu.h
+@@ -3015,97 +3015,6 @@ static inline bool arm_v7m_csselr_razwi(ARMCPU *cpu)
+     return (cpu->clidr & R_V7M_CLIDR_CTYPE_ALL_MASK) != 0;
  }
  
-+/*
-+ * Raise an EXCP_BKPT with the specified syndrome register value,
-+ * targeting the correct exception level for debug exceptions.
-+ */
-+void HELPER(exception_bkpt_insn)(CPUARMState *env, uint32_t syndrome)
-+{
-+    int debug_el = arm_debug_target_el(env);
-+    int cur_el = arm_current_el(env);
-+
-+    /* FSR will only be used if the debug target EL is AArch32. */
-+    env->exception.fsr = arm_debug_exception_fsr(env);
-+    /*
-+     * FAR is UNKNOWN: clear vaddress to avoid potentially exposing
-+     * values to the guest that it shouldn't be able to see at its
-+     * exception/security level.
-+     */
-+    env->exception.vaddress = 0;
-+    /*
-+     * Other kinds of architectural debug exception are ignored if
-+     * they target an exception level below the current one (in QEMU
-+     * this is checked by arm_generate_debug_exceptions()). Breakpoint
-+     * instructions are special because they always generate an exception
-+     * to somewhere: if they can't go to the configured debug exception
-+     * level they are taken to the current exception level.
-+     */
-+    if (debug_el < cur_el) {
-+        debug_el = cur_el;
-+    }
-+    raise_exception(env, EXCP_BKPT, syndrome, debug_el);
-+}
-+
- #if !defined(CONFIG_USER_ONLY)
- 
- vaddr arm_adjust_watchpoint_address(CPUState *cs, vaddr addr, int len)
-diff --git a/target/arm/op_helper.c b/target/arm/op_helper.c
-index 97c8c9ec77..2a8bdc2cbf 100644
---- a/target/arm/op_helper.c
-+++ b/target/arm/op_helper.c
-@@ -399,35 +399,6 @@ void HELPER(exception_with_syndrome)(CPUARMState *env, uint32_t excp,
-     raise_exception(env, excp, syndrome, target_el);
- }
- 
--/* Raise an EXCP_BKPT with the specified syndrome register value,
-- * targeting the correct exception level for debug exceptions.
-- */
--void HELPER(exception_bkpt_insn)(CPUARMState *env, uint32_t syndrome)
+-/* See AArch64.GenerateDebugExceptionsFrom() in ARM ARM pseudocode */
+-static inline bool aa64_generate_debug_exceptions(CPUARMState *env)
 -{
--    int debug_el = arm_debug_target_el(env);
 -    int cur_el = arm_current_el(env);
+-    int debug_el;
 -
--    /* FSR will only be used if the debug target EL is AArch32. */
--    env->exception.fsr = arm_debug_exception_fsr(env);
--    /* FAR is UNKNOWN: clear vaddress to avoid potentially exposing
--     * values to the guest that it shouldn't be able to see at its
--     * exception/security level.
--     */
--    env->exception.vaddress = 0;
--    /*
--     * Other kinds of architectural debug exception are ignored if
--     * they target an exception level below the current one (in QEMU
--     * this is checked by arm_generate_debug_exceptions()). Breakpoint
--     * instructions are special because they always generate an exception
--     * to somewhere: if they can't go to the configured debug exception
--     * level they are taken to the current exception level.
--     */
--    if (debug_el < cur_el) {
--        debug_el = cur_el;
+-    if (cur_el == 3) {
+-        return false;
 -    }
--    raise_exception(env, EXCP_BKPT, syndrome, debug_el);
+-
+-    /* MDCR_EL3.SDD disables debug events from Secure state */
+-    if (arm_is_secure_below_el3(env)
+-        && extract32(env->cp15.mdcr_el3, 16, 1)) {
+-        return false;
+-    }
+-
+-    /*
+-     * Same EL to same EL debug exceptions need MDSCR_KDE enabled
+-     * while not masking the (D)ebug bit in DAIF.
+-     */
+-    debug_el = arm_debug_target_el(env);
+-
+-    if (cur_el == debug_el) {
+-        return extract32(env->cp15.mdscr_el1, 13, 1)
+-            && !(env->daif & PSTATE_D);
+-    }
+-
+-    /* Otherwise the debug target needs to be a higher EL */
+-    return debug_el > cur_el;
 -}
 -
- uint32_t HELPER(cpsr_read)(CPUARMState *env)
+-static inline bool aa32_generate_debug_exceptions(CPUARMState *env)
+-{
+-    int el = arm_current_el(env);
+-
+-    if (el == 0 && arm_el_is_aa64(env, 1)) {
+-        return aa64_generate_debug_exceptions(env);
+-    }
+-
+-    if (arm_is_secure(env)) {
+-        int spd;
+-
+-        if (el == 0 && (env->cp15.sder & 1)) {
+-            /* SDER.SUIDEN means debug exceptions from Secure EL0
+-             * are always enabled. Otherwise they are controlled by
+-             * SDCR.SPD like those from other Secure ELs.
+-             */
+-            return true;
+-        }
+-
+-        spd = extract32(env->cp15.mdcr_el3, 14, 2);
+-        switch (spd) {
+-        case 1:
+-            /* SPD == 0b01 is reserved, but behaves as 0b00. */
+-        case 0:
+-            /* For 0b00 we return true if external secure invasive debug
+-             * is enabled. On real hardware this is controlled by external
+-             * signals to the core. QEMU always permits debug, and behaves
+-             * as if DBGEN, SPIDEN, NIDEN and SPNIDEN are all tied high.
+-             */
+-            return true;
+-        case 2:
+-            return false;
+-        case 3:
+-            return true;
+-        }
+-    }
+-
+-    return el != 2;
+-}
+-
+-/* Return true if debugging exceptions are currently enabled.
+- * This corresponds to what in ARM ARM pseudocode would be
+- *    if UsingAArch32() then
+- *        return AArch32.GenerateDebugExceptions()
+- *    else
+- *        return AArch64.GenerateDebugExceptions()
+- * We choose to push the if() down into this function for clarity,
+- * since the pseudocode has it at all callsites except for the one in
+- * CheckSoftwareStep(), where it is elided because both branches would
+- * always return the same value.
+- */
+-static inline bool arm_generate_debug_exceptions(CPUARMState *env)
+-{
+-    if (env->aarch64) {
+-        return aa64_generate_debug_exceptions(env);
+-    } else {
+-        return aa32_generate_debug_exceptions(env);
+-    }
+-}
+-
+ static inline bool arm_sctlr_b(CPUARMState *env)
  {
-     return cpsr_read(env) & ~CPSR_EXEC;
+     return
+diff --git a/target/arm/internals.h b/target/arm/internals.h
+index 64e2c1dfad..02fa70f75a 100644
+--- a/target/arm/internals.h
++++ b/target/arm/internals.h
+@@ -1326,6 +1326,7 @@ bool el_is_in_host(CPUARMState *env, int el);
+ void aa32_max_features(ARMCPU *cpu);
+ int exception_target_el(CPUARMState *env);
+ bool arm_singlestep_active(CPUARMState *env);
++bool arm_generate_debug_exceptions(CPUARMState *env);
+ 
+ /* Powers of 2 for sve_vq_map et al. */
+ #define SVE_VQ_POW2_MAP                                 \
+diff --git a/target/arm/debug_helper.c b/target/arm/debug_helper.c
+index 1abf41c5f8..20a0e4261a 100644
+--- a/target/arm/debug_helper.c
++++ b/target/arm/debug_helper.c
+@@ -12,6 +12,100 @@
+ #include "exec/helper-proto.h"
+ 
+ 
++/* See AArch64.GenerateDebugExceptionsFrom() in ARM ARM pseudocode */
++static bool aa64_generate_debug_exceptions(CPUARMState *env)
++{
++    int cur_el = arm_current_el(env);
++    int debug_el;
++
++    if (cur_el == 3) {
++        return false;
++    }
++
++    /* MDCR_EL3.SDD disables debug events from Secure state */
++    if (arm_is_secure_below_el3(env)
++        && extract32(env->cp15.mdcr_el3, 16, 1)) {
++        return false;
++    }
++
++    /*
++     * Same EL to same EL debug exceptions need MDSCR_KDE enabled
++     * while not masking the (D)ebug bit in DAIF.
++     */
++    debug_el = arm_debug_target_el(env);
++
++    if (cur_el == debug_el) {
++        return extract32(env->cp15.mdscr_el1, 13, 1)
++            && !(env->daif & PSTATE_D);
++    }
++
++    /* Otherwise the debug target needs to be a higher EL */
++    return debug_el > cur_el;
++}
++
++static bool aa32_generate_debug_exceptions(CPUARMState *env)
++{
++    int el = arm_current_el(env);
++
++    if (el == 0 && arm_el_is_aa64(env, 1)) {
++        return aa64_generate_debug_exceptions(env);
++    }
++
++    if (arm_is_secure(env)) {
++        int spd;
++
++        if (el == 0 && (env->cp15.sder & 1)) {
++            /*
++             * SDER.SUIDEN means debug exceptions from Secure EL0
++             * are always enabled. Otherwise they are controlled by
++             * SDCR.SPD like those from other Secure ELs.
++             */
++            return true;
++        }
++
++        spd = extract32(env->cp15.mdcr_el3, 14, 2);
++        switch (spd) {
++        case 1:
++            /* SPD == 0b01 is reserved, but behaves as 0b00. */
++        case 0:
++            /*
++             * For 0b00 we return true if external secure invasive debug
++             * is enabled. On real hardware this is controlled by external
++             * signals to the core. QEMU always permits debug, and behaves
++             * as if DBGEN, SPIDEN, NIDEN and SPNIDEN are all tied high.
++             */
++            return true;
++        case 2:
++            return false;
++        case 3:
++            return true;
++        }
++    }
++
++    return el != 2;
++}
++
++/*
++ * Return true if debugging exceptions are currently enabled.
++ * This corresponds to what in ARM ARM pseudocode would be
++ *    if UsingAArch32() then
++ *        return AArch32.GenerateDebugExceptions()
++ *    else
++ *        return AArch64.GenerateDebugExceptions()
++ * We choose to push the if() down into this function for clarity,
++ * since the pseudocode has it at all callsites except for the one in
++ * CheckSoftwareStep(), where it is elided because both branches would
++ * always return the same value.
++ */
++bool arm_generate_debug_exceptions(CPUARMState *env)
++{
++    if (env->aarch64) {
++        return aa64_generate_debug_exceptions(env);
++    } else {
++        return aa32_generate_debug_exceptions(env);
++    }
++}
++
+ /*
+  * Is single-stepping active? (Note that the "is EL_D AArch64?" check
+  * implicitly means this always returns false in pre-v8 CPUs.)
 -- 
 2.34.1
 

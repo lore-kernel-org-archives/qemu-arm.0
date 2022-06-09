@@ -1,131 +1,190 @@
-Received: by 2002:a19:ee12:0:0:0:0:0 with SMTP id g18csp619376lfb;
-        Thu, 9 Jun 2022 11:24:39 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJz4iRZ8klYHEZWdJAbqJPtVPdL9iHK+JWwN98VrH7UORpOsAnrz1CVHCiLDfi0QcPn5GsZ1
-X-Received: by 2002:a05:620a:166f:b0:6a6:c230:f5ba with SMTP id d15-20020a05620a166f00b006a6c230f5bamr13878586qko.280.1654799079614;
-        Thu, 09 Jun 2022 11:24:39 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1654799079; cv=none;
+Received: by 2002:a19:ee12:0:0:0:0:0 with SMTP id g18csp626515lfb;
+        Thu, 9 Jun 2022 11:37:41 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyw30N740Ypv+xlxU3fSYNEFSaMk4O+lduDHeiJseVfqcMX+OYn5grXb4YtXaMU0377kQSH
+X-Received: by 2002:a37:9607:0:b0:6a6:a7a4:2fea with SMTP id y7-20020a379607000000b006a6a7a42feamr21360872qkd.381.1654799861456;
+        Thu, 09 Jun 2022 11:37:41 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1654799861; cv=none;
         d=google.com; s=arc-20160816;
-        b=vWu/WN3Ozk2LfEgic+9iC9TeavKdQl4YQT/juRlreBUMA4NhOnh1y9R+Bl+ciNMlgL
-         DqalSLbVwwW3KnYoiFmfSdpt+06Kh0sNmpXD8uHrOdu85SS6VsO8Xi2bsf6Q7lIbRspG
-         DFzUoHzXW/W+F5oAv8GACcrieHRfQdFKQ1qkrYu2JZ+hQiZ59F2ThhAivajFvh8j1Pka
-         57RHS1hmxDMJ+tJP7p3du2s6LizTU53hsCq/BbC7BYh0UUv7OUpS9dYvmSHHBi8NTdFW
-         j500HuHV/FhOgM8GHWzJF9NrqP4Q0W7CMc2xtmh3ZdiWAjY3Lz6lut7RVUc9KGAsgwGk
-         bIJQ==
+        b=DHJvc1kvaiwn6rL6U3SvTEsK4NphoLa3uGJ9pho3TPFiO/oWk0nYrDivphBJoE0vmB
+         fbCDC14SFAe3BUvD6zbL+uZamFqEjlz+KVJbA1FZW/+cCt2hvKLaYG+vbELLXayyNnBT
+         jKU3BmeY1d8p8o7TqFP6L4DqHbGSXVydiwQ74/yOpcJ2rjsAo9fMFKeaT5Qp11N68/7k
+         Bbu2161HKtFvu7RBCgp+Ci6bAsjV9X4kvxRI/0PGjQgnhLMq0nMfXjYyeEpfrQ/3uSKS
+         oIq9aXH2aBf8ctrZrMLnz3sjQ+q7OxlzhXXDq3AhF2jDjvfgwl8DXcHVRHJNvfZHhjvo
+         HilQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
          :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=6xAVpoqHFm+71KOMFYJQmJ0/62hwCwd48un0G561MT0=;
-        b=TTEQRk2zkOXk6WGGbqfdISknqyhsHsQTuHwgky6dnSkN6yktIZs3Ggm2avmMYcLHap
-         zeNBUiQ3hUNsmKDnhoXyEsJj/5NxG4i9eJ1berSQO9xH4R/UGKirwh39EXmMd+KLfYQd
-         0dpcqfXZgUkJBXzYeqKpQpjuOnMabIPhw2bde0KjiN2BwS5owGRYs/EMgAt4l93guwqQ
-         S3T8wS9Fp9klGOIUDrBmr14bnzCbbpre1Fl/c8lqxvGSNMtMZ+kghKgGRWoV336XQ+bE
-         pClnE6K3pES+I6iu6TmH9NsnJmRwHv/y/diwfkB4/cmvAqlvDBsGPZY8GPZ6Paji0iHY
-         0dtA==
+        bh=9NjmZq2FTkWs7bk8NVL+Z9nGi0I8flVKyKYjxY9T348=;
+        b=Q/Ux5UZEriDprlGZDn/GitnipK82e9IX00QxU1kAl13SgOgsYajSgHn3l0CdRipZQz
+         Aslq53x4V80mXrGvn5iikKCb6sSx6g1mWbO3fCAGGbboYi4fidJ0cCGO3MbsauE6Hj7U
+         owBN2ihmdtEd1awzL7BYl9wqHZcDlZ6brbzLiNyybpw6HT1qJBGbX0qIhXB//jXLKFda
+         G2sTU/LKQfG7B7es908VelL/CZ00ygFut1awpvkyyptND/m7hls2awKC8sYJ3PX4czm0
+         9hL7lk5l/m0/jAvxQUmkdyxIRGohSq9ltHlW41AAySYcN9IADBIvXcQBPH4uhMuko8bv
+         8Sng==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=TvlmJYc4;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=jkcEP3U7;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id o18-20020a05622a045200b00304ece78644si6861397qtx.530.2022.06.09.11.24.39
+        by mx.google.com with ESMTPS id v17-20020a05620a091100b006a6b81e6b92si6271058qkv.583.2022.06.09.11.37.41
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 09 Jun 2022 11:24:39 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 09 Jun 2022 11:37:41 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=TvlmJYc4;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=jkcEP3U7;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:38032 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:56554 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nzMpj-0006pQ-4U
-	for alex.bennee@linaro.org; Thu, 09 Jun 2022 14:24:39 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45092)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1nzN2K-0003C7-Uj
+	for alex.bennee@linaro.org; Thu, 09 Jun 2022 14:37:40 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:49552)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1nzL94-0000Vm-HY
- for qemu-devel@nongnu.org; Thu, 09 Jun 2022 12:36:30 -0400
-Received: from mail-yw1-x112d.google.com ([2607:f8b0:4864:20::112d]:43829)
+ id 1nzLQ2-0006QO-Cn
+ for qemu-arm@nongnu.org; Thu, 09 Jun 2022 12:54:02 -0400
+Received: from mail-yb1-xb36.google.com ([2607:f8b0:4864:20::b36]:37504)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1nzL92-0004as-RW
- for qemu-devel@nongnu.org; Thu, 09 Jun 2022 12:36:30 -0400
-Received: by mail-yw1-x112d.google.com with SMTP id
- 00721157ae682-3137316bb69so52222877b3.10
- for <qemu-devel@nongnu.org>; Thu, 09 Jun 2022 09:36:28 -0700 (PDT)
+ id 1nzLQ0-0007Kq-JA
+ for qemu-arm@nongnu.org; Thu, 09 Jun 2022 12:54:02 -0400
+Received: by mail-yb1-xb36.google.com with SMTP id r1so14182866ybd.4
+ for <qemu-arm@nongnu.org>; Thu, 09 Jun 2022 09:54:00 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=6xAVpoqHFm+71KOMFYJQmJ0/62hwCwd48un0G561MT0=;
- b=TvlmJYc4c+NMEpwvQ14RayKyAEHbi2byJWoM9Ob2PhWZBxgpj3UcfcLGallETZnUeq
- fR86vMvMttROLsi5nbs3iklue7IaesSSOLgFIrSf5unntzPLtIYvOQUp580YOt4sXmtR
- Kztr4KcfcgmsuHRHcKlFPQZirnydFrFS5KDJw96iGzkUjp+hCViT9Z8UDSC7wIS3/RiE
- 8k2G4WFoF4d2v2rm7w4NofVsYRv5kgDbzUa9eS4tct7cVm1XTfy+s0YehiaRQq6qfE7I
- 6+dOQpAPTEXrorb4bFBxmsqiteMx3ckoRo6VE1RW2zKx5BXUIok5TL+SWejWWSJB8WcM
- ogFQ==
+ :cc; bh=9NjmZq2FTkWs7bk8NVL+Z9nGi0I8flVKyKYjxY9T348=;
+ b=jkcEP3U7fTX7lpSO32xjugMP2b2D6qSsZ1Hq5MfVZjraVu8v1KXwqoRYE6PSkxFjNt
+ VhuU86O1DkUkBa6YpGsm6+pPdYqPkvFCVAfWRFHiGBxLqYmJmDTWP1XW9urS8oa6MEMa
+ kehxVBda+oFN8xkrJdg7yEkVa8F154wn3OUMNMREjKbcSiLmLurB2Aw2qRctP/n6WFrX
+ ke3jyF0q8aDARc6I16/+9aRy0LvdC9f5k8m/MZ0RxgsNyKzS6Z0xcNghe9YTr2C3l2sW
+ AwqGOmnohf2ktBfUjUMcfN/M5LvWKUm3rNRcbhVUjSOzbL9sFoYOyEkaX3XrbpqnJuPb
+ /9DA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=6xAVpoqHFm+71KOMFYJQmJ0/62hwCwd48un0G561MT0=;
- b=IAWZmGHY4b91qm1neYS06GS3IuD88/CUH8Tb7jOwElMZFohZhrg7L37V+zHgTnwKyB
- Y7Ys99QSZWmtncRP9yirJ2oEwIuuKWGpF5cvo2DcmeKxijwSLtJq9/8Sty43OK+mqV5q
- E5Ls2/mXzkBfDCuDEWcv8tQ8HsUkyHG8Ava0KmBBCjIZJHrnWMMrEoilLHz2Lt8rNBoL
- c2QAhMeTtBhS9XObjI7j7BfY55aG03AU+cCQzATzvkbHKGGch4sG+4wZHo3mp/p0atBb
- xrpgI/YDbzcfqe+k9e2NLwjWMwjiLGAsT8O4BKUYL00bgKpNqkm4DnObzhTp/QDBU7D6
- GMBA==
-X-Gm-Message-State: AOAM532xKcZiNaw+D/CDtPiNomroMyVkv6DF9sJSOi1ci6Xzq7drCa0N
- ttnb9JLGQNkj8hBbAUsG9Icue9V+Pj4K/vTOTm0gJw==
-X-Received: by 2002:a05:690c:808:b0:30c:4f5c:b319 with SMTP id
- bx8-20020a05690c080800b0030c4f5cb319mr42354437ywb.64.1654792587874; Thu, 09
- Jun 2022 09:36:27 -0700 (PDT)
+ bh=9NjmZq2FTkWs7bk8NVL+Z9nGi0I8flVKyKYjxY9T348=;
+ b=At/tzP5H2u3jUOSQQ7gUzcW8lpticY0mEQiZ+uokoKLrFyBGF+I2rrvv4xKtvvsRQQ
+ iEGPy5wLx/5pyCNn8PLWyL7uwOJCpjlwmb1wylsOe/g7+EbyAvYqodcDCaJIjitRhdds
+ 03z/f6I6nlxFU9MahonWVXnD6fUvdHBHB8Y5aBO2JlJvWf7KIKGcy4myf/bb1vp0kIGQ
+ lJQEQMHQ6ot//jRDsG1LWLuI7FWWLffXzQgRA7afh7NPjgcbRTOHNQk6hLWf4XVsuSfg
+ TWmhYmgOu7DhI7mWyTKP1+9myzZYhvVrhELWP97tzutat1Pe6iwMjZXJJdyHZ0DudiQm
+ VrUw==
+X-Gm-Message-State: AOAM531aqDR/9r2QSr9dhaoCedJSHfvLyuT16WkykrHnjdEHbRaa+WCz
+ R4dAbGsLfzovhoxw0a1kAvd1uQYEF7OxOMvk9DLVpw==
+X-Received: by 2002:a25:47d4:0:b0:65d:510e:c8de with SMTP id
+ u203-20020a2547d4000000b0065d510ec8demr40746971yba.39.1654793639468; Thu, 09
+ Jun 2022 09:53:59 -0700 (PDT)
 MIME-Version: 1.0
 References: <20220607024734.541321-1-richard.henderson@linaro.org>
- <20220607024734.541321-16-richard.henderson@linaro.org>
-In-Reply-To: <20220607024734.541321-16-richard.henderson@linaro.org>
+ <20220607024734.541321-25-richard.henderson@linaro.org>
+In-Reply-To: <20220607024734.541321-25-richard.henderson@linaro.org>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 9 Jun 2022 17:36:17 +0100
-Message-ID: <CAFEAcA8KhDtAjACeDLM05U+kCSM0e0+HYrOw55=_2CszbTwBxg@mail.gmail.com>
-Subject: Re: [PATCH v2 15/25] target/arm: Remove TBFLAG_ANY.DEBUG_TARGET_EL
+Date: Thu, 9 Jun 2022 17:53:49 +0100
+Message-ID: <CAFEAcA9KR9_YicVwE0Ryp8BWzUe_-xOV78h=v9b5Hhpm+LZpCA@mail.gmail.com>
+Subject: Re: [PATCH v2 24/25] target/arm: Rearrange Secure PL1 test in
+ arm_debug_target_el
 To: Richard Henderson <richard.henderson@linaro.org>
 Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::112d;
- envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x112d.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b36;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yb1-xb36.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: u9ZeK7gymfj1
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: +BBv3IPriscl
 
-On Tue, 7 Jun 2022 at 03:54, Richard Henderson
+On Tue, 7 Jun 2022 at 04:06, Richard Henderson
 <richard.henderson@linaro.org> wrote:
 >
-> We no longer need this value during translation,
-> as it is now handled within the helpers.
->
+> Not a bug, because arm_is_el2_enabled tests for secure,
+> and SCR_EL3.EEL2 cannot be set for AArch32, however the
+> ordering of the tests looks odd.  Mirror the structure
+> over in exception_target_el().
+
+I think the code is following the ordering in the
+DebugTarget() and DebugTargetFrom() pseudocode (or else some other
+equivalent function in an older version of the Arm ARM...)
+
 > Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 > ---
+>  target/arm/debug_helper.c | 30 ++++++++++++++++--------------
+>  1 file changed, 16 insertions(+), 14 deletions(-)
+>
+> diff --git a/target/arm/debug_helper.c b/target/arm/debug_helper.c
+> index b18a6bd3a2..59dfcb5d5c 100644
+> --- a/target/arm/debug_helper.c
+> +++ b/target/arm/debug_helper.c
+> @@ -15,22 +15,24 @@
+>  /* Return the Exception Level targeted by debug exceptions. */
+>  static int arm_debug_target_el(CPUARMState *env)
+>  {
+> -    bool secure = arm_is_secure(env);
+> -    bool route_to_el2 = false;
+> -
+> -    if (arm_is_el2_enabled(env)) {
+> -        route_to_el2 = env->cp15.hcr_el2 & HCR_TGE ||
+> -                       env->cp15.mdcr_el2 & MDCR_TDE;
+> -    }
+> -
+> -    if (route_to_el2) {
+> -        return 2;
+> -    } else if (arm_feature(env, ARM_FEATURE_EL3) &&
+> -               !arm_el_is_aa64(env, 3) && secure) {
+> +    /*
+> +     * No such thing as secure EL1 if EL3 is AArch32.
+> +     * Remap Secure PL1 to EL3.
+> +     */
 
+I think you're also relying on there being no secure EL2
+if EL3 is AArch32 (otherwise an exception from secure EL0
+might need to be routed to secure EL2, not EL3).
+
+> +    if (arm_is_secure(env) && !arm_el_is_aa64(env, 3)) {
+>          return 3;
+> -    } else {
+> -        return 1;
+>      }
+> +
+> +    /*
+> +     * HCR.TGE redirects EL0 exceptions from EL1 to EL2.
+> +     * MDCR.TDE redirects both EL0 and EL1 debug exceptions to EL2.
+> +     */
+> +    if (arm_is_el2_enabled(env) &&
+> +        (env->cp15.hcr_el2 & HCR_TGE || env->cp15.mdcr_el2 & MDCR_TDE)) {
+> +        return 2;
+> +    }
+> +
+> +    return 1;
+>  }
+
+Anyway, if you prefer this way around
 Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+
+though I think there is usually some value in following
+the pseudocode's arrangement.
 
 thanks
 -- PMM

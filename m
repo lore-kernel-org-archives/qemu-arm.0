@@ -1,105 +1,105 @@
-Received: by 2002:a19:ee12:0:0:0:0:0 with SMTP id g18csp687318lfb;
-        Thu, 9 Jun 2022 13:43:30 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyvx1DulUQsrKT2zWzlucYtsfpGfaMez9sq9W2DZ0JeUsYNksDO2EplUPtO6LMjLf9QGBMK
-X-Received: by 2002:ac8:7c50:0:b0:305:392:9780 with SMTP id o16-20020ac87c50000000b0030503929780mr7812384qtv.589.1654807410649;
-        Thu, 09 Jun 2022 13:43:30 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1654807410; cv=none;
+Received: by 2002:a19:ee12:0:0:0:0:0 with SMTP id g18csp703404lfb;
+        Thu, 9 Jun 2022 14:16:33 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxlbs7G5BGCL86zDfSATRZpTxSay/5YhnZJgKl7XS0fRSxDmKPHkDI5clJ5DBgZp8Uj8Rbh
+X-Received: by 2002:a05:6214:2342:b0:42d:7c8b:9eac with SMTP id hu2-20020a056214234200b0042d7c8b9eacmr86306006qvb.5.1654809393036;
+        Thu, 09 Jun 2022 14:16:33 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1654809393; cv=none;
         d=google.com; s=arc-20160816;
-        b=iW2NNcx/pUMqvcQ1HUbaDo6Q/NhA3bB4ApfYONoQ2MoevMAU/6phDst9zuesmcn2FZ
-         0KIqzB3fToi2PkeXkGVWsiP89OcyQSdR+33dIy1KHXXLPKXdFJ5xiU6oTMriTF9g3BN3
-         6oVPsRVWKUfnAJj1pXjJukDDAnVTlh1/QhjOkLTcquhhK/BUWweoHLmwVuK9w+QvFEeu
-         hrA+cMqCMHP/Ad/htU9IroDct15EnSMZKiIxRHqUEjkUfY0qYV/ZYi/72Htk0sNnlJnl
-         uwN1V47sj6BjReZ+GWBZ1usgCTSe4FeO4EsEOx6XAHgM7fz2E4tfWJi9ptP5hmKDETYT
-         1K8A==
+        b=w/rA41bF3x1SXWlLPfvWLIRlmWza738j3TTgrzbzjnCF1ulHz4Jev1EME0R3QebePW
+         XKbMu8pH31up3kgU8rfEd8UsfqhTNK6cUYszJ5wJCQbObd0gO4dSJoOCXeumIek+J53i
+         EBEuPAY933PHzo4SrpjMJ4ihOira5w24H1myKGPkbJhUCVEVYJaVlbjeihDlUfLtLErI
+         HLLQGvF61ZMVb2U0XRFeMcOgHurPRJXI9GA6zq5yxVJSZNuMegASoQ74EkWQn8f45nGd
+         N8i50yNQsP7mSfHCrNX0+854ni+3cDheq/vJk8ww9GQJrz+I1q+1jBFTBsfMtf9ZDtpE
+         g2Wg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=0+1B/GKcGEn9X9Wh/vHToPB3bf3Gcg47/xOcf+MkVK4=;
-        b=wyX4PiRQ07OIDTos+MR9v0Z2uPjNMBF0xd6Dag78Z9mHwyVbyekeQyegFnSUDHCQbn
-         NmtHtADJ81NOhsX+C9mFvzMdRmvR1FO3nOgMN9wEX3r4XudJEF66NthbEdFtg/tLBSyI
-         /dHrGQxYDfdR/bPwVpPL4KtFno9ji3+cbMKEEoQpZzDsiHie2x4BVjst9Cs6LItM6sA6
-         FPXTmgbbC19EHNw8P/z9SfvElhgabamLd61LMJ9nA8+IDGhgNP94+oMcXiwQqbsgiPQp
-         HVIJsogdbhg8ynYSrBt44++mu66f7MyqsHS8SB4WxE0OZgNv0KNCsJGyllBJlhRM0JTl
-         IXNA==
+        bh=XrwBHtaJMwMweCtn22KfTI+wKyoZs8cSGLm5AgDVmqM=;
+        b=YnEWuHmVZQvnZ+46IVhn5RqwHfginEr4pjTTn0YicKClT3qrofjzVJsaT9Q02kKrzv
+         uNRdQCRxOluRph8ZgRxAGr9F15N+GPFg6HOzaP+Mp2Hp609/ZKGSC9NM/92eRvqsVyqS
+         XjAataDt/NFx/N5Jpyssf+WDVDI2GSQ26CQIPMLsoqefMmhIS2w7I/7tuGc7FMbv6d5g
+         6Z72mI4yVa/ZMBJR5yR4lRau8LFssyc80niD6GZfOwgE4W7BuLHHklY775wJlChBIChS
+         SsePC7j1PJEhMZxKFUMBCez2x0U3iPE9dXo8C0A9TMy81tErtmwW4NH2CtPKONhXiRbc
+         QBVA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=k+ly7rWs;
+       dkim=pass header.i=@linaro.org header.s=google header.b=rG05RsYB;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id r9-20020ac85c89000000b0030502f70a3dsi2897746qta.575.2022.06.09.13.43.30
+        by mx.google.com with ESMTPS id n5-20020ac85a05000000b0030502339b74si3183504qta.248.2022.06.09.14.16.32
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 09 Jun 2022 13:43:30 -0700 (PDT)
+        Thu, 09 Jun 2022 14:16:33 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=k+ly7rWs;
+       dkim=pass header.i=@linaro.org header.s=google header.b=rG05RsYB;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:56070 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:47918 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nzP06-0002IK-3P
-	for alex.bennee@linaro.org; Thu, 09 Jun 2022 16:43:30 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:43392)
+	id 1nzPW4-0004bC-HY
+	for alex.bennee@linaro.org; Thu, 09 Jun 2022 17:16:32 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:43508)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1nzOmO-0003zF-HA
- for qemu-devel@nongnu.org; Thu, 09 Jun 2022 16:29:20 -0400
-Received: from mail-pj1-x1032.google.com ([2607:f8b0:4864:20::1032]:56094)
+ id 1nzOmR-00047e-6S
+ for qemu-devel@nongnu.org; Thu, 09 Jun 2022 16:29:23 -0400
+Received: from mail-pj1-x1035.google.com ([2607:f8b0:4864:20::1035]:52108)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1nzOmJ-0008Ux-Ad
- for qemu-devel@nongnu.org; Thu, 09 Jun 2022 16:29:20 -0400
-Received: by mail-pj1-x1032.google.com with SMTP id e9so11776340pju.5
- for <qemu-devel@nongnu.org>; Thu, 09 Jun 2022 13:29:14 -0700 (PDT)
+ id 1nzOmN-0008QZ-Fj
+ for qemu-devel@nongnu.org; Thu, 09 Jun 2022 16:29:22 -0400
+Received: by mail-pj1-x1035.google.com with SMTP id cx11so22331417pjb.1
+ for <qemu-devel@nongnu.org>; Thu, 09 Jun 2022 13:29:19 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=0+1B/GKcGEn9X9Wh/vHToPB3bf3Gcg47/xOcf+MkVK4=;
- b=k+ly7rWsmjvspi/PxfIQPbs7w5Q1elL8Dw0+KZmqiAZ1gnoUT4S/7BbUosoK8MPKB2
- IjLtEGToeLRJ1Loc3G8eVnf5I/iqqe+Xr9PE+JxrKk/0B5V2vAW5i3G95GaSPv5Pf12H
- OdjxJ/QnxDMUfXDYOY3Gs1lTVRWeh5mSfHhFM1ERuQsfpEK2L8ssyFeLcXTVYQSl3Yec
- kerD0oxFp4iwikJ3+hOqjodq5WkRyyivqGnblXNXInHMGxFHjzJnxOmhHOvj2e629edp
- FZMXrFlgtOdkSO2sbJBE1zRHPLn3QZxVLoghxjo2rLkTEXZ8wzzmCTFGoeGMedDSPpdY
- QLTw==
+ bh=XrwBHtaJMwMweCtn22KfTI+wKyoZs8cSGLm5AgDVmqM=;
+ b=rG05RsYBVVZX4resqdsV4lWMMMoA/I6969GUg5VNcYfPayMV0AtXfIBQXQ1oYTQo+S
+ P9XsKFcERVz+EgXSNN59wEeVFVlD8Z/YdJuBdxQkPg4+UbJHaT45PzOnWll++SAzbnz1
+ AMey7Dg2hRtvS4EceJ+f5Yf1r5YdG1pAyzKYfqzwDj/khhbOKu5jkhnkpUZmL6n0yNZx
+ /4ksd/YlmA00oo45Izr1wZDsIOdKVDP0e23DR3fgHJ503IcRBoUCssvEsYPYQEVzLMgT
+ qy0hATtMMzXs4d/jNOTsGUi+VtogncXLoz8XWNIOtQxvfn4UUn6XTdRDTUU/kRkD7CJY
+ yeBQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=0+1B/GKcGEn9X9Wh/vHToPB3bf3Gcg47/xOcf+MkVK4=;
- b=8I0/QBhrOsGSQ+4WRgc3kqZxKYpm1ZdMzY+fC3xYJNebMPXbgGgARUHA6Bn1Gzx8Dt
- 0gH8upHLG9xsORRK2o6oCD2k3Ol7X2W3nakyWfadF/5vpl/dqzeLLA7MX2ls2f4ouiaS
- 0XruLEJGtZ4uyuNPLpdke9YNFh2j4FZ4fmM/a6/kFB2L/TTitO/FI9b92WXSGXO1ke4g
- TvyoPxO0rlNfq5ZgPLmiYfppboaClk/FOtUwcYlweq5tB76szNRfOpTEKqV89E1ZL6o3
- bw99uEE6ftu/xCmasgXIn1lw1h7LWZ/LoDSkuw0O0ysBpCkvGqqrjGKdgwG6Mr/KE7fL
- e3tQ==
-X-Gm-Message-State: AOAM530I7+Jjw8qOnftRsDhm57nI3yAcscITOv4Ol5LnstoojyN8a6Yw
- 1JJTq2zHAS9140UYbxh0lSkj/lGeUyel5w==
-X-Received: by 2002:a17:90b:2246:b0:1e8:5531:5e61 with SMTP id
- hk6-20020a17090b224600b001e855315e61mr5031073pjb.86.1654806553943; 
- Thu, 09 Jun 2022 13:29:13 -0700 (PDT)
+ bh=XrwBHtaJMwMweCtn22KfTI+wKyoZs8cSGLm5AgDVmqM=;
+ b=X/NsDTg9JmPip5qqZJ3+D9PUNeupdvRvcctx+uWHRfEkCHazZpV6WAJY0ZRkVuYkKF
+ TrT+MGvzYIR2dTv5D8SRKdu04OowVd68rM2HLNcpwuAQOorQ+xnusOQByrl/gsa/sQC5
+ xIWb2iIterGXax1Q1Pf0xTfVRiZ8Wpwsc5F0ixGJz8XVlijzDFbYSqazWw9Lyom5NuxL
+ FDxTZxplkyguL74zC7I1xhSdIwi/yvQbWn8FBVrBjgwp8AkKyscAJJPxnVe/Q7IejYFg
+ R63sutrPtZCMCysdntjb1HzPjZk7T2jldmBSl0K56MfmsNt60Bx+ylzkmVsjit8k5gLu
+ m8fA==
+X-Gm-Message-State: AOAM533aeR6q7dn8AkoeBCzmiisN9koIQ4b53SAUWcPzG5qNVnxbWGlX
+ HVOWWCqNjnNOhxznVJC9q0VZ+k5Untotzg==
+X-Received: by 2002:a17:903:22d0:b0:164:ec0:178c with SMTP id
+ y16-20020a17090322d000b001640ec0178cmr42012398plg.127.1654806558676; 
+ Thu, 09 Jun 2022 13:29:18 -0700 (PDT)
 Received: from stoup.. ([2602:ae:1547:e101:839f:476f:678:38a])
  by smtp.gmail.com with ESMTPSA id
- r20-20020a635d14000000b003fded88238esm7528139pgb.36.2022.06.09.13.29.13
+ r20-20020a635d14000000b003fded88238esm7528139pgb.36.2022.06.09.13.29.18
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 09 Jun 2022 13:29:13 -0700 (PDT)
+ Thu, 09 Jun 2022 13:29:18 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org,
 	Peter Maydell <peter.maydell@linaro.org>
-Subject: [PATCH v3 13/23] target/arm: Create helper_exception_swstep
-Date: Thu,  9 Jun 2022 13:28:51 -0700
-Message-Id: <20220609202901.1177572-14-richard.henderson@linaro.org>
+Subject: [PATCH v3 18/23] target/arm: Introduce gen_exception_el_v
+Date: Thu,  9 Jun 2022 13:28:56 -0700
+Message-Id: <20220609202901.1177572-19-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20220609202901.1177572-1-richard.henderson@linaro.org>
 References: <20220609202901.1177572-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1032;
- envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x1032.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1035;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x1035.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -121,89 +121,50 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: KenQV+KbksAt
+X-TUID: jAOf4ic6l/j2
 
-Move the computation from gen_swstep_exception into a helper.
-
-This fixes a bug when:
-  - MDSCR_EL1.KDE == 1 to enable debug exceptions within EL_D itself
-  - we singlestep an ERET from EL_D to some lower EL
-
-Previously we were computing 'same el' based on the EL which
-executed the ERET instruction, whereas it ought to be computed
-based on the EL to which ERET returned.  This happens naturally
-with the new helper, which runs after EL has been changed.
+Split out a common helper function for gen_exception_el
+and gen_exception_insn_el_v.
 
 Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/helper.h       |  1 +
- target/arm/translate.h    | 12 +++---------
- target/arm/debug_helper.c | 16 ++++++++++++++++
- 3 files changed, 20 insertions(+), 9 deletions(-)
+ target/arm/translate.c | 13 ++++++++-----
+ 1 file changed, 8 insertions(+), 5 deletions(-)
 
-diff --git a/target/arm/helper.h b/target/arm/helper.h
-index 5a6802e3fa..db7447d233 100644
---- a/target/arm/helper.h
-+++ b/target/arm/helper.h
-@@ -47,6 +47,7 @@ DEF_HELPER_FLAGS_3(sel_flags, TCG_CALL_NO_RWG_SE,
- DEF_HELPER_2(exception_internal, noreturn, env, i32)
- DEF_HELPER_4(exception_with_syndrome_el, noreturn, env, i32, i32, i32)
- DEF_HELPER_2(exception_bkpt_insn, noreturn, env, i32)
-+DEF_HELPER_2(exception_swstep, noreturn, env, i32)
- DEF_HELPER_2(exception_pc_alignment, noreturn, env, tl)
- DEF_HELPER_1(setend, void, env)
- DEF_HELPER_2(wfi, void, env, i32)
-diff --git a/target/arm/translate.h b/target/arm/translate.h
-index 4575af6e1c..890e73194c 100644
---- a/target/arm/translate.h
-+++ b/target/arm/translate.h
-@@ -341,15 +341,9 @@ static inline void gen_exception(int excp, uint32_t syndrome,
- /* Generate an architectural singlestep exception */
- static inline void gen_swstep_exception(DisasContext *s, int isv, int ex)
+diff --git a/target/arm/translate.c b/target/arm/translate.c
+index 5a48937ede..fcb6ee648b 100644
+--- a/target/arm/translate.c
++++ b/target/arm/translate.c
+@@ -1086,11 +1086,15 @@ static void gen_exception_internal_insn(DisasContext *s, uint32_t pc, int excp)
+     s->base.is_jmp = DISAS_NORETURN;
+ }
+ 
+-static void gen_exception_el(int excp, uint32_t syndrome, uint32_t target_el)
++static void gen_exception_el_v(int excp, uint32_t syndrome, TCGv_i32 tcg_el)
  {
--    bool same_el = (s->debug_target_el == s->current_el);
--
--    /*
--     * If singlestep is targeting a lower EL than the current one,
--     * then s->ss_active must be false and we can never get here.
--     */
--    assert(s->debug_target_el >= s->current_el);
--
--    gen_exception(EXCP_UDEF, syn_swstep(same_el, isv, ex), s->debug_target_el);
-+    /* Fill in the same_el field of the syndrome in the helper. */
-+    uint32_t syn = syn_swstep(false, isv, ex);
-+    gen_helper_exception_swstep(cpu_env, tcg_constant_i32(syn));
- }
- 
- /*
-diff --git a/target/arm/debug_helper.c b/target/arm/debug_helper.c
-index a743061e89..a3a1b98de2 100644
---- a/target/arm/debug_helper.c
-+++ b/target/arm/debug_helper.c
-@@ -487,6 +487,22 @@ void HELPER(exception_bkpt_insn)(CPUARMState *env, uint32_t syndrome)
-     raise_exception(env, EXCP_BKPT, syndrome, debug_el);
- }
- 
-+void HELPER(exception_swstep)(CPUARMState *env, uint32_t syndrome)
-+{
-+    int debug_el = arm_debug_target_el(env);
-+    int cur_el = arm_current_el(env);
-+
-+    /*
-+     * If singlestep is targeting a lower EL than the current one, then
-+     * DisasContext.ss_active must be false and we can never get here.
-+     */
-+    assert(debug_el >= cur_el);
-+    if (debug_el == cur_el) {
-+        syndrome |= 1 << ARM_EL_EC_SHIFT;
-+    }
-+    raise_exception(env, EXCP_UDEF, syndrome, debug_el);
+     gen_helper_exception_with_syndrome_el(cpu_env, tcg_constant_i32(excp),
+-                                          tcg_constant_i32(syndrome),
+-                                          tcg_constant_i32(target_el));
++                                          tcg_constant_i32(syndrome), tcg_el);
 +}
 +
- #if !defined(CONFIG_USER_ONLY)
++static void gen_exception_el(int excp, uint32_t syndrome, uint32_t target_el)
++{
++    gen_exception_el_v(excp, syndrome, tcg_constant_i32(target_el));
+ }
  
- vaddr arm_adjust_watchpoint_address(CPUState *cs, vaddr addr, int len)
+ static void gen_exception(DisasContext *s, int excp, uint32_t syndrome)
+@@ -1107,8 +1111,7 @@ static void gen_exception_insn_el_v(DisasContext *s, uint64_t pc, int excp,
+         gen_set_condexec(s);
+         gen_set_pc_im(s, pc);
+     }
+-    gen_helper_exception_with_syndrome_el(cpu_env, tcg_constant_i32(excp),
+-                                          tcg_constant_i32(syn), tcg_el);
++    gen_exception_el_v(excp, syn, tcg_el);
+     s->base.is_jmp = DISAS_NORETURN;
+ }
+ 
 -- 
 2.34.1
 

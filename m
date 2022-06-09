@@ -1,101 +1,100 @@
-Received: by 2002:a0c:fd46:0:0:0:0:0 with SMTP id j6csp4085437qvs;
-        Thu, 9 Jun 2022 06:06:29 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJznAGNzTDjhke9gnHT+WLb9QF20KFsCl4FP/psAzSdiD5lmKC8vzHKKW38gC2DpzUD/Dkq2
-X-Received: by 2002:a05:620a:40c3:b0:6a7:1c41:8a72 with SMTP id g3-20020a05620a40c300b006a71c418a72mr3708776qko.331.1654779989775;
-        Thu, 09 Jun 2022 06:06:29 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1654779989; cv=none;
+Received: by 2002:a0c:fd46:0:0:0:0:0 with SMTP id j6csp4088005qvs;
+        Thu, 9 Jun 2022 06:09:36 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxFYO6Sd+GxnzU66RumAVg3R/Ak2TfrhjEEUs1krIaISq/4OdFASY8iDHMVdSZ6WJ+SikWr
+X-Received: by 2002:a67:ff09:0:b0:34b:c854:a054 with SMTP id v9-20020a67ff09000000b0034bc854a054mr8598262vsp.20.1654780176553;
+        Thu, 09 Jun 2022 06:09:36 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1654780176; cv=none;
         d=google.com; s=arc-20160816;
-        b=qjXbfsk37cC2nmWKqHmAVF90IN/BSI4Cvv6dvQ5QrD7PAyPLjZ6mkzewBNO1T9qKA7
-         5liXXDIDPGsWTIJPp5fVTlQn+bYVSPisSnfKMIVvbci+z8QDhgp9m5FYp+NJZdAXNMQS
-         rFEbs4EMX1I0vqfLwlMQ7mXzTsWoQY/DEAO/nkR5QyHu/mLOqZzo9pG9QN3W47+zv9y5
-         dhO1cz7bZYVpz0YVeex2i8HNLcHTod88qdNr1t1QFIORMVmAkB2YVQfJHCaxxlnGb6A4
-         bTgPtg1LVVMJekNYtk594mwou71CX5X/6QJbDzHZNu49Np7PGBWxBOHW4xSKH/lFoII9
-         jtfg==
+        b=DdI8giPbcAOKgNG0I5kmuZlKaYEQIeEOPWzBRQTfe9EjIAzM3yHp6VkcwCJjfkfnfA
+         LN6wOShzy2VQh4qX7dOe9uKO2JK3WJXokq37toHaFwD2xTpOwrRygI6ORt8p2NbIS0Gg
+         8K9W3M2en8pYRMWiKUI2MbusFjL5APSN3/5w0tIufuP34kyAU7sp9YINwspYcj29me6M
+         2yl2M24QYw2Kn+BvSCCMEL/c4uCkGYrJwdsXrHXXQ7i/9VpKzYHskOa8zcyLanlYR9Os
+         GGIbfjcdkmuBvTCcITxpU9u3ZOiTYrYnjICKNihylMDEMgJepwBbS97isfw8F/dcSZXk
+         VzsQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
          :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=hCnkYS2x3ui/4354QdNO4nQlKFbTZpM5ktCaEd1vLfU=;
-        b=zIlBlbzjsCW91SVMGVioLyQKJ/+hLHX++v2Mgyj8YdelDtW5k9kJ87toO4j6xdq62E
-         3ELT+6waQgWI3wIhhmALFxdXlGmzzCk6Tly9tVRDwrdyynXMqXLVWMfOM82qd5KCZiUB
-         /kamQO24M2YlzfnVVPoR9Muv1jxJLl+0eps+qzVAsk7XGP8caHcH4OrqGAu8u8UFptKo
-         xPkjVwg7WJmkq5i5IGKFcpUwTyOMBlTJfh0RXd7Gz5pE5GK9mtQ2ODyXbQxLm1dCR3BA
-         JfRUJKNhvdoyWoKjWJ7zK+jMiEtXYvY3L1qYZbMOg9EgIMV0kzJQD6mgig9kklibue6n
-         fCAw==
+        bh=r7akZqo8169109bTVmrrRggrtG5hAVSzxwrx3k19zZ4=;
+        b=QWc/iAGu/0e2xoIErkOdAw81gZd99IO+Y52PhrF1jfRccs6Cvb7U/vzNvbzxcTzR4V
+         +r0flQqoxQessJsy4K1XrWcnSza04U3Qb0UlelF/70qTHnwlzJeyoM/V12ObLIkk46Ik
+         6i2m/bDw176GefKYGJaqgx4dVTW6LTymHnwuJi8lv6DX98mq1r4KgNGlDSsCQApUt1+Q
+         FLu2GkOLKTzUKEvOiyCvGlPo14MLmJfBx9p5+m9leFbH2iF9iEODGjxfObEdkPq+zgqy
+         d0ELMe6j7raXz3EqhD4/6EFf7ha/qt0NCUNSNT4ec5rFvDnSrU0XSU8LpU0h1BqY4PLV
+         RbJA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Bvka2LvW;
+       dkim=pass header.i=@linaro.org header.s=google header.b="aoV/eCFS";
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id bq34-20020a05620a46a200b006a7316a3b30si627059qkb.373.2022.06.09.06.06.29
+        by mx.google.com with ESMTPS id b79-20020a1f1b52000000b0035e6e8f1c07si1654546vkb.172.2022.06.09.06.09.36
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 09 Jun 2022 06:06:29 -0700 (PDT)
+        Thu, 09 Jun 2022 06:09:36 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Bvka2LvW;
+       dkim=pass header.i=@linaro.org header.s=google header.b="aoV/eCFS";
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:59300 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:38692 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nzHrn-0003D0-Vx
-	for alex.bennee@linaro.org; Thu, 09 Jun 2022 09:06:29 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:42872)
+	id 1nzHup-00008w-Vo
+	for alex.bennee@linaro.org; Thu, 09 Jun 2022 09:09:36 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:36182)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1nzFtL-0002uN-AK
- for qemu-devel@nongnu.org; Thu, 09 Jun 2022 06:59:55 -0400
-Received: from mail-yb1-xb34.google.com ([2607:f8b0:4864:20::b34]:39723)
+ id 1nzFjb-000391-Fb
+ for qemu-devel@nongnu.org; Thu, 09 Jun 2022 06:49:52 -0400
+Received: from mail-yb1-xb30.google.com ([2607:f8b0:4864:20::b30]:35540)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1nzFtJ-0007oL-NM
- for qemu-devel@nongnu.org; Thu, 09 Jun 2022 06:59:54 -0400
-Received: by mail-yb1-xb34.google.com with SMTP id r3so6974295ybr.6
- for <qemu-devel@nongnu.org>; Thu, 09 Jun 2022 03:59:53 -0700 (PDT)
+ id 1nzFjZ-0005QV-Vg
+ for qemu-devel@nongnu.org; Thu, 09 Jun 2022 06:49:51 -0400
+Received: by mail-yb1-xb30.google.com with SMTP id x187so13545221ybe.2
+ for <qemu-devel@nongnu.org>; Thu, 09 Jun 2022 03:49:49 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=hCnkYS2x3ui/4354QdNO4nQlKFbTZpM5ktCaEd1vLfU=;
- b=Bvka2LvW9vBThoxwZ8n+orFF3z/WYJBDkKXviJ5iUG+IxHH7QPfm+xVSy0V4xkJ1TK
- a0gzTc740XI3o2bI7FIq9J3KVrM/Rt42T0ptovV7T0K9I9gvQy80zpRqkaqxMBKYOBCm
- tMbthAifZTndIq75fvjvuFOqD66D7JYjwu08wyFnoGh5IVwmUFKbFeFktzKxS8nXAX0H
- vWTahNPrNasXj5FZT9F/Ov5XhMOBS3zii8cucjBuhaMaTiFG9nr1viiksUw1XgENtYi8
- aRV4ymLGPYTbDn2XwFfWiPlZ5ZHxYcBLG/0P9OWDRvvahBKCXs6G5I04BSqJx/gA/Q9e
- 2rzw==
+ :cc; bh=r7akZqo8169109bTVmrrRggrtG5hAVSzxwrx3k19zZ4=;
+ b=aoV/eCFSEQlCnxrvxVZ6j7B5QYL6tAOEJvyPT4EplNE2Am9+WOx0ucr6Iu1d49PLIf
+ 7bl9WGhJOQPJ7dlanlcrHddTl+j8rT5e6CBWchqOVOa90/f6x+cmmzAqRd/XscWbdaMu
+ C83BW/HRUNOCbOooDebAeeY5h7UYga1/IC1w8i1umqo7YR77vT1Lshy86wf1pE7i/aOV
+ aXljkX1L5Q0YCez2QkYRB1mP6lroJw+kol4aDttsoeERf9/tXnWJNuOf3VCoE1SN9MF6
+ +iwXDGpT5dPEB/JnKh0/ZJ9TjgxhQ1dcm7Vu4iEj8Qs+IEcXrfwAns4bU91PKLGToVNp
+ owdg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=hCnkYS2x3ui/4354QdNO4nQlKFbTZpM5ktCaEd1vLfU=;
- b=TN39GCezpHePXnqaej2vdKYSzSv9wJQQk5yNx5hN2iygICoB9omds6UtDZyg4AabZd
- 9qyikIMsEqS+seQ6a/u23sKAtzvB0WvNtPPMOdK1cucQxt0ihEmyB8rWKHSLf2twsnoC
- 1XO0VNJrHiiXVyI367Oj18moYxfyh/9eBiSsoVmoGWh9U6yGAmVNJBWrmIyPPOIMyS5p
- pKKUrbpCpwe6diQzFsFdjkFEOtzAhewtqyG6t4jVT2pD+jLPfG+tHOmWB/aHd0PmxIOu
- 1qNqHaOTaGZuv8SO2U5hy8ut3Z7rTy6cgK3DR7MreIP1ZGarxvwx8vHOr8kQpV86ygjE
- LvGQ==
-X-Gm-Message-State: AOAM530R7DZlcL4sBnY7mAXlbeYdKT/H7S5EPmwFIIJjFhLP14FB0E9o
- M/Om1UUq63QJelnUw0krMD5FfjhKHxqKjCQ+frhbhA==
+ bh=r7akZqo8169109bTVmrrRggrtG5hAVSzxwrx3k19zZ4=;
+ b=v1jPgg477MrP1S6nsfN6gGKJTu9//P5ZHXtPNoVfP8WAb6NXyXF3NjMXluv/gwztFm
+ hVOLdjLHZCC2eaTVfdgy97zELusZci+CMW564/q6D94bBxqanD72qeGCCA1qCz6yqJpU
+ /gAPwNQQJG27XUHiNRg6NTas6Pyh66CoyeC69WQMCvxijshLd1Lw/wS6D9c84NKPD/vj
+ ig2//mmy3RXscbUsoETUsH0f64ihcYMghxbbfxOnKIpafF/2xHu9kqbbxrdHz6OKIS4w
+ KvDBDPa9xJKhQwIgl4b36qernUl2dLpH/Q5HeXHOUGcEfbv/3jpVxXDmaOAPhZknkXMZ
+ 29xQ==
+X-Gm-Message-State: AOAM531GrAtz/zfTCyuVr4X21i0sMH+40V+tR0SBfCkfMySDJHo0/snU
+ r1FKvYCxRApgRd7h1so1eibY9jwJ0JIEQZBQS0VrJw==
 X-Received: by 2002:a5b:d42:0:b0:65c:a0d7:4c6 with SMTP id
- f2-20020a5b0d42000000b0065ca0d704c6mr38923207ybr.193.1654772392789; 
- Thu, 09 Jun 2022 03:59:52 -0700 (PDT)
+ f2-20020a5b0d42000000b0065ca0d704c6mr38888226ybr.193.1654771789056; 
+ Thu, 09 Jun 2022 03:49:49 -0700 (PDT)
 MIME-Version: 1.0
 References: <20220522181836.864-1-mark.cave-ayland@ilande.co.uk>
- <20220522181836.864-29-mark.cave-ayland@ilande.co.uk>
-In-Reply-To: <20220522181836.864-29-mark.cave-ayland@ilande.co.uk>
+ <20220522181836.864-24-mark.cave-ayland@ilande.co.uk>
+In-Reply-To: <20220522181836.864-24-mark.cave-ayland@ilande.co.uk>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 9 Jun 2022 11:59:42 +0100
-Message-ID: <CAFEAcA_TAA2wwpuF_sm3oPTGv17Fz3g1Uxy1HFJzT9oQ-9ab0w@mail.gmail.com>
-Subject: Re: [PATCH 28/50] pckbd: move mapping of I8042_MMIO registers to MIPS
- magnum machine
+Date: Thu, 9 Jun 2022 11:49:38 +0100
+Message-ID: <CAFEAcA-bkoZNJMO_PX8Agbp-VJJhuHAk6t5qp8wzjw7Pr6WU0g@mail.gmail.com>
+Subject: Re: [PATCH 23/50] pckbd: add mask qdev property to I8042_MMIO device
 To: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
 Cc: richard.henderson@linaro.org, deller@gmx.de, mst@redhat.com, 
  pbonzini@redhat.com, hpoussin@reactos.org, aleksandar.rikalo@syrmia.com, 
  f4bug@amsat.org, jiaxun.yang@flygoat.com, qemu-arm@nongnu.org, 
  qemu-devel@nongnu.org
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b34;
- envelope-from=peter.maydell@linaro.org; helo=mail-yb1-xb34.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b30;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yb1-xb30.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -117,14 +116,13 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: OeawaLRQ8lv9
+X-TUID: P4tRDp3vRsUk
 
 On Sun, 22 May 2022 at 19:19, Mark Cave-Ayland
 <mark.cave-ayland@ilande.co.uk> wrote:
 >
-> Now that the register memory region is exposed as a SysBus memory region, move
-> the mapping of the I8042_MMIO registers from i8042_mm_init() to the MIPS magnum
-> machine (which is its only user).
+> This allows the KBDState mask value to be set using a qdev property rather
+> than directly in i8042_mm_init().
 >
 > Signed-off-by: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
 > ---

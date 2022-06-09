@@ -1,141 +1,163 @@
-Received: by 2002:a19:ee12:0:0:0:0:0 with SMTP id g18csp463333lfb;
-        Thu, 9 Jun 2022 07:08:24 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJx4SfugjDg6WBD6E5epkRay9DAlGF6gCYptVggVPW2yyGgvS3h0c4lF7bjLvO3cBS8MR3UE
-X-Received: by 2002:a37:6d0:0:b0:6a6:8485:ddb0 with SMTP id 199-20020a3706d0000000b006a68485ddb0mr24384942qkg.301.1654783703776;
-        Thu, 09 Jun 2022 07:08:23 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1654783703; cv=none;
+Received: by 2002:a19:ee12:0:0:0:0:0 with SMTP id g18csp468956lfb;
+        Thu, 9 Jun 2022 07:15:13 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyzvrbpDh95EjhUUE+BaoyXWH6yvErb0t/lS68Gda8wjz0gvpqHnDWU2vRsPcSAN3ioscWE
+X-Received: by 2002:adf:dec1:0:b0:213:be00:99a with SMTP id i1-20020adfdec1000000b00213be00099amr34903533wrn.506.1654784112673;
+        Thu, 09 Jun 2022 07:15:12 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1654784112; cv=none;
         d=google.com; s=arc-20160816;
-        b=dCicNF14DG5SLyX2mGTJgxYnF6bNp8Ce30W1npi/hntGBb8s33Rkx8BLVZTwjEDtsy
-         Z2KDMCeLDxtr/WzwRw2vR8dGFrq6SBntXNsTrq5SghhKpeeo98cmkx1m39N8Cw9lus05
-         +5GOtu+gMcPyIsDfGAeDQOc1Rdi2yqzlGk0XWdZSZErmKKlXLK4eDe4I1bwf/VF6g4ST
-         ZEOJjdC7y2a78p9mXPxqiKxpRIYZbPZwFNBFTJLOVeS8Yi8YvkIyTw7MhLX27myhzjXg
-         HYe2FkWcnPp25ncnzHMcENyQKmkSLbbv/dFp27aFCcne1LRgSdhGwzkldplgtJfj8dss
-         OYAQ==
+        b=TdWnbhVal4WOQvK9IFi+6hrvJoWmHOdZ2DdvIwuclnw8wwJQPHpxEBvUDgy2zmitla
+         uAy4xYEx+hO0CgHDYOkj68VDAc7Qzh3cRGarHUCFp20Oqkj0Stu8S7ZshrUKFjZkRGN0
+         yxhjXSggTcLv8oHT5M3oLPrmIVUM0RqK4ga6UrphQOCfLiMBJPlOg4CwXMQMKUkoE8p4
+         FEWk0DUuxTwsnFkHETCZfYWKqUeVpOe8j/yoKXFt6PUEaDaEvNm+clFnT1WVroyp3zJn
+         qEaxc80PGnrFaJxEci9PdcwOdGI/lo7cLfAFgx+lSR87IpOpNqosSlA3IvcwC5WTYb6y
+         x92A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=wVHq+kadEusxFBNgWN5OPNJH8tRKzmGjwXKWp4S+45Y=;
-        b=Es77oAzh8oCNoDrtHGBS/J1EwE6O+hkSJ6MwlMr5xKM62bFJB16t61LGp6rNVEEyzd
-         IGk00irdYtDGN7fAwPmnGu7KFHtegP1wDD3+qXFzmJAUCp/B44UWWDt8lSDIGZGC/5ha
-         SgLq8bdZKErVZWMaVeZuy8si8s24odL/16b+rG1ndyRKRxKIZhwyO47N41eu3+ebGW79
-         B+Hf5tIVfrWAbOUhf5//yHzIU+MycsMRqPJk2IcuVX5KQVGcLxsfPkMVF391tsRf18Az
-         83cftAvcQqpQOgNIeUgXJw/EojF3lXuoZsgq07xpusIjxnJAX3pT3tiWoRfk1wuwatzO
-         +hHA==
+        h=content-transfer-encoding:in-reply-to:references:cc:to:from
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :dkim-signature:dkim-signature;
+        bh=NmOq+fvygi/FvByq9zbYWD0F5BFMT3OHiN8pPHGE1hs=;
+        b=mPASk0vH90s4wjxApnOvc8hKefY9CFBHP7u8/oJuMslUwLYctRDqeIX1r68qNrubhn
+         /9kYpVsAcWyB++9bUPrkjUP2ONcgVPPjuXU4yTQppBiAVVFQm+Sv1xao4+aN3NprfSd7
+         PzGjc+uPjVj6KyyenAxmdUOkNOwxs6STPs/5AtEPP3k3c1Wh5ubGoFo9FRnlozdGOF/j
+         L1dc4cTAxoDtbLhTeJYyarHBn8ZNknHGSn+LPFZ/Wg3sLnpzAstWlrgBaM3mFRbb5bzm
+         7TULaMXn946QuYwpLIJhwttscq0N6DM5PQO4S9m4uF09VfBNCqS6DaekTOD/zDrSd77c
+         xSBw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=fiM4g1Ex;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id u2-20020a05622a010200b00304f271adffsi5061236qtw.628.2022.06.09.07.08.23
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 09 Jun 2022 07:08:23 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=mllZVMuV;
+       dkim=neutral (no key) header.i=@suse.de header.s=susede2_ed25519;
+       spf=pass (google.com: domain of cfontana@suse.de designates 195.135.220.28 as permitted sender) smtp.mailfrom=cfontana@suse.de;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
+Return-Path: <cfontana@suse.de>
+Received: from smtp-out1.suse.de (smtp-out1.suse.de. [195.135.220.28])
+        by mx.google.com with ESMTPS id k13-20020a5d6d4d000000b00212b80c0168si25246933wri.880.2022.06.09.07.15.12
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 09 Jun 2022 07:15:12 -0700 (PDT)
+Received-SPF: pass (google.com: domain of cfontana@suse.de designates 195.135.220.28 as permitted sender) client-ip=195.135.220.28;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=fiM4g1Ex;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:33852 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nzIpj-00022N-8y
-	for alex.bennee@linaro.org; Thu, 09 Jun 2022 10:08:23 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:36602)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1nzHeT-0004yO-3F
- for qemu-arm@nongnu.org; Thu, 09 Jun 2022 08:52:41 -0400
-Received: from mail-pg1-x52b.google.com ([2607:f8b0:4864:20::52b]:45646)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1nzHeO-0003f4-56
- for qemu-arm@nongnu.org; Thu, 09 Jun 2022 08:52:37 -0400
-Received: by mail-pg1-x52b.google.com with SMTP id 184so5796347pga.12
- for <qemu-arm@nongnu.org>; Thu, 09 Jun 2022 05:52:35 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=wVHq+kadEusxFBNgWN5OPNJH8tRKzmGjwXKWp4S+45Y=;
- b=fiM4g1Exc/o5XVhHBoyMhFQ4e74nrTaOzgAPRqknSL1BgsuGtnk/VC2BaAm9cvxXr6
- 8R/KbC+ioVhKJkPHr5oFSU6TBRP6Lge2ehH7LKgyLwa+kOw6XEdLHACLCjXs/Ye/E0Qn
- w8inH9R1iqM5kE9eR6Cmoa99tFw5OyMNZgRx14+Ak9ozFrDK3MrfJRIvY2hVdgzRoRRC
- TLsPzJU7sx2Y4UNdU9cG8OkMITh+shmBm5QBEfQ4XY6S6tq+UK6Kax/s+2vsiDFHlGzq
- O6hMPOz9hVkYvxZlrxuk5+5nwJPJnD4cmCFrznJVyi/58ZGNAFBBpc9SRk0q+7Zyja1P
- U4zQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=wVHq+kadEusxFBNgWN5OPNJH8tRKzmGjwXKWp4S+45Y=;
- b=iqY7dLEFmjuUjHsB9LabE3/AoOl2qlOLMezGPkW4EiqCVcBxUUOtaTbWtABAqaZ6K2
- ZCxL4sWfPaOoE6tEsooibinxu8qm7yQSI7EU5ScGv+Mva47sY5B9xJwjvgC5tkiMPu1V
- LOfFFXXc/edPtY1gjgwlM2utVpY/Xgw80lB5wZV4Ucj7QbL03oefy5ojTZVrIQGkxJov
- inXoVCVZXiitFVjD84B62ls/dG5xvMzRjmEdauTI2cZGew3cIjzSwPxkzrGnHt4J49rI
- Nef35wCYzP1ILxMlCKZkssU/jQPHfLqxDXcDZq+/hWaj2B/cZyVnuKLChSQUqzJ5s8c7
- ls3w==
-X-Gm-Message-State: AOAM531rEqGnfvrope85LmA7ADI5OGiiOoh2ZwA8JVmLJHAd83jDlt0K
- yw8eksZuV0rHeuktDGG9piqSFzbdhJDrjiJfvS8D0Q==
-X-Received: by 2002:a05:6a00:162a:b0:51e:73c4:f895 with SMTP id
- e10-20020a056a00162a00b0051e73c4f895mr887667pfc.82.1654779154884; Thu, 09 Jun
- 2022 05:52:34 -0700 (PDT)
+       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=mllZVMuV;
+       dkim=neutral (no key) header.i=@suse.de header.s=susede2_ed25519;
+       spf=pass (google.com: domain of cfontana@suse.de designates 195.135.220.28 as permitted sender) smtp.mailfrom=cfontana@suse.de;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
+Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
+	(No client certificate requested)
+	by smtp-out1.suse.de (Postfix) with ESMTPS id 0213021F84;
+	Thu,  9 Jun 2022 14:15:12 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
+	t=1654784112; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	 mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=NmOq+fvygi/FvByq9zbYWD0F5BFMT3OHiN8pPHGE1hs=;
+	b=mllZVMuVGAToISp469iObplqyZy9FmJAiY7FHD1dQlFvQhCbXdioveD8p7Qv7X9wQeLs7P
+	Yj6Ih6JjFczFfQXxQhRx5EHJjwPzYJ3tUHlTEyUjiSPcu5u8wc5JKqM2A0wvEZ9Mdt8pwD
+	UiYvS3zcEXCxcvEJcSRthLqnIMc0fDQ=
+DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
+	s=susede2_ed25519; t=1654784112;
+	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	 mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=NmOq+fvygi/FvByq9zbYWD0F5BFMT3OHiN8pPHGE1hs=;
+	b=665HxNJCJ3MIE5CJ++Y/oKiQwFULQM7CXvN2Yw7A/XdA1JfuVtRrORhl3OX3cXeV7bY8HA
+	oYielmwME481+ODQ==
+Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
+	(No client certificate requested)
+	by imap2.suse-dmz.suse.de (Postfix) with ESMTPS id 92E2913A8C;
+	Thu,  9 Jun 2022 14:15:11 +0000 (UTC)
+Received: from dovecot-director2.suse.de ([192.168.254.65])
+	by imap2.suse-dmz.suse.de with ESMTPSA
+	id lVkIIm8AomLNawAAMHmgww
+	(envelope-from <cfontana@suse.de>); Thu, 09 Jun 2022 14:15:11 +0000
+Message-ID: <e29d83e6-e7bb-b370-33d0-88d22aa2eddb@suse.de>
+Date: Thu, 9 Jun 2022 16:15:11 +0200
 MIME-Version: 1.0
-References: <20220522181836.864-1-mark.cave-ayland@ilande.co.uk>
- <20220522181836.864-48-mark.cave-ayland@ilande.co.uk>
-In-Reply-To: <20220522181836.864-48-mark.cave-ayland@ilande.co.uk>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 9 Jun 2022 13:52:24 +0100
-Message-ID: <CAFEAcA_xOznxBzt1PQQgBqkOSesD02N=+UFSi4Khd1mkv6FjdQ@mail.gmail.com>
-Subject: Re: [PATCH 47/50] pckbd: switch I8042_MMIO device from update_irq()
- function to PS2 device gpio
-To: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
-Cc: richard.henderson@linaro.org, deller@gmx.de, mst@redhat.com, 
- pbonzini@redhat.com, hpoussin@reactos.org, aleksandar.rikalo@syrmia.com, 
- f4bug@amsat.org, jiaxun.yang@flygoat.com, qemu-arm@nongnu.org, 
- qemu-devel@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::52b;
- envelope-from=peter.maydell@linaro.org; helo=mail-pg1-x52b.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: mihR0WxGKbMO
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.4.0
+Subject: Re: [PATCH] disas: Remove libvixl disassembler
+Content-Language: en-US
+From: Claudio Fontana <cfontana@suse.de>
+To: =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?= <berrange@redhat.com>,
+ Thomas Huth <thuth@redhat.com>, Matthew Fortune <matthew.fortune@mips.com>,
+ Aleksandar Markovic <amarkovic@wavecomp.com>
+Cc: Paolo Bonzini <pbonzini@redhat.com>, qemu-devel@nongnu.org,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
+ Stefan Weil <sw@weilnetz.de>
+References: <20220603164249.112459-1-thuth@redhat.com>
+ <07f021e7-1346-c6b3-3bd1-ef0d0f0e2ff5@suse.de>
+ <52c51ac4-5598-faf2-d5e5-638cab0dc1fd@redhat.com>
+ <7ae17984-89c4-2247-57a7-fde6206e41e0@redhat.com>
+ <03a1e04e-45c7-5002-6920-d04e29fd48fd@redhat.com>
+ <YqG2Anwtba+MfxfH@redhat.com> <209c7aaf-bc7b-cbc2-c6d0-002bbe31258a@suse.de>
+In-Reply-To: <209c7aaf-bc7b-cbc2-c6d0-002bbe31258a@suse.de>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-TUID: 6t0OGcQiM8ec
 
-On Sun, 22 May 2022 at 19:20, Mark Cave-Ayland
-<mark.cave-ayland@ilande.co.uk> wrote:
->
-> Define a new qdev input gpio for handling incoming PS2 IRQs, and then wire up the
-> PS2 keyboard and mouse devices to use it. At the same time set update_irq() and
-> update_arg to NULL in ps2_kbd_init() and ps2_mouse_init() to ensure that any
-> accidental attempt to use the legacy update_irq() function will cause a NULL
-> pointer dereference.
->
-> Signed-off-by: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
-> ---
->  hw/input/pckbd.c | 33 +++++++++++++++++++++++++++------
->  1 file changed, 27 insertions(+), 6 deletions(-)
+On 6/9/22 13:27, Claudio Fontana wrote:
+> On 6/9/22 10:57, Daniel P. Berrangé wrote:
+>> On Thu, Jun 09, 2022 at 10:47:24AM +0200, Thomas Huth wrote:
+>>> On 08/06/2022 17.51, Paolo Bonzini wrote:
+>>>> On 6/3/22 19:35, Thomas Huth wrote:
+>>>>> On 03/06/2022 19.26, Claudio Fontana wrote:
+>>>>>> On 6/3/22 18:42, Thomas Huth wrote:
+>>>>>>> The disassembly via capstone should be superiour to our old vixl
+>>>>>>> sources nowadays, so let's finally cut this old disassembler out
+>>>>>>> of the QEMU source tree.
+>>>>>>>
+>>>>>>> Signed-off-by: Thomas Huth <thuth@redhat.com>
+>>>>>>
+>>>>>> agreed, one thought: at the time I added this thing, I had to
+>>>>>> add C++ compilation support,
+>>>>>> maybe something we can now drop if there are no more C++ users?
+>>>>>
+>>>>> I thought about that, too, but we still have disas/nanomips.cpp left
+>>>>> and the Windows-related files in qga/vss-win32/* .
+>>>>
+>>>> That is pure C++ so it does not need the extra complication of "detect
+>>>> whether the C and C++ compiler are ABI-compatible" (typically due to
+>>>> different libasan/libtsan implementation between gcc and clang).  So
+>>>> it's really just nanoMIPS that's left.
+>>>
+>>> Ok, so the next theoretical question is: If we get rid of the nanomips.cpp
+>>> file or convert it to plain C, would we then simplify the code in configure
+>>> again (and forbid C++ for the main QEMU code), or would we rather keep the
+>>> current settings in case we want to re-introduce more C++ code again in the
+>>> future?
+>>
+>> It doesn't feel very compelling to have just 1 source file that's
+>> C++ in QEMU. I'm curious how we ended up with this nanomips.cpp
+>> file - perhaps it originated from another project that was C++
+>> based ?
+>>
+>> The code itself doesn't look like it especially needs to be using
+>> C++. There's just 1 class there and every method is associated
+>> with that class, and external entry point from the rest of QEMU
+>> is just one boring method. Feels like it could easily have been
+>> done in C.
+>>
+>> Personally I'd prefer it to be converted to C, and if we want to
+>> add any C++ in future it should be justified & debated on its
+>> merits, rather than as an artifact of any historical artifacts
+>> such as the code in configure happening to still exist.
+>>
+>> With regards,
+>> Daniel
+> 
+> I'll take a look at it, maybe I can turn it to C fairly quickly.
+> 
+> Ciao,
+> 
+> Claudio
+> 
 
-Same remark about preferring named-gpio for the internal-implementation
-irqs, but otherwise
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+It seems to be generated code, getting the original authors involved in the thread.
 
-thanks
--- PMM
+Thanks,
+
+Claudio

@@ -1,213 +1,162 @@
-Received: by 2002:a19:ee12:0:0:0:0:0 with SMTP id g18csp1221080lfb;
-        Fri, 10 Jun 2022 08:43:55 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJy/GUgZ5qjucnQiYSWQjUFn8XxXmzoydLWg0fQqZPq/2DuKfJDNVC7pEDXVIAXN8cToJVI7
-X-Received: by 2002:a05:622a:20e:b0:304:fde3:67a6 with SMTP id b14-20020a05622a020e00b00304fde367a6mr14811042qtx.294.1654875834983;
-        Fri, 10 Jun 2022 08:43:54 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1654875834; cv=none;
+Received: by 2002:a19:ee12:0:0:0:0:0 with SMTP id g18csp1380059lfb;
+        Fri, 10 Jun 2022 13:40:41 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJziLS06kjQx7F4lE+8Ux7ZW2WCOENZ5oXdNr7UAIlq2WVtduKO5cgBr5HjTweqkH0/ipPcL
+X-Received: by 2002:a17:906:51de:b0:712:23e0:df84 with SMTP id v30-20020a17090651de00b0071223e0df84mr3610397ejk.453.1654893641422;
+        Fri, 10 Jun 2022 13:40:41 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1654893641; cv=none;
         d=google.com; s=arc-20160816;
-        b=mC5THzmQHHGEaGZcrN4jON1yGXINtYYpg71jo7kB30wof+uTvIzvFIbLWtdjLoxek7
-         9Lt9dMtoCOY1ytT9zGF+uX9UuCpwIvoH7qJ4JbX50Pf8KTN6nhg13/6XUW+R8EJXkD8D
-         OPZEDVbLULwR0lEnvrmz8+nmoXlNevzxGU1KUpypKd8J4azbKaXB+rITr+/iiNaoHNXg
-         qZmPdOavYA5DYiqPviY2eLPt4hgiLPrda8eFW9Wzmgy4bJeUbU7O5ATNgmFyWDq1RVXe
-         MGrnupE3pSPdHSXr6ARGO+IRLVwWZ+R80plgDU2kgcmWPGaiW1ohUhTszwApwFVCjpcg
-         /6Jw==
+        b=YPwQl02uxjCnpN6EQofJMzvEGQ4d8WmFVo4WO2VaHMjJeJRwltldXs0lWLOup8m3So
+         UVPc6YNff8WV/hnpFlg9dEJFYxHtGHM0ipnOHDjkVUFJUlCjZY/65kopVEouOVoAJaiI
+         6Sa455QzvHoPxhXAWcU0TKOwlFCGa5lFwmnBcM5oCGK9aLSvcl+yrLgO+SRnI9Za96aw
+         e0Q+maX+Uhig3rbFsC4aoCrNR8QGC2dluDhr5cqseB7Ao6G2xawwidXRf6IGa6Aobox2
+         oSKFRD2UBBVucTI5SYJGkrfDfM6sjQmiGsFsGodgrxSYeGafeSN2VK1o3ixVWyqDo495
+         AevQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:in-reply-to:from:references:to
-         :content-language:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=k7WAWElMUSutZpU5tB34oNODW5F74EXaNTjqoxeB6h8=;
-        b=ZLmm3DlQUAfStLp6uFsdXYeSf0BSVHoaeuhgnlxNSl/xXw9wnr9JgBKH6WqN+0MiF6
-         y4B+AOxXHiQ2+u9mwxjJBxxUy/rAs2gtjd/y5qeY2MQeCLKEVwMF1I+uGhcDL+C5rGH8
-         pXDyg7PbdUJYUElvHU/Nlm5qNUCbnzLIHR+751R1a54Adqa8FvFCLveuph7nZNdpgY/1
-         bjoxK/zStPXR6wZ1xSnrbdsscZpS0iVFMK7tfolFBym1QisljtgscJUKADu/2CLy7uLv
-         txQSBfGcNvGoeaXvYFmIMUDEytYt0BSMzFBLjQhiPwVwVP6j80Npt9i5qwJIrXVxQrIk
-         ZFCg==
+        h=list-id:precedence:content-transfer-encoding:in-reply-to:from
+         :references:cc:to:content-language:subject:user-agent:mime-version
+         :date:message-id:dkim-signature;
+        bh=imQtSutlv2T4FRJs3wX0riAEQ8dDpDNZLaDj9MeOMHo=;
+        b=pkHdvKI2ESugPN2asaj8Tke3od9LKVsmEQTXMQhOoGTK+ZHAfjeRwLIn1h+Y/n/q33
+         1HVJywj6cZzjWdd3AK2isJqRaEW5kH4xT1QeGgkeRtOPDeY/WbTeB3QjasOweppo5nU9
+         svXTCaY9yfrUnwzMjzJnM6ZE099kGlhWzFnIkTO5ewbx5D91HvXVuDTUPKvQ5lXixx5K
+         3zoKseIm8S1r4LrKjwDJjpoKe6+HyAHe4wZ4fdVmkifUky0Qxennng+AzOHHxuUhsbyw
+         kTYRXKznhnem5VDmVqSFoAynLmEk6wrN6Sqjf3lLJyk0ZhLLK91PBTl2Lwa9b2j48jD2
+         HpKA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@ilande.co.uk header.s=20220518 header.b=P07XXJ09;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=ilande.co.uk
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a8-20020a05620a16c800b006a2e3f2ba53si136446qkn.534.2022.06.10.08.43.54
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 10 Jun 2022 08:43:54 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=GZEFbW7b;
+       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <kvm-owner@vger.kernel.org>
+Received: from out1.vger.email (out1.vger.email. [2620:137:e000::1:20])
+        by mx.google.com with ESMTP id i7-20020a1709067a4700b0070907293409si105239ejo.249.2022.06.10.13.40.41;
+        Fri, 10 Jun 2022 13:40:41 -0700 (PDT)
+Received-SPF: pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) client-ip=2620:137:e000::1:20;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@ilande.co.uk header.s=20220518 header.b=P07XXJ09;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=ilande.co.uk
-Received: from localhost ([::1]:60134 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nzgni-0001l4-Ey
-	for alex.bennee@linaro.org; Fri, 10 Jun 2022 11:43:54 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:60692)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mark.cave-ayland@ilande.co.uk>)
- id 1nzgnV-0001kc-9H; Fri, 10 Jun 2022 11:43:41 -0400
-Received: from mail.ilande.co.uk ([2001:41c9:1:41f::167]:50338)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mark.cave-ayland@ilande.co.uk>)
- id 1nzgnT-0003VY-BC; Fri, 10 Jun 2022 11:43:40 -0400
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=ilande.co.uk; s=20220518; h=Subject:Content-Transfer-Encoding:Content-Type:
- In-Reply-To:From:References:To:MIME-Version:Date:Message-ID:Sender:Reply-To:
- Cc:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
- Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
- List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=k7WAWElMUSutZpU5tB34oNODW5F74EXaNTjqoxeB6h8=; b=P07XXJ09P6+YJt5gJrYDwzG1PQ
- +GXQ5LM1WT2r7uy2pyphlrhgQW5zYBDzsMOTbv5/um0RwVLhDrampAKVDAUamD3jn3FoubSjjl6SO
- R942cZ8fMmpkR3godqzuRqQUMWXaRmSq5P+koyPS2fGHf2+/K+fFj3gURg4ePay69DnuM47ecWU/A
- ZAm8eGUO7/GfUP/7mBnFXPntt33XE6mIwtspHzp/mAjbIo3nTwNwGr6+xLMO5G3PaY8PR1puJpnTn
- 1jxXXsyUdVlm4dyytVKso+UElS8+4j6wOKjPq6k22MCl0uSYHOM7MvS6LTog7hjWdr2dsfPD66NdC
- om/DWkrUFoFps+VVZCncYtNgfS9BcCIcc5DBI0qhRzqEEyD9qR5C0vbv63C+WHyxpQqdwzYVFlEl+
- Zd4wLA/Bj5xFaQkGOsLqi13tvptvyi4ZtDiSION7QZJW/xXNIi5ZV3h1jmyi8SeygiWZz0NwkVXse
- asphrDQqkqUNByUv6GBky+YCQDkU+JwTks+gkU1C3g5FczHACWG4GeX1Zt+ZXmNz8VlUYvXHhZxGK
- O21b96oeRR3XpJMgUQ8rY+QIwJX9132c2/3Iov4CObDKn+702Eg4nNUWg6ZIG2aBGuUM065GTnte3
- OzRDjl/yuh5SLwLNJAxEsfHvofV7ghp6BQ7GQcImE=;
-Received: from [2a00:23c4:8ba4:e500:b82f:56f9:46d7:80ab]
- by mail.ilande.co.uk with esmtpsa (TLS1.3:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.92) (envelope-from <mark.cave-ayland@ilande.co.uk>)
- id 1nzgmB-0006gG-7v; Fri, 10 Jun 2022 16:42:23 +0100
-Message-ID: <82f46299-34cb-463e-5177-a5c350242421@ilande.co.uk>
-Date: Fri, 10 Jun 2022 16:43:22 +0100
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=GZEFbW7b;
+       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
+        id S1348592AbiFJUkk (ORCPT <rfc822;daniel.diaz@linaro.org>
+        + 3 others); Fri, 10 Jun 2022 16:40:40 -0400
+Received: from lindbergh.monkeyblade.net ([23.128.96.19]:58928 "EHLO
+        lindbergh.monkeyblade.net" rhost-flags-OK-OK-OK-OK) by vger.kernel.org
+        with ESMTP id S1344070AbiFJUki (ORCPT <rfc822;kvm@vger.kernel.org>);
+        Fri, 10 Jun 2022 16:40:38 -0400
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com [170.10.129.124])
+        by lindbergh.monkeyblade.net (Postfix) with ESMTP id 897C6D8D0A
+        for <kvm@vger.kernel.org>; Fri, 10 Jun 2022 13:40:37 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+        s=mimecast20190719; t=1654893636;
+        h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+         to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+         content-transfer-encoding:content-transfer-encoding:
+         in-reply-to:in-reply-to:references:references;
+        bh=imQtSutlv2T4FRJs3wX0riAEQ8dDpDNZLaDj9MeOMHo=;
+        b=GZEFbW7bk/64HnzFKW1VQz/CMHI+ySbT14T7RzWt5PUTPZbgrGMSv2VjHpXTOrcjMTilrT
+        gjeFsBkTr3dZ/MnsDkzOzNKDNrXbd8mukMg/bQ2vMQeTsCVKE+ozED2VeY0WsuseOzHOFx
+        MRrHBTChQLiNLQI+2Kcf0OfeKNnYHtI=
+Received: from mail-qv1-f69.google.com (mail-qv1-f69.google.com
+ [209.85.219.69]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-427-wjCELk1wN9qhgyaxcxrsJA-1; Fri, 10 Jun 2022 16:40:35 -0400
+X-MC-Unique: wjCELk1wN9qhgyaxcxrsJA-1
+Received: by mail-qv1-f69.google.com with SMTP id x18-20020a0ce0d2000000b0046458e0e18bso320110qvk.1
+        for <kvm@vger.kernel.org>; Fri, 10 Jun 2022 13:40:35 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
+         :content-language:to:cc:references:from:in-reply-to
+         :content-transfer-encoding;
+        bh=imQtSutlv2T4FRJs3wX0riAEQ8dDpDNZLaDj9MeOMHo=;
+        b=KFWqPkx/rKolyZvnEnFRm5rcP8n20DmUGJpevD47pRvc8slekmxI9sx4ObYrkuW9U6
+         fAXPMkQgA0QBT6D/S7wcaAeW3zajTZMUUgONmFSdyI2aXK6vSOWmv3cgwxSv8bayHRB6
+         UjRKOTNmZM4KpxijZSiem/lDeg+4wVqXSQ8jxj0uj9qUwsDzHQyRf03MfF4icHAGAavf
+         p7pz5DVVjtriJBNB/i5iv6x6b2nqQNrm4QpXJlK1G7Ev9eR2tiI+niT7nuyWvO9br3EW
+         F/qGug/R2Y+1Oorpn5M2jYgdn60nzb9rPm2Kr2r8qRFFoDbaTf3oZzcZ3eacw9driFjA
+         pVPg==
+X-Gm-Message-State: AOAM5323r59kpGNXEQTt1+AwiLdWbOdq7u1EY0Mlw/+A2tMl3gkCNa6e
+        26qQW/VAwcd8R8nUOFYYBtxmmMLSWLXbeSi/JzX501epID+vWzxw7puYXCenSy5whDzNHXbNerb
+        dC4qFcUjSwwdq
+X-Received: by 2002:a37:42d5:0:b0:6a7:361:e583 with SMTP id p204-20020a3742d5000000b006a70361e583mr10230177qka.514.1654893634395;
+        Fri, 10 Jun 2022 13:40:34 -0700 (PDT)
+X-Received: by 2002:a37:42d5:0:b0:6a7:361:e583 with SMTP id p204-20020a3742d5000000b006a70361e583mr10230163qka.514.1654893634003;
+        Fri, 10 Jun 2022 13:40:34 -0700 (PDT)
+Received: from ?IPV6:2a01:e0a:59e:9d80:527b:9dff:feef:3874? ([2a01:e0a:59e:9d80:527b:9dff:feef:3874])
+        by smtp.gmail.com with ESMTPSA id u21-20020ac858d5000000b00304e8938800sm57230qta.96.2022.06.10.13.40.31
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Fri, 10 Jun 2022 13:40:33 -0700 (PDT)
+Message-ID: <4bb7b5e4-ceb4-d2d8-e03a-f7059e5158d6@redhat.com>
+Date:   Fri, 10 Jun 2022 22:40:30 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.10.0
+ Thunderbird/91.8.0
+Subject: Re: [PATCH RFC 0/2] arm: enable MTE for QEMU + kvm
 Content-Language: en-US
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
- richard.henderson@linaro.org, deller@gmx.de, mst@redhat.com,
- pbonzini@redhat.com, peter.maydell@linaro.org, hpoussin@reactos.org,
- aleksandar.rikalo@syrmia.com, jiaxun.yang@flygoat.com, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
-References: <20220522181836.864-1-mark.cave-ayland@ilande.co.uk>
- <9608d355-8582-69e0-50ee-de48e0ef561f@ilande.co.uk>
- <aee30abd-bfad-d023-ae38-ad1600b02016@amsat.org>
-From: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
-In-Reply-To: <aee30abd-bfad-d023-ae38-ad1600b02016@amsat.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-SA-Exim-Connect-IP: 2a00:23c4:8ba4:e500:b82f:56f9:46d7:80ab
-X-SA-Exim-Mail-From: mark.cave-ayland@ilande.co.uk
-Subject: Re: [PATCH 00/50] PS2 device QOMification - part 1
-X-SA-Exim-Version: 4.2.1 (built Wed, 08 May 2019 21:11:16 +0000)
-X-SA-Exim-Scanned: Yes (on mail.ilande.co.uk)
-Received-SPF: pass client-ip=2001:41c9:1:41f::167;
- envelope-from=mark.cave-ayland@ilande.co.uk; helo=mail.ilande.co.uk
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: r/ZJMM9oAJAQ
+To:     Cornelia Huck <cohuck@redhat.com>,
+        Peter Maydell <peter.maydell@linaro.org>,
+        Thomas Huth <thuth@redhat.com>,
+        Laurent Vivier <lvivier@redhat.com>
+Cc:     Andrew Jones <drjones@redhat.com>, qemu-arm@nongnu.org,
+        qemu-devel@nongnu.org, kvm@vger.kernel.org
+References: <20220512131146.78457-1-cohuck@redhat.com>
+From:   Eric Auger <eauger@redhat.com>
+In-Reply-To: <20220512131146.78457-1-cohuck@redhat.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+X-Spam-Status: No, score=-4.5 required=5.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+        DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,NICE_REPLY_A,
+        RCVD_IN_DNSWL_NONE,SPF_HELO_NONE,SPF_NONE,T_SCC_BODY_TEXT_LINE
+        autolearn=ham autolearn_force=no version=3.4.6
+X-Spam-Checker-Version: SpamAssassin 3.4.6 (2021-04-09) on
+        lindbergh.monkeyblade.net
+Precedence: bulk
+List-ID: <kvm.vger.kernel.org>
+X-Mailing-List: kvm@vger.kernel.org
+X-TUID: NH/hhZBuxj1v
 
-On 10/06/2022 16:35, Philippe Mathieu-Daudé wrote:
+Hi Connie,
 
-> On 7/6/22 17:54, Mark Cave-Ayland wrote:
->> On 22/05/2022 19:17, Mark Cave-Ayland wrote:
->>
->>> This series came about when looking at improving the LASI PS2 device for
->>> the HPPA machine: there were improvements that I was keen to make, but
->>> was restricted because the PS2 device(s) weren't QOMified.
->>>
->>> Trying to do everything in a single patchset would be a very large series
->>> indeed, so here is part 1 of the series which does the basic QOMification
->>> process and consists of:
->>>
->>> - QOMifying the basic PS2, PS2 keyboard and PS2 mouse types
->>>
->>> - Moving any functionality that exists in a global device init function
->>>    directly into the relevant device, so that all device behaviour is
->>>    configured using qdev properties and QOM
->>>
->>> - Introducing a new I8042_MMIO type for use by the MIPS magnum machine
->>>
->>> - Switch all PS2 devices to use qdev gpios for IRQs instead of using the
->>>    update_irq() callback function along with the update_arg opaque
->>>
->>> Once this work has been done, a follow-up part 2 series will finish the
->>> remainder of the work which involves i) improving the QOM object model
->>> now QOMification is complete and ii) removing the legacy global device
->>> init functions for PS2 and related devices.
->>>
->>> Testing for this series has comprised of booting a machine with each type
->>> of PS2 device and confirming that i) the machine responds to keypresses
->>> when using a graphical console and ii) completing a successful migration
->>> from a machine with this series applies back to a machine running latest
->>> git master. The test machines I used were:
->>>
->>> - qemu-system-x86_64 -M pc for the I8042 device
->>> - qemu-system-hppa for the LASIPS2 device
->>> - qemu-system-arm -M versatilepb for the PL050 device
->>> - qemu-system-mips64el -M magnum for the I8042_MMIO device
->>>
->>> Finally the QOM tree changes caused by QOMification of the PS2 devices
->>> trigger a failure due to a bug in the bios-tables-test qtest for subtest
->>> /x86_64/acpi/q35/viot. This can be fixed by applying the series at
->>> https://lists.gnu.org/archive/html/qemu-devel/2022-05/msg04266.html
->>> "hw/acpi/viot: generate stable VIOT ACPI tables" first.
->>>
->>> Signed-off-by: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
->>>
->>>
->>> Mark Cave-Ayland (50):
->>>    ps2: checkpatch fixes
->>>    ps2: QOMify PS2State
->>>    ps2: QOMify PS2KbdState
->>>    ps2: QOMify PS2MouseState
->>>    ps2: move QOM type definitions from ps2.c to ps2.h
->>>    ps2: improve function prototypes in ps2.c and ps2.h
->>>    ps2: introduce PS2DeviceClass
->>>    ps2: implement ps2_reset() for the PS2_DEVICE QOM type based upon
->>>      ps2_common_reset()
->>>    ps2: remove duplicate setting of scancode_set in ps2_kbd_init()
->>>    ps2: implement ps2_kbd_realize() and use it to register
->>>      ps2_keyboard_handler
->>>    ps2: implement ps2_mouse_realize() and use it to register
->>>      ps2_mouse_handler
->>>    ps2: don't use vmstate_register() in ps2_kbd_init()
->>>    ps2: don't use vmstate_register() in ps2_mouse_init()
->>>    pl050: checkpatch fixes
->>>    pl050: split pl050_update_irq() into separate pl050_set_irq() and
->>>      pl050_update_irq() functions
->>>    lasips2: spacing fixes
->>>    lasips2: rename ps2dev_update_irq() to lasips2_port_set_irq()
->>>    pckbd: checkpatch fixes
->>>    pckbd: move KBDState from pckbd.c to i8042.h
->>>    pckbd: move ISAKBDState from pckbd.c to i8042.h
+On 5/12/22 15:11, Cornelia Huck wrote:
+> This series enables MTE for kvm guests, if the kernel supports it.
+> Lightly tested while running under the simulator (the arm64/mte/
+> kselftests pass... if you wait patiently :)
 > 
->> Ping? I've had an R-B from Phil for patches 1-20 along with a Tested-by from Helge 
->> for the entire series, but that still leaves the last 30 patches unreviewed...
+> A new cpu property "mte" (defaulting to on if possible) is introduced;
+> for tcg, you still need to enable mte at the machine as well.
+isn't the property set to off by default when kvm is enabled (because of
+the migration blocker).
+
+Eric
 > 
-> I'm queuing patches 1-20 (fixing the typo in patch 9) via mips-next,
-> and will review v2.
-
-Hi Phil,
-
-I've also got a local fix that needs to be squashed into one of these early patches, 
-so could you drop this series for now? As well as this extra fix (thanks Asan!) it 
-will make it easier to rebase and update the series according to Peter's review comments.
-
-
-ATB,
-
-Mark.
+> I've hacked up some very basic qtests; not entirely sure if I'm going
+> about it the right way.
+> 
+> Some things to look out for:
+> - Migration is not (yet) supported. I added a migration blocker if we
+>   enable mte in the kvm case. AFAIK, there isn't any hardware available
+>   yet that allows mte + kvm to be used (I think the latest Gravitons
+>   implement mte, but no bare metal instances seem to be available), so
+>   that should not have any impact on real world usage.
+> - I'm not at all sure about the interaction between the virt machine 'mte'
+>   prop and the cpu 'mte' prop. To keep things working with tcg as before,
+>   a not-specified mte for the cpu should simply give us a guest without
+>   mte if it wasn't specified for the machine. However, mte on the cpu
+>   without mte on the machine should probably generate an error, but I'm not
+>   sure how to detect that without breaking the silent downgrade to preserve
+>   existing behaviour.
+> - As I'm still new to arm, please don't assume that I know what I'm doing :)
+> 
+> 
+> Cornelia Huck (2):
+>   arm/kvm: enable MTE if available
+>   qtests/arm: add some mte tests
+> 
+>  target/arm/cpu.c               | 18 +++-----
+>  target/arm/cpu.h               |  4 ++
+>  target/arm/cpu64.c             | 78 ++++++++++++++++++++++++++++++++++
+>  target/arm/kvm64.c             |  5 +++
+>  target/arm/kvm_arm.h           | 12 ++++++
+>  target/arm/monitor.c           |  1 +
+>  tests/qtest/arm-cpu-features.c | 31 ++++++++++++++
+>  7 files changed, 137 insertions(+), 12 deletions(-)
+> 

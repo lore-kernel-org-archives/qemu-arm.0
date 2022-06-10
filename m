@@ -1,119 +1,109 @@
-Received: by 2002:a19:ee12:0:0:0:0:0 with SMTP id g18csp1216009lfb;
-        Fri, 10 Jun 2022 08:36:04 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJznaLndyvhy8x5yAokrJ8LkX1z4cwDjb/b/FVE8qIfeMcX/gMl9S4Az6TZwP01ysfEUisU3
-X-Received: by 2002:a37:b785:0:b0:6a6:bff2:24e1 with SMTP id h127-20020a37b785000000b006a6bff224e1mr17923804qkf.194.1654875364070;
-        Fri, 10 Jun 2022 08:36:04 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1654875364; cv=none;
+Received: by 2002:a19:ee12:0:0:0:0:0 with SMTP id g18csp1221080lfb;
+        Fri, 10 Jun 2022 08:43:55 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJy/GUgZ5qjucnQiYSWQjUFn8XxXmzoydLWg0fQqZPq/2DuKfJDNVC7pEDXVIAXN8cToJVI7
+X-Received: by 2002:a05:622a:20e:b0:304:fde3:67a6 with SMTP id b14-20020a05622a020e00b00304fde367a6mr14811042qtx.294.1654875834983;
+        Fri, 10 Jun 2022 08:43:54 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1654875834; cv=none;
         d=google.com; s=arc-20160816;
-        b=c72XpEIBxeoeGHapKMF+FnSrSnUI4Hf9viKlDi60nzIov4UksPAnrMzYHzkJYu5Yyo
-         rJxAlZ28iFQR50seYiNpGdQbHCUZjtIx1YxID7nGFV1CEwWFN8CmnzfAl5uIwmGJIfI6
-         1Ob7iDFMVjKKfCWRsE6CIHsD1ibublUESe1nmr0teFolbk4n6LIMvlV8t2chshIp6bDS
-         wk6kncIgaXS38xPiVouFJhLlmYnst/QKzF7K+luqAt4EixR17LgXx3gu2eaa8PEZPnMX
-         JVvHJ7epb+yMUKug9lxLogi6PwLolm/tVU9wJo7LLkJRt7M8AKEaHluQpihcfE0cIqAb
-         ODWA==
+        b=mC5THzmQHHGEaGZcrN4jON1yGXINtYYpg71jo7kB30wof+uTvIzvFIbLWtdjLoxek7
+         9Lt9dMtoCOY1ytT9zGF+uX9UuCpwIvoH7qJ4JbX50Pf8KTN6nhg13/6XUW+R8EJXkD8D
+         OPZEDVbLULwR0lEnvrmz8+nmoXlNevzxGU1KUpypKd8J4azbKaXB+rITr+/iiNaoHNXg
+         qZmPdOavYA5DYiqPviY2eLPt4hgiLPrda8eFW9Wzmgy4bJeUbU7O5ATNgmFyWDq1RVXe
+         MGrnupE3pSPdHSXr6ARGO+IRLVwWZ+R80plgDU2kgcmWPGaiW1ohUhTszwApwFVCjpcg
+         /6Jw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=from:reply-to:sender:errors-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:in-reply-to:references:to
-         :content-language:subject:user-agent:mime-version:date:message-id
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:in-reply-to:from:references:to
+         :content-language:user-agent:mime-version:date:message-id
          :dkim-signature;
-        bh=IVRhQTQWOalqB/HHm1HM0Yh8KLRY+8/QMzEpkCNeFg0=;
-        b=gwE0JiPN7hAT6AWF5VRY4+eUBGxPsj3O4YgtFaovIUqfQ0B7+37GnWwyuxfcJl5li9
-         /GEV6s5loUdq5TAcGqGwvcGpe8YsihDjNwyKpQyX3w7c1aG3SIPN8A0wQQ0LYQEuyonJ
-         0nz0TAemCSrWrJKZsBM8lTXHNA08lN81Y7je1J0rz3hBSeFpJ2QWmLOWun7odzIAfUPZ
-         n09DTl1hJMYaMw06X8CtG+gabEOsr1FeRto7I2jnXvzp6d5upePG5xmFREx7yrQejusF
-         r4qrHe0K4UUBYcDGRo5sg5EQgiszX3mcq/PfZNT0/Jk+Y4jxft6J+3lJrjUI73W5dRcm
-         /2TQ==
+        bh=k7WAWElMUSutZpU5tB34oNODW5F74EXaNTjqoxeB6h8=;
+        b=ZLmm3DlQUAfStLp6uFsdXYeSf0BSVHoaeuhgnlxNSl/xXw9wnr9JgBKH6WqN+0MiF6
+         y4B+AOxXHiQ2+u9mwxjJBxxUy/rAs2gtjd/y5qeY2MQeCLKEVwMF1I+uGhcDL+C5rGH8
+         pXDyg7PbdUJYUElvHU/Nlm5qNUCbnzLIHR+751R1a54Adqa8FvFCLveuph7nZNdpgY/1
+         bjoxK/zStPXR6wZ1xSnrbdsscZpS0iVFMK7tfolFBym1QisljtgscJUKADu/2CLy7uLv
+         txQSBfGcNvGoeaXvYFmIMUDEytYt0BSMzFBLjQhiPwVwVP6j80Npt9i5qwJIrXVxQrIk
+         ZFCg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20210112 header.b=g2wYJEfW;
+       dkim=fail header.i=@ilande.co.uk header.s=20220518 header.b=P07XXJ09;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=ilande.co.uk
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id b9-20020a05622a020900b00304eb1ad0f6si9004779qtx.316.2022.06.10.08.36.03
+        by mx.google.com with ESMTPS id a8-20020a05620a16c800b006a2e3f2ba53si136446qkn.534.2022.06.10.08.43.54
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 10 Jun 2022 08:36:04 -0700 (PDT)
+        Fri, 10 Jun 2022 08:43:54 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20210112 header.b=g2wYJEfW;
+       dkim=fail header.i=@ilande.co.uk header.s=20220518 header.b=P07XXJ09;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
-Received: from localhost ([::1]:54224 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=ilande.co.uk
+Received: from localhost ([::1]:60134 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nzgg7-0003sQ-An
-	for alex.bennee@linaro.org; Fri, 10 Jun 2022 11:36:03 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:59544)
+	id 1nzgni-0001l4-Ey
+	for alex.bennee@linaro.org; Fri, 10 Jun 2022 11:43:54 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:60692)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1nzgfu-0003qo-U9; Fri, 10 Jun 2022 11:35:50 -0400
-Received: from mail-pg1-x530.google.com ([2607:f8b0:4864:20::530]:37419)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1nzgft-0002SM-8O; Fri, 10 Jun 2022 11:35:50 -0400
-Received: by mail-pg1-x530.google.com with SMTP id h192so18316076pgc.4;
- Fri, 10 Jun 2022 08:35:48 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=sender:message-id:date:mime-version:user-agent:subject
- :content-language:to:references:from:in-reply-to
- :content-transfer-encoding;
- bh=IVRhQTQWOalqB/HHm1HM0Yh8KLRY+8/QMzEpkCNeFg0=;
- b=g2wYJEfWUY0N7ttSQc97IHYk3WFmhLfK8gLTHx0IUjrKrhMBp5QcIsUaF+OqQWBCqD
- reo1ZGRz0FcUApEqju89jWqne6vrV8ti8Cyz6gZO6i0q0h14jZW9SFcKbbeFPviDWgbX
- 9bVn20Xp02wd6jRT1Dcj8Uq8SeYVj8KWhohYPrZ6TifitIs3+tR8X3LZW/EcfQ6YQl0f
- /exnhRJwsuwG/puEFjaTBMXeBFO/mQMaz7sv87b+bp3lu2N1PZpLsQ0pvxNNkebwCLed
- 2gYJV2lxfqqnMoRa1OBDGMRa7D3iTwPqCEB4DVD3qN7BphVpBPwVbe67w+64weamx8Je
- GH5g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:sender:message-id:date:mime-version:user-agent
- :subject:content-language:to:references:from:in-reply-to
- :content-transfer-encoding;
- bh=IVRhQTQWOalqB/HHm1HM0Yh8KLRY+8/QMzEpkCNeFg0=;
- b=kCZ+FIfnApJImdpf25Vl323Pz3j3boykJ2JCk8JkgpP4EQgp3KpEaX1hFORDMqZUrS
- KAxt3JM7NVhyMcAQd5xQwI0qB0DjnZwBAs/Xohg7C1dUGgKLXzdsImeYFo9aGPsidR6k
- 4SuvSH5LcvQCsqpZbXLQ1Mm14w1pBR/uOoINJnYaD016K58JKy79nOsFXgGvl8edSIiX
- se3XRWSHwwnLZd8t8ilqZALCiD8/zYs4YqLlrpAzU3Dvqz3y5vOAjjc7rX6xz4wHWVsn
- +rfSBF9dt9iv4Bj/veu+aqDTAILrOVqRt+G1pvBEyVIWfNOltQMeXX5P+MADfYNHf7Pf
- 6/Nw==
-X-Gm-Message-State: AOAM531EFiwMiNRu+tsNpmc0IWYaG8CerM5hTHq3kf8gA0xneru0lpir
- C7zkZpKtMJ0NIbCUJuxQUsc=
-X-Received: by 2002:a63:8a42:0:b0:3fc:f8b5:291f with SMTP id
- y63-20020a638a42000000b003fcf8b5291fmr37254465pgd.550.1654875347559; 
- Fri, 10 Jun 2022 08:35:47 -0700 (PDT)
-Received: from [192.168.1.115] ([185.126.107.38])
- by smtp.gmail.com with ESMTPSA id
- i1-20020a17090a058100b001e2fed48f48sm1873598pji.41.2022.06.10.08.35.44
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 10 Jun 2022 08:35:47 -0700 (PDT)
-Message-ID: <aee30abd-bfad-d023-ae38-ad1600b02016@amsat.org>
-Date: Fri, 10 Jun 2022 17:35:41 +0200
+ (Exim 4.90_1) (envelope-from <mark.cave-ayland@ilande.co.uk>)
+ id 1nzgnV-0001kc-9H; Fri, 10 Jun 2022 11:43:41 -0400
+Received: from mail.ilande.co.uk ([2001:41c9:1:41f::167]:50338)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <mark.cave-ayland@ilande.co.uk>)
+ id 1nzgnT-0003VY-BC; Fri, 10 Jun 2022 11:43:40 -0400
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+ d=ilande.co.uk; s=20220518; h=Subject:Content-Transfer-Encoding:Content-Type:
+ In-Reply-To:From:References:To:MIME-Version:Date:Message-ID:Sender:Reply-To:
+ Cc:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+ Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
+ List-Subscribe:List-Post:List-Owner:List-Archive;
+ bh=k7WAWElMUSutZpU5tB34oNODW5F74EXaNTjqoxeB6h8=; b=P07XXJ09P6+YJt5gJrYDwzG1PQ
+ +GXQ5LM1WT2r7uy2pyphlrhgQW5zYBDzsMOTbv5/um0RwVLhDrampAKVDAUamD3jn3FoubSjjl6SO
+ R942cZ8fMmpkR3godqzuRqQUMWXaRmSq5P+koyPS2fGHf2+/K+fFj3gURg4ePay69DnuM47ecWU/A
+ ZAm8eGUO7/GfUP/7mBnFXPntt33XE6mIwtspHzp/mAjbIo3nTwNwGr6+xLMO5G3PaY8PR1puJpnTn
+ 1jxXXsyUdVlm4dyytVKso+UElS8+4j6wOKjPq6k22MCl0uSYHOM7MvS6LTog7hjWdr2dsfPD66NdC
+ om/DWkrUFoFps+VVZCncYtNgfS9BcCIcc5DBI0qhRzqEEyD9qR5C0vbv63C+WHyxpQqdwzYVFlEl+
+ Zd4wLA/Bj5xFaQkGOsLqi13tvptvyi4ZtDiSION7QZJW/xXNIi5ZV3h1jmyi8SeygiWZz0NwkVXse
+ asphrDQqkqUNByUv6GBky+YCQDkU+JwTks+gkU1C3g5FczHACWG4GeX1Zt+ZXmNz8VlUYvXHhZxGK
+ O21b96oeRR3XpJMgUQ8rY+QIwJX9132c2/3Iov4CObDKn+702Eg4nNUWg6ZIG2aBGuUM065GTnte3
+ OzRDjl/yuh5SLwLNJAxEsfHvofV7ghp6BQ7GQcImE=;
+Received: from [2a00:23c4:8ba4:e500:b82f:56f9:46d7:80ab]
+ by mail.ilande.co.uk with esmtpsa (TLS1.3:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.92) (envelope-from <mark.cave-ayland@ilande.co.uk>)
+ id 1nzgmB-0006gG-7v; Fri, 10 Jun 2022 16:42:23 +0100
+Message-ID: <82f46299-34cb-463e-5177-a5c350242421@ilande.co.uk>
+Date: Fri, 10 Jun 2022 16:43:22 +0100
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:91.0)
- Gecko/20100101 Thunderbird/91.10.0
-Subject: Re: [PATCH 00/50] PS2 device QOMification - part 1
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.10.0
 Content-Language: en-US
-To: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
  richard.henderson@linaro.org, deller@gmx.de, mst@redhat.com,
  pbonzini@redhat.com, peter.maydell@linaro.org, hpoussin@reactos.org,
  aleksandar.rikalo@syrmia.com, jiaxun.yang@flygoat.com, qemu-arm@nongnu.org,
  qemu-devel@nongnu.org
 References: <20220522181836.864-1-mark.cave-ayland@ilande.co.uk>
  <9608d355-8582-69e0-50ee-de48e0ef561f@ilande.co.uk>
-In-Reply-To: <9608d355-8582-69e0-50ee-de48e0ef561f@ilande.co.uk>
+ <aee30abd-bfad-d023-ae38-ad1600b02016@amsat.org>
+From: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
+In-Reply-To: <aee30abd-bfad-d023-ae38-ad1600b02016@amsat.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::530;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-pg1-x530.google.com
-X-Spam_score_int: -14
-X-Spam_score: -1.5
-X-Spam_bar: -
-X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249, NICE_REPLY_A=-0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
+X-SA-Exim-Connect-IP: 2a00:23c4:8ba4:e500:b82f:56f9:46d7:80ab
+X-SA-Exim-Mail-From: mark.cave-ayland@ilande.co.uk
+Subject: Re: [PATCH 00/50] PS2 device QOMification - part 1
+X-SA-Exim-Version: 4.2.1 (built Wed, 08 May 2019 21:11:16 +0000)
+X-SA-Exim-Scanned: Yes (on mail.ilande.co.uk)
+Received-SPF: pass client-ip=2001:41c9:1:41f::167;
+ envelope-from=mark.cave-ayland@ilande.co.uk; helo=mail.ilande.co.uk
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -128,86 +118,96 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Reply-to:  =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-From:  =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= via <qemu-arm@nongnu.org>
-X-TUID: Ibnzd9NEngu1
+X-TUID: r/ZJMM9oAJAQ
 
-On 7/6/22 17:54, Mark Cave-Ayland wrote:
-> On 22/05/2022 19:17, Mark Cave-Ayland wrote:
+On 10/06/2022 16:35, Philippe Mathieu-Daudé wrote:
+
+> On 7/6/22 17:54, Mark Cave-Ayland wrote:
+>> On 22/05/2022 19:17, Mark Cave-Ayland wrote:
+>>
+>>> This series came about when looking at improving the LASI PS2 device for
+>>> the HPPA machine: there were improvements that I was keen to make, but
+>>> was restricted because the PS2 device(s) weren't QOMified.
+>>>
+>>> Trying to do everything in a single patchset would be a very large series
+>>> indeed, so here is part 1 of the series which does the basic QOMification
+>>> process and consists of:
+>>>
+>>> - QOMifying the basic PS2, PS2 keyboard and PS2 mouse types
+>>>
+>>> - Moving any functionality that exists in a global device init function
+>>>    directly into the relevant device, so that all device behaviour is
+>>>    configured using qdev properties and QOM
+>>>
+>>> - Introducing a new I8042_MMIO type for use by the MIPS magnum machine
+>>>
+>>> - Switch all PS2 devices to use qdev gpios for IRQs instead of using the
+>>>    update_irq() callback function along with the update_arg opaque
+>>>
+>>> Once this work has been done, a follow-up part 2 series will finish the
+>>> remainder of the work which involves i) improving the QOM object model
+>>> now QOMification is complete and ii) removing the legacy global device
+>>> init functions for PS2 and related devices.
+>>>
+>>> Testing for this series has comprised of booting a machine with each type
+>>> of PS2 device and confirming that i) the machine responds to keypresses
+>>> when using a graphical console and ii) completing a successful migration
+>>> from a machine with this series applies back to a machine running latest
+>>> git master. The test machines I used were:
+>>>
+>>> - qemu-system-x86_64 -M pc for the I8042 device
+>>> - qemu-system-hppa for the LASIPS2 device
+>>> - qemu-system-arm -M versatilepb for the PL050 device
+>>> - qemu-system-mips64el -M magnum for the I8042_MMIO device
+>>>
+>>> Finally the QOM tree changes caused by QOMification of the PS2 devices
+>>> trigger a failure due to a bug in the bios-tables-test qtest for subtest
+>>> /x86_64/acpi/q35/viot. This can be fixed by applying the series at
+>>> https://lists.gnu.org/archive/html/qemu-devel/2022-05/msg04266.html
+>>> "hw/acpi/viot: generate stable VIOT ACPI tables" first.
+>>>
+>>> Signed-off-by: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
+>>>
+>>>
+>>> Mark Cave-Ayland (50):
+>>>    ps2: checkpatch fixes
+>>>    ps2: QOMify PS2State
+>>>    ps2: QOMify PS2KbdState
+>>>    ps2: QOMify PS2MouseState
+>>>    ps2: move QOM type definitions from ps2.c to ps2.h
+>>>    ps2: improve function prototypes in ps2.c and ps2.h
+>>>    ps2: introduce PS2DeviceClass
+>>>    ps2: implement ps2_reset() for the PS2_DEVICE QOM type based upon
+>>>      ps2_common_reset()
+>>>    ps2: remove duplicate setting of scancode_set in ps2_kbd_init()
+>>>    ps2: implement ps2_kbd_realize() and use it to register
+>>>      ps2_keyboard_handler
+>>>    ps2: implement ps2_mouse_realize() and use it to register
+>>>      ps2_mouse_handler
+>>>    ps2: don't use vmstate_register() in ps2_kbd_init()
+>>>    ps2: don't use vmstate_register() in ps2_mouse_init()
+>>>    pl050: checkpatch fixes
+>>>    pl050: split pl050_update_irq() into separate pl050_set_irq() and
+>>>      pl050_update_irq() functions
+>>>    lasips2: spacing fixes
+>>>    lasips2: rename ps2dev_update_irq() to lasips2_port_set_irq()
+>>>    pckbd: checkpatch fixes
+>>>    pckbd: move KBDState from pckbd.c to i8042.h
+>>>    pckbd: move ISAKBDState from pckbd.c to i8042.h
 > 
->> This series came about when looking at improving the LASI PS2 device for
->> the HPPA machine: there were improvements that I was keen to make, but
->> was restricted because the PS2 device(s) weren't QOMified.
->>
->> Trying to do everything in a single patchset would be a very large series
->> indeed, so here is part 1 of the series which does the basic QOMification
->> process and consists of:
->>
->> - QOMifying the basic PS2, PS2 keyboard and PS2 mouse types
->>
->> - Moving any functionality that exists in a global device init function
->>    directly into the relevant device, so that all device behaviour is
->>    configured using qdev properties and QOM
->>
->> - Introducing a new I8042_MMIO type for use by the MIPS magnum machine
->>
->> - Switch all PS2 devices to use qdev gpios for IRQs instead of using the
->>    update_irq() callback function along with the update_arg opaque
->>
->> Once this work has been done, a follow-up part 2 series will finish the
->> remainder of the work which involves i) improving the QOM object model
->> now QOMification is complete and ii) removing the legacy global device
->> init functions for PS2 and related devices.
->>
->> Testing for this series has comprised of booting a machine with each type
->> of PS2 device and confirming that i) the machine responds to keypresses
->> when using a graphical console and ii) completing a successful migration
->> from a machine with this series applies back to a machine running latest
->> git master. The test machines I used were:
->>
->> - qemu-system-x86_64 -M pc for the I8042 device
->> - qemu-system-hppa for the LASIPS2 device
->> - qemu-system-arm -M versatilepb for the PL050 device
->> - qemu-system-mips64el -M magnum for the I8042_MMIO device
->>
->> Finally the QOM tree changes caused by QOMification of the PS2 devices
->> trigger a failure due to a bug in the bios-tables-test qtest for subtest
->> /x86_64/acpi/q35/viot. This can be fixed by applying the series at
->> https://lists.gnu.org/archive/html/qemu-devel/2022-05/msg04266.html
->> "hw/acpi/viot: generate stable VIOT ACPI tables" first.
->>
->> Signed-off-by: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
->>
->>
->> Mark Cave-Ayland (50):
->>    ps2: checkpatch fixes
->>    ps2: QOMify PS2State
->>    ps2: QOMify PS2KbdState
->>    ps2: QOMify PS2MouseState
->>    ps2: move QOM type definitions from ps2.c to ps2.h
->>    ps2: improve function prototypes in ps2.c and ps2.h
->>    ps2: introduce PS2DeviceClass
->>    ps2: implement ps2_reset() for the PS2_DEVICE QOM type based upon
->>      ps2_common_reset()
->>    ps2: remove duplicate setting of scancode_set in ps2_kbd_init()
->>    ps2: implement ps2_kbd_realize() and use it to register
->>      ps2_keyboard_handler
->>    ps2: implement ps2_mouse_realize() and use it to register
->>      ps2_mouse_handler
->>    ps2: don't use vmstate_register() in ps2_kbd_init()
->>    ps2: don't use vmstate_register() in ps2_mouse_init()
->>    pl050: checkpatch fixes
->>    pl050: split pl050_update_irq() into separate pl050_set_irq() and
->>      pl050_update_irq() functions
->>    lasips2: spacing fixes
->>    lasips2: rename ps2dev_update_irq() to lasips2_port_set_irq()
->>    pckbd: checkpatch fixes
->>    pckbd: move KBDState from pckbd.c to i8042.h
->>    pckbd: move ISAKBDState from pckbd.c to i8042.h
+>> Ping? I've had an R-B from Phil for patches 1-20 along with a Tested-by from Helge 
+>> for the entire series, but that still leaves the last 30 patches unreviewed...
+> 
+> I'm queuing patches 1-20 (fixing the typo in patch 9) via mips-next,
+> and will review v2.
 
-> Ping? I've had an R-B from Phil for patches 1-20 along with a Tested-by 
-> from Helge for the entire series, but that still leaves the last 30 
-> patches unreviewed...
+Hi Phil,
 
-I'm queuing patches 1-20 (fixing the typo in patch 9) via mips-next,
-and will review v2.
+I've also got a local fix that needs to be squashed into one of these early patches, 
+so could you drop this series for now? As well as this extra fix (thanks Asan!) it 
+will make it easier to rebase and update the series according to Peter's review comments.
+
+
+ATB,
+
+Mark.

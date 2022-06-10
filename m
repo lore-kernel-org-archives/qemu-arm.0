@@ -1,159 +1,401 @@
-Received: by 2002:a19:ee12:0:0:0:0:0 with SMTP id g18csp1233342lfb;
-        Fri, 10 Jun 2022 09:03:33 -0700 (PDT)
-X-Received: by 2002:a0d:cb17:0:b0:313:caaa:7839 with SMTP id n23-20020a0dcb17000000b00313caaa7839mr1755612ywd.10.1654877013261;
-        Fri, 10 Jun 2022 09:03:33 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1654877013; cv=none;
+Received: by 2002:a19:ee12:0:0:0:0:0 with SMTP id g18csp1383306lfb;
+        Fri, 10 Jun 2022 13:48:48 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJy84fdPE2AtPlNruymqtI0ZuetdZWU5Bext0ohcEmn2ShVOEBC4GzhaQRrlug+6VLFilKal
+X-Received: by 2002:a63:8048:0:b0:3fc:8c4e:29ae with SMTP id j69-20020a638048000000b003fc8c4e29aemr40998658pgd.295.1654894128237;
+        Fri, 10 Jun 2022 13:48:48 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1654894128; cv=none;
         d=google.com; s=arc-20160816;
-        b=ABsxmr7sXWMH9dDH9+zI7uhToo2Bv4kvg9i5ANO5zpW47MyCQUuxW2YS/Yq4rH9T02
-         geq49EJ4wF3Vtut5MP2YNDGWDbOVlMtWklzA4KhpH6LrMB8QU5kt01AnsYmpMukafOgg
-         56NL1l1C9CTuslwEfQwgT96LWfCtpwbmukiSlso+7ExR7XPNTxI1Pitl591IMyY8UQTb
-         xiZsuVfG4yaiJPgJ3yZc6ypTZXZBOAL+NWY8zDfsLqh9rXIjpr6SZkbGPsyyG03HHlSk
-         /k7BlZ6ZyB+MH0O6B6LCrzJGEi/GsvMGSgrleEusKSaTXG6n45HqYD780hVEdwnVLm0D
-         nBUg==
+        b=mb70pj4pmriHYDf6evA/dXIt3phaCffBl8LzBpA8RvbeHX3EWCEexJHsAxcjOqwaDY
+         nSlVM5MCuZM0M5pVefZozEmtKZGrhVUgLRHXL1h6enGqz2hlVIKnmZOXYXj00XzI8rFc
+         xsGx8T5n+85zlfniPK50LeCWd6dWAz7yFQFLLg7Q3v7HV7SZWbsiAF0uoC2ec0CM/Rnf
+         KWhXvlMt2Db722DqKYAK1reFX+8slPam1zpAnRfQVS9vY/lAb6PoItGtOUw8sM1eV3rl
+         k+nANcMQ09KA0huaHc60zOUpAgbgqMPlxDsUmyILpKh7XiQaU6e5rTJgPqHMt3wz1hh6
+         Aijw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=tDLHMZIPgdmwO9gpUPBaTey1FMyJ0vxqN5vtllRnXt4=;
-        b=j/OzkKhHpVaBguUUWfJL4xtasXMCNfTZoEW7BtxKVETo5JGfaw0U3pkdWVjAXgLeGb
-         iP66E0o2ddUtY6KjNp2PHR9rqZdQCQFMUyeV71XBZk2JMNSxL/2gp8/gQCEN3mJK1oT2
-         MNqRYZihLtY1c5vbJmc1l9653OU1ez1hsTQtzaAs+c4OsG5jReQ3xS7oxP/m7fh2rsz6
-         z7wyAPtF/JwRk3qG7iRIdeuwFLJT4oOHUQdJ5B2entnSMxuRk6Ja+8G3hc75YH42JFnr
-         YtfWjHzIug09PT0XoaqYEBQw/EQn0jy6Tz3Y9hO83PorEazBL/BmnqQfYW1kKiCQbLYD
-         Kwtw==
+        h=list-id:precedence:content-transfer-encoding:in-reply-to:from
+         :references:cc:to:content-language:subject:user-agent:mime-version
+         :date:message-id:dkim-signature;
+        bh=tG6/YMPLKbLdglovMiXh4lWEYt8RMVI/N8rDwxGKhDM=;
+        b=F1Rdn5iBXzcQ1I95pnh5KI5npq/DqJtfZhd5fGbHLvQr4jGAa/XZoP8h7TR9a8AvDr
+         5n+Ktd53n7fnM4xUeIyNyEoFt06HPgKcolzaxKkCMWT6kV4qXi7MUy33M2tVwRX/sBv/
+         ROoYdB643I1KJ0pFUape9e4fFec8RIfEKmzR9DeIS4Cuu1DPU0PB7tG61ksB4gDA+U+r
+         XkNuXvuHpeOJ6kmcS49AL1mCVK46adkCURRRbuBJNxOQDy4rvFpb0oNMuwCi+DPFN59N
+         4cnsyKZVkOeZvGh07zyJOLQ0OqlXEf3GMB8UhZAZTYqJ9FXHT+lxagM0WLfB5MOt5Je0
+         UbNg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=k8G75+Vc;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <peter.maydell@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id e7-20020a811e07000000b003132da32f56sor4282853ywe.37.2022.06.10.09.03.32
-        for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Fri, 10 Jun 2022 09:03:33 -0700 (PDT)
-Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=hpD63t0V;
+       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <kvm-owner@vger.kernel.org>
+Received: from out1.vger.email (out1.vger.email. [2620:137:e000::1:20])
+        by mx.google.com with ESMTP id y18-20020a1709029b9200b00158eabc46casi300258plp.604.2022.06.10.13.48.47;
+        Fri, 10 Jun 2022 13:48:48 -0700 (PDT)
+Received-SPF: pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) client-ip=2620:137:e000::1:20;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=k8G75+Vc;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-         :cc:content-transfer-encoding;
-        bh=tDLHMZIPgdmwO9gpUPBaTey1FMyJ0vxqN5vtllRnXt4=;
-        b=k8G75+Vc5IwNjUutMandQoLQ/RE3jisXUbU6OaKGdIoqSuCpiZ5KN68TXD3LTJgwFV
-         dnCv282szREWA7HFk8gRQ9wQQPHUYPt1bzb6Gqo5XYF7dqVoaAhuXvRGReySGlNFdQMR
-         iYw6Vd9rPFOzAba4fV1chCbYRMkDbbKyomNiZcVjH9gU5alP+Iq0P6ED+VzbdMAjB6LR
-         XbJg6LvUtYJyd9qBGNvYinRfSo0/xKehUQ2Fd6EiIImKjMZEEIa53q67M/wLGIvBLqXS
-         bAH/kM/baJ/Tx1f7tMZPLpdXsuyQw2wzsJj0NjD1hxKf/xq9iJsnc3ryCGkWTiFFrXfn
-         ZhCg==
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=hpD63t0V;
+       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
+        id S1347415AbiFJUsq (ORCPT <rfc822;daniel.diaz@linaro.org>
+        + 3 others); Fri, 10 Jun 2022 16:48:46 -0400
+Received: from lindbergh.monkeyblade.net ([23.128.96.19]:39754 "EHLO
+        lindbergh.monkeyblade.net" rhost-flags-OK-OK-OK-OK) by vger.kernel.org
+        with ESMTP id S1347010AbiFJUso (ORCPT <rfc822;kvm@vger.kernel.org>);
+        Fri, 10 Jun 2022 16:48:44 -0400
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com [170.10.133.124])
+        by lindbergh.monkeyblade.net (Postfix) with ESMTP id 8A9E117E15
+        for <kvm@vger.kernel.org>; Fri, 10 Jun 2022 13:48:41 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+        s=mimecast20190719; t=1654894120;
+        h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+         to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+         content-transfer-encoding:content-transfer-encoding:
+         in-reply-to:in-reply-to:references:references;
+        bh=tG6/YMPLKbLdglovMiXh4lWEYt8RMVI/N8rDwxGKhDM=;
+        b=hpD63t0VTkvsspD9YNzkM3GKlD65D7LGXTSyj+Jqv6zUWTMK33mx98irTm218eq2inVJwE
+        Xod/MPg3AI7IQaAExzo7rYfvPNCFzTQwWLXaMjaPuYyA0RCsOB7IYkle/AK6yWsvZfRBbj
+        Vqqu429RtcqnO7I++0BQLlgzQEL5DN0=
+Received: from mail-qv1-f72.google.com (mail-qv1-f72.google.com
+ [209.85.219.72]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-114-3lbWaELXPiK1MclTe6VJJA-1; Fri, 10 Jun 2022 16:48:39 -0400
+X-MC-Unique: 3lbWaELXPiK1MclTe6VJJA-1
+Received: by mail-qv1-f72.google.com with SMTP id j2-20020a0cfd42000000b0045ad9cba5deso318618qvs.5
+        for <kvm@vger.kernel.org>; Fri, 10 Jun 2022 13:48:39 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-         :message-id:subject:to:cc:content-transfer-encoding;
-        bh=tDLHMZIPgdmwO9gpUPBaTey1FMyJ0vxqN5vtllRnXt4=;
-        b=XdkQvL5UgfS49h36GwjtIfye3BmGeyjFttL9s3IccSCS/NCx7Hc8BqpJz3TsXpeTC5
-         eWzKXVvx6BHW3N4mjcTv5skzotOOcxzDe7c/HkEMtVTrB8sLSJfydJARGxdUsuWlXsjB
-         2HhDvbH56wYI6t8rnktwX1OqN+v4nuJLkKKGfOGV+Gig7HDcMz7ftw/CmzuXU2KLM7gp
-         N+SmBrrxpB57OigBMtgJXRZ6sEZ11yypmGI5/jUkwxW30JpMUfg11aQTYJPe6uLOehwt
-         /fTYcle7DmC7cFBwMMuHPs4z+rWnnsRY4mvEb/XlP4ZKatqAm6NhqXLERlYpUWl5DTfw
-         I0hg==
-X-Gm-Message-State: AOAM533p+UGTiU6OYQuuIrepbohrpcREii75mP/BtfAYHovm4TddN1wZ
-	FmoKTZI+fzZU8JA5khLaGfk2daaThyaMQKSayw8FJHg4zFf+3Q==
-X-Google-Smtp-Source: ABdhPJw0zA9LzuYrUvgXHQ/BcgMM7Issa0TwnTGmisaRf97DbH8nHNl0S3rxyxjPee9Uj9dJVyZG81WTGOC/yp8POFc=
-X-Received: by 2002:a05:690c:808:b0:30c:4f5c:b319 with SMTP id
- bx8-20020a05690c080800b0030c4f5cb319mr47584116ywb.64.1654877012686; Fri, 10
- Jun 2022 09:03:32 -0700 (PDT)
+        h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
+         :content-language:to:cc:references:from:in-reply-to
+         :content-transfer-encoding;
+        bh=tG6/YMPLKbLdglovMiXh4lWEYt8RMVI/N8rDwxGKhDM=;
+        b=MGtyYcMkL3zL3zjCXJmkBdq9NgNvjspvIPL2N+BpmIUH8YYG+4B8GB185YBx/Vmw/t
+         mg0fWvwXo5jNcfObPZRQvEuQHmZgEt/vVQPeEqnR0AUSWPq6yPRYSWXjnuwLdVxpK8uc
+         xVKVMW3n2cDeH5BmzuziV8AUWI1YzRqzaom6AoHHFsBAKzENh7sCd+Oel4lXmyWLVqEA
+         /jttb6aFlS6u2oieLLIEM/90OQQ127P246Km8ulpA1EhhZA/O/rNfvcgxaVbY22hYXSw
+         qg7dcNEbcSxaaauwfXT0rtPmmgc3eUvLtHL30IxzZNCbwuGisheoOLy4DRed5ZZVuNi4
+         5bYA==
+X-Gm-Message-State: AOAM530JndctlnDT5JEw6EGZGSixthxjH4uG7g2Pom/ryImEe7hjnPt7
+        h3ni7s0qNOedmIK2AMELjwc3VJp8i6E7ZiWVrDdurlY6SNMRs6CexYV6ccBM3blTWGxrR9MeFP5
+        w+OawhJjuMa8/
+X-Received: by 2002:a05:620a:12a8:b0:6a6:b12c:88bc with SMTP id x8-20020a05620a12a800b006a6b12c88bcmr22172286qki.336.1654894118905;
+        Fri, 10 Jun 2022 13:48:38 -0700 (PDT)
+X-Received: by 2002:a05:620a:12a8:b0:6a6:b12c:88bc with SMTP id x8-20020a05620a12a800b006a6b12c88bcmr22172271qki.336.1654894118565;
+        Fri, 10 Jun 2022 13:48:38 -0700 (PDT)
+Received: from ?IPV6:2a01:e0a:59e:9d80:527b:9dff:feef:3874? ([2a01:e0a:59e:9d80:527b:9dff:feef:3874])
+        by smtp.gmail.com with ESMTPSA id u9-20020a05620a430900b006a60190ed0fsm317025qko.74.2022.06.10.13.48.36
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Fri, 10 Jun 2022 13:48:37 -0700 (PDT)
+Message-ID: <a3d0a093-3d59-5882-c9c8-6619e5aeb3ab@redhat.com>
+Date:   Fri, 10 Jun 2022 22:48:34 +0200
 MIME-Version: 1.0
-References: <20220610154036.1253158-1-alex.bennee@linaro.org>
-In-Reply-To: <20220610154036.1253158-1-alex.bennee@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 10 Jun 2022 17:03:22 +0100
-Message-ID: <CAFEAcA9B1NJs4F_LVQ6FomJ0KMVZ-OFwYNjd5_=veYCNTd8tiw@mail.gmail.com>
-Subject: Re: [RFC PATCH] target/arm: de-duplicate our register XML definitions
-To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
-Cc: qemu-devel@nongnu.org, agorglouk@gmail.com, 
-	"open list:ARM TCG CPUs" <qemu-arm@nongnu.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-TUID: FkoLvJbqjZak
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.8.0
+Subject: Re: [PATCH RFC 1/2] arm/kvm: enable MTE if available
+Content-Language: en-US
+To:     Cornelia Huck <cohuck@redhat.com>,
+        Peter Maydell <peter.maydell@linaro.org>,
+        Thomas Huth <thuth@redhat.com>,
+        Laurent Vivier <lvivier@redhat.com>
+Cc:     Andrew Jones <drjones@redhat.com>, qemu-arm@nongnu.org,
+        qemu-devel@nongnu.org, kvm@vger.kernel.org
+References: <20220512131146.78457-1-cohuck@redhat.com>
+ <20220512131146.78457-2-cohuck@redhat.com>
+From:   Eric Auger <eauger@redhat.com>
+In-Reply-To: <20220512131146.78457-2-cohuck@redhat.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+X-Spam-Status: No, score=-4.5 required=5.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+        DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,NICE_REPLY_A,
+        RCVD_IN_DNSWL_NONE,SPF_HELO_NONE,SPF_NONE,T_SCC_BODY_TEXT_LINE
+        autolearn=ham autolearn_force=no version=3.4.6
+X-Spam-Checker-Version: SpamAssassin 3.4.6 (2021-04-09) on
+        lindbergh.monkeyblade.net
+Precedence: bulk
+List-ID: <kvm.vger.kernel.org>
+X-Mailing-List: kvm@vger.kernel.org
+X-TUID: kO5mJ3juY/8p
 
-On Fri, 10 Jun 2022 at 16:40, Alex Benn=C3=A9e <alex.bennee@linaro.org> wro=
-te:
->
-> We generate the XML for each vCPU we create which for heavily threaded
-> linux-user runs can add up to a lot of memory. Unfortunately we can't
-> only do it once as we may have vCPUs with different capabilities in
-> different cores but we can at least free duplicate definitions if we
-> find them.
+Hi Connie,
+On 5/12/22 15:11, Cornelia Huck wrote:
+> We need to disable migration, as we do not yet have a way to migrate
+> the tags as well.
 
-How big actually is the XML here? 400 bytes? 4K? 40K? 400K?
-
-> Resolves: https://gitlab.com/qemu-project/qemu/-/issues/1070
-> Signed-off-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
-
-Can we defer the work until/unless gdb actually asks for it?
-
-I have some details-of-the-code comments below, but first:
-does gdb even support having the XML for each CPU be different?
-Our gdbstub.c seems to always ask for the XML only for the first
-CPU in the "process". If gdb does support heterogenous CPU XML,
-does it require that different XML descriptions have different
-names? We always call them system-registers.xml and sve-registers.xml
-regardless of whether different CPUs might have different contents
-for those XML blobs...
-
+This patch does much more than adding a migration blocker ;-) you may
+describe the new cpu option and how it works.
+> 
+> Signed-off-by: Cornelia Huck <cohuck@redhat.com>
 > ---
->  target/arm/gdbstub.c | 38 ++++++++++++++++++++++++++++++++++++--
->  1 file changed, 36 insertions(+), 2 deletions(-)
->
-> diff --git a/target/arm/gdbstub.c b/target/arm/gdbstub.c
-> index 2f806512d0..85ef6dc6db 100644
-> --- a/target/arm/gdbstub.c
-> +++ b/target/arm/gdbstub.c
-> @@ -318,7 +318,24 @@ int arm_gen_dynamic_sysreg_xml(CPUState *cs, int bas=
-e_reg)
->      g_string_append_printf(s, "<feature name=3D\"org.qemu.gdb.arm.sys.re=
-gs\">");
->      g_hash_table_foreach(cpu->cp_regs, arm_register_sysreg_for_xml, &par=
-am);
->      g_string_append_printf(s, "</feature>");
-> -    cpu->dyn_sysreg_xml.desc =3D g_string_free(s, false);
+>  target/arm/cpu.c     | 18 ++++------
+>  target/arm/cpu.h     |  4 +++
+>  target/arm/cpu64.c   | 78 ++++++++++++++++++++++++++++++++++++++++++++
+>  target/arm/kvm64.c   |  5 +++
+>  target/arm/kvm_arm.h | 12 +++++++
+>  target/arm/monitor.c |  1 +
+>  6 files changed, 106 insertions(+), 12 deletions(-)
+> 
+> diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+> index 029f644768b1..f0505815b1e7 100644
+> --- a/target/arm/cpu.c
+> +++ b/target/arm/cpu.c
+> @@ -1435,6 +1435,11 @@ void arm_cpu_finalize_features(ARMCPU *cpu, Error **errp)
+>              error_propagate(errp, local_err);
+>              return;
+>          }
+> +        arm_cpu_mte_finalize(cpu, &local_err);
+> +        if (local_err != NULL) {
+> +            error_propagate(errp, local_err);
+> +            return;
+> +        }
+>      }
+>  
+>      if (kvm_enabled()) {
+> @@ -1504,7 +1509,7 @@ static void arm_cpu_realizefn(DeviceState *dev, Error **errp)
+>          }
+>          if (cpu->tag_memory) {
+>              error_setg(errp,
+> -                       "Cannot enable KVM when guest CPUs has MTE enabled");
+> +                       "Cannot enable KVM when guest CPUs has tag memory enabled");
+before this series, tag_memory was used to detect MTE was enabled at
+machine level. And this was not compatible with KVM.
+
+Hasn't it changed now with this series? Sorry I don't know much about
+that tag_memory along with the KVM use case? Can you describe it as well
+in the cover letter.
+>              return;
+>          }
+>      }
+> @@ -1882,17 +1887,6 @@ static void arm_cpu_realizefn(DeviceState *dev, Error **errp)
+>                                         ID_PFR1, VIRTUALIZATION, 0);
+>      }
+>  
+> -#ifndef CONFIG_USER_ONLY
+> -    if (cpu->tag_memory == NULL && cpu_isar_feature(aa64_mte, cpu)) {
+> -        /*
+> -         * Disable the MTE feature bits if we do not have tag-memory
+> -         * provided by the machine.
+> -         */
+> -        cpu->isar.id_aa64pfr1 =
+> -            FIELD_DP64(cpu->isar.id_aa64pfr1, ID_AA64PFR1, MTE, 0);
+> -    }
+> -#endif
+> -
+>      /* MPU can be configured out of a PMSA CPU either by setting has-mpu
+>       * to false or by setting pmsav7-dregion to 0.
+>       */
+> diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+> index 18ca61e8e25b..183506713e96 100644
+> --- a/target/arm/cpu.h
+> +++ b/target/arm/cpu.h
+> @@ -208,11 +208,13 @@ typedef struct {
+>  void arm_cpu_sve_finalize(ARMCPU *cpu, Error **errp);
+>  void arm_cpu_pauth_finalize(ARMCPU *cpu, Error **errp);
+>  void arm_cpu_lpa2_finalize(ARMCPU *cpu, Error **errp);
+> +void arm_cpu_mte_finalize(ARMCPU *cpu, Error **errp);
+>  #else
+>  # define ARM_MAX_VQ    1
+>  static inline void arm_cpu_sve_finalize(ARMCPU *cpu, Error **errp) { }
+>  static inline void arm_cpu_pauth_finalize(ARMCPU *cpu, Error **errp) { }
+>  static inline void arm_cpu_lpa2_finalize(ARMCPU *cpu, Error **errp) { }
+> +static inline void arm_cpu_mte_finalize(ARMCPU *cpu, Error **errp) { }
+>  #endif
+>  
+>  typedef struct ARMVectorReg {
+> @@ -993,6 +995,7 @@ struct ArchCPU {
+>      bool prop_pauth;
+>      bool prop_pauth_impdef;
+>      bool prop_lpa2;
+> +    bool prop_mte;
+>  
+>      /* DCZ blocksize, in log_2(words), ie low 4 bits of DCZID_EL0 */
+>      uint32_t dcz_blocksize;
+> @@ -1091,6 +1094,7 @@ void aarch64_sve_change_el(CPUARMState *env, int old_el,
+>                             int new_el, bool el0_a64);
+>  void aarch64_add_sve_properties(Object *obj);
+>  void aarch64_add_pauth_properties(Object *obj);
+> +void aarch64_add_mte_properties(Object *obj);
+>  
+>  /*
+>   * SVE registers are encoded in KVM's memory in an endianness-invariant format.
+> diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
+> index 04427e073f17..eea9ad195470 100644
+> --- a/target/arm/cpu64.c
+> +++ b/target/arm/cpu64.c
+> @@ -35,7 +35,11 @@
+>  #include "qapi/visitor.h"
+>  #include "hw/qdev-properties.h"
+>  #include "internals.h"
+> +#include "migration/blocker.h"
+>  
+> +#ifdef CONFIG_KVM
+> +static Error *mte_migration_blocker;
+> +#endif
+>  
+>  static void aarch64_a57_initfn(Object *obj)
+>  {
+> @@ -785,6 +789,78 @@ void arm_cpu_lpa2_finalize(ARMCPU *cpu, Error **errp)
+>      cpu->isar.id_aa64mmfr0 = t;
+>  }
+>  
+> +static Property arm_cpu_mte_property =
+> +    DEFINE_PROP_BOOL("mte", ARMCPU, prop_mte, true);
 > +
-> +    /* De-duplicate system register descriptions */
-> +    if (cs !=3D first_cpu) {
-> +        CPUState *other_cs;
-> +        CPU_FOREACH(other_cs) {
-> +            ARMCPU *other_arm =3D ARM_CPU(other_cs);
-> +            if (g_strcmp0(other_arm->dyn_sysreg_xml.desc, s->str) =3D=3D=
- 0) {
+> +void aarch64_add_mte_properties(Object *obj)
+> +{
+> +    ARMCPU *cpu = ARM_CPU(obj);
+> +
+> +    /*
+> +     * For tcg, the machine type may provide tag memory for MTE emulation.
+s/machine type/machine?
+> +     * We do not know whether that is the case at this point in time, so
+> +     * default MTE to on and check later.
+> +     * This preserves pre-existing behaviour, but is really a bit awkward.
+> +     */
+> +    qdev_property_add_static(DEVICE(obj), &arm_cpu_mte_property);
+> +    if (kvm_enabled()) {
+> +        /*
+> +         * Default MTE to off, as long as migration support is not
+> +         * yet implemented.
+> +         * TODO: implement migration support for kvm
+> +         */
+> +        cpu->prop_mte = false;
+> +    }
+> +}
+> +
+> +void arm_cpu_mte_finalize(ARMCPU *cpu, Error **errp)
+> +{
+> +    if (!cpu->prop_mte) {
+> +        /* Disable MTE feature bits. */
+> +        cpu->isar.id_aa64pfr1 =
+> +            FIELD_DP64(cpu->isar.id_aa64pfr1, ID_AA64PFR1, MTE, 0);
+> +        return;
+> +    }
+> +#ifndef CONFIG_USER_ONLY
+> +    if (!kvm_enabled()) {
+> +        if (cpu_isar_feature(aa64_mte, cpu) && !cpu->tag_memory) {
+> +            /*
+> +             * Disable the MTE feature bits, unless we have tag-memory
+> +             * provided by the machine.
+> +             * This silent downgrade is not really nice if the user had
+> +             * explicitly requested MTE to be enabled by the cpu, but it
+> +             * preserves pre-existing behaviour. In an ideal world, we
 
-If you check whether the dyn_sysreg_xml.num matches first, that will
-probably be a much faster way of checking in almost all cases than
-doing the strcmp on the however-long-it-is XML string: it seems unlikely
-that in a heterogenous config the CPUs will manage to have exactly the
-same number of registers.
 
-If you have a setup with, say, 4 CPUs of type X and then 4 of type Y,
-for every type Y CPU this loop will do the strcmp of Y's XML against
-the type X XML for cpu 0, then again for 1, then again for 2, then for 3,
-even though in theory we already know at that point that 0,1,2,3 all
-have the same XML and so if it didn't match for cpu 0 it won't match
-for 1,2,3...  But maybe the comparison against the number-of-registers
-saves us from having to try to optimise that away.
+Can't we "simply" prevent the end-user from using the prop_mte option
+with a TCG CPU? and have something like
 
-> +                cpu->dyn_sysreg_xml.desc =3D other_arm->dyn_sysreg_xml.d=
-esc;
-> +                g_string_free(s, true);
-> +                s =3D NULL;
-> +                break;
+For TCG, MTE depends on the CPU feature availability + machine tag memory
+For KVM, MTE depends on the user opt-in + CPU feature avail (if
+relevant) + host VM capability (?)
+
+But maybe I miss the point ...
+> +             * would fail if MTE was requested, but no tag memory has
+> +             * been provided.
+> +             */
+> +            cpu->isar.id_aa64pfr1 =
+> +                FIELD_DP64(cpu->isar.id_aa64pfr1, ID_AA64PFR1, MTE, 0);
+> +        }
+> +        if (!cpu_isar_feature(aa64_mte, cpu)) {
+> +            cpu->prop_mte = false;
+> +        }
+> +        return;
+> +    }
+> +    if (kvm_arm_mte_supported()) {
+> +#ifdef CONFIG_KVM
+> +        if (kvm_vm_enable_cap(kvm_state, KVM_CAP_ARM_MTE, 0)) {
+> +            error_setg(errp, "Failed to enable KVM_CAP_ARM_MTE");
+> +        } else {
+> +            /* TODO: add proper migration support with MTE enabled */
+> +            if (!mte_migration_blocker) {
+> +                error_setg(&mte_migration_blocker,
+> +                           "Live migration disabled due to MTE enabled");
+> +                if (migrate_add_blocker(mte_migration_blocker, NULL)) {
+error_free(mte_migration_blocker);
+mte_migration_blocker = NULL;
+> +                    error_setg(errp, "Failed to add MTE migration blocker");
+> +                }
 > +            }
 > +        }
+> +#endif
 > +    }
+> +    /* When HVF provides support for MTE, add it here */
+> +#endif
+> +}
 > +
-> +    if (s) {
-> +        cpu->dyn_sysreg_xml.desc =3D g_string_free(s, false);
-> +    }
->      return cpu->dyn_sysreg_xml.num;
+>  static void aarch64_host_initfn(Object *obj)
+>  {
+>  #if defined(CONFIG_KVM)
+> @@ -793,6 +869,7 @@ static void aarch64_host_initfn(Object *obj)
+>      if (arm_feature(&cpu->env, ARM_FEATURE_AARCH64)) {
+>          aarch64_add_sve_properties(obj);
+>          aarch64_add_pauth_properties(obj);
+> +        aarch64_add_mte_properties(obj);
+>      }
+>  #elif defined(CONFIG_HVF)
+>      ARMCPU *cpu = ARM_CPU(obj);
+> @@ -958,6 +1035,7 @@ static void aarch64_max_initfn(Object *obj)
+>      object_property_add(obj, "sve-max-vq", "uint32", cpu_max_get_sve_max_vq,
+>                          cpu_max_set_sve_max_vq, NULL, NULL);
+>      qdev_property_add_static(DEVICE(obj), &arm_cpu_lpa2_property);
+> +    aarch64_add_mte_properties(obj);
 >  }
-
--- PMM
+>  
+>  static void aarch64_a64fx_initfn(Object *obj)
+> diff --git a/target/arm/kvm64.c b/target/arm/kvm64.c
+> index b8cfaf5782ac..d129a264a3f6 100644
+> --- a/target/arm/kvm64.c
+> +++ b/target/arm/kvm64.c
+> @@ -746,6 +746,11 @@ bool kvm_arm_steal_time_supported(void)
+>      return kvm_check_extension(kvm_state, KVM_CAP_STEAL_TIME);
+>  }
+>  
+> +bool kvm_arm_mte_supported(void)
+> +{
+> +    return kvm_check_extension(kvm_state, KVM_CAP_ARM_MTE);
+> +}
+> +
+>  QEMU_BUILD_BUG_ON(KVM_ARM64_SVE_VQ_MIN != 1);
+>  
+>  void kvm_arm_sve_get_vls(CPUState *cs, unsigned long *map)
+> diff --git a/target/arm/kvm_arm.h b/target/arm/kvm_arm.h
+> index b7f78b521545..13f06ed5e0ea 100644
+> --- a/target/arm/kvm_arm.h
+> +++ b/target/arm/kvm_arm.h
+> @@ -306,6 +306,13 @@ bool kvm_arm_pmu_supported(void);
+>   */
+>  bool kvm_arm_sve_supported(void);
+>  
+> +/**
+> + * kvm_arm_mte_supported:
+> + *
+> + * Returns: true if KVM can enable MTE, and false otherwise.
+> + */
+> +bool kvm_arm_mte_supported(void);
+> +
+>  /**
+>   * kvm_arm_get_max_vm_ipa_size:
+>   * @ms: Machine state handle
+> @@ -396,6 +403,11 @@ static inline bool kvm_arm_steal_time_supported(void)
+>      return false;
+>  }
+>  
+> +static inline bool kvm_arm_mte_supported(void)
+> +{
+> +    return false;
+> +}
+> +
+>  /*
+>   * These functions should never actually be called without KVM support.
+>   */
+> diff --git a/target/arm/monitor.c b/target/arm/monitor.c
+> index 80c64fa3556d..f13ff2664b67 100644
+> --- a/target/arm/monitor.c
+> +++ b/target/arm/monitor.c
+> @@ -96,6 +96,7 @@ static const char *cpu_model_advertised_features[] = {
+>      "sve1408", "sve1536", "sve1664", "sve1792", "sve1920", "sve2048",
+>      "kvm-no-adjvtime", "kvm-steal-time",
+>      "pauth", "pauth-impdef",
+> +    "mte",
+>      NULL
+>  };
+>  
+Eric

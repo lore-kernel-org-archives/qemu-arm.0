@@ -1,63 +1,61 @@
-Received: by 2002:a19:ee12:0:0:0:0:0 with SMTP id g18csp1383033lfb;
-        Mon, 13 Jun 2022 06:29:23 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJx8urMVSomucDmeo7GAasOmPSTb9BqYb4uxENXlmJwRYnJ6x12hlQPE3laj8ihGI6GVo2AJ
-X-Received: by 2002:ad4:5cee:0:b0:464:53bb:a299 with SMTP id iv14-20020ad45cee000000b0046453bba299mr55575844qvb.92.1655126963294;
-        Mon, 13 Jun 2022 06:29:23 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1655126963; cv=none;
+Received: by 2002:a19:ee12:0:0:0:0:0 with SMTP id g18csp1384334lfb;
+        Mon, 13 Jun 2022 06:31:28 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxbO1vFgqc4mCi5JoLnHBCqG8XXiacGWDTRHyoPTBgl/bApGJGX8I0WjOyzGZpFsxGnQme6
+X-Received: by 2002:a0c:f886:0:b0:46a:a0f8:db40 with SMTP id u6-20020a0cf886000000b0046aa0f8db40mr34680437qvn.88.1655127087952;
+        Mon, 13 Jun 2022 06:31:27 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1655127087; cv=none;
         d=google.com; s=arc-20160816;
-        b=xXmp8xvOTZl+xl4kK7s8w+5mxSeN+xpStIchxK4cmb9yqKgHU7Z4kTTJGLrpW1/iul
-         boPbCV4tSKPjG+RDkAUvsvcq/2ri4kRZk2C31YpbZncftFimRnWAHbJW3CsTixwR54EF
-         sm0j0n+un9SwInUXoj2H7wv9MUQAdoGEdHNRRLU11orclouZ1YjmwuGgU3Jr5OcGuBf9
-         dO8bVE8ocgvnLpDNJ6Mc0Qcpwc7gAgZoZW2BSVzLkyMrEYHz/s/n/PI1s+d1HdChDckI
-         mjKBTcWlvVVoyI2hCjuPZr8vZm7UDRhr8/g5c4C7wjpYd1BygY0/GCRsWL2Yz/jfB9Hf
-         Cy7w==
+        b=0Kc3pIwXmT+zC4uYM7be5st5Ofh/KLM8f8qouK5M+YQ2bpJ99lBEGTpRh2fmEabkiv
+         fOwpDLJ7y5orOKioM+jEY2J4DqwQyTNa0l44JwkgovMDjmb687UY7FORjvfnm2qkxqRP
+         RtZP/4/pvQLXK7GT+z1tepkx77g+1nqhpR5fnGETcF2Jl58CmqmPsyf0fnqkuaz5VZSW
+         7Z7xkKoISlt/+qD2vMjypzK5mneZQRlewNIL1h7KK3HSwBpR0tS+7HBZ00sK0VCE9CAX
+         nTtD/878vGJiKAcx7GFuXiivpKrwvxR9db9vZKTOelTngfEYlYRg42SqPshJCkUeHAQk
+         X0/g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from;
-        bh=nlnTCjz3SezvPlioP0ewZdYN6kdI99OCyJwaAdlJB6U=;
-        b=HDeI/Di/Z5jkuZ5BygvuKyHKvk3CyXNAVHuwrowNoX7Q3aO5kOfqSKdwPhAKWIR4dS
-         KuG1El0aOPHRjkMINLXto4cym8UUqOAS3mwrS+MIXx8EpSPd2154Z4VbWi3c1zPHlyJT
-         6nr4GPA/qAenwlhr4DzTggwaJRbKPar7a51rm5AJ47snCPpZRcmnwkkpf26j7f7mjfjI
-         EWpaCjqfFHGCY1646owiIV6sjA9WYfVmtangL9rA1PDV56+wdkFEu4Vkuq9ix8niItxw
-         q7wNe1DrSc/ww4tmQSrinP9v7vdPrPNinoNYEuOb/z08we0HF2KzJ3FF2VYxPuDwNiW7
-         ntfQ==
+        bh=uqszZV5IFppkqnypr5N9KiDN2zTssZTkHLmz5b3hIns=;
+        b=FyocpvvdAkJ12rYj7eRNR/CI8mRSDoz115m/8bDncVVXUFYB478VTU6JyWiD6t6xlB
+         2HE9ds5qneRmcEupo5T0qVnxZ7fAkew7pWdRcla/r1em/ZnLzgxS5e1maOHJqsjMyL+U
+         hQpF8lZdg2HSLKjb537ZXJa9JhWAqg6+QS0irIeS302WUoNAHd67qcF54+a+uQWhDfEQ
+         B2ZOmezkslojW14jvCf5lLz5DXufEyS0MvZH0mwLSbN5mmvp8sJq+8/MTCLljs2C4wrL
+         Ym2pZp/tkLRCDwTbUILnQG/d14n1TcD1pOCaGV/2xAdTy4MNcmm2Zk51pj9uWbfH/KJ8
+         zBOw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id im14-20020a056214246e00b0046b9672e501si5103285qvb.579.2022.06.13.06.29.23
+        by mx.google.com with ESMTPS id p7-20020a05622a048700b00304df11e784si4129084qtx.634.2022.06.13.06.31.27
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 13 Jun 2022 06:29:23 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 13 Jun 2022 06:31:27 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:38296 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:42862 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1o0k8A-0003dL-Lk
-	for alex.bennee@linaro.org; Mon, 13 Jun 2022 09:29:22 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:59872)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1o0kAB-0006q6-CQ
+	for alex.bennee@linaro.org; Mon, 13 Jun 2022 09:31:27 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:59922)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=yfRC=WU=kaod.org=clg@ozlabs.org>)
- id 1o0k56-0000Fm-Lj; Mon, 13 Jun 2022 09:26:12 -0400
-Received: from mail.ozlabs.org ([2404:9400:2221:ea00::3]:58171
- helo=gandalf.ozlabs.org)
+ id 1o0k5H-0000R5-ML; Mon, 13 Jun 2022 09:26:23 -0400
+Received: from gandalf.ozlabs.org ([150.107.74.76]:37145)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=yfRC=WU=kaod.org=clg@ozlabs.org>)
- id 1o0k54-0004Sj-AI; Mon, 13 Jun 2022 09:26:12 -0400
-Received: from gandalf.ozlabs.org (mail.ozlabs.org
- [IPv6:2404:9400:2221:ea00::3])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4LMC4v69d9z4yZ7;
- Mon, 13 Jun 2022 23:26:07 +1000 (AEST)
+ id 1o0k5G-0004UD-1M; Mon, 13 Jun 2022 09:26:23 -0400
+Received: from gandalf.ozlabs.org (gandalf.ozlabs.org [150.107.74.76])
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4LMC573w25z4xw8;
+ Mon, 13 Jun 2022 23:26:19 +1000 (AEST)
 Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
  (No client certificate requested)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4LMC4p3vB9z4yXP;
- Mon, 13 Jun 2022 23:26:02 +1000 (AEST)
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4LMC521bsBz4yZ6;
+ Mon, 13 Jun 2022 23:26:13 +1000 (AEST)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
@@ -74,16 +72,17 @@ Cc: Peter Maydell <peter.maydell@linaro.org>, Joe Komlodi <komlodi@google.com>,
  Wainer dos Santos Moschetta <wainersm@redhat.com>,
  Beraldo Leal <bleal@redhat.com>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
-Subject: [PATCH v2 02/17] test/avocado/machine_aspeed.py: Move OpenBMC tests
-Date: Mon, 13 Jun 2022 15:25:24 +0200
-Message-Id: <20220613132539.2199772-3-clg@kaod.org>
+Subject: [PATCH v2 04/17] test/avocado/machine_aspeed.py: Add I2C tests to
+ ast2500-evb
+Date: Mon, 13 Jun 2022 15:25:26 +0200
+Message-Id: <20220613132539.2199772-5-clg@kaod.org>
 X-Mailer: git-send-email 2.35.3
 In-Reply-To: <20220613132539.2199772-1-clg@kaod.org>
 References: <20220613132539.2199772-1-clg@kaod.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2404:9400:2221:ea00::3;
+Received-SPF: pass client-ip=150.107.74.76;
  envelope-from=SRS0=yfRC=WU=kaod.org=clg@ozlabs.org; helo=gandalf.ozlabs.org
 X-Spam_score_int: -16
 X-Spam_score: -1.7
@@ -92,143 +91,55 @@ X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9,
  HEADER_FROM_DIFFERENT_DOMAINS=0.249, SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Bf2SGB4E6TB9
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: s+GEI0+hckDo
 
-It's easier to run. Keep test_arm_ast2600_debian() under the
-boot_linux_console.py file because it requires the extract_from_deb()
-helper. We could remove it when we have tests for the AST2600.
+Create a named I2C temperature sensor device on the command line,
+instantiate device from Linux since it is not part of the device tree,
+and check the temperature is correctly reported under sysfs.
 
 Signed-off-by: Cédric Le Goater <clg@kaod.org>
 ---
- tests/avocado/boot_linux_console.py | 43 -------------------------
- tests/avocado/machine_aspeed.py     | 50 +++++++++++++++++++++++++++++
- 2 files changed, 50 insertions(+), 43 deletions(-)
+ tests/avocado/machine_aspeed.py | 13 +++++++++++++
+ 1 file changed, 13 insertions(+)
 
-diff --git a/tests/avocado/boot_linux_console.py b/tests/avocado/boot_linux_console.py
-index 45a2ceda2227..6b1533c17c8b 100644
---- a/tests/avocado/boot_linux_console.py
-+++ b/tests/avocado/boot_linux_console.py
-@@ -1043,49 +1043,6 @@ def test_arm_vexpressa9(self):
-         self.vm.add_args('-dtb', self.workdir + '/day16/vexpress-v2p-ca9.dtb')
-         self.do_test_advcal_2018('16', tar_hash, 'winter.zImage')
- 
--    def test_arm_ast2400_palmetto_openbmc_v2_9_0(self):
--        """
--        :avocado: tags=arch:arm
--        :avocado: tags=machine:palmetto-bmc
--        """
--
--        image_url = ('https://github.com/openbmc/openbmc/releases/download/2.9.0/'
--                     'obmc-phosphor-image-palmetto.static.mtd')
--        image_hash = ('3e13bbbc28e424865dc42f35ad672b10f2e82cdb11846bb28fa625b48beafd0d')
--        image_path = self.fetch_asset(image_url, asset_hash=image_hash,
--                                      algorithm='sha256')
--
--        self.do_test_arm_aspeed(image_path)
--
--    def test_arm_ast2500_romulus_openbmc_v2_9_0(self):
--        """
--        :avocado: tags=arch:arm
--        :avocado: tags=machine:romulus-bmc
--        """
--
--        image_url = ('https://github.com/openbmc/openbmc/releases/download/2.9.0/'
--                     'obmc-phosphor-image-romulus.static.mtd')
--        image_hash = ('820341076803f1955bc31e647a512c79f9add4f5233d0697678bab4604c7bb25')
--        image_path = self.fetch_asset(image_url, asset_hash=image_hash,
--                                      algorithm='sha256')
--
--        self.do_test_arm_aspeed(image_path)
--
--    def do_test_arm_aspeed(self, image):
--        self.vm.set_console()
--        self.vm.add_args('-drive', 'file=' + image + ',if=mtd,format=raw',
--                         '-net', 'nic')
--        self.vm.launch()
--
--        self.wait_for_console_pattern("U-Boot 2016.07")
--        self.wait_for_console_pattern("## Loading kernel from FIT Image at 20080000")
--        self.wait_for_console_pattern("Starting kernel ...")
--        self.wait_for_console_pattern("Booting Linux on physical CPU 0x0")
--        self.wait_for_console_pattern(
--                "aspeed-smc 1e620000.spi: read control register: 203b0641")
--        self.wait_for_console_pattern("ftgmac100 1e660000.ethernet eth0: irq ")
--        self.wait_for_console_pattern("systemd[1]: Set hostname to")
--
-     def test_arm_ast2600_debian(self):
-         """
-         :avocado: tags=arch:arm
 diff --git a/tests/avocado/machine_aspeed.py b/tests/avocado/machine_aspeed.py
-index 33090af19940..89bfad307661 100644
+index 31a0fb6cd865..4d2766e1d44d 100644
 --- a/tests/avocado/machine_aspeed.py
 +++ b/tests/avocado/machine_aspeed.py
-@@ -34,3 +34,53 @@ def test_ast1030_zephyros(self):
-         wait_for_console_pattern(self, "Booting Zephyr OS")
-         exec_command_and_wait_for_pattern(self, "help",
-                                           "Available commands")
+@@ -119,7 +119,20 @@ def test_arm_ast2500_evb_builroot(self):
+         image_path = self.fetch_asset(image_url, asset_hash=image_hash,
+                                       algorithm='sha256')
+ 
++        self.vm.add_args('-device',
++                         'tmp105,bus=aspeed.i2c.bus.3,address=0x4d,id=tmp-test');
+         self.do_test_arm_aspeed_buidroot_start(image_path, '0x0')
 +
-+class AST2x00Machine(QemuSystemTest):
++        exec_command_and_wait_for_pattern(self,
++             'echo lm75 0x4d > /sys/class/i2c-dev/i2c-3/device/new_device',
++             'i2c i2c-3: new_device: Instantiated device lm75 at 0x4d');
++        exec_command_and_wait_for_pattern(self,
++                             'cat /sys/class/hwmon/hwmon1/temp1_input', '0')
++        self.vm.command('qom-set', path='/machine/peripheral/tmp-test',
++                        property='temperature', value=18000);
++        exec_command_and_wait_for_pattern(self,
++                             'cat /sys/class/hwmon/hwmon1/temp1_input', '18000')
 +
-+    def wait_for_console_pattern(self, success_message, vm=None):
-+        wait_for_console_pattern(self, success_message,
-+                                 failure_message='Kernel panic - not syncing',
-+                                 vm=vm)
-+
-+    def do_test_arm_aspeed(self, image):
-+        self.vm.set_console()
-+        self.vm.add_args('-drive', 'file=' + image + ',if=mtd,format=raw',
-+                         '-net', 'nic')
-+        self.vm.launch()
-+
-+        self.wait_for_console_pattern("U-Boot 2016.07")
-+        self.wait_for_console_pattern("## Loading kernel from FIT Image at 20080000")
-+        self.wait_for_console_pattern("Starting kernel ...")
-+        self.wait_for_console_pattern("Booting Linux on physical CPU 0x0")
-+        wait_for_console_pattern(self,
-+                "aspeed-smc 1e620000.spi: read control register: 203b0641")
-+        self.wait_for_console_pattern("ftgmac100 1e660000.ethernet eth0: irq ")
-+        self.wait_for_console_pattern("systemd[1]: Set hostname to")
-+
-+    def test_arm_ast2400_palmetto_openbmc_v2_9_0(self):
-+        """
-+        :avocado: tags=arch:arm
-+        :avocado: tags=machine:palmetto-bmc
-+        """
-+
-+        image_url = ('https://github.com/openbmc/openbmc/releases/download/2.9.0/'
-+                     'obmc-phosphor-image-palmetto.static.mtd')
-+        image_hash = ('3e13bbbc28e424865dc42f35ad672b10f2e82cdb11846bb28fa625b48beafd0d')
-+        image_path = self.fetch_asset(image_url, asset_hash=image_hash,
-+                                      algorithm='sha256')
-+
-+        self.do_test_arm_aspeed(image_path)
-+
-+    def test_arm_ast2500_romulus_openbmc_v2_9_0(self):
-+        """
-+        :avocado: tags=arch:arm
-+        :avocado: tags=machine:romulus-bmc
-+        """
-+
-+        image_url = ('https://github.com/openbmc/openbmc/releases/download/2.9.0/'
-+                     'obmc-phosphor-image-romulus.static.mtd')
-+        image_hash = ('820341076803f1955bc31e647a512c79f9add4f5233d0697678bab4604c7bb25')
-+        image_path = self.fetch_asset(image_url, asset_hash=image_hash,
-+                                      algorithm='sha256')
-+
-+        self.do_test_arm_aspeed(image_path)
+         self.do_test_arm_aspeed_buidroot_poweroff()
+ 
+     def test_arm_ast2600_evb_builroot(self):
 -- 
 2.35.3
 

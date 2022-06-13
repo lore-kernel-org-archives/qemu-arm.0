@@ -1,62 +1,62 @@
-Received: by 2002:a19:ee12:0:0:0:0:0 with SMTP id g18csp1381836lfb;
-        Mon, 13 Jun 2022 06:27:09 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxdH3Bl532M8/X48FPKHIEZOIuoZaTWjEGR1tE9CiTCxT8mzNXFLJ5zkD8ePWaB96gonZbj
-X-Received: by 2002:a05:620a:808d:b0:6a6:d43f:afd7 with SMTP id ef13-20020a05620a808d00b006a6d43fafd7mr22207410qkb.524.1655126829387;
-        Mon, 13 Jun 2022 06:27:09 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1655126829; cv=none;
+Received: by 2002:a19:ee12:0:0:0:0:0 with SMTP id g18csp1382355lfb;
+        Mon, 13 Jun 2022 06:28:03 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzvn/U726LJhcF9gFbPF6uDfXsD+jJjOZwMJNapvuVwk/Tlb/ERtRNHYkjQfA6NTvbDDOQD
+X-Received: by 2002:a05:6214:2602:b0:46b:9674:2c40 with SMTP id gu2-20020a056214260200b0046b96742c40mr31175290qvb.96.1655126883148;
+        Mon, 13 Jun 2022 06:28:03 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1655126883; cv=none;
         d=google.com; s=arc-20160816;
-        b=apiu35WVMmP6TCGXpad5FxvHp/PUnV23KReFsS44v3OtA6xaBNNRp+nlNlFcB+N7V9
-         MysrmY+dEECVMBFk7xOjoZDu1coxX28MmG7As3C74puGNf7IdNqZD5rYe/bgVZ3os5K6
-         yEuglrs4m0QmS2okPkHUurTSH3oyd8VLQBOinzKwvGPc8741+UCCHiDt0ma/O5rMtq7J
-         XC89fG1R6i1JeFRDrGjJEx2Q0IW5SXxIVFiId/SbERpZbdsHKWlGnPziuDpdWQnw687s
-         o2kbr21svo2F7fqFLXOOPf1MdZZlu6E5eH+ZlqohY5gmnTOnfxltQ2zuqL8CCRifAFP3
-         1+eQ==
+        b=uPj8aoB451Cpl6DqqoQ34nqexhsfLcRQb1SR2m05nMUlTTdNa2oMoqTQzuQ7Q324Bk
+         kWWX3iJ69TvpqL3MvB352C746NbneOyyiz62TWU66+I+HDDMV83D6xiEs0dmLpZDU+fM
+         OlIoCyWZ434VWWP7CONXE0MShfK1c0ZBe+Z5YyWO1tNkyfCamsylsCd3S3RW/sp3GdI3
+         pNGcaANBtQnJzmCfrxRgBNB++7ToxTT0h5EXqTqZIGv6dU8D3AeZidlI30ATu2U0uDqg
+         vngqsJXS0WJ7Feh3p7b4/zZsKOXz7kz71mptJfkms3H0RGrV3QzPCLCp1aKPmxR2XZVC
+         /xrw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from;
-        bh=QjY9dtj+LwSMu76x/ex70SFXn2cyWZ9SDSLvsJWx/9o=;
-        b=OvGPoTH1l0ktQWSdnh2uTgqj7EVaGcMEhw5o52e+lERlktZL5HXKXyyciVhZRE+B0I
-         Ws+1sVW4U+yXovnJAC8UedjAWJU47R2qemxJFb4I2uKkmrDDYy0D07Xh9d37sVA2sZnW
-         q15Jfxl9VRF77F/+38RDLR4EwxZQFTwHzqOV765ibypgAZx7gRSmpjH6VDi5dcdgNGC7
-         OpNngj3gqO6XRm8B0LD32RnqJ0DjVIpDf8DE9E+/3e4g56CxqCEs2ptCBg/gqb1KqmMX
-         M3q79ZK+caMYGlTve6i8UkrseYFogSZReeIDcorh6e0HFlVuYGk6P5A0z/NBmUmx6S9o
-         0E0A==
+        bh=XIkbDC0XkaJP8eLRzIG3VUQPdKlkk8A59MVkQijv4co=;
+        b=vtGeRPPytCeLK7D6wQ4rsN0G7pmgEA0LzPe2C3LqevOQAPDaIhlYAojUymEu/FQJFB
+         DJeYTWWRDrsnsj0VBvCevrGGhcLBORoZRIV22KZUP36q8DVIYOdVaA+K1IH0l46aHhhM
+         AUq/nkH3b08ywzLBr8U1lcMxQW4FoCyqBTOHgo03MKdFjLBF1KSXP/Rog5TYe++OJ/cS
+         mlNwUoCJa1SQjEbdMNGpqUHiT4CNCca0ijNOeEUdLignAbWQu07Vx95Qk1PuvbjeTJG7
+         EjcTq0iawMbVB64M6cZ7hs8r9lhsfNcvyE/G4BdiMWXZeopfeaGPoOeQNH89rw5SI28/
+         idEA==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id f14-20020ac8498e000000b0030511c5d7eesi3442108qtq.407.2022.06.13.06.27.09
+        by mx.google.com with ESMTPS id r15-20020a05620a298f00b006a6ad00145dsi5374692qkp.449.2022.06.13.06.28.03
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 13 Jun 2022 06:27:09 -0700 (PDT)
+        Mon, 13 Jun 2022 06:28:03 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:34108 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:37026 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1o0k60-0000Ft-Ph
-	for alex.bennee@linaro.org; Mon, 13 Jun 2022 09:27:08 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:59850)
+	id 1o0k6s-0002jI-LG
+	for alex.bennee@linaro.org; Mon, 13 Jun 2022 09:28:02 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:60102)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=yfRC=WU=kaod.org=clg@ozlabs.org>)
- id 1o0k55-0000FM-7p; Mon, 13 Jun 2022 09:26:11 -0400
-Received: from mail.ozlabs.org ([2404:9400:2221:ea00::3]:38827
+ id 1o0k5T-0000uN-To; Mon, 13 Jun 2022 09:26:35 -0400
+Received: from mail.ozlabs.org ([2404:9400:2221:ea00::3]:37425
  helo=gandalf.ozlabs.org)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=yfRC=WU=kaod.org=clg@ozlabs.org>)
- id 1o0k53-0004ST-5N; Mon, 13 Jun 2022 09:26:11 -0400
+ id 1o0k5R-0004bQ-ST; Mon, 13 Jun 2022 09:26:35 -0400
 Received: from gandalf.ozlabs.org (gandalf.ozlabs.org [150.107.74.76])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4LMC4p06qxz4yXX;
- Mon, 13 Jun 2022 23:26:02 +1000 (AEST)
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4LMC5M1mKRz4yZ9;
+ Mon, 13 Jun 2022 23:26:31 +1000 (AEST)
 Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
  (No client certificate requested)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4LMC4h4x11z4yXP;
- Mon, 13 Jun 2022 23:25:56 +1000 (AEST)
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4LMC5F6Xbjz4yZN;
+ Mon, 13 Jun 2022 23:26:25 +1000 (AEST)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
@@ -73,9 +73,9 @@ Cc: Peter Maydell <peter.maydell@linaro.org>, Joe Komlodi <komlodi@google.com>,
  Wainer dos Santos Moschetta <wainersm@redhat.com>,
  Beraldo Leal <bleal@redhat.com>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
-Subject: [PATCH v2 01/17] aspeed: Remove fake RTC device on ast2500-evb
-Date: Mon, 13 Jun 2022 15:25:23 +0200
-Message-Id: <20220613132539.2199772-2-clg@kaod.org>
+Subject: [PATCH v2 06/17] test/avocado/machine_aspeed.py: Add an I2C RTC test
+Date: Mon, 13 Jun 2022 15:25:28 +0200
+Message-Id: <20220613132539.2199772-7-clg@kaod.org>
 X-Mailer: git-send-email 2.35.3
 In-Reply-To: <20220613132539.2199772-1-clg@kaod.org>
 References: <20220613132539.2199772-1-clg@kaod.org>
@@ -104,32 +104,41 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Ic3+9GHtGiM+
+X-TUID: t79Ac6WYczCr
 
-The board has no such device. It might have been useful for some tests
-in the past, it's not anymore and the same can be achieved on the
-command line.
+Add an RTC device and check that the output of the hwclock command
+matches the current year.
 
+Reviewed-by: Joel Stanley <joel@jms.id.au>
 Signed-off-by: Cédric Le Goater <clg@kaod.org>
 ---
- hw/arm/aspeed.c | 4 ----
- 1 file changed, 4 deletions(-)
+ tests/avocado/machine_aspeed.py | 8 ++++++++
+ 1 file changed, 8 insertions(+)
 
-diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
-index 98dc185acd9a..c49772e2eb59 100644
---- a/hw/arm/aspeed.c
-+++ b/hw/arm/aspeed.c
-@@ -519,10 +519,6 @@ static void ast2500_evb_i2c_init(AspeedMachineState *bmc)
-     /* The AST2500 EVB expects a LM75 but a TMP105 is compatible */
-     i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 7),
-                      TYPE_TMP105, 0x4d);
--
--    /* The AST2500 EVB does not have an RTC. Let's pretend that one is
--     * plugged on the I2C bus header */
--    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 11), "ds1338", 0x32);
- }
+diff --git a/tests/avocado/machine_aspeed.py b/tests/avocado/machine_aspeed.py
+index 0a1ceec13eb1..3b8f784a57b6 100644
+--- a/tests/avocado/machine_aspeed.py
++++ b/tests/avocado/machine_aspeed.py
+@@ -149,6 +149,8 @@ def test_arm_ast2600_evb_builroot(self):
  
- static void ast2600_evb_i2c_init(AspeedMachineState *bmc)
+         self.vm.add_args('-device',
+                          'tmp105,bus=aspeed.i2c.bus.3,address=0x4d,id=tmp-test');
++        self.vm.add_args('-device',
++                         'ds1338,bus=aspeed.i2c.bus.3,address=0x32');
+         self.do_test_arm_aspeed_buidroot_start(image_path, '0xf00')
+ 
+         exec_command_and_wait_for_pattern(self,
+@@ -161,4 +163,10 @@ def test_arm_ast2600_evb_builroot(self):
+         exec_command_and_wait_for_pattern(self,
+                              'cat /sys/class/hwmon/hwmon0/temp1_input', '18000')
+ 
++        exec_command_and_wait_for_pattern(self,
++             'echo ds1307 0x32 > /sys/class/i2c-dev/i2c-3/device/new_device',
++             'i2c i2c-3: new_device: Instantiated device ds1307 at 0x32');
++        year = time.strftime("%Y")
++        exec_command_and_wait_for_pattern(self, 'hwclock -f /dev/rtc1', year);
++
+         self.do_test_arm_aspeed_buidroot_poweroff()
 -- 
 2.35.3
 

@@ -1,93 +1,118 @@
-Received: by 2002:a19:ee12:0:0:0:0:0 with SMTP id g18csp1395415lfb;
-        Mon, 13 Jun 2022 06:48:43 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJx2eMw5bgvf5X8M090L7NRq0NYKQqcQAhhZ7+jNBRx9Sj6X6kaxYcG/GCtefbvJzqc03QRH
-X-Received: by 2002:a05:622a:144e:b0:304:e73f:33ca with SMTP id v14-20020a05622a144e00b00304e73f33camr34840552qtx.96.1655128123153;
-        Mon, 13 Jun 2022 06:48:43 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1655128123; cv=none;
+Received: by 2002:a19:ee12:0:0:0:0:0 with SMTP id g18csp1395656lfb;
+        Mon, 13 Jun 2022 06:49:03 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxQO+jEuMGvu5SEEeEG61pbyvB0oo117rFVS8dCud6rgF3AEJ0+SEZF0EYvkcy+EhhffQNV
+X-Received: by 2002:a05:620a:2956:b0:6a7:3b7b:edea with SMTP id n22-20020a05620a295600b006a73b7bedeamr13202157qkp.520.1655128143831;
+        Mon, 13 Jun 2022 06:49:03 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1655128143; cv=none;
         d=google.com; s=arc-20160816;
-        b=fyRlcEx3yAe1LcBdkR1q2wixTA241rphGv3o2up/vO+1LfSWOxQ5Ck3WmZoScJdnxB
-         4jQoZc2TZEfFYt1skAfkSl24Qw+4uKyntzzzCktJCIWrfnwCSIV9WsF/lRjl8ecPO7Ct
-         kx2cq5aMi+SIHLP4izbV/WCSdPSzOqZuu7iJVUwfzHFLM0RswGDMzWS5k+gtJZkEVfv4
-         AhXPoseRwD1XURUsRn5mTphY6YJiv5rKPF+ZB++tQpDDgAL0ioan3vmKb6nbQ0LghBNw
-         aTe16VNewjPttaEKBELTCN91vuiGLGyrUSuYE+dHSBuaN/UJY6jZyPbhsEPK5FFWUhNY
-         Mp+Q==
+        b=O4mSPx/WqgT/XCFEHrPKycMYCxH1fZQi909U1GxmY482YpAsXToPjYIoM0zW3SFEJ3
+         4Gfz6PS1nH8IKdupqaWi6pOKKOuRCGQYYdFEhsERnrXyCUOSkTsu8aJfDj+07xmDfqWd
+         IVxV5XIOjAfZqpQSFbV+MV0ts7GTpezNsECAsae94MZYjRqYoCyuVxizDbe5oLL974R9
+         k7WoT8mPeXTWFAz4ktTgZeH2DrH5LsmilHS7vIfWRLnr6i1wrZigneuSSKrPRN/9YdQO
+         sfGJ49qMjgyKAosnKMgmSrQkOxJ5z07ALDs7KujDyVRPD5MXpw3lQeupbDsGLuos8ody
+         SwGA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from;
-        bh=Fezw9X8mh891nCSQLWLUPp149JpFxmjHOLif2p6ORrc=;
-        b=cNG5rqRS6whnrm2yiqmzuo+61yOtWmunUrpuOLDreiyxx0cnHZIuIBb4x/FN9rU3VY
-         rjQD7AZ2ylsCdWBuOc4tWoKmTVmKJwzVyy0+CUW/+Z6dUnJaw8DyVsUokSo7lfDg7CJb
-         Hwx+JE6yf//dObEE59rUr/N0OwIwODgCVpjxhQ8eeByg+IIrYrE8xQd4hQJ6XdkVYI4C
-         LqYfZ8RWFEjCc9+VOPFoIgV1XsxwzBKGW8OQD/ILhsFUa8laHQ1DJCPk6AuBFosGnLEE
-         6mdeLhjW+ewHO/9QY621mRnAqlxupbPKMF3J/lEb/lAGP9wMGucTaVbQisnsmk9YpGCC
-         naKg==
+        h=from:reply-to:sender:errors-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence
+         :content-transfer-encoding:in-reply-to:references:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=0WlLB5paIPKn+53k0BbuwxiI0r6SCi0NjjKxnCbfPzk=;
+        b=A5TSJNQQ2JjE6mWqJ3kW0ez4A8BGPeNgs8uH/b9CiRKwm1eKFo5V5cHgU9aUsOx8X2
+         EYqTbAClhKRzGkI0b5aah5BncEGJW+Ezms/6YXjimlKkwyOjO6mcAqwsSR9vMldXbime
+         qfO9G9kbxsr17w3LJH2jrM/fBiZSSc3dd+R+fBnl+hjvpzYZzFzxIEjehn/iFhDXOgrx
+         m5T29Zp3uZMWt+Lg63VtK/m4f4KUm6ONbaYq1Mdm6h87KpeGO3lUfkVSv8KTVscjtLlO
+         DPlidvweUYjw0KaezTFFUegke/koeSssK0uUeIFlEOGiSX28WK5FVrpYL+DohH6HOWBg
+         aziw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=fail header.i=@gmail.com header.s=20210112 header.b=gRcZuZrx;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id i8-20020ad45c68000000b004646640422csi4174439qvh.593.2022.06.13.06.48.43
+        by mx.google.com with ESMTPS id u6-20020a05620a454600b006a7093b6f64si5041086qkp.390.2022.06.13.06.49.03
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 13 Jun 2022 06:48:43 -0700 (PDT)
+        Mon, 13 Jun 2022 06:49:03 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:48388 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20210112 header.b=gRcZuZrx;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+Received: from localhost ([::1]:49468 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1o0kQr-0005Pz-JN
-	for alex.bennee@linaro.org; Mon, 13 Jun 2022 09:48:42 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:60552)
+	id 1o0kRD-0006EV-A0
+	for alex.bennee@linaro.org; Mon, 13 Jun 2022 09:49:03 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:35776)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <SRS0=yfRC=WU=kaod.org=clg@ozlabs.org>)
- id 1o0k6L-0002Rg-3A; Mon, 13 Jun 2022 09:27:29 -0400
-Received: from gandalf.ozlabs.org ([150.107.74.76]:41157)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <SRS0=yfRC=WU=kaod.org=clg@ozlabs.org>)
- id 1o0k6I-0004pq-T1; Mon, 13 Jun 2022 09:27:28 -0400
-Received: from gandalf.ozlabs.org (gandalf.ozlabs.org [150.107.74.76])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4LMC6N3Gzsz4yWH;
- Mon, 13 Jun 2022 23:27:24 +1000 (AEST)
-Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
- (No client certificate requested)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4LMC6H0lphz4yZB;
- Mon, 13 Jun 2022 23:27:18 +1000 (AEST)
-From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>, Joe Komlodi <komlodi@google.com>,
- Troy Lee <troy_lee@aspeedtech.com>, Jamin Lin <jamin_lin@aspeedtech.com>,
- Steven Lee <steven_lee@aspeedtech.com>,
- Klaus Jensen <k.jensen@samsung.com>, Peter Delevoryas <pdel@fb.com>,
- Corey Minyard <cminyard@mvista.com>,
- Jonathan Cameron <Jonathan.Cameron@huawei.com>,
- Damien Hedde <damien.hedde@greensocs.com>,
- Andrew Jeffery <andrew@aj.id.au>, Joel Stanley <joel@jms.id.au>,
- Cleber Rosa <crosa@redhat.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
- Wainer dos Santos Moschetta <wainersm@redhat.com>,
- Beraldo Leal <bleal@redhat.com>,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
-Subject: [PATCH v2 15/17] hw/i2c/aspeed: rework raise interrupt trace event
-Date: Mon, 13 Jun 2022 15:25:37 +0200
-Message-Id: <20220613132539.2199772-16-clg@kaod.org>
-X-Mailer: git-send-email 2.35.3
-In-Reply-To: <20220613132539.2199772-1-clg@kaod.org>
-References: <20220613132539.2199772-1-clg@kaod.org>
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1o0kLg-0001As-6D; Mon, 13 Jun 2022 09:43:20 -0400
+Received: from mail-ed1-x533.google.com ([2a00:1450:4864:20::533]:37590)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1o0kLe-0007sz-Jg; Mon, 13 Jun 2022 09:43:19 -0400
+Received: by mail-ed1-x533.google.com with SMTP id v19so7225601edd.4;
+ Mon, 13 Jun 2022 06:43:17 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=sender:message-id:date:mime-version:user-agent:subject
+ :content-language:to:references:from:in-reply-to
+ :content-transfer-encoding;
+ bh=0WlLB5paIPKn+53k0BbuwxiI0r6SCi0NjjKxnCbfPzk=;
+ b=gRcZuZrxFKb1cZoey528EkFyFOGkjnafYJOouEv5YJuPLcTmBe6oRRjfy7GproMOPO
+ gE06J/IM0mjSMJeWJsiFG8Pcq4tHs/dSkx0J9GwJYe7Gcr3E87HlgQnPqlDQkwI0OYQs
+ zroayp741qGmmcVx0z0uyRXD7HSBemXMGv3hjChdS6FMZMxnrzrKYm++q26iRGrLfzE3
+ /89MUveCR9U7uFS2hD99kyaWw9hRk35of22rDaZaGiJtA4QEa7gpRRb4boUUIx4kZHZ/
+ dszfamRt+fqCq8r9x3sZsq7eXbVJFuba/IiS8PLMt8J5iZ/TtYeon0wDrLbY3Mm+VWhu
+ fOsQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:sender:message-id:date:mime-version:user-agent
+ :subject:content-language:to:references:from:in-reply-to
+ :content-transfer-encoding;
+ bh=0WlLB5paIPKn+53k0BbuwxiI0r6SCi0NjjKxnCbfPzk=;
+ b=VgHjLybCvh+/VV+Q6oFN7dLMNhl352nPvxb77lnau9KmmDxIhZOKf0fdahfSWAq4e+
+ W9/81sT/EnWwKazsimL7XZ7ZQSP95zMHOcE5kMv21bdxRPYY3PKgBJA1S0A9/mSb7KYs
+ rwmwt+n5UJN6Ms3oWKQs1o6zzAyCtBKZHvPl26c84w2xbTeRhXI89FbItneSdPlCFVnF
+ MgHy6Z4qC64EFYPZM2H5d2zJ0dLd+XhDxB4oyF6VZE0kRScG3zQB1xjMPwNZncDO5MBq
+ pkyWE0Nt8hDclYA521YTZDJ/uiaCLYxrDJ4itqJCGlIAyK3NKr2ey7hwVMOW0E5SByHX
+ A8eA==
+X-Gm-Message-State: AOAM533MgxXOvv4Q5ZxQ+Yajl8fWk8bdkG10N8oGXc6UJwRP8DUktn2K
+ t4BZjCcAVsX605uNEqTq1Uw=
+X-Received: by 2002:a05:6402:50d0:b0:431:70e1:956 with SMTP id
+ h16-20020a05640250d000b0043170e10956mr40533473edb.205.1655127795719; 
+ Mon, 13 Jun 2022 06:43:15 -0700 (PDT)
+Received: from [192.168.1.115] ([185.126.107.38])
+ by smtp.gmail.com with ESMTPSA id
+ s13-20020a05640217cd00b0042dd85bd23bsm4991270edy.55.2022.06.13.06.43.13
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 13 Jun 2022 06:43:15 -0700 (PDT)
+Message-ID: <9c50bbb9-d8da-acba-a725-1531f142cc43@amsat.org>
+Date: Mon, 13 Jun 2022 15:43:12 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:91.0)
+ Gecko/20100101 Thunderbird/91.10.0
+Subject: Re: [PATCH 45/50] lasips2: use qdev gpio for output IRQ
+Content-Language: en-US
+To: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ richard.henderson@linaro.org, deller@gmx.de, mst@redhat.com,
+ pbonzini@redhat.com, peter.maydell@linaro.org, hpoussin@reactos.org,
+ aleksandar.rikalo@syrmia.com, jiaxun.yang@flygoat.com, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+References: <20220522181836.864-1-mark.cave-ayland@ilande.co.uk>
+ <20220522181836.864-46-mark.cave-ayland@ilande.co.uk>
+In-Reply-To: <20220522181836.864-46-mark.cave-ayland@ilande.co.uk>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=150.107.74.76;
- envelope-from=SRS0=yfRC=WU=kaod.org=clg@ozlabs.org; helo=gandalf.ozlabs.org
-X-Spam_score_int: -16
-X-Spam_score: -1.7
+Received-SPF: pass client-ip=2a00:1450:4864:20::533;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-ed1-x533.google.com
+X-Spam_score_int: -14
+X-Spam_score: -1.5
 X-Spam_bar: -
-X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9,
- HEADER_FROM_DIFFERENT_DOMAINS=0.249, SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
+X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
@@ -103,93 +128,18 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: lWSZEaxB6WWg
+Reply-to:  =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+From:  =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= via <qemu-devel@nongnu.org>
+X-TUID: Q1dqtNIYzlaK
 
-From: Klaus Jensen <k.jensen@samsung.com>
+On 22/5/22 20:18, Mark Cave-Ayland wrote:
+> This enables the IRQ to be wired up using qdev_connect_gpio_out() in
+> lasips2_initfn().
+> 
+> Signed-off-by: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
+> ---
+>   hw/input/lasips2.c         | 8 ++++----
+>   include/hw/input/lasips2.h | 2 ++
+>   2 files changed, 6 insertions(+), 4 deletions(-)
 
-Build a single string instead of having several parameters on the trace
-event.
-
-Suggested-by: Cédric Le Goater <clg@kaod.org>
-Signed-off-by: Klaus Jensen <k.jensen@samsung.com>
-[ clg: simplified trace buffer creation ]
-Message-Id: <20220601210831.67259-2-its@irrelevant.dk>
-Signed-off-by: Cédric Le Goater <clg@kaod.org>
----
- hw/i2c/aspeed_i2c.c | 34 ++++++++++++++++++++++------------
- hw/i2c/trace-events |  2 +-
- 2 files changed, 23 insertions(+), 13 deletions(-)
-
-diff --git a/hw/i2c/aspeed_i2c.c b/hw/i2c/aspeed_i2c.c
-index 4c798b70e4c3..43ac9491ec36 100644
---- a/hw/i2c/aspeed_i2c.c
-+++ b/hw/i2c/aspeed_i2c.c
-@@ -21,6 +21,7 @@
- #include "qemu/osdep.h"
- #include "hw/sysbus.h"
- #include "migration/vmstate.h"
-+#include "qemu/cutils.h"
- #include "qemu/log.h"
- #include "qemu/module.h"
- #include "qemu/error-report.h"
-@@ -38,23 +39,32 @@ static inline void aspeed_i2c_bus_raise_interrupt(AspeedI2CBus *bus)
-     uint32_t intr_ctrl_reg = aspeed_i2c_bus_intr_ctrl_offset(bus);
-     bool raise_irq;
- 
--    trace_aspeed_i2c_bus_raise_interrupt(bus->regs[reg_intr_sts],
--        aspeed_i2c_bus_pkt_mode_en(bus) &&
--        ARRAY_FIELD_EX32(bus->regs, I2CM_INTR_STS, PKT_CMD_DONE) ?
--                                                               "pktdone|" : "",
--        SHARED_ARRAY_FIELD_EX32(bus->regs, reg_intr_sts, TX_NAK) ? "nak|" : "",
--        SHARED_ARRAY_FIELD_EX32(bus->regs, reg_intr_sts, TX_ACK) ? "ack|" : "",
--        SHARED_ARRAY_FIELD_EX32(bus->regs, reg_intr_sts, RX_DONE) ? "done|"
--                                                                  : "",
--        SHARED_ARRAY_FIELD_EX32(bus->regs, reg_intr_sts, NORMAL_STOP) ?
--                                                                "normal|" : "",
--        SHARED_ARRAY_FIELD_EX32(bus->regs, reg_intr_sts, ABNORMAL) ? "abnormal"
--                                                                   : "");
-+    if (trace_event_get_state_backends(TRACE_ASPEED_I2C_BUS_RAISE_INTERRUPT)) {
-+        g_autofree char *buf = g_strdup_printf("%s%s%s%s%s%s",
-+               aspeed_i2c_bus_pkt_mode_en(bus) &&
-+               ARRAY_FIELD_EX32(bus->regs, I2CM_INTR_STS, PKT_CMD_DONE) ?
-+                                               "pktdone|" : "",
-+               SHARED_ARRAY_FIELD_EX32(bus->regs, reg_intr_sts, TX_NAK) ?
-+                                               "nak|" : "",
-+               SHARED_ARRAY_FIELD_EX32(bus->regs, reg_intr_sts, TX_ACK) ?
-+                                               "ack|" : "",
-+               SHARED_ARRAY_FIELD_EX32(bus->regs, reg_intr_sts, RX_DONE) ?
-+                                               "done|" : "",
-+               SHARED_ARRAY_FIELD_EX32(bus->regs, reg_intr_sts, NORMAL_STOP) ?
-+                                               "normal|" : "",
-+               SHARED_ARRAY_FIELD_EX32(bus->regs, reg_intr_sts, ABNORMAL) ?
-+                                               "abnormal"  : "");
-+
-+           trace_aspeed_i2c_bus_raise_interrupt(bus->regs[reg_intr_sts], buf);
-+    }
-+
-     raise_irq = bus->regs[reg_intr_sts] & bus->regs[intr_ctrl_reg];
-+
-     /* In packet mode we don't mask off INTR_STS */
-     if (!aspeed_i2c_bus_pkt_mode_en(bus)) {
-         bus->regs[reg_intr_sts] &= bus->regs[intr_ctrl_reg];
-     }
-+
-     if (raise_irq) {
-         bus->controller->intr_status |= 1 << bus->id;
-         qemu_irq_raise(aic->bus_get_irq(bus));
-diff --git a/hw/i2c/trace-events b/hw/i2c/trace-events
-index 85e4bddff936..209275ed2dc8 100644
---- a/hw/i2c/trace-events
-+++ b/hw/i2c/trace-events
-@@ -9,7 +9,7 @@ i2c_recv(uint8_t address, uint8_t data) "recv(addr:0x%02x) data:0x%02x"
- # aspeed_i2c.c
- 
- aspeed_i2c_bus_cmd(uint32_t cmd, const char *cmd_flags, uint32_t count, uint32_t intr_status) "handling cmd=0x%x %s count=%d intr=0x%x"
--aspeed_i2c_bus_raise_interrupt(uint32_t intr_status, const char *str1, const char *str2, const char *str3, const char *str4, const char *str5, const char *str6) "handled intr=0x%x %s%s%s%s%s%s"
-+aspeed_i2c_bus_raise_interrupt(uint32_t intr_status, const char *s) "handled intr=0x%x %s"
- aspeed_i2c_bus_read(uint32_t busid, uint64_t offset, unsigned size, uint64_t value) "bus[%d]: To 0x%" PRIx64 " of size %u: 0x%" PRIx64
- aspeed_i2c_bus_write(uint32_t busid, uint64_t offset, unsigned size, uint64_t value) "bus[%d]: To 0x%" PRIx64 " of size %u: 0x%" PRIx64
- aspeed_i2c_bus_send(const char *mode, int i, int count, uint8_t byte) "%s send %d/%d 0x%02x"
--- 
-2.35.3
-
+Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>

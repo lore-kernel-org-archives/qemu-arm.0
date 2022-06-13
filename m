@@ -1,213 +1,377 @@
-Received: by 2002:a19:ee12:0:0:0:0:0 with SMTP id g18csp304595lfb;
-        Sat, 11 Jun 2022 08:45:17 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxvuwOCwaoiv9suwDJJH1VOftvK2uLyQqsSUyb5dhGBIYYH+DGv3GvQFufyiftOXZoVEA8u
-X-Received: by 2002:a05:6214:ac5:b0:468:d587:5cc7 with SMTP id g5-20020a0562140ac500b00468d5875cc7mr32052648qvi.117.1654962316875;
-        Sat, 11 Jun 2022 08:45:16 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1654962316; cv=none;
+Received: by 2002:a19:ee12:0:0:0:0:0 with SMTP id g18csp1244247lfb;
+        Mon, 13 Jun 2022 02:17:51 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJx5ZKUkvGJaxzqFuhb1HIf/rsDsqSi/DxYQ+YPr1mpO4zHmmGqIcAa78MRnWV1DU9E/E9Ly
+X-Received: by 2002:a37:b58:0:b0:6a6:9f80:5ff7 with SMTP id 85-20020a370b58000000b006a69f805ff7mr34209683qkl.697.1655111871673;
+        Mon, 13 Jun 2022 02:17:51 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1655111871; cv=none;
         d=google.com; s=arc-20160816;
-        b=Y1kbjlNBvhxw8vKsy+yoBxIy1FMsaDxnRxUnNb7PZYzzJdQXW26fcD1g4OQ82jMbKl
-         aa9pKKzhm38lZvNatMs5GFCQb0owwf38mBHyyXCevAMrfCuZsgUfMQGfmdH6MiekM5jH
-         klOiqPs/TFcWN8LWo6pZ/JkzsIt1dEpJ0JlBGJ+gf9C6U8eo/BYUNxaoAq4Cf4zVcVX9
-         BUMAEVP/cYevfVlkRyj3Nm1iiHYnVy5xpcQHRfMGTotw3Zgr3Ip6O8pqeRKSTlfv1ORZ
-         IiMh9uetKpbThW4ybzlN4K7J8swyot562tjk5y11bnIVoZFCjr3ETSU8ueY9CLAEyeix
-         +WSA==
+        b=uPVHTOtKynC88Jfe8eAJNSJ70CqhSAPgXsM0uNDjmfawpvX++UuNLyJtXLLupBgNI3
+         F66hUbU1ZbfUSKTQtMcRW8EAjlxpkSjZgs7R2PI3jnBecO5KCI+82K4AppKFGSID78VZ
+         schxdW7TDkEIWvf1yYYQ1jSmi8/IkUiBrPrla+KzJDysMYSsOhNqsCaArFoO1jBt5dbs
+         rH+YsmVJMCZy7/Sy8/POBCZsPCsny9rjXgNXIpxZrfmTne5fPvG5OYuuTRH4EMooXtxr
+         cts79HqUBSHmiZk/AatgQWUQ3VMmJaal+cOMZDh8POcr8eibJkkrBXywSYCOTswCGYvF
+         +MaQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:in-reply-to:references:cc:to:from
-         :content-language:user-agent:mime-version:date:message-id
+        h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:cc:to:subject
          :dkim-signature;
-        bh=PzGOjgSatpZMu780VJSgs0LlhuHE+UFLy63x3Xp1V2s=;
-        b=IOQ1pq1ayeFRe8mVYvaWRvcpjWxe0up2O0FGK70BPps8njZXe/O5zyriWOiqUCLcDn
-         aV//x05GHAYZTjZxQtNcY/9xpJ+N34RGJLd0s6s+2uW81ncXcU+Kf11gWAqf8M65gx47
-         1A/0UPd4blDz93t8GJJZLTWjcWscPtDJQ9IWQ6Apql3s3V49MjtwiKGLAD0mTyIrXEf7
-         flcHOPhCJvK6A0Mk+fFwQISx1TbSSafE8diZBhFKgQHjrlGc7lkPshWIKxODSIq4QHmk
-         acSdQgK6eg5zkakkeRvhr0gz5zsbcxlqEfuDzQL26MpbJQSSdrwV1AdIo94isMAkwUuv
-         MsaA==
+        bh=Op55wPdILNVSGxib4ODB4ss9KRB81XlY0o1TgoXFizM=;
+        b=0XHNFDblIFjPzZMwhn8kIpxTY8lIp5uedjfD8x/jAv3JpEsTGI47DQCHvyVNrvjF1x
+         Sc/wW7wheWPR8Im2AgWpAMM0vpc/IQqlEVT/G8KV569LPKzrd+QQH1qRtrgO15yJt8Yv
+         sDrUtuvAAMGmlTys/159AtmbwxfrNk1l3yWKx+r3gSsYTNkzg/ddUCWWrnlemf2UzQl+
+         7TVnvG5BJvhup7s5kMcE6Ku1C/dqZhHjzUZOGOnS2qEdi2tm881Yjo/iQS+vbioIeRBy
+         xmT9SIVsW+H48yoZ3z1qpWBgdBUFcAYVGMMrsj8KwVitPiUnFh7oWNVa8qgmFNAg6A4Y
+         HCrQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@ilande.co.uk header.s=20220518 header.b=naidIl6I;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=ilande.co.uk
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=BsKqAbQI;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id y9-20020a05622a004900b003052b819622si571622qtw.659.2022.06.11.08.45.16
+        by mx.google.com with ESMTPS id y15-20020a05620a44cf00b006a371ef5929si4802048qkp.537.2022.06.13.02.17.51
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 11 Jun 2022 08:45:16 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 13 Jun 2022 02:17:51 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@ilande.co.uk header.s=20220518 header.b=naidIl6I;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=ilande.co.uk
-Received: from localhost ([::1]:49658 helo=lists1p.gnu.org)
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=BsKqAbQI;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:50324 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1o03Ia-0007Zt-Bi
-	for alex.bennee@linaro.org; Sat, 11 Jun 2022 11:45:16 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34562)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1o0gCk-0005Gq-UJ
+	for alex.bennee@linaro.org; Mon, 13 Jun 2022 05:17:51 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38820)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mark.cave-ayland@ilande.co.uk>)
- id 1o03II-0007Zb-DT; Sat, 11 Jun 2022 11:44:58 -0400
-Received: from mail.ilande.co.uk ([2001:41c9:1:41f::167]:51342)
+ (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1o0g7R-0002pe-BC
+ for qemu-devel@nongnu.org; Mon, 13 Jun 2022 05:12:21 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:36402)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mark.cave-ayland@ilande.co.uk>)
- id 1o03IG-0004bW-Qz; Sat, 11 Jun 2022 11:44:58 -0400
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=ilande.co.uk; s=20220518; h=Subject:Content-Transfer-Encoding:Content-Type:
- In-Reply-To:References:Cc:To:From:MIME-Version:Date:Message-ID:Sender:
- Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
- :Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
- List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=PzGOjgSatpZMu780VJSgs0LlhuHE+UFLy63x3Xp1V2s=; b=naidIl6IRYEZPVKy6lAN9Ad5hq
- hjpPIkmNHP279rOEuVh0KJsibdcbuRr5hq3/mlxzwyBHY5p1cRCvVOCWoxMDTW+4l5wk2DafxCBHT
- mEA3YDPki+ciH7ln6yJpxNWq6tBAa6jJZR1qNlVYjWA0SvFV+qJyPoR6fql8gHh+GXy/wIsX3l7UB
- 8lZJcOsro66e0MlpHWblmxf0kA3kP+UgQbKE1g6F87YNETXJAT7FAjtnzCd2+fPLwzds0aS8Hmm+J
- Y7YYVgVIah3pHUpaYxEpUIGp/jk1nxV5ZPhcnHRZUjMeOZs/nPukfeZs3Vn3m/AunwptpxDMZmoFq
- /cVPtSkGHBtKWXRhaS6TcVDR7t47iO+66TW4yd38vF0943LAg9MOZhBT7GIwUFnIl9G9mttfkikoG
- P14nE+WlyOJc5enaTohowVNnzyUO0KT2zS8g2McfrHxBWCrzjO/4TNBcExqA+NJKqzvel6KxUswOs
- mX+ccIKNMkbKtEGX/0W+oIxW/G6zfQtDdN9Z0eSZWl9QaaOUi6GLWhmZvfIRV760uJgPbhECnpH/J
- mJxmhn4a4B4f7UPhfedIL6fhZRJJ2maQqyleQiYt+P4+bLVtXeYpqY1GL+CLKK1bnqIlUqtn8slT1
- E8w1zmIUPvsbwDtwfQRmmJROwhrkusmnEItT2aKvI=;
-Received: from [2a00:23c4:8ba4:e500:b82f:56f9:46d7:80ab]
- by mail.ilande.co.uk with esmtpsa (TLS1.3:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.92) (envelope-from <mark.cave-ayland@ilande.co.uk>)
- id 1o03Gu-000Ano-KM; Sat, 11 Jun 2022 16:43:36 +0100
-Message-ID: <a425db75-5636-8b29-26d2-9bef52c8eb25@ilande.co.uk>
-Date: Sat, 11 Jun 2022 16:44:36 +0100
+ (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1o0g7P-0004lA-47
+ for qemu-devel@nongnu.org; Mon, 13 Jun 2022 05:12:21 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1655111537;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=Op55wPdILNVSGxib4ODB4ss9KRB81XlY0o1TgoXFizM=;
+ b=BsKqAbQIPGZls7cw3MsW69DYEOaVlHQzhC0kWY5CUIIwCsCUn3dtURwjoqJGoWoj+VhfEL
+ i0IfX7IFVIym60wPM7Ibh+VrLd1/S9P0R9GPUN1mOvQwXhQQ1h0HG0MmpzrBtodS/fFSJX
+ TBOI6TXDDGbI9t/xxcAb/Va+cXVcEiM=
+Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
+ [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-44-Eoj-0_D1NYWCP8Oz9nPT2w-1; Mon, 13 Jun 2022 05:12:15 -0400
+X-MC-Unique: Eoj-0_D1NYWCP8Oz9nPT2w-1
+Received: from smtp.corp.redhat.com (int-mx10.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.10])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 697AA106655F;
+ Mon, 13 Jun 2022 09:12:15 +0000 (UTC)
+Received: from [10.72.12.21] (ovpn-12-21.pek2.redhat.com [10.72.12.21])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 4373A492C3B;
+ Mon, 13 Jun 2022 09:12:03 +0000 (UTC)
+Subject: Re: [PATCH 2/3] hw/acpi/aml-build: Fix {socket, cluster, core} IDs in
+ PPTT
+To: Igor Mammedov <imammedo@redhat.com>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, mst@redhat.com,
+ ani@anisinha.ca, drjones@redhat.com, wangyanan55@huawei.com,
+ Jonathan.Cameron@Huawei.com, peter.maydell@linaro.org, berrange@redhat.com,
+ thuth@redhat.com, eduardo@habkost.net, lvivier@redhat.com,
+ zhenyzha@redhat.com, shan.gavin@gmail.com
+References: <20220518092141.1050852-1-gshan@redhat.com>
+ <20220518092141.1050852-3-gshan@redhat.com>
+ <20220526142512.32129b2e@redhat.com>
+ <b2e11fe3-6590-ec7c-a437-7b4c2b66d359@redhat.com>
+ <20220609180018.7b12a527@redhat.com>
+From: Gavin Shan <gshan@redhat.com>
+Message-ID: <b592429f-8989-4ba7-3655-4207fcd433d2@redhat.com>
+Date: Mon, 13 Jun 2022 17:11:55 +0800
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.2.0
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.10.0
+In-Reply-To: <20220609180018.7b12a527@redhat.com>
+Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Language: en-US
-From: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: richard.henderson@linaro.org, deller@gmx.de, mst@redhat.com,
- pbonzini@redhat.com, hpoussin@reactos.org, aleksandar.rikalo@syrmia.com,
- f4bug@amsat.org, jiaxun.yang@flygoat.com, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
-References: <20220522181836.864-1-mark.cave-ayland@ilande.co.uk>
- <20220522181836.864-46-mark.cave-ayland@ilande.co.uk>
- <CAFEAcA9CxLKNZzfvaoUFSRtykEymu23er+zj=7GA1V2nRtcU9A@mail.gmail.com>
- <939ffd58-3a89-ea5b-157d-d4a9bd4dffa4@ilande.co.uk>
-In-Reply-To: <939ffd58-3a89-ea5b-157d-d4a9bd4dffa4@ilande.co.uk>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-SA-Exim-Connect-IP: 2a00:23c4:8ba4:e500:b82f:56f9:46d7:80ab
-X-SA-Exim-Mail-From: mark.cave-ayland@ilande.co.uk
-Subject: Re: [PATCH 45/50] lasips2: use qdev gpio for output IRQ
-X-SA-Exim-Version: 4.2.1 (built Wed, 08 May 2019 21:11:16 +0000)
-X-SA-Exim-Scanned: Yes (on mail.ilande.co.uk)
-Received-SPF: pass client-ip=2001:41c9:1:41f::167;
- envelope-from=mark.cave-ayland@ilande.co.uk; helo=mail.ilande.co.uk
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.85 on 10.11.54.10
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=gshan@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -21
+X-Spam_score: -2.2
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.082,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: UQ71p8hnnMpn
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Reply-To: Gavin Shan <gshan@redhat.com>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: hdFMut1UhOTY
 
-On 10/06/2022 08:17, Mark Cave-Ayland wrote:
+Hi Igor,
 
-> On 09/06/2022 12:18, Peter Maydell wrote:
-> 
->> On Sun, 22 May 2022 at 19:20, Mark Cave-Ayland
->> <mark.cave-ayland@ilande.co.uk> wrote:
+On 6/10/22 12:00 AM, Igor Mammedov wrote:
+> On Thu, 26 May 2022 22:40:05 +0800
+> Gavin Shan <gshan@redhat.com> wrote:
+>> On 5/26/22 8:25 PM, Igor Mammedov wrote:
+>>> On Wed, 18 May 2022 17:21:40 +0800
+>>> Gavin Shan <gshan@redhat.com> wrote:
+>>>    
+>>>> The {socket, cluster, core} IDs detected from Linux guest aren't
+>>>> matching with what have been provided in PPTT. The flag used for
+>>>> 'ACPI Processor ID valid' is missed for {socket, cluster, core}
+>>>> nodes.
 >>>
->>> This enables the IRQ to be wired up using qdev_connect_gpio_out() in
->>> lasips2_initfn().
->>>
->>> Signed-off-by: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
->>> ---
->>>   hw/input/lasips2.c         | 8 ++++----
->>>   include/hw/input/lasips2.h | 2 ++
->>>   2 files changed, 6 insertions(+), 4 deletions(-)
->>>
->>> diff --git a/hw/input/lasips2.c b/hw/input/lasips2.c
->>> index 6849b71e5c..644cf70955 100644
->>> --- a/hw/input/lasips2.c
->>> +++ b/hw/input/lasips2.c
->>> @@ -247,16 +247,14 @@ static void lasips2_port_set_irq(void *opaque, int level)
->>>
->>>   LASIPS2State *lasips2_initfn(hwaddr base, qemu_irq irq)
->>>   {
->>> -    LASIPS2State *s;
->>>       DeviceState *dev;
->>>
->>>       dev = qdev_new(TYPE_LASIPS2);
->>>       qdev_prop_set_uint64(dev, "base", base);
->>>       sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), &error_fatal);
->>> -    s = LASIPS2(dev);
->>> +    qdev_connect_gpio_out(dev, LASIPS2_IRQ, irq);
->>>
->>> -    s->irq = irq;
->>> -    return s;
->>> +    return LASIPS2(dev);
->>>   }
->>>
->>>   static void lasips2_realize(DeviceState *dev, Error **errp)
->>> @@ -285,6 +283,8 @@ static void lasips2_init(Object *obj)
->>>
->>>       sysbus_init_mmio(SYS_BUS_DEVICE(obj), &s->kbd.reg);
->>>       sysbus_init_mmio(SYS_BUS_DEVICE(obj), &s->mouse.reg);
->>> +
->>> +    qdev_init_gpio_out(DEVICE(obj), &s->irq, 1);
->>>   }
->>>
->>>   static Property lasips2_properties[] = {
->>> diff --git a/include/hw/input/lasips2.h b/include/hw/input/lasips2.h
->>> index 7e4437b925..d3e9719d65 100644
->>> --- a/include/hw/input/lasips2.h
->>> +++ b/include/hw/input/lasips2.h
->>> @@ -22,6 +22,8 @@ typedef struct LASIPS2Port {
->>>       bool irq;
->>>   } LASIPS2Port;
->>>
->>> +#define LASIPS2_IRQ    0
+>>> To permit this flag set  on no leaf nodes we have to have
+>>> a corresponding containers built for them in DSDT so that
+>>> 'ACPI Processor ID' could be matched with containers '_UID's.
+>>> If we don not build such containers then setting this flag is
+>>> not correct. And I don't recall QEMU building CPU hierarchy
+>>> in DSDT.
+>>>    
 >>
->> If you find yourself #defining names for IRQ lines then this is
->> probably a sign you should be using named GPIO lines :-)
+>> It's true that we don't have containers in DSDT. In Linux implementation,
+>> the corresponding IDs are fetched if 'ACPI Processor ID valid' is set in
+>> PPTT node (entry), without checking DSDT table.
 > 
-> Yeah that's something I've done a few times here, mainly to have just one "set IRQ" 
-> function rather a separate one for both keyboard and mouse. It takes a bit more work, 
-> but I can certainly separate them out.
-
-Looking at this again, the gpio being defined here actually is the (only) lasips2 
-output IRQ, and so should be left unnamed.
-
-The reason for adding LASIPS2_IRQ was so that the gpio connection process looked like:
-
-     qdev_connect_gpio_out(dev, LASIPS2_IRQ, irq);
-
-instead of:
-
-     qdev_connect_gpio_out(dev, 0, irq);
-
-Would you still prefer for me to simply hardcode 0 here and drop the LASIPS2_IRQ 
-define in this case since there is only one output IRQ?
-
->> Alternatively, maybe use sysbus_init_irq()? By convention the
->> only sysbus IRQ on a device is generally "its IRQ line".
+> linux can makeup container IDs and it is fine as long as it
+> does that consistently
 > 
-> Thinking longer term about sysbus, I can see that sysbus_init_irq() would be one of 
-> the top entries on my list of things to go. For that reason I'd like to stick to 
-> using gpios here :)
 
+Ok. I think it's fine except that the container IDs aren't readable, because
+the offset of PPTT entries are taken as the container IDs.
 
-ATB,
+>> I don't know how the PPTT entry is linked to DSDT for _UID, after rechecking
+>> ACPI specification. I was thinking 'Private Resources' fields are used for
+>> the linking, but I should be wrong after checking PPTT tables on my host.
+>> I'm not sure if you have idea how PPTT entry (node) is linked with one
+>> specific device in DSDT table?
+> 
+> from spec description of 'ACPI Processor ID valid' flag:
+> "
+> For non-leaf entries in the processor topology, the ACPI Pro-
+> cessor ID entry can relate to a Processor container in the
+> namespace. The processor container will have a matching ID
+> value returned through the _UID method. As not every pro-
+> cessor hierarchy node structure in PPTT may have a matching
+> processor container, this flag indicates whether the ACPI pro-
+> cessor ID points to valid entry.
+> "
+> 
+> i.e. nothing to do with private resources
+> on can set this flag for a container only if there is
+> a container device in DSDT with _UID matching 'ACPI Processor ID'
+> in PPTT entry. Other possibility for setting this flag
+> is that processor is described in MADT (which is unlikely for
+> for a container)
+> 
 
-Mark.
+Agreed. I don't think the private resources are relevant to
+the IDs. However, I don't understand how the DSDT is linked with
+PPTT in regard of the container IDs.
+
+>> On my host, one of the cluster node resides at offset 10B0h and it's ID
+>> has been marked as valid. The 'Private Resources' fields point to the
+>> type-1 cache structures, which resides in PPTT table either. The cluster
+>> ID ('0x109') isn't appearing in DSDT table.
+> 
+> looks like they are cheating or spec is wrong
+> 
+> PS:
+> one of the reasons we added PPTT table is to avoid building
+> CPU topology hierarchy in DSDT.
+> 
+
+Yes, I don't think the spec is clear enough in this regard. Anyway,
+I checked PPTT table on my host, where the container IDs are specified
+by PPTT table entries without corresponding entries in DSDT.
+
+>>
+>> [C9Ch 3228   1]                Subtable Type : 01 [Cache Type]
+>> [C9Dh 3229   1]                       Length : 18
+>> [C9Eh 3230   2]                     Reserved : 0000
+>> [CA0h 3232   4]        Flags (decoded below) : 0000005F
+>>                                     Size valid : 1
+>>                           Number of Sets valid : 1
+>>                            Associativity valid : 1
+>>                          Allocation Type valid : 1
+>>                               Cache Type valid : 1
+>>                             Write Policy valid : 0
+>>                                Line Size valid : 1
+>>                                 Cache ID valid : 0
+>>                                  :
+>>                                  :
+>> [CB4h 3252   1]                Subtable Type : 01 [Cache Type]
+>> [CB5h 3253   1]                       Length : 18
+>> [CB6h 3254   2]                     Reserved : 0000
+>> [CB8h 3256   4]        Flags (decoded below) : 0000007F
+>>                                     Size valid : 1
+>>                           Number of Sets valid : 1
+>>                            Associativity valid : 1
+>>                          Allocation Type valid : 1
+>>                               Cache Type valid : 1
+>>                             Write Policy valid : 1
+>>                                Line Size valid : 1
+>>                                 Cache ID valid : 0
+>> [CBCh 3260   4]          Next Level of Cache : 00000CCC
+>>                                    :
+>>                                    :
+>> [10B0h 4272   1]                Subtable Type : 00 [Processor Hierarchy Node]
+>> [10B1h 4273   1]                       Length : 1C
+>> [10B2h 4274   2]                     Reserved : 0000
+>> [10B4h 4276   4]        Flags (decoded below) : 00000002
+>>                               Physical package : 0
+>>                        ACPI Processor ID valid : 1
+>>                          Processor is a thread : 0
+>>                                 Node is a leaf : 0
+>>                       Identical Implementation : 0
+>> [10B8h 4280   4]                       Parent : 00000C6C
+>> [10BCh 4284   4]            ACPI Processor ID : 00000109
+>> [10C0h 4288   4]      Private Resource Number : 00000002
+>> [10C4h 4292   4]             Private Resource : 00000C9C
+>> [10C8h 4296   4]             Private Resource : 00000CB4
+>>
+>> [gwshan@gshan tmp]$ grep -i 109 dsdt.dsl
+>> [gwshan@gshan tmp]$ grep -i 265 dsdt.dsl
+>>
+>>
+>>>> In this case, Linux guest takes the offset between the
+>>>> node and PPTT header as the corresponding IDs, as the following
+>>>> logs show.
+>>>
+>>> perhaps it's kernel which should be fixed to handle
+>>> not set 'ACPI Processor ID valid' correctly.
+>>>    
+>>
+>> This case is already handled by kernel. If 'ACPI Processor ID valid'
+>> flag is missed, the offset between PPTT node and header is taken as
+>> the ID. It's correct behaviour because 'ACPI Processor ID valid' flag
+>> isn't mandatory for PPTT nodes. The problem is that the offset isn't
+>> the desired ID, which is not understandable and mismatch with the
+>> ID (value) we feed to PPTT table in QEMU.
+> 
+> as long as linux can match resources different IDs are fine.
+> So if it's not a bug, I'd leave it alone.
+> 
+
+Ok. So lets ignore the series. If we need, we may revisit this
+series in the future.
+
+>>>>     /home/gavin/sandbox/qemu.main/build/qemu-system-aarch64    \
+>>>>     -accel kvm -machine virt,gic-version=host -cpu host        \
+>>>>     -smp 8,sockets=2,clusters=2,cores=2,threads=1
+>>>>       :
+>>>>
+>>>>     # cd /sys/devices/system/cpu
+>>>>     # for i in `seq 0 15`; do cat cpu$i/topology/physical_package_id; done
+>>>>       36  36  36  36  36  36  36  36
+>>>>       336 336 336 336 336 336 336 336
+>>>>     # for i in `seq 0 15`; do cat cpu$i/topology/cluster_id; done
+>>>>       56  56  56  56  196 196 196 196
+>>>>       356 356 356 356 496 496 496 496
+>>>>     # for i in `seq 0 15`; do cat cpu$i/topology/core_id; done
+>>>>       76  76  136 136 216 216 276 276
+>>>>       376 376 436 436 516 516 576 576
+>>>>
+>>>> This fixes the issue by setting 'ACPI Processor ID valid' flag for
+>>>> {socket, cluster, core} nodes. With this applied, the IDs are exactly
+>>>> what have been provided in PPTT.
+>>>>
+>>>>     # for i in `seq 0 15`; do cat cpu$i/topology/physical_package_id; done
+>>>>     0 0 0 0 0 0 0 0
+>>>>     1 1 1 1 1 1 1 1
+>>>>     # for i in `seq 0 15`; do cat cpu$i/topology/cluster_id; done
+>>>>     0 0 0 0 1 1 1 1
+>>>>     0 0 0 0 1 1 1 1
+>>>>     # for i in `seq 0 15`; do cat cpu$i/topology/core_id; done
+>>>>     0 0 1 1 0 0 1 1
+>>>>     0 0 1 1 0 0 1 1
+> 
+> if you look at above, linux generated unique IDs for each node
+> while with your patch IDs are not unique for cluster/core groups
+> (i.e. you have only 2 clusters while in fact there are 4 total)
+> 
+> Should ID's in cpu$i/topology be unique or not, I don't really know.
+> Try to see how linux uses those values and if they are supposed
+> to be unique.
+> 
+> If you set flag to valid and provide DSDT containers
+> then you will be forced to generate _unique_ (within
+> the same _HID namespace) _UIDs to conform to the spec.
+> 
+
+I don't think it's required to have differentiated IDs, meaning the
+IDs for multiple CPUs can be same. Note that one CPU is identified by
+the combination of {socket,cluster,core,thread} IDs, instead of a
+single ID.
+
+According to the spec, it's needed to present containers IDs
+in DSDT. However, the spec doesn't state how this can be done
+clearly. As I said above, lets ignore the improvement in this
+series for now and we may revisit this series in the future,
+if needed.
+
+> 
+>>>> Signed-off-by: Gavin Shan <gshan@redhat.com>
+>>>> ---
+>>>>    hw/acpi/aml-build.c | 9 ++++++---
+>>>>    1 file changed, 6 insertions(+), 3 deletions(-)
+>>>>
+>>>> diff --git a/hw/acpi/aml-build.c b/hw/acpi/aml-build.c
+>>>> index e6bfac95c7..89f191fd3b 100644
+>>>> --- a/hw/acpi/aml-build.c
+>>>> +++ b/hw/acpi/aml-build.c
+>>>> @@ -2026,7 +2026,8 @@ void build_pptt(GArray *table_data, BIOSLinker *linker, MachineState *ms,
+>>>>                core_id = -1;
+>>>>                socket_offset = table_data->len - pptt_start;
+>>>>                build_processor_hierarchy_node(table_data,
+>>>> -                (1 << 0), /* Physical package */
+>>>> +                (1 << 0) | /* Physical package */
+>>>> +                (1 << 1),  /* ACPI Processor ID valid */
+>>>>                    0, socket_id, NULL, 0);
+>>>>            }
+>>>>    
+>>>> @@ -2037,7 +2038,8 @@ void build_pptt(GArray *table_data, BIOSLinker *linker, MachineState *ms,
+>>>>                    core_id = -1;
+>>>>                    cluster_offset = table_data->len - pptt_start;
+>>>>                    build_processor_hierarchy_node(table_data,
+>>>> -                    (0 << 0), /* Not a physical package */
+>>>> +                    (0 << 0) | /* Not a physical package */
+>>>> +                    (1 << 1),  /* ACPI Processor ID valid */
+>>>>                        socket_offset, cluster_id, NULL, 0);
+>>>>                }
+>>>>            } else {
+>>>> @@ -2055,7 +2057,8 @@ void build_pptt(GArray *table_data, BIOSLinker *linker, MachineState *ms,
+>>>>                    core_id = cpus->cpus[n].props.core_id;
+>>>>                    core_offset = table_data->len - pptt_start;
+>>>>                    build_processor_hierarchy_node(table_data,
+>>>> -                    (0 << 0), /* Not a physical package */
+>>>> +                    (0 << 0) | /* Not a physical package */
+>>>> +                    (1 << 1),  /* ACPI Processor ID valid */
+>>>>                        cluster_offset, core_id, NULL, 0);
+>>>>                }
+>>>>      
+>>>    
+
+Thanks,
+Gavin
+

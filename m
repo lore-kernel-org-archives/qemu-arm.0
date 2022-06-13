@@ -1,63 +1,61 @@
-Received: by 2002:a19:ee12:0:0:0:0:0 with SMTP id g18csp1386303lfb;
-        Mon, 13 Jun 2022 06:34:27 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyhsN5AA+ZWt19xtgm9G5F6t4hSRbjk5nDQ0K29X4MOJGZq9QwOmPdK8WNXmgqVmEv2jsPM
-X-Received: by 2002:a05:622a:514:b0:305:21a3:fe12 with SMTP id l20-20020a05622a051400b0030521a3fe12mr10472536qtx.107.1655127267813;
-        Mon, 13 Jun 2022 06:34:27 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1655127267; cv=none;
+Received: by 2002:a19:ee12:0:0:0:0:0 with SMTP id g18csp1387400lfb;
+        Mon, 13 Jun 2022 06:36:07 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyN68dAL2BxTpYSMfTZd4TkLnNN9k30zEnAqIkuURwHue9DY+tu/62lvWbjs/uIsyx9Y7Ys
+X-Received: by 2002:a05:620a:4591:b0:6a7:5a82:3d2d with SMTP id bp17-20020a05620a459100b006a75a823d2dmr9892330qkb.694.1655127366733;
+        Mon, 13 Jun 2022 06:36:06 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1655127366; cv=none;
         d=google.com; s=arc-20160816;
-        b=a5NyxcxKw1r9CzqlzfrkLMYyHK6xcs2BGuq2B4+88QGM9oX8SsR2kAxicuFfmP09l/
-         vPPlfIsa+YIv44uVGgcIh6RWZWJjGOU2HRd28A9fgP8DSW5etnD+prAblEdJc/bGThf9
-         JBFMSVSJZJh4UmJIMs8QYypfJ+LPICTbUwCR6tMfv5AMmXSPBFVqowgJh/FjSg+cnLgF
-         LgwD3mXWBF+Vz//WCp09uo1Y23AC5I+uHlyzQEytae5lQGIsSYna8i+BHXCHXUU1905X
-         9fasUUfJQzJkxQmRtMIA5kN/GUeP7/8r1wMAkj6Ru8QoBaf9b6AD9EO25w9BCOn8gK5S
-         OpLw==
+        b=YMzBnf+9Si0Unm9y5WyvytMeGqLTuxbIxIy1XnmCF/39F6Ku+fNCTu2zuAWsNFGKMl
+         UiJhxEr0A2MFEdzPbl1YCAZTTfAWDxLKsuguQGiSbpnzc+otywEWOxskEjgXck7k9vC5
+         cz8LXD/RZadmP1r2LGwau3BgN2AgQRLPJPk8wQf0djfIWmwjYZ97YLIwOZItC8E6SwhV
+         ZJDcPp09niJRMJum2Z275xHOoa/mfs+tJDad8kgxUIr3Aaq5YV/xOzLKQpJiYHHXQyTN
+         jdhVM7608oLfCQv8htnvitKl4QnTzuxRF+fgZEJeK2EJnjlBypgHbLYgVewgonH2uI2Q
+         nzmg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from;
-        bh=3iDPKqxc1NZrZG0Mbmky+F12edhqPn/KXfT1fFHIpCI=;
-        b=UHn4P4D0mEydrXGBcM1xGOuXVuTrvO1NFFg+5iCoM4cMZsvvBLDLPnipjXp3bqcBLn
-         6v12TjmElukNJqXsxrMdPYQG4eDngjQV++Buzk/T41nz2k9XBie3D3ZQhH+/bGysJjBG
-         mSUeAvakQjnl+TTNeJARkedYoP9MXDlhKumXGRbJ+64jVQCxHp7wW0Ru4ROin2xrnnkg
-         zJKQNuQVA1UqmX4b3YRGNfcZnHqI8CyvYzApx62tyIQsuXJH3AtaUcXtLfoXfjl4Y9iZ
-         hRNFDj39HEu+ErTduZy56Zpd+BKxVuKU5mzkZ5Giil90vpwyo5i++sHYuZdChEVW3FNL
-         afgw==
+        bh=048IR1BCWtezerl6ePw6GsP8CqZKwTT1lnQ50IHMUGY=;
+        b=ohHKPCJJ29GIU4vfoYn2joP0BR8rSTwtR8uK2DW+1/FY5VjSRWJK8hXodEq0XCF2j6
+         JzY/ziXU+3qYcH30iqETCJMUW5G8TWUgg+MDBAjpu4NwasGnO0rc7HxE4danfmS8zxur
+         ajSi0uGQJLKxv53pEULBV9vSzZY5C5bVSgf0kcfgKoSJVkb2jjwpVxSd5xw7gHHpfqyk
+         TEXAg7zZf2ZSiX9kkN8NnYQ7/jp52BLAceKh9ZvTH1RCDtyGFbzClzd8CTWBWCBE3Tod
+         BgM0mshL2aJEIzkjzAFyLzJmkU19caEmIPeOt/KY2jzTijmD8XUWqTTOlN0ZkKyQhHH2
+         pQPA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x2-20020a05622a000200b00304c7b84cfbsi3839834qtw.787.2022.06.13.06.34.27
+        by mx.google.com with ESMTPS id gf4-20020a056214250400b0046bb7db4326si4739255qvb.494.2022.06.13.06.36.06
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 13 Jun 2022 06:34:27 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 13 Jun 2022 06:36:06 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:48832 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:52730 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1o0kD5-0002X0-9R
-	for alex.bennee@linaro.org; Mon, 13 Jun 2022 09:34:27 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:60356)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1o0kEg-00059T-5R
+	for alex.bennee@linaro.org; Mon, 13 Jun 2022 09:36:06 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:60190)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=yfRC=WU=kaod.org=clg@ozlabs.org>)
- id 1o0k5y-0001ED-58; Mon, 13 Jun 2022 09:27:06 -0400
-Received: from mail.ozlabs.org ([2404:9400:2221:ea00::3]:42661
- helo=gandalf.ozlabs.org)
+ id 1o0k5Z-00012z-GF; Mon, 13 Jun 2022 09:26:41 -0400
+Received: from gandalf.ozlabs.org ([150.107.74.76]:43529)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=yfRC=WU=kaod.org=clg@ozlabs.org>)
- id 1o0k5w-0004m3-GO; Mon, 13 Jun 2022 09:27:05 -0400
-Received: from gandalf.ozlabs.org (mail.ozlabs.org
- [IPv6:2404:9400:2221:ea00::3])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4LMC5x0F21z4yZT;
- Mon, 13 Jun 2022 23:27:01 +1000 (AEST)
+ id 1o0k5X-0004er-Fy; Mon, 13 Jun 2022 09:26:41 -0400
+Received: from gandalf.ozlabs.org (gandalf.ozlabs.org [150.107.74.76])
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4LMC5T0d6tz4xbN;
+ Mon, 13 Jun 2022 23:26:37 +1000 (AEST)
 Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
  (No client certificate requested)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4LMC5q4zTwz4yZB;
- Mon, 13 Jun 2022 23:26:55 +1000 (AEST)
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4LMC5M5NGZz4yZB;
+ Mon, 13 Jun 2022 23:26:31 +1000 (AEST)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
@@ -74,16 +72,16 @@ Cc: Peter Maydell <peter.maydell@linaro.org>, Joe Komlodi <komlodi@google.com>,
  Wainer dos Santos Moschetta <wainersm@redhat.com>,
  Beraldo Leal <bleal@redhat.com>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
-Subject: [PATCH v2 11/17] aspeed: i2c: Add PKT_DONE IRQ to trace
-Date: Mon, 13 Jun 2022 15:25:33 +0200
-Message-Id: <20220613132539.2199772-12-clg@kaod.org>
+Subject: [PATCH v2 07/17] hw/registerfields: Add shared fields macros
+Date: Mon, 13 Jun 2022 15:25:29 +0200
+Message-Id: <20220613132539.2199772-8-clg@kaod.org>
 X-Mailer: git-send-email 2.35.3
 In-Reply-To: <20220613132539.2199772-1-clg@kaod.org>
 References: <20220613132539.2199772-1-clg@kaod.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2404:9400:2221:ea00::3;
+Received-SPF: pass client-ip=150.107.74.76;
  envelope-from=SRS0=yfRC=WU=kaod.org=clg@ozlabs.org; helo=gandalf.ozlabs.org
 X-Spam_score_int: -16
 X-Spam_score: -1.7
@@ -92,59 +90,129 @@ X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9,
  HEADER_FROM_DIFFERENT_DOMAINS=0.249, SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: sys5Yu6vIDvk
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: /cg6xDS6wt7A
 
 From: Joe Komlodi <komlodi@google.com>
 
+Occasionally a peripheral will have different operating modes, where the
+MMIO layout changes, but some of the register fields have the same offsets
+and behaviors.
+
+To help support this, we add SHARED_FIELD_XX macros that create SHIFT,
+LENGTH, and MASK macros for the fields that are shared across registers,
+and accessors for these fields.
+
+An example use may look as follows:
+There is a peripheral with registers REG_MODE1 and REG_MODE2 at
+different addreses, and both have a field FIELD1 initialized by
+SHARED_FIELD().
+
+Depending on what mode the peripheral is operating in, the user could
+extract FIELD1 via
+SHARED_ARRAY_FIELD_EX32(s->regs, R_REG_MODE1, FIELD1)
+or
+SHARED_ARRAY_FIELD_EX32(s->regs, R_REG_MODE2, FIELD1)
+
 Signed-off-by: Joe Komlodi <komlodi@google.com>
-Change-Id: I566eb09f4b9016e24570572f367627f6594039f5
-Message-Id: <20220331043248.2237838-7-komlodi@google.com>
+Change-Id: Id3dc53e7d2f8741c95697cbae69a81bb699fa3cb
+Message-Id: <20220331043248.2237838-2-komlodi@google.com>
 Signed-off-by: Cédric Le Goater <clg@kaod.org>
 ---
- hw/i2c/aspeed_i2c.c | 3 +++
- hw/i2c/trace-events | 2 +-
- 2 files changed, 4 insertions(+), 1 deletion(-)
+ include/hw/registerfields.h | 70 +++++++++++++++++++++++++++++++++++++
+ 1 file changed, 70 insertions(+)
 
-diff --git a/hw/i2c/aspeed_i2c.c b/hw/i2c/aspeed_i2c.c
-index 8b6a88315a5b..0e0cd5bec8d8 100644
---- a/hw/i2c/aspeed_i2c.c
-+++ b/hw/i2c/aspeed_i2c.c
-@@ -305,6 +305,9 @@ static inline void aspeed_i2c_bus_raise_interrupt(AspeedI2CBus *bus)
-     bool raise_irq;
+diff --git a/include/hw/registerfields.h b/include/hw/registerfields.h
+index 3a88e135d025..1330ca77de61 100644
+--- a/include/hw/registerfields.h
++++ b/include/hw/registerfields.h
+@@ -154,4 +154,74 @@
+ #define ARRAY_FIELD_DP64(regs, reg, field, val)                           \
+     (regs)[R_ ## reg] = FIELD_DP64((regs)[R_ ## reg], reg, field, val);
  
-     trace_aspeed_i2c_bus_raise_interrupt(bus->regs[reg_intr_sts],
-+        aspeed_i2c_bus_pkt_mode_en(bus) &&
-+        ARRAY_FIELD_EX32(bus->regs, I2CM_INTR_STS, PKT_CMD_DONE) ?
-+                                                               "pktdone|" : "",
-         SHARED_ARRAY_FIELD_EX32(bus->regs, reg_intr_sts, TX_NAK) ? "nak|" : "",
-         SHARED_ARRAY_FIELD_EX32(bus->regs, reg_intr_sts, TX_ACK) ? "ack|" : "",
-         SHARED_ARRAY_FIELD_EX32(bus->regs, reg_intr_sts, RX_DONE) ? "done|"
-diff --git a/hw/i2c/trace-events b/hw/i2c/trace-events
-index 7d8907c1eede..85e4bddff936 100644
---- a/hw/i2c/trace-events
-+++ b/hw/i2c/trace-events
-@@ -9,7 +9,7 @@ i2c_recv(uint8_t address, uint8_t data) "recv(addr:0x%02x) data:0x%02x"
- # aspeed_i2c.c
- 
- aspeed_i2c_bus_cmd(uint32_t cmd, const char *cmd_flags, uint32_t count, uint32_t intr_status) "handling cmd=0x%x %s count=%d intr=0x%x"
--aspeed_i2c_bus_raise_interrupt(uint32_t intr_status, const char *str1, const char *str2, const char *str3, const char *str4, const char *str5) "handled intr=0x%x %s%s%s%s%s"
-+aspeed_i2c_bus_raise_interrupt(uint32_t intr_status, const char *str1, const char *str2, const char *str3, const char *str4, const char *str5, const char *str6) "handled intr=0x%x %s%s%s%s%s%s"
- aspeed_i2c_bus_read(uint32_t busid, uint64_t offset, unsigned size, uint64_t value) "bus[%d]: To 0x%" PRIx64 " of size %u: 0x%" PRIx64
- aspeed_i2c_bus_write(uint32_t busid, uint64_t offset, unsigned size, uint64_t value) "bus[%d]: To 0x%" PRIx64 " of size %u: 0x%" PRIx64
- aspeed_i2c_bus_send(const char *mode, int i, int count, uint8_t byte) "%s send %d/%d 0x%02x"
++
++/*
++ * These macros can be used for defining and extracting fields that have the
++ * same bit position across multiple registers.
++ */
++
++/* Define shared SHIFT, LENGTH, and MASK constants */
++#define SHARED_FIELD(name, shift, length)   \
++    enum { name ## _ ## SHIFT = (shift)};   \
++    enum { name ## _ ## LENGTH = (length)}; \
++    enum { name ## _ ## MASK = MAKE_64BIT_MASK(shift, length)};
++
++/* Extract a shared field */
++#define SHARED_FIELD_EX8(storage, field) \
++    extract8((storage), field ## _SHIFT, field ## _LENGTH)
++
++#define SHARED_FIELD_EX16(storage, field) \
++    extract16((storage), field ## _SHIFT, field ## _LENGTH)
++
++#define SHARED_FIELD_EX32(storage, field) \
++    extract32((storage), field ## _SHIFT, field ## _LENGTH)
++
++#define SHARED_FIELD_EX64(storage, field) \
++    extract64((storage), field ## _SHIFT, field ## _LENGTH)
++
++/* Extract a shared field from a register array */
++#define SHARED_ARRAY_FIELD_EX32(regs, offset, field) \
++    SHARED_FIELD_EX32((regs)[(offset)], field)
++#define SHARED_ARRAY_FIELD_EX64(regs, offset, field) \
++    SHARED_FIELD_EX64((regs)[(offset)], field)
++
++/* Deposit a shared field */
++#define SHARED_FIELD_DP8(storage, field, val) ({                        \
++    struct {                                                            \
++        unsigned int v:field ## _LENGTH;                                \
++    } _v = { .v = val };                                                \
++    uint8_t _d;                                                         \
++    _d = deposit32((storage), field ## _SHIFT, field ## _LENGTH, _v.v); \
++    _d; })
++
++#define SHARED_FIELD_DP16(storage, field, val) ({                       \
++    struct {                                                            \
++        unsigned int v:field ## _LENGTH;                                \
++    } _v = { .v = val };                                                \
++    uint16_t _d;                                                        \
++    _d = deposit32((storage), field ## _SHIFT, field ## _LENGTH, _v.v); \
++    _d; })
++
++#define SHARED_FIELD_DP32(storage, field, val) ({                       \
++    struct {                                                            \
++        unsigned int v:field ## _LENGTH;                                \
++    } _v = { .v = val };                                                \
++    uint32_t _d;                                                        \
++    _d = deposit32((storage), field ## _SHIFT, field ## _LENGTH, _v.v); \
++    _d; })
++
++#define SHARED_FIELD_DP64(storage, field, val) ({                       \
++    struct {                                                            \
++        uint64_t v:field ## _LENGTH;                                    \
++    } _v = { .v = val };                                                \
++    uint64_t _d;                                                        \
++    _d = deposit64((storage), field ## _SHIFT, field ## _LENGTH, _v.v); \
++    _d; })
++
++/* Deposit a shared field to a register array */
++#define SHARED_ARRAY_FIELD_DP32(regs, offset, field, val) \
++    (regs)[(offset)] = SHARED_FIELD_DP32((regs)[(offset)], field, val);
++#define SHARED_ARRAY_FIELD_DP64(regs, offset, field, val) \
++    (regs)[(offset)] = SHARED_FIELD_DP64((regs)[(offset)], field, val);
++
+ #endif
 -- 
 2.35.3
 

@@ -1,377 +1,175 @@
-Received: by 2002:a19:ee12:0:0:0:0:0 with SMTP id g18csp1244247lfb;
-        Mon, 13 Jun 2022 02:17:51 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJx5ZKUkvGJaxzqFuhb1HIf/rsDsqSi/DxYQ+YPr1mpO4zHmmGqIcAa78MRnWV1DU9E/E9Ly
-X-Received: by 2002:a37:b58:0:b0:6a6:9f80:5ff7 with SMTP id 85-20020a370b58000000b006a69f805ff7mr34209683qkl.697.1655111871673;
-        Mon, 13 Jun 2022 02:17:51 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1655111871; cv=none;
+Received: by 2002:a19:ee12:0:0:0:0:0 with SMTP id g18csp1381830lfb;
+        Mon, 13 Jun 2022 06:27:08 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzbSLTiFqb509UvhF4MMTDFpL9RL1QNxCrJgSSIKUfo1h2+op8GVeoTXhst4kQsyOgAl5Xy
+X-Received: by 2002:a05:6214:19ce:b0:46c:4ca7:6c3a with SMTP id j14-20020a05621419ce00b0046c4ca76c3amr20103307qvc.57.1655126828062;
+        Mon, 13 Jun 2022 06:27:08 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1655126828; cv=none;
         d=google.com; s=arc-20160816;
-        b=uPVHTOtKynC88Jfe8eAJNSJ70CqhSAPgXsM0uNDjmfawpvX++UuNLyJtXLLupBgNI3
-         F66hUbU1ZbfUSKTQtMcRW8EAjlxpkSjZgs7R2PI3jnBecO5KCI+82K4AppKFGSID78VZ
-         schxdW7TDkEIWvf1yYYQ1jSmi8/IkUiBrPrla+KzJDysMYSsOhNqsCaArFoO1jBt5dbs
-         rH+YsmVJMCZy7/Sy8/POBCZsPCsny9rjXgNXIpxZrfmTne5fPvG5OYuuTRH4EMooXtxr
-         cts79HqUBSHmiZk/AatgQWUQ3VMmJaal+cOMZDh8POcr8eibJkkrBXywSYCOTswCGYvF
-         +MaQ==
+        b=WlGpxSx0LOEgwyS0DQUaCz6cWMwpoldh8Br0zh+sJ/Qq+bWtYgwsp/Jv5VMhO9AZli
+         eSPhAafTDcG2j3/BY5nQvnOLSTyzNe5XgTdnWy9tjfm8c+OvoxHuWPjl3Kf0pGi1nA0a
+         JcwJs1O+xAUnGHWAyPQuEEl7Ip28vDcS9VEkc695O4cIeRzI9XxaXcDeQUufQDLf0z+Q
+         UHhCNt2u4YtyrTxL0/5WUY9FKXW/Dz/K05/7ngRDMPE8D5jMwukgckdbYFw8Rk4+8jZH
+         7aJ0n2BYdFVDd+A7E/r6snANSm+arRHinpnJ/MyyfVm9uamb3JYvlv8KlBLzRdM1x/e8
+         Q+oQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:cc:to:subject
-         :dkim-signature;
-        bh=Op55wPdILNVSGxib4ODB4ss9KRB81XlY0o1TgoXFizM=;
-        b=0XHNFDblIFjPzZMwhn8kIpxTY8lIp5uedjfD8x/jAv3JpEsTGI47DQCHvyVNrvjF1x
-         Sc/wW7wheWPR8Im2AgWpAMM0vpc/IQqlEVT/G8KV569LPKzrd+QQH1qRtrgO15yJt8Yv
-         sDrUtuvAAMGmlTys/159AtmbwxfrNk1l3yWKx+r3gSsYTNkzg/ddUCWWrnlemf2UzQl+
-         7TVnvG5BJvhup7s5kMcE6Ku1C/dqZhHjzUZOGOnS2qEdi2tm881Yjo/iQS+vbioIeRBy
-         xmT9SIVsW+H48yoZ3z1qpWBgdBUFcAYVGMMrsj8KwVitPiUnFh7oWNVa8qgmFNAg6A4Y
-         HCrQ==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:cc:to:from;
+        bh=68GZRpG+coA4mQqh4zmFW6PKJkGUQZea17SEiHw0XJA=;
+        b=OruEx8LuLWXHbIeqU9II/UWl8k/pSOa3OmUXKRb07qiSusqD72IOhLpgt0v5expHYl
+         4oHnnhVR/q7Oq8e6oGH3A/SbfIpk79iggaPw061mRsnSvBZORXfmnluFjUSTIyWiKL/F
+         CEjLiHSkQl/EK73BB56qxCrz42/G3k6Igsu2nj6t7+kaxGbHiUvynRfGdhi1/3tnRL7/
+         YHRC/U3ryTxFNETimq2Rjq6JQaPCuqq0m1fRePpwbJrRu9+85GFHhcpCvroSoASycvzz
+         nhQlRyDoHZqE3GPxZ0dpIEHHMBmTRdvD1sJVvcJ76oe1GShKIk7aPDghzgYL2IR7PZ8j
+         WVTA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=BsKqAbQI;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id y15-20020a05620a44cf00b006a371ef5929si4802048qkp.537.2022.06.13.02.17.51
+        by mx.google.com with ESMTPS id v10-20020a05622a144a00b00304eb097d9asi4446379qtx.518.2022.06.13.06.27.07
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 13 Jun 2022 02:17:51 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 13 Jun 2022 06:27:08 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=BsKqAbQI;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:50324 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:34110 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1o0gCk-0005Gq-UJ
-	for alex.bennee@linaro.org; Mon, 13 Jun 2022 05:17:51 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38820)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1o0k5z-0000Fz-Fa
+	for alex.bennee@linaro.org; Mon, 13 Jun 2022 09:27:07 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:59852)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1o0g7R-0002pe-BC
- for qemu-devel@nongnu.org; Mon, 13 Jun 2022 05:12:21 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:36402)
+ (Exim 4.90_1) (envelope-from <SRS0=yfRC=WU=kaod.org=clg@ozlabs.org>)
+ id 1o0k55-0000FO-CM; Mon, 13 Jun 2022 09:26:11 -0400
+Received: from gandalf.ozlabs.org ([150.107.74.76]:37371)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1o0g7P-0004lA-47
- for qemu-devel@nongnu.org; Mon, 13 Jun 2022 05:12:21 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1655111537;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=Op55wPdILNVSGxib4ODB4ss9KRB81XlY0o1TgoXFizM=;
- b=BsKqAbQIPGZls7cw3MsW69DYEOaVlHQzhC0kWY5CUIIwCsCUn3dtURwjoqJGoWoj+VhfEL
- i0IfX7IFVIym60wPM7Ibh+VrLd1/S9P0R9GPUN1mOvQwXhQQ1h0HG0MmpzrBtodS/fFSJX
- TBOI6TXDDGbI9t/xxcAb/Va+cXVcEiM=
-Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
- [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-44-Eoj-0_D1NYWCP8Oz9nPT2w-1; Mon, 13 Jun 2022 05:12:15 -0400
-X-MC-Unique: Eoj-0_D1NYWCP8Oz9nPT2w-1
-Received: from smtp.corp.redhat.com (int-mx10.intmail.prod.int.rdu2.redhat.com
- [10.11.54.10])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (Exim 4.90_1) (envelope-from <SRS0=yfRC=WU=kaod.org=clg@ozlabs.org>)
+ id 1o0k53-0004SB-59; Mon, 13 Jun 2022 09:26:11 -0400
+Received: from gandalf.ozlabs.org (gandalf.ozlabs.org [150.107.74.76])
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4LMC4h1BmMz4yY5;
+ Mon, 13 Jun 2022 23:25:56 +1000 (AEST)
+Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
  (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 697AA106655F;
- Mon, 13 Jun 2022 09:12:15 +0000 (UTC)
-Received: from [10.72.12.21] (ovpn-12-21.pek2.redhat.com [10.72.12.21])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 4373A492C3B;
- Mon, 13 Jun 2022 09:12:03 +0000 (UTC)
-Subject: Re: [PATCH 2/3] hw/acpi/aml-build: Fix {socket, cluster, core} IDs in
- PPTT
-To: Igor Mammedov <imammedo@redhat.com>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, mst@redhat.com,
- ani@anisinha.ca, drjones@redhat.com, wangyanan55@huawei.com,
- Jonathan.Cameron@Huawei.com, peter.maydell@linaro.org, berrange@redhat.com,
- thuth@redhat.com, eduardo@habkost.net, lvivier@redhat.com,
- zhenyzha@redhat.com, shan.gavin@gmail.com
-References: <20220518092141.1050852-1-gshan@redhat.com>
- <20220518092141.1050852-3-gshan@redhat.com>
- <20220526142512.32129b2e@redhat.com>
- <b2e11fe3-6590-ec7c-a437-7b4c2b66d359@redhat.com>
- <20220609180018.7b12a527@redhat.com>
-From: Gavin Shan <gshan@redhat.com>
-Message-ID: <b592429f-8989-4ba7-3655-4207fcd433d2@redhat.com>
-Date: Mon, 13 Jun 2022 17:11:55 +0800
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.2.0
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4LMC4R56Ybz4yXP;
+ Mon, 13 Jun 2022 23:25:43 +1000 (AEST)
+From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>, Joe Komlodi <komlodi@google.com>,
+ Troy Lee <troy_lee@aspeedtech.com>, Jamin Lin <jamin_lin@aspeedtech.com>,
+ Steven Lee <steven_lee@aspeedtech.com>,
+ Klaus Jensen <k.jensen@samsung.com>, Peter Delevoryas <pdel@fb.com>,
+ Corey Minyard <cminyard@mvista.com>,
+ Jonathan Cameron <Jonathan.Cameron@huawei.com>,
+ Damien Hedde <damien.hedde@greensocs.com>,
+ Andrew Jeffery <andrew@aj.id.au>, Joel Stanley <joel@jms.id.au>,
+ Cleber Rosa <crosa@redhat.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+ Wainer dos Santos Moschetta <wainersm@redhat.com>,
+ Beraldo Leal <bleal@redhat.com>,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
+Subject: [PATCH v2 00/17] aspeed: Extend ast2600 I2C model with new mode
+Date: Mon, 13 Jun 2022 15:25:22 +0200
+Message-Id: <20220613132539.2199772-1-clg@kaod.org>
+X-Mailer: git-send-email 2.35.3
 MIME-Version: 1.0
-In-Reply-To: <20220609180018.7b12a527@redhat.com>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.85 on 10.11.54.10
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=gshan@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -21
-X-Spam_score: -2.2
-X-Spam_bar: --
-X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.082,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=150.107.74.76;
+ envelope-from=SRS0=yfRC=WU=kaod.org=clg@ozlabs.org; helo=gandalf.ozlabs.org
+X-Spam_score_int: -16
+X-Spam_score: -1.7
+X-Spam_bar: -
+X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.249, SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Reply-To: Gavin Shan <gshan@redhat.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: hdFMut1UhOTY
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: E1Hgazdt370J
 
-Hi Igor,
+Hello,
 
-On 6/10/22 12:00 AM, Igor Mammedov wrote:
-> On Thu, 26 May 2022 22:40:05 +0800
-> Gavin Shan <gshan@redhat.com> wrote:
->> On 5/26/22 8:25 PM, Igor Mammedov wrote:
->>> On Wed, 18 May 2022 17:21:40 +0800
->>> Gavin Shan <gshan@redhat.com> wrote:
->>>    
->>>> The {socket, cluster, core} IDs detected from Linux guest aren't
->>>> matching with what have been provided in PPTT. The flag used for
->>>> 'ACPI Processor ID valid' is missed for {socket, cluster, core}
->>>> nodes.
->>>
->>> To permit this flag set  on no leaf nodes we have to have
->>> a corresponding containers built for them in DSDT so that
->>> 'ACPI Processor ID' could be matched with containers '_UID's.
->>> If we don not build such containers then setting this flag is
->>> not correct. And I don't recall QEMU building CPU hierarchy
->>> in DSDT.
->>>    
->>
->> It's true that we don't have containers in DSDT. In Linux implementation,
->> the corresponding IDs are fetched if 'ACPI Processor ID valid' is set in
->> PPTT node (entry), without checking DSDT table.
-> 
-> linux can makeup container IDs and it is fine as long as it
-> does that consistently
-> 
+Here is a series aggregating recent changes proposed on the Aspeed
+ast2600 I2C controller model. 
 
-Ok. I think it's fine except that the container IDs aren't readable, because
-the offset of PPTT entries are taken as the container IDs.
+First comes a large set of changes converting the model to use the
+registerfield interface and adding the I2C new register mode
+(Joe). Since this is complex to review, extra tests are added to the
+acceptance test suite to check that I2C devices are still functional
+in the ast2600-evb machine. These tests use small buildroot images
+available on GH.
 
->> I don't know how the PPTT entry is linked to DSDT for _UID, after rechecking
->> ACPI specification. I was thinking 'Private Resources' fields are used for
->> the linking, but I should be wrong after checking PPTT tables on my host.
->> I'm not sure if you have idea how PPTT entry (node) is linked with one
->> specific device in DSDT table?
-> 
-> from spec description of 'ACPI Processor ID valid' flag:
-> "
-> For non-leaf entries in the processor topology, the ACPI Pro-
-> cessor ID entry can relate to a Processor container in the
-> namespace. The processor container will have a matching ID
-> value returned through the _UID method. As not every pro-
-> cessor hierarchy node structure in PPTT may have a matching
-> processor container, this flag indicates whether the ACPI pro-
-> cessor ID points to valid entry.
-> "
-> 
-> i.e. nothing to do with private resources
-> on can set this flag for a container only if there is
-> a container device in DSDT with _UID matching 'ACPI Processor ID'
-> in PPTT entry. Other possibility for setting this flag
-> is that processor is described in MADT (which is unlikely for
-> for a container)
-> 
+The ast1030 and ast2600 SoC share the same I2C logic. This series adds
+I2C support to the ast1030 now that new register mode is supported.
+There was a previous proposal from Troy doing the same but Joe's
+patchset covers the same need (and converts the model to registerfield)
 
-Agreed. I don't think the private resources are relevant to
-the IDs. However, I don't understand how the DSDT is linked with
-PPTT in regard of the container IDs.
-
->> On my host, one of the cluster node resides at offset 10B0h and it's ID
->> has been marked as valid. The 'Private Resources' fields point to the
->> type-1 cache structures, which resides in PPTT table either. The cluster
->> ID ('0x109') isn't appearing in DSDT table.
-> 
-> looks like they are cheating or spec is wrong
-> 
-> PS:
-> one of the reasons we added PPTT table is to avoid building
-> CPU topology hierarchy in DSDT.
-> 
-
-Yes, I don't think the spec is clear enough in this regard. Anyway,
-I checked PPTT table on my host, where the container IDs are specified
-by PPTT table entries without corresponding entries in DSDT.
-
->>
->> [C9Ch 3228   1]                Subtable Type : 01 [Cache Type]
->> [C9Dh 3229   1]                       Length : 18
->> [C9Eh 3230   2]                     Reserved : 0000
->> [CA0h 3232   4]        Flags (decoded below) : 0000005F
->>                                     Size valid : 1
->>                           Number of Sets valid : 1
->>                            Associativity valid : 1
->>                          Allocation Type valid : 1
->>                               Cache Type valid : 1
->>                             Write Policy valid : 0
->>                                Line Size valid : 1
->>                                 Cache ID valid : 0
->>                                  :
->>                                  :
->> [CB4h 3252   1]                Subtable Type : 01 [Cache Type]
->> [CB5h 3253   1]                       Length : 18
->> [CB6h 3254   2]                     Reserved : 0000
->> [CB8h 3256   4]        Flags (decoded below) : 0000007F
->>                                     Size valid : 1
->>                           Number of Sets valid : 1
->>                            Associativity valid : 1
->>                          Allocation Type valid : 1
->>                               Cache Type valid : 1
->>                             Write Policy valid : 1
->>                                Line Size valid : 1
->>                                 Cache ID valid : 0
->> [CBCh 3260   4]          Next Level of Cache : 00000CCC
->>                                    :
->>                                    :
->> [10B0h 4272   1]                Subtable Type : 00 [Processor Hierarchy Node]
->> [10B1h 4273   1]                       Length : 1C
->> [10B2h 4274   2]                     Reserved : 0000
->> [10B4h 4276   4]        Flags (decoded below) : 00000002
->>                               Physical package : 0
->>                        ACPI Processor ID valid : 1
->>                          Processor is a thread : 0
->>                                 Node is a leaf : 0
->>                       Identical Implementation : 0
->> [10B8h 4280   4]                       Parent : 00000C6C
->> [10BCh 4284   4]            ACPI Processor ID : 00000109
->> [10C0h 4288   4]      Private Resource Number : 00000002
->> [10C4h 4292   4]             Private Resource : 00000C9C
->> [10C8h 4296   4]             Private Resource : 00000CB4
->>
->> [gwshan@gshan tmp]$ grep -i 109 dsdt.dsl
->> [gwshan@gshan tmp]$ grep -i 265 dsdt.dsl
->>
->>
->>>> In this case, Linux guest takes the offset between the
->>>> node and PPTT header as the corresponding IDs, as the following
->>>> logs show.
->>>
->>> perhaps it's kernel which should be fixed to handle
->>> not set 'ACPI Processor ID valid' correctly.
->>>    
->>
->> This case is already handled by kernel. If 'ACPI Processor ID valid'
->> flag is missed, the offset between PPTT node and header is taken as
->> the ID. It's correct behaviour because 'ACPI Processor ID valid' flag
->> isn't mandatory for PPTT nodes. The problem is that the offset isn't
->> the desired ID, which is not understandable and mismatch with the
->> ID (value) we feed to PPTT table in QEMU.
-> 
-> as long as linux can match resources different IDs are fine.
-> So if it's not a bug, I'd leave it alone.
-> 
-
-Ok. So lets ignore the series. If we need, we may revisit this
-series in the future.
-
->>>>     /home/gavin/sandbox/qemu.main/build/qemu-system-aarch64    \
->>>>     -accel kvm -machine virt,gic-version=host -cpu host        \
->>>>     -smp 8,sockets=2,clusters=2,cores=2,threads=1
->>>>       :
->>>>
->>>>     # cd /sys/devices/system/cpu
->>>>     # for i in `seq 0 15`; do cat cpu$i/topology/physical_package_id; done
->>>>       36  36  36  36  36  36  36  36
->>>>       336 336 336 336 336 336 336 336
->>>>     # for i in `seq 0 15`; do cat cpu$i/topology/cluster_id; done
->>>>       56  56  56  56  196 196 196 196
->>>>       356 356 356 356 496 496 496 496
->>>>     # for i in `seq 0 15`; do cat cpu$i/topology/core_id; done
->>>>       76  76  136 136 216 216 276 276
->>>>       376 376 436 436 516 516 576 576
->>>>
->>>> This fixes the issue by setting 'ACPI Processor ID valid' flag for
->>>> {socket, cluster, core} nodes. With this applied, the IDs are exactly
->>>> what have been provided in PPTT.
->>>>
->>>>     # for i in `seq 0 15`; do cat cpu$i/topology/physical_package_id; done
->>>>     0 0 0 0 0 0 0 0
->>>>     1 1 1 1 1 1 1 1
->>>>     # for i in `seq 0 15`; do cat cpu$i/topology/cluster_id; done
->>>>     0 0 0 0 1 1 1 1
->>>>     0 0 0 0 1 1 1 1
->>>>     # for i in `seq 0 15`; do cat cpu$i/topology/core_id; done
->>>>     0 0 1 1 0 0 1 1
->>>>     0 0 1 1 0 0 1 1
-> 
-> if you look at above, linux generated unique IDs for each node
-> while with your patch IDs are not unique for cluster/core groups
-> (i.e. you have only 2 clusters while in fact there are 4 total)
-> 
-> Should ID's in cpu$i/topology be unique or not, I don't really know.
-> Try to see how linux uses those values and if they are supposed
-> to be unique.
-> 
-> If you set flag to valid and provide DSDT containers
-> then you will be forced to generate _unique_ (within
-> the same _HID namespace) _UIDs to conform to the spec.
-> 
-
-I don't think it's required to have differentiated IDs, meaning the
-IDs for multiple CPUs can be same. Note that one CPU is identified by
-the combination of {socket,cluster,core,thread} IDs, instead of a
-single ID.
-
-According to the spec, it's needed to present containers IDs
-in DSDT. However, the spec doesn't state how this can be done
-clearly. As I said above, lets ignore the improvement in this
-series for now and we may revisit this series in the future,
-if needed.
-
-> 
->>>> Signed-off-by: Gavin Shan <gshan@redhat.com>
->>>> ---
->>>>    hw/acpi/aml-build.c | 9 ++++++---
->>>>    1 file changed, 6 insertions(+), 3 deletions(-)
->>>>
->>>> diff --git a/hw/acpi/aml-build.c b/hw/acpi/aml-build.c
->>>> index e6bfac95c7..89f191fd3b 100644
->>>> --- a/hw/acpi/aml-build.c
->>>> +++ b/hw/acpi/aml-build.c
->>>> @@ -2026,7 +2026,8 @@ void build_pptt(GArray *table_data, BIOSLinker *linker, MachineState *ms,
->>>>                core_id = -1;
->>>>                socket_offset = table_data->len - pptt_start;
->>>>                build_processor_hierarchy_node(table_data,
->>>> -                (1 << 0), /* Physical package */
->>>> +                (1 << 0) | /* Physical package */
->>>> +                (1 << 1),  /* ACPI Processor ID valid */
->>>>                    0, socket_id, NULL, 0);
->>>>            }
->>>>    
->>>> @@ -2037,7 +2038,8 @@ void build_pptt(GArray *table_data, BIOSLinker *linker, MachineState *ms,
->>>>                    core_id = -1;
->>>>                    cluster_offset = table_data->len - pptt_start;
->>>>                    build_processor_hierarchy_node(table_data,
->>>> -                    (0 << 0), /* Not a physical package */
->>>> +                    (0 << 0) | /* Not a physical package */
->>>> +                    (1 << 1),  /* ACPI Processor ID valid */
->>>>                        socket_offset, cluster_id, NULL, 0);
->>>>                }
->>>>            } else {
->>>> @@ -2055,7 +2057,8 @@ void build_pptt(GArray *table_data, BIOSLinker *linker, MachineState *ms,
->>>>                    core_id = cpus->cpus[n].props.core_id;
->>>>                    core_offset = table_data->len - pptt_start;
->>>>                    build_processor_hierarchy_node(table_data,
->>>> -                    (0 << 0), /* Not a physical package */
->>>> +                    (0 << 0) | /* Not a physical package */
->>>> +                    (1 << 1),  /* ACPI Processor ID valid */
->>>>                        cluster_offset, core_id, NULL, 0);
->>>>                }
->>>>      
->>>    
+Klaus made a proposal to add support for multi master in the I2C core
+and the Aspeed I2C model. The last patches add the required bits to
+let this happen.  
 
 Thanks,
-Gavin
+
+C.
+
+Changes in v2:
+
+ - reworked I2C avocado tests
+ - dropped ctrl_global_rsvd property
+ - removed support for multiple masters from Klaus. this change should
+   come in its own series.
+  
+
+Cédric Le Goater (8):
+  aspeed: Remove fake RTC device on ast2500-evb
+  test/avocado/machine_aspeed.py: Move OpenBMC tests
+  test/avocado/machine_aspeed.py: Add tests using buildroot images
+  test/avocado/machine_aspeed.py: Add I2C tests to ast2500-evb
+  test/avocado/machine_aspeed.py: Add I2C tests to ast2600-evb
+  test/avocado/machine_aspeed.py: Add an I2C RTC test
+  aspeed/i2c: Add ast1030 controller models
+  aspeed/i2c: Enable SLAVE_ADDR_RX_MATCH always
+
+Joe Komlodi (6):
+  hw/registerfields: Add shared fields macros
+  aspeed: i2c: Migrate to registerfields API
+  aspeed: i2c: Use reg array instead of individual vars
+  aspeed: i2c: Add new mode support
+  aspeed: i2c: Add PKT_DONE IRQ to trace
+  aspeed: i2c: Move regs and helpers to header file
+
+Klaus Jensen (2):
+  hw/i2c/aspeed: rework raise interrupt trace event
+  hw/i2c/aspeed: add DEV_ADDR in old register mode
+
+Troy Lee (1):
+  aspeed: Add I2C buses to AST1030 model
+
+ include/hw/i2c/aspeed_i2c.h         | 289 +++++++++-
+ include/hw/registerfields.h         |  70 +++
+ hw/arm/aspeed.c                     |  17 +-
+ hw/arm/aspeed_ast10x0.c             |  18 +
+ hw/i2c/aspeed_i2c.c                 | 820 +++++++++++++++++-----------
+ hw/i2c/trace-events                 |   2 +-
+ tests/avocado/boot_linux_console.py |  43 --
+ tests/avocado/machine_aspeed.py     | 136 +++++
+ 8 files changed, 1030 insertions(+), 365 deletions(-)
+
+-- 
+2.35.3
 

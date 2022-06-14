@@ -1,335 +1,297 @@
-Received: by 2002:a19:ee12:0:0:0:0:0 with SMTP id g18csp1884615lfb;
-        Tue, 14 Jun 2022 00:17:32 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwJuGJVaqascAEZCZ3pz6yCgfmiGzgcAszmP3coPeeD1DAypcHBFqWZ77/jb9qUjQYvDc/j
-X-Received: by 2002:a05:622a:3cf:b0:305:2ea7:238 with SMTP id k15-20020a05622a03cf00b003052ea70238mr2996304qtx.334.1655191052503;
-        Tue, 14 Jun 2022 00:17:32 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1655191052; cv=none;
+Received: by 2002:a19:ee12:0:0:0:0:0 with SMTP id g18csp1920693lfb;
+        Tue, 14 Jun 2022 01:41:17 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzScMR2q3Pg6RQwGCyHFSudmTlcFh9cWiRqLd+7mukb5N9xzt2y1I/30/hoOi0ur0Rsj79c
+X-Received: by 2002:a05:620a:410d:b0:6a7:571d:8615 with SMTP id j13-20020a05620a410d00b006a7571d8615mr3104918qko.259.1655196077113;
+        Tue, 14 Jun 2022 01:41:17 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1655196077; cv=none;
         d=google.com; s=arc-20160816;
-        b=UMnJWMUO34utGlTib7+AKNq3/aDpsBE+UBxHDjc/2E4FJkA+vsyzC+Dd66EMv5k6bc
-         GKN/oTQF5LNOrQaFUwA4C6WLXUkFiGWdbdgMKXyR7EdfMGurt+MXOLqySEQWdO9Os5DJ
-         TiIPABUXqoYZ91Yh88m4fy9+RQQPZTT4ub3sBEbCxTXByUr7pn+O2mFObfa92aTM0xXz
-         o5NIK3Tb1vjrSGstqzwokz1Ch3LIp2r3w1n3KrajNoka2YPAi0GZy5cxI+6nlacVnDjq
-         XCdnUyan0PGdUl3hfCvHXl4hN2j/Vhbe40zhMybdunnqNGgbckPOU/6qnzxTHhCdspqh
-         YBxA==
+        b=oKC9dH7XLDEN9pUdP6tnErZDZxu/N4n5B8YzzRGG09SWpRxeyC8xqrVvaEcTsz20tz
+         Bbr+jv3WAxzD7LaXKLk0JXt0df2WHSQO3ESkWIWaAcvKe5Y55W8VueqIhT2a118f7jcf
+         RNGtzPz8j/q/zbn8YTovhaOhweREnOZcanzsPvrkkloLYrKwZTymQJOSduNPC07iAnnJ
+         s/H/ZAThHcMgZSRvIl3dsPKSMa/O8QkTMLr3uN/MjDlQmtX2HN41U2B+vz+tAHQaOBw6
+         iJAFieLrPLuJJZjXAmPqHHzid4j/qQdNPNMXvkvlsBGDuCP6k5LRXEFAzeFJjQR1IFFZ
+         oBDg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:cc:to:content-language:subject
-         :user-agent:mime-version:date:message-id;
-        bh=bB8iOi6eUu1+HsSDLek25BI2TBw1owVuB7kHzjvSn9c=;
-        b=dhJtrVvbl0EcNT8jYVQWP8AptusGMoWLU8zQM2zICRbBxZEhpjeVBt2m0aWyLLK5sM
-         fhFvNuL3ORdG8F8/Cb6cXvlxEVb0F6CaPM1GspweY8qX/mv0cP2thp4C6f9Qlkg9RloO
-         JMM5c0AcJpeL+ByAv2WGXMFXkc/oJmcGFQEKJZXV39UWN5Hm7HdJMD66ZqiqTSArLCHy
-         Un57TY00+e2ZM3l7SDQhuSwIuOyRVdqPtBzjn7Aws8Y3JD1/bTXmDogCHt41Jk3bfvce
-         7Rnk2xKDhAlHKq2WC4PWt2FVzcjZITCKKXTgaJSePtMDbNjqM/ZmanTrJqx62R8peMIk
-         tTHw==
+         :list-unsubscribe:list-id:precedence:mime-version:message-id:date
+         :user-agent:references:organization:in-reply-to:subject:cc:to:from
+         :dkim-signature;
+        bh=7JqiAgsVYLwS4+FFvNHU6GMxusP/+pOciDPNZhIjWYw=;
+        b=QRu2SGbBKNdqyRLM9Kl1aBeKSl+8cD+B5T3AX2n8id4DPb/taguOlOpeJ4QJ8OLjc1
+         pi9YqgMvNVjf9YqMh9U27Irkih6pIajIW8Ofrc2PaJRkPppkKaH34qX7tncZXnwMZjUR
+         MlfTQBdAZF4cOfaR5+Dj63OvXxB9w6fg0+ixbOlC9V+0h7UqATx7zanSjdl8cU4/V2k7
+         lAbtZqmKt0Bn+8QboBwUg5S3tuDdTpcuR5RQCl8xkI4THJlrHvxN2DAYdXBFWCfe1HH4
+         zE6GBG14O/XOIThYJEucaDp38CIuukv6FYMTtTPJYSosYtCcp047qTQATJDHhPWbt9c6
+         iY/A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="IrqYeh/3";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id u17-20020a05620a455100b006a68e1198d1si6545193qkp.403.2022.06.14.00.17.32
+        by mx.google.com with ESMTPS id q8-20020a05622a030800b00304d3b60ff2si5237680qtw.175.2022.06.14.01.41.16
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 14 Jun 2022 00:17:32 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 14 Jun 2022 01:41:17 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:59416 helo=lists1p.gnu.org)
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="IrqYeh/3";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:48964 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1o10nr-00025d-8U
-	for alex.bennee@linaro.org; Tue, 14 Jun 2022 03:17:31 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44982)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1o126u-0007CU-Hf
+	for alex.bennee@linaro.org; Tue, 14 Jun 2022 04:41:16 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37230)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1o10kD-0007s5-0N
- for qemu-devel@nongnu.org; Tue, 14 Jun 2022 03:13:45 -0400
-Received: from 9.mo548.mail-out.ovh.net ([46.105.48.137]:51185)
+ (Exim 4.90_1) (envelope-from <cohuck@redhat.com>) id 1o126d-0007AH-Sl
+ for qemu-arm@nongnu.org; Tue, 14 Jun 2022 04:41:00 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:23985)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1o10k8-0001Im-M1
- for qemu-devel@nongnu.org; Tue, 14 Jun 2022 03:13:44 -0400
-Received: from mxplan5.mail.ovh.net (unknown [10.108.20.52])
- by mo548.mail-out.ovh.net (Postfix) with ESMTPS id E8F18239CD;
- Tue, 14 Jun 2022 07:13:27 +0000 (UTC)
-Received: from kaod.org (37.59.142.98) by DAG4EX1.mxp5.local (172.16.2.31)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.9; Tue, 14 Jun
- 2022 09:13:27 +0200
-Authentication-Results: garm.ovh; auth=pass
- (GARM-98R002b55bee1e-ccf3-4fd9-918a-07b486922b43,
- 521BD0C7D9B1F43011BF9161B4E1AE1788365C94) smtp.auth=clg@kaod.org
-X-OVh-ClientIp: 82.64.250.170
-Message-ID: <673b4b6c-b107-ab03-fe51-752ec45e6a04@kaod.org>
-Date: Tue, 14 Jun 2022 09:13:21 +0200
+ (Exim 4.90_1) (envelope-from <cohuck@redhat.com>) id 1o126b-0007UN-Md
+ for qemu-arm@nongnu.org; Tue, 14 Jun 2022 04:40:59 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1655196057;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=7JqiAgsVYLwS4+FFvNHU6GMxusP/+pOciDPNZhIjWYw=;
+ b=IrqYeh/31r0j/vr1SA0outgUNfGsEvBDLdtG/CjX6X+eRug+5LAS0geSCwER6hvFAKaaYI
+ GgmU33zQn2NTBD7hWrk+yrB7BvHP3eR3mxv2m6cOlmgKrvyQAzfkQ0/0gqQzSsWXUx+e7V
+ EOtXCQdXTMrDC3OWbAkIcb5Cj9QMvkA=
+Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
+ [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-111-mA8d-KHJNYa1q9rSGXm01g-1; Tue, 14 Jun 2022 04:40:42 -0400
+X-MC-Unique: mA8d-KHJNYa1q9rSGXm01g-1
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.5])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 9796A811E81;
+ Tue, 14 Jun 2022 08:40:41 +0000 (UTC)
+Received: from localhost (unknown [10.39.193.235])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 312E69D7F;
+ Tue, 14 Jun 2022 08:40:41 +0000 (UTC)
+From: Cornelia Huck <cohuck@redhat.com>
+To: Eric Auger <eauger@redhat.com>, Peter Maydell
+ <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>, Laurent Vivier
+ <lvivier@redhat.com>
+Cc: Andrew Jones <drjones@redhat.com>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org, kvm@vger.kernel.org
+Subject: Re: [PATCH RFC 1/2] arm/kvm: enable MTE if available
+In-Reply-To: <a3d0a093-3d59-5882-c9c8-6619e5aeb3ab@redhat.com>
+Organization: Red Hat GmbH
+References: <20220512131146.78457-1-cohuck@redhat.com>
+ <20220512131146.78457-2-cohuck@redhat.com>
+ <a3d0a093-3d59-5882-c9c8-6619e5aeb3ab@redhat.com>
+User-Agent: Notmuch/0.36 (https://notmuchmail.org)
+Date: Tue, 14 Jun 2022 10:40:39 +0200
+Message-ID: <877d5jskmw.fsf@redhat.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.9.0
-Subject: Re: [PATCH v2 1/2] hw: m25p80: add WP# pin and SRWD bit for write
- protection
-Content-Language: en-US
-To: Dan Zhang <dz4list@gmail.com>, Peter Delevoryas <pdel@fb.com>
-CC: Iris Chen <irischenlj@fb.com>, Cameron Esfahani via
- <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>, "patrick@stwcx.xyz"
- <patrick@stwcx.xyz>, Alistair Francis <alistair@alistair23.me>,
- "kwolf@redhat.com" <kwolf@redhat.com>, "hreitz@redhat.com"
- <hreitz@redhat.com>, Peter Maydell <peter.maydell@linaro.org>, Andrew Jeffery
- <andrew@aj.id.au>, Joel Stanley <joel@jms.id.au>, "thuth@redhat.com"
- <thuth@redhat.com>, "lvivier@redhat.com" <lvivier@redhat.com>,
- "pbonzini@redhat.com" <pbonzini@redhat.com>, "qemu-block@nongnu.org"
- <qemu-block@nongnu.org>, Iris Chen <irischenlj@gmail.com>, Francisco Iglesias
- <frasse.iglesias@gmail.com>
-References: <20220609031320.2212468-1-irischenlj@fb.com>
- <20220609192201.GC10629@fralle-msi>
- <810A50A3-E9C2-4A62-ADF9-89DCC9BBD9BB@fb.com>
- <YqggfkLuTz4ryuL8@zhdaniel-fedora-MJ0FVN0B>
-From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
-In-Reply-To: <YqggfkLuTz4ryuL8@zhdaniel-fedora-MJ0FVN0B>
-Content-Type: text/plain; charset="UTF-8"; format=flowed
-Content-Transfer-Encoding: 8bit
-X-Originating-IP: [37.59.142.98]
-X-ClientProxiedBy: DAG1EX1.mxp5.local (172.16.2.1) To DAG4EX1.mxp5.local
- (172.16.2.31)
-X-Ovh-Tracer-GUID: 40721ce8-5cfc-404d-9d3b-6d424c592819
-X-Ovh-Tracer-Id: 3825526410624142282
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvfedruddukedgudduhecutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemucehtddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpefkffggfgfuvfevfhfhjggtgfhisehtkeertddtfeejnecuhfhrohhmpeevrogurhhitggpnfgvpgfiohgrthgvrhcuoegtlhhgsehkrghougdrohhrgheqnecuggftrfgrthhtvghrnhepkeetjedtleekjedvveffudfhteetleeifeegfeffuefghfefkeehffeufeeludejnecukfhppedtrddtrddtrddtpdefjedrheelrddugedvrdelkeenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhhouggvpehsmhhtphhouhhtpdhhvghlohepmhigphhlrghnhedrmhgrihhlrdhovhhhrdhnvghtpdhinhgvtheptddrtddrtddrtddpmhgrihhlfhhrohhmpegtlhhgsehkrghougdrohhrghdpnhgspghrtghpthhtohepuddprhgtphhtthhopehfrhgrshhsvgdrihhglhgvshhirghssehgmhgrihhlrdgtohhmpdfovfetjfhoshhtpehmohehgeek
-Received-SPF: pass client-ip=46.105.48.137; envelope-from=clg@kaod.org;
- helo=9.mo548.mail-out.ovh.net
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
+Content-Type: text/plain
+X-Scanned-By: MIMEDefang 2.79 on 10.11.54.5
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=cohuck@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -21
+X-Spam_score: -2.2
+X-Spam_bar: --
+X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.082,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 1JTk0ko3wujn
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: EUPvjy2eP4M4
 
-Hello Dan
+On Fri, Jun 10 2022, Eric Auger <eauger@redhat.com> wrote:
 
-On 6/14/22 07:45, Dan Zhang wrote:
-> Just find out how to use mutt to reply all in the thread.
-> repeat the previous comments. Add STATE_HIZ to handle decode_new_command
-> aborting gracefully.
-> 
-> On Thu, Jun 09, 2022 at 08:06:00PM +0000, Peter Delevoryas wrote:
->>
->>
->>> On Jun 9, 2022, at 12:22 PM, Francisco Iglesias <frasse.iglesias@gmail.com> wrote:
->>>
->>> Hi Iris,
->>>
->>> Looks good some, a couple of comments below.
->>>
->>> On [2022 Jun 08] Wed 20:13:19, Iris Chen wrote:
->>>> From: Iris Chen <irischenlj@gmail.com>
->>>>
->>>> Signed-off-by: Iris Chen <irischenlj@gmail.com>
->>>> ---
->>>> Addressed all comments from V1. The biggest change: removed object_class_property_add.
->>>>
->>>> hw/block/m25p80.c             | 37 +++++++++++++++++++++++++++++++++++
->>>> tests/qtest/aspeed_smc-test.c |  2 ++
->>>> 2 files changed, 39 insertions(+)
->>>>
->>>> diff --git a/hw/block/m25p80.c b/hw/block/m25p80.c
->>>> index 81ba3da4df..1a20bd55d4 100644
->>>> --- a/hw/block/m25p80.c
->>>> +++ b/hw/block/m25p80.c
->>>> @@ -27,12 +27,14 @@
->>>> #include "hw/qdev-properties.h"
->>>> #include "hw/qdev-properties-system.h"
->>>> #include "hw/ssi/ssi.h"
->>>> +#include "hw/irq.h"
->>>> #include "migration/vmstate.h"
->>>> #include "qemu/bitops.h"
->>>> #include "qemu/log.h"
->>>> #include "qemu/module.h"
->>>> #include "qemu/error-report.h"
->>>> #include "qapi/error.h"
->>>> +#include "qapi/visitor.h"
->>>> #include "trace.h"
->>>> #include "qom/object.h"
->>>>
->>>> @@ -472,11 +474,13 @@ struct Flash {
->>>>      uint8_t spansion_cr2v;
->>>>      uint8_t spansion_cr3v;
->>>>      uint8_t spansion_cr4v;
->>>> +    bool wp_level;
->>>>      bool write_enable;
->>>>      bool four_bytes_address_mode;
->>>>      bool reset_enable;
->>>>      bool quad_enable;
->>>>      bool aai_enable;
->>>> +    bool status_register_write_disabled;
->>>>      uint8_t ear;
->>>>
->>>>      int64_t dirty_page;
->>>> @@ -723,6 +727,21 @@ static void complete_collecting_data(Flash *s)
->>>>          flash_erase(s, s->cur_addr, s->cmd_in_progress);
->>>>          break;
->>>>      case WRSR:
->>>> +        /*
->>>> +         * If WP# is low and status_register_write_disabled is high,
->>>> +         * status register writes are disabled.
->>>> +         * This is also called "hardware protected mode" (HPM). All other
->>>> +         * combinations of the two states are called "software protected mode"
->>>> +         * (SPM), and status register writes are permitted.
->>>> +         */
->>>> +        if ((s->wp_level == 0 && s->status_register_write_disabled)
->>>> +            || !s->write_enable) {
->>>
->>> 'write_enable' needs to be true in 'decode_new_cmd' when issueing the WRSR
->>> command, otherwise the state machinery will not advance to this function
->>> (meaning that above check for !s->write_enable will never hit as far as I can
->>> tell). A suggestion is to move the check for wp_level and
->>> status_reg_wr_disabled into 'decode_new_cmd' to for keeping it consistent.
->>
->> Oh good catch! Yes actually, in our fork, we also removed the write_enable
->> guard in decode_new_cmd. We either need both checks in decode_new_cmd,
->> or both checks in complete_collecting_data.
->>
->> I think we had some difficulty deciding whether to block command decoding,
->> or to decode and ignore the command if restrictions are enabled.
->>
->> The reason being that, in the qtest, the WRSR command code gets ignored, and
->> then the subsequent write data gets interpreted as some random command code.
->> We had elected to decode and ignore the command, but I think the
->> datasheet actually describes that the command won’t be decoded successfully,
->> so you’re probably right, we should put this logic in decode_new_cmd.
->>
->> Most likely, the qtest will also need to be modified to reset the transfer
->> state machine after a blocked write command. I can’t remember if
->> exiting and re-entering user mode is sufficient for that, but something
->> like that is probably possible.
->>
->> Thanks for catching this!
->> Peter
->>
-> 
-> I am proposing add a CMDState: STATE_HIZ to handle command decode fail
-> situation. When decode_new_command need abort the decoding and ignore
-> following
-> on input bytes of this transaction, set the state to STATE_HIZ.
-> And m25p80_transfer8() will ignore all the following on byte when in
-> this state.
-> 
-> This is to simulating the real device operation behavior
-> i.e. Macronix MX66L1G45G data sheet section 8 DEVICE OPERATION described
-> ```
-> 2. When an incorrect command is written to this device, it enters
-> standby mode and stays in standby mode until the next CS# falling edge.
-> In standby mode, This device's SO pin should be High-Z.
-> ```
+> Hi Connie,
+> On 5/12/22 15:11, Cornelia Huck wrote:
+>> We need to disable migration, as we do not yet have a way to migrate
+>> the tags as well.
+>
+> This patch does much more than adding a migration blocker ;-) you may
+> describe the new cpu option and how it works.
 
-Could you please send a patch ?
+I admit this is a bit terse ;) The idea is to control mte at the cpu
+level directly (and not indirectly via tag memory at the machine
+level). I.e. the user gets whatever is available given the constraints
+(host support etc.) if they don't specify anything, and they can
+explicitly turn it off/on.
 
-Thanks,
+>> 
+>> Signed-off-by: Cornelia Huck <cohuck@redhat.com>
+>> ---
+>>  target/arm/cpu.c     | 18 ++++------
+>>  target/arm/cpu.h     |  4 +++
+>>  target/arm/cpu64.c   | 78 ++++++++++++++++++++++++++++++++++++++++++++
+>>  target/arm/kvm64.c   |  5 +++
+>>  target/arm/kvm_arm.h | 12 +++++++
+>>  target/arm/monitor.c |  1 +
+>>  6 files changed, 106 insertions(+), 12 deletions(-)
+>> 
+>> diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+>> index 029f644768b1..f0505815b1e7 100644
+>> --- a/target/arm/cpu.c
+>> +++ b/target/arm/cpu.c
+>> @@ -1435,6 +1435,11 @@ void arm_cpu_finalize_features(ARMCPU *cpu, Error **errp)
+>>              error_propagate(errp, local_err);
+>>              return;
+>>          }
+>> +        arm_cpu_mte_finalize(cpu, &local_err);
+>> +        if (local_err != NULL) {
+>> +            error_propagate(errp, local_err);
+>> +            return;
+>> +        }
+>>      }
+>>  
+>>      if (kvm_enabled()) {
+>> @@ -1504,7 +1509,7 @@ static void arm_cpu_realizefn(DeviceState *dev, Error **errp)
+>>          }
+>>          if (cpu->tag_memory) {
+>>              error_setg(errp,
+>> -                       "Cannot enable KVM when guest CPUs has MTE enabled");
+>> +                       "Cannot enable KVM when guest CPUs has tag memory enabled");
+> before this series, tag_memory was used to detect MTE was enabled at
+> machine level. And this was not compatible with KVM.
+>
+> Hasn't it changed now with this series? Sorry I don't know much about
+> that tag_memory along with the KVM use case? Can you describe it as well
+> in the cover letter.
 
-C.
+IIU the current code correctly, the purpose of tag_memory is twofold:
+- control whether mte should be available in the first place
+- provide a place where a memory region used by the tcg implemtation can
+  be linked
 
-> BRs
-> Dan Zhang
->>>
->>>> +            qemu_log_mask(LOG_GUEST_ERROR,
->>>> +                          "M25P80: Status register write is disabled!\n");
->>>> +            break;
->>>> +        }
->>>> +        s->status_register_write_disabled = extract32(s->data[0], 7, 1);
->>>> +
->>>>          switch (get_man(s)) {
->>>>          case MAN_SPANSION:
->>>>              s->quad_enable = !!(s->data[1] & 0x02);
->>>> @@ -1195,6 +1214,8 @@ static void decode_new_cmd(Flash *s, uint32_t value)
->>>>
->>>>      case RDSR:
->>>>          s->data[0] = (!!s->write_enable) << 1;
->>>> +        s->data[0] |= (!!s->status_register_write_disabled) << 7;
->>>> +
->>>>          if (get_man(s) == MAN_MACRONIX || get_man(s) == MAN_ISSI) {
->>>>              s->data[0] |= (!!s->quad_enable) << 6;
->>>>          }
->>>> @@ -1484,6 +1505,14 @@ static uint32_t m25p80_transfer8(SSIPeripheral *ss, uint32_t tx)
->>>>      return r;
->>>> }
->>>>
->>>> +static void m25p80_write_protect_pin_irq_handler(void *opaque, int n, int level)
->>>> +{
->>>> +    Flash *s = M25P80(opaque);
->>>> +    /* WP# is just a single pin. */
->>>> +    assert(n == 0);
->>>> +    s->wp_level = !!level;
->>>> +}
->>>> +
->>>> static void m25p80_realize(SSIPeripheral *ss, Error **errp)
->>>> {
->>>>      Flash *s = M25P80(ss);
->>>> @@ -1515,12 +1544,18 @@ static void m25p80_realize(SSIPeripheral *ss, Error **errp)
->>>>          s->storage = blk_blockalign(NULL, s->size);
->>>>          memset(s->storage, 0xFF, s->size);
->>>>      }
->>>> +
->>>> +    qdev_init_gpio_in_named(DEVICE(s),
->>>> +                            m25p80_write_protect_pin_irq_handler, "WP#", 1);
->>>> }
->>>>
->>>> static void m25p80_reset(DeviceState *d)
->>>> {
->>>>      Flash *s = M25P80(d);
->>>>
->>>> +    s->wp_level = true;
->>>> +    s->status_register_write_disabled = false;
->>>> +
->>>>      reset_memory(s);
->>>> }
->>>>
->>>> @@ -1601,6 +1636,8 @@ static const VMStateDescription vmstate_m25p80 = {
->>>>          VMSTATE_UINT8(needed_bytes, Flash),
->>>>          VMSTATE_UINT8(cmd_in_progress, Flash),
->>>>          VMSTATE_UINT32(cur_addr, Flash),
->>>> +        VMSTATE_BOOL(wp_level, Flash),
->>>> +        VMSTATE_BOOL(status_register_write_disabled, Flash),
->>>
->>> Above needs to be added through a subsection, you can see commit 465ef47abe3
->>> for an example an also read about this in docs/devel/migration.rst.
->>>
->>> Thank you,
->>> Best regads,
->>> Francisco Iglesias
->>>
->>>
->>>>          VMSTATE_BOOL(write_enable, Flash),
->>>>          VMSTATE_BOOL(reset_enable, Flash),
->>>>          VMSTATE_UINT8(ear, Flash),
->>>> diff --git a/tests/qtest/aspeed_smc-test.c b/tests/qtest/aspeed_smc-test.c
->>>> index ec233315e6..c5d97d4410 100644
->>>> --- a/tests/qtest/aspeed_smc-test.c
->>>> +++ b/tests/qtest/aspeed_smc-test.c
->>>> @@ -56,7 +56,9 @@ enum {
->>>>      BULK_ERASE = 0xc7,
->>>>      READ = 0x03,
->>>>      PP = 0x02,
->>>> +    WRSR = 0x1,
->>>>      WREN = 0x6,
->>>> +    SRWD = 0x80,
->>>>      RESET_ENABLE = 0x66,
->>>>      RESET_MEMORY = 0x99,
->>>>      EN_4BYTE_ADDR = 0xB7,
->>>> -- 
->>>> 2.30.2
->>>>
->>>>
->>
+The latter part (extra memory region) is not compatible with
+kvm. "Presence of extra memory for the implementation" as the knob to
+configure mte for tcg makes sense, but it didn't seem right to me to use
+it for kvm while controlling something which is basically a cpu property.
+
+>>              return;
+>>          }
+>>      }
+
+(...)
+
+>> +void aarch64_add_mte_properties(Object *obj)
+>> +{
+>> +    ARMCPU *cpu = ARM_CPU(obj);
+>> +
+>> +    /*
+>> +     * For tcg, the machine type may provide tag memory for MTE emulation.
+> s/machine type/machine?
+
+Either, I guess, as only the virt machine type provides tag memory in
+the first place.
+
+>> +     * We do not know whether that is the case at this point in time, so
+>> +     * default MTE to on and check later.
+>> +     * This preserves pre-existing behaviour, but is really a bit awkward.
+>> +     */
+>> +    qdev_property_add_static(DEVICE(obj), &arm_cpu_mte_property);
+>> +    if (kvm_enabled()) {
+>> +        /*
+>> +         * Default MTE to off, as long as migration support is not
+>> +         * yet implemented.
+>> +         * TODO: implement migration support for kvm
+>> +         */
+>> +        cpu->prop_mte = false;
+>> +    }
+>> +}
+>> +
+>> +void arm_cpu_mte_finalize(ARMCPU *cpu, Error **errp)
+>> +{
+>> +    if (!cpu->prop_mte) {
+>> +        /* Disable MTE feature bits. */
+>> +        cpu->isar.id_aa64pfr1 =
+>> +            FIELD_DP64(cpu->isar.id_aa64pfr1, ID_AA64PFR1, MTE, 0);
+>> +        return;
+>> +    }
+>> +#ifndef CONFIG_USER_ONLY
+>> +    if (!kvm_enabled()) {
+>> +        if (cpu_isar_feature(aa64_mte, cpu) && !cpu->tag_memory) {
+>> +            /*
+>> +             * Disable the MTE feature bits, unless we have tag-memory
+>> +             * provided by the machine.
+>> +             * This silent downgrade is not really nice if the user had
+>> +             * explicitly requested MTE to be enabled by the cpu, but it
+>> +             * preserves pre-existing behaviour. In an ideal world, we
+>
+>
+> Can't we "simply" prevent the end-user from using the prop_mte option
+> with a TCG CPU? and have something like
+>
+> For TCG, MTE depends on the CPU feature availability + machine tag memory
+> For KVM, MTE depends on the user opt-in + CPU feature avail (if
+> relevant) + host VM capability (?)
+
+I don't like kvm and tcg cpus behaving too differently... but then, tcg
+is already different as it needs tag_memory.
+
+Thinking about it, maybe we could repurpose tag_memory in the kvm case
+(e.g. for a temporary buffer for migration purposes) and require it in
+all cases (making kvm fail if the user specified tag memory, but the
+host doesn't support it). A cpu feature still looks more natural to me,
+but I'm not yet quite used to how things are done in arm :)
+
+The big elefant in the room is how migration will end up
+working... after reading the disscussions in
+https://lore.kernel.org/all/CAJc+Z1FZxSYB_zJit4+0uTR-88VqQL+-01XNMSEfua-dXDy6Wg@mail.gmail.com/
+I don't think it will be as "easy" as I thought, and we probably require
+some further fiddling on the kernel side.
+
+>
+> But maybe I miss the point ...
+>> +             * would fail if MTE was requested, but no tag memory has
+>> +             * been provided.
+>> +             */
+>> +            cpu->isar.id_aa64pfr1 =
+>> +                FIELD_DP64(cpu->isar.id_aa64pfr1, ID_AA64PFR1, MTE, 0);
+>> +        }
+>> +        if (!cpu_isar_feature(aa64_mte, cpu)) {
+>> +            cpu->prop_mte = false;
+>> +        }
+>> +        return;
+>> +    }
+>> +    if (kvm_arm_mte_supported()) {
+>> +#ifdef CONFIG_KVM
+>> +        if (kvm_vm_enable_cap(kvm_state, KVM_CAP_ARM_MTE, 0)) {
+>> +            error_setg(errp, "Failed to enable KVM_CAP_ARM_MTE");
+>> +        } else {
+>> +            /* TODO: add proper migration support with MTE enabled */
+>> +            if (!mte_migration_blocker) {
+>> +                error_setg(&mte_migration_blocker,
+>> +                           "Live migration disabled due to MTE enabled");
+>> +                if (migrate_add_blocker(mte_migration_blocker, NULL)) {
+> error_free(mte_migration_blocker);
+> mte_migration_blocker = NULL;
+
+Ah, I missed that, thanks.
+
+>> +                    error_setg(errp, "Failed to add MTE migration blocker");
+>> +                }
+>> +            }
+>> +        }
+>> +#endif
+>> +    }
+>> +    /* When HVF provides support for MTE, add it here */
+>> +#endif
+>> +}
+>> +
 

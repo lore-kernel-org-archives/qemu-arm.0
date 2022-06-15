@@ -1,113 +1,126 @@
-Received: by 2002:a19:ee12:0:0:0:0:0 with SMTP id g18csp2198732lfb;
-        Tue, 14 Jun 2022 09:11:41 -0700 (PDT)
-X-Google-Smtp-Source: AGRyM1sgRKjE/ehAhtEzWbQiDjeaA8jyW6EgFs+YwdT9/nXcWPvMeoG/5DdKMAHaoJPWZLPGRo0u
-X-Received: by 2002:ad4:596e:0:b0:464:523a:123f with SMTP id eq14-20020ad4596e000000b00464523a123fmr4101774qvb.74.1655223101162;
-        Tue, 14 Jun 2022 09:11:41 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1655223101; cv=none;
+Received: by 2002:a19:ee12:0:0:0:0:0 with SMTP id g18csp184216lfb;
+        Wed, 15 Jun 2022 01:54:09 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxJOHHlk9GJu7I3pe+qWHIbEAPEsQxeEae74aXp6wIvjRwQM5cg+Jr7sqtSkSis13q8HJrZ
+X-Received: by 2002:a37:acb:0:b0:6a7:3b23:32ac with SMTP id 194-20020a370acb000000b006a73b2332acmr7264384qkk.98.1655283248716;
+        Wed, 15 Jun 2022 01:54:08 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1655283248; cv=none;
         d=google.com; s=arc-20160816;
-        b=lDKrW6gAKe03DUtcYAHHAkHmW3nt8BR4RVUyINVrQQ04WvGqcMZokhhFp6KnJ73HMN
-         yfdsYiRuk0nrofqsu9xGgutkdyQKOM8akOYcNnvl30AXv3edk4EF54rukBGcGZ1h81lG
-         nVyNwl7gqYdeToV6mE2nFQNejG8uS5uJcR8DthQjjWYLyAfjXFjPslVuZjFbx1FsSbqE
-         Krw4OLOcbGSdzqH6Xfslrd5oxZK/zZKRr6HyF+9uQ8Yyo1UKWqGwqxBX05EPUyAx/UrL
-         Ti7Z0vQu/ACE77gC4Wv1B0Y4Jx2DuMe9VSmo3L2XqsPLDKqtC1OLdOzHAvLskYBKyghj
-         Cc1g==
+        b=Xu8rZiKP1QVzsxkEt9jR1VCDIMJU04xo+nIz9j9bYRSCYFZF9ezEe1ktSoCjUd/nnF
+         9vfUtkEWb/qO6gRtp3QbsF7JnUi3OqIadSgh/pFxeycYe7Ip2Zlyo67JsoeIDfMMpSQP
+         Xa5O9Of27nYtp+sdRpHaM89XrbeyUOob2pSDz9eCHbU+6NWS2XJJx6pTvuChO4voJ+Ge
+         IkMZuzAak3ZrlFOKXj+YfRKjCOxcHKXYIx8F0yc2ngb2a6HKuGNXUkGLMKrRgtWp7Qy2
+         17PzQ0KjQ8I5Oei3di7fisCritJLTO0tzl/uKB4jfY2zPYcsXE3/xZ3Rg2xtreZiGtro
+         tOfQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=7V0Yx83/KzW8Q6mBxG6TRKpr8ulK1VqJTSufD2j2QP4=;
-        b=DvOa/zUUMmM4uO4RrI1rTJ0hVLtaD/Zqmu9HPwB+5HasODfDL5SoeyJpVGFJgDqcbo
-         fIxxtoxFqxagxerQwR6nuvrkuY5aRux4Q03mq1KJ6ButCbh+Tt1uLRvIitF/iS4E/hN/
-         n+NCnxKHbcfk1oQpyQ12T4NbeblZBlAnpelj5ENCuveS5q1758kJ7kwvu662w4B5Kn1r
-         gWA02FuXNwsbS81hOPisRo6k8cnkIEolmfND0at0JNkKQCWJcxzsPbSyPUtgpVc5zwU9
-         ui/uP3cK6lH3XQdx7EDdmmlrtfnSXZ2KGK4nOQODTyXZuZwjcX+mf0r1dTDCU7WWLGuX
-         QBhg==
+         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
+         :feedback-id:dkim-signature:dkim-signature;
+        bh=yDWpJWQ5LxQaXucC4V0FUbyyOwtTT2uoCHi0vJWsFhw=;
+        b=yZwgzTK7PFRfTMgahOqgAQ7BdO9SGhnAA9R2QKLTpcJyVGZGz7Ty/E8SLfZLCHA0iy
+         8+xO+3WYA9iz6MENtCjZkiBePIuA0UUA3G+DzMoj6KmmE020bBpTS0wmc4DYWvtDHAUa
+         9MB1rkv47uxyRTKAAcaNyQ+aBsVp0GFlwTJ9NR5Wvn6jE7wGJEsZx1I5aIvd0vPgg6xG
+         XH3Xiq0ZiyKZWTp47DoRcJE0NJ3AW83NbH/k3BGWF0qjs/k44YGJtB0U8YIPuzhCLGw1
+         lApHDPM9S2T/WylEGcSckpxJl9Mn3dWdKOm0kWER0lQUNzKRY1Bud28xbzEXcZjcWxCh
+         53NA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=I9uhTVdG;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dkim=fail header.i=@irrelevant.dk header.s=fm1 header.b=aeEAeWBw;
+       dkim=fail header.i=@messagingengine.com header.s=fm2 header.b=NxgbV4jM;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id o14-20020a05622a008e00b00304fe564c77si2050993qtw.353.2022.06.14.09.11.40
+        by mx.google.com with ESMTPS id i11-20020a05620a150b00b006a0348146b3si6452685qkk.311.2022.06.15.01.54.08
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 14 Jun 2022 09:11:41 -0700 (PDT)
+        Wed, 15 Jun 2022 01:54:08 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=I9uhTVdG;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:45706 helo=lists1p.gnu.org)
+       dkim=fail header.i=@irrelevant.dk header.s=fm1 header.b=aeEAeWBw;
+       dkim=fail header.i=@messagingengine.com header.s=fm2 header.b=NxgbV4jM;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:60506 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1o198m-0005iN-Ik
-	for alex.bennee@linaro.org; Tue, 14 Jun 2022 12:11:40 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:43474)
+	id 1o1Omt-0003vb-Hv
+	for alex.bennee@linaro.org; Wed, 15 Jun 2022 04:54:08 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53828)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <dz4list@gmail.com>)
- id 1o190p-0002VL-98; Tue, 14 Jun 2022 12:03:27 -0400
-Received: from mail-pg1-x534.google.com ([2607:f8b0:4864:20::534]:40918)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <dz4list@gmail.com>)
- id 1o190m-00046s-AZ; Tue, 14 Jun 2022 12:03:26 -0400
-Received: by mail-pg1-x534.google.com with SMTP id f65so8893580pgc.7;
- Tue, 14 Jun 2022 09:03:22 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=7V0Yx83/KzW8Q6mBxG6TRKpr8ulK1VqJTSufD2j2QP4=;
- b=I9uhTVdG1k3nN1gUBe/eCUoPpsFFsL/yBkx24ZnXRNaBMpP3V362oz1N6KcF/wA5yH
- 0CZ+Ruf506GSKyHGXRi909yJ4yOVNqJAdD7j61XOKqtERXV0N5wGq/d0CwF/A/rUfPeu
- 7WqdVtVOIqSYUlMgK19NWIXuyddVgRcG+zZLJjaTQ2/67E6Ycpfq34ZAAAd6r1j4FJbw
- wmOnil8tLZD7SQdrfMjGHXaKBeVylU3RfTXsCLYpzI1TFVmsgjYglNuRbD900IbjF7iF
- pApKNLlkNK3rr0ZplComQIomGNnvfinCyLlUkqmEfw8aimmKXif2e3tdNrghGoXzEVsX
- uqgA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=7V0Yx83/KzW8Q6mBxG6TRKpr8ulK1VqJTSufD2j2QP4=;
- b=wTCBNmOmA0d/PrSNiXCwikmusxSfSs0L10o4euX0D5eMQRqKiDaPr33CCGN4RZnkGK
- qULqZJTk/5a+3IHoFD4QZiLssr3woTrACDhefUf9zrI96rZgsf7AeA9+kSI9kXGsnc+V
- yxKZ1m6ZIP0Cd2s/Bo/foJUowNEvO3kifx4tp+5t1CgPxts9uT2qTEaiAQmE61UFfwLq
- FsLzk9Aj0TS0FZcSI/XWRRFGEkyUAdHq5HPEty/i9KsRA3KhVmH4YI71tpeMJUOP4oE5
- E17TLZ/KWbF2RMSS4V6grWmplo0vyZosiUWdDdMic/VLTfCjy/wvI6A6B1Zh/N/1Gb0W
- nroA==
-X-Gm-Message-State: AOAM532W2PqgZnOar7TTJre0nGja6ScPgSdvDGRVpB9xPH6F+EVWDGnB
- KObTcGi87krPkaZN/s8T3WQ=
-X-Received: by 2002:a63:d806:0:b0:408:9e5d:68b9 with SMTP id
- b6-20020a63d806000000b004089e5d68b9mr5051417pgh.22.1655222601393; 
- Tue, 14 Jun 2022 09:03:21 -0700 (PDT)
-Received: from zhdaniel-fedora-MJ0FVN0B.corp.tfbnw.net
- ([2620:10d:c090:500::2:9ac3]) by smtp.gmail.com with ESMTPSA id
- b10-20020a170902bd4a00b00168b7d639acsm7422643plx.170.2022.06.14.09.03.20
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 14 Jun 2022 09:03:21 -0700 (PDT)
-From: Dan Zhang <dz4list@gmail.com>
-To: clg@kaod.org
-Cc: alistair@alistair23.me, andrew@aj.id.au, dz4list@gmail.com,
- frasse.iglesias@gmail.com, hreitz@redhat.com, irischenlj@fb.com,
- irischenlj@gmail.com, joel@jms.id.au, kwolf@redhat.com, lvivier@redhat.com,
- patrick@stwcx.xyz, pbonzini@redhat.com, pdel@fb.com,
- peter.maydell@linaro.org, qemu-arm@nongnu.org, qemu-block@nongnu.org,
- qemu-devel@nongnu.org, thuth@redhat.com
-Subject: [PATCH] hw:w25p80: Add STATE_STANDBY to handle incorrect command
-Date: Tue, 14 Jun 2022 09:02:46 -0700
-Message-Id: <20220614160246.2888751-1-dz4list@gmail.com>
-X-Mailer: git-send-email 2.34.3
-In-Reply-To: <673b4b6c-b107-ab03-fe51-752ec45e6a04@kaod.org>
-References: <673b4b6c-b107-ab03-fe51-752ec45e6a04@kaod.org>
+ (Exim 4.90_1) (envelope-from <its@irrelevant.dk>)
+ id 1o1Ok6-0003t0-5B; Wed, 15 Jun 2022 04:51:14 -0400
+Received: from out1-smtp.messagingengine.com ([66.111.4.25]:50259)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <its@irrelevant.dk>)
+ id 1o1Ok4-0001no-95; Wed, 15 Jun 2022 04:51:13 -0400
+Received: from compute2.internal (compute2.nyi.internal [10.202.2.46])
+ by mailout.nyi.internal (Postfix) with ESMTP id 9B2F65C0130;
+ Wed, 15 Jun 2022 04:51:09 -0400 (EDT)
+Received: from mailfrontend2 ([10.202.2.163])
+ by compute2.internal (MEProxy); Wed, 15 Jun 2022 04:51:09 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=irrelevant.dk;
+ h=cc:cc:content-type:date:date:from:from:in-reply-to
+ :in-reply-to:message-id:mime-version:references:reply-to:sender
+ :subject:subject:to:to; s=fm1; t=1655283069; x=1655369469; bh=yD
+ WpJWQ5LxQaXucC4V0FUbyyOwtTT2uoCHi0vJWsFhw=; b=aeEAeWBwKl/iVnWk4O
+ wRQpjxHvSa4Aj7XmSJ06LeFHSWWR34UCVum7Wrqh4fQd2mK0BC2RUI9mFcv2lqgL
+ 1+9t7OfEjuwY3Y/vPgVhs3kdPlEXSkDYZUFL90/lJD5jmr5EKz8FYBe00W7jCfw2
+ gkjKAbmtbQ3/N6Zl/EXhQrWnwVC+4OUtFzChPxlKUtTRnpqbZ+N1kvS8rJFpJ/tz
+ lb3QgK6ZlzJr2KVF2fhAFbyER5nt/e7fIVxQjyZZqgwN5ygosQ52TQiWxRfgifa8
+ 0jS344lkkEvFSgrhYH+ece4GyDyP8Zn20Zb2ZH2TBclG0TdlEOgmLj4Ql7ZcaV5S
+ 6Cbg==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+ messagingengine.com; h=cc:cc:content-type:date:date:feedback-id
+ :feedback-id:from:from:in-reply-to:in-reply-to:message-id
+ :mime-version:references:reply-to:sender:subject:subject:to:to
+ :x-me-proxy:x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=
+ fm2; t=1655283069; x=1655369469; bh=yDWpJWQ5LxQaXucC4V0FUbyyOwtT
+ T2uoCHi0vJWsFhw=; b=NxgbV4jM/Y1m8OiWvc7fUoDQAKOtJyy/Ei2OPTWbYzZ/
+ /983R1nihWAOEJkTE+2x3juf6NE65qEXKnBWbmWak6ceGXfc9u5/KFM3Sb4umOIF
+ jgKRKWZrk0hKkWIdESMxDRbe2wXLNhkJhxSltCdcWBDSAXw7PP0fWWX8Arutkufq
+ llfyWWeQ6XZh7krCMvHBtPGMe4yDQFoib0NJM525Or9EI2uMBjwkAi13x/E/elt/
+ pBgX8pUjoOO8tQG45AJWpIf2AZs2rGQFymHpWgYgg0Gttasfoic7xV6/TrXqEJ+W
+ i/QEuBS2E19OVYhXh4P3UiODAbP9rnQrw7ri3CwQhA==
+X-ME-Sender: <xms:fJ2pYqKktgq_y6M218GumgvpECIm-Nky3k2-nAxcGchmHaFI8iC3Rg>
+ <xme:fJ2pYiLB-zARpylz45YJ77nOsK0jBUOv2HIqcVYDB5JdB1RDftjxUvmHr6W-e55RR
+ gkRMhvWkO2pNSiuVPk>
+X-ME-Received: <xmr:fJ2pYqsfbokmKRLTKNnHtH1EXOybgtg7jshNcjQBnw7_nY4up--iYy8>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvfedruddvuddgtdejucetufdoteggodetrfdotf
+ fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
+ uceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmne
+ cujfgurhepfffhvfevuffkfhggtggujgesghdtreertddtjeenucfhrhhomhepmfhlrghu
+ shculfgvnhhsvghnuceoihhtshesihhrrhgvlhgvvhgrnhhtrdgukheqnecuggftrfgrth
+ htvghrnhepjefgjeefffdvuefhieefhffggfeuleehudekveejvedtuddugeeigeetffff
+ jeevnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmrghilhhfrhhomhepih
+ htshesihhrrhgvlhgvvhgrnhhtrdgukh
+X-ME-Proxy: <xmx:fJ2pYvaJ3jTY9aA7mVSVhnjbOavlJzCHcU3tqJkGfqkjzquBo-jV0Q>
+ <xmx:fJ2pYhaGvzENBjPlap01K7dzxrXWJHiScsDdGh1wHpMCeWyKDfeeIw>
+ <xmx:fJ2pYrB3MnLX1YLTxdpvGbarZ6bm2W_jRyIYkVzeNFYfZxQshRitWQ>
+ <xmx:fZ2pYuTJC7NdZg5t5z2qUm75fYJxpBya1LE48WOJ6gncMI9oKLu2aA>
+Feedback-ID: idc91472f:Fastmail
+Received: by mail.messagingengine.com (Postfix) with ESMTPA; Wed,
+ 15 Jun 2022 04:51:07 -0400 (EDT)
+Date: Wed, 15 Jun 2022 10:51:05 +0200
+From: Klaus Jensen <its@irrelevant.dk>
+To: "Dr. David Alan Gilbert (git)" <dgilbert@redhat.com>
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, laurent@vivier.eu,
+ mjt@tls.msk.ru, danielhb413@gmail.com, clg@kaod.org, mst@redhat.com,
+ qemu-arm@nongnu.org, qemu-block@nongnu.org, kbusch@kernel.org
+Subject: Re: [PATCH 0/2] Two sets of trivials
+Message-ID: <YqmdeUCc+9dtVeV7@apples>
+References: <20220614104045.85728-1-dgilbert@redhat.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::534;
- envelope-from=dz4list@gmail.com; helo=mail-pg1-x534.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+Content-Type: multipart/signed; micalg=pgp-sha256;
+ protocol="application/pgp-signature"; boundary="dgdY8oKLskTV074e"
+Content-Disposition: inline
+In-Reply-To: <20220614104045.85728-1-dgilbert@redhat.com>
+Received-SPF: pass client-ip=66.111.4.25; envelope-from=its@irrelevant.dk;
+ helo=out1-smtp.messagingengine.com
+X-Spam_score_int: -27
+X-Spam_score: -2.8
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -123,44 +136,65 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: kiGH8u2hyaTN
+X-TUID: Ly/lUUsbwexV
 
----
- hw/block/m25p80.c | 7 +++++++
- 1 file changed, 7 insertions(+)
 
-diff --git a/hw/block/m25p80.c b/hw/block/m25p80.c
-index b6bd430a99..3bb0466dca 100644
---- a/hw/block/m25p80.c
-+++ b/hw/block/m25p80.c
-@@ -423,6 +423,7 @@ typedef enum {
-     STATE_COLLECTING_DATA,
-     STATE_COLLECTING_VAR_LEN_DATA,
-     STATE_READING_DATA,
-+    STATE_STANDBY,
- } CMDState;
- 
- typedef enum {
-@@ -1218,6 +1219,9 @@ static void decode_new_cmd(Flash *s, uint32_t value)
-             || !s->write_enable) {
-             qemu_log_mask(LOG_GUEST_ERROR,
-                           "M25P80: Status register write is disabled!\n");
-+	    qemu_log_mask(LOG_GUEST_ERROR,
-+                          "M25P80: switch to standby, re-aseert CS to reactivate \n");
-+	    s->state = STATE_STANDBY;
-             break;
-         }
- 
-@@ -1472,6 +1476,9 @@ static uint32_t m25p80_transfer8(SSIPeripheral *ss, uint32_t tx)
-                           s->cur_addr, (uint8_t)tx);
- 
-     switch (s->state) {
-+    case STATE_STANDBY:
-+	r = 0xFFFFFFFF; /* StandBy state SO shall be HiZ */
-+	break;
- 
-     case STATE_PAGE_PROGRAM:
-         trace_m25p80_page_program(s, s->cur_addr, (uint8_t)tx);
--- 
-2.34.3
+--dgdY8oKLskTV074e
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
+On Jun 14 11:40, Dr. David Alan Gilbert (git) wrote:
+> From: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
+>=20
+> I've sent the 3 char set last month, but have updated
+> it a little; I cleaned up a comment style that was already
+> broken so checkpatch is happy.
+>=20
+> The 'namesapce' is a new patch; it's amazing how many places
+> make the same typo!
+>=20
+> Dave
+>=20
+> Dr. David Alan Gilbert (2):
+>   Trivial: 3 char repeat typos
+>   trivial typos: namesapce
+>=20
+>  hw/9pfs/9p-xattr-user.c          | 8 ++++----
+>  hw/acpi/nvdimm.c                 | 2 +-
+>  hw/intc/openpic.c                | 2 +-
+>  hw/net/imx_fec.c                 | 2 +-
+>  hw/nvme/ctrl.c                   | 2 +-
+>  hw/pci/pcie_aer.c                | 2 +-
+>  hw/pci/shpc.c                    | 3 ++-
+>  hw/ppc/spapr_caps.c              | 2 +-
+>  hw/scsi/spapr_vscsi.c            | 2 +-
+>  qapi/net.json                    | 2 +-
+>  tools/virtiofsd/passthrough_ll.c | 2 +-
+>  ui/input.c                       | 2 +-
+>  12 files changed, 16 insertions(+), 15 deletions(-)
+>=20
+> --=20
+> 2.36.1
+>=20
+
+Nice (and Thanks)!
+
+Reviewed-by: Klaus Jensen <k.jensen@samsung.com>
+
+--dgdY8oKLskTV074e
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAEBCAAdFiEEUigzqnXi3OaiR2bATeGvMW1PDekFAmKpnXgACgkQTeGvMW1P
+Dekm2QgAvCvoFg4Oc3K6RCxEjBHA51yDw/MgoHEZbcJT7QyWlOGyMnwzQvF8PLiz
+liv/i+rt2KVvymqjTVYEFK2PmPi8OWEH4VaogKbC790hlpmYbLI6fxWkCufbYFcL
+JZXzNslcQ1otFmHVjeonzqMdQo7pj+jTN/6mM7sNfA5qltXHesHNq8iszpkVNIJX
+PztHuLBQTv6FMUU5U6VrXb+kKIWzuVG0deAC+HK4a1vT4fZUHgF/JlX93eAPmys4
+g+U3JB8zLnmUBY7ms9neuNQMVvbklgG/Y75aXh35Hl7s4DgIjX9ohQ3g1klRMX9m
+LBitp089lt4U8j24LtFbtbkklXHe3g==
+=GwDD
+-----END PGP SIGNATURE-----
+
+--dgdY8oKLskTV074e--

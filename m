@@ -1,106 +1,107 @@
-Received: by 2002:a19:ee12:0:0:0:0:0 with SMTP id g18csp449893lfb;
-        Fri, 17 Jun 2022 16:09:45 -0700 (PDT)
-X-Google-Smtp-Source: AGRyM1uhPOCLkieuyycyDZEIjFEI4SHcocjLyboweVGtgF5Oojvirbebtn/fnM/pS9krw3qqFnnD
-X-Received: by 2002:a05:622a:c:b0:306:7748:180 with SMTP id x12-20020a05622a000c00b0030677480180mr10852080qtw.362.1655507385078;
-        Fri, 17 Jun 2022 16:09:45 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1655507385; cv=none;
+Received: by 2002:a19:ee12:0:0:0:0:0 with SMTP id g18csp669282lfb;
+        Sat, 18 Jun 2022 02:02:22 -0700 (PDT)
+X-Google-Smtp-Source: AGRyM1stoCngBolILJU32sySJKueFJG2SGPA2HSpD3CUagSK9zzrM60opBxlkgzwfpkCu932SDEj
+X-Received: by 2002:a05:6214:4114:b0:46d:c5fa:bf63 with SMTP id kc20-20020a056214411400b0046dc5fabf63mr11482322qvb.13.1655542942349;
+        Sat, 18 Jun 2022 02:02:22 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1655542942; cv=none;
         d=google.com; s=arc-20160816;
-        b=EJ8HXCrOykiOLBkxhuB0udKpM8ojO3vNleSn/eYT5VFzmCwR6QybZ3BrbxLEo6oVUE
-         YwUUI7ozfrYhWwexxeKuquUETNT6Reg5dNgU6Obx8/ljaCX1JcCmw+az7XiTvXLjZSYa
-         quiioJRdyNMoAptrxdK8AZzI5M8YAHgXOCu9U0RJ3Absf7iPJ3F4Ky4Y4j67qxsGaoQZ
-         IllLIQSTljanaB8eQk3YyTZqoCKRTsP2N7VJb1t50XHMvG4dmPo+ZFOEneeITsQJoVaR
-         bAj0JJRnmQ4BY2afScifhxerUwPMytukpcio6f57A8xwQZGpjxlLVEb453V+dxeGcWZp
-         aweg==
+        b=Fb7McM10VBMm59T8siix+Z2xo+9Zq9bg3Lst/KsoPMBbjQciPmCWln3z9R+8LM/LnU
+         245ruMLhWH8jnnI/n493RdfR+9jHq4CQUI7+ovAUY5sM9SiDQfCQVNqzS7kK8IKxG6nX
+         awzUm/yIj/SfQSXb6oL48dQN5SYdccK4APY8HT8mIV5kZOFz7UiFce95dtfaVR2P7YdH
+         rr3fDJcm0V6kS5JW3kxb8JlHKrHLbcJZA71vSCL0XNXs4Pibz0+nBhk5gQNuxufhKIqN
+         mdwGwRvdwoAlFEqwTInk5gkX23vKKWtULT+m96AbPXHYt7uXgIIX1Zy7mPzTDK2B9WC/
+         quUg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
-        bh=dGx63IkBb37Dy7y4/eGMSA5zI9E8FLS1pLhhionajpY=;
-        b=Qz+PM2TanpeLpbcas2fmrfFFB2PG5kGGDuAOnggazBUDeFbGkZOP6H98KnG4EiBH+n
-         VibEHqEB38VcdM9RVYiOd8tEfNgaMLFjYBhLqSbkkDCXiMAALTCVsWbxJ20F1tjv5Xo/
-         UJHtUKRtk8c8/bjGpmZOANBA7LQ9y8v2R6SgNwIpwsW1/U/1P1jxfi6J+ENhO252Wk4+
-         uzwDaQtI6dlTTkl+eIMkF1ZyRCD1vYiT+R2n8CWdCRQYc0VBsri+hJlSNpJK8ggCSRVB
-         YypH2vQsOR2BLCtI/5BxXsj1nON5gxr4eYNrI8/i8Vk8y/3ikSJmzpZJdAL35P/IwbTK
-         GE5A==
+        bh=63cavFc5cxjvfePJTjWfXSGCWx+MupVUzl1XIVF5GEw=;
+        b=yqXcOlqftHsbpPOzKCEjAE1T8U9uxKmKcjuoygnh8AQnRwM+EkH4q8UIGrSz4PJPrV
+         HUUZubalDXLl3Ec2dhAlaXoKb9xA1Njh0MChq/Bl8S9LRBI3oWw9RXTQSvq0nAirweWf
+         qe30INCs+amVWA9GmpmbRVukO9cb6iIno1NJbdodtiUD8TLw1fD1h8ep822le8D4Pd4/
+         0gcPozEcmOS/Wl8Q8i0OGr09PsG2jkVOw/gkH0lV5ujN739C/TCiKsYVzP1MfIwr4d7x
+         ywLtUfJswgpaqVc1Mm9jbNWN/0118UguQP4UGNbDNiNyooa99u8+SfAnW2PmmqRrPykM
+         P0Yw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@fb.com header.s=facebook header.b=U38YrZ2Y;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=fb.com
+       dkim=fail header.i=@gmail.com header.s=20210112 header.b=Ydh08QN6;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id n2-20020a05622a11c200b00304ddfda0e9si3251800qtk.773.2022.06.17.16.09.44
+        by mx.google.com with ESMTPS id if4-20020a0562141c4400b004645bfe13e4si5013348qvb.52.2022.06.18.02.02.22
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 17 Jun 2022 16:09:45 -0700 (PDT)
+        Sat, 18 Jun 2022 02:02:22 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@fb.com header.s=facebook header.b=U38YrZ2Y;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=fb.com
-Received: from localhost ([::1]:53838 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20210112 header.b=Ydh08QN6;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:55910 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1o2L60-000216-G7
-	for alex.bennee@linaro.org; Fri, 17 Jun 2022 19:09:44 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:57236)
+	id 1o2ULV-0004eN-Nf
+	for alex.bennee@linaro.org; Sat, 18 Jun 2022 05:02:21 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:42284)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <prvs=71671d6567=irischenlj@fb.com>)
- id 1o2L5o-0001zK-1x; Fri, 17 Jun 2022 19:09:32 -0400
-Received: from mx0a-00082601.pphosted.com ([67.231.145.42]:31314)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <prvs=71671d6567=irischenlj@fb.com>)
- id 1o2L5l-0006Yu-Ue; Fri, 17 Jun 2022 19:09:31 -0400
-Received: from pps.filterd (m0109333.ppops.net [127.0.0.1])
- by mx0a-00082601.pphosted.com (8.17.1.5/8.17.1.5) with ESMTP id 25HLhoJc013012;
- Fri, 17 Jun 2022 16:09:15 -0700
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=fb.com;
- h=from : to : cc : subject
- : date : message-id : mime-version : content-transfer-encoding :
- content-type; s=facebook; bh=dGx63IkBb37Dy7y4/eGMSA5zI9E8FLS1pLhhionajpY=;
- b=U38YrZ2YUYthTvykWvXxpyh8uL1+qZyo1q7t7r+0zvDZBsH+afB+UVFlDG+yZUk9eaMz
- 37vmGtt00DsQ6yChYOJSlILBOhGv9lcI6IyIIfZHwEJTNfclUZhHp0EJPZlQxBlrgbRq
- Yc6MMoUG4WKzFRzWicVJB60kQkxMEZ2o+Ao= 
-Received: from mail.thefacebook.com ([163.114.132.120])
- by mx0a-00082601.pphosted.com (PPS) with ESMTPS id 3gqt6fwp9g-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128 verify=NOT);
- Fri, 17 Jun 2022 16:09:15 -0700
-Received: from localhost (2620:10d:c085:108::8) by mail.thefacebook.com
- (2620:10d:c085:11d::5) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2375.28; Fri, 17 Jun
- 2022 16:09:14 -0700
-From: Iris Chen <irischenlj@fb.com>
-To: 
-CC: <irischenlj@fb.com>, <pdel@fb.com>, <qemu-devel@nongnu.org>,
- <qemu-arm@nongnu.org>, <clg@kaod.org>, <patrick@stwcx.xyz>,
- <alistair@alistair23.me>, <kwolf@redhat.com>, <hreitz@redhat.com>,
- <peter.maydell@linaro.org>, <andrew@aj.id.au>, <joel@jms.id.au>,
- <thuth@redhat.com>, <lvivier@redhat.com>, <pbonzini@redhat.com>,
- <qemu-block@nongnu.org>, <dz4list@gmail.com>
-Subject: [PATCH 1/1] hw: m25p80: fixing individual test failure when tests are
- running in isolation
-Date: Fri, 17 Jun 2022 16:09:03 -0700
-Message-ID: <20220617230903.2542638-1-irischenlj@fb.com>
-X-Mailer: git-send-email 2.30.2
+ (Exim 4.90_1) (envelope-from <joel.stan@gmail.com>)
+ id 1o2UKj-0004Zf-6E; Sat, 18 Jun 2022 05:01:33 -0400
+Received: from mail-pj1-x102a.google.com ([2607:f8b0:4864:20::102a]:52917)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <joel.stan@gmail.com>)
+ id 1o2UKf-0002bY-Qv; Sat, 18 Jun 2022 05:01:31 -0400
+Received: by mail-pj1-x102a.google.com with SMTP id p5so303586pjt.2;
+ Sat, 18 Jun 2022 02:01:25 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=sender:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=63cavFc5cxjvfePJTjWfXSGCWx+MupVUzl1XIVF5GEw=;
+ b=Ydh08QN68JZJXUcHfV7ObXi6L4hWXU9PIuqRb+QSAOo5Iw6Ilvg53mDOXIUToPHa0T
+ D9ALNxIZ4tMVPCpVbiOpnnfMwHlzY0Vw6hB5XCZRF1cvwY88AvdlltjW2X2fUIqyNlBy
+ s0fu9fAJngf/ruidYt0YQ4jWnG0atPpdk/+tJTau0r75fP7cZgopFXnYmnrMWgRTD4r9
+ szYbXxFaDjogpJhwHze0zj9fj9Gmm7QC9psHXQK+rHxtepG6R5yvJvfNt3KphXe1ltzl
+ 6F0sNS+Vb6zeG+FB+XDiwkFwsTF/sZlOTUPk21NPaWb/Wa9+O0EwpJv9xp0UDYeC4JOw
+ fyOQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
+ :mime-version:content-transfer-encoding;
+ bh=63cavFc5cxjvfePJTjWfXSGCWx+MupVUzl1XIVF5GEw=;
+ b=PeEj0jp7qh5htrb9/4Q8YvdOMZxtCAtwVa3Jtqn6AabObEsj6YBW0X/Dx3fBo9MgIN
+ 890b7pX1QZO2kmFyAumJVaQe+ejL3GMrrhg7cCpgKvVY1rFLO5hjjAW24yaqzSF93FwZ
+ AvPr6pbf7prhTROyASPs1EvWVPkqMBK/IHm5Q1wI/P9pvMTxnd9JZq/mD2bIPXUCDDEV
+ yPPnXDRQd9uYHwgyfgM6k4dq7xiiYbDX+tVUicVJsrZ2Q8gC1niEKf+xhbgzipn06NEV
+ 6PtBwTb34zWw+4DRuitN0rBLTARxtRDG35zinC8AkisJdW0eyA42ka+BwIa2CgiiotI+
+ dYrw==
+X-Gm-Message-State: AJIora9QD6khUAvUrzZKZd/EJ3FKfljBcR0K0+fxjrR2KTCXxGEp+OeX
+ 0ZJqGlMxpsIvOed0j4vGVKo=
+X-Received: by 2002:a17:90b:314a:b0:1e8:5362:5620 with SMTP id
+ ip10-20020a17090b314a00b001e853625620mr15377190pjb.9.1655542884662; 
+ Sat, 18 Jun 2022 02:01:24 -0700 (PDT)
+Received: from localhost.localdomain ([45.124.203.18])
+ by smtp.gmail.com with ESMTPSA id
+ x4-20020a17090a530400b001e0cc5b13c6sm6783622pjh.26.2022.06.18.02.01.21
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sat, 18 Jun 2022 02:01:23 -0700 (PDT)
+From: Joel Stanley <joel@jms.id.au>
+To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
+ Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Subject: [PATCH] aspeed/hace: Add missing newlines to unimp messages
+Date: Sat, 18 Jun 2022 18:31:14 +0930
+Message-Id: <20220618090114.3158904-1-joel@jms.id.au>
+X-Mailer: git-send-email 2.35.1
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-Originating-IP: [2620:10d:c085:108::8]
-X-Proofpoint-GUID: aq6Z81dRVVh5bOSZSqND3EGJ-0S41mKd
-X-Proofpoint-ORIG-GUID: aq6Z81dRVVh5bOSZSqND3EGJ-0S41mKd
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.205,Aquarius:18.0.883,Hydra:6.0.517,FMLib:17.11.64.514
- definitions=2022-06-17_15,2022-06-17_01,2022-02-23_01
-Received-SPF: pass client-ip=67.231.145.42;
- envelope-from=prvs=71671d6567=irischenlj@fb.com;
- helo=mx0a-00082601.pphosted.com
-X-Spam_score_int: -28
-X-Spam_score: -2.9
-X-Spam_bar: --
-X-Spam_report: (-2.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.082,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+Received-SPF: pass client-ip=2607:f8b0:4864:20::102a;
+ envelope-from=joel.stan@gmail.com; helo=mail-pj1-x102a.google.com
+X-Spam_score_int: -14
+X-Spam_score: -1.5
+X-Spam_bar: -
+X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -115,143 +116,32 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: aRzX1EoUer9j
+X-TUID: 03R0YiqwvNk+
 
-Signed-off-by: Iris Chen <irischenlj@fb.com>
+Signed-off-by: Joel Stanley <joel@jms.id.au>
 ---
- tests/qtest/aspeed_smc-test.c | 74 +++++++++++++++++++++++++++++------
- 1 file changed, 63 insertions(+), 11 deletions(-)
+ hw/misc/aspeed_hace.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/tests/qtest/aspeed_smc-test.c b/tests/qtest/aspeed_smc-test.c
-index ec233315e6..b1e682db65 100644
---- a/tests/qtest/aspeed_smc-test.c
-+++ b/tests/qtest/aspeed_smc-test.c
-@@ -135,6 +135,9 @@ static void flash_reset(void)
-     spi_ctrl_start_user();
-     writeb(ASPEED_FLASH_BASE, RESET_ENABLE);
-     writeb(ASPEED_FLASH_BASE, RESET_MEMORY);
-+    writeb(ASPEED_FLASH_BASE, WREN);
-+    writeb(ASPEED_FLASH_BASE, BULK_ERASE);
-+    writeb(ASPEED_FLASH_BASE, WRDI);
-     spi_ctrl_stop_user();
+diff --git a/hw/misc/aspeed_hace.c b/hw/misc/aspeed_hace.c
+index 4b5997e18fad..731234b78c4c 100644
+--- a/hw/misc/aspeed_hace.c
++++ b/hw/misc/aspeed_hace.c
+@@ -340,12 +340,12 @@ static void aspeed_hace_write(void *opaque, hwaddr addr, uint64_t data,
  
-     spi_conf_remove(CONF_ENABLE_W0);
-@@ -195,21 +198,41 @@ static void test_erase_sector(void)
- 
-     spi_conf(CONF_ENABLE_W0);
- 
-+    /*
-+     * Previous page should be full of 0xffs after backend is
-+     * initialized
-+     */
-+    read_page(some_page_addr - FLASH_PAGE_SIZE, page);
-+    for (i = 0; i < FLASH_PAGE_SIZE / 4; i++) {
-+        g_assert_cmphex(page[i], ==, 0xffffffff);
-+    }
-+
-     spi_ctrl_start_user();
--    writeb(ASPEED_FLASH_BASE, WREN);
-     writeb(ASPEED_FLASH_BASE, EN_4BYTE_ADDR);
--    writeb(ASPEED_FLASH_BASE, ERASE_SECTOR);
-+    writeb(ASPEED_FLASH_BASE, WREN);
-+    writeb(ASPEED_FLASH_BASE, PP);
-     writel(ASPEED_FLASH_BASE, make_be32(some_page_addr));
-+
-+    /* Fill the page with its own addresses */
-+    for (i = 0; i < FLASH_PAGE_SIZE / 4; i++) {
-+        writel(ASPEED_FLASH_BASE, make_be32(some_page_addr + i * 4));
-+    }
-     spi_ctrl_stop_user();
- 
--    /* Previous page should be full of zeroes as backend is not
--     * initialized */
--    read_page(some_page_addr - FLASH_PAGE_SIZE, page);
-+    /* Check the page is correctly written */
-+    read_page(some_page_addr, page);
-     for (i = 0; i < FLASH_PAGE_SIZE / 4; i++) {
--        g_assert_cmphex(page[i], ==, 0x0);
-+        g_assert_cmphex(page[i], ==, some_page_addr + i * 4);
-     }
- 
--    /* But this one was erased */
-+    spi_ctrl_start_user();
-+    writeb(ASPEED_FLASH_BASE, WREN);
-+    writeb(ASPEED_FLASH_BASE, EN_4BYTE_ADDR);
-+    writeb(ASPEED_FLASH_BASE, ERASE_SECTOR);
-+    writel(ASPEED_FLASH_BASE, make_be32(some_page_addr));
-+    spi_ctrl_stop_user();
-+
-+    /* Check the page is erased */
-     read_page(some_page_addr, page);
-     for (i = 0; i < FLASH_PAGE_SIZE / 4; i++) {
-         g_assert_cmphex(page[i], ==, 0xffffffff);
-@@ -226,11 +249,31 @@ static void test_erase_all(void)
- 
-     spi_conf(CONF_ENABLE_W0);
- 
--    /* Check some random page. Should be full of zeroes as backend is
--     * not initialized */
-+    /*
-+     * Previous page should be full of 0xffs after backend is
-+     * initialized
-+     */
-+    read_page(some_page_addr - FLASH_PAGE_SIZE, page);
-+    for (i = 0; i < FLASH_PAGE_SIZE / 4; i++) {
-+        g_assert_cmphex(page[i], ==, 0xffffffff);
-+    }
-+
-+    spi_ctrl_start_user();
-+    writeb(ASPEED_FLASH_BASE, EN_4BYTE_ADDR);
-+    writeb(ASPEED_FLASH_BASE, WREN);
-+    writeb(ASPEED_FLASH_BASE, PP);
-+    writel(ASPEED_FLASH_BASE, make_be32(some_page_addr));
-+
-+    /* Fill the page with its own addresses */
-+    for (i = 0; i < FLASH_PAGE_SIZE / 4; i++) {
-+        writel(ASPEED_FLASH_BASE, make_be32(some_page_addr + i * 4));
-+    }
-+    spi_ctrl_stop_user();
-+
-+    /* Check the page is correctly written */
-     read_page(some_page_addr, page);
-     for (i = 0; i < FLASH_PAGE_SIZE / 4; i++) {
--        g_assert_cmphex(page[i], ==, 0x0);
-+        g_assert_cmphex(page[i], ==, some_page_addr + i * 4);
-     }
- 
-     spi_ctrl_start_user();
-@@ -238,7 +281,7 @@ static void test_erase_all(void)
-     writeb(ASPEED_FLASH_BASE, BULK_ERASE);
-     spi_ctrl_stop_user();
- 
--    /* Recheck that some random page */
-+    /* Check the page is erased */
-     read_page(some_page_addr, page);
-     for (i = 0; i < FLASH_PAGE_SIZE / 4; i++) {
-         g_assert_cmphex(page[i], ==, 0xffffffff);
-@@ -299,6 +342,14 @@ static void test_read_page_mem(void)
-     spi_conf(CONF_ENABLE_W0);
-     spi_ctrl_start_user();
-     writeb(ASPEED_FLASH_BASE, EN_4BYTE_ADDR);
-+    writeb(ASPEED_FLASH_BASE, WREN);
-+    writeb(ASPEED_FLASH_BASE, PP);
-+    writel(ASPEED_FLASH_BASE, make_be32(my_page_addr));
-+
-+    /* Fill the page with its own addresses */
-+    for (i = 0; i < FLASH_PAGE_SIZE / 4; i++) {
-+        writel(ASPEED_FLASH_BASE, make_be32(my_page_addr + i * 4));
-+    }
-     spi_ctrl_stop_user();
-     spi_conf_remove(CONF_ENABLE_W0);
- 
-@@ -417,6 +468,7 @@ int main(int argc, char **argv)
-     qtest_add_func("/ast2400/smc/write_page_mem", test_write_page_mem);
-     qtest_add_func("/ast2400/smc/read_status_reg", test_read_status_reg);
- 
-+    flash_reset();
-     ret = g_test_run();
- 
-     qtest_quit(global_qtest);
+         if ((data & HASH_HMAC_MASK)) {
+             qemu_log_mask(LOG_UNIMP,
+-                          "%s: HMAC engine command mode %"PRIx64" not implemented",
++                          "%s: HMAC engine command mode %"PRIx64" not implemented\n",
+                           __func__, (data & HASH_HMAC_MASK) >> 8);
+         }
+         if (data & BIT(1)) {
+             qemu_log_mask(LOG_UNIMP,
+-                          "%s: Cascaded mode not implemented",
++                          "%s: Cascaded mode not implemented\n",
+                           __func__);
+         }
+         algo = hash_algo_lookup(data);
 -- 
-2.30.2
+2.35.1
 

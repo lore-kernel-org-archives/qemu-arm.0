@@ -1,121 +1,140 @@
-Received: by 2002:ac2:4318:0:0:0:0:0 with SMTP id l24csp5789530lfh;
-        Fri, 3 Jun 2022 10:35:23 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxxOIkm5+Dpt3pYvDh8xzw6E5lTt6X4MzzLuISVeyDPonDLg68cRh5v55paSSQaWXYdGVzE
-X-Received: by 2002:a37:a14:0:b0:6a6:9192:97cf with SMTP id 20-20020a370a14000000b006a6919297cfmr4347291qkk.170.1654277722912;
-        Fri, 03 Jun 2022 10:35:22 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1654277722; cv=none;
+Received: by 2002:ac2:46e6:0:0:0:0:0 with SMTP id q6csp393764lfo;
+        Sun, 19 Jun 2022 05:55:37 -0700 (PDT)
+X-Google-Smtp-Source: AGRyM1u+dfMqAqo5pXGm4TVmtkh1in6bSJm/zpMNHzra8GNnlxdeHZabKO+GGRQHzBGm2nccIW+R
+X-Received: by 2002:ac8:7e87:0:b0:306:6575:6035 with SMTP id w7-20020ac87e87000000b0030665756035mr15883337qtj.629.1655643337199;
+        Sun, 19 Jun 2022 05:55:37 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1655643337; cv=none;
         d=google.com; s=arc-20160816;
-        b=xwWVhw34jkKC5vZy7QzlZPUoPptoL5jrTQEHFKTgkN6Zk2jJaSdoo64eKWEDb8cpj+
-         RMFkHsnDlylaqu7LPlHwn4NRPTHF1aWoRltocc7M2VtC5Qr5saPsShEm9Zz/muDk4I6Z
-         pF8luB4DIr1fguXxeiPkIm+2/GrAc7O5OrjPHdLZtoDjR6NQPycM6A6Nzf5fXXeaH6b5
-         ZgybLy1AzNbyEWsajRY9cVATTiuWiQ4btqHctTj2fTbgcaAZUNP6o6kT0OTyWI59++e1
-         to5vjIulHOuDkCyjSHlxidbfqMevZd0PfBBPmVu2JEvIaGIwMT9bdv8xt6muv8Q9S76L
-         x2Jw==
+        b=Dwi/HeZlMXeHqb1vVQidaCnksavDMhR8u4xku6+kP1+RXXrhyt38kbGughM9810QjU
+         fVXWWoi7w9a3X8fOJfe3iLEAEndlGBuf59W0iH8i7AUldrVbE1NqbvneYoAbLMu8WU/J
+         V8UWvbjvm7dkXJ491tIMQqayfS6ZKLUtzQ9fPSAv3uG7ezFGsaYcVKK0e1LviJ2tRjGh
+         mLhJtyC25KJlbZxSLCsQMDWewLg/stWHNnhqnbtNGMEJF2yB+etCIAVqIB6GZGeOgxdV
+         Jo5+y2kdvC5785HBKbkSSBeG0IBwqhWF+9Kfc7yTisovfEDt7geWorIhVySQrSJsjDuG
+         c3eg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:subject:from
-         :references:cc:to:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=0RSZIFmkwsmWoaCv9Of6oRtXrS2HrNOlvzF1A7Ns+gs=;
-        b=baEEtULm160XluC2w8MOIRDnqJtC6eUUCXyH5EyvgMpas1LuvaiqlzmOfzuiD7uGQ3
-         Zlf34KABoGoz4atyirXPkcU5EO0ep8E1d6yd2JxArNDfP9feEkfTIye3g3woR6PrO3pu
-         eqsIiwnhG/ts7BP6WuSMRE9zozkMF5pfYMPV10Jbx0BRdkpMo0It2ZQAMbYJiCSninct
-         3MJJ9LQ4tlrkq5DsblFWtSJdfP6KRIeOBLOvjeAzDjY9zYzHPjn2HBY4MoIrlt6JnTat
-         Yl16jbCcLCl0AahzFuEft0A+25Bnwm3WeE++sZJ5K9HnBC0q7dz4Yh+huweLMcDQOdcN
-         POaw==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:references:cc:to:content-language:subject
+         :user-agent:mime-version:date:message-id;
+        bh=t3cDLCULUZSlaoLAELxoikw5g3eJA3Xlmpn4PVz23Qw=;
+        b=BKRIhQObGsk7FmCJcdg1UUhO8iFTga3DHquB9E7PVWg1yafQ6BPDSCgFzoy7l8ne+1
+         6VQs9tjET5il67D386Vuql8xtTCF8ZlSO1hZhcKM6OkubX9d2QsSEcSFzkvuO6yNf3QS
+         XOkGVSf3sxvcTgmNIcxbN42nc6lI0IGuTz5fgCkPEegMhXcq0qbLFwx+gXDiF07Ht2+H
+         gBQ8M8vvDSpNE3aa5RKd7t1wZNmxOUpiW8Iy8CfOYwnuxX8M6baTyIgfoAZ/XL97fWcd
+         eRd+PPGzzHXOgLnZthC3njtCnhKZL3P7VJ3mTZX05Z6Mm2mg6VZ0GmOrjj6GG4GgE4eG
+         OkCw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="ER7u/orr";
-       spf=pass (google.com: domain of thuth@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <thuth@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
-        by mx.google.com with ESMTPS id s199-20020a3745d0000000b006a3af1c4521si3688336qka.562.2022.06.03.10.35.22
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id v21-20020a05622a015500b0030511f696e1si6323876qtw.179.2022.06.19.05.55.37
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 03 Jun 2022 10:35:22 -0700 (PDT)
-Received-SPF: pass (google.com: domain of thuth@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Sun, 19 Jun 2022 05:55:37 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="ER7u/orr";
-       spf=pass (google.com: domain of thuth@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1654277722;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=0RSZIFmkwsmWoaCv9Of6oRtXrS2HrNOlvzF1A7Ns+gs=;
-	b=ER7u/orrmXnXP7LGM1rcSvE3LYlvHQWP+4NoLGAa9B6UhAhztJhP9s8Tl+z1sEW5CkaOze
-	qHBzaKin0g7oipStR5gQH9HGgFa9/HEC654JOC5ZxaFFeclgkN/7m1j9wD31pFLbYqtTG/
-	RyRlP6LUJC6Apk01tC/W+3sEsMIDCqc=
-Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
- [209.85.128.71]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-619-1OopIeJ9N3iaotBFEiFAwA-1; Fri, 03 Jun 2022 13:35:21 -0400
-X-MC-Unique: 1OopIeJ9N3iaotBFEiFAwA-1
-Received: by mail-wm1-f71.google.com with SMTP id ay1-20020a05600c1e0100b0039c3a3fc6a4so1716621wmb.4
-        for <alex.bennee@linaro.org>; Fri, 03 Jun 2022 10:35:19 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=x-gm-message-state:message-id:date:mime-version:user-agent
-         :content-language:to:cc:references:from:subject:in-reply-to
-         :content-transfer-encoding;
-        bh=0RSZIFmkwsmWoaCv9Of6oRtXrS2HrNOlvzF1A7Ns+gs=;
-        b=dWQ5L+sfexaiFoyLqXJPXttJynrDmlUHTc4cAYMudLIlEs6It9rnWStObYrqO3Tiim
-         DpSSl5tvFiLgt8TR5tlJTbmXTGj88GIjNrBMpgYLV0zOvz+8iZV/PSSYLT653r3TirHZ
-         S1+1UZIbv3Ceq2S2VxLsu2pHXnk7Lz+Sd8uvXqgjqfYnS0wYfry+rReLeB1Z/U51smK2
-         17QyfG8dZQ4EaxYzvNaJKNZaW8NQ6nzclHR/nofDegVV8W0Bprdrh7buoJyLMltLS/vt
-         sZxGN82IJNiWI6fIzX20o45T2YW+3P6ccu4exUCb11poMNgcboIq7Kd322WTiU/S/4nn
-         CFdA==
-X-Gm-Message-State: AOAM533kBcv3PpGYBieVHrbfI7qjtnehCMEMbCKZTUg4RlRddvmfClWK
-	BSmci7L1/IQnsCn5xyWqUZi7YN9cXfoJRMSaK1MjszXId2vY3ubvkXWZH5xrhy2SSUDs+Z8zAxH
-	1q6FOU1vR3d/ZDSCL
-X-Received: by 2002:a05:600c:1e14:b0:397:476d:1602 with SMTP id ay20-20020a05600c1e1400b00397476d1602mr39643892wmb.65.1654277715954;
-        Fri, 03 Jun 2022 10:35:15 -0700 (PDT)
-X-Received: by 2002:a05:600c:1e14:b0:397:476d:1602 with SMTP id ay20-20020a05600c1e1400b00397476d1602mr39643871wmb.65.1654277715652;
-        Fri, 03 Jun 2022 10:35:15 -0700 (PDT)
-Return-Path: <thuth@redhat.com>
-Received: from [192.168.8.104] (tmo-098-213.customers.d1-online.com. [80.187.98.213])
-        by smtp.gmail.com with ESMTPSA id m14-20020adff38e000000b0021030c9d5c5sm7793679wro.91.2022.06.03.10.35.14
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 03 Jun 2022 10:35:15 -0700 (PDT)
-Message-ID: <52c51ac4-5598-faf2-d5e5-638cab0dc1fd@redhat.com>
-Date: Fri, 3 Jun 2022 19:35:13 +0200
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:44250 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1o2uSm-0003ku-Mf
+	for alex.bennee@linaro.org; Sun, 19 Jun 2022 08:55:36 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:48342)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1o2uSY-0003hD-9z
+ for qemu-arm@nongnu.org; Sun, 19 Jun 2022 08:55:22 -0400
+Received: from 6.mo548.mail-out.ovh.net ([188.165.58.48]:40949)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1o2uSW-00009s-E4
+ for qemu-arm@nongnu.org; Sun, 19 Jun 2022 08:55:22 -0400
+Received: from mxplan5.mail.ovh.net (unknown [10.109.156.216])
+ by mo548.mail-out.ovh.net (Postfix) with ESMTPS id 2AE4921F3B;
+ Sun, 19 Jun 2022 12:55:17 +0000 (UTC)
+Received: from kaod.org (37.59.142.101) by DAG4EX1.mxp5.local (172.16.2.31)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.9; Sun, 19 Jun
+ 2022 14:54:46 +0200
+Authentication-Results: garm.ovh; auth=pass
+ (GARM-101G00468795994-786a-4724-8a21-67fd54e8fb38,
+ F3BB28978D5D33C371BBBD2B34D0F30B2C684C62) smtp.auth=clg@kaod.org
+X-OVh-ClientIp: 82.64.250.170
+Message-ID: <82ad0e87-01ce-4ce0-81b3-5d3ac5425245@kaod.org>
+Date: Sun, 19 Jun 2022 14:54:46 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.10.0
-To: Claudio Fontana <cfontana@suse.de>, qemu-devel@nongnu.org,
- Richard Henderson <richard.henderson@linaro.org>,
- Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-arm@nongnu.org, =?UTF-8?Q?Alex_Benn=c3=a9e?=
- <alex.bennee@linaro.org>, Paolo Bonzini <pbonzini@redhat.com>,
- Stefan Weil <sw@weilnetz.de>
-References: <20220603164249.112459-1-thuth@redhat.com>
- <07f021e7-1346-c6b3-3bd1-ef0d0f0e2ff5@suse.de>
-From: Thomas Huth <thuth@redhat.com>
-Subject: Re: [PATCH] disas: Remove libvixl disassembler
-In-Reply-To: <07f021e7-1346-c6b3-3bd1-ef0d0f0e2ff5@suse.de>
-Authentication-Results: relay.mimecast.com;
-	auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=thuth@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
+ Thunderbird/91.9.0
+Subject: Re: [PATCH] aspeed/hace: Add missing newlines to unimp messages
 Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-TUID: oLMCv9xtf3JX
+To: Joel Stanley <joel@jms.id.au>, Peter Maydell <peter.maydell@linaro.org>
+CC: <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>
+References: <20220618090114.3158904-1-joel@jms.id.au>
+From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
+In-Reply-To: <20220618090114.3158904-1-joel@jms.id.au>
+Content-Type: text/plain; charset="UTF-8"; format=flowed
+Content-Transfer-Encoding: 8bit
+X-Originating-IP: [37.59.142.101]
+X-ClientProxiedBy: DAG1EX1.mxp5.local (172.16.2.1) To DAG4EX1.mxp5.local
+ (172.16.2.31)
+X-Ovh-Tracer-GUID: 470eaaa9-f44a-459a-82b7-eb2d388c78c9
+X-Ovh-Tracer-Id: 2060115355252394976
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvfedruddvledgheelucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhepkfffgggfuffvvehfhfgjtgfgihesthekredttdefjeenucfhrhhomhepveorughrihgtpgfnvggpifhorghtvghruceotghlgheskhgrohgurdhorhhgqeenucggtffrrghtthgvrhhnpeekteejtdelkeejvdevffduhfetteelieefgeefffeugffhfeekheffueefledujeenucfkpheptddrtddrtddrtddpfeejrdehledrudegvddruddtudenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhhouggvpehsmhhtphhouhhtpdhhvghlohepmhigphhlrghnhedrmhgrihhlrdhovhhhrdhnvghtpdhinhgvtheptddrtddrtddrtddpmhgrihhlfhhrohhmpegtlhhgsehkrghougdrohhrghdpnhgspghrtghpthhtohepuddprhgtphhtthhopehqvghmuhdquggvvhgvlhesnhhonhhgnhhurdhorhhgpdfovfetjfhoshhtpehmohehgeek
+Received-SPF: pass client-ip=188.165.58.48; envelope-from=clg@kaod.org;
+ helo=6.mo548.mail-out.ovh.net
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: Nymj4jPr2pnQ
 
-On 03/06/2022 19.26, Claudio Fontana wrote:
-> On 6/3/22 18:42, Thomas Huth wrote:
->> The disassembly via capstone should be superiour to our old vixl
->> sources nowadays, so let's finally cut this old disassembler out
->> of the QEMU source tree.
->>
->> Signed-off-by: Thomas Huth <thuth@redhat.com>
+On 6/18/22 11:01, Joel Stanley wrote:
+> Signed-off-by: Joel Stanley <joel@jms.id.au>
+
+Reviewed-by: Cédric Le Goater <clg@kaod.org>
+
+Thanks,
+
+C.
+
+
+> ---
+>   hw/misc/aspeed_hace.c | 4 ++--
+>   1 file changed, 2 insertions(+), 2 deletions(-)
 > 
-> agreed, one thought: at the time I added this thing, I had to add C++ compilation support,
-> maybe something we can now drop if there are no more C++ users?
+> diff --git a/hw/misc/aspeed_hace.c b/hw/misc/aspeed_hace.c
+> index 4b5997e18fad..731234b78c4c 100644
+> --- a/hw/misc/aspeed_hace.c
+> +++ b/hw/misc/aspeed_hace.c
+> @@ -340,12 +340,12 @@ static void aspeed_hace_write(void *opaque, hwaddr addr, uint64_t data,
+>   
+>           if ((data & HASH_HMAC_MASK)) {
+>               qemu_log_mask(LOG_UNIMP,
+> -                          "%s: HMAC engine command mode %"PRIx64" not implemented",
+> +                          "%s: HMAC engine command mode %"PRIx64" not implemented\n",
+>                             __func__, (data & HASH_HMAC_MASK) >> 8);
+>           }
+>           if (data & BIT(1)) {
+>               qemu_log_mask(LOG_UNIMP,
+> -                          "%s: Cascaded mode not implemented",
+> +                          "%s: Cascaded mode not implemented\n",
+>                             __func__);
+>           }
+>           algo = hash_algo_lookup(data);
 
-I thought about that, too, but we still have disas/nanomips.cpp left and the 
-Windows-related files in qga/vss-win32/* . And I think Paolo was considering 
-to use C++ for coroutine fixes - not sure whether that still is planned, though.
-
-  Thomas

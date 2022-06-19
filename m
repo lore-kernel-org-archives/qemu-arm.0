@@ -1,87 +1,92 @@
-Received: by 2002:ac2:46e6:0:0:0:0:0 with SMTP id q6csp393764lfo;
-        Sun, 19 Jun 2022 05:55:37 -0700 (PDT)
-X-Google-Smtp-Source: AGRyM1u+dfMqAqo5pXGm4TVmtkh1in6bSJm/zpMNHzra8GNnlxdeHZabKO+GGRQHzBGm2nccIW+R
-X-Received: by 2002:ac8:7e87:0:b0:306:6575:6035 with SMTP id w7-20020ac87e87000000b0030665756035mr15883337qtj.629.1655643337199;
-        Sun, 19 Jun 2022 05:55:37 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1655643337; cv=none;
+Received: by 2002:ac2:46e6:0:0:0:0:0 with SMTP id q6csp437852lfo;
+        Sun, 19 Jun 2022 07:23:59 -0700 (PDT)
+X-Google-Smtp-Source: AGRyM1tzZjcg9gsgtDFKj70Ma8dAkqvlNNtJj4//HlEkRn4d4cb5KvR1YbCO8QuHVOhyntB66pp8
+X-Received: by 2002:ac8:5e09:0:b0:305:2d57:8601 with SMTP id h9-20020ac85e09000000b003052d578601mr16328116qtx.131.1655648639722;
+        Sun, 19 Jun 2022 07:23:59 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1655648639; cv=none;
         d=google.com; s=arc-20160816;
-        b=Dwi/HeZlMXeHqb1vVQidaCnksavDMhR8u4xku6+kP1+RXXrhyt38kbGughM9810QjU
-         fVXWWoi7w9a3X8fOJfe3iLEAEndlGBuf59W0iH8i7AUldrVbE1NqbvneYoAbLMu8WU/J
-         V8UWvbjvm7dkXJ491tIMQqayfS6ZKLUtzQ9fPSAv3uG7ezFGsaYcVKK0e1LviJ2tRjGh
-         mLhJtyC25KJlbZxSLCsQMDWewLg/stWHNnhqnbtNGMEJF2yB+etCIAVqIB6GZGeOgxdV
-         Jo5+y2kdvC5785HBKbkSSBeG0IBwqhWF+9Kfc7yTisovfEDt7geWorIhVySQrSJsjDuG
-         c3eg==
+        b=o32yDws4xJJdBYOpfPkFFclO9trSsVruGdrSkEEN699P/+rIXs01QLILdefX4SPg+c
+         YLgTCKTI4I0Df1VK735x66qhSVPeOl1Px+g9bxahWpXXW7G3SYA/ydR/XnhoXTG/4mcZ
+         hEKr/1HlhijX3u/v81Qo/nShGSwN0CSgMtkjRyC8B8cRRGVAD2w9PSDkyCRUtwQ88trF
+         ueors+vaIF7JPgrrwsbR0eGt429DKH+c1AhYt9SHnYo8aSVuNsmWaOWVJ3pAvo+/6kwn
+         yry0fnjV88trX5kl5OfaDK9lLo6YbAQHgr6+6LtAhl0uiqdVcH/GdQGPXNC69xNG9iyb
+         xYPQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :in-reply-to:from:references:cc:to:content-language:subject
          :user-agent:mime-version:date:message-id;
-        bh=t3cDLCULUZSlaoLAELxoikw5g3eJA3Xlmpn4PVz23Qw=;
-        b=BKRIhQObGsk7FmCJcdg1UUhO8iFTga3DHquB9E7PVWg1yafQ6BPDSCgFzoy7l8ne+1
-         6VQs9tjET5il67D386Vuql8xtTCF8ZlSO1hZhcKM6OkubX9d2QsSEcSFzkvuO6yNf3QS
-         XOkGVSf3sxvcTgmNIcxbN42nc6lI0IGuTz5fgCkPEegMhXcq0qbLFwx+gXDiF07Ht2+H
-         gBQ8M8vvDSpNE3aa5RKd7t1wZNmxOUpiW8Iy8CfOYwnuxX8M6baTyIgfoAZ/XL97fWcd
-         eRd+PPGzzHXOgLnZthC3njtCnhKZL3P7VJ3mTZX05Z6Mm2mg6VZ0GmOrjj6GG4GgE4eG
-         OkCw==
+        bh=bku4J285c5rJ4mdKtP5owLofk10XD/MREh2BZjEREds=;
+        b=RoN9BUpjspKSSr1z/8mYc4saoDHMCX1Q1OwAkUBJeG3SBXV0vuwdlrWWrc3e2XogNe
+         p/3qjSr8RjEMCE8E0GFfiIyhOuNg9Qws/YvStOCBYFrArC026AVWGKunCdHOzEzO3B7w
+         8H0hvrkRQ5ZIYn11aOTtu7PxG4J45TBCuOsrjKW4byqLKq7xbYqDWJ177VBUh5L8sxBB
+         jOKcB0fP9eBXPKXueDEEqSAGbcI5wxLbVFAiu5BNRGp6ByJwc/6y2RS+0wu9X+EJBWMA
+         Vzxd8b/sIlrOcvHY/mpXJ3Cjc3aUiVvCqfTrSe1a95vOoCb8t4L0KyNeOWtOenBrvgOB
+         74Vw==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v21-20020a05622a015500b0030511f696e1si6323876qtw.179.2022.06.19.05.55.37
+        by mx.google.com with ESMTPS id u10-20020a05620a0c4a00b006a6b850dc2esi7034470qki.179.2022.06.19.07.23.59
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 19 Jun 2022 05:55:37 -0700 (PDT)
+        Sun, 19 Jun 2022 07:23:59 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:44250 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:37360 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1o2uSm-0003ku-Mf
-	for alex.bennee@linaro.org; Sun, 19 Jun 2022 08:55:36 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:48342)
+	id 1o2vqJ-0008DE-6p
+	for alex.bennee@linaro.org; Sun, 19 Jun 2022 10:23:59 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:34962)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1o2uSY-0003hD-9z
- for qemu-arm@nongnu.org; Sun, 19 Jun 2022 08:55:22 -0400
-Received: from 6.mo548.mail-out.ovh.net ([188.165.58.48]:40949)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1o2vph-00089E-Mp
+ for qemu-arm@nongnu.org; Sun, 19 Jun 2022 10:23:21 -0400
+Received: from 7.mo548.mail-out.ovh.net ([46.105.33.25]:38141)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1o2uSW-00009s-E4
- for qemu-arm@nongnu.org; Sun, 19 Jun 2022 08:55:22 -0400
-Received: from mxplan5.mail.ovh.net (unknown [10.109.156.216])
- by mo548.mail-out.ovh.net (Postfix) with ESMTPS id 2AE4921F3B;
- Sun, 19 Jun 2022 12:55:17 +0000 (UTC)
-Received: from kaod.org (37.59.142.101) by DAG4EX1.mxp5.local (172.16.2.31)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1o2vpf-0008E3-83
+ for qemu-arm@nongnu.org; Sun, 19 Jun 2022 10:23:21 -0400
+Received: from mxplan5.mail.ovh.net (unknown [10.109.143.58])
+ by mo548.mail-out.ovh.net (Postfix) with ESMTPS id CD2B52023B;
+ Sun, 19 Jun 2022 14:23:14 +0000 (UTC)
+Received: from kaod.org (37.59.142.97) by DAG4EX1.mxp5.local (172.16.2.31)
  with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.9; Sun, 19 Jun
- 2022 14:54:46 +0200
+ 2022 16:23:14 +0200
 Authentication-Results: garm.ovh; auth=pass
- (GARM-101G00468795994-786a-4724-8a21-67fd54e8fb38,
+ (GARM-97G002cf1c33ab-2b2a-4ca3-bc1b-30614de2aeaa,
  F3BB28978D5D33C371BBBD2B34D0F30B2C684C62) smtp.auth=clg@kaod.org
 X-OVh-ClientIp: 82.64.250.170
-Message-ID: <82ad0e87-01ce-4ce0-81b3-5d3ac5425245@kaod.org>
-Date: Sun, 19 Jun 2022 14:54:46 +0200
+Message-ID: <017221aa-93a5-d36e-0c13-3392a5b70798@kaod.org>
+Date: Sun, 19 Jun 2022 16:23:12 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
  Thunderbird/91.9.0
-Subject: Re: [PATCH] aspeed/hace: Add missing newlines to unimp messages
+Subject: Re: [PATCH 0/1] hw: m25p80: fix aspeed_smc tests failure when run in
+ isolation
 Content-Language: en-US
-To: Joel Stanley <joel@jms.id.au>, Peter Maydell <peter.maydell@linaro.org>
-CC: <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>
-References: <20220618090114.3158904-1-joel@jms.id.au>
+To: Iris Chen <irischenlj@fb.com>
+CC: <pdel@fb.com>, <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>,
+ <patrick@stwcx.xyz>, <alistair@alistair23.me>, <kwolf@redhat.com>,
+ <hreitz@redhat.com>, <peter.maydell@linaro.org>, <andrew@aj.id.au>,
+ <joel@jms.id.au>, <thuth@redhat.com>, <lvivier@redhat.com>,
+ <pbonzini@redhat.com>, <qemu-block@nongnu.org>, <dz4list@gmail.com>
+References: <20220617230758.2537544-1-irischenlj@fb.com>
 From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
-In-Reply-To: <20220618090114.3158904-1-joel@jms.id.au>
+In-Reply-To: <20220617230758.2537544-1-irischenlj@fb.com>
 Content-Type: text/plain; charset="UTF-8"; format=flowed
-Content-Transfer-Encoding: 8bit
-X-Originating-IP: [37.59.142.101]
-X-ClientProxiedBy: DAG1EX1.mxp5.local (172.16.2.1) To DAG4EX1.mxp5.local
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [37.59.142.97]
+X-ClientProxiedBy: DAG2EX1.mxp5.local (172.16.2.11) To DAG4EX1.mxp5.local
  (172.16.2.31)
-X-Ovh-Tracer-GUID: 470eaaa9-f44a-459a-82b7-eb2d388c78c9
-X-Ovh-Tracer-Id: 2060115355252394976
+X-Ovh-Tracer-GUID: d5615be9-a2ca-4d94-9d9f-30bbb7887f5b
+X-Ovh-Tracer-Id: 3553903059867241348
 X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvfedruddvledgheelucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhepkfffgggfuffvvehfhfgjtgfgihesthekredttdefjeenucfhrhhomhepveorughrihgtpgfnvggpifhorghtvghruceotghlgheskhgrohgurdhorhhgqeenucggtffrrghtthgvrhhnpeekteejtdelkeejvdevffduhfetteelieefgeefffeugffhfeekheffueefledujeenucfkpheptddrtddrtddrtddpfeejrdehledrudegvddruddtudenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhhouggvpehsmhhtphhouhhtpdhhvghlohepmhigphhlrghnhedrmhgrihhlrdhovhhhrdhnvghtpdhinhgvtheptddrtddrtddrtddpmhgrihhlfhhrohhmpegtlhhgsehkrghougdrohhrghdpnhgspghrtghpthhtohepuddprhgtphhtthhopehqvghmuhdquggvvhgvlhesnhhonhhgnhhurdhorhhgpdfovfetjfhoshhtpehmohehgeek
-Received-SPF: pass client-ip=188.165.58.48; envelope-from=clg@kaod.org;
- helo=6.mo548.mail-out.ovh.net
+X-VR-SPAMSCORE: 0
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvfedruddvledgjeeiucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucenucfjughrpefkffggfgfuvfevfhfhjggtgfhisehtjeertddtfeejnecuhfhrohhmpeevrogurhhitggpnfgvpgfiohgrthgvrhcuoegtlhhgsehkrghougdrohhrgheqnecuggftrfgrthhtvghrnhepleelieeigfekfeeitddvieegteeuteekffekleehuefgteetgedvkefghefggfeknecukfhppedtrddtrddtrddtpdefjedrheelrddugedvrdeljeenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhhouggvpehsmhhtphhouhhtpdhhvghlohepmhigphhlrghnhedrmhgrihhlrdhovhhhrdhnvghtpdhinhgvtheptddrtddrtddrtddpmhgrihhlfhhrohhmpegtlhhgsehkrghougdrohhrghdpnhgspghrtghpthhtohepuddprhgtphhtthhopeguiieglhhishhtsehgmhgrihhlrdgtohhmpdfovfetjfhoshhtpehmohehgeek
+Received-SPF: pass client-ip=46.105.33.25; envelope-from=clg@kaod.org;
+ helo=7.mo548.mail-out.ovh.net
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
@@ -102,39 +107,45 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Nymj4jPr2pnQ
+X-TUID: Iel0+i2zok5S
 
-On 6/18/22 11:01, Joel Stanley wrote:
-> Signed-off-by: Joel Stanley <joel@jms.id.au>
+On 6/18/22 01:07, Iris Chen wrote:
+> Hey everyone,
+> 
+> I discovered that some of the tests in tests/qtest/aspeed_smc-test.c were
+> failing when run in isolation due to dependencies between the tests. For
+> example, one test would test the reading of a block of memory written
+> in the test before it.
+> 
+> I think it would make sense to add flash_reset() between running the
+> tests and make sure the tests do not rely on each other. Thus, I have
+> made changes to the tests so that they now pass individually with
+> no dependencies on each other.
 
-Reviewed-by: Cédric Le Goater <clg@kaod.org>
+Good. Thanks for doing that.
+
+Please add to your .gitconfig :
+
+   [sendemail]
+	  thread = true
+
+Emails are not correctly threaded. At least on my side.
 
 Thanks,
 
 C.
 
 
-> ---
->   hw/misc/aspeed_hace.c | 4 ++--
->   1 file changed, 2 insertions(+), 2 deletions(-)
+> Thanks,
+> Iris
 > 
-> diff --git a/hw/misc/aspeed_hace.c b/hw/misc/aspeed_hace.c
-> index 4b5997e18fad..731234b78c4c 100644
-> --- a/hw/misc/aspeed_hace.c
-> +++ b/hw/misc/aspeed_hace.c
-> @@ -340,12 +340,12 @@ static void aspeed_hace_write(void *opaque, hwaddr addr, uint64_t data,
->   
->           if ((data & HASH_HMAC_MASK)) {
->               qemu_log_mask(LOG_UNIMP,
-> -                          "%s: HMAC engine command mode %"PRIx64" not implemented",
-> +                          "%s: HMAC engine command mode %"PRIx64" not implemented\n",
->                             __func__, (data & HASH_HMAC_MASK) >> 8);
->           }
->           if (data & BIT(1)) {
->               qemu_log_mask(LOG_UNIMP,
-> -                          "%s: Cascaded mode not implemented",
-> +                          "%s: Cascaded mode not implemented\n",
->                             __func__);
->           }
->           algo = hash_algo_lookup(data);
+> Iris Chen (1):
+>    hw: m25p80: fixing individual test failure when tests are running in
+>      isolation
+> 
+>   tests/qtest/aspeed_smc-test.c | 74 +++++++++++++++++++++++++++++------
+>   1 file changed, 63 insertions(+), 11 deletions(-)
+> 
+> --
+> 2.30.2
 

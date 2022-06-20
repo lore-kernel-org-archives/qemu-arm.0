@@ -1,106 +1,72 @@
-Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp528064lft;
-        Mon, 20 Jun 2022 08:53:17 -0700 (PDT)
-X-Google-Smtp-Source: AGRyM1vIOAU7HSGp+jCfikBRdek3xEuVCxAb4yk0olTIAB5CL4l9UK1/g2RjONiB+2oVXewT7VXi
-X-Received: by 2002:ad4:584d:0:b0:470:4228:176 with SMTP id de13-20020ad4584d000000b0047042280176mr4835367qvb.129.1655740397742;
-        Mon, 20 Jun 2022 08:53:17 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1655740397; cv=none;
+Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp538419lft;
+        Mon, 20 Jun 2022 09:09:27 -0700 (PDT)
+X-Google-Smtp-Source: AGRyM1sENS4OD8iB5nSsjSFl5VTwDq4JOTdq7pt8qPpHLNfYRRoCydGc4Ean+onL2GbtlVsBJ34Y
+X-Received: by 2002:ad4:5744:0:b0:464:52f2:c2d9 with SMTP id q4-20020ad45744000000b0046452f2c2d9mr19335712qvx.95.1655741367336;
+        Mon, 20 Jun 2022 09:09:27 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1655741367; cv=none;
         d=google.com; s=arc-20160816;
-        b=s6cvN4zMKdNLnPmEKw3R4GRO75iMfECrPO2qp0r+sgUxneOTGyozVYnP4cNdNkMFrr
-         TXuoycICpi8xlk5zX/x2flOpVluDdxVgWsS3DCwrd7Gyk+oi2IubVe3z482vQyzEN0O/
-         gPjdcTW45YS5rx+89nlfIqGpJE8quUH0d4YjMXKfVcXm8IYSv4/mbtki4ohRWdholhPg
-         ZSv6LtKtBWStQFgjoFmnnE+v9sHhg5N25sQvI37H28oeEKxyFV78zjnM5xw0IMsgJFp7
-         YYw9qD0+wWTZJcqzfNjupieAXYJrvjmftflHVHrjkjzHPAe5yYcsPKok2+4mfsTrAnMD
-         /Rdg==
+        b=ZE6/vtXcBjLbgwv7zghaL+A9KsBgiNkFLYEel2IzfPemJfWHhyYCZQ6Vvac+9XkdiM
+         nPSA/2nQDFMIy9z1EL7HfsJ8GscRC5AGTVyeneDSPAWyiUg/SCT2z830FJg0+Dh66rfd
+         qNFtMoMTR5gKoiLF3UfuUdRUDD89cayQecicUAnl3DMlnqTBHICrLyfwSJFCW2Z1bZUW
+         ibTU+c8ZCoC1sSIgzvps5Y1UFmkhUOnCFTr1fRoYAJRD7sSgo9KxOoy4Gg6WDthweg7D
+         JUcnOFR3FyX0GJFNiTEyYvfD+7RdKfFWv1gj0Ccopu5Flbc9EVrVWAxQfm4NTT9kf85A
+         Yf+Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=Ms0Zj/GfDEDgNMjY8tFTrQ+pVXKrSBlh4/4LzOhGu+I=;
-        b=ytVFdlJ6622JAFvVfXSfcPQyY3t0ZlxOV5wmxVIk+btlOagbvIWl6q65CDOkUc4EMH
-         Muf0d/oPcrf7PsfZFHK8TCz2qHtgW6hnk5GjvnmrfH7vNcjjhHzfhZQQG8P5H+hk5JOS
-         iTUnqIty/MMTKS2DOqM+mOjZ6xRkpyqtWkG9j+oHaivTpGceKVoZdGPEchDLfLBgoBRt
-         +SyoDDn3Qrov+fkQQ9jUBqwDapnop5hiod6TIAaL7o80J2kNZosIGycmVplV/uCM7iuN
-         MBzFglybMt4Tz/byFQOz7SVtYaGUukJEydecQr87KKbInbjqv/qIxoRPQKehhcPGo7cK
-         Wy8Q==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:cc:to:from;
+        bh=1ogZxc6cmwpv7cddFQqA+Z4wseDlUNUCq/IKgjwpRx0=;
+        b=OJIp785OtsyCgoQjh+bWXgxsYcUr4caNSLXo73HJRG7SLsmnC+LSkVAdcCxgAZSItg
+         jyG3chXEugMfUHxFPf9RXQwhKXmwSX/HAlz3UCJgYEvEw7sVaaUBZDfxSkGOo6jzsnY1
+         Hymu0yVFQE9U6tWhYiD/HjBL8p1W99uSoxYQW2D2hV9zSwk2jo4dEKLZ/7ujvBXIRbdo
+         LnD+pCt10leV6HEfextPH1psrt1VeKjtVjifECUlKAa/EyWolpf/zEKWHwZcu4/wFG8y
+         tzFpVNNEjqEiWXqC8vkPe2RvLSsvbSi/lLhsRR7KPtLAU9RIhXW1UEf6aEKX5dxeDFgF
+         mWmg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=h0GisFBu;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id f192-20020a379cc9000000b006a725400975si6960599qke.432.2022.06.20.08.53.17
+        by mx.google.com with ESMTPS id r12-20020ad4576c000000b0046f6480fe0asi7293736qvx.270.2022.06.20.09.09.27
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 20 Jun 2022 08:53:17 -0700 (PDT)
+        Mon, 20 Jun 2022 09:09:27 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=h0GisFBu;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:45430 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:38864 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1o3JiH-0006dX-96
-	for alex.bennee@linaro.org; Mon, 20 Jun 2022 11:53:17 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:39072)
+	id 1o3Jxu-0005Iv-Qw
+	for alex.bennee@linaro.org; Mon, 20 Jun 2022 12:09:26 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:45806)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1o3JbG-000873-6I
- for qemu-arm@nongnu.org; Mon, 20 Jun 2022 11:46:03 -0400
-Received: from mail-yb1-xb2f.google.com ([2607:f8b0:4864:20::b2f]:46699)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1o3JbE-0006Ji-Dt
- for qemu-arm@nongnu.org; Mon, 20 Jun 2022 11:46:01 -0400
-Received: by mail-yb1-xb2f.google.com with SMTP id l11so19642873ybu.13
- for <qemu-arm@nongnu.org>; Mon, 20 Jun 2022 08:45:56 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=Ms0Zj/GfDEDgNMjY8tFTrQ+pVXKrSBlh4/4LzOhGu+I=;
- b=h0GisFBuan1mCielP0l1jMyLG1BwrgqJd0O8ozrgv/lAR2PA5GmixFnbk8AzCCjaJg
- pMKFpj/SjRJCR05pvuLkAX0gIMvZad5GNN2YXRlau4XxDavMRHcI4DTm9ILLeK/KGu+q
- E3snP698GErc/0rYJD30MEF5We6yn6gUYuEUhWZbDS0DQjWV11kswe0bF0M0fgTXFRaM
- wzRpLzF8uJEuTypiwtZ7s2Dukh+Lfmx7PHwdmof4pitGxFHx8p4hRnO/w+P5CEIkHCkF
- ax0S/6CNxVZ4Bo3tR5mKuiaoVaUKPv9XvGo/9BJUDceL6OXR96JS8RKiMElNgtR/pkXu
- d/vQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=Ms0Zj/GfDEDgNMjY8tFTrQ+pVXKrSBlh4/4LzOhGu+I=;
- b=FsPhHAWWVzqmORIKuJXx3CBjMxkGtwSBNpPLqta1+y9jN0lUMD5o+tTnnOFbDSDqkR
- TJLE61cPhxd89rD8iRbn/YDa7+xU/222m5b41ftA7cgu8ElLg0WeMG+H1W09Z4R6yUo3
- Ly84oSHkpF155HbEn6E80DWCMxhlIy8euyVDfQPij9JfC/7yK95+lv70Rjhc+WJSFlEC
- R7sgT/4s8/b3qcuPIdH/FHEw2t+//o4xtw0CRSLdWx2ZkiIWDxnqTPPpTW1CnURH9tT1
- OWjaICyCbBP16UmeH7k+beZZT+U1aN+tMxiMX2yfBEOMmJzDEZfKGGMnhFkWlimjr8o8
- T/Pg==
-X-Gm-Message-State: AJIora82MpZQ07ZS4frwpc4rB20sKQa3ofYodPxbrR7m5dl++7vC/YtK
- br7ljumJRsfFH9e40RbyG5ZdvBDqaLTjGyGoA3Z69A==
-X-Received: by 2002:a5b:14c:0:b0:64f:c826:a76b with SMTP id
- c12-20020a5b014c000000b0064fc826a76bmr25503732ybp.479.1655739955464; Mon, 20
- Jun 2022 08:45:55 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <agraf@csgraf.de>)
+ id 1o3JxE-0004uL-KB; Mon, 20 Jun 2022 12:08:44 -0400
+Received: from mail.csgraf.de ([85.25.223.15]:48660 helo=zulu616.server4you.de)
+ by eggs.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <agraf@csgraf.de>)
+ id 1o3JxC-0001it-7t; Mon, 20 Jun 2022 12:08:44 -0400
+Received: from localhost.localdomain
+ (dynamic-077-007-106-140.77.7.pool.telefonica.de [77.7.106.140])
+ by csgraf.de (Postfix) with ESMTPSA id 097ED6080263;
+ Mon, 20 Jun 2022 18:08:21 +0200 (CEST)
+From: Alexander Graf <agraf@csgraf.de>
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Subject: [PATCH] target/arm: Catch invalid kvm state also for hvf
+Date: Mon, 20 Jun 2022 18:08:19 +0200
+Message-Id: <20220620160819.65191-1-agraf@csgraf.de>
+X-Mailer: git-send-email 2.32.1 (Apple Git-133)
 MIME-Version: 1.0
-References: <SY4PR01MB8581F06E9DF1FC1CB79F6E45BAB09@SY4PR01MB8581.ausprd01.prod.outlook.com>
-In-Reply-To: <SY4PR01MB8581F06E9DF1FC1CB79F6E45BAB09@SY4PR01MB8581.ausprd01.prod.outlook.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 20 Jun 2022 16:45:44 +0100
-Message-ID: <CAFEAcA9sbt-m+drckfuzh4X+Nmk4eS8F5TJhmRj5LumpVesXiQ@mail.gmail.com>
-Subject: Re: Program can't exit from the exeception
-To: l ck <lck2000@outlook.com>
-Cc: "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b2f;
- envelope-from=peter.maydell@linaro.org; helo=mail-yb1-xb2f.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=85.25.223.15; envelope-from=agraf@csgraf.de;
+ helo=zulu616.server4you.de
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -115,57 +81,53 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: OlqLILoQZNP/
+X-TUID: BY5Khl0ScR9a
 
-On Mon, 20 Jun 2022 at 16:30, l ck <lck2000@outlook.com> wrote:
->
-> Hi everyone, when I tried to run a exeception demo in netduino2, it can't=
- exit from the exeception, in which after executing the assembly instructio=
-n `br lr`, it can't return back to the normal execution. This is the conten=
-t after I executed `qemu-system-arm -M netduino2 -kernel demo.elf -d int` i=
-n terminal:
+Some features such as running in EL3 or running M profile code are
+incompatible with virtualization as QEMU implements it today. To prevent
+users from picking invalid configurations on Hvf as well, let's run the
+same checks there as well.
 
-> Loaded reset SP 0x0 PC 0x0 from vector table
-> Loaded reset SP 0x20001000 PC 0x12b from vector table
-> Taking exception 5 [IRQ] on CPU 0
-> ...taking pending nonsecure exception 53
-> ...loading from element 53 of non-secure vector table at 0xd4
-> ...loaded new PC 0x1c1
-> Taking exception 8 [QEMU v7M exception exit] on CPU 0
-> Exception return: magic PC fffffff9 previous exception 53
-> ...tailchaining to pending exception
-> ...taking pending nonsecure exception 53
-> ...loading from element 53 of non-secure vector table at 0xd4
-> ...loaded new PC 0x1c1
-> Taking exception 8 [QEMU v7M exception exit] on CPU 0
-> Exception return: magic PC fffffff9 previous exception 53
-> ...tailchaining to pending exception
-> ...taking pending nonsecure exception 53
-> ...loading from element 53 of non-secure vector table at 0xd4
-> ...loaded new PC 0x1c1
+Resolves: https://gitlab.com/qemu-project/qemu/-/issues/1073
+Signed-off-by: Alexander Graf <agraf@csgraf.de>
+---
+ target/arm/cpu.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
 
-The CPU takes an interrupt because of an external interrupt
-from some device, and calls your interrupt handler code. Your
-interrupt handler code runs. When that interrupt handler
-returns, the CPU sees that the external interrupt is still
-pending, and so it calls your interrupt handler again.
-This can be caused by several things:
+diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+index 1b5d535788..03510f29f9 100644
+--- a/target/arm/cpu.c
++++ b/target/arm/cpu.c
+@@ -1490,7 +1490,7 @@ static void arm_cpu_realizefn(DeviceState *dev, Error **errp)
+         }
+     }
+ 
+-    if (kvm_enabled()) {
++    if (kvm_enabled() || hvf_enabled()) {
+         /*
+          * Catch all the cases which might cause us to create more than one
+          * address space for the CPU (otherwise we will assert() later in
+@@ -1498,17 +1498,17 @@ static void arm_cpu_realizefn(DeviceState *dev, Error **errp)
+          */
+         if (arm_feature(env, ARM_FEATURE_M)) {
+             error_setg(errp,
+-                       "Cannot enable KVM when using an M-profile guest CPU");
++                       "Cannot enable KVM or HVF when using an M-profile guest CPU");
+             return;
+         }
+         if (cpu->has_el3) {
+             error_setg(errp,
+-                       "Cannot enable KVM when guest CPU has EL3 enabled");
++                       "Cannot enable KVM or HVF when guest CPU has EL3 enabled");
+             return;
+         }
+         if (cpu->tag_memory) {
+             error_setg(errp,
+-                       "Cannot enable KVM when guest CPUs has MTE enabled");
++                       "Cannot enable KVM or HVF when guest CPUs has MTE enabled");
+             return;
+         }
+     }
+-- 
+2.32.1 (Apple Git-133)
 
-(1) your interrupt handler code is not actually doing what
-it needs to do to service the device, ie read the data,
-write to device registers, etc, to cause the device to
-lower its IRQ line. If the IRQ line is still high when the
-interrupt handler routine returns, the CPU will treat the
-interrupt as still pending, and will call the handler again.
-
-(2) the device has been programmed to raise interrupts more
-quickly than the interrupt handler code can handle them.
-For instance, if a timer device is programmed to raise an
-interrupt every nanosecond, there is no way the CPU will
-run fast enough for the timer interrupt handler to dismiss
-the timer interrupt and then return before the next timer
-interrupt happens. So the guest code spends all its time in
-the timer interrupt handler and no time running anything else.
-
-thanks
--- PMM

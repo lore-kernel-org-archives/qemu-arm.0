@@ -1,104 +1,105 @@
-Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp629127lft;
+Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp629128lft;
         Mon, 20 Jun 2022 11:57:15 -0700 (PDT)
-X-Google-Smtp-Source: AGRyM1vK34kBNTWZmcHYMmMYw/E5dMZuzd3/611EiN2IDTPwIUHu7hU8RRTjjfpCZwy2SGfMJ13v
-X-Received: by 2002:a05:6214:21ec:b0:470:3f6a:9103 with SMTP id p12-20020a05621421ec00b004703f6a9103mr6836726qvj.27.1655751435143;
+X-Google-Smtp-Source: AGRyM1vNGTgAQYFz/zoh023lWC4imbBm7VjV1o7eXn0tTA8HDJaDbDXfw0Ko/9vp83Y71ri8KrSL
+X-Received: by 2002:ac8:7dc4:0:b0:305:2441:e6f3 with SMTP id c4-20020ac87dc4000000b003052441e6f3mr20776723qte.598.1655751435250;
         Mon, 20 Jun 2022 11:57:15 -0700 (PDT)
 ARC-Seal: i=1; a=rsa-sha256; t=1655751435; cv=none;
         d=google.com; s=arc-20160816;
-        b=cQEyRh36C/5J2AigHSZHY46LJ1l01bFigv5bY7O2FEj0ZN7Cw/AXn+A80CwECU9OAO
-         hZKB/ID8DkYujrEoRXUNy2KibyWN4WzojJIZXcgcc1MD8TJLmbEX4w9W0v0FL5TcZB4i
-         scFKgEv8G1D2lcgOapRG80st4Qyy8ju02jxkniJr5viPrZ860Xng1EZh/dAE+hhIi3Jk
-         H2kOQzjhFasZ58UyRKugY7ELeYkv9cpFjoHy0Db/z/EabjC1/B7HaY/lVkkigWtB06Xe
-         +XvKFOrI+ZcCdXC/Y/AtyP66b7jDZ7zeK7Ls7YxPRgwZ/CKJEAjveJg0PwNa0TT2s09T
-         ijug==
+        b=gLgvUsdgD+KW5FE2xgweVCWqxF4f+vxuygjvpVdMTMgDLCznzXE9cFqy1Wiqtrcifo
+         xMb/+jx4MRYuQQy4fzJHKUO146UtHEosr/OzzgS748jZEBd5/PBktoNPJxqxYF+7qaHF
+         JMmmMRaVj+LJhYKaUkdSEuB1hD79T6W6SB4rnMUehVqZBJXj5IvpbWE7Vv5mpg+1zPWX
+         RIWa/yC+S2qkrOLJ5RfEw5YTKze96U60EpqeKjKqjoZTJ0MT6ctrwY6bGzPjeQJfS0gS
+         nJkHL54IVPfMwjlPYKmgSjI3s9HQPOHX779mN+lB9E162dijMDKnnsFwNTbi6UiBl7ed
+         1ZgQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=cId+jl3LafbTbLYlOOg+jSuzH9qsoTjBGOokKriD7lU=;
-        b=ZtbwKevENzNW2x5+kFFZhd7+OATVIxiWZZkHDKL7gWGi9c7S0ntoIvEeWGTjlSHvFO
-         pKd5Tx+OQ7x2xriJskVzBQSjwOsROQDBsIhw64mBTTsQqjy/uO8UbBWyukfcDagDN24y
-         QcN7k8kE7+X7cUQ9fhnBiaanIzm2IdgcdL0j3xNzj38lIECUOiJcWiy9yPkSjWjXeMD/
-         cRaK4k2qkPkNNM2UwobjNqF9nReBW8IK2CgHOGf7INXImFWidxNULJl2N1foGQR+Lhxh
-         JARSCQ2kebdtBbw61z0OZuqcn7FlXWLW/Xcn4wIyGDSFHgpZkrSkSFtMXQsDfIUnfTFe
-         VBmg==
+        bh=E7DCQA7E2hAFRFgfvTFqXzlLXs1UhLAZLgu67MB30tY=;
+        b=lp+cbw/YNf0O8lNWy2+0RS4EeC8S1HUbBpcLYH8RiVDMln+Eicreaagte1rPjTgVqa
+         qFHkGD1srr1VIxTceZW/T/AreTaf3ZFNkfUZmy7Vx0Accwz8jAU7pZX8TgfIPlT2Z+G3
+         ajyP3icMdsYkOIFLk5F8sG0GR9woxBbMwE2MM4CQzScLmKvO55GFylNn4liV3NNu7apu
+         QnknJ/uvp3OkS/XIw/EjGpcJINL5irY8FEqIKs+vwFOoThDlfdGUEEPZtJt2f2cdiEpT
+         sNr8bd2MOIGYBVGJtZFQHAseduFeB1AwBh7oWbpsa+nfVQzk4wi19Wy/5KLNWN0O4lkf
+         cElA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="vZr5D/Us";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=lAZSEoMw;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id q7-20020ad45ca7000000b0046ba37bb2e1si8761253qvh.468.2022.06.20.11.57.15
+        by mx.google.com with ESMTPS id 5-20020a056214202500b004702d220a82si6488512qvf.516.2022.06.20.11.57.14
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
         Mon, 20 Jun 2022 11:57:15 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="vZr5D/Us";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=lAZSEoMw;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:52332 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:51602 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1o3MaI-0006HZ-KM
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1o3MaI-0005j3-Jz
 	for alex.bennee@linaro.org; Mon, 20 Jun 2022 14:57:14 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:43028)
+Received: from eggs.gnu.org ([2001:470:142:3::10]:44152)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1o3LaN-0006OO-RY
- for qemu-arm@nongnu.org; Mon, 20 Jun 2022 13:53:18 -0400
-Received: from mail-pl1-x62d.google.com ([2607:f8b0:4864:20::62d]:33731)
+ id 1o3LdO-0002u6-Ke
+ for qemu-devel@nongnu.org; Mon, 20 Jun 2022 13:56:23 -0400
+Received: from mail-pf1-x42c.google.com ([2607:f8b0:4864:20::42c]:45830)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1o3LaH-0001JG-2S
- for qemu-arm@nongnu.org; Mon, 20 Jun 2022 13:53:12 -0400
-Received: by mail-pl1-x62d.google.com with SMTP id y6so10405994plg.0
- for <qemu-arm@nongnu.org>; Mon, 20 Jun 2022 10:53:06 -0700 (PDT)
+ id 1o3LdL-000246-Vp
+ for qemu-devel@nongnu.org; Mon, 20 Jun 2022 13:56:21 -0400
+Received: by mail-pf1-x42c.google.com with SMTP id 128so3872276pfv.12
+ for <qemu-devel@nongnu.org>; Mon, 20 Jun 2022 10:56:19 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=cId+jl3LafbTbLYlOOg+jSuzH9qsoTjBGOokKriD7lU=;
- b=vZr5D/Usa00YbQTltq5JGlPpX+tklLQsTbKZuClm0IWZaATS+6CgqsHQNbIqL++XZT
- PCyEt+shitVZjWtzRbBp+/TXDI/dGaGu+9KpLe7/BMygGn1a096nezym32//3+fF6BLV
- djFHcyYYnWrBgR/nKlE/h1jLLi2plDqYpFUQ88Ksss0o055qTGlvbgiuAICj9JaFk35V
- rrhVj/j3JHtK1f4BjOy/Pdi+E4ZdW+tvZBC9B9LCUXj8GfeVmHd1QC2vTWLhxfeceGv8
- jHgOOxzTpEL7O6gm1ObzAKpJSzA1P0RelxBp5a150/dFHHO97nnOQ6W16bhss/GqQYAg
- VhvQ==
+ bh=E7DCQA7E2hAFRFgfvTFqXzlLXs1UhLAZLgu67MB30tY=;
+ b=lAZSEoMw/tdb5I4pDfomy8JTUuQpgApPbJX9CVAhNnqsNzzNQrQMpVC03dLSM5mX6W
+ LpjSWci3FHHW6CLk8fSMroPIO+bd9VBQLb9M/6/G4vGP3jV4BYFW1nhfWbqf8z4A1grT
+ 80tSCfthHtsQEe0gvVTw70O2TrhWCeCZBCKZool5mzHGr6VjdRwd0aKT0IoLQDpQzwtU
+ M57oiFKInL28vO/dbDydiM8GQikzoL3jY1wmH95uS5sYDt5l2tpcTOa/Ibu9UUDbOTZJ
+ wlryEGTIOmbLwCJdWLO5kDTtiB2COcXIxdXZ0tIXOm37JodaOyXxgIPkrMsOcQdpjS+q
+ azbQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=cId+jl3LafbTbLYlOOg+jSuzH9qsoTjBGOokKriD7lU=;
- b=m/djGJCy9dfRo6OXZDmi58bVF4zKH+D3WEqGsy15mlmrYEXPAI+9pl4i0ltB4JMMMF
- XiAVSu5HgTeVFeux54HoNpD5viDAJq3jd0dnClojjkypKejveAceFlkai5cLmTeFcM0W
- vMQcsWdeyLn2AyQ2EuWNIVa92OQeW9mqVuqyxFso63yUpgkkbhXkOypgCgVZIh72KCs4
- eeHStz6W///hItlB05pBXX33Gza4mV0wG1Y6QJ1wKuK6DtZtsLHYw3Lm0tgZz+y/wkqX
- MdtdgGJ68xxCAx7Roi7MFm00GGMUVAnjgoGuOO3RxvwMcvaJlfwPhCTtyb+p8CV4BsnR
- neAQ==
-X-Gm-Message-State: AJIora/Gx/OsRZuzbPj6Nro1K2QoMiSryCmdiFZXNLpJ/xeJ2HoKQ9/M
- eh8axzERsiSGydRr+2lDsmgfydxrrVGj/w==
-X-Received: by 2002:a17:90b:1c02:b0:1e3:4b6d:4269 with SMTP id
- oc2-20020a17090b1c0200b001e34b6d4269mr38626265pjb.57.1655747586594; 
- Mon, 20 Jun 2022 10:53:06 -0700 (PDT)
+ bh=E7DCQA7E2hAFRFgfvTFqXzlLXs1UhLAZLgu67MB30tY=;
+ b=8IATYrPHm/ljCZTV6r9bFvisYagiLHFg7njHJMy56jjrhuq2dMn3PP7wiRjeZWgyeQ
+ LCup6C97fBYl7IVjg2DzJCiBVNUrbiUtk9+KNSp1KSSeq3wzGOMYFl8tyiNx7lpsMfcR
+ QyGL3/FGbXyANnHHc886so+R1a5jImp8MzBP/aZna0wovbtCulIfK1IFgy8+e0YRck8k
+ zzDDETySINXpzwkBnO8Qv7YWMrcemqNo2EH4ZPJSeXZd8vsH0GJgG/G3hC626QDPaO7x
+ SfsogLvu3t+2xf1FKsWGRUBLaI2kBlf93+GI9H3gZtI7dOLrHO4rQw4XqVXkJzNr9pgv
+ SznA==
+X-Gm-Message-State: AJIora+vwRZuek16GyYv1TH9S6GZ9zsaMBjXA8GvAZqdPYQmCfm5K4Kw
+ Q5SZ3Tg2KVVDZ2W62GcdMmBHUkyUg059IQ==
+X-Received: by 2002:a05:6a00:3002:b0:525:20d6:9668 with SMTP id
+ ay2-20020a056a00300200b0052520d69668mr7326586pfb.82.1655747778703; 
+ Mon, 20 Jun 2022 10:56:18 -0700 (PDT)
 Received: from stoup.. ([2602:47:d49e:3c01:a3e0:8a80:7b85:aea6])
  by smtp.gmail.com with ESMTPSA id
- j14-20020aa7928e000000b00525133f98adsm5138138pfa.146.2022.06.20.10.53.05
+ z14-20020aa7990e000000b00525184bad54sm3850474pff.126.2022.06.20.10.56.18
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 20 Jun 2022 10:53:06 -0700 (PDT)
+ Mon, 20 Jun 2022 10:56:18 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org
-Subject: [PATCH v3 35/51] target/arm: Implement REVD
-Date: Mon, 20 Jun 2022 10:52:19 -0700
-Message-Id: <20220620175235.60881-36-richard.henderson@linaro.org>
+Subject: [PATCH v3 48/51] linux-user/aarch64: Implement PR_SME_GET_VL,
+ PR_SME_SET_VL
+Date: Mon, 20 Jun 2022 10:52:32 -0700
+Message-Id: <20220620175235.60881-49-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20220620175235.60881-1-richard.henderson@linaro.org>
 References: <20220620175235.60881-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::62d;
- envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x62d.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::42c;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x42c.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -107,94 +108,144 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: lKRQxdl2guP1
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: vHRWO0pMH1Gi
+
+These prctl set the Streaming SVE vector length, which may
+be completely different from the Normal SVE vector length.
 
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/helper-sve.h    |  2 ++
- target/arm/sve.decode      |  1 +
- target/arm/sve_helper.c    | 16 ++++++++++++++++
- target/arm/translate-sve.c |  2 ++
- 4 files changed, 21 insertions(+)
+ linux-user/aarch64/target_prctl.h | 48 +++++++++++++++++++++++++++++++
+ linux-user/syscall.c              | 16 +++++++++++
+ 2 files changed, 64 insertions(+)
 
-diff --git a/target/arm/helper-sve.h b/target/arm/helper-sve.h
-index ab0333400f..cc4e1d8948 100644
---- a/target/arm/helper-sve.h
-+++ b/target/arm/helper-sve.h
-@@ -719,6 +719,8 @@ DEF_HELPER_FLAGS_4(sve_revh_d, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
+diff --git a/linux-user/aarch64/target_prctl.h b/linux-user/aarch64/target_prctl.h
+index 40481e6663..f8f8f88992 100644
+--- a/linux-user/aarch64/target_prctl.h
++++ b/linux-user/aarch64/target_prctl.h
+@@ -10,6 +10,7 @@ static abi_long do_prctl_sve_get_vl(CPUArchState *env)
+ {
+     ARMCPU *cpu = env_archcpu(env);
+     if (cpu_isar_feature(aa64_sve, cpu)) {
++        /* PSTATE.SM is always unset on syscall entry. */
+         return sve_vq(env) * 16;
+     }
+     return -TARGET_EINVAL;
+@@ -27,6 +28,7 @@ static abi_long do_prctl_sve_set_vl(CPUArchState *env, abi_long arg2)
+         && arg2 >= 0 && arg2 <= 512 * 16 && !(arg2 & 15)) {
+         uint32_t vq, old_vq;
  
- DEF_HELPER_FLAGS_4(sve_revw_d, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
++        /* PSTATE.SM is always unset on syscall entry. */
+         old_vq = sve_vq(env);
  
-+DEF_HELPER_FLAGS_4(sme_revd_q, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
-+
- DEF_HELPER_FLAGS_4(sve_rbit_b, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
- DEF_HELPER_FLAGS_4(sve_rbit_h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
- DEF_HELPER_FLAGS_4(sve_rbit_s, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
-diff --git a/target/arm/sve.decode b/target/arm/sve.decode
-index bf561c270a..d1e229fd6e 100644
---- a/target/arm/sve.decode
-+++ b/target/arm/sve.decode
-@@ -652,6 +652,7 @@ REVB            00000101 .. 1001 00 100 ... ..... .....         @rd_pg_rn
- REVH            00000101 .. 1001 01 100 ... ..... .....         @rd_pg_rn
- REVW            00000101 .. 1001 10 100 ... ..... .....         @rd_pg_rn
- RBIT            00000101 .. 1001 11 100 ... ..... .....         @rd_pg_rn
-+REVD            00000101 00 1011 10 100 ... ..... .....         @rd_pg_rn_e0
+         /*
+@@ -49,6 +51,52 @@ static abi_long do_prctl_sve_set_vl(CPUArchState *env, abi_long arg2)
+ }
+ #define do_prctl_sve_set_vl do_prctl_sve_set_vl
  
- # SVE vector splice (predicated, destructive)
- SPLICE          00000101 .. 101 100 100 ... ..... .....         @rdn_pg_rm
-diff --git a/target/arm/sve_helper.c b/target/arm/sve_helper.c
-index 9a26f253e0..5de82696b5 100644
---- a/target/arm/sve_helper.c
-+++ b/target/arm/sve_helper.c
-@@ -931,6 +931,22 @@ DO_ZPZ_D(sve_revh_d, uint64_t, hswap64)
- 
- DO_ZPZ_D(sve_revw_d, uint64_t, wswap64)
- 
-+void HELPER(sme_revd_q)(void *vd, void *vn, void *vg, uint32_t desc)
++static abi_long do_prctl_sme_get_vl(CPUArchState *env)
 +{
-+    intptr_t i, opr_sz = simd_oprsz(desc) / 8;
-+    uint64_t *d = vd, *n = vn;
-+    uint8_t *pg = vg;
-+
-+    for (i = 0; i < opr_sz; i += 2) {
-+        if (pg[H1(i)] & 1) {
-+            uint64_t n0 = n[i + 0];
-+            uint64_t n1 = n[i + 1];
-+            d[i + 0] = n1;
-+            d[i + 1] = n0;
-+        }
++    ARMCPU *cpu = env_archcpu(env);
++    if (cpu_isar_feature(aa64_sme, cpu)) {
++        return sme_vq(env) * 16;
 +    }
++    return -TARGET_EINVAL;
 +}
++#define do_prctl_sme_get_vl do_prctl_sme_get_vl
 +
- DO_ZPZ(sve_rbit_b, uint8_t, H1, revbit8)
- DO_ZPZ(sve_rbit_h, uint16_t, H1_2, revbit16)
- DO_ZPZ(sve_rbit_s, uint32_t, H1_4, revbit32)
-diff --git a/target/arm/translate-sve.c b/target/arm/translate-sve.c
-index 58d0894e15..1129f1fc56 100644
---- a/target/arm/translate-sve.c
-+++ b/target/arm/translate-sve.c
-@@ -2896,6 +2896,8 @@ TRANS_FEAT(REVH, aa64_sve, gen_gvec_ool_arg_zpz, revh_fns[a->esz], a, 0)
- TRANS_FEAT(REVW, aa64_sve, gen_gvec_ool_arg_zpz,
-            a->esz == 3 ? gen_helper_sve_revw_d : NULL, a, 0)
- 
-+TRANS_FEAT(REVD, aa64_sme, gen_gvec_ool_arg_zpz, gen_helper_sme_revd_q, a, 0)
++static abi_long do_prctl_sme_set_vl(CPUArchState *env, abi_long arg2)
++{
++    /*
++     * We cannot support either PR_SME_SET_VL_ONEXEC or PR_SME_VL_INHERIT.
++     * Note the kernel definition of sve_vl_valid allows for VQ=512,
++     * i.e. VL=8192, even though the architectural maximum is VQ=16.
++     */
++    if (cpu_isar_feature(aa64_sme, env_archcpu(env))
++        && arg2 >= 0 && arg2 <= 512 * 16 && !(arg2 & 15)) {
++        int vq, old_vq;
 +
- TRANS_FEAT(SPLICE, aa64_sve, gen_gvec_ool_arg_zpzz,
-            gen_helper_sve_splice, a, a->esz)
++        old_vq = sme_vq(env);
++
++        /*
++         * Bound the value of vq, so that we know that it fits into
++         * the 4-bit field in SMCR_EL1.  Because PSTATE.SM is cleared
++         * on syscall entry, we are not modifying the current SVE
++         * vector length.
++         */
++        vq = MAX(arg2 / 16, 1);
++        vq = MIN(vq, 16);
++        env->vfp.smcr_el[1] =
++            FIELD_DP64(env->vfp.smcr_el[1], SMCR, LEN, vq - 1);
++        vq = sme_vq(env);
++
++        if (old_vq != vq) {
++            /* PSTATE.ZA state is cleared on any change to VQ. */
++            env->svcr = FIELD_DP64(env->svcr, SVCR, ZA, 0);
++            arm_rebuild_hflags(env);
++        }
++        return vq * 16;
++    }
++    return -TARGET_EINVAL;
++}
++#define do_prctl_sme_set_vl do_prctl_sme_set_vl
++
+ static abi_long do_prctl_reset_keys(CPUArchState *env, abi_long arg2)
+ {
+     ARMCPU *cpu = env_archcpu(env);
+diff --git a/linux-user/syscall.c b/linux-user/syscall.c
+index a7f41ef0ac..e8d6e20b85 100644
+--- a/linux-user/syscall.c
++++ b/linux-user/syscall.c
+@@ -6346,6 +6346,12 @@ abi_long do_arch_prctl(CPUX86State *env, int code, abi_ulong addr)
+ #ifndef PR_SET_SYSCALL_USER_DISPATCH
+ # define PR_SET_SYSCALL_USER_DISPATCH 59
+ #endif
++#ifndef PR_SME_SET_VL
++# define PR_SME_SET_VL  63
++# define PR_SME_GET_VL  64
++# define PR_SME_VL_LEN_MASK  0xffff
++# define PR_SME_VL_INHERIT   (1 << 17)
++#endif
  
+ #include "target_prctl.h"
+ 
+@@ -6386,6 +6392,12 @@ static abi_long do_prctl_inval1(CPUArchState *env, abi_long arg2)
+ #ifndef do_prctl_set_unalign
+ #define do_prctl_set_unalign do_prctl_inval1
+ #endif
++#ifndef do_prctl_sme_get_vl
++#define do_prctl_sme_get_vl do_prctl_inval0
++#endif
++#ifndef do_prctl_sme_set_vl
++#define do_prctl_sme_set_vl do_prctl_inval1
++#endif
+ 
+ static abi_long do_prctl(CPUArchState *env, abi_long option, abi_long arg2,
+                          abi_long arg3, abi_long arg4, abi_long arg5)
+@@ -6437,6 +6449,10 @@ static abi_long do_prctl(CPUArchState *env, abi_long option, abi_long arg2,
+         return do_prctl_sve_get_vl(env);
+     case PR_SVE_SET_VL:
+         return do_prctl_sve_set_vl(env, arg2);
++    case PR_SME_GET_VL:
++        return do_prctl_sme_get_vl(env);
++    case PR_SME_SET_VL:
++        return do_prctl_sme_set_vl(env, arg2);
+     case PR_PAC_RESET_KEYS:
+         if (arg3 || arg4 || arg5) {
+             return -TARGET_EINVAL;
 -- 
 2.34.1
 

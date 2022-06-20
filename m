@@ -1,104 +1,104 @@
-Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp627938lft;
-        Mon, 20 Jun 2022 11:54:36 -0700 (PDT)
-X-Google-Smtp-Source: AGRyM1umzi605pHjDAf6yTu7BlEc2+tqlKU/gg/4A4zrGg2BVUNZa4fS4aqFEPQfZ4S9TiKEZvMC
-X-Received: by 2002:a05:620a:c43:b0:6a9:77ef:e000 with SMTP id u3-20020a05620a0c4300b006a977efe000mr16880517qki.396.1655751276463;
-        Mon, 20 Jun 2022 11:54:36 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1655751276; cv=none;
+Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp629127lft;
+        Mon, 20 Jun 2022 11:57:15 -0700 (PDT)
+X-Google-Smtp-Source: AGRyM1vK34kBNTWZmcHYMmMYw/E5dMZuzd3/611EiN2IDTPwIUHu7hU8RRTjjfpCZwy2SGfMJ13v
+X-Received: by 2002:a05:6214:21ec:b0:470:3f6a:9103 with SMTP id p12-20020a05621421ec00b004703f6a9103mr6836726qvj.27.1655751435143;
+        Mon, 20 Jun 2022 11:57:15 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1655751435; cv=none;
         d=google.com; s=arc-20160816;
-        b=MZE2+JlV8gccmlxzcSVfWm64Lia2AqtL3iEtak6ngNvr8G1L6OZ7TEMkbLkdv/5cNM
-         Er6/YzWbd2cvh5QVo/RY20JMfJEO3Iwt/os8qvAAhOpCdTpn8WzSuFfTlIAJJIEf/Ukp
-         Zh58B8Zc9SGF1jE2mX7Nj4/M9uRttZRteZwCtkJe/4pWqW+vcVEH0isyBOkVkbtxP8TC
-         haVewAXWZX4JT5VUhnO0wIXgM9mzoRiNxfK5KkB7y38eKMD/IV6ExlFhotinUGL38I2B
-         YN5jHmPgpxOw89Z4EH/zdApfL6ATJkNiBVfN8MxEQE9mBD9i5EsJZ1WJbIAYe86NzM17
-         X10g==
+        b=cQEyRh36C/5J2AigHSZHY46LJ1l01bFigv5bY7O2FEj0ZN7Cw/AXn+A80CwECU9OAO
+         hZKB/ID8DkYujrEoRXUNy2KibyWN4WzojJIZXcgcc1MD8TJLmbEX4w9W0v0FL5TcZB4i
+         scFKgEv8G1D2lcgOapRG80st4Qyy8ju02jxkniJr5viPrZ860Xng1EZh/dAE+hhIi3Jk
+         H2kOQzjhFasZ58UyRKugY7ELeYkv9cpFjoHy0Db/z/EabjC1/B7HaY/lVkkigWtB06Xe
+         +XvKFOrI+ZcCdXC/Y/AtyP66b7jDZ7zeK7Ls7YxPRgwZ/CKJEAjveJg0PwNa0TT2s09T
+         ijug==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=kq5WyJnaYbSXXWIDYXT9yWQkvroiNHIlsp2GS2R8a4o=;
-        b=iAx9pI/Qfej+n5jTQzkaic2TmP6w3NrlZ9oG5osL4vDDP8cukkKE/RMUmasXuKr/YX
-         rilO5WCk4qAxhHUPUop9ne92oTwPMRHHTjRECy3C5f2n3NTfL4L1sQpERIDEIAsYmQAN
-         35PnHRw5SzliHsSXrMqr0hviKIdYx7+VpMmYYoURMeQEgCsBNrfXKylISN8gaFLENvOy
-         DPahUVx8Djy8c5c5AY4AUGiYXW7B8ZekJqxsVjF3sowg30kjwjEGVQLj17pf/xqP1nVa
-         SL5a5aE/u8VoEGUbjek/K/zwNxi062aeKjxHd0ocf1KcV83HqdSilgScCUIoCg/CkdZ7
-         Ma3w==
+        bh=cId+jl3LafbTbLYlOOg+jSuzH9qsoTjBGOokKriD7lU=;
+        b=ZtbwKevENzNW2x5+kFFZhd7+OATVIxiWZZkHDKL7gWGi9c7S0ntoIvEeWGTjlSHvFO
+         pKd5Tx+OQ7x2xriJskVzBQSjwOsROQDBsIhw64mBTTsQqjy/uO8UbBWyukfcDagDN24y
+         QcN7k8kE7+X7cUQ9fhnBiaanIzm2IdgcdL0j3xNzj38lIECUOiJcWiy9yPkSjWjXeMD/
+         cRaK4k2qkPkNNM2UwobjNqF9nReBW8IK2CgHOGf7INXImFWidxNULJl2N1foGQR+Lhxh
+         JARSCQ2kebdtBbw61z0OZuqcn7FlXWLW/Xcn4wIyGDSFHgpZkrSkSFtMXQsDfIUnfTFe
+         VBmg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=BQ4566oe;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b="vZr5D/Us";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id r8-20020ad45768000000b00444061d3cd2si8794778qvx.332.2022.06.20.11.54.36
+        by mx.google.com with ESMTPS id q7-20020ad45ca7000000b0046ba37bb2e1si8761253qvh.468.2022.06.20.11.57.15
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 20 Jun 2022 11:54:36 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 20 Jun 2022 11:57:15 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=BQ4566oe;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b="vZr5D/Us";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:49264 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:52332 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1o3MXj-00045j-PM
-	for alex.bennee@linaro.org; Mon, 20 Jun 2022 14:54:35 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:43026)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1o3MaI-0006HZ-KM
+	for alex.bennee@linaro.org; Mon, 20 Jun 2022 14:57:14 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:43028)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1o3LaN-0006ON-Pn
- for qemu-devel@nongnu.org; Mon, 20 Jun 2022 13:53:18 -0400
-Received: from mail-pl1-x62e.google.com ([2607:f8b0:4864:20::62e]:39613)
+ id 1o3LaN-0006OO-RY
+ for qemu-arm@nongnu.org; Mon, 20 Jun 2022 13:53:18 -0400
+Received: from mail-pl1-x62d.google.com ([2607:f8b0:4864:20::62d]:33731)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1o3LaH-0001Sf-7x
- for qemu-devel@nongnu.org; Mon, 20 Jun 2022 13:53:12 -0400
-Received: by mail-pl1-x62e.google.com with SMTP id a17so8412751pls.6
- for <qemu-devel@nongnu.org>; Mon, 20 Jun 2022 10:53:08 -0700 (PDT)
+ id 1o3LaH-0001JG-2S
+ for qemu-arm@nongnu.org; Mon, 20 Jun 2022 13:53:12 -0400
+Received: by mail-pl1-x62d.google.com with SMTP id y6so10405994plg.0
+ for <qemu-arm@nongnu.org>; Mon, 20 Jun 2022 10:53:06 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=kq5WyJnaYbSXXWIDYXT9yWQkvroiNHIlsp2GS2R8a4o=;
- b=BQ4566oefWCY3JLm/EuyuFwGYWeYqJJen0r4+M0GH+MiAGDHxcjZm7gWPbmqCOLQ6v
- Xjy6Pm2RKqdri5ocETFcdIruCbHka/D8gCnC6PMU6Y1J8YI+gTDQHHYTYKdILEDz5an4
- sIXrO2EMg1kXwgE5sRQEODdUFyCB6p/WphrpaemRH1NnHKXZPlFF23h/CMnyWTRZE6I/
- K5lrE9SPC4rfUDVjIIo5G830GQYZjdz0BNxQcUC47d+2KyaFEZoV9dBaPo9UvPVgUK1w
- 9Ww88SfP6KD0Mr45+sfxMTLOXYsC0x2dg/UwJmHCBqmxaCPbzR56YHoLLMBM5qT8MKZ/
- +INg==
+ bh=cId+jl3LafbTbLYlOOg+jSuzH9qsoTjBGOokKriD7lU=;
+ b=vZr5D/Usa00YbQTltq5JGlPpX+tklLQsTbKZuClm0IWZaATS+6CgqsHQNbIqL++XZT
+ PCyEt+shitVZjWtzRbBp+/TXDI/dGaGu+9KpLe7/BMygGn1a096nezym32//3+fF6BLV
+ djFHcyYYnWrBgR/nKlE/h1jLLi2plDqYpFUQ88Ksss0o055qTGlvbgiuAICj9JaFk35V
+ rrhVj/j3JHtK1f4BjOy/Pdi+E4ZdW+tvZBC9B9LCUXj8GfeVmHd1QC2vTWLhxfeceGv8
+ jHgOOxzTpEL7O6gm1ObzAKpJSzA1P0RelxBp5a150/dFHHO97nnOQ6W16bhss/GqQYAg
+ VhvQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=kq5WyJnaYbSXXWIDYXT9yWQkvroiNHIlsp2GS2R8a4o=;
- b=mr4L8vlUx7WuDicb/99VXkIEh1ztI6C1cbenK9HLdnQKR5saF2r+Y+6UQJvB5YQIx/
- 7EJ+rYjF5I3r9crumYnxyEFhd8jQySrVxyipuqKRp/8NJekeSwub+w8mjks6reIEk+Pn
- kLwr68tXAZAK4e23IdrnivS+Bu1jMhPvdY3ZgKWr25Xqrio+K4Fn3Mv9Fqhr/1qQoRNR
- ZQfZJ6iBl3BEfbLw1BeXNA1zQr9ICeoU3qUTIbUxUE8g1xj0F6aXUrZV5cVRCT/Z8JIX
- 3qhqaiuHNQfL7KwZrRfGB4n93Eju8OOFLGxckbpbK8Mbm+RBdtvLTVcA+pHGMsH8T1Ti
- i8sg==
-X-Gm-Message-State: AJIora/rU3rtyizvCrZcwmnbwVNM4GvKUImVGmjt6l74kbfCgbE4c76k
- uw9Q40KSaIAuWdn+DE09ZB0+K3enoWTD7A==
-X-Received: by 2002:a17:902:cf0f:b0:15a:24e0:d9b0 with SMTP id
- i15-20020a170902cf0f00b0015a24e0d9b0mr24339627plg.42.1655747587599; 
- Mon, 20 Jun 2022 10:53:07 -0700 (PDT)
+ bh=cId+jl3LafbTbLYlOOg+jSuzH9qsoTjBGOokKriD7lU=;
+ b=m/djGJCy9dfRo6OXZDmi58bVF4zKH+D3WEqGsy15mlmrYEXPAI+9pl4i0ltB4JMMMF
+ XiAVSu5HgTeVFeux54HoNpD5viDAJq3jd0dnClojjkypKejveAceFlkai5cLmTeFcM0W
+ vMQcsWdeyLn2AyQ2EuWNIVa92OQeW9mqVuqyxFso63yUpgkkbhXkOypgCgVZIh72KCs4
+ eeHStz6W///hItlB05pBXX33Gza4mV0wG1Y6QJ1wKuK6DtZtsLHYw3Lm0tgZz+y/wkqX
+ MdtdgGJ68xxCAx7Roi7MFm00GGMUVAnjgoGuOO3RxvwMcvaJlfwPhCTtyb+p8CV4BsnR
+ neAQ==
+X-Gm-Message-State: AJIora/Gx/OsRZuzbPj6Nro1K2QoMiSryCmdiFZXNLpJ/xeJ2HoKQ9/M
+ eh8axzERsiSGydRr+2lDsmgfydxrrVGj/w==
+X-Received: by 2002:a17:90b:1c02:b0:1e3:4b6d:4269 with SMTP id
+ oc2-20020a17090b1c0200b001e34b6d4269mr38626265pjb.57.1655747586594; 
+ Mon, 20 Jun 2022 10:53:06 -0700 (PDT)
 Received: from stoup.. ([2602:47:d49e:3c01:a3e0:8a80:7b85:aea6])
  by smtp.gmail.com with ESMTPSA id
- j14-20020aa7928e000000b00525133f98adsm5138138pfa.146.2022.06.20.10.53.06
+ j14-20020aa7928e000000b00525133f98adsm5138138pfa.146.2022.06.20.10.53.05
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 20 Jun 2022 10:53:07 -0700 (PDT)
+ Mon, 20 Jun 2022 10:53:06 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org
-Subject: [PATCH v3 36/51] target/arm: Implement SCLAMP, UCLAMP
-Date: Mon, 20 Jun 2022 10:52:20 -0700
-Message-Id: <20220620175235.60881-37-richard.henderson@linaro.org>
+Subject: [PATCH v3 35/51] target/arm: Implement REVD
+Date: Mon, 20 Jun 2022 10:52:19 -0700
+Message-Id: <20220620175235.60881-36-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20220620175235.60881-1-richard.henderson@linaro.org>
 References: <20220620175235.60881-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::62e;
- envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x62e.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::62d;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x62d.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -107,213 +107,94 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: oeG9MYGfBsyr
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: lKRQxdl2guP1
 
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/helper.h        |  18 +++++++
- target/arm/sve.decode      |   5 ++
- target/arm/translate-sve.c | 102 +++++++++++++++++++++++++++++++++++++
- target/arm/vec_helper.c    |  24 +++++++++
- 4 files changed, 149 insertions(+)
+ target/arm/helper-sve.h    |  2 ++
+ target/arm/sve.decode      |  1 +
+ target/arm/sve_helper.c    | 16 ++++++++++++++++
+ target/arm/translate-sve.c |  2 ++
+ 4 files changed, 21 insertions(+)
 
-diff --git a/target/arm/helper.h b/target/arm/helper.h
-index 3a8ce42ab0..92f36d9dbb 100644
---- a/target/arm/helper.h
-+++ b/target/arm/helper.h
-@@ -1019,6 +1019,24 @@ DEF_HELPER_FLAGS_6(gvec_bfmlal, TCG_CALL_NO_RWG,
- DEF_HELPER_FLAGS_6(gvec_bfmlal_idx, TCG_CALL_NO_RWG,
-                    void, ptr, ptr, ptr, ptr, ptr, i32)
+diff --git a/target/arm/helper-sve.h b/target/arm/helper-sve.h
+index ab0333400f..cc4e1d8948 100644
+--- a/target/arm/helper-sve.h
++++ b/target/arm/helper-sve.h
+@@ -719,6 +719,8 @@ DEF_HELPER_FLAGS_4(sve_revh_d, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
  
-+DEF_HELPER_FLAGS_5(gvec_sclamp_b, TCG_CALL_NO_RWG,
-+                   void, ptr, ptr, ptr, ptr, i32)
-+DEF_HELPER_FLAGS_5(gvec_sclamp_h, TCG_CALL_NO_RWG,
-+                   void, ptr, ptr, ptr, ptr, i32)
-+DEF_HELPER_FLAGS_5(gvec_sclamp_s, TCG_CALL_NO_RWG,
-+                   void, ptr, ptr, ptr, ptr, i32)
-+DEF_HELPER_FLAGS_5(gvec_sclamp_d, TCG_CALL_NO_RWG,
-+                   void, ptr, ptr, ptr, ptr, i32)
+ DEF_HELPER_FLAGS_4(sve_revw_d, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
+ 
++DEF_HELPER_FLAGS_4(sme_revd_q, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
 +
-+DEF_HELPER_FLAGS_5(gvec_uclamp_b, TCG_CALL_NO_RWG,
-+                   void, ptr, ptr, ptr, ptr, i32)
-+DEF_HELPER_FLAGS_5(gvec_uclamp_h, TCG_CALL_NO_RWG,
-+                   void, ptr, ptr, ptr, ptr, i32)
-+DEF_HELPER_FLAGS_5(gvec_uclamp_s, TCG_CALL_NO_RWG,
-+                   void, ptr, ptr, ptr, ptr, i32)
-+DEF_HELPER_FLAGS_5(gvec_uclamp_d, TCG_CALL_NO_RWG,
-+                   void, ptr, ptr, ptr, ptr, i32)
-+
- #ifdef TARGET_AARCH64
- #include "helper-a64.h"
- #include "helper-sve.h"
+ DEF_HELPER_FLAGS_4(sve_rbit_b, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
+ DEF_HELPER_FLAGS_4(sve_rbit_h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
+ DEF_HELPER_FLAGS_4(sve_rbit_s, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
 diff --git a/target/arm/sve.decode b/target/arm/sve.decode
-index d1e229fd6e..ad411b5790 100644
+index bf561c270a..d1e229fd6e 100644
 --- a/target/arm/sve.decode
 +++ b/target/arm/sve.decode
-@@ -1695,3 +1695,8 @@ PSEL            00100101 .. 1 100 .. 01 .... 0 .... 0 ....  \
-                 @psel esz=2 imm=%psel_imm_s
- PSEL            00100101 .1 1 000 .. 01 .... 0 .... 0 ....  \
-                 @psel esz=3 imm=%psel_imm_d
+@@ -652,6 +652,7 @@ REVB            00000101 .. 1001 00 100 ... ..... .....         @rd_pg_rn
+ REVH            00000101 .. 1001 01 100 ... ..... .....         @rd_pg_rn
+ REVW            00000101 .. 1001 10 100 ... ..... .....         @rd_pg_rn
+ RBIT            00000101 .. 1001 11 100 ... ..... .....         @rd_pg_rn
++REVD            00000101 00 1011 10 100 ... ..... .....         @rd_pg_rn_e0
+ 
+ # SVE vector splice (predicated, destructive)
+ SPLICE          00000101 .. 101 100 100 ... ..... .....         @rdn_pg_rm
+diff --git a/target/arm/sve_helper.c b/target/arm/sve_helper.c
+index 9a26f253e0..5de82696b5 100644
+--- a/target/arm/sve_helper.c
++++ b/target/arm/sve_helper.c
+@@ -931,6 +931,22 @@ DO_ZPZ_D(sve_revh_d, uint64_t, hswap64)
+ 
+ DO_ZPZ_D(sve_revw_d, uint64_t, wswap64)
+ 
++void HELPER(sme_revd_q)(void *vd, void *vn, void *vg, uint32_t desc)
++{
++    intptr_t i, opr_sz = simd_oprsz(desc) / 8;
++    uint64_t *d = vd, *n = vn;
++    uint8_t *pg = vg;
 +
-+### SVE clamp
++    for (i = 0; i < opr_sz; i += 2) {
++        if (pg[H1(i)] & 1) {
++            uint64_t n0 = n[i + 0];
++            uint64_t n1 = n[i + 1];
++            d[i + 0] = n1;
++            d[i + 1] = n0;
++        }
++    }
++}
 +
-+SCLAMP          01000100 .. 0 ..... 110000 ..... .....          @rda_rn_rm
-+UCLAMP          01000100 .. 0 ..... 110001 ..... .....          @rda_rn_rm
+ DO_ZPZ(sve_rbit_b, uint8_t, H1, revbit8)
+ DO_ZPZ(sve_rbit_h, uint16_t, H1_2, revbit16)
+ DO_ZPZ(sve_rbit_s, uint32_t, H1_4, revbit32)
 diff --git a/target/arm/translate-sve.c b/target/arm/translate-sve.c
-index 1129f1fc56..40c5bf1a55 100644
+index 58d0894e15..1129f1fc56 100644
 --- a/target/arm/translate-sve.c
 +++ b/target/arm/translate-sve.c
-@@ -7438,3 +7438,105 @@ static bool trans_PSEL(DisasContext *s, arg_psel *a)
-     tcg_temp_free_ptr(ptr);
-     return true;
- }
+@@ -2896,6 +2896,8 @@ TRANS_FEAT(REVH, aa64_sve, gen_gvec_ool_arg_zpz, revh_fns[a->esz], a, 0)
+ TRANS_FEAT(REVW, aa64_sve, gen_gvec_ool_arg_zpz,
+            a->esz == 3 ? gen_helper_sve_revw_d : NULL, a, 0)
+ 
++TRANS_FEAT(REVD, aa64_sme, gen_gvec_ool_arg_zpz, gen_helper_sme_revd_q, a, 0)
 +
-+static void gen_sclamp_i32(TCGv_i32 d, TCGv_i32 n, TCGv_i32 m, TCGv_i32 a)
-+{
-+    tcg_gen_smax_i32(d, a, n);
-+    tcg_gen_smin_i32(d, d, m);
-+}
-+
-+static void gen_sclamp_i64(TCGv_i64 d, TCGv_i64 n, TCGv_i64 m, TCGv_i64 a)
-+{
-+    tcg_gen_smax_i64(d, a, n);
-+    tcg_gen_smin_i64(d, d, m);
-+}
-+
-+static void gen_sclamp_vec(unsigned vece, TCGv_vec d, TCGv_vec n,
-+                           TCGv_vec m, TCGv_vec a)
-+{
-+    tcg_gen_smax_vec(vece, d, a, n);
-+    tcg_gen_smin_vec(vece, d, d, m);
-+}
-+
-+static void gen_sclamp(unsigned vece, uint32_t d, uint32_t n, uint32_t m,
-+                       uint32_t a, uint32_t oprsz, uint32_t maxsz)
-+{
-+    static const TCGOpcode vecop[] = {
-+        INDEX_op_smin_vec, INDEX_op_smax_vec, 0
-+    };
-+    static const GVecGen4 ops[4] = {
-+        { .fniv = gen_sclamp_vec,
-+          .fno  = gen_helper_gvec_sclamp_b,
-+          .opt_opc = vecop,
-+          .vece = MO_8 },
-+        { .fniv = gen_sclamp_vec,
-+          .fno  = gen_helper_gvec_sclamp_h,
-+          .opt_opc = vecop,
-+          .vece = MO_16 },
-+        { .fni4 = gen_sclamp_i32,
-+          .fniv = gen_sclamp_vec,
-+          .fno  = gen_helper_gvec_sclamp_s,
-+          .opt_opc = vecop,
-+          .vece = MO_32 },
-+        { .fni8 = gen_sclamp_i64,
-+          .fniv = gen_sclamp_vec,
-+          .fno  = gen_helper_gvec_sclamp_d,
-+          .opt_opc = vecop,
-+          .vece = MO_64,
-+          .prefer_i64 = TCG_TARGET_REG_BITS == 64 }
-+    };
-+    tcg_gen_gvec_4(d, n, m, a, oprsz, maxsz, &ops[vece]);
-+}
-+
-+TRANS_FEAT(SCLAMP, aa64_sme, gen_gvec_fn_arg_zzzz, gen_sclamp, a)
-+
-+static void gen_uclamp_i32(TCGv_i32 d, TCGv_i32 n, TCGv_i32 m, TCGv_i32 a)
-+{
-+    tcg_gen_umax_i32(d, a, n);
-+    tcg_gen_umin_i32(d, d, m);
-+}
-+
-+static void gen_uclamp_i64(TCGv_i64 d, TCGv_i64 n, TCGv_i64 m, TCGv_i64 a)
-+{
-+    tcg_gen_umax_i64(d, a, n);
-+    tcg_gen_umin_i64(d, d, m);
-+}
-+
-+static void gen_uclamp_vec(unsigned vece, TCGv_vec d, TCGv_vec n,
-+                           TCGv_vec m, TCGv_vec a)
-+{
-+    tcg_gen_umax_vec(vece, d, a, n);
-+    tcg_gen_umin_vec(vece, d, d, m);
-+}
-+
-+static void gen_uclamp(unsigned vece, uint32_t d, uint32_t n, uint32_t m,
-+                       uint32_t a, uint32_t oprsz, uint32_t maxsz)
-+{
-+    static const TCGOpcode vecop[] = {
-+        INDEX_op_umin_vec, INDEX_op_umax_vec, 0
-+    };
-+    static const GVecGen4 ops[4] = {
-+        { .fniv = gen_uclamp_vec,
-+          .fno  = gen_helper_gvec_uclamp_b,
-+          .opt_opc = vecop,
-+          .vece = MO_8 },
-+        { .fniv = gen_uclamp_vec,
-+          .fno  = gen_helper_gvec_uclamp_h,
-+          .opt_opc = vecop,
-+          .vece = MO_16 },
-+        { .fni4 = gen_uclamp_i32,
-+          .fniv = gen_uclamp_vec,
-+          .fno  = gen_helper_gvec_uclamp_s,
-+          .opt_opc = vecop,
-+          .vece = MO_32 },
-+        { .fni8 = gen_uclamp_i64,
-+          .fniv = gen_uclamp_vec,
-+          .fno  = gen_helper_gvec_uclamp_d,
-+          .opt_opc = vecop,
-+          .vece = MO_64,
-+          .prefer_i64 = TCG_TARGET_REG_BITS == 64 }
-+    };
-+    tcg_gen_gvec_4(d, n, m, a, oprsz, maxsz, &ops[vece]);
-+}
-+
-+TRANS_FEAT(UCLAMP, aa64_sme, gen_gvec_fn_arg_zzzz, gen_uclamp, a)
-diff --git a/target/arm/vec_helper.c b/target/arm/vec_helper.c
-index 9a9c034e36..f59d3b26ea 100644
---- a/target/arm/vec_helper.c
-+++ b/target/arm/vec_helper.c
-@@ -2690,3 +2690,27 @@ void HELPER(gvec_bfmlal_idx)(void *vd, void *vn, void *vm,
-     }
-     clear_tail(d, opr_sz, simd_maxsz(desc));
- }
-+
-+#define DO_CLAMP(NAME, TYPE) \
-+void HELPER(NAME)(void *d, void *n, void *m, void *a, uint32_t desc)    \
-+{                                                                       \
-+    intptr_t i, opr_sz = simd_oprsz(desc);                              \
-+    for (i = 0; i < opr_sz; i += sizeof(TYPE)) {                        \
-+        TYPE aa = *(TYPE *)(a + i);                                     \
-+        TYPE nn = *(TYPE *)(n + i);                                     \
-+        TYPE mm = *(TYPE *)(m + i);                                     \
-+        TYPE dd = MIN(MAX(aa, nn), mm);                                 \
-+        *(TYPE *)(d + i) = dd;                                          \
-+    }                                                                   \
-+    clear_tail(d, opr_sz, simd_maxsz(desc));                            \
-+}
-+
-+DO_CLAMP(gvec_sclamp_b, int8_t)
-+DO_CLAMP(gvec_sclamp_h, int16_t)
-+DO_CLAMP(gvec_sclamp_s, int32_t)
-+DO_CLAMP(gvec_sclamp_d, int64_t)
-+
-+DO_CLAMP(gvec_uclamp_b, uint8_t)
-+DO_CLAMP(gvec_uclamp_h, uint16_t)
-+DO_CLAMP(gvec_uclamp_s, uint32_t)
-+DO_CLAMP(gvec_uclamp_d, uint64_t)
+ TRANS_FEAT(SPLICE, aa64_sve, gen_gvec_ool_arg_zpzz,
+            gen_helper_sve_splice, a, a->esz)
+ 
 -- 
 2.34.1
 

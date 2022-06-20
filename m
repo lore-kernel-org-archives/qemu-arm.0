@@ -1,116 +1,111 @@
-Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp301263lft;
-        Mon, 20 Jun 2022 02:12:08 -0700 (PDT)
-X-Google-Smtp-Source: AGRyM1tcl2Gutn1csB+C49Yo1Yd1GnSA4ZDVpw6uxE+VXJXzS+G2gsaER4591tK+DWX40P7XlLYQ
-X-Received: by 2002:a05:622a:103:b0:305:89b:f159 with SMTP id u3-20020a05622a010300b00305089bf159mr18846017qtw.488.1655716328686;
-        Mon, 20 Jun 2022 02:12:08 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1655716328; cv=none;
+Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp333128lft;
+        Mon, 20 Jun 2022 03:18:18 -0700 (PDT)
+X-Google-Smtp-Source: AGRyM1uSSC+wCak/+xgygaVuVS6/8qERiKKRjv53K8LEy6KqrsOQ2B2gojLTo6+SICaWiMC9emal
+X-Received: by 2002:a05:6214:c85:b0:46b:afbe:1c3a with SMTP id r5-20020a0562140c8500b0046bafbe1c3amr18299931qvr.100.1655720298149;
+        Mon, 20 Jun 2022 03:18:18 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1655720298; cv=none;
         d=google.com; s=arc-20160816;
-        b=QMx4L7kuU9ONf6tIjmBSk/9TNJuTZPokI5XYNbjY8IzPukryDJtjSmOVGr1+w5lPdP
-         eHGbPh5795+iEU9v8xcS50jOBTefcdQzuAmBXWOgB/wy45JkCQJO5DogfaBla50n9Rzx
-         2vpxXItVwFy6oA5us89WH/tE2m8OdKb/stpqkRIjIjvCnsyexnwrvVrUA233EmwKTdiE
-         Bo8K4NU2cxvKC8Zo3psaeQlz9fAQSFohqBCD5j7XAGVDwAuPiChI68XoeqnblDGQyXD2
-         6XSoIs31ETJfWW2l450afwgYfSlDuDCliF8Smvib/GgrUIV3DLEOSbiVsXuo2Ql56oYq
-         Rd0A==
+        b=iu+9DBzZEZgZ3MkxMqK2+U0sWLNrkqjEQzQYogRwG6CzuAaAkbt7wc+eGjZQKamUrO
+         eg0Ax5zVkcIi7PnrjoPRKRFZkDFtvj7v6TrOEKPRTIeXDacGJbZ0JzF4jzSU6MsM0nzc
+         NYq851p70PRZbmE/a+o0OjtU0ge4z5ATdmAawwdcLSd9B0Wo6OPkkIDjK4WVcn7s1/8v
+         tRbMBjm4uOzysYZFgVvmgvXn/5inlFFu8OM8XI4a4SDJ+0LJ59x/DNClCMFmDiVj/7ey
+         C2p8fTgt+tuApFxmdJQBL40ACS+r2j7BRv7xWXXocuzHe/zGWtn9NeaCaC3jDYuJdjwL
+         hRyA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:user-agent:in-reply-to
-         :content-disposition:mime-version:references:message-id:subject:cc
-         :to:from:date:dkim-signature;
-        bh=YzrE3ubLHPXWSEZ0Nn7384TQFxa8gKiqCOwRRAoE1R8=;
-        b=jFNHUS7bgwa7fcWlmilIEEUD1zxqs/I4lELEYMJuYQzSrpuirBzIY2ISDfMAKfSLe3
-         e1C6I0XPpiOwbmVtZ9Z+5YSm3tuYe1XPIM0gML05yJ6CVX6Ez13RNneWN8SPZA9o831V
-         nHpUKpdX91Nm1UAY5I7HuR2BFyY46YZAJW5Npu8LpNt/+8oA5cNFZFQAe7+ob7LM5s2z
-         iHDq+yQIJ5VZ0RLgVyP098ottTVKDHYhhwEFdiNitgZBiAuvVdJ1t3kom4Ipuk67W5wy
-         tciDrm+IM3PgEA+Sb2CD3u0jrEaj9o3OOr9FC7bzE2+AuNd9QiOgW6jVWZ/McChQzEqk
-         6/vg==
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=eRmH9mDZym0wZHx18FHftuNWiUsP10FrjTqoQEdG4Ew=;
+        b=xxEh5UzYTlswtWSNfCqgAIvG6Nxg6d+88w6BxfLMQawcYCSKfvDhVdu7wJWsHRQtS8
+         QRlDELYnZ4F+NhJqncsf2DH+/HSFfzrfre+GGsmBnmmp+3KmvV0qc2DX47s9EftdQWXQ
+         1h1f4H/GqbOhDoajfPMoJjAG2SlE+HpfFp16zLNVVPPHzZogjtgn02SE5xB9fxzvbUUH
+         SeyvNYohaspYT8j2nvNEsPARIr6UnHj6bPA/VtCshT7HjeDWrqc05xx/pnQnuSZ/tVWM
+         IygbGLp6YZVgiS5zgzsij/8JsV//ZzcecaObRN4PEM/gDP4lwcbQFWfGPpWxK0y1TKLx
+         K1ag==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b="L1j/fShK";
+       dkim=pass header.i=@linaro.org header.s=google header.b=kxNcm8W1;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id jr11-20020a0562142a8b00b0046bbeb4690esi7037363qvb.228.2022.06.20.02.12.08
+        by mx.google.com with ESMTPS id c193-20020a379aca000000b0069f6d69fe47si7004588qke.304.2022.06.20.03.18.18
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 20 Jun 2022 02:12:08 -0700 (PDT)
+        Mon, 20 Jun 2022 03:18:18 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b="L1j/fShK";
+       dkim=pass header.i=@linaro.org header.s=google header.b=kxNcm8W1;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:44794 helo=lists1p.gnu.org)
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:43298 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1o3DS4-0005l7-3M
-	for alex.bennee@linaro.org; Mon, 20 Jun 2022 05:12:08 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53228)
+	id 1o3EU5-0005aW-Lv
+	for alex.bennee@linaro.org; Mon, 20 Jun 2022 06:18:17 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:45870)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <frasse.iglesias@gmail.com>)
- id 1o3DQi-0005TV-Hj; Mon, 20 Jun 2022 05:10:45 -0400
-Received: from mail-lf1-x12a.google.com ([2a00:1450:4864:20::12a]:42717)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1o3ETI-0005a9-Gr
+ for qemu-arm@nongnu.org; Mon, 20 Jun 2022 06:17:28 -0400
+Received: from mail-yw1-x1131.google.com ([2607:f8b0:4864:20::1131]:42895)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <frasse.iglesias@gmail.com>)
- id 1o3DQa-00039T-Uw; Mon, 20 Jun 2022 05:10:39 -0400
-Received: by mail-lf1-x12a.google.com with SMTP id g4so3839380lfv.9;
- Mon, 20 Jun 2022 02:10:33 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to:user-agent;
- bh=YzrE3ubLHPXWSEZ0Nn7384TQFxa8gKiqCOwRRAoE1R8=;
- b=L1j/fShKz/DOQ7ZhU28vGhxOMM8/pglvYps/KtGCs00IN0U3DKrXZ9MjQGPBGgRlZz
- FW3UnoNZL3DGpkrSB4JcdJECCmDhmcFYgA+GSgBuDncrtX8idMG0OWqxaTmXV2ydT5Yc
- M7LMqkdX3i4XxXBG7Ev+c35NWGZ7WCL/zBKlPPfia53GDowDO67PB3jREqXup5mMdED2
- m4JR/HYDO1omSj/tFL58Ja1QPo7uIewsSZmfpL3B8ua3c7H/jrKgD3JVku2rX/l1+2wH
- 0whwZV1YtPcVKFFyvsRgyPPX1O5W35uBfh3OCwS0AZ6B7XQBjpSepgfIDdGVVzrNgq6P
- xoDQ==
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1o3ETD-0007PE-Ja
+ for qemu-arm@nongnu.org; Mon, 20 Jun 2022 06:17:27 -0400
+Received: by mail-yw1-x1131.google.com with SMTP id
+ 00721157ae682-2ef5380669cso95178437b3.9
+ for <qemu-arm@nongnu.org>; Mon, 20 Jun 2022 03:17:21 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=eRmH9mDZym0wZHx18FHftuNWiUsP10FrjTqoQEdG4Ew=;
+ b=kxNcm8W10eAqh7KswqGySXdhRhMj8wIW43Ms064bVeRzcxpfgFL4tCSjOXt75jp/2C
+ 14LWTx0vPxjQCPy4uKQ4ZYYje18c3UAv3ymYmAkKAdBWnicokha5ZiRAdgrS9hVGTOym
+ RbURb5oBD9cNdOnfstEQwbDFj4yzARLjWehSrjf3dGUGmCY5XO+Fp5+4I35vv9IN8u6T
+ /W3daddJBxG7vdMNdtojDjAqWZCDQQUfESGYDms37/ZKqRLsRjsF0r2qdm8Bb+LTbOzH
+ NpELk+ZtEQ9NZtYSmlT0+ugKeyzBwQ4PJEvaUxqF3LSksfhm5fQ31m5vdG5UdCncQAZ3
+ EiXw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to:user-agent;
- bh=YzrE3ubLHPXWSEZ0Nn7384TQFxa8gKiqCOwRRAoE1R8=;
- b=DoYN9+T+7FYv1ZqxsA6q2hgm4za6wQA+8lNCt9ZecBBl75Fo4Ob+1TRlhEeODXp1tk
- 2xxDHntZQyJTwbqorEI6/Lv8dVDSeanaBRDtwu9nCAllSW2U5uQukvbHXvfRMk1eEysV
- OjeKUIwGa8NskZTuQwT+ocyV1Hx00gngk06dD/fmxt8gCNFsqWRLPMjd2/JM4hfPbGqz
- 4F9riwp6jH65yq44wFJsvg6sHsxsv7Kt6DYhBj/W7wRiInPnkgK+xsAwwzlpaORR/r3w
- W9nGMYE5hf/B61m8+KJZ4xh1WjMJwVGHcms/MGqsNRo9RsFGOkYQSMPuFGiM/mj+2zkI
- fBBQ==
-X-Gm-Message-State: AJIora9gkFwUAhSNLzHhnNJ4qppS29d2qLSM/Al4N4qbvAzIC9Nixn2S
- ZEi3F9YVN7aNW14pYlYJ2QY=
-X-Received: by 2002:a19:2d10:0:b0:47f:55d1:3c4e with SMTP id
- k16-20020a192d10000000b0047f55d13c4emr8266974lfj.640.1655716231763; 
- Mon, 20 Jun 2022 02:10:31 -0700 (PDT)
-Received: from fralle-msi (31-208-27-151.cust.bredband2.com. [31.208.27.151])
- by smtp.gmail.com with ESMTPSA id
- e7-20020a196747000000b0047255d211e5sm1685833lfj.276.2022.06.20.02.10.30
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 20 Jun 2022 02:10:31 -0700 (PDT)
-Date: Mon, 20 Jun 2022 11:10:29 +0200
-From: Francisco Iglesias <frasse.iglesias@gmail.com>
-To: Iris Chen <irischenlj@fb.com>
-Cc: pdel@fb.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org, clg@kaod.org,
- patrick@stwcx.xyz, alistair@alistair23.me, kwolf@redhat.com,
- hreitz@redhat.com, peter.maydell@linaro.org, andrew@aj.id.au,
- joel@jms.id.au, thuth@redhat.com, lvivier@redhat.com,
- pbonzini@redhat.com, qemu-block@nongnu.org, dz4list@gmail.com
-Subject: Re: [PATCH v3 1/2] hw: m25p80: add WP# pin and SRWD bit for write
- protection
-Message-ID: <20220620091028.GD10629@fralle-msi>
-References: <20220617220245.2285150-1-irischenlj@fb.com>
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=eRmH9mDZym0wZHx18FHftuNWiUsP10FrjTqoQEdG4Ew=;
+ b=YOyGScfWova2JBfpJL5n1B18DmGU21uJqOfJs58ap82USlpJ0kYoHkIK/P26cAW65s
+ vJP4GTN+ssiUynWEigTHDGVG8xVmb1xP7K418p8h92FTzMoSP9QyvoykPmQ08if8NVOr
+ ClJbniZT9ufH9+ES2oeZZ2RvyvtCmsQrm31CzGnMEV4pOV4VDR41MnHLGFLkcUzBmEVs
+ xNhF38tNsi/AacCvGgAx9x4Siymb1xOU5WpVOaSwy+KaTFAWrZ9UbiA60JWVGOb+LUrs
+ pJqEDF9jkWjzz+cFNoYC1Aii+GrZM+jOOycBo6srd+eMhCCmfst5rk/ujEKMDrquacc5
+ 3JBQ==
+X-Gm-Message-State: AJIora9BSFCm8bppeExihIiasI99cQWsKP6YtmgMwjKebDiOfqGyO6cG
+ ibqvjK7vuSYqS7eC/BA1dsLUCXX7pyJJlE9xPwmUMQ==
+X-Received: by 2002:a81:8d08:0:b0:317:a4cd:d65d with SMTP id
+ d8-20020a818d08000000b00317a4cdd65dmr10603534ywg.329.1655720240763; Mon, 20
+ Jun 2022 03:17:20 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20220617220245.2285150-1-irischenlj@fb.com>
-User-Agent: Mutt/1.10.1 (2018-07-13)
-Received-SPF: pass client-ip=2a00:1450:4864:20::12a;
- envelope-from=frasse.iglesias@gmail.com; helo=mail-lf1-x12a.google.com
-X-Spam_score_int: -1010
-X-Spam_score: -101.1
-X-Spam_bar: ---------------------------------------------------
-X-Spam_report: (-101.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- FREEMAIL_REPLY=1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01, USER_IN_WELCOMELIST=-0.01,
- USER_IN_WHITELIST=-100 autolearn=no autolearn_force=no
+References: <20220522181836.864-1-mark.cave-ayland@ilande.co.uk>
+ <20220522181836.864-46-mark.cave-ayland@ilande.co.uk>
+ <CAFEAcA9CxLKNZzfvaoUFSRtykEymu23er+zj=7GA1V2nRtcU9A@mail.gmail.com>
+ <939ffd58-3a89-ea5b-157d-d4a9bd4dffa4@ilande.co.uk>
+ <a425db75-5636-8b29-26d2-9bef52c8eb25@ilande.co.uk>
+In-Reply-To: <a425db75-5636-8b29-26d2-9bef52c8eb25@ilande.co.uk>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 20 Jun 2022 11:17:09 +0100
+Message-ID: <CAFEAcA-F_v_S3TMbtQvboBCzg9OsXM3YZ-Bs6yVabTpE9_yJ5Q@mail.gmail.com>
+Subject: Re: [PATCH 45/50] lasips2: use qdev gpio for output IRQ
+To: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
+Cc: richard.henderson@linaro.org, deller@gmx.de, mst@redhat.com, 
+ pbonzini@redhat.com, hpoussin@reactos.org, aleksandar.rikalo@syrmia.com, 
+ f4bug@amsat.org, jiaxun.yang@flygoat.com, qemu-arm@nongnu.org, 
+ qemu-devel@nongnu.org
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1131;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x1131.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -125,208 +120,39 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: zAn7YxYdeuWV
+X-TUID: XHfWyo0D3flg
 
-Hi Iris,
+On Sat, 11 Jun 2022 at 16:44, Mark Cave-Ayland
+<mark.cave-ayland@ilande.co.uk> wrote:
+>
+> On 10/06/2022 08:17, Mark Cave-Ayland wrote:
+>
+> > On 09/06/2022 12:18, Peter Maydell wrote:
+> >> If you find yourself #defining names for IRQ lines then this is
+> >> probably a sign you should be using named GPIO lines :-)
+> >
+> > Yeah that's something I've done a few times here, mainly to have just one "set IRQ"
+> > function rather a separate one for both keyboard and mouse. It takes a bit more work,
+> > but I can certainly separate them out.
+>
+> Looking at this again, the gpio being defined here actually is the (only) lasips2
+> output IRQ, and so should be left unnamed.
+>
+> The reason for adding LASIPS2_IRQ was so that the gpio connection process looked like:
+>
+>      qdev_connect_gpio_out(dev, LASIPS2_IRQ, irq);
+>
+> instead of:
+>
+>      qdev_connect_gpio_out(dev, 0, irq);
+>
+> Would you still prefer for me to simply hardcode 0 here and drop the LASIPS2_IRQ
+> define in this case since there is only one output IRQ?
 
-On [2022 Jun 17] Fri 15:02:45, Iris Chen wrote:
-> Signed-off-by: Iris Chen <irischenlj@fb.com>
-> ---
-> Thanks everyone for your comments. This is a v3 patch that addresses all 
-> suggestions (moving write_enable to decode_new_cmd). 
-> I am waiting on some feedback from Dan's (dz4list@gmail.com) patch
-> regarding adding a STATE_STANDBY state. 
-> 
-> Currently, all tests are passing. 
->  
->  hw/block/m25p80.c | 77 ++++++++++++++++++++++++++++++++++++++---------
->  1 file changed, 62 insertions(+), 15 deletions(-)
-> 
-> diff --git a/hw/block/m25p80.c b/hw/block/m25p80.c
-> index 81ba3da4df..12a59ca57c 100644
-> --- a/hw/block/m25p80.c
-> +++ b/hw/block/m25p80.c
-> @@ -27,12 +27,14 @@
->  #include "hw/qdev-properties.h"
->  #include "hw/qdev-properties-system.h"
->  #include "hw/ssi/ssi.h"
-> +#include "hw/irq.h"
->  #include "migration/vmstate.h"
->  #include "qemu/bitops.h"
->  #include "qemu/log.h"
->  #include "qemu/module.h"
->  #include "qemu/error-report.h"
->  #include "qapi/error.h"
-> +#include "qapi/visitor.h"
+Well, I think that "unnamed GPIO out" lines should be for
+actual GPIO lines, ie on a GPIO controller or similar.
+If you want an outbound IRQ line and don't want to name it,
+that's what sysbus IRQ lines do. Otherwise, name the GPIO line.
 
-We can remove above two new header includes (sorry for missing this last time).
-
->  #include "trace.h"
->  #include "qom/object.h"
->  
-> @@ -472,11 +474,13 @@ struct Flash {
->      uint8_t spansion_cr2v;
->      uint8_t spansion_cr3v;
->      uint8_t spansion_cr4v;
-> +    bool wp_level;
->      bool write_enable;
->      bool four_bytes_address_mode;
->      bool reset_enable;
->      bool quad_enable;
->      bool aai_enable;
-> +    bool status_register_write_disabled;
->      uint8_t ear;
->  
->      int64_t dirty_page;
-> @@ -723,6 +727,8 @@ static void complete_collecting_data(Flash *s)
->          flash_erase(s, s->cur_addr, s->cmd_in_progress);
->          break;
->      case WRSR:
-> +        s->status_register_write_disabled = extract32(s->data[0], 7, 1);
-> +
->          switch (get_man(s)) {
->          case MAN_SPANSION:
->              s->quad_enable = !!(s->data[1] & 0x02);
-> @@ -1165,22 +1171,34 @@ static void decode_new_cmd(Flash *s, uint32_t value)
->          break;
->  
->      case WRSR:
-> -        if (s->write_enable) {
-> -            switch (get_man(s)) {
-> -            case MAN_SPANSION:
-> -                s->needed_bytes = 2;
-> -                s->state = STATE_COLLECTING_DATA;
-> -                break;
-> -            case MAN_MACRONIX:
-> -                s->needed_bytes = 2;
-> -                s->state = STATE_COLLECTING_VAR_LEN_DATA;
-> -                break;
-> -            default:
-> -                s->needed_bytes = 1;
-> -                s->state = STATE_COLLECTING_DATA;
-> -            }
-> -            s->pos = 0;
-> +        /*
-> +         * If WP# is low and status_register_write_disabled is high,
-> +         * status register writes are disabled.
-> +         * This is also called "hardware protected mode" (HPM). All other
-> +         * combinations of the two states are called "software protected mode"
-> +         * (SPM), and status register writes are permitted.
-> +         */
-> +        if ((s->wp_level == 0 && s->status_register_write_disabled)
-> +            || !s->write_enable) {
-> +            qemu_log_mask(LOG_GUEST_ERROR,
-> +                          "M25P80: Status register write is disabled!\n");
-> +            break;
->          }
-> +
-> +        switch (get_man(s)) {
-> +        case MAN_SPANSION:
-> +            s->needed_bytes = 2;
-> +            s->state = STATE_COLLECTING_DATA;
-> +            break;
-> +        case MAN_MACRONIX:
-> +            s->needed_bytes = 2;
-> +            s->state = STATE_COLLECTING_VAR_LEN_DATA;
-> +            break;
-> +        default:
-> +            s->needed_bytes = 1;
-> +            s->state = STATE_COLLECTING_DATA;
-> +        }
-> +        s->pos = 0;
->          break;
->  
->      case WRDI:
-> @@ -1195,6 +1213,8 @@ static void decode_new_cmd(Flash *s, uint32_t value)
->  
->      case RDSR:
->          s->data[0] = (!!s->write_enable) << 1;
-> +        s->data[0] |= (!!s->status_register_write_disabled) << 7;
-> +
->          if (get_man(s) == MAN_MACRONIX || get_man(s) == MAN_ISSI) {
->              s->data[0] |= (!!s->quad_enable) << 6;
->          }
-> @@ -1484,6 +1504,14 @@ static uint32_t m25p80_transfer8(SSIPeripheral *ss, uint32_t tx)
->      return r;
->  }
->  
-> +static void m25p80_write_protect_pin_irq_handler(void *opaque, int n, int level)
-> +{
-> +    Flash *s = M25P80(opaque);
-> +    /* WP# is just a single pin. */
-> +    assert(n == 0);
-> +    s->wp_level = !!level;
-> +}
-> +
->  static void m25p80_realize(SSIPeripheral *ss, Error **errp)
->  {
->      Flash *s = M25P80(ss);
-> @@ -1515,12 +1543,18 @@ static void m25p80_realize(SSIPeripheral *ss, Error **errp)
->          s->storage = blk_blockalign(NULL, s->size);
->          memset(s->storage, 0xFF, s->size);
->      }
-> +
-> +    qdev_init_gpio_in_named(DEVICE(s),
-> +                            m25p80_write_protect_pin_irq_handler, "WP#", 1);
->  }
->  
->  static void m25p80_reset(DeviceState *d)
->  {
->      Flash *s = M25P80(d);
->  
-> +    s->wp_level = true;
-> +    s->status_register_write_disabled = false;
-> +
->      reset_memory(s);
->  }
->  
-> @@ -1587,6 +1621,18 @@ static const VMStateDescription vmstate_m25p80_aai_enable = {
->      }
->  };
->  
-> +static const VMStateDescription vmstate_m25p80_write_protect = {
-> +    .name = "m25p80/write_protect",
-> +    .version_id = 1,
-> +    .minimum_version_id = 1,
-> +    .needed = false,
-
-Above is a function, something like:
-
-static bool m25p80_wp_level_srwd_needed(void *opaque)
-{
-    Flash *s = (Flash *)opaque;
-
-    return !s->wp_level || s->status_register_write_disabled;
-}
-
-    .needed = m25p80_wp_level_srwd_needed,
-
-
-Looks good otherwise!
-
-Thanks,
-Best regards,
-Francisco
-
-> +    .fields = (VMStateField[]) {
-> +        VMSTATE_BOOL(wp_level, Flash),
-> +        VMSTATE_BOOL(status_register_write_disabled, Flash),
-> +        VMSTATE_END_OF_LIST()
-> +    }
-> +};
-> +
->  static const VMStateDescription vmstate_m25p80 = {
->      .name = "m25p80",
->      .version_id = 0,
-> @@ -1618,6 +1664,7 @@ static const VMStateDescription vmstate_m25p80 = {
->      .subsections = (const VMStateDescription * []) {
->          &vmstate_m25p80_data_read_loop,
->          &vmstate_m25p80_aai_enable,
-> +        &vmstate_m25p80_write_protect,
->          NULL
->      }
->  };
-> -- 
-> 2.30.2
-> 
-> 
+thanks
+-- PMM

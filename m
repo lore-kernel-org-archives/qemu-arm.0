@@ -1,90 +1,89 @@
-Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp2312599lft;
-        Wed, 22 Jun 2022 10:37:51 -0700 (PDT)
-X-Google-Smtp-Source: AGRyM1uwn0FFs+OdA3UgEIecZfPSB3NOfOuASbveBsP7MMo9zoPKE0IdnJfpwxkrBR9+JUd50teA
-X-Received: by 2002:a05:6214:2605:b0:470:2cf3:82f2 with SMTP id gu5-20020a056214260500b004702cf382f2mr20656383qvb.124.1655919471788;
-        Wed, 22 Jun 2022 10:37:51 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1655919471; cv=none;
+Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp2316207lft;
+        Wed, 22 Jun 2022 10:41:02 -0700 (PDT)
+X-Google-Smtp-Source: AGRyM1uJR9vdodSlBifcGFoMvEarTmTXYPaQb3rCLuiiUZgQ9f4z/YavKWpX80HLj407kP/YdNWR
+X-Received: by 2002:a05:620a:125c:b0:6a6:b264:e76a with SMTP id a28-20020a05620a125c00b006a6b264e76amr3282616qkl.188.1655919661992;
+        Wed, 22 Jun 2022 10:41:01 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1655919661; cv=none;
         d=google.com; s=arc-20160816;
-        b=kqtPdCdbD4AobughozAoQMtowQZPzOdxuqjCknUUBDoGnwUpKNq0m0RTzSuCAlfhtY
-         wwt2Gl+7RmuDRuevhLjaeglgRGcTt6kp8AW+HuWgVXna7dEJQ7RRouFWv/9B39mqGiQ9
-         jtSTTfriIRSGIjs//BQq1qYopNAMcMfMUhVHisXi08m8wLPDi9RaH1h/hyl6WWH3IibM
-         MImgRcYH4qJPl60WwGnYSFrZik3SUsQ4l9U+R/GwLHmEn+JLSgeyYvjU5WR1YXvxQ4JI
-         yZoywef17jW5vA9qqtAmD3dzaMwrSmzq5WgBSF42oF47V1w0GeKPVMYi0v6yDAZmz+e9
-         ZW4w==
+        b=DgA7C/iH5GiiDQI6c96wo8MbQugIELC2xMzyZ9MIIbhkK8MUqgZYSWYK/QH3EW+LsR
+         hvGkOvuULS1M7sxh4humEWSrmZ/gmkLzdpS11XZCofdmrKajIxdCxS+nMRkfCzSWAPJS
+         7rlEObFRQU+sP+s7bs8BYfAzGz/9LwCm5Fw4ohQHO4A3EEV9G4ApPCddtFM8x6ypG5KC
+         I3A6ZEfgl28u5b3sg86WZkhXbK1zCgODwZkQHrWp4ugmpnXpSiQMs0sHZS+SGSQwsQ/o
+         wQj8kBid6EQZw95+6nh6V6eKnqrPRsM0ViaCuoELyyvUb+s3DNQbAIW5fKAN8YQOLXug
+         m8tg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=VKWzy+bV1C88lrACDG4kQqNlh6OoE/GpXOzKfo7eGjE=;
-        b=NFsTbdXZRlYDGApK7bOSbwnKfR+fSfajb5SwlQ23C2baMwTrzk7mbhE+Qtlj0D+a8z
-         juz71yI4jq9hzItcJ+EVWQEUvU4tOk7XKKCdpEu60aSZFTFpLuN8gCZMFVCzCp4yjQVT
-         G2FNvifl6G9CuNLYKsewmvKRiSI+vISSOFsfna/iMI26jDAAA3x6u3jjp3YmtfOGrNsY
-         vOgklSrp7fONqH9uqdJPWY73Id/IDojhg+sP6y/DXLi3yS0AVrtsnV0mavoBLGZmmEPC
-         +AZgul4r++2FswpawawfIyCyicqRKS4kBlKAZErvhD39F3MRWl2f5UxUzeynwAckz0In
-         l6hQ==
+        bh=NwnfozSIGKJtE3BQEFJgDW9ymGBUWA5fZfbACDdbJPU=;
+        b=RUpN7lcGoZGTFb4aynpnRF5JnQwRyJRyMlQpi5cNdhRXs2pWnRp7pF8RVqx9MgzEPp
+         i4eXITvfSSLC2WUesZdeJwfGkV65NighFpMXLt6gu99dapXF8eRhXMuTjcwsz9gkWPDC
+         w7S54tEYX3tOSSvNQYN+coz26gDc9mLK+9gr3ghW4w4WTNtPFDoQKXlz1wKrUiNQ3Rro
+         hEdowYrMVeM5AUXeU5rorCWw0gG29EmvElINEp6t6jOr4wB/WA6evb1p7c9dRA19QQol
+         8475P4+QpL6qQvrOw2b6Ugk+Ze3TlQoxy/X5NJU6eniKMrz1okC8gLBPAHRTpxWoiahg
+         T35A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@quicinc.com header.s=qcdkim header.b=KXDM00Oy;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@quicinc.com header.s=qcdkim header.b=OsNUJP7y;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=quicinc.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id kk3-20020a056214508300b00461f143b180si13443818qvb.367.2022.06.22.10.37.51
+        by mx.google.com with ESMTPS id g8-20020a0562140ac800b0047069af9966si1590739qvi.126.2022.06.22.10.41.01
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 22 Jun 2022 10:37:51 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 22 Jun 2022 10:41:01 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@quicinc.com header.s=qcdkim header.b=KXDM00Oy;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@quicinc.com header.s=qcdkim header.b=OsNUJP7y;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=quicinc.com
-Received: from localhost ([::1]:53098 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:57356 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1o44IZ-00025g-9L
-	for alex.bennee@linaro.org; Wed, 22 Jun 2022 13:37:51 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44870)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1o44Ld-0005AN-G8
+	for alex.bennee@linaro.org; Wed, 22 Jun 2022 13:41:01 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:44962)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <quic_jaehyoo@quicinc.com>)
- id 1o44GS-0007F1-3q; Wed, 22 Jun 2022 13:35:40 -0400
-Received: from alexa-out.qualcomm.com ([129.46.98.28]:44776)
+ id 1o44Gp-0007ng-59; Wed, 22 Jun 2022 13:36:03 -0400
+Received: from alexa-out.qualcomm.com ([129.46.98.28]:51970)
  by eggs.gnu.org with esmtps (TLS1.2:RSA_AES_256_CBC_SHA1:256)
  (Exim 4.90_1) (envelope-from <quic_jaehyoo@quicinc.com>)
- id 1o44GO-0001gH-Rz; Wed, 22 Jun 2022 13:35:38 -0400
+ id 1o44Gm-0001hO-Ny; Wed, 22 Jun 2022 13:36:02 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=quicinc.com; i=@quicinc.com; q=dns/txt; s=qcdkim;
- t=1655919337; x=1687455337;
+ t=1655919360; x=1687455360;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references:mime-version:content-transfer-encoding;
- bh=VKWzy+bV1C88lrACDG4kQqNlh6OoE/GpXOzKfo7eGjE=;
- b=KXDM00Oy4LHSWXrFJb3OjgVQV1dV49uO6P7IRRD4LbHpRGVg4OFduVhR
- BHasxH2g2m7jLU403yo0V2Y2+OtN58rE6WC9vIVLOUomjGGJRprmb1cPH
- MNu02ExaU7XrdaEeaYL4B4Ix2jd7B3AZZwZRn2St1wh5rBLi+7ne6BE9w 0=;
-Received: from ironmsg08-lv.qualcomm.com ([10.47.202.152])
- by alexa-out.qualcomm.com with ESMTP; 22 Jun 2022 10:29:28 -0700
+ bh=NwnfozSIGKJtE3BQEFJgDW9ymGBUWA5fZfbACDdbJPU=;
+ b=OsNUJP7ylOiinGdvqn3iaghfJgzzkz9PTd9lFbykOkwPV3qiauRPOH5p
+ dpqJOstodv3rZpf13r/sCiRcnCds51E2vNr1dthGGHkutr7fCQONt87oN
+ 8hMBrm89vKnLEQm6+//xP7tvznJ2MpL7tF4xDD3HDYbQ0FM2t3aIWWc03 o=;
+Received: from ironmsg-lv-alpha.qualcomm.com ([10.47.202.13])
+ by alexa-out.qualcomm.com with ESMTP; 22 Jun 2022 10:29:50 -0700
 X-QCInternal: smtphost
 Received: from nasanex01c.na.qualcomm.com ([10.47.97.222])
- by ironmsg08-lv.qualcomm.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 22 Jun 2022 10:29:28 -0700
+ by ironmsg-lv-alpha.qualcomm.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 22 Jun 2022 10:29:22 -0700
 Received: from nalasex01a.na.qualcomm.com (10.47.209.196) by
  nasanex01c.na.qualcomm.com (10.47.97.222) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.986.22; Wed, 22 Jun 2022 10:29:27 -0700
+ 15.2.986.22; Wed, 22 Jun 2022 10:29:22 -0700
 Received: from maru.qualcomm.com (10.80.80.8) by nalasex01a.na.qualcomm.com
  (10.47.209.196) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.986.22; Wed, 22 Jun
- 2022 10:29:26 -0700
+ 2022 10:29:21 -0700
 From: Jae Hyun Yoo <quic_jaehyoo@quicinc.com>
 To: Peter Maydell <peter.maydell@linaro.org>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Titus Rwantare
  <titusr@google.com>, Andrew Jeffery <andrew@aj.id.au>, Joel Stanley
  <joel@jms.id.au>
 CC: Graeme Gregory <quic_ggregory@quicinc.com>, Maheswara Kurapati
- <quic_mkurapat@quicinc.com>, <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>,
- Jae Hyun Yoo <quic_jaehyoo@quicinc.com>
-Subject: [PATCH 9/9] hw/arm/aspeed: firework: add I2C MUXes for VR channels
-Date: Wed, 22 Jun 2022 10:28:30 -0700
-Message-ID: <20220622172830.101210-10-quic_jaehyoo@quicinc.com>
+ <quic_mkurapat@quicinc.com>, <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>
+Subject: [PATCH 3/9] hw/arm/aspeed: qcom-dc-scm-v1: add block backed FRU device
+Date: Wed, 22 Jun 2022 10:28:24 -0700
+Message-ID: <20220622172830.101210-4-quic_jaehyoo@quicinc.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20220622172830.101210-1-quic_jaehyoo@quicinc.com>
 References: <20220622172830.101210-1-quic_jaehyoo@quicinc.com>
@@ -104,77 +103,73 @@ X-Spam_report: (-4.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_MED=-2.3, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: mmdOqldTMRJ4
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: y8jxIDqcEOFn
 
-Add 2-level cascaded I2C MUXes for SOC VR channels into the Firework
-machine.
+From: Graeme Gregory <quic_ggregory@quicinc.com>
 
-Signed-off-by: Jae Hyun Yoo <quic_jaehyoo@quicinc.com>
+The FRU device uses the index 0 device on bus IF_NONE.
+
+-drive file=$FRU,format=raw,if=none
+
+file must match FRU size of 128k
+
+Signed-off-by: Graeme Gregory <quic_ggregory@quicinc.com>
 ---
- hw/arm/aspeed.c | 30 +++++++++++++++++++-----------
- 1 file changed, 19 insertions(+), 11 deletions(-)
+ hw/arm/aspeed.c | 22 +++++++++++++++++-----
+ 1 file changed, 17 insertions(+), 5 deletions(-)
 
 diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
-index 526f3b651a9f..866a60cf7b4e 100644
+index 785cc543d046..36d6b2c33e48 100644
 --- a/hw/arm/aspeed.c
 +++ b/hw/arm/aspeed.c
-@@ -1038,7 +1038,7 @@ static void qcom_firework_fru_init(I2CBus *bus, uint8_t addr, uint32_t rsize)
- static void qcom_dc_scm_firework_i2c_init(AspeedMachineState *bmc)
+@@ -992,17 +992,29 @@ static void fby35_i2c_init(AspeedMachineState *bmc)
+      */
+ }
+ 
++static void qcom_dc_scm_fru_init(I2CBus *bus, uint8_t addr, uint32_t rsize)
++{
++    I2CSlave *i2c_dev = i2c_slave_new("at24c-eeprom", addr);
++    DeviceState *dev = DEVICE(i2c_dev);
++    /* Use First Index for DC-SCM FRU */
++    DriveInfo *dinfo = drive_get(IF_NONE, 0, 0);
++
++    qdev_prop_set_uint32(dev, "rom-size", rsize);
++
++    if (dinfo) {
++        qdev_prop_set_drive(dev, "drive", blk_by_legacy_dinfo(dinfo));
++    }
++
++    i2c_slave_realize_and_unref(i2c_dev, bus, &error_abort);
++}
++
+ static void qcom_dc_scm_bmc_i2c_init(AspeedMachineState *bmc)
  {
      AspeedSoCState *soc = &bmc->soc;
--    I2CSlave *mux;
-+    I2CSlave *therm_mux, *cpuvr_mux;
  
-     /* Create the generic DC-SCM hardware */
-     qcom_dc_scm_bmc_i2c_init(bmc);
-@@ -1048,16 +1048,24 @@ static void qcom_dc_scm_firework_i2c_init(AspeedMachineState *bmc)
-     /* I2C4 */
-     qcom_firework_fru_init(aspeed_i2c_get_bus(&soc->i2c, 4), 0x50, 128 * 1024);
+     i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 15), "tmp105", 0x4d);
  
--    /* I2C - 8 Thermal Diodes*/
--    mux = i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 8), "pca9548",
--                                  0x70);
--    i2c_slave_create_simple(pca954x_i2c_get_bus(mux, 0), TYPE_LM75, 0x4C);
--    i2c_slave_create_simple(pca954x_i2c_get_bus(mux, 1), TYPE_LM75, 0x4C);
--    i2c_slave_create_simple(pca954x_i2c_get_bus(mux, 2), TYPE_TMP75, 0x48);
--    i2c_slave_create_simple(pca954x_i2c_get_bus(mux, 3), TYPE_TMP75, 0x48);
--    i2c_slave_create_simple(pca954x_i2c_get_bus(mux, 4), TYPE_TMP75, 0x48);
--
--    /* I2C-9 Fan Controller (MAX31785) */
-+    /* I2C7 CPUVR MUX */
-+    cpuvr_mux = i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 7),
-+                                        "pca9546", 0x70);
-+    i2c_slave_create_simple(pca954x_i2c_get_bus(cpuvr_mux, 0), "pca9548", 0x72);
-+    i2c_slave_create_simple(pca954x_i2c_get_bus(cpuvr_mux, 1), "pca9548", 0x72);
-+    i2c_slave_create_simple(pca954x_i2c_get_bus(cpuvr_mux, 2), "pca9548", 0x72);
-+    i2c_slave_create_simple(pca954x_i2c_get_bus(cpuvr_mux, 3), "pca9548", 0x72);
-+
-+    /* I2C8 Thermal Diodes*/
-+    therm_mux = i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 8),
-+                                        "pca9548", 0x70);
-+    i2c_slave_create_simple(pca954x_i2c_get_bus(therm_mux, 0), TYPE_LM75, 0x4C);
-+    i2c_slave_create_simple(pca954x_i2c_get_bus(therm_mux, 1), TYPE_LM75, 0x4C);
-+    i2c_slave_create_simple(pca954x_i2c_get_bus(therm_mux, 2), TYPE_LM75, 0x48);
-+    i2c_slave_create_simple(pca954x_i2c_get_bus(therm_mux, 3), TYPE_LM75, 0x48);
-+    i2c_slave_create_simple(pca954x_i2c_get_bus(therm_mux, 4), TYPE_LM75, 0x48);
-+
-+    /* I2C9 Fan Controller (MAX31785) */
-     i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 9), "max31785", 0x52);
-     i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 9), "max31785", 0x54);
+-    uint8_t *eeprom_buf = g_malloc0(128 * 1024);
+-    if (eeprom_buf) {
+-        smbus_eeprom_init_one(aspeed_i2c_get_bus(&soc->i2c, 15), 0x53,
+-                              eeprom_buf);
+-    }
++    qcom_dc_scm_fru_init(aspeed_i2c_get_bus(&soc->i2c, 15), 0x53, 128 * 1024);
  }
+ 
+ static bool aspeed_get_mmio_exec(Object *obj, Error **errp)
 -- 
 2.25.1
 

@@ -1,255 +1,301 @@
-Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp1770873lft;
-        Wed, 22 Jun 2022 00:39:32 -0700 (PDT)
-X-Google-Smtp-Source: AGRyM1t92/lbhj0pl+Bk9U9uC9c4SVrKN7DUs/u6BmiV5htySshaFpnslLuHN/NQWBe9GtQfubWg
-X-Received: by 2002:a05:6214:d0d:b0:464:55fd:dea3 with SMTP id 13-20020a0562140d0d00b0046455fddea3mr25851173qvh.37.1655883571886;
-        Wed, 22 Jun 2022 00:39:31 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1655883571; cv=none;
+Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp1864354lft;
+        Wed, 22 Jun 2022 02:46:41 -0700 (PDT)
+X-Google-Smtp-Source: AGRyM1twQ5wRKPvvKMIzwE1cNnrgRp1XeI4orWVF9Oivr+MxyTspU+B5nB9O/Z7Jb78lERckA1ol
+X-Received: by 2002:ac8:5b88:0:b0:305:340b:6f14 with SMTP id a8-20020ac85b88000000b00305340b6f14mr2055011qta.344.1655891201419;
+        Wed, 22 Jun 2022 02:46:41 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1655891201; cv=none;
         d=google.com; s=arc-20160816;
-        b=rI8BmYnpwBZdtFmEaGCF0t1OHkgz4JKRxC5RupbPHk6XZlY4AqsaqmxXr9h70TBWuP
-         JuDRdjxD7qBkFLi1K/zFHOWE3OYWbnqNEwJNljl8I6AzqTs1S+XvodDc2M+NTAsroziM
-         PI6CVcBGZIRtpRKy91cW/joS8MoAAzCAlb9G++yCi96PGKurLjgYwG0IAXc5y3VL3/0w
-         5tURofjznJ93J76lizrmLxLA2q/RLUtG3XAxuAJpfOOrM1NqOsQE1R+h9lkRKETjWh74
-         KoriakxG6SH86cZkdQjolTUwbULscHk/RNIC682ovXhwZgTmSK+J1TQ3n+uchiiI9V7U
-         n/qg==
+        b=ixmW1irmGPi03PcGSsSj1FUxsnAiuFJnyi/tOCmoP13DajyzPQeCKsgzeAzvPJ33Dd
+         dMOjlpownfRJVFjrsGf5UaUn9hI2CyMDa3MO8wixESjR7ED0sWvgtp6SP0BF4IPmO4Jh
+         xWTOEqDuNc9arehLAnFY0SGmPakKE5TjDnPTjGbIGKKhWYavodAbeFIPuh/N5aoRvuHE
+         ppcmkrKtizU/a3wRfd/kfX2o7NeQukT8+hq/n24PQBh3jxukek2rMEuyg0c/tbFs9+cN
+         e7KFg7F4EYcUSDN2pivgd+03aFQl0espgtmBaAwu55+yQs2rZEhsOyQMmm0lzoSng36B
+         gRxQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:cc:to:content-language:subject
-         :user-agent:mime-version:date:message-id;
-        bh=CxLmoh8M2AmZ4vHfMb4KVCewb1yix6qi1WhqQiZrt34=;
-        b=yy1G7Dj7VSF9+qCUKejHWEqHhdglKPQQppCHmXbKVZs8RvMFsx3j04yuP8vFO+UzUB
-         UZ7bixv7Dqrs5yy6Xbk+0fy2ewOv3fsZmNiM+n05zYZOw01Uhey1wINS07EKWMmDDBgf
-         C71LMJ3cc4+FMJ9j8WL4HIPR0y5Ut6weNioEZZFXpz24XiwDd/Sn+Qr0xSomxaHFoSCd
-         XCBUZkYJwYUCR7lOlfawviqFSh94mTP4BYh2wEovqA55xCNSNHtUNsy/Hj6YaOS5yi8M
-         kY3ldrtNgRb5rsSpIPrJfozrWFn/3ivxsAGK5DviGK4IiJXBviwfa90zCr92wYBA1gFh
-         oKXg==
+         :list-unsubscribe:list-id:precedence:user-agent:in-reply-to
+         :content-disposition:mime-version:references:message-id:subject:cc
+         :to:from:date:dkim-signature;
+        bh=Zg2VII0Ib03SkUSyEhOVbM/vzsfVRr82EZ2uotI1NXo=;
+        b=uC6kXXHsDQsNDwRWrqgTx8+TMlX9V/H4DKt9ubHyHbJoXQnnP/b52pK1orTOg07h47
+         iOuhgs6BnygiDnyEypG1jSU5RK02poVy34ViZs8fnM4fKlKW8LbZHhRvbdByGKv6I0KG
+         R37Rxm0xXk94Uh6P/CiceM31EOyexjt0OV+AUgW56jTcpe9SbGVAzMN4t2ugYz5Js7gm
+         50wvCq3JBzZpa95msvkf7OjjId4yk1mGmjgDvhj8cNRSifDFh1UxKNdaecqo+dQXihk2
+         GsprlsSgAL26v9z+0n/P6FnXJBtDYVrKzSQwnwH/Taf0igxy+ePIJ5TANv2w+qJ21UTM
+         do/A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=DktjBZxW;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id z3-20020a0cd783000000b0046e849a8803si8848696qvi.480.2022.06.22.00.39.31
+        by mx.google.com with ESMTPS id f42-20020a05622a1a2a00b00304433128b0si11892198qtb.280.2022.06.22.02.46.41
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 22 Jun 2022 00:39:31 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 22 Jun 2022 02:46:41 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:41154 helo=lists1p.gnu.org)
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=DktjBZxW;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:52294 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1o3uxX-0008L3-9J
-	for alex.bennee@linaro.org; Wed, 22 Jun 2022 03:39:31 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34688)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1o3wwa-0001FH-RP
+	for alex.bennee@linaro.org; Wed, 22 Jun 2022 05:46:40 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37382)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1o3uw8-0007VM-C4
- for qemu-devel@nongnu.org; Wed, 22 Jun 2022 03:38:04 -0400
-Received: from 3.mo552.mail-out.ovh.net ([178.33.254.192]:60339)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1o3uw4-0008S2-Ff
- for qemu-devel@nongnu.org; Wed, 22 Jun 2022 03:38:03 -0400
-Received: from mxplan5.mail.ovh.net (unknown [10.109.156.21])
- by mo552.mail-out.ovh.net (Postfix) with ESMTPS id 5144921E8D;
- Wed, 22 Jun 2022 07:37:55 +0000 (UTC)
-Received: from kaod.org (37.59.142.104) by DAG4EX1.mxp5.local (172.16.2.31)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.9; Wed, 22 Jun
- 2022 09:37:54 +0200
-Authentication-Results: garm.ovh; auth=pass
- (GARM-104R005917c58df-bd3a-4e90-b8dd-1161851b7585,
- 2DC937403B1024A35EC30128D5FB04FD4A6B2553) smtp.auth=clg@kaod.org
-X-OVh-ClientIp: 82.64.250.170
-Message-ID: <e5cdcb1d-fdf7-6a82-959e-7dcb28145544@kaod.org>
-Date: Wed, 22 Jun 2022 09:37:49 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.9.0
-Subject: Re: [PATCH 1/1] hw: m25p80: fixing individual test failure when tests
- are running in isolation
-Content-Language: en-US
+ (Exim 4.90_1) (envelope-from <frasse.iglesias@gmail.com>)
+ id 1o3wvn-0001EP-4R; Wed, 22 Jun 2022 05:45:51 -0400
+Received: from mail-lf1-x132.google.com ([2a00:1450:4864:20::132]:33632)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <frasse.iglesias@gmail.com>)
+ id 1o3wvk-0003C9-TR; Wed, 22 Jun 2022 05:45:50 -0400
+Received: by mail-lf1-x132.google.com with SMTP id c2so26860299lfk.0;
+ Wed, 22 Jun 2022 02:45:47 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to:user-agent;
+ bh=Zg2VII0Ib03SkUSyEhOVbM/vzsfVRr82EZ2uotI1NXo=;
+ b=DktjBZxWElfAb1JCFUsH2qvNVVy4eV4hmzstMDXsbGf2y67ddLdZQgTo4D0mWN7490
+ v9Eiv4rrb9sbCXlvhNET/xI22wyUShMRqFjdaFRmhYyBkp63FAb1U3IwwLdPu0DWdZZQ
+ z+Fh25tlZGJrufLkU7ZByikVF+C9r0MfNm2XWanYg33c0PAFxoXYIrBoCNmEZapO9APW
+ kbMQWZ2ACpTXE7ZlW5wJvOXfQ5tiT66LcxAtlnRaw81CsbduxmRXed2xznbtxRLJneof
+ 3qi8dFiijH1meow+95fzguorOVux/qzeIidtU25WN9rTw7jTRwnx0NGsvBIzUWcRZPOX
+ mXRA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to:user-agent;
+ bh=Zg2VII0Ib03SkUSyEhOVbM/vzsfVRr82EZ2uotI1NXo=;
+ b=DBG/gKrULpa14+KgM4iAnCxZNS9trd2iDWepipWrqbse/LaWKAsxuoW/k0T2JdMXtu
+ Lgu/tHRkDq7LRb9zkEOMdnHclhMqhvMHVCzM06CMZAZaVuDE9DponaJoWcqcWm04DgzS
+ 2J39lEkS7OG2kEdo90Be5CbGqAnMUIP420Og19idAphI8Wz1I3H1tb3esqBrt6k/HJEc
+ qhqKKPa+LT34poEAOI6GG6wVHpSDEYeZ6YC8XZUZx9cuhxJftCMXyMPzYD5GdcipLi3o
+ PuFZmjQEbffOGCuHRCnQRmjx0gGoHtLx8QmTZWw68iYJ+aOovoD5cX/jytF51t+1gPKM
+ E3Kg==
+X-Gm-Message-State: AJIora9rD74lV9ex6Jgi8leEtCX21sa+6Sclg+otsf1+LvVYmRv+IAik
+ Y7b8VLrLgFROLM8Tz59bZEo=
+X-Received: by 2002:a05:6512:1195:b0:479:77d9:ba7d with SMTP id
+ g21-20020a056512119500b0047977d9ba7dmr1591246lfr.307.1655891145728; 
+ Wed, 22 Jun 2022 02:45:45 -0700 (PDT)
+Received: from fralle-msi (31-208-27-151.cust.bredband2.com. [31.208.27.151])
+ by smtp.gmail.com with ESMTPSA id
+ p3-20020ac24ec3000000b0047f76a935a5sm940997lfr.137.2022.06.22.02.45.44
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 22 Jun 2022 02:45:44 -0700 (PDT)
+Date: Wed, 22 Jun 2022 11:45:43 +0200
+From: Francisco Iglesias <frasse.iglesias@gmail.com>
 To: Iris Chen <irischenlj@fb.com>
-CC: <pdel@fb.com>, <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>,
- <patrick@stwcx.xyz>, <alistair@alistair23.me>, <kwolf@redhat.com>,
- <hreitz@redhat.com>, <peter.maydell@linaro.org>, <andrew@aj.id.au>,
- <joel@jms.id.au>, <thuth@redhat.com>, <lvivier@redhat.com>,
- <pbonzini@redhat.com>, <qemu-block@nongnu.org>, <dz4list@gmail.com>
-References: <20220617230903.2542638-1-irischenlj@fb.com>
-From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
-In-Reply-To: <20220617230903.2542638-1-irischenlj@fb.com>
-Content-Type: text/plain; charset="UTF-8"; format=flowed
-Content-Transfer-Encoding: 8bit
-X-Originating-IP: [37.59.142.104]
-X-ClientProxiedBy: DAG9EX1.mxp5.local (172.16.2.81) To DAG4EX1.mxp5.local
- (172.16.2.31)
-X-Ovh-Tracer-GUID: 1a22849a-2274-451e-8666-13d1392f9454
-X-Ovh-Tracer-Id: 14326794841229396868
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: 0
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvfedrudefgedguddvfecutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemucehtddtnecunecujfgurhepkfffgggfuffvvehfhfgjtgfgihesthekredttdefjeenucfhrhhomhepveorughrihgtpgfnvggpifhorghtvghruceotghlgheskhgrohgurdhorhhgqeenucggtffrrghtthgvrhhnpeekteejtdelkeejvdevffduhfetteelieefgeefffeugffhfeekheffueefledujeenucfkpheptddrtddrtddrtddpfeejrdehledrudegvddruddtgeenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhhouggvpehsmhhtphhouhhtpdhhvghlohepmhigphhlrghnhedrmhgrihhlrdhovhhhrdhnvghtpdhinhgvtheptddrtddrtddrtddpmhgrihhlfhhrohhmpegtlhhgsehkrghougdrohhrghdpnhgspghrtghpthhtohepuddprhgtphhtthhopeguiieglhhishhtsehgmhgrihhlrdgtohhmpdfovfetjfhoshhtpehmohehhedv
-Received-SPF: pass client-ip=178.33.254.192; envelope-from=clg@kaod.org;
- helo=3.mo552.mail-out.ovh.net
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+Cc: pdel@fb.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org, clg@kaod.org,
+ patrick@stwcx.xyz, alistair@alistair23.me, kwolf@redhat.com,
+ hreitz@redhat.com, peter.maydell@linaro.org, andrew@aj.id.au,
+ joel@jms.id.au, thuth@redhat.com, lvivier@redhat.com,
+ pbonzini@redhat.com, qemu-block@nongnu.org, dz4list@gmail.com,
+ Iris Chen <irischenlj@gmail.com>
+Subject: Re: [PATCH v4] hw: m25p80: add WP# pin and SRWD bit for write
+ protection
+Message-ID: <20220622094542.GE10629@fralle-msi>
+References: <20220621202427.2680413-1-irischenlj@fb.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20220621202427.2680413-1-irischenlj@fb.com>
+User-Agent: Mutt/1.10.1 (2018-07-13)
+Received-SPF: pass client-ip=2a00:1450:4864:20::132;
+ envelope-from=frasse.iglesias@gmail.com; helo=mail-lf1-x132.google.com
+X-Spam_score_int: -1020
+X-Spam_score: -102.1
+X-Spam_bar: ---------------------------------------------------
+X-Spam_report: (-102.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01, USER_IN_WELCOMELIST=-0.01,
+ USER_IN_WHITELIST=-100 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: jnUhSDkCO6HZ
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: kZuynPgUTaHx
 
-On 6/18/22 01:09, Iris Chen wrote:
-> Signed-off-by: Iris Chen <irischenlj@fb.com>
+On [2022 Jun 21] Tue 13:24:27, Iris Chen wrote:
+> From: Iris Chen <irischenlj@gmail.com>
+> 
+> Signed-off-by: Iris Chen <irischenlj@gmail.com>
 
-Reviewed-by: Cédric Le Goater <clg@kaod.org>
-
-Thanks,
-
-C.
+Reviewed-by: Francisco Iglesias <frasse.iglesias@gmail.com>
 
 > ---
->   tests/qtest/aspeed_smc-test.c | 74 +++++++++++++++++++++++++++++------
->   1 file changed, 63 insertions(+), 11 deletions(-)
+> Fixed .needed for subsection and suggestions from Francisco 
 > 
-> diff --git a/tests/qtest/aspeed_smc-test.c b/tests/qtest/aspeed_smc-test.c
-> index ec233315e6..b1e682db65 100644
-> --- a/tests/qtest/aspeed_smc-test.c
-> +++ b/tests/qtest/aspeed_smc-test.c
-> @@ -135,6 +135,9 @@ static void flash_reset(void)
->       spi_ctrl_start_user();
->       writeb(ASPEED_FLASH_BASE, RESET_ENABLE);
->       writeb(ASPEED_FLASH_BASE, RESET_MEMORY);
-> +    writeb(ASPEED_FLASH_BASE, WREN);
-> +    writeb(ASPEED_FLASH_BASE, BULK_ERASE);
-> +    writeb(ASPEED_FLASH_BASE, WRDI);
->       spi_ctrl_stop_user();
->   
->       spi_conf_remove(CONF_ENABLE_W0);
-> @@ -195,21 +198,41 @@ static void test_erase_sector(void)
->   
->       spi_conf(CONF_ENABLE_W0);
->   
-> +    /*
-> +     * Previous page should be full of 0xffs after backend is
-> +     * initialized
-> +     */
-> +    read_page(some_page_addr - FLASH_PAGE_SIZE, page);
-> +    for (i = 0; i < FLASH_PAGE_SIZE / 4; i++) {
-> +        g_assert_cmphex(page[i], ==, 0xffffffff);
+>  hw/block/m25p80.c | 82 ++++++++++++++++++++++++++++++++++++++---------
+>  1 file changed, 67 insertions(+), 15 deletions(-)
+> 
+> diff --git a/hw/block/m25p80.c b/hw/block/m25p80.c
+> index 81ba3da4df..3045dda53b 100644
+> --- a/hw/block/m25p80.c
+> +++ b/hw/block/m25p80.c
+> @@ -472,11 +472,13 @@ struct Flash {
+>      uint8_t spansion_cr2v;
+>      uint8_t spansion_cr3v;
+>      uint8_t spansion_cr4v;
+> +    bool wp_level;
+>      bool write_enable;
+>      bool four_bytes_address_mode;
+>      bool reset_enable;
+>      bool quad_enable;
+>      bool aai_enable;
+> +    bool status_register_write_disabled;
+>      uint8_t ear;
+>  
+>      int64_t dirty_page;
+> @@ -723,6 +725,8 @@ static void complete_collecting_data(Flash *s)
+>          flash_erase(s, s->cur_addr, s->cmd_in_progress);
+>          break;
+>      case WRSR:
+> +        s->status_register_write_disabled = extract32(s->data[0], 7, 1);
+> +
+>          switch (get_man(s)) {
+>          case MAN_SPANSION:
+>              s->quad_enable = !!(s->data[1] & 0x02);
+> @@ -1165,22 +1169,34 @@ static void decode_new_cmd(Flash *s, uint32_t value)
+>          break;
+>  
+>      case WRSR:
+> -        if (s->write_enable) {
+> -            switch (get_man(s)) {
+> -            case MAN_SPANSION:
+> -                s->needed_bytes = 2;
+> -                s->state = STATE_COLLECTING_DATA;
+> -                break;
+> -            case MAN_MACRONIX:
+> -                s->needed_bytes = 2;
+> -                s->state = STATE_COLLECTING_VAR_LEN_DATA;
+> -                break;
+> -            default:
+> -                s->needed_bytes = 1;
+> -                s->state = STATE_COLLECTING_DATA;
+> -            }
+> -            s->pos = 0;
+> +        /*
+> +         * If WP# is low and status_register_write_disabled is high,
+> +         * status register writes are disabled.
+> +         * This is also called "hardware protected mode" (HPM). All other
+> +         * combinations of the two states are called "software protected mode"
+> +         * (SPM), and status register writes are permitted.
+> +         */
+> +        if ((s->wp_level == 0 && s->status_register_write_disabled)
+> +            || !s->write_enable) {
+> +            qemu_log_mask(LOG_GUEST_ERROR,
+> +                          "M25P80: Status register write is disabled!\n");
+> +            break;
+> +        }
+> +
+> +        switch (get_man(s)) {
+> +        case MAN_SPANSION:
+> +            s->needed_bytes = 2;
+> +            s->state = STATE_COLLECTING_DATA;
+> +            break;
+> +        case MAN_MACRONIX:
+> +            s->needed_bytes = 2;
+> +            s->state = STATE_COLLECTING_VAR_LEN_DATA;
+> +            break;
+> +        default:
+> +            s->needed_bytes = 1;
+> +            s->state = STATE_COLLECTING_DATA;
+>          }
+> +        s->pos = 0;
+>          break;
+>  
+>      case WRDI:
+> @@ -1195,6 +1211,8 @@ static void decode_new_cmd(Flash *s, uint32_t value)
+>  
+>      case RDSR:
+>          s->data[0] = (!!s->write_enable) << 1;
+> +        s->data[0] |= (!!s->status_register_write_disabled) << 7;
+> +
+>          if (get_man(s) == MAN_MACRONIX || get_man(s) == MAN_ISSI) {
+>              s->data[0] |= (!!s->quad_enable) << 6;
+>          }
+> @@ -1484,6 +1502,14 @@ static uint32_t m25p80_transfer8(SSIPeripheral *ss, uint32_t tx)
+>      return r;
+>  }
+>  
+> +static void m25p80_write_protect_pin_irq_handler(void *opaque, int n, int level)
+> +{
+> +    Flash *s = M25P80(opaque);
+> +    /* WP# is just a single pin. */
+> +    assert(n == 0);
+> +    s->wp_level = !!level;
+> +}
+> +
+>  static void m25p80_realize(SSIPeripheral *ss, Error **errp)
+>  {
+>      Flash *s = M25P80(ss);
+> @@ -1515,12 +1541,18 @@ static void m25p80_realize(SSIPeripheral *ss, Error **errp)
+>          s->storage = blk_blockalign(NULL, s->size);
+>          memset(s->storage, 0xFF, s->size);
+>      }
+> +
+> +    qdev_init_gpio_in_named(DEVICE(s),
+> +                            m25p80_write_protect_pin_irq_handler, "WP#", 1);
+>  }
+>  
+>  static void m25p80_reset(DeviceState *d)
+>  {
+>      Flash *s = M25P80(d);
+>  
+> +    s->wp_level = true;
+> +    s->status_register_write_disabled = false;
+> +
+>      reset_memory(s);
+>  }
+>  
+> @@ -1587,6 +1619,25 @@ static const VMStateDescription vmstate_m25p80_aai_enable = {
+>      }
+>  };
+>  
+> +static bool m25p80_wp_level_srwd_needed(void *opaque)
+> +{
+> +    Flash *s = (Flash *)opaque;
+> +
+> +    return !s->wp_level || s->status_register_write_disabled;
+> +}
+> +
+> +static const VMStateDescription vmstate_m25p80_write_protect = {
+> +    .name = "m25p80/write_protect",
+> +    .version_id = 1,
+> +    .minimum_version_id = 1,
+> +    .needed = m25p80_wp_level_srwd_needed,
+> +    .fields = (VMStateField[]) {
+> +        VMSTATE_BOOL(wp_level, Flash),
+> +        VMSTATE_BOOL(status_register_write_disabled, Flash),
+> +        VMSTATE_END_OF_LIST()
 > +    }
+> +};
 > +
->       spi_ctrl_start_user();
-> -    writeb(ASPEED_FLASH_BASE, WREN);
->       writeb(ASPEED_FLASH_BASE, EN_4BYTE_ADDR);
-> -    writeb(ASPEED_FLASH_BASE, ERASE_SECTOR);
-> +    writeb(ASPEED_FLASH_BASE, WREN);
-> +    writeb(ASPEED_FLASH_BASE, PP);
->       writel(ASPEED_FLASH_BASE, make_be32(some_page_addr));
-> +
-> +    /* Fill the page with its own addresses */
-> +    for (i = 0; i < FLASH_PAGE_SIZE / 4; i++) {
-> +        writel(ASPEED_FLASH_BASE, make_be32(some_page_addr + i * 4));
-> +    }
->       spi_ctrl_stop_user();
->   
-> -    /* Previous page should be full of zeroes as backend is not
-> -     * initialized */
-> -    read_page(some_page_addr - FLASH_PAGE_SIZE, page);
-> +    /* Check the page is correctly written */
-> +    read_page(some_page_addr, page);
->       for (i = 0; i < FLASH_PAGE_SIZE / 4; i++) {
-> -        g_assert_cmphex(page[i], ==, 0x0);
-> +        g_assert_cmphex(page[i], ==, some_page_addr + i * 4);
->       }
->   
-> -    /* But this one was erased */
-> +    spi_ctrl_start_user();
-> +    writeb(ASPEED_FLASH_BASE, WREN);
-> +    writeb(ASPEED_FLASH_BASE, EN_4BYTE_ADDR);
-> +    writeb(ASPEED_FLASH_BASE, ERASE_SECTOR);
-> +    writel(ASPEED_FLASH_BASE, make_be32(some_page_addr));
-> +    spi_ctrl_stop_user();
-> +
-> +    /* Check the page is erased */
->       read_page(some_page_addr, page);
->       for (i = 0; i < FLASH_PAGE_SIZE / 4; i++) {
->           g_assert_cmphex(page[i], ==, 0xffffffff);
-> @@ -226,11 +249,31 @@ static void test_erase_all(void)
->   
->       spi_conf(CONF_ENABLE_W0);
->   
-> -    /* Check some random page. Should be full of zeroes as backend is
-> -     * not initialized */
-> +    /*
-> +     * Previous page should be full of 0xffs after backend is
-> +     * initialized
-> +     */
-> +    read_page(some_page_addr - FLASH_PAGE_SIZE, page);
-> +    for (i = 0; i < FLASH_PAGE_SIZE / 4; i++) {
-> +        g_assert_cmphex(page[i], ==, 0xffffffff);
-> +    }
-> +
-> +    spi_ctrl_start_user();
-> +    writeb(ASPEED_FLASH_BASE, EN_4BYTE_ADDR);
-> +    writeb(ASPEED_FLASH_BASE, WREN);
-> +    writeb(ASPEED_FLASH_BASE, PP);
-> +    writel(ASPEED_FLASH_BASE, make_be32(some_page_addr));
-> +
-> +    /* Fill the page with its own addresses */
-> +    for (i = 0; i < FLASH_PAGE_SIZE / 4; i++) {
-> +        writel(ASPEED_FLASH_BASE, make_be32(some_page_addr + i * 4));
-> +    }
-> +    spi_ctrl_stop_user();
-> +
-> +    /* Check the page is correctly written */
->       read_page(some_page_addr, page);
->       for (i = 0; i < FLASH_PAGE_SIZE / 4; i++) {
-> -        g_assert_cmphex(page[i], ==, 0x0);
-> +        g_assert_cmphex(page[i], ==, some_page_addr + i * 4);
->       }
->   
->       spi_ctrl_start_user();
-> @@ -238,7 +281,7 @@ static void test_erase_all(void)
->       writeb(ASPEED_FLASH_BASE, BULK_ERASE);
->       spi_ctrl_stop_user();
->   
-> -    /* Recheck that some random page */
-> +    /* Check the page is erased */
->       read_page(some_page_addr, page);
->       for (i = 0; i < FLASH_PAGE_SIZE / 4; i++) {
->           g_assert_cmphex(page[i], ==, 0xffffffff);
-> @@ -299,6 +342,14 @@ static void test_read_page_mem(void)
->       spi_conf(CONF_ENABLE_W0);
->       spi_ctrl_start_user();
->       writeb(ASPEED_FLASH_BASE, EN_4BYTE_ADDR);
-> +    writeb(ASPEED_FLASH_BASE, WREN);
-> +    writeb(ASPEED_FLASH_BASE, PP);
-> +    writel(ASPEED_FLASH_BASE, make_be32(my_page_addr));
-> +
-> +    /* Fill the page with its own addresses */
-> +    for (i = 0; i < FLASH_PAGE_SIZE / 4; i++) {
-> +        writel(ASPEED_FLASH_BASE, make_be32(my_page_addr + i * 4));
-> +    }
->       spi_ctrl_stop_user();
->       spi_conf_remove(CONF_ENABLE_W0);
->   
-> @@ -417,6 +468,7 @@ int main(int argc, char **argv)
->       qtest_add_func("/ast2400/smc/write_page_mem", test_write_page_mem);
->       qtest_add_func("/ast2400/smc/read_status_reg", test_read_status_reg);
->   
-> +    flash_reset();
->       ret = g_test_run();
->   
->       qtest_quit(global_qtest);
-
+>  static const VMStateDescription vmstate_m25p80 = {
+>      .name = "m25p80",
+>      .version_id = 0,
+> @@ -1618,6 +1669,7 @@ static const VMStateDescription vmstate_m25p80 = {
+>      .subsections = (const VMStateDescription * []) {
+>          &vmstate_m25p80_data_read_loop,
+>          &vmstate_m25p80_aai_enable,
+> +        &vmstate_m25p80_write_protect,
+>          NULL
+>      }
+>  };
+> -- 
+> 2.30.2
+> 
+> 

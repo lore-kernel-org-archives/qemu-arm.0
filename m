@@ -1,117 +1,86 @@
-Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp1864354lft;
-        Wed, 22 Jun 2022 02:46:41 -0700 (PDT)
-X-Google-Smtp-Source: AGRyM1twQ5wRKPvvKMIzwE1cNnrgRp1XeI4orWVF9Oivr+MxyTspU+B5nB9O/Z7Jb78lERckA1ol
-X-Received: by 2002:ac8:5b88:0:b0:305:340b:6f14 with SMTP id a8-20020ac85b88000000b00305340b6f14mr2055011qta.344.1655891201419;
-        Wed, 22 Jun 2022 02:46:41 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1655891201; cv=none;
+Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp1872015lft;
+        Wed, 22 Jun 2022 02:56:02 -0700 (PDT)
+X-Google-Smtp-Source: AGRyM1sJw/Xlwju9sy4bPC4lyGkwNNyZ2+lhYmpV0ad3e8HIIa1OrgcCMnuLMLKyj604gXZ3mc5K
+X-Received: by 2002:ac8:7f8f:0:b0:304:ff91:2bdd with SMTP id z15-20020ac87f8f000000b00304ff912bddmr2047780qtj.174.1655891762099;
+        Wed, 22 Jun 2022 02:56:02 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1655891762; cv=none;
         d=google.com; s=arc-20160816;
-        b=ixmW1irmGPi03PcGSsSj1FUxsnAiuFJnyi/tOCmoP13DajyzPQeCKsgzeAzvPJ33Dd
-         dMOjlpownfRJVFjrsGf5UaUn9hI2CyMDa3MO8wixESjR7ED0sWvgtp6SP0BF4IPmO4Jh
-         xWTOEqDuNc9arehLAnFY0SGmPakKE5TjDnPTjGbIGKKhWYavodAbeFIPuh/N5aoRvuHE
-         ppcmkrKtizU/a3wRfd/kfX2o7NeQukT8+hq/n24PQBh3jxukek2rMEuyg0c/tbFs9+cN
-         e7KFg7F4EYcUSDN2pivgd+03aFQl0espgtmBaAwu55+yQs2rZEhsOyQMmm0lzoSng36B
-         gRxQ==
+        b=iSTTjaKdtenkDHiKsKFjy2LAGfeY6Fprs2X9hf70rbPeiov4SS1BGB1JVfJWVIneCE
+         YB16ldqlLCKb8UE7HdJ8dnu7OUEBycOUmzWIq9VrVA26HxmZdj1XYW8xT3ObeA4V/RSt
+         N9+HNoWjO5k2PfOajnNYpgBeRRr4PcfDkSWiDI5LHe+NGsxhyLPdJTFyT2Yn1ZCaDsYC
+         faAvx6wDaLiS95Fu7jrDXFcxpJ1r5qE3d2ybyn/xKCm2p8wSGXq1INoC0Rzd85ot7Jan
+         QfRkwlvWjO4s+cGDEUgpWkZxpef6u6+6P32D/PzcjLPjBX6UB3UxV/NBYOBGd9kQJFVV
+         rBvA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:user-agent:in-reply-to
-         :content-disposition:mime-version:references:message-id:subject:cc
-         :to:from:date:dkim-signature;
-        bh=Zg2VII0Ib03SkUSyEhOVbM/vzsfVRr82EZ2uotI1NXo=;
-        b=uC6kXXHsDQsNDwRWrqgTx8+TMlX9V/H4DKt9ubHyHbJoXQnnP/b52pK1orTOg07h47
-         iOuhgs6BnygiDnyEypG1jSU5RK02poVy34ViZs8fnM4fKlKW8LbZHhRvbdByGKv6I0KG
-         R37Rxm0xXk94Uh6P/CiceM31EOyexjt0OV+AUgW56jTcpe9SbGVAzMN4t2ugYz5Js7gm
-         50wvCq3JBzZpa95msvkf7OjjId4yk1mGmjgDvhj8cNRSifDFh1UxKNdaecqo+dQXihk2
-         GsprlsSgAL26v9z+0n/P6FnXJBtDYVrKzSQwnwH/Taf0igxy+ePIJ5TANv2w+qJ21UTM
-         do/A==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from;
+        bh=nlnTCjz3SezvPlioP0ewZdYN6kdI99OCyJwaAdlJB6U=;
+        b=nCuHVDPmB1ZTiogLV6PrZr1LJLynPTqMPmx3mHB+Bq3GEiUN8mhiIcrwBL6vydOYC2
+         ZC2UaNlBtPKTn1EYEKXJrCCE56TzB8MOqogG4vwaUogMXHEp0qRERu798OV/39nFtvCB
+         Z4FkcYFaVnHcfCF5nFAbNb2cw/RGDoJzJAxxg9Je4SySw32TDe+vubDr8sWgC4jfe1V/
+         RgoMm0jJnKlQT8ADbE+R9SJ6+x5Y2RVqhqTjgj5gZd74ysb25iRq8JM88A3gtKbr9MRC
+         GZb4RbdBuLhZcEEeSpisA0aR725studoctDLHzO4CnLOgXdpgVbJMC1MZiUYtb5nnfKc
+         jK4g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=DktjBZxW;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id f42-20020a05622a1a2a00b00304433128b0si11892198qtb.280.2022.06.22.02.46.41
+        by mx.google.com with ESMTPS id n16-20020a05622a11d000b003050147740csi11527917qtk.348.2022.06.22.02.56.01
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 22 Jun 2022 02:46:41 -0700 (PDT)
+        Wed, 22 Jun 2022 02:56:02 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=DktjBZxW;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:52294 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:58004 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1o3wwa-0001FH-RP
-	for alex.bennee@linaro.org; Wed, 22 Jun 2022 05:46:40 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37382)
+	id 1o3x5d-0005jq-HA
+	for alex.bennee@linaro.org; Wed, 22 Jun 2022 05:56:01 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:39276)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <frasse.iglesias@gmail.com>)
- id 1o3wvn-0001EP-4R; Wed, 22 Jun 2022 05:45:51 -0400
-Received: from mail-lf1-x132.google.com ([2a00:1450:4864:20::132]:33632)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <frasse.iglesias@gmail.com>)
- id 1o3wvk-0003C9-TR; Wed, 22 Jun 2022 05:45:50 -0400
-Received: by mail-lf1-x132.google.com with SMTP id c2so26860299lfk.0;
- Wed, 22 Jun 2022 02:45:47 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to:user-agent;
- bh=Zg2VII0Ib03SkUSyEhOVbM/vzsfVRr82EZ2uotI1NXo=;
- b=DktjBZxWElfAb1JCFUsH2qvNVVy4eV4hmzstMDXsbGf2y67ddLdZQgTo4D0mWN7490
- v9Eiv4rrb9sbCXlvhNET/xI22wyUShMRqFjdaFRmhYyBkp63FAb1U3IwwLdPu0DWdZZQ
- z+Fh25tlZGJrufLkU7ZByikVF+C9r0MfNm2XWanYg33c0PAFxoXYIrBoCNmEZapO9APW
- kbMQWZ2ACpTXE7ZlW5wJvOXfQ5tiT66LcxAtlnRaw81CsbduxmRXed2xznbtxRLJneof
- 3qi8dFiijH1meow+95fzguorOVux/qzeIidtU25WN9rTw7jTRwnx0NGsvBIzUWcRZPOX
- mXRA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to:user-agent;
- bh=Zg2VII0Ib03SkUSyEhOVbM/vzsfVRr82EZ2uotI1NXo=;
- b=DBG/gKrULpa14+KgM4iAnCxZNS9trd2iDWepipWrqbse/LaWKAsxuoW/k0T2JdMXtu
- Lgu/tHRkDq7LRb9zkEOMdnHclhMqhvMHVCzM06CMZAZaVuDE9DponaJoWcqcWm04DgzS
- 2J39lEkS7OG2kEdo90Be5CbGqAnMUIP420Og19idAphI8Wz1I3H1tb3esqBrt6k/HJEc
- qhqKKPa+LT34poEAOI6GG6wVHpSDEYeZ6YC8XZUZx9cuhxJftCMXyMPzYD5GdcipLi3o
- PuFZmjQEbffOGCuHRCnQRmjx0gGoHtLx8QmTZWw68iYJ+aOovoD5cX/jytF51t+1gPKM
- E3Kg==
-X-Gm-Message-State: AJIora9rD74lV9ex6Jgi8leEtCX21sa+6Sclg+otsf1+LvVYmRv+IAik
- Y7b8VLrLgFROLM8Tz59bZEo=
-X-Received: by 2002:a05:6512:1195:b0:479:77d9:ba7d with SMTP id
- g21-20020a056512119500b0047977d9ba7dmr1591246lfr.307.1655891145728; 
- Wed, 22 Jun 2022 02:45:45 -0700 (PDT)
-Received: from fralle-msi (31-208-27-151.cust.bredband2.com. [31.208.27.151])
- by smtp.gmail.com with ESMTPSA id
- p3-20020ac24ec3000000b0047f76a935a5sm940997lfr.137.2022.06.22.02.45.44
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 22 Jun 2022 02:45:44 -0700 (PDT)
-Date: Wed, 22 Jun 2022 11:45:43 +0200
-From: Francisco Iglesias <frasse.iglesias@gmail.com>
-To: Iris Chen <irischenlj@fb.com>
-Cc: pdel@fb.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org, clg@kaod.org,
- patrick@stwcx.xyz, alistair@alistair23.me, kwolf@redhat.com,
- hreitz@redhat.com, peter.maydell@linaro.org, andrew@aj.id.au,
- joel@jms.id.au, thuth@redhat.com, lvivier@redhat.com,
- pbonzini@redhat.com, qemu-block@nongnu.org, dz4list@gmail.com,
- Iris Chen <irischenlj@gmail.com>
-Subject: Re: [PATCH v4] hw: m25p80: add WP# pin and SRWD bit for write
- protection
-Message-ID: <20220622094542.GE10629@fralle-msi>
-References: <20220621202427.2680413-1-irischenlj@fb.com>
+ (Exim 4.90_1) (envelope-from <SRS0=05Ho=W5=kaod.org=clg@ozlabs.org>)
+ id 1o3x5K-0005gn-JL; Wed, 22 Jun 2022 05:55:42 -0400
+Received: from mail.ozlabs.org ([2404:9400:2221:ea00::3]:33455
+ helo=gandalf.ozlabs.org)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <SRS0=05Ho=W5=kaod.org=clg@ozlabs.org>)
+ id 1o3x5G-0004kh-Bk; Wed, 22 Jun 2022 05:55:42 -0400
+Received: from gandalf.ozlabs.org (gandalf.ozlabs.org [150.107.74.76])
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4LSdzk5Xq8z4xZh;
+ Wed, 22 Jun 2022 19:55:30 +1000 (AEST)
+Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4LSdzh73C9z4xD9;
+ Wed, 22 Jun 2022 19:55:28 +1000 (AEST)
+From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
+Subject: [PULL 02/19] test/avocado/machine_aspeed.py: Move OpenBMC tests
+Date: Wed, 22 Jun 2022 11:55:03 +0200
+Message-Id: <20220622095520.3683321-3-clg@kaod.org>
+X-Mailer: git-send-email 2.35.3
+In-Reply-To: <20220622095520.3683321-1-clg@kaod.org>
+References: <20220622095520.3683321-1-clg@kaod.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20220621202427.2680413-1-irischenlj@fb.com>
-User-Agent: Mutt/1.10.1 (2018-07-13)
-Received-SPF: pass client-ip=2a00:1450:4864:20::132;
- envelope-from=frasse.iglesias@gmail.com; helo=mail-lf1-x132.google.com
-X-Spam_score_int: -1020
-X-Spam_score: -102.1
-X-Spam_bar: ---------------------------------------------------
-X-Spam_report: (-102.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01, USER_IN_WELCOMELIST=-0.01,
- USER_IN_WHITELIST=-100 autolearn=ham autolearn_force=no
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2404:9400:2221:ea00::3;
+ envelope-from=SRS0=05Ho=W5=kaod.org=clg@ozlabs.org; helo=gandalf.ozlabs.org
+X-Spam_score_int: -16
+X-Spam_score: -1.7
+X-Spam_bar: -
+X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.249, RCVD_IN_DNSWL_NONE=-0.0001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -126,176 +95,130 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: kZuynPgUTaHx
+X-TUID: aWB+Yg9hGnZx
 
-On [2022 Jun 21] Tue 13:24:27, Iris Chen wrote:
-> From: Iris Chen <irischenlj@gmail.com>
-> 
-> Signed-off-by: Iris Chen <irischenlj@gmail.com>
+It's easier to run. Keep test_arm_ast2600_debian() under the
+boot_linux_console.py file because it requires the extract_from_deb()
+helper. We could remove it when we have tests for the AST2600.
 
-Reviewed-by: Francisco Iglesias <frasse.iglesias@gmail.com>
+Signed-off-by: Cédric Le Goater <clg@kaod.org>
+---
+ tests/avocado/boot_linux_console.py | 43 -------------------------
+ tests/avocado/machine_aspeed.py     | 50 +++++++++++++++++++++++++++++
+ 2 files changed, 50 insertions(+), 43 deletions(-)
 
-> ---
-> Fixed .needed for subsection and suggestions from Francisco 
-> 
->  hw/block/m25p80.c | 82 ++++++++++++++++++++++++++++++++++++++---------
->  1 file changed, 67 insertions(+), 15 deletions(-)
-> 
-> diff --git a/hw/block/m25p80.c b/hw/block/m25p80.c
-> index 81ba3da4df..3045dda53b 100644
-> --- a/hw/block/m25p80.c
-> +++ b/hw/block/m25p80.c
-> @@ -472,11 +472,13 @@ struct Flash {
->      uint8_t spansion_cr2v;
->      uint8_t spansion_cr3v;
->      uint8_t spansion_cr4v;
-> +    bool wp_level;
->      bool write_enable;
->      bool four_bytes_address_mode;
->      bool reset_enable;
->      bool quad_enable;
->      bool aai_enable;
-> +    bool status_register_write_disabled;
->      uint8_t ear;
->  
->      int64_t dirty_page;
-> @@ -723,6 +725,8 @@ static void complete_collecting_data(Flash *s)
->          flash_erase(s, s->cur_addr, s->cmd_in_progress);
->          break;
->      case WRSR:
-> +        s->status_register_write_disabled = extract32(s->data[0], 7, 1);
-> +
->          switch (get_man(s)) {
->          case MAN_SPANSION:
->              s->quad_enable = !!(s->data[1] & 0x02);
-> @@ -1165,22 +1169,34 @@ static void decode_new_cmd(Flash *s, uint32_t value)
->          break;
->  
->      case WRSR:
-> -        if (s->write_enable) {
-> -            switch (get_man(s)) {
-> -            case MAN_SPANSION:
-> -                s->needed_bytes = 2;
-> -                s->state = STATE_COLLECTING_DATA;
-> -                break;
-> -            case MAN_MACRONIX:
-> -                s->needed_bytes = 2;
-> -                s->state = STATE_COLLECTING_VAR_LEN_DATA;
-> -                break;
-> -            default:
-> -                s->needed_bytes = 1;
-> -                s->state = STATE_COLLECTING_DATA;
-> -            }
-> -            s->pos = 0;
-> +        /*
-> +         * If WP# is low and status_register_write_disabled is high,
-> +         * status register writes are disabled.
-> +         * This is also called "hardware protected mode" (HPM). All other
-> +         * combinations of the two states are called "software protected mode"
-> +         * (SPM), and status register writes are permitted.
-> +         */
-> +        if ((s->wp_level == 0 && s->status_register_write_disabled)
-> +            || !s->write_enable) {
-> +            qemu_log_mask(LOG_GUEST_ERROR,
-> +                          "M25P80: Status register write is disabled!\n");
-> +            break;
-> +        }
-> +
-> +        switch (get_man(s)) {
-> +        case MAN_SPANSION:
-> +            s->needed_bytes = 2;
-> +            s->state = STATE_COLLECTING_DATA;
-> +            break;
-> +        case MAN_MACRONIX:
-> +            s->needed_bytes = 2;
-> +            s->state = STATE_COLLECTING_VAR_LEN_DATA;
-> +            break;
-> +        default:
-> +            s->needed_bytes = 1;
-> +            s->state = STATE_COLLECTING_DATA;
->          }
-> +        s->pos = 0;
->          break;
->  
->      case WRDI:
-> @@ -1195,6 +1211,8 @@ static void decode_new_cmd(Flash *s, uint32_t value)
->  
->      case RDSR:
->          s->data[0] = (!!s->write_enable) << 1;
-> +        s->data[0] |= (!!s->status_register_write_disabled) << 7;
-> +
->          if (get_man(s) == MAN_MACRONIX || get_man(s) == MAN_ISSI) {
->              s->data[0] |= (!!s->quad_enable) << 6;
->          }
-> @@ -1484,6 +1502,14 @@ static uint32_t m25p80_transfer8(SSIPeripheral *ss, uint32_t tx)
->      return r;
->  }
->  
-> +static void m25p80_write_protect_pin_irq_handler(void *opaque, int n, int level)
-> +{
-> +    Flash *s = M25P80(opaque);
-> +    /* WP# is just a single pin. */
-> +    assert(n == 0);
-> +    s->wp_level = !!level;
-> +}
-> +
->  static void m25p80_realize(SSIPeripheral *ss, Error **errp)
->  {
->      Flash *s = M25P80(ss);
-> @@ -1515,12 +1541,18 @@ static void m25p80_realize(SSIPeripheral *ss, Error **errp)
->          s->storage = blk_blockalign(NULL, s->size);
->          memset(s->storage, 0xFF, s->size);
->      }
-> +
-> +    qdev_init_gpio_in_named(DEVICE(s),
-> +                            m25p80_write_protect_pin_irq_handler, "WP#", 1);
->  }
->  
->  static void m25p80_reset(DeviceState *d)
->  {
->      Flash *s = M25P80(d);
->  
-> +    s->wp_level = true;
-> +    s->status_register_write_disabled = false;
-> +
->      reset_memory(s);
->  }
->  
-> @@ -1587,6 +1619,25 @@ static const VMStateDescription vmstate_m25p80_aai_enable = {
->      }
->  };
->  
-> +static bool m25p80_wp_level_srwd_needed(void *opaque)
-> +{
-> +    Flash *s = (Flash *)opaque;
-> +
-> +    return !s->wp_level || s->status_register_write_disabled;
-> +}
-> +
-> +static const VMStateDescription vmstate_m25p80_write_protect = {
-> +    .name = "m25p80/write_protect",
-> +    .version_id = 1,
-> +    .minimum_version_id = 1,
-> +    .needed = m25p80_wp_level_srwd_needed,
-> +    .fields = (VMStateField[]) {
-> +        VMSTATE_BOOL(wp_level, Flash),
-> +        VMSTATE_BOOL(status_register_write_disabled, Flash),
-> +        VMSTATE_END_OF_LIST()
-> +    }
-> +};
-> +
->  static const VMStateDescription vmstate_m25p80 = {
->      .name = "m25p80",
->      .version_id = 0,
-> @@ -1618,6 +1669,7 @@ static const VMStateDescription vmstate_m25p80 = {
->      .subsections = (const VMStateDescription * []) {
->          &vmstate_m25p80_data_read_loop,
->          &vmstate_m25p80_aai_enable,
-> +        &vmstate_m25p80_write_protect,
->          NULL
->      }
->  };
-> -- 
-> 2.30.2
-> 
-> 
+diff --git a/tests/avocado/boot_linux_console.py b/tests/avocado/boot_linux_console.py
+index 45a2ceda2227..6b1533c17c8b 100644
+--- a/tests/avocado/boot_linux_console.py
++++ b/tests/avocado/boot_linux_console.py
+@@ -1043,49 +1043,6 @@ def test_arm_vexpressa9(self):
+         self.vm.add_args('-dtb', self.workdir + '/day16/vexpress-v2p-ca9.dtb')
+         self.do_test_advcal_2018('16', tar_hash, 'winter.zImage')
+ 
+-    def test_arm_ast2400_palmetto_openbmc_v2_9_0(self):
+-        """
+-        :avocado: tags=arch:arm
+-        :avocado: tags=machine:palmetto-bmc
+-        """
+-
+-        image_url = ('https://github.com/openbmc/openbmc/releases/download/2.9.0/'
+-                     'obmc-phosphor-image-palmetto.static.mtd')
+-        image_hash = ('3e13bbbc28e424865dc42f35ad672b10f2e82cdb11846bb28fa625b48beafd0d')
+-        image_path = self.fetch_asset(image_url, asset_hash=image_hash,
+-                                      algorithm='sha256')
+-
+-        self.do_test_arm_aspeed(image_path)
+-
+-    def test_arm_ast2500_romulus_openbmc_v2_9_0(self):
+-        """
+-        :avocado: tags=arch:arm
+-        :avocado: tags=machine:romulus-bmc
+-        """
+-
+-        image_url = ('https://github.com/openbmc/openbmc/releases/download/2.9.0/'
+-                     'obmc-phosphor-image-romulus.static.mtd')
+-        image_hash = ('820341076803f1955bc31e647a512c79f9add4f5233d0697678bab4604c7bb25')
+-        image_path = self.fetch_asset(image_url, asset_hash=image_hash,
+-                                      algorithm='sha256')
+-
+-        self.do_test_arm_aspeed(image_path)
+-
+-    def do_test_arm_aspeed(self, image):
+-        self.vm.set_console()
+-        self.vm.add_args('-drive', 'file=' + image + ',if=mtd,format=raw',
+-                         '-net', 'nic')
+-        self.vm.launch()
+-
+-        self.wait_for_console_pattern("U-Boot 2016.07")
+-        self.wait_for_console_pattern("## Loading kernel from FIT Image at 20080000")
+-        self.wait_for_console_pattern("Starting kernel ...")
+-        self.wait_for_console_pattern("Booting Linux on physical CPU 0x0")
+-        self.wait_for_console_pattern(
+-                "aspeed-smc 1e620000.spi: read control register: 203b0641")
+-        self.wait_for_console_pattern("ftgmac100 1e660000.ethernet eth0: irq ")
+-        self.wait_for_console_pattern("systemd[1]: Set hostname to")
+-
+     def test_arm_ast2600_debian(self):
+         """
+         :avocado: tags=arch:arm
+diff --git a/tests/avocado/machine_aspeed.py b/tests/avocado/machine_aspeed.py
+index 33090af19940..89bfad307661 100644
+--- a/tests/avocado/machine_aspeed.py
++++ b/tests/avocado/machine_aspeed.py
+@@ -34,3 +34,53 @@ def test_ast1030_zephyros(self):
+         wait_for_console_pattern(self, "Booting Zephyr OS")
+         exec_command_and_wait_for_pattern(self, "help",
+                                           "Available commands")
++
++class AST2x00Machine(QemuSystemTest):
++
++    def wait_for_console_pattern(self, success_message, vm=None):
++        wait_for_console_pattern(self, success_message,
++                                 failure_message='Kernel panic - not syncing',
++                                 vm=vm)
++
++    def do_test_arm_aspeed(self, image):
++        self.vm.set_console()
++        self.vm.add_args('-drive', 'file=' + image + ',if=mtd,format=raw',
++                         '-net', 'nic')
++        self.vm.launch()
++
++        self.wait_for_console_pattern("U-Boot 2016.07")
++        self.wait_for_console_pattern("## Loading kernel from FIT Image at 20080000")
++        self.wait_for_console_pattern("Starting kernel ...")
++        self.wait_for_console_pattern("Booting Linux on physical CPU 0x0")
++        wait_for_console_pattern(self,
++                "aspeed-smc 1e620000.spi: read control register: 203b0641")
++        self.wait_for_console_pattern("ftgmac100 1e660000.ethernet eth0: irq ")
++        self.wait_for_console_pattern("systemd[1]: Set hostname to")
++
++    def test_arm_ast2400_palmetto_openbmc_v2_9_0(self):
++        """
++        :avocado: tags=arch:arm
++        :avocado: tags=machine:palmetto-bmc
++        """
++
++        image_url = ('https://github.com/openbmc/openbmc/releases/download/2.9.0/'
++                     'obmc-phosphor-image-palmetto.static.mtd')
++        image_hash = ('3e13bbbc28e424865dc42f35ad672b10f2e82cdb11846bb28fa625b48beafd0d')
++        image_path = self.fetch_asset(image_url, asset_hash=image_hash,
++                                      algorithm='sha256')
++
++        self.do_test_arm_aspeed(image_path)
++
++    def test_arm_ast2500_romulus_openbmc_v2_9_0(self):
++        """
++        :avocado: tags=arch:arm
++        :avocado: tags=machine:romulus-bmc
++        """
++
++        image_url = ('https://github.com/openbmc/openbmc/releases/download/2.9.0/'
++                     'obmc-phosphor-image-romulus.static.mtd')
++        image_hash = ('820341076803f1955bc31e647a512c79f9add4f5233d0697678bab4604c7bb25')
++        image_path = self.fetch_asset(image_url, asset_hash=image_hash,
++                                      algorithm='sha256')
++
++        self.do_test_arm_aspeed(image_path)
+-- 
+2.35.3
+

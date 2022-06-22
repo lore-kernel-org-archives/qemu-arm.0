@@ -1,86 +1,88 @@
-Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp1885296lft;
-        Wed, 22 Jun 2022 03:16:04 -0700 (PDT)
-X-Google-Smtp-Source: AGRyM1sUHziPn2k10An70Km6NOBP5Hl+mXZBdWmEnvEDhqMBBEMktW3O/7PmtR8QGHcp2ot2yXUX
-X-Received: by 2002:ad4:5b8e:0:b0:464:50ca:a459 with SMTP id 14-20020ad45b8e000000b0046450caa459mr26413197qvp.106.1655892964357;
-        Wed, 22 Jun 2022 03:16:04 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1655892964; cv=none;
+Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp1886074lft;
+        Wed, 22 Jun 2022 03:17:07 -0700 (PDT)
+X-Google-Smtp-Source: AGRyM1uoIZPzvFmyAbpm5+pkZ/tsT6SGkh9/Sr6SQyKSpWmxT87Yk7o5SXEjA0+R7/UQds3TjNe+
+X-Received: by 2002:a05:620a:f0f:b0:6a9:711b:da07 with SMTP id v15-20020a05620a0f0f00b006a9711bda07mr1577534qkl.282.1655893027617;
+        Wed, 22 Jun 2022 03:17:07 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1655893027; cv=none;
         d=google.com; s=arc-20160816;
-        b=Q2m1tsucDMTYVvIBIkBfiKyjoSPmQXWAQfzUFO4IeOgt6ZJlX3XHVQTpzkV/TEN/DJ
-         aOFssmYuqoEi0pS4FYKVKlLTYtaqwV1LrYtcjKnjE93cv6p48fmY35c7xVI5daFiBvaq
-         SyZ5HpMMFcO2cf6+7jGGdEl9AfTw7PooTWmP2doj9IbkQZZZR5RbiAQw5i8XIxvY/gSD
-         0NT/vjO0RI14/udiAf/ByncauZmNhJ80qlwN59VV+Tq5VHN0q75sPSt7ojhIEVkB/peq
-         IV0YENj8LIbkmPFvWAK8aAMoHkJ84BAU5YS6mp3r1s5894CUMZHTiYQBEVGK1QL8kVYf
-         hhjA==
+        b=NeP++CVaBRLQ+cGofiQjMf/ZWiIAQMWyCyiOGNtD4/OmZ2nnNbcH8dddIpDFEHx2gQ
+         ru7yaF62kbl7fEx7yrA0GrW3gxlq3U2dNcvAca3dObr04mICW5NFC7SHIHO2xNkXFaLF
+         DDdx8+G8I67epSg8pV3/EcWEfxTZRJRvx0bKCpdxG6HpmuabHOkckTXHe4K8Urh60uW8
+         wgVPa9Oa/6A0VxYEYrrs0oGJI3qCEu3uV3PIvdvM2dUvic2ZIR41QDa4f6D8E6kad10V
+         b82BJ3bCWbzBC/ibWT9ZoNMPbX3ezyIaqpMZ+Ggw7nmx+UanS34wEj/7f6XMrdfpGL95
+         r4Zw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from;
-        bh=Fezw9X8mh891nCSQLWLUPp149JpFxmjHOLif2p6ORrc=;
-        b=fZ/nGKAKFSiY21adkomc3aNtwoXgxkQfUt6OBY7+kGpP+Rz+541L7HJcHNq8RMBV2z
-         ewOuP0uWZAzg381lhLDUSs9Flsb7KklPWpve1ikKFiKBV+tzs2fLffw+tAEV9NyS5wLD
-         vrJSqxWkphTN843WaSrGmeRVcp6WCMYtllt3zm/UqHL6kDeKVZkNuwQxe8ye8eMNSABe
-         IFguTRYjAjlRMJ0ht80Q/x7af7iXBsCW+Xrp4o9pTFIa3eksS5K0Hmhdi92BRQzHuffp
-         NXkHqj53VifPJaGyQtpyVkMp1qdJpwwEbh4t1mpp6sMXrz3uUfhXCd270IqsOmZj4aa2
-         4EKg==
+        bh=C25qIl80B3CAdsn7gpHeDfFgJcquO7FgiYV0IGHJrG0=;
+        b=z58F9MKO6swy8vCTI61kFXeDUMDNH8OUjHf9LiVUMY4TfLKjo8CuatOy1+NmJQtcUW
+         0KoEX5j/O8+ryT52RmcTVlrIg+G8bV4ScdEhUT4rzZBRqTxq1fLqhN20CeN6g1Sh4auZ
+         J4IpecpiGoaCU4ectajIFSavjMriI4oJxPkSLFVWitu3pup/3XvYJ1skBLK63XQFcxAr
+         aGy2kqq32JDbINVcFVFOoGI/nI1CYjCMjyptIKEMIc74d7lbakBYtkPZLQmLokX4iCEf
+         EEMHU1OUm+5npvTS0cAzL/OgCje1HQVNVuTBxRf44L9VEVOeqVsZyA2pcdqfYFGbM11Y
+         rhXA==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id f8-20020a05620a408800b006a74751941bsi14224898qko.442.2022.06.22.03.16.04
+        by mx.google.com with ESMTPS id x4-20020a05620a448400b0069f0c98d582si13921334qkp.466.2022.06.22.03.17.07
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 22 Jun 2022 03:16:04 -0700 (PDT)
+        Wed, 22 Jun 2022 03:17:07 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:40532 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:43406 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1o3xP1-0008AB-Pj
-	for alex.bennee@linaro.org; Wed, 22 Jun 2022 06:16:03 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:39520)
+	id 1o3xQ3-0001kX-2F
+	for alex.bennee@linaro.org; Wed, 22 Jun 2022 06:17:07 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:39442)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=05Ho=W5=kaod.org=clg@ozlabs.org>)
- id 1o3x5l-0006qj-T8; Wed, 22 Jun 2022 05:56:09 -0400
-Received: from gandalf.ozlabs.org ([150.107.74.76]:41569)
+ id 1o3x5c-0006N3-GS; Wed, 22 Jun 2022 05:56:00 -0400
+Received: from mail.ozlabs.org ([2404:9400:2221:ea00::3]:39259
+ helo=gandalf.ozlabs.org)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=05Ho=W5=kaod.org=clg@ozlabs.org>)
- id 1o3x5j-0004qA-R7; Wed, 22 Jun 2022 05:56:09 -0400
+ id 1o3x5Y-0004nb-VO; Wed, 22 Jun 2022 05:56:00 -0400
 Received: from gandalf.ozlabs.org (mail.ozlabs.org
  [IPv6:2404:9400:2221:ea00::3])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4LSf0P300Zz4xYD;
- Wed, 22 Jun 2022 19:56:05 +1000 (AEST)
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4LSf0C6wxFz4xZg;
+ Wed, 22 Jun 2022 19:55:55 +1000 (AEST)
 Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
  (No client certificate requested)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4LSf0M0r51z4xD9;
- Wed, 22 Jun 2022 19:56:02 +1000 (AEST)
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4LSf096ffTz4xD9;
+ Wed, 22 Jun 2022 19:55:53 +1000 (AEST)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>,
  Richard Henderson <richard.henderson@linaro.org>,
- Klaus Jensen <k.jensen@samsung.com>,
+ Joe Komlodi <komlodi@google.com>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
-Subject: [PULL 15/19] hw/i2c/aspeed: rework raise interrupt trace event
-Date: Wed, 22 Jun 2022 11:55:16 +0200
-Message-Id: <20220622095520.3683321-16-clg@kaod.org>
+Subject: [PULL 12/19] aspeed: i2c: Move regs and helpers to header file
+Date: Wed, 22 Jun 2022 11:55:13 +0200
+Message-Id: <20220622095520.3683321-13-clg@kaod.org>
 X-Mailer: git-send-email 2.35.3
 In-Reply-To: <20220622095520.3683321-1-clg@kaod.org>
 References: <20220622095520.3683321-1-clg@kaod.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=150.107.74.76;
+Received-SPF: pass client-ip=2404:9400:2221:ea00::3;
  envelope-from=SRS0=05Ho=W5=kaod.org=clg@ozlabs.org; helo=gandalf.ozlabs.org
 X-Spam_score_int: -16
 X-Spam_score: -1.7
 X-Spam_bar: -
 X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9,
- HEADER_FROM_DIFFERENT_DOMAINS=0.249, SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
+ HEADER_FROM_DIFFERENT_DOMAINS=0.249, RCVD_IN_DNSWL_NONE=-0.0001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01,
+ UPPERCASE_50_75=0.008 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -95,93 +97,591 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: bTgHfrORRteW
+X-TUID: FCviS2SSSdJU
 
-From: Klaus Jensen <k.jensen@samsung.com>
+From: Joe Komlodi <komlodi@google.com>
 
-Build a single string instead of having several parameters on the trace
-event.
+Moves register definitions and short commonly used inlined functiosn to
+the header file to help tidy up the implementation file.
 
-Suggested-by: Cédric Le Goater <clg@kaod.org>
-Signed-off-by: Klaus Jensen <k.jensen@samsung.com>
-[ clg: simplified trace buffer creation ]
-Message-Id: <20220601210831.67259-2-its@irrelevant.dk>
+Signed-off-by: Joe Komlodi <komlodi@google.com>
+Change-Id: I34dff7485b6bbe3c9482715ccd94dbd65dc5f324
+Message-Id: <20220331043248.2237838-8-komlodi@google.com>
 Signed-off-by: Cédric Le Goater <clg@kaod.org>
 ---
- hw/i2c/aspeed_i2c.c | 34 ++++++++++++++++++++++------------
- hw/i2c/trace-events |  2 +-
- 2 files changed, 23 insertions(+), 13 deletions(-)
+ include/hw/i2c/aspeed_i2c.h | 267 ++++++++++++++++++++++++++++++++++++
+ hw/i2c/aspeed_i2c.c         | 266 -----------------------------------
+ 2 files changed, 267 insertions(+), 266 deletions(-)
 
+diff --git a/include/hw/i2c/aspeed_i2c.h b/include/hw/i2c/aspeed_i2c.h
+index 8297b190a9d2..8ea9f6671ec8 100644
+--- a/include/hw/i2c/aspeed_i2c.h
++++ b/include/hw/i2c/aspeed_i2c.h
+@@ -23,6 +23,7 @@
+ 
+ #include "hw/i2c/i2c.h"
+ #include "hw/sysbus.h"
++#include "hw/registerfields.h"
+ #include "qom/object.h"
+ 
+ #define TYPE_ASPEED_I2C "aspeed.i2c"
+@@ -36,6 +37,182 @@ OBJECT_DECLARE_TYPE(AspeedI2CState, AspeedI2CClass, ASPEED_I2C)
+ #define ASPEED_I2C_OLD_NUM_REG 11
+ #define ASPEED_I2C_NEW_NUM_REG 22
+ 
++/* Tx State Machine */
++#define   I2CD_TX_STATE_MASK                  0xf
++#define     I2CD_IDLE                         0x0
++#define     I2CD_MACTIVE                      0x8
++#define     I2CD_MSTART                       0x9
++#define     I2CD_MSTARTR                      0xa
++#define     I2CD_MSTOP                        0xb
++#define     I2CD_MTXD                         0xc
++#define     I2CD_MRXACK                       0xd
++#define     I2CD_MRXD                         0xe
++#define     I2CD_MTXACK                       0xf
++#define     I2CD_SWAIT                        0x1
++#define     I2CD_SRXD                         0x4
++#define     I2CD_STXACK                       0x5
++#define     I2CD_STXD                         0x6
++#define     I2CD_SRXACK                       0x7
++#define     I2CD_RECOVER                      0x3
++
++/* I2C Global Register */
++REG32(I2C_CTRL_STATUS, 0x0) /* Device Interrupt Status */
++REG32(I2C_CTRL_ASSIGN, 0x8) /* Device Interrupt Target Assignment */
++REG32(I2C_CTRL_GLOBAL, 0xC) /* Global Control Register */
++    FIELD(I2C_CTRL_GLOBAL, REG_MODE, 2, 1)
++    FIELD(I2C_CTRL_GLOBAL, SRAM_EN, 0, 1)
++REG32(I2C_CTRL_NEW_CLK_DIVIDER, 0x10) /* New mode clock divider */
++
++/* I2C Old Mode Device (Bus) Register */
++REG32(I2CD_FUN_CTRL, 0x0) /* I2CD Function Control  */
++    FIELD(I2CD_FUN_CTRL, POOL_PAGE_SEL, 20, 3) /* AST2400 */
++    SHARED_FIELD(M_SDA_LOCK_EN, 16, 1)
++    SHARED_FIELD(MULTI_MASTER_DIS, 15, 1)
++    SHARED_FIELD(M_SCL_DRIVE_EN, 14, 1)
++    SHARED_FIELD(MSB_STS, 9, 1)
++    SHARED_FIELD(SDA_DRIVE_IT_EN, 8, 1)
++    SHARED_FIELD(M_SDA_DRIVE_IT_EN, 7, 1)
++    SHARED_FIELD(M_HIGH_SPEED_EN, 6, 1)
++    SHARED_FIELD(DEF_ADDR_EN, 5, 1)
++    SHARED_FIELD(DEF_ALERT_EN, 4, 1)
++    SHARED_FIELD(DEF_ARP_EN, 3, 1)
++    SHARED_FIELD(DEF_GCALL_EN, 2, 1)
++    SHARED_FIELD(SLAVE_EN, 1, 1)
++    SHARED_FIELD(MASTER_EN, 0, 1)
++REG32(I2CD_AC_TIMING1, 0x04) /* Clock and AC Timing Control #1 */
++REG32(I2CD_AC_TIMING2, 0x08) /* Clock and AC Timing Control #2 */
++REG32(I2CD_INTR_CTRL, 0x0C)  /* I2CD Interrupt Control */
++REG32(I2CD_INTR_STS, 0x10)   /* I2CD Interrupt Status */
++    SHARED_FIELD(SLAVE_ADDR_MATCH, 31, 1)    /* 0: addr1 1: addr2 */
++    SHARED_FIELD(SLAVE_ADDR_RX_PENDING, 29, 1)
++    SHARED_FIELD(SLAVE_INACTIVE_TIMEOUT, 15, 1)
++    SHARED_FIELD(SDA_DL_TIMEOUT, 14, 1)
++    SHARED_FIELD(BUS_RECOVER_DONE, 13, 1)
++    SHARED_FIELD(SMBUS_ALERT, 12, 1)                    /* Bus [0-3] only */
++    FIELD(I2CD_INTR_STS, SMBUS_ARP_ADDR, 11, 1)         /* Removed */
++    FIELD(I2CD_INTR_STS, SMBUS_DEV_ALERT_ADDR, 10, 1)   /* Removed */
++    FIELD(I2CD_INTR_STS, SMBUS_DEF_ADDR, 9, 1)          /* Removed */
++    FIELD(I2CD_INTR_STS, GCALL_ADDR, 8, 1)              /* Removed */
++    FIELD(I2CD_INTR_STS, SLAVE_ADDR_RX_MATCH, 7, 1)     /* use RX_DONE */
++    SHARED_FIELD(SCL_TIMEOUT, 6, 1)
++    SHARED_FIELD(ABNORMAL, 5, 1)
++    SHARED_FIELD(NORMAL_STOP, 4, 1)
++    SHARED_FIELD(ARBIT_LOSS, 3, 1)
++    SHARED_FIELD(RX_DONE, 2, 1)
++    SHARED_FIELD(TX_NAK, 1, 1)
++    SHARED_FIELD(TX_ACK, 0, 1)
++REG32(I2CD_CMD, 0x14) /* I2CD Command/Status */
++    SHARED_FIELD(SDA_OE, 28, 1)
++    SHARED_FIELD(SDA_O, 27, 1)
++    SHARED_FIELD(SCL_OE, 26, 1)
++    SHARED_FIELD(SCL_O, 25, 1)
++    SHARED_FIELD(TX_TIMING, 23, 2)
++    SHARED_FIELD(TX_STATE, 19, 4)
++    SHARED_FIELD(SCL_LINE_STS, 18, 1)
++    SHARED_FIELD(SDA_LINE_STS, 17, 1)
++    SHARED_FIELD(BUS_BUSY_STS, 16, 1)
++    SHARED_FIELD(SDA_OE_OUT_DIR, 15, 1)
++    SHARED_FIELD(SDA_O_OUT_DIR, 14, 1)
++    SHARED_FIELD(SCL_OE_OUT_DIR, 13, 1)
++    SHARED_FIELD(SCL_O_OUT_DIR, 12, 1)
++    SHARED_FIELD(BUS_RECOVER_CMD_EN, 11, 1)
++    SHARED_FIELD(S_ALT_EN, 10, 1)
++    /* Command Bits */
++    SHARED_FIELD(RX_DMA_EN, 9, 1)
++    SHARED_FIELD(TX_DMA_EN, 8, 1)
++    SHARED_FIELD(RX_BUFF_EN, 7, 1)
++    SHARED_FIELD(TX_BUFF_EN, 6, 1)
++    SHARED_FIELD(M_STOP_CMD, 5, 1)
++    SHARED_FIELD(M_S_RX_CMD_LAST, 4, 1)
++    SHARED_FIELD(M_RX_CMD, 3, 1)
++    SHARED_FIELD(S_TX_CMD, 2, 1)
++    SHARED_FIELD(M_TX_CMD, 1, 1)
++    SHARED_FIELD(M_START_CMD, 0, 1)
++REG32(I2CD_DEV_ADDR, 0x18) /* Slave Device Address */
++REG32(I2CD_POOL_CTRL, 0x1C) /* Pool Buffer Control */
++    SHARED_FIELD(RX_COUNT, 24, 5)
++    SHARED_FIELD(RX_SIZE, 16, 5)
++    SHARED_FIELD(TX_COUNT, 9, 5)
++    FIELD(I2CD_POOL_CTRL, OFFSET, 2, 6) /* AST2400 */
++REG32(I2CD_BYTE_BUF, 0x20) /* Transmit/Receive Byte Buffer */
++    SHARED_FIELD(RX_BUF, 8, 8)
++    SHARED_FIELD(TX_BUF, 0, 8)
++REG32(I2CD_DMA_ADDR, 0x24) /* DMA Buffer Address */
++REG32(I2CD_DMA_LEN, 0x28) /* DMA Transfer Length < 4KB */
++
++/* I2C New Mode Device (Bus) Register */
++REG32(I2CC_FUN_CTRL, 0x0)
++    FIELD(I2CC_FUN_CTRL, RB_EARLY_DONE_EN, 22, 1)
++    FIELD(I2CC_FUN_CTRL, DMA_DIS_AUTO_RECOVER, 21, 1)
++    FIELD(I2CC_FUN_CTRL, S_SAVE_ADDR, 20, 1)
++    FIELD(I2CC_FUN_CTRL, M_PKT_RETRY_CNT, 18, 2)
++    /* 17:0 shared with I2CD_FUN_CTRL[17:0] */
++REG32(I2CC_AC_TIMING, 0x04)
++REG32(I2CC_MS_TXRX_BYTE_BUF, 0x08)
++    /* 31:16 shared with I2CD_CMD[31:16] */
++    /* 15:0  shared with I2CD_BYTE_BUF[15:0] */
++REG32(I2CC_POOL_CTRL, 0x0c)
++    /* 31:0 shared with I2CD_POOL_CTRL[31:0] */
++REG32(I2CM_INTR_CTRL, 0x10)
++REG32(I2CM_INTR_STS, 0x14)
++    FIELD(I2CM_INTR_STS, PKT_STATE, 28, 4)
++    FIELD(I2CM_INTR_STS, PKT_CMD_TIMEOUT, 18, 1)
++    FIELD(I2CM_INTR_STS, PKT_CMD_FAIL, 17, 1)
++    FIELD(I2CM_INTR_STS, PKT_CMD_DONE, 16, 1)
++    FIELD(I2CM_INTR_STS, BUS_RECOVER_FAIL, 15, 1)
++    /* 14:0 shared with I2CD_INTR_STS[14:0] */
++REG32(I2CM_CMD, 0x18)
++    FIELD(I2CM_CMD, W1_CTRL, 31, 1)
++    FIELD(I2CM_CMD, PKT_DEV_ADDR, 24, 7)
++    FIELD(I2CM_CMD, HS_MASTER_MODE_LSB, 17, 3)
++    FIELD(I2CM_CMD, PKT_OP_EN, 16, 1)
++    /* 15:0 shared with I2CD_CMD[15:0] */
++REG32(I2CM_DMA_LEN, 0x1c)
++    FIELD(I2CM_DMA_LEN, RX_BUF_LEN_W1T, 31, 1)
++    FIELD(I2CM_DMA_LEN, RX_BUF_LEN, 16, 11)
++    FIELD(I2CM_DMA_LEN, TX_BUF_LEN_W1T, 15, 1)
++    FIELD(I2CM_DMA_LEN, TX_BUF_LEN, 0, 11)
++REG32(I2CS_INTR_CTRL, 0x20)
++REG32(I2CS_INTR_STS, 0x24)
++    /* 31:29 shared with I2CD_INTR_STS[31:29] */
++    FIELD(I2CS_INTR_STS, SLAVE_PARKING_STS, 24, 2)
++    FIELD(I2CS_INTR_STS, SLAVE_ADDR3_NAK, 22, 1)
++    FIELD(I2CS_INTR_STS, SLAVE_ADDR2_NAK, 21, 1)
++    FIELD(I2CS_INTR_STS, SLAVE_ADDR1_NAK, 20, 1)
++    FIELD(I2CS_INTR_STS, SLAVE_ADDR_INDICATOR, 18, 2)
++    FIELD(I2CS_INTR_STS, PKT_CMD_FAIL, 17, 1)
++    FIELD(I2CS_INTR_STS, PKT_CMD_DONE, 16, 1)
++    /* 14:0 shared with I2CD_INTR_STS[14:0] */
++REG32(I2CS_CMD, 0x28)
++    FIELD(I2CS_CMD, W1_CTRL, 31, 1)
++    FIELD(I2CS_CMD, PKT_MODE_ACTIVE_ADDR, 17, 2)
++    FIELD(I2CS_CMD, PKT_MODE_EN, 16, 1)
++    FIELD(I2CS_CMD, AUTO_NAK_INACTIVE_ADDR, 15, 1)
++    FIELD(I2CS_CMD, AUTO_NAK_ACTIVE_ADDR, 14, 1)
++    /* 13:0 shared with I2CD_CMD[13:0] */
++REG32(I2CS_DMA_LEN, 0x2c)
++    FIELD(I2CS_DMA_LEN, RX_BUF_LEN_W1T, 31, 1)
++    FIELD(I2CS_DMA_LEN, RX_BUF_LEN, 16, 11)
++    FIELD(I2CS_DMA_LEN, TX_BUF_LEN_W1T, 15, 1)
++    FIELD(I2CS_DMA_LEN, TX_BUF_LEN, 0, 11)
++REG32(I2CM_DMA_TX_ADDR, 0x30)
++    FIELD(I2CM_DMA_TX_ADDR, ADDR, 0, 31)
++REG32(I2CM_DMA_RX_ADDR, 0x34)
++    FIELD(I2CM_DMA_RX_ADDR, ADDR, 0, 31)
++REG32(I2CS_DMA_TX_ADDR, 0x38)
++    FIELD(I2CS_DMA_TX_ADDR, ADDR, 0, 31)
++REG32(I2CS_DMA_RX_ADDR, 0x3c)
++    FIELD(I2CS_DMA_RX_ADDR, ADDR, 0, 31)
++REG32(I2CS_DEV_ADDR, 0x40)
++REG32(I2CM_DMA_LEN_STS, 0x48)
++    FIELD(I2CM_DMA_LEN_STS, RX_LEN, 16, 13)
++    FIELD(I2CM_DMA_LEN_STS, TX_LEN, 0, 13)
++REG32(I2CS_DMA_LEN_STS, 0x4c)
++    FIELD(I2CS_DMA_LEN_STS, RX_LEN, 16, 13)
++    FIELD(I2CS_DMA_LEN_STS, TX_LEN, 0, 13)
++REG32(I2CC_DMA_ADDR, 0x50)
++REG32(I2CC_DMA_LEN, 0x54)
++
+ struct AspeedI2CState;
+ 
+ #define TYPE_ASPEED_I2C_BUS "aspeed.i2c.bus"
+@@ -88,6 +265,96 @@ struct AspeedI2CClass {
+ 
+ };
+ 
++static inline bool aspeed_i2c_is_new_mode(AspeedI2CState *s)
++{
++    return FIELD_EX32(s->ctrl_global, I2C_CTRL_GLOBAL, REG_MODE);
++}
++
++static inline bool aspeed_i2c_bus_pkt_mode_en(AspeedI2CBus *bus)
++{
++    if (aspeed_i2c_is_new_mode(bus->controller)) {
++        return ARRAY_FIELD_EX32(bus->regs, I2CM_CMD, PKT_OP_EN);
++    }
++    return false;
++}
++
++static inline uint32_t aspeed_i2c_bus_ctrl_offset(AspeedI2CBus *bus)
++{
++    if (aspeed_i2c_is_new_mode(bus->controller)) {
++        return R_I2CC_FUN_CTRL;
++    }
++    return R_I2CD_FUN_CTRL;
++}
++
++static inline uint32_t aspeed_i2c_bus_cmd_offset(AspeedI2CBus *bus)
++{
++    if (aspeed_i2c_is_new_mode(bus->controller)) {
++        return R_I2CM_CMD;
++    }
++    return R_I2CD_CMD;
++}
++
++static inline uint32_t aspeed_i2c_bus_intr_ctrl_offset(AspeedI2CBus *bus)
++{
++    if (aspeed_i2c_is_new_mode(bus->controller)) {
++        return R_I2CM_INTR_CTRL;
++    }
++    return R_I2CD_INTR_CTRL;
++}
++
++static inline uint32_t aspeed_i2c_bus_intr_sts_offset(AspeedI2CBus *bus)
++{
++    if (aspeed_i2c_is_new_mode(bus->controller)) {
++        return R_I2CM_INTR_STS;
++    }
++    return R_I2CD_INTR_STS;
++}
++
++static inline uint32_t aspeed_i2c_bus_pool_ctrl_offset(AspeedI2CBus *bus)
++{
++    if (aspeed_i2c_is_new_mode(bus->controller)) {
++        return R_I2CC_POOL_CTRL;
++    }
++    return R_I2CD_POOL_CTRL;
++}
++
++static inline uint32_t aspeed_i2c_bus_byte_buf_offset(AspeedI2CBus *bus)
++{
++    if (aspeed_i2c_is_new_mode(bus->controller)) {
++        return R_I2CC_MS_TXRX_BYTE_BUF;
++    }
++    return R_I2CD_BYTE_BUF;
++}
++
++static inline uint32_t aspeed_i2c_bus_dma_len_offset(AspeedI2CBus *bus)
++{
++    if (aspeed_i2c_is_new_mode(bus->controller)) {
++        return R_I2CC_DMA_LEN;
++    }
++    return R_I2CD_DMA_LEN;
++}
++
++static inline uint32_t aspeed_i2c_bus_dma_addr_offset(AspeedI2CBus *bus)
++{
++    if (aspeed_i2c_is_new_mode(bus->controller)) {
++        return R_I2CC_DMA_ADDR;
++    }
++    return R_I2CD_DMA_ADDR;
++}
++
++static inline bool aspeed_i2c_bus_is_master(AspeedI2CBus *bus)
++{
++    return SHARED_ARRAY_FIELD_EX32(bus->regs, aspeed_i2c_bus_ctrl_offset(bus),
++                                   MASTER_EN);
++}
++
++static inline bool aspeed_i2c_bus_is_enabled(AspeedI2CBus *bus)
++{
++    uint32_t ctrl_reg = aspeed_i2c_bus_ctrl_offset(bus);
++    return SHARED_ARRAY_FIELD_EX32(bus->regs, ctrl_reg, MASTER_EN) ||
++           SHARED_ARRAY_FIELD_EX32(bus->regs, ctrl_reg, SLAVE_EN);
++}
++
+ I2CBus *aspeed_i2c_get_bus(AspeedI2CState *s, int busnr);
+ 
+ #endif /* ASPEED_I2C_H */
 diff --git a/hw/i2c/aspeed_i2c.c b/hw/i2c/aspeed_i2c.c
-index 4c798b70e4c3..43ac9491ec36 100644
+index 0e0cd5bec8d8..1556b2da995b 100644
 --- a/hw/i2c/aspeed_i2c.c
 +++ b/hw/i2c/aspeed_i2c.c
-@@ -21,6 +21,7 @@
- #include "qemu/osdep.h"
- #include "hw/sysbus.h"
- #include "migration/vmstate.h"
-+#include "qemu/cutils.h"
- #include "qemu/log.h"
- #include "qemu/module.h"
- #include "qemu/error-report.h"
-@@ -38,23 +39,32 @@ static inline void aspeed_i2c_bus_raise_interrupt(AspeedI2CBus *bus)
-     uint32_t intr_ctrl_reg = aspeed_i2c_bus_intr_ctrl_offset(bus);
-     bool raise_irq;
+@@ -31,272 +31,6 @@
+ #include "hw/registerfields.h"
+ #include "trace.h"
  
--    trace_aspeed_i2c_bus_raise_interrupt(bus->regs[reg_intr_sts],
--        aspeed_i2c_bus_pkt_mode_en(bus) &&
--        ARRAY_FIELD_EX32(bus->regs, I2CM_INTR_STS, PKT_CMD_DONE) ?
--                                                               "pktdone|" : "",
--        SHARED_ARRAY_FIELD_EX32(bus->regs, reg_intr_sts, TX_NAK) ? "nak|" : "",
--        SHARED_ARRAY_FIELD_EX32(bus->regs, reg_intr_sts, TX_ACK) ? "ack|" : "",
--        SHARED_ARRAY_FIELD_EX32(bus->regs, reg_intr_sts, RX_DONE) ? "done|"
--                                                                  : "",
--        SHARED_ARRAY_FIELD_EX32(bus->regs, reg_intr_sts, NORMAL_STOP) ?
--                                                                "normal|" : "",
--        SHARED_ARRAY_FIELD_EX32(bus->regs, reg_intr_sts, ABNORMAL) ? "abnormal"
--                                                                   : "");
-+    if (trace_event_get_state_backends(TRACE_ASPEED_I2C_BUS_RAISE_INTERRUPT)) {
-+        g_autofree char *buf = g_strdup_printf("%s%s%s%s%s%s",
-+               aspeed_i2c_bus_pkt_mode_en(bus) &&
-+               ARRAY_FIELD_EX32(bus->regs, I2CM_INTR_STS, PKT_CMD_DONE) ?
-+                                               "pktdone|" : "",
-+               SHARED_ARRAY_FIELD_EX32(bus->regs, reg_intr_sts, TX_NAK) ?
-+                                               "nak|" : "",
-+               SHARED_ARRAY_FIELD_EX32(bus->regs, reg_intr_sts, TX_ACK) ?
-+                                               "ack|" : "",
-+               SHARED_ARRAY_FIELD_EX32(bus->regs, reg_intr_sts, RX_DONE) ?
-+                                               "done|" : "",
-+               SHARED_ARRAY_FIELD_EX32(bus->regs, reg_intr_sts, NORMAL_STOP) ?
-+                                               "normal|" : "",
-+               SHARED_ARRAY_FIELD_EX32(bus->regs, reg_intr_sts, ABNORMAL) ?
-+                                               "abnormal"  : "");
-+
-+           trace_aspeed_i2c_bus_raise_interrupt(bus->regs[reg_intr_sts], buf);
-+    }
-+
-     raise_irq = bus->regs[reg_intr_sts] & bus->regs[intr_ctrl_reg];
-+
-     /* In packet mode we don't mask off INTR_STS */
-     if (!aspeed_i2c_bus_pkt_mode_en(bus)) {
-         bus->regs[reg_intr_sts] &= bus->regs[intr_ctrl_reg];
-     }
-+
-     if (raise_irq) {
-         bus->controller->intr_status |= 1 << bus->id;
-         qemu_irq_raise(aic->bus_get_irq(bus));
-diff --git a/hw/i2c/trace-events b/hw/i2c/trace-events
-index 85e4bddff936..209275ed2dc8 100644
---- a/hw/i2c/trace-events
-+++ b/hw/i2c/trace-events
-@@ -9,7 +9,7 @@ i2c_recv(uint8_t address, uint8_t data) "recv(addr:0x%02x) data:0x%02x"
- # aspeed_i2c.c
- 
- aspeed_i2c_bus_cmd(uint32_t cmd, const char *cmd_flags, uint32_t count, uint32_t intr_status) "handling cmd=0x%x %s count=%d intr=0x%x"
--aspeed_i2c_bus_raise_interrupt(uint32_t intr_status, const char *str1, const char *str2, const char *str3, const char *str4, const char *str5, const char *str6) "handled intr=0x%x %s%s%s%s%s%s"
-+aspeed_i2c_bus_raise_interrupt(uint32_t intr_status, const char *s) "handled intr=0x%x %s"
- aspeed_i2c_bus_read(uint32_t busid, uint64_t offset, unsigned size, uint64_t value) "bus[%d]: To 0x%" PRIx64 " of size %u: 0x%" PRIx64
- aspeed_i2c_bus_write(uint32_t busid, uint64_t offset, unsigned size, uint64_t value) "bus[%d]: To 0x%" PRIx64 " of size %u: 0x%" PRIx64
- aspeed_i2c_bus_send(const char *mode, int i, int count, uint8_t byte) "%s send %d/%d 0x%02x"
+-/* Tx State Machine */
+-#define   I2CD_TX_STATE_MASK                  0xf
+-#define     I2CD_IDLE                         0x0
+-#define     I2CD_MACTIVE                      0x8
+-#define     I2CD_MSTART                       0x9
+-#define     I2CD_MSTARTR                      0xa
+-#define     I2CD_MSTOP                        0xb
+-#define     I2CD_MTXD                         0xc
+-#define     I2CD_MRXACK                       0xd
+-#define     I2CD_MRXD                         0xe
+-#define     I2CD_MTXACK                       0xf
+-#define     I2CD_SWAIT                        0x1
+-#define     I2CD_SRXD                         0x4
+-#define     I2CD_STXACK                       0x5
+-#define     I2CD_STXD                         0x6
+-#define     I2CD_SRXACK                       0x7
+-#define     I2CD_RECOVER                      0x3
+-
+-/* I2C Global Register */
+-REG32(I2C_CTRL_STATUS, 0x0) /* Device Interrupt Status */
+-REG32(I2C_CTRL_ASSIGN, 0x8) /* Device Interrupt Target Assignment */
+-REG32(I2C_CTRL_GLOBAL, 0xC) /* Global Control Register */
+-    FIELD(I2C_CTRL_GLOBAL, REG_MODE, 2, 1)
+-    FIELD(I2C_CTRL_GLOBAL, SRAM_EN, 0, 1)
+-REG32(I2C_CTRL_NEW_CLK_DIVIDER, 0x10) /* New mode clock divider */
+-
+-/* I2C Old Mode Device (Bus) Register */
+-REG32(I2CD_FUN_CTRL, 0x0) /* I2CD Function Control  */
+-    FIELD(I2CD_FUN_CTRL, POOL_PAGE_SEL, 20, 3) /* AST2400 */
+-    SHARED_FIELD(M_SDA_LOCK_EN, 16, 1)
+-    SHARED_FIELD(MULTI_MASTER_DIS, 15, 1)
+-    SHARED_FIELD(M_SCL_DRIVE_EN, 14, 1)
+-    SHARED_FIELD(MSB_STS, 9, 1)
+-    SHARED_FIELD(SDA_DRIVE_IT_EN, 8, 1)
+-    SHARED_FIELD(M_SDA_DRIVE_IT_EN, 7, 1)
+-    SHARED_FIELD(M_HIGH_SPEED_EN, 6, 1)
+-    SHARED_FIELD(DEF_ADDR_EN, 5, 1)
+-    SHARED_FIELD(DEF_ALERT_EN, 4, 1)
+-    SHARED_FIELD(DEF_ARP_EN, 3, 1)
+-    SHARED_FIELD(DEF_GCALL_EN, 2, 1)
+-    SHARED_FIELD(SLAVE_EN, 1, 1)
+-    SHARED_FIELD(MASTER_EN, 0, 1)
+-REG32(I2CD_AC_TIMING1, 0x04) /* Clock and AC Timing Control #1 */
+-REG32(I2CD_AC_TIMING2, 0x08) /* Clock and AC Timing Control #2 */
+-REG32(I2CD_INTR_CTRL, 0x0C)  /* I2CD Interrupt Control */
+-REG32(I2CD_INTR_STS, 0x10)   /* I2CD Interrupt Status */
+-    SHARED_FIELD(SLAVE_ADDR_MATCH, 31, 1)    /* 0: addr1 1: addr2 */
+-    SHARED_FIELD(SLAVE_ADDR_RX_PENDING, 29, 1)
+-    SHARED_FIELD(SLAVE_INACTIVE_TIMEOUT, 15, 1)
+-    SHARED_FIELD(SDA_DL_TIMEOUT, 14, 1)
+-    SHARED_FIELD(BUS_RECOVER_DONE, 13, 1)
+-    SHARED_FIELD(SMBUS_ALERT, 12, 1)                    /* Bus [0-3] only */
+-    FIELD(I2CD_INTR_STS, SMBUS_ARP_ADDR, 11, 1)         /* Removed */
+-    FIELD(I2CD_INTR_STS, SMBUS_DEV_ALERT_ADDR, 10, 1)   /* Removed */
+-    FIELD(I2CD_INTR_STS, SMBUS_DEF_ADDR, 9, 1)          /* Removed */
+-    FIELD(I2CD_INTR_STS, GCALL_ADDR, 8, 1)              /* Removed */
+-    FIELD(I2CD_INTR_STS, SLAVE_ADDR_RX_MATCH, 7, 1)     /* use RX_DONE */
+-    SHARED_FIELD(SCL_TIMEOUT, 6, 1)
+-    SHARED_FIELD(ABNORMAL, 5, 1)
+-    SHARED_FIELD(NORMAL_STOP, 4, 1)
+-    SHARED_FIELD(ARBIT_LOSS, 3, 1)
+-    SHARED_FIELD(RX_DONE, 2, 1)
+-    SHARED_FIELD(TX_NAK, 1, 1)
+-    SHARED_FIELD(TX_ACK, 0, 1)
+-REG32(I2CD_CMD, 0x14) /* I2CD Command/Status */
+-    SHARED_FIELD(SDA_OE, 28, 1)
+-    SHARED_FIELD(SDA_O, 27, 1)
+-    SHARED_FIELD(SCL_OE, 26, 1)
+-    SHARED_FIELD(SCL_O, 25, 1)
+-    SHARED_FIELD(TX_TIMING, 23, 2)
+-    SHARED_FIELD(TX_STATE, 19, 4)
+-    SHARED_FIELD(SCL_LINE_STS, 18, 1)
+-    SHARED_FIELD(SDA_LINE_STS, 17, 1)
+-    SHARED_FIELD(BUS_BUSY_STS, 16, 1)
+-    SHARED_FIELD(SDA_OE_OUT_DIR, 15, 1)
+-    SHARED_FIELD(SDA_O_OUT_DIR, 14, 1)
+-    SHARED_FIELD(SCL_OE_OUT_DIR, 13, 1)
+-    SHARED_FIELD(SCL_O_OUT_DIR, 12, 1)
+-    SHARED_FIELD(BUS_RECOVER_CMD_EN, 11, 1)
+-    SHARED_FIELD(S_ALT_EN, 10, 1)
+-    /* Command Bits */
+-    SHARED_FIELD(RX_DMA_EN, 9, 1)
+-    SHARED_FIELD(TX_DMA_EN, 8, 1)
+-    SHARED_FIELD(RX_BUFF_EN, 7, 1)
+-    SHARED_FIELD(TX_BUFF_EN, 6, 1)
+-    SHARED_FIELD(M_STOP_CMD, 5, 1)
+-    SHARED_FIELD(M_S_RX_CMD_LAST, 4, 1)
+-    SHARED_FIELD(M_RX_CMD, 3, 1)
+-    SHARED_FIELD(S_TX_CMD, 2, 1)
+-    SHARED_FIELD(M_TX_CMD, 1, 1)
+-    SHARED_FIELD(M_START_CMD, 0, 1)
+-REG32(I2CD_DEV_ADDR, 0x18) /* Slave Device Address */
+-REG32(I2CD_POOL_CTRL, 0x1C) /* Pool Buffer Control */
+-    SHARED_FIELD(RX_COUNT, 24, 5)
+-    SHARED_FIELD(RX_SIZE, 16, 5)
+-    SHARED_FIELD(TX_COUNT, 9, 5)
+-    FIELD(I2CD_POOL_CTRL, OFFSET, 2, 6) /* AST2400 */
+-REG32(I2CD_BYTE_BUF, 0x20) /* Transmit/Receive Byte Buffer */
+-    SHARED_FIELD(RX_BUF, 8, 8)
+-    SHARED_FIELD(TX_BUF, 0, 8)
+-REG32(I2CD_DMA_ADDR, 0x24) /* DMA Buffer Address */
+-REG32(I2CD_DMA_LEN, 0x28) /* DMA Transfer Length < 4KB */
+-
+-/* I2C New Mode Device (Bus) Register */
+-REG32(I2CC_FUN_CTRL, 0x0)
+-    FIELD(I2CC_FUN_CTRL, RB_EARLY_DONE_EN, 22, 1)
+-    FIELD(I2CC_FUN_CTRL, DMA_DIS_AUTO_RECOVER, 21, 1)
+-    FIELD(I2CC_FUN_CTRL, S_SAVE_ADDR, 20, 1)
+-    FIELD(I2CC_FUN_CTRL, M_PKT_RETRY_CNT, 18, 2)
+-    /* 17:0 shared with I2CD_FUN_CTRL[17:0] */
+-REG32(I2CC_AC_TIMING, 0x04)
+-REG32(I2CC_MS_TXRX_BYTE_BUF, 0x08)
+-    /* 31:16 shared with I2CD_CMD[31:16] */
+-    /* 15:0  shared with I2CD_BYTE_BUF[15:0] */
+-REG32(I2CC_POOL_CTRL, 0x0c)
+-    /* 31:0 shared with I2CD_POOL_CTRL[31:0] */
+-REG32(I2CM_INTR_CTRL, 0x10)
+-REG32(I2CM_INTR_STS, 0x14)
+-    FIELD(I2CM_INTR_STS, PKT_STATE, 28, 4)
+-    FIELD(I2CM_INTR_STS, PKT_CMD_TIMEOUT, 18, 1)
+-    FIELD(I2CM_INTR_STS, PKT_CMD_FAIL, 17, 1)
+-    FIELD(I2CM_INTR_STS, PKT_CMD_DONE, 16, 1)
+-    FIELD(I2CM_INTR_STS, BUS_RECOVER_FAIL, 15, 1)
+-    /* 14:0 shared with I2CD_INTR_STS[14:0] */
+-REG32(I2CM_CMD, 0x18)
+-    FIELD(I2CM_CMD, W1_CTRL, 31, 1)
+-    FIELD(I2CM_CMD, PKT_DEV_ADDR, 24, 7)
+-    FIELD(I2CM_CMD, HS_MASTER_MODE_LSB, 17, 3)
+-    FIELD(I2CM_CMD, PKT_OP_EN, 16, 1)
+-    /* 15:0 shared with I2CD_CMD[15:0] */
+-REG32(I2CM_DMA_LEN, 0x1c)
+-    FIELD(I2CM_DMA_LEN, RX_BUF_LEN_W1T, 31, 1)
+-    FIELD(I2CM_DMA_LEN, RX_BUF_LEN, 16, 11)
+-    FIELD(I2CM_DMA_LEN, TX_BUF_LEN_W1T, 15, 1)
+-    FIELD(I2CM_DMA_LEN, TX_BUF_LEN, 0, 11)
+-REG32(I2CS_INTR_CTRL, 0x20)
+-REG32(I2CS_INTR_STS, 0x24)
+-    /* 31:29 shared with I2CD_INTR_STS[31:29] */
+-    FIELD(I2CS_INTR_STS, SLAVE_PARKING_STS, 24, 2)
+-    FIELD(I2CS_INTR_STS, SLAVE_ADDR3_NAK, 22, 1)
+-    FIELD(I2CS_INTR_STS, SLAVE_ADDR2_NAK, 21, 1)
+-    FIELD(I2CS_INTR_STS, SLAVE_ADDR1_NAK, 20, 1)
+-    FIELD(I2CS_INTR_STS, SLAVE_ADDR_INDICATOR, 18, 2)
+-    FIELD(I2CS_INTR_STS, PKT_CMD_FAIL, 17, 1)
+-    FIELD(I2CS_INTR_STS, PKT_CMD_DONE, 16, 1)
+-    /* 14:0 shared with I2CD_INTR_STS[14:0] */
+-REG32(I2CS_CMD, 0x28)
+-    FIELD(I2CS_CMD, W1_CTRL, 31, 1)
+-    FIELD(I2CS_CMD, PKT_MODE_ACTIVE_ADDR, 17, 2)
+-    FIELD(I2CS_CMD, PKT_MODE_EN, 16, 1)
+-    FIELD(I2CS_CMD, AUTO_NAK_INACTIVE_ADDR, 15, 1)
+-    FIELD(I2CS_CMD, AUTO_NAK_ACTIVE_ADDR, 14, 1)
+-    /* 13:0 shared with I2CD_CMD[13:0] */
+-REG32(I2CS_DMA_LEN, 0x2c)
+-    FIELD(I2CS_DMA_LEN, RX_BUF_LEN_W1T, 31, 1)
+-    FIELD(I2CS_DMA_LEN, RX_BUF_LEN, 16, 11)
+-    FIELD(I2CS_DMA_LEN, TX_BUF_LEN_W1T, 15, 1)
+-    FIELD(I2CS_DMA_LEN, TX_BUF_LEN, 0, 11)
+-REG32(I2CM_DMA_TX_ADDR, 0x30)
+-    FIELD(I2CM_DMA_TX_ADDR, ADDR, 0, 31)
+-REG32(I2CM_DMA_RX_ADDR, 0x34)
+-    FIELD(I2CM_DMA_RX_ADDR, ADDR, 0, 31)
+-REG32(I2CS_DMA_TX_ADDR, 0x38)
+-    FIELD(I2CS_DMA_TX_ADDR, ADDR, 0, 31)
+-REG32(I2CS_DMA_RX_ADDR, 0x3c)
+-    FIELD(I2CS_DMA_RX_ADDR, ADDR, 0, 31)
+-REG32(I2CS_DEV_ADDR, 0x40)
+-REG32(I2CM_DMA_LEN_STS, 0x48)
+-    FIELD(I2CM_DMA_LEN_STS, RX_LEN, 16, 13)
+-    FIELD(I2CM_DMA_LEN_STS, TX_LEN, 0, 13)
+-REG32(I2CS_DMA_LEN_STS, 0x4c)
+-    FIELD(I2CS_DMA_LEN_STS, RX_LEN, 16, 13)
+-    FIELD(I2CS_DMA_LEN_STS, TX_LEN, 0, 13)
+-REG32(I2CC_DMA_ADDR, 0x50)
+-REG32(I2CC_DMA_LEN, 0x54)
+-
+-static inline bool aspeed_i2c_is_new_mode(AspeedI2CState *s)
+-{
+-    return FIELD_EX32(s->ctrl_global, I2C_CTRL_GLOBAL, REG_MODE);
+-}
+-
+-static inline bool aspeed_i2c_bus_pkt_mode_en(AspeedI2CBus *bus)
+-{
+-    if (aspeed_i2c_is_new_mode(bus->controller)) {
+-        return ARRAY_FIELD_EX32(bus->regs, I2CM_CMD, PKT_OP_EN);
+-    }
+-    return false;
+-}
+-
+-static inline uint32_t aspeed_i2c_bus_ctrl_offset(AspeedI2CBus *bus)
+-{
+-    if (aspeed_i2c_is_new_mode(bus->controller)) {
+-        return R_I2CC_FUN_CTRL;
+-    }
+-    return R_I2CD_FUN_CTRL;
+-}
+-
+-static inline uint32_t aspeed_i2c_bus_cmd_offset(AspeedI2CBus *bus)
+-{
+-    if (aspeed_i2c_is_new_mode(bus->controller)) {
+-        return R_I2CM_CMD;
+-    }
+-    return R_I2CD_CMD;
+-}
+-
+-static inline uint32_t aspeed_i2c_bus_intr_ctrl_offset(AspeedI2CBus *bus)
+-{
+-    if (aspeed_i2c_is_new_mode(bus->controller)) {
+-        return R_I2CM_INTR_CTRL;
+-    }
+-    return R_I2CD_INTR_CTRL;
+-}
+-
+-static inline uint32_t aspeed_i2c_bus_intr_sts_offset(AspeedI2CBus *bus)
+-{
+-    if (aspeed_i2c_is_new_mode(bus->controller)) {
+-        return R_I2CM_INTR_STS;
+-    }
+-    return R_I2CD_INTR_STS;
+-}
+-
+-static inline uint32_t aspeed_i2c_bus_pool_ctrl_offset(AspeedI2CBus *bus)
+-{
+-    if (aspeed_i2c_is_new_mode(bus->controller)) {
+-        return R_I2CC_POOL_CTRL;
+-    }
+-    return R_I2CD_POOL_CTRL;
+-}
+-
+-static inline uint32_t aspeed_i2c_bus_byte_buf_offset(AspeedI2CBus *bus)
+-{
+-    if (aspeed_i2c_is_new_mode(bus->controller)) {
+-        return R_I2CC_MS_TXRX_BYTE_BUF;
+-    }
+-    return R_I2CD_BYTE_BUF;
+-}
+-
+-static inline uint32_t aspeed_i2c_bus_dma_len_offset(AspeedI2CBus *bus)
+-{
+-    if (aspeed_i2c_is_new_mode(bus->controller)) {
+-        return R_I2CC_DMA_LEN;
+-    }
+-    return R_I2CD_DMA_LEN;
+-}
+-
+-static inline uint32_t aspeed_i2c_bus_dma_addr_offset(AspeedI2CBus *bus)
+-{
+-    if (aspeed_i2c_is_new_mode(bus->controller)) {
+-        return R_I2CC_DMA_ADDR;
+-    }
+-    return R_I2CD_DMA_ADDR;
+-}
+-
+-static inline bool aspeed_i2c_bus_is_master(AspeedI2CBus *bus)
+-{
+-    return SHARED_ARRAY_FIELD_EX32(bus->regs, aspeed_i2c_bus_ctrl_offset(bus),
+-                                   MASTER_EN);
+-}
+-
+-static inline bool aspeed_i2c_bus_is_enabled(AspeedI2CBus *bus)
+-{
+-    uint32_t ctrl_reg = aspeed_i2c_bus_ctrl_offset(bus);
+-    return SHARED_ARRAY_FIELD_EX32(bus->regs, ctrl_reg, MASTER_EN) ||
+-           SHARED_ARRAY_FIELD_EX32(bus->regs, ctrl_reg, SLAVE_EN);
+-}
+-
+ static inline void aspeed_i2c_bus_raise_interrupt(AspeedI2CBus *bus)
+ {
+     AspeedI2CClass *aic = ASPEED_I2C_GET_CLASS(bus->controller);
 -- 
 2.35.3
 

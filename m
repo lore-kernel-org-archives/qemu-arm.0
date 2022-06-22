@@ -1,91 +1,90 @@
-Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp2446454lft;
-        Wed, 22 Jun 2022 13:59:39 -0700 (PDT)
-X-Google-Smtp-Source: AGRyM1tlH7jbRJhPuIgjagB9IQCbiumMhd5/DCNOkp6K3KNJxJoFCT6o1xgsFinbWu+DIgQ/i/2n
-X-Received: by 2002:a05:6214:e61:b0:470:29c9:1785 with SMTP id jz1-20020a0562140e6100b0047029c91785mr22934868qvb.52.1655931578886;
-        Wed, 22 Jun 2022 13:59:38 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1655931578; cv=none;
+Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp2447393lft;
+        Wed, 22 Jun 2022 14:01:14 -0700 (PDT)
+X-Google-Smtp-Source: AGRyM1uc2KUOu6IGabZA5T8Ag8LGf6Ta36yn/40Ha4cPKnAoO0BCxuHHvsVim7oM/37esEKAuwjg
+X-Received: by 2002:a05:622a:c8:b0:305:2072:ed36 with SMTP id p8-20020a05622a00c800b003052072ed36mr4772988qtw.182.1655931674789;
+        Wed, 22 Jun 2022 14:01:14 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1655931674; cv=none;
         d=google.com; s=arc-20160816;
-        b=Th09YhbpfYjoF1pLj4xgKSwu19X9DRRD3aRUsBOGzm8Uu7kpLWELK2xrJlju9JpqE9
-         gMEQslH9ucLnffdmSUnUFbEzh13LIaDtjoH4uX6bZl1zcH6qKXuCvfvoI1xM63evtehT
-         m4aqjcPrcuVjQQRuJeUlSZ3Fr4T3Jk1AX6tzY3PV/8cb9PXaUUyjXN8LjXIk41S3NQNs
-         ndtqXBj1JqcU3JcevpqaY3k+rwwkGMf1Eei8cO1+EohYAieUJVj6ePpZoBDRR8WY13M6
-         fdXB9rIv2UgSJBtRAeQ5/ZBavFCuyKCmrPJ6F8fGLe2n+1ugWWWNG6gnPj9g/qPb5s4l
-         /fLw==
+        b=qfcjFN7He7slsgTjxubcZIWRktUQW4kfkns8rFc6A6D18LrrfaGJ4b1j/0aS2MoZLI
+         ETJgyNMAt/l7CY/BEfFCSTuPHbjj70jIslqxy95KuBNMKrEX7iAp+qXr1YNfHJG1ZxAI
+         lUGbPpuxXowo29FlSaqiUSK8n4ZWvmoob7hqK8URyDtBJdZEwpcbWtCePAHZpeN8pgdq
+         kufChD87gf2Y1Pq8iErOPGozH2of58z/Z4/QAfElNfgPS2KNX3KdHvmps1wwgh7mk8uc
+         TLTRRny2ftNHw5lwvOwiPUDSNouVU6I8Cz6MCW8AY5fXAS2eqeixjoVySGLPasu4rSID
+         ovYQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
          :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=Sx9rq8Lf7HbGyLSlOoc6WGlEoy++zzAiZ3xvimjEBBY=;
-        b=hFcJYs5ooHG1wwtiBNjbiU/grJjNYx735ccwHdisvlLBZNU0D6d+yHydmzx7heKu1i
-         gN6Z6ZmkSMG1JlcNZAtdjfCMpdMhqGu7XX7pC1WNuFgUsKZF2B43pG8Njoz0X7lItAbz
-         Ths/rmUotQI6vWlsNIyPlikFb7MQcCCDNsV7zUQclizrD2wFnQ0tN/QXimA95ZFM+P87
-         9BRXlYoK1AYMLzLshopL9oKiVhb9CmThtIYw9Cx5PoVuJ00yC7DM9zTndaCuI9nZH5/g
-         MW1fJypI0pdIuhT5V9SHOykWJePjd/YEnQeU9L7xSNh7FY8kkZNGM41xzHJu8VHIXrrY
-         53ww==
+        bh=B6i5EpIAMDdtFwZvLblIe+v/y/vG+v6Cn1OsZodYJ9Y=;
+        b=CRp9n2eCBQu8WZA8SxPeIb9Xrw8tRjqmTZCgehP+1MD145RfJ35+/KzDuVweA5CmQ5
+         Qzs6mwkADKwVAHKNAvy6n0kU2IZT10DSSf4n4QBm0zTlqOV943XQT4M0K2mlDxa1jJk5
+         Z+JLaTfHzOnZmeC6M19IT5IFqh8LdNrTCmtHV4u+d6KmXC1sFw9Tdn1QdLyzvUlDBEll
+         RRGdEihyMEnDFADHlDJQ6PR1K6zfddvyzrI0DTSWgUXOCSWmSEfJ2HCXuF0yxNGoKdJa
+         65PEf/y2j2w5tcFpvf1wzWsc+ckj0+LlGas8IGPUPlF5V0AoSPcUGbUo9SE/tHuGm0MC
+         6W7Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@google.com header.s=20210112 header.b=P4Af5xeA;
+       dkim=pass header.i=@google.com header.s=20210112 header.b=f1h7z387;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id k8-20020ae9f108000000b006a725ec488esi2184227qkg.263.2022.06.22.13.59.38
+        by mx.google.com with ESMTPS id c9-20020ac87d89000000b003050ceed0a7si12334991qtd.290.2022.06.22.14.01.14
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 22 Jun 2022 13:59:38 -0700 (PDT)
+        Wed, 22 Jun 2022 14:01:14 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@google.com header.s=20210112 header.b=P4Af5xeA;
+       dkim=pass header.i=@google.com header.s=20210112 header.b=f1h7z387;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
-Received: from localhost ([::1]:43732 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:46516 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1o47Rq-0005Ci-Dl
-	for alex.bennee@linaro.org; Wed, 22 Jun 2022 16:59:38 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49330)
+	id 1o47TO-000740-8E
+	for alex.bennee@linaro.org; Wed, 22 Jun 2022 17:01:14 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:49446)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <titusr@google.com>) id 1o47IT-0003Dg-1R
- for qemu-devel@nongnu.org; Wed, 22 Jun 2022 16:49:58 -0400
-Received: from mail-ed1-x52b.google.com ([2a00:1450:4864:20::52b]:34679)
+ (Exim 4.90_1) (envelope-from <titusr@google.com>) id 1o47Id-0003hl-EB
+ for qemu-devel@nongnu.org; Wed, 22 Jun 2022 16:50:07 -0400
+Received: from mail-ed1-x536.google.com ([2a00:1450:4864:20::536]:44949)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <titusr@google.com>) id 1o47IR-0004KL-AI
- for qemu-devel@nongnu.org; Wed, 22 Jun 2022 16:49:56 -0400
-Received: by mail-ed1-x52b.google.com with SMTP id o10so25598617edi.1
- for <qemu-devel@nongnu.org>; Wed, 22 Jun 2022 13:49:53 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <titusr@google.com>) id 1o47Ib-0004XZ-Hq
+ for qemu-devel@nongnu.org; Wed, 22 Jun 2022 16:50:07 -0400
+Received: by mail-ed1-x536.google.com with SMTP id z19so8758426edb.11
+ for <qemu-devel@nongnu.org>; Wed, 22 Jun 2022 13:50:05 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20210112;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=Sx9rq8Lf7HbGyLSlOoc6WGlEoy++zzAiZ3xvimjEBBY=;
- b=P4Af5xeANsQI1sqhFHztffNJ9D5cNzT1vSTsgOn7St5LBkcYmm7r4/BSAE5PY6o0KG
- SwnK9T1hyvZshMTLE5E8uBS3LaKUS74xv6vd+iKQCQBxjvJXBMvMJIRuE5pAhw+oj+aa
- 5gmBirimx32Z9aNOAwur4suYccwFnBGjBscMxN2Js9Kl5uvQaDUxLzv7sKUpGEdKcprA
- mX3XdxKr4wgK5XZOyUOjDPO25vAlJmGd9UHQn/hjLOENqCAEY6EvadlYSYdqG2txhIXt
- 9zy7TGaQ2s+Qm3P/3Ht3wy/aI/m44ous7WcwiGMOWZIJf7MXEH7/VmzBR4bmAnV6zsPr
- I1ow==
+ :cc; bh=B6i5EpIAMDdtFwZvLblIe+v/y/vG+v6Cn1OsZodYJ9Y=;
+ b=f1h7z387mqEjgXiOqI7FFp9j3zMfOyrVx2rasV5IftSr0phFUTa6njMd/ndsun7TBt
+ b/hPst6xy+qlApz8Jk33/OlaIYBFECvTQyvR03b84aGvukMuKkrcikvFb1rxmcEg/17x
+ 2cuHCnsMXUODRC+PzCrP7py+t794KLI6xJVfBH6LvXeHTtd3oHV+bwdf1OWOSPeO1GJm
+ NOB0CqPjERBU36n4rJT1Y11Bjv2VA9I+qHb8PPk0D8VnPIKUgszCNq7Det9VTUSl02hW
+ k7dCzDPtPJahJAl/kh3S0JpkVAv/mXxy8b3Hc+483Yl0eKhzgpbt+HI/YVfgfcIz3RjU
+ lnZA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=Sx9rq8Lf7HbGyLSlOoc6WGlEoy++zzAiZ3xvimjEBBY=;
- b=T+Mwmrtzt63DqnKgSHl5mfTQXObyjwUhppG79pk4wMsLKs5uRkN6Pxtrwj+d8/c5K3
- jQchQUQ4aD+Vsyvylgn9jkJI4D0w1uTX8P3rm8fdOrz77hnW88G7AlEBe/AQZkroAEBY
- FTA++KfkwHOSoJKstqBjwdEg8noR6ixCSOmZ7te6cARcaK2FQB5HU/JXZc9AN0N+FEGd
- +UrjCGyEa6BWYBL0zmlotLMUX95o88c23gnuoaesmXMPBPT2M5felBZm8qczYffZOwy1
- g+vJIgHe0e7IvCNANJPFYtsPaBg5TK0JByBuNYs6QJzObUHoNkl9JzcY0eofWXZAwAue
- VNTw==
-X-Gm-Message-State: AJIora8k6ZZEZZC3ozY2lfXb01djTm2kpJevYOUKFBvivdAoWT8t3Uo3
- 3xRHu42WTD6QiEQGePstnRJ5CuMJazjG+i3WQ9Yt4Q==
-X-Received: by 2002:a05:6402:1d51:b0:41f:cf6c:35a5 with SMTP id
- dz17-20020a0564021d5100b0041fcf6c35a5mr6411817edb.25.1655930992180; Wed, 22
- Jun 2022 13:49:52 -0700 (PDT)
+ bh=B6i5EpIAMDdtFwZvLblIe+v/y/vG+v6Cn1OsZodYJ9Y=;
+ b=LyvkzvmeFgPenPJeGR7F0IUi1LjiOW2D24rASBmz/pPIE8f5DlzKvzhn5SxhjHHTNq
+ hqGF1IpzR6KGwh+Tm48VHXtD8fLGDOpQ2s225zygA1HfaVgqgJsDfP2vcAmYacILFxvP
+ zBM/AtEqKh6WLS9CkorfqO6SxGBfMRcHHoVZffR5R3LJ7O1kIdfgbrZOOf3QgroP18/U
+ UmnuJa+8dqK6BxLAj+FLSKvi/bv27Ah4DxD+15TBuXjCOeTTX8ypBCDdUKI94YsdZpCR
+ QmogYZMrO1SXYnIOFC6wyq7QNy0ymZmDB2xEZmWU53rkFYs3hsfcJ3j1Kyj4oE3nMYne
+ tMuA==
+X-Gm-Message-State: AJIora/0nQ+p/aF4ZhsrBWxsVk0ETdgphqtX8n5xVbA89YqW9ZpfOQj6
+ izIgskZ3gJCLi4e7oCYdsIOG/H0AzfKGqTz1Y0oEHA==
+X-Received: by 2002:aa7:c801:0:b0:435:5a08:f54c with SMTP id
+ a1-20020aa7c801000000b004355a08f54cmr6532950edt.254.1655931004007; Wed, 22
+ Jun 2022 13:50:04 -0700 (PDT)
 MIME-Version: 1.0
 References: <20220622172830.101210-1-quic_jaehyoo@quicinc.com>
- <20220622172830.101210-6-quic_jaehyoo@quicinc.com>
-In-Reply-To: <20220622172830.101210-6-quic_jaehyoo@quicinc.com>
+ <20220622172830.101210-7-quic_jaehyoo@quicinc.com>
+In-Reply-To: <20220622172830.101210-7-quic_jaehyoo@quicinc.com>
 From: Titus Rwantare <titusr@google.com>
-Date: Wed, 22 Jun 2022 13:49:15 -0700
-Message-ID: <CAMvPwGp6Rr3g5Rn3jAU1ZK_99oxrx6z=4ggUWFheL_ipQnJfHQ@mail.gmail.com>
-Subject: Re: [PATCH 5/9] hw/i2c: pmbus: Page #255 is valid page for read
- requests.
+Date: Wed, 22 Jun 2022 13:49:27 -0700
+Message-ID: <CAMvPwGoPsdj8ZX1YAK06w9maCaPOVg1Us8YWQr3cH_+6MfRUQA@mail.gmail.com>
+Subject: Re: [PATCH 6/9] hw/sensor: add Maxim MAX31785 device
 To: Jae Hyun Yoo <quic_jaehyoo@quicinc.com>
 Cc: Peter Maydell <peter.maydell@linaro.org>,
  =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>, 
@@ -94,8 +93,8 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  Maheswara Kurapati <quic_mkurapat@quicinc.com>, 
  qemu-arm@nongnu.org, qemu-devel@nongnu.org
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::52b;
- envelope-from=titusr@google.com; helo=mail-ed1-x52b.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::536;
+ envelope-from=titusr@google.com; helo=mail-ed1-x536.google.com
 X-Spam_score_int: -175
 X-Spam_score: -17.6
 X-Spam_bar: -----------------
@@ -118,57 +117,114 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: xszzCBtLvHEu
+X-TUID: kZP/QEcu1k9j
 
 On Wed, 22 Jun 2022 at 10:29, Jae Hyun Yoo <quic_jaehyoo@quicinc.com> wrote:
 >
 > From: Maheswara Kurapati <quic_mkurapat@quicinc.com>
 >
-> Current implementation of the pmbus core driver treats the read request
-> for page 255 as invalid request and sets the invalid command bit (bit 7) in the
-> STATUS_CML register. As per the PMBus specification it is a valid request.
->
-> Refer to the PMBus specification, revision 1.3.1, section 11.10 PAGE, on the page 58:
-> "Setting the PAGE to FFh means that all subsequent comands are to be applied to
->  all outputs.
->
->  Some commands, such as READ_TEMPERATURE, may use a common sensor but be
->  available on all pages of a device.  Such implementations are the decision of
->  each device manufacturer or are specified in a PMBus Application Profile. Consult
->  the manufacturer's socuments or the Applicatin Profile Specification as needed."
->
-Thanks for this, the copy of the spec I used was older.
-
-
-> For e.g.,
-> The VOUT_MODE is a valid command for page 255 for maxim 31785 device.
-> refer to Table 1. PMBus Command Codes on page 14 in the datasheet.
+> MAX31785 is a PMBus compliant 6-Channel fan controller. It supports 6 fan
+> channels, 11 temperature sensors, and 6-Channel ADC to measure the remote
+> voltages. Datasheet can be found here:
 > https://datasheets.maximintegrated.com/en/ds/MAX31785.pdf
 >
-> Fixes: 38870253f1d1 ("hw/i2c: pmbus: fix error returns and guard against out of range accesses")
+> This initial version of the driver has skeleton and support for the
+> fan channels. Requests for temperature sensors, and ADC Channels the
+> are serviced with the default values as per the datasheet.  No additional
+> instrumentation is done.  NV Log feature is not supported.
 >
 > Signed-off-by: Maheswara Kurapati <quic_mkurapat@quicinc.com>
 > ---
->  hw/i2c/pmbus_device.c | 1 -
->  1 file changed, 1 deletion(-)
+>  hw/arm/Kconfig        |   1 +
+>  hw/arm/aspeed.c       |   6 +-
+>  hw/sensor/Kconfig     |   4 +
+>  hw/sensor/max31785.c  | 580 ++++++++++++++++++++++++++++++++++++++++++
+>  hw/sensor/meson.build |   1 +
+>  5 files changed, 590 insertions(+), 2 deletions(-)
+>  create mode 100644 hw/sensor/max31785.c
 >
-> diff --git a/hw/i2c/pmbus_device.c b/hw/i2c/pmbus_device.c
-> index 62885fa6a15e..7db3343a83b6 100644
-> --- a/hw/i2c/pmbus_device.c
-> +++ b/hw/i2c/pmbus_device.c
-> @@ -291,7 +291,6 @@ static uint8_t pmbus_receive_byte(SMBusDevice *smd)
->          qemu_log_mask(LOG_GUEST_ERROR,
->                        "%s: tried to read from all pages\n",
->                        __func__);
-> -        pmbus_cml_error(pmdev);
->      } else if (pmdev->page > pmdev->num_pages - 1) {
->          qemu_log_mask(LOG_GUEST_ERROR,
->                        "%s: page %d is out of range\n",
-> --
-> 2.25.1
+> diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
+> index 219262a8da36..77ef0fa967b2 100644
+> --- a/hw/arm/Kconfig
+> +++ b/hw/arm/Kconfig
+> @@ -408,6 +408,7 @@ config NPCM7XX
+>      select SSI
+>      select UNIMP
+>      select PCA954X
+> +    select MAX31785
 >
+>  config FSL_IMX25
+>      bool
 
-Please also update the stale comment just above, since this is now
-specified behaviour.
+As this is being used with the Aspeed 2600, you may need to select
+PMBUS and MAX31785 under config ASPEED_SOC in this same file.
 
-Reviewed-by: Titus Rwantare <titusr@google.com>
+
+> diff --git a/hw/sensor/max31785.c b/hw/sensor/max31785.c
+> new file mode 100644
+> index 000000000000..11bf9977b6fd
+> --- /dev/null
+> +++ b/hw/sensor/max31785.c
+
+
+Also, style nit, the checkpatch.pl script doesn't check whitespace
+alignment. But the style guide
+https://qemu-project.gitlab.io/qemu/devel/style.html#multiline-indent
+specifies the variants we should use.
+
+> +        pmdev->pages[i].vout_scale_monitor =
+> +        MAX31785_DEFAULT_VOUT_SCALE_MONITOR;
+> +        pmdev->pages[i].vout_ov_fault_limit =
+> +        MAX31785_DEFAULT_OV_FAULT_LIMIT;
+> +        pmdev->pages[i].vout_ov_warn_limit =
+> +        MAX31785_DEFAULT_OV_WARN_LIMIT;
+> +    }
+> +
+> +}
+> +
+> +static const VMStateDescription vmstate_max31785 = {
+> +    .name = TYPE_MAX31785,
+> +    .version_id = 0,
+> +    .minimum_version_id = 0,
+> +    .fields = (VMStateField[]){
+> +        VMSTATE_PMBUS_DEVICE(parent, MAX31785State),
+> +        VMSTATE_UINT16_ARRAY(mfr_mode, MAX31785State,
+> +        MAX31785_TOTAL_NUM_PAGES),
+> +        VMSTATE_UINT16_ARRAY(vout_peak, MAX31785State,
+> +        MAX31785_TOTAL_NUM_PAGES),
+> +        VMSTATE_UINT16_ARRAY(temperature_peak, MAX31785State,
+> +        MAX31785_TOTAL_NUM_PAGES),
+> +        VMSTATE_UINT16_ARRAY(vout_min, MAX31785State,
+> +        MAX31785_TOTAL_NUM_PAGES),
+> +        VMSTATE_UINT8_ARRAY(fault_response, MAX31785State,
+> +        MAX31785_TOTAL_NUM_PAGES),
+> +        VMSTATE_UINT32_ARRAY(time_count, MAX31785State,
+> +        MAX31785_TOTAL_NUM_PAGES),
+> +        VMSTATE_UINT16_ARRAY(temp_sensor_config, MAX31785State,
+> +        MAX31785_TOTAL_NUM_PAGES),
+> +        VMSTATE_UINT16_ARRAY(fan_config, MAX31785State,
+> +        MAX31785_TOTAL_NUM_PAGES),
+> +        VMSTATE_UINT16_ARRAY(read_fan_pwm, MAX31785State,
+> +        MAX31785_TOTAL_NUM_PAGES),
+> +        VMSTATE_UINT16_ARRAY(fan_fault_limit, MAX31785State,
+> +        MAX31785_TOTAL_NUM_PAGES),
+> +        VMSTATE_UINT16_ARRAY(fan_warn_limit, MAX31785State,
+> +        MAX31785_TOTAL_NUM_PAGES),
+> +        VMSTATE_UINT16_ARRAY(fan_run_time, MAX31785State,
+> +        MAX31785_TOTAL_NUM_PAGES),
+> +        VMSTATE_UINT16_ARRAY(fan_pwm_avg, MAX31785State,
+> +        MAX31785_TOTAL_NUM_PAGES),
+> +        VMSTATE_UINT64_ARRAY(fan_pwm2rpm, MAX31785State,
+> +        MAX31785_TOTAL_NUM_PAGES),
+> +        VMSTATE_UINT64(mfr_location, MAX31785State),
+> +        VMSTATE_UINT64(mfr_date, MAX31785State),
+> +        VMSTATE_UINT64(mfr_serial, MAX31785State),
+> +        VMSTATE_END_OF_LIST()
+> +    }
+> +};
+> +
+There's missing indentation here for example.
+
+
+Thanks,
+Titus Rwantare

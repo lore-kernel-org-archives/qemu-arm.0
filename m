@@ -1,109 +1,104 @@
-Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp2835430lft;
-        Thu, 23 Jun 2022 03:27:16 -0700 (PDT)
-X-Google-Smtp-Source: AGRyM1vb0xubnRnjgdXIu4OnlIssCzELJ1owQrDkhYTdeS651W+QrfX7VPQHB1s0Rw6ONuKpS5zG
-X-Received: by 2002:ad4:5be6:0:b0:464:4f31:870 with SMTP id k6-20020ad45be6000000b004644f310870mr31180581qvc.109.1655980036279;
-        Thu, 23 Jun 2022 03:27:16 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1655980036; cv=none;
+Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp2867725lft;
+        Thu, 23 Jun 2022 04:26:02 -0700 (PDT)
+X-Google-Smtp-Source: AGRyM1s1sNR08ynwsUasBo711Oh+UfveWvhDKQD7PcHYB0u8g9UJkz03FTSJMaaON8HsGFwUqv71
+X-Received: by 2002:a0c:f28b:0:b0:470:605b:1c2c with SMTP id k11-20020a0cf28b000000b00470605b1c2cmr7033926qvl.123.1655983561831;
+        Thu, 23 Jun 2022 04:26:01 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1655983561; cv=none;
         d=google.com; s=arc-20160816;
-        b=FLOcpl7wGPZJNMV6eeUC8ltU6M7TqagKfB5hPNgV/ZLGHQVULbEW9lw/E3oqJBllqQ
-         FUBGIUKlAyWq1F0UXImczMV91H/DBdh/zPbVF12xZsQupTHzYAylaIvoFyeFggZtbzJp
-         jehTcX+rP+krqcviij+k1F9oixE1wFwv6wB+yf2fvDlj3+1gVrOrO4MWpgA1kqedu3I1
-         hY8uVzHvq0EuHqR7xf9u/5CRgAfKNBuK6JWDpExirxlPmj8n32dPaHF3upDhxN++Kgnu
-         Ggjf2l7YeXt0uX+KT9agiH4+f/fTciwCjYvqukJk+JKPTbZqla9WdvjA+9xlV9b+Imot
-         ocVw==
+        b=nRbT4oLTtiRHbrZZaOufD8Ps5guB3HGurNuccvlmUdBxtLjVAdMhfwzuPMr/3H2oby
+         zGGv7s1yuQp06Bz4HDTF8pk2kSQWVch5jFx9pbXXARTzfch5GCA0M9zy4RTWAlZgh144
+         sQsBmYcKYeVh81/oFQO5iWNv6vQnBX/qYx8H9KWpiqjw+rSB1RPwN3hG2wAlV7Jwvow1
+         hxDFrJzJRdOAxc0wTb3Z31TWJa4fbJk3inzuB+5JmAms0yD05P53ocOEUVcFuysjg6Tr
+         K2cHvTGkIQjGee/JulWBmuSRRRq+SaxJyUYCRzKg1JY65OJa3MfmeGKWCUVV7V9Dif05
+         bjlg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:in-reply-to
-         :content-transfer-encoding:content-disposition:mime-version
-         :references:message-id:subject:cc:to:from:date:dkim-signature;
-        bh=1kUdEyYsiBtSxa3OFxYiRQYPCMEFo7s5I5wp24Gjr7Q=;
-        b=dxrFh3HEc71ivlEwQ7wOjRtYmZs7BZVwQ9wxsYbRJx4LgTkF1D7VnzHwukiSy7ZZ6f
-         agrH0ZfPBnsHu8VeK+r2Yk7ZDHiEhUYOqC0pfgw6ir9dwMcBiSvPRMI1EtfgrhQI0ekJ
-         bzm+2wKAD0X95soKsN9imKx+Dyat/U9QV1PMnK9xelMuM0UFkHJFsQcp8HMd+RkkTPPC
-         6Mk+dt28cYj9fgFoaqqnen+x5Yc+R87xGCjp5s3ZRql4utOGomJwIwKoWvCpWck355BW
-         lzyHfmFzmUw3GsihTHuBGB6jGFvjBk3Ia+i4zV6ohLqqGzuj2YAm+WVF7jleKNLpWPS1
-         N4Zg==
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=AOH6eIuL0aIpPL+ItqXK2B9mSn8bjv/xgbmvR4pYTiU=;
+        b=Gp+zL/L6QWc9Zcl0mXKx8j/+CCCTEOsJ22m1F8/09NEW9Xp/2ikanRqPhsGTFrroAo
+         akeuK/5byJJq3YCLy7Q6jGqQ32Fsv1QvAb24lZKu+k8aEwfnAW3f3XgqeCyPu1Oy2N5w
+         dwr8G4B/4rUjFwNoR/2Ww3ujbKT5HdeMUgaUINj6VW3PFI1NTocIArOPmVApxjZrnqm1
+         /kaYiTG4FmiTT6V3c7NKD8huo3AxLDGZSZ9RLXnVQa/Yt9W0kzu5Y/OzQFj+EKvmC2KN
+         uER0LAXhHF0pEPMKms5ltAkzHL6diFFUIcTRfy4E6CYziJnLadC1aAvvq8yaDrU1CDo9
+         JKOA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@quicinc.com header.s=qcdkim header.b=XUOLvFrf;
+       dkim=pass header.i=@linaro.org header.s=google header.b=WkRznGrv;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=quicinc.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id j14-20020a05621419ce00b00470679c86bdsi3098836qvc.382.2022.06.23.03.27.16
+        by mx.google.com with ESMTPS id d20-20020a05622a101400b00307cbf812f1si12141134qte.214.2022.06.23.04.26.01
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 23 Jun 2022 03:27:16 -0700 (PDT)
+        Thu, 23 Jun 2022 04:26:01 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@quicinc.com header.s=qcdkim header.b=XUOLvFrf;
+       dkim=pass header.i=@linaro.org header.s=google header.b=WkRznGrv;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=quicinc.com
-Received: from localhost ([::1]:40228 helo=lists1p.gnu.org)
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:59450 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1o4K3P-0008VW-Nd
-	for alex.bennee@linaro.org; Thu, 23 Jun 2022 06:27:15 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:55138)
+	id 1o4KyH-00035A-3y
+	for alex.bennee@linaro.org; Thu, 23 Jun 2022 07:26:01 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:39870)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <quic_ggregory@quicinc.com>)
- id 1o4K0m-0007cZ-8D; Thu, 23 Jun 2022 06:24:32 -0400
-Received: from alexa-out-sd-02.qualcomm.com ([199.106.114.39]:13493)
- by eggs.gnu.org with esmtps (TLS1.2:RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <quic_ggregory@quicinc.com>)
- id 1o4K0j-00055Q-Sh; Thu, 23 Jun 2022 06:24:31 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=quicinc.com; i=@quicinc.com; q=dns/txt; s=qcdkim;
- t=1655979869; x=1687515869;
- h=date:from:to:cc:subject:message-id:references:
- mime-version:content-transfer-encoding:in-reply-to;
- bh=1kUdEyYsiBtSxa3OFxYiRQYPCMEFo7s5I5wp24Gjr7Q=;
- b=XUOLvFrfuBtIjRWYkt/X0fTEc2Ovr8PfraRwJj/Isy7uni9m10YlZ16/
- TWnsl43GnMviW8/QLzjJby/cdhFF2IfLVznVmCCwqFGzp51dSC8JhU3q3
- 1pjHmAxnS2mppJydbfbhm4NhLC2LnROAx7A9q7+nHahZaygVzhNeIJ5W1 c=;
-Received: from unknown (HELO ironmsg02-sd.qualcomm.com) ([10.53.140.142])
- by alexa-out-sd-02.qualcomm.com with ESMTP; 23 Jun 2022 03:24:25 -0700
-X-QCInternal: smtphost
-Received: from nasanex01c.na.qualcomm.com ([10.47.97.222])
- by ironmsg02-sd.qualcomm.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 23 Jun 2022 03:24:25 -0700
-Received: from nalasex01a.na.qualcomm.com (10.47.209.196) by
- nasanex01c.na.qualcomm.com (10.47.97.222) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.986.22; Thu, 23 Jun 2022 03:24:24 -0700
-Received: from quicinc.com (10.80.80.8) by nalasex01a.na.qualcomm.com
- (10.47.209.196) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.986.22; Thu, 23 Jun
- 2022 03:24:23 -0700
-Date: Thu, 23 Jun 2022 11:24:21 +0100
-From: Graeme Gregory <quic_ggregory@quicinc.com>
-To: =?utf-8?Q?C=C3=A9dric?= Le Goater <clg@kaod.org>
-CC: Joel Stanley <joel@jms.id.au>, Jae Hyun Yoo <quic_jaehyoo@quicinc.com>,
- Peter Maydell <peter.maydell@linaro.org>, Titus Rwantare <titusr@google.com>, 
- Andrew Jeffery <andrew@aj.id.au>, Maheswara Kurapati
- <quic_mkurapat@quicinc.com>, qemu-arm <qemu-arm@nongnu.org>, QEMU Developers
- <qemu-devel@nongnu.org>
-Subject: Re: [PATCH 0/9] Add Qualcomm BMC machines
-Message-ID: <20220623102421.nj56xcmrpnoc5wbg@ggregory-linuxws>
-References: <20220622172830.101210-1-quic_jaehyoo@quicinc.com>
- <CACPK8Xcfyu0BxEhVZDQ=mfw0OcPgSm6nVSzpmT5nviq7X+rFTA@mail.gmail.com>
- <2780eff7-17de-0496-7a5b-f3ede706794a@kaod.org>
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1o4KxN-000348-D0
+ for qemu-arm@nongnu.org; Thu, 23 Jun 2022 07:25:07 -0400
+Received: from mail-yb1-xb30.google.com ([2607:f8b0:4864:20::b30]:33739)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1o4KxJ-0008BP-2i
+ for qemu-arm@nongnu.org; Thu, 23 Jun 2022 07:25:03 -0400
+Received: by mail-yb1-xb30.google.com with SMTP id v81so35310205ybe.0
+ for <qemu-arm@nongnu.org>; Thu, 23 Jun 2022 04:25:00 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=AOH6eIuL0aIpPL+ItqXK2B9mSn8bjv/xgbmvR4pYTiU=;
+ b=WkRznGrv59P/wrtQR62iESf/26lcWdObJsnXgSz9a81vytwuU1zDuLU+VHzOz9vE20
+ fiQhOWU+21aClmxpLcufpjaBL95LPx4zCJdgHyAFDUpza+ry95I4qnpny52SMT/ZKYhi
+ AVU9/nOM3rJ6eIh98HWY7gvUag8FPnG6or60gyHi2FaGj3QKxd1UDE5dBWE3bblu3L31
+ xD2hbciIjBFtzUvg7JElRXJ0rvPhYXqPDgzXL1MnTGkYEminvdk5neupgbMtI6DyuMYA
+ b6PwnoMPN3/nxXxFSWlvqOm5LjYHADx5gYtHfTHHMKzoosAaiORdyrldWu+p41H/TuuL
+ swaw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=AOH6eIuL0aIpPL+ItqXK2B9mSn8bjv/xgbmvR4pYTiU=;
+ b=erioV3YtzMv+3NLer9Xcq6xVeOcomsIvnVsaUYiL8RDBfwJBZ0CtQwsZ9B5rbL9YT5
+ kmLSQrIGyUvykNB5rO7eUof7ykgsjlPsrJi5JR90BLGoKDh8sQs71vwGoqpgl3QcWzbF
+ zYpydj9rzA1w3nMryhe2edtJp8hppS/uA3qRnXDg4cOb1SnCSWURtH+A4uhUZ3o8DpmT
+ wDSKjJVHB2ZAxP93382COMoSRL8q3b+VPn9Iq8eE1VAumgdvU9ncSIN8vlrzCksM7P47
+ w2oH4+yaQr88NXCC2D1ENsfMt3Uk1fR4ThoYl3eqGWFjmC4T9VDbCSqDE6pbsgcZ/Psb
+ sdcw==
+X-Gm-Message-State: AJIora+CWbCTnvsu2cn+D782Ad/zwSm9o9t0KVOS+LTpCRY9w7oyd8Os
+ B6xoFMN+p+UR1OotNqBQliORTOPHRQUtrcC7tUVwAQ==
+X-Received: by 2002:a05:6902:1505:b0:668:c93b:d1d0 with SMTP id
+ q5-20020a056902150500b00668c93bd1d0mr8764321ybu.140.1655983499639; Thu, 23
+ Jun 2022 04:24:59 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <2780eff7-17de-0496-7a5b-f3ede706794a@kaod.org>
-X-Originating-IP: [10.80.80.8]
-X-ClientProxiedBy: nasanex01b.na.qualcomm.com (10.46.141.250) To
- nalasex01a.na.qualcomm.com (10.47.209.196)
-Received-SPF: pass client-ip=199.106.114.39;
- envelope-from=quic_ggregory@quicinc.com; helo=alexa-out-sd-02.qualcomm.com
-X-Spam_score_int: -43
-X-Spam_score: -4.4
-X-Spam_bar: ----
-X-Spam_report: (-4.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+References: <20220620175235.60881-1-richard.henderson@linaro.org>
+ <20220620175235.60881-26-richard.henderson@linaro.org>
+In-Reply-To: <20220620175235.60881-26-richard.henderson@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 23 Jun 2022 12:24:48 +0100
+Message-ID: <CAFEAcA-_Cof12Oe=4HTJx_4Nmtfq1Oj7BRdFmzv989H13kUVTg@mail.gmail.com>
+Subject: Re: [PATCH v3 25/51] target/arm: Implement SME MOVA
+To: Richard Henderson <richard.henderson@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b30;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yb1-xb30.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_MED=-2.3, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -118,72 +113,105 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 2evvTnBwE0av
+X-TUID: 5A0qPusrcsIC
 
-On Thu, Jun 23, 2022 at 08:48:49AM +0200, Cédric Le Goater wrote:
-> On 6/23/22 07:25, Joel Stanley wrote:
-> > On Wed, 22 Jun 2022 at 17:29, Jae Hyun Yoo <quic_jaehyoo@quicinc.com> wrote:
-> > > 
-> > > Hello,
-> > > 
-> > > I'm sending a series to add Qualcomm BMC machines that are equipped with
-> > > Aspeed AST2600 SoC. Also, this series adds MAX31785 fan controller device
-> > > emulation. Please help to review.
-> > 
-> > Thanks for the MAX31785 model, that's handy to have.
-> > 
-> > I'm all for more emulation and testing using Qemu models, but I wonder
-> > if you need to add all three of your boards. They seem to be a
-> > progression (evb-proto -> dc-scm -> firework). Could you get away with
-> > just one or two of those?
-> 
-> I am not sure the evb-proto-bmc is useful to upstream. The other two
-> are fine.
-> 
-> Thanks,
-> 
+On Mon, 20 Jun 2022 at 19:20, Richard Henderson
+<richard.henderson@linaro.org> wrote:
+>
+> We can reuse the SVE functions for implementing moves to/from
+> horizontal tile slices, but we need new ones for moves to/from
+> vertical tile slices.
+>
+> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+> ---
+>  target/arm/helper-sme.h    |  11 ++++
+>  target/arm/helper-sve.h    |   2 +
+>  target/arm/translate-a64.h |   9 +++
+>  target/arm/translate.h     |   5 ++
+>  target/arm/sme.decode      |  15 +++++
+>  target/arm/sme_helper.c    | 110 ++++++++++++++++++++++++++++++++++++-
+>  target/arm/sve_helper.c    |  12 ++++
+>  target/arm/translate-a64.c |  19 +++++++
+>  target/arm/translate-sme.c | 105 +++++++++++++++++++++++++++++++++++
+>  9 files changed, 287 insertions(+), 1 deletion(-)
+>
+> diff --git a/target/arm/helper-sme.h b/target/arm/helper-sme.h
+> index c4ee1f09e4..600346e08c 100644
+> --- a/target/arm/helper-sme.h
+> +++ b/target/arm/helper-sme.h
+> @@ -21,3 +21,14 @@ DEF_HELPER_FLAGS_2(set_pstate_sm, TCG_CALL_NO_RWG, void, env, i32)
+>  DEF_HELPER_FLAGS_2(set_pstate_za, TCG_CALL_NO_RWG, void, env, i32)
+>
+>  DEF_HELPER_FLAGS_3(sme_zero, TCG_CALL_NO_RWG, void, env, i32, i32)
+> +
+> +DEF_HELPER_FLAGS_4(sme_mova_avz_b, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
+> +DEF_HELPER_FLAGS_4(sme_mova_zav_b, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
 
-I am happy with dropping the evb-proto-bmc machine. We used that
-internally before actual hardware was available.
+What do the 'avz' and 'zav' stand for here? I thought that
+'zav' might mean "from the ZA storage to a Vector", but
+then what is 'avz' ?
 
-Graeme
 
-> C.
-> 
-> 
-> 
-> > 
-> > 
-> > > 
-> > > Thanks,
-> > > 
-> > > Jae
-> > > 
-> > > Graeme Gregory (2):
-> > >    hw/arm/aspeed: qcom-dc-scm-v1: add block backed FRU device
-> > >    hw/arm/aspeed: add Qualcomm Firework machine and FRU device
-> > > 
-> > > Jae Hyun Yoo (3):
-> > >    hw/arm/aspeed: add support for the Qualcomm EVB proto board
-> > >    hw/arm/aspeed: add support for the Qualcomm DC-SCM v1 board
-> > >    hw/arm/aspeed: firework: add I2C MUXes for VR channels
-> > > 
-> > > Maheswara Kurapati (4):
-> > >    hw/i2c: pmbus: Page #255 is valid page for read requests.
-> > >    hw/sensor: add Maxim MAX31785 device
-> > >    hw/arm/aspeed: firework: Add MAX31785 Fan controllers
-> > >    hw/arm/aspeed: firework: Add Thermal Diodes
-> > > 
-> > >   hw/arm/Kconfig        |   1 +
-> > >   hw/arm/aspeed.c       | 158 +++++++++++-
-> > >   hw/i2c/pmbus_device.c |   1 -
-> > >   hw/sensor/Kconfig     |   4 +
-> > >   hw/sensor/max31785.c  | 580 ++++++++++++++++++++++++++++++++++++++++++
-> > >   hw/sensor/meson.build |   1 +
-> > >   6 files changed, 742 insertions(+), 3 deletions(-)
-> > >   create mode 100644 hw/sensor/max31785.c
-> > > 
-> > > --
-> > > 2.25.1
-> > > 
-> 
+> +static TCGv_ptr get_tile_rowcol(DisasContext *s, int esz, int rs,
+> +                                int tile_index, bool vertical)
+> +{
+> +    int tile = tile_index >> (4 - esz);
+> +    int index = esz == MO_128 ? 0 : extract32(tile_index, 0, 4 - esz);
+> +    int pos, len, offset;
+> +    TCGv_i32 t_index;
+> +    TCGv_ptr addr;
+> +
+> +    /* Resolve tile.size[index] to an untyped ZA slice index. */
+> +    t_index = tcg_temp_new_i32();
+> +    tcg_gen_trunc_tl_i32(t_index, cpu_reg(s, rs));
+> +    tcg_gen_addi_i32(t_index, t_index, index);
+> +
+> +    len = ctz32(s->svl) - esz;
+> +    pos = esz;
+> +    offset = tile;
+> +
+> +    /*
+> +     * Horizontal slice.  Index row N, column 0.
+> +     * The helper will iterate by the element size.
+> +     */
+> +    if (!vertical) {
+> +        pos += ctz32(sizeof(ARMVectorReg));
+> +        offset *= sizeof(ARMVectorReg);
+> +    }
+> +    offset += offsetof(CPUARMState, zarray);
+> +
+> +    tcg_gen_deposit_z_i32(t_index, t_index, pos, len);
+> +    tcg_gen_addi_i32(t_index, t_index, offset);
+> +
+> +    /*
+> +     * Vertical tile slice.  Index row 0, column N.
+> +     * The helper will iterate by the row spacing in the array.
+> +     * Need to adjust addressing for elements smaller than uint64_t for BE.
+> +     */
+> +    if (HOST_BIG_ENDIAN && vertical && esz < MO_64) {
+> +        tcg_gen_xori_i32(t_index, t_index, 8 - (1 << esz));
+> +    }
+> +
+> +    addr = tcg_temp_new_ptr();
+> +    tcg_gen_ext_i32_ptr(addr, t_index);
+> +    tcg_temp_free_i32(t_index);
+> +    tcg_gen_add_ptr(addr, addr, cpu_env);
+> +
+> +    return addr;
+> +}
+
+This is too confusing -- I spent half an hour looking at it and
+couldn't figure out if it was correct or not. I can see roughly
+what it's supposed to be doing but I don't really want to try
+to reverse engineer the details from the sequence of operations.
+Eg the way we sometimes just add in the tile number and sometimes
+add in the tile number * the size of a vector reg looks very
+strange; I figured out that the deposit op is doing the equivalent
+of the pseudocode's "MOD dim" on the slice index but it doesn't
+say so and the calculation of len and pos is kind of obscure to me.
+
+Perhaps (a) more commentary and (b) separating out the
+horizontal and vertical cases would help ?
+
+thanks
+-- PMM

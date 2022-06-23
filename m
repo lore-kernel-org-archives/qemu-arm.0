@@ -1,217 +1,106 @@
-Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp3033566lft;
-        Thu, 23 Jun 2022 08:10:23 -0700 (PDT)
-X-Google-Smtp-Source: AGRyM1vJoVT5dh5jlQFVoEgpvryMkGvwrQWGzNve5Z0RJ1VaQdksO91RBLQLvF5XeQzEMtwp0tdu
-X-Received: by 2002:ac8:59cb:0:b0:305:166b:9bf6 with SMTP id f11-20020ac859cb000000b00305166b9bf6mr8642450qtf.9.1655997023631;
-        Thu, 23 Jun 2022 08:10:23 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1655997023; cv=none;
+Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp3050051lft;
+        Thu, 23 Jun 2022 08:29:53 -0700 (PDT)
+X-Google-Smtp-Source: AGRyM1svjvu2X7ysYjhgZSfkLoAy2LxlfBFfj5uxiSvpsa+zgD4oPm6BYp/5IQF5iaXiOSixzzMp
+X-Received: by 2002:a05:6830:1e91:b0:60c:29fa:9fa0 with SMTP id n17-20020a0568301e9100b0060c29fa9fa0mr4094013otr.23.1655998193419;
+        Thu, 23 Jun 2022 08:29:53 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1655998193; cv=none;
         d=google.com; s=arc-20160816;
-        b=LqpS+V8BdnWl6N/W8G4lYEuafWQY0yw4X+zxQ6aO2zbhDZZInaIlgzRYWkv6bzeXc8
-         osEdemilzoopLXV+0ytla4bUZV1DqhQa8TE4k8s1GdPIbGZ+bavgwNTbVgQR/5kxmOGO
-         lDo0Z6llFtys1ySsddb5M4ygPggvGxOdGkVLbKMwlDRLMtQ/Xq92JSebaAcJhwJ1fqBt
-         x2A60FGltHFu209+Aw5LQIVkDyM6TXzulm7RHEQfWXZK+xqy/V+P2iIGr176vRHurM7L
-         EMijt3oDS6SYRdXe2pBaK6J4GwrW7P2iet3KxwvwFEeFUnsCk5cclh0vzsat3sJdBQmx
-         ReDQ==
+        b=m690t83Mt4syBetpEMPZKUvspA8T1q4yE90rGj3ErtrNwhtPLqXuNQCmOa3xzXCE9g
+         FfwX3CnCuoLd1qnF2IybeQkEoRojWx6fI1kuztN96Srm1BxbS2QFDlPQ0LSLrl9GGexD
+         V09C63GlDKPpPSnuZqdsrZLtNqyoZQnsI1QaZtAfh/u/+dQN1n/Is5utP8txpYr1qxyz
+         zf7fXKrTERRKYOJjt6CvnSpzMAVrlz6BtTvXPZgOKvl6zAr3rpfdRZ2S9SZxlZ2fidxR
+         1c3VsXSRInAZS3VTOeVhvLnw6a6ZZxlutvy88kZKwQq/xUMIzeL8YztEJuWrYGolPuVM
+         gH4Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:content-language:references:cc:to:subject:from
-         :user-agent:mime-version:date:message-id;
-        bh=E95YvVIQb1rTItdMgN1QUArhoYtY67qJoHVLPVWePJk=;
-        b=UCWlqRuA1PrYa97FL6/piKcK4QsTT19EbEMUO7L1XJF5v2KA2+rSXe7cXvJa7x1zQj
-         ffXwgGAAJzaDB56rasq2bblxLkp+6ZQgRLy6iIWdVCIiTdtDKd1zNyJ8ZrXF56S5/LYX
-         91Hisnwgs/F3X+yuN6+qzRle8hJpN85oPb7GFd2sZJH64udmlK+LCeXLrd7G8P2D4pKR
-         4TXNo08m+/MsCWoivYq/n9Oox0uebvtW3mcEqIj8iUGXUgVZerGngg1TsEo1JJzqoFQh
-         XCYbU4Hwhsv9bhIqxo+g762zLDc7sDfJw9fgvwd/PDLU+OzLqt+Iu0Z+4IT7/DUmRX1j
-         HpNg==
+        h=mime-version:user-agent:references:in-reply-to:subject:cc:to:from
+         :message-id:date:dkim-signature;
+        bh=jeNxQrHuvv5nG2DBBciS5J0bpsR9EtnAjio2bDb3SOg=;
+        b=STalPYI9uo9hlfWwm7LqK/iMknspVrCYsgeDsZ2XVLF12IuAE9vU5/We1jPYQRXy54
+         4x/YoeFYYJE9RNrU2mBUkvV6KLD795iBoZWUIli8XzzHozdC6FUlf+leJ++Oh31OJtVD
+         29HxID0m9YutoGnKSc/DZWSpdwCnTGPDEGXm6+DX5ygMqr55p1B5fzvveV+mt34MF583
+         +q/IuEQ2qzM9BE7iLGekZ0y8oNgCFjZRd9UmctyG+KLAViGz2vT10FQqA0Cv4y2BwCe0
+         iLY7SU2vAY4eTfAictyxHXwlGHRSsUzsC9UnxpJTctRYlpW+z53ss1sdV4l3rV9uUFrB
+         eA2Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id gy5-20020a056214242500b0046e74b508dbsi17143283qvb.527.2022.06.23.08.10.23
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 23 Jun 2022 08:10:23 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=HmTYcxR4;
+       spf=pass (google.com: domain of maz@kernel.org designates 2604:1380:4641:c500::1 as permitted sender) smtp.mailfrom=maz@kernel.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=kernel.org
+Return-Path: <maz@kernel.org>
+Received: from dfw.source.kernel.org (dfw.source.kernel.org. [2604:1380:4641:c500::1])
+        by mx.google.com with ESMTPS id u4-20020a056871008400b000f333413e16si20753275oaa.95.2022.06.23.08.29.53
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 23 Jun 2022 08:29:53 -0700 (PDT)
+Received-SPF: pass (google.com: domain of maz@kernel.org designates 2604:1380:4641:c500::1 as permitted sender) client-ip=2604:1380:4641:c500::1;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:33920 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1o4OTP-0000GX-3P
-	for alex.bennee@linaro.org; Thu, 23 Jun 2022 11:10:23 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34826)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>)
- id 1o4OT8-0000Dr-5y; Thu, 23 Jun 2022 11:10:06 -0400
-Received: from 5.mo548.mail-out.ovh.net ([188.165.49.213]:40497)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>)
- id 1o4OT4-0005xT-LR; Thu, 23 Jun 2022 11:10:05 -0400
-Received: from mxplan5.mail.ovh.net (unknown [10.109.146.131])
- by mo548.mail-out.ovh.net (Postfix) with ESMTPS id C76B0231E2;
- Thu, 23 Jun 2022 15:09:57 +0000 (UTC)
-Received: from kaod.org (37.59.142.99) by DAG4EX1.mxp5.local (172.16.2.31)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.9; Thu, 23 Jun
- 2022 17:09:56 +0200
-Authentication-Results: garm.ovh; auth=pass
- (GARM-99G00387f07116-a976-436d-9488-f78a9ccc6e13,
- 1905447EDF4A6B95D61F03ED56167C5A36471571) smtp.auth=clg@kaod.org
-X-OVh-ClientIp: 82.64.250.170
-Message-ID: <e5f51f14-fe75-0d55-6588-a3ca2565f760@kaod.org>
-Date: Thu, 23 Jun 2022 17:09:55 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.9.0
-From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
-Subject: Re: [PATCH 12/14] aspeed: Make aspeed_board_init_flashes public
-To: Peter Delevoryas <pdel@fb.com>
-CC: <peter.maydell@linaro.org>, <andrew@aj.id.au>, <joel@jms.id.au>,
- <pbonzini@redhat.com>, <berrange@redhat.com>, <eduardo@habkost.net>,
- <"i.mitsyanko@gmail.com.mst"@redhat.com>, <marcel.apfelbaum@gmail.com>,
- <richard.henderson@linaro.org>, <f4bug@amsat.org>, <ani@anisinha.ca>,
- <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>, <kvm@vger.kernel.org>
-References: <20220623102617.2164175-1-pdel@fb.com>
- <20220623102617.2164175-13-pdel@fb.com>
-Content-Language: en-US
-In-Reply-To: <20220623102617.2164175-13-pdel@fb.com>
-Content-Type: text/plain; charset="UTF-8"; format=flowed
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [37.59.142.99]
-X-ClientProxiedBy: DAG4EX2.mxp5.local (172.16.2.32) To DAG4EX1.mxp5.local
- (172.16.2.31)
-X-Ovh-Tracer-GUID: 2dbb2037-39f1-45b4-b5ec-fe71b9aca839
-X-Ovh-Tracer-Id: 9386908999118261121
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvfedrudefjedgkeeiucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhepkfffgggfhffuvfevfhgjtgfgihesthejredttdefjeenucfhrhhomhepveorughrihgtpgfnvggpifhorghtvghruceotghlgheskhgrohgurdhorhhgqeenucggtffrrghtthgvrhhnpeeghfeuudfftdduleetkeegffdtiefgkeejgeektdeggeegueelhfefieehjeevkeenucfkpheptddrtddrtddrtddpfeejrdehledrudegvddrleelnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmohguvgepshhmthhpohhuthdphhgvlhhopehmgihplhgrnhehrdhmrghilhdrohhvhhdrnhgvthdpihhnvghtpedtrddtrddtrddtpdhmrghilhhfrhhomheptghlgheskhgrohgurdhorhhgpdhnsggprhgtphhtthhopedupdhrtghpthhtohepkhhvmhesvhhgvghrrdhkvghrnhgvlhdrohhrghdpoffvtefjohhsthepmhhoheegke
-Received-SPF: pass client-ip=188.165.49.213; envelope-from=clg@kaod.org;
- helo=5.mo548.mail-out.ovh.net
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: naTgV1vCIUhC
+       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=HmTYcxR4;
+       spf=pass (google.com: domain of maz@kernel.org designates 2604:1380:4641:c500::1 as permitted sender) smtp.mailfrom=maz@kernel.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=kernel.org
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 0D35061E9C;
+	Thu, 23 Jun 2022 15:29:53 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 32FBEC3411B;
+	Thu, 23 Jun 2022 15:29:52 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1655998192;
+	bh=O7WTifpsrtBQq45YXaNj0JJqNxLKakI2gs+lW+dYxlM=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+	b=HmTYcxR4gVhBw+AQB8Jh57nNzqrfQlNamC/24iA0/eiL2yFmGnS+SoMDW5n9XaOZy
+	 +C4jAbrqkQo4zInzHLVxTXQU+La9UwlGMpq3AFxbAk91RcbkXM3a7vKa4YyGrkzbXw
+	 px7+NcOsmUyeA1nhf08I7muAYhAaHiDTgHkf7JK0htnQWhuUfid3LZRCfofklP8Hw7
+	 z061hsva6LaoZ039MxSY7rLEwANbLJBftMXTDi1E548uiOgR+oIfO6FSXowj7xbXOs
+	 PAydxa0SqkflWhxpRmhEA1OPctVgapxqlnxbP5Xhim370pgFUI8HYJK5zmFCMUPikG
+	 WKQbEWY87MGDg==
+Received: from sofa.misterjones.org ([185.219.108.64] helo=why.misterjones.org)
+	by disco-boy.misterjones.org with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.95)
+	(envelope-from <maz@kernel.org>)
+	id 1o4OmD-002c2h-JX;
+	Thu, 23 Jun 2022 16:29:49 +0100
+Date: Thu, 23 Jun 2022 16:29:49 +0100
+Message-ID: <87k0972yaa.wl-maz@kernel.org>
+From: Marc Zyngier <maz@kernel.org>
+To: Andrew Jones <drjones@redhat.com>
+Cc: kvm@vger.kernel.org,
+	kvmarm@lists.cs.columbia.edu,
+	qemu-devel@nongnu.org,
+	qemu-arm@nongnu.org,
+	pbonzini@redhat.com,
+	thuth@redhat.com,
+	alexandru.elisei@arm.com,
+	alex.bennee@linaro.org,
+	andre.przywara@arm.com,
+	nikos.nikoleris@arm.com,
+	ricarkol@google.com,
+	seanjc@google.com,
+	peter.maydell@linaro.org
+Subject: Re: [PATCH kvm-unit-tests] MAINTAINERS: Change drew's email address
+In-Reply-To: <20220623131017.670589-1-drjones@redhat.com>
+References: <20220623131017.670589-1-drjones@redhat.com>
+User-Agent: Wanderlust/2.15.9 (Almost Unreal) SEMI-EPG/1.14.7 (Harue)
+ FLIM-LB/1.14.9 (=?UTF-8?B?R29qxY0=?=) APEL-LB/10.8 EasyPG/1.0.0 Emacs/27.1
+ (x86_64-pc-linux-gnu) MULE/6.0 (HANACHIRUSATO)
+MIME-Version: 1.0 (generated by SEMI-EPG 1.14.7 - "Harue")
+Content-Type: text/plain; charset=US-ASCII
+X-SA-Exim-Connect-IP: 185.219.108.64
+X-SA-Exim-Rcpt-To: drjones@redhat.com, kvm@vger.kernel.org, kvmarm@lists.cs.columbia.edu, qemu-devel@nongnu.org, qemu-arm@nongnu.org, pbonzini@redhat.com, thuth@redhat.com, alexandru.elisei@arm.com, alex.bennee@linaro.org, andre.przywara@arm.com, nikos.nikoleris@arm.com, ricarkol@google.com, seanjc@google.com, peter.maydell@linaro.org
+X-SA-Exim-Mail-From: maz@kernel.org
+X-SA-Exim-Scanned: No (on disco-boy.misterjones.org); SAEximRunCond expanded to false
+X-TUID: 4bge6nTE6khH
 
-On 6/23/22 12:26, Peter Delevoryas wrote:
-> Signed-off-by: Peter Delevoryas <pdel@fb.com>
-
-Let's start simple without flash support. We should be able to
-load FW blobs in each CPU address space using loader devices.
-
-Thanks,
-
-C.
-
-> ---
->   hw/arm/aspeed.c             | 25 -------------------------
->   hw/arm/aspeed_soc.c         | 26 ++++++++++++++++++++++++++
->   include/hw/arm/aspeed_soc.h |  2 ++
->   3 files changed, 28 insertions(+), 25 deletions(-)
+On Thu, 23 Jun 2022 14:10:17 +0100,
+Andrew Jones <drjones@redhat.com> wrote:
 > 
-> diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
-> index 3aa74e88fb..c893ce84d7 100644
-> --- a/hw/arm/aspeed.c
-> +++ b/hw/arm/aspeed.c
-> @@ -278,31 +278,6 @@ static void write_boot_rom(DriveInfo *dinfo, hwaddr addr, size_t rom_size,
->       rom_add_blob_fixed("aspeed.boot_rom", storage, rom_size, addr);
->   }
->   
-> -static void aspeed_board_init_flashes(AspeedSMCState *s, const char *flashtype,
-> -                                      unsigned int count, int unit0)
-> -{
-> -    int i;
-> -
-> -    if (!flashtype) {
-> -        return;
-> -    }
-> -
-> -    for (i = 0; i < count; ++i) {
-> -        DriveInfo *dinfo = drive_get(IF_MTD, 0, unit0 + i);
-> -        qemu_irq cs_line;
-> -        DeviceState *dev;
-> -
-> -        dev = qdev_new(flashtype);
-> -        if (dinfo) {
-> -            qdev_prop_set_drive(dev, "drive", blk_by_legacy_dinfo(dinfo));
-> -        }
-> -        qdev_realize_and_unref(dev, BUS(s->spi), &error_fatal);
-> -
-> -        cs_line = qdev_get_gpio_in_named(dev, SSI_GPIO_CS, 0);
-> -        sysbus_connect_irq(SYS_BUS_DEVICE(s), i + 1, cs_line);
-> -    }
-> -}
-> -
->   static void sdhci_attach_drive(SDHCIState *sdhci, DriveInfo *dinfo)
->   {
->           DeviceState *card;
-> diff --git a/hw/arm/aspeed_soc.c b/hw/arm/aspeed_soc.c
-> index b7e8506f28..33bfc06ed8 100644
-> --- a/hw/arm/aspeed_soc.c
-> +++ b/hw/arm/aspeed_soc.c
-> @@ -20,6 +20,7 @@
->   #include "hw/i2c/aspeed_i2c.h"
->   #include "net/net.h"
->   #include "sysemu/sysemu.h"
-> +#include "sysemu/blockdev.h"
->   
->   #define ASPEED_SOC_IOMEM_SIZE       0x00200000
->   
-> @@ -579,3 +580,28 @@ void aspeed_soc_uart_init(AspeedSoCState *s)
->                          serial_hd(i), DEVICE_LITTLE_ENDIAN);
->       }
->   }
-> +
-> +void aspeed_board_init_flashes(AspeedSMCState *s, const char *flashtype,
-> +                               unsigned int count, int unit0)
-> +{
-> +    int i;
-> +
-> +    if (!flashtype) {
-> +        return;
-> +    }
-> +
-> +    for (i = 0; i < count; ++i) {
-> +        DriveInfo *dinfo = drive_get(IF_MTD, 0, unit0 + i);
-> +        qemu_irq cs_line;
-> +        DeviceState *dev;
-> +
-> +        dev = qdev_new(flashtype);
-> +        if (dinfo) {
-> +            qdev_prop_set_drive(dev, "drive", blk_by_legacy_dinfo(dinfo));
-> +        }
-> +        qdev_realize_and_unref(dev, BUS(s->spi), &error_fatal);
-> +
-> +        cs_line = qdev_get_gpio_in_named(dev, SSI_GPIO_CS, 0);
-> +        sysbus_connect_irq(SYS_BUS_DEVICE(s), i + 1, cs_line);
-> +    }
-> +}
-> diff --git a/include/hw/arm/aspeed_soc.h b/include/hw/arm/aspeed_soc.h
-> index c68395ddbb..270d85d5de 100644
-> --- a/include/hw/arm/aspeed_soc.h
-> +++ b/include/hw/arm/aspeed_soc.h
-> @@ -166,5 +166,7 @@ enum {
->   
->   qemu_irq aspeed_soc_get_irq(AspeedSoCState *s, int dev);
->   void aspeed_soc_uart_init(AspeedSoCState *s);
-> +void aspeed_board_init_flashes(AspeedSMCState *s, const char *flashtype,
-> +                               unsigned int count, int unit0);
->   
->   #endif /* ASPEED_SOC_H */
+> As a side effect of leaving Red Hat I won't be able to use my Red Hat
+> email address anymore. I'm also changing the name of my gitlab group.
+> 
+> Signed-off-by: Andrew Jones <andrew.jones@linux.dev>
+> Signed-off-by: Andrew Jones <drjones@redhat.com>
 
+Acked-by: Marc Zyngier <maz@kernel.org>
+
+	M.
+
+-- 
+Without deviation from the norm, progress is not possible.

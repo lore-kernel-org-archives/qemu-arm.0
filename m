@@ -1,128 +1,193 @@
-Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp3198299lft;
-        Thu, 23 Jun 2022 12:31:02 -0700 (PDT)
-X-Received: by 2002:a25:a401:0:b0:664:7d19:5fc6 with SMTP id f1-20020a25a401000000b006647d195fc6mr10802457ybi.400.1656012662038;
-        Thu, 23 Jun 2022 12:31:02 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1656012662; cv=none;
+Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp3232135lft;
+        Thu, 23 Jun 2022 13:37:02 -0700 (PDT)
+X-Google-Smtp-Source: AGRyM1sE7ijKZd6Fj7DZ0hUFe+QhusmaBglO7F9FiEYg8T7uFky0xaZtiD2nRhMUKPe1Ub0hEEVA
+X-Received: by 2002:a0c:c68a:0:b0:46b:8e6b:306 with SMTP id d10-20020a0cc68a000000b0046b8e6b0306mr33975125qvj.7.1656016621960;
+        Thu, 23 Jun 2022 13:37:01 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1656016621; cv=none;
         d=google.com; s=arc-20160816;
-        b=TZ5U7vuY+Kp711xF9ZF+O2OEnbZScuGIiUHYIswNwljHryjfqTEmE8M8Si55SxZm5D
-         nOWY5zYAg8tc+Hx5+3YsSypn93HcOljmdkxHkAKa7orBSV19JIJ+E87RabbkOZMfQ16g
-         UtUc5Ua3hKPXR7CzdlU6l72fnoDNhteWsTWOSlwej/1w6LjNCEgApsA1MTe8zAdKpj2k
-         rfageAGP8TWxB50Q2c9ftzMS4sq9yAqv8Zk+KkaBgZ2lqfxua5EE1OBJ70JzqmMaTclR
-         DU75k86BddNHH6vzCK3DiS7pq8fW/q1oPWROVT4YkpVEjCVALELcjuYFz/fncRFECr0B
-         u66Q==
+        b=SA58555nq/kZC7y2msS1apClqsDkPOmdx+eAjyhyUnaT2PiKH5dmdR77owfwHyd386
+         MGWOIjc68xBlaq5O1nXkn2M64e4Vw4rbztDGcRnWm8JCgT0b2GJo4PW4IYOTJkXcxuoV
+         eMnSQcaH9AZ2i4RaO0PBAuiTliQgQAisGyQQY5E+vDBCPGNLhrC6t5waY1PQlQ3Mj3FQ
+         K/ZONbr2L9M8/fY7Yt24aMwLc2M/upifVxBVmHIoFcTeNMNsc2EEkZxVYiakqvS0rowr
+         2973ld1EON0V5kjgd1bB6u1EuufzZdREnXehN4ASxhahXp6AgZHHXIrx0pWP2LffvJmC
+         k6ug==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:dkim-signature;
-        bh=WwePLIT928gsV+QuavVvVXgXAJxXenGkNsUer6Z5uho=;
-        b=VwHAkQ9i0K6gAJOdVaE7fCdzLYG+0ERNEL5EAYhV+x57zVt9tdlun2XGUIpGkapOSo
-         C6XgKYB3RFdlR69hfIzEEZDzlfapKG6QZvLoM0e3fbsdE1ofYBZoE9F0vc8JVRppLxVg
-         u/kO2i8nHD8LZRqkqgjCKIHnuQIcMIQDOjRgpDJjHMAMZCb7xaREuBiHQg9hAcRnkW5c
-         utPvlMjmn9QW6BnCwnKlGWbiGHRj/yhHvPZVcMpsZ6yCo0+S6zZg+tb2hJ71OZcjy8nl
-         W3Y77H1oJc+5JtOJCh7X+SSiIzXwW9Hf78qtqHhNKn+fMElkOcB+QOhvsM1uKHUJRuUm
-         puyQ==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:references:cc:to:content-language:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=5lvSv0ZZG0ClKjeNVWxcUG8GbtSlfE5LU4d7yOduDGA=;
+        b=s8wNvb5Z4qA2m+lu7SUbZSNsj01FcUcWZaJ4I6bQH960nj5iqhOS6xRkvBbdt+Zf1n
+         Cxx5fRv34SS2kI8DblUXhGzp/G9hLyv+tnh8xYiEk7ZsH2P2xtPY7+ma57/KmYINpP1P
+         VC5cOsvUS8rgYfCLubM6A/hxBJ00FhIGsZEOm+9D7VdPsZiET09Td831tv+RBBePE2Ne
+         /gAM8JIIbrwW+tAD19+d+r3tJyKpEkM0sk8F4rinexbn7HYMfGnWiX3YJGpnJhde3+FT
+         mLIf9SXB4g/0NnOEe/rjF7R/sv/c7v9HxU7ZZOEZAnNSZaQwcuRLrVbKv4kY/+gsSUtS
+         Tbaw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=ZtfbC0N0;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=bsGodv2I;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <peter.maydell@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id u186-20020a2560c3000000b00664444ed646sor143050ybb.67.2022.06.23.12.31.01
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id hf6-20020a0562140e8600b004703e43ffbbsi98855qvb.207.2022.06.23.13.37.01
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Thu, 23 Jun 2022 12:31:01 -0700 (PDT)
-Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 23 Jun 2022 13:37:01 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=ZtfbC0N0;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=bsGodv2I;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-         :cc;
-        bh=WwePLIT928gsV+QuavVvVXgXAJxXenGkNsUer6Z5uho=;
-        b=ZtfbC0N0iLgmzbxkqtMF7KoIqtabuklCxTDaZ3FIbHgfys3Aqv/34qMyKT52IPe8Nx
-         IZ5ZV2EY38EzdS+q+SHZV7SmN0jhjC79qTD1+s20/aVtv5I1i+o9YLWd9O07XuqHCz/l
-         vAM0cfIGj1i+lAl2Gv2TVbwXU1oTtYWKw7HCA8tCPlRN2nqphU719BfEYo6S6SrtQngm
-         c8jbbSAMBtvDObsyqxoPvI5ITbFDyGAyu+YUGI1rrMBYaOsMt8/6Sq/KIQ6XaZr5G13n
-         PbZkyYEmzw7KRlAEe4h4mSjeC5cRNh8c+5PEbik1Pd7VKbipbCPk58KnvyNP6sFjEDUW
-         Dkxw==
+Received: from localhost ([::1]:56462 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1o4TZV-0005kc-Dd
+	for alex.bennee@linaro.org; Thu, 23 Jun 2022 16:37:01 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:44040)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1o4TZJ-0005jb-RW
+ for qemu-arm@nongnu.org; Thu, 23 Jun 2022 16:36:49 -0400
+Received: from mail-pg1-x531.google.com ([2607:f8b0:4864:20::531]:43877)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1o4TZI-0005sW-6B
+ for qemu-arm@nongnu.org; Thu, 23 Jun 2022 16:36:49 -0400
+Received: by mail-pg1-x531.google.com with SMTP id 68so483371pgb.10
+ for <qemu-arm@nongnu.org>; Thu, 23 Jun 2022 13:36:47 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=message-id:date:mime-version:user-agent:subject:content-language:to
+ :cc:references:from:in-reply-to:content-transfer-encoding;
+ bh=5lvSv0ZZG0ClKjeNVWxcUG8GbtSlfE5LU4d7yOduDGA=;
+ b=bsGodv2IqFF1AYZqoJhMdQkktCiF3J0t0AKdHuJYKigJ0kpbg17nTrt6EeN9GAtAxc
+ aC/Jv9Zk8fkO2JIrLSjMFj3PLuk38G9/H9Xd8CG4zU8KiJN2oMhJu60QKDNGTGVjXXcG
+ DX5+PViR9+wRLQ2fYWWJK7SN14Bz2Gz2E8ilYJ9vzviR8Co6JACbGewIt7S9nXQev3eV
+ 93Ha6CD5M3MTdnYCGpa6ULvxfnJmBR8Pt4k1TTKVheeyY0aPtsdkA0mVgLQtEcXEXQww
+ OZovvae4gTbqUT0texLkFr4orGVfWVSp4SqLfX6wjqyOtrX5c6tnoRNaqzwGsuNQxGwc
+ p63g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-         :message-id:subject:to:cc;
-        bh=WwePLIT928gsV+QuavVvVXgXAJxXenGkNsUer6Z5uho=;
-        b=uCbIlBf8gqOKltIR7piX7dpK8+SqENBYLP3rpb4AhhXq2d1RHrCxw2duCixxyGZE+e
-         3OU3zr42S5adyul9wfvx/dqb4Shysq6bCEwyzaT/91A/R0egALqzwWtuawkwxa9AjFNK
-         SJtd6S+4RlHxpy0eu4kX/hiAhlflbFf7bZ1RDIYdutDn2vHdjkehGihxX/eFlLglsQAT
-         Mz5Jfgq6+OylQjuSqpq0Tc5Gl1zQ2oO0ucRB0ntZXMYR/MFnFlyXgCmaCJTwCCponeDj
-         4R1TKyGyLOqN3iDF1JkVi47gtg7A60HTBr3y+lpmZrQx+lCMI8G8Qh9MXiXNOaCG5139
-         33ig==
-X-Gm-Message-State: AJIora+0up3gFNC4WwU80DyIB5RlkZ7FY4b0yxS/0M0DUSkOU37ZuYBh
-	XdpmRFlugJgW511HNxh2yylh23+eWccwsdHFCHwEfYev
-X-Google-Smtp-Source: AGRyM1vbAdW3v05gSqkTHU2bd9L7ijpqHW0yCkgvW93U1HiGHLkGhoI3cnSldNjkXhfpjuPls32XkwnsNRDvX1G1N2I=
-X-Received: by 2002:a5b:dd2:0:b0:668:fc4a:9403 with SMTP id
- t18-20020a5b0dd2000000b00668fc4a9403mr11147925ybr.39.1656012661642; Thu, 23
- Jun 2022 12:31:01 -0700 (PDT)
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
+ :content-language:to:cc:references:from:in-reply-to
+ :content-transfer-encoding;
+ bh=5lvSv0ZZG0ClKjeNVWxcUG8GbtSlfE5LU4d7yOduDGA=;
+ b=2NGD5uorTz6oBM5teGjQGAz4HYustRo3bdTpAggn7xb9eLod1r4rbyi/5Ul06n1d3U
+ LAYHIFRQ5TzMlOZwNr2xIgMvX6RyHEJWOqlj4Pg3xbOvd8bholUUGqYsTweD+ZLuGwMv
+ lgoONBR6Tvc9zY0H2O/tGr1WVCvnLeEIQNeWbVFNozpfw5aryQhOp7ulG5KNoF0belRr
+ eL2qdB7ZwJnu/K81rzuyxhccf8I08Z17e1TxHsG/ndecIjtdtRYgS58Kk61rFSQkDoPV
+ Fm0VwiG1EmvVOQBu0U5Mc2v1Au05QpzQj3S1dpYWx+UXKY5hP7RGX6IA6dc9ZUNQThah
+ j3Vw==
+X-Gm-Message-State: AJIora8/6ILp2m8GWIHX4v281B45m3QbtAlnAFA+H8NbiynEDFgCYADZ
+ X0iPf6BWXP2UNqKvRsuQSi8zrw==
+X-Received: by 2002:a62:ce8a:0:b0:525:706f:14c9 with SMTP id
+ y132-20020a62ce8a000000b00525706f14c9mr835855pfg.55.1656016606537; 
+ Thu, 23 Jun 2022 13:36:46 -0700 (PDT)
+Received: from ?IPV6:2602:ae:1543:f001:393f:6246:99c5:ff8a?
+ ([2602:ae:1543:f001:393f:6246:99c5:ff8a])
+ by smtp.gmail.com with ESMTPSA id
+ o6-20020a170902bcc600b0016a61e7f30dsm195189pls.281.2022.06.23.13.36.43
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 23 Jun 2022 13:36:44 -0700 (PDT)
+Message-ID: <c6308243-0742-b9dc-a325-da095e687181@linaro.org>
+Date: Thu, 23 Jun 2022 13:36:42 -0700
 MIME-Version: 1.0
-References: <20220623164051.506316-1-thuth@redhat.com>
-In-Reply-To: <20220623164051.506316-1-thuth@redhat.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 23 Jun 2022 20:30:24 +0100
-Message-ID: <CAFEAcA-k73D5fPfp5XnD2gtRO0pTXpAt_xTG51dGnzji+=NGqA@mail.gmail.com>
-Subject: Re: [RFC PATCH] include/qemu/host-utils: Remove the *_overflow wrappers
-To: Thomas Huth <thuth@redhat.com>
-Cc: qemu-devel@nongnu.org, Richard Henderson <richard.henderson@linaro.org>, 
-	qemu-arm@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>, 
-	Aurelien Jarno <aurelien@aurel32.net>, =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
-X-TUID: 58igXbfT11Bx
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.9.1
+Subject: Re: [PATCH v3 26/51] target/arm: Implement SME LD1, ST1
+Content-Language: en-US
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
+References: <20220620175235.60881-1-richard.henderson@linaro.org>
+ <20220620175235.60881-27-richard.henderson@linaro.org>
+ <CAFEAcA932Ud1PH4Az=NVW02mR8Q_GNmsH-kvLTRZ_TmCR8=Psg@mail.gmail.com>
+From: Richard Henderson <richard.henderson@linaro.org>
+In-Reply-To: <CAFEAcA932Ud1PH4Az=NVW02mR8Q_GNmsH-kvLTRZ_TmCR8=Psg@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::531;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pg1-x531.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: QbqAxNpJ06sK
 
-On Thu, 23 Jun 2022 at 17:41, Thomas Huth <thuth@redhat.com> wrote:
->
-> According to commit cec07c0b612975 these wrappers were required
-> for GCC < 5.0 and Clang < 3.8. We don't support such old compilers
-> at all anymore, so we can remove the wrappers now.
->
-> Signed-off-by: Thomas Huth <thuth@redhat.com>
-> ---
->  Not sure whether it's nicer to remove these to get rid of some lines
->  of code, or whether it's nicer to keep them for the more explicit names...
->
->  include/qemu/host-utils.h    | 235 +----------------------------------
->  accel/tcg/tcg-runtime-gvec.c |  16 +--
->  fpu/softfloat.c              |  10 +-
->  libdecnumber/decNumber.c     |   4 +-
->  target/arm/mve_helper.c      |  18 +--
->  5 files changed, 29 insertions(+), 254 deletions(-)
->
-> diff --git a/include/qemu/host-utils.h b/include/qemu/host-utils.h
-> index bc743f5e32..6224815629 100644
-> --- a/include/qemu/host-utils.h
-> +++ b/include/qemu/host-utils.h
-> @@ -366,231 +366,6 @@ static inline uint64_t uabs64(int64_t v)
->      return v < 0 ? -v : v;
->  }
->
-> -/**
-> - * sadd32_overflow - addition with overflow indication
-> - * @x, @y: addends
-> - * @ret: Output for sum
-> - *
-> - * Computes *@ret = @x + @y, and returns true if and only if that
-> - * value has been truncated.
-> - */
-> -static inline bool sadd32_overflow(int32_t x, int32_t y, int32_t *ret)
-> -{
-> -#if __has_builtin(__builtin_add_overflow) || __GNUC__ >= 5
-> -    return __builtin_add_overflow(x, y, ret);
-> -#else
-> -    *ret = x + y;
-> -    return ((*ret ^ x) & ~(x ^ y)) < 0;
-> -#endif
-> -}
+On 6/23/22 04:41, Peter Maydell wrote:
+>> +/*
+>> + * FIXME: The ARMVectorReg elements are stored in host-endian 64-bit units.
+>> + * We do not have a defined ordering of the 64-bit units for host-endian
+>> + * 128-bit quantities.  For now, just leave the host words in little-endian
+>> + * order and hope for the best.
+>> + */
+> 
+> I don't understand this comment. The architecture ought to specify
+> what order the two halves of a 128-bit quantity ought to go in the
+> ZArray storage. If we can't guarantee that a host int128_t can be
+> handled in a way that does the right thing, then we just can't
+> use int128_t.
 
-I think I'd prefer to keep the wrapper functions and just delete
-the fallback ifdeffery, but I guess I don't feel really strongly
-about it. Richard, do you have an opinion?
+Indeed.  The spec is an array of bits, and the way the indexing is done is equal to 
+putting the two 64-bit quantities in little-endian order in our array.  I'll improve the 
+comment.
 
--- PMM
+
+>> +static inline QEMU_ALWAYS_INLINE
+>> +void sme_ld1(CPUARMState *env, void *za, uint64_t *vg,
+>> +             const target_ulong addr, uint32_t desc, const uintptr_t ra,
+>> +             const int esz, uint32_t mtedesc, bool vertical,
+>> +             sve_ldst1_host_fn *host_fn,
+>> +             sve_ldst1_tlb_fn *tlb_fn,
+>> +             ClearFn *clr_fn,
+>> +             CopyFn *cpy_fn)
+> 
+> We now have several rather long functions that are
+> pretty complicated and pretty similar handling the various
+> SVE and SME loads and stores. Is there really no hope for
+> sharing code ?
+
+I'm not sure.  Maybe.  The two issues are:
+
+(1) sve ld4/st4 -- arm didn't make z29-z31 illegal, but defined wraparound to z0.  So I 
+pass in a Zreg number not a pointer to those routines.  So the routines can't be reused 
+for Zarray without changing that.
+
+(2) sme ld1/st1 vertical slice, which significantly alters the spacing between the elements.
+
+One possibility for these cases is to perform the load into env->some_scratch_space, then 
+copy into the final position afterward, and the reverse for stores.
+
+Is that preferable?  Do you see another alternative?
+
+
+>> +    t_za = get_tile_rowcol(s, a->esz, a->rs, a->za_imm, a->v);
+>> +    t_pg = pred_full_reg_ptr(s, a->pg);
+>> +    addr = tcg_temp_new_i64();
+>> +
+>> +    tcg_gen_shli_i64(addr, cpu_reg(s, a->rn), a->esz);
+>> +    tcg_gen_add_i64(addr, addr, cpu_reg_sp(s, a->rm));
+> 
+> Aren't rm and rn the wrong way around here?  The pseudocode
+> says that rn is the base (can be SP, not scaled) and rm is
+> the offset (can be XZR, scaled by mbytes).
+
+Yep, thanks.
+
+
+r~

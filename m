@@ -1,69 +1,69 @@
-Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp2675484lft;
-        Wed, 22 Jun 2022 22:42:51 -0700 (PDT)
-X-Google-Smtp-Source: AGRyM1u6Fv4wVGPMf4YsZRcWNB7xhLEntx4ODwoIA4390Y+vmo8UBtdgslHBmpSIE3cmEoEs1qpc
-X-Received: by 2002:a05:6214:2265:b0:470:7528:8a36 with SMTP id gs5-20020a056214226500b0047075288a36mr3365200qvb.41.1655962971019;
-        Wed, 22 Jun 2022 22:42:51 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1655962971; cv=none;
+Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp2714968lft;
+        Wed, 22 Jun 2022 23:58:16 -0700 (PDT)
+X-Google-Smtp-Source: AGRyM1tM5S30v5gBdtM2J6lzg/j2f2rBj0RywqigG3yeqpB3fgHsUFH197uWHhURYHYbjAb6KZ42
+X-Received: by 2002:a05:6214:d84:b0:46b:c94a:735f with SMTP id e4-20020a0562140d8400b0046bc94a735fmr30800581qve.18.1655967496160;
+        Wed, 22 Jun 2022 23:58:16 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1655967496; cv=none;
         d=google.com; s=arc-20160816;
-        b=gLXN0GMdrGVgdxdCWr/xWKIYZSBfWO02Eu3xigB/VDum+x+XKa2+dinnGy9d06QjeA
-         UTAhkhsIK32/D60Ofd2HDOLdAGdzkR3sBcj2n9+jF1ZlTVV4Xvul0W0dKf2SxL1Ul/bd
-         tOFZUeQuQ0ljXMtrtI38JsvX748EgcGLSw407Yc25Zy7E+a5gUOQ1TAkrUjuPDGaPK+9
-         zRd4V6Qfw25QO0s1HQyKNfkkNXNseDZ/LJkeCPYi5TQFLA3LggGDrMLgqQO05CA3yBU6
-         SlgDOqRXoRPBJWI9PyDCIfiVjDVKKIpDcatm8Tbw+5gBAtKmUHlnXWqvwXmybfxBIbu8
-         OYLg==
+        b=Pi+SnDturmRVuX5KogqpqOxVGI/Kw54AmPmZ7vyAsQRnomxnKYMtwwZ2NXf/NTsWiI
+         woiGAiy/jtQrKCR9zPQAOcwEpVFMod0PMgJsnFjsxvPXExVcxRSee5pkyITLTRUY+Y6k
+         hErOD03RXFXqUWJLQjs7+qhw091G3W6oIcPspIOZ4ll08TBdvMmrRivIypt8SryK1r21
+         giQon2x/7pzoqUyjFJgX72onw6ln+UsIeJ70rDm3hpSyfeOBJrZBFza+NEon4mRvU/bm
+         QssHAF7pSaII87Jfj7a8VWHFaYp/out1wZo0dYO+FleJcy4LZTcUTr6bI5GiTAj1shL+
+         EGDA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :in-reply-to:from:references:cc:to:content-language:subject
          :user-agent:mime-version:date:message-id;
-        bh=SrxPGUsVOBUEwDbn6rLul6iSsmkD559UdvQHjqePX1Y=;
-        b=iaihqr9BQqh9DZRXXMqFfykbL0khLHYSkGQ7lHHaoA+JHPDnnH0LAfFsYCIBtOlcfM
-         6HLeP8RD9WZaBUeAVdwwLIJag4yM41/Lz0VEre9XJ2k4CuEUJAB3oYkQMS6uMjhaj34F
-         AxqQJRMnZvVKeU3C1hNDwHyMcMvw29Oh8Z2pH/tWLuSPlFvNXh7Lwqj9Vakb39PO9c/b
-         PFzYu80s/Mri5x5IVB508lznpmZBtKC1XZjLjyais1X/yB58HCIXaWH4i5zJUIftOrSJ
-         xj/4TZdAFNW0sQlOWcleRgfSOzi9qVG89r79mDucfbBcsR4oVdUfnwnx9o4BRMW/PjRm
-         yK4w==
+        bh=YBTSpkIt+wJTN5ZvOLVM+X4o+wHGQqAFMbOzsus454g=;
+        b=ITZOBCCWRZf9w7FgoJ/hAdaCQZEMP7z7S0vLV+z5pNgtDKbFFW18nZLZNt3Lb1am84
+         ox11/f3jqhkLIlRwFH+q1zz1VMOG6g+gzDjYJjh7jmIClYED0TMfGf3qxu7y5gDzLbBn
+         iPvvwIlOZJ0ymU/iTH5YVdSNMaMX315MZLV/Q0uUlvwxCZ4XI3zVVvvUygLMm/406xJh
+         69enwWf7twTSpu3N3WIGCSWTH7wpsV7Hb4p03/gDuN4Afw1YUIddKAU8s3lebmpncw5z
+         S8BI/QkhX8vtdi6xmB01k/qEyf1SK865WLSMkC+dz5qijA7T5h+ueVBD2+6Q30MIgPDF
+         0t9A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id h17-20020ac87d51000000b00304f7698897si13909546qtb.606.2022.06.22.22.42.50
+        by mx.google.com with ESMTPS id 15-20020ac8574f000000b00304fe96c7a3si13672911qtx.681.2022.06.22.23.58.16
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 22 Jun 2022 22:42:51 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 22 Jun 2022 23:58:16 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:46730 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:57662 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1o4FcA-0005P3-Gd
-	for alex.bennee@linaro.org; Thu, 23 Jun 2022 01:42:50 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34130)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1o4Gn9-0001Xs-MH
+	for alex.bennee@linaro.org; Thu, 23 Jun 2022 02:58:15 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:44052)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1o4Fac-0005Mb-Ke
- for qemu-arm@nongnu.org; Thu, 23 Jun 2022 01:41:21 -0400
-Received: from 8.mo552.mail-out.ovh.net ([46.105.37.156]:60285)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1o4Ge9-0004wH-2W
+ for qemu-devel@nongnu.org; Thu, 23 Jun 2022 02:48:57 -0400
+Received: from 6.mo548.mail-out.ovh.net ([188.165.58.48]:40821)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1o4FaX-00040s-3j
- for qemu-arm@nongnu.org; Thu, 23 Jun 2022 01:41:12 -0400
-Received: from mxplan5.mail.ovh.net (unknown [10.109.156.35])
- by mo552.mail-out.ovh.net (Postfix) with ESMTPS id A18F324531;
- Thu, 23 Jun 2022 05:40:56 +0000 (UTC)
-Received: from kaod.org (37.59.142.99) by DAG4EX1.mxp5.local (172.16.2.31)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1o4Ge6-0005Zo-Nv
+ for qemu-devel@nongnu.org; Thu, 23 Jun 2022 02:48:56 -0400
+Received: from mxplan5.mail.ovh.net (unknown [10.108.20.48])
+ by mo548.mail-out.ovh.net (Postfix) with ESMTPS id 2573222C87;
+ Thu, 23 Jun 2022 06:48:50 +0000 (UTC)
+Received: from kaod.org (37.59.142.106) by DAG4EX1.mxp5.local (172.16.2.31)
  with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.9; Thu, 23 Jun
- 2022 07:40:55 +0200
+ 2022 08:48:50 +0200
 Authentication-Results: garm.ovh; auth=pass
- (GARM-99G0030c3e00cf-e27a-4f5e-b3f8-a9d1beb90f72,
+ (GARM-106R006f3ddc5b8-5ee0-48a1-b826-90c025d94000,
  1905447EDF4A6B95D61F03ED56167C5A36471571) smtp.auth=clg@kaod.org
 X-OVh-ClientIp: 82.64.250.170
-Message-ID: <606cd12d-58b0-1232-0f65-b52e654ed748@kaod.org>
-Date: Thu, 23 Jun 2022 07:40:54 +0200
+Message-ID: <2780eff7-17de-0496-7a5b-f3ede706794a@kaod.org>
+Date: Thu, 23 Jun 2022 08:48:49 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
  Thunderbird/91.9.0
-Subject: Re: [PATCH 6/9] hw/sensor: add Maxim MAX31785 device
+Subject: Re: [PATCH 0/9] Add Qualcomm BMC machines
 Content-Language: en-US
 To: Joel Stanley <joel@jms.id.au>, Jae Hyun Yoo <quic_jaehyoo@quicinc.com>
 CC: Peter Maydell <peter.maydell@linaro.org>, Titus Rwantare
@@ -71,22 +71,21 @@ CC: Peter Maydell <peter.maydell@linaro.org>, Titus Rwantare
  <quic_ggregory@quicinc.com>, Maheswara Kurapati <quic_mkurapat@quicinc.com>,
  qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
 References: <20220622172830.101210-1-quic_jaehyoo@quicinc.com>
- <20220622172830.101210-7-quic_jaehyoo@quicinc.com>
- <CACPK8Xeq0_TSfbSSbjj1DvbujAifOR65DCjkaX5iEr8EmVhKzA@mail.gmail.com>
+ <CACPK8Xcfyu0BxEhVZDQ=mfw0OcPgSm6nVSzpmT5nviq7X+rFTA@mail.gmail.com>
 From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
-In-Reply-To: <CACPK8Xeq0_TSfbSSbjj1DvbujAifOR65DCjkaX5iEr8EmVhKzA@mail.gmail.com>
+In-Reply-To: <CACPK8Xcfyu0BxEhVZDQ=mfw0OcPgSm6nVSzpmT5nviq7X+rFTA@mail.gmail.com>
 Content-Type: text/plain; charset="UTF-8"; format=flowed
 Content-Transfer-Encoding: 7bit
-X-Originating-IP: [37.59.142.99]
-X-ClientProxiedBy: DAG3EX2.mxp5.local (172.16.2.22) To DAG4EX1.mxp5.local
+X-Originating-IP: [37.59.142.106]
+X-ClientProxiedBy: DAG1EX2.mxp5.local (172.16.2.2) To DAG4EX1.mxp5.local
  (172.16.2.31)
-X-Ovh-Tracer-GUID: 1d9a30eb-04f1-46b1-9c9b-4de32951622b
-X-Ovh-Tracer-Id: 18223815895400549167
+X-Ovh-Tracer-GUID: fc3418cd-75c8-4d9e-ac53-508798d0da0c
+X-Ovh-Tracer-Id: 923800874689596207
 X-VR-SPAMSTATE: OK
 X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvfedrudefiedgleelucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhepkfffgggfuffvvehfhfgjtgfgihesthejredttdefjeenucfhrhhomhepveorughrihgtpgfnvggpifhorghtvghruceotghlgheskhgrohgurdhorhhgqeenucggtffrrghtthgvrhhnpeeuvdetudfhkefhgeeutdeulefglefgkeefieefvdffheejudeljeejgefgfeekjeenucffohhmrghinhepmhgrgihimhhinhhtvghgrhgrthgvugdrtghomhenucfkpheptddrtddrtddrtddpfeejrdehledrudegvddrleelnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmohguvgepshhmthhpohhuthdphhgvlhhopehmgihplhgrnhehrdhmrghilhdrohhvhhdrnhgvthdpihhnvghtpedtrddtrddtrddtpdhmrghilhhfrhhomheptghlgheskhgrohgurdhorhhgpdhnsggprhgtphhtthhopedupdhrtghpthhtohepqhgvmhhuqdguvghvvghlsehnohhnghhnuhdrohhrghdpoffvtefjohhsthepmhhoheehvd
-Received-SPF: pass client-ip=46.105.37.156; envelope-from=clg@kaod.org;
- helo=8.mo552.mail-out.ovh.net
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvfedrudefiedguddufecutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemucehtddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpefkffggfgfuvfevfhfhjggtgfhisehtjeertddtfeejnecuhfhrohhmpeevrogurhhitggpnfgvpgfiohgrthgvrhcuoegtlhhgsehkrghougdrohhrgheqnecuggftrfgrthhtvghrnhepleelieeigfekfeeitddvieegteeuteekffekleehuefgteetgedvkefghefggfeknecukfhppedtrddtrddtrddtpdefjedrheelrddugedvrddutdeinecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmohguvgepshhmthhpohhuthdphhgvlhhopehmgihplhgrnhehrdhmrghilhdrohhvhhdrnhgvthdpihhnvghtpedtrddtrddtrddtpdhmrghilhhfrhhomheptghlgheskhgrohgurdhorhhgpdhnsggprhgtphhtthhopedupdhrtghpthhtohepqhgvmhhuqdguvghvvghlsehnohhnghhnuhdrohhrghdpoffvtefjohhsthepmhhoheegke
+Received-SPF: pass client-ip=188.165.58.48; envelope-from=clg@kaod.org;
+ helo=6.mo548.mail-out.ovh.net
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
@@ -94,726 +93,77 @@ X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: WiV78pxygNMq
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 53nKAFvCX95d
 
-On 6/23/22 07:17, Joel Stanley wrote:
+On 6/23/22 07:25, Joel Stanley wrote:
 > On Wed, 22 Jun 2022 at 17:29, Jae Hyun Yoo <quic_jaehyoo@quicinc.com> wrote:
 >>
->> From: Maheswara Kurapati <quic_mkurapat@quicinc.com>
+>> Hello,
 >>
->> MAX31785 is a PMBus compliant 6-Channel fan controller. It supports 6 fan
->> channels, 11 temperature sensors, and 6-Channel ADC to measure the remote
->> voltages. Datasheet can be found here:
->> https://datasheets.maximintegrated.com/en/ds/MAX31785.pdf
->>
->> This initial version of the driver has skeleton and support for the
->> fan channels. Requests for temperature sensors, and ADC Channels the
->> are serviced with the default values as per the datasheet.  No additional
->> instrumentation is done.  NV Log feature is not supported.
->>
->> Signed-off-by: Maheswara Kurapati <quic_mkurapat@quicinc.com>
+>> I'm sending a series to add Qualcomm BMC machines that are equipped with
+>> Aspeed AST2600 SoC. Also, this series adds MAX31785 fan controller device
+>> emulation. Please help to review.
 > 
-> An excellent contribution. Thanks Maheswara and Jae.
+> Thanks for the MAX31785 model, that's handy to have.
 > 
-> Reviewed-by: Joel Stanley <joel@jms.id.au>
+> I'm all for more emulation and testing using Qemu models, but I wonder
+> if you need to add all three of your boards. They seem to be a
+> progression (evb-proto -> dc-scm -> firework). Could you get away with
+> just one or two of those?
 
-We could also update the models of these machines :
-
-     aspeed-bmc-ibm-rainier.dts:	max: max31785@52 {
-     aspeed-bmc-ibm-rainier.dts:		compatible = "maxim,max31785a";
-     aspeed-bmc-opp-tacoma.dts:	max31785@52 {
-     aspeed-bmc-opp-tacoma.dts:		compatible = "maxim,max31785a";
-     aspeed-bmc-opp-witherspoon.dts:	max31785@52 {
-     aspeed-bmc-opp-witherspoon.dts:		compatible = "maxim,max31785a";
-
-
-For the merge, I would prefer to have separate patches. One adding the
-sensor model and others updating the machines.
+I am not sure the evb-proto-bmc is useful to upstream. The other two
+are fine.
 
 Thanks,
-     
+
 C.
+
+
 
 > 
 > 
->> ---
+>>
+>> Thanks,
+>>
+>> Jae
+>>
+>> Graeme Gregory (2):
+>>    hw/arm/aspeed: qcom-dc-scm-v1: add block backed FRU device
+>>    hw/arm/aspeed: add Qualcomm Firework machine and FRU device
+>>
+>> Jae Hyun Yoo (3):
+>>    hw/arm/aspeed: add support for the Qualcomm EVB proto board
+>>    hw/arm/aspeed: add support for the Qualcomm DC-SCM v1 board
+>>    hw/arm/aspeed: firework: add I2C MUXes for VR channels
+>>
+>> Maheswara Kurapati (4):
+>>    hw/i2c: pmbus: Page #255 is valid page for read requests.
+>>    hw/sensor: add Maxim MAX31785 device
+>>    hw/arm/aspeed: firework: Add MAX31785 Fan controllers
+>>    hw/arm/aspeed: firework: Add Thermal Diodes
+>>
 >>   hw/arm/Kconfig        |   1 +
->>   hw/arm/aspeed.c       |   6 +-
+>>   hw/arm/aspeed.c       | 158 +++++++++++-
+>>   hw/i2c/pmbus_device.c |   1 -
 >>   hw/sensor/Kconfig     |   4 +
 >>   hw/sensor/max31785.c  | 580 ++++++++++++++++++++++++++++++++++++++++++
 >>   hw/sensor/meson.build |   1 +
->>   5 files changed, 590 insertions(+), 2 deletions(-)
+>>   6 files changed, 742 insertions(+), 3 deletions(-)
 >>   create mode 100644 hw/sensor/max31785.c
 >>
->> diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
->> index 219262a8da36..77ef0fa967b2 100644
->> --- a/hw/arm/Kconfig
->> +++ b/hw/arm/Kconfig
->> @@ -408,6 +408,7 @@ config NPCM7XX
->>       select SSI
->>       select UNIMP
->>       select PCA954X
->> +    select MAX31785
->>
->>   config FSL_IMX25
->>       bool
->> diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
->> index 0e6edd2be4fa..85630b497793 100644
->> --- a/hw/arm/aspeed.c
->> +++ b/hw/arm/aspeed.c
->> @@ -619,7 +619,6 @@ static void witherspoon_bmc_i2c_init(AspeedMachineState *bmc)
->>       LEDState *led;
->>
->>       /* Bus 3: TODO bmp280@77 */
->> -    /* Bus 3: TODO max31785@52 */
->>       dev = DEVICE(i2c_slave_new(TYPE_PCA9552, 0x60));
->>       qdev_prop_set_string(dev, "description", "pca1");
->>       i2c_slave_realize_and_unref(I2C_SLAVE(dev),
->> @@ -635,6 +634,8 @@ static void witherspoon_bmc_i2c_init(AspeedMachineState *bmc)
->>                                 qdev_get_gpio_in(DEVICE(led), 0));
->>       }
->>       i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 3), "dps310", 0x76);
->> +    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 3), "max31785",
->> +                            0x52);
->>       i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 4), "tmp423", 0x4c);
->>       i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 5), "tmp423", 0x4c);
->>
->> @@ -779,13 +780,14 @@ static void rainier_bmc_i2c_init(AspeedMachineState *bmc)
->>       create_pca9552(soc, 7, 0x31);
->>       create_pca9552(soc, 7, 0x32);
->>       create_pca9552(soc, 7, 0x33);
->> -    /* Bus 7: TODO max31785@52 */
->>       create_pca9552(soc, 7, 0x60);
->>       create_pca9552(soc, 7, 0x61);
->>       i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 7), "dps310", 0x76);
->>       /* Bus 7: TODO si7021-a20@20 */
->>       i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 7), TYPE_TMP105,
->>                        0x48);
->> +    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 7), "max31785",
->> +                     0x52);
->>       aspeed_eeprom_init(aspeed_i2c_get_bus(&soc->i2c, 7), 0x50, 64 * KiB);
->>       aspeed_eeprom_init(aspeed_i2c_get_bus(&soc->i2c, 7), 0x51, 64 * KiB);
->>
->> diff --git a/hw/sensor/Kconfig b/hw/sensor/Kconfig
->> index df392e786904..e03bd09b50e8 100644
->> --- a/hw/sensor/Kconfig
->> +++ b/hw/sensor/Kconfig
->> @@ -34,3 +34,7 @@ config LSM303DLHC_MAG
->>   config ISL_PMBUS_VR
->>       bool
->>       depends on PMBUS
->> +
->> +config MAX31785
->> +    bool
->> +    depends on PMBUS
->> diff --git a/hw/sensor/max31785.c b/hw/sensor/max31785.c
->> new file mode 100644
->> index 000000000000..11bf9977b6fd
->> --- /dev/null
->> +++ b/hw/sensor/max31785.c
->> @@ -0,0 +1,580 @@
->> +/*
->> + * Maxim MAX31785 PMBus 6-Channel Fan Controller
->> + *
->> + * Datasheet:
->> + * https://datasheets.maximintegrated.com/en/ds/MAX31785.pdf
->> + *
->> + * Copyright(c) 2022 Qualcomm Innovative Center, Inc. All rights reserved.
->> + *
->> + * SPDX-License-Identifier: GPL-2.0-or-later
->> + */
->> +
->> +#include "qemu/osdep.h"
->> +#include "hw/i2c/pmbus_device.h"
->> +#include "hw/irq.h"
->> +#include "migration/vmstate.h"
->> +#include "qapi/error.h"
->> +#include "qapi/visitor.h"
->> +#include "qemu/log.h"
->> +#include "qemu/module.h"
->> +
->> +#define TYPE_MAX31785   "max31785"
->> +#define MAX31785(obj) OBJECT_CHECK(MAX31785State, (obj), TYPE_MAX31785)
->> +
->> +/*
->> + * MAX31785 mfr specific PMBus commands
->> + */
->> +#define MAX31785_MFR_MODE               0xD1
->> +#define MAX31785_MFR_PSEN_CONFIG        0xD2
->> +#define MAX31785_MFR_VOUT_PEAK          0xD4
->> +#define MAX31785_MFR_TEMPERATURE_PEAK   0xD6
->> +#define MAX31785_MFR_VOUT_MIN           0xD7
->> +#define MAX31785_MFR_FAULT_RESPONSE     0xD9
->> +#define MAX31785_MFR_NV_FAULT_LOG       0xDC
->> +#define MAX31785_MFR_TIME_COUNT         0xDD
->> +#define MAX31785_MFR_TEMP_SENSOR_CONFIG 0xF0
->> +#define MAX31785_MFR_FAN_CONFIG         0xF1
->> +#define MAX31785_MFR_FAN_LUT            0xF2
->> +#define MAX31785_MFR_READ_FAN_PWM       0xF3
->> +#define MAX31785_MFR_FAN_FAULT_LIMIT    0xF5
->> +#define MAX31785_MFR_FAN_WARN_LIMIT     0xF6
->> +#define MAX31785_MFR_FAN_RUN_TIME       0xF7
->> +#define MAX31785_MFR_FAN_PWM_AVG        0xF8
->> +#define MAX31785_MFR_FAN_PWM2RPM        0xF9
->> +
->> +/*
->> + * defaults as per the data sheet
->> + */
->> +#define MAX31785_DEFAULT_CAPABILITY         0x10
->> +#define MAX31785_DEFAULT_VOUT_MODE          0x40
->> +#define MAX31785_DEFAULT_VOUT_SCALE_MONITOR 0x7FFF
->> +#define MAX31785_DEFAULT_FAN_COMMAND_1      0x7FFF
->> +#define MAX31785_DEFAULT_OV_FAULT_LIMIT     0x7FFF
->> +#define MAX31785_DEFAULT_OV_WARN_LIMIT      0x7FFF
->> +#define MAX31785_DEFAULT_OT_FAULT_LIMIT     0x7FFF
->> +#define MAX31785_DEFAULT_OT_WARN_LIMIT      0x7FFF
->> +#define MAX31785_DEFAULT_PMBUS_REVISION     0x11
->> +#define MAX31785_DEFAULT_MFR_ID             0x4D
->> +#define MAX31785_DEFAULT_MFR_MODEL          0x53
->> +#define MAX31785_DEFAULT_MFR_REVISION       0x3030
->> +#define MAX31785A_DEFAULT_MFR_REVISION      0x3040
->> +#define MAX31785B_DEFAULT_MFR_REVISION      0x3061
->> +#define MAX31785B_DEFAULT_MFR_TEMPERATURE_PEAK   0x8000
->> +#define MAX31785B_DEFAULT_MFR_VOUT_MIN      0x7FFF
->> +#define MAX31785_DEFAULT_TEXT               0x3130313031303130
->> +
->> +/* MAX31785 pages */
->> +#define MAX31785_TOTAL_NUM_PAGES    23
->> +#define MAX31785_FAN_PAGES          6
->> +#define MAX31785_MIN_FAN_PAGE       0
->> +#define MAX31785_MAX_FAN_PAGE       5
->> +#define MAX31785_MIN_TEMP_PAGE      6
->> +#define MAX31785_MAX_TEMP_PAGE      16
->> +#define MAX31785_MIN_ADC_VOLTAGE_PAGE   17
->> +#define MAX31785_MAX_ADC_VOLTAGE_PAGE   22
->> +
->> +/* FAN_CONFIG_1_2 */
->> +#define MAX31785_MFR_FAN_CONFIG         0xF1
->> +#define MAX31785_FAN_CONFIG_ENABLE         BIT(7)
->> +#define MAX31785_FAN_CONFIG_RPM_PWM        BIT(6)
->> +#define MAX31785_FAN_CONFIG_PULSE(pulse)   (pulse << 4)
->> +#define MAX31785_DEFAULT_FAN_CONFIG_1_2(pulse) (MAX31785_FAN_CONFIG_ENABLE |\
->> +MAX31785_FAN_CONFIG_PULSE(pulse))
->> +#define MAX31785_DEFAULT_MFR_FAN_CONFIG     0x0000
->> +
->> +/* fan speed in RPM */
->> +#define MAX31785_DEFAULT_FAN_SPEED          0x7fff
->> +#define MAX31785_DEFAULT_FAN_STATUS         0x00
->> +
->> +#define MAX31785_DEFAULT_FAN_MAX_PWM        0x2710
->> +
->> +/*
->> + * MAX31785State:
->> + * @code: The command code received
->> + * @page: Each page corresponds to a device monitored by the Max 31785
->> + * The page register determines the available commands depending on device
->> +___________________________________________________________________________
->> +|   0   |  Fan Connected to PWM0                                            |
->> +|_______|___________________________________________________________________|
->> +|   1   |  Fan Connected to PWM1                                            |
->> +|_______|___________________________________________________________________|
->> +|   2   |  Fan Connected to PWM2                                            |
->> +|_______|___________________________________________________________________|
->> +|   3   |  Fan Connected to PWM3                                            |
->> +|_______|___________________________________________________________________|
->> +|   4   |  Fan Connected to PWM4                                            |
->> +|_______|___________________________________________________________________|
->> +|   5   |  Fan Connected to PWM5                                            |
->> +|_______|___________________________________________________________________|
->> +|   6   |  Remote Thermal Diode Connected to ADC 0                          |
->> +|_______|___________________________________________________________________|
->> +|   7   |  Remote Thermal Diode Connected to ADC 1                          |
->> +|_______|___________________________________________________________________|
->> +|   8   |  Remote Thermal Diode Connected to ADC 2                          |
->> +|_______|___________________________________________________________________|
->> +|   9   |  Remote Thermal Diode Connected to ADC 3                          |
->> +|_______|___________________________________________________________________|
->> +|  10   |  Remote Thermal Diode Connected to ADC 4                          |
->> +|_______|___________________________________________________________________|
->> +|  11   |  Remote Thermal Diode Connected to ADC 5                          |
->> +|_______|___________________________________________________________________|
->> +|  12   |  Internal Temperature Sensor                                      |
->> +|_______|___________________________________________________________________|
->> +|  13   |  Remote I2C Temperature Sensor with Address 0                     |
->> +|_______|___________________________________________________________________|
->> +|  14   |  Remote I2C Temperature Sensor with Address 1                     |
->> +|_______|___________________________________________________________________|
->> +|  15   |  Remote I2C Temperature Sensor with Address 2                     |
->> +|_______|___________________________________________________________________|
->> +|  16   |  Remote I2C Temperature Sensor with Address 3                     |
->> +|_______|___________________________________________________________________|
->> +|  17   |  Remote I2C Temperature Sensor with Address 4                     |
->> +|_______|___________________________________________________________________|
->> +|  17   |  Remote Voltage Connected to ADC0                                 |
->> +|_______|___________________________________________________________________|
->> +|  18   |  Remote Voltage Connected to ADC1                                 |
->> +|_______|___________________________________________________________________|
->> +|  19   |  Remote Voltage Connected to ADC2                                 |
->> +|_______|___________________________________________________________________|
->> +|  20   |  Remote Voltage Connected to ADC3                                 |
->> +|_______|___________________________________________________________________|
->> +|  21   |  Remote Voltage Connected to ADC4                                 |
->> +|_______|___________________________________________________________________|
->> +|  22   |  Remote Voltage Connected to ADC5                                 |
->> +|_______|___________________________________________________________________|
->> +|23-254 |  Reserved                                                         |
->> +|_______|___________________________________________________________________|
->> +|  255  |  Applies to all pages                                             |
->> +|_______|___________________________________________________________________|
->> +*/
->> +
->> +/*
->> + * Place holder to save the max31785 mfr specific registers
->> + */
->> +typedef struct MAX31785State {
->> +    PMBusDevice parent;
->> +    uint16_t mfr_mode[MAX31785_TOTAL_NUM_PAGES];
->> +    uint16_t vout_peak[MAX31785_TOTAL_NUM_PAGES];
->> +    uint16_t temperature_peak[MAX31785_TOTAL_NUM_PAGES];
->> +    uint16_t vout_min[MAX31785_TOTAL_NUM_PAGES];
->> +    uint8_t  fault_response[MAX31785_TOTAL_NUM_PAGES];
->> +    uint32_t time_count[MAX31785_TOTAL_NUM_PAGES];
->> +    uint16_t temp_sensor_config[MAX31785_TOTAL_NUM_PAGES];
->> +    uint16_t fan_config[MAX31785_TOTAL_NUM_PAGES];
->> +    uint16_t read_fan_pwm[MAX31785_TOTAL_NUM_PAGES];
->> +    uint16_t fan_fault_limit[MAX31785_TOTAL_NUM_PAGES];
->> +    uint16_t fan_warn_limit[MAX31785_TOTAL_NUM_PAGES];
->> +    uint16_t fan_run_time[MAX31785_TOTAL_NUM_PAGES];
->> +    uint16_t fan_pwm_avg[MAX31785_TOTAL_NUM_PAGES];
->> +    uint64_t fan_pwm2rpm[MAX31785_TOTAL_NUM_PAGES];
->> +    uint64_t mfr_location;
->> +    uint64_t mfr_date;
->> +    uint64_t mfr_serial;
->> +    uint16_t mfr_revision;
->> +} MAX31785State;
->> +
->> +static uint8_t max31785_read_byte(PMBusDevice *pmdev)
->> +{
->> +    MAX31785State *s = MAX31785(pmdev);
->> +    switch (pmdev->code) {
->> +
->> +    case PMBUS_FAN_CONFIG_1_2:
->> +        if (pmdev->page <= MAX31785_MAX_FAN_PAGE) {
->> +            pmbus_send8(pmdev, pmdev->pages[pmdev->page].fan_config_1_2);
->> +        }
->> +        break;
->> +
->> +    case PMBUS_FAN_COMMAND_1:
->> +        if (pmdev->page <= MAX31785_MAX_FAN_PAGE) {
->> +            pmbus_send16(pmdev, pmdev->pages[pmdev->page].fan_command_1);
->> +        }
->> +        break;
->> +
->> +    case PMBUS_READ_FAN_SPEED_1:
->> +        if (pmdev->page <= MAX31785_MAX_FAN_PAGE) {
->> +            pmbus_send16(pmdev, pmdev->pages[pmdev->page].read_fan_speed_1);
->> +        }
->> +        break;
->> +
->> +    case PMBUS_STATUS_FANS_1_2:
->> +        if (pmdev->page <= MAX31785_MAX_FAN_PAGE) {
->> +            pmbus_send16(pmdev, pmdev->pages[pmdev->page].status_fans_1_2);
->> +        }
->> +        break;
->> +
->> +    case PMBUS_MFR_REVISION:
->> +        pmbus_send16(pmdev, MAX31785_DEFAULT_MFR_REVISION);
->> +        break;
->> +
->> +    case PMBUS_MFR_ID:
->> +        pmbus_send8(pmdev, 0x4d); /* Maxim */
->> +        break;
->> +
->> +    case PMBUS_MFR_MODEL:
->> +        pmbus_send8(pmdev, 0x53);
->> +        break;
->> +
->> +    case PMBUS_MFR_LOCATION:
->> +        pmbus_send64(pmdev, s->mfr_location);
->> +        break;
->> +
->> +    case PMBUS_MFR_DATE:
->> +        pmbus_send64(pmdev, s->mfr_date);
->> +        break;
->> +
->> +    case PMBUS_MFR_SERIAL:
->> +        pmbus_send64(pmdev, s->mfr_serial);
->> +        break;
->> +
->> +    case MAX31785_MFR_MODE:
->> +        pmbus_send16(pmdev, s->mfr_mode[pmdev->page]);
->> +        break;
->> +
->> +    case MAX31785_MFR_VOUT_PEAK:
->> +        if ((pmdev->page >= MAX31785_MIN_ADC_VOLTAGE_PAGE) &&
->> +            (pmdev->page <= MAX31785_MAX_ADC_VOLTAGE_PAGE)) {
->> +            pmbus_send16(pmdev, s->vout_peak[pmdev->page]);
->> +        }
->> +        break;
->> +
->> +    case MAX31785_MFR_TEMPERATURE_PEAK:
->> +        if ((pmdev->page >= MAX31785_MIN_TEMP_PAGE) &&
->> +            (pmdev->page <= MAX31785_MAX_TEMP_PAGE)) {
->> +            pmbus_send16(pmdev, s->temperature_peak[pmdev->page]);
->> +        }
->> +        break;
->> +
->> +    case MAX31785_MFR_VOUT_MIN:
->> +        if ((pmdev->page >= MAX31785_MIN_ADC_VOLTAGE_PAGE) &&
->> +            (pmdev->page <= MAX31785_MAX_ADC_VOLTAGE_PAGE)) {
->> +            pmbus_send16(pmdev, s->vout_min[pmdev->page]);
->> +        }
->> +        break;
->> +
->> +    case MAX31785_MFR_FAULT_RESPONSE:
->> +        pmbus_send8(pmdev, s->fault_response[pmdev->page]);
->> +        break;
->> +
->> +    case MAX31785_MFR_TIME_COUNT: /* R/W 32 */
->> +        pmbus_send32(pmdev, s->time_count[pmdev->page]);
->> +        break;
->> +
->> +    case MAX31785_MFR_TEMP_SENSOR_CONFIG: /* R/W 16 */
->> +        if ((pmdev->page >= MAX31785_MIN_TEMP_PAGE) &&
->> +            (pmdev->page <= MAX31785_MAX_TEMP_PAGE)) {
->> +            pmbus_send16(pmdev, s->temp_sensor_config[pmdev->page]);
->> +        }
->> +        break;
->> +
->> +    case MAX31785_MFR_FAN_CONFIG: /* R/W 16 */
->> +        if (pmdev->page <= MAX31785_MAX_FAN_PAGE) {
->> +            pmbus_send16(pmdev, s->fan_config[pmdev->page]);
->> +        }
->> +        break;
->> +
->> +    case MAX31785_MFR_READ_FAN_PWM: /* R/W 16 */
->> +        if (pmdev->page <= MAX31785_MAX_FAN_PAGE) {
->> +            pmbus_send16(pmdev, s->read_fan_pwm[pmdev->page]);
->> +        }
->> +        break;
->> +
->> +    case MAX31785_MFR_FAN_FAULT_LIMIT: /* R/W 16 */
->> +        if (pmdev->page <= MAX31785_MAX_FAN_PAGE) {
->> +            pmbus_send16(pmdev, s->fan_fault_limit[pmdev->page]);
->> +        }
->> +        break;
->> +
->> +    case MAX31785_MFR_FAN_WARN_LIMIT: /* R/W 16 */
->> +        if (pmdev->page <= MAX31785_MAX_FAN_PAGE) {
->> +            pmbus_send16(pmdev, s->fan_warn_limit[pmdev->page]);
->> +        }
->> +        break;
->> +
->> +    case MAX31785_MFR_FAN_RUN_TIME: /* R/W 16 */
->> +        if (pmdev->page <= MAX31785_MAX_FAN_PAGE) {
->> +            pmbus_send16(pmdev, s->fan_run_time[pmdev->page]);
->> +        }
->> +        break;
->> +
->> +    case MAX31785_MFR_FAN_PWM_AVG: /* R/W 16 */
->> +        if (pmdev->page <= MAX31785_MAX_FAN_PAGE) {
->> +            pmbus_send16(pmdev, s->fan_pwm_avg[pmdev->page]);
->> +        }
->> +        break;
->> +
->> +    case MAX31785_MFR_FAN_PWM2RPM: /* R/W 64 */
->> +        if (pmdev->page <= MAX31785_MAX_FAN_PAGE) {
->> +            pmbus_send64(pmdev, s->fan_pwm2rpm[pmdev->page]);
->> +        }
->> +        break;
->> +
->> +    default:
->> +        qemu_log_mask(LOG_GUEST_ERROR,
->> +        "%s: reading from unsupported register: 0x%02x\n",
->> +        __func__, pmdev->code);
->> +        break;
->> +    }
->> +    return 0xFF;
->> +}
->> +
->> +static int max31785_write_data(PMBusDevice *pmdev, const uint8_t *buf,
->> +                                uint8_t len)
->> +{
->> +    MAX31785State *s = MAX31785(pmdev);
->> +    if (len == 0) {
->> +        qemu_log_mask(LOG_GUEST_ERROR, "%s: writing empty data\n", __func__);
->> +        return -1;
->> +    }
->> +
->> +    pmdev->code = buf[0]; /* PMBus command code */
->> +
->> +    if (len == 1) {
->> +        return 0;
->> +    }
->> +
->> +    /* Exclude command code from buffer */
->> +    buf++;
->> +    len--;
->> +
->> +    switch (pmdev->code) {
->> +
->> +    case PMBUS_FAN_CONFIG_1_2:
->> +        if (pmdev->page <= MAX31785_MAX_FAN_PAGE) {
->> +            pmdev->pages[pmdev->page].fan_config_1_2 = pmbus_receive8(pmdev);
->> +        }
->> +        break;
->> +
->> +    case PMBUS_FAN_COMMAND_1:
->> +        if (pmdev->page <= MAX31785_MAX_FAN_PAGE) {
->> +            pmdev->pages[pmdev->page].fan_command_1 = pmbus_receive16(pmdev);
->> +            pmdev->pages[pmdev->page].read_fan_speed_1 =
->> +                ((MAX31785_DEFAULT_FAN_SPEED / MAX31785_DEFAULT_FAN_MAX_PWM) *
->> +                pmdev->pages[pmdev->page].fan_command_1);
->> +        }
->> +        break;
->> +
->> +    case PMBUS_MFR_LOCATION: /* R/W 64 */
->> +        s->mfr_location = pmbus_receive64(pmdev);
->> +        break;
->> +
->> +    case PMBUS_MFR_DATE: /* R/W 64 */
->> +        s->mfr_date = pmbus_receive64(pmdev);
->> +        break;
->> +
->> +    case PMBUS_MFR_SERIAL: /* R/W 64 */
->> +        s->mfr_serial = pmbus_receive64(pmdev);
->> +        break;
->> +
->> +    case MAX31785_MFR_MODE: /* R/W word */
->> +        s->mfr_mode[pmdev->page] = pmbus_receive16(pmdev);
->> +        break;
->> +
->> +    case MAX31785_MFR_VOUT_PEAK: /* R/W word */
->> +        if ((pmdev->page >= MAX31785_MIN_ADC_VOLTAGE_PAGE) &&
->> +            (pmdev->page <= MAX31785_MAX_ADC_VOLTAGE_PAGE)) {
->> +            s->vout_peak[pmdev->page] = pmbus_receive16(pmdev);
->> +        }
->> +        break;
->> +
->> +    case MAX31785_MFR_TEMPERATURE_PEAK: /* R/W word */
->> +        if ((pmdev->page >= 6) && (pmdev->page <= 16)) {
->> +            s->temperature_peak[pmdev->page] = pmbus_receive16(pmdev);
->> +        }
->> +        break;
->> +
->> +    case MAX31785_MFR_VOUT_MIN: /* R/W word */
->> +        if ((pmdev->page >= MAX31785_MIN_ADC_VOLTAGE_PAGE) &&
->> +            (pmdev->page <= MAX31785_MAX_ADC_VOLTAGE_PAGE)) {
->> +            s->vout_min[pmdev->page] = pmbus_receive16(pmdev);
->> +        }
->> +        break;
->> +
->> +    case MAX31785_MFR_FAULT_RESPONSE: /* R/W 8 */
->> +        s->fault_response[pmdev->page] = pmbus_receive8(pmdev);
->> +        break;
->> +
->> +    case MAX31785_MFR_TIME_COUNT: /* R/W 32 */
->> +        s->time_count[pmdev->page] = pmbus_receive32(pmdev);
->> +        break;
->> +
->> +    case MAX31785_MFR_TEMP_SENSOR_CONFIG: /* R/W 16 */
->> +        if ((pmdev->page >= MAX31785_MIN_TEMP_PAGE) &&
->> +            (pmdev->page <= MAX31785_MAX_TEMP_PAGE)) {
->> +            s->temp_sensor_config[pmdev->page] = pmbus_receive16(pmdev);
->> +        }
->> +        break;
->> +
->> +    case MAX31785_MFR_FAN_CONFIG: /* R/W 16 */
->> +        if (pmdev->page <= MAX31785_MAX_FAN_PAGE) {
->> +            s->fan_config[pmdev->page] = pmbus_receive16(pmdev);
->> +        }
->> +        break;
->> +
->> +    case MAX31785_MFR_FAN_FAULT_LIMIT: /* R/W 16 */
->> +        if (pmdev->page <= MAX31785_MAX_FAN_PAGE) {
->> +            s->fan_fault_limit[pmdev->page] = pmbus_receive16(pmdev);
->> +        }
->> +        break;
->> +
->> +    case MAX31785_MFR_FAN_WARN_LIMIT: /* R/W 16 */
->> +        if (pmdev->page <= MAX31785_MAX_FAN_PAGE) {
->> +            s->fan_warn_limit[pmdev->page] = pmbus_receive16(pmdev);
->> +        }
->> +        break;
->> +
->> +    case MAX31785_MFR_FAN_RUN_TIME: /* R/W 16 */
->> +        if (pmdev->page <= MAX31785_MAX_FAN_PAGE) {
->> +            s->fan_run_time[pmdev->page] = pmbus_receive16(pmdev);
->> +        }
->> +        break;
->> +
->> +    case MAX31785_MFR_FAN_PWM_AVG: /* R/W 16 */
->> +        if (pmdev->page <= MAX31785_MAX_FAN_PAGE) {
->> +            s->fan_pwm_avg[pmdev->page] = pmbus_receive16(pmdev);
->> +        }
->> +        break;
->> +
->> +    case MAX31785_MFR_FAN_PWM2RPM: /* R/W 64 */
->> +        if (pmdev->page <= MAX31785_MAX_FAN_PAGE) {
->> +            s->fan_pwm2rpm[pmdev->page] = pmbus_receive64(pmdev);
->> +        }
->> +        break;
->> +
->> +    default:
->> +        qemu_log_mask(LOG_GUEST_ERROR,
->> +                      "%s: writing to unsupported register: 0x%02x\n",
->> +                      __func__, pmdev->code);
->> +        break;
->> +    }
->> +    return 0;
->> +}
->> +
->> +static void max31785_exit_reset(Object *obj)
->> +{
->> +    PMBusDevice *pmdev = PMBUS_DEVICE(obj);
->> +    MAX31785State *s = MAX31785(obj);
->> +
->> +    pmdev->capability = MAX31785_DEFAULT_CAPABILITY;
->> +
->> +    for (int i = MAX31785_MIN_FAN_PAGE; i <= MAX31785_MAX_FAN_PAGE; i++) {
->> +        pmdev->pages[i].vout_mode = MAX31785_DEFAULT_VOUT_MODE;
->> +        pmdev->pages[i].fan_command_1 = MAX31785_DEFAULT_FAN_COMMAND_1;
->> +        pmdev->pages[i].revision = MAX31785_DEFAULT_PMBUS_REVISION;
->> +        pmdev->pages[i].fan_config_1_2 = MAX31785_DEFAULT_FAN_CONFIG_1_2(0);
->> +        pmdev->pages[i].read_fan_speed_1 = MAX31785_DEFAULT_FAN_SPEED;
->> +        pmdev->pages[i].status_fans_1_2 = MAX31785_DEFAULT_FAN_STATUS;
->> +    }
->> +
->> +    for (int i = MAX31785_MIN_TEMP_PAGE; i <= MAX31785_MAX_TEMP_PAGE; i++) {
->> +        pmdev->pages[i].vout_mode = MAX31785_DEFAULT_VOUT_MODE;
->> +        pmdev->pages[i].revision = MAX31785_DEFAULT_PMBUS_REVISION;
->> +        pmdev->pages[i].ot_fault_limit = MAX31785_DEFAULT_OT_FAULT_LIMIT;
->> +        pmdev->pages[i].ot_warn_limit = MAX31785_DEFAULT_OT_WARN_LIMIT;
->> +    }
->> +
->> +    for (int i = MAX31785_MIN_ADC_VOLTAGE_PAGE;
->> +         i <= MAX31785_MAX_ADC_VOLTAGE_PAGE;
->> +         i++) {
->> +        pmdev->pages[i].vout_mode = MAX31785_DEFAULT_VOUT_MODE;
->> +        pmdev->pages[i].revision = MAX31785_DEFAULT_PMBUS_REVISION;
->> +        pmdev->pages[i].vout_scale_monitor =
->> +        MAX31785_DEFAULT_VOUT_SCALE_MONITOR;
->> +        pmdev->pages[i].vout_ov_fault_limit =
->> +        MAX31785_DEFAULT_OV_FAULT_LIMIT;
->> +        pmdev->pages[i].vout_ov_warn_limit =
->> +        MAX31785_DEFAULT_OV_WARN_LIMIT;
->> +    }
->> +
->> +    s->mfr_location = MAX31785_DEFAULT_TEXT;
->> +    s->mfr_date = MAX31785_DEFAULT_TEXT;
->> +    s->mfr_serial = MAX31785_DEFAULT_TEXT;
->> +}
->> +
->> +static const VMStateDescription vmstate_max31785 = {
->> +    .name = TYPE_MAX31785,
->> +    .version_id = 0,
->> +    .minimum_version_id = 0,
->> +    .fields = (VMStateField[]){
->> +        VMSTATE_PMBUS_DEVICE(parent, MAX31785State),
->> +        VMSTATE_UINT16_ARRAY(mfr_mode, MAX31785State,
->> +        MAX31785_TOTAL_NUM_PAGES),
->> +        VMSTATE_UINT16_ARRAY(vout_peak, MAX31785State,
->> +        MAX31785_TOTAL_NUM_PAGES),
->> +        VMSTATE_UINT16_ARRAY(temperature_peak, MAX31785State,
->> +        MAX31785_TOTAL_NUM_PAGES),
->> +        VMSTATE_UINT16_ARRAY(vout_min, MAX31785State,
->> +        MAX31785_TOTAL_NUM_PAGES),
->> +        VMSTATE_UINT8_ARRAY(fault_response, MAX31785State,
->> +        MAX31785_TOTAL_NUM_PAGES),
->> +        VMSTATE_UINT32_ARRAY(time_count, MAX31785State,
->> +        MAX31785_TOTAL_NUM_PAGES),
->> +        VMSTATE_UINT16_ARRAY(temp_sensor_config, MAX31785State,
->> +        MAX31785_TOTAL_NUM_PAGES),
->> +        VMSTATE_UINT16_ARRAY(fan_config, MAX31785State,
->> +        MAX31785_TOTAL_NUM_PAGES),
->> +        VMSTATE_UINT16_ARRAY(read_fan_pwm, MAX31785State,
->> +        MAX31785_TOTAL_NUM_PAGES),
->> +        VMSTATE_UINT16_ARRAY(fan_fault_limit, MAX31785State,
->> +        MAX31785_TOTAL_NUM_PAGES),
->> +        VMSTATE_UINT16_ARRAY(fan_warn_limit, MAX31785State,
->> +        MAX31785_TOTAL_NUM_PAGES),
->> +        VMSTATE_UINT16_ARRAY(fan_run_time, MAX31785State,
->> +        MAX31785_TOTAL_NUM_PAGES),
->> +        VMSTATE_UINT16_ARRAY(fan_pwm_avg, MAX31785State,
->> +        MAX31785_TOTAL_NUM_PAGES),
->> +        VMSTATE_UINT64_ARRAY(fan_pwm2rpm, MAX31785State,
->> +        MAX31785_TOTAL_NUM_PAGES),
->> +        VMSTATE_UINT64(mfr_location, MAX31785State),
->> +        VMSTATE_UINT64(mfr_date, MAX31785State),
->> +        VMSTATE_UINT64(mfr_serial, MAX31785State),
->> +        VMSTATE_END_OF_LIST()
->> +    }
->> +};
->> +
->> +static void max31785_init(Object *obj)
->> +{
->> +    PMBusDevice *pmdev = PMBUS_DEVICE(obj);
->> +
->> +    for (int i = MAX31785_MIN_FAN_PAGE; i <= MAX31785_MAX_FAN_PAGE; i++) {
->> +        pmbus_page_config(pmdev, i, PB_HAS_VOUT_MODE);
->> +    }
->> +
->> +    for (int i = MAX31785_MIN_TEMP_PAGE; i <= MAX31785_MAX_TEMP_PAGE; i++) {
->> +        pmbus_page_config(pmdev, i, PB_HAS_VOUT_MODE | PB_HAS_TEMPERATURE);
->> +    }
->> +
->> +    for (int i = MAX31785_MIN_ADC_VOLTAGE_PAGE;
->> +        i <= MAX31785_MAX_ADC_VOLTAGE_PAGE;
->> +        i++) {
->> +        pmbus_page_config(pmdev, i, PB_HAS_VOUT_MODE | PB_HAS_VOUT |
->> +                                    PB_HAS_VOUT_RATING);
->> +    }
->> +}
->> +
->> +static void max31785_class_init(ObjectClass *klass, void *data)
->> +{
->> +    ResettableClass *rc = RESETTABLE_CLASS(klass);
->> +    DeviceClass *dc = DEVICE_CLASS(klass);
->> +    PMBusDeviceClass *k = PMBUS_DEVICE_CLASS(klass);
->> +    dc->desc = "Maxim MAX31785 6-Channel Fan Controller";
->> +    dc->vmsd = &vmstate_max31785;
->> +    k->write_data = max31785_write_data;
->> +    k->receive_byte = max31785_read_byte;
->> +    k->device_num_pages = MAX31785_TOTAL_NUM_PAGES;
->> +    rc->phases.exit = max31785_exit_reset;
->> +}
->> +
->> +static const TypeInfo max31785_info = {
->> +    .name = TYPE_MAX31785,
->> +    .parent = TYPE_PMBUS_DEVICE,
->> +    .instance_size = sizeof(MAX31785State),
->> +    .instance_init = max31785_init,
->> +    .class_init = max31785_class_init,
->> +};
->> +
->> +static void max31785_register_types(void)
->> +{
->> +    type_register_static(&max31785_info);
->> +}
->> +
->> +type_init(max31785_register_types)
->> diff --git a/hw/sensor/meson.build b/hw/sensor/meson.build
->> index 12b6992bc845..9e9be602c349 100644
->> --- a/hw/sensor/meson.build
->> +++ b/hw/sensor/meson.build
->> @@ -6,3 +6,4 @@ softmmu_ss.add(when: 'CONFIG_ADM1272', if_true: files('adm1272.c'))
->>   softmmu_ss.add(when: 'CONFIG_MAX34451', if_true: files('max34451.c'))
->>   softmmu_ss.add(when: 'CONFIG_LSM303DLHC_MAG', if_true: files('lsm303dlhc_mag.c'))
->>   softmmu_ss.add(when: 'CONFIG_ISL_PMBUS_VR', if_true: files('isl_pmbus_vr.c'))
->> +softmmu_ss.add(when: 'CONFIG_MAX31785', if_true: files('max31785.c'))
 >> --
 >> 2.25.1
 >>

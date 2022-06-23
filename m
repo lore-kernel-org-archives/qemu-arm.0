@@ -1,534 +1,264 @@
-Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp3103390lft;
-        Thu, 23 Jun 2022 09:41:20 -0700 (PDT)
-X-Google-Smtp-Source: AGRyM1tQA20JTdLGnIW1x+nxA3HlqRWyPo6Wop8qn34XlOYb0SPTCswQbwU1+pujJQn3YTF5oi9H
-X-Received: by 2002:a17:906:38ce:b0:715:8483:e02e with SMTP id r14-20020a17090638ce00b007158483e02emr8721019ejd.442.1656002479948;
-        Thu, 23 Jun 2022 09:41:19 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1656002479; cv=none;
+Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp3167160lft;
+        Thu, 23 Jun 2022 11:30:12 -0700 (PDT)
+X-Google-Smtp-Source: AGRyM1s1XrDWg/nPB9bGe21tnzsdZFrwebgRlHgIMCiH4Psi37QRbKSxPkHBtb26dQ2WxNDk7ilr
+X-Received: by 2002:ac8:5b0e:0:b0:306:6c7c:efe3 with SMTP id m14-20020ac85b0e000000b003066c7cefe3mr9222962qtw.633.1656009012717;
+        Thu, 23 Jun 2022 11:30:12 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1656009012; cv=pass;
         d=google.com; s=arc-20160816;
-        b=KUqOsai/L5+W4qnN8xlTBFHZXpDwcitYF3bbOP1gju+PqpNOw21mlOwGVCOJiX+nUH
-         mRhBRh6VGsjbM+ANqDvlAjVXBHloXlk4yWwIQJnRoA25pPElJ5ECxHZAoZw+dVud4Fjm
-         ULJ/cLSQgs3zShSl1TS5lH+8Hsoqq/UsyyjQBcJXUfdzEhFKcmrBhC301i81n4QW5Ocb
-         +DPJM0oFaXd6WJkcFR306JqOHuG9J1Vie57IHOzSl7zg7Ggg752ceU9WDvK2HBDoGjcr
-         3o2CQKEm1b4sxf1RTaagBT4+mHFloVytN8iarv2XBe4dS2fpgWdDkBaAFtfs3cjpRxVl
-         fapQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:dkim-signature;
-        bh=iPiF3/pif9vyGRcIjCuaqS1mkM6paHqhq37uvtLec4M=;
-        b=lG6mbDrfH50IJKRnW7yDOidfHCfktOEEZwtd4Rz1Qf26fSU+97wsrexJJhY4jDHdKb
-         ap9CM+dh26WvDnG/EFvM4ascDwuvC0MQ05QMZbvqWGDcSXYfeJcCr2ThSw2dd4jCv6/2
-         wyTiTmZM7uV4uv1y4n7nlwU5kNeX+HXYh7jihswTUtCsDnwUlF1yyA2DsOQL2hgys3uR
-         MhJxT75USNcGXemBrCegK/+0HR7GM1EwNRhTQF6gv9CEsElm9+MwaEhua5fUdW2mSopy
-         zyZU/vCIopIFZOwKg1l3m1lA9WJi4KUXpPln5Hq5Zom12gZ6sai1MmhQun9L7IGWfbli
-         2QtQ==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=L5SHuOap;
-       spf=pass (google.com: domain of thuth@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <thuth@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
-        by mx.google.com with ESMTPS id e8-20020a056402104800b00435baefe88fsi51031edu.247.2022.06.23.09.41.19
+        b=U+8+yXhoOJvHZfowcpoHwFBWgvzfDSBqfcA48wNXtPoaBuHARiIoJoJrB4Gpqx6tfG
+         L4BBNp9z4COp7sLJ/2QpuFbpbvEl/jwjq4e50to3hOL+LFdyYTDU8IRvWW7TInPcTvhS
+         xf+bKhMN8H7O4yn5uRkjmITzuunnXEvl47sRLjNt/X1QNS28o5A8xSPVZHnq1ygGuo2E
+         KqWLl92UEHuS75hEMVVX6iFJ6j5sVx/AtuFEiLGIv/h/bupMxt1ae11Xd1+3L7EyNgMJ
+         E1P+JyDp14eD2MwS4UpsB4203TVRlZSmRLBmJno3VXK2pimnYpzQZKOKqRMJOy5Cp5Qt
+         bU4g==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:mime-version
+         :content-transfer-encoding:content-id:content-language
+         :accept-language:in-reply-to:references:message-id:date:thread-index
+         :thread-topic:subject:cc:from:dkim-signature;
+        bh=fqEc+ATFxdUylCCuEj0rETWEKR7pBTQIHllcdaO0vNI=;
+        b=KQuvTgE8u3mNNzf/Sy7eHmAC0Jiq9lR/D8ueC7AKbNUpaPT6ZpQvDLGVhLzJ+xcOuh
+         NizvjKP83Q/wBsuwJIjwGPzL5UtFTnHQY2DhaRdr9yd2zph7V4EXs+FTS8Ngcm1YiM4r
+         ZontwhVw9N1Ujd1PB/K09eu28wr3TxVeS5AvdIuTS1/4lDhcAzI8smStKnf37t9Z+zRN
+         3Nfm5oz3t7zX5NY9PjuIhX+qMiqcdfKKP1oPvCNxlaJVDfRRcQ9Tx9jpczK3TCM/e1Y1
+         oEdrF/XOK46GcLrts1VuBv+fnrqrEomeAtq6lrqGbQDZfnYxYT/uk7iUBP6/nAckrXIx
+         t45g==
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@fb.com header.s=facebook header.b=ItdPkNhS;
+       arc=pass (i=1 spf=pass spfdomain=fb.com dkim=pass dkdomain=fb.com dmarc=pass fromdomain=fb.com);
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=fb.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id jk6-20020ad45d46000000b004703e4da5dasi12776397qvb.277.2022.06.23.11.30.12
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 23 Jun 2022 09:41:19 -0700 (PDT)
-Received-SPF: pass (google.com: domain of thuth@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 23 Jun 2022 11:30:12 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=L5SHuOap;
-       spf=pass (google.com: domain of thuth@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1656002478;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:
-	 content-transfer-encoding:content-transfer-encoding;
-	bh=iPiF3/pif9vyGRcIjCuaqS1mkM6paHqhq37uvtLec4M=;
-	b=L5SHuOapziqrBiNoh4yJViGzxXl73rWYWizoxMlCEzwAjrt9ad4GpDQYYSiUl5i8CnbM2J
-	7W7Ut99YaJs1N3M58MSwpxjEvKzq6K1L1fghSJqH7q7F/5nu4JLCQuUFI7abJOqGtk2Uef
-	c+Sr4/y0syi4jjSFF/ZiawJmtswbcB4=
-Received: from mimecast-mx02.redhat.com (mx3-rdu2.redhat.com
- [66.187.233.73]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-298-7fbfV7P8MkumNGDZ0NqeUA-1; Thu, 23 Jun 2022 12:41:05 -0400
-X-MC-Unique: 7fbfV7P8MkumNGDZ0NqeUA-1
-Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.rdu2.redhat.com [10.11.54.8])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 3E4DB3815D35;
-	Thu, 23 Jun 2022 16:40:55 +0000 (UTC)
-Received: from thuth.com (unknown [10.39.192.53])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 49F0FC15D40;
-	Thu, 23 Jun 2022 16:40:53 +0000 (UTC)
-From: Thomas Huth <thuth@redhat.com>
-To: qemu-devel@nongnu.org,
-	Richard Henderson <richard.henderson@linaro.org>
-Cc: qemu-arm@nongnu.org,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	Aurelien Jarno <aurelien@aurel32.net>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-Subject: [RFC PATCH] include/qemu/host-utils: Remove the *_overflow wrappers
-Date: Thu, 23 Jun 2022 18:40:51 +0200
-Message-Id: <20220623164051.506316-1-thuth@redhat.com>
+       dkim=pass header.i=@fb.com header.s=facebook header.b=ItdPkNhS;
+       arc=pass (i=1 spf=pass spfdomain=fb.com dkim=pass dkdomain=fb.com dmarc=pass fromdomain=fb.com);
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=fb.com
+Received: from localhost ([::1]:59034 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1o4Ral-0008Be-3q
+	for alex.bennee@linaro.org; Thu, 23 Jun 2022 14:30:11 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:50142)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <prvs=7173458386=pdel@fb.com>)
+ id 1o4RaV-0008BK-7p; Thu, 23 Jun 2022 14:29:55 -0400
+Received: from mx0b-00082601.pphosted.com ([67.231.153.30]:10736
+ helo=mx0a-00082601.pphosted.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <prvs=7173458386=pdel@fb.com>)
+ id 1o4RaT-0003Np-B8; Thu, 23 Jun 2022 14:29:54 -0400
+Received: from pps.filterd (m0001303.ppops.net [127.0.0.1])
+ by m0001303.ppops.net (8.17.1.5/8.17.1.5) with ESMTP id 25NHup2X016263;
+ Thu, 23 Jun 2022 11:29:43 -0700
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=fb.com;
+ h=from : cc : subject :
+ date : message-id : references : in-reply-to : content-type : content-id :
+ content-transfer-encoding : mime-version; s=facebook;
+ bh=fqEc+ATFxdUylCCuEj0rETWEKR7pBTQIHllcdaO0vNI=;
+ b=ItdPkNhSYVjG38HwEcRR8+cEim74ANFd51fkZ0fj8c6hdQQewNK2Ckwes+2Mh1mfA9so
+ 4dNQW4b8Q44iJ5MmabvkdxBxccOpe+W6FMuicBkdMDnYB9W5xsLo5ZYPNohDlg+KblYD
+ JPNPO759WXhFFVbd9EeyyIPelTM9kxF6Nxs= 
+Received: from nam02-bn1-obe.outbound.protection.outlook.com
+ (mail-bn1nam07lp2041.outbound.protection.outlook.com [104.47.51.41])
+ by m0001303.ppops.net (PPS) with ESMTPS id 3gvqwxjfue-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Thu, 23 Jun 2022 11:29:43 -0700
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=CxaRnRWy+RzVvnoUINAJsG5XmyJJ6ITG3eC4WDy6oob4PKIvruroIF5Q9ASXh7nEU5KvS57eAKK3SAuDSeb4ZCyVhYLb7De37iEjEn3FMB+QwtvcC3POhkda9SZYzhCAXDk0gac82AUJU9HfbT35NJndq/kbuRe1YmxKaaBvXw0dC3+9l9dTTniYHYSQ9rP/lQHp7ZD5ON6pzReUI9Cslf+k0/rr6ZosIUfne/iftgkodLw1BCQ8A6q9C5sgy68GUVzF6skYEIK+Db0OY3UYVDtpuVylHb0tScnMH1DRS/OMiXgNs00OOpneEqUNRvwdHNQbsk/bsFOlXTs1xpFNDg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=fqEc+ATFxdUylCCuEj0rETWEKR7pBTQIHllcdaO0vNI=;
+ b=neKnLxtdE7Yqv5fcR6CWqvY+CyPh4Dz/sJIj8oMd/yAJ0Wx68c7gM+Yccv5gLsUvDiBdX2F3hVmM20pppncw/G06zpZcOU/C7sNkqcxAiy0dApGrVqCEGJ3vzqvc+NOyZmwVmwdFm1I70fCpNEi+rQRvDTT85TjkWe9Sh/51yU3QzmLO1qwTjrXkScEZiLFF8W8mXW3uxtRHsoz2KyHMmEPKpauI60TW6VSpAEtoyDMOiin3Zc0NpRjig/1icfhIUTQ53IwydwIu0DX+PrANOb3eWuqsIraCjugK1oJ75uh9pDL502rGQ/yVtWFqVHRaSLcLxkhLricy62jL+vn0zA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=fb.com; dmarc=pass action=none header.from=fb.com; dkim=pass
+ header.d=fb.com; arc=none
+Received: from BYAPR15MB3032.namprd15.prod.outlook.com (2603:10b6:a03:ff::11)
+ by BN6PR15MB1236.namprd15.prod.outlook.com (2603:10b6:404:e7::8) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5373.15; Thu, 23 Jun
+ 2022 18:29:41 +0000
+Received: from BYAPR15MB3032.namprd15.prod.outlook.com
+ ([fe80::70d0:8133:42cc:f134]) by BYAPR15MB3032.namprd15.prod.outlook.com
+ ([fe80::70d0:8133:42cc:f134%6]) with mapi id 15.20.5373.016; Thu, 23 Jun 2022
+ 18:29:41 +0000
+From: Peter Delevoryas <pdel@fb.com>
+CC: Peter Delevoryas <pdel@fb.com>, =?utf-8?B?Q8OpZHJpYyBMZSBHb2F0ZXI=?=
+ <clg@kaod.org>, Andrew Jeffery <andrew@aj.id.au>, Joel Stanley
+ <joel@jms.id.au>, "pbonzini@redhat.com" <pbonzini@redhat.com>,
+ "berrange@redhat.com" <berrange@redhat.com>, "eduardo@habkost.net"
+ <eduardo@habkost.net>, "marcel.apfelbaum@gmail.com"
+ <marcel.apfelbaum@gmail.com>, "richard.henderson@linaro.org"
+ <richard.henderson@linaro.org>,
+ =?utf-8?B?UGhpbGlwcGUgTWF0aGlldS1EYXVkw6k=?= <f4bug@amsat.org>,
+ "ani@anisinha.ca" <ani@anisinha.ca>, Cameron Esfahani via
+ <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
+ "kvm@vger.kernel.org" <kvm@vger.kernel.org>, Peter Maydell
+ <peter.maydell@linaro.org>
+Subject: Re: [PATCH 04/14] sysbus: Add sysbus_mmio_map_in
+Thread-Topic: [PATCH 04/14] sysbus: Add sysbus_mmio_map_in
+Thread-Index: AQHYhu/tx3ghfCqXU0G9TvPcb9gJIK1c5/iAgABoj4A=
+Date: Thu, 23 Jun 2022 18:29:41 +0000
+Message-ID: <01540BC0-096F-4054-8BC5-DBA978276D79@fb.com>
+References: <20220623102617.2164175-1-pdel@fb.com>
+ <20220623102617.2164175-5-pdel@fb.com>
+ <CAFEAcA9zmmaUth+9k82+ZrhAMOmsmttq2HOKs+DVNx0L1dx6=w@mail.gmail.com>
+In-Reply-To: <CAFEAcA9zmmaUth+9k82+ZrhAMOmsmttq2HOKs+DVNx0L1dx6=w@mail.gmail.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-ms-publictraffictype: Email
+x-ms-office365-filtering-correlation-id: aca006d0-67dd-468f-5d89-08da5546569b
+x-ms-traffictypediagnostic: BN6PR15MB1236:EE_
+x-fb-source: Internal
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: Pq58RarMvJYgtQwWsze8wkHH0NF0go1+ukd6BAGpshw/BW0VGZRsE64bO7kyR2gWDvNdqfZcw8ysv/7obCJrAA6DxxBT/FtaGLX7uvAoUekL4wLpq24vOlHfwuU9SDZyP1wlvVTpPC6nRvMm9gzU/9MW2DA0Idm2LzyuNxZGZVvLaQ9QVXlsLlu3L9hawomRcweioHafJl1ci32D03EUfQ2Kza5QD4Hzp8j5eZRwoQl6wgiiMZkiyCgh2zfzpLNUQ4wTGyO/tMBDRvq2il9f/TP54FoZXVfRLWtVdKlTAIuuSrraAKyu5kMOrWWKd2Jag9lQe4OtOUWcWyH0tNiJXGgd2Rkv7WoUTchPboLZdFiYHQOW7eA21XPfeiZppXl2zVllSud6wSPAJcbP1H0iHwHtcUmaIRnUqk8yJ6PqE60IuBiV6OtbIE0wMR6unLKRp668PpYUgJfttvVQhHZ4BMXhP3JkB8LDXs7wgCGWSyQPFlk0MKi28HcPsQ8fek10JGafH+cjpSLO/kHBgcg/LNTgKHRxELGS8cMEjQSL3F/2Sn3WkfL2fd8rcGy8fUiZccL7bZnd7I9x1XjadK5Zakck2Wi5iaukHv727KWynOL61YuqiwK2cMREmo7LR6r8+mIafFW7LqHs16Ogd55gkY/c0Nr7nGl5QFilMl57pLKMfZ3A3HWdh0Bo+G9p1Vw7cK+Wi1ZK5ggXZYagl1ng7P4SOYDjcOoK+1eSjCgkubyyJ0uv4smDc0pUqfBhkIhbTLSjcYDeGCetlvmNXyd3XYbcAA9DtCIkMsc7Mo60QkAWkcAsr87ZlQFFFvihpMcfYO39Erx6hwcEflpExqTezA==
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:BYAPR15MB3032.namprd15.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230016)(4636009)(346002)(136003)(366004)(396003)(39860400002)(376002)(316002)(41300700001)(54906003)(6486002)(478600001)(36756003)(66556008)(53546011)(71200400001)(76116006)(6512007)(66476007)(7416002)(8936002)(64756008)(66446008)(4326008)(33656002)(66946007)(2906002)(2616005)(8676002)(186003)(5660300002)(6506007)(86362001)(38070700005)(109986005)(38100700002)(122000001)(45980500001);
+ DIR:OUT; SFP:1102; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?utf-8?B?UXJ4SHhxYU1lQlVaMElXUDhxcCtHdnphQll5MUNJenIxTlJBZVNhTGV1NHNY?=
+ =?utf-8?B?TUpmclJlRGRCanVsTmxMMWVaNXp0VzYvbVZCY005ZUVhUUlJY0lvK0hDeThT?=
+ =?utf-8?B?ajBsVmJwNGN3dWdyRGJ0cE56UUkyYno2Mi91czE5UUtWNFpiaDgwaHdnY1dG?=
+ =?utf-8?B?MHZZdVZQbXNXbnNPeUdtTUdidUY1eDMvdFJ2TEtRUzg5VHJVY2tUTit4RHZt?=
+ =?utf-8?B?MVc3U0xTbEdBSGJCU285bTdQcXRJWnhJRjRTTHBJNmRvcGp2QnlBb2xTdEtl?=
+ =?utf-8?B?SkVLdjh3Nm5zSnoxNW1RQWcyS0Y5NmxDcXc3TzVhQyswc2R5YXhxQ1pUODUy?=
+ =?utf-8?B?WTE4d2pkTjFVdWVvNzBWMmp2bmRHSDNnOWRYWnRMbE14ckg4K0pEclROU21t?=
+ =?utf-8?B?VGV6ZGJoSU1BdmpzOEphbEFpOGd2SStuaW5haElUWWQ0NTJaRStkU1V2alAy?=
+ =?utf-8?B?SFlzQnJPaE9zQU96MGdOUWFuZGxkUzFqMFFCcis2dDBwN2RXQ0g4RVk4ajBM?=
+ =?utf-8?B?Qm5Bb1k3aGVvQkdrUlh2cGxVUWhnZFdVcDFlbzJEZndCOTJBMzlmb294Yzdh?=
+ =?utf-8?B?cXpEOWc0UE04T2JTUkNnbWM5Q1YyUjF2Q2d5eTRjQmR4bzFvMlZmelZINk91?=
+ =?utf-8?B?eWtGcDNYNGxkMHk4VFhGUCtoenRya0IxTHZPbHlLY2FlTFZLN0pIM0tCRUxC?=
+ =?utf-8?B?SVVRUHJDclh1OERlbFUwZjhoK0hiWVBnWC80NDlPMVpObDVhV0Noam81eXVT?=
+ =?utf-8?B?aGN0ekJGeVRtdlFEYjNTYUgvaGhTMHVHUk9JUWVGSXZReUJ2VndGSkZEbzF1?=
+ =?utf-8?B?ZjNWTVVpQnY1YXd0TkZxTnVwUmp5STY2ZGtGQSs1Ymc5eGdPRkhZY0lTVzJY?=
+ =?utf-8?B?QllGdFA0OERlTGhGNktVZytKaDBVaU9WZUptOXdiMkxrZ3VDZUNWMVZkZUJu?=
+ =?utf-8?B?NnIreWdoQTYwSEdKeVIyaUJoem5mNXJHRDlEUGllZXJ5UFRMRTlBMjIxUUha?=
+ =?utf-8?B?N2RwZ3FXdE02SEFqc25ncUdXL1hyeGJyWDBQaVRzUWRaeDk0MDhTQ3FGbzRw?=
+ =?utf-8?B?VlpPcEpPdXd6SXZsaEloWW9XZHdvczVpeEJHTU5ZcHA4TXlWRXdtam5aRDA4?=
+ =?utf-8?B?V0NDdUxXaG4vRWQzVEdMT1ZLNnl3cTZ1ZHdoV0xGSmRQNG0vYkVFS2ZIQnZD?=
+ =?utf-8?B?U1YxRkRBNk5raXg1YUZpZUtoRXVQSkYxVk9MWEVGbDNsZGZEMU1ZWjVnakhu?=
+ =?utf-8?B?MitzbzJ0WEVVbUJYK3owOUpESmtlcjZSN1RPZFBaS05CNkhQejBnZmh6bWxa?=
+ =?utf-8?B?cG9QMHBmbjg0QkVIakpMYzdEcW9nTnp6bnp3aVA2V2ttRkd0d3lCeHF6RE1W?=
+ =?utf-8?B?Y1E1cXlZeFNkTCticE9FbzE1bXRKOGRNUEE2WEhlcDl1UmloQ1RremVMSnhv?=
+ =?utf-8?B?Rzkrb29mTzRsNENjbUYvQnBvZHYzSVRDVTU5enk3dDZHd1VoNCtCbHlpWHZQ?=
+ =?utf-8?B?Z0hHNEFCL0drZERiWVFKMk1jUGJzRnpqaVNRODJSbEs5TFk5b25aTCszRXJv?=
+ =?utf-8?B?cFVHUDUwY1NOeVJzQ1R4QmNEUGY2VkVIQ0dMOEJUS2dFQWh0Y2FjbFRIeCt2?=
+ =?utf-8?B?amE4emVxVkpPUllPNkhkSkJuUlRXV3ZTcHNjUEtOb25MRy9uTzZBNDM5ZWJh?=
+ =?utf-8?B?ODlQTXRkNWpONTVvVk52aFAwR0ZaUSt5SWxUNGpiY25NWWkyMklOcU4rdmN1?=
+ =?utf-8?B?eVVvd3pFcFdmSnMxSUo3QkJka0NpNHpidVJSQy9TSEMrZlJ5bnhyZkQreHhX?=
+ =?utf-8?B?RjJ1MjBGa3RyVml1bXVaNUx3ZnhrMmZ2eEU1UEthT3pKZ0plNzJsQ21CK2Zu?=
+ =?utf-8?B?YzhsRjU1cllrWkpWZkZzcExKWmJoaStUZWwxTG5rUUlWU2IydWtmVjBjZG8x?=
+ =?utf-8?B?b3lkT3VGL05vam5GTTcwOTFyRnZuMlEyWWtpbUQ2cE5JaDJoaUNNcTBXMEh1?=
+ =?utf-8?B?dVVCRlViN3RrUUd1cnVaWXp0Vnc5OGtCMHdjWEJpVktTMDVCaU9aSnVVVElv?=
+ =?utf-8?B?dWpGdUYrNkpldDlYOGhicnQyeFpsY1F4RXJ0SlQ5dG9LYk1wbjEzRThYdkxa?=
+ =?utf-8?B?U2YwczRnOXVrUWVjSCtIbEpGT1psUVZjQlExemFOQVVqekREa2t5Wmh6clZP?=
+ =?utf-8?B?ejh4SWtYaDZYWEorckMrcG85Ujd3YWNkdGp1OXdhUjAvVS80S0l1TVdxK0lO?=
+ =?utf-8?B?bE1ucm50L0NHdDdHOFd6Y2ozell2Y2ZPMHZEMGxwNHBuMmtNOWtjWEV1ekJT?=
+ =?utf-8?B?UlZhWDNwYnI2RCt1c3ZwUE1odkFUUW9FZUJkRXNBbi9STGJ2TkNscmw1NDl6?=
+ =?utf-8?Q?6gFlYsDnGOCtWXa8=3D?=
+Content-Type: text/plain; charset="utf-8"
+Content-ID: <69B51ABF18F6EA41B28151D5B4E0C5CD@namprd15.prod.outlook.com>
+Content-Transfer-Encoding: base64
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 2.85 on 10.11.54.8
-X-TUID: 75nfzrOcnjXs
+X-OriginatorOrg: fb.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: BYAPR15MB3032.namprd15.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: aca006d0-67dd-468f-5d89-08da5546569b
+X-MS-Exchange-CrossTenant-originalarrivaltime: 23 Jun 2022 18:29:41.4972 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 8ae927fe-1255-47a7-a2af-5f3a069daaa2
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: o1WdiF3Nm2V0Sb5R11Bm8EuwNVOnM2o9YVgLUyLQvEzvQFr724FqGJxwz4ljkqSL
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: BN6PR15MB1236
+X-Proofpoint-ORIG-GUID: YK8ZjN7KoWfnZv8vAzxh8oXoiM3KPJA_
+X-Proofpoint-GUID: YK8ZjN7KoWfnZv8vAzxh8oXoiM3KPJA_
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.205,Aquarius:18.0.883,Hydra:6.0.517,FMLib:17.11.122.1
+ definitions=2022-06-23_07,2022-06-23_01,2022-06-22_01
+Received-SPF: pass client-ip=67.231.153.30;
+ envelope-from=prvs=7173458386=pdel@fb.com; helo=mx0a-00082601.pphosted.com
+X-Spam_score_int: -11
+X-Spam_score: -1.2
+X-Spam_bar: -
+X-Spam_report: (-1.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.082,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ MISSING_HEADERS=1.021, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001,
+ RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 6TKGs+g7kohl
 
-According to commit cec07c0b612975 these wrappers were required
-for GCC < 5.0 and Clang < 3.8. We don't support such old compilers
-at all anymore, so we can remove the wrappers now.
-
-Signed-off-by: Thomas Huth <thuth@redhat.com>
----
- Not sure whether it's nicer to remove these to get rid of some lines
- of code, or whether it's nicer to keep them for the more explicit names...
-
- include/qemu/host-utils.h    | 235 +----------------------------------
- accel/tcg/tcg-runtime-gvec.c |  16 +--
- fpu/softfloat.c              |  10 +-
- libdecnumber/decNumber.c     |   4 +-
- target/arm/mve_helper.c      |  18 +--
- 5 files changed, 29 insertions(+), 254 deletions(-)
-
-diff --git a/include/qemu/host-utils.h b/include/qemu/host-utils.h
-index bc743f5e32..6224815629 100644
---- a/include/qemu/host-utils.h
-+++ b/include/qemu/host-utils.h
-@@ -366,231 +366,6 @@ static inline uint64_t uabs64(int64_t v)
-     return v < 0 ? -v : v;
- }
- 
--/**
-- * sadd32_overflow - addition with overflow indication
-- * @x, @y: addends
-- * @ret: Output for sum
-- *
-- * Computes *@ret = @x + @y, and returns true if and only if that
-- * value has been truncated.
-- */
--static inline bool sadd32_overflow(int32_t x, int32_t y, int32_t *ret)
--{
--#if __has_builtin(__builtin_add_overflow) || __GNUC__ >= 5
--    return __builtin_add_overflow(x, y, ret);
--#else
--    *ret = x + y;
--    return ((*ret ^ x) & ~(x ^ y)) < 0;
--#endif
--}
--
--/**
-- * sadd64_overflow - addition with overflow indication
-- * @x, @y: addends
-- * @ret: Output for sum
-- *
-- * Computes *@ret = @x + @y, and returns true if and only if that
-- * value has been truncated.
-- */
--static inline bool sadd64_overflow(int64_t x, int64_t y, int64_t *ret)
--{
--#if __has_builtin(__builtin_add_overflow) || __GNUC__ >= 5
--    return __builtin_add_overflow(x, y, ret);
--#else
--    *ret = x + y;
--    return ((*ret ^ x) & ~(x ^ y)) < 0;
--#endif
--}
--
--/**
-- * uadd32_overflow - addition with overflow indication
-- * @x, @y: addends
-- * @ret: Output for sum
-- *
-- * Computes *@ret = @x + @y, and returns true if and only if that
-- * value has been truncated.
-- */
--static inline bool uadd32_overflow(uint32_t x, uint32_t y, uint32_t *ret)
--{
--#if __has_builtin(__builtin_add_overflow) || __GNUC__ >= 5
--    return __builtin_add_overflow(x, y, ret);
--#else
--    *ret = x + y;
--    return *ret < x;
--#endif
--}
--
--/**
-- * uadd64_overflow - addition with overflow indication
-- * @x, @y: addends
-- * @ret: Output for sum
-- *
-- * Computes *@ret = @x + @y, and returns true if and only if that
-- * value has been truncated.
-- */
--static inline bool uadd64_overflow(uint64_t x, uint64_t y, uint64_t *ret)
--{
--#if __has_builtin(__builtin_add_overflow) || __GNUC__ >= 5
--    return __builtin_add_overflow(x, y, ret);
--#else
--    *ret = x + y;
--    return *ret < x;
--#endif
--}
--
--/**
-- * ssub32_overflow - subtraction with overflow indication
-- * @x: Minuend
-- * @y: Subtrahend
-- * @ret: Output for difference
-- *
-- * Computes *@ret = @x - @y, and returns true if and only if that
-- * value has been truncated.
-- */
--static inline bool ssub32_overflow(int32_t x, int32_t y, int32_t *ret)
--{
--#if __has_builtin(__builtin_sub_overflow) || __GNUC__ >= 5
--    return __builtin_sub_overflow(x, y, ret);
--#else
--    *ret = x - y;
--    return ((*ret ^ x) & (x ^ y)) < 0;
--#endif
--}
--
--/**
-- * ssub64_overflow - subtraction with overflow indication
-- * @x: Minuend
-- * @y: Subtrahend
-- * @ret: Output for sum
-- *
-- * Computes *@ret = @x - @y, and returns true if and only if that
-- * value has been truncated.
-- */
--static inline bool ssub64_overflow(int64_t x, int64_t y, int64_t *ret)
--{
--#if __has_builtin(__builtin_sub_overflow) || __GNUC__ >= 5
--    return __builtin_sub_overflow(x, y, ret);
--#else
--    *ret = x - y;
--    return ((*ret ^ x) & (x ^ y)) < 0;
--#endif
--}
--
--/**
-- * usub32_overflow - subtraction with overflow indication
-- * @x: Minuend
-- * @y: Subtrahend
-- * @ret: Output for sum
-- *
-- * Computes *@ret = @x - @y, and returns true if and only if that
-- * value has been truncated.
-- */
--static inline bool usub32_overflow(uint32_t x, uint32_t y, uint32_t *ret)
--{
--#if __has_builtin(__builtin_sub_overflow) || __GNUC__ >= 5
--    return __builtin_sub_overflow(x, y, ret);
--#else
--    *ret = x - y;
--    return x < y;
--#endif
--}
--
--/**
-- * usub64_overflow - subtraction with overflow indication
-- * @x: Minuend
-- * @y: Subtrahend
-- * @ret: Output for sum
-- *
-- * Computes *@ret = @x - @y, and returns true if and only if that
-- * value has been truncated.
-- */
--static inline bool usub64_overflow(uint64_t x, uint64_t y, uint64_t *ret)
--{
--#if __has_builtin(__builtin_sub_overflow) || __GNUC__ >= 5
--    return __builtin_sub_overflow(x, y, ret);
--#else
--    *ret = x - y;
--    return x < y;
--#endif
--}
--
--/**
-- * smul32_overflow - multiplication with overflow indication
-- * @x, @y: Input multipliers
-- * @ret: Output for product
-- *
-- * Computes *@ret = @x * @y, and returns true if and only if that
-- * value has been truncated.
-- */
--static inline bool smul32_overflow(int32_t x, int32_t y, int32_t *ret)
--{
--#if __has_builtin(__builtin_mul_overflow) || __GNUC__ >= 5
--    return __builtin_mul_overflow(x, y, ret);
--#else
--    int64_t z = (int64_t)x * y;
--    *ret = z;
--    return *ret != z;
--#endif
--}
--
--/**
-- * smul64_overflow - multiplication with overflow indication
-- * @x, @y: Input multipliers
-- * @ret: Output for product
-- *
-- * Computes *@ret = @x * @y, and returns true if and only if that
-- * value has been truncated.
-- */
--static inline bool smul64_overflow(int64_t x, int64_t y, int64_t *ret)
--{
--#if __has_builtin(__builtin_mul_overflow) || __GNUC__ >= 5
--    return __builtin_mul_overflow(x, y, ret);
--#else
--    uint64_t hi, lo;
--    muls64(&lo, &hi, x, y);
--    *ret = lo;
--    return hi != ((int64_t)lo >> 63);
--#endif
--}
--
--/**
-- * umul32_overflow - multiplication with overflow indication
-- * @x, @y: Input multipliers
-- * @ret: Output for product
-- *
-- * Computes *@ret = @x * @y, and returns true if and only if that
-- * value has been truncated.
-- */
--static inline bool umul32_overflow(uint32_t x, uint32_t y, uint32_t *ret)
--{
--#if __has_builtin(__builtin_mul_overflow) || __GNUC__ >= 5
--    return __builtin_mul_overflow(x, y, ret);
--#else
--    uint64_t z = (uint64_t)x * y;
--    *ret = z;
--    return z > UINT32_MAX;
--#endif
--}
--
--/**
-- * umul64_overflow - multiplication with overflow indication
-- * @x, @y: Input multipliers
-- * @ret: Output for product
-- *
-- * Computes *@ret = @x * @y, and returns true if and only if that
-- * value has been truncated.
-- */
--static inline bool umul64_overflow(uint64_t x, uint64_t y, uint64_t *ret)
--{
--#if __has_builtin(__builtin_mul_overflow) || __GNUC__ >= 5
--    return __builtin_mul_overflow(x, y, ret);
--#else
--    uint64_t hi;
--    mulu64(ret, &hi, x, y);
--    return hi != 0;
--#endif
--}
--
- /*
-  * Unsigned 128x64 multiplication.
-  * Returns true if the result got truncated to 128 bits.
-@@ -623,7 +398,7 @@ static inline bool mulu128(uint64_t *plow, uint64_t *phigh, uint64_t factor)
-     mulu64(plow, &ahi, dlo, factor);
-     mulu64(&blo, &bhi, dhi, factor);
- 
--    return uadd64_overflow(ahi, blo, phigh) || bhi != 0;
-+    return __builtin_add_overflow(ahi, blo, phigh) || bhi != 0;
- #endif
- }
- 
-@@ -645,8 +420,8 @@ static inline uint64_t uadd64_carry(uint64_t x, uint64_t y, bool *pcarry)
- #else
-     bool c = *pcarry;
-     /* This is clang's internal expansion of __builtin_addc. */
--    c = uadd64_overflow(x, c, &x);
--    c |= uadd64_overflow(x, y, &x);
-+    c = __builtin_add_overflow(x, c, &x);
-+    c |= __builtin_add_overflow(x, y, &x);
-     *pcarry = c;
-     return x;
- #endif
-@@ -669,8 +444,8 @@ static inline uint64_t usub64_borrow(uint64_t x, uint64_t y, bool *pborrow)
-     return x;
- #else
-     bool b = *pborrow;
--    b = usub64_overflow(x, b, &x);
--    b |= usub64_overflow(x, y, &x);
-+    b = __builtin_sub_overflow(x, b, &x);
-+    b |= __builtin_sub_overflow(x, y, &x);
-     *pborrow = b;
-     return x;
- #endif
-diff --git a/accel/tcg/tcg-runtime-gvec.c b/accel/tcg/tcg-runtime-gvec.c
-index ac7d28c251..dd4ace857c 100644
---- a/accel/tcg/tcg-runtime-gvec.c
-+++ b/accel/tcg/tcg-runtime-gvec.c
-@@ -1074,7 +1074,7 @@ void HELPER(gvec_ssadd32)(void *d, void *a, void *b, uint32_t desc)
-         int32_t ai = *(int32_t *)(a + i);
-         int32_t bi = *(int32_t *)(b + i);
-         int32_t di;
--        if (sadd32_overflow(ai, bi, &di)) {
-+        if (__builtin_add_overflow(ai, bi, &di)) {
-             di = (di < 0 ? INT32_MAX : INT32_MIN);
-         }
-         *(int32_t *)(d + i) = di;
-@@ -1091,7 +1091,7 @@ void HELPER(gvec_ssadd64)(void *d, void *a, void *b, uint32_t desc)
-         int64_t ai = *(int64_t *)(a + i);
-         int64_t bi = *(int64_t *)(b + i);
-         int64_t di;
--        if (sadd64_overflow(ai, bi, &di)) {
-+        if (__builtin_add_overflow(ai, bi, &di)) {
-             di = (di < 0 ? INT64_MAX : INT64_MIN);
-         }
-         *(int64_t *)(d + i) = di;
-@@ -1142,7 +1142,7 @@ void HELPER(gvec_sssub32)(void *d, void *a, void *b, uint32_t desc)
-         int32_t ai = *(int32_t *)(a + i);
-         int32_t bi = *(int32_t *)(b + i);
-         int32_t di;
--        if (ssub32_overflow(ai, bi, &di)) {
-+        if (__builtin_sub_overflow(ai, bi, &di)) {
-             di = (di < 0 ? INT32_MAX : INT32_MIN);
-         }
-         *(int32_t *)(d + i) = di;
-@@ -1159,7 +1159,7 @@ void HELPER(gvec_sssub64)(void *d, void *a, void *b, uint32_t desc)
-         int64_t ai = *(int64_t *)(a + i);
-         int64_t bi = *(int64_t *)(b + i);
-         int64_t di;
--        if (ssub64_overflow(ai, bi, &di)) {
-+        if (__builtin_sub_overflow(ai, bi, &di)) {
-             di = (di < 0 ? INT64_MAX : INT64_MIN);
-         }
-         *(int64_t *)(d + i) = di;
-@@ -1206,7 +1206,7 @@ void HELPER(gvec_usadd32)(void *d, void *a, void *b, uint32_t desc)
-         uint32_t ai = *(uint32_t *)(a + i);
-         uint32_t bi = *(uint32_t *)(b + i);
-         uint32_t di;
--        if (uadd32_overflow(ai, bi, &di)) {
-+        if (__builtin_add_overflow(ai, bi, &di)) {
-             di = UINT32_MAX;
-         }
-         *(uint32_t *)(d + i) = di;
-@@ -1223,7 +1223,7 @@ void HELPER(gvec_usadd64)(void *d, void *a, void *b, uint32_t desc)
-         uint64_t ai = *(uint64_t *)(a + i);
-         uint64_t bi = *(uint64_t *)(b + i);
-         uint64_t di;
--        if (uadd64_overflow(ai, bi, &di)) {
-+        if (__builtin_add_overflow(ai, bi, &di)) {
-             di = UINT64_MAX;
-         }
-         *(uint64_t *)(d + i) = di;
-@@ -1270,7 +1270,7 @@ void HELPER(gvec_ussub32)(void *d, void *a, void *b, uint32_t desc)
-         uint32_t ai = *(uint32_t *)(a + i);
-         uint32_t bi = *(uint32_t *)(b + i);
-         uint32_t di;
--        if (usub32_overflow(ai, bi, &di)) {
-+        if (__builtin_sub_overflow(ai, bi, &di)) {
-             di = 0;
-         }
-         *(uint32_t *)(d + i) = di;
-@@ -1287,7 +1287,7 @@ void HELPER(gvec_ussub64)(void *d, void *a, void *b, uint32_t desc)
-         uint64_t ai = *(uint64_t *)(a + i);
-         uint64_t bi = *(uint64_t *)(b + i);
-         uint64_t di;
--        if (usub64_overflow(ai, bi, &di)) {
-+        if (__builtin_sub_overflow(ai, bi, &di)) {
-             di = 0;
-         }
-         *(uint64_t *)(d + i) = di;
-diff --git a/fpu/softfloat.c b/fpu/softfloat.c
-index 4a871ef2a1..f9c59b0398 100644
---- a/fpu/softfloat.c
-+++ b/fpu/softfloat.c
-@@ -909,7 +909,7 @@ static void parts128_log2(FloatParts128 *a, float_status *s, const FloatFmt *f);
- 
- static bool frac64_add(FloatParts64 *r, FloatParts64 *a, FloatParts64 *b)
- {
--    return uadd64_overflow(a->frac, b->frac, &r->frac);
-+    return __builtin_add_overflow(a->frac, b->frac, &r->frac);
- }
- 
- static bool frac128_add(FloatParts128 *r, FloatParts128 *a, FloatParts128 *b)
-@@ -934,13 +934,13 @@ static bool frac256_add(FloatParts256 *r, FloatParts256 *a, FloatParts256 *b)
- 
- static bool frac64_addi(FloatParts64 *r, FloatParts64 *a, uint64_t c)
- {
--    return uadd64_overflow(a->frac, c, &r->frac);
-+    return __builtin_add_overflow(a->frac, c, &r->frac);
- }
- 
- static bool frac128_addi(FloatParts128 *r, FloatParts128 *a, uint64_t c)
- {
--    c = uadd64_overflow(a->frac_lo, c, &r->frac_lo);
--    return uadd64_overflow(a->frac_hi, c, &r->frac_hi);
-+    c = __builtin_add_overflow(a->frac_lo, c, &r->frac_lo);
-+    return __builtin_add_overflow(a->frac_hi, c, &r->frac_hi);
- }
- 
- #define frac_addi(R, A, C)  FRAC_GENERIC_64_128(addi, R)(R, A, C)
-@@ -1516,7 +1516,7 @@ static void frac256_shrjam(FloatParts256 *a, int c)
- 
- static bool frac64_sub(FloatParts64 *r, FloatParts64 *a, FloatParts64 *b)
- {
--    return usub64_overflow(a->frac, b->frac, &r->frac);
-+    return __builtin_sub_overflow(a->frac, b->frac, &r->frac);
- }
- 
- static bool frac128_sub(FloatParts128 *r, FloatParts128 *a, FloatParts128 *b)
-diff --git a/libdecnumber/decNumber.c b/libdecnumber/decNumber.c
-index 31282adafd..1d75ccb178 100644
---- a/libdecnumber/decNumber.c
-+++ b/libdecnumber/decNumber.c
-@@ -574,8 +574,8 @@ void decNumberIntegralToInt128(const decNumber *dn, decContext *set,
-             /* overflow */
-             goto Invalid;
-         }
--        if (uadd64_overflow(lo, up[d], &lo)) {
--            if (uadd64_overflow(hi, 1, &hi)) {
-+        if (__builtin_add_overflow(lo, up[d], &lo)) {
-+            if (__builtin_add_overflow(hi, 1, &hi)) {
-                 /* overflow */
-                 goto Invalid;
-             }
-diff --git a/target/arm/mve_helper.c b/target/arm/mve_helper.c
-index 403b345ea3..557944aefa 100644
---- a/target/arm/mve_helper.c
-+++ b/target/arm/mve_helper.c
-@@ -1345,9 +1345,9 @@ static int32_t do_vqdmladh_w(int32_t a, int32_t b, int32_t c, int32_t d,
-      * So we add half the rounding constant before doubling rather
-      * than adding the rounding constant after the doubling.
-      */
--    if (sadd64_overflow(m1, m2, &r) ||
--        sadd64_overflow(r, (round << 30), &r) ||
--        sadd64_overflow(r, r, &r)) {
-+    if (__builtin_add_overflow(m1, m2, &r) ||
-+        __builtin_add_overflow(r, (round << 30), &r) ||
-+        __builtin_add_overflow(r, r, &r)) {
-         *sat = true;
-         return r < 0 ? INT32_MAX : INT32_MIN;
-     }
-@@ -1375,9 +1375,9 @@ static int32_t do_vqdmlsdh_w(int32_t a, int32_t b, int32_t c, int32_t d,
-     int64_t m2 = (int64_t)c * d;
-     int64_t r;
-     /* The same ordering issue as in do_vqdmladh_w applies here too */
--    if (ssub64_overflow(m1, m2, &r) ||
--        sadd64_overflow(r, (round << 30), &r) ||
--        sadd64_overflow(r, r, &r)) {
-+    if (__builtin_sub_overflow(m1, m2, &r) ||
-+        __builtin_add_overflow(r, (round << 30), &r) ||
-+        __builtin_add_overflow(r, r, &r)) {
-         *sat = true;
-         return r < 0 ? INT32_MAX : INT32_MIN;
-     }
-@@ -1561,9 +1561,9 @@ static int32_t do_vqdmlah_w(int32_t a, int32_t b, int32_t c,
-     int64_t m1 = (int64_t)a * b;
-     int64_t m2 = (int64_t)c << 31;
-     int64_t r;
--    if (sadd64_overflow(m1, m2, &r) ||
--        sadd64_overflow(r, (round << 30), &r) ||
--        sadd64_overflow(r, r, &r)) {
-+    if (__builtin_add_overflow(m1, m2, &r) ||
-+        __builtin_add_overflow(r, (round << 30), &r) ||
-+        __builtin_add_overflow(r, r, &r)) {
-         *sat = true;
-         return r < 0 ? INT32_MAX : INT32_MIN;
-     }
--- 
-2.31.1
+DQoNCj4gT24gSnVuIDIzLCAyMDIyLCBhdCA1OjE1IEFNLCBQZXRlciBNYXlkZWxsIDxwZXRlci5t
+YXlkZWxsQGxpbmFyby5vcmc+IHdyb3RlOg0KPiANCj4gT24gVGh1LCAyMyBKdW4gMjAyMiBhdCAx
+MTo1NiwgUGV0ZXIgRGVsZXZvcnlhcyA8cGRlbEBmYi5jb20+IHdyb3RlOg0KPj4gDQo+PiBTaWdu
+ZWQtb2ZmLWJ5OiBQZXRlciBEZWxldm9yeWFzIDxwZGVsQGZiLmNvbT4NCj4+IC0tLQ0KPj4gaHcv
+Y29yZS9zeXNidXMuYyAgICB8IDYgKysrKysrDQo+PiBpbmNsdWRlL2h3L3N5c2J1cy5oIHwgMiAr
+Kw0KPj4gMiBmaWxlcyBjaGFuZ2VkLCA4IGluc2VydGlvbnMoKykNCj4+IA0KPj4gZGlmZiAtLWdp
+dCBhL2h3L2NvcmUvc3lzYnVzLmMgYi9ody9jb3JlL3N5c2J1cy5jDQo+PiBpbmRleCBjYjRkNmJh
+ZTlkLi43YjYzZWMzZmVkIDEwMDY0NA0KPj4gLS0tIGEvaHcvY29yZS9zeXNidXMuYw0KPj4gKysr
+IGIvaHcvY29yZS9zeXNidXMuYw0KPj4gQEAgLTE2MCw2ICsxNjAsMTIgQEAgdm9pZCBzeXNidXNf
+bW1pb19tYXAoU3lzQnVzRGV2aWNlICpkZXYsIGludCBuLCBod2FkZHIgYWRkcikNCj4+ICAgICBz
+eXNidXNfbW1pb19tYXBfY29tbW9uKGRldiwgbiwgYWRkciwgZmFsc2UsIDAsIGdldF9zeXN0ZW1f
+bWVtb3J5KCkpOw0KPj4gfQ0KPj4gDQo+PiArdm9pZCBzeXNidXNfbW1pb19tYXBfaW4oU3lzQnVz
+RGV2aWNlICpkZXYsIGludCBuLCBod2FkZHIgYWRkciwNCj4+ICsgICAgICAgICAgICAgICAgICAg
+ICAgICBNZW1vcnlSZWdpb24gKnN5c3RlbV9tZW1vcnkpDQo+PiArew0KPj4gKyAgICBzeXNidXNf
+bW1pb19tYXBfY29tbW9uKGRldiwgbiwgYWRkciwgZmFsc2UsIDAsIHN5c3RlbV9tZW1vcnkpOw0K
+Pj4gK30NCj4+ICsNCj4+IHZvaWQgc3lzYnVzX21taW9fbWFwX292ZXJsYXAoU3lzQnVzRGV2aWNl
+ICpkZXYsIGludCBuLCBod2FkZHIgYWRkciwNCj4+ICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgaW50IHByaW9yaXR5KQ0KPj4gew0KPj4gZGlmZiAtLWdpdCBhL2luY2x1ZGUvaHcvc3lzYnVz
+LmggYi9pbmNsdWRlL2h3L3N5c2J1cy5oDQo+PiBpbmRleCBhN2MyM2Q1ZmIxLi5mNDU3ODAyOWU0
+IDEwMDY0NA0KPj4gLS0tIGEvaW5jbHVkZS9ody9zeXNidXMuaA0KPj4gKysrIGIvaW5jbHVkZS9o
+dy9zeXNidXMuaA0KPj4gQEAgLTgwLDYgKzgwLDggQEAgdm9pZCBzeXNidXNfY29ubmVjdF9pcnEo
+U3lzQnVzRGV2aWNlICpkZXYsIGludCBuLCBxZW11X2lycSBpcnEpOw0KPj4gYm9vbCBzeXNidXNf
+aXNfaXJxX2Nvbm5lY3RlZChTeXNCdXNEZXZpY2UgKmRldiwgaW50IG4pOw0KPj4gcWVtdV9pcnEg
+c3lzYnVzX2dldF9jb25uZWN0ZWRfaXJxKFN5c0J1c0RldmljZSAqZGV2LCBpbnQgbik7DQo+PiB2
+b2lkIHN5c2J1c19tbWlvX21hcChTeXNCdXNEZXZpY2UgKmRldiwgaW50IG4sIGh3YWRkciBhZGRy
+KTsNCj4+ICt2b2lkIHN5c2J1c19tbWlvX21hcF9pbihTeXNCdXNEZXZpY2UgKmRldiwgaW50IG4s
+IGh3YWRkciBhZGRyLA0KPj4gKyAgICAgICAgICAgICAgICAgICAgICAgIE1lbW9yeVJlZ2lvbiAq
+c3lzdGVtX21lbW9yeSk7DQo+PiB2b2lkIHN5c2J1c19tbWlvX21hcF9vdmVybGFwKFN5c0J1c0Rl
+dmljZSAqZGV2LCBpbnQgbiwgaHdhZGRyIGFkZHIsDQo+PiAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgIGludCBwcmlvcml0eSk7DQo+IA0KPiBXaGF0J3MgdGhpcyBnb2luZyB0byBiZSB1c2Vk
+IGZvcj8NCg0KQXQgdGhlIG1vbWVudCwganVzdCBmb3IgU29DJ3MgdG8gbWFwIHBlcmlwaGVyYWxz
+IGludG8gaXRzIG1lbW9yeSByZWdpb24uDQoNCj4gDQo+IFRoZSBjdXJyZW50IHN0YW5kYXJkIHdh
+eSB0byBtYXAgYSBzeXNidXMgTU1JTyByZWdpb24gaW50byBzb21ldGhpbmcNCj4gb3RoZXIgdGhh
+biB0aGUgZ2xvYmFsIHN5c3RlbSBtZW1vcnkgcmVnaW9uIGlzIHRvIGRvOg0KPiAgIG1lbW9yeV9y
+ZWdpb25fYWRkX3N1YnJlZ2lvbigmY29udGFpbmVyLCBhZGRyLA0KPiAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICBzeXNidXNfbW1pb19nZXRfcmVnaW9uKHNiZCwgMCkpOw0KDQpPaCEhIFdh
+aXQgYSBtaW51dGUuIEkgc2hvdWxkIGp1c3QgY2hhbmdlIHRoZSBBc3BlZWQgU29DIGNvZGUgdG8N
+CmRvIHRoYXQuIEkgd2FzIGtpbmRhIHRoaW5raW5nIHRoYXQgd2Ugd2FudGVkIGFsbCB0aGUgU29D
+IGNvZGUNCnRvIGdvIHRocm91Z2ggc3lzYnVzX21taW9fbWFwX2NvbW1vbiwgYnV0IEkgcmVhbGl6
+ZSBub3cgdGhhdA0KaXTigJlzIHJlYWxseSBqdXN0IGEgc21hbGwgaGVscGVyIHRoYXQgZG9lcyBz
+b21lIGVycm9yIGNoZWNraW5nLA0KYW5kIHdlIGNhbiBqdXN0IGltcGxlbWVudCB0aGF0IGluIGFu
+IGFzcGVlZC1zcGVjaWZpYyBoZWxwZXIgaWYNCm5lY2Vzc2FyeS4NCg0KPiANCj4gSSdkIHJhdGhl
+ciBub3QgaGF2ZSB0d28gd2F5cyB0byBkbyB0aGUgc2FtZSB0aGluZzsgd2UgaGF2ZQ0KPiBmYXIg
+dG9vIG1hbnkgb2YgdGhvc2UgYWxyZWFkeS4NCg0KVG90YWxseSBhZ3JlZSwgSSB3YXNu4oCZdCB2
+ZXJ5IGNvbmZpZGVudCBpbiB0aGlzIHBhdGNoIGFueXdheXMuDQpJ4oCZbGwgcmVtb3ZlIGl0IGZy
+b20gdGhlIHNlcmllcyBhbmQgcmVmYWN0b3IgdGhlIFNvQyBib2FyZA0KcGF0Y2ggZm9sbG93aW5n
+IHRoaXMgdG8gZG8gd2hhdCB5b3Ugc3VnZ2VzdGVkLg0KDQpUaGFua3MhIQ0KUGV0ZXINCg0KPiAN
+Cj4gdGhhbmtzDQo+IC0tIFBNTQ0KDQo=

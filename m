@@ -1,192 +1,83 @@
-Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp3178578lft;
-        Thu, 23 Jun 2022 11:54:24 -0700 (PDT)
-X-Google-Smtp-Source: AGRyM1sX4DklVjJgTgJ7BWgnedDrIHwBaiRXPnJ0lm6oO6LFt+4U+8wijDemqXKzdyFZ98yQLRBe
-X-Received: by 2002:a05:622a:1a9e:b0:304:e8a7:cfb9 with SMTP id s30-20020a05622a1a9e00b00304e8a7cfb9mr9784363qtc.228.1656010464572;
-        Thu, 23 Jun 2022 11:54:24 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1656010464; cv=pass;
+Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp3225035lft;
+        Thu, 23 Jun 2022 13:21:54 -0700 (PDT)
+X-Google-Smtp-Source: AGRyM1sNWCM0AXhF3jj3Iu1wAqzEAza1B8mU7FFTTHD6ddMam7Z7gFreLV8sJv16vad3aKKXIJDq
+X-Received: by 2002:ac8:58c2:0:b0:305:2ef6:3d68 with SMTP id u2-20020ac858c2000000b003052ef63d68mr10274054qta.381.1656015714401;
+        Thu, 23 Jun 2022 13:21:54 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1656015714; cv=none;
         d=google.com; s=arc-20160816;
-        b=oBFufftJHYuIO+IGp8syCjZP25EulyrIuNBvH5v/TZl1EO1z8QPXhzxjuvpDUy4MjB
-         JrME4gNNHsgYmi8PpOObxRCHmpg1v7YeyuO+iKIkuJfmiLi+qhpJR0Q1ZYwPSNNavTbL
-         Eyg3Xkq7iPlAul+GfVglQKYKQbXVYYnz1+udFYjzNsGoIXc1Pl5M5jKi/ulVp4CYPwIm
-         RMbek8yf/7RHimJy09ZDmEPV7g0Sw38es8pAniANROt00VGYzcTb+30S1/qrDlvjNNU2
-         3X2cnne67bpsWblDLAc2Xv/lSW/tvwfuVrpVrnDxcgGd3nYL4FBBG7NqEXymjaVX6jyA
-         tc2Q==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        b=I8VFp3TYVvRTtQpdDkYVU1fNSsy0sA13/UZyhdMOMEuas+HDQ5Zzaw+Pk7gcm9k3rC
+         iAPX2velZRPyDkTCObduyLLeOtQrWS/6NmpKwSjQd4sYuAYVgorxdWO2aOeOSyXoA4b7
+         iKQ7CCtC7v27ATQdhtmdyorBpRdUJp7a2Imbm+P9uRS91Y+C94o0h4E5t+k0pX15jkGk
+         aln41tPTXqPG1In8MQPl24ss0a++34OqNl6U9zFIoZkGbaQqvg3q2RoFAJkCWuSbotRG
+         cwg4PZQjkCqDofBnxW4LSTRwu4BE1hXeyxBoVZgpVaM9UJrcZZCsUSMCdCSdq+kgv1fs
+         P9gQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version
-         :content-transfer-encoding:content-id:content-language
-         :accept-language:in-reply-to:references:message-id:date:thread-index
-         :thread-topic:subject:cc:from:dkim-signature;
-        bh=Fq5XpBlrIGF67lUCJ0HkSfvTHokVSKF3cKgTvbixEIw=;
-        b=jReCgSck5TWD5FU1AXrXPkcWuThzjqEbWdqbiWKVQMjyN2m2TUiazZcQ1GX7AGgzL+
-         WbXmTX7wTXzpWhMSm/k76RnRZtjfTubIA7JtzwhF0wcB21s+VH/ddkv9lTiksR6iWvI8
-         aAejLF0TR//YXMF5rCWkyD297BH/zlv9S7pDBHTJ9sD/BV3hd9GpiBq9k0ouxoJoO2Pw
-         u5/6iozqfFWi/BeDjmLcCYd+LT7g/ao9nMoUN8JHagM14M6DQA2OKRIUSXUDMx6Zjg1P
-         A8YWkUh5vA12pdtUHWZ6F99WLCMRNUrp4X9SWUlktPgCfXNePX0oReAwnMjceTkX3/Aq
-         8Shw==
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@fb.com header.s=facebook header.b=a9QJQLzP;
-       arc=pass (i=1 spf=pass spfdomain=fb.com dkim=pass dkdomain=fb.com dmarc=pass fromdomain=fb.com);
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=fb.com
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:cc:to:from;
+        bh=NmtnMB5JlMTqabXAKCwnjsP1SLjqntzAFqYnCJKIDLk=;
+        b=xrUYiZTP3uj1opHEkYs84tnnt9T4K9bvRmQM0g5taC28pvW0vLi2HcWi+5YnUb4aFm
+         g4ycieXjPA+T6+lSrdr7++af8o0EEL7Q0IA66je5doapZqmaZTHHm2K7QPDueieTVOEX
+         aGePredpYalHueVMxOCTP6X0pRBdZNzYmKKYmlr4V9+hMCqE60bfRQCDw97GOoYer3nh
+         ff/AdAgjsoueLjHQ+hBnllhWZn0GShgJXfb9Sf2OUl8Yn2bvKEBoRtAozvz77bqBcTRN
+         EwDhRpvNO+t19j1CZB1Qln4poMtgta4EbEsvJL5ouRhxKPHAeExmlhDCt+AVkuGv7Set
+         c6aQ==
+ARC-Authentication-Results: i=1; mx.google.com;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id b16-20020ac87fd0000000b00304eb334d71si127067qtk.27.2022.06.23.11.54.24
+        by mx.google.com with ESMTPS id j15-20020a05620a410f00b006a66f3d3a28si534408qko.629.2022.06.23.13.21.54
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 23 Jun 2022 11:54:24 -0700 (PDT)
+        Thu, 23 Jun 2022 13:21:54 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@fb.com header.s=facebook header.b=a9QJQLzP;
-       arc=pass (i=1 spf=pass spfdomain=fb.com dkim=pass dkdomain=fb.com dmarc=pass fromdomain=fb.com);
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=fb.com
-Received: from localhost ([::1]:53542 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:49046 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1o4RyC-0000N4-24
-	for alex.bennee@linaro.org; Thu, 23 Jun 2022 14:54:24 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:54924)
+	id 1o4TKr-0008FR-RC
+	for alex.bennee@linaro.org; Thu, 23 Jun 2022 16:21:53 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:40856)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <prvs=7173458386=pdel@fb.com>)
- id 1o4Rxy-0000MG-DM; Thu, 23 Jun 2022 14:54:10 -0400
-Received: from mx0b-00082601.pphosted.com ([67.231.153.30]:56794
- helo=mx0a-00082601.pphosted.com)
+ (Exim 4.90_1) (envelope-from <SRS0=cZ0p=W6=kaod.org=clg@ozlabs.org>)
+ id 1o4TKh-0008EZ-1w; Thu, 23 Jun 2022 16:21:43 -0400
+Received: from mail.ozlabs.org ([2404:9400:2221:ea00::3]:51991
+ helo=gandalf.ozlabs.org)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <prvs=7173458386=pdel@fb.com>)
- id 1o4Rxw-0007D1-4F; Thu, 23 Jun 2022 14:54:10 -0400
-Received: from pps.filterd (m0001303.ppops.net [127.0.0.1])
- by m0001303.ppops.net (8.17.1.5/8.17.1.5) with ESMTP id 25NHuoKM016222;
- Thu, 23 Jun 2022 11:53:55 -0700
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=fb.com;
- h=from : cc : subject :
- date : message-id : references : in-reply-to : content-type : content-id :
- content-transfer-encoding : mime-version; s=facebook;
- bh=Fq5XpBlrIGF67lUCJ0HkSfvTHokVSKF3cKgTvbixEIw=;
- b=a9QJQLzP1V/CHSmhAz0zL3nLXkAR1Rp5VgQXeo8UZfm4gFGp1vByHBPg16wqc75g2kqi
- M2jk6+d+8uMuSqmpwUPUJtKnB0LvdEDgC2FYqqgFVe9HXd3SKK1hgozUffIY3SvX+x2n
- aRHrnnqxefc49g1uMkcIW8RutOzSAux6YEw= 
-Received: from nam11-dm6-obe.outbound.protection.outlook.com
- (mail-dm6nam11lp2173.outbound.protection.outlook.com [104.47.57.173])
- by m0001303.ppops.net (PPS) with ESMTPS id 3gvqwxjmg5-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Thu, 23 Jun 2022 11:53:55 -0700
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=jmSSdw62WEZbnMLQyTVEyjec3uGGEpRBJ61T5ZzIm4LatVZ/UMhpAjKQRi7oU0UaBi+2ffQ+Vyjo3dG4Rmsz12IFdRiGT8dNdhSuSOZzk0j5n2qophVFfcm24YVdpJIu7PFc/Sy4HnIJEbMnSvgSez9oQ++v232hQMvnj2hSzDP0Jk2Rop050rGmbp/fEyxPbUERCWaUJyc6PoDipPT7W08ya/CEPO+hpmCBaPBJtdnBSGC9Rmpx4sTiDCO50MiPBJNT0UKSTasjaUuT5lML5ZtgTa6vOjJcGvAOBoj9kcqB2TD0J1Dvc40GDyLjUEWv/vdE4cgz/z9nLd341WujbQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=Fq5XpBlrIGF67lUCJ0HkSfvTHokVSKF3cKgTvbixEIw=;
- b=a4hVD1JciehRVSJHLheYD6smInSa6murVlCUWTViNl0nBochEZC3IILLTOJGpyMprotbK26OFcX5BdpeEEz7N86p19H7qat/1S0tG9BeiPoRolQ7UC32knmEJKFZOjaLoYlBKP5gJQ02uNKDYlJFZ/pQwGeU16oVuJTBDjnuwvtnKMiatgSfhZl79sZOHB2BEANja9gbVnSsai/+wvyupdfkfuuqiilqtbDo/atzk36Bk9V+Hwe/GUzWbUsZAsi8fdhwNL/H2re1u9FSmwaOrliuwcl3X5XWz9Z6KAbskYW1VGXWHI+0KqGoHEnPBnpTeTKZs8AtUaQIu0V6jE1MvQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=fb.com; dmarc=pass action=none header.from=fb.com; dkim=pass
- header.d=fb.com; arc=none
-Received: from BYAPR15MB3032.namprd15.prod.outlook.com (2603:10b6:a03:ff::11)
- by MN2PR15MB2704.namprd15.prod.outlook.com (2603:10b6:208:12e::14)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5353.22; Thu, 23 Jun
- 2022 18:53:52 +0000
-Received: from BYAPR15MB3032.namprd15.prod.outlook.com
- ([fe80::70d0:8133:42cc:f134]) by BYAPR15MB3032.namprd15.prod.outlook.com
- ([fe80::70d0:8133:42cc:f134%6]) with mapi id 15.20.5373.016; Thu, 23 Jun 2022
- 18:53:51 +0000
-From: Peter Delevoryas <pdel@fb.com>
-CC: Peter Delevoryas <pdel@fb.com>, qemu-arm <qemu-arm@nongnu.org>, Cameron
- Esfahani via <qemu-devel@nongnu.org>, Peter Maydell
- <peter.maydell@linaro.org>, Andrew Jeffery <andrew@aj.id.au>, Joel Stanley
- <joel@jms.id.au>, =?utf-8?B?Q8OpZHJpYyBMZSBHb2F0ZXI=?= <clg@kaod.org>
-Subject: Re: [PATCH] aspeed: Set the dram container at the SoC level
-Thread-Topic: [PATCH] aspeed: Set the dram container at the SoC level
-Thread-Index: AQHYhyqjvSM/C6ShxkuHdTa556UU761dVtCA
-Date: Thu, 23 Jun 2022 18:53:51 +0000
-Message-ID: <6CED40F2-0D4A-4EBC-8342-0250EF0B0A54@fb.com>
-References: <20220623175615.3936148-1-clg@kaod.org>
-In-Reply-To: <20220623175615.3936148-1-clg@kaod.org>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: 2bc238f0-77f6-4ddd-c81e-08da5549b6e0
-x-ms-traffictypediagnostic: MN2PR15MB2704:EE_
-x-fb-source: Internal
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: E1wBh7dgc2cgPuV0lvp1XLG3iEK5dIIwpBRO9nudQFrqF+lN/PTOkJ2iuKItu01GyhAWW7kYSC02aD1ChD9rXyvxSose/bALI2miiPl0uNq96DSX1bq73aJaChefgdBEWyUjOopllH4HgWPMg8rMBSRkBpDjFBidMlrrvfCwftRDeoscPZQrnGGzPhqYwUh64wBlUeI+9pCxknem0NI9XQV4BKwoesJ276DfxLJXZXMkRajrFiPEzuSL8Td0UmrexF9qIMMks8hZiDoG53jwy8nk2DBLRoazytXBgpzA/oGYyV/25QCdpTp16lNI6ZoVMK8zMflpYd0jXyoq+wadMonTXCmMDCvZRSNjrFMXFsGz7BjLw1ljRsxw7dL8+IuNo0f4UjObUcVyxuRiD467SsGrLgMhGjq4tQJBlKx/Kv9veVnKDa58hug9XoW0eiNVwP7prgPS+kUAeYEX2AhE8m0Somp8Kg7LtZpicFZcwTdxnSxBgWzp+6TWnCKljEaXImPuhvCMaYjM8UMFoYw46sqq39HRWruespZgXD9wrMgku9C2vhu++w5mNJ4te154md+r9boERwU1UpGP4nFbxjCkJq8ycrHmnvUmddm34XBqjJk07kQKI25vSLqRC5xZmt1PdTwhh7yHjFQaiiLvFz0khC6RcraAPsfUwD9NM0Qkw79hap+HBSW+CPC0BQ1dUlMRoHBya0ryTM+r1OGA3YsOzBIAQ3EJySMxu0BMI8axdswzzLDI4BOAQJ4n0K1GM7QALJk5MZf1Aptz0UeU08aLVC7HP9Jx8XVzetgwcg+gX1JNPLsmu0qhop10DimxHJpOlvwWJ3gAPEZio88zdA==
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:BYAPR15MB3032.namprd15.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230016)(4636009)(396003)(366004)(346002)(376002)(39860400002)(136003)(8936002)(83380400001)(6486002)(54906003)(33656002)(5660300002)(109986005)(66574015)(478600001)(122000001)(316002)(38070700005)(66476007)(38100700002)(4326008)(8676002)(186003)(86362001)(66946007)(66556008)(6506007)(6512007)(2616005)(41300700001)(71200400001)(66446008)(64756008)(76116006)(53546011)(2906002)(36756003)(45980500001);
- DIR:OUT; SFP:1102; 
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?utf-8?B?cjRacjJPZ3lCNGpnb2NrS3RyRk5ScThmWnMxWElnRklra0VOSWttSnNWdEd4?=
- =?utf-8?B?a3J0NDlZWUkvNXhVQjNFUEVxUHBiY29qRlNpNk40ZkV1ZENJeHJpdGd4OFlY?=
- =?utf-8?B?N2RyUVM3ZDY4U0s3ckhZZlRXbVo2Mjk2VlEwcnRDOTRNWnB1ZXR4QnBPV0s4?=
- =?utf-8?B?dG9FSWNCR3BrTzR3TUtTdTV3VG1JaFdXbjkzZ2Npa1VVUWlSNlNLVzl6a0Z3?=
- =?utf-8?B?NlJJKzNaZTdpa09MaU9URnhIa3JBMU1Md3VSTnZXZEEzZTYxUkpSSkhDRzlW?=
- =?utf-8?B?dFllQ096MEZ0UmsxOE1mc1VyTTNKSmoxd3psZks2Y2gxYWwvOXpiZFd1dnli?=
- =?utf-8?B?czNCd3JVK2t3cXh2QnNvUGlGMUdVNXNPV0pDVk45UFJIMmMyTzFnekZuTG82?=
- =?utf-8?B?YlZJNXA3aE1YNjFKU3I3K2RpOVVBUldSamthZGtzK2dndHFUL05Fbmh4MGZv?=
- =?utf-8?B?cnZQbkFDWnJFOWxkVXdVaUx5eU8zS2VLRTFmWUFFQm1kaDhMNEo4dmE2Zitt?=
- =?utf-8?B?TEZDcktwTndWcmFYQ1EzVDRoY0FlZ2c5WVlJSnRBQzVpdXJBWjcyaWZSb0RE?=
- =?utf-8?B?UlA4RVVRL1pMZ3pobjM0Mkt3NnAza3ZuUXIvRDdZaUl1VGxHbXNFWXptcnNI?=
- =?utf-8?B?THc0UllSdTl4aERtbHFjSm1pSVdBd29LVUVzTFI4WmFTWUdrTVFxOWlxOWFU?=
- =?utf-8?B?V3B6WTJCajV2Q3FDT0dWdG56cVg1amFIZEh1YU1IdEllWFhWNW9OVFdGTElt?=
- =?utf-8?B?SWQ5V3JXN0UrWjJvMlhsM3YzcGxRb1RqZXVuZGlCalh6dmlHcXBhUC91QTBp?=
- =?utf-8?B?ZFhDSS9jNHJvdFY1NGhBUnNnQ1VDSjI5M2VEV3YyZndrcUxwQUwzNUNDWGRa?=
- =?utf-8?B?MzMzbGF6U0N3ay9jSk1KcTM1czVCMUxZL1lhQk9ZM2hjOEJDUWVxTkFxNEt1?=
- =?utf-8?B?MW1nTldHbUNjZUVFRzdrOEhPMklFbDRwa1dTYUJOVEJ6ajBPdXE2N2wzUHpo?=
- =?utf-8?B?UU01TVplc25rUldkd3o2UU5IeFk4OVNkOWY5cVhGS1czbUZ1VXJXWFJjd1E4?=
- =?utf-8?B?cEk0bjJQREVNazVwd0VKcFpWbUxGeld4clJ4L2traFpqRW5YOWdacTV2S3NI?=
- =?utf-8?B?QXFxcHVkQnQvNTVQRnY5aXRWaExKWmVvNUpsOVM0QkZ1UmRvZ0E4bEpMQVlY?=
- =?utf-8?B?bW1SNFR1SWdUdjBHYStwL29MN2lZQzIreGRuUWtmcytYcmViWGxMb3M1ZVdB?=
- =?utf-8?B?VmtqY2UxWk12ckF3VnRrUlNsbWdUem15dDJjRGZrbDdoTkFjYVFIK1RTNzc1?=
- =?utf-8?B?QmhqTVFOQXcyVXdzdnFmL1dBZlJXU1RtWFV4ak9iNllMYmhQRmpZTE54MytN?=
- =?utf-8?B?NXlteTBRbzNySk9HWldRUjVla1NoQUVtOUlFaU5QdnhTU3RqMFlOa21zd3JW?=
- =?utf-8?B?Z01yQzRQS1BaYlRtUUlqWHBWa2trMjJFZnB1dlRUZmhGNFR3WnNJQ3JSRXN6?=
- =?utf-8?B?QWVTOWR0bkM1ZkIxdWRGRUt0OU93M3hhSWxRUU4zaS9kdUI0WkdHZGdIeVpE?=
- =?utf-8?B?RnNWVUU5Z1Y3RUJZemIza0R3czd0c3RaTnNhMlpmNFBTc2R3NFpwdGFOL1VN?=
- =?utf-8?B?KzFJS3RMbVVGeHVEajhMNnpHMkcrNzFTS0VZcmxEb3dxZFNxMW1lQWhoL3lL?=
- =?utf-8?B?N3RLUjhBWmlGelVKaGc0eDJnOUNwMEtMLzdDVUdaUVB4VnBIU3V5UnhKTXI1?=
- =?utf-8?B?czZCMnlmUm5VakNvT3pkU1QzZjRHaXVSMklGUmgvZk56bFdjVHJ0UFNsN2NJ?=
- =?utf-8?B?MHdYYVZFcHZ1U2xSNmtvaDB6MHYzYWJjSG1STTRQVi91RnlXc05vNU1ReThw?=
- =?utf-8?B?d21WSlRuNVRWTTBvZS9OY2lDcTArN3ZCd09HU0w3amkxTitocExpUXNjNm9Z?=
- =?utf-8?B?SE9BNVlTK0dxRUNvLzAvVXRXb2RsWWR5akVzTnA0WHVFNFdKbm55K3lHbW5n?=
- =?utf-8?B?NTYxTkFuUXBNNVlIOGw5YVk5dTMwcHRZbzJGVmgxWC9JWlJUZXV1Z1lPaHVK?=
- =?utf-8?B?Q3N1M3Y5NnFlYU1zV3JvZXpZVXF4Z3lWb2JEL0lXaGNmRWxuU1gyYXhnSFBo?=
- =?utf-8?B?MnFaYzluK1dOWkljNjA1di9aZ1pNNlFZTHFKRzhmdzJFRDJCaVpXYmZyQitF?=
- =?utf-8?B?cFB3NHRLd2R3czlVTlZtL0pzOE5vd2IwRThLcndLQmozWlZIZ2IwNkRGN1J4?=
- =?utf-8?B?Z1RMdXNrWTlOME53ZDk4M3h3bXNFNW5kT1ZSc213MFBmcEUrcENHU1RrT1Fl?=
- =?utf-8?B?RWowRXhMN3NvQUQzUmdIR2x1RTBDV0pVNVVoYmN2OTJtM2cwdEJRL0VjYkNY?=
- =?utf-8?Q?iCQjf1vMB3b4fmEU=3D?=
-Content-Type: text/plain; charset="utf-8"
-Content-ID: <0629B3FA2E998E43BA3EEFC66B9DA4F5@namprd15.prod.outlook.com>
-Content-Transfer-Encoding: base64
+ (Exim 4.90_1) (envelope-from <SRS0=cZ0p=W6=kaod.org=clg@ozlabs.org>)
+ id 1o4TKe-0003XK-42; Thu, 23 Jun 2022 16:21:42 -0400
+Received: from gandalf.ozlabs.org (mail.ozlabs.org
+ [IPv6:2404:9400:2221:ea00::3])
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4LTWqf1rYCz4xXj;
+ Fri, 24 Jun 2022 06:21:34 +1000 (AEST)
+Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4LTWqZ5qR9z4xR9;
+ Fri, 24 Jun 2022 06:21:30 +1000 (AEST)
+From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>, Andrew Jeffery <andrew@aj.id.au>,
+ Joel Stanley <joel@jms.id.au>, Peter Delevoryas <pdel@fb.com>,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
+Subject: [PATCH v2] aspeed: Set the dram container at the SoC level
+Date: Thu, 23 Jun 2022 22:21:23 +0200
+Message-Id: <20220623202123.3972977-1-clg@kaod.org>
+X-Mailer: git-send-email 2.35.3
 MIME-Version: 1.0
-X-OriginatorOrg: fb.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: BYAPR15MB3032.namprd15.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 2bc238f0-77f6-4ddd-c81e-08da5549b6e0
-X-MS-Exchange-CrossTenant-originalarrivaltime: 23 Jun 2022 18:53:51.5035 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 8ae927fe-1255-47a7-a2af-5f3a069daaa2
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: 1hcGf9lfg6g6P0NRZwtobBHoTpcGDMZ7L2H6QXeTvbCuUFAwobdKEuEibNrgi8SF
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: MN2PR15MB2704
-X-Proofpoint-ORIG-GUID: Bw6RhHARUpJp0ltfoDGO8LzoRIziYqwm
-X-Proofpoint-GUID: Bw6RhHARUpJp0ltfoDGO8LzoRIziYqwm
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.205,Aquarius:18.0.883,Hydra:6.0.517,FMLib:17.11.122.1
- definitions=2022-06-23_08,2022-06-23_01,2022-06-22_01
-Received-SPF: pass client-ip=67.231.153.30;
- envelope-from=prvs=7173458386=pdel@fb.com; helo=mx0a-00082601.pphosted.com
-X-Spam_score_int: -11
-X-Spam_score: -1.2
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2404:9400:2221:ea00::3;
+ envelope-from=SRS0=cZ0p=W6=kaod.org=clg@ozlabs.org; helo=gandalf.ozlabs.org
+X-Spam_score_int: -16
+X-Spam_score: -1.7
 X-Spam_bar: -
-X-Spam_report: (-1.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.082,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- MISSING_HEADERS=1.021, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001,
- RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.249, RCVD_IN_DNSWL_NONE=-0.0001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -202,164 +93,216 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: tl+8gkg4rnsc
+X-TUID: WGrvapWQyQQv
 
-DQoNCj4gT24gSnVuIDIzLCAyMDIyLCBhdCAxMDo1NiBBTSwgQ8OpZHJpYyBMZSBHb2F0ZXIgPGNs
-Z0BrYW9kLm9yZz4gd3JvdGU6DQo+IA0KPiBDdXJyZW50bHksIHRoZSBBc3BlZWQgbWFjaGluZXMg
-YWxsb2NhdGUgYSByYW0gY29udGFpbmVyIHJlZ2lvbiBpbg0KPiB3aGljaCB0aGUgbWFjaGluZSBy
-YW0gcmVnaW9uIGlzIG1hcHBlZC4gU2VlIGNvbW1pdCBhZDFhOTc4MjE4NmQNCj4gKCJhc3BlZWQ6
-IGFkZCBhIFJBTSBtZW1vcnkgcmVnaW9uIGNvbnRhaW5lciIpLiBBbiBleHRyYSByZWdpb24gaXMN
-Cj4gbWFwcGVkIGFmdGVyIHJhbSBpbiB0aGUgcmFtIGNvbnRhaW5lciB0byBjYXRjaCBpbnZhbGlk
-IGFjY2VzcyBkb25lIGJ5DQo+IEZXLiBUaGF0J3MgaG93IEZXIGRldGVybWluZXMgdGhlIHNpemUg
-b2YgcmFtLiBTZWUgY29tbWl0IGViZTMxYzBhOGVmNw0KPiAoImFzcGVlZDogYWRkIGEgbWF4X3Jh
-bV9zaXplIHByb3BlcnR5IHRvIHRoZSBtZW1vcnkgY29udHJvbGxlciIpLg0KPiANCj4gTGV0J3Mg
-bW92ZSBhbGwgdGhlIGxvZ2ljIHVuZGVyIHRoZSBTb0Mgd2hlcmUgaXQgc2hvdWxkIGJlLiBJdCB3
-aWxsDQo+IGFsc28gZWFzZSB0aGUgd29yayBvbiBtdWx0aSBTb0Mgc3VwcG9ydC4NCj4gDQo+IFNp
-Z25lZC1vZmYtYnk6IEPDqWRyaWMgTGUgR29hdGVyIDxjbGdAa2FvZC5vcmc+DQoNClRoaXMgaXMg
-Z3JlYXQhIFRoYW5rcyBmb3IgdGhpcyBDZWRyaWMsIEnigJlsbCBiYXNlIG15IG90aGVyIHNlcmll
-cyBvZmYNCm9mIHRoaXMgb25lLiBJIHRoaW5rIHdpdGggdGhpcywgSSBzaG91bGQgYmUgYWJsZSB0
-byBza2lwIGNyZWF0aW5nDQphIGNvbnRhaW5lciBmb3IgdGhlIG1hY2hpbmUtPnJhbSBpbiB0aGUg
-bXVsdGkgU29DIG1hY2hpbmUgdG9vLA0KYmVjYXVzZSBub3cgaXQgd2lsbCBiZSBhdXRvbWF0aWNh
-bGx5IGNyZWF0ZWQgaW4gdGhlIFNvQyBqdXN0IGxpa2UNCnRoZSBzdGFuZGFyZCBBc3BlZWQgbWFj
-aGluZSBkb2VzIGl0Lg0KDQpSZXZpZXdlZC1ieTogUGV0ZXIgRGVsZXZvcnlhcyA8cGRlbEBmYi5j
-b20+DQoNCj4gLS0tDQo+IGluY2x1ZGUvaHcvYXJtL2FzcGVlZF9zb2MuaCB8ICAyICsrDQo+IGh3
-L2FybS9hc3BlZWQuYyAgICAgICAgICAgICB8IDM5ICsrLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
-LS0tLS0tLS0tLS0NCj4gaHcvYXJtL2FzcGVlZF9hc3QyNjAwLmMgICAgIHwgIDQgKystLQ0KPiBo
-dy9hcm0vYXNwZWVkX3NvYy5jICAgICAgICAgfCAzOCArKysrKysrKysrKysrKysrKysrKysrKysr
-KysrKysrKysrLS0NCj4gNCBmaWxlcyBjaGFuZ2VkLCA0MiBpbnNlcnRpb25zKCspLCA0MSBkZWxl
-dGlvbnMoLSkNCj4gDQo+IGRpZmYgLS1naXQgYS9pbmNsdWRlL2h3L2FybS9hc3BlZWRfc29jLmgg
-Yi9pbmNsdWRlL2h3L2FybS9hc3BlZWRfc29jLmgNCj4gaW5kZXggMDJhNWE5ZmZjYmQzLi5iOGQx
-ZWY0OTZhZTYgMTAwNjQ0DQo+IC0tLSBhL2luY2x1ZGUvaHcvYXJtL2FzcGVlZF9zb2MuaA0KPiAr
-KysgYi9pbmNsdWRlL2h3L2FybS9hc3BlZWRfc29jLmgNCj4gQEAgLTUwLDYgKzUwLDcgQEAgc3Ry
-dWN0IEFzcGVlZFNvQ1N0YXRlIHsNCj4gICAgIEExNU1QUHJpdlN0YXRlICAgICBhN21wY29yZTsN
-Cj4gICAgIEFSTXY3TVN0YXRlICAgICAgICBhcm12N207DQo+ICAgICBNZW1vcnlSZWdpb24gKmRy
-YW1fbXI7DQo+ICsgICAgTWVtb3J5UmVnaW9uIGRyYW1fY29udGFpbmVyOw0KPiAgICAgTWVtb3J5
-UmVnaW9uIHNyYW07DQo+ICAgICBBc3BlZWRWSUNTdGF0ZSB2aWM7DQo+ICAgICBBc3BlZWRSdGNT
-dGF0ZSBydGM7DQo+IEBAIC0xNjUsNSArMTY2LDYgQEAgZW51bSB7DQo+IA0KPiBxZW11X2lycSBh
-c3BlZWRfc29jX2dldF9pcnEoQXNwZWVkU29DU3RhdGUgKnMsIGludCBkZXYpOw0KPiB2b2lkIGFz
-cGVlZF9zb2NfdWFydF9pbml0KEFzcGVlZFNvQ1N0YXRlICpzKTsNCj4gK3ZvaWQgYXNwZWVkX3Nv
-Y19kcmFtX2luaXQoQXNwZWVkU29DU3RhdGUgKnMsIEVycm9yICoqZXJycCk7DQo+IA0KPiAjZW5k
-aWYgLyogQVNQRUVEX1NPQ19IICovDQo+IGRpZmYgLS1naXQgYS9ody9hcm0vYXNwZWVkLmMgYi9o
-dy9hcm0vYXNwZWVkLmMNCj4gaW5kZXggYTA2ZjdjMWI2MmE5Li5kYzA5NzczYjBiYTUgMTAwNjQ0
-DQo+IC0tLSBhL2h3L2FybS9hc3BlZWQuYw0KPiArKysgYi9ody9hcm0vYXNwZWVkLmMNCj4gQEAg
-LTE3NCwyNyArMTc0LDYgQEAgc3RydWN0IEFzcGVlZE1hY2hpbmVTdGF0ZSB7DQo+ICNkZWZpbmUg
-QkxFVENITEVZX0JNQ19IV19TVFJBUDEgQVNUMjYwMF9FVkJfSFdfU1RSQVAxDQo+ICNkZWZpbmUg
-QkxFVENITEVZX0JNQ19IV19TVFJBUDIgQVNUMjYwMF9FVkJfSFdfU1RSQVAyDQo+IA0KPiAtLyoN
-Cj4gLSAqIFRoZSBtYXggcmFtIHJlZ2lvbiBpcyBmb3IgZmlybXdhcmVzIHRoYXQgc2NhbiB0aGUg
-YWRkcmVzcyBzcGFjZQ0KPiAtICogd2l0aCBsb2FkL3N0b3JlIHRvIGd1ZXNzIGhvdyBtdWNoIFJB
-TSB0aGUgU29DIGhhcy4NCj4gLSAqLw0KPiAtc3RhdGljIHVpbnQ2NF90IG1heF9yYW1fcmVhZCh2
-b2lkICpvcGFxdWUsIGh3YWRkciBvZmZzZXQsIHVuc2lnbmVkIHNpemUpDQo+IC17DQo+IC0gICAg
-cmV0dXJuIDA7DQo+IC19DQo+IC0NCj4gLXN0YXRpYyB2b2lkIG1heF9yYW1fd3JpdGUodm9pZCAq
-b3BhcXVlLCBod2FkZHIgb2Zmc2V0LCB1aW50NjRfdCB2YWx1ZSwNCj4gLSAgICAgICAgICAgICAg
-ICAgICAgICAgICAgIHVuc2lnbmVkIHNpemUpDQo+IC17DQo+IC0gICAgLyogRGlzY2FyZCB3cml0
-ZXMgKi8NCj4gLX0NCj4gLQ0KPiAtc3RhdGljIGNvbnN0IE1lbW9yeVJlZ2lvbk9wcyBtYXhfcmFt
-X29wcyA9IHsNCj4gLSAgICAucmVhZCA9IG1heF9yYW1fcmVhZCwNCj4gLSAgICAud3JpdGUgPSBt
-YXhfcmFtX3dyaXRlLA0KPiAtICAgIC5lbmRpYW5uZXNzID0gREVWSUNFX05BVElWRV9FTkRJQU4s
-DQo+IC19Ow0KPiAtDQo+ICNkZWZpbmUgQVNUX1NNUF9NQUlMQk9YX0JBU0UgICAgICAgICAgICAw
-eDFlNmUyMTgwDQo+ICNkZWZpbmUgQVNUX1NNUF9NQk9YX0ZJRUxEX0VOVFJZICAgICAgICAoQVNU
-X1NNUF9NQUlMQk9YX0JBU0UgKyAweDApDQo+ICNkZWZpbmUgQVNUX1NNUF9NQk9YX0ZJRUxEX0dP
-U0lHTiAgICAgICAoQVNUX1NNUF9NQUlMQk9YX0JBU0UgKyAweDQpDQo+IEBAIC0zMjQsMjAgKzMw
-MywxNiBAQCBzdGF0aWMgdm9pZCBhc3BlZWRfbWFjaGluZV9pbml0KE1hY2hpbmVTdGF0ZSAqbWFj
-aGluZSkNCj4gICAgIEFzcGVlZE1hY2hpbmVDbGFzcyAqYW1jID0gQVNQRUVEX01BQ0hJTkVfR0VU
-X0NMQVNTKG1hY2hpbmUpOw0KPiAgICAgQXNwZWVkU29DQ2xhc3MgKnNjOw0KPiAgICAgRHJpdmVJ
-bmZvICpkcml2ZTAgPSBkcml2ZV9nZXQoSUZfTVRELCAwLCAwKTsNCj4gLSAgICByYW1fYWRkcl90
-IG1heF9yYW1fc2l6ZTsNCj4gICAgIGludCBpOw0KPiAgICAgTklDSW5mbyAqbmQgPSAmbmRfdGFi
-bGVbMF07DQo+IA0KPiAtICAgIG1lbW9yeV9yZWdpb25faW5pdCgmYm1jLT5yYW1fY29udGFpbmVy
-LCBOVUxMLCAiYXNwZWVkLXJhbS1jb250YWluZXIiLA0KPiAtICAgICAgICAgICAgICAgICAgICAg
-ICA0ICogR2lCKTsNCj4gLSAgICBtZW1vcnlfcmVnaW9uX2FkZF9zdWJyZWdpb24oJmJtYy0+cmFt
-X2NvbnRhaW5lciwgMCwgbWFjaGluZS0+cmFtKTsNCj4gLQ0KPiAgICAgb2JqZWN0X2luaXRpYWxp
-emVfY2hpbGQoT0JKRUNUKG1hY2hpbmUpLCAic29jIiwgJmJtYy0+c29jLCBhbWMtPnNvY19uYW1l
-KTsNCj4gDQo+ICAgICBzYyA9IEFTUEVFRF9TT0NfR0VUX0NMQVNTKCZibWMtPnNvYyk7DQo+IA0K
-PiAgICAgLyoNCj4gLSAgICAgKiBUaGlzIHdpbGwgZXJyb3Igb3V0IGlmIGlzaXplIGlzIG5vdCBz
-dXBwb3J0ZWQgYnkgbWVtb3J5IGNvbnRyb2xsZXIuDQo+ICsgICAgICogVGhpcyB3aWxsIGVycm9y
-IG91dCBpZiB0aGUgUkFNIHNpemUgaXMgbm90IHN1cHBvcnRlZCBieSB0aGUNCj4gKyAgICAgKiBt
-ZW1vcnkgY29udHJvbGxlciBvZiB0aGUgU29DLg0KPiAgICAgICovDQo+ICAgICBvYmplY3RfcHJv
-cGVydHlfc2V0X3VpbnQoT0JKRUNUKCZibWMtPnNvYyksICJyYW0tc2l6ZSIsIG1hY2hpbmUtPnJh
-bV9zaXplLA0KPiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICZlcnJvcl9mYXRhbCk7DQo+
-IEBAIC0zNjksMTYgKzM0NCw2IEBAIHN0YXRpYyB2b2lkIGFzcGVlZF9tYWNoaW5lX2luaXQoTWFj
-aGluZVN0YXRlICptYWNoaW5lKQ0KPiAgICAgICAgICAgICAgICAgICAgICAgICAgYW1jLT51YXJ0
-X2RlZmF1bHQpOw0KPiAgICAgcWRldl9yZWFsaXplKERFVklDRSgmYm1jLT5zb2MpLCBOVUxMLCAm
-ZXJyb3JfYWJvcnQpOw0KPiANCj4gLSAgICBtZW1vcnlfcmVnaW9uX2FkZF9zdWJyZWdpb24oZ2V0
-X3N5c3RlbV9tZW1vcnkoKSwNCj4gLSAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgc2Mt
-Pm1lbW1hcFtBU1BFRURfREVWX1NEUkFNXSwNCj4gLSAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgJmJtYy0+cmFtX2NvbnRhaW5lcik7DQo+IC0NCj4gLSAgICBtYXhfcmFtX3NpemUgPSBv
-YmplY3RfcHJvcGVydHlfZ2V0X3VpbnQoT0JKRUNUKCZibWMtPnNvYyksICJtYXgtcmFtLXNpemUi
-LA0KPiAtICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAmZXJyb3Jf
-YWJvcnQpOw0KPiAtICAgIG1lbW9yeV9yZWdpb25faW5pdF9pbygmYm1jLT5tYXhfcmFtLCBOVUxM
-LCAmbWF4X3JhbV9vcHMsIE5VTEwsDQo+IC0gICAgICAgICAgICAgICAgICAgICAgICAgICJtYXhf
-cmFtIiwgbWF4X3JhbV9zaXplICAtIG1hY2hpbmUtPnJhbV9zaXplKTsNCj4gLSAgICBtZW1vcnlf
-cmVnaW9uX2FkZF9zdWJyZWdpb24oJmJtYy0+cmFtX2NvbnRhaW5lciwgbWFjaGluZS0+cmFtX3Np
-emUsICZibWMtPm1heF9yYW0pOw0KPiAtDQo+ICAgICBhc3BlZWRfYm9hcmRfaW5pdF9mbGFzaGVz
-KCZibWMtPnNvYy5mbWMsDQo+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGJtYy0+Zm1j
-X21vZGVsID8gYm1jLT5mbWNfbW9kZWwgOiBhbWMtPmZtY19tb2RlbCwNCj4gICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgYW1jLT5udW1fY3MsIDApOw0KPiBkaWZmIC0tZ2l0IGEvaHcvYXJt
-L2FzcGVlZF9hc3QyNjAwLmMgYi9ody9hcm0vYXNwZWVkX2FzdDI2MDAuYw0KPiBpbmRleCBiMGE0
-MTk5YjY5NjAuLjY0ODgzNjJiMWUwYSAxMDA2NDQNCj4gLS0tIGEvaHcvYXJtL2FzcGVlZF9hc3Qy
-NjAwLmMNCj4gKysrIGIvaHcvYXJtL2FzcGVlZF9hc3QyNjAwLmMNCj4gQEAgLTE5Nyw4ICsxOTcs
-NiBAQCBzdGF0aWMgdm9pZCBhc3BlZWRfc29jX2FzdDI2MDBfaW5pdChPYmplY3QgKm9iaikNCj4g
-ICAgIG9iamVjdF9pbml0aWFsaXplX2NoaWxkKG9iaiwgInNkbWMiLCAmcy0+c2RtYywgdHlwZW5h
-bWUpOw0KPiAgICAgb2JqZWN0X3Byb3BlcnR5X2FkZF9hbGlhcyhvYmosICJyYW0tc2l6ZSIsIE9C
-SkVDVCgmcy0+c2RtYyksDQo+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICJyYW0tc2l6
-ZSIpOw0KPiAtICAgIG9iamVjdF9wcm9wZXJ0eV9hZGRfYWxpYXMob2JqLCAibWF4LXJhbS1zaXpl
-IiwgT0JKRUNUKCZzLT5zZG1jKSwNCj4gLSAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICJt
-YXgtcmFtLXNpemUiKTsNCj4gDQo+ICAgICBmb3IgKGkgPSAwOyBpIDwgc2MtPndkdHNfbnVtOyBp
-KyspIHsNCj4gICAgICAgICBzbnByaW50Zih0eXBlbmFtZSwgc2l6ZW9mKHR5cGVuYW1lKSwgImFz
-cGVlZC53ZHQtJXMiLCBzb2NuYW1lKTsNCj4gQEAgLTI3MSw2ICsyNjksOCBAQCBzdGF0aWMgdm9p
-ZCBhc3BlZWRfc29jX2FzdDI2MDBfcmVhbGl6ZShEZXZpY2VTdGF0ZSAqZGV2LCBFcnJvciAqKmVy
-cnApDQo+ICAgICAvKiBJTyBzcGFjZSAqLw0KPiAgICAgY3JlYXRlX3VuaW1wbGVtZW50ZWRfZGV2
-aWNlKCJhc3BlZWRfc29jLmlvIiwgc2MtPm1lbW1hcFtBU1BFRURfREVWX0lPTUVNXSwNCj4gICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICBBU1BFRURfU09DX0lPTUVNX1NJWkUpOw0KPiAr
-ICAgIC8qIFJBTSAqLw0KPiArICAgIGFzcGVlZF9zb2NfZHJhbV9pbml0KHMsIGVycnApOw0KPiAN
-Cj4gICAgIC8qIFZpZGVvIGVuZ2luZSBzdHViICovDQo+ICAgICBjcmVhdGVfdW5pbXBsZW1lbnRl
-ZF9kZXZpY2UoImFzcGVlZC52aWRlbyIsIHNjLT5tZW1tYXBbQVNQRUVEX0RFVl9WSURFT10sDQo+
-IGRpZmYgLS1naXQgYS9ody9hcm0vYXNwZWVkX3NvYy5jIGIvaHcvYXJtL2FzcGVlZF9zb2MuYw0K
-PiBpbmRleCAzMDU3NGQ0Mjc2YWIuLmEwNWE4MzBiYzYyYSAxMDA2NDQNCj4gLS0tIGEvaHcvYXJt
-L2FzcGVlZF9zb2MuYw0KPiArKysgYi9ody9hcm0vYXNwZWVkX3NvYy5jDQo+IEBAIC0xMSw2ICsx
-MSw3IEBADQo+ICAqLw0KPiANCj4gI2luY2x1ZGUgInFlbXUvb3NkZXAuaCINCj4gKyNpbmNsdWRl
-ICJxZW11L3VuaXRzLmgiDQo+ICNpbmNsdWRlICJxYXBpL2Vycm9yLmgiDQo+ICNpbmNsdWRlICJo
-dy9taXNjL3VuaW1wLmgiDQo+ICNpbmNsdWRlICJody9hcm0vYXNwZWVkX3NvYy5oIg0KPiBAQCAt
-MTkxLDggKzE5Miw2IEBAIHN0YXRpYyB2b2lkIGFzcGVlZF9zb2NfaW5pdChPYmplY3QgKm9iaikN
-Cj4gICAgIG9iamVjdF9pbml0aWFsaXplX2NoaWxkKG9iaiwgInNkbWMiLCAmcy0+c2RtYywgdHlw
-ZW5hbWUpOw0KPiAgICAgb2JqZWN0X3Byb3BlcnR5X2FkZF9hbGlhcyhvYmosICJyYW0tc2l6ZSIs
-IE9CSkVDVCgmcy0+c2RtYyksDQo+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICJyYW0t
-c2l6ZSIpOw0KPiAtICAgIG9iamVjdF9wcm9wZXJ0eV9hZGRfYWxpYXMob2JqLCAibWF4LXJhbS1z
-aXplIiwgT0JKRUNUKCZzLT5zZG1jKSwNCj4gLSAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICJtYXgtcmFtLXNpemUiKTsNCj4gDQo+ICAgICBmb3IgKGkgPSAwOyBpIDwgc2MtPndkdHNfbnVt
-OyBpKyspIHsNCj4gICAgICAgICBzbnByaW50Zih0eXBlbmFtZSwgc2l6ZW9mKHR5cGVuYW1lKSwg
-ImFzcGVlZC53ZHQtJXMiLCBzb2NuYW1lKTsNCj4gQEAgLTIzNyw2ICsyMzYsOSBAQCBzdGF0aWMg
-dm9pZCBhc3BlZWRfc29jX3JlYWxpemUoRGV2aWNlU3RhdGUgKmRldiwgRXJyb3IgKiplcnJwKQ0K
-PiAgICAgY3JlYXRlX3VuaW1wbGVtZW50ZWRfZGV2aWNlKCJhc3BlZWRfc29jLmlvIiwgc2MtPm1l
-bW1hcFtBU1BFRURfREVWX0lPTUVNXSwNCj4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICBBU1BFRURfU09DX0lPTUVNX1NJWkUpOw0KPiANCj4gKyAgICAvKiBSQU0gKi8NCj4gKyAgICBh
-c3BlZWRfc29jX2RyYW1faW5pdChzLCBlcnJwKTsNCj4gKw0KPiAgICAgLyogVmlkZW8gZW5naW5l
-IHN0dWIgKi8NCj4gICAgIGNyZWF0ZV91bmltcGxlbWVudGVkX2RldmljZSgiYXNwZWVkLnZpZGVv
-Iiwgc2MtPm1lbW1hcFtBU1BFRURfREVWX1ZJREVPXSwNCj4gICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAweDEwMDApOw0KPiBAQCAtNTYxLDMgKzU2MywzNSBAQCB2b2lkIGFzcGVlZF9z
-b2NfdWFydF9pbml0KEFzcGVlZFNvQ1N0YXRlICpzKQ0KPiAgICAgICAgICAgICAgICAgICAgICAg
-IHNlcmlhbF9oZChpKSwgREVWSUNFX0xJVFRMRV9FTkRJQU4pOw0KPiAgICAgfQ0KPiB9DQo+ICsN
-Cj4gK3ZvaWQgYXNwZWVkX3NvY19kcmFtX2luaXQoQXNwZWVkU29DU3RhdGUgKnMsIEVycm9yICoq
-ZXJycCkNCj4gK3sNCj4gKyAgICBBc3BlZWRTb0NDbGFzcyAqc2MgPSBBU1BFRURfU09DX0dFVF9D
-TEFTUyhzKTsNCj4gKyAgICByYW1fYWRkcl90IHJhbV9zaXplLCBtYXhfcmFtX3NpemU7DQo+ICsg
-ICAgRGV2aWNlU3RhdGUgKmRldjsNCj4gKw0KPiArICAgIG1lbW9yeV9yZWdpb25faW5pdCgmcy0+
-ZHJhbV9jb250YWluZXIsIE9CSkVDVChzKSwgInJhbS1jb250YWluZXIiLCA0ICogR2lCKTsNCj4g
-KyAgICBtZW1vcnlfcmVnaW9uX2FkZF9zdWJyZWdpb24oJnMtPmRyYW1fY29udGFpbmVyLCAwLCBz
-LT5kcmFtX21yKTsNCj4gKw0KPiArICAgIC8qDQo+ICsgICAgICogQWRkIGEgbWVtb3J5IHJlZ2lv
-biBiZXlvbmQgdGhlIFJBTSByZWdpb24gdG8gbGV0IGZpcm13YXJlcyBzY2FuDQo+ICsgICAgICog
-dGhlIGFkZHJlc3Mgc3BhY2Ugd2l0aCBsb2FkL3N0b3JlIGFuZCBndWVzcyBob3cgbXVjaCBSQU0g
-dGhlDQo+ICsgICAgICogU29DIGhhcy4NCj4gKyAgICAgKi8NCj4gKyAgICByYW1fc2l6ZSA9IG9i
-amVjdF9wcm9wZXJ0eV9nZXRfdWludChPQkpFQ1QoJnMtPnNkbWMpLCAicmFtLXNpemUiLA0KPiAr
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICZlcnJvcl9hYm9ydCk7DQo+
-ICsgICAgbWF4X3JhbV9zaXplID0gb2JqZWN0X3Byb3BlcnR5X2dldF91aW50KE9CSkVDVCgmcy0+
-c2RtYyksICJtYXgtcmFtLXNpemUiLA0KPiArICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAmZXJyb3JfYWJvcnQpOw0KPiArDQo+ICsgICAgZGV2ID0gcWRldl9uZXco
-VFlQRV9VTklNUExFTUVOVEVEX0RFVklDRSk7DQo+ICsgICAgcWRldl9wcm9wX3NldF9zdHJpbmco
-ZGV2LCAibmFtZSIsICJyYW0tZW1wdHkiKTsNCj4gKyAgICBxZGV2X3Byb3Bfc2V0X3VpbnQ2NChk
-ZXYsICJzaXplIiwgbWF4X3JhbV9zaXplICAtIHJhbV9zaXplKTsNCj4gKyAgICBpZiAoIXN5c2J1
-c19yZWFsaXplX2FuZF91bnJlZihTWVNfQlVTX0RFVklDRShkZXYpLCBlcnJwKSkgew0KPiArICAg
-ICAgICByZXR1cm47DQo+ICsgICAgfQ0KPiArICAgIG1lbW9yeV9yZWdpb25fYWRkX3N1YnJlZ2lv
-bl9vdmVybGFwKCZzLT5kcmFtX2NvbnRhaW5lciwgcmFtX3NpemUsDQo+ICsgICAgICAgICAgICAg
-ICAgICAgICAgc3lzYnVzX21taW9fZ2V0X3JlZ2lvbihTWVNfQlVTX0RFVklDRShkZXYpLCAwKSwg
-LTEwMDApOw0KPiArDQo+ICsgICAgbWVtb3J5X3JlZ2lvbl9hZGRfc3VicmVnaW9uKGdldF9zeXN0
-ZW1fbWVtb3J5KCksDQo+ICsgICAgICAgICAgICAgICAgICAgICAgc2MtPm1lbW1hcFtBU1BFRURf
-REVWX1NEUkFNXSwgJnMtPmRyYW1fY29udGFpbmVyKTsNCj4gK30NCj4gLS0gDQo+IDIuMzUuMw0K
-PiANCj4gDQoNCg==
+Currently, the Aspeed machines allocate a ram container region in
+which the machine ram region is mapped. See commit ad1a9782186d
+("aspeed: add a RAM memory region container"). An extra region is
+mapped after ram in the ram container to catch invalid access done by
+FW. That's how FW determines the size of ram. See commit ebe31c0a8ef7
+("aspeed: add a max_ram_size property to the memory controller").
+
+Let's move all the logic under the SoC where it should be. It will
+also ease the work on multi SoC support.
+
+Signed-off-by: Cédric Le Goater <clg@kaod.org>
+---
+
+ Changes in v2:
+
+ - handle errors
+
+ include/hw/arm/aspeed_soc.h |  2 ++
+ hw/arm/aspeed.c             | 39 ++---------------------------------
+ hw/arm/aspeed_ast2600.c     |  6 ++++--
+ hw/arm/aspeed_soc.c         | 41 +++++++++++++++++++++++++++++++++++--
+ 4 files changed, 47 insertions(+), 41 deletions(-)
+
+diff --git a/include/hw/arm/aspeed_soc.h b/include/hw/arm/aspeed_soc.h
+index 02a5a9ffcbd3..e8a104823d35 100644
+--- a/include/hw/arm/aspeed_soc.h
++++ b/include/hw/arm/aspeed_soc.h
+@@ -50,6 +50,7 @@ struct AspeedSoCState {
+     A15MPPrivState     a7mpcore;
+     ARMv7MState        armv7m;
+     MemoryRegion *dram_mr;
++    MemoryRegion dram_container;
+     MemoryRegion sram;
+     AspeedVICState vic;
+     AspeedRtcState rtc;
+@@ -165,5 +166,6 @@ enum {
+ 
+ qemu_irq aspeed_soc_get_irq(AspeedSoCState *s, int dev);
+ void aspeed_soc_uart_init(AspeedSoCState *s);
++bool aspeed_soc_dram_init(AspeedSoCState *s, Error **errp);
+ 
+ #endif /* ASPEED_SOC_H */
+diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
+index a06f7c1b62a9..dc09773b0ba5 100644
+--- a/hw/arm/aspeed.c
++++ b/hw/arm/aspeed.c
+@@ -174,27 +174,6 @@ struct AspeedMachineState {
+ #define BLETCHLEY_BMC_HW_STRAP1 AST2600_EVB_HW_STRAP1
+ #define BLETCHLEY_BMC_HW_STRAP2 AST2600_EVB_HW_STRAP2
+ 
+-/*
+- * The max ram region is for firmwares that scan the address space
+- * with load/store to guess how much RAM the SoC has.
+- */
+-static uint64_t max_ram_read(void *opaque, hwaddr offset, unsigned size)
+-{
+-    return 0;
+-}
+-
+-static void max_ram_write(void *opaque, hwaddr offset, uint64_t value,
+-                           unsigned size)
+-{
+-    /* Discard writes */
+-}
+-
+-static const MemoryRegionOps max_ram_ops = {
+-    .read = max_ram_read,
+-    .write = max_ram_write,
+-    .endianness = DEVICE_NATIVE_ENDIAN,
+-};
+-
+ #define AST_SMP_MAILBOX_BASE            0x1e6e2180
+ #define AST_SMP_MBOX_FIELD_ENTRY        (AST_SMP_MAILBOX_BASE + 0x0)
+ #define AST_SMP_MBOX_FIELD_GOSIGN       (AST_SMP_MAILBOX_BASE + 0x4)
+@@ -324,20 +303,16 @@ static void aspeed_machine_init(MachineState *machine)
+     AspeedMachineClass *amc = ASPEED_MACHINE_GET_CLASS(machine);
+     AspeedSoCClass *sc;
+     DriveInfo *drive0 = drive_get(IF_MTD, 0, 0);
+-    ram_addr_t max_ram_size;
+     int i;
+     NICInfo *nd = &nd_table[0];
+ 
+-    memory_region_init(&bmc->ram_container, NULL, "aspeed-ram-container",
+-                       4 * GiB);
+-    memory_region_add_subregion(&bmc->ram_container, 0, machine->ram);
+-
+     object_initialize_child(OBJECT(machine), "soc", &bmc->soc, amc->soc_name);
+ 
+     sc = ASPEED_SOC_GET_CLASS(&bmc->soc);
+ 
+     /*
+-     * This will error out if isize is not supported by memory controller.
++     * This will error out if the RAM size is not supported by the
++     * memory controller of the SoC.
+      */
+     object_property_set_uint(OBJECT(&bmc->soc), "ram-size", machine->ram_size,
+                              &error_fatal);
+@@ -369,16 +344,6 @@ static void aspeed_machine_init(MachineState *machine)
+                          amc->uart_default);
+     qdev_realize(DEVICE(&bmc->soc), NULL, &error_abort);
+ 
+-    memory_region_add_subregion(get_system_memory(),
+-                                sc->memmap[ASPEED_DEV_SDRAM],
+-                                &bmc->ram_container);
+-
+-    max_ram_size = object_property_get_uint(OBJECT(&bmc->soc), "max-ram-size",
+-                                            &error_abort);
+-    memory_region_init_io(&bmc->max_ram, NULL, &max_ram_ops, NULL,
+-                          "max_ram", max_ram_size  - machine->ram_size);
+-    memory_region_add_subregion(&bmc->ram_container, machine->ram_size, &bmc->max_ram);
+-
+     aspeed_board_init_flashes(&bmc->soc.fmc,
+                               bmc->fmc_model ? bmc->fmc_model : amc->fmc_model,
+                               amc->num_cs, 0);
+diff --git a/hw/arm/aspeed_ast2600.c b/hw/arm/aspeed_ast2600.c
+index b0a4199b6960..f70b17d3f9cf 100644
+--- a/hw/arm/aspeed_ast2600.c
++++ b/hw/arm/aspeed_ast2600.c
+@@ -197,8 +197,6 @@ static void aspeed_soc_ast2600_init(Object *obj)
+     object_initialize_child(obj, "sdmc", &s->sdmc, typename);
+     object_property_add_alias(obj, "ram-size", OBJECT(&s->sdmc),
+                               "ram-size");
+-    object_property_add_alias(obj, "max-ram-size", OBJECT(&s->sdmc),
+-                              "max-ram-size");
+ 
+     for (i = 0; i < sc->wdts_num; i++) {
+         snprintf(typename, sizeof(typename), "aspeed.wdt-%s", socname);
+@@ -271,6 +269,10 @@ static void aspeed_soc_ast2600_realize(DeviceState *dev, Error **errp)
+     /* IO space */
+     create_unimplemented_device("aspeed_soc.io", sc->memmap[ASPEED_DEV_IOMEM],
+                                 ASPEED_SOC_IOMEM_SIZE);
++    /* RAM */
++    if (!aspeed_soc_dram_init(s, errp)) {
++        return;
++    }
+ 
+     /* Video engine stub */
+     create_unimplemented_device("aspeed.video", sc->memmap[ASPEED_DEV_VIDEO],
+diff --git a/hw/arm/aspeed_soc.c b/hw/arm/aspeed_soc.c
+index 30574d4276ab..f5300288745b 100644
+--- a/hw/arm/aspeed_soc.c
++++ b/hw/arm/aspeed_soc.c
+@@ -11,6 +11,7 @@
+  */
+ 
+ #include "qemu/osdep.h"
++#include "qemu/units.h"
+ #include "qapi/error.h"
+ #include "hw/misc/unimp.h"
+ #include "hw/arm/aspeed_soc.h"
+@@ -191,8 +192,6 @@ static void aspeed_soc_init(Object *obj)
+     object_initialize_child(obj, "sdmc", &s->sdmc, typename);
+     object_property_add_alias(obj, "ram-size", OBJECT(&s->sdmc),
+                               "ram-size");
+-    object_property_add_alias(obj, "max-ram-size", OBJECT(&s->sdmc),
+-                              "max-ram-size");
+ 
+     for (i = 0; i < sc->wdts_num; i++) {
+         snprintf(typename, sizeof(typename), "aspeed.wdt-%s", socname);
+@@ -237,6 +236,11 @@ static void aspeed_soc_realize(DeviceState *dev, Error **errp)
+     create_unimplemented_device("aspeed_soc.io", sc->memmap[ASPEED_DEV_IOMEM],
+                                 ASPEED_SOC_IOMEM_SIZE);
+ 
++    /* RAM */
++    if (!aspeed_soc_dram_init(s, errp)) {
++        return;
++    }
++
+     /* Video engine stub */
+     create_unimplemented_device("aspeed.video", sc->memmap[ASPEED_DEV_VIDEO],
+                                 0x1000);
+@@ -561,3 +565,36 @@ void aspeed_soc_uart_init(AspeedSoCState *s)
+                        serial_hd(i), DEVICE_LITTLE_ENDIAN);
+     }
+ }
++
++bool aspeed_soc_dram_init(AspeedSoCState *s, Error **errp)
++{
++    AspeedSoCClass *sc = ASPEED_SOC_GET_CLASS(s);
++    ram_addr_t ram_size, max_ram_size;
++    DeviceState *dev;
++
++    memory_region_init(&s->dram_container, OBJECT(s), "ram-container", 4 * GiB);
++    memory_region_add_subregion(&s->dram_container, 0, s->dram_mr);
++
++    /*
++     * Add a memory region beyond the RAM region to let firmwares scan
++     * the address space with load/store and guess how much RAM the
++     * SoC has.
++     */
++    ram_size = object_property_get_uint(OBJECT(&s->sdmc), "ram-size",
++                                        &error_abort);
++    max_ram_size = object_property_get_uint(OBJECT(&s->sdmc), "max-ram-size",
++                                            &error_abort);
++
++    dev = qdev_new(TYPE_UNIMPLEMENTED_DEVICE);
++    qdev_prop_set_string(dev, "name", "ram-empty");
++    qdev_prop_set_uint64(dev, "size", max_ram_size  - ram_size);
++    if (!sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), errp)) {
++        return false;
++    }
++    memory_region_add_subregion_overlap(&s->dram_container, ram_size,
++                      sysbus_mmio_get_region(SYS_BUS_DEVICE(dev), 0), -1000);
++
++    memory_region_add_subregion(get_system_memory(),
++                      sc->memmap[ASPEED_DEV_SDRAM], &s->dram_container);
++    return true;
++}
+-- 
+2.35.3
+

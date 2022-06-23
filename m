@@ -1,111 +1,118 @@
-Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp2993015lft;
-        Thu, 23 Jun 2022 07:14:22 -0700 (PDT)
-X-Google-Smtp-Source: AGRyM1t/fYsst3aBLUjrzHOwV4VLrE9o2bkOFqJfCaCRElksWO4FRHvdZzTgBYBbQtWwE7spjtOb
-X-Received: by 2002:a05:6214:f0d:b0:470:2d21:7a0f with SMTP id gw13-20020a0562140f0d00b004702d217a0fmr24430809qvb.44.1655993661909;
-        Thu, 23 Jun 2022 07:14:21 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1655993661; cv=none;
+Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp3013607lft;
+        Thu, 23 Jun 2022 07:44:32 -0700 (PDT)
+X-Google-Smtp-Source: AGRyM1td8kcDs03953fA6I3YJw8Bt8Xmi3M8lT8e/8zYJDBcYGEm3XK4+c71WTZq3kMrW2p+K2ht
+X-Received: by 2002:a05:620a:4505:b0:6a6:f875:a609 with SMTP id t5-20020a05620a450500b006a6f875a609mr6688764qkp.710.1655995472729;
+        Thu, 23 Jun 2022 07:44:32 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1655995472; cv=none;
         d=google.com; s=arc-20160816;
-        b=cjU/3KEzI/Lcwbf4QCZIZGyQVwbOlvr+e2FlrygzPGtjk8iMo2z9uDvfUOV9XIDhxR
-         a3K8RDI5IRUHHrjKdCeer0P8smAFI81+etLWYZiBizTKG7kTx+jZV461TBWuR1PoibKf
-         oVbhK9XE/A71YbzGLSD8zzXJdE2UwtCm8YMUGyfe1r+XhpkZvHhzQEUqKaw4TiWe5F/F
-         YpW6yrsXbC60yznc1uv1cW/nDhLkNdJQwXBsseB/73Tfb7KuKxBRRV19nis6eDUXHzFo
-         BFmKqD+hl1MPzJF4i9lTgHwosOsqto/2eVslzI2cToaLne6EvIJJDWJKGH5U3Fg+QBty
-         /M/Q==
+        b=P8OY/D9cpLNXHJYnRAk1Mjn6lMhsW9O85889u6+vgcxGHGO7km5caay41lflWbFhFP
+         A0W8HOamuCW+Neq+1DIk5vniIRfhIrQrzfdbFFuFB9LsJxklH5WU8Bns2AHM16wNEpD0
+         J/o77dLpuew/o1QsCKV/g3zNQqcMfR1apoWvXNvmZzHEsMYo/8g0IqcCR7HdBkH1SfHq
+         oVZ36zE7rtxVJVAWaYuMdQsxn1JbCmnX8IN7QufIwE8PuD7jTy01Zz3esxyse9AhrXQK
+         Bn8Eq8Dbc8cDs6ZJx7aB83U4QZIqkeSXE9WuqqHg3JXiFZWHvgzYq2IXtVib6iKmrXJK
+         P2TA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :in-reply-to:from:references:cc:to:content-language:subject
          :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=E/b7m1t7XpSGo9m9F9Yu/PB+h7o53HbGU3H1eOvmAck=;
-        b=eBBvz2TgXkIS6HpI30NYo0jhno2aNgRlh2i8Hlpb4cwjKrLybRw4QEJ3Lwrk82foGz
-         57OuPbvMfPkfGF9LZtnpcTVMyMVtb4mWGPgX/nZJH6Gkg/DrtIegoNmTr9wAZf4K4Dhb
-         n6aeaMelcNyTgFQiBm1OTQJ07bian+ROFjQf8AyLDRusHdmaogfqcdEIjnF2Sz1o4HHx
-         4HONR/4XJA4yUZKlM3rq/BHql+c7Sw+4EYArhVYzSDe6ZkeD4MzWIQpHeIAN5N17fsfr
-         euCEXIIhr0xFEtWg8HVeUTwvpOAas9VjyeeYfs7UEppbTfAx54xN3Y369Primxy0FifD
-         OcYA==
+        bh=WAYlGURz1ImDMSr4/9X8JnApIuOiPyTPttYWz1fPiiI=;
+        b=0H3PHIxRZwjou+S36gukNS5AZyxqxHBO5+0a1k+a9aPdjFfDBcSJ6EYVl4qgSmP5zy
+         kAuqi2HtlDQRQYwQrS2fzMzjmEa2v0Uar3Yp9nkwsS95cZmv/nTNjHp5zj7iROaBzklU
+         oAkQGEfiWMPRmKoVnuVO1bbkvBrAhuTArRLxTmT1lVqO+3gYf6HQirHAB4wTbrnfDpBG
+         bVxpFbAJUZaHVLgr7i2hpxxiaUhBC/l4Bu0ZeoWKyQHdI4Q/fccVGOSL6T4j9KMMtOb0
+         X+vYeDggL2yeZ5Ld+uePYMSdaQSchX+RgVEeorYN1j7VUyOpZOj/r65Vts5Bd0EhLgzD
+         5+lA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@quicinc.com header.s=qcdkim header.b="GTvfZv/1";
+       dkim=pass header.i=@linaro.org header.s=google header.b=QMdBwGn7;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=quicinc.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id cc6-20020a05622a410600b0030502f99d02si10934502qtb.456.2022.06.23.07.14.21
+        by mx.google.com with ESMTPS id q22-20020a05622a031600b002f917a19c05si12464620qtw.341.2022.06.23.07.44.32
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 23 Jun 2022 07:14:21 -0700 (PDT)
+        Thu, 23 Jun 2022 07:44:32 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@quicinc.com header.s=qcdkim header.b="GTvfZv/1";
+       dkim=pass header.i=@linaro.org header.s=google header.b=QMdBwGn7;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=quicinc.com
-Received: from localhost ([::1]:51410 helo=lists1p.gnu.org)
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:51734 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1o4NbB-0003bv-D5
-	for alex.bennee@linaro.org; Thu, 23 Jun 2022 10:14:21 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:48890)
+	id 1o4O4O-0006on-7A
+	for alex.bennee@linaro.org; Thu, 23 Jun 2022 10:44:32 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:57154)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <quic_jaehyoo@quicinc.com>)
- id 1o4NZT-0001jQ-Q4; Thu, 23 Jun 2022 10:12:35 -0400
-Received: from alexa-out-sd-02.qualcomm.com ([199.106.114.39]:32532)
- by eggs.gnu.org with esmtps (TLS1.2:RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <quic_jaehyoo@quicinc.com>)
- id 1o4NZQ-0005Bf-2V; Thu, 23 Jun 2022 10:12:35 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=quicinc.com; i=@quicinc.com; q=dns/txt; s=qcdkim;
- t=1655993552; x=1687529552;
- h=message-id:date:mime-version:subject:to:cc:references:
- from:in-reply-to:content-transfer-encoding;
- bh=E/b7m1t7XpSGo9m9F9Yu/PB+h7o53HbGU3H1eOvmAck=;
- b=GTvfZv/1jg/766Dv4iRGL4Wb56+G60vpWT9yXzJoIlDgVNqSA+s5zMMz
- V3Bf1Zdrp+9n04FbwITe3QWy8AbaVuAchEuHUoiNYvGqq7ybtR8r2xgJZ
- xLPv+JXvNmPFZL1oiaMs8UlfINL3BYjAcOR/ZWfMfyzGy6alDznB1EtbH M=;
-Received: from unknown (HELO ironmsg02-sd.qualcomm.com) ([10.53.140.142])
- by alexa-out-sd-02.qualcomm.com with ESMTP; 23 Jun 2022 07:12:30 -0700
-X-QCInternal: smtphost
-Received: from nasanex01c.na.qualcomm.com ([10.47.97.222])
- by ironmsg02-sd.qualcomm.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 23 Jun 2022 07:12:30 -0700
-Received: from nalasex01a.na.qualcomm.com (10.47.209.196) by
- nasanex01c.na.qualcomm.com (10.47.97.222) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.986.22; Thu, 23 Jun 2022 07:12:29 -0700
-Received: from [10.110.34.96] (10.80.80.8) by nalasex01a.na.qualcomm.com
- (10.47.209.196) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.986.22; Thu, 23 Jun
- 2022 07:12:28 -0700
-Message-ID: <6bf03439-83d9-8a03-7290-439d41d02a13@quicinc.com>
-Date: Thu, 23 Jun 2022 07:12:28 -0700
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1o4O4D-0006oS-Cm
+ for qemu-arm@nongnu.org; Thu, 23 Jun 2022 10:44:21 -0400
+Received: from mail-pj1-x1036.google.com ([2607:f8b0:4864:20::1036]:43606)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1o4O4A-0001yt-QY
+ for qemu-arm@nongnu.org; Thu, 23 Jun 2022 10:44:20 -0400
+Received: by mail-pj1-x1036.google.com with SMTP id
+ dw10-20020a17090b094a00b001ed00a16eb4so2788810pjb.2
+ for <qemu-arm@nongnu.org>; Thu, 23 Jun 2022 07:44:18 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=message-id:date:mime-version:user-agent:subject:content-language:to
+ :cc:references:from:in-reply-to:content-transfer-encoding;
+ bh=WAYlGURz1ImDMSr4/9X8JnApIuOiPyTPttYWz1fPiiI=;
+ b=QMdBwGn7znQBWkz4555GQWr+audo/oO5LJZ8gnOJ4cspAUfx1972q/BLl3TUokQtvj
+ Dkdtr3YDaE2qeKZnxUTCqsEAXB29Jq4wGogwWPmSijesrNZU0fmLm2aH49sL1/UHnzGJ
+ AttwgHjWxQJCLRV5XM27f/H+ZHsK2nbKst3I5bSIuqH8aZP3untiinfbINdm7exWITk/
+ pRdCsEek21DxVIn8AvINsvhmV2gy81xkmneYTF1JErjPX6G2vCKThhRCIrAR1wpP2rfw
+ JslRRbdNkDZe3vF8xJxGVTCjWLHFRwRKn3fn47SL8Jst4n4OYCuMr1LMksxm3yFX4Nqc
+ xCfQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
+ :content-language:to:cc:references:from:in-reply-to
+ :content-transfer-encoding;
+ bh=WAYlGURz1ImDMSr4/9X8JnApIuOiPyTPttYWz1fPiiI=;
+ b=eGkeix5TFhVBs6cygryyX2tRGpTh4Oh0xtVsQF1USj9qbGBc4j9rz4H5ZMd07vMSyc
+ O13Hjc1GuALNsR+/6ZFLcNmrjkiJlP6GPSlFxV45IsENLVwBXyvSZ7HsE19pW2xH617a
+ ZtCLA76vtWJH06mwmAVI74Ka+GQt2ej50P5EeeHCLMf9ZxPtMCytpQWMrtdXUBUbbPFh
+ EylxsR3VS0UobWdws/xt55VNXCnp/lnh5LEpywJgNFaDWmD+O/6S4H83BkH46cQFOpLs
+ 2h7HYQBBLoME4Uwlg7qZqsS6Ji3BXVwUPGjKC2eWx0TK8zYj9Cm09xsGBgNRkW2KtAKa
+ Oe+A==
+X-Gm-Message-State: AJIora+ishVZb188pc8/lmutcjCDblPvdDVhIBuj2YVARYoNufeoUxyZ
+ WugGw2TjUFrXOayuIuKx+drB3lSVhknKqQ==
+X-Received: by 2002:a17:902:e5c9:b0:166:34ff:72a3 with SMTP id
+ u9-20020a170902e5c900b0016634ff72a3mr39381327plf.80.1655995457187; 
+ Thu, 23 Jun 2022 07:44:17 -0700 (PDT)
+Received: from ?IPV6:2602:ae:1543:f001:393f:6246:99c5:ff8a?
+ ([2602:ae:1543:f001:393f:6246:99c5:ff8a])
+ by smtp.gmail.com with ESMTPSA id
+ s13-20020a17090302cd00b0016a5f1722absm1289720plk.75.2022.06.23.07.44.16
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 23 Jun 2022 07:44:16 -0700 (PDT)
+Message-ID: <28c72d0c-05fe-a8f5-9a60-bdf3675a9d53@linaro.org>
+Date: Thu, 23 Jun 2022 07:44:14 -0700
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:91.0) Gecko/20100101
- Thunderbird/91.10.0
-Subject: Re: [PATCH 0/9] Add Qualcomm BMC machines
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.9.1
+Subject: Re: [PATCH v3 25/51] target/arm: Implement SME MOVA
 Content-Language: en-US
-To: Graeme Gregory <quic_ggregory@quicinc.com>,
- =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
-CC: Joel Stanley <joel@jms.id.au>, Peter Maydell <peter.maydell@linaro.org>,
- Titus Rwantare <titusr@google.com>, Andrew Jeffery <andrew@aj.id.au>,
- Maheswara Kurapati <quic_mkurapat@quicinc.com>, qemu-arm
- <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
-References: <20220622172830.101210-1-quic_jaehyoo@quicinc.com>
- <CACPK8Xcfyu0BxEhVZDQ=mfw0OcPgSm6nVSzpmT5nviq7X+rFTA@mail.gmail.com>
- <2780eff7-17de-0496-7a5b-f3ede706794a@kaod.org>
- <20220623102421.nj56xcmrpnoc5wbg@ggregory-linuxws>
-From: Jae Hyun Yoo <quic_jaehyoo@quicinc.com>
-In-Reply-To: <20220623102421.nj56xcmrpnoc5wbg@ggregory-linuxws>
-Content-Type: text/plain; charset="UTF-8"; format=flowed
-Content-Transfer-Encoding: 8bit
-X-Originating-IP: [10.80.80.8]
-X-ClientProxiedBy: nasanex01a.na.qualcomm.com (10.52.223.231) To
- nalasex01a.na.qualcomm.com (10.47.209.196)
-Received-SPF: pass client-ip=199.106.114.39;
- envelope-from=quic_jaehyoo@quicinc.com; helo=alexa-out-sd-02.qualcomm.com
-X-Spam_score_int: -43
-X-Spam_score: -4.4
-X-Spam_bar: ----
-X-Spam_report: (-4.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
+References: <20220620175235.60881-1-richard.henderson@linaro.org>
+ <20220620175235.60881-26-richard.henderson@linaro.org>
+ <CAFEAcA-_Cof12Oe=4HTJx_4Nmtfq1Oj7BRdFmzv989H13kUVTg@mail.gmail.com>
+From: Richard Henderson <richard.henderson@linaro.org>
+In-Reply-To: <CAFEAcA-_Cof12Oe=4HTJx_4Nmtfq1Oj7BRdFmzv989H13kUVTg@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1036;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x1036.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.001,
- RCVD_IN_DNSWL_MED=-2.3, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -121,78 +128,62 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: YcDVtsXAI5h9
+X-TUID: xbKj0LD/ASWj
 
-On 6/23/2022 3:24 AM, Graeme Gregory wrote:
-> On Thu, Jun 23, 2022 at 08:48:49AM +0200, Cédric Le Goater wrote:
->> On 6/23/22 07:25, Joel Stanley wrote:
->>> On Wed, 22 Jun 2022 at 17:29, Jae Hyun Yoo <quic_jaehyoo@quicinc.com> wrote:
->>>>
->>>> Hello,
->>>>
->>>> I'm sending a series to add Qualcomm BMC machines that are equipped with
->>>> Aspeed AST2600 SoC. Also, this series adds MAX31785 fan controller device
->>>> emulation. Please help to review.
->>>
->>> Thanks for the MAX31785 model, that's handy to have.
->>>
->>> I'm all for more emulation and testing using Qemu models, but I wonder
->>> if you need to add all three of your boards. They seem to be a
->>> progression (evb-proto -> dc-scm -> firework). Could you get away with
->>> just one or two of those?
+On 6/23/22 04:24, Peter Maydell wrote:
+> On Mon, 20 Jun 2022 at 19:20, Richard Henderson
+> <richard.henderson@linaro.org> wrote:
 >>
->> I am not sure the evb-proto-bmc is useful to upstream. The other two
->> are fine.
+>> We can reuse the SVE functions for implementing moves to/from
+>> horizontal tile slices, but we need new ones for moves to/from
+>> vertical tile slices.
 >>
->> Thanks,
+>> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+>> ---
+>>   target/arm/helper-sme.h    |  11 ++++
+>>   target/arm/helper-sve.h    |   2 +
+>>   target/arm/translate-a64.h |   9 +++
+>>   target/arm/translate.h     |   5 ++
+>>   target/arm/sme.decode      |  15 +++++
+>>   target/arm/sme_helper.c    | 110 ++++++++++++++++++++++++++++++++++++-
+>>   target/arm/sve_helper.c    |  12 ++++
+>>   target/arm/translate-a64.c |  19 +++++++
+>>   target/arm/translate-sme.c | 105 +++++++++++++++++++++++++++++++++++
+>>   9 files changed, 287 insertions(+), 1 deletion(-)
 >>
+>> diff --git a/target/arm/helper-sme.h b/target/arm/helper-sme.h
+>> index c4ee1f09e4..600346e08c 100644
+>> --- a/target/arm/helper-sme.h
+>> +++ b/target/arm/helper-sme.h
+>> @@ -21,3 +21,14 @@ DEF_HELPER_FLAGS_2(set_pstate_sm, TCG_CALL_NO_RWG, void, env, i32)
+>>   DEF_HELPER_FLAGS_2(set_pstate_za, TCG_CALL_NO_RWG, void, env, i32)
+>>
+>>   DEF_HELPER_FLAGS_3(sme_zero, TCG_CALL_NO_RWG, void, env, i32, i32)
+>> +
+>> +DEF_HELPER_FLAGS_4(sme_mova_avz_b, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
+>> +DEF_HELPER_FLAGS_4(sme_mova_zav_b, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
 > 
-> I am happy with dropping the evb-proto-bmc machine. We used that
-> internally before actual hardware was available.
+> What do the 'avz' and 'zav' stand for here? I thought that
+> 'zav' might mean "from the ZA storage to a Vector", but
+> then what is 'avz' ?
 
-Okay. I'll drop the evb-proto-bmc in v2.
+It was supposed to be z <- av and av <- z.
 
-Thanks,
-Jae
+I've used "z", "p", "w", "x" single letter argument indicators for sve.  I think "av" was 
+supposed to indicate "array vertical", but it's definitely non-obvious.  I'll fix this up 
+and add some commentary.
 
-> Graeme
-> 
->> C.
->>
->>
->>
->>>
->>>
->>>>
->>>> Thanks,
->>>>
->>>> Jae
->>>>
->>>> Graeme Gregory (2):
->>>>     hw/arm/aspeed: qcom-dc-scm-v1: add block backed FRU device
->>>>     hw/arm/aspeed: add Qualcomm Firework machine and FRU device
->>>>
->>>> Jae Hyun Yoo (3):
->>>>     hw/arm/aspeed: add support for the Qualcomm EVB proto board
->>>>     hw/arm/aspeed: add support for the Qualcomm DC-SCM v1 board
->>>>     hw/arm/aspeed: firework: add I2C MUXes for VR channels
->>>>
->>>> Maheswara Kurapati (4):
->>>>     hw/i2c: pmbus: Page #255 is valid page for read requests.
->>>>     hw/sensor: add Maxim MAX31785 device
->>>>     hw/arm/aspeed: firework: Add MAX31785 Fan controllers
->>>>     hw/arm/aspeed: firework: Add Thermal Diodes
->>>>
->>>>    hw/arm/Kconfig        |   1 +
->>>>    hw/arm/aspeed.c       | 158 +++++++++++-
->>>>    hw/i2c/pmbus_device.c |   1 -
->>>>    hw/sensor/Kconfig     |   4 +
->>>>    hw/sensor/max31785.c  | 580 ++++++++++++++++++++++++++++++++++++++++++
->>>>    hw/sensor/meson.build |   1 +
->>>>    6 files changed, 742 insertions(+), 3 deletions(-)
->>>>    create mode 100644 hw/sensor/max31785.c
->>>>
->>>> --
->>>> 2.25.1
->>>>
->>
+> This is too confusing -- I spent half an hour looking at it and
+> couldn't figure out if it was correct or not. I can see roughly
+> what it's supposed to be doing but I don't really want to try
+> to reverse engineer the details from the sequence of operations.
+
+Ok.
+
+> Perhaps (a) more commentary and (b) separating out the
+> horizontal and vertical cases would help ?
+
+Ok.
+
+
+r~

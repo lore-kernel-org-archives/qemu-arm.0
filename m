@@ -1,85 +1,85 @@
-Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp2899403lft;
-        Thu, 23 Jun 2022 05:11:51 -0700 (PDT)
-X-Google-Smtp-Source: AGRyM1v6iJ7vb2SsCTC4YPrrr2A2kmZN9FMdWVZzKC7qeDJ1S5JZ8bTiTFaC0rqdV4dqiHolXocV
-X-Received: by 2002:a17:907:3e92:b0:711:d26c:f91 with SMTP id hs18-20020a1709073e9200b00711d26c0f91mr7602808ejc.283.1655986311190;
-        Thu, 23 Jun 2022 05:11:51 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1655986311; cv=none;
+Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp2901969lft;
+        Thu, 23 Jun 2022 05:15:42 -0700 (PDT)
+X-Google-Smtp-Source: AGRyM1v8foIXCHfL+yIb43p6ApKLtWVUYO3uFcMUBec3E4VKNQlsJc2vNHpNlRIgypFwg5QBU3+c
+X-Received: by 2002:a17:90b:3b52:b0:1ec:db2a:b946 with SMTP id ot18-20020a17090b3b5200b001ecdb2ab946mr3739751pjb.229.1655986542717;
+        Thu, 23 Jun 2022 05:15:42 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1655986542; cv=none;
         d=google.com; s=arc-20160816;
-        b=BAHAHTr29XCfCgPdKQTjvU0XmlEIakEGdZtDDzZqRsHsfM+uoAbRi4PS66pQZGMq4X
-         A4WID0ljRR/6GN1KB62eBgxtGI2IfZilNJCuDWx2wqGlMtzb2IcmSRbebLluRbLNckjJ
-         MSgFdgD7//WYJY24z0cwoMKrcZVc0jgKuwfSZvagehsJr+zVp4XBL5aA3TIPNDmXPebj
-         37bnXujEiWCUlmzINxgwqyU6LBGFOsq7kLnWarTprmZ0tBrfNoUFCKLOOqdXTYrge+LA
-         qB3LCj5YlLF2BCgzVVuNvLTZfx3mE2Q82/TY3aiRFgmxHZvF8SqYNH6rQE/TU6DdJe+l
-         ofJw==
+        b=dpSmbvJw+AEc9+2pDbfPMG07pWxX5WpCfGk49dQ8f04DGf/KZQZyW5LhFXI/ekWu+J
+         4P0A+nMfobpNkzuwbasgSm8NF58Mz3brGftMG+tqkRjLJ9p6qa9sGQ7uRwKQY8Oa3lAq
+         QsGKf2EhRF/lD+g/fMO7DTQBTYDr37kSoQwTJOZHrmloIzO8HLp9pGoCJhncSZrYp/cw
+         HTQ3XtcrFU7CfmrrSx39uEWPWrlt3tZMfFXcFAdKEXEJLH+zfmZOc6z5TmYP4yjcGr6l
+         1VbjA4dAMLhfmRv7uj0pbvfv7tsJNRmqVZzV3ustFbyMVNAFoINRL0AJJfqHEwL15E0h
+         nc0A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=list-id:precedence:cc:to:subject:message-id:date:from:in-reply-to
          :references:mime-version:dkim-signature;
-        bh=S7K6L24c+Y1b2KwK/Q66A3sSE8CSQ8aoyDZ6Ql0AsV0=;
-        b=avfOiWy1qT8pNuzH7o7wTd49ueGmC3PXg5oujjLCx9L3EU9faB0c3X9uggw3B2gqFX
-         kP6pMLJQBJB2alw8ExLL/F6olz4oehKBoGjqBbGQOvOtaGzHCNOpnwM9B48OlmT+BuP6
-         8lpfG4z66JslrzB+DgUa3pHndXSi7lxfNRK6VENqEA7kQfYkXZbX1Dql3H0dX9bi4gZC
-         L46fjz3IuXtaw6vSM1rmInZ7K86oiibAnn8hZlj8RVk5EL3NDUvAuOyre6Jq2JoDgJyQ
-         TenC2qdkxIFc0nU6C1d30Ne5pKfPbYCqld1jaooV8hYB1VlQ6lNwvZhDqIcDAFAbpT21
-         s9Aw==
+        bh=F7bi0kL/rFqoaqds1vEBpPil9sgMeNQmgZzhUbZCVTs=;
+        b=UdqrTDJM/uueDPloaup/WzOf7jh4W2GpYS8RGsv72jKlFTM8ZQehtB3Vto96spFuUh
+         HB+Ffn504Msk9l3AFsz10/qxl/TpiUvWbWA6uu6ThV1lIpyJK63eOfUoAfRy+Fw/GGC6
+         TRWLVwK6qMa7Pg+dvVqgNd71LwfBOHJ8a9PtQodzXbFGhYVGDLzfYe+ROX0niiqxW3QS
+         BiTvlwI2bLwH3nUq5mb2EdEZQ6DcWuqHukywNZPmUMTiGzdcXXDx5MuQ7xhWqdP9Rn2y
+         sBUh6FFKE/rnwQwmxiaEb6MhRizNs0GkObBA6wX2X9Qd3od4tm2sadkoj5i0RpTU8b6e
+         xBXg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=sSpGHUTC;
+       dkim=pass header.i=@linaro.org header.s=google header.b=Q+HHtwCb;
        spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <kvm-owner@vger.kernel.org>
 Received: from out1.vger.email (out1.vger.email. [2620:137:e000::1:20])
-        by mx.google.com with ESMTP id he32-20020a1709073da000b006f3ac80590dsi17922907ejc.526.2022.06.23.05.11.50;
-        Thu, 23 Jun 2022 05:11:51 -0700 (PDT)
+        by mx.google.com with ESMTP id e18-20020a635012000000b004041c039263si26143964pgb.102.2022.06.23.05.15.42;
+        Thu, 23 Jun 2022 05:15:42 -0700 (PDT)
 Received-SPF: pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) client-ip=2620:137:e000::1:20;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=sSpGHUTC;
+       dkim=pass header.i=@linaro.org header.s=google header.b=Q+HHtwCb;
        spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S231396AbiFWMLu (ORCPT <rfc822;daniel.diaz@linaro.org>
-        + 3 others); Thu, 23 Jun 2022 08:11:50 -0400
-Received: from lindbergh.monkeyblade.net ([23.128.96.19]:59334 "EHLO
+        id S231559AbiFWMPm (ORCPT <rfc822;daniel.diaz@linaro.org>
+        + 3 others); Thu, 23 Jun 2022 08:15:42 -0400
+Received: from lindbergh.monkeyblade.net ([23.128.96.19]:33646 "EHLO
         lindbergh.monkeyblade.net" rhost-flags-OK-OK-OK-OK) by vger.kernel.org
-        with ESMTP id S229916AbiFWMLt (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Thu, 23 Jun 2022 08:11:49 -0400
-Received: from mail-yw1-x112a.google.com (mail-yw1-x112a.google.com [IPv6:2607:f8b0:4864:20::112a])
-        by lindbergh.monkeyblade.net (Postfix) with ESMTPS id 7488A4DF7E
-        for <kvm@vger.kernel.org>; Thu, 23 Jun 2022 05:11:48 -0700 (PDT)
-Received: by mail-yw1-x112a.google.com with SMTP id 00721157ae682-3178ea840easo153780177b3.13
-        for <kvm@vger.kernel.org>; Thu, 23 Jun 2022 05:11:48 -0700 (PDT)
+        with ESMTP id S229916AbiFWMPk (ORCPT <rfc822;kvm@vger.kernel.org>);
+        Thu, 23 Jun 2022 08:15:40 -0400
+Received: from mail-yw1-x112c.google.com (mail-yw1-x112c.google.com [IPv6:2607:f8b0:4864:20::112c])
+        by lindbergh.monkeyblade.net (Postfix) with ESMTPS id 7C96319F
+        for <kvm@vger.kernel.org>; Thu, 23 Jun 2022 05:15:39 -0700 (PDT)
+Received: by mail-yw1-x112c.google.com with SMTP id 00721157ae682-3177f4ce3e2so168347027b3.5
+        for <kvm@vger.kernel.org>; Thu, 23 Jun 2022 05:15:39 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
         h=mime-version:references:in-reply-to:from:date:message-id:subject:to
          :cc;
-        bh=S7K6L24c+Y1b2KwK/Q66A3sSE8CSQ8aoyDZ6Ql0AsV0=;
-        b=sSpGHUTCswvHhT4H1B5KfzqfwiD7oQxtmXZiGYZWoxAyeQ53n3xZie+Ig2mwn4fCKe
-         Xkk5l8mFLX0kRrjF8NztrOQAuU52WLUKrooX1ha86jVcPQT+lVHJJzr3EiJ+UF7TjqFM
-         nqdYctf2D2InwbxppBsCmKuKQpNw34cClqkrbhhan/C7GZWJQrWrENeasaFTmg0tWRFp
-         g/2Ucg8+GEoDhWWrC6Nrg6Fi/50TmkWKpcFMB9baLyloRj6wdJU9WXjRf1SB3ztDT0cg
-         FKJhzLt3sFIqvSV/cOBVRkiQZLYWTjptf9Q+C/PdBnkfcBF+uIqQeDB+soTPzUrdXTPY
-         stZA==
+        bh=F7bi0kL/rFqoaqds1vEBpPil9sgMeNQmgZzhUbZCVTs=;
+        b=Q+HHtwCb8GnSNrQGUec7nNeSX83ZY4mtoO2gA80VcnefwaqK+d4K4Kl5l/5sxX6A0K
+         +dDmkhkOgDoUbSGcrrtMmc9dF4p/rn7h6tx38fI3R5VDOnXMBX53CMgvZZ8I04jiiFmC
+         hC8sqYjPWZ4bct0DAxU5yTQX/N8Wj7jCQqKrI1LdiZlR35fkCmEosGn0hcgWvjLdfSfE
+         vWyJzODLKneRIk2JmOcrG5vmBt5dIG7OMK1WaVJHUPPphumQxRu3lG4kTgH3DDOANwnw
+         nx7J/MI0e4dtTMGnQFCLzf4hfGa5H80LU/lev6/9TM+x++71Rzz1tzVILro+5lmbFyA5
+         R3OA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=x-gm-message-state:mime-version:references:in-reply-to:from:date
          :message-id:subject:to:cc;
-        bh=S7K6L24c+Y1b2KwK/Q66A3sSE8CSQ8aoyDZ6Ql0AsV0=;
-        b=dYTjM4RTA9O9nZBEmQzwuo6cvq1CB3MSqQ/H/WxuKCLFP1dYyUbB3Khn+/rdygWH9o
-         uwOO60rNxyItCVP+L/0d2L7u7duEbbKA4Or1gjZfgt5DcItktcrcxmp47cy1rwCmUou5
-         h6Db768Nf67Nkbs1MOcBMP3aCXk+YSi1Oibuku2Eq8krxna851Ehdf/ABycdqnEk7+2U
-         8zZ3N8UpyTxBRRe21LAo8RRRb1V9Jt14b9m4YAlrvxB0RkPSJx2Lb4dh9oubehqtuOsb
-         SlYewTABsaLmEScpROARnA9iLquBkd8MU08dswQczCzhd6rKZ0Bn7yTbMS9n5YHDXicB
-         trUA==
-X-Gm-Message-State: AJIora/nGFIo6oW17ldG7q6nybK8ZnwFKw+HwQA7L3MYdXT4EaDB066C
-        dSqX0qBrsD+/5T5BgIIQwHjt5QnRu+1A/7aaOw4Dsw==
+        bh=F7bi0kL/rFqoaqds1vEBpPil9sgMeNQmgZzhUbZCVTs=;
+        b=35osCai/2KGvtZ7QfKVusK7b9OqhS7BQs4SnLNGhtrqrtWjBWzoXR3kgq066/vAfa2
+         rb6trjw0nGnIMYVQt+J90hNDtFxH3ZuqMvZPBILLM4nPEm6APHK03/z3eBEX3Ckx4xYZ
+         MACBaFEBOhhIZXndGBs6xCUpu8fKGLK6y3PHqjIClcTbJRXRJLMtRdpQT0a16Q5AI0oy
+         no/kD7GgXxut/y1v9Z2y2Ph6wb9RwaIAs1j+JkmAl+h3hSwdcswrq/2InI6XWKPwEvyf
+         qCaAr4BLPuBdz1NfBGLpAyZd5J0IUibLk5LInsSwvxLqw/ByIDE2ijTieHoWB7jBpA+O
+         AqfA==
+X-Gm-Message-State: AJIora86Asld0DchtNsmAoGMsk83Xa92yPOm6/dk4cVT5T01FhOf06+1
+        MOfZT++RZA3nrveR5Gd0VAOYM9qPgT5P+ATH67wW6Q==
 X-Received: by 2002:a81:8486:0:b0:317:a4af:4e0a with SMTP id
- u128-20020a818486000000b00317a4af4e0amr10199573ywf.455.1655986307630; Thu, 23
- Jun 2022 05:11:47 -0700 (PDT)
+ u128-20020a818486000000b00317a4af4e0amr10217824ywf.455.1655986538673; Thu, 23
+ Jun 2022 05:15:38 -0700 (PDT)
 MIME-Version: 1.0
-References: <20220623102617.2164175-1-pdel@fb.com> <20220623102617.2164175-3-pdel@fb.com>
-In-Reply-To: <20220623102617.2164175-3-pdel@fb.com>
+References: <20220623102617.2164175-1-pdel@fb.com> <20220623102617.2164175-5-pdel@fb.com>
+In-Reply-To: <20220623102617.2164175-5-pdel@fb.com>
 From:   Peter Maydell <peter.maydell@linaro.org>
-Date:   Thu, 23 Jun 2022 13:11:36 +0100
-Message-ID: <CAFEAcA9k_gW7GDDDiLf7gp-wX=_OCKzKeMHe5Rr5ZZe167kaYA@mail.gmail.com>
-Subject: Re: [PATCH 02/14] sysbus: Remove sysbus_address_space
+Date:   Thu, 23 Jun 2022 13:15:27 +0100
+Message-ID: <CAFEAcA9zmmaUth+9k82+ZrhAMOmsmttq2HOKs+DVNx0L1dx6=w@mail.gmail.com>
+Subject: Re: [PATCH 04/14] sysbus: Add sysbus_mmio_map_in
 To:     Peter Delevoryas <pdel@fb.com>
 Cc:     clg@kaod.org, andrew@aj.id.au, joel@jms.id.au, pbonzini@redhat.com,
         berrange@redhat.com, eduardo@habkost.net,
@@ -96,28 +96,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.6 (2021-04-09) on
 Precedence: bulk
 List-ID: <kvm.vger.kernel.org>
 X-Mailing-List: kvm@vger.kernel.org
-X-TUID: psdh8GLcLtld
+X-TUID: kcAR1PxGn0n4
 
 On Thu, 23 Jun 2022 at 11:56, Peter Delevoryas <pdel@fb.com> wrote:
 >
-> sysbus_address_space returns the address space associated with a
-> SysBusDevice.
+> Signed-off-by: Peter Delevoryas <pdel@fb.com>
+> ---
+>  hw/core/sysbus.c    | 6 ++++++
+>  include/hw/sysbus.h | 2 ++
+>  2 files changed, 8 insertions(+)
 >
-> That address space is always the global singleton "system_memory", which
-> is retrieved through get_system_memory().
+> diff --git a/hw/core/sysbus.c b/hw/core/sysbus.c
+> index cb4d6bae9d..7b63ec3fed 100644
+> --- a/hw/core/sysbus.c
+> +++ b/hw/core/sysbus.c
+> @@ -160,6 +160,12 @@ void sysbus_mmio_map(SysBusDevice *dev, int n, hwaddr addr)
+>      sysbus_mmio_map_common(dev, n, addr, false, 0, get_system_memory());
+>  }
 >
-> This abstraction isn't very useful. Users of the sysbus API (machine
-> authors) should know that sysbus_mmio_map et al. are mapping devices
-> into the global singleton memory region, not into a specific container
-> or some memory region specific to the device's parent bus.
->
-> Lastly, only a few uses of this function exist. They can all be
-> refactored to just use get_system_memory() directly.
+> +void sysbus_mmio_map_in(SysBusDevice *dev, int n, hwaddr addr,
+> +                        MemoryRegion *system_memory)
+> +{
+> +    sysbus_mmio_map_common(dev, n, addr, false, 0, system_memory);
+> +}
+> +
+>  void sysbus_mmio_map_overlap(SysBusDevice *dev, int n, hwaddr addr,
+>                               int priority)
+>  {
+> diff --git a/include/hw/sysbus.h b/include/hw/sysbus.h
+> index a7c23d5fb1..f4578029e4 100644
+> --- a/include/hw/sysbus.h
+> +++ b/include/hw/sysbus.h
+> @@ -80,6 +80,8 @@ void sysbus_connect_irq(SysBusDevice *dev, int n, qemu_irq irq);
+>  bool sysbus_is_irq_connected(SysBusDevice *dev, int n);
+>  qemu_irq sysbus_get_connected_irq(SysBusDevice *dev, int n);
+>  void sysbus_mmio_map(SysBusDevice *dev, int n, hwaddr addr);
+> +void sysbus_mmio_map_in(SysBusDevice *dev, int n, hwaddr addr,
+> +                        MemoryRegion *system_memory);
+>  void sysbus_mmio_map_overlap(SysBusDevice *dev, int n, hwaddr addr,
+>                               int priority);
 
-Yeah, we definitely don't need two functions doing the same
-thing here.
+What's this going to be used for?
 
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+The current standard way to map a sysbus MMIO region into something
+other than the global system memory region is to do:
+   memory_region_add_subregion(&container, addr,
+                               sysbus_mmio_get_region(sbd, 0));
+
+I'd rather not have two ways to do the same thing; we have
+far too many of those already.
 
 thanks
 -- PMM

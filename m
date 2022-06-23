@@ -1,106 +1,534 @@
-Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp3050051lft;
-        Thu, 23 Jun 2022 08:29:53 -0700 (PDT)
-X-Google-Smtp-Source: AGRyM1svjvu2X7ysYjhgZSfkLoAy2LxlfBFfj5uxiSvpsa+zgD4oPm6BYp/5IQF5iaXiOSixzzMp
-X-Received: by 2002:a05:6830:1e91:b0:60c:29fa:9fa0 with SMTP id n17-20020a0568301e9100b0060c29fa9fa0mr4094013otr.23.1655998193419;
-        Thu, 23 Jun 2022 08:29:53 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1655998193; cv=none;
+Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp3103390lft;
+        Thu, 23 Jun 2022 09:41:20 -0700 (PDT)
+X-Google-Smtp-Source: AGRyM1tQA20JTdLGnIW1x+nxA3HlqRWyPo6Wop8qn34XlOYb0SPTCswQbwU1+pujJQn3YTF5oi9H
+X-Received: by 2002:a17:906:38ce:b0:715:8483:e02e with SMTP id r14-20020a17090638ce00b007158483e02emr8721019ejd.442.1656002479948;
+        Thu, 23 Jun 2022 09:41:19 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1656002479; cv=none;
         d=google.com; s=arc-20160816;
-        b=m690t83Mt4syBetpEMPZKUvspA8T1q4yE90rGj3ErtrNwhtPLqXuNQCmOa3xzXCE9g
-         FfwX3CnCuoLd1qnF2IybeQkEoRojWx6fI1kuztN96Srm1BxbS2QFDlPQ0LSLrl9GGexD
-         V09C63GlDKPpPSnuZqdsrZLtNqyoZQnsI1QaZtAfh/u/+dQN1n/Is5utP8txpYr1qxyz
-         zf7fXKrTERRKYOJjt6CvnSpzMAVrlz6BtTvXPZgOKvl6zAr3rpfdRZ2S9SZxlZ2fidxR
-         1c3VsXSRInAZS3VTOeVhvLnw6a6ZZxlutvy88kZKwQq/xUMIzeL8YztEJuWrYGolPuVM
-         gH4Q==
+        b=KUqOsai/L5+W4qnN8xlTBFHZXpDwcitYF3bbOP1gju+PqpNOw21mlOwGVCOJiX+nUH
+         mRhBRh6VGsjbM+ANqDvlAjVXBHloXlk4yWwIQJnRoA25pPElJ5ECxHZAoZw+dVud4Fjm
+         ULJ/cLSQgs3zShSl1TS5lH+8Hsoqq/UsyyjQBcJXUfdzEhFKcmrBhC301i81n4QW5Ocb
+         +DPJM0oFaXd6WJkcFR306JqOHuG9J1Vie57IHOzSl7zg7Ggg752ceU9WDvK2HBDoGjcr
+         3o2CQKEm1b4sxf1RTaagBT4+mHFloVytN8iarv2XBe4dS2fpgWdDkBaAFtfs3cjpRxVl
+         fapQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:user-agent:references:in-reply-to:subject:cc:to:from
-         :message-id:date:dkim-signature;
-        bh=jeNxQrHuvv5nG2DBBciS5J0bpsR9EtnAjio2bDb3SOg=;
-        b=STalPYI9uo9hlfWwm7LqK/iMknspVrCYsgeDsZ2XVLF12IuAE9vU5/We1jPYQRXy54
-         4x/YoeFYYJE9RNrU2mBUkvV6KLD795iBoZWUIli8XzzHozdC6FUlf+leJ++Oh31OJtVD
-         29HxID0m9YutoGnKSc/DZWSpdwCnTGPDEGXm6+DX5ygMqr55p1B5fzvveV+mt34MF583
-         +q/IuEQ2qzM9BE7iLGekZ0y8oNgCFjZRd9UmctyG+KLAViGz2vT10FQqA0Cv4y2BwCe0
-         iLY7SU2vAY4eTfAictyxHXwlGHRSsUzsC9UnxpJTctRYlpW+z53ss1sdV4l3rV9uUFrB
-         eA2Q==
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:dkim-signature;
+        bh=iPiF3/pif9vyGRcIjCuaqS1mkM6paHqhq37uvtLec4M=;
+        b=lG6mbDrfH50IJKRnW7yDOidfHCfktOEEZwtd4Rz1Qf26fSU+97wsrexJJhY4jDHdKb
+         ap9CM+dh26WvDnG/EFvM4ascDwuvC0MQ05QMZbvqWGDcSXYfeJcCr2ThSw2dd4jCv6/2
+         wyTiTmZM7uV4uv1y4n7nlwU5kNeX+HXYh7jihswTUtCsDnwUlF1yyA2DsOQL2hgys3uR
+         MhJxT75USNcGXemBrCegK/+0HR7GM1EwNRhTQF6gv9CEsElm9+MwaEhua5fUdW2mSopy
+         zyZU/vCIopIFZOwKg1l3m1lA9WJi4KUXpPln5Hq5Zom12gZ6sai1MmhQun9L7IGWfbli
+         2QtQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=HmTYcxR4;
-       spf=pass (google.com: domain of maz@kernel.org designates 2604:1380:4641:c500::1 as permitted sender) smtp.mailfrom=maz@kernel.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=kernel.org
-Return-Path: <maz@kernel.org>
-Received: from dfw.source.kernel.org (dfw.source.kernel.org. [2604:1380:4641:c500::1])
-        by mx.google.com with ESMTPS id u4-20020a056871008400b000f333413e16si20753275oaa.95.2022.06.23.08.29.53
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=L5SHuOap;
+       spf=pass (google.com: domain of thuth@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <thuth@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
+        by mx.google.com with ESMTPS id e8-20020a056402104800b00435baefe88fsi51031edu.247.2022.06.23.09.41.19
+        for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 23 Jun 2022 08:29:53 -0700 (PDT)
-Received-SPF: pass (google.com: domain of maz@kernel.org designates 2604:1380:4641:c500::1 as permitted sender) client-ip=2604:1380:4641:c500::1;
+        Thu, 23 Jun 2022 09:41:19 -0700 (PDT)
+Received-SPF: pass (google.com: domain of thuth@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=HmTYcxR4;
-       spf=pass (google.com: domain of maz@kernel.org designates 2604:1380:4641:c500::1 as permitted sender) smtp.mailfrom=maz@kernel.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=kernel.org
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=L5SHuOap;
+       spf=pass (google.com: domain of thuth@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1656002478;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:
+	 content-transfer-encoding:content-transfer-encoding;
+	bh=iPiF3/pif9vyGRcIjCuaqS1mkM6paHqhq37uvtLec4M=;
+	b=L5SHuOapziqrBiNoh4yJViGzxXl73rWYWizoxMlCEzwAjrt9ad4GpDQYYSiUl5i8CnbM2J
+	7W7Ut99YaJs1N3M58MSwpxjEvKzq6K1L1fghSJqH7q7F/5nu4JLCQuUFI7abJOqGtk2Uef
+	c+Sr4/y0syi4jjSFF/ZiawJmtswbcB4=
+Received: from mimecast-mx02.redhat.com (mx3-rdu2.redhat.com
+ [66.187.233.73]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-298-7fbfV7P8MkumNGDZ0NqeUA-1; Thu, 23 Jun 2022 12:41:05 -0400
+X-MC-Unique: 7fbfV7P8MkumNGDZ0NqeUA-1
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.rdu2.redhat.com [10.11.54.8])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 0D35061E9C;
-	Thu, 23 Jun 2022 15:29:53 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 32FBEC3411B;
-	Thu, 23 Jun 2022 15:29:52 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1655998192;
-	bh=O7WTifpsrtBQq45YXaNj0JJqNxLKakI2gs+lW+dYxlM=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
-	b=HmTYcxR4gVhBw+AQB8Jh57nNzqrfQlNamC/24iA0/eiL2yFmGnS+SoMDW5n9XaOZy
-	 +C4jAbrqkQo4zInzHLVxTXQU+La9UwlGMpq3AFxbAk91RcbkXM3a7vKa4YyGrkzbXw
-	 px7+NcOsmUyeA1nhf08I7muAYhAaHiDTgHkf7JK0htnQWhuUfid3LZRCfofklP8Hw7
-	 z061hsva6LaoZ039MxSY7rLEwANbLJBftMXTDi1E548uiOgR+oIfO6FSXowj7xbXOs
-	 PAydxa0SqkflWhxpRmhEA1OPctVgapxqlnxbP5Xhim370pgFUI8HYJK5zmFCMUPikG
-	 WKQbEWY87MGDg==
-Received: from sofa.misterjones.org ([185.219.108.64] helo=why.misterjones.org)
-	by disco-boy.misterjones.org with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.95)
-	(envelope-from <maz@kernel.org>)
-	id 1o4OmD-002c2h-JX;
-	Thu, 23 Jun 2022 16:29:49 +0100
-Date: Thu, 23 Jun 2022 16:29:49 +0100
-Message-ID: <87k0972yaa.wl-maz@kernel.org>
-From: Marc Zyngier <maz@kernel.org>
-To: Andrew Jones <drjones@redhat.com>
-Cc: kvm@vger.kernel.org,
-	kvmarm@lists.cs.columbia.edu,
-	qemu-devel@nongnu.org,
-	qemu-arm@nongnu.org,
-	pbonzini@redhat.com,
-	thuth@redhat.com,
-	alexandru.elisei@arm.com,
-	alex.bennee@linaro.org,
-	andre.przywara@arm.com,
-	nikos.nikoleris@arm.com,
-	ricarkol@google.com,
-	seanjc@google.com,
-	peter.maydell@linaro.org
-Subject: Re: [PATCH kvm-unit-tests] MAINTAINERS: Change drew's email address
-In-Reply-To: <20220623131017.670589-1-drjones@redhat.com>
-References: <20220623131017.670589-1-drjones@redhat.com>
-User-Agent: Wanderlust/2.15.9 (Almost Unreal) SEMI-EPG/1.14.7 (Harue)
- FLIM-LB/1.14.9 (=?UTF-8?B?R29qxY0=?=) APEL-LB/10.8 EasyPG/1.0.0 Emacs/27.1
- (x86_64-pc-linux-gnu) MULE/6.0 (HANACHIRUSATO)
-MIME-Version: 1.0 (generated by SEMI-EPG 1.14.7 - "Harue")
-Content-Type: text/plain; charset=US-ASCII
-X-SA-Exim-Connect-IP: 185.219.108.64
-X-SA-Exim-Rcpt-To: drjones@redhat.com, kvm@vger.kernel.org, kvmarm@lists.cs.columbia.edu, qemu-devel@nongnu.org, qemu-arm@nongnu.org, pbonzini@redhat.com, thuth@redhat.com, alexandru.elisei@arm.com, alex.bennee@linaro.org, andre.przywara@arm.com, nikos.nikoleris@arm.com, ricarkol@google.com, seanjc@google.com, peter.maydell@linaro.org
-X-SA-Exim-Mail-From: maz@kernel.org
-X-SA-Exim-Scanned: No (on disco-boy.misterjones.org); SAEximRunCond expanded to false
-X-TUID: 4bge6nTE6khH
+	by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 3E4DB3815D35;
+	Thu, 23 Jun 2022 16:40:55 +0000 (UTC)
+Received: from thuth.com (unknown [10.39.192.53])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 49F0FC15D40;
+	Thu, 23 Jun 2022 16:40:53 +0000 (UTC)
+From: Thomas Huth <thuth@redhat.com>
+To: qemu-devel@nongnu.org,
+	Richard Henderson <richard.henderson@linaro.org>
+Cc: qemu-arm@nongnu.org,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	Aurelien Jarno <aurelien@aurel32.net>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+Subject: [RFC PATCH] include/qemu/host-utils: Remove the *_overflow wrappers
+Date: Thu, 23 Jun 2022 18:40:51 +0200
+Message-Id: <20220623164051.506316-1-thuth@redhat.com>
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+X-Scanned-By: MIMEDefang 2.85 on 10.11.54.8
+X-TUID: 75nfzrOcnjXs
 
-On Thu, 23 Jun 2022 14:10:17 +0100,
-Andrew Jones <drjones@redhat.com> wrote:
-> 
-> As a side effect of leaving Red Hat I won't be able to use my Red Hat
-> email address anymore. I'm also changing the name of my gitlab group.
-> 
-> Signed-off-by: Andrew Jones <andrew.jones@linux.dev>
-> Signed-off-by: Andrew Jones <drjones@redhat.com>
+According to commit cec07c0b612975 these wrappers were required
+for GCC < 5.0 and Clang < 3.8. We don't support such old compilers
+at all anymore, so we can remove the wrappers now.
 
-Acked-by: Marc Zyngier <maz@kernel.org>
+Signed-off-by: Thomas Huth <thuth@redhat.com>
+---
+ Not sure whether it's nicer to remove these to get rid of some lines
+ of code, or whether it's nicer to keep them for the more explicit names...
 
-	M.
+ include/qemu/host-utils.h    | 235 +----------------------------------
+ accel/tcg/tcg-runtime-gvec.c |  16 +--
+ fpu/softfloat.c              |  10 +-
+ libdecnumber/decNumber.c     |   4 +-
+ target/arm/mve_helper.c      |  18 +--
+ 5 files changed, 29 insertions(+), 254 deletions(-)
 
+diff --git a/include/qemu/host-utils.h b/include/qemu/host-utils.h
+index bc743f5e32..6224815629 100644
+--- a/include/qemu/host-utils.h
++++ b/include/qemu/host-utils.h
+@@ -366,231 +366,6 @@ static inline uint64_t uabs64(int64_t v)
+     return v < 0 ? -v : v;
+ }
+ 
+-/**
+- * sadd32_overflow - addition with overflow indication
+- * @x, @y: addends
+- * @ret: Output for sum
+- *
+- * Computes *@ret = @x + @y, and returns true if and only if that
+- * value has been truncated.
+- */
+-static inline bool sadd32_overflow(int32_t x, int32_t y, int32_t *ret)
+-{
+-#if __has_builtin(__builtin_add_overflow) || __GNUC__ >= 5
+-    return __builtin_add_overflow(x, y, ret);
+-#else
+-    *ret = x + y;
+-    return ((*ret ^ x) & ~(x ^ y)) < 0;
+-#endif
+-}
+-
+-/**
+- * sadd64_overflow - addition with overflow indication
+- * @x, @y: addends
+- * @ret: Output for sum
+- *
+- * Computes *@ret = @x + @y, and returns true if and only if that
+- * value has been truncated.
+- */
+-static inline bool sadd64_overflow(int64_t x, int64_t y, int64_t *ret)
+-{
+-#if __has_builtin(__builtin_add_overflow) || __GNUC__ >= 5
+-    return __builtin_add_overflow(x, y, ret);
+-#else
+-    *ret = x + y;
+-    return ((*ret ^ x) & ~(x ^ y)) < 0;
+-#endif
+-}
+-
+-/**
+- * uadd32_overflow - addition with overflow indication
+- * @x, @y: addends
+- * @ret: Output for sum
+- *
+- * Computes *@ret = @x + @y, and returns true if and only if that
+- * value has been truncated.
+- */
+-static inline bool uadd32_overflow(uint32_t x, uint32_t y, uint32_t *ret)
+-{
+-#if __has_builtin(__builtin_add_overflow) || __GNUC__ >= 5
+-    return __builtin_add_overflow(x, y, ret);
+-#else
+-    *ret = x + y;
+-    return *ret < x;
+-#endif
+-}
+-
+-/**
+- * uadd64_overflow - addition with overflow indication
+- * @x, @y: addends
+- * @ret: Output for sum
+- *
+- * Computes *@ret = @x + @y, and returns true if and only if that
+- * value has been truncated.
+- */
+-static inline bool uadd64_overflow(uint64_t x, uint64_t y, uint64_t *ret)
+-{
+-#if __has_builtin(__builtin_add_overflow) || __GNUC__ >= 5
+-    return __builtin_add_overflow(x, y, ret);
+-#else
+-    *ret = x + y;
+-    return *ret < x;
+-#endif
+-}
+-
+-/**
+- * ssub32_overflow - subtraction with overflow indication
+- * @x: Minuend
+- * @y: Subtrahend
+- * @ret: Output for difference
+- *
+- * Computes *@ret = @x - @y, and returns true if and only if that
+- * value has been truncated.
+- */
+-static inline bool ssub32_overflow(int32_t x, int32_t y, int32_t *ret)
+-{
+-#if __has_builtin(__builtin_sub_overflow) || __GNUC__ >= 5
+-    return __builtin_sub_overflow(x, y, ret);
+-#else
+-    *ret = x - y;
+-    return ((*ret ^ x) & (x ^ y)) < 0;
+-#endif
+-}
+-
+-/**
+- * ssub64_overflow - subtraction with overflow indication
+- * @x: Minuend
+- * @y: Subtrahend
+- * @ret: Output for sum
+- *
+- * Computes *@ret = @x - @y, and returns true if and only if that
+- * value has been truncated.
+- */
+-static inline bool ssub64_overflow(int64_t x, int64_t y, int64_t *ret)
+-{
+-#if __has_builtin(__builtin_sub_overflow) || __GNUC__ >= 5
+-    return __builtin_sub_overflow(x, y, ret);
+-#else
+-    *ret = x - y;
+-    return ((*ret ^ x) & (x ^ y)) < 0;
+-#endif
+-}
+-
+-/**
+- * usub32_overflow - subtraction with overflow indication
+- * @x: Minuend
+- * @y: Subtrahend
+- * @ret: Output for sum
+- *
+- * Computes *@ret = @x - @y, and returns true if and only if that
+- * value has been truncated.
+- */
+-static inline bool usub32_overflow(uint32_t x, uint32_t y, uint32_t *ret)
+-{
+-#if __has_builtin(__builtin_sub_overflow) || __GNUC__ >= 5
+-    return __builtin_sub_overflow(x, y, ret);
+-#else
+-    *ret = x - y;
+-    return x < y;
+-#endif
+-}
+-
+-/**
+- * usub64_overflow - subtraction with overflow indication
+- * @x: Minuend
+- * @y: Subtrahend
+- * @ret: Output for sum
+- *
+- * Computes *@ret = @x - @y, and returns true if and only if that
+- * value has been truncated.
+- */
+-static inline bool usub64_overflow(uint64_t x, uint64_t y, uint64_t *ret)
+-{
+-#if __has_builtin(__builtin_sub_overflow) || __GNUC__ >= 5
+-    return __builtin_sub_overflow(x, y, ret);
+-#else
+-    *ret = x - y;
+-    return x < y;
+-#endif
+-}
+-
+-/**
+- * smul32_overflow - multiplication with overflow indication
+- * @x, @y: Input multipliers
+- * @ret: Output for product
+- *
+- * Computes *@ret = @x * @y, and returns true if and only if that
+- * value has been truncated.
+- */
+-static inline bool smul32_overflow(int32_t x, int32_t y, int32_t *ret)
+-{
+-#if __has_builtin(__builtin_mul_overflow) || __GNUC__ >= 5
+-    return __builtin_mul_overflow(x, y, ret);
+-#else
+-    int64_t z = (int64_t)x * y;
+-    *ret = z;
+-    return *ret != z;
+-#endif
+-}
+-
+-/**
+- * smul64_overflow - multiplication with overflow indication
+- * @x, @y: Input multipliers
+- * @ret: Output for product
+- *
+- * Computes *@ret = @x * @y, and returns true if and only if that
+- * value has been truncated.
+- */
+-static inline bool smul64_overflow(int64_t x, int64_t y, int64_t *ret)
+-{
+-#if __has_builtin(__builtin_mul_overflow) || __GNUC__ >= 5
+-    return __builtin_mul_overflow(x, y, ret);
+-#else
+-    uint64_t hi, lo;
+-    muls64(&lo, &hi, x, y);
+-    *ret = lo;
+-    return hi != ((int64_t)lo >> 63);
+-#endif
+-}
+-
+-/**
+- * umul32_overflow - multiplication with overflow indication
+- * @x, @y: Input multipliers
+- * @ret: Output for product
+- *
+- * Computes *@ret = @x * @y, and returns true if and only if that
+- * value has been truncated.
+- */
+-static inline bool umul32_overflow(uint32_t x, uint32_t y, uint32_t *ret)
+-{
+-#if __has_builtin(__builtin_mul_overflow) || __GNUC__ >= 5
+-    return __builtin_mul_overflow(x, y, ret);
+-#else
+-    uint64_t z = (uint64_t)x * y;
+-    *ret = z;
+-    return z > UINT32_MAX;
+-#endif
+-}
+-
+-/**
+- * umul64_overflow - multiplication with overflow indication
+- * @x, @y: Input multipliers
+- * @ret: Output for product
+- *
+- * Computes *@ret = @x * @y, and returns true if and only if that
+- * value has been truncated.
+- */
+-static inline bool umul64_overflow(uint64_t x, uint64_t y, uint64_t *ret)
+-{
+-#if __has_builtin(__builtin_mul_overflow) || __GNUC__ >= 5
+-    return __builtin_mul_overflow(x, y, ret);
+-#else
+-    uint64_t hi;
+-    mulu64(ret, &hi, x, y);
+-    return hi != 0;
+-#endif
+-}
+-
+ /*
+  * Unsigned 128x64 multiplication.
+  * Returns true if the result got truncated to 128 bits.
+@@ -623,7 +398,7 @@ static inline bool mulu128(uint64_t *plow, uint64_t *phigh, uint64_t factor)
+     mulu64(plow, &ahi, dlo, factor);
+     mulu64(&blo, &bhi, dhi, factor);
+ 
+-    return uadd64_overflow(ahi, blo, phigh) || bhi != 0;
++    return __builtin_add_overflow(ahi, blo, phigh) || bhi != 0;
+ #endif
+ }
+ 
+@@ -645,8 +420,8 @@ static inline uint64_t uadd64_carry(uint64_t x, uint64_t y, bool *pcarry)
+ #else
+     bool c = *pcarry;
+     /* This is clang's internal expansion of __builtin_addc. */
+-    c = uadd64_overflow(x, c, &x);
+-    c |= uadd64_overflow(x, y, &x);
++    c = __builtin_add_overflow(x, c, &x);
++    c |= __builtin_add_overflow(x, y, &x);
+     *pcarry = c;
+     return x;
+ #endif
+@@ -669,8 +444,8 @@ static inline uint64_t usub64_borrow(uint64_t x, uint64_t y, bool *pborrow)
+     return x;
+ #else
+     bool b = *pborrow;
+-    b = usub64_overflow(x, b, &x);
+-    b |= usub64_overflow(x, y, &x);
++    b = __builtin_sub_overflow(x, b, &x);
++    b |= __builtin_sub_overflow(x, y, &x);
+     *pborrow = b;
+     return x;
+ #endif
+diff --git a/accel/tcg/tcg-runtime-gvec.c b/accel/tcg/tcg-runtime-gvec.c
+index ac7d28c251..dd4ace857c 100644
+--- a/accel/tcg/tcg-runtime-gvec.c
++++ b/accel/tcg/tcg-runtime-gvec.c
+@@ -1074,7 +1074,7 @@ void HELPER(gvec_ssadd32)(void *d, void *a, void *b, uint32_t desc)
+         int32_t ai = *(int32_t *)(a + i);
+         int32_t bi = *(int32_t *)(b + i);
+         int32_t di;
+-        if (sadd32_overflow(ai, bi, &di)) {
++        if (__builtin_add_overflow(ai, bi, &di)) {
+             di = (di < 0 ? INT32_MAX : INT32_MIN);
+         }
+         *(int32_t *)(d + i) = di;
+@@ -1091,7 +1091,7 @@ void HELPER(gvec_ssadd64)(void *d, void *a, void *b, uint32_t desc)
+         int64_t ai = *(int64_t *)(a + i);
+         int64_t bi = *(int64_t *)(b + i);
+         int64_t di;
+-        if (sadd64_overflow(ai, bi, &di)) {
++        if (__builtin_add_overflow(ai, bi, &di)) {
+             di = (di < 0 ? INT64_MAX : INT64_MIN);
+         }
+         *(int64_t *)(d + i) = di;
+@@ -1142,7 +1142,7 @@ void HELPER(gvec_sssub32)(void *d, void *a, void *b, uint32_t desc)
+         int32_t ai = *(int32_t *)(a + i);
+         int32_t bi = *(int32_t *)(b + i);
+         int32_t di;
+-        if (ssub32_overflow(ai, bi, &di)) {
++        if (__builtin_sub_overflow(ai, bi, &di)) {
+             di = (di < 0 ? INT32_MAX : INT32_MIN);
+         }
+         *(int32_t *)(d + i) = di;
+@@ -1159,7 +1159,7 @@ void HELPER(gvec_sssub64)(void *d, void *a, void *b, uint32_t desc)
+         int64_t ai = *(int64_t *)(a + i);
+         int64_t bi = *(int64_t *)(b + i);
+         int64_t di;
+-        if (ssub64_overflow(ai, bi, &di)) {
++        if (__builtin_sub_overflow(ai, bi, &di)) {
+             di = (di < 0 ? INT64_MAX : INT64_MIN);
+         }
+         *(int64_t *)(d + i) = di;
+@@ -1206,7 +1206,7 @@ void HELPER(gvec_usadd32)(void *d, void *a, void *b, uint32_t desc)
+         uint32_t ai = *(uint32_t *)(a + i);
+         uint32_t bi = *(uint32_t *)(b + i);
+         uint32_t di;
+-        if (uadd32_overflow(ai, bi, &di)) {
++        if (__builtin_add_overflow(ai, bi, &di)) {
+             di = UINT32_MAX;
+         }
+         *(uint32_t *)(d + i) = di;
+@@ -1223,7 +1223,7 @@ void HELPER(gvec_usadd64)(void *d, void *a, void *b, uint32_t desc)
+         uint64_t ai = *(uint64_t *)(a + i);
+         uint64_t bi = *(uint64_t *)(b + i);
+         uint64_t di;
+-        if (uadd64_overflow(ai, bi, &di)) {
++        if (__builtin_add_overflow(ai, bi, &di)) {
+             di = UINT64_MAX;
+         }
+         *(uint64_t *)(d + i) = di;
+@@ -1270,7 +1270,7 @@ void HELPER(gvec_ussub32)(void *d, void *a, void *b, uint32_t desc)
+         uint32_t ai = *(uint32_t *)(a + i);
+         uint32_t bi = *(uint32_t *)(b + i);
+         uint32_t di;
+-        if (usub32_overflow(ai, bi, &di)) {
++        if (__builtin_sub_overflow(ai, bi, &di)) {
+             di = 0;
+         }
+         *(uint32_t *)(d + i) = di;
+@@ -1287,7 +1287,7 @@ void HELPER(gvec_ussub64)(void *d, void *a, void *b, uint32_t desc)
+         uint64_t ai = *(uint64_t *)(a + i);
+         uint64_t bi = *(uint64_t *)(b + i);
+         uint64_t di;
+-        if (usub64_overflow(ai, bi, &di)) {
++        if (__builtin_sub_overflow(ai, bi, &di)) {
+             di = 0;
+         }
+         *(uint64_t *)(d + i) = di;
+diff --git a/fpu/softfloat.c b/fpu/softfloat.c
+index 4a871ef2a1..f9c59b0398 100644
+--- a/fpu/softfloat.c
++++ b/fpu/softfloat.c
+@@ -909,7 +909,7 @@ static void parts128_log2(FloatParts128 *a, float_status *s, const FloatFmt *f);
+ 
+ static bool frac64_add(FloatParts64 *r, FloatParts64 *a, FloatParts64 *b)
+ {
+-    return uadd64_overflow(a->frac, b->frac, &r->frac);
++    return __builtin_add_overflow(a->frac, b->frac, &r->frac);
+ }
+ 
+ static bool frac128_add(FloatParts128 *r, FloatParts128 *a, FloatParts128 *b)
+@@ -934,13 +934,13 @@ static bool frac256_add(FloatParts256 *r, FloatParts256 *a, FloatParts256 *b)
+ 
+ static bool frac64_addi(FloatParts64 *r, FloatParts64 *a, uint64_t c)
+ {
+-    return uadd64_overflow(a->frac, c, &r->frac);
++    return __builtin_add_overflow(a->frac, c, &r->frac);
+ }
+ 
+ static bool frac128_addi(FloatParts128 *r, FloatParts128 *a, uint64_t c)
+ {
+-    c = uadd64_overflow(a->frac_lo, c, &r->frac_lo);
+-    return uadd64_overflow(a->frac_hi, c, &r->frac_hi);
++    c = __builtin_add_overflow(a->frac_lo, c, &r->frac_lo);
++    return __builtin_add_overflow(a->frac_hi, c, &r->frac_hi);
+ }
+ 
+ #define frac_addi(R, A, C)  FRAC_GENERIC_64_128(addi, R)(R, A, C)
+@@ -1516,7 +1516,7 @@ static void frac256_shrjam(FloatParts256 *a, int c)
+ 
+ static bool frac64_sub(FloatParts64 *r, FloatParts64 *a, FloatParts64 *b)
+ {
+-    return usub64_overflow(a->frac, b->frac, &r->frac);
++    return __builtin_sub_overflow(a->frac, b->frac, &r->frac);
+ }
+ 
+ static bool frac128_sub(FloatParts128 *r, FloatParts128 *a, FloatParts128 *b)
+diff --git a/libdecnumber/decNumber.c b/libdecnumber/decNumber.c
+index 31282adafd..1d75ccb178 100644
+--- a/libdecnumber/decNumber.c
++++ b/libdecnumber/decNumber.c
+@@ -574,8 +574,8 @@ void decNumberIntegralToInt128(const decNumber *dn, decContext *set,
+             /* overflow */
+             goto Invalid;
+         }
+-        if (uadd64_overflow(lo, up[d], &lo)) {
+-            if (uadd64_overflow(hi, 1, &hi)) {
++        if (__builtin_add_overflow(lo, up[d], &lo)) {
++            if (__builtin_add_overflow(hi, 1, &hi)) {
+                 /* overflow */
+                 goto Invalid;
+             }
+diff --git a/target/arm/mve_helper.c b/target/arm/mve_helper.c
+index 403b345ea3..557944aefa 100644
+--- a/target/arm/mve_helper.c
++++ b/target/arm/mve_helper.c
+@@ -1345,9 +1345,9 @@ static int32_t do_vqdmladh_w(int32_t a, int32_t b, int32_t c, int32_t d,
+      * So we add half the rounding constant before doubling rather
+      * than adding the rounding constant after the doubling.
+      */
+-    if (sadd64_overflow(m1, m2, &r) ||
+-        sadd64_overflow(r, (round << 30), &r) ||
+-        sadd64_overflow(r, r, &r)) {
++    if (__builtin_add_overflow(m1, m2, &r) ||
++        __builtin_add_overflow(r, (round << 30), &r) ||
++        __builtin_add_overflow(r, r, &r)) {
+         *sat = true;
+         return r < 0 ? INT32_MAX : INT32_MIN;
+     }
+@@ -1375,9 +1375,9 @@ static int32_t do_vqdmlsdh_w(int32_t a, int32_t b, int32_t c, int32_t d,
+     int64_t m2 = (int64_t)c * d;
+     int64_t r;
+     /* The same ordering issue as in do_vqdmladh_w applies here too */
+-    if (ssub64_overflow(m1, m2, &r) ||
+-        sadd64_overflow(r, (round << 30), &r) ||
+-        sadd64_overflow(r, r, &r)) {
++    if (__builtin_sub_overflow(m1, m2, &r) ||
++        __builtin_add_overflow(r, (round << 30), &r) ||
++        __builtin_add_overflow(r, r, &r)) {
+         *sat = true;
+         return r < 0 ? INT32_MAX : INT32_MIN;
+     }
+@@ -1561,9 +1561,9 @@ static int32_t do_vqdmlah_w(int32_t a, int32_t b, int32_t c,
+     int64_t m1 = (int64_t)a * b;
+     int64_t m2 = (int64_t)c << 31;
+     int64_t r;
+-    if (sadd64_overflow(m1, m2, &r) ||
+-        sadd64_overflow(r, (round << 30), &r) ||
+-        sadd64_overflow(r, r, &r)) {
++    if (__builtin_add_overflow(m1, m2, &r) ||
++        __builtin_add_overflow(r, (round << 30), &r) ||
++        __builtin_add_overflow(r, r, &r)) {
+         *sat = true;
+         return r < 0 ? INT32_MAX : INT32_MIN;
+     }
 -- 
-Without deviation from the norm, progress is not possible.
+2.31.1

@@ -1,193 +1,97 @@
-Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp592068lft;
-        Fri, 24 Jun 2022 13:37:18 -0700 (PDT)
-X-Google-Smtp-Source: AGRyM1szHChQjEN+8mHjVVs1xw25oIm7PNrWGOa500apgs6Z9THWNBc/mUezDlVgEHNAQzCR3pvg
-X-Received: by 2002:ac8:5e07:0:b0:305:2d2e:5bd9 with SMTP id h7-20020ac85e07000000b003052d2e5bd9mr694641qtx.537.1656103038475;
-        Fri, 24 Jun 2022 13:37:18 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1656103038; cv=pass;
+Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp623965lft;
+        Fri, 24 Jun 2022 14:43:06 -0700 (PDT)
+X-Google-Smtp-Source: AGRyM1sEJ4y8GVjo3IegiwgFeGNk2GcqHcCDKuilhsDWJCDpW5pN9IU2xMjzMdHrwvww/KHUDCjn
+X-Received: by 2002:ad4:596d:0:b0:470:7f34:fa13 with SMTP id eq13-20020ad4596d000000b004707f34fa13mr1008664qvb.55.1656106986223;
+        Fri, 24 Jun 2022 14:43:06 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1656106986; cv=none;
         d=google.com; s=arc-20160816;
-        b=hXfryjcMXMw/YS+5C3isAgpAGr0Uwe4n0elbDppt+HRjY9lqcyiFRLPaBZpbhFJDqU
-         DKqx7nkcJ7FRPAk88PulbwOOtkRtrYiAt0X8uKqZWu0aGReyk8s1yHcPkBfAVI34JEkR
-         MYn8z2+x2qZ17sP5x7Rnu4Xqr/yqAfdLJ+cUG/U1s5HrDZ4ujXscVgT+4OoQWq6RH+m8
-         pxNxdqIqeubx1W9NQV2AEDVxwxx7Xlm9/6nONoZkc2baUGvuAHp1G82lm5RQGRTRfVEc
-         lyKmJTDu3aLEsAhIKO4zwF5kcfyCHBPfk+j78tEWuUWJ3i8AaFsL3sqzyodmBQoiaw61
-         xnaQ==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        b=wV4CBhN5R/OqMqW4Gg6RJrzFFqMsRxt3/+G/Tp5hwNo89R8ypHrSS+nDOakx569jfR
+         TigDpSiJ8ez86Irjr5v6/xqGfhMnrku1gw2NJ/uA4QJ7Sv9i4kAKEhq3us4N2yuRc9qw
+         7dVL3UMz8I0NxhxE4KV3jOplC5LFvIBTTuDNWVAcrvNyE1VTvlK11DI5yAiRYIRWNg1z
+         U29k9FCo+RrLBuBDFvmzCwyc1WE5BU2qGaYA4EDLybWpAdDr/PXsk0pWOOIFAjYZFWFy
+         viuOQZvp0CX33dE7vC0SAnsjGVoDQUxTrvXxOyDPUoK3iPXPjdLxXKZ7BswZS6gUeZ9U
+         Vgxg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version
-         :content-transfer-encoding:content-id:content-language
-         :accept-language:in-reply-to:references:message-id:date:thread-index
-         :thread-topic:subject:cc:from:dkim-signature;
-        bh=43N5G4EbFlJZtydhbNeo97afyuihhqQks2sFM/kEtTA=;
-        b=CPqURkt5lNXAiSFr3yYzEj7vZ35P0HhT/0ERxA6Efcop1q7kj/9Iyg04nq1sBDqwfl
-         hkZwTdGT/3HlNcdgjf7X5IW7AQI1iqsrMKcvAuVbVnS9mxgLvWdiuT+xRGoA9+1hlPxV
-         ced82VWfWeVEANsnpOAPCddWpkbss9LvcA7qFUBrn8BLj8IM07LYVj3Hl2+CFH7Uzqtt
-         RxCY4FmiEHASKJ2wgpE5Iw0wB8Me9r+zN6sieHn0uOYsHLVf/1SRV+w6O0hSuKMZCSJS
-         9Bji+GkATDZdedyuIn0ntk1FNFK3qrIHVxfxgp8sCWvJ1dSIdXChBxilXRtmbowlqZNc
-         BYqg==
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@fb.com header.s=facebook header.b="PsLy99/G";
-       arc=pass (i=1 spf=pass spfdomain=fb.com dkim=pass dkdomain=fb.com dmarc=pass fromdomain=fb.com);
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=fb.com
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:references:cc:to:content-language:subject
+         :user-agent:mime-version:date:message-id;
+        bh=RqENp+hgNyEIeB/+2P7P+nNF/3e0RZCqXQXSLMOyt00=;
+        b=wa5STUfYITA/zbRrBXZ+mUqqTl/FKaTX1/fYQT83DTag+OXZJAERqjAJ1sFXoI5JRm
+         5h9WKcCVnDjgRZjvg1FZQHmcLPB7q3c+lR3tm8SbzjuQgRMBx82dyc7LyITg5ZmITa2j
+         SkE/TbE4F5GFqMKxODK8Tq7UrI9RqV+VYtvk2GPNIOsk2vqJNCzfZXxAhun1xfKKDNdu
+         kiaJ1p6p+rYxST4nNkB1aoaBqpb5BO0TZSMNOSiUDG6GAWUeyH1wdWgRqQp3d+A8FBvY
+         rDf9Ijuz183Ws+WTctB9Jn8vHMgNqznBdRIoK/TuUKWeOc+4P3BVVdwZk+LjwnW2BEcQ
+         Xz4g==
+ARC-Authentication-Results: i=1; mx.google.com;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t7-20020a05620a450700b006a726af4df3si2859266qkp.38.2022.06.24.13.37.18
+        by mx.google.com with ESMTPS id bi8-20020a05620a318800b006a5740177f7si2888777qkb.28.2022.06.24.14.43.06
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 24 Jun 2022 13:37:18 -0700 (PDT)
+        Fri, 24 Jun 2022 14:43:06 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@fb.com header.s=facebook header.b="PsLy99/G";
-       arc=pass (i=1 spf=pass spfdomain=fb.com dkim=pass dkdomain=fb.com dmarc=pass fromdomain=fb.com);
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=fb.com
-Received: from localhost ([::1]:50814 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:49896 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1o4q3J-0005fP-UO
-	for alex.bennee@linaro.org; Fri, 24 Jun 2022 16:37:17 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:48974)
+	id 1o4r4z-000681-NC
+	for alex.bennee@linaro.org; Fri, 24 Jun 2022 17:43:05 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:32878)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <prvs=717463a23e=pdel@fb.com>)
- id 1o4q17-0003fm-9o
- for qemu-devel@nongnu.org; Fri, 24 Jun 2022 16:35:02 -0400
-Received: from mx0a-00082601.pphosted.com ([67.231.145.42]:60570)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1o4qtN-0002Ct-9z
+ for qemu-devel@nongnu.org; Fri, 24 Jun 2022 17:31:05 -0400
+Received: from smtpout1.mo529.mail-out.ovh.net ([178.32.125.2]:39201)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <prvs=717463a23e=pdel@fb.com>)
- id 1o4q15-0004UA-7y
- for qemu-devel@nongnu.org; Fri, 24 Jun 2022 16:35:00 -0400
-Received: from pps.filterd (m0044012.ppops.net [127.0.0.1])
- by mx0a-00082601.pphosted.com (8.17.1.5/8.17.1.5) with ESMTP id 25OK9vuF030241;
- Fri, 24 Jun 2022 13:34:45 -0700
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=fb.com;
- h=from : cc : subject :
- date : message-id : references : in-reply-to : content-type : content-id :
- content-transfer-encoding : mime-version; s=facebook;
- bh=43N5G4EbFlJZtydhbNeo97afyuihhqQks2sFM/kEtTA=;
- b=PsLy99/GkaTY7+euScgjGzH2B2KWVvPhQYzs2ETuJRFMQH65XiPo/Tf37QRRsmb3X4mz
- VeEio74/c+JJy8ORQgoKEwfUTbVVCMLFyGdPDxdGrRfKrebaMSJctxAS142has5CLXua
- a/Tbim6erRXiPqRDOAAWU3kyshZUW4xtjuw= 
-Received: from nam02-sn1-obe.outbound.protection.outlook.com
- (mail-sn1anam02lp2042.outbound.protection.outlook.com [104.47.57.42])
- by mx0a-00082601.pphosted.com (PPS) with ESMTPS id 3gvua9gmat-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Fri, 24 Jun 2022 13:34:45 -0700
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=imFpcyuPY4d0cUBDWiFXn/XzYOJnCI7Qa0YlSDAKpIXK+Nw82xoxy6r9TFphsrhp3pX8sIu4RRhCLocaYsnO4LonStqgsRSuiqXCcG5jweeTv4LEK/pidfxB1Swepqjt0BPRKz4jfAuSIEYVMb5gPGg6xaDDfHq3l60WludY2wGqZSNmPCw8eLzG1R/+pxNdRJXkbzWKRnWJsbMe6cB3Va1oxO3QwVn1/92xiq3ii+DXbCSib16b7yn5sXDhubIzlF1sW+SKf5XV/NmTCMfYZ0JoI/Kkq11Lv/F+bKi04oidB+YO1BqdiQ7Dr1AG/bJTakYlcoyHEAM+lbSo/U47hQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=43N5G4EbFlJZtydhbNeo97afyuihhqQks2sFM/kEtTA=;
- b=TJuqKVyL8yhEg5wzmR54SFNy5W9bpm3fpSy9Rfh4gX9YZAUsGuz242mv6/fux+z0HTsb3HPu7veu/gdfGzeDU3ETEx6YiIw7q4F/EyWpBtIGnDza9DWVC8Fqx9hHnh46VzTPhXr2jLAHC2P9BNlo6+793bzSUsNHqtos40bUyjDFnJT51Zbg/+G6bfHBxg5t60owEH1mVXoN9IAaEBH2jGbAloeANLdD6YQg78J+s4g2UDzHW3DYFSRGfGNcy4g4/73AE3KN0+WZFEGIcrWVyMnh3SUqNDtBahkoGYk1TYbXI3ZV2mx8bVZTKVPMxk1Nx+4WtCeJz2ayV+3CBOSF6A==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=fb.com; dmarc=pass action=none header.from=fb.com; dkim=pass
- header.d=fb.com; arc=none
-Received: from BYAPR15MB3032.namprd15.prod.outlook.com (2603:10b6:a03:ff::11)
- by BN8PR15MB3428.namprd15.prod.outlook.com (2603:10b6:408:a9::24)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1o4qtK-0004vn-W3
+ for qemu-devel@nongnu.org; Fri, 24 Jun 2022 17:31:04 -0400
+Received: from mxplan5.mail.ovh.net (unknown [10.108.20.195])
+ by mo529.mail-out.ovh.net (Postfix) with ESMTPS id 53DB0110E84D9;
+ Fri, 24 Jun 2022 23:30:59 +0200 (CEST)
+Received: from kaod.org (37.59.142.95) by DAG4EX1.mxp5.local (172.16.2.31)
  with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5373.17; Fri, 24 Jun
- 2022 20:34:43 +0000
-Received: from BYAPR15MB3032.namprd15.prod.outlook.com
- ([fe80::70d0:8133:42cc:f134]) by BYAPR15MB3032.namprd15.prod.outlook.com
- ([fe80::70d0:8133:42cc:f134%6]) with mapi id 15.20.5373.017; Fri, 24 Jun 2022
- 20:34:43 +0000
-From: Peter Delevoryas <pdel@fb.com>
-CC: Peter Delevoryas <pdel@fb.com>, =?utf-8?B?Q8OpZHJpYyBMZSBHb2F0ZXI=?=
- <clg@kaod.org>, Andrew Jeffery <andrew@aj.id.au>, Joel Stanley
- <joel@jms.id.au>, "qemu-arm-nongnu.org@devvm9194.prn0.facebook.com"
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.9; Fri, 24 Jun
+ 2022 23:30:58 +0200
+Authentication-Results: garm.ovh; auth=pass
+ (GARM-95G00137a5c612-f125-4c0a-8585-846dfc43b54f,
+ 5EF2319963E9DB1A14486A5EC8730A2EE4B20F29) smtp.auth=clg@kaod.org
+X-OVh-ClientIp: 82.64.250.170
+Message-ID: <4aebf7dd-cda2-2f88-218a-ca251aefbc57@kaod.org>
+Date: Fri, 24 Jun 2022 23:30:52 +0200
+MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.9.0
+Subject: Re: [PATCH] aspeed: i2c: Fix DMA len write-enable bit handling
+Content-Language: en-US
+To: Peter Delevoryas <pdel@fb.com>
+CC: Andrew Jeffery <andrew@aj.id.au>, Joel Stanley <joel@jms.id.au>,
+ "qemu-arm-nongnu.org@devvm9194.prn0.facebook.com"
  <qemu-arm-nongnu.org@devvm9194.prn0.facebook.com>, Cameron Esfahani via
  <qemu-devel@nongnu.org>
-Subject: Re: [PATCH] aspeed: i2c: Fix DMA len write-enable bit handling
-Thread-Topic: [PATCH] aspeed: i2c: Fix DMA len write-enable bit handling
-Thread-Index: AQHYiAl2Ug5GUTcub0qp3/Gu775GOK1fA5cA
-Date: Fri, 24 Jun 2022 20:34:43 +0000
-Message-ID: <A705D254-804B-49CD-99BB-D5152F6ABB41@fb.com>
 References: <20220624203151.2026355-1-pdel@fb.com>
-In-Reply-To: <20220624203151.2026355-1-pdel@fb.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: 8ea2f8b3-1d77-4330-3c1b-08da5620f843
-x-ms-traffictypediagnostic: BN8PR15MB3428:EE_
-x-fb-source: Internal
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: XS6uDEklWKxs94Cr1Kg4xANuU5iikAY3z2+eXy9liYAv/osFXcmleB7DoBmwievTzpjBtzhVODrFQsyeWFnNzNhu1icmS/ooqwQB9xufOjhIjPpLMPubhFpHBEkQd4uAU4BB/aYrZjrAhXGS1vpzDln+4ITk/pwZBl1fK6YKt1Eo/b7BQcpP8RM7/ltKYJTNO53At+YgxvIUaI4STnD7r9IPB9D9zpbvERgXki5BNCRIu8Ou/hrWkpdsQ0LQfpBibuEMEST+j+foRbTguNuKscDzm2QHepgVSZtSJjXQl4j2WlrZCzoxhomGhqBxwiRJqYKsErKp5lyslTMOU/qCQRwdqjcKR0m7d2DjmjGzN+tIxp69Nzo1EQjhEW+E6BeEwtMbk+MFezfzS9dRmi2FOF3/JHeVld+TCvhW4mGc1VN5lRsuMhPoYhxM/qL7HjPmg4aQnv3no53LsbegwXzwT68wiujOrcztbs2IEAa4PDFnGsE4JPG37ae4NNRTfhC3PAXEfwFZyVyYn1y8Bqr8GIxbv7JEoppn9Yf7PoR29ltqr/KDfBtwtAqPsRPjPjHckua4jzH48uozK1UYLJt3mlc81v8NJ/IV1ENNdAUWR7hcpe8HtrdzcknIeUhNoaj6Qgse+7Oj/DSkgs4wGEUPQbFV70dI6q5RtTzsvZWZw9GkvjwP4Q4Xadg4zt2rpSjiFag52etnztqKCnrO7qYHgCxoXGa047Pbhpy3xBVRWqPOcI3GT7w/HNi1+b7W0b7HH484kHsXP+Iflyyv4FsPiDT2iTV9+6fGWtzzNTqAr2+j91aDQffRU3G4S7zyaZfpDaGYzwUYM8tPNBiQ6U9toL9+Z9/SegYrA9qJijxfoBY=
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:BYAPR15MB3032.namprd15.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230016)(4636009)(366004)(396003)(39860400002)(376002)(136003)(346002)(66476007)(76116006)(64756008)(66946007)(8676002)(71200400001)(2616005)(66556008)(66446008)(478600001)(2906002)(54906003)(4326008)(109986005)(186003)(5660300002)(122000001)(8936002)(6506007)(38070700005)(83380400001)(86362001)(6512007)(41300700001)(36756003)(316002)(6486002)(966005)(53546011)(33656002)(38100700002)(45980500001);
- DIR:OUT; SFP:1102; 
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?utf-8?B?S2llT3A0MjdzQkdzRUJJQmQ1ak1oV1RTbDBDMGkrVFBpOEdiQjNnLzRVT2U1?=
- =?utf-8?B?WFd1bW5IVnE5b0RzTU85YlZPRUJJZzBadmN3aG5CMUNFL1pDOFR1ZEJWcUZB?=
- =?utf-8?B?MThWK0tER1dReVRtdEVCWUhHRWoxL2tONXhQRzcyQzVxajF1RGtzWlYyQ0hX?=
- =?utf-8?B?VSsvelI0WjUwbVN1VS9FNFF4NXhKamdGUjlOSWVnZ3ZLU0dCMXh2eFd1QUxt?=
- =?utf-8?B?MGdlLzFWc2ZpQkFkSG1IZStycllxMmhhL0c0OXBGcTlLL1Z4Q3hvSkNPNmVZ?=
- =?utf-8?B?Tkk2dzVxSjZxeTlFbXhHZUlnaUZGNUFuaDNzYnN5Vk41ejdtUm5zbW9IRjFS?=
- =?utf-8?B?MzBudGMwVHRpZXNCS2xhOVFjMnB2djNNSmh0ZGZKUWg2eWtsOUZBckkvbDFj?=
- =?utf-8?B?a3p3UDJqd25oaWp6cXN1eWdITERIVGJsRGFNVGRyQUFZOW5TVXJhRlZ0eGxn?=
- =?utf-8?B?RzhEYktoRC96cnRlK1dweVhjN1VnNnVUVkVSVXRjOUJ0Q2xobGUrMDJCK28w?=
- =?utf-8?B?TXR2SDk2Q2EySlU3WWdTanVTQWRXVDlGekptcnUwbFBqVVgzRDFQTWtFeGxI?=
- =?utf-8?B?RmxzcVNNajF6NmZ1S2RIaDQ4dm1oZFdacnIvcmIwaUdSYW5NQXJqWHNMUXhM?=
- =?utf-8?B?WHJ6NXZZVU5hd01YSkU2bFFMVTk5MFZ2UGFtb20wMGdKWkNTc3Y0bm9tdkVj?=
- =?utf-8?B?MC9yaGgrcENpZUdlWkl0TzhUanMzQXVjK0E4Q3BKUjBMNDBzSHpSUmM4RzZK?=
- =?utf-8?B?Uit5SS9ua0V0MXZIVWZqSUpsQzlmQm40MmwwNjJMcVk5QkdZTm9qQmF6c0RF?=
- =?utf-8?B?dUxVYTdzVmdiNzAxcmpIaUpMbTNuR0gyeEdSNG5URHJkSUY1Mnp6b3hMMUtl?=
- =?utf-8?B?OURScGNnVnN3SVhYbzNHU0ZqM29rZy9NWjVCeEF4cDZHY1JvNnROVEdNZEox?=
- =?utf-8?B?ZWwwMVFNL2hXZmhBZWJxR2ZaQWFSQWVKN3pLODA5OU5Vai9uRGtJcGdYQitT?=
- =?utf-8?B?Rys1R2QrRk9NUXRVQ2hGSnBRTWJmS2lBRXlGd0RnMXhhSXNZSXpOcEJJZDhx?=
- =?utf-8?B?c0dKemlpWVFhTXVmQkRqVEQ3MEtTSHFOb3hUYXVyRE9kU1lpTlBhSGpvOUE4?=
- =?utf-8?B?UitkaTBiemQ1blQzK05DRmtEbTVqbk5qc0lJVkpmQ1ptb0RmY0lOMlhyTjBD?=
- =?utf-8?B?TFJ4cWUzU1NrNlFtVUNwdHdlTVJZMmlCQng5Rzl0d1NVK0dPV1hva0FSTnkw?=
- =?utf-8?B?VERZd3JBNFp2TmU0d1JsdmUvNXJOeC8rakhMVWRwdE9nd0N4VjRpQ1J2VHJO?=
- =?utf-8?B?OGJqUjBBc01qWERnQjVZWk9mY2E1NDVJbmZWMlN6TVpnaFhVNmdkeFNvaytj?=
- =?utf-8?B?WWNvSUVpaTY3T296YzA4T3h1dVJlNmd0QUpwZGFubFoyeDVlTEg3c2M3Wmps?=
- =?utf-8?B?R2xXaWhudkVLYkZFVVlaS0JGeHlldnJMMVpQcitKM0dGRDhOdjJvQStqRzlR?=
- =?utf-8?B?blhudHl5bWJaOHdOYmg5bHJmVW1kVXRPeUFNbGNVb3UvVW0vMitwM3o5Yklt?=
- =?utf-8?B?YStuRFJBU1hJUlA3SHd0bmcxZDlNcks3c1VWOVFaL08wZUtGelVOQlloYkxX?=
- =?utf-8?B?Vm43QjlTSGxRVWZOcmdUMCttMVpFRTM1MGNxRTd5bmJ4dFFzSW80QXhlOG5a?=
- =?utf-8?B?S0lab0E3VThWaFNLYzdpaXFRZG5IYnVqVXd1ZXhuTi8yZEdZdFRKSFNHM2JE?=
- =?utf-8?B?aDB3TGhWSXkzNE8reCtjeXJGdDd6YjlLZ3lzNmRoelkwcUl6VFpJT1pkdFFU?=
- =?utf-8?B?M2tNOU43RlhYcndBUlNIKys4aDJQdStScGJYTTQ2c2hQa0VQeUJLcDE3WWRJ?=
- =?utf-8?B?QjIwQi9XTXpXeStxZndWcVBpVzlOWUtvM2NKNk84WEtVaGhLK3dCWjhia3NB?=
- =?utf-8?B?dS8zNmRma25nNUJjRzhyWG4zVDhwNlhXaVdTYithUENiUEpZbFBDc3pCcXpR?=
- =?utf-8?B?NjdZeUs4TElzRlZZM3VYMzdGU2dER0lKUzZBY0ZKT1FoU1hFTWVBMXlWSUJO?=
- =?utf-8?B?RWVVaUZoRzF4dlJwTGhjNkdiaEUyalJQOFZFTDRDNldQTUZFRlQ3OFdKdWl5?=
- =?utf-8?B?SDY2NHZHSlNlNitFbDlnYUpFaWpVWVYyVnhiVEdUUWpzRlJXSlNKUEdkUUZ2?=
- =?utf-8?B?dkE9PQ==?=
-Content-Type: text/plain; charset="utf-8"
-Content-ID: <33E8A804EA6C42469EC7A224D36302A9@namprd15.prod.outlook.com>
-X-OriginatorOrg: fb.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: BYAPR15MB3032.namprd15.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 8ea2f8b3-1d77-4330-3c1b-08da5620f843
-X-MS-Exchange-CrossTenant-originalarrivaltime: 24 Jun 2022 20:34:43.0288 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 8ae927fe-1255-47a7-a2af-5f3a069daaa2
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: VnZBhKdmoL1aK8sgFfJRs44mfYUM1BpXT1nE6/ouQ7p5riislZrJiO6k+ZjMo0VU
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: BN8PR15MB3428
-X-Proofpoint-ORIG-GUID: fsg8Ln6g7f0vBepcV3b_fYOpX8KYi48N
-X-Proofpoint-GUID: fsg8Ln6g7f0vBepcV3b_fYOpX8KYi48N
-Content-Transfer-Encoding: base64
-X-Proofpoint-UnRewURL: 0 URL was un-rewritten
-MIME-Version: 1.0
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.205,Aquarius:18.0.883,Hydra:6.0.517,FMLib:17.11.122.1
- definitions=2022-06-24_09,2022-06-24_01,2022-06-22_01
-Received-SPF: pass client-ip=67.231.145.42;
- envelope-from=prvs=717463a23e=pdel@fb.com; helo=mx0a-00082601.pphosted.com
-X-Spam_score_int: -11
-X-Spam_score: -1.2
+ <A705D254-804B-49CD-99BB-D5152F6ABB41@fb.com>
+From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
+In-Reply-To: <A705D254-804B-49CD-99BB-D5152F6ABB41@fb.com>
+Content-Type: text/plain; charset="UTF-8"; format=flowed
+Content-Transfer-Encoding: 8bit
+X-Originating-IP: [37.59.142.95]
+X-ClientProxiedBy: DAG7EX2.mxp5.local (172.16.2.62) To DAG4EX1.mxp5.local
+ (172.16.2.31)
+X-Ovh-Tracer-GUID: aa47fda2-f8f9-416c-b4aa-13b45ac6038d
+X-Ovh-Tracer-Id: 3247939759032929187
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvfedrudefledgudeitdcutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemucehtddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpefkffggfgfuvfevfhfhjggtgfhisehtkeertddtfeejnecuhfhrohhmpeevrogurhhitggpnfgvpgfiohgrthgvrhcuoegtlhhgsehkrghougdrohhrgheqnecuggftrfgrthhtvghrnhepgfefgfdukeefueejfeelgeffvdeulefhffekledvieegfffhudekgfefkeeiheelnecuffhomhgrihhnpehgihhthhhusgdrtghomhdpohiilhgrsghsrdhorhhgnecukfhppedtrddtrddtrddtpdefjedrheelrddugedvrdelheenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhhouggvpehsmhhtphhouhhtpdhhvghlohepmhigphhlrghnhedrmhgrihhlrdhovhhhrdhnvghtpdhinhgvtheptddrtddrtddrtddpmhgrihhlfhhrohhmpegtlhhgsehkrghougdrohhrghdpnhgspghrtghpthhtohepuddprhgtphhtthhopehqvghmuhdquggvvhgvlhesnhhonhhgnhhurdhorhhgpdfovfetjfhoshhtpehmohehvdel
+Received-SPF: pass client-ip=178.32.125.2; envelope-from=clg@kaod.org;
+ helo=smtpout1.mo529.mail-out.ovh.net
+X-Spam_score_int: -18
+X-Spam_score: -1.9
 X-Spam_bar: -
-X-Spam_report: (-1.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.082,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- MISSING_HEADERS=1.021, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001,
- RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -202,49 +106,79 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: JNyw4MYwYVxP
+X-TUID: maloNixi2Ynt
 
-DQoNCj4gT24gSnVuIDI0LCAyMDIyLCBhdCAxOjMxIFBNLCBQZXRlciBEZWxldm9yeWFzIDxwZGVs
-QGZiLmNvbT4gd3JvdGU6DQo+IA0KPiBJIG5vdGljZWQgaTJjIHJ4IHRyYW5zZmVycyB3ZXJlIGdl
-dHRpbmcgc2hvcnRlbmVkIHRvICIxIiBvbiBaZXBoeXIuIEl0DQo+IHNlZW1zIHRvIGJlIGJlY2F1
-c2UgdGhlIFplcGh5ciBpMmMgZHJpdmVyIHNldHMgdGhlIFJYIERNQSBsZW4gd2l0aCB0aGUNCj4g
-UlggZmllbGQgd3JpdGUtZW5hYmxlIGJpdCBzZXQgKGJpdCAzMSkgdG8gYXZvaWQgYSByZWFkLW1v
-ZGlmeS13cml0ZS4gWzFdDQo+IA0KPiAvKiAweDFDIDogSTJDTSBNYXN0ZXIgRE1BIFRyYW5zZmVy
-IExlbmd0aCBSZWdpc3RlciAgICovDQo+IA0KPiBJIHRoaW5rIHdlIHNob3VsZCBiZSBjaGVja2lu
-ZyB0aGUgd3JpdGUtZW5hYmxlIGJpdHMgb24gdGhlIGluY29taW5nDQo+IHZhbHVlLCBub3QgY2hl
-Y2tpbmcgdGhlIHJlZ2lzdGVyIGFycmF5LiBJJ20gbm90IHN1cmUgd2UncmUgZXZlbiB3cml0aW5n
-DQo+IHRoZSB3cml0ZS1lbmFibGUgYml0cyB0byB0aGUgcmVnaXN0ZXIgYXJyYXksIGFjdHVhbGx5
-Lg0KPiANCj4gWzFdIGh0dHBzOi8vZ2l0aHViLmNvbS9Bc3BlZWRUZWNoLUJNQy96ZXBoeXIvYmxv
-Yi9kYjNkYmNjOWM1MmU2N2E0NzE4MDg5MGFjOTM4ZWQzODBiMzNmOTFjL2RyaXZlcnMvaTJjL2ky
-Y19hc3BlZWQuYyNMMTQ1LUwxNDgNCg0KQXJnLCBmb3Jnb3QgdGhpczoNCg0KRml4ZXM6IGJhMmNj
-Y2Q2NGU5MGYzNCAoImFzcGVlZDogaTJjOiBBZGQgbmV3IG1vZGUgc3VwcG9ydOKAnSkNCg0KU2hv
-dWxkIEkgcmVzZW5kIGFzIHYyPw0KDQpUaGFua3MsDQpQZXRlcg0KDQo+IA0KPiBTaWduZWQtb2Zm
-LWJ5OiBQZXRlciBEZWxldm9yeWFzIDxwZGVsQGZiLmNvbT4NCj4gLS0tDQo+IGh3L2kyYy9hc3Bl
-ZWRfaTJjLmMgfCA4ICsrKystLS0tDQo+IDEgZmlsZSBjaGFuZ2VkLCA0IGluc2VydGlvbnMoKyks
-IDQgZGVsZXRpb25zKC0pDQo+IA0KPiBkaWZmIC0tZ2l0IGEvaHcvaTJjL2FzcGVlZF9pMmMuYyBi
-L2h3L2kyYy9hc3BlZWRfaTJjLmMNCj4gaW5kZXggMzdhZTFmMmUwNC4uYzRmY2U3NDc0YSAxMDA2
-NDQNCj4gLS0tIGEvaHcvaTJjL2FzcGVlZF9pMmMuYw0KPiArKysgYi9ody9pMmMvYXNwZWVkX2ky
-Yy5jDQo+IEBAIC02NDQsMTggKzY0NCwxOCBAQCBzdGF0aWMgdm9pZCBhc3BlZWRfaTJjX2J1c19u
-ZXdfd3JpdGUoQXNwZWVkSTJDQnVzICpidXMsIGh3YWRkciBvZmZzZXQsDQo+ICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgUlhfQlVGX0xFTikgKyAx
-Ow0KPiAgICAgICAgIGJyZWFrOw0KPiAgICAgY2FzZSBBX0kyQ01fRE1BX0xFTjoNCj4gLSAgICAg
-ICAgdzF0ID0gQVJSQVlfRklFTERfRVgzMihidXMtPnJlZ3MsIEkyQ01fRE1BX0xFTiwgUlhfQlVG
-X0xFTl9XMVQpIHx8DQo+IC0gICAgICAgICAgICAgICAgICAgQVJSQVlfRklFTERfRVgzMihidXMt
-PnJlZ3MsIEkyQ01fRE1BX0xFTiwgVFhfQlVGX0xFTl9XMVQpOw0KPiArICAgICAgICB3MXQgPSBG
-SUVMRF9FWDMyKHZhbHVlLCBJMkNNX0RNQV9MRU4sIFJYX0JVRl9MRU5fVzFUKSB8fA0KPiArICAg
-ICAgICAgICAgICBGSUVMRF9FWDMyKHZhbHVlLCBJMkNNX0RNQV9MRU4sIFRYX0JVRl9MRU5fVzFU
-KTsNCj4gICAgICAgICAvKiBJZiBub25lIG9mIHRoZSB3MXQgYml0cyBhcmUgc2V0LCBqdXN0IHdy
-aXRlIHRvIHRoZSByZWcgYXMgbm9ybWFsLiAqLw0KPiAgICAgICAgIGlmICghdzF0KSB7DQo+ICAg
-ICAgICAgICAgIGJ1cy0+cmVnc1tSX0kyQ01fRE1BX0xFTl0gPSB2YWx1ZTsNCj4gICAgICAgICAg
-ICAgYnJlYWs7DQo+ICAgICAgICAgfQ0KPiAtICAgICAgICBpZiAoQVJSQVlfRklFTERfRVgzMihi
-dXMtPnJlZ3MsIEkyQ01fRE1BX0xFTiwgUlhfQlVGX0xFTl9XMVQpKSB7DQo+ICsgICAgICAgIGlm
-IChGSUVMRF9FWDMyKHZhbHVlLCBJMkNNX0RNQV9MRU4sIFJYX0JVRl9MRU5fVzFUKSkgew0KPiAg
-ICAgICAgICAgICBBUlJBWV9GSUVMRF9EUDMyKGJ1cy0+cmVncywgSTJDTV9ETUFfTEVOLCBSWF9C
-VUZfTEVOLA0KPiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIEZJRUxEX0VYMzIodmFsdWUs
-IEkyQ01fRE1BX0xFTiwgUlhfQlVGX0xFTikpOw0KPiAgICAgICAgIH0NCj4gLSAgICAgICAgaWYg
-KEFSUkFZX0ZJRUxEX0VYMzIoYnVzLT5yZWdzLCBJMkNNX0RNQV9MRU4sIFRYX0JVRl9MRU5fVzFU
-KSkgew0KPiArICAgICAgICBpZiAoRklFTERfRVgzMih2YWx1ZSwgSTJDTV9ETUFfTEVOLCBUWF9C
-VUZfTEVOX1cxVCkpIHsNCj4gICAgICAgICAgICAgQVJSQVlfRklFTERfRFAzMihidXMtPnJlZ3Ms
-IEkyQ01fRE1BX0xFTiwgVFhfQlVGX0xFTiwNCj4gICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICBGSUVMRF9FWDMyKHZhbHVlLCBJMkNNX0RNQV9MRU4sIFRYX0JVRl9MRU4pKTsNCj4gICAgICAg
-ICB9DQo+IC0tIA0KPiAyLjMwLjINCj4gDQoNCg==
+On 6/24/22 22:34, Peter Delevoryas wrote:
+> 
+> 
+>> On Jun 24, 2022, at 1:31 PM, Peter Delevoryas <pdel@fb.com> wrote:
+>>
+>> I noticed i2c rx transfers were getting shortened to "1" on Zephyr. It
+>> seems to be because the Zephyr i2c driver sets the RX DMA len with the
+>> RX field write-enable bit set (bit 31) to avoid a read-modify-write. [1]
+>>
+>> /* 0x1C : I2CM Master DMA Transfer Length Register   */
+>>
+>> I think we should be checking the write-enable bits on the incoming
+>> value, not checking the register array. I'm not sure we're even writing
+>> the write-enable bits to the register array, actually.
+>>
+>> [1] https://github.com/AspeedTech-BMC/zephyr/blob/db3dbcc9c52e67a47180890ac938ed380b33f91c/drivers/i2c/i2c_aspeed.c#L145-L148
+> 
+> Arg, forgot this:
+> 
+> Fixes: ba2cccd64e90f34 ("aspeed: i2c: Add new mode support”)
+> 
+> Should I resend as v2?
+
+
+No. patchwork did it :
+
+http://patchwork.ozlabs.org/project/qemu-devel/patch/20220624203151.2026355-1-pdel@fb.com/
+
+Thanks,
+
+C.
+
+
+> Thanks,
+> Peter
+> 
+>>
+>> Signed-off-by: Peter Delevoryas <pdel@fb.com>
+>> ---
+>> hw/i2c/aspeed_i2c.c | 8 ++++----
+>> 1 file changed, 4 insertions(+), 4 deletions(-)
+>>
+>> diff --git a/hw/i2c/aspeed_i2c.c b/hw/i2c/aspeed_i2c.c
+>> index 37ae1f2e04..c4fce7474a 100644
+>> --- a/hw/i2c/aspeed_i2c.c
+>> +++ b/hw/i2c/aspeed_i2c.c
+>> @@ -644,18 +644,18 @@ static void aspeed_i2c_bus_new_write(AspeedI2CBus *bus, hwaddr offset,
+>>                                                       RX_BUF_LEN) + 1;
+>>          break;
+>>      case A_I2CM_DMA_LEN:
+>> -        w1t = ARRAY_FIELD_EX32(bus->regs, I2CM_DMA_LEN, RX_BUF_LEN_W1T) ||
+>> -                   ARRAY_FIELD_EX32(bus->regs, I2CM_DMA_LEN, TX_BUF_LEN_W1T);
+>> +        w1t = FIELD_EX32(value, I2CM_DMA_LEN, RX_BUF_LEN_W1T) ||
+>> +              FIELD_EX32(value, I2CM_DMA_LEN, TX_BUF_LEN_W1T);
+>>          /* If none of the w1t bits are set, just write to the reg as normal. */
+>>          if (!w1t) {
+>>              bus->regs[R_I2CM_DMA_LEN] = value;
+>>              break;
+>>          }
+>> -        if (ARRAY_FIELD_EX32(bus->regs, I2CM_DMA_LEN, RX_BUF_LEN_W1T)) {
+>> +        if (FIELD_EX32(value, I2CM_DMA_LEN, RX_BUF_LEN_W1T)) {
+>>              ARRAY_FIELD_DP32(bus->regs, I2CM_DMA_LEN, RX_BUF_LEN,
+>>                               FIELD_EX32(value, I2CM_DMA_LEN, RX_BUF_LEN));
+>>          }
+>> -        if (ARRAY_FIELD_EX32(bus->regs, I2CM_DMA_LEN, TX_BUF_LEN_W1T)) {
+>> +        if (FIELD_EX32(value, I2CM_DMA_LEN, TX_BUF_LEN_W1T)) {
+>>              ARRAY_FIELD_DP32(bus->regs, I2CM_DMA_LEN, TX_BUF_LEN,
+>>                               FIELD_EX32(value, I2CM_DMA_LEN, TX_BUF_LEN));
+>>          }
+>> -- 
+>> 2.30.2
+>>
+> 
+

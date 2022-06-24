@@ -1,143 +1,149 @@
-Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp166034lft;
-        Fri, 24 Jun 2022 02:07:22 -0700 (PDT)
-X-Google-Smtp-Source: AGRyM1vY2TNSv1N09i0VXxgEQrXvghq6xI4LVTtQFxJhpBVH75F9hTvBUXoD2OI5FasZfFhvX0BO
-X-Received: by 2002:a17:907:6d23:b0:707:90a0:afb3 with SMTP id sa35-20020a1709076d2300b0070790a0afb3mr12027435ejc.685.1656061642159;
-        Fri, 24 Jun 2022 02:07:22 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1656061642; cv=none;
+Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp197767lft;
+        Fri, 24 Jun 2022 03:07:10 -0700 (PDT)
+X-Google-Smtp-Source: AGRyM1tQ8FBGzXeN73TW53OGBBBH14Xkp5CK/SLVB3ZRadj/2bs7FWKs95FNmcXqOQ0gCqbwSjgr
+X-Received: by 2002:a05:622a:1aa5:b0:317:7742:d412 with SMTP id s37-20020a05622a1aa500b003177742d412mr7047457qtc.424.1656065229342;
+        Fri, 24 Jun 2022 03:07:09 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1656065229; cv=none;
         d=google.com; s=arc-20160816;
-        b=qRf1rkwnNPLNFiNN3bQSQhkutONGlFGhSaAgTwD5oXCLSx8LZXP/h4l4tZntFx1fO7
-         H5vV7V/Nu/ztUGu6hhIeZszbGY/awAlPRh+Evjphp0IiraddmR8NCrhTw7bK7shAK4Vp
-         V8xfqcSQ65K7oSHTekdzfkYmxvNiE6+xoBn83ydo5EnNqrobodVVl6K6DVl/UjFKD6dh
-         IRK1hcw5B2NOxzzzaI/5p7AJ+o9NiGqqA6j3wyraCX9W35lEbY4UwMVrQzjUySTYWNYR
-         YFOzASaeioh5l/g3gQFEgRCfs/gaATO+9wk3H1E5rGlSeOYOxRoKhJ+fPR/Sy5bhSZ3r
-         +TXQ==
+        b=aXstFRICsdYqx5Zqoah6fWOgK1HMGWF7n3l/IVtGbTVbnek+YSv/Ku2AJZRrKMmgX6
+         W4jecEvf73K/wLBKCqN6nEyiqwqF1WvUBOgFRE7Bid3BS5VS4A1+zOD1BxiqxMb+i5Vl
+         HY2tyxRDLnrVuPCCaT7TMqe8TLysC15fx37qWG7kjNyuNTB3net2HK41Qafw2yCfEJKy
+         khnbUSa8hP3GWPkI1YypqpM6ZXTuGGoGH1iXbV6r95tb3OdCmtfEPdkEtHENLVVA7OMv
+         peNFJunR538ZGD7Y3SE+Qn/Uq/EdcrSHZj81voBbbLNGZ6HAOQpIgv+SHwdWMuMxRYdG
+         S+og==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:organization:references
-         :in-reply-to:message-id:subject:cc:to:from:date;
-        bh=TuzazImFmmT1H1Q1vEE1KZi4xd5kdnW7HKK3SvjCLYQ=;
-        b=Jhtu1LuS3DfJdcAGRwqzRPWl8JQtB4adKcTV0NGONzglv0uWXwFpuWSkxoAzPIDOsq
-         c8sJK5KpsmwTc1ciMPP5xNV0zNq5mo9UkpGV4OSNdAnQLTihXoxW+8mnxD3Sf6JULeB9
-         Sbav2WeNmWJjAD//XB6yzp7It/899ctQiY6Daoy/saGyb3jELxSoYkzRZOYJTZzvR75u
-         j/wsufcV7zdQbs1muZmi9uN+HnV25n1Xj/qnAwuUVuHbk4PiKOarFkcEzWnF93ZskcX3
-         WF6DL76ibgJlrwjgYjEa2mCPVK1s+hmHOC1PsLPCuKs6fqD9fKoGVogloWh57ZpPD7ZY
-         2/4A==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=ngj7kujS66MfNn6Y0gGXaRBCJ9j3t+t6lRC1FxqQ1V8=;
+        b=BoAJ44Tl/g+Ba9mnDewAT4qULo7sy3o6C8UiEJlrX8ldW5hyefrqgIul9t4IH5mIyK
+         /H0CawUwyZieQUp5VcV2VLtDvD+etf+mrx+bEtBE7yRNc3w9Ukbj6sAO4dXeYOJcITs4
+         A5KE18xTf7UFNm/70Gd5ZXhhFGSxyEqO52eRCWS6k4xh+bsOEpw/yVoUBeanRbSZnRO8
+         oI4+jiu6T0hDoUGj1I3U8AxrNC5QW8OEQllmVabfWXtNPRIEKoCVV2fRSpjoiuYRAr7Z
+         /HYLu9WZA3llp/3FRIy5Q8C991n0mSjL0aCD4kYhAXKyhTFhvf/AuaxqAMlhOq+amttd
+         KcZQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of jonathan.cameron@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=jonathan.cameron@huawei.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
-Return-Path: <jonathan.cameron@huawei.com>
-Received: from frasgout.his.huawei.com (frasgout.his.huawei.com. [185.176.79.56])
-        by mx.google.com with ESMTPS id cw20-20020a170906479400b007174e91f206si2098230ejc.217.2022.06.24.02.07.21
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 24 Jun 2022 02:07:22 -0700 (PDT)
-Received-SPF: pass (google.com: domain of jonathan.cameron@huawei.com designates 185.176.79.56 as permitted sender) client-ip=185.176.79.56;
+       dkim=pass header.i=@linaro.org header.s=google header.b=nqa11Ca8;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id fn5-20020ad45d65000000b0047052b952c1si1142438qvb.509.2022.06.24.03.07.09
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Fri, 24 Jun 2022 03:07:09 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of jonathan.cameron@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=jonathan.cameron@huawei.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
-Received: from fraeml736-chm.china.huawei.com (unknown [172.18.147.207])
-	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4LTrmk4W2Nz6H7kx;
-	Fri, 24 Jun 2022 17:05:10 +0800 (CST)
-Received: from lhreml710-chm.china.huawei.com (10.201.108.61) by
- fraeml736-chm.china.huawei.com (10.206.15.217) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2375.24; Fri, 24 Jun 2022 11:07:14 +0200
-Received: from localhost (10.81.207.131) by lhreml710-chm.china.huawei.com
- (10.201.108.61) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2375.24; Fri, 24 Jun
- 2022 10:07:13 +0100
-Date: Fri, 24 Jun 2022 10:07:09 +0100
-From: Jonathan Cameron <Jonathan.Cameron@Huawei.com>
-To: Jonathan Cameron via <qemu-devel@nongnu.org>
-CC: Jonathan Cameron <Jonathan.Cameron@huawei.com>, <alex.bennee@linaro.org>,
-	Peter Maydell <peter.maydell@linaro.org>, <qemu-arm@nongnu.org>, "Michael S .
- Tsirkin" <mst@redhat.com>, Ben Widawsky <bwidawsk@kernel.org>, Paolo Bonzini
-	<pbonzini@redhat.com>, <linux-cxl@vger.kernel.org>, <linuxarm@huawei.com>,
-	Marcel Apfelbaum <marcel@redhat.com>, Igor Mammedov <imammedo@redhat.com>,
-	Markus Armbruster <armbru@redhat.com>, Mark Cave-Ayland
-	<mark.cave-ayland@ilande.co.uk>, Adam Manzanares <a.manzanares@samsung.com>,
-	Tong Zhang <ztong0001@gmail.com>, Shameerali Kolothum Thodi
-	<shameerali.kolothum.thodi@huawei.com>
-Subject: Re: [PATCH v11 0/2] arm/virt: CXL support via pxb_cxl
-Message-ID: <20220624100709.00001640@Huawei.com>
-In-Reply-To: <20220616141950.23374-1-Jonathan.Cameron@huawei.com>
-References: <20220616141950.23374-1-Jonathan.Cameron@huawei.com>
-Organization: Huawei Technologies Research and Development (UK) Ltd.
-X-Mailer: Claws Mail 4.0.0 (GTK+ 3.24.29; i686-w64-mingw32)
+       dkim=pass header.i=@linaro.org header.s=google header.b=nqa11Ca8;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:49780 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1o4gDU-0007Dz-SS
+	for alex.bennee@linaro.org; Fri, 24 Jun 2022 06:07:08 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:60640)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1o4gD2-0007Cs-0d
+ for qemu-arm@nongnu.org; Fri, 24 Jun 2022 06:06:40 -0400
+Received: from mail-yw1-x1131.google.com ([2607:f8b0:4864:20::1131]:41688)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1o4gD0-0004cO-Dr
+ for qemu-arm@nongnu.org; Fri, 24 Jun 2022 06:06:39 -0400
+Received: by mail-yw1-x1131.google.com with SMTP id
+ 00721157ae682-31780ad7535so19688677b3.8
+ for <qemu-arm@nongnu.org>; Fri, 24 Jun 2022 03:06:37 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=ngj7kujS66MfNn6Y0gGXaRBCJ9j3t+t6lRC1FxqQ1V8=;
+ b=nqa11Ca8zAqJIexN50nhEF1S6e/eiczn+KGMvOLbhOg9Zu62XmmUoiByTfGoBhvRFE
+ 8xIQVHLRKWcaUq+EHpoHGJ5jYsC8rcNsMSEEKfqHDSnfh/vXwDY3anrmieTyzO9QcfA6
+ F9pGEux/PbfexO4jwUynLJK7aVCvXNXmOIEb/Ij8CeK8KV3e8aM+lWfej+wBBegXajWH
+ b9EVNsQRCI1nBgYB+wzHZimD55YCMluDa3Bvp6TZFA5iBx1i2ejU0wfT83ogPwmPN3th
+ NxUiM6FtOekzdh+q5GFMmH0vqrzgxsVbA5kkb/92W+glCOuCbWpOULNfuMi3XkX3H1FE
+ NynQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=ngj7kujS66MfNn6Y0gGXaRBCJ9j3t+t6lRC1FxqQ1V8=;
+ b=iCMaMhvPGeDmBJ/FhzDZRT4kWnthD+LhLpQo3TCK+6UEUn8A8WqFo7suNkzcp9JMXw
+ P3lpqrbFDODhP2PnTUXt/HgggazZQ+f9sSMFaKyk0fZCGanYoQsdPmzFUoiZyH6emKst
+ NxkchFSFBiW1fgv2nFwz3+eZ9kPcEx7ycMDBXjg5Oc/MbKBEuDiKMVuyYZMW2j05gLhP
+ fbtOUsvkRcmGNKcLIekKwMKOsYPo6nnDH34vvSDqK5L8AGg//9jfS3gyTJ6Bklp0UZNY
+ Hj9kMLINxOOPtg8ce8XJCSawhDWqMUALkF6M4Wrrn/UX64r1b/oTAXJxoLrbhBc7IArG
+ 0ueg==
+X-Gm-Message-State: AJIora+USA45NindVHNe4+NbuvorHlQQ4HxsCrl+WAK4yRhaSe2RqPxJ
+ S7FrBY3dSB5nLGvkCAcVRYBLBRyU7bxviR3KkZo72A==
+X-Received: by 2002:a0d:d712:0:b0:317:a108:9778 with SMTP id
+ z18-20020a0dd712000000b00317a1089778mr15914138ywd.64.1656065197148; Fri, 24
+ Jun 2022 03:06:37 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset="US-ASCII"
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.81.207.131]
-X-ClientProxiedBy: lhreml735-chm.china.huawei.com (10.201.108.86) To
- lhreml710-chm.china.huawei.com (10.201.108.61)
-X-CFilter-Loop: Reflected
-X-TUID: 9zu1BZjTRRTg
+References: <20220620175235.60881-1-richard.henderson@linaro.org>
+ <20220620175235.60881-27-richard.henderson@linaro.org>
+ <CAFEAcA932Ud1PH4Az=NVW02mR8Q_GNmsH-kvLTRZ_TmCR8=Psg@mail.gmail.com>
+ <c6308243-0742-b9dc-a325-da095e687181@linaro.org>
+In-Reply-To: <c6308243-0742-b9dc-a325-da095e687181@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 24 Jun 2022 11:05:59 +0100
+Message-ID: <CAFEAcA8nYEYjL4Go4tZJtGWU8F2uY1_AWKpn3ux+Z94+GD1mVg@mail.gmail.com>
+Subject: Re: [PATCH v3 26/51] target/arm: Implement SME LD1, ST1
+To: Richard Henderson <richard.henderson@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1131;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x1131.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: ZyX8EAO6qrAG
 
-On Thu, 16 Jun 2022 15:19:48 +0100
-Jonathan Cameron via <qemu-devel@nongnu.org> wrote:
+On Thu, 23 Jun 2022 at 21:36, Richard Henderson
+<richard.henderson@linaro.org> wrote:
+> On 6/23/22 04:41, Peter Maydell wrote:
+> > We now have several rather long functions that are
+> > pretty complicated and pretty similar handling the various
+> > SVE and SME loads and stores. Is there really no hope for
+> > sharing code ?
+>
+> I'm not sure.  Maybe.  The two issues are:
+>
+> (1) sve ld4/st4 -- arm didn't make z29-z31 illegal, but defined wraparound to z0.  So I
+> pass in a Zreg number not a pointer to those routines.  So the routines can't be reused
+> for Zarray without changing that.
+>
+> (2) sme ld1/st1 vertical slice, which significantly alters the spacing between the elements.
+>
+> One possibility for these cases is to perform the load into env->some_scratch_space, then
+> copy into the final position afterward, and the reverse for stores.
+>
+> Is that preferable?  Do you see another alternative?
 
-> Previously patches 40 and 41 of
-> [PATCH v10 00/45] CXl 2.0 emulation Support
-> https://lore.kernel.org/qemu-devel/20220429144110.25167-45-Jonathan.Cameron@huawei.com/#r
-> 
-> Now the base CXL support including for x86/pc is upstream (patches 1-39)
-> there are no dependencies between the next few CXL elements in my queue
-> so they can be reviewed / merged in parallel.  Hence I'll be sending switch
-> support (43-45) separately and hopefully DOE / CDAT support in a few days.
-> I'm assuming this particular series should go through the arm tree if
-> the maintainers are happy?
+Hmm, loading into a scratch space seems a bit clunky too.
+I'll leave it to your judgement but I guess since you've already
+written and tested the code we have here that argues for going
+with what we have. Maybe we'll come back in six months and
+realize there's a neater approach. (The GIC ITS code ended up
+being refactored like that.)
 
-Hi All,
-
-If Peter or anyone else has time to look at this with a view to getting
-ARM support on par with x86 that would be great.  I 'think' this should
-be uncontroversial but I'm far from an expert!  I'm particularly keen on
-getting this upstream as most of my testing is on ARM/virt.
-
-Thanks,
-
-Jonathan
-
-> 
-> Changes since v10:
->  - CXL machine setup is now entirely from the supporting machines rather
->    than via code in machine.c and vl.c.  Change made for x86 in:
->    https://lore.kernel.org/qemu-devel/20220608145440.26106-1-Jonathan.Cameron@huawei.com/
->  - Dropped Ben's sign off from patch 1 which resulted from him carrying
->    these patches of mine for a while. It isn't a useful bit of history
->    to carry now they are back to me.
-> 
-> This short series adds support for CXL host bridges and CXL fixed memory
-> windows on arm/virt.  Two types of memory region are needed:
-> 1. Register space for CXL host bridges (static allowance for 16)
-> 2. CXL fixed memory windows: Ranges of host PA space which
->    are statically mapped to an interleave across 1 or more CXL host
->    bridges.
-> 
-> Both of these types of region are described via appropriate ACPI tables.
-> As the CEDT table is created with the same code as for x86 I don't think
-> there is much value in duplicating the existing CXL bios-tables test.
-> 
-> The second patch adds a single complex test. We test a lot more configurations
-> on x86 but it does not seem useful to duplicate them all on ARM and this single
-> test should act as a smoke test for any problems that occur.
-> 
-> Run through CI at:
-> https://gitlab.com/jic23/qemu/-/pipelines/564934276
-> Intermittent (unrelated I assume) failure in msys64 aio-test resolved
-> with a retry.
-> 
-> Thanks,
-> 
-> Jonathan
-> 
-> Jonathan Cameron (2):
->   hw/arm/virt: Basic CXL enablement on pci_expander_bridge instances
->     pxb-cxl
->   qtest/cxl: Add aarch64 virt test for CXL
-> 
->  hw/arm/virt-acpi-build.c | 34 ++++++++++++++++++++++++++++
->  hw/arm/virt.c            | 44 ++++++++++++++++++++++++++++++++++++
->  include/hw/arm/virt.h    |  3 +++
->  tests/qtest/cxl-test.c   | 48 ++++++++++++++++++++++++++++++++--------
->  tests/qtest/meson.build  |  1 +
->  5 files changed, 121 insertions(+), 9 deletions(-)
-> 
+-- PMM

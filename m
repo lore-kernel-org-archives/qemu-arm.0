@@ -1,112 +1,161 @@
-Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp3257332lft;
-        Thu, 23 Jun 2022 14:30:00 -0700 (PDT)
-X-Received: by 2002:a63:4081:0:b0:405:4f9:e802 with SMTP id n123-20020a634081000000b0040504f9e802mr9149660pga.211.1656019800014;
-        Thu, 23 Jun 2022 14:30:00 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1656019800; cv=none;
+Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp3345469lft;
+        Thu, 23 Jun 2022 17:37:54 -0700 (PDT)
+X-Google-Smtp-Source: AGRyM1tVtXMbQ/ZBhpAVGVj7+BDUOeB1ReGC+u0j7HFqWYMIbChN2CUgvhwR0aeVmtCYn8098Y4l
+X-Received: by 2002:a05:622a:1b09:b0:305:2a8c:5121 with SMTP id bb9-20020a05622a1b0900b003052a8c5121mr10503683qtb.657.1656031074433;
+        Thu, 23 Jun 2022 17:37:54 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1656031074; cv=none;
         d=google.com; s=arc-20160816;
-        b=PAutZDgqkf4x5L4OrB1nwthVJnx+3u7pqtYuiU25NsPFdrQEJhVgio1wsQIEjRMo6x
-         /NMhhusCbW39KfIJWlj4XLaJVtvrRgO6828arzfUP/eJvSdgSYN/6ed7bkRXbFsq12eX
-         otou8G0Jf38bn86QT/2Remv8qPBVlZFxoQMKVpQBtZkbAD4ZaJy/Mlx6uKDPQRTLjI9e
-         Z9LmZYk7mzaQeYsZm8EjQuWLtmCTTPGq9P7b2cB1lhORUWPdaNR2EtkVXkQd9g/srPZw
-         QIs0b8W3smINUS+PjeCzi13XsgtIQY1BkUOfCDCi31bw0SqAa1c/ZyOYW2TeRdRRVPSh
-         3bZA==
+        b=w2Ij7cyptw3lj58L7fsrHTF+q1nja+VNgl4lLZ+mH36GJun6BnuJZho3uOj8MxaTer
+         8LXZctiSIu2d5F8/3IdzZRj8i6QL818YTY7S/o5P794Xx4g2ZNg/sRAtkEClkV88NThm
+         RA17F23YNLE18DhvzXMTV+okNyuk3L7UqpJ3StYc1nP+0Q2vYzhU45F/1XM+KNqH9C9r
+         TBjMzWd6Da1WPzfJF8Hv3c9nBadvH5eNSq4pHtujhMJd8zWAXjHmuRhkSpacoQuB7DAo
+         c59Ra3ZMT2aFoocXW8Ejp5cl9quQITt0CiziZmpLKpWvibb4kcaJbFan0zIOCCN2wSAU
+         3AtA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=J9l5Pqk/SpE6qJHjy7mA7oXoH1DF/ggN0MIEkkG0yyM=;
-        b=Ks9u/HKCCzNsdPogruvi3/1dSknSGJHNVhHJgYCQ32PaawcrOkW0ZsNJUVZe83WflW
-         pQBhPctYJfauobZ31Nc5KoXOjjBl28MO8qCXRptCFUswmo5o7MXOoG+s9n5krLZZ819u
-         ORZ0gUw3OpUI9zKqC3xVivvQXtzc8ryewLZurvftGzHoun9LWAyGWj4fCy4f9e3j+AGM
-         x+VUs9l6smZmtMbd3YVwyYOIQq7Zf+fFSSMtzjuJ3dLKSEgLWA+GXffRlfB8pG2gRtC9
-         L/c1kCMs6C6io5nmhyKf4HY0Ms/n2ANw0hlWhq3XY2NVSeVD1ThEzXAWdFvYfGONJUQ/
-         jdIA==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=k0DU65YOwjjbCNivxoBgRa+KMOXocJ3QQIw9Yfr12T4=;
+        b=D9S023mDPvKfx9rIPr4OGO30UNmKuvtPDSTX0wBD0Ttw4yKPnVAumUKpDp5d00zY77
+         igISwI5XN+ee22jXIH77W/m82B32czUxcRiKawNoXVwjRDREzppEABzLvg8JuqJMpsOi
+         lVEFTvY+GWstadAvVDgvGpt74NCK/lDX1P3TOWUbXXTZz9PnSgkz2kqnhQ6IsVIA1HLX
+         cV6nVnbt4QwKQS8PiAB+XYg544eK9qaE/Q27moBBK4qLL86mRZ74SR1NgBivqyCPztTW
+         6GpQOp0hqujAKoNlI8jjWY/wYxy8fd1bC7xBSq2BFfMHPvD2hHu/wmm90hZqeuK1ukIx
+         gM4w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=G7FDKjWX;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <richard.henderson@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id q10-20020a056a00088a00b0050df47534bbsor116183pfj.78.2022.06.23.14.29.59
+       dkim=pass header.i=@fb.com header.s=facebook header.b=EKBaH9wo;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=fb.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id 15-20020a0562140ccf00b004642756a9e0si530869qvx.390.2022.06.23.17.37.54
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Thu, 23 Jun 2022 14:30:00 -0700 (PDT)
-Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 23 Jun 2022 17:37:54 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=G7FDKjWX;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=message-id:date:mime-version:user-agent:subject:content-language:to
-         :cc:references:from:in-reply-to:content-transfer-encoding;
-        bh=J9l5Pqk/SpE6qJHjy7mA7oXoH1DF/ggN0MIEkkG0yyM=;
-        b=G7FDKjWXQiNAjdIthSrN2jH55a0lq5oCQDsxNyB4NFqbZ3FNAKMfjt8MpsTgGTeGPq
-         2iSVhwPKSxjZCCCUl1R1Fw9Ps4l4/BasRJRpQ2bCkWDV6fmdOVLnDrALUBVJbk9yTl2S
-         UFleheQA5WGkYOI6+okiFRjr7bfwCogGoRnFu6EIcbCeZvanKQl4tv8jf70sNbaLIrif
-         T/Uc7N1Ydhi0Zkrz19NKfutK7tsgTH9YPYzzRfyWeNXpFU2TaHcDLLPLxtA4hPEO/Gud
-         WuoeL9gTFkqukzxcxD2oOFApI6yqFBDcJfC0/jdR9vp1QpBe0lWv23BdY6Y3pQ4Q2PH6
-         n0Ww==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
-         :content-language:to:cc:references:from:in-reply-to
-         :content-transfer-encoding;
-        bh=J9l5Pqk/SpE6qJHjy7mA7oXoH1DF/ggN0MIEkkG0yyM=;
-        b=JNQD0d7hfnLkn/RVHb20gEuXV/B33LfAEpwl8Fb/XLpp+z4bZB3ZURb3ADzD84Tw4t
-         jX5tevEOAjup9uCC0YpctKpsVhI6awCvcBENPtOWbBkyJoTu/6C+KyD7gagiFKvv2CNQ
-         sn4rH749DBqJo+AKT1bihVV78NFI3xsTiOXoYFnm/vURIWRBx7y4VE1YYrYRB33nAKqa
-         emtKP3GriepM2vVcEi3DPgffRZY4F7sc8+tWfTU7rmk0zucS+HrEuwX2dNt+qZEFShWc
-         L4O0fuqkL2+XoHJqUor1B2DqH0M/MT5zabE9mhvk0vsQKYgfdusYFTqLrBWQeT+04g/5
-         qZfQ==
-X-Gm-Message-State: AJIora85MqBH/8dhABLPP3EDIXbvyn4hVwRMuwPTFwswzW4lEA02ziYg
-	lQxC5L+dzgElRws9SgqXg+dkT1hu
-X-Google-Smtp-Source: AGRyM1vD1ym5ZP8GoMUir3YD96azEX/HOBpoKan92G3qiar5bth9ar1HBopHQzeHnfJPtFb3EfZooQ==
-X-Received: by 2002:a05:6a00:d9b:b0:525:7208:3d9 with SMTP id bf27-20020a056a000d9b00b00525720803d9mr663683pfb.82.1656019799506;
-        Thu, 23 Jun 2022 14:29:59 -0700 (PDT)
-Return-Path: <richard.henderson@linaro.org>
-Received: from ?IPV6:2602:ae:1543:f001:393f:6246:99c5:ff8a? ([2602:ae:1543:f001:393f:6246:99c5:ff8a])
-        by smtp.gmail.com with ESMTPSA id c26-20020a62e81a000000b0050dc762816dsm110635pfi.71.2022.06.23.14.29.57
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 23 Jun 2022 14:29:58 -0700 (PDT)
-Message-ID: <0a1ecd14-69a8-afc6-f74c-18d5abf2e4d0@linaro.org>
-Date: Thu, 23 Jun 2022 14:29:55 -0700
+       dkim=pass header.i=@fb.com header.s=facebook header.b=EKBaH9wo;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=fb.com
+Received: from localhost ([::1]:55088 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1o4XKb-00086D-RC
+	for alex.bennee@linaro.org; Thu, 23 Jun 2022 20:37:53 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:59000)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <prvs=717463a23e=pdel@fb.com>)
+ id 1o4XK7-00084Q-NW
+ for qemu-arm@nongnu.org; Thu, 23 Jun 2022 20:37:24 -0400
+Received: from mx0b-00082601.pphosted.com ([67.231.153.30]:31436)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <prvs=717463a23e=pdel@fb.com>)
+ id 1o4XK5-00084A-8j
+ for qemu-arm@nongnu.org; Thu, 23 Jun 2022 20:37:23 -0400
+Received: from pps.filterd (m0148460.ppops.net [127.0.0.1])
+ by mx0a-00082601.pphosted.com (8.17.1.5/8.17.1.5) with ESMTP id 25NK2uHf018927
+ for <qemu-arm@nongnu.org>; Thu, 23 Jun 2022 17:37:14 -0700
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=fb.com;
+ h=from : to : cc : subject
+ : date : message-id : in-reply-to : references : mime-version :
+ content-transfer-encoding : content-type; s=facebook;
+ bh=k0DU65YOwjjbCNivxoBgRa+KMOXocJ3QQIw9Yfr12T4=;
+ b=EKBaH9wo/XduhGNO12j8ECBc8MREjww770AS40xk77/lgbLilWnFb4vIiti4itZ7rV9i
+ kG3w6GgB8cy9sBneduSttNruBzTTEftNwsOd82INl6ZKrAgLmoLPZ1nMXdjp2vChY83W
+ CPupVZVUSEW3zX+1ZVr4WhL8NIdv6jvlyi8= 
+Received: from maileast.thefacebook.com ([163.114.130.16])
+ by mx0a-00082601.pphosted.com (PPS) with ESMTPS id 3gvqxxvg26-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128 verify=NOT)
+ for <qemu-arm@nongnu.org>; Thu, 23 Jun 2022 17:37:14 -0700
+Received: from twshared18443.03.prn6.facebook.com (2620:10d:c0a8:1b::d) by
+ mail.thefacebook.com (2620:10d:c0a8:83::6) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2375.28; Thu, 23 Jun 2022 17:37:12 -0700
+Received: by devvm9194.prn0.facebook.com (Postfix, from userid 385188)
+ id 320C588BA292; Thu, 23 Jun 2022 17:37:02 -0700 (PDT)
+From: Peter Delevoryas <pdel@fb.com>
+To: 
+CC: <pdel@fb.com>, <clg@kaod.org>, <peter.maydell@linaro.org>,
+ <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>
+Subject: [PATCH v2 1/8] aspeed: Set CPU memory property explicitly
+Date: Thu, 23 Jun 2022 17:36:54 -0700
+Message-ID: <20220624003701.1363500-2-pdel@fb.com>
+X-Mailer: git-send-email 2.30.2
+In-Reply-To: <20220624003701.1363500-1-pdel@fb.com>
+References: <20220624003701.1363500-1-pdel@fb.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.9.1
-Subject: Re: [RFC PATCH] include/qemu/host-utils: Remove the *_overflow
- wrappers
-Content-Language: en-US
-To: Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org,
- Paolo Bonzini <pbonzini@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>,
- =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>
-References: <20220623164051.506316-1-thuth@redhat.com>
- <CAFEAcA-k73D5fPfp5XnD2gtRO0pTXpAt_xTG51dGnzji+=NGqA@mail.gmail.com>
-From: Richard Henderson <richard.henderson@linaro.org>
-In-Reply-To: <CAFEAcA-k73D5fPfp5XnD2gtRO0pTXpAt_xTG51dGnzji+=NGqA@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-TUID: xYpZYBLUNomr
+Content-Transfer-Encoding: quoted-printable
+X-FB-Internal: Safe
+Content-Type: text/plain
+X-Proofpoint-ORIG-GUID: cfzP7kt2pKEEG5llTCcs-FFkejhyvUgx
+X-Proofpoint-GUID: cfzP7kt2pKEEG5llTCcs-FFkejhyvUgx
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.205,Aquarius:18.0.883,Hydra:6.0.517,FMLib:17.11.122.1
+ definitions=2022-06-23_11,2022-06-23_01,2022-06-22_01
+Received-SPF: pass client-ip=67.231.153.30;
+ envelope-from=prvs=717463a23e=pdel@fb.com; helo=mx0b-00082601.pphosted.com
+X-Spam_score_int: -21
+X-Spam_score: -2.2
+X-Spam_bar: --
+X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.082,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 4TamD7w9ARE2
 
-On 6/23/22 12:30, Peter Maydell wrote:
->> -static inline bool sadd32_overflow(int32_t x, int32_t y, int32_t *ret)
->> -{
->> -#if __has_builtin(__builtin_add_overflow) || __GNUC__ >= 5
->> -    return __builtin_add_overflow(x, y, ret);
->> -#else
->> -    *ret = x + y;
->> -    return ((*ret ^ x) & ~(x ^ y)) < 0;
->> -#endif
->> -}
-> 
-> I think I'd prefer to keep the wrapper functions and just delete
-> the fallback ifdeffery, but I guess I don't feel really strongly
-> about it. Richard, do you have an opinion?
+Signed-off-by: Peter Delevoryas <pdel@fb.com>
+---
+ hw/arm/aspeed_ast2600.c | 2 ++
+ hw/arm/aspeed_soc.c     | 2 ++
+ 2 files changed, 4 insertions(+)
 
-Likewise I don't feel strongly, but lean toward keeping the names.  I will point out that 
-without these names, one has to track down the type of each argument to figure out what 
-is, or is not, overflowing.
+diff --git a/hw/arm/aspeed_ast2600.c b/hw/arm/aspeed_ast2600.c
+index f70b17d3f9..f950fff070 100644
+--- a/hw/arm/aspeed_ast2600.c
++++ b/hw/arm/aspeed_ast2600.c
+@@ -294,6 +294,8 @@ static void aspeed_soc_ast2600_realize(DeviceState *d=
+ev, Error **errp)
+=20
+         object_property_set_int(OBJECT(&s->cpu[i]), "cntfrq", 1125000000=
+,
+                                 &error_abort);
++        object_property_set_link(OBJECT(&s->cpu[i]), "memory",
++                                 OBJECT(get_system_memory()), &error_abo=
+rt);
+=20
+         if (!qdev_realize(DEVICE(&s->cpu[i]), NULL, errp)) {
+             return;
+diff --git a/hw/arm/aspeed_soc.c b/hw/arm/aspeed_soc.c
+index f530028874..06e5629800 100644
+--- a/hw/arm/aspeed_soc.c
++++ b/hw/arm/aspeed_soc.c
+@@ -247,6 +247,8 @@ static void aspeed_soc_realize(DeviceState *dev, Erro=
+r **errp)
+=20
+     /* CPU */
+     for (i =3D 0; i < sc->num_cpus; i++) {
++        object_property_set_link(OBJECT(&s->cpu[i]), "memory",
++                                 OBJECT(get_system_memory()), &error_abo=
+rt);
+         if (!qdev_realize(DEVICE(&s->cpu[i]), NULL, errp)) {
+             return;
+         }
+--=20
+2.30.2
 
-
-r~

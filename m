@@ -1,134 +1,126 @@
-Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp399716lft;
-        Fri, 24 Jun 2022 08:18:06 -0700 (PDT)
-X-Google-Smtp-Source: AGRyM1uzSwI/TyAfQbXjVN0hKqCeHtKS/GoVNfpVHpVU7VzftKIp6pLn1CIE64nb1vUys3PIIEdk
-X-Received: by 2002:ae9:ec19:0:b0:6ae:e43b:80ff with SMTP id h25-20020ae9ec19000000b006aee43b80ffmr10411821qkg.324.1656083886394;
-        Fri, 24 Jun 2022 08:18:06 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1656083886; cv=none;
+Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp425531lft;
+        Fri, 24 Jun 2022 08:59:38 -0700 (PDT)
+X-Google-Smtp-Source: AGRyM1srUyN6ltGIvWzx6Zsjf6PX3oAQ+bCZ982mATHMvc+GJGOaumQRD7M9RMt/L88dNSczpK+M
+X-Received: by 2002:a05:6402:1910:b0:435:ccca:1d8c with SMTP id e16-20020a056402191000b00435ccca1d8cmr12085707edz.211.1656086378768;
+        Fri, 24 Jun 2022 08:59:38 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1656086378; cv=none;
         d=google.com; s=arc-20160816;
-        b=WqTftCgmGZtMf+mE9CnQReuWUXezKA8glwf77xEcyF6CtgSakqjP43s8o10ZmVKVNJ
-         9xMWIgZ710VXJh4poliTCxaMSIN7ruLWdOspmpzpiu1rjOZ2XJ2ORHx799rm/iw0PZ6h
-         ST2fljhxNnUrTZGikCy1F+N8l/pB9O2nyJStKkmzBgyLt2S7GYh8scQJ7tuIhxKV+vrQ
-         U3v0VdNd8X7qzIHfWE+txJy1bF0JhFIUIo4DVoecabmUIImqDu9kDxTz7PtS5T8FbFrU
-         fpJWoqr2soP7d1ICBvOVSFcdTACM4boPCwqEHW5dyzliXon+H6CqjjReDLtm4lBRQmQ+
-         Qu5Q==
+        b=JydNEACJSuG474XGywugWjUa6MjEXwNpYHkZ6tDaKHxrKsqFMUwKDVcey7OV0qk7SU
+         YngqaY4aHpUg0eBRROu0kzyfUgMXABiu9LfhXU2z7En9979sH0yEwLaZEfDF26TcNN0c
+         BDTiCK26gCULPuxmmwdZs+zQq8evmJcJW9QxWY+id3NzhRPKMDKT5WKSCl3iiDm0uzMX
+         hg8U7zb5wAaYtkNjMDlaIQROrQaFihGuQk3yCOjbY0dIQ+QtGTuAmukO/Asq0vHSk1us
+         XCZH6kNrfizHT1ONxbwYytzV7A+wDkx87FVAW3qMdJphB82k9CJmbI0tqcCcc1yEJjJ5
+         irDA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=c7yUWMo0qXMJVFx98C8iv0Mp5JhFV+I9j3UEcKND8K0=;
-        b=sw90exMD5R7BR1vHXyHChhPwi94gucIxi/qy1gMj866S5McO+EmYSsy0jcHrnMuUG0
-         Li5kpZvZC0z4T1pEk2KIBg3lB/wJJOxSOA+m9LrFn7loxdsfBrCPLGSJ2XHd13aAKk5q
-         hZXNi5ubTDV1kDBe53PJ6bTDUpdH6cu7LQ1uUM+bvnr8BN6Lt+PmfoJz5c+845ynk46Q
-         2USLG2HoQoI80E2K+NStLeiHcAwWhtv22lsjQ7F7vRkX6WDHa/tJMm9elsZLMhYPl/p2
-         Jod8rAHBU+FYixivoaYxaGt1uLTTMS9y3wRl79Pt4q32sC+s1N8+rwbc+iSYkTH1Oin6
-         nk0w==
+        h=content-transfer-encoding:mime-version:organization:references
+         :in-reply-to:message-id:subject:cc:to:from:date;
+        bh=bmVWrZVlwXFIW3MMXOtRPgpWW4dQ4QXHYkeDl6kd2A0=;
+        b=LfmRlEi4oAxc0ivgt0xhVqq7pegYFNbXcTCmFKO4krNZlDIgsYBfbdYdAUNSx3zYZm
+         ooVrNHkuM2veEA6OgFh01x3GUGj/46KySUgS9uFbz6Zfe3r45maci3Ikd1nI34HuEfSx
+         hpb7kil3qZLLFVcLNbaPwfryywFgXa+eWdAJiy2FIk7qp6tOOnTVA+MKF+dkG+UbefO/
+         Z+kpCabmOunHLQ3kmAwRKQafAts8HV9kuV1l8ztzqrGh6crv8VA/aRxyXHNatNmDFqkx
+         C1cD49Hm0LezwJzTMDD1jNqCxnNIsAswyYwVqDhVpFj2IR8uCSdEImh/J51MTYDiiOoS
+         XuVA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=doLuzt3O;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id c20-20020a05622a025400b00304f1f952bdsi1821204qtx.531.2022.06.24.08.18.06
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 24 Jun 2022 08:18:06 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       spf=pass (google.com: domain of jonathan.cameron@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=jonathan.cameron@huawei.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
+Return-Path: <jonathan.cameron@huawei.com>
+Received: from frasgout.his.huawei.com (frasgout.his.huawei.com. [185.176.79.56])
+        by mx.google.com with ESMTPS id qw4-20020a1709066a0400b00722f1da9fc7si2917981ejc.793.2022.06.24.08.59.38
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Fri, 24 Jun 2022 08:59:38 -0700 (PDT)
+Received-SPF: pass (google.com: domain of jonathan.cameron@huawei.com designates 185.176.79.56 as permitted sender) client-ip=185.176.79.56;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=doLuzt3O;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:45692 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1o4l4P-00074W-Rr
-	for alex.bennee@linaro.org; Fri, 24 Jun 2022 11:18:05 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33302)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1o4kxJ-0004HG-Qt
- for qemu-devel@nongnu.org; Fri, 24 Jun 2022 11:10:45 -0400
-Received: from mail-yw1-x112b.google.com ([2607:f8b0:4864:20::112b]:37412)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1o4kxH-0003jJ-S5
- for qemu-devel@nongnu.org; Fri, 24 Jun 2022 11:10:45 -0400
-Received: by mail-yw1-x112b.google.com with SMTP id
- 00721157ae682-31772f8495fso27768187b3.4
- for <qemu-devel@nongnu.org>; Fri, 24 Jun 2022 08:10:43 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=c7yUWMo0qXMJVFx98C8iv0Mp5JhFV+I9j3UEcKND8K0=;
- b=doLuzt3Oo7JykcCZ4Lww/cUv70+uCqUgJJK09ph5Kmvbx4nz4oOUVi/qcPydaX0C/o
- ZlP2sDwjLFWBrfmAq9X7Kbb3iwsQV1vTjbADJtfoC5UWJkzvPmmC/L4wTEaC4DO4Rp7h
- fFlJRti14gLVd0Nh20z99twxO87CkX2psA9C5bfmhaIhe2o0CiXoyrqPtkyXf8HhBL9m
- KniPrVYUIk1QtympSSA3t5ihnX6iBAu4twSBI2wwvGb3WbH65xpOf8mm40zfvLXEQ0af
- QFDzKE7AChPVv1qRY9fk1i4g8i5EtBfp56LRihpl40CHyQ0bItSv20gBlFzwg57X0C+X
- w55Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=c7yUWMo0qXMJVFx98C8iv0Mp5JhFV+I9j3UEcKND8K0=;
- b=kNb3XVUWBlGuRpaoJpWhPkDKLKHGac3HCWXP9gRg5g2hJvYdBA3iAZQs4sUgNuNsaU
- m/JxSGeDoQmuw1f0/0Pd48+SEyHEugXt7CEel02tm1vh/KbqXM3eRIHMneut7mblHcMZ
- LMcFSo/DqOwSBxj8LPv2QOJoOsrJB2lo2xsn/c+JOd6aa/K+pWUeVEn1Q5cb1OFUD0pG
- nDQLHQcddPhoj1rqwXc9+aJ2zI7OBR9BYdGr8TSQlHnxJqPrbu/w4R1lLADtbQwNSSnF
- VMgPnXtkpwezcABjRZ6Sq8+fBL9W1eB/eEnzXzUD/+LehGPdTje+zzlk09fDXSZ6vRYB
- f8iQ==
-X-Gm-Message-State: AJIora+3Krl8OSStcLnV0ZKWoebf27oSUPoH4O/wY3Zja5GsAWk6ErWh
- zD7s2wA/qmDYO3Kx6w9APRefsXyjpKICyC8ZaAaoyQ==
-X-Received: by 2002:a81:8486:0:b0:317:a4af:4e0a with SMTP id
- u128-20020a818486000000b00317a4af4e0amr17595345ywf.455.1656083442567; Fri, 24
- Jun 2022 08:10:42 -0700 (PDT)
+       spf=pass (google.com: domain of jonathan.cameron@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=jonathan.cameron@huawei.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
+Received: from fraeml703-chm.china.huawei.com (unknown [172.18.147.206])
+	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4LV1tQ0lVsz686Xk;
+	Fri, 24 Jun 2022 23:55:42 +0800 (CST)
+Received: from lhreml710-chm.china.huawei.com (10.201.108.61) by
+ fraeml703-chm.china.huawei.com (10.206.15.52) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id
+ 15.1.2375.24; Fri, 24 Jun 2022 17:59:37 +0200
+Received: from localhost (10.81.207.131) by lhreml710-chm.china.huawei.com
+ (10.201.108.61) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2375.24; Fri, 24 Jun
+ 2022 16:59:36 +0100
+Date: Fri, 24 Jun 2022 16:59:32 +0100
+From: Jonathan Cameron <Jonathan.Cameron@Huawei.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+CC: <qemu-devel@nongnu.org>, <alex.bennee@linaro.org>, <qemu-arm@nongnu.org>,
+	"Michael S . Tsirkin" <mst@redhat.com>, Ben Widawsky <bwidawsk@kernel.org>,
+	Paolo Bonzini <pbonzini@redhat.com>, <linux-cxl@vger.kernel.org>,
+	<linuxarm@huawei.com>, Marcel Apfelbaum <marcel@redhat.com>, Igor Mammedov
+	<imammedo@redhat.com>, Markus Armbruster <armbru@redhat.com>, "Mark
+ Cave-Ayland" <mark.cave-ayland@ilande.co.uk>, Adam Manzanares
+	<a.manzanares@samsung.com>, Tong Zhang <ztong0001@gmail.com>, "Shameerali
+ Kolothum Thodi" <shameerali.kolothum.thodi@huawei.com>, Dan Williams
+	<dan.j.williams@intel.com>
+Subject: Re: [PATCH v11 1/2] hw/arm/virt: Basic CXL enablement on
+ pci_expander_bridge instances pxb-cxl
+Message-ID: <20220624165932.00007ec0@Huawei.com>
+In-Reply-To: <CAFEAcA8MLTm9XwAV_JU_EPiT9wfaZed8B19-pL=HobKepJsnkg@mail.gmail.com>
+References: <20220616141950.23374-1-Jonathan.Cameron@huawei.com>
+	<20220616141950.23374-2-Jonathan.Cameron@huawei.com>
+	<CAFEAcA8U9oNDStfLpxOwodGm9MCTdLrt-WV+x_-rTGw9UpBGvA@mail.gmail.com>
+	<20220624133909.00005f6e@Huawei.com>
+	<CAFEAcA8GA+ZXr2eS9bVxnhZRtda17Wx0Ud8CfcA90T6yiaecew@mail.gmail.com>
+	<20220624150844.000005ec@Huawei.com>
+	<20220624155436.000047cb@Huawei.com>
+	<CAFEAcA8MLTm9XwAV_JU_EPiT9wfaZed8B19-pL=HobKepJsnkg@mail.gmail.com>
+Organization: Huawei Technologies Research and Development (UK) Ltd.
+X-Mailer: Claws Mail 4.0.0 (GTK+ 3.24.29; i686-w64-mingw32)
 MIME-Version: 1.0
-References: <20220624134109.881989-1-mark.cave-ayland@ilande.co.uk>
- <20220624134109.881989-47-mark.cave-ayland@ilande.co.uk>
-In-Reply-To: <20220624134109.881989-47-mark.cave-ayland@ilande.co.uk>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 24 Jun 2022 16:10:04 +0100
-Message-ID: <CAFEAcA-VOLo6gwdJ4oejhUB54aPMHOgAiby8KNGN+-uQ0Li7OQ@mail.gmail.com>
-Subject: Re: [PATCH v2 46/54] lasips2: use sysbus IRQ for output IRQ
-To: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
-Cc: richard.henderson@linaro.org, deller@gmx.de, mst@redhat.com, 
- pbonzini@redhat.com, hpoussin@reactos.org, aleksandar.rikalo@syrmia.com, 
- f4bug@amsat.org, jiaxun.yang@flygoat.com, qemu-arm@nongnu.org, 
- qemu-devel@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::112b;
- envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x112b.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: EduuDtW3Ze94
+Content-Type: text/plain; charset="US-ASCII"
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [10.81.207.131]
+X-ClientProxiedBy: lhreml735-chm.china.huawei.com (10.201.108.86) To
+ lhreml710-chm.china.huawei.com (10.201.108.61)
+X-CFilter-Loop: Reflected
+X-TUID: S1rv2BsEnjSx
 
-On Fri, 24 Jun 2022 at 14:44, Mark Cave-Ayland
-<mark.cave-ayland@ilande.co.uk> wrote:
->
-> This enables the IRQ to be wired up using sysbus_connect_irq() in
-> lasips2_initfn().
->
-> Signed-off-by: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
-> Acked-by: Helge Deller <deller@gmx.de>
+On Fri, 24 Jun 2022 16:01:42 +0100
+Peter Maydell <peter.maydell@linaro.org> wrote:
 
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+> On Fri, 24 Jun 2022 at 15:54, Jonathan Cameron
+> <Jonathan.Cameron@huawei.com> wrote:
+> > Just occurred to me there is another barrier to an approach that adds
+> > DT bindings.
+> > I fairly sure hw/pci-bridge/pci_expander_bridge.c (PXB)
+> > only works on ACPI platforms and is the only host bridge supported
+> > for CXL emulation in QEMU.  
+> 
+> Isn't it probeable like any other PCI device/bridge ?
 
-thanks
--- PMM
+Nope - PXB is a really weird device. (I tested it quickly in case I was
+wrong and indeed, no sign of device on the downstream side without a
+suitable BIOS / ACPI)
+There is no driver support for it as such, rather it presents
+as two things.
+1) A EP on the main host bridge - which is used for interrupt routing
+   and possibly a few other things.  Linux has no idea that's what it
+   is though so attaches no driver to it.  lspci shows this as
+   Red Hat, Inc, QEMU PCIe Expander Bridge
+
+2) A host bridge with firmware described characteristics (bus number
+   range and similar).  Host bridges as defined in ACPI are a concept
+   rather than actual hardware and presented to the OS via firmware
+   descriptions (ACPI DSDT stuff in this case).
+
+You could probably add dt description via
+pci-host-ecam-generic bindings though but it would be an interesting
+late bit of dt addition in the virt_machine_done() function. Similar
+to the fw_cfg and ACPI stuff done at that stage to deal with PXB
+devices becoming visible.
+
+So gut feeling is PXB could be made to work with DT, but doesn't today.
+Give the main usecase for PXB is typically NUMA description I guess no one
+noticed on DT platforms.
+
+Jonathan
+
+
+
+ 
+> 
+> -- PMM

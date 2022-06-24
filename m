@@ -1,132 +1,150 @@
-Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp67691lft;
-        Thu, 23 Jun 2022 22:40:58 -0700 (PDT)
-X-Google-Smtp-Source: AGRyM1slm+JX7wjMKbigx+zZ8u8bvvTkxK9q6pqLf3gu1U8r3ZsAii0g8xrZl7Z7k0X9cQKg5oV0
-X-Received: by 2002:a17:906:f198:b0:711:d5a1:6acf with SMTP id gs24-20020a170906f19800b00711d5a16acfmr11319692ejb.627.1656049257910;
-        Thu, 23 Jun 2022 22:40:57 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1656049257; cv=none;
+Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp90187lft;
+        Thu, 23 Jun 2022 23:37:00 -0700 (PDT)
+X-Google-Smtp-Source: AGRyM1s680LjFlWxVBS5maoe7pUkVqEr4uXwgJH4OljyFrEcpS50AHxrDriFrslwHqj8Q1fedlWK
+X-Received: by 2002:a0c:a902:0:b0:470:7411:a6e2 with SMTP id y2-20020a0ca902000000b004707411a6e2mr8479081qva.129.1656052620396;
+        Thu, 23 Jun 2022 23:37:00 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1656052620; cv=none;
         d=google.com; s=arc-20160816;
-        b=Hve08eRBtgaBhYQWTGalt2zfCgIn6SkyknX2W8XonSmsoq022GxjlkZGdWuO0Uv/JS
-         ignMSN91AN1guN0+23HYI1jvC1XE2hMa86K0SPyxb85BU45XOjC1s6cljcstU+KQX9TF
-         84/ze/YRf5JsDWQ2FaIBsQq0GzvYpE1x8bnEkVwx7HAXKpvleX1JM+XuJaGYGaBP6umy
-         KmO2xf/2tSnB0exayYB6BvylXY1n/J9k0tY8+rP2G4SB/ZKyqhLTDGTbyOIHlL8G6i3G
-         ETk9Mo+b3UqvsvtWzurmT6JoZU1u4Gdy1gTWtIC+O6jsygkKGY5ZyTkMCvIlM+whmvFR
-         ENpA==
+        b=gflLPe7Z+xp5Qb8QFusQtVjUkrzDklfTTGJ4VnXL70FIv/kJ2ZNrmQwkTA3eMHy9za
+         OMEOemV82A+RynW07Il5eape9Rg7Ew4CHGdwODlds8k21lo4nKdaywX5xqk2AvMZ7CBs
+         DRfJu0N2vJFfklrlSHcuKBrQdvOnhoWVOtaends7opUkiIjte+N1h9w9fXF+XAUGHfIA
+         x1XvrUlLxJYzO+FNJjSYFzo2gsCbepyrKFl8O5xU1+BW64GZF1G1cM0Z8500q2dQkgME
+         DhsvjESZMGQodt4eJHWX+hvIl26pWadxmu0qvRpuKRPK4kwgW+CviRducrYVCGK+E7JA
+         6nwQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:from
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=NvZk4w/4NMxXzopQHF+1/MxkNYjHe8h3GsC16UgBLQU=;
-        b=Pl8OvpB67T/m2wI/h542SvM5MZUp1iQaa9p1ppT/9BwG5ZNE0imdnMkIxRzdnWI6A1
-         H2D7vBdDPkZcwYmCSlYPaMT7ibMyIGFqsjp4dTRrf1LIKKfjonCtBZuYB91Mop6dHMGL
-         eWQlBjvsc9QOVmCaWXQVXAqTsmEQQLA7WZEP30w5aJIUL/gEiPCKkMoUhpBGKGDPbf/0
-         IB8KDQgSKTND107d314WJBwJDdqfIuZPJZNwt9yer4BsMIHkubVtky/GPrVYZtWtJXOA
-         rZ8gqGs1d+G1IrX4KXNyrFJw4NDuUHJuYfA45yPJXG40N/40RBN9UgRpzIqpiwox597P
-         kl7Q==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:references:cc:to:content-language:subject
+         :user-agent:mime-version:date:message-id;
+        bh=rQDc5a5hpG51VoOMkg1lL/ls9CrR3KjCcpSPq2JOtYA=;
+        b=dvIkuwks4HbjfVGHCypepgDw4HhEppo0X4hqrJlUuJemLU5yqSVVCXvuGnaebfr++z
+         McmmY/0XNYRhEWoTavsO8QFCejotVN5vE8iyYsEntF1OBHVmKtBs+6iSpCr8QC0yVPYQ
+         GsYt1vjWNvFJQBCcy2j167uDfIDkwIc6pw34iWmiM0633++kSNgfXlwlX5SCWBeLoq0i
+         tlZt7NNa7pB336/7dAf3TURB1yMOcU9+kRn3XbRwhUVT8Top561Mj4h8aUBURtStHeoK
+         Yu2ji0h/jNOquhO3mJsf8sa75YGQP85QCpmLM0uZlmz4edMvy7VfeSokfYrLF/d7kbsj
+         vFJw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=MAFbxkSR;
-       spf=pass (google.com: domain of thuth@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <thuth@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
-        by mx.google.com with ESMTPS id i27-20020a170906265b00b006feb8b6b37esi1161671ejc.907.2022.06.23.22.40.57
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id d24-20020a05620a137800b006a658fdc4basi1148863qkl.40.2022.06.23.23.37.00
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 23 Jun 2022 22:40:57 -0700 (PDT)
-Received-SPF: pass (google.com: domain of thuth@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 23 Jun 2022 23:37:00 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=MAFbxkSR;
-       spf=pass (google.com: domain of thuth@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1656049256;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=NvZk4w/4NMxXzopQHF+1/MxkNYjHe8h3GsC16UgBLQU=;
-	b=MAFbxkSRaFPCnVUv0TLISoaUkiEVAaLSw5jm1m0aM49DCYpfX3uxS+7KW80bV6EEIDI15/
-	te7ljz56oTL/5GqX09XGQVfJCkKf4naOK8o9yHmUhM2OUaWyRLX5Hdnn8pOkOCTZ96LV1G
-	WBWAe9GU4keVd4KvwetwU45cJAbKzsU=
-Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
- [209.85.128.72]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-554-qK18xbEHOAqRKpqkzRTfaQ-1; Fri, 24 Jun 2022 01:40:55 -0400
-X-MC-Unique: qK18xbEHOAqRKpqkzRTfaQ-1
-Received: by mail-wm1-f72.google.com with SMTP id r186-20020a1c44c3000000b003a02fa133ceso562018wma.2
-        for <alex.bennee@linaro.org>; Thu, 23 Jun 2022 22:40:55 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
-         :content-language:to:cc:references:from:in-reply-to
-         :content-transfer-encoding;
-        bh=NvZk4w/4NMxXzopQHF+1/MxkNYjHe8h3GsC16UgBLQU=;
-        b=13/c2va68+gKa35fzFvnka1df9WDHckfofbna+HHc/DhtLPZjwq1CalaWnfA/lI8je
-         Vzc4XhJuiGwpL44doNCGwZj3I5eiLOr/0sKSoWkOZUKoiOesqSLDlyiPiWyLI/UaGw90
-         r/8CVLSRAbPzhFHcCCgWHrjWtOfOPEyc7Ro1glzNMHj+/7ieGL9bmuwtXEZujGCe13KU
-         mfWt+6taO7UqKStsEBIGAAPRKyLb9g7W2LCK/FVHlO54xzNJuaOFfGaA/plsz/KYfhpL
-         iAltGZveJkMmXjIPc5uqI43RfA9TgF+3iK6eNsKU2p8lRspDaoV9A/gdsxEJ8RSHbLjD
-         lRow==
-X-Gm-Message-State: AJIora8U4BTBCTZGp7321kidcRGqwvPRX2flqTqk11bCW2wQzUbVq50r
-	EVIuB7hfskmSmwlQ05FdcbZ83ZhgyasH/BCnWnU7N4SYgQN+0TFXAbXK6MDpqvWQyAzX+C6nBBp
-	aM1GpKi2jUZye8LMN
-X-Received: by 2002:a5d:50d0:0:b0:21b:978f:e54 with SMTP id f16-20020a5d50d0000000b0021b978f0e54mr11467559wrt.612.1656049254730;
-        Thu, 23 Jun 2022 22:40:54 -0700 (PDT)
-X-Received: by 2002:a5d:50d0:0:b0:21b:978f:e54 with SMTP id f16-20020a5d50d0000000b0021b978f0e54mr11467547wrt.612.1656049254534;
-        Thu, 23 Jun 2022 22:40:54 -0700 (PDT)
-Return-Path: <thuth@redhat.com>
-Received: from [192.168.0.3] (ip-109-43-176-192.web.vodafone.de. [109.43.176.192])
-        by smtp.gmail.com with ESMTPSA id i5-20020a5d6305000000b0020ff877cfbdsm1225347wru.87.2022.06.23.22.40.53
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 23 Jun 2022 22:40:54 -0700 (PDT)
-Message-ID: <d2dc72e9-3393-f7c2-f79f-2021d47c44b9@redhat.com>
-Date: Fri, 24 Jun 2022 07:40:53 +0200
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:37276 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1o4cw7-0000nV-U4
+	for alex.bennee@linaro.org; Fri, 24 Jun 2022 02:36:59 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:34612)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1o4cvv-0000nF-85
+ for qemu-arm@nongnu.org; Fri, 24 Jun 2022 02:36:47 -0400
+Received: from 5.mo552.mail-out.ovh.net ([188.165.45.220]:41963)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1o4cvs-0002Ve-1e
+ for qemu-arm@nongnu.org; Fri, 24 Jun 2022 02:36:46 -0400
+Received: from mxplan5.mail.ovh.net (unknown [10.108.4.144])
+ by mo552.mail-out.ovh.net (Postfix) with ESMTPS id 4430B26E5F;
+ Fri, 24 Jun 2022 06:36:41 +0000 (UTC)
+Received: from kaod.org (37.59.142.104) by DAG4EX1.mxp5.local (172.16.2.31)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.9; Fri, 24 Jun
+ 2022 08:36:40 +0200
+Authentication-Results: garm.ovh; auth=pass
+ (GARM-104R0051b9e8ccf-034d-4f64-a4a2-c4100f9ad5a1,
+ 5EF2319963E9DB1A14486A5EC8730A2EE4B20F29) smtp.auth=clg@kaod.org
+X-OVh-ClientIp: 82.64.250.170
+Message-ID: <3ba89576-b482-14da-9a23-22c0e652e148@kaod.org>
+Date: Fri, 24 Jun 2022 08:36:35 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.10.0
-Subject: Re: [RFC PATCH] include/qemu/host-utils: Remove the *_overflow
- wrappers
-To: Richard Henderson <richard.henderson@linaro.org>,
- Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org,
- Paolo Bonzini <pbonzini@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>,
- =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>
-References: <20220623164051.506316-1-thuth@redhat.com>
- <CAFEAcA-k73D5fPfp5XnD2gtRO0pTXpAt_xTG51dGnzji+=NGqA@mail.gmail.com>
- <0a1ecd14-69a8-afc6-f74c-18d5abf2e4d0@linaro.org>
-From: Thomas Huth <thuth@redhat.com>
-In-Reply-To: <0a1ecd14-69a8-afc6-f74c-18d5abf2e4d0@linaro.org>
-Authentication-Results: relay.mimecast.com;
-	auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=thuth@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
+ Thunderbird/91.9.0
+Subject: Re: [PATCH v2 1/8] aspeed: Set CPU memory property explicitly
 Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-TUID: DzEwGUjbNJ9S
+To: Peter Delevoryas <pdel@fb.com>
+CC: <peter.maydell@linaro.org>, <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>
+References: <20220624003701.1363500-1-pdel@fb.com>
+ <20220624003701.1363500-2-pdel@fb.com>
+From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
+In-Reply-To: <20220624003701.1363500-2-pdel@fb.com>
+Content-Type: text/plain; charset="UTF-8"; format=flowed
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [37.59.142.104]
+X-ClientProxiedBy: DAG9EX2.mxp5.local (172.16.2.82) To DAG4EX1.mxp5.local
+ (172.16.2.31)
+X-Ovh-Tracer-GUID: d7bdad71-d9aa-4290-88a4-00f176ba925b
+X-Ovh-Tracer-Id: 6591299531615931360
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvfedrudefkedgudduudcutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemucehtddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpefkffggfgfuvfevfhfhjggtgfhisehtjeertddtfeejnecuhfhrohhmpeevrogurhhitggpnfgvpgfiohgrthgvrhcuoegtlhhgsehkrghougdrohhrgheqnecuggftrfgrthhtvghrnhepleelieeigfekfeeitddvieegteeuteekffekleehuefgteetgedvkefghefggfeknecukfhppedtrddtrddtrddtpdefjedrheelrddugedvrddutdegnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmohguvgepshhmthhpohhuthdphhgvlhhopehmgihplhgrnhehrdhmrghilhdrohhvhhdrnhgvthdpihhnvghtpedtrddtrddtrddtpdhmrghilhhfrhhomheptghlgheskhgrohgurdhorhhgpdhnsggprhgtphhtthhopedupdhrtghpthhtohepqhgvmhhuqdgrrhhmsehnohhnghhnuhdrohhrghdpoffvtefjohhsthepmhhoheehvd
+Received-SPF: pass client-ip=188.165.45.220; envelope-from=clg@kaod.org;
+ helo=5.mo552.mail-out.ovh.net
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: jXw0GYLNJSzI
 
-On 23/06/2022 23.29, Richard Henderson wrote:
-> On 6/23/22 12:30, Peter Maydell wrote:
->>> -static inline bool sadd32_overflow(int32_t x, int32_t y, int32_t *ret)
->>> -{
->>> -#if __has_builtin(__builtin_add_overflow) || __GNUC__ >= 5
->>> -    return __builtin_add_overflow(x, y, ret);
->>> -#else
->>> -    *ret = x + y;
->>> -    return ((*ret ^ x) & ~(x ^ y)) < 0;
->>> -#endif
->>> -}
->>
->> I think I'd prefer to keep the wrapper functions and just delete
->> the fallback ifdeffery, but I guess I don't feel really strongly
->> about it. Richard, do you have an opinion?
+On 6/24/22 02:36, Peter Delevoryas wrote:
+> Signed-off-by: Peter Delevoryas <pdel@fb.com>
+
+Please merge this patch with patch 2 in which the "memory" property
+is defined.
+
+Thanks,
+
+C.
+
+
+> ---
+>   hw/arm/aspeed_ast2600.c | 2 ++
+>   hw/arm/aspeed_soc.c     | 2 ++
+>   2 files changed, 4 insertions(+)
 > 
-> Likewise I don't feel strongly, but lean toward keeping the names.  I will 
-> point out that without these names, one has to track down the type of each 
-> argument to figure out what is, or is not, overflowing.
+> diff --git a/hw/arm/aspeed_ast2600.c b/hw/arm/aspeed_ast2600.c
+> index f70b17d3f9..f950fff070 100644
+> --- a/hw/arm/aspeed_ast2600.c
+> +++ b/hw/arm/aspeed_ast2600.c
+> @@ -294,6 +294,8 @@ static void aspeed_soc_ast2600_realize(DeviceState *dev, Error **errp)
+>   
+>           object_property_set_int(OBJECT(&s->cpu[i]), "cntfrq", 1125000000,
+>                                   &error_abort);
+> +        object_property_set_link(OBJECT(&s->cpu[i]), "memory",
+> +                                 OBJECT(get_system_memory()), &error_abort);
+>   
+>           if (!qdev_realize(DEVICE(&s->cpu[i]), NULL, errp)) {
+>               return;
+> diff --git a/hw/arm/aspeed_soc.c b/hw/arm/aspeed_soc.c
+> index f530028874..06e5629800 100644
+> --- a/hw/arm/aspeed_soc.c
+> +++ b/hw/arm/aspeed_soc.c
+> @@ -247,6 +247,8 @@ static void aspeed_soc_realize(DeviceState *dev, Error **errp)
+>   
+>       /* CPU */
+>       for (i = 0; i < sc->num_cpus; i++) {
+> +        object_property_set_link(OBJECT(&s->cpu[i]), "memory",
+> +                                 OBJECT(get_system_memory()), &error_abort);
+>           if (!qdev_realize(DEVICE(&s->cpu[i]), NULL, errp)) {
+>               return;
+>           }
 
-Yes, I checked the calling sites, and some do use different types indeed, 
-but as far as I understood the __builtin_add_overflow(), it should be ok in 
-our cases. Anyway, it's maybe less error prone to keep the wrapper with the 
-fixed parameter types, so I'll send a v2 that just removes the #ifs instead.
-
-  Thomas

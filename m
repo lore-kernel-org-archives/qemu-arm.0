@@ -1,199 +1,99 @@
-Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp369604lft;
-        Fri, 24 Jun 2022 07:37:19 -0700 (PDT)
-X-Google-Smtp-Source: AGRyM1v4ZqJdR3O1VkAZ75mDKzqyb0awKcBz+++PsUgMqTtL4aDY22b2OnMQglZg5jv+lvx9CMm4
-X-Received: by 2002:a37:bc03:0:b0:6ae:dad9:4df1 with SMTP id m3-20020a37bc03000000b006aedad94df1mr10827803qkf.734.1656081439314;
-        Fri, 24 Jun 2022 07:37:19 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1656081439; cv=none;
+Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp387815lft;
+        Fri, 24 Jun 2022 08:02:22 -0700 (PDT)
+X-Received: by 2002:a81:1591:0:b0:317:bb1f:fb83 with SMTP id 139-20020a811591000000b00317bb1ffb83mr17698018ywv.362.1656082942064;
+        Fri, 24 Jun 2022 08:02:22 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1656082942; cv=none;
         d=google.com; s=arc-20160816;
-        b=A1FrIsTE2QgDW0sfkHt1qPD6z59Q/OaQf5d15PxqPAsBYYb78+41ZAhX9zbwCaVHA7
-         Qo6t7yKig0vBKvOLpcWXwJKOdNY2CSPzw9p1rAKvrqaJfOM0fCHWl49Jhq+ScSXjAjuB
-         Tyq9g+J/btagJtxygHVWs35BnX3rU41XeXR8TrhNnNPsCwrTZpjDe0jPmnVbSkPy4C8d
-         FNTdMSfEY0ldC03c7evoZ+/Rgwiji3uoOoe5UDxFxp8xVraYWUOf2emwaWAzJ2WMV4q8
-         o0Cj8BsgcpFMpwCok7L7ZqHqMo/z5lS+kZbap6rbokSelCJEkIX75qn1p/+X+Ssx8II6
-         el1A==
+        b=oQhi9uWX456xo+307NLOtME9nW9t8a4LSSzBHnyYgD/k4yFLLN6l/eHuM45b1+5tEh
+         E3UcsBwbFu4XTqPYHni9VC7jaqru9qWIUQQM6PwfyH5FTTjpdwICN04HoOn0Gk3T27k/
+         z9eDFOT1i1mQlAH3sXGdKSyIkOZHDz99z+6SCppZuY/LOLbSPMOpTtaAEtS816qIAaZc
+         pSae1fwrOm6OA5WDY3r2ZCxa7ovOyqIHae3mQmXGJpVGlAobWbde1Qc/qQm5rfwu5JX8
+         iTkQs045AOzQVa7di4XG7VqivKdWUpKAUTdyfVY4oH/zrKyIImwKwBtaCu/Mby79iyCA
+         BDJA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:cc:to:content-language:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=3jJQAusAk2c0Q/A4meJ6eTMz3NMMwKmecYfR4GUNgck=;
-        b=CNgGvlmxNEPtkNMjhT6bWTjkLuJM9ZgaJP84YqBGDUJjS4selVylVpAilJj8Z7h2+f
-         FsTVnnKzWZk1Hj341Zb2P8D0bs5Zxmz3R1n6QqMemoADbHg8nfEVIY/ArKKxm0uBlnyT
-         QxD2r2QJqQy9sYTcSzvWmXB6mk2AzUY07dQB8WseQuRcitcWs5L32akKcpv0YXwuur74
-         2DRvLeZtB1OjCwIHXab5zaBraJ3TOAuODG4VMMeBksvT3XOAsPkFT25WWx1sHblG5OFq
-         XsYJ+BZPFz2JqfMbTSIzgdH35WcQwCdmBy2kGD4nJjrbMgbTcSblL0eoQ3HubYDaknPt
-         9miA==
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature;
+        bh=EnYWT6+eru3uHPWApb4vpG/T5apsG8TSW4cZmehz1lw=;
+        b=P/gHZWlVZD6OVQ8AklVfKvelZ+1NOPulvvAzIJqm/ySwz2rb0k9owZEYb865N9d/iI
+         1pTWO4SRCX02rMFbYcAoBPRqxjgSMro040GS+ZxAh7iFTB4S7x66OJHSNzRtXfW/fX32
+         SeI6B4xiYuAWp+cUGuGZvjFvWZ/TLgqNcJzz+YrsqOtl56AvlNSH51nfAKwvNHHnuAue
+         2xbAEeo1vzJoFVEkkUBn3OiRMdZncB30Z6rLSd7EHn7LN2rNUglz7Dmx0ukLhmToQG8b
+         I5QGr4lThiKOyJ8Xflmk7Wh73W8mesqwZe90/vjGFojCzIFwtJy+VDBI3X7+5i2wPQDN
+         +Wow==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=hZIs6V5Z;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=zq7QZtDL;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id jr8-20020a0562142a8800b004705caabd15si1510745qvb.251.2022.06.24.07.37.19
+Return-Path: <peter.maydell@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id v18-20020a25b812000000b0066997f75f8bsor1268376ybj.4.2022.06.24.08.02.21
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 24 Jun 2022 07:37:19 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Fri, 24 Jun 2022 08:02:22 -0700 (PDT)
+Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=hZIs6V5Z;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=zq7QZtDL;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:41634 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1o4kQw-0004ao-PQ
-	for alex.bennee@linaro.org; Fri, 24 Jun 2022 10:37:18 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46244)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1o4k7M-0002UQ-Es
- for qemu-arm@nongnu.org; Fri, 24 Jun 2022 10:17:05 -0400
-Received: from mail-pg1-x535.google.com ([2607:f8b0:4864:20::535]:34770)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1o4k7K-0002Te-NH
- for qemu-arm@nongnu.org; Fri, 24 Jun 2022 10:17:04 -0400
-Received: by mail-pg1-x535.google.com with SMTP id g186so2572206pgc.1
- for <qemu-arm@nongnu.org>; Fri, 24 Jun 2022 07:17:01 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=message-id:date:mime-version:user-agent:subject:content-language:to
- :cc:references:from:in-reply-to:content-transfer-encoding;
- bh=3jJQAusAk2c0Q/A4meJ6eTMz3NMMwKmecYfR4GUNgck=;
- b=hZIs6V5ZhGehLmFWTr2S1puNyt8BFgfXoqA57Xyu4DSB7Sv/RP9FElBBsW5w8kuvCo
- u22Zcbnh2aYXO3B12OdvLQVYEajhztSJVJvdgve59nC/JHl3DvqIJYNJOEL6I+E4SK7e
- h67TiCXcDEacC9AVZRtae0coI4Y7lQ/qrXpxIZGq0hVIGEITvQUYbpvfJe3NIMcXxZGq
- m6ctLVcf2Q8AQ7AUUwQwLtfQfwRBt5QDdXx3yQ2aG++phCC3v4CNUJDSWd8fD2Bm88xw
- OUts3F2Iw22l8BuEb+v3RzAMg7dc0hAX0SLrZpbG4eY/+F3bolf8Ywr8gehsdv8iclWz
- wwWw==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc;
+        bh=EnYWT6+eru3uHPWApb4vpG/T5apsG8TSW4cZmehz1lw=;
+        b=zq7QZtDLmFXHZztoUKje/w4bFHHUIrWSc+EfGMYwAsFnl94+nuNoEQtNLEwY9Utw2w
+         XXlgeWTqV4VMtIEmbW2CQR22pTCLVggk1Cv4M2swje8tO3XyslNXhF9lkSfls1aH91vE
+         lUldpVSJyfvzAPqlakH7K6aa3dkNP4Y3Z5OfRaloT4Rf2Z/fAT4EuXhgzD8drzW8jIui
+         dS+whmMIYPOloBJV86hpTHDS0Vj/ImCxuJGnN+5JSw7HIJ6QxhIwj6ZM2FozegAZVkoj
+         1Ej1zI2qRvyaz/uh/2rMK9RGC3pgcofibN/k/HtkE8jg+mQR5hwjTDPgGLiSK1yVRAY2
+         Narg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
- :content-language:to:cc:references:from:in-reply-to
- :content-transfer-encoding;
- bh=3jJQAusAk2c0Q/A4meJ6eTMz3NMMwKmecYfR4GUNgck=;
- b=TLwjHCwFLf2lIAwd/+drIVTQYqRJND3KsiXSAplO1+bJPFzOc1rF1Apm4ZWgSTrw+0
- 6kZUuzNXWIHcWKmf0zwMkLdEgy0BzsaQT8hUXLfHnFD8ZLOrrnEFsA024XQoFg8Xqssq
- QO3G3CiOqB6DoK2tAa5fE1O0vg/CzeCxndyb3ZMy9DTjCfvQzwB4Vxto9EezLi0iReJr
- jP5KzFZ2ebVERTQA7LVSmy57TaeRlmDZwwjA6Gtxfbv+TK1xL+3dtXJrQKaJIdOoz+K5
- cCcpaA4aN+1yHi0spIwE7AC+JTOgKzn6qbKjBNs3bIjqQJm0CI3+PXDRCzRdeXntfBSy
- qAYA==
-X-Gm-Message-State: AJIora+KoB5bhJpldktUY0retqf4IVd4Mc+hMqtVUXcYCLBEETM1Lpnu
- tb9OwquTtOplA4displeRv58pg==
-X-Received: by 2002:a63:4643:0:b0:3fe:e16a:a01f with SMTP id
- v3-20020a634643000000b003fee16aa01fmr11911793pgk.91.1656080220548; 
- Fri, 24 Jun 2022 07:17:00 -0700 (PDT)
-Received: from ?IPV6:2602:ae:1543:f001:b25a:9949:8352:ec5d?
- ([2602:ae:1543:f001:b25a:9949:8352:ec5d])
- by smtp.gmail.com with ESMTPSA id
- rm10-20020a17090b3eca00b001df264610c4sm11513383pjb.0.2022.06.24.07.16.59
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 24 Jun 2022 07:17:00 -0700 (PDT)
-Message-ID: <c2eae981-55e4-0430-ee56-ac853cfc930d@linaro.org>
-Date: Fri, 24 Jun 2022 07:16:57 -0700
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc;
+        bh=EnYWT6+eru3uHPWApb4vpG/T5apsG8TSW4cZmehz1lw=;
+        b=LCyXrFXpao7J9Lft3NKo+lIOUn7YvqaZv8N6OHvvQwOJpbAXuDhsZLSexlB5NHRsPy
+         fdrrr8UJyU9RUtgkyfrPVgKr0h3lLwheBp1664i+j7N+ClxBvZ7phc87/YcvjvLscXA0
+         O0uGgEeNA2FJXnVhEndUY1iAeMZ8Nxs6WWC4qCrq94TG3L4DT51se/i5OfqOcS0O9ux7
+         kFAj0gB9tHTN5FOYG8JrPeXeP7/UYdyj34bG3YVw+DgcxVcmbN4FsmqG/V99ykQLmKll
+         mWd9esVmAhMN1AtC71NbqvuABjpAkAx2A90owcclmP7XYlAHWcYMPuZdrG1y6inDPlBa
+         /OBw==
+X-Gm-Message-State: AJIora+OLapdVdo+kKbmrU5uDbopqLKnn1em3+S+T/NbTxwn2SvCkuMc
+	pXpvuN1OXLKNl9dDb3ZzSMdBH0Jt20bm/3yqFsnksIWi
+X-Google-Smtp-Source: AGRyM1uMXPWDr04izJp2BwkDssX+25tzbf0qMTakadA3kQlppmVhNAe/FMBviiZzY01JVp7a7VLvfBEFR7iSRsB3KFE=
+X-Received: by 2002:a25:d655:0:b0:66c:84b7:df40 with SMTP id
+ n82-20020a25d655000000b0066c84b7df40mr19510ybg.193.1656082940786; Fri, 24 Jun
+ 2022 08:02:20 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.9.1
-Subject: Re: [PATCH v3 30/51] target/arm: Implement FMOPA, FMOPS (non-widening)
-Content-Language: en-US
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
-References: <20220620175235.60881-1-richard.henderson@linaro.org>
- <20220620175235.60881-31-richard.henderson@linaro.org>
- <CAFEAcA-y99PmUdPbdrWSj=_vUy35tRRFOJgkG2Lyg1A_iK6qRQ@mail.gmail.com>
-From: Richard Henderson <richard.henderson@linaro.org>
-In-Reply-To: <CAFEAcA-y99PmUdPbdrWSj=_vUy35tRRFOJgkG2Lyg1A_iK6qRQ@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::535;
- envelope-from=richard.henderson@linaro.org; helo=mail-pg1-x535.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: pYPkmmikSh2z
+References: <20220616141950.23374-1-Jonathan.Cameron@huawei.com>
+ <20220616141950.23374-2-Jonathan.Cameron@huawei.com> <CAFEAcA8U9oNDStfLpxOwodGm9MCTdLrt-WV+x_-rTGw9UpBGvA@mail.gmail.com>
+ <20220624133909.00005f6e@Huawei.com> <CAFEAcA8GA+ZXr2eS9bVxnhZRtda17Wx0Ud8CfcA90T6yiaecew@mail.gmail.com>
+ <20220624150844.000005ec@Huawei.com> <20220624155436.000047cb@Huawei.com>
+In-Reply-To: <20220624155436.000047cb@Huawei.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 24 Jun 2022 16:01:42 +0100
+Message-ID: <CAFEAcA8MLTm9XwAV_JU_EPiT9wfaZed8B19-pL=HobKepJsnkg@mail.gmail.com>
+Subject: Re: [PATCH v11 1/2] hw/arm/virt: Basic CXL enablement on
+ pci_expander_bridge instances pxb-cxl
+To: Jonathan Cameron <Jonathan.Cameron@huawei.com>
+Cc: qemu-devel@nongnu.org, alex.bennee@linaro.org, qemu-arm@nongnu.org, 
+	"Michael S . Tsirkin" <mst@redhat.com>, Ben Widawsky <bwidawsk@kernel.org>, 
+	Paolo Bonzini <pbonzini@redhat.com>, linux-cxl@vger.kernel.org, linuxarm@huawei.com, 
+	Marcel Apfelbaum <marcel@redhat.com>, Igor Mammedov <imammedo@redhat.com>, 
+	Markus Armbruster <armbru@redhat.com>, Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, 
+	Adam Manzanares <a.manzanares@samsung.com>, Tong Zhang <ztong0001@gmail.com>, 
+	Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>, 
+	Dan Williams <dan.j.williams@intel.com>
+Content-Type: text/plain; charset="UTF-8"
+X-TUID: 2zMf74SbFdoB
 
-On 6/24/22 05:31, Peter Maydell wrote:
-> On Mon, 20 Jun 2022 at 19:07, Richard Henderson
-> <richard.henderson@linaro.org> wrote:
->>
->> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
-> 
->> +void HELPER(sme_fmopa_s)(void *vza, void *vzn, void *vzm, void *vpn,
->> +                         void *vpm, void *vst, uint32_t desc)
->> +{
->> +    intptr_t row, col, oprsz = simd_maxsz(desc);
->> +    uint32_t neg = simd_data(desc) << 31;
->> +    uint16_t *pn = vpn, *pm = vpm;
->> +
->> +    bool save_dn = get_default_nan_mode(vst);
->> +    set_default_nan_mode(true, vst);
->> +
->> +    for (row = 0; row < oprsz; ) {
->> +        uint16_t pa = pn[H2(row >> 4)];
->> +        do {
->> +            if (pa & 1) {
->> +                void *vza_row = vza + row * sizeof(ARMVectorReg);
->> +                uint32_t n = *(uint32_t *)(vzn + row) ^ neg;
->> +
->> +                for (col = 0; col < oprsz; ) {
->> +                    uint16_t pb = pm[H2(col >> 4)];
->> +                    do {
->> +                        if (pb & 1) {
->> +                            uint32_t *a = vza_row + col;
->> +                            uint32_t *m = vzm + col;
->> +                            *a = float32_muladd(n, *m, *a, 0, vst);
->> +                        }
->> +                        col += 4;
->> +                        pb >>= 4;
->> +                    } while (col & 15);
->> +                }
->> +            }
->> +            row += 4;
->> +            pa >>= 4;
->> +        } while (row & 15);
->> +    }
-> 
-> The code for the double version seems straightforward:
-> row counts from 0 up to the number of rows, and we
-> do something per row. Why is the single precision version
-> doing something with an unrolled loop here? It's confusing
-> that 'oprsz' in the two functions isn't the same thing --
-> in the double version we divide by the element size, but
-> here we don't.
+On Fri, 24 Jun 2022 at 15:54, Jonathan Cameron
+<Jonathan.Cameron@huawei.com> wrote:
+> Just occurred to me there is another barrier to an approach that adds
+> DT bindings.
+> I fairly sure hw/pci-bridge/pci_expander_bridge.c (PXB)
+> only works on ACPI platforms and is the only host bridge supported
+> for CXL emulation in QEMU.
 
-It's all about the predicate addressing.  For doubles, the bits are spaced 8 bits apart, 
-which makes it easy as you see.  For singles, the bits are spaced 4 bits apart, which is 
-inconvenient.  Anyway, just as over in sve_helper.c, I load uint16_t at a time and shift 
-to find each predicate bit.
+Isn't it probeable like any other PCI device/bridge ?
 
-So it's not unrolled, exactly.  There's second loop over predicates.  And since this is a 
-matrix op, we get loops nested 4 deep.
-
-> The pseudocode says that we ignore floating point exceptions
-> (ie do not accumulate them in the FPSR) -- it passes fpexc == false
-> to FPMulAdd(). Don't we need to do something special to arrange
-> for that ?
-
-Oops, somewhere I read that as "do not trap" not "do not accumulate".
-But R_TGSKG is very clear on this as accumulate.
-
-
-r~
-
+-- PMM

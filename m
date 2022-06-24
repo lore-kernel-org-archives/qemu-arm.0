@@ -1,99 +1,131 @@
-Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp387815lft;
-        Fri, 24 Jun 2022 08:02:22 -0700 (PDT)
-X-Received: by 2002:a81:1591:0:b0:317:bb1f:fb83 with SMTP id 139-20020a811591000000b00317bb1ffb83mr17698018ywv.362.1656082942064;
-        Fri, 24 Jun 2022 08:02:22 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1656082942; cv=none;
+Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp389191lft;
+        Fri, 24 Jun 2022 08:03:45 -0700 (PDT)
+X-Google-Smtp-Source: AGRyM1viAa2IiahgZB6i1ygPlp0rTDcYvTHEZpBBIMmosKHLBL5Ud4BTzHDkmKNVFRsacQJ9bnj0
+X-Received: by 2002:a2e:6e19:0:b0:25a:7bb7:b133 with SMTP id j25-20020a2e6e19000000b0025a7bb7b133mr7757372ljc.374.1656083025512;
+        Fri, 24 Jun 2022 08:03:45 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1656083025; cv=none;
         d=google.com; s=arc-20160816;
-        b=oQhi9uWX456xo+307NLOtME9nW9t8a4LSSzBHnyYgD/k4yFLLN6l/eHuM45b1+5tEh
-         E3UcsBwbFu4XTqPYHni9VC7jaqru9qWIUQQM6PwfyH5FTTjpdwICN04HoOn0Gk3T27k/
-         z9eDFOT1i1mQlAH3sXGdKSyIkOZHDz99z+6SCppZuY/LOLbSPMOpTtaAEtS816qIAaZc
-         pSae1fwrOm6OA5WDY3r2ZCxa7ovOyqIHae3mQmXGJpVGlAobWbde1Qc/qQm5rfwu5JX8
-         iTkQs045AOzQVa7di4XG7VqivKdWUpKAUTdyfVY4oH/zrKyIImwKwBtaCu/Mby79iyCA
-         BDJA==
+        b=yZ32+cWup5w2/mqpIVauIB1OaRc/1pxl4vq8Jb/ECgakvY/mEf+JOgBlFc8+fUX+Yi
+         wP7BOcXh3N9VfUjJA+GG0/z8oDE16iIaNFHkXLNSrcYI5qO8+/CNP5Ty1svNBolmVmOt
+         URifWOzn5qF0bHGVxglqz5md0ZuQgdMOUJaD0nFKQ4jaM4Kn/Oo6KYP3XC6DOuF1eXxe
+         iL5veDwFJWUc8Ff8fYfBgXFAwmXEeBcMB/GWM64Jzf/GChRYvI+Iz9wSs9rUmwSIBOu/
+         /Y7tmjtFSRMcAu02A2qkA4VKwvSMoSHpLs4T7+qSHvTBwOBy/mSYpop8giIG/D7Wt/Ca
+         zZww==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:dkim-signature;
-        bh=EnYWT6+eru3uHPWApb4vpG/T5apsG8TSW4cZmehz1lw=;
-        b=P/gHZWlVZD6OVQ8AklVfKvelZ+1NOPulvvAzIJqm/ySwz2rb0k9owZEYb865N9d/iI
-         1pTWO4SRCX02rMFbYcAoBPRqxjgSMro040GS+ZxAh7iFTB4S7x66OJHSNzRtXfW/fX32
-         SeI6B4xiYuAWp+cUGuGZvjFvWZ/TLgqNcJzz+YrsqOtl56AvlNSH51nfAKwvNHHnuAue
-         2xbAEeo1vzJoFVEkkUBn3OiRMdZncB30Z6rLSd7EHn7LN2rNUglz7Dmx0ukLhmToQG8b
-         I5QGr4lThiKOyJ8Xflmk7Wh73W8mesqwZe90/vjGFojCzIFwtJy+VDBI3X7+5i2wPQDN
-         +Wow==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=ZMgcQP3SDdix/uL5DAxBOxf5bx/7mqKOZjDxOAb8Pcg=;
+        b=fvdNNT+jSCxKm/Kc4f3biA67OGiN6IDkVD0AeBxgFvSqECblxX/sLvj5F/u7kUwcU0
+         gIcbv+BHOyR9EbEuOuba9okoIL6B5OGotuZ99beKNopdZsSidTCMKu0/BDTCVRPq9o3h
+         lbZPzA41m1pjU0Z4YGQCd0pWbuf2px7ogdp6LLPwiYpq0nc6xc7ROZ1pLPVZWR/C0n34
+         m6uj4Jm01JWzxZqKMS1qEnQy8b2e83jWtVTVMcX1j+POtpMm2tuyvpD4C80Dx1jKiIFB
+         KwtZdPwyNA+vudyfwhNmD8pmbZQ5XT112dSjmX9wfNRxrAL1UesLm/Z4nAN8WJxscZ65
+         dc5Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=zq7QZtDL;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=zMohoIig;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <peter.maydell@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id v18-20020a25b812000000b0066997f75f8bsor1268376ybj.4.2022.06.24.08.02.21
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id v6-20020a2e87c6000000b00259b2bf7e77si2450557ljj.422.2022.06.24.08.03.45
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Fri, 24 Jun 2022 08:02:22 -0700 (PDT)
-Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Fri, 24 Jun 2022 08:03:45 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=zq7QZtDL;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=zMohoIig;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-         :cc;
-        bh=EnYWT6+eru3uHPWApb4vpG/T5apsG8TSW4cZmehz1lw=;
-        b=zq7QZtDLmFXHZztoUKje/w4bFHHUIrWSc+EfGMYwAsFnl94+nuNoEQtNLEwY9Utw2w
-         XXlgeWTqV4VMtIEmbW2CQR22pTCLVggk1Cv4M2swje8tO3XyslNXhF9lkSfls1aH91vE
-         lUldpVSJyfvzAPqlakH7K6aa3dkNP4Y3Z5OfRaloT4Rf2Z/fAT4EuXhgzD8drzW8jIui
-         dS+whmMIYPOloBJV86hpTHDS0Vj/ImCxuJGnN+5JSw7HIJ6QxhIwj6ZM2FozegAZVkoj
-         1Ej1zI2qRvyaz/uh/2rMK9RGC3pgcofibN/k/HtkE8jg+mQR5hwjTDPgGLiSK1yVRAY2
-         Narg==
+Received: from localhost ([::1]:39978 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1o4kqW-0000c5-Fd
+	for alex.bennee@linaro.org; Fri, 24 Jun 2022 11:03:44 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:59712)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1o4kqF-0000b3-CW
+ for qemu-arm@nongnu.org; Fri, 24 Jun 2022 11:03:27 -0400
+Received: from mail-yw1-x112b.google.com ([2607:f8b0:4864:20::112b]:45631)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1o4kqD-0002Uh-TZ
+ for qemu-arm@nongnu.org; Fri, 24 Jun 2022 11:03:27 -0400
+Received: by mail-yw1-x112b.google.com with SMTP id
+ 00721157ae682-3177e60d980so27177527b3.12
+ for <qemu-arm@nongnu.org>; Fri, 24 Jun 2022 08:03:25 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=ZMgcQP3SDdix/uL5DAxBOxf5bx/7mqKOZjDxOAb8Pcg=;
+ b=zMohoIigwHquNYd7LAcCtmXnb8FNNEaCCx1bE8uhazMByclv/47AQpkkVXBi1SGS76
+ Mc2QKw9lAVNKX9yehka3J6a3tzcoGpfN2e0HctL5UBsskzlU0SLgFzvtCjG2zwhvZxEZ
+ S5H+5pBRnAt+VBFwQZvn+5qt6RRQ8B5IpP5iHYWpYhaCID9H7Wc89nPtT18kURnmXUCz
+ D6HXlGb7tFKKSzYurLfDXsBeMYmgbV1Nn67L+n6ar83/IdUvzbSp4KRaqEYKaFhzKbh+
+ Yrdd23OdGe7PSdJmnDiLsdFbzT1XKzMi9RWmj1A2uWENw96l8bN6Z8gazLjZwJaYo4V0
+ kPgQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-         :message-id:subject:to:cc;
-        bh=EnYWT6+eru3uHPWApb4vpG/T5apsG8TSW4cZmehz1lw=;
-        b=LCyXrFXpao7J9Lft3NKo+lIOUn7YvqaZv8N6OHvvQwOJpbAXuDhsZLSexlB5NHRsPy
-         fdrrr8UJyU9RUtgkyfrPVgKr0h3lLwheBp1664i+j7N+ClxBvZ7phc87/YcvjvLscXA0
-         O0uGgEeNA2FJXnVhEndUY1iAeMZ8Nxs6WWC4qCrq94TG3L4DT51se/i5OfqOcS0O9ux7
-         kFAj0gB9tHTN5FOYG8JrPeXeP7/UYdyj34bG3YVw+DgcxVcmbN4FsmqG/V99ykQLmKll
-         mWd9esVmAhMN1AtC71NbqvuABjpAkAx2A90owcclmP7XYlAHWcYMPuZdrG1y6inDPlBa
-         /OBw==
-X-Gm-Message-State: AJIora+OLapdVdo+kKbmrU5uDbopqLKnn1em3+S+T/NbTxwn2SvCkuMc
-	pXpvuN1OXLKNl9dDb3ZzSMdBH0Jt20bm/3yqFsnksIWi
-X-Google-Smtp-Source: AGRyM1uMXPWDr04izJp2BwkDssX+25tzbf0qMTakadA3kQlppmVhNAe/FMBviiZzY01JVp7a7VLvfBEFR7iSRsB3KFE=
-X-Received: by 2002:a25:d655:0:b0:66c:84b7:df40 with SMTP id
- n82-20020a25d655000000b0066c84b7df40mr19510ybg.193.1656082940786; Fri, 24 Jun
- 2022 08:02:20 -0700 (PDT)
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=ZMgcQP3SDdix/uL5DAxBOxf5bx/7mqKOZjDxOAb8Pcg=;
+ b=lje6qrgPRNu02YOBtfwV3mhNjioYnOrVn75L+J6lkxDZzl5SKnoD0QvI12oLAl8+Bm
+ hrvXWyGQyXoOgS3uQ7HOXI3NjjqodyLhZunpuKtD4tWv/OyyjKw725siHSPEsDRmQ+9h
+ hiFMBDXie1OQVArcw+kIFf0X4sp0V8O5OuBk3dFMvG7z1uDYB7q18aEYjHjX7uO63tYw
+ f/kC/uo1LmscO1EbirAvlT992vmzOo0+5Oyqzo241P3p8tQULFIw0ynakhPGfCiJYeba
+ In+N2xwQIo3AAxZiUFYgv06D7ArAVFHKc5YV7VOYgK6QeOjBWCvyhNLONiDHlt0KuUT3
+ kTtg==
+X-Gm-Message-State: AJIora92xhLQThdfAN6bfag6ldEHifL+sBjlNTIAj5r9+PRCAMNC+3jZ
+ 0suWUEA6qq/3kZvM3VPWvncdasySbMgfEaSv5hOvkw==
+X-Received: by 2002:a81:1cc:0:b0:317:a0fa:7a61 with SMTP id
+ 195-20020a8101cc000000b00317a0fa7a61mr17529235ywb.10.1656083004803; Fri, 24
+ Jun 2022 08:03:24 -0700 (PDT)
 MIME-Version: 1.0
-References: <20220616141950.23374-1-Jonathan.Cameron@huawei.com>
- <20220616141950.23374-2-Jonathan.Cameron@huawei.com> <CAFEAcA8U9oNDStfLpxOwodGm9MCTdLrt-WV+x_-rTGw9UpBGvA@mail.gmail.com>
- <20220624133909.00005f6e@Huawei.com> <CAFEAcA8GA+ZXr2eS9bVxnhZRtda17Wx0Ud8CfcA90T6yiaecew@mail.gmail.com>
- <20220624150844.000005ec@Huawei.com> <20220624155436.000047cb@Huawei.com>
-In-Reply-To: <20220624155436.000047cb@Huawei.com>
+References: <20220620175235.60881-1-richard.henderson@linaro.org>
+In-Reply-To: <20220620175235.60881-1-richard.henderson@linaro.org>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 24 Jun 2022 16:01:42 +0100
-Message-ID: <CAFEAcA8MLTm9XwAV_JU_EPiT9wfaZed8B19-pL=HobKepJsnkg@mail.gmail.com>
-Subject: Re: [PATCH v11 1/2] hw/arm/virt: Basic CXL enablement on
- pci_expander_bridge instances pxb-cxl
-To: Jonathan Cameron <Jonathan.Cameron@huawei.com>
-Cc: qemu-devel@nongnu.org, alex.bennee@linaro.org, qemu-arm@nongnu.org, 
-	"Michael S . Tsirkin" <mst@redhat.com>, Ben Widawsky <bwidawsk@kernel.org>, 
-	Paolo Bonzini <pbonzini@redhat.com>, linux-cxl@vger.kernel.org, linuxarm@huawei.com, 
-	Marcel Apfelbaum <marcel@redhat.com>, Igor Mammedov <imammedo@redhat.com>, 
-	Markus Armbruster <armbru@redhat.com>, Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, 
-	Adam Manzanares <a.manzanares@samsung.com>, Tong Zhang <ztong0001@gmail.com>, 
-	Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>, 
-	Dan Williams <dan.j.williams@intel.com>
+Date: Fri, 24 Jun 2022 16:02:47 +0100
+Message-ID: <CAFEAcA_V=W_G1MFnaL9DkOMDouiqT-eqc-daJnqUunqWqKTMDg@mail.gmail.com>
+Subject: Re: [PATCH v3 00/51] target/arm: Scalable Matrix Extension
+To: Richard Henderson <richard.henderson@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
 Content-Type: text/plain; charset="UTF-8"
-X-TUID: 2zMf74SbFdoB
+Received-SPF: pass client-ip=2607:f8b0:4864:20::112b;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x112b.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: BtNGTzDovKy1
 
-On Fri, 24 Jun 2022 at 15:54, Jonathan Cameron
-<Jonathan.Cameron@huawei.com> wrote:
-> Just occurred to me there is another barrier to an approach that adds
-> DT bindings.
-> I fairly sure hw/pci-bridge/pci_expander_bridge.c (PXB)
-> only works on ACPI platforms and is the only host bridge supported
-> for CXL emulation in QEMU.
+On Mon, 20 Jun 2022 at 18:52, Richard Henderson
+<richard.henderson@linaro.org> wrote:
+>
+> Changes for v3:
+>   * Rebase on mainline (20 patches upstreamed; new conflicts resolved).
+>   * Test bit 31 before disas_sme.
+>
+> The first 21 patches, excepting 17, have been reviewed.
 
-Isn't it probeable like any other PCI device/bridge ?
+I'm applying patches 1-20 to target-arm.next (with the comment
+change for patch 9).
 
+thanks
 -- PMM

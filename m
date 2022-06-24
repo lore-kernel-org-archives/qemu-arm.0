@@ -1,83 +1,83 @@
-Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp341598lft;
-        Fri, 24 Jun 2022 06:58:18 -0700 (PDT)
-X-Google-Smtp-Source: AGRyM1v7Q+mKWUvAD5h2ANcdng61P27SBcjxEvcayKni7W+8pfZKgeMBs2QzmEumK4b7PIqE86Oi
-X-Received: by 2002:ad4:5bef:0:b0:470:536a:d350 with SMTP id k15-20020ad45bef000000b00470536ad350mr15927290qvc.49.1656079098498;
-        Fri, 24 Jun 2022 06:58:18 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1656079098; cv=none;
+Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp342564lft;
+        Fri, 24 Jun 2022 07:00:07 -0700 (PDT)
+X-Google-Smtp-Source: AGRyM1spzcD+s42P1lTYZhetmT0BJ1DD4+IUuoGsV/sXgQ7VyK0bYIWH/iOMY0vX5pd015cOEOOA
+X-Received: by 2002:a05:620a:1438:b0:6ae:fc6f:f998 with SMTP id k24-20020a05620a143800b006aefc6ff998mr5161507qkj.178.1656079207494;
+        Fri, 24 Jun 2022 07:00:07 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1656079207; cv=none;
         d=google.com; s=arc-20160816;
-        b=AlbzsZQWBfZNGcO54GMNbc4oEPLByhV0xx8p/JkWmP92NjFlgcGxU5bnUfuar50lkD
-         Sq7ACta8Cb9wx3jS8xpD6THZeHfseEXcD06AY0Wfvfm2MPDTllUVTs9pzAQeIdj+0Enj
-         WcJuc4Cqx1/lGdXPFQFGZde1Wt2jE0D/m70pTA2SLpI8SYmLKg+132TOx1S6Ja7O228H
-         Umsk3soQG1f0G628IlVAgYsUi9IeFYdDhvXuoPqGon8vxs+m2CwG7XuLnfsnJaUL9X5i
-         /QPPM06iy24M9kG+7P68EiJP4n+TcNn21jRqjYnz7Nl1ydQ9cx32qEHe+l0qf2p3KpIQ
-         S6Og==
+        b=CZbveXP27CiEU+4E40kBdhrzg4hg98lTmy3S7W+og/rscu0nMwsuS8mz3TnD6pri5P
+         BhV9kkxDEGKBygj2i3hO9DRLm/2Dqa/WZJQQu1o82LQsskCxFb4IJNZSJ9LDUYVyMGb0
+         ExoNED181xogeAXZ9K8EHAEZm3WZ2QQDSKp3WMr67UniRGILBImn2wOreEhIicLIyCxU
+         cVuynVqNKrkDZsNlhyQBl4dyoO4C5hZszUkQLPfmU4CksOalxOpPwxiAgbt4bTNCLlxc
+         DM1d0YE+gtw5GieyKJ650oulmYWT3pgmKFoxELMs9vQteM8bjKEHtqt2qC0YeAake3rx
+         x/+Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:to:from:dkim-signature;
-        bh=YcsPtnedy787CRYrviUMvRysA7y4KFa7Jb53DABOCoc=;
-        b=miwY6FUqGztFPsawbVRDCeV8+OOjlv8O3ac9yCsZRUxGxT/yOIW3/f6Up8gSwiPwwl
-         Ar1KeDJ8ooEuxubzG0Jam6DabuX2xORfGEx6PWTtyXjjKiXqQTkubqpt0rY376K8MHWi
-         XdUpgDVP/fgeACvF9sgCrjzlPaA7dRfXLKQDu1jKpTjLl8O6iX3FX8OkZx2Hzu9yv4kJ
-         fsxUrEl2XgBxDJ+/qpK7Jk0eVTMTR93Z1/CfdXMXAI2+9VabAgy+zPROwJu/G6tHRAxG
-         VcuNGUdnvuVovLP02wZTHPgjALvrE2locnN0LB4QbiaThPHNupY0Tk0YRSKucaJbwMKB
-         kD9w==
+        bh=KxPiyT4+eRrpWOcWb0WtwmhI9LLkN92G6Bk9HNizYxo=;
+        b=tu3EPSXzS7EEBNZiRVi4IoEJSD7KooM6i6Y6ZdSoxyapnLGykYiCWEQtxuzKSy1sqs
+         KgYSbKJsyherwnRQObr0D4VuZ0G4EVad7bt9NyHzwV653rOi4UXwKwkCrz+MGTyZWAFz
+         oxj8+/7XJ/Sa16VY3AEyoeadoXRbtJC6P5Iznr5yUdpsBOB+yMioKctbmlgUbCAsLCRa
+         5Ca/jGnheT0EgAFAZJLOUyHyNQiEtPAcZRTq8vU96zfTw7tu8LSx6idXsrJeNYfsMkPr
+         5RYKI8sr9iZgEpcBZ69VZIJTl/2ppqVG9ifscG4/4Gc6DAxjyNdUP4O9Mvzsb7i4rJwd
+         WBvQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@ilande.co.uk header.s=20220518 header.b=ouWEs6uF;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@ilande.co.uk header.s=20220518 header.b="EWAIzjs/";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=ilande.co.uk
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d13-20020ac85acd000000b00306aafd0066si1960180qtd.675.2022.06.24.06.58.18
+        by mx.google.com with ESMTPS id t3-20020a05620a450300b006a70a853931si2439592qkp.607.2022.06.24.07.00.07
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 24 Jun 2022 06:58:18 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 24 Jun 2022 07:00:07 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@ilande.co.uk header.s=20220518 header.b=ouWEs6uF;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@ilande.co.uk header.s=20220518 header.b="EWAIzjs/";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=ilande.co.uk
-Received: from localhost ([::1]:51436 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:56700 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1o4jpC-0008LH-10
-	for alex.bennee@linaro.org; Fri, 24 Jun 2022 09:58:18 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38118)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1o4jqw-0003Ti-Tf
+	for alex.bennee@linaro.org; Fri, 24 Jun 2022 10:00:06 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38206)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mark.cave-ayland@ilande.co.uk>)
- id 1o4ja3-0001C7-SE; Fri, 24 Jun 2022 09:42:41 -0400
-Received: from mail.ilande.co.uk ([2001:41c9:1:41f::167]:41810)
+ id 1o4jaI-0001KB-Im; Fri, 24 Jun 2022 09:42:57 -0400
+Received: from mail.ilande.co.uk ([2001:41c9:1:41f::167]:41876)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mark.cave-ayland@ilande.co.uk>)
- id 1o4ja2-00059c-9C; Fri, 24 Jun 2022 09:42:39 -0400
+ id 1o4jaE-0005EU-Oy; Fri, 24 Jun 2022 09:42:53 -0400
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=ilande.co.uk; s=20220518; h=Subject:Content-Transfer-Encoding:Content-Type:
  MIME-Version:References:In-Reply-To:Message-Id:Date:To:From:Sender:Reply-To:
  Cc:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
  Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
  List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=YcsPtnedy787CRYrviUMvRysA7y4KFa7Jb53DABOCoc=; b=ouWEs6uFDIzVJLzpNxdVcSWAup
- BKQXikYHWBXDR0KfglDcE6ewvJeLtqeQQBsxA0/5QqqB2pdH7G7GWvC9J7hzr5kxY3xn5V7KeAXDP
- eo3Vcq3WF6jneXWdYndD1iR+bcHj10q1uRUBflO7Ajsg6tLTfBSyHP2xAmqnY7qw9+cyam55zKMYz
- wU8kTwXoGTc+Wf5Sk6a0r0zxyq2Ub5+slKRQKx7Necw5DQS/+YdES6SEPYZui4OFhZ5rUuVkB4m+T
- 9EPxI3OgzO9wt4vvZbQ1cK9iNkWkkJpej2UNO7vedTbBMcEohltaUjJBUN9QA8ZtGS+nsUwKAwNn9
- snTe0Mss1bgW57Scq0LRhpctEbFdjbNHw9BV/Zkq0ScasoZ2Z+5MDbxOTB6PxmVfg7oOHTcU0EOeN
- t75jsnJ7nnN84zKBW/KEZ7w1ETiIjhKNuzS0hk0hN6sDp1NuDtud1nefBM5DaFf5ZhTKIAF1Z4Kf9
- 5RtklxMfKUnGZScYsuMz4RMjuYOfAsVcl3+PlGI4ZGtQJ6elb4hl0Rx5wIzq0zJjUBMXFZT6VmJU3
- lWiIkNEU+85BnWxeXIkVlYDqCm3YmL4ZcvH761A/sP33LQhbf9LPQDFW+ZFSIyixGYq0SU+nu/Iwe
- zOJrPM1ZGlqbnVVINywdWE23UaTUoH1S3Gc+hmKMU=;
+ bh=KxPiyT4+eRrpWOcWb0WtwmhI9LLkN92G6Bk9HNizYxo=; b=EWAIzjs/g1/EuxQu+HQyf6YKjc
+ LWjhG+GYzDt9cIzrRKOQMw2oCnw2vGZk1btCkTbYrsLMaDQlCNa4ajAbOxHz7ZJha1BXHVcgVLj49
+ NLzV8eFHsLvX+eL7OvaWY0gCl4JL1EXxXETt6SsNNOtlCvaqMbd2syS0bty6QqmxRbowUpv5U3Vgf
+ X8MaJ1gtRXnNQkKtMVSogtET5sSrXZs6ysY0/xntGlTVkpHUr8MleFojV68Ij4Wm/QtZS7hzC4NSB
+ dFf0zKjUA8Su+3kp2jSzVMiSCnaRW05TtS8mbWiLH2Zvfb30EQ/es1pcaBt1m1s1F1l7UIWM3GV4F
+ OHXi2XDyHg76pYAp7GHR2F29GzcI8OdLjM/pE3LuV6hS2Q6lHZ/BrT9pvtU0Hppk/W3MF+UKfJco4
+ 0dsSk7vEHlo4MAS1x1Pn1eFy5biJUdFj1G1uQnmK3HkDIClD3E1U1yZ1F3frsv2stgMbmuwMuQUVZ
+ ++nnOqYXrUucpkb6wqgcFsJBaGiD7w8zptDtvNaXzD17Vg8+mgzHrcE8ZhM76cZV/kf29fIIhj2UG
+ grilV97XqqCEyDLizDi7ea28SSbY6JJihjfjdnU9knsOBlf4HN79VxVA1eT923pTD7CJ38OXSKNYv
+ iRiqyrEpy7YoHQHYo9bdBOGXJcl+9kaDHTxvtF18M=;
 Received: from [2a00:23c4:8ba4:e500:b82f:56f9:46d7:80ab] (helo=kentang.home)
  by mail.ilande.co.uk with esmtpsa (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.92) (envelope-from <mark.cave-ayland@ilande.co.uk>)
- id 1o4jYP-00037t-Sj; Fri, 24 Jun 2022 14:41:01 +0100
+ id 1o4jYc-00037t-W0; Fri, 24 Jun 2022 14:41:13 +0100
 From: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
 To: richard.henderson@linaro.org, deller@gmx.de, mst@redhat.com,
  pbonzini@redhat.com, peter.maydell@linaro.org, hpoussin@reactos.org,
  aleksandar.rikalo@syrmia.com, f4bug@amsat.org, jiaxun.yang@flygoat.com,
  qemu-arm@nongnu.org, qemu-devel@nongnu.org
-Date: Fri, 24 Jun 2022 14:40:30 +0100
-Message-Id: <20220624134109.881989-16-mark.cave-ayland@ilande.co.uk>
+Date: Fri, 24 Jun 2022 14:40:33 +0100
+Message-Id: <20220624134109.881989-19-mark.cave-ayland@ilande.co.uk>
 X-Mailer: git-send-email 2.30.2
 In-Reply-To: <20220624134109.881989-1-mark.cave-ayland@ilande.co.uk>
 References: <20220624134109.881989-1-mark.cave-ayland@ilande.co.uk>
@@ -86,8 +86,7 @@ Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-SA-Exim-Connect-IP: 2a00:23c4:8ba4:e500:b82f:56f9:46d7:80ab
 X-SA-Exim-Mail-From: mark.cave-ayland@ilande.co.uk
-Subject: [PATCH v2 15/54] pl050: split pl050_update_irq() into separate
- pl050_set_irq() and pl050_update_irq() functions
+Subject: [PATCH v2 18/54] pckbd: checkpatch fixes
 X-SA-Exim-Version: 4.2.1 (built Wed, 08 May 2019 21:11:16 +0000)
 X-SA-Exim-Scanned: Yes (on mail.ilande.co.uk)
 Received-SPF: pass client-ip=2001:41c9:1:41f::167;
@@ -99,80 +98,255 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: V7P7D6qg7YsN
-
-This will soon allow pl050_set_irq() to be used as a GPIO input function.
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: Kq9Em5eBVqLc
 
 Signed-off-by: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
 Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 Acked-by: Helge Deller <deller@gmx.de>
 ---
- hw/input/pl050.c | 21 +++++++++++++--------
- 1 file changed, 13 insertions(+), 8 deletions(-)
+ hw/input/pckbd.c | 150 ++++++++++++++++++++++++++++++-----------------
+ 1 file changed, 97 insertions(+), 53 deletions(-)
 
-diff --git a/hw/input/pl050.c b/hw/input/pl050.c
-index 889a0674d3..66f8c20d9f 100644
---- a/hw/input/pl050.c
-+++ b/hw/input/pl050.c
-@@ -57,15 +57,20 @@ static const unsigned char pl050_id[] = {
-     0x50, 0x10, 0x04, 0x00, 0x0d, 0xf0, 0x05, 0xb1
- };
+diff --git a/hw/input/pckbd.c b/hw/input/pckbd.c
+index 45c40fe3f3..c18a1a7fae 100644
+--- a/hw/input/pckbd.c
++++ b/hw/input/pckbd.c
+@@ -39,49 +39,86 @@
  
--static void pl050_update(void *opaque, int level)
-+static void pl050_update_irq(PL050State *s)
-+{
-+    int level = (s->pending && (s->cr & 0x10) != 0)
-+                 || (s->cr & 0x08) != 0;
+ #include "trace.h"
+ 
+-/*	Keyboard Controller Commands */
+-#define KBD_CCMD_READ_MODE	0x20	/* Read mode bits */
+-#define KBD_CCMD_WRITE_MODE	0x60	/* Write mode bits */
+-#define KBD_CCMD_GET_VERSION	0xA1	/* Get controller version */
+-#define KBD_CCMD_MOUSE_DISABLE	0xA7	/* Disable mouse interface */
+-#define KBD_CCMD_MOUSE_ENABLE	0xA8	/* Enable mouse interface */
+-#define KBD_CCMD_TEST_MOUSE	0xA9	/* Mouse interface test */
+-#define KBD_CCMD_SELF_TEST	0xAA	/* Controller self test */
+-#define KBD_CCMD_KBD_TEST	0xAB	/* Keyboard interface test */
+-#define KBD_CCMD_KBD_DISABLE	0xAD	/* Keyboard interface disable */
+-#define KBD_CCMD_KBD_ENABLE	0xAE	/* Keyboard interface enable */
+-#define KBD_CCMD_READ_INPORT    0xC0    /* read input port */
+-#define KBD_CCMD_READ_OUTPORT	0xD0    /* read output port */
+-#define KBD_CCMD_WRITE_OUTPORT	0xD1    /* write output port */
+-#define KBD_CCMD_WRITE_OBUF	0xD2
+-#define KBD_CCMD_WRITE_AUX_OBUF	0xD3    /* Write to output buffer as if
+-                                           initiated by the auxiliary device */
+-#define KBD_CCMD_WRITE_MOUSE	0xD4	/* Write the following byte to the mouse */
+-#define KBD_CCMD_DISABLE_A20    0xDD    /* HP vectra only ? */
+-#define KBD_CCMD_ENABLE_A20     0xDF    /* HP vectra only ? */
+-#define KBD_CCMD_PULSE_BITS_3_0 0xF0    /* Pulse bits 3-0 of the output port P2. */
+-#define KBD_CCMD_RESET          0xFE    /* Pulse bit 0 of the output port P2 = CPU reset. */
+-#define KBD_CCMD_NO_OP          0xFF    /* Pulse no bits of the output port P2. */
++/* Keyboard Controller Commands */
 +
-+    qemu_set_irq(s->irq, level);
-+}
++/* Read mode bits */
++#define KBD_CCMD_READ_MODE         0x20
++/* Write mode bits */
++#define KBD_CCMD_WRITE_MODE        0x60
++/* Get controller version */
++#define KBD_CCMD_GET_VERSION       0xA1
++/* Disable mouse interface */
++#define KBD_CCMD_MOUSE_DISABLE     0xA7
++/* Enable mouse interface */
++#define KBD_CCMD_MOUSE_ENABLE      0xA8
++/* Mouse interface test */
++#define KBD_CCMD_TEST_MOUSE        0xA9
++/* Controller self test */
++#define KBD_CCMD_SELF_TEST         0xAA
++/* Keyboard interface test */
++#define KBD_CCMD_KBD_TEST          0xAB
++/* Keyboard interface disable */
++#define KBD_CCMD_KBD_DISABLE       0xAD
++/* Keyboard interface enable */
++#define KBD_CCMD_KBD_ENABLE        0xAE
++/* read input port */
++#define KBD_CCMD_READ_INPORT       0xC0
++/* read output port */
++#define KBD_CCMD_READ_OUTPORT      0xD0
++/* write output port */
++#define KBD_CCMD_WRITE_OUTPORT     0xD1
++#define KBD_CCMD_WRITE_OBUF        0xD2
++/* Write to output buffer as if initiated by the auxiliary device */
++#define KBD_CCMD_WRITE_AUX_OBUF    0xD3
++/* Write the following byte to the mouse */
++#define KBD_CCMD_WRITE_MOUSE       0xD4
++/* HP vectra only ? */
++#define KBD_CCMD_DISABLE_A20       0xDD
++/* HP vectra only ? */
++#define KBD_CCMD_ENABLE_A20        0xDF
++/* Pulse bits 3-0 of the output port P2. */
++#define KBD_CCMD_PULSE_BITS_3_0    0xF0
++/* Pulse bit 0 of the output port P2 = CPU reset. */
++#define KBD_CCMD_RESET             0xFE
++/* Pulse no bits of the output port P2. */
++#define KBD_CCMD_NO_OP             0xFF
+ 
+ /* Status Register Bits */
+-#define KBD_STAT_OBF 		0x01	/* Keyboard output buffer full */
+-#define KBD_STAT_IBF 		0x02	/* Keyboard input buffer full */
+-#define KBD_STAT_SELFTEST	0x04	/* Self test successful */
+-#define KBD_STAT_CMD		0x08	/* Last write was a command write (0=data) */
+-#define KBD_STAT_UNLOCKED	0x10	/* Zero if keyboard locked */
+-#define KBD_STAT_MOUSE_OBF	0x20	/* Mouse output buffer full */
+-#define KBD_STAT_GTO 		0x40	/* General receive/xmit timeout */
+-#define KBD_STAT_PERR 		0x80	/* Parity error */
 +
-+static void pl050_set_irq(void *opaque, int level)
++/* Keyboard output buffer full */
++#define KBD_STAT_OBF           0x01
++/* Keyboard input buffer full */
++#define KBD_STAT_IBF           0x02
++/* Self test successful */
++#define KBD_STAT_SELFTEST      0x04
++/* Last write was a command write (0=data) */
++#define KBD_STAT_CMD           0x08
++/* Zero if keyboard locked */
++#define KBD_STAT_UNLOCKED      0x10
++/* Mouse output buffer full */
++#define KBD_STAT_MOUSE_OBF     0x20
++/* General receive/xmit timeout */
++#define KBD_STAT_GTO           0x40
++/* Parity error */
++#define KBD_STAT_PERR          0x80
+ 
+ /* Controller Mode Register Bits */
+-#define KBD_MODE_KBD_INT	0x01	/* Keyboard data generate IRQ1 */
+-#define KBD_MODE_MOUSE_INT	0x02	/* Mouse data generate IRQ12 */
+-#define KBD_MODE_SYS 		0x04	/* The system flag (?) */
+-#define KBD_MODE_NO_KEYLOCK	0x08	/* The keylock doesn't affect the keyboard if set */
+-#define KBD_MODE_DISABLE_KBD	0x10	/* Disable keyboard interface */
+-#define KBD_MODE_DISABLE_MOUSE	0x20	/* Disable mouse interface */
+-#define KBD_MODE_KCC 		0x40	/* Scan code conversion to PC format */
+-#define KBD_MODE_RFU		0x80
++
++/* Keyboard data generate IRQ1 */
++#define KBD_MODE_KBD_INT       0x01
++/* Mouse data generate IRQ12 */
++#define KBD_MODE_MOUSE_INT     0x02
++/* The system flag (?) */
++#define KBD_MODE_SYS           0x04
++/* The keylock doesn't affect the keyboard if set */
++#define KBD_MODE_NO_KEYLOCK    0x08
++/* Disable keyboard interface */
++#define KBD_MODE_DISABLE_KBD   0x10
++/* Disable mouse interface */
++#define KBD_MODE_DISABLE_MOUSE 0x20
++/* Scan code conversion to PC format */
++#define KBD_MODE_KCC           0x40
++#define KBD_MODE_RFU           0x80
+ 
+ /* Output Port Bits */
+ #define KBD_OUT_RESET           0x01    /* 1=normal mode, 0=reset */
+@@ -89,7 +126,8 @@
+ #define KBD_OUT_OBF             0x10    /* Keyboard output buffer full */
+ #define KBD_OUT_MOUSE_OBF       0x20    /* Mouse output buffer full */
+ 
+-/* OSes typically write 0xdd/0xdf to turn the A20 line off and on.
++/*
++ * OSes typically write 0xdd/0xdf to turn the A20 line off and on.
+  * We make the default value of the outport include these four bits,
+  * so that the subsection is rarely necessary.
+  */
+@@ -133,8 +171,10 @@ typedef struct KBDState {
+     hwaddr mask;
+ } KBDState;
+ 
+-/* XXX: not generating the irqs if KBD_MODE_DISABLE_KBD is set may be
+-   incorrect, but it avoids having to simulate exact delays */
++/*
++ * XXX: not generating the irqs if KBD_MODE_DISABLE_KBD is set may be
++ * incorrect, but it avoids having to simulate exact delays
++ */
+ static void kbd_update_irq_lines(KBDState *s)
  {
-     PL050State *s = (PL050State *)opaque;
--    int raise;
+     int irq_kbd_level, irq_mouse_level;
+@@ -302,21 +342,23 @@ static void kbd_write_command(void *opaque, hwaddr addr,
  
-     s->pending = level;
--    raise = (s->pending && (s->cr & 0x10) != 0)
--            || (s->cr & 0x08) != 0;
--    qemu_set_irq(s->irq, raise);
-+    pl050_update_irq(s);
- }
+     trace_pckbd_kbd_write_command(val);
  
- static uint64_t pl050_read(void *opaque, hwaddr offset,
-@@ -124,7 +129,7 @@ static void pl050_write(void *opaque, hwaddr offset,
-     switch (offset >> 2) {
-     case 0: /* KMICR */
-         s->cr = value;
--        pl050_update(s, s->pending);
-+        pl050_update_irq(s);
-         /* ??? Need to implement the enable/disable bit.  */
-         break;
-     case 2: /* KMIDATA */
-@@ -159,9 +164,9 @@ static void pl050_realize(DeviceState *dev, Error **errp)
-     sysbus_init_mmio(sbd, &s->iomem);
-     sysbus_init_irq(sbd, &s->irq);
-     if (s->is_mouse) {
--        s->dev = ps2_mouse_init(pl050_update, s);
-+        s->dev = ps2_mouse_init(pl050_set_irq, s);
-     } else {
--        s->dev = ps2_kbd_init(pl050_update, s);
-+        s->dev = ps2_kbd_init(pl050_set_irq, s);
+-    /* Bits 3-0 of the output port P2 of the keyboard controller may be pulsed
++    /*
++     * Bits 3-0 of the output port P2 of the keyboard controller may be pulsed
+      * low for approximately 6 micro seconds. Bits 3-0 of the KBD_CCMD_PULSE
+      * command specify the output port bits to be pulsed.
+      * 0: Bit should be pulsed. 1: Bit should not be modified.
+      * The only useful version of this command is pulsing bit 0,
+      * which does a CPU reset.
+      */
+-    if((val & KBD_CCMD_PULSE_BITS_3_0) == KBD_CCMD_PULSE_BITS_3_0) {
+-        if(!(val & 1))
++    if ((val & KBD_CCMD_PULSE_BITS_3_0) == KBD_CCMD_PULSE_BITS_3_0) {
++        if (!(val & 1)) {
+             val = KBD_CCMD_RESET;
+-        else
++        } else {
+             val = KBD_CCMD_NO_OP;
++        }
      }
+ 
+-    switch(val) {
++    switch (val) {
+     case KBD_CCMD_READ_MODE:
+         kbd_queue(s, s->mode, 0);
+         break;
+@@ -409,7 +451,7 @@ static void kbd_write_data(void *opaque, hwaddr addr,
+ 
+     trace_pckbd_kbd_write_data(val);
+ 
+-    switch(s->write_cmd) {
++    switch (s->write_cmd) {
+     case 0:
+         ps2_write_keyboard(s->kbd, val);
+         /* sending data to the keyboard reenables PS/2 communication */
+@@ -607,7 +649,7 @@ static const VMStateDescription vmstate_kbd = {
+         VMSTATE_UINT8(pending_tmp, KBDState),
+         VMSTATE_END_OF_LIST()
+     },
+-    .subsections = (const VMStateDescription*[]) {
++    .subsections = (const VMStateDescription * []) {
+         &vmstate_kbd_outport,
+         &vmstate_kbd_extended_state,
+         NULL
+@@ -619,10 +661,11 @@ static uint64_t kbd_mm_readfn(void *opaque, hwaddr addr, unsigned size)
+ {
+     KBDState *s = opaque;
+ 
+-    if (addr & s->mask)
++    if (addr & s->mask) {
+         return kbd_read_status(s, 0, 1) & 0xff;
+-    else
++    } else {
+         return kbd_read_data(s, 0, 1) & 0xff;
++    }
  }
+ 
+ static void kbd_mm_writefn(void *opaque, hwaddr addr,
+@@ -630,10 +673,11 @@ static void kbd_mm_writefn(void *opaque, hwaddr addr,
+ {
+     KBDState *s = opaque;
+ 
+-    if (addr & s->mask)
++    if (addr & s->mask) {
+         kbd_write_command(s, 0, value & 0xff, 1);
+-    else
++    } else {
+         kbd_write_data(s, 0, value & 0xff, 1);
++    }
+ }
+ 
  
 -- 
 2.30.2

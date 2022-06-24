@@ -1,97 +1,98 @@
-Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp529312lft;
-        Fri, 24 Jun 2022 11:35:55 -0700 (PDT)
-X-Google-Smtp-Source: AGRyM1vY5oNhoeTgRazgFJ2v3u5ZnLfpycFPDR2br+0st3G6diNkslRKav0IDK73otfn3N0HxvkP
-X-Received: by 2002:a05:620a:1583:b0:6ae:f823:f89c with SMTP id d3-20020a05620a158300b006aef823f89cmr472299qkk.668.1656095755407;
-        Fri, 24 Jun 2022 11:35:55 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1656095755; cv=none;
+Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp590918lft;
+        Fri, 24 Jun 2022 13:35:03 -0700 (PDT)
+X-Google-Smtp-Source: AGRyM1sUkAD14R1uLmjh9k+q4SEQT86BYqYHBiYwe//WWK2wa4rgfODdb7zCBQS+Q3q9gamxADnM
+X-Received: by 2002:a05:620a:1b98:b0:6a6:c893:d54a with SMTP id dv24-20020a05620a1b9800b006a6c893d54amr868756qkb.374.1656102903681;
+        Fri, 24 Jun 2022 13:35:03 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1656102903; cv=none;
         d=google.com; s=arc-20160816;
-        b=sEe7ZGybegYh4QEPad0UNOPe0a43aprVZBVmhF3PZgkS12p2DLsi7q4FQefU7K9Hdy
-         IaV9gJXp/c2wmPOiIVZtNmW5UwTUHQmOXyAMIo3FpwcZI8gHjzTgAgnbexUQnKmvbqSY
-         myAfGyb0Couv0XCgqyHZ1Fjj4hnX3xhlvmGlqZ6K4ElWoKAwulqMeKDArLY5BgMjJYTR
-         voOvlhoGHNB2Q/YDpoNs8tiWryvF8/6Jhda9QUtBpA/5EFYA10bn+sQXJmZRgVTFST/C
-         oN6iDemYG69qmFUErnS61hcmhhMJWUExOoqsAqf9oQd8p/k03cBsKUj8yRZPx5laJ/ul
-         ybCw==
+        b=FI2elNjJzPLNglVBXlo/uwTqhnbVpk/BugIO5n2QIe7S2WO328mnWIrQ7T4t1upZml
+         NH5MIqtIlVGt2UcHg10yioLGEGSS80CpQrtpQrZuB7o9iSV4hK5UR5+d35krcAHFMq4M
+         b1wqO86PAlIwACdxdk9nBZU2K3vTQfL4MWOWhILZnTDD9z/r3IN4f77x681BxMRnmiFX
+         j3V9u0dQHIFSdCYN/W0M3+cwt1dUGLQDQFqwgEnt/q1SwWGcB+NXpuFFryQRWSAnkeqC
+         cE1vk4+6N6lth3oK78/6+j9z20WXW44zsJbPdH9VTuWuc/jYWYBUbv+jsE7058WieAgN
+         hiEw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
-        bh=0nzk7Y9LiOXOtfs53Ev/pV6eii4rwPXOfOpCHJpIC0A=;
-        b=HK16dcdVpwvi+z/tabEBgX4OiYcW/xSxs3Tt903hfnJPpFS/gEQVTlspSZY+ymIV5V
-         9ffLcMwmfJUXxhcZ8Pr7gpm9ofl79uD26Id/WyffR6vMb017piTVcT5DJpbcnPaaIitQ
-         XMBsiXpuBn2uPJ/41sr/x9FIBzWtqBH/TNltggWODBjqDUBt95/T1WLbNN1hFUaEo3by
-         7Na+T2QbaUZz7ercVU8uY4E9k/RRIKINb4Ooqw5/AVZhfZ+P2kmFjNs82AwcbNuLNpF5
-         r5V9w1b3vkVKLx/yrn1nntdW1qRIeBwUuBJx8IfKzI1ishnIXCpQXs5DeDekFQydK3VN
-         omQg==
+         :list-unsubscribe:list-id:precedence:mime-version
+         :content-transfer-encoding:message-id:date:subject:cc:to:from
+         :dkim-signature;
+        bh=5ruO9R316vsfRbm+iQj3wQQK6JtiUbVXfXoOXJNSpBU=;
+        b=wFTfa7/pDRkcQOYynFuXthmKyWWyo35KtrKHgKiVGbhdseuZJnNEinvqj3YZBTAHqw
+         0FZt+NoVSkN7FjCiKuWdFLysL4iRJfvrRb4+f2lYMEkFuiAAoOZTCf5+sMt9I0ghDedX
+         +Yd87FIY8eRlQmIGNckhIj97k87bGNz+ItFscNsGOLfab8FAFqoUMB1IqDENkTtkHLgW
+         tadhxf4yM925VhsB6Sehl+BGbEQekZa67zS5GKG5RBGo8rrgNtE/3cpjRDQAwlrZ74I3
+         BBZXQF8qSMPkfyh5asBx5/8kyQ4b3MPtoce3GqlC2TH10Ej4a2ri1Huz1oHbsXaCQCnC
+         ZbYA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@fb.com header.s=facebook header.b=IsLgkdvZ;
+       dkim=pass header.i=@fb.com header.s=facebook header.b=bu63Dd5O;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=fb.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x16-20020a05620a0b5000b006af0a5accd8si653786qkg.506.2022.06.24.11.35.55
+        by mx.google.com with ESMTPS id c1-20020ac81e81000000b00317c6f3c64csi2284633qtm.65.2022.06.24.13.35.03
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 24 Jun 2022 11:35:55 -0700 (PDT)
+        Fri, 24 Jun 2022 13:35:03 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@fb.com header.s=facebook header.b=IsLgkdvZ;
+       dkim=pass header.i=@fb.com header.s=facebook header.b=bu63Dd5O;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=fb.com
-Received: from localhost ([::1]:52792 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:47252 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1o4o9p-0007XD-KG
-	for alex.bennee@linaro.org; Fri, 24 Jun 2022 14:35:54 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:50132)
+	id 1o4q19-00036w-4t
+	for alex.bennee@linaro.org; Fri, 24 Jun 2022 16:35:03 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:48500)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <prvs=71740f5b1d=irischenlj@fb.com>)
- id 1o4o4v-0005t8-Dp; Fri, 24 Jun 2022 14:30:54 -0400
-Received: from mx0a-00082601.pphosted.com ([67.231.145.42]:19018)
+ (Exim 4.90_1) (envelope-from <prvs=717463a23e=pdel@fb.com>)
+ id 1o4pyP-0002Mv-HC
+ for qemu-devel@nongnu.org; Fri, 24 Jun 2022 16:32:18 -0400
+Received: from mx0a-00082601.pphosted.com ([67.231.145.42]:28138)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <prvs=71740f5b1d=irischenlj@fb.com>)
- id 1o4o4t-00028b-Fi; Fri, 24 Jun 2022 14:30:49 -0400
+ (Exim 4.90_1) (envelope-from <prvs=717463a23e=pdel@fb.com>)
+ id 1o4pyL-0004GR-DE
+ for qemu-devel@nongnu.org; Fri, 24 Jun 2022 16:32:11 -0400
 Received: from pps.filterd (m0109333.ppops.net [127.0.0.1])
- by mx0a-00082601.pphosted.com (8.17.1.5/8.17.1.5) with ESMTP id 25OCGFKH007670;
- Fri, 24 Jun 2022 11:30:30 -0700
+ by mx0a-00082601.pphosted.com (8.17.1.5/8.17.1.5) with ESMTP id 25OK9sil006865
+ for <qemu-devel@nongnu.org>; Fri, 24 Jun 2022 13:32:02 -0700
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=fb.com;
  h=from : to : cc : subject
- : date : message-id : mime-version : content-transfer-encoding :
- content-type; s=facebook; bh=0nzk7Y9LiOXOtfs53Ev/pV6eii4rwPXOfOpCHJpIC0A=;
- b=IsLgkdvZgWryCifdzUW8BGWaRHVtnKuiUYSjvptWNA63atPslvKvoeLBk0YF0m1fIzCC
- NJ89iAMBbUESABpHNuihzyPzPg/faMUxFl3Evm6ogcAp4RUiztcQLgulQwOMpbthXJx7
- /NNamu5S6ceGQ0yGNOTaiouSioi2aPX7vi8= 
-Received: from mail.thefacebook.com ([163.114.132.120])
- by mx0a-00082601.pphosted.com (PPS) with ESMTPS id 3gvqnc1n53-4
- (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128 verify=NOT);
- Fri, 24 Jun 2022 11:30:30 -0700
-Received: from localhost (2620:10d:c085:108::4) by mail.thefacebook.com
- (2620:10d:c085:11d::4) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2375.28; Fri, 24 Jun
- 2022 11:30:21 -0700
-From: Iris Chen <irischenlj@fb.com>
+ : date : message-id : content-type : content-transfer-encoding :
+ mime-version; s=facebook; bh=5ruO9R316vsfRbm+iQj3wQQK6JtiUbVXfXoOXJNSpBU=;
+ b=bu63Dd5OerfWJl1hvady1IqfQQvcHRmTVsK2/Vd3fj6wN7R2M99tmWLx+BCuxKONqmHu
+ uAHmourDxkf3ZbiDK1fwSytloG4Bx4g3AwY3djGFMe627yHg9SyEty7ozpuGFOlAfygz
+ p40AJWqJbJXejPIcCmUvELqWzafgCAPiaTY= 
+Received: from maileast.thefacebook.com ([163.114.130.16])
+ by mx0a-00082601.pphosted.com (PPS) with ESMTPS id 3gvqnc2asq-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128 verify=NOT)
+ for <qemu-devel@nongnu.org>; Fri, 24 Jun 2022 13:32:02 -0700
+Received: from twshared18213.14.prn3.facebook.com (2620:10d:c0a8:1b::d) by
+ mail.thefacebook.com (2620:10d:c0a8:82::c) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2375.28; Fri, 24 Jun 2022 13:32:01 -0700
+Received: by devvm9194.prn0.facebook.com (Postfix, from userid 385188)
+ id CA9CE8955A9C; Fri, 24 Jun 2022 13:31:53 -0700 (PDT)
+From: Peter Delevoryas <pdel@fb.com>
 To: 
-CC: <irischenlj@fb.com>, <pdel@fb.com>, <qemu-devel@nongnu.org>,
- <qemu-arm@nongnu.org>, <clg@kaod.org>, <patrick@stwcx.xyz>,
- <alistair@alistair23.me>, <kwolf@redhat.com>, <hreitz@redhat.com>,
- <peter.maydell@linaro.org>, <andrew@aj.id.au>, <joel@jms.id.au>,
- <thuth@redhat.com>, <lvivier@redhat.com>, <pbonzini@redhat.com>,
- <qemu-block@nongnu.org>
-Subject: [PATCH v4] hw: m25p80: add tests for write protect (WP# and SRWD bit)
-Date: Fri, 24 Jun 2022 11:30:16 -0700
-Message-ID: <20220624183016.2125264-1-irischenlj@fb.com>
+CC: <pdel@fb.com>, <clg@kaod.org>, <andrew@aj.id.au>, <joel@jms.id.au>,
+ <qemu-arm-nongnu.org@devvm9194.prn0.facebook.com>, <qemu-devel@nongnu.org>
+Subject: [PATCH] aspeed: i2c: Fix DMA len write-enable bit handling
+Date: Fri, 24 Jun 2022 13:31:51 -0700
+Message-ID: <20220624203151.2026355-1-pdel@fb.com>
 X-Mailer: git-send-email 2.30.2
-MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+X-FB-Internal: Safe
 Content-Type: text/plain
-X-Originating-IP: [2620:10d:c085:108::4]
-X-Proofpoint-ORIG-GUID: zHlSleOexj5S8cXwGrQloBssekCjIFQj
-X-Proofpoint-GUID: zHlSleOexj5S8cXwGrQloBssekCjIFQj
+X-Proofpoint-ORIG-GUID: IoCUMRNjqN-JE3WYkIlDZbxYHUpjQ5ob
+X-Proofpoint-GUID: IoCUMRNjqN-JE3WYkIlDZbxYHUpjQ5ob
+Content-Transfer-Encoding: quoted-printable
+X-Proofpoint-UnRewURL: 0 URL was un-rewritten
+MIME-Version: 1.0
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.205,Aquarius:18.0.883,Hydra:6.0.517,FMLib:17.11.122.1
- definitions=2022-06-24_08,2022-06-23_01,2022-06-22_01
+ definitions=2022-06-24_09,2022-06-24_01,2022-06-22_01
 Received-SPF: pass client-ip=67.231.145.42;
- envelope-from=prvs=71740f5b1d=irischenlj@fb.com;
- helo=mx0a-00082601.pphosted.com
+ envelope-from=prvs=717463a23e=pdel@fb.com; helo=mx0a-00082601.pphosted.com
 X-Spam_score_int: -21
 X-Spam_score: -2.2
 X-Spam_bar: --
@@ -114,103 +115,57 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: YHXL+1cZjnIL
+X-TUID: j3sePwzBLcR1
 
-Signed-off-by: Iris Chen <irischenlj@fb.com>
+I noticed i2c rx transfers were getting shortened to "1" on Zephyr. It
+seems to be because the Zephyr i2c driver sets the RX DMA len with the
+RX field write-enable bit set (bit 31) to avoid a read-modify-write. [1]
+
+/* 0x1C : I2CM Master DMA Transfer Length Register   */
+
+I think we should be checking the write-enable bits on the incoming
+value, not checking the register array. I'm not sure we're even writing
+the write-enable bits to the register array, actually.
+
+[1] https://github.com/AspeedTech-BMC/zephyr/blob/db3dbcc9c52e67a47180890ac=
+938ed380b33f91c/drivers/i2c/i2c_aspeed.c#L145-L148
+
+Signed-off-by: Peter Delevoryas <pdel@fb.com>
 ---
-Adding Signed Off By tag -- sorry I missed that !
+ hw/i2c/aspeed_i2c.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
 
- tests/qtest/aspeed_smc-test.c | 62 +++++++++++++++++++++++++++++++++++
- 1 file changed, 62 insertions(+)
-
-diff --git a/tests/qtest/aspeed_smc-test.c b/tests/qtest/aspeed_smc-test.c
-index ec233315e6..7786addfb8 100644
---- a/tests/qtest/aspeed_smc-test.c
-+++ b/tests/qtest/aspeed_smc-test.c
-@@ -56,7 +56,9 @@ enum {
-     BULK_ERASE = 0xc7,
-     READ = 0x03,
-     PP = 0x02,
-+    WRSR = 0x1,
-     WREN = 0x6,
-+    SRWD = 0x80,
-     RESET_ENABLE = 0x66,
-     RESET_MEMORY = 0x99,
-     EN_4BYTE_ADDR = 0xB7,
-@@ -390,6 +392,64 @@ static void test_read_status_reg(void)
-     flash_reset();
- }
- 
-+static void test_status_reg_write_protection(void)
-+{
-+    uint8_t r;
-+
-+    spi_conf(CONF_ENABLE_W0);
-+
-+    /* default case: WP# is high and SRWD is low -> status register writable */
-+    spi_ctrl_start_user();
-+    writeb(ASPEED_FLASH_BASE, WREN);
-+    /* test ability to write SRWD */
-+    writeb(ASPEED_FLASH_BASE, WRSR);
-+    writeb(ASPEED_FLASH_BASE, SRWD);
-+    writeb(ASPEED_FLASH_BASE, RDSR);
-+    r = readb(ASPEED_FLASH_BASE);
-+    spi_ctrl_stop_user();
-+    g_assert_cmphex(r & SRWD, ==, SRWD);
-+
-+    /* WP# high and SRWD high -> status register writable */
-+    spi_ctrl_start_user();
-+    writeb(ASPEED_FLASH_BASE, WREN);
-+    /* test ability to write SRWD */
-+    writeb(ASPEED_FLASH_BASE, WRSR);
-+    writeb(ASPEED_FLASH_BASE, 0);
-+    writeb(ASPEED_FLASH_BASE, RDSR);
-+    r = readb(ASPEED_FLASH_BASE);
-+    spi_ctrl_stop_user();
-+    g_assert_cmphex(r & SRWD, ==, 0);
-+
-+    /* WP# low and SRWD low -> status register writable */
-+    qtest_set_irq_in(global_qtest,
-+                     "/machine/soc/fmc/ssi.0/child[0]", "WP#", 0, 0);
-+    spi_ctrl_start_user();
-+    writeb(ASPEED_FLASH_BASE, WREN);
-+    /* test ability to write SRWD */
-+    writeb(ASPEED_FLASH_BASE, WRSR);
-+    writeb(ASPEED_FLASH_BASE, SRWD);
-+    writeb(ASPEED_FLASH_BASE, RDSR);
-+    r = readb(ASPEED_FLASH_BASE);
-+    spi_ctrl_stop_user();
-+    g_assert_cmphex(r & SRWD, ==, SRWD);
-+
-+    /* WP# low and SRWD high -> status register NOT writable */
-+    spi_ctrl_start_user();
-+    writeb(ASPEED_FLASH_BASE, WREN);
-+    /* test ability to write SRWD */
-+    writeb(ASPEED_FLASH_BASE, WRSR);
-+    writeb(ASPEED_FLASH_BASE, 0);
-+    writeb(ASPEED_FLASH_BASE, RDSR);
-+    r = readb(ASPEED_FLASH_BASE);
-+    spi_ctrl_stop_user();
-+    /* write is not successful */
-+    g_assert_cmphex(r & SRWD, ==, SRWD);
-+
-+    qtest_set_irq_in(global_qtest,
-+                     "/machine/soc/fmc/ssi.0/child[0]", "WP#", 0, 1);
-+    flash_reset();
-+}
-+
- static char tmp_path[] = "/tmp/qtest.m25p80.XXXXXX";
- 
- int main(int argc, char **argv)
-@@ -416,6 +476,8 @@ int main(int argc, char **argv)
-     qtest_add_func("/ast2400/smc/read_page_mem", test_read_page_mem);
-     qtest_add_func("/ast2400/smc/write_page_mem", test_write_page_mem);
-     qtest_add_func("/ast2400/smc/read_status_reg", test_read_status_reg);
-+    qtest_add_func("/ast2400/smc/status_reg_write_protection",
-+                   test_status_reg_write_protection);
- 
-     ret = g_test_run();
- 
--- 
+diff --git a/hw/i2c/aspeed_i2c.c b/hw/i2c/aspeed_i2c.c
+index 37ae1f2e04..c4fce7474a 100644
+--- a/hw/i2c/aspeed_i2c.c
++++ b/hw/i2c/aspeed_i2c.c
+@@ -644,18 +644,18 @@ static void aspeed_i2c_bus_new_write(AspeedI2CBus *bu=
+s, hwaddr offset,
+                                                      RX_BUF_LEN) + 1;
+         break;
+     case A_I2CM_DMA_LEN:
+-        w1t =3D ARRAY_FIELD_EX32(bus->regs, I2CM_DMA_LEN, RX_BUF_LEN_W1T) =
+||
+-                   ARRAY_FIELD_EX32(bus->regs, I2CM_DMA_LEN, TX_BUF_LEN_W1=
+T);
++        w1t =3D FIELD_EX32(value, I2CM_DMA_LEN, RX_BUF_LEN_W1T) ||
++              FIELD_EX32(value, I2CM_DMA_LEN, TX_BUF_LEN_W1T);
+         /* If none of the w1t bits are set, just write to the reg as norma=
+l. */
+         if (!w1t) {
+             bus->regs[R_I2CM_DMA_LEN] =3D value;
+             break;
+         }
+-        if (ARRAY_FIELD_EX32(bus->regs, I2CM_DMA_LEN, RX_BUF_LEN_W1T)) {
++        if (FIELD_EX32(value, I2CM_DMA_LEN, RX_BUF_LEN_W1T)) {
+             ARRAY_FIELD_DP32(bus->regs, I2CM_DMA_LEN, RX_BUF_LEN,
+                              FIELD_EX32(value, I2CM_DMA_LEN, RX_BUF_LEN));
+         }
+-        if (ARRAY_FIELD_EX32(bus->regs, I2CM_DMA_LEN, TX_BUF_LEN_W1T)) {
++        if (FIELD_EX32(value, I2CM_DMA_LEN, TX_BUF_LEN_W1T)) {
+             ARRAY_FIELD_DP32(bus->regs, I2CM_DMA_LEN, TX_BUF_LEN,
+                              FIELD_EX32(value, I2CM_DMA_LEN, TX_BUF_LEN));
+         }
+--=20
 2.30.2
 

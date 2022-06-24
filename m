@@ -1,103 +1,92 @@
-Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp327291lft;
-        Fri, 24 Jun 2022 06:32:58 -0700 (PDT)
-X-Google-Smtp-Source: AGRyM1sPro20Ruw+8lTIT/MerrSqbqvhtZ9yxEfxvPSd7yGYyTU/A0ogaACF1olruECgEsSR6JxE
-X-Received: by 2002:ad4:5f0c:0:b0:470:3f36:6baa with SMTP id fo12-20020ad45f0c000000b004703f366baamr23645734qvb.119.1656077578017;
-        Fri, 24 Jun 2022 06:32:58 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1656077578; cv=none;
+Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp333430lft;
+        Fri, 24 Jun 2022 06:43:26 -0700 (PDT)
+X-Google-Smtp-Source: AGRyM1vqR8P2TrEvMrT4jNFSuoH+4Ox+u2Bvbi6SrpergrQKGG0ZVMsHs34WWtGx9eGWDJu9g+19
+X-Received: by 2002:a05:620a:6018:b0:6a6:c633:c85c with SMTP id dw24-20020a05620a601800b006a6c633c85cmr10254527qkb.649.1656078206133;
+        Fri, 24 Jun 2022 06:43:26 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1656078206; cv=none;
         d=google.com; s=arc-20160816;
-        b=btsdMpxgQW3d3dHsEGv6xZRztuiZHnpSL6MKN/YzL7ZfsdN+XHnCLniSqM+38KCqo4
-         Pqj984evEz0jxG8VvGkwyKubaOM2URM3ZVtOY4iYVOwLDmtW6ooR7MF4j1vQzL3km8B5
-         PWZATXGwEMekqwJBP+tFLGMhI/e5K7Qk6TpIr7W5wnLW52PDgmgPcIxHVvZkaftfIvfs
-         NrpiX9hyWvAOdPi0wqHWBxmE7aETZ43LGTKh6gEAJdxT/p6/MQqu/gtWj6dfM3eEzWWK
-         Joz+GNnsXXA8Gu5CpwTJvrdSvvqjudNpW8GDh+pYbTGtoxrBMfPbsLTWLPA14MMJNaSB
-         KHrg==
+        b=09bLFBjVIq6wu5kOBt9HgaKChgt7FvxKNkxt1ERHSHkp39Dl+r/1woZt8v35OPqXt7
+         KMuNP8Dcs66NdCZAZY5NSQNqcsIWcEkC278yBx5eAAhdllxteQ/wYPWIK5ttcZbPSz3B
+         v1ixQ0fA3zrXzbQ6eJUAIa9jWde2yfm3kBwKD1flQv+rrhZBhTIS5U2+LxkJZK3rwCb2
+         xTWXSlFR+bZDP2tMVWmzTbEq2Qf2lVlOFiQuNdY5k40o2Z9ivpOHzR3J4n88AsszdRNg
+         xe+nXsD/B+8lYNdRicolX/y8gvFiV73kxAhtLR7iScatspm+k041B/HWmaG3NteTmaoW
+         dBzA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=juW11aS3P8iUB06dpWXOs27VO1b4ci38WWDiyrb7+LU=;
-        b=hYRoZrfQKkIXkdak9Ld6krTT/roQ71piKpcv/rDmW4+lA4g2PsOg0vgxcqAtVZb6c3
-         d0CaDDmlLzBdzGC7N8Cn4lgpaDd0Pq7xHW9fBAkptzesOIBFJsp+A6fFFrBSggsI6o6F
-         HJOTKdaVrGyfT8jyI7ol+BIGZpdVmn2+wqXW+D+ZkzmRto7PBNP4/SmvvtbGMX+UlFSJ
-         px4Ob68RTtkodzDfS0+kicUUaaqxHrboYzbe1bFASz1fRmUceJNv4OTjcvXSiL2w508C
-         c+sSRnvc35uhmXOc0GKVxix5hC5ewbbzK8V2UwdNG2f6hqy7qH+gGmBJeH5dY8fNHuDq
-         aQPg==
+         :content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:to:from:dkim-signature;
+        bh=P/QxeLVFrVFIIytGO8/JUWfe6AUHvXqI9Vy+r4Gi+ug=;
+        b=h4W4fZx5uRbMeGvq0jhIpvgy0qDAj7Yq+VBHnzCzf1rDlzqgUl9yzBFmlKF9ydb3L4
+         53ppIxf3/EzJmelGAVsR0uwvmY1ZtufA80E2iV/ejLdo8daDsd5JYI2cEsIP9f2JPWfT
+         Ca2KoUwV0kv0C6EENlAX1WUKjqI9fiVnh5qDML/e+3WrMLqhFYJrP+hkTmlJCVxcGxEn
+         BFdez0u0jxUrNQLam8slPmlrYgPfZC8diBtuV3PXUNoH6PEtpxlXYLgSNkC7RhwxuNk3
+         Kfh2zpRdRF207PH7QEDH0VoOqxSmj09ZKpbuXu0s2yrepDhCqtf48KCBgmSmr8tYoLz9
+         xPIQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@ilande.co.uk header.s=20220518 header.b=SJdInpKv;
+       dkim=fail header.i=@ilande.co.uk header.s=20220518 header.b=GmsA0Mnu;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=ilande.co.uk
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id h22-20020a05620a245600b006a77d046d5fsi1897232qkn.618.2022.06.24.06.32.57
+        by mx.google.com with ESMTPS id x13-20020a05620a258d00b006aefbf4d44bsi2050179qko.494.2022.06.24.06.43.25
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 24 Jun 2022 06:32:58 -0700 (PDT)
+        Fri, 24 Jun 2022 06:43:26 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@ilande.co.uk header.s=20220518 header.b=SJdInpKv;
+       dkim=fail header.i=@ilande.co.uk header.s=20220518 header.b=GmsA0Mnu;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=ilande.co.uk
-Received: from localhost ([::1]:34404 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:46072 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1o4jQe-0000vy-Vm
-	for alex.bennee@linaro.org; Fri, 24 Jun 2022 09:32:57 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:35832)
+	id 1o4jan-0001HA-Jp
+	for alex.bennee@linaro.org; Fri, 24 Jun 2022 09:43:25 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37886)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mark.cave-ayland@ilande.co.uk>)
- id 1o4jQB-0000uZ-26; Fri, 24 Jun 2022 09:32:27 -0400
-Received: from mail.ilande.co.uk ([2001:41c9:1:41f::167]:41408)
+ id 1o4jZ8-0007Gy-Cy; Fri, 24 Jun 2022 09:41:42 -0400
+Received: from mail.ilande.co.uk ([2001:41c9:1:41f::167]:41620)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mark.cave-ayland@ilande.co.uk>)
- id 1o4jQ9-0003Ha-Ac; Fri, 24 Jun 2022 09:32:26 -0400
+ id 1o4jZ4-00054q-VG; Fri, 24 Jun 2022 09:41:42 -0400
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=ilande.co.uk; s=20220518; h=Subject:Content-Transfer-Encoding:Content-Type:
- In-Reply-To:From:References:Cc:To:MIME-Version:Date:Message-ID:Sender:
- Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
- :Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
+ MIME-Version:References:In-Reply-To:Message-Id:Date:To:From:Sender:Reply-To:
+ Cc:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+ Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
  List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=juW11aS3P8iUB06dpWXOs27VO1b4ci38WWDiyrb7+LU=; b=SJdInpKvpXD30ADbsjS5nKZp9x
- 0p5DCNMCUFQ0dYM4+8BAnOFty9amPg/zTKdAKFYYK3z7vkRai/NUsLnqTEQ7NlFl5Jnt3R5NNa83y
- 3OrYSG98ToUeTZkkeU1gN2xA4wtNRMLBB3OeGKo3GroCRZfb685lmbQI74KFZZtPpeNLDVrCy4Uyr
- GBc2detfbpD1ZaMzYNQHuLijHk5VeG//1W7T1POtHqtpIr9ngw0DSbmtMkOqZBh+4xZQO8JcrWCJT
- I94dYntEVoh/VMILIBWct5wLh+B7MYaKQFZFe7/GJ8hStWMXcHJjcGuXq1bO/AtPUlJfHYqp+Sqjn
- v/vNKn5gNeQ+YTKtsaj8ZmqnoLFswiZN2ntSiYTa8uRnbNDuzrcA3T90dLzIX7rR1xzwGAowIRCMv
- /08PZrqlF+/Kpj82ZjfA1B+NBgVDJWsgk8xp325ul5k8H7eBu/MK+YuqWCoWccaj71dAWkMI3ch7p
- A4Dzv6KoZUVdajk+unY0SoewkD6z4wpw4VjPRNd16uxf7LE4/Dk0fcegAiQ9RgXE7P8wxmXJcRb2w
- NntH3qP/BHxd8E4nNX5IeeCZ20bIzit4F8PZB/jmXjLqEuwWaBX9qsCRPgNyiQo9Fmj+2K8k10r6R
- WuFtJud7iEFRjvxRF/JrZtGeeU51yk8h91kwoVGJ4=;
-Received: from [2a00:23c4:8ba4:e500:b82f:56f9:46d7:80ab]
- by mail.ilande.co.uk with esmtpsa (TLS1.3:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ bh=P/QxeLVFrVFIIytGO8/JUWfe6AUHvXqI9Vy+r4Gi+ug=; b=GmsA0MnuOoVL22JworLEBkZi6b
+ m/iEWSi6xnDyDLqKzcPxNCK9WS7XxUrLjgr3dclueJofpwEuHY3zyr9jsB6BHMDReYTgHgmF6A1vZ
+ ZWo6TsU5S9SEsx745dQE9S5g7R//GiPz9AaOq18UJmVa2yAbhw5whGiYtw4Hci/lC4O/9D+nFq4/a
+ o5ywTptAKAVvDLZcIKhSk0jCyoLidwWcE8NHvg3BGlcri7gdwQMc1luw9WE2JhuLd9llV75YcEBRw
+ imbPnDJOjE5k9wGqAski9awS1cmVGGkgQrvqG/HuvAsAtq9qbmAIEvn7OdosUhP6WtO51HN4IskzR
+ UQy33DTll9PvFPC9VM3GL4g/vB8AzzVplLEWATM2a1rrRD36EbR/z4ueSeGCuUlSxYpN1W0Q3rWYT
+ fYQxauyTph9MTMBO3BQca2vF6my9bCDjO5qdeSrBAfVWlDuv70xgEpRNW8oS/gbETIFSZcIrwnlIm
+ 6VGX1WWDb5ywYV/V26s667Ouop70a1Qa8ALexojrMjmL0vP+jfkHvqFU7W0ATOKj5JLUFhQvK7nI1
+ TzkPxRCCFhdP40jtGrRSNXNVT2P4IsJh/c+pM9PbVPFoShM6wq1trIos8htajyGRg9oMYJqZdQoK1
+ lCATDmi3kwmf+uChjva0iPa3xr3GZq60x6dSU/CYE=;
+Received: from [2a00:23c4:8ba4:e500:b82f:56f9:46d7:80ab] (helo=kentang.home)
+ by mail.ilande.co.uk with esmtpsa (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.92) (envelope-from <mark.cave-ayland@ilande.co.uk>)
- id 1o4jOo-0002zc-28; Fri, 24 Jun 2022 14:31:06 +0100
-Message-ID: <792ebc6d-b1e8-6b1b-2aae-123a472d85d0@ilande.co.uk>
-Date: Fri, 24 Jun 2022 14:32:10 +0100
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.10.0
-Content-Language: en-US
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: richard.henderson@linaro.org, deller@gmx.de, mst@redhat.com,
- pbonzini@redhat.com, hpoussin@reactos.org, aleksandar.rikalo@syrmia.com,
- f4bug@amsat.org, jiaxun.yang@flygoat.com, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
-References: <20220522181836.864-1-mark.cave-ayland@ilande.co.uk>
- <20220522181836.864-46-mark.cave-ayland@ilande.co.uk>
- <CAFEAcA9CxLKNZzfvaoUFSRtykEymu23er+zj=7GA1V2nRtcU9A@mail.gmail.com>
- <939ffd58-3a89-ea5b-157d-d4a9bd4dffa4@ilande.co.uk>
- <a425db75-5636-8b29-26d2-9bef52c8eb25@ilande.co.uk>
- <CAFEAcA-F_v_S3TMbtQvboBCzg9OsXM3YZ-Bs6yVabTpE9_yJ5Q@mail.gmail.com>
- <ee98844e-93e6-1c43-ae1c-57af166d9beb@ilande.co.uk>
- <CAFEAcA-5P+45sZeprHCsEWiXCQ_pojdPG9U042nmJEmr=Wi-_w@mail.gmail.com>
+ id 1o4jXl-00037t-5o; Fri, 24 Jun 2022 14:40:20 +0100
 From: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
-In-Reply-To: <CAFEAcA-5P+45sZeprHCsEWiXCQ_pojdPG9U042nmJEmr=Wi-_w@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+To: richard.henderson@linaro.org, deller@gmx.de, mst@redhat.com,
+ pbonzini@redhat.com, peter.maydell@linaro.org, hpoussin@reactos.org,
+ aleksandar.rikalo@syrmia.com, f4bug@amsat.org, jiaxun.yang@flygoat.com,
+ qemu-arm@nongnu.org, qemu-devel@nongnu.org
+Date: Fri, 24 Jun 2022 14:40:19 +0100
+Message-Id: <20220624134109.881989-5-mark.cave-ayland@ilande.co.uk>
+X-Mailer: git-send-email 2.30.2
+In-Reply-To: <20220624134109.881989-1-mark.cave-ayland@ilande.co.uk>
+References: <20220624134109.881989-1-mark.cave-ayland@ilande.co.uk>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 X-SA-Exim-Connect-IP: 2a00:23c4:8ba4:e500:b82f:56f9:46d7:80ab
 X-SA-Exim-Mail-From: mark.cave-ayland@ilande.co.uk
-Subject: Re: [PATCH 45/50] lasips2: use qdev gpio for output IRQ
+Subject: [PATCH v2 04/54] ps2: QOMify PS2MouseState
 X-SA-Exim-Version: 4.2.1 (built Wed, 08 May 2019 21:11:16 +0000)
 X-SA-Exim-Scanned: Yes (on mail.ilande.co.uk)
 Received-SPF: pass client-ip=2001:41c9:1:41f::167;
@@ -106,9 +95,8 @@ X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -123,37 +111,294 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 8BM0GoDsyVj1
+X-TUID: iV8BhgNBbB+a
 
-On 20/06/2022 15:13, Peter Maydell wrote:
+Make PS2MouseState into a new PS2_MOUSE_DEVICE QOM type which inherits from the
+abstract PS2_DEVICE type.
 
-> On Mon, 20 Jun 2022 at 14:22, Mark Cave-Ayland
-> <mark.cave-ayland@ilande.co.uk> wrote:
->>
->> On 20/06/2022 11:17, Peter Maydell wrote:
->>> Well, I think that "unnamed GPIO out" lines should be for
->>> actual GPIO lines, ie on a GPIO controller or similar.
->>> If you want an outbound IRQ line and don't want to name it,
->>> that's what sysbus IRQ lines do. Otherwise, name the GPIO line.
->>
->> That's interesting - I've always been under the impression that this was the other
->> way around, i.e. for a TYPE_DEVICE then unnamed gpios are equivalent to IRQs, and
->> that gpio lines for any other non-IRQ purpose should be named :/
-> 
-> Well, named GPIO lines are relatively new, so if you look at older
-> devices you'll probably find plenty that use unnamed GPIO lines
-> for various things including IRQ lines. But I think that for clarity
-> if you create something called "gpio_out" the obvious thing is that
-> that's a GPIO output, and if you create something called "sysbus_irq"
-> the obvious thing is that that's an IRQ line, and if you want to
-> do something that's neither of those then the clearest thing is
-> to name the GPIO.
+Signed-off-by: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
+Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+Acked-by: Helge Deller <deller@gmx.de>
+---
+ hw/input/ps2.c | 98 ++++++++++++++++++++++++++++++--------------------
+ 1 file changed, 60 insertions(+), 38 deletions(-)
 
-Ultimately I'm not too concerned about the choice between sysbus IRQs instead of gpio 
-outputs, since making the change later is quite trivial. I've gone ahead and updated 
-this patch to use a sysbus IRQ instead of an unnamed gpio out for v2.
+diff --git a/hw/input/ps2.c b/hw/input/ps2.c
+index 14eb777c3f..ee7c36d4f2 100644
+--- a/hw/input/ps2.c
++++ b/hw/input/ps2.c
+@@ -123,8 +123,9 @@ struct PS2KbdState {
+ #define TYPE_PS2_KBD_DEVICE "ps2-kbd"
+ OBJECT_DECLARE_SIMPLE_TYPE(PS2KbdState, PS2_KBD_DEVICE)
+ 
+-typedef struct {
+-    PS2State common;
++struct PS2MouseState {
++    PS2State parent_obj;
++
+     uint8_t mouse_status;
+     uint8_t mouse_resolution;
+     uint8_t mouse_sample_rate;
+@@ -136,7 +137,10 @@ typedef struct {
+     int mouse_dz;
+     int mouse_dw;
+     uint8_t mouse_buttons;
+-} PS2MouseState;
++};
++
++#define TYPE_PS2_MOUSE_DEVICE "ps2-mouse"
++OBJECT_DECLARE_SIMPLE_TYPE(PS2MouseState, PS2_MOUSE_DEVICE)
+ 
+ static uint8_t translate_table[256] = {
+     0xff, 0x43, 0x41, 0x3f, 0x3d, 0x3b, 0x3c, 0x58,
+@@ -735,12 +739,13 @@ void ps2_keyboard_set_translation(void *opaque, int mode)
+ 
+ static int ps2_mouse_send_packet(PS2MouseState *s)
+ {
++    PS2State *ps2 = PS2_DEVICE(s);
+     /* IMPS/2 and IMEX send 4 bytes, PS2 sends 3 bytes */
+     const int needed = s->mouse_type ? 4 : 3;
+     unsigned int b;
+     int dx1, dy1, dz1, dw1;
+ 
+-    if (PS2_QUEUE_SIZE - s->common.queue.count < needed) {
++    if (PS2_QUEUE_SIZE - ps2->queue.count < needed) {
+         return 0;
+     }
+ 
+@@ -760,9 +765,9 @@ static int ps2_mouse_send_packet(PS2MouseState *s)
+         dy1 = -127;
+     }
+     b = 0x08 | ((dx1 < 0) << 4) | ((dy1 < 0) << 5) | (s->mouse_buttons & 0x07);
+-    ps2_queue_noirq(&s->common, b);
+-    ps2_queue_noirq(&s->common, dx1 & 0xff);
+-    ps2_queue_noirq(&s->common, dy1 & 0xff);
++    ps2_queue_noirq(ps2, b);
++    ps2_queue_noirq(ps2, dx1 & 0xff);
++    ps2_queue_noirq(ps2, dy1 & 0xff);
+     /* extra byte for IMPS/2 or IMEX */
+     switch (s->mouse_type) {
+     default:
+@@ -776,7 +781,7 @@ static int ps2_mouse_send_packet(PS2MouseState *s)
+         } else if (dz1 < -127) {
+             dz1 = -127;
+         }
+-        ps2_queue_noirq(&s->common, dz1 & 0xff);
++        ps2_queue_noirq(ps2, dz1 & 0xff);
+         s->mouse_dz -= dz1;
+         s->mouse_dw = 0;
+         break;
+@@ -812,11 +817,11 @@ static int ps2_mouse_send_packet(PS2MouseState *s)
+             b = (dz1 & 0x0f) | ((s->mouse_buttons & 0x18) << 1);
+             s->mouse_dz -= dz1;
+         }
+-        ps2_queue_noirq(&s->common, b);
++        ps2_queue_noirq(ps2, b);
+         break;
+     }
+ 
+-    ps2_raise_irq(&s->common);
++    ps2_raise_irq(ps2);
+ 
+     trace_ps2_mouse_send_packet(s, dx1, dy1, dz1, b);
+     /* update deltas */
+@@ -918,85 +923,86 @@ void ps2_mouse_fake_event(void *opaque)
+ void ps2_write_mouse(void *opaque, int val)
+ {
+     PS2MouseState *s = (PS2MouseState *)opaque;
++    PS2State *ps2 = PS2_DEVICE(s);
+ 
+     trace_ps2_write_mouse(opaque, val);
+-    switch (s->common.write_cmd) {
++    switch (ps2->write_cmd) {
+     default:
+     case -1:
+         /* mouse command */
+         if (s->mouse_wrap) {
+             if (val == AUX_RESET_WRAP) {
+                 s->mouse_wrap = 0;
+-                ps2_queue(&s->common, AUX_ACK);
++                ps2_queue(ps2, AUX_ACK);
+                 return;
+             } else if (val != AUX_RESET) {
+-                ps2_queue(&s->common, val);
++                ps2_queue(ps2, val);
+                 return;
+             }
+         }
+         switch (val) {
+         case AUX_SET_SCALE11:
+             s->mouse_status &= ~MOUSE_STATUS_SCALE21;
+-            ps2_queue(&s->common, AUX_ACK);
++            ps2_queue(ps2, AUX_ACK);
+             break;
+         case AUX_SET_SCALE21:
+             s->mouse_status |= MOUSE_STATUS_SCALE21;
+-            ps2_queue(&s->common, AUX_ACK);
++            ps2_queue(ps2, AUX_ACK);
+             break;
+         case AUX_SET_STREAM:
+             s->mouse_status &= ~MOUSE_STATUS_REMOTE;
+-            ps2_queue(&s->common, AUX_ACK);
++            ps2_queue(ps2, AUX_ACK);
+             break;
+         case AUX_SET_WRAP:
+             s->mouse_wrap = 1;
+-            ps2_queue(&s->common, AUX_ACK);
++            ps2_queue(ps2, AUX_ACK);
+             break;
+         case AUX_SET_REMOTE:
+             s->mouse_status |= MOUSE_STATUS_REMOTE;
+-            ps2_queue(&s->common, AUX_ACK);
++            ps2_queue(ps2, AUX_ACK);
+             break;
+         case AUX_GET_TYPE:
+-            ps2_queue_2(&s->common,
++            ps2_queue_2(ps2,
+                 AUX_ACK,
+                 s->mouse_type);
+             break;
+         case AUX_SET_RES:
+         case AUX_SET_SAMPLE:
+-            s->common.write_cmd = val;
+-            ps2_queue(&s->common, AUX_ACK);
++            ps2->write_cmd = val;
++            ps2_queue(ps2, AUX_ACK);
+             break;
+         case AUX_GET_SCALE:
+-            ps2_queue_4(&s->common,
++            ps2_queue_4(ps2,
+                 AUX_ACK,
+                 s->mouse_status,
+                 s->mouse_resolution,
+                 s->mouse_sample_rate);
+             break;
+         case AUX_POLL:
+-            ps2_queue(&s->common, AUX_ACK);
++            ps2_queue(ps2, AUX_ACK);
+             ps2_mouse_send_packet(s);
+             break;
+         case AUX_ENABLE_DEV:
+             s->mouse_status |= MOUSE_STATUS_ENABLED;
+-            ps2_queue(&s->common, AUX_ACK);
++            ps2_queue(ps2, AUX_ACK);
+             break;
+         case AUX_DISABLE_DEV:
+             s->mouse_status &= ~MOUSE_STATUS_ENABLED;
+-            ps2_queue(&s->common, AUX_ACK);
++            ps2_queue(ps2, AUX_ACK);
+             break;
+         case AUX_SET_DEFAULT:
+             s->mouse_sample_rate = 100;
+             s->mouse_resolution = 2;
+             s->mouse_status = 0;
+-            ps2_queue(&s->common, AUX_ACK);
++            ps2_queue(ps2, AUX_ACK);
+             break;
+         case AUX_RESET:
+             s->mouse_sample_rate = 100;
+             s->mouse_resolution = 2;
+             s->mouse_status = 0;
+             s->mouse_type = 0;
+-            ps2_reset_queue(&s->common);
+-            ps2_queue_3(&s->common,
++            ps2_reset_queue(ps2);
++            ps2_queue_3(ps2,
+                 AUX_ACK,
+                 0xaa,
+                 s->mouse_type);
+@@ -1037,13 +1043,13 @@ void ps2_write_mouse(void *opaque, int val)
+             s->mouse_detect_state = 0;
+             break;
+         }
+-        ps2_queue(&s->common, AUX_ACK);
+-        s->common.write_cmd = -1;
++        ps2_queue(ps2, AUX_ACK);
++        ps2->write_cmd = -1;
+         break;
+     case AUX_SET_RES:
+         s->mouse_resolution = val;
+-        ps2_queue(&s->common, AUX_ACK);
+-        s->common.write_cmd = -1;
++        ps2_queue(ps2, AUX_ACK);
++        ps2->write_cmd = -1;
+         break;
+     }
+ }
+@@ -1097,9 +1103,10 @@ static void ps2_kbd_reset(void *opaque)
+ static void ps2_mouse_reset(void *opaque)
+ {
+     PS2MouseState *s = (PS2MouseState *) opaque;
++    PS2State *ps2 = PS2_DEVICE(s);
+ 
+     trace_ps2_mouse_reset(opaque);
+-    ps2_common_reset(&s->common);
++    ps2_common_reset(ps2);
+     s->mouse_status = 0;
+     s->mouse_resolution = 0;
+     s->mouse_sample_rate = 0;
+@@ -1226,7 +1233,7 @@ static const VMStateDescription vmstate_ps2_keyboard = {
+ static int ps2_mouse_post_load(void *opaque, int version_id)
+ {
+     PS2MouseState *s = (PS2MouseState *)opaque;
+-    PS2State *ps2 = &s->common;
++    PS2State *ps2 = PS2_DEVICE(s);
+ 
+     ps2_common_post_load(ps2);
+ 
+@@ -1239,7 +1246,8 @@ static const VMStateDescription vmstate_ps2_mouse = {
+     .minimum_version_id = 2,
+     .post_load = ps2_mouse_post_load,
+     .fields = (VMStateField[]) {
+-        VMSTATE_STRUCT(common, PS2MouseState, 0, vmstate_ps2_common, PS2State),
++        VMSTATE_STRUCT(parent_obj, PS2MouseState, 0, vmstate_ps2_common,
++                       PS2State),
+         VMSTATE_UINT8(mouse_status, PS2MouseState),
+         VMSTATE_UINT8(mouse_resolution, PS2MouseState),
+         VMSTATE_UINT8(mouse_sample_rate, PS2MouseState),
+@@ -1291,11 +1299,18 @@ static QemuInputHandler ps2_mouse_handler = {
+ 
+ void *ps2_mouse_init(void (*update_irq)(void *, int), void *update_arg)
+ {
+-    PS2MouseState *s = g_new0(PS2MouseState, 1);
++    DeviceState *dev;
++    PS2MouseState *s;
++    PS2State *ps2;
++
++    dev = qdev_new(TYPE_PS2_MOUSE_DEVICE);
++    sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), &error_fatal);
++    s = PS2_MOUSE_DEVICE(dev);
++    ps2 = PS2_DEVICE(s);
+ 
+     trace_ps2_mouse_init(s);
+-    s->common.update_irq = update_irq;
+-    s->common.update_arg = update_arg;
++    ps2->update_irq = update_irq;
++    ps2->update_arg = update_arg;
+     vmstate_register(NULL, 0, &vmstate_ps2_mouse, s);
+     qemu_input_handler_register((DeviceState *)s,
+                                 &ps2_mouse_handler);
+@@ -1309,6 +1324,12 @@ static const TypeInfo ps2_kbd_info = {
+     .instance_size = sizeof(PS2KbdState),
+ };
+ 
++static const TypeInfo ps2_mouse_info = {
++    .name          = TYPE_PS2_MOUSE_DEVICE,
++    .parent        = TYPE_PS2_DEVICE,
++    .instance_size = sizeof(PS2MouseState),
++};
++
+ static void ps2_class_init(ObjectClass *klass, void *data)
+ {
+     DeviceClass *dc = DEVICE_CLASS(klass);
+@@ -1328,6 +1349,7 @@ static void ps2_register_types(void)
+ {
+     type_register_static(&ps2_info);
+     type_register_static(&ps2_kbd_info);
++    type_register_static(&ps2_mouse_info);
+ }
+ 
+ type_init(ps2_register_types)
+-- 
+2.30.2
 
-
-ATB,
-
-Mark.

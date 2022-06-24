@@ -1,113 +1,122 @@
-Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp436478lft;
-        Fri, 24 Jun 2022 09:13:03 -0700 (PDT)
-X-Received: by 2002:a5b:c52:0:b0:669:8231:cab4 with SMTP id d18-20020a5b0c52000000b006698231cab4mr16637469ybr.72.1656087183058;
-        Fri, 24 Jun 2022 09:13:03 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1656087183; cv=none;
+Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp508048lft;
+        Fri, 24 Jun 2022 10:59:28 -0700 (PDT)
+X-Google-Smtp-Source: AGRyM1s31nNbAzBHJsnlmfsRCSjXZ+Fih9byICXovpQewSFYAEXq8v3KCuP1M795tmWvp7e3Wbz8
+X-Received: by 2002:a05:6402:b48:b0:435:728c:d127 with SMTP id bx8-20020a0564020b4800b00435728cd127mr372689edb.392.1656093568862;
+        Fri, 24 Jun 2022 10:59:28 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1656093568; cv=none;
         d=google.com; s=arc-20160816;
-        b=0Ck5XL6oSy88ltsVMipCcrMyP1Nh0sRhB+y85GzXR+WonQg+PkbDb/YujY16SVPG/g
-         XLNaarnT7JaL84VTdTOWVyRjAlJopJgmeDTU0GGtPOFm4Y4B3zd+thigDAqQkYOKYZ05
-         u2v+X2E8GIVjJq656ratDLz9U9kVcfNNw3e7jgMd52zMdyXiXsy74JVcN5l6aF7dbmLK
-         xmrJKVdPBhvcmmo34R/THoYvlbkooV00YF/SwFvQV0jWc7cDf95JG+LYtBqRX1glJirU
-         W6xwisacZo+M2ebIpFRIBkfuQ2BDiZAxIJZ/bGHL1RARRNRFejjIqmVcY+XRs7cprhNo
-         8oFA==
+        b=RpANlUz8uhtTyJMk4eAhDmcy42c3IKCFX+rXUMG5Osbpe/9qoMgFk3ru3exu4kFfBR
+         vWTNJrvey8VgLHDcoUGFQOpj83LEFNaUN7g5w8cjwPz2XEOvFryazEWQlzOUW5jpKsI1
+         PdGjHlWyhiOV5P7vJtvsKV5lffp5wCxohq39Dz97gkPukBdWHaTgkgYkvhcvME3opmf4
+         rkt1BhDs03Fe8ry9IajXATGpuz++pRjlEd9KwNftja1RfFdxbh6n6jOiqzITKh9tv/Ir
+         iN2A006BULO3gQMfwJNg8LWnt/UTlIr+CLdIieBKCO+Fyub761nsggFuzYV2BncuqUbc
+         wfqg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:dkim-signature;
-        bh=iC0gjzLo/+NeCxUooWDkYLGFZYMI378klxjabIannsQ=;
-        b=iD1eLW0SmjEG17ajISC/mFXPJyODXmJT6Of5G8HbmUR7xHJWiRVYbzJJRNaLgEhSk9
-         9Si78iF52LZbCsssdNBDymArgjm1FTYxi2CmQEaz2z31aGzU+EfxjfXFJaIdlx6fTGJi
-         rqh7iRbP/ydR41TeZmStzMYVOSulxG6xOk9JHiFt5vl+RUXt1E0TYRdlL6AIdSKCdUsj
-         ayuOH8xsUjwO3QXKQf3xqrs1RstOC4946yjeZtKswr6CU9Tde3/ovpMkAdZdq/2p3E4A
-         nBDKvzNS/yRFs/sZ/PQNESu/SXcFOMuEjsd5EnXdeQ4CUdEUPgnx6UtohDh/urEY2zTo
-         NvuQ==
+        h=content-transfer-encoding:mime-version:organization:references
+         :in-reply-to:message-id:subject:cc:to:from:date;
+        bh=Nd/BmmETaVcSg2ov3HHacrZk4KpmK4mgA3BRwmN+XGc=;
+        b=RUFxe1glaV/rxZ81ETBfUGcNcFvLzrxdu7jZxU5XiE1hjqOVAIBidRQBr2x3JO2QzN
+         R0hE6wLsAdPwKESLjgNSG6eevWvGdpG6hUfOKxXyEHr+aExRwrenrS9WzyhgDsbXyaph
+         OQTfa7LtP+0Cmmt3fkgcUlciy+guo2iigmyhOj4A06xreeHj4dEYAI27Cw7J5u/CYfEu
+         9SUGzrBHZ+PTL+m/18+MVDNvZUaVcw6czSUb7qDCjPokVd/NxQhd/rLMSastPNc6Yxqh
+         0kaWgV+rA3FZ3UylAtZd/SR1zKDv6FQJQi7tXi1Hcl/oqZV/wAUZg89VFP1/iCgZkNvg
+         iY8A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=K8sEoSyB;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <peter.maydell@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id 65-20020a810144000000b00317e0646a8csor883580ywb.134.2022.06.24.09.13.02
-        for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Fri, 24 Jun 2022 09:13:03 -0700 (PDT)
-Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+       spf=pass (google.com: domain of jonathan.cameron@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=jonathan.cameron@huawei.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
+Return-Path: <jonathan.cameron@huawei.com>
+Received: from frasgout.his.huawei.com (frasgout.his.huawei.com. [185.176.79.56])
+        by mx.google.com with ESMTPS id gj4-20020a170906e10400b00722e85dcd8fsi209495ejb.210.2022.06.24.10.59.28
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Fri, 24 Jun 2022 10:59:28 -0700 (PDT)
+Received-SPF: pass (google.com: domain of jonathan.cameron@huawei.com designates 185.176.79.56 as permitted sender) client-ip=185.176.79.56;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=K8sEoSyB;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-         :cc;
-        bh=iC0gjzLo/+NeCxUooWDkYLGFZYMI378klxjabIannsQ=;
-        b=K8sEoSyBYqMDhct1wWQSdQ7WMnXZvT+3aFa9K5bLJJJzPfyK1oqKmuMAF0KxAD45t2
-         O3uTzQY6YSrgmvwB1scDkKuLCydIySEOGHkxd9qqL30Wnp7c4tFftfi6ZlSzGt+rt2Bi
-         RToOHE7mMRz232936in3xBirb7NNkRR44HLKKq/sYcbvYwdZisSQCsERJop5tHw/Sjxp
-         ziS25MryBgzJLNJ7HyFd4DMCJGUUcdPmurmvKU61wCC7ukkgRGfki/VtzXn9UCHyrquf
-         N9BJpNqBl4Ngd8jenkFlIJS1pw4vWQ7dlnJh74LYH9PTR5L9usuZXmMKqCYX/Q6ZKisP
-         oM7g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-         :message-id:subject:to:cc;
-        bh=iC0gjzLo/+NeCxUooWDkYLGFZYMI378klxjabIannsQ=;
-        b=7pg8LYvt+BOluOu2pJe5e3GLayfn/LtRGh6F1zvEWtgTmgn+FwBz1TC0OIcdHJw9D3
-         7Ilb5MyLlltxiXFgTbA/YnKLBtuJJDhWttR3lWu5xfsUjuJJ9eXgJNnIq4lHUHCKU60s
-         6PmzR7MqhdVRL4TodVY5JoRUGl6xb27lZHfE3iDbii4z8QhNXJ/VWzd/6Pya1+5G/3/L
-         nwGu6gfwWw5UKwiXIWKTDRQ+A8SDnyTc2WY9PLX4WL4nsAH0khof8Nhtu7GsxUFo4FOI
-         FqXXgO3sgfqvPHH52iXvW/cTzh/9wWuET5KMl6b6YVqn68uDy6ijuOfwCp6VexOVtNxz
-         WRfQ==
-X-Gm-Message-State: AJIora8MkKLK3op57MHvgbJDBsLap40I9oWk8D17mjqOpmnz3IqKpFyJ
-	y6jHxqnsa8wUG4PrJFMxsUTokDmYrYoxzDDGBh9NKCWg
-X-Google-Smtp-Source: AGRyM1uW1xfzgnRrf8c/H6yT0nn/HC62aGIxuPAVkf5Cn0RTTHUzwThcy5suDJhylW/v8KYTIsR93ohlCnSQmFR2Z3w=
-X-Received: by 2002:a81:8486:0:b0:317:a4af:4e0a with SMTP id
- u128-20020a818486000000b00317a4af4e0amr17919466ywf.455.1656087182563; Fri, 24
- Jun 2022 09:13:02 -0700 (PDT)
-MIME-Version: 1.0
-References: <20220616141950.23374-1-Jonathan.Cameron@huawei.com> <20220616141950.23374-3-Jonathan.Cameron@huawei.com>
-In-Reply-To: <20220616141950.23374-3-Jonathan.Cameron@huawei.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 24 Jun 2022 17:12:25 +0100
-Message-ID: <CAFEAcA_tck3fG67qO=4QiTHY2ST3jvy7-w156XkMKMv38-aN9g@mail.gmail.com>
+       spf=pass (google.com: domain of jonathan.cameron@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=jonathan.cameron@huawei.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
+Received: from fraeml737-chm.china.huawei.com (unknown [172.18.147.206])
+	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4LV4Zp3MCxz67xW6;
+	Sat, 25 Jun 2022 01:57:22 +0800 (CST)
+Received: from lhreml710-chm.china.huawei.com (10.201.108.61) by
+ fraeml737-chm.china.huawei.com (10.206.15.218) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2375.24; Fri, 24 Jun 2022 19:59:27 +0200
+Received: from localhost (10.81.207.131) by lhreml710-chm.china.huawei.com
+ (10.201.108.61) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2375.24; Fri, 24 Jun
+ 2022 18:59:26 +0100
+Date: Fri, 24 Jun 2022 18:59:22 +0100
+From: Jonathan Cameron <Jonathan.Cameron@Huawei.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+CC: <qemu-devel@nongnu.org>, <alex.bennee@linaro.org>, <qemu-arm@nongnu.org>,
+	"Michael S . Tsirkin" <mst@redhat.com>, Ben Widawsky <bwidawsk@kernel.org>,
+	Paolo Bonzini <pbonzini@redhat.com>, <linux-cxl@vger.kernel.org>,
+	<linuxarm@huawei.com>, Marcel Apfelbaum <marcel@redhat.com>, Igor Mammedov
+	<imammedo@redhat.com>, Markus Armbruster <armbru@redhat.com>, "Mark
+ Cave-Ayland" <mark.cave-ayland@ilande.co.uk>, Adam Manzanares
+	<a.manzanares@samsung.com>, Tong Zhang <ztong0001@gmail.com>, "Shameerali
+ Kolothum Thodi" <shameerali.kolothum.thodi@huawei.com>
 Subject: Re: [PATCH v11 2/2] qtest/cxl: Add aarch64 virt test for CXL
-To: Jonathan Cameron <Jonathan.Cameron@huawei.com>
-Cc: qemu-devel@nongnu.org, alex.bennee@linaro.org, qemu-arm@nongnu.org, 
-	"Michael S . Tsirkin" <mst@redhat.com>, Ben Widawsky <bwidawsk@kernel.org>, 
-	Paolo Bonzini <pbonzini@redhat.com>, linux-cxl@vger.kernel.org, linuxarm@huawei.com, 
-	Marcel Apfelbaum <marcel@redhat.com>, Igor Mammedov <imammedo@redhat.com>, 
-	Markus Armbruster <armbru@redhat.com>, Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, 
-	Adam Manzanares <a.manzanares@samsung.com>, Tong Zhang <ztong0001@gmail.com>, 
-	Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>
-Content-Type: text/plain; charset="UTF-8"
-X-TUID: wFJJc6ufYP5U
+Message-ID: <20220624185922.0000458f@Huawei.com>
+In-Reply-To: <CAFEAcA_tck3fG67qO=4QiTHY2ST3jvy7-w156XkMKMv38-aN9g@mail.gmail.com>
+References: <20220616141950.23374-1-Jonathan.Cameron@huawei.com>
+	<20220616141950.23374-3-Jonathan.Cameron@huawei.com>
+	<CAFEAcA_tck3fG67qO=4QiTHY2ST3jvy7-w156XkMKMv38-aN9g@mail.gmail.com>
+Organization: Huawei Technologies Research and Development (UK) Ltd.
+X-Mailer: Claws Mail 4.0.0 (GTK+ 3.24.29; i686-w64-mingw32)
+MIME-Version: 1.0
+Content-Type: text/plain; charset="US-ASCII"
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [10.81.207.131]
+X-ClientProxiedBy: lhreml735-chm.china.huawei.com (10.201.108.86) To
+ lhreml710-chm.china.huawei.com (10.201.108.61)
+X-CFilter-Loop: Reflected
+X-TUID: waNMNbsvzvAU
 
-On Thu, 16 Jun 2022 at 15:20, Jonathan Cameron
-<Jonathan.Cameron@huawei.com> wrote:
->
-> Add a single complex case for aarch64 virt machine.
->
-> Signed-off-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
-> ---
->  tests/qtest/cxl-test.c  | 48 +++++++++++++++++++++++++++++++++--------
->  tests/qtest/meson.build |  1 +
->  2 files changed, 40 insertions(+), 9 deletions(-)
->
-> diff --git a/tests/qtest/cxl-test.c b/tests/qtest/cxl-test.c
-> index 2133e973f4..1015d0e7c2 100644
-> --- a/tests/qtest/cxl-test.c
-> +++ b/tests/qtest/cxl-test.c
-> @@ -17,6 +17,11 @@
->                        "-device pxb-cxl,id=cxl.1,bus=pcie.0,bus_nr=53 " \
->                        "-M cxl-fmw.0.targets.0=cxl.0,cxl-fmw.0.targets.1=cxl.1,cxl-fmw.0.size=4G "
->
-> +#define QEMU_VIRT_2PXB_CMD "-machine virt,cxl=on "                      \
-> +                      "-device pxb-cxl,id=cxl.0,bus=pcie.0,bus_nr=52 "  \
-> +                      "-device pxb-cxl,id=cxl.1,bus=pcie.0,bus_nr=53 "  \
-> +                      "-M cxl-fmw.0.targets.0=cxl.0,cxl-fmw.0.targets.1=cxl.1,cxl-fmw.0.size=4G "
-> +
+On Fri, 24 Jun 2022 17:12:25 +0100
+Peter Maydell <peter.maydell@linaro.org> wrote:
 
-If CXL requires booting via UEFI, what does this test case do?
-It doesn't seem to be passing in a BIOS image.
+> On Thu, 16 Jun 2022 at 15:20, Jonathan Cameron
+> <Jonathan.Cameron@huawei.com> wrote:
+> >
+> > Add a single complex case for aarch64 virt machine.
+> >
+> > Signed-off-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
+> > ---
+> >  tests/qtest/cxl-test.c  | 48 +++++++++++++++++++++++++++++++++--------
+> >  tests/qtest/meson.build |  1 +
+> >  2 files changed, 40 insertions(+), 9 deletions(-)
+> >
+> > diff --git a/tests/qtest/cxl-test.c b/tests/qtest/cxl-test.c
+> > index 2133e973f4..1015d0e7c2 100644
+> > --- a/tests/qtest/cxl-test.c
+> > +++ b/tests/qtest/cxl-test.c
+> > @@ -17,6 +17,11 @@
+> >                        "-device pxb-cxl,id=cxl.1,bus=pcie.0,bus_nr=53 " \
+> >                        "-M cxl-fmw.0.targets.0=cxl.0,cxl-fmw.0.targets.1=cxl.1,cxl-fmw.0.size=4G "
+> >
+> > +#define QEMU_VIRT_2PXB_CMD "-machine virt,cxl=on "                      \
+> > +                      "-device pxb-cxl,id=cxl.0,bus=pcie.0,bus_nr=52 "  \
+> > +                      "-device pxb-cxl,id=cxl.1,bus=pcie.0,bus_nr=53 "  \
+> > +                      "-M cxl-fmw.0.targets.0=cxl.0,cxl-fmw.0.targets.1=cxl.1,cxl-fmw.0.size=4G "
+> > +  
+> 
+> If CXL requires booting via UEFI, what does this test case do?
+> It doesn't seem to be passing in a BIOS image.
 
-thanks
--- PMM
+Not a lot beyond checking device creation is valid etc and the machine boots.
+
+There is a bios tables test that checks we pass the right tables to the BIOS image.
+I didn't duplicate that for ARM on the basis it's more or less identical, but
+perhaps that is worth adding.
+
+To do any useful functional testing will require a mass of complex OS
+handling after booting. That testing is definitely something I'd like to
+add, but the userspace tooling isn't all in place yet. Final kernel series that's
+needed to get to the point where you can use the non volatile memory had
+a new version posted yesterday.
+
+Jonathan
+
+> 
+> thanks
+> -- PMM

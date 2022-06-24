@@ -1,119 +1,111 @@
-Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp98297lft;
-        Thu, 23 Jun 2022 23:57:00 -0700 (PDT)
-X-Google-Smtp-Source: AGRyM1tquINy4+iJFLE5omM91SzTIQuL1HS7tSG+HNWe4YAhEbAuAArhs5YcMDXIsPPkMt54z4YI
-X-Received: by 2002:a05:620a:c52:b0:6a7:8cf2:6c4e with SMTP id u18-20020a05620a0c5200b006a78cf26c4emr9229770qki.614.1656053820748;
-        Thu, 23 Jun 2022 23:57:00 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1656053820; cv=none;
+Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp99702lft;
+        Fri, 24 Jun 2022 00:00:48 -0700 (PDT)
+X-Google-Smtp-Source: AGRyM1tCOFR0Lx9b/5xOFRU0EXP+sWl9bLO3WKCwF5iz44HYkBnkqktkU+BvNi22kjiDYAxgE0/0
+X-Received: by 2002:a05:620a:c51:b0:6a6:6ef1:aeb6 with SMTP id u17-20020a05620a0c5100b006a66ef1aeb6mr9574789qki.503.1656054048305;
+        Fri, 24 Jun 2022 00:00:48 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1656054048; cv=none;
         d=google.com; s=arc-20160816;
-        b=htu8OwpSuPU9DmYTXkZ+rfl8h4yBHqpsTdFfnIDy7J8OdA10rhKOM3p5y+gAnKZXfz
-         3FC4VeAhTBvj7osK/mRzh7rqjffWYhPEykm1UomnLzowJew4pMjjEzugsVOrunbeFjpb
-         edeYbFy/aC5kzPwE7WbiAMVTTO2rFlIpi4T4McUcWXxDJWNvwPlhRbb9IDhXMOAH4cUD
-         LANV/DEnqFdp0cKlx5SZ7b/y6zjbe5j0Qr+zdfssX9rEp31u+5MG+1gZVrmgTIyVZYzp
-         SrzbANKerRv3hVA1pzCoenAO5Bsb24CTlQ10qfUUXqZNXS6r/c7gfsChuIu6M/aPMXs3
-         ydZw==
+        b=F18r/Zocc5cUl/OJSlBI0b73VqyrXlRzxOUWhzhDnD5+eUNYaLy5IomHBiuQ0gHNjq
+         lHpiFhdew2WcqGTTBsjqS0Kjb8E25W1tEoi6rt6HzpZk5ec0PrzPNrFMukKR9eQmNkEk
+         7yMUjdJzJRoGbQC9MgpRE5D+c9mZmN2rQQTwGEBLMMIm+LEsfiadC4f6WedqMyfNB5Ll
+         ZqLH8JqvenfAIK3+6e+0k0kyA+PATnIQT5To382HUOV5/dN8QXdmetuGr0qOPx3HIFuO
+         aS2VMIzJxQyvjc8HZAVqNx7nsHc1O7vIUDS2EaKhUCxU960DuWlDQdRyN5rP7j774jpW
+         LWtQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :in-reply-to:from:references:cc:to:content-language:subject
          :user-agent:mime-version:date:message-id;
-        bh=XtZCkIJG0PSefkmiwd96iO37WPYayVDIMps2y3x6fBE=;
-        b=UjqwRqd9F4JEJEzvl2i4C12BK6AzthfqaHFC1ZRzqDK6Ih5xiHxLo0xcahO/ssk+5s
-         7o6M+U8TLX4UDbWPUnFMLbnjyaOTOlkLG37VJRewnGfgagjqy5+139WwJdS9Rx31nlLE
-         78TqMxbA6gsHCg8zU1jTw9b3ojI3Om34rZsg5sSmyV0lWIQdnJINOkTRzZzAEQi2StlH
-         2l8zW1qZxhL7L1oUp1PvN+dVjF9ZkFR2+owuve8xi7SIU/n8nmPIXeJDoV/BhqZBmjM7
-         PUBzk0UJCN6eQEgVXVvwCyZF6fnUmKByAs+dkMTsSc/Gcc+uuCcox3oJong+YusFzNRR
-         yD0Q==
+        bh=aXBSR1nXAiefamxCfobTs6EaHurVErHl63M01/FGiYw=;
+        b=gSs8oluP476iwFsQIzUPbEx5JBlf/Dff1P9t+Cu77kW5GFRqKkm+kFaZA1VL84jj5l
+         /GZtgeEyWau7N6f5Tsz6oflEk9pu50yQMZoi3X9Yf9cJv7RCZrn8ygNpyuSuORi2xQvB
+         JjStLIvwsZtPM8Ytg6ABVYf6alUI1EUtYKHg9RIvFIY3hhkCwmL+pKeEyvjOuGv9wmp5
+         jirKNn8RydHkw6/ItMRs3+LMJi7zdPQZG7ikfsOaCZYZd/+a6pbNHt+CJNKnoedbmcJ+
+         LUy4Xp+azDC+R5D3GN4vQ18kta1XC/DsIeNZDgfOFyJTvhEFyTmzDTSROVSURWxKLmqt
+         KAtA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id j129-20020a375587000000b006a797ce500esi1001547qkb.605.2022.06.23.23.57.00
+        by mx.google.com with ESMTPS id n13-20020a37270d000000b0069fcf7580e8si1233798qkn.260.2022.06.24.00.00.48
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 23 Jun 2022 23:57:00 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 24 Jun 2022 00:00:48 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:49776 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:56624 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1o4dFU-0001bY-6u
-	for alex.bennee@linaro.org; Fri, 24 Jun 2022 02:57:00 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37930)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1o4dJ3-0006Fa-O8
+	for alex.bennee@linaro.org; Fri, 24 Jun 2022 03:00:43 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38504)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1o4dEq-0001Yg-Gu
- for qemu-arm@nongnu.org; Fri, 24 Jun 2022 02:56:21 -0400
-Received: from smtpout4.mo529.mail-out.ovh.net ([217.182.185.173]:32939)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1o4dGv-0004NG-KR
+ for qemu-devel@nongnu.org; Fri, 24 Jun 2022 02:58:30 -0400
+Received: from 4.mo548.mail-out.ovh.net ([188.165.42.229]:47231)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1o4dEm-0005ER-8q
- for qemu-arm@nongnu.org; Fri, 24 Jun 2022 02:56:20 -0400
-Received: from mxplan5.mail.ovh.net (unknown [10.109.138.109])
- by mo529.mail-out.ovh.net (Postfix) with ESMTPS id 450001109BBA1;
- Fri, 24 Jun 2022 08:56:14 +0200 (CEST)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1o4dGt-0005dE-6N
+ for qemu-devel@nongnu.org; Fri, 24 Jun 2022 02:58:29 -0400
+Received: from mxplan5.mail.ovh.net (unknown [10.109.138.132])
+ by mo548.mail-out.ovh.net (Postfix) with ESMTPS id 01C352047F;
+ Fri, 24 Jun 2022 06:58:23 +0000 (UTC)
 Received: from kaod.org (37.59.142.102) by DAG4EX1.mxp5.local (172.16.2.31)
  with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.9; Fri, 24 Jun
- 2022 08:56:13 +0200
+ 2022 08:58:23 +0200
 Authentication-Results: garm.ovh; auth=pass
- (GARM-102R0045375c275-4ef6-42be-b36f-7c523d033b0d,
+ (GARM-102R0049417caff-1ee3-49aa-aa94-e445215593c8,
  5EF2319963E9DB1A14486A5EC8730A2EE4B20F29) smtp.auth=clg@kaod.org
 X-OVh-ClientIp: 82.64.250.170
-Message-ID: <7361351e-2989-717c-7561-744624441808@kaod.org>
-Date: Fri, 24 Jun 2022 08:56:13 +0200
+Message-ID: <7cbc6ba7-e645-2126-19e3-f64205485f17@kaod.org>
+Date: Fri, 24 Jun 2022 08:58:22 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
  Thunderbird/91.9.0
-Subject: Re: [PATCH v2 3/8] aspeed: Remove usage of sysbus_mmio_map
+Subject: Re: [PATCH v2 4/8] aspeed: Map unimplemented devices in SoC memory
 Content-Language: en-US
 To: Peter Delevoryas <pdel@fb.com>
 CC: <peter.maydell@linaro.org>, <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>
 References: <20220624003701.1363500-1-pdel@fb.com>
- <20220624003701.1363500-4-pdel@fb.com>
+ <20220624003701.1363500-5-pdel@fb.com>
 From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
-In-Reply-To: <20220624003701.1363500-4-pdel@fb.com>
+In-Reply-To: <20220624003701.1363500-5-pdel@fb.com>
 Content-Type: text/plain; charset="UTF-8"; format=flowed
 Content-Transfer-Encoding: 8bit
 X-Originating-IP: [37.59.142.102]
 X-ClientProxiedBy: DAG2EX1.mxp5.local (172.16.2.11) To DAG4EX1.mxp5.local
  (172.16.2.31)
-X-Ovh-Tracer-GUID: 29a4aab6-3d9a-4a2f-80cc-6be4193b9a27
-X-Ovh-Tracer-Id: 6921469678040812512
+X-Ovh-Tracer-GUID: 77868e7e-9dad-4ff0-bba0-67dc59e9f72c
+X-Ovh-Tracer-Id: 6957779950296992736
 X-VR-SPAMSTATE: OK
 X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvfedrudefkedgudduhecutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemucehtddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpefkffggfgfuvfevfhfhjggtgfhisehtkeertddtfeejnecuhfhrohhmpeevrogurhhitggpnfgvpgfiohgrthgvrhcuoegtlhhgsehkrghougdrohhrgheqnecuggftrfgrthhtvghrnhepkeetjedtleekjedvveffudfhteetleeifeegfeffuefghfefkeehffeufeeludejnecukfhppedtrddtrddtrddtpdefjedrheelrddugedvrddutddvnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmohguvgepshhmthhpohhuthdphhgvlhhopehmgihplhgrnhehrdhmrghilhdrohhvhhdrnhgvthdpihhnvghtpedtrddtrddtrddtpdhmrghilhhfrhhomheptghlgheskhgrohgurdhorhhgpdhnsggprhgtphhtthhopedupdhrtghpthhtohepqhgvmhhuqdgrrhhmsehnohhnghhnuhdrohhrghdpoffvtefjohhsthepmhhohedvle
-Received-SPF: pass client-ip=217.182.185.173; envelope-from=clg@kaod.org;
- helo=smtpout4.mo529.mail-out.ovh.net
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvfedrudefkedgudduiecutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemucehtddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpefkffggfgfuvfevfhfhjggtgfhisehtkeertddtfeejnecuhfhrohhmpeevrogurhhitggpnfgvpgfiohgrthgvrhcuoegtlhhgsehkrghougdrohhrgheqnecuggftrfgrthhtvghrnhepkeetjedtleekjedvveffudfhteetleeifeegfeffuefghfefkeehffeufeeludejnecukfhppedtrddtrddtrddtpdefjedrheelrddugedvrddutddvnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmohguvgepshhmthhpohhuthdphhgvlhhopehmgihplhgrnhehrdhmrghilhdrohhvhhdrnhgvthdpihhnvghtpedtrddtrddtrddtpdhmrghilhhfrhhomheptghlgheskhgrohgurdhorhhgpdhnsggprhgtphhtthhopedupdhrtghpthhtohepqhgvmhhuqdgrrhhmsehnohhnghhnuhdrohhrghdpoffvtefjohhsthepmhhoheegke
+Received-SPF: pass client-ip=188.165.42.229; envelope-from=clg@kaod.org;
+ helo=4.mo548.mail-out.ovh.net
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
 X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: tDs1ziFDevME
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: jM+yqDLFlbiN
 
 On 6/24/22 02:36, Peter Delevoryas wrote:
-> sysbus_mmio_map maps devices into "get_system_memory()".
-> 
-> With the new SoC memory attribute, we want to make sure that each device is
-> mapped into the SoC memory.
-> 
-> In single SoC machines, the SoC memory is the same as "get_system_memory()",
-> but in multi SoC machines it will be different.
-> 
 > Signed-off-by: Peter Delevoryas <pdel@fb.com>
 
 Reviewed-by: Cédric Le Goater <clg@kaod.org>
@@ -125,501 +117,196 @@ C.
 
 
 > ---
->   hw/arm/aspeed_ast10x0.c     | 25 +++++++++---------
->   hw/arm/aspeed_ast2600.c     | 51 ++++++++++++++++++++-----------------
->   hw/arm/aspeed_soc.c         | 47 ++++++++++++++++++++--------------
->   include/hw/arm/aspeed_soc.h |  1 +
->   4 files changed, 69 insertions(+), 55 deletions(-)
+>   hw/arm/aspeed_ast10x0.c     | 16 ++++++++++------
+>   hw/arm/aspeed_ast2600.c     | 27 ++++++++++++++++++---------
+>   hw/arm/aspeed_soc.c         | 23 +++++++++++++++++++----
+>   include/hw/arm/aspeed_soc.h |  9 +++++++++
+>   4 files changed, 56 insertions(+), 19 deletions(-)
 > 
 > diff --git a/hw/arm/aspeed_ast10x0.c b/hw/arm/aspeed_ast10x0.c
-> index e074f80cc7..f8f321374a 100644
+> index f8f321374a..d34c06db16 100644
 > --- a/hw/arm/aspeed_ast10x0.c
 > +++ b/hw/arm/aspeed_ast10x0.c
-> @@ -188,7 +188,7 @@ static void aspeed_soc_ast1030_realize(DeviceState *dev_soc, Error **errp)
->       if (!sysbus_realize(SYS_BUS_DEVICE(&s->scu), errp)) {
->           return;
->       }
-> -    sysbus_mmio_map(SYS_BUS_DEVICE(&s->scu), 0, sc->memmap[ASPEED_DEV_SCU]);
-> +    aspeed_mmio_map(s, SYS_BUS_DEVICE(&s->scu), 0, sc->memmap[ASPEED_DEV_SCU]);
+> @@ -142,6 +142,10 @@ static void aspeed_soc_ast1030_init(Object *obj)
 >   
->       /* I2C */
->   
-> @@ -197,7 +197,7 @@ static void aspeed_soc_ast1030_realize(DeviceState *dev_soc, Error **errp)
->       if (!sysbus_realize(SYS_BUS_DEVICE(&s->i2c), errp)) {
->           return;
->       }
-> -    sysbus_mmio_map(SYS_BUS_DEVICE(&s->i2c), 0, sc->memmap[ASPEED_DEV_I2C]);
-> +    aspeed_mmio_map(s, SYS_BUS_DEVICE(&s->i2c), 0, sc->memmap[ASPEED_DEV_I2C]);
->       for (i = 0; i < ASPEED_I2C_GET_CLASS(&s->i2c)->num_busses; i++) {
->           qemu_irq irq = qdev_get_gpio_in(DEVICE(&s->armv7m),
->                                           sc->irqmap[ASPEED_DEV_I2C] + i);
-> @@ -209,7 +209,7 @@ static void aspeed_soc_ast1030_realize(DeviceState *dev_soc, Error **errp)
->       if (!sysbus_realize(SYS_BUS_DEVICE(&s->lpc), errp)) {
->           return;
->       }
-> -    sysbus_mmio_map(SYS_BUS_DEVICE(&s->lpc), 0, sc->memmap[ASPEED_DEV_LPC]);
-> +    aspeed_mmio_map(s, SYS_BUS_DEVICE(&s->lpc), 0, sc->memmap[ASPEED_DEV_LPC]);
->   
->       /* Connect the LPC IRQ to the GIC. It is otherwise unused. */
->       sysbus_connect_irq(SYS_BUS_DEVICE(&s->lpc), 0,
-> @@ -243,7 +243,7 @@ static void aspeed_soc_ast1030_realize(DeviceState *dev_soc, Error **errp)
->       if (!sysbus_realize(SYS_BUS_DEVICE(&s->timerctrl), errp)) {
->           return;
->       }
-> -    sysbus_mmio_map(SYS_BUS_DEVICE(&s->timerctrl), 0,
-> +    aspeed_mmio_map(s, SYS_BUS_DEVICE(&s->timerctrl), 0,
->                       sc->memmap[ASPEED_DEV_TIMER1]);
->       for (i = 0; i < ASPEED_TIMER_NR_TIMERS; i++) {
->           qemu_irq irq = aspeed_soc_get_irq(s, ASPEED_DEV_TIMER1 + i);
-> @@ -254,7 +254,7 @@ static void aspeed_soc_ast1030_realize(DeviceState *dev_soc, Error **errp)
->       if (!sysbus_realize(SYS_BUS_DEVICE(&s->adc), errp)) {
->           return;
->       }
-> -    sysbus_mmio_map(SYS_BUS_DEVICE(&s->adc), 0, sc->memmap[ASPEED_DEV_ADC]);
-> +    aspeed_mmio_map(s, SYS_BUS_DEVICE(&s->adc), 0, sc->memmap[ASPEED_DEV_ADC]);
->       sysbus_connect_irq(SYS_BUS_DEVICE(&s->adc), 0,
->                          aspeed_soc_get_irq(s, ASPEED_DEV_ADC));
->   
-> @@ -264,8 +264,8 @@ static void aspeed_soc_ast1030_realize(DeviceState *dev_soc, Error **errp)
->       if (!sysbus_realize(SYS_BUS_DEVICE(&s->fmc), errp)) {
->           return;
->       }
-> -    sysbus_mmio_map(SYS_BUS_DEVICE(&s->fmc), 0, sc->memmap[ASPEED_DEV_FMC]);
-> -    sysbus_mmio_map(SYS_BUS_DEVICE(&s->fmc), 1,
-> +    aspeed_mmio_map(s, SYS_BUS_DEVICE(&s->fmc), 0, sc->memmap[ASPEED_DEV_FMC]);
-> +    aspeed_mmio_map(s, SYS_BUS_DEVICE(&s->fmc), 1,
->                       ASPEED_SMC_GET_CLASS(&s->fmc)->flash_window_base);
->       sysbus_connect_irq(SYS_BUS_DEVICE(&s->fmc), 0,
->                          aspeed_soc_get_irq(s, ASPEED_DEV_FMC));
-> @@ -277,9 +277,9 @@ static void aspeed_soc_ast1030_realize(DeviceState *dev_soc, Error **errp)
->           if (!sysbus_realize(SYS_BUS_DEVICE(&s->spi[i]), errp)) {
->               return;
->           }
-> -        sysbus_mmio_map(SYS_BUS_DEVICE(&s->spi[i]), 0,
-> +        aspeed_mmio_map(s, SYS_BUS_DEVICE(&s->spi[i]), 0,
->                           sc->memmap[ASPEED_DEV_SPI1 + i]);
-> -        sysbus_mmio_map(SYS_BUS_DEVICE(&s->spi[i]), 1,
-> +        aspeed_mmio_map(s, SYS_BUS_DEVICE(&s->spi[i]), 1,
->                           ASPEED_SMC_GET_CLASS(&s->spi[i])->flash_window_base);
->       }
->   
-> @@ -287,7 +287,7 @@ static void aspeed_soc_ast1030_realize(DeviceState *dev_soc, Error **errp)
->       if (!sysbus_realize(SYS_BUS_DEVICE(&s->sbc), errp)) {
->           return;
->       }
-> -    sysbus_mmio_map(SYS_BUS_DEVICE(&s->sbc), 0, sc->memmap[ASPEED_DEV_SBC]);
-> +    aspeed_mmio_map(s, SYS_BUS_DEVICE(&s->sbc), 0, sc->memmap[ASPEED_DEV_SBC]);
->   
->       /* Watch dog */
->       for (i = 0; i < sc->wdts_num; i++) {
-> @@ -298,7 +298,7 @@ static void aspeed_soc_ast1030_realize(DeviceState *dev_soc, Error **errp)
->           if (!sysbus_realize(SYS_BUS_DEVICE(&s->wdt[i]), errp)) {
->               return;
->           }
-> -        sysbus_mmio_map(SYS_BUS_DEVICE(&s->wdt[i]), 0,
-> +        aspeed_mmio_map(s, SYS_BUS_DEVICE(&s->wdt[i]), 0,
->                           sc->memmap[ASPEED_DEV_WDT] + i * awc->offset);
->       }
->   
-> @@ -306,7 +306,8 @@ static void aspeed_soc_ast1030_realize(DeviceState *dev_soc, Error **errp)
->       if (!sysbus_realize(SYS_BUS_DEVICE(&s->gpio), errp)) {
->           return;
->       }
-> -    sysbus_mmio_map(SYS_BUS_DEVICE(&s->gpio), 0, sc->memmap[ASPEED_DEV_GPIO]);
-> +    aspeed_mmio_map(s, SYS_BUS_DEVICE(&s->gpio), 0,
-> +                    sc->memmap[ASPEED_DEV_GPIO]);
->       sysbus_connect_irq(SYS_BUS_DEVICE(&s->gpio), 0,
->                          aspeed_soc_get_irq(s, ASPEED_DEV_GPIO));
+>       snprintf(typename, sizeof(typename), "aspeed.gpio-%s", socname);
+>       object_initialize_child(obj, "gpio", &s->gpio, typename);
+> +
+> +    object_initialize_child(obj, "iomem", &s->iomem, TYPE_UNIMPLEMENTED_DEVICE);
+> +    object_initialize_child(obj, "sbc-unimplemented", &s->sbc_unimplemented,
+> +                            TYPE_UNIMPLEMENTED_DEVICE);
 >   }
+>   
+>   static void aspeed_soc_ast1030_realize(DeviceState *dev_soc, Error **errp)
+> @@ -158,12 +162,12 @@ static void aspeed_soc_ast1030_realize(DeviceState *dev_soc, Error **errp)
+>       }
+>   
+>       /* General I/O memory space to catch all unimplemented device */
+> -    create_unimplemented_device("aspeed.sbc",
+> -                                sc->memmap[ASPEED_DEV_SBC],
+> -                                0x40000);
+> -    create_unimplemented_device("aspeed.io",
+> -                                sc->memmap[ASPEED_DEV_IOMEM],
+> -                                ASPEED_SOC_IOMEM_SIZE);
+> +    aspeed_mmio_map_unimplemented(s, SYS_BUS_DEVICE(&s->iomem), "aspeed.io",
+> +                                  sc->memmap[ASPEED_DEV_IOMEM],
+> +                                  ASPEED_SOC_IOMEM_SIZE);
+> +    aspeed_mmio_map_unimplemented(s, SYS_BUS_DEVICE(&s->sbc_unimplemented),
+> +                                  "aspeed.sbc", sc->memmap[ASPEED_DEV_SBC],
+> +                                  0x40000);
+>   
+>       /* AST1030 CPU Core */
+>       armv7m = DEVICE(&s->armv7m);
 > diff --git a/hw/arm/aspeed_ast2600.c b/hw/arm/aspeed_ast2600.c
-> index d8e5b607e9..477dd36042 100644
+> index 477dd36042..8693660271 100644
 > --- a/hw/arm/aspeed_ast2600.c
 > +++ b/hw/arm/aspeed_ast2600.c
-> @@ -310,7 +310,7 @@ static void aspeed_soc_ast2600_realize(DeviceState *dev, Error **errp)
->                               &error_abort);
+> @@ -246,6 +246,13 @@ static void aspeed_soc_ast2600_init(Object *obj)
+>       object_initialize_child(obj, "i3c", &s->i3c, TYPE_ASPEED_I3C);
 >   
->       sysbus_realize(SYS_BUS_DEVICE(&s->a7mpcore), &error_abort);
-> -    sysbus_mmio_map(SYS_BUS_DEVICE(&s->a7mpcore), 0, ASPEED_A7MPCORE_ADDR);
-> +    aspeed_mmio_map(s, SYS_BUS_DEVICE(&s->a7mpcore), 0, ASPEED_A7MPCORE_ADDR);
->   
->       for (i = 0; i < sc->num_cpus; i++) {
->           SysBusDevice *sbd = SYS_BUS_DEVICE(&s->a7mpcore);
-> @@ -344,13 +344,13 @@ static void aspeed_soc_ast2600_realize(DeviceState *dev, Error **errp)
->       if (!sysbus_realize(SYS_BUS_DEVICE(&s->scu), errp)) {
->           return;
->       }
-> -    sysbus_mmio_map(SYS_BUS_DEVICE(&s->scu), 0, sc->memmap[ASPEED_DEV_SCU]);
-> +    aspeed_mmio_map(s, SYS_BUS_DEVICE(&s->scu), 0, sc->memmap[ASPEED_DEV_SCU]);
->   
->       /* RTC */
->       if (!sysbus_realize(SYS_BUS_DEVICE(&s->rtc), errp)) {
->           return;
->       }
-> -    sysbus_mmio_map(SYS_BUS_DEVICE(&s->rtc), 0, sc->memmap[ASPEED_DEV_RTC]);
-> +    aspeed_mmio_map(s, SYS_BUS_DEVICE(&s->rtc), 0, sc->memmap[ASPEED_DEV_RTC]);
->       sysbus_connect_irq(SYS_BUS_DEVICE(&s->rtc), 0,
->                          aspeed_soc_get_irq(s, ASPEED_DEV_RTC));
->   
-> @@ -360,7 +360,7 @@ static void aspeed_soc_ast2600_realize(DeviceState *dev, Error **errp)
->       if (!sysbus_realize(SYS_BUS_DEVICE(&s->timerctrl), errp)) {
->           return;
->       }
-> -    sysbus_mmio_map(SYS_BUS_DEVICE(&s->timerctrl), 0,
-> +    aspeed_mmio_map(s, SYS_BUS_DEVICE(&s->timerctrl), 0,
->                       sc->memmap[ASPEED_DEV_TIMER1]);
->       for (i = 0; i < ASPEED_TIMER_NR_TIMERS; i++) {
->           qemu_irq irq = aspeed_soc_get_irq(s, ASPEED_DEV_TIMER1 + i);
-> @@ -371,7 +371,7 @@ static void aspeed_soc_ast2600_realize(DeviceState *dev, Error **errp)
->       if (!sysbus_realize(SYS_BUS_DEVICE(&s->adc), errp)) {
->           return;
->       }
-> -    sysbus_mmio_map(SYS_BUS_DEVICE(&s->adc), 0, sc->memmap[ASPEED_DEV_ADC]);
-> +    aspeed_mmio_map(s, SYS_BUS_DEVICE(&s->adc), 0, sc->memmap[ASPEED_DEV_ADC]);
->       sysbus_connect_irq(SYS_BUS_DEVICE(&s->adc), 0,
->                          aspeed_soc_get_irq(s, ASPEED_DEV_ADC));
->   
-> @@ -384,7 +384,7 @@ static void aspeed_soc_ast2600_realize(DeviceState *dev, Error **errp)
->       if (!sysbus_realize(SYS_BUS_DEVICE(&s->i2c), errp)) {
->           return;
->       }
-> -    sysbus_mmio_map(SYS_BUS_DEVICE(&s->i2c), 0, sc->memmap[ASPEED_DEV_I2C]);
-> +    aspeed_mmio_map(s, SYS_BUS_DEVICE(&s->i2c), 0, sc->memmap[ASPEED_DEV_I2C]);
->       for (i = 0; i < ASPEED_I2C_GET_CLASS(&s->i2c)->num_busses; i++) {
->           qemu_irq irq = qdev_get_gpio_in(DEVICE(&s->a7mpcore),
->                                           sc->irqmap[ASPEED_DEV_I2C] + i);
-> @@ -398,8 +398,8 @@ static void aspeed_soc_ast2600_realize(DeviceState *dev, Error **errp)
->       if (!sysbus_realize(SYS_BUS_DEVICE(&s->fmc), errp)) {
->           return;
->       }
-> -    sysbus_mmio_map(SYS_BUS_DEVICE(&s->fmc), 0, sc->memmap[ASPEED_DEV_FMC]);
-> -    sysbus_mmio_map(SYS_BUS_DEVICE(&s->fmc), 1,
-> +    aspeed_mmio_map(s, SYS_BUS_DEVICE(&s->fmc), 0, sc->memmap[ASPEED_DEV_FMC]);
-> +    aspeed_mmio_map(s, SYS_BUS_DEVICE(&s->fmc), 1,
->                       ASPEED_SMC_GET_CLASS(&s->fmc)->flash_window_base);
->       sysbus_connect_irq(SYS_BUS_DEVICE(&s->fmc), 0,
->                          aspeed_soc_get_irq(s, ASPEED_DEV_FMC));
-> @@ -411,9 +411,9 @@ static void aspeed_soc_ast2600_realize(DeviceState *dev, Error **errp)
->           if (!sysbus_realize(SYS_BUS_DEVICE(&s->spi[i]), errp)) {
->               return;
->           }
-> -        sysbus_mmio_map(SYS_BUS_DEVICE(&s->spi[i]), 0,
-> +        aspeed_mmio_map(s, SYS_BUS_DEVICE(&s->spi[i]), 0,
->                           sc->memmap[ASPEED_DEV_SPI1 + i]);
-> -        sysbus_mmio_map(SYS_BUS_DEVICE(&s->spi[i]), 1,
-> +        aspeed_mmio_map(s, SYS_BUS_DEVICE(&s->spi[i]), 1,
->                           ASPEED_SMC_GET_CLASS(&s->spi[i])->flash_window_base);
->       }
->   
-> @@ -422,7 +422,7 @@ static void aspeed_soc_ast2600_realize(DeviceState *dev, Error **errp)
->           if (!sysbus_realize(SYS_BUS_DEVICE(&s->ehci[i]), errp)) {
->               return;
->           }
-> -        sysbus_mmio_map(SYS_BUS_DEVICE(&s->ehci[i]), 0,
-> +        aspeed_mmio_map(s, SYS_BUS_DEVICE(&s->ehci[i]), 0,
->                           sc->memmap[ASPEED_DEV_EHCI1 + i]);
->           sysbus_connect_irq(SYS_BUS_DEVICE(&s->ehci[i]), 0,
->                              aspeed_soc_get_irq(s, ASPEED_DEV_EHCI1 + i));
-> @@ -432,7 +432,8 @@ static void aspeed_soc_ast2600_realize(DeviceState *dev, Error **errp)
->       if (!sysbus_realize(SYS_BUS_DEVICE(&s->sdmc), errp)) {
->           return;
->       }
-> -    sysbus_mmio_map(SYS_BUS_DEVICE(&s->sdmc), 0, sc->memmap[ASPEED_DEV_SDMC]);
-> +    aspeed_mmio_map(s, SYS_BUS_DEVICE(&s->sdmc), 0,
-> +                    sc->memmap[ASPEED_DEV_SDMC]);
->   
->       /* Watch dog */
->       for (i = 0; i < sc->wdts_num; i++) {
-> @@ -443,7 +444,7 @@ static void aspeed_soc_ast2600_realize(DeviceState *dev, Error **errp)
->           if (!sysbus_realize(SYS_BUS_DEVICE(&s->wdt[i]), errp)) {
->               return;
->           }
-> -        sysbus_mmio_map(SYS_BUS_DEVICE(&s->wdt[i]), 0,
-> +        aspeed_mmio_map(s, SYS_BUS_DEVICE(&s->wdt[i]), 0,
->                           sc->memmap[ASPEED_DEV_WDT] + i * awc->offset);
->       }
->   
-> @@ -454,7 +455,7 @@ static void aspeed_soc_ast2600_realize(DeviceState *dev, Error **errp)
->           if (!sysbus_realize(SYS_BUS_DEVICE(&s->ftgmac100[i]), errp)) {
->               return;
->           }
-> -        sysbus_mmio_map(SYS_BUS_DEVICE(&s->ftgmac100[i]), 0,
-> +        aspeed_mmio_map(s, SYS_BUS_DEVICE(&s->ftgmac100[i]), 0,
->                           sc->memmap[ASPEED_DEV_ETH1 + i]);
->           sysbus_connect_irq(SYS_BUS_DEVICE(&s->ftgmac100[i]), 0,
->                              aspeed_soc_get_irq(s, ASPEED_DEV_ETH1 + i));
-> @@ -465,7 +466,7 @@ static void aspeed_soc_ast2600_realize(DeviceState *dev, Error **errp)
->               return;
->           }
->   
-> -        sysbus_mmio_map(SYS_BUS_DEVICE(&s->mii[i]), 0,
-> +        aspeed_mmio_map(s, SYS_BUS_DEVICE(&s->mii[i]), 0,
->                           sc->memmap[ASPEED_DEV_MII1 + i]);
->       }
->   
-> @@ -473,7 +474,7 @@ static void aspeed_soc_ast2600_realize(DeviceState *dev, Error **errp)
->       if (!sysbus_realize(SYS_BUS_DEVICE(&s->xdma), errp)) {
->           return;
->       }
-> -    sysbus_mmio_map(SYS_BUS_DEVICE(&s->xdma), 0,
-> +    aspeed_mmio_map(s, SYS_BUS_DEVICE(&s->xdma), 0,
->                       sc->memmap[ASPEED_DEV_XDMA]);
->       sysbus_connect_irq(SYS_BUS_DEVICE(&s->xdma), 0,
->                          aspeed_soc_get_irq(s, ASPEED_DEV_XDMA));
-> @@ -482,14 +483,14 @@ static void aspeed_soc_ast2600_realize(DeviceState *dev, Error **errp)
->       if (!sysbus_realize(SYS_BUS_DEVICE(&s->gpio), errp)) {
->           return;
->       }
-> -    sysbus_mmio_map(SYS_BUS_DEVICE(&s->gpio), 0, sc->memmap[ASPEED_DEV_GPIO]);
-> +    aspeed_mmio_map(s, SYS_BUS_DEVICE(&s->gpio), 0, sc->memmap[ASPEED_DEV_GPIO]);
->       sysbus_connect_irq(SYS_BUS_DEVICE(&s->gpio), 0,
->                          aspeed_soc_get_irq(s, ASPEED_DEV_GPIO));
->   
->       if (!sysbus_realize(SYS_BUS_DEVICE(&s->gpio_1_8v), errp)) {
->           return;
->       }
-> -    sysbus_mmio_map(SYS_BUS_DEVICE(&s->gpio_1_8v), 0,
-> +    aspeed_mmio_map(s, SYS_BUS_DEVICE(&s->gpio_1_8v), 0,
->                       sc->memmap[ASPEED_DEV_GPIO_1_8V]);
->       sysbus_connect_irq(SYS_BUS_DEVICE(&s->gpio_1_8v), 0,
->                          aspeed_soc_get_irq(s, ASPEED_DEV_GPIO_1_8V));
-> @@ -498,7 +499,7 @@ static void aspeed_soc_ast2600_realize(DeviceState *dev, Error **errp)
->       if (!sysbus_realize(SYS_BUS_DEVICE(&s->sdhci), errp)) {
->           return;
->       }
-> -    sysbus_mmio_map(SYS_BUS_DEVICE(&s->sdhci), 0,
-> +    aspeed_mmio_map(s, SYS_BUS_DEVICE(&s->sdhci), 0,
->                       sc->memmap[ASPEED_DEV_SDHCI]);
->       sysbus_connect_irq(SYS_BUS_DEVICE(&s->sdhci), 0,
->                          aspeed_soc_get_irq(s, ASPEED_DEV_SDHCI));
-> @@ -507,7 +508,8 @@ static void aspeed_soc_ast2600_realize(DeviceState *dev, Error **errp)
->       if (!sysbus_realize(SYS_BUS_DEVICE(&s->emmc), errp)) {
->           return;
->       }
-> -    sysbus_mmio_map(SYS_BUS_DEVICE(&s->emmc), 0, sc->memmap[ASPEED_DEV_EMMC]);
-> +    aspeed_mmio_map(s, SYS_BUS_DEVICE(&s->emmc), 0,
-> +                    sc->memmap[ASPEED_DEV_EMMC]);
->       sysbus_connect_irq(SYS_BUS_DEVICE(&s->emmc), 0,
->                          aspeed_soc_get_irq(s, ASPEED_DEV_EMMC));
->   
-> @@ -515,7 +517,7 @@ static void aspeed_soc_ast2600_realize(DeviceState *dev, Error **errp)
->       if (!sysbus_realize(SYS_BUS_DEVICE(&s->lpc), errp)) {
->           return;
->       }
-> -    sysbus_mmio_map(SYS_BUS_DEVICE(&s->lpc), 0, sc->memmap[ASPEED_DEV_LPC]);
-> +    aspeed_mmio_map(s, SYS_BUS_DEVICE(&s->lpc), 0, sc->memmap[ASPEED_DEV_LPC]);
->   
->       /* Connect the LPC IRQ to the GIC. It is otherwise unused. */
->       sysbus_connect_irq(SYS_BUS_DEVICE(&s->lpc), 0,
-> @@ -551,7 +553,8 @@ static void aspeed_soc_ast2600_realize(DeviceState *dev, Error **errp)
->       if (!sysbus_realize(SYS_BUS_DEVICE(&s->hace), errp)) {
->           return;
->       }
-> -    sysbus_mmio_map(SYS_BUS_DEVICE(&s->hace), 0, sc->memmap[ASPEED_DEV_HACE]);
-> +    aspeed_mmio_map(s, SYS_BUS_DEVICE(&s->hace), 0,
-> +                    sc->memmap[ASPEED_DEV_HACE]);
->       sysbus_connect_irq(SYS_BUS_DEVICE(&s->hace), 0,
->                          aspeed_soc_get_irq(s, ASPEED_DEV_HACE));
->   
-> @@ -559,7 +562,7 @@ static void aspeed_soc_ast2600_realize(DeviceState *dev, Error **errp)
->       if (!sysbus_realize(SYS_BUS_DEVICE(&s->i3c), errp)) {
->           return;
->       }
-> -    sysbus_mmio_map(SYS_BUS_DEVICE(&s->i3c), 0, sc->memmap[ASPEED_DEV_I3C]);
-> +    aspeed_mmio_map(s, SYS_BUS_DEVICE(&s->i3c), 0, sc->memmap[ASPEED_DEV_I3C]);
->       for (i = 0; i < ASPEED_I3C_NR_DEVICES; i++) {
->           qemu_irq irq = qdev_get_gpio_in(DEVICE(&s->a7mpcore),
->                                           sc->irqmap[ASPEED_DEV_I3C] + i);
-> @@ -571,7 +574,7 @@ static void aspeed_soc_ast2600_realize(DeviceState *dev, Error **errp)
->       if (!sysbus_realize(SYS_BUS_DEVICE(&s->sbc), errp)) {
->           return;
->       }
-> -    sysbus_mmio_map(SYS_BUS_DEVICE(&s->sbc), 0, sc->memmap[ASPEED_DEV_SBC]);
-> +    aspeed_mmio_map(s, SYS_BUS_DEVICE(&s->sbc), 0, sc->memmap[ASPEED_DEV_SBC]);
+>       object_initialize_child(obj, "sbc", &s->sbc, TYPE_ASPEED_SBC);
+> +
+> +    object_initialize_child(obj, "iomem", &s->iomem, TYPE_UNIMPLEMENTED_DEVICE);
+> +    object_initialize_child(obj, "video", &s->video, TYPE_UNIMPLEMENTED_DEVICE);
+> +    object_initialize_child(obj, "dpmcu", &s->dpmcu, TYPE_UNIMPLEMENTED_DEVICE);
+> +    object_initialize_child(obj, "emmc-boot-controller",
+> +                            &s->emmc_boot_controller,
+> +                            TYPE_UNIMPLEMENTED_DEVICE);
 >   }
 >   
->   static void aspeed_soc_ast2600_class_init(ObjectClass *oc, void *data)
+>   /*
+> @@ -267,21 +274,22 @@ static void aspeed_soc_ast2600_realize(DeviceState *dev, Error **errp)
+>       qemu_irq irq;
+>   
+>       /* IO space */
+> -    create_unimplemented_device("aspeed_soc.io", sc->memmap[ASPEED_DEV_IOMEM],
+> -                                ASPEED_SOC_IOMEM_SIZE);
+> +    aspeed_mmio_map_unimplemented(s, SYS_BUS_DEVICE(&s->iomem), "aspeed.io",
+> +                                  sc->memmap[ASPEED_DEV_IOMEM],
+> +                                  ASPEED_SOC_IOMEM_SIZE);
+>       /* RAM */
+>       if (!aspeed_soc_dram_init(s, errp)) {
+>           return;
+>       }
+>   
+>       /* Video engine stub */
+> -    create_unimplemented_device("aspeed.video", sc->memmap[ASPEED_DEV_VIDEO],
+> -                                0x1000);
+> +    aspeed_mmio_map_unimplemented(s, SYS_BUS_DEVICE(&s->video), "aspeed.video",
+> +                                  sc->memmap[ASPEED_DEV_VIDEO], 0x1000);
+>   
+>       /* eMMC Boot Controller stub */
+> -    create_unimplemented_device("aspeed.emmc-boot-controller",
+> -                                sc->memmap[ASPEED_DEV_EMMC_BC],
+> -                                0x1000);
+> +    aspeed_mmio_map_unimplemented(s, SYS_BUS_DEVICE(&s->emmc_boot_controller),
+> +                                  "aspeed.emmc-boot-controller",
+> +                                  sc->memmap[ASPEED_DEV_EMMC_BC], 0x1000);
+>   
+>       /* CPU */
+>       for (i = 0; i < sc->num_cpus; i++) {
+> @@ -337,8 +345,9 @@ static void aspeed_soc_ast2600_realize(DeviceState *dev, Error **errp)
+>                                   sc->memmap[ASPEED_DEV_SRAM], &s->sram);
+>   
+>       /* DPMCU */
+> -    create_unimplemented_device("aspeed.dpmcu", sc->memmap[ASPEED_DEV_DPMCU],
+> -                                ASPEED_SOC_DPMCU_SIZE);
+> +    aspeed_mmio_map_unimplemented(s, SYS_BUS_DEVICE(&s->dpmcu), "aspeed.dpmcu",
+> +                                  sc->memmap[ASPEED_DEV_DPMCU],
+> +                                  ASPEED_SOC_DPMCU_SIZE);
+>   
+>       /* SCU */
+>       if (!sysbus_realize(SYS_BUS_DEVICE(&s->scu), errp)) {
 > diff --git a/hw/arm/aspeed_soc.c b/hw/arm/aspeed_soc.c
-> index 3b531519e9..46cbc63644 100644
+> index 46cbc63644..16394c8e0b 100644
 > --- a/hw/arm/aspeed_soc.c
 > +++ b/hw/arm/aspeed_soc.c
-> @@ -268,13 +268,13 @@ static void aspeed_soc_realize(DeviceState *dev, Error **errp)
->       if (!sysbus_realize(SYS_BUS_DEVICE(&s->scu), errp)) {
->           return;
->       }
-> -    sysbus_mmio_map(SYS_BUS_DEVICE(&s->scu), 0, sc->memmap[ASPEED_DEV_SCU]);
-> +    aspeed_mmio_map(s, SYS_BUS_DEVICE(&s->scu), 0, sc->memmap[ASPEED_DEV_SCU]);
+> @@ -223,6 +223,9 @@ static void aspeed_soc_init(Object *obj)
 >   
->       /* VIC */
->       if (!sysbus_realize(SYS_BUS_DEVICE(&s->vic), errp)) {
->           return;
->       }
-> -    sysbus_mmio_map(SYS_BUS_DEVICE(&s->vic), 0, sc->memmap[ASPEED_DEV_VIC]);
-> +    aspeed_mmio_map(s, SYS_BUS_DEVICE(&s->vic), 0, sc->memmap[ASPEED_DEV_VIC]);
->       sysbus_connect_irq(SYS_BUS_DEVICE(&s->vic), 0,
->                          qdev_get_gpio_in(DEVICE(&s->cpu), ARM_CPU_IRQ));
->       sysbus_connect_irq(SYS_BUS_DEVICE(&s->vic), 1,
-> @@ -284,7 +284,7 @@ static void aspeed_soc_realize(DeviceState *dev, Error **errp)
->       if (!sysbus_realize(SYS_BUS_DEVICE(&s->rtc), errp)) {
->           return;
->       }
-> -    sysbus_mmio_map(SYS_BUS_DEVICE(&s->rtc), 0, sc->memmap[ASPEED_DEV_RTC]);
-> +    aspeed_mmio_map(s, SYS_BUS_DEVICE(&s->rtc), 0, sc->memmap[ASPEED_DEV_RTC]);
->       sysbus_connect_irq(SYS_BUS_DEVICE(&s->rtc), 0,
->                          aspeed_soc_get_irq(s, ASPEED_DEV_RTC));
->   
-> @@ -294,7 +294,7 @@ static void aspeed_soc_realize(DeviceState *dev, Error **errp)
->       if (!sysbus_realize(SYS_BUS_DEVICE(&s->timerctrl), errp)) {
->           return;
->       }
-> -    sysbus_mmio_map(SYS_BUS_DEVICE(&s->timerctrl), 0,
-> +    aspeed_mmio_map(s, SYS_BUS_DEVICE(&s->timerctrl), 0,
->                       sc->memmap[ASPEED_DEV_TIMER1]);
->       for (i = 0; i < ASPEED_TIMER_NR_TIMERS; i++) {
->           qemu_irq irq = aspeed_soc_get_irq(s, ASPEED_DEV_TIMER1 + i);
-> @@ -305,7 +305,7 @@ static void aspeed_soc_realize(DeviceState *dev, Error **errp)
->       if (!sysbus_realize(SYS_BUS_DEVICE(&s->adc), errp)) {
->           return;
->       }
-> -    sysbus_mmio_map(SYS_BUS_DEVICE(&s->adc), 0, sc->memmap[ASPEED_DEV_ADC]);
-> +    aspeed_mmio_map(s, SYS_BUS_DEVICE(&s->adc), 0, sc->memmap[ASPEED_DEV_ADC]);
->       sysbus_connect_irq(SYS_BUS_DEVICE(&s->adc), 0,
->                          aspeed_soc_get_irq(s, ASPEED_DEV_ADC));
->   
-> @@ -318,7 +318,7 @@ static void aspeed_soc_realize(DeviceState *dev, Error **errp)
->       if (!sysbus_realize(SYS_BUS_DEVICE(&s->i2c), errp)) {
->           return;
->       }
-> -    sysbus_mmio_map(SYS_BUS_DEVICE(&s->i2c), 0, sc->memmap[ASPEED_DEV_I2C]);
-> +    aspeed_mmio_map(s, SYS_BUS_DEVICE(&s->i2c), 0, sc->memmap[ASPEED_DEV_I2C]);
->       sysbus_connect_irq(SYS_BUS_DEVICE(&s->i2c), 0,
->                          aspeed_soc_get_irq(s, ASPEED_DEV_I2C));
->   
-> @@ -328,8 +328,8 @@ static void aspeed_soc_realize(DeviceState *dev, Error **errp)
->       if (!sysbus_realize(SYS_BUS_DEVICE(&s->fmc), errp)) {
->           return;
->       }
-> -    sysbus_mmio_map(SYS_BUS_DEVICE(&s->fmc), 0, sc->memmap[ASPEED_DEV_FMC]);
-> -    sysbus_mmio_map(SYS_BUS_DEVICE(&s->fmc), 1,
-> +    aspeed_mmio_map(s, SYS_BUS_DEVICE(&s->fmc), 0, sc->memmap[ASPEED_DEV_FMC]);
-> +    aspeed_mmio_map(s, SYS_BUS_DEVICE(&s->fmc), 1,
->                       ASPEED_SMC_GET_CLASS(&s->fmc)->flash_window_base);
->       sysbus_connect_irq(SYS_BUS_DEVICE(&s->fmc), 0,
->                          aspeed_soc_get_irq(s, ASPEED_DEV_FMC));
-> @@ -339,9 +339,9 @@ static void aspeed_soc_realize(DeviceState *dev, Error **errp)
->           if (!sysbus_realize(SYS_BUS_DEVICE(&s->spi[i]), errp)) {
->               return;
->           }
-> -        sysbus_mmio_map(SYS_BUS_DEVICE(&s->spi[i]), 0,
-> +        aspeed_mmio_map(s, SYS_BUS_DEVICE(&s->spi[i]), 0,
->                           sc->memmap[ASPEED_DEV_SPI1 + i]);
-> -        sysbus_mmio_map(SYS_BUS_DEVICE(&s->spi[i]), 1,
-> +        aspeed_mmio_map(s, SYS_BUS_DEVICE(&s->spi[i]), 1,
->                           ASPEED_SMC_GET_CLASS(&s->spi[i])->flash_window_base);
->       }
->   
-> @@ -350,7 +350,7 @@ static void aspeed_soc_realize(DeviceState *dev, Error **errp)
->           if (!sysbus_realize(SYS_BUS_DEVICE(&s->ehci[i]), errp)) {
->               return;
->           }
-> -        sysbus_mmio_map(SYS_BUS_DEVICE(&s->ehci[i]), 0,
-> +        aspeed_mmio_map(s, SYS_BUS_DEVICE(&s->ehci[i]), 0,
->                           sc->memmap[ASPEED_DEV_EHCI1 + i]);
->           sysbus_connect_irq(SYS_BUS_DEVICE(&s->ehci[i]), 0,
->                              aspeed_soc_get_irq(s, ASPEED_DEV_EHCI1 + i));
-> @@ -360,7 +360,8 @@ static void aspeed_soc_realize(DeviceState *dev, Error **errp)
->       if (!sysbus_realize(SYS_BUS_DEVICE(&s->sdmc), errp)) {
->           return;
->       }
-> -    sysbus_mmio_map(SYS_BUS_DEVICE(&s->sdmc), 0, sc->memmap[ASPEED_DEV_SDMC]);
-> +    aspeed_mmio_map(s, SYS_BUS_DEVICE(&s->sdmc), 0,
-> +                    sc->memmap[ASPEED_DEV_SDMC]);
->   
->       /* Watch dog */
->       for (i = 0; i < sc->wdts_num; i++) {
-> @@ -371,7 +372,7 @@ static void aspeed_soc_realize(DeviceState *dev, Error **errp)
->           if (!sysbus_realize(SYS_BUS_DEVICE(&s->wdt[i]), errp)) {
->               return;
->           }
-> -        sysbus_mmio_map(SYS_BUS_DEVICE(&s->wdt[i]), 0,
-> +        aspeed_mmio_map(s, SYS_BUS_DEVICE(&s->wdt[i]), 0,
->                           sc->memmap[ASPEED_DEV_WDT] + i * awc->offset);
->       }
->   
-> @@ -382,7 +383,7 @@ static void aspeed_soc_realize(DeviceState *dev, Error **errp)
->           if (!sysbus_realize(SYS_BUS_DEVICE(&s->ftgmac100[i]), errp)) {
->               return;
->           }
-> -        sysbus_mmio_map(SYS_BUS_DEVICE(&s->ftgmac100[i]), 0,
-> +        aspeed_mmio_map(s, SYS_BUS_DEVICE(&s->ftgmac100[i]), 0,
->                           sc->memmap[ASPEED_DEV_ETH1 + i]);
->           sysbus_connect_irq(SYS_BUS_DEVICE(&s->ftgmac100[i]), 0,
->                              aspeed_soc_get_irq(s, ASPEED_DEV_ETH1 + i));
-> @@ -392,7 +393,7 @@ static void aspeed_soc_realize(DeviceState *dev, Error **errp)
->       if (!sysbus_realize(SYS_BUS_DEVICE(&s->xdma), errp)) {
->           return;
->       }
-> -    sysbus_mmio_map(SYS_BUS_DEVICE(&s->xdma), 0,
-> +    aspeed_mmio_map(s, SYS_BUS_DEVICE(&s->xdma), 0,
->                       sc->memmap[ASPEED_DEV_XDMA]);
->       sysbus_connect_irq(SYS_BUS_DEVICE(&s->xdma), 0,
->                          aspeed_soc_get_irq(s, ASPEED_DEV_XDMA));
-> @@ -401,7 +402,8 @@ static void aspeed_soc_realize(DeviceState *dev, Error **errp)
->       if (!sysbus_realize(SYS_BUS_DEVICE(&s->gpio), errp)) {
->           return;
->       }
-> -    sysbus_mmio_map(SYS_BUS_DEVICE(&s->gpio), 0, sc->memmap[ASPEED_DEV_GPIO]);
-> +    aspeed_mmio_map(s, SYS_BUS_DEVICE(&s->gpio), 0,
-> +                    sc->memmap[ASPEED_DEV_GPIO]);
->       sysbus_connect_irq(SYS_BUS_DEVICE(&s->gpio), 0,
->                          aspeed_soc_get_irq(s, ASPEED_DEV_GPIO));
->   
-> @@ -409,7 +411,7 @@ static void aspeed_soc_realize(DeviceState *dev, Error **errp)
->       if (!sysbus_realize(SYS_BUS_DEVICE(&s->sdhci), errp)) {
->           return;
->       }
-> -    sysbus_mmio_map(SYS_BUS_DEVICE(&s->sdhci), 0,
-> +    aspeed_mmio_map(s, SYS_BUS_DEVICE(&s->sdhci), 0,
->                       sc->memmap[ASPEED_DEV_SDHCI]);
->       sysbus_connect_irq(SYS_BUS_DEVICE(&s->sdhci), 0,
->                          aspeed_soc_get_irq(s, ASPEED_DEV_SDHCI));
-> @@ -418,7 +420,7 @@ static void aspeed_soc_realize(DeviceState *dev, Error **errp)
->       if (!sysbus_realize(SYS_BUS_DEVICE(&s->lpc), errp)) {
->           return;
->       }
-> -    sysbus_mmio_map(SYS_BUS_DEVICE(&s->lpc), 0, sc->memmap[ASPEED_DEV_LPC]);
-> +    aspeed_mmio_map(s, SYS_BUS_DEVICE(&s->lpc), 0, sc->memmap[ASPEED_DEV_LPC]);
->   
->       /* Connect the LPC IRQ to the VIC */
->       sysbus_connect_irq(SYS_BUS_DEVICE(&s->lpc), 0,
-> @@ -451,7 +453,8 @@ static void aspeed_soc_realize(DeviceState *dev, Error **errp)
->       if (!sysbus_realize(SYS_BUS_DEVICE(&s->hace), errp)) {
->           return;
->       }
-> -    sysbus_mmio_map(SYS_BUS_DEVICE(&s->hace), 0, sc->memmap[ASPEED_DEV_HACE]);
-> +    aspeed_mmio_map(s, SYS_BUS_DEVICE(&s->hace), 0,
-> +                    sc->memmap[ASPEED_DEV_HACE]);
->       sysbus_connect_irq(SYS_BUS_DEVICE(&s->hace), 0,
->                          aspeed_soc_get_irq(s, ASPEED_DEV_HACE));
+>       snprintf(typename, sizeof(typename), "aspeed.hace-%s", socname);
+>       object_initialize_child(obj, "hace", &s->hace, typename);
+> +
+> +    object_initialize_child(obj, "iomem", &s->iomem, TYPE_UNIMPLEMENTED_DEVICE);
+> +    object_initialize_child(obj, "video", &s->video, TYPE_UNIMPLEMENTED_DEVICE);
 >   }
-> @@ -602,3 +605,9 @@ bool aspeed_soc_dram_init(AspeedSoCState *s, Error **errp)
->                                   &s->dram_container);
->       return true;
+>   
+>   static void aspeed_soc_realize(DeviceState *dev, Error **errp)
+> @@ -233,8 +236,9 @@ static void aspeed_soc_realize(DeviceState *dev, Error **errp)
+>       Error *err = NULL;
+>   
+>       /* IO space */
+> -    create_unimplemented_device("aspeed_soc.io", sc->memmap[ASPEED_DEV_IOMEM],
+> -                                ASPEED_SOC_IOMEM_SIZE);
+> +    aspeed_mmio_map_unimplemented(s, SYS_BUS_DEVICE(&s->iomem), "aspeed.io",
+> +                                  sc->memmap[ASPEED_DEV_IOMEM],
+> +                                  ASPEED_SOC_IOMEM_SIZE);
+>   
+>       /* RAM */
+>       if (!aspeed_soc_dram_init(s, errp)) {
+> @@ -242,8 +246,8 @@ static void aspeed_soc_realize(DeviceState *dev, Error **errp)
+>       }
+>   
+>       /* Video engine stub */
+> -    create_unimplemented_device("aspeed.video", sc->memmap[ASPEED_DEV_VIDEO],
+> -                                0x1000);
+> +    aspeed_mmio_map_unimplemented(s, SYS_BUS_DEVICE(&s->video), "aspeed.video",
+> +                                  sc->memmap[ASPEED_DEV_VIDEO], 0x1000);
+>   
+>       /* CPU */
+>       for (i = 0; i < sc->num_cpus; i++) {
+> @@ -611,3 +615,14 @@ void aspeed_mmio_map(AspeedSoCState *s, SysBusDevice *dev, int n, hwaddr addr)
+>       memory_region_add_subregion(s->memory, addr,
+>                                   sysbus_mmio_get_region(dev, n));
 >   }
 > +
-> +void aspeed_mmio_map(AspeedSoCState *s, SysBusDevice *dev, int n, hwaddr addr)
+> +void aspeed_mmio_map_unimplemented(AspeedSoCState *s, SysBusDevice *dev,
+> +                                   const char *name, hwaddr addr, uint64_t size)
 > +{
-> +    memory_region_add_subregion(s->memory, addr,
-> +                                sysbus_mmio_get_region(dev, n));
+> +    qdev_prop_set_string(DEVICE(dev), "name", name);
+> +    qdev_prop_set_uint64(DEVICE(dev), "size", size);
+> +    sysbus_realize(dev, &error_abort);
+> +
+> +    memory_region_add_subregion_overlap(s->memory, addr,
+> +                                        sysbus_mmio_get_region(dev, 0), -1000);
 > +}
 > diff --git a/include/hw/arm/aspeed_soc.h b/include/hw/arm/aspeed_soc.h
-> index c8e903b821..1ab328d00c 100644
+> index 1ab328d00c..6cfc063985 100644
 > --- a/include/hw/arm/aspeed_soc.h
 > +++ b/include/hw/arm/aspeed_soc.h
-> @@ -168,5 +168,6 @@ enum {
->   qemu_irq aspeed_soc_get_irq(AspeedSoCState *s, int dev);
+> @@ -34,6 +34,7 @@
+>   #include "hw/usb/hcd-ehci.h"
+>   #include "qom/object.h"
+>   #include "hw/misc/aspeed_lpc.h"
+> +#include "hw/misc/unimp.h"
+>   
+>   #define ASPEED_SPIS_NUM  2
+>   #define ASPEED_EHCIS_NUM 2
+> @@ -66,6 +67,7 @@ struct AspeedSoCState {
+>       AspeedSMCState spi[ASPEED_SPIS_NUM];
+>       EHCISysBusState ehci[ASPEED_EHCIS_NUM];
+>       AspeedSBCState sbc;
+> +    UnimplementedDeviceState sbc_unimplemented;
+>       AspeedSDMCState sdmc;
+>       AspeedWDTState wdt[ASPEED_WDTS_NUM];
+>       FTGMAC100State ftgmac100[ASPEED_MACS_NUM];
+> @@ -77,6 +79,10 @@ struct AspeedSoCState {
+>       AspeedLPCState lpc;
+>       uint32_t uart_default;
+>       Clock *sysclk;
+> +    UnimplementedDeviceState iomem;
+> +    UnimplementedDeviceState video;
+> +    UnimplementedDeviceState emmc_boot_controller;
+> +    UnimplementedDeviceState dpmcu;
+>   };
+>   
+>   #define TYPE_ASPEED_SOC "aspeed-soc"
+> @@ -169,5 +175,8 @@ qemu_irq aspeed_soc_get_irq(AspeedSoCState *s, int dev);
 >   void aspeed_soc_uart_init(AspeedSoCState *s);
 >   bool aspeed_soc_dram_init(AspeedSoCState *s, Error **errp);
-> +void aspeed_mmio_map(AspeedSoCState *s, SysBusDevice *dev, int n, hwaddr addr);
+>   void aspeed_mmio_map(AspeedSoCState *s, SysBusDevice *dev, int n, hwaddr addr);
+> +void aspeed_mmio_map_unimplemented(AspeedSoCState *s, SysBusDevice *dev,
+> +                                   const char *name, hwaddr addr,
+> +                                   uint64_t size);
 >   
 >   #endif /* ASPEED_SOC_H */
 

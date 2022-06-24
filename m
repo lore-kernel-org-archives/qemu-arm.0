@@ -1,238 +1,146 @@
-Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp117171lft;
-        Fri, 24 Jun 2022 00:32:32 -0700 (PDT)
-X-Google-Smtp-Source: AGRyM1vIffc5dY2HqDa4Yq/xAYz7clyIk/M3LZ79Ru9Ibj4w5IjOL2YxSOHeRMcwU4LR4mB7+4ym
-X-Received: by 2002:a05:622a:190b:b0:304:ee86:59f1 with SMTP id w11-20020a05622a190b00b00304ee8659f1mr11741031qtc.632.1656055951922;
-        Fri, 24 Jun 2022 00:32:31 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1656055951; cv=none;
+Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp383238lft;
+        Fri, 24 Jun 2022 07:54:42 -0700 (PDT)
+X-Google-Smtp-Source: AGRyM1ufTIXvCzVZ12NZrxSJQUhxMsNCgJQngKpKJwYnSHrz7+y+MaBIAHFcwndfOkh7YNQjp0Sg
+X-Received: by 2002:a05:6402:2c4:b0:435:8ce0:aef8 with SMTP id b4-20020a05640202c400b004358ce0aef8mr17726399edx.140.1656082482487;
+        Fri, 24 Jun 2022 07:54:42 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1656082482; cv=none;
         d=google.com; s=arc-20160816;
-        b=fVjLAX9yB5ij4ZTVq3pl0hmXEZ3yE4r3EwiXtWUbYP2Y/Hv5uLYsV74iLujaeWHDKe
-         9Y9W6IihnELcBlHLsRYvPz2dRDcjiZbEiad4E8xtLmTsMQDXaZBmkSTV2IQsHeLg2YEA
-         mRtw0QtamLZ+yrKzmHvSQ9cuwdamHQ7fLJnmjxFsk51+321yecLXOOdi7UmWfD1MU6h9
-         UMfqZiskQ4joCkotdBgmfBf9NTFUBPalmvKkhL2jw6r4gG93uaKIj/5u7VWamWiHDoZh
-         PEAwyKARBNfT44FZbTP/8fvJ0HnM6GfkDVieOTDMyvz56ILC+c60eoRFQXuarxYhoLq1
-         GIMA==
+        b=gVzGTOujl1VSXCtMgRrMM12wcOceoahLEmZ8PPo3C4E70MpYC3T8J5Jsl02VnAEdGs
+         OrRTZbF1xSsQQQZtqR/riHzINt+ZhyeuOHvVIuFIO0MKj+ma1kEA3Y3TU+BHofZQul/i
+         10sYGL2ot9pVptmWxeNnkaGvFL83QX4XUsSyV6guUVX82j/pV0N0ZT8HLd/yC3ubcFt1
+         kT8WBa+sX9cS1WILg/rpEzFW+uWGEcuwqOJQ+/gvkUBxLeodCk3OOUG8/4sbDqbGkqWD
+         FpK5YvjztraKUbBDDqY512SFP9pwo6UCxn5ObT/EcKVKXPBG0CLswi0zA6YzLfqIatDu
+         DUig==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:cc:to:content-language:subject
-         :user-agent:mime-version:date:message-id;
-        bh=KnIurP3MPnWkptBf16fHhBvth/qvZybAk5LW1OADKUM=;
-        b=0ChyoOwVbOsFgVEgCoVJ0dO7/DPXLsfiWo4jWCDbsyu9Bo8fDlBH45V2eYTxmRqBKm
-         e8mh/nNpn2s3JOZPa3SwN8WmZRlR7Ncx/044Atgd5GPMEon6eEOc9Vsat9c8/zXbHr3P
-         p5IUnV/3sFryoZ1CwHyS8wo7VvqwQLEu3sOtCT9ul8GEiJPaSaGL7sfuUB7DuZqk2woe
-         CQocyf3bQM6PqkCOBAOgwuQNXaYQGlxCtMX2BPhEQJ1yRRJUfkdpvOPl6Y9oF4BoCwTb
-         ql4mw93+MP+NzAnebqur5/D1vUgzZQan5//mxVBjVWek9towuI9+aiQNk8ER8TimFfGF
-         GFew==
+        h=content-transfer-encoding:mime-version:organization:references
+         :in-reply-to:message-id:subject:cc:to:from:date;
+        bh=3K5fXEE2Vntq/+aJuLi+xd3iE4AyxLC+ivdRsoBC9YI=;
+        b=Fh+8s5omc0LkXCml/p1YXhsPQBKK7LJjrxzTVw1C3G+f7IUejRVMcEni5xJdiyZ4aN
+         zbnyE7jB+TcAn1pUr7mJTeGSIxrb5d3NVwnLoPbrLF9OeOIZkhh5DT3H7tP3TYtvPISN
+         KRLPGkB7TdBB+Z0Dvuv6xk6gIeJ+KnQFLtndLLkKs7Joqj+cHzjF2DnEDnBJ+Uq1X/SL
+         uBVDaP7i2NE/CP8Q+xI1rC74LUCZbqX9CUjjJdaF4lBTd3Ku77Hsr8PlR8ST61prNvzz
+         TxWQgrZbxQhJZxkcHtK+GoO1cWxY7O3nArXfMGCa3oFR/xkwY8Gs1xglTEPOaZSfM5iF
+         B1uA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x6-20020ac85f06000000b00317c6f3c646si1047479qta.575.2022.06.24.00.32.31
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 24 Jun 2022 00:32:31 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       spf=pass (google.com: domain of jonathan.cameron@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=jonathan.cameron@huawei.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
+Return-Path: <jonathan.cameron@huawei.com>
+Received: from frasgout.his.huawei.com (frasgout.his.huawei.com. [185.176.79.56])
+        by mx.google.com with ESMTPS id i19-20020a1709064fd300b00711f164117csi3051330ejw.883.2022.06.24.07.54.42
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Fri, 24 Jun 2022 07:54:42 -0700 (PDT)
+Received-SPF: pass (google.com: domain of jonathan.cameron@huawei.com designates 185.176.79.56 as permitted sender) client-ip=185.176.79.56;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:43776 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1o4dnr-0001PH-DQ
-	for alex.bennee@linaro.org; Fri, 24 Jun 2022 03:32:31 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46866)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1o4dnf-0001NS-9b
- for qemu-arm@nongnu.org; Fri, 24 Jun 2022 03:32:19 -0400
-Received: from 7.mo552.mail-out.ovh.net ([188.165.59.253]:45291)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1o4dnc-0002kn-Hl
- for qemu-arm@nongnu.org; Fri, 24 Jun 2022 03:32:18 -0400
-Received: from mxplan5.mail.ovh.net (unknown [10.109.156.244])
- by mo552.mail-out.ovh.net (Postfix) with ESMTPS id BF02D27157;
- Fri, 24 Jun 2022 07:32:12 +0000 (UTC)
-Received: from kaod.org (37.59.142.101) by DAG4EX1.mxp5.local (172.16.2.31)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.9; Fri, 24 Jun
- 2022 09:32:11 +0200
-Authentication-Results: garm.ovh; auth=pass
- (GARM-101G004ae09ec7a-3e83-498e-9fe4-2e9047d44e58,
- 5EF2319963E9DB1A14486A5EC8730A2EE4B20F29) smtp.auth=clg@kaod.org
-X-OVh-ClientIp: 82.64.250.170
-Message-ID: <fb8cc3d1-767c-85d5-514f-89e7aa60ac8e@kaod.org>
-Date: Fri, 24 Jun 2022 09:32:11 +0200
+       spf=pass (google.com: domain of jonathan.cameron@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=jonathan.cameron@huawei.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
+Received: from fraeml705-chm.china.huawei.com (unknown [172.18.147.226])
+	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4LV0Tc3sHVz67qfF;
+	Fri, 24 Jun 2022 22:52:36 +0800 (CST)
+Received: from lhreml710-chm.china.huawei.com (10.201.108.61) by
+ fraeml705-chm.china.huawei.com (10.206.15.54) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id
+ 15.1.2375.24; Fri, 24 Jun 2022 16:54:41 +0200
+Received: from localhost (10.81.207.131) by lhreml710-chm.china.huawei.com
+ (10.201.108.61) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2375.24; Fri, 24 Jun
+ 2022 15:54:40 +0100
+Date: Fri, 24 Jun 2022 15:54:36 +0100
+From: Jonathan Cameron <Jonathan.Cameron@Huawei.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+CC: <qemu-devel@nongnu.org>, <alex.bennee@linaro.org>, <qemu-arm@nongnu.org>,
+	"Michael S . Tsirkin" <mst@redhat.com>, Ben Widawsky <bwidawsk@kernel.org>,
+	Paolo Bonzini <pbonzini@redhat.com>, <linux-cxl@vger.kernel.org>,
+	<linuxarm@huawei.com>, Marcel Apfelbaum <marcel@redhat.com>, Igor Mammedov
+	<imammedo@redhat.com>, Markus Armbruster <armbru@redhat.com>, "Mark
+ Cave-Ayland" <mark.cave-ayland@ilande.co.uk>, Adam Manzanares
+	<a.manzanares@samsung.com>, Tong Zhang <ztong0001@gmail.com>, "Shameerali
+ Kolothum Thodi" <shameerali.kolothum.thodi@huawei.com>, Dan Williams
+	<dan.j.williams@intel.com>
+Subject: Re: [PATCH v11 1/2] hw/arm/virt: Basic CXL enablement on
+ pci_expander_bridge instances pxb-cxl
+Message-ID: <20220624155436.000047cb@Huawei.com>
+In-Reply-To: <20220624150844.000005ec@Huawei.com>
+References: <20220616141950.23374-1-Jonathan.Cameron@huawei.com>
+	<20220616141950.23374-2-Jonathan.Cameron@huawei.com>
+	<CAFEAcA8U9oNDStfLpxOwodGm9MCTdLrt-WV+x_-rTGw9UpBGvA@mail.gmail.com>
+	<20220624133909.00005f6e@Huawei.com>
+	<CAFEAcA8GA+ZXr2eS9bVxnhZRtda17Wx0Ud8CfcA90T6yiaecew@mail.gmail.com>
+	<20220624150844.000005ec@Huawei.com>
+Organization: Huawei Technologies Research and Development (UK) Ltd.
+X-Mailer: Claws Mail 4.0.0 (GTK+ 3.24.29; i686-w64-mingw32)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.9.0
-Subject: Re: [PATCH 4/9] hw/arm/aspeed: add Qualcomm Firework machine and FRU
- device
-Content-Language: en-US
-To: Jae Hyun Yoo <quic_jaehyoo@quicinc.com>, Peter Maydell
- <peter.maydell@linaro.org>, Titus Rwantare <titusr@google.com>, Andrew
- Jeffery <andrew@aj.id.au>, Joel Stanley <joel@jms.id.au>
-CC: Graeme Gregory <quic_ggregory@quicinc.com>, Maheswara Kurapati
- <quic_mkurapat@quicinc.com>, <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>
-References: <20220622172830.101210-1-quic_jaehyoo@quicinc.com>
- <20220622172830.101210-5-quic_jaehyoo@quicinc.com>
- <1f050a11-b1ab-12ef-c83a-c0061d36aae9@kaod.org>
- <d978e798-eace-01a5-67fb-0a1d132322a3@quicinc.com>
-From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
-In-Reply-To: <d978e798-eace-01a5-67fb-0a1d132322a3@quicinc.com>
-Content-Type: text/plain; charset="UTF-8"; format=flowed
-Content-Transfer-Encoding: 8bit
-X-Originating-IP: [37.59.142.101]
-X-ClientProxiedBy: DAG1EX1.mxp5.local (172.16.2.1) To DAG4EX1.mxp5.local
- (172.16.2.31)
-X-Ovh-Tracer-GUID: 48a2b1a1-62c8-4a0a-af5e-4f212bac1b9d
-X-Ovh-Tracer-Id: 7528892678166973231
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvfedrudefkedguddvvdcutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemucehtddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpefkffggfgfuvfevfhfhjggtgfhisehtkeertddtfeejnecuhfhrohhmpeevrogurhhitggpnfgvpgfiohgrthgvrhcuoegtlhhgsehkrghougdrohhrgheqnecuggftrfgrthhtvghrnhepudehkedtudfhgfelgffggfeffeefgefhudejvdekveeuveegieelteejiedugeevnecuffhomhgrihhnpehoiihlrggsshdrohhrghenucfkpheptddrtddrtddrtddpfeejrdehledrudegvddruddtudenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhhouggvpehsmhhtphhouhhtpdhhvghlohepmhigphhlrghnhedrmhgrihhlrdhovhhhrdhnvghtpdhinhgvtheptddrtddrtddrtddpmhgrihhlfhhrohhmpegtlhhgsehkrghougdrohhrghdpnhgspghrtghpthhtohepuddprhgtphhtthhopehqvghmuhdquggvvhgvlhesnhhonhhgnhhurdhorhhgpdfovfetjfhoshhtpehmohehhedv
-Received-SPF: pass client-ip=188.165.59.253; envelope-from=clg@kaod.org;
- helo=7.mo552.mail-out.ovh.net
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: +y3SVG9N+eMR
+Content-Type: text/plain; charset="US-ASCII"
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [10.81.207.131]
+X-ClientProxiedBy: lhreml735-chm.china.huawei.com (10.201.108.86) To
+ lhreml710-chm.china.huawei.com (10.201.108.61)
+X-CFilter-Loop: Reflected
+X-TUID: YYTdZMeVLWgR
 
-On 6/23/22 16:11, Jae Hyun Yoo wrote:
-> On 6/22/2022 11:43 PM, Cédric Le Goater wrote:
->> On 6/22/22 19:28, Jae Hyun Yoo wrote:
->>> From: Graeme Gregory <quic_ggregory@quicinc.com>
->>>
->>> Add base for Qualcomm Firework machine and add its FRU device which is
->>> defined by DC-SCM to be fixed address 0x50.
->>>
->>> Signed-off-by: Graeme Gregory <quic_ggregory@quicinc.com>
->>> ---
->>>   hw/arm/aspeed.c | 53 +++++++++++++++++++++++++++++++++++++++++++++++++
->>>   1 file changed, 53 insertions(+)
->>>
->>> diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
->>> index 36d6b2c33e48..0e6edd2be4fa 100644
->>> --- a/hw/arm/aspeed.c
->>> +++ b/hw/arm/aspeed.c
->>> @@ -1017,6 +1017,35 @@ static void qcom_dc_scm_bmc_i2c_init(AspeedMachineState *bmc)
->>>       qcom_dc_scm_fru_init(aspeed_i2c_get_bus(&soc->i2c, 15), 0x53, 128 * 1024);
->>>   }
->>> +static void qcom_firework_fru_init(I2CBus *bus, uint8_t addr, uint32_t rsize)
->>> +{
->>> +    I2CSlave *i2c_dev = i2c_slave_new("at24c-eeprom", addr);
->>> +    DeviceState *dev = DEVICE(i2c_dev);
->>> +    /* Use First Index for DC-SCM FRU */
->>> +    DriveInfo *dinfo = drive_get(IF_NONE, 0, 1);
->>> +
->>> +    qdev_prop_set_uint32(dev, "rom-size", rsize);
->>> +
->>> +    if (dinfo) {
->>> +        qdev_prop_set_drive(dev, "drive", blk_by_legacy_dinfo(dinfo));
->>> +    }
->>> +
->>> +    i2c_slave_realize_and_unref(i2c_dev, bus, &error_abort);
->>> +}
->>> +
->>> +static void qcom_dc_scm_firework_i2c_init(AspeedMachineState *bmc)
->>> +{
->>> +    AspeedSoCState *soc = &bmc->soc;
->>> +
->>> +    /* Create the generic DC-SCM hardware */
->>> +    qcom_dc_scm_bmc_i2c_init(bmc);
->>> +
->>> +    /* Now create the Firework specific hardware */
->>> +
->>> +    /* I2C4 */
->>> +    qcom_firework_fru_init(aspeed_i2c_get_bus(&soc->i2c, 4), 0x50, 128 * 1024);
->>> +}
->>> +
->>>   static bool aspeed_get_mmio_exec(Object *obj, Error **errp)
->>>   {
->>>       return ASPEED_MACHINE(obj)->mmio_exec;
->>> @@ -1489,6 +1518,26 @@ static void aspeed_machine_qcom_dc_scm_v1_class_init(ObjectClass *oc,
->>>           aspeed_soc_num_cpus(amc->soc_name);
->>>   };
->>> +static void aspeed_machine_qcom_firework_class_init(ObjectClass *oc,
->>> +                                                    void *data)
->>> +{
->>> +    MachineClass *mc = MACHINE_CLASS(oc);
->>> +    AspeedMachineClass *amc = ASPEED_MACHINE_CLASS(oc);
->>> +
->>> +    mc->desc       = "Qualcomm DC-SCM V1/Firework BMC (Cortex A7)";
->>> +    amc->soc_name  = "ast2600-a3";
->>> +    amc->hw_strap1 = QCOM_DC_SCM_V1_BMC_HW_STRAP1;
->>> +    amc->hw_strap2 = QCOM_DC_SCM_V1_BMC_HW_STRAP2;
->>> +    amc->fmc_model = "n25q512a";
->>> +    amc->spi_model = "n25q512a";
->>> +    amc->num_cs    = 2;
->>> +    amc->macs_mask = ASPEED_MAC2_ON | ASPEED_MAC3_ON;
->>> +    amc->i2c_init  = qcom_dc_scm_firework_i2c_init;
->>> +    mc->default_ram_size = 1 * GiB;
->>> +    mc->default_cpus = mc->min_cpus = mc->max_cpus =
->>> +        aspeed_soc_num_cpus(amc->soc_name);
->>> +};
->>> +
->>>   static const TypeInfo aspeed_machine_types[] = {
->>>       {
->>>           .name          = MACHINE_TYPE_NAME("palmetto-bmc"),
->>> @@ -1534,6 +1583,10 @@ static const TypeInfo aspeed_machine_types[] = {
->>>           .name          = MACHINE_TYPE_NAME("qcom-dc-scm-v1-bmc"),
->>>           .parent        = TYPE_ASPEED_MACHINE,
->>>           .class_init    = aspeed_machine_qcom_dc_scm_v1_class_init,
->>> +    }, {
->>> +        .name          = MACHINE_TYPE_NAME("qcom-firework"),
->>
->> We should add the "-bmc" prefix to this machine name to be consistent
->> with the other BMCs. A "qcom-firework" machine would model the whole
->> system, host side included.
+On Fri, 24 Jun 2022 15:08:44 +0100
+Jonathan Cameron <Jonathan.Cameron@Huawei.com> wrote:
+
+> On Fri, 24 Jun 2022 13:56:32 +0100
+> Peter Maydell <peter.maydell@linaro.org> wrote:
 > 
-> Right, so I added the "-bmc" tag to "qcom-dc-scm-v1-bmc" as it's an
-> add-in card type board, and it can be attached to the "qcom-firework"
-> baseboard. The "qcom-firework" doesn't have the "-bmc" tag intentionally
-> since it doesn't have a bmc soc on it.
+> > On Fri, 24 Jun 2022 at 13:39, Jonathan Cameron
+> > <Jonathan.Cameron@huawei.com> wrote:  
+> > >
+> > > On Fri, 24 Jun 2022 11:48:47 +0100
+> > > Peter Maydell <peter.maydell@linaro.org> wrote:    
+> > > >
+> > > > This seems to be missing code to advertise the new devices in the
+> > > > device tree.    
+> > >
+> > > Intentionally. I am not aware of any current interest
+> > > in defining DT support CXL or supporting it in operating systems.
+> > > Easy enough to add if anyone does the leg work to figure out the
+> > > bindings, but that needs to come from someone who cares and
+> > > would need to be driven by OS support and a usecase. The ACPI
+> > > stuff here is defined as part of the main CXL spec because the
+> > > target class of machines simply doesn't generally use DT.    
+> > 
+> > I don't really want new devices in the virt board that aren't
+> > usable in the common use case of "just pass a kernel with -kernel"...
+> > 
+> > -- PMM  
+> 
+> Ok.  In that case, what do you suggest?  
+> 
+> Options I can think of:
+> 
+> 1) I can come up with plausible DT bindings, but I'm not sure how
+> that will be received by the kernel community, It will add a bunch of
+> infrastructure to maintain that may be seen as useless at least in
+> the short to medium term. Hence is not in anyone's test matrices etc.
 
-These are the Aspeed machines, they only model the BMC side of the
-overall system.
-
-A "qcom-firework" machine would include the host SoC, possibly the
-service and management SoCs plus the BMC.
-
-As an example, see the fb35 machine being developed by Peter :
-  
-   http://patchwork.ozlabs.org/project/qemu-devel/list/?series=306294
-
-or the PowerNV machines which use an embedded or external Aspeed BMCs
-
-Thanks,
-
-C.
+Just occurred to me there is another barrier to an approach that adds
+DT bindings.
+I fairly sure hw/pci-bridge/pci_expander_bridge.c (PXB)
+only works on ACPI platforms and is the only host bridge supported
+for CXL emulation in QEMU.
 
 > 
-> Thanks,
-> Jae
+> Dan, how open would you be to adding DT support? We'd have to ignore
+> some of the firmware query stuff like QTGs as there isn't an equivalent
+> in DT - or we'd have to go as far as defining actual devices with
+> mailboxes to query that info.
 > 
->> Thanks,
->>
->> C.
->>
->>> +        .parent        = TYPE_ASPEED_MACHINE,
->>> +        .class_init    = aspeed_machine_qcom_firework_class_init,
->>>       }, {
->>>           .name          = MACHINE_TYPE_NAME("fp5280g2-bmc"),
->>>           .parent        = TYPE_ASPEED_MACHINE,
->>
-
+> 2) Add it to something like the SBSA machine, but that brings a large
+> burden in firmware etc and need to communicate everything via DT to
+> EDK2 that is needed to build the ACPI tables in a flexible fashion +
+> mass of EDK2 development.  Whilst the SBSA model is great for ARM
+> specific stuff, requiring the large additional complexity in
+> actually using it to test arch independent software is probably
+> going to just mean it bit rots.
+> 
+> 3) Fork virt (obviously sharing as much as possible), potentially I
+> guess that could be pretty light weight by declaring a new
+> TypeInfo that is very nearly identical to virt with just the few extra
+> calls inserted. 
+> 
+> Any other routes open to me to getting this support available?
+> 
+> Jonathan
+> 
+> 

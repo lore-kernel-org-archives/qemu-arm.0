@@ -1,353 +1,155 @@
-Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp288465lft;
-        Fri, 24 Jun 2022 05:39:15 -0700 (PDT)
-X-Google-Smtp-Source: AGRyM1uWK1v+PpMOx9l1MwWejGyNlwizzp40iQRfalXjH3+LBl6uTv1jQSvwtjWxkkb9hoHx6FrB
-X-Received: by 2002:a17:906:7007:b0:6ff:8028:42e with SMTP id n7-20020a170906700700b006ff8028042emr12772715ejj.278.1656074355208;
-        Fri, 24 Jun 2022 05:39:15 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1656074355; cv=none;
+Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp289532lft;
+        Fri, 24 Jun 2022 05:41:16 -0700 (PDT)
+X-Google-Smtp-Source: AGRyM1sZefnUfYjuhh7IZZ4eLHwPGGgdJnqFCVqt9W8fp/82aIXQY1Ne3D0rs6AQr+n1K71Kq6j5
+X-Received: by 2002:a05:6214:2526:b0:470:5707:ffa9 with SMTP id gg6-20020a056214252600b004705707ffa9mr14762908qvb.60.1656074476036;
+        Fri, 24 Jun 2022 05:41:16 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1656074476; cv=none;
         d=google.com; s=arc-20160816;
-        b=UHBIxHPuPbrwgbsartiwh5rGUQQwOlAfL/ln7PBIJnQfOnQgxju82UMiy8hPEzLE6l
-         dGXoBWvbaS/3PQdOukVwwfMYq1hFmqxRgby8t866+Xtbv1M9iq7ER3WoK6kUAUEHVS9f
-         +F9m0MIc/kQyqswCYa6ddsaaM+rRlhAsNfNrguJ52thuc/AIbbzhIOi9LcR2ohNahXqO
-         647j41EIk4mEtlQjm9zofZQbgZJQjKGyQdDrLYzfZnmc3UlFeZQ0YLz5PZsAs6pz763x
-         miANm+P3JG7eMPS3OWgixX00OBz88rD+LdSH6nECLXxjA1mZImfb1RlnCfro7ospULEf
-         VgTg==
+        b=c4kiVttIllVt+r1d5ATPDWeHsTtL5p4pdPGhgaLZTRqO3XcVNFlSxl9k6K72X/qifX
+         MlqeW1dDyE0RnzYr3U5F758ddg7ykzrGDCV4DR8f6PYjSyMzsqH2h07el/JYjiMSUDwi
+         Ic+whA8F28FayIBSHa5oJ2LuDtjUXhqV/XGQpu513o2sm7XA/tL2rHgbVypZmPs3JICD
+         cUyIOcjZNhONrn50TzzqCZS238u0zDtRSZYsmFDsIS3Lk/27mGplWT0BCgZuGbTeJzsp
+         pwuYV9JDTKZ7rvyG8+ovjkst6FrMpsomk+8YKADkt8/WjCDPgoZVmiAujuMn1baVdqlz
+         c9AQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:organization:references
-         :in-reply-to:message-id:subject:cc:to:from:date;
-        bh=fKNrUDE3PclCzHiJBWGU+xtu8KExDJu9YGLn4vle62Q=;
-        b=XHnKp8E/KhAzGVz1KHgvNwp67VL7S8P/O6A54hMjtuU4SzLj8UB4Q5aG5a1qYdsO5f
-         JxwpcxNPJSe+L3yV6SnhuOtrLiWcptjPBntpZzmNHd1KNnwIceIRQd5wFGpwhIDuLHAg
-         Z9ab54zqET+kdMUBW6DXFxyMRJlfXcqMDD4V3lZJeEGSr8l3EVy8zfF4IBX9Tz7U9iCI
-         6YKbHCwegOrN7MoExcScFe/+LK7PkvJhR/opWqJKuG26iWK96/tO2w2FRHH3zjwT3cJD
-         4MHAtBJOvMM7A8g9ylozKNmfwS7RQXRQPP/HcvvoFjMHa5cpPdkxTIQf/Htp08YdosXm
-         myOg==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=HXiyYsRDcy+goWf33NkgqqZbH4DExYqILi5Tpqs6LBQ=;
+        b=yjI0PwpGuwl2l15bmwAnhShGoMWg8SxQom+cTZ+ndejHypWb0Q+EFzYgtUt43AjUsM
+         dUY5+m5Z+jtvg4oBNE2SJWh5SajrRQDxPKdOrgAurw3P0Nz/Rob8DGqUGaaNAHDIPePv
+         t4pIJP8cXQozFP8jaknzAp7Sjw0NprTvhoPetykk4FvEV7Hburbg2+LlJsn2YfbWYlvN
+         Vgqk6OLrqdtEYTsbM9A4fMVF5/FPI+iE2x2qY3icfF6hgPOE+mWvJhXlTHRucM0Mnugp
+         dqZuPCbZYqL3jphLyT3cK8jgQLaWld0KBCysJ/S7WmuBqR41exek00ayvTRhyNXP3F9x
+         SvGA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of jonathan.cameron@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=jonathan.cameron@huawei.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
-Return-Path: <jonathan.cameron@huawei.com>
-Received: from frasgout.his.huawei.com (frasgout.his.huawei.com. [185.176.79.56])
-        by mx.google.com with ESMTPS id sd22-20020a170906ce3600b00711d8a5cb36si2936720ejb.912.2022.06.24.05.39.15
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 24 Jun 2022 05:39:15 -0700 (PDT)
-Received-SPF: pass (google.com: domain of jonathan.cameron@huawei.com designates 185.176.79.56 as permitted sender) client-ip=185.176.79.56;
+       dkim=pass header.i=@linaro.org header.s=google header.b=E+8Kyz07;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id de19-20020a05620a371300b006a71d88c433si1841791qkb.399.2022.06.24.05.41.15
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Fri, 24 Jun 2022 05:41:15 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of jonathan.cameron@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=jonathan.cameron@huawei.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
-Received: from fraeml703-chm.china.huawei.com (unknown [172.18.147.201])
-	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4LTxRB50T4z67Kvx;
-	Fri, 24 Jun 2022 20:35:18 +0800 (CST)
-Received: from lhreml710-chm.china.huawei.com (10.201.108.61) by
- fraeml703-chm.china.huawei.com (10.206.15.52) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id
- 15.1.2375.24; Fri, 24 Jun 2022 14:39:13 +0200
-Received: from localhost (10.81.207.131) by lhreml710-chm.china.huawei.com
- (10.201.108.61) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2375.24; Fri, 24 Jun
- 2022 13:39:12 +0100
-Date: Fri, 24 Jun 2022 13:39:09 +0100
-From: Jonathan Cameron <Jonathan.Cameron@Huawei.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-CC: <qemu-devel@nongnu.org>, <alex.bennee@linaro.org>, <qemu-arm@nongnu.org>,
-	"Michael S . Tsirkin" <mst@redhat.com>, Ben Widawsky <bwidawsk@kernel.org>,
-	Paolo Bonzini <pbonzini@redhat.com>, <linux-cxl@vger.kernel.org>,
-	<linuxarm@huawei.com>, Marcel Apfelbaum <marcel@redhat.com>, Igor Mammedov
-	<imammedo@redhat.com>, Markus Armbruster <armbru@redhat.com>, "Mark
- Cave-Ayland" <mark.cave-ayland@ilande.co.uk>, Adam Manzanares
-	<a.manzanares@samsung.com>, Tong Zhang <ztong0001@gmail.com>, "Shameerali
- Kolothum Thodi" <shameerali.kolothum.thodi@huawei.com>
-Subject: Re: [PATCH v11 1/2] hw/arm/virt: Basic CXL enablement on
- pci_expander_bridge instances pxb-cxl
-Message-ID: <20220624133909.00005f6e@Huawei.com>
-In-Reply-To: <CAFEAcA8U9oNDStfLpxOwodGm9MCTdLrt-WV+x_-rTGw9UpBGvA@mail.gmail.com>
-References: <20220616141950.23374-1-Jonathan.Cameron@huawei.com>
-	<20220616141950.23374-2-Jonathan.Cameron@huawei.com>
-	<CAFEAcA8U9oNDStfLpxOwodGm9MCTdLrt-WV+x_-rTGw9UpBGvA@mail.gmail.com>
-Organization: Huawei Technologies Research and Development (UK) Ltd.
-X-Mailer: Claws Mail 4.0.0 (GTK+ 3.24.29; i686-w64-mingw32)
+       dkim=pass header.i=@linaro.org header.s=google header.b=E+8Kyz07;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:51574 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1o4icd-00022L-Ft
+	for alex.bennee@linaro.org; Fri, 24 Jun 2022 08:41:15 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53618)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1o4ibu-0001zE-Gb
+ for qemu-arm@nongnu.org; Fri, 24 Jun 2022 08:40:30 -0400
+Received: from mail-yw1-x112a.google.com ([2607:f8b0:4864:20::112a]:37601)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1o4ibs-0002SU-Tn
+ for qemu-arm@nongnu.org; Fri, 24 Jun 2022 08:40:30 -0400
+Received: by mail-yw1-x112a.google.com with SMTP id
+ 00721157ae682-31772f8495fso23524267b3.4
+ for <qemu-arm@nongnu.org>; Fri, 24 Jun 2022 05:40:28 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=HXiyYsRDcy+goWf33NkgqqZbH4DExYqILi5Tpqs6LBQ=;
+ b=E+8Kyz07bH9d2+CVPfruVeBEe5QvffXwPxCFspsHn6YT3/uPjNOWHLH7bzQ2ZcEcGh
+ NtWtHzt480TzT39+PsWzJ23n1FGfW4EmI7eSUeJ32odljSUPsRgCKMZFIT5XP8HU5ySU
+ 8s0yqUyeOmLmdgF9zdJH16YLXxobHt0l1RDH9eFk1mrWDR+1znPJLV+q9Rulo3C8vnDZ
+ fFzXHlGFtbQuq5jIXaDsLgRt9vLdGLjGWGBZAdf2AXcqALmISTaBVMxC6qm3qFO567Su
+ MeGybYwWsDcfaI9BjNiw8flEReFBcg38WvodruvEfZSYX9cPHIKe9JQ/lTVDovCNzvo/
+ OUDQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=HXiyYsRDcy+goWf33NkgqqZbH4DExYqILi5Tpqs6LBQ=;
+ b=Hlb6Yy7dk5xJHAYEi3KzLC9T2JuJA7MTeef+7xt6iSP4KbkGWqKAErslWCNc0GmTlS
+ OcakDRTKzJWJ9CQyFxAPKxZxKcLeUGMPqvKkn8b5u7kiH7Qn8g5kyt855tBfcg/MdiqC
+ 89UYqBJcmJpguNTC0hqbbSJhjJr3wu8v511yGTbTJvD2hA43mNaT85TExcfh4puLHX2J
+ RF874sssz0USFmtkVSY5sKJLh3AHcuiYn2PPgXgQceNpGeIXiB/nO0ST8Zn7xcXv+Qil
+ z8xTvLcvcllr5okz0PmUNyp2O8ZNGwyKHY2wCf8t1vv9tcH2cbK4Nf6yExXBs2EmVekp
+ fi4A==
+X-Gm-Message-State: AJIora+Fq3RqQHM9Pi71eLKtiS0AohwZ3BBvcM/z3no8HUZXPeXJxIQ1
+ jwHhFyz7LWwJlodCpPTjN6PoDsjYPjRcyA9bCX5aaA==
+X-Received: by 2002:a81:8486:0:b0:317:a4af:4e0a with SMTP id
+ u128-20020a818486000000b00317a4af4e0amr16796298ywf.455.1656074427839; Fri, 24
+ Jun 2022 05:40:27 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset="US-ASCII"
-Content-Transfer-Encoding: quoted-printable
-X-Originating-IP: [10.81.207.131]
-X-ClientProxiedBy: lhreml735-chm.china.huawei.com (10.201.108.86) To
- lhreml710-chm.china.huawei.com (10.201.108.61)
-X-CFilter-Loop: Reflected
-X-TUID: gcAP7pQZwOOi
+References: <20220620175235.60881-1-richard.henderson@linaro.org>
+ <20220620175235.60881-34-richard.henderson@linaro.org>
+In-Reply-To: <20220620175235.60881-34-richard.henderson@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 24 Jun 2022 13:39:50 +0100
+Message-ID: <CAFEAcA9cC0MauM9AjcSBw=BKmaD8fP3eLjKOaA96nkjeU4KRCg@mail.gmail.com>
+Subject: Re: [PATCH v3 33/51] target/arm: Implement SME integer outer product
+To: Richard Henderson <richard.henderson@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::112a;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x112a.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: /OEzFJgaLovd
 
-On Fri, 24 Jun 2022 11:48:47 +0100
-Peter Maydell <peter.maydell@linaro.org> wrote:
+On Mon, 20 Jun 2022 at 19:29, Richard Henderson
+<richard.henderson@linaro.org> wrote:
+>
+> This is SMOPA, SUMOPA, USMOPA_s, UMOPA, for both Int8 and Int16.
+>
+> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+> ---
+>  target/arm/helper-sme.h    | 16 ++++++++
+>  target/arm/sme.decode      | 10 +++++
+>  target/arm/sme_helper.c    | 82 ++++++++++++++++++++++++++++++++++++++
+>  target/arm/translate-sme.c | 14 +++++++
+>  4 files changed, 122 insertions(+)
 
-> On Thu, 16 Jun 2022 at 15:20, Jonathan Cameron
-> <Jonathan.Cameron@huawei.com> wrote:
-> >
-> > Code based on i386/pc enablement.
-> > The memory layout places space for 16 host bridge register regions after
-> > the GIC_REDIST2 in the extended memmap.
-> > The CFMWs are placed above the extended memmap.
-> >
-> > Only create the CEDT table if cxl=3Don set for the machine.
-> >
-> > Signed-off-by: Jonathan Cameron <Jonathan.Cameron@huawei.com> =20
+>  /* TODO: FEAT_EBF16 */
+>  TRANS_FEAT(BFMOPA, aa64_sme, do_outprod, a, MO_32, gen_helper_sme_bfmopa)
+> +
+> +TRANS_FEAT(SMOPA_s, aa64_sme, do_outprod, a, MO_32, gen_helper_sme_smopa_s)
+> +TRANS_FEAT(UMOPA_s, aa64_sme, do_outprod, a, MO_32, gen_helper_sme_umopa_s)
+> +TRANS_FEAT(SUMOPA_s, aa64_sme, do_outprod, a, MO_32, gen_helper_sme_sumopa_s)
+> +TRANS_FEAT(USMOPA_s, aa64_sme, do_outprod, a, MO_32, gen_helper_sme_usmopa_s)
+> +
+> +TRANS_FEAT(SMOPA_d, aa64_sme_i16i64, do_outprod,
+> +           a, MO_64, gen_helper_sme_smopa_d)
+> +TRANS_FEAT(UMOPA_d, aa64_sme_i16i64, do_outprod,
+> +           a, MO_64, gen_helper_sme_umopa_d)
+> +TRANS_FEAT(SUMOPA_d, aa64_sme_i16i64, do_outprod,
+> +           a, MO_64, gen_helper_sme_sumopa_d)
+> +TRANS_FEAT(USMOPA_d, aa64_sme_i16i64, do_outprod,
+> +           a, MO_64, gen_helper_sme_usmopa_d)
 
-Hi Peter,
+I think this is one of those places where I'd say that wrapping the
+lines reads worse than not wrapping them. But either way
 
-Thanks for the review,
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
->=20
-> This seems to be missing code to advertise the new devices in the
-> device tree.
-
-Intentionally. I am not aware of any current interest
-in defining DT support CXL or supporting it in operating systems.
-Easy enough to add if anyone does the leg work to figure out the
-bindings, but that needs to come from someone who cares and
-would need to be driven by OS support and a usecase. The ACPI
-stuff here is defined as part of the main CXL spec because the
-target class of machines simply doesn't generally use DT.
-
->=20
-> Somebody else had better review the ACPI changes :-)
->=20
-> >  #define DEFINE_VIRT_MACHINE_LATEST(major, minor, latest) \
-> > @@ -178,6 +181,7 @@ static const MemMapEntry base_memmap[] =3D {
-> >  static MemMapEntry extended_memmap[] =3D {
-> >      /* Additional 64 MB redist region (can contain up to 512 redistrib=
-utors) */
-> >      [VIRT_HIGH_GIC_REDIST2] =3D   { 0x0, 64 * MiB },
-> > +    [VIRT_CXL_HOST] =3D           { 0x0, 64 * KiB * 16 }, /* 16 UID */=
- =20
->=20
-> Does this reshuffle the memory layout so that all the stuff after it
-> moves up ? If so, that's an incompatible change and would need
-> versioning somehow.
-
-I slotted it into a hole in the existing memory map so unless I
-have a bug, it shouldn't move any pre existing memory windows.
-The comment just above extended_mmap states that the floating area
-starts at 256GiB and the entries after that will be naturally aligned.
-
-Hence existing map will be
-256GiB Start of redist2
-256GiB + 64MiB Start of gap -  we slot in a 16 * 64KiB region at start of t=
-his gap.
-256GiB + 256MiB Start of PCIE_ECAM
-256GiB + 512MiB Start of gap 2
-512GiB Start of PCIE_MMIO
-
->=20
-> More generally, should this new addition to the machine be
-> versioned? What did we do for the pc machine types?
-
-So far not versioned and concern wasn't raised. I didn't think it was an
-issue because there should be no effect on older machines where cxl=3Don
-can't be set. Given the user has to explicitly request more hardware
-for anything to change, I don't see a need for versioning (yet).
-
-Not sure it's relevant but note the emulation here is not suitable for
-anything other than testing code against (it's very slow and provides
-nothing you'd actually want in a VM) so migrating a VM with this support
-seems unlikely to ever happen.
-
->=20
-> >      [VIRT_HIGH_PCIE_ECAM] =3D     { 0x0, 256 * MiB },
-> >      /* Second PCIe window */
-> >      [VIRT_HIGH_PCIE_MMIO] =3D     { 0x0, 512 * GiB },
-> > @@ -1525,6 +1529,16 @@ static void create_pcie(VirtMachineState *vms)
-> >      }
-> >  }
-> >
-> > +static void create_cxl_host_reg_region(VirtMachineState *vms)
-> > +{
-> > +    MemoryRegion *sysmem =3D get_system_memory();
-> > +    MemoryRegion *mr =3D &vms->cxl_devices_state.host_mr;
-> > +
-> > +    memory_region_init(mr, OBJECT(vms), "cxl_host_reg",
-> > +                       vms->memmap[VIRT_CXL_HOST].size);
-> > +    memory_region_add_subregion(sysmem, vms->memmap[VIRT_CXL_HOST].bas=
-e, mr);
-> > +} =20
->=20
-> > @@ -1779,6 +1799,20 @@ static void virt_set_memmap(VirtMachineState *vm=
-s, int pa_bits)
-> >          memory_region_init(&ms->device_memory->mr, OBJECT(vms),
-> >                             "device-memory", device_memory_size);
-> >      }
-> > +
-> > +    if (vms->cxl_devices_state.fixed_windows) {
-> > +        GList *it;
-> > +
-> > +        base =3D ROUND_UP(base, 256 * MiB);
-> > +        for (it =3D vms->cxl_devices_state.fixed_windows; it; it =3D i=
-t->next) {
-> > +            CXLFixedWindow *fw =3D it->data;
-> > +
-> > +            fw->base =3D base;
-> > +            memory_region_init_io(&fw->mr, OBJECT(vms), &cfmws_ops, fw,
-> > +                                  "cxl-fixed-memory-region", fw->size)=
-; =20
->=20
-> Why is board model code having to init memory regions for this
-> device? Shouldn't the device be creating the memory regions itself
-> and then exposing them for the board code to map them ?
-
-=46rom a device point of view CFMWs are weird. They are is a region of Host PA
-space that has fixed routing to devices (CXL host bridges). On a real system
-they are a characteristic of the interconnect routing and if programmable it
-is done well before any standard software (so might as well be hard coded).
-Making them a device would be a little bit like saying the base_memmap shou=
-ld be
-a device - all they are doing is saying this address here should route to t=
-his
-particular device. The flexibility here is to allow testing of different se=
-tups
-without having to know the actual PA range which is safe to use.
-
-They are very like the device memory or secure memory initialization.
-The ops are there to do the interleave decoding. Interleave decoding
-can't sensibly use a tree of memory windows because there would need to
-be an infeasible number of them hence the memops work out the routing at
-access time. If we ever optimize/specialize the non interleaved direct
-connected CXL device case, or implement more general memory interleaving
-support, it will just be a memory_region_init_ram() call like any other ram.
-
-This went through various approaches but in the end the sequence of what we
-need to set up for CXL fixed memory windows made representing them as a dev=
-ice
-hard so we didn't. Perhaps it could be done, but the device part would
-be very slim and we'd have a bunch of code having to search for the devices
-to stitch together all the information the need once it's available as
-the rest of the system is built (e.g. after the host bridges are created).
-
->=20
-> > +            base +=3D fw->size;
-> > +        }
-> > +    }
-> >  }
-> >
-> >  /*
-> > @@ -2215,6 +2249,14 @@ static void machvirt_init(MachineState *machine)
-> >          memory_region_add_subregion(sysmem, machine->device_memory->ba=
-se,
-> >                                      &machine->device_memory->mr);
-> >      }
-> > +    if (vms->cxl_devices_state.fixed_windows) {
-> > +        GList *it;
-> > +        for (it =3D vms->cxl_devices_state.fixed_windows; it; it =3D i=
-t->next) {
-> > +            CXLFixedWindow *fw =3D it->data;
-> > +
-> > +            memory_region_add_subregion(sysmem, fw->base, &fw->mr);
-> > +        }
-> > +    }
-> >
-> >      virt_flash_fdt(vms, sysmem, secure_sysmem ?: sysmem);
-> >
-> > @@ -2241,6 +2283,7 @@ static void machvirt_init(MachineState *machine)
-> >      create_rtc(vms);
-> >
-> >      create_pcie(vms);
-> > +    create_cxl_host_reg_region(vms);
-> >
-> >      if (has_ged && aarch64 && firmware_loaded && virt_is_acpi_enabled(=
-vms)) {
-> >          vms->acpi_dev =3D create_acpi_ged(vms);
-> > @@ -3070,6 +3113,7 @@ static void virt_instance_init(Object *obj)
-> >
-> >      vms->oem_id =3D g_strndup(ACPI_BUILD_APPNAME6, 6);
-> >      vms->oem_table_id =3D g_strndup(ACPI_BUILD_APPNAME8, 8);
-> > +    cxl_machine_init(obj, &vms->cxl_devices_state);
-> >  }
-> >
-> >  static const TypeInfo virt_machine_info =3D {
-> > diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
-> > index 15feabac63..403c9107e5 100644
-> > --- a/include/hw/arm/virt.h
-> > +++ b/include/hw/arm/virt.h
-> > @@ -35,6 +35,7 @@
-> >  #include "hw/boards.h"
-> >  #include "hw/arm/boot.h"
-> >  #include "hw/block/flash.h"
-> > +#include "hw/cxl/cxl.h"
-> >  #include "sysemu/kvm.h"
-> >  #include "hw/intc/arm_gicv3_common.h"
-> >  #include "qom/object.h"
-> > @@ -92,6 +93,7 @@ enum {
-> >  /* indices of IO regions located after the RAM */
-> >  enum {
-> >      VIRT_HIGH_GIC_REDIST2 =3D  VIRT_LOWMEMMAP_LAST,
-> > +    VIRT_CXL_HOST,
-> >      VIRT_HIGH_PCIE_ECAM,
-> >      VIRT_HIGH_PCIE_MMIO,
-> >  };
-> > @@ -176,6 +178,7 @@ struct VirtMachineState {
-> >      PCIBus *bus;
-> >      char *oem_id;
-> >      char *oem_table_id;
-> > +    CXLState cxl_devices_state;
-> >  }; =20
->=20
-> I just looked at the CXLState struct. Why isn't this a device object ?
-
-It can't be a pluggable device (e.g. added by -device ...)
-because we need to know about it early enough to set up the underlying
-PA regions (I tried that a long time back, and couldn't find a way to
-make it work).
-
-Possibly we could have machine parameters as today to specify
-everything necessary to create a set of fixed memory window associated
-devices. I'm not sure what the benefit would be however. When I originally
-look at this it seemed much closer to NumaState, NVDimmstate etc and
-that's what it was modeled on (those are in MachineState but Paolo asked
-we move CXLState down into the machine specific state structures because it
-wasn't relevant to the majority of boards).
-
-I guess the simple answer to this is that as it's not a 'device' in the
-sense we would normally expect to be called device on a physical system
-it never occurred to me to consider making it one.  If there are
-benefits to doing so (and we can avoid breaking x86 support, then sure
-I can look at doing so).
-
-struct CXLState {
-	/*
-	 * Used to gate creation of ACPI tables etc. You could use presence
-	 * or absence of a device but boolean seems much simpler and similar
-	 * too all the bools in Virt MachineState.
-	 */
-	bool is_enabled;=20
-=09
-	/*
-	 * At time of PA init we don't know what device are present
-	 * so need a trivial allocator that can be used later to
-	 * poke the addresses at the devices that have been created
-	 * via -device=20
-	 * Could make it a device, but seems overkill and would complicate
-	 * the acpi table building by making us do multiple levels of
-	 * address decoding to get to the actual PA of unrelated devices.
-	 * This could be avoided if we hard coded the PXBs in the machine
-	 * file, but that's a non starter because of how they work today.
-	 */
-	MemoryRegion host_mr;
-   	MemoryRegion next_mr_index;
-
-	/* State for the parameter parser of machine parameters.
-	 * CXLState was in MachineState where there are lots of
-	 * similar items (NumaState etc) but Paolo asked we move it into
-	 * the state of individual machines that we have added
-	 * CXL support to.
-	 * The split of PA map building and setup of devices means
-	 * we need to read this multiple times.
-	 */
-	GList *fixed_windows;
-	CXLFixedMemoryWindowOptionsList *cfmw_list;
-};
-
-I just noticed we have a left over cfmw_list in MachineState that
-should have gone in the rework set that moved this stuff into the
-individual board states.  I'll send a patch to clear that stray
-pointer out separately.
-
-Thanks,
-
-Jonathan
->=20
-> thanks
-> -- PMM
+thanks
+-- PMM

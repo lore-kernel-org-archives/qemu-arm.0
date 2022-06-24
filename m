@@ -1,83 +1,83 @@
-Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp338111lft;
-        Fri, 24 Jun 2022 06:51:37 -0700 (PDT)
-X-Google-Smtp-Source: AGRyM1u1iGLMBAVESB5LzgKmrvJGptAomMLGhRhozuT5saOEDYd5A2B8RDp0eMJbY0WJNXOPSkOZ
-X-Received: by 2002:ac8:5a93:0:b0:304:ec80:7943 with SMTP id c19-20020ac85a93000000b00304ec807943mr12696834qtc.330.1656078696872;
+Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp338109lft;
+        Fri, 24 Jun 2022 06:51:36 -0700 (PDT)
+X-Google-Smtp-Source: AGRyM1sglVx5EG/q+4ZrcNK/Zol6E1qPevcfZX7JMbxfvCz5+F6Jx3iOq6FprrX2ZMfhefDvoNqQ
+X-Received: by 2002:a05:622a:118f:b0:317:cb6c:8027 with SMTP id m15-20020a05622a118f00b00317cb6c8027mr1735142qtk.305.1656078696780;
         Fri, 24 Jun 2022 06:51:36 -0700 (PDT)
 ARC-Seal: i=1; a=rsa-sha256; t=1656078696; cv=none;
         d=google.com; s=arc-20160816;
-        b=TLCwEpTvvqXQGDi+QXcF8IQ2PBe16oJz7LgokAwqYRwzcPjPvp/oj6E8QOEQ4IHRmD
-         TXPFiNhitlpDdYq22C+hhdzQT04CnCEESTcywHrUeQeZ1K04XaKayx9AVVk9WtlvdJVT
-         KJSD1Mvaza5wWzyjfY5MNejylnJoyNqcbCeKU0CkoR1QziScI8EEOTlClbMazyDgqRUw
-         GSTeBfHX8sMGNEXHfaOsphwYiASt2jP7flNmu+NxJ9NGInEE4isknjF93/NhxnbFiKr/
-         1YF3C+txkKN5x2lsOK2SZhcWE+HomyfvoyUC4oh0ROxXV+Y6S2zFwN9igNYBxF/H0TLf
-         01bg==
+        b=uhbDwL1C4UfrnEfGYTLPCldnsIb4eo+eN0IbXQx5cMam6h04S/gd5fgfX2/gsd4px2
+         mqQRi3aqoLESNdxestX7UHXN8U0pcZCfmXv32wINCidaK3mSUp0JD7Euqk8fHo33HTet
+         eyonfcxwLNzsePhMutADHIDVVAOSsfCZJq/XyRHoq464schAFgAk4Nsh8CRPam5ik/Y/
+         aSW0QJ/tfb6KZe7e8IzcNYldhgiQmnrQEtAlxbliXzN1Pb63/GfrJe0mRj97JvPzKtrI
+         KjORLsU2uGzdMQGcT5DRGCb+ceAWE4pl4o0w2UNYC81cNfm3PFhjSKYIiK/mY74RZg01
+         ZfzQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:to:from:dkim-signature;
-        bh=qpyYJsUslD7HcPHbBvR0JXi4478xZf387fDV2B8cdeg=;
-        b=ek7CJpgefLryWqaaTi+7h02RH1XyqxKBrc9OuYn/1dBgtjEJEW4eRzoxfBhWo2LUv5
-         140NCaKUjmIjQ845miMm/Qk9WYZ/nd0soixg8TxBZqgYbzt6iWltesUbNRjWWFX2lHPz
-         C6Aa6pmGlH4/Vy1RHesPpb+PqlgtA4KL0Xe7N+oMKmVww7UATRDatIqluJVAf/dtOXhA
-         ydJJWKkAAAF1OMK1QuLMJcSPwrwxL/dY1Y/6XeRiVgj6WqnttrcC2ey+L9tJWzMIRLpA
-         oWQ0US9omCPiT7HSkf7dk4L6uV0BOZbdxDkVbq7qAn1KiZXwYgW+T2ARi/O90gXx52fq
-         Tnqg==
+        bh=x4Ux/flhpbIkk1DOYNpnIWHsBEhYIKBWJPHzdRfuhRU=;
+        b=p6JdTOjgT/qZB94JAmQSlZ5OBFCzqWSM2sK3REVALfqmfcKqu3UUseCm53PJf6BE4c
+         aK3MonJ8plKU2ojB9mPpq80Q0Rsc/PP6VDL+1IGGdXuhE7jYDJvKL7y/NL5D3+uaDQ2C
+         uNcRC4iWiLJF5l5623gCUmbAQ0GYQCKntH6J6SLQLQlBzHbY0fZ3z90fZA80Iov3M0j3
+         MkM8DJHO/T7AuYC4f3TCmI5Zm6gXRTcb/njLuYjiyCCi+yU2ZQJpEGChZpmJFTrVwNbe
+         kKGSBcaonsZC/S0KAWbdyfUSz0fI+4ztAyWtec2tFEfQIOuh/VbOdsTxg/vxLx7aIGOV
+         bXhg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@ilande.co.uk header.s=20220518 header.b=JVsy1wLA;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@ilande.co.uk header.s=20220518 header.b=R0CeQOSb;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=ilande.co.uk
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a19-20020ae9e813000000b006aed59ea7f1si1637200qkg.125.2022.06.24.06.51.36
+        by mx.google.com with ESMTPS id u8-20020ac858c8000000b003051167cc90si1821192qta.144.2022.06.24.06.51.36
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
         Fri, 24 Jun 2022 06:51:36 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@ilande.co.uk header.s=20220518 header.b=JVsy1wLA;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@ilande.co.uk header.s=20220518 header.b=R0CeQOSb;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=ilande.co.uk
-Received: from localhost ([::1]:60934 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:33954 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1o4jii-0003m9-BC
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1o4jii-0004c5-8k
 	for alex.bennee@linaro.org; Fri, 24 Jun 2022 09:51:36 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37992)
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37910)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mark.cave-ayland@ilande.co.uk>)
- id 1o4jZU-0008A4-GW; Fri, 24 Jun 2022 09:42:04 -0400
-Received: from mail.ilande.co.uk ([2001:41c9:1:41f::167]:41740)
+ id 1o4jZG-0007Sy-4G; Fri, 24 Jun 2022 09:41:50 -0400
+Received: from mail.ilande.co.uk ([2001:41c9:1:41f::167]:41658)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mark.cave-ayland@ilande.co.uk>)
- id 1o4jZS-00056e-RK; Fri, 24 Jun 2022 09:42:04 -0400
+ id 1o4jZD-00055k-DR; Fri, 24 Jun 2022 09:41:49 -0400
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=ilande.co.uk; s=20220518; h=Subject:Content-Transfer-Encoding:Content-Type:
  MIME-Version:References:In-Reply-To:Message-Id:Date:To:From:Sender:Reply-To:
  Cc:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
  Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
  List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=qpyYJsUslD7HcPHbBvR0JXi4478xZf387fDV2B8cdeg=; b=JVsy1wLAZQMl3iirglEv7oNIBh
- xg9XyUwZicTq09M2SFLoGx9m3fWXf9JA2G01UNoXftJipEGT+WatbFZY+iJSpIXj8+xU3/99K6kya
- bUTtyur4rnWdvBAgunmAfP8QvzQK6s3Ol/JMIehRip8Z6Asrotnml49IsZlCP8KnPbvk9jBt49/L9
- TR+Y15nDO0I4T36l12g8RjEWIE986rLW5tDCA9QjfjjaLVFTRpf2VjAVBcCVhbmz5ZkH8EPllEA0t
- dhs4yvYaO3IXmWV3TkW4md6tO3ddrIsJAzeTzz8aYy8ZkMo23FnZrfeg/V50YURqNh5nrZvHaOYvB
- frouaOTvt7mLPk4MDVxcJQCdkG9terxpnrjf8rPZQcGvUb8RTYBeGw4Gbx669Uk848dsXlSQM8U5I
- 6HbhTdi8Q+uoQZoNmzg8Hxh6wnAgMH90eU/PeI1xKEh6xlp3Tznfn87MGesl59D3Mcr219Pqu142J
- gEIYTe07z/rWXP4+LOxIVC5GQTZv7zxe3VJ85sJqOv1KYTtPn5mgbfau3fIMlvqHG1Eg0pHEOYRlm
- xLO4QfhE5iuRHgaCoY/obZUhbc9QZlpK6MVCTjEs2NJVMfiaOe2L34wQ5RgdGHMaLp/XWWtqwUMif
- dk6bTA5wGPNqbqzV0GFoeHZ2veLla+BZDjTW1huwU=;
+ bh=x4Ux/flhpbIkk1DOYNpnIWHsBEhYIKBWJPHzdRfuhRU=; b=R0CeQOSbUv7xjyMenlexQZgcCM
+ /PUBrEKSt/OlCb3Tv+KiovoA/+Cvti41I/Lk9NzMmK5B2B7e6cGY2cFdxZjLWBl9xwiAtQ9+939JJ
+ XWsYNGjQsqXalA+6wyMqTcrx83xZst2Nw1qUIDFsFKm6DuPRpTqwkTs5a0uCvX92c8pQe2+MnioAT
+ GRug6pFMnkJ1/6PmRmKK2bX8D5J8TofgJ9YkTufUSV0Z37mr4inMrGONE7tOEwg3OHClt6SM/+hOZ
+ 7Z1XzA8eI3wdo7qsicRF5mYNA3q+zv39gWxH2id5HSFPAbmsaKF3y76SslOx8azUMmA2Lk41BEr75
+ HrLu0EDYL661bKIIGczu1Frp2OlUmWnElaMO+KAMH3cv8ERuBTDcnrM7DeaE3NwPNmsluyxmeSsGc
+ oCY3DqyQbu2RdWJOuzZFJnKKyCphWNJ2yOFNQYDwZ+P9yCjMc2opW68LjQ9h7RaHpwk+G4edlK2Vt
+ 8gCQ7hrzMBD6ReFQIlrafAWK3n8LFPq1+lv2On3WJzjiRUlgQqE3G5OBRhysvXxaPpzgfmsqQL57h
+ YuHnix0VVrg2xGNSre1rVbEgP5yIYcG3FI8HK2ienRUF+nphZug9aCe+HhhtRmPYlCEQa+3eq5EDA
+ Y/ZfEQiChhAR7F4VUErSIXEO/OIfZPAW17R91YdgI=;
 Received: from [2a00:23c4:8ba4:e500:b82f:56f9:46d7:80ab] (helo=kentang.home)
  by mail.ilande.co.uk with esmtpsa (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.92) (envelope-from <mark.cave-ayland@ilande.co.uk>)
- id 1o4jYD-00037t-LM; Fri, 24 Jun 2022 14:40:46 +0100
+ id 1o4jXt-00037t-05; Fri, 24 Jun 2022 14:40:29 +0100
 From: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
 To: richard.henderson@linaro.org, deller@gmx.de, mst@redhat.com,
  pbonzini@redhat.com, peter.maydell@linaro.org, hpoussin@reactos.org,
  aleksandar.rikalo@syrmia.com, f4bug@amsat.org, jiaxun.yang@flygoat.com,
  qemu-arm@nongnu.org, qemu-devel@nongnu.org
-Date: Fri, 24 Jun 2022 14:40:26 +0100
-Message-Id: <20220624134109.881989-12-mark.cave-ayland@ilande.co.uk>
+Date: Fri, 24 Jun 2022 14:40:21 +0100
+Message-Id: <20220624134109.881989-7-mark.cave-ayland@ilande.co.uk>
 X-Mailer: git-send-email 2.30.2
 In-Reply-To: <20220624134109.881989-1-mark.cave-ayland@ilande.co.uk>
 References: <20220624134109.881989-1-mark.cave-ayland@ilande.co.uk>
@@ -86,8 +86,7 @@ Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-SA-Exim-Connect-IP: 2a00:23c4:8ba4:e500:b82f:56f9:46d7:80ab
 X-SA-Exim-Mail-From: mark.cave-ayland@ilande.co.uk
-Subject: [PATCH v2 11/54] ps2: implement ps2_mouse_realize() and use it to
- register ps2_mouse_handler
+Subject: [PATCH v2 06/54] ps2: improve function prototypes in ps2.c and ps2.h
 X-SA-Exim-Version: 4.2.1 (built Wed, 08 May 2019 21:11:16 +0000)
 X-SA-Exim-Scanned: Yes (on mail.ilande.co.uk)
 Received-SPF: pass client-ip=2001:41c9:1:41f::167;
@@ -99,66 +98,117 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: S4BbtoarowG9
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 71cEXH+qPMYH
 
-Move the registration of ps2_mouse_handler from ps2_mouse_init() to a new
-ps2_mouse_realize() function. Since the abstract PS2_DEVICE parent class doesn't
-have a realize() function then it is not necessary to store the reference to
-it in PS2DeviceClass and use device_class_set_parent_realize().
+With the latest changes it is now possible to improve some of the function
+prototypes in ps2.c and ps.h to use the appropriate PS2KbdState or
+PS2MouseState type instead of being a void opaque.
 
 Signed-off-by: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
 Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 Acked-by: Helge Deller <deller@gmx.de>
 ---
- hw/input/ps2.c | 8 ++++++--
- 1 file changed, 6 insertions(+), 2 deletions(-)
+ hw/input/ps2.c         | 22 +++++++++-------------
+ include/hw/input/ps2.h |  8 ++++----
+ 2 files changed, 13 insertions(+), 17 deletions(-)
 
 diff --git a/hw/input/ps2.c b/hw/input/ps2.c
-index 62ea4c228b..eae7df2096 100644
+index f4bad9876a..3a770f3b78 100644
 --- a/hw/input/ps2.c
 +++ b/hw/input/ps2.c
-@@ -1244,6 +1244,11 @@ static QemuInputHandler ps2_mouse_handler = {
-     .sync  = ps2_mouse_sync,
- };
+@@ -581,12 +581,11 @@ static void ps2_reset_keyboard(PS2KbdState *s)
+     ps2_set_ledstate(s, 0);
+ }
  
-+static void ps2_mouse_realize(DeviceState *dev, Error **errp)
-+{
-+    qemu_input_handler_register(dev, &ps2_mouse_handler);
-+}
-+
- void *ps2_mouse_init(void (*update_irq)(void *, int), void *update_arg)
+-void ps2_write_keyboard(void *opaque, int val)
++void ps2_write_keyboard(PS2KbdState *s, int val)
  {
-     DeviceState *dev;
-@@ -1259,8 +1264,6 @@ void *ps2_mouse_init(void (*update_irq)(void *, int), void *update_arg)
-     ps2->update_irq = update_irq;
-     ps2->update_arg = update_arg;
-     vmstate_register(NULL, 0, &vmstate_ps2_mouse, s);
--    qemu_input_handler_register((DeviceState *)s,
--                                &ps2_mouse_handler);
-     return s;
+-    PS2KbdState *s = (PS2KbdState *)opaque;
+     PS2State *ps2 = PS2_DEVICE(s);
+ 
+-    trace_ps2_write_keyboard(opaque, val);
++    trace_ps2_write_keyboard(s, val);
+     ps2_cqueue_reset(ps2);
+     switch (ps2->write_cmd) {
+     default:
+@@ -675,10 +674,9 @@ void ps2_write_keyboard(void *opaque, int val)
+  * 1 = translated scancodes (used by qemu internally).
+  */
+ 
+-void ps2_keyboard_set_translation(void *opaque, int mode)
++void ps2_keyboard_set_translation(PS2KbdState *s, int mode)
+ {
+-    PS2KbdState *s = (PS2KbdState *)opaque;
+-    trace_ps2_keyboard_set_translation(opaque, mode);
++    trace_ps2_keyboard_set_translation(s, mode);
+     s->translate = mode;
  }
  
-@@ -1285,6 +1288,7 @@ static void ps2_mouse_class_init(ObjectClass *klass, void *data)
-     DeviceClass *dc = DEVICE_CLASS(klass);
-     PS2DeviceClass *ps2dc = PS2_DEVICE_CLASS(klass);
- 
-+    dc->realize = ps2_mouse_realize;
-     device_class_set_parent_reset(dc, ps2_mouse_reset,
-                                   &ps2dc->parent_reset);
+@@ -857,20 +855,18 @@ static void ps2_mouse_sync(DeviceState *dev)
+     }
  }
+ 
+-void ps2_mouse_fake_event(void *opaque)
++void ps2_mouse_fake_event(PS2MouseState *s)
+ {
+-    PS2MouseState *s = opaque;
+-    trace_ps2_mouse_fake_event(opaque);
++    trace_ps2_mouse_fake_event(s);
+     s->mouse_dx++;
+-    ps2_mouse_sync(opaque);
++    ps2_mouse_sync(DEVICE(s));
+ }
+ 
+-void ps2_write_mouse(void *opaque, int val)
++void ps2_write_mouse(PS2MouseState *s, int val)
+ {
+-    PS2MouseState *s = (PS2MouseState *)opaque;
+     PS2State *ps2 = PS2_DEVICE(s);
+ 
+-    trace_ps2_write_mouse(opaque, val);
++    trace_ps2_write_mouse(s, val);
+     switch (ps2->write_cmd) {
+     default:
+     case -1:
+diff --git a/include/hw/input/ps2.h b/include/hw/input/ps2.h
+index 7f2c3f6090..1a3321d77e 100644
+--- a/include/hw/input/ps2.h
++++ b/include/hw/input/ps2.h
+@@ -92,8 +92,8 @@ OBJECT_DECLARE_SIMPLE_TYPE(PS2MouseState, PS2_MOUSE_DEVICE)
+ /* ps2.c */
+ void *ps2_kbd_init(void (*update_irq)(void *, int), void *update_arg);
+ void *ps2_mouse_init(void (*update_irq)(void *, int), void *update_arg);
+-void ps2_write_mouse(void *, int val);
+-void ps2_write_keyboard(void *, int val);
++void ps2_write_mouse(PS2MouseState *s, int val);
++void ps2_write_keyboard(PS2KbdState *s, int val);
+ uint32_t ps2_read_data(PS2State *s);
+ void ps2_queue_noirq(PS2State *s, int b);
+ void ps2_raise_irq(PS2State *s);
+@@ -101,8 +101,8 @@ void ps2_queue(PS2State *s, int b);
+ void ps2_queue_2(PS2State *s, int b1, int b2);
+ void ps2_queue_3(PS2State *s, int b1, int b2, int b3);
+ void ps2_queue_4(PS2State *s, int b1, int b2, int b3, int b4);
+-void ps2_keyboard_set_translation(void *opaque, int mode);
+-void ps2_mouse_fake_event(void *opaque);
++void ps2_keyboard_set_translation(PS2KbdState *s, int mode);
++void ps2_mouse_fake_event(PS2MouseState *s);
+ int ps2_queue_empty(PS2State *s);
+ 
+ #endif /* HW_PS2_H */
 -- 
 2.30.2
 

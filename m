@@ -1,406 +1,246 @@
-Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp334563lft;
-        Fri, 24 Jun 2022 06:45:16 -0700 (PDT)
-X-Google-Smtp-Source: AGRyM1sFerqzoNBoeKMLX83ZWzFZDPgjBFliU4o2ZLC6I66b4W5ByiB8n5T/EjF2nkm3E1YyGS1Z
-X-Received: by 2002:a05:622a:1104:b0:305:309a:82e2 with SMTP id e4-20020a05622a110400b00305309a82e2mr12437292qty.643.1656078316045;
-        Fri, 24 Jun 2022 06:45:16 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1656078316; cv=none;
+Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp368929lft;
+        Fri, 24 Jun 2022 07:36:11 -0700 (PDT)
+X-Google-Smtp-Source: AGRyM1vHlnDXTvJk3RfXaASGB3a7UnI9TD1Ea9GNpyP57omkT5ruvK0WS/LZuiSydtQzqaDmjytk
+X-Received: by 2002:ae9:ef8d:0:b0:6ae:fcc8:90ea with SMTP id d135-20020ae9ef8d000000b006aefcc890eamr5180403qkg.43.1656081370471;
+        Fri, 24 Jun 2022 07:36:10 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1656081370; cv=pass;
         d=google.com; s=arc-20160816;
-        b=SQ/yXjdJ4LA0TaX+wBQniGLsft+qIXz25JsJa3NbyBpLliuZGK4C7vjaM1RYS9Q9Sj
-         vzXYodchIFoAdJHEN6MQU/2cEteQ2GuZ6BzQ4AInjBXpW7SPDvWtqHO7gvrnqjnK9Y69
-         w0tEDG220I+X/Crs1p5T/Zmp/L59o/Ql4e9plxUhKFFq0kb/S2PkCGxiyMehUl9y6dXs
-         nV+GB+iGTxdV89Siro4/qF0bi5Xs6khrV5XBgn+rkcjMxNSkv3rgD1dlabb2O0AQn2Ck
-         UKy3kwNLBjk9fA8eBdX3+2MQcwQ1044uqaE3ixBrwLP/INzWczJi9slsq1r5rSEmRR1K
-         jSxQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        b=Fd78CunqDjjigLTdyO/G7GEd5pbJYNj6CHkJc/GSPYAu13hP70ViaOZnJr2vUndT2u
+         Nr4C/hHKfBvpW3ue00UflOwK5k1vk8duVsNgos9vjn3/uD95mmS2arxovx31+0LHTTXZ
+         F2ILNsGxAbYN3NDqIJoxmh5omgL499qFYUq7prEDUhmVXS12UCYLWwOoHyypHJDRXFd/
+         9BoFDzvNxJ5AWAVZKYTu72i7bB7NO4k8tDPOadBmGaB+VDsMChobeCe2f+NiC2Vr9nIX
+         HyTqldRHrjCTrErAHJ0JOE98rbHtsBnKPXVipz/zpw22VmCJmjd/awfC0q25t0CDkOnx
+         ua6w==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:to:from:dkim-signature;
-        bh=mvAJZ4P5Q1iTQxoa3SmGf3mWyoKSkskxl1Q/JBJZB9I=;
-        b=Dpb1o2o/0UuQtesTaDYIjxWiPORxkENvWbqJNdekHa+gZRfHQFIJ4oakeVrEuljsbZ
-         Jprlt+8FSuDRbSVJACkD4nX9yag7OWPkNDFHRjckWJ4fm5eJoYwCMkY8TvcjshjgINhx
-         5Ys/SmBRBcg8SJib3ZQUW63Rp8tA+pziB72LNq7wmJ1lNjpU7PvbNr8uiWR1QenDXdfF
-         Xlwajg6bitV8v5AtmyKUYotOsAPq1iiQJA2ZcdE0ycQRTIXjR+FscJbpq253RTyiW7g6
-         OnJbeN/C8miOtNLaQ/hoVubsAVbs/uDVxzCSS54B1pZx37DUdpvfD5abpEa48o2Kpf9s
-         Mg1Q==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@ilande.co.uk header.s=20220518 header.b=hOGBR4Qz;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=ilande.co.uk
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+         :list-unsubscribe:list-id:precedence:mime-version
+         :content-transfer-encoding:content-id:content-language
+         :accept-language:in-reply-to:references:message-id:date:thread-index
+         :thread-topic:subject:cc:from:dkim-signature;
+        bh=bq40Rg2ndVfEu3icf6sBzTTf8VFClGATyLsxklQmCig=;
+        b=fwtDUCOJ5CMk+9jhDFRbMRzJTyoCP0dZAO3F+Hyymz2b5FRoDS9cc8ls55RDgj/iHe
+         OLLqoxeOKL4Y7FU0qSlkw7ybiGGlNMNdkBZHb8FQ26xUfBycRL6P6RHSDm9xfmzHstH3
+         1lZGWkU80muqhq7xRmJwA8+Z0F0S0Z8D+Fz38FermAsMjRpjWEaIQ7VadNcYgzc91hZC
+         Q9GlvACAPtRFF9uf4BidEBlGUZndQsRY1LeN1xxuKCkN38unSqlmV+P3T4RYxXgboL/f
+         uCaX3Ei4Otl97v+fBcwNPdZBjmmZhAONZikCoSzONPZ2A3g4pnIPFxnF5zQ05O+VOMjB
+         axHg==
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@fb.com header.s=facebook header.b=Nbzvm8gW;
+       arc=pass (i=1 spf=pass spfdomain=fb.com dkim=pass dkdomain=fb.com dmarc=pass fromdomain=fb.com);
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=fb.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id z3-20020a05620a260300b006a73e1500fcsi1644269qko.359.2022.06.24.06.45.15
+        by mx.google.com with ESMTPS id w3-20020ac857c3000000b002f3d58077fdsi1710198qta.516.2022.06.24.07.36.10
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 24 Jun 2022 06:45:16 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 24 Jun 2022 07:36:10 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@ilande.co.uk header.s=20220518 header.b=hOGBR4Qz;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=ilande.co.uk
-Received: from localhost ([::1]:51424 helo=lists1p.gnu.org)
+       dkim=pass header.i=@fb.com header.s=facebook header.b=Nbzvm8gW;
+       arc=pass (i=1 spf=pass spfdomain=fb.com dkim=pass dkdomain=fb.com dmarc=pass fromdomain=fb.com);
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=fb.com
+Received: from localhost ([::1]:35512 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1o4jcZ-0005A8-F9
-	for alex.bennee@linaro.org; Fri, 24 Jun 2022 09:45:15 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37858)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1o4kPp-0000VQ-UU
+	for alex.bennee@linaro.org; Fri, 24 Jun 2022 10:36:09 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:42036)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mark.cave-ayland@ilande.co.uk>)
- id 1o4jZ4-0007A0-SY; Fri, 24 Jun 2022 09:41:38 -0400
-Received: from mail.ilande.co.uk ([2001:41c9:1:41f::167]:41604)
+ (Exim 4.90_1) (envelope-from <prvs=717463a23e=pdel@fb.com>)
+ id 1o4jrU-0005V1-DJ; Fri, 24 Jun 2022 10:00:44 -0400
+Received: from mx0a-00082601.pphosted.com ([67.231.145.42]:61640)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mark.cave-ayland@ilande.co.uk>)
- id 1o4jZ0-00054B-98; Fri, 24 Jun 2022 09:41:37 -0400
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=ilande.co.uk; s=20220518; h=Subject:Content-Transfer-Encoding:Content-Type:
- MIME-Version:References:In-Reply-To:Message-Id:Date:To:From:Sender:Reply-To:
- Cc:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
- Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
- List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=mvAJZ4P5Q1iTQxoa3SmGf3mWyoKSkskxl1Q/JBJZB9I=; b=hOGBR4QzebBIemSFl4nKcIyouB
- 0MKrveDmekyIHhe8+paYJVkgGyqVBWmooPFFMcALszRNn0evk+aZe2K3Oh81M7N0y91PoCK8JdK8T
- AUqUHfkFIFNNFsOG3X+aKfYJzkTaOzY7eWVyGs0UwVmdegXza3/OfNNQMb6+5+V+YvRXOIdbRTfDm
- VxOKhMOEuHuy089gozV1zPY2s8g0lAaEpj1Pd/DeIkRxh1KPiiEaUk7NUpte+suqJ4Uf/eiJmwEkc
- Zt92OXc6eJyYps4LFYseVmfDbqB8QG5vdfKFZetzLlgst97I3rLAulqd/r9EGKNIp46UO2ONObdZB
- +wZ0dR5rSp3faMz/vn186ae8fyZObyBBT5hXRCOJzhuv6n2RzT8z2BoDKA1c7zMqoVC4hXDmhrMNj
- g5+07IvpxjdY0JMa5nNeVyFAKXSFr7foD6L+5McY+Bl6p+gvqFeSVRlvxYGZIXj89GH8Xf97XfT13
- k11MR2BP5ZGXO+TS5Lmibu7D61kE7XjQNakfH/vSVPE6qaZshwjwD6z/SZNeQCZ4L+oN3YHPepFPu
- Gw+O2IJ80plxb0xQIjNToB3W9fWI99CVo69mHXyG9Pj8MT8bwKeiB5DEPP3EMiL4+5VeYtli6VA7S
- 8LbvjoefoHuA7QYIzzJHf5NWkzOws4ToYkx2tuIXc=;
-Received: from [2a00:23c4:8ba4:e500:b82f:56f9:46d7:80ab] (helo=kentang.home)
- by mail.ilande.co.uk with esmtpsa (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.92) (envelope-from <mark.cave-ayland@ilande.co.uk>)
- id 1o4jXg-00037t-OI; Fri, 24 Jun 2022 14:40:16 +0100
-From: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
-To: richard.henderson@linaro.org, deller@gmx.de, mst@redhat.com,
- pbonzini@redhat.com, peter.maydell@linaro.org, hpoussin@reactos.org,
- aleksandar.rikalo@syrmia.com, f4bug@amsat.org, jiaxun.yang@flygoat.com,
- qemu-arm@nongnu.org, qemu-devel@nongnu.org
-Date: Fri, 24 Jun 2022 14:40:18 +0100
-Message-Id: <20220624134109.881989-4-mark.cave-ayland@ilande.co.uk>
-X-Mailer: git-send-email 2.30.2
-In-Reply-To: <20220624134109.881989-1-mark.cave-ayland@ilande.co.uk>
-References: <20220624134109.881989-1-mark.cave-ayland@ilande.co.uk>
+ (Exim 4.90_1) (envelope-from <prvs=717463a23e=pdel@fb.com>)
+ id 1o4jrR-000881-5d; Fri, 24 Jun 2022 10:00:39 -0400
+Received: from pps.filterd (m0044010.ppops.net [127.0.0.1])
+ by mx0a-00082601.pphosted.com (8.17.1.5/8.17.1.5) with ESMTP id 25OC3BOT017180;
+ Fri, 24 Jun 2022 07:00:22 -0700
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=fb.com;
+ h=from : cc : subject :
+ date : message-id : references : in-reply-to : content-type : content-id :
+ content-transfer-encoding : mime-version; s=facebook;
+ bh=bq40Rg2ndVfEu3icf6sBzTTf8VFClGATyLsxklQmCig=;
+ b=Nbzvm8gWq09UPFYoYrGfyz+ZM1++mudknCNeXh3rAPX6QMtnWxwS7WHBMx0CnPKeHGR0
+ 0t668YzXYOCb7uCSwrimXvoDiMBOLkNJQzs+0NBDyHdtYHdvCi4a5IN3UVzVZI27rWb0
+ VOlwfTpQspOLi9GRxQlrnaPObYKkTHYC9VQ= 
+Received: from nam10-dm6-obe.outbound.protection.outlook.com
+ (mail-dm6nam10lp2108.outbound.protection.outlook.com [104.47.58.108])
+ by mx0a-00082601.pphosted.com (PPS) with ESMTPS id 3gvvmjdm71-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Fri, 24 Jun 2022 07:00:22 -0700
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=nppA6CjVGTVk4YTBetzCoqOsc5cUCQLUk66x9EF+gwVO2h2g8cohm/JSJqlDcfb4767fLVucIsC0KcePCoM2s+Vi7SEmRiQKAGbrjwQPpSxp9z42e8K9wXgzLyrAcfYRz/MPOaDsTvvc8j/8OYzSLlqy+ufeJxfbFzQ8ViVaEhYFzSOeBfIfQ8dkdaGHF36hrH6gpCa6LBCmMxgJJoEz5n2XCbjmy5oXCRiTJT3azAwWoknqdJYbHQOV7Rsg44QTPfffzPA87hPVM7x358oWcUq24pPUgD9zWjw5QHWy6TW7x4H/3QtZHlGElIY8Db46SfJ8RaSI/yL/ASeZxb7+5g==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=bq40Rg2ndVfEu3icf6sBzTTf8VFClGATyLsxklQmCig=;
+ b=LgYAZQ+X/zBz1kCHEKj5hBDhI8BD53Pm6UevNj1q+DVgqCRh8G0nsoo1qBxUB7Zce/b9uzwBunyskZomRRqsuOctr6Tiicv+8TF7WCGvt20V6oQlHYbNrK/NdIsTgDvBsQpCToVwYTjcfLpVhsnNtyxGb0NwSqUp0ouhfY729Ngu3xeIPkxIRg1lQYQRmc/NJl+GqCxaiwPKSmaRSbgkiiDPc1+Go01tv+kNx5c0W7QCAK1HuTrR28ydBWQn84YHvP7kxBXZfR7Kfg2gyF6IdO/p37yBt7QsL5q0krPaDjNNVu0eEIW563v7DFV1NadIfG8hOR6rwIT0Sw9BLErbuw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=fb.com; dmarc=pass action=none header.from=fb.com; dkim=pass
+ header.d=fb.com; arc=none
+Received: from BYAPR15MB3032.namprd15.prod.outlook.com (2603:10b6:a03:ff::11)
+ by SJ0PR15MB4170.namprd15.prod.outlook.com (2603:10b6:a03:2c9::24)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5373.17; Fri, 24 Jun
+ 2022 14:00:20 +0000
+Received: from BYAPR15MB3032.namprd15.prod.outlook.com
+ ([fe80::70d0:8133:42cc:f134]) by BYAPR15MB3032.namprd15.prod.outlook.com
+ ([fe80::70d0:8133:42cc:f134%6]) with mapi id 15.20.5373.017; Fri, 24 Jun 2022
+ 14:00:19 +0000
+From: Peter Delevoryas <pdel@fb.com>
+CC: Peter Delevoryas <pdel@fb.com>, Peter Maydell <peter.maydell@linaro.org>, 
+ Cameron Esfahani via <qemu-devel@nongnu.org>,
+ qemu-arm <qemu-arm@nongnu.org>,
+ =?utf-8?B?Q8OpZHJpYyBMZSBHb2F0ZXI=?= <clg@kaod.org>
+Subject: Re: [PATCH v2 1/8] aspeed: Set CPU memory property explicitly
+Thread-Topic: [PATCH v2 1/8] aspeed: Set CPU memory property explicitly
+Thread-Index: AQHYh2KQqgVE5mGeUEKo6PpVBo6g8a1eGrqAgAAFKACAAHbSgA==
+Date: Fri, 24 Jun 2022 14:00:19 +0000
+Message-ID: <A7819461-C494-4B06-80CB-21473A3C6E28@fb.com>
+References: <20220624003701.1363500-1-pdel@fb.com>
+ <20220624003701.1363500-2-pdel@fb.com>
+ <3ba89576-b482-14da-9a23-22c0e652e148@kaod.org>
+ <9093f275-8062-7992-293e-1c5c129fd228@kaod.org>
+In-Reply-To: <9093f275-8062-7992-293e-1c5c129fd228@kaod.org>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-ms-publictraffictype: Email
+x-ms-office365-filtering-correlation-id: 7a36815e-c5ef-427d-0b12-08da55e9dfde
+x-ms-traffictypediagnostic: SJ0PR15MB4170:EE_
+x-fb-source: Internal
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: l5hD3LFnRHEYpHvcQ8Uy4Ox5pQ1xyFBjHJOZ7JJq97hfWAZkeiHbbDHmo9mpCdsTBC3zC/W380ASx+dv3oiYkk6dT9LqEi6rSqYhDo3HkeuaG+003TdXNGpTAJSqCLeRZTGfVRcmD7P2Zx8lv0iNP2bEtFK6BDdnlAuExpoCCboA8S/NURpGkH/8VhrurjJHXATSBFZ/cso/taX2hOauzLzkZDue2ehz1SuCiV9b0zBymfz0OtUfrjIVD5pzZM0nCw0K5BqMkDBvX5Bztb/eDhAa8akSRzCv77GYX+Np195kpRkqVO7qK45PH3BSQRAN4ldB6bXbK0id1ST3pWCaVe2OgHxeyURTf8d8IzWrP9dm7YQii5tO3xV34OztmgJToISVJubS+N4Q/54ju+/Lq9kQCsJWBl89mvH6uJy+HJqeXgZbnXapSlFRRVQW06I7BLRnMXbm2eyFctP7sWnJVP1S8axMKUnjnw8QhThQkHFacWTQxeYb1YvBeVyLt2mOpriuMKnZZpiwlpp1zJaTBgQ1BeNc5IN+OmYDPZx185PyZ5KatQ7kMHahPeGRQJONaL6g9POxvncQ9G/xTMN8wm6AIBe7BZqPLz2uptHogqKSpiaG8S3Qwc2xY0CgE++mvB9CmneL3paLtQnGjcuA9gspajG2DBu//i0+r3vmGk7trnu4YqDEOMvXSu4GrY3zRPOTsEzrzhpecsFACDVoVh3AGkcS6EFvK9zNdoIb3wnNT5xYtam3KyqPdEZCKme1sw/lTX0ddNh1hIR4nw3JUoxvMG19G04+iDaW6ikC3aUDl4Z5mjXNoMGdIU23/gZlcX2zDitEOfdwcPg+mdUngQ==
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:BYAPR15MB3032.namprd15.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230016)(4636009)(396003)(136003)(346002)(366004)(39860400002)(376002)(6506007)(41300700001)(478600001)(36756003)(2616005)(33656002)(54906003)(53546011)(109986005)(71200400001)(38100700002)(186003)(316002)(6512007)(6486002)(66446008)(38070700005)(4326008)(66556008)(122000001)(66946007)(86362001)(64756008)(8676002)(66476007)(5660300002)(2906002)(76116006)(8936002)(45980500001);
+ DIR:OUT; SFP:1102; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?utf-8?B?MXYrZG5iek1EaXd5RHJrZ2NGd2ZRUUVRZHRxcytGZURWRzhSNVRmdjVUM2Rm?=
+ =?utf-8?B?RHdhMUtDMlFJNDZCNEdIaHVEVytiZkVVWHo0dDNoemY3NU5mTms4ZDJELzVm?=
+ =?utf-8?B?VWRhTXE1MVFza3FSNzNMbURiYTQrSjdVMWVnbXNMS1VXTXJOemhvYkIrWWJN?=
+ =?utf-8?B?L2t2VjdDSXV5aEpoQ0VmTytaUjd2Y1FYTHVPaU43UkhjVFZMOHZ4OEpVZWt0?=
+ =?utf-8?B?cGU2R0RJYW4xQjhEZnZFc1pUYmxRblpmTmcxMmpDNGdZTU4zK29oQlBVQVM2?=
+ =?utf-8?B?VjgzV0pqQ3g2M0FCRXdqdEpiSzF6T0ZqUCt2VUZqQ3pWWmZiSEFEdWJHbU12?=
+ =?utf-8?B?blRicFFGRDJLaG9PMThnK2tiMC9QSEdmVXlRQnVhaURTcjFxSDdOcFlIY1Bx?=
+ =?utf-8?B?V0xzMDVSSEZySjljUGIxaXFsVXIvSVFtYnJsQjVNbmNqeGpwRDE5eWdycklw?=
+ =?utf-8?B?aXR6bHUrUG1HSFUwWTcydndJME52OE5BOFpkNjFBSUtJK2RKRGUzT3lSOGFV?=
+ =?utf-8?B?Mk0xcTZPOVV5dysxSU5vYnp6TGhzVitONmdlSWlna0l3V2VvUkNCR25wU0tq?=
+ =?utf-8?B?TDFEb0E4UHJhcllpci9hRUhiWXozcjZyTkZ5NC9OTWtLY3lTYTJZeFJZbVNm?=
+ =?utf-8?B?YkhlczN0MnB0bG1HOFlza0I1K2VjVFljRXRjWGtJdE5iTzVSZ1ZIc0p2MFJj?=
+ =?utf-8?B?ZUhGU0NqMHkyWUFQSlprOGFxandXcnZ1S2ludk5DMisycXVRcm41REJ0MGlk?=
+ =?utf-8?B?L0xzNmlZM3psUkZLK25LUGJxWWl1WlhzU3ZuT1dlenphSFN3TFVaNG1YTWRt?=
+ =?utf-8?B?QWZCajRrNmxNTVYzbkl2eHhtcllsenhsNXpDeUF0RmpQazFzdWpqNmdKa2M4?=
+ =?utf-8?B?YnMwS21SRDNKcnpIcVRtS1g0MTlNUk9ScW1QdU95M1FpYjE2b2dYVmM4dGRz?=
+ =?utf-8?B?Q0RIVU4vRWlDaTUrZzRpR1J1R3FTTkdxNWtNb0x3OXlZYU9NMmdMK2lDdlZ5?=
+ =?utf-8?B?UHhIeENYYXloVmFyUnlCM2d5UW1IcVJBQmVFYjRvWVBleVFqZ2kyeHFySHFD?=
+ =?utf-8?B?SWl3c085QVUvMVZKdnJzeHhoOXNRd1loNU0wSk1JWkRtakozcXhFcldYZ1po?=
+ =?utf-8?B?Yk56dlpiTDZzWlNJTTVZRkRHSFIyOUlNWlJITkszZ1JpcmExMlp3Tm5lZmtn?=
+ =?utf-8?B?KzBvcFBPdCtFOElpbUM5RHRKNzRLOW42L2tTNHhVdHllZHhsVkM2N2RlTldF?=
+ =?utf-8?B?SzB4OHJEU00yUEp6V25sWURja0k2SHpuME9RaXM3L0l4ek16ZlUrMzhuM1R1?=
+ =?utf-8?B?RHp1SEJFWSs2SnVHcWkyelZtTWVUUmJCbGJDcDYvWkNTQUNMRGQ5citPUDM4?=
+ =?utf-8?B?N1dIUTBjY0ZCVUVzeFpUVjBMa25rNVFZa25LQmc5U1pPTUd3QVR2azFKOU90?=
+ =?utf-8?B?V2NydUtmQTVkVWY5WHRwejl6U3dlVko0d3Uwd2MxdHcwWXBaVWVLUktDR09B?=
+ =?utf-8?B?UWF6ZUpwemFkK3hGeUhNb3JHYnJiaENjQWovQ0h6aTAyN3c2VFVoZEloN2Fh?=
+ =?utf-8?B?b1hQbUtqVlRUTnlvelU1M0R0YUZ3NjN5d3d1elZ3QWVXY1dZUGtJczhqTEYz?=
+ =?utf-8?B?R3lRY1ZMOVdwblMzV2ZVMDJCZ05TdExkdmdNTXVxc1VMd1RWNkhvcVRxKzJj?=
+ =?utf-8?B?MXo3enBKOGdGK2l2MjRRQ3RwOWlMaFlidzJxVE5ldit2cU9VejBRYTZHM0pi?=
+ =?utf-8?B?NmJ5MTBFakUwZURINytTWUhZM0xQOVJsV1gxaCtMMXEyZ1RWTDM1SmtlNmlG?=
+ =?utf-8?B?K21IWjR3Zk5GdWJ1L2MzYUdJRWVWd3FRZjBKS3N0M1o2Q0xHSVhHRjFjYnM1?=
+ =?utf-8?B?ZVZHNEFwL1VleFVVYW9BY05LQ3F1OVFyYU1DNFZ1SU00NGtTVGQ5WE1UaVJx?=
+ =?utf-8?B?QVdpZjNQNzRsVnAyT1Y4MjdLNWpsQURDUHpGOFo4d09lSWc0bHpuRXhaZWZP?=
+ =?utf-8?B?V05DT1NtbVlDc3pkOUpxTUNVNjRyZTF2bW52Y2tkcXIwN3pVWjFtd2FWMkN1?=
+ =?utf-8?B?c3dlNmwxTEIvTFhCTVZuZ0NQbXFNeHIrZnBXTFNPTXkvdUxZR3poSVNOK25G?=
+ =?utf-8?B?NjBvWXZmRUw2dUlkZU5KaDlVeFlBcGlsTmtCTk42b2Zmb3B5UmVwUXY1MHdq?=
+ =?utf-8?B?cmc9PQ==?=
+Content-Type: text/plain; charset="utf-8"
+Content-ID: <5D54D50D4332474181F5EC50FFD7AB77@namprd15.prod.outlook.com>
+Content-Transfer-Encoding: base64
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-SA-Exim-Connect-IP: 2a00:23c4:8ba4:e500:b82f:56f9:46d7:80ab
-X-SA-Exim-Mail-From: mark.cave-ayland@ilande.co.uk
-Subject: [PATCH v2 03/54] ps2: QOMify PS2KbdState
-X-SA-Exim-Version: 4.2.1 (built Wed, 08 May 2019 21:11:16 +0000)
-X-SA-Exim-Scanned: Yes (on mail.ilande.co.uk)
-Received-SPF: pass client-ip=2001:41c9:1:41f::167;
- envelope-from=mark.cave-ayland@ilande.co.uk; helo=mail.ilande.co.uk
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-OriginatorOrg: fb.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: BYAPR15MB3032.namprd15.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 7a36815e-c5ef-427d-0b12-08da55e9dfde
+X-MS-Exchange-CrossTenant-originalarrivaltime: 24 Jun 2022 14:00:19.7333 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 8ae927fe-1255-47a7-a2af-5f3a069daaa2
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: grJRHen7sehEe5Tns0Tako7yZeBluR5l3u3K09oUaKo98NQTq7mw9LO1frTaWNxk
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SJ0PR15MB4170
+X-Proofpoint-ORIG-GUID: ZbDgnWHPLiAFqrjiujwPP1TmV9ewPk2C
+X-Proofpoint-GUID: ZbDgnWHPLiAFqrjiujwPP1TmV9ewPk2C
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.205,Aquarius:18.0.883,Hydra:6.0.517,FMLib:17.11.122.1
+ definitions=2022-06-24_07,2022-06-23_01,2022-06-22_01
+Received-SPF: pass client-ip=67.231.145.42;
+ envelope-from=prvs=717463a23e=pdel@fb.com; helo=mx0a-00082601.pphosted.com
+X-Spam_score_int: -11
+X-Spam_score: -1.2
+X-Spam_bar: -
+X-Spam_report: (-1.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.082,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ MISSING_HEADERS=1.021, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001,
+ RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: +C/vy+HHj+Sx
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: KN5BVqvX4o8A
 
-Make PS2KbdState into a new PS2_KBD_DEVICE QOM type which inherits from the
-abstract PS2_DEVICE type.
-
-Signed-off-by: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
-Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-Acked-by: Helge Deller <deller@gmx.de>
----
- hw/input/ps2.c | 104 ++++++++++++++++++++++++++++++-------------------
- 1 file changed, 65 insertions(+), 39 deletions(-)
-
-diff --git a/hw/input/ps2.c b/hw/input/ps2.c
-index 514e55cbb6..14eb777c3f 100644
---- a/hw/input/ps2.c
-+++ b/hw/input/ps2.c
-@@ -31,6 +31,7 @@
- #include "ui/input.h"
- #include "sysemu/reset.h"
- #include "sysemu/runstate.h"
-+#include "qapi/error.h"
- 
- #include "trace.h"
- 
-@@ -108,15 +109,19 @@ struct PS2State {
- #define TYPE_PS2_DEVICE "ps2-device"
- OBJECT_DECLARE_SIMPLE_TYPE(PS2State, PS2_DEVICE)
- 
--typedef struct {
--    PS2State common;
-+struct PS2KbdState {
-+    PS2State parent_obj;
-+
-     int scan_enabled;
-     int translate;
-     int scancode_set; /* 1=XT, 2=AT, 3=PS/2 */
-     int ledstate;
-     bool need_high_bit;
-     unsigned int modifiers; /* bitmask of MOD_* constants above */
--} PS2KbdState;
-+};
-+
-+#define TYPE_PS2_KBD_DEVICE "ps2-kbd"
-+OBJECT_DECLARE_SIMPLE_TYPE(PS2KbdState, PS2_KBD_DEVICE)
- 
- typedef struct {
-     PS2State common;
-@@ -330,6 +335,7 @@ static void ps2_cqueue_reset(PS2State *s)
- static void ps2_put_keycode(void *opaque, int keycode)
- {
-     PS2KbdState *s = opaque;
-+    PS2State *ps = PS2_DEVICE(s);
- 
-     trace_ps2_put_keycode(opaque, keycode);
-     qemu_system_wakeup_request(QEMU_WAKEUP_REASON_OTHER, NULL);
-@@ -338,13 +344,13 @@ static void ps2_put_keycode(void *opaque, int keycode)
-         if (keycode == 0xf0) {
-             s->need_high_bit = true;
-         } else if (s->need_high_bit) {
--            ps2_queue(&s->common, translate_table[keycode] | 0x80);
-+            ps2_queue(ps, translate_table[keycode] | 0x80);
-             s->need_high_bit = false;
-         } else {
--            ps2_queue(&s->common, translate_table[keycode]);
-+            ps2_queue(ps, translate_table[keycode]);
-         }
-     } else {
--        ps2_queue(&s->common, keycode);
-+        ps2_queue(ps, keycode);
-     }
- }
- 
-@@ -617,96 +623,99 @@ static void ps2_set_ledstate(PS2KbdState *s, int ledstate)
- 
- static void ps2_reset_keyboard(PS2KbdState *s)
- {
-+    PS2State *ps2 = PS2_DEVICE(s);
-+
-     trace_ps2_reset_keyboard(s);
-     s->scan_enabled = 1;
-     s->scancode_set = 2;
--    ps2_reset_queue(&s->common);
-+    ps2_reset_queue(ps2);
-     ps2_set_ledstate(s, 0);
- }
- 
- void ps2_write_keyboard(void *opaque, int val)
- {
-     PS2KbdState *s = (PS2KbdState *)opaque;
-+    PS2State *ps2 = PS2_DEVICE(s);
- 
-     trace_ps2_write_keyboard(opaque, val);
--    ps2_cqueue_reset(&s->common);
--    switch (s->common.write_cmd) {
-+    ps2_cqueue_reset(ps2);
-+    switch (ps2->write_cmd) {
-     default:
-     case -1:
-         switch (val) {
-         case 0x00:
--            ps2_cqueue_1(&s->common, KBD_REPLY_ACK);
-+            ps2_cqueue_1(ps2, KBD_REPLY_ACK);
-             break;
-         case 0x05:
--            ps2_cqueue_1(&s->common, KBD_REPLY_RESEND);
-+            ps2_cqueue_1(ps2, KBD_REPLY_RESEND);
-             break;
-         case KBD_CMD_GET_ID:
-             /* We emulate a MF2 AT keyboard here */
--            ps2_cqueue_3(&s->common, KBD_REPLY_ACK, KBD_REPLY_ID,
-+            ps2_cqueue_3(ps2, KBD_REPLY_ACK, KBD_REPLY_ID,
-                          s->translate ? 0x41 : 0x83);
-             break;
-         case KBD_CMD_ECHO:
--            ps2_cqueue_1(&s->common, KBD_CMD_ECHO);
-+            ps2_cqueue_1(ps2, KBD_CMD_ECHO);
-             break;
-         case KBD_CMD_ENABLE:
-             s->scan_enabled = 1;
--            ps2_cqueue_1(&s->common, KBD_REPLY_ACK);
-+            ps2_cqueue_1(ps2, KBD_REPLY_ACK);
-             break;
-         case KBD_CMD_SCANCODE:
-         case KBD_CMD_SET_LEDS:
-         case KBD_CMD_SET_RATE:
-         case KBD_CMD_SET_MAKE_BREAK:
--            s->common.write_cmd = val;
--            ps2_cqueue_1(&s->common, KBD_REPLY_ACK);
-+            ps2->write_cmd = val;
-+            ps2_cqueue_1(ps2, KBD_REPLY_ACK);
-             break;
-         case KBD_CMD_RESET_DISABLE:
-             ps2_reset_keyboard(s);
-             s->scan_enabled = 0;
--            ps2_cqueue_1(&s->common, KBD_REPLY_ACK);
-+            ps2_cqueue_1(ps2, KBD_REPLY_ACK);
-             break;
-         case KBD_CMD_RESET_ENABLE:
-             ps2_reset_keyboard(s);
-             s->scan_enabled = 1;
--            ps2_cqueue_1(&s->common, KBD_REPLY_ACK);
-+            ps2_cqueue_1(ps2, KBD_REPLY_ACK);
-             break;
-         case KBD_CMD_RESET:
-             ps2_reset_keyboard(s);
--            ps2_cqueue_2(&s->common,
-+            ps2_cqueue_2(ps2,
-                          KBD_REPLY_ACK,
-                          KBD_REPLY_POR);
-             break;
-         case KBD_CMD_SET_TYPEMATIC:
--            ps2_cqueue_1(&s->common, KBD_REPLY_ACK);
-+            ps2_cqueue_1(ps2, KBD_REPLY_ACK);
-             break;
-         default:
--            ps2_cqueue_1(&s->common, KBD_REPLY_RESEND);
-+            ps2_cqueue_1(ps2, KBD_REPLY_RESEND);
-             break;
-         }
-         break;
-     case KBD_CMD_SET_MAKE_BREAK:
--        ps2_cqueue_1(&s->common, KBD_REPLY_ACK);
--        s->common.write_cmd = -1;
-+        ps2_cqueue_1(ps2, KBD_REPLY_ACK);
-+        ps2->write_cmd = -1;
-         break;
-     case KBD_CMD_SCANCODE:
-         if (val == 0) {
--            ps2_cqueue_2(&s->common, KBD_REPLY_ACK, s->translate ?
-+            ps2_cqueue_2(ps2, KBD_REPLY_ACK, s->translate ?
-                 translate_table[s->scancode_set] : s->scancode_set);
-         } else if (val >= 1 && val <= 3) {
-             s->scancode_set = val;
--            ps2_cqueue_1(&s->common, KBD_REPLY_ACK);
-+            ps2_cqueue_1(ps2, KBD_REPLY_ACK);
-         } else {
--            ps2_cqueue_1(&s->common, KBD_REPLY_RESEND);
-+            ps2_cqueue_1(ps2, KBD_REPLY_RESEND);
-         }
--        s->common.write_cmd = -1;
-+        ps2->write_cmd = -1;
-         break;
-     case KBD_CMD_SET_LEDS:
-         ps2_set_ledstate(s, val);
--        ps2_cqueue_1(&s->common, KBD_REPLY_ACK);
--        s->common.write_cmd = -1;
-+        ps2_cqueue_1(ps2, KBD_REPLY_ACK);
-+        ps2->write_cmd = -1;
-         break;
-     case KBD_CMD_SET_RATE:
--        ps2_cqueue_1(&s->common, KBD_REPLY_ACK);
--        s->common.write_cmd = -1;
-+        ps2_cqueue_1(ps2, KBD_REPLY_ACK);
-+        ps2->write_cmd = -1;
-         break;
-     }
- }
-@@ -1075,9 +1084,10 @@ static void ps2_common_post_load(PS2State *s)
- static void ps2_kbd_reset(void *opaque)
- {
-     PS2KbdState *s = (PS2KbdState *) opaque;
-+    PS2State *ps2 = PS2_DEVICE(s);
- 
-     trace_ps2_kbd_reset(opaque);
--    ps2_common_reset(&s->common);
-+    ps2_common_reset(ps2);
-     s->scan_enabled = 1;
-     s->translate = 0;
-     s->scancode_set = 2;
-@@ -1164,15 +1174,16 @@ static const VMStateDescription vmstate_ps2_keyboard_need_high_bit = {
- static bool ps2_keyboard_cqueue_needed(void *opaque)
- {
-     PS2KbdState *s = opaque;
-+    PS2State *ps2 = PS2_DEVICE(s);
- 
--    return s->common.queue.cwptr != -1; /* the queue is mostly empty */
-+    return ps2->queue.cwptr != -1; /* the queue is mostly empty */
- }
- 
- static const VMStateDescription vmstate_ps2_keyboard_cqueue = {
-     .name = "ps2kbd/command_reply_queue",
-     .needed = ps2_keyboard_cqueue_needed,
-     .fields = (VMStateField[]) {
--        VMSTATE_INT32(common.queue.cwptr, PS2KbdState),
-+        VMSTATE_INT32(parent_obj.queue.cwptr, PS2KbdState),
-         VMSTATE_END_OF_LIST()
-     }
- };
-@@ -1180,7 +1191,7 @@ static const VMStateDescription vmstate_ps2_keyboard_cqueue = {
- static int ps2_kbd_post_load(void *opaque, int version_id)
- {
-     PS2KbdState *s = (PS2KbdState *)opaque;
--    PS2State *ps2 = &s->common;
-+    PS2State *ps2 = PS2_DEVICE(s);
- 
-     if (version_id == 2) {
-         s->scancode_set = 2;
-@@ -1197,7 +1208,8 @@ static const VMStateDescription vmstate_ps2_keyboard = {
-     .minimum_version_id = 2,
-     .post_load = ps2_kbd_post_load,
-     .fields = (VMStateField[]) {
--        VMSTATE_STRUCT(common, PS2KbdState, 0, vmstate_ps2_common, PS2State),
-+        VMSTATE_STRUCT(parent_obj, PS2KbdState, 0, vmstate_ps2_common,
-+                       PS2State),
-         VMSTATE_INT32(scan_enabled, PS2KbdState),
-         VMSTATE_INT32(translate, PS2KbdState),
-         VMSTATE_INT32_V(scancode_set, PS2KbdState, 3),
-@@ -1250,11 +1262,18 @@ static QemuInputHandler ps2_keyboard_handler = {
- 
- void *ps2_kbd_init(void (*update_irq)(void *, int), void *update_arg)
- {
--    PS2KbdState *s = g_new0(PS2KbdState, 1);
-+    DeviceState *dev;
-+    PS2KbdState *s;
-+    PS2State *ps2;
-+
-+    dev = qdev_new(TYPE_PS2_KBD_DEVICE);
-+    sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), &error_fatal);
-+    s = PS2_KBD_DEVICE(dev);
-+    ps2 = PS2_DEVICE(s);
- 
-     trace_ps2_kbd_init(s);
--    s->common.update_irq = update_irq;
--    s->common.update_arg = update_arg;
-+    ps2->update_irq = update_irq;
-+    ps2->update_arg = update_arg;
-     s->scancode_set = 2;
-     vmstate_register(NULL, 0, &vmstate_ps2_keyboard, s);
-     qemu_input_handler_register((DeviceState *)s,
-@@ -1284,6 +1303,12 @@ void *ps2_mouse_init(void (*update_irq)(void *, int), void *update_arg)
-     return s;
- }
- 
-+static const TypeInfo ps2_kbd_info = {
-+    .name          = TYPE_PS2_KBD_DEVICE,
-+    .parent        = TYPE_PS2_DEVICE,
-+    .instance_size = sizeof(PS2KbdState),
-+};
-+
- static void ps2_class_init(ObjectClass *klass, void *data)
- {
-     DeviceClass *dc = DEVICE_CLASS(klass);
-@@ -1302,6 +1327,7 @@ static const TypeInfo ps2_info = {
- static void ps2_register_types(void)
- {
-     type_register_static(&ps2_info);
-+    type_register_static(&ps2_kbd_info);
- }
- 
- type_init(ps2_register_types)
--- 
-2.30.2
-
+DQoNCj4gT24gSnVuIDIzLCAyMDIyLCBhdCAxMTo1NSBQTSwgQ8OpZHJpYyBMZSBHb2F0ZXIgPGNs
+Z0BrYW9kLm9yZz4gd3JvdGU6DQo+IA0KPiBPbiA2LzI0LzIyIDA4OjM2LCBDw6lkcmljIExlIEdv
+YXRlciB3cm90ZToNCj4+IE9uIDYvMjQvMjIgMDI6MzYsIFBldGVyIERlbGV2b3J5YXMgd3JvdGU6
+DQo+Pj4gU2lnbmVkLW9mZi1ieTogUGV0ZXIgRGVsZXZvcnlhcyA8cGRlbEBmYi5jb20+DQo+PiBQ
+bGVhc2UgbWVyZ2UgdGhpcyBwYXRjaCB3aXRoIHBhdGNoIDIgaW4gd2hpY2ggdGhlICJtZW1vcnki
+IHByb3BlcnR5DQo+PiBpcyBkZWZpbmVkLg0KPiANCj4gQWggbm8uIFRoYXQncyBhbm90aGVyIGxp
+bmsuIEkgZG9uJ3QgdW5kZXJzdGFuZCB3aGVyZSB0aGF0IHdhcyBkb25lDQo+IGJlZm9yZS4NCg0K
+WWVhaCwgc29ycnkgaWYgdGhpcyB3YXMgY29uZnVzaW5nOg0KDQpJbiB0aGUgQVNUMTAzMCwgd2Ug
+c2V0IHRoZSBtZW1vcnkgcHJvcGVydHkgb24gdGhlIGFybXY3bSBjb3JlIGV4cGxpY2l0bHkuDQoN
+CkluIHRoZSBBU1QyNDAwLCBBU1QyNTAwLCBhbmQgQVNUMjYwMCwgd2UgaGF2ZSBiZWVuIHJlbHlp
+bmcgb24gdGhlDQpDUFUgaW5pdCBjb2RlIGltcGxpY2l0bHkgc2V0dGluZyBpdCB0byBnZXRfc3lz
+dGVtX21lbW9yeSgpLg0KDQpUaGUgZ29hbCBvZiB0aGlzIHBhdGNoIHdhcyBqdXN0IHRvIG1ha2Ug
+aXQgY29uc2lzdGVudCBhY3Jvc3MgYWxsIG9mIHRoZQ0KQXNwZWVkIFNvQ+KAmXMsIHNvIHRoYXQg
+dGhlIG5leHQgcGF0Y2ggKDIvOCkgY2FuIGludHJvZHVjZSBhbiBTb0MNCm1lbW9yeSBwcm9wZXJ0
+eSBhdCB0aGUgbWFjaGluZTpTb0MgbGV2ZWwgd2l0aG91dCBjaGFuZ2luZyBhbnl0aGluZw0KYXQg
+dGhlIFNvQzpDUFUgbGV2ZWwuDQoNCj4gDQo+IEMuDQo+IA0KPiANCj4+IFRoYW5rcywNCj4+IEMu
+DQo+Pj4gLS0tDQo+Pj4gICBody9hcm0vYXNwZWVkX2FzdDI2MDAuYyB8IDIgKysNCj4+PiAgIGh3
+L2FybS9hc3BlZWRfc29jLmMgICAgIHwgMiArKw0KPj4+ICAgMiBmaWxlcyBjaGFuZ2VkLCA0IGlu
+c2VydGlvbnMoKykNCj4+PiANCj4+PiBkaWZmIC0tZ2l0IGEvaHcvYXJtL2FzcGVlZF9hc3QyNjAw
+LmMgYi9ody9hcm0vYXNwZWVkX2FzdDI2MDAuYw0KPj4+IGluZGV4IGY3MGIxN2QzZjkuLmY5NTBm
+ZmYwNzAgMTAwNjQ0DQo+Pj4gLS0tIGEvaHcvYXJtL2FzcGVlZF9hc3QyNjAwLmMNCj4+PiArKysg
+Yi9ody9hcm0vYXNwZWVkX2FzdDI2MDAuYw0KPj4+IEBAIC0yOTQsNiArMjk0LDggQEAgc3RhdGlj
+IHZvaWQgYXNwZWVkX3NvY19hc3QyNjAwX3JlYWxpemUoRGV2aWNlU3RhdGUgKmRldiwgRXJyb3Ig
+KiplcnJwKQ0KPj4+ICAgICAgICAgICBvYmplY3RfcHJvcGVydHlfc2V0X2ludChPQkpFQ1QoJnMt
+PmNwdVtpXSksICJjbnRmcnEiLCAxMTI1MDAwMDAwLA0KPj4+ICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAmZXJyb3JfYWJvcnQpOw0KPj4+ICsgICAgICAgIG9iamVjdF9wcm9wZXJ0
+eV9zZXRfbGluayhPQkpFQ1QoJnMtPmNwdVtpXSksICJtZW1vcnkiLA0KPj4+ICsgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICBPQkpFQ1QoZ2V0X3N5c3RlbV9tZW1vcnkoKSksICZlcnJv
+cl9hYm9ydCk7DQo+Pj4gICAgICAgICAgIGlmICghcWRldl9yZWFsaXplKERFVklDRSgmcy0+Y3B1
+W2ldKSwgTlVMTCwgZXJycCkpIHsNCj4+PiAgICAgICAgICAgICAgIHJldHVybjsNCj4+PiBkaWZm
+IC0tZ2l0IGEvaHcvYXJtL2FzcGVlZF9zb2MuYyBiL2h3L2FybS9hc3BlZWRfc29jLmMNCj4+PiBp
+bmRleCBmNTMwMDI4ODc0Li4wNmU1NjI5ODAwIDEwMDY0NA0KPj4+IC0tLSBhL2h3L2FybS9hc3Bl
+ZWRfc29jLmMNCj4+PiArKysgYi9ody9hcm0vYXNwZWVkX3NvYy5jDQo+Pj4gQEAgLTI0Nyw2ICsy
+NDcsOCBAQCBzdGF0aWMgdm9pZCBhc3BlZWRfc29jX3JlYWxpemUoRGV2aWNlU3RhdGUgKmRldiwg
+RXJyb3IgKiplcnJwKQ0KPj4+ICAgICAgIC8qIENQVSAqLw0KPj4+ICAgICAgIGZvciAoaSA9IDA7
+IGkgPCBzYy0+bnVtX2NwdXM7IGkrKykgew0KPj4+ICsgICAgICAgIG9iamVjdF9wcm9wZXJ0eV9z
+ZXRfbGluayhPQkpFQ1QoJnMtPmNwdVtpXSksICJtZW1vcnkiLA0KPj4+ICsgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICBPQkpFQ1QoZ2V0X3N5c3RlbV9tZW1vcnkoKSksICZlcnJvcl9h
+Ym9ydCk7DQo+Pj4gICAgICAgICAgIGlmICghcWRldl9yZWFsaXplKERFVklDRSgmcy0+Y3B1W2ld
+KSwgTlVMTCwgZXJycCkpIHsNCj4+PiAgICAgICAgICAgICAgIHJldHVybjsNCj4+PiAgICAgICAg
+ICAgfQ0KPiANCg0K

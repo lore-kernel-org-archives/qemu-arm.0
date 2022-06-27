@@ -1,88 +1,88 @@
-Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp2647984lft;
-        Mon, 27 Jun 2022 13:10:17 -0700 (PDT)
-X-Google-Smtp-Source: AGRyM1sufuplJJWzm3iTDQ6vODqIJHVgw5haLUbU/anElveezQNoj75zoHTCoezoI9Sw+2plmIMQ
-X-Received: by 2002:a37:a85:0:b0:6af:ab2:9d1e with SMTP id 127-20020a370a85000000b006af0ab29d1emr9000006qkk.695.1656360616941;
-        Mon, 27 Jun 2022 13:10:16 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1656360616; cv=none;
+Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp2648854lft;
+        Mon, 27 Jun 2022 13:11:43 -0700 (PDT)
+X-Google-Smtp-Source: AGRyM1s311xsenxjPKFuofNLQgBc40KPJnHMWB3kWZOoAbeHwAoQTneMjJMo09cFCEmai1rXGOGJ
+X-Received: by 2002:a37:a884:0:b0:6ae:e67a:beec with SMTP id r126-20020a37a884000000b006aee67abeecmr9266586qke.401.1656360703525;
+        Mon, 27 Jun 2022 13:11:43 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1656360703; cv=none;
         d=google.com; s=arc-20160816;
-        b=VopF8swQAl4bKPFmBiX1mZNAF0RhazpAZU55mc/BVv11eOLiPdP5QenpdMWJgw+ngn
-         pHVhBidMfFSEyJWTaTvkNNuQc4coM+YBU2qLTF2dzfCoR3gJElGu2K1EhevlgSdTtW4y
-         Cd5kTGZYXOWJQ4LoNEIJWvyKSOLuGbNukOAkxVjti++dWpQ1rFJWLEO1nOw4W2dHs47q
-         8hJxdtV+KwoJpe9duikZLmQ40Qm5jesKV9+CcBiN4Sa0/PdM7c3SI+3dahaoH4+emK2v
-         rxtcJGrxW2iRrpdDIKTQJvyJ4moLf+gM8Y2IthGphIgEr26F340YE8axUXO2R3ReoycR
-         jNmg==
+        b=EbzY37wnEYipmdFwfPpT2FqZEg1zEhdRIGmr7/8Q3s/HsRrcq3rmLE0zxnibFz37eN
+         mq0QHNAUQph9cDKOpBNrxlsqEn6bo5dQbZFsWA1gN48eZBIkPxVd0DZsFuHl4PmUG5ZH
+         Hfs+Ud/H2DNfUnK/FGmKjUJCkD7jwKtvERMhLGu6zrPwFWKe2mtRPEB9QtzHUiYMQwFS
+         gAn/tTWSSuyNoTW+mUdGfAqIhvyqxKJGOXRfoOqKSWOthkFHf49GQPH+3qvpX7/dldPU
+         V+FmMz4OjuCyFd99huQJIm6DNcrAsyAbDBcNEd/rJmYLKvhi6CGRAXwDOjxS+69WBh1N
+         4gtw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=1jx48crsXIOgcbA/0+X5lFA6B2+CGgtif5yn9hnS9ko=;
-        b=GhoSfubnDOHOC5Pu3+Tf2bkNavnjSZ4Vv1v8IhbRUNdwXa0d3SROl3JUM+/XF/jynl
-         RaZSB3s6x9WD/bf0KRm1I4iufCjUqIKfkeC9AxyRoUgoUTCK/6K3S032ctQoDnKqQKmx
-         0A1L0lZU2WT4bg5mhuGhJRZdnta/XzGDQhrsA7vf53dPc6HjvbMZBPxRkH01RLQiRQFh
-         /AUH/YV+jpIcNojxtqNpvFU1jtRkydMY28oHCn9qLoNND7yoTjFLuE+M6e6yb6/OPwXJ
-         MqKHte7S0J7u43DBiUcAvRiHgNItIITOWREsm/T9A22poAnXyJaWqLkjc+PJfgIIa01H
-         n8gQ==
+        bh=yGoG37WHEeFwrsuK9OehoBxcXBgyYYBQC2YgIx+abWQ=;
+        b=fEwA8gbvs9OX0KPq7aDecKYRY7maxgLkh/2MRPkkR3ePmoN08Wbi8UzEA3fbHTgJGP
+         vvdiWguH3krXJIcK6aTr0qsrSKOBcuELlVtbWRYRUIEQGPlWKdVHfrjGdL3sUdNSFGMW
+         wrguWc+lQmFL4ceJ/uXUzL9uMsDaemhlNXzknqi1FF/flyPOUAa2P97+r6l1ok5PZZbc
+         vM4vV4JjbNaeqjDKjHENgUuP3tnzFqDUlfeK/WHjW56YsQvjFH6ucZ81lX8udSojv420
+         2zFpvrep7tdPLbgOJexebWkHIU83a5OdyUq6A0NDBcW6OdGSZlrnxIDeoON4OGfA/jVL
+         fyKQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@fb.com header.s=facebook header.b=SYf4N79A;
+       dkim=pass header.i=@fb.com header.s=facebook header.b=FHy+tXtQ;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=fb.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id y14-20020a37640e000000b006af1389a8efsi1929920qkb.230.2022.06.27.13.10.16
+        by mx.google.com with ESMTPS id a26-20020ac8435a000000b003180c541626si3697481qtn.729.2022.06.27.13.11.43
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 27 Jun 2022 13:10:16 -0700 (PDT)
+        Mon, 27 Jun 2022 13:11:43 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@fb.com header.s=facebook header.b=SYf4N79A;
+       dkim=pass header.i=@fb.com header.s=facebook header.b=FHy+tXtQ;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=fb.com
-Received: from localhost ([::1]:46974 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:48240 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1o5v3n-00085k-Pr
-	for alex.bennee@linaro.org; Mon, 27 Jun 2022 16:10:16 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:42990)
+	id 1o5v5D-0000kU-0f
+	for alex.bennee@linaro.org; Mon, 27 Jun 2022 16:11:43 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:43200)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <prvs=71779173e5=pdel@fb.com>)
- id 1o5upT-0004Ld-GT
- for qemu-arm@nongnu.org; Mon, 27 Jun 2022 15:55:27 -0400
-Received: from mx0b-00082601.pphosted.com ([67.231.153.30]:1770
+ id 1o5upg-0004rd-Mp
+ for qemu-arm@nongnu.org; Mon, 27 Jun 2022 15:55:40 -0400
+Received: from mx0b-00082601.pphosted.com ([67.231.153.30]:64772
  helo=mx0a-00082601.pphosted.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <prvs=71779173e5=pdel@fb.com>)
- id 1o5upR-0000cA-UQ
- for qemu-arm@nongnu.org; Mon, 27 Jun 2022 15:55:27 -0400
+ id 1o5upd-0000gW-EO
+ for qemu-arm@nongnu.org; Mon, 27 Jun 2022 15:55:40 -0400
 Received: from pps.filterd (m0089730.ppops.net [127.0.0.1])
- by m0089730.ppops.net (8.17.1.5/8.17.1.5) with ESMTP id 25RJ1RJ9015444
- for <qemu-arm@nongnu.org>; Mon, 27 Jun 2022 12:55:24 -0700
+ by m0089730.ppops.net (8.17.1.5/8.17.1.5) with ESMTP id 25RJ1Qq2015417
+ for <qemu-arm@nongnu.org>; Mon, 27 Jun 2022 12:55:36 -0700
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=fb.com;
  h=from : to : cc : subject
  : date : message-id : in-reply-to : references : mime-version :
  content-transfer-encoding : content-type; s=facebook;
- bh=1jx48crsXIOgcbA/0+X5lFA6B2+CGgtif5yn9hnS9ko=;
- b=SYf4N79ACVmXdOV5Me+nJ/EDsowMTSQUzuYK6oxTMT5Ep6tWLiSUkcCy8Dhuu6HEQTD/
- HbbaNdJnc+Ozk35BzO6c/4RHf7dL0eWtEC2f8X8cErbIUSzygXFoHs4RLkqOtNM5pOK3
- M/srif3rS0ImhnEMDd5raRDfK9Vwcq/75ZA= 
+ bh=yGoG37WHEeFwrsuK9OehoBxcXBgyYYBQC2YgIx+abWQ=;
+ b=FHy+tXtQu2obIC+0mh+QkILaIcPrQ0St+o01sIx4q+AvH3BkbHFg3/gNBQTJrMdruV6y
+ g+ewRVSSEBYdqdIV/3ipGO9qIHZ0rF9WAPFYgOv8B2uBTLLOLyrYFQpcEL2pnOYRsKvM
+ kj3IwXqUa/yTqZyb/Z9TH5KDu7Mq9DEMknU= 
 Received: from mail.thefacebook.com ([163.114.132.120])
- by m0089730.ppops.net (PPS) with ESMTPS id 3gwwv756su-1
+ by m0089730.ppops.net (PPS) with ESMTPS id 3gwwv756tr-3
  (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128 verify=NOT)
- for <qemu-arm@nongnu.org>; Mon, 27 Jun 2022 12:55:24 -0700
-Received: from twshared18443.03.prn6.facebook.com (2620:10d:c085:208::f) by
- mail.thefacebook.com (2620:10d:c085:21d::4) with Microsoft SMTP Server
+ for <qemu-arm@nongnu.org>; Mon, 27 Jun 2022 12:55:36 -0700
+Received: from twshared18443.03.prn6.facebook.com (2620:10d:c085:208::11) by
+ mail.thefacebook.com (2620:10d:c085:11d::7) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2375.28; Mon, 27 Jun 2022 12:55:23 -0700
+ 15.1.2375.28; Mon, 27 Jun 2022 12:55:35 -0700
 Received: by devvm9194.prn0.facebook.com (Postfix, from userid 385188)
- id CE5648D206E9; Mon, 27 Jun 2022 12:55:07 -0700 (PDT)
+ id F043D8D206F3; Mon, 27 Jun 2022 12:55:07 -0700 (PDT)
 From: Peter Delevoryas <pdel@fb.com>
 To: 
 CC: <pdel@fb.com>, <zhdaniel@fb.com>, <clg@kaod.org>, <qemu-devel@nongnu.org>, 
  <qemu-arm@nongnu.org>, <komlodi@google.com>, <titusr@google.com>,
  <andrew@aj.id.au>, <joel@jms.id.au>
-Subject: [PATCH 05/14] aspeed: i2c: Fix R_I2CD_FUN_CTRL reference
-Date: Mon, 27 Jun 2022 12:54:57 -0700
-Message-ID: <20220627195506.403715-6-pdel@fb.com>
+Subject: [PATCH 10/14] pmbus: Add read-only IC_DEVICE_ID support
+Date: Mon, 27 Jun 2022 12:55:02 -0700
+Message-ID: <20220627195506.403715-11-pdel@fb.com>
 X-Mailer: git-send-email 2.30.2
 In-Reply-To: <20220627195506.403715-1-pdel@fb.com>
 References: <20220627195506.403715-1-pdel@fb.com>
@@ -90,8 +90,8 @@ MIME-Version: 1.0
 Content-Transfer-Encoding: quoted-printable
 X-FB-Internal: Safe
 Content-Type: text/plain
-X-Proofpoint-GUID: Qfy0PnPB6O6RbMuoEkNHyKo0sXLoarnt
-X-Proofpoint-ORIG-GUID: Qfy0PnPB6O6RbMuoEkNHyKo0sXLoarnt
+X-Proofpoint-GUID: H2gdcRYBlaMS0T7nI3iywNBJ7KtfaT3a
+X-Proofpoint-ORIG-GUID: H2gdcRYBlaMS0T7nI3iywNBJ7KtfaT3a
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.205,Aquarius:18.0.883,Hydra:6.0.517,FMLib:17.11.122.1
  definitions=2022-06-27_06,2022-06-24_01,2022-06-22_01
@@ -119,31 +119,118 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 0zFh/y3vkdZB
+X-TUID: fu0zsyiPlK51
 
-Very minor, doesn't effect functionality, but this is supposed to be
-R_I2CC_FUN_CTRL (new-mode, not old-mode).
-
-Fixes: ba2cccd64e9 ("aspeed: i2c: Add new mode support")
 Signed-off-by: Peter Delevoryas <pdel@fb.com>
 ---
- hw/i2c/aspeed_i2c.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ hw/i2c/pmbus_device.c            |  5 +++++
+ hw/sensor/isl_pmbus_vr.c         | 30 ++++++++++++++++++++++++++++++
+ include/hw/i2c/pmbus_device.h    |  1 +
+ include/hw/sensor/isl_pmbus_vr.h |  1 +
+ 4 files changed, 37 insertions(+)
 
-diff --git a/hw/i2c/aspeed_i2c.c b/hw/i2c/aspeed_i2c.c
-index 6c8222717f..6abd9b033e 100644
---- a/hw/i2c/aspeed_i2c.c
-+++ b/hw/i2c/aspeed_i2c.c
-@@ -552,7 +552,7 @@ static void aspeed_i2c_bus_new_write(AspeedI2CBus *bu=
-s, hwaddr offset,
-                           __func__);
-             break;
+diff --git a/hw/i2c/pmbus_device.c b/hw/i2c/pmbus_device.c
+index efddc36fd9..82131fff85 100644
+--- a/hw/i2c/pmbus_device.c
++++ b/hw/i2c/pmbus_device.c
+@@ -984,6 +984,11 @@ static uint8_t pmbus_receive_byte(SMBusDevice *smd)
          }
--        bus->regs[R_I2CD_FUN_CTRL] =3D value & 0x007dc3ff;
-+        bus->regs[R_I2CC_FUN_CTRL] =3D value & 0x007dc3ff;
          break;
-     case A_I2CC_AC_TIMING:
-         bus->regs[R_I2CC_AC_TIMING] =3D value & 0x1ffff0ff;
+=20
++    case PMBUS_IC_DEVICE_ID:
++        pmbus_send(pmdev, pmdev->pages[index].ic_device_id,
++                   sizeof(pmdev->pages[index].ic_device_id));
++        break;
++
+     case PMBUS_CLEAR_FAULTS:              /* Send Byte */
+     case PMBUS_PAGE_PLUS_WRITE:           /* Block Write-only */
+     case PMBUS_STORE_DEFAULT_ALL:         /* Send Byte */
+diff --git a/hw/sensor/isl_pmbus_vr.c b/hw/sensor/isl_pmbus_vr.c
+index e11e028884..b0d2f49e9d 100644
+--- a/hw/sensor/isl_pmbus_vr.c
++++ b/hw/sensor/isl_pmbus_vr.c
+@@ -218,6 +218,27 @@ static void isl_pmbus_vr_class_init(ObjectClass *kla=
+ss, void *data,
+     k->device_num_pages =3D pages;
+ }
+=20
++static void isl69259_init(Object *obj)
++{
++    static const uint8_t ic_device_id[] =3D {0x04, 0x00, 0x81, 0xD2, 0x4=
+9};
++    PMBusDevice *pmdev =3D PMBUS_DEVICE(obj);
++    int i;
++
++    raa22xx_init(obj);
++    for (i =3D 0; i < pmdev->num_pages; i++) {
++        memcpy(pmdev->pages[i].ic_device_id, ic_device_id, sizeof(ic_dev=
+ice_id));
++    }
++}
++
++static void isl69259_class_init(ObjectClass *klass, void *data)
++{
++    ResettableClass *rc =3D RESETTABLE_CLASS(klass);
++    DeviceClass *dc =3D DEVICE_CLASS(klass);
++    dc->desc =3D "Renesas ISL69259 Digital Multiphase Voltage Regulator"=
+;
++    rc->phases.exit =3D isl_pmbus_vr_exit_reset;
++    isl_pmbus_vr_class_init(klass, data, 2);
++}
++
+ static void isl69260_class_init(ObjectClass *klass, void *data)
+ {
+     ResettableClass *rc =3D RESETTABLE_CLASS(klass);
+@@ -245,6 +266,14 @@ static void raa229004_class_init(ObjectClass *klass,=
+ void *data)
+     isl_pmbus_vr_class_init(klass, data, 2);
+ }
+=20
++static const TypeInfo isl69259_info =3D {
++    .name =3D TYPE_ISL69259,
++    .parent =3D TYPE_PMBUS_DEVICE,
++    .instance_size =3D sizeof(ISLState),
++    .instance_init =3D isl69259_init,
++    .class_init =3D isl69259_class_init,
++};
++
+ static const TypeInfo isl69260_info =3D {
+     .name =3D TYPE_ISL69260,
+     .parent =3D TYPE_PMBUS_DEVICE,
+@@ -271,6 +300,7 @@ static const TypeInfo raa228000_info =3D {
+=20
+ static void isl_pmbus_vr_register_types(void)
+ {
++    type_register_static(&isl69259_info);
+     type_register_static(&isl69260_info);
+     type_register_static(&raa228000_info);
+     type_register_static(&raa229004_info);
+diff --git a/include/hw/i2c/pmbus_device.h b/include/hw/i2c/pmbus_device.=
+h
+index 0f4d6b3fad..aed7809841 100644
+--- a/include/hw/i2c/pmbus_device.h
++++ b/include/hw/i2c/pmbus_device.h
+@@ -407,6 +407,7 @@ typedef struct PMBusPage {
+     uint16_t mfr_max_temp_1;           /* R/W word */
+     uint16_t mfr_max_temp_2;           /* R/W word */
+     uint16_t mfr_max_temp_3;           /* R/W word */
++    uint8_t ic_device_id[16];          /* Read-Only block-read */
+ } PMBusPage;
+=20
+ /* State */
+diff --git a/include/hw/sensor/isl_pmbus_vr.h b/include/hw/sensor/isl_pmb=
+us_vr.h
+index 3e47ff7e48..d501b3bc82 100644
+--- a/include/hw/sensor/isl_pmbus_vr.h
++++ b/include/hw/sensor/isl_pmbus_vr.h
+@@ -12,6 +12,7 @@
+ #include "hw/i2c/pmbus_device.h"
+ #include "qom/object.h"
+=20
++#define TYPE_ISL69259   "isl69259"
+ #define TYPE_ISL69260   "isl69260"
+ #define TYPE_RAA228000  "raa228000"
+ #define TYPE_RAA229004  "raa229004"
 --=20
 2.30.2
 

@@ -1,83 +1,80 @@
-Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp2354728lft;
-        Mon, 27 Jun 2022 06:02:29 -0700 (PDT)
-X-Google-Smtp-Source: AGRyM1tDduazUuBuYan1KgZtmw4rr/55dUS9xUNuuLpyyjA+uBdVQfNJJbJdMmiA/mEu1ML7AftF
-X-Received: by 2002:a05:6214:230a:b0:46e:3890:afcb with SMTP id gc10-20020a056214230a00b0046e3890afcbmr8488828qvb.59.1656334949188;
-        Mon, 27 Jun 2022 06:02:29 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1656334949; cv=none;
+Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp2366642lft;
+        Mon, 27 Jun 2022 06:14:12 -0700 (PDT)
+X-Google-Smtp-Source: AGRyM1vd3Ukoho79e8v7ANShpF2g9vays9xUtWsgEQ//gZzCuteyX+ulbx94y2+1AWJbDXeX/WCQ
+X-Received: by 2002:a05:620a:4399:b0:6af:9c:b23b with SMTP id a25-20020a05620a439900b006af009cb23bmr7907711qkp.501.1656335652253;
+        Mon, 27 Jun 2022 06:14:12 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1656335652; cv=none;
         d=google.com; s=arc-20160816;
-        b=D6y9Vy8APQd8OHDUApJtPulC3VC6RPiQzmF+CIW2N3TfldI3co2s1UoKKg58IAIzTT
-         NDQmMDR1cB2/+vaRzCBPGzO3Hr4Q9PTV3kWBkEe/FkXfUnGsGv5PqxBrBNk1IyltQs5s
-         QFvt/kSoAiQCfDem1PhYx9Nlf9r6GCWyFmPvQvf6wiwabaQB5UOAgXcG3YbjgIddCgXk
-         KHopsmeuhIHfhuw8wbvM1b23Qke29D/ZRkWv0fkxltgc8FMAOcenuHIpKD7NcOfIaWSL
-         Z+CRb3KlabYZuV4R0oYe5NGsvWE/cNVeHiHVlTJxzp22h4uZubHFnNwEtD7Tl7PnbyH+
-         TrBw==
+        b=0JiGA9VWAnQ0nUrulQD15PQoAIOqfcZOaRPPdzvzgUKimpSl6tpPTWs3oZMFExVcGT
+         hRPIPS6qcHJkxCwLDqToXTiRY4mPgrXw5cGTvisyUdxqSm65aEggG0uERoIJmGl0xsvq
+         2aOYkwgeat2OjT48zkJ+OFQTTFSP0TwBwUThhqacwCK8lJH4PgsDZWpk58JStnFtpmLP
+         yG6DE+HQhHswphivRinlV1/F/CYmAwLykxg0JXWE0h/XEqNYRXsu4RBGcZeEVGomAs9r
+         6TV+T8IJcC2z19hvo9qKwOHjbff1jW0kMAGxbhXJ4E5Os6YJO9+Db0LbWfQc/ve+quvg
+         ZR5g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:message-id:date:subject:cc:to:from;
-        bh=sOV/UMuLx7d1I7IQwd2kiea5hLbk8w2K8kd0p6aYBbk=;
-        b=k5Zp/qVjK0y+Polp34I+3su4GXAm3o4fbmINkqMyxpkBMolr0GBKB6fwuuABmpUrdN
-         sM6qrLhVkJI+rrYcAbjip12kG03myShaYUHJruIu+vZOTgnV8fNvdsboyUHD5JQJZo7H
-         fKxotiVsqdlpzFnuRhfsZu5gdFpMRlw1Sy/2y3tqDt3prKPmTxIx6mGFOi5o8X37p8+l
-         fDr+P4zqH4oZUdGPca2HZ7kswr/c6ilXeDTvIQwZuic6ntXZeghAaZmh/bKtPlLueAet
-         sTt35taPijkI44apTP9rTkru4Zy8NqRtvnEmPR6+epDj5WEYageWsHYM/mYOmZB84ULO
-         SX9A==
+        bh=tMZPJ8bxwPDr1k/+1sG0cXjG0SKjnbxPDfFLuUhaIag=;
+        b=Dvx2c9DNBmK3cu4UGBxIu7saFeTCDH1P3AzQWa1St9xwFNm96GBH9CbDGEuxC+G5z9
+         BJeVTW5am1RlRkuOaQEfA7sR5bZ4hg4HU9f8EESprW1yfKNhy872AC1v7USWeWVveQSf
+         ulB0hT2Krs/7iuCtI8KLW5vzVFeOKxu5eQAbagluNz8tacO6pNSW2gXd2KOA0UVyeYca
+         vsKjf4qtZ4NdVbyqkm58dGerphCpycxbcC9O76bhrKppndSgRJK3dcv31eHKkH2ypLMz
+         bHOgDehuSp0DODV68Jzz3s10tLCYAHCh7HR2WCp6cHVEX+lR6JWlKk3ASRADIHRMM/FC
+         ypOA==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x10-20020ac8700a000000b00317e856bce7si3462044qtm.362.2022.06.27.06.02.29
+        by mx.google.com with ESMTPS id l22-20020a05620a28d600b006a6ac0434e8si6951598qkp.341.2022.06.27.06.14.12
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 27 Jun 2022 06:02:29 -0700 (PDT)
+        Mon, 27 Jun 2022 06:14:12 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:40834 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:48516 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1o5oNo-000447-H9
-	for alex.bennee@linaro.org; Mon, 27 Jun 2022 09:02:28 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53434)
+	id 1o5oZ9-0001Nz-Nh
+	for alex.bennee@linaro.org; Mon, 27 Jun 2022 09:14:11 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:56692)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=MnSX=XC=kaod.org=clg@ozlabs.org>)
- id 1o5oN5-00043I-OQ; Mon, 27 Jun 2022 09:01:44 -0400
-Received: from mail.ozlabs.org ([2404:9400:2221:ea00::3]:38635
- helo=gandalf.ozlabs.org)
+ id 1o5oYh-0001MP-Bc; Mon, 27 Jun 2022 09:13:44 -0400
+Received: from gandalf.ozlabs.org ([150.107.74.76]:38309)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=MnSX=XC=kaod.org=clg@ozlabs.org>)
- id 1o5oMz-0002Yw-Ne; Mon, 27 Jun 2022 09:01:41 -0400
-Received: from gandalf.ozlabs.org (mail.ozlabs.org
- [IPv6:2404:9400:2221:ea00::3])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4LWnsv09DRz4xXD;
- Mon, 27 Jun 2022 23:01:23 +1000 (AEST)
+ id 1o5oYd-0004V1-Ir; Mon, 27 Jun 2022 09:13:42 -0400
+Received: from gandalf.ozlabs.org (gandalf.ozlabs.org [150.107.74.76])
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4LWp7x1RPQz4xLX;
+ Mon, 27 Jun 2022 23:13:33 +1000 (AEST)
 Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
  (No client certificate requested)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4LWnsr0L6Cz4xDH;
- Mon, 27 Jun 2022 23:01:19 +1000 (AEST)
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4LWp7t6Bktz4xDH;
+ Mon, 27 Jun 2022 23:13:30 +1000 (AEST)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>, Andrew Jeffery <andrew@aj.id.au>,
  Joel Stanley <joel@jms.id.au>, Peter Delevoryas <pdel@fb.com>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
-Subject: [PATCH v3] aspeed: Set the dram container at the SoC level
-Date: Mon, 27 Jun 2022 15:01:14 +0200
-Message-Id: <20220627130114.705892-1-clg@kaod.org>
+Subject: [PATCH v4] aspeed: Set the dram container at the SoC level
+Date: Mon, 27 Jun 2022 15:13:27 +0200
+Message-Id: <20220627131327.741192-1-clg@kaod.org>
 X-Mailer: git-send-email 2.35.3
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2404:9400:2221:ea00::3;
+Received-SPF: pass client-ip=150.107.74.76;
  envelope-from=SRS0=MnSX=XC=kaod.org=clg@ozlabs.org; helo=gandalf.ozlabs.org
 X-Spam_score_int: -16
 X-Spam_score: -1.7
 X-Spam_bar: -
 X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9,
- HEADER_FROM_DIFFERENT_DOMAINS=0.249, RCVD_IN_DNSWL_NONE=-0.0001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.249, SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -93,7 +90,7 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: mbSZ2Xn5dNM9
+X-TUID: Fp1Z2L3QHlUe
 
 Currently, the Aspeed machines allocate a ram container region in
 which the machine ram region is mapped. See commit ad1a9782186d
@@ -110,6 +107,13 @@ Message-Id: <20220623202123.3972977-1-clg@kaod.org>
 Signed-off-by: Cédric Le Goater <clg@kaod.org>
 ---
 
+ Changes in v4:
+
+ - Fix the zero size case for unimp device (sigh): 
+
+   Unexpected error in unimp_realize() at ../hw/misc/unimp.c:57:
+   qemu-system-arm: property 'size' not specified or zero
+
  Changes in v3:
 
  - Create RAM after SDMC has been realized to get correct values of
@@ -121,10 +125,10 @@ Signed-off-by: Cédric Le Goater <clg@kaod.org>
  - handle errors
 
  include/hw/arm/aspeed_soc.h |  2 ++
- hw/arm/aspeed.c             | 39 ++-----------------------------
+ hw/arm/aspeed.c             | 39 ++---------------------------
  hw/arm/aspeed_ast2600.c     |  7 ++++--
- hw/arm/aspeed_soc.c         | 46 +++++++++++++++++++++++++++++++++++--
- 4 files changed, 53 insertions(+), 41 deletions(-)
+ hw/arm/aspeed_soc.c         | 49 +++++++++++++++++++++++++++++++++++--
+ 4 files changed, 56 insertions(+), 41 deletions(-)
 
 diff --git a/include/hw/arm/aspeed_soc.h b/include/hw/arm/aspeed_soc.h
 index 02a5a9ffcbd3..e8a104823d35 100644
@@ -243,7 +247,7 @@ index b0a4199b6960..bb5927c36bbf 100644
      for (i = 0; i < sc->macs_num; i++) {
          object_property_set_bool(OBJECT(&s->ftgmac100[i]), "aspeed", true,
 diff --git a/hw/arm/aspeed_soc.c b/hw/arm/aspeed_soc.c
-index 30574d4276ab..efc7baf14133 100644
+index 30574d4276ab..3e6055ac9129 100644
 --- a/hw/arm/aspeed_soc.c
 +++ b/hw/arm/aspeed_soc.c
 @@ -11,6 +11,7 @@
@@ -275,7 +279,7 @@ index 30574d4276ab..efc7baf14133 100644
      /* Net */
      for (i = 0; i < sc->macs_num; i++) {
          object_property_set_bool(OBJECT(&s->ftgmac100[i]), "aspeed", true,
-@@ -561,3 +565,41 @@ void aspeed_soc_uart_init(AspeedSoCState *s)
+@@ -561,3 +565,44 @@ void aspeed_soc_uart_init(AspeedSoCState *s)
                         serial_hd(i), DEVICE_LITTLE_ENDIAN);
      }
  }
@@ -288,7 +292,6 @@ index 30574d4276ab..efc7baf14133 100644
 +{
 +    AspeedSoCClass *sc = ASPEED_SOC_GET_CLASS(s);
 +    ram_addr_t ram_size, max_ram_size;
-+    DeviceState *dev;
 +
 +    ram_size = object_property_get_uint(OBJECT(&s->sdmc), "ram-size",
 +                                        &error_abort);
@@ -304,15 +307,19 @@ index 30574d4276ab..efc7baf14133 100644
 +     * the address space with load/store and guess how much RAM the
 +     * SoC has.
 +     */
-+    dev = qdev_new(TYPE_UNIMPLEMENTED_DEVICE);
-+    qdev_prop_set_string(dev, "name", "ram-empty");
-+    qdev_prop_set_uint64(dev, "size", max_ram_size  - ram_size);
-+    if (!sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), errp)) {
-+        return false;
++    if (ram_size < max_ram_size) {
++        DeviceState *dev = qdev_new(TYPE_UNIMPLEMENTED_DEVICE);
++
++        qdev_prop_set_string(dev, "name", "ram-empty");
++        qdev_prop_set_uint64(dev, "size", max_ram_size  - ram_size);
++        if (!sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), errp)) {
++            return false;
++        }
++
++        memory_region_add_subregion_overlap(&s->dram_container, ram_size,
++                      sysbus_mmio_get_region(SYS_BUS_DEVICE(dev), 0), -1000);
 +    }
 +
-+    memory_region_add_subregion_overlap(&s->dram_container, ram_size,
-+                      sysbus_mmio_get_region(SYS_BUS_DEVICE(dev), 0), -1000);
 +    memory_region_add_subregion(get_system_memory(),
 +                      sc->memmap[ASPEED_DEV_SDRAM], &s->dram_container);
 +    return true;

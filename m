@@ -1,97 +1,97 @@
-Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp2725578lft;
-        Mon, 27 Jun 2022 15:33:32 -0700 (PDT)
-X-Google-Smtp-Source: AGRyM1tVX9FLvMxJvTmS4tsmXmGZctZKZGTta/goTcmlTndE20Atlgym+pD99ZLihfDDjhTdkp4F
-X-Received: by 2002:ac8:5dce:0:b0:305:300e:146d with SMTP id e14-20020ac85dce000000b00305300e146dmr11074108qtx.546.1656369212533;
-        Mon, 27 Jun 2022 15:33:32 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1656369212; cv=none;
+Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp2726368lft;
+        Mon, 27 Jun 2022 15:34:51 -0700 (PDT)
+X-Google-Smtp-Source: AGRyM1tNkWwHbHPqcGsuh1jrwG0AaZ5WCK4dEJCP5BAXZMudl8bspDU31zOmYWMLJfIuZWpkyfjM
+X-Received: by 2002:a05:620a:198b:b0:6a6:cdec:d5cf with SMTP id bm11-20020a05620a198b00b006a6cdecd5cfmr9628858qkb.71.1656369290938;
+        Mon, 27 Jun 2022 15:34:50 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1656369290; cv=none;
         d=google.com; s=arc-20160816;
-        b=Hg3jp+NJDI/chYSNzagUiolWWWe4mWkdecMX00ZPemqLvC0j5bS2a+ButPEQ6C6Nnq
-         P4UZ8iTXlgdAJFntMQE3gJcsKaPsXBo7/mGclZ9wziPzZ9p0KEkepy8eOLMIHlndgfn7
-         3ZPaFhBBDj6J3sxQjfrB48gZJ/i+7sFbvAc75Maa4BCK8/UM899MGfK7nZGKzFLqZnnQ
-         RrJf7FaNsw+mxd9hAF2TibpeZn8DA0sWTy4c9bgAvvCwFxd2D+ZNWOtQWtEuRAW5bC/Y
-         1VgalTmD5PnEJHrgvIhv7bdEoJjmvOu2PI6lJDfHV7h/WWHYnMt+NFBOVxkeCJCSXD/T
-         4tQg==
+        b=L5ai15/Nu3nmNUAH4JKtJ4MnQh7cZPN3d6riejE8b9Bc2xFUZs5sDexuZ41OlBXEgX
+         fkA/GgjlRAsDFcLhbWV+lA/W1+2yQPdYZCaYZiqCq7N9H0DW3+M4wlkM92MCoFQjR7IH
+         Pqt1o9A8aVG3cEtkJX15OuSnR/SBrBJvqK5C3RbafhbComOnnwqFI2rjVzaevhDEyN7S
+         I3ZTrP7FrTbVXZkoT5C7hKkkYiXNvvip3dk7+BtIWqgE1oa561tq40IILOnBQKFhSS94
+         ZSUx76S3YUIFd2XREIjawkl+KrzVi/fFYHvk3mAoWyMOJasSrPOOfUxUE6xDqnFWeypj
+         I+nw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version
-         :content-transfer-encoding:references:in-reply-to:message-id:date
-         :subject:cc:to:from:dkim-signature;
-        bh=gccUFSTo96dsG615Bu1uuwt3K7S8tUa8Hwp9OxZ4RAo=;
-        b=HJpBEPYwx5X8PLJTpH0ru6TsBzrflRWCMzOprx1hpZ1aEn9KA6bfKoISoUKCfkUhxH
-         GY16UtOb8MaLJF09CybbRmk6i3GxwW3SsSe4gi2VF6evZpQfdHJSlVdFrHm57qHbu3wr
-         E/AWqeo3hHPD/pqbaUOOFfmczIDMT7x4CNPV5Tlku9o8GG+HMIjpVqBvRX+X3TyD+JNE
-         rvAJgVqK9iEH1z64oIcY5V81191FVnal3sJl8WNrene0jUOmgbdJrkqmbg1pFVmtpABq
-         //pARubDeDHQWSGmJVHf1ljmU0tUjLMLzlRgN0cWzWkcSrm7WEDtYM2u62KL3vk9Elz5
-         lAdg==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=pch8LtxW03R7yA9RyemSuA29oFXNQirTwRRavZtw/M8=;
+        b=tyjVg4kneWAUKl0y1ANLgojYM/GwemLLUEKVvaxZxmRE8tN3jmG+8u2EtunIWmai1h
+         VL6sptW5MGD2tKheRBzGwbIy36C1x3rS3IfR6Ia/hzaufjz8S71fXu89IpUYdnPCW1bK
+         Yk0pioAuRcHUzTwyPag0g5gpv7C8e3FcDCg2nbi6tRlsDhTFktnaAYG0ZZKc9sFWEbV0
+         Zw12z29TPGX6sBTr2j//pQPUNkOybzISMj9VP73bbSmk2v3GUwenNIoGCC6TQoL7N67E
+         Yl00rP1jdKou6OnjhQIOZgRv1Go9d8zmiJKmda7PwodKcT/TFNSifiH+bm6H6n8uJQkk
+         Qwzg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@fb.com header.s=facebook header.b=SLkSs64E;
+       dkim=pass header.i=@fb.com header.s=facebook header.b=qKaZZE94;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=fb.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id c1-20020ac81e81000000b00317c6f3c64csi5950208qtm.65.2022.06.27.15.33.32
+        by mx.google.com with ESMTPS id 7-20020a05621420c700b0047071d5de5bsi7570484qve.162.2022.06.27.15.34.50
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 27 Jun 2022 15:33:32 -0700 (PDT)
+        Mon, 27 Jun 2022 15:34:50 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@fb.com header.s=facebook header.b=SLkSs64E;
+       dkim=pass header.i=@fb.com header.s=facebook header.b=qKaZZE94;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=fb.com
-Received: from localhost ([::1]:41926 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:43112 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1o5xIR-0003L3-Vl
-	for alex.bennee@linaro.org; Mon, 27 Jun 2022 18:33:32 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44228)
+	id 1o5xJi-0004Ax-0R
+	for alex.bennee@linaro.org; Mon, 27 Jun 2022 18:34:50 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:44230)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <prvs=71779173e5=pdel@fb.com>)
- id 1o5xHR-0003Iq-CC
+ id 1o5xHR-0003Ir-8D
  for qemu-arm@nongnu.org; Mon, 27 Jun 2022 18:32:31 -0400
-Received: from mx0b-00082601.pphosted.com ([67.231.153.30]:47212
+Received: from mx0b-00082601.pphosted.com ([67.231.153.30]:10962
  helo=mx0a-00082601.pphosted.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <prvs=71779173e5=pdel@fb.com>)
- id 1o5xHD-0006TV-Dq
- for qemu-arm@nongnu.org; Mon, 27 Jun 2022 18:32:26 -0400
+ id 1o5xHD-0006Tj-GF
+ for qemu-arm@nongnu.org; Mon, 27 Jun 2022 18:32:27 -0400
 Received: from pps.filterd (m0001303.ppops.net [127.0.0.1])
- by m0001303.ppops.net (8.17.1.5/8.17.1.5) with ESMTP id 25RJ1QEK018645
- for <qemu-arm@nongnu.org>; Mon, 27 Jun 2022 15:32:10 -0700
+ by m0001303.ppops.net (8.17.1.5/8.17.1.5) with ESMTP id 25RJ1eYn019490
+ for <qemu-arm@nongnu.org>; Mon, 27 Jun 2022 15:32:14 -0700
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=fb.com;
  h=from : to : cc : subject
- : date : message-id : in-reply-to : references : content-type :
- content-transfer-encoding : mime-version; s=facebook;
- bh=gccUFSTo96dsG615Bu1uuwt3K7S8tUa8Hwp9OxZ4RAo=;
- b=SLkSs64EuL7iTJdVwan4K8HJkfIE0vFa4SmBpNlRDunQJ+FmP/ZWJ2gPKkbOjm3WejNe
- IuzDEO99FeMrSY0FHErfKv0+z+dFv/1HpV1ZMcXTtoNBz8k2vfrjCUi5T1cxtlU2stKL
- +UdGqSuJFOLxlEQWMdNvpVmjwudLzuVfU0E= 
+ : date : message-id : in-reply-to : references : mime-version :
+ content-transfer-encoding : content-type; s=facebook;
+ bh=pch8LtxW03R7yA9RyemSuA29oFXNQirTwRRavZtw/M8=;
+ b=qKaZZE94sz4eJ0AlGZkza02gmS6+CCgh5mNrqYZrvk3C9j2801oVWtM/+Musb3v2RGMV
+ V7veSZuqiSf1TCrYJJ0MN6ElYxzYUd3sAMIXnyR+beaDd7PtHrgLY7T3wQQ5MLRNh6bC
+ dM6N5vL3ammLywEN2SR7Ph8mmNZhg9QGc+0= 
 Received: from mail.thefacebook.com ([163.114.132.120])
- by m0001303.ppops.net (PPS) with ESMTPS id 3gwx1v64jp-1
+ by m0001303.ppops.net (PPS) with ESMTPS id 3gwx1v64k3-2
  (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128 verify=NOT)
- for <qemu-arm@nongnu.org>; Mon, 27 Jun 2022 15:32:10 -0700
-Received: from twshared18443.03.prn6.facebook.com (2620:10d:c085:208::11) by
- mail.thefacebook.com (2620:10d:c085:11d::7) with Microsoft SMTP Server
+ for <qemu-arm@nongnu.org>; Mon, 27 Jun 2022 15:32:14 -0700
+Received: from twshared6447.05.prn5.facebook.com (2620:10d:c085:108::8) by
+ mail.thefacebook.com (2620:10d:c085:11d::6) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2375.28; Mon, 27 Jun 2022 15:32:08 -0700
+ 15.1.2375.28; Mon, 27 Jun 2022 15:32:13 -0700
 Received: by devvm9194.prn0.facebook.com (Postfix, from userid 385188)
- id 9DD3A8D319B8; Mon, 27 Jun 2022 15:32:04 -0700 (PDT)
+ id 4CE418D319E8; Mon, 27 Jun 2022 15:32:08 -0700 (PDT)
 From: Peter Delevoryas <pdel@fb.com>
 To: 
 CC: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>, Peter Delevoryas
  <pdel@fb.com>
-Subject: [PATCH 12/14] hw/misc: Add intel-me
-Date: Mon, 27 Jun 2022 15:27:35 -0700
-Message-ID: <20220627222737.1011989-1-pdel@fb.com>
+Subject: [PATCH 14/14] aspeed: Add I2C new register DMA slave mode support
+Date: Mon, 27 Jun 2022 15:27:37 -0700
+Message-ID: <20220627222737.1011989-3-pdel@fb.com>
 X-Mailer: git-send-email 2.30.2
-In-Reply-To: <20220627195506.403715-1-pdel@fb.com>
+In-Reply-To: <20220627222737.1011989-1-pdel@fb.com>
 References: <20220627195506.403715-1-pdel@fb.com>
+ <20220627222737.1011989-1-pdel@fb.com>
+MIME-Version: 1.0
+Content-Transfer-Encoding: quoted-printable
 X-FB-Internal: Safe
 Content-Type: text/plain
-X-Proofpoint-ORIG-GUID: lsbvQEVOoLvg4T2uOxANCkXYv6bg3pQx
-X-Proofpoint-GUID: lsbvQEVOoLvg4T2uOxANCkXYv6bg3pQx
-Content-Transfer-Encoding: quoted-printable
-X-Proofpoint-UnRewURL: 0 URL was un-rewritten
-MIME-Version: 1.0
+X-Proofpoint-ORIG-GUID: Nj9kT8yrDj9Cr0vaNivbb2iOaT7jNgWb
+X-Proofpoint-GUID: Nj9kT8yrDj9Cr0vaNivbb2iOaT7jNgWb
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.205,Aquarius:18.0.883,Hydra:6.0.517,FMLib:17.11.122.1
  definitions=2022-06-27_06,2022-06-24_01,2022-06-22_01
@@ -119,234 +119,264 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: +WDTVh71DmME
+X-TUID: ZY/6nJ+BY7YM
 
 Signed-off-by: Peter Delevoryas <pdel@fb.com>
 ---
- hw/arm/aspeed.c     |   1 +
- hw/misc/intel_me.c  | 176 ++++++++++++++++++++++++++++++++++++++++++++
- hw/misc/meson.build |   3 +-
- 3 files changed, 179 insertions(+), 1 deletion(-)
- create mode 100644 hw/misc/intel_me.c
+ hw/i2c/aspeed_i2c.c         | 133 ++++++++++++++++++++++++++++++++----
+ include/hw/i2c/aspeed_i2c.h |   3 +
+ 2 files changed, 124 insertions(+), 12 deletions(-)
 
-diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
-index 2b9c1600c6..88e9a47dc2 100644
---- a/hw/arm/aspeed.c
-+++ b/hw/arm/aspeed.c
-@@ -1447,6 +1447,7 @@ static void oby35_cl_i2c_init(AspeedMachineState *bmc)
-     i2c_slave_create_simple(i2c[1], "tmp105", 0x4a);
-     i2c_slave_create_simple(i2c[1], "adm1272", 0x40);
-     i2c_slave_create_simple(i2c[1], "tmp421", 0x4c);
-+    i2c_slave_create_simple(i2c[2], "intel-me", 0x16);
-     i2c_slave_create_simple(i2c[4], "isl69259", 0x76);
-     i2c_slave_create_simple(i2c[4], "isl69259", 0x62);
-     i2c_slave_create_simple(i2c[4], "isl69259", 0x60);
-diff --git a/hw/misc/intel_me.c b/hw/misc/intel_me.c
-new file mode 100644
-index 0000000000..fdc9180c26
---- /dev/null
-+++ b/hw/misc/intel_me.c
-@@ -0,0 +1,176 @@
-+/*
-+ * Copyright (c) Meta Platforms, Inc. and affiliates. (http://www.meta.com)
-+ *
-+ * Permission is hereby granted, free of charge, to any person obtaining a=
- copy
-+ * of this software and associated documentation files (the "Software"), t=
-o deal
-+ * in the Software without restriction, including without limitation the r=
-ights
-+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or se=
-ll
-+ * copies of the Software, and to permit persons to whom the Software is
-+ * furnished to do so, subject to the following conditions:
-+ *
-+ * The above copyright notice and this permission notice shall be included=
- in
-+ * all copies or substantial portions of the Software.
-+ *
-+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS=
- OR
-+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
-+ * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OT=
-HER
-+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING=
- FROM,
-+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS =
-IN
-+ * THE SOFTWARE.
-+ */
-+
-+#include "qemu/osdep.h"
-+#include "qemu/main-loop.h"
-+#include "hw/i2c/i2c.h"
-+
-+#define TYPE_INTEL_ME "intel-me"
-+OBJECT_DECLARE_SIMPLE_TYPE(IntelMEState, INTEL_ME);
-+
-+#define printf(...)
-+
-+struct IntelMEState {
-+    I2CSlave parent_obj;
-+
-+    I2CBus *bus;
-+    QEMUBH *bh;
-+    int rx_len;
-+    int tx_len;
-+    int tx_pos;
-+    uint8_t rx_buf[512];
-+    uint8_t tx_buf[512];
-+};
-+
-+static void intel_me_bh(void *opaque)
+diff --git a/hw/i2c/aspeed_i2c.c b/hw/i2c/aspeed_i2c.c
+index 8a8514586f..fc8b6b62cf 100644
+--- a/hw/i2c/aspeed_i2c.c
++++ b/hw/i2c/aspeed_i2c.c
+@@ -78,6 +78,18 @@ static inline void aspeed_i2c_bus_raise_interrupt(Aspe=
+edI2CBus *bus)
+     }
+ }
+=20
++static inline void aspeed_i2c_bus_raise_slave_interrupt(AspeedI2CBus *bu=
+s)
 +{
-+    IntelMEState *s =3D opaque;
++    AspeedI2CClass *aic =3D ASPEED_I2C_GET_CLASS(bus->controller);
 +
-+    assert(s->bus->bh =3D=3D s->bh);
-+
-+    if (s->tx_pos =3D=3D 0) {
-+        if (i2c_start_send_async(s->bus, s->tx_buf[s->tx_pos++]) !=3D 0) {
-+            goto done;
-+        }
++    if (!bus->regs[R_I2CS_INTR_STS]) {
 +        return;
 +    }
 +
-+    if (s->tx_pos < s->tx_len) {
-+        if (i2c_send_async(s->bus, s->tx_buf[s->tx_pos++]) !=3D 0) {
-+            goto done;
++    bus->controller->intr_status |=3D 1 << bus->id;
++    qemu_irq_raise(aic->bus_get_irq(bus));
++}
++
+ static uint64_t aspeed_i2c_bus_old_read(AspeedI2CBus *bus, hwaddr offset=
+,
+                                         unsigned size)
+ {
+@@ -140,8 +152,17 @@ static uint64_t aspeed_i2c_bus_new_read(AspeedI2CBus=
+ *bus, hwaddr offset,
+     case A_I2CM_DMA_LEN_STS:
+     case A_I2CC_DMA_ADDR:
+     case A_I2CC_DMA_LEN:
++
++    case A_I2CS_DEV_ADDR:
++    case A_I2CS_DMA_RX_ADDR:
++    case A_I2CS_DMA_LEN:
++    case A_I2CS_CMD:
++    case A_I2CS_INTR_CTRL:
++    case A_I2CS_DMA_LEN_STS:
+         /* Value is already set, don't do anything. */
+         break;
++    case A_I2CS_INTR_STS:
++        break;
+     case A_I2CM_CMD:
+         value =3D SHARED_FIELD_DP32(value, BUS_BUSY_STS, i2c_bus_busy(bu=
+s->bus));
+         break;
+@@ -547,12 +568,7 @@ static void aspeed_i2c_bus_new_write(AspeedI2CBus *b=
+us, hwaddr offset,
+=20
+     switch (offset) {
+     case A_I2CC_FUN_CTRL:
+-        if (SHARED_FIELD_EX32(value, SLAVE_EN)) {
+-            qemu_log_mask(LOG_UNIMP, "%s: slave mode not implemented\n",
+-                          __func__);
+-            break;
+-        }
+-        bus->regs[R_I2CC_FUN_CTRL] =3D value & 0x007dc3ff;
++        bus->regs[R_I2CC_FUN_CTRL] =3D value;
+         break;
+     case A_I2CC_AC_TIMING:
+         bus->regs[R_I2CC_AC_TIMING] =3D value & 0x1ffff0ff;
+@@ -580,6 +596,7 @@ static void aspeed_i2c_bus_new_write(AspeedI2CBus *bu=
+s, hwaddr offset,
+                 bus->controller->intr_status &=3D ~(1 << bus->id);
+                 qemu_irq_lower(aic->bus_get_irq(bus));
+             }
++            aspeed_i2c_bus_raise_slave_interrupt(bus);
+             break;
+         }
+         bus->regs[R_I2CM_INTR_STS] &=3D ~(value & 0xf007f07f);
+@@ -668,15 +685,53 @@ static void aspeed_i2c_bus_new_write(AspeedI2CBus *=
+bus, hwaddr offset,
+     case A_I2CC_DMA_LEN:
+         /* RO */
+         break;
+-    case A_I2CS_DMA_LEN_STS:
+-    case A_I2CS_DMA_TX_ADDR:
+-    case A_I2CS_DMA_RX_ADDR:
+     case A_I2CS_DEV_ADDR:
++        bus->regs[R_I2CS_DEV_ADDR] =3D value;
++        break;
++    case A_I2CS_DMA_RX_ADDR:
++        bus->regs[R_I2CS_DMA_RX_ADDR] =3D value;
++        break;
++    case A_I2CS_DMA_LEN:
++        assert(FIELD_EX32(value, I2CS_DMA_LEN, TX_BUF_LEN) =3D=3D 0);
++        if (FIELD_EX32(value, I2CS_DMA_LEN, RX_BUF_LEN_W1T)) {
++            ARRAY_FIELD_DP32(bus->regs, I2CS_DMA_LEN, RX_BUF_LEN,
++                             FIELD_EX32(value, I2CS_DMA_LEN, RX_BUF_LEN)=
+);
++        } else {
++            bus->regs[R_I2CS_DMA_LEN] =3D value;
 +        }
-+        return;
-+    }
++        break;
++    case A_I2CS_CMD:
++        if (FIELD_EX32(value, I2CS_CMD, W1_CTRL)) {
++            bus->regs[R_I2CS_CMD] |=3D value;
++        } else {
++            bus->regs[R_I2CS_CMD] =3D value;
++        }
++        i2c_slave_set_address(bus->slave, bus->regs[R_I2CS_DEV_ADDR]);
++        break;
+     case A_I2CS_INTR_CTRL:
++        bus->regs[R_I2CS_INTR_CTRL] =3D value;
++        break;
 +
-+done:
-+    i2c_end_transfer(s->bus);
-+    i2c_bus_release(s->bus);
-+    s->tx_len =3D 0;
-+    s->tx_pos =3D 0;
-+    memset(s->tx_buf, 0, sizeof(s->tx_buf));
-+}
-+
-+static void intel_me_realize(DeviceState *dev, Error **errp)
+     case A_I2CS_INTR_STS:
+-    case A_I2CS_CMD:
+-    case A_I2CS_DMA_LEN:
+-        qemu_log_mask(LOG_UNIMP, "%s: Slave mode is not implemented\n",
++        if (ARRAY_FIELD_EX32(bus->regs, I2CS_INTR_CTRL, PKT_CMD_DONE)) {
++            if (ARRAY_FIELD_EX32(bus->regs, I2CS_INTR_STS, PKT_CMD_DONE)=
+ &&
++                FIELD_EX32(value, I2CS_INTR_STS, PKT_CMD_DONE)) {
++                bus->regs[R_I2CS_INTR_STS] &=3D 0xfffc0000;
++            }
++        } else {
++            bus->regs[R_I2CS_INTR_STS] &=3D ~value;
++        }
++        if (!bus->regs[R_I2CS_INTR_STS]) {
++            bus->controller->intr_status &=3D ~(1 << bus->id);
++            qemu_irq_lower(aic->bus_get_irq(bus));
++        }
++        aspeed_i2c_bus_raise_interrupt(bus);
++        break;
++    case A_I2CS_DMA_LEN_STS:
++        bus->regs[R_I2CS_DMA_LEN_STS] =3D 0;
++        break;
++    case A_I2CS_DMA_TX_ADDR:
++        qemu_log_mask(LOG_UNIMP, "%s: Slave mode DMA TX is not implement=
+ed\n",
+                       __func__);
+         break;
+     default:
+@@ -1037,6 +1092,39 @@ static const TypeInfo aspeed_i2c_info =3D {
+     .abstract   =3D true,
+ };
+=20
++static int aspeed_i2c_bus_new_slave_event(AspeedI2CBus *bus,
++                                          enum i2c_event event)
 +{
-+    IntelMEState *s =3D INTEL_ME(dev);
-+
-+    s->bus =3D I2C_BUS(qdev_get_parent_bus(dev));
-+    s->bh =3D qemu_bh_new(intel_me_bh, s);
-+    s->rx_len =3D 0;
-+    s->tx_len =3D 0;
-+    s->tx_pos =3D 0;
-+    memset(s->rx_buf, 0, sizeof(s->rx_buf));
-+    memset(s->tx_buf, 0, sizeof(s->tx_buf));
-+}
-+
-+static uint8_t checksum(const uint8_t *ptr, int len)
-+{
-+    int sum =3D 0;
-+
-+    for (int i =3D 0; i < len; i++) {
-+        sum +=3D ptr[i];
-+    }
-+
-+    return 256 - sum;
-+}
-+
-+static int intel_me_i2c_event(I2CSlave *i2c, enum i2c_event event)
-+{
-+    IntelMEState *s =3D INTEL_ME(i2c);
-+
 +    switch (event) {
-+    case I2C_START_RECV:
-+        break;
-+    case I2C_START_SEND:
-+        s->rx_len =3D 0;
-+        memset(s->rx_buf, 0, sizeof(s->rx_buf));
-+        break;
 +    case I2C_START_SEND_ASYNC:
++        if (!SHARED_ARRAY_FIELD_EX32(bus->regs, R_I2CS_CMD, RX_DMA_EN)) =
+{
++            qemu_log_mask(LOG_GUEST_ERROR,
++                          "%s: Slave mode RX DMA is not enabled\n", __fu=
+nc__);
++            return -1;
++        }
++        ARRAY_FIELD_DP32(bus->regs, I2CS_DMA_LEN_STS, RX_LEN, 0);
++        bus->regs[R_I2CC_DMA_ADDR] =3D
++            ARRAY_FIELD_EX32(bus->regs, I2CS_DMA_RX_ADDR, ADDR);
++        bus->regs[R_I2CC_DMA_LEN] =3D
++            ARRAY_FIELD_EX32(bus->regs, I2CS_DMA_LEN, RX_BUF_LEN) + 1;
++        i2c_ack(bus->bus);
 +        break;
 +    case I2C_FINISH:
-+        printf("IntelME rx: [");
-+        for (int i =3D 0; i < s->rx_len; i++) {
-+            if (i) {
-+                printf(", ");
-+            }
-+            printf("0x%02x", s->rx_buf[i]);
-+        }
-+        printf("]\n");
-+
-+        s->tx_len =3D 10;
-+        s->tx_pos =3D 0;
-+        s->tx_buf[0] =3D s->rx_buf[2];
-+        s->tx_buf[1] =3D ((s->rx_buf[0] >> 2) + 1) << 2;
-+        s->tx_buf[2] =3D 256 - s->tx_buf[0] - s->tx_buf[1];
-+        s->tx_buf[3] =3D i2c->address; // rsSA response Slave Address
-+        s->tx_buf[4] =3D (s->rx_buf[3] >> 2) << 2; // sequence number
-+        s->tx_buf[5] =3D s->rx_buf[4]; // Same command code
-+        s->tx_buf[6] =3D 0x00; // OK
-+        s->tx_buf[7] =3D 0x55; // NO_ERROR
-+        s->tx_buf[8] =3D 0x00;
-+        s->tx_buf[9] =3D checksum(s->tx_buf, s->tx_len - 1);
-+        s->tx_buf[0] >>=3D 1;
-+        i2c_bus_master(s->bus, s->bh);
++        ARRAY_FIELD_DP32(bus->regs, I2CS_INTR_STS, PKT_CMD_DONE, 1);
++        ARRAY_FIELD_DP32(bus->regs, I2CS_INTR_STS, SLAVE_ADDR_RX_MATCH, =
+1);
++        SHARED_ARRAY_FIELD_DP32(bus->regs, R_I2CS_INTR_STS, NORMAL_STOP,=
+ 1);
++        SHARED_ARRAY_FIELD_DP32(bus->regs, R_I2CS_INTR_STS, RX_DONE, 1);
++        aspeed_i2c_bus_raise_slave_interrupt(bus);
 +        break;
-+    case I2C_NACK:
-+        break;
++    default:
++        qemu_log_mask(LOG_UNIMP, "%s: i2c event %d unimplemented\n",
++                      __func__, event);
++        return -1;
 +    }
 +
 +    return 0;
 +}
 +
-+static uint8_t intel_me_i2c_recv(I2CSlave *i2c)
-+{
-+    return 0xff;
-+}
-+
-+static int intel_me_i2c_send(I2CSlave *i2c, uint8_t data)
-+{
-+    IntelMEState *s =3D INTEL_ME(i2c);
-+
-+    assert(s->rx_len < sizeof(s->rx_buf));
-+    s->rx_buf[s->rx_len++] =3D data;
-+
-+    return 0;
-+}
-+
-+static void intel_me_class_init(ObjectClass *oc, void *data)
-+{
-+    DeviceClass *dc =3D DEVICE_CLASS(oc);
-+    I2CSlaveClass *i2c =3D I2C_SLAVE_CLASS(oc);
-+
-+    dc->realize =3D intel_me_realize;
-+    i2c->event =3D intel_me_i2c_event;
-+    i2c->recv =3D intel_me_i2c_recv;
-+    i2c->send =3D intel_me_i2c_send;
-+}
-+
-+static const TypeInfo types[] =3D {
-+    {
-+        .name =3D TYPE_INTEL_ME,
-+        .parent =3D TYPE_I2C_SLAVE,
-+        .instance_size =3D sizeof(IntelMEState),
-+        .class_init =3D intel_me_class_init,
-+    },
-+};
-+
-+DEFINE_TYPES(types);
-diff --git a/hw/misc/meson.build b/hw/misc/meson.build
-index 1edad44b6b..a2c75894a3 100644
---- a/hw/misc/meson.build
-+++ b/hw/misc/meson.build
-@@ -118,7 +118,8 @@ softmmu_ss.add(when: 'CONFIG_ASPEED_SOC', if_true: file=
-s(
-   'aspeed_sdmc.c',
-   'aspeed_xdma.c',
-   'aspeed_peci.c',
--  'fby35_cpld.c'))
-+  'fby35_cpld.c',
-+  'intel_me.c'))
+ static int aspeed_i2c_bus_slave_event(I2CSlave *slave, enum i2c_event ev=
+ent)
+ {
+     BusState *qbus =3D qdev_get_parent_bus(DEVICE(slave));
+@@ -1045,6 +1133,10 @@ static int aspeed_i2c_bus_slave_event(I2CSlave *sl=
+ave, enum i2c_event event)
+     uint32_t reg_byte_buf =3D aspeed_i2c_bus_byte_buf_offset(bus);
+     uint32_t value;
 =20
- softmmu_ss.add(when: 'CONFIG_MSF2', if_true: files('msf2-sysreg.c'))
- softmmu_ss.add(when: 'CONFIG_NRF51_SOC', if_true: files('nrf51_rng.c'))
++    if (aspeed_i2c_is_new_mode(bus->controller)) {
++        return aspeed_i2c_bus_new_slave_event(bus, event);
++    }
++
+     switch (event) {
+     case I2C_START_SEND_ASYNC:
+         value =3D SHARED_ARRAY_FIELD_EX32(bus->regs, reg_byte_buf, TX_BU=
+F);
+@@ -1073,6 +1165,19 @@ static int aspeed_i2c_bus_slave_event(I2CSlave *sl=
+ave, enum i2c_event event)
+     return 0;
+ }
+=20
++static void aspeed_i2c_bus_new_slave_send_async(AspeedI2CBus *bus, uint8=
+_t data)
++{
++    assert(address_space_write(&bus->controller->dram_as,
++                               bus->regs[R_I2CC_DMA_ADDR],
++                               MEMTXATTRS_UNSPECIFIED, &data, 1) =3D=3D =
+MEMTX_OK);
++
++    bus->regs[R_I2CC_DMA_ADDR]++;
++    bus->regs[R_I2CC_DMA_LEN]--;
++    ARRAY_FIELD_DP32(bus->regs, I2CS_DMA_LEN_STS, RX_LEN,
++                     ARRAY_FIELD_EX32(bus->regs, I2CS_DMA_LEN_STS, RX_LE=
+N) + 1);
++    i2c_ack(bus->bus);
++}
++
+ static void aspeed_i2c_bus_slave_send_async(I2CSlave *slave, uint8_t dat=
+a)
+ {
+     BusState *qbus =3D qdev_get_parent_bus(DEVICE(slave));
+@@ -1080,6 +1185,10 @@ static void aspeed_i2c_bus_slave_send_async(I2CSla=
+ve *slave, uint8_t data)
+     uint32_t reg_intr_sts =3D aspeed_i2c_bus_intr_sts_offset(bus);
+     uint32_t reg_byte_buf =3D aspeed_i2c_bus_byte_buf_offset(bus);
+=20
++    if (aspeed_i2c_is_new_mode(bus->controller)) {
++        return aspeed_i2c_bus_new_slave_send_async(bus, data);
++    }
++
+     SHARED_ARRAY_FIELD_DP32(bus->regs, reg_byte_buf, RX_BUF, data);
+     SHARED_ARRAY_FIELD_DP32(bus->regs, reg_intr_sts, RX_DONE, 1);
+=20
+diff --git a/include/hw/i2c/aspeed_i2c.h b/include/hw/i2c/aspeed_i2c.h
+index ba148b2f6d..300a89b343 100644
+--- a/include/hw/i2c/aspeed_i2c.h
++++ b/include/hw/i2c/aspeed_i2c.h
+@@ -174,6 +174,8 @@ REG32(I2CM_DMA_LEN, 0x1c)
+     FIELD(I2CM_DMA_LEN, TX_BUF_LEN_W1T, 15, 1)
+     FIELD(I2CM_DMA_LEN, TX_BUF_LEN, 0, 11)
+ REG32(I2CS_INTR_CTRL, 0x20)
++    FIELD(I2CS_INTR_CTRL, PKT_CMD_FAIL, 17, 1)
++    FIELD(I2CS_INTR_CTRL, PKT_CMD_DONE, 16, 1)
+ REG32(I2CS_INTR_STS, 0x24)
+     /* 31:29 shared with I2CD_INTR_STS[31:29] */
+     FIELD(I2CS_INTR_STS, SLAVE_PARKING_STS, 24, 2)
+@@ -184,6 +186,7 @@ REG32(I2CS_INTR_STS, 0x24)
+     FIELD(I2CS_INTR_STS, PKT_CMD_FAIL, 17, 1)
+     FIELD(I2CS_INTR_STS, PKT_CMD_DONE, 16, 1)
+     /* 14:0 shared with I2CD_INTR_STS[14:0] */
++    FIELD(I2CS_INTR_STS, SLAVE_ADDR_RX_MATCH, 7, 1)
+ REG32(I2CS_CMD, 0x28)
+     FIELD(I2CS_CMD, W1_CTRL, 31, 1)
+     FIELD(I2CS_CMD, PKT_MODE_ACTIVE_ADDR, 17, 2)
 --=20
 2.30.2
 

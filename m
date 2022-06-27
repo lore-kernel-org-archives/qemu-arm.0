@@ -1,106 +1,109 @@
-Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp2436046lft;
-        Mon, 27 Jun 2022 07:49:24 -0700 (PDT)
-X-Google-Smtp-Source: AGRyM1tYrBSQHaUHpFXLAvhysqoFFG/YCWtYM27BLIHS1f8zzAHhGKx1p+AzM0GgnVE+i3k3Qtw7
-X-Received: by 2002:a05:622a:1108:b0:305:3092:b831 with SMTP id e8-20020a05622a110800b003053092b831mr9506713qty.624.1656341364760;
-        Mon, 27 Jun 2022 07:49:24 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1656341364; cv=none;
+Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp2444693lft;
+        Mon, 27 Jun 2022 08:02:26 -0700 (PDT)
+X-Google-Smtp-Source: AGRyM1toifBSK7CiGexsBGZ5wjAbQg4A5RQ/wH5jyGPY3ByY7HZjgy39+o4iAyW0vk8HIA/rZdKf
+X-Received: by 2002:ad4:5907:0:b0:470:4b8d:2898 with SMTP id ez7-20020ad45907000000b004704b8d2898mr9092864qvb.91.1656342146057;
+        Mon, 27 Jun 2022 08:02:26 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1656342146; cv=none;
         d=google.com; s=arc-20160816;
-        b=bLn7UtHMZeNewILvMljgd5hlAbChLhONLQKn4tVxlPWTIzwHpnbdxB13EaQQ05LQHY
-         D9kAbh7eszQPVe+R2gebsmV7NTxcS8vU6rDpGcGm/Kt64qZUSKU08UQ52v2F9A5yC/B/
-         b6U2hgpsdvpdeoQqfI4b2YcMhFBubloAXJyI+LZtUKxdHxxRNJDsjErvRzod17RhBgfM
-         /pp1c7XnKGOya+3446yBtGDXS/UVm0xSpOd2iqUGGAVwfsH3P6tXngCOehyt7wqLC4ss
-         f7bzKfbViho2pFgRWjJDqjc5KxcpaE2U1WfcfN2Mn/gmxe4zkKw2kP61TGPVMyFObt74
-         XcSQ==
+        b=gQFsc6+4JNRM2omtWLQN8HuJvxSo2ZWC9aum5wtNyPMGYMg+z2JYxpo0xXV7ldK5WA
+         o0eYMe6VUY3QUOQy2dt/GNHYrV7KuUzHC3C/s/JqfQVXKvWdXdKTP56ZsIdKkT+Q+mHh
+         vAJUxxK9GNlpVkRrLff77Ynm01jdSI74pvlQi3Pb+6f0GuzT3Xe/C2qKlJ0leFtz8Tg3
+         AQ7qUG57qb/rcPauNXWjD2CQvMGb1whWXM6LInz9OEkUTN3vD+jl7zMqk0hEPE+FQk6A
+         ZaWI6JJxDho7xUcU8tjk3EAnyh7bf/STyq5oG4n8hx96o28ucnR9VRai2FD9IIWBPUEd
+         QtVw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :in-reply-to:from:references:cc:to:content-language:subject
          :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=RoSVQmGJOQT3CtKyHqdRFzGWnLQKjC82iQFrBm8ftXY=;
-        b=vi3usJNu+xUQaojPexFrnfK+m4qbmPdB1/32gmNrg20X9BIEzCMfJvYqk9jgCOx/ib
-         vE8hgbwr3aj1UuZg8c1HWk3sI19hN03mU1CJPsx0Mu29/4YZXynjiFDhN/ZWxoeuAPqy
-         Xa3n5LrloKo1Npvzr6tU8fZzwWoUj1rYsjnBV+Eydje/gbViFLP0LXfQ8Qok17Ee5UqY
-         fqAd9E/mj6D//QPtxvhte4UPhZwp+8gjmPgGfUCiR0rBsQPfSW51L8eM8Ud/A0g++DBJ
-         jwx0xk7WCjQQE7sTUw0+xpyMQOPzM7UMzL1bN6QFKcR9lpkdiXRavsvN4ymOO9xmM4Gf
-         Vsog==
+        bh=0NK8q537xL4KMcS0Yj8KK59uWHlo4yFRuPtrNOFIwDM=;
+        b=E19bfZO2MwdKrp01tzmAwZqasSTd9O6GpUuwkvA/ex6BLwhTMUo9ZDMqjNd2AisOum
+         bmteCFkPrrW93A6SQ5JGIVMNH3oYjfUPx13Jh7oGwauRC2dkNndyYtyxLUqvV4VkXwQC
+         5Nv6bFh7Vpz7ySUuLEF0QTOM1oqAXkVJefYEoinhE2c/L/rbLbQ6i/8Xf9EfBNzdosE4
+         p9JVEmXlU+3WYF7/vSNeA2jQisdM55idj8DwahnrTw4wgIriBDDLRemr3Z4OWGSw5yPM
+         Va86KYnlw8JEUSSbB9PZRkrNfcOUulIrBjuogg+jT889ByeHPr/y32D5I8pXKT+wAYGP
+         RHEg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@quicinc.com header.s=qcdkim header.b=nP2LltkR;
+       dkim=pass header.i=@quicinc.com header.s=qcdkim header.b=qSwUglEY;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=quicinc.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id h9-20020a0562140da900b004706b174e53si5758632qvh.236.2022.06.27.07.49.24
+        by mx.google.com with ESMTPS id f8-20020a05622a1a0800b0030673269926si5845592qtb.145.2022.06.27.08.02.25
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 27 Jun 2022 07:49:24 -0700 (PDT)
+        Mon, 27 Jun 2022 08:02:26 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@quicinc.com header.s=qcdkim header.b=nP2LltkR;
+       dkim=pass header.i=@quicinc.com header.s=qcdkim header.b=qSwUglEY;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=quicinc.com
-Received: from localhost ([::1]:49822 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:57288 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1o5q3I-0000f3-7d
-	for alex.bennee@linaro.org; Mon, 27 Jun 2022 10:49:24 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:60058)
+	id 1o5qFt-0006Oi-IA
+	for alex.bennee@linaro.org; Mon, 27 Jun 2022 11:02:25 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:34068)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <quic_jaehyoo@quicinc.com>)
- id 1o5q32-0000dq-Kj; Mon, 27 Jun 2022 10:49:08 -0400
-Received: from alexa-out.qualcomm.com ([129.46.98.28]:56948)
+ id 1o5qFL-0006LX-7O; Mon, 27 Jun 2022 11:01:51 -0400
+Received: from alexa-out-sd-01.qualcomm.com ([199.106.114.38]:2159)
  by eggs.gnu.org with esmtps (TLS1.2:RSA_AES_256_CBC_SHA1:256)
  (Exim 4.90_1) (envelope-from <quic_jaehyoo@quicinc.com>)
- id 1o5q2z-0005PU-Ny; Mon, 27 Jun 2022 10:49:08 -0400
+ id 1o5qFF-0007En-4s; Mon, 27 Jun 2022 11:01:50 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=quicinc.com; i=@quicinc.com; q=dns/txt; s=qcdkim;
- t=1656341346; x=1687877346;
+ t=1656342105; x=1687878105;
  h=message-id:date:mime-version:subject:to:cc:references:
  from:in-reply-to:content-transfer-encoding;
- bh=RoSVQmGJOQT3CtKyHqdRFzGWnLQKjC82iQFrBm8ftXY=;
- b=nP2LltkRj1a68COVXuxSIUJ0HhX5iEFEQA/lOkCUPALUg8u93xXz4wfV
- j7KzZ+xlgEdGENIxw57qrt3ktyQGB5hrVrppw/Cztl/PGB0P1qyn4kf4T
- b16gOJ7TRJ4/XH9d+w4vku/R01uDQJ7su/SYoDgEPvGzU2EruJnJCOuTx I=;
-Received: from ironmsg08-lv.qualcomm.com ([10.47.202.152])
- by alexa-out.qualcomm.com with ESMTP; 27 Jun 2022 07:48:59 -0700
+ bh=0NK8q537xL4KMcS0Yj8KK59uWHlo4yFRuPtrNOFIwDM=;
+ b=qSwUglEYSxs8GKblAGy8yczJ1FJvqwwpb7vQB6nWqucjlDIpVcUaAExT
+ uIp1Iac2zyCcEwntkYpcrGMycEJ8gjUhzmJSCnGMVN94kEQGLhedVtJ1o
+ q1NVEdHm+dHde7MVmQ4mZeodEWr/S5IGUwur+5yfK7iLC/2YoecY1Z2b4 Y=;
+Received: from unknown (HELO ironmsg05-sd.qualcomm.com) ([10.53.140.145])
+ by alexa-out-sd-01.qualcomm.com with ESMTP; 27 Jun 2022 08:01:43 -0700
 X-QCInternal: smtphost
 Received: from nasanex01c.na.qualcomm.com ([10.47.97.222])
- by ironmsg08-lv.qualcomm.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 27 Jun 2022 07:48:58 -0700
+ by ironmsg05-sd.qualcomm.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 27 Jun 2022 08:01:42 -0700
 Received: from nalasex01a.na.qualcomm.com (10.47.209.196) by
  nasanex01c.na.qualcomm.com (10.47.97.222) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.986.22; Mon, 27 Jun 2022 07:48:58 -0700
+ 15.2.986.22; Mon, 27 Jun 2022 08:01:41 -0700
 Received: from [10.110.86.108] (10.80.80.8) by nalasex01a.na.qualcomm.com
  (10.47.209.196) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.986.22; Mon, 27 Jun
- 2022 07:48:57 -0700
-Message-ID: <938880f5-799c-f28c-b44c-5c44267e1fd8@quicinc.com>
-Date: Mon, 27 Jun 2022 07:48:56 -0700
+ 2022 08:01:40 -0700
+Message-ID: <ea4b6f94-e06b-4040-08f1-ca717b95bd9b@quicinc.com>
+Date: Mon, 27 Jun 2022 08:01:39 -0700
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:91.0) Gecko/20100101
  Thunderbird/91.10.0
-Subject: Re: [PATCH 4/9] hw/arm/aspeed: add Qualcomm Firework machine and FRU
+Subject: Re: [PATCH 3/9] hw/arm/aspeed: qcom-dc-scm-v1: add block backed FRU
  device
 Content-Language: en-US
-To: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>, Peter Maydell
- <peter.maydell@linaro.org>, Titus Rwantare <titusr@google.com>, "Andrew
- Jeffery" <andrew@aj.id.au>, Joel Stanley <joel@jms.id.au>
-CC: Graeme Gregory <quic_ggregory@quicinc.com>, Maheswara Kurapati
- <quic_mkurapat@quicinc.com>, <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>
+To: Patrick Venture <venture@google.com>, =?UTF-8?Q?C=c3=a9dric_Le_Goater?=
+ <clg@kaod.org>
+CC: Hao Wu <wuhaotsh@google.com>, Peter Maydell <peter.maydell@linaro.org>,
+ Titus Rwantare <titusr@google.com>, Andrew Jeffery <andrew@aj.id.au>, "Joel
+ Stanley" <joel@jms.id.au>, Graeme Gregory <quic_ggregory@quicinc.com>,
+ Maheswara Kurapati <quic_mkurapat@quicinc.com>, qemu-arm
+ <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>, "Peter
+ Delevoryas" <pdel@fb.com>
 References: <20220622172830.101210-1-quic_jaehyoo@quicinc.com>
- <20220622172830.101210-5-quic_jaehyoo@quicinc.com>
- <1f050a11-b1ab-12ef-c83a-c0061d36aae9@kaod.org>
- <d978e798-eace-01a5-67fb-0a1d132322a3@quicinc.com>
- <fb8cc3d1-767c-85d5-514f-89e7aa60ac8e@kaod.org>
+ <20220622172830.101210-4-quic_jaehyoo@quicinc.com>
+ <CAO=notzsLW=F6QDu5mAhBCXNMocV1_qF3EazHYLoP_mu8e8QFg@mail.gmail.com>
+ <f4d49ce6-f4b6-66fa-e980-43c185652981@kaod.org>
+ <CAO=notyrQ3697_79_HtGCO6MryA72LHhaAvf75QLpdR5LH+O4w@mail.gmail.com>
 From: Jae Hyun Yoo <quic_jaehyoo@quicinc.com>
-In-Reply-To: <fb8cc3d1-767c-85d5-514f-89e7aa60ac8e@kaod.org>
+In-Reply-To: <CAO=notyrQ3697_79_HtGCO6MryA72LHhaAvf75QLpdR5LH+O4w@mail.gmail.com>
 Content-Type: text/plain; charset="UTF-8"; format=flowed
 Content-Transfer-Encoding: 8bit
 X-Originating-IP: [10.80.80.8]
 X-ClientProxiedBy: nasanex01b.na.qualcomm.com (10.46.141.250) To
  nalasex01a.na.qualcomm.com (10.47.209.196)
-Received-SPF: pass client-ip=129.46.98.28;
- envelope-from=quic_jaehyoo@quicinc.com; helo=alexa-out.qualcomm.com
+Received-SPF: pass client-ip=199.106.114.38;
+ envelope-from=quic_jaehyoo@quicinc.com; helo=alexa-out-sd-01.qualcomm.com
 X-Spam_score_int: -43
 X-Spam_score: -4.4
 X-Spam_bar: ----
@@ -122,144 +125,157 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: YymdDBKbDvI7
+X-TUID: cHvt14jBMeZ5
 
-On 6/24/2022 12:32 AM, Cédric Le Goater wrote:
-> On 6/23/22 16:11, Jae Hyun Yoo wrote:
->> On 6/22/2022 11:43 PM, Cédric Le Goater wrote:
->>> On 6/22/22 19:28, Jae Hyun Yoo wrote:
->>>> From: Graeme Gregory <quic_ggregory@quicinc.com>
->>>>
->>>> Add base for Qualcomm Firework machine and add its FRU device which is
->>>> defined by DC-SCM to be fixed address 0x50.
->>>>
->>>> Signed-off-by: Graeme Gregory <quic_ggregory@quicinc.com>
->>>> ---
->>>>   hw/arm/aspeed.c | 53 
->>>> +++++++++++++++++++++++++++++++++++++++++++++++++
->>>>   1 file changed, 53 insertions(+)
->>>>
->>>> diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
->>>> index 36d6b2c33e48..0e6edd2be4fa 100644
->>>> --- a/hw/arm/aspeed.c
->>>> +++ b/hw/arm/aspeed.c
->>>> @@ -1017,6 +1017,35 @@ static void 
->>>> qcom_dc_scm_bmc_i2c_init(AspeedMachineState *bmc)
->>>>       qcom_dc_scm_fru_init(aspeed_i2c_get_bus(&soc->i2c, 15), 0x53, 
->>>> 128 * 1024);
->>>>   }
->>>> +static void qcom_firework_fru_init(I2CBus *bus, uint8_t addr, 
->>>> uint32_t rsize)
->>>> +{
->>>> +    I2CSlave *i2c_dev = i2c_slave_new("at24c-eeprom", addr);
->>>> +    DeviceState *dev = DEVICE(i2c_dev);
->>>> +    /* Use First Index for DC-SCM FRU */
->>>> +    DriveInfo *dinfo = drive_get(IF_NONE, 0, 1);
->>>> +
->>>> +    qdev_prop_set_uint32(dev, "rom-size", rsize);
->>>> +
->>>> +    if (dinfo) {
->>>> +        qdev_prop_set_drive(dev, "drive", blk_by_legacy_dinfo(dinfo));
->>>> +    }
->>>> +
->>>> +    i2c_slave_realize_and_unref(i2c_dev, bus, &error_abort);
->>>> +}
->>>> +
->>>> +static void qcom_dc_scm_firework_i2c_init(AspeedMachineState *bmc)
->>>> +{
->>>> +    AspeedSoCState *soc = &bmc->soc;
->>>> +
->>>> +    /* Create the generic DC-SCM hardware */
->>>> +    qcom_dc_scm_bmc_i2c_init(bmc);
->>>> +
->>>> +    /* Now create the Firework specific hardware */
->>>> +
->>>> +    /* I2C4 */
->>>> +    qcom_firework_fru_init(aspeed_i2c_get_bus(&soc->i2c, 4), 0x50, 
->>>> 128 * 1024);
->>>> +}
->>>> +
->>>>   static bool aspeed_get_mmio_exec(Object *obj, Error **errp)
->>>>   {
->>>>       return ASPEED_MACHINE(obj)->mmio_exec;
->>>> @@ -1489,6 +1518,26 @@ static void 
->>>> aspeed_machine_qcom_dc_scm_v1_class_init(ObjectClass *oc,
->>>>           aspeed_soc_num_cpus(amc->soc_name);
->>>>   };
->>>> +static void aspeed_machine_qcom_firework_class_init(ObjectClass *oc,
->>>> +                                                    void *data)
->>>> +{
->>>> +    MachineClass *mc = MACHINE_CLASS(oc);
->>>> +    AspeedMachineClass *amc = ASPEED_MACHINE_CLASS(oc);
->>>> +
->>>> +    mc->desc       = "Qualcomm DC-SCM V1/Firework BMC (Cortex A7)";
->>>> +    amc->soc_name  = "ast2600-a3";
->>>> +    amc->hw_strap1 = QCOM_DC_SCM_V1_BMC_HW_STRAP1;
->>>> +    amc->hw_strap2 = QCOM_DC_SCM_V1_BMC_HW_STRAP2;
->>>> +    amc->fmc_model = "n25q512a";
->>>> +    amc->spi_model = "n25q512a";
->>>> +    amc->num_cs    = 2;
->>>> +    amc->macs_mask = ASPEED_MAC2_ON | ASPEED_MAC3_ON;
->>>> +    amc->i2c_init  = qcom_dc_scm_firework_i2c_init;
->>>> +    mc->default_ram_size = 1 * GiB;
->>>> +    mc->default_cpus = mc->min_cpus = mc->max_cpus =
->>>> +        aspeed_soc_num_cpus(amc->soc_name);
->>>> +};
->>>> +
->>>>   static const TypeInfo aspeed_machine_types[] = {
->>>>       {
->>>>           .name          = MACHINE_TYPE_NAME("palmetto-bmc"),
->>>> @@ -1534,6 +1583,10 @@ static const TypeInfo aspeed_machine_types[] = {
->>>>           .name          = MACHINE_TYPE_NAME("qcom-dc-scm-v1-bmc"),
->>>>           .parent        = TYPE_ASPEED_MACHINE,
->>>>           .class_init    = aspeed_machine_qcom_dc_scm_v1_class_init,
->>>> +    }, {
->>>> +        .name          = MACHINE_TYPE_NAME("qcom-firework"),
->>>
->>> We should add the "-bmc" prefix to this machine name to be consistent
->>> with the other BMCs. A "qcom-firework" machine would model the whole
->>> system, host side included.
->>
->> Right, so I added the "-bmc" tag to "qcom-dc-scm-v1-bmc" as it's an
->> add-in card type board, and it can be attached to the "qcom-firework"
->> baseboard. The "qcom-firework" doesn't have the "-bmc" tag intentionally
->> since it doesn't have a bmc soc on it.
+On 6/23/2022 10:37 AM, Patrick Venture wrote:
 > 
-> These are the Aspeed machines, they only model the BMC side of the
-> overall system.
 > 
-> A "qcom-firework" machine would include the host SoC, possibly the
-> service and management SoCs plus the BMC.
+> On Thu, Jun 23, 2022 at 10:16 AM Cédric Le Goater <clg@kaod.org 
+> <mailto:clg@kaod.org>> wrote:
 > 
-> As an example, see the fb35 machine being developed by Peter :
+>     On 6/23/22 17:28, Patrick Venture wrote:
+>      >
+>      >
+>      > On Wed, Jun 22, 2022 at 10:48 AM Jae Hyun Yoo
+>     <quic_jaehyoo@quicinc.com <mailto:quic_jaehyoo@quicinc.com>
+>     <mailto:quic_jaehyoo@quicinc.com <mailto:quic_jaehyoo@quicinc.com>>>
+>     wrote:
+>      >
+>      >     From: Graeme Gregory <quic_ggregory@quicinc.com
+>     <mailto:quic_ggregory@quicinc.com> <mailto:quic_ggregory@quicinc.com
+>     <mailto:quic_ggregory@quicinc.com>>>
+>      >
+>      >     The FRU device uses the index 0 device on bus IF_NONE.
+>      >
+>      >     -drive file=$FRU,format=raw,if=none
+>      >
+>      >     file must match FRU size of 128k
+>      >
+>      >     Signed-off-by: Graeme Gregory <quic_ggregory@quicinc.com
+>     <mailto:quic_ggregory@quicinc.com> <mailto:quic_ggregory@quicinc.com
+>     <mailto:quic_ggregory@quicinc.com>>>
+>      >     ---
+>      >       hw/arm/aspeed.c | 22 +++++++++++++++++-----
+>      >       1 file changed, 17 insertions(+), 5 deletions(-)
+>      >
+>      >     diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
+>      >     index 785cc543d046..36d6b2c33e48 100644
+>      >     --- a/hw/arm/aspeed.c
+>      >     +++ b/hw/arm/aspeed.c
+>      >     @@ -992,17 +992,29 @@ static void
+>     fby35_i2c_init(AspeedMachineState *bmc)
+>      >            */
+>      >       }
+>      >
+>      >     +static void qcom_dc_scm_fru_init(I2CBus *bus, uint8_t addr,
+>     uint32_t rsize)
+>      >     +{
+>      >     +    I2CSlave *i2c_dev = i2c_slave_new("at24c-eeprom", addr);
+>      >     +    DeviceState *dev = DEVICE(i2c_dev);
+>      >     +    /* Use First Index for DC-SCM FRU */
+>      >     +    DriveInfo *dinfo = drive_get(IF_NONE, 0, 0);
+>      >     +
+>      >     +    qdev_prop_set_uint32(dev, "rom-size", rsize);
+>      >     +
+>      >     +    if (dinfo) {
+>      >     +        qdev_prop_set_drive(dev, "drive",
+>     blk_by_legacy_dinfo(dinfo));
+>      >     +    }
+>      >     +
+>      >     +    i2c_slave_realize_and_unref(i2c_dev, bus, &error_abort);
+>      >     +}
+>      >
+>      >
+>      > We've sent a similar patch up for the at24c but in its own file
+>     -- but looking at this, we could likely expand it to suite our cases
+>     as well - is there a reason it's named qcom_dc_scm_fru_init? 
+>     Presumably that's to handle the drive_get parameters.  If you make
+>     it use `drive_get(IF_NONE, bus, unit);` You'll be able to associate
+>     a drive via parameters like you aim to.
 > 
->    http://patchwork.ozlabs.org/project/qemu-devel/list/?series=306294
 > 
-> or the PowerNV machines which use an embedded or external Aspeed BMCs
+>     I have seen various attempts to populate the Aspeed eeproms with
+>     data. The simplest is the g220a_bmc_i2c_init() approach. Some are
+>     generating C code from the .bin files and compiling the result in
+>     QEMU. Some were generating elf sections, linking them in QEMU and
+>     passing the pointer as an eeprom buf.
+> 
+>     The drive approach is the best I think, but the device/drive
+>     association depends on the drive order on the command line when
+>     devices are created by the platform.
+> 
+>     We could may be extend the GenericLoaderState for eeproms ?
+>     or introduce a routine which would look for a file under a (pc-bios)
+>     per-machine directory and fill the eeprom buf with its contents ?
+> 
+>     Any idea ?
+> 
+> 
+> So we have this in our eeprom_at24c module because we use it with Aspeed 
+> and Nuvoton:
+> 
+> void at24c_eeprom_init_one(I2CBus *i2c_bus, int bus, uint8_t addr,
+>                             uint32_t rsize, int unit_number)
+> {
+>      I2CSlave *i2c_dev = i2c_slave_new("at24c-eeprom", addr);
+>      DeviceState *dev = DEVICE(i2c_dev);
+>      BlockInterfaceType type = IF_NONE;
+>      DriveInfo *dinfo;
+> 
+>      dinfo = drive_get(type, bus, unit_number);
+>      if (dinfo) {
+>          qdev_prop_set_drive(dev, "drive", blk_by_legacy_dinfo(dinfo));
+>      }
+>      qdev_prop_set_uint32(dev, "rom-size", rsize);
+>      i2c_slave_realize_and_unref(i2c_dev, i2c_bus, &error_abort);
+> }
+> 
+> With this style call in the board:
+> 
+> snippet from downstream version of 
+> https://github.com/qemu/qemu/blob/master/hw/arm/npcm7xx_boards.c#L305 
+> <https://github.com/qemu/qemu/blob/master/hw/arm/npcm7xx_boards.c#L305> 
+> that we still need to finish upstreaming:
+> 
+> <snip>
+>       /* mb_fru */
+>      at24c_eeprom_init_one(npcm7xx_i2c_get_bus(soc, 5), 5, 0x50, 8192, 0);
+> <snip>
+>      /* fan_fru */
+>      at24c_eeprom_init_one(pca954x_i2c_get_bus(i2c_mux, 2), 5, 0x51, 
+> 8192, 1);
+>      /* hsbp_fru */
+>      at24c_eeprom_init_one(pca954x_i2c_get_bus(i2c_mux, 3), 5, 0x52, 
+> 8192, 2);
+> <snip>
+> 
+> And then we call it with the bus and unit, the pair of those has to be 
+> unique for the drive parameter to work:
+> 
+> -drive 
+> file=/export/hda3/tmp/mb_fru@50,if=none,bus=5,unit=0,snapshot=off,format=raw
+> -drive 
+> file=/export/hda3/tmp/fan_fru@51,if=none,bus=5,unit=1,snapshot=off,format=raw
+> -drive 
+> file=/export/hda3/tmp/hsbp_fru@52,if=none,bus=5,unit=2,snapshot=off,format=raw
+> 
+> The above code snippet is what, I'm fairly certain we had sent up for 
+> review before, and we can send it again if you want.
 
-Okay. I'll add the '-bmc' suffix for the Firework's BMC part in this
-series so that the 'qcom-firework' can be used for a machine that
-has the host SoC. I'll submit v2 soon.
+Okay. I found that the above code was tried to upstream earlier by Hao
+but it's not completed yet and it's pending at below thread.
+
+https://lore.kernel.org/qemu-devel/875ystigke.fsf_-_@dusky.pond.sub.org/
+
+Please complete the upstreaming then I'll use Hao's version.
+
+I'll drop 3/9 patch from this series in v2.
 
 Thanks,
 Jae
 
-> Thanks,
 > 
-> C.
+>     Thanks,
 > 
->>
->> Thanks,
->> Jae
->>
->>> Thanks,
->>>
->>> C.
->>>
->>>> +        .parent        = TYPE_ASPEED_MACHINE,
->>>> +        .class_init    = aspeed_machine_qcom_firework_class_init,
->>>>       }, {
->>>>           .name          = MACHINE_TYPE_NAME("fp5280g2-bmc"),
->>>>           .parent        = TYPE_ASPEED_MACHINE,
->>>
+>     C.
 > 

@@ -1,102 +1,102 @@
-Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp2643071lft;
-        Mon, 27 Jun 2022 13:02:11 -0700 (PDT)
-X-Google-Smtp-Source: AGRyM1sZPUlNIg4yZy2ltHX3DoTMDTkTLi0FrADxJjCHCFIb6DAnUyAti6uyG6B2uU7HgqFrNo33
-X-Received: by 2002:ad4:5bc7:0:b0:470:4d3b:2cea with SMTP id t7-20020ad45bc7000000b004704d3b2ceamr10051015qvt.38.1656360131287;
-        Mon, 27 Jun 2022 13:02:11 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1656360131; cv=none;
+Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp2643842lft;
+        Mon, 27 Jun 2022 13:03:24 -0700 (PDT)
+X-Google-Smtp-Source: AGRyM1ugjHPMdg1d5hcULnMEAw5VvB1Bq2SOM0j7esDnkGx5UVpEFk1U/M+QJh4prm8PWwpiZHvl
+X-Received: by 2002:ac8:7fc8:0:b0:317:7941:a971 with SMTP id b8-20020ac87fc8000000b003177941a971mr10512627qtk.673.1656360203848;
+        Mon, 27 Jun 2022 13:03:23 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1656360203; cv=none;
         d=google.com; s=arc-20160816;
-        b=pi3v1Pya3uJ59Ii/rKoBDzSWgaKL/CJwZOrxsILsFQzt50kxgrzNH1dVRMd6oIxtvY
-         NDKOknJ4sYAMx8ufF9NCyIlHoPFLrianfZBN5Z2UEdU+eTEqE9VmLIR1lrlRevuS5dHD
-         vrHDZ6L0e+Yu24/Fw0KYw7mMXiQPETLV+eBBs5bH9HfWukivXLZhAUPOFxpYjpYhtDrG
-         a9FNhRVeUqHX+58MeIT2WRG3VTDkWrfx7RIIV/nPsciTHgmIK2qaLyOS2nw8MlTC6BKO
-         u8AGArPXCsLyh360B7eibDWCVwp3N8Y3960OLSSK6s8jxDbPCQfbNm+kSNnc5HKzwmap
-         ar4g==
+        b=gVgMQCvZeV/+8N4Nzs/YiydQb2la9gARbP5Xh/8i3kOdhH2arVv+L0TONfG9S6RNml
+         gql2og/ygpGk+Wk/GVmSkCO/kDQAR/snfYQr+X9kjDZsHDmmzmj7q7j1m1o1R6XIDPI9
+         hcQzLNCU80H92SvKI0MMgn/bZII1vkeJP1sd3Q8byFlxT6Qql01afm4CFs6r0WcuxAm4
+         5c5hQ9i3zTov+HfbUi84GUsnTI3qWcmmaJRncccT42BGtvWKWxuYro8fAnshy+53vdT3
+         +etelK6B7/7Q1XmZRTatITBMRt6YD2ezw30MtsjMZ5UGlqEBlk8fWpSlwG00atXF0ukp
+         ftIw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:mime-version
          :content-transfer-encoding:references:in-reply-to:message-id:date
          :subject:cc:to:from:dkim-signature;
-        bh=1PTlbZpuAKYSU9En23GCHSs/qdfYUF9vK66/8eWmBQo=;
-        b=xaYSMgKBhwvFB/4oShlnbs/jt4ojbVbe2YW/MOAmMP7hFwmM/otPh3ol4L93JnTjKv
-         WqelfYv3dljqvUP9CjhdAcstCrwZc2KcTV7nEDc3Bo375M2X3mu79LH2b/47iHxzFa3+
-         ccibTSe9Kn2l19n/ySeq9vd2XB8zwIfkpSPJ9Ub02pKh0eJV1yml/qCk1tylBGUz+cXm
-         rOaIcNlJB6T5rNhnnCNeOR1bLyi1tnG3IcFCj6yS48Z6ZVoLRDASPbNODAb5ScYB94vL
-         5dAwhRPT5aoSwS+kgPfgdn19V3VZr6ZnL1BzsRFhr4IjfA/4IFzN59ffpxrKGzG3WGdv
-         P2DQ==
+        bh=F2M+/W7OcKmbHr/gmbp9s2sKL3xBRP/zawDGlUMf3D8=;
+        b=jTQLzj6fBmhCX8JJliqMeDu7sAInBAe7cPZiGODAQr/VUHXZrAmcWMkk6mp0gBqyqt
+         YS/a+3PH3sze4mSzH3nNE/mhMT1LXnogQmy/OfIXsV+0T/NZhgLk8/NGwixJALx67Gb+
+         xiB8qSjZSxYAbR9x+INs5SDYuqScJsP3r2pUkQdii5Sn5GRti1EySPxI18eGHMycbLrg
+         zMRU+o32FTmWAHduyRCNnqKLIqZVy8mxSoK+jPpad9MVMosQfGery4ZaT79GPTJeoPsb
+         /+JwwNzW2/4xjZRBOu1t33fUHinA7HZL976re+c0bQ1CxrC2abPnrEI9ww2VKAKl+MLa
+         KNGQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@fb.com header.s=facebook header.b=SzjyBY07;
+       dkim=pass header.i=@fb.com header.s=facebook header.b=HmmmHrls;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=fb.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id u14-20020a05622a198e00b00317c22b1e55si6313624qtc.120.2022.06.27.13.02.11
+        by mx.google.com with ESMTPS id b10-20020ac85bca000000b00317c6f3c649si5897461qtb.132.2022.06.27.13.03.23
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 27 Jun 2022 13:02:11 -0700 (PDT)
+        Mon, 27 Jun 2022 13:03:23 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@fb.com header.s=facebook header.b=SzjyBY07;
+       dkim=pass header.i=@fb.com header.s=facebook header.b=HmmmHrls;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=fb.com
-Received: from localhost ([::1]:40518 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:41298 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1o5uvx-0003Bf-Gc
-	for alex.bennee@linaro.org; Mon, 27 Jun 2022 16:02:10 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:43096)
+	id 1o5ux9-0003ul-6z
+	for alex.bennee@linaro.org; Mon, 27 Jun 2022 16:03:23 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:42890)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <prvs=71779173e5=pdel@fb.com>)
- id 1o5upc-0004ib-FS
- for qemu-arm@nongnu.org; Mon, 27 Jun 2022 15:55:36 -0400
-Received: from mx0a-00082601.pphosted.com ([67.231.145.42]:35518)
+ id 1o5upQ-0004Ik-7I
+ for qemu-arm@nongnu.org; Mon, 27 Jun 2022 15:55:25 -0400
+Received: from mx0b-00082601.pphosted.com ([67.231.153.30]:25804)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <prvs=71779173e5=pdel@fb.com>)
- id 1o5upY-0000f0-3P
- for qemu-arm@nongnu.org; Mon, 27 Jun 2022 15:55:36 -0400
-Received: from pps.filterd (m0044012.ppops.net [127.0.0.1])
- by mx0a-00082601.pphosted.com (8.17.1.5/8.17.1.5) with ESMTP id 25RJ1VhT013280
- for <qemu-arm@nongnu.org>; Mon, 27 Jun 2022 12:55:30 -0700
+ id 1o5upN-0000Yw-8e
+ for qemu-arm@nongnu.org; Mon, 27 Jun 2022 15:55:23 -0400
+Received: from pps.filterd (m0148460.ppops.net [127.0.0.1])
+ by mx0a-00082601.pphosted.com (8.17.1.5/8.17.1.5) with ESMTP id 25RJ1UnS011063
+ for <qemu-arm@nongnu.org>; Mon, 27 Jun 2022 12:55:19 -0700
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=fb.com;
  h=from : to : cc : subject
  : date : message-id : in-reply-to : references : content-type :
  content-transfer-encoding : mime-version; s=facebook;
- bh=1PTlbZpuAKYSU9En23GCHSs/qdfYUF9vK66/8eWmBQo=;
- b=SzjyBY07bRKi4uTeLY9zAqnRQQ5WGLMpDHRjPRHCF4trEFPVQNs2fxoiQ9vUr8WzR2TV
- k2+AKIFoIcF4pvjUf2I0fR5iJmCAXLPr1yzacedvGXwjKQ+Ivsio6EG+XxY0cm2DZS6a
- Sb9BUJV/XdSG/oWpwQaQIRepXO+JxfgRO5w= 
+ bh=F2M+/W7OcKmbHr/gmbp9s2sKL3xBRP/zawDGlUMf3D8=;
+ b=HmmmHrlsPwNv46a+D+taYNblzUYomXs8nObzmnO6IKCFOnrnwBsdntFxUPP2xPKWe/qs
+ r+OsEeeCuYAtEegOKMVOBcrXXUWLtqqEcQZ8N03+sDVfnI8Sk0zkIS2K9eKdd45NtK7Z
+ kMUrMIkdPwpxokzoU20sOUIBNNTGR2P2I6g= 
 Received: from mail.thefacebook.com ([163.114.132.120])
- by mx0a-00082601.pphosted.com (PPS) with ESMTPS id 3gx02q56gv-1
+ by mx0a-00082601.pphosted.com (PPS) with ESMTPS id 3gwyvyp709-1
  (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128 verify=NOT)
- for <qemu-arm@nongnu.org>; Mon, 27 Jun 2022 12:55:30 -0700
-Received: from twshared13579.04.prn5.facebook.com (2620:10d:c085:108::8) by
- mail.thefacebook.com (2620:10d:c085:11d::6) with Microsoft SMTP Server
+ for <qemu-arm@nongnu.org>; Mon, 27 Jun 2022 12:55:19 -0700
+Received: from twshared13579.04.prn5.facebook.com (2620:10d:c085:108::4) by
+ mail.thefacebook.com (2620:10d:c085:11d::5) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2375.28; Mon, 27 Jun 2022 12:55:29 -0700
+ 15.1.2375.28; Mon, 27 Jun 2022 12:55:18 -0700
 Received: by devvm9194.prn0.facebook.com (Postfix, from userid 385188)
- id E39E88D206EF; Mon, 27 Jun 2022 12:55:07 -0700 (PDT)
+ id B68D28D206E3; Mon, 27 Jun 2022 12:55:07 -0700 (PDT)
 From: Peter Delevoryas <pdel@fb.com>
 To: 
 CC: <pdel@fb.com>, <zhdaniel@fb.com>, <clg@kaod.org>, <qemu-devel@nongnu.org>, 
  <qemu-arm@nongnu.org>, <komlodi@google.com>, <titusr@google.com>,
- <andrew@aj.id.au>, <joel@jms.id.au>
-Subject: [PATCH 08/14] hw/misc: Add fby35-cpld
-Date: Mon, 27 Jun 2022 12:55:00 -0700
-Message-ID: <20220627195506.403715-9-pdel@fb.com>
+ <andrew@aj.id.au>, <joel@jms.id.au>, Klaus Jensen <k.jensen@samsung.com>
+Subject: [PATCH 02/14] hw/i2c: add asynchronous send
+Date: Mon, 27 Jun 2022 12:54:54 -0700
+Message-ID: <20220627195506.403715-3-pdel@fb.com>
 X-Mailer: git-send-email 2.30.2
 In-Reply-To: <20220627195506.403715-1-pdel@fb.com>
 References: <20220627195506.403715-1-pdel@fb.com>
+Content-Type: text/plain; charset="UTF-8"
 X-FB-Internal: Safe
-Content-Type: text/plain
-X-Proofpoint-ORIG-GUID: cjDpacNzE--r5C1sLxzKj2sBP3_bE280
-X-Proofpoint-GUID: cjDpacNzE--r5C1sLxzKj2sBP3_bE280
+X-Proofpoint-ORIG-GUID: rQFvclKpSTuPTO8tk19D3sOu-i1Ow9ym
+X-Proofpoint-GUID: rQFvclKpSTuPTO8tk19D3sOu-i1Ow9ym
 Content-Transfer-Encoding: quoted-printable
 X-Proofpoint-UnRewURL: 0 URL was un-rewritten
 MIME-Version: 1.0
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.205,Aquarius:18.0.883,Hydra:6.0.517,FMLib:17.11.122.1
  definitions=2022-06-27_06,2022-06-24_01,2022-06-22_01
-Received-SPF: pass client-ip=67.231.145.42;
- envelope-from=prvs=71779173e5=pdel@fb.com; helo=mx0a-00082601.pphosted.com
+Received-SPF: pass client-ip=67.231.153.30;
+ envelope-from=prvs=71779173e5=pdel@fb.com; helo=mx0b-00082601.pphosted.com
 X-Spam_score_int: -21
 X-Spam_score: -2.2
 X-Spam_bar: --
@@ -119,184 +119,253 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ctzf8hsl4Prk
+X-TUID: lTJSXke8TJ1x
 
+From: Klaus Jensen <k.jensen@samsung.com>
+
+Add an asynchronous version of i2c_send() that requires the slave to
+explicitly acknowledge on the bus with i2c_ack().
+
+The current master must use the new i2c_start_send_async() to indicate
+that it wants to do an asynchronous transfer. This allows the i2c core
+to check if the target slave supports this or not. This approach relies
+on adding a new enum i2c_event member, which is why a bunch of other
+devices needs changes in their event handling switches.
+
+Signed-off-by: Klaus Jensen <k.jensen@samsung.com>
+Message-Id: <20220601210831.67259-5-its@irrelevant.dk>
+Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
 Signed-off-by: Peter Delevoryas <pdel@fb.com>
 ---
- hw/misc/fby35_cpld.c | 137 +++++++++++++++++++++++++++++++++++++++++++
- hw/misc/meson.build  |   3 +-
- 2 files changed, 139 insertions(+), 1 deletion(-)
- create mode 100644 hw/misc/fby35_cpld.c
+ hw/arm/pxa2xx.c            |  2 ++
+ hw/display/sii9022.c       |  2 ++
+ hw/display/ssd0303.c       |  2 ++
+ hw/i2c/core.c              | 36 +++++++++++++++++++++++++++++++++++-
+ hw/i2c/smbus_slave.c       |  4 ++++
+ hw/i2c/trace-events        |  2 ++
+ hw/nvram/eeprom_at24c.c    |  2 ++
+ hw/sensor/lsm303dlhc_mag.c |  2 ++
+ include/hw/i2c/i2c.h       | 16 ++++++++++++++++
+ 9 files changed, 67 insertions(+), 1 deletion(-)
 
-diff --git a/hw/misc/fby35_cpld.c b/hw/misc/fby35_cpld.c
-new file mode 100644
-index 0000000000..a783a0a2c8
---- /dev/null
-+++ b/hw/misc/fby35_cpld.c
-@@ -0,0 +1,137 @@
-+/*
-+ * Copyright (c) Meta Platforms, Inc. and affiliates. (http://www.meta.com)
-+ *
-+ * Permission is hereby granted, free of charge, to any person obtaining a=
- copy
-+ * of this software and associated documentation files (the "Software"), t=
-o deal
-+ * in the Software without restriction, including without limitation the r=
-ights
-+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or se=
-ll
-+ * copies of the Software, and to permit persons to whom the Software is
-+ * furnished to do so, subject to the following conditions:
-+ *
-+ * The above copyright notice and this permission notice shall be included=
- in
-+ * all copies or substantial portions of the Software.
-+ *
-+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS=
- OR
-+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
-+ * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OT=
-HER
-+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING=
- FROM,
-+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS =
-IN
-+ * THE SOFTWARE.
-+ */
-+
-+#include "qemu/osdep.h"
-+#include "hw/i2c/i2c.h"
-+#include "hw/registerfields.h"
-+
-+#define BOARD_ID_CLASS1 0b0000
-+#define BOARD_ID_CLASS2 0b0001
-+
-+#define TYPE_FBY35_CPLD "fby35-cpld"
-+OBJECT_DECLARE_SIMPLE_TYPE(Fby35CpldState, FBY35_CPLD);
-+
-+REG8(CLASS_TYPE, 0x5);
-+    FIELD(CLASS_TYPE, RESERVED, 0, 2);
-+    FIELD(CLASS_TYPE, 1OU_EXPANSION_NOT_PRESENT, 2, 1);
-+    FIELD(CLASS_TYPE, 2OU_EXPANSION_NOT_PRESENT, 3, 1);
-+    FIELD(CLASS_TYPE, BOARD_ID, 4, 4);
-+REG8(BOARD_REVISION, 0x8);
-+    FIELD(BOARD_REVISION, VALUE, 0, 4);
-+    FIELD(BOARD_REVISION, RESERVED, 4, 4);
-+
-+struct Fby35CpldState {
-+    I2CSlave parent_obj;
-+
-+    uint8_t target_reg;
-+    uint32_t regs[10];
-+};
-+
-+static void fby35_cpld_realize(DeviceState *dev, Error **errp)
-+{
-+    Fby35CpldState *s =3D FBY35_CPLD(dev);
-+
-+    memset(s->regs, 0, sizeof(s->regs));
-+    s->target_reg =3D 0;
-+
-+    ARRAY_FIELD_DP32(s->regs, CLASS_TYPE, BOARD_ID, 0b0000);
-+    ARRAY_FIELD_DP32(s->regs, CLASS_TYPE, 1OU_EXPANSION_NOT_PRESENT, 1);
-+    ARRAY_FIELD_DP32(s->regs, CLASS_TYPE, 2OU_EXPANSION_NOT_PRESENT, 1);
-+    ARRAY_FIELD_DP32(s->regs, BOARD_REVISION, VALUE, 0x1);
-+}
-+
-+static int fby35_cpld_i2c_event(I2CSlave *i2c, enum i2c_event event)
-+{
-+    Fby35CpldState *s =3D FBY35_CPLD(i2c);
-+
-+    switch (event) {
-+    case I2C_START_RECV:
-+        break;
-+    case I2C_START_SEND:
-+        s->target_reg =3D 0;
-+        break;
-+    case I2C_START_SEND_ASYNC:
-+    case I2C_FINISH:
-+    case I2C_NACK:
-+        break;
-+    }
-+
-+    return 0;
-+}
-+
-+static uint8_t fby35_cpld_i2c_recv(I2CSlave *i2c)
-+{
-+    Fby35CpldState *s =3D FBY35_CPLD(i2c);
-+
-+    switch (s->target_reg) {
-+    case R_CLASS_TYPE:
-+    case R_BOARD_REVISION:
-+        return s->regs[s->target_reg];
+diff --git a/hw/arm/pxa2xx.c b/hw/arm/pxa2xx.c
+index f4f687df68..93dda83d7a 100644
+--- a/hw/arm/pxa2xx.c
++++ b/hw/arm/pxa2xx.c
+@@ -1305,6 +1305,8 @@ static int pxa2xx_i2c_event(I2CSlave *i2c, enum i2c_e=
+vent event)
+     case I2C_NACK:
+         s->status |=3D 1 << 1;				/* set ACKNAK */
+         break;
 +    default:
-+        printf("%s: unexpected register read 0x%02x\n", __func__, s->targe=
-t_reg);
-+        return 0xff;
-+    }
-+}
-+
-+static int fby35_cpld_i2c_send(I2CSlave *i2c, uint8_t data)
-+{
-+    Fby35CpldState *s =3D FBY35_CPLD(i2c);
-+
-+    if (s->target_reg =3D=3D 0) {
-+        s->target_reg =3D data;
-+        return 0;
-+    }
-+
-+    switch (s->target_reg) {
-+    case R_CLASS_TYPE:
-+    case R_BOARD_REVISION:
-+        s->regs[s->target_reg] =3D data;
-+        break;
-+    default:
-+        printf("%s: unexpected register write 0x%02x 0x%02x\n", __func__, =
-s->target_reg, data);
-+        break;
-+    }
-+
-+    return 0;
-+}
-+
-+static void fby35_cpld_class_init(ObjectClass *oc, void *data)
-+{
-+    DeviceClass *dc =3D DEVICE_CLASS(oc);
-+    I2CSlaveClass *i2c =3D I2C_SLAVE_CLASS(oc);
-+
-+    dc->realize =3D fby35_cpld_realize;
-+    i2c->event =3D fby35_cpld_i2c_event;
-+    i2c->recv =3D fby35_cpld_i2c_recv;
-+    i2c->send =3D fby35_cpld_i2c_send;
-+}
-+
-+static const TypeInfo types[] =3D {
-+    {
-+        .name =3D TYPE_FBY35_CPLD,
-+        .parent =3D TYPE_I2C_SLAVE,
-+        .instance_size =3D sizeof(Fby35CpldState),
-+        .class_init =3D fby35_cpld_class_init,
-+    },
-+};
-+
-+DEFINE_TYPES(types);
-diff --git a/hw/misc/meson.build b/hw/misc/meson.build
-index 95268eddc0..1edad44b6b 100644
---- a/hw/misc/meson.build
-+++ b/hw/misc/meson.build
-@@ -117,7 +117,8 @@ softmmu_ss.add(when: 'CONFIG_ASPEED_SOC', if_true: file=
-s(
-   'aspeed_sbc.c',
-   'aspeed_sdmc.c',
-   'aspeed_xdma.c',
--  'aspeed_peci.c'))
-+  'aspeed_peci.c',
-+  'fby35_cpld.c'))
++        return -1;
+     }
+     pxa2xx_i2c_update(s);
 =20
- softmmu_ss.add(when: 'CONFIG_MSF2', if_true: files('msf2-sysreg.c'))
- softmmu_ss.add(when: 'CONFIG_NRF51_SOC', if_true: files('nrf51_rng.c'))
+diff --git a/hw/display/sii9022.c b/hw/display/sii9022.c
+index b591a58789..664fd4046d 100644
+--- a/hw/display/sii9022.c
++++ b/hw/display/sii9022.c
+@@ -76,6 +76,8 @@ static int sii9022_event(I2CSlave *i2c, enum i2c_event ev=
+ent)
+         break;
+     case I2C_NACK:
+         break;
++    default:
++        return -1;
+     }
+=20
+     return 0;
+diff --git a/hw/display/ssd0303.c b/hw/display/ssd0303.c
+index aeae22da9c..d67b0ad7b5 100644
+--- a/hw/display/ssd0303.c
++++ b/hw/display/ssd0303.c
+@@ -196,6 +196,8 @@ static int ssd0303_event(I2CSlave *i2c, enum i2c_event =
+event)
+     case I2C_NACK:
+         /* Nothing to do.  */
+         break;
++    default:
++        return -1;
+     }
+=20
+     return 0;
+diff --git a/hw/i2c/core.c b/hw/i2c/core.c
+index 145dce6078..d4ba8146bf 100644
+--- a/hw/i2c/core.c
++++ b/hw/i2c/core.c
+@@ -161,7 +161,8 @@ static int i2c_do_start_transfer(I2CBus *bus, uint8_t a=
+ddress,
+            start condition.  */
+=20
+         if (sc->event) {
+-            trace_i2c_event("start", s->address);
++            trace_i2c_event(event =3D=3D I2C_START_SEND ? "start" : "start=
+_async",
++                            s->address);
+             rv =3D sc->event(s, event);
+             if (rv && !bus->broadcast) {
+                 if (bus_scanned) {
+@@ -212,6 +213,11 @@ int i2c_start_send(I2CBus *bus, uint8_t address)
+     return i2c_do_start_transfer(bus, address, I2C_START_SEND);
+ }
+=20
++int i2c_start_send_async(I2CBus *bus, uint8_t address)
++{
++    return i2c_do_start_transfer(bus, address, I2C_START_SEND_ASYNC);
++}
++
+ void i2c_end_transfer(I2CBus *bus)
+ {
+     I2CSlaveClass *sc;
+@@ -261,6 +267,23 @@ int i2c_send(I2CBus *bus, uint8_t data)
+     return ret ? -1 : 0;
+ }
+=20
++int i2c_send_async(I2CBus *bus, uint8_t data)
++{
++    I2CNode *node =3D QLIST_FIRST(&bus->current_devs);
++    I2CSlave *slave =3D node->elt;
++    I2CSlaveClass *sc =3D I2C_SLAVE_GET_CLASS(slave);
++
++    if (!sc->send_async) {
++        return -1;
++    }
++
++    trace_i2c_send_async(slave->address, data);
++
++    sc->send_async(slave, data);
++
++    return 0;
++}
++
+ uint8_t i2c_recv(I2CBus *bus)
+ {
+     uint8_t data =3D 0xff;
+@@ -297,6 +320,17 @@ void i2c_nack(I2CBus *bus)
+     }
+ }
+=20
++void i2c_ack(I2CBus *bus)
++{
++    if (!bus->bh) {
++        return;
++    }
++
++    trace_i2c_ack();
++
++    qemu_bh_schedule(bus->bh);
++}
++
+ static int i2c_slave_post_load(void *opaque, int version_id)
+ {
+     I2CSlave *dev =3D opaque;
+diff --git a/hw/i2c/smbus_slave.c b/hw/i2c/smbus_slave.c
+index 5d10e27664..feb3ec6333 100644
+--- a/hw/i2c/smbus_slave.c
++++ b/hw/i2c/smbus_slave.c
+@@ -143,6 +143,10 @@ static int smbus_i2c_event(I2CSlave *s, enum i2c_event=
+ event)
+             dev->mode =3D SMBUS_CONFUSED;
+             break;
+         }
++        break;
++
++    default:
++        return -1;
+     }
+=20
+     return 0;
+diff --git a/hw/i2c/trace-events b/hw/i2c/trace-events
+index 209275ed2d..af181d43ee 100644
+--- a/hw/i2c/trace-events
++++ b/hw/i2c/trace-events
+@@ -4,7 +4,9 @@
+=20
+ i2c_event(const char *event, uint8_t address) "%s(addr:0x%02x)"
+ i2c_send(uint8_t address, uint8_t data) "send(addr:0x%02x) data:0x%02x"
++i2c_send_async(uint8_t address, uint8_t data) "send_async(addr:0x%02x) dat=
+a:0x%02x"
+ i2c_recv(uint8_t address, uint8_t data) "recv(addr:0x%02x) data:0x%02x"
++i2c_ack(void) ""
+=20
+ # aspeed_i2c.c
+=20
+diff --git a/hw/nvram/eeprom_at24c.c b/hw/nvram/eeprom_at24c.c
+index 01a3093600..d695f6ae89 100644
+--- a/hw/nvram/eeprom_at24c.c
++++ b/hw/nvram/eeprom_at24c.c
+@@ -75,6 +75,8 @@ int at24c_eeprom_event(I2CSlave *s, enum i2c_event event)
+         break;
+     case I2C_NACK:
+         break;
++    default:
++        return -1;
+     }
+     return 0;
+ }
+diff --git a/hw/sensor/lsm303dlhc_mag.c b/hw/sensor/lsm303dlhc_mag.c
+index 4c98ddbf20..bb8d48b2fd 100644
+--- a/hw/sensor/lsm303dlhc_mag.c
++++ b/hw/sensor/lsm303dlhc_mag.c
+@@ -427,6 +427,8 @@ static int lsm303dlhc_mag_event(I2CSlave *i2c, enum i2c=
+_event event)
+         break;
+     case I2C_NACK:
+         break;
++    default:
++        return -1;
+     }
+=20
+     s->len =3D 0;
+diff --git a/include/hw/i2c/i2c.h b/include/hw/i2c/i2c.h
+index be8bb8b78a..9b9581d230 100644
+--- a/include/hw/i2c/i2c.h
++++ b/include/hw/i2c/i2c.h
+@@ -12,6 +12,7 @@
+ enum i2c_event {
+     I2C_START_RECV,
+     I2C_START_SEND,
++    I2C_START_SEND_ASYNC,
+     I2C_FINISH,
+     I2C_NACK /* Masker NACKed a receive byte.  */
+ };
+@@ -28,6 +29,9 @@ struct I2CSlaveClass {
+     /* Master to slave. Returns non-zero for a NAK, 0 for success. */
+     int (*send)(I2CSlave *s, uint8_t data);
+=20
++    /* Master to slave (asynchronous). Receiving slave must call i2c_ack()=
+. */
++    void (*send_async)(I2CSlave *s, uint8_t data);
++
+     /*
+      * Slave to master.  This cannot fail, the device should always
+      * return something here.
+@@ -127,11 +131,23 @@ int i2c_start_recv(I2CBus *bus, uint8_t address);
+  */
+ int i2c_start_send(I2CBus *bus, uint8_t address);
+=20
++/**
++ * i2c_start_send_async: start an asynchronous 'send' transfer on an I2C b=
+us.
++ *
++ * @bus: #I2CBus to be used
++ * @address: address of the slave
++ *
++ * Return: 0 on success, -1 on error
++ */
++int i2c_start_send_async(I2CBus *bus, uint8_t address);
++
+ void i2c_end_transfer(I2CBus *bus);
+ void i2c_nack(I2CBus *bus);
++void i2c_ack(I2CBus *bus);
+ void i2c_bus_master(I2CBus *bus, QEMUBH *bh);
+ void i2c_bus_release(I2CBus *bus);
+ int i2c_send(I2CBus *bus, uint8_t data);
++int i2c_send_async(I2CBus *bus, uint8_t data);
+ uint8_t i2c_recv(I2CBus *bus);
+ bool i2c_scan_bus(I2CBus *bus, uint8_t address, bool broadcast,
+                   I2CNodeList *current_devs);
 --=20
 2.30.2
 

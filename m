@@ -1,171 +1,204 @@
-Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp2392334lft;
-        Mon, 27 Jun 2022 06:49:37 -0700 (PDT)
-X-Google-Smtp-Source: AGRyM1sx7NI70fs48FOvqYwVPy+d8d74zGnTD40yuUa3BvMLxBtygZGI0Ai70tuqhXl9XQA1fH0A
-X-Received: by 2002:a05:620a:2587:b0:6a7:ee6f:bf2a with SMTP id x7-20020a05620a258700b006a7ee6fbf2amr8141001qko.542.1656337776965;
-        Mon, 27 Jun 2022 06:49:36 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1656337776; cv=none;
+Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp2478771lft;
+        Mon, 27 Jun 2022 08:53:48 -0700 (PDT)
+X-Google-Smtp-Source: AGRyM1shb8VKelkbMU2K7GVdxbqwOqwH+n4nYHrRdshWrdHb+kDCLu0ivYZQxJbWUPV4n0BRZbgX
+X-Received: by 2002:ae9:c30d:0:b0:6a6:90b7:3905 with SMTP id n13-20020ae9c30d000000b006a690b73905mr8113945qkg.371.1656345228393;
+        Mon, 27 Jun 2022 08:53:48 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1656345228; cv=none;
         d=google.com; s=arc-20160816;
-        b=qUhaq3oDdOGkncBDgXoRdHNomr78Qo3h+IR9I06ai7+3y2JGAHUkhcOwskPD6VHFY8
-         Dg4mi9GSIsulTHMkCUSHAGNpW57709DhjEp4QQFjXnC7/Q8xgGWgYKAiGL6kXnoy5Ha0
-         OyKtoovZRz5o+T+DD11zSabarmeOeZHGdk3WHELdWjLgq/9nmcgRPCFsMZs6oX4oRFjp
-         e0YrJfcbZ8oQRNBUfitmli2qp7BtjsRZp35MzfjmxC5acCgt/4S97ErnpCNqT36xt9vY
-         TJxzBP4paS1VWnY9r8rJlfl1z4sJ3IzKOp3eZcz/u/57nCWoQLRsx03SVdN77FgpUBjg
-         zD6g==
+        b=EC/t9FETLvWxC9yintL1AWKIF3eTsTZ/O4fzEBzypWbjQKwktgb19ds7+Z8X5cDjM4
+         UX88GbvkHtI/SwmM0G8WkQ0Y+yx4ZI64CoIMgTBAcQ8Ac4PDJ+ezJz7t21YeuyQEtcTk
+         /g/ZtDyHrd1f9MMuS2ZpICoBvz7wU7KASqB4ukPTiaS1I3yHfLKo0rtJF4VWCFiXNc0V
+         +mAxW8bDAivQzKJo1ZRHRSVuRNaVVfvkBe5N7Hn9ZqKlSEa0g9r4j13Qwkhtw1bVJm32
+         sLwb9B5LnaSlh+RdEEk6ox9Wk2MqDqsWSP8XCMan0tEb2GHkq9gunQdNWdMG8f1JE/F+
+         8P1w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=PrSSOU1MxC97YvB8zwD/+lVO9ZgziE4COhqGOgdk9eQ=;
-        b=tnspfpsMTGcOX2cbwxOvjT1K1Odd3FZhKviW2jp5NYN54i3x8rOteEH1KhbRweDZ10
-         qG0/Rk6Xj26B0LgVX7UNjr8m/6440TaXWufFHlqhKTg2Utdx5pyix/00mV7mAvg6uZEN
-         H5CXowlepd5JiModyOlonkQoV39NA9jDDNAFV2fZs5QwB2GwcaK1SHJf/D+rhIJvvObi
-         4mpkVQenavrlLdSTrR8wraJXDNAyB/1cN4qapBP3az7ehRoYR00YHS4VLTLsda4GpBTi
-         tnw5RmsfdocfQ2H1je0QYtoDijbLFs2ZeNJ2ThVBMEOYr1M1BOeDyG5qs1ISHcNNHMAa
-         N0aw==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=wlE4/kRVP+JrOBEciIqPQfCAOuGeAuBM13j3gCsmiyw=;
+        b=UnanPWWZc17zSlOQr9rtBty6zn3XOqg2NOyqozxg6ptEqLz3KJ38qVUFHOiT9RQjtu
+         4M2ipVtMZlk15MXgDDfmkEY7C5r0gSOrsiv9ZEGi+/LDHBaJJY3CvA0Rn2toiwxRNZrA
+         6Ep7kBT7PV+vUEaPV/J/Vh99hC5mT5mkqGzcOYCBzYae79OR7gtahPAgN/kCNM14mwPx
+         w8irS/TnxviCIoX2NaFdP5l366TilDMPC1/GcrGeL1YkuX1K/x72tR3BOAZ8DzNW3ZiO
+         CWKHxO6Rz6IcPYxo+dOL+NI8Epr9/TMGxgdaUDgC98OoJQVLgJT9Dfc/Ajw3+3zLSx9u
+         NKTw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Fhgle95x;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@quicinc.com header.s=qcdkim header.b=XPI01AHC;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=quicinc.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id hf3-20020a0562140e8300b00461e92994f7si5574352qvb.453.2022.06.27.06.49.36
+        by mx.google.com with ESMTPS id y9-20020a05620a25c900b006aee07253bdsi6478621qko.208.2022.06.27.08.53.48
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 27 Jun 2022 06:49:36 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 27 Jun 2022 08:53:48 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Fhgle95x;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:38960 helo=lists1p.gnu.org)
+       dkim=pass header.i=@quicinc.com header.s=qcdkim header.b=XPI01AHC;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=quicinc.com
+Received: from localhost ([::1]:39564 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1o5p7Q-0001o5-Fs
-	for alex.bennee@linaro.org; Mon, 27 Jun 2022 09:49:36 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:47450)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1o5r3b-0002yk-Sr
+	for alex.bennee@linaro.org; Mon, 27 Jun 2022 11:53:47 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:43230)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1o5p76-0001kZ-R8
- for qemu-arm@nongnu.org; Mon, 27 Jun 2022 09:49:16 -0400
-Received: from mail-yw1-x1133.google.com ([2607:f8b0:4864:20::1133]:46701)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1o5p75-0004iy-4M
- for qemu-arm@nongnu.org; Mon, 27 Jun 2022 09:49:16 -0400
-Received: by mail-yw1-x1133.google.com with SMTP id
- 00721157ae682-3178ea840easo85654167b3.13
- for <qemu-arm@nongnu.org>; Mon, 27 Jun 2022 06:49:13 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=PrSSOU1MxC97YvB8zwD/+lVO9ZgziE4COhqGOgdk9eQ=;
- b=Fhgle95x9ZlmlXWLgoWMnQXRQod5n2wFdnycspWMSVD1bz0KOjtzl//BQ1sa2lsprV
- K/YQ0n9a1Qgsf0q8W7VYEASbcx+VKJlqktmoR53P2k/UhrqT5CdQVuFEKvY9auf13RS9
- y3LUc9Cw7fTF/RqyUuPSwsA1uAlw2pwNXKUZyfpKIH+uvPciYb9X9oXabfiD2RW2eu5T
- JtrLDXQPFsFyTHuswIZG38VtUAjZhxfdmkoqwyzJvwN17QaAIZ1YeoYAbH+CNvE3yN1Y
- YjCAVq/Pg945MzukQFXEpKmF0v9mFV8gYTUL6SeuqI1U/q2zF789+CIYVeAOOlM+ncEA
- 1Uig==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=PrSSOU1MxC97YvB8zwD/+lVO9ZgziE4COhqGOgdk9eQ=;
- b=iZHTYYWc35JtMyXTuh4DfopTcFI6oORDVybBzvvegcoG34vfdFHNpv+zWq28b+jhnk
- wRulBTqPbGjw18QcbgToqynAeLAwoSg6XmMWeiwqZzQgFmZ2tNfs1Hq5zaxMhec130LD
- EfSBLGVHR3CQrtbBLcIrQaN5VQetYgAZ1dStAc4yiMeptDirCHb8ThZzjRqO9evDSKnq
- uAlOP1QkrcAAd7W+FC3IK1YHQ+ArWdyzxeHEVq938J5rY4O94FLFLIXgt+I0AjqQYDH+
- ZWG0JhwhTx9xlTVXhzAZIuSQb1HeX+nzec/OBM10wPYk9s729TaC81U3YJJOi5UmQWKI
- aQuQ==
-X-Gm-Message-State: AJIora/io66LuSkvzreqIkYp5bvVgxG2YGPavF6aDaLmkkPBDeT5ylyj
- qMTb/Yk1fDKoiDaInwBZdwVLRM7qSk8plUVH1Fw5YLyRmr0=
-X-Received: by 2002:a0d:d712:0:b0:317:a108:9778 with SMTP id
- z18-20020a0dd712000000b00317a1089778mr15190034ywd.64.1656337753031; Mon, 27
- Jun 2022 06:49:13 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <quic_jaehyoo@quicinc.com>)
+ id 1o5qxo-0001SW-7b; Mon, 27 Jun 2022 11:47:48 -0400
+Received: from alexa-out-sd-01.qualcomm.com ([199.106.114.38]:49002)
+ by eggs.gnu.org with esmtps (TLS1.2:RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <quic_jaehyoo@quicinc.com>)
+ id 1o5qxl-0005eI-99; Mon, 27 Jun 2022 11:47:47 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=quicinc.com; i=@quicinc.com; q=dns/txt; s=qcdkim;
+ t=1656344865; x=1687880865;
+ h=from:to:cc:subject:date:message-id:in-reply-to:
+ references:mime-version:content-transfer-encoding;
+ bh=wlE4/kRVP+JrOBEciIqPQfCAOuGeAuBM13j3gCsmiyw=;
+ b=XPI01AHCHUzNCYyXldCXSh2yJ1IiLilqkQi5XCBpefpsr5OTquLFOBMx
+ ck/aQ9256sEqLOtz5U9FHiY+BDYv2diPaOdQ6EdqXif8fIs6Saz0Cr7CR
+ 8pt5mJKDwSGLdCk2IXTeekum5CinwgNz9caSLZM56DQusU9WnNfC9TB1J 0=;
+Received: from unknown (HELO ironmsg04-sd.qualcomm.com) ([10.53.140.144])
+ by alexa-out-sd-01.qualcomm.com with ESMTP; 27 Jun 2022 08:47:37 -0700
+X-QCInternal: smtphost
+Received: from nasanex01c.na.qualcomm.com ([10.47.97.222])
+ by ironmsg04-sd.qualcomm.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 27 Jun 2022 08:47:36 -0700
+Received: from nalasex01a.na.qualcomm.com (10.47.209.196) by
+ nasanex01c.na.qualcomm.com (10.47.97.222) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.986.22; Mon, 27 Jun 2022 08:47:36 -0700
+Received: from maru.qualcomm.com (10.80.80.8) by nalasex01a.na.qualcomm.com
+ (10.47.209.196) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.986.22; Mon, 27 Jun
+ 2022 08:47:34 -0700
+From: Jae Hyun Yoo <quic_jaehyoo@quicinc.com>
+To: Peter Maydell <peter.maydell@linaro.org>,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Titus Rwantare
+ <titusr@google.com>, Andrew Jeffery <andrew@aj.id.au>, Joel Stanley
+ <joel@jms.id.au>, Patrick Venture <venture@google.com>, Hao Wu
+ <wuhaotsh@google.com>
+CC: Graeme Gregory <quic_ggregory@quicinc.com>, Maheswara Kurapati
+ <quic_mkurapat@quicinc.com>, Jae Hyun Yoo <quic_jaehyoo@quicinc.com>,
+ <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>
+Subject: [PATCH v2 1/7] hw/arm/aspeed: add support for the Qualcomm DC-SCM v1
+ board
+Date: Mon, 27 Jun 2022 08:46:57 -0700
+Message-ID: <20220627154703.148943-2-quic_jaehyoo@quicinc.com>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20220627154703.148943-1-quic_jaehyoo@quicinc.com>
+References: <20220627154703.148943-1-quic_jaehyoo@quicinc.com>
 MIME-Version: 1.0
-References: <20220627134620.3190252-1-peter.maydell@linaro.org>
-In-Reply-To: <20220627134620.3190252-1-peter.maydell@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 27 Jun 2022 14:48:35 +0100
-Message-ID: <CAFEAcA9UE0P=gU9Q50y6OuZN_0tO6mFO7d-yJmUF+GvSCre9mw@mail.gmail.com>
-Subject: Re: [PATCH] target/arm: Fix qemu-system-arm handling of LPAE block
- descriptors for highmem
-To: qemu-arm@nongnu.org, qemu-devel@nongnu.org
-Cc: Richard Henderson <richard.henderson@linaro.org>,
- He Zhe <zhe.he@windriver.com>, qemu-stable <qemu-stable@nongnu.org>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1133;
- envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x1133.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-Originating-IP: [10.80.80.8]
+X-ClientProxiedBy: nasanex01a.na.qualcomm.com (10.52.223.231) To
+ nalasex01a.na.qualcomm.com (10.47.209.196)
+Received-SPF: pass client-ip=199.106.114.38;
+ envelope-from=quic_jaehyoo@quicinc.com; helo=alexa-out-sd-01.qualcomm.com
+X-Spam_score_int: -43
+X-Spam_score: -4.4
+X-Spam_bar: ----
+X-Spam_report: (-4.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ RCVD_IN_DNSWL_MED=-2.3, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: X5edsZmPthfx
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: ixpSR0BLGKCs
 
-...forgot to actually cc qemu-stable. (I'm still not sure if
-that's important to the stable-branch process...)
+Add qcom-dc-scm-v1 board support.
 
--- PMM
+Signed-off-by: Jae Hyun Yoo <quic_jaehyoo@quicinc.com>
+---
+Changes in v2:
+* Fixed a typo in HW strap value comment. (Rebecca)
+* Removed a useless change which is reverted by the next patch. (Joel)
 
-On Mon, 27 Jun 2022 at 14:46, Peter Maydell <peter.maydell@linaro.org> wrote:
->
-> In commit 39a1fd25287f5d we fixed a bug in the handling of LPAE block
-> descriptors where we weren't correctly zeroing out some RES0 bits.
-> However this fix has a bug because the calculation of the mask is
-> done at the wrong width: in
->   descaddr &= ~(page_size - 1);
-> page_size is a target_ulong, so in the 'qemu-system-arm' binary it is
-> only 32 bits, and the effect is that we always zero out the top 32
-> bits of the calculated address.  Fix the calculation by forcing the
-> mask to be calculated with the same type as descaddr.
->
-> This only affects 32-bit CPUs which support LPAE (e.g. cortex-a15)
-> when used on board models which put RAM or devices above the 4GB
-> mark and when the 'qemu-system-arm' executable is being used.
-> It was also masked in 7.0 by the main bug reported in
-> https://gitlab.com/qemu-project/qemu/-/issues/1078 where the
-> virt board incorrectly does not enable 'highmem' for 32-bit CPUs.
->
-> The workaround is to use 'qemu-system-aarch64' with the same
-> command line.
->
-> Reported-by: He Zhe <zhe.he@windriver.com>
-> Fixes: 39a1fd25287f5de
-> ("target/arm: Fix handling of LPAE block descriptors")
-> Cc: qemu-stable@nongnu.org
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> ---
->  target/arm/ptw.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
->
-> diff --git a/target/arm/ptw.c b/target/arm/ptw.c
-> index da478104f05..e71fc1f4293 100644
-> --- a/target/arm/ptw.c
-> +++ b/target/arm/ptw.c
-> @@ -1257,7 +1257,7 @@ static bool get_phys_addr_lpae(CPUARMState *env, uint64_t address,
->           * clear the lower bits here before ORing in the low vaddr bits.
->           */
->          page_size = (1ULL << ((stride * (4 - level)) + 3));
-> -        descaddr &= ~(page_size - 1);
-> +        descaddr &= ~(hwaddr)(page_size - 1);
->          descaddr |= (address & (page_size - 1));
->          /* Extract attributes from the descriptor */
->          attrs = extract64(descriptor, 2, 10)
-> --
-> 2.25.1
->
+ hw/arm/aspeed.c | 35 +++++++++++++++++++++++++++++++++++
+ 1 file changed, 35 insertions(+)
+
+diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
+index 98dc185acd9a..cb7d99513816 100644
+--- a/hw/arm/aspeed.c
++++ b/hw/arm/aspeed.c
+@@ -174,6 +174,10 @@ struct AspeedMachineState {
+ #define BLETCHLEY_BMC_HW_STRAP1 AST2600_EVB_HW_STRAP1
+ #define BLETCHLEY_BMC_HW_STRAP2 AST2600_EVB_HW_STRAP2
+ 
++/* Qualcomm DC-SCM hardware value */
++#define QCOM_DC_SCM_V1_BMC_HW_STRAP1  0x00000000
++#define QCOM_DC_SCM_V1_BMC_HW_STRAP2  0x00000041
++
+ /*
+  * The max ram region is for firmwares that scan the address space
+  * with load/store to guess how much RAM the SoC has.
+@@ -988,6 +992,13 @@ static void fby35_i2c_init(AspeedMachineState *bmc)
+      */
+ }
+ 
++static void qcom_dc_scm_bmc_i2c_init(AspeedMachineState *bmc)
++{
++    AspeedSoCState *soc = &bmc->soc;
++
++    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 15), "tmp105", 0x4d);
++}
++
+ static bool aspeed_get_mmio_exec(Object *obj, Error **errp)
+ {
+     return ASPEED_MACHINE(obj)->mmio_exec;
+@@ -1420,6 +1431,26 @@ static void aspeed_minibmc_machine_ast1030_evb_class_init(ObjectClass *oc,
+     amc->macs_mask = 0;
+ }
+ 
++static void aspeed_machine_qcom_dc_scm_v1_class_init(ObjectClass *oc,
++                                                     void *data)
++{
++    MachineClass *mc = MACHINE_CLASS(oc);
++    AspeedMachineClass *amc = ASPEED_MACHINE_CLASS(oc);
++
++    mc->desc       = "Qualcomm DC-SCM V1 BMC (Cortex A7)";
++    amc->soc_name  = "ast2600-a3";
++    amc->hw_strap1 = QCOM_DC_SCM_V1_BMC_HW_STRAP1;
++    amc->hw_strap2 = QCOM_DC_SCM_V1_BMC_HW_STRAP2;
++    amc->fmc_model = "n25q512a";
++    amc->spi_model = "n25q512a";
++    amc->num_cs    = 2;
++    amc->macs_mask = ASPEED_MAC2_ON | ASPEED_MAC3_ON;
++    amc->i2c_init  = qcom_dc_scm_bmc_i2c_init;
++    mc->default_ram_size = 1 * GiB;
++    mc->default_cpus = mc->min_cpus = mc->max_cpus =
++        aspeed_soc_num_cpus(amc->soc_name);
++};
++
+ static const TypeInfo aspeed_machine_types[] = {
+     {
+         .name          = MACHINE_TYPE_NAME("palmetto-bmc"),
+@@ -1457,6 +1488,10 @@ static const TypeInfo aspeed_machine_types[] = {
+         .name          = MACHINE_TYPE_NAME("g220a-bmc"),
+         .parent        = TYPE_ASPEED_MACHINE,
+         .class_init    = aspeed_machine_g220a_class_init,
++    }, {
++        .name          = MACHINE_TYPE_NAME("qcom-dc-scm-v1-bmc"),
++        .parent        = TYPE_ASPEED_MACHINE,
++        .class_init    = aspeed_machine_qcom_dc_scm_v1_class_init,
+     }, {
+         .name          = MACHINE_TYPE_NAME("fp5280g2-bmc"),
+         .parent        = TYPE_ASPEED_MACHINE,
+-- 
+2.25.1
+

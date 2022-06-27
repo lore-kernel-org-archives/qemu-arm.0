@@ -1,98 +1,105 @@
-Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp2487741lft;
-        Mon, 27 Jun 2022 09:06:25 -0700 (PDT)
-X-Google-Smtp-Source: AGRyM1vMksA0RMthaYDAhwC4HlsedBqunSozu1XaQMPY5l6razuBYpMqxdqwsdkZVqjFQ6MstkvM
-X-Received: by 2002:a05:622a:608c:b0:2f1:e3fa:b603 with SMTP id hf12-20020a05622a608c00b002f1e3fab603mr9770198qtb.48.1656345985449;
-        Mon, 27 Jun 2022 09:06:25 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1656345985; cv=none;
+Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp2604820lft;
+        Mon, 27 Jun 2022 11:53:31 -0700 (PDT)
+X-Google-Smtp-Source: AGRyM1t3VYIpCEhG1LvCZpTfjYudmdF3nEl3S8iOqRhiTpDuYPswTiBRWc3Hew0/RpREYy77ChfW
+X-Received: by 2002:a05:622a:205:b0:318:7105:e925 with SMTP id b5-20020a05622a020500b003187105e925mr9033280qtx.458.1656356011351;
+        Mon, 27 Jun 2022 11:53:31 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1656356011; cv=none;
         d=google.com; s=arc-20160816;
-        b=auL6kFerhhpW6nouP437mtBrbPg/mKRdd3H0U+qmbYY3Uieye1DklzsVxj4p8MOkni
-         gkbFWnENMGAeNdnk0oimzAGsaTd5NHpHoTGdMeryGNA1TD5ueMLTmimFU+16jL7xN3qb
-         YiikSeqWYASMyH+hCp9KBxRcMfdx//Enhii0vBDUk5+18vmR4lcd82Ms4MqPdd/2EiAG
-         p9zOa/FZWe6wqztHOwhU8L6Bfiy199IPxaCjCrIl9tsxQH54zu7llnwKbMGisGttTXVQ
-         1my3a2uax7xn9rWSD+HkzWRfRnO5LaShzab4z97DlKd3BxLGS19Yhlk/nIayYphnOngX
-         IMIQ==
+        b=TdgF8kNey5+4e4mrJJAH1N0cKqf67LTHUMgDhXJqL80YqugWBDERIcU/a1toe96Wx8
+         hNKudh5QcTZFz1Kt2ErsHwDGgGTvm+rbhl1MDgZ5f3+CTRKdm1mmbfZPn0I6J6d5bid5
+         7ArWzn8l+SQDY8IlRSkFwXk1iPlAr2x2Pd65HmDDsOuGQkVCGOjenW5fLscZAk7V8gUZ
+         984vDGKGy9cTJK4zw4ZmmhUhOb6d75PJO238r2w9eyi7dh3evL96/FMAqD1hmz0P1+pf
+         E6hVaUemMcyU4/T05JXbMaEl/mGbBCKNqX35dmzwOPtTqzl7Ccdya/ud0Xs1B9OyD/DG
+         SEiA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:cc:to:content-language:subject
-         :user-agent:mime-version:date:message-id;
-        bh=nBmZ44OUlHSUvp5eo+uTW9QXUB8NRQWHLHNcrUBTca0=;
-        b=ZOrnnWnzCSWlujLwXS3sZJ3Wh8a7KfxMFjCBVZFG8COEF7QrO7Jp0dTBhwsD4S6vUA
-         9TDm2SPL1wrgEwFuQOrl/E+IFARoIpkMK8mv6j6eJNYGqbLQp12pzIUzAJUglnCFMcro
-         E5BLBX59UtBXfxCsbKYVPao73EHVp9l8dPmGxz+nFPMYqIqTypHfIifpA2METkjHZ8yR
-         hDSXdBZC2kNBVmnhM+dV13Yj8NNPTqDwE1PSgl0nDKHqhxHdKzMv58777S+UDr7W98nv
-         k+kSQWgNBn6lC6jqJA/x9HteLWWJWLB6fsPsbLOBOQGDU/+zuS1uc5tXXVjJv8AtqEw4
-         S/Zg==
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
+        bh=VHv6YEyj62SAF8L5IukS4HCN6T5BiSHsEC7rHqnLzwY=;
+        b=PrrpCy2yb5sDLuI+lJtcDeZjLQyAVVXfX7s2oY95EHK1U1F9pyc0zT4K4NWL+LkzWO
+         d/XGs38ChjfQgRuSWulmmFgrUEjuHWrvdBX8l79wgauBzFYJZEaDqL5MgSO0xh2bsrM7
+         M2TUFbfrQwg0tJfLDswI/FP01BHnkdQzCFinjNdoJT4M1KN8UibkQfRQC/wdsXTmaap+
+         lHY2ofaLsFAsYNmbqZRviThyDlypXv2950V+UzQsUGN7byNbtwXnPCwHrR1t222CrdAM
+         JYYthviJ37daP469aHOhycY/65+EhApIiSsb5ME5k54lZVsm78xoUnU1lqhnImVfXZSY
+         w6gg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@fb.com header.s=facebook header.b=kraT3qit;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=fb.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id y17-20020a05620a25d100b006a69f93be6fsi7397794qko.733.2022.06.27.09.06.25
+        by mx.google.com with ESMTPS id b10-20020ac85bca000000b0030511f5ec60si6242655qtb.373.2022.06.27.11.53.31
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 27 Jun 2022 09:06:25 -0700 (PDT)
+        Mon, 27 Jun 2022 11:53:31 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:34910 helo=lists1p.gnu.org)
+       dkim=pass header.i=@fb.com header.s=facebook header.b=kraT3qit;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=fb.com
+Received: from localhost ([::1]:57620 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1o5rFo-0002rI-Uq
-	for alex.bennee@linaro.org; Mon, 27 Jun 2022 12:06:24 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44934)
+	id 1o5trW-0005Nd-SR
+	for alex.bennee@linaro.org; Mon, 27 Jun 2022 14:53:30 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:57574)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1o5r6V-0001gR-Mv
- for qemu-arm@nongnu.org; Mon, 27 Jun 2022 11:56:47 -0400
-Received: from smtpout2.mo529.mail-out.ovh.net ([79.137.123.220]:46263)
+ (Exim 4.90_1) (envelope-from <prvs=7177cd4fe2=irischenlj@fb.com>)
+ id 1o5tqz-0005N2-3P; Mon, 27 Jun 2022 14:52:57 -0400
+Received: from mx0b-00082601.pphosted.com ([67.231.153.30]:31530)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1o5r6S-0006r0-PL
- for qemu-arm@nongnu.org; Mon, 27 Jun 2022 11:56:47 -0400
-Received: from mxplan5.mail.ovh.net (unknown [10.109.143.123])
- by mo529.mail-out.ovh.net (Postfix) with ESMTPS id B5586111D9497;
- Mon, 27 Jun 2022 17:56:41 +0200 (CEST)
-Received: from kaod.org (37.59.142.109) by DAG4EX1.mxp5.local (172.16.2.31)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.9; Mon, 27 Jun
- 2022 17:56:40 +0200
-Authentication-Results: garm.ovh; auth=pass
- (GARM-109S00309517655-9251-4fb9-a0e2-b80df037be20,
- 659C98CE65B422D4D127A36693B7EAD6442F0B22) smtp.auth=clg@kaod.org
-X-OVh-ClientIp: 82.64.250.170
-Message-ID: <77f7d3ed-304b-2709-cc70-2e5ea3f5a287@kaod.org>
-Date: Mon, 27 Jun 2022 17:56:39 +0200
+ (Exim 4.90_1) (envelope-from <prvs=7177cd4fe2=irischenlj@fb.com>)
+ id 1o5tqw-000864-L6; Mon, 27 Jun 2022 14:52:56 -0400
+Received: from pps.filterd (m0109331.ppops.net [127.0.0.1])
+ by mx0a-00082601.pphosted.com (8.17.1.5/8.17.1.5) with ESMTP id 25RGLFUl017428;
+ Mon, 27 Jun 2022 11:52:39 -0700
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=fb.com;
+ h=from : to : cc : subject
+ : date : message-id : mime-version : content-transfer-encoding :
+ content-type; s=facebook; bh=VHv6YEyj62SAF8L5IukS4HCN6T5BiSHsEC7rHqnLzwY=;
+ b=kraT3qitTf+RDrPHFOWoFBlldzrQzjkIlF6ImtsH+bz1jJwYyevN4XyUJGD5CBgF1fUU
+ V9sG2LddO+UXeK7N0ofdQVlrE5cgjNMr4LtaUTjafr4zQKQ8YDL6WAGFxcQSTlBiQdql
+ H5oUeLy0KxB6IMVBS3Z/wOjSrwDDWIh2Zls= 
+Received: from maileast.thefacebook.com ([163.114.130.16])
+ by mx0a-00082601.pphosted.com (PPS) with ESMTPS id 3gyg0a9arw-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128 verify=NOT);
+ Mon, 27 Jun 2022 11:52:39 -0700
+Received: from localhost (2620:10d:c0a8:1b::d) by mail.thefacebook.com
+ (2620:10d:c0a8:83::6) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2375.28; Mon, 27 Jun
+ 2022 11:52:38 -0700
+From: Iris Chen <irischenlj@fb.com>
+To: 
+CC: <irischenlj@fb.com>, <pdel@fb.com>, <qemu-devel@nongnu.org>,
+ <qemu-arm@nongnu.org>, <clg@kaod.org>, <patrick@stwcx.xyz>,
+ <alistair@alistair23.me>, <kwolf@redhat.com>, <hreitz@redhat.com>,
+ <peter.maydell@linaro.org>, <andrew@aj.id.au>, <joel@jms.id.au>,
+ <thuth@redhat.com>, <lvivier@redhat.com>, <pbonzini@redhat.com>,
+ <qemu-block@nongnu.org>, <dz4list@gmail.com>
+Subject: [PATCH 0/2] Add Block Protect (BP) and Top Bottom (TB) bits for write
+ protect
+Date: Mon, 27 Jun 2022 11:52:32 -0700
+Message-ID: <20220627185234.1911337-1-irischenlj@fb.com>
+X-Mailer: git-send-email 2.30.2
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.9.0
-Subject: Re: [PATCH v2 1/7] hw/arm/aspeed: add support for the Qualcomm DC-SCM
- v1 board
-Content-Language: en-US
-To: Jae Hyun Yoo <quic_jaehyoo@quicinc.com>, Peter Maydell
- <peter.maydell@linaro.org>, Titus Rwantare <titusr@google.com>, Andrew
- Jeffery <andrew@aj.id.au>, Joel Stanley <joel@jms.id.au>, Patrick Venture
- <venture@google.com>, Hao Wu <wuhaotsh@google.com>
-CC: Graeme Gregory <quic_ggregory@quicinc.com>, Maheswara Kurapati
- <quic_mkurapat@quicinc.com>, <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>
-References: <20220627154703.148943-1-quic_jaehyoo@quicinc.com>
- <20220627154703.148943-2-quic_jaehyoo@quicinc.com>
-From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
-In-Reply-To: <20220627154703.148943-2-quic_jaehyoo@quicinc.com>
-Content-Type: text/plain; charset="UTF-8"; format=flowed
 Content-Transfer-Encoding: 8bit
-X-Originating-IP: [37.59.142.109]
-X-ClientProxiedBy: DAG4EX2.mxp5.local (172.16.2.32) To DAG4EX1.mxp5.local
- (172.16.2.31)
-X-Ovh-Tracer-GUID: c8af353f-ec8f-4b73-a64c-f9c145c6e9a2
-X-Ovh-Tracer-Id: 15220196416000723957
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvfedrudeghedgleejucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhepkfffgggfuffvvehfhfgjtgfgihesthekredttdefjeenucfhrhhomhepveorughrihgtpgfnvggpifhorghtvghruceotghlgheskhgrohgurdhorhhgqeenucggtffrrghtthgvrhhnpeekteejtdelkeejvdevffduhfetteelieefgeefffeugffhfeekheffueefledujeenucfkpheptddrtddrtddrtddpfeejrdehledrudegvddruddtleenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhhouggvpehsmhhtphhouhhtpdhhvghlohepmhigphhlrghnhedrmhgrihhlrdhovhhhrdhnvghtpdhinhgvtheptddrtddrtddrtddpmhgrihhlfhhrohhmpegtlhhgsehkrghougdrohhrghdpnhgspghrtghpthhtohepuddprhgtphhtthhopehqvghmuhdquggvvhgvlhesnhhonhhgnhhurdhorhhgpdfovfetjfhoshhtpehmohehvdel
-Received-SPF: pass client-ip=79.137.123.220; envelope-from=clg@kaod.org;
- helo=smtpout2.mo529.mail-out.ovh.net
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+Content-Type: text/plain
+X-Originating-IP: [2620:10d:c0a8:1b::d]
+X-Proofpoint-GUID: HlRQM7ArlUdq3MIfP-yyU6K2MdJBUuwq
+X-Proofpoint-ORIG-GUID: HlRQM7ArlUdq3MIfP-yyU6K2MdJBUuwq
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.205,Aquarius:18.0.883,Hydra:6.0.517,FMLib:17.11.122.1
+ definitions=2022-06-27_06,2022-06-24_01,2022-06-22_01
+Received-SPF: pass client-ip=67.231.153.30;
+ envelope-from=prvs=7177cd4fe2=irischenlj@fb.com;
+ helo=mx0b-00082601.pphosted.com
+X-Spam_score_int: -21
+X-Spam_score: -2.2
+X-Spam_bar: --
+X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.082,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -108,95 +115,33 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: QLnrzCBxpeGD
+X-TUID: 4UTVbG03tkgW
 
-On 6/27/22 17:46, Jae Hyun Yoo wrote:
-> Add qcom-dc-scm-v1 board support.
-> 
-> Signed-off-by: Jae Hyun Yoo <quic_jaehyoo@quicinc.com>
+Hey everyone,
 
+Adding the 3 block protection bits and top bottom bits which configure which parts
+of the flash are writable and read-only.
 
+These patches are based on previous patches I just submitted:
+hw: m25p80: fixing individual test failure when tests are running in isolation
+hw: m25p80: add WP# pin and SRWD bit for write protection
+hw: m25p80: add tests for write protect (WP# and SRWD bit)
 
-Reviewed-by: Cédric Le Goater <clg@kaod.org>
+The tests that were added iterates through every different memory protection
+case so it takes a little longer to run. Let me know what you think about that
+and if that's okay or not.
 
 Thanks,
+Iris
 
-C.
+Iris Chen (2):
+  hw: m25p80: Add Block Protect and Top Bottom bits for write protect
+  hw: m25p80: add tests for BP and TB bit write protect
 
+ hw/block/m25p80.c             |  74 +++++++++++++++++++----
+ tests/qtest/aspeed_smc-test.c | 111 ++++++++++++++++++++++++++++++++++
+ 2 files changed, 173 insertions(+), 12 deletions(-)
 
-> ---
-> Changes in v2:
-> * Fixed a typo in HW strap value comment. (Rebecca)
-> * Removed a useless change which is reverted by the next patch. (Joel)
-> 
->   hw/arm/aspeed.c | 35 +++++++++++++++++++++++++++++++++++
->   1 file changed, 35 insertions(+)
-> 
-> diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
-> index 98dc185acd9a..cb7d99513816 100644
-> --- a/hw/arm/aspeed.c
-> +++ b/hw/arm/aspeed.c
-> @@ -174,6 +174,10 @@ struct AspeedMachineState {
->   #define BLETCHLEY_BMC_HW_STRAP1 AST2600_EVB_HW_STRAP1
->   #define BLETCHLEY_BMC_HW_STRAP2 AST2600_EVB_HW_STRAP2
->   
-> +/* Qualcomm DC-SCM hardware value */
-> +#define QCOM_DC_SCM_V1_BMC_HW_STRAP1  0x00000000
-> +#define QCOM_DC_SCM_V1_BMC_HW_STRAP2  0x00000041
-> +
->   /*
->    * The max ram region is for firmwares that scan the address space
->    * with load/store to guess how much RAM the SoC has.
-> @@ -988,6 +992,13 @@ static void fby35_i2c_init(AspeedMachineState *bmc)
->        */
->   }
->   
-> +static void qcom_dc_scm_bmc_i2c_init(AspeedMachineState *bmc)
-> +{
-> +    AspeedSoCState *soc = &bmc->soc;
-> +
-> +    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 15), "tmp105", 0x4d);
-> +}
-> +
->   static bool aspeed_get_mmio_exec(Object *obj, Error **errp)
->   {
->       return ASPEED_MACHINE(obj)->mmio_exec;
-> @@ -1420,6 +1431,26 @@ static void aspeed_minibmc_machine_ast1030_evb_class_init(ObjectClass *oc,
->       amc->macs_mask = 0;
->   }
->   
-> +static void aspeed_machine_qcom_dc_scm_v1_class_init(ObjectClass *oc,
-> +                                                     void *data)
-> +{
-> +    MachineClass *mc = MACHINE_CLASS(oc);
-> +    AspeedMachineClass *amc = ASPEED_MACHINE_CLASS(oc);
-> +
-> +    mc->desc       = "Qualcomm DC-SCM V1 BMC (Cortex A7)";
-> +    amc->soc_name  = "ast2600-a3";
-> +    amc->hw_strap1 = QCOM_DC_SCM_V1_BMC_HW_STRAP1;
-> +    amc->hw_strap2 = QCOM_DC_SCM_V1_BMC_HW_STRAP2;
-> +    amc->fmc_model = "n25q512a";
-> +    amc->spi_model = "n25q512a";
-> +    amc->num_cs    = 2;
-> +    amc->macs_mask = ASPEED_MAC2_ON | ASPEED_MAC3_ON;
-> +    amc->i2c_init  = qcom_dc_scm_bmc_i2c_init;
-> +    mc->default_ram_size = 1 * GiB;
-> +    mc->default_cpus = mc->min_cpus = mc->max_cpus =
-> +        aspeed_soc_num_cpus(amc->soc_name);
-> +};
-> +
->   static const TypeInfo aspeed_machine_types[] = {
->       {
->           .name          = MACHINE_TYPE_NAME("palmetto-bmc"),
-> @@ -1457,6 +1488,10 @@ static const TypeInfo aspeed_machine_types[] = {
->           .name          = MACHINE_TYPE_NAME("g220a-bmc"),
->           .parent        = TYPE_ASPEED_MACHINE,
->           .class_init    = aspeed_machine_g220a_class_init,
-> +    }, {
-> +        .name          = MACHINE_TYPE_NAME("qcom-dc-scm-v1-bmc"),
-> +        .parent        = TYPE_ASPEED_MACHINE,
-> +        .class_init    = aspeed_machine_qcom_dc_scm_v1_class_init,
->       }, {
->           .name          = MACHINE_TYPE_NAME("fp5280g2-bmc"),
->           .parent        = TYPE_ASPEED_MACHINE,
+--
+2.30.2
 

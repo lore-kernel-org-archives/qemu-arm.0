@@ -1,102 +1,102 @@
-Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp2641399lft;
-        Mon, 27 Jun 2022 12:59:23 -0700 (PDT)
-X-Google-Smtp-Source: AGRyM1shj8+88B8vj8SwAjJFOvcpd0E1rB7764pKhaga6klqzqAu48vAC4NQYDCxUOb8saAYfAk5
-X-Received: by 2002:ae9:f808:0:b0:6af:dfa:a290 with SMTP id x8-20020ae9f808000000b006af0dfaa290mr7968186qkh.741.1656359963096;
-        Mon, 27 Jun 2022 12:59:23 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1656359963; cv=none;
+Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp2643071lft;
+        Mon, 27 Jun 2022 13:02:11 -0700 (PDT)
+X-Google-Smtp-Source: AGRyM1sZPUlNIg4yZy2ltHX3DoTMDTkTLi0FrADxJjCHCFIb6DAnUyAti6uyG6B2uU7HgqFrNo33
+X-Received: by 2002:ad4:5bc7:0:b0:470:4d3b:2cea with SMTP id t7-20020ad45bc7000000b004704d3b2ceamr10051015qvt.38.1656360131287;
+        Mon, 27 Jun 2022 13:02:11 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1656360131; cv=none;
         d=google.com; s=arc-20160816;
-        b=E2YipWKFsX94tw8iCBnUHtJOOi3vDi6iUCaNU+lWGsfhfatkaSyi1eNG+HQkBcpZKV
-         ovZBlSnlLmrR4KxEo8hrSh3MHGweuPoVxHV5auPkMGFHv9gbfU9UUeBv1IQgEXnyLVIK
-         DOY1U1M82cZp0BYFXr1jpFMniYClCGwXirVrvwLeR/TzsCIYkCg703hvKXb36nFCO+vl
-         H0uSM/is+w2N9+9+866hK9vs1PWDN4MFkhP27AV7LiRl3G9mYbsLKJhMqgwmQEd9Q8on
-         bAESIvY8Tnb4Q4c7NCbf6qXeu/f05hAl/6gDP+LSQ39ORErntS5O5Babk/MGD6gtEvTG
-         J+iQ==
+        b=pi3v1Pya3uJ59Ii/rKoBDzSWgaKL/CJwZOrxsILsFQzt50kxgrzNH1dVRMd6oIxtvY
+         NDKOknJ4sYAMx8ufF9NCyIlHoPFLrianfZBN5Z2UEdU+eTEqE9VmLIR1lrlRevuS5dHD
+         vrHDZ6L0e+Yu24/Fw0KYw7mMXiQPETLV+eBBs5bH9HfWukivXLZhAUPOFxpYjpYhtDrG
+         a9FNhRVeUqHX+58MeIT2WRG3VTDkWrfx7RIIV/nPsciTHgmIK2qaLyOS2nw8MlTC6BKO
+         u8AGArPXCsLyh360B7eibDWCVwp3N8Y3960OLSSK6s8jxDbPCQfbNm+kSNnc5HKzwmap
+         ar4g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:mime-version
          :content-transfer-encoding:references:in-reply-to:message-id:date
          :subject:cc:to:from:dkim-signature;
-        bh=YnSoyQOrwBcMGgkMZvl1ogHCeNgy/jX5OX+hBxDpfZs=;
-        b=bPKCFl4BDqETSd4n2EedwFUTcHZteun4+N9vE5EHUi7sEDpDCC5a+BTanKjHM19l3d
-         yPtBfbJfmZH2nvEIRFDlvD+N1p1o+sNvAXTZoSEukANApNZM5DjC4JwDkn10zwWR/Abm
-         SE8fbmJ+O40oYT+fwAj1MjCuKPEn8lq5Agnns/l4eK7RbZ4vd2zKVFP6i/Ybo5uMKtxw
-         qL666K69dI6cvjjoUJJ9AXckGl4roW6YxS6UMmO4zPDjk1poYych7w02Y78vmS8QfqjL
-         atJIR3UB7Q6UZVdk5+p30h1fSiexCTlH7T4xhsWUQTfAejFjAbTLbCwMHZ/PRMy3PCib
-         2/+g==
+        bh=1PTlbZpuAKYSU9En23GCHSs/qdfYUF9vK66/8eWmBQo=;
+        b=xaYSMgKBhwvFB/4oShlnbs/jt4ojbVbe2YW/MOAmMP7hFwmM/otPh3ol4L93JnTjKv
+         WqelfYv3dljqvUP9CjhdAcstCrwZc2KcTV7nEDc3Bo375M2X3mu79LH2b/47iHxzFa3+
+         ccibTSe9Kn2l19n/ySeq9vd2XB8zwIfkpSPJ9Ub02pKh0eJV1yml/qCk1tylBGUz+cXm
+         rOaIcNlJB6T5rNhnnCNeOR1bLyi1tnG3IcFCj6yS48Z6ZVoLRDASPbNODAb5ScYB94vL
+         5dAwhRPT5aoSwS+kgPfgdn19V3VZr6ZnL1BzsRFhr4IjfA/4IFzN59ffpxrKGzG3WGdv
+         P2DQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@fb.com header.s=facebook header.b=kABmYFBN;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@fb.com header.s=facebook header.b=SzjyBY07;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=fb.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s9-20020a05620a29c900b006ab96ea40f1si7076159qkp.643.2022.06.27.12.59.22
+        by mx.google.com with ESMTPS id u14-20020a05622a198e00b00317c22b1e55si6313624qtc.120.2022.06.27.13.02.11
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 27 Jun 2022 12:59:23 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 27 Jun 2022 13:02:11 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@fb.com header.s=facebook header.b=kABmYFBN;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@fb.com header.s=facebook header.b=SzjyBY07;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=fb.com
-Received: from localhost ([::1]:36386 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:40518 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1o5utG-00009e-In
-	for alex.bennee@linaro.org; Mon, 27 Jun 2022 15:59:22 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:43076)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1o5uvx-0003Bf-Gc
+	for alex.bennee@linaro.org; Mon, 27 Jun 2022 16:02:10 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:43096)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <prvs=71779173e5=pdel@fb.com>)
- id 1o5upa-0004eb-QN
- for qemu-devel@nongnu.org; Mon, 27 Jun 2022 15:55:34 -0400
-Received: from mx0b-00082601.pphosted.com ([67.231.153.30]:10412)
+ id 1o5upc-0004ib-FS
+ for qemu-arm@nongnu.org; Mon, 27 Jun 2022 15:55:36 -0400
+Received: from mx0a-00082601.pphosted.com ([67.231.145.42]:35518)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <prvs=71779173e5=pdel@fb.com>)
- id 1o5upY-0000fH-U8
- for qemu-devel@nongnu.org; Mon, 27 Jun 2022 15:55:34 -0400
-Received: from pps.filterd (m0148460.ppops.net [127.0.0.1])
- by mx0a-00082601.pphosted.com (8.17.1.5/8.17.1.5) with ESMTP id 25RJ1QtM010903
- for <qemu-devel@nongnu.org>; Mon, 27 Jun 2022 12:55:32 -0700
+ id 1o5upY-0000f0-3P
+ for qemu-arm@nongnu.org; Mon, 27 Jun 2022 15:55:36 -0400
+Received: from pps.filterd (m0044012.ppops.net [127.0.0.1])
+ by mx0a-00082601.pphosted.com (8.17.1.5/8.17.1.5) with ESMTP id 25RJ1VhT013280
+ for <qemu-arm@nongnu.org>; Mon, 27 Jun 2022 12:55:30 -0700
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=fb.com;
  h=from : to : cc : subject
  : date : message-id : in-reply-to : references : content-type :
  content-transfer-encoding : mime-version; s=facebook;
- bh=YnSoyQOrwBcMGgkMZvl1ogHCeNgy/jX5OX+hBxDpfZs=;
- b=kABmYFBNyFI049/kzjUO88nA7uZkzO+TJjqsguOfg4kS+miqJUGeYSZu5eM4E5EvK8Mt
- A8DjCbu2WAPof6YG+D2suKbPVfWXBwInLSJCcqLkiHMIYchD/1Hv8n9MvLd5iezLPRbF
- TY8SJusG7Lku1XnrkO+b3HJ7HgpI0o0YCZo= 
-Received: from maileast.thefacebook.com ([163.114.130.16])
- by mx0a-00082601.pphosted.com (PPS) with ESMTPS id 3gwyvyp71n-1
+ bh=1PTlbZpuAKYSU9En23GCHSs/qdfYUF9vK66/8eWmBQo=;
+ b=SzjyBY07bRKi4uTeLY9zAqnRQQ5WGLMpDHRjPRHCF4trEFPVQNs2fxoiQ9vUr8WzR2TV
+ k2+AKIFoIcF4pvjUf2I0fR5iJmCAXLPr1yzacedvGXwjKQ+Ivsio6EG+XxY0cm2DZS6a
+ Sb9BUJV/XdSG/oWpwQaQIRepXO+JxfgRO5w= 
+Received: from mail.thefacebook.com ([163.114.132.120])
+ by mx0a-00082601.pphosted.com (PPS) with ESMTPS id 3gx02q56gv-1
  (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128 verify=NOT)
- for <qemu-devel@nongnu.org>; Mon, 27 Jun 2022 12:55:32 -0700
-Received: from twshared13315.14.prn3.facebook.com (2620:10d:c0a8:1b::d) by
- mail.thefacebook.com (2620:10d:c0a8:83::7) with Microsoft SMTP Server
+ for <qemu-arm@nongnu.org>; Mon, 27 Jun 2022 12:55:30 -0700
+Received: from twshared13579.04.prn5.facebook.com (2620:10d:c085:108::8) by
+ mail.thefacebook.com (2620:10d:c085:11d::6) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2375.28; Mon, 27 Jun 2022 12:55:30 -0700
+ 15.1.2375.28; Mon, 27 Jun 2022 12:55:29 -0700
 Received: by devvm9194.prn0.facebook.com (Postfix, from userid 385188)
- id C7B7D8D206E7; Mon, 27 Jun 2022 12:55:07 -0700 (PDT)
+ id E39E88D206EF; Mon, 27 Jun 2022 12:55:07 -0700 (PDT)
 From: Peter Delevoryas <pdel@fb.com>
 To: 
 CC: <pdel@fb.com>, <zhdaniel@fb.com>, <clg@kaod.org>, <qemu-devel@nongnu.org>, 
  <qemu-arm@nongnu.org>, <komlodi@google.com>, <titusr@google.com>,
  <andrew@aj.id.au>, <joel@jms.id.au>
-Subject: [PATCH 04/14] aspeed: i2c: Fix DMA len write-enable bit handling
-Date: Mon, 27 Jun 2022 12:54:56 -0700
-Message-ID: <20220627195506.403715-5-pdel@fb.com>
+Subject: [PATCH 08/14] hw/misc: Add fby35-cpld
+Date: Mon, 27 Jun 2022 12:55:00 -0700
+Message-ID: <20220627195506.403715-9-pdel@fb.com>
 X-Mailer: git-send-email 2.30.2
 In-Reply-To: <20220627195506.403715-1-pdel@fb.com>
 References: <20220627195506.403715-1-pdel@fb.com>
 X-FB-Internal: Safe
 Content-Type: text/plain
-X-Proofpoint-ORIG-GUID: F0GLFGE5SkbaJOeyoaj3R9G3H6ESDVJg
-X-Proofpoint-GUID: F0GLFGE5SkbaJOeyoaj3R9G3H6ESDVJg
+X-Proofpoint-ORIG-GUID: cjDpacNzE--r5C1sLxzKj2sBP3_bE280
+X-Proofpoint-GUID: cjDpacNzE--r5C1sLxzKj2sBP3_bE280
 Content-Transfer-Encoding: quoted-printable
 X-Proofpoint-UnRewURL: 0 URL was un-rewritten
 MIME-Version: 1.0
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.205,Aquarius:18.0.883,Hydra:6.0.517,FMLib:17.11.122.1
  definitions=2022-06-27_06,2022-06-24_01,2022-06-22_01
-Received-SPF: pass client-ip=67.231.153.30;
- envelope-from=prvs=71779173e5=pdel@fb.com; helo=mx0b-00082601.pphosted.com
+Received-SPF: pass client-ip=67.231.145.42;
+ envelope-from=prvs=71779173e5=pdel@fb.com; helo=mx0a-00082601.pphosted.com
 X-Spam_score_int: -21
 X-Spam_score: -2.2
 X-Spam_bar: --
@@ -106,71 +106,197 @@ X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.082,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: qniMw/zlBFzC
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: ctzf8hsl4Prk
 
-I noticed i2c rx transfers were getting shortened to "1" on Zephyr. It
-seems to be because the Zephyr i2c driver sets the RX DMA len with the
-RX field write-enable bit set (bit 31) to avoid a read-modify-write. [1]
-
-/* 0x1C : I2CM Master DMA Transfer Length Register   */
-
-I think we should be checking the write-enable bits on the incoming
-value, not checking the register array. I'm not sure we're even writing
-the write-enable bits to the register array, actually.
-
-[1] https://github.com/AspeedTech-BMC/zephyr/blob/db3dbcc9c52e67a47180890ac=
-938ed380b33f91c/drivers/i2c/i2c_aspeed.c#L145-L148
-
-Fixes: ba2cccd64e90f34 ("aspeed: i2c: Add new mode support")
 Signed-off-by: Peter Delevoryas <pdel@fb.com>
 ---
- hw/i2c/aspeed_i2c.c | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
+ hw/misc/fby35_cpld.c | 137 +++++++++++++++++++++++++++++++++++++++++++
+ hw/misc/meson.build  |   3 +-
+ 2 files changed, 139 insertions(+), 1 deletion(-)
+ create mode 100644 hw/misc/fby35_cpld.c
 
-diff --git a/hw/i2c/aspeed_i2c.c b/hw/i2c/aspeed_i2c.c
-index 2cfd05cb6c..6c8222717f 100644
---- a/hw/i2c/aspeed_i2c.c
-+++ b/hw/i2c/aspeed_i2c.c
-@@ -644,18 +644,18 @@ static void aspeed_i2c_bus_new_write(AspeedI2CBus *bu=
-s, hwaddr offset,
-                                                      RX_BUF_LEN) + 1;
-         break;
-     case A_I2CM_DMA_LEN:
--        w1t =3D ARRAY_FIELD_EX32(bus->regs, I2CM_DMA_LEN, RX_BUF_LEN_W1T) =
-||
--                   ARRAY_FIELD_EX32(bus->regs, I2CM_DMA_LEN, TX_BUF_LEN_W1=
-T);
-+        w1t =3D FIELD_EX32(value, I2CM_DMA_LEN, RX_BUF_LEN_W1T) ||
-+              FIELD_EX32(value, I2CM_DMA_LEN, TX_BUF_LEN_W1T);
-         /* If none of the w1t bits are set, just write to the reg as norma=
-l. */
-         if (!w1t) {
-             bus->regs[R_I2CM_DMA_LEN] =3D value;
-             break;
-         }
--        if (ARRAY_FIELD_EX32(bus->regs, I2CM_DMA_LEN, RX_BUF_LEN_W1T)) {
-+        if (FIELD_EX32(value, I2CM_DMA_LEN, RX_BUF_LEN_W1T)) {
-             ARRAY_FIELD_DP32(bus->regs, I2CM_DMA_LEN, RX_BUF_LEN,
-                              FIELD_EX32(value, I2CM_DMA_LEN, RX_BUF_LEN));
-         }
--        if (ARRAY_FIELD_EX32(bus->regs, I2CM_DMA_LEN, TX_BUF_LEN_W1T)) {
-+        if (FIELD_EX32(value, I2CM_DMA_LEN, TX_BUF_LEN_W1T)) {
-             ARRAY_FIELD_DP32(bus->regs, I2CM_DMA_LEN, TX_BUF_LEN,
-                              FIELD_EX32(value, I2CM_DMA_LEN, TX_BUF_LEN));
-         }
+diff --git a/hw/misc/fby35_cpld.c b/hw/misc/fby35_cpld.c
+new file mode 100644
+index 0000000000..a783a0a2c8
+--- /dev/null
++++ b/hw/misc/fby35_cpld.c
+@@ -0,0 +1,137 @@
++/*
++ * Copyright (c) Meta Platforms, Inc. and affiliates. (http://www.meta.com)
++ *
++ * Permission is hereby granted, free of charge, to any person obtaining a=
+ copy
++ * of this software and associated documentation files (the "Software"), t=
+o deal
++ * in the Software without restriction, including without limitation the r=
+ights
++ * to use, copy, modify, merge, publish, distribute, sublicense, and/or se=
+ll
++ * copies of the Software, and to permit persons to whom the Software is
++ * furnished to do so, subject to the following conditions:
++ *
++ * The above copyright notice and this permission notice shall be included=
+ in
++ * all copies or substantial portions of the Software.
++ *
++ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS=
+ OR
++ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
++ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
++ * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OT=
+HER
++ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING=
+ FROM,
++ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS =
+IN
++ * THE SOFTWARE.
++ */
++
++#include "qemu/osdep.h"
++#include "hw/i2c/i2c.h"
++#include "hw/registerfields.h"
++
++#define BOARD_ID_CLASS1 0b0000
++#define BOARD_ID_CLASS2 0b0001
++
++#define TYPE_FBY35_CPLD "fby35-cpld"
++OBJECT_DECLARE_SIMPLE_TYPE(Fby35CpldState, FBY35_CPLD);
++
++REG8(CLASS_TYPE, 0x5);
++    FIELD(CLASS_TYPE, RESERVED, 0, 2);
++    FIELD(CLASS_TYPE, 1OU_EXPANSION_NOT_PRESENT, 2, 1);
++    FIELD(CLASS_TYPE, 2OU_EXPANSION_NOT_PRESENT, 3, 1);
++    FIELD(CLASS_TYPE, BOARD_ID, 4, 4);
++REG8(BOARD_REVISION, 0x8);
++    FIELD(BOARD_REVISION, VALUE, 0, 4);
++    FIELD(BOARD_REVISION, RESERVED, 4, 4);
++
++struct Fby35CpldState {
++    I2CSlave parent_obj;
++
++    uint8_t target_reg;
++    uint32_t regs[10];
++};
++
++static void fby35_cpld_realize(DeviceState *dev, Error **errp)
++{
++    Fby35CpldState *s =3D FBY35_CPLD(dev);
++
++    memset(s->regs, 0, sizeof(s->regs));
++    s->target_reg =3D 0;
++
++    ARRAY_FIELD_DP32(s->regs, CLASS_TYPE, BOARD_ID, 0b0000);
++    ARRAY_FIELD_DP32(s->regs, CLASS_TYPE, 1OU_EXPANSION_NOT_PRESENT, 1);
++    ARRAY_FIELD_DP32(s->regs, CLASS_TYPE, 2OU_EXPANSION_NOT_PRESENT, 1);
++    ARRAY_FIELD_DP32(s->regs, BOARD_REVISION, VALUE, 0x1);
++}
++
++static int fby35_cpld_i2c_event(I2CSlave *i2c, enum i2c_event event)
++{
++    Fby35CpldState *s =3D FBY35_CPLD(i2c);
++
++    switch (event) {
++    case I2C_START_RECV:
++        break;
++    case I2C_START_SEND:
++        s->target_reg =3D 0;
++        break;
++    case I2C_START_SEND_ASYNC:
++    case I2C_FINISH:
++    case I2C_NACK:
++        break;
++    }
++
++    return 0;
++}
++
++static uint8_t fby35_cpld_i2c_recv(I2CSlave *i2c)
++{
++    Fby35CpldState *s =3D FBY35_CPLD(i2c);
++
++    switch (s->target_reg) {
++    case R_CLASS_TYPE:
++    case R_BOARD_REVISION:
++        return s->regs[s->target_reg];
++    default:
++        printf("%s: unexpected register read 0x%02x\n", __func__, s->targe=
+t_reg);
++        return 0xff;
++    }
++}
++
++static int fby35_cpld_i2c_send(I2CSlave *i2c, uint8_t data)
++{
++    Fby35CpldState *s =3D FBY35_CPLD(i2c);
++
++    if (s->target_reg =3D=3D 0) {
++        s->target_reg =3D data;
++        return 0;
++    }
++
++    switch (s->target_reg) {
++    case R_CLASS_TYPE:
++    case R_BOARD_REVISION:
++        s->regs[s->target_reg] =3D data;
++        break;
++    default:
++        printf("%s: unexpected register write 0x%02x 0x%02x\n", __func__, =
+s->target_reg, data);
++        break;
++    }
++
++    return 0;
++}
++
++static void fby35_cpld_class_init(ObjectClass *oc, void *data)
++{
++    DeviceClass *dc =3D DEVICE_CLASS(oc);
++    I2CSlaveClass *i2c =3D I2C_SLAVE_CLASS(oc);
++
++    dc->realize =3D fby35_cpld_realize;
++    i2c->event =3D fby35_cpld_i2c_event;
++    i2c->recv =3D fby35_cpld_i2c_recv;
++    i2c->send =3D fby35_cpld_i2c_send;
++}
++
++static const TypeInfo types[] =3D {
++    {
++        .name =3D TYPE_FBY35_CPLD,
++        .parent =3D TYPE_I2C_SLAVE,
++        .instance_size =3D sizeof(Fby35CpldState),
++        .class_init =3D fby35_cpld_class_init,
++    },
++};
++
++DEFINE_TYPES(types);
+diff --git a/hw/misc/meson.build b/hw/misc/meson.build
+index 95268eddc0..1edad44b6b 100644
+--- a/hw/misc/meson.build
++++ b/hw/misc/meson.build
+@@ -117,7 +117,8 @@ softmmu_ss.add(when: 'CONFIG_ASPEED_SOC', if_true: file=
+s(
+   'aspeed_sbc.c',
+   'aspeed_sdmc.c',
+   'aspeed_xdma.c',
+-  'aspeed_peci.c'))
++  'aspeed_peci.c',
++  'fby35_cpld.c'))
+=20
+ softmmu_ss.add(when: 'CONFIG_MSF2', if_true: files('msf2-sysreg.c'))
+ softmmu_ss.add(when: 'CONFIG_NRF51_SOC', if_true: files('nrf51_rng.c'))
 --=20
 2.30.2
 

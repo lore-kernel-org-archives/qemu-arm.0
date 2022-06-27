@@ -1,114 +1,108 @@
-Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp2444693lft;
-        Mon, 27 Jun 2022 08:02:26 -0700 (PDT)
-X-Google-Smtp-Source: AGRyM1toifBSK7CiGexsBGZ5wjAbQg4A5RQ/wH5jyGPY3ByY7HZjgy39+o4iAyW0vk8HIA/rZdKf
-X-Received: by 2002:ad4:5907:0:b0:470:4b8d:2898 with SMTP id ez7-20020ad45907000000b004704b8d2898mr9092864qvb.91.1656342146057;
-        Mon, 27 Jun 2022 08:02:26 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1656342146; cv=none;
+Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp2475606lft;
+        Mon, 27 Jun 2022 08:48:19 -0700 (PDT)
+X-Google-Smtp-Source: AGRyM1vgfF0aVXABzfq86U4NNc20ZGgzdchyNsmcQtmrsy669yzjIvWXC5FBWMmfEVRRYhXJRjQF
+X-Received: by 2002:a05:6214:20a1:b0:46e:53de:4fa0 with SMTP id 1-20020a05621420a100b0046e53de4fa0mr112157qvd.76.1656344898988;
+        Mon, 27 Jun 2022 08:48:18 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1656344898; cv=none;
         d=google.com; s=arc-20160816;
-        b=gQFsc6+4JNRM2omtWLQN8HuJvxSo2ZWC9aum5wtNyPMGYMg+z2JYxpo0xXV7ldK5WA
-         o0eYMe6VUY3QUOQy2dt/GNHYrV7KuUzHC3C/s/JqfQVXKvWdXdKTP56ZsIdKkT+Q+mHh
-         vAJUxxK9GNlpVkRrLff77Ynm01jdSI74pvlQi3Pb+6f0GuzT3Xe/C2qKlJ0leFtz8Tg3
-         AQ7qUG57qb/rcPauNXWjD2CQvMGb1whWXM6LInz9OEkUTN3vD+jl7zMqk0hEPE+FQk6A
-         ZaWI6JJxDho7xUcU8tjk3EAnyh7bf/STyq5oG4n8hx96o28ucnR9VRai2FD9IIWBPUEd
-         QtVw==
+        b=hLj8L3SZ0cDzsY4in6hsFMGXdF+7Lyn0x9lUKqJVFTNxjt9heBJ5U/hfWi05Rez1V8
+         beHFpBSl4kYEnK0v/xRpJtXhiQ1MTQ8rESDLusTGHB6zg5yM9ZkonGaiNQsWHgt6w7tY
+         iokkLBDU1zCxyM9MZY+cQ01EzV3FJy6LZub2NrENfuKvjJFQtmsgSdVytulZeHQGbRAO
+         9SdEOJMzcx0gh0dbdEKxVroqQJu2MEQ26oyJ7WxqWC2iNIZQSZ2lTzwW+lLhXjvATS0b
+         HYuvN+59JH9SA7U9MzoLjXFeq9KjYTu0ltFBZI1J9NK0kqq3LPljpx0MvCV43yus9Sav
+         DOkA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:cc:to:content-language:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=0NK8q537xL4KMcS0Yj8KK59uWHlo4yFRuPtrNOFIwDM=;
-        b=E19bfZO2MwdKrp01tzmAwZqasSTd9O6GpUuwkvA/ex6BLwhTMUo9ZDMqjNd2AisOum
-         bmteCFkPrrW93A6SQ5JGIVMNH3oYjfUPx13Jh7oGwauRC2dkNndyYtyxLUqvV4VkXwQC
-         5Nv6bFh7Vpz7ySUuLEF0QTOM1oqAXkVJefYEoinhE2c/L/rbLbQ6i/8Xf9EfBNzdosE4
-         p9JVEmXlU+3WYF7/vSNeA2jQisdM55idj8DwahnrTw4wgIriBDDLRemr3Z4OWGSw5yPM
-         Va86KYnlw8JEUSSbB9PZRkrNfcOUulIrBjuogg+jT889ByeHPr/y32D5I8pXKT+wAYGP
-         RHEg==
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=ZLvNBZesMKm1d1lMIiQZJv24d4CCjd7V6YQR7jsGm3o=;
+        b=Gkd2/DZPF4zWEoEjqmuT89bSjVjP/9GQj+nREMouS71BrWEU2aO5biv1Zwhow6P2qr
+         LTYwv/7DGZ0ufnuRaeSB6/t+ZWfnwcGd2kIN3c+l49FT4Q1eku4oXQHZBJ3sawH/z9E6
+         YCn918VSOssWWYJI70T0qhhURE0sCBiXaKeno68AsIpLfJ5U0k+plvzUEFdRknTaQvfO
+         aPQqu2VQou5fLqsY5P9jTmt45jwUwDWJWhvNgW2GEjRxCLQIJZBC0MzvrKXnEKT2DMXl
+         vp2OeOYnvDO2vN/b5cCERgSc1FREJc8p1Cg7gpudfv6c6hGyxt2SL0uOLSP6U9ot+JXq
+         qMjA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@quicinc.com header.s=qcdkim header.b=qSwUglEY;
+       dkim=pass header.i=@quicinc.com header.s=qcdkim header.b=mXXJdWzW;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=quicinc.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id f8-20020a05622a1a0800b0030673269926si5845592qtb.145.2022.06.27.08.02.25
+        by mx.google.com with ESMTPS id q6-20020a056214194600b0047078edea9esi6168611qvk.561.2022.06.27.08.48.18
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 27 Jun 2022 08:02:26 -0700 (PDT)
+        Mon, 27 Jun 2022 08:48:18 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@quicinc.com header.s=qcdkim header.b=qSwUglEY;
+       dkim=pass header.i=@quicinc.com header.s=qcdkim header.b=mXXJdWzW;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=quicinc.com
-Received: from localhost ([::1]:57288 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:53224 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1o5qFt-0006Oi-IA
-	for alex.bennee@linaro.org; Mon, 27 Jun 2022 11:02:25 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34068)
+	id 1o5qyI-0001Sz-EX
+	for alex.bennee@linaro.org; Mon, 27 Jun 2022 11:48:18 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:43224)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <quic_jaehyoo@quicinc.com>)
- id 1o5qFL-0006LX-7O; Mon, 27 Jun 2022 11:01:51 -0400
-Received: from alexa-out-sd-01.qualcomm.com ([199.106.114.38]:2159)
+ id 1o5qxn-0001RQ-Mj; Mon, 27 Jun 2022 11:47:47 -0400
+Received: from alexa-out.qualcomm.com ([129.46.98.28]:56387)
  by eggs.gnu.org with esmtps (TLS1.2:RSA_AES_256_CBC_SHA1:256)
  (Exim 4.90_1) (envelope-from <quic_jaehyoo@quicinc.com>)
- id 1o5qFF-0007En-4s; Mon, 27 Jun 2022 11:01:50 -0400
+ id 1o5qxk-0005eX-W8; Mon, 27 Jun 2022 11:47:47 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=quicinc.com; i=@quicinc.com; q=dns/txt; s=qcdkim;
- t=1656342105; x=1687878105;
- h=message-id:date:mime-version:subject:to:cc:references:
- from:in-reply-to:content-transfer-encoding;
- bh=0NK8q537xL4KMcS0Yj8KK59uWHlo4yFRuPtrNOFIwDM=;
- b=qSwUglEYSxs8GKblAGy8yczJ1FJvqwwpb7vQB6nWqucjlDIpVcUaAExT
- uIp1Iac2zyCcEwntkYpcrGMycEJ8gjUhzmJSCnGMVN94kEQGLhedVtJ1o
- q1NVEdHm+dHde7MVmQ4mZeodEWr/S5IGUwur+5yfK7iLC/2YoecY1Z2b4 Y=;
-Received: from unknown (HELO ironmsg05-sd.qualcomm.com) ([10.53.140.145])
- by alexa-out-sd-01.qualcomm.com with ESMTP; 27 Jun 2022 08:01:43 -0700
+ t=1656344865; x=1687880865;
+ h=from:to:cc:subject:date:message-id:in-reply-to:
+ references:mime-version:content-transfer-encoding;
+ bh=ZLvNBZesMKm1d1lMIiQZJv24d4CCjd7V6YQR7jsGm3o=;
+ b=mXXJdWzWysKkQaMWPNtB3dJwWNl7dSEuqk4VPl623QBiLTkjGcGrg4dW
+ OiZwRTUNHqybRkMlnpvNr2SrhpJYyL1m0XQjslRzbKkLIhHsP1LDijcd7
+ H/dOT9tKdkw/ccgTSsOe9zgf1IaW+0BgTQ57yzmdmvzA0I8TtcT6vMcL1 s=;
+Received: from ironmsg09-lv.qualcomm.com ([10.47.202.153])
+ by alexa-out.qualcomm.com with ESMTP; 27 Jun 2022 08:47:38 -0700
 X-QCInternal: smtphost
 Received: from nasanex01c.na.qualcomm.com ([10.47.97.222])
- by ironmsg05-sd.qualcomm.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 27 Jun 2022 08:01:42 -0700
+ by ironmsg09-lv.qualcomm.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 27 Jun 2022 08:47:38 -0700
 Received: from nalasex01a.na.qualcomm.com (10.47.209.196) by
  nasanex01c.na.qualcomm.com (10.47.97.222) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.986.22; Mon, 27 Jun 2022 08:01:41 -0700
-Received: from [10.110.86.108] (10.80.80.8) by nalasex01a.na.qualcomm.com
+ 15.2.986.22; Mon, 27 Jun 2022 08:47:38 -0700
+Received: from maru.qualcomm.com (10.80.80.8) by nalasex01a.na.qualcomm.com
  (10.47.209.196) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.986.22; Mon, 27 Jun
- 2022 08:01:40 -0700
-Message-ID: <ea4b6f94-e06b-4040-08f1-ca717b95bd9b@quicinc.com>
-Date: Mon, 27 Jun 2022 08:01:39 -0700
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:91.0) Gecko/20100101
- Thunderbird/91.10.0
-Subject: Re: [PATCH 3/9] hw/arm/aspeed: qcom-dc-scm-v1: add block backed FRU
- device
-Content-Language: en-US
-To: Patrick Venture <venture@google.com>, =?UTF-8?Q?C=c3=a9dric_Le_Goater?=
- <clg@kaod.org>
-CC: Hao Wu <wuhaotsh@google.com>, Peter Maydell <peter.maydell@linaro.org>,
- Titus Rwantare <titusr@google.com>, Andrew Jeffery <andrew@aj.id.au>, "Joel
- Stanley" <joel@jms.id.au>, Graeme Gregory <quic_ggregory@quicinc.com>,
- Maheswara Kurapati <quic_mkurapat@quicinc.com>, qemu-arm
- <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>, "Peter
- Delevoryas" <pdel@fb.com>
-References: <20220622172830.101210-1-quic_jaehyoo@quicinc.com>
- <20220622172830.101210-4-quic_jaehyoo@quicinc.com>
- <CAO=notzsLW=F6QDu5mAhBCXNMocV1_qF3EazHYLoP_mu8e8QFg@mail.gmail.com>
- <f4d49ce6-f4b6-66fa-e980-43c185652981@kaod.org>
- <CAO=notyrQ3697_79_HtGCO6MryA72LHhaAvf75QLpdR5LH+O4w@mail.gmail.com>
+ 2022 08:47:36 -0700
 From: Jae Hyun Yoo <quic_jaehyoo@quicinc.com>
-In-Reply-To: <CAO=notyrQ3697_79_HtGCO6MryA72LHhaAvf75QLpdR5LH+O4w@mail.gmail.com>
-Content-Type: text/plain; charset="UTF-8"; format=flowed
+To: Peter Maydell <peter.maydell@linaro.org>,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Titus Rwantare
+ <titusr@google.com>, Andrew Jeffery <andrew@aj.id.au>, Joel Stanley
+ <joel@jms.id.au>, Patrick Venture <venture@google.com>, Hao Wu
+ <wuhaotsh@google.com>
+CC: Graeme Gregory <quic_ggregory@quicinc.com>, Maheswara Kurapati
+ <quic_mkurapat@quicinc.com>, Jae Hyun Yoo <quic_jaehyoo@quicinc.com>,
+ <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>
+Subject: [PATCH v2 3/7] hw/i2c: pmbus: Page #255 is valid page for read
+ requests.
+Date: Mon, 27 Jun 2022 08:46:59 -0700
+Message-ID: <20220627154703.148943-4-quic_jaehyoo@quicinc.com>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20220627154703.148943-1-quic_jaehyoo@quicinc.com>
+References: <20220627154703.148943-1-quic_jaehyoo@quicinc.com>
+MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
 X-Originating-IP: [10.80.80.8]
-X-ClientProxiedBy: nasanex01b.na.qualcomm.com (10.46.141.250) To
+X-ClientProxiedBy: nasanex01a.na.qualcomm.com (10.52.223.231) To
  nalasex01a.na.qualcomm.com (10.47.209.196)
-Received-SPF: pass client-ip=199.106.114.38;
- envelope-from=quic_jaehyoo@quicinc.com; helo=alexa-out-sd-01.qualcomm.com
+Received-SPF: pass client-ip=129.46.98.28;
+ envelope-from=quic_jaehyoo@quicinc.com; helo=alexa-out.qualcomm.com
 X-Spam_score_int: -43
 X-Spam_score: -4.4
 X-Spam_bar: ----
 X-Spam_report: (-4.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.001,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_MED=-2.3, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
@@ -125,157 +119,64 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: cHvt14jBMeZ5
+X-TUID: wGnosH3rSsXy
 
-On 6/23/2022 10:37 AM, Patrick Venture wrote:
-> 
-> 
-> On Thu, Jun 23, 2022 at 10:16 AM Cédric Le Goater <clg@kaod.org 
-> <mailto:clg@kaod.org>> wrote:
-> 
->     On 6/23/22 17:28, Patrick Venture wrote:
->      >
->      >
->      > On Wed, Jun 22, 2022 at 10:48 AM Jae Hyun Yoo
->     <quic_jaehyoo@quicinc.com <mailto:quic_jaehyoo@quicinc.com>
->     <mailto:quic_jaehyoo@quicinc.com <mailto:quic_jaehyoo@quicinc.com>>>
->     wrote:
->      >
->      >     From: Graeme Gregory <quic_ggregory@quicinc.com
->     <mailto:quic_ggregory@quicinc.com> <mailto:quic_ggregory@quicinc.com
->     <mailto:quic_ggregory@quicinc.com>>>
->      >
->      >     The FRU device uses the index 0 device on bus IF_NONE.
->      >
->      >     -drive file=$FRU,format=raw,if=none
->      >
->      >     file must match FRU size of 128k
->      >
->      >     Signed-off-by: Graeme Gregory <quic_ggregory@quicinc.com
->     <mailto:quic_ggregory@quicinc.com> <mailto:quic_ggregory@quicinc.com
->     <mailto:quic_ggregory@quicinc.com>>>
->      >     ---
->      >       hw/arm/aspeed.c | 22 +++++++++++++++++-----
->      >       1 file changed, 17 insertions(+), 5 deletions(-)
->      >
->      >     diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
->      >     index 785cc543d046..36d6b2c33e48 100644
->      >     --- a/hw/arm/aspeed.c
->      >     +++ b/hw/arm/aspeed.c
->      >     @@ -992,17 +992,29 @@ static void
->     fby35_i2c_init(AspeedMachineState *bmc)
->      >            */
->      >       }
->      >
->      >     +static void qcom_dc_scm_fru_init(I2CBus *bus, uint8_t addr,
->     uint32_t rsize)
->      >     +{
->      >     +    I2CSlave *i2c_dev = i2c_slave_new("at24c-eeprom", addr);
->      >     +    DeviceState *dev = DEVICE(i2c_dev);
->      >     +    /* Use First Index for DC-SCM FRU */
->      >     +    DriveInfo *dinfo = drive_get(IF_NONE, 0, 0);
->      >     +
->      >     +    qdev_prop_set_uint32(dev, "rom-size", rsize);
->      >     +
->      >     +    if (dinfo) {
->      >     +        qdev_prop_set_drive(dev, "drive",
->     blk_by_legacy_dinfo(dinfo));
->      >     +    }
->      >     +
->      >     +    i2c_slave_realize_and_unref(i2c_dev, bus, &error_abort);
->      >     +}
->      >
->      >
->      > We've sent a similar patch up for the at24c but in its own file
->     -- but looking at this, we could likely expand it to suite our cases
->     as well - is there a reason it's named qcom_dc_scm_fru_init? 
->     Presumably that's to handle the drive_get parameters.  If you make
->     it use `drive_get(IF_NONE, bus, unit);` You'll be able to associate
->     a drive via parameters like you aim to.
-> 
-> 
->     I have seen various attempts to populate the Aspeed eeproms with
->     data. The simplest is the g220a_bmc_i2c_init() approach. Some are
->     generating C code from the .bin files and compiling the result in
->     QEMU. Some were generating elf sections, linking them in QEMU and
->     passing the pointer as an eeprom buf.
-> 
->     The drive approach is the best I think, but the device/drive
->     association depends on the drive order on the command line when
->     devices are created by the platform.
-> 
->     We could may be extend the GenericLoaderState for eeproms ?
->     or introduce a routine which would look for a file under a (pc-bios)
->     per-machine directory and fill the eeprom buf with its contents ?
-> 
->     Any idea ?
-> 
-> 
-> So we have this in our eeprom_at24c module because we use it with Aspeed 
-> and Nuvoton:
-> 
-> void at24c_eeprom_init_one(I2CBus *i2c_bus, int bus, uint8_t addr,
->                             uint32_t rsize, int unit_number)
-> {
->      I2CSlave *i2c_dev = i2c_slave_new("at24c-eeprom", addr);
->      DeviceState *dev = DEVICE(i2c_dev);
->      BlockInterfaceType type = IF_NONE;
->      DriveInfo *dinfo;
-> 
->      dinfo = drive_get(type, bus, unit_number);
->      if (dinfo) {
->          qdev_prop_set_drive(dev, "drive", blk_by_legacy_dinfo(dinfo));
->      }
->      qdev_prop_set_uint32(dev, "rom-size", rsize);
->      i2c_slave_realize_and_unref(i2c_dev, i2c_bus, &error_abort);
-> }
-> 
-> With this style call in the board:
-> 
-> snippet from downstream version of 
-> https://github.com/qemu/qemu/blob/master/hw/arm/npcm7xx_boards.c#L305 
-> <https://github.com/qemu/qemu/blob/master/hw/arm/npcm7xx_boards.c#L305> 
-> that we still need to finish upstreaming:
-> 
-> <snip>
->       /* mb_fru */
->      at24c_eeprom_init_one(npcm7xx_i2c_get_bus(soc, 5), 5, 0x50, 8192, 0);
-> <snip>
->      /* fan_fru */
->      at24c_eeprom_init_one(pca954x_i2c_get_bus(i2c_mux, 2), 5, 0x51, 
-> 8192, 1);
->      /* hsbp_fru */
->      at24c_eeprom_init_one(pca954x_i2c_get_bus(i2c_mux, 3), 5, 0x52, 
-> 8192, 2);
-> <snip>
-> 
-> And then we call it with the bus and unit, the pair of those has to be 
-> unique for the drive parameter to work:
-> 
-> -drive 
-> file=/export/hda3/tmp/mb_fru@50,if=none,bus=5,unit=0,snapshot=off,format=raw
-> -drive 
-> file=/export/hda3/tmp/fan_fru@51,if=none,bus=5,unit=1,snapshot=off,format=raw
-> -drive 
-> file=/export/hda3/tmp/hsbp_fru@52,if=none,bus=5,unit=2,snapshot=off,format=raw
-> 
-> The above code snippet is what, I'm fairly certain we had sent up for 
-> review before, and we can send it again if you want.
+From: Maheswara Kurapati <quic_mkurapat@quicinc.com>
 
-Okay. I found that the above code was tried to upstream earlier by Hao
-but it's not completed yet and it's pending at below thread.
+Current implementation of the pmbus core driver treats the read request
+for page 255 as invalid request and sets the invalid command bit (bit 7)
+in the STATUS_CML register. As per the PMBus specification it is a valid
+request.
 
-https://lore.kernel.org/qemu-devel/875ystigke.fsf_-_@dusky.pond.sub.org/
+Refer to the PMBus specification, revision 1.3.1, section 11.10 PAGE,
+on the page 58:
+  "Setting the PAGE to FFh means that all subsequent comands are to be
+   applied to all outputs.
 
-Please complete the upstreaming then I'll use Hao's version.
+   Some commands, such as READ_TEMPERATURE, may use a common sensor but
+   be available on all pages of a device. Such implementations are the
+   decision of each device manufacturer or are specified in a PMBus
+   Application Profile. Consult the manufacturer's documents or the
+   Application Profile Specification as needed."
 
-I'll drop 3/9 patch from this series in v2.
+For e.g.,
+The VOUT_MODE is a valid command for page 255 for maxim 31785 device.
+refer to Table 1. PMBus Command Codes on page 14 in the datasheet.
+https://datasheets.maximintegrated.com/en/ds/MAX31785.pdf
 
-Thanks,
-Jae
+Fixes: 38870253f1d1 ("hw/i2c: pmbus: fix error returns and guard against out of range accesses")
 
-> 
->     Thanks,
-> 
->     C.
-> 
+Signed-off-by: Maheswara Kurapati <quic_mkurapat@quicinc.com>
+Signed-off-by: Jae Hyun Yoo <quic_jaehyoo@quicinc.com>
+Reviewed-by: Titus Rwantare <titusr@google.com>
+---
+Changes in v2:
+* Fixed comment for a case of PB_ALL_PAGES. (Titus)
+* Removed an error log printing when it handles PB_ALL_PAGES. (Jae)
+
+ hw/i2c/pmbus_device.c | 6 +-----
+ 1 file changed, 1 insertion(+), 5 deletions(-)
+
+diff --git a/hw/i2c/pmbus_device.c b/hw/i2c/pmbus_device.c
+index 62885fa6a15e..749a33af827b 100644
+--- a/hw/i2c/pmbus_device.c
++++ b/hw/i2c/pmbus_device.c
+@@ -284,14 +284,10 @@ static uint8_t pmbus_receive_byte(SMBusDevice *smd)
+ 
+     /*
+      * Reading from all pages will return the value from page 0,
+-     * this is unspecified behaviour in general.
++     * means that all subsequent commands are to be applied to all output.
+      */
+     if (pmdev->page == PB_ALL_PAGES) {
+         index = 0;
+-        qemu_log_mask(LOG_GUEST_ERROR,
+-                      "%s: tried to read from all pages\n",
+-                      __func__);
+-        pmbus_cml_error(pmdev);
+     } else if (pmdev->page > pmdev->num_pages - 1) {
+         qemu_log_mask(LOG_GUEST_ERROR,
+                       "%s: page %d is out of range\n",
+-- 
+2.25.1
+

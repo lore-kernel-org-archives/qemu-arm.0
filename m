@@ -1,105 +1,83 @@
-Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp2237792lft;
-        Mon, 27 Jun 2022 03:09:12 -0700 (PDT)
-X-Google-Smtp-Source: AGRyM1vnrNQ7omg7T2ylOefmKxNoTLQAGCdCdHDm4K54SuQZ6Rai5pO55oxM/g0MWK5UOcUGTLQT
-X-Received: by 2002:a05:6214:76a:b0:470:b6f8:50d with SMTP id f10-20020a056214076a00b00470b6f8050dmr4009184qvz.81.1656324552326;
-        Mon, 27 Jun 2022 03:09:12 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1656324552; cv=none;
+Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp2354728lft;
+        Mon, 27 Jun 2022 06:02:29 -0700 (PDT)
+X-Google-Smtp-Source: AGRyM1tDduazUuBuYan1KgZtmw4rr/55dUS9xUNuuLpyyjA+uBdVQfNJJbJdMmiA/mEu1ML7AftF
+X-Received: by 2002:a05:6214:230a:b0:46e:3890:afcb with SMTP id gc10-20020a056214230a00b0046e3890afcbmr8488828qvb.59.1656334949188;
+        Mon, 27 Jun 2022 06:02:29 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1656334949; cv=none;
         d=google.com; s=arc-20160816;
-        b=RYTktIqdcLYVwUCX+VcIUQ8/zm7+aIwoGn412w88rM7bLQ54Ca6mLc6AY/dmgg+gMF
-         yHiwIepA0wqV3RylUIDo2+1eMU+L37TYF4y9gBXjb3nIVhDFyZDiOfBN8DFJNr9J0Caj
-         tqEA3SF61QchJlK5iLpnuUppfA4E8w6yMhqvziVnjejFvX8WQbTQ1psdXDNsdjO3Kbhl
-         JDkOMfk7C0Bt0qUZSNmLvyx30WsitXLJxu1uxEOa2SkgdDXKV3PPZunKPQ7J6jq8QCmf
-         mDiKy9RGiJ+9Lnl/eo+JIqEWvyDiwBYKSDsIp0fHAHyad2zEcBKLi3BGncjZLotEey7H
-         jm4w==
+        b=D6y9Vy8APQd8OHDUApJtPulC3VC6RPiQzmF+CIW2N3TfldI3co2s1UoKKg58IAIzTT
+         NDQmMDR1cB2/+vaRzCBPGzO3Hr4Q9PTV3kWBkEe/FkXfUnGsGv5PqxBrBNk1IyltQs5s
+         QFvt/kSoAiQCfDem1PhYx9Nlf9r6GCWyFmPvQvf6wiwabaQB5UOAgXcG3YbjgIddCgXk
+         KHopsmeuhIHfhuw8wbvM1b23Qke29D/ZRkWv0fkxltgc8FMAOcenuHIpKD7NcOfIaWSL
+         Z+CRb3KlabYZuV4R0oYe5NGsvWE/cNVeHiHVlTJxzp22h4uZubHFnNwEtD7Tl7PnbyH+
+         TrBw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
-        bh=eP0j2lMLRSaXDCig0lrnVjG3GTAbfYlE1Lq00GjRMkQ=;
-        b=B7WHjSXtZiYXmg7ZdA7kYQoBc/f/IPB3IHw0/avRqF6hDLyi8glrwN3YDcGF/I839/
-         hihFFzdU+nqBoUKJgiH50OMlfxhFugknIlj6WyIRodOg6Knc2H3kK3KOd7FeAM2pAQGx
-         oeFGnfNKfhHa4TGjdaz6nOE+qBA1WIwBZqESPTV/5oL9nG9WdSq1FM1nyIm0MshLAfvw
-         CD7qqRqzxNsw4+ClU0Gb3L3myxgMg/8jp0DqAGx3SExe98altYB0Fs4jL4DeGf0dClIN
-         gAYdbiFHMUOMI5lR0Eym+F7aFDW2KE0KF8Ih4HXTtxbjzSqCsZgfvbZ985dbftCkzQRx
-         ro0A==
+         :mime-version:message-id:date:subject:cc:to:from;
+        bh=sOV/UMuLx7d1I7IQwd2kiea5hLbk8w2K8kd0p6aYBbk=;
+        b=k5Zp/qVjK0y+Polp34I+3su4GXAm3o4fbmINkqMyxpkBMolr0GBKB6fwuuABmpUrdN
+         sM6qrLhVkJI+rrYcAbjip12kG03myShaYUHJruIu+vZOTgnV8fNvdsboyUHD5JQJZo7H
+         fKxotiVsqdlpzFnuRhfsZu5gdFpMRlw1Sy/2y3tqDt3prKPmTxIx6mGFOi5o8X37p8+l
+         fDr+P4zqH4oZUdGPca2HZ7kswr/c6ilXeDTvIQwZuic6ntXZeghAaZmh/bKtPlLueAet
+         sTt35taPijkI44apTP9rTkru4Zy8NqRtvnEmPR6+epDj5WEYageWsHYM/mYOmZB84ULO
+         SX9A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20210112 header.b=qj4DVMYH;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id j21-20020a05620a411500b006af33370a3dsi577660qko.34.2022.06.27.03.09.12
+        by mx.google.com with ESMTPS id x10-20020ac8700a000000b00317e856bce7si3462044qtm.362.2022.06.27.06.02.29
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 27 Jun 2022 03:09:12 -0700 (PDT)
+        Mon, 27 Jun 2022 06:02:29 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20210112 header.b=qj4DVMYH;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:36524 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:40834 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1o5lg7-0007nA-QY
-	for alex.bennee@linaro.org; Mon, 27 Jun 2022 06:09:11 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37162)
+	id 1o5oNo-000447-H9
+	for alex.bennee@linaro.org; Mon, 27 Jun 2022 09:02:28 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53434)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <joel.stan@gmail.com>)
- id 1o5lfU-0007my-VK; Mon, 27 Jun 2022 06:08:32 -0400
-Received: from mail-pg1-x52f.google.com ([2607:f8b0:4864:20::52f]:41955)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <joel.stan@gmail.com>)
- id 1o5lfS-00022y-PD; Mon, 27 Jun 2022 06:08:32 -0400
-Received: by mail-pg1-x52f.google.com with SMTP id 23so8655602pgc.8;
- Mon, 27 Jun 2022 03:08:29 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=sender:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=eP0j2lMLRSaXDCig0lrnVjG3GTAbfYlE1Lq00GjRMkQ=;
- b=qj4DVMYHFUBj0NA5ElIEi2S98Tz4M+QZm6tB5ctW0Bt5ggjnSTiGwv+mQd7OEXQoyi
- 4tFtfHgSMx4xh48KZtL1q+H4P6YaqVElkHf+RheBRTSsWYL4Oj7r55fq7j1Ra6C6hp6W
- OZH4LXoUZV1dvSFcJj8NMw2ftxjVu9+ACf0FCuF0XPq1+bW6tFY8JGuiVqJRif6vsV/n
- ZWvKWQ5c8AH4GdpMrKhFFDtZ8AGbvAVgDHzftdAfNbYDc7GMscO3zAL3A2nh7ffErSpk
- J5wc1YJ1T+VI56IDzkKFpJ5BJDS0QE74CeAahgfwBPLvGmXPICY5ulvY6SiinOMrO1C9
- UztA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
- :mime-version:content-transfer-encoding;
- bh=eP0j2lMLRSaXDCig0lrnVjG3GTAbfYlE1Lq00GjRMkQ=;
- b=LO2n5KRZ6oI2F4aKtaARQ14RDKwdMXBK1FLkjyY9kew+hI1qps5vVa0IILT9+fMe8W
- z+pxc4i5UuI7FJokLETGU0UUwdUuzBWBDppx7r1Ccjuy42hDAT3PiJ1sFAjJx2OD5aPc
- 8ecp8/SkB7TXjeNC5Bi3wXgmTVDLgt82zoZGU8gbWnuslIHZCZOaZUiGv566CRfK+2k5
- aCX+R+9ZhkF9AXQP0zB57YnbU0x8ITCPVnzHBcZMqgBavND3p7ITRD3aqQV+DOPR9Wsp
- lyWVSk8Hj+lJdo21r4ygqq3OcMwDYy2ArrdptLQBUL/k9g2kO60uTyr3PDu1Db3z4xRt
- KrTA==
-X-Gm-Message-State: AJIora8eRKq3bY9VOeduRtjsnp6j/z8KScVmgTmlrOADgh2r4Lpc7TFs
- bSnitg/ik7H2DLIkjgH0Guw=
-X-Received: by 2002:a05:6a00:451c:b0:525:b802:bc3d with SMTP id
- cw28-20020a056a00451c00b00525b802bc3dmr4659092pfb.43.1656324507514; 
- Mon, 27 Jun 2022 03:08:27 -0700 (PDT)
-Received: from localhost.localdomain ([45.124.203.18])
- by smtp.gmail.com with ESMTPSA id
- w8-20020a1709026f0800b00168c523032fsm6753675plk.269.2022.06.27.03.08.24
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 27 Jun 2022 03:08:26 -0700 (PDT)
-From: Joel Stanley <joel@jms.id.au>
-To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org, Steven Lee <steven_lee@aspeedtech.com>
-Subject: [PATCH] aspeed/hace: Accumulative mode supported
-Date: Mon, 27 Jun 2022 19:38:15 +0930
-Message-Id: <20220627100816.125956-1-joel@jms.id.au>
-X-Mailer: git-send-email 2.35.1
+ (Exim 4.90_1) (envelope-from <SRS0=MnSX=XC=kaod.org=clg@ozlabs.org>)
+ id 1o5oN5-00043I-OQ; Mon, 27 Jun 2022 09:01:44 -0400
+Received: from mail.ozlabs.org ([2404:9400:2221:ea00::3]:38635
+ helo=gandalf.ozlabs.org)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <SRS0=MnSX=XC=kaod.org=clg@ozlabs.org>)
+ id 1o5oMz-0002Yw-Ne; Mon, 27 Jun 2022 09:01:41 -0400
+Received: from gandalf.ozlabs.org (mail.ozlabs.org
+ [IPv6:2404:9400:2221:ea00::3])
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4LWnsv09DRz4xXD;
+ Mon, 27 Jun 2022 23:01:23 +1000 (AEST)
+Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4LWnsr0L6Cz4xDH;
+ Mon, 27 Jun 2022 23:01:19 +1000 (AEST)
+From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>, Andrew Jeffery <andrew@aj.id.au>,
+ Joel Stanley <joel@jms.id.au>, Peter Delevoryas <pdel@fb.com>,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
+Subject: [PATCH v3] aspeed: Set the dram container at the SoC level
+Date: Mon, 27 Jun 2022 15:01:14 +0200
+Message-Id: <20220627130114.705892-1-clg@kaod.org>
+X-Mailer: git-send-email 2.35.3
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::52f;
- envelope-from=joel.stan@gmail.com; helo=mail-pg1-x52f.google.com
-X-Spam_score_int: -14
-X-Spam_score: -1.5
+Received-SPF: pass client-ip=2404:9400:2221:ea00::3;
+ envelope-from=SRS0=MnSX=XC=kaod.org=clg@ozlabs.org; helo=gandalf.ozlabs.org
+X-Spam_score_int: -16
+X-Spam_score: -1.7
 X-Spam_bar: -
-X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.249, RCVD_IN_DNSWL_NONE=-0.0001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -115,38 +93,230 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: sILyz/w2FPhi
+X-TUID: mbSZ2Xn5dNM9
 
-While the HMAC mode is not modelled, the accumulative mode is.
+Currently, the Aspeed machines allocate a ram container region in
+which the machine ram region is mapped. See commit ad1a9782186d
+("aspeed: add a RAM memory region container"). An extra region is
+mapped after ram in the ram container to catch invalid access done by
+FW. That's how FW determines the size of ram. See commit ebe31c0a8ef7
+("aspeed: add a max_ram_size property to the memory controller").
 
-Accumulative mode is enabled by setting one of the bits in the HMAC
-engine command mode part of the register, so fix the unimplemented check
-to only look at the upper of the two bits.
+Let's move all the logic under the SoC where it should be. It will
+also ease the work on multi SoC support.
 
-Fixes: 5cd7d8564a8b ("aspeed/hace: Support AST2600 HACE")
-Signed-off-by: Joel Stanley <joel@jms.id.au>
+Reviewed-by: Peter Delevoryas <pdel@fb.com>
+Message-Id: <20220623202123.3972977-1-clg@kaod.org>
+Signed-off-by: Cédric Le Goater <clg@kaod.org>
 ---
- hw/misc/aspeed_hace.c | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
 
-diff --git a/hw/misc/aspeed_hace.c b/hw/misc/aspeed_hace.c
-index 731234b78c4c..ac21be306c69 100644
---- a/hw/misc/aspeed_hace.c
-+++ b/hw/misc/aspeed_hace.c
-@@ -338,10 +338,10 @@ static void aspeed_hace_write(void *opaque, hwaddr addr, uint64_t data,
-         int algo;
-         data &= ahc->hash_mask;
+ Changes in v3:
+
+ - Create RAM after SDMC has been realized to get correct values of
+   RAM size and max-size
+ - Size the RAM container region to max-size. We don't need more.
+
+ Changes in v2:
+
+ - handle errors
+
+ include/hw/arm/aspeed_soc.h |  2 ++
+ hw/arm/aspeed.c             | 39 ++-----------------------------
+ hw/arm/aspeed_ast2600.c     |  7 ++++--
+ hw/arm/aspeed_soc.c         | 46 +++++++++++++++++++++++++++++++++++--
+ 4 files changed, 53 insertions(+), 41 deletions(-)
+
+diff --git a/include/hw/arm/aspeed_soc.h b/include/hw/arm/aspeed_soc.h
+index 02a5a9ffcbd3..e8a104823d35 100644
+--- a/include/hw/arm/aspeed_soc.h
++++ b/include/hw/arm/aspeed_soc.h
+@@ -50,6 +50,7 @@ struct AspeedSoCState {
+     A15MPPrivState     a7mpcore;
+     ARMv7MState        armv7m;
+     MemoryRegion *dram_mr;
++    MemoryRegion dram_container;
+     MemoryRegion sram;
+     AspeedVICState vic;
+     AspeedRtcState rtc;
+@@ -165,5 +166,6 @@ enum {
  
--        if ((data & HASH_HMAC_MASK)) {
-+        if ((data & HASH_DIGEST_HMAC)) {
-             qemu_log_mask(LOG_UNIMP,
--                          "%s: HMAC engine command mode %"PRIx64" not implemented\n",
--                          __func__, (data & HASH_HMAC_MASK) >> 8);
-+                          "%s: HMAC mode not implemented\n",
-+                          __func__);
-         }
-         if (data & BIT(1)) {
-             qemu_log_mask(LOG_UNIMP,
+ qemu_irq aspeed_soc_get_irq(AspeedSoCState *s, int dev);
+ void aspeed_soc_uart_init(AspeedSoCState *s);
++bool aspeed_soc_dram_init(AspeedSoCState *s, Error **errp);
+ 
+ #endif /* ASPEED_SOC_H */
+diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
+index a06f7c1b62a9..dc09773b0ba5 100644
+--- a/hw/arm/aspeed.c
++++ b/hw/arm/aspeed.c
+@@ -174,27 +174,6 @@ struct AspeedMachineState {
+ #define BLETCHLEY_BMC_HW_STRAP1 AST2600_EVB_HW_STRAP1
+ #define BLETCHLEY_BMC_HW_STRAP2 AST2600_EVB_HW_STRAP2
+ 
+-/*
+- * The max ram region is for firmwares that scan the address space
+- * with load/store to guess how much RAM the SoC has.
+- */
+-static uint64_t max_ram_read(void *opaque, hwaddr offset, unsigned size)
+-{
+-    return 0;
+-}
+-
+-static void max_ram_write(void *opaque, hwaddr offset, uint64_t value,
+-                           unsigned size)
+-{
+-    /* Discard writes */
+-}
+-
+-static const MemoryRegionOps max_ram_ops = {
+-    .read = max_ram_read,
+-    .write = max_ram_write,
+-    .endianness = DEVICE_NATIVE_ENDIAN,
+-};
+-
+ #define AST_SMP_MAILBOX_BASE            0x1e6e2180
+ #define AST_SMP_MBOX_FIELD_ENTRY        (AST_SMP_MAILBOX_BASE + 0x0)
+ #define AST_SMP_MBOX_FIELD_GOSIGN       (AST_SMP_MAILBOX_BASE + 0x4)
+@@ -324,20 +303,16 @@ static void aspeed_machine_init(MachineState *machine)
+     AspeedMachineClass *amc = ASPEED_MACHINE_GET_CLASS(machine);
+     AspeedSoCClass *sc;
+     DriveInfo *drive0 = drive_get(IF_MTD, 0, 0);
+-    ram_addr_t max_ram_size;
+     int i;
+     NICInfo *nd = &nd_table[0];
+ 
+-    memory_region_init(&bmc->ram_container, NULL, "aspeed-ram-container",
+-                       4 * GiB);
+-    memory_region_add_subregion(&bmc->ram_container, 0, machine->ram);
+-
+     object_initialize_child(OBJECT(machine), "soc", &bmc->soc, amc->soc_name);
+ 
+     sc = ASPEED_SOC_GET_CLASS(&bmc->soc);
+ 
+     /*
+-     * This will error out if isize is not supported by memory controller.
++     * This will error out if the RAM size is not supported by the
++     * memory controller of the SoC.
+      */
+     object_property_set_uint(OBJECT(&bmc->soc), "ram-size", machine->ram_size,
+                              &error_fatal);
+@@ -369,16 +344,6 @@ static void aspeed_machine_init(MachineState *machine)
+                          amc->uart_default);
+     qdev_realize(DEVICE(&bmc->soc), NULL, &error_abort);
+ 
+-    memory_region_add_subregion(get_system_memory(),
+-                                sc->memmap[ASPEED_DEV_SDRAM],
+-                                &bmc->ram_container);
+-
+-    max_ram_size = object_property_get_uint(OBJECT(&bmc->soc), "max-ram-size",
+-                                            &error_abort);
+-    memory_region_init_io(&bmc->max_ram, NULL, &max_ram_ops, NULL,
+-                          "max_ram", max_ram_size  - machine->ram_size);
+-    memory_region_add_subregion(&bmc->ram_container, machine->ram_size, &bmc->max_ram);
+-
+     aspeed_board_init_flashes(&bmc->soc.fmc,
+                               bmc->fmc_model ? bmc->fmc_model : amc->fmc_model,
+                               amc->num_cs, 0);
+diff --git a/hw/arm/aspeed_ast2600.c b/hw/arm/aspeed_ast2600.c
+index b0a4199b6960..bb5927c36bbf 100644
+--- a/hw/arm/aspeed_ast2600.c
++++ b/hw/arm/aspeed_ast2600.c
+@@ -197,8 +197,6 @@ static void aspeed_soc_ast2600_init(Object *obj)
+     object_initialize_child(obj, "sdmc", &s->sdmc, typename);
+     object_property_add_alias(obj, "ram-size", OBJECT(&s->sdmc),
+                               "ram-size");
+-    object_property_add_alias(obj, "max-ram-size", OBJECT(&s->sdmc),
+-                              "max-ram-size");
+ 
+     for (i = 0; i < sc->wdts_num; i++) {
+         snprintf(typename, sizeof(typename), "aspeed.wdt-%s", socname);
+@@ -443,6 +441,11 @@ static void aspeed_soc_ast2600_realize(DeviceState *dev, Error **errp)
+                         sc->memmap[ASPEED_DEV_WDT] + i * awc->offset);
+     }
+ 
++    /* RAM */
++    if (!aspeed_soc_dram_init(s, errp)) {
++        return;
++    }
++
+     /* Net */
+     for (i = 0; i < sc->macs_num; i++) {
+         object_property_set_bool(OBJECT(&s->ftgmac100[i]), "aspeed", true,
+diff --git a/hw/arm/aspeed_soc.c b/hw/arm/aspeed_soc.c
+index 30574d4276ab..efc7baf14133 100644
+--- a/hw/arm/aspeed_soc.c
++++ b/hw/arm/aspeed_soc.c
+@@ -11,6 +11,7 @@
+  */
+ 
+ #include "qemu/osdep.h"
++#include "qemu/units.h"
+ #include "qapi/error.h"
+ #include "hw/misc/unimp.h"
+ #include "hw/arm/aspeed_soc.h"
+@@ -191,8 +192,6 @@ static void aspeed_soc_init(Object *obj)
+     object_initialize_child(obj, "sdmc", &s->sdmc, typename);
+     object_property_add_alias(obj, "ram-size", OBJECT(&s->sdmc),
+                               "ram-size");
+-    object_property_add_alias(obj, "max-ram-size", OBJECT(&s->sdmc),
+-                              "max-ram-size");
+ 
+     for (i = 0; i < sc->wdts_num; i++) {
+         snprintf(typename, sizeof(typename), "aspeed.wdt-%s", socname);
+@@ -369,6 +368,11 @@ static void aspeed_soc_realize(DeviceState *dev, Error **errp)
+                         sc->memmap[ASPEED_DEV_WDT] + i * awc->offset);
+     }
+ 
++    /* RAM  */
++    if (!aspeed_soc_dram_init(s, errp)) {
++        return;
++    }
++
+     /* Net */
+     for (i = 0; i < sc->macs_num; i++) {
+         object_property_set_bool(OBJECT(&s->ftgmac100[i]), "aspeed", true,
+@@ -561,3 +565,41 @@ void aspeed_soc_uart_init(AspeedSoCState *s)
+                        serial_hd(i), DEVICE_LITTLE_ENDIAN);
+     }
+ }
++
++/*
++ * SDMC should be realized first to get correct RAM size and max size
++ * values
++ */
++bool aspeed_soc_dram_init(AspeedSoCState *s, Error **errp)
++{
++    AspeedSoCClass *sc = ASPEED_SOC_GET_CLASS(s);
++    ram_addr_t ram_size, max_ram_size;
++    DeviceState *dev;
++
++    ram_size = object_property_get_uint(OBJECT(&s->sdmc), "ram-size",
++                                        &error_abort);
++    max_ram_size = object_property_get_uint(OBJECT(&s->sdmc), "max-ram-size",
++                                            &error_abort);
++
++    memory_region_init(&s->dram_container, OBJECT(s), "ram-container",
++                       max_ram_size);
++    memory_region_add_subregion(&s->dram_container, 0, s->dram_mr);
++
++    /*
++     * Add a memory region beyond the RAM region to let firmwares scan
++     * the address space with load/store and guess how much RAM the
++     * SoC has.
++     */
++    dev = qdev_new(TYPE_UNIMPLEMENTED_DEVICE);
++    qdev_prop_set_string(dev, "name", "ram-empty");
++    qdev_prop_set_uint64(dev, "size", max_ram_size  - ram_size);
++    if (!sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), errp)) {
++        return false;
++    }
++
++    memory_region_add_subregion_overlap(&s->dram_container, ram_size,
++                      sysbus_mmio_get_region(SYS_BUS_DEVICE(dev), 0), -1000);
++    memory_region_add_subregion(get_system_memory(),
++                      sc->memmap[ASPEED_DEV_SDRAM], &s->dram_container);
++    return true;
++}
 -- 
-2.35.1
+2.35.3
 

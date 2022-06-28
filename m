@@ -1,213 +1,132 @@
-Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp2966878lft;
-        Tue, 28 Jun 2022 00:12:53 -0700 (PDT)
-X-Google-Smtp-Source: AGRyM1tZ/Yo3d8SwlLfTPC5uJm0FII4PkwHFjNnBpmICmRZ6yqFJwd2Pd5S6VKeY/+9qLQsvhoH7
-X-Received: by 2002:ad4:5ec9:0:b0:470:8e21:d090 with SMTP id jm9-20020ad45ec9000000b004708e21d090mr2453675qvb.89.1656400373125;
-        Tue, 28 Jun 2022 00:12:53 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1656400373; cv=none;
+Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp2981375lft;
+        Tue, 28 Jun 2022 00:37:40 -0700 (PDT)
+X-Google-Smtp-Source: AGRyM1uoNXfwMdrRAqYrh2axZQAJ/Bba6WlnaKalcnYTcIvxExyqLX8SV8xRAA8Ay9kL7kCz5dUr
+X-Received: by 2002:a05:620a:294a:b0:6ae:fb7f:831 with SMTP id n10-20020a05620a294a00b006aefb7f0831mr10477991qkp.130.1656401860579;
+        Tue, 28 Jun 2022 00:37:40 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1656401860; cv=none;
         d=google.com; s=arc-20160816;
-        b=U36YnoTEVY2RQWAZxuriQ0zp6dL3HKWsCFVF4G+GMU3t2gePUfMdb2UCDWM9bT2jTM
-         Vg//OFZzBvcKD4jcXLu+zfIez0u/UtRNfNbSPYTxEuMYa/o6DwV8zXYsQWFXpTTtEqMS
-         RMMmZEdxQ/HQhsZX7vZ28CyKtWAa10vNaZPy2TPaJxIzAK4CmVR0LGekSTIiLbCWTPDW
-         h8bUBS7yHgQwRObp6HQstCHfxAb/Kxumzw/A3vLrTfCuaBmPx9++BJD2QChvwtPYV0yV
-         DW+UC8yC70uLlrtfKJS0YmtR8B2aWxtu6cevQniGTbEhD0mOW4a/zFGJt0Kd8V+Sr6nQ
-         HkSA==
+        b=uKaorPkEmmjKKAlcxwDszws6hr5rndm6UMq1VmiBjw4oZReRgg6s0hF11wSN6ia43e
+         7gZWMBeIB45HtQbHmC4gJ2H5Oq0duCMAT967VZ50CwA0uxJ1x9wG+tZ2T1T2SBEI9QtM
+         Zx/q9/l1sODwJycD1ujkp8Dh9CbT4dNlcHGn/YmMwir57I5W6uisrZ0OzgjVJ1BsGjsP
+         zlE0Ow56tauxAbkHB47BTlcjpccSTu5ms5wzztCbZrP+HBsLFQJ32xDDJGqFGn3iVGZA
+         p47JESiVVOL/8i8rlhCJJ4KkkchxY3C47F8UL69rGctq9QXf714VwHFAa4ZahdQvRS6f
+         9tXA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :in-reply-to:from:references:cc:to:content-language:subject
          :user-agent:mime-version:date:message-id;
-        bh=VwjqCh3Diha8sSIYsF02H2YtcSGi/gdkIPipOr9w4ys=;
-        b=z1g98jULt5d79rrLJYNn+REvQOVegTLS4+X5sgP9dR1c3N1u2Cf60Ze2GtTlARCG9k
-         r39/2k5NNDDDG600UmtcIzV/jh/PlJaz1oqrJnKfcnS40H64wz2GUh0IhgdAOUSLehis
-         An0hod2ONWAkhc+yhRMvuraOoyLYO72rWpn2sU/4Ck3UvbcM0EYWlHqRq2jHBOlxvqcg
-         OzLEhGAB65DERMg/nl1Qsv5TCYlLH4Ldh/4YYOdDX02DS2FoVN0yMlnOq+mWnicmFmGG
-         AnGkWouVQReP9ax5y8iL/gV3jwow4Qp8L6sYjCsL+TA/KXefHko3qCdBolxVAg+twrpm
-         SXvQ==
+        bh=1H/M7ffpYWNFO+7xSnsxs9WGMoEYerAh4Lm2gifXW7Y=;
+        b=gL+IlHMKn1cttlFA+Xs578PQwma38oRug8x96Vd9maiQKPwAIbRIbcjiL2gWcpYWLG
+         0yFLE9ZsGd5w8xUcTCWXYB07obHxZb7HvEAZroXev1EP6551bcQyXyIEHZePyATJxwMX
+         KZSDjFfgajN1J99EFeVUsxccYcHLcWLVo1t1FiP03qKHg6++047d23bb7jBftP+gBSgt
+         KU9LGj8AicL6aTZuHDYYI1DAbd0LOZAh8AEP/XEWfFXgDxydPhcqJeWLCfa6SgFRnGqy
+         PgcSUcbu98YfUkNCOLkjlVtfIrVE4GmMz9n3AjGpLBkWGBQJ4r2JXgGcDVbWRJ7gkmLZ
+         p7ew==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e10-20020a05620a014a00b006af038ca696si6356246qkn.62.2022.06.28.00.12.52
+        by mx.google.com with ESMTPS id az43-20020a05620a172b00b006a69f7f782csi7314038qkb.194.2022.06.28.00.37.40
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 28 Jun 2022 00:12:53 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 28 Jun 2022 00:37:40 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:49756 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:42068 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1o65P2-0001e8-EC
-	for alex.bennee@linaro.org; Tue, 28 Jun 2022 03:12:52 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44984)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1o65n2-0002cG-1E
+	for alex.bennee@linaro.org; Tue, 28 Jun 2022 03:37:40 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:58372)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1o63Nz-0006mU-CD
- for qemu-devel@nongnu.org; Tue, 28 Jun 2022 01:03:40 -0400
-Received: from smtpout2.mo529.mail-out.ovh.net ([79.137.123.220]:39763)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1o654M-0000vB-4j
+ for qemu-arm@nongnu.org; Tue, 28 Jun 2022 02:51:35 -0400
+Received: from smtpout4.mo529.mail-out.ovh.net ([217.182.185.173]:44969)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1o63Nw-0001Bx-VZ
- for qemu-devel@nongnu.org; Tue, 28 Jun 2022 01:03:38 -0400
-Received: from mxplan5.mail.ovh.net (unknown [10.108.20.173])
- by mo529.mail-out.ovh.net (Postfix) with ESMTPS id B691111202D7F;
- Tue, 28 Jun 2022 07:03:33 +0200 (CEST)
-Received: from kaod.org (37.59.142.108) by DAG4EX1.mxp5.local (172.16.2.31)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1o654G-0006wK-U2
+ for qemu-arm@nongnu.org; Tue, 28 Jun 2022 02:51:29 -0400
+Received: from mxplan5.mail.ovh.net (unknown [10.108.1.149])
+ by mo529.mail-out.ovh.net (Postfix) with ESMTPS id CCCA511209F91;
+ Tue, 28 Jun 2022 08:51:19 +0200 (CEST)
+Received: from kaod.org (37.59.142.98) by DAG4EX1.mxp5.local (172.16.2.31)
  with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.9; Tue, 28 Jun
- 2022 07:03:33 +0200
+ 2022 08:51:18 +0200
 Authentication-Results: garm.ovh; auth=pass
- (GARM-108S00293ad9f36-b753-4a9e-a4c7-9e7d098cfc57,
- 366CF7EF17C4C6544BD620BB2F2D78A15BAD5133) smtp.auth=clg@kaod.org
+ (GARM-98R00263a30d7b-bca4-4575-b4fe-1a5f5de9871c,
+ 0817C438BD46AF8310FE57DD1A4A0790F7CCC07F) smtp.auth=clg@kaod.org
 X-OVh-ClientIp: 82.64.250.170
-Message-ID: <62c1c907-8c4a-7c75-5c63-ce799cbbfa70@kaod.org>
-Date: Tue, 28 Jun 2022 07:03:32 +0200
+Message-ID: <dcf7d788-1629-0fbd-b511-9c1272a5f7e3@kaod.org>
+Date: Tue, 28 Jun 2022 08:51:17 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
  Thunderbird/91.9.0
-Subject: Re: [PATCH v2 7/8] aspeed: Make aspeed_board_init_flashes public
+Subject: Re: [PATCH 09/14] pmbus: Reset out buf after switching pages
 Content-Language: en-US
 To: Peter Delevoryas <pdel@fb.com>
-CC: <peter.maydell@linaro.org>, <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>
-References: <20220624003701.1363500-1-pdel@fb.com>
- <20220624003701.1363500-8-pdel@fb.com>
+CC: <zhdaniel@fb.com>, <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>,
+ <komlodi@google.com>, <titusr@google.com>, <andrew@aj.id.au>,
+ <joel@jms.id.au>
+References: <20220627195506.403715-1-pdel@fb.com>
+ <20220627195506.403715-10-pdel@fb.com>
 From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
-In-Reply-To: <20220624003701.1363500-8-pdel@fb.com>
+In-Reply-To: <20220627195506.403715-10-pdel@fb.com>
 Content-Type: text/plain; charset="UTF-8"; format=flowed
-Content-Transfer-Encoding: 8bit
-X-Originating-IP: [37.59.142.108]
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [37.59.142.98]
 X-ClientProxiedBy: DAG2EX1.mxp5.local (172.16.2.11) To DAG4EX1.mxp5.local
  (172.16.2.31)
-X-Ovh-Tracer-GUID: 8bc2d5ff-5cef-447d-a236-43bb12139c50
-X-Ovh-Tracer-Id: 10062448944434285536
+X-Ovh-Tracer-GUID: 26e7c49c-c1e5-4c41-902f-8d1f1e997f1d
+X-Ovh-Tracer-Id: 11882466144404999020
 X-VR-SPAMSTATE: OK
 X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvfedrudegiedgledvucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhepkfffgggfuffvvehfhfgjtgfgihesthekredttdefjeenucfhrhhomhepveorughrihgtpgfnvggpifhorghtvghruceotghlgheskhgrohgurdhorhhgqeenucggtffrrghtthgvrhhnpeekteejtdelkeejvdevffduhfetteelieefgeefffeugffhfeekheffueefledujeenucfkpheptddrtddrtddrtddpfeejrdehledrudegvddruddtkeenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhhouggvpehsmhhtphhouhhtpdhhvghlohepmhigphhlrghnhedrmhgrihhlrdhovhhhrdhnvghtpdhinhgvtheptddrtddrtddrtddpmhgrihhlfhhrohhmpegtlhhgsehkrghougdrohhrghdpnhgspghrtghpthhtohepuddprhgtphhtthhopehqvghmuhdqrghrmhesnhhonhhgnhhurdhorhhgpdfovfetjfhoshhtpehmohehvdel
-Received-SPF: pass client-ip=79.137.123.220; envelope-from=clg@kaod.org;
- helo=smtpout2.mo529.mail-out.ovh.net
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvfedrudegiedgudduiecutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemucehtddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpefkffggfgfuvfevfhfhjggtgfhisehtjeertddtfeejnecuhfhrohhmpeevrogurhhitggpnfgvpgfiohgrthgvrhcuoegtlhhgsehkrghougdrohhrgheqnecuggftrfgrthhtvghrnhepleelieeigfekfeeitddvieegteeuteekffekleehuefgteetgedvkefghefggfeknecukfhppedtrddtrddtrddtpdefjedrheelrddugedvrdelkeenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhhouggvpehsmhhtphhouhhtpdhhvghlohepmhigphhlrghnhedrmhgrihhlrdhovhhhrdhnvghtpdhinhgvtheptddrtddrtddrtddpmhgrihhlfhhrohhmpegtlhhgsehkrghougdrohhrghdpnhgspghrtghpthhtohepuddprhgtphhtthhopehjohgvlhesjhhmshdrihgurdgruhdpoffvtefjohhsthepmhhohedvle
+Received-SPF: pass client-ip=217.182.185.173; envelope-from=clg@kaod.org;
+ helo=smtpout4.mo529.mail-out.ovh.net
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
 X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: FC4IquvyqSua
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 36ioxnxogaBB
 
-On 6/24/22 02:37, Peter Delevoryas wrote:
+On 6/27/22 21:55, Peter Delevoryas wrote:
 > Signed-off-by: Peter Delevoryas <pdel@fb.com>
 
-Reviewed-by: Cédric Le Goater <clg@kaod.org>
-
-Thanks,
-
-C.
+is that a bug ?
 
 
 > ---
->   hw/arm/aspeed.c             | 25 -------------------------
->   hw/arm/aspeed_soc.c         | 26 ++++++++++++++++++++++++++
->   include/hw/arm/aspeed_soc.h |  2 ++
->   3 files changed, 28 insertions(+), 25 deletions(-)
+>   hw/i2c/pmbus_device.c | 1 +
+>   1 file changed, 1 insertion(+)
 > 
-> diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
-> index b43dc0fda8..a7352ca837 100644
-> --- a/hw/arm/aspeed.c
-> +++ b/hw/arm/aspeed.c
-> @@ -257,31 +257,6 @@ static void write_boot_rom(DriveInfo *dinfo, hwaddr addr, size_t rom_size,
->       rom_add_blob_fixed("aspeed.boot_rom", storage, rom_size, addr);
->   }
+> diff --git a/hw/i2c/pmbus_device.c b/hw/i2c/pmbus_device.c
+> index 62885fa6a1..efddc36fd9 100644
+> --- a/hw/i2c/pmbus_device.c
+> +++ b/hw/i2c/pmbus_device.c
+> @@ -1088,6 +1088,7 @@ static int pmbus_write_data(SMBusDevice *smd, uint8_t *buf, uint8_t len)
 >   
-> -static void aspeed_board_init_flashes(AspeedSMCState *s, const char *flashtype,
-> -                                      unsigned int count, int unit0)
-> -{
-> -    int i;
-> -
-> -    if (!flashtype) {
-> -        return;
-> -    }
-> -
-> -    for (i = 0; i < count; ++i) {
-> -        DriveInfo *dinfo = drive_get(IF_MTD, 0, unit0 + i);
-> -        qemu_irq cs_line;
-> -        DeviceState *dev;
-> -
-> -        dev = qdev_new(flashtype);
-> -        if (dinfo) {
-> -            qdev_prop_set_drive(dev, "drive", blk_by_legacy_dinfo(dinfo));
-> -        }
-> -        qdev_realize_and_unref(dev, BUS(s->spi), &error_fatal);
-> -
-> -        cs_line = qdev_get_gpio_in_named(dev, SSI_GPIO_CS, 0);
-> -        sysbus_connect_irq(SYS_BUS_DEVICE(s), i + 1, cs_line);
-> -    }
-> -}
-> -
->   static void sdhci_attach_drive(SDHCIState *sdhci, DriveInfo *dinfo)
->   {
->           DeviceState *card;
-> diff --git a/hw/arm/aspeed_soc.c b/hw/arm/aspeed_soc.c
-> index 16394c8e0b..4183f5ffbf 100644
-> --- a/hw/arm/aspeed_soc.c
-> +++ b/hw/arm/aspeed_soc.c
-> @@ -21,6 +21,7 @@
->   #include "hw/i2c/aspeed_i2c.h"
->   #include "net/net.h"
->   #include "sysemu/sysemu.h"
-> +#include "sysemu/blockdev.h"
+>       if (pmdev->code == PMBUS_PAGE) {
+>           pmdev->page = pmbus_receive8(pmdev);
+> +        pmdev->out_buf_len = 0;
+>           return 0;
+>       }
 >   
->   #define ASPEED_SOC_IOMEM_SIZE       0x00200000
->   
-> @@ -626,3 +627,28 @@ void aspeed_mmio_map_unimplemented(AspeedSoCState *s, SysBusDevice *dev,
->       memory_region_add_subregion_overlap(s->memory, addr,
->                                           sysbus_mmio_get_region(dev, 0), -1000);
->   }
-> +
-> +void aspeed_board_init_flashes(AspeedSMCState *s, const char *flashtype,
-> +                               unsigned int count, int unit0)
-> +{
-> +    int i;
-> +
-> +    if (!flashtype) {
-> +        return;
-> +    }
-> +
-> +    for (i = 0; i < count; ++i) {
-> +        DriveInfo *dinfo = drive_get(IF_MTD, 0, unit0 + i);
-> +        qemu_irq cs_line;
-> +        DeviceState *dev;
-> +
-> +        dev = qdev_new(flashtype);
-> +        if (dinfo) {
-> +            qdev_prop_set_drive(dev, "drive", blk_by_legacy_dinfo(dinfo));
-> +        }
-> +        qdev_realize_and_unref(dev, BUS(s->spi), &error_fatal);
-> +
-> +        cs_line = qdev_get_gpio_in_named(dev, SSI_GPIO_CS, 0);
-> +        sysbus_connect_irq(SYS_BUS_DEVICE(s), i + 1, cs_line);
-> +    }
-> +}
-> diff --git a/include/hw/arm/aspeed_soc.h b/include/hw/arm/aspeed_soc.h
-> index 6cfc063985..5cd31c1306 100644
-> --- a/include/hw/arm/aspeed_soc.h
-> +++ b/include/hw/arm/aspeed_soc.h
-> @@ -178,5 +178,7 @@ void aspeed_mmio_map(AspeedSoCState *s, SysBusDevice *dev, int n, hwaddr addr);
->   void aspeed_mmio_map_unimplemented(AspeedSoCState *s, SysBusDevice *dev,
->                                      const char *name, hwaddr addr,
->                                      uint64_t size);
-> +void aspeed_board_init_flashes(AspeedSMCState *s, const char *flashtype,
-> +                               unsigned int count, int unit0);
->   
->   #endif /* ASPEED_SOC_H */
 

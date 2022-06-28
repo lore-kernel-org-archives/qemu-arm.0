@@ -1,178 +1,489 @@
-Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp2735554lft;
-        Mon, 27 Jun 2022 15:54:21 -0700 (PDT)
-X-Google-Smtp-Source: AGRyM1v04V4w73P1vwI+hgxOfrZCLbVtGMI6Nu7VmkrnSa4n3MeONvdFLxznlSOYwhhxaeSD+4IU
-X-Received: by 2002:a05:6214:27ce:b0:470:596b:4e82 with SMTP id ge14-20020a05621427ce00b00470596b4e82mr1522088qvb.118.1656370461018;
-        Mon, 27 Jun 2022 15:54:21 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1656370461; cv=none;
+Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp2978300lft;
+        Tue, 28 Jun 2022 00:34:25 -0700 (PDT)
+X-Google-Smtp-Source: AGRyM1vL0cJF0v2aLiJHXPnhiSwZlYpdeIGZRJe2WO8mGo0otgcYLV00jyN6InT4x4TOIlwU4Pun
+X-Received: by 2002:ac8:7e8b:0:b0:31b:c86b:ec0a with SMTP id w11-20020ac87e8b000000b0031bc86bec0amr3676306qtj.503.1656401665746;
+        Tue, 28 Jun 2022 00:34:25 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1656401665; cv=none;
         d=google.com; s=arc-20160816;
-        b=xpi4UM138rI71O1VNM0/H/ZOU5i77p9nyGkUlaEX18zw1fadh/Mo1jcn8TaYNFFNBc
-         8IQmWYdq02sR4vTelF9nJ/dU8NhDhqcFCNk/BLfKPJ0qFiDeVz/YQ+2Amtf33gN6rt8R
-         jzzuy3Jd6VVpSy0sKV033UNaN8+DSNAwiLcKyeWvDA1JjVgSSilPhPWsutVSw2U9mlJu
-         pcaTuzfD8iTkoYcGWnWlpZnwNeCSQrJk14DuQojAWUJ1gKY+KhoJyLatFqtrT99hxwIw
-         DvxdSjKqfjhTXVMtTcBIQZ8oUEDCvfD7vAiq5457Q4k25BLTGBPFXjolc7n/a/MxlpeY
-         RmBg==
+        b=hIHb2JDsy+wT5O51mt9XGVj/O7ujG5jP4IvW9OlF1FbvHYviFXI1GBC7ymILoeuyMM
+         /U+dD3ojvOcp2jSdInfi8eHQs2d4RdAoORb55+FAOQoUWPbVa83OuU1J920snfwdPi6Z
+         uKtdsw7Ot9NaOHitQuINqfbLCdNMrhfIOkBPNEFs9Y/1fGavD+EQgrp0gB0iAHQFXaal
+         e4FwMZ00PjcDVFCYS4HkjDXKktiQ9nZPwh29JCbOl8nStjaqt4rN1Pvg+JQdJ1BvlCw9
+         FGP+EOQFhhicxviGkGhSHEIcjxqUJesMwn6GGdkVS2+EVgmcHi6iz8Ajr7EUSaPsWW+j
+         WZrw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :in-reply-to:from:references:cc:to:content-language:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=vYqXd79+V8jayTOkJhsqghC4+xfdJz7wmyDIIc9y5K8=;
-        b=EEHFq0zFcWCle1Wo9NcR6vKFajxKnPXIz+TWvK1lnO1nPBKV8SJ80HQt9pzhStTHJh
-         WhUzlwdYnDBVALSisoclzoIvsDoz1Hztb4d8HZm48lO+EdY8jooisM4M2SLhsWn+AtuC
-         nbGy92tDB0USoJdL5tyxV2p382V+BHanOWEZjE3UtdMTJUfYqzMXrkDTW76OLxvu+q1e
-         efa+j33yCekun3C1dKlbw5FUQKNd0ZQJ863b6FsS2BxOdjhxFAyBZFNL3wGADkeK72gJ
-         U4hoZJBxdk6nBGVIcxZVjhFgjyvOUqJr4WD47ATvZTKIW1cQcp+pmAGcvCwAZM11Labr
-         wuHQ==
+         :user-agent:mime-version:date:message-id;
+        bh=VoyD6hID1J3aWQTUfWHf4+05cBaTTv+IeMbG2dwNZMY=;
+        b=KYmHfX+W3HFruHeMWDhGplyyFFLyMgsO6QOETUkI3QOreSIlAeTrH+ONaZilo8PaCa
+         N+BUCd1uX2UOwl5bnMhg/mFBbY816uoa7YX/4lRkN0iCOM99xwiL+zlAGR3jxsuWMej3
+         tKsCm1Vsd9dxYTah7WV1kUgUn0Mqr1WcqraHVsTmqK/3x2HdiNtqoNw1H3lH9822d7SZ
+         gHCRNH2nytHMKkKqSpzw5Ih6cBOfCE4Q2rxTsC6EHNzsQ79qSlA5JD8580QcLXbcXbfo
+         tyyYN0vBDIE0C5ZXFp3hQZcpIGX5pWGViQvuwLk1hINbUNob5xDQK5Zem75ghR44oxcz
+         C9+Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=t46IGSRE;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id c4-20020a05622a024400b00307c88f77b5si7342459qtx.463.2022.06.27.15.54.20
+        by mx.google.com with ESMTPS id bk39-20020a05620a1a2700b006af52b73aa8si628329qkb.87.2022.06.28.00.34.25
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 27 Jun 2022 15:54:21 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 28 Jun 2022 00:34:25 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=t46IGSRE;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:34600 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:34242 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1o5xca-0002Bi-36
-	for alex.bennee@linaro.org; Mon, 27 Jun 2022 18:54:20 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:47352)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1o65jt-0005gu-5O
+	for alex.bennee@linaro.org; Tue, 28 Jun 2022 03:34:25 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:57710)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1o5xc7-0002Ad-Pp
- for qemu-arm@nongnu.org; Mon, 27 Jun 2022 18:53:52 -0400
-Received: from mail-pj1-x1032.google.com ([2607:f8b0:4864:20::1032]:46719)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1o5xc4-00014Z-IF
- for qemu-arm@nongnu.org; Mon, 27 Jun 2022 18:53:49 -0400
-Received: by mail-pj1-x1032.google.com with SMTP id
- h9-20020a17090a648900b001ecb8596e43so10807555pjj.5
- for <qemu-arm@nongnu.org>; Mon, 27 Jun 2022 15:53:47 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=message-id:date:mime-version:user-agent:subject:content-language:to
- :cc:references:from:in-reply-to:content-transfer-encoding;
- bh=vYqXd79+V8jayTOkJhsqghC4+xfdJz7wmyDIIc9y5K8=;
- b=t46IGSRECvFJy+uZorMe0b7NFz6RJbmhJ4ZmU4Ct7K14I1Y1FK9LbmHyeyENi/Y8II
- Um/lHrN4wqn0TF3XkuXjcEFzQKu5ddRFWhNcCEhUhDaDnxUI1sL9YnRy4Asy1ZQoNvkj
- T8pjRx+7TMrW/TfkLBE/GetN4p/og1ardDO6E6XAF82FSyIkTlIa6FIa6/yPqDTi1ZY9
- eOqGYdJYmn17wRGC6MugWSCtIlgVmVF1wOEo76gX3X+Hpu+LF6ciGdI9yt/Knb+C9Qd2
- 2z742wBZ+rUhG1U9SEXwk+jWZssYxSxMNCddXhID+Bbmt224VGcVZitLbKVwF/UynlVc
- c+9A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
- :content-language:to:cc:references:from:in-reply-to
- :content-transfer-encoding;
- bh=vYqXd79+V8jayTOkJhsqghC4+xfdJz7wmyDIIc9y5K8=;
- b=jvRXwMQyuNZSyvwIgYPMvXNxa1RqkyKG+jSs13oAiV7x6g+Hw3F9cCw/EXUHY6ZDD3
- sB9fW/PJqJGt4iTdztjC5Kc1o3okmwqu6r1kKdn+/+ZMztIbyXX/7SA+daXB/F1jczDN
- 5fk+zQPMi319rlYIPefGnKHzoh6DEA8YSSt4dSoZREGLj0rYXPIInasnbfVuz4j8XP+T
- JBLiBLbK4GYz+9uKB3UHJ6RUwpZamt5J4v4HhbaxNMsejY9BQu31VC+gxYnmn5Oq+0fD
- QIH4YhA1rk824xgFY9VgdawclH8tYs4uFZivqs/TcNMwd/O0jZ2GAI4RzmkLX0yhZYhw
- XmFw==
-X-Gm-Message-State: AJIora+UHXOBoMstt7z6wj3DaoHYELObBxCiIAXvrWvMymAXIKFS35DQ
- 72NJrE5WidysQjmf2l3+xc9vOg==
-X-Received: by 2002:a17:902:d502:b0:16a:797c:cfb1 with SMTP id
- b2-20020a170902d50200b0016a797ccfb1mr1765573plg.137.1656370425843; 
- Mon, 27 Jun 2022 15:53:45 -0700 (PDT)
-Received: from [192.168.123.227] ([122.255.60.245])
- by smtp.gmail.com with ESMTPSA id
- ip11-20020a17090b314b00b001ec84b0f199sm83181pjb.1.2022.06.27.15.53.43
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 27 Jun 2022 15:53:45 -0700 (PDT)
-Message-ID: <a1467ccb-e0a8-b908-dfa6-08ead6aa3633@linaro.org>
-Date: Tue, 28 Jun 2022 04:23:38 +0530
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1o651D-0007Li-EI
+ for qemu-devel@nongnu.org; Tue, 28 Jun 2022 02:48:21 -0400
+Received: from 6.mo552.mail-out.ovh.net ([188.165.49.222]:35749)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1o651A-0006WO-At
+ for qemu-devel@nongnu.org; Tue, 28 Jun 2022 02:48:14 -0400
+Received: from mxplan5.mail.ovh.net (unknown [10.109.146.170])
+ by mo552.mail-out.ovh.net (Postfix) with ESMTPS id 9B57522A1B;
+ Tue, 28 Jun 2022 06:47:59 +0000 (UTC)
+Received: from kaod.org (37.59.142.97) by DAG4EX1.mxp5.local (172.16.2.31)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.9; Tue, 28 Jun
+ 2022 08:47:57 +0200
+Authentication-Results: garm.ovh; auth=pass
+ (GARM-97G0027fb7a07c-2d50-4bcf-b908-4f18dfb31205,
+ 366CF7EF17C4C6544BD620BB2F2D78A15BAD5133) smtp.auth=clg@kaod.org
+X-OVh-ClientIp: 82.64.250.170
+Message-ID: <1640c86d-cd18-b7cf-67ca-0e9d7abd16b3@kaod.org>
+Date: Tue, 28 Jun 2022 08:47:56 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.9.1
-Subject: Re: [PATCH] target/arm: Fix qemu-system-arm handling of LPAE block
- descriptors for highmem
+ Thunderbird/91.9.0
+Subject: Re: [PATCH 07/14] aspeed: Add PECI controller
 Content-Language: en-US
-To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
-Cc: He Zhe <zhe.he@windriver.com>
-References: <20220627134620.3190252-1-peter.maydell@linaro.org>
-From: Richard Henderson <richard.henderson@linaro.org>
-In-Reply-To: <20220627134620.3190252-1-peter.maydell@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+To: Peter Delevoryas <pdel@fb.com>
+CC: <zhdaniel@fb.com>, <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>,
+ <komlodi@google.com>, <titusr@google.com>, <andrew@aj.id.au>,
+ <joel@jms.id.au>
+References: <20220627195506.403715-1-pdel@fb.com>
+ <20220627195506.403715-8-pdel@fb.com>
+From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
+In-Reply-To: <20220627195506.403715-8-pdel@fb.com>
+Content-Type: text/plain; charset="UTF-8"; format=flowed
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1032;
- envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x1032.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.001,
+X-Originating-IP: [37.59.142.97]
+X-ClientProxiedBy: DAG3EX2.mxp5.local (172.16.2.22) To DAG4EX1.mxp5.local
+ (172.16.2.31)
+X-Ovh-Tracer-GUID: 48e9fa85-c57f-47be-82b1-055a814fbc01
+X-Ovh-Tracer-Id: 11826171150167935852
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvfedrudegiedguddugecutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemucehtddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpefkffggfgfuvfevfhfhjggtgfhisehtjeertddtfeejnecuhfhrohhmpeevrogurhhitggpnfgvpgfiohgrthgvrhcuoegtlhhgsehkrghougdrohhrgheqnecuggftrfgrthhtvghrnhepvdegleehgfeffefhudeutdfgfeekteekjeefveehfeektdeiueevvdfhueekjeeknecuffhomhgrihhnpehmvghtrgdrtghomhenucfkpheptddrtddrtddrtddpfeejrdehledrudegvddrleejnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmohguvgepshhmthhpohhuthdphhgvlhhopehmgihplhgrnhehrdhmrghilhdrohhvhhdrnhgvthdpihhnvghtpedtrddtrddtrddtpdhmrghilhhfrhhomheptghlgheskhgrohgurdhorhhgpdhnsggprhgtphhtthhopedupdhrtghpthhtohepjhhovghlsehjmhhsrdhiugdrrghupdfovfetjfhoshhtpehmohehhedv
+Received-SPF: pass client-ip=188.165.49.222; envelope-from=clg@kaod.org;
+ helo=6.mo552.mail-out.ovh.net
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Qnw2UlQ7U1d4
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: Hg5ZNSKOJE2U
 
-On 6/27/22 19:16, Peter Maydell wrote:
-> In commit 39a1fd25287f5d we fixed a bug in the handling of LPAE block
-> descriptors where we weren't correctly zeroing out some RES0 bits.
-> However this fix has a bug because the calculation of the mask is
-> done at the wrong width: in
->    descaddr &= ~(page_size - 1);
-> page_size is a target_ulong, so in the 'qemu-system-arm' binary it is
-> only 32 bits, and the effect is that we always zero out the top 32
-> bits of the calculated address.  Fix the calculation by forcing the
-> mask to be calculated with the same type as descaddr.
-> 
-> This only affects 32-bit CPUs which support LPAE (e.g. cortex-a15)
-> when used on board models which put RAM or devices above the 4GB
-> mark and when the 'qemu-system-arm' executable is being used.
-> It was also masked in 7.0 by the main bug reported in
-> https://gitlab.com/qemu-project/qemu/-/issues/1078 where the
-> virt board incorrectly does not enable 'highmem' for 32-bit CPUs.
-> 
-> The workaround is to use 'qemu-system-aarch64' with the same
-> command line.
-> 
-> Reported-by: He Zhe <zhe.he@windriver.com>
-> Fixes: 39a1fd25287f5de
-> ("target/arm: Fix handling of LPAE block descriptors")
-> Cc: qemu-stable@nongnu.org
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+On 6/27/22 21:54, Peter Delevoryas wrote:
+
+Could we have some short intro ? :)
+
+> Signed-off-by: Peter Delevoryas <pdel@fb.com>
 > ---
->   target/arm/ptw.c | 2 +-
->   1 file changed, 1 insertion(+), 1 deletion(-)
+>   hw/arm/aspeed_ast10x0.c       |  11 ++
+>   hw/misc/aspeed_peci.c         | 225 ++++++++++++++++++++++++++++++++++
+>   hw/misc/meson.build           |   3 +-
+>   include/hw/arm/aspeed_soc.h   |   3 +
+>   include/hw/misc/aspeed_peci.h |  34 +++++
+>   5 files changed, 275 insertions(+), 1 deletion(-)
+>   create mode 100644 hw/misc/aspeed_peci.c
+>   create mode 100644 include/hw/misc/aspeed_peci.h
 > 
-> diff --git a/target/arm/ptw.c b/target/arm/ptw.c
-> index da478104f05..e71fc1f4293 100644
-> --- a/target/arm/ptw.c
-> +++ b/target/arm/ptw.c
-> @@ -1257,7 +1257,7 @@ static bool get_phys_addr_lpae(CPUARMState *env, uint64_t address,
->            * clear the lower bits here before ORing in the low vaddr bits.
->            */
->           page_size = (1ULL << ((stride * (4 - level)) + 3));
-> -        descaddr &= ~(page_size - 1);
-> +        descaddr &= ~(hwaddr)(page_size - 1);
->           descaddr |= (address & (page_size - 1));
->           /* Extract attributes from the descriptor */
->           attrs = extract64(descriptor, 2, 10)
+> diff --git a/hw/arm/aspeed_ast10x0.c b/hw/arm/aspeed_ast10x0.c
+> index 5df480a21f..780841ea84 100644
+> --- a/hw/arm/aspeed_ast10x0.c
+> +++ b/hw/arm/aspeed_ast10x0.c
+> @@ -47,6 +47,7 @@ static const hwaddr aspeed_soc_ast1030_memmap[] = {
+>       [ASPEED_DEV_UART13]    = 0x7E790700,
+>       [ASPEED_DEV_WDT]       = 0x7E785000,
+>       [ASPEED_DEV_LPC]       = 0x7E789000,
+> +    [ASPEED_DEV_PECI]      = 0x7E78B000,
+>       [ASPEED_DEV_I2C]       = 0x7E7B0000,
+>   };
+>   
+> @@ -75,6 +76,7 @@ static const int aspeed_soc_ast1030_irqmap[] = {
+>       [ASPEED_DEV_TIMER8]    = 23,
+>       [ASPEED_DEV_WDT]       = 24,
+>       [ASPEED_DEV_LPC]       = 35,
+> +    [ASPEED_DEV_PECI]      = 38,
+>       [ASPEED_DEV_FMC]       = 39,
+>       [ASPEED_DEV_PWM]       = 44,
+>       [ASPEED_DEV_ADC]       = 46,
+> @@ -133,6 +135,8 @@ static void aspeed_soc_ast1030_init(Object *obj)
+>   
+>       object_initialize_child(obj, "lpc", &s->lpc, TYPE_ASPEED_LPC);
+>   
+> +    object_initialize_child(obj, "peci", &s->peci, TYPE_ASPEED_PECI);
+> +
+>       object_initialize_child(obj, "sbc", &s->sbc, TYPE_ASPEED_SBC);
+>   
+>       for (i = 0; i < sc->wdts_num; i++) {
+> @@ -238,6 +242,13 @@ static void aspeed_soc_ast1030_realize(DeviceState *dev_soc, Error **errp)
+>       /* UART */
+>       aspeed_soc_uart_init(s);
+>   
+> +    /* PECI */
+> +    if (!sysbus_realize(SYS_BUS_DEVICE(&s->peci), errp)) {
+> +        return;
+> +    }
+> +    sysbus_mmio_map(SYS_BUS_DEVICE(&s->peci), 0, sc->memmap[ASPEED_DEV_PECI]);
+> +    sysbus_connect_irq(SYS_BUS_DEVICE(&s->peci), 0, aspeed_soc_get_irq(s, ASPEED_DEV_PECI));
+> +
+>       /* Timer */
+>       object_property_set_link(OBJECT(&s->timerctrl), "scu", OBJECT(&s->scu),
+>                                &error_abort);
+> diff --git a/hw/misc/aspeed_peci.c b/hw/misc/aspeed_peci.c
+> new file mode 100644
+> index 0000000000..670e532fc0
+> --- /dev/null
+> +++ b/hw/misc/aspeed_peci.c
+> @@ -0,0 +1,225 @@
+> +/*
+> + * Aspeed PECI Controller
+> + *
+> + * Copyright (c) Meta Platforms, Inc. and affiliates. (http://www.meta.com)
+> + *
+> + * This code is licensed under the GPL version 2 or later. See the COPYING
+> + * file in the top-level directory.
+> + */
+> +
+> +#include "qemu/osdep.h"
+> +#include "qemu/log.h"
+> +#include "hw/irq.h"
+> +#include "hw/misc/aspeed_peci.h"
+> +
+> +#define U(x) (x##U)
+> +#define GENMASK(h, l) \
+> +	(((~U(0)) - (U(1) << (l)) + 1) & \
+> +	 (~U(0) >> (32 - 1 - (h))))
 
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+I beleive QEMU has similar macros to generate masks.
 
-r~
+
+> +/* ASPEED PECI Registers */
+> +/* Control Register */
+> +#define ASPEED_PECI_CTRL (0x00 / 4)
+> +#define   ASPEED_PECI_CTRL_SAMPLING_MASK 	GENMASK(19, 16)
+> +#define   ASPEED_PECI_CTRL_RD_MODE_MASK 	GENMASK(13, 12)
+> +#define     ASPEED_PECI_CTRL_RD_MODE_DBG BIT(13)
+> +#define     ASPEED_PECI_CTRL_RD_MODE_COUNT BIT(12)
+> +#define   ASPEED_PECI_CTRL_CLK_SRC_HCLK BIT(11)
+> +#define   ASPEED_PECI_CTRL_CLK_DIV_MASK GENMASK(10, 8)
+> +#define   ASPEED_PECI_CTRL_INVERT_OUT BIT(7)
+> +#define   ASPEED_PECI_CTRL_INVERT_IN BIT(6)
+> +#define   ASPEED_PECI_CTRL_BUS_CONTENTION_EN BIT(5)
+> +#define   ASPEED_PECI_CTRL_PECI_EN  BIT(4)
+> +#define   ASPEED_PECI_CTRL_PECI_CLK_EN  BIT(0)
+> +
+> +/* Timing Negotiation Register */
+> +#define ASPEED_PECI_TIMING_NEGOTIATION (0x04 / 4)
+> +#define   ASPEED_PECI_T_NEGO_MSG_MASK  GENMASK(15, 8)
+> +#define   ASPEED_PECI_T_NEGO_ADDR_MASK  GENMASK(7, 0)
+> +
+> +/* Command Register */
+> +#define ASPEED_PECI_CMD (0x08 / 4)
+> +#define   ASPEED_PECI_CMD_PIN_MONITORING BIT(31)
+> +#define   ASPEED_PECI_CMD_STS_MASK  GENMASK(27, 24)
+> +#define     ASPEED_PECI_CMD_STS_ADDR_T_NEGO 0x3
+> +#define   ASPEED_PECI_CMD_IDLE_MASK  \
+> +   (ASPEED_PECI_CMD_STS_MASK | ASPEED_PECI_CMD_PIN_MONITORING)
+> +#define   ASPEED_PECI_CMD_FIRE   BIT(0)
+> +
+> +/* Read/Write Length Register */
+> +#define ASPEED_PECI_RW_LENGTH (0x0c / 4)
+> +#define   ASPEED_PECI_AW_FCS_EN   BIT(31)
+> +#define   ASPEED_PECI_RD_LEN_MASK  GENMASK(23, 16)
+> +#define   ASPEED_PECI_WR_LEN_MASK  GENMASK(15, 8)
+> +#define   ASPEED_PECI_TARGET_ADDR_MASK  GENMASK(7, 0)
+> +
+> +/* Expected FCS Data Register */
+> +#define ASPEED_PECI_EXPECTED_FCS (0x10 / 4)
+> +#define   ASPEED_PECI_EXPECTED_RD_FCS_MASK GENMASK(23, 16)
+> +#define   ASPEED_PECI_EXPECTED_AW_FCS_AUTO_MASK GENMASK(15, 8)
+> +#define   ASPEED_PECI_EXPECTED_WR_FCS_MASK GENMASK(7, 0)
+> +
+> +/* Captured FCS Data Register */
+> +#define ASPEED_PECI_CAPTURED_FCS (0x14 / 4)
+> +#define   ASPEED_PECI_CAPTURED_RD_FCS_MASK GENMASK(23, 16)
+> +#define   ASPEED_PECI_CAPTURED_WR_FCS_MASK GENMASK(7, 0)
+> +
+> +/* Interrupt Register */
+> +#define ASPEED_PECI_INT_CTRL (0x18 / 4)
+> +#define   ASPEED_PECI_TIMING_NEGO_SEL_MASK GENMASK(31, 30)
+> +#define     ASPEED_PECI_1ST_BIT_OF_ADDR_NEGO 0
+> +#define     ASPEED_PECI_2ND_BIT_OF_ADDR_NEGO 1
+> +#define     ASPEED_PECI_MESSAGE_NEGO  2
+> +#define   ASPEED_PECI_INT_MASK   GENMASK(4, 0)
+> +#define     ASPEED_PECI_INT_BUS_TIMEOUT  BIT(4)
+> +#define     ASPEED_PECI_INT_BUS_CONTENTION BIT(3)
+> +#define     ASPEED_PECI_INT_WR_FCS_BAD  BIT(2)
+> +#define     ASPEED_PECI_INT_WR_FCS_ABORT BIT(1)
+> +#define     ASPEED_PECI_INT_CMD_DONE  BIT(0)
+> +
+> +/* Interrupt Status Register */
+> +#define ASPEED_PECI_INT_STS (0x1c / 4)
+> +#define   ASPEED_PECI_INT_TIMING_RESULT_MASK GENMASK(29, 16)
+> +   /* bits[4..0]: Same bit fields in the 'Interrupt Register' */
+> +
+> +/* Rx/Tx Data Buffer Registers */
+> +#define ASPEED_PECI_WR_DATA0 (0x20 / 4)
+> +#define ASPEED_PECI_WR_DATA1 (0x24 / 4)
+> +#define ASPEED_PECI_WR_DATA2 (0x28 / 4)
+> +#define ASPEED_PECI_WR_DATA3 (0x2c / 4)
+> +#define ASPEED_PECI_RD_DATA0 (0x30 / 4)
+> +#define ASPEED_PECI_RD_DATA1 (0x34 / 4)
+> +#define ASPEED_PECI_RD_DATA2 (0x38 / 4)
+> +#define ASPEED_PECI_RD_DATA3 (0x3c / 4)
+> +#define ASPEED_PECI_WR_DATA4 (0x40 / 4)
+> +#define ASPEED_PECI_WR_DATA5 (0x44 / 4)
+> +#define ASPEED_PECI_WR_DATA6 (0x48 / 4)
+> +#define ASPEED_PECI_WR_DATA7 (0x4c / 4)
+> +#define ASPEED_PECI_RD_DATA4 (0x50 / 4)
+> +#define ASPEED_PECI_RD_DATA5 (0x54 / 4)
+> +#define ASPEED_PECI_RD_DATA6 (0x58 / 4)
+> +#define ASPEED_PECI_RD_DATA7 (0x5c / 4)
+> +#define   ASPEED_PECI_DATA_BUF_SIZE_MAX 32
+> +
+> +/** PECI read/write supported responses */
+> +#define PECI_CC_RSP_SUCCESS              (0x40U)
+> +#define PECI_CC_RSP_TIMEOUT              (0x80U)
+> +#define PECI_CC_OUT_OF_RESOURCES_TIMEOUT (0x81U)
+> +#define PECI_CC_RESOURCES_LOWPWR_TIMEOUT (0x82U)
+> +#define PECI_CC_ILLEGAL_REQUEST          (0x90U)
+> +
+> +static void aspeed_peci_instance_init(Object *obj)
+> +{
+> +}
+
+May be drop this routine if it is empty.
+
+> +static uint64_t aspeed_peci_read(void *opaque, hwaddr addr, unsigned size)
+> +{
+> +    AspeedPECIState *s = ASPEED_PECI(opaque);
+> +
+> +    if (addr >= ASPEED_PECI_NR_REGS << 2) {
+> +        qemu_log_mask(LOG_GUEST_ERROR, "%s: Out-of-bounds read at offset 0x%" HWADDR_PRIx "\n",
+> +                      __func__, addr);
+> +        return 0;
+> +    }
+> +    addr >>= 2;
+> +
+> +    uint32_t reg = s->regs[addr];
+> +    //printf("%s:  0x%08lx 0x%08x %u\n", __func__, addr << 2, reg, size);
+
+Convert to trace event ? or please remove.
+
+> +
+> +    return reg;
+> +}
+> +
+> +static void aspeed_peci_write(void *opaque, hwaddr addr, uint64_t data, unsigned size)
+> +{
+> +    AspeedPECIState *s = ASPEED_PECI(opaque);
+> +
+> +    //printf("%s: 0x%08lx 0x%08x %u\n", __func__, addr, reg, size);
+> +
+> +    if (addr >= ASPEED_PECI_NR_REGS << 2) {
+> +        qemu_log_mask(LOG_GUEST_ERROR, "%s: Out-of-bounds write at offset 0x%" HWADDR_PRIx "\n",
+> +                      __func__, addr);
+> +        return;
+> +    }
+> +    addr >>= 2;
+> +
+> +    switch (addr) {
+> +    case ASPEED_PECI_INT_STS:
+> +        s->regs[addr] &= ~data;
+> +        break;
+> +    default:
+> +        s->regs[addr] = data;
+> +        break;
+> +    }
+> +
+> +    switch (addr) {
+> +    case ASPEED_PECI_CMD:
+> +        if (!(s->regs[ASPEED_PECI_CMD] & ASPEED_PECI_CMD_FIRE)) {
+> +            break;
+> +        }
+> +        s->regs[ASPEED_PECI_RD_DATA0] = PECI_CC_RSP_SUCCESS;
+> +        s->regs[ASPEED_PECI_WR_DATA0] = PECI_CC_RSP_SUCCESS;
+> +
+> +        s->regs[ASPEED_PECI_INT_STS] |= ASPEED_PECI_INT_CMD_DONE;
+> +        qemu_irq_raise(s->irq);
+> +        break;
+> +    case ASPEED_PECI_INT_STS:
+> +        if (s->regs[ASPEED_PECI_INT_STS]) {
+> +            break;
+> +        }
+> +        qemu_irq_lower(s->irq);
+> +        break;
+> +    default:
+> +        qemu_log_mask(LOG_UNIMP, "%s: register 0x%03" HWADDR_PRIx " writes unimplemented\n",
+> +                      __func__, addr);
+> +        break;
+> +    }
+> +}
+> +
+> +static const MemoryRegionOps aspeed_peci_ops = {
+> +    .read = aspeed_peci_read,
+> +    .write = aspeed_peci_write,
+> +    .endianness = DEVICE_LITTLE_ENDIAN,
+> +};
+> +
+> +static void aspeed_peci_realize(DeviceState *dev, Error **errp)
+> +{
+> +    AspeedPECIState *s = ASPEED_PECI(dev);
+> +    SysBusDevice *sbd = SYS_BUS_DEVICE(dev);
+> +
+> +    memory_region_init_io(&s->mmio, OBJECT(s), &aspeed_peci_ops, s, TYPE_ASPEED_PECI, 0x1000);
+> +    sysbus_init_mmio(sbd, &s->mmio);
+> +    sysbus_init_irq(sbd, &s->irq);
+> +}
+> +
+> +static void aspeed_peci_reset(DeviceState *dev)
+> +{
+> +    AspeedPECIState *s = ASPEED_PECI(dev);
+> +
+> +    memset(s->regs, 0, sizeof(s->regs));
+> +}
+> +
+> +static void aspeed_peci_class_init(ObjectClass *klass, void *data)
+> +{
+> +    DeviceClass *dc = DEVICE_CLASS(klass);
+> +
+> +    dc->realize = aspeed_peci_realize;
+> +    dc->reset = aspeed_peci_reset;
+> +    dc->desc = "Aspeed PECI Controller";
+> +}
+> +
+> +static const TypeInfo aspeed_peci_info = {
+> +    .name = TYPE_ASPEED_PECI,
+> +    .parent = TYPE_SYS_BUS_DEVICE,
+> +    .instance_init = aspeed_peci_instance_init,
+> +    .instance_size = sizeof(AspeedPECIState),
+> +    .class_init = aspeed_peci_class_init,
+> +    .class_size = sizeof(AspeedPECIClass),
+> +    .abstract = false,
+> +};
+> +
+> +static void aspeed_peci_register_types(void)
+> +{
+> +    type_register_static(&aspeed_peci_info);
+> +}
+> +
+> +type_init(aspeed_peci_register_types);
+> diff --git a/hw/misc/meson.build b/hw/misc/meson.build
+> index 132b7b7344..95268eddc0 100644
+> --- a/hw/misc/meson.build
+> +++ b/hw/misc/meson.build
+> @@ -116,7 +116,8 @@ softmmu_ss.add(when: 'CONFIG_ASPEED_SOC', if_true: files(
+>     'aspeed_scu.c',
+>     'aspeed_sbc.c',
+>     'aspeed_sdmc.c',
+> -  'aspeed_xdma.c'))
+> +  'aspeed_xdma.c',
+> +  'aspeed_peci.c'))
+>   
+>   softmmu_ss.add(when: 'CONFIG_MSF2', if_true: files('msf2-sysreg.c'))
+>   softmmu_ss.add(when: 'CONFIG_NRF51_SOC', if_true: files('nrf51_rng.c'))
+> diff --git a/include/hw/arm/aspeed_soc.h b/include/hw/arm/aspeed_soc.h
+> index 02a5a9ffcb..fd2aa1880a 100644
+> --- a/include/hw/arm/aspeed_soc.h
+> +++ b/include/hw/arm/aspeed_soc.h
+> @@ -34,6 +34,7 @@
+>   #include "hw/usb/hcd-ehci.h"
+>   #include "qom/object.h"
+>   #include "hw/misc/aspeed_lpc.h"
+> +#include "hw/misc/aspeed_peci.h"
+>   
+>   #define ASPEED_SPIS_NUM  2
+>   #define ASPEED_EHCIS_NUM 2
+> @@ -73,6 +74,7 @@ struct AspeedSoCState {
+>       AspeedSDHCIState sdhci;
+>       AspeedSDHCIState emmc;
+>       AspeedLPCState lpc;
+> +    AspeedPECIState peci;
+>       uint32_t uart_default;
+>       Clock *sysclk;
+>   };
+> @@ -161,6 +163,7 @@ enum {
+>       ASPEED_DEV_DPMCU,
+>       ASPEED_DEV_DP,
+>       ASPEED_DEV_I3C,
+> +    ASPEED_DEV_PECI,
+>   };
+>   
+>   qemu_irq aspeed_soc_get_irq(AspeedSoCState *s, int dev);
+> diff --git a/include/hw/misc/aspeed_peci.h b/include/hw/misc/aspeed_peci.h
+> new file mode 100644
+> index 0000000000..81c7d31700
+> --- /dev/null
+> +++ b/include/hw/misc/aspeed_peci.h
+> @@ -0,0 +1,34 @@
+> +/*
+> + * Aspeed PECI Controller
+> + *
+> + * Copyright (c) Meta Platforms, Inc. and affiliates. (http://www.meta.com)
+> + *
+> + * This code is licensed under the GPL version 2 or later. See the COPYING
+> + * file in the top-level directory.
+> + */
+> +
+> +#ifndef ASPEED_PECI_H
+> +#define ASPEED_PECI_H
+> +
+> +#include "hw/sysbus.h"
+> +
+> +#define TYPE_ASPEED_PECI "aspeed.peci"
+> +OBJECT_DECLARE_TYPE(AspeedPECIState, AspeedPECIClass, ASPEED_PECI);
+> +
+> +#define ASPEED_PECI_NR_REGS ((0xFC + 4) >> 2)
+> +
+> +struct AspeedPECIState {
+> +    /* <private> */
+> +    SysBusDevice parent;
+> +
+> +    MemoryRegion mmio;
+> +    qemu_irq irq;
+> +
+> +    uint32_t regs[ASPEED_PECI_NR_REGS];
+> +};
+> +
+> +struct AspeedPECIClass {
+> +    SysBusDeviceClass parent_class;
+> +};
+> +
+> +#endif
+

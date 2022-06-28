@@ -1,104 +1,105 @@
-Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp2893341lft;
-        Mon, 27 Jun 2022 21:47:20 -0700 (PDT)
-X-Google-Smtp-Source: AGRyM1uaG1QV73ejtNESg8ljd4NAO1lLfqotyVFDdgUcDgByODUlXHXbd6f9A6zuvPPx4U/3P6C8
-X-Received: by 2002:a05:620a:4050:b0:6a7:8524:c555 with SMTP id i16-20020a05620a405000b006a78524c555mr10057523qko.365.1656391639898;
-        Mon, 27 Jun 2022 21:47:19 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1656391639; cv=none;
+Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp2884966lft;
+        Mon, 27 Jun 2022 21:25:19 -0700 (PDT)
+X-Google-Smtp-Source: AGRyM1tCl07YyivYSOAU/IGs4UsEm5VsOJblIK/gZw6/xbSv8lIPmN+Bvv84a7L6FbqV2wg7LcBV
+X-Received: by 2002:a05:620a:240a:b0:6af:27bc:66dc with SMTP id d10-20020a05620a240a00b006af27bc66dcmr5536256qkn.92.1656390318916;
+        Mon, 27 Jun 2022 21:25:18 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1656390318; cv=none;
         d=google.com; s=arc-20160816;
-        b=MHLWgRVHcRU1cN9fR6vGKA9y9cCOFKAeeOGA/Zu0tHMCvZummLhNOHTawpHEMf6eDg
-         JHFe5XbG/bm5Ahsq4/46qS9+hlEhjbDF9SJTT4k68cBPw3Gd5+7xJ6CMyu6IQEheSjc5
-         rSXYTi6S13vNdkfLXSPiTn6pHdVjqCuoaftMgFfnFfCemL1ABC1PZfUnucu9k8GMfAXa
-         gmUqcJ4zZqAWswtnb7SQ7Zf47h4spVfOspxLzE7GiIwjcIurSzyO0ACZbQnsgD2N7RQK
-         tS8wd3gDLhJDYpqRnLUApRDfy/5ncbWqZOH/zG/0q0NQCA6DaNMDXUMGeMWnEJNAVDYW
-         waaw==
+        b=x3Cl63GgzNL8wzf2iHliOEERrD/2B4QqxY6yqvAuEBxG8zgG5iiarjXVIqIKafPCPJ
+         XqFM3VoS0PgZczuJMwKdDsDdBwGh6de2UsUxcEVmNcsGU0jm151+EExleV8gZx+xHlm7
+         gHf5RXVH4Jc5HyYVWTtjFZ5xO4ilkaJATSW8FYI9g0PddWrLgg4bBMvVng0NOQwBAB1/
+         Gkd+BQDFnraaOiI9iYir8sNpMJC79oJpkmD9ZL1yx/I3gd2fjuHi0JJQEuduySI8fgLw
+         +V9jwDcbSH6lGUlt2o9iVTmFqY9Ff29EqqmZRlCxV5OJB/PqyVx/ddrrauHZ2+sVE9xz
+         kY1Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=VPMml4Tfq67+y3oqJMSmdBs/iUTANF8r3DziFKMfYRY=;
-        b=07kir98UXt1ISHxq/Xju6W9lOhDKcQm89kp8ZTOiABOFtCVsD+uvyECWqZlEYGBsID
-         iEZICaJQm/wl/Ojr5jm82HBgjadNEgRwzhop9FfPvRYoJiTSFropSp7kXh1VVqZEJEiT
-         kxGLN3XuyL9vGTCf1iWEiziHHjIaCgsXGB2GlHg3OEQRtd4oaflRMWPhkSyF3UPV5m4Z
-         6IcTxNlnrRsEZarg2/NgUh+JbAcQ8mxQtp1gwyxUvp5XA8z/dI6jSWdPh5dB6/8hQECD
-         cGxr8WBnORa1a2d46BsKEutnIHj6ix7JLgXP9C+6RcgGjyzwewCmsUJh8leLrMmObG5+
-         AHFw==
+        bh=Zt0iFWR3qz21z3bSyJ1iuT1OyELXtc2hbyVwv56j1M4=;
+        b=AyYaPioYgM0f/FFR29jomiOF/WdA7Vjl87qDWa4tF7typHrzFi9wSnCc1xxzCLfJUr
+         k7ayrqhhFoVRdJCvfcglZI2x1/Q1LXRoG+RzNNq/leoPm9eN7cd1Q6jpb//i8CUaILu5
+         LO6txKfGNfOoAY0qRXYGByfTJN9Mfjv9ENwyJUusi1l0dMRFau954JydyZkw9EcTG5eO
+         Bxkw3Jr5G9PLWeQsQBHgTIGCdNobCujE3PGcLrDKhG4QMF1xV4edXdCzedC8QZVgC2fK
+         3M63EU8kMUWL9OyyBN5ViSuFfiht3EbWFy74nKYV3K2nft6jG/579B/UiIJGbhPmqbHU
+         oUPQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=qNMv5KJ4;
+       dkim=pass header.i=@linaro.org header.s=google header.b=CxlH52+q;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id m10-20020a05620a290a00b006af164ad906si4665807qkp.628.2022.06.27.21.47.19
+        by mx.google.com with ESMTPS id f1-20020a05620a280100b006aedcdb5376si7367771qkp.729.2022.06.27.21.25.18
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 27 Jun 2022 21:47:19 -0700 (PDT)
+        Mon, 27 Jun 2022 21:25:18 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=qNMv5KJ4;
+       dkim=pass header.i=@linaro.org header.s=google header.b=CxlH52+q;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:42372 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:52446 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1o638B-0003IQ-Bd
-	for alex.bennee@linaro.org; Tue, 28 Jun 2022 00:47:19 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37986)
+	id 1o62ms-0004dB-CA
+	for alex.bennee@linaro.org; Tue, 28 Jun 2022 00:25:18 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:36808)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1o62kX-0002sA-Rx
- for qemu-devel@nongnu.org; Tue, 28 Jun 2022 00:22:56 -0400
-Received: from mail-pl1-x634.google.com ([2607:f8b0:4864:20::634]:38427)
+ id 1o62jG-0001Hf-U8
+ for qemu-devel@nongnu.org; Tue, 28 Jun 2022 00:21:35 -0400
+Received: from mail-pj1-x102c.google.com ([2607:f8b0:4864:20::102c]:45914)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1o62kW-0003mt-5h
- for qemu-devel@nongnu.org; Tue, 28 Jun 2022 00:22:53 -0400
-Received: by mail-pl1-x634.google.com with SMTP id m14so9985013plg.5
- for <qemu-devel@nongnu.org>; Mon, 27 Jun 2022 21:22:48 -0700 (PDT)
+ id 1o62jD-0003de-2w
+ for qemu-devel@nongnu.org; Tue, 28 Jun 2022 00:21:34 -0400
+Received: by mail-pj1-x102c.google.com with SMTP id
+ g20-20020a17090a579400b001ed52939d72so5960541pji.4
+ for <qemu-devel@nongnu.org>; Mon, 27 Jun 2022 21:21:28 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=VPMml4Tfq67+y3oqJMSmdBs/iUTANF8r3DziFKMfYRY=;
- b=qNMv5KJ4/nrWDTYoTfCVBMX18+24NTGEJBQX0ZTv0L+ahPfTg5P6WxN8SLRKd7VnQ1
- gGHWIaNAZFu+3X+qTv9QqTIRRq9Swtlh+BlIfurGpJmUS0uFm2s9/o3Y1lRAxTtl4gZi
- xwphL7fgW42NeUufUras1zZDD/MpKBobJBOXzVQ91B/TuRH5uleufFlb4FqaYGFoSZvS
- x0uYL6S180ghHP0Zsy8JwUVj33M7R2bLoVlACt2dmS0G2EfYgquclUPb7iP1k8Jc410m
- yJ0Zd1vR1gTUVm8iLEMbGBgrlDYNuAeUjNC/ZSA5nqWBRmFabEEw9DrDCrhKdKqD64sZ
- vD7Q==
+ bh=Zt0iFWR3qz21z3bSyJ1iuT1OyELXtc2hbyVwv56j1M4=;
+ b=CxlH52+qXuplkB1/KC0KLwGqbORfNtZNuTrOSWH6SE//XbXV+jBuIN/Qx5bU47WVkY
+ B6gCnJQuJyqOcB0OzNHzAERU9co25y38RjOuYL+Xx8G05DNXc7p0LMh1zcFpfRvic35q
+ c9i4Um8CUTo+4ODBeWLSNlz6MjjNhch9Pc2wUizvzyyV+w+jXmbmJz4KEp6xMJU/IT5e
+ 4WzdBClnzT2J9ANCujBIe4GZFQFw8HETk4ieQ6LzB7z25tD8Ued4EH+YF7S7wtWXuE3s
+ WMujIseUG12vkYZsxy8FQN+Ef6H3F+zOEyCi5Ucl+lc2DNvdHyODCeNvavOASeQ2v6Bb
+ QxIw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=VPMml4Tfq67+y3oqJMSmdBs/iUTANF8r3DziFKMfYRY=;
- b=2JvaHgil/VMlYYyNbFdEO11z/mcp37Mxr6Kv0sZNYjKAWtc7V7r8fvPWL6EY6BtehY
- I0uTjJv5LVX/JPPoJ76Skhu1U632WQSPdD8Jkrw0ABnpaM3m6egAu3o0X7iOCVwF3f5H
- lXwtmemPDJEoIXQKlFesjIZEp597HNuWB2OUCtOK9XlotaUKtMCx/1GsAGyxNLIgS+BU
- lptvhycjNjn6GjlovLeDk7jskCATPxtMQ66MvgYScvlOspuNlZKdOANvc64eNa9yzHDP
- 6eExP2PLhttz9N6aH/dGGGqdkzEMCIMRThHnznaiUCgJ7Bqddwci/D1lrOh+zxl2gw90
- 9EQA==
-X-Gm-Message-State: AJIora8LcTlSuRknNuxpR4Pw5VAd6DGFvRtEWE4Z1CyQzBCfw1Z20jEk
- ZHfBEb4MmvsT3zeEMgqPeV3+jEDKPqulfw==
-X-Received: by 2002:a17:90b:1b4d:b0:1ec:c42a:7eb5 with SMTP id
- nv13-20020a17090b1b4d00b001ecc42a7eb5mr19503118pjb.122.1656390168179; 
- Mon, 27 Jun 2022 21:22:48 -0700 (PDT)
+ bh=Zt0iFWR3qz21z3bSyJ1iuT1OyELXtc2hbyVwv56j1M4=;
+ b=guSkIc14vTGSIYaBsUAyjx+HOezyCH4ZoO+RVGDiLmuz7TJPu5fWMY64uwOIN2g811
+ WGBGjw9YbwN+NrAiVDVhweGDW9GpCI9fjLd+Iq9WmkysoosGF7oQ5yUT2LwpnhOs93cY
+ 7JNuQ0IaD+FI7MdDSxfHDGYqREGRoZyvQZ+Z5wQOkDDX9YmDezeDtJkExLPKMfilQR8V
+ epGPgY9lcoVj2MYT70QvSz/lnSfi+IGmMOXpaPIpoUjdZKcrbbddBnoU/TOZdaGZ7j2H
+ 0zoTg8vT+0aw9MqGhOJSDgF8lt+KbZbKIdOHgvPwTb2O+Njy2efFnldVsXtKVXWxhLi5
+ +t1w==
+X-Gm-Message-State: AJIora8C2w94qg1HFs/2xBQarZhcchmGX8HG0Q/r+E7LgJPJubcyMLQr
+ YAaF3mo5X3tWOpDM5VcDIbkgJWnkdY4dUw==
+X-Received: by 2002:a17:903:2488:b0:163:b2c0:7efe with SMTP id
+ p8-20020a170903248800b00163b2c07efemr3010957plw.164.1656390087559; 
+ Mon, 27 Jun 2022 21:21:27 -0700 (PDT)
 Received: from stoup.. ([122.255.60.245]) by smtp.gmail.com with ESMTPSA id
- jg6-20020a17090326c600b0016a087cfad8sm7994929plb.264.2022.06.27.21.22.46
+ jg6-20020a17090326c600b0016a087cfad8sm7994929plb.264.2022.06.27.21.21.25
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 27 Jun 2022 21:22:47 -0700 (PDT)
+ Mon, 27 Jun 2022 21:21:27 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org
-Subject: [PATCH v4 36/45] linux-user/aarch64: Tidy target_restore_sigframe
- error return
-Date: Tue, 28 Jun 2022 09:51:08 +0530
-Message-Id: <20220628042117.368549-37-richard.henderson@linaro.org>
+Cc: qemu-arm@nongnu.org,
+	Peter Maydell <peter.maydell@linaro.org>
+Subject: [PATCH v4 02/45] target/arm: Add infrastructure for disas_sme
+Date: Tue, 28 Jun 2022 09:50:34 +0530
+Message-Id: <20220628042117.368549-3-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20220628042117.368549-1-richard.henderson@linaro.org>
 References: <20220628042117.368549-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::634;
- envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x634.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::102c;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x102c.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -120,98 +121,139 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ob9OQ0ho+z4f
+X-TUID: BFHznRHLYKR6
 
-Fold the return value setting into the goto, so each
-point of failure need not do both.
+This includes the build rules for the decoder, and the
+new file for translation, but excludes any instructions.
 
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- linux-user/aarch64/signal.c | 26 +++++++++++---------------
- 1 file changed, 11 insertions(+), 15 deletions(-)
+ target/arm/translate-a64.h |  1 +
+ target/arm/sme.decode      | 20 ++++++++++++++++++++
+ target/arm/translate-a64.c |  7 ++++++-
+ target/arm/translate-sme.c | 35 +++++++++++++++++++++++++++++++++++
+ target/arm/meson.build     |  2 ++
+ 5 files changed, 64 insertions(+), 1 deletion(-)
+ create mode 100644 target/arm/sme.decode
+ create mode 100644 target/arm/translate-sme.c
 
-diff --git a/linux-user/aarch64/signal.c b/linux-user/aarch64/signal.c
-index 3cef2f44cf..8b352abb97 100644
---- a/linux-user/aarch64/signal.c
-+++ b/linux-user/aarch64/signal.c
-@@ -287,7 +287,6 @@ static int target_restore_sigframe(CPUARMState *env,
-     struct target_sve_context *sve = NULL;
-     uint64_t extra_datap = 0;
-     bool used_extra = false;
--    bool err = false;
-     int vq = 0, sve_size = 0;
- 
-     target_restore_general_frame(env, sf);
-@@ -301,8 +300,7 @@ static int target_restore_sigframe(CPUARMState *env,
-         switch (magic) {
-         case 0:
-             if (size != 0) {
--                err = true;
--                goto exit;
-+                goto err;
-             }
-             if (used_extra) {
-                 ctx = NULL;
-@@ -314,8 +312,7 @@ static int target_restore_sigframe(CPUARMState *env,
- 
-         case TARGET_FPSIMD_MAGIC:
-             if (fpsimd || size != sizeof(struct target_fpsimd_context)) {
--                err = true;
--                goto exit;
-+                goto err;
-             }
-             fpsimd = (struct target_fpsimd_context *)ctx;
-             break;
-@@ -329,13 +326,11 @@ static int target_restore_sigframe(CPUARMState *env,
-                     break;
-                 }
-             }
--            err = true;
--            goto exit;
-+            goto err;
- 
-         case TARGET_EXTRA_MAGIC:
-             if (extra || size != sizeof(struct target_extra_context)) {
--                err = true;
--                goto exit;
-+                goto err;
-             }
-             __get_user(extra_datap,
-                        &((struct target_extra_context *)ctx)->datap);
-@@ -348,8 +343,7 @@ static int target_restore_sigframe(CPUARMState *env,
-             /* Unknown record -- we certainly didn't generate it.
-              * Did we in fact get out of sync?
-              */
--            err = true;
--            goto exit;
-+            goto err;
-         }
-         ctx = (void *)ctx + size;
-     }
-@@ -358,17 +352,19 @@ static int target_restore_sigframe(CPUARMState *env,
-     if (fpsimd) {
-         target_restore_fpsimd_record(env, fpsimd);
-     } else {
--        err = true;
-+        goto err;
-     }
- 
-     /* SVE data, if present, overwrites FPSIMD data.  */
-     if (sve) {
-         target_restore_sve_record(env, sve, vq);
-     }
--
-- exit:
-     unlock_user(extra, extra_datap, 0);
--    return err;
-+    return 0;
-+
-+ err:
-+    unlock_user(extra, extra_datap, 0);
-+    return 1;
+diff --git a/target/arm/translate-a64.h b/target/arm/translate-a64.h
+index f0970c6b8c..789b6e8e78 100644
+--- a/target/arm/translate-a64.h
++++ b/target/arm/translate-a64.h
+@@ -146,6 +146,7 @@ static inline int pred_gvec_reg_size(DisasContext *s)
  }
  
- static abi_ulong get_sigframe(struct target_sigaction *ka,
+ bool disas_sve(DisasContext *, uint32_t);
++bool disas_sme(DisasContext *, uint32_t);
+ 
+ void gen_gvec_rax1(unsigned vece, uint32_t rd_ofs, uint32_t rn_ofs,
+                    uint32_t rm_ofs, uint32_t opr_sz, uint32_t max_sz);
+diff --git a/target/arm/sme.decode b/target/arm/sme.decode
+new file mode 100644
+index 0000000000..c25c031a71
+--- /dev/null
++++ b/target/arm/sme.decode
+@@ -0,0 +1,20 @@
++# AArch64 SME instruction descriptions
++#
++#  Copyright (c) 2022 Linaro, Ltd
++#
++# This library is free software; you can redistribute it and/or
++# modify it under the terms of the GNU Lesser General Public
++# License as published by the Free Software Foundation; either
++# version 2.1 of the License, or (at your option) any later version.
++#
++# This library is distributed in the hope that it will be useful,
++# but WITHOUT ANY WARRANTY; without even the implied warranty of
++# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
++# Lesser General Public License for more details.
++#
++# You should have received a copy of the GNU Lesser General Public
++# License along with this library; if not, see <http://www.gnu.org/licenses/>.
++
++#
++# This file is processed by scripts/decodetree.py
++#
+diff --git a/target/arm/translate-a64.c b/target/arm/translate-a64.c
+index c86b97b1d4..a5f8a6c771 100644
+--- a/target/arm/translate-a64.c
++++ b/target/arm/translate-a64.c
+@@ -14806,7 +14806,12 @@ static void aarch64_tr_translate_insn(DisasContextBase *dcbase, CPUState *cpu)
+     }
+ 
+     switch (extract32(insn, 25, 4)) {
+-    case 0x0: case 0x1: case 0x3: /* UNALLOCATED */
++    case 0x0:
++        if (!extract32(insn, 31, 1) || !disas_sme(s, insn)) {
++            unallocated_encoding(s);
++        }
++        break;
++    case 0x1: case 0x3: /* UNALLOCATED */
+         unallocated_encoding(s);
+         break;
+     case 0x2:
+diff --git a/target/arm/translate-sme.c b/target/arm/translate-sme.c
+new file mode 100644
+index 0000000000..786c93fb2d
+--- /dev/null
++++ b/target/arm/translate-sme.c
+@@ -0,0 +1,35 @@
++/*
++ * AArch64 SME translation
++ *
++ * Copyright (c) 2022 Linaro, Ltd
++ *
++ * This library is free software; you can redistribute it and/or
++ * modify it under the terms of the GNU Lesser General Public
++ * License as published by the Free Software Foundation; either
++ * version 2.1 of the License, or (at your option) any later version.
++ *
++ * This library is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
++ * Lesser General Public License for more details.
++ *
++ * You should have received a copy of the GNU Lesser General Public
++ * License along with this library; if not, see <http://www.gnu.org/licenses/>.
++ */
++
++#include "qemu/osdep.h"
++#include "cpu.h"
++#include "tcg/tcg-op.h"
++#include "tcg/tcg-op-gvec.h"
++#include "tcg/tcg-gvec-desc.h"
++#include "translate.h"
++#include "exec/helper-gen.h"
++#include "translate-a64.h"
++#include "fpu/softfloat.h"
++
++
++/*
++ * Include the generated decoder.
++ */
++
++#include "decode-sme.c.inc"
+diff --git a/target/arm/meson.build b/target/arm/meson.build
+index 43dc600547..6dd7e93643 100644
+--- a/target/arm/meson.build
++++ b/target/arm/meson.build
+@@ -1,5 +1,6 @@
+ gen = [
+   decodetree.process('sve.decode', extra_args: '--decode=disas_sve'),
++  decodetree.process('sme.decode', extra_args: '--decode=disas_sme'),
+   decodetree.process('neon-shared.decode', extra_args: '--decode=disas_neon_shared'),
+   decodetree.process('neon-dp.decode', extra_args: '--decode=disas_neon_dp'),
+   decodetree.process('neon-ls.decode', extra_args: '--decode=disas_neon_ls'),
+@@ -50,6 +51,7 @@ arm_ss.add(when: 'TARGET_AARCH64', if_true: files(
+   'sme_helper.c',
+   'translate-a64.c',
+   'translate-sve.c',
++  'translate-sme.c',
+ ))
+ 
+ arm_softmmu_ss = ss.source_set()
 -- 
 2.34.1
 

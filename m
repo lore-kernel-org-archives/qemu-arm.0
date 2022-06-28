@@ -1,72 +1,75 @@
-Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp3319189lft;
-        Tue, 28 Jun 2022 08:48:46 -0700 (PDT)
-X-Google-Smtp-Source: AGRyM1vW4c98jb0p23G3XTsILLKAcR8nIYouw0Gncxdcc28Xcpb7MfZiqXG+1kSo5E03bOXP4j16
-X-Received: by 2002:a05:622a:1ba3:b0:305:15b5:8758 with SMTP id bp35-20020a05622a1ba300b0030515b58758mr14073846qtb.10.1656431326600;
-        Tue, 28 Jun 2022 08:48:46 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1656431326; cv=none;
+Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp3319301lft;
+        Tue, 28 Jun 2022 08:49:00 -0700 (PDT)
+X-Google-Smtp-Source: AGRyM1skYejZE4Ch28c0OtFOlaNt17wOBt/IPSXU9AD0HcYq6+Kaoljew3loOL67FkjkASC1UraI
+X-Received: by 2002:a05:620a:2991:b0:6a7:1dc:2f94 with SMTP id r17-20020a05620a299100b006a701dc2f94mr6905335qkp.639.1656431340219;
+        Tue, 28 Jun 2022 08:49:00 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1656431340; cv=none;
         d=google.com; s=arc-20160816;
-        b=AKRtD3H0bdOTBEUNc6ctYy1GVKhkXKtEWX6JUeqEQgrsiPeOQcgs1AIOUm9vyqUiP+
-         S/r1kWRUlAou3WKECrO6zLBR3cg1NKG4MzoHJ5xIBjqdlpM2E54yDnyumPKHVXWto5dE
-         t/C5mHKDze8r8h8F14ca8zM/TvPfFlXItZavBl7XkKEWHrV+/J9fkCFnYIePRAi2XePj
-         BGjbIKF5QhDa99RP4bXZdPJWDEqj0JI9Dhr4dR6bsmfoWMga2xIJ4wJq5EaTHIlIk0wZ
-         sViPsDbG7PLRIzF9HzxR95Sp+7JRi2ryXzQr2VVfWX9h/OpOTNRNhLJajaLzDdGsKkUB
-         vE3Q==
+        b=IsKhVEUMB23RLwuQKddi/ROu+fG5ERY2ZvGHkUNoKcWrTY/T08ipFh7cRqigUUNBn7
+         XMTWndD0UzeJmgbve9OKVmKssXGKnIER9WQelEkcyZoGokgMowRSwz1WWa+35Og8ezRy
+         K1ql/pZWl/PXK215vfTGLpADJwTd6Znj6rK63ApIQhRcBJUw4bOvJLA2oHlJZgB34o5Y
+         GgXV9FhvG0PEu0xfBXOaHYLHG7aaRBamlC3dOtmaV6tHAM9bw1zu7xoBfHqJpQGK6/v4
+         oQL4fWvg45x6jooQx36QX6X+lMjME6sgn4B4S1wH2eiwsh1wwyagKuwzWPZWZLirKXSt
+         7LGQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:cc:to:from;
-        bh=6VpY1W+ZgwrEYyt2ucjOUINkOzhIamI7xgFt3yI4Pts=;
-        b=ZRrCdm2PlJrRa9ShMWeUS9uQINUUac1lvKvi9Fohx64sZcs0QemKFGOTqKKybtHmqc
-         wx4Mc8CnbyPUuzlnuNpdwxj2LNLAG3kS514Usbz8cOeX1WweVtWIMMJPTuM2ntT8o5vK
-         OMir+Oe2zmk1v6aYHt/F8TvS/+z5YL1PiVRADdcdZHyYdlu6Jku2bjmyurm3J1WlZjaD
-         7aSc+Nu0uuUr43qR96lcFkzugNrmVgStm4eT1ZPHqhd/Nbd8WUGhkOIc8CRr7dbd8SV3
-         nAmUnkw2Chdi/FMoimTnfw+S73dk5nysNlyfIynRW1d2rhGjOoyryhagmHHIfTYxqSpy
-         gxtg==
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from;
+        bh=+GAp6ER18ZdcHtOlhhrVygHpiMXwARn7FWfW6RrHb44=;
+        b=EU3e8DUbkKUNGqhff/dEGnEnv3CTZKFq6YdZP2fWTZ5K+euOXkPGo60NFBiu7s3W2g
+         3g4sMoccqILJskRtDIli6A2PqcnB7b8zZd0odvGJSvura9al8mQ/8tBMQmicd3R6MVg0
+         MUIpD0+MkHx7tj5kI6wyHppu+N5gMnMQAbkqlGXdVs1K7KnwHZJWhpXWApMmQE+Z/xWv
+         rw12VvUEravc+wcnxWO4z9OrdtJpY4uop0Oh03wP4AfGmt4wBeMqkN3Qfjihy1MADJUq
+         OnMnCYCqe86Fs+hZESACgmCobfcVXyZcFf1IwMvUe9wOKxpp1zrrksJqCsPuaxl8CkMx
+         AYbA==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id j22-20020ac85f96000000b00304e9cc7298si8516509qta.703.2022.06.28.08.48.46
+        by mx.google.com with ESMTPS id 189-20020a370bc6000000b006aee8668129si7252161qkl.136.2022.06.28.08.49.00
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 28 Jun 2022 08:48:46 -0700 (PDT)
+        Tue, 28 Jun 2022 08:49:00 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:49828 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:50908 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1o6DSH-0003it-Vg
-	for alex.bennee@linaro.org; Tue, 28 Jun 2022 11:48:46 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:59508)
+	id 1o6DSV-0004Va-Mm
+	for alex.bennee@linaro.org; Tue, 28 Jun 2022 11:48:59 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:59528)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=xpXT=XD=kaod.org=clg@ozlabs.org>)
- id 1o6DRX-0003hW-Bm; Tue, 28 Jun 2022 11:47:59 -0400
-Received: from mail.ozlabs.org ([2404:9400:2221:ea00::3]:41769
+ id 1o6DRY-0003iG-T1; Tue, 28 Jun 2022 11:48:01 -0400
+Received: from mail.ozlabs.org ([2404:9400:2221:ea00::3]:41423
  helo=gandalf.ozlabs.org)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=xpXT=XD=kaod.org=clg@ozlabs.org>)
- id 1o6DRU-0001nj-Mv; Tue, 28 Jun 2022 11:47:59 -0400
+ id 1o6DRV-0001oC-07; Tue, 28 Jun 2022 11:48:00 -0400
 Received: from gandalf.ozlabs.org (mail.ozlabs.org
  [IPv6:2404:9400:2221:ea00::3])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4LXTWR1psSz4xXg;
- Wed, 29 Jun 2022 01:47:47 +1000 (AEST)
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4LXTWX2Vbhz4xYL;
+ Wed, 29 Jun 2022 01:47:52 +1000 (AEST)
 Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
  (No client certificate requested)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4LXTWN25j0z4xR1;
- Wed, 29 Jun 2022 01:47:44 +1000 (AEST)
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4LXTWV2FtHz4xR1;
+ Wed, 29 Jun 2022 01:47:50 +1000 (AEST)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>, Andrew Jeffery <andrew@aj.id.au>,
  Joel Stanley <joel@jms.id.au>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
-Subject: [PATCH 0/3] aspeed: small cleanups 
-Date: Tue, 28 Jun 2022 17:47:37 +0200
-Message-Id: <20220628154740.1117349-1-clg@kaod.org>
+Subject: [PATCH 2/3] aspeed/i2c: Change trace event for NORMAL_STOP states
+Date: Tue, 28 Jun 2022 17:47:39 +0200
+Message-Id: <20220628154740.1117349-3-clg@kaod.org>
 X-Mailer: git-send-email 2.35.3
+In-Reply-To: <20220628154740.1117349-1-clg@kaod.org>
+References: <20220628154740.1117349-1-clg@kaod.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
@@ -93,31 +96,28 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: juS+2dzcGMgP
+X-TUID: GCV5sE/HFNkw
 
-Hello,
+Using a 'stop' string seems more appropriate than 'normal'.
 
-I was preparing a PR and I realized that these small patches had never
-seen the light. Here they are.
+Signed-off-by: Cédric Le Goater <clg@kaod.org>
+---
+ hw/i2c/aspeed_i2c.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-Thanks,
-
-C.
-
-Cédric Le Goater (2):
-  aspeed/scu: Add trace events for read ops
-  aspeed/i2c: Change trace event for NORMAL_STOP states
-
-Joel Stanley (1):
-  aspeed: sbc: Allow per-machine settings
-
- include/hw/misc/aspeed_sbc.h | 13 ++++++++++++
- hw/i2c/aspeed_i2c.c          |  2 +-
- hw/misc/aspeed_sbc.c         | 41 ++++++++++++++++++++++++++++++++++--
- hw/misc/aspeed_scu.c         |  2 ++
- hw/misc/trace-events         |  1 +
- 5 files changed, 56 insertions(+), 3 deletions(-)
-
+diff --git a/hw/i2c/aspeed_i2c.c b/hw/i2c/aspeed_i2c.c
+index 37ae1f2e04bd..9b41bc38964f 100644
+--- a/hw/i2c/aspeed_i2c.c
++++ b/hw/i2c/aspeed_i2c.c
+@@ -58,7 +58,7 @@ static inline void aspeed_i2c_bus_raise_interrupt(AspeedI2CBus *bus)
+                ARRAY_FIELD_EX32(bus->regs, I2CD_INTR_STS, SLAVE_ADDR_RX_MATCH) ?
+                                                "slave-match|" : "",
+                SHARED_ARRAY_FIELD_EX32(bus->regs, reg_intr_sts, NORMAL_STOP) ?
+-                                               "normal|" : "",
++                                               "stop|" : "",
+                SHARED_ARRAY_FIELD_EX32(bus->regs, reg_intr_sts, ABNORMAL) ?
+                                                "abnormal"  : "");
+ 
 -- 
 2.35.3
 

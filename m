@@ -1,225 +1,195 @@
-Received: by 2002:a05:6214:19c5:0:0:0:0 with SMTP id j5csp4251qvc;
-        Wed, 29 Jun 2022 01:44:21 -0700 (PDT)
-X-Google-Smtp-Source: AGRyM1sniLUkCz1s2+C4Wloeh827w04037pov4jZHoFBBxa1TI/k0r5V3cUVR8Z4dYo4O45wJQZS
-X-Received: by 2002:a37:6555:0:b0:6af:aa8:924f with SMTP id z82-20020a376555000000b006af0aa8924fmr1110839qkb.478.1656492261251;
-        Wed, 29 Jun 2022 01:44:21 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1656492261; cv=none;
+Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp329981lft;
+        Wed, 29 Jun 2022 03:28:13 -0700 (PDT)
+X-Google-Smtp-Source: AGRyM1sq/K/clRifaCjuuSQkRSoER56rXnEeZtEJsweurXwpb1vqRs2nAtmuz+oSBDIWqMeigQQc
+X-Received: by 2002:a63:3e0e:0:b0:40c:9d29:9a6c with SMTP id l14-20020a633e0e000000b0040c9d299a6cmr2441126pga.396.1656498492658;
+        Wed, 29 Jun 2022 03:28:12 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1656498492; cv=none;
         d=google.com; s=arc-20160816;
-        b=0jvJAs5S5KaBZaUs1N+EpHV6Cuxiv4F2sMlM3I0wDxKs71TPTy5eD3s/SalWoAQldb
-         fQQ7F4bjvH1JTe6txeLO3yoHlGhVZ8HJtHYGqV/gcjZSwfs7SbjWta2TLPWVB0g0VXIJ
-         xsz4g1hLokyoIA/OzCUxvS5PuOCMvlA4l3lmKkNJ7rPgDRoHGFKpJVKqS1VBYzy7xl35
-         SkOTFsYJKeSZqFV3nfRO045+fnH5RvImWcfxZrbWGLDI+WvL9DybXMiYdoWaLohSQ3wJ
-         CTLOHepK5vWBqSLkp3CHnKwbiWaVBHT4WP+Rx+XvnY26SU6srgUxqtKJDeizH4CDNrei
-         mKGA==
+        b=dB9dVOsWO9ghmju2Vm9FGFIu4r3oNGADhBGD/R5I9Vdbm9psviEEa5xHZwe4odWkHN
+         lmQwxKSkZlh3gSiul7/i8P9A+AVvFcM7OHaxNrUx+cKZ5GxJy5Zc64Y2W3R3RzaRPMYe
+         G4tv2nDU/pD43E7cOy93tnY1O1FqjgZhQk3um1Kmzs7y27LIuzUs5ZfmTKUMDKYLjkom
+         HGisDpCrhsgyc7qLWF3iA3jCWR31+zKw22Lb/zwoTydN6U2ElChlUUJHBuZkkTXUAhlc
+         3wNuy/EDM+zQqR5rJ2mtaRc8fy/c0xy7uBVSVo7nEVthFPWlkNHyTLvszmEc2Y2CsQ/0
+         w9Dg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:cc:to:content-language:subject
-         :user-agent:mime-version:date:message-id;
-        bh=5HvFJ5QSvbw6R7JlOeuEv4QD2SxLZN03/Ehpx3MI6cM=;
-        b=Td++W+++k6H+2DnYJLrWi3jOp7NlpT509Uf8GTaJm81ZPU5pO/w15wAqT+NcGJG1tc
-         4cmqLv+qhE4rgZmz91BUv3mJ10Jx1EwY8LShUSs8P3rz+8NAqi/OYMW3RZk9tJQs1Boh
-         3umaaId9I/sG6xDcysMkK3CaiJjEciFHMl4YedCgXNxhqolMpOVMayk8TSGd4dly5lHU
-         3fH3Ve7Tw3ndJ/T4syOYEqZjN2Th2Vaw003DRZSAtKHWQ7eUacNKAP41kQlzpOsQQkwQ
-         BwzUJBd+SLH8pTMw9K8N3DEyBjagXKspGl1WmhJh8GLubQI8EnXQElA/2TF/8HfqfULd
-         gBhw==
+        h=list-id:precedence:content-transfer-encoding:in-reply-to:from
+         :references:cc:to:content-language:subject:user-agent:mime-version
+         :date:message-id:dkim-signature;
+        bh=WBDTegV1NcLsYm3iT9zew3Lk6STRKzydFuyy5K6OCz0=;
+        b=FeIfmTpf7rsJL/yYP/MeMpwFCXMOsuFmRTu+eGsafBx9KgrZ20x7ZNM41nDUu9e/nh
+         VcLv2FDwMqKfsIzLSci31JyC44iDIKKDmDuVHnqacctMGL7SpkkGPBSa2eiUQ8vc3j5f
+         rACQTNNWolSklWNfWnf3KNHVNObYeBRyje2nByavPHZf87A4t1AzC3U8f/yc9TCIFhIh
+         5QCynzt0PTQ4MQFEBr7dfL0TAsuR5/5UZZThjnu7c7gWegfSmhoEOB3ETnPjAyqYpeDC
+         4/8kljvmSLT4VyIONEgSz5zpmh8iGfsUyPnYx3Lkk9bf2c6vRM7o+yYabMhuJoK2tI4r
+         aDrg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id eo15-20020ad4594f000000b004702b58f3e6si8414175qvb.120.2022.06.29.01.44.21
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 29 Jun 2022 01:44:21 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=AVqyutdU;
+       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <kvm-owner@vger.kernel.org>
+Received: from out1.vger.email (out1.vger.email. [2620:137:e000::1:20])
+        by mx.google.com with ESMTP id v11-20020a17090ad58b00b001eccc37c0bdsi2787676pju.172.2022.06.29.03.28.12;
+        Wed, 29 Jun 2022 03:28:12 -0700 (PDT)
+Received-SPF: pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) client-ip=2620:137:e000::1:20;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:33052 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1o6TJ6-00074f-Kd
-	for alex.bennee@linaro.org; Wed, 29 Jun 2022 04:44:20 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:52376)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1o6TFp-00041p-Nl
- for qemu-devel@nongnu.org; Wed, 29 Jun 2022 04:40:57 -0400
-Received: from 4.mo552.mail-out.ovh.net ([178.33.43.201]:58893)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1o6TFm-0008FE-Dd
- for qemu-devel@nongnu.org; Wed, 29 Jun 2022 04:40:56 -0400
-Received: from mxplan5.mail.ovh.net (unknown [10.108.4.51])
- by mo552.mail-out.ovh.net (Postfix) with ESMTPS id 2ED1E27239;
- Wed, 29 Jun 2022 08:40:52 +0000 (UTC)
-Received: from kaod.org (37.59.142.101) by DAG4EX1.mxp5.local (172.16.2.31)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.9; Wed, 29 Jun
- 2022 10:40:51 +0200
-Authentication-Results: garm.ovh; auth=pass
- (GARM-101G004651db29f-ad64-40a5-b95d-5bdee338c6c6,
- 74A1F81DE4F8936248B5873BB0AED4007818FEC6) smtp.auth=clg@kaod.org
-X-OVh-ClientIp: 82.64.250.170
-Message-ID: <c4c261e9-8f17-578c-8e45-e64ced8e0685@kaod.org>
-Date: Wed, 29 Jun 2022 10:40:50 +0200
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=AVqyutdU;
+       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
+        id S233322AbiF2K2L (ORCPT <rfc822;daniel.diaz@linaro.org>
+        + 3 others); Wed, 29 Jun 2022 06:28:11 -0400
+Received: from lindbergh.monkeyblade.net ([23.128.96.19]:36862 "EHLO
+        lindbergh.monkeyblade.net" rhost-flags-OK-OK-OK-OK) by vger.kernel.org
+        with ESMTP id S231404AbiF2K1l (ORCPT <rfc822;kvm@vger.kernel.org>);
+        Wed, 29 Jun 2022 06:27:41 -0400
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com [170.10.133.124])
+        by lindbergh.monkeyblade.net (Postfix) with ESMTP id 656D33D480
+        for <kvm@vger.kernel.org>; Wed, 29 Jun 2022 03:27:37 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+        s=mimecast20190719; t=1656498456;
+        h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+         to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+         content-transfer-encoding:content-transfer-encoding:
+         in-reply-to:in-reply-to:references:references;
+        bh=WBDTegV1NcLsYm3iT9zew3Lk6STRKzydFuyy5K6OCz0=;
+        b=AVqyutdUTO3CuMEjxd1MZbL9UQQVMhWZiawzp5UbNBDq4Rq0+HHfBUUhoeRuOcFOf4aWe5
+        E2IiBvEm/Few+7ShXO31pDZYWn+rYoG0fYaVCajdikOD4kaogATWJwfMBv6biwYTfJ2qWz
+        ujD5NJgvd2vI0drXTFOfLnSZAE1rGRk=
+Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
+ [209.85.128.71]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-496-M9S7JImQNMW0I4FHJxlUIA-1; Wed, 29 Jun 2022 06:27:14 -0400
+X-MC-Unique: M9S7JImQNMW0I4FHJxlUIA-1
+Received: by mail-wm1-f71.google.com with SMTP id o28-20020a05600c511c00b003a04f97f27aso2944887wms.9
+        for <kvm@vger.kernel.org>; Wed, 29 Jun 2022 03:27:14 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
+         :content-language:to:cc:references:from:in-reply-to
+         :content-transfer-encoding;
+        bh=WBDTegV1NcLsYm3iT9zew3Lk6STRKzydFuyy5K6OCz0=;
+        b=b+rggw6uwQKVNHciwhtV6/WJSegA0FwSIF174w25wcvtvZj9STF2UQRAsv0Ww24gpQ
+         ttiMMwK/9+1ViiwWEC0/G/HMe+HQBoA0p/2ioOhVum7+xTfOb8dNnbGlnaGRyTAaAvvl
+         P2bXhsh1gppRTur8dXGnBLR+J258mUclrBOG8bHOpUO7gPPSvaQMK96qlxuHiwq1Ub4b
+         RBTwpP6BqhR4FlkFuHG/HBm590I/QlhFyzDbNQqk/u00W312XW9Q/pZ7j4eZmjK+MslS
+         J23Z80X7tJ63jIDiCW1OvZTTyntnxKRKuSz0kcl2pnp9J4QWtLXfhmFjtnX1v9xrAkqB
+         Gylw==
+X-Gm-Message-State: AJIora+bYP9pQP1llcV7hNoSjgJH0rxk77Lyv5EPTnHSjZ+G9bzJxVDs
+        VDElyWYHJrvxinj7epFMfeNzMi4ocO3Q7uRgux1zvmo8KYA8lF7YTEceOvQe9nk0nO7K15eMnTD
+        9M0Ju30tMAPeg
+X-Received: by 2002:a05:6000:1ac8:b0:21b:9239:8f28 with SMTP id i8-20020a0560001ac800b0021b92398f28mr2345397wry.517.1656498433129;
+        Wed, 29 Jun 2022 03:27:13 -0700 (PDT)
+X-Received: by 2002:a05:6000:1ac8:b0:21b:9239:8f28 with SMTP id i8-20020a0560001ac800b0021b92398f28mr2345379wry.517.1656498432858;
+        Wed, 29 Jun 2022 03:27:12 -0700 (PDT)
+Received: from ?IPV6:2a01:e0a:59e:9d80:527b:9dff:feef:3874? ([2a01:e0a:59e:9d80:527b:9dff:feef:3874])
+        by smtp.gmail.com with ESMTPSA id f19-20020a05600c4e9300b003a047dccfffsm3274435wmq.42.2022.06.29.03.27.11
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 29 Jun 2022 03:27:12 -0700 (PDT)
+Message-ID: <b684d1e6-2d8f-5d08-aae0-b085a722575b@redhat.com>
+Date:   Wed, 29 Jun 2022 12:27:10 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
  Thunderbird/91.9.0
-Subject: Re: [PATCH v2 09/13] hw/i2c/pmbus: Add read-only IC_DEVICE_ID support
+Subject: Re: [PATCH RFC 0/2] arm: enable MTE for QEMU + kvm
 Content-Language: en-US
-To: Peter Delevoryas <peterdelevoryas@gmail.com>
-CC: <peter.maydell@linaro.org>, <andrew@aj.id.au>, <joel@jms.id.au>,
- <cminyard@mvista.com>, <titusr@google.com>, <qemu-devel@nongnu.org>,
- <qemu-arm@nongnu.org>, <zhdaniel@fb.com>, <pdel@fb.com>
-References: <20220629033634.3850922-1-pdel@fb.com>
- <20220629033634.3850922-10-pdel@fb.com>
-From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
-In-Reply-To: <20220629033634.3850922-10-pdel@fb.com>
-Content-Type: text/plain; charset="UTF-8"; format=flowed
+To:     Cornelia Huck <cohuck@redhat.com>,
+        Peter Maydell <peter.maydell@linaro.org>,
+        Thomas Huth <thuth@redhat.com>,
+        Laurent Vivier <lvivier@redhat.com>
+Cc:     Andrew Jones <drjones@redhat.com>, qemu-arm@nongnu.org,
+        qemu-devel@nongnu.org, kvm@vger.kernel.org
+References: <20220512131146.78457-1-cohuck@redhat.com>
+ <4bb7b5e4-ceb4-d2d8-e03a-f7059e5158d6@redhat.com> <87a6agsg9t.fsf@redhat.com>
+From:   Eric Auger <eauger@redhat.com>
+In-Reply-To: <87a6agsg9t.fsf@redhat.com>
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
-X-Originating-IP: [37.59.142.101]
-X-ClientProxiedBy: DAG5EX2.mxp5.local (172.16.2.42) To DAG4EX1.mxp5.local
- (172.16.2.31)
-X-Ovh-Tracer-GUID: bdb0f9f5-4332-423a-93ec-353848d3dd51
-X-Ovh-Tracer-Id: 1158551006875782066
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvfedrudegledgtdeiucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhepkfffgggfuffvvehfhfgjtgfgihesthejredttdefjeenucfhrhhomhepveorughrihgtpgfnvggpifhorghtvghruceotghlgheskhgrohgurdhorhhgqeenucggtffrrghtthgvrhhnpeelleeiiefgkeefiedtvdeigeetueetkeffkeelheeugfetteegvdekgfehgffgkeenucfkpheptddrtddrtddrtddpfeejrdehledrudegvddruddtudenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhhouggvpehsmhhtphhouhhtpdhhvghlohepmhigphhlrghnhedrmhgrihhlrdhovhhhrdhnvghtpdhinhgvtheptddrtddrtddrtddpmhgrihhlfhhrohhmpegtlhhgsehkrghougdrohhrghdpnhgspghrtghpthhtohepuddprhgtphhtthhopehpuggvlhesfhgsrdgtohhmpdfovfetjfhoshhtpehmohehhedv
-Received-SPF: pass client-ip=178.33.43.201; envelope-from=clg@kaod.org;
- helo=4.mo552.mail-out.ovh.net
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: NjCTdMJAEelR
+X-Spam-Status: No, score=-2.5 required=5.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+        DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,NICE_REPLY_A,
+        RCVD_IN_DNSWL_NONE,SPF_HELO_NONE,SPF_NONE,T_SCC_BODY_TEXT_LINE
+        autolearn=ham autolearn_force=no version=3.4.6
+X-Spam-Checker-Version: SpamAssassin 3.4.6 (2021-04-09) on
+        lindbergh.monkeyblade.net
+Precedence: bulk
+List-ID: <kvm.vger.kernel.org>
+X-Mailing-List: kvm@vger.kernel.org
+X-TUID: L/wArzBAAohE
 
-On 6/29/22 05:36, Peter Delevoryas wrote:
-> Signed-off-by: Peter Delevoryas <pdel@fb.com>
+Hi Connie,
 
-This is also adding a "Renesas ISL69259 Digital Multiphase Voltage
-Regulator" device. There should be 2 patches.
-
-Thanks,
-
-C.
-
-
-
-> ---
->   hw/i2c/pmbus_device.c            |  5 +++++
->   hw/sensor/isl_pmbus_vr.c         | 31 +++++++++++++++++++++++++++++++
->   include/hw/i2c/pmbus_device.h    |  1 +
->   include/hw/sensor/isl_pmbus_vr.h |  1 +
->   4 files changed, 38 insertions(+)
+On 6/13/22 18:02, Cornelia Huck wrote:
+> On Fri, Jun 10 2022, Eric Auger <eauger@redhat.com> wrote:
 > 
-> diff --git a/hw/i2c/pmbus_device.c b/hw/i2c/pmbus_device.c
-> index efddc36fd9..82131fff85 100644
-> --- a/hw/i2c/pmbus_device.c
-> +++ b/hw/i2c/pmbus_device.c
-> @@ -984,6 +984,11 @@ static uint8_t pmbus_receive_byte(SMBusDevice *smd)
->           }
->           break;
->   
-> +    case PMBUS_IC_DEVICE_ID:
-> +        pmbus_send(pmdev, pmdev->pages[index].ic_device_id,
-> +                   sizeof(pmdev->pages[index].ic_device_id));
-> +        break;
-> +
->       case PMBUS_CLEAR_FAULTS:              /* Send Byte */
->       case PMBUS_PAGE_PLUS_WRITE:           /* Block Write-only */
->       case PMBUS_STORE_DEFAULT_ALL:         /* Send Byte */
-> diff --git a/hw/sensor/isl_pmbus_vr.c b/hw/sensor/isl_pmbus_vr.c
-> index e11e028884..b12c46ab6d 100644
-> --- a/hw/sensor/isl_pmbus_vr.c
-> +++ b/hw/sensor/isl_pmbus_vr.c
-> @@ -218,6 +218,28 @@ static void isl_pmbus_vr_class_init(ObjectClass *klass, void *data,
->       k->device_num_pages = pages;
->   }
->   
-> +static void isl69259_init(Object *obj)
-> +{
-> +    static const uint8_t ic_device_id[] = {0x04, 0x00, 0x81, 0xD2, 0x49};
-> +    PMBusDevice *pmdev = PMBUS_DEVICE(obj);
-> +    int i;
-> +
-> +    raa22xx_init(obj);
-> +    for (i = 0; i < pmdev->num_pages; i++) {
-> +        memcpy(pmdev->pages[i].ic_device_id, ic_device_id,
-> +               sizeof(ic_device_id));
-> +    }
-> +}
-> +
-> +static void isl69259_class_init(ObjectClass *klass, void *data)
-> +{
-> +    ResettableClass *rc = RESETTABLE_CLASS(klass);
-> +    DeviceClass *dc = DEVICE_CLASS(klass);
-> +    dc->desc = "Renesas ISL69259 Digital Multiphase Voltage Regulator";
-> +    rc->phases.exit = isl_pmbus_vr_exit_reset;
-> +    isl_pmbus_vr_class_init(klass, data, 2);
-> +}
-> +
->   static void isl69260_class_init(ObjectClass *klass, void *data)
->   {
->       ResettableClass *rc = RESETTABLE_CLASS(klass);
-> @@ -245,6 +267,14 @@ static void raa229004_class_init(ObjectClass *klass, void *data)
->       isl_pmbus_vr_class_init(klass, data, 2);
->   }
->   
-> +static const TypeInfo isl69259_info = {
-> +    .name = TYPE_ISL69259,
-> +    .parent = TYPE_PMBUS_DEVICE,
-> +    .instance_size = sizeof(ISLState),
-> +    .instance_init = isl69259_init,
-> +    .class_init = isl69259_class_init,
-> +};
-> +
->   static const TypeInfo isl69260_info = {
->       .name = TYPE_ISL69260,
->       .parent = TYPE_PMBUS_DEVICE,
-> @@ -271,6 +301,7 @@ static const TypeInfo raa228000_info = {
->   
->   static void isl_pmbus_vr_register_types(void)
->   {
-> +    type_register_static(&isl69259_info);
->       type_register_static(&isl69260_info);
->       type_register_static(&raa228000_info);
->       type_register_static(&raa229004_info);
-> diff --git a/include/hw/i2c/pmbus_device.h b/include/hw/i2c/pmbus_device.h
-> index 0f4d6b3fad..aed7809841 100644
-> --- a/include/hw/i2c/pmbus_device.h
-> +++ b/include/hw/i2c/pmbus_device.h
-> @@ -407,6 +407,7 @@ typedef struct PMBusPage {
->       uint16_t mfr_max_temp_1;           /* R/W word */
->       uint16_t mfr_max_temp_2;           /* R/W word */
->       uint16_t mfr_max_temp_3;           /* R/W word */
-> +    uint8_t ic_device_id[16];          /* Read-Only block-read */
->   } PMBusPage;
->   
->   /* State */
-> diff --git a/include/hw/sensor/isl_pmbus_vr.h b/include/hw/sensor/isl_pmbus_vr.h
-> index 3e47ff7e48..d501b3bc82 100644
-> --- a/include/hw/sensor/isl_pmbus_vr.h
-> +++ b/include/hw/sensor/isl_pmbus_vr.h
-> @@ -12,6 +12,7 @@
->   #include "hw/i2c/pmbus_device.h"
->   #include "qom/object.h"
->   
-> +#define TYPE_ISL69259   "isl69259"
->   #define TYPE_ISL69260   "isl69260"
->   #define TYPE_RAA228000  "raa228000"
->   #define TYPE_RAA229004  "raa229004"
+>> Hi Connie,
+>>
+>> On 5/12/22 15:11, Cornelia Huck wrote:
+>>> This series enables MTE for kvm guests, if the kernel supports it.
+>>> Lightly tested while running under the simulator (the arm64/mte/
+>>> kselftests pass... if you wait patiently :)
+>>>
+>>> A new cpu property "mte" (defaulting to on if possible) is introduced;
+>>> for tcg, you still need to enable mte at the machine as well.
+>> isn't the property set to off by default when kvm is enabled (because of
+>> the migration blocker).
+> 
+> Oh, I had changed that around several times, and it seems I ended up
+> being confused when I wrote this cover letter... I wonder what the best
+> state would be (assuming that I don't manage to implement it soonish,
+> but it seems we still would need kernel changes as by the discussion in
+> that other patch series.)
+Having mte=off by default along with KVM, until the migration gets
+supported, looks OK to me. Does it prevent you from having it set to
+another value by default with TCG (depending on the virt machine
+tag_memory option)?
 
+		tag_memory=on	tag_memory=off
+KVM CPU mte=off	invalid		mte=off
+KVM CPU mte=on	invalid		mte=on
+TCG CPU mte=off	invalid		mte=off
+TCG CPU mte=on	mte=on		invalid
+
+default value:
+KVM mte = off until migration gets supported
+TCG mte = machine.tag_memory
+
+Thanks
+
+Eric
+
+> 
+>>
+>> Eric
+>>>
+>>> I've hacked up some very basic qtests; not entirely sure if I'm going
+>>> about it the right way.
+>>>
+>>> Some things to look out for:
+>>> - Migration is not (yet) supported. I added a migration blocker if we
+>>>   enable mte in the kvm case. AFAIK, there isn't any hardware available
+>>>   yet that allows mte + kvm to be used (I think the latest Gravitons
+>>>   implement mte, but no bare metal instances seem to be available), so
+>>>   that should not have any impact on real world usage.
+>>> - I'm not at all sure about the interaction between the virt machine 'mte'
+>>>   prop and the cpu 'mte' prop. To keep things working with tcg as before,
+>>>   a not-specified mte for the cpu should simply give us a guest without
+>>>   mte if it wasn't specified for the machine. However, mte on the cpu
+>>>   without mte on the machine should probably generate an error, but I'm not
+>>>   sure how to detect that without breaking the silent downgrade to preserve
+>>>   existing behaviour.
+>>> - As I'm still new to arm, please don't assume that I know what I'm doing :)
+>>>
+>>>
+>>> Cornelia Huck (2):
+>>>   arm/kvm: enable MTE if available
+>>>   qtests/arm: add some mte tests
+>>>
+>>>  target/arm/cpu.c               | 18 +++-----
+>>>  target/arm/cpu.h               |  4 ++
+>>>  target/arm/cpu64.c             | 78 ++++++++++++++++++++++++++++++++++
+>>>  target/arm/kvm64.c             |  5 +++
+>>>  target/arm/kvm_arm.h           | 12 ++++++
+>>>  target/arm/monitor.c           |  1 +
+>>>  tests/qtest/arm-cpu-features.c | 31 ++++++++++++++
+>>>  7 files changed, 137 insertions(+), 12 deletions(-)
+>>>
+> 

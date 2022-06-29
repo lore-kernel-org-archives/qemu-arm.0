@@ -1,105 +1,105 @@
-Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp139100lft;
-        Tue, 28 Jun 2022 20:48:40 -0700 (PDT)
-X-Google-Smtp-Source: AGRyM1uh5lCwVxihFkiNERhDnQVaZDEHOAjuvT8v7GkfFZtjZxOBnAJCM2gVjSi3EDJP3NJ9luZf
-X-Received: by 2002:a37:630a:0:b0:6af:4a97:ab85 with SMTP id x10-20020a37630a000000b006af4a97ab85mr693287qkb.1.1656474520653;
-        Tue, 28 Jun 2022 20:48:40 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1656474520; cv=none;
+Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp140101lft;
+        Tue, 28 Jun 2022 20:51:35 -0700 (PDT)
+X-Google-Smtp-Source: AGRyM1uj/kxt9Db5on0p8MFZv7DUbNfS/nTNEnU9ieI9FCBMqyns5i0P4ZioZ022c1mOJLAddK7r
+X-Received: by 2002:a05:620a:f14:b0:6ab:986a:6b04 with SMTP id v20-20020a05620a0f1400b006ab986a6b04mr732540qkl.77.1656474695203;
+        Tue, 28 Jun 2022 20:51:35 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1656474695; cv=none;
         d=google.com; s=arc-20160816;
-        b=UEnGpFEcJBdnNbg/i64+2Zu+Dwupzqr6kmpviINeu5mK4IWQoRfmFpZBrSp0sryMET
-         eZX76nWAX9enZK+c8UWSFQJs6FcKGd/m8PWqZBaTJco5eMrkX9UiGcA59WCxYo3FZOor
-         UCYYqTf+XHFOeprXW+4HVN4IFwG9TdBKUXIpHP9vuphf1yZeqJgeVIQVO7KItz2NvWDT
-         pzTt/nZTMCVDUEq5HuCq1Ptq7m3ChhAyYcpf1QhtNuBrIYihq/0gWaT+/kjfPVmmq41q
-         pXAZXgfafoxBXY78y9Hu7MGjXiNzT0awrbdv2OHA9y6Bh/WDsM0Mv7QNoZJmVEov//Dd
-         iKGw==
+        b=o/yDf9sCOMBUHBjhm2GRHVMCqbGWQazJP2CJRHAIjaDWCLwXII4H6Rn8XMjkH6y+2A
+         AUlyG9kj0/VOXLSXva6AG5F511Z1uITMEJb3uE0Gj5qw74lmcPNE5iq+OQd8J7mSMdRp
+         jePHusjKwYzpf0KI8R6lfEsXr2sTj+fUz1QYNR90cOE7m425jRytYJPptrj7qmy76Olx
+         eufPizsJivsgvP+NnBdh5DlrlPSNGEsWz+SPd4uy1mpe1yLQI80GIaGla21KlE+F0o7B
+         TaOn9j2r9pM0lRvrMk6dN48Oc9CQZVcFb4W0/S+VPzz2i02we9Cs5SII08dz9W0CCW1D
+         I7Ow==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=3q1s4ScM99S1u0cq6BdjiWyx+aQVAgBUoJiRzkTlxxA=;
-        b=eu+DGwlqeY0QKk7/XMKJM0mezdLqGWS1XbfGrkz2ZSTAtFnU6oCF//3uIVWiZlAlpg
-         1AmdHuNab6se/8U0ikeaMUA+XCz6W7ralLreyPSpoZKabBKhhmII2FCQ5sJZdcqIVDcm
-         G9MOxFu2zXmmJlf0mJSWnpeOZ9bhlw91lIaTRlgv6pDUZn6ext9LAp2DVqSDkp3ptb18
-         ZNGht8fVoY+4o/F7TzRKakzUG9qa4UN881AS/UAy0k4LJguA5hWy91QlO0VCYuHFGME9
-         RkIMJid6J8eBG3e+XZzfxt98StU0NewwvpSCZ+239i/+rsj2dpeV8cj7i+Ix/mCAbX9r
-         70sQ==
+        bh=ORuh6V682i3Tt38y6TVhgXBFwXWiboHy9vQ1EQI2xMg=;
+        b=wqhgiNtaCqjeKy7gymt+tmDc/bLRgpBJulbkftCZ4sTzzV1fzmAoZg7a/+/vfmOp/W
+         5PKwkmYgehDvd4noLlbI844jaWmNnIByzDDgstw+rxX+upOJ+s4JcmUkunUUmnAa+Euc
+         OsEZjKPfe2ltEvUePPj8kYGaae2WQJbXxtK3swrHbwgLFTMMWxVBT1HThkmC2xrXrtZw
+         jARIP0+MntQNL/kqTJ639kTQCRJ1sZIZUiyW8GHxfmw6ecXyjDGrWezokWkVnvsT6VMK
+         K5lllZymb2M2zTW+vthyaiSKXM74j9D5b/C7n5Q39+JhNtZ8wBUUw2vAZBCLb7+ZZkeO
+         +G8w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=RLTZf3LB;
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=b0HP8aE1;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id g13-20020ac87f4d000000b0030502f99d02si9068708qtk.456.2022.06.28.20.48.40
+        by mx.google.com with ESMTPS id s6-20020a05622a178600b00304baaa5b22si4121254qtk.213.2022.06.28.20.51.35
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 28 Jun 2022 20:48:40 -0700 (PDT)
+        Tue, 28 Jun 2022 20:51:35 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=RLTZf3LB;
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=b0HP8aE1;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:57812 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:34768 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1o6Ogy-0007uJ-1p
-	for alex.bennee@linaro.org; Tue, 28 Jun 2022 23:48:40 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45868)
+	id 1o6Ojm-00031F-LM
+	for alex.bennee@linaro.org; Tue, 28 Jun 2022 23:51:34 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:45906)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peterdelevoryas@gmail.com>)
- id 1o6OVS-0007jK-HO; Tue, 28 Jun 2022 23:36:46 -0400
-Received: from mail-pl1-x62c.google.com ([2607:f8b0:4864:20::62c]:43970)
+ id 1o6OVV-0007t5-Kh; Tue, 28 Jun 2022 23:36:49 -0400
+Received: from mail-pf1-x434.google.com ([2607:f8b0:4864:20::434]:44930)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peterdelevoryas@gmail.com>)
- id 1o6OVQ-0006na-NY; Tue, 28 Jun 2022 23:36:46 -0400
-Received: by mail-pl1-x62c.google.com with SMTP id r1so12855363plo.10;
- Tue, 28 Jun 2022 20:36:43 -0700 (PDT)
+ id 1o6OVT-0006sb-Ju; Tue, 28 Jun 2022 23:36:49 -0400
+Received: by mail-pf1-x434.google.com with SMTP id 65so13803578pfw.11;
+ Tue, 28 Jun 2022 20:36:46 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=3q1s4ScM99S1u0cq6BdjiWyx+aQVAgBUoJiRzkTlxxA=;
- b=RLTZf3LBfDlUxcvInSRaxt6fCMETPUQ9eFsxaKM1k3wL4kT1cqmikUJapn9tYgmuUr
- +U5rYnmYR3+fLkRixUOVQvJJCSBx/ZS8cjqrT8iew42xZn0DO6uC4uD5oCTw009HCKTs
- taoIIwudhN+phLsBuorcYra+3W7265TnvWW12vBCDDzobhEtHChEKe/9rmREYdRXv9a9
- lXaoUnXlIUOap0T+8jxBFz2LKd6ZNpLJwt31rZ1EhQlo8pghTtv+toxby+eqCXBatUY0
- FMzXX+tx5AGbj0neLhOrSw3tfY7XZXGkouHvOlKN7UpvRRocs0qP4+AkvhJLd8gfq9qI
- qYVQ==
+ bh=ORuh6V682i3Tt38y6TVhgXBFwXWiboHy9vQ1EQI2xMg=;
+ b=b0HP8aE16JLDd4d6imHEstX3rs+X4ICC0Vlm9io91SEzmoUVLsXddiSDGNvyzsVuFX
+ bfb7eZfjqWLgledvA8WvMMSbJdAyXa3qEQqzYbJBePPyztqs9yIccUfBUSJBRuZEftWw
+ 9/KdFgsQSRlQNKDe+PRBX8JyKTu/w1Glbj8b/v4CYY910BVge0GPZvUoYofycXxX+3gU
+ BDwbQoITesUrEJe8CAPqo8I5YkFxv7SBbPNNhvyYHUmfOXqOVWyu3k848JMEfYe7M3y/
+ p+coZBV6IoQXY1P9lUBPwEtSIHReSKSUVXn1pfFkfyUKW6pi37XI5hjhDAwNKrscuiru
+ Txhw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=3q1s4ScM99S1u0cq6BdjiWyx+aQVAgBUoJiRzkTlxxA=;
- b=zTAnlyYcxfflwmgboHpwtJKBDNbcjE6Or5KctugYU+FcYYudK3a26nvD1adYu2MN5R
- OT5zIbyBJIwMB9eI13a9G4DHxOIl54/G0PR2UH/mo/6XLAPQsHWGmKWnlf7KATtC/8sX
- N5pSLquLywnP8ZfIBwqaRhkO3LqTKw/Lk634A6AWOnoTwfZMuAs6rXQWJFU/qytjGEbr
- G7/GrMdqJUDhT7Uja0gysMNH/Agnh2Qb9m9rF0ihlE3jgSsXdN50XLDJS/W9FR23DjAO
- +28pMrSQPwL0oRoeVvDrgydolkkmMEWt/GwkViECCtPEUAmNDePV2phCC8Ye5BlwRat7
- GUiQ==
-X-Gm-Message-State: AJIora9x4S9Zl2eO4r2MndBjuhxoH/Zwv14cfI4hRy8r79XPkGo1l6fC
- TTuBbHwOB6R6uoqIwGah03A=
-X-Received: by 2002:a17:903:124f:b0:16b:8167:e34e with SMTP id
- u15-20020a170903124f00b0016b8167e34emr8220677plh.52.1656473803585; 
- Tue, 28 Jun 2022 20:36:43 -0700 (PDT)
-Received: from localhost (fwdproxy-prn-008.fbsv.net.
- [2a03:2880:ff:8::face:b00c]) by smtp.gmail.com with ESMTPSA id
- bf7-20020a170902b90700b00165105518f6sm10081261plb.287.2022.06.28.20.36.43
+ bh=ORuh6V682i3Tt38y6TVhgXBFwXWiboHy9vQ1EQI2xMg=;
+ b=PPiqRGf9wElwu3MxhduDRNjr4svSoiw8bTCu1yI7aJz08aFuxJlJ4BtSr2C/0Alj0/
+ tRQ+NT0Z7xZDHllkIsKExahWEeFEkgZ3WMgi/+e8X9XL7WFApkDn0FmO3469s3tM1LSa
+ y9eM/Wcgp+TBSfZ6XZagRLTiLIej/ZoojBguYW48SzeisHzK8/5J8gULs31lx8gUwdvZ
+ IVm0FCjPSlnOqo1nMtfo/kH3IkZlef/4M3ULQuam/7TrcILQonl+IajO4u4i39kavdhg
+ Rty4R58n0RLdcWyCUps3kgjiZjJBUKTaXlZ1BdKqcw1b7x34XqA5TQ9O1p16OPEkYdOd
+ bZHg==
+X-Gm-Message-State: AJIora/cwWpWXy88zDVhH7t3M3dN7IwK5tNHeY/xUvce4nRdZjN9wtgA
+ elFFoGRTZqlGzCKPiqcC0/8=
+X-Received: by 2002:a63:cf18:0:b0:40d:5506:df97 with SMTP id
+ j24-20020a63cf18000000b0040d5506df97mr1142894pgg.43.1656473805412; 
+ Tue, 28 Jun 2022 20:36:45 -0700 (PDT)
+Received: from localhost (fwdproxy-prn-019.fbsv.net.
+ [2a03:2880:ff:13::face:b00c]) by smtp.gmail.com with ESMTPSA id
+ t16-20020aa79390000000b0052521fd273fsm10217347pfe.218.2022.06.28.20.36.44
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 28 Jun 2022 20:36:43 -0700 (PDT)
+ Tue, 28 Jun 2022 20:36:45 -0700 (PDT)
 From: Peter Delevoryas <peterdelevoryas@gmail.com>
 X-Google-Original-From: Peter Delevoryas <pdel@fb.com>
 To: 
 Cc: clg@kaod.org, peter.maydell@linaro.org, andrew@aj.id.au, joel@jms.id.au,
  cminyard@mvista.com, titusr@google.com, qemu-devel@nongnu.org,
  qemu-arm@nongnu.org, zhdaniel@fb.com, pdel@fb.com
-Subject: [PATCH v2 09/13] hw/i2c/pmbus: Add read-only IC_DEVICE_ID support
-Date: Tue, 28 Jun 2022 20:36:30 -0700
-Message-Id: <20220629033634.3850922-10-pdel@fb.com>
+Subject: [PATCH v2 11/13] hw/misc/aspeed: Add fby35-sb-cpld
+Date: Tue, 28 Jun 2022 20:36:32 -0700
+Message-Id: <20220629033634.3850922-12-pdel@fb.com>
 X-Mailer: git-send-email 2.30.2
 In-Reply-To: <20220629033634.3850922-1-pdel@fb.com>
 References: <20220629033634.3850922-1-pdel@fb.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::62c;
- envelope-from=peterdelevoryas@gmail.com; helo=mail-pl1-x62c.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::434;
+ envelope-from=peterdelevoryas@gmail.com; helo=mail-pf1-x434.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -121,112 +121,190 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: DrnoZinXOBEn
+X-TUID: 4tKpTH3XbxWz
+
+fby35 machines have 1 BMC on a baseboard and 2-4 server boards with BIC's.
+There are also CPLD's on each of the boards, one type of CPLD on the
+baseboard and another type on each of the server boards. This commit adds an
+implementation of some of the logic performed by the server board CPLD,
+which is connected to the server board BIC.
+
+fby35 machines have 1 baseboard with a BMC (AST2600) and 4 server boards
+with bridge interconnects (BIC's, AST1030's). Each server board has a CPLD
+on it which provides FRU information and some synchronization functionality
+with the BMC. The baseboard also has one CPLD, but it does other stuff.
+
+This commit just adds some of the FRU functionality to allow the BIC to
+startup without any errors.
 
 Signed-off-by: Peter Delevoryas <pdel@fb.com>
 ---
- hw/i2c/pmbus_device.c            |  5 +++++
- hw/sensor/isl_pmbus_vr.c         | 31 +++++++++++++++++++++++++++++++
- include/hw/i2c/pmbus_device.h    |  1 +
- include/hw/sensor/isl_pmbus_vr.h |  1 +
- 4 files changed, 38 insertions(+)
+ MAINTAINERS             |   1 +
+ hw/misc/fby35_sb_cpld.c | 128 ++++++++++++++++++++++++++++++++++++++++
+ hw/misc/meson.build     |   3 +-
+ 3 files changed, 131 insertions(+), 1 deletion(-)
+ create mode 100644 hw/misc/fby35_sb_cpld.c
 
-diff --git a/hw/i2c/pmbus_device.c b/hw/i2c/pmbus_device.c
-index efddc36fd9..82131fff85 100644
---- a/hw/i2c/pmbus_device.c
-+++ b/hw/i2c/pmbus_device.c
-@@ -984,6 +984,11 @@ static uint8_t pmbus_receive_byte(SMBusDevice *smd)
-         }
-         break;
+diff --git a/MAINTAINERS b/MAINTAINERS
+index 05cf84b58c..3ffd473db1 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -1067,6 +1067,7 @@ F: hw/net/ftgmac100.c
+ F: include/hw/net/ftgmac100.h
+ F: docs/system/arm/aspeed.rst
+ F: tests/qtest/*aspeed*
++F: hw/misc/fby35_sb_cpld.c
  
-+    case PMBUS_IC_DEVICE_ID:
-+        pmbus_send(pmdev, pmdev->pages[index].ic_device_id,
-+                   sizeof(pmdev->pages[index].ic_device_id));
-+        break;
+ NRF51
+ M: Joel Stanley <joel@jms.id.au>
+diff --git a/hw/misc/fby35_sb_cpld.c b/hw/misc/fby35_sb_cpld.c
+new file mode 100644
+index 0000000000..f170a6c781
+--- /dev/null
++++ b/hw/misc/fby35_sb_cpld.c
+@@ -0,0 +1,128 @@
++/*
++ * fby35 Server Board CPLD
++ *
++ * Copyright (c) Meta Platforms, Inc. and affiliates. (http://www.meta.com)
++ *
++ * This code is licensed under the GPL version 2 or later. See the COPYING
++ * file in the top-level directory.
++ */
 +
-     case PMBUS_CLEAR_FAULTS:              /* Send Byte */
-     case PMBUS_PAGE_PLUS_WRITE:           /* Block Write-only */
-     case PMBUS_STORE_DEFAULT_ALL:         /* Send Byte */
-diff --git a/hw/sensor/isl_pmbus_vr.c b/hw/sensor/isl_pmbus_vr.c
-index e11e028884..b12c46ab6d 100644
---- a/hw/sensor/isl_pmbus_vr.c
-+++ b/hw/sensor/isl_pmbus_vr.c
-@@ -218,6 +218,28 @@ static void isl_pmbus_vr_class_init(ObjectClass *klass, void *data,
-     k->device_num_pages = pages;
- }
- 
-+static void isl69259_init(Object *obj)
++#include "qemu/osdep.h"
++#include "qemu/log.h"
++#include "hw/i2c/i2c.h"
++#include "hw/registerfields.h"
++
++#define BOARD_ID_CLASS1 0b0000
++#define BOARD_ID_CLASS2 0b0001
++
++#define TYPE_FBY35_SB_CPLD "fby35-sb-cpld"
++OBJECT_DECLARE_SIMPLE_TYPE(Fby35SbCpldState, FBY35_SB_CPLD);
++
++REG8(CLASS_TYPE, 0x5);
++    FIELD(CLASS_TYPE, RESERVED, 0, 2);
++    FIELD(CLASS_TYPE, 1OU_EXPANSION_NOT_PRESENT, 2, 1);
++    FIELD(CLASS_TYPE, 2OU_EXPANSION_NOT_PRESENT, 3, 1);
++    FIELD(CLASS_TYPE, BOARD_ID, 4, 4);
++REG8(BOARD_REVISION, 0x8);
++    FIELD(BOARD_REVISION, VALUE, 0, 4);
++    FIELD(BOARD_REVISION, RESERVED, 4, 4);
++
++struct Fby35SbCpldState {
++    I2CSlave parent_obj;
++
++    uint8_t target_reg;
++    uint32_t regs[10];
++};
++
++static void fby35_sb_cpld_realize(DeviceState *dev, Error **errp)
 +{
-+    static const uint8_t ic_device_id[] = {0x04, 0x00, 0x81, 0xD2, 0x49};
-+    PMBusDevice *pmdev = PMBUS_DEVICE(obj);
-+    int i;
++    Fby35SbCpldState *s = FBY35_SB_CPLD(dev);
 +
-+    raa22xx_init(obj);
-+    for (i = 0; i < pmdev->num_pages; i++) {
-+        memcpy(pmdev->pages[i].ic_device_id, ic_device_id,
-+               sizeof(ic_device_id));
++    memset(s->regs, 0, sizeof(s->regs));
++    s->target_reg = 0;
++
++    ARRAY_FIELD_DP32(s->regs, CLASS_TYPE, BOARD_ID, 0b0000);
++    ARRAY_FIELD_DP32(s->regs, CLASS_TYPE, 1OU_EXPANSION_NOT_PRESENT, 1);
++    ARRAY_FIELD_DP32(s->regs, CLASS_TYPE, 2OU_EXPANSION_NOT_PRESENT, 1);
++    ARRAY_FIELD_DP32(s->regs, BOARD_REVISION, VALUE, 0x1);
++}
++
++static int fby35_sb_cpld_i2c_event(I2CSlave *i2c, enum i2c_event event)
++{
++    Fby35SbCpldState *s = FBY35_SB_CPLD(i2c);
++
++    switch (event) {
++    case I2C_START_RECV:
++        break;
++    case I2C_START_SEND:
++        s->target_reg = 0;
++        break;
++    case I2C_START_SEND_ASYNC:
++    case I2C_FINISH:
++    case I2C_NACK:
++        break;
++    }
++
++    return 0;
++}
++
++static uint8_t fby35_sb_cpld_i2c_recv(I2CSlave *i2c)
++{
++    Fby35SbCpldState *s = FBY35_SB_CPLD(i2c);
++
++    switch (s->target_reg) {
++    case R_CLASS_TYPE:
++    case R_BOARD_REVISION:
++        return s->regs[s->target_reg];
++    default:
++        qemu_log_mask(LOG_UNIMP, "%s: Register read unimplemented: 0x%02x\n",
++                      __func__, s->target_reg);
++        return 0xff;
 +    }
 +}
 +
-+static void isl69259_class_init(ObjectClass *klass, void *data)
++static int fby35_sb_cpld_i2c_send(I2CSlave *i2c, uint8_t data)
 +{
-+    ResettableClass *rc = RESETTABLE_CLASS(klass);
-+    DeviceClass *dc = DEVICE_CLASS(klass);
-+    dc->desc = "Renesas ISL69259 Digital Multiphase Voltage Regulator";
-+    rc->phases.exit = isl_pmbus_vr_exit_reset;
-+    isl_pmbus_vr_class_init(klass, data, 2);
++    Fby35SbCpldState *s = FBY35_SB_CPLD(i2c);
++
++    if (s->target_reg == 0) {
++        s->target_reg = data;
++        return 0;
++    }
++
++    switch (s->target_reg) {
++    case R_CLASS_TYPE:
++    case R_BOARD_REVISION:
++        s->regs[s->target_reg] = data;
++        break;
++    default:
++        qemu_log_mask(LOG_UNIMP,
++                      "%s: Register write unimplemented: 0x%02x 0x%02x\n",
++                      __func__, s->target_reg, data);
++        break;
++    }
++
++    return 0;
 +}
 +
- static void isl69260_class_init(ObjectClass *klass, void *data)
- {
-     ResettableClass *rc = RESETTABLE_CLASS(klass);
-@@ -245,6 +267,14 @@ static void raa229004_class_init(ObjectClass *klass, void *data)
-     isl_pmbus_vr_class_init(klass, data, 2);
- }
- 
-+static const TypeInfo isl69259_info = {
-+    .name = TYPE_ISL69259,
-+    .parent = TYPE_PMBUS_DEVICE,
-+    .instance_size = sizeof(ISLState),
-+    .instance_init = isl69259_init,
-+    .class_init = isl69259_class_init,
++static void fby35_sb_cpld_class_init(ObjectClass *oc, void *data)
++{
++    DeviceClass *dc = DEVICE_CLASS(oc);
++    I2CSlaveClass *i2c = I2C_SLAVE_CLASS(oc);
++
++    dc->realize = fby35_sb_cpld_realize;
++    i2c->event = fby35_sb_cpld_i2c_event;
++    i2c->recv = fby35_sb_cpld_i2c_recv;
++    i2c->send = fby35_sb_cpld_i2c_send;
++}
++
++static const TypeInfo types[] = {
++    {
++        .name = TYPE_FBY35_SB_CPLD,
++        .parent = TYPE_I2C_SLAVE,
++        .instance_size = sizeof(Fby35SbCpldState),
++        .class_init = fby35_sb_cpld_class_init,
++    },
 +};
 +
- static const TypeInfo isl69260_info = {
-     .name = TYPE_ISL69260,
-     .parent = TYPE_PMBUS_DEVICE,
-@@ -271,6 +301,7 @@ static const TypeInfo raa228000_info = {
++DEFINE_TYPES(types);
+diff --git a/hw/misc/meson.build b/hw/misc/meson.build
+index 95268eddc0..948e25c440 100644
+--- a/hw/misc/meson.build
++++ b/hw/misc/meson.build
+@@ -117,7 +117,8 @@ softmmu_ss.add(when: 'CONFIG_ASPEED_SOC', if_true: files(
+   'aspeed_sbc.c',
+   'aspeed_sdmc.c',
+   'aspeed_xdma.c',
+-  'aspeed_peci.c'))
++  'aspeed_peci.c',
++  'fby35_sb_cpld.c'))
  
- static void isl_pmbus_vr_register_types(void)
- {
-+    type_register_static(&isl69259_info);
-     type_register_static(&isl69260_info);
-     type_register_static(&raa228000_info);
-     type_register_static(&raa229004_info);
-diff --git a/include/hw/i2c/pmbus_device.h b/include/hw/i2c/pmbus_device.h
-index 0f4d6b3fad..aed7809841 100644
---- a/include/hw/i2c/pmbus_device.h
-+++ b/include/hw/i2c/pmbus_device.h
-@@ -407,6 +407,7 @@ typedef struct PMBusPage {
-     uint16_t mfr_max_temp_1;           /* R/W word */
-     uint16_t mfr_max_temp_2;           /* R/W word */
-     uint16_t mfr_max_temp_3;           /* R/W word */
-+    uint8_t ic_device_id[16];          /* Read-Only block-read */
- } PMBusPage;
- 
- /* State */
-diff --git a/include/hw/sensor/isl_pmbus_vr.h b/include/hw/sensor/isl_pmbus_vr.h
-index 3e47ff7e48..d501b3bc82 100644
---- a/include/hw/sensor/isl_pmbus_vr.h
-+++ b/include/hw/sensor/isl_pmbus_vr.h
-@@ -12,6 +12,7 @@
- #include "hw/i2c/pmbus_device.h"
- #include "qom/object.h"
- 
-+#define TYPE_ISL69259   "isl69259"
- #define TYPE_ISL69260   "isl69260"
- #define TYPE_RAA228000  "raa228000"
- #define TYPE_RAA229004  "raa229004"
+ softmmu_ss.add(when: 'CONFIG_MSF2', if_true: files('msf2-sysreg.c'))
+ softmmu_ss.add(when: 'CONFIG_NRF51_SOC', if_true: files('nrf51_rng.c'))
 -- 
 2.30.2
 

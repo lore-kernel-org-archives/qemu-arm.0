@@ -1,83 +1,83 @@
-Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp451295lft;
-        Wed, 29 Jun 2022 06:34:51 -0700 (PDT)
-X-Google-Smtp-Source: AGRyM1uUrA+/WraReAdmJPPvaEH7/MFq3CDwB4ZnzOQBSb1bJrCAKwXxhQIPzOWauF3HLAKBJdQG
-X-Received: by 2002:a2e:a786:0:b0:25b:c51a:2c0b with SMTP id c6-20020a2ea786000000b0025bc51a2c0bmr1840071ljf.215.1656509691570;
-        Wed, 29 Jun 2022 06:34:51 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1656509691; cv=none;
+Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp452954lft;
+        Wed, 29 Jun 2022 06:37:13 -0700 (PDT)
+X-Google-Smtp-Source: AGRyM1tIe7RkAs6LRr0swl8wz9DCP7sMpOl1DoPrNURANTWmv7xRMgfZ0KnWcw86Ag0Ltq7w6k7J
+X-Received: by 2002:a05:6214:2302:b0:470:2d10:b6e4 with SMTP id gc2-20020a056214230200b004702d10b6e4mr7933101qvb.72.1656509832913;
+        Wed, 29 Jun 2022 06:37:12 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1656509832; cv=none;
         d=google.com; s=arc-20160816;
-        b=KRpIt/2UTrUp1ADW2VmkM9qxE1OpxL3Hf7+itHe9n1WFmjWQv6pKoV1+slD+uMRABG
-         GO0g0L+aLL7Y0+v1uuXZmoyVLJavEJnJz1llO1SXM8MOAJvKX8VpyGOpA0v5+E6heIlC
-         cGdYyrPIvjBB0dsHUHed/x8ScdoharjZ8unnefboWIeW+dmcv1hWL3uEUEeDmKdqqywD
-         X6Mf20QtwaZQkPF9rQ8wvQxgHox2IRgjVd8vWILbf9jXvISlLAUctLPpxoOYEkiIAsIl
-         ICgrmZ65hcPRMzPp7zAjxyJAHP7GMTP9YYpCHTbIIV6Vhgeb1yktHqhaaMnn43lWMvPQ
-         434Q==
+        b=J/9VDjIFyx86szkZ9l9Obh7+ctZHZe/W7xIr6qMHCQakMoIP+tAf2oIqegp7FCWGDp
+         Wv0W9JVjdgTJp6Qh/wVfLHxynCYJKyJyO0s6xp29bcrgIM+/p4pxzWonwHbJKiRitEiH
+         DrhaBwlojscOKMaTd2h0cJPnKmGtnydU/teVtVe+KoEkG9K5ORXQ76UI9g0vJ4KoPQOh
+         ou9LM1nJ8ROZFVGsb9kI9gudUFlZbgmNNIfLDZ3k8uBoXWkDJJg4RWvt5nmSX7ifBkjk
+         Ce5PXvKxZQQ7MoD5FSloSsr4Fg62ny2UX+RXmHMPf3r05p6BZ2zPjwMb+/2dv95d1ohR
+         5foA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:to:from:dkim-signature;
-        bh=pjAcywYgywewWIYav2AWuknwqMDrLcZi9CVuKyqnSlk=;
-        b=uS//5Rb/GNYo5t0sF+Ao37/IraQzxF69P8b+6Qvscm8EJiiCoOjQx2VKt24Ql1a+40
-         luU2+PEsySt4SRPF3IKz9qGFyvV1AcIuhpAdKXioJFiKVTDwpcuH8DL3zezn+7BBsbHA
-         KjP7+1aDt6WTDb1ylWk0d7JJVNIHMnkWsYSi1JFu3RczKWQgZ2N4uin0LagGi/Idlgu2
-         xoRS3UsfPKcO3xKF9GsVQdRQ8cjh0tPcM15lFBtBV4U8HfIQex58FrNmFqODqV0QoF+F
-         T30E+UnUzJ2DadCZh/f5A7emFINraL376BP+j4K+aerK2U/lvRHAK4mnAy6FgmojXd0j
-         Mwkw==
+        bh=HSKpiIvSIuW6hPkBrgEwAcnGpKHNg9JW0sGOT9eVK/A=;
+        b=QtJ0Fw/II0sarUcaD7KoZkaX6VZSO5BoiCz3z26jpBjCp/mot8GT0EHAgloopuRXjI
+         sdVVWGwOHjcLbANDvtwpzU4eWBXzrv+Ya0xP3wwu6sz5qJYZQ6q+e3qA9g4ujkbFVnwD
+         uXGgYufhaZxuYdacpwM2d5xEu8/y17uxKpZTWFQkuX4TyfFMX8N06TC6Sjbr2Iwl7t1O
+         Fm9qWUo/NBK+e+M4vwyZGCi0XSfqMHbrGsrmt+VMlBFPHDOMTVX5nyI9yXmqRLuHSBvQ
+         9tS10UHcVdkb4H3URUPQzFrg8G7pFXMJsn0v3EWiDXJi7UrDsfkksBev8f4B4f+cXdZj
+         Vy5w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@ilande.co.uk header.s=20220518 header.b=YTVwjrkb;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@ilande.co.uk header.s=20220518 header.b=E9rIiBv5;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=ilande.co.uk
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id k6-20020a05651c0a0600b002554c8f9827si17483484ljq.602.2022.06.29.06.34.51
+        by mx.google.com with ESMTPS id v17-20020a05620a0f1100b006ab986a6b2bsi10877565qkl.701.2022.06.29.06.37.12
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 29 Jun 2022 06:34:51 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 29 Jun 2022 06:37:12 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@ilande.co.uk header.s=20220518 header.b=YTVwjrkb;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@ilande.co.uk header.s=20220518 header.b=E9rIiBv5;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=ilande.co.uk
-Received: from localhost ([::1]:55696 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:59556 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1o6XqE-0008H6-Jr
-	for alex.bennee@linaro.org; Wed, 29 Jun 2022 09:34:50 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33216)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1o6XsW-0002eG-6s
+	for alex.bennee@linaro.org; Wed, 29 Jun 2022 09:37:12 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33248)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mark.cave-ayland@ilande.co.uk>)
- id 1o6X1S-0001JG-UQ; Wed, 29 Jun 2022 08:42:23 -0400
-Received: from mail.ilande.co.uk ([2001:41c9:1:41f::167]:51400)
+ id 1o6X1U-0001Ma-Gv; Wed, 29 Jun 2022 08:42:24 -0400
+Received: from mail.ilande.co.uk ([2001:41c9:1:41f::167]:51406)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mark.cave-ayland@ilande.co.uk>)
- id 1o6X1R-0005Cx-7X; Wed, 29 Jun 2022 08:42:22 -0400
+ id 1o6X1S-0005IF-UC; Wed, 29 Jun 2022 08:42:24 -0400
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=ilande.co.uk; s=20220518; h=Subject:Content-Transfer-Encoding:MIME-Version:
  References:In-Reply-To:Message-Id:Date:To:From:Sender:Reply-To:Cc:
  Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
  Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:
  List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=pjAcywYgywewWIYav2AWuknwqMDrLcZi9CVuKyqnSlk=; b=YTVwjrkb6+Aosj9ZwHUtGYUmO3
- eALO6toTNw6m3r7nknj9KKf1N7oFWzfsM36qC+/wG898wQY3LXmZb5FLV9unOUb8yv3/OEzmsHKe9
- hf1PqTp2h0seHx7bWm/gcAaMpEHCQwE89lwnket1+kqlj0ovo16GKhjDxZPclYQTgq/NMW8m5SodN
- EXRs2CH6hNYybOt4fxyikChw9gzKQoS1FAAJL0ldv4AB0O7Z46bqiw36+Q+HTcN9x9pf0Vp5N/XC3
- 4g1S0ol1m+U2np4YXnsKxLp5VZPUds1P/0VbqfTB7BYPo68r4569rnKi1HmBb5F+O2OSuNm4WU47f
- io/xKvJwyZ4NA6cKGNpFP62lrD8+lsABz1304HnCbFt9RlWG+sSh30r7wJtdmQY2fzVswRyxLEw1X
- 8sX2H1SzywUMV+GFjHtJSDb34YSsoWDJwHRK9ftw+mdmO29LFmiKCsblQQ7mxYhP6Xic7o0YIAYhM
- tDWMmsmibxBH2VOK/zZ5kzsMt87zfWOtvN9qQgAAOQ2tbFa8+xlLjFolIJk6AI8EnCIGe+z9+AtbQ
- hqtEjqMbbAN2o3/ukDr/UEzLx37OO8GxoloX+wyKDuNXTT+oA1RxHMEXkeqcX4cPsx7q19On3Y59e
- W/+5yQHW75gvqBevXBIdda5GIy59KiDCuKFxm9MNs=;
+ bh=HSKpiIvSIuW6hPkBrgEwAcnGpKHNg9JW0sGOT9eVK/A=; b=E9rIiBv5pcFwsALp801zjVrSDb
+ MOAoa6GU2JV4UUuF5QLV6JjVDAFInEXGx6LGS5j3+9MQE4zWOEo3CEjDwLHX5gPdGGnaFFCzkC5Wq
+ l37HGWVq9PIgvMFcLMvTG64eIgLxTXvRqtUU8RiXoFHzycDjlr9f3aetGDljlY7vm7hvf4S2fqoym
+ t+5OFmMXYJhetb+9N4/cUNcmmFEVVYGXq8snIsqA2H41lRw+kXQ2cwzNgcx7OzSXlKaaDM59991XZ
+ 3tAXSSyw7cTC4FnkjveotnjdnO8MaI8e6s7I9OVBcSw7+I7W+M4/i0nBrnaX0Xvi8ISuUKGb9hTE3
+ PNmE+oXTDZ9wI+EO2ldLINGCB+LCR2IPcEOhwAmdrDbrD/bb1hF1awphCWZYf6sO403UYOd9TtXpl
+ n91z0d79iV0pXTI+wWaey/y59XZbS/G74bf8aWs/ajwSYuMLg76/vGcB/X4mUiqML/7A8r0x68FPK
+ UC3LTwtnYyFmj0LShfM+2/nE1t7W/Fno9krd8aY6Y7LgSM+SlZVLDXVTebZL95oz/MToTNUWwG6PN
+ 0wrUOJ6cWdAK2HzmYj4Md0AZE1PLIw9NrjT/jiXflntGv2HnLV7/4t+ZL+uNNXS39ok+unX+qJOJf
+ P42zb/fkPT4GSNG4Hn36DXuLbjvTVHl8S2vGLnls4=;
 Received: from [2a00:23c4:8ba4:e500:b82f:56f9:46d7:80ab] (helo=kentang.home)
  by mail.ilande.co.uk with esmtpsa (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.92) (envelope-from <mark.cave-ayland@ilande.co.uk>)
- id 1o6Wzm-0002tZ-RY; Wed, 29 Jun 2022 13:40:39 +0100
+ id 1o6Wzt-0002tZ-1p; Wed, 29 Jun 2022 13:40:45 +0100
 From: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
 To: richard.henderson@linaro.org, deller@gmx.de, svens@stackframe.org,
  mst@redhat.com, pbonzini@redhat.com, peter.maydell@linaro.org,
  hpoussin@reactos.org, aleksandar.rikalo@syrmia.com, f4bug@amsat.org,
  qemu-devel@nongnu.org, qemu-arm@nongnu.org
-Date: Wed, 29 Jun 2022 13:40:19 +0100
-Message-Id: <20220629124026.1077021-34-mark.cave-ayland@ilande.co.uk>
+Date: Wed, 29 Jun 2022 13:40:23 +0100
+Message-Id: <20220629124026.1077021-38-mark.cave-ayland@ilande.co.uk>
 X-Mailer: git-send-email 2.30.2
 In-Reply-To: <20220629124026.1077021-1-mark.cave-ayland@ilande.co.uk>
 References: <20220629124026.1077021-1-mark.cave-ayland@ilande.co.uk>
@@ -85,7 +85,7 @@ MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-SA-Exim-Connect-IP: 2a00:23c4:8ba4:e500:b82f:56f9:46d7:80ab
 X-SA-Exim-Mail-From: mark.cave-ayland@ilande.co.uk
-Subject: [PATCH 33/40] lasips2: don't use legacy ps2_mouse_init() function
+Subject: [PATCH 37/40] ps2: remove unused legacy ps2_kbd_init() function
 X-SA-Exim-Version: 4.2.1 (built Wed, 08 May 2019 21:11:16 +0000)
 X-SA-Exim-Scanned: Yes (on mail.ilande.co.uk)
 Received-SPF: pass client-ip=2001:41c9:1:41f::167;
@@ -97,75 +97,79 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: KZN4NFqDCmpB
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 2uInJvQFu/Je
 
-Instantiate the PS2 mouse device within LASIPS2MousePort using
-object_initialize_child() in lasips2_mouse_port_init() and realize it in
-lasips2_mouse_port_realize() accordingly.
+Now that the legacy ps2_kbd_init() function is no longer used, it can be completely
+removed along with its associated trace-event.
 
 Signed-off-by: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
 ---
- hw/input/lasips2.c         | 10 +++++++++-
- include/hw/input/lasips2.h |  2 ++
- 2 files changed, 11 insertions(+), 1 deletion(-)
+ hw/input/ps2.c         | 13 -------------
+ hw/input/trace-events  |  1 -
+ include/hw/input/ps2.h |  1 -
+ 3 files changed, 15 deletions(-)
 
-diff --git a/hw/input/lasips2.c b/hw/input/lasips2.c
-index 4b3264a02d..e602e3c986 100644
---- a/hw/input/lasips2.c
-+++ b/hw/input/lasips2.c
-@@ -398,10 +398,15 @@ static const TypeInfo lasips2_kbd_port_info = {
- 
- static void lasips2_mouse_port_realize(DeviceState *dev, Error **errp)
- {
-+    LASIPS2MousePort *s = LASIPS2_MOUSE_PORT(dev);
-     LASIPS2Port *lp = LASIPS2_PORT(dev);
-     LASIPS2PortDeviceClass *lpdc = LASIPS2_PORT_GET_CLASS(lp);
- 
--    lp->ps2dev = ps2_mouse_init();
-+    if (!sysbus_realize(SYS_BUS_DEVICE(&s->mouse), errp)) {
-+        return;
-+    }
-+
-+    lp->ps2dev = PS2_DEVICE(&s->mouse);
-     lpdc->parent_realize(dev, errp);
+diff --git a/hw/input/ps2.c b/hw/input/ps2.c
+index 59bac28ac8..5b1728ef02 100644
+--- a/hw/input/ps2.c
++++ b/hw/input/ps2.c
+@@ -1224,19 +1224,6 @@ static void ps2_kbd_realize(DeviceState *dev, Error **errp)
+     qemu_input_handler_register(dev, &ps2_keyboard_handler);
  }
  
-@@ -412,6 +417,9 @@ static void lasips2_mouse_port_init(Object *obj)
+-void *ps2_kbd_init(void)
+-{
+-    DeviceState *dev;
+-    PS2KbdState *s;
+-
+-    dev = qdev_new(TYPE_PS2_KBD_DEVICE);
+-    sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), &error_fatal);
+-    s = PS2_KBD_DEVICE(dev);
+-
+-    trace_ps2_kbd_init(s);
+-    return s;
+-}
+-
+ static QemuInputHandler ps2_mouse_handler = {
+     .name  = "QEMU PS/2 Mouse",
+     .mask  = INPUT_EVENT_MASK_BTN | INPUT_EVENT_MASK_REL,
+diff --git a/hw/input/trace-events b/hw/input/trace-events
+index e0bfe7f3ee..df998d13eb 100644
+--- a/hw/input/trace-events
++++ b/hw/input/trace-events
+@@ -41,7 +41,6 @@ ps2_mouse_fake_event(void *opaque) "%p"
+ ps2_write_mouse(void *opaque, int val) "%p val %d"
+ ps2_kbd_reset(void *opaque) "%p"
+ ps2_mouse_reset(void *opaque) "%p"
+-ps2_kbd_init(void *s) "%p"
+ ps2_mouse_init(void *s) "%p"
  
-     memory_region_init_io(&lp->reg, obj, &lasips2_reg_ops, lp, "lasips2-mouse",
-                           0x100);
-+
-+    object_initialize_child(obj, "mouse", &s->mouse, TYPE_PS2_MOUSE_DEVICE);
-+
-     lp->id = 1;
-     lp->lasips2 = container_of(s, LASIPS2State, mouse_port);
- }
-diff --git a/include/hw/input/lasips2.h b/include/hw/input/lasips2.h
-index 4a0ad999d7..01911c50f9 100644
---- a/include/hw/input/lasips2.h
-+++ b/include/hw/input/lasips2.h
-@@ -61,6 +61,8 @@ OBJECT_DECLARE_SIMPLE_TYPE(LASIPS2MousePort, LASIPS2_MOUSE_PORT)
+ # hid.c
+diff --git a/include/hw/input/ps2.h b/include/hw/input/ps2.h
+index a78619d8cb..18fd10cc75 100644
+--- a/include/hw/input/ps2.h
++++ b/include/hw/input/ps2.h
+@@ -98,7 +98,6 @@ struct PS2MouseState {
+ OBJECT_DECLARE_SIMPLE_TYPE(PS2MouseState, PS2_MOUSE_DEVICE)
  
- struct LASIPS2MousePort {
-     LASIPS2Port parent_obj;
-+
-+    PS2MouseState mouse;
- };
- 
- struct LASIPS2State {
+ /* ps2.c */
+-void *ps2_kbd_init(void);
+ void *ps2_mouse_init(void);
+ void ps2_write_mouse(PS2MouseState *s, int val);
+ void ps2_write_keyboard(PS2KbdState *s, int val);
 -- 
 2.30.2
 

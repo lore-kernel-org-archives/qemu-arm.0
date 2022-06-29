@@ -1,106 +1,105 @@
-Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp138824lft;
-        Tue, 28 Jun 2022 20:48:01 -0700 (PDT)
-X-Google-Smtp-Source: AGRyM1u2l4XZLAI7saYP5TG7s9uzp8mQoAQhwp7k5kf8mAXKfMi7Xd3qtf+u+v3eMjYhpth6jZAc
-X-Received: by 2002:ac8:5fd3:0:b0:305:2d70:e0dc with SMTP id k19-20020ac85fd3000000b003052d70e0dcmr881778qta.685.1656474481706;
-        Tue, 28 Jun 2022 20:48:01 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1656474481; cv=none;
+Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp139100lft;
+        Tue, 28 Jun 2022 20:48:40 -0700 (PDT)
+X-Google-Smtp-Source: AGRyM1uh5lCwVxihFkiNERhDnQVaZDEHOAjuvT8v7GkfFZtjZxOBnAJCM2gVjSi3EDJP3NJ9luZf
+X-Received: by 2002:a37:630a:0:b0:6af:4a97:ab85 with SMTP id x10-20020a37630a000000b006af4a97ab85mr693287qkb.1.1656474520653;
+        Tue, 28 Jun 2022 20:48:40 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1656474520; cv=none;
         d=google.com; s=arc-20160816;
-        b=YNi3foBiQBVJgS3FVMa1to6LlfWXPXRkekfg+/X315VaXOV86+pDyA4uHq8B43UO8a
-         n6ZlZVIqE5uihLy8b62ICxYlJOgKgUl7wGVV73sOug5+C0+/vHHR3//Mvr+Y9HUtpJpw
-         3Zw9SoQzPV99nm37a1JXjSeBmJ7qnhngDM3t0ThcVlwVxi34/84gC2jjQl8J+ANX/lQE
-         2Nyg5cH+p33iGqU1JG/4WrvaqomyUdSfLQaSzTSa3GN1l0HK1zAkz0QxOlKvTKgXlrKg
-         jL12snNGvfEyzpsfuBDbwE0lYmHqUX1aXhb+GtosIaoT5AnQCR6WFS2SbbKfnuKRtO/v
-         y6qA==
+        b=UEnGpFEcJBdnNbg/i64+2Zu+Dwupzqr6kmpviINeu5mK4IWQoRfmFpZBrSp0sryMET
+         eZX76nWAX9enZK+c8UWSFQJs6FcKGd/m8PWqZBaTJco5eMrkX9UiGcA59WCxYo3FZOor
+         UCYYqTf+XHFOeprXW+4HVN4IFwG9TdBKUXIpHP9vuphf1yZeqJgeVIQVO7KItz2NvWDT
+         pzTt/nZTMCVDUEq5HuCq1Ptq7m3ChhAyYcpf1QhtNuBrIYihq/0gWaT+/kjfPVmmq41q
+         pXAZXgfafoxBXY78y9Hu7MGjXiNzT0awrbdv2OHA9y6Bh/WDsM0Mv7QNoZJmVEov//Dd
+         iKGw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=vb4Z8dCYcKJsQU+4wQnj8TmeB5G+rHH0WmkyQB2Y6Fc=;
-        b=0HRdgBByp6IqjPksWGDI4jvZlTzHX6nsfeAIsQ2k+fh9QWRIyUPfI0EXmni7SxEuHR
-         ZwknwwM/zitijCWjLDsMMGVI7UdXKeAtqRJxocexlJKhY+7vwZg2AHvf+YtYbjWA3pKk
-         MQJO62yk8k80JQqP2aQ627N/dQiDlbNNElgEzz8KHAUwaxnWLwfJUA1IUpTuNVWCr60U
-         vG5yxH11C+nFltbJokwyt7gZDJY/k0wtBqZZFw8IaK2MhBM03+lII7DCC3+1Ybs0mU+M
-         1UnsGxaoJgSVVbAt/hmWqA/HmNZA2MWQR+/hmmIs+Qj4BOtf+vUbx5DIoNZquSN8pbhv
-         FE7Q==
+        bh=3q1s4ScM99S1u0cq6BdjiWyx+aQVAgBUoJiRzkTlxxA=;
+        b=eu+DGwlqeY0QKk7/XMKJM0mezdLqGWS1XbfGrkz2ZSTAtFnU6oCF//3uIVWiZlAlpg
+         1AmdHuNab6se/8U0ikeaMUA+XCz6W7ralLreyPSpoZKabBKhhmII2FCQ5sJZdcqIVDcm
+         G9MOxFu2zXmmJlf0mJSWnpeOZ9bhlw91lIaTRlgv6pDUZn6ext9LAp2DVqSDkp3ptb18
+         ZNGht8fVoY+4o/F7TzRKakzUG9qa4UN881AS/UAy0k4LJguA5hWy91QlO0VCYuHFGME9
+         RkIMJid6J8eBG3e+XZzfxt98StU0NewwvpSCZ+239i/+rsj2dpeV8cj7i+Ix/mCAbX9r
+         70sQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=m4cD9T6d;
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=RLTZf3LB;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t16-20020a05622a181000b003051f5d631bsi9341184qtc.234.2022.06.28.20.48.01
+        by mx.google.com with ESMTPS id g13-20020ac87f4d000000b0030502f99d02si9068708qtk.456.2022.06.28.20.48.40
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 28 Jun 2022 20:48:01 -0700 (PDT)
+        Tue, 28 Jun 2022 20:48:40 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=m4cD9T6d;
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=RLTZf3LB;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:56956 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:57812 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1o6OgL-0007JT-0r
-	for alex.bennee@linaro.org; Tue, 28 Jun 2022 23:48:01 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45852)
+	id 1o6Ogy-0007uJ-1p
+	for alex.bennee@linaro.org; Tue, 28 Jun 2022 23:48:40 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:45868)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peterdelevoryas@gmail.com>)
- id 1o6OVR-0007fw-MN; Tue, 28 Jun 2022 23:36:45 -0400
-Received: from mail-pl1-x633.google.com ([2607:f8b0:4864:20::633]:33759)
+ id 1o6OVS-0007jK-HO; Tue, 28 Jun 2022 23:36:46 -0400
+Received: from mail-pl1-x62c.google.com ([2607:f8b0:4864:20::62c]:43970)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peterdelevoryas@gmail.com>)
- id 1o6OVP-0006dT-19; Tue, 28 Jun 2022 23:36:45 -0400
-Received: by mail-pl1-x633.google.com with SMTP id n10so12915380plp.0;
- Tue, 28 Jun 2022 20:36:42 -0700 (PDT)
+ id 1o6OVQ-0006na-NY; Tue, 28 Jun 2022 23:36:46 -0400
+Received: by mail-pl1-x62c.google.com with SMTP id r1so12855363plo.10;
+ Tue, 28 Jun 2022 20:36:43 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=vb4Z8dCYcKJsQU+4wQnj8TmeB5G+rHH0WmkyQB2Y6Fc=;
- b=m4cD9T6dvMXGnHjHeuaGHJnxvRDVIzjims9IGkF4F0e1tBFhXrsie9rdhYpDoFd9LK
- 7An3ZDw/nV/gArLhukkxf+JlDGTmIZRgtc5Ib6OsvA/juOfcNyBWW8X2rStgFBzdH5al
- vpUFuhDgsPk3YG3MdSNVI6Tt/wV2QUhcUbiDNOmF3HSCpPwSNu0SFBJr8jGnuCuP65xF
- 2AY/Y/t6sDRWeBht6RM9By8Lky/Z99QEAMDjOJ7LTloXfonGlvPVETpotLocjKuXHFUw
- 83UVcH2UBth7l1FoFzsXlUu0A5VIXf+k/gqIc5dgn38MCWNhJhvniz24ER1J/FVhT+te
- kp/w==
+ bh=3q1s4ScM99S1u0cq6BdjiWyx+aQVAgBUoJiRzkTlxxA=;
+ b=RLTZf3LBfDlUxcvInSRaxt6fCMETPUQ9eFsxaKM1k3wL4kT1cqmikUJapn9tYgmuUr
+ +U5rYnmYR3+fLkRixUOVQvJJCSBx/ZS8cjqrT8iew42xZn0DO6uC4uD5oCTw009HCKTs
+ taoIIwudhN+phLsBuorcYra+3W7265TnvWW12vBCDDzobhEtHChEKe/9rmREYdRXv9a9
+ lXaoUnXlIUOap0T+8jxBFz2LKd6ZNpLJwt31rZ1EhQlo8pghTtv+toxby+eqCXBatUY0
+ FMzXX+tx5AGbj0neLhOrSw3tfY7XZXGkouHvOlKN7UpvRRocs0qP4+AkvhJLd8gfq9qI
+ qYVQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=vb4Z8dCYcKJsQU+4wQnj8TmeB5G+rHH0WmkyQB2Y6Fc=;
- b=1u+8X2BQylins7Dll+fJx/LdP/v9CSzVcscytjx1AnaDfA5GQ/8U1ZEQR89Oo0JKLs
- lQ3qeTHQ0pP4mQ4KlU0UTebRMwShf4B0FxXae+DyHlrwf+0EOchnZBAmHML2K0EjrVEn
- /swRYLzZrW+qNyn5X1MFlDGESlXr5PtvLv8ZbknPPXlHphp9I3TaqMstFJcU/ib1GV7C
- Yts638AYeIMESYrd8xvo8JbMVcJrdiic49dmXaeaT0mBOgqcGM0Sbl1TUSADVebykYF1
- EQalJsdtpKFLlLSCcxnIQi+XTj9DA5T5yTsOjaKL6/zQwQKZPx2Roz78jbiWnanqjCSU
- UybA==
-X-Gm-Message-State: AJIora+FJzRy4wboSL+2sjouCj6RH/OrBZJLXxoyK/r9X7UzS4/2Mz/O
- TGJDzCrZEg17aCNi1F+VIx8=
-X-Received: by 2002:a17:90b:3b81:b0:1ed:3655:d0c8 with SMTP id
- pc1-20020a17090b3b8100b001ed3655d0c8mr3454520pjb.56.1656473801882; 
- Tue, 28 Jun 2022 20:36:41 -0700 (PDT)
-Received: from localhost (fwdproxy-prn-003.fbsv.net.
- [2a03:2880:ff:3::face:b00c]) by smtp.gmail.com with ESMTPSA id
- 8-20020aa79208000000b0050dc76281e0sm5913463pfo.186.2022.06.28.20.36.41
+ bh=3q1s4ScM99S1u0cq6BdjiWyx+aQVAgBUoJiRzkTlxxA=;
+ b=zTAnlyYcxfflwmgboHpwtJKBDNbcjE6Or5KctugYU+FcYYudK3a26nvD1adYu2MN5R
+ OT5zIbyBJIwMB9eI13a9G4DHxOIl54/G0PR2UH/mo/6XLAPQsHWGmKWnlf7KATtC/8sX
+ N5pSLquLywnP8ZfIBwqaRhkO3LqTKw/Lk634A6AWOnoTwfZMuAs6rXQWJFU/qytjGEbr
+ G7/GrMdqJUDhT7Uja0gysMNH/Agnh2Qb9m9rF0ihlE3jgSsXdN50XLDJS/W9FR23DjAO
+ +28pMrSQPwL0oRoeVvDrgydolkkmMEWt/GwkViECCtPEUAmNDePV2phCC8Ye5BlwRat7
+ GUiQ==
+X-Gm-Message-State: AJIora9x4S9Zl2eO4r2MndBjuhxoH/Zwv14cfI4hRy8r79XPkGo1l6fC
+ TTuBbHwOB6R6uoqIwGah03A=
+X-Received: by 2002:a17:903:124f:b0:16b:8167:e34e with SMTP id
+ u15-20020a170903124f00b0016b8167e34emr8220677plh.52.1656473803585; 
+ Tue, 28 Jun 2022 20:36:43 -0700 (PDT)
+Received: from localhost (fwdproxy-prn-008.fbsv.net.
+ [2a03:2880:ff:8::face:b00c]) by smtp.gmail.com with ESMTPSA id
+ bf7-20020a170902b90700b00165105518f6sm10081261plb.287.2022.06.28.20.36.43
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 28 Jun 2022 20:36:41 -0700 (PDT)
+ Tue, 28 Jun 2022 20:36:43 -0700 (PDT)
 From: Peter Delevoryas <peterdelevoryas@gmail.com>
 X-Google-Original-From: Peter Delevoryas <pdel@fb.com>
 To: 
 Cc: clg@kaod.org, peter.maydell@linaro.org, andrew@aj.id.au, joel@jms.id.au,
  cminyard@mvista.com, titusr@google.com, qemu-devel@nongnu.org,
  qemu-arm@nongnu.org, zhdaniel@fb.com, pdel@fb.com
-Subject: [PATCH v2 07/13] hw/i2c/aspeed: Add new-registers DMA slave mode RX
- support
-Date: Tue, 28 Jun 2022 20:36:28 -0700
-Message-Id: <20220629033634.3850922-8-pdel@fb.com>
+Subject: [PATCH v2 09/13] hw/i2c/pmbus: Add read-only IC_DEVICE_ID support
+Date: Tue, 28 Jun 2022 20:36:30 -0700
+Message-Id: <20220629033634.3850922-10-pdel@fb.com>
 X-Mailer: git-send-email 2.30.2
 In-Reply-To: <20220629033634.3850922-1-pdel@fb.com>
 References: <20220629033634.3850922-1-pdel@fb.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::633;
- envelope-from=peterdelevoryas@gmail.com; helo=mail-pl1-x633.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::62c;
+ envelope-from=peterdelevoryas@gmail.com; helo=mail-pl1-x62c.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -122,293 +121,112 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: GCZTEpCBRoLY
-
-This commit adds support for DMA RX in slave mode while using the new
-register set in the AST2600 and AST1030. This patch also pretty much
-assumes packet mode is enabled, I'm not sure if this will work in DMA
-step mode.
-
-This is particularly useful for testing IPMB exchanges between Zephyr
-and external devices, which requires multi-master I2C support and DMA in
-the new register mode, because the Zephyr drivers from Aspeed use DMA in
-the new mode by default. The Zephyr drivers are also using packet mode.
-
-The typical sequence of events for receiving data in DMA slave + packet
-mode is that the Zephyr firmware will configure the slave address
-register with an address to receive on and configure the bus's function
-control register to enable master mode and slave mode simultaneously at
-startup, before any transfers are initiated.
-
-RX DMA is enabled in the slave mode command register, and the slave RX
-DMA buffer address and slave RX DMA buffer length are set. TX DMA is not
-covered in this patch.
-
-When the Aspeed I2C controller receives data from some other I2C master,
-it will reset the I2CS_DMA_LEN RX_LEN value to zero, then buffer
-incoming data in the RX DMA buffer while incrementing the I2CC_DMA_ADDR
-address counter and decrementing the I2CC_DMA_LEN counter. It will also
-update the I2CS_DMA_LEN RX_LEN value along the way.
-
-Once all the data has been received, the bus controller will raise an
-interrupt indicating a packet command was completed, the slave address
-matched, a normal stop condition was seen, and the transfer was an RX
-operation.
-
-If the master sent a NACK instead of a normal stop condition, or the
-transfer timed out, then a slightly different set of interrupt status
-values would be set. Those conditions are not handled in this commit.
-
-The Zephyr firmware then collects data from the RX DMA buffer and clears
-the status register by writing the PKT_MODE_EN bit to the status
-register. In packet mode, clearing the packet mode interrupt enable bit
-also clears most of the other interrupt bits automatically (except for a
-few bits above it).
-
-Note: if the master transmit or receive functions were in use
-simultaneously with the slave mode receive functionality, then the
-master mode functions may have raised the interrupt line for the bus
-before the DMA slave transfer is complete. It's important to have the
-slave's interrupt status register clear throughout the receive
-operation, and if the slave attempts to raise the interrupt before the
-master interrupt status is cleared, then it needs to re-raise the
-interrupt once the master interrupt status is cleared. (And vice-versa).
-That's why in this commit, when the master interrupt status is cleared
-and the interrupt line is lowered, we call the slave interrupt _raise_
-function, to see if the interrupt was pending. (And again, vice-versa).
+X-TUID: DrnoZinXOBEn
 
 Signed-off-by: Peter Delevoryas <pdel@fb.com>
 ---
- hw/i2c/aspeed_i2c.c         | 133 ++++++++++++++++++++++++++++++++----
- include/hw/i2c/aspeed_i2c.h |   3 +
- 2 files changed, 124 insertions(+), 12 deletions(-)
+ hw/i2c/pmbus_device.c            |  5 +++++
+ hw/sensor/isl_pmbus_vr.c         | 31 +++++++++++++++++++++++++++++++
+ include/hw/i2c/pmbus_device.h    |  1 +
+ include/hw/sensor/isl_pmbus_vr.h |  1 +
+ 4 files changed, 38 insertions(+)
 
-diff --git a/hw/i2c/aspeed_i2c.c b/hw/i2c/aspeed_i2c.c
-index 8a8514586f..fc8b6b62cf 100644
---- a/hw/i2c/aspeed_i2c.c
-+++ b/hw/i2c/aspeed_i2c.c
-@@ -78,6 +78,18 @@ static inline void aspeed_i2c_bus_raise_interrupt(AspeedI2CBus *bus)
-     }
- }
- 
-+static inline void aspeed_i2c_bus_raise_slave_interrupt(AspeedI2CBus *bus)
-+{
-+    AspeedI2CClass *aic = ASPEED_I2C_GET_CLASS(bus->controller);
-+
-+    if (!bus->regs[R_I2CS_INTR_STS]) {
-+        return;
-+    }
-+
-+    bus->controller->intr_status |= 1 << bus->id;
-+    qemu_irq_raise(aic->bus_get_irq(bus));
-+}
-+
- static uint64_t aspeed_i2c_bus_old_read(AspeedI2CBus *bus, hwaddr offset,
-                                         unsigned size)
- {
-@@ -140,8 +152,17 @@ static uint64_t aspeed_i2c_bus_new_read(AspeedI2CBus *bus, hwaddr offset,
-     case A_I2CM_DMA_LEN_STS:
-     case A_I2CC_DMA_ADDR:
-     case A_I2CC_DMA_LEN:
-+
-+    case A_I2CS_DEV_ADDR:
-+    case A_I2CS_DMA_RX_ADDR:
-+    case A_I2CS_DMA_LEN:
-+    case A_I2CS_CMD:
-+    case A_I2CS_INTR_CTRL:
-+    case A_I2CS_DMA_LEN_STS:
-         /* Value is already set, don't do anything. */
-         break;
-+    case A_I2CS_INTR_STS:
-+        break;
-     case A_I2CM_CMD:
-         value = SHARED_FIELD_DP32(value, BUS_BUSY_STS, i2c_bus_busy(bus->bus));
-         break;
-@@ -547,12 +568,7 @@ static void aspeed_i2c_bus_new_write(AspeedI2CBus *bus, hwaddr offset,
- 
-     switch (offset) {
-     case A_I2CC_FUN_CTRL:
--        if (SHARED_FIELD_EX32(value, SLAVE_EN)) {
--            qemu_log_mask(LOG_UNIMP, "%s: slave mode not implemented\n",
--                          __func__);
--            break;
--        }
--        bus->regs[R_I2CC_FUN_CTRL] = value & 0x007dc3ff;
-+        bus->regs[R_I2CC_FUN_CTRL] = value;
-         break;
-     case A_I2CC_AC_TIMING:
-         bus->regs[R_I2CC_AC_TIMING] = value & 0x1ffff0ff;
-@@ -580,6 +596,7 @@ static void aspeed_i2c_bus_new_write(AspeedI2CBus *bus, hwaddr offset,
-                 bus->controller->intr_status &= ~(1 << bus->id);
-                 qemu_irq_lower(aic->bus_get_irq(bus));
-             }
-+            aspeed_i2c_bus_raise_slave_interrupt(bus);
-             break;
+diff --git a/hw/i2c/pmbus_device.c b/hw/i2c/pmbus_device.c
+index efddc36fd9..82131fff85 100644
+--- a/hw/i2c/pmbus_device.c
++++ b/hw/i2c/pmbus_device.c
+@@ -984,6 +984,11 @@ static uint8_t pmbus_receive_byte(SMBusDevice *smd)
          }
-         bus->regs[R_I2CM_INTR_STS] &= ~(value & 0xf007f07f);
-@@ -668,15 +685,53 @@ static void aspeed_i2c_bus_new_write(AspeedI2CBus *bus, hwaddr offset,
-     case A_I2CC_DMA_LEN:
-         /* RO */
          break;
--    case A_I2CS_DMA_LEN_STS:
--    case A_I2CS_DMA_TX_ADDR:
--    case A_I2CS_DMA_RX_ADDR:
-     case A_I2CS_DEV_ADDR:
-+        bus->regs[R_I2CS_DEV_ADDR] = value;
-+        break;
-+    case A_I2CS_DMA_RX_ADDR:
-+        bus->regs[R_I2CS_DMA_RX_ADDR] = value;
-+        break;
-+    case A_I2CS_DMA_LEN:
-+        assert(FIELD_EX32(value, I2CS_DMA_LEN, TX_BUF_LEN) == 0);
-+        if (FIELD_EX32(value, I2CS_DMA_LEN, RX_BUF_LEN_W1T)) {
-+            ARRAY_FIELD_DP32(bus->regs, I2CS_DMA_LEN, RX_BUF_LEN,
-+                             FIELD_EX32(value, I2CS_DMA_LEN, RX_BUF_LEN));
-+        } else {
-+            bus->regs[R_I2CS_DMA_LEN] = value;
-+        }
-+        break;
-+    case A_I2CS_CMD:
-+        if (FIELD_EX32(value, I2CS_CMD, W1_CTRL)) {
-+            bus->regs[R_I2CS_CMD] |= value;
-+        } else {
-+            bus->regs[R_I2CS_CMD] = value;
-+        }
-+        i2c_slave_set_address(bus->slave, bus->regs[R_I2CS_DEV_ADDR]);
-+        break;
-     case A_I2CS_INTR_CTRL:
-+        bus->regs[R_I2CS_INTR_CTRL] = value;
-+        break;
-+
-     case A_I2CS_INTR_STS:
--    case A_I2CS_CMD:
--    case A_I2CS_DMA_LEN:
--        qemu_log_mask(LOG_UNIMP, "%s: Slave mode is not implemented\n",
-+        if (ARRAY_FIELD_EX32(bus->regs, I2CS_INTR_CTRL, PKT_CMD_DONE)) {
-+            if (ARRAY_FIELD_EX32(bus->regs, I2CS_INTR_STS, PKT_CMD_DONE) &&
-+                FIELD_EX32(value, I2CS_INTR_STS, PKT_CMD_DONE)) {
-+                bus->regs[R_I2CS_INTR_STS] &= 0xfffc0000;
-+            }
-+        } else {
-+            bus->regs[R_I2CS_INTR_STS] &= ~value;
-+        }
-+        if (!bus->regs[R_I2CS_INTR_STS]) {
-+            bus->controller->intr_status &= ~(1 << bus->id);
-+            qemu_irq_lower(aic->bus_get_irq(bus));
-+        }
-+        aspeed_i2c_bus_raise_interrupt(bus);
-+        break;
-+    case A_I2CS_DMA_LEN_STS:
-+        bus->regs[R_I2CS_DMA_LEN_STS] = 0;
-+        break;
-+    case A_I2CS_DMA_TX_ADDR:
-+        qemu_log_mask(LOG_UNIMP, "%s: Slave mode DMA TX is not implemented\n",
-                       __func__);
-         break;
-     default:
-@@ -1037,6 +1092,39 @@ static const TypeInfo aspeed_i2c_info = {
-     .abstract   = true,
- };
  
-+static int aspeed_i2c_bus_new_slave_event(AspeedI2CBus *bus,
-+                                          enum i2c_event event)
-+{
-+    switch (event) {
-+    case I2C_START_SEND_ASYNC:
-+        if (!SHARED_ARRAY_FIELD_EX32(bus->regs, R_I2CS_CMD, RX_DMA_EN)) {
-+            qemu_log_mask(LOG_GUEST_ERROR,
-+                          "%s: Slave mode RX DMA is not enabled\n", __func__);
-+            return -1;
-+        }
-+        ARRAY_FIELD_DP32(bus->regs, I2CS_DMA_LEN_STS, RX_LEN, 0);
-+        bus->regs[R_I2CC_DMA_ADDR] =
-+            ARRAY_FIELD_EX32(bus->regs, I2CS_DMA_RX_ADDR, ADDR);
-+        bus->regs[R_I2CC_DMA_LEN] =
-+            ARRAY_FIELD_EX32(bus->regs, I2CS_DMA_LEN, RX_BUF_LEN) + 1;
-+        i2c_ack(bus->bus);
++    case PMBUS_IC_DEVICE_ID:
++        pmbus_send(pmdev, pmdev->pages[index].ic_device_id,
++                   sizeof(pmdev->pages[index].ic_device_id));
 +        break;
-+    case I2C_FINISH:
-+        ARRAY_FIELD_DP32(bus->regs, I2CS_INTR_STS, PKT_CMD_DONE, 1);
-+        ARRAY_FIELD_DP32(bus->regs, I2CS_INTR_STS, SLAVE_ADDR_RX_MATCH, 1);
-+        SHARED_ARRAY_FIELD_DP32(bus->regs, R_I2CS_INTR_STS, NORMAL_STOP, 1);
-+        SHARED_ARRAY_FIELD_DP32(bus->regs, R_I2CS_INTR_STS, RX_DONE, 1);
-+        aspeed_i2c_bus_raise_slave_interrupt(bus);
-+        break;
-+    default:
-+        qemu_log_mask(LOG_UNIMP, "%s: i2c event %d unimplemented\n",
-+                      __func__, event);
-+        return -1;
-+    }
 +
-+    return 0;
-+}
-+
- static int aspeed_i2c_bus_slave_event(I2CSlave *slave, enum i2c_event event)
- {
-     BusState *qbus = qdev_get_parent_bus(DEVICE(slave));
-@@ -1045,6 +1133,10 @@ static int aspeed_i2c_bus_slave_event(I2CSlave *slave, enum i2c_event event)
-     uint32_t reg_byte_buf = aspeed_i2c_bus_byte_buf_offset(bus);
-     uint32_t value;
- 
-+    if (aspeed_i2c_is_new_mode(bus->controller)) {
-+        return aspeed_i2c_bus_new_slave_event(bus, event);
-+    }
-+
-     switch (event) {
-     case I2C_START_SEND_ASYNC:
-         value = SHARED_ARRAY_FIELD_EX32(bus->regs, reg_byte_buf, TX_BUF);
-@@ -1073,6 +1165,19 @@ static int aspeed_i2c_bus_slave_event(I2CSlave *slave, enum i2c_event event)
-     return 0;
+     case PMBUS_CLEAR_FAULTS:              /* Send Byte */
+     case PMBUS_PAGE_PLUS_WRITE:           /* Block Write-only */
+     case PMBUS_STORE_DEFAULT_ALL:         /* Send Byte */
+diff --git a/hw/sensor/isl_pmbus_vr.c b/hw/sensor/isl_pmbus_vr.c
+index e11e028884..b12c46ab6d 100644
+--- a/hw/sensor/isl_pmbus_vr.c
++++ b/hw/sensor/isl_pmbus_vr.c
+@@ -218,6 +218,28 @@ static void isl_pmbus_vr_class_init(ObjectClass *klass, void *data,
+     k->device_num_pages = pages;
  }
  
-+static void aspeed_i2c_bus_new_slave_send_async(AspeedI2CBus *bus, uint8_t data)
++static void isl69259_init(Object *obj)
 +{
-+    assert(address_space_write(&bus->controller->dram_as,
-+                               bus->regs[R_I2CC_DMA_ADDR],
-+                               MEMTXATTRS_UNSPECIFIED, &data, 1) == MEMTX_OK);
++    static const uint8_t ic_device_id[] = {0x04, 0x00, 0x81, 0xD2, 0x49};
++    PMBusDevice *pmdev = PMBUS_DEVICE(obj);
++    int i;
 +
-+    bus->regs[R_I2CC_DMA_ADDR]++;
-+    bus->regs[R_I2CC_DMA_LEN]--;
-+    ARRAY_FIELD_DP32(bus->regs, I2CS_DMA_LEN_STS, RX_LEN,
-+                     ARRAY_FIELD_EX32(bus->regs, I2CS_DMA_LEN_STS, RX_LEN) + 1);
-+    i2c_ack(bus->bus);
++    raa22xx_init(obj);
++    for (i = 0; i < pmdev->num_pages; i++) {
++        memcpy(pmdev->pages[i].ic_device_id, ic_device_id,
++               sizeof(ic_device_id));
++    }
 +}
 +
- static void aspeed_i2c_bus_slave_send_async(I2CSlave *slave, uint8_t data)
- {
-     BusState *qbus = qdev_get_parent_bus(DEVICE(slave));
-@@ -1080,6 +1185,10 @@ static void aspeed_i2c_bus_slave_send_async(I2CSlave *slave, uint8_t data)
-     uint32_t reg_intr_sts = aspeed_i2c_bus_intr_sts_offset(bus);
-     uint32_t reg_byte_buf = aspeed_i2c_bus_byte_buf_offset(bus);
- 
-+    if (aspeed_i2c_is_new_mode(bus->controller)) {
-+        return aspeed_i2c_bus_new_slave_send_async(bus, data);
-+    }
++static void isl69259_class_init(ObjectClass *klass, void *data)
++{
++    ResettableClass *rc = RESETTABLE_CLASS(klass);
++    DeviceClass *dc = DEVICE_CLASS(klass);
++    dc->desc = "Renesas ISL69259 Digital Multiphase Voltage Regulator";
++    rc->phases.exit = isl_pmbus_vr_exit_reset;
++    isl_pmbus_vr_class_init(klass, data, 2);
++}
 +
-     SHARED_ARRAY_FIELD_DP32(bus->regs, reg_byte_buf, RX_BUF, data);
-     SHARED_ARRAY_FIELD_DP32(bus->regs, reg_intr_sts, RX_DONE, 1);
+ static void isl69260_class_init(ObjectClass *klass, void *data)
+ {
+     ResettableClass *rc = RESETTABLE_CLASS(klass);
+@@ -245,6 +267,14 @@ static void raa229004_class_init(ObjectClass *klass, void *data)
+     isl_pmbus_vr_class_init(klass, data, 2);
+ }
  
-diff --git a/include/hw/i2c/aspeed_i2c.h b/include/hw/i2c/aspeed_i2c.h
-index ba148b2f6d..300a89b343 100644
---- a/include/hw/i2c/aspeed_i2c.h
-+++ b/include/hw/i2c/aspeed_i2c.h
-@@ -174,6 +174,8 @@ REG32(I2CM_DMA_LEN, 0x1c)
-     FIELD(I2CM_DMA_LEN, TX_BUF_LEN_W1T, 15, 1)
-     FIELD(I2CM_DMA_LEN, TX_BUF_LEN, 0, 11)
- REG32(I2CS_INTR_CTRL, 0x20)
-+    FIELD(I2CS_INTR_CTRL, PKT_CMD_FAIL, 17, 1)
-+    FIELD(I2CS_INTR_CTRL, PKT_CMD_DONE, 16, 1)
- REG32(I2CS_INTR_STS, 0x24)
-     /* 31:29 shared with I2CD_INTR_STS[31:29] */
-     FIELD(I2CS_INTR_STS, SLAVE_PARKING_STS, 24, 2)
-@@ -184,6 +186,7 @@ REG32(I2CS_INTR_STS, 0x24)
-     FIELD(I2CS_INTR_STS, PKT_CMD_FAIL, 17, 1)
-     FIELD(I2CS_INTR_STS, PKT_CMD_DONE, 16, 1)
-     /* 14:0 shared with I2CD_INTR_STS[14:0] */
-+    FIELD(I2CS_INTR_STS, SLAVE_ADDR_RX_MATCH, 7, 1)
- REG32(I2CS_CMD, 0x28)
-     FIELD(I2CS_CMD, W1_CTRL, 31, 1)
-     FIELD(I2CS_CMD, PKT_MODE_ACTIVE_ADDR, 17, 2)
++static const TypeInfo isl69259_info = {
++    .name = TYPE_ISL69259,
++    .parent = TYPE_PMBUS_DEVICE,
++    .instance_size = sizeof(ISLState),
++    .instance_init = isl69259_init,
++    .class_init = isl69259_class_init,
++};
++
+ static const TypeInfo isl69260_info = {
+     .name = TYPE_ISL69260,
+     .parent = TYPE_PMBUS_DEVICE,
+@@ -271,6 +301,7 @@ static const TypeInfo raa228000_info = {
+ 
+ static void isl_pmbus_vr_register_types(void)
+ {
++    type_register_static(&isl69259_info);
+     type_register_static(&isl69260_info);
+     type_register_static(&raa228000_info);
+     type_register_static(&raa229004_info);
+diff --git a/include/hw/i2c/pmbus_device.h b/include/hw/i2c/pmbus_device.h
+index 0f4d6b3fad..aed7809841 100644
+--- a/include/hw/i2c/pmbus_device.h
++++ b/include/hw/i2c/pmbus_device.h
+@@ -407,6 +407,7 @@ typedef struct PMBusPage {
+     uint16_t mfr_max_temp_1;           /* R/W word */
+     uint16_t mfr_max_temp_2;           /* R/W word */
+     uint16_t mfr_max_temp_3;           /* R/W word */
++    uint8_t ic_device_id[16];          /* Read-Only block-read */
+ } PMBusPage;
+ 
+ /* State */
+diff --git a/include/hw/sensor/isl_pmbus_vr.h b/include/hw/sensor/isl_pmbus_vr.h
+index 3e47ff7e48..d501b3bc82 100644
+--- a/include/hw/sensor/isl_pmbus_vr.h
++++ b/include/hw/sensor/isl_pmbus_vr.h
+@@ -12,6 +12,7 @@
+ #include "hw/i2c/pmbus_device.h"
+ #include "qom/object.h"
+ 
++#define TYPE_ISL69259   "isl69259"
+ #define TYPE_ISL69260   "isl69260"
+ #define TYPE_RAA228000  "raa228000"
+ #define TYPE_RAA229004  "raa229004"
 -- 
 2.30.2
 

@@ -1,105 +1,100 @@
-Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp656191lft;
-        Wed, 29 Jun 2022 11:07:40 -0700 (PDT)
-X-Google-Smtp-Source: AGRyM1sMNpd/q2FwPw0dBl8DCxio7uHWBsvslpz///CfhufGjvvcDs5jPhT23NtFsg7P4v7w9lX8
-X-Received: by 2002:ac8:5d49:0:b0:31d:270f:7fc5 with SMTP id g9-20020ac85d49000000b0031d270f7fc5mr2664432qtx.151.1656526060716;
-        Wed, 29 Jun 2022 11:07:40 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1656526060; cv=none;
+Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp603900lft;
+        Wed, 29 Jun 2022 09:48:24 -0700 (PDT)
+X-Google-Smtp-Source: AGRyM1vP+U2v2KzniQgzzafQXSoLFtZwz8Y2EwPKaM3VUFccFL05OXUhSO6/6PDHYfVSNNWK7H1O
+X-Received: by 2002:a05:6214:2629:b0:470:94f1:49f3 with SMTP id gv9-20020a056214262900b0047094f149f3mr7442095qvb.6.1656521304619;
+        Wed, 29 Jun 2022 09:48:24 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1656521304; cv=none;
         d=google.com; s=arc-20160816;
-        b=kN1N7BWFdutf/m9ipd1v6nroAnuIQlP+yCIcjpMJG28sjkHgJFBerC/3k6xL4Me0RD
-         V+9Uw5sf75X5lnAw9vKM2AvMajMfK9Mx4xAoR6d2cuAPWgzywJoX+ELheW/jfhJQjsfw
-         BUoFERcwWTKggwQcXtlz9007RUgOvKOGg9PBCwdZTVVsFf6qS8dxm6dS8dtG2ffgZGox
-         GsrPn+gqsz9gjknGbWWY84ft0s2PxobP22DnNmX7TKDGtsRAb6lfxnCDIQFyTv++oYl/
-         i6Qg2jlMqL0ZFmmEyiK0nKhuH+qERADb9JQZPQHhBt5+pWTmeHPKO1dL2UwAeYPRwPKR
-         yDZw==
+        b=hxjKtHP7pNQ2ePni09anE1bOGg1Kc3Xh9aMtDSLPtE5CeFyUNBONm9lJkBnMJz10At
+         cg0q6UM/n9ik7OFRT48kZzHW13+wCWRLlJBQQ8CJrGTb6+taMsL70TGL1HMqnZ7sqgda
+         wZv6CWivBYEOXlU/hIb8fFfzozGCRpsF/q10XegDWn7YOysAw9awN1Mun/iXxq1UBTjp
+         NjTL8C/vQmq+pXHjOlbsZNkk3PGVHDqKyTVmJslkciuaIMxz+fK1CSziE+zfHB7DhZVI
+         a6ZCMMxhAZcJYKnEmSxpF9Q7GR4kBYXC6NoxPKyjjES21ZKAMV12T0CfG8bdtyITLrHO
+         wAOA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=+R8M0154sNEv9TGtb4HMBK2bwYjnHt1Fh49zIt19pLI=;
-        b=Lu04VsEmyFutSYsA04CUIGUxc1hVXdaq/eKlt2sbl1dobBnek5vBGQBIO9tjF+APAS
-         ZJpZ+ynlmbcJ96/wVlu0GJ4GAmsMcV9UfGL039kCTjyzD0NQDxu3i4sBG0IoUMCHk6Og
-         zjwr9zv8+GMSwagX0lnQcYK4P0AKJrY4Ixnt5QFwF8+SVuup8VkCz2/hIVm/+lQYpeNk
-         lh+yTAyegy36w2GWiFvKgFaGC66irhAt2d8MnyY00CIKfHUbDL6ffTz6NF24SRgUUhWg
-         FKjrqNE4zDUB/dVvUIvICfdugFfla9Flf5Fy+Ydwyxls9aUPGrksgfSq3h6e2OoGekMQ
-         msIA==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:references:cc:to:content-language:subject
+         :user-agent:mime-version:date:message-id;
+        bh=MbduRA0cnG+aw4chzTP8fhTrmQf5xQlUEgsLLphok+0=;
+        b=uhS/JtOGvn/xXBBiNf73AsMoAhbvvBfED/rKxYD8GnCrEGyGbxTRzuSETgntgEKwKk
+         fauWVqt60X0pm8OYI6AvnQ1BlfWUmvzn3wOatziRn+gqrTM7Vc1/N7AaOBYLgPJDk1ry
+         uokW8uRJ+g3iZM3+xw5HuOyB6HchTE8lEgUGXRdMRMieu7EoywgWEC5HH6I8XQS/8PpP
+         JPsdWMPj06oN68Gh+6fWJoTzBLKt3TFt24h4RZJjFvdAa+SD0G6Ii3IDfREWEsKbDuX2
+         Tq1tVDLc3RCyFik3ZR3V8YHVhH4sHcU6ADwr6eDnXMzGZoUOz3h/WsLtOkACnD+XVoAE
+         UCTw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@google.com header.s=20210112 header.b=TSnKvl6d;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x15-20020a05620a258f00b006a6d28f482esi11149094qko.738.2022.06.29.11.07.40
+        by mx.google.com with ESMTPS id b129-20020a376787000000b006a36692e841si9619112qkc.495.2022.06.29.09.48.24
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 29 Jun 2022 11:07:40 -0700 (PDT)
+        Wed, 29 Jun 2022 09:48:24 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@google.com header.s=20210112 header.b=TSnKvl6d;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
-Received: from localhost ([::1]:57880 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:33132 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1o6c6F-0005hE-Uo
-	for alex.bennee@linaro.org; Wed, 29 Jun 2022 14:07:40 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44968)
+	id 1o6arX-0005qH-WC
+	for alex.bennee@linaro.org; Wed, 29 Jun 2022 12:48:24 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53956)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <titusr@google.com>) id 1o6c40-00042y-LP
- for qemu-arm@nongnu.org; Wed, 29 Jun 2022 14:05:21 -0400
-Received: from mail-ej1-x62e.google.com ([2a00:1450:4864:20::62e]:33737)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <titusr@google.com>) id 1o6c3y-0003VA-SS
- for qemu-arm@nongnu.org; Wed, 29 Jun 2022 14:05:20 -0400
-Received: by mail-ej1-x62e.google.com with SMTP id mf9so34264287ejb.0
- for <qemu-arm@nongnu.org>; Wed, 29 Jun 2022 11:05:17 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20210112;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=+R8M0154sNEv9TGtb4HMBK2bwYjnHt1Fh49zIt19pLI=;
- b=TSnKvl6dFsttkMt0Ui6Po/r2Jh+MZ0NBRapzz+gL2z+VKnnKdJf7cXwKqEvl2urvmD
- tITLgVWgdngd6sAISAemU7mYBnq6znhL8fI85YRClenuTYW4vilxHR5SOzUkh1UtbQ7n
- M3nWNhVvNQmbKpWs2EayCdMTvQ5FjVdZV/7HKejmmJFCo7DhZ2KZswH8TI97ywGXzrmx
- 1IKzeNq9N5wye6arreO1TeuHnvwPLf4Sky949SaPdAzFBH9TwpiwSdjewuuNFMYvMldi
- X7XlUkl6sDwH3XJbVwhmqYMbccg87f7ZUP7f02qytW7FgLeP5WGrx+FPdMLcDerWFi4L
- lxmg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=+R8M0154sNEv9TGtb4HMBK2bwYjnHt1Fh49zIt19pLI=;
- b=xW1xODdsoMclRDrhgqThQz8nmwp4C/gJypjxa6ulUqF8mQjgKdbpXaZDU0DdSxL35c
- LUeZaLBQhufUOwKHtAV0unI8uaoL6betQp+P5emjjASdHfvxdyufDw9svwcuNaXWctIF
- YEwNVhdp66I+/oXwNSmeAsegW98lYtsODEYOiuDhlMyoRRnhpUhsD0CFgBsz0tkYQpXd
- bdry3jB23bwQ9WyneE4iiCaQSpQMHHrrRHeOuWC8YnO1Dyr1JGstxcDi7prCblV0z6Gq
- OAHh/tLXSj8F4uAjoSyKFZgiezwI1n2xCwSNvVCUOFbCzUMnAr1++xiRVA5X+9p9F+xt
- OujA==
-X-Gm-Message-State: AJIora8tRE3JC8d9fNHRPYDNTifZdRzIrf+mLWFBsh5w59jAcUGNYPr6
- SsBpqoNUmHg6kkXqAO4ZWxi4aqU2cDnheogGlvaUdA==
-X-Received: by 2002:a17:906:830c:b0:726:a68b:d1bc with SMTP id
- j12-20020a170906830c00b00726a68bd1bcmr4671569ejx.305.1656525915962; Wed, 29
- Jun 2022 11:05:15 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1o6anr-0002oK-4Y
+ for qemu-arm@nongnu.org; Wed, 29 Jun 2022 12:44:36 -0400
+Received: from 1.mo552.mail-out.ovh.net ([178.32.96.117]:42273)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1o6anm-000839-TW
+ for qemu-arm@nongnu.org; Wed, 29 Jun 2022 12:44:34 -0400
+Received: from mxplan5.mail.ovh.net (unknown [10.109.143.134])
+ by mo552.mail-out.ovh.net (Postfix) with ESMTPS id D3CC323E06;
+ Wed, 29 Jun 2022 16:44:26 +0000 (UTC)
+Received: from kaod.org (37.59.142.103) by DAG4EX1.mxp5.local (172.16.2.31)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.9; Wed, 29 Jun
+ 2022 18:44:25 +0200
+Authentication-Results: garm.ovh; auth=pass
+ (GARM-103G0056b50cf2b-3de8-4331-b950-18a4272b45aa,
+ 74A1F81DE4F8936248B5873BB0AED4007818FEC6) smtp.auth=clg@kaod.org
+X-OVh-ClientIp: 82.64.250.170
+Message-ID: <5c8c6119-519b-41af-9574-a1f248a62928@kaod.org>
+Date: Wed, 29 Jun 2022 18:44:21 +0200
 MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.9.0
+Subject: Re: [PATCH v2 10/13] hw/misc/aspeed: Add PECI controller
+Content-Language: en-US
+To: Peter Delevoryas <pdel@fb.com>
+CC: Peter Delevoryas <peterdelevoryas@gmail.com>, Peter Maydell
+ <peter.maydell@linaro.org>, Andrew Jeffery <andrew@aj.id.au>, Joel Stanley
+ <joel@jms.id.au>, Corey Minyard <cminyard@mvista.com>, "titusr@google.com"
+ <titusr@google.com>, Cameron Esfahani via <qemu-devel@nongnu.org>, qemu-arm
+ <qemu-arm@nongnu.org>, Dan Zhang <zhdaniel@fb.com>
 References: <20220629033634.3850922-1-pdel@fb.com>
- <20220629033634.3850922-10-pdel@fb.com>
-In-Reply-To: <20220629033634.3850922-10-pdel@fb.com>
-From: Titus Rwantare <titusr@google.com>
-Date: Wed, 29 Jun 2022 11:04:39 -0700
-Message-ID: <CAMvPwGqmU+bsDb1fHraiTzdg14An5QiKUazSweyzVvbwHeCM=g@mail.gmail.com>
-Subject: Re: [PATCH v2 09/13] hw/i2c/pmbus: Add read-only IC_DEVICE_ID support
-To: Peter Delevoryas <peterdelevoryas@gmail.com>
-Cc: clg@kaod.org, peter.maydell@linaro.org, andrew@aj.id.au, joel@jms.id.au, 
- cminyard@mvista.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org, 
- zhdaniel@fb.com, pdel@fb.com
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::62e;
- envelope-from=titusr@google.com; helo=mail-ej1-x62e.google.com
-X-Spam_score_int: -175
-X-Spam_score: -17.6
-X-Spam_bar: -----------------
-X-Spam_report: (-17.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- ENV_AND_HDR_SPF_MATCH=-0.5, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01, USER_IN_DEF_DKIM_WL=-7.5,
- USER_IN_DEF_SPF_WL=-7.5 autolearn=ham autolearn_force=no
+ <20220629033634.3850922-11-pdel@fb.com>
+ <caad8a3e-3a15-07d6-5da8-95651d33859a@kaod.org>
+ <6D46CC22-EC67-4BF9-9B10-8660BD49393B@fb.com>
+From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
+In-Reply-To: <6D46CC22-EC67-4BF9-9B10-8660BD49393B@fb.com>
+Content-Type: text/plain; charset="UTF-8"; format=flowed
+Content-Transfer-Encoding: 8bit
+X-Originating-IP: [37.59.142.103]
+X-ClientProxiedBy: DAG9EX2.mxp5.local (172.16.2.82) To DAG4EX1.mxp5.local
+ (172.16.2.31)
+X-Ovh-Tracer-GUID: 56be60ee-5460-4369-809e-5a876f141e8c
+X-Ovh-Tracer-Id: 9325265978843958194
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvfedrudegledguddtgecutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemucehtddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpefkffggfgfuvfevfhfhjggtgfhisehtkeertddtfeejnecuhfhrohhmpeevrogurhhitggpnfgvpgfiohgrthgvrhcuoegtlhhgsehkrghougdrohhrgheqnecuggftrfgrthhtvghrnhepfeekfeejvedthfevueetteduleejfeejtdeugfevjedtuedttdefieeuueduudetnecuffhomhgrihhnpehmvghtrgdrtghomhenucfkpheptddrtddrtddrtddpfeejrdehledrudegvddruddtfeenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhhouggvpehsmhhtphhouhhtpdhhvghlohepmhigphhlrghnhedrmhgrihhlrdhovhhhrdhnvghtpdhinhgvtheptddrtddrtddrtddpmhgrihhlfhhrohhmpegtlhhgsehkrghougdrohhrghdpnhgspghrtghpthhtohepuddprhgtphhtthhopeiihhgurghnihgvlhesfhgsrdgtohhmpdfovfetjfhoshhtpehmohehhedv
+Received-SPF: pass client-ip=178.32.96.117; envelope-from=clg@kaod.org;
+ helo=1.mo552.mail-out.ovh.net
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -114,78 +109,465 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: YqQ1V9VTWCsx
+X-TUID: stUM8VsudcqQ
 
-On Tue, 28 Jun 2022 at 20:36, Peter Delevoryas
-<peterdelevoryas@gmail.com> wrote:
->
-> Signed-off-by: Peter Delevoryas <pdel@fb.com>
-> ---
+On 6/29/22 18:07, Peter Delevoryas wrote:
+> 
+> 
+>> On Jun 29, 2022, at 2:20 AM, Cédric Le Goater <clg@kaod.org> wrote:
+>>
+>> On 6/29/22 05:36, Peter Delevoryas wrote:
+>>> This introduces a really basic PECI controller that responses to
+>>> commands by always setting the response code to success and then raising
+>>> an interrupt to indicate the command is done. This helps avoid getting
+>>> hit with constant errors if the driver continuously attempts to send a
+>>> command and keeps timing out.
+>>> The AST2400 and AST2500 only included registers up to 0x5C, not 0xFC.
+>>> They supported PECI 1.1, 2.0, and 3.0. The AST2600 and AST1030 support
+>>> PECI 4.0, which includes more read/write buffer registers from 0x80 to
+>>> 0xFC to support 64-byte mode.
+>>> This patch doesn't attempt to handle that, or to create a different
+>>> version of the controller for the different generations, since it's only
+>>> implementing functionality that is common to all generations.
+>>> The basic sequence of events is that the firmware will read and write to
+>>> various registers and then trigger a command by setting the FIRE bit in
+>>> the command register (similar to the I2C controller).
+>>> Then the firmware waits for an interrupt from the PECI controller,
+>>> expecting the interrupt status register to be filled in with info on
+>>> what happened. If the command was transmitted and received successfully,
+>>> then response codes from the host CPU will be found in the data buffer
+>>> registers.
+>>> Signed-off-by: Peter Delevoryas <pdel@fb.com>
+>>
+>>
+>> LGTM. A few small comments below.
+>>
+>>
+>>> ---
+>>>   hw/arm/aspeed_ast10x0.c       |  12 +++
+>>>   hw/arm/aspeed_ast2600.c       |  12 +++
+>>>   hw/arm/aspeed_soc.c           |  13 ++++
+>>>   hw/misc/aspeed_peci.c         | 136 ++++++++++++++++++++++++++++++++++
+>>>   hw/misc/meson.build           |   3 +-
+>>>   hw/misc/trace-events          |   4 +
+>>>   include/hw/arm/aspeed_soc.h   |   3 +
+>>>   include/hw/misc/aspeed_peci.h |  47 ++++++++++++
+>>>   8 files changed, 229 insertions(+), 1 deletion(-)
+>>>   create mode 100644 hw/misc/aspeed_peci.c
+>>>   create mode 100644 include/hw/misc/aspeed_peci.h
+>>> diff --git a/hw/arm/aspeed_ast10x0.c b/hw/arm/aspeed_ast10x0.c
+>>> index 5df480a21f..56e8de3d89 100644
+>>> --- a/hw/arm/aspeed_ast10x0.c
+>>> +++ b/hw/arm/aspeed_ast10x0.c
+>>> @@ -47,6 +47,7 @@ static const hwaddr aspeed_soc_ast1030_memmap[] = {
+>>>       [ASPEED_DEV_UART13]    = 0x7E790700,
+>>>       [ASPEED_DEV_WDT]       = 0x7E785000,
+>>>       [ASPEED_DEV_LPC]       = 0x7E789000,
+>>> +    [ASPEED_DEV_PECI]      = 0x7E78B000,
+>>>       [ASPEED_DEV_I2C]       = 0x7E7B0000,
+>>>   };
+>>>   @@ -75,6 +76,7 @@ static const int aspeed_soc_ast1030_irqmap[] = {
+>>>       [ASPEED_DEV_TIMER8]    = 23,
+>>>       [ASPEED_DEV_WDT]       = 24,
+>>>       [ASPEED_DEV_LPC]       = 35,
+>>> +    [ASPEED_DEV_PECI]      = 38,
+>>>       [ASPEED_DEV_FMC]       = 39,
+>>>       [ASPEED_DEV_PWM]       = 44,
+>>>       [ASPEED_DEV_ADC]       = 46,
+>>> @@ -133,6 +135,8 @@ static void aspeed_soc_ast1030_init(Object *obj)
+>>>         object_initialize_child(obj, "lpc", &s->lpc, TYPE_ASPEED_LPC);
+>>>   +    object_initialize_child(obj, "peci", &s->peci, TYPE_ASPEED_PECI);
+>>> +
+>>>       object_initialize_child(obj, "sbc", &s->sbc, TYPE_ASPEED_SBC);
+>>>         for (i = 0; i < sc->wdts_num; i++) {
+>>> @@ -206,6 +210,14 @@ static void aspeed_soc_ast1030_realize(DeviceState *dev_soc, Error **errp)
+>>>           sysbus_connect_irq(SYS_BUS_DEVICE(&s->i2c.busses[i]), 0, irq);
+>>>       }
+>>>   +    /* PECI */
+>>> +    if (!sysbus_realize(SYS_BUS_DEVICE(&s->peci), errp)) {
+>>> +        return;
+>>> +    }
+>>> +    sysbus_mmio_map(SYS_BUS_DEVICE(&s->peci), 0, sc->memmap[ASPEED_DEV_PECI]);
+>>> +    sysbus_connect_irq(SYS_BUS_DEVICE(&s->peci), 0,
+>>> +                       aspeed_soc_get_irq(s, ASPEED_DEV_PECI));
+>>> +
+>>>       /* LPC */
+>>>       if (!sysbus_realize(SYS_BUS_DEVICE(&s->lpc), errp)) {
+>>>           return;
+>>> diff --git a/hw/arm/aspeed_ast2600.c b/hw/arm/aspeed_ast2600.c
+>>> index b0a4199b69..85178fabea 100644
+>>> --- a/hw/arm/aspeed_ast2600.c
+>>> +++ b/hw/arm/aspeed_ast2600.c
+>>> @@ -59,6 +59,7 @@ static const hwaddr aspeed_soc_ast2600_memmap[] = {
+>>>       [ASPEED_DEV_LPC]       = 0x1E789000,
+>>>       [ASPEED_DEV_IBT]       = 0x1E789140,
+>>>       [ASPEED_DEV_I2C]       = 0x1E78A000,
+>>> +    [ASPEED_DEV_PECI]      = 0x1E78B000,
+>>>       [ASPEED_DEV_UART1]     = 0x1E783000,
+>>>       [ASPEED_DEV_UART2]     = 0x1E78D000,
+>>>       [ASPEED_DEV_UART3]     = 0x1E78E000,
+>>> @@ -122,6 +123,7 @@ static const int aspeed_soc_ast2600_irqmap[] = {
+>>>       [ASPEED_DEV_LPC]       = 35,
+>>>       [ASPEED_DEV_IBT]       = 143,
+>>>       [ASPEED_DEV_I2C]       = 110,   /* 110 -> 125 */
+>>> +    [ASPEED_DEV_PECI]      = 38,
+>>>       [ASPEED_DEV_ETH1]      = 2,
+>>>       [ASPEED_DEV_ETH2]      = 3,
+>>>       [ASPEED_DEV_HACE]      = 4,
+>>> @@ -180,6 +182,8 @@ static void aspeed_soc_ast2600_init(Object *obj)
+>>>       snprintf(typename, sizeof(typename), "aspeed.i2c-%s", socname);
+>>>       object_initialize_child(obj, "i2c", &s->i2c, typename);
+>>>   +    object_initialize_child(obj, "peci", &s->peci, TYPE_ASPEED_PECI);
+>>> +
+>>>       snprintf(typename, sizeof(typename), "aspeed.fmc-%s", socname);
+>>>       object_initialize_child(obj, "fmc", &s->fmc, typename);
+>>>   @@ -388,6 +392,14 @@ static void aspeed_soc_ast2600_realize(DeviceState *dev, Error **errp)
+>>>           sysbus_connect_irq(SYS_BUS_DEVICE(&s->i2c.busses[i]), 0, irq);
+>>>       }
+>>>   +    /* PECI */
+>>> +    if (!sysbus_realize(SYS_BUS_DEVICE(&s->peci), errp)) {
+>>> +        return;
+>>> +    }
+>>> +    sysbus_mmio_map(SYS_BUS_DEVICE(&s->peci), 0, sc->memmap[ASPEED_DEV_PECI]);
+>>> +    sysbus_connect_irq(SYS_BUS_DEVICE(&s->peci), 0,
+>>> +                       aspeed_soc_get_irq(s, ASPEED_DEV_PECI));
+>>> +
+>>>       /* FMC, The number of CS is set at the board level */
+>>>       object_property_set_link(OBJECT(&s->fmc), "dram", OBJECT(s->dram_mr),
+>>>                                &error_abort);
+>>> diff --git a/hw/arm/aspeed_soc.c b/hw/arm/aspeed_soc.c
+>>> index 30574d4276..cb78d9945c 100644
+>>> --- a/hw/arm/aspeed_soc.c
+>>> +++ b/hw/arm/aspeed_soc.c
+>>> @@ -45,6 +45,7 @@ static const hwaddr aspeed_soc_ast2400_memmap[] = {
+>>>       [ASPEED_DEV_LPC]    = 0x1E789000,
+>>>       [ASPEED_DEV_IBT]    = 0x1E789140,
+>>>       [ASPEED_DEV_I2C]    = 0x1E78A000,
+>>> +    [ASPEED_DEV_PECI]   = 0x1E78B000,
+>>>       [ASPEED_DEV_ETH1]   = 0x1E660000,
+>>>       [ASPEED_DEV_ETH2]   = 0x1E680000,
+>>>       [ASPEED_DEV_UART1]  = 0x1E783000,
+>>> @@ -80,6 +81,7 @@ static const hwaddr aspeed_soc_ast2500_memmap[] = {
+>>>       [ASPEED_DEV_LPC]    = 0x1E789000,
+>>>       [ASPEED_DEV_IBT]    = 0x1E789140,
+>>>       [ASPEED_DEV_I2C]    = 0x1E78A000,
+>>> +    [ASPEED_DEV_PECI]   = 0x1E78B000,
+>>>       [ASPEED_DEV_ETH1]   = 0x1E660000,
+>>>       [ASPEED_DEV_ETH2]   = 0x1E680000,
+>>>       [ASPEED_DEV_UART1]  = 0x1E783000,
+>>> @@ -118,6 +120,7 @@ static const int aspeed_soc_ast2400_irqmap[] = {
+>>>       [ASPEED_DEV_PWM]    = 28,
+>>>       [ASPEED_DEV_LPC]    = 8,
+>>>       [ASPEED_DEV_I2C]    = 12,
+>>> +    [ASPEED_DEV_PECI]   = 15,
+>>>       [ASPEED_DEV_ETH1]   = 2,
+>>>       [ASPEED_DEV_ETH2]   = 3,
+>>>       [ASPEED_DEV_XDMA]   = 6,
+>>> @@ -174,6 +177,8 @@ static void aspeed_soc_init(Object *obj)
+>>>       snprintf(typename, sizeof(typename), "aspeed.i2c-%s", socname);
+>>>       object_initialize_child(obj, "i2c", &s->i2c, typename);
+>>>   +    object_initialize_child(obj, "peci", &s->peci, TYPE_ASPEED_PECI);
+>>> +
+>>>       snprintf(typename, sizeof(typename), "aspeed.fmc-%s", socname);
+>>>       object_initialize_child(obj, "fmc", &s->fmc, typename);
+>>>   @@ -316,6 +321,14 @@ static void aspeed_soc_realize(DeviceState *dev, Error **errp)
+>>>       sysbus_connect_irq(SYS_BUS_DEVICE(&s->i2c), 0,
+>>>                          aspeed_soc_get_irq(s, ASPEED_DEV_I2C));
+>>>   +    /* PECI */
+>>> +    if (!sysbus_realize(SYS_BUS_DEVICE(&s->peci), errp)) {
+>>> +        return;
+>>> +    }
+>>> +    sysbus_mmio_map(SYS_BUS_DEVICE(&s->peci), 0, sc->memmap[ASPEED_DEV_PECI]);
+>>> +    sysbus_connect_irq(SYS_BUS_DEVICE(&s->peci), 0,
+>>> +                       aspeed_soc_get_irq(s, ASPEED_DEV_PECI));
+>>> +
+>>>       /* FMC, The number of CS is set at the board level */
+>>>       object_property_set_link(OBJECT(&s->fmc), "dram", OBJECT(s->dram_mr),
+>>>                                &error_abort);
+>>> diff --git a/hw/misc/aspeed_peci.c b/hw/misc/aspeed_peci.c
+>>> new file mode 100644
+>>> index 0000000000..91637e29b2
+>>> --- /dev/null
+>>> +++ b/hw/misc/aspeed_peci.c
+>>> @@ -0,0 +1,136 @@
+>>> +/*
+>>> + * Aspeed PECI Controller
+>>> + *
+>>> + * Copyright (c) Meta Platforms, Inc. and affiliates. (http://www.meta.com)
+>>> + *
+>>> + * This code is licensed under the GPL version 2 or later. See the COPYING
+>>> + * file in the top-level directory.
+>>> + */
+>>> +
+>>> +#include "qemu/osdep.h"
+>>> +#include "qemu/log.h"
+>>> +#include "hw/irq.h"
+>>> +#include "hw/misc/aspeed_peci.h"
+>>> +#include "trace.h"
+>>> +
+>>> +static void aspeed_peci_raise_interrupt(AspeedPECIState *s, uint32_t status)
+>>> +{
+>>> +    s->regs[R_PECI_INT_STS] = s->regs[R_PECI_INT_CTRL] & status;
+>>> +    if (!s->regs[R_PECI_INT_STS]) {
+>>> +        qemu_log_mask(LOG_GUEST_ERROR,
+>>> +                      "%s: Interrupts disabled: ctrl 0x%08x sts 0x%08x\n",
+>>> +                      __func__, s->regs[R_PECI_INT_CTRL], status);
+>>> +        return;
+>>
+>> Why is it an error ? May be use a trace event instead.
+> 
+> Yeah, I’ll just use a trace event. I wanted to have an error log if the
+> guest OS triggers some interrupt path but doesn’t have any of the
+> interrupts enabled. But, that’s kind of assuming a lot, perhaps there’s
+> a code path that the guest OS purposefully disabled all of the interrupts.
+> 
+>>
+>>> +    }
+>>> +    qemu_irq_raise(s->irq);
+>>> +}
+>>> +
+>>> +static uint64_t aspeed_peci_read(void *opaque, hwaddr offset, unsigned size)
+>>> +{
+>>> +    AspeedPECIState *s = ASPEED_PECI(opaque);
+>>> +    uint64_t data;
+>>> +
+>>> +    if (offset >= ASPEED_PECI_NR_REGS << 2) {
+>>> +        qemu_log_mask(LOG_GUEST_ERROR,
+>>> +                      "%s: Out-of-bounds read at offset 0x%" HWADDR_PRIx "\n",
+>>> +                      __func__, offset);
+>>> +        return 0;
+>>> +    }
+>>> +    data = s->regs[offset / sizeof(s->regs[0])];
+>>
+>> That's a complex way to grab the register value. May be introduce :
+>>
+>>    int reg = offset >> 2;
+> 
+> Haha yes, this was a silly change, I had it as >> 2 originally,
+> I’ll change it back.
+> 
+>>
+>>
+>>> +
+>>> +    trace_aspeed_peci_read(offset, data);
+>>> +    return data;
+>>> +}
+>>> +
+>>> +static void aspeed_peci_write(void *opaque, hwaddr offset, uint64_t data,
+>>> +                              unsigned size)
+>>> +{
+>>> +    AspeedPECIState *s = ASPEED_PECI(opaque);
+>>> +
+>>> +    trace_aspeed_peci_write(offset, data);
+>>> +
+>>> +    if (offset >= ASPEED_PECI_NR_REGS << 2) {
+>>> +        qemu_log_mask(LOG_GUEST_ERROR,
+>>> +                      "%s: Out-of-bounds write at offset 0x%" HWADDR_PRIx "\n",
+>>> +                      __func__, offset);
+>>> +        return;
+>>> +    }
+>>> +
+>>> +    switch (offset) {
+>>> +    case A_PECI_INT_STS:
+>>> +        s->regs[R_PECI_INT_STS] &= ~data;
+>>> +        if (!s->regs[R_PECI_INT_STS]) {
+>>> +            qemu_irq_lower(s->irq);
+>>> +        }
+>>> +        break;
+>>> +    case A_PECI_CMD:
+>>> +        /*
+>>> +         * Only the FIRE bit is writable. Once the command is complete, it
+>>> +         * should be cleared. Since we complete the command immediately, the
+>>> +         * value is not stored in the register array.
+>>> +         */
+>>> +        if (!FIELD_EX32(data, PECI_CMD, FIRE)) {
+>>> +            break;
+>>> +        }
+>>> +        if (s->regs[R_PECI_INT_STS]) {
+>>> +            qemu_log_mask(LOG_GUEST_ERROR, "%s: Interrupt status must be "
+>>> +                          "cleared before firing another command: 0x%08x\n",
+>>> +                          __func__, s->regs[R_PECI_INT_STS]);
+>>> +            break;
+>>> +        }
+>>> +        s->regs[R_PECI_RD_DATA0] = ASPEED_PECI_CC_RSP_SUCCESS;
+>>> +        s->regs[R_PECI_WR_DATA0] = ASPEED_PECI_CC_RSP_SUCCESS;
+>>> +        aspeed_peci_raise_interrupt(s,
+>>> +                                    FIELD_DP32(0, PECI_INT_STS, CMD_DONE, 1));
+>>> +        qemu_irq_raise(s->irq);
+>>
+>> That's a lot of raise !
+> 
+> !!! I forgot to remove qemu_irq_raise when switching to the new function,
+> thanks for catching this.
+> 
+>>
+>>> +        break;
+>>> +    default:
+>>> +        s->regs[offset / sizeof(s->regs[0])] = data;
+>>> +        break;
+>>> +    }
+>>> +}
+>>> +
+>>> +static const MemoryRegionOps aspeed_peci_ops = {
+>>> +    .read = aspeed_peci_read,
+>>> +    .write = aspeed_peci_write,
+>>> +    .endianness = DEVICE_LITTLE_ENDIAN,
+>>> +};
+>>> +
+>>> +static void aspeed_peci_realize(DeviceState *dev, Error **errp)
+>>> +{
+>>> +    AspeedPECIState *s = ASPEED_PECI(dev);
+>>> +    SysBusDevice *sbd = SYS_BUS_DEVICE(dev);
+>>> +
+>>> +    memory_region_init_io(&s->mmio, OBJECT(s), &aspeed_peci_ops, s,
+>>> +                          TYPE_ASPEED_PECI, 0x1000);
+>>> +    sysbus_init_mmio(sbd, &s->mmio);
+>>> +    sysbus_init_irq(sbd, &s->irq);
+>>> +}
+>>> +
+>>> +static void aspeed_peci_reset(DeviceState *dev)
+>>> +{
+>>> +    AspeedPECIState *s = ASPEED_PECI(dev);
+>>> +
+>>> +    memset(s->regs, 0, sizeof(s->regs));
+>>> +}
+>>> +
+>>> +static void aspeed_peci_class_init(ObjectClass *klass, void *data)
+>>> +{
+>>> +    DeviceClass *dc = DEVICE_CLASS(klass);
+>>> +
+>>> +    dc->realize = aspeed_peci_realize;
+>>> +    dc->reset = aspeed_peci_reset;
+>>> +    dc->desc = "Aspeed PECI Controller";
+>>> +}
+>>> +
+>>> +static const TypeInfo aspeed_peci_types[] = {
+>>> +    {
+>>> +        .name = TYPE_ASPEED_PECI,
+>>> +        .parent = TYPE_SYS_BUS_DEVICE,
+>>> +        .instance_size = sizeof(AspeedPECIState),
+>>> +        .class_init = aspeed_peci_class_init,
+>>> +        .abstract = false,
+>>> +    },
+>>> +};
+>>> +
+>>> +DEFINE_TYPES(aspeed_peci_types);
+>>> diff --git a/hw/misc/meson.build b/hw/misc/meson.build
+>>> index 132b7b7344..95268eddc0 100644
+>>> --- a/hw/misc/meson.build
+>>> +++ b/hw/misc/meson.build
+>>> @@ -116,7 +116,8 @@ softmmu_ss.add(when: 'CONFIG_ASPEED_SOC', if_true: files(
+>>>     'aspeed_scu.c',
+>>>     'aspeed_sbc.c',
+>>>     'aspeed_sdmc.c',
+>>> -  'aspeed_xdma.c'))
+>>> +  'aspeed_xdma.c',
+>>> +  'aspeed_peci.c'))
+>>>     softmmu_ss.add(when: 'CONFIG_MSF2', if_true: files('msf2-sysreg.c'))
+>>>   softmmu_ss.add(when: 'CONFIG_NRF51_SOC', if_true: files('nrf51_rng.c'))
+>>> diff --git a/hw/misc/trace-events b/hw/misc/trace-events
+>>> index c5e37b0154..af0b9c5dbf 100644
+>>> --- a/hw/misc/trace-events
+>>> +++ b/hw/misc/trace-events
+>>> @@ -209,6 +209,10 @@ aspeed_i3c_device_write(uint32_t deviceid, uint64_t offset, uint64_t data) "I3C
+>>>   aspeed_sdmc_write(uint64_t reg, uint64_t data) "reg @0x%" PRIx64 " data: 0x%" PRIx64
+>>>   aspeed_sdmc_read(uint64_t reg, uint64_t data) "reg @0x%" PRIx64 " data: 0x%" PRIx64
+>>>   +# aspeed_peci.c
+>>> +aspeed_peci_read(uint64_t offset, uint64_t data) "offset 0x%" PRIx64 " data 0x%" PRIx64
+>>> +aspeed_peci_write(uint64_t offset, uint64_t data) "offset 0x%" PRIx64 " data 0x%" PRIx64
+>>> +
+>>>   # bcm2835_property.c
+>>>   bcm2835_mbox_property(uint32_t tag, uint32_t bufsize, size_t resplen) "mbox property tag:0x%08x in_sz:%u out_sz:%zu"
+>>>   diff --git a/include/hw/arm/aspeed_soc.h b/include/hw/arm/aspeed_soc.h
+>>> index 02a5a9ffcb..f72a8db50b 100644
+>>> --- a/include/hw/arm/aspeed_soc.h
+>>> +++ b/include/hw/arm/aspeed_soc.h
+>>> @@ -34,6 +34,7 @@
+>>>   #include "hw/usb/hcd-ehci.h"
+>>>   #include "qom/object.h"
+>>>   #include "hw/misc/aspeed_lpc.h"
+>>> +#include "hw/misc/aspeed_peci.h"
+>>>     #define ASPEED_SPIS_NUM  2
+>>>   #define ASPEED_EHCIS_NUM 2
+>>> @@ -73,6 +74,7 @@ struct AspeedSoCState {
+>>>       AspeedSDHCIState sdhci;
+>>>       AspeedSDHCIState emmc;
+>>>       AspeedLPCState lpc;
+>>> +    AspeedPECIState peci;
+>>>       uint32_t uart_default;
+>>>       Clock *sysclk;
+>>>   };
+>>> @@ -145,6 +147,7 @@ enum {
+>>>       ASPEED_DEV_LPC,
+>>>       ASPEED_DEV_IBT,
+>>>       ASPEED_DEV_I2C,
+>>> +    ASPEED_DEV_PECI,
+>>>       ASPEED_DEV_ETH1,
+>>>       ASPEED_DEV_ETH2,
+>>>       ASPEED_DEV_ETH3,
+>>> diff --git a/include/hw/misc/aspeed_peci.h b/include/hw/misc/aspeed_peci.h
+>>> new file mode 100644
+>>> index 0000000000..8746f93ad7
+>>> --- /dev/null
+>>> +++ b/include/hw/misc/aspeed_peci.h
+>>> @@ -0,0 +1,47 @@
+>>> +/*
+>>> + * Aspeed PECI Controller
+>>> + *
+>>> + * Copyright (c) Meta Platforms, Inc. and affiliates. (http://www.meta.com)
+>>> + *
+>>> + * This code is licensed under the GPL version 2 or later. See the COPYING
+>>> + * file in the top-level directory.
+>>> + */
+>>> +
+>>> +#ifndef ASPEED_PECI_H
+>>> +#define ASPEED_PECI_H
+>>> +
+>>> +#include "hw/sysbus.h"
+>>> +#include "hw/registerfields.h"
+>>> +
+>>> +#define ASPEED_PECI_NR_REGS ((0xFC + 4) >> 2)
+>>> +#define ASPEED_PECI_CC_RSP_SUCCESS (0x40U)
+>>> +
+>>> +#define TYPE_ASPEED_PECI "aspeed.peci"
+>>> +OBJECT_DECLARE_SIMPLE_TYPE(AspeedPECIState, ASPEED_PECI);
+>>> +
+>>> +/* Command Register */
+>>> +REG32(PECI_CMD, 0x08)
+>>> +    FIELD(PECI_CMD, FIRE, 0, 1)
+>>> +
+>>> +/* Interrupt Control Register */
+>>> +REG32(PECI_INT_CTRL, 0x18)
+>>> +
+>>> +/* Interrupt Status Register */
+>>> +REG32(PECI_INT_STS, 0x1C)
+>>> +    FIELD(PECI_INT_STS, CMD_DONE, 0, 1)
+>>> +
+>>> +/* Rx/Tx Data Buffer Registers */
+>>> +REG32(PECI_WR_DATA0, 0x20)
+>>> +REG32(PECI_RD_DATA0, 0x30)
+>>
+>> I would put the registerfields definitions in the .c file if you don't need
+>> them elsewhere.
+> 
+> Ohhhh yes very good point, I’ll do that.
+> 
+> Speaking of which: why do we have the register definitions in the
+> aspeed I2C header? Maybe because we have all those inline “is_new_mode”
+> functions. 
 
-> --- a/hw/i2c/pmbus_device.c
-> +++ b/hw/i2c/pmbus_device.c
-> @@ -984,6 +984,11 @@ static uint8_t pmbus_receive_byte(SMBusDevice *smd)
->          }
->          break;
->
-> +    case PMBUS_IC_DEVICE_ID:
-> +        pmbus_send(pmdev, pmdev->pages[index].ic_device_id,
-> +                   sizeof(pmdev->pages[index].ic_device_id));
-> +        break;
-> +
+Yes. I let that through. Not the best option because we could have
+conflicts with other models.
 
-I don't think it's a good idea to add this here because this sends 16
-bytes for all PMBus devices. I have at least one device that formats
-IC_DEVICE_ID differently that I've not got permission to upstream.
-The spec leaves the size and format up to the manufacturer, so this is
-best done in isl_pmbus_vr.c in isl_pmbus_vr_read_byte().
-Look at the adm1272_read_byte() which is more interesting than
-isl_pmbus_vr one as an example.
+> Seems like we could move all that to the the .c file, only
+> the struct definition needs to be in the header to support the SoC
+> definition right?
+
+There are no strict rules. For now, it is OK I would say.
+
+> Anyways yeah I’ll move them to the .c
 
 
->      case PMBUS_CLEAR_FAULTS:              /* Send Byte */
->      case PMBUS_PAGE_PLUS_WRITE:           /* Block Write-only */
->      case PMBUS_STORE_DEFAULT_ALL:         /* Send Byte */
-> diff --git a/hw/sensor/isl_pmbus_vr.c b/hw/sensor/isl_pmbus_vr.c
-> index e11e028884..b12c46ab6d 100644
-> --- a/hw/sensor/isl_pmbus_vr.c
-> +++ b/hw/sensor/isl_pmbus_vr.c
-> @@ -218,6 +218,28 @@ static void isl_pmbus_vr_class_init(ObjectClass *klass, void *data,
->      k->device_num_pages = pages;
->  }
->
-> +static void isl69259_init(Object *obj)
-> +{
-> +    static const uint8_t ic_device_id[] = {0x04, 0x00, 0x81, 0xD2, 0x49};
-> +    PMBusDevice *pmdev = PMBUS_DEVICE(obj);
-> +    int i;
-> +
-> +    raa22xx_init(obj);
-> +    for (i = 0; i < pmdev->num_pages; i++) {
-> +        memcpy(pmdev->pages[i].ic_device_id, ic_device_id,
-> +               sizeof(ic_device_id));
-> +    }
-> +}
-> +
+Thanks,
 
-We tend to set default register values in exit_reset() calls. You can
-do something like in raa228000_exit_reset()
-
-
-> diff --git a/include/hw/i2c/pmbus_device.h b/include/hw/i2c/pmbus_device.h
-> index 0f4d6b3fad..aed7809841 100644
-> --- a/include/hw/i2c/pmbus_device.h
-> +++ b/include/hw/i2c/pmbus_device.h
-> @@ -407,6 +407,7 @@ typedef struct PMBusPage {
->      uint16_t mfr_max_temp_1;           /* R/W word */
->      uint16_t mfr_max_temp_2;           /* R/W word */
->      uint16_t mfr_max_temp_3;           /* R/W word */
-> +    uint8_t ic_device_id[16];          /* Read-Only block-read */
-
-You wouldn't be able to do this here either, since the size could be
-anything for other devices.
-
-Thanks for the new device. It helps me see where to expand on PMBus.
-
-
-Titus
+C.

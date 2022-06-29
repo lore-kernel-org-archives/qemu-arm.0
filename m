@@ -1,313 +1,201 @@
-Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp336533lft;
-        Wed, 29 Jun 2022 03:38:41 -0700 (PDT)
-X-Google-Smtp-Source: AGRyM1t4Qc3ACoCgnXccWO/1ovK4VE0Se8ZxAf+3SttYBn9ZTBufBZGQtasDnomXZcxTEuKuyuEx
-X-Received: by 2002:a63:7204:0:b0:40c:9dc6:57f1 with SMTP id n4-20020a637204000000b0040c9dc657f1mr2463089pgc.153.1656499121350;
-        Wed, 29 Jun 2022 03:38:41 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1656499121; cv=none;
+Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp413735lft;
+        Wed, 29 Jun 2022 05:41:56 -0700 (PDT)
+X-Google-Smtp-Source: AGRyM1tvrETS7VPBAlEQvmH6xM4WfGkDdbTvKo0l25qWyKQUvm7lWC1z11BS89adBVn3T6xDrxjV
+X-Received: by 2002:ac8:5c07:0:b0:315:73be:a206 with SMTP id i7-20020ac85c07000000b0031573bea206mr2263149qti.63.1656506515690;
+        Wed, 29 Jun 2022 05:41:55 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1656506515; cv=none;
         d=google.com; s=arc-20160816;
-        b=BM3zFVkMYXBEIFCO1haMh+bU5Y70barMSdC/t78Q3q3lRmg4gUTmqZwzyn6wlJfmxM
-         +f72XjImVH7/6ze+1HmW/mCTVzqFluL7ttIgsLiPjrb1Qg+LsxrDXyMl8R5iRZ8aLjSC
-         vkuEd0Xk1mEv7NxWux4wpXsWuIchEfgc+acmokraogNim8aF692+YtoQPbTELcGh98CY
-         xWd2Pu+Kctj0l6cyES4BcQzH5BvYsqrCX3LkcuePMWkryClBxlPBVRDRB25Pa2MJUVR9
-         uKokVU3eTANY1EcOfhssChQqhCXh7Uqb4p5b2QCSjbhrn6NCEdTuEBKSamJzBtyIDtJp
-         H8dA==
+        b=b1/ofeWEZjhuoBKLXumh8DVZJTklN6BGmhdWqyWI61UH2ZMNRawUlS0rAlzGvoZDrB
+         MQKLRVEHJ5bNyprKDlYi/DQ6lPEe6xNer3Yp0v3uHITmzp8us9tEW8Z4zdKfUzVpJ6qQ
+         AqmXzw/9FS8/uqf0IKR+tlX1Dsq3GUgRUyebO9aBjAmZzDbFqp9F3KaMOLmQOZanZJUp
+         ySQ/jz40/uFNZ/5CQLHQWGckjTWbBYSz4gzzP9sRjh8oE3roIO1NCuNFe0sIul0d7rUD
+         GErcbsjnEZDnZ9ccOJJhXH7wRjfqYOP022ZlCIBjFlHbP9DSBRp/OHGB6nLqVE5pwQK7
+         q7MA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=list-id:precedence:content-transfer-encoding:in-reply-to:from
-         :references:cc:to:content-language:subject:user-agent:mime-version
-         :date:message-id:dkim-signature;
-        bh=Z0fk3HRRKw4PJPTNYjK+Eg9y2dq/QoeNY5r/IVHl1pE=;
-        b=SU2SJsEvcL2b552yG2V9g4kk8HHY4K0X+WPa50mIHGIRyaqAkUFPLht8MCz7pJvUb7
-         PwkPvsbHyrBfMbad0WYWyW+wc9hi3PwjzEB/szvUJbgiHfk2c87EuLbMAidpKc281hKs
-         /nmCMyCrBHfjK+ivjC9GIMNoM1dDG8QFSNV3TjvoGIdpcVhUd278TrK2UFziDmzOXt6X
-         IfFwNA06ak9myJTWtjczjphq2oYyv8+rQyGEB7tXd/WBmWzmc8vxKp1LMs+YmIsY7BN0
-         sO/rgSpOlTxz9NAcsQ0HjRaPnJD7DgiF4eaWxOBeRYl3zJCC3Lxz2mi/wmouLJjK11wd
-         EhEw==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:mime-version:message-id:date:to:from
+         :dkim-signature;
+        bh=MNvCoJf7NAHgdI2bXN63mZ0homReD/BxhhErUIMBffg=;
+        b=0S13xvBA3l+jmqadbC1Fp97YgpO0ZQYJ9nwLp3sfaMyT8hBrWPcpM0sf94BgO8up9D
+         pOpfZWfOSS39qC8wG6JuIRbJEZXMWaxv6SCg2wqizhfxJtvLJcfSuH2X4PHacb7fkMLp
+         aIy7ZeVAC7XQlK4fM6E9OUMZucFD1g2MIUNRAJnGbmERmCl8m4ErV5wDG79V60m4lmVT
+         tnV8jTa8womB8m816LApJKcBdintWgSH4HsdapLuvyWhFWJMoaWXGXtyWcIp5yrGy4BZ
+         H+fyu6JELAm/5t8UDJgrjWOTWWAsoJ5lK/i3Sg1/Yn0I7YbrJ6PR4Ui9rPSLZeVN63bf
+         rF2Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=JkkGdaDn;
-       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <kvm-owner@vger.kernel.org>
-Received: from out1.vger.email (out1.vger.email. [2620:137:e000::1:20])
-        by mx.google.com with ESMTP id b3-20020a637143000000b0040d71f067efsi22767216pgn.473.2022.06.29.03.38.41;
-        Wed, 29 Jun 2022 03:38:41 -0700 (PDT)
-Received-SPF: pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) client-ip=2620:137:e000::1:20;
+       dkim=fail header.i=@ilande.co.uk header.s=20220518 header.b=eF3NKjLx;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=ilande.co.uk
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id b1-20020ac87fc1000000b0030515240065si9463189qtk.442.2022.06.29.05.41.55
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Wed, 29 Jun 2022 05:41:55 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=JkkGdaDn;
-       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S231631AbiF2Kij (ORCPT <rfc822;daniel.diaz@linaro.org>
-        + 3 others); Wed, 29 Jun 2022 06:38:39 -0400
-Received: from lindbergh.monkeyblade.net ([23.128.96.19]:47630 "EHLO
-        lindbergh.monkeyblade.net" rhost-flags-OK-OK-OK-OK) by vger.kernel.org
-        with ESMTP id S233303AbiF2Kig (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Wed, 29 Jun 2022 06:38:36 -0400
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com [170.10.133.124])
-        by lindbergh.monkeyblade.net (Postfix) with ESMTP id C7FBD366AB
-        for <kvm@vger.kernel.org>; Wed, 29 Jun 2022 03:38:34 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-        s=mimecast20190719; t=1656499113;
-        h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-         to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-         content-transfer-encoding:content-transfer-encoding:
-         in-reply-to:in-reply-to:references:references;
-        bh=Z0fk3HRRKw4PJPTNYjK+Eg9y2dq/QoeNY5r/IVHl1pE=;
-        b=JkkGdaDnZqAO5gfxM9C+l81oqIKYROksQyct0n5qLykq5k6NXIzb6EJa28Bj+ayP7651M5
-        WL/liig/p8kZUqdeDsX+c1WCdmOEyKMEkcycGMP8rAQ6Gf6ehJwe0rZneCy+oZ06tcIvB7
-        ekKqvFx0jqdfNbLp2FmTebeU2j8/7RM=
-Received: from mail-qv1-f69.google.com (mail-qv1-f69.google.com
- [209.85.219.69]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-6-p6tVB-EAMcexPML5JqaRng-1; Wed, 29 Jun 2022 06:38:32 -0400
-X-MC-Unique: p6tVB-EAMcexPML5JqaRng-1
-Received: by mail-qv1-f69.google.com with SMTP id mr11-20020a056214348b00b004705c0cb439so14959351qvb.19
-        for <kvm@vger.kernel.org>; Wed, 29 Jun 2022 03:38:32 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
-         :content-language:to:cc:references:from:in-reply-to
-         :content-transfer-encoding;
-        bh=Z0fk3HRRKw4PJPTNYjK+Eg9y2dq/QoeNY5r/IVHl1pE=;
-        b=72kUcwqON0rwGY0LqgQJiQ7CUBm99xA0g/ZURmAgRzroc1xcWGdtMGSonuHkIaYn7p
-         Q0YZb9blYkUzHXu7zJbyal3e/UDMvU6N9P8D4Amre0qKbmj3jX22EXLC6/TOdOgIB1FU
-         ++l6/Ayv6DAhDZPEvaKFUNNXysAZBuIvkPdXP/qH+QyEFpi0LcMMw/T85+r7FIX5j+MN
-         SflSg2ugJkDLoXaZxY986ENXgQjw7W38xhCcWvKn50QUmbwxzAcxc5m6jSWv5iGa3XtK
-         Q8nJug3vx/qBFWQ/EUuS8rwOTH3oubj8jRlYf+IWuWBzQx94QYEh+Zakg4wXJCAl8yuH
-         f7Tg==
-X-Gm-Message-State: AJIora+GA97DKaP2siLRCiVGBiW8/KemXgGTfOH8amiXBYlsC1OxmS8M
-        f8tHjgWNHDy/J67rm3VAo/gyPmd8qeRw0pjm4itlG13PHG7qZEQtXjw8bgLfE/GVpSNx5Ygui1h
-        HSCSapjzWQ/Qm
-X-Received: by 2002:a05:620a:d94:b0:6a6:6c9c:c7ec with SMTP id q20-20020a05620a0d9400b006a66c9cc7ecmr1357635qkl.221.1656499112006;
-        Wed, 29 Jun 2022 03:38:32 -0700 (PDT)
-X-Received: by 2002:a05:620a:d94:b0:6a6:6c9c:c7ec with SMTP id q20-20020a05620a0d9400b006a66c9cc7ecmr1357619qkl.221.1656499111675;
-        Wed, 29 Jun 2022 03:38:31 -0700 (PDT)
-Received: from ?IPV6:2a01:e0a:59e:9d80:527b:9dff:feef:3874? ([2a01:e0a:59e:9d80:527b:9dff:feef:3874])
-        by smtp.gmail.com with ESMTPSA id h18-20020ac87772000000b002f905347586sm10620776qtu.14.2022.06.29.03.38.29
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 29 Jun 2022 03:38:31 -0700 (PDT)
-Message-ID: <9dfbfd42-6a40-80d2-8d9d-f5849de0b726@redhat.com>
-Date:   Wed, 29 Jun 2022 12:38:27 +0200
+       dkim=fail header.i=@ilande.co.uk header.s=20220518 header.b=eF3NKjLx;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=ilande.co.uk
+Received: from localhost ([::1]:58920 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1o6X10-0007aY-Iu
+	for alex.bennee@linaro.org; Wed, 29 Jun 2022 08:41:54 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:60556)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <mark.cave-ayland@ilande.co.uk>)
+ id 1o6Wzz-0007YU-Jw; Wed, 29 Jun 2022 08:40:51 -0400
+Received: from mail.ilande.co.uk ([2001:41c9:1:41f::167]:50746)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <mark.cave-ayland@ilande.co.uk>)
+ id 1o6Wzw-0004bf-Cq; Wed, 29 Jun 2022 08:40:50 -0400
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+ d=ilande.co.uk; s=20220518; h=Subject:Content-Transfer-Encoding:Content-Type:
+ MIME-Version:Message-Id:Date:To:From:Sender:Reply-To:Cc:Content-ID:
+ Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+ :Resent-Message-ID:In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:
+ List-Subscribe:List-Post:List-Owner:List-Archive;
+ bh=MNvCoJf7NAHgdI2bXN63mZ0homReD/BxhhErUIMBffg=; b=eF3NKjLx7iNsQe3p2BvmI+VUlS
+ uAgalDweFHuO7lq2M7SBmyaEfHLnYKT49ZnNmoTapwCTmorp3/BelTSIP6kcVX82LLJIDxuG6CV8g
+ CcKWnjGa83kjrDo3oAJjxnu1cF15l6jLaH/q8TfQ1ulNhLgSq4vuyCfgBVlh/RgoJLNMfnRcCzr1N
+ ksI92QOA17zoLPJ+bCN9PU0kLuYm7xerY26yKAvTDoDqfE8SbfTHPJ8siooJSalQF3I5JenwdbGPS
+ UrRiQDKbbi/umBYS2H/jOgRmSDO5s7KI0qWyFDLINF7SVnHd9OYCBvqB2vyhTvbGPoDxUTVLY6MNB
+ 7Y61wgABEgAEMFjWxihbErTNQAB+klOXUkg3ujNaDy4qZoZ2jXnxsx0XdFfhuAAFkF5rr75jGU482
+ rn7CAKv1i6vO4WgzhuQytyD9wCUFjD4xT6SC9b3vs/5gOkaSD/glUL5pxMP1kTCKALm6sYXXZoUwb
+ ZYEhk8h8sTxEgCHFEMk693Q5jCyXrnNKrARZmJmcQojkAU8VeVguING9F8Ky123nSPD+84ZjK8NEU
+ JKyAASfvACXviG6PX8fJV9oLak5QAynIs+ndZnKVGgx6HOoAxwYumrX5EGTATA8wmFpDSe+Wpf4LW
+ i+uUX1NtYB1ipJUZryD3ANs1CyBDrd52GUPAYLdmM=;
+Received: from [2a00:23c4:8ba4:e500:b82f:56f9:46d7:80ab] (helo=kentang.home)
+ by mail.ilande.co.uk with esmtpsa (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.92) (envelope-from <mark.cave-ayland@ilande.co.uk>)
+ id 1o6WyV-0002tZ-LQ; Wed, 29 Jun 2022 13:39:23 +0100
+From: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
+To: richard.henderson@linaro.org, deller@gmx.de, svens@stackframe.org,
+ mst@redhat.com, pbonzini@redhat.com, peter.maydell@linaro.org,
+ hpoussin@reactos.org, aleksandar.rikalo@syrmia.com, f4bug@amsat.org,
+ qemu-devel@nongnu.org, qemu-arm@nongnu.org
+Date: Wed, 29 Jun 2022 13:39:46 +0100
+Message-Id: <20220629124026.1077021-1-mark.cave-ayland@ilande.co.uk>
+X-Mailer: git-send-email 2.30.2
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.9.0
-Subject: Re: [PATCH RFC 1/2] arm/kvm: enable MTE if available
-Content-Language: en-US
-To:     Cornelia Huck <cohuck@redhat.com>,
-        Peter Maydell <peter.maydell@linaro.org>,
-        Thomas Huth <thuth@redhat.com>,
-        Laurent Vivier <lvivier@redhat.com>
-Cc:     Andrew Jones <drjones@redhat.com>, qemu-arm@nongnu.org,
-        qemu-devel@nongnu.org, kvm@vger.kernel.org
-References: <20220512131146.78457-1-cohuck@redhat.com>
- <20220512131146.78457-2-cohuck@redhat.com>
- <a3d0a093-3d59-5882-c9c8-6619e5aeb3ab@redhat.com> <877d5jskmw.fsf@redhat.com>
-From:   Eric Auger <eauger@redhat.com>
-In-Reply-To: <877d5jskmw.fsf@redhat.com>
 Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
-X-Spam-Status: No, score=-2.5 required=5.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-        DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,NICE_REPLY_A,
-        RCVD_IN_DNSWL_NONE,SPF_HELO_NONE,SPF_NONE,T_SCC_BODY_TEXT_LINE
-        autolearn=ham autolearn_force=no version=3.4.6
-X-Spam-Checker-Version: SpamAssassin 3.4.6 (2021-04-09) on
-        lindbergh.monkeyblade.net
-Precedence: bulk
-List-ID: <kvm.vger.kernel.org>
-X-Mailing-List: kvm@vger.kernel.org
-X-TUID: SsvBiBCE+WOU
+Content-Transfer-Encoding: 8bit
+X-SA-Exim-Connect-IP: 2a00:23c4:8ba4:e500:b82f:56f9:46d7:80ab
+X-SA-Exim-Mail-From: mark.cave-ayland@ilande.co.uk
+Subject: [PATCH 00/40] PS2 device QOMification - part 2
+X-SA-Exim-Version: 4.2.1 (built Wed, 08 May 2019 21:11:16 +0000)
+X-SA-Exim-Scanned: Yes (on mail.ilande.co.uk)
+Received-SPF: pass client-ip=2001:41c9:1:41f::167;
+ envelope-from=mark.cave-ayland@ilande.co.uk; helo=mail.ilande.co.uk
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: hIt76wNchmlp
 
-Hi Connie,
+Here is the follow-on series from part 1 which completes the work to remove
+the legacy global device init functions for PS2 devices. Now that part 1 has
+been applied, the hard part to remove the PS2 function callback and argument
+has been completed and all that remains is to improve the PS2 device
+QOMification to allow the legacy PS2 functions to be removed.
 
-On 6/14/22 10:40, Cornelia Huck wrote:
-> On Fri, Jun 10 2022, Eric Auger <eauger@redhat.com> wrote:
-> 
->> Hi Connie,
->> On 5/12/22 15:11, Cornelia Huck wrote:
->>> We need to disable migration, as we do not yet have a way to migrate
->>> the tags as well.
->>
->> This patch does much more than adding a migration blocker ;-) you may
->> describe the new cpu option and how it works.
-> 
-> I admit this is a bit terse ;) The idea is to control mte at the cpu
-> level directly (and not indirectly via tag memory at the machine
-> level). I.e. the user gets whatever is available given the constraints
-> (host support etc.) if they don't specify anything, and they can
-> explicitly turn it off/on.
+Patches 1-11 update the pl050 device to remove the use of ps2_kbd_init() and
+ps2_mouse_init(), whilst patches 12-34 make some more involved changes to
+the lasips2 device (in particular completing the LASIPS2Port abstraction)
+before doing the same.
 
-Could the OnOffAuto property value be helpful?
-> 
->>>
->>> Signed-off-by: Cornelia Huck <cohuck@redhat.com>
->>> ---
->>>  target/arm/cpu.c     | 18 ++++------
->>>  target/arm/cpu.h     |  4 +++
->>>  target/arm/cpu64.c   | 78 ++++++++++++++++++++++++++++++++++++++++++++
->>>  target/arm/kvm64.c   |  5 +++
->>>  target/arm/kvm_arm.h | 12 +++++++
->>>  target/arm/monitor.c |  1 +
->>>  6 files changed, 106 insertions(+), 12 deletions(-)
->>>
->>> diff --git a/target/arm/cpu.c b/target/arm/cpu.c
->>> index 029f644768b1..f0505815b1e7 100644
->>> --- a/target/arm/cpu.c
->>> +++ b/target/arm/cpu.c
->>> @@ -1435,6 +1435,11 @@ void arm_cpu_finalize_features(ARMCPU *cpu, Error **errp)
->>>              error_propagate(errp, local_err);
->>>              return;
->>>          }
->>> +        arm_cpu_mte_finalize(cpu, &local_err);
->>> +        if (local_err != NULL) {
->>> +            error_propagate(errp, local_err);
->>> +            return;
->>> +        }
->>>      }
->>>  
->>>      if (kvm_enabled()) {
->>> @@ -1504,7 +1509,7 @@ static void arm_cpu_realizefn(DeviceState *dev, Error **errp)
->>>          }
->>>          if (cpu->tag_memory) {
->>>              error_setg(errp,
->>> -                       "Cannot enable KVM when guest CPUs has MTE enabled");
->>> +                       "Cannot enable KVM when guest CPUs has tag memory enabled");
->> before this series, tag_memory was used to detect MTE was enabled at
->> machine level. And this was not compatible with KVM.
->>
->> Hasn't it changed now with this series? Sorry I don't know much about
->> that tag_memory along with the KVM use case? Can you describe it as well
->> in the cover letter.
-> 
-> IIU the current code correctly, the purpose of tag_memory is twofold:
-> - control whether mte should be available in the first place
-> - provide a place where a memory region used by the tcg implemtation can
->   be linked
+Finally patches 35-40 complete the process for the pckbd (I8042 and I8042_MMIO
+devices) before removing the now unused ps2_kbd_init(), ps2_mouse_init() and
+i8042_mm_init() functions.
 
-OK I now understand the tag memory is a pure TCG thingy. So its setting
-along with KVM shall be invalid indeed.
-> 
-> The latter part (extra memory region) is not compatible with
-> kvm. "Presence of extra memory for the implementation" as the knob to
-> configure mte for tcg makes sense, but it didn't seem right to me to use
-> it for kvm while controlling something which is basically a cpu property.
+Note that this series is a migration break for the HPPA B160L and MIPS magnum
+machines: I've had agreement from both Helge and Hervé that this is worth
+doing to allow the use of the DeviceClass vmsd property to set the
+VMStateDescription rather than manually calling vmstate_register().
+
+Signed-off-by: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
 
 
-> 
->>>              return;
->>>          }
->>>      }
-> 
-> (...)
-> 
->>> +void aarch64_add_mte_properties(Object *obj)
->>> +{
->>> +    ARMCPU *cpu = ARM_CPU(obj);
->>> +
->>> +    /*
->>> +     * For tcg, the machine type may provide tag memory for MTE emulation.
->> s/machine type/machine?
-> 
-> Either, I guess, as only the virt machine type provides tag memory in
-> the first place.
-yeah that's what just a nit about the terminology.
-> 
->>> +     * We do not know whether that is the case at this point in time, so
->>> +     * default MTE to on and check later.
->>> +     * This preserves pre-existing behaviour, but is really a bit awkward.
->>> +     */
->>> +    qdev_property_add_static(DEVICE(obj), &arm_cpu_mte_property);
->>> +    if (kvm_enabled()) {
->>> +        /*
->>> +         * Default MTE to off, as long as migration support is not
->>> +         * yet implemented.
->>> +         * TODO: implement migration support for kvm
->>> +         */
->>> +        cpu->prop_mte = false;
->>> +    }
->>> +}
->>> +
->>> +void arm_cpu_mte_finalize(ARMCPU *cpu, Error **errp)
->>> +{
->>> +    if (!cpu->prop_mte) {
->>> +        /* Disable MTE feature bits. */
->>> +        cpu->isar.id_aa64pfr1 =
->>> +            FIELD_DP64(cpu->isar.id_aa64pfr1, ID_AA64PFR1, MTE, 0);
->>> +        return;
->>> +    }
->>> +#ifndef CONFIG_USER_ONLY
->>> +    if (!kvm_enabled()) {
->>> +        if (cpu_isar_feature(aa64_mte, cpu) && !cpu->tag_memory) {
->>> +            /*
->>> +             * Disable the MTE feature bits, unless we have tag-memory
->>> +             * provided by the machine.
->>> +             * This silent downgrade is not really nice if the user had
->>> +             * explicitly requested MTE to be enabled by the cpu, but it
->>> +             * preserves pre-existing behaviour. In an ideal world, we
->>
->>
->> Can't we "simply" prevent the end-user from using the prop_mte option
->> with a TCG CPU? and have something like
->>
->> For TCG, MTE depends on the CPU feature availability + machine tag memory
->> For KVM, MTE depends on the user opt-in + CPU feature avail (if
->> relevant) + host VM capability (?)
-> 
-> I don't like kvm and tcg cpus behaving too differently... but then, tcg
-> is already different as it needs tag_memory.
-> 
-> Thinking about it, maybe we could repurpose tag_memory in the kvm case
-> (e.g. for a temporary buffer for migration purposes) and require it in
-> all cases (making kvm fail if the user specified tag memory, but the
-> host doesn't support it). A cpu feature still looks more natural to me,
-> but I'm not yet quite used to how things are done in arm :)
-If the tag memory is an implementation "detail" for TCG then I agree
-with you that a CPU property would be more adapted for KVM.
-> 
-> The big elefant in the room is how migration will end up
-> working... after reading the disscussions in
-> https://lore.kernel.org/all/CAJc+Z1FZxSYB_zJit4+0uTR-88VqQL+-01XNMSEfua-dXDy6Wg@mail.gmail.com/
-> I don't think it will be as "easy" as I thought, and we probably require
-> some further fiddling on the kernel side.
-Yes maybe the MTE migration process shall be documented and discussed
-separately on the ML? Is Haibu Xu's address bouncing?
+Mark Cave-Ayland (40):
+  pl050: move PL050State from pl050.c to new pl050.h header file
+  pl050: rename pl050_keyboard_init() to pl050_kbd_init()
+  pl050: change PL050State dev pointer from void to PS2State
+  pl050: introduce new PL050_KBD_DEVICE QOM type
+  pl050: introduce new PL050_MOUSE_DEVICE QOM type
+  pl050: move logic from pl050_realize() to pl050_init()
+  pl050: introduce PL050DeviceClass for the PL050 device
+  pl050: introduce pl050_kbd_class_init() and pl050_kbd_realize()
+  pl050: introduce pl050_mouse_class_init() and pl050_mouse_realize()
+  pl050: don't use legacy ps2_kbd_init() function
+  pl050: don't use legacy ps2_mouse_init() function
+  lasips2: don't use vmstate_register() in lasips2_realize()
+  lasips2: remove the qdev base property and the lasips2_properties
+    array
+  lasips2: remove legacy lasips2_initfn() function
+  lasips2: change LASIPS2State dev pointer from void to PS2State
+  lasips2: QOMify LASIPS2Port
+  lasips2: introduce new LASIPS2_KBD_PORT QOM type
+  lasips2: introduce new LASIPS2_MOUSE_PORT QOM type
+  lasips2: move keyboard port initialisation to new
+    lasips2_kbd_port_init() function
+  lasips2: move mouse port initialisation to new
+    lasips2_mouse_port_init() function
+  lasips2: introduce lasips2_kbd_port_class_init() and
+    lasips2_kbd_port_realize()
+  lasips2: introduce lasips2_mouse_port_class_init() and
+    lasips2_mouse_port_realize()
+  lasips2: rename LASIPS2Port irq field to birq
+  lasips2: introduce port IRQ and new lasips2_port_init() function
+  lasips2: introduce LASIPS2PortDeviceClass for the LASIPS2_PORT device
+  lasips2: add named input gpio to port for downstream PS2 device IRQ
+  lasips2: add named input gpio to handle incoming port IRQs
+  lasips2: switch to using port-based IRQs
+  lasips2: rename LASIPS2Port parent pointer to lasips2
+  lasips2: standardise on lp name for LASIPS2Port variables
+  lasips2: switch register memory region to DEVICE_BIG_ENDIAN
+  lasips2: don't use legacy ps2_kbd_init() function
+  lasips2: don't use legacy ps2_mouse_init() function
+  lasips2: update VMStateDescription for LASIPS2 device
+  pckbd: introduce new vmstate_kbd_mmio VMStateDescription for the
+    I8042_MMIO device
+  pckbd: don't use legacy ps2_kbd_init() function
+  ps2: remove unused legacy ps2_kbd_init() function
+  pckbd: don't use legacy ps2_mouse_init() function
+  ps2: remove unused legacy ps2_mouse_init() function
+  pckbd: remove legacy i8042_mm_init() function
 
-Eric
-> 
->>
->> But maybe I miss the point ...
->>> +             * would fail if MTE was requested, but no tag memory has
->>> +             * been provided.
->>> +             */
->>> +            cpu->isar.id_aa64pfr1 =
->>> +                FIELD_DP64(cpu->isar.id_aa64pfr1, ID_AA64PFR1, MTE, 0);
->>> +        }
->>> +        if (!cpu_isar_feature(aa64_mte, cpu)) {
->>> +            cpu->prop_mte = false;
->>> +        }
->>> +        return;
->>> +    }
->>> +    if (kvm_arm_mte_supported()) {
->>> +#ifdef CONFIG_KVM
->>> +        if (kvm_vm_enable_cap(kvm_state, KVM_CAP_ARM_MTE, 0)) {
->>> +            error_setg(errp, "Failed to enable KVM_CAP_ARM_MTE");
->>> +        } else {
->>> +            /* TODO: add proper migration support with MTE enabled */
->>> +            if (!mte_migration_blocker) {
->>> +                error_setg(&mte_migration_blocker,
->>> +                           "Live migration disabled due to MTE enabled");
->>> +                if (migrate_add_blocker(mte_migration_blocker, NULL)) {
->> error_free(mte_migration_blocker);
->> mte_migration_blocker = NULL;
-> 
-> Ah, I missed that, thanks.
-> 
->>> +                    error_setg(errp, "Failed to add MTE migration blocker");
->>> +                }
->>> +            }
->>> +        }
->>> +#endif
->>> +    }
->>> +    /* When HVF provides support for MTE, add it here */
->>> +#endif
->>> +}
->>> +
-> 
+ hw/hppa/machine.c          |   7 +-
+ hw/input/lasips2.c         | 320 ++++++++++++++++++++++++++-----------
+ hw/input/pckbd.c           |  82 ++++++----
+ hw/input/pl050.c           | 112 ++++++++-----
+ hw/input/ps2.c             |  26 ---
+ hw/input/trace-events      |   2 -
+ hw/mips/jazz.c             |  13 +-
+ include/hw/input/i8042.h   |   7 +-
+ include/hw/input/lasips2.h |  57 +++++--
+ include/hw/input/pl050.h   |  59 +++++++
+ include/hw/input/ps2.h     |   2 -
+ 11 files changed, 466 insertions(+), 221 deletions(-)
+ create mode 100644 include/hw/input/pl050.h
+
+-- 
+2.30.2
+

@@ -1,101 +1,111 @@
-Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp107636lft;
-        Tue, 28 Jun 2022 19:41:59 -0700 (PDT)
-X-Google-Smtp-Source: AGRyM1uiAsvyPGbpAElrG6hxMbyDmfR2CP9bdTR+3V71Qrxkgr5uTzfvzcDx1eI2SK+7CCo0tJTB
-X-Received: by 2002:a05:6214:d4f:b0:470:2d37:f2de with SMTP id 15-20020a0562140d4f00b004702d37f2demr5063233qvr.42.1656470519620;
-        Tue, 28 Jun 2022 19:41:59 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1656470519; cv=none;
+Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp134551lft;
+        Tue, 28 Jun 2022 20:36:58 -0700 (PDT)
+X-Google-Smtp-Source: AGRyM1tNYrQsGIF2unMR6N9/KOFOT/ZAKde8oz0KVeoNQFd9o0LFGx5f3lNB0P4DXWfdceTkRfhu
+X-Received: by 2002:a05:622a:2d6:b0:31b:f4a7:a92f with SMTP id a22-20020a05622a02d600b0031bf4a7a92fmr856401qtx.633.1656473818225;
+        Tue, 28 Jun 2022 20:36:58 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1656473818; cv=none;
         d=google.com; s=arc-20160816;
-        b=dJ3ng2hUFZliGwUnS8YizQW/uTIXBoA04cAUfVXFuQ2FKOcwPOXY9kZYPTcHClNjXK
-         BYbEYcq3f3wUa+k+1e8upuTcwLZ32+XnW3RyMI7KaHZOhYXlW+p1j2F1Wt8fiLC9tpyG
-         C8TkWA9OaNdxixEH2004TNeYrRnTv5gf0OrN3gEuqO9qjxTY9OEPciB9G2N7W2hrboRK
-         JRp9BJZAowOnfyFtYgtRHy112ZBcxUnPygrxVbChLB2PRQZRYH0B7kCjrDERlcAecxOS
-         tpKha52ZLwmyn6kb616axu9fdGZuH+HSzydw/Y9aptU+9NtCuS7XgJKIDXtD77HhwG7l
-         Yy/w==
+        b=cHjYXPgU13IVKlmrGs4sDmVh4s8AMsYFiXIU63yiJX5PU6E2IxFncemo/FAV0WR+Ix
+         4i5RIFd/m5+b86DFGuowXAhKrfQLegO0m9PXrp3JaGjNxlryB5ElcfbkAxZ5o1MbBTDn
+         zpMcX56eO9HRBC2g/ianVL02ftIxg4yygmWIrIyo9UPrQamKCVGj08rXDWkdjEfcb62L
+         eXXCFWbQ48OV6ALmGbs8wOjfac/MYLHgsU1qP6ZVIRUGUEhe8MeQuQWUD5gdZmzmSckx
+         UemC6rPY6gj/wxQNcKgU0gtnPyVQqWmYPguoAFZm2ZG1E8QeNHGki07HBkPG+Bge3WEQ
+         SCdg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=IsTzoEg0ClyrSbaDEK+7H2YPFmfHQJnBKASyXg2h31w=;
-        b=ZEsb42fSIWqXF2YYaRHffvTMAV5k20vUpvPKxVZER/M7uZO1TkMnAd1o9Ll/GpM7i2
-         CUu44Oju6ZzO2klLG2nHsBUhupOzde8sRxdchjCITgnVPWj8R8O1kRyLiMQiEx3nA31a
-         pgvItAMBihxq3hoaAfp68OKyhEna6vlnVHwrWQ2AlWupVEfycsZ4BTpYNImaMq9RYIQ3
-         N1Iq80wL/BA8qNfttl2htOCt+C3h4sROw3os3jjUY3ovsNTIVvfPwwHSgnCYRJRAgazL
-         QPZ24hC0fqaiLy7uzxqQkbJivOZgoWGW1lD3AmaPrbF3rTCiDUolDbT96kmmqk5IPTL/
-         oIsw==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
+        bh=9D9qpr+4Po4PpO7ogvqXcuW/WaNdEjS7iGqPsqrS3tI=;
+        b=DjB/HyA21M+FBSuBsylHuSC0yjT3XJXCZdK9tk0/LXaH1yFn2RydS/mHu5UjfN0OkR
+         DPVQ8lKoHDfvfpFm39js+6I8Jysjs4zWw4QgbbUGXIuLWAX9GL4kM5un+ukr6d9N+u4w
+         9pwdMAdBxh9WSN0aBPW9ns2H6rIyuBzjd/dqaoFaMGhudNQPMMaPrwOuzOfJ5/swNYIm
+         K9Wkrfcr91kNvcKTNygmUAAz0+OFndfpI4vfWJv6V08v/D2tuq5sFS/ETwwByaC+mmcj
+         kySbnS4xT9LrFPQ7OxhnqWbN2OdU4sp3I8hTnBQ4x73OK35H/VtfwoJ58FcNAK2UlifT
+         IJaw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@jms.id.au header.s=google header.b=nk9g3PPq;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=D3VgV8lL;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id jo24-20020a056214501800b004705951962bsi9251378qvb.553.2022.06.28.19.41.59
+        by mx.google.com with ESMTPS id a13-20020ad45c4d000000b004703d3ebeedsi8165607qva.224.2022.06.28.20.36.58
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 28 Jun 2022 19:41:59 -0700 (PDT)
+        Tue, 28 Jun 2022 20:36:58 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@jms.id.au header.s=google header.b=nk9g3PPq;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:47630 helo=lists1p.gnu.org)
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=D3VgV8lL;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:34414 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1o6NeR-0001SD-0l
-	for alex.bennee@linaro.org; Tue, 28 Jun 2022 22:41:59 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34738)
+	id 1o6OVd-0007Si-KZ
+	for alex.bennee@linaro.org; Tue, 28 Jun 2022 23:36:57 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:45742)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <joel.stan@gmail.com>)
- id 1o6Ne5-0001RT-Vh; Tue, 28 Jun 2022 22:41:37 -0400
-Received: from mail-wr1-x42c.google.com ([2a00:1450:4864:20::42c]:45848)
+ (Exim 4.90_1) (envelope-from <peterdelevoryas@gmail.com>)
+ id 1o6OVL-0007RC-J6; Tue, 28 Jun 2022 23:36:39 -0400
+Received: from mail-pl1-x633.google.com ([2607:f8b0:4864:20::633]:33759)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <joel.stan@gmail.com>)
- id 1o6Ne3-0001dN-E2; Tue, 28 Jun 2022 22:41:37 -0400
-Received: by mail-wr1-x42c.google.com with SMTP id n1so20229766wrg.12;
- Tue, 28 Jun 2022 19:41:34 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=jms.id.au; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=IsTzoEg0ClyrSbaDEK+7H2YPFmfHQJnBKASyXg2h31w=;
- b=nk9g3PPqSnK/cP/7B9nYtYFb6pxGDzQkOppS+jiLkTKUMX5Y65RwwPMRvq61azEKWS
- MFR03g2ExNA9JGaGhH2DzGOntNllyjIJAMg4mdfLeSVQuESGPF4/4gc1b+GHIIywQfuT
- qGl7inz2q2Y5RHHuWpF5oKJd/FvnW6O/eme+E=
+ (Exim 4.90_1) (envelope-from <peterdelevoryas@gmail.com>)
+ id 1o6OVJ-0006dT-L8; Tue, 28 Jun 2022 23:36:39 -0400
+Received: by mail-pl1-x633.google.com with SMTP id n10so12915380plp.0;
+ Tue, 28 Jun 2022 20:36:36 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=9D9qpr+4Po4PpO7ogvqXcuW/WaNdEjS7iGqPsqrS3tI=;
+ b=D3VgV8lL0e9762fOeXDNpo8nFDGk/39cz+/+2uOsmPpvbrZIYgHWh/EwfBm3sjy9fA
+ 6jM2NaI/37pzdPsIkshsGSgcTbYVxI+3iOW9FnqD7GhQWH3+aWSnBFpZ7N/CpWlUpdpZ
+ Z5l+pq+17f464EVNXtEwCxWH05dHvUPetfpf6fmRaeAfayuhJ7HXbP6bdYpPyM23Yucc
+ n39iv4kwh2sWS6p/3t6Fp0qWQVb/xHh3GOt1zqg1zzossWroQa8tSpvjsOUGH1eZtYgk
+ zKDjnx2RsdE4Pnpoeh9tJ1D2qCWZLJFjVCjbJ84jKxiR0r8BGX82MDSiYLDJJ+llgdRG
+ srNA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=IsTzoEg0ClyrSbaDEK+7H2YPFmfHQJnBKASyXg2h31w=;
- b=jzn4V23GLJfZnJfNQgNP9xkM7tZDm25Pj1EM+OS8Sq52yoQKlQ+5xadt6TzdyhIZ6m
- qR39DbJuxa879gHOmZAB7HhCZEHUUK6UdB6DzE8p56geLaq9mXm0KMEtyWOHOX+1IFxH
- FrVyiMGIr5OcMFfr8QLTTHBhnRJua323FsE9PZpQGLJeQM6mMP/LF5hn2QAufHXgd4Ep
- Orf06cfVttPMY161eKe5ksV3E6mV2xlm4L3Minrvvsatm42YnsP760zHGXWmKZ22IM5M
- T7neoDv5zPZYchUr3yRSZixDnOjaTHbvn7noTmiPUmRZ1cwaXyjnrU6sYi9GLHeVL5Df
- pWYg==
-X-Gm-Message-State: AJIora8YBbDFiB3R5j8g1+vFDRKNnMSVz/FXae0jDPB4uzgzdBgMb3xz
- bS7huoZXoYsV2Iuz9oGRGA7yDezgtMRCcZj4sh8=
-X-Received: by 2002:adf:e502:0:b0:21b:8de6:7f14 with SMTP id
- j2-20020adfe502000000b0021b8de67f14mr736560wrm.3.1656470492733; Tue, 28 Jun
- 2022 19:41:32 -0700 (PDT)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=9D9qpr+4Po4PpO7ogvqXcuW/WaNdEjS7iGqPsqrS3tI=;
+ b=Cb4L+eVmxq1QybiLH7siBMjAjihW2pHOgRfS+M21KxRrrPtLt/kujzxWJE253AtdNL
+ hBLcpcw11sFfUzsdhXv1r5Z2J7EyM6H893yry2oUmW+xAksybyEcKZxfLXiSSg2iWEkQ
+ OD+asRnAXTYspfUOJaT2Cm1cwUsG55CqbKZkvs0Vhk6pAhjzhGmO3xZLDE71olzlgdOF
+ fow4Nizp924do6QsfqiNjI3MXbh3OsD5UtnZmFqwZ7/xFBMik4f2uYWqSAP61k7avFqO
+ 17jeXvKLuzZ3e23eSTeB+ZmslGa6Qy/WIyJ2BdSodu8RJwuLu396jkB77Am8ylwCbElJ
+ 7AyQ==
+X-Gm-Message-State: AJIora+CsZ8oVCnlfWtoAPMOiNAfq/DUd0i4rhaKIdWoi6j8SIchOLdb
+ Rp8zr7RESIfBB5h452LiO64=
+X-Received: by 2002:a17:903:1c6:b0:16a:6941:10e8 with SMTP id
+ e6-20020a17090301c600b0016a694110e8mr8360968plh.158.1656473795388; 
+ Tue, 28 Jun 2022 20:36:35 -0700 (PDT)
+Received: from localhost (fwdproxy-prn-010.fbsv.net.
+ [2a03:2880:ff:a::face:b00c]) by smtp.gmail.com with ESMTPSA id
+ f15-20020a170902ff0f00b0016a84d232a6sm5897165plj.46.2022.06.28.20.36.34
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 28 Jun 2022 20:36:35 -0700 (PDT)
+From: Peter Delevoryas <peterdelevoryas@gmail.com>
+X-Google-Original-From: Peter Delevoryas <pdel@fb.com>
+To: 
+Cc: clg@kaod.org, peter.maydell@linaro.org, andrew@aj.id.au, joel@jms.id.au,
+ cminyard@mvista.com, titusr@google.com, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org, zhdaniel@fb.com, pdel@fb.com
+Subject: [PATCH v2 00/13] hw/i2c/aspeed: Add new-registers DMA slave mode RX
+ support
+Date: Tue, 28 Jun 2022 20:36:21 -0700
+Message-Id: <20220629033634.3850922-1-pdel@fb.com>
+X-Mailer: git-send-email 2.30.2
 MIME-Version: 1.0
-References: <20220628165512.1133590-1-clg@kaod.org>
-In-Reply-To: <20220628165512.1133590-1-clg@kaod.org>
-From: Joel Stanley <joel@jms.id.au>
-Date: Wed, 29 Jun 2022 02:41:20 +0000
-Message-ID: <CACPK8Xd2Bx1dpJN38MkR_ZJnNJjygkcMCaLXxv+YP03EsF+V8A@mail.gmail.com>
-Subject: Re: [PATCH] aspeed/smc: Fix potential overflow
-To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>, 
- Peter Maydell <peter.maydell@linaro.org>, Andrew Jeffery <andrew@aj.id.au>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::42c;
- envelope-from=joel.stan@gmail.com; helo=mail-wr1-x42c.google.com
-X-Spam_score_int: -14
-X-Spam_score: -1.5
-X-Spam_bar: -
-X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249,
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::633;
+ envelope-from=peterdelevoryas@gmail.com; helo=mail-pl1-x633.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -110,49 +120,84 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: FTVBLug0IvK2
+X-TUID: ehdrMWa0Gft4
 
-On Tue, 28 Jun 2022 at 16:55, C=C3=A9dric Le Goater <clg@kaod.org> wrote:
->
-> Coverity warns that "ssi_transfer(s->spi, 0U) << 8 * i" might overflow
-> because the expression is evaluated using 32-bit arithmetic and then
-> used in a context expecting a uint64_t.
+Hey Cedric,
 
-Would it make sense to also place a limit on "size"?
+I've gone over the patch series and reordered it a little better.
 
-assert(size < something)
+Changes since v1:
+- Replaced printf's with qemu_log_mask or trace events.
+- Added more detailed commit messages to several commits.
+- Removed one unnecessary patch through reordering intel-me before oby35-cl.
+- Replaced PECI register #define's with registerfields.h API.
+- Renamed fby35-cpld to fby35-sb-cpld to be more specific.
+- Moved the I2C patches to the start of the series, and the
+  optional device/machine stuff to the end of the series.
 
->
-> Fixes: Coverity CID 1487244
-> Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
-> ---
->  hw/ssi/aspeed_smc.c | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
->
-> diff --git a/hw/ssi/aspeed_smc.c b/hw/ssi/aspeed_smc.c
-> index d2b1dde604e3..26640539ae64 100644
-> --- a/hw/ssi/aspeed_smc.c
-> +++ b/hw/ssi/aspeed_smc.c
-> @@ -490,7 +490,7 @@ static uint64_t aspeed_smc_flash_read(void *opaque, h=
-waddr addr, unsigned size)
->      switch (aspeed_smc_flash_mode(fl)) {
->      case CTRL_USERMODE:
->          for (i =3D 0; i < size; i++) {
-> -            ret |=3D ssi_transfer(s->spi, 0x0) << (8 * i);
-> +            ret |=3D (uint64_t) ssi_transfer(s->spi, 0x0) << (8 * i);
->          }
->          break;
->      case CTRL_READMODE:
-> @@ -499,7 +499,7 @@ static uint64_t aspeed_smc_flash_read(void *opaque, h=
-waddr addr, unsigned size)
->          aspeed_smc_flash_setup(fl, addr);
->
->          for (i =3D 0; i < size; i++) {
-> -            ret |=3D ssi_transfer(s->spi, 0x0) << (8 * i);
-> +            ret |=3D (uint64_t) ssi_transfer(s->spi, 0x0) << (8 * i);
->          }
->
->          aspeed_smc_flash_unselect(fl);
-> --
-> 2.35.3
->
+If you'd like, I can separate this into separate patch series.
+
+However, as I mentioned in the previous series, I was using oby35-cl to test
+the I2C master and slave mode support in QEMU against Zephyr, and this patch
+series includes everything put together.
+
+Hopefully my patch series actually arrives in one piece this time.
+
+Thanks,
+Peter
+
+v1: https://lore.kernel.org/qemu-devel/20220627195506.403715-1-pdel@fb.com/
+
+Klaus Jensen (3):
+  hw/i2c: support multiple masters
+  hw/i2c: add asynchronous send
+  hw/i2c/aspeed: add slave device in old register mode
+
+Peter Delevoryas (10):
+  hw/i2c/aspeed: Fix R_I2CD_FUN_CTRL reference
+  hw/i2c/aspeed: Fix DMA len write-enable bit handling
+  hw/i2c/aspeed: Fix MASTER_EN missing error message
+  hw/i2c/aspeed: Add new-registers DMA slave mode RX support
+  hw/i2c/pmbus: Reset out buf after switching pages
+  hw/i2c/pmbus: Add read-only IC_DEVICE_ID support
+  hw/misc/aspeed: Add PECI controller
+  hw/misc/aspeed: Add fby35-sb-cpld
+  hw/misc/aspeed: Add intel-me
+  hw/arm/aspeed: Add oby35-cl machine
+
+ MAINTAINERS                      |   2 +
+ hw/arm/aspeed.c                  |  48 +++++++
+ hw/arm/aspeed_ast10x0.c          |  12 ++
+ hw/arm/aspeed_ast2600.c          |  12 ++
+ hw/arm/aspeed_soc.c              |  13 ++
+ hw/arm/pxa2xx.c                  |   2 +
+ hw/display/sii9022.c             |   2 +
+ hw/display/ssd0303.c             |   2 +
+ hw/i2c/aspeed_i2c.c              | 234 +++++++++++++++++++++++++++----
+ hw/i2c/core.c                    |  70 ++++++++-
+ hw/i2c/pmbus_device.c            |   6 +
+ hw/i2c/smbus_slave.c             |   4 +
+ hw/i2c/trace-events              |   2 +
+ hw/misc/aspeed_peci.c            | 136 ++++++++++++++++++
+ hw/misc/fby35_sb_cpld.c          | 128 +++++++++++++++++
+ hw/misc/intel_me.c               | 162 +++++++++++++++++++++
+ hw/misc/meson.build              |   5 +-
+ hw/misc/trace-events             |  12 ++
+ hw/nvram/eeprom_at24c.c          |   2 +
+ hw/sensor/isl_pmbus_vr.c         |  31 ++++
+ hw/sensor/lsm303dlhc_mag.c       |   2 +
+ include/hw/arm/aspeed_soc.h      |   3 +
+ include/hw/i2c/aspeed_i2c.h      |  11 ++
+ include/hw/i2c/i2c.h             |  30 ++++
+ include/hw/i2c/pmbus_device.h    |   1 +
+ include/hw/misc/aspeed_peci.h    |  47 +++++++
+ include/hw/sensor/isl_pmbus_vr.h |   1 +
+ 27 files changed, 950 insertions(+), 30 deletions(-)
+ create mode 100644 hw/misc/aspeed_peci.c
+ create mode 100644 hw/misc/fby35_sb_cpld.c
+ create mode 100644 hw/misc/intel_me.c
+ create mode 100644 include/hw/misc/aspeed_peci.h
+
+-- 
+2.30.2
+

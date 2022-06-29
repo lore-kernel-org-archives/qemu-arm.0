@@ -1,377 +1,243 @@
-Return-Path: <alex.bennee@linaro.org>
-Received: from zen.linaroharston ([51.148.130.216])
-        by smtp.gmail.com with ESMTPSA id i13-20020a170906444d00b00722eeb368cesm7789984ejp.64.2022.06.29.07.19.19
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 29 Jun 2022 07:19:19 -0700 (PDT)
-Received: from zen (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 92ED51FFB7;
-	Wed, 29 Jun 2022 15:19:18 +0100 (BST)
+Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp553402lft;
+        Wed, 29 Jun 2022 08:54:20 -0700 (PDT)
+X-Google-Smtp-Source: AGRyM1uPWubShntNVM9No/HyMG0FM1kJAWP95j+Unc0FeMwO8J3rh6Xtk2YzW3Kp5Cd2zDS3QLCP
+X-Received: by 2002:a7b:c8d8:0:b0:3a0:42ca:d03 with SMTP id f24-20020a7bc8d8000000b003a042ca0d03mr6481427wml.167.1656518060334;
+        Wed, 29 Jun 2022 08:54:20 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1656518060; cv=none;
+        d=google.com; s=arc-20160816;
+        b=oDRVQGMkJFD76rCsy+inKDp08Y6jbblH+EXPnEyV6Ulp6PepzTr0tBuBgqqclOD2A2
+         lOekDE0gCDEHh/UHKQhYFzoNoVJqGcp3UzfKVU3lEmXgeW/wxWGkbHE2/3WDtFOKKhwL
+         8CDeL47FsAKnhIati0A3BkAxAjwnYvaf3sYB027B9EHMuisuUdOUW22tyN/mTAAnTbfw
+         +919M5HRx8LOTceq58IvGQfN9e8caQ9XRTge9dYe7W3vIRcT9JHuRoZF1qrRp9PeUuz1
+         1fGPVUeZH2xaVZVDHzzn28fQsKDFTsTFYIPnT/S9tgODC7CKSqfg7zGG7C6OHTcq7Hni
+         ud9g==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id;
+        bh=9DvNBoCjpEpakUx3CUAaCcOFsL6Ht5ldk6xFBGo4zn4=;
+        b=Ggfyf8LasJDKLO0NvgS9XtmX9N1dMqRhGD85MjLiEKhkNB+slKdoZJOjeVNp0EpLj5
+         vAeWdEzah8GGJXgTu2tx/RxYkhvxZfh4tjC74YGe/DJJJ4xsJm+Il+leuRum7U433DIh
+         XzEjLnQpUOXZsaH7IW1ehhvv4XC0rruKWUYDaj3RlFQLFw90KeqLfvPdZ5ZkxWOTc/vG
+         0WZYv5Q0TRgJQdqKRrt8r3A1D2s2+bZULiQIwBQyxce95CNEuCzrkdv+cdvMjA8uVR9u
+         sUgcDnOZSDkiWY0bOjYqWXlhvOK/3yRPO1fte3PskbrLFUk0wi85O9m5EKkF0fSIqBwj
+         aBwg==
+ARC-Authentication-Results: i=1; mx.google.com;
+       spf=pass (google.com: domain of clg@kaod.org designates 217.182.185.173 as permitted sender) smtp.mailfrom=clg@kaod.org
+Return-Path: <clg@kaod.org>
+Received: from smtpout4.mo529.mail-out.ovh.net (smtpout4.mo529.mail-out.ovh.net. [217.182.185.173])
+        by mx.google.com with ESMTPS id k1-20020adff281000000b0020d0768fe7csi19671548wro.385.2022.06.29.08.54.20
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Wed, 29 Jun 2022 08:54:20 -0700 (PDT)
+Received-SPF: pass (google.com: domain of clg@kaod.org designates 217.182.185.173 as permitted sender) client-ip=217.182.185.173;
+Authentication-Results: mx.google.com;
+       spf=pass (google.com: domain of clg@kaod.org designates 217.182.185.173 as permitted sender) smtp.mailfrom=clg@kaod.org
+Received: from mxplan5.mail.ovh.net (unknown [10.108.4.11])
+	by mo529.mail-out.ovh.net (Postfix) with ESMTPS id 743C3112A5541;
+	Wed, 29 Jun 2022 17:54:18 +0200 (CEST)
+Received: from kaod.org (37.59.142.108) by DAG4EX1.mxp5.local (172.16.2.31)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.9; Wed, 29 Jun
+ 2022 17:54:17 +0200
+Authentication-Results: garm.ovh; auth=pass (GARM-108S0023478675c-440c-4b1f-b544-736c4e1bfce6,
+                    74A1F81DE4F8936248B5873BB0AED4007818FEC6) smtp.auth=clg@kaod.org
+X-OVh-ClientIp: 82.64.250.170
+Message-ID: <8072cd96-a032-55f2-0417-1989a7bbeca0@kaod.org>
+Date: Wed, 29 Jun 2022 17:54:11 +0200
+MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.9.0
+Subject: Re: [PATCH 12/14] aspeed: Make aspeed_board_init_flashes public
+Content-Language: en-US
+To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>
+CC: Peter Delevoryas <pdel@fb.com>, Peter Maydell <peter.maydell@linaro.org>,
+	Andrew Jeffery <andrew@aj.id.au>, Joel Stanley <joel@jms.id.au>,
+	"pbonzini@redhat.com" <pbonzini@redhat.com>, "berrange@redhat.com"
+	<berrange@redhat.com>, "eduardo@habkost.net" <eduardo@habkost.net>,
+	"marcel.apfelbaum@gmail.com" <marcel.apfelbaum@gmail.com>,
+	"richard.henderson@linaro.org" <richard.henderson@linaro.org>,
+	=?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>, "ani@anisinha.ca"
+	<ani@anisinha.ca>, Cameron Esfahani via <qemu-devel@nongnu.org>, qemu-arm
+	<qemu-arm@nongnu.org>
 References: <20220623102617.2164175-1-pdel@fb.com>
  <20220623102617.2164175-13-pdel@fb.com>
  <e5f51f14-fe75-0d55-6588-a3ca2565f760@kaod.org>
  <EC44C0BD-7BC0-4BDE-9A41-CB1EAA90EC87@fb.com>
  <e07ec4fe-6968-b19a-e649-298a9aaccba5@kaod.org>
- <07128acf-329a-f372-c48c-0c3cb498d3d0@kaod.org>
-User-agent: mu4e 1.7.27; emacs 28.1.50
-From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: =?utf-8?Q?C=C3=A9dric?= Le Goater <clg@kaod.org>
-Cc: Peter Delevoryas <pdel@fb.com>, Peter Maydell
- <peter.maydell@linaro.org>, Andrew Jeffery <andrew@aj.id.au>, Joel Stanley
- <joel@jms.id.au>, "pbonzini@redhat.com" <pbonzini@redhat.com>,
- "berrange@redhat.com" <berrange@redhat.com>, "eduardo@habkost.net"
- <eduardo@habkost.net>, "marcel.apfelbaum@gmail.com"
- <marcel.apfelbaum@gmail.com>, "richard.henderson@linaro.org"
- <richard.henderson@linaro.org>, Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?=
- <f4bug@amsat.org>,
- "ani@anisinha.ca" <ani@anisinha.ca>, Cameron Esfahani via
- <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>
-Subject: Re: [PATCH 12/14] aspeed: Make aspeed_board_init_flashes public
-Date: Wed, 29 Jun 2022 15:14:10 +0100
-In-reply-to: <07128acf-329a-f372-c48c-0c3cb498d3d0@kaod.org>
-Message-ID: <87zghvh7rt.fsf@linaro.org>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-TUID: qczELHYT5Hur
+ <07128acf-329a-f372-c48c-0c3cb498d3d0@kaod.org> <87zghvh7rt.fsf@linaro.org>
+From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
+In-Reply-To: <87zghvh7rt.fsf@linaro.org>
+Content-Type: text/plain; charset="UTF-8"; format=flowed
+Content-Transfer-Encoding: 8bit
+X-Originating-IP: [37.59.142.108]
+X-ClientProxiedBy: DAG9EX1.mxp5.local (172.16.2.81) To DAG4EX1.mxp5.local
+ (172.16.2.31)
+X-Ovh-Tracer-GUID: 2f0b3297-9582-42e1-99e7-6c1b329f450b
+X-Ovh-Tracer-Id: 8478589249587612478
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvfedrudegledgleegucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhepkfffgggfuffvvehfhfgjtgfgihesthekredttdefjeenucfhrhhomhepveorughrihgtpgfnvggpifhorghtvghruceotghlgheskhgrohgurdhorhhgqeenucggtffrrghtthgvrhhnpeekteejtdelkeejvdevffduhfetteelieefgeefffeugffhfeekheffueefledujeenucfkpheptddrtddrtddrtddpfeejrdehledrudegvddruddtkeenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhhouggvpehsmhhtphhouhhtpdhhvghlohepmhigphhlrghnhedrmhgrihhlrdhovhhhrdhnvghtpdhinhgvtheptddrtddrtddrtddpmhgrihhlfhhrohhmpegtlhhgsehkrghougdrohhrghdpnhgspghrtghpthhtohepuddprhgtphhtthhopehqvghmuhdqrghrmhesnhhonhhgnhhurdhorhhgpdfovfetjfhoshhtpehmohehvdel
+X-TUID: nKfCCXxWqX50
 
-
-C=C3=A9dric Le Goater <clg@kaod.org> writes:
-
-> On 6/24/22 18:50, C=C3=A9dric Le Goater wrote:
->> On 6/23/22 20:43, Peter Delevoryas wrote:
->>>
->>>
->>>> On Jun 23, 2022, at 8:09 AM, C=C3=A9dric Le Goater <clg@kaod.org> wrot=
-e:
+On 6/29/22 16:14, Alex Bennée wrote:
+> 
+> Cédric Le Goater <clg@kaod.org> writes:
+> 
+>> On 6/24/22 18:50, Cédric Le Goater wrote:
+>>> On 6/23/22 20:43, Peter Delevoryas wrote:
 >>>>
->>>> On 6/23/22 12:26, Peter Delevoryas wrote:
->>>>> Signed-off-by: Peter Delevoryas <pdel@fb.com>
 >>>>
->>>> Let's start simple without flash support. We should be able to
->>>> load FW blobs in each CPU address space using loader devices.
->>>
->>> Actually, I was unable to do this, perhaps because the fb OpenBMC
->>> boot sequence is a little weird. I specifically _needed_ to have
->>> a flash device which maps the firmware in at 0x2000_0000, because
->>> the fb OpenBMC U-Boot SPL jumps to that address to start executing
->>> from flash? I think this is also why fb OpenBMC machines can be so slow.
->>>
->>> $ ./build/qemu-system-arm -machine fby35 \
->>> =C2=A0=C2=A0=C2=A0=C2=A0 -device loader,file=3Dfby35.mtd,addr=3D0,cpu-n=
-um=3D0 -nographic \
->>> =C2=A0=C2=A0=C2=A0=C2=A0 -d int -drive file=3Dfby35.mtd,format=3Draw,if=
-=3Dmtd
->> Ideally we should be booting from the flash device directly using
->> the machine option '-M ast2600-evb,execute-in-place=3Dtrue' like HW
->> does. Instructions are fetched using SPI transfers. But the amount
->> of code generated is tremendous.
-
-Yeah because there is a potential race when reading from HW so we throw
-away TB's after executing them because we have no way of knowing if it
-has changed under our feet. See 873d64ac30 (accel/tcg: re-factor non-RAM
-execution code) which cleaned up this handling.
-
->> See some profiling below for a
->> run which barely reaches DRAM training in U-Boot.
->
-> Some more profiling on both ast2500 and ast2600 machines shows :
->
->
-> * ast2600-evb,execute-in-place=3Dtrue :
->
-> Type               Object  Call site                Wait Time (s)        =
- Count  Average (us)
-> -------------------------------------------------------------------------=
---------------------
-> BQL mutex  0x564dc03922e0  accel/tcg/cputlb.c:1365       14.21443
-> 32909927          0.43
-
-This is unavoidable as a HW access needs the BQL held so we will go
-through this cycle every executed instruction.
-
-Did I miss why the flash contents are not mapped into the physical
-address space? Isn't that how it appear to the processor?
-
-> condvar    0x564dc0f02988  util/thread-pool.c:90         10.02312        =
-    56     178984.32
-> condvar    [           2]  softmmu/cpus.c:423             0.10051        =
-     6      16752.04
-> BQL mutex  0x564dc03922e0  util/rcu.c:269                 0.04372        =
-     4      10930.60
-> BQL mutex  0x564dc03922e0  cpus-common.c:341              0.00151        =
-     8        189.16
-> condvar    0x564dc0390360  cpus-common.c:176              0.00092        =
-     8        115.04
-> condvar    0x564dc0392280  softmmu/cpus.c:642             0.00013        =
-     2         65.04
-> condvar    0x564dc0392240  softmmu/cpus.c:571             0.00010        =
-     2         49.54
-> BQL mutex  0x564dc03922e0  accel/tcg/cputlb.c:1426        0.00006        =
-   467          0.14
-> condvar    0x564dc03903a0  cpus-common.c:206              0.00004        =
-     8          5.28
-> -------------------------------------------------------------------------=
---------------------
->
->
-> * ast2500-evb,execute-in-place=3Dtrue :
->
-> Type               Object  Call site                Wait Time (s)        =
- Count  Average (us)
-> -------------------------------------------------------------------------=
---------------------
-> condvar    0x55a581137f88  util/thread-pool.c:90         10.01158        =
-    28     357556.50
-> BQL mutex  0x55a57f0e02e0  accel/tcg/cputlb.c:1365        0.29886      14=
-394475          0.02
-> condvar    0x55a5814cb5a0  softmmu/cpus.c:423             0.02182        =
-     2      10912.44
-> BQL mutex  0x55a57f0e02e0  util/rcu.c:269                 0.01420        =
-     4       3549.56
-> mutex      0x55a5813381c0  tcg/region.c:204               0.00007        =
-  3052          0.02
-> condvar    0x55a57f0e0280  softmmu/cpus.c:642             0.00006        =
-     1         59.79
-> mutex      [           2]  chardev/char.c:118             0.00003        =
-  1492          0.02
-> BQL mutex  0x55a57f0e02e0  util/main-loop.c:318           0.00002        =
-    34          0.72
-> BQL mutex  0x55a57f0e02e0  accel/tcg/cputlb.c:1426        0.00002        =
-   973          0.02
-> condvar    0x55a57f0e0240  softmmu/cpus.c:571             0.00002        =
-     1         15.16
-> -------------------------------------------------------------------------=
---------------------
->
-> C.
->
->
->
->> * execute-in-place=3Dtrue
->> Each sample counts as 0.01 seconds.
->>  =C2=A0 %=C2=A0=C2=A0 cumulative=C2=A0=C2=A0 self=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 self=C2=A0=C2=A0=
-=C2=A0=C2=A0 total
->>  =C2=A0time=C2=A0=C2=A0 seconds=C2=A0=C2=A0 seconds=C2=A0=C2=A0=C2=A0 ca=
-lls=C2=A0 ns/call=C2=A0 ns/call=C2=A0 name
->> 100.00=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 0.02=C2=A0=C2=A0=C2=A0=C2=A0 0.02=
-=C2=A0=C2=A0 164276=C2=A0=C2=A0 121.75=C2=A0=C2=A0 121.75=C2=A0 memory_regi=
-on_init_rom_device
->>  =C2=A0 0.00=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 0.02=C2=A0=C2=A0=C2=A0=C2=A0 =
-0.00 1610346008=C2=A0=C2=A0=C2=A0=C2=A0 0.00=C2=A0=C2=A0=C2=A0=C2=A0 0.00=
-=C2=A0 tcg_code_capacity
->>  =C2=A0 0.00=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 0.02=C2=A0=C2=A0=C2=A0=C2=A0 =
-0.00 567612621=C2=A0=C2=A0=C2=A0=C2=A0 0.00=C2=A0=C2=A0=C2=A0=C2=A0 0.00=C2=
-=A0 type_register_static_array
->>  =C2=A0 0.00=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 0.02=C2=A0=C2=A0=C2=A0=C2=A0 =
-0.00 328886191=C2=A0=C2=A0=C2=A0=C2=A0 0.00=C2=A0=C2=A0=C2=A0=C2=A0 0.00=C2=
-=A0 do_common_semihosting
->>  =C2=A0 0.00=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 0.02=C2=A0=C2=A0=C2=A0=C2=A0 =
-0.00 297215811=C2=A0=C2=A0=C2=A0=C2=A0 0.00=C2=A0=C2=A0=C2=A0=C2=A0 0.00=C2=
-=A0 container_get
->>  =C2=A0 0.00=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 0.02=C2=A0=C2=A0=C2=A0=C2=A0 =
-0.00 292670030=C2=A0=C2=A0=C2=A0=C2=A0 0.00=C2=A0=C2=A0=C2=A0=C2=A0 0.00=C2=
-=A0 arm_cpu_tlb_fill
->>  =C2=A0 0.00=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 0.02=C2=A0=C2=A0=C2=A0=C2=A0 =
-0.00 195416119=C2=A0=C2=A0=C2=A0=C2=A0 0.00=C2=A0=C2=A0=C2=A0=C2=A0 0.00=C2=
-=A0 arm_cpu_register_gdb_regs_for_features
->>  =C2=A0 0.00=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 0.02=C2=A0=C2=A0=C2=A0=C2=A0 =
-0.00 193326677=C2=A0=C2=A0=C2=A0=C2=A0 0.00=C2=A0=C2=A0=C2=A0=C2=A0 0.00=C2=
-=A0 object_type_get_instance_size
->>  =C2=A0 0.00=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 0.02=C2=A0=C2=A0=C2=A0=C2=A0 =
-0.00 182365829=C2=A0=C2=A0=C2=A0=C2=A0 0.00=C2=A0=C2=A0=C2=A0=C2=A0 0.00=C2=
-=A0 tcg_op_insert_after
->>  =C2=A0 0.00=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 0.02=C2=A0=C2=A0=C2=A0=C2=A0 =
-0.00 150668458=C2=A0=C2=A0=C2=A0=C2=A0 0.00=C2=A0=C2=A0=C2=A0=C2=A0 0.00=C2=
-=A0 plugin_gen_tb_end
->>  =C2=A0 0.00=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 0.02=C2=A0=C2=A0=C2=A0=C2=A0 =
-0.00 142171940=C2=A0=C2=A0=C2=A0=C2=A0 0.00=C2=A0=C2=A0=C2=A0=C2=A0 0.00=C2=
-=A0 gen_new_label
->>  =C2=A0 0.00=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 0.02=C2=A0=C2=A0=C2=A0=C2=A0 =
-0.00 133200628=C2=A0=C2=A0=C2=A0=C2=A0 0.00=C2=A0=C2=A0=C2=A0=C2=A0 0.00=C2=
-=A0 smbios_build_type_38_table
->>  =C2=A0 0.00=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 0.02=C2=A0=C2=A0=C2=A0=C2=A0 =
-0.00 130540338=C2=A0=C2=A0=C2=A0=C2=A0 0.00=C2=A0=C2=A0=C2=A0=C2=A0 0.00=C2=
-=A0 object_dynamic_cast_assert
->>  =C2=A0 0.00=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 0.02=C2=A0=C2=A0=C2=A0=C2=A0 =
-0.00 129223195=C2=A0=C2=A0=C2=A0=C2=A0 0.00=C2=A0=C2=A0=C2=A0=C2=A0 0.00=C2=
-=A0 cpu_loop_exit_atomic
->>  =C2=A0 0.00=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 0.02=C2=A0=C2=A0=C2=A0=C2=A0 =
-0.00 121759298=C2=A0=C2=A0=C2=A0=C2=A0 0.00=C2=A0=C2=A0=C2=A0=C2=A0 0.00=C2=
-=A0 tcg_remove_ops_after
->>  =C2=A0 0.00=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 0.02=C2=A0=C2=A0=C2=A0=C2=A0 =
-0.00 116887887=C2=A0=C2=A0=C2=A0=C2=A0 0.00=C2=A0=C2=A0=C2=A0=C2=A0 0.00=C2=
-=A0 in_code_gen_buffer
->>  =C2=A0 0.00=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 0.02=C2=A0=C2=A0=C2=A0=C2=A0 =
-0.00 111803833=C2=A0=C2=A0=C2=A0=C2=A0 0.00=C2=A0=C2=A0=C2=A0=C2=A0 0.00=C2=
-=A0 tcg_emit_op
->>  =C2=A0 0.00=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 0.02=C2=A0=C2=A0=C2=A0=C2=A0 =
-0.00 106052221=C2=A0=C2=A0=C2=A0=C2=A0 0.00=C2=A0=C2=A0=C2=A0=C2=A0 0.00=C2=
-=A0 object_class_dynamic_cast_assert
->>  =C2=A0 0.00=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 0.02=C2=A0=C2=A0=C2=A0=C2=A0 =
-0.00 99704054=C2=A0=C2=A0=C2=A0=C2=A0 0.00=C2=A0=C2=A0=C2=A0=C2=A0 0.00=C2=
-=A0 __jit_debug_register_code
->>  =C2=A0 0.00=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 0.02=C2=A0=C2=A0=C2=A0=C2=A0 =
-0.00 97812458=C2=A0=C2=A0=C2=A0=C2=A0 0.00=C2=A0=C2=A0=C2=A0=C2=A0 0.00=C2=
-=A0 object_get_class
->>  =C2=A0 0.00=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 0.02=C2=A0=C2=A0=C2=A0=C2=A0 =
-0.00 88952594=C2=A0=C2=A0=C2=A0=C2=A0 0.00=C2=A0=C2=A0=C2=A0=C2=A0 0.00=C2=
-=A0 tcg_splitwx_to_rx
->>  =C2=A0 0.00=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 0.02=C2=A0=C2=A0=C2=A0=C2=A0 =
-0.00 85790920=C2=A0=C2=A0=C2=A0=C2=A0 0.00=C2=A0=C2=A0=C2=A0=C2=A0 0.00=C2=
-=A0 object_class_dynamic_cast
->>  =C2=A0 0.00=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 0.02=C2=A0=C2=A0=C2=A0=C2=A0 =
-0.00 73780673=C2=A0=C2=A0=C2=A0=C2=A0 0.00=C2=A0=C2=A0=C2=A0=C2=A0 0.00=C2=
-=A0 helper_exit_atomic
->>  =C2=A0 0.00=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 0.02=C2=A0=C2=A0=C2=A0=C2=A0 =
-0.00 65337482=C2=A0=C2=A0=C2=A0=C2=A0 0.00=C2=A0=C2=A0=C2=A0=C2=A0 0.00=C2=
-=A0 tcg_op_supported
->>  =C2=A0 0.00=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 0.02=C2=A0=C2=A0=C2=A0=C2=A0 =
-0.00 61213619=C2=A0=C2=A0=C2=A0=C2=A0 0.00=C2=A0=C2=A0=C2=A0=C2=A0 0.00=C2=
-=A0 tcg_func_start
->>  =C2=A0 0.00=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 0.02=C2=A0=C2=A0=C2=A0=C2=A0 =
-0.00 54477684=C2=A0=C2=A0=C2=A0=C2=A0 0.00=C2=A0=C2=A0=C2=A0=C2=A0 0.00=C2=
-=A0 tcg_flush_softmmu_tlb
->>  =C2=A0 0.00=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 0.02=C2=A0=C2=A0=C2=A0=C2=A0 =
-0.00 53968980=C2=A0=C2=A0=C2=A0=C2=A0 0.00=C2=A0=C2=A0=C2=A0=C2=A0 0.00=C2=
-=A0 tcg_temp_new_internal
->>  =C2=A0 0.00=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 0.02=C2=A0=C2=A0=C2=A0=C2=A0 =
-0.00 51526008=C2=A0=C2=A0=C2=A0=C2=A0 0.00=C2=A0=C2=A0=C2=A0=C2=A0 0.00=C2=
-=A0 qemu_in_vcpu_thread
->>  =C2=A0 0.00=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 0.02=C2=A0=C2=A0=C2=A0=C2=A0 =
-0.00 40750952=C2=A0=C2=A0=C2=A0=C2=A0 0.00=C2=A0=C2=A0=C2=A0=C2=A0 0.00=C2=
-=A0 pflash_cfi02_register
->>  =C2=A0 0.00=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 0.02=C2=A0=C2=A0=C2=A0=C2=A0 =
-0.00 38039442=C2=A0=C2=A0=C2=A0=C2=A0 0.00=C2=A0=C2=A0=C2=A0=C2=A0 0.00=C2=
-=A0 tcg_gen_op2
->>  =C2=A0 0.00=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 0.02=C2=A0=C2=A0=C2=A0=C2=A0 =
-0.00 37068039=C2=A0=C2=A0=C2=A0=C2=A0 0.00=C2=A0=C2=A0=C2=A0=C2=A0 0.00=C2=
-=A0 tcg_gen_op1
->>  =C2=A0 0.00=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 0.02=C2=A0=C2=A0=C2=A0=C2=A0 =
-0.00 36473276=C2=A0=C2=A0=C2=A0=C2=A0 0.00=C2=A0=C2=A0=C2=A0=C2=A0 0.00=C2=
-=A0 tcg_gen_op3
->>  =C2=A0 0.00=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 0.02=C2=A0=C2=A0=C2=A0=C2=A0 =
-0.00 36310225=C2=A0=C2=A0=C2=A0=C2=A0 0.00=C2=A0=C2=A0=C2=A0=C2=A0 0.00=C2=
-=A0 gen_gvec_uaba
->>  =C2=A0 0.00=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 0.02=C2=A0=C2=A0=C2=A0=C2=A0 =
-0.00 30985436=C2=A0=C2=A0=C2=A0=C2=A0 0.00=C2=A0=C2=A0=C2=A0=C2=A0 0.00=C2=
-=A0 tb_set_jmp_target
->>  =C2=A0 0.00=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 0.02=C2=A0=C2=A0=C2=A0=C2=A0 =
-0.00 30291796=C2=A0=C2=A0=C2=A0=C2=A0 0.00=C2=A0=C2=A0=C2=A0=C2=A0 0.00=C2=
-=A0 tcg_constant_internal
->>  =C2=A0 0.00=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 0.02=C2=A0=C2=A0=C2=A0=C2=A0 =
-0.00 29857950=C2=A0=C2=A0=C2=A0=C2=A0 0.00=C2=A0=C2=A0=C2=A0=C2=A0 0.00=C2=
-=A0 ssi_transfer
->> * execute-in-place=3Dfalse
->> Each sample counts as 0.01 seconds.
->>  =C2=A0 %=C2=A0=C2=A0 cumulative=C2=A0=C2=A0 self=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 self=C2=A0=C2=A0=
-=C2=A0=C2=A0 total
->>  =C2=A0time=C2=A0=C2=A0 seconds=C2=A0=C2=A0 seconds=C2=A0=C2=A0=C2=A0 ca=
-lls=C2=A0 ns/call=C2=A0 ns/call=C2=A0 name
->>  =C2=A040.00=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 0.02=C2=A0=C2=A0=C2=A0=C2=A0 =
-0.02=C2=A0=C2=A0 551149=C2=A0=C2=A0=C2=A0 36.29=C2=A0=C2=A0=C2=A0 36.29=C2=
-=A0 aspeed_board_init_flashes
->>  =C2=A020.00=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 0.03=C2=A0=C2=A0=C2=A0=C2=A0 =
-0.01=C2=A0 3937238=C2=A0=C2=A0=C2=A0=C2=A0 2.54=C2=A0=C2=A0=C2=A0=C2=A0 2.5=
-4=C2=A0 register_cp_regs_for_features
->>  =C2=A020.00=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 0.04=C2=A0=C2=A0=C2=A0=C2=A0 =
-0.01=C2=A0=C2=A0 674096=C2=A0=C2=A0=C2=A0 14.83=C2=A0=C2=A0=C2=A0 14.83=C2=
-=A0 gen_gvec_uaba
->>  =C2=A020.00=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 0.05=C2=A0=C2=A0=C2=A0=C2=A0 =
-0.01=C2=A0=C2=A0 457461=C2=A0=C2=A0=C2=A0 21.86=C2=A0=C2=A0=C2=A0 21.86=C2=
-=A0 finalize_target_page_bits
->>  =C2=A0 0.00=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 0.05=C2=A0=C2=A0=C2=A0=C2=A0 =
-0.00=C2=A0 5364258=C2=A0=C2=A0=C2=A0=C2=A0 0.00=C2=A0=C2=A0=C2=A0=C2=A0 0.0=
-0=C2=A0 arm_gt_hvtimer_cb
->>  =C2=A0 0.00=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 0.05=C2=A0=C2=A0=C2=A0=C2=A0 =
-0.00=C2=A0 2467532=C2=A0=C2=A0=C2=A0=C2=A0 0.00=C2=A0=C2=A0=C2=A0=C2=A0 0.0=
-0=C2=A0 helper_neon_narrow_sat_s8
->>  =C2=A0 0.00=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 0.05=C2=A0=C2=A0=C2=A0=C2=A0 =
-0.00=C2=A0 2431860=C2=A0=C2=A0=C2=A0=C2=A0 0.00=C2=A0=C2=A0=C2=A0=C2=A0 0.0=
-0=C2=A0 opb_opb2fsi_address
->>  =C2=A0 0.00=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 0.05=C2=A0=C2=A0=C2=A0=C2=A0 =
-0.00=C2=A0 1828453=C2=A0=C2=A0=C2=A0=C2=A0 0.00=C2=A0=C2=A0=C2=A0=C2=A0 0.0=
-0=C2=A0 cpsr_read
->>  =C2=A0 0.00=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 0.05=C2=A0=C2=A0=C2=A0=C2=A0 =
-0.00=C2=A0 1820659=C2=A0=C2=A0=C2=A0=C2=A0 0.00=C2=A0=C2=A0=C2=A0=C2=A0 0.0=
-0=C2=A0 cpu_get_tb_cpu_state
->>  =C2=A0 0.00=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 0.05=C2=A0=C2=A0=C2=A0=C2=A0 =
-0.00=C2=A0 1441344=C2=A0=C2=A0=C2=A0=C2=A0 0.00=C2=A0=C2=A0=C2=A0=C2=A0 0.0=
-0=C2=A0 arm_cpu_tlb_fill
->>  =C2=A0 0.00=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 0.05=C2=A0=C2=A0=C2=A0=C2=A0 =
-0.00=C2=A0 1427177=C2=A0=C2=A0=C2=A0=C2=A0 0.00=C2=A0=C2=A0=C2=A0=C2=A0 0.0=
-0=C2=A0 cxl_usp_to_cstate
->>  =C2=A0 0.00=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 0.05=C2=A0=C2=A0=C2=A0=C2=A0 =
-0.00=C2=A0 1161059=C2=A0=C2=A0=C2=A0=C2=A0 0.00=C2=A0=C2=A0=C2=A0=C2=A0 5.8=
-5=C2=A0 aarch64_sync_64_to_32
->>  =C2=A0 0.00=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 0.05=C2=A0=C2=A0=C2=A0=C2=A0 =
-0.00=C2=A0=C2=A0 886523=C2=A0=C2=A0=C2=A0=C2=A0 0.00=C2=A0=C2=A0=C2=A0=C2=
-=A0 0.00=C2=A0 helper_iwmmxt_maxsb
->>  =C2=A0 0.00=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 0.05=C2=A0=C2=A0=C2=A0=C2=A0 =
-0.00=C2=A0=C2=A0 831393=C2=A0=C2=A0=C2=A0=C2=A0 0.00=C2=A0=C2=A0=C2=A0=C2=
-=A0 0.00=C2=A0 arm_log_exception
->>  =C2=A0 0.00=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 0.05=C2=A0=C2=A0=C2=A0=C2=A0 =
-0.00=C2=A0=C2=A0 746940=C2=A0=C2=A0=C2=A0=C2=A0 0.00=C2=A0=C2=A0=C2=A0=C2=
-=A0 0.00=C2=A0 helper_v7m_preserve_fp_state
->>  =C2=A0 0.00=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 0.05=C2=A0=C2=A0=C2=A0=C2=A0 =
-0.00=C2=A0=C2=A0 728354=C2=A0=C2=A0=C2=A0=C2=A0 0.00=C2=A0=C2=A0=C2=A0=C2=
-=A0 0.00=C2=A0 hmp_calc_dirty_rate
->>  =C2=A0 0.00=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 0.05=C2=A0=C2=A0=C2=A0=C2=A0 =
-0.00=C2=A0=C2=A0 681634=C2=A0=C2=A0=C2=A0=C2=A0 0.00=C2=A0=C2=A0=C2=A0=C2=
-=A0 0.00=C2=A0 helper_sadd8
->>  =C2=A0 0.00=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 0.05=C2=A0=C2=A0=C2=A0=C2=A0 =
-0.00=C2=A0=C2=A0 487743=C2=A0=C2=A0=C2=A0=C2=A0 0.00=C2=A0=C2=A0=C2=A0=C2=
-=A0 7.14=C2=A0 qmp_query_cpu_definitions
->>  =C2=A0 0.00=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 0.05=C2=A0=C2=A0=C2=A0=C2=A0 =
-0.00=C2=A0=C2=A0 420528=C2=A0=C2=A0=C2=A0=C2=A0 0.00=C2=A0=C2=A0=C2=A0=C2=
-=A0 0.00=C2=A0 arm_v7m_cpu_do_interrupt
->>  =C2=A0 0.00=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 0.05=C2=A0=C2=A0=C2=A0=C2=A0 =
-0.00=C2=A0=C2=A0 382245=C2=A0=C2=A0=C2=A0=C2=A0 0.00=C2=A0=C2=A0=C2=A0=C2=
-=A0 0.00=C2=A0 helper_ssub8
->>  =C2=A0 0.00=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 0.05=C2=A0=C2=A0=C2=A0=C2=A0 =
-0.00=C2=A0=C2=A0 374192=C2=A0=C2=A0=C2=A0=C2=A0 0.00=C2=A0=C2=A0=C2=A0=C2=
-=A0 0.00=C2=A0 helper_usub8
->>  =C2=A0 0.00=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 0.05=C2=A0=C2=A0=C2=A0=C2=A0 =
-0.00=C2=A0=C2=A0 347199=C2=A0=C2=A0=C2=A0=C2=A0 0.00=C2=A0=C2=A0=C2=A0=C2=
-=A0 0.00=C2=A0 usb_msd_load_request
->>  =C2=A0 0.00=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 0.05=C2=A0=C2=A0=C2=A0=C2=A0 =
-0.00=C2=A0=C2=A0 325862=C2=A0=C2=A0=C2=A0=C2=A0 0.00=C2=A0=C2=A0=C2=A0=C2=
-=A0 0.00=C2=A0 target_disas
->>  =C2=A0 0.00=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 0.05=C2=A0=C2=A0=C2=A0=C2=A0 =
-0.00=C2=A0=C2=A0 322375=C2=A0=C2=A0=C2=A0=C2=A0 0.00=C2=A0=C2=A0=C2=A0=C2=
-=A0 0.00=C2=A0 arm_hcrx_el2_eff
->>  =C2=A0 0.00=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 0.05=C2=A0=C2=A0=C2=A0=C2=A0 =
-0.00=C2=A0=C2=A0 317835=C2=A0=C2=A0=C2=A0=C2=A0 0.00=C2=A0=C2=A0=C2=A0=C2=
-=A0 0.00=C2=A0 virtio_bus_device_iommu_enabled
->>  =C2=A0 0.00=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 0.05=C2=A0=C2=A0=C2=A0=C2=A0 =
-0.00=C2=A0=C2=A0 309559=C2=A0=C2=A0=C2=A0=C2=A0 0.00=C2=A0=C2=A0=C2=A0=C2=
-=A0 0.00=C2=A0 mig_throttle_counter_reset
->>  =C2=A0 0.00=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 0.05=C2=A0=C2=A0=C2=A0=C2=A0 =
-0.00=C2=A0=C2=A0 301557=C2=A0=C2=A0=C2=A0=C2=A0 0.00=C2=A0=C2=A0=C2=A0=C2=
-=A0 0.00=C2=A0 ram_bytes_remaining
->>  =C2=A0 0.00=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 0.05=C2=A0=C2=A0=C2=A0=C2=A0 =
-0.00=C2=A0=C2=A0 292888=C2=A0=C2=A0=C2=A0=C2=A0 0.00=C2=A0=C2=A0=C2=A0=C2=
-=A0 0.00=C2=A0 helper_v7m_blxns
->>  =C2=A0 0.00=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 0.05=C2=A0=C2=A0=C2=A0=C2=A0 =
-0.00=C2=A0=C2=A0 289093=C2=A0=C2=A0=C2=A0=C2=A0 0.00=C2=A0=C2=A0=C2=A0=C2=
-=A0 0.00=C2=A0 tpm_util_show_buffer
->>  =C2=A0 0.00=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 0.05=C2=A0=C2=A0=C2=A0=C2=A0 =
-0.00=C2=A0=C2=A0 274156=C2=A0=C2=A0=C2=A0=C2=A0 0.00=C2=A0=C2=A0=C2=A0=C2=
-=A0 0.00=C2=A0 helper_sxtb16
->>  =C2=A0 0.00=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 0.05=C2=A0=C2=A0=C2=A0=C2=A0 =
-0.00=C2=A0=C2=A0 273588=C2=A0=C2=A0=C2=A0=C2=A0 0.00=C2=A0=C2=A0=C2=A0=C2=
-=A0 0.00=C2=A0 write_v7m_exception
->>  =C2=A0 0.00=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 0.05=C2=A0=C2=A0=C2=A0=C2=A0 =
-0.00=C2=A0=C2=A0 271619=C2=A0=C2=A0=C2=A0=C2=A0 0.00=C2=A0=C2=A0=C2=A0=C2=
-=A0 0.00=C2=A0 page_size_init
->>  =C2=A0 0.00=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 0.05=C2=A0=C2=A0=C2=A0=C2=A0 =
-0.00=C2=A0=C2=A0 270247=C2=A0=C2=A0=C2=A0=C2=A0 0.00=C2=A0=C2=A0=C2=A0=C2=
-=A0 0.00=C2=A0 qemu_fdt_setprop_sized_cells_from_array
->>  =C2=A0 0.00=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 0.05=C2=A0=C2=A0=C2=A0=C2=A0 =
-0.00=C2=A0=C2=A0 229643=C2=A0=C2=A0=C2=A0=C2=A0 0.00=C2=A0=C2=A0=C2=A0 14.6=
-9=C2=A0 helper_neon_addl_u32
+>>>>> On Jun 23, 2022, at 8:09 AM, Cédric Le Goater <clg@kaod.org> wrote:
+>>>>>
+>>>>> On 6/23/22 12:26, Peter Delevoryas wrote:
+>>>>>> Signed-off-by: Peter Delevoryas <pdel@fb.com>
+>>>>>
+>>>>> Let's start simple without flash support. We should be able to
+>>>>> load FW blobs in each CPU address space using loader devices.
+>>>>
+>>>> Actually, I was unable to do this, perhaps because the fb OpenBMC
+>>>> boot sequence is a little weird. I specifically _needed_ to have
+>>>> a flash device which maps the firmware in at 0x2000_0000, because
+>>>> the fb OpenBMC U-Boot SPL jumps to that address to start executing
+>>>> from flash? I think this is also why fb OpenBMC machines can be so slow.
+>>>>
+>>>> $ ./build/qemu-system-arm -machine fby35 \
+>>>>       -device loader,file=fby35.mtd,addr=0,cpu-num=0 -nographic \
+>>>>       -d int -drive file=fby35.mtd,format=raw,if=mtd
+>>> Ideally we should be booting from the flash device directly using
+>>> the machine option '-M ast2600-evb,execute-in-place=true' like HW
+>>> does. Instructions are fetched using SPI transfers. But the amount
+>>> of code generated is tremendous.
+> 
+> Yeah because there is a potential race when reading from HW so we throw
+> away TB's after executing them because we have no way of knowing if it
+> has changed under our feet. See 873d64ac30 (accel/tcg: re-factor non-RAM
+> execution code) which cleaned up this handling.
+> 
+>>> See some profiling below for a
+>>> run which barely reaches DRAM training in U-Boot.
+>>
+>> Some more profiling on both ast2500 and ast2600 machines shows :
+>>
+>>
+>> * ast2600-evb,execute-in-place=true :
+>>
+>> Type               Object  Call site                Wait Time (s)         Count  Average (us)
+>> ---------------------------------------------------------------------------------------------
+>> BQL mutex  0x564dc03922e0  accel/tcg/cputlb.c:1365       14.21443
+>> 32909927          0.43
+> 
+> This is unavoidable as a HW access needs the BQL held so we will go
+> through this cycle every executed instruction.
+> 
+> Did I miss why the flash contents are not mapped into the physical
+> address space? Isn't that how it appear to the processor?
 
 
---=20
-Alex Benn=C3=A9e
+There are two modes :
+  
+         if (ASPEED_MACHINE(machine)->mmio_exec) {
+             memory_region_init_alias(boot_rom, NULL, "aspeed.boot_rom",
+                                      &fl->mmio, 0, size);
+             memory_region_add_subregion(get_system_memory(), FIRMWARE_ADDR,
+                                         boot_rom);
+         } else {
+             memory_region_init_rom(boot_rom, NULL, "aspeed.boot_rom",
+                                    size, &error_abort);
+             memory_region_add_subregion(get_system_memory(), FIRMWARE_ADDR,
+                                         boot_rom);
+             write_boot_rom(drive0, FIRMWARE_ADDR, size, &error_abort);
+         }
+
+The default boot mode uses the ROM. No issue.
+
+The "execute-in-place=true" option creates an alias on the region of
+the flash contents and each instruction is then fetched from the flash
+drive with SPI transactions.
+
+With old FW images, using an older U-boot, the machine boots in a couple
+of seconds. See the profiling below for a witherspoon-bmc machine using
+U-Boot 2016.07.
+
+   qemu-system-arm -M witherspoon-bmc,execute-in-place=true  -drive file=./flash-witherspoon-bmc,format=raw,if=mtd -drive file=./flash-witherspoon-bmc2,format=raw,if=mtd -nographic -nodefaults -snapshot -serial mon:stdio -enable-sync-profile
+   ...
+   U-Boot 2016.07-00040-g8425e96e2e27-dirty (Jun 24 2022 - 23:21:57 +0200)
+   
+          Watchdog enabled
+   DRAM:  496 MiB
+   Flash: 32 MiB
+   In:    serial
+   Out:   serial
+   Err:   serial
+   Net:
+   (qemu) info sync-profile
+   Type               Object  Call site                Wait Time (s)         Count  Average (us)
+   ---------------------------------------------------------------------------------------------
+   BQL mutex  0x56189610b2e0  accel/tcg/cputlb.c:1365        0.25311      12346237          0.02
+   condvar    0x5618970cf220  softmmu/cpus.c:423             0.05506             2      27530.78
+   BQL mutex  0x56189610b2e0  util/rcu.c:269                 0.04709             2      23544.26
+   condvar    0x561896d0fc78  util/thread-pool.c:90          0.01340            83        161.47
+   condvar    0x56189610b240  softmmu/cpus.c:571             0.00005             1         54.93
+   condvar    0x56189610b280  softmmu/cpus.c:642             0.00003             1         32.88
+   BQL mutex  0x56189610b2e0  util/main-loop.c:318           0.00003            34          0.76
+   mutex      0x561896eade00  tcg/region.c:204               0.00002           995          0.02
+   rec_mutex  [           2]  util/async.c:682               0.00002           493          0.03
+   mutex      [           2]  chardev/char.c:118             0.00001           404          0.03
+   ---------------------------------------------------------------------------------------------
+
+
+However, with recent U-boots, it takes quite a while to reach DRAM training.
+Close to a minute. See the profiling below for an ast2500-evb machine using
+U-Boot 2019.04.
+
+  qemu-system-arm -M ast2500-evb,execute-in-place=true  -net nic,macaddr=C0:FF:EE:00:00:03,netdev=net0  -drive file=./flash-ast2500-evb,format=raw,if=mtd  -nographic -nodefaults -snapshot -serial mon:stdio  -enable-sync-profile
+   qemu-system-arm: warning: Aspeed iBT has no chardev backend
+   qemu-system-arm: warning: nic ftgmac100.1 has no peer
+   QEMU 7.0.50 monitor - type 'help' for more information
+   
+   U-Boot 2019.04-00080-g6ca27db3f97b-dirty (Jun 24 2022 - 23:22:03 +0200)
+   
+   SOC : AST2500-A1
+   RST : Power On
+   LPC Mode : SIO:Enable : SuperIO-2e
+   Eth : MAC0: RGMII, , MAC1: RGMII,
+   Model: AST2500 EVB
+   DRAM:  448 MiB (capacity:512 MiB, VGA:64 MiB, ECC:off)
+   MMC:   sdhci_slot0@100: 0, sdhci_slot1@200: 1
+   Loading Environment from SPI Flash... SF: Detected mx25l25635e with page size 256 Bytes, erase size 64 KiB, total 32 MiB
+   *** Warning - bad CRC, using default environment
+   
+   In:    serial@1e784000
+   Out:   serial@1e784000
+   Err:   serial@1e784000
+   Net:   eth0: ethernet@1e660000
+   Warning: ethernet@1e680000 (eth1) using random MAC address - 4a:e5:9a:4a:c7:c5
+   , eth1: ethernet@1e680000
+   Hit any key to stop autoboot:  2
+   (qemu) info sync-profile
+   Type               Object  Call site                Wait Time (s)         Count  Average (us)
+   ---------------------------------------------------------------------------------------------
+   condvar    0x561f10c9ef88  util/thread-pool.c:90         10.01196            28     357570.00
+   BQL mutex  0x561f102362e0  accel/tcg/cputlb.c:1365        0.29496      14248621          0.02
+   condvar    0x561f110325a0  softmmu/cpus.c:423             0.02231             2      11152.57
+   BQL mutex  0x561f102362e0  util/rcu.c:269                 0.01447             4       3618.60
+   condvar    0x561f10236240  softmmu/cpus.c:571             0.00010             1        102.19
+   mutex      0x561f10e9f1c0  tcg/region.c:204               0.00007          3052          0.02
+   mutex      [           2]  chardev/char.c:118             0.00003          1486          0.02
+   condvar    0x561f10236280  softmmu/cpus.c:642             0.00003             1         29.38
+   BQL mutex  0x561f102362e0  accel/tcg/cputlb.c:1426        0.00002           973          0.02
+   BQL mutex  0x561f102362e0  util/main-loop.c:318           0.00001            34          0.41
+   ---------------------------------------------------------------------------------------------
+   
+
+Something in the layout of the FW is making a big difference. One
+that could be relevant is that the recent versions are using a device
+tree.
+
+There might be no good solution to this issue but I fail to analyze
+it correctly. Is there a way to collect information on the usage of
+Translation Blocks ?
+
+Thanks,
+
+C.

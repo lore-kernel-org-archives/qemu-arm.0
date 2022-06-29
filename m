@@ -1,97 +1,96 @@
-Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp265011lft;
-        Wed, 29 Jun 2022 01:32:24 -0700 (PDT)
-X-Google-Smtp-Source: AGRyM1uZ2HFUmHSmGRIVEWjIPSxpMmnVHsLeZyWcrSUybjFIgLRCtgP7GjDtT49+r9Hqps6gbd3b
-X-Received: by 2002:a05:620a:4491:b0:6af:2d17:899e with SMTP id x17-20020a05620a449100b006af2d17899emr1089918qkp.745.1656491544230;
-        Wed, 29 Jun 2022 01:32:24 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1656491544; cv=none;
+Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp265115lft;
+        Wed, 29 Jun 2022 01:32:38 -0700 (PDT)
+X-Google-Smtp-Source: AGRyM1umGgb3xoK1NeggrOaM8tTcxxuBfMQ92k9DQ0QmMB/NxC1By64XzZbVR7HrsjKMMulzvDNC
+X-Received: by 2002:a05:620a:4454:b0:6af:3752:e8b5 with SMTP id w20-20020a05620a445400b006af3752e8b5mr1116380qkp.286.1656491557962;
+        Wed, 29 Jun 2022 01:32:37 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1656491557; cv=none;
         d=google.com; s=arc-20160816;
-        b=jIvO8V/zToVAREnOcnVirmff+ovLpJHMf+sPmc3pk9bqMk87+ngOUWlQhoBZotsp2h
-         rA9JQkYTO9ejGQmWVKHleUAxroOFdjp/4jfnkL5200DL9Gv5c5DSvbU4Fb7x8FKj+zUA
-         o22hNn5l41N6xprT4RSFsDtMdj+u6knH0r9jEHk3z//lYUT8cwyi79EzMRE1g9NBHLcN
-         Xyq6Sqj13o0IShqm94OIA9iB7f2wabKNVwO+75RMaAwu+Tj9iVFJfqnQEivCOFhuKEHz
-         ByqgbXNYAxlUmXyPS7icZP/2oV6PCpUThaBi/NlNoaijWxXCRpLtTlSPYQQdYZZMukNb
-         hLWw==
+        b=vGXq76NzuX0yZlha2JgX9grBTYplFnl8J3BhNLclTnCBQWNw8KgXzm17CJd1/i2etP
+         2z0RIflYdz9jGtTpFcsrhqki6On8Ns3IGJj8UvLL949vqwhxta7+azoALCH8pYtgvqq7
+         5MX7xdXb8XMwGfv5mgX+J6aWSIcT5pmF3fhRhODRBAmGDSaWuD6Yc8sqZIAwTDH19Ab+
+         iaiu8rq9rwcUpViig6y7KayW/0+Ydfxon+eoo9PbZndeiLGoZU16w9v1+hZDDDRAg0iZ
+         l1C4sKLqygKHkSFX8CN3JqffCQ6OE5ttrQfA33hlX2cLvFoYSti4dCI5In0fxkPjC37W
+         mCSQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :in-reply-to:from:references:cc:to:content-language:subject
          :user-agent:mime-version:date:message-id;
-        bh=eztZzd3yN5tIapbimqG8zb4i7wuRcuauuLtCKhLxTRw=;
-        b=WWO+PN4N9cdLnWz46Sh/j0kzYEHuoypyJSlUkEXBOeD2O/4KsHejh0sg0+t54RzOuq
-         JyZqVO9MdNmMUi2skl7tPUL2cJ6trI3Vlo/DwEb40wnRIfEu3qf77kq8a80Sesp2m0w9
-         FtGvDZOTzQKX6OV/0YL0Oyut9QqjI3XbG6kr/J4r4yOJKoa0r2Ci130VNNDlihm4zLMp
-         5VTkRvWbefJKY1kK/WC9dPK0slB2OsEwX1qRvdO9kQPHKoPPFY+MS0FMPl6J9psaDi9k
-         dkHw0o93fi5L03hsQcZ2MbMhb943ToWYWjNevnHf4r+sLNf1+6ePzMRnkOnCCn1xC8tp
-         yIKg==
+        bh=ImJg56o2VXp0IsuoZ8l5rYzi6tZP+qjqFpZbkt7N4go=;
+        b=dYrT+9OQMMmRngPckdeszTdJI74Jwj4gm1aA+PD5lyrNZqLDllMhH4gxr+I3zGwcPD
+         6lCLuB53P+P07ZUDazgvgeYkakIrzo6UVGOAGOFrXmCoV2Nk6qcIBIDmU74DusLxK+Oa
+         DES61/ZqE4QYZ5xXOTlTLXUvnLoK620QHhpQX3fJdPTsdpOTp8VPL8zrXksuaUu58eXf
+         On+cN/lf2h6niPfKUd4ohcHbe7DJAoTq0y6VkDC34mD6abuIN7ViPkSvCXOMDW+zuGCK
+         buBwiToI71MAksQXBV2v95J87DrjnronlWu/+JSu5uPQcrbvp6Oysq9fJMkYzuPnNDo1
+         X8Bg==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id n2-20020a05622a11c200b002fb85bcffebsi3785227qtk.28.2022.06.29.01.32.24
+        by mx.google.com with ESMTPS id b19-20020ac87fd3000000b00304ebd7a2bbsi4167048qtk.448.2022.06.29.01.32.37
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 29 Jun 2022 01:32:24 -0700 (PDT)
+        Wed, 29 Jun 2022 01:32:37 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:44650 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:45100 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1o6T7X-0002im-Jl
-	for alex.bennee@linaro.org; Wed, 29 Jun 2022 04:32:23 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:50588)
+	id 1o6T7l-00032r-9R
+	for alex.bennee@linaro.org; Wed, 29 Jun 2022 04:32:37 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:50494)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1o6T6l-0002d3-Dx
- for qemu-arm@nongnu.org; Wed, 29 Jun 2022 04:31:35 -0400
-Received: from 9.mo548.mail-out.ovh.net ([46.105.48.137]:33233)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1o6T6N-0002Ed-7R
+ for qemu-arm@nongnu.org; Wed, 29 Jun 2022 04:31:18 -0400
+Received: from 5.mo552.mail-out.ovh.net ([188.165.45.220]:33357)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1o6T6j-00048F-Ix
- for qemu-arm@nongnu.org; Wed, 29 Jun 2022 04:31:35 -0400
-Received: from mxplan5.mail.ovh.net (unknown [10.108.4.12])
- by mo548.mail-out.ovh.net (Postfix) with ESMTPS id A334023110;
- Wed, 29 Jun 2022 08:31:28 +0000 (UTC)
-Received: from kaod.org (37.59.142.108) by DAG4EX1.mxp5.local (172.16.2.31)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1o6T6K-000461-7c
+ for qemu-arm@nongnu.org; Wed, 29 Jun 2022 04:31:10 -0400
+Received: from mxplan5.mail.ovh.net (unknown [10.109.143.167])
+ by mo552.mail-out.ovh.net (Postfix) with ESMTPS id 5E73F27258;
+ Wed, 29 Jun 2022 08:31:03 +0000 (UTC)
+Received: from kaod.org (37.59.142.104) by DAG4EX1.mxp5.local (172.16.2.31)
  with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.9; Wed, 29 Jun
- 2022 10:31:27 +0200
+ 2022 10:31:02 +0200
 Authentication-Results: garm.ovh; auth=pass
- (GARM-108S002c5854063-82b0-4495-927c-b826231f9140,
+ (GARM-104R005d46b25b1-f6f2-4fff-bf35-9095c801ce37,
  74A1F81DE4F8936248B5873BB0AED4007818FEC6) smtp.auth=clg@kaod.org
 X-OVh-ClientIp: 82.64.250.170
-Message-ID: <1861be2b-9f62-4201-ed8b-33b9c6bbb41b@kaod.org>
-Date: Wed, 29 Jun 2022 10:31:21 +0200
+Message-ID: <fc411191-34c3-3de0-aadd-a1d446cbe292@kaod.org>
+Date: Wed, 29 Jun 2022 10:31:01 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
  Thunderbird/91.9.0
-Subject: Re: [PATCH v2 03/13] hw/i2c/aspeed: Fix MASTER_EN missing error
- message
+Subject: Re: [PATCH v2 01/13] hw/i2c/aspeed: Fix R_I2CD_FUN_CTRL reference
 Content-Language: en-US
 To: Peter Delevoryas <peterdelevoryas@gmail.com>
 CC: <peter.maydell@linaro.org>, <andrew@aj.id.au>, <joel@jms.id.au>,
  <cminyard@mvista.com>, <titusr@google.com>, <qemu-devel@nongnu.org>,
  <qemu-arm@nongnu.org>, <zhdaniel@fb.com>, <pdel@fb.com>
 References: <20220629033634.3850922-1-pdel@fb.com>
- <20220629033634.3850922-4-pdel@fb.com>
+ <20220629033634.3850922-2-pdel@fb.com>
 From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
-In-Reply-To: <20220629033634.3850922-4-pdel@fb.com>
+In-Reply-To: <20220629033634.3850922-2-pdel@fb.com>
 Content-Type: text/plain; charset="UTF-8"; format=flowed
 Content-Transfer-Encoding: 8bit
-X-Originating-IP: [37.59.142.108]
-X-ClientProxiedBy: DAG8EX1.mxp5.local (172.16.2.71) To DAG4EX1.mxp5.local
+X-Originating-IP: [37.59.142.104]
+X-ClientProxiedBy: DAG1EX1.mxp5.local (172.16.2.1) To DAG4EX1.mxp5.local
  (172.16.2.31)
-X-Ovh-Tracer-GUID: c8d8c18a-d1e6-4ad7-95e5-e4591ff3df58
-X-Ovh-Tracer-Id: 999799118366346162
+X-Ovh-Tracer-GUID: 585e23f9-34d3-457a-8f90-d13828d394de
+X-Ovh-Tracer-Id: 992762244883778482
 X-VR-SPAMSTATE: OK
 X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvfedrudegledgtdegucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhepkfffgggfuffvvehfhfgjtgfgihesthekredttdefjeenucfhrhhomhepveorughrihgtpgfnvggpifhorghtvghruceotghlgheskhgrohgurdhorhhgqeenucggtffrrghtthgvrhhnpeekteejtdelkeejvdevffduhfetteelieefgeefffeugffhfeekheffueefledujeenucfkpheptddrtddrtddrtddpfeejrdehledrudegvddruddtkeenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhhouggvpehsmhhtphhouhhtpdhhvghlohepmhigphhlrghnhedrmhgrihhlrdhovhhhrdhnvghtpdhinhgvtheptddrtddrtddrtddpmhgrihhlfhhrohhmpegtlhhgsehkrghougdrohhrghdpnhgspghrtghpthhtohepuddprhgtphhtthhopehpuggvlhesfhgsrdgtohhmpdfovfetjfhoshhtpehmohehgeek
-Received-SPF: pass client-ip=46.105.48.137; envelope-from=clg@kaod.org;
- helo=9.mo548.mail-out.ovh.net
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvfedrudegledgtdegucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhepkfffgggfuffvvehfhfgjtgfgihesthekredttdefjeenucfhrhhomhepveorughrihgtpgfnvggpifhorghtvghruceotghlgheskhgrohgurdhorhhgqeenucggtffrrghtthgvrhhnpeekteejtdelkeejvdevffduhfetteelieefgeefffeugffhfeekheffueefledujeenucfkpheptddrtddrtddrtddpfeejrdehledrudegvddruddtgeenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhhouggvpehsmhhtphhouhhtpdhhvghlohepmhigphhlrghnhedrmhgrihhlrdhovhhhrdhnvghtpdhinhgvtheptddrtddrtddrtddpmhgrihhlfhhrohhmpegtlhhgsehkrghougdrohhrghdpnhgspghrtghpthhtohepuddprhgtphhtthhopehpuggvlhesfhgsrdgtohhmpdfovfetjfhoshhtpehmohehhedv
+Received-SPF: pass client-ip=188.165.45.220; envelope-from=clg@kaod.org;
+ helo=5.mo552.mail-out.ovh.net
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
 X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -106,44 +105,32 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: U8/vS5b+1l98
+X-TUID: Aof5Xff1RCQk
 
 On 6/29/22 05:36, Peter Delevoryas wrote:
-> aspeed_i2c_bus_is_master is checking if master mode is enabled in the I2C
-> bus controller's function-control register, not that slave mode is enabled
-> or something.  The error here is that the guest is trying to trigger an I2C
-> master mode command while master mode is not enabled.
+> Very minor, doesn't effect functionality, but this is supposed to be
+> R_I2CC_FUN_CTRL (new-mode, not old-mode).
 > 
-> Fixes: ba2cccd64e90f342 ("aspeed: i2c: Add new mode support")
+> Fixes: ba2cccd64e9 ("aspeed: i2c: Add new mode support")
 > Signed-off-by: Peter Delevoryas <pdel@fb.com>
-
 
 Reviewed-by: Cédric Le Goater <clg@kaod.org>
 
 > ---
->   hw/i2c/aspeed_i2c.c | 4 ++--
->   1 file changed, 2 insertions(+), 2 deletions(-)
+>   hw/i2c/aspeed_i2c.c | 2 +-
+>   1 file changed, 1 insertion(+), 1 deletion(-)
 > 
 > diff --git a/hw/i2c/aspeed_i2c.c b/hw/i2c/aspeed_i2c.c
-> index cbaa7c96fc..c153a1a942 100644
+> index 37ae1f2e04..ff33571954 100644
 > --- a/hw/i2c/aspeed_i2c.c
 > +++ b/hw/i2c/aspeed_i2c.c
-> @@ -601,7 +601,7 @@ static void aspeed_i2c_bus_new_write(AspeedI2CBus *bus, hwaddr offset,
->           }
->   
->           if (!aspeed_i2c_bus_is_master(bus)) {
-> -            qemu_log_mask(LOG_UNIMP, "%s: slave mode not implemented\n",
-> +            qemu_log_mask(LOG_GUEST_ERROR, "%s: Master mode is not enabled\n",
+> @@ -552,7 +552,7 @@ static void aspeed_i2c_bus_new_write(AspeedI2CBus *bus, hwaddr offset,
 >                             __func__);
 >               break;
 >           }
-> @@ -744,7 +744,7 @@ static void aspeed_i2c_bus_old_write(AspeedI2CBus *bus, hwaddr offset,
->           }
->   
->           if (!aspeed_i2c_bus_is_master(bus)) {
-> -            qemu_log_mask(LOG_UNIMP, "%s: slave mode not implemented\n",
-> +            qemu_log_mask(LOG_GUEST_ERROR, "%s: Master mode is not enabled\n",
->                             __func__);
->               break;
->           }
+> -        bus->regs[R_I2CD_FUN_CTRL] = value & 0x007dc3ff;
+> +        bus->regs[R_I2CC_FUN_CTRL] = value & 0x007dc3ff;
+>           break;
+>       case A_I2CC_AC_TIMING:
+>           bus->regs[R_I2CC_AC_TIMING] = value & 0x1ffff0ff;
 

@@ -1,151 +1,165 @@
-Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp471782lft;
-        Thu, 30 Jun 2022 09:09:38 -0700 (PDT)
-X-Google-Smtp-Source: AGRyM1tfGdl8Zl0tl1TKrJzgNJoXuwJnuZmNPTSMrJg33AI6maD4JIFpeBjGL9ry/U+0xC0FBfdg
-X-Received: by 2002:aa7:92d2:0:b0:51b:4d60:6475 with SMTP id k18-20020aa792d2000000b0051b4d606475mr15126604pfa.73.1656605377836;
-        Thu, 30 Jun 2022 09:09:37 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1656605377; cv=none;
+Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp599813lft;
+        Thu, 30 Jun 2022 12:17:38 -0700 (PDT)
+X-Google-Smtp-Source: AGRyM1tt9ROm8X8l/Fue+xf80wuRC5n8bluMLNTTOGkpv49Jouu0stPdAjjtk9beBOgpcsKpSnlO
+X-Received: by 2002:a05:622a:190d:b0:31d:2ac7:9dc2 with SMTP id w13-20020a05622a190d00b0031d2ac79dc2mr5092212qtc.233.1656616658539;
+        Thu, 30 Jun 2022 12:17:38 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1656616658; cv=none;
         d=google.com; s=arc-20160816;
-        b=YmfuBlO2RGA5wTgKKq3ANIIrGk8KAIwSIKCS8ne7C4H80hFqswS2xX17fIc3UM8Km1
-         mf2ZQA6oA5EIUolZij89WkW83+SSV0baM+ZJrAj0LBlWvQyxVWqcfBMif/BO0/5bDjLC
-         /4/smu06hYEk80lZy4GYVX/HEcXiLVZhzkyCYmywtqJcBlacPbnmsVAvq8vGA0zaUcjS
-         RN5gUyl1f/4UBlOHPwUL8f8dTp4LI0PBzOBoenwz2llodPb/4bIvOKy9vvdJega198Z0
-         ltrTE98m//zxLtjLthYBBsuye50e+vXLALmeMwziEQVDmcXpcFSw2I/oBoxUQzLnrUJA
-         MGGg==
+        b=WiKpCF7EssJ2h4jdh8FWaEeV/DZGf2B80JtTPWUDX1J1ng2uckKhw2mml/s/UGHceK
+         1b6gj/yKFP80zOqWjMe+9v6Z56yjIO+BVTuBDlpcv2uXOUDG29gGXCReuLC6BYyPXXqG
+         IU71RGdkJoaXLOe96oUq8d0AhkkHCx4rWt4yT46TInkmAVrJ/h1LEPrI+fXMBi5EtMkE
+         o3RvDO5yolm3diwowBiX/Tx2p8Pm6tee533eXBxNDhRjJbKkCRLFL1V4iLU7K9d/ryb9
+         BSQDR0woW/F0fTE9zJ16WV9lU2YYRcsz9tbeHaVaqWepvxswlLacH14MhSsoSkGyFm7u
+         S/GQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=list-id:precedence:mime-version:message-id:date:user-agent
-         :references:organization:in-reply-to:subject:cc:to:from
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version
          :dkim-signature;
-        bh=dONI6L1250ENwLum9Ra5Xa01f9sLBJUmUKlzObKu5nU=;
-        b=J/FOiir+6Ombv8d+BUnsrDMbyMpnC9idSg30GrKsjXKXEG3Keo+Jb+ktYHrF517ug8
-         beR/KM6Fo2KRbdcyuiHEL0nyhEKgBiGzO4/t1GnXFCrjrzcJXYDSYp41FYYM9Na37OMV
-         jEWMWBriW9wzRmsXOoiUAdiaG1RHoo2lZtkGt8weUbFtrrikFZDxpV9kQyjS5GyKmGQe
-         04LyVlmuwvJOkP+gdu8q2PCjiAkGkAoxPmKzMHjfTrjycSiuKT3iPZcyECLuSOJHMEi/
-         QijQNDNJB+clzk91JoaIER5mstFMiu/ouSVRSZ5NOOovCTsE+FQhqLEUBWAsHIGI5o0x
-         qZjg==
+        bh=FQSEROxB1ZEETv/NwPSkNBfTJLiVZOHdBv6PNc25cnk=;
+        b=BnMoKL2MaXam8IqXqGHzl/4pck+s1fjwUJuAfbdn8n3rNY3QSe+6puWMShvj7pi+sw
+         BG87kkiZUvs2e01glaKSZ/7Zodm1hwmV9QybwHuqELIAZ169QcpuN2SbFW/gYPbISkg1
+         bcaEvqo4f5TFOV9Cyq08DR9D1t5B08/gpoi0EvtZ5Bdk531KDCCJGbDYYKx3gp+j1gP+
+         LNcHiYOJN6do0/F+lWlJ3IdayNXFAvLog6ZBb9Z7j8HywFbNlabNOFbWsMsE6q1+xoiB
+         AFX3SfU69lXCu0dpY9B1fVhsB6Njmqg2ot3I/0FClF4GVyr22Ryp5EGF6GJZM8LRdiAK
+         LhcA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=YWmFTm4Y;
-       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <kvm-owner@vger.kernel.org>
-Received: from out1.vger.email (out1.vger.email. [2620:137:e000::1:20])
-        by mx.google.com with ESMTP id y24-20020a1709027c9800b0016b82ffe551si13565302pll.204.2022.06.30.09.09.37;
-        Thu, 30 Jun 2022 09:09:37 -0700 (PDT)
-Received-SPF: pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) client-ip=2620:137:e000::1:20;
+       dkim=pass header.i=@google.com header.s=20210112 header.b=eqJhThCr;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id x17-20020a05622a001100b0031c4793bdb9si4687757qtw.237.2022.06.30.12.17.38
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 30 Jun 2022 12:17:38 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=YWmFTm4Y;
-       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S235736AbiF3QJg (ORCPT <rfc822;daniel.diaz@linaro.org>
-        + 3 others); Thu, 30 Jun 2022 12:09:36 -0400
-Received: from lindbergh.monkeyblade.net ([23.128.96.19]:47000 "EHLO
-        lindbergh.monkeyblade.net" rhost-flags-OK-OK-OK-OK) by vger.kernel.org
-        with ESMTP id S235603AbiF3QJd (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Thu, 30 Jun 2022 12:09:33 -0400
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com [170.10.133.124])
-        by lindbergh.monkeyblade.net (Postfix) with ESMTP id E87142409D
-        for <kvm@vger.kernel.org>; Thu, 30 Jun 2022 09:09:31 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-        s=mimecast20190719; t=1656605371;
-        h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-         to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-         in-reply-to:in-reply-to:references:references;
-        bh=dONI6L1250ENwLum9Ra5Xa01f9sLBJUmUKlzObKu5nU=;
-        b=YWmFTm4YhotrteQ2+HO7MfVBEVQAi/zFXzXqj04vDdTURbPJMPS7C4DVt8qjg82N4fT5uQ
-        k2++oCrx/HAifV7w3vkEoldyaTnWJ1be7HedTYSAufJeEs7TxzTS0GPM5dq6u0zpodt838
-        BkQkrOJ/llNXdRAKTyV1aY0aQBaNy28=
-Received: from mimecast-mx02.redhat.com (mx3-rdu2.redhat.com
- [66.187.233.73]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-224-M93uYDPNNYqkKI8zA5tluw-1; Thu, 30 Jun 2022 12:09:28 -0400
-X-MC-Unique: M93uYDPNNYqkKI8zA5tluw-1
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.rdu2.redhat.com [10.11.54.1])
-        (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-        (No client certificate requested)
-        by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 94BD63C0ED4C;
-        Thu, 30 Jun 2022 16:09:24 +0000 (UTC)
-Received: from localhost (unknown [10.39.195.64])
-        by smtp.corp.redhat.com (Postfix) with ESMTPS id 49FA940CF8EF;
-        Thu, 30 Jun 2022 16:09:24 +0000 (UTC)
-From:   Cornelia Huck <cohuck@redhat.com>
-To:     Eric Auger <eauger@redhat.com>,
-        Peter Maydell <peter.maydell@linaro.org>,
-        Thomas Huth <thuth@redhat.com>,
-        Laurent Vivier <lvivier@redhat.com>
-Cc:     Andrew Jones <drjones@redhat.com>, qemu-arm@nongnu.org,
-        qemu-devel@nongnu.org, kvm@vger.kernel.org
-Subject: Re: [PATCH RFC 0/2] arm: enable MTE for QEMU + kvm
-In-Reply-To: <b684d1e6-2d8f-5d08-aae0-b085a722575b@redhat.com>
-Organization: Red Hat GmbH
-References: <20220512131146.78457-1-cohuck@redhat.com>
- <4bb7b5e4-ceb4-d2d8-e03a-f7059e5158d6@redhat.com>
- <87a6agsg9t.fsf@redhat.com>
- <b684d1e6-2d8f-5d08-aae0-b085a722575b@redhat.com>
-User-Agent: Notmuch/0.36 (https://notmuchmail.org)
-Date:   Thu, 30 Jun 2022 18:09:22 +0200
-Message-ID: <87lete2kwd.fsf@redhat.com>
+       dkim=pass header.i=@google.com header.s=20210112 header.b=eqJhThCr;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
+Received: from localhost ([::1]:58714 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1o6zfW-0001BW-1x
+	for alex.bennee@linaro.org; Thu, 30 Jun 2022 15:17:38 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:49466)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <titusr@google.com>) id 1o6zew-00019S-SF
+ for qemu-arm@nongnu.org; Thu, 30 Jun 2022 15:17:03 -0400
+Received: from mail-ed1-x531.google.com ([2a00:1450:4864:20::531]:43713)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <titusr@google.com>) id 1o6zei-0008N0-Bk
+ for qemu-arm@nongnu.org; Thu, 30 Jun 2022 15:16:51 -0400
+Received: by mail-ed1-x531.google.com with SMTP id c13so119316eds.10
+ for <qemu-arm@nongnu.org>; Thu, 30 Jun 2022 12:16:47 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20210112;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=FQSEROxB1ZEETv/NwPSkNBfTJLiVZOHdBv6PNc25cnk=;
+ b=eqJhThCrevIeeeUvsSqEtYmF2GvFvXArgqxjnA083YSc2QnDVlXi7z/jHvgjuS/YAq
+ N3xd+YQ35fk/vZBXfDQSSM2vm9ZIlcUZTn4fu5ZJ6M/s8fRP9vTSk3wdsmDNGpaK7FXV
+ 1B6H9PXaGIFlveTEQgW4yK49EnArsFL+M11ZDY4W4Ae8NeL+06koicEPZnsrLeLJo8K1
+ eKIzCxddx+kux11rJ4llB7MCD/Xxtjd/yIevAnTevsaxJpc8y48mLuDRoaNygcOfFkH2
+ 7nVzytdW+LXwXgFUtvqh+TkAI38ZEUnSKgwdlVTEEUb4ym1goEoy37Zb6aR2mu028z+N
+ ACcg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=FQSEROxB1ZEETv/NwPSkNBfTJLiVZOHdBv6PNc25cnk=;
+ b=S+qmiYI7X/bZNPrCc758oMOlHI59wa/IiHn0bJTGimVVsaOXX+Gboz4DVfxXjcgqG7
+ jmKKMyja0LHuPKy5anWiUfRavJPCKnG3e9KfI9CIFXd048/bA/Z+ImJh0cd+7zty3Aw8
+ v9EA03dhZ0hhTaw+XN9EnNIyC9cTAsdleQ72B3jIQDSnBKuD6kYRn3ilXXzt3XEYGL12
+ KDn2KK/ezOyfw33k8KEp/J306Dqv/D99QKyaNKrYpF7Gp3LuD865TX8pb37JusH747cV
+ FE4EsG6zhORCz/NW/QCZBUKNvEnuycI40zhqZ9bfgMQA5cCGosPFW9KVrKbzfdt9+f9H
+ LuLg==
+X-Gm-Message-State: AJIora8hVYCrCNLwJ9TudkGZCcGkdLetJR+tVN7RHwmwSuTDWcjhvM9D
+ 74IEXG3+q8Zc+7E7xoG0fCT8OdKGNBLjLKBg2EfxMg==
+X-Received: by 2002:aa7:dcc1:0:b0:435:5db1:c749 with SMTP id
+ w1-20020aa7dcc1000000b004355db1c749mr13530384edu.124.1656616605126; Thu, 30
+ Jun 2022 12:16:45 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Scanned-By: MIMEDefang 2.84 on 10.11.54.1
-X-Spam-Status: No, score=-2.5 required=5.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-        DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,RCVD_IN_DNSWL_NONE,
-        SPF_HELO_NONE,SPF_NONE,T_SCC_BODY_TEXT_LINE autolearn=ham
-        autolearn_force=no version=3.4.6
-X-Spam-Checker-Version: SpamAssassin 3.4.6 (2021-04-09) on
-        lindbergh.monkeyblade.net
-Precedence: bulk
-List-ID: <kvm.vger.kernel.org>
-X-Mailing-List: kvm@vger.kernel.org
-X-TUID: FThVk3JiFngb
+References: <20220630045133.32251-1-me@pjd.dev>
+ <20220630045133.32251-11-me@pjd.dev>
+ <293da11c-dde2-e646-c754-820720c410de@kaod.org>
+In-Reply-To: <293da11c-dde2-e646-c754-820720c410de@kaod.org>
+From: Titus Rwantare <titusr@google.com>
+Date: Thu, 30 Jun 2022 12:16:08 -0700
+Message-ID: <CAMvPwGpZZgAd2RHXmvmxfgyTyVGd6Rx+avj=E24NWc0masdc=A@mail.gmail.com>
+Subject: Re: [PATCH v3 10/14] hw/sensor: Add Renesas ISL69259 device model
+To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
+Cc: Peter Delevoryas <me@pjd.dev>, peter.maydell@linaro.org, andrew@aj.id.au,
+ joel@jms.id.au, 
+ cminyard@mvista.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org, 
+ zhdaniel@fb.com, pdel@fb.com
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::531;
+ envelope-from=titusr@google.com; helo=mail-ed1-x531.google.com
+X-Spam_score_int: -175
+X-Spam_score: -17.6
+X-Spam_bar: -----------------
+X-Spam_report: (-17.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ ENV_AND_HDR_SPF_MATCH=-0.5, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01, USER_IN_DEF_DKIM_WL=-7.5,
+ USER_IN_DEF_SPF_WL=-7.5 autolearn=unavailable autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: vIlKXnfMf+fx
 
-On Wed, Jun 29 2022, Eric Auger <eauger@redhat.com> wrote:
-
-> Hi Connie,
+On Wed, 29 Jun 2022 at 23:30, C=C3=A9dric Le Goater <clg@kaod.org> wrote:
 >
-> On 6/13/22 18:02, Cornelia Huck wrote:
->> On Fri, Jun 10 2022, Eric Auger <eauger@redhat.com> wrote:
->> 
->>> Hi Connie,
->>>
->>> On 5/12/22 15:11, Cornelia Huck wrote:
->>>> This series enables MTE for kvm guests, if the kernel supports it.
->>>> Lightly tested while running under the simulator (the arm64/mte/
->>>> kselftests pass... if you wait patiently :)
->>>>
->>>> A new cpu property "mte" (defaulting to on if possible) is introduced;
->>>> for tcg, you still need to enable mte at the machine as well.
->>> isn't the property set to off by default when kvm is enabled (because of
->>> the migration blocker).
->> 
->> Oh, I had changed that around several times, and it seems I ended up
->> being confused when I wrote this cover letter... I wonder what the best
->> state would be (assuming that I don't manage to implement it soonish,
->> but it seems we still would need kernel changes as by the discussion in
->> that other patch series.)
-> Having mte=off by default along with KVM, until the migration gets
-> supported, looks OK to me. Does it prevent you from having it set to
-> another value by default with TCG (depending on the virt machine
-> tag_memory option)?
+> On 6/30/22 06:51, Peter Delevoryas wrote:
+> > From: Peter Delevoryas <pdel@fb.com>
+> >
+> > This adds the ISL69259, using all the same functionality as the existin=
+g
+> > ISL69260 but overriding the IC_DEVICE_ID.
+> >
+> > Signed-off-by: Peter Delevoryas <pdel@fb.com>
+> > ---
+> >   hw/sensor/isl_pmbus_vr.c | 28 ++++++++++++++++++++++++++++
+> >   1 file changed, 28 insertions(+)
+> >
+> > diff --git a/hw/sensor/isl_pmbus_vr.c b/hw/sensor/isl_pmbus_vr.c
+> > index 799ea9d89e..853d70536f 100644
+> > --- a/hw/sensor/isl_pmbus_vr.c
+> > +++ b/hw/sensor/isl_pmbus_vr.c
+> > @@ -119,6 +119,18 @@ static void raa228000_exit_reset(Object *obj)
+> >       pmdev->pages[0].read_temperature_3 =3D 0;
+> >   }
+> >
+> > +static void isl69259_exit_reset(Object *obj)
+> > +{
+> > +    ISLState *s =3D ISL69260(obj);
+> > +    static const uint8_t ic_device_id[] =3D {0x04, 0x00, 0x81, 0xD2, 0=
+x49, 0x3c};
 >
-> 		tag_memory=on	tag_memory=off
-> KVM CPU mte=off	invalid		mte=off
-> KVM CPU mte=on	invalid		mte=on
-> TCG CPU mte=off	invalid		mte=off
-> TCG CPU mte=on	mte=on		invalid
+> This looks like an ISLClass attribute to me. In which case, you wouldn't =
+need the
+> reset handler nor the 'ic_device_id_len' field.
 >
-> default value:
-> KVM mte = off until migration gets supported
-> TCG mte = machine.tag_memory
+> Thanks,
+>
+> C.
 
-With OnOffAuto, I currently have:
+I asked for this because, so far, I've been doing all the register
+defaults in reset handlers, including read-only registers.
+I don't mind either way, but it seemed preferable to have the devices
+consistent.
 
-valid for tcg: cpu.mte=on, tag_memory=on (result: mte on)
-               cpu.mte=off, tag_memory either on or off (result: mte off)
-               cpu.mte unspecified, tag_memory either on or off (result:
-               mte==tag_memory)
-valid for kvm: tag_memory always off
-               cpu.mte=off (result: mte off)
-               cpu.mte=on if mte supported in kvm (result: mte on)
-               cpu.mte unspecified (result: mte on if kvm supports it;
-               this I can flip)
-all other combinations: error
+Titus

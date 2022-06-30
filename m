@@ -1,112 +1,112 @@
-Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp618210lft;
-        Thu, 30 Jun 2022 12:46:43 -0700 (PDT)
-X-Google-Smtp-Source: AGRyM1uIf3+ezSlqyXQP+xl0JEPXXDWkkMZfHE6xnKJOC1kS5GjGlmBr19M+X8RbtQxv7YddY6aA
-X-Received: by 2002:a05:620a:1712:b0:6af:665d:7687 with SMTP id az18-20020a05620a171200b006af665d7687mr7907723qkb.156.1656618403635;
-        Thu, 30 Jun 2022 12:46:43 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1656618403; cv=none;
+Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp618329lft;
+        Thu, 30 Jun 2022 12:46:52 -0700 (PDT)
+X-Google-Smtp-Source: AGRyM1uFZUL8l4so2Pqt3RaoXQ0fx3o55oSxWb5Rf6L4LK8PsAnBextbBycqQ8sn7iUz+9NjWjh2
+X-Received: by 2002:a05:6214:2602:b0:470:448d:d1ff with SMTP id gu2-20020a056214260200b00470448dd1ffmr14188471qvb.37.1656618412109;
+        Thu, 30 Jun 2022 12:46:52 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1656618412; cv=none;
         d=google.com; s=arc-20160816;
-        b=sFuX+s4B6Ld129vdePjgVWDfArwQziKCIy/bCz6Y3RwE7jcTg2Ve/VixYtE7oYoqHs
-         JXoKm+ix2CgnSX8xSgA/vkirWVYetr2QWPEulcq7TjPBQdlfHM1idzqVVj6JPy5yMIBc
-         qK6XGNvmO9PLBFxmAic4rtGKrhSNpa8fMDxVpa8F72j6l72de8t3xZ+oTtMbXgjxck9a
-         Jfewhu/n5OPWjRR0vCxS7np1yJqy/Ttg0e/ymMym4aIYu/KHDkvrJ5xTHvpuuh+GzuSc
-         NW6vSBlENXj0Zq5dG+omVN+HZl8QFa5XbSQwbVv4sD1KA4F7Bmt4AAUlbRebZhXofqRQ
-         QhfQ==
+        b=d1oa9Ewich47k3j3xilLrHWJ5DNh43bdQChGhi22qivYX4Gtho5h3BTurl1mbxI7Dv
+         HlEJ8F+Vv0s8T/2+rUkpMRxdzB4w14ggmHHHFjPLEQwM3QberOqB/2ZN343aDggjhxld
+         oFgeFJQ4UG68Ox9ix0xCOqYio57zbuWarM88WT7jhkc8bF4cBIBHIEqs4Vp7xwdsaV+/
+         i3Ll99IwXY5KUUaPDxxB/9FbWEtuMvTYJNglY3Mm4Dqwb0kisbk408JeVZpLaEn+ajMF
+         aLs8Q8pYqGPoYa5gxnq7DOeekynW+doas0e7WxhSOgu+hL7cfilWpzoAVmO/cLpZg5Xn
+         X8LQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=VgPb1Tkc0n0TFxZ2n6JlaR4U9pn5OgDJfIFcTGqpVVU=;
-        b=01PoNdv4bMmOfQtRLqNnu+ybMXjE1oSJiCF92kYG3UDRg3PT3UV3F43VY6eTdUDTLX
-         Ax8gU9TrDi7cgcMkf0APWR+Qce43gYHiIArJ2ZTUdEHj/GnOfQn745bRCcvSV0blHDfq
-         bGWIGyj0dg2DTmk6TIxBQ/AM0hEG3Bulza2GoN0BzWEusXKg8UeZdN82PzGlK0bwmX62
-         gkYa54d+QMmqYg9jDxhuxZJTzA2yV46jauNsEgOM9vbpT0/qlpAlXiTwos850mAN5k3t
-         PgoAIrrv2UALlCap57jmv3Cz7c7H+ZgJE2lNg6B8nDxVhxi4nF1GgWWg7wfER+LX8HEq
-         x0iA==
+        bh=NJ/AhFBVNeKie2SLbn7FmgaDpmNEtGrcl/kxe6zssvA=;
+        b=muot7HiHai4E6Zf+N0rvUfwYpYltM9tk8wNAQjHBRoYTzLIOUaRdigtSHGskiUOg2V
+         X6pHhtfDsweSMTjfBvdVr9Ed+52kOF0Jnf0XJNaCcG8E4Rn8wDAMCMkzYfb1bqaRBKO9
+         O4qsvcueNI8G9VBa+NVQevqWbnv51yIDS6kmqdjlLRcfn9Fdq+x3PjVg8EYrmoTO5n2Q
+         6jN8anffi7OJBuxDjZvdGihKdyE0PVVI8q42q9ieQQ2eQg2cxgW0eT2Nk7H/9k3T/RiV
+         cVm/9cPoCFe8uHZ3n64RuapNTyKS8iyMZ7dIToZ92Txv86SCJzDWpbUMwwJnaVbB0BTf
+         pExA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=iiZPMUCf;
+       dkim=pass header.i=@linaro.org header.s=google header.b="wOlu/j7L";
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 17-20020a05620a071100b006af21744d9bsi7128307qkc.333.2022.06.30.12.46.43
+        by mx.google.com with ESMTPS id t14-20020a05622a148e00b002f92c911cbfsi11750231qtx.643.2022.06.30.12.46.51
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 30 Jun 2022 12:46:43 -0700 (PDT)
+        Thu, 30 Jun 2022 12:46:52 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=iiZPMUCf;
+       dkim=pass header.i=@linaro.org header.s=google header.b="wOlu/j7L";
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:47098 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:47142 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1o707e-0005zB-V3
-	for alex.bennee@linaro.org; Thu, 30 Jun 2022 15:46:42 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:55154)
+	id 1o707n-00060u-CM
+	for alex.bennee@linaro.org; Thu, 30 Jun 2022 15:46:51 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55156)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1o702f-00031r-63
+ id 1o702f-00031s-6K
  for qemu-devel@nongnu.org; Thu, 30 Jun 2022 15:41:33 -0400
-Received: from mail-wr1-x432.google.com ([2a00:1450:4864:20::432]:40507)
+Received: from mail-wm1-x333.google.com ([2a00:1450:4864:20::333]:41607)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1o702W-0005ao-Fw
+ id 1o702X-0005hI-Rl
  for qemu-devel@nongnu.org; Thu, 30 Jun 2022 15:41:30 -0400
-Received: by mail-wr1-x432.google.com with SMTP id v9so61571wrp.7
- for <qemu-devel@nongnu.org>; Thu, 30 Jun 2022 12:41:22 -0700 (PDT)
+Received: by mail-wm1-x333.google.com with SMTP id
+ t17-20020a1c7711000000b003a0434b0af7so250897wmi.0
+ for <qemu-devel@nongnu.org>; Thu, 30 Jun 2022 12:41:25 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:subject:date:message-id:in-reply-to:references:mime-version
  :content-transfer-encoding;
- bh=VgPb1Tkc0n0TFxZ2n6JlaR4U9pn5OgDJfIFcTGqpVVU=;
- b=iiZPMUCfuULaPfn5Gj0GdlAZd76N2XAtBuqBflMrIHyY9ljoJsNEVJw3MQtiyBFjdv
- 7tvQ5yXgx1vjvjRSm38tGu4CgRjZVx0gld7zdV1sL7P0+MRrFI0MYrU2cAv8bi86mBdk
- uyMaoovd5z7yzwIgWIlTypUyhbH5HxObngAJc7fiMn6pD4EslCrjHoWWUnQzZIucSKTg
- HQtz+7vzIjXx/x/FwJVTGRyTLO8fkKZbjjO1dmGXPD+GcXomJTmNS4X84giH8MUWJ0Bj
- xq0CRb2jPNk5cdGvommC/xqg2ADMjHVEmYcPXddmZgfvUp48NaalugDwXBCPPlshDRSf
- nuzA==
+ bh=NJ/AhFBVNeKie2SLbn7FmgaDpmNEtGrcl/kxe6zssvA=;
+ b=wOlu/j7LCwBjJhUVYAwscycupj2WyrMC1iLuHQupuN1in9zolJ51yj0XeOBzScV2Rt
+ pD/cJcx4n2tEfUv8ZQxtOXW93zp53z+PG7iMU2pQTY4oakmOvTDoGncT16RN7EDFz6Hz
+ p8nHO4YqFWYn9+MFiaN1BmLydZS2VhfS/d+yGnSjUf5lqlTeH7TwV4XXdaDH3GB6643v
+ OzaDumip/e+cRG0wepEKrQLJQWLn7RQk0C3smFVPMFL///Pen6l5zQJucapBsEbCmYjk
+ L+muIspoJY1dL0LdnUkESfGlblzvbY5LCy0VQtsgcSNaEOHyBi0P2Fpu+6PK5IbiuKEU
+ RQZQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:from:to:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=VgPb1Tkc0n0TFxZ2n6JlaR4U9pn5OgDJfIFcTGqpVVU=;
- b=1C5fOp+WzEvpFVSGcWlbC1kDHvK81Dm4kCsEdSNctQoiN+34Ia6cQ9wXuKaNYiR/0z
- lvRSC1m6aodbXYs0qAyodpmYd6zCeZUsiN/6tP1duF3cq3Q+gQ2nyAVxjwDl4Ld7dH0H
- L+D9xqE02ZTDWYL7hewRN23igEIlFlfgQ8K02Pr46K4mkyTLC0uE5ljys6PBnyOBvAnJ
- 4J0emCMOyVJezpogQNM/3z8qrpQWPP4ML0KdWw5ZHJUuZZV+z+VepYJFKCMd1pXJ/yRN
- eW4j4YztmYNVUHeNijACRllnu/aMiXZALZEAIERbTi16s8nWq43rzubT3fjcbCZiUkhg
- bg3g==
-X-Gm-Message-State: AJIora9A3p7F/9Grvwibu2flKWKxMD6qTt4WsOeg9Etp1vVfS6v+BM4L
- JyQrjubN7Mrpv6UCxCaaxE4K8w==
-X-Received: by 2002:a05:6000:1705:b0:21b:bcff:39d3 with SMTP id
- n5-20020a056000170500b0021bbcff39d3mr10032630wrc.502.1656618081340; 
- Thu, 30 Jun 2022 12:41:21 -0700 (PDT)
+ bh=NJ/AhFBVNeKie2SLbn7FmgaDpmNEtGrcl/kxe6zssvA=;
+ b=kiqHim9grDk8UZiCtdJqDkGfGUcQqoxRxB2/2beWxwcc1BiFUYgZyfYg6NohVDzGVq
+ p2M0ezyw2xdw9AaB9XYIlzX8NFp7Bh7Th49rkSoJYOQr7mVo0fq1WdSCebm2AOpyTNfW
+ D5F8wuviopmUh0icEclHqTbafsgDaOOP+xdDBzJfQJEDLOPwzOYxk/rO2YcRuRu8TsU+
+ R10ytR+lsB9AtZSHvX+HhWylNM1dVronmfyRhVQdmYOSXpBTV2+vtjhZSUzOaDcVEkwB
+ l5CQmX4TgfrEeDvpJpEOp5NAMWYcYL+CuhzojAoleklu++nrUHaR+X6T4EPUhNAYVw1U
+ 4qMg==
+X-Gm-Message-State: AJIora/7qMCO+63qwKD5FqyZuXNki3obK3SEO6S4TJXWZjF+bv2bJNqz
+ iRT0MNczuErLxP1wTvs1jmoHSA==
+X-Received: by 2002:a05:600c:601c:b0:3a0:4cd9:ed46 with SMTP id
+ az28-20020a05600c601c00b003a04cd9ed46mr14023558wmb.139.1656618084502; 
+ Thu, 30 Jun 2022 12:41:24 -0700 (PDT)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
  by smtp.gmail.com with ESMTPSA id
- m2-20020adffa02000000b0021d163daeb0sm13200228wrr.108.2022.06.30.12.41.20
+ m2-20020adffa02000000b0021d163daeb0sm13200228wrr.108.2022.06.30.12.41.23
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 30 Jun 2022 12:41:20 -0700 (PDT)
+ Thu, 30 Jun 2022 12:41:24 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH 1/5] target/arm: Fix code style issues in debug helper
- functions
-Date: Thu, 30 Jun 2022 20:41:12 +0100
-Message-Id: <20220630194116.3438513-2-peter.maydell@linaro.org>
+Subject: [PATCH 3/5] target/arm: Suppress debug exceptions when OS Lock set
+Date: Thu, 30 Jun 2022 20:41:14 +0100
+Message-Id: <20220630194116.3438513-4-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20220630194116.3438513-1-peter.maydell@linaro.org>
 References: <20220630194116.3438513-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::432;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x432.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::333;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x333.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01,
- T_SPF_HELO_TEMPERROR=0.01 autolearn=unavailable autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -121,210 +121,45 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: PK/CevOttkpR
+X-TUID: deZDNcapNOa5
 
-Before moving debug system register helper functions to a
-different file, fix the code style issues (mostly block
-comment syntax) so checkpatch doesn't complain about the
-code-motion patch.
+The "OS Lock" in the Arm debug architecture is a way for software
+to suppress debug exceptions while it is trying to power down
+a CPU and save the state of the breakpoint and watchpoint
+registers. In QEMU we implemented the support for writing
+the OS Lock bit via OSLAR_EL1 and reading it via OSLSR_EL1,
+but didn't implement the actual behaviour.
+
+The required behaviour with the OS Lock set is:
+ * debug exceptions (apart from BKPT insns) are suppressed
+ * some MDSCR_EL1 bits allow write access to the corresponding
+   EDSCR external debug status register that they shadow
+   (we can ignore this because we don't implement external debug)
+ * similarly with the OSECCR_EL1 which shadows the EDECCR
+   (but we don't implement OSECCR_EL1 anyway)
+
+Implement the missing behaviour of suppressing debug
+exceptions.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- target/arm/helper.c | 58 +++++++++++++++++++++++++++++----------------
- 1 file changed, 38 insertions(+), 20 deletions(-)
+ target/arm/debug_helper.c | 3 +++
+ 1 file changed, 3 insertions(+)
 
-diff --git a/target/arm/helper.c b/target/arm/helper.c
-index f6dcb1a1152..1c7ec2f8678 100644
---- a/target/arm/helper.c
-+++ b/target/arm/helper.c
-@@ -307,7 +307,8 @@ static uint64_t arm_mdcr_el2_eff(CPUARMState *env)
-     return arm_is_el2_enabled(env) ? env->cp15.mdcr_el2 : 0;
- }
- 
--/* Check for traps to "powerdown debug" registers, which are controlled
-+/*
-+ * Check for traps to "powerdown debug" registers, which are controlled
-  * by MDCR.TDOSA
+diff --git a/target/arm/debug_helper.c b/target/arm/debug_helper.c
+index 9a78c1db966..691b9b74c4a 100644
+--- a/target/arm/debug_helper.c
++++ b/target/arm/debug_helper.c
+@@ -142,6 +142,9 @@ static bool aa32_generate_debug_exceptions(CPUARMState *env)
   */
- static CPAccessResult access_tdosa(CPUARMState *env, const ARMCPRegInfo *ri,
-@@ -327,7 +328,8 @@ static CPAccessResult access_tdosa(CPUARMState *env, const ARMCPRegInfo *ri,
-     return CP_ACCESS_OK;
- }
- 
--/* Check for traps to "debug ROM" registers, which are controlled
-+/*
-+ * Check for traps to "debug ROM" registers, which are controlled
-  * by MDCR_EL2.TDRA for EL2 but by the more general MDCR_EL3.TDA for EL3.
-  */
- static CPAccessResult access_tdra(CPUARMState *env, const ARMCPRegInfo *ri,
-@@ -347,7 +349,8 @@ static CPAccessResult access_tdra(CPUARMState *env, const ARMCPRegInfo *ri,
-     return CP_ACCESS_OK;
- }
- 
--/* Check for traps to general debug registers, which are controlled
-+/*
-+ * Check for traps to general debug registers, which are controlled
-  * by MDCR_EL2.TDA for EL2 and MDCR_EL3.TDA for EL3.
-  */
- static CPAccessResult access_tda(CPUARMState *env, const ARMCPRegInfo *ri,
-@@ -5982,7 +5985,8 @@ static CPAccessResult ctr_el0_access(CPUARMState *env, const ARMCPRegInfo *ri,
- static void oslar_write(CPUARMState *env, const ARMCPRegInfo *ri,
-                         uint64_t value)
+ bool arm_generate_debug_exceptions(CPUARMState *env)
  {
--    /* Writes to OSLAR_EL1 may update the OS lock status, which can be
-+    /*
-+     * Writes to OSLAR_EL1 may update the OS lock status, which can be
-      * read via a bit in OSLSR_EL1.
-      */
-     int oslock;
-@@ -5997,7 +6001,8 @@ static void oslar_write(CPUARMState *env, const ARMCPRegInfo *ri,
- }
- 
- static const ARMCPRegInfo debug_cp_reginfo[] = {
--    /* DBGDRAR, DBGDSAR: always RAZ since we don't implement memory mapped
-+    /*
-+     * DBGDRAR, DBGDSAR: always RAZ since we don't implement memory mapped
-      * debug components. The AArch64 version of DBGDRAR is named MDRAR_EL1;
-      * unlike DBGDRAR it is never accessible from EL0.
-      * DBGDSAR is deprecated and must RAZ from v8 anyway, so it has no AArch64
-@@ -6052,21 +6057,24 @@ static const ARMCPRegInfo debug_cp_reginfo[] = {
-       .cp = 14, .opc0 = 2, .opc1 = 0, .crn = 1, .crm = 3, .opc2 = 4,
-       .access = PL1_RW, .accessfn = access_tdosa,
-       .type = ARM_CP_NOP },
--    /* Dummy DBGVCR: Linux wants to clear this on startup, but we don't
-+    /*
-+     * Dummy DBGVCR: Linux wants to clear this on startup, but we don't
-      * implement vector catch debug events yet.
-      */
-     { .name = "DBGVCR",
-       .cp = 14, .opc1 = 0, .crn = 0, .crm = 7, .opc2 = 0,
-       .access = PL1_RW, .accessfn = access_tda,
-       .type = ARM_CP_NOP },
--    /* Dummy DBGVCR32_EL2 (which is only for a 64-bit hypervisor
-+    /*
-+     * Dummy DBGVCR32_EL2 (which is only for a 64-bit hypervisor
-      * to save and restore a 32-bit guest's DBGVCR)
-      */
-     { .name = "DBGVCR32_EL2", .state = ARM_CP_STATE_AA64,
-       .opc0 = 2, .opc1 = 4, .crn = 0, .crm = 7, .opc2 = 0,
-       .access = PL2_RW, .accessfn = access_tda,
-       .type = ARM_CP_NOP | ARM_CP_EL3_NO_EL2_KEEP },
--    /* Dummy MDCCINT_EL1, since we don't implement the Debug Communications
-+    /*
-+     * Dummy MDCCINT_EL1, since we don't implement the Debug Communications
-      * Channel but Linux may try to access this register. The 32-bit
-      * alias is DBGDCCINT.
-      */
-@@ -6079,9 +6087,9 @@ static const ARMCPRegInfo debug_cp_reginfo[] = {
- static const ARMCPRegInfo debug_lpae_cp_reginfo[] = {
-     /* 64 bit access versions of the (dummy) debug registers */
-     { .name = "DBGDRAR", .cp = 14, .crm = 1, .opc1 = 0,
--      .access = PL0_R, .type = ARM_CP_CONST|ARM_CP_64BIT, .resetvalue = 0 },
-+      .access = PL0_R, .type = ARM_CP_CONST | ARM_CP_64BIT, .resetvalue = 0 },
-     { .name = "DBGDSAR", .cp = 14, .crm = 2, .opc1 = 0,
--      .access = PL0_R, .type = ARM_CP_CONST|ARM_CP_64BIT, .resetvalue = 0 },
-+      .access = PL0_R, .type = ARM_CP_CONST | ARM_CP_64BIT, .resetvalue = 0 },
- };
- 
- /*
-@@ -6496,13 +6504,15 @@ void hw_watchpoint_update(ARMCPU *cpu, int n)
-         break;
-     }
- 
--    /* Attempts to use both MASK and BAS fields simultaneously are
-+    /*
-+     * Attempts to use both MASK and BAS fields simultaneously are
-      * CONSTRAINED UNPREDICTABLE; we opt to ignore BAS in this case,
-      * thus generating a watchpoint for every byte in the masked region.
-      */
-     mask = FIELD_EX64(wcr, DBGWCR, MASK);
-     if (mask == 1 || mask == 2) {
--        /* Reserved values of MASK; we must act as if the mask value was
-+        /*
-+         * Reserved values of MASK; we must act as if the mask value was
-          * some non-reserved value, or as if the watchpoint were disabled.
-          * We choose the latter.
-          */
-@@ -6510,7 +6520,8 @@ void hw_watchpoint_update(ARMCPU *cpu, int n)
-     } else if (mask) {
-         /* Watchpoint covers an aligned area up to 2GB in size */
-         len = 1ULL << mask;
--        /* If masked bits in WVR are not zero it's CONSTRAINED UNPREDICTABLE
-+        /*
-+         * If masked bits in WVR are not zero it's CONSTRAINED UNPREDICTABLE
-          * whether the watchpoint fires when the unmasked bits match; we opt
-          * to generate the exceptions.
-          */
-@@ -6521,7 +6532,8 @@ void hw_watchpoint_update(ARMCPU *cpu, int n)
-         int basstart;
- 
-         if (extract64(wvr, 2, 1)) {
--            /* Deprecated case of an only 4-aligned address. BAS[7:4] are
-+            /*
-+             * Deprecated case of an only 4-aligned address. BAS[7:4] are
-              * ignored, and BAS[3:0] define which bytes to watch.
-              */
-             bas &= 0xf;
-@@ -6532,7 +6544,8 @@ void hw_watchpoint_update(ARMCPU *cpu, int n)
-             return;
-         }
- 
--        /* The BAS bits are supposed to be programmed to indicate a contiguous
-+        /*
-+         * The BAS bits are supposed to be programmed to indicate a contiguous
-          * range of bytes. Otherwise it is CONSTRAINED UNPREDICTABLE whether
-          * we fire for each byte in the word/doubleword addressed by the WVR.
-          * We choose to ignore any non-zero bits after the first range of 1s.
-@@ -6551,7 +6564,8 @@ void hw_watchpoint_update_all(ARMCPU *cpu)
-     int i;
-     CPUARMState *env = &cpu->env;
- 
--    /* Completely clear out existing QEMU watchpoints and our array, to
-+    /*
-+     * Completely clear out existing QEMU watchpoints and our array, to
-      * avoid possible stale entries following migration load.
-      */
-     cpu_watchpoint_remove_all(CPU(cpu), BP_CPU);
-@@ -6669,7 +6683,8 @@ void hw_breakpoint_update(ARMCPU *cpu, int n)
-     case 11: /* linked context ID and VMID match (reserved if no EL2) */
-     case 3: /* linked context ID match */
-     default:
--        /* We must generate no events for Linked context matches (unless
-+        /*
-+         * We must generate no events for Linked context matches (unless
-          * they are linked to by some other bp/wp, which is handled in
-          * updates for the linking bp/wp). We choose to also generate no events
-          * for reserved values.
-@@ -6685,7 +6700,8 @@ void hw_breakpoint_update_all(ARMCPU *cpu)
-     int i;
-     CPUARMState *env = &cpu->env;
- 
--    /* Completely clear out existing QEMU breakpoints and our array, to
-+    /*
-+     * Completely clear out existing QEMU breakpoints and our array, to
-      * avoid possible stale entries following migration load.
-      */
-     cpu_breakpoint_remove_all(CPU(cpu), BP_CPU);
-@@ -6712,7 +6728,8 @@ static void dbgbcr_write(CPUARMState *env, const ARMCPRegInfo *ri,
-     ARMCPU *cpu = env_archcpu(env);
-     int i = ri->crm;
- 
--    /* BAS[3] is a read-only copy of BAS[2], and BAS[1] a read-only
-+    /*
-+     * BAS[3] is a read-only copy of BAS[2], and BAS[1] a read-only
-      * copy of BAS[0].
-      */
-     value = deposit64(value, 6, 1, extract64(value, 5, 1));
-@@ -6724,7 +6741,8 @@ static void dbgbcr_write(CPUARMState *env, const ARMCPRegInfo *ri,
- 
- static void define_debug_regs(ARMCPU *cpu)
- {
--    /* Define v7 and v8 architectural debug registers.
-+    /*
-+     * Define v7 and v8 architectural debug registers.
-      * These are just dummy implementations for now.
-      */
-     int i;
++    if (env->cp15.oslsr_el1 & 1) {
++        return false;
++    }
+     if (is_a64(env)) {
+         return aa64_generate_debug_exceptions(env);
+     } else {
 -- 
 2.25.1
 

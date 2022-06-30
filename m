@@ -1,340 +1,275 @@
-Return-Path: <alex.bennee@linaro.org>
-Received: from zen.linaroharston ([51.148.130.216])
-        by smtp.gmail.com with ESMTPSA id p15-20020a05600c204f00b0039c5cecf206sm6048192wmg.4.2022.06.30.02.49.32
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 30 Jun 2022 02:49:32 -0700 (PDT)
-Received: from zen (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 733441FFB7;
-	Thu, 30 Jun 2022 10:49:31 +0100 (BST)
-References: <20220623102617.2164175-1-pdel@fb.com>
- <20220623102617.2164175-13-pdel@fb.com>
- <e5f51f14-fe75-0d55-6588-a3ca2565f760@kaod.org>
- <EC44C0BD-7BC0-4BDE-9A41-CB1EAA90EC87@fb.com>
- <e07ec4fe-6968-b19a-e649-298a9aaccba5@kaod.org>
- <07128acf-329a-f372-c48c-0c3cb498d3d0@kaod.org>
- <87zghvh7rt.fsf@linaro.org>
- <8072cd96-a032-55f2-0417-1989a7bbeca0@kaod.org>
- <87edz7gwff.fsf@linaro.org>
- <a35ac443-c93e-fb2b-6da9-2a3dc16f7d8c@kaod.org>
-User-agent: mu4e 1.7.27; emacs 28.1.50
-From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: =?utf-8?Q?C=C3=A9dric?= Le Goater <clg@kaod.org>
-Cc: Peter Delevoryas <pdel@fb.com>, Peter Maydell
- <peter.maydell@linaro.org>, Andrew Jeffery <andrew@aj.id.au>, Joel Stanley
- <joel@jms.id.au>, "pbonzini@redhat.com" <pbonzini@redhat.com>,
- "berrange@redhat.com" <berrange@redhat.com>, "eduardo@habkost.net"
- <eduardo@habkost.net>, "marcel.apfelbaum@gmail.com"
- <marcel.apfelbaum@gmail.com>, "richard.henderson@linaro.org"
- <richard.henderson@linaro.org>, Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?=
- <f4bug@amsat.org>,
- "ani@anisinha.ca" <ani@anisinha.ca>, Cameron Esfahani via
- <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>
-Subject: Re: [PATCH 12/14] aspeed: Make aspeed_board_init_flashes public
-Date: Thu, 30 Jun 2022 10:43:31 +0100
-In-reply-to: <a35ac443-c93e-fb2b-6da9-2a3dc16f7d8c@kaod.org>
-Message-ID: <87a69uh45w.fsf@linaro.org>
+Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp241003lft;
+        Thu, 30 Jun 2022 04:06:55 -0700 (PDT)
+X-Google-Smtp-Source: AGRyM1s6tPlnfnZKvwBor4tTAXYhDbPQfcddy0RFUomyJGUaoAFqBJUnAwgxs+ykhW5wrjOOdcGE
+X-Received: by 2002:ac8:5a47:0:b0:31d:2388:48dc with SMTP id o7-20020ac85a47000000b0031d238848dcmr6611648qta.80.1656587214989;
+        Thu, 30 Jun 2022 04:06:54 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1656587214; cv=none;
+        d=google.com; s=arc-20160816;
+        b=jIDE7d5+j5KEMsiZTnmTwev7CxzGHsGNv+O6HCo29p1eCuaVuhJts5+R14DlG7LMOw
+         N2C3J+Jr/y0RIW+G9LBVpJ9SMGnB5upS3zYOpujw1wa15Df4MyvXYquWfGqvnuRwYU7a
+         wAghmNzTAinx8RjqwmDzcsrerRfm3cbQ5VP3W6iRrTC47bY6rFi296Bb7VdfN+DwbZMC
+         O+WlsKnUj5okKUGfusRu2YNV6D2xN58wPnDgXnx9HgffPliAcpV+mgAhd6dVstK+fjW2
+         KdtEvT6xkuqJ3qAWOVzg36jPs+B0JkkcKHKgb+TjWBju8ONj3iw01EK0vZJMizH02h6N
+         0DUQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:references:cc:to:content-language:subject
+         :user-agent:mime-version:date:message-id;
+        bh=d65F7lIZ56BVVUkWMfWkLn9N1mRmaiBUoAufhl/hF8I=;
+        b=edDXxqj25Xt/jdEkrnWOLdV6mVcBBHLaVLbn82lGIErug/7DNtqVTCijUa3PxH6M8W
+         WAOHa0BRp3vwrZZPvEV/12ScJOlDoBHSHbwx/5yMD6xMA7a7u9mU7LbSV/E9M21eGSZ9
+         Gf9sV9ENFHchAT4QRIbX/BFuWfVVaPvGKafdjaCQyra124OVYdioyQtSclKGGjCSIwOd
+         RJwnYZiO8kEwd7qPPlevmhzCVKm55juuaewmf1cD3jw0wNQgmY/dWQWyoiyBAUeIsi1c
+         UDK1Oz1qWuc8MfyJPEH6NU6r/dDbpgoEWv4+WtI8ZKHR8u11M/KLn0JXqRJmHEtbOtSM
+         8Euw==
+ARC-Authentication-Results: i=1; mx.google.com;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id 19-20020ac85713000000b0031b1aa6d347si6637327qtw.402.2022.06.30.04.06.54
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 30 Jun 2022 04:06:54 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+Authentication-Results: mx.google.com;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:59254 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1o6s0c-0006HB-Fu
+	for alex.bennee@linaro.org; Thu, 30 Jun 2022 07:06:54 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55530)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1o6rwu-0003Tb-Km
+ for qemu-arm@nongnu.org; Thu, 30 Jun 2022 07:03:07 -0400
+Received: from smtpout1.mo529.mail-out.ovh.net ([178.32.125.2]:40343)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1o6rwr-0001jd-4D
+ for qemu-arm@nongnu.org; Thu, 30 Jun 2022 07:03:03 -0400
+Received: from mxplan5.mail.ovh.net (unknown [10.108.1.76])
+ by mo529.mail-out.ovh.net (Postfix) with ESMTPS id C86D3112EBFD9;
+ Thu, 30 Jun 2022 13:02:56 +0200 (CEST)
+Received: from kaod.org (37.59.142.102) by DAG4EX1.mxp5.local (172.16.2.31)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.9; Thu, 30 Jun
+ 2022 13:02:55 +0200
+Authentication-Results: garm.ovh; auth=pass
+ (GARM-102R0046cab118d-25df-4772-8008-f2639a72bd1d,
+ 40551C6C823FDDA91B74F5D58A080B55BE22893A) smtp.auth=clg@kaod.org
+X-OVh-ClientIp: 82.64.250.170
+Message-ID: <24f848a7-3b3e-9125-bedd-dedc1460a8f0@kaod.org>
+Date: Thu, 30 Jun 2022 13:02:54 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-TUID: f9rb9NVPe5Xe
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.9.0
+Subject: Re: [PATCH v3 14/14] hw/arm/aspeed: Add oby35-cl machine
+Content-Language: en-US
+To: Peter Delevoryas <me@pjd.dev>
+CC: <peter.maydell@linaro.org>, <andrew@aj.id.au>, <joel@jms.id.au>,
+ <cminyard@mvista.com>, <titusr@google.com>, <qemu-devel@nongnu.org>,
+ <qemu-arm@nongnu.org>, <zhdaniel@fb.com>, <pdel@fb.com>
+References: <20220630045133.32251-1-me@pjd.dev>
+ <20220630045133.32251-15-me@pjd.dev>
+From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
+In-Reply-To: <20220630045133.32251-15-me@pjd.dev>
+Content-Type: text/plain; charset="UTF-8"; format=flowed
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [37.59.142.102]
+X-ClientProxiedBy: DAG8EX2.mxp5.local (172.16.2.72) To DAG4EX1.mxp5.local
+ (172.16.2.31)
+X-Ovh-Tracer-GUID: 99650269-d544-4906-8a5a-5dc64d8eeea8
+X-Ovh-Tracer-Id: 9430537619722505138
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: 0
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvfedrudehuddgfeegucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucenucfjughrpefkffggfgfuvfevfhfhjggtgfhisehtjeertddtfeejnecuhfhrohhmpeevrogurhhitggpnfgvpgfiohgrthgvrhcuoegtlhhgsehkrghougdrohhrgheqnecuggftrfgrthhtvghrnhepffeggfekveevvddvffelfeehleffhffhteegkeduueevffffkeejieevffeltdfhnecuffhomhgrihhnpehgihhthhhusgdrtghomhenucfkpheptddrtddrtddrtddpfeejrdehledrudegvddruddtvdenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhhouggvpehsmhhtphhouhhtpdhhvghlohepmhigphhlrghnhedrmhgrihhlrdhovhhhrdhnvghtpdhinhgvtheptddrtddrtddrtddpmhgrihhlfhhrohhmpegtlhhgsehkrghougdrohhrghdpnhgspghrtghpthhtohepuddprhgtphhtthhopehpuggvlhesfhgsrdgtohhmpdfovfetjfhoshhtpehmohehvdel
+Received-SPF: pass client-ip=178.32.125.2; envelope-from=clg@kaod.org;
+ helo=smtpout1.mo529.mail-out.ovh.net
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: o0vStt+cJX86
+
+On 6/30/22 06:51, Peter Delevoryas wrote:
+> From: Peter Delevoryas <pdel@fb.com>
+> 
+> The fby35 machine includes 4 server boards, each of which has a "bridge
+> interconnect" (BIC). This chip abstracts the pinout for the server board
+> into a single endpoint that the baseboard management controller (BMC)
+> can talk to using IPMB.
+> 
+> This commit adds a machine for testing the BIC on the server board. It
+> runs OpenBIC (https://github.com/facebook/openbic) and the server board
+> is called CraterLake, so the code name is oby35-cl. There's also a
+> variant of the baseboard that replaces the BMC with a BIC, but that
+> machine is not included here.
+> 
+> A test image can be built from https://github.com/facebook/openbic using
+> the instructions in the README.md to build the meta-facebook/yv35-cl
+> recipe, or retrieved from my Github:
+> 
+>      wget https://github.com/peterdelevoryas/OpenBIC/releases/download/oby35-cl-2022.17.01/Y35BCL.elf
+> 
+> And you can run this machine with the following command:
+> 
+>      qemu-system-arm -machine oby35-cl -nographic -kernel Y35BCL.elf
+> 
+> It should produce output like the following:
+> 
+>      [00:00:00.005,000] <inf> usb_dc_aspeed: select ep[0x81] as IN endpoint
+>      [00:00:00.006,000] <inf> usb_dc_aspeed: select ep[0x82] as IN endpoint
+>      [00:00:00.006,000] <wrn> usb_dc_aspeed: pre-selected ep[0x1] as IN endpoint
+>      [00:00:00.006,000] <wrn> usb_dc_aspeed: pre-selected ep[0x2] as IN endpoint
+>      [00:00:00.006,000] <inf> usb_dc_aspeed: select ep[0x3] as OUT endpoint
+>      *** Booting Zephyr OS build v00.01.05  ***
+>      Hello, welcome to yv35 craterlake 2022.25.1
+>      BIC class type(class-1), 1ou present status(0), 2ou present status(0), board revision(0x1)
+>      check_vr_type: i2c4 0x62 page 0 [04 00 81 d2 49 3c ff ff ff ff ff ff ff ff ff ff]
+>      check_vr_type: i2c4 0x76 page 0 [04 00 81 d2 49 3c ff ff ff ff ff ff ff ff ff ff]
+>      check_vr_type: i2c4 0x76 page 1 [04 00 81 d2 49 3c ff ff ff ff ff ff ff ff ff ff]
+>      check_vr_type: i2c4 0x60 page 0 [04 00 81 d2 49 3c ff ff ff ff ff ff ff ff ff ff]
+>      check_vr_type: i2c4 0x60 page 1 [04 00 81 d2 49 3c ff ff ff ff ff ff ff ff ff ff]
+>      check_vr_type: i2c4 0x62 page 0 [04 00 81 d2 49 3c ff ff ff ff ff ff ff ff ff ff]
+>      check_vr_type: i2c4 0x76 page 0 [04 00 81 d2 49 3c ff ff ff ff ff ff ff ff ff ff]
+>      check_vr_type: i2c4 0x76 page 1 [04 00 81 d2 49 3c ff ff ff ff ff ff ff ff ff ff]
+>      check_vr_type: i2c4 0x60 page 0 [04 00 81 d2 49 3c ff ff ff ff ff ff ff ff ff ff]
+>      check_vr_type: i2c4 0x60 page 1 [04 00 81 d2 49 3c ff ff ff ff ff ff ff ff ff ff]
+>      check_vr_type: i2c4 0x62 page 0 [04 00 81 d2 49 3c ff ff ff ff ff ff ff ff ff ff]
+>      check_vr_type: i2c4 0x76 page 0 [04 00 81 d2 49 3c ff ff ff ff ff ff ff ff ff ff]
+>      check_vr_type: i2c4 0x76 page 1 [04 00 81 d2 49 3c ff ff ff ff ff ff ff ff ff ff]
+>      check_vr_type: i2c4 0x60 page 0 [04 00 81 d2 49 3c ff ff ff ff ff ff ff ff ff ff]
+>      check_vr_type: i2c4 0x60 page 1 [04 00 81 d2 49 3c ff ff ff ff ff ff ff ff ff ff]
+>      check_vr_type: i2c4 0x62 page 0 [04 00 81 d2 49 3c ff ff ff ff ff ff ff ff ff ff]
+>      check_vr_type: i2c4 0x76 page 0 [04 00 81 d2 49 3c ff ff ff ff ff ff ff ff ff ff]
+>      check_vr_type: i2c4 0x76 page 1 [04 00 81 d2 49 3c ff ff ff ff ff ff ff ff ff ff]
+>      check_vr_type: i2c4 0x60 page 0 [04 00 81 d2 49 3c ff ff ff ff ff ff ff ff ff ff]
+>      check_vr_type: i2c4 0x60 page 1 [04 00 81 d2 49 3c ff ff ff ff ff ff ff ff ff ff]
+>      [init_drive_type] sensor 0x14 post sensor read failed!
+> 
+>      [init_drive_type] sensor 0x30 post sensor read failed!
+>      [init_drive_type] sensor 0x39 post sensor read failed!
+>      ipmi_init
+>      [set_DC_status] gpio number(15) status(0)
+>      [set_post_status] gpio number(1) status(1)
+>      uart:~$ [00:00:01.010,000] <inf> kcs_aspeed: KCS3: addr=0xca2, idr=0x2c, odr=0x38, str=0x44
+> 
+>      [00:00:01.016,000] <err> spi_nor_multi_dev: [1216][spi1_cs0]SFDP magic 00000000 invalid
+>      [00:00:01.016,000] <err> spi_nor_multi_dev: [1456]SFDP read failed: -22
+>      [00:00:01.010,000] <inf> kcs_aspeed: KCS3: addr=0xca2, idr=0x2c, odr=0x38, str=0x44
+> 
+>      [00:00:01.016,000] <err> spi_nor_multi_dev: [1216][spi1_cs0]SFDP magic 00000000 invalid
+>      [00:00:01.016,000] <err> spi_nor_multi_dev: [1456]SFDP read failed: -22
+>      uart:~$ BIC Ready
+> 
+> Signed-off-by: Peter Delevoryas <pdel@fb.com>
+
+LGTM.
+
+That said I would prefer to introduce the machine first and then
+populate with devices.
+
+May be it is time to introduce a new machine file. This one seems
+like it could go in a f35.c file, also because a larger f35-* is
+in plan. aspeed.c could contain the basic definitions and helpers.
 
 
-C=C3=A9dric Le Goater <clg@kaod.org> writes:
+> ---
+>   hw/arm/aspeed.c | 48 ++++++++++++++++++++++++++++++++++++++++++++++++
+>   1 file changed, 48 insertions(+)
+> 
+> diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
+> index a06f7c1b62..75971ef2ca 100644
+> --- a/hw/arm/aspeed.c
+> +++ b/hw/arm/aspeed.c
+> @@ -1429,6 +1429,50 @@ static void aspeed_minibmc_machine_ast1030_evb_class_init(ObjectClass *oc,
+>       amc->macs_mask = 0;
+>   }
+>   
+> +static void oby35_cl_i2c_init(AspeedMachineState *bmc)
+> +{
+> +    AspeedSoCState *soc = &bmc->soc;
+> +    I2CBus *i2c[14];
+> +    I2CBus *ssd[8];
+> +    int i;
+> +
+> +    for (i = 0; i < 14; i++) {
+> +        i2c[i] = aspeed_i2c_get_bus(&soc->i2c, i);
+> +    }
+> +    get_pca9548_channels(i2c[1], 0x71, ssd);
 
-> On 6/29/22 20:24, Alex Benn=C3=A9e wrote:
->> C=C3=A9dric Le Goater <clg@kaod.org> writes:
->>=20
->>> On 6/29/22 16:14, Alex Benn=C3=A9e wrote:
->>>> C=C3=A9dric Le Goater <clg@kaod.org> writes:
->>>>
->>>>> On 6/24/22 18:50, C=C3=A9dric Le Goater wrote:
->>>>>> On 6/23/22 20:43, Peter Delevoryas wrote:
->>>>>>>
->>>>>>>
->>>>>>>> On Jun 23, 2022, at 8:09 AM, C=C3=A9dric Le Goater <clg@kaod.org> =
-wrote:
->>>>>>>>
->>>>>>>> On 6/23/22 12:26, Peter Delevoryas wrote:
->>>>>>>>> Signed-off-by: Peter Delevoryas <pdel@fb.com>
->>>>>>>>
->>>>>>>> Let's start simple without flash support. We should be able to
->>>>>>>> load FW blobs in each CPU address space using loader devices.
->>>>>>>
->>>>>>> Actually, I was unable to do this, perhaps because the fb OpenBMC
->>>>>>> boot sequence is a little weird. I specifically _needed_ to have
->>>>>>> a flash device which maps the firmware in at 0x2000_0000, because
->>>>>>> the fb OpenBMC U-Boot SPL jumps to that address to start executing
->>>>>>> from flash? I think this is also why fb OpenBMC machines can be so =
-slow.
->>>>>>>
->>>>>>> $ ./build/qemu-system-arm -machine fby35 \
->>>>>>>   =C2=A0=C2=A0=C2=A0=C2=A0 -device loader,file=3Dfby35.mtd,addr=3D0=
-,cpu-num=3D0 -nographic \
->>>>>>>   =C2=A0=C2=A0=C2=A0=C2=A0 -d int -drive file=3Dfby35.mtd,format=3D=
-raw,if=3Dmtd
->>>>>> Ideally we should be booting from the flash device directly using
->>>>>> the machine option '-M ast2600-evb,execute-in-place=3Dtrue' like HW
->>>>>> does. Instructions are fetched using SPI transfers. But the amount
->>>>>> of code generated is tremendous.
->>>> Yeah because there is a potential race when reading from HW so we
->>>> throw
->>>> away TB's after executing them because we have no way of knowing if it
->>>> has changed under our feet. See 873d64ac30 (accel/tcg: re-factor non-R=
-AM
->>>> execution code) which cleaned up this handling.
->>>>
->>>>>> See some profiling below for a
->>>>>> run which barely reaches DRAM training in U-Boot.
->>>>>
->>>>> Some more profiling on both ast2500 and ast2600 machines shows :
->>>>>
->>>>>
->>>>> * ast2600-evb,execute-in-place=3Dtrue :
->>>>>
->>>>> Type               Object  Call site                Wait Time (s)    =
-     Count  Average (us)
->>>>> ---------------------------------------------------------------------=
-------------------------
->>>>> BQL mutex  0x564dc03922e0  accel/tcg/cputlb.c:1365       14.21443
->>>>> 32909927          0.43
->>>> This is unavoidable as a HW access needs the BQL held so we will go
->>>> through this cycle every executed instruction.
->>>> Did I miss why the flash contents are not mapped into the physical
->>>> address space? Isn't that how it appear to the processor?
->>>
->>>
->>> There are two modes :
->>>            if (ASPEED_MACHINE(machine)->mmio_exec) {
->>>              memory_region_init_alias(boot_rom, NULL, "aspeed.boot_rom",
->>>                                       &fl->mmio, 0, size);
->>>              memory_region_add_subregion(get_system_memory(), FIRMWARE_=
-ADDR,
->>>                                          boot_rom);
->>>          } else {
->>>              memory_region_init_rom(boot_rom, NULL, "aspeed.boot_rom",
->>>                                     size, &error_abort);
->>>              memory_region_add_subregion(get_system_memory(), FIRMWARE_=
-ADDR,
->>>                                          boot_rom);
->>>              write_boot_rom(drive0, FIRMWARE_ADDR, size, &error_abort);
->>>          }
->>>
->>> The default boot mode uses the ROM. No issue.
->>>
->>> The "execute-in-place=3Dtrue" option creates an alias on the region of
->>> the flash contents and each instruction is then fetched from the flash
->>> drive with SPI transactions.
+We should rename to aspeed_get_pca9548_channels
 
-I wonder if we were keeping the code before?
+> +
+> +    i2c_slave_create_simple(i2c[0], "fby35-sb-cpld", 0x21);
+> +    i2c_slave_create_simple(i2c[1], "tmp105", 0x48);
+> +    i2c_slave_create_simple(i2c[1], "tmp105", 0x49);
+> +    i2c_slave_create_simple(i2c[1], "tmp105", 0x4a);
+> +    i2c_slave_create_simple(i2c[1], "adm1272", 0x40);
+> +    i2c_slave_create_simple(i2c[1], "tmp421", 0x4c);
+> +    i2c_slave_create_simple(i2c[2], "intel-me", 0x16);
+> +    i2c_slave_create_simple(i2c[4], "isl69259", 0x76);
+> +    i2c_slave_create_simple(i2c[4], "isl69259", 0x62);
+> +    i2c_slave_create_simple(i2c[4], "isl69259", 0x60);
+> +
+> +    for (int i = 0; i < 8; i++) {
+> +        i2c_slave_create_simple(ssd[i], "tmp105", 0x6a);
+> +    }
+> +
+> +    /*
+> +     * FIXME: This should actually be the BMC, but both the ME and the BMC
 
->>>
->>> With old FW images, using an older U-boot, the machine boots in a couple
->>> of seconds. See the profiling below for a witherspoon-bmc machine using
->>> U-Boot 2016.07.
->>>
->>>    qemu-system-arm -M witherspoon-bmc,execute-in-place=3Dtrue  -drive f=
-ile=3D./flash-witherspoon-bmc,format=3Draw,if=3Dmtd -drive file=3D./flash-w=
-itherspoon-bmc2,format=3Draw,if=3Dmtd -nographic -nodefaults -snapshot -ser=
-ial mon:stdio -enable-sync-profile
->>>    ...
->>>    U-Boot 2016.07-00040-g8425e96e2e27-dirty (Jun 24 2022 - 23:21:57 +02=
-00)
->>>              Watchdog enabled
->>>    DRAM:  496 MiB
->>>    Flash: 32 MiB
->>>    In:    serial
->>>    Out:   serial
->>>    Err:   serial
->>>    Net:
->>>    (qemu) info sync-profile
->>>    Type               Object  Call site                Wait Time (s)   =
-      Count  Average (us)
->>>    --------------------------------------------------------------------=
--------------------------
->>>    BQL mutex  0x56189610b2e0  accel/tcg/cputlb.c:1365        0.25311   =
-   12346237          0.02
->>>    condvar    0x5618970cf220  softmmu/cpus.c:423             0.05506   =
-          2      27530.78
->>>    BQL mutex  0x56189610b2e0  util/rcu.c:269                 0.04709   =
-          2      23544.26
->>>    condvar    0x561896d0fc78  util/thread-pool.c:90          0.01340   =
-         83        161.47
->>>    condvar    0x56189610b240  softmmu/cpus.c:571             0.00005   =
-          1         54.93
->>>    condvar    0x56189610b280  softmmu/cpus.c:642             0.00003   =
-          1         32.88
->>>    BQL mutex  0x56189610b2e0  util/main-loop.c:318           0.00003   =
-         34          0.76
->>>    mutex      0x561896eade00  tcg/region.c:204               0.00002   =
-        995          0.02
->>>    rec_mutex  [           2]  util/async.c:682               0.00002   =
-        493          0.03
->>>    mutex      [           2]  chardev/char.c:118             0.00001   =
-        404          0.03
->>>    --------------------------------------------------------------------=
--------------------------
->>>
->>>
->>> However, with recent U-boots, it takes quite a while to reach DRAM trai=
-ning.
->>> Close to a minute. See the profiling below for an ast2500-evb machine u=
-sing
->>> U-Boot 2019.04.
->>>
->>>   qemu-system-arm -M ast2500-evb,execute-in-place=3Dtrue  -net nic,maca=
-ddr=3DC0:FF:EE:00:00:03,netdev=3Dnet0  -drive file=3D./flash-ast2500-evb,fo=
-rmat=3Draw,if=3Dmtd  -nographic -nodefaults -snapshot -serial mon:stdio  -e=
-nable-sync-profile
->>>    qemu-system-arm: warning: Aspeed iBT has no chardev backend
->>>    qemu-system-arm: warning: nic ftgmac100.1 has no peer
->>>    QEMU 7.0.50 monitor - type 'help' for more information
->>>       U-Boot 2019.04-00080-g6ca27db3f97b-dirty (Jun 24 2022 - 23:22:03
->>>      +0200)
->>>       SOC : AST2500-A1
->>>    RST : Power On
->>>    LPC Mode : SIO:Enable : SuperIO-2e
->>>    Eth : MAC0: RGMII, , MAC1: RGMII,
->>>    Model: AST2500 EVB
->>>    DRAM:  448 MiB (capacity:512 MiB, VGA:64 MiB, ECC:off)
->>>    MMC:   sdhci_slot0@100: 0, sdhci_slot1@200: 1
->>>    Loading Environment from SPI Flash... SF: Detected mx25l25635e with =
-page size 256 Bytes, erase size 64 KiB, total 32 MiB
->>>    *** Warning - bad CRC, using default environment
->>>       In:    serial@1e784000
->>>    Out:   serial@1e784000
->>>    Err:   serial@1e784000
->>>    Net:   eth0: ethernet@1e660000
->>>    Warning: ethernet@1e680000 (eth1) using random MAC address - 4a:e5:9=
-a:4a:c7:c5
->>>    , eth1: ethernet@1e680000
->>>    Hit any key to stop autoboot:  2
->>>    (qemu) info sync-profile
->>>    Type               Object  Call site                Wait Time (s)   =
-      Count  Average (us)
->>>    --------------------------------------------------------------------=
--------------------------
->>>    condvar    0x561f10c9ef88  util/thread-pool.c:90         10.01196   =
-         28     357570.00
->>>    BQL mutex  0x561f102362e0  accel/tcg/cputlb.c:1365        0.29496   =
-   14248621          0.02
->>>    condvar    0x561f110325a0  softmmu/cpus.c:423             0.02231   =
-          2      11152.57
->>>    BQL mutex  0x561f102362e0  util/rcu.c:269                 0.01447   =
-          4       3618.60
->>>    condvar    0x561f10236240  softmmu/cpus.c:571             0.00010   =
-          1        102.19
->>>    mutex      0x561f10e9f1c0  tcg/region.c:204               0.00007   =
-       3052          0.02
->>>    mutex      [           2]  chardev/char.c:118             0.00003   =
-       1486          0.02
->>>    condvar    0x561f10236280  softmmu/cpus.c:642             0.00003   =
-          1         29.38
->>>    BQL mutex  0x561f102362e0  accel/tcg/cputlb.c:1426        0.00002   =
-        973          0.02
->>>    BQL mutex  0x561f102362e0  util/main-loop.c:318           0.00001   =
-         34          0.41
->>>    --------------------------------------------------------------------=
--------------------------
->>>    Something in the layout of the FW is making a big difference. One
->>> that could be relevant is that the recent versions are using a device
->>> tree.
->>>
->>> There might be no good solution to this issue but I fail to analyze
->>> it correctly. Is there a way to collect information on the usage of
->>> Translation Blocks ?
->> You could expand the data we collect in tb_tree_stats and expose it
->> via
->> info jit.
->
-> The "fast" run, U-Boot 2016.07, gives :
->
->
->   Translation buffer state:
->   gen code size       254880371/1073736704
->   TB count            1089
->   TB avg target size  16 max=3D356 bytes
->   TB avg host size    278 bytes (expansion ratio: 17.2)
->   cross page TB count 0 (0%)
->   direct jump count   501 (46%) (2 jumps=3D372 34%)
->   TB hash buckets     1025/8192 (12.51% head buckets used)
->   TB hash occupancy   3.32% avg chain occ. Histogram: [0.0,7.5)%|=E2=96=
-=88  =E2=96=81  =E2=96=81  =E2=96=81|[67.5,75.0]%
->   TB hash avg chain   1.000 buckets. Histogram: 1|=E2=96=88|1
->      Statistics:
->   TB flush count      0
->   TB invalidate count 0
->   TLB full flushes    0
->   TLB partial flushes 2
->   TLB elided flushes  2338
->   JIT cycles          2221788409 (0.926 s at 2.4 GHz)
->   translated TBs      738520 (aborted=3D0 0.0%)
->   avg ops/TB          15.7 max=3D459
->   deleted ops/TB      2.72
->   avg temps/TB        32.89 max=3D88
->   avg host code/TB    113.7
->   avg search data/TB  5.2
->   cycles/op           192.0
->   cycles/in byte      748.7
->   cycles/out byte     26.4
->   cycles/search byte     582.8
->     gen_interm time   57.6%
->     gen_code time     42.4%
->   optim./code time    19.4%
->   liveness/code time  26.1%
->   cpu_restore count   0
->     avg cycles        0.0
->   and the "slow", U-Boot 2019.04 :
->
-> Translation buffer state:
-> gen code size       368603795/1073736704
-> TB count            3052
-> TB avg target size  16 max=3D360 bytes
-> TB avg host size    293 bytes (expansion ratio: 17.6)
-> cross page TB count 0 (0%)
-> direct jump count   1431 (46%) (2 jumps=3D1104 36%)
-> TB hash buckets     2559/8192 (31.24% head buckets used)
-> TB hash occupancy   9.31% avg chain occ. Histogram: [0,10)%|=E2=96=88 =E2=
-=96=83  =E2=96=81 =E2=96=81 =E2=96=81|[90,100]%
-> TB hash avg chain   1.000 buckets. Histogram: 1|=E2=96=88|1
->
-> Statistics:
-> TB flush count      3
+QEMU has an embedded IPMI BMC simulator.
 
-Something triggers 3 complete TB flushes in the slow run (3x1000 ~ 3000
-TBs). This can be the TB overflowing but:
+> +     * are IPMB endpoints, and the current ME implementation is generic
+> +     * enough to respond normally to some things.
+> +     */
+> +    i2c_slave_create_simple(i2c[6], "intel-me", 0x10);
+> +}
+> +
+> +static void aspeed_machine_oby35_cl_class_init(ObjectClass *oc, void *data)
+> +{
+> +    MachineClass *mc = MACHINE_CLASS(oc);
+> +    AspeedMachineClass *amc = ASPEED_MACHINE_CLASS(oc);
+> +
+> +    mc->desc = "Meta Platforms fby35 CraterLake BIC (Cortex-M4)";
+> +    amc->i2c_init = oby35_cl_i2c_init;
+> +}
+> +
+>   static const TypeInfo aspeed_machine_types[] = {
+>       {
+>           .name          = MACHINE_TYPE_NAME("palmetto-bmc"),
+> @@ -1494,6 +1538,10 @@ static const TypeInfo aspeed_machine_types[] = {
+>           .name           = MACHINE_TYPE_NAME("ast1030-evb"),
+>           .parent         = TYPE_ASPEED_MACHINE,
+>           .class_init     = aspeed_minibmc_machine_ast1030_evb_class_init,
+> +    }, {
+> +        .name          = MACHINE_TYPE_NAME("oby35-cl"),
+> +        .parent        = MACHINE_TYPE_NAME("ast1030-evb"),
 
-fast: gen code size       254880371/1073736704
-slow: gen code size       368603795/1073736704
+hmm, so we are inheriting from the evb ?
 
-doesn't look like we are getting close to overflowing. Must be something
-else.
-
-> TB invalidate count 0
-> TLB full flushes    0
-> TLB partial flushes 3
-> TLB elided flushes  2367
-> JIT cycles          26479044772 (11.033 s at 2.4 GHz)
-> translated TBs      10552169 (aborted=3D0 0.0%)
-> avg ops/TB          15.0 max=3D464
-> deleted ops/TB      2.44
-> avg temps/TB        32.43 max=3D89
-> avg host code/TB    99.0
-> avg search data/TB  5.0
-> cycles/op           167.7
-> cycles/in byte      626.8
-> cycles/out byte     25.4
-> cycles/search byte     499.4
->   gen_interm time   50.4%
->   gen_code time     49.6%
-> optim./code time    19.5%
-> liveness/code time  27.7%
-> cpu_restore count   0
->   avg cycles        0.0
->
->
-> A lot more TBs.
->   C.
+C.
 
 
---=20
-Alex Benn=C3=A9e
+> +        .class_init    = aspeed_machine_oby35_cl_class_init,
+>       }, {
+>           .name          = TYPE_ASPEED_MACHINE,
+>           .parent        = TYPE_MACHINE,
+

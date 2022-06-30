@@ -1,95 +1,126 @@
-Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp75836lft;
-        Wed, 29 Jun 2022 23:17:01 -0700 (PDT)
-X-Google-Smtp-Source: AGRyM1tHUgawa1lkgsxoDU7Dh6T2M0tipHQDLIoVEwfsdqjn5Y3tO0JaA/29n97KMPM4ij4mgO/k
-X-Received: by 2002:a37:9b48:0:b0:6ae:ea5f:ab5f with SMTP id d69-20020a379b48000000b006aeea5fab5fmr4845115qke.761.1656569821146;
-        Wed, 29 Jun 2022 23:17:01 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1656569821; cv=none;
+Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp39065lft;
+        Wed, 29 Jun 2022 22:04:43 -0700 (PDT)
+X-Google-Smtp-Source: AGRyM1v21uVMXoU0WO14QAZ6tAiofSNYWc8fYyfgArDLmpf/4XS6hGp6xQegHgstosY8yEkk9S3w
+X-Received: by 2002:a05:6214:3208:b0:470:4263:b7ab with SMTP id ms8-20020a056214320800b004704263b7abmr10774936qvb.126.1656565483079;
+        Wed, 29 Jun 2022 22:04:43 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1656565483; cv=none;
         d=google.com; s=arc-20160816;
-        b=iiPm5OYHtEmbU/V+oVD/xv99MQ1T3OanIEMVBf3MpSUXbK6D6Lii8WFqWpCYw85nWd
-         STzhmUJnrvKUpg+LEQUJFv22QrzwCapfunv/kGBzT8MAt8X9vrwcQkivSdWwh+tKdsTQ
-         0IZVucYfMEP8344Xoi2AuWMz3fCfbxMtoDR+N8a9Zou3V+u9nfK4aHmOFcag6eHNL550
-         wacTMNNtkPoB2bWEBAlykBFXW2FfERP5FA7Ka7miK/N6fKYZRSJB+ahVCHXGWSezA+tk
-         cA63wFGludQ9AkeYnypRQyqQ9ri/BV0LRoMJ7x5WZ0uxY/lkxzHilu2FMKWL72XFW0lj
-         mGog==
+        b=bcIeBKD+tWdMS2q5rUFaoBU2AOAk/DJOTPxnm/UH0yfhuFwWf/7SwM9eHrD/Nwacxx
+         JqMZDcX12SRu8FylX9o6JLL+FaZBZEF1wAAKPKKweEN8jzC7kvHsWqNOAgoKDqRGqc1r
+         douKptRXjaQQcxMfcew7tg1rboaqt0nzuHkRjx0hpw5x33tPcd4fkocSJNv5Gnp+b6G1
+         0UfqagnaE/Er3Y7LjP9pJHxGIHoI7f+Htom/yd+jWTTxmN3Sph8mEvVmHWhBv32crzJI
+         gAnd5Sx63NMqs9P+0bM0X8odmYkSdhAyvJtJHf9clMwlgn89FMl07h5JzUejWnba4Tk8
+         iUgA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:cc:to:content-language:subject
-         :user-agent:mime-version:date:message-id;
-        bh=G1e7aJbhREXxl+D2wH6FUAu1Y2i2hWKO0vyFN/fd0JI=;
-        b=Vd/TBlhiD3PGQpuI3Q8FsCWaI/jIlwE3fTzdMrr7h76tj5vpCF0osiZMbL80stCX12
-         85BodwpuA3JLoyaXZiMo+j2Mr42T1CGk8IQoLC0klDoLwK25Dvf4kzGyrHrqvo+72+QL
-         GntG+unCc5B3tFf/M8ydPW+Z2mxPErjj0SkvyHW4WDMLEoijM1VlPkgo7NuRkd1Q2n/b
-         P9MqF+nr19sJbV59xkQe4cwa85tdC1VUaRSAXd/jZdrQ2oJnIqnqC16Phtbn+GtPzPYv
-         08cyJ1fE5UxLnc3M2IIHMWNr92TEEgFURGouGgBMbZxerurh1vqQQjvp4hqSDfoWgzrg
-         xB/A==
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:feedback-id:dkim-signature:dkim-signature;
+        bh=dTm7rZ8rzNQ7a1Zn1KFha3bDGRQnWQsIe5tXVAida7Q=;
+        b=qHMQdk8K5BSe8ykMhxyqvE8rSZSUB0mnNiLsMoGTrJj3peTKWufYu/LfaMQvnQ5ZYL
+         E+u4lwJFopVLUESu3io9bAPCISVBeejaTgp3VPMvqWqvhRFTwBumH8YodMvoml4f2HyM
+         RTSr/jk/PaM9sgFt/Kn/B1BOErzBXoEuipVlvX875sZrjL/Qts1T2IHrjNf0BDZPH8oA
+         JNmJ8fTHu35ZeSgekriTayonP+bHu3epPcv4QPMw3ECb7gMYEKzhgv1Z+j+wMb383u8G
+         sLdHFZCyWAPHzhCUWfIuzK1WFV5F0/XZ1YPMvL3nttON1/ktnlwq+bXQPQ36DCV9WZGW
+         MNdw==
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@pjd.dev header.s=fm1 header.b=D4eDpQT2;
+       dkim=fail header.i=@messagingengine.com header.s=i9e814621.fm2 header.b="e3Xx/pAZ";
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id gv9-20020a056214262900b00461f624eafcsi10648074qvb.104.2022.06.29.23.17.01
+        by mx.google.com with ESMTPS id l11-20020a05622a050b00b003050a104479si11765108qtx.268.2022.06.29.22.04.42
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 29 Jun 2022 23:17:01 -0700 (PDT)
+        Wed, 29 Jun 2022 22:04:43 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
+       dkim=fail header.i=@pjd.dev header.s=fm1 header.b=D4eDpQT2;
+       dkim=fail header.i=@messagingengine.com header.s=i9e814621.fm2 header.b="e3Xx/pAZ";
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:35818 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:56956 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1o6nU4-0006SY-HX
-	for alex.bennee@linaro.org; Thu, 30 Jun 2022 02:17:00 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:36078)
+	id 1o6mM6-0002Wf-IZ
+	for alex.bennee@linaro.org; Thu, 30 Jun 2022 01:04:42 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:45842)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1o6nQU-0003aw-UP
- for qemu-devel@nongnu.org; Thu, 30 Jun 2022 02:13:19 -0400
-Received: from 2.mo548.mail-out.ovh.net ([178.33.255.19]:50133)
+ (Exim 4.90_1) (envelope-from <me@pjd.dev>)
+ id 1o6mA3-0003JS-T9; Thu, 30 Jun 2022 00:52:16 -0400
+Received: from wnew1-smtp.messagingengine.com ([64.147.123.26]:47987)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1o6nQS-0000ED-LZ
- for qemu-devel@nongnu.org; Thu, 30 Jun 2022 02:13:18 -0400
-Received: from mxplan5.mail.ovh.net (unknown [10.108.1.216])
- by mo548.mail-out.ovh.net (Postfix) with ESMTPS id 718D5208F2;
- Thu, 30 Jun 2022 06:13:12 +0000 (UTC)
-Received: from kaod.org (37.59.142.104) by DAG4EX1.mxp5.local (172.16.2.31)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.9; Thu, 30 Jun
- 2022 08:13:11 +0200
-Authentication-Results: garm.ovh; auth=pass
- (GARM-104R0059e77e513-3eb0-4772-89fc-6dbbf10a0beb,
- 40551C6C823FDDA91B74F5D58A080B55BE22893A) smtp.auth=clg@kaod.org
-X-OVh-ClientIp: 82.64.250.170
-Message-ID: <115a8bb6-2e02-18da-4684-56660a8f65e6@kaod.org>
-Date: Thu, 30 Jun 2022 08:13:11 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.9.0
-Subject: Re: [PATCH v3 00/14] hw/i2c/aspeed: I2C slave mode DMA RX w/ new regs
-Content-Language: en-US
-To: Peter Delevoryas <me@pjd.dev>
-CC: <peter.maydell@linaro.org>, <andrew@aj.id.au>, <joel@jms.id.au>,
- <cminyard@mvista.com>, <titusr@google.com>, <qemu-devel@nongnu.org>,
- <qemu-arm@nongnu.org>, <zhdaniel@fb.com>, <pdel@fb.com>
-References: <20220630045133.32251-1-me@pjd.dev>
-From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
+ (Exim 4.90_1) (envelope-from <me@pjd.dev>)
+ id 1o6m9z-00072V-7X; Thu, 30 Jun 2022 00:52:15 -0400
+Received: from compute2.internal (compute2.nyi.internal [10.202.2.46])
+ by mailnew.west.internal (Postfix) with ESMTP id DD7C62B058DA;
+ Thu, 30 Jun 2022 00:52:08 -0400 (EDT)
+Received: from mailfrontend1 ([10.202.2.162])
+ by compute2.internal (MEProxy); Thu, 30 Jun 2022 00:52:09 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=pjd.dev; h=cc:cc
+ :content-transfer-encoding:date:date:from:from:in-reply-to
+ :in-reply-to:message-id:mime-version:references:reply-to:sender
+ :subject:subject:to:to; s=fm1; t=1656564728; x=1656568328; bh=dT
+ m7rZ8rzNQ7a1Zn1KFha3bDGRQnWQsIe5tXVAida7Q=; b=D4eDpQT2otRL+szcLe
+ FmbLNGIIpy7BRL1q/7nWaJay7xkxm2Y+Cll2vDa1adz9CxGVpAOE3N+N76hBSgo7
+ qhwEWLz2uTcndbAAQDRRty5RmHl3O9PQ00lOnHNMxydHYzHsC9iDaBC9BzmtWSwo
+ HwBC0iR0Vh/VZ5Z1fbbUaXD9iXmD0Kzq6JXmlYXt9sqKTRa1saCSc6bwvE9z3T6x
+ A50lq8jzWl93VOMIdIRJcY2sUVEA1c9hkbIbIJSnUpB2q4iLjKS83WbhbF9vE9nN
+ 6sOUVWWsWvp0JwDrJ/+j1SnnHFXazWqSudWSnGSao9ZFgYNeNQWY4EixRAAZdQ4G
+ b0PA==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+ messagingengine.com; h=cc:cc:content-transfer-encoding:date:date
+ :feedback-id:feedback-id:from:from:in-reply-to:in-reply-to
+ :message-id:mime-version:references:reply-to:sender:subject
+ :subject:to:to:x-me-proxy:x-me-proxy:x-me-sender:x-me-sender
+ :x-sasl-enc; s=i9e814621.fm2; t=1656564728; x=1656568328; bh=dTm
+ 7rZ8rzNQ7a1Zn1KFha3bDGRQnWQsIe5tXVAida7Q=; b=e3Xx/pAZYE3L9LvweNJ
+ uilSWVAV345kGdP2NjbEEmbsazMj02TQ05UjG23EWp4SE+8wW6fWv+6ajC99I6+2
+ qsqAjXnNoxGqQXBpl22/lRC2rZZWiJPuHHqBOBZAlXcG1D5i53fJehdqTwhE9rdo
+ CfA48ZZ+dYJX/WGp1jahUlzJf/YAnmhlKaAcBQIRROUxjr+2cRw1ZFAfhu19mhRr
+ crGkdPg1CpYKiYV+OCsfmo6YwRY3/6xAN82cMJmqWRfjBmFM3uj5geLUpO+1ctWT
+ mUv15jEmK31dLgNy97aI8Ec3zuKdsvc5keks7tdtpt+ayqDIrn7EhkM7iqRefa5I
+ o+g==
+X-ME-Sender: <xms:-Cu9YsCC83lRZyGha4wozHCatqsf8_e-RjdCH1AbWCqAmjbcSV6D4g>
+ <xme:-Cu9YuhHHQXTzHkjJ7Mrc5ohJ45jBK_JdenF2VrC0K2cOe92Na3mqQ73rkJtjwXp-
+ WvO_9SFnrFoeiVNKy0>
+X-ME-Received: <xmr:-Cu9YvllUu3Yr2QZ-u88th4T8O0H9Ap7G5KkTuXVAZFc93yJr_HvQsIIn0L1kTyTlWX8q34trf8C38377iZZa-hy0XNlPHS5>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvfedrudehtddgkeelucetufdoteggodetrfdotf
+ fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
+ uceurghilhhouhhtmecufedttdenuchmihhsshhinhhgucfvqfcufhhivghlugculdeftd
+ dmnecujfgurhephffvvefufffkofgjfhgggfestdekredtredttdenucfhrhhomheprfgv
+ thgvrhcuffgvlhgvvhhorhihrghsuceomhgvsehpjhgurdguvghvqeenucggtffrrghtth
+ gvrhhnpeektefhieevgfduvdeiueetteegtdeuueevieelffevueevveehhedukeejtdek
+ teenucevlhhushhtvghrufhiiigvpedvnecurfgrrhgrmhepmhgrihhlfhhrohhmpehmvg
+ esphhjugdruggvvh
+X-ME-Proxy: <xmx:-Cu9YiyNIkjSA2tGKTaiXgplfeRH4z9YX-M1XFQbjFNoxBzSb8_3pg>
+ <xmx:-Cu9YhRoX0p80koPBcu4-B44K_j3QekZyATqoXQuX3Ah69iODKj30Q>
+ <xmx:-Cu9Ytbkdy2buP9XxTlJcU9f8oRaS9N3vwv4dvxK2i0rhs9XTWlbVg>
+ <xmx:-Cu9YsG-OrNe5d4z9ABuDWu6OyraJZZtdJx5QCbLMABnoOyucZgfODB4asQ>
+Feedback-ID: i9e814621:Fastmail
+Received: by mail.messagingengine.com (Postfix) with ESMTPA; Thu,
+ 30 Jun 2022 00:52:07 -0400 (EDT)
+From: Peter Delevoryas <me@pjd.dev>
+To: 
+Cc: clg@kaod.org, peter.maydell@linaro.org, andrew@aj.id.au, joel@jms.id.au,
+ cminyard@mvista.com, titusr@google.com, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org, zhdaniel@fb.com, pdel@fb.com
+Subject: [PATCH v3 10/14] hw/sensor: Add Renesas ISL69259 device model
+Date: Wed, 29 Jun 2022 21:51:29 -0700
+Message-Id: <20220630045133.32251-11-me@pjd.dev>
+X-Mailer: git-send-email 2.37.0
 In-Reply-To: <20220630045133.32251-1-me@pjd.dev>
-Content-Type: text/plain; charset="UTF-8"; format=flowed
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [37.59.142.104]
-X-ClientProxiedBy: DAG8EX2.mxp5.local (172.16.2.72) To DAG4EX1.mxp5.local
- (172.16.2.31)
-X-Ovh-Tracer-GUID: 3face655-4a4b-4fd1-ba0b-7a8ea386d025
-X-Ovh-Tracer-Id: 4537376627907136434
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: 0
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvfedrudehtddguddtiecutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemucehtddtnecunecujfgurhepkfffgggfuffvvehfhfgjtgfgihesthejredttdefjeenucfhrhhomhepveorughrihgtpgfnvggpifhorghtvghruceotghlgheskhgrohgurdhorhhgqeenucggtffrrghtthgvrhhnpeelleeiiefgkeefiedtvdeigeetueetkeffkeelheeugfetteegvdekgfehgffgkeenucfkpheptddrtddrtddrtddpfeejrdehledrudegvddruddtgeenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhhouggvpehsmhhtphhouhhtpdhhvghlohepmhigphhlrghnhedrmhgrihhlrdhovhhhrdhnvghtpdhinhgvtheptddrtddrtddrtddpmhgrihhlfhhrohhmpegtlhhgsehkrghougdrohhrghdpnhgspghrtghpthhtohepuddprhgtphhtthhopehpuggvlhesfhgsrdgtohhmpdfovfetjfhoshhtpehmohehgeek
-Received-SPF: pass client-ip=178.33.255.19; envelope-from=clg@kaod.org;
- helo=2.mo548.mail-out.ovh.net
-X-Spam_score_int: -18
-X-Spam_score: -1.9
+References: <20220630045133.32251-1-me@pjd.dev>
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=64.147.123.26; envelope-from=me@pjd.dev;
+ helo=wnew1-smtp.messagingengine.com
+X-Spam_score_int: -12
+X-Spam_score: -1.3
 X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_report: (-1.3 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ FROM_FMBLA_NEWDOM=1.498, RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -104,86 +135,71 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 126Rb/V57T8O
+X-TUID: VwvBmrV1IuxO
 
-On 6/30/22 06:51, Peter Delevoryas wrote:
-> From: Peter Delevoryas <pdel@fb.com>
+From: Peter Delevoryas <pdel@fb.com>
 
-It is good practice to keep the Reviewed/Tested/Acked tags sent on
-the previous version of a patchset. I should have told you in v2.
-For next time ! :)
+This adds the ISL69259, using all the same functionality as the existing
+ISL69260 but overriding the IC_DEVICE_ID.
 
-Thanks,
+Signed-off-by: Peter Delevoryas <pdel@fb.com>
+---
+ hw/sensor/isl_pmbus_vr.c | 28 ++++++++++++++++++++++++++++
+ 1 file changed, 28 insertions(+)
 
-C.
-
-> v3:
-> - hw/i2c/pmbus_device:
->    - Removed commit that resets the out buf.
->    - Removed IC_DEVICE_ID
->    - Added commit to allow devices to move to an idle state that
->      avoids enqueuing excess data into the out buf.
-> - hw/sensor/isl_pmbus_vr:
->    - Added IC_DEVICE_ID commit just for voltage regulators.
->    - Added ISL69259 with an IC_DEVICE_ID.
-> - hw/misc/aspeed_peci:
->    - Moved registers from .h to .c
->    - Replaced guest_error on interrupt disable case with trace
->      for all interrupts (not just when they're disabled).
->    - Removed leftover qemu_irq_raise
-> 
-> Thanks,
-> Peter
-> 
-> Klaus Jensen (3):
->    hw/i2c: support multiple masters
->    hw/i2c: add asynchronous send
->    hw/i2c/aspeed: add slave device in old register mode
-> 
-> Peter Delevoryas (11):
->    hw/i2c/aspeed: Fix R_I2CD_FUN_CTRL reference
->    hw/i2c/aspeed: Fix DMA len write-enable bit handling
->    hw/i2c/aspeed: Fix MASTER_EN missing error message
->    hw/i2c/aspeed: Add new-registers DMA slave mode RX support
->    hw/i2c/pmbus: Add idle state to return 0xff's
->    hw/sensor: Add IC_DEVICE_ID to ISL voltage regulators
->    hw/sensor: Add Renesas ISL69259 device model
->    hw/misc/aspeed: Add PECI controller
->    hw/misc/aspeed: Add fby35-sb-cpld
->    hw/misc/aspeed: Add intel-me
->    hw/arm/aspeed: Add oby35-cl machine
-> 
->   MAINTAINERS                      |   2 +
->   hw/arm/aspeed.c                  |  48 +++++++
->   hw/arm/aspeed_ast10x0.c          |  12 ++
->   hw/arm/aspeed_ast2600.c          |  12 ++
->   hw/arm/aspeed_soc.c              |  13 ++
->   hw/arm/pxa2xx.c                  |   2 +
->   hw/display/sii9022.c             |   2 +
->   hw/display/ssd0303.c             |   2 +
->   hw/i2c/aspeed_i2c.c              | 234 +++++++++++++++++++++++++++----
->   hw/i2c/core.c                    |  70 ++++++++-
->   hw/i2c/pmbus_device.c            |   9 ++
->   hw/i2c/smbus_slave.c             |   4 +
->   hw/i2c/trace-events              |   2 +
->   hw/misc/aspeed_peci.c            | 152 ++++++++++++++++++++
->   hw/misc/fby35_sb_cpld.c          | 128 +++++++++++++++++
->   hw/misc/intel_me.c               | 162 +++++++++++++++++++++
->   hw/misc/meson.build              |   5 +-
->   hw/misc/trace-events             |  13 ++
->   hw/nvram/eeprom_at24c.c          |   2 +
->   hw/sensor/isl_pmbus_vr.c         |  40 ++++++
->   hw/sensor/lsm303dlhc_mag.c       |   2 +
->   include/hw/arm/aspeed_soc.h      |   3 +
->   include/hw/i2c/aspeed_i2c.h      |  11 ++
->   include/hw/i2c/i2c.h             |  30 ++++
->   include/hw/i2c/pmbus_device.h    |   7 +
->   include/hw/misc/aspeed_peci.h    |  29 ++++
->   include/hw/sensor/isl_pmbus_vr.h |   5 +
->   27 files changed, 971 insertions(+), 30 deletions(-)
->   create mode 100644 hw/misc/aspeed_peci.c
->   create mode 100644 hw/misc/fby35_sb_cpld.c
->   create mode 100644 hw/misc/intel_me.c
->   create mode 100644 include/hw/misc/aspeed_peci.h
-> 
+diff --git a/hw/sensor/isl_pmbus_vr.c b/hw/sensor/isl_pmbus_vr.c
+index 799ea9d89e..853d70536f 100644
+--- a/hw/sensor/isl_pmbus_vr.c
++++ b/hw/sensor/isl_pmbus_vr.c
+@@ -119,6 +119,18 @@ static void raa228000_exit_reset(Object *obj)
+     pmdev->pages[0].read_temperature_3 = 0;
+ }
+ 
++static void isl69259_exit_reset(Object *obj)
++{
++    ISLState *s = ISL69260(obj);
++    static const uint8_t ic_device_id[] = {0x04, 0x00, 0x81, 0xD2, 0x49, 0x3c};
++    g_assert_cmphex(sizeof(ic_device_id), <=, sizeof(s->ic_device_id));
++
++    isl_pmbus_vr_exit_reset(obj);
++
++    s->ic_device_id_len = sizeof(ic_device_id);
++    memcpy(s->ic_device_id, ic_device_id, sizeof(ic_device_id));
++}
++
+ static void isl_pmbus_vr_add_props(Object *obj, uint64_t *flags, uint8_t pages)
+ {
+     PMBusDevice *pmdev = PMBUS_DEVICE(obj);
+@@ -257,6 +269,21 @@ static void raa229004_class_init(ObjectClass *klass, void *data)
+     isl_pmbus_vr_class_init(klass, data, 2);
+ }
+ 
++static void isl69259_class_init(ObjectClass *klass, void *data)
++{
++    ResettableClass *rc = RESETTABLE_CLASS(klass);
++    DeviceClass *dc = DEVICE_CLASS(klass);
++    dc->desc = "Renesas ISL69259 Digital Multiphase Voltage Regulator";
++    rc->phases.exit = isl69259_exit_reset;
++    isl_pmbus_vr_class_init(klass, data, 2);
++}
++
++static const TypeInfo isl69259_info = {
++    .name = TYPE_ISL69259,
++    .parent = TYPE_ISL69260,
++    .class_init = isl69259_class_init,
++};
++
+ static const TypeInfo isl69260_info = {
+     .name = TYPE_ISL69260,
+     .parent = TYPE_PMBUS_DEVICE,
+@@ -283,6 +310,7 @@ static const TypeInfo raa228000_info = {
+ 
+ static void isl_pmbus_vr_register_types(void)
+ {
++    type_register_static(&isl69259_info);
+     type_register_static(&isl69260_info);
+     type_register_static(&raa228000_info);
+     type_register_static(&raa229004_info);
+-- 
+2.37.0
 

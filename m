@@ -1,112 +1,112 @@
-Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp39065lft;
-        Wed, 29 Jun 2022 22:04:43 -0700 (PDT)
-X-Google-Smtp-Source: AGRyM1v21uVMXoU0WO14QAZ6tAiofSNYWc8fYyfgArDLmpf/4XS6hGp6xQegHgstosY8yEkk9S3w
-X-Received: by 2002:a05:6214:3208:b0:470:4263:b7ab with SMTP id ms8-20020a056214320800b004704263b7abmr10774936qvb.126.1656565483079;
-        Wed, 29 Jun 2022 22:04:43 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1656565483; cv=none;
+Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp32411lft;
+        Wed, 29 Jun 2022 21:52:02 -0700 (PDT)
+X-Google-Smtp-Source: AGRyM1vaU/fYzFAt7oNRwjV2ixQPS4JWxxRMSazkc9f5dsJUXyyed3Qxk3wVZ8pSYAtAnPcw8JPk
+X-Received: by 2002:a05:622a:14d0:b0:318:9744:842b with SMTP id u16-20020a05622a14d000b003189744842bmr5942474qtx.147.1656564722090;
+        Wed, 29 Jun 2022 21:52:02 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1656564722; cv=none;
         d=google.com; s=arc-20160816;
-        b=bcIeBKD+tWdMS2q5rUFaoBU2AOAk/DJOTPxnm/UH0yfhuFwWf/7SwM9eHrD/Nwacxx
-         JqMZDcX12SRu8FylX9o6JLL+FaZBZEF1wAAKPKKweEN8jzC7kvHsWqNOAgoKDqRGqc1r
-         douKptRXjaQQcxMfcew7tg1rboaqt0nzuHkRjx0hpw5x33tPcd4fkocSJNv5Gnp+b6G1
-         0UfqagnaE/Er3Y7LjP9pJHxGIHoI7f+Htom/yd+jWTTxmN3Sph8mEvVmHWhBv32crzJI
-         gAnd5Sx63NMqs9P+0bM0X8odmYkSdhAyvJtJHf9clMwlgn89FMl07h5JzUejWnba4Tk8
-         iUgA==
+        b=wrhTOmNGaYcT+pgJtDSLTDprCkDPnrcqh0JRfYLQ6u8x1QXo6rn8PKh2vReuoXZFsK
+         GkYJIs80ULxj85dcJm0YC5K9xJsoI9tNVfQx+xozyyMAoFS+xVYIiWpLy5sZcX95Dciz
+         izhTO2LQnFfpur8gxDavc0ZrhAvfPKAJ0jjULKhIBL7inCsWki89jEQ/+zxfM4O4/x4E
+         cqoIo5Z9RkI4yMO8VIu5p3ypCvm1dd916tUxN4nboOL8c8f8pabqYBg5cD8+R4ndw+C8
+         V/4e52Rb8zX5LI51FWQXjev+V2nI/IvXgpgr4gZGFMBdi4gxijECaEyzz7gyDe5b69Co
+         CcEQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:feedback-id:dkim-signature:dkim-signature;
-        bh=dTm7rZ8rzNQ7a1Zn1KFha3bDGRQnWQsIe5tXVAida7Q=;
-        b=qHMQdk8K5BSe8ykMhxyqvE8rSZSUB0mnNiLsMoGTrJj3peTKWufYu/LfaMQvnQ5ZYL
-         E+u4lwJFopVLUESu3io9bAPCISVBeejaTgp3VPMvqWqvhRFTwBumH8YodMvoml4f2HyM
-         RTSr/jk/PaM9sgFt/Kn/B1BOErzBXoEuipVlvX875sZrjL/Qts1T2IHrjNf0BDZPH8oA
-         JNmJ8fTHu35ZeSgekriTayonP+bHu3epPcv4QPMw3ECb7gMYEKzhgv1Z+j+wMb383u8G
-         sLdHFZCyWAPHzhCUWfIuzK1WFV5F0/XZ1YPMvL3nttON1/ktnlwq+bXQPQ36DCV9WZGW
-         MNdw==
+        bh=TzdrkHjRQ8rWJQWIdjSiwTXhi7OvYfc3YUTxMfRrk6I=;
+        b=fzn+Ae8f9fsdt2/p310wT9BqABrmYbmVenYK8cLn01XMvla/BVxqvfNTVAs2XRHbH5
+         Wd06PTUshdi0s+pSp0rODhvGIOc84mMdvyGS7Lj5yKktYDl1w48aZWXY7pPtD+OmFLHy
+         pHo7+2FaYF2FXnUAMMo4m3Iarn73C/dzBri/WPo/4liZ5XPaYkSAloTFXW00gWlA0lBQ
+         SwDtJzDSNTj0vc9ZdlLckB+sZGrY8eYbcj2p3eCzCwk2cSOkdhR+I2ylC+FdJoQu6GCu
+         tlLdwZ0tLXq61daFmcBFfROTpT04nIIjbZNkL7DSLsVGcGSH6wmyWViE4iva7g8JXG9X
+         bDNQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@pjd.dev header.s=fm1 header.b=D4eDpQT2;
-       dkim=fail header.i=@messagingengine.com header.s=i9e814621.fm2 header.b="e3Xx/pAZ";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@pjd.dev header.s=fm1 header.b=UHXdtzEA;
+       dkim=fail header.i=@messagingengine.com header.s=i9e814621.fm2 header.b=lmtNxZK0;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id l11-20020a05622a050b00b003050a104479si11765108qtx.268.2022.06.29.22.04.42
+        by mx.google.com with ESMTPS id d7-20020ac85ac7000000b00317ccfa2fadsi10411142qtd.283.2022.06.29.21.52.01
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 29 Jun 2022 22:04:43 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 29 Jun 2022 21:52:02 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@pjd.dev header.s=fm1 header.b=D4eDpQT2;
-       dkim=fail header.i=@messagingengine.com header.s=i9e814621.fm2 header.b="e3Xx/pAZ";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:56956 helo=lists1p.gnu.org)
+       dkim=fail header.i=@pjd.dev header.s=fm1 header.b=UHXdtzEA;
+       dkim=fail header.i=@messagingengine.com header.s=i9e814621.fm2 header.b=lmtNxZK0;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:34526 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1o6mM6-0002Wf-IZ
-	for alex.bennee@linaro.org; Thu, 30 Jun 2022 01:04:42 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45842)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1o6m9p-0002MV-Bg
+	for alex.bennee@linaro.org; Thu, 30 Jun 2022 00:52:01 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:45676)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <me@pjd.dev>)
- id 1o6mA3-0003JS-T9; Thu, 30 Jun 2022 00:52:16 -0400
-Received: from wnew1-smtp.messagingengine.com ([64.147.123.26]:47987)
+ id 1o6m9a-0002LA-Ga; Thu, 30 Jun 2022 00:51:46 -0400
+Received: from wnew1-smtp.messagingengine.com ([64.147.123.26]:47773)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <me@pjd.dev>)
- id 1o6m9z-00072V-7X; Thu, 30 Jun 2022 00:52:15 -0400
+ id 1o6m9V-0006uH-JC; Thu, 30 Jun 2022 00:51:46 -0400
 Received: from compute2.internal (compute2.nyi.internal [10.202.2.46])
- by mailnew.west.internal (Postfix) with ESMTP id DD7C62B058DA;
- Thu, 30 Jun 2022 00:52:08 -0400 (EDT)
-Received: from mailfrontend1 ([10.202.2.162])
- by compute2.internal (MEProxy); Thu, 30 Jun 2022 00:52:09 -0400
+ by mailnew.west.internal (Postfix) with ESMTP id 0B5F62B058D5;
+ Thu, 30 Jun 2022 00:51:38 -0400 (EDT)
+Received: from mailfrontend2 ([10.202.2.163])
+ by compute2.internal (MEProxy); Thu, 30 Jun 2022 00:51:39 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=pjd.dev; h=cc:cc
  :content-transfer-encoding:date:date:from:from:in-reply-to
  :in-reply-to:message-id:mime-version:references:reply-to:sender
- :subject:subject:to:to; s=fm1; t=1656564728; x=1656568328; bh=dT
- m7rZ8rzNQ7a1Zn1KFha3bDGRQnWQsIe5tXVAida7Q=; b=D4eDpQT2otRL+szcLe
- FmbLNGIIpy7BRL1q/7nWaJay7xkxm2Y+Cll2vDa1adz9CxGVpAOE3N+N76hBSgo7
- qhwEWLz2uTcndbAAQDRRty5RmHl3O9PQ00lOnHNMxydHYzHsC9iDaBC9BzmtWSwo
- HwBC0iR0Vh/VZ5Z1fbbUaXD9iXmD0Kzq6JXmlYXt9sqKTRa1saCSc6bwvE9z3T6x
- A50lq8jzWl93VOMIdIRJcY2sUVEA1c9hkbIbIJSnUpB2q4iLjKS83WbhbF9vE9nN
- 6sOUVWWsWvp0JwDrJ/+j1SnnHFXazWqSudWSnGSao9ZFgYNeNQWY4EixRAAZdQ4G
- b0PA==
+ :subject:subject:to:to; s=fm1; t=1656564698; x=1656568298; bh=Tz
+ drkHjRQ8rWJQWIdjSiwTXhi7OvYfc3YUTxMfRrk6I=; b=UHXdtzEAuqcQ5cgAuY
+ BLNSiJ+AmYZ63T2KJfEGBktMFcg9Rg6IRAHCOXiZxzgNqAEtVO90EkzldxBAvNcE
+ B3vJLJKq1FAlHXqyCiPiWJRuP0988Z1hnQzWJ3InrvBSX8pCpQbdFo2HEtaZAQj1
+ mOKcEo+nrhlOj15Q/G1+TO+ZOVPSdQczLq28wUTsVd8CFV6Fn1HABM5YHcebs1t/
+ FggU5h+d5HgoyI/axkNUiKdNxPfGORs5bYm6u4oI45+CNHEEb4KE6TaVkRf4BpfO
+ QhTDeRvHjMjn0pMn03Fww8ZjU9h22q2dkYOoKrGsFuhGilnqitC9zHfWxjDiTQeI
+ S3xw==
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
  messagingengine.com; h=cc:cc:content-transfer-encoding:date:date
  :feedback-id:feedback-id:from:from:in-reply-to:in-reply-to
  :message-id:mime-version:references:reply-to:sender:subject
  :subject:to:to:x-me-proxy:x-me-proxy:x-me-sender:x-me-sender
- :x-sasl-enc; s=i9e814621.fm2; t=1656564728; x=1656568328; bh=dTm
- 7rZ8rzNQ7a1Zn1KFha3bDGRQnWQsIe5tXVAida7Q=; b=e3Xx/pAZYE3L9LvweNJ
- uilSWVAV345kGdP2NjbEEmbsazMj02TQ05UjG23EWp4SE+8wW6fWv+6ajC99I6+2
- qsqAjXnNoxGqQXBpl22/lRC2rZZWiJPuHHqBOBZAlXcG1D5i53fJehdqTwhE9rdo
- CfA48ZZ+dYJX/WGp1jahUlzJf/YAnmhlKaAcBQIRROUxjr+2cRw1ZFAfhu19mhRr
- crGkdPg1CpYKiYV+OCsfmo6YwRY3/6xAN82cMJmqWRfjBmFM3uj5geLUpO+1ctWT
- mUv15jEmK31dLgNy97aI8Ec3zuKdsvc5keks7tdtpt+ayqDIrn7EhkM7iqRefa5I
- o+g==
-X-ME-Sender: <xms:-Cu9YsCC83lRZyGha4wozHCatqsf8_e-RjdCH1AbWCqAmjbcSV6D4g>
- <xme:-Cu9YuhHHQXTzHkjJ7Mrc5ohJ45jBK_JdenF2VrC0K2cOe92Na3mqQ73rkJtjwXp-
- WvO_9SFnrFoeiVNKy0>
-X-ME-Received: <xmr:-Cu9YvllUu3Yr2QZ-u88th4T8O0H9Ap7G5KkTuXVAZFc93yJr_HvQsIIn0L1kTyTlWX8q34trf8C38377iZZa-hy0XNlPHS5>
+ :x-sasl-enc; s=i9e814621.fm2; t=1656564698; x=1656568298; bh=Tzd
+ rkHjRQ8rWJQWIdjSiwTXhi7OvYfc3YUTxMfRrk6I=; b=lmtNxZK0m21xpCOOp24
+ hkwhaL5P2uwsM2hDX/WSM0QhdTG7K3dpQbvV0dc6StWnEi2BQzqi8Mq9FhNSgUaL
+ PzsQGR1/P76P29PuS5YGH+SltEBPyMYKCv39R9mu4sB6ijJf7lsTOEtxBgv1Kc+r
+ DZwKfxS8nMAxYFJahaAIGXe8wsJzo55Kc5x6SfPJnWtnjzGfNDImROUKVsl0an2z
+ 7uayWWY9myF5BxwgMuWuJ5XY7VV1eRPdKT//KS32rmBf4gU61R5fSgirBwTCytJ3
+ oblKFgnJqkxW3s74PDpd2edMOTTn5TNPOOtsxl9edEzBAUMcBov3OaQ3gdg5ujpl
+ Jtw==
+X-ME-Sender: <xms:2iu9YlcSkD_UlCyBFjT8nEvuw-cSX2LI7N0motRY_7bQplo05OazZA>
+ <xme:2iu9YjMV_CLlBlh3k2LYxTr4_ZEGL3H3gIvcANcdRUTy0e_gGZU6M5BW3DaKhHXcA
+ hB7h-eQ9hRBKU5GEso>
+X-ME-Received: <xmr:2iu9YugwxRxdgwaua3qqjvUTTwwOOvinq50oVYeCsnpkJSqvywMm8xjayjng1U6g4__2QPs4YnsejUNtOKZeoW35wbUxcors>
 X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvfedrudehtddgkeelucetufdoteggodetrfdotf
  fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
  uceurghilhhouhhtmecufedttdenuchmihhsshhinhhgucfvqfcufhhivghlugculdeftd
  dmnecujfgurhephffvvefufffkofgjfhgggfestdekredtredttdenucfhrhhomheprfgv
  thgvrhcuffgvlhgvvhhorhihrghsuceomhgvsehpjhgurdguvghvqeenucggtffrrghtth
  gvrhhnpeektefhieevgfduvdeiueetteegtdeuueevieelffevueevveehhedukeejtdek
- teenucevlhhushhtvghrufhiiigvpedvnecurfgrrhgrmhepmhgrihhlfhhrohhmpehmvg
+ teenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhgrihhlfhhrohhmpehmvg
  esphhjugdruggvvh
-X-ME-Proxy: <xmx:-Cu9YiyNIkjSA2tGKTaiXgplfeRH4z9YX-M1XFQbjFNoxBzSb8_3pg>
- <xmx:-Cu9YhRoX0p80koPBcu4-B44K_j3QekZyATqoXQuX3Ah69iODKj30Q>
- <xmx:-Cu9Ytbkdy2buP9XxTlJcU9f8oRaS9N3vwv4dvxK2i0rhs9XTWlbVg>
- <xmx:-Cu9YsG-OrNe5d4z9ABuDWu6OyraJZZtdJx5QCbLMABnoOyucZgfODB4asQ>
+X-ME-Proxy: <xmx:2iu9Yu-uqfT_XrY2ZhMxtB0ad3BHbphPGP0GgYq3lvJbiz7Po9-otw>
+ <xmx:2iu9Yhv6AWLTDrm-9HzP1eQJ4WvaBs828eS8rYoS69yYZXJQXcAJLQ>
+ <xmx:2iu9YtFbVv0GU60vFmJ9eornlL7iu5tMYDwwt7sx4mrr2DviNXCizw>
+ <xmx:2iu9YnAjQjnzsVpH0Pc0fkdZsxJX_A6Our6yGRhlCbc2FMXKdW7xn6KvIT8>
 Feedback-ID: i9e814621:Fastmail
 Received: by mail.messagingengine.com (Postfix) with ESMTPA; Thu,
- 30 Jun 2022 00:52:07 -0400 (EDT)
+ 30 Jun 2022 00:51:37 -0400 (EDT)
 From: Peter Delevoryas <me@pjd.dev>
 To: 
 Cc: clg@kaod.org, peter.maydell@linaro.org, andrew@aj.id.au, joel@jms.id.au,
  cminyard@mvista.com, titusr@google.com, qemu-devel@nongnu.org,
  qemu-arm@nongnu.org, zhdaniel@fb.com, pdel@fb.com
-Subject: [PATCH v3 10/14] hw/sensor: Add Renesas ISL69259 device model
-Date: Wed, 29 Jun 2022 21:51:29 -0700
-Message-Id: <20220630045133.32251-11-me@pjd.dev>
+Subject: [PATCH v3 01/14] hw/i2c/aspeed: Fix R_I2CD_FUN_CTRL reference
+Date: Wed, 29 Jun 2022 21:51:20 -0700
+Message-Id: <20220630045133.32251-2-me@pjd.dev>
 X-Mailer: git-send-email 2.37.0
 In-Reply-To: <20220630045133.32251-1-me@pjd.dev>
 References: <20220630045133.32251-1-me@pjd.dev>
@@ -122,84 +122,45 @@ X-Spam_report: (-1.3 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  FROM_FMBLA_NEWDOM=1.498, RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_PASS=-0.001,
  SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: VwvBmrV1IuxO
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 7ld3/VSOTQBi
 
 From: Peter Delevoryas <pdel@fb.com>
 
-This adds the ISL69259, using all the same functionality as the existing
-ISL69260 but overriding the IC_DEVICE_ID.
+Very minor, doesn't effect functionality, but this is supposed to be
+R_I2CC_FUN_CTRL (new-mode, not old-mode).
 
+Fixes: ba2cccd64e9 ("aspeed: i2c: Add new mode support")
 Signed-off-by: Peter Delevoryas <pdel@fb.com>
 ---
- hw/sensor/isl_pmbus_vr.c | 28 ++++++++++++++++++++++++++++
- 1 file changed, 28 insertions(+)
+ hw/i2c/aspeed_i2c.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/hw/sensor/isl_pmbus_vr.c b/hw/sensor/isl_pmbus_vr.c
-index 799ea9d89e..853d70536f 100644
---- a/hw/sensor/isl_pmbus_vr.c
-+++ b/hw/sensor/isl_pmbus_vr.c
-@@ -119,6 +119,18 @@ static void raa228000_exit_reset(Object *obj)
-     pmdev->pages[0].read_temperature_3 = 0;
- }
- 
-+static void isl69259_exit_reset(Object *obj)
-+{
-+    ISLState *s = ISL69260(obj);
-+    static const uint8_t ic_device_id[] = {0x04, 0x00, 0x81, 0xD2, 0x49, 0x3c};
-+    g_assert_cmphex(sizeof(ic_device_id), <=, sizeof(s->ic_device_id));
-+
-+    isl_pmbus_vr_exit_reset(obj);
-+
-+    s->ic_device_id_len = sizeof(ic_device_id);
-+    memcpy(s->ic_device_id, ic_device_id, sizeof(ic_device_id));
-+}
-+
- static void isl_pmbus_vr_add_props(Object *obj, uint64_t *flags, uint8_t pages)
- {
-     PMBusDevice *pmdev = PMBUS_DEVICE(obj);
-@@ -257,6 +269,21 @@ static void raa229004_class_init(ObjectClass *klass, void *data)
-     isl_pmbus_vr_class_init(klass, data, 2);
- }
- 
-+static void isl69259_class_init(ObjectClass *klass, void *data)
-+{
-+    ResettableClass *rc = RESETTABLE_CLASS(klass);
-+    DeviceClass *dc = DEVICE_CLASS(klass);
-+    dc->desc = "Renesas ISL69259 Digital Multiphase Voltage Regulator";
-+    rc->phases.exit = isl69259_exit_reset;
-+    isl_pmbus_vr_class_init(klass, data, 2);
-+}
-+
-+static const TypeInfo isl69259_info = {
-+    .name = TYPE_ISL69259,
-+    .parent = TYPE_ISL69260,
-+    .class_init = isl69259_class_init,
-+};
-+
- static const TypeInfo isl69260_info = {
-     .name = TYPE_ISL69260,
-     .parent = TYPE_PMBUS_DEVICE,
-@@ -283,6 +310,7 @@ static const TypeInfo raa228000_info = {
- 
- static void isl_pmbus_vr_register_types(void)
- {
-+    type_register_static(&isl69259_info);
-     type_register_static(&isl69260_info);
-     type_register_static(&raa228000_info);
-     type_register_static(&raa229004_info);
+diff --git a/hw/i2c/aspeed_i2c.c b/hw/i2c/aspeed_i2c.c
+index 37ae1f2e04..ff33571954 100644
+--- a/hw/i2c/aspeed_i2c.c
++++ b/hw/i2c/aspeed_i2c.c
+@@ -552,7 +552,7 @@ static void aspeed_i2c_bus_new_write(AspeedI2CBus *bus, hwaddr offset,
+                           __func__);
+             break;
+         }
+-        bus->regs[R_I2CD_FUN_CTRL] = value & 0x007dc3ff;
++        bus->regs[R_I2CC_FUN_CTRL] = value & 0x007dc3ff;
+         break;
+     case A_I2CC_AC_TIMING:
+         bus->regs[R_I2CC_AC_TIMING] = value & 0x1ffff0ff;
 -- 
 2.37.0
 

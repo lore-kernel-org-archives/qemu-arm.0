@@ -1,126 +1,96 @@
-Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp41909lft;
-        Wed, 29 Jun 2022 22:09:31 -0700 (PDT)
-X-Google-Smtp-Source: AGRyM1uJioJI4jy/IXAjSbteeX1dw+K7JdNUCjWkoLY7Hv1MrVwRI+xLvSPW0bJHoTB894gJaQIx
-X-Received: by 2002:a05:6214:c29:b0:470:7bd9:d278 with SMTP id a9-20020a0562140c2900b004707bd9d278mr11238937qvd.88.1656565771843;
-        Wed, 29 Jun 2022 22:09:31 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1656565771; cv=none;
+Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp84597lft;
+        Wed, 29 Jun 2022 23:35:16 -0700 (PDT)
+X-Google-Smtp-Source: AGRyM1s4a8nwB9YEvKZsNY66R00x2+Nqm2mk/TXkykrEEAYNsBcsTEKaQyMewK8xUK5XY3fCrBMK
+X-Received: by 2002:a05:6214:e4b:b0:470:a060:4536 with SMTP id o11-20020a0562140e4b00b00470a0604536mr11247399qvc.108.1656570915984;
+        Wed, 29 Jun 2022 23:35:15 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1656570915; cv=none;
         d=google.com; s=arc-20160816;
-        b=zQDusc+1xo5/2bEZ1v/8gmyEl5Yadmy6KdiRjuy1GHM3tzVB+28fGoLJgmFy8cepf6
-         EFnuI5Rl8D15ayWdWyYLLsb+cmKZ92lm+v1fBNEi+YAg7IcyM2udRg0pdrKk4ef8j5yj
-         daA2wv7vDd2l5VrP08IHF/RenCLpKUpxqni/pH31gWNtFIdtjY9+DELt+siysXmrxaOQ
-         Zp2MvM3t6aRPMlVi6/Op1D/5QYpv+SP2mt6All5g4OYeuh6RRt11g4XWbe61Db1i4QQk
-         vmTdFKyweK5n4ZUS1aFbyz5oMsubzQZ9oWOx2GWMR8fDqdzwan/jmM9r5NLpiEU13Boh
-         brxg==
+        b=T6TYwR1RfIelajMMFejJaV/Ygss4b8932YM44jYUlbGu5xicv8IHmmoHiHIgV5DbFp
+         B4WbX2NY85uSVrf21ygX/S2+xsRCkivIBqpqDfQlWgxDISOlrxlZvdEUehZvl+/Q+hfa
+         qS41GP9zlod6AL9Lq2z6NwwD7A0fz1Zk3/1svssqyhRjNpx9t3gfv0s6VYmL5fMe+YHV
+         1mYaO1xqgo2mkHtVma7Lx+nf3RbQ4YUA5SRGr1+uC2UXVMztlfy718pKRJkOXyCCHyEs
+         teWhW46lUDd5unrDZlhxYqRMpLxf+Az8JbblGN6bdSX+o+SPffuiomkATsqUMM/vemCB
+         27QQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:feedback-id:dkim-signature:dkim-signature;
-        bh=gyg2RNC50wimjfzibmXXr3OYmVTc/sRE8Mv6uRfLhMk=;
-        b=qpO0FdVLaZmK5sLMQCVg18nQIygNpXU2lNKLP9VgdgfQADEWmJdeLil5Y7LU+De6Oc
-         JOV6UXXlhDV+G0Cvv8aUrheCOptQD2YbOzM/kDVp+g/rGQFQchQf12Is1v0wvJEZh6AE
-         LW4NtIMpHUTWzasGnla7q5whtt5Cg46LA4pRF/Q8ecIrSZ6DQoDnLGUvVHneoYnb6Mb/
-         OK+/EsssAK80B+/hbc57QIIi44Z/ua0Q/I4MhMVU7PwZlTZc+RcyA06vVIbAWAciIItV
-         5cOUXY6Kj2g4EvTNtvPSAnJJCYoXTNk9zw7dUSXgE2qYgi6Eg1hvGni2Djd/l1fWRY8i
-         bckg==
+         :in-reply-to:from:references:cc:to:content-language:subject
+         :user-agent:mime-version:date:message-id;
+        bh=bQO+fiOwPTdQk4QamHzlFNePXB70vFloY1jZmkyIJfY=;
+        b=XNZgfOpZ0jv95yyKBNfylhZfqTU8Q4MOV99+DQKmtlAogS07ortsqu6evK1z7+ehke
+         6VVMEkamiTeekcJsji7HveLk9YY17KX38hueTGemzkNEh7KUHXl7e42UnivKaU4Wcpa2
+         j977kSPXuLoGlFwbN6NHEYBwMzYh8zB/RIShy3DIPP3I6V/ZlxA7oUkOP8zVkbaj1H9m
+         QRoQWPuGItFcOxlV2kAVPd1NbH29dEG0zgE4jmS/1pEt8TVoHuLVldscaTYsgjDyw2SI
+         vbXp3I4789QF+9542iL7OEFgfDfVVt5mIwvq7DV+NhpfSdLNwKivpcwCqiWDKuEZsvSn
+         1bhA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@pjd.dev header.s=fm1 header.b=0bSGFMw4;
-       dkim=fail header.i=@messagingengine.com header.s=i9e814621.fm2 header.b=dPQgGv17;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id z11-20020a05622a060b00b003179eec232bsi4929338qta.119.2022.06.29.22.09.31
+        by mx.google.com with ESMTPS id b63-20020a376742000000b006a725ec488esi9544907qkc.263.2022.06.29.23.35.15
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 29 Jun 2022 22:09:31 -0700 (PDT)
+        Wed, 29 Jun 2022 23:35:15 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@pjd.dev header.s=fm1 header.b=0bSGFMw4;
-       dkim=fail header.i=@messagingengine.com header.s=i9e814621.fm2 header.b=dPQgGv17;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:36314 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:50712 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1o6mQl-00087s-AQ
-	for alex.bennee@linaro.org; Thu, 30 Jun 2022 01:09:31 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45878)
+	id 1o6nlj-0001D3-6B
+	for alex.bennee@linaro.org; Thu, 30 Jun 2022 02:35:15 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:40152)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <me@pjd.dev>)
- id 1o6mAB-0003Qk-6U; Thu, 30 Jun 2022 00:52:23 -0400
-Received: from wnew1-smtp.messagingengine.com ([64.147.123.26]:60167)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1o6nhD-0007S3-Q5
+ for qemu-arm@nongnu.org; Thu, 30 Jun 2022 02:30:36 -0400
+Received: from smtpout1.mo529.mail-out.ovh.net ([178.32.125.2]:39423)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <me@pjd.dev>)
- id 1o6mA6-000737-Ag; Thu, 30 Jun 2022 00:52:22 -0400
-Received: from compute2.internal (compute2.nyi.internal [10.202.2.46])
- by mailnew.west.internal (Postfix) with ESMTP id 0AACF2B058FA;
- Thu, 30 Jun 2022 00:52:15 -0400 (EDT)
-Received: from mailfrontend1 ([10.202.2.162])
- by compute2.internal (MEProxy); Thu, 30 Jun 2022 00:52:16 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=pjd.dev; h=cc:cc
- :content-transfer-encoding:date:date:from:from:in-reply-to
- :in-reply-to:message-id:mime-version:references:reply-to:sender
- :subject:subject:to:to; s=fm1; t=1656564735; x=1656568335; bh=gy
- g2RNC50wimjfzibmXXr3OYmVTc/sRE8Mv6uRfLhMk=; b=0bSGFMw4ZzuqcQnXKW
- WkF+kqeVUsfldq5Ac0CXX0wEmzgvatHP9gXImTRBPE/XoFPVebINmb9yXfbtB3fi
- nHUnb6zK+sV7tsHn6Wd3QsIHrQoiD+6CNdf/BUdX0gIQn+7Nk4AJfscQSUC/c16e
- MaL9IOucWOHJTw4DTau3R3iXbiy/96q7c8lU75fhQ64upbioF6LviUUe1vQyBaIs
- gU3LoaqukkVOky+foRxBQ+OLyVbZXjbFYj5bzoHU2wxRL65THW6+iia9t9GHsEBt
- 5i3q9G2sAVG5YeAKFuTMn4cWnBYFhyfnCjOkdruE6ClM5xpwKU0LOFxhYK7MCGe6
- DsAg==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
- messagingengine.com; h=cc:cc:content-transfer-encoding:date:date
- :feedback-id:feedback-id:from:from:in-reply-to:in-reply-to
- :message-id:mime-version:references:reply-to:sender:subject
- :subject:to:to:x-me-proxy:x-me-proxy:x-me-sender:x-me-sender
- :x-sasl-enc; s=i9e814621.fm2; t=1656564735; x=1656568335; bh=gyg
- 2RNC50wimjfzibmXXr3OYmVTc/sRE8Mv6uRfLhMk=; b=dPQgGv17xQCuApn/v7Y
- kqkrVenG7cNr4hQL0snutkNvShMPXicxbOo8Q8S3hEN1fUticQkBzDgnEAB4Fpov
- lHCLOJ5X+FhPuwGgl+3oYV0yK5sMaBKvKKMOSOKt/lR3b5oQWlgAXYapL3MQ34Q9
- wAuwYlP8ispFL/Xf5oPy+a88f8Y5AqtcDqZt11akF0sQCjr6eSvMYolRKKI2zIda
- gkIAqwOTby1kVtm9dq8G6AopoOQNTE7O1g2ahED2Gy8ZY4exCcg1e8lRUFxHgimp
- D9ky8qFTZ03kxNcprpxksbFtTFnab1LYmoOkjnQK8ykwR0WeNSIjyi3jhD1RRA3f
- IkQ==
-X-ME-Sender: <xms:_yu9Ys2pgkAq9yhbO86BNLTAdS4gzoIAzldG7i5lNuYFn9I02cN5mg>
- <xme:_yu9YnGWInN5VQrJWGPMpOnNl06var7od9SVI4m0jBWdw5RnNQmOPfvrBl_RjCG85
- -DqFIA3T0L75outylY>
-X-ME-Received: <xmr:_yu9Yk7sb75-xcRcQ9CrHLoSCSlm0uj_V9DypUHoz_edbXJ2tGupVME2T0BaM4vrtjpMt84NEGvng5WFL5hZw4N_JI_uqudZ>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvfedrudehtddgkeelucetufdoteggodetrfdotf
- fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
- uceurghilhhouhhtmecufedttdenuchmihhsshhinhhgucfvqfcufhhivghlugculdeftd
- dmnecujfgurhephffvvefufffkofgjfhgggfestdekredtredttdenucfhrhhomheprfgv
- thgvrhcuffgvlhgvvhhorhihrghsuceomhgvsehpjhgurdguvghvqeenucggtffrrghtth
- gvrhhnpedvvddvvdeikeetuddtteejleeuudehuddvtedtheetvefhtdeifeeguefgtdeg
- udenucffohhmrghinhepmhgvthgrrdgtohhmnecuvehluhhsthgvrhfuihiivgeptdenuc
- frrghrrghmpehmrghilhhfrhhomhepmhgvsehpjhgurdguvghv
-X-ME-Proxy: <xmx:_yu9Yl0dwWT3qXF4Pb7wBaQAAOb1wX-gS8SGvoA5gWjgGKsS-hxqSg>
- <xmx:_yu9YvHSmlqFeXc0e5O_gGK4mMb-pfqpqPgg5wppYC2ZHEZ_5bIjCA>
- <xmx:_yu9Yu_ygqKDZe-4xHnYNRYNBnQi3KtHPhsaEQKOlOeDZqutzHw0yQ>
- <xmx:_yu9YlaESsUTlMSImfmD6x5D2u15py41BlnKasH1Y-Gc9CnUN4uUOtO1Ftw>
-Feedback-ID: i9e814621:Fastmail
-Received: by mail.messagingengine.com (Postfix) with ESMTPA; Thu,
- 30 Jun 2022 00:52:14 -0400 (EDT)
-From: Peter Delevoryas <me@pjd.dev>
-To: 
-Cc: clg@kaod.org, peter.maydell@linaro.org, andrew@aj.id.au, joel@jms.id.au,
- cminyard@mvista.com, titusr@google.com, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org, zhdaniel@fb.com, pdel@fb.com
-Subject: [PATCH v3 12/14] hw/misc/aspeed: Add fby35-sb-cpld
-Date: Wed, 29 Jun 2022 21:51:31 -0700
-Message-Id: <20220630045133.32251-13-me@pjd.dev>
-X-Mailer: git-send-email 2.37.0
-In-Reply-To: <20220630045133.32251-1-me@pjd.dev>
-References: <20220630045133.32251-1-me@pjd.dev>
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1o6nhA-0003Ba-2O
+ for qemu-arm@nongnu.org; Thu, 30 Jun 2022 02:30:35 -0400
+Received: from mxplan5.mail.ovh.net (unknown [10.108.4.188])
+ by mo529.mail-out.ovh.net (Postfix) with ESMTPS id 27E8F112D1564;
+ Thu, 30 Jun 2022 08:30:26 +0200 (CEST)
+Received: from kaod.org (37.59.142.108) by DAG4EX1.mxp5.local (172.16.2.31)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.9; Thu, 30 Jun
+ 2022 08:30:26 +0200
+Authentication-Results: garm.ovh; auth=pass
+ (GARM-108S002e663bd8b-643d-4c5c-bce4-3ffeff82c086,
+ 40551C6C823FDDA91B74F5D58A080B55BE22893A) smtp.auth=clg@kaod.org
+X-OVh-ClientIp: 82.64.250.170
+Message-ID: <293da11c-dde2-e646-c754-820720c410de@kaod.org>
+Date: Thu, 30 Jun 2022 08:30:25 +0200
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=64.147.123.26; envelope-from=me@pjd.dev;
- helo=wnew1-smtp.messagingengine.com
-X-Spam_score_int: -12
-X-Spam_score: -1.3
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.9.0
+Subject: Re: [PATCH v3 10/14] hw/sensor: Add Renesas ISL69259 device model
+Content-Language: en-US
+To: Peter Delevoryas <me@pjd.dev>
+CC: <peter.maydell@linaro.org>, <andrew@aj.id.au>, <joel@jms.id.au>,
+ <cminyard@mvista.com>, <titusr@google.com>, <qemu-devel@nongnu.org>,
+ <qemu-arm@nongnu.org>, <zhdaniel@fb.com>, <pdel@fb.com>
+References: <20220630045133.32251-1-me@pjd.dev>
+ <20220630045133.32251-11-me@pjd.dev>
+From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
+In-Reply-To: <20220630045133.32251-11-me@pjd.dev>
+Content-Type: text/plain; charset="UTF-8"; format=flowed
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [37.59.142.108]
+X-ClientProxiedBy: DAG5EX2.mxp5.local (172.16.2.42) To DAG4EX1.mxp5.local
+ (172.16.2.31)
+X-Ovh-Tracer-GUID: 302db3fe-05b8-4f67-839c-1dc1529433cd
+X-Ovh-Tracer-Id: 4828421751850830770
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: 0
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvfedrudehtddguddutdcutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemucehtddtnecunecujfgurhepkfffgggfuffvvehfhfgjtgfgihesthejredttdefjeenucfhrhhomhepveorughrihgtpgfnvggpifhorghtvghruceotghlgheskhgrohgurdhorhhgqeenucggtffrrghtthgvrhhnpeelleeiiefgkeefiedtvdeigeetueetkeffkeelheeugfetteegvdekgfehgffgkeenucfkpheptddrtddrtddrtddpfeejrdehledrudegvddruddtkeenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhhouggvpehsmhhtphhouhhtpdhhvghlohepmhigphhlrghnhedrmhgrihhlrdhovhhhrdhnvghtpdhinhgvtheptddrtddrtddrtddpmhgrihhlfhhrohhmpegtlhhgsehkrghougdrohhrghdpnhgspghrtghpthhtohepuddprhgtphhtthhopehpuggvlhesfhgsrdgtohhmpdfovfetjfhoshhtpehmohehvdel
+Received-SPF: pass client-ip=178.32.125.2; envelope-from=clg@kaod.org;
+ helo=smtpout1.mo529.mail-out.ovh.net
+X-Spam_score_int: -18
+X-Spam_score: -1.9
 X-Spam_bar: -
-X-Spam_report: (-1.3 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FROM_FMBLA_NEWDOM=1.498, RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -135,192 +105,78 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: j95XpoyaUZ6D
+X-TUID: 7fGyS819bOUB
 
-From: Peter Delevoryas <pdel@fb.com>
+On 6/30/22 06:51, Peter Delevoryas wrote:
+> From: Peter Delevoryas <pdel@fb.com>
+> 
+> This adds the ISL69259, using all the same functionality as the existing
+> ISL69260 but overriding the IC_DEVICE_ID.
+> 
+> Signed-off-by: Peter Delevoryas <pdel@fb.com>
+> ---
+>   hw/sensor/isl_pmbus_vr.c | 28 ++++++++++++++++++++++++++++
+>   1 file changed, 28 insertions(+)
+> 
+> diff --git a/hw/sensor/isl_pmbus_vr.c b/hw/sensor/isl_pmbus_vr.c
+> index 799ea9d89e..853d70536f 100644
+> --- a/hw/sensor/isl_pmbus_vr.c
+> +++ b/hw/sensor/isl_pmbus_vr.c
+> @@ -119,6 +119,18 @@ static void raa228000_exit_reset(Object *obj)
+>       pmdev->pages[0].read_temperature_3 = 0;
+>   }
+>   
+> +static void isl69259_exit_reset(Object *obj)
+> +{
+> +    ISLState *s = ISL69260(obj);
+> +    static const uint8_t ic_device_id[] = {0x04, 0x00, 0x81, 0xD2, 0x49, 0x3c};
 
-fby35 machines have 1 BMC on a baseboard and 2-4 server boards with BIC's.
-There are also CPLD's on each of the boards, one type of CPLD on the
-baseboard and another type on each of the server boards. This commit adds an
-implementation of some of the logic performed by the server board CPLD,
-which is connected to the server board BIC.
+This looks like an ISLClass attribute to me. In which case, you wouldn't need the
+reset handler nor the 'ic_device_id_len' field.
 
-fby35 machines have 1 baseboard with a BMC (AST2600) and 4 server boards
-with bridge interconnects (BIC's, AST1030's). Each server board has a CPLD
-on it which provides FRU information and some synchronization functionality
-with the BMC. The baseboard also has one CPLD, but it does other stuff.
+Thanks,
 
-This commit just adds some of the FRU functionality to allow the BIC to
-startup without any errors.
+C.
 
-Signed-off-by: Peter Delevoryas <pdel@fb.com>
----
- MAINTAINERS             |   1 +
- hw/misc/fby35_sb_cpld.c | 128 ++++++++++++++++++++++++++++++++++++++++
- hw/misc/meson.build     |   3 +-
- 3 files changed, 131 insertions(+), 1 deletion(-)
- create mode 100644 hw/misc/fby35_sb_cpld.c
-
-diff --git a/MAINTAINERS b/MAINTAINERS
-index 05cf84b58c..3ffd473db1 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -1067,6 +1067,7 @@ F: hw/net/ftgmac100.c
- F: include/hw/net/ftgmac100.h
- F: docs/system/arm/aspeed.rst
- F: tests/qtest/*aspeed*
-+F: hw/misc/fby35_sb_cpld.c
- 
- NRF51
- M: Joel Stanley <joel@jms.id.au>
-diff --git a/hw/misc/fby35_sb_cpld.c b/hw/misc/fby35_sb_cpld.c
-new file mode 100644
-index 0000000000..f170a6c781
---- /dev/null
-+++ b/hw/misc/fby35_sb_cpld.c
-@@ -0,0 +1,128 @@
-+/*
-+ * fby35 Server Board CPLD
-+ *
-+ * Copyright (c) Meta Platforms, Inc. and affiliates. (http://www.meta.com)
-+ *
-+ * This code is licensed under the GPL version 2 or later. See the COPYING
-+ * file in the top-level directory.
-+ */
-+
-+#include "qemu/osdep.h"
-+#include "qemu/log.h"
-+#include "hw/i2c/i2c.h"
-+#include "hw/registerfields.h"
-+
-+#define BOARD_ID_CLASS1 0b0000
-+#define BOARD_ID_CLASS2 0b0001
-+
-+#define TYPE_FBY35_SB_CPLD "fby35-sb-cpld"
-+OBJECT_DECLARE_SIMPLE_TYPE(Fby35SbCpldState, FBY35_SB_CPLD);
-+
-+REG8(CLASS_TYPE, 0x5);
-+    FIELD(CLASS_TYPE, RESERVED, 0, 2);
-+    FIELD(CLASS_TYPE, 1OU_EXPANSION_NOT_PRESENT, 2, 1);
-+    FIELD(CLASS_TYPE, 2OU_EXPANSION_NOT_PRESENT, 3, 1);
-+    FIELD(CLASS_TYPE, BOARD_ID, 4, 4);
-+REG8(BOARD_REVISION, 0x8);
-+    FIELD(BOARD_REVISION, VALUE, 0, 4);
-+    FIELD(BOARD_REVISION, RESERVED, 4, 4);
-+
-+struct Fby35SbCpldState {
-+    I2CSlave parent_obj;
-+
-+    uint8_t target_reg;
-+    uint32_t regs[10];
-+};
-+
-+static void fby35_sb_cpld_realize(DeviceState *dev, Error **errp)
-+{
-+    Fby35SbCpldState *s = FBY35_SB_CPLD(dev);
-+
-+    memset(s->regs, 0, sizeof(s->regs));
-+    s->target_reg = 0;
-+
-+    ARRAY_FIELD_DP32(s->regs, CLASS_TYPE, BOARD_ID, 0b0000);
-+    ARRAY_FIELD_DP32(s->regs, CLASS_TYPE, 1OU_EXPANSION_NOT_PRESENT, 1);
-+    ARRAY_FIELD_DP32(s->regs, CLASS_TYPE, 2OU_EXPANSION_NOT_PRESENT, 1);
-+    ARRAY_FIELD_DP32(s->regs, BOARD_REVISION, VALUE, 0x1);
-+}
-+
-+static int fby35_sb_cpld_i2c_event(I2CSlave *i2c, enum i2c_event event)
-+{
-+    Fby35SbCpldState *s = FBY35_SB_CPLD(i2c);
-+
-+    switch (event) {
-+    case I2C_START_RECV:
-+        break;
-+    case I2C_START_SEND:
-+        s->target_reg = 0;
-+        break;
-+    case I2C_START_SEND_ASYNC:
-+    case I2C_FINISH:
-+    case I2C_NACK:
-+        break;
-+    }
-+
-+    return 0;
-+}
-+
-+static uint8_t fby35_sb_cpld_i2c_recv(I2CSlave *i2c)
-+{
-+    Fby35SbCpldState *s = FBY35_SB_CPLD(i2c);
-+
-+    switch (s->target_reg) {
-+    case R_CLASS_TYPE:
-+    case R_BOARD_REVISION:
-+        return s->regs[s->target_reg];
-+    default:
-+        qemu_log_mask(LOG_UNIMP, "%s: Register read unimplemented: 0x%02x\n",
-+                      __func__, s->target_reg);
-+        return 0xff;
-+    }
-+}
-+
-+static int fby35_sb_cpld_i2c_send(I2CSlave *i2c, uint8_t data)
-+{
-+    Fby35SbCpldState *s = FBY35_SB_CPLD(i2c);
-+
-+    if (s->target_reg == 0) {
-+        s->target_reg = data;
-+        return 0;
-+    }
-+
-+    switch (s->target_reg) {
-+    case R_CLASS_TYPE:
-+    case R_BOARD_REVISION:
-+        s->regs[s->target_reg] = data;
-+        break;
-+    default:
-+        qemu_log_mask(LOG_UNIMP,
-+                      "%s: Register write unimplemented: 0x%02x 0x%02x\n",
-+                      __func__, s->target_reg, data);
-+        break;
-+    }
-+
-+    return 0;
-+}
-+
-+static void fby35_sb_cpld_class_init(ObjectClass *oc, void *data)
-+{
-+    DeviceClass *dc = DEVICE_CLASS(oc);
-+    I2CSlaveClass *i2c = I2C_SLAVE_CLASS(oc);
-+
-+    dc->realize = fby35_sb_cpld_realize;
-+    i2c->event = fby35_sb_cpld_i2c_event;
-+    i2c->recv = fby35_sb_cpld_i2c_recv;
-+    i2c->send = fby35_sb_cpld_i2c_send;
-+}
-+
-+static const TypeInfo types[] = {
-+    {
-+        .name = TYPE_FBY35_SB_CPLD,
-+        .parent = TYPE_I2C_SLAVE,
-+        .instance_size = sizeof(Fby35SbCpldState),
-+        .class_init = fby35_sb_cpld_class_init,
-+    },
-+};
-+
-+DEFINE_TYPES(types);
-diff --git a/hw/misc/meson.build b/hw/misc/meson.build
-index 95268eddc0..948e25c440 100644
---- a/hw/misc/meson.build
-+++ b/hw/misc/meson.build
-@@ -117,7 +117,8 @@ softmmu_ss.add(when: 'CONFIG_ASPEED_SOC', if_true: files(
-   'aspeed_sbc.c',
-   'aspeed_sdmc.c',
-   'aspeed_xdma.c',
--  'aspeed_peci.c'))
-+  'aspeed_peci.c',
-+  'fby35_sb_cpld.c'))
- 
- softmmu_ss.add(when: 'CONFIG_MSF2', if_true: files('msf2-sysreg.c'))
- softmmu_ss.add(when: 'CONFIG_NRF51_SOC', if_true: files('nrf51_rng.c'))
--- 
-2.37.0
+> +    g_assert_cmphex(sizeof(ic_device_id), <=, sizeof(s->ic_device_id));
+> +
+> +    isl_pmbus_vr_exit_reset(obj);
+> +
+> +    s->ic_device_id_len = sizeof(ic_device_id);
+> +    memcpy(s->ic_device_id, ic_device_id, sizeof(ic_device_id));
+> +}
+> +
+>   static void isl_pmbus_vr_add_props(Object *obj, uint64_t *flags, uint8_t pages)
+>   {
+>       PMBusDevice *pmdev = PMBUS_DEVICE(obj);
+> @@ -257,6 +269,21 @@ static void raa229004_class_init(ObjectClass *klass, void *data)
+>       isl_pmbus_vr_class_init(klass, data, 2);
+>   }
+>   
+> +static void isl69259_class_init(ObjectClass *klass, void *data)
+> +{
+> +    ResettableClass *rc = RESETTABLE_CLASS(klass);
+> +    DeviceClass *dc = DEVICE_CLASS(klass);
+> +    dc->desc = "Renesas ISL69259 Digital Multiphase Voltage Regulator";
+> +    rc->phases.exit = isl69259_exit_reset;
+> +    isl_pmbus_vr_class_init(klass, data, 2);
+> +}
+> +
+> +static const TypeInfo isl69259_info = {
+> +    .name = TYPE_ISL69259,
+> +    .parent = TYPE_ISL69260,
+> +    .class_init = isl69259_class_init,
+> +};
+> +
+>   static const TypeInfo isl69260_info = {
+>       .name = TYPE_ISL69260,
+>       .parent = TYPE_PMBUS_DEVICE,
+> @@ -283,6 +310,7 @@ static const TypeInfo raa228000_info = {
+>   
+>   static void isl_pmbus_vr_register_types(void)
+>   {
+> +    type_register_static(&isl69259_info);
+>       type_register_static(&isl69260_info);
+>       type_register_static(&raa228000_info);
+>       type_register_static(&raa229004_info);
 

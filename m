@@ -1,112 +1,112 @@
-Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp35572lft;
-        Wed, 29 Jun 2022 21:59:02 -0700 (PDT)
-X-Google-Smtp-Source: AGRyM1tPchOFOqh2Khe2DfsXN1mY3yKU8nGGBYKgLTvxF150a/4RLD556tSGICqi6H+SLURDlrQM
-X-Received: by 2002:a05:6214:1c8c:b0:46e:15b2:3f35 with SMTP id ib12-20020a0562141c8c00b0046e15b23f35mr11236507qvb.76.1656565141949;
-        Wed, 29 Jun 2022 21:59:01 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1656565141; cv=none;
+Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp41909lft;
+        Wed, 29 Jun 2022 22:09:31 -0700 (PDT)
+X-Google-Smtp-Source: AGRyM1uJioJI4jy/IXAjSbteeX1dw+K7JdNUCjWkoLY7Hv1MrVwRI+xLvSPW0bJHoTB894gJaQIx
+X-Received: by 2002:a05:6214:c29:b0:470:7bd9:d278 with SMTP id a9-20020a0562140c2900b004707bd9d278mr11238937qvd.88.1656565771843;
+        Wed, 29 Jun 2022 22:09:31 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1656565771; cv=none;
         d=google.com; s=arc-20160816;
-        b=OwmoNM3MhaXrvFbQQIu5TGnMPQ9ys6yD0I/r5zik5JN/q+YZwezEkcMp8S4EEsVjV5
-         uugqslazWO/zA30DoGNOawfL/PMkwqOf65c2p191j9HS3OBNCvn0PPviuHnSmfBt8LeC
-         xIXCY9Qlzj1Tq9AmolDB9mrRM0oBNiKKMLGp/aHcKhKTF3cd7lT2hlKZk0Jdl7mgRTa6
-         RA3Uybrke02sylUZ6tSfvyacKexLF3qrtSwu4KAPGLtkskfiP37EUfrHGe/Naaw7SHzP
-         tRdQD8AWKZLLTe90H/BVTj9JXj5fTLEjoiqJhVKw8jjXrHxcEKVjW3ZR+SPq6ckRUPQV
-         IutQ==
+        b=zQDusc+1xo5/2bEZ1v/8gmyEl5Yadmy6KdiRjuy1GHM3tzVB+28fGoLJgmFy8cepf6
+         EFnuI5Rl8D15ayWdWyYLLsb+cmKZ92lm+v1fBNEi+YAg7IcyM2udRg0pdrKk4ef8j5yj
+         daA2wv7vDd2l5VrP08IHF/RenCLpKUpxqni/pH31gWNtFIdtjY9+DELt+siysXmrxaOQ
+         Zp2MvM3t6aRPMlVi6/Op1D/5QYpv+SP2mt6All5g4OYeuh6RRt11g4XWbe61Db1i4QQk
+         vmTdFKyweK5n4ZUS1aFbyz5oMsubzQZ9oWOx2GWMR8fDqdzwan/jmM9r5NLpiEU13Boh
+         brxg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:feedback-id:dkim-signature:dkim-signature;
-        bh=sEvjyt0EBlESwbx6CJZ+DDaJi5U0I5O9A/TDMndZAPg=;
-        b=0ip25p2yWnXWpO7ogj0lQ6LH4UPKgBbUhDwJ8QxsnKobZsldn4NgkbMURCVlhmY218
-         StvgPulUFYUQn2dn6TD9Bft9fEIsdSU3RCjcOe5dJKwOjMN/UkGzoMdCp85bnFqLx6Kl
-         FEMEhNuJKdkKzkJPaa+io4ERbbEhmJc638HneiyTa/Q2XYkTzBOoyS6+6QUOHKu9cTW2
-         4e6+WB5eevcrIs0uNg0pXtx7KAIOKAu5Kw4LAo1l/g0XKiiyg1U+1n2MCo2FDrOa3bX9
-         qr2/ugmBZBYXC2Bq3DLCOHiZwgk8bfEATEchn+O8FCTAmB+5G7fm4EBzBfA6B3nzJruy
-         MEsQ==
+        bh=gyg2RNC50wimjfzibmXXr3OYmVTc/sRE8Mv6uRfLhMk=;
+        b=qpO0FdVLaZmK5sLMQCVg18nQIygNpXU2lNKLP9VgdgfQADEWmJdeLil5Y7LU+De6Oc
+         JOV6UXXlhDV+G0Cvv8aUrheCOptQD2YbOzM/kDVp+g/rGQFQchQf12Is1v0wvJEZh6AE
+         LW4NtIMpHUTWzasGnla7q5whtt5Cg46LA4pRF/Q8ecIrSZ6DQoDnLGUvVHneoYnb6Mb/
+         OK+/EsssAK80B+/hbc57QIIi44Z/ua0Q/I4MhMVU7PwZlTZc+RcyA06vVIbAWAciIItV
+         5cOUXY6Kj2g4EvTNtvPSAnJJCYoXTNk9zw7dUSXgE2qYgi6Eg1hvGni2Djd/l1fWRY8i
+         bckg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@pjd.dev header.s=fm1 header.b=taQqsiIv;
-       dkim=fail header.i=@messagingengine.com header.s=i9e814621.fm2 header.b=XsVcxrfX;
+       dkim=fail header.i=@pjd.dev header.s=fm1 header.b=0bSGFMw4;
+       dkim=fail header.i=@messagingengine.com header.s=i9e814621.fm2 header.b=dPQgGv17;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e15-20020ac8598f000000b00316cc5b2e9fsi10763794qte.8.2022.06.29.21.59.01
+        by mx.google.com with ESMTPS id z11-20020a05622a060b00b003179eec232bsi4929338qta.119.2022.06.29.22.09.31
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 29 Jun 2022 21:59:01 -0700 (PDT)
+        Wed, 29 Jun 2022 22:09:31 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@pjd.dev header.s=fm1 header.b=taQqsiIv;
-       dkim=fail header.i=@messagingengine.com header.s=i9e814621.fm2 header.b=XsVcxrfX;
+       dkim=fail header.i=@pjd.dev header.s=fm1 header.b=0bSGFMw4;
+       dkim=fail header.i=@messagingengine.com header.s=i9e814621.fm2 header.b=dPQgGv17;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:52204 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:36314 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1o6mGb-0006y6-E2
-	for alex.bennee@linaro.org; Thu, 30 Jun 2022 00:59:01 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45818)
+	id 1o6mQl-00087s-AQ
+	for alex.bennee@linaro.org; Thu, 30 Jun 2022 01:09:31 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:45878)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <me@pjd.dev>)
- id 1o6m9x-0003EH-E0; Thu, 30 Jun 2022 00:52:09 -0400
-Received: from wnew1-smtp.messagingengine.com ([64.147.123.26]:45451)
+ id 1o6mAB-0003Qk-6U; Thu, 30 Jun 2022 00:52:23 -0400
+Received: from wnew1-smtp.messagingengine.com ([64.147.123.26]:60167)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <me@pjd.dev>)
- id 1o6m9s-00071g-Nq; Thu, 30 Jun 2022 00:52:09 -0400
-Received: from compute4.internal (compute4.nyi.internal [10.202.2.44])
- by mailnew.west.internal (Postfix) with ESMTP id 5CDFC2B058D5;
- Thu, 30 Jun 2022 00:52:02 -0400 (EDT)
+ id 1o6mA6-000737-Ag; Thu, 30 Jun 2022 00:52:22 -0400
+Received: from compute2.internal (compute2.nyi.internal [10.202.2.46])
+ by mailnew.west.internal (Postfix) with ESMTP id 0AACF2B058FA;
+ Thu, 30 Jun 2022 00:52:15 -0400 (EDT)
 Received: from mailfrontend1 ([10.202.2.162])
- by compute4.internal (MEProxy); Thu, 30 Jun 2022 00:52:03 -0400
+ by compute2.internal (MEProxy); Thu, 30 Jun 2022 00:52:16 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=pjd.dev; h=cc:cc
  :content-transfer-encoding:date:date:from:from:in-reply-to
  :in-reply-to:message-id:mime-version:references:reply-to:sender
- :subject:subject:to:to; s=fm1; t=1656564721; x=1656568321; bh=sE
- vjyt0EBlESwbx6CJZ+DDaJi5U0I5O9A/TDMndZAPg=; b=taQqsiIvFovBsz0f7d
- 1IAEERviwjt2FThnOSOGXI3cTJe4c4NU7Kh2VF5HidJz2g69O/6FByVmABDKelZo
- 5gkKnhhjOjgG3JFtXTP6NLad41/5Q3KB8Azdn3H1dKzq+0Sz2mH5g9tGyERQ4lLt
- 4U8oGbc0kTNz7ZGJwHDd2hkixAEGvwrEAMD6DWsNdoqg0xfgk6wEKD/mab6BlVZ6
- NI/UzSYA4tNnyyCLV4sph6fckWeAfykokQEhDr8MmwecYTyj87QCw0tf6LB5DbMy
- MUqBKsHhlO5xJ5noQBEFh44WgCXlZ0Q/TyV0g3uOvALuk2UEwh1IzpT8kFSnMo1h
- IebQ==
+ :subject:subject:to:to; s=fm1; t=1656564735; x=1656568335; bh=gy
+ g2RNC50wimjfzibmXXr3OYmVTc/sRE8Mv6uRfLhMk=; b=0bSGFMw4ZzuqcQnXKW
+ WkF+kqeVUsfldq5Ac0CXX0wEmzgvatHP9gXImTRBPE/XoFPVebINmb9yXfbtB3fi
+ nHUnb6zK+sV7tsHn6Wd3QsIHrQoiD+6CNdf/BUdX0gIQn+7Nk4AJfscQSUC/c16e
+ MaL9IOucWOHJTw4DTau3R3iXbiy/96q7c8lU75fhQ64upbioF6LviUUe1vQyBaIs
+ gU3LoaqukkVOky+foRxBQ+OLyVbZXjbFYj5bzoHU2wxRL65THW6+iia9t9GHsEBt
+ 5i3q9G2sAVG5YeAKFuTMn4cWnBYFhyfnCjOkdruE6ClM5xpwKU0LOFxhYK7MCGe6
+ DsAg==
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
  messagingengine.com; h=cc:cc:content-transfer-encoding:date:date
  :feedback-id:feedback-id:from:from:in-reply-to:in-reply-to
  :message-id:mime-version:references:reply-to:sender:subject
  :subject:to:to:x-me-proxy:x-me-proxy:x-me-sender:x-me-sender
- :x-sasl-enc; s=i9e814621.fm2; t=1656564721; x=1656568321; bh=sEv
- jyt0EBlESwbx6CJZ+DDaJi5U0I5O9A/TDMndZAPg=; b=XsVcxrfXrZfGfFjC2Yd
- o+wmsMIVVo/qo0xUn0+TTy0gIsEf8qaTf4iDFnGeC36jVPaDiVw0ZWNMQ8zwspDB
- 9VrzilbxsXOLsgCLNCH+v/dcwBTE3fiitLK3wqx5LvwzaFkf/b5SvkianG06Hy2D
- scBFjeJNypwO3/Ml7xpvBKPbkx7GaxiBxOhEVfKPPsSB391dhBYmGjQFTUxW7nlo
- SDvUE64qt8WDPxro6vL3b1SBXmgp05yOVl+tmUcKtTfiFZwaru330dgXitl/y+ta
- 63kXsfyLNjkWt7J28M5JgFJCfcP0lItcqgdtpnbij6snAACs9aB62GzVtcTFIBXt
- hGw==
-X-ME-Sender: <xms:8Su9YoC16T3oBIja2JQQCcHwPVlFp9Jqo2z9B07LcTC9r3TRI2TzUQ>
- <xme:8Su9Yqhjie8taqNSDNZNt0kC5WgJyzyS44BTI0zLtK41cmXfSDaHRwDCrDN8tGwuF
- 9hwNXWbv1uFnMEMG9c>
-X-ME-Received: <xmr:8Su9Yrm2SPPFzlWOJGWyT2QJuBcXFDKAaiqPgRXZQpBk_7NviI9w7UsWefxlyUXRBZXMjiWMMpzvqAHkLQC7Mtoc6ajiXWYJ>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvfedrudehtddgkeekucetufdoteggodetrfdotf
+ :x-sasl-enc; s=i9e814621.fm2; t=1656564735; x=1656568335; bh=gyg
+ 2RNC50wimjfzibmXXr3OYmVTc/sRE8Mv6uRfLhMk=; b=dPQgGv17xQCuApn/v7Y
+ kqkrVenG7cNr4hQL0snutkNvShMPXicxbOo8Q8S3hEN1fUticQkBzDgnEAB4Fpov
+ lHCLOJ5X+FhPuwGgl+3oYV0yK5sMaBKvKKMOSOKt/lR3b5oQWlgAXYapL3MQ34Q9
+ wAuwYlP8ispFL/Xf5oPy+a88f8Y5AqtcDqZt11akF0sQCjr6eSvMYolRKKI2zIda
+ gkIAqwOTby1kVtm9dq8G6AopoOQNTE7O1g2ahED2Gy8ZY4exCcg1e8lRUFxHgimp
+ D9ky8qFTZ03kxNcprpxksbFtTFnab1LYmoOkjnQK8ykwR0WeNSIjyi3jhD1RRA3f
+ IkQ==
+X-ME-Sender: <xms:_yu9Ys2pgkAq9yhbO86BNLTAdS4gzoIAzldG7i5lNuYFn9I02cN5mg>
+ <xme:_yu9YnGWInN5VQrJWGPMpOnNl06var7od9SVI4m0jBWdw5RnNQmOPfvrBl_RjCG85
+ -DqFIA3T0L75outylY>
+X-ME-Received: <xmr:_yu9Yk7sb75-xcRcQ9CrHLoSCSlm0uj_V9DypUHoz_edbXJ2tGupVME2T0BaM4vrtjpMt84NEGvng5WFL5hZw4N_JI_uqudZ>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvfedrudehtddgkeelucetufdoteggodetrfdotf
  fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
  uceurghilhhouhhtmecufedttdenuchmihhsshhinhhgucfvqfcufhhivghlugculdeftd
  dmnecujfgurhephffvvefufffkofgjfhgggfestdekredtredttdenucfhrhhomheprfgv
  thgvrhcuffgvlhgvvhhorhihrghsuceomhgvsehpjhgurdguvghvqeenucggtffrrghtth
- gvrhhnpeektefhieevgfduvdeiueetteegtdeuueevieelffevueevveehhedukeejtdek
- teenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhgrihhlfhhrohhmpehmvg
- esphhjugdruggvvh
-X-ME-Proxy: <xmx:8Su9Yuxujw9PWtYGyyqKO5Qj36IcEcubIarTQZKWDquKPlAavB-M9A>
- <xmx:8Su9YtQGjqN989LxNJeypDHCaEiVlBNJfaaiYodRUTQ-wTiKGQZptA>
- <xmx:8Su9Ypb88eHe_ui-OmQOUMNYTmdxsn0fL4AURPuKGh2iyrxo6ESc8w>
- <xmx:8Su9YoG_ZrpN-0zcHSwzvfBUz4PI01yOmo2CqKu-hY9p6so0XOUODIzNOCY>
+ gvrhhnpedvvddvvdeikeetuddtteejleeuudehuddvtedtheetvefhtdeifeeguefgtdeg
+ udenucffohhmrghinhepmhgvthgrrdgtohhmnecuvehluhhsthgvrhfuihiivgeptdenuc
+ frrghrrghmpehmrghilhhfrhhomhepmhgvsehpjhgurdguvghv
+X-ME-Proxy: <xmx:_yu9Yl0dwWT3qXF4Pb7wBaQAAOb1wX-gS8SGvoA5gWjgGKsS-hxqSg>
+ <xmx:_yu9YvHSmlqFeXc0e5O_gGK4mMb-pfqpqPgg5wppYC2ZHEZ_5bIjCA>
+ <xmx:_yu9Yu_ygqKDZe-4xHnYNRYNBnQi3KtHPhsaEQKOlOeDZqutzHw0yQ>
+ <xmx:_yu9YlaESsUTlMSImfmD6x5D2u15py41BlnKasH1Y-Gc9CnUN4uUOtO1Ftw>
 Feedback-ID: i9e814621:Fastmail
 Received: by mail.messagingengine.com (Postfix) with ESMTPA; Thu,
- 30 Jun 2022 00:52:01 -0400 (EDT)
+ 30 Jun 2022 00:52:14 -0400 (EDT)
 From: Peter Delevoryas <me@pjd.dev>
 To: 
 Cc: clg@kaod.org, peter.maydell@linaro.org, andrew@aj.id.au, joel@jms.id.au,
  cminyard@mvista.com, titusr@google.com, qemu-devel@nongnu.org,
  qemu-arm@nongnu.org, zhdaniel@fb.com, pdel@fb.com
-Subject: [PATCH v3 08/14] hw/i2c/pmbus: Add idle state to return 0xff's
-Date: Wed, 29 Jun 2022 21:51:27 -0700
-Message-Id: <20220630045133.32251-9-me@pjd.dev>
+Subject: [PATCH v3 12/14] hw/misc/aspeed: Add fby35-sb-cpld
+Date: Wed, 29 Jun 2022 21:51:31 -0700
+Message-Id: <20220630045133.32251-13-me@pjd.dev>
 X-Mailer: git-send-email 2.37.0
 In-Reply-To: <20220630045133.32251-1-me@pjd.dev>
 References: <20220630045133.32251-1-me@pjd.dev>
@@ -135,68 +135,192 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: hLj9SCamdNPj
+X-TUID: j95XpoyaUZ6D
 
 From: Peter Delevoryas <pdel@fb.com>
 
+fby35 machines have 1 BMC on a baseboard and 2-4 server boards with BIC's.
+There are also CPLD's on each of the boards, one type of CPLD on the
+baseboard and another type on each of the server boards. This commit adds an
+implementation of some of the logic performed by the server board CPLD,
+which is connected to the server board BIC.
+
+fby35 machines have 1 baseboard with a BMC (AST2600) and 4 server boards
+with bridge interconnects (BIC's, AST1030's). Each server board has a CPLD
+on it which provides FRU information and some synchronization functionality
+with the BMC. The baseboard also has one CPLD, but it does other stuff.
+
+This commit just adds some of the FRU functionality to allow the BIC to
+startup without any errors.
+
 Signed-off-by: Peter Delevoryas <pdel@fb.com>
 ---
- hw/i2c/pmbus_device.c         | 9 +++++++++
- include/hw/i2c/pmbus_device.h | 7 +++++++
- 2 files changed, 16 insertions(+)
+ MAINTAINERS             |   1 +
+ hw/misc/fby35_sb_cpld.c | 128 ++++++++++++++++++++++++++++++++++++++++
+ hw/misc/meson.build     |   3 +-
+ 3 files changed, 131 insertions(+), 1 deletion(-)
+ create mode 100644 hw/misc/fby35_sb_cpld.c
 
-diff --git a/hw/i2c/pmbus_device.c b/hw/i2c/pmbus_device.c
-index 62885fa6a1..f89fea65f3 100644
---- a/hw/i2c/pmbus_device.c
-+++ b/hw/i2c/pmbus_device.c
-@@ -261,6 +261,11 @@ void pmbus_check_limits(PMBusDevice *pmdev)
-     }
- }
+diff --git a/MAINTAINERS b/MAINTAINERS
+index 05cf84b58c..3ffd473db1 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -1067,6 +1067,7 @@ F: hw/net/ftgmac100.c
+ F: include/hw/net/ftgmac100.h
+ F: docs/system/arm/aspeed.rst
+ F: tests/qtest/*aspeed*
++F: hw/misc/fby35_sb_cpld.c
  
-+void pmbus_idle(PMBusDevice *pmdev)
+ NRF51
+ M: Joel Stanley <joel@jms.id.au>
+diff --git a/hw/misc/fby35_sb_cpld.c b/hw/misc/fby35_sb_cpld.c
+new file mode 100644
+index 0000000000..f170a6c781
+--- /dev/null
++++ b/hw/misc/fby35_sb_cpld.c
+@@ -0,0 +1,128 @@
++/*
++ * fby35 Server Board CPLD
++ *
++ * Copyright (c) Meta Platforms, Inc. and affiliates. (http://www.meta.com)
++ *
++ * This code is licensed under the GPL version 2 or later. See the COPYING
++ * file in the top-level directory.
++ */
++
++#include "qemu/osdep.h"
++#include "qemu/log.h"
++#include "hw/i2c/i2c.h"
++#include "hw/registerfields.h"
++
++#define BOARD_ID_CLASS1 0b0000
++#define BOARD_ID_CLASS2 0b0001
++
++#define TYPE_FBY35_SB_CPLD "fby35-sb-cpld"
++OBJECT_DECLARE_SIMPLE_TYPE(Fby35SbCpldState, FBY35_SB_CPLD);
++
++REG8(CLASS_TYPE, 0x5);
++    FIELD(CLASS_TYPE, RESERVED, 0, 2);
++    FIELD(CLASS_TYPE, 1OU_EXPANSION_NOT_PRESENT, 2, 1);
++    FIELD(CLASS_TYPE, 2OU_EXPANSION_NOT_PRESENT, 3, 1);
++    FIELD(CLASS_TYPE, BOARD_ID, 4, 4);
++REG8(BOARD_REVISION, 0x8);
++    FIELD(BOARD_REVISION, VALUE, 0, 4);
++    FIELD(BOARD_REVISION, RESERVED, 4, 4);
++
++struct Fby35SbCpldState {
++    I2CSlave parent_obj;
++
++    uint8_t target_reg;
++    uint32_t regs[10];
++};
++
++static void fby35_sb_cpld_realize(DeviceState *dev, Error **errp)
 +{
-+    pmdev->code = PMBUS_IDLE_STATE;
++    Fby35SbCpldState *s = FBY35_SB_CPLD(dev);
++
++    memset(s->regs, 0, sizeof(s->regs));
++    s->target_reg = 0;
++
++    ARRAY_FIELD_DP32(s->regs, CLASS_TYPE, BOARD_ID, 0b0000);
++    ARRAY_FIELD_DP32(s->regs, CLASS_TYPE, 1OU_EXPANSION_NOT_PRESENT, 1);
++    ARRAY_FIELD_DP32(s->regs, CLASS_TYPE, 2OU_EXPANSION_NOT_PRESENT, 1);
++    ARRAY_FIELD_DP32(s->regs, BOARD_REVISION, VALUE, 0x1);
 +}
 +
- /* assert the status_cml error upon receipt of malformed command */
- static void pmbus_cml_error(PMBusDevice *pmdev)
- {
-@@ -984,6 +989,10 @@ static uint8_t pmbus_receive_byte(SMBusDevice *smd)
-         }
-         break;
- 
-+    case PMBUS_IDLE_STATE:
-+        pmbus_send8(pmdev, PMBUS_ERR_BYTE);
++static int fby35_sb_cpld_i2c_event(I2CSlave *i2c, enum i2c_event event)
++{
++    Fby35SbCpldState *s = FBY35_SB_CPLD(i2c);
++
++    switch (event) {
++    case I2C_START_RECV:
 +        break;
++    case I2C_START_SEND:
++        s->target_reg = 0;
++        break;
++    case I2C_START_SEND_ASYNC:
++    case I2C_FINISH:
++    case I2C_NACK:
++        break;
++    }
 +
-     case PMBUS_CLEAR_FAULTS:              /* Send Byte */
-     case PMBUS_PAGE_PLUS_WRITE:           /* Block Write-only */
-     case PMBUS_STORE_DEFAULT_ALL:         /* Send Byte */
-diff --git a/include/hw/i2c/pmbus_device.h b/include/hw/i2c/pmbus_device.h
-index 0f4d6b3fad..93f5d57c9d 100644
---- a/include/hw/i2c/pmbus_device.h
-+++ b/include/hw/i2c/pmbus_device.h
-@@ -155,6 +155,7 @@ enum pmbus_registers {
-     PMBUS_MFR_MAX_TEMP_1            = 0xC0, /* R/W word */
-     PMBUS_MFR_MAX_TEMP_2            = 0xC1, /* R/W word */
-     PMBUS_MFR_MAX_TEMP_3            = 0xC2, /* R/W word */
-+    PMBUS_IDLE_STATE                = 0xFF,
- };
- 
- /* STATUS_WORD */
-@@ -527,6 +528,12 @@ int pmbus_page_config(PMBusDevice *pmdev, uint8_t page_index, uint64_t flags);
-  */
- void pmbus_check_limits(PMBusDevice *pmdev);
- 
-+/**
-+ * Enter an idle state where only the PMBUS_ERR_BYTE will be returned
-+ * indefinitely until a new command is issued.
-+ */
-+void pmbus_idle(PMBusDevice *pmdev);
++    return 0;
++}
 +
- extern const VMStateDescription vmstate_pmbus_device;
++static uint8_t fby35_sb_cpld_i2c_recv(I2CSlave *i2c)
++{
++    Fby35SbCpldState *s = FBY35_SB_CPLD(i2c);
++
++    switch (s->target_reg) {
++    case R_CLASS_TYPE:
++    case R_BOARD_REVISION:
++        return s->regs[s->target_reg];
++    default:
++        qemu_log_mask(LOG_UNIMP, "%s: Register read unimplemented: 0x%02x\n",
++                      __func__, s->target_reg);
++        return 0xff;
++    }
++}
++
++static int fby35_sb_cpld_i2c_send(I2CSlave *i2c, uint8_t data)
++{
++    Fby35SbCpldState *s = FBY35_SB_CPLD(i2c);
++
++    if (s->target_reg == 0) {
++        s->target_reg = data;
++        return 0;
++    }
++
++    switch (s->target_reg) {
++    case R_CLASS_TYPE:
++    case R_BOARD_REVISION:
++        s->regs[s->target_reg] = data;
++        break;
++    default:
++        qemu_log_mask(LOG_UNIMP,
++                      "%s: Register write unimplemented: 0x%02x 0x%02x\n",
++                      __func__, s->target_reg, data);
++        break;
++    }
++
++    return 0;
++}
++
++static void fby35_sb_cpld_class_init(ObjectClass *oc, void *data)
++{
++    DeviceClass *dc = DEVICE_CLASS(oc);
++    I2CSlaveClass *i2c = I2C_SLAVE_CLASS(oc);
++
++    dc->realize = fby35_sb_cpld_realize;
++    i2c->event = fby35_sb_cpld_i2c_event;
++    i2c->recv = fby35_sb_cpld_i2c_recv;
++    i2c->send = fby35_sb_cpld_i2c_send;
++}
++
++static const TypeInfo types[] = {
++    {
++        .name = TYPE_FBY35_SB_CPLD,
++        .parent = TYPE_I2C_SLAVE,
++        .instance_size = sizeof(Fby35SbCpldState),
++        .class_init = fby35_sb_cpld_class_init,
++    },
++};
++
++DEFINE_TYPES(types);
+diff --git a/hw/misc/meson.build b/hw/misc/meson.build
+index 95268eddc0..948e25c440 100644
+--- a/hw/misc/meson.build
++++ b/hw/misc/meson.build
+@@ -117,7 +117,8 @@ softmmu_ss.add(when: 'CONFIG_ASPEED_SOC', if_true: files(
+   'aspeed_sbc.c',
+   'aspeed_sdmc.c',
+   'aspeed_xdma.c',
+-  'aspeed_peci.c'))
++  'aspeed_peci.c',
++  'fby35_sb_cpld.c'))
  
- #define VMSTATE_PMBUS_DEVICE(_field, _state) {                       \
+ softmmu_ss.add(when: 'CONFIG_MSF2', if_true: files('msf2-sysreg.c'))
+ softmmu_ss.add(when: 'CONFIG_NRF51_SOC', if_true: files('nrf51_rng.c'))
 -- 
 2.37.0
 

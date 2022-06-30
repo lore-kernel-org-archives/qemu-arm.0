@@ -1,300 +1,319 @@
-Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp90720lft;
-        Wed, 29 Jun 2022 23:48:30 -0700 (PDT)
-X-Google-Smtp-Source: AGRyM1tzupIAIC+bg7Kk1rqShFdxHcZAKW75D0sSHBmTS5EL+6VSmEhOoMIkUWMjRIVwQSRN3f71
-X-Received: by 2002:ac8:7f8f:0:b0:304:ff91:2bdd with SMTP id z15-20020ac87f8f000000b00304ff912bddmr6207024qtj.174.1656571710344;
-        Wed, 29 Jun 2022 23:48:30 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1656571710; cv=none;
+Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp155516lft;
+        Thu, 30 Jun 2022 01:49:11 -0700 (PDT)
+X-Google-Smtp-Source: AGRyM1sFwVUPLiFUzT9Xr+jJsruwzCUjRsLJwKH65dX3rfwKn7Wp+uO1yl8YGxCI7MN7HS+9Jcf6
+X-Received: by 2002:a5d:4ace:0:b0:21b:a37d:f5d with SMTP id y14-20020a5d4ace000000b0021ba37d0f5dmr7624336wrs.38.1656578951773;
+        Thu, 30 Jun 2022 01:49:11 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1656578951; cv=none;
         d=google.com; s=arc-20160816;
-        b=f9wp3RIcP6oQ1sPpRgQ5DwISFGRCfHMh6TKyV0seUobo6hKoQ2Hj5QCv0oxFgHBo1e
-         VDBVP/IQqs/nBqBjoEpdRp4G2qICSVS55AXvjntR55p+fa9U+GiS6PtwPNDGxGLfVk2K
-         gnhgY/gE/aEflt3tsfhyipl9uJKvKQp8hh1zio2C06Xfed3aTmGGIZW2ngPSw0NVEZix
-         GWTBwgiEjiMx9h0tv3k8BuQzz7vhsiNgfIlqjg567kDeVo+ieuqYDM82H4iwnyAJlodu
-         UkEe5y38eURIP14ofdpV70odRhbV+A9TwLTG65EvghVxXjkvFse79kOidNwyphZcaLsB
-         zQ/g==
+        b=ijmjH4FzB+D3t03kKOviIITMmh8t2lyYYIP/buYg0PeNGZFjzOPSVd++4ClQeYX3cV
+         SLCg4HYov+rp7/p5wngSoe1ChgBhJuBYqnubA0z0LHAnXri3ZUOmT8qlDgolbaKyt07b
+         APHb8mSW2S0je8Hw2frU6nLcRitkKzQkX+YmgEar+YbuPqnD6lAzmICyoPutK4TuSccu
+         m9pjqqV//qTVQrMq2IokASkFfcW2Ad7DZefI6OHedh6OoUaHodf8ALPYG674EseNsgnc
+         5Pf0wS507PWNi7wvpuq4QGPnF1a1HO/Kw9ZaZjTFbWQL7r1j0y/pVD0kExSmiJrHkeES
+         PLkQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:cc:to:content-language:subject
-         :user-agent:mime-version:date:message-id;
-        bh=5tgzkB3oxUtmvJnGvdqor4dbFDn9dA/JWYEzfTsJncE=;
-        b=NaBT8wejXEBh9dU0je8pi+Xd0hchZOGo9/vSl5qaD8owi5rsMJ6FZdPb0eV+Kaq3XA
-         IySwRpnL10hQh3n9saeJGyuGn8j2alI1td4TtKglp6ct28hRUODMGEkJEuZFQbmpwwGj
-         AIH7gLy9n9H9JydgSIyNfuiv+eb8PRSoCeAB4cjHEm17hIzzGmBqzV9WwbzWH+JtX8QH
-         M/s5SfgcNg2HAmQl/C99dsnwfi6S3DXfrsTcFgGdSzXWgSI7AdbLDSh3rDOTAHtTJnJ9
-         75Bm0d2qASDwLHFnGNpPbOVs94DSQF7YEfAmvtEaAShuB/HpyQIMdjRB5Z/VdbCtix83
-         9MWw==
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id;
+        bh=ALYHDWQtukUyZkl9Kw4F8HSWfiffZitisE8iu4YDU/4=;
+        b=LlcZFB2vPbL524C5RGaDhusYHBn2WIk0ExUt+FPkH2p/QcFWBau8dVAaAiNjKL6mFf
+         PkR8ARzehhpSvLUdXQJPvVtXfAnykHDaZjPVPK+HDuRqvZMe65ySy6C7hTFaM75REyx4
+         ynSU/Vu3ibHZJyRAWrvVlzLw9p4poK7VVnvdu5eU5MT9nW6CQSbgyQUjLhXXdPgYA5Yd
+         Wg8z0z/XsGPLiG1Ju7o1Zje3ENtP34PpCr9MMcjtVtlLX/Zdi3JIThhTAbrvzNYJvsU/
+         71ZuWFzF8eUIo3/ZvEx/3MrLc5teUD9zKQsxCcLDKXRUrZk7+yxMW+9CfMTAgAedZKvo
+         yOSQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e13-20020ac85dcd000000b003176d1e372dsi11029631qtx.468.2022.06.29.23.48.30
+       spf=pass (google.com: domain of clg@kaod.org designates 87.98.187.244 as permitted sender) smtp.mailfrom=clg@kaod.org
+Return-Path: <clg@kaod.org>
+Received: from 10.mo552.mail-out.ovh.net (10.mo552.mail-out.ovh.net. [87.98.187.244])
+        by mx.google.com with ESMTPS id e16-20020a5d65d0000000b0021bad5494bbsi19536508wrw.218.2022.06.30.01.49.11
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 29 Jun 2022 23:48:30 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 30 Jun 2022 01:49:11 -0700 (PDT)
+Received-SPF: pass (google.com: domain of clg@kaod.org designates 87.98.187.244 as permitted sender) client-ip=87.98.187.244;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:56174 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1o6nyX-0005qH-OB
-	for alex.bennee@linaro.org; Thu, 30 Jun 2022 02:48:29 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:42586)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1o6nxZ-0005nU-Sg
- for qemu-arm@nongnu.org; Thu, 30 Jun 2022 02:47:31 -0400
-Received: from 2.mo552.mail-out.ovh.net ([178.33.105.233]:42131)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1o6nxV-0001Gy-8g
- for qemu-arm@nongnu.org; Thu, 30 Jun 2022 02:47:28 -0400
-Received: from mxplan5.mail.ovh.net (unknown [10.108.1.108])
- by mo552.mail-out.ovh.net (Postfix) with ESMTPS id 5368C251BC;
- Thu, 30 Jun 2022 06:47:21 +0000 (UTC)
-Received: from kaod.org (37.59.142.96) by DAG4EX1.mxp5.local (172.16.2.31)
+       spf=pass (google.com: domain of clg@kaod.org designates 87.98.187.244 as permitted sender) smtp.mailfrom=clg@kaod.org
+Received: from mxplan5.mail.ovh.net (unknown [10.109.138.118])
+	by mo552.mail-out.ovh.net (Postfix) with ESMTPS id D6EE6255F3;
+	Thu, 30 Jun 2022 08:49:09 +0000 (UTC)
+Received: from kaod.org (37.59.142.98) by DAG4EX1.mxp5.local (172.16.2.31)
  with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.9; Thu, 30 Jun
- 2022 08:47:20 +0200
-Authentication-Results: garm.ovh; auth=pass
- (GARM-96R001e8c20502-fb81-4f14-bb55-3811e89390c2,
- 1181EEF4DEA302C6E78A0CFD700452ADBB2E16A0) smtp.auth=clg@kaod.org
+ 2022 10:49:09 +0200
+Authentication-Results: garm.ovh; auth=pass (GARM-98R00201e96b4b-433e-4768-a02f-e06350b56c87,
+                    1181EEF4DEA302C6E78A0CFD700452ADBB2E16A0) smtp.auth=clg@kaod.org
 X-OVh-ClientIp: 82.64.250.170
-Message-ID: <c90699dd-b733-0800-668a-65276747789f@kaod.org>
-Date: Thu, 30 Jun 2022 08:47:14 +0200
+Message-ID: <a35ac443-c93e-fb2b-6da9-2a3dc16f7d8c@kaod.org>
+Date: Thu, 30 Jun 2022 10:49:08 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
  Thunderbird/91.9.0
-Subject: Re: [PATCH v3 12/14] hw/misc/aspeed: Add fby35-sb-cpld
+Subject: Re: [PATCH 12/14] aspeed: Make aspeed_board_init_flashes public
 Content-Language: en-US
-To: Peter Delevoryas <me@pjd.dev>
-CC: <peter.maydell@linaro.org>, <andrew@aj.id.au>, <joel@jms.id.au>,
- <cminyard@mvista.com>, <titusr@google.com>, <qemu-devel@nongnu.org>,
- <qemu-arm@nongnu.org>, <zhdaniel@fb.com>, <pdel@fb.com>
-References: <20220630045133.32251-1-me@pjd.dev>
- <20220630045133.32251-13-me@pjd.dev>
+To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>
+CC: Peter Delevoryas <pdel@fb.com>, Peter Maydell <peter.maydell@linaro.org>,
+	Andrew Jeffery <andrew@aj.id.au>, Joel Stanley <joel@jms.id.au>,
+	"pbonzini@redhat.com" <pbonzini@redhat.com>, "berrange@redhat.com"
+	<berrange@redhat.com>, "eduardo@habkost.net" <eduardo@habkost.net>,
+	"marcel.apfelbaum@gmail.com" <marcel.apfelbaum@gmail.com>,
+	"richard.henderson@linaro.org" <richard.henderson@linaro.org>,
+	=?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>, "ani@anisinha.ca"
+	<ani@anisinha.ca>, Cameron Esfahani via <qemu-devel@nongnu.org>, qemu-arm
+	<qemu-arm@nongnu.org>
+References: <20220623102617.2164175-1-pdel@fb.com>
+ <20220623102617.2164175-13-pdel@fb.com>
+ <e5f51f14-fe75-0d55-6588-a3ca2565f760@kaod.org>
+ <EC44C0BD-7BC0-4BDE-9A41-CB1EAA90EC87@fb.com>
+ <e07ec4fe-6968-b19a-e649-298a9aaccba5@kaod.org>
+ <07128acf-329a-f372-c48c-0c3cb498d3d0@kaod.org> <87zghvh7rt.fsf@linaro.org>
+ <8072cd96-a032-55f2-0417-1989a7bbeca0@kaod.org> <87edz7gwff.fsf@linaro.org>
 From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
-In-Reply-To: <20220630045133.32251-13-me@pjd.dev>
+In-Reply-To: <87edz7gwff.fsf@linaro.org>
 Content-Type: text/plain; charset="UTF-8"; format=flowed
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [37.59.142.96]
-X-ClientProxiedBy: DAG4EX1.mxp5.local (172.16.2.31) To DAG4EX1.mxp5.local
+Content-Transfer-Encoding: 8bit
+X-Originating-IP: [37.59.142.98]
+X-ClientProxiedBy: DAG7EX1.mxp5.local (172.16.2.61) To DAG4EX1.mxp5.local
  (172.16.2.31)
-X-Ovh-Tracer-GUID: 6e741fc7-7a59-46c4-97d3-10fc7b3c1526
-X-Ovh-Tracer-Id: 5114118852688055218
+X-Ovh-Tracer-GUID: a349d5dd-cf1b-4f2a-b58d-c49fafcdd175
+X-Ovh-Tracer-Id: 7171137985111690046
 X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: 0
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvfedrudehtddguddufecutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemucehtddtnecunecujfgurhepkfffgggfuffvvehfhfgjtgfgihesthejredttdefjeenucfhrhhomhepveorughrihgtpgfnvggpifhorghtvghruceotghlgheskhgrohgurdhorhhgqeenucggtffrrghtthgvrhhnpedvgeelhefgfeefhfduuedtgfefkeetkeejfeevheefkedtieeuvedvhfeukeejkeenucffohhmrghinhepmhgvthgrrdgtohhmnecukfhppedtrddtrddtrddtpdefjedrheelrddugedvrdelieenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhhouggvpehsmhhtphhouhhtpdhhvghlohepmhigphhlrghnhedrmhgrihhlrdhovhhhrdhnvghtpdhinhgvtheptddrtddrtddrtddpmhgrihhlfhhrohhmpegtlhhgsehkrghougdrohhrghdpnhgspghrtghpthhtohepuddprhgtphhtthhopehpuggvlhesfhgsrdgtohhmpdfovfetjfhoshhtpehmohehhedv
-Received-SPF: pass client-ip=178.33.105.233; envelope-from=clg@kaod.org;
- helo=2.mo552.mail-out.ovh.net
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: OVkdjZ4UwiWj
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvfedrudehuddgtdeiucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhepkfffgggfuffvvehfhfgjtgfgihesthekredttdefjeenucfhrhhomhepveorughrihgtpgfnvggpifhorghtvghruceotghlgheskhgrohgurdhorhhgqeenucggtffrrghtthgvrhhnpeekteejtdelkeejvdevffduhfetteelieefgeefffeugffhfeekheffueefledujeenucfkpheptddrtddrtddrtddpfeejrdehledrudegvddrleeknecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmohguvgepshhmthhpohhuthdphhgvlhhopehmgihplhgrnhehrdhmrghilhdrohhvhhdrnhgvthdpihhnvghtpedtrddtrddtrddtpdhmrghilhhfrhhomheptghlgheskhgrohgurdhorhhgpdhnsggprhgtphhtthhopedupdhrtghpthhtohepqhgvmhhuqdgrrhhmsehnohhnghhnuhdrohhrghdpoffvtefjohhsthepmhhoheehvd
+X-TUID: T6PZxXKj5Svy
 
-On 6/30/22 06:51, Peter Delevoryas wrote:
-> From: Peter Delevoryas <pdel@fb.com>
+On 6/29/22 20:24, Alex Bennée wrote:
 > 
-> fby35 machines have 1 BMC on a baseboard and 2-4 server boards with BIC's.
-> There are also CPLD's on each of the boards, one type of CPLD on the
-> baseboard and another type on each of the server boards. This commit adds an
-> implementation of some of the logic performed by the server board CPLD,
-> which is connected to the server board BIC.
+> Cédric Le Goater <clg@kaod.org> writes:
 > 
-> fby35 machines have 1 baseboard with a BMC (AST2600) and 4 server boards
-> with bridge interconnects (BIC's, AST1030's). Each server board has a CPLD
-> on it which provides FRU information and some synchronization functionality
-> with the BMC. The baseboard also has one CPLD, but it does other stuff.
+>> On 6/29/22 16:14, Alex Bennée wrote:
+>>> Cédric Le Goater <clg@kaod.org> writes:
+>>>
+>>>> On 6/24/22 18:50, Cédric Le Goater wrote:
+>>>>> On 6/23/22 20:43, Peter Delevoryas wrote:
+>>>>>>
+>>>>>>
+>>>>>>> On Jun 23, 2022, at 8:09 AM, Cédric Le Goater <clg@kaod.org> wrote:
+>>>>>>>
+>>>>>>> On 6/23/22 12:26, Peter Delevoryas wrote:
+>>>>>>>> Signed-off-by: Peter Delevoryas <pdel@fb.com>
+>>>>>>>
+>>>>>>> Let's start simple without flash support. We should be able to
+>>>>>>> load FW blobs in each CPU address space using loader devices.
+>>>>>>
+>>>>>> Actually, I was unable to do this, perhaps because the fb OpenBMC
+>>>>>> boot sequence is a little weird. I specifically _needed_ to have
+>>>>>> a flash device which maps the firmware in at 0x2000_0000, because
+>>>>>> the fb OpenBMC U-Boot SPL jumps to that address to start executing
+>>>>>> from flash? I think this is also why fb OpenBMC machines can be so slow.
+>>>>>>
+>>>>>> $ ./build/qemu-system-arm -machine fby35 \
+>>>>>>        -device loader,file=fby35.mtd,addr=0,cpu-num=0 -nographic \
+>>>>>>        -d int -drive file=fby35.mtd,format=raw,if=mtd
+>>>>> Ideally we should be booting from the flash device directly using
+>>>>> the machine option '-M ast2600-evb,execute-in-place=true' like HW
+>>>>> does. Instructions are fetched using SPI transfers. But the amount
+>>>>> of code generated is tremendous.
+>>> Yeah because there is a potential race when reading from HW so we
+>>> throw
+>>> away TB's after executing them because we have no way of knowing if it
+>>> has changed under our feet. See 873d64ac30 (accel/tcg: re-factor non-RAM
+>>> execution code) which cleaned up this handling.
+>>>
+>>>>> See some profiling below for a
+>>>>> run which barely reaches DRAM training in U-Boot.
+>>>>
+>>>> Some more profiling on both ast2500 and ast2600 machines shows :
+>>>>
+>>>>
+>>>> * ast2600-evb,execute-in-place=true :
+>>>>
+>>>> Type               Object  Call site                Wait Time (s)         Count  Average (us)
+>>>> ---------------------------------------------------------------------------------------------
+>>>> BQL mutex  0x564dc03922e0  accel/tcg/cputlb.c:1365       14.21443
+>>>> 32909927          0.43
+>>> This is unavoidable as a HW access needs the BQL held so we will go
+>>> through this cycle every executed instruction.
+>>> Did I miss why the flash contents are not mapped into the physical
+>>> address space? Isn't that how it appear to the processor?
+>>
+>>
+>> There are two modes :
+>>            if (ASPEED_MACHINE(machine)->mmio_exec) {
+>>              memory_region_init_alias(boot_rom, NULL, "aspeed.boot_rom",
+>>                                       &fl->mmio, 0, size);
+>>              memory_region_add_subregion(get_system_memory(), FIRMWARE_ADDR,
+>>                                          boot_rom);
+>>          } else {
+>>              memory_region_init_rom(boot_rom, NULL, "aspeed.boot_rom",
+>>                                     size, &error_abort);
+>>              memory_region_add_subregion(get_system_memory(), FIRMWARE_ADDR,
+>>                                          boot_rom);
+>>              write_boot_rom(drive0, FIRMWARE_ADDR, size, &error_abort);
+>>          }
+>>
+>> The default boot mode uses the ROM. No issue.
+>>
+>> The "execute-in-place=true" option creates an alias on the region of
+>> the flash contents and each instruction is then fetched from the flash
+>> drive with SPI transactions.
+>>
+>> With old FW images, using an older U-boot, the machine boots in a couple
+>> of seconds. See the profiling below for a witherspoon-bmc machine using
+>> U-Boot 2016.07.
+>>
+>>    qemu-system-arm -M witherspoon-bmc,execute-in-place=true  -drive file=./flash-witherspoon-bmc,format=raw,if=mtd -drive file=./flash-witherspoon-bmc2,format=raw,if=mtd -nographic -nodefaults -snapshot -serial mon:stdio -enable-sync-profile
+>>    ...
+>>    U-Boot 2016.07-00040-g8425e96e2e27-dirty (Jun 24 2022 - 23:21:57 +0200)
+>>              Watchdog enabled
+>>    DRAM:  496 MiB
+>>    Flash: 32 MiB
+>>    In:    serial
+>>    Out:   serial
+>>    Err:   serial
+>>    Net:
+>>    (qemu) info sync-profile
+>>    Type               Object  Call site                Wait Time (s)         Count  Average (us)
+>>    ---------------------------------------------------------------------------------------------
+>>    BQL mutex  0x56189610b2e0  accel/tcg/cputlb.c:1365        0.25311      12346237          0.02
+>>    condvar    0x5618970cf220  softmmu/cpus.c:423             0.05506             2      27530.78
+>>    BQL mutex  0x56189610b2e0  util/rcu.c:269                 0.04709             2      23544.26
+>>    condvar    0x561896d0fc78  util/thread-pool.c:90          0.01340            83        161.47
+>>    condvar    0x56189610b240  softmmu/cpus.c:571             0.00005             1         54.93
+>>    condvar    0x56189610b280  softmmu/cpus.c:642             0.00003             1         32.88
+>>    BQL mutex  0x56189610b2e0  util/main-loop.c:318           0.00003            34          0.76
+>>    mutex      0x561896eade00  tcg/region.c:204               0.00002           995          0.02
+>>    rec_mutex  [           2]  util/async.c:682               0.00002           493          0.03
+>>    mutex      [           2]  chardev/char.c:118             0.00001           404          0.03
+>>    ---------------------------------------------------------------------------------------------
+>>
+>>
+>> However, with recent U-boots, it takes quite a while to reach DRAM training.
+>> Close to a minute. See the profiling below for an ast2500-evb machine using
+>> U-Boot 2019.04.
+>>
+>>   qemu-system-arm -M ast2500-evb,execute-in-place=true  -net nic,macaddr=C0:FF:EE:00:00:03,netdev=net0  -drive file=./flash-ast2500-evb,format=raw,if=mtd  -nographic -nodefaults -snapshot -serial mon:stdio  -enable-sync-profile
+>>    qemu-system-arm: warning: Aspeed iBT has no chardev backend
+>>    qemu-system-arm: warning: nic ftgmac100.1 has no peer
+>>    QEMU 7.0.50 monitor - type 'help' for more information
+>>       U-Boot 2019.04-00080-g6ca27db3f97b-dirty (Jun 24 2022 - 23:22:03
+>>      +0200)
+>>       SOC : AST2500-A1
+>>    RST : Power On
+>>    LPC Mode : SIO:Enable : SuperIO-2e
+>>    Eth : MAC0: RGMII, , MAC1: RGMII,
+>>    Model: AST2500 EVB
+>>    DRAM:  448 MiB (capacity:512 MiB, VGA:64 MiB, ECC:off)
+>>    MMC:   sdhci_slot0@100: 0, sdhci_slot1@200: 1
+>>    Loading Environment from SPI Flash... SF: Detected mx25l25635e with page size 256 Bytes, erase size 64 KiB, total 32 MiB
+>>    *** Warning - bad CRC, using default environment
+>>       In:    serial@1e784000
+>>    Out:   serial@1e784000
+>>    Err:   serial@1e784000
+>>    Net:   eth0: ethernet@1e660000
+>>    Warning: ethernet@1e680000 (eth1) using random MAC address - 4a:e5:9a:4a:c7:c5
+>>    , eth1: ethernet@1e680000
+>>    Hit any key to stop autoboot:  2
+>>    (qemu) info sync-profile
+>>    Type               Object  Call site                Wait Time (s)         Count  Average (us)
+>>    ---------------------------------------------------------------------------------------------
+>>    condvar    0x561f10c9ef88  util/thread-pool.c:90         10.01196            28     357570.00
+>>    BQL mutex  0x561f102362e0  accel/tcg/cputlb.c:1365        0.29496      14248621          0.02
+>>    condvar    0x561f110325a0  softmmu/cpus.c:423             0.02231             2      11152.57
+>>    BQL mutex  0x561f102362e0  util/rcu.c:269                 0.01447             4       3618.60
+>>    condvar    0x561f10236240  softmmu/cpus.c:571             0.00010             1        102.19
+>>    mutex      0x561f10e9f1c0  tcg/region.c:204               0.00007          3052          0.02
+>>    mutex      [           2]  chardev/char.c:118             0.00003          1486          0.02
+>>    condvar    0x561f10236280  softmmu/cpus.c:642             0.00003             1         29.38
+>>    BQL mutex  0x561f102362e0  accel/tcg/cputlb.c:1426        0.00002           973          0.02
+>>    BQL mutex  0x561f102362e0  util/main-loop.c:318           0.00001            34          0.41
+>>    ---------------------------------------------------------------------------------------------
+>>    Something in the layout of the FW is making a big difference. One
+>> that could be relevant is that the recent versions are using a device
+>> tree.
+>>
+>> There might be no good solution to this issue but I fail to analyze
+>> it correctly. Is there a way to collect information on the usage of
+>> Translation Blocks ?
 > 
-> This commit just adds some of the FRU functionality to allow the BIC to
-> startup without any errors.
-> 
-> Signed-off-by: Peter Delevoryas <pdel@fb.com>
-> ---
->   MAINTAINERS             |   1 +
->   hw/misc/fby35_sb_cpld.c | 128 ++++++++++++++++++++++++++++++++++++++++
->   hw/misc/meson.build     |   3 +-
->   3 files changed, 131 insertions(+), 1 deletion(-)
->   create mode 100644 hw/misc/fby35_sb_cpld.c
-> 
-> diff --git a/MAINTAINERS b/MAINTAINERS
-> index 05cf84b58c..3ffd473db1 100644
-> --- a/MAINTAINERS
-> +++ b/MAINTAINERS
-> @@ -1067,6 +1067,7 @@ F: hw/net/ftgmac100.c
->   F: include/hw/net/ftgmac100.h
->   F: docs/system/arm/aspeed.rst
->   F: tests/qtest/*aspeed*
-> +F: hw/misc/fby35_sb_cpld.c
->   
->   NRF51
->   M: Joel Stanley <joel@jms.id.au>
-> diff --git a/hw/misc/fby35_sb_cpld.c b/hw/misc/fby35_sb_cpld.c
-> new file mode 100644
-> index 0000000000..f170a6c781
-> --- /dev/null
-> +++ b/hw/misc/fby35_sb_cpld.c
-> @@ -0,0 +1,128 @@
-> +/*
-> + * fby35 Server Board CPLD
-> + *
-> + * Copyright (c) Meta Platforms, Inc. and affiliates. (http://www.meta.com)
-> + *
-> + * This code is licensed under the GPL version 2 or later. See the COPYING
-> + * file in the top-level directory.
-> + */
-> +
-> +#include "qemu/osdep.h"
-> +#include "qemu/log.h"
-> +#include "hw/i2c/i2c.h"
-> +#include "hw/registerfields.h"
-> +
-> +#define BOARD_ID_CLASS1 0b0000
-> +#define BOARD_ID_CLASS2 0b0001
-> +
-> +#define TYPE_FBY35_SB_CPLD "fby35-sb-cpld"
-> +OBJECT_DECLARE_SIMPLE_TYPE(Fby35SbCpldState, FBY35_SB_CPLD);
-> +
-> +REG8(CLASS_TYPE, 0x5);
-> +    FIELD(CLASS_TYPE, RESERVED, 0, 2);
-> +    FIELD(CLASS_TYPE, 1OU_EXPANSION_NOT_PRESENT, 2, 1);
-> +    FIELD(CLASS_TYPE, 2OU_EXPANSION_NOT_PRESENT, 3, 1);
-> +    FIELD(CLASS_TYPE, BOARD_ID, 4, 4);
-> +REG8(BOARD_REVISION, 0x8);
-> +    FIELD(BOARD_REVISION, VALUE, 0, 4);
-> +    FIELD(BOARD_REVISION, RESERVED, 4, 4);
-> +
-> +struct Fby35SbCpldState {
-> +    I2CSlave parent_obj;
-> +
-> +    uint8_t target_reg;
-> +    uint32_t regs[10];
-> +};
-> +
-> +static void fby35_sb_cpld_realize(DeviceState *dev, Error **errp)
-> +{
-> +    Fby35SbCpldState *s = FBY35_SB_CPLD(dev);
-> +
-> +    memset(s->regs, 0, sizeof(s->regs));
-> +    s->target_reg = 0;
-> +
-> +    ARRAY_FIELD_DP32(s->regs, CLASS_TYPE, BOARD_ID, 0b0000);
-> +    ARRAY_FIELD_DP32(s->regs, CLASS_TYPE, 1OU_EXPANSION_NOT_PRESENT, 1);
-> +    ARRAY_FIELD_DP32(s->regs, CLASS_TYPE, 2OU_EXPANSION_NOT_PRESENT, 1);
-> +    ARRAY_FIELD_DP32(s->regs, BOARD_REVISION, VALUE, 0x1);
-> +}
+> You could expand the data we collect in tb_tree_stats and expose it via
+> info jit.
 
-This is a reset handler.
+The "fast" run, U-Boot 2016.07, gives :
 
+
+   Translation buffer state:
+   gen code size       254880371/1073736704
+   TB count            1089
+   TB avg target size  16 max=356 bytes
+   TB avg host size    278 bytes (expansion ratio: 17.2)
+   cross page TB count 0 (0%)
+   direct jump count   501 (46%) (2 jumps=372 34%)
+   TB hash buckets     1025/8192 (12.51% head buckets used)
+   TB hash occupancy   3.32% avg chain occ. Histogram: [0.0,7.5)%|█  ▁  ▁  ▁|[67.5,75.0]%
+   TB hash avg chain   1.000 buckets. Histogram: 1|█|1
+   
+   Statistics:
+   TB flush count      0
+   TB invalidate count 0
+   TLB full flushes    0
+   TLB partial flushes 2
+   TLB elided flushes  2338
+   JIT cycles          2221788409 (0.926 s at 2.4 GHz)
+   translated TBs      738520 (aborted=0 0.0%)
+   avg ops/TB          15.7 max=459
+   deleted ops/TB      2.72
+   avg temps/TB        32.89 max=88
+   avg host code/TB    113.7
+   avg search data/TB  5.2
+   cycles/op           192.0
+   cycles/in byte      748.7
+   cycles/out byte     26.4
+   cycles/search byte     582.8
+     gen_interm time   57.6%
+     gen_code time     42.4%
+   optim./code time    19.4%
+   liveness/code time  26.1%
+   cpu_restore count   0
+     avg cycles        0.0
+   
+
+and the "slow", U-Boot 2019.04 :
+
+Translation buffer state:
+gen code size       368603795/1073736704
+TB count            3052
+TB avg target size  16 max=360 bytes
+TB avg host size    293 bytes (expansion ratio: 17.6)
+cross page TB count 0 (0%)
+direct jump count   1431 (46%) (2 jumps=1104 36%)
+TB hash buckets     2559/8192 (31.24% head buckets used)
+TB hash occupancy   9.31% avg chain occ. Histogram: [0,10)%|█ ▃  ▁ ▁ ▁|[90,100]%
+TB hash avg chain   1.000 buckets. Histogram: 1|█|1
+
+Statistics:
+TB flush count      3
+TB invalidate count 0
+TLB full flushes    0
+TLB partial flushes 3
+TLB elided flushes  2367
+JIT cycles          26479044772 (11.033 s at 2.4 GHz)
+translated TBs      10552169 (aborted=0 0.0%)
+avg ops/TB          15.0 max=464
+deleted ops/TB      2.44
+avg temps/TB        32.43 max=89
+avg host code/TB    99.0
+avg search data/TB  5.0
+cycles/op           167.7
+cycles/in byte      626.8
+cycles/out byte     25.4
+cycles/search byte     499.4
+   gen_interm time   50.4%
+   gen_code time     49.6%
+optim./code time    19.5%
+liveness/code time  27.7%
+cpu_restore count   0
+   avg cycles        0.0
+
+
+A lot more TBs.
+   
 C.
-
-
-> +static int fby35_sb_cpld_i2c_event(I2CSlave *i2c, enum i2c_event event)
-> +{
-> +    Fby35SbCpldState *s = FBY35_SB_CPLD(i2c);
-> +
-> +    switch (event) {
-> +    case I2C_START_RECV:
-> +        break;
-> +    case I2C_START_SEND:
-> +        s->target_reg = 0;
-> +        break;
-> +    case I2C_START_SEND_ASYNC:
-> +    case I2C_FINISH:
-> +    case I2C_NACK:
-> +        break;
-> +    }
-> +
-> +    return 0;
-> +}
-> +
-> +static uint8_t fby35_sb_cpld_i2c_recv(I2CSlave *i2c)
-> +{
-> +    Fby35SbCpldState *s = FBY35_SB_CPLD(i2c);
-> +
-> +    switch (s->target_reg) {
-> +    case R_CLASS_TYPE:
-> +    case R_BOARD_REVISION:
-> +        return s->regs[s->target_reg];
-> +    default:
-> +        qemu_log_mask(LOG_UNIMP, "%s: Register read unimplemented: 0x%02x\n",
-> +                      __func__, s->target_reg);
-> +        return 0xff;
-> +    }
-> +}
-> +
-> +static int fby35_sb_cpld_i2c_send(I2CSlave *i2c, uint8_t data)
-> +{
-> +    Fby35SbCpldState *s = FBY35_SB_CPLD(i2c);
-> +
-> +    if (s->target_reg == 0) {
-> +        s->target_reg = data;
-> +        return 0;
-> +    }
-> +
-> +    switch (s->target_reg) {
-> +    case R_CLASS_TYPE:
-> +    case R_BOARD_REVISION:
-> +        s->regs[s->target_reg] = data;
-> +        break;
-> +    default:
-> +        qemu_log_mask(LOG_UNIMP,
-> +                      "%s: Register write unimplemented: 0x%02x 0x%02x\n",
-> +                      __func__, s->target_reg, data);
-> +        break;
-> +    }
-> +
-> +    return 0;
-> +}
-> +
-> +static void fby35_sb_cpld_class_init(ObjectClass *oc, void *data)
-> +{
-> +    DeviceClass *dc = DEVICE_CLASS(oc);
-> +    I2CSlaveClass *i2c = I2C_SLAVE_CLASS(oc);
-> +
-> +    dc->realize = fby35_sb_cpld_realize;
-> +    i2c->event = fby35_sb_cpld_i2c_event;
-> +    i2c->recv = fby35_sb_cpld_i2c_recv;
-> +    i2c->send = fby35_sb_cpld_i2c_send;
-> +}
-> +
-> +static const TypeInfo types[] = {
-> +    {
-> +        .name = TYPE_FBY35_SB_CPLD,
-> +        .parent = TYPE_I2C_SLAVE,
-> +        .instance_size = sizeof(Fby35SbCpldState),
-> +        .class_init = fby35_sb_cpld_class_init,
-> +    },
-> +};
-> +
-> +DEFINE_TYPES(types);
-> diff --git a/hw/misc/meson.build b/hw/misc/meson.build
-> index 95268eddc0..948e25c440 100644
-> --- a/hw/misc/meson.build
-> +++ b/hw/misc/meson.build
-> @@ -117,7 +117,8 @@ softmmu_ss.add(when: 'CONFIG_ASPEED_SOC', if_true: files(
->     'aspeed_sbc.c',
->     'aspeed_sdmc.c',
->     'aspeed_xdma.c',
-> -  'aspeed_peci.c'))
-> +  'aspeed_peci.c',
-> +  'fby35_sb_cpld.c'))
->   
->   softmmu_ss.add(when: 'CONFIG_MSF2', if_true: files('msf2-sysreg.c'))
->   softmmu_ss.add(when: 'CONFIG_NRF51_SOC', if_true: files('nrf51_rng.c'))
-

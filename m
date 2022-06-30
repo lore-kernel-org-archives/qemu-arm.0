@@ -1,73 +1,72 @@
-Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp254119lft;
-        Thu, 30 Jun 2022 04:26:59 -0700 (PDT)
-X-Google-Smtp-Source: AGRyM1skjW3wrRRUHlMV/Ogy0S2X4RjOkHVg4rnokjHO43bA05QRODJJaT65UcBvkDJOrqNOsqUN
-X-Received: by 2002:a37:2756:0:b0:6ae:f7c2:ae4a with SMTP id n83-20020a372756000000b006aef7c2ae4amr6016641qkn.504.1656588418963;
-        Thu, 30 Jun 2022 04:26:58 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1656588418; cv=none;
+Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp254131lft;
+        Thu, 30 Jun 2022 04:27:00 -0700 (PDT)
+X-Google-Smtp-Source: AGRyM1u6e/f2alPp8Jd6I89w1kyYBYVVfkj09JmkZTVm8wuYX/mAfbG/yGg2KkskNG8XNWSlW/of
+X-Received: by 2002:a05:620a:410d:b0:6a7:571d:8615 with SMTP id j13-20020a05620a410d00b006a7571d8615mr5767759qko.259.1656588420322;
+        Thu, 30 Jun 2022 04:27:00 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1656588420; cv=none;
         d=google.com; s=arc-20160816;
-        b=AX1PJ9PbQtQucGc7Vb7foCDVWZiRkLEAqMX1eIbbOuU+jYZI4A01AlJRhlnxV6S9EQ
-         YXyHfNybPP8gwgAWLgzJc7r7BfusDJKK3wgvDWIsymp3E4iWepzjauw3l+k2Db0Fl5Wr
-         wkPfJe5eq6wh5q72mLOgkEv3Gw9laaF28KLNmUF01wm/qkZE+fHa0bnKCaVAMtMED8IG
-         Bb4UMYRLols+ZGfJs1pyeQJN2ZXEMThj3SBRm+KQNU5M/Y3tcK4wGfx0QkiS00xoZ6f+
-         wp03nNJarwec5APcwCxUKtJXfsG1R4MXYhvdtTMBu+vmd8SjqLT/B3PSE1+FYG1AxJUK
-         kmug==
+        b=pcRQF40oa/DPuymdlUvGZbX8b/+8F1yayPvu9pqNAjITJ2AtF912UajQQ8dkWZyMXc
+         UzoTWG127ncpY6gue+KPuD29TKaZcBLxne7D4RIgp+8OablQyjCARVtLey8UDPxYRajP
+         jptQO8cRzrV0632CeAgQiYJPcW1s+duTtq9pQr2Kutp3q5o65UsP0/cOc58VSRMUPgrk
+         Yo4aRI4/BuqW2i492ZMedfPCgPTXLx+itIwI9COoP4YrOQ4dVoU8qNYPmZmuYFA/yv2f
+         lOoiWZffDytLF9F4Ch3R8PgR7nXtnXvJDJOD7PkN8HI/NDumkO7aySLgJf8bZW9itTPw
+         arvQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from;
-        bh=Oz2dhvwoWZlralYZ0GHW/OYGQwaJfO/kvu9+jofpfNM=;
-        b=FYQS0ROnnuHrpnw/pt6RQ+3658y5UHUBiZuGvUXYwmtkY4GlMQA/TQlNleM+O38F2t
-         T3Jn05LddU8Vwc0aVLx/T3CY+mIx795SCjZInbPAzOUkO/PB5IForrSJdFmul8UYA2pd
-         ZjaWFAT/OKm6cxRowbb9T9umBwmYRJXlevhL8ixTP7emGYq07hAhpgYoV/klMHV2tY1z
-         SP8KtkCn5YnBHwg1qUfmnTt84fNMUDeeOygqK/vc8ZQ0A4BaQ8j4Qk3IPflx3JozZWNJ
-         P450drtd5B9CchQXDGp++sRRZUPDWlr3AcDhzCPu3B4eoUmDz6iGHO2eFIs1qTG+I1ZP
-         REDg==
+        bh=k36usnsmX4MdHmqkI93oxv/csC9ZzL2uTao20Y6LUpg=;
+        b=i0qc7M9LrMKa8cANWlGpvzP7oPC+IaBqbKk3SjJS1X60KNy5/SQFMHixPlIrQvLuCk
+         IFZrSLKD17vesuGMZM/+JF3nsTfja/kSIa0UAi0TW9mKp0eGZI8jiqwpZiye/Kqgs0Ek
+         GmiLx4+CNPGPkgOUtTwBCcqx6KGK9AY8VLk6im/hLXHjD2aoVJJFZz50P+s/TgikIxPw
+         GRtIJ/Ru6e4sTDba9Z4q1W0tn+NVwaE0sjX+ql4qr1SGE7DMQydfIDi8lhbTYoKI/nxS
+         ruk1EeN5tvVUNBdhPq5NVsxpkwi3+oY6AVPijqiFIu+iJ8+ofO26X5iZCwE0zkSl4eNI
+         1E0Q==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id n15-20020a05620a294f00b006a6a49dffb2si12880795qkp.22.2022.06.30.04.26.58
+        by mx.google.com with ESMTPS id v15-20020a05620a440f00b006a6e28804c4si7698241qkp.485.2022.06.30.04.27.00
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 30 Jun 2022 04:26:58 -0700 (PDT)
+        Thu, 30 Jun 2022 04:27:00 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:46082 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:46028 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1o6sK2-0001mw-Ev
-	for alex.bennee@linaro.org; Thu, 30 Jun 2022 07:26:58 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33334)
+	id 1o6sK3-0001kf-OP
+	for alex.bennee@linaro.org; Thu, 30 Jun 2022 07:26:59 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33312)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=N4Bw=XF=kaod.org=clg@ozlabs.org>)
- id 1o6sHh-000746-3C; Thu, 30 Jun 2022 07:24:33 -0400
-Received: from mail.ozlabs.org ([2404:9400:2221:ea00::3]:40183
+ id 1o6sHg-00073a-HS; Thu, 30 Jun 2022 07:24:32 -0400
+Received: from mail.ozlabs.org ([2404:9400:2221:ea00::3]:54821
  helo=gandalf.ozlabs.org)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=N4Bw=XF=kaod.org=clg@ozlabs.org>)
- id 1o6sHf-0001xX-0c; Thu, 30 Jun 2022 07:24:32 -0400
+ id 1o6sHd-0001xu-Ig; Thu, 30 Jun 2022 07:24:32 -0400
 Received: from gandalf.ozlabs.org (gandalf.ozlabs.org [150.107.74.76])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4LYbZY6Z8dz4xXF;
- Thu, 30 Jun 2022 21:24:21 +1000 (AEST)
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4LYbZg194gz4xYS;
+ Thu, 30 Jun 2022 21:24:27 +1000 (AEST)
 Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
  (No client certificate requested)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4LYbZW4SVYz4xD5;
- Thu, 30 Jun 2022 21:24:19 +1000 (AEST)
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4LYbZd0wQCz4xD5;
+ Thu, 30 Jun 2022 21:24:24 +1000 (AEST)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>,
  Richard Henderson <richard.henderson@linaro.org>,
- Iris Chen <irischenlj@gmail.com>,
- Francisco Iglesias <frasse.iglesias@gmail.com>,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
-Subject: [PULL 01/27] hw: m25p80: add WP# pin and SRWD bit for write protection
-Date: Thu, 30 Jun 2022 13:23:45 +0200
-Message-Id: <20220630112411.1474431-2-clg@kaod.org>
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
+ Peter Delevoryas <pdel@fb.com>
+Subject: [PULL 03/27] aspeed: Set the dram container at the SoC level
+Date: Thu, 30 Jun 2022 13:23:47 +0200
+Message-Id: <20220630112411.1474431-4-clg@kaod.org>
 X-Mailer: git-send-email 2.35.3
 In-Reply-To: <20220630112411.1474431-1-clg@kaod.org>
 References: <20220630112411.1474431-1-clg@kaod.org>
@@ -97,172 +96,222 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ElUFwCTpj62g
+X-TUID: vHEOpjMukVKX
 
-From: Iris Chen <irischenlj@gmail.com>
+Currently, the Aspeed machines allocate a ram container region in
+which the machine ram region is mapped. See commit ad1a9782186d
+("aspeed: add a RAM memory region container"). An extra region is
+mapped after ram in the ram container to catch invalid access done by
+FW. That's how FW determines the size of ram. See commit ebe31c0a8ef7
+("aspeed: add a max_ram_size property to the memory controller").
 
-Signed-off-by: Iris Chen <irischenlj@gmail.com>
-Reviewed-by: Francisco Iglesias <frasse.iglesias@gmail.com>
-Message-Id: <20220621202427.2680413-1-irischenlj@fb.com>
+Let's move all the logic under the SoC where it should be. It will
+also ease the work on multi SoC support.
+
+Reviewed-by: Peter Delevoryas <pdel@fb.com>
+Message-Id: <20220623202123.3972977-1-clg@kaod.org>
 Signed-off-by: Cédric Le Goater <clg@kaod.org>
 ---
- hw/block/m25p80.c | 82 ++++++++++++++++++++++++++++++++++++++---------
- 1 file changed, 67 insertions(+), 15 deletions(-)
+ include/hw/arm/aspeed_soc.h |  2 ++
+ hw/arm/aspeed.c             | 39 ++---------------------------
+ hw/arm/aspeed_ast2600.c     |  7 ++++--
+ hw/arm/aspeed_soc.c         | 49 +++++++++++++++++++++++++++++++++++--
+ 4 files changed, 56 insertions(+), 41 deletions(-)
 
-diff --git a/hw/block/m25p80.c b/hw/block/m25p80.c
-index 81ba3da4df10..3045dda53b81 100644
---- a/hw/block/m25p80.c
-+++ b/hw/block/m25p80.c
-@@ -472,11 +472,13 @@ struct Flash {
-     uint8_t spansion_cr2v;
-     uint8_t spansion_cr3v;
-     uint8_t spansion_cr4v;
-+    bool wp_level;
-     bool write_enable;
-     bool four_bytes_address_mode;
-     bool reset_enable;
-     bool quad_enable;
-     bool aai_enable;
-+    bool status_register_write_disabled;
-     uint8_t ear;
+diff --git a/include/hw/arm/aspeed_soc.h b/include/hw/arm/aspeed_soc.h
+index 02a5a9ffcbd3..e8a104823d35 100644
+--- a/include/hw/arm/aspeed_soc.h
++++ b/include/hw/arm/aspeed_soc.h
+@@ -50,6 +50,7 @@ struct AspeedSoCState {
+     A15MPPrivState     a7mpcore;
+     ARMv7MState        armv7m;
+     MemoryRegion *dram_mr;
++    MemoryRegion dram_container;
+     MemoryRegion sram;
+     AspeedVICState vic;
+     AspeedRtcState rtc;
+@@ -165,5 +166,6 @@ enum {
  
-     int64_t dirty_page;
-@@ -723,6 +725,8 @@ static void complete_collecting_data(Flash *s)
-         flash_erase(s, s->cur_addr, s->cmd_in_progress);
-         break;
-     case WRSR:
-+        s->status_register_write_disabled = extract32(s->data[0], 7, 1);
+ qemu_irq aspeed_soc_get_irq(AspeedSoCState *s, int dev);
+ void aspeed_soc_uart_init(AspeedSoCState *s);
++bool aspeed_soc_dram_init(AspeedSoCState *s, Error **errp);
+ 
+ #endif /* ASPEED_SOC_H */
+diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
+index a06f7c1b62a9..dc09773b0ba5 100644
+--- a/hw/arm/aspeed.c
++++ b/hw/arm/aspeed.c
+@@ -174,27 +174,6 @@ struct AspeedMachineState {
+ #define BLETCHLEY_BMC_HW_STRAP1 AST2600_EVB_HW_STRAP1
+ #define BLETCHLEY_BMC_HW_STRAP2 AST2600_EVB_HW_STRAP2
+ 
+-/*
+- * The max ram region is for firmwares that scan the address space
+- * with load/store to guess how much RAM the SoC has.
+- */
+-static uint64_t max_ram_read(void *opaque, hwaddr offset, unsigned size)
+-{
+-    return 0;
+-}
+-
+-static void max_ram_write(void *opaque, hwaddr offset, uint64_t value,
+-                           unsigned size)
+-{
+-    /* Discard writes */
+-}
+-
+-static const MemoryRegionOps max_ram_ops = {
+-    .read = max_ram_read,
+-    .write = max_ram_write,
+-    .endianness = DEVICE_NATIVE_ENDIAN,
+-};
+-
+ #define AST_SMP_MAILBOX_BASE            0x1e6e2180
+ #define AST_SMP_MBOX_FIELD_ENTRY        (AST_SMP_MAILBOX_BASE + 0x0)
+ #define AST_SMP_MBOX_FIELD_GOSIGN       (AST_SMP_MAILBOX_BASE + 0x4)
+@@ -324,20 +303,16 @@ static void aspeed_machine_init(MachineState *machine)
+     AspeedMachineClass *amc = ASPEED_MACHINE_GET_CLASS(machine);
+     AspeedSoCClass *sc;
+     DriveInfo *drive0 = drive_get(IF_MTD, 0, 0);
+-    ram_addr_t max_ram_size;
+     int i;
+     NICInfo *nd = &nd_table[0];
+ 
+-    memory_region_init(&bmc->ram_container, NULL, "aspeed-ram-container",
+-                       4 * GiB);
+-    memory_region_add_subregion(&bmc->ram_container, 0, machine->ram);
+-
+     object_initialize_child(OBJECT(machine), "soc", &bmc->soc, amc->soc_name);
+ 
+     sc = ASPEED_SOC_GET_CLASS(&bmc->soc);
+ 
+     /*
+-     * This will error out if isize is not supported by memory controller.
++     * This will error out if the RAM size is not supported by the
++     * memory controller of the SoC.
+      */
+     object_property_set_uint(OBJECT(&bmc->soc), "ram-size", machine->ram_size,
+                              &error_fatal);
+@@ -369,16 +344,6 @@ static void aspeed_machine_init(MachineState *machine)
+                          amc->uart_default);
+     qdev_realize(DEVICE(&bmc->soc), NULL, &error_abort);
+ 
+-    memory_region_add_subregion(get_system_memory(),
+-                                sc->memmap[ASPEED_DEV_SDRAM],
+-                                &bmc->ram_container);
+-
+-    max_ram_size = object_property_get_uint(OBJECT(&bmc->soc), "max-ram-size",
+-                                            &error_abort);
+-    memory_region_init_io(&bmc->max_ram, NULL, &max_ram_ops, NULL,
+-                          "max_ram", max_ram_size  - machine->ram_size);
+-    memory_region_add_subregion(&bmc->ram_container, machine->ram_size, &bmc->max_ram);
+-
+     aspeed_board_init_flashes(&bmc->soc.fmc,
+                               bmc->fmc_model ? bmc->fmc_model : amc->fmc_model,
+                               amc->num_cs, 0);
+diff --git a/hw/arm/aspeed_ast2600.c b/hw/arm/aspeed_ast2600.c
+index b0a4199b6960..bb5927c36bbf 100644
+--- a/hw/arm/aspeed_ast2600.c
++++ b/hw/arm/aspeed_ast2600.c
+@@ -197,8 +197,6 @@ static void aspeed_soc_ast2600_init(Object *obj)
+     object_initialize_child(obj, "sdmc", &s->sdmc, typename);
+     object_property_add_alias(obj, "ram-size", OBJECT(&s->sdmc),
+                               "ram-size");
+-    object_property_add_alias(obj, "max-ram-size", OBJECT(&s->sdmc),
+-                              "max-ram-size");
+ 
+     for (i = 0; i < sc->wdts_num; i++) {
+         snprintf(typename, sizeof(typename), "aspeed.wdt-%s", socname);
+@@ -443,6 +441,11 @@ static void aspeed_soc_ast2600_realize(DeviceState *dev, Error **errp)
+                         sc->memmap[ASPEED_DEV_WDT] + i * awc->offset);
+     }
+ 
++    /* RAM */
++    if (!aspeed_soc_dram_init(s, errp)) {
++        return;
++    }
 +
-         switch (get_man(s)) {
-         case MAN_SPANSION:
-             s->quad_enable = !!(s->data[1] & 0x02);
-@@ -1165,22 +1169,34 @@ static void decode_new_cmd(Flash *s, uint32_t value)
-         break;
+     /* Net */
+     for (i = 0; i < sc->macs_num; i++) {
+         object_property_set_bool(OBJECT(&s->ftgmac100[i]), "aspeed", true,
+diff --git a/hw/arm/aspeed_soc.c b/hw/arm/aspeed_soc.c
+index 30574d4276ab..3e6055ac9129 100644
+--- a/hw/arm/aspeed_soc.c
++++ b/hw/arm/aspeed_soc.c
+@@ -11,6 +11,7 @@
+  */
  
-     case WRSR:
--        if (s->write_enable) {
--            switch (get_man(s)) {
--            case MAN_SPANSION:
--                s->needed_bytes = 2;
--                s->state = STATE_COLLECTING_DATA;
--                break;
--            case MAN_MACRONIX:
--                s->needed_bytes = 2;
--                s->state = STATE_COLLECTING_VAR_LEN_DATA;
--                break;
--            default:
--                s->needed_bytes = 1;
--                s->state = STATE_COLLECTING_DATA;
--            }
--            s->pos = 0;
-+        /*
-+         * If WP# is low and status_register_write_disabled is high,
-+         * status register writes are disabled.
-+         * This is also called "hardware protected mode" (HPM). All other
-+         * combinations of the two states are called "software protected mode"
-+         * (SPM), and status register writes are permitted.
-+         */
-+        if ((s->wp_level == 0 && s->status_register_write_disabled)
-+            || !s->write_enable) {
-+            qemu_log_mask(LOG_GUEST_ERROR,
-+                          "M25P80: Status register write is disabled!\n");
-+            break;
+ #include "qemu/osdep.h"
++#include "qemu/units.h"
+ #include "qapi/error.h"
+ #include "hw/misc/unimp.h"
+ #include "hw/arm/aspeed_soc.h"
+@@ -191,8 +192,6 @@ static void aspeed_soc_init(Object *obj)
+     object_initialize_child(obj, "sdmc", &s->sdmc, typename);
+     object_property_add_alias(obj, "ram-size", OBJECT(&s->sdmc),
+                               "ram-size");
+-    object_property_add_alias(obj, "max-ram-size", OBJECT(&s->sdmc),
+-                              "max-ram-size");
+ 
+     for (i = 0; i < sc->wdts_num; i++) {
+         snprintf(typename, sizeof(typename), "aspeed.wdt-%s", socname);
+@@ -369,6 +368,11 @@ static void aspeed_soc_realize(DeviceState *dev, Error **errp)
+                         sc->memmap[ASPEED_DEV_WDT] + i * awc->offset);
+     }
+ 
++    /* RAM  */
++    if (!aspeed_soc_dram_init(s, errp)) {
++        return;
++    }
++
+     /* Net */
+     for (i = 0; i < sc->macs_num; i++) {
+         object_property_set_bool(OBJECT(&s->ftgmac100[i]), "aspeed", true,
+@@ -561,3 +565,44 @@ void aspeed_soc_uart_init(AspeedSoCState *s)
+                        serial_hd(i), DEVICE_LITTLE_ENDIAN);
+     }
+ }
++
++/*
++ * SDMC should be realized first to get correct RAM size and max size
++ * values
++ */
++bool aspeed_soc_dram_init(AspeedSoCState *s, Error **errp)
++{
++    AspeedSoCClass *sc = ASPEED_SOC_GET_CLASS(s);
++    ram_addr_t ram_size, max_ram_size;
++
++    ram_size = object_property_get_uint(OBJECT(&s->sdmc), "ram-size",
++                                        &error_abort);
++    max_ram_size = object_property_get_uint(OBJECT(&s->sdmc), "max-ram-size",
++                                            &error_abort);
++
++    memory_region_init(&s->dram_container, OBJECT(s), "ram-container",
++                       max_ram_size);
++    memory_region_add_subregion(&s->dram_container, 0, s->dram_mr);
++
++    /*
++     * Add a memory region beyond the RAM region to let firmwares scan
++     * the address space with load/store and guess how much RAM the
++     * SoC has.
++     */
++    if (ram_size < max_ram_size) {
++        DeviceState *dev = qdev_new(TYPE_UNIMPLEMENTED_DEVICE);
++
++        qdev_prop_set_string(dev, "name", "ram-empty");
++        qdev_prop_set_uint64(dev, "size", max_ram_size  - ram_size);
++        if (!sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), errp)) {
++            return false;
 +        }
 +
-+        switch (get_man(s)) {
-+        case MAN_SPANSION:
-+            s->needed_bytes = 2;
-+            s->state = STATE_COLLECTING_DATA;
-+            break;
-+        case MAN_MACRONIX:
-+            s->needed_bytes = 2;
-+            s->state = STATE_COLLECTING_VAR_LEN_DATA;
-+            break;
-+        default:
-+            s->needed_bytes = 1;
-+            s->state = STATE_COLLECTING_DATA;
-         }
-+        s->pos = 0;
-         break;
- 
-     case WRDI:
-@@ -1195,6 +1211,8 @@ static void decode_new_cmd(Flash *s, uint32_t value)
- 
-     case RDSR:
-         s->data[0] = (!!s->write_enable) << 1;
-+        s->data[0] |= (!!s->status_register_write_disabled) << 7;
-+
-         if (get_man(s) == MAN_MACRONIX || get_man(s) == MAN_ISSI) {
-             s->data[0] |= (!!s->quad_enable) << 6;
-         }
-@@ -1484,6 +1502,14 @@ static uint32_t m25p80_transfer8(SSIPeripheral *ss, uint32_t tx)
-     return r;
- }
- 
-+static void m25p80_write_protect_pin_irq_handler(void *opaque, int n, int level)
-+{
-+    Flash *s = M25P80(opaque);
-+    /* WP# is just a single pin. */
-+    assert(n == 0);
-+    s->wp_level = !!level;
-+}
-+
- static void m25p80_realize(SSIPeripheral *ss, Error **errp)
- {
-     Flash *s = M25P80(ss);
-@@ -1515,12 +1541,18 @@ static void m25p80_realize(SSIPeripheral *ss, Error **errp)
-         s->storage = blk_blockalign(NULL, s->size);
-         memset(s->storage, 0xFF, s->size);
-     }
-+
-+    qdev_init_gpio_in_named(DEVICE(s),
-+                            m25p80_write_protect_pin_irq_handler, "WP#", 1);
- }
- 
- static void m25p80_reset(DeviceState *d)
- {
-     Flash *s = M25P80(d);
- 
-+    s->wp_level = true;
-+    s->status_register_write_disabled = false;
-+
-     reset_memory(s);
- }
- 
-@@ -1587,6 +1619,25 @@ static const VMStateDescription vmstate_m25p80_aai_enable = {
-     }
- };
- 
-+static bool m25p80_wp_level_srwd_needed(void *opaque)
-+{
-+    Flash *s = (Flash *)opaque;
-+
-+    return !s->wp_level || s->status_register_write_disabled;
-+}
-+
-+static const VMStateDescription vmstate_m25p80_write_protect = {
-+    .name = "m25p80/write_protect",
-+    .version_id = 1,
-+    .minimum_version_id = 1,
-+    .needed = m25p80_wp_level_srwd_needed,
-+    .fields = (VMStateField[]) {
-+        VMSTATE_BOOL(wp_level, Flash),
-+        VMSTATE_BOOL(status_register_write_disabled, Flash),
-+        VMSTATE_END_OF_LIST()
++        memory_region_add_subregion_overlap(&s->dram_container, ram_size,
++                      sysbus_mmio_get_region(SYS_BUS_DEVICE(dev), 0), -1000);
 +    }
-+};
 +
- static const VMStateDescription vmstate_m25p80 = {
-     .name = "m25p80",
-     .version_id = 0,
-@@ -1618,6 +1669,7 @@ static const VMStateDescription vmstate_m25p80 = {
-     .subsections = (const VMStateDescription * []) {
-         &vmstate_m25p80_data_read_loop,
-         &vmstate_m25p80_aai_enable,
-+        &vmstate_m25p80_write_protect,
-         NULL
-     }
- };
++    memory_region_add_subregion(get_system_memory(),
++                      sc->memmap[ASPEED_DEV_SDRAM], &s->dram_container);
++    return true;
++}
 -- 
 2.35.3
 

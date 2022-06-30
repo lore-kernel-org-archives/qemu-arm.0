@@ -1,185 +1,330 @@
-Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp602366lft;
-        Thu, 30 Jun 2022 12:21:43 -0700 (PDT)
-X-Google-Smtp-Source: AGRyM1uK0oZ7Y+vLNjvIhj6GeXculf7CeLlCxDFn5mo8V+d7oKMJmDvS9NPQKfi0OKvpcSyYfsyF
-X-Received: by 2002:a05:6214:5284:b0:444:10c8:ee59 with SMTP id kj4-20020a056214528400b0044410c8ee59mr13215151qvb.68.1656616903198;
-        Thu, 30 Jun 2022 12:21:43 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1656616903; cv=none;
+Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp618210lft;
+        Thu, 30 Jun 2022 12:46:43 -0700 (PDT)
+X-Google-Smtp-Source: AGRyM1uIf3+ezSlqyXQP+xl0JEPXXDWkkMZfHE6xnKJOC1kS5GjGlmBr19M+X8RbtQxv7YddY6aA
+X-Received: by 2002:a05:620a:1712:b0:6af:665d:7687 with SMTP id az18-20020a05620a171200b006af665d7687mr7907723qkb.156.1656618403635;
+        Thu, 30 Jun 2022 12:46:43 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1656618403; cv=none;
         d=google.com; s=arc-20160816;
-        b=XAmbqq+i2cJKb3Eq2lJ+onbFRxCvxp8dKcgXt/yCg9bRAAxPIZKCJn2Yb01KnMia5r
-         65tG92rbPtJoStC52oRNYY4V9hWJK3r6psWF3xRxk1VTjmC8/6rPtan+dmxScD2OkEhg
-         jYkbW8ECYVekCJSi31wgb6tVDQ/0sB9N0089jDC11Wc6tF+ubvMX7bRnw94u5Qah6S1t
-         TZzwOfKn/ONxMWwE6QfLBaLUr3xBxnMVztfZB1cQ3bDDotf6a6aImIVilp9Wqo3uPk8A
-         2gFpzOG18lcDqhUn0LYckuEhl/iDb4EkTy65h8sHV+CHvVkt/y1O8+J9kLeXJI0Uz7Q6
-         fsqQ==
+        b=sFuX+s4B6Ld129vdePjgVWDfArwQziKCIy/bCz6Y3RwE7jcTg2Ve/VixYtE7oYoqHs
+         JXoKm+ix2CgnSX8xSgA/vkirWVYetr2QWPEulcq7TjPBQdlfHM1idzqVVj6JPy5yMIBc
+         qK6XGNvmO9PLBFxmAic4rtGKrhSNpa8fMDxVpa8F72j6l72de8t3xZ+oTtMbXgjxck9a
+         Jfewhu/n5OPWjRR0vCxS7np1yJqy/Ttg0e/ymMym4aIYu/KHDkvrJ5xTHvpuuh+GzuSc
+         NW6vSBlENXj0Zq5dG+omVN+HZl8QFa5XbSQwbVv4sD1KA4F7Bmt4AAUlbRebZhXofqRQ
+         QhfQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=fA23ErRTzLQJPvGEr2VDI4wbxiKnUq0Jb3AXwzPvH1o=;
-        b=nzCFihWOMbY0/TqzJiqFwaOXqFFeWn2Gz2585IXjbRZnGzeC3cEjLAxOZXK3gpQFIV
-         CDwZCtN8G/YnbtHVpjls2oowke8Xcs6W/njWxKtFqY07t6FbEbhRJy4ko6zsOnY25Ikh
-         h8lUT4VH19jy7RYOFgjbDpFfNhPFETwdAAqhK8XHGwCqBrnkLixiE0NsSeEDmdTkDQ6N
-         027eRPx75aXWEsSP1AM64R0N60ZLZHbcqQOisOKzksmOrwkDp47+qX/ocE/D0b7tUENQ
-         093KaxrFCPV7J/D9m6xHSnMjYJZEnwPvsBR3r0MmXeP2hGGb23GNTQW58AkDTa15gvZ5
-         z/uQ==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from
+         :dkim-signature;
+        bh=VgPb1Tkc0n0TFxZ2n6JlaR4U9pn5OgDJfIFcTGqpVVU=;
+        b=01PoNdv4bMmOfQtRLqNnu+ybMXjE1oSJiCF92kYG3UDRg3PT3UV3F43VY6eTdUDTLX
+         Ax8gU9TrDi7cgcMkf0APWR+Qce43gYHiIArJ2ZTUdEHj/GnOfQn745bRCcvSV0blHDfq
+         bGWIGyj0dg2DTmk6TIxBQ/AM0hEG3Bulza2GoN0BzWEusXKg8UeZdN82PzGlK0bwmX62
+         gkYa54d+QMmqYg9jDxhuxZJTzA2yV46jauNsEgOM9vbpT0/qlpAlXiTwos850mAN5k3t
+         PgoAIrrv2UALlCap57jmv3Cz7c7H+ZgJE2lNg6B8nDxVhxi4nF1GgWWg7wfER+LX8HEq
+         x0iA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@google.com header.s=20210112 header.b=eq1QTMg+;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@linaro.org header.s=google header.b=iiZPMUCf;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id r4-20020a0562140c8400b004703dba39bfsi10271478qvr.12.2022.06.30.12.21.42
+        by mx.google.com with ESMTPS id 17-20020a05620a071100b006af21744d9bsi7128307qkc.333.2022.06.30.12.46.43
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 30 Jun 2022 12:21:43 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 30 Jun 2022 12:46:43 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@google.com header.s=20210112 header.b=eq1QTMg+;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
-Received: from localhost ([::1]:37608 helo=lists1p.gnu.org)
+       dkim=pass header.i=@linaro.org header.s=google header.b=iiZPMUCf;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:47098 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1o6zjS-0006Ab-Hi
-	for alex.bennee@linaro.org; Thu, 30 Jun 2022 15:21:42 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49828)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1o707e-0005zB-V3
+	for alex.bennee@linaro.org; Thu, 30 Jun 2022 15:46:42 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55154)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <titusr@google.com>) id 1o6zgu-0003OQ-KQ
- for qemu-arm@nongnu.org; Thu, 30 Jun 2022 15:19:07 -0400
-Received: from mail-ej1-x631.google.com ([2a00:1450:4864:20::631]:33714)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1o702f-00031r-63
+ for qemu-devel@nongnu.org; Thu, 30 Jun 2022 15:41:33 -0400
+Received: from mail-wr1-x432.google.com ([2a00:1450:4864:20::432]:40507)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <titusr@google.com>) id 1o6zgs-0000Bz-U2
- for qemu-arm@nongnu.org; Thu, 30 Jun 2022 15:19:04 -0400
-Received: by mail-ej1-x631.google.com with SMTP id mf9so48078ejb.0
- for <qemu-arm@nongnu.org>; Thu, 30 Jun 2022 12:19:01 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20210112;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=fA23ErRTzLQJPvGEr2VDI4wbxiKnUq0Jb3AXwzPvH1o=;
- b=eq1QTMg+jnIVRJSzrJA+G907+EFudAqESxbAbWrcTpvKO1Dl4CsjG/vFvJplvUjaIO
- eafIvAjyU9/MqY+Sw57MtHGaDwLpEqmDUKvx5A88H+uR2CJ1bom8gVr3qa0vuiJs0XRk
- NIzyQyXkQ8t7Z6zqisoKPz7W0HVdd3orTC8c8+wKb/P1festq2WP7+RFVuGVh+8T2dbd
- EOUXCTWjrz2PWQ2g2M35fbldObIIcF2HQuWUGjmdWUGuFryD/ty9OH2JAWg9E1xSuAZY
- QvMCPdJeGxuT5BhfjDgjglUcTbT8GXS0WAIxXaiI+UcLUah2O3JVV52uapfD2sAxnt8X
- Aevw==
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1o702W-0005ao-Fw
+ for qemu-devel@nongnu.org; Thu, 30 Jun 2022 15:41:30 -0400
+Received: by mail-wr1-x432.google.com with SMTP id v9so61571wrp.7
+ for <qemu-devel@nongnu.org>; Thu, 30 Jun 2022 12:41:22 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=from:to:subject:date:message-id:in-reply-to:references:mime-version
+ :content-transfer-encoding;
+ bh=VgPb1Tkc0n0TFxZ2n6JlaR4U9pn5OgDJfIFcTGqpVVU=;
+ b=iiZPMUCfuULaPfn5Gj0GdlAZd76N2XAtBuqBflMrIHyY9ljoJsNEVJw3MQtiyBFjdv
+ 7tvQ5yXgx1vjvjRSm38tGu4CgRjZVx0gld7zdV1sL7P0+MRrFI0MYrU2cAv8bi86mBdk
+ uyMaoovd5z7yzwIgWIlTypUyhbH5HxObngAJc7fiMn6pD4EslCrjHoWWUnQzZIucSKTg
+ HQtz+7vzIjXx/x/FwJVTGRyTLO8fkKZbjjO1dmGXPD+GcXomJTmNS4X84giH8MUWJ0Bj
+ xq0CRb2jPNk5cdGvommC/xqg2ADMjHVEmYcPXddmZgfvUp48NaalugDwXBCPPlshDRSf
+ nuzA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=fA23ErRTzLQJPvGEr2VDI4wbxiKnUq0Jb3AXwzPvH1o=;
- b=j3rcYkoeOIseP9/r0N4UiCWs78ua/qNKNAfcLPI9aa8P0gfv17ibRHtV3MbJ1ctpjf
- 6j2pyyQAq7Z5eSEOxo6pX1Pmwr3OEQF00JToVi12gWE09UGj/OHK24HdxnWp/AOEieTU
- sGRD3flhVNQCUyfDfojb4VFCZBOHJ16EKtQD7TgX7kELIdOxfTlHKuYXTEul5ASRfRHr
- tv6bmTsYHqjw708Sr+TuVoMuV6LncvXizCm3i0YcvWcqNaK2taAX3GOA/88GIsLfLFJN
- 7JO16FDpdpL4p/TlOBkXZQbsm6FZVFPzYDNAeHPOnCuh6XurmRwNS8iNKkYYVeyIUmDR
- zpEw==
-X-Gm-Message-State: AJIora9YOgAx1x9+4Qr0bS0YaJ/QtSOW5SNU1dTq61DoBXqOporynNuf
- 1jADQU3GAB3zCtpmQuPRDRkW0jn+TlkrmrQqFnar6A==
-X-Received: by 2002:a17:907:da5:b0:726:2a4d:be69 with SMTP id
- go37-20020a1709070da500b007262a4dbe69mr10556994ejc.208.1656616739535; Thu, 30
- Jun 2022 12:18:59 -0700 (PDT)
+ h=x-gm-message-state:from:to:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=VgPb1Tkc0n0TFxZ2n6JlaR4U9pn5OgDJfIFcTGqpVVU=;
+ b=1C5fOp+WzEvpFVSGcWlbC1kDHvK81Dm4kCsEdSNctQoiN+34Ia6cQ9wXuKaNYiR/0z
+ lvRSC1m6aodbXYs0qAyodpmYd6zCeZUsiN/6tP1duF3cq3Q+gQ2nyAVxjwDl4Ld7dH0H
+ L+D9xqE02ZTDWYL7hewRN23igEIlFlfgQ8K02Pr46K4mkyTLC0uE5ljys6PBnyOBvAnJ
+ 4J0emCMOyVJezpogQNM/3z8qrpQWPP4ML0KdWw5ZHJUuZZV+z+VepYJFKCMd1pXJ/yRN
+ eW4j4YztmYNVUHeNijACRllnu/aMiXZALZEAIERbTi16s8nWq43rzubT3fjcbCZiUkhg
+ bg3g==
+X-Gm-Message-State: AJIora9A3p7F/9Grvwibu2flKWKxMD6qTt4WsOeg9Etp1vVfS6v+BM4L
+ JyQrjubN7Mrpv6UCxCaaxE4K8w==
+X-Received: by 2002:a05:6000:1705:b0:21b:bcff:39d3 with SMTP id
+ n5-20020a056000170500b0021bbcff39d3mr10032630wrc.502.1656618081340; 
+ Thu, 30 Jun 2022 12:41:21 -0700 (PDT)
+Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
+ by smtp.gmail.com with ESMTPSA id
+ m2-20020adffa02000000b0021d163daeb0sm13200228wrr.108.2022.06.30.12.41.20
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 30 Jun 2022 12:41:20 -0700 (PDT)
+From: Peter Maydell <peter.maydell@linaro.org>
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Subject: [PATCH 1/5] target/arm: Fix code style issues in debug helper
+ functions
+Date: Thu, 30 Jun 2022 20:41:12 +0100
+Message-Id: <20220630194116.3438513-2-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20220630194116.3438513-1-peter.maydell@linaro.org>
+References: <20220630194116.3438513-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
-References: <20220630045133.32251-1-me@pjd.dev>
- <20220630045133.32251-9-me@pjd.dev>
-In-Reply-To: <20220630045133.32251-9-me@pjd.dev>
-From: Titus Rwantare <titusr@google.com>
-Date: Thu, 30 Jun 2022 12:18:23 -0700
-Message-ID: <CAMvPwGqd1tpkY7=atXUEx7tWwQjhDN=PAcnAirjtpYU4YRDj8A@mail.gmail.com>
-Subject: Re: [PATCH v3 08/14] hw/i2c/pmbus: Add idle state to return 0xff's
-To: me@pjd.dev
-Cc: clg@kaod.org, peter.maydell@linaro.org, andrew@aj.id.au, joel@jms.id.au, 
- cminyard@mvista.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org, 
- zhdaniel@fb.com, pdel@fb.com
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::631;
- envelope-from=titusr@google.com; helo=mail-ej1-x631.google.com
-X-Spam_score_int: -175
-X-Spam_score: -17.6
-X-Spam_bar: -----------------
-X-Spam_report: (-17.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- ENV_AND_HDR_SPF_MATCH=-0.5, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01, USER_IN_DEF_DKIM_WL=-7.5,
- USER_IN_DEF_SPF_WL=-7.5 autolearn=ham autolearn_force=no
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::432;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x432.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01,
+ T_SPF_HELO_TEMPERROR=0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: lRvfU8p3NHSz
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: PK/CevOttkpR
 
-On Wed, 29 Jun 2022 at 21:52, Peter Delevoryas <me@pjd.dev> wrote:
->
-> From: Peter Delevoryas <pdel@fb.com>
->
-> Signed-off-by: Peter Delevoryas <pdel@fb.com>
-> ---
->  hw/i2c/pmbus_device.c         | 9 +++++++++
->  include/hw/i2c/pmbus_device.h | 7 +++++++
->  2 files changed, 16 insertions(+)
->
-> diff --git a/hw/i2c/pmbus_device.c b/hw/i2c/pmbus_device.c
-> index 62885fa6a1..f89fea65f3 100644
-> --- a/hw/i2c/pmbus_device.c
-> +++ b/hw/i2c/pmbus_device.c
-> @@ -261,6 +261,11 @@ void pmbus_check_limits(PMBusDevice *pmdev)
->      }
->  }
->
-> +void pmbus_idle(PMBusDevice *pmdev)
-> +{
-> +    pmdev->code = PMBUS_IDLE_STATE;
-> +}
-> +
->  /* assert the status_cml error upon receipt of malformed command */
->  static void pmbus_cml_error(PMBusDevice *pmdev)
->  {
-> @@ -984,6 +989,10 @@ static uint8_t pmbus_receive_byte(SMBusDevice *smd)
->          }
->          break;
->
-> +    case PMBUS_IDLE_STATE:
-> +        pmbus_send8(pmdev, PMBUS_ERR_BYTE);
-> +        break;
-> +
->      case PMBUS_CLEAR_FAULTS:              /* Send Byte */
->      case PMBUS_PAGE_PLUS_WRITE:           /* Block Write-only */
->      case PMBUS_STORE_DEFAULT_ALL:         /* Send Byte */
-> diff --git a/include/hw/i2c/pmbus_device.h b/include/hw/i2c/pmbus_device.h
-> index 0f4d6b3fad..93f5d57c9d 100644
-> --- a/include/hw/i2c/pmbus_device.h
-> +++ b/include/hw/i2c/pmbus_device.h
-> @@ -155,6 +155,7 @@ enum pmbus_registers {
->      PMBUS_MFR_MAX_TEMP_1            = 0xC0, /* R/W word */
->      PMBUS_MFR_MAX_TEMP_2            = 0xC1, /* R/W word */
->      PMBUS_MFR_MAX_TEMP_3            = 0xC2, /* R/W word */
-> +    PMBUS_IDLE_STATE                = 0xFF,
->  };
->
->  /* STATUS_WORD */
-> @@ -527,6 +528,12 @@ int pmbus_page_config(PMBusDevice *pmdev, uint8_t page_index, uint64_t flags);
->   */
->  void pmbus_check_limits(PMBusDevice *pmdev);
->
-> +/**
-> + * Enter an idle state where only the PMBUS_ERR_BYTE will be returned
-> + * indefinitely until a new command is issued.
-> + */
-> +void pmbus_idle(PMBusDevice *pmdev);
-> +
->  extern const VMStateDescription vmstate_pmbus_device;
->
->  #define VMSTATE_PMBUS_DEVICE(_field, _state) {                       \
-> --
-> 2.37.0
->
+Before moving debug system register helper functions to a
+different file, fix the code style issues (mostly block
+comment syntax) so checkpatch doesn't complain about the
+code-motion patch.
 
-Reviewed-by: Titus Rwantare <titusr@google.com>
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
+ target/arm/helper.c | 58 +++++++++++++++++++++++++++++----------------
+ 1 file changed, 38 insertions(+), 20 deletions(-)
+
+diff --git a/target/arm/helper.c b/target/arm/helper.c
+index f6dcb1a1152..1c7ec2f8678 100644
+--- a/target/arm/helper.c
++++ b/target/arm/helper.c
+@@ -307,7 +307,8 @@ static uint64_t arm_mdcr_el2_eff(CPUARMState *env)
+     return arm_is_el2_enabled(env) ? env->cp15.mdcr_el2 : 0;
+ }
+ 
+-/* Check for traps to "powerdown debug" registers, which are controlled
++/*
++ * Check for traps to "powerdown debug" registers, which are controlled
+  * by MDCR.TDOSA
+  */
+ static CPAccessResult access_tdosa(CPUARMState *env, const ARMCPRegInfo *ri,
+@@ -327,7 +328,8 @@ static CPAccessResult access_tdosa(CPUARMState *env, const ARMCPRegInfo *ri,
+     return CP_ACCESS_OK;
+ }
+ 
+-/* Check for traps to "debug ROM" registers, which are controlled
++/*
++ * Check for traps to "debug ROM" registers, which are controlled
+  * by MDCR_EL2.TDRA for EL2 but by the more general MDCR_EL3.TDA for EL3.
+  */
+ static CPAccessResult access_tdra(CPUARMState *env, const ARMCPRegInfo *ri,
+@@ -347,7 +349,8 @@ static CPAccessResult access_tdra(CPUARMState *env, const ARMCPRegInfo *ri,
+     return CP_ACCESS_OK;
+ }
+ 
+-/* Check for traps to general debug registers, which are controlled
++/*
++ * Check for traps to general debug registers, which are controlled
+  * by MDCR_EL2.TDA for EL2 and MDCR_EL3.TDA for EL3.
+  */
+ static CPAccessResult access_tda(CPUARMState *env, const ARMCPRegInfo *ri,
+@@ -5982,7 +5985,8 @@ static CPAccessResult ctr_el0_access(CPUARMState *env, const ARMCPRegInfo *ri,
+ static void oslar_write(CPUARMState *env, const ARMCPRegInfo *ri,
+                         uint64_t value)
+ {
+-    /* Writes to OSLAR_EL1 may update the OS lock status, which can be
++    /*
++     * Writes to OSLAR_EL1 may update the OS lock status, which can be
+      * read via a bit in OSLSR_EL1.
+      */
+     int oslock;
+@@ -5997,7 +6001,8 @@ static void oslar_write(CPUARMState *env, const ARMCPRegInfo *ri,
+ }
+ 
+ static const ARMCPRegInfo debug_cp_reginfo[] = {
+-    /* DBGDRAR, DBGDSAR: always RAZ since we don't implement memory mapped
++    /*
++     * DBGDRAR, DBGDSAR: always RAZ since we don't implement memory mapped
+      * debug components. The AArch64 version of DBGDRAR is named MDRAR_EL1;
+      * unlike DBGDRAR it is never accessible from EL0.
+      * DBGDSAR is deprecated and must RAZ from v8 anyway, so it has no AArch64
+@@ -6052,21 +6057,24 @@ static const ARMCPRegInfo debug_cp_reginfo[] = {
+       .cp = 14, .opc0 = 2, .opc1 = 0, .crn = 1, .crm = 3, .opc2 = 4,
+       .access = PL1_RW, .accessfn = access_tdosa,
+       .type = ARM_CP_NOP },
+-    /* Dummy DBGVCR: Linux wants to clear this on startup, but we don't
++    /*
++     * Dummy DBGVCR: Linux wants to clear this on startup, but we don't
+      * implement vector catch debug events yet.
+      */
+     { .name = "DBGVCR",
+       .cp = 14, .opc1 = 0, .crn = 0, .crm = 7, .opc2 = 0,
+       .access = PL1_RW, .accessfn = access_tda,
+       .type = ARM_CP_NOP },
+-    /* Dummy DBGVCR32_EL2 (which is only for a 64-bit hypervisor
++    /*
++     * Dummy DBGVCR32_EL2 (which is only for a 64-bit hypervisor
+      * to save and restore a 32-bit guest's DBGVCR)
+      */
+     { .name = "DBGVCR32_EL2", .state = ARM_CP_STATE_AA64,
+       .opc0 = 2, .opc1 = 4, .crn = 0, .crm = 7, .opc2 = 0,
+       .access = PL2_RW, .accessfn = access_tda,
+       .type = ARM_CP_NOP | ARM_CP_EL3_NO_EL2_KEEP },
+-    /* Dummy MDCCINT_EL1, since we don't implement the Debug Communications
++    /*
++     * Dummy MDCCINT_EL1, since we don't implement the Debug Communications
+      * Channel but Linux may try to access this register. The 32-bit
+      * alias is DBGDCCINT.
+      */
+@@ -6079,9 +6087,9 @@ static const ARMCPRegInfo debug_cp_reginfo[] = {
+ static const ARMCPRegInfo debug_lpae_cp_reginfo[] = {
+     /* 64 bit access versions of the (dummy) debug registers */
+     { .name = "DBGDRAR", .cp = 14, .crm = 1, .opc1 = 0,
+-      .access = PL0_R, .type = ARM_CP_CONST|ARM_CP_64BIT, .resetvalue = 0 },
++      .access = PL0_R, .type = ARM_CP_CONST | ARM_CP_64BIT, .resetvalue = 0 },
+     { .name = "DBGDSAR", .cp = 14, .crm = 2, .opc1 = 0,
+-      .access = PL0_R, .type = ARM_CP_CONST|ARM_CP_64BIT, .resetvalue = 0 },
++      .access = PL0_R, .type = ARM_CP_CONST | ARM_CP_64BIT, .resetvalue = 0 },
+ };
+ 
+ /*
+@@ -6496,13 +6504,15 @@ void hw_watchpoint_update(ARMCPU *cpu, int n)
+         break;
+     }
+ 
+-    /* Attempts to use both MASK and BAS fields simultaneously are
++    /*
++     * Attempts to use both MASK and BAS fields simultaneously are
+      * CONSTRAINED UNPREDICTABLE; we opt to ignore BAS in this case,
+      * thus generating a watchpoint for every byte in the masked region.
+      */
+     mask = FIELD_EX64(wcr, DBGWCR, MASK);
+     if (mask == 1 || mask == 2) {
+-        /* Reserved values of MASK; we must act as if the mask value was
++        /*
++         * Reserved values of MASK; we must act as if the mask value was
+          * some non-reserved value, or as if the watchpoint were disabled.
+          * We choose the latter.
+          */
+@@ -6510,7 +6520,8 @@ void hw_watchpoint_update(ARMCPU *cpu, int n)
+     } else if (mask) {
+         /* Watchpoint covers an aligned area up to 2GB in size */
+         len = 1ULL << mask;
+-        /* If masked bits in WVR are not zero it's CONSTRAINED UNPREDICTABLE
++        /*
++         * If masked bits in WVR are not zero it's CONSTRAINED UNPREDICTABLE
+          * whether the watchpoint fires when the unmasked bits match; we opt
+          * to generate the exceptions.
+          */
+@@ -6521,7 +6532,8 @@ void hw_watchpoint_update(ARMCPU *cpu, int n)
+         int basstart;
+ 
+         if (extract64(wvr, 2, 1)) {
+-            /* Deprecated case of an only 4-aligned address. BAS[7:4] are
++            /*
++             * Deprecated case of an only 4-aligned address. BAS[7:4] are
+              * ignored, and BAS[3:0] define which bytes to watch.
+              */
+             bas &= 0xf;
+@@ -6532,7 +6544,8 @@ void hw_watchpoint_update(ARMCPU *cpu, int n)
+             return;
+         }
+ 
+-        /* The BAS bits are supposed to be programmed to indicate a contiguous
++        /*
++         * The BAS bits are supposed to be programmed to indicate a contiguous
+          * range of bytes. Otherwise it is CONSTRAINED UNPREDICTABLE whether
+          * we fire for each byte in the word/doubleword addressed by the WVR.
+          * We choose to ignore any non-zero bits after the first range of 1s.
+@@ -6551,7 +6564,8 @@ void hw_watchpoint_update_all(ARMCPU *cpu)
+     int i;
+     CPUARMState *env = &cpu->env;
+ 
+-    /* Completely clear out existing QEMU watchpoints and our array, to
++    /*
++     * Completely clear out existing QEMU watchpoints and our array, to
+      * avoid possible stale entries following migration load.
+      */
+     cpu_watchpoint_remove_all(CPU(cpu), BP_CPU);
+@@ -6669,7 +6683,8 @@ void hw_breakpoint_update(ARMCPU *cpu, int n)
+     case 11: /* linked context ID and VMID match (reserved if no EL2) */
+     case 3: /* linked context ID match */
+     default:
+-        /* We must generate no events for Linked context matches (unless
++        /*
++         * We must generate no events for Linked context matches (unless
+          * they are linked to by some other bp/wp, which is handled in
+          * updates for the linking bp/wp). We choose to also generate no events
+          * for reserved values.
+@@ -6685,7 +6700,8 @@ void hw_breakpoint_update_all(ARMCPU *cpu)
+     int i;
+     CPUARMState *env = &cpu->env;
+ 
+-    /* Completely clear out existing QEMU breakpoints and our array, to
++    /*
++     * Completely clear out existing QEMU breakpoints and our array, to
+      * avoid possible stale entries following migration load.
+      */
+     cpu_breakpoint_remove_all(CPU(cpu), BP_CPU);
+@@ -6712,7 +6728,8 @@ static void dbgbcr_write(CPUARMState *env, const ARMCPRegInfo *ri,
+     ARMCPU *cpu = env_archcpu(env);
+     int i = ri->crm;
+ 
+-    /* BAS[3] is a read-only copy of BAS[2], and BAS[1] a read-only
++    /*
++     * BAS[3] is a read-only copy of BAS[2], and BAS[1] a read-only
+      * copy of BAS[0].
+      */
+     value = deposit64(value, 6, 1, extract64(value, 5, 1));
+@@ -6724,7 +6741,8 @@ static void dbgbcr_write(CPUARMState *env, const ARMCPRegInfo *ri,
+ 
+ static void define_debug_regs(ARMCPU *cpu)
+ {
+-    /* Define v7 and v8 architectural debug registers.
++    /*
++     * Define v7 and v8 architectural debug registers.
+      * These are just dummy implementations for now.
+      */
+     int i;
+-- 
+2.25.1
+

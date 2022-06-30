@@ -1,72 +1,74 @@
-Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp261194lft;
-        Thu, 30 Jun 2022 04:37:46 -0700 (PDT)
-X-Google-Smtp-Source: AGRyM1ujnHN4/RNfKsn+jQIsSgyRimGsmSZJQ0lK2N4dH5QROvo77QN+4xoswf6WamndsA8SQJ7v
-X-Received: by 2002:a05:622a:1651:b0:31d:3248:ad77 with SMTP id y17-20020a05622a165100b0031d3248ad77mr948640qtj.213.1656589065916;
-        Thu, 30 Jun 2022 04:37:45 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1656589065; cv=none;
+Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp261487lft;
+        Thu, 30 Jun 2022 04:38:12 -0700 (PDT)
+X-Google-Smtp-Source: AGRyM1vUzOiwQfTZ2YB6yZzR25qHz6bfHUfsfJHETYqeYELnodpQFFBoGLp0AWeaRmz4IYgWPq+B
+X-Received: by 2002:ac8:5808:0:b0:31b:ef47:38b3 with SMTP id g8-20020ac85808000000b0031bef4738b3mr6787435qtg.510.1656589092546;
+        Thu, 30 Jun 2022 04:38:12 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1656589092; cv=none;
         d=google.com; s=arc-20160816;
-        b=qYkzGli1bFHUrQTU/8GsvfXxHkf5r6GjcU05Hgwg5EEhfVHNFSlsMUymKAQJzsUNH2
-         ziXoo7uMgR9peTSXLr1vkN1OyNZ1ClpijXPM50A++H3sOH2R3MoZeQSoVB0Wk+jWyRI/
-         yGsYc0MbMs1t8wRx+m01rB+jK0b96w5VO3NRMjjMBKvswR0nrLJF/GhcZ7ruIVaPRNsj
-         hkK4mBH/We01tTsbqfeA79Ju1a3rVtJHkFsRSWMZG0eG5Lm5d4PzHqQzq2Ukfy1UtMq3
-         f2FkX5FnbKd5yTHRyvts0eohhoORNMvnYmlnjBwkeCnoIheGGQysoHULaRbsO+xwtQSV
-         WSew==
+        b=jC6a8FnJNOfBjKV45p6TOlaTYR+EQM3J3hXRTBge9LLoMdCRunHzKSUAy9GRStjV+C
+         uh5vmN1JJkEP0zj+nXKC2ShaXCpG4XBRMPOj8Z6Ecq1tfZkJP0bGAbq+WSN7jcLvdW1b
+         Yh7JoUAXdPoo3Q0Qh2OUxYeaUt4ZInP4LoF8QWWMKc0gQJBuSCAtIQts+6pjkbF8bC8f
+         TfqPzfMZuoz3xqyBQXO7Hfbz+DF55WG0gIPAmihwxZYjRGVJmQDdYVXPn63IyZsZ9yCb
+         QmxH0r2+NMAUjeH9yR/U+CWWcfPuZ9csKK0995MUySvvz/5RkkuCqkauGJm8zcHIhqvW
+         cs+g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from;
-        bh=zwYEaLRpeDc3y/fqbXVBTNA7bIOw7AZwFsNX6se5P1w=;
-        b=ulHDEens0g/VFA1qhAxjK3FnSkeXJVn4JwPUsvUhj9b0aNB2H7faBE4+CjCAJ3YaH3
-         7Nj/SZ2VMlEMZwMcNL0oY1IyISpFrtN+295b/vFVMl2ml0TIPiRFuCsdsrAZOj7SdX//
-         vTsqn1AeA08Gf2eTGl2pjd6MqP8NwPjvPNazvIrYmlPtUEuDzC2UaOObBW1uvOwIXftE
-         RnBt1m1cNbPiPOcFyWomDy+2bob/UGZyRK80y91v5Vbrigx/MTjA3aivBtGIh6bP2to6
-         5Ur41MJ+2Y0WMT+5w2gpSuySALfVdaE0Hzko7L6l4PyNQCLaMfbuPwy2HfrIeR0VYTtW
-         bIoA==
+        bh=0qgjKyg4UK3nvuNddYz1FaM6R7JuEdjn0y7qkLZHvuY=;
+        b=gOZI003eGdoqN5Z3kP6tCNSbUQdN479qDeLkTLnGHXjlAgL0qPBmfojpz/SsEC0p3+
+         IwObYqSXYnHfaLy5+dTz0akJdZotCcHU3CE4LyqPfl7HPKsVSC7O8Wl854A2U1MVYlwZ
+         +n/8EH6JJRLDe5TMkzCdcDVjxN/tfkYyZwW020aYFHAV7m2obdber29nPrqY1SbdwljP
+         zitQE/GWWBm3BVNSan8Fdmw7Js3r791eQ/7l53pfztRnvz06GMYH0nNUTQfvXSIBU3Lf
+         GnpF/YlFehTFtNY+gEN3szidL6lMcE9jNldzQLeWCgHDKKm0jjqz6YynwM+ELVYV9/27
+         /4uw==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 22-20020ac85756000000b00317cb8ec640si9772522qtx.91.2022.06.30.04.37.45
+        by mx.google.com with ESMTPS id k18-20020a05620a415200b006af18a4d33fsi9386494qko.14.2022.06.30.04.38.12
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 30 Jun 2022 04:37:45 -0700 (PDT)
+        Thu, 30 Jun 2022 04:38:12 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:41998 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:43196 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1o6sUT-00023S-Cs
-	for alex.bennee@linaro.org; Thu, 30 Jun 2022 07:37:45 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33966)
+	id 1o6sUu-0002wm-1n
+	for alex.bennee@linaro.org; Thu, 30 Jun 2022 07:38:12 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:34092)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=N4Bw=XF=kaod.org=clg@ozlabs.org>)
- id 1o6sI7-0008Ct-Cf; Thu, 30 Jun 2022 07:24:59 -0400
-Received: from gandalf.ozlabs.org ([150.107.74.76]:39119)
+ id 1o6sID-0008UL-OK; Thu, 30 Jun 2022 07:25:05 -0400
+Received: from gandalf.ozlabs.org ([150.107.74.76]:42991)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=N4Bw=XF=kaod.org=clg@ozlabs.org>)
- id 1o6sI2-00025Y-3L; Thu, 30 Jun 2022 07:24:59 -0400
-Received: from gandalf.ozlabs.org (gandalf.ozlabs.org [150.107.74.76])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4LYbb859Kpz4xYS;
- Thu, 30 Jun 2022 21:24:52 +1000 (AEST)
+ id 1o6sI7-00024n-Nv; Thu, 30 Jun 2022 07:25:04 -0400
+Received: from gandalf.ozlabs.org (mail.ozlabs.org
+ [IPv6:2404:9400:2221:ea00::3])
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4LYbbG4m2bz4xXD;
+ Thu, 30 Jun 2022 21:24:58 +1000 (AEST)
 Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
  (No client certificate requested)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4LYbb64vG6z4xD5;
- Thu, 30 Jun 2022 21:24:50 +1000 (AEST)
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4LYbbD0FM9z4xD5;
+ Thu, 30 Jun 2022 21:24:55 +1000 (AEST)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>,
  Richard Henderson <richard.henderson@linaro.org>,
+ Maheswara Kurapati <quic_mkurapat@quicinc.com>,
  Jae Hyun Yoo <quic_jaehyoo@quicinc.com>,
+ Titus Rwantare <titusr@google.com>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
-Subject: [PULL 13/27] hw/arm/aspeed: add support for the Qualcomm DC-SCM v1
- board
-Date: Thu, 30 Jun 2022 13:23:57 +0200
-Message-Id: <20220630112411.1474431-14-clg@kaod.org>
+Subject: [PULL 15/27] hw/i2c: pmbus: Page #255 is valid page for read requests.
+Date: Thu, 30 Jun 2022 13:23:59 +0200
+Message-Id: <20220630112411.1474431-16-clg@kaod.org>
 X-Mailer: git-send-email 2.35.3
 In-Reply-To: <20220630112411.1474431-1-clg@kaod.org>
 References: <20220630112411.1474431-1-clg@kaod.org>
@@ -95,87 +97,63 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 2+//wOAg+Mu/
+X-TUID: dNFBfQFcC6hR
 
-From: Jae Hyun Yoo <quic_jaehyoo@quicinc.com>
+From: Maheswara Kurapati <quic_mkurapat@quicinc.com>
 
-Add qcom-dc-scm-v1 board support.
+Current implementation of the pmbus core driver treats the read request
+for page 255 as invalid request and sets the invalid command bit (bit 7)
+in the STATUS_CML register. As per the PMBus specification it is a valid
+request.
 
+Refer to the PMBus specification, revision 1.3.1, section 11.10 PAGE,
+on the page 58:
+  "Setting the PAGE to FFh means that all subsequent comands are to be
+   applied to all outputs.
+
+   Some commands, such as READ_TEMPERATURE, may use a common sensor but
+   be available on all pages of a device. Such implementations are the
+   decision of each device manufacturer or are specified in a PMBus
+   Application Profile. Consult the manufacturer's documents or the
+   Application Profile Specification as needed."
+
+For e.g.,
+The VOUT_MODE is a valid command for page 255 for maxim 31785 device.
+refer to Table 1. PMBus Command Codes on page 14 in the datasheet.
+https://datasheets.maximintegrated.com/en/ds/MAX31785.pdf
+
+Fixes: 38870253f1d1 ("hw/i2c: pmbus: fix error returns and guard against out of range accesses")
+
+Signed-off-by: Maheswara Kurapati <quic_mkurapat@quicinc.com>
 Signed-off-by: Jae Hyun Yoo <quic_jaehyoo@quicinc.com>
+Reviewed-by: Titus Rwantare <titusr@google.com>
 Reviewed-by: Cédric Le Goater <clg@kaod.org>
-Message-Id: <20220627154703.148943-2-quic_jaehyoo@quicinc.com>
+Message-Id: <20220627154703.148943-4-quic_jaehyoo@quicinc.com>
 Signed-off-by: Cédric Le Goater <clg@kaod.org>
 ---
- hw/arm/aspeed.c | 35 +++++++++++++++++++++++++++++++++++
- 1 file changed, 35 insertions(+)
+ hw/i2c/pmbus_device.c | 6 +-----
+ 1 file changed, 1 insertion(+), 5 deletions(-)
 
-diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
-index b43dc0fda853..6e4b287fd31b 100644
---- a/hw/arm/aspeed.c
-+++ b/hw/arm/aspeed.c
-@@ -174,6 +174,10 @@ struct AspeedMachineState {
- #define BLETCHLEY_BMC_HW_STRAP1 AST2600_EVB_HW_STRAP1
- #define BLETCHLEY_BMC_HW_STRAP2 AST2600_EVB_HW_STRAP2
+diff --git a/hw/i2c/pmbus_device.c b/hw/i2c/pmbus_device.c
+index 62885fa6a15e..749a33af827b 100644
+--- a/hw/i2c/pmbus_device.c
++++ b/hw/i2c/pmbus_device.c
+@@ -284,14 +284,10 @@ static uint8_t pmbus_receive_byte(SMBusDevice *smd)
  
-+/* Qualcomm DC-SCM hardware value */
-+#define QCOM_DC_SCM_V1_BMC_HW_STRAP1  0x00000000
-+#define QCOM_DC_SCM_V1_BMC_HW_STRAP2  0x00000041
-+
- #define AST_SMP_MAILBOX_BASE            0x1e6e2180
- #define AST_SMP_MBOX_FIELD_ENTRY        (AST_SMP_MAILBOX_BASE + 0x0)
- #define AST_SMP_MBOX_FIELD_GOSIGN       (AST_SMP_MAILBOX_BASE + 0x4)
-@@ -951,6 +955,13 @@ static void fby35_i2c_init(AspeedMachineState *bmc)
+     /*
+      * Reading from all pages will return the value from page 0,
+-     * this is unspecified behaviour in general.
++     * means that all subsequent commands are to be applied to all output.
       */
- }
- 
-+static void qcom_dc_scm_bmc_i2c_init(AspeedMachineState *bmc)
-+{
-+    AspeedSoCState *soc = &bmc->soc;
-+
-+    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 15), "tmp105", 0x4d);
-+}
-+
- static bool aspeed_get_mmio_exec(Object *obj, Error **errp)
- {
-     return ASPEED_MACHINE(obj)->mmio_exec;
-@@ -1398,6 +1409,26 @@ static void aspeed_minibmc_machine_ast1030_evb_class_init(ObjectClass *oc,
-     amc->macs_mask = 0;
- }
- 
-+static void aspeed_machine_qcom_dc_scm_v1_class_init(ObjectClass *oc,
-+                                                     void *data)
-+{
-+    MachineClass *mc = MACHINE_CLASS(oc);
-+    AspeedMachineClass *amc = ASPEED_MACHINE_CLASS(oc);
-+
-+    mc->desc       = "Qualcomm DC-SCM V1 BMC (Cortex A7)";
-+    amc->soc_name  = "ast2600-a3";
-+    amc->hw_strap1 = QCOM_DC_SCM_V1_BMC_HW_STRAP1;
-+    amc->hw_strap2 = QCOM_DC_SCM_V1_BMC_HW_STRAP2;
-+    amc->fmc_model = "n25q512a";
-+    amc->spi_model = "n25q512a";
-+    amc->num_cs    = 2;
-+    amc->macs_mask = ASPEED_MAC2_ON | ASPEED_MAC3_ON;
-+    amc->i2c_init  = qcom_dc_scm_bmc_i2c_init;
-+    mc->default_ram_size = 1 * GiB;
-+    mc->default_cpus = mc->min_cpus = mc->max_cpus =
-+        aspeed_soc_num_cpus(amc->soc_name);
-+};
-+
- static const TypeInfo aspeed_machine_types[] = {
-     {
-         .name          = MACHINE_TYPE_NAME("palmetto-bmc"),
-@@ -1435,6 +1466,10 @@ static const TypeInfo aspeed_machine_types[] = {
-         .name          = MACHINE_TYPE_NAME("g220a-bmc"),
-         .parent        = TYPE_ASPEED_MACHINE,
-         .class_init    = aspeed_machine_g220a_class_init,
-+    }, {
-+        .name          = MACHINE_TYPE_NAME("qcom-dc-scm-v1-bmc"),
-+        .parent        = TYPE_ASPEED_MACHINE,
-+        .class_init    = aspeed_machine_qcom_dc_scm_v1_class_init,
-     }, {
-         .name          = MACHINE_TYPE_NAME("fp5280g2-bmc"),
-         .parent        = TYPE_ASPEED_MACHINE,
+     if (pmdev->page == PB_ALL_PAGES) {
+         index = 0;
+-        qemu_log_mask(LOG_GUEST_ERROR,
+-                      "%s: tried to read from all pages\n",
+-                      __func__);
+-        pmbus_cml_error(pmdev);
+     } else if (pmdev->page > pmdev->num_pages - 1) {
+         qemu_log_mask(LOG_GUEST_ERROR,
+                       "%s: page %d is out of range\n",
 -- 
 2.35.3
 

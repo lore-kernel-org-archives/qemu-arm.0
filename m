@@ -1,246 +1,188 @@
-Return-Path: <alex.bennee@linaro.org>
-Received: from zen.linaroharston ([51.148.130.216])
-        by smtp.gmail.com with ESMTPSA id u5-20020a170906068500b00703671ebe65sm7931903ejb.198.2022.06.29.11.24.21
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 29 Jun 2022 11:24:21 -0700 (PDT)
-Received: from zen (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 040B91FFB7;
-	Wed, 29 Jun 2022 19:24:21 +0100 (BST)
-References: <20220623102617.2164175-1-pdel@fb.com>
- <20220623102617.2164175-13-pdel@fb.com>
- <e5f51f14-fe75-0d55-6588-a3ca2565f760@kaod.org>
- <EC44C0BD-7BC0-4BDE-9A41-CB1EAA90EC87@fb.com>
- <e07ec4fe-6968-b19a-e649-298a9aaccba5@kaod.org>
- <07128acf-329a-f372-c48c-0c3cb498d3d0@kaod.org>
- <87zghvh7rt.fsf@linaro.org>
- <8072cd96-a032-55f2-0417-1989a7bbeca0@kaod.org>
-User-agent: mu4e 1.7.27; emacs 28.1.50
-From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: =?utf-8?Q?C=C3=A9dric?= Le Goater <clg@kaod.org>
-Cc: Peter Delevoryas <pdel@fb.com>, Peter Maydell
- <peter.maydell@linaro.org>, Andrew Jeffery <andrew@aj.id.au>, Joel Stanley
- <joel@jms.id.au>, "pbonzini@redhat.com" <pbonzini@redhat.com>,
- "berrange@redhat.com" <berrange@redhat.com>, "eduardo@habkost.net"
- <eduardo@habkost.net>, "marcel.apfelbaum@gmail.com"
- <marcel.apfelbaum@gmail.com>, "richard.henderson@linaro.org"
- <richard.henderson@linaro.org>, Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?=
- <f4bug@amsat.org>,
- "ani@anisinha.ca" <ani@anisinha.ca>, Cameron Esfahani via
- <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>
-Subject: Re: [PATCH 12/14] aspeed: Make aspeed_board_init_flashes public
-Date: Wed, 29 Jun 2022 19:24:02 +0100
-In-reply-to: <8072cd96-a032-55f2-0417-1989a7bbeca0@kaod.org>
-Message-ID: <87edz7gwff.fsf@linaro.org>
+Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp125737lft;
+        Thu, 30 Jun 2022 00:52:03 -0700 (PDT)
+X-Google-Smtp-Source: AGRyM1tOcSEynTCo9LC6tx7HhNWpv/cSR2k7k/eyxEKOYKOYcZDFghpijE7B4g7wJ3YYIm94M5AM
+X-Received: by 2002:a05:6214:dae:b0:472:bcab:92e0 with SMTP id h14-20020a0562140dae00b00472bcab92e0mr183408qvh.95.1656575523592;
+        Thu, 30 Jun 2022 00:52:03 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1656575523; cv=none;
+        d=google.com; s=arc-20160816;
+        b=bkac2HsmiC7LUsVSp7opNfeAhxXghyBPhl0Lt/qtIbY6fOWRqUnYVfXiIrIjxd7WId
+         /x75CMFHzOllgd359Qj27A/3hdgfiHdU3vSHXgnPHkIIBjD5HtiIVkrKLHU9cMyzb6W0
+         k/PE3v4u4YyjEpECElamQEiy2RCm7FZRYxwLR4t5V8fYjw5DerUl1fzHS6NJa9B3b2dP
+         c8s+qjHjzS9MMzcB4R8LgVKaTUcJiQOrzVXdEQGNw9NvntDu3tta5hfDvJC5U8mQtrpW
+         is6MDSIEnA1qgPeEGcVieDQR16YSb2TmdF5wb8G3wPsT18YOVEGs554XLzHg1weCvE9V
+         +HMg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:references:cc:to:content-language:subject
+         :user-agent:mime-version:date:message-id;
+        bh=IXxUkYOGUsSwz+95gzHeBykSWe9OIAzbbsgQesHuufk=;
+        b=ZywxeplzOtpwdLwolfUO9+uRKipYGvp3L2+CACX0HNig1GQpubdK4dr+X5dvQIeO5p
+         jIyFZMxqi68jP+KmvSkD/6P0TaUfJrlYj0tuDKOq3c0fKtnWhGs4oOx74PzC/Fus1xJ+
+         J/xCsfS+3a8+1oDNf3cuzMjeku/R9AFO2wQXYnBxJy1ICm6nYvqftkhh354wRyei19Zf
+         JWV9aqu4z5W6ggmIqmaqKxVhbhy2AqZy2Xgxdbgeyz4K7k+pd5v3ei8XXDnZKXFIrRzG
+         YwEXupdmCD7Qzzd9JpkJVoHEm4NLm9Re4uu9EYQmmnE7SXU8a6MyeYjMLCDWpGKSFjaj
+         NoCQ==
+ARC-Authentication-Results: i=1; mx.google.com;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id i19-20020ac85e53000000b00304bda024a2si10726830qtx.744.2022.06.30.00.52.03
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 30 Jun 2022 00:52:03 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+Authentication-Results: mx.google.com;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:59150 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1o6oy3-0006J9-2Y
+	for alex.bennee@linaro.org; Thu, 30 Jun 2022 03:52:03 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:57222)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1o6owl-0005YL-4v
+ for qemu-devel@nongnu.org; Thu, 30 Jun 2022 03:50:43 -0400
+Received: from 8.mo548.mail-out.ovh.net ([46.105.45.231]:49617)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1o6owi-0002sH-PO
+ for qemu-devel@nongnu.org; Thu, 30 Jun 2022 03:50:42 -0400
+Received: from mxplan5.mail.ovh.net (unknown [10.109.143.188])
+ by mo548.mail-out.ovh.net (Postfix) with ESMTPS id DC71F205FA;
+ Thu, 30 Jun 2022 07:50:35 +0000 (UTC)
+Received: from kaod.org (37.59.142.104) by DAG4EX1.mxp5.local (172.16.2.31)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.9; Thu, 30 Jun
+ 2022 09:50:34 +0200
+Authentication-Results: garm.ovh; auth=pass
+ (GARM-104R0058170a9a4-da44-4340-b2a8-5a8177b834d5,
+ 40551C6C823FDDA91B74F5D58A080B55BE22893A) smtp.auth=clg@kaod.org
+X-OVh-ClientIp: 82.64.250.170
+Message-ID: <8b0529db-d968-3aff-576a-d8dbf85b9319@kaod.org>
+Date: Thu, 30 Jun 2022 09:50:28 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-TUID: g3WeP68n4+KF
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.9.0
+Subject: Re: [PATCH v3 00/14] hw/i2c/aspeed: I2C slave mode DMA RX w/ new regs
+Content-Language: en-US
+To: Peter Delevoryas <me@pjd.dev>
+CC: <peter.maydell@linaro.org>, <andrew@aj.id.au>, <joel@jms.id.au>,
+ <cminyard@mvista.com>, <titusr@google.com>, <qemu-devel@nongnu.org>,
+ <qemu-arm@nongnu.org>, <zhdaniel@fb.com>, <pdel@fb.com>
+References: <20220630045133.32251-1-me@pjd.dev>
+From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
+In-Reply-To: <20220630045133.32251-1-me@pjd.dev>
+Content-Type: text/plain; charset="UTF-8"; format=flowed
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [37.59.142.104]
+X-ClientProxiedBy: DAG8EX1.mxp5.local (172.16.2.71) To DAG4EX1.mxp5.local
+ (172.16.2.31)
+X-Ovh-Tracer-GUID: 436e88a7-6184-414f-b02a-5d267e6bc3a7
+X-Ovh-Tracer-Id: 6181753439770545074
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: 0
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvfedrudehtddguddviecutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemucehtddtnecunecujfgurhepkfffgggfuffvvehfhfgjtgfgihesthejredttdefjeenucfhrhhomhepveorughrihgtpgfnvggpifhorghtvghruceotghlgheskhgrohgurdhorhhgqeenucggtffrrghtthgvrhhnpeelleeiiefgkeefiedtvdeigeetueetkeffkeelheeugfetteegvdekgfehgffgkeenucfkpheptddrtddrtddrtddpfeejrdehledrudegvddruddtgeenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhhouggvpehsmhhtphhouhhtpdhhvghlohepmhigphhlrghnhedrmhgrihhlrdhovhhhrdhnvghtpdhinhgvtheptddrtddrtddrtddpmhgrihhlfhhrohhmpegtlhhgsehkrghougdrohhrghdpnhgspghrtghpthhtohepuddprhgtphhtthhopehpuggvlhesfhgsrdgtohhmpdfovfetjfhoshhtpehmohehgeek
+Received-SPF: pass client-ip=46.105.45.231; envelope-from=clg@kaod.org;
+ helo=8.mo548.mail-out.ovh.net
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: aWHCLd7RYAfB
+
+On 6/30/22 06:51, Peter Delevoryas wrote:
+> From: Peter Delevoryas <pdel@fb.com>
+> 
+> v3:
+> - hw/i2c/pmbus_device:
+>    - Removed commit that resets the out buf.
+>    - Removed IC_DEVICE_ID
+>    - Added commit to allow devices to move to an idle state that
+>      avoids enqueuing excess data into the out buf.
+> - hw/sensor/isl_pmbus_vr:
+>    - Added IC_DEVICE_ID commit just for voltage regulators.
+>    - Added ISL69259 with an IC_DEVICE_ID.
+> - hw/misc/aspeed_peci:
+>    - Moved registers from .h to .c
+>    - Replaced guest_error on interrupt disable case with trace
+>      for all interrupts (not just when they're disabled).
+>    - Removed leftover qemu_irq_raise
+
+I have taken patches 1-7,11 for the next Aspeed PR.
+
+Thanks,
+
+C.
 
 
-C=C3=A9dric Le Goater <clg@kaod.org> writes:
-
-> On 6/29/22 16:14, Alex Benn=C3=A9e wrote:
->> C=C3=A9dric Le Goater <clg@kaod.org> writes:
->>=20
->>> On 6/24/22 18:50, C=C3=A9dric Le Goater wrote:
->>>> On 6/23/22 20:43, Peter Delevoryas wrote:
->>>>>
->>>>>
->>>>>> On Jun 23, 2022, at 8:09 AM, C=C3=A9dric Le Goater <clg@kaod.org> wr=
-ote:
->>>>>>
->>>>>> On 6/23/22 12:26, Peter Delevoryas wrote:
->>>>>>> Signed-off-by: Peter Delevoryas <pdel@fb.com>
->>>>>>
->>>>>> Let's start simple without flash support. We should be able to
->>>>>> load FW blobs in each CPU address space using loader devices.
->>>>>
->>>>> Actually, I was unable to do this, perhaps because the fb OpenBMC
->>>>> boot sequence is a little weird. I specifically _needed_ to have
->>>>> a flash device which maps the firmware in at 0x2000_0000, because
->>>>> the fb OpenBMC U-Boot SPL jumps to that address to start executing
->>>>> from flash? I think this is also why fb OpenBMC machines can be so sl=
-ow.
->>>>>
->>>>> $ ./build/qemu-system-arm -machine fby35 \
->>>>>  =C2=A0=C2=A0=C2=A0=C2=A0 -device loader,file=3Dfby35.mtd,addr=3D0,cp=
-u-num=3D0 -nographic \
->>>>>  =C2=A0=C2=A0=C2=A0=C2=A0 -d int -drive file=3Dfby35.mtd,format=3Draw=
-,if=3Dmtd
->>>> Ideally we should be booting from the flash device directly using
->>>> the machine option '-M ast2600-evb,execute-in-place=3Dtrue' like HW
->>>> does. Instructions are fetched using SPI transfers. But the amount
->>>> of code generated is tremendous.
->> Yeah because there is a potential race when reading from HW so we
->> throw
->> away TB's after executing them because we have no way of knowing if it
->> has changed under our feet. See 873d64ac30 (accel/tcg: re-factor non-RAM
->> execution code) which cleaned up this handling.
->>=20
->>>> See some profiling below for a
->>>> run which barely reaches DRAM training in U-Boot.
->>>
->>> Some more profiling on both ast2500 and ast2600 machines shows :
->>>
->>>
->>> * ast2600-evb,execute-in-place=3Dtrue :
->>>
->>> Type               Object  Call site                Wait Time (s)      =
-   Count  Average (us)
->>> -----------------------------------------------------------------------=
-----------------------
->>> BQL mutex  0x564dc03922e0  accel/tcg/cputlb.c:1365       14.21443
->>> 32909927          0.43
->> This is unavoidable as a HW access needs the BQL held so we will go
->> through this cycle every executed instruction.
->> Did I miss why the flash contents are not mapped into the physical
->> address space? Isn't that how it appear to the processor?
->
->
-> There are two modes :
->           if (ASPEED_MACHINE(machine)->mmio_exec) {
->             memory_region_init_alias(boot_rom, NULL, "aspeed.boot_rom",
->                                      &fl->mmio, 0, size);
->             memory_region_add_subregion(get_system_memory(), FIRMWARE_ADD=
-R,
->                                         boot_rom);
->         } else {
->             memory_region_init_rom(boot_rom, NULL, "aspeed.boot_rom",
->                                    size, &error_abort);
->             memory_region_add_subregion(get_system_memory(), FIRMWARE_ADD=
-R,
->                                         boot_rom);
->             write_boot_rom(drive0, FIRMWARE_ADDR, size, &error_abort);
->         }
->
-> The default boot mode uses the ROM. No issue.
->
-> The "execute-in-place=3Dtrue" option creates an alias on the region of
-> the flash contents and each instruction is then fetched from the flash
-> drive with SPI transactions.
->
-> With old FW images, using an older U-boot, the machine boots in a couple
-> of seconds. See the profiling below for a witherspoon-bmc machine using
-> U-Boot 2016.07.
->
->   qemu-system-arm -M witherspoon-bmc,execute-in-place=3Dtrue  -drive file=
-=3D./flash-witherspoon-bmc,format=3Draw,if=3Dmtd -drive file=3D./flash-with=
-erspoon-bmc2,format=3Draw,if=3Dmtd -nographic -nodefaults -snapshot -serial=
- mon:stdio -enable-sync-profile
->   ...
->   U-Boot 2016.07-00040-g8425e96e2e27-dirty (Jun 24 2022 - 23:21:57 +0200)
->             Watchdog enabled
->   DRAM:  496 MiB
->   Flash: 32 MiB
->   In:    serial
->   Out:   serial
->   Err:   serial
->   Net:
->   (qemu) info sync-profile
->   Type               Object  Call site                Wait Time (s)      =
-   Count  Average (us)
->   -----------------------------------------------------------------------=
-----------------------
->   BQL mutex  0x56189610b2e0  accel/tcg/cputlb.c:1365        0.25311      =
-12346237          0.02
->   condvar    0x5618970cf220  softmmu/cpus.c:423             0.05506      =
-       2      27530.78
->   BQL mutex  0x56189610b2e0  util/rcu.c:269                 0.04709      =
-       2      23544.26
->   condvar    0x561896d0fc78  util/thread-pool.c:90          0.01340      =
-      83        161.47
->   condvar    0x56189610b240  softmmu/cpus.c:571             0.00005      =
-       1         54.93
->   condvar    0x56189610b280  softmmu/cpus.c:642             0.00003      =
-       1         32.88
->   BQL mutex  0x56189610b2e0  util/main-loop.c:318           0.00003      =
-      34          0.76
->   mutex      0x561896eade00  tcg/region.c:204               0.00002      =
-     995          0.02
->   rec_mutex  [           2]  util/async.c:682               0.00002      =
-     493          0.03
->   mutex      [           2]  chardev/char.c:118             0.00001      =
-     404          0.03
->   -----------------------------------------------------------------------=
-----------------------
->
->
-> However, with recent U-boots, it takes quite a while to reach DRAM traini=
-ng.
-> Close to a minute. See the profiling below for an ast2500-evb machine usi=
-ng
-> U-Boot 2019.04.
->
->  qemu-system-arm -M ast2500-evb,execute-in-place=3Dtrue  -net nic,macaddr=
-=3DC0:FF:EE:00:00:03,netdev=3Dnet0  -drive file=3D./flash-ast2500-evb,forma=
-t=3Draw,if=3Dmtd  -nographic -nodefaults -snapshot -serial mon:stdio  -enab=
-le-sync-profile
->   qemu-system-arm: warning: Aspeed iBT has no chardev backend
->   qemu-system-arm: warning: nic ftgmac100.1 has no peer
->   QEMU 7.0.50 monitor - type 'help' for more information
->      U-Boot 2019.04-00080-g6ca27db3f97b-dirty (Jun 24 2022 - 23:22:03
->     +0200)
->      SOC : AST2500-A1
->   RST : Power On
->   LPC Mode : SIO:Enable : SuperIO-2e
->   Eth : MAC0: RGMII, , MAC1: RGMII,
->   Model: AST2500 EVB
->   DRAM:  448 MiB (capacity:512 MiB, VGA:64 MiB, ECC:off)
->   MMC:   sdhci_slot0@100: 0, sdhci_slot1@200: 1
->   Loading Environment from SPI Flash... SF: Detected mx25l25635e with pag=
-e size 256 Bytes, erase size 64 KiB, total 32 MiB
->   *** Warning - bad CRC, using default environment
->      In:    serial@1e784000
->   Out:   serial@1e784000
->   Err:   serial@1e784000
->   Net:   eth0: ethernet@1e660000
->   Warning: ethernet@1e680000 (eth1) using random MAC address - 4a:e5:9a:4=
-a:c7:c5
->   , eth1: ethernet@1e680000
->   Hit any key to stop autoboot:  2
->   (qemu) info sync-profile
->   Type               Object  Call site                Wait Time (s)      =
-   Count  Average (us)
->   -----------------------------------------------------------------------=
-----------------------
->   condvar    0x561f10c9ef88  util/thread-pool.c:90         10.01196      =
-      28     357570.00
->   BQL mutex  0x561f102362e0  accel/tcg/cputlb.c:1365        0.29496      =
-14248621          0.02
->   condvar    0x561f110325a0  softmmu/cpus.c:423             0.02231      =
-       2      11152.57
->   BQL mutex  0x561f102362e0  util/rcu.c:269                 0.01447      =
-       4       3618.60
->   condvar    0x561f10236240  softmmu/cpus.c:571             0.00010      =
-       1        102.19
->   mutex      0x561f10e9f1c0  tcg/region.c:204               0.00007      =
-    3052          0.02
->   mutex      [           2]  chardev/char.c:118             0.00003      =
-    1486          0.02
->   condvar    0x561f10236280  softmmu/cpus.c:642             0.00003      =
-       1         29.38
->   BQL mutex  0x561f102362e0  accel/tcg/cputlb.c:1426        0.00002      =
-     973          0.02
->   BQL mutex  0x561f102362e0  util/main-loop.c:318           0.00001      =
-      34          0.41
->   -----------------------------------------------------------------------=
-----------------------
->   Something in the layout of the FW is making a big difference. One
-> that could be relevant is that the recent versions are using a device
-> tree.
->
-> There might be no good solution to this issue but I fail to analyze
-> it correctly. Is there a way to collect information on the usage of
-> Translation Blocks ?
-
-You could expand the data we collect in tb_tree_stats and expose it via
-info jit.
-
->
 > Thanks,
->
-> C.
+> Peter
+> 
+> Klaus Jensen (3):
+>    hw/i2c: support multiple masters
+>    hw/i2c: add asynchronous send
+>    hw/i2c/aspeed: add slave device in old register mode
+> 
+> Peter Delevoryas (11):
+>    hw/i2c/aspeed: Fix R_I2CD_FUN_CTRL reference
+>    hw/i2c/aspeed: Fix DMA len write-enable bit handling
+>    hw/i2c/aspeed: Fix MASTER_EN missing error message
+>    hw/i2c/aspeed: Add new-registers DMA slave mode RX support
+>    hw/i2c/pmbus: Add idle state to return 0xff's
+>    hw/sensor: Add IC_DEVICE_ID to ISL voltage regulators
+>    hw/sensor: Add Renesas ISL69259 device model
+>    hw/misc/aspeed: Add PECI controller
+>    hw/misc/aspeed: Add fby35-sb-cpld
+>    hw/misc/aspeed: Add intel-me
+>    hw/arm/aspeed: Add oby35-cl machine
+> 
+>   MAINTAINERS                      |   2 +
+>   hw/arm/aspeed.c                  |  48 +++++++
+>   hw/arm/aspeed_ast10x0.c          |  12 ++
+>   hw/arm/aspeed_ast2600.c          |  12 ++
+>   hw/arm/aspeed_soc.c              |  13 ++
+>   hw/arm/pxa2xx.c                  |   2 +
+>   hw/display/sii9022.c             |   2 +
+>   hw/display/ssd0303.c             |   2 +
+>   hw/i2c/aspeed_i2c.c              | 234 +++++++++++++++++++++++++++----
+>   hw/i2c/core.c                    |  70 ++++++++-
+>   hw/i2c/pmbus_device.c            |   9 ++
+>   hw/i2c/smbus_slave.c             |   4 +
+>   hw/i2c/trace-events              |   2 +
+>   hw/misc/aspeed_peci.c            | 152 ++++++++++++++++++++
+>   hw/misc/fby35_sb_cpld.c          | 128 +++++++++++++++++
+>   hw/misc/intel_me.c               | 162 +++++++++++++++++++++
+>   hw/misc/meson.build              |   5 +-
+>   hw/misc/trace-events             |  13 ++
+>   hw/nvram/eeprom_at24c.c          |   2 +
+>   hw/sensor/isl_pmbus_vr.c         |  40 ++++++
+>   hw/sensor/lsm303dlhc_mag.c       |   2 +
+>   include/hw/arm/aspeed_soc.h      |   3 +
+>   include/hw/i2c/aspeed_i2c.h      |  11 ++
+>   include/hw/i2c/i2c.h             |  30 ++++
+>   include/hw/i2c/pmbus_device.h    |   7 +
+>   include/hw/misc/aspeed_peci.h    |  29 ++++
+>   include/hw/sensor/isl_pmbus_vr.h |   5 +
+>   27 files changed, 971 insertions(+), 30 deletions(-)
+>   create mode 100644 hw/misc/aspeed_peci.c
+>   create mode 100644 hw/misc/fby35_sb_cpld.c
+>   create mode 100644 hw/misc/intel_me.c
+>   create mode 100644 include/hw/misc/aspeed_peci.h
+> 
 
-
---=20
-Alex Benn=C3=A9e

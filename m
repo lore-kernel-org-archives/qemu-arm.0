@@ -1,370 +1,189 @@
-Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp43928lft;
-        Wed, 29 Jun 2022 22:14:08 -0700 (PDT)
-X-Google-Smtp-Source: AGRyM1swVre72AZVkKZetMCn5CdZLUBcT0KLrMfelMGCVlzQUBKk8WuvM3i9Ke9rIXlqNKqu+igi
-X-Received: by 2002:a05:622a:58c:b0:319:9323:4ac7 with SMTP id c12-20020a05622a058c00b0031993234ac7mr5922113qtb.240.1656566048072;
-        Wed, 29 Jun 2022 22:14:08 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1656566048; cv=none;
+Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp75836lft;
+        Wed, 29 Jun 2022 23:17:01 -0700 (PDT)
+X-Google-Smtp-Source: AGRyM1tHUgawa1lkgsxoDU7Dh6T2M0tipHQDLIoVEwfsdqjn5Y3tO0JaA/29n97KMPM4ij4mgO/k
+X-Received: by 2002:a37:9b48:0:b0:6ae:ea5f:ab5f with SMTP id d69-20020a379b48000000b006aeea5fab5fmr4845115qke.761.1656569821146;
+        Wed, 29 Jun 2022 23:17:01 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1656569821; cv=none;
         d=google.com; s=arc-20160816;
-        b=FkooupCFrCYbT9v8S7BlTrMQGgAHi/IUK/Gj1LSea9imcptDQVBnHvyXUUaVOERvoZ
-         zlW5SxRKrsIJmNJn5f/PUa7nDPL+XtSqAPTc45gFq+81ngBQnjpcGjGZH8i8OSWKBqE9
-         Wh1O+4C+aYPanzgEDePIGKKJrze4U8Gom2uiw1qzTAIF+ZEtatl5/ZuRXHRQvsUsWbbR
-         N+o2lDJsm6o9UQEhBX1T+47aDU7Fs9OJdtLQOKTXl98dMJbUZcFMi5mZTwn12HBhpkAD
-         nAK+UN2atoJJVThsLF1DCJ0mCY85jy9HRP0RmVmL11sCJG7+i4x0z9hl6I2Rr5pll6ea
-         dD9A==
+        b=iiPm5OYHtEmbU/V+oVD/xv99MQ1T3OanIEMVBf3MpSUXbK6D6Lii8WFqWpCYw85nWd
+         STzhmUJnrvKUpg+LEQUJFv22QrzwCapfunv/kGBzT8MAt8X9vrwcQkivSdWwh+tKdsTQ
+         0IZVucYfMEP8344Xoi2AuWMz3fCfbxMtoDR+N8a9Zou3V+u9nfK4aHmOFcag6eHNL550
+         wacTMNNtkPoB2bWEBAlykBFXW2FfERP5FA7Ka7miK/N6fKYZRSJB+ahVCHXGWSezA+tk
+         cA63wFGludQ9AkeYnypRQyqQ9ri/BV0LRoMJ7x5WZ0uxY/lkxzHilu2FMKWL72XFW0lj
+         mGog==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:feedback-id:dkim-signature:dkim-signature;
-        bh=ZgXC7nI9x+hlJrthfs0GdYoIqYuE9xKR+qshCuVM6hg=;
-        b=poM1YSYvpjTBCe1C5bKHcuUWAEUItt2kROhfpTvRddzslJPW74rzGOpT7DkX0g3prC
-         jJCd6EaZc8/3acgs4+iwMsS1x3fvG/0tmqyqkwlDUiOH0tXvtykd5i1pbkC+d4CFSS4T
-         A76VCjTP0JJFESXIV2mMUHX5uthtQJDdv9cQOO8hJ1GZME5xbJhLIUTi8rTEfwcjtsna
-         m336NCwr3+wOuhGC1JyPueiXlvpm5HJ6cuMP8B6NviSc03PqVu9wFZ50Hnpri+VVZLqY
-         l8KINllCwB272oks/YXKb7tnbizdRT6RNTzJyDq9ADJPJiAMCvgma4fCR06G/PAa4fyn
-         XzZQ==
+         :in-reply-to:from:references:cc:to:content-language:subject
+         :user-agent:mime-version:date:message-id;
+        bh=G1e7aJbhREXxl+D2wH6FUAu1Y2i2hWKO0vyFN/fd0JI=;
+        b=Vd/TBlhiD3PGQpuI3Q8FsCWaI/jIlwE3fTzdMrr7h76tj5vpCF0osiZMbL80stCX12
+         85BodwpuA3JLoyaXZiMo+j2Mr42T1CGk8IQoLC0klDoLwK25Dvf4kzGyrHrqvo+72+QL
+         GntG+unCc5B3tFf/M8ydPW+Z2mxPErjj0SkvyHW4WDMLEoijM1VlPkgo7NuRkd1Q2n/b
+         P9MqF+nr19sJbV59xkQe4cwa85tdC1VUaRSAXd/jZdrQ2oJnIqnqC16Phtbn+GtPzPYv
+         08cyJ1fE5UxLnc3M2IIHMWNr92TEEgFURGouGgBMbZxerurh1vqQQjvp4hqSDfoWgzrg
+         xB/A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@pjd.dev header.s=fm1 header.b=YKv3YLOw;
-       dkim=fail header.i=@messagingengine.com header.s=i9e814621.fm2 header.b=sE6NZNoP;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id b37-20020a05620a272500b006af217e92cdsi6673304qkp.695.2022.06.29.22.14.07
+        by mx.google.com with ESMTPS id gv9-20020a056214262900b00461f624eafcsi10648074qvb.104.2022.06.29.23.17.01
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 29 Jun 2022 22:14:08 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 29 Jun 2022 23:17:01 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@pjd.dev header.s=fm1 header.b=YKv3YLOw;
-       dkim=fail header.i=@messagingengine.com header.s=i9e814621.fm2 header.b=sE6NZNoP;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:40894 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:35818 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1o6mVD-0003E8-IU
-	for alex.bennee@linaro.org; Thu, 30 Jun 2022 01:14:07 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45898)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1o6nU4-0006SY-HX
+	for alex.bennee@linaro.org; Thu, 30 Jun 2022 02:17:00 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:36078)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <me@pjd.dev>)
- id 1o6mAF-0003Zk-NE; Thu, 30 Jun 2022 00:52:27 -0400
-Received: from wnew1-smtp.messagingengine.com ([64.147.123.26]:49213)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1o6nQU-0003aw-UP
+ for qemu-devel@nongnu.org; Thu, 30 Jun 2022 02:13:19 -0400
+Received: from 2.mo548.mail-out.ovh.net ([178.33.255.19]:50133)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <me@pjd.dev>)
- id 1o6mA9-00073O-Ov; Thu, 30 Jun 2022 00:52:27 -0400
-Received: from compute3.internal (compute3.nyi.internal [10.202.2.43])
- by mailnew.west.internal (Postfix) with ESMTP id 5D59E2B058FC;
- Thu, 30 Jun 2022 00:52:19 -0400 (EDT)
-Received: from mailfrontend1 ([10.202.2.162])
- by compute3.internal (MEProxy); Thu, 30 Jun 2022 00:52:20 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=pjd.dev; h=cc:cc
- :content-transfer-encoding:date:date:from:from:in-reply-to
- :in-reply-to:message-id:mime-version:references:reply-to:sender
- :subject:subject:to:to; s=fm1; t=1656564738; x=1656568338; bh=Zg
- XC7nI9x+hlJrthfs0GdYoIqYuE9xKR+qshCuVM6hg=; b=YKv3YLOwk4O1StS44X
- KFJcYLhrpCbuwSV7flEB/A7/lqFgJXxIti8LMh5JsahBXbeWJX68IXtk2V4ywK/p
- 0PETfyODB1cmViMW+CpDbv1B8d/aMBsshO/DVWofMZBJ3YPVmmFCa3+YHf44/vgA
- 26fLmDqYHno2Mym8YbVt0BZJX5YhU2IF/R4rt7hqIU4/xCQ+IUJNZR4xgXeJJWHx
- Mi16Y9IxPwZYDFZ00ZCbTzBO8boC68pnXhh0frw7xS4+h0wF7uvl6T/8+5KIcWgf
- h8xO84b9ao1Tl00w32SJQFhIidGvBnTEgAP7X/NBvYC4Zwh5S7mZ6l6hdfeu8Fh+
- L3Yw==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
- messagingengine.com; h=cc:cc:content-transfer-encoding:date:date
- :feedback-id:feedback-id:from:from:in-reply-to:in-reply-to
- :message-id:mime-version:references:reply-to:sender:subject
- :subject:to:to:x-me-proxy:x-me-proxy:x-me-sender:x-me-sender
- :x-sasl-enc; s=i9e814621.fm2; t=1656564738; x=1656568338; bh=ZgX
- C7nI9x+hlJrthfs0GdYoIqYuE9xKR+qshCuVM6hg=; b=sE6NZNoP3cS94oWtL2L
- 2zwBDuIwq3XOnVnXTF9MAvjSLco64Dymq0KVIdnOqk/TF/gdpqsRCgO+W22xei56
- HtIGWkcUCMm+cOOT8X5Uzd7zrJCHiY554PYulg1XA7npvfPb6L30gNPP4EPLxzOA
- F7KYYY9bj2Z5hbd3cMJr+O8scuSuWw/JQh/oZGYDLmi8vlTVRcBoKz+gIZADiSPy
- AP1lYBnRcHuNNDasFQIZXWB6m9rM1RK8mRYn8vaLzowgSfevErN+Dc1RiGdE53lz
- W+1rPpz4oW0L+tG83hZOkqXzG2sTNSXnN4gQxaB5AVln77Byo0IsYJnbCEEhytWy
- TkA==
-X-ME-Sender: <xms:Aiy9YsJ_NYpMsH4tGZZORHJrD1g8XbDPyhpw-XK3Y_T0VVlkZR0mAQ>
- <xme:Aiy9YsLNXTRUUvPg9XuRT-yS5EEgERdSlclcSPBZZPyUNxm_qHJeHDv-vvYJQKLHw
- RRofzu7oF42HP99o9U>
-X-ME-Received: <xmr:Aiy9Yss_BXXYV9JUOV1Q3HFozScFxjPG3k5AVeU_GCvzeAEi6O9Cm1fYXkaLOnI_ka7wDQpBPGBQA7YhO7MQPtiAnwpdtj0S>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvfedrudehtddgkeelucetufdoteggodetrfdotf
- fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
- uceurghilhhouhhtmecufedttdenuchmihhsshhinhhgucfvqfcufhhivghlugculdeftd
- dmnecujfgurhephffvvefufffkofgjfhgggfestdekredtredttdenucfhrhhomheprfgv
- thgvrhcuffgvlhgvvhhorhihrghsuceomhgvsehpjhgurdguvghvqeenucggtffrrghtth
- gvrhhnpedvvddvvdeikeetuddtteejleeuudehuddvtedtheetvefhtdeifeeguefgtdeg
- udenucffohhmrghinhepmhgvthgrrdgtohhmnecuvehluhhsthgvrhfuihiivgeptdenuc
- frrghrrghmpehmrghilhhfrhhomhepmhgvsehpjhgurdguvghv
-X-ME-Proxy: <xmx:Aiy9Ypb3k6h9BDJq7DeB1BHq5qkEEGRhfGUFLURdW-qe_8Ygnta3kQ>
- <xmx:Aiy9Yjbz_EX0cqL3yEO-wtX5VIHIkd1ATlkiME4WpVCYQe-WBJP49Q>
- <xmx:Aiy9YlCu5JnOvmouo3PcZBIYFogweOAfwN83jU5ies7OJuMB00sYjw>
- <xmx:Aiy9YhOxfwAdw20cV0FihbVcUpRYow9iISpjwlxCk2wnl1Oi23KuwLAagXg>
-Feedback-ID: i9e814621:Fastmail
-Received: by mail.messagingengine.com (Postfix) with ESMTPA; Thu,
- 30 Jun 2022 00:52:18 -0400 (EDT)
-From: Peter Delevoryas <me@pjd.dev>
-To: 
-Cc: clg@kaod.org, peter.maydell@linaro.org, andrew@aj.id.au, joel@jms.id.au,
- cminyard@mvista.com, titusr@google.com, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org, zhdaniel@fb.com, pdel@fb.com
-Subject: [PATCH v3 13/14] hw/misc/aspeed: Add intel-me
-Date: Wed, 29 Jun 2022 21:51:32 -0700
-Message-Id: <20220630045133.32251-14-me@pjd.dev>
-X-Mailer: git-send-email 2.37.0
-In-Reply-To: <20220630045133.32251-1-me@pjd.dev>
-References: <20220630045133.32251-1-me@pjd.dev>
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1o6nQS-0000ED-LZ
+ for qemu-devel@nongnu.org; Thu, 30 Jun 2022 02:13:18 -0400
+Received: from mxplan5.mail.ovh.net (unknown [10.108.1.216])
+ by mo548.mail-out.ovh.net (Postfix) with ESMTPS id 718D5208F2;
+ Thu, 30 Jun 2022 06:13:12 +0000 (UTC)
+Received: from kaod.org (37.59.142.104) by DAG4EX1.mxp5.local (172.16.2.31)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.9; Thu, 30 Jun
+ 2022 08:13:11 +0200
+Authentication-Results: garm.ovh; auth=pass
+ (GARM-104R0059e77e513-3eb0-4772-89fc-6dbbf10a0beb,
+ 40551C6C823FDDA91B74F5D58A080B55BE22893A) smtp.auth=clg@kaod.org
+X-OVh-ClientIp: 82.64.250.170
+Message-ID: <115a8bb6-2e02-18da-4684-56660a8f65e6@kaod.org>
+Date: Thu, 30 Jun 2022 08:13:11 +0200
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=64.147.123.26; envelope-from=me@pjd.dev;
- helo=wnew1-smtp.messagingengine.com
-X-Spam_score_int: -12
-X-Spam_score: -1.3
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.9.0
+Subject: Re: [PATCH v3 00/14] hw/i2c/aspeed: I2C slave mode DMA RX w/ new regs
+Content-Language: en-US
+To: Peter Delevoryas <me@pjd.dev>
+CC: <peter.maydell@linaro.org>, <andrew@aj.id.au>, <joel@jms.id.au>,
+ <cminyard@mvista.com>, <titusr@google.com>, <qemu-devel@nongnu.org>,
+ <qemu-arm@nongnu.org>, <zhdaniel@fb.com>, <pdel@fb.com>
+References: <20220630045133.32251-1-me@pjd.dev>
+From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
+In-Reply-To: <20220630045133.32251-1-me@pjd.dev>
+Content-Type: text/plain; charset="UTF-8"; format=flowed
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [37.59.142.104]
+X-ClientProxiedBy: DAG8EX2.mxp5.local (172.16.2.72) To DAG4EX1.mxp5.local
+ (172.16.2.31)
+X-Ovh-Tracer-GUID: 3face655-4a4b-4fd1-ba0b-7a8ea386d025
+X-Ovh-Tracer-Id: 4537376627907136434
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: 0
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvfedrudehtddguddtiecutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemucehtddtnecunecujfgurhepkfffgggfuffvvehfhfgjtgfgihesthejredttdefjeenucfhrhhomhepveorughrihgtpgfnvggpifhorghtvghruceotghlgheskhgrohgurdhorhhgqeenucggtffrrghtthgvrhhnpeelleeiiefgkeefiedtvdeigeetueetkeffkeelheeugfetteegvdekgfehgffgkeenucfkpheptddrtddrtddrtddpfeejrdehledrudegvddruddtgeenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhhouggvpehsmhhtphhouhhtpdhhvghlohepmhigphhlrghnhedrmhgrihhlrdhovhhhrdhnvghtpdhinhgvtheptddrtddrtddrtddpmhgrihhlfhhrohhmpegtlhhgsehkrghougdrohhrghdpnhgspghrtghpthhtohepuddprhgtphhtthhopehpuggvlhesfhgsrdgtohhmpdfovfetjfhoshhtpehmohehgeek
+Received-SPF: pass client-ip=178.33.255.19; envelope-from=clg@kaod.org;
+ helo=2.mo548.mail-out.ovh.net
+X-Spam_score_int: -18
+X-Spam_score: -1.9
 X-Spam_bar: -
-X-Spam_report: (-1.3 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FROM_FMBLA_NEWDOM=1.498, RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: bDE7OxL5IBgC
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 126Rb/V57T8O
 
-From: Peter Delevoryas <pdel@fb.com>
+On 6/30/22 06:51, Peter Delevoryas wrote:
+> From: Peter Delevoryas <pdel@fb.com>
 
-The Intel Management Engine is an IPMI endpoint that responds to various
-IPMI commands. In this commit, I've added some very basic functionality that
-will respond back with a respond code of zero (success), while also setting
-an appropriate response NetFN (request NetFN + 1), a matching command ID and
-sequence number, and the 2 standard checksums. Other data is not provided,
-but the model here could be extended to respond to more kinds of requests.
+It is good practice to keep the Reviewed/Tested/Acked tags sent on
+the previous version of a patchset. I should have told you in v2.
+For next time ! :)
 
-Signed-off-by: Peter Delevoryas <pdel@fb.com>
----
- MAINTAINERS          |   1 +
- hw/misc/intel_me.c   | 162 +++++++++++++++++++++++++++++++++++++++++++
- hw/misc/meson.build  |   3 +-
- hw/misc/trace-events |   8 +++
- 4 files changed, 173 insertions(+), 1 deletion(-)
- create mode 100644 hw/misc/intel_me.c
+Thanks,
 
-diff --git a/MAINTAINERS b/MAINTAINERS
-index 3ffd473db1..3220644bb5 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -1068,6 +1068,7 @@ F: include/hw/net/ftgmac100.h
- F: docs/system/arm/aspeed.rst
- F: tests/qtest/*aspeed*
- F: hw/misc/fby35_sb_cpld.c
-+F: hw/misc/intel_me.c
- 
- NRF51
- M: Joel Stanley <joel@jms.id.au>
-diff --git a/hw/misc/intel_me.c b/hw/misc/intel_me.c
-new file mode 100644
-index 0000000000..933ae45101
---- /dev/null
-+++ b/hw/misc/intel_me.c
-@@ -0,0 +1,162 @@
-+/*
-+ * Copyright (c) Meta Platforms, Inc. and affiliates. (http://www.meta.com)
-+ *
-+ * This code is licensed under the GPL version 2 or later. See the COPYING
-+ * file in the top-level directory.
-+ */
-+
-+#include "qemu/osdep.h"
-+#include "qemu/main-loop.h"
-+#include "hw/i2c/i2c.h"
-+#include "trace.h"
-+
-+#define TYPE_INTEL_ME "intel-me"
-+OBJECT_DECLARE_SIMPLE_TYPE(IntelMEState, INTEL_ME);
-+
-+struct IntelMEState {
-+    I2CSlave parent_obj;
-+
-+    I2CBus *bus;
-+    QEMUBH *bh;
-+    int rx_len;
-+    int tx_len;
-+    int tx_pos;
-+    uint8_t rx_buf[512];
-+    uint8_t tx_buf[512];
-+};
-+
-+static void intel_me_bh(void *opaque)
-+{
-+    IntelMEState *s = opaque;
-+    I2CSlave *i2c = I2C_SLAVE(s);
-+    uint8_t target_addr;
-+
-+    assert(s->bus->bh == s->bh);
-+
-+    switch (s->tx_pos) {
-+    case 0:
-+        target_addr = s->tx_buf[s->tx_pos++];
-+        trace_intel_me_tx_start(i2c->address, target_addr);
-+        if (i2c_start_send_async(s->bus, target_addr) != 0) {
-+            break;
-+        }
-+        return;
-+    default:
-+        if (s->tx_pos >= s->tx_len) {
-+            break;
-+        }
-+        trace_intel_me_tx_data(i2c->address, s->tx_buf[s->tx_pos]);
-+        if (i2c_send_async(s->bus, s->tx_buf[s->tx_pos++]) != 0) {
-+            break;
-+        }
-+        return;
-+    }
-+
-+    trace_intel_me_tx_end(i2c->address);
-+    i2c_end_transfer(s->bus);
-+    i2c_bus_release(s->bus);
-+    s->tx_len = 0;
-+    s->tx_pos = 0;
-+    memset(s->tx_buf, 0, sizeof(s->tx_buf));
-+}
-+
-+static void intel_me_realize(DeviceState *dev, Error **errp)
-+{
-+    IntelMEState *s = INTEL_ME(dev);
-+
-+    s->bus = I2C_BUS(qdev_get_parent_bus(dev));
-+    s->bh = qemu_bh_new(intel_me_bh, s);
-+    s->rx_len = 0;
-+    s->tx_len = 0;
-+    s->tx_pos = 0;
-+    memset(s->rx_buf, 0, sizeof(s->rx_buf));
-+    memset(s->tx_buf, 0, sizeof(s->tx_buf));
-+}
-+
-+static uint8_t checksum(const uint8_t *ptr, int len)
-+{
-+    int sum = 0;
-+
-+    for (int i = 0; i < len; i++) {
-+        sum += ptr[i];
-+    }
-+
-+    return 256 - sum;
-+}
-+
-+static int intel_me_i2c_event(I2CSlave *i2c, enum i2c_event event)
-+{
-+    IntelMEState *s = INTEL_ME(i2c);
-+
-+    switch (event) {
-+    case I2C_START_RECV:
-+        break;
-+    case I2C_START_SEND:
-+        trace_intel_me_rx_start(i2c->address);
-+        s->rx_len = 0;
-+        memset(s->rx_buf, 0, sizeof(s->rx_buf));
-+        break;
-+    case I2C_START_SEND_ASYNC:
-+        break;
-+    case I2C_FINISH:
-+        trace_intel_me_rx_end(i2c->address);
-+        s->tx_len = 10;
-+        s->tx_pos = 0;
-+        s->tx_buf[0] = s->rx_buf[2];
-+        s->tx_buf[1] = ((s->rx_buf[0] >> 2) + 1) << 2;
-+        s->tx_buf[2] = checksum(s->tx_buf, 2);
-+        s->tx_buf[3] = i2c->address;
-+        s->tx_buf[4] = (s->rx_buf[3] >> 2) << 2;
-+        s->tx_buf[5] = s->rx_buf[4];
-+        s->tx_buf[6] = 0x00;
-+        s->tx_buf[7] = 0x55;
-+        s->tx_buf[8] = 0x00;
-+        s->tx_buf[9] = checksum(s->tx_buf, s->tx_len - 1);
-+        s->tx_buf[0] >>= 1;
-+        i2c_bus_master(s->bus, s->bh);
-+        break;
-+    case I2C_NACK:
-+        break;
-+    }
-+
-+    return 0;
-+}
-+
-+static uint8_t intel_me_i2c_recv(I2CSlave *i2c)
-+{
-+    return 0xff;
-+}
-+
-+static int intel_me_i2c_send(I2CSlave *i2c, uint8_t data)
-+{
-+    IntelMEState *s = INTEL_ME(i2c);
-+
-+    trace_intel_me_rx_data(i2c->address, data);
-+
-+    assert(s->rx_len < sizeof(s->rx_buf));
-+    s->rx_buf[s->rx_len++] = data;
-+
-+    return 0;
-+}
-+
-+static void intel_me_class_init(ObjectClass *oc, void *data)
-+{
-+    DeviceClass *dc = DEVICE_CLASS(oc);
-+    I2CSlaveClass *i2c = I2C_SLAVE_CLASS(oc);
-+
-+    dc->realize = intel_me_realize;
-+    i2c->event = intel_me_i2c_event;
-+    i2c->recv = intel_me_i2c_recv;
-+    i2c->send = intel_me_i2c_send;
-+}
-+
-+static const TypeInfo types[] = {
-+    {
-+        .name = TYPE_INTEL_ME,
-+        .parent = TYPE_I2C_SLAVE,
-+        .instance_size = sizeof(IntelMEState),
-+        .class_init = intel_me_class_init,
-+    },
-+};
-+
-+DEFINE_TYPES(types);
-diff --git a/hw/misc/meson.build b/hw/misc/meson.build
-index 948e25c440..165b9dce6d 100644
---- a/hw/misc/meson.build
-+++ b/hw/misc/meson.build
-@@ -118,7 +118,8 @@ softmmu_ss.add(when: 'CONFIG_ASPEED_SOC', if_true: files(
-   'aspeed_sdmc.c',
-   'aspeed_xdma.c',
-   'aspeed_peci.c',
--  'fby35_sb_cpld.c'))
-+  'fby35_sb_cpld.c',
-+  'intel_me.c'))
- 
- softmmu_ss.add(when: 'CONFIG_MSF2', if_true: files('msf2-sysreg.c'))
- softmmu_ss.add(when: 'CONFIG_NRF51_SOC', if_true: files('nrf51_rng.c'))
-diff --git a/hw/misc/trace-events b/hw/misc/trace-events
-index 90a0473b06..7ca23bcf27 100644
---- a/hw/misc/trace-events
-+++ b/hw/misc/trace-events
-@@ -273,3 +273,11 @@ virt_ctrl_instance_init(void *dev) "ctrl: %p"
- lasi_chip_mem_valid(uint64_t addr, uint32_t val) "access to addr 0x%"PRIx64" is %d"
- lasi_chip_read(uint64_t addr, uint32_t val) "addr 0x%"PRIx64" val 0x%08x"
- lasi_chip_write(uint64_t addr, uint32_t val) "addr 0x%"PRIx64" val 0x%08x"
-+
-+# intel_me.c
-+intel_me_rx_start(uint8_t addr) "addr 0x%02x"
-+intel_me_rx_data(uint8_t addr, uint8_t data) "addr 0x%02x data 0x%02x"
-+intel_me_rx_end(uint8_t addr) "addr 0x%02x"
-+intel_me_tx_start(uint8_t addr, uint8_t target_addr) "addr 0x%02x target_addr 0x%02x"
-+intel_me_tx_data(uint8_t addr, uint8_t data) "addr 0x%02x data 0x%02x"
-+intel_me_tx_end(uint8_t addr) "addr 0x%02x"
--- 
-2.37.0
+C.
+
+> v3:
+> - hw/i2c/pmbus_device:
+>    - Removed commit that resets the out buf.
+>    - Removed IC_DEVICE_ID
+>    - Added commit to allow devices to move to an idle state that
+>      avoids enqueuing excess data into the out buf.
+> - hw/sensor/isl_pmbus_vr:
+>    - Added IC_DEVICE_ID commit just for voltage regulators.
+>    - Added ISL69259 with an IC_DEVICE_ID.
+> - hw/misc/aspeed_peci:
+>    - Moved registers from .h to .c
+>    - Replaced guest_error on interrupt disable case with trace
+>      for all interrupts (not just when they're disabled).
+>    - Removed leftover qemu_irq_raise
+> 
+> Thanks,
+> Peter
+> 
+> Klaus Jensen (3):
+>    hw/i2c: support multiple masters
+>    hw/i2c: add asynchronous send
+>    hw/i2c/aspeed: add slave device in old register mode
+> 
+> Peter Delevoryas (11):
+>    hw/i2c/aspeed: Fix R_I2CD_FUN_CTRL reference
+>    hw/i2c/aspeed: Fix DMA len write-enable bit handling
+>    hw/i2c/aspeed: Fix MASTER_EN missing error message
+>    hw/i2c/aspeed: Add new-registers DMA slave mode RX support
+>    hw/i2c/pmbus: Add idle state to return 0xff's
+>    hw/sensor: Add IC_DEVICE_ID to ISL voltage regulators
+>    hw/sensor: Add Renesas ISL69259 device model
+>    hw/misc/aspeed: Add PECI controller
+>    hw/misc/aspeed: Add fby35-sb-cpld
+>    hw/misc/aspeed: Add intel-me
+>    hw/arm/aspeed: Add oby35-cl machine
+> 
+>   MAINTAINERS                      |   2 +
+>   hw/arm/aspeed.c                  |  48 +++++++
+>   hw/arm/aspeed_ast10x0.c          |  12 ++
+>   hw/arm/aspeed_ast2600.c          |  12 ++
+>   hw/arm/aspeed_soc.c              |  13 ++
+>   hw/arm/pxa2xx.c                  |   2 +
+>   hw/display/sii9022.c             |   2 +
+>   hw/display/ssd0303.c             |   2 +
+>   hw/i2c/aspeed_i2c.c              | 234 +++++++++++++++++++++++++++----
+>   hw/i2c/core.c                    |  70 ++++++++-
+>   hw/i2c/pmbus_device.c            |   9 ++
+>   hw/i2c/smbus_slave.c             |   4 +
+>   hw/i2c/trace-events              |   2 +
+>   hw/misc/aspeed_peci.c            | 152 ++++++++++++++++++++
+>   hw/misc/fby35_sb_cpld.c          | 128 +++++++++++++++++
+>   hw/misc/intel_me.c               | 162 +++++++++++++++++++++
+>   hw/misc/meson.build              |   5 +-
+>   hw/misc/trace-events             |  13 ++
+>   hw/nvram/eeprom_at24c.c          |   2 +
+>   hw/sensor/isl_pmbus_vr.c         |  40 ++++++
+>   hw/sensor/lsm303dlhc_mag.c       |   2 +
+>   include/hw/arm/aspeed_soc.h      |   3 +
+>   include/hw/i2c/aspeed_i2c.h      |  11 ++
+>   include/hw/i2c/i2c.h             |  30 ++++
+>   include/hw/i2c/pmbus_device.h    |   7 +
+>   include/hw/misc/aspeed_peci.h    |  29 ++++
+>   include/hw/sensor/isl_pmbus_vr.h |   5 +
+>   27 files changed, 971 insertions(+), 30 deletions(-)
+>   create mode 100644 hw/misc/aspeed_peci.c
+>   create mode 100644 hw/misc/fby35_sb_cpld.c
+>   create mode 100644 hw/misc/intel_me.c
+>   create mode 100644 include/hw/misc/aspeed_peci.h
+> 
 

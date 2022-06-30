@@ -1,116 +1,117 @@
-Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp33538lft;
-        Wed, 29 Jun 2022 21:54:23 -0700 (PDT)
-X-Google-Smtp-Source: AGRyM1vRvzJxP19sdwgeAaF/4dZxE2fOvpxLWH7pOtfXBDjaarai6RakWelGNdjDQpUyRoMfSHDA
-X-Received: by 2002:ac8:58cd:0:b0:31b:f627:733f with SMTP id u13-20020ac858cd000000b0031bf627733fmr5879781qta.627.1656564862976;
-        Wed, 29 Jun 2022 21:54:22 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1656564862; cv=none;
+Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp33587lft;
+        Wed, 29 Jun 2022 21:54:30 -0700 (PDT)
+X-Google-Smtp-Source: AGRyM1vsMKCdkBi3HIzSQxpRkTNrAMS5vgSfEGWwwWE2iZzbmNVG4ECkni2XMf97F1pXyxXwJFyr
+X-Received: by 2002:a37:306:0:b0:6ae:f4e6:4218 with SMTP id 6-20020a370306000000b006aef4e64218mr4898685qkd.339.1656564869974;
+        Wed, 29 Jun 2022 21:54:29 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1656564869; cv=none;
         d=google.com; s=arc-20160816;
-        b=PWLMnF3KC8lRsCDX2CoQwWFUE+FBiOEV+6UPl09xzcwcAt1thAjD9xknOi9dPtdUlN
-         7W8RdEtdPkHv6qlbolq0n9JfVP0r6ERM9oz22zqsmDKnhTWYHEKxmMoXLohVCeLdnQrL
-         /e/zrbSgwWtUwEV6QeT1yrix+z7NfLjKzgbYtGQSNLaYLC8/VDKiSo45PRBEsCZJ3V61
-         vWLuGDcwmCmrvNCw8Ju1a2US0cYzTJWNlTWKIMeFCzjkRVFOHX+MU5D9mFpkpyUkNNzL
-         vNt6YQhMDIZ4eDUfs8sF0G8LpCvEJ2khcQA5LDak+niNzXnWJRd9msjGDGbeufQz1X42
-         kB6A==
+        b=qOxd4sER32ttRtgG7NbD46pGmRSo0f1IUTKKbmxGaY2fhsu9p5iFZ7v5DMtby8Nyo7
+         E2UTApChB2bZv7wXGcy+2jeKQBOQh7Y92hh82HKNqRpocxebEOFGNM/4DKOvhUBZurq8
+         5xsumSVgUL+YRZVImVLa+85ekRUDTNGnccmXW/ybcWwS+7OO2DeZ8ZClJIfTbszar6eZ
+         IctZKXzJHAX6Xham1R7MRK7v2Qzlb0yYkTtdLz09/CMIlpkh7XyGlTYzuW4/Qv10M/Io
+         s6fc+oRxjS/2Dj491vD6taTd+mYp0wRtU16/WYSzapDpUeMlghtr5oZVR5tRLwgXQBA4
+         xDug==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:feedback-id:dkim-signature:dkim-signature;
-        bh=AfGWXA+snDeGMV7gfmpXaFv0cU8DECQw1HIHV0zfRgU=;
-        b=iZtAdsT05oRWqGfxaGgnvGfH9hDs87IISAPLH8BcNpDaLknJASaWuahp89hoCC4+nU
-         s5PYysy94/qw7tpc5Az9/eFSaRoUI15v8t/6ysplbUN/EUDJxkUMslIm/u0uuzgAoYcX
-         NEB7rvaMsCY5cQ0X8JtQmX2s4WO/2xcx5xsMZ2kzal3CYtFYy00mYV04hifaxS2geaRH
-         EUDY1Ql14gsPlWk8t2o7tpit0zOqkORqd2XSMoRb1fjuGbTlgzTW8RB+dBA2l/pcZXPk
-         mEm9OozSDElLZA9g1AYb4tdrM6hywDyZOWRq5c7SpAc9zrsa9rdTtSY7w4bU/xI1JIFP
-         hE1w==
+        bh=0kG+8k8+jwRBEnusbY0O5k5Da+OQhvCmlBfhwijFieI=;
+        b=QuGpjnY15f+Wq280sqTKbzY45iv67jfA0d5dS6DKNgs6f0hRBOSwqMk2v3CbvxG+oQ
+         o61om0jMjHGhpZD12Clyk+CJE3RaN3B9s9MYBrb3x7wmGBsBF4iZjs6cShzgTy3Xos5J
+         XAQdDE83JH599h1aViutos8bWWSTe78APEKRSRpWoYo5WdZPtHRhkUDsE2ba5rRh70LA
+         3ULGXSGO0KmPChJ0yTGFWSo/jSCdSjogFQ2AFXJR1KmyeUnXNKMV2SXBAPKHVdnyfF34
+         bqYOkrDXUlxlANJtuEGA20ZUjQ3vdC+PBdma3E0iicQeUm4UNQ9HBrfTqKMNyjeDGZbt
+         rYtQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@pjd.dev header.s=fm1 header.b=5K9SToyr;
-       dkim=fail header.i=@messagingengine.com header.s=i9e814621.fm2 header.b=XRPLwx71;
+       dkim=fail header.i=@pjd.dev header.s=fm1 header.b=oSRp+4iB;
+       dkim=fail header.i=@messagingengine.com header.s=i9e814621.fm2 header.b=AGyoEP4R;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id gf13-20020a056214250d00b0046bacedcc77si10867628qvb.557.2022.06.29.21.54.22
+        by mx.google.com with ESMTPS id j22-20020ac85f96000000b002f92a565a55si11936316qta.147.2022.06.29.21.54.29
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 29 Jun 2022 21:54:22 -0700 (PDT)
+        Wed, 29 Jun 2022 21:54:29 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@pjd.dev header.s=fm1 header.b=5K9SToyr;
-       dkim=fail header.i=@messagingengine.com header.s=i9e814621.fm2 header.b=XRPLwx71;
+       dkim=fail header.i=@pjd.dev header.s=fm1 header.b=oSRp+4iB;
+       dkim=fail header.i=@messagingengine.com header.s=i9e814621.fm2 header.b=AGyoEP4R;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:38784 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:39234 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1o6mC6-0005UD-Ap
-	for alex.bennee@linaro.org; Thu, 30 Jun 2022 00:54:22 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45716)
+	id 1o6mCD-0005my-FD
+	for alex.bennee@linaro.org; Thu, 30 Jun 2022 00:54:29 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:45760)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <me@pjd.dev>)
- id 1o6m9g-0002VR-Ia; Thu, 30 Jun 2022 00:51:52 -0400
-Received: from wnew1-smtp.messagingengine.com ([64.147.123.26]:34231)
+ id 1o6m9n-0002mh-Cr; Thu, 30 Jun 2022 00:51:59 -0400
+Received: from wnew1-smtp.messagingengine.com ([64.147.123.26]:34417)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <me@pjd.dev>)
- id 1o6m9b-0006y9-TH; Thu, 30 Jun 2022 00:51:52 -0400
-Received: from compute5.internal (compute5.nyi.internal [10.202.2.45])
- by mailnew.west.internal (Postfix) with ESMTP id 8EBF42B058DA;
- Thu, 30 Jun 2022 00:51:45 -0400 (EDT)
+ id 1o6m9i-0006z9-Nl; Thu, 30 Jun 2022 00:51:59 -0400
+Received: from compute3.internal (compute3.nyi.internal [10.202.2.43])
+ by mailnew.west.internal (Postfix) with ESMTP id 60C1B2B058D5;
+ Thu, 30 Jun 2022 00:51:52 -0400 (EDT)
 Received: from mailfrontend1 ([10.202.2.162])
- by compute5.internal (MEProxy); Thu, 30 Jun 2022 00:51:46 -0400
+ by compute3.internal (MEProxy); Thu, 30 Jun 2022 00:51:53 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=pjd.dev; h=cc:cc
- :content-transfer-encoding:date:date:from:from:in-reply-to
- :in-reply-to:message-id:mime-version:references:reply-to:sender
- :subject:subject:to:to; s=fm1; t=1656564705; x=1656568305; bh=Af
- GWXA+snDeGMV7gfmpXaFv0cU8DECQw1HIHV0zfRgU=; b=5K9SToyrtycNrB9LZ4
- PcLAq/m7JPfDlyIr7C2VCNRSms7HVCHLOmaYr1MCA2I2LDZ4rLkimEuFj61y5CIz
- eHO+40Fnz/Ocs9BfY3aFyKnu3HrWrg7omjzFv1isr+WZ7b1XA40EpPgn4BoVjPxn
- 5k4X7K1qBVEtFZ81cbNQixB+gmYXaOhPP9PMj6LVxhg+3NKNGFjWyUotuztSU44A
- 6FFxguEPteU6iPifMeqW6DmCjtswboGC2sbhrKhcGy9lIV9Akzy2O1L6gtrrCEG1
- Typ8MgXOd1GrfNlDXWHllvKcLj5oBJ5/D4hh2wmoHaU6Bym64Inq+65GpH1s429U
- fzxg==
+ :content-transfer-encoding:content-type:date:date:from:from
+ :in-reply-to:in-reply-to:message-id:mime-version:references
+ :reply-to:sender:subject:subject:to:to; s=fm1; t=1656564711; x=
+ 1656568311; bh=0kG+8k8+jwRBEnusbY0O5k5Da+OQhvCmlBfhwijFieI=; b=o
+ SRp+4iB1zFFNgA9ByS1fGKEvXPFwUKhW/8N3wZ7FEXpk9sfrNCrbEz5ytnXXgfwk
+ wBVc13nPLAWmthQhZ3yXd5QHgd2JWJRaU2v8fdcaNapOBABg92PZxhh2Ud9CMIxO
+ n8Fcvhv8b/OrtZYbkfJIq9J+C3UUri7YIoVh8GabkJ//ub772BbNhnJJcD5K8bwG
+ BKzDnM68UooJ1yS/Y4glZasf5nn2dGWyWI/Kwps6R3gUQLh416yyRCWPMxjLQB4k
+ MnfolQ6EtkCmxgNBUug6/fRLZ9qdMXBHqEIrJoHXHNZofSNwjxevZUtpdIV1n9cJ
+ 6TJ4sv8gvwlKNZP5xWm2w==
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
- messagingengine.com; h=cc:cc:content-transfer-encoding:date:date
- :feedback-id:feedback-id:from:from:in-reply-to:in-reply-to
- :message-id:mime-version:references:reply-to:sender:subject
- :subject:to:to:x-me-proxy:x-me-proxy:x-me-sender:x-me-sender
- :x-sasl-enc; s=i9e814621.fm2; t=1656564705; x=1656568305; bh=AfG
- WXA+snDeGMV7gfmpXaFv0cU8DECQw1HIHV0zfRgU=; b=XRPLwx71TA6FXx6taxL
- 9WZlhUmJjc5SPMq/RA66iIxMe0nmkMmZm/en2NRRU8NPSj13e98KLgA3C2gBT8Z2
- 8MeY/ZsRFPpaTf6TWHJeiF6ZVb1jmtIofmKyR2lFyubV7mQNQ1Pn1KB32ZW9zjon
- wYKbP7Nt/ZxfpisT25wnDGL/e/Dcg54BPHkFOtWHssab8Wgzes+jyyOf3hfWl0k9
- o5L+P1dWiTVUjJ4xajh6kG4cfwh3RRJfhukHYkLNA6z6cZ9twDMT6NQbLe5GQm8t
- DFobtwwxKBnq+MupMmTIssPrZW+Ttm7QJcilqg8NSBAuLvmpFrHWT96hHO6tCR0p
- 7BQ==
-X-ME-Sender: <xms:4Cu9YvLNldwAiMwLhEmG9jf0OchxvBeW7V8crFqV6xT5jftzxGghvg>
- <xme:4Cu9YjI43oHiuUDJyEzTHmisgzm_vil1yb_CDuWINHpHN9C3lRU81SWalHZL4Rfos
- vGakU9izNaJTZyKG9A>
-X-ME-Received: <xmr:4Cu9YnsxkxOgGX0LXn0TzrMn6KU3HktNJEMUtk2o9oehxZu5k-xmhLJfuPDsYcwjnWfqSclhE4upkmQGBbALar-4Rhrol1p4>
+ messagingengine.com; h=cc:cc:content-transfer-encoding
+ :content-type:date:date:feedback-id:feedback-id:from:from
+ :in-reply-to:in-reply-to:message-id:mime-version:references
+ :reply-to:sender:subject:subject:to:to:x-me-proxy:x-me-proxy
+ :x-me-sender:x-me-sender:x-sasl-enc; s=i9e814621.fm2; t=
+ 1656564711; x=1656568311; bh=0kG+8k8+jwRBEnusbY0O5k5Da+OQhvCmlBf
+ hwijFieI=; b=AGyoEP4RIIyhZcnO5vbm+wbmKzXNA09B9+ziTas+FuHcFse/LYC
+ WeqIkTbDUGlRg3njTT/OhpALhs4QMY6Np6W6Mphq9+c23v/GCHIrzxUhj3kEqIqn
+ qkXm2rOGcqW1Se8/czp27JwFzb5Y+bIV1u2l0orUs0iVVaDmrxWJvwvPaqbYFX1G
+ +ShwINJfPUR3pyh/al2gkDzfEUEuTN/ecdrIco1RIVw1PfsTFbu0wuhKsYgxImEk
+ u/KdIbzKcxQ1IIACviOnua2lvbkZGTxxfi1sSdKZM7lMWy4pBEXuMtC3/8wtL9nm
+ PllNJcRAqAyhhhh+qEnzkbrAy8gFJ08fpnQ==
+X-ME-Sender: <xms:5yu9YgxEAMR1QtaQx-ZI8iVyPv2-QSaves3wfdd80Bwau4sRLPdlkQ>
+ <xme:5yu9YkTdRRwjcdjNvNDX1xtlZiST6zLJdXYePWjSgTqR1CkQKOq3Z1XVGNoL115HM
+ Vy3K0gR4HkbTFvrxvk>
+X-ME-Received: <xmr:5yu9YiWmmrj1Ed_H7_Jirh_7mooloGyu_r7nEKnEg68n8DpxJYzrF-XZfVUtUvF_uIPrstx4NG68SUv7u60sctQwIdkT9y6a>
 X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvfedrudehtddgkeelucetufdoteggodetrfdotf
  fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
  uceurghilhhouhhtmecufedttdenuchmihhsshhinhhgucfvqfcufhhivghlugculdeftd
- dmnecujfgurhephffvvefufffkofgjfhgggfestdekredtredttdenucfhrhhomheprfgv
- thgvrhcuffgvlhgvvhhorhihrghsuceomhgvsehpjhgurdguvghvqeenucggtffrrghtth
- gvrhhnpeektefhieevgfduvdeiueetteegtdeuueevieelffevueevveehhedukeejtdek
- teenucevlhhushhtvghrufhiiigvpedvnecurfgrrhgrmhepmhgrihhlfhhrohhmpehmvg
- esphhjugdruggvvh
-X-ME-Proxy: <xmx:4Cu9Yob_ZyDfvbPZDIDzQl3_1IFXRnXyw6QePtQY7djyD9qz29LYsQ>
- <xmx:4Cu9Ymb0pTuXp_yXgu-zESweZoXlQpDAV20pk4K84U7mXQX5ZpKV1A>
- <xmx:4Cu9YsBPK8Lh206tKaWv8KddPnFbtCjlx37kMvLwpa5Q2c7aYRhaqw>
- <xmx:4Su9YsNuLeL3M51Pl_q8jXw4-lj9l4Ni7Nr_9gflxciEUdJT24EDEucLP8w>
+ dmnecujfgurhephffvvefufffkofgjfhggtgfgsehtkeertdertdejnecuhfhrohhmpefr
+ vghtvghrucffvghlvghvohhrhigrshcuoehmvgesphhjugdruggvvheqnecuggftrfgrth
+ htvghrnhepffevudejfeehteegkedtieelhfffvefgleelveejledvvdehfeduudefteek
+ vedunecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmrghilhhfrhhomhepmh
+ gvsehpjhgurdguvghv
+X-ME-Proxy: <xmx:5yu9YuhnHRBdY7LIU-L5a373CH8K_oKKhwhKSjGxblLjpEKrmJfNGQ>
+ <xmx:5yu9YiByA353FFsFW8li4ubWDaECqwE0OYz09DCIXLrsSznbithWRw>
+ <xmx:5yu9YvLzZja6tllPVDGYHp_8Zhj_gb6SH0i3T9GeLs6GqtJGapZhSg>
+ <xmx:5yu9Yu1hA3V3DdvrlAJ8UiJsoFsy2o9y7Bu-JIkKGRt325ylCqRSJ1pwY4Q>
 Feedback-ID: i9e814621:Fastmail
 Received: by mail.messagingengine.com (Postfix) with ESMTPA; Thu,
- 30 Jun 2022 00:51:44 -0400 (EDT)
+ 30 Jun 2022 00:51:51 -0400 (EDT)
 From: Peter Delevoryas <me@pjd.dev>
 To: 
 Cc: clg@kaod.org, peter.maydell@linaro.org, andrew@aj.id.au, joel@jms.id.au,
  cminyard@mvista.com, titusr@google.com, qemu-devel@nongnu.org,
  qemu-arm@nongnu.org, zhdaniel@fb.com, pdel@fb.com
-Subject: [PATCH v3 03/14] hw/i2c/aspeed: Fix MASTER_EN missing error message
-Date: Wed, 29 Jun 2022 21:51:22 -0700
-Message-Id: <20220630045133.32251-4-me@pjd.dev>
+Subject: [PATCH v3 05/14] hw/i2c: add asynchronous send
+Date: Wed, 29 Jun 2022 21:51:24 -0700
+Message-Id: <20220630045133.32251-6-me@pjd.dev>
 X-Mailer: git-send-email 2.37.0
 In-Reply-To: <20220630045133.32251-1-me@pjd.dev>
 References: <20220630045133.32251-1-me@pjd.dev>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 Received-SPF: pass client-ip=64.147.123.26; envelope-from=me@pjd.dev;
  helo=wnew1-smtp.messagingengine.com
@@ -135,43 +136,242 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: pKUWXNlZeRcq
+X-TUID: nBpMHyGgWSHI
 
-From: Peter Delevoryas <pdel@fb.com>
+From: Klaus Jensen <k.jensen@samsung.com>
 
-aspeed_i2c_bus_is_master is checking if master mode is enabled in the I2C
-bus controller's function-control register, not that slave mode is enabled
-or something.  The error here is that the guest is trying to trigger an I2C
-master mode command while master mode is not enabled.
+Add an asynchronous version of i2c_send() that requires the slave to
+explicitly acknowledge on the bus with i2c_ack().
 
-Fixes: ba2cccd64e90f342 ("aspeed: i2c: Add new mode support")
-Signed-off-by: Peter Delevoryas <pdel@fb.com>
+The current master must use the new i2c_start_send_async() to indicate
+that it wants to do an asynchronous transfer. This allows the i2c core
+to check if the target slave supports this or not. This approach relies
+on adding a new enum i2c_event member, which is why a bunch of other
+devices needs changes in their event handling switches.
+
+Signed-off-by: Klaus Jensen <k.jensen@samsung.com>
+Message-Id: <20220601210831.67259-5-its@irrelevant.dk>
+Signed-off-by: Cédric Le Goater <clg@kaod.org>
 ---
- hw/i2c/aspeed_i2c.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ hw/arm/pxa2xx.c            |  2 ++
+ hw/display/sii9022.c       |  2 ++
+ hw/display/ssd0303.c       |  2 ++
+ hw/i2c/core.c              | 36 +++++++++++++++++++++++++++++++++++-
+ hw/i2c/smbus_slave.c       |  4 ++++
+ hw/i2c/trace-events        |  2 ++
+ hw/nvram/eeprom_at24c.c    |  2 ++
+ hw/sensor/lsm303dlhc_mag.c |  2 ++
+ include/hw/i2c/i2c.h       | 16 ++++++++++++++++
+ 9 files changed, 67 insertions(+), 1 deletion(-)
 
-diff --git a/hw/i2c/aspeed_i2c.c b/hw/i2c/aspeed_i2c.c
-index cbaa7c96fc..c153a1a942 100644
---- a/hw/i2c/aspeed_i2c.c
-+++ b/hw/i2c/aspeed_i2c.c
-@@ -601,7 +601,7 @@ static void aspeed_i2c_bus_new_write(AspeedI2CBus *bus, hwaddr offset,
-         }
+diff --git a/hw/arm/pxa2xx.c b/hw/arm/pxa2xx.c
+index f4f687df68..93dda83d7a 100644
+--- a/hw/arm/pxa2xx.c
++++ b/hw/arm/pxa2xx.c
+@@ -1305,6 +1305,8 @@ static int pxa2xx_i2c_event(I2CSlave *i2c, enum i2c_event event)
+     case I2C_NACK:
+         s->status |= 1 << 1;				/* set ACKNAK */
+         break;
++    default:
++        return -1;
+     }
+     pxa2xx_i2c_update(s);
  
-         if (!aspeed_i2c_bus_is_master(bus)) {
--            qemu_log_mask(LOG_UNIMP, "%s: slave mode not implemented\n",
-+            qemu_log_mask(LOG_GUEST_ERROR, "%s: Master mode is not enabled\n",
-                           __func__);
+diff --git a/hw/display/sii9022.c b/hw/display/sii9022.c
+index b591a58789..664fd4046d 100644
+--- a/hw/display/sii9022.c
++++ b/hw/display/sii9022.c
+@@ -76,6 +76,8 @@ static int sii9022_event(I2CSlave *i2c, enum i2c_event event)
+         break;
+     case I2C_NACK:
+         break;
++    default:
++        return -1;
+     }
+ 
+     return 0;
+diff --git a/hw/display/ssd0303.c b/hw/display/ssd0303.c
+index aeae22da9c..d67b0ad7b5 100644
+--- a/hw/display/ssd0303.c
++++ b/hw/display/ssd0303.c
+@@ -196,6 +196,8 @@ static int ssd0303_event(I2CSlave *i2c, enum i2c_event event)
+     case I2C_NACK:
+         /* Nothing to do.  */
+         break;
++    default:
++        return -1;
+     }
+ 
+     return 0;
+diff --git a/hw/i2c/core.c b/hw/i2c/core.c
+index 145dce6078..d4ba8146bf 100644
+--- a/hw/i2c/core.c
++++ b/hw/i2c/core.c
+@@ -161,7 +161,8 @@ static int i2c_do_start_transfer(I2CBus *bus, uint8_t address,
+            start condition.  */
+ 
+         if (sc->event) {
+-            trace_i2c_event("start", s->address);
++            trace_i2c_event(event == I2C_START_SEND ? "start" : "start_async",
++                            s->address);
+             rv = sc->event(s, event);
+             if (rv && !bus->broadcast) {
+                 if (bus_scanned) {
+@@ -212,6 +213,11 @@ int i2c_start_send(I2CBus *bus, uint8_t address)
+     return i2c_do_start_transfer(bus, address, I2C_START_SEND);
+ }
+ 
++int i2c_start_send_async(I2CBus *bus, uint8_t address)
++{
++    return i2c_do_start_transfer(bus, address, I2C_START_SEND_ASYNC);
++}
++
+ void i2c_end_transfer(I2CBus *bus)
+ {
+     I2CSlaveClass *sc;
+@@ -261,6 +267,23 @@ int i2c_send(I2CBus *bus, uint8_t data)
+     return ret ? -1 : 0;
+ }
+ 
++int i2c_send_async(I2CBus *bus, uint8_t data)
++{
++    I2CNode *node = QLIST_FIRST(&bus->current_devs);
++    I2CSlave *slave = node->elt;
++    I2CSlaveClass *sc = I2C_SLAVE_GET_CLASS(slave);
++
++    if (!sc->send_async) {
++        return -1;
++    }
++
++    trace_i2c_send_async(slave->address, data);
++
++    sc->send_async(slave, data);
++
++    return 0;
++}
++
+ uint8_t i2c_recv(I2CBus *bus)
+ {
+     uint8_t data = 0xff;
+@@ -297,6 +320,17 @@ void i2c_nack(I2CBus *bus)
+     }
+ }
+ 
++void i2c_ack(I2CBus *bus)
++{
++    if (!bus->bh) {
++        return;
++    }
++
++    trace_i2c_ack();
++
++    qemu_bh_schedule(bus->bh);
++}
++
+ static int i2c_slave_post_load(void *opaque, int version_id)
+ {
+     I2CSlave *dev = opaque;
+diff --git a/hw/i2c/smbus_slave.c b/hw/i2c/smbus_slave.c
+index 5d10e27664..feb3ec6333 100644
+--- a/hw/i2c/smbus_slave.c
++++ b/hw/i2c/smbus_slave.c
+@@ -143,6 +143,10 @@ static int smbus_i2c_event(I2CSlave *s, enum i2c_event event)
+             dev->mode = SMBUS_CONFUSED;
              break;
          }
-@@ -744,7 +744,7 @@ static void aspeed_i2c_bus_old_write(AspeedI2CBus *bus, hwaddr offset,
-         }
++        break;
++
++    default:
++        return -1;
+     }
  
-         if (!aspeed_i2c_bus_is_master(bus)) {
--            qemu_log_mask(LOG_UNIMP, "%s: slave mode not implemented\n",
-+            qemu_log_mask(LOG_GUEST_ERROR, "%s: Master mode is not enabled\n",
-                           __func__);
-             break;
-         }
+     return 0;
+diff --git a/hw/i2c/trace-events b/hw/i2c/trace-events
+index 209275ed2d..af181d43ee 100644
+--- a/hw/i2c/trace-events
++++ b/hw/i2c/trace-events
+@@ -4,7 +4,9 @@
+ 
+ i2c_event(const char *event, uint8_t address) "%s(addr:0x%02x)"
+ i2c_send(uint8_t address, uint8_t data) "send(addr:0x%02x) data:0x%02x"
++i2c_send_async(uint8_t address, uint8_t data) "send_async(addr:0x%02x) data:0x%02x"
+ i2c_recv(uint8_t address, uint8_t data) "recv(addr:0x%02x) data:0x%02x"
++i2c_ack(void) ""
+ 
+ # aspeed_i2c.c
+ 
+diff --git a/hw/nvram/eeprom_at24c.c b/hw/nvram/eeprom_at24c.c
+index 01a3093600..d695f6ae89 100644
+--- a/hw/nvram/eeprom_at24c.c
++++ b/hw/nvram/eeprom_at24c.c
+@@ -75,6 +75,8 @@ int at24c_eeprom_event(I2CSlave *s, enum i2c_event event)
+         break;
+     case I2C_NACK:
+         break;
++    default:
++        return -1;
+     }
+     return 0;
+ }
+diff --git a/hw/sensor/lsm303dlhc_mag.c b/hw/sensor/lsm303dlhc_mag.c
+index 4c98ddbf20..bb8d48b2fd 100644
+--- a/hw/sensor/lsm303dlhc_mag.c
++++ b/hw/sensor/lsm303dlhc_mag.c
+@@ -427,6 +427,8 @@ static int lsm303dlhc_mag_event(I2CSlave *i2c, enum i2c_event event)
+         break;
+     case I2C_NACK:
+         break;
++    default:
++        return -1;
+     }
+ 
+     s->len = 0;
+diff --git a/include/hw/i2c/i2c.h b/include/hw/i2c/i2c.h
+index be8bb8b78a..9b9581d230 100644
+--- a/include/hw/i2c/i2c.h
++++ b/include/hw/i2c/i2c.h
+@@ -12,6 +12,7 @@
+ enum i2c_event {
+     I2C_START_RECV,
+     I2C_START_SEND,
++    I2C_START_SEND_ASYNC,
+     I2C_FINISH,
+     I2C_NACK /* Masker NACKed a receive byte.  */
+ };
+@@ -28,6 +29,9 @@ struct I2CSlaveClass {
+     /* Master to slave. Returns non-zero for a NAK, 0 for success. */
+     int (*send)(I2CSlave *s, uint8_t data);
+ 
++    /* Master to slave (asynchronous). Receiving slave must call i2c_ack(). */
++    void (*send_async)(I2CSlave *s, uint8_t data);
++
+     /*
+      * Slave to master.  This cannot fail, the device should always
+      * return something here.
+@@ -127,11 +131,23 @@ int i2c_start_recv(I2CBus *bus, uint8_t address);
+  */
+ int i2c_start_send(I2CBus *bus, uint8_t address);
+ 
++/**
++ * i2c_start_send_async: start an asynchronous 'send' transfer on an I2C bus.
++ *
++ * @bus: #I2CBus to be used
++ * @address: address of the slave
++ *
++ * Return: 0 on success, -1 on error
++ */
++int i2c_start_send_async(I2CBus *bus, uint8_t address);
++
+ void i2c_end_transfer(I2CBus *bus);
+ void i2c_nack(I2CBus *bus);
++void i2c_ack(I2CBus *bus);
+ void i2c_bus_master(I2CBus *bus, QEMUBH *bh);
+ void i2c_bus_release(I2CBus *bus);
+ int i2c_send(I2CBus *bus, uint8_t data);
++int i2c_send_async(I2CBus *bus, uint8_t data);
+ uint8_t i2c_recv(I2CBus *bus);
+ bool i2c_scan_bus(I2CBus *bus, uint8_t address, bool broadcast,
+                   I2CNodeList *current_devs);
 -- 
 2.37.0
 

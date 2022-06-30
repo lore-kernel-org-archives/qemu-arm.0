@@ -1,72 +1,72 @@
-Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp253457lft;
-        Thu, 30 Jun 2022 04:25:54 -0700 (PDT)
-X-Google-Smtp-Source: AGRyM1scZJb9FRh78W3jh2ZinldfQMDrB6ZwGDJ5yKhjH1u9Mr1uBS1qyMtlXpve/GwjlqT9kRSt
-X-Received: by 2002:a05:6214:1d2e:b0:470:686a:f5e5 with SMTP id f14-20020a0562141d2e00b00470686af5e5mr10871219qvd.24.1656588354643;
-        Thu, 30 Jun 2022 04:25:54 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1656588354; cv=none;
+Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp253643lft;
+        Thu, 30 Jun 2022 04:26:14 -0700 (PDT)
+X-Google-Smtp-Source: AGRyM1t0kCOwOcPJ5tNYpsWv+6TaF06O2dH+trZ0kxriYUAC67M7vtd4jyYgtdr5kmYTGkUlCQlt
+X-Received: by 2002:a37:6453:0:b0:6ae:e740:92c1 with SMTP id y80-20020a376453000000b006aee74092c1mr5671213qkb.174.1656588373900;
+        Thu, 30 Jun 2022 04:26:13 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1656588373; cv=none;
         d=google.com; s=arc-20160816;
-        b=t4rHuwLZaaPC2iwPFPlcRL7ZCUvVEXHuvWRhyU5u/02aiFYwysJBU7j/bzRP6au7x9
-         +pi9+Oqc/Zms8CzWqYLKC7Oj0lvlyKEROpH7fIDuHx+FXwh1YT0Kl6lyAtlv8oWBG+Rw
-         SDo8qsOaE+f71haPCGZxYqnrNxvXuga3yGgOqN1Q5rWL04vgy9rNrDEBefkHcMFdCEFf
-         zYB5rKOqMLEuguGdcSP2fAgGIcM9Vp3cmRXO6K1GaCoKDDqJhNTqptDs79ZFCF51CXZf
-         LCU+tceu0wbBid0rWXVVXkt+prSAQBsPQrZtiJlIqHQNZWnnP/VI3o7bRxg3gZlg9/nD
-         UagA==
+        b=ViDXtwNNq5+oqZv5we8HN+SlNrLESb1mJmK58Hze2EjvrI8HpFA5MCgd6F/9Sf6VZt
+         kv3WMynlaTkrwymPV7zpz0CnzR1bmpSr5tG7z+u3FY2HON5hnBBImfhwSyW7dW10BBmW
+         NKNnTMuP9bG8IACagjt6DcQFItZ7RTf/srURhdBonUfdI7FLQWxZBvi5gvPrNrTn3a7m
+         UZIU+tYz4IUVlcPgjCR9YF0iWsIYpp71febnIEzc/AhoHH4ZxzB5Dw6wJ9WKI6GAe0Nx
+         GBYKGsUl/Kvme46Z2iy+m6oxc8PaGt3EKbn84AxZdOpYs6mpi/S/yxZDfDNmTafJccTP
+         w2zw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from;
-        bh=Gvr49MLenMCDMz+2cS9AxaxbFebEHx7LN00h2MZjTHc=;
-        b=ovppyduqqVjd0IAr/rYZAbEovRIeKpe0YDjySeANkjXUYs5q6Fga9dGeDgWDrNwzWG
-         cyrynaQmRO5eMnv6R+1DU0jdeAQreos4yY5GkMAsT+RjkleaWnsrulaHxvj2Z2yOjboD
-         Wt2el6T9aWjzP2UdNbmL7sNluGXzA0oUscwyFgnT/USYktcsz9LX5WLWTQ3gglB3HuE6
-         2ryn42L9bJJy9Bj/bkF5fiVJMbuMimDaKq82iuptuucmHoWEZB8AMfkxbFmFCWLuGecm
-         Dsmm3pzHN6v8c8zOUoP5vagyjyMcSUJt0KFaJtYtykh0FJZ1s/4Dm9XLriXqzHpaTJAs
-         dYIA==
+        bh=7Zv1KO5xBbPFnINmOyaUo+l1cFTieBhUBQ78twwFOu4=;
+        b=Eq06GE6SqbujMX4evst+UQdwpXA72NmaGVLz8x+ZTjvqfphVipD9ZNirs0b7Mx1IIt
+         tuylat+5SHPz1McS64E+BQvmLZkhIXTC6NMuCq0istHgaAlzTweIAS4k0JbyFJjcNw3f
+         g9MN1xWFqmsdYEMTWgAhP0am+GsW+xQLkaYZi7CTpIgBVkOela4K9dSc+I1VMGK5DpAf
+         ZynPVxJHfvZIsbwpR8KO+FyLO6BXFPdbOQp3oj7jdYUBKbL1a0hOH/pqi3cpl41J0di1
+         sa9cZP8tRrvnRkXgRhzlV2YBlJLlME9uH/biTUkcpdr9ikEZQI5LOlnZlVibPH8Fta3J
+         H/Dg==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id eq3-20020ad45963000000b0046b8e864d2bsi10922904qvb.106.2022.06.30.04.25.54
+        by mx.google.com with ESMTPS id 4-20020a370404000000b006a66f274192si10263985qke.507.2022.06.30.04.26.13
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 30 Jun 2022 04:25:54 -0700 (PDT)
+        Thu, 30 Jun 2022 04:26:13 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:44412 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:45668 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1o6sJ0-0000Si-02
-	for alex.bennee@linaro.org; Thu, 30 Jun 2022 07:25:54 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33348)
+	id 1o6sJJ-0001Vl-Bi
+	for alex.bennee@linaro.org; Thu, 30 Jun 2022 07:26:13 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33484)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=N4Bw=XF=kaod.org=clg@ozlabs.org>)
- id 1o6sHh-00074P-Nv; Thu, 30 Jun 2022 07:24:33 -0400
-Received: from gandalf.ozlabs.org ([150.107.74.76]:60855)
+ id 1o6sHn-0007Lv-CP; Thu, 30 Jun 2022 07:24:39 -0400
+Received: from gandalf.ozlabs.org ([150.107.74.76]:33485)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=N4Bw=XF=kaod.org=clg@ozlabs.org>)
- id 1o6sHg-0001yZ-4M; Thu, 30 Jun 2022 07:24:33 -0400
+ id 1o6sHl-000215-JW; Thu, 30 Jun 2022 07:24:39 -0400
 Received: from gandalf.ozlabs.org (mail.ozlabs.org
  [IPv6:2404:9400:2221:ea00::3])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4LYbZj539fz4xYY;
- Thu, 30 Jun 2022 21:24:29 +1000 (AEST)
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4LYbZq15Qwz4xXD;
+ Thu, 30 Jun 2022 21:24:35 +1000 (AEST)
 Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
  (No client certificate requested)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4LYbZg4q3dz4xD5;
- Thu, 30 Jun 2022 21:24:27 +1000 (AEST)
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4LYbZm5Mwhz4xD5;
+ Thu, 30 Jun 2022 21:24:32 +1000 (AEST)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>,
  Richard Henderson <richard.henderson@linaro.org>,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
- Peter Delevoryas <pdel@fb.com>
-Subject: [PULL 04/27] aspeed/scu: Add trace events for read ops
-Date: Thu, 30 Jun 2022 13:23:48 +0200
-Message-Id: <20220630112411.1474431-5-clg@kaod.org>
+ Joel Stanley <joel@jms.id.au>,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
+Subject: [PULL 06/27] aspeed/hace: Accumulative mode supported
+Date: Thu, 30 Jun 2022 13:23:50 +0200
+Message-Id: <20220630112411.1474431-7-clg@kaod.org>
 X-Mailer: git-send-email 2.35.3
 In-Reply-To: <20220630112411.1474431-1-clg@kaod.org>
 References: <20220630112411.1474431-1-clg@kaod.org>
@@ -95,48 +95,43 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: L0g9GH/5AliN
+X-TUID: EMvE5Gfp2Ui6
 
-Reviewed-by: Peter Delevoryas <pdel@fb.com>
-Message-Id: <20220628154740.1117349-2-clg@kaod.org>
+From: Joel Stanley <joel@jms.id.au>
+
+While the HMAC mode is not modelled, the accumulative mode is.
+
+Accumulative mode is enabled by setting one of the bits in the HMAC
+engine command mode part of the register, so fix the unimplemented check
+to only look at the upper of the two bits.
+
+Fixes: 5cd7d8564a8b ("aspeed/hace: Support AST2600 HACE")
+Signed-off-by: Joel Stanley <joel@jms.id.au>
+Reviewed-by: Cédric Le Goater <clg@kaod.org>
+Message-Id: <20220627100816.125956-1-joel@jms.id.au>
 Signed-off-by: Cédric Le Goater <clg@kaod.org>
 ---
- hw/misc/aspeed_scu.c | 2 ++
- hw/misc/trace-events | 1 +
- 2 files changed, 3 insertions(+)
+ hw/misc/aspeed_hace.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
-diff --git a/hw/misc/aspeed_scu.c b/hw/misc/aspeed_scu.c
-index 19b03471fc4e..83353649064a 100644
---- a/hw/misc/aspeed_scu.c
-+++ b/hw/misc/aspeed_scu.c
-@@ -270,6 +270,7 @@ static uint64_t aspeed_scu_read(void *opaque, hwaddr offset, unsigned size)
-         break;
-     }
+diff --git a/hw/misc/aspeed_hace.c b/hw/misc/aspeed_hace.c
+index 731234b78c4c..ac21be306c69 100644
+--- a/hw/misc/aspeed_hace.c
++++ b/hw/misc/aspeed_hace.c
+@@ -338,10 +338,10 @@ static void aspeed_hace_write(void *opaque, hwaddr addr, uint64_t data,
+         int algo;
+         data &= ahc->hash_mask;
  
-+    trace_aspeed_scu_read(offset, size, s->regs[reg]);
-     return s->regs[reg];
- }
- 
-@@ -637,6 +638,7 @@ static uint64_t aspeed_ast2600_scu_read(void *opaque, hwaddr offset,
-         break;
-     }
- 
-+    trace_aspeed_scu_read(offset, size, s->regs[reg]);
-     return s->regs[reg];
- }
- 
-diff --git a/hw/misc/trace-events b/hw/misc/trace-events
-index c5e37b01547f..f776f24fb5d1 100644
---- a/hw/misc/trace-events
-+++ b/hw/misc/trace-events
-@@ -69,6 +69,7 @@ slavio_led_mem_readw(uint32_t ret) "Read diagnostic LED 0x%04x"
- 
- # aspeed_scu.c
- aspeed_scu_write(uint64_t offset, unsigned size, uint32_t data) "To 0x%" PRIx64 " of size %u: 0x%" PRIx32
-+aspeed_scu_read(uint64_t offset, unsigned size, uint32_t data) "To 0x%" PRIx64 " of size %u: 0x%" PRIx32
- 
- # mps2-scc.c
- mps2_scc_read(uint64_t offset, uint64_t data, unsigned size) "MPS2 SCC read: offset 0x%" PRIx64 " data 0x%" PRIx64 " size %u"
+-        if ((data & HASH_HMAC_MASK)) {
++        if ((data & HASH_DIGEST_HMAC)) {
+             qemu_log_mask(LOG_UNIMP,
+-                          "%s: HMAC engine command mode %"PRIx64" not implemented\n",
+-                          __func__, (data & HASH_HMAC_MASK) >> 8);
++                          "%s: HMAC mode not implemented\n",
++                          __func__);
+         }
+         if (data & BIT(1)) {
+             qemu_log_mask(LOG_UNIMP,
 -- 
 2.35.3
 

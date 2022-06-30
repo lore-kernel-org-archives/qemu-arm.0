@@ -1,116 +1,114 @@
-Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp40131lft;
-        Wed, 29 Jun 2022 22:06:30 -0700 (PDT)
-X-Google-Smtp-Source: AGRyM1vixfFyH4rog+5UMWrijBcXkurV3os9rLUSjwmRF4vjhp2rOrjeN+muYVBwFzdUMpAI9CTp
-X-Received: by 2002:a05:6214:1ccd:b0:46e:6e9b:7a6 with SMTP id g13-20020a0562141ccd00b0046e6e9b07a6mr9726994qvd.18.1656565590464;
-        Wed, 29 Jun 2022 22:06:30 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1656565590; cv=none;
+Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp32416lft;
+        Wed, 29 Jun 2022 21:52:02 -0700 (PDT)
+X-Google-Smtp-Source: AGRyM1so0+/+yeelvylYivOUs3pHxgg+BBNZpm3IQrwZWRqyuIyAUatqkrDmr2NjVRODhD2yA3p1
+X-Received: by 2002:ac8:7f88:0:b0:31b:f70c:7b6e with SMTP id z8-20020ac87f88000000b0031bf70c7b6emr5935298qtj.561.1656564722622;
+        Wed, 29 Jun 2022 21:52:02 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1656564722; cv=none;
         d=google.com; s=arc-20160816;
-        b=OfGdbZsZyh9HhfY91J6tg+Ul5u47q4/sbwBCO4SXZ0Qvv49detMY3No8c6bfiElzqs
-         Xfo42zKby6QGTXGKz72KlxVNVbm6LZF3R8zSYLrhECqDhNKuPycMlEiJ/m/8AuLHcQ+r
-         dkhz90iOxVv0L/fYxuECeHy/K2Zr5SEVkYx/nqQdvOypL+4E6v5olY8WYsFsGSXYhnOR
-         AQ9tceSNLaWp3GQn4dI2oj2UY7r//G6hgfPVGaXdZxXKDWhwlkDbFzSFjyPxOhHpInNu
-         YEHpg4YxjuTT41htAZEvDKl93nWmGj5hm7aqh8ui0ShykAUApBpZ6bEVd8nXWcViqrRY
-         HkYQ==
+        b=iYTD6xiHLZsbQkjBrVfga7yhnMY8CpHgT6L0cKi60wXxbAoREhjqaciZfPrMz2jctE
+         YMclPJ0KPfKSsYJy9N8NBGXyAzGagiMQXLMb7zW/eRW9miL0cfBdF6gfqg/iodEKxHsI
+         BTrlwMdrm35mXyOKgBXLjbAGrXp3uAh26rOyTICKuleKiTh/Yp7rYVq0cB/mt2QjgN/v
+         bfg4pZMow4G7A5PZl58vrvgu5tQODznI7Jiu89DxZm487hCCzqkWVU+W4pHKxLQ8gOR4
+         7vkuz65fuGFhZRLS9D46kwHYIkBFfGw30s8X9Jwom2hIFcSyfFNGN0Vfk/2LgBzdSqZD
+         7NYA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:feedback-id:dkim-signature:dkim-signature;
-        bh=PRoZqJzJq9oinoMfv7DuvwTQs1e7zNhPFSZgAX+uBLo=;
-        b=pmp0u42xKpFCQZnN7lP8I6qdbNheBKJ92Jpu5VN4fCmu+q9HthFbWu2UuC4o243J16
-         S9AFBz74mFoOFcizyUB4OB164//7qtRJHbwD7n0cIsx4XTXGmpuT0DaGmXlBiY5AwQKM
-         dFHFP9nCZfKezX5wC3HiNhA/td2/U2Jw3N6qVMohrTGAwmVoP8IX+xRzE+t6gFsRsY24
-         S8qRJpn6CRfNDYGscK/iCtkOr294fnhzZR3VhMxt3cW04s54tT5p69Hf8xPpx3Z0FvUv
-         H1PHSKB+ZWueS1GmMmhlJMeyizX0rTqhn8mN86Af8zXSwR9CjG2hUiHlZLcmJSZe6lOx
-         KJDg==
+         :mime-version:message-id:date:subject:cc:to:from:feedback-id
+         :dkim-signature:dkim-signature;
+        bh=MomHN+Omh/AfHQZ4UVOp8mXiY2fg0ekRAXZuzEOUX+o=;
+        b=r28oqs1fe/rEJWOnuV+Exz5ZBPkJeUunmmy5lP2T2/eMxop7If2ERshmvqjfY4vPop
+         m5u9s+hNKxXZpcJ6XhjPZvhZW5imNDsjo5T8jV75BJUgibKmqZ4QDaA8hXkfOLPilahO
+         tJkTFFUNhO5tttcqTy2P8N1PPBx2N6A6Q9JbQMBFJqoKswva7LnBlq3JH+2h3SRuTdzJ
+         ZEGydw8GRkttMDERttPPUHhCUe0U+K4y77+PhsGTBWyoNjn+UiCEmftHjvBGuXhBjP/F
+         U95krP7MnN7Fbc0ipYvHXc9RZF3P0FkBnGlzbiVELBhE18EdY7nfzEyrO5FcoKCXZEi3
+         BL2g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@pjd.dev header.s=fm1 header.b=O6W8C7o+;
-       dkim=fail header.i=@messagingengine.com header.s=i9e814621.fm2 header.b=tc+zfyLF;
+       dkim=fail header.i=@pjd.dev header.s=fm1 header.b=hGlW1tEF;
+       dkim=fail header.i=@messagingengine.com header.s=i9e814621.fm2 header.b=bnJFOzYw;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id m17-20020aed27d1000000b00315fc7161desi9042877qtg.98.2022.06.29.22.06.30
+        by mx.google.com with ESMTPS id f9-20020a0562141d2900b004707ec044edsi10389078qvd.340.2022.06.29.21.52.02
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 29 Jun 2022 22:06:30 -0700 (PDT)
+        Wed, 29 Jun 2022 21:52:02 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@pjd.dev header.s=fm1 header.b=O6W8C7o+;
-       dkim=fail header.i=@messagingengine.com header.s=i9e814621.fm2 header.b=tc+zfyLF;
+       dkim=fail header.i=@pjd.dev header.s=fm1 header.b=hGlW1tEF;
+       dkim=fail header.i=@messagingengine.com header.s=i9e814621.fm2 header.b=bnJFOzYw;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:60298 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:34532 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1o6mNp-0004zZ-Ud
-	for alex.bennee@linaro.org; Thu, 30 Jun 2022 01:06:29 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45916)
+	id 1o6m9q-0002Mg-2y
+	for alex.bennee@linaro.org; Thu, 30 Jun 2022 00:52:02 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:45678)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <me@pjd.dev>)
- id 1o6mAJ-0003kN-EA; Thu, 30 Jun 2022 00:52:31 -0400
-Received: from wnew1-smtp.messagingengine.com ([64.147.123.26]:42759)
+ id 1o6m9a-0002LB-JY; Thu, 30 Jun 2022 00:51:46 -0400
+Received: from wnew1-smtp.messagingengine.com ([64.147.123.26]:53701)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <me@pjd.dev>)
- id 1o6mAE-00073h-Gz; Thu, 30 Jun 2022 00:52:31 -0400
+ id 1o6m9V-0006tS-HG; Thu, 30 Jun 2022 00:51:46 -0400
 Received: from compute3.internal (compute3.nyi.internal [10.202.2.43])
- by mailnew.west.internal (Postfix) with ESMTP id 318A42B058D5;
- Thu, 30 Jun 2022 00:52:24 -0400 (EDT)
+ by mailnew.west.internal (Postfix) with ESMTP id BDE6B2B058D4;
+ Thu, 30 Jun 2022 00:51:35 -0400 (EDT)
 Received: from mailfrontend1 ([10.202.2.162])
- by compute3.internal (MEProxy); Thu, 30 Jun 2022 00:52:25 -0400
+ by compute3.internal (MEProxy); Thu, 30 Jun 2022 00:51:36 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=pjd.dev; h=cc:cc
- :content-transfer-encoding:date:date:from:from:in-reply-to
- :in-reply-to:message-id:mime-version:references:reply-to:sender
- :subject:subject:to:to; s=fm1; t=1656564742; x=1656568342; bh=PR
- oZqJzJq9oinoMfv7DuvwTQs1e7zNhPFSZgAX+uBLo=; b=O6W8C7o+IMuNUU9Si9
- tQw5qax4OIcliCbsaz62aG03l8VGy/zfT2KBQ8xD2vxhxdScyBAYeKYd3VUZYqCk
- GnVi+Q1Y+jUoUajBaeEr6wytrXYO8Uj6H4V73tGNI2/6j5M32tJovHhRPEueYs0s
- jrP1K7ymsVYYrj90oZqrpZD7ya9dW3Ox6f70/rJF5qX+H8zQBNZMbcfLFfgygLdE
- egcQhrVQgv2dWMAD5LckvFXz1jEnN4us7yEImvHgIpbN7Rgx0f9ofU/2WNT7cIne
- 3+m3hljFlKKj7GCYQAlz4o/Ll9klilZeMi3BjQcDvqQvGgYHumYk5HTwtWbz3H1K
- bXNA==
+ :content-transfer-encoding:content-type:date:date:from:from
+ :in-reply-to:message-id:mime-version:reply-to:sender:subject
+ :subject:to:to; s=fm1; t=1656564695; x=1656568295; bh=MomHN+Omh/
+ AfHQZ4UVOp8mXiY2fg0ekRAXZuzEOUX+o=; b=hGlW1tEFVpg+eUTElynOeocg/l
+ bWAQ8RQjXzYO3BQMM1DID3c80ix1NiHsjuQIPoMMT+Ms1dOQatuWCN1f7Q+SrdHp
+ GKqfQLDsrPkW56ksRXYowKv4BEbSlK2/urjeA4K6c8DYNeb0GAT6dIdUBcPIJU10
+ rhVwPAH5mihu5YSNmq0GwLdiWMGCQUG0D/oWT6O4RQVw4WRuE8h5fro9iDcUvvHf
+ zWQRnaH2LfrTdsEpHod7o5jbTquUk8mZQdbTbeqxJJh8kPvE9wH3MVGHxRX8l7W/
+ nAqcpHWZEMGAH3Gzqi/uy/QRjV2IJ7TWkhkaB4PZGWbgKI5Emrv4ikFdk/Bw==
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
- messagingengine.com; h=cc:cc:content-transfer-encoding:date:date
- :feedback-id:feedback-id:from:from:in-reply-to:in-reply-to
- :message-id:mime-version:references:reply-to:sender:subject
+ messagingengine.com; h=cc:cc:content-transfer-encoding
+ :content-type:date:date:feedback-id:feedback-id:from:from
+ :in-reply-to:message-id:mime-version:reply-to:sender:subject
  :subject:to:to:x-me-proxy:x-me-proxy:x-me-sender:x-me-sender
- :x-sasl-enc; s=i9e814621.fm2; t=1656564742; x=1656568342; bh=PRo
- ZqJzJq9oinoMfv7DuvwTQs1e7zNhPFSZgAX+uBLo=; b=tc+zfyLF7lcIhfcVji2
- Bj6LixnGVBso5B8wSCXYexePNpUeeM1OmQa6xK1iuohGmTeNVSYW0bpKvSQbZnvv
- +L/lZ3Xo4s0GSNQ+Bs7gn3OH25JQAWUQQyu5Mk8/0vfN8Q/ptbf3FOeL8q9xZiPU
- usWp0vXFYfFWia0GPLjuvkMVMTZPwRgILKdOetxlKgZzrcyyUIY4el0SVrx1lKuw
- qtsC4s/tCYX8f/r/DP0LEJsxoGHpyQ12fJy1m6v+Y5mJGE7BXKqk0UY3iRCa8DrG
- hM/Bxk11I9UdpIoiovOxvnBMFiIVfmCTXqra4Z8lUr8NcRc1ZJcU79dpNKCc6LRE
- 8cA==
-X-ME-Sender: <xms:Biy9YlEKc_SFOtyxKkIy4cKWs6E-fzogLYHQx11ofE58if7kGtwdTA>
- <xme:Biy9YqVG4niezWC9eC3uS7o179hvgKiCbiBl4WQFwOAXUEAWJaHADip4vEW8f7SGu
- tvr74lJsqc4zEgWWn4>
-X-ME-Received: <xmr:Biy9YnKqTPGMGl23X3Tu6oKOumG9w3N_OgqY8Iy9pTrTQJyD1XTVlaWZFCQyJ7nmPXi3gKCecteEZhEWfLeRvFQFcQ9kwHD_>
+ :x-sasl-enc; s=i9e814621.fm2; t=1656564695; x=1656568295; bh=Mom
+ HN+Omh/AfHQZ4UVOp8mXiY2fg0ekRAXZuzEOUX+o=; b=bnJFOzYw32yz9fGBbwy
+ X3VOCjPay1qhHzatDexfhHiIO0xDKQ/pDBH+NqyqRrsLi8DS7YixG9loK8jSEOgC
+ oD2nNHiaKfyt74sI4Q1uMWi6cU0KybKBZX5r2a+aDt+e6OWI+4JYbp9yC+qtHOi6
+ WJiJdiQj57lMdC0380q8yMegoxLkoVAjuDWKtbcYqmP+dsbxv/ilRBcxyC4rCmXy
+ DwUuBufOfkoclJoQ0DPXVQeBnQmofOlv8YhNKUkRMgdLVfnz0pKk1ZMBOz4JFR/0
+ aOX7FfRw2ugCu+EehkYfHbEC2M4ea9c/eECHkejJojowr4WvZkGUzTKhHfdRFoCB
+ uDg==
+X-ME-Sender: <xms:1iu9Yqk8YbpTj5cKJGuVDfTHSOxydW3XDwZe8ToEQiyB90DQhAWlWA>
+ <xme:1iu9Yh3GqHk-jgn2ZuiHRPSZOlCOsKaUAslv1VTkfX-jSPCxlyYqFkec4pYXEC4g_
+ 6ys1rBHGxwuH4tEkqg>
+X-ME-Received: <xmr:1iu9YorA9i7C8DgDuZIXDtKcKCHPYbSjbN3wPYQ4WPTW0V9nobqn0K9ydUyOkP4Jcid_x7WtJg0sZvhARSrPB8PjH0eHeu90>
 X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvfedrudehtddgkeelucetufdoteggodetrfdotf
  fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
  uceurghilhhouhhtmecufedttdenuchmihhsshhinhhgucfvqfcufhhivghlugculdeftd
- dmnecujfgurhephffvvefufffkofgjfhgggfestdekredtredttdenucfhrhhomheprfgv
- thgvrhcuffgvlhgvvhhorhihrghsuceomhgvsehpjhgurdguvghvqeenucggtffrrghtth
- gvrhhnpeetleevtefgleevleelteekffffvdekheekkeejveegheelveehgeeufffgtdei
- leenucffohhmrghinhepghhithhhuhgsrdgtohhmnecuvehluhhsthgvrhfuihiivgepud
- enucfrrghrrghmpehmrghilhhfrhhomhepmhgvsehpjhgurdguvghv
-X-ME-Proxy: <xmx:Biy9YrFqwuBOwlNgUkEZ7_enzdw90u0LIbFXm7QAvfGaljfIiKaLyQ>
- <xmx:Biy9YrU3EnTDWFJDF9R2vZDvRu2mAXzKTkxi_D1OqTga7t7eK92pIw>
- <xmx:Biy9YmPykJttFlQq-PemkI7ooQelk5gcWGR8HZ0iledPkhC8B0R9Yg>
- <xmx:Biy9YnoTIxExOf8ndC3FDd4faBru0Q9a3rcEWNU4DfebHMh273G15r02CV4>
+ dmnecujfgurhephffvvefufffkofggtgfgsehtkeertdertdejnecuhfhrohhmpefrvght
+ vghrucffvghlvghvohhrhigrshcuoehmvgesphhjugdruggvvheqnecuggftrfgrthhtvg
+ hrnhepkeelvefggedvhfdvudfgtdfgjedtffehgeehvdekheehjedvheefkeehkeehgedt
+ necuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmrghilhhfrhhomhepmhgvse
+ hpjhgurdguvghv
+X-ME-Proxy: <xmx:1iu9YuliJyB-BZ1vE_kGodPMpX3FeEVkOmlwUgyLobhZLdtCSzQGew>
+ <xmx:1iu9Yo03soz30FuFjL-2uH37cHqccwpPNtJSYbcMAslSPOYg4ImBtw>
+ <xmx:1iu9YlvxrAJxm4Q1T0-0azcuG-__k0wKXPnKj3AE_pjMOOKPbcLQfQ>
+ <xmx:1yu9YpLfXhBaJ61Gr-HYsAUJttlz06NBckHCoj4KkDYV1AynlMGtVPw72Zw>
 Feedback-ID: i9e814621:Fastmail
 Received: by mail.messagingengine.com (Postfix) with ESMTPA; Thu,
- 30 Jun 2022 00:52:21 -0400 (EDT)
+ 30 Jun 2022 00:51:34 -0400 (EDT)
 From: Peter Delevoryas <me@pjd.dev>
 To: 
 Cc: clg@kaod.org, peter.maydell@linaro.org, andrew@aj.id.au, joel@jms.id.au,
  cminyard@mvista.com, titusr@google.com, qemu-devel@nongnu.org,
  qemu-arm@nongnu.org, zhdaniel@fb.com, pdel@fb.com
-Subject: [PATCH v3 14/14] hw/arm/aspeed: Add oby35-cl machine
-Date: Wed, 29 Jun 2022 21:51:33 -0700
-Message-Id: <20220630045133.32251-15-me@pjd.dev>
+Subject: [PATCH v3 00/14] hw/i2c/aspeed: I2C slave mode DMA RX w/ new regs
+Date: Wed, 29 Jun 2022 21:51:19 -0700
+Message-Id: <20220630045133.32251-1-me@pjd.dev>
 X-Mailer: git-send-email 2.37.0
-In-Reply-To: <20220630045133.32251-1-me@pjd.dev>
-References: <20220630045133.32251-1-me@pjd.dev>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 Received-SPF: pass client-ip=64.147.123.26; envelope-from=me@pjd.dev;
  helo=wnew1-smtp.messagingengine.com
@@ -135,149 +133,79 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 3vXhmV8a1GP1
+X-TUID: rbHO4MwPi/DF
 
 From: Peter Delevoryas <pdel@fb.com>
 
-The fby35 machine includes 4 server boards, each of which has a "bridge
-interconnect" (BIC). This chip abstracts the pinout for the server board
-into a single endpoint that the baseboard management controller (BMC)
-can talk to using IPMB.
+v3:
+- hw/i2c/pmbus_device:
+  - Removed commit that resets the out buf.
+  - Removed IC_DEVICE_ID
+  - Added commit to allow devices to move to an idle state that
+    avoids enqueuing excess data into the out buf.
+- hw/sensor/isl_pmbus_vr:
+  - Added IC_DEVICE_ID commit just for voltage regulators.
+  - Added ISL69259 with an IC_DEVICE_ID.
+- hw/misc/aspeed_peci:
+  - Moved registers from .h to .c
+  - Replaced guest_error on interrupt disable case with trace
+    for all interrupts (not just when they're disabled).
+  - Removed leftover qemu_irq_raise
 
-This commit adds a machine for testing the BIC on the server board. It
-runs OpenBIC (https://github.com/facebook/openbic) and the server board
-is called CraterLake, so the code name is oby35-cl. There's also a
-variant of the baseboard that replaces the BMC with a BIC, but that
-machine is not included here.
+Thanks,
+Peter
 
-A test image can be built from https://github.com/facebook/openbic using
-the instructions in the README.md to build the meta-facebook/yv35-cl
-recipe, or retrieved from my Github:
+Klaus Jensen (3):
+  hw/i2c: support multiple masters
+  hw/i2c: add asynchronous send
+  hw/i2c/aspeed: add slave device in old register mode
 
-    wget https://github.com/peterdelevoryas/OpenBIC/releases/download/oby35-cl-2022.17.01/Y35BCL.elf
+Peter Delevoryas (11):
+  hw/i2c/aspeed: Fix R_I2CD_FUN_CTRL reference
+  hw/i2c/aspeed: Fix DMA len write-enable bit handling
+  hw/i2c/aspeed: Fix MASTER_EN missing error message
+  hw/i2c/aspeed: Add new-registers DMA slave mode RX support
+  hw/i2c/pmbus: Add idle state to return 0xff's
+  hw/sensor: Add IC_DEVICE_ID to ISL voltage regulators
+  hw/sensor: Add Renesas ISL69259 device model
+  hw/misc/aspeed: Add PECI controller
+  hw/misc/aspeed: Add fby35-sb-cpld
+  hw/misc/aspeed: Add intel-me
+  hw/arm/aspeed: Add oby35-cl machine
 
-And you can run this machine with the following command:
+ MAINTAINERS                      |   2 +
+ hw/arm/aspeed.c                  |  48 +++++++
+ hw/arm/aspeed_ast10x0.c          |  12 ++
+ hw/arm/aspeed_ast2600.c          |  12 ++
+ hw/arm/aspeed_soc.c              |  13 ++
+ hw/arm/pxa2xx.c                  |   2 +
+ hw/display/sii9022.c             |   2 +
+ hw/display/ssd0303.c             |   2 +
+ hw/i2c/aspeed_i2c.c              | 234 +++++++++++++++++++++++++++----
+ hw/i2c/core.c                    |  70 ++++++++-
+ hw/i2c/pmbus_device.c            |   9 ++
+ hw/i2c/smbus_slave.c             |   4 +
+ hw/i2c/trace-events              |   2 +
+ hw/misc/aspeed_peci.c            | 152 ++++++++++++++++++++
+ hw/misc/fby35_sb_cpld.c          | 128 +++++++++++++++++
+ hw/misc/intel_me.c               | 162 +++++++++++++++++++++
+ hw/misc/meson.build              |   5 +-
+ hw/misc/trace-events             |  13 ++
+ hw/nvram/eeprom_at24c.c          |   2 +
+ hw/sensor/isl_pmbus_vr.c         |  40 ++++++
+ hw/sensor/lsm303dlhc_mag.c       |   2 +
+ include/hw/arm/aspeed_soc.h      |   3 +
+ include/hw/i2c/aspeed_i2c.h      |  11 ++
+ include/hw/i2c/i2c.h             |  30 ++++
+ include/hw/i2c/pmbus_device.h    |   7 +
+ include/hw/misc/aspeed_peci.h    |  29 ++++
+ include/hw/sensor/isl_pmbus_vr.h |   5 +
+ 27 files changed, 971 insertions(+), 30 deletions(-)
+ create mode 100644 hw/misc/aspeed_peci.c
+ create mode 100644 hw/misc/fby35_sb_cpld.c
+ create mode 100644 hw/misc/intel_me.c
+ create mode 100644 include/hw/misc/aspeed_peci.h
 
-    qemu-system-arm -machine oby35-cl -nographic -kernel Y35BCL.elf
-
-It should produce output like the following:
-
-    [00:00:00.005,000] <inf> usb_dc_aspeed: select ep[0x81] as IN endpoint
-    [00:00:00.006,000] <inf> usb_dc_aspeed: select ep[0x82] as IN endpoint
-    [00:00:00.006,000] <wrn> usb_dc_aspeed: pre-selected ep[0x1] as IN endpoint
-    [00:00:00.006,000] <wrn> usb_dc_aspeed: pre-selected ep[0x2] as IN endpoint
-    [00:00:00.006,000] <inf> usb_dc_aspeed: select ep[0x3] as OUT endpoint
-    *** Booting Zephyr OS build v00.01.05  ***
-    Hello, welcome to yv35 craterlake 2022.25.1
-    BIC class type(class-1), 1ou present status(0), 2ou present status(0), board revision(0x1)
-    check_vr_type: i2c4 0x62 page 0 [04 00 81 d2 49 3c ff ff ff ff ff ff ff ff ff ff]
-    check_vr_type: i2c4 0x76 page 0 [04 00 81 d2 49 3c ff ff ff ff ff ff ff ff ff ff]
-    check_vr_type: i2c4 0x76 page 1 [04 00 81 d2 49 3c ff ff ff ff ff ff ff ff ff ff]
-    check_vr_type: i2c4 0x60 page 0 [04 00 81 d2 49 3c ff ff ff ff ff ff ff ff ff ff]
-    check_vr_type: i2c4 0x60 page 1 [04 00 81 d2 49 3c ff ff ff ff ff ff ff ff ff ff]
-    check_vr_type: i2c4 0x62 page 0 [04 00 81 d2 49 3c ff ff ff ff ff ff ff ff ff ff]
-    check_vr_type: i2c4 0x76 page 0 [04 00 81 d2 49 3c ff ff ff ff ff ff ff ff ff ff]
-    check_vr_type: i2c4 0x76 page 1 [04 00 81 d2 49 3c ff ff ff ff ff ff ff ff ff ff]
-    check_vr_type: i2c4 0x60 page 0 [04 00 81 d2 49 3c ff ff ff ff ff ff ff ff ff ff]
-    check_vr_type: i2c4 0x60 page 1 [04 00 81 d2 49 3c ff ff ff ff ff ff ff ff ff ff]
-    check_vr_type: i2c4 0x62 page 0 [04 00 81 d2 49 3c ff ff ff ff ff ff ff ff ff ff]
-    check_vr_type: i2c4 0x76 page 0 [04 00 81 d2 49 3c ff ff ff ff ff ff ff ff ff ff]
-    check_vr_type: i2c4 0x76 page 1 [04 00 81 d2 49 3c ff ff ff ff ff ff ff ff ff ff]
-    check_vr_type: i2c4 0x60 page 0 [04 00 81 d2 49 3c ff ff ff ff ff ff ff ff ff ff]
-    check_vr_type: i2c4 0x60 page 1 [04 00 81 d2 49 3c ff ff ff ff ff ff ff ff ff ff]
-    check_vr_type: i2c4 0x62 page 0 [04 00 81 d2 49 3c ff ff ff ff ff ff ff ff ff ff]
-    check_vr_type: i2c4 0x76 page 0 [04 00 81 d2 49 3c ff ff ff ff ff ff ff ff ff ff]
-    check_vr_type: i2c4 0x76 page 1 [04 00 81 d2 49 3c ff ff ff ff ff ff ff ff ff ff]
-    check_vr_type: i2c4 0x60 page 0 [04 00 81 d2 49 3c ff ff ff ff ff ff ff ff ff ff]
-    check_vr_type: i2c4 0x60 page 1 [04 00 81 d2 49 3c ff ff ff ff ff ff ff ff ff ff]
-    [init_drive_type] sensor 0x14 post sensor read failed!
-
-    [init_drive_type] sensor 0x30 post sensor read failed!
-    [init_drive_type] sensor 0x39 post sensor read failed!
-    ipmi_init
-    [set_DC_status] gpio number(15) status(0)
-    [set_post_status] gpio number(1) status(1)
-    uart:~$ [00:00:01.010,000] <inf> kcs_aspeed: KCS3: addr=0xca2, idr=0x2c, odr=0x38, str=0x44
-
-    [00:00:01.016,000] <err> spi_nor_multi_dev: [1216][spi1_cs0]SFDP magic 00000000 invalid
-    [00:00:01.016,000] <err> spi_nor_multi_dev: [1456]SFDP read failed: -22
-    [00:00:01.010,000] <inf> kcs_aspeed: KCS3: addr=0xca2, idr=0x2c, odr=0x38, str=0x44
-
-    [00:00:01.016,000] <err> spi_nor_multi_dev: [1216][spi1_cs0]SFDP magic 00000000 invalid
-    [00:00:01.016,000] <err> spi_nor_multi_dev: [1456]SFDP read failed: -22
-    uart:~$ BIC Ready
-
-Signed-off-by: Peter Delevoryas <pdel@fb.com>
----
- hw/arm/aspeed.c | 48 ++++++++++++++++++++++++++++++++++++++++++++++++
- 1 file changed, 48 insertions(+)
-
-diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
-index a06f7c1b62..75971ef2ca 100644
---- a/hw/arm/aspeed.c
-+++ b/hw/arm/aspeed.c
-@@ -1429,6 +1429,50 @@ static void aspeed_minibmc_machine_ast1030_evb_class_init(ObjectClass *oc,
-     amc->macs_mask = 0;
- }
- 
-+static void oby35_cl_i2c_init(AspeedMachineState *bmc)
-+{
-+    AspeedSoCState *soc = &bmc->soc;
-+    I2CBus *i2c[14];
-+    I2CBus *ssd[8];
-+    int i;
-+
-+    for (i = 0; i < 14; i++) {
-+        i2c[i] = aspeed_i2c_get_bus(&soc->i2c, i);
-+    }
-+    get_pca9548_channels(i2c[1], 0x71, ssd);
-+
-+    i2c_slave_create_simple(i2c[0], "fby35-sb-cpld", 0x21);
-+    i2c_slave_create_simple(i2c[1], "tmp105", 0x48);
-+    i2c_slave_create_simple(i2c[1], "tmp105", 0x49);
-+    i2c_slave_create_simple(i2c[1], "tmp105", 0x4a);
-+    i2c_slave_create_simple(i2c[1], "adm1272", 0x40);
-+    i2c_slave_create_simple(i2c[1], "tmp421", 0x4c);
-+    i2c_slave_create_simple(i2c[2], "intel-me", 0x16);
-+    i2c_slave_create_simple(i2c[4], "isl69259", 0x76);
-+    i2c_slave_create_simple(i2c[4], "isl69259", 0x62);
-+    i2c_slave_create_simple(i2c[4], "isl69259", 0x60);
-+
-+    for (int i = 0; i < 8; i++) {
-+        i2c_slave_create_simple(ssd[i], "tmp105", 0x6a);
-+    }
-+
-+    /*
-+     * FIXME: This should actually be the BMC, but both the ME and the BMC
-+     * are IPMB endpoints, and the current ME implementation is generic
-+     * enough to respond normally to some things.
-+     */
-+    i2c_slave_create_simple(i2c[6], "intel-me", 0x10);
-+}
-+
-+static void aspeed_machine_oby35_cl_class_init(ObjectClass *oc, void *data)
-+{
-+    MachineClass *mc = MACHINE_CLASS(oc);
-+    AspeedMachineClass *amc = ASPEED_MACHINE_CLASS(oc);
-+
-+    mc->desc = "Meta Platforms fby35 CraterLake BIC (Cortex-M4)";
-+    amc->i2c_init = oby35_cl_i2c_init;
-+}
-+
- static const TypeInfo aspeed_machine_types[] = {
-     {
-         .name          = MACHINE_TYPE_NAME("palmetto-bmc"),
-@@ -1494,6 +1538,10 @@ static const TypeInfo aspeed_machine_types[] = {
-         .name           = MACHINE_TYPE_NAME("ast1030-evb"),
-         .parent         = TYPE_ASPEED_MACHINE,
-         .class_init     = aspeed_minibmc_machine_ast1030_evb_class_init,
-+    }, {
-+        .name          = MACHINE_TYPE_NAME("oby35-cl"),
-+        .parent        = MACHINE_TYPE_NAME("ast1030-evb"),
-+        .class_init    = aspeed_machine_oby35_cl_class_init,
-     }, {
-         .name          = TYPE_ASPEED_MACHINE,
-         .parent        = TYPE_MACHINE,
 -- 
 2.37.0
 

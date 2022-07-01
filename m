@@ -1,118 +1,130 @@
-Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp825946lft;
-        Thu, 30 Jun 2022 18:29:50 -0700 (PDT)
-X-Google-Smtp-Source: AGRyM1teecfyJLa2gm4RMGH4VphcCTywrjYwwHs4ztvl9XiWA3UiK/G+Ihb9jERBRRbfdLxPYAiQ
-X-Received: by 2002:a5b:98c:0:b0:64a:d5c3:4422 with SMTP id c12-20020a5b098c000000b0064ad5c34422mr12731829ybq.638.1656638990753;
-        Thu, 30 Jun 2022 18:29:50 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1656638990; cv=none;
+Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp829858lft;
+        Thu, 30 Jun 2022 18:37:44 -0700 (PDT)
+X-Google-Smtp-Source: AGRyM1v/Df4JJ5IKIjH5KoC7pSmUg/5hCPgevALi7cOZ5VPqPAlezYd78sTvTjwbEhK+Kys8eXMt
+X-Received: by 2002:a0d:cbcd:0:b0:318:889e:643a with SMTP id n196-20020a0dcbcd000000b00318889e643amr14263721ywd.233.1656639464069;
+        Thu, 30 Jun 2022 18:37:44 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1656639464; cv=none;
         d=google.com; s=arc-20160816;
-        b=QGjJRhIRTtvE28rbtT6gHu0vyurfKYNGTg1pOZctri8jfvt9syLHQj7ZtzUQnlVV0H
-         y6Ehqjbd4Xlj2xzzVSM9ZGGtN1saVRGuAVMFEGOukijTYjSVjATxtHgvSSBTn2EBmc0D
-         +o/udkEMrUmkTEW1k01y6BIDdNXOZ+pubseamZiGCTO1KCoag/xSa5nJlcvqjVWQwafs
-         qSaBWdQ6aYjx3BZ7J8vU6mfy2ppyy01yrEK5EmAPb1NjRI2Nr2oCoDdtDm9GBQ/FmFHf
-         gixGBUDgaOTM7jtk5sNwqokTQpWXLYvAneFBHAoLtjYOhzmsHHHwulE2kXEKO6mIMict
-         OSjQ==
+        b=SofVARNVIRpJLny8T7sYysxN82a1sRdN5+CrvJaTnsWQHfMRxszslN9r6w9uUBdfps
+         gd+SLui/bJqAmNP/XpZV6owrPR3DdU5PtThghS7slscsttZGoTcho3VeLR19TFNf3Mwd
+         reJKgoNPLGk3QQM66GEYIMJjixp6if+AyPRhzBunZV8BJuI+GZIFBseAJyGJIeALU4gf
+         eBt1A9VNQoW2uz/UqZ+VwYGNhBriTl6PsfEKMTtq91wKiDbWtq9P5j04lFbr78la8i0Z
+         rk1AaXoREjR6awcmOhTSl0AY6YKklFg5tsusStkNUQbbYxWAlHCvRgDXfn87DxakefEF
+         uUgw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:cc:to:content-language:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=fBxhaKEyiDMxysz71LBRg3W39Bm9lcrfPmTo0dJabwk=;
-        b=V1Zf1iWIeBXKnjC84In4a7A389nxh/BYBoxoqDHWfq10sCCDkimUeYdayhd4eZOQwq
-         CcTk/WmQNphu0RWilpvufwI/N1LDhWr5eDTeMp/Bt3djuVKy2JAXCw35x5Xx+AazaDHB
-         0IJdvfmeI22ELNNPXfWl/Ua6IvXswAs/sePHRsnzfX2mddWYbr2sRfIuifi8EWPQicqU
-         8svhTI+Bz7UlpGiiPSA7CUZIEohx9HHcTf+rcTetYYoIO2vN4GMW1BPNSmiCDy1xdaZk
-         C+1Zo56ufFP8tJiIATqAIx1/OQMt6KrorZ8yiI3IK2mXqepgogr32y7cTx+fy+BCoMgS
-         e/KA==
+         :list-unsubscribe:list-id:precedence:in-reply-to
+         :content-transfer-encoding:content-disposition:mime-version
+         :references:message-id:subject:cc:to:from:date:feedback-id
+         :dkim-signature:dkim-signature;
+        bh=mJaVCOzGop0+EwoM/pCLV7nmhF4vRMY0KdW746isyYY=;
+        b=pBFbRUTzOjNCNom0lKhwKzlRx1wjgJGhKivtBLiTSAa+08jFJGHZ7XnhZOmLd46lo/
+         wKWZ0GNUrj1CJaJj/cSd9zHnwcxZF3LTHWXKgTHl3QusOldHVyiTgGusxn+t3iEoCp4R
+         kOpvNoGrx4dffRvGZHe3rTjm0sXNG1ifGuits8ZIE9p6S3266Y2hS3ByreQTT+XGCgfy
+         5U7S9i9TjQ/Cr0QEWUaVBMW7UH4L7F0FVbKDPq0fKULtU0D+KWzy8+r2mwUp5atC9ENQ
+         sIXkNgzYOa6m6qqICmVjME1sQTWXedB+Tzodwstty/CK4OVBNkANu+CZ1p44fdJsd7a+
+         LTpg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Pgo8BiHQ;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dkim=fail header.i=@pjd.dev header.s=fm1 header.b=6VzgwJg3;
+       dkim=fail header.i=@messagingengine.com header.s=i9e814621.fm2 header.b=R7GtQydX;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t191-20020a0deac8000000b003179a51f441si26667015ywe.282.2022.06.30.18.29.50
+        by mx.google.com with ESMTPS id b62-20020a251b41000000b0066ca3431097si23501165ybb.604.2022.06.30.18.37.43
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 30 Jun 2022 18:29:50 -0700 (PDT)
+        Thu, 30 Jun 2022 18:37:44 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Pgo8BiHQ;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:33442 helo=lists1p.gnu.org)
+       dkim=fail header.i=@pjd.dev header.s=fm1 header.b=6VzgwJg3;
+       dkim=fail header.i=@messagingengine.com header.s=i9e814621.fm2 header.b=R7GtQydX;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:38416 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1o75Ti-0006ks-3j
-	for alex.bennee@linaro.org; Thu, 30 Jun 2022 21:29:50 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:52396)
+	id 1o75bJ-0002OQ-I9
+	for alex.bennee@linaro.org; Thu, 30 Jun 2022 21:37:42 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53532)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1o75Sk-0006kk-Iw
- for qemu-arm@nongnu.org; Thu, 30 Jun 2022 21:28:50 -0400
-Received: from mail-oa1-x30.google.com ([2001:4860:4864:20::30]:38491)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1o75Sf-000074-1g
- for qemu-arm@nongnu.org; Thu, 30 Jun 2022 21:28:50 -0400
-Received: by mail-oa1-x30.google.com with SMTP id
- 586e51a60fabf-101b4f9e825so1655799fac.5
- for <qemu-arm@nongnu.org>; Thu, 30 Jun 2022 18:28:44 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=message-id:date:mime-version:user-agent:subject:content-language:to
- :cc:references:from:in-reply-to:content-transfer-encoding;
- bh=fBxhaKEyiDMxysz71LBRg3W39Bm9lcrfPmTo0dJabwk=;
- b=Pgo8BiHQhjXqShe/DwQsDSS5Mf8nKyytt86/b5dTEIMViJ4USZtcuPC8uuSrI6q5F4
- l2axXdoTvMQLUBKBrvFHITIoRB0iVjCTIGlK12CA1Plewvr0Hy9R9M1Nh+GZv4hJF4p3
- ko7xafCZc1bMsPnbzdaCP75gGGn6IhhhcPCpnW4qEo2F04i+uihz/3FeRY3HH4Lf/qXO
- OqJds56ABNTAedPV52787dVxPdOWI49Xe8QGKphWuYzxZ17/Rzy8pR0YHnqq1DEk+Orr
- N9HK1RtuNSHil9t+IDfNE2uMQcmrZ/eywL6PgJ0WhKuGwIbx6b0ZcG1Eh5xOidIFXTaC
- sURw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
- :content-language:to:cc:references:from:in-reply-to
- :content-transfer-encoding;
- bh=fBxhaKEyiDMxysz71LBRg3W39Bm9lcrfPmTo0dJabwk=;
- b=qBfl1+v59m7Ntxbbga5SK4LXUWgD33tei2CTSEvOYqWi2zuuzbObTJL96F8ndIUIv/
- 1g6tNFVTTYnIoWtNoiem7un1PS9C/qNdLybahja9qhBbK8E5jMjW9pwdY3PgY4BfQ2tp
- JzSLNPGtHIYVgk5QQQcTA9QN74EFjmFQw8umefWIirtm3gv1Haz7QxiKnSChLZm63Vff
- DjziobnpXO2+0CAcqFhT0IP1PxQHyLuPjfs/9eVfJUPAuaVdl4LAtLmpdLikIdiK8ex8
- J8C/sW3TjD498YPbLsu8SwB/iacq+tcHSuEzWJTbK/sER9+FDF4qqaXnnxP055MQpFQQ
- EkpQ==
-X-Gm-Message-State: AJIora8m4scLxjNPdyZknSHRw5BxxUPhi0nZCKmI2ErTEd77fBoiLn+S
- /ofja5ayTuKBhjKOUPBshf2Tpw==
-X-Received: by 2002:a05:6870:c154:b0:101:d3a2:60d3 with SMTP id
- g20-20020a056870c15400b00101d3a260d3mr7009862oad.71.1656638922621; 
- Thu, 30 Jun 2022 18:28:42 -0700 (PDT)
-Received: from ?IPV6:2605:ef80:80e8:1685:38ec:3484:7cff:725b?
- ([2605:ef80:80e8:1685:38ec:3484:7cff:725b])
- by smtp.gmail.com with ESMTPSA id
- i8-20020a9d6108000000b00616c5ce1d83sm8263401otj.68.2022.06.30.18.28.38
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 30 Jun 2022 18:28:41 -0700 (PDT)
-Message-ID: <3c296a0a-13f6-9fff-33fe-d087b0da27e4@linaro.org>
-Date: Fri, 1 Jul 2022 06:58:31 +0530
+ (Exim 4.90_1) (envelope-from <me@pjd.dev>)
+ id 1o75aM-0002N9-NI; Thu, 30 Jun 2022 21:36:42 -0400
+Received: from wnew2-smtp.messagingengine.com ([64.147.123.27]:37835)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <me@pjd.dev>)
+ id 1o75aG-0001wi-JH; Thu, 30 Jun 2022 21:36:42 -0400
+Received: from compute3.internal (compute3.nyi.internal [10.202.2.43])
+ by mailnew.west.internal (Postfix) with ESMTP id C217D2B0588C;
+ Thu, 30 Jun 2022 21:36:32 -0400 (EDT)
+Received: from mailfrontend1 ([10.202.2.162])
+ by compute3.internal (MEProxy); Thu, 30 Jun 2022 21:36:33 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=pjd.dev; h=cc:cc
+ :content-transfer-encoding:content-type:date:date:from:from
+ :in-reply-to:in-reply-to:message-id:mime-version:references
+ :reply-to:sender:subject:subject:to:to; s=fm1; t=1656639392; x=
+ 1656642992; bh=mJaVCOzGop0+EwoM/pCLV7nmhF4vRMY0KdW746isyYY=; b=6
+ VzgwJg3T+L91OVaeFp0f/uCLRiY8zFUaFsbsHf/Y48yiPyDBphitRiawTJE1mRx+
+ VvQda5//NHAiA3cRtxBI99155vo9c2yhE8xBUNLobO2F47sfWmGNaHnD38FuZPIp
+ 0ciAgyeez5+GZiuKYBl+PJCZ4RAjOsTxyTUpV4oMqrSnuf3YD9oijD/vd9W2DXBb
+ pYNNrYzBPpCaP27uO/KtkhF/NWLDC9zAqWkg0/GNWJh0/1s8gklJCK6rKZpcQk+Q
+ ZiaVmRXQBNBRbfo1hyhJ2hxnHdAlf9nYLmHUPLixzrQUWetw5+m4nWUrMi8qXIio
+ LTnZBuM3Ug1wkL48+HLGw==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+ messagingengine.com; h=cc:cc:content-transfer-encoding
+ :content-type:date:date:feedback-id:feedback-id:from:from
+ :in-reply-to:in-reply-to:message-id:mime-version:references
+ :reply-to:sender:subject:subject:to:to:x-me-proxy:x-me-proxy
+ :x-me-sender:x-me-sender:x-sasl-enc; s=i9e814621.fm2; t=
+ 1656639392; x=1656642992; bh=mJaVCOzGop0+EwoM/pCLV7nmhF4vRMY0KdW
+ 746isyYY=; b=R7GtQydX7ns+9tg+9Oui4KdmD6epfN6Ba5i0AxpQtcPrCl+Th/U
+ 2x10hUnK9oHPJTaSwzuTwuQDU8qE2D7u4FLQiXnOvRAahH2yDo/iouPkEPOlh+5/
+ NcFcJnFsaDLjKWN4tOt6EuDzIS3nGKjz4FVLYfNvfU+fW/pVkC6r/O3mpUBWEfMc
+ FTzVgxDrELpa4BgiIh9x13sl8FEOvKr5hQbXcAM4lNomiWq55EMaKbS2j227OAlt
+ DPqSnEmGbD7TqwTOEDHVpy2B93JVhIZEdG9lDW7KemJ6dHHptHxFSR2m4sdBkN23
+ FOzwQJaKc6SJLngPwz2KnmqAJqiOfM6H8aQ==
+X-ME-Sender: <xms:n0--YqgyBIZEL4H9JyCl8m_-w10_cNePZvOOD7V4c8e75fQH9BvJeA>
+ <xme:n0--YrCdIoDmxv0-ioaRgsKl68MNNjtOcQQPCK0qkOYkpUJzCBFQvPTxlrCTjCuV-
+ zq5_5Jzn2KEbw2WD-s>
+X-ME-Received: <xmr:n0--YiGcCZ7nhC5ZBBOtMQcDCpfUBMvnBSJOm2yv7CCuQd_FOpwQOppUOWNU5-MXeKjR5ocJK73Sl-IwOJ1N4h5d>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvfedrudehvddghedtucetufdoteggodetrfdotf
+ fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
+ uceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmne
+ cujfgurhepfffhvfevuffkfhggtggugfgjsehtkeertddttddunecuhfhrohhmpefrvght
+ vghrucffvghlvghvohhrhigrshcuoehmvgesphhjugdruggvvheqnecuggftrfgrthhtvg
+ hrnhepfefhhfekvdekgfdtffeuudejvdffkeefvddtfeduuefhjedviefhkefgjeefuddu
+ necuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmrghilhhfrhhomhepmhgvse
+ hpjhgurdguvghv
+X-ME-Proxy: <xmx:n0--YjSMrL17yf76f9bYtnRgqsQhzXkW7TfM6-bmSU6YLRzxYczngw>
+ <xmx:n0--YnwuolxT7X53cwweomgb4O8mvyDDoBV-dXdIULi-WE9iEa2KjA>
+ <xmx:n0--Yh7PBwppQY4sQXWcd4QWRLZ_u-xgc4JPPjKJCKKVw0N3r93mMg>
+ <xmx:oE--Ypsh7EXP5O_Kw-uu5GHyyKsh7aqSLJRjyZWrRIQneeUQYws3bIg3W6o>
+Feedback-ID: i9e814621:Fastmail
+Received: by mail.messagingengine.com (Postfix) with ESMTPA; Thu,
+ 30 Jun 2022 21:36:31 -0400 (EDT)
+Date: Thu, 30 Jun 2022 18:36:29 -0700
+From: Peter Delevoryas <me@pjd.dev>
+To: =?iso-8859-1?Q?C=E9dric?= Le Goater <clg@kaod.org>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Andrew Jeffery <andrew@aj.id.au>, Joel Stanley <joel@jms.id.au>
+Subject: Re: [PATCH 3/3] aspeed: sbc: Allow per-machine settings
+Message-ID: <Yr5Pnbh3Fbtxdpsk@pdel-mbp.dhcp.thefacebook.com>
+References: <20220628154740.1117349-1-clg@kaod.org>
+ <20220628154740.1117349-4-clg@kaod.org>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.9.1
-Subject: Re: [PULL 00/27] aspeed queue
-Content-Language: en-US
-To: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>
-References: <20220630112411.1474431-1-clg@kaod.org>
-From: Richard Henderson <richard.henderson@linaro.org>
-In-Reply-To: <20220630112411.1474431-1-clg@kaod.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2001:4860:4864:20::30;
- envelope-from=richard.henderson@linaro.org; helo=mail-oa1-x30.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01,
- T_SPF_HELO_TEMPERROR=0.01 autolearn=ham autolearn_force=no
+In-Reply-To: <20220628154740.1117349-4-clg@kaod.org>
+Received-SPF: pass client-ip=64.147.123.27; envelope-from=me@pjd.dev;
+ helo=wnew2-smtp.messagingengine.com
+X-Spam_score_int: -12
+X-Spam_score: -1.3
+X-Spam_bar: -
+X-Spam_report: (-1.3 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ FROM_FMBLA_NEWDOM=1.498, RCVD_IN_DNSWL_LOW=-0.7, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01,
+ T_SPF_HELO_TEMPERROR=0.01 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -127,116 +139,141 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: blUyVe8ZiD2k
+X-TUID: DwZ4U3qHc7x3
 
-On 6/30/22 16:53, CÃ©dric Le Goater wrote:
-> The following changes since commit 621745c4f349ac09b72706c46febee983abca916:
+On Tue, Jun 28, 2022 at 05:47:40PM +0200, Cédric Le Goater wrote:
+> From: Joel Stanley <joel@jms.id.au>
 > 
->    Merge tag 'trivial-branch-for-7.1-pull-request' of https://gitlab.com/laurent_vivier/qemu into staging (2022-06-30 04:49:40 +0530)
+> In order to correctly report secure boot running firmware the values
+> of certain registers must be set.
 > 
-> are available in the Git repository at:
+> We don't yet have documentation from ASPEED on what they mean. The
+> meaning is inferred from u-boot's use of them.
 > 
->    https://github.com/legoater/qemu/ tags/pull-aspeed-20220630
+> Introduce properties so the settings can be configured per-machine.
 > 
-> for you to fetch changes up to 55c57023b740c29151d42600af9ac43ba00e56cc:
+> Signed-off-by: Joel Stanley <joel@jms.id.au>
+> Signed-off-by: Cédric Le Goater <clg@kaod.org>
+> ---
+>  include/hw/misc/aspeed_sbc.h | 13 ++++++++++++
+>  hw/misc/aspeed_sbc.c         | 41 ++++++++++++++++++++++++++++++++++--
+>  2 files changed, 52 insertions(+), 2 deletions(-)
 > 
->    hw/misc/aspeed: Add PECI controller (2022-06-30 09:21:14 +0200)
-> 
-> ----------------------------------------------------------------
-> aspeed queue:
-> 
-> * m25p80 improvements (Iris)
-> * Code cleanup in preparation of multi SoC machine (Peter)
-> * New MAX31785 model (Mahesh)
-> * New Qualcomm machines (Jae and Graeme)
-> * Core I2C slave mode (Klaus)
-> * Aspeed I2C slave mode for old and new register interface (Peter and Klaus)
-> * New Aspeed PECI model (Peter)
-> * Various small fixes
+> diff --git a/include/hw/misc/aspeed_sbc.h b/include/hw/misc/aspeed_sbc.h
+> index 67e43b53ecc3..405e6782b97a 100644
+> --- a/include/hw/misc/aspeed_sbc.h
+> +++ b/include/hw/misc/aspeed_sbc.h
+> @@ -17,9 +17,22 @@ OBJECT_DECLARE_TYPE(AspeedSBCState, AspeedSBCClass, ASPEED_SBC)
+>  
+>  #define ASPEED_SBC_NR_REGS (0x93c >> 2)
+>  
+> +#define QSR_AES                     BIT(27)
+> +#define QSR_RSA1024                 (0x0 << 12)
+> +#define QSR_RSA2048                 (0x1 << 12)
+> +#define QSR_RSA3072                 (0x2 << 12)
+> +#define QSR_RSA4096                 (0x3 << 12)
+> +#define QSR_SHA224                  (0x0 << 10)
+> +#define QSR_SHA256                  (0x1 << 10)
+> +#define QSR_SHA384                  (0x2 << 10)
+> +#define QSR_SHA512                  (0x3 << 10)
+> +
+>  struct AspeedSBCState {
+>      SysBusDevice parent;
+>  
+> +    bool emmc_abr;
+> +    uint32_t signing_settings;
+> +
+>      MemoryRegion iomem;
+>  
+>      uint32_t regs[ASPEED_SBC_NR_REGS];
+> diff --git a/hw/misc/aspeed_sbc.c b/hw/misc/aspeed_sbc.c
+> index bfa8b81d01c7..3946e6179bdd 100644
+> --- a/hw/misc/aspeed_sbc.c
+> +++ b/hw/misc/aspeed_sbc.c
+> @@ -11,6 +11,7 @@
+>  #include "qemu/osdep.h"
+>  #include "qemu/log.h"
+>  #include "qemu/error-report.h"
+> +#include "hw/qdev-properties.h"
+>  #include "hw/misc/aspeed_sbc.h"
+>  #include "qapi/error.h"
+>  #include "migration/vmstate.h"
+> @@ -19,6 +20,27 @@
+>  #define R_STATUS        (0x014 / 4)
+>  #define R_QSR           (0x040 / 4)
+>  
+> +/* R_STATUS */
+> +#define ABR_EN                  BIT(14) /* Mirrors SCU510[11] */
+> +#define ABR_IMAGE_SOURCE        BIT(13)
+> +#define SPI_ABR_IMAGE_SOURCE    BIT(12)
+> +#define SB_CRYPTO_KEY_EXP_DONE  BIT(11)
+> +#define SB_CRYPTO_BUSY          BIT(10)
+> +#define OTP_WP_EN               BIT(9)
+> +#define OTP_ADDR_WP_EN          BIT(8)
+> +#define LOW_SEC_KEY_EN          BIT(7)
+> +#define SECURE_BOOT_EN          BIT(6)
+> +#define UART_BOOT_EN            BIT(5)
+> +/* bit 4 reserved*/
+> +#define OTP_CHARGE_PUMP_READY   BIT(3)
+> +#define OTP_IDLE                BIT(2)
+> +#define OTP_MEM_IDLE            BIT(1)
+> +#define OTP_COMPARE_STATUS      BIT(0)
+> +
+> +/* QSR */
+> +#define QSR_RSA_MASK           (0x3 << 12)
+> +#define QSR_HASH_MASK          (0x3 << 10)
+> +
+>  static uint64_t aspeed_sbc_read(void *opaque, hwaddr addr, unsigned int size)
+>  {
+>      AspeedSBCState *s = ASPEED_SBC(opaque);
+> @@ -80,8 +102,17 @@ static void aspeed_sbc_reset(DeviceState *dev)
+>      memset(s->regs, 0, sizeof(s->regs));
+>  
+>      /* Set secure boot enabled with RSA4096_SHA256 and enable eMMC ABR */
+> -    s->regs[R_STATUS] = 0x000044C6;
+> -    s->regs[R_QSR] = 0x07C07C89;
+> +    s->regs[R_STATUS] = OTP_IDLE | OTP_MEM_IDLE;
+> +
+> +    if (s->emmc_abr) {
+> +        s->regs[R_STATUS] &= ABR_EN;
+> +    }
+> +
+> +    if (s->signing_settings) {
+> +        s->regs[R_STATUS] &= SECURE_BOOT_EN;
+> +    }
+> +
+> +    s->regs[R_QSR] = s->signing_settings;
+>  }
+>  
+>  static void aspeed_sbc_realize(DeviceState *dev, Error **errp)
+> @@ -105,6 +136,11 @@ static const VMStateDescription vmstate_aspeed_sbc = {
+>      }
+>  };
+>  
+> +static Property aspeed_sbc_properties[] = {
+> +    DEFINE_PROP_BOOL("emmc-abr", AspeedSBCState, emmc_abr, 0),
+> +    DEFINE_PROP_UINT32("signing-settings", AspeedSBCState, signing_settings, 0),
+> +};
 
-Applied, thanks.  Please update https://wiki.qemu.org/ChangeLog/7.1 as appropriate.
+This needs a DEFINE_PROP_END_OF_LIST(), I bisected to this commit in Cedric's
+aspeed-7.1 branch.
 
+Reviewed-by: Peter Delevoryas <pdel@fb.com>
+Tested-by: Peter Delevoryas <pdel@fb.com>
 
-r~
-
-
+> +
+>  static void aspeed_sbc_class_init(ObjectClass *klass, void *data)
+>  {
+>      DeviceClass *dc = DEVICE_CLASS(klass);
+> @@ -112,6 +148,7 @@ static void aspeed_sbc_class_init(ObjectClass *klass, void *data)
+>      dc->realize = aspeed_sbc_realize;
+>      dc->reset = aspeed_sbc_reset;
+>      dc->vmsd = &vmstate_aspeed_sbc;
+> +    device_class_set_props(dc, aspeed_sbc_properties);
+>  }
+>  
+>  static const TypeInfo aspeed_sbc_info = {
+> -- 
+> 2.35.3
 > 
-> ----------------------------------------------------------------
-> CÃ©dric Le Goater (4):
->        aspeed: Set the dram container at the SoC level
->        aspeed/scu: Add trace events for read ops
->        aspeed/i2c: Change trace event for NORMAL_STOP states
->        aspeed/smc: Fix potential overflow
 > 
-> Graeme Gregory (1):
->        hw/arm/aspeed: add Qualcomm Firework BMC machine
-> 
-> Iris Chen (2):
->        hw: m25p80: add WP# pin and SRWD bit for write protection
->        hw: m25p80: add tests for write protect (WP# and SRWD bit)
-> 
-> Jae Hyun Yoo (2):
->        hw/arm/aspeed: add support for the Qualcomm DC-SCM v1 board
->        hw/arm/aspeed: firework: add I2C MUXes for VR channels
-> 
-> Joel Stanley (1):
->        aspeed/hace: Accumulative mode supported
-> 
-> Klaus Jensen (3):
->        hw/i2c: support multiple masters
->        hw/i2c: add asynchronous send
->        hw/i2c/aspeed: add slave device in old register mode
-> 
-> Maheswara Kurapati (4):
->        hw/i2c: pmbus: Page #255 is valid page for read requests.
->        hw/sensor: add Maxim MAX31785 device
->        hw/arm/aspeed: Add MAX31785 Fan controllers
->        hw/arm/aspeed: firework: Add Thermal Diodes
-> 
-> Peter Delevoryas (10):
->        aspeed: Set CPU memory property explicitly
->        aspeed: Add memory property to Aspeed SoC
->        aspeed: Remove usage of sysbus_mmio_map
->        aspeed: Map unimplemented devices in SoC memory
->        aspeed: Remove use of qemu_get_cpu
->        hw/i2c/aspeed: Fix R_I2CD_FUN_CTRL reference
->        hw/i2c/aspeed: Fix DMA len write-enable bit handling
->        hw/i2c/aspeed: Fix MASTER_EN missing error message
->        hw/i2c/aspeed: Add new-registers DMA slave mode RX support
->        hw/misc/aspeed: Add PECI controller
-> 
->   include/hw/arm/aspeed_soc.h   |  16 ++
->   include/hw/i2c/aspeed_i2c.h   |  11 +
->   include/hw/i2c/i2c.h          |  30 +++
->   include/hw/misc/aspeed_peci.h |  29 +++
->   hw/arm/aspeed.c               | 136 +++++++---
->   hw/arm/aspeed_ast10x0.c       |  59 +++--
->   hw/arm/aspeed_ast2600.c       | 104 +++++---
->   hw/arm/aspeed_soc.c           | 143 ++++++++---
->   hw/arm/pxa2xx.c               |   2 +
->   hw/block/m25p80.c             |  82 ++++--
->   hw/display/sii9022.c          |   2 +
->   hw/display/ssd0303.c          |   2 +
->   hw/i2c/aspeed_i2c.c           | 236 ++++++++++++++---
->   hw/i2c/core.c                 |  70 +++++-
->   hw/i2c/pmbus_device.c         |   6 +-
->   hw/i2c/smbus_slave.c          |   4 +
->   hw/misc/aspeed_hace.c         |   6 +-
->   hw/misc/aspeed_peci.c         | 152 +++++++++++
->   hw/misc/aspeed_scu.c          |   2 +
->   hw/nvram/eeprom_at24c.c       |   2 +
->   hw/sensor/lsm303dlhc_mag.c    |   2 +
->   hw/sensor/max31785.c          | 573 ++++++++++++++++++++++++++++++++++++++++++
->   hw/ssi/aspeed_smc.c           |   4 +-
->   tests/qtest/aspeed_smc-test.c |  62 +++++
->   hw/arm/Kconfig                |   2 +
->   hw/i2c/trace-events           |   2 +
->   hw/misc/meson.build           |   3 +-
->   hw/misc/trace-events          |   6 +
->   hw/sensor/Kconfig             |   4 +
->   hw/sensor/meson.build         |   1 +
->   30 files changed, 1573 insertions(+), 180 deletions(-)
->   create mode 100644 include/hw/misc/aspeed_peci.h
->   create mode 100644 hw/misc/aspeed_peci.c
->   create mode 100644 hw/sensor/max31785.c
-

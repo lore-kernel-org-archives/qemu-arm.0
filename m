@@ -1,224 +1,238 @@
-Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp1435724lft;
-        Fri, 1 Jul 2022 11:08:46 -0700 (PDT)
-X-Google-Smtp-Source: AGRyM1t+3IE0xjWbEknininKMHeUAq5APLtsg8E1rNxHheN0Dd4iOKqw+hHN4j+VWnnQpLJIXPB6
-X-Received: by 2002:a25:4bc1:0:b0:66c:92b4:5956 with SMTP id y184-20020a254bc1000000b0066c92b45956mr17536818yba.155.1656698925906;
-        Fri, 01 Jul 2022 11:08:45 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1656698925; cv=none;
+Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp1482641lft;
+        Fri, 1 Jul 2022 12:38:07 -0700 (PDT)
+X-Google-Smtp-Source: AGRyM1shCVm6NsOw7n83cp3nHo/Pjdn9c72mwInVULqT3Sj7rKrSMdWPod1F0pXGZuxIWj54a3vr
+X-Received: by 2002:a05:6638:1924:b0:331:d5de:57ab with SMTP id p36-20020a056638192400b00331d5de57abmr9971602jal.261.1656704287757;
+        Fri, 01 Jul 2022 12:38:07 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1656704287; cv=none;
         d=google.com; s=arc-20160816;
-        b=sw2bYFZfKavrxwVzib+iVTD9Jw3VhiLMtUM/wCtvGWZphnKjGFylj4dMEi76aBGrtr
-         s6r1a6pZWN7p9+6hCjqaB9zZagpwUxxMghk4S8YmqMQnRYozG/qSuG4Zl5YtDYQpzuF1
-         ZP0DofYEW8y2tjMqRFOVJQoA8A2R0yBxORVGRSIRkuiSgbpAZ/ZlsfX0xbfmlnsQBGyu
-         Ykd9Bvl/rYt8CGNUKtZp/bjT5PnncOtEq6KtcipGxkGLiKpFp1yCa3QHFjIKxUAvS0WF
-         X7VIz5FnlvGKYB74+k5az+0yN2y5ECSFJ/4OOeoeq6Wb5ADPXU3qCw1dlmaTHkb+c1va
-         ooDg==
+        b=hRnooSX1Bs0QQxXECloHFgeLcfe5bZyONZYxCvOz8WG4m8AJ41Eqxk9kIusTL4YT8f
+         gZ9bIT3k46KGzY8iZuNIXNuqR2Z4vYm9kdWosvSLf0tdEArhsSGch/ICLtgXCuWsXmBU
+         EbFepcUn1yRiilBvJxozgxOZvjsvKhCd7VqfxCTlexZQEjmQGpwj/Eg5+1iuFv0xzeHP
+         p2GLqJlhLPdfnugqFhJ7NJlw69QjhKLrx5JbyuP/C7lm+BMgx6YCiXM7VzK/CScLCjya
+         TNAhcjM2G5cDFYjnzP0lurtqJiZ7YdqFLqpokuPnWiUzilk27ycgInER5W/uegw+XIeJ
+         B2Gw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:cc:to:from:feedback-id
-         :dkim-signature:dkim-signature;
-        bh=W5ZNl4wM2dIehxwaUPeYDoPy0jrJNrZAEdcPlIiMOYo=;
-        b=Mra7LMfCjiMXf4/BbVzpuhy5iMpN/71MFujaUcaeYuWbPdvdJKPUbdS0qhwekupQ0W
-         7zY1J/kSkIBQP6uLEczJ28jIJIM8Q7wKtUcSNi7ST7JIL3LkpAZMVPljJyUtW0spjnkg
-         5uScoLWY9TaDjYTDyRrv7wkvFA1nOd8Mqe8VUosLWvuoV44RTzUVSNCeJgAvq09DdT3o
-         ir7sNA4Pwama9P3JSZKCrH4shWuoT4y8y4T2yMEtdWIfoAzdSDKg9y4tVmJMACB5T6hE
-         PrQq+TRfTikwjK9FDyoyNkdyMtuOBwjBogEJffoNq0Pslr4yjM9Jy+Xfs29266XVzMw9
-         Ui0g==
+         :in-reply-to:from:references:to:content-language:subject:user-agent
+         :mime-version:date:message-id:dkim-signature;
+        bh=OcGyYullqiPzp9y5P31aPb9ySfKquT9GZAE9W/J7xH4=;
+        b=PbgVwo90Kkz+LUp/B3IqS/XAmP8xHxJYTcmueudm4FN6cnYu374K74BYr6fX0QVTSY
+         QUYXk5ZcKFa2KvWYPxOVzWFRjj33gZfyKx9MYHjSP0eT+B2FSdr0ZBpItNSTlRb7zG+4
+         vT0MWB4xlSJYDslnZ/0dLHFv1Pz7Aut3RBNQ8rio2oHwrgspMW1/xfMy/wgWkKRpzY7r
+         vyWs4uLcOTFEWnflXPrWCBa5g0h+gx+JPU7P687splZzeSzN0An/dnYvX3KGuBss8icF
+         a+AZLPjT0l+mVxYjMS1k0ezZi/GpRU1F/F6gknmdDnBWDrKcb1jcVOW8r/bLJyktpH2+
+         Ixzg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@pjd.dev header.s=fm1 header.b=vy4axsYP;
-       dkim=fail header.i=@messagingengine.com header.s=i9e814621.fm2 header.b=OaJVlzmd;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@gmx.net header.s=badeba3b8450 header.b=jhUH4Lu9;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmx.de
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s1-20020a056902120100b0066db717c6c0si9331559ybu.666.2022.07.01.11.08.45
+        by mx.google.com with ESMTPS id s17-20020a056638259100b0033ca09b1561si14865053jat.47.2022.07.01.12.38.07
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 01 Jul 2022 11:08:45 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 01 Jul 2022 12:38:07 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@pjd.dev header.s=fm1 header.b=vy4axsYP;
-       dkim=fail header.i=@messagingengine.com header.s=i9e814621.fm2 header.b=OaJVlzmd;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:59862 helo=lists1p.gnu.org)
+       dkim=pass header.i=@gmx.net header.s=badeba3b8450 header.b=jhUH4Lu9;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmx.de
+Received: from localhost ([::1]:59292 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1o7L4P-00066m-6w
-	for alex.bennee@linaro.org; Fri, 01 Jul 2022 14:08:45 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:42462)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1o7MSs-0007Mx-4k
+	for alex.bennee@linaro.org; Fri, 01 Jul 2022 15:38:07 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:58632)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <me@pjd.dev>)
- id 1o7L20-00053B-EU; Fri, 01 Jul 2022 14:06:16 -0400
-Received: from wnew1-smtp.messagingengine.com ([64.147.123.26]:38423)
+ (Exim 4.90_1) (envelope-from <deller@gmx.de>)
+ id 1o7MSa-0007LX-RL; Fri, 01 Jul 2022 15:37:48 -0400
+Received: from mout.gmx.net ([212.227.15.19]:46327)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <me@pjd.dev>)
- id 1o7L1u-0008KK-Uw; Fri, 01 Jul 2022 14:06:16 -0400
-Received: from compute3.internal (compute3.nyi.internal [10.202.2.43])
- by mailnew.west.internal (Postfix) with ESMTP id 68FE12B058F6;
- Fri,  1 Jul 2022 14:06:07 -0400 (EDT)
-Received: from mailfrontend2 ([10.202.2.163])
- by compute3.internal (MEProxy); Fri, 01 Jul 2022 14:06:07 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=pjd.dev; h=cc:cc
- :content-transfer-encoding:date:date:from:from:in-reply-to
- :message-id:mime-version:reply-to:sender:subject:subject:to:to;
- s=fm1; t=1656698766; x=1656702366; bh=W5ZNl4wM2dIehxwaUPeYDoPy0
- jrJNrZAEdcPlIiMOYo=; b=vy4axsYPc8Xb69yYwMRCSnvMtGR5f8wCXgguqZJIS
- FeDlzFHcKO5UveYp9S3AN+kyCPQhhDCMuMlAzBRTA3UFgDLtGJoCC4BqwqrPI+As
- TUxU3p9tEwYiRXztOWHtmDgR0JZs4s1/Ow20isZGpBCjeP3HJoQxeO0TvoxoPjAH
- bWJ4//sNykCnhBv4vdsqpGRPMQN1vo2ykwY6P6S9GfNsc+ThZ3/OVHKLUJH4Gli0
- ryf7vm+OC5GG1zKrAWfVxqT+WptidZtWF24x3G5Pf28s2Z7Wg2UsYpBz7vqwyROs
- HX0nnoPEADhbm+DPF7m23BwgCYAHcau7zeynZlGv9KA5w==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
- messagingengine.com; h=cc:cc:content-transfer-encoding:date:date
- :feedback-id:feedback-id:from:from:in-reply-to:message-id
- :mime-version:reply-to:sender:subject:subject:to:to:x-me-proxy
- :x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=i9e814621.fm2;
- t=1656698766; x=1656702366; bh=W5ZNl4wM2dIehxwaUPeYDoPy0jrJNrZA
- EdcPlIiMOYo=; b=OaJVlzmdW2ERJZuF1ffUvjHqu+4RP2t3NmhEGRgbu7xv0Mbd
- tAgCzEmN9+ampkkpfcsLrg4mjAmxpPCHoez/t8EYlzDO2uNpGcQGPXYQovTceEgP
- 0M+uR8atVxdiY/fZYeMOuhIiflX2J2Cy5H7a3rvKH2Bw66kOj+dTIAZIHSaHrMBJ
- 2iv5qwoYq5NODYgquEDaOuM6Y+eVj9NsOCtgopGPIqKfGh4tKD+EjL/jJBpJNhzH
- GHPxJZ/JZ4m7+gClGHLk25agSiX/qWUtxnayBoe16y3KEm+tyngyCQrX+fbvrI+L
- bSGI+HZdeCugh4OEZXwuZcerWK/MapIdOLOK9g==
-X-ME-Sender: <xms:jje_Yon_y0jKvXiAfNl9XLlYtUVS9PCzcttJ8cb0qzs3_iGk-dLnng>
- <xme:jje_Yn3_su7UzV3lwna_iM9fpLCIdaF-tlvkMpZQQ0tNUOaSH_gefwtaZzxiQsyVU
- s0L798Sb838PU_huIM>
-X-ME-Received: <xmr:jje_YmpuXVjOl92aE8ufkNoGTNa_BWUxAjWrq4VFuV6gp1nVVRT4lSvDBTJp0Y5n83wsQcNVpARDD2PaqG_uHNw6v4w8QENK>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvfedrudehfedguddvudcutefuodetggdotefrod
- ftvfcurfhrohhfihhlvgemucfhrghsthforghilhdpqfgfvfdpuffrtefokffrpgfnqfgh
- necuuegrihhlohhuthemuceftddtnecumhhishhsihhnghcuvffquchfihgvlhguucdlfe
- dtmdenucfjughrpefhvfevufffkffoggfgsedtkeertdertddtnecuhfhrohhmpefrvght
- vghrucffvghlvghvohhrhigrshcuoehmvgesphhjugdruggvvheqnecuggftrfgrthhtvg
- hrnhephefgleehveejffefheefhfefveehvedvieetgeefleffveeljedtvdfgfeehleej
- necuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmrghilhhfrhhomhepmhgvse
- hpjhgurdguvghv
-X-ME-Proxy: <xmx:jje_YkmrlotCM_cHOiKnulQQQ2Wlu0PA5mGTgSYWXQqDcIyzH3zl6g>
- <xmx:jje_Ym1Imj5M6XFT9o3LCpIGMwDAiO3xn1jl4mrz-_vcIU3Tz6yThg>
- <xmx:jje_YrtgJRCBctJI-n1DnPp0jjXxZRpe5DlQ16on-LZt_8Vj86ousQ>
- <xmx:jje_YpSxygKqSOmB82fueU009M3F6KlNh4AY96ne1lJ4IV9WgaQ8HhsyXLk>
-Feedback-ID: i9e814621:Fastmail
-Received: by mail.messagingengine.com (Postfix) with ESMTPA; Fri,
- 1 Jul 2022 14:06:05 -0400 (EDT)
-From: Peter Delevoryas <me@pjd.dev>
-To: 
-Cc: clg@kaod.org, peter.maydell@linaro.org, andrew@aj.id.au, joel@jms.id.au,
- qemu-arm@nongnu.org, qemu-devel@nongnu.org
-Subject: [PATCH] aspeed: Create SRAM name from first CPU index
-Date: Fri,  1 Jul 2022 11:06:03 -0700
-Message-Id: <20220701180603.38408-1-me@pjd.dev>
-X-Mailer: git-send-email 2.37.0
+ (Exim 4.90_1) (envelope-from <deller@gmx.de>)
+ id 1o7MSY-0005d8-S1; Fri, 01 Jul 2022 15:37:48 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=gmx.net;
+ s=badeba3b8450; t=1656704257;
+ bh=mTRYlqPld9bnDVJe8uwGh2sy9qi/4PKywxxyJZIRnl0=;
+ h=X-UI-Sender-Class:Date:Subject:To:References:From:In-Reply-To;
+ b=jhUH4Lu9Dxcnwu4idKToEdwVVP8N88Pm6pJpx0OjuY4wA2Uc8fAZqNEgRH+0UF4KH
+ mUHi8zuxcDRswhX2MbCjT1XzHO1XaVo6Qu9Iu00GOujdHPghqPhJXSTGWCUBQ8R8aq
+ GTuaJj7Qza93TpVylFOvpp76fILnW7w71PutY0js=
+X-UI-Sender-Class: 01bb95c1-4bf8-414a-932a-4f6e2808ef9c
+Received: from [192.168.20.60] ([92.116.182.192]) by mail.gmx.net (mrgmx005
+ [212.227.17.190]) with ESMTPSA (Nemesis) id 1MtwZ4-1nmWFw3cgW-00uHaT; Fri, 01
+ Jul 2022 21:37:36 +0200
+Message-ID: <df36fc56-cb08-5570-5f66-5f0a12c55396@gmx.de>
+Date: Fri, 1 Jul 2022 21:37:06 +0200
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=64.147.123.26; envelope-from=me@pjd.dev;
- helo=wnew1-smtp.messagingengine.com
-X-Spam_score_int: -12
-X-Spam_score: -1.3
-X-Spam_bar: -
-X-Spam_report: (-1.3 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FROM_FMBLA_NEWDOM=1.498, RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.11.0
+Subject: Re: [PATCH 00/40] PS2 device QOMification - part 2
+Content-Language: en-US
+To: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ richard.henderson@linaro.org, svens@stackframe.org, mst@redhat.com,
+ pbonzini@redhat.com, peter.maydell@linaro.org, hpoussin@reactos.org,
+ aleksandar.rikalo@syrmia.com, f4bug@amsat.org, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org
+References: <20220629124026.1077021-1-mark.cave-ayland@ilande.co.uk>
+From: Helge Deller <deller@gmx.de>
+In-Reply-To: <20220629124026.1077021-1-mark.cave-ayland@ilande.co.uk>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+X-Provags-ID: V03:K1:u2RDyGRVIt5yhEPAcgBiC4LatFj2eB4JewSuvjI98Dm47M2m9bZ
+ +CaQTgEClrgfJQfluaVBLajbg+6ken528cjJ4T0weIUzZm+lvWOF38AV7xpKMzUun6VpX6t
+ /7+LQIuy3Kfdn6ES/FlQuHw9u81V6V8nhqxwf7fHuoKzwYAu9bKPjrAWOEdY3opqecwCFRi
+ TUfczJQKVeQ8K5GCbd/Og==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:wevI0BucazY=:iC05JplkNRfmtFqg2o5qLf
+ wTsvxjpNTRD/GsGkhqYkzdmp3CMh8w7+hUIQ1ruiAJdy5/rIB/hoGfVgaarDSYscxpri2WzSr
+ Ns70e0J19pMVGsURNpgBr1B6NLYDT+vF/cqVRHQqqLfu1NNNgaMzGpZIn0fwld8Ks1+JfysGp
+ AeQs5EOfD0YO2zI7l6tlFViDonUbjMEV9nq7cmVba1MALmYx3upTw0JG6g7xF58iYeyRV9WhZ
+ xvfJ5kMjAe7SK+tNq72gb1kDuyd9jlTJ/8MVQY8er22X4WZi/+PrGAgzQW126C3Vh/FNgnFDr
+ KnNasDnIvwX7Ix5hsBNC0VCGysEBLhIBvHqazB2YaDRlJYHbBhltr89ImdwWq3h+W0bIR/T2L
+ 5aGMXZ+Zad3A6y9GCc53Oa7ONd0s2m8AFng5D6q40OgPcdGMHDFQw29eY0uysqH51FtnmtcH2
+ b2PDW99atqty0I0MbBYsvvS6zWVi+ZlegWASsy1Jy158YBdQzCQ7QHr3RcYXJU6ziEqv10IWA
+ L2jEBZLXdrDbf5msZT2y/BqZ0hqp7DEhhGwqz/+Y4+4JSIyQA0w9HMknWYwuFFszm+KxOaGMp
+ CFeUS5VPu1N7V/wMFJbG1vAQNnvxcQzI2CKiT7ChLIo3cWP0CeLkli2pamzeVL4Xmx2YIexbk
+ aYStHZY+cwjhXBjBst1Kkdg/trbgs3wIMT+b/9AlVTbYIDjSgTWMNC4PrRkqOPOAQ1rwtStT2
+ VrQ/TIt0A9IG/cazFatudwcs0S8A/PSfaxI5pEEhFGcPEcG2O2Pccr1L9wbzHUL9R6AZp8h2z
+ u0EaB5iov23fPTchzUYmpqgeO8UEMLly4znvt9yIbd5H/iB0eKIbT9rZCP9xYH30byZYq0P0y
+ RGnCqwGnVpHRJNxEC8B6pBDhbe5lMpeMu0oglofgSdfnxGHf1uxsFtLSTUueWoYjq7h2as1JY
+ v9s2yPIorbtikBq+2EFBxykBDj1A8x+1XIQN7SKihqarF6QpTiMnGqF1aNIryxZJzu8O+Cn3E
+ hWaStQ1SYIl1rg3jGj/1sv2YlNRk40IfLiC5AWqhL/FQmJBtpGjfi358DLTCJR8WCeJJSbAcp
+ B937b7nnBDZfTOwmO00xhqjZicALx7qzCbJXkm2oSqbAh2k0U9QyuDucw==
+Received-SPF: pass client-ip=212.227.15.19; envelope-from=deller@gmx.de;
+ helo=mout.gmx.net
+X-Spam_score_int: -25
+X-Spam_score: -2.6
+X-Spam_bar: --
+X-Spam_report: (-2.6 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, FREEMAIL_FROM=0.001, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: qfZsjgzqInnP
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: cKDwVp4WgfxP
 
-To support multiple SoC's running simultaneously, we need a unique name for
-each RAM region. DRAM is created by the machine, but SRAM is created by the
-SoC, since in hardware it is part of the SoC's internals.
+Hi Mark,
 
-We need a way to uniquely identify each SRAM region though, for VM
-migration. Since each of the SoC's CPU's has an index which identifies it
-uniquely from other CPU's in the machine, we can use the index of any of the
-CPU's in the SoC to uniquely identify differentiate the SRAM name from other
-SoC SRAM's. In this change, I just elected to use the index of the first CPU
-in each SoC.
+On 6/29/22 14:39, Mark Cave-Ayland wrote:
+> Here is the follow-on series from part 1 which completes the work to rem=
+ove
+> the legacy global device init functions for PS2 devices. Now that part 1=
+ has
+> been applied, the hard part to remove the PS2 function callback and argu=
+ment
+> has been completed and all that remains is to improve the PS2 device
+> QOMification to allow the legacy PS2 functions to be removed.
+>
+> Patches 1-11 update the pl050 device to remove the use of ps2_kbd_init()=
+ and
+> ps2_mouse_init(), whilst patches 12-34 make some more involved changes t=
+o
+> the lasips2 device (in particular completing the LASIPS2Port abstraction=
+)
+> before doing the same.
+>
+> Finally patches 35-40 complete the process for the pckbd (I8042 and I804=
+2_MMIO
+> devices) before removing the now unused ps2_kbd_init(), ps2_mouse_init()=
+ and
+> i8042_mm_init() functions.
+>
+> Note that this series is a migration break for the HPPA B160L and MIPS m=
+agnum
+> machines: I've had agreement from both Helge and Herv=C3=A9 that this is=
+ worth
+> doing to allow the use of the DeviceClass vmsd property to set the
+> VMStateDescription rather than manually calling vmstate_register().
+>
+> Signed-off-by: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
 
-Signed-off-by: Peter Delevoryas <me@pjd.dev>
----
- hw/arm/aspeed_ast10x0.c | 5 ++++-
- hw/arm/aspeed_ast2600.c | 5 +++--
- hw/arm/aspeed_soc.c     | 5 +++--
- 3 files changed, 10 insertions(+), 5 deletions(-)
+I did tested this patch series successfully with hppa Linux and HP-UX gues=
+ts.
+PS/2 mouse and keyboard works as expected.
+Thanks for this nice cleanup work!
 
-diff --git a/hw/arm/aspeed_ast10x0.c b/hw/arm/aspeed_ast10x0.c
-index 33ef331771..b6b6f0d053 100644
---- a/hw/arm/aspeed_ast10x0.c
-+++ b/hw/arm/aspeed_ast10x0.c
-@@ -159,6 +159,7 @@ static void aspeed_soc_ast1030_realize(DeviceState *dev_soc, Error **errp)
-     DeviceState *armv7m;
-     Error *err = NULL;
-     int i;
-+    char name[64];
- 
-     if (!clock_has_source(s->sysclk)) {
-         error_setg(errp, "sysclk clock must be wired up by the board code");
-@@ -183,7 +184,9 @@ static void aspeed_soc_ast1030_realize(DeviceState *dev_soc, Error **errp)
-     sysbus_realize(SYS_BUS_DEVICE(&s->armv7m), &error_abort);
- 
-     /* Internal SRAM */
--    memory_region_init_ram(&s->sram, NULL, "aspeed.sram", sc->sram_size, &err);
-+    snprintf(name, sizeof(name), "aspeed.sram.%d",
-+             CPU(s->armv7m.cpu)->cpu_index);
-+    memory_region_init_ram(&s->sram, NULL, name, sc->sram_size, &err);
-     if (err != NULL) {
-         error_propagate(errp, err);
-         return;
-diff --git a/hw/arm/aspeed_ast2600.c b/hw/arm/aspeed_ast2600.c
-index 3f0611ac11..7efb9f888a 100644
---- a/hw/arm/aspeed_ast2600.c
-+++ b/hw/arm/aspeed_ast2600.c
-@@ -276,6 +276,7 @@ static void aspeed_soc_ast2600_realize(DeviceState *dev, Error **errp)
-     AspeedSoCClass *sc = ASPEED_SOC_GET_CLASS(s);
-     Error *err = NULL;
-     qemu_irq irq;
-+    char name[64];
- 
-     /* IO space */
-     aspeed_mmio_map_unimplemented(s, SYS_BUS_DEVICE(&s->iomem), "aspeed.io",
-@@ -335,8 +336,8 @@ static void aspeed_soc_ast2600_realize(DeviceState *dev, Error **errp)
-     }
- 
-     /* SRAM */
--    memory_region_init_ram(&s->sram, OBJECT(dev), "aspeed.sram",
--                           sc->sram_size, &err);
-+    snprintf(name, sizeof(name), "aspeed.sram.%d", CPU(&s->cpu[0])->cpu_index);
-+    memory_region_init_ram(&s->sram, OBJECT(dev), name, sc->sram_size, &err);
-     if (err) {
-         error_propagate(errp, err);
-         return;
-diff --git a/hw/arm/aspeed_soc.c b/hw/arm/aspeed_soc.c
-index 0f675e7fcd..1ddba33d2a 100644
---- a/hw/arm/aspeed_soc.c
-+++ b/hw/arm/aspeed_soc.c
-@@ -239,6 +239,7 @@ static void aspeed_soc_realize(DeviceState *dev, Error **errp)
-     AspeedSoCState *s = ASPEED_SOC(dev);
-     AspeedSoCClass *sc = ASPEED_SOC_GET_CLASS(s);
-     Error *err = NULL;
-+    char name[64];
- 
-     /* IO space */
-     aspeed_mmio_map_unimplemented(s, SYS_BUS_DEVICE(&s->iomem), "aspeed.io",
-@@ -259,8 +260,8 @@ static void aspeed_soc_realize(DeviceState *dev, Error **errp)
-     }
- 
-     /* SRAM */
--    memory_region_init_ram(&s->sram, OBJECT(dev), "aspeed.sram",
--                           sc->sram_size, &err);
-+    snprintf(name, sizeof(name), "aspeed.sram.%d", CPU(&s->cpu[0])->cpu_index);
-+    memory_region_init_ram(&s->sram, OBJECT(dev), name, sc->sram_size, &err);
-     if (err) {
-         error_propagate(errp, err);
-         return;
--- 
-2.37.0
+You may add either or both of:
+Tested-by: Helge Deller <deller@gmx.de>
+Acked-by: Helge Deller <deller@gmx.de>
+
+Helge
+
+
+>
+> Mark Cave-Ayland (40):
+>   pl050: move PL050State from pl050.c to new pl050.h header file
+>   pl050: rename pl050_keyboard_init() to pl050_kbd_init()
+>   pl050: change PL050State dev pointer from void to PS2State
+>   pl050: introduce new PL050_KBD_DEVICE QOM type
+>   pl050: introduce new PL050_MOUSE_DEVICE QOM type
+>   pl050: move logic from pl050_realize() to pl050_init()
+>   pl050: introduce PL050DeviceClass for the PL050 device
+>   pl050: introduce pl050_kbd_class_init() and pl050_kbd_realize()
+>   pl050: introduce pl050_mouse_class_init() and pl050_mouse_realize()
+>   pl050: don't use legacy ps2_kbd_init() function
+>   pl050: don't use legacy ps2_mouse_init() function
+>   lasips2: don't use vmstate_register() in lasips2_realize()
+>   lasips2: remove the qdev base property and the lasips2_properties
+>     array
+>   lasips2: remove legacy lasips2_initfn() function
+>   lasips2: change LASIPS2State dev pointer from void to PS2State
+>   lasips2: QOMify LASIPS2Port
+>   lasips2: introduce new LASIPS2_KBD_PORT QOM type
+>   lasips2: introduce new LASIPS2_MOUSE_PORT QOM type
+>   lasips2: move keyboard port initialisation to new
+>     lasips2_kbd_port_init() function
+>   lasips2: move mouse port initialisation to new
+>     lasips2_mouse_port_init() function
+>   lasips2: introduce lasips2_kbd_port_class_init() and
+>     lasips2_kbd_port_realize()
+>   lasips2: introduce lasips2_mouse_port_class_init() and
+>     lasips2_mouse_port_realize()
+>   lasips2: rename LASIPS2Port irq field to birq
+>   lasips2: introduce port IRQ and new lasips2_port_init() function
+>   lasips2: introduce LASIPS2PortDeviceClass for the LASIPS2_PORT device
+>   lasips2: add named input gpio to port for downstream PS2 device IRQ
+>   lasips2: add named input gpio to handle incoming port IRQs
+>   lasips2: switch to using port-based IRQs
+>   lasips2: rename LASIPS2Port parent pointer to lasips2
+>   lasips2: standardise on lp name for LASIPS2Port variables
+>   lasips2: switch register memory region to DEVICE_BIG_ENDIAN
+>   lasips2: don't use legacy ps2_kbd_init() function
+>   lasips2: don't use legacy ps2_mouse_init() function
+>   lasips2: update VMStateDescription for LASIPS2 device
+>   pckbd: introduce new vmstate_kbd_mmio VMStateDescription for the
+>     I8042_MMIO device
+>   pckbd: don't use legacy ps2_kbd_init() function
+>   ps2: remove unused legacy ps2_kbd_init() function
+>   pckbd: don't use legacy ps2_mouse_init() function
+>   ps2: remove unused legacy ps2_mouse_init() function
+>   pckbd: remove legacy i8042_mm_init() function
+>
+>  hw/hppa/machine.c          |   7 +-
+>  hw/input/lasips2.c         | 320 ++++++++++++++++++++++++++-----------
+>  hw/input/pckbd.c           |  82 ++++++----
+>  hw/input/pl050.c           | 112 ++++++++-----
+>  hw/input/ps2.c             |  26 ---
+>  hw/input/trace-events      |   2 -
+>  hw/mips/jazz.c             |  13 +-
+>  include/hw/input/i8042.h   |   7 +-
+>  include/hw/input/lasips2.h |  57 +++++--
+>  include/hw/input/pl050.h   |  59 +++++++
+>  include/hw/input/ps2.h     |   2 -
+>  11 files changed, 466 insertions(+), 221 deletions(-)
+>  create mode 100644 include/hw/input/pl050.h
+>
 

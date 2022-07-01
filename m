@@ -1,105 +1,121 @@
-Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp1366863lft;
-        Fri, 1 Jul 2022 09:22:43 -0700 (PDT)
-X-Google-Smtp-Source: AGRyM1tY81easFDW1NuZSiUxZY/COvDC47iYKGjgomrTgzTBP7yaQctf4//K7kPmgj6nGNRQRYXj
-X-Received: by 2002:a25:d4d6:0:b0:669:b717:187b with SMTP id m205-20020a25d4d6000000b00669b717187bmr15283980ybf.405.1656692562897;
-        Fri, 01 Jul 2022 09:22:42 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1656692562; cv=none;
+Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp1435724lft;
+        Fri, 1 Jul 2022 11:08:46 -0700 (PDT)
+X-Google-Smtp-Source: AGRyM1t+3IE0xjWbEknininKMHeUAq5APLtsg8E1rNxHheN0Dd4iOKqw+hHN4j+VWnnQpLJIXPB6
+X-Received: by 2002:a25:4bc1:0:b0:66c:92b4:5956 with SMTP id y184-20020a254bc1000000b0066c92b45956mr17536818yba.155.1656698925906;
+        Fri, 01 Jul 2022 11:08:45 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1656698925; cv=none;
         d=google.com; s=arc-20160816;
-        b=c1LVKUmtPPfRN9zMvxUtZxq+3WeHHyKudwy+gqJAaNG9efJkxu4g639BPnacjeQcMD
-         9xOsvsuxA3KjaOIVhJfUVvt/IE1D/R5/BPbMcWHkEaNH9/tekIpwA95rYV9iW+YhV3U1
-         Y671d6m220N3ODrgYR0yLuIEXqld/ALpv1VCMexgYqx2talshHOLUjFDdpMaeNTj9Xtd
-         v/bvtHWYY4ylj/z2mPr147S5z66jQH/Sw8Tx1THsklPDK7JoRNyK4YjYQQuTdh+85tqW
-         /U9Yms8qOcUmbqtgW9qizYnLCmwiteSTawhZMm5MJjP5+nGBDi7EoRvw+9vvRRInEZMC
-         8A0A==
+        b=sw2bYFZfKavrxwVzib+iVTD9Jw3VhiLMtUM/wCtvGWZphnKjGFylj4dMEi76aBGrtr
+         s6r1a6pZWN7p9+6hCjqaB9zZagpwUxxMghk4S8YmqMQnRYozG/qSuG4Zl5YtDYQpzuF1
+         ZP0DofYEW8y2tjMqRFOVJQoA8A2R0yBxORVGRSIRkuiSgbpAZ/ZlsfX0xbfmlnsQBGyu
+         Ykd9Bvl/rYt8CGNUKtZp/bjT5PnncOtEq6KtcipGxkGLiKpFp1yCa3QHFjIKxUAvS0WF
+         X7VIz5FnlvGKYB74+k5az+0yN2y5ECSFJ/4OOeoeq6Wb5ADPXU3qCw1dlmaTHkb+c1va
+         ooDg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=S5JXIsE8vtDMYhj1krdNo6HvMnv2BFi9S40GbuScVMs=;
-        b=gSmVlicuDpYuo8gtnVwz7+lD46IrbH98FRtrF4z54+7HfctaNMJSEo/M3+9ui5uqOc
-         4korDJD/JsQwVmeipc22Exa98ynKXAcf+3yel1szg4wj1AvbppPDj47ph9EGIpy6A2kI
-         bIwVNFQuTjOs6x11Vhsz4FvcWd5tGovpUelH324lruTelGnD3ZeX+uOko8H6pqfqfJcF
-         uTyp58p7VbnMikrdDZ3V51v6VmzImgSa+P0QmobAqsuqXnUGsShpBMVgsqAsrzKhimhF
-         OU3siuHopQe4AEzyL/cP54RfQ4/kFsAbN87inXE7DtzfIxT2t041AD9BvJiF36325D/3
-         0bVA==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:cc:to:from:feedback-id
+         :dkim-signature:dkim-signature;
+        bh=W5ZNl4wM2dIehxwaUPeYDoPy0jrJNrZAEdcPlIiMOYo=;
+        b=Mra7LMfCjiMXf4/BbVzpuhy5iMpN/71MFujaUcaeYuWbPdvdJKPUbdS0qhwekupQ0W
+         7zY1J/kSkIBQP6uLEczJ28jIJIM8Q7wKtUcSNi7ST7JIL3LkpAZMVPljJyUtW0spjnkg
+         5uScoLWY9TaDjYTDyRrv7wkvFA1nOd8Mqe8VUosLWvuoV44RTzUVSNCeJgAvq09DdT3o
+         ir7sNA4Pwama9P3JSZKCrH4shWuoT4y8y4T2yMEtdWIfoAzdSDKg9y4tVmJMACB5T6hE
+         PrQq+TRfTikwjK9FDyoyNkdyMtuOBwjBogEJffoNq0Pslr4yjM9Jy+Xfs29266XVzMw9
+         Ui0g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="ETk5/4LM";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dkim=fail header.i=@pjd.dev header.s=fm1 header.b=vy4axsYP;
+       dkim=fail header.i=@messagingengine.com header.s=i9e814621.fm2 header.b=OaJVlzmd;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 127-20020a250185000000b0066d43aa67f8si13108195ybb.300.2022.07.01.09.22.42
+        by mx.google.com with ESMTPS id s1-20020a056902120100b0066db717c6c0si9331559ybu.666.2022.07.01.11.08.45
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 01 Jul 2022 09:22:42 -0700 (PDT)
+        Fri, 01 Jul 2022 11:08:45 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="ETk5/4LM";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:37922 helo=lists1p.gnu.org)
+       dkim=fail header.i=@pjd.dev header.s=fm1 header.b=vy4axsYP;
+       dkim=fail header.i=@messagingengine.com header.s=i9e814621.fm2 header.b=OaJVlzmd;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:59862 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1o7JPk-0001bL-SW
-	for alex.bennee@linaro.org; Fri, 01 Jul 2022 12:22:40 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49830)
+	id 1o7L4P-00066m-6w
+	for alex.bennee@linaro.org; Fri, 01 Jul 2022 14:08:45 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:42462)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1o7JNe-0007AR-Jh
- for qemu-devel@nongnu.org; Fri, 01 Jul 2022 12:20:30 -0400
-Received: from mail-yw1-x1129.google.com ([2607:f8b0:4864:20::1129]:40545)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1o7JNa-0004QV-1j
- for qemu-devel@nongnu.org; Fri, 01 Jul 2022 12:20:30 -0400
-Received: by mail-yw1-x1129.google.com with SMTP id
- 00721157ae682-317a66d62dfso28498547b3.7
- for <qemu-devel@nongnu.org>; Fri, 01 Jul 2022 09:20:24 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=S5JXIsE8vtDMYhj1krdNo6HvMnv2BFi9S40GbuScVMs=;
- b=ETk5/4LMJ40/Mto17Bytq5KTIkpxnLeZSSFhmmGq125GC1FrnEYbk9lRqUP8GIeF5L
- 9mqSHWgQklB91R368evqr1iTg0G0I1a4rVwIqhARwA5fm95K5vWDvcE42mYCFkn8CWCs
- TSi6zGluw6OqIsbR0Wzk1XbDhCqiODFnYQhQdzsp8vmSzs53aFiy2XS+ewlfG46H91ir
- 41mqR+3CNsDVoGiga87kiHg+iCeySUgWJnWbsUviie+2wuWZgaf0Jyv4AqbhK27N2oN0
- FB443yRI1FM7RANFAdvDWPb/5QjBwxjiarODOq+JfC483l4hKs6dpJW3ZnHrbesBP6OB
- 4zdw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=S5JXIsE8vtDMYhj1krdNo6HvMnv2BFi9S40GbuScVMs=;
- b=BNviIGltrro8EQyPnlajns4MCvv0m02BmmrMcmmQtqDSQOo1GPKC1kew71r9TG1GDt
- sR9QXDrOMhhebLNOl9C6BqL2CEIpeLm/s6167rgmCKHhmLdyzjgZAXAr3uq4FsMpaADn
- ldqtps063Ta+HVQelIIlFUyol/CH127Ne7k+yTR3d5oNNkqns1pLnU2brmCzWoDsC+HI
- ZCtKd9QEsDIZfY9oo3wbf9v0dLq5np/bLJIfITfetA2o4OdnGPjGxsxiVuR8Mk2KtoGD
- JOQPRhmEk+MiqW8mI4JkBim8m7dBmz7ZnYBF2gRq4MXzMULExeW7NFU/AnlHOdS1ztcN
- Y8WA==
-X-Gm-Message-State: AJIora+ZESldwPYMC9BAWXxwaZJoqSiw4N90YuBAxsoYZoCms51jumL7
- XgXD9EfAeCV2FZZvb7L7RemRuUz4HUgZ6rkWFt56Wg==
-X-Received: by 2002:a0d:ca16:0:b0:31b:7adf:d91 with SMTP id
- m22-20020a0dca16000000b0031b7adf0d91mr17490604ywd.455.1656692423760; Fri, 01
- Jul 2022 09:20:23 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <me@pjd.dev>)
+ id 1o7L20-00053B-EU; Fri, 01 Jul 2022 14:06:16 -0400
+Received: from wnew1-smtp.messagingengine.com ([64.147.123.26]:38423)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <me@pjd.dev>)
+ id 1o7L1u-0008KK-Uw; Fri, 01 Jul 2022 14:06:16 -0400
+Received: from compute3.internal (compute3.nyi.internal [10.202.2.43])
+ by mailnew.west.internal (Postfix) with ESMTP id 68FE12B058F6;
+ Fri,  1 Jul 2022 14:06:07 -0400 (EDT)
+Received: from mailfrontend2 ([10.202.2.163])
+ by compute3.internal (MEProxy); Fri, 01 Jul 2022 14:06:07 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=pjd.dev; h=cc:cc
+ :content-transfer-encoding:date:date:from:from:in-reply-to
+ :message-id:mime-version:reply-to:sender:subject:subject:to:to;
+ s=fm1; t=1656698766; x=1656702366; bh=W5ZNl4wM2dIehxwaUPeYDoPy0
+ jrJNrZAEdcPlIiMOYo=; b=vy4axsYPc8Xb69yYwMRCSnvMtGR5f8wCXgguqZJIS
+ FeDlzFHcKO5UveYp9S3AN+kyCPQhhDCMuMlAzBRTA3UFgDLtGJoCC4BqwqrPI+As
+ TUxU3p9tEwYiRXztOWHtmDgR0JZs4s1/Ow20isZGpBCjeP3HJoQxeO0TvoxoPjAH
+ bWJ4//sNykCnhBv4vdsqpGRPMQN1vo2ykwY6P6S9GfNsc+ThZ3/OVHKLUJH4Gli0
+ ryf7vm+OC5GG1zKrAWfVxqT+WptidZtWF24x3G5Pf28s2Z7Wg2UsYpBz7vqwyROs
+ HX0nnoPEADhbm+DPF7m23BwgCYAHcau7zeynZlGv9KA5w==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+ messagingengine.com; h=cc:cc:content-transfer-encoding:date:date
+ :feedback-id:feedback-id:from:from:in-reply-to:message-id
+ :mime-version:reply-to:sender:subject:subject:to:to:x-me-proxy
+ :x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=i9e814621.fm2;
+ t=1656698766; x=1656702366; bh=W5ZNl4wM2dIehxwaUPeYDoPy0jrJNrZA
+ EdcPlIiMOYo=; b=OaJVlzmdW2ERJZuF1ffUvjHqu+4RP2t3NmhEGRgbu7xv0Mbd
+ tAgCzEmN9+ampkkpfcsLrg4mjAmxpPCHoez/t8EYlzDO2uNpGcQGPXYQovTceEgP
+ 0M+uR8atVxdiY/fZYeMOuhIiflX2J2Cy5H7a3rvKH2Bw66kOj+dTIAZIHSaHrMBJ
+ 2iv5qwoYq5NODYgquEDaOuM6Y+eVj9NsOCtgopGPIqKfGh4tKD+EjL/jJBpJNhzH
+ GHPxJZ/JZ4m7+gClGHLk25agSiX/qWUtxnayBoe16y3KEm+tyngyCQrX+fbvrI+L
+ bSGI+HZdeCugh4OEZXwuZcerWK/MapIdOLOK9g==
+X-ME-Sender: <xms:jje_Yon_y0jKvXiAfNl9XLlYtUVS9PCzcttJ8cb0qzs3_iGk-dLnng>
+ <xme:jje_Yn3_su7UzV3lwna_iM9fpLCIdaF-tlvkMpZQQ0tNUOaSH_gefwtaZzxiQsyVU
+ s0L798Sb838PU_huIM>
+X-ME-Received: <xmr:jje_YmpuXVjOl92aE8ufkNoGTNa_BWUxAjWrq4VFuV6gp1nVVRT4lSvDBTJp0Y5n83wsQcNVpARDD2PaqG_uHNw6v4w8QENK>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvfedrudehfedguddvudcutefuodetggdotefrod
+ ftvfcurfhrohhfihhlvgemucfhrghsthforghilhdpqfgfvfdpuffrtefokffrpgfnqfgh
+ necuuegrihhlohhuthemuceftddtnecumhhishhsihhnghcuvffquchfihgvlhguucdlfe
+ dtmdenucfjughrpefhvfevufffkffoggfgsedtkeertdertddtnecuhfhrohhmpefrvght
+ vghrucffvghlvghvohhrhigrshcuoehmvgesphhjugdruggvvheqnecuggftrfgrthhtvg
+ hrnhephefgleehveejffefheefhfefveehvedvieetgeefleffveeljedtvdfgfeehleej
+ necuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmrghilhhfrhhomhepmhgvse
+ hpjhgurdguvghv
+X-ME-Proxy: <xmx:jje_YkmrlotCM_cHOiKnulQQQ2Wlu0PA5mGTgSYWXQqDcIyzH3zl6g>
+ <xmx:jje_Ym1Imj5M6XFT9o3LCpIGMwDAiO3xn1jl4mrz-_vcIU3Tz6yThg>
+ <xmx:jje_YrtgJRCBctJI-n1DnPp0jjXxZRpe5DlQ16on-LZt_8Vj86ousQ>
+ <xmx:jje_YpSxygKqSOmB82fueU009M3F6KlNh4AY96ne1lJ4IV9WgaQ8HhsyXLk>
+Feedback-ID: i9e814621:Fastmail
+Received: by mail.messagingengine.com (Postfix) with ESMTPA; Fri,
+ 1 Jul 2022 14:06:05 -0400 (EDT)
+From: Peter Delevoryas <me@pjd.dev>
+To: 
+Cc: clg@kaod.org, peter.maydell@linaro.org, andrew@aj.id.au, joel@jms.id.au,
+ qemu-arm@nongnu.org, qemu-devel@nongnu.org
+Subject: [PATCH] aspeed: Create SRAM name from first CPU index
+Date: Fri,  1 Jul 2022 11:06:03 -0700
+Message-Id: <20220701180603.38408-1-me@pjd.dev>
+X-Mailer: git-send-email 2.37.0
 MIME-Version: 1.0
-References: <20220628042117.368549-1-richard.henderson@linaro.org>
- <20220628042117.368549-20-richard.henderson@linaro.org>
-In-Reply-To: <20220628042117.368549-20-richard.henderson@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 1 Jul 2022 17:19:45 +0100
-Message-ID: <CAFEAcA-v6_atdSMggO7mAfW0H96F8s2fZWLD3biHLjsFnbzYgQ@mail.gmail.com>
-Subject: Re: [PATCH v4 19/45] target/arm: Implement SME MOVA
-To: Richard Henderson <richard.henderson@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1129;
- envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x1129.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=64.147.123.26; envelope-from=me@pjd.dev;
+ helo=wnew1-smtp.messagingengine.com
+X-Spam_score_int: -12
+X-Spam_score: -1.3
+X-Spam_bar: -
+X-Spam_report: (-1.3 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ FROM_FMBLA_NEWDOM=1.498, RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -114,229 +130,95 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: uaIsaTdlFaQ8
+X-TUID: qfZsjgzqInnP
 
-On Tue, 28 Jun 2022 at 05:40, Richard Henderson
-<richard.henderson@linaro.org> wrote:
->
-> We can reuse the SVE functions for implementing moves to/from
-> horizontal tile slices, but we need new ones for moves to/from
-> vertical tile slices.
->
-> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
-> ---
+To support multiple SoC's running simultaneously, we need a unique name for
+each RAM region. DRAM is created by the machine, but SRAM is created by the
+SoC, since in hardware it is part of the SoC's internals.
 
-> diff --git a/target/arm/sme_helper.c b/target/arm/sme_helper.c
-> index eef2df73e1..95159862de 100644
-> --- a/target/arm/sme_helper.c
-> +++ b/target/arm/sme_helper.c
-> @@ -19,8 +19,10 @@
->
->  #include "qemu/osdep.h"
->  #include "cpu.h"
-> -#include "internals.h"
+We need a way to uniquely identify each SRAM region though, for VM
+migration. Since each of the SoC's CPU's has an index which identifies it
+uniquely from other CPU's in the machine, we can use the index of any of the
+CPU's in the SoC to uniquely identify differentiate the SRAM name from other
+SoC SRAM's. In this change, I just elected to use the index of the first CPU
+in each SoC.
 
-Did you mean to delete this #include line ?
+Signed-off-by: Peter Delevoryas <me@pjd.dev>
+---
+ hw/arm/aspeed_ast10x0.c | 5 ++++-
+ hw/arm/aspeed_ast2600.c | 5 +++--
+ hw/arm/aspeed_soc.c     | 5 +++--
+ 3 files changed, 10 insertions(+), 5 deletions(-)
 
-> +#include "tcg/tcg-gvec-desc.h"
->  #include "exec/helper-proto.h"
-> +#include "qemu/int128.h"
-> +#include "vec_internal.h"
->
->  /* ResetSVEState */
->  void arm_reset_sve_state(CPUARMState *env)
-> @@ -84,3 +86,111 @@ void helper_sme_zero(CPUARMState *env, uint32_t imm, uint32_t svl)
->          }
->      }
->  }
-> +
-> +/*
-> + * Move Zreg vector to ZArray column.
-> + */
-> +#define DO_MOVA_C(NAME, TYPE, H)                                        \
-> +void HELPER(NAME)(void *za, void *vn, void *vg, uint32_t desc)          \
-> +{                                                                       \
-> +    int i, oprsz = simd_oprsz(desc);                                    \
-> +    for (i = 0; i < oprsz; ) {                                          \
-> +        uint16_t pg = *(uint16_t *)(vg + H1_2(i >> 3));                 \
-> +        do {                                                            \
-> +            if (pg & 1) {                                               \
-> +                *(TYPE *)za = *(TYPE *)(vn + H(i));                     \
-> +            }                                                           \
-> +            za += sizeof(ARMVectorReg) * sizeof(TYPE);                  \
-> +            i += sizeof(TYPE);                                          \
-> +            pg >>= sizeof(TYPE);                                        \
-> +        } while (i & 15);                                               \
-> +    }                                                                   \
-> +}
-> +
-> +DO_MOVA_C(sme_mova_cz_b, uint8_t, H1)
-> +DO_MOVA_C(sme_mova_cz_h, uint16_t, H2)
-> +DO_MOVA_C(sme_mova_cz_s, uint32_t, H4)
-> +
-> +void HELPER(sme_mova_cz_d)(void *za, void *vn, void *vg, uint32_t desc)
-> +{
-> +    int i, oprsz = simd_oprsz(desc) / 8;
-> +    uint8_t *pg = vg;
-> +    uint64_t *n = vn;
-> +    uint64_t *a = za;
-> +
-> +    for (i = 0; i < oprsz; i++) {
-> +        if (pg[H1_2(i)] & 1) {
+diff --git a/hw/arm/aspeed_ast10x0.c b/hw/arm/aspeed_ast10x0.c
+index 33ef331771..b6b6f0d053 100644
+--- a/hw/arm/aspeed_ast10x0.c
++++ b/hw/arm/aspeed_ast10x0.c
+@@ -159,6 +159,7 @@ static void aspeed_soc_ast1030_realize(DeviceState *dev_soc, Error **errp)
+     DeviceState *armv7m;
+     Error *err = NULL;
+     int i;
++    char name[64];
+ 
+     if (!clock_has_source(s->sysclk)) {
+         error_setg(errp, "sysclk clock must be wired up by the board code");
+@@ -183,7 +184,9 @@ static void aspeed_soc_ast1030_realize(DeviceState *dev_soc, Error **errp)
+     sysbus_realize(SYS_BUS_DEVICE(&s->armv7m), &error_abort);
+ 
+     /* Internal SRAM */
+-    memory_region_init_ram(&s->sram, NULL, "aspeed.sram", sc->sram_size, &err);
++    snprintf(name, sizeof(name), "aspeed.sram.%d",
++             CPU(s->armv7m.cpu)->cpu_index);
++    memory_region_init_ram(&s->sram, NULL, name, sc->sram_size, &err);
+     if (err != NULL) {
+         error_propagate(errp, err);
+         return;
+diff --git a/hw/arm/aspeed_ast2600.c b/hw/arm/aspeed_ast2600.c
+index 3f0611ac11..7efb9f888a 100644
+--- a/hw/arm/aspeed_ast2600.c
++++ b/hw/arm/aspeed_ast2600.c
+@@ -276,6 +276,7 @@ static void aspeed_soc_ast2600_realize(DeviceState *dev, Error **errp)
+     AspeedSoCClass *sc = ASPEED_SOC_GET_CLASS(s);
+     Error *err = NULL;
+     qemu_irq irq;
++    char name[64];
+ 
+     /* IO space */
+     aspeed_mmio_map_unimplemented(s, SYS_BUS_DEVICE(&s->iomem), "aspeed.io",
+@@ -335,8 +336,8 @@ static void aspeed_soc_ast2600_realize(DeviceState *dev, Error **errp)
+     }
+ 
+     /* SRAM */
+-    memory_region_init_ram(&s->sram, OBJECT(dev), "aspeed.sram",
+-                           sc->sram_size, &err);
++    snprintf(name, sizeof(name), "aspeed.sram.%d", CPU(&s->cpu[0])->cpu_index);
++    memory_region_init_ram(&s->sram, OBJECT(dev), name, sc->sram_size, &err);
+     if (err) {
+         error_propagate(errp, err);
+         return;
+diff --git a/hw/arm/aspeed_soc.c b/hw/arm/aspeed_soc.c
+index 0f675e7fcd..1ddba33d2a 100644
+--- a/hw/arm/aspeed_soc.c
++++ b/hw/arm/aspeed_soc.c
+@@ -239,6 +239,7 @@ static void aspeed_soc_realize(DeviceState *dev, Error **errp)
+     AspeedSoCState *s = ASPEED_SOC(dev);
+     AspeedSoCClass *sc = ASPEED_SOC_GET_CLASS(s);
+     Error *err = NULL;
++    char name[64];
+ 
+     /* IO space */
+     aspeed_mmio_map_unimplemented(s, SYS_BUS_DEVICE(&s->iomem), "aspeed.io",
+@@ -259,8 +260,8 @@ static void aspeed_soc_realize(DeviceState *dev, Error **errp)
+     }
+ 
+     /* SRAM */
+-    memory_region_init_ram(&s->sram, OBJECT(dev), "aspeed.sram",
+-                           sc->sram_size, &err);
++    snprintf(name, sizeof(name), "aspeed.sram.%d", CPU(&s->cpu[0])->cpu_index);
++    memory_region_init_ram(&s->sram, OBJECT(dev), name, sc->sram_size, &err);
+     if (err) {
+         error_propagate(errp, err);
+         return;
+-- 
+2.37.0
 
-The documentation of the H macros says
-"The H1_<N> macros are used when performing byte arithmetic and then
- casting the final pointer to a type of size N."
-but we're not casting anything to a 2-byte type, so what's happening here?
-
-> +            a[i * sizeof(ARMVectorReg)] = n[i];
-> +        }
-> +    }
-> +}
-> +
-> +void HELPER(sme_mova_cz_q)(void *za, void *vn, void *vg, uint32_t desc)
-> +{
-> +    int i, oprsz = simd_oprsz(desc) / 16;
-> +    uint16_t *pg = vg;
-> +    Int128 *n = vn;
-> +    Int128 *a = za;
-> +
-> +    for (i = 0; i < oprsz; i++) {
-> +        if (pg[H2(i)] & 1) {
-> +            a[i * sizeof(ARMVectorReg)] = n[i];
-
-Is it really OK to do this with an Int128 store? That is
-in host-order, but the two halves of a 128-bit quantity
-in the ZA array are in architectural order. I suppose the
-source also will have them in the architectural order, but
-it does look odd, especially uncommented.
-
-> +        }
-> +    }
-> +}
-> +
-> +#undef DO_MOVA_C
-
-> diff --git a/target/arm/translate-sme.c b/target/arm/translate-sme.c
-> index 971504559b..8e6881086b 100644
-> --- a/target/arm/translate-sme.c
-> +++ b/target/arm/translate-sme.c
-> @@ -35,6 +35,77 @@
->  #include "decode-sme.c.inc"
->
->
-> +static TCGv_ptr get_tile_rowcol(DisasContext *s, int esz, int rs,
-> +                                int tile_index, bool vertical)
-> +{
-> +    int tile = tile_index >> (4 - esz);
-> +    int index = esz == MO_128 ? 0 : extract32(tile_index, 0, 4 - esz);
-> +    int pos, len, offset;
-> +    TCGv_i32 t_index;
-> +    TCGv_ptr addr;
-> +
-> +    /* Resolve tile.size[index] to an untyped ZA slice index. */
-> +    t_index = tcg_temp_new_i32();
-> +    tcg_gen_trunc_tl_i32(t_index, cpu_reg(s, rs));
-> +    tcg_gen_addi_i32(t_index, t_index, index);
-
-This code isn't doing what the comment says; it's just calculating
-the (not-yet-taken-MOD-dim) slice index, which does depend on the type.
-
-> +
-> +    len = ctz32(streaming_vec_reg_size(s)) - esz;
-
-What is this the length of ?
-
-> +
-> +    if (vertical) {
-
-I ended up reviewing this function from bottom to top because to
-me the horizontal case seemed simpler to understand first.
-(As a result the review comments might read a bit out-of-order.)
-Dunno if that justifies flipping the condition around, though.
-
-> +        /*
-> +         * Compute the offset of the index within the tile:
-
-"byte offset" ?
-
-> +         *     (index % (svl / size)) * size
-> +         *   = (index % (svl >> esz)) << esz
-> +         * Perform the power-of-two modulo via extraction of the low @len bits.
-> +         * Perform the multiply by shifting left by @pos bits.
-> +         * These two operations are performed simultaneously via deposit.
-> +         */
-> +        pos = esz;
-> +        tcg_gen_deposit_z_i32(t_index, t_index, pos, len);
-
-As an aside, this appears to be "deposit into a zero value", but
-I had to go digging in the source to find that out, because we
-don't document the semantics of this either in the header file
-where this function is declared, or in a doc comment on the
-implementation of it, or in tcg/README, or in docs/devel.
-We really desperately need to document the interface the TCG
-core code provides to frontends, because it's getting further
-and further away from "it's functions to emit the IR ops
-described in tcg/README, with obvious looking function names"...
-
-> +
-> +        /* The tile slice offset within env->zarray is the column offset. */
-> +        offset = tile;
-
-I don't understand why we can just add the tile index
-(which is going to be an integer 0, 1, 2..) to a byte offset.
-In the horizontal case we add tile * sizeof(ARMVectorReg),
-which makes more sense to me.
-
-> +
-> +        /* Include the offset of zarray to make this relative to env. */
-> +        offset += offsetof(CPUARMState, zarray);
-> +        tcg_gen_addi_i32(t_index, t_index, offset);
-> +
-> +        /*
-> +         * For big-endian, adjust the column slice offset within
-> +         * the uint64_t host words that make up env->zarray.
-> +         * This must wait until index and offset are combined.
-
-Why? Neither the byte-offset of the start of the tile nor
-the byte offset of zarray in CPUARMState ought to be non-8-aligned.
-
-> +         */
-> +        if (HOST_BIG_ENDIAN && esz < MO_64) {
-> +            tcg_gen_xori_i32(t_index, t_index, 8 - (1 << esz));
-> +        }
-> +    } else {
-> +        /*
-> +         * Compute the offset of the index within the tile:
-
-"byte offset", right ?
-
-Also this is doing the "take index MOD dim" that the pseudocode
-does as a preceding step at the same time, so we should mention that.
-
-> +         *     (index % (svl / size)) * (size * sizeof(row))
-> +         *   = (index % (svl >> esz)) << (esz + log2(sizeof(row)))
-> +         */
-> +        pos = esz + ctz32(sizeof(ARMVectorReg));
-> +        tcg_gen_deposit_z_i32(t_index, t_index, pos, len);
-> +
-> +        /* The tile slice offset within env->zarray is the row offset. */
-> +        offset = tile * sizeof(ARMVectorReg);
-> +
-> +        /* Include the offset of zarray to make this relative to env. */
-> +        offset += offsetof(CPUARMState, zarray);
-> +        tcg_gen_addi_i32(t_index, t_index, offset);
-> +
-> +        /* Row slices need no endian adjustment. */
-> +    }
-> +
-> +    /* Add the offset to env to produce the final pointer. */
-> +    addr = tcg_temp_new_ptr();
-> +    tcg_gen_ext_i32_ptr(addr, t_index);
-> +    tcg_temp_free_i32(t_index);
-> +    tcg_gen_add_ptr(addr, addr, cpu_env);
-> +
-> +    return addr;
-> +}
-
--- PMM

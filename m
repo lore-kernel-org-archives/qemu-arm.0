@@ -1,294 +1,130 @@
-Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp1201192lft;
+Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp1201197lft;
         Fri, 1 Jul 2022 05:27:18 -0700 (PDT)
-X-Google-Smtp-Source: AGRyM1uv5Rgv9J4EfI0X242SiU4F7TjWsT3Eq9nrTHyqfb110NQ3RYv699F9rfQOlxeAFtF/9+7m
-X-Received: by 2002:a0d:cb13:0:b0:318:39b9:89fc with SMTP id n19-20020a0dcb13000000b0031839b989fcmr17375960ywd.413.1656678438091;
+X-Google-Smtp-Source: AGRyM1vphPGTzhaCmqWT+Z5Jsa65DClwwKytsG9jr5PTQWDmDVjIPHBUDdq1mcQq4hcJLKeQld9j
+X-Received: by 2002:ac8:5e06:0:b0:317:ea59:60a7 with SMTP id h6-20020ac85e06000000b00317ea5960a7mr12475384qtx.534.1656678438499;
         Fri, 01 Jul 2022 05:27:18 -0700 (PDT)
 ARC-Seal: i=1; a=rsa-sha256; t=1656678438; cv=none;
         d=google.com; s=arc-20160816;
-        b=RtDJmZ0SZzdtm+bYPLZrC7BQ/vWawA8Tyk2uTQZIHrWFkheGrGScW2Sk5/K+MXiNwu
-         ASjVGDjzy1vX0ju/AfaPHR0Pw8aPIjl9nV7tGxBOk3bbAn3Tpja6+C4/4oJEJm34X+af
-         JSCzxjLM7OPPDd0sRaVAL4AeqY72p2WuHYznE8B8YObSXzrXIp5PRGQWct9mfY6imYnV
-         fNyQe9u1P7brMeEU8aoemEO4emTAmAiLIYQ9chrtmekLo7oyMtVb6Y39L6KdZkl7fPwG
-         87K6O6NtsMxDmgjYZTjm1gxqJesm7kTvoxCebp1dzrs2S9e0QqiBA/v9W8epUP3V3D8J
-         aOow==
+        b=P9MSzhQ029E+l6Zj0c4y9vFcy0/TsYHNWIMdFCLy/lGcHAq+EFxYyXJ7OBHWnfG8Ep
+         b3j7zVunXY+LmX8hEZCiDic9MNel20olc7qyO8BJ84vU2MdJigEo+3EHqcQ7imRb5auH
+         wM6j2I0fZKo5PXLJwidM5fwp15r5jtQLvCSA9UGq0AulS3HQ85n8OjTDJHB9NcbC9qp2
+         8n0wkoc72YzysdYF2OUusxhNOWEIHNN20ESpbw+5LDb11oVHGgeJMQaw9TDzAuX/gLRh
+         jy0pWapv+468cUFy2RVpe4wswM1Vuh+vtaljlBcWHOHIORtkhodCeH2EACEH/OOU3dW5
+         xzdQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:cc:to:content-language:subject
-         :user-agent:mime-version:date:message-id;
-        bh=RLh66cVGbB9fpeNHuxaStufciQsaKa2Qmlsr9kTnXrE=;
-        b=qqODJTzDO3zBZxqTWha/li5bo8I8EHTx2xQqCqgZ8kkSPxmLybPWOzVMyTu8g/ntlo
-         RE9FCbFuzcACq/SANzZIhWVtCoLAuhT56nsYfohPcRAPuDYH2FfFR/kgG2Si8OHW3RN9
-         B5MEIlUXI2VQQLDZOkQNLDhUcCIVBxzfRQeu8DVpQHLaOijdnhxRaFSKrAfcMmOCF5Gy
-         zZk2+AkzWhzYakL7W5nP9KGEyBvNBRezUjVmP08IR5KEsg1UeBgxqswX3/BgaJXZ1j7P
-         IrUvML0PoyZ8042wvrkVNZECNfPgRsbBuzdA+PKDY3lpn2qY9PS8eOQNsNQyGqky79ha
-         tTGg==
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=2x45qChXzSiE6ttQterCyPPWgGWkWOtA75UESiFBCRc=;
+        b=asBah9eUNyD0eAAA1r4KiupO6p+2jfJBYKiJ0U7pMZ9ZzjQcmMtjozN7Qwuz9aP7oT
+         n/JzP12gYYmyp8ADVCX2O1FWGJbZY286KIL93agIcxuJGQRdsL/mo6LOHlq0P+7iyuSi
+         Brltx3RFp/rlBehUUPopZkQH9YTmc0fjBNvdnGDqyD67l2GNk+S5G33oyxdXx+NsID85
+         2Y1ssjRNbGF3nL4+5gDgGi7/VIaaYBv3tbov3izC4r6qBNgeepJzp5bb/7Vx5KmXKbDB
+         OEpaUevt8ETlc7FB98EHgX2qPPM672JPkK9f6P/NIGTDuQ6f/5AOqoKt4T+jiiOd6hC1
+         FLtw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@linaro.org header.s=google header.b=Oj5q6c8m;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v67-20020a812f46000000b0031be6a05680si16517957ywv.399.2022.07.01.05.27.17
+        by mx.google.com with ESMTPS id s206-20020a37a9d7000000b006a6bf23eb65si11889654qke.120.2022.07.01.05.27.18
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
         Fri, 01 Jul 2022 05:27:18 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:58640 helo=lists1p.gnu.org)
+       dkim=pass header.i=@linaro.org header.s=google header.b=Oj5q6c8m;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:57588 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1o7Fjx-0005I1-9f
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1o7Fjx-0004ZE-S1
 	for alex.bennee@linaro.org; Fri, 01 Jul 2022 08:27:17 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:42344)
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41964)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>)
- id 1o7FgN-0001sD-OM; Fri, 01 Jul 2022 08:23:39 -0400
-Received: from smtpout3.mo529.mail-out.ovh.net ([46.105.54.81]:56743)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>)
- id 1o7FgJ-00041d-UA; Fri, 01 Jul 2022 08:23:34 -0400
-Received: from mxplan5.mail.ovh.net (unknown [10.109.156.13])
- by mo529.mail-out.ovh.net (Postfix) with ESMTPS id 065A6113542BF;
- Fri,  1 Jul 2022 14:23:24 +0200 (CEST)
-Received: from kaod.org (37.59.142.101) by DAG4EX1.mxp5.local (172.16.2.31)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.9; Fri, 1 Jul 2022
- 14:23:23 +0200
-Authentication-Results: garm.ovh; auth=pass
- (GARM-101G004d04b04e3-5c3d-46ef-8395-07781734b95a,
- 4AFA7A5FE9B5479AF1021A557A7101AB3AA64E21) smtp.auth=clg@kaod.org
-X-OVh-ClientIp: 82.64.250.170
-Message-ID: <b3366184-2989-b1a2-7ff5-c8f850582bec@kaod.org>
-Date: Fri, 1 Jul 2022 14:23:17 +0200
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1o7Feu-0000fI-IX
+ for qemu-devel@nongnu.org; Fri, 01 Jul 2022 08:22:06 -0400
+Received: from mail-yb1-xb2b.google.com ([2607:f8b0:4864:20::b2b]:43892)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1o7Fes-0003mf-6q
+ for qemu-devel@nongnu.org; Fri, 01 Jul 2022 08:22:04 -0400
+Received: by mail-yb1-xb2b.google.com with SMTP id q132so3712655ybg.10
+ for <qemu-devel@nongnu.org>; Fri, 01 Jul 2022 05:22:01 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=2x45qChXzSiE6ttQterCyPPWgGWkWOtA75UESiFBCRc=;
+ b=Oj5q6c8mov47b8ZbxdBnBujQJ7nqQNtPObWdbInUC9TpUHUrWdLFS+QSzmLKn7pETx
+ KB1gm7WejSVrPgfkNaZl/vJwJbYDG/+Axk0gc1s9y8DKjFz46igZJp0LOufri2ypocZs
+ hvXgqi8Ioy6Qs/hISv3TGgUD8s5boicP0Pgyxtfp1DfkidRRFiW1UrOIds6BAjWvwzUa
+ Jy8oQZQ2RLoz85FB7KcKdFIECDsvX1Ywp3inlMCcoNitp4FS4/XdZAlNdonTr0rsi//Y
+ 9fuukcfuxucpHKkfeuTAJeIN7HY5veScFY6CUXWJpcfGlJXT87WodD5CsY8NfT4962V/
+ IJcg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=2x45qChXzSiE6ttQterCyPPWgGWkWOtA75UESiFBCRc=;
+ b=kVs8D+9qr19nE1UTmI64uPfQ+gOVWvV8bqy5il47Z3UlEYI8lczutVvokCWMyhJ7Zt
+ /pRDEYDrA2faP7UhWUIlMCPGxYPJspSXfpIvAx3+MVdHVXqH6+TknPtHy/nycX9LO7Q/
+ VJ8AVfO3cwf9q8XanTP+S7mf64WAW7ID5q/65UoYRApGMLR9c8BAERG9mmaEhtvtH6j/
+ kpKLcShaka/3/5Al3o1oKNuTHW8V2ty2D20UipABBEvePyD0uqK6rAXFhV9L0gkcy9vt
+ bMNaJbYlcKhIQ6/iON36ikktzlKClpxQPiItVhrwqCY37JPks5ytKknKehb9qm16ibep
+ tk0Q==
+X-Gm-Message-State: AJIora+qcyX8kFSftu0W2F/9OeFNgc6a2pdyAO3Aw1sAg+L+4nE1VUFM
+ FEDaOSi9PdDobYEqzOcQ1VFIKFK3zKW5ogfHfEzeMw==
+X-Received: by 2002:a25:2497:0:b0:66c:f49b:94cb with SMTP id
+ k145-20020a252497000000b0066cf49b94cbmr15140770ybk.140.1656678121136; Fri, 01
+ Jul 2022 05:22:01 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.9.0
-Subject: Re: [PATCH 1/2] hw: m25p80: Add Block Protect and Top Bottom bits for
- write protect
-Content-Language: en-US
-To: Francisco Iglesias <frasse.iglesias@gmail.com>, Iris Chen
- <irischenlj@fb.com>
-CC: <pdel@fb.com>, <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>,
- <patrick@stwcx.xyz>, <alistair@alistair23.me>, <kwolf@redhat.com>,
- <hreitz@redhat.com>, <peter.maydell@linaro.org>, <andrew@aj.id.au>,
- <joel@jms.id.au>, <thuth@redhat.com>, <lvivier@redhat.com>,
- <pbonzini@redhat.com>, <qemu-block@nongnu.org>, <dz4list@gmail.com>
-References: <20220627185234.1911337-1-irischenlj@fb.com>
- <20220627185234.1911337-2-irischenlj@fb.com>
- <20220701114004.GF10629@fralle-msi>
-From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
-In-Reply-To: <20220701114004.GF10629@fralle-msi>
-Content-Type: text/plain; charset="UTF-8"; format=flowed
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [37.59.142.101]
-X-ClientProxiedBy: DAG7EX2.mxp5.local (172.16.2.62) To DAG4EX1.mxp5.local
- (172.16.2.31)
-X-Ovh-Tracer-GUID: 9dc52406-7657-4ece-8ed1-168c2eb3034c
-X-Ovh-Tracer-Id: 16661911249756851015
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvfedrudehfedgheduucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhepkfffgggfuffvvehfhfgjtgfgihesthejredttdefjeenucfhrhhomhepveorughrihgtpgfnvggpifhorghtvghruceotghlgheskhgrohgurdhorhhgqeenucggtffrrghtthgvrhhnpeelleeiiefgkeefiedtvdeigeetueetkeffkeelheeugfetteegvdekgfehgffgkeenucfkpheptddrtddrtddrtddpfeejrdehledrudegvddruddtudenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhhouggvpehsmhhtphhouhhtpdhhvghlohepmhigphhlrghnhedrmhgrihhlrdhovhhhrdhnvghtpdhinhgvtheptddrtddrtddrtddpmhgrihhlfhhrohhmpegtlhhgsehkrghougdrohhrghdpnhgspghrtghpthhtohepuddprhgtphhtthhopeguiieglhhishhtsehgmhgrihhlrdgtohhmpdfovfetjfhoshhtpehmohehvdel
-Received-SPF: pass client-ip=46.105.54.81; envelope-from=clg@kaod.org;
- helo=smtpout3.mo529.mail-out.ovh.net
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+References: <20220628042117.368549-1-richard.henderson@linaro.org>
+ <20220628042117.368549-9-richard.henderson@linaro.org>
+In-Reply-To: <20220628042117.368549-9-richard.henderson@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 1 Jul 2022 13:21:23 +0100
+Message-ID: <CAFEAcA8MLOSojELEG1vmU84++hdka80KUDQr2YvfiJuye+bd4Q@mail.gmail.com>
+Subject: Re: [PATCH v4 08/45] target/arm: Mark FTSMUL, FTMAD,
+ FADDA as non-streaming
+To: Richard Henderson <richard.henderson@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b2b;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yb1-xb2b.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: y4186NqCtIla
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: h02coSxGSEhn
 
-On 7/1/22 13:40, Francisco Iglesias wrote:
-> Hi Iris,
-> 
-> Looks good, a couple of minor comments below!
-> 
-> On [2022 Jun 27] Mon 11:52:33, Iris Chen wrote:
->> Signed-off-by: Iris Chen <irischenlj@fb.com>
->> ---
->>   hw/block/m25p80.c | 74 +++++++++++++++++++++++++++++++++++++++--------
->>   1 file changed, 62 insertions(+), 12 deletions(-)
->>
->> diff --git a/hw/block/m25p80.c b/hw/block/m25p80.c
->> index 50b523e5b1..0156a70f5e 100644
->> --- a/hw/block/m25p80.c
->> +++ b/hw/block/m25p80.c
->> @@ -38,21 +38,19 @@
->>   #include "trace.h"
->>   #include "qom/object.h"
->>   
->> -/* Fields for FlashPartInfo->flags */
->> -
->> -/* erase capabilities */
->> -#define ER_4K 1
->> -#define ER_32K 2
->> -/* set to allow the page program command to write 0s back to 1. Useful for
->> - * modelling EEPROM with SPI flash command set
->> - */
->> -#define EEPROM 0x100
->> -
->>   /* 16 MiB max in 3 byte address mode */
->>   #define MAX_3BYTES_SIZE 0x1000000
->> -
->>   #define SPI_NOR_MAX_ID_LEN 6
->>   
->> +/* Fields for FlashPartInfo->flags */
->> +enum spi_nor_option_flags {
-> 
-> (A suggestion is to s/nor/flash/ above (and s/SNOR_F_//  below) since there
-> looks to be nand flashes as W25N01GV using the protocol to).
-> 
->> +    ER_4K                  = BIT(0),
->> +    ER_32K                 = BIT(1),
->> +    EEPROM                 = BIT(2),
->> +    SNOR_F_HAS_SR_TB       = BIT(3),
->> +    SNOR_F_HAS_SR_BP3_BIT6 = BIT(4),
->> +};
->> +
->>   typedef struct FlashPartInfo {
->>       const char *part_name;
->>       /*
->> @@ -253,7 +251,8 @@ static const FlashPartInfo known_devices[] = {
->>       { INFO("n25q512a11",  0x20bb20,      0,  64 << 10, 1024, ER_4K) },
->>       { INFO("n25q512a13",  0x20ba20,      0,  64 << 10, 1024, ER_4K) },
->>       { INFO("n25q128",     0x20ba18,      0,  64 << 10, 256, 0) },
->> -    { INFO("n25q256a",    0x20ba19,      0,  64 << 10, 512, ER_4K) },
->> +    { INFO("n25q256a",    0x20ba19,      0,  64 << 10, 512,
->> +           ER_4K | SNOR_F_HAS_SR_BP3_BIT6 | SNOR_F_HAS_SR_TB) },
->>       { INFO("n25q512a",    0x20ba20,      0,  64 << 10, 1024, ER_4K) },
->>       { INFO("n25q512ax3",  0x20ba20,  0x1000,  64 << 10, 1024, ER_4K) },
->>       { INFO("mt25ql512ab", 0x20ba20, 0x1044, 64 << 10, 1024, ER_4K | ER_32K) },
->> @@ -480,6 +479,11 @@ struct Flash {
->>       bool reset_enable;
->>       bool quad_enable;
->>       bool aai_enable;
->> +    bool block_protect0;
->> +    bool block_protect1;
->> +    bool block_protect2;
->> +    bool block_protect3;
->> +    bool top_bottom_bit;
->>       bool status_register_write_disabled;
->>       uint8_t ear;
->>   
->> @@ -630,6 +634,29 @@ void flash_write8(Flash *s, uint32_t addr, uint8_t data)
->>           qemu_log_mask(LOG_GUEST_ERROR, "M25P80: write with write protect!\n");
->>           return;
->>       }
->> +    uint32_t block_protect_value = (s->block_protect3 << 3) |
->> +                                   (s->block_protect2 << 2) |
->> +                                   (s->block_protect1 << 1) |
->> +                                   (s->block_protect0 << 0);
->> +
->> +     uint32_t num_protected_sectors = 1 << (block_protect_value - 1);
->> +     uint32_t sector = addr / s->pi->sector_size;
->> +
->> +     /* top_bottom_bit == 0 means TOP */
-> 
-> Indentation needs minor fixing on above lines, also the declarations should
-> be at the top of the function.
+On Tue, 28 Jun 2022 at 05:28, Richard Henderson
+<richard.henderson@linaro.org> wrote:
+>
+> Mark these as a non-streaming instructions, which should trap
+> if full a64 support is not enabled in streaming mode.
+>
+> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 
-I agree in that case it would be better to have at the top
-but checkpatch does not complain. What's the rule ?
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
-For loop indexes, I do prefer to declare in the block
-statement.
-
-> 
->> +    if (!s->top_bottom_bit) {
->> +        if (block_protect_value > 0 &&
->> +            s->pi->n_sectors <= sector + num_protected_sectors) {
->> +            qemu_log_mask(LOG_GUEST_ERROR,
->> +                          "M25P80: write with write protect!\n");
->> +            return;
->> +        }
->> +    } else {
->> +        if (block_protect_value > 0 && sector < num_protected_sectors) {
->> +            qemu_log_mask(LOG_GUEST_ERROR,
->> +                          "M25P80: write with write protect!\n");
->> +            return;
->> +        }
->> +    }
->>   
->>       if ((prev ^ data) & data) {
->>           trace_m25p80_programming_zero_to_one(s, addr, prev, data);
->> @@ -728,6 +755,15 @@ static void complete_collecting_data(Flash *s)
->>           break;
->>       case WRSR:
->>           s->status_register_write_disabled = extract32(s->data[0], 7, 1);
->> +        s->block_protect0 = extract32(s->data[0], 2, 1);
->> +        s->block_protect1 = extract32(s->data[0], 3, 1);
->> +        s->block_protect2 = extract32(s->data[0], 4, 1);
->> +        if (s->pi->flags & SNOR_F_HAS_SR_TB) {
->> +            s->top_bottom_bit = extract32(s->data[0], 5, 1);
->> +        }
->> +        if (s->pi->flags & SNOR_F_HAS_SR_BP3_BIT6) {
->> +            s->block_protect3 = extract32(s->data[0], 6, 1);
->> +        }
->>   
->>           switch (get_man(s)) {
->>           case MAN_SPANSION:
->> @@ -1213,6 +1249,15 @@ static void decode_new_cmd(Flash *s, uint32_t value)
->>       case RDSR:
->>           s->data[0] = (!!s->write_enable) << 1;
->>           s->data[0] |= (!!s->status_register_write_disabled) << 7;
->> +        s->data[0] |= (!!s->block_protect0) << 2;
->> +        s->data[0] |= (!!s->block_protect1) << 3;
->> +        s->data[0] |= (!!s->block_protect2) << 4;
->> +        if (s->pi->flags & SNOR_F_HAS_SR_TB) {
->> +            s->data[0] |= (!!s->top_bottom_bit) << 5;
->> +        }
->> +        if (s->pi->flags & SNOR_F_HAS_SR_BP3_BIT6) {
->> +            s->data[0] |= (!!s->block_protect3) << 6;
->> +        }
->>   
->>           if (get_man(s) == MAN_MACRONIX || get_man(s) == MAN_ISSI) {
->>               s->data[0] |= (!!s->quad_enable) << 6;
->> @@ -1553,6 +1598,11 @@ static void m25p80_reset(DeviceState *d)
->>   
->>       s->wp_level = true;
->>       s->status_register_write_disabled = false;
->> +    s->block_protect0 = false;
->> +    s->block_protect1 = false;
->> +    s->block_protect2 = false;
->> +    s->block_protect3 = false;
->> +    s->top_bottom_bit = false;
-> 
-> We need to place above ones in a subsection in the vmstate (similar to the your
-> previous patch).
-
-Ah yes. I keep forgetting these ...
-
-Thanks for the second look Francisco.
-
-C.
-
-
-> 
-> Looks good to me otherwise!
-> 
-> Thanks!
-> Best regards,
-> Francisco Iglesias
-> 
->>   
->>       reset_memory(s);
->>   }
->> -- 
->> 2.30.2
->>
->>
-
+thanks
+-- PMM

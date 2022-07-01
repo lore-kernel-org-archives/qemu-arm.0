@@ -1,339 +1,342 @@
-Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp1234343lft;
-        Fri, 1 Jul 2022 06:16:47 -0700 (PDT)
-X-Google-Smtp-Source: AGRyM1sTp4ma9FI6/E+Wrfx4KCKN3MVbedcmt/Ei4wSnsfuJiM8qlwblSCihpWoKeaFn1BhJxfaQ
-X-Received: by 2002:a25:806:0:b0:66d:33f3:b601 with SMTP id 6-20020a250806000000b0066d33f3b601mr15326413ybi.411.1656681406978;
-        Fri, 01 Jul 2022 06:16:46 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1656681406; cv=none;
+Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp1366863lft;
+        Fri, 1 Jul 2022 09:22:43 -0700 (PDT)
+X-Google-Smtp-Source: AGRyM1tY81easFDW1NuZSiUxZY/COvDC47iYKGjgomrTgzTBP7yaQctf4//K7kPmgj6nGNRQRYXj
+X-Received: by 2002:a25:d4d6:0:b0:669:b717:187b with SMTP id m205-20020a25d4d6000000b00669b717187bmr15283980ybf.405.1656692562897;
+        Fri, 01 Jul 2022 09:22:42 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1656692562; cv=none;
         d=google.com; s=arc-20160816;
-        b=L+lyede7TBCCSeifuH6bpXsoW7FBTH6DJdyGOorYwn9zPJCx/vVfZ0An9WSvAmVpt4
-         FvnN1J90m0qTaV1JuFR59fLqOTGi/x2ZzcOh6qBQ+jTV5h6mgu4bVzzWywXS5Z0A+xGG
-         ezmGdEZGP5RFswJUlk/Mb9zaUMTIjl61F6t9vjeJpy2pXNi0TOq0d1wg0sGYxnwBBWkF
-         5JS9OoSSuOqlwY9Cm2pFKRX1pt/qd24Bnp/KYK4D6mhOkR7jlcTrceiL+5i94s0aU9I8
-         eb05BhY8I49cBuASILMNdi5+rRbcCVChvZA7a99xj2DJpTf34BxbZKmdF43XavAbtUV8
-         szuQ==
+        b=c1LVKUmtPPfRN9zMvxUtZxq+3WeHHyKudwy+gqJAaNG9efJkxu4g639BPnacjeQcMD
+         9xOsvsuxA3KjaOIVhJfUVvt/IE1D/R5/BPbMcWHkEaNH9/tekIpwA95rYV9iW+YhV3U1
+         Y671d6m220N3ODrgYR0yLuIEXqld/ALpv1VCMexgYqx2talshHOLUjFDdpMaeNTj9Xtd
+         v/bvtHWYY4ylj/z2mPr147S5z66jQH/Sw8Tx1THsklPDK7JoRNyK4YjYQQuTdh+85tqW
+         /U9Yms8qOcUmbqtgW9qizYnLCmwiteSTawhZMm5MJjP5+nGBDi7EoRvw+9vvRRInEZMC
+         8A0A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:user-agent:in-reply-to
-         :content-transfer-encoding:content-disposition:mime-version
-         :references:message-id:subject:cc:to:from:date:dkim-signature;
-        bh=TdeuZh0ESiPRBVJFudaPvW16n9nzWg7b2PnH95UIUT8=;
-        b=a4cNW0EcSaqNdFK4itTTLWoYDEq6E00OhduFEb6s5HKC5sb1s4TrH5mut3tDd7obZ/
-         6VbAC6gm4ZKv7y0IKHv/8/CipLj2Kueqyw9EiIBaT5xeMz75Zg1o1iPUOLWERTRV/m+B
-         s6k35VbwRhQhgY5taMOPExrE1Q9l8v7vUpJ2vdh4QzzQZtcx3In0cTQJPlGKwL3OsfbN
-         v1FhX0M0ToaVGuA0SBU2l8GRVNylamtV/ljT3XWIpNDNz67eSuxrdHRiwOxRpsX4HeH5
-         O4SPTtGkNhbFO9JsYPQBK1OZqxYnG6t5/pIgyL1dCy8ngY8yZVtoVeXYZvaSqoSLs+Ec
-         jbug==
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=S5JXIsE8vtDMYhj1krdNo6HvMnv2BFi9S40GbuScVMs=;
+        b=gSmVlicuDpYuo8gtnVwz7+lD46IrbH98FRtrF4z54+7HfctaNMJSEo/M3+9ui5uqOc
+         4korDJD/JsQwVmeipc22Exa98ynKXAcf+3yel1szg4wj1AvbppPDj47ph9EGIpy6A2kI
+         bIwVNFQuTjOs6x11Vhsz4FvcWd5tGovpUelH324lruTelGnD3ZeX+uOko8H6pqfqfJcF
+         uTyp58p7VbnMikrdDZ3V51v6VmzImgSa+P0QmobAqsuqXnUGsShpBMVgsqAsrzKhimhF
+         OU3siuHopQe4AEzyL/cP54RfQ4/kFsAbN87inXE7DtzfIxT2t041AD9BvJiF36325D/3
+         0bVA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=cj+YLXHt;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@linaro.org header.s=google header.b="ETk5/4LM";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 19-20020a810613000000b003183f2ce039si29940895ywg.158.2022.07.01.06.16.46
+        by mx.google.com with ESMTPS id 127-20020a250185000000b0066d43aa67f8si13108195ybb.300.2022.07.01.09.22.42
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 01 Jul 2022 06:16:46 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 01 Jul 2022 09:22:42 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=cj+YLXHt;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:55142 helo=lists1p.gnu.org)
+       dkim=pass header.i=@linaro.org header.s=google header.b="ETk5/4LM";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:37922 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1o7GVq-0003wJ-B9
-	for alex.bennee@linaro.org; Fri, 01 Jul 2022 09:16:46 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:54966)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1o7JPk-0001bL-SW
+	for alex.bennee@linaro.org; Fri, 01 Jul 2022 12:22:40 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:49830)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <frasse.iglesias@gmail.com>)
- id 1o7GVd-0003w0-Mt; Fri, 01 Jul 2022 09:16:34 -0400
-Received: from mail-lf1-x12e.google.com ([2a00:1450:4864:20::12e]:41651)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1o7JNe-0007AR-Jh
+ for qemu-devel@nongnu.org; Fri, 01 Jul 2022 12:20:30 -0400
+Received: from mail-yw1-x1129.google.com ([2607:f8b0:4864:20::1129]:40545)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <frasse.iglesias@gmail.com>)
- id 1o7GVb-0004AQ-Ms; Fri, 01 Jul 2022 09:16:33 -0400
-Received: by mail-lf1-x12e.google.com with SMTP id i18so3817296lfu.8;
- Fri, 01 Jul 2022 06:16:30 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:content-transfer-encoding:in-reply-to
- :user-agent; bh=TdeuZh0ESiPRBVJFudaPvW16n9nzWg7b2PnH95UIUT8=;
- b=cj+YLXHtRr3DdolLlmWPyQ8NVN8iuIlRNGVlxTvJLs+ift1aor3wpQbe1PCUj2rNa8
- wOra46skQdxlio9NIR2+KvYsL4T+KHW/mZEvSS8zH4R/rK4+RNK20R3dYxcj3ANnYPTz
- +bGvVIr8pU+x8J2ZkroLT70WJTJdzWiFpiLZfazGcH1a4yJh3eGRy0lgXl8Yb5A9SAom
- pQVgzrvpFZcbpYG5sxKOp02SHwpzaDofuvbXzwC9nbaNwiilURXkYFsEsWAAs6lx4p+l
- 2RW7GFos/73poBroqZvY0fXgb/zGGna1wG17B9py/ci+NOnXrmoUjQP4Uxa/YrHPYTpg
- vgXQ==
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1o7JNa-0004QV-1j
+ for qemu-devel@nongnu.org; Fri, 01 Jul 2022 12:20:30 -0400
+Received: by mail-yw1-x1129.google.com with SMTP id
+ 00721157ae682-317a66d62dfso28498547b3.7
+ for <qemu-devel@nongnu.org>; Fri, 01 Jul 2022 09:20:24 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=S5JXIsE8vtDMYhj1krdNo6HvMnv2BFi9S40GbuScVMs=;
+ b=ETk5/4LMJ40/Mto17Bytq5KTIkpxnLeZSSFhmmGq125GC1FrnEYbk9lRqUP8GIeF5L
+ 9mqSHWgQklB91R368evqr1iTg0G0I1a4rVwIqhARwA5fm95K5vWDvcE42mYCFkn8CWCs
+ TSi6zGluw6OqIsbR0Wzk1XbDhCqiODFnYQhQdzsp8vmSzs53aFiy2XS+ewlfG46H91ir
+ 41mqR+3CNsDVoGiga87kiHg+iCeySUgWJnWbsUviie+2wuWZgaf0Jyv4AqbhK27N2oN0
+ FB443yRI1FM7RANFAdvDWPb/5QjBwxjiarODOq+JfC483l4hKs6dpJW3ZnHrbesBP6OB
+ 4zdw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:content-transfer-encoding
- :in-reply-to:user-agent;
- bh=TdeuZh0ESiPRBVJFudaPvW16n9nzWg7b2PnH95UIUT8=;
- b=7R7VmmBU7cRVvspgxqM6CGM7u4yMKPG1cjMwrebBdwXHVGsHi8FWB8pjm5xYxRJkR7
- noVSD/O5maFvOx7RQwt7IeGL95mbeB/71QxBsgpV9o+D0Mu/tEdG840Q4P4al4ZgVZv4
- 40IGPOZ09lvkXWSGj2cLO/LuiScWkSjA336D1oYk2hIEZLpk5SPzezTw/B8NaecdrbEf
- velEct5/BaaJOF0177fbA/xyS54TIa314MKoZkXxjfj4lQbeG4tG9eyU853JpSjkg/n+
- 5BtAC1ATFjOBQugV67F/2wYKMoVy2O/ePLEJ6jL+oekuA7GrHls+8hrZCmtGMYXOepgg
- HzZQ==
-X-Gm-Message-State: AJIora/n+ahv+f+aEyYCguTJAf7HDbC8/7FgswJM55lA6zfm+e3sTyTq
- 6ZbTXp6TfJ0F4S0GC2l4jJ0=
-X-Received: by 2002:a05:6512:3a95:b0:481:4d0:1da2 with SMTP id
- q21-20020a0565123a9500b0048104d01da2mr9077306lfu.327.1656681389119; 
- Fri, 01 Jul 2022 06:16:29 -0700 (PDT)
-Received: from fralle-msi (31-208-27-151.cust.bredband2.com. [31.208.27.151])
- by smtp.gmail.com with ESMTPSA id
- p16-20020a2e8050000000b0025be65ff611sm1298395ljg.46.2022.07.01.06.16.27
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 01 Jul 2022 06:16:28 -0700 (PDT)
-Date: Fri, 1 Jul 2022 15:16:26 +0200
-From: Francisco Iglesias <frasse.iglesias@gmail.com>
-To: =?iso-8859-1?Q?C=E9dric?= Le Goater <clg@kaod.org>
-Cc: Iris Chen <irischenlj@fb.com>, pdel@fb.com, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org, patrick@stwcx.xyz, alistair@alistair23.me,
- kwolf@redhat.com, hreitz@redhat.com, peter.maydell@linaro.org,
- andrew@aj.id.au, joel@jms.id.au, thuth@redhat.com,
- lvivier@redhat.com, pbonzini@redhat.com, qemu-block@nongnu.org,
- dz4list@gmail.com
-Subject: Re: [PATCH 1/2] hw: m25p80: Add Block Protect and Top Bottom bits
- for write protect
-Message-ID: <20220701131625.GA16475@fralle-msi>
-References: <20220627185234.1911337-1-irischenlj@fb.com>
- <20220627185234.1911337-2-irischenlj@fb.com>
- <20220701114004.GF10629@fralle-msi>
- <b3366184-2989-b1a2-7ff5-c8f850582bec@kaod.org>
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=S5JXIsE8vtDMYhj1krdNo6HvMnv2BFi9S40GbuScVMs=;
+ b=BNviIGltrro8EQyPnlajns4MCvv0m02BmmrMcmmQtqDSQOo1GPKC1kew71r9TG1GDt
+ sR9QXDrOMhhebLNOl9C6BqL2CEIpeLm/s6167rgmCKHhmLdyzjgZAXAr3uq4FsMpaADn
+ ldqtps063Ta+HVQelIIlFUyol/CH127Ne7k+yTR3d5oNNkqns1pLnU2brmCzWoDsC+HI
+ ZCtKd9QEsDIZfY9oo3wbf9v0dLq5np/bLJIfITfetA2o4OdnGPjGxsxiVuR8Mk2KtoGD
+ JOQPRhmEk+MiqW8mI4JkBim8m7dBmz7ZnYBF2gRq4MXzMULExeW7NFU/AnlHOdS1ztcN
+ Y8WA==
+X-Gm-Message-State: AJIora+ZESldwPYMC9BAWXxwaZJoqSiw4N90YuBAxsoYZoCms51jumL7
+ XgXD9EfAeCV2FZZvb7L7RemRuUz4HUgZ6rkWFt56Wg==
+X-Received: by 2002:a0d:ca16:0:b0:31b:7adf:d91 with SMTP id
+ m22-20020a0dca16000000b0031b7adf0d91mr17490604ywd.455.1656692423760; Fri, 01
+ Jul 2022 09:20:23 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <b3366184-2989-b1a2-7ff5-c8f850582bec@kaod.org>
-User-Agent: Mutt/1.10.1 (2018-07-13)
-Received-SPF: pass client-ip=2a00:1450:4864:20::12e;
- envelope-from=frasse.iglesias@gmail.com; helo=mail-lf1-x12e.google.com
-X-Spam_score_int: -1020
-X-Spam_score: -102.1
-X-Spam_bar: ---------------------------------------------------
-X-Spam_report: (-102.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+References: <20220628042117.368549-1-richard.henderson@linaro.org>
+ <20220628042117.368549-20-richard.henderson@linaro.org>
+In-Reply-To: <20220628042117.368549-20-richard.henderson@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 1 Jul 2022 17:19:45 +0100
+Message-ID: <CAFEAcA-v6_atdSMggO7mAfW0H96F8s2fZWLD3biHLjsFnbzYgQ@mail.gmail.com>
+Subject: Re: [PATCH v4 19/45] target/arm: Implement SME MOVA
+To: Richard Henderson <richard.henderson@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1129;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x1129.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01, USER_IN_WELCOMELIST=-0.01,
- USER_IN_WHITELIST=-100 autolearn=ham autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 4Z/2zEoaZy9I
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: uaIsaTdlFaQ8
 
-On [2022 Jul 01] Fri 14:23:17, Cédric Le Goater wrote:
-> On 7/1/22 13:40, Francisco Iglesias wrote:
-> > Hi Iris,
-> > 
-> > Looks good, a couple of minor comments below!
-> > 
-> > On [2022 Jun 27] Mon 11:52:33, Iris Chen wrote:
-> > > Signed-off-by: Iris Chen <irischenlj@fb.com>
-> > > ---
-> > >   hw/block/m25p80.c | 74 +++++++++++++++++++++++++++++++++++++++--------
-> > >   1 file changed, 62 insertions(+), 12 deletions(-)
-> > > 
-> > > diff --git a/hw/block/m25p80.c b/hw/block/m25p80.c
-> > > index 50b523e5b1..0156a70f5e 100644
-> > > --- a/hw/block/m25p80.c
-> > > +++ b/hw/block/m25p80.c
-> > > @@ -38,21 +38,19 @@
-> > >   #include "trace.h"
-> > >   #include "qom/object.h"
-> > > -/* Fields for FlashPartInfo->flags */
-> > > -
-> > > -/* erase capabilities */
-> > > -#define ER_4K 1
-> > > -#define ER_32K 2
-> > > -/* set to allow the page program command to write 0s back to 1. Useful for
-> > > - * modelling EEPROM with SPI flash command set
-> > > - */
-> > > -#define EEPROM 0x100
-> > > -
-> > >   /* 16 MiB max in 3 byte address mode */
-> > >   #define MAX_3BYTES_SIZE 0x1000000
-> > > -
-> > >   #define SPI_NOR_MAX_ID_LEN 6
-> > > +/* Fields for FlashPartInfo->flags */
-> > > +enum spi_nor_option_flags {
-> > 
-> > (A suggestion is to s/nor/flash/ above (and s/SNOR_F_//  below) since there
-> > looks to be nand flashes as W25N01GV using the protocol to).
-> > 
-> > > +    ER_4K                  = BIT(0),
-> > > +    ER_32K                 = BIT(1),
-> > > +    EEPROM                 = BIT(2),
-> > > +    SNOR_F_HAS_SR_TB       = BIT(3),
-> > > +    SNOR_F_HAS_SR_BP3_BIT6 = BIT(4),
-> > > +};
-> > > +
-> > >   typedef struct FlashPartInfo {
-> > >       const char *part_name;
-> > >       /*
-> > > @@ -253,7 +251,8 @@ static const FlashPartInfo known_devices[] = {
-> > >       { INFO("n25q512a11",  0x20bb20,      0,  64 << 10, 1024, ER_4K) },
-> > >       { INFO("n25q512a13",  0x20ba20,      0,  64 << 10, 1024, ER_4K) },
-> > >       { INFO("n25q128",     0x20ba18,      0,  64 << 10, 256, 0) },
-> > > -    { INFO("n25q256a",    0x20ba19,      0,  64 << 10, 512, ER_4K) },
-> > > +    { INFO("n25q256a",    0x20ba19,      0,  64 << 10, 512,
-> > > +           ER_4K | SNOR_F_HAS_SR_BP3_BIT6 | SNOR_F_HAS_SR_TB) },
-> > >       { INFO("n25q512a",    0x20ba20,      0,  64 << 10, 1024, ER_4K) },
-> > >       { INFO("n25q512ax3",  0x20ba20,  0x1000,  64 << 10, 1024, ER_4K) },
-> > >       { INFO("mt25ql512ab", 0x20ba20, 0x1044, 64 << 10, 1024, ER_4K | ER_32K) },
-> > > @@ -480,6 +479,11 @@ struct Flash {
-> > >       bool reset_enable;
-> > >       bool quad_enable;
-> > >       bool aai_enable;
-> > > +    bool block_protect0;
-> > > +    bool block_protect1;
-> > > +    bool block_protect2;
-> > > +    bool block_protect3;
-> > > +    bool top_bottom_bit;
-> > >       bool status_register_write_disabled;
-> > >       uint8_t ear;
-> > > @@ -630,6 +634,29 @@ void flash_write8(Flash *s, uint32_t addr, uint8_t data)
-> > >           qemu_log_mask(LOG_GUEST_ERROR, "M25P80: write with write protect!\n");
-> > >           return;
-> > >       }
-> > > +    uint32_t block_protect_value = (s->block_protect3 << 3) |
-> > > +                                   (s->block_protect2 << 2) |
-> > > +                                   (s->block_protect1 << 1) |
-> > > +                                   (s->block_protect0 << 0);
-> > > +
-> > > +     uint32_t num_protected_sectors = 1 << (block_protect_value - 1);
-> > > +     uint32_t sector = addr / s->pi->sector_size;
-> > > +
-> > > +     /* top_bottom_bit == 0 means TOP */
-> > 
-> > Indentation needs minor fixing on above lines, also the declarations should
-> > be at the top of the function.
-> 
+On Tue, 28 Jun 2022 at 05:40, Richard Henderson
+<richard.henderson@linaro.org> wrote:
+>
+> We can reuse the SVE functions for implementing moves to/from
+> horizontal tile slices, but we need new ones for moves to/from
+> vertical tile slices.
+>
+> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+> ---
 
-Hi Cédric,
+> diff --git a/target/arm/sme_helper.c b/target/arm/sme_helper.c
+> index eef2df73e1..95159862de 100644
+> --- a/target/arm/sme_helper.c
+> +++ b/target/arm/sme_helper.c
+> @@ -19,8 +19,10 @@
+>
+>  #include "qemu/osdep.h"
+>  #include "cpu.h"
+> -#include "internals.h"
 
-> I agree in that case it would be better to have at the top
-> but checkpatch does not complain. What's the rule ?
-> 
+Did you mean to delete this #include line ?
 
-Below is taken from docs/devel/style.rst:
+> +#include "tcg/tcg-gvec-desc.h"
+>  #include "exec/helper-proto.h"
+> +#include "qemu/int128.h"
+> +#include "vec_internal.h"
+>
+>  /* ResetSVEState */
+>  void arm_reset_sve_state(CPUARMState *env)
+> @@ -84,3 +86,111 @@ void helper_sme_zero(CPUARMState *env, uint32_t imm, uint32_t svl)
+>          }
+>      }
+>  }
+> +
+> +/*
+> + * Move Zreg vector to ZArray column.
+> + */
+> +#define DO_MOVA_C(NAME, TYPE, H)                                        \
+> +void HELPER(NAME)(void *za, void *vn, void *vg, uint32_t desc)          \
+> +{                                                                       \
+> +    int i, oprsz = simd_oprsz(desc);                                    \
+> +    for (i = 0; i < oprsz; ) {                                          \
+> +        uint16_t pg = *(uint16_t *)(vg + H1_2(i >> 3));                 \
+> +        do {                                                            \
+> +            if (pg & 1) {                                               \
+> +                *(TYPE *)za = *(TYPE *)(vn + H(i));                     \
+> +            }                                                           \
+> +            za += sizeof(ARMVectorReg) * sizeof(TYPE);                  \
+> +            i += sizeof(TYPE);                                          \
+> +            pg >>= sizeof(TYPE);                                        \
+> +        } while (i & 15);                                               \
+> +    }                                                                   \
+> +}
+> +
+> +DO_MOVA_C(sme_mova_cz_b, uint8_t, H1)
+> +DO_MOVA_C(sme_mova_cz_h, uint16_t, H2)
+> +DO_MOVA_C(sme_mova_cz_s, uint32_t, H4)
+> +
+> +void HELPER(sme_mova_cz_d)(void *za, void *vn, void *vg, uint32_t desc)
+> +{
+> +    int i, oprsz = simd_oprsz(desc) / 8;
+> +    uint8_t *pg = vg;
+> +    uint64_t *n = vn;
+> +    uint64_t *a = za;
+> +
+> +    for (i = 0; i < oprsz; i++) {
+> +        if (pg[H1_2(i)] & 1) {
 
-"
-Declarations
-============
+The documentation of the H macros says
+"The H1_<N> macros are used when performing byte arithmetic and then
+ casting the final pointer to a type of size N."
+but we're not casting anything to a 2-byte type, so what's happening here?
 
-Mixed declarations (interleaving statements and declarations within
-blocks) are generally not allowed; declarations should be at the beginning
-of blocks.
+> +            a[i * sizeof(ARMVectorReg)] = n[i];
+> +        }
+> +    }
+> +}
+> +
+> +void HELPER(sme_mova_cz_q)(void *za, void *vn, void *vg, uint32_t desc)
+> +{
+> +    int i, oprsz = simd_oprsz(desc) / 16;
+> +    uint16_t *pg = vg;
+> +    Int128 *n = vn;
+> +    Int128 *a = za;
+> +
+> +    for (i = 0; i < oprsz; i++) {
+> +        if (pg[H2(i)] & 1) {
+> +            a[i * sizeof(ARMVectorReg)] = n[i];
 
-Every now and then, an exception is made for declarations inside a
-#ifdef or #ifndef block: if the code looks nicer, such declarations can
-be placed at the top of the block even if there are statements above.
-On the other hand, however, it's often best to move that #ifdef/#ifndef
-block to a separate function altogether
-"
+Is it really OK to do this with an Int128 store? That is
+in host-order, but the two halves of a 128-bit quantity
+in the ZA array are in architectural order. I suppose the
+source also will have them in the architectural order, but
+it does look odd, especially uncommented.
 
-I understand above as this is generally not allowed but in case you would
-prefer to keep the declarations as they are placed one can see this as 'code
-looks nicer' (to me the loop case is often cleaner in the way you are
-mentioning). I should though have been more clear that 'moving to the top' was
-a suggestion for not breaking this 'general rule' (also in case I've
-interpreted this wrongly), sorry for that!
+> +        }
+> +    }
+> +}
+> +
+> +#undef DO_MOVA_C
 
-Best regards,
-Francisco Iglesias
+> diff --git a/target/arm/translate-sme.c b/target/arm/translate-sme.c
+> index 971504559b..8e6881086b 100644
+> --- a/target/arm/translate-sme.c
+> +++ b/target/arm/translate-sme.c
+> @@ -35,6 +35,77 @@
+>  #include "decode-sme.c.inc"
+>
+>
+> +static TCGv_ptr get_tile_rowcol(DisasContext *s, int esz, int rs,
+> +                                int tile_index, bool vertical)
+> +{
+> +    int tile = tile_index >> (4 - esz);
+> +    int index = esz == MO_128 ? 0 : extract32(tile_index, 0, 4 - esz);
+> +    int pos, len, offset;
+> +    TCGv_i32 t_index;
+> +    TCGv_ptr addr;
+> +
+> +    /* Resolve tile.size[index] to an untyped ZA slice index. */
+> +    t_index = tcg_temp_new_i32();
+> +    tcg_gen_trunc_tl_i32(t_index, cpu_reg(s, rs));
+> +    tcg_gen_addi_i32(t_index, t_index, index);
 
-> For loop indexes, I do prefer to declare in the block
-> statement.
-> 
-> > 
-> > > +    if (!s->top_bottom_bit) {
-> > > +        if (block_protect_value > 0 &&
-> > > +            s->pi->n_sectors <= sector + num_protected_sectors) {
-> > > +            qemu_log_mask(LOG_GUEST_ERROR,
-> > > +                          "M25P80: write with write protect!\n");
-> > > +            return;
-> > > +        }
-> > > +    } else {
-> > > +        if (block_protect_value > 0 && sector < num_protected_sectors) {
-> > > +            qemu_log_mask(LOG_GUEST_ERROR,
-> > > +                          "M25P80: write with write protect!\n");
-> > > +            return;
-> > > +        }
-> > > +    }
-> > >       if ((prev ^ data) & data) {
-> > >           trace_m25p80_programming_zero_to_one(s, addr, prev, data);
-> > > @@ -728,6 +755,15 @@ static void complete_collecting_data(Flash *s)
-> > >           break;
-> > >       case WRSR:
-> > >           s->status_register_write_disabled = extract32(s->data[0], 7, 1);
-> > > +        s->block_protect0 = extract32(s->data[0], 2, 1);
-> > > +        s->block_protect1 = extract32(s->data[0], 3, 1);
-> > > +        s->block_protect2 = extract32(s->data[0], 4, 1);
-> > > +        if (s->pi->flags & SNOR_F_HAS_SR_TB) {
-> > > +            s->top_bottom_bit = extract32(s->data[0], 5, 1);
-> > > +        }
-> > > +        if (s->pi->flags & SNOR_F_HAS_SR_BP3_BIT6) {
-> > > +            s->block_protect3 = extract32(s->data[0], 6, 1);
-> > > +        }
-> > >           switch (get_man(s)) {
-> > >           case MAN_SPANSION:
-> > > @@ -1213,6 +1249,15 @@ static void decode_new_cmd(Flash *s, uint32_t value)
-> > >       case RDSR:
-> > >           s->data[0] = (!!s->write_enable) << 1;
-> > >           s->data[0] |= (!!s->status_register_write_disabled) << 7;
-> > > +        s->data[0] |= (!!s->block_protect0) << 2;
-> > > +        s->data[0] |= (!!s->block_protect1) << 3;
-> > > +        s->data[0] |= (!!s->block_protect2) << 4;
-> > > +        if (s->pi->flags & SNOR_F_HAS_SR_TB) {
-> > > +            s->data[0] |= (!!s->top_bottom_bit) << 5;
-> > > +        }
-> > > +        if (s->pi->flags & SNOR_F_HAS_SR_BP3_BIT6) {
-> > > +            s->data[0] |= (!!s->block_protect3) << 6;
-> > > +        }
-> > >           if (get_man(s) == MAN_MACRONIX || get_man(s) == MAN_ISSI) {
-> > >               s->data[0] |= (!!s->quad_enable) << 6;
-> > > @@ -1553,6 +1598,11 @@ static void m25p80_reset(DeviceState *d)
-> > >       s->wp_level = true;
-> > >       s->status_register_write_disabled = false;
-> > > +    s->block_protect0 = false;
-> > > +    s->block_protect1 = false;
-> > > +    s->block_protect2 = false;
-> > > +    s->block_protect3 = false;
-> > > +    s->top_bottom_bit = false;
-> > 
-> > We need to place above ones in a subsection in the vmstate (similar to the your
-> > previous patch).
-> 
-> Ah yes. I keep forgetting these ...
-> 
-> Thanks for the second look Francisco.
-> 
-> C.
-> 
-> 
-> > 
-> > Looks good to me otherwise!
-> > 
-> > Thanks!
-> > Best regards,
-> > Francisco Iglesias
-> > 
-> > >       reset_memory(s);
-> > >   }
-> > > -- 
-> > > 2.30.2
-> > > 
-> > > 
-> 
+This code isn't doing what the comment says; it's just calculating
+the (not-yet-taken-MOD-dim) slice index, which does depend on the type.
+
+> +
+> +    len = ctz32(streaming_vec_reg_size(s)) - esz;
+
+What is this the length of ?
+
+> +
+> +    if (vertical) {
+
+I ended up reviewing this function from bottom to top because to
+me the horizontal case seemed simpler to understand first.
+(As a result the review comments might read a bit out-of-order.)
+Dunno if that justifies flipping the condition around, though.
+
+> +        /*
+> +         * Compute the offset of the index within the tile:
+
+"byte offset" ?
+
+> +         *     (index % (svl / size)) * size
+> +         *   = (index % (svl >> esz)) << esz
+> +         * Perform the power-of-two modulo via extraction of the low @len bits.
+> +         * Perform the multiply by shifting left by @pos bits.
+> +         * These two operations are performed simultaneously via deposit.
+> +         */
+> +        pos = esz;
+> +        tcg_gen_deposit_z_i32(t_index, t_index, pos, len);
+
+As an aside, this appears to be "deposit into a zero value", but
+I had to go digging in the source to find that out, because we
+don't document the semantics of this either in the header file
+where this function is declared, or in a doc comment on the
+implementation of it, or in tcg/README, or in docs/devel.
+We really desperately need to document the interface the TCG
+core code provides to frontends, because it's getting further
+and further away from "it's functions to emit the IR ops
+described in tcg/README, with obvious looking function names"...
+
+> +
+> +        /* The tile slice offset within env->zarray is the column offset. */
+> +        offset = tile;
+
+I don't understand why we can just add the tile index
+(which is going to be an integer 0, 1, 2..) to a byte offset.
+In the horizontal case we add tile * sizeof(ARMVectorReg),
+which makes more sense to me.
+
+> +
+> +        /* Include the offset of zarray to make this relative to env. */
+> +        offset += offsetof(CPUARMState, zarray);
+> +        tcg_gen_addi_i32(t_index, t_index, offset);
+> +
+> +        /*
+> +         * For big-endian, adjust the column slice offset within
+> +         * the uint64_t host words that make up env->zarray.
+> +         * This must wait until index and offset are combined.
+
+Why? Neither the byte-offset of the start of the tile nor
+the byte offset of zarray in CPUARMState ought to be non-8-aligned.
+
+> +         */
+> +        if (HOST_BIG_ENDIAN && esz < MO_64) {
+> +            tcg_gen_xori_i32(t_index, t_index, 8 - (1 << esz));
+> +        }
+> +    } else {
+> +        /*
+> +         * Compute the offset of the index within the tile:
+
+"byte offset", right ?
+
+Also this is doing the "take index MOD dim" that the pseudocode
+does as a preceding step at the same time, so we should mention that.
+
+> +         *     (index % (svl / size)) * (size * sizeof(row))
+> +         *   = (index % (svl >> esz)) << (esz + log2(sizeof(row)))
+> +         */
+> +        pos = esz + ctz32(sizeof(ARMVectorReg));
+> +        tcg_gen_deposit_z_i32(t_index, t_index, pos, len);
+> +
+> +        /* The tile slice offset within env->zarray is the row offset. */
+> +        offset = tile * sizeof(ARMVectorReg);
+> +
+> +        /* Include the offset of zarray to make this relative to env. */
+> +        offset += offsetof(CPUARMState, zarray);
+> +        tcg_gen_addi_i32(t_index, t_index, offset);
+> +
+> +        /* Row slices need no endian adjustment. */
+> +    }
+> +
+> +    /* Add the offset to env to produce the final pointer. */
+> +    addr = tcg_temp_new_ptr();
+> +    tcg_gen_ext_i32_ptr(addr, t_index);
+> +    tcg_temp_free_i32(t_index);
+> +    tcg_gen_add_ptr(addr, addr, cpu_env);
+> +
+> +    return addr;
+> +}
+
+-- PMM

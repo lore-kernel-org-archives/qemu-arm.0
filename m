@@ -1,117 +1,133 @@
-Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp1995413lft;
-        Sat, 2 Jul 2022 07:09:28 -0700 (PDT)
-X-Google-Smtp-Source: AGRyM1v6CugcGDY2m2/dBAhbQHhLPSV9NVwp/R2XT5whfn2F+UotVIp45bJgyyFiZhrjoqkAkdWK
-X-Received: by 2002:a05:6e02:1487:b0:2da:987e:4e8e with SMTP id n7-20020a056e02148700b002da987e4e8emr11450362ilk.115.1656770967928;
-        Sat, 02 Jul 2022 07:09:27 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1656770967; cv=none;
+Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp1998101lft;
+        Sat, 2 Jul 2022 07:13:55 -0700 (PDT)
+X-Google-Smtp-Source: AGRyM1sin9bcSI0ClBzJw4z9yNFBQojnVhgk7hTRUUJ+8cjQgqp2nRTEyohnwZjQnnOg5Scfwz0O
+X-Received: by 2002:a05:620a:c4f:b0:6a7:9aa0:aaed with SMTP id u15-20020a05620a0c4f00b006a79aa0aaedmr14317929qki.785.1656771235043;
+        Sat, 02 Jul 2022 07:13:55 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1656771235; cv=none;
         d=google.com; s=arc-20160816;
-        b=ucGoORb0zef0E0tPIu6E9S96zGE+8cSY//0plz/50QpvwVyTUmGYfhR8Gu1nn9Gof/
-         xZULda41dJnxNSv2D38k9MWsRDzjSiDYp5KApW47D0fExhdH45V2bbrxumyrvrZj23S5
-         ZVxUlmqYXoKNlNOwsGP2MdDFpOOkiwkqvtrGNe3gGa3Io/vgFfKdQAOT1MH3XxjptGh+
-         xaxb02uGVFlFXd5RjS5f4V4zEecuZ5/1XbN1XcDxJUCPtP3vC2P9x0OADB+5VHYTpUjC
-         T0uuW5MmkNNmGUKf6h74blVnp9EOclI9p2zzxyVFiRreswcKveiNB6JGzBV+nYZqMzoL
-         Lw+g==
+        b=zrWpzC/lJ3iDfxJ0TkpMhrc4N72e8rkjFdiEUKZgqW7JomURsHi0tQnMy7266+NA9X
+         YGMMVp/aPVJDwKbrpvn1FOPTPtJhEpYOlws6bf65SZJRkeTS1H94IP7L+nerHBSngxe1
+         nf9zR3vgtm512H/rmcruq4wXjrGdxUe6fm6ogzJafUyjGtjSMKG/M13cbl2bbmYxuVqU
+         9jLgvMZWs85OnfHoDqLvHGkVj6VGQhUovr51BjCnnczWl8ghavkj8vKcw17E8YUQyO69
+         yJTSZ5iJ5Da3/AAGGZdbAWeqbjLk9CKMk++tj+ANl3+9wsDjTeqmZ7RgbXB0uYJA8szc
+         BLTg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:to:content-language:subject:user-agent
-         :mime-version:date:message-id:dkim-signature;
-        bh=PXISK4N2YrRrtTnjOtxCLZcCteHVo1OwGJrOmDCcfdo=;
-        b=T1mDYljF1J1mWl+Ck5nCff2KK/zMtjcsxPdTqGtwiRXJeRJXLE/imwKohawoI4C8Sc
-         evU9Bpocqc/IhScbjFoG8OpG5asMK5xjnJl5YRUuvfDNLClUSoAsFIYfjQuv3uSXF7iF
-         C4HmMYx/JE30zDw760bwMI6fwV4LAtXehdDo7l12TmMXCMNOGbnAu7nK+ziteFQoKOW/
-         USe1KjYtV4yol8icZAdpxO45s/JJqGb6JVOAejLMBXvzZuwdfEMGQOo8T2H8TAfW6adX
-         bS3DgOOx82txluBndpZWyNSfalAPNmyZ7UIrPj1k674ItCvOjsSlM/jaI3Paaot3lrpX
-         SniA==
+         :in-reply-to:from:references:cc:to:content-language:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=qt1IyH0suB1QexFyLE5vkIhkCj/u0kDbUbELicgxvFQ=;
+        b=xkjfjSGW9hnHue/KRlUwb8tQqbRRt/wevoJ7UNNmoB/zGfaY49QxGOIz9ctyjyChxN
+         JjuZUDKxixlncWYQIeG4UHvGgvfeqzS8g/7BXJ+lhlkMN/MU+JC5zzi4B0xz6rzNhWac
+         N5yGW5tybPMWyrVk4SkLr4SHH0bSq4MZEHd8AkxQ/cUcLmlab5qo2SmGIO7eqw7p3GGf
+         wO+WCfNKG0ZYsW1y3tWWXYOI47LMKBh7Yrpm9Y6v2sMXhHq8yAi2g6rtrnjj4YuHa2qt
+         zesDJwGGWNzBQTeI6YYLt3IaEXolsYR5O/gyui9ZMsmYxmO1qKIqYmlRjpev3OsOXkSg
+         JqXQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="KxX3V/h0";
+       dkim=fail header.i=@gmail.com header.s=20210112 header.b=GYF5Ik89;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id g16-20020a05660203d000b0066981953476si8887561iov.65.2022.07.02.07.09.27
+        by mx.google.com with ESMTPS id l14-20020a37f90e000000b006aee7580424si886865qkj.103.2022.07.02.07.13.54
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 02 Jul 2022 07:09:27 -0700 (PDT)
+        Sat, 02 Jul 2022 07:13:55 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="KxX3V/h0";
+       dkim=fail header.i=@gmail.com header.s=20210112 header.b=GYF5Ik89;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:51468 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:34302 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1o7doN-0000NH-9Z
-	for alex.bennee@linaro.org; Sat, 02 Jul 2022 10:09:27 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:47612)
+	id 1o7dsg-00088N-Cj
+	for alex.bennee@linaro.org; Sat, 02 Jul 2022 10:13:54 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:48566)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1o7dlx-0006Wg-OE
- for qemu-devel@nongnu.org; Sat, 02 Jul 2022 10:07:00 -0400
-Received: from mail-pg1-x532.google.com ([2607:f8b0:4864:20::532]:35637)
+ (Exim 4.90_1) (envelope-from <paolo.bonzini@gmail.com>)
+ id 1o7drH-00067O-AC; Sat, 02 Jul 2022 10:12:27 -0400
+Received: from mail-ej1-x635.google.com ([2a00:1450:4864:20::635]:43830)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1o7dlu-00037B-K4
- for qemu-devel@nongnu.org; Sat, 02 Jul 2022 10:06:55 -0400
-Received: by mail-pg1-x532.google.com with SMTP id r66so4921836pgr.2
- for <qemu-devel@nongnu.org>; Sat, 02 Jul 2022 07:06:54 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=message-id:date:mime-version:user-agent:subject:content-language:to
- :references:from:in-reply-to:content-transfer-encoding;
- bh=PXISK4N2YrRrtTnjOtxCLZcCteHVo1OwGJrOmDCcfdo=;
- b=KxX3V/h0569JOKkGwBntrTKCQ9DRplXIxS1jAeDU9pinqCfQpNsckL8j7dmN9YW2dE
- 37j/ZpgvnvKR2pc/IH8N2SD71a5kY18ouPhXUUP4NcoeHnLZ2y4MpXH13WkCD5EcDhD2
- Ca+mEfR84JPc7TgJnCqG1ypDlur30tkHRD/OvNgYpSAnnKP49zUN+WoGo2mvMtygwRU1
- DgMnngufPEmBOv6y3fxVWLEsSgSZDqO4gx80YSWnguzCxkHFXcSr35XbEGqcckjpHOQT
- qHWro1A5abmH8x7QPOT406fBeWQkjyctWHav3q3Va+QDUHtoDq71ByGUOVIka+2OeB5g
- Rsmg==
+ (Exim 4.90_1) (envelope-from <paolo.bonzini@gmail.com>)
+ id 1o7drD-0004aM-9H; Sat, 02 Jul 2022 10:12:27 -0400
+Received: by mail-ej1-x635.google.com with SMTP id fw3so8767224ejc.10;
+ Sat, 02 Jul 2022 07:12:21 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=sender:message-id:date:mime-version:user-agent:subject
+ :content-language:to:cc:references:from:in-reply-to
+ :content-transfer-encoding;
+ bh=qt1IyH0suB1QexFyLE5vkIhkCj/u0kDbUbELicgxvFQ=;
+ b=GYF5Ik89L0oevbFHdmu0jyBKZtyihkh8sUOIKMClyHORHVj5q+KDNkJr3FJhhGaq3f
+ k+hIgsqTOJLZ9tZz/DeOSgSBFmoXE7V8nRv67sNEBelc0yQbwbvmT244L0O9CsDocNjk
+ Gcn1SySDI6Kl2kqa7mpo4hqdg/dWQWOOSv3dfdGyHq0J2epN2cE2YoKq9IjFVEbXcGuC
+ MGuBNUQEOYrM17UHKN/9wDwS5qM0pYf8qdblUNGfp0SUNzqOhquLu7Om6NVu9V37vZSr
+ BdhKMBqjINlxS/YCWREUZTGlrT3YOA8zRB/JRcco5w5LmtQVlA7gZMpO1Nb90Ekz2uKh
+ kIFg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
- :content-language:to:references:from:in-reply-to
+ h=x-gm-message-state:sender:message-id:date:mime-version:user-agent
+ :subject:content-language:to:cc:references:from:in-reply-to
  :content-transfer-encoding;
- bh=PXISK4N2YrRrtTnjOtxCLZcCteHVo1OwGJrOmDCcfdo=;
- b=7YdeYVx0QNcMHblc9v3GcfKrXzfC/B4QEyf/w5tuZrqss0bwFRF5V44BT3Tx2vc3nz
- 1yqTk17tKTTIpD2T8288kPULJZ3OGrsJwxiGEIoq3IvZfCwFiQmx7BxlkCW2H/ugourK
- 2B/Bj7SWnMIS0WGNFMWaVALJOkGe/56kySINrlalOv9I4VEJzWiKKy9qLd1K7y3VlOUz
- fMrFhsUMtN4hleC0J1fo+N/J8fdL0sPKC4ALYJGJT1d/PyvVUK0BwoenpFlBuHwu0zqO
- RWcHUu4Z68um5ZdC+ZvM25hbGc3NV/U5h9FqbkCNoZuCWl0JJAA4s7fDYAzi3v0rhC6F
- novQ==
-X-Gm-Message-State: AJIora9yprwLRYDd4PJfzvZaSGzghG5CgT94NTC3fVrY9QHyuaGvMXMI
- uHjnHkmAVWJPPZ0LABj+ELbZuQ==
-X-Received: by 2002:a63:a4f:0:b0:401:a0e0:1668 with SMTP id
- z15-20020a630a4f000000b00401a0e01668mr16527462pgk.21.1656770812953; 
- Sat, 02 Jul 2022 07:06:52 -0700 (PDT)
-Received: from [192.168.138.227] ([122.255.60.245])
- by smtp.gmail.com with ESMTPSA id
- nm13-20020a17090b19cd00b001cd4989febcsm6182202pjb.8.2022.07.02.07.06.49
+ bh=qt1IyH0suB1QexFyLE5vkIhkCj/u0kDbUbELicgxvFQ=;
+ b=F7IBUBLKH1xaFCMkGIXbG42j4CJ3VI45m4W/Ww6GEE77dXSpdN3a44yfrH5rLXNXY4
+ T4But4zrN/HTRRjAQDbBhYIpYTRLf0a+Tm2XRl2wUlplUt0ggM/JbWejp8LA/0MPU9G3
+ zxbOuLxRr/7o+MRQCeGX3Bl4XVLUci9axM7x7G31/3nAwrCQJn8NWZEoVTd+m+m0fIqc
+ v2A+bp9w48XL4DBqqNogyCVktXXaeLVAk9IEi63LiLi3DZxlVafjU2kK0rsXnYCWZ68t
+ DW+U25ZJXtBA6eBhOYl11ZBnnAJNjE1ecMbKUbPcJcjLPVrshXpDBdeGlDTgDD9ZeKy6
+ Of3w==
+X-Gm-Message-State: AJIora862I/ZQGBNHDky9+x0RQpAtmp7tPCuoidzG+BhgtuiP4vMtpV3
+ kAbqHGiKlibu6AWT3xszfTg=
+X-Received: by 2002:a17:906:9b94:b0:722:f2a1:efb9 with SMTP id
+ dd20-20020a1709069b9400b00722f2a1efb9mr19430901ejc.42.1656771140495; 
+ Sat, 02 Jul 2022 07:12:20 -0700 (PDT)
+Received: from [192.168.242.248] (93-43-142-212.ip92.fastwebnet.it.
+ [93.43.142.212]) by smtp.googlemail.com with ESMTPSA id
+ u6-20020aa7d0c6000000b0043572ffafe0sm16733520edo.92.2022.07.02.07.12.15
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sat, 02 Jul 2022 07:06:51 -0700 (PDT)
-Message-ID: <4212d57a-2465-4e2b-7998-97bc3ab8bbd1@linaro.org>
-Date: Sat, 2 Jul 2022 19:36:46 +0530
+ Sat, 02 Jul 2022 07:12:20 -0700 (PDT)
+Message-ID: <f36e2069-e1d8-462d-401f-1194139ee6c2@redhat.com>
+Date: Sat, 2 Jul 2022 16:12:14 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.9.1
-Subject: Re: [PATCH 4/5] target/arm: Implement AArch32 DBGDEVID, DBGDEVID1,
- DBGDEVID2
+ Thunderbird/91.10.0
+Subject: Re: [PATCH 00/18] Make block-backend-io.h API more consistent
 Content-Language: en-US
-To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
-References: <20220630194116.3438513-1-peter.maydell@linaro.org>
- <20220630194116.3438513-5-peter.maydell@linaro.org>
-From: Richard Henderson <richard.henderson@linaro.org>
-In-Reply-To: <20220630194116.3438513-5-peter.maydell@linaro.org>
+To: Alberto Faria <afaria@redhat.com>, qemu-devel@nongnu.org
+Cc: Andrew Jeffery <andrew@aj.id.au>, Peter Maydell
+ <peter.maydell@linaro.org>, qemu-block@nongnu.org,
+ Palmer Dabbelt <palmer@dabbelt.com>, =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?=
+ <f4bug@amsat.org>, qemu-ppc@nongnu.org, Eric Blake <eblake@redhat.com>,
+ Vladimir Sementsov-Ogievskiy <v.sementsov-og@mail.ru>,
+ Hanna Reitz <hreitz@redhat.com>, John Snow <jsnow@redhat.com>,
+ Stefan Hajnoczi <stefanha@redhat.com>, Jeff Cody <codyprime@gmail.com>,
+ qemu-riscv@nongnu.org, =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>,
+ Joel Stanley <joel@jms.id.au>, Stefan Weil <sw@weilnetz.de>,
+ Laurent Vivier <laurent@vivier.eu>, "Denis V. Lunev" <den@openvz.org>,
+ Juan Quintela <quintela@redhat.com>,
+ "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
+ Niek Linnenbank <nieklinnenbank@gmail.com>, Greg Kurz <groug@kaod.org>,
+ Daniel Henrique Barboza <danielhb413@gmail.com>,
+ Kevin Wolf <kwolf@redhat.com>, "Edgar E. Iglesias"
+ <edgar.iglesias@gmail.com>, qemu-arm@nongnu.org, Fam Zheng <fam@euphon.net>,
+ Alistair Francis <alistair@alistair23.me>,
+ Beniamino Galvani <b.galvani@gmail.com>, Bin Meng <bin.meng@windriver.com>,
+ David Gibson <david@gibson.dropbear.id.au>
+References: <20220517113524.197910-1-afaria@redhat.com>
+From: Paolo Bonzini <pbonzini@redhat.com>
+In-Reply-To: <20220517113524.197910-1-afaria@redhat.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::532;
- envelope-from=richard.henderson@linaro.org; helo=mail-pg1-x532.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.001,
+Received-SPF: pass client-ip=2a00:1450:4864:20::635;
+ envelope-from=paolo.bonzini@gmail.com; helo=mail-ej1-x635.google.com
+X-Spam_score_int: -14
+X-Spam_score: -1.5
+X-Spam_bar: -
+X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249, NICE_REPLY_A=-0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -126,29 +142,86 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: At2n5VO6Jwp0
+X-TUID: o5OjSlOIvB33
 
-On 7/1/22 01:11, Peter Maydell wrote:
-> Starting with v7 of the debug architecture, there are three extra
-> ID registers that add information on top of that provided in
-> DBGDIDR. These are DBGDEVID, DBGDEVID1 and DBGDEVID2. In the
-> v7 debug architecture, DBGDEVID is optional, present only of
-
-s/of/if/
-
-> DBGDIDR.DEVID_imp is set. In v7.1 all three must be present.
+On 5/17/22 13:35, Alberto Faria wrote:
+> Adjust existing pairs of non-coroutine and coroutine functions to share
+> the same calling convention, and add non-coroutine/coroutine
+> counterparts where they don't exist.
 > 
-> Implement the missing registers.  Note that we only need to set the
-> values in the ARMISARegisters struct for the CPUs Cortex-A7, A15,
-> A53, A57 and A72 (plus the 32-bit 'max' which uses the Cortex-A53
-> values): earlier CPUs didn't implement v7 of the architecture, and
-> our other 64-bit CPUs (Cortex-A76, Neoverse-N1 and A64fx) don't have
-> AArch32 support at EL1.
+> Also make the non-coroutine versions generated_co_wrappers.
 > 
-> Signed-off-by: Peter Maydell<peter.maydell@linaro.org>
-> ---
+> This series sits on top of "[PATCH v2 00/10] Implement bdrv_{pread,
+> pwrite, pwrite_sync, pwrite_zeroes}() using generated_co_wrapper":
+> 
+>      https://lore.kernel.org/qemu-devel/20220513155418.2486450-1-afaria@redhat.com/
 
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Alberto, does this need a rebase?
 
+Paolo
 
-r~
+> Based-on: <20220513155418.2486450-1-afaria@redhat.com>
+> 
+> Alberto Faria (18):
+>    block: Make blk_{pread,pwrite}() return 0 on success
+>    block: Add a 'flags' param to blk_pread()
+>    block: Change blk_{pread,pwrite}() param order
+>    block: Make 'bytes' param of blk_{pread,pwrite}() an int64_t
+>    block: Make blk_co_pwrite() take a const buffer
+>    block: Implement blk_{pread,pwrite}() using generated_co_wrapper
+>    block: Add blk_{preadv,pwritev}()
+>    block: Add blk_[co_]preadv_part()
+>    block: Export blk_pwritev_part() in block-backend-io.h
+>    block: Change blk_pwrite_compressed() param order
+>    block: Add blk_co_pwrite_compressed()
+>    block: Implement blk_pwrite_zeroes() using generated_co_wrapper
+>    block: Implement blk_pdiscard() using generated_co_wrapper
+>    block: Implement blk_flush() using generated_co_wrapper
+>    block: Add blk_co_ioctl()
+>    block: Add blk_co_truncate()
+>    block: Reorganize some declarations in block-backend-io.h
+>    block: Remove remaining unused symbols in coroutines.h
+> 
+>   block.c                           |  10 +-
+>   block/block-backend.c             | 150 ++++++++++++------------------
+>   block/commit.c                    |   4 +-
+>   block/coroutines.h                |  44 ---------
+>   block/crypto.c                    |   2 +-
+>   block/export/fuse.c               |   4 +-
+>   block/meson.build                 |   1 +
+>   block/parallels.c                 |   2 +-
+>   block/qcow.c                      |  14 +--
+>   block/qcow2.c                     |   4 +-
+>   block/qed.c                       |   8 +-
+>   block/vdi.c                       |   4 +-
+>   block/vhdx.c                      |  20 ++--
+>   block/vmdk.c                      |  10 +-
+>   block/vpc.c                       |  12 +--
+>   hw/arm/allwinner-h3.c             |   2 +-
+>   hw/arm/aspeed.c                   |   2 +-
+>   hw/block/block.c                  |   2 +-
+>   hw/block/fdc.c                    |  20 ++--
+>   hw/block/hd-geometry.c            |   2 +-
+>   hw/block/m25p80.c                 |   2 +-
+>   hw/block/nand.c                   |  47 +++++-----
+>   hw/block/onenand.c                |  32 +++----
+>   hw/block/pflash_cfi01.c           |   4 +-
+>   hw/block/pflash_cfi02.c           |   4 +-
+>   hw/ide/atapi.c                    |   4 +-
+>   hw/misc/mac_via.c                 |   6 +-
+>   hw/misc/sifive_u_otp.c            |  14 +--
+>   hw/nvram/eeprom_at24c.c           |   8 +-
+>   hw/nvram/spapr_nvram.c            |  16 ++--
+>   hw/nvram/xlnx-bbram.c             |   4 +-
+>   hw/nvram/xlnx-efuse.c             |   4 +-
+>   hw/ppc/pnv_pnor.c                 |   6 +-
+>   hw/sd/sd.c                        |   4 +-
+>   include/sysemu/block-backend-io.h | 105 ++++++++++++---------
+>   migration/block.c                 |   8 +-
+>   nbd/server.c                      |   8 +-
+>   qemu-img.c                        |  33 +++----
+>   qemu-io-cmds.c                    |  20 ++--
+>   tests/unit/test-block-iothread.c  | 141 ++++++++++++++++++++++++++--
+>   40 files changed, 433 insertions(+), 354 deletions(-)
+> 
+

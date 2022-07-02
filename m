@@ -1,119 +1,120 @@
-Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp1788124lft;
-        Sat, 2 Jul 2022 00:37:13 -0700 (PDT)
-X-Google-Smtp-Source: AGRyM1sOLpmSrRSWjJfjsdAGQdQe7r/BapT2b1mmO62VTUxhGfNRw4B9koHS+RNnkiRPM6ul3NEk
-X-Received: by 2002:a25:8887:0:b0:669:97f5:d0b8 with SMTP id d7-20020a258887000000b0066997f5d0b8mr19919394ybl.432.1656747432946;
-        Sat, 02 Jul 2022 00:37:12 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1656747432; cv=none;
+Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp1766377lft;
+        Fri, 1 Jul 2022 23:44:50 -0700 (PDT)
+X-Google-Smtp-Source: AGRyM1sxydB61+SYlAQwysUw3293L2Dq6JlCuWd+vhEhFM8SizcMJe29lHEeh+FtAtifaxoa5nrC
+X-Received: by 2002:a81:897:0:b0:318:dbb:433f with SMTP id 145-20020a810897000000b003180dbb433fmr21729658ywi.258.1656744290358;
+        Fri, 01 Jul 2022 23:44:50 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1656744290; cv=none;
         d=google.com; s=arc-20160816;
-        b=DOTKR1sZWzjNpg157leZb0/tkNtKu2MQxCvPzkGXKUr2uE5ea81u9e8xyuxTfxGxV3
-         jQYmH0x0peeUYPGiGRGOd6GJWRjdMK4VXvUpmjxCfrrxw051h4apI9/cZTI1avNJXKt8
-         7sUsgCHBoGqiK0oAt006vokgU0t9wvBzCnvpB+xcYZEhqc/r+V8w9doDOwM6XS7DhquW
-         gpm8MjfTU1NP8EmUATJ0m2IgEIY80A6shA7I0gxxALcXkkCoMirPt1cLO+ANYGaF2uQ/
-         HRy2YtWOXNUojkLCNe5qWQxTYzpIoWIbXDA9B7VIjDDWTouFVy9O4ur/FN4+xwbgBj2R
-         KkXQ==
+        b=OuHOfcWFkvsQB4saBRAz+TfPKJ6UCtARosaAyrEGmeaIm7UGsp2bPump/MrYrQnU7G
+         lFsIvDZR2t9j6esREGZH4+8mg4TkIPokoBVqEf1mAdaRSlItRO5ttRnPL+duY7aHTxtZ
+         kYII0TEBmURiK4t5ukzV+KFVT2LNHFGWjuPXKTIWadKmpND2xPMZhZvCS4fTsx75qsu2
+         opUlrICVITs25QbSz0tj+17NoOLuMR0O0CnI6cf8C5TI49SPS54T1OSxMlEF71dFVwfb
+         7wDo6a74ka/X8tTc76ICIgHrMMmqV4xTeWBYBmVzZIGUKUwJg1Fq4fvRM7mO7kLF52Kz
+         JWtQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:in-reply-to
          :content-transfer-encoding:content-disposition:mime-version
          :references:message-id:subject:cc:to:from:date:feedback-id
          :dkim-signature:dkim-signature;
-        bh=fZHpAcs8JyhgGXMZpICaz6hZyxwSP0Sr1/ADXeOeyCY=;
-        b=SnFtapEakw7a2F+0z0Rr0YMGbjC04dZLRJSdh9ASnZD6a7Bux0J9Fas+DItdNM6jmk
-         nGeLFIxE0Y2MveAOxsyXIGhPxRUK9gQCNYTlOxGZ6uQwJBXFgsjboxLuF2J2I+Zy8Mtp
-         /Vccp803VpWfJbQy9EI27bxIg4ehmhBrGjMktPN2OCHft8R6KmPVrcvtylfy4ZP12qua
-         2dWjZIwmdhKIPTZX4N8LaPmkMgNfRcUGSx295AK+rIsoNiqp5LCcnG695adN46x3OVWC
-         ip1rHFvMVec7KD6p8H2gAhdBwGdvbqsQKhvpKLvpbOE/ad6joPYCeAd9jaUTm25fgHrd
-         0TjQ==
+        bh=E4rgJaOB2WrOAKBtp73ZAWx40ZKlrMpikkNuMVImZfA=;
+        b=sgyHZNFS0HGJP27GJ5noKgwMeqLFa7GNi2pri5A2/m/uLVLKfNpY7pq2EK4fiKUI+k
+         6zwhhXR0SJ4SBufaWsddoWNH8LiXOGpO8mCuqnoX/8NFqAgX0HIN9Y/7pN1sQdbw4Q5t
+         UsSbpQddkLoOV887CgQgR+vf9gj1NC4QaIJCL3Kp9WxXhSBw448igXCJLYIjMN1tuKiy
+         TyFFJXiZeelS6E1ltJxsRsOFh3XamqxEsSAOjNc6cCefKS1YvbH2KXvYigpj2NRJ7INe
+         EgLYXJgkJXczZxRilNPZYWCpINX9azT4ndOO+KYHuJqs4n0qvkhviUmgwoVwiCJZXadJ
+         LtFA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@pjd.dev header.s=fm1 header.b=mboDY+vF;
-       dkim=fail header.i=@messagingengine.com header.s=i9e814621.fm2 header.b=pz7ZaQmT;
+       dkim=fail header.i=@pjd.dev header.s=fm1 header.b=oJOZeLPH;
+       dkim=fail header.i=@messagingengine.com header.s=i9e814621.fm2 header.b=g798pfnm;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v144-20020a252f96000000b00668cd480945si31847281ybv.337.2022.07.02.00.37.12
+        by mx.google.com with ESMTPS id b137-20020a25348f000000b0066e27a5de97si345474yba.34.2022.07.01.23.44.50
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 02 Jul 2022 00:37:12 -0700 (PDT)
+        Fri, 01 Jul 2022 23:44:50 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@pjd.dev header.s=fm1 header.b=mboDY+vF;
-       dkim=fail header.i=@messagingengine.com header.s=i9e814621.fm2 header.b=pz7ZaQmT;
+       dkim=fail header.i=@pjd.dev header.s=fm1 header.b=oJOZeLPH;
+       dkim=fail header.i=@messagingengine.com header.s=i9e814621.fm2 header.b=g798pfnm;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:50674 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:35914 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1o7Xgm-0000hW-7y
-	for alex.bennee@linaro.org; Sat, 02 Jul 2022 03:37:12 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46672)
+	id 1o7Ws5-0004J1-KS
+	for alex.bennee@linaro.org; Sat, 02 Jul 2022 02:44:49 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:40260)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter@pjd.dev>)
- id 1o7XgY-0000hH-Mg; Sat, 02 Jul 2022 03:36:58 -0400
-Received: from new2-smtp.messagingengine.com ([66.111.4.224]:57713)
+ id 1o7Wrs-0004Io-Rz; Sat, 02 Jul 2022 02:44:36 -0400
+Received: from new2-smtp.messagingengine.com ([66.111.4.224]:53581)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter@pjd.dev>)
- id 1o7XgT-0003SE-9n; Sat, 02 Jul 2022 03:36:58 -0400
+ id 1o7Wrq-0003WO-8I; Sat, 02 Jul 2022 02:44:36 -0400
 Received: from compute4.internal (compute4.nyi.internal [10.202.2.44])
- by mailnew.nyi.internal (Postfix) with ESMTP id 8E78F580B5B;
- Sat,  2 Jul 2022 03:36:49 -0400 (EDT)
+ by mailnew.nyi.internal (Postfix) with ESMTP id E97F0580B4E;
+ Sat,  2 Jul 2022 02:44:31 -0400 (EDT)
 Received: from mailfrontend2 ([10.202.2.163])
- by compute4.internal (MEProxy); Sat, 02 Jul 2022 03:36:49 -0400
+ by compute4.internal (MEProxy); Sat, 02 Jul 2022 02:44:31 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=pjd.dev; h=cc:cc
  :content-transfer-encoding:content-type:date:date:from:from
  :in-reply-to:in-reply-to:message-id:mime-version:references
- :reply-to:sender:subject:subject:to:to; s=fm1; t=1656747409; x=
- 1656751009; bh=fZHpAcs8JyhgGXMZpICaz6hZyxwSP0Sr1/ADXeOeyCY=; b=m
- boDY+vF6DVww7gyebrkzHoxO5JPRHf/fGRSp3IuUFnsAF2XaTJiqrx6FuXBUO5pE
- pu7+/ZK+eYfCbtuTUAY9KvkecF6OL+NbfejmCb9ugBtdmZSGWu4/tDKRTWmT2Ev0
- B3XRp+SktrpsixJvRZ8RwPuF6GZT+nhSUtJsmnNvILYyKrvw9cpVcU1D5JgqfkHu
- XLMsUChNKlMhHA4udXWTj1loqNn+DQJSX6NWwyg9H48asvaYHFL6N5+ZZwn+0bPM
- fGw4JdqZX8s4VSdGMDMOHzu0SxnJOFNYsNl8ghKemcJbPNN7R+tHjPc59T50soas
- kXCaXtOKGk4Czj5v7qlIQ==
+ :reply-to:sender:subject:subject:to:to; s=fm1; t=1656744271; x=
+ 1656747871; bh=E4rgJaOB2WrOAKBtp73ZAWx40ZKlrMpikkNuMVImZfA=; b=o
+ JOZeLPHTYOZyz/slq+EmoCzz/aLrvSg9QnECufPsvrSIk+C/jO+lhBZO0zNnmEuI
+ CZQRwWIakJVUzArDqO4lj/xMcHGDgAWgaqW5sW7j5Rv2GYv0kMQqGQ6JgvWfRyvM
+ YjHk+ROG8g6I+HQJHTpbjXQru7JDuqubHiE+fU2R16UxoiL41vS/e3jB5yXQb3V5
+ +UiYIgvocSjqTOGdKgRNQMp4+dUZVJ2tRoD6P8/53qpNq1nvGzQqf6To4l9Eta78
+ eMd+QdzBeMVl7vGRzXMFZF+mA8xuAuE/DB5tV+G2odmcwHZ6vesSVkQygA/6bHA5
+ wsNXZGLO93K3Tsw/eqkEg==
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
  messagingengine.com; h=cc:cc:content-transfer-encoding
  :content-type:date:date:feedback-id:feedback-id:from:from
  :in-reply-to:in-reply-to:message-id:mime-version:references
  :reply-to:sender:subject:subject:to:to:x-me-proxy:x-me-proxy
  :x-me-sender:x-me-sender:x-sasl-enc; s=i9e814621.fm2; t=
- 1656747409; x=1656751009; bh=fZHpAcs8JyhgGXMZpICaz6hZyxwSP0Sr1/A
- DXeOeyCY=; b=pz7ZaQmTawS4qVvuYsMO4MqVlGPFV+ETku91yBvauoEV03TN88V
- VCjGyGCQylQGhL04RjKMc+3Bsexw+lb9+sbOUGphtTxbsxwTjfMC4zHlau8Fxm0b
- ZpUOc3qtxbqeQh1XD8ArAxpqDMh1D1wqDbtoGFZio4Oih/s86G6y0TRxymRAeKVO
- wCPAtwJCmsq3XP6AxXObAsYrVIeN6gFVLlEqh8Ylc/BqwkL3aYGZKO7T0WRIf2J7
- oNZJYkOPqtHWTRVzQeTmml/ILPXWXMcy9gdWG4fuRKqaxIFCCp41dcEXfsuvVX2H
- /yN/RudLu7xGN45DUQiirrU3z1btH+evvEA==
-X-ME-Sender: <xms:kfW_YoWXFGrzG0712uFE9EJEuM-soprR0p2wk1PXhCPSWXXQx6uzfQ>
- <xme:kfW_YskdePeBCfs0XOJk0DTbR1EZaDDoQdMcB-kCuNDnVCG6sxOS9lzf0SaWISTBF
- zKXdJASZiuaHDh2kPY>
-X-ME-Received: <xmr:kfW_YsackwNkZjBTcG--piq5H-nrozegJUj4BocuYj60bUsihSyhWX5z-g>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvfedrudehgedguddvvdcutefuodetggdotefrod
+ 1656744271; x=1656747871; bh=E4rgJaOB2WrOAKBtp73ZAWx40ZKlrMpikkN
+ uMVImZfA=; b=g798pfnmwx5ULii1e10y/zPB9vplmVGXdmEtDC1XjQ3Y/KOS8UU
+ PrC7Q0Tr4DhGo2kNu7Xg6OjUOPgnAiGypvauaJhkzjASpgwSP9nOsQHZgQtPBO6A
+ vtQlQlSstctjB4SBXTNsaQnqiutUg7IKYlhc0wP8ccaCzHqrD6WC4luqZl/eLUj1
+ CIljvZVzwoV79UWrGywd1cYj2nBhePAgh5beWuktWRRVtbnuV3EOlJyuAr7bs4V0
+ WoHESwLfYQFOCZagpCx1PKIXm+djWP7EHDHNTq72mTHC4UJCWnUGdfHgCbyxBBqo
+ ZH1yQbIDMh0CCcITzjRtsfBP+20DQmcDDHA==
+X-ME-Sender: <xms:T-m_YjY5KMK2YHeLbzze4tsnzBhCzPDw_Vlrqr3tz5m4Ip6xrTeo8A>
+ <xme:T-m_Yib8RKh7RlYZrCTjK9a2LocrHOecKt37iPvmLC3Fd6jGv9EWeoOiopCrFtZ_R
+ ImaeBilG7Bg1jO7b-k>
+X-ME-Received: <xmr:T-m_Yl_YUf7w3Sv-hK-_MaGq0dXpB8DZPokpm6yYisRXNv4mI10vc_50DDgt_K59p7xNodSEtCA-BZfpICzto0TtoI6xuOE>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvfedrudehgedgudduvdcutefuodetggdotefrod
  ftvfcurfhrohhfihhlvgemucfhrghsthforghilhdpqfgfvfdpuffrtefokffrpgfnqfgh
  necuuegrihhlohhuthemuceftddtnecunecujfgurhepfffhvfevuffkfhggtggugfgjse
  htkeertddttddunecuhfhrohhmpefrvghtvghrucffvghlvghvohhrhigrshcuoehpvght
- vghrsehpjhgurdguvghvqeenucggtffrrghtthgvrhhnpefhgeffvedufeevteegkeetie
- ejhffhudeujedvgedvheffheejveethffhffefueenucevlhhushhtvghrufhiiigvpedt
- necurfgrrhgrmhepmhgrihhlfhhrohhmpehpvghtvghrsehpjhgurdguvghv
-X-ME-Proxy: <xmx:kfW_YnUQH6Ssz-o6iu5t1CtM9WMbX3toEDFxLh_CzLCoc-PAR-c0DA>
- <xmx:kfW_YinkIqjF3V-eIkwzWOVa2uVL5hc-Nc4szLpihBZ5Lfxy0JCuJg>
- <xmx:kfW_YseXilTxhWWBpgSWEnpmaDhyRzVvbGH3W8wwTIoG1lRzlG0c4A>
- <xmx:kfW_YpungNKdxlDef4dvkG21ITj-ZirZi4Dhu7CujozqtwHXub2GLw>
+ vghrsehpjhgurdguvghvqeenucggtffrrghtthgvrhhnpefgueekffdtueetgfehteffle
+ dtueehgfehgeelfedujeefhfffteekvddtfeetteenucffohhmrghinhepghhithhhuhgs
+ rdgtohhmnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmrghilhhfrhhomh
+ epphgvthgvrhesphhjugdruggvvh
+X-ME-Proxy: <xmx:T-m_Yprmte8QGomyWGaRJTC7sInYfhfwcBLvk5eDxFXxUTCKNEyQ3w>
+ <xmx:T-m_YupP3dv_mUSls0acD8QPA7N9AXuA8iGfag1jU6wED2KZmMTFJA>
+ <xmx:T-m_YvTepYtamS45PngMdTwz2wJNVLq9Wl9DDYjryS3dldB7kX9x0Q>
+ <xmx:T-m_YrC0dcgDE9o6lKZ_S9hL7MfH8HyzKYEMRVvW2BbjXvoZIWdmFA>
 Feedback-ID: i9e814621:Fastmail
 Received: by mail.messagingengine.com (Postfix) with ESMTPA; Sat,
- 2 Jul 2022 03:36:48 -0400 (EDT)
-Date: Sat, 2 Jul 2022 00:36:46 -0700
+ 2 Jul 2022 02:44:30 -0400 (EDT)
+Date: Fri, 1 Jul 2022 23:44:28 -0700
 From: Peter Delevoryas <peter@pjd.dev>
 To: =?iso-8859-1?Q?C=E9dric?= Le Goater <clg@kaod.org>
-Cc: Peter Delevoryas <me@pjd.dev>, peter.maydell@linaro.org,
- andrew@aj.id.au, joel@jms.id.au, qemu-arm@nongnu.org, qemu-devel@nongnu.org
-Subject: Re: [PATCH] aspeed: Create SRAM name from first CPU index
-Message-ID: <Yr/1jrZIwXSc+acd@pdel-mbp>
-References: <20220701180603.38408-1-me@pjd.dev>
- <3b367b09-075e-a21b-8d24-3b2be091f816@kaod.org>
- <Yr/tXIpUhFAU4NDM@pdel-mbp>
+Cc: Peter Delevoryas <me@pjd.dev>, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org, joel@jms.id.au, andrew@aj.id.au,
+ peter.maydell@linaro.org
+Subject: Re: [PATCH v2] aspeed: Refactor UART init for multi-SoC machines
+Message-ID: <Yr/pTGzMBJczrUiZ@pdel-mbp>
+References: <20220701200234.68289-1-me@pjd.dev>
+ <8b3f31c7-3326-2542-03cd-120702cae4bb@kaod.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=iso-8859-1
 Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <Yr/tXIpUhFAU4NDM@pdel-mbp>
+In-Reply-To: <8b3f31c7-3326-2542-03cd-120702cae4bb@kaod.org>
 Received-SPF: pass client-ip=66.111.4.224; envelope-from=peter@pjd.dev;
  helo=new2-smtp.messagingengine.com
 X-Spam_score_int: -12
@@ -137,131 +138,352 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 84fEOTHjUoC9
+X-TUID: WJBVhKa5J1Ta
 
-On Sat, Jul 02, 2022 at 12:01:48AM -0700, Peter Delevoryas wrote:
-> On Sat, Jul 02, 2022 at 08:01:14AM +0200, Cédric Le Goater wrote:
-> > On 7/1/22 20:06, Peter Delevoryas wrote:
-> > > To support multiple SoC's running simultaneously, we need a unique name for
-> > > each RAM region. DRAM is created by the machine, but SRAM is created by the
-> > > SoC, since in hardware it is part of the SoC's internals.
-> > > 
-> > > We need a way to uniquely identify each SRAM region though, for VM
-> > > migration. Since each of the SoC's CPU's has an index which identifies it
-> > > uniquely from other CPU's in the machine, we can use the index of any of the
-> > > CPU's in the SoC to uniquely identify differentiate the SRAM name from other
-> > > SoC SRAM's. In this change, I just elected to use the index of the first CPU
-> > > in each SoC.
+On Sat, Jul 02, 2022 at 07:57:09AM +0200, Cédric Le Goater wrote:
+> On 7/1/22 22:02, Peter Delevoryas wrote:
+> > This change moves the code that connects the SoC UART's to serial_hd's
+> > to the machine.
 > > 
-> > hopefully the index is allocated. Did you check ?
+> > It makes each UART a proper child member of the SoC, and then allows the
+> > machine to selectively initialize the chardev for each UART with a
+> > serial_hd.
+> > 
+> > This should preserve backwards compatibility, but also allow multi-SoC
+> > boards to completely change the wiring of serial devices from the
+> > command line to specific SoC UART's.
+> > 
+> > This also removes the uart-default property from the SoC, since the SoC
+> > doesn't need to know what UART is the "default" on the machine anymore.
+> > 
+> > I tested this using the images and commands from the previous
+> > refactoring, and another test image for the ast1030:
+> > 
+> >      wget https://github.com/facebook/openbmc/releases/download/v2021.49.0/fuji.mtd
+> >      wget https://github.com/facebook/openbmc/releases/download/v2021.49.0/wedge100.mtd
+> >      wget https://github.com/peterdelevoryas/OpenBIC/releases/download/oby35-cl-2022.13.01/Y35BCL.elf
+> > 
+> > Fuji uses UART1:
+> > 
+> >      qemu-system-arm -machine fuji-bmc \
+> >          -drive file=fuji.mtd,format=raw,if=mtd \
+> >          -nographic
+> > 
+> > ast2600-evb uses uart-default=UART5:
+> > 
+> >      qemu-system-arm -machine ast2600-evb \
+> >          -drive file=fuji.mtd,format=raw,if=mtd \
+> >          -serial null -serial mon:stdio -display none
+> > 
+> > Wedge100 uses UART3:
+> > 
+> >      qemu-system-arm -machine palmetto-bmc \
+> >          -drive file=wedge100.mtd,format=raw,if=mtd \
+> >          -serial null -serial null -serial null \
+> >          -serial mon:stdio -display none
+> > 
+> > AST1030 EVB uses UART5:
+> > 
+> >      qemu-system-arm -machine ast1030-evb \
+> >          -kernel Y35BCL.elf -nographic
 > 
-> You mean the CpuState.cpu_index? I think it's allocated at this point, I
-> actually had to do some debugging just to get it working cause I typo'd the
-> CPU(...) cast at first. I also tried it with the multi-SoC board in your
-> aspeed-7.1 branch:
-> 
-> (qemu) qom-get /machine/bmc aspeed.sram.0[0]
-> "/machine/bmc/aspeed.sram.0[0]"
-> (qemu) qom-get /machine/unattached aspeed.sram.2[0]
-> "/machine/unattached/aspeed.sram.2[0]"
-> 
-> I think the SRAM in the ast1030 is initialized without a parent object
-> (memory_region_init_ram(..., NULL, ...)) so that's why it's in the unattached
-> area. But we could fix that, maybe I should send a v2 with that too?
+> Looks good. A few comments on the APIs.
 > 
 > > 
+> > Fixes: 6827ff20b2975 ("hw: aspeed: Init all UART's with serial devices")
+> > Signed-off-by: Peter Delevoryas <me@pjd.dev>
+> > ---
+> >   hw/arm/aspeed.c             | 23 +++++++++++++++----
+> >   hw/arm/aspeed_ast10x0.c     |  4 ++++
+> >   hw/arm/aspeed_ast2600.c     |  4 ++++
+> >   hw/arm/aspeed_soc.c         | 44 ++++++++++++++++++++++++-------------
+> >   include/hw/arm/aspeed_soc.h |  5 ++++-
+> >   5 files changed, 60 insertions(+), 20 deletions(-)
 > > 
-> > > Signed-off-by: Peter Delevoryas <me@pjd.dev>
-> > > ---
-> > >   hw/arm/aspeed_ast10x0.c | 5 ++++-
-> > >   hw/arm/aspeed_ast2600.c | 5 +++--
-> > >   hw/arm/aspeed_soc.c     | 5 +++--
-> > >   3 files changed, 10 insertions(+), 5 deletions(-)
-> > > 
-> > > diff --git a/hw/arm/aspeed_ast10x0.c b/hw/arm/aspeed_ast10x0.c
-> > > index 33ef331771..b6b6f0d053 100644
-> > > --- a/hw/arm/aspeed_ast10x0.c
-> > > +++ b/hw/arm/aspeed_ast10x0.c
-> > > @@ -159,6 +159,7 @@ static void aspeed_soc_ast1030_realize(DeviceState *dev_soc, Error **errp)
-> > >       DeviceState *armv7m;
-> > >       Error *err = NULL;
-> > >       int i;
-> > > +    char name[64];
-> > >       if (!clock_has_source(s->sysclk)) {
-> > >           error_setg(errp, "sysclk clock must be wired up by the board code");
-> > > @@ -183,7 +184,9 @@ static void aspeed_soc_ast1030_realize(DeviceState *dev_soc, Error **errp)
-> > >       sysbus_realize(SYS_BUS_DEVICE(&s->armv7m), &error_abort);
-> > >       /* Internal SRAM */
-> > > -    memory_region_init_ram(&s->sram, NULL, "aspeed.sram", sc->sram_size, &err);
-> > > +    snprintf(name, sizeof(name), "aspeed.sram.%d",
-> > > +             CPU(s->armv7m.cpu)->cpu_index);
-> > > +    memory_region_init_ram(&s->sram, NULL, name, sc->sram_size, &err);
-> > >       if (err != NULL) {
-> > >           error_propagate(errp, err);
-> > >           return;
-> > > diff --git a/hw/arm/aspeed_ast2600.c b/hw/arm/aspeed_ast2600.c
-> > > index 3f0611ac11..7efb9f888a 100644
-> > > --- a/hw/arm/aspeed_ast2600.c
-> > > +++ b/hw/arm/aspeed_ast2600.c
-> > > @@ -276,6 +276,7 @@ static void aspeed_soc_ast2600_realize(DeviceState *dev, Error **errp)
-> > >       AspeedSoCClass *sc = ASPEED_SOC_GET_CLASS(s);
-> > >       Error *err = NULL;
-> > >       qemu_irq irq;
-> > > +    char name[64];
-> > 
-> > May be ?
-> > 
-> >      g_autofree char *sram_name =
-> >             g_strdup_printf("aspeed.sram.%d", CPU(&s->cpu[0])->cpu_index);
+> > diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
+> > index 6fe9b13548..fdca0abd95 100644
+> > --- a/hw/arm/aspeed.c
+> > +++ b/hw/arm/aspeed.c
+> > @@ -26,6 +26,7 @@
+> >   #include "qemu/error-report.h"
+> >   #include "qemu/units.h"
+> >   #include "hw/qdev-clock.h"
+> > +#include "sysemu/sysemu.h"
+> >   static struct arm_boot_info aspeed_board_binfo = {
+> >       .board_id = -1, /* device-tree-only board */
+> > @@ -301,6 +302,22 @@ static void sdhci_attach_drive(SDHCIState *sdhci, DriveInfo *dinfo)
+> >                                  &error_fatal);
+> >   }
+> > +static void connect_serial_hds_to_uarts(AspeedMachineState *bmc)
 > 
-> Hmmm yeah sure why not, I can fix the unattached AST1030 SRAM too. I always
-> wanted to use g_autofree some day hehe.
+> something like :
+> 
+>   void aspeed_soc_uart_connect(AspeedSoCState *s, int uart_default)
+> 
+> which could be exported from aspeed_soc.c
 
-Actually, can't do this: cpu_index is _not_ initialized at this point (the start
-of the function). armv7m needs to be realized first in the ast1030, cpu[]'s need
-to be realized in other SoC's. I don't think it would be preferable to move the
-autofree statement lower because the convention is to put declarations at the
-start of the enclosing block, let me know if you have another idea though.
+Actually I kinda disagree on this.
+
+In aspeed_soc.h, I added
+
+    aspeed_soc_uart_set_chr(AspeedSoCState *s, int dev, Chardev *chr)
+
+This is to allow Aspeed SoC users to set the Chardev for each UART.
+
+Then, in aspeed.c, I added connect_serial_hds_to_uarts to perform the wiring
+functionality that we've expected up to this point, which is to connect all the
+serial devices to one SoC.
+
+I'm imagining that we would use aspeed_soc_uart_set_chr in the fby35
+machine like this:
+
+diff --git a/hw/arm/fby35.c b/hw/arm/fby35.c
+index 0755e3f04f..85abf67b23 100644
+--- a/hw/arm/fby35.c
++++ b/hw/arm/fby35.c
+@@ -26,6 +26,7 @@
+ #include "hw/boards.h"
+ #include "hw/qdev-clock.h"
+ #include "sysemu/block-backend.h"
++#include "sysemu/sysemu.h"
+ #include "hw/arm/aspeed_soc.h"
+ #include "hw/arm/boot.h"
+
+@@ -99,7 +100,7 @@ static void fby35_bmc_init(Fby35State *s)
+     object_property_set_link(OBJECT(&s->bmc), "dram", OBJECT(&s->bmc_dram), &error_abort);
+     object_property_set_int(OBJECT(&s->bmc), "hw-strap1", 0x000000C0, &error_abort);
+     object_property_set_int(OBJECT(&s->bmc), "hw-strap2", 0x00000003, &error_abort);
+-    object_property_set_int(OBJECT(&s->bmc), "uart-default", ASPEED_DEV_UART5, &error_abort);
++    aspeed_soc_uart_set_chr(&s->bmc, ASPEED_DEV_UART5, serial_hd(0));
+     qdev_realize(DEVICE(&s->bmc), NULL, &error_abort);
+
+     aspeed_board_init_flashes(&s->bmc.fmc, "n25q00", 2, 0);
+@@ -136,7 +137,7 @@ static void fby35_bic_init(Fby35State *s)
+     object_initialize_child(OBJECT(s), "bic", &s->bic, "ast1030-a1");
+     qdev_connect_clock_in(DEVICE(&s->bic), "sysclk", s->bic_sysclk);
+     object_property_set_link(OBJECT(&s->bic), "memory", OBJECT(&s->bic_memory), &error_abort);
+-    qdev_prop_set_uint32(DEVICE(&s->bic), "uart-default", ASPEED_DEV_UART5);
++    aspeed_soc_uart_set_chr(&s->bic, ASPEED_DEV_UART5, serial_hd(1));
+     qdev_realize(DEVICE(&s->bic), NULL, &error_abort);
+
+     aspeed_board_init_flashes(&s->bic.fmc, "sst25vf032b", 2, 2);
+
+We could add aspeed_soc_uart_connect, but I'm struggling to see how it could
+cover both single-SoC and multi-SoC boards while still preserving the feature
+in single-SoC that lets us experiment with UART1/UART3 on EVB's.
 
 > 
-> > 
-> > 
-> > Thanks,
-> > 
-> > C.
-> > 
-> > 
-> > >       /* IO space */
-> > >       aspeed_mmio_map_unimplemented(s, SYS_BUS_DEVICE(&s->iomem), "aspeed.io",
-> > > @@ -335,8 +336,8 @@ static void aspeed_soc_ast2600_realize(DeviceState *dev, Error **errp)
-> > >       }
-> > >       /* SRAM */
-> > > -    memory_region_init_ram(&s->sram, OBJECT(dev), "aspeed.sram",
-> > > -                           sc->sram_size, &err);
-> > > +    snprintf(name, sizeof(name), "aspeed.sram.%d", CPU(&s->cpu[0])->cpu_index);
-> > > +    memory_region_init_ram(&s->sram, OBJECT(dev), name, sc->sram_size, &err);
-> > >       if (err) {
-> > >           error_propagate(errp, err);
-> > >           return;
-> > > diff --git a/hw/arm/aspeed_soc.c b/hw/arm/aspeed_soc.c
-> > > index 0f675e7fcd..1ddba33d2a 100644
-> > > --- a/hw/arm/aspeed_soc.c
-> > > +++ b/hw/arm/aspeed_soc.c
-> > > @@ -239,6 +239,7 @@ static void aspeed_soc_realize(DeviceState *dev, Error **errp)
-> > >       AspeedSoCState *s = ASPEED_SOC(dev);
-> > >       AspeedSoCClass *sc = ASPEED_SOC_GET_CLASS(s);
-> > >       Error *err = NULL;
-> > > +    char name[64];
-> > >       /* IO space */
-> > >       aspeed_mmio_map_unimplemented(s, SYS_BUS_DEVICE(&s->iomem), "aspeed.io",
-> > > @@ -259,8 +260,8 @@ static void aspeed_soc_realize(DeviceState *dev, Error **errp)
-> > >       }
-> > >       /* SRAM */
-> > > -    memory_region_init_ram(&s->sram, OBJECT(dev), "aspeed.sram",
-> > > -                           sc->sram_size, &err);
-> > > +    snprintf(name, sizeof(name), "aspeed.sram.%d", CPU(&s->cpu[0])->cpu_index);
-> > > +    memory_region_init_ram(&s->sram, OBJECT(dev), name, sc->sram_size, &err);
-> > >       if (err) {
-> > >           error_propagate(errp, err);
-> > >           return;
-> > 
+> > +{
+> > +    AspeedMachineClass *amc = ASPEED_MACHINE_GET_CLASS(bmc);
+> 
+> and you wouldn't need the machine.
+> 
+> > +    AspeedSoCState *s = &bmc->soc;
+> > +
+> > +    aspeed_soc_uart_set_chr(s, amc->uart_default, serial_hd(0));
+> > +    for (int i = 1, uart = ASPEED_DEV_UART1;
+> > +         serial_hd(i) && uart <= ASPEED_DEV_UART13; i++, uart++) {
+> 
+> We should test for :
+> 
+>   ASPEED_SOC_GET_CLASS(s)->uarts_num
+
+Oh good call, yeah I'll add that.
+
+> 
+> I am not sure we want to stop the loop if serial_hd(i) is NULL ?
+
+Yikes! Yeah I was not thinking clearly when I wrote this. Nice catch!
+
+> 
+> > +
+> > +        if (uart == amc->uart_default) {
+> > +            continue;
+> > +        }
+> > +        aspeed_soc_uart_set_chr(s, uart, serial_hd(i));
+> > +    }
+> > +}>   static void aspeed_machine_init(MachineState *machine)
+> >   {
+> >       AspeedMachineState *bmc = ASPEED_MACHINE(machine);
+> > @@ -346,8 +363,7 @@ static void aspeed_machine_init(MachineState *machine)
+> >           object_property_set_int(OBJECT(&bmc->soc), "hw-prot-key",
+> >                                   ASPEED_SCU_PROT_KEY, &error_abort);
+> >       }
+> > -    qdev_prop_set_uint32(DEVICE(&bmc->soc), "uart-default",
+> > -                         amc->uart_default);
+> > +    connect_serial_hds_to_uarts(bmc);
+> >       qdev_realize(DEVICE(&bmc->soc), NULL, &error_abort);
+> >       aspeed_board_init_flashes(&bmc->soc.fmc,
+> > @@ -1383,8 +1399,7 @@ static void aspeed_minibmc_machine_init(MachineState *machine)
+> >       object_property_set_link(OBJECT(&bmc->soc), "memory",
+> >                                OBJECT(get_system_memory()), &error_abort);
+> > -    qdev_prop_set_uint32(DEVICE(&bmc->soc), "uart-default",
+> > -                         amc->uart_default);
+> > +    connect_serial_hds_to_uarts(bmc);
+> >       qdev_realize(DEVICE(&bmc->soc), NULL, &error_abort);
+> >       aspeed_board_init_flashes(&bmc->soc.fmc,
+> > diff --git a/hw/arm/aspeed_ast10x0.c b/hw/arm/aspeed_ast10x0.c
+> > index 33ef331771..a221f5d6fe 100644
+> > --- a/hw/arm/aspeed_ast10x0.c
+> > +++ b/hw/arm/aspeed_ast10x0.c
+> > @@ -144,6 +144,10 @@ static void aspeed_soc_ast1030_init(Object *obj)
+> >           object_initialize_child(obj, "wdt[*]", &s->wdt[i], typename);
+> >       }
+> > +    for (i = 0; i < sc->uarts_num; i++) {
+> > +        object_initialize_child(obj, "uart[*]", &s->uart[i], TYPE_SERIAL_MM);
+> > +    }
+> > +
+> >       snprintf(typename, sizeof(typename), "aspeed.gpio-%s", socname);
+> >       object_initialize_child(obj, "gpio", &s->gpio, typename);
+> > diff --git a/hw/arm/aspeed_ast2600.c b/hw/arm/aspeed_ast2600.c
+> > index 3f0611ac11..c4ad26a046 100644
+> > --- a/hw/arm/aspeed_ast2600.c
+> > +++ b/hw/arm/aspeed_ast2600.c
+> > @@ -214,6 +214,10 @@ static void aspeed_soc_ast2600_init(Object *obj)
+> >           object_initialize_child(obj, "mii[*]", &s->mii[i], TYPE_ASPEED_MII);
+> >       }
+> > +    for (i = 0; i < sc->uarts_num; i++) {
+> > +        object_initialize_child(obj, "uart[*]", &s->uart[i], TYPE_SERIAL_MM);
+> > +    }
+> > +
+> >       snprintf(typename, sizeof(typename), TYPE_ASPEED_XDMA "-%s", socname);
+> >       object_initialize_child(obj, "xdma", &s->xdma, typename);
+> > diff --git a/hw/arm/aspeed_soc.c b/hw/arm/aspeed_soc.c
+> > index 0f675e7fcd..2ac18cbf27 100644
+> > --- a/hw/arm/aspeed_soc.c
+> > +++ b/hw/arm/aspeed_soc.c
+> > @@ -208,6 +208,10 @@ static void aspeed_soc_init(Object *obj)
+> >                                   TYPE_FTGMAC100);
+> >       }
+> > +    for (i = 0; i < sc->uarts_num; i++) {
+> > +        object_initialize_child(obj, "uart[*]", &s->uart[i], TYPE_SERIAL_MM);
+> > +    }
+> > +
+> >       snprintf(typename, sizeof(typename), TYPE_ASPEED_XDMA "-%s", socname);
+> >       object_initialize_child(obj, "xdma", &s->xdma, typename);
+> > @@ -481,8 +485,6 @@ static Property aspeed_soc_properties[] = {
+> >                        MemoryRegion *),
+> >       DEFINE_PROP_LINK("dram", AspeedSoCState, dram_mr, TYPE_MEMORY_REGION,
+> >                        MemoryRegion *),
+> > -    DEFINE_PROP_UINT32("uart-default", AspeedSoCState, uart_default,
+> > -                       ASPEED_DEV_UART5),
+> >       DEFINE_PROP_END_OF_LIST(),
+> >   };
+> > @@ -575,22 +577,34 @@ qemu_irq aspeed_soc_get_irq(AspeedSoCState *s, int dev)
+> >   void aspeed_soc_uart_init(AspeedSoCState *s)
+> 
+> We can handle errors now. So :
+> 
+>   bool aspeed_soc_uart_realize(AspeedSoCState *s, Error **errp)
+
+Good idea, +1
+
+> 
+> >   {
+> >       AspeedSoCClass *sc = ASPEED_SOC_GET_CLASS(s);
+> > -    int i, uart;
+> > -
+> > -    /* Attach an 8250 to the IO space as our UART */
+> > -    serial_mm_init(s->memory, sc->memmap[s->uart_default], 2,
+> > -                   aspeed_soc_get_irq(s, s->uart_default), 38400,
+> > -                   serial_hd(0), DEVICE_LITTLE_ENDIAN);
+> > -    for (i = 1, uart = ASPEED_DEV_UART1; i < sc->uarts_num; i++, uart++) {
+> > -        if (uart == s->uart_default) {
+> > -            uart++;
+> > -        }
+> > -        serial_mm_init(s->memory, sc->memmap[uart], 2,
+> > -                       aspeed_soc_get_irq(s, uart), 38400,
+> > -                       serial_hd(i), DEVICE_LITTLE_ENDIAN);
+> > +    SerialMM *smm;
+> > +    MemoryRegion *mr;
+> > +
+> > +    for (int i = 0, uart = ASPEED_DEV_UART1; i < sc->uarts_num; i++, uart++) {
+> > +        smm = &s->uart[i];
+> > +
+> > +        /* Chardev property is set by the machine. */
+> > +        qdev_prop_set_uint8(DEVICE(smm), "regshift", 2);
+> > +        qdev_prop_set_uint32(DEVICE(smm), "baudbase", 38400);
+> > +        qdev_set_legacy_instance_id(DEVICE(smm), sc->memmap[uart], 2);
+> > +        qdev_prop_set_uint8(DEVICE(smm), "endianness", DEVICE_LITTLE_ENDIAN);
+> > +        sysbus_realize(SYS_BUS_DEVICE(smm), &error_fatal);
+> 
+> use errp instead and return false in case of failure.
+
++1
+
+> 
+> > +
+> > +        sysbus_connect_irq(SYS_BUS_DEVICE(smm), 0, aspeed_soc_get_irq(s, uart));
+> > +        mr = sysbus_mmio_get_region(SYS_BUS_DEVICE(smm), 0);
+> > +        memory_region_add_subregion(s->memory, sc->memmap[uart], mr);
+> 
+> You introduced aspeed_mmio_map() :)
+
+Hahahaha you're totally right, I was _really_ not thinking very clearly this
+morning.
+
+> 
+> >       }
+> >   }
+> > +void aspeed_soc_uart_set_chr(AspeedSoCState *s, int dev, Chardev *chr)
+> 
+> you could merge this routine in aspeed_soc_uart_connect() I think.
+
+See my comment at the start about this, I'm not sure how we could
+use aspeed_soc_uart_connect with the multi-SoC board, but maybe
+I'm missing something.
+
+Thanks,
+Peter
+
+> 
+> Thanks,
+> 
+> C.
+> 
+> 
+> > +{
+> > +    AspeedSoCClass *sc = ASPEED_SOC_GET_CLASS(s);
+> > +    int i = dev - ASPEED_DEV_UART1;
+> > +
+> > +    g_assert(0 <= i && i < ARRAY_SIZE(s->uart) && i < sc->uarts_num);
+> > +    qdev_prop_set_chr(DEVICE(&s->uart[i]), "chardev", chr);
+> > +}
+> > +
+> >   /*
+> >    * SDMC should be realized first to get correct RAM size and max size
+> >    * values
+> > diff --git a/include/hw/arm/aspeed_soc.h b/include/hw/arm/aspeed_soc.h
+> > index e65926a667..60ee0a84db 100644
+> > --- a/include/hw/arm/aspeed_soc.h
+> > +++ b/include/hw/arm/aspeed_soc.h
+> > @@ -36,12 +36,14 @@
+> >   #include "hw/misc/aspeed_lpc.h"
+> >   #include "hw/misc/unimp.h"
+> >   #include "hw/misc/aspeed_peci.h"
+> > +#include "hw/char/serial.h"
+> >   #define ASPEED_SPIS_NUM  2
+> >   #define ASPEED_EHCIS_NUM 2
+> >   #define ASPEED_WDTS_NUM  4
+> >   #define ASPEED_CPUS_NUM  2
+> >   #define ASPEED_MACS_NUM  4
+> > +#define ASPEED_UARTS_NUM 13
+> >   struct AspeedSoCState {
+> >       /*< private >*/
+> > @@ -79,7 +81,7 @@ struct AspeedSoCState {
+> >       AspeedSDHCIState emmc;
+> >       AspeedLPCState lpc;
+> >       AspeedPECIState peci;
+> > -    uint32_t uart_default;
+> > +    SerialMM uart[ASPEED_UARTS_NUM];
+> >       Clock *sysclk;
+> >       UnimplementedDeviceState iomem;
+> >       UnimplementedDeviceState video;
+> > @@ -176,6 +178,7 @@ enum {
+> >   qemu_irq aspeed_soc_get_irq(AspeedSoCState *s, int dev);
+> >   void aspeed_soc_uart_init(AspeedSoCState *s);
+> > +void aspeed_soc_uart_set_chr(AspeedSoCState *s, int dev, Chardev *chr);
+> >   bool aspeed_soc_dram_init(AspeedSoCState *s, Error **errp);
+> >   void aspeed_mmio_map(AspeedSoCState *s, SysBusDevice *dev, int n, hwaddr addr);
+> >   void aspeed_mmio_map_unimplemented(AspeedSoCState *s, SysBusDevice *dev,
+> 

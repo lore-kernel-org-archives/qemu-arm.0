@@ -1,128 +1,125 @@
-Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp1773557lft;
-        Sat, 2 Jul 2022 00:02:07 -0700 (PDT)
-X-Google-Smtp-Source: AGRyM1tz4mDVmagvhalkPVMKI30PY6KibGn8KeuxJ9pwu9oD1iMifqfDos6xqOCwfmchYs80e7Gk
-X-Received: by 2002:a05:6638:1694:b0:33c:cfc9:23fc with SMTP id f20-20020a056638169400b0033ccfc923fcmr11160446jat.75.1656745326947;
-        Sat, 02 Jul 2022 00:02:06 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1656745326; cv=none;
+Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp1910923lft;
+        Sat, 2 Jul 2022 04:54:14 -0700 (PDT)
+X-Google-Smtp-Source: AGRyM1v10Q8V+KxgYztcVqIolPzQaTzEf4yPewbk6BV/vz+ZKTCJCMRLZ7cB81pTqpPUogfDf7+i
+X-Received: by 2002:a25:76ce:0:b0:66e:2a3e:c3b8 with SMTP id r197-20020a2576ce000000b0066e2a3ec3b8mr1002425ybc.222.1656762854559;
+        Sat, 02 Jul 2022 04:54:14 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1656762854; cv=none;
         d=google.com; s=arc-20160816;
-        b=c4cF03rgUjHSbvYQDk9Yy/uDFhAW3QJ9TIhCbRQoNpxkcorihovCBbv+m8y8xIyx6Y
-         babvRwrfthT/G4zb0pqivLrJ+bg4D3FQfNUPmPG211rMuzhlWbXCI/5bJEpUmeQVNiWc
-         WMQDuyFmJjmMwL7UND68sXEoK6KNJWm/4y2TzqM7BrarmEdTMorvP0RErkfcD0lzwv3x
-         ghiS2ac9uD1dpgBzrVuDzbOoStQDi/f3PPChxN/DXddwqTWbVVefTOCU0kZ23S6Uw4tH
-         fO4AEiisf2zFuaGBjOLtHslraqoEtWk11INns6Il8XcP+Oh8OPjKIqFI/XhV9VBSWWpQ
-         uoxA==
+        b=O1e1V7W789s1A+sDKXZuXdqeNfkgdGhlI735YL4nsRsTIsMUG8U+zNRiq9Cu1TRktJ
+         sbwbVb6zH8Y/1H59BPQZoDGPk9YM/u8f5w06AozdQyaXjyt+6rp7LMEn6TrnRGhJq/Af
+         DBCW56dvvJtSI08PXC2DeFqvmDwvCyuFKWjzTvbRJ/kW/bilWYMYG6DyEj8vc+tdjPS+
+         hHZWMOhqg+eN1U5woppDG9j+qc3XSHb0aV24NCOU1wokwdEtaMSQMzq7lbGzekO+4sJw
+         39ABlLMhR9yPmSK5p5U/9C/+qXMDxhhjRWjpZDTvExzs4dsEYxND9CiFLb9XEufCu6jV
+         69Jg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:in-reply-to
-         :content-transfer-encoding:content-disposition:mime-version
-         :references:message-id:subject:cc:to:from:date:feedback-id
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:cc:to:from:feedback-id
          :dkim-signature:dkim-signature;
-        bh=EgUAuH/1FrtbMicUXrC38CgSTiTOIMs4PY8WyyXoigQ=;
-        b=DFKbgPt5ryOTTXC+rcasH6DsxHSnzpEA4YlUDY1VBRswu7CWRlzrsoD4VrRakHqH1x
-         jNbe0wsJ2U+D3MshAukpORUPhoj07QOfjlCs6N6Df+EzbRNnDCsb26in6pA6/k5S3y7R
-         SD0NDBmFVeLFvubqOEBzb30jyW3PvDslSUnqt45XwS+pMjM8RGMUkxkcC5lzVjEFFmuT
-         /hXfg12jcyKMKqOoH1d9AHD++zwH5aN/kn6LPFSHLLK5zW0Qpai4h/E/xvMrHmpkGDTZ
-         K/dxTh9ehxCSwS4B1WWaFDeYmyT6KjePB3gPvJx6X3xc+AATti7SU0RDyiL/L6jEpx+5
-         JNgA==
+        bh=XVh3xclWtEtqU3hNp2ljoRATZLY/YjsvzV22BVS2zG0=;
+        b=R931iBvl2o6MM70X6YNk/Kk3VSXXu83B06wCCN/FvB7Ve0lXSMJZqPgcYidvCG8Gnj
+         eYh+uEtj+NMRmICvic8MHhcvG1bEot+CsZL7f59n+BxFeOrnzaI/JEp4Yiyw/7oz4stO
+         m8eLrUWE7P88qbT+nvzYNFkM3HA0ETcnbUQwF1ZaNYdN688/rgtCEna5f1dlrjS6QIuk
+         8Gu+mlBLfXJiLNAwTEobfNJOEhs3PgZdarU9syRh2w+PIFN88Ony6aqnZu6v0S17q+3U
+         X+29XVDcxnIa54Y6QhqFxMb7S53wu/ag6gjtzS8EQafNOvHcorhJpzgoeKss+PO41yYH
+         TLFA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@pjd.dev header.s=fm1 header.b=DbuVFK1n;
-       dkim=fail header.i=@messagingengine.com header.s=i9e814621.fm2 header.b=WUCDsM4S;
+       dkim=neutral (expired) header.i=@nongnu.org;
+       dkim=neutral (expired) header.i=@nongnu.org;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id o6-20020a05660213c600b00675a81cfa95si10807558iov.101.2022.07.02.00.02.06
+        by mx.google.com with ESMTPS id d123-20020a811d81000000b003180fabc6bbsi32089177ywd.153.2022.07.02.04.54.14
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 02 Jul 2022 00:02:06 -0700 (PDT)
+        Sat, 02 Jul 2022 04:54:14 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@pjd.dev header.s=fm1 header.b=DbuVFK1n;
-       dkim=fail header.i=@messagingengine.com header.s=i9e814621.fm2 header.b=WUCDsM4S;
+       dkim=neutral (expired) header.i=@nongnu.org;
+       dkim=neutral (expired) header.i=@nongnu.org;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:43780 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:60696 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1o7X8o-00021F-6n
-	for alex.bennee@linaro.org; Sat, 02 Jul 2022 03:02:06 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:42542)
+	id 1o7bhV-0007nj-GB
+	for alex.bennee@linaro.org; Sat, 02 Jul 2022 07:54:13 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33770)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter@pjd.dev>)
- id 1o7X8c-000210-4T; Sat, 02 Jul 2022 03:01:54 -0400
-Received: from new2-smtp.messagingengine.com ([66.111.4.224]:56629)
+ id 1o7SRI-000367-Pd; Fri, 01 Jul 2022 22:00:52 -0400
+Received: from new1-smtp.messagingengine.com ([66.111.4.221]:37997)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter@pjd.dev>)
- id 1o7X8a-00078O-7E; Sat, 02 Jul 2022 03:01:53 -0400
-Received: from compute2.internal (compute2.nyi.internal [10.202.2.46])
- by mailnew.nyi.internal (Postfix) with ESMTP id 45528580A79;
- Sat,  2 Jul 2022 03:01:51 -0400 (EDT)
+ id 1o7SRD-00027P-Ic; Fri, 01 Jul 2022 22:00:52 -0400
+Received: from compute1.internal (compute1.nyi.internal [10.202.2.41])
+ by mailnew.nyi.internal (Postfix) with ESMTP id E8903580B96;
+ Fri,  1 Jul 2022 22:00:42 -0400 (EDT)
 Received: from mailfrontend2 ([10.202.2.163])
- by compute2.internal (MEProxy); Sat, 02 Jul 2022 03:01:51 -0400
+ by compute1.internal (MEProxy); Fri, 01 Jul 2022 22:00:42 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=pjd.dev; h=cc:cc
- :content-transfer-encoding:content-type:date:date:from:from
- :in-reply-to:in-reply-to:message-id:mime-version:references
- :reply-to:sender:subject:subject:to:to; s=fm1; t=1656745311; x=
- 1656748911; bh=EgUAuH/1FrtbMicUXrC38CgSTiTOIMs4PY8WyyXoigQ=; b=D
- buVFK1ntSQZ0TpYj2dDvvo+obreTLRkvVN6nsjwwMnaEYW1JLbgqxiQYvWGFK2D1
- o3Jq7endAZD6ri0Ad1gxYcse2aNy0pjBGZUGtg2EyUz8Ku4IbUJpjcASb7ttZ1sf
- vcsWYqrRgBRMZdSS2ACNCSDgCmotSDZgKtfI0pUawGBLt2JXWE11YOHayG0hAc0H
- fZAxxe9MGtAUpTRE5bTzhunC4yxZphUyJ3y7HSXfwzSUNeWavrS0sW99cEC1nnJT
- /HQW/XEvpd/OUY5FRadxoCq41q+XdU7TFV94vdZQJkNEO6hZuGA1A6zjPTjNIL3W
- cQ8Hwtk29PWdt76D+6nfw==
+ :content-transfer-encoding:date:date:from:from:in-reply-to
+ :message-id:mime-version:reply-to:sender:subject:subject:to:to;
+ s=fm1; t=1656727242; x=1656730842; bh=XVh3xclWtEtqU3hNp2ljoRATZ
+ LY/YjsvzV22BVS2zG0=; b=37I/r6H+WAQ/0Kht/oSIb/SYEOJ/AnZ/6QrIWck4C
+ sLxPFcpBiPwq8LBj5fbZOaoVUYWz8SAp0GgjgvB/AAeXTBh/QqlJA2q2Uq9Y9p0k
+ vEXw9BsqEQ9i34UAf7HEh1idasmNew5u4fqm8m6Gm/yGG6+UGSRGR2j+NsEFUkrb
+ OJt36/MiAUblqgCWXPHP9Q41v+kRWgFdz0xiqaGQSzq5u6yZFM1ko+osr6VMwyy4
+ LDVESgtMt15Q6Xy2G/ay1rWlF+wDKZgYj3YXzOHeRskGxWDdG9pvQjBtwpgGM2iI
+ Z/Dp+vDCpvcPm59U1/uuqD2cl0l6kagbDW+hz0l5UPU2g==
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
- messagingengine.com; h=cc:cc:content-transfer-encoding
- :content-type:date:date:feedback-id:feedback-id:from:from
- :in-reply-to:in-reply-to:message-id:mime-version:references
- :reply-to:sender:subject:subject:to:to:x-me-proxy:x-me-proxy
- :x-me-sender:x-me-sender:x-sasl-enc; s=i9e814621.fm2; t=
- 1656745311; x=1656748911; bh=EgUAuH/1FrtbMicUXrC38CgSTiTOIMs4PY8
- WyyXoigQ=; b=WUCDsM4SLOebcGFF80uPB6DAi1/B7IFboQht/PeRSI261S6P8Ei
- 2GII3i6+lrX9AqjA7cPeDHk2gemdetc4CospbkbgcXHzFXi5kFA8WNySSVTN4uJz
- gsx/BKnLbiak4AXk/Mk5ZtpYMC7xiHo5NyDe9HeZ+BxUtwIedh5FdNUhQYHEAlCx
- hMHUjFopDCamE9gI+Mr9X4i2ugOnlV9DPfaCL5E/eNwN8JaXhsGC7s2gJ7/JxT8m
- D9PjliR/zmuWP5D9bHiRjDQ2+kBLpkH3ZfAfd3LWy1XNq/R5g0yODkMvigwr9Djp
- GqhnkFnSywbh3ijdafXjuMl8tbitKvJ4cTQ==
-X-ME-Sender: <xms:Xu2_YkVnfd-nxD6muU6ejs_rhFqlB-360PZSmfAmZLXz1zCVGYfQXQ>
- <xme:Xu2_YokSvyQRgOQfLwZdlTmr9amKFDPJjykwLU-cMXud9r2lzWwyLfhfhT2sr75IW
- pmZ2xrYBNiQjwkstzk>
-X-ME-Received: <xmr:Xu2_YoZSrivQ2_WvixgzKBi4RA7ujUImpwRl5po_G_y0oErHkHNvaxaT3ogqBIu811jdkEBk6LMpxIS8a-uz2EheWfDGUWY>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvfedrudehgedgudduiecutefuodetggdotefrod
- ftvfcurfhrohhfihhlvgemucfhrghsthforghilhdpqfgfvfdpuffrtefokffrpgfnqfgh
- necuuegrihhlohhuthemuceftddtnecunecujfgurhepfffhvfevuffkfhggtggugfgjse
- htkeertddttddunecuhfhrohhmpefrvghtvghrucffvghlvghvohhrhigrshcuoehpvght
- vghrsehpjhgurdguvghvqeenucggtffrrghtthgvrhhnpefhgeffvedufeevteegkeetie
- ejhffhudeujedvgedvheffheejveethffhffefueenucevlhhushhtvghrufhiiigvpedt
- necurfgrrhgrmhepmhgrihhlfhhrohhmpehpvghtvghrsehpjhgurdguvghv
-X-ME-Proxy: <xmx:Xu2_YjXzyMNlR4vzuHud6OQKShKXovwgOD1Aca9sHxJI8tRhIwwX9A>
- <xmx:Xu2_YunvME7nUge6zy8-HvQGS1Iiz2PZhhihnkx6SgZA34fOqxqeeg>
- <xmx:Xu2_YocYFPzukYn26LeDi7iVetuUk2bxMXIQK9NZ5qGUO5m5atLK8Q>
- <xmx:X-2_YlsOQYTUv6XgJxHCzACynLPSBaSU5g9RBm5Yg0gAn6rZAaV5DQ>
+ messagingengine.com; h=cc:cc:content-transfer-encoding:date:date
+ :feedback-id:feedback-id:from:from:in-reply-to:message-id
+ :mime-version:reply-to:sender:subject:subject:to:to:x-me-proxy
+ :x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=i9e814621.fm2;
+ t=1656727242; x=1656730842; bh=XVh3xclWtEtqU3hNp2ljoRATZLY/Yjsv
+ zV22BVS2zG0=; b=IBWO7h+d/H+yzIscaah2bsiPf6tCQ1w6x4iVDizZmfvdZO0L
+ 7ypJ81fhaPQP0kGxPAtWWBo6f5R6ZpdXIYfFs/uaIcrvQeCak6zeBJ7Y5AIxFl8h
+ jKxGUz54rHvWjldKSLc/O/6P9/mCEI4JEJ0xG3nBcKUO2ZnxhYOjbErZMZrhSMjm
+ jQ6N/oSF8eaPV5rBKLxb5S3RNvUD9fXC2lvRb88zmsICcE/PIe0RMoId+cfZCAih
+ 99j5KZ+fRmcPdl59fA6kn2yR1t5EZRvKYnH8RrfKtPovp7KNHoKsj0W6x4GYPm/7
+ XQelIm7fQ0VGLP817rob6gMVvI9kNc13fJ4wKA==
+X-ME-Sender: <xms:yqa_YtDB3tXRMfRnljmfiG4aX0tZYn0CtkJdlLYDcYy6Rf0It1eLIw>
+ <xme:yqa_YriBr4UWIfcLIuqJ3WGdW3LgE4h8BoPJuxOlGPxmMucyDbaNJ0rU2lg_ab1gZ
+ jbfxKNxeenZRMNT65A>
+X-ME-Received: <xmr:yqa_YonjRbdXXfNZvKW3r8cX2jIwSGBXmIuqISlZ5VbFyJuKMpM6B3mOPLhPcA>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvfedrudehgedgheefucetufdoteggodetrfdotf
+ fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
+ uceurghilhhouhhtmecufedttdenuchmihhsshhinhhgucfvqfcufhhivghlugculdeftd
+ dmnecujfgurhephffvvefufffkofgggfestdekredtredttdenucfhrhhomheprfgvthgv
+ rhcuffgvlhgvvhhorhihrghsuceophgvthgvrhesphhjugdruggvvheqnecuggftrfgrth
+ htvghrnhepieegledthedvleehuedtheeufeegtdfgfefgveetleelteeiiedvfeduudej
+ ieeknecuffhomhgrihhnpehgihhthhhusgdrtghomhdpmhgvthgrrdgtohhmnecuvehluh
+ hsthgvrhfuihiivgeptdenucfrrghrrghmpehmrghilhhfrhhomhepphgvthgvrhesphhj
+ ugdruggvvh
+X-ME-Proxy: <xmx:yqa_YnxjXqgxjVEPRCB3ws-7gxKKq5q-pz43dMdikPeZjaetNiksYQ>
+ <xmx:yqa_YiSIJfgBwaNwIRu4EOEYC2GSyiBcPsuTnO42Q-mQhuv9_bmtXw>
+ <xmx:yqa_YqbrYZoqZ6pCoybWEcHjXwmnxHbGJcbq6UOqE1d3ub0VRuR3Bw>
+ <xmx:yqa_YgfgocYHoWrL3t8HsHAKdntBN2GhddXQgjD5cSrS4ftdITtmIg>
 Feedback-ID: i9e814621:Fastmail
-Received: by mail.messagingengine.com (Postfix) with ESMTPA; Sat,
- 2 Jul 2022 03:01:49 -0400 (EDT)
-Date: Sat, 2 Jul 2022 00:01:48 -0700
+Received: by mail.messagingengine.com (Postfix) with ESMTPA; Fri,
+ 1 Jul 2022 22:00:41 -0400 (EDT)
 From: Peter Delevoryas <peter@pjd.dev>
-To: =?iso-8859-1?Q?C=E9dric?= Le Goater <clg@kaod.org>
-Cc: Peter Delevoryas <me@pjd.dev>, peter.maydell@linaro.org,
- andrew@aj.id.au, joel@jms.id.au, qemu-arm@nongnu.org, qemu-devel@nongnu.org
-Subject: Re: [PATCH] aspeed: Create SRAM name from first CPU index
-Message-ID: <Yr/tXIpUhFAU4NDM@pdel-mbp>
-References: <20220701180603.38408-1-me@pjd.dev>
- <3b367b09-075e-a21b-8d24-3b2be091f816@kaod.org>
+To: 
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, clg@kaod.org,
+ venture@google.com, titusr@google.com
+Subject: [PATCH] hw/i2c/pca954x: Add method to get channels
+Date: Fri,  1 Jul 2022 19:00:40 -0700
+Message-Id: <20220702020040.33858-1-peter@pjd.dev>
+X-Mailer: git-send-email 2.37.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <3b367b09-075e-a21b-8d24-3b2be091f816@kaod.org>
-Received-SPF: pass client-ip=66.111.4.224; envelope-from=peter@pjd.dev;
- helo=new2-smtp.messagingengine.com
+Received-SPF: pass client-ip=66.111.4.221; envelope-from=peter@pjd.dev;
+ helo=new1-smtp.messagingengine.com
 X-Spam_score_int: -12
 X-Spam_score: -1.3
 X-Spam_bar: -
 X-Spam_report: (-1.3 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FROM_FMBLA_NEWDOM=1.498, RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
+ FROM_FMBLA_NEWDOM=1.498, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001,
+ RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
 X-Spam_action: no action
+X-Mailman-Approved-At: Sat, 02 Jul 2022 07:53:43 -0400
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -136,123 +133,147 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: cfpqbIkMhf2E
+X-TUID: pFTCeB1qG/68
 
-On Sat, Jul 02, 2022 at 08:01:14AM +0200, Cédric Le Goater wrote:
-> On 7/1/22 20:06, Peter Delevoryas wrote:
-> > To support multiple SoC's running simultaneously, we need a unique name for
-> > each RAM region. DRAM is created by the machine, but SRAM is created by the
-> > SoC, since in hardware it is part of the SoC's internals.
-> > 
-> > We need a way to uniquely identify each SRAM region though, for VM
-> > migration. Since each of the SoC's CPU's has an index which identifies it
-> > uniquely from other CPU's in the machine, we can use the index of any of the
-> > CPU's in the SoC to uniquely identify differentiate the SRAM name from other
-> > SoC SRAM's. In this change, I just elected to use the index of the first CPU
-> > in each SoC.
-> 
-> hopefully the index is allocated. Did you check ?
+I added this helper in the Aspeed machine file a while ago to help
+initialize fuji-bmc i2c devices. This moves it to the official pca954x
+file so that other files can use it.
 
-You mean the CpuState.cpu_index? I think it's allocated at this point, I
-actually had to do some debugging just to get it working cause I typo'd the
-CPU(...) cast at first. I also tried it with the multi-SoC board in your
-aspeed-7.1 branch:
+This does something very similar to pca954x_i2c_get_bus, but I think
+this is useful when you have a very complicated dts with a lot of
+switches, like the fuji dts.
 
-(qemu) qom-get /machine/bmc aspeed.sram.0[0]
-"/machine/bmc/aspeed.sram.0[0]"
-(qemu) qom-get /machine/unattached aspeed.sram.2[0]
-"/machine/unattached/aspeed.sram.2[0]"
+This convenience method lets you write code that produces a flat array
+of I2C buses that matches the naming in the dts. After that you can just
+add individual sensors using the flat array of I2C buses.
 
-I think the SRAM in the ast1030 is initialized without a parent object
-(memory_region_init_ram(..., NULL, ...)) so that's why it's in the unattached
-area. But we could fix that, maybe I should send a v2 with that too?
+See fuji_bmc_i2c_init to understand this point further.
 
-> 
-> 
-> > Signed-off-by: Peter Delevoryas <me@pjd.dev>
-> > ---
-> >   hw/arm/aspeed_ast10x0.c | 5 ++++-
-> >   hw/arm/aspeed_ast2600.c | 5 +++--
-> >   hw/arm/aspeed_soc.c     | 5 +++--
-> >   3 files changed, 10 insertions(+), 5 deletions(-)
-> > 
-> > diff --git a/hw/arm/aspeed_ast10x0.c b/hw/arm/aspeed_ast10x0.c
-> > index 33ef331771..b6b6f0d053 100644
-> > --- a/hw/arm/aspeed_ast10x0.c
-> > +++ b/hw/arm/aspeed_ast10x0.c
-> > @@ -159,6 +159,7 @@ static void aspeed_soc_ast1030_realize(DeviceState *dev_soc, Error **errp)
-> >       DeviceState *armv7m;
-> >       Error *err = NULL;
-> >       int i;
-> > +    char name[64];
-> >       if (!clock_has_source(s->sysclk)) {
-> >           error_setg(errp, "sysclk clock must be wired up by the board code");
-> > @@ -183,7 +184,9 @@ static void aspeed_soc_ast1030_realize(DeviceState *dev_soc, Error **errp)
-> >       sysbus_realize(SYS_BUS_DEVICE(&s->armv7m), &error_abort);
-> >       /* Internal SRAM */
-> > -    memory_region_init_ram(&s->sram, NULL, "aspeed.sram", sc->sram_size, &err);
-> > +    snprintf(name, sizeof(name), "aspeed.sram.%d",
-> > +             CPU(s->armv7m.cpu)->cpu_index);
-> > +    memory_region_init_ram(&s->sram, NULL, name, sc->sram_size, &err);
-> >       if (err != NULL) {
-> >           error_propagate(errp, err);
-> >           return;
-> > diff --git a/hw/arm/aspeed_ast2600.c b/hw/arm/aspeed_ast2600.c
-> > index 3f0611ac11..7efb9f888a 100644
-> > --- a/hw/arm/aspeed_ast2600.c
-> > +++ b/hw/arm/aspeed_ast2600.c
-> > @@ -276,6 +276,7 @@ static void aspeed_soc_ast2600_realize(DeviceState *dev, Error **errp)
-> >       AspeedSoCClass *sc = ASPEED_SOC_GET_CLASS(s);
-> >       Error *err = NULL;
-> >       qemu_irq irq;
-> > +    char name[64];
-> 
-> May be ?
-> 
->      g_autofree char *sram_name =
->             g_strdup_printf("aspeed.sram.%d", CPU(&s->cpu[0])->cpu_index);
+The fuji dts is here for reference:
 
-Hmmm yeah sure why not, I can fix the unattached AST1030 SRAM too. I always
-wanted to use g_autofree some day hehe.
+https://github.com/torvalds/linux/blob/40cb6373b46/arch/arm/boot/dts/aspeed-bmc-facebook-fuji.dts
 
-> 
-> 
-> Thanks,
-> 
-> C.
-> 
-> 
-> >       /* IO space */
-> >       aspeed_mmio_map_unimplemented(s, SYS_BUS_DEVICE(&s->iomem), "aspeed.io",
-> > @@ -335,8 +336,8 @@ static void aspeed_soc_ast2600_realize(DeviceState *dev, Error **errp)
-> >       }
-> >       /* SRAM */
-> > -    memory_region_init_ram(&s->sram, OBJECT(dev), "aspeed.sram",
-> > -                           sc->sram_size, &err);
-> > +    snprintf(name, sizeof(name), "aspeed.sram.%d", CPU(&s->cpu[0])->cpu_index);
-> > +    memory_region_init_ram(&s->sram, OBJECT(dev), name, sc->sram_size, &err);
-> >       if (err) {
-> >           error_propagate(errp, err);
-> >           return;
-> > diff --git a/hw/arm/aspeed_soc.c b/hw/arm/aspeed_soc.c
-> > index 0f675e7fcd..1ddba33d2a 100644
-> > --- a/hw/arm/aspeed_soc.c
-> > +++ b/hw/arm/aspeed_soc.c
-> > @@ -239,6 +239,7 @@ static void aspeed_soc_realize(DeviceState *dev, Error **errp)
-> >       AspeedSoCState *s = ASPEED_SOC(dev);
-> >       AspeedSoCClass *sc = ASPEED_SOC_GET_CLASS(s);
-> >       Error *err = NULL;
-> > +    char name[64];
-> >       /* IO space */
-> >       aspeed_mmio_map_unimplemented(s, SYS_BUS_DEVICE(&s->iomem), "aspeed.io",
-> > @@ -259,8 +260,8 @@ static void aspeed_soc_realize(DeviceState *dev, Error **errp)
-> >       }
-> >       /* SRAM */
-> > -    memory_region_init_ram(&s->sram, OBJECT(dev), "aspeed.sram",
-> > -                           sc->sram_size, &err);
-> > +    snprintf(name, sizeof(name), "aspeed.sram.%d", CPU(&s->cpu[0])->cpu_index);
-> > +    memory_region_init_ram(&s->sram, OBJECT(dev), name, sc->sram_size, &err);
-> >       if (err) {
-> >           error_propagate(errp, err);
-> >           return;
-> 
+Signed-off-by: Peter Delevoryas <peter@pjd.dev>
+---
+ hw/arm/aspeed.c                  | 29 +++++++++--------------------
+ hw/i2c/i2c_mux_pca954x.c         | 10 ++++++++++
+ include/hw/arm/fby35.h           | 13 +++++++++++++
+ include/hw/i2c/i2c_mux_pca954x.h | 13 +++++++++++++
+ 4 files changed, 45 insertions(+), 20 deletions(-)
+ create mode 100644 include/hw/arm/fby35.h
+
+diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
+index 6fe9b13548..bee8a748ec 100644
+--- a/hw/arm/aspeed.c
++++ b/hw/arm/aspeed.c
+@@ -793,15 +793,6 @@ static void rainier_bmc_i2c_init(AspeedMachineState *bmc)
+     create_pca9552(soc, 15, 0x60);
+ }
+ 
+-static void get_pca9548_channels(I2CBus *bus, uint8_t mux_addr,
+-                                 I2CBus **channels)
+-{
+-    I2CSlave *mux = i2c_slave_create_simple(bus, "pca9548", mux_addr);
+-    for (int i = 0; i < 8; i++) {
+-        channels[i] = pca954x_i2c_get_bus(mux, i);
+-    }
+-}
+-
+ #define TYPE_LM75 TYPE_TMP105
+ #define TYPE_TMP75 TYPE_TMP105
+ #define TYPE_TMP422 "tmp422"
+@@ -814,20 +805,18 @@ static void fuji_bmc_i2c_init(AspeedMachineState *bmc)
+     for (int i = 0; i < 16; i++) {
+         i2c[i] = aspeed_i2c_get_bus(&soc->i2c, i);
+     }
+-    I2CBus *i2c180 = i2c[2];
+-    I2CBus *i2c480 = i2c[8];
+-    I2CBus *i2c600 = i2c[11];
+ 
+-    get_pca9548_channels(i2c180, 0x70, &i2c[16]);
+-    get_pca9548_channels(i2c480, 0x70, &i2c[24]);
++    pca954x_i2c_get_channels(i2c[2], 0x70, "pca9548", &i2c[16]);
++    pca954x_i2c_get_channels(i2c[8], 0x70, "pca9548", &i2c[24]);
+     /* NOTE: The device tree skips [32, 40) in the alias numbering */
+-    get_pca9548_channels(i2c600, 0x77, &i2c[40]);
+-    get_pca9548_channels(i2c[24], 0x71, &i2c[48]);
+-    get_pca9548_channels(i2c[25], 0x72, &i2c[56]);
+-    get_pca9548_channels(i2c[26], 0x76, &i2c[64]);
+-    get_pca9548_channels(i2c[27], 0x76, &i2c[72]);
++    pca954x_i2c_get_channels(i2c[11], 0x77, "pca9548", &i2c[40]);
++    pca954x_i2c_get_channels(i2c[24], 0x71, "pca9548", &i2c[48]);
++    pca954x_i2c_get_channels(i2c[25], 0x72, "pca9548", &i2c[56]);
++    pca954x_i2c_get_channels(i2c[26], 0x76, "pca9548", &i2c[64]);
++    pca954x_i2c_get_channels(i2c[27], 0x76, "pca9548", &i2c[72]);
+     for (int i = 0; i < 8; i++) {
+-        get_pca9548_channels(i2c[40 + i], 0x76, &i2c[80 + i * 8]);
++        pca954x_i2c_get_channels(i2c[40 + i], 0x76, "pca9548",
++                                 &i2c[80 + i * 8]);
+     }
+ 
+     i2c_slave_create_simple(i2c[17], TYPE_LM75, 0x4c);
+diff --git a/hw/i2c/i2c_mux_pca954x.c b/hw/i2c/i2c_mux_pca954x.c
+index 3945de795c..6b07804546 100644
+--- a/hw/i2c/i2c_mux_pca954x.c
++++ b/hw/i2c/i2c_mux_pca954x.c
+@@ -169,6 +169,16 @@ I2CBus *pca954x_i2c_get_bus(I2CSlave *mux, uint8_t channel)
+     return pca954x->bus[channel];
+ }
+ 
++void pca954x_i2c_get_channels(I2CBus *bus, uint8_t address,
++                              const char *type_name, I2CBus **channels)
++{
++    I2CSlave *mux = i2c_slave_create_simple(bus, type_name, address);
++    Pca954xClass *pc = PCA954X_GET_CLASS(mux);
++    Pca954xState *pca954x = PCA954X(mux);
++
++    memcpy(channels, pca954x->bus, pc->nchans * sizeof(channels[0]));
++}
++
+ static void pca9546_class_init(ObjectClass *klass, void *data)
+ {
+     Pca954xClass *s = PCA954X_CLASS(klass);
+diff --git a/include/hw/arm/fby35.h b/include/hw/arm/fby35.h
+new file mode 100644
+index 0000000000..1be3ae9a38
+--- /dev/null
++++ b/include/hw/arm/fby35.h
+@@ -0,0 +1,13 @@
++/*
++ * Copyright (c) Meta Platforms, Inc. and affiliates. (http://www.meta.com)
++ *
++ * This code is licensed under the GPL version 2 or later. See the COPYING
++ * file in the top-level directory.
++ */
++
++#ifndef FBY35_H
++#define FBY35_H
++
++void oby35_cl_soc_i2c_init(AspeedSoCState *s);
++
++#endif
+diff --git a/include/hw/i2c/i2c_mux_pca954x.h b/include/hw/i2c/i2c_mux_pca954x.h
+index 3dd25ec983..3a676a30a9 100644
+--- a/include/hw/i2c/i2c_mux_pca954x.h
++++ b/include/hw/i2c/i2c_mux_pca954x.h
+@@ -16,4 +16,17 @@
+  */
+ I2CBus *pca954x_i2c_get_bus(I2CSlave *mux, uint8_t channel);
+ 
++/**
++ * Creates an i2c mux and retrieves all of the channels associated with it.
++ *
++ * @bus: the i2c bus where the i2c mux resides.
++ * @address: the address of the i2c mux on the aforementioned i2c bus.
++ * @type_name: name of the i2c mux type to create.
++ * @channels: an output parameter specifying where to return the channels.
++ *
++ * Returns: None
++ */
++void pca954x_i2c_get_channels(I2CBus *bus, uint8_t address,
++                              const char *type_name, I2CBus **channels);
++
+ #endif
+-- 
+2.37.0
+

@@ -1,227 +1,341 @@
-Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp1998101lft;
-        Sat, 2 Jul 2022 07:13:55 -0700 (PDT)
-X-Google-Smtp-Source: AGRyM1sin9bcSI0ClBzJw4z9yNFBQojnVhgk7hTRUUJ+8cjQgqp2nRTEyohnwZjQnnOg5Scfwz0O
-X-Received: by 2002:a05:620a:c4f:b0:6a7:9aa0:aaed with SMTP id u15-20020a05620a0c4f00b006a79aa0aaedmr14317929qki.785.1656771235043;
-        Sat, 02 Jul 2022 07:13:55 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1656771235; cv=none;
+Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp2038135lft;
+        Sat, 2 Jul 2022 08:29:54 -0700 (PDT)
+X-Google-Smtp-Source: AGRyM1tdeesVsIdEnXTL5F20DUzN+sD0oQ7fEOePWRy2SXrySVjKa3CoKI11eWsXXb7eWESYK1p0
+X-Received: by 2002:a81:7189:0:b0:318:396b:3949 with SMTP id m131-20020a817189000000b00318396b3949mr24310068ywc.215.1656775794653;
+        Sat, 02 Jul 2022 08:29:54 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1656775794; cv=none;
         d=google.com; s=arc-20160816;
-        b=zrWpzC/lJ3iDfxJ0TkpMhrc4N72e8rkjFdiEUKZgqW7JomURsHi0tQnMy7266+NA9X
-         YGMMVp/aPVJDwKbrpvn1FOPTPtJhEpYOlws6bf65SZJRkeTS1H94IP7L+nerHBSngxe1
-         nf9zR3vgtm512H/rmcruq4wXjrGdxUe6fm6ogzJafUyjGtjSMKG/M13cbl2bbmYxuVqU
-         9jLgvMZWs85OnfHoDqLvHGkVj6VGQhUovr51BjCnnczWl8ghavkj8vKcw17E8YUQyO69
-         yJTSZ5iJ5Da3/AAGGZdbAWeqbjLk9CKMk++tj+ANl3+9wsDjTeqmZ7RgbXB0uYJA8szc
-         BLTg==
+        b=YFcHyFmkVepF04vUnItfuWK1i2csieO+KW1uEGZv/z4V5+bAPuOVQvi6naLklGzySp
+         Eu2mgvc1q7olBX6mx1DPwI2OgtznuBcCebpvjKZkPAh1Sl5OaQunYNltd4PZ8sf6bt18
+         xwgvvA2dqfYQWOh2P+XPKUkd1EoJMJzHibnzqyqCC5p44De3foynmOFQN2OMpf7meK1W
+         FQ76RtBq5w7fSz+JgsCxsr8CT1wM2hFAzYcQ0v8jxBwZDTAyqe0mlMWf0pkvH1dOKEaM
+         TQeHk4NsNkQRHoyOqU6ruYf4J4/onuKbbkeej5J6SyP/hWL4dOgIsAbH2EwG7vnZxsIO
+         NexQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:cc:to:content-language:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=qt1IyH0suB1QexFyLE5vkIhkCj/u0kDbUbELicgxvFQ=;
-        b=xkjfjSGW9hnHue/KRlUwb8tQqbRRt/wevoJ7UNNmoB/zGfaY49QxGOIz9ctyjyChxN
-         JjuZUDKxixlncWYQIeG4UHvGgvfeqzS8g/7BXJ+lhlkMN/MU+JC5zzi4B0xz6rzNhWac
-         N5yGW5tybPMWyrVk4SkLr4SHH0bSq4MZEHd8AkxQ/cUcLmlab5qo2SmGIO7eqw7p3GGf
-         wO+WCfNKG0ZYsW1y3tWWXYOI47LMKBh7Yrpm9Y6v2sMXhHq8yAi2g6rtrnjj4YuHa2qt
-         zesDJwGGWNzBQTeI6YYLt3IaEXolsYR5O/gyui9ZMsmYxmO1qKIqYmlRjpev3OsOXkSg
-         JqXQ==
+         :list-unsubscribe:list-id:precedence:in-reply-to
+         :content-transfer-encoding:content-disposition:mime-version
+         :references:message-id:subject:cc:to:from:date:feedback-id
+         :dkim-signature:dkim-signature;
+        bh=3lDSBZe4poQh9KI0Eg9ZCmYIvOyzCGhlO1EMCxDLx1A=;
+        b=pQ7s71/ePjaZ8Z1gdF/jXz6tumSImFapjPgj+o9Iq0/ayZ8hD8AZGC1ilY7tl1I3H6
+         CYSWlJAwZoue+qdGPEQpfQatPcRAIz+PtGYoY1ULT1dXDTYB9fxxRmPWX3SDEXSSH9vx
+         SVMC7VeGS04RuujkNFumujq5T2yb693EIywwQ4rOnotZZiJcGGQIq+HIsWRrpH+yMVJC
+         qIQQmp+qvEP4+ZVSXaSZHY2oY+sumBsVPmy4TFdXG7O2vJ6fHDW/JXUEVnZuLX7vOx5a
+         REUqSLcKpCbKc599D3gFHg8Ru8R8R3VgN77A4wc6QbbFHBuyx9a/dmLGGXAKryzbAISB
+         m6kw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20210112 header.b=GYF5Ik89;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@pjd.dev header.s=fm1 header.b=U1Kzen11;
+       dkim=fail header.i=@messagingengine.com header.s=i9e814621.fm2 header.b=xmteyvkb;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id l14-20020a37f90e000000b006aee7580424si886865qkj.103.2022.07.02.07.13.54
+        by mx.google.com with ESMTPS id 23-20020a250517000000b0066e2a2e4b42si1708984ybf.370.2022.07.02.08.29.54
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 02 Jul 2022 07:13:55 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Sat, 02 Jul 2022 08:29:54 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20210112 header.b=GYF5Ik89;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:34302 helo=lists1p.gnu.org)
+       dkim=fail header.i=@pjd.dev header.s=fm1 header.b=U1Kzen11;
+       dkim=fail header.i=@messagingengine.com header.s=i9e814621.fm2 header.b=xmteyvkb;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:41114 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1o7dsg-00088N-Cj
-	for alex.bennee@linaro.org; Sat, 02 Jul 2022 10:13:54 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:48566)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1o7f4E-0005Ng-2G
+	for alex.bennee@linaro.org; Sat, 02 Jul 2022 11:29:54 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:59124)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <paolo.bonzini@gmail.com>)
- id 1o7drH-00067O-AC; Sat, 02 Jul 2022 10:12:27 -0400
-Received: from mail-ej1-x635.google.com ([2a00:1450:4864:20::635]:43830)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <paolo.bonzini@gmail.com>)
- id 1o7drD-0004aM-9H; Sat, 02 Jul 2022 10:12:27 -0400
-Received: by mail-ej1-x635.google.com with SMTP id fw3so8767224ejc.10;
- Sat, 02 Jul 2022 07:12:21 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=sender:message-id:date:mime-version:user-agent:subject
- :content-language:to:cc:references:from:in-reply-to
- :content-transfer-encoding;
- bh=qt1IyH0suB1QexFyLE5vkIhkCj/u0kDbUbELicgxvFQ=;
- b=GYF5Ik89L0oevbFHdmu0jyBKZtyihkh8sUOIKMClyHORHVj5q+KDNkJr3FJhhGaq3f
- k+hIgsqTOJLZ9tZz/DeOSgSBFmoXE7V8nRv67sNEBelc0yQbwbvmT244L0O9CsDocNjk
- Gcn1SySDI6Kl2kqa7mpo4hqdg/dWQWOOSv3dfdGyHq0J2epN2cE2YoKq9IjFVEbXcGuC
- MGuBNUQEOYrM17UHKN/9wDwS5qM0pYf8qdblUNGfp0SUNzqOhquLu7Om6NVu9V37vZSr
- BdhKMBqjINlxS/YCWREUZTGlrT3YOA8zRB/JRcco5w5LmtQVlA7gZMpO1Nb90Ekz2uKh
- kIFg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:sender:message-id:date:mime-version:user-agent
- :subject:content-language:to:cc:references:from:in-reply-to
- :content-transfer-encoding;
- bh=qt1IyH0suB1QexFyLE5vkIhkCj/u0kDbUbELicgxvFQ=;
- b=F7IBUBLKH1xaFCMkGIXbG42j4CJ3VI45m4W/Ww6GEE77dXSpdN3a44yfrH5rLXNXY4
- T4But4zrN/HTRRjAQDbBhYIpYTRLf0a+Tm2XRl2wUlplUt0ggM/JbWejp8LA/0MPU9G3
- zxbOuLxRr/7o+MRQCeGX3Bl4XVLUci9axM7x7G31/3nAwrCQJn8NWZEoVTd+m+m0fIqc
- v2A+bp9w48XL4DBqqNogyCVktXXaeLVAk9IEi63LiLi3DZxlVafjU2kK0rsXnYCWZ68t
- DW+U25ZJXtBA6eBhOYl11ZBnnAJNjE1ecMbKUbPcJcjLPVrshXpDBdeGlDTgDD9ZeKy6
- Of3w==
-X-Gm-Message-State: AJIora862I/ZQGBNHDky9+x0RQpAtmp7tPCuoidzG+BhgtuiP4vMtpV3
- kAbqHGiKlibu6AWT3xszfTg=
-X-Received: by 2002:a17:906:9b94:b0:722:f2a1:efb9 with SMTP id
- dd20-20020a1709069b9400b00722f2a1efb9mr19430901ejc.42.1656771140495; 
- Sat, 02 Jul 2022 07:12:20 -0700 (PDT)
-Received: from [192.168.242.248] (93-43-142-212.ip92.fastwebnet.it.
- [93.43.142.212]) by smtp.googlemail.com with ESMTPSA id
- u6-20020aa7d0c6000000b0043572ffafe0sm16733520edo.92.2022.07.02.07.12.15
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sat, 02 Jul 2022 07:12:20 -0700 (PDT)
-Message-ID: <f36e2069-e1d8-462d-401f-1194139ee6c2@redhat.com>
-Date: Sat, 2 Jul 2022 16:12:14 +0200
+ (Exim 4.90_1) (envelope-from <peter@pjd.dev>)
+ id 1o7f40-0005NF-O9; Sat, 02 Jul 2022 11:29:40 -0400
+Received: from wnew2-smtp.messagingengine.com ([64.147.123.27]:50127)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <peter@pjd.dev>)
+ id 1o7f3x-0002ye-P0; Sat, 02 Jul 2022 11:29:40 -0400
+Received: from compute2.internal (compute2.nyi.internal [10.202.2.46])
+ by mailnew.west.internal (Postfix) with ESMTP id 2ABBB2B04FE0;
+ Sat,  2 Jul 2022 11:29:34 -0400 (EDT)
+Received: from mailfrontend2 ([10.202.2.163])
+ by compute2.internal (MEProxy); Sat, 02 Jul 2022 11:29:34 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=pjd.dev; h=cc:cc
+ :content-transfer-encoding:content-type:date:date:from:from
+ :in-reply-to:in-reply-to:message-id:mime-version:references
+ :reply-to:sender:subject:subject:to:to; s=fm1; t=1656775773; x=
+ 1656779373; bh=3lDSBZe4poQh9KI0Eg9ZCmYIvOyzCGhlO1EMCxDLx1A=; b=U
+ 1Kzen11Qh9lQLybD6s1BBBUmPv2L8FxIA0+CgGmFrjPAvQo5hsqb5AFWf56YiLsY
+ vCAxjlWajVVXxrQ+aH+fAtVpVKj43aKUrP89nW95icM4abx9GQwQyMgRoKuRBwLd
+ hiNvTSw68YO8C/5xiXSosvMx5ohXMWHeh9q+EysZont38UBMVdyBQ2F6vzpMZgu0
+ 2jaKxV8GnypqybGuQeKzhgUKMPLnaSTAyRBNMPJoLFWUHKZsmUn6v0sUecvwOffh
+ A7LY4dghvhM5aMpnKHtbqunSpkToTV/2Q5Z3wzSS8n3k0eg86DTizce6t3uyzH3G
+ xNtt40OK4vcqMCX+9WmxQ==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+ messagingengine.com; h=cc:cc:content-transfer-encoding
+ :content-type:date:date:feedback-id:feedback-id:from:from
+ :in-reply-to:in-reply-to:message-id:mime-version:references
+ :reply-to:sender:subject:subject:to:to:x-me-proxy:x-me-proxy
+ :x-me-sender:x-me-sender:x-sasl-enc; s=i9e814621.fm2; t=
+ 1656775773; x=1656779373; bh=3lDSBZe4poQh9KI0Eg9ZCmYIvOyzCGhlO1E
+ MCxDLx1A=; b=xmteyvkbs+GsaWqDL24Xd/VOk0lqGKpVPXglNJ5Sv6t+tKG4Ew1
+ L+aVlp0Bfr53IOWnvcfMzwtidTUOqcDSwqDDsmG7lib806f8NXXHuhjliz3lhaVG
+ M+UBigpbJEsYzimrKojmoAbLcJBf/rNDGWB6akKD/Zwu3xnKmpSjW2Mh3D0h4dzn
+ 8I9xRCL4S5UMfkFQEGduSCqTcuxxllUWXFXgWQ2b5YSfotj9+Qc4BcnU5vCXYRi2
+ Ko1+QpChD3TNxyBbuPDZMO2zH19IUHwakGQAqauOg1VEgJ4AvU7bzqPyLBCA9PwS
+ mY0IO0CnMU94hE49eZuRmA30pNOHRJTd3fA==
+X-ME-Sender: <xms:XWTAYhLuQQIVEr1qKhEBVtyojcjKXdiOSI0kI6XIq9RWnH_RcjUqZQ>
+ <xme:XWTAYtKlhI4FXk7nA0TCwCWY-yqTOOGpWV4WtlDFtOvB6Fmoos6veHF03El6MzI5I
+ LEoCSyGygTEvQDA8vQ>
+X-ME-Received: <xmr:XWTAYpuebcwgom6QRbeoAVn3jRZ9E7UJrY9HzmC0dII-LJjLJkLuc11E5WkStdDwMr0yJbDeUYjqh3OTiIgYXQ>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvfedrudehhedgkeekucetufdoteggodetrfdotf
+ fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
+ uceurghilhhouhhtmecufedttdenucenucfjughrpeffhffvvefukfhfgggtugfgjgesth
+ ekredttddtudenucfhrhhomheprfgvthgvrhcuffgvlhgvvhhorhihrghsuceophgvthgv
+ rhesphhjugdruggvvheqnecuggftrfgrthhtvghrnhephfegffevudefveetgeekteeije
+ fhhfduueejvdegvdehffehjeevtefhhffffeeunecuvehluhhsthgvrhfuihiivgeptden
+ ucfrrghrrghmpehmrghilhhfrhhomhepphgvthgvrhesphhjugdruggvvh
+X-ME-Proxy: <xmx:XWTAYiY282w9FGY_YNFDP3d1roO1OtIsBcHnxm0yaSuP965enXx0yQ>
+ <xmx:XWTAYob2fwGeM_iF-aJ6o4C74iZtakAPAbRzwe3brVsjlV_kws2p1w>
+ <xmx:XWTAYmD3ZpO4UlP_OTx8hyBXIJBjwj90bJps_is_QSlMeOMo6lb1cQ>
+ <xmx:XWTAYnyuc5iC5J9tFKIj0yCIqa27Sf_aHO97UQlOetYcoIs2NPRhBD6QPRk>
+Feedback-ID: i9e814621:Fastmail
+Received: by mail.messagingengine.com (Postfix) with ESMTPA; Sat,
+ 2 Jul 2022 11:29:32 -0400 (EDT)
+Date: Sat, 2 Jul 2022 08:29:30 -0700
+From: Peter Delevoryas <peter@pjd.dev>
+To: =?iso-8859-1?Q?C=E9dric?= Le Goater <clg@kaod.org>
+Cc: Peter Delevoryas <me@pjd.dev>, peter.maydell@linaro.org,
+ andrew@aj.id.au, joel@jms.id.au, qemu-arm@nongnu.org, qemu-devel@nongnu.org
+Subject: Re: [PATCH] aspeed: Create SRAM name from first CPU index
+Message-ID: <YsBkWoTO1rW4UXjw@pdel-mbp.dhcp.thefacebook.com>
+References: <20220701180603.38408-1-me@pjd.dev>
+ <3b367b09-075e-a21b-8d24-3b2be091f816@kaod.org>
+ <Yr/tXIpUhFAU4NDM@pdel-mbp> <Yr/1jrZIwXSc+acd@pdel-mbp>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.10.0
-Subject: Re: [PATCH 00/18] Make block-backend-io.h API more consistent
-Content-Language: en-US
-To: Alberto Faria <afaria@redhat.com>, qemu-devel@nongnu.org
-Cc: Andrew Jeffery <andrew@aj.id.au>, Peter Maydell
- <peter.maydell@linaro.org>, qemu-block@nongnu.org,
- Palmer Dabbelt <palmer@dabbelt.com>, =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?=
- <f4bug@amsat.org>, qemu-ppc@nongnu.org, Eric Blake <eblake@redhat.com>,
- Vladimir Sementsov-Ogievskiy <v.sementsov-og@mail.ru>,
- Hanna Reitz <hreitz@redhat.com>, John Snow <jsnow@redhat.com>,
- Stefan Hajnoczi <stefanha@redhat.com>, Jeff Cody <codyprime@gmail.com>,
- qemu-riscv@nongnu.org, =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>,
- Joel Stanley <joel@jms.id.au>, Stefan Weil <sw@weilnetz.de>,
- Laurent Vivier <laurent@vivier.eu>, "Denis V. Lunev" <den@openvz.org>,
- Juan Quintela <quintela@redhat.com>,
- "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
- Niek Linnenbank <nieklinnenbank@gmail.com>, Greg Kurz <groug@kaod.org>,
- Daniel Henrique Barboza <danielhb413@gmail.com>,
- Kevin Wolf <kwolf@redhat.com>, "Edgar E. Iglesias"
- <edgar.iglesias@gmail.com>, qemu-arm@nongnu.org, Fam Zheng <fam@euphon.net>,
- Alistair Francis <alistair@alistair23.me>,
- Beniamino Galvani <b.galvani@gmail.com>, Bin Meng <bin.meng@windriver.com>,
- David Gibson <david@gibson.dropbear.id.au>
-References: <20220517113524.197910-1-afaria@redhat.com>
-From: Paolo Bonzini <pbonzini@redhat.com>
-In-Reply-To: <20220517113524.197910-1-afaria@redhat.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::635;
- envelope-from=paolo.bonzini@gmail.com; helo=mail-ej1-x635.google.com
-X-Spam_score_int: -14
-X-Spam_score: -1.5
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <Yr/1jrZIwXSc+acd@pdel-mbp>
+Received-SPF: pass client-ip=64.147.123.27; envelope-from=peter@pjd.dev;
+ helo=wnew2-smtp.messagingengine.com
+X-Spam_score_int: -12
+X-Spam_score: -1.3
 X-Spam_bar: -
-X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249, NICE_REPLY_A=-0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
+X-Spam_report: (-1.3 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ FROM_FMBLA_NEWDOM=1.498, RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: o5OjSlOIvB33
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: gmUvVct5DZwZ
 
-On 5/17/22 13:35, Alberto Faria wrote:
-> Adjust existing pairs of non-coroutine and coroutine functions to share
-> the same calling convention, and add non-coroutine/coroutine
-> counterparts where they don't exist.
+On Sat, Jul 02, 2022 at 12:36:46AM -0700, Peter Delevoryas wrote:
+> On Sat, Jul 02, 2022 at 12:01:48AM -0700, Peter Delevoryas wrote:
+> > On Sat, Jul 02, 2022 at 08:01:14AM +0200, Cédric Le Goater wrote:
+> > > On 7/1/22 20:06, Peter Delevoryas wrote:
+> > > > To support multiple SoC's running simultaneously, we need a unique name for
+> > > > each RAM region. DRAM is created by the machine, but SRAM is created by the
+> > > > SoC, since in hardware it is part of the SoC's internals.
+> > > > 
+> > > > We need a way to uniquely identify each SRAM region though, for VM
+> > > > migration. Since each of the SoC's CPU's has an index which identifies it
+> > > > uniquely from other CPU's in the machine, we can use the index of any of the
+> > > > CPU's in the SoC to uniquely identify differentiate the SRAM name from other
+> > > > SoC SRAM's. In this change, I just elected to use the index of the first CPU
+> > > > in each SoC.
+> > > 
+> > > hopefully the index is allocated. Did you check ?
+> > 
+> > You mean the CpuState.cpu_index? I think it's allocated at this point, I
+> > actually had to do some debugging just to get it working cause I typo'd the
+> > CPU(...) cast at first. I also tried it with the multi-SoC board in your
+> > aspeed-7.1 branch:
+> > 
+> > (qemu) qom-get /machine/bmc aspeed.sram.0[0]
+> > "/machine/bmc/aspeed.sram.0[0]"
+> > (qemu) qom-get /machine/unattached aspeed.sram.2[0]
+> > "/machine/unattached/aspeed.sram.2[0]"
+> > 
+> > I think the SRAM in the ast1030 is initialized without a parent object
+> > (memory_region_init_ram(..., NULL, ...)) so that's why it's in the unattached
+> > area. But we could fix that, maybe I should send a v2 with that too?
+> > 
+> > > 
+> > > 
+> > > > Signed-off-by: Peter Delevoryas <me@pjd.dev>
+> > > > ---
+> > > >   hw/arm/aspeed_ast10x0.c | 5 ++++-
+> > > >   hw/arm/aspeed_ast2600.c | 5 +++--
+> > > >   hw/arm/aspeed_soc.c     | 5 +++--
+> > > >   3 files changed, 10 insertions(+), 5 deletions(-)
+> > > > 
+> > > > diff --git a/hw/arm/aspeed_ast10x0.c b/hw/arm/aspeed_ast10x0.c
+> > > > index 33ef331771..b6b6f0d053 100644
+> > > > --- a/hw/arm/aspeed_ast10x0.c
+> > > > +++ b/hw/arm/aspeed_ast10x0.c
+> > > > @@ -159,6 +159,7 @@ static void aspeed_soc_ast1030_realize(DeviceState *dev_soc, Error **errp)
+> > > >       DeviceState *armv7m;
+> > > >       Error *err = NULL;
+> > > >       int i;
+> > > > +    char name[64];
+> > > >       if (!clock_has_source(s->sysclk)) {
+> > > >           error_setg(errp, "sysclk clock must be wired up by the board code");
+> > > > @@ -183,7 +184,9 @@ static void aspeed_soc_ast1030_realize(DeviceState *dev_soc, Error **errp)
+> > > >       sysbus_realize(SYS_BUS_DEVICE(&s->armv7m), &error_abort);
+> > > >       /* Internal SRAM */
+> > > > -    memory_region_init_ram(&s->sram, NULL, "aspeed.sram", sc->sram_size, &err);
+> > > > +    snprintf(name, sizeof(name), "aspeed.sram.%d",
+> > > > +             CPU(s->armv7m.cpu)->cpu_index);
+> > > > +    memory_region_init_ram(&s->sram, NULL, name, sc->sram_size, &err);
+> > > >       if (err != NULL) {
+> > > >           error_propagate(errp, err);
+> > > >           return;
+> > > > diff --git a/hw/arm/aspeed_ast2600.c b/hw/arm/aspeed_ast2600.c
+> > > > index 3f0611ac11..7efb9f888a 100644
+> > > > --- a/hw/arm/aspeed_ast2600.c
+> > > > +++ b/hw/arm/aspeed_ast2600.c
+> > > > @@ -276,6 +276,7 @@ static void aspeed_soc_ast2600_realize(DeviceState *dev, Error **errp)
+> > > >       AspeedSoCClass *sc = ASPEED_SOC_GET_CLASS(s);
+> > > >       Error *err = NULL;
+> > > >       qemu_irq irq;
+> > > > +    char name[64];
+> > > 
+> > > May be ?
+> > > 
+> > >      g_autofree char *sram_name =
+> > >             g_strdup_printf("aspeed.sram.%d", CPU(&s->cpu[0])->cpu_index);
+> > 
+> > Hmmm yeah sure why not, I can fix the unattached AST1030 SRAM too. I always
+> > wanted to use g_autofree some day hehe.
 > 
-> Also make the non-coroutine versions generated_co_wrappers.
-> 
-> This series sits on top of "[PATCH v2 00/10] Implement bdrv_{pread,
-> pwrite, pwrite_sync, pwrite_zeroes}() using generated_co_wrapper":
-> 
->      https://lore.kernel.org/qemu-devel/20220513155418.2486450-1-afaria@redhat.com/
+> Actually, can't do this: cpu_index is _not_ initialized at this point (the start
+> of the function). armv7m needs to be realized first in the ast1030, cpu[]'s need
+> to be realized in other SoC's. I don't think it would be preferable to move the
+> autofree statement lower because the convention is to put declarations at the
+> start of the enclosing block, let me know if you have another idea though.
 
-Alberto, does this need a rebase?
+Disregard this comment I made, we can use autofree here, we should just
+initialize the pointer later in the function. I was curious if
+__attribute__((cleanup)) handles this properly, and it does, based on the macOS
+"leaks" leak detector:
 
-Paolo
+Without g_autofree:
 
-> Based-on: <20220513155418.2486450-1-afaria@redhat.com>
-> 
-> Alberto Faria (18):
->    block: Make blk_{pread,pwrite}() return 0 on success
->    block: Add a 'flags' param to blk_pread()
->    block: Change blk_{pread,pwrite}() param order
->    block: Make 'bytes' param of blk_{pread,pwrite}() an int64_t
->    block: Make blk_co_pwrite() take a const buffer
->    block: Implement blk_{pread,pwrite}() using generated_co_wrapper
->    block: Add blk_{preadv,pwritev}()
->    block: Add blk_[co_]preadv_part()
->    block: Export blk_pwritev_part() in block-backend-io.h
->    block: Change blk_pwrite_compressed() param order
->    block: Add blk_co_pwrite_compressed()
->    block: Implement blk_pwrite_zeroes() using generated_co_wrapper
->    block: Implement blk_pdiscard() using generated_co_wrapper
->    block: Implement blk_flush() using generated_co_wrapper
->    block: Add blk_co_ioctl()
->    block: Add blk_co_truncate()
->    block: Reorganize some declarations in block-backend-io.h
->    block: Remove remaining unused symbols in coroutines.h
-> 
->   block.c                           |  10 +-
->   block/block-backend.c             | 150 ++++++++++++------------------
->   block/commit.c                    |   4 +-
->   block/coroutines.h                |  44 ---------
->   block/crypto.c                    |   2 +-
->   block/export/fuse.c               |   4 +-
->   block/meson.build                 |   1 +
->   block/parallels.c                 |   2 +-
->   block/qcow.c                      |  14 +--
->   block/qcow2.c                     |   4 +-
->   block/qed.c                       |   8 +-
->   block/vdi.c                       |   4 +-
->   block/vhdx.c                      |  20 ++--
->   block/vmdk.c                      |  10 +-
->   block/vpc.c                       |  12 +--
->   hw/arm/allwinner-h3.c             |   2 +-
->   hw/arm/aspeed.c                   |   2 +-
->   hw/block/block.c                  |   2 +-
->   hw/block/fdc.c                    |  20 ++--
->   hw/block/hd-geometry.c            |   2 +-
->   hw/block/m25p80.c                 |   2 +-
->   hw/block/nand.c                   |  47 +++++-----
->   hw/block/onenand.c                |  32 +++----
->   hw/block/pflash_cfi01.c           |   4 +-
->   hw/block/pflash_cfi02.c           |   4 +-
->   hw/ide/atapi.c                    |   4 +-
->   hw/misc/mac_via.c                 |   6 +-
->   hw/misc/sifive_u_otp.c            |  14 +--
->   hw/nvram/eeprom_at24c.c           |   8 +-
->   hw/nvram/spapr_nvram.c            |  16 ++--
->   hw/nvram/xlnx-bbram.c             |   4 +-
->   hw/nvram/xlnx-efuse.c             |   4 +-
->   hw/ppc/pnv_pnor.c                 |   6 +-
->   hw/sd/sd.c                        |   4 +-
->   include/sysemu/block-backend-io.h | 105 ++++++++++++---------
->   migration/block.c                 |   8 +-
->   nbd/server.c                      |   8 +-
->   qemu-img.c                        |  33 +++----
->   qemu-io-cmds.c                    |  20 ++--
->   tests/unit/test-block-iothread.c  | 141 ++++++++++++++++++++++++++--
->   40 files changed, 433 insertions(+), 354 deletions(-)
-> 
+    $ leaks --atExit --  ./build/qemu-system-arm -machine fby35 -drive file=fby35.mtd,format=raw,if=mtd -device loader,file=Y35B
+    CL.elf,addr=0,cpu-num=2 -serial pty -serial pty -serial mon:stdio -display none -S
+    char device redirected to /dev/ttys007 (label serial0)
+    char device redirected to /dev/ttys009 (label serial1)
+    qemu-system-arm: warning: Aspeed iBT has no chardev backend
+    QEMU 7.0.50 monitor - type 'help' for more information
+    (qemu) q
+    Process:         qemu-system-arm [64263]
+    Path:            /Users/USER/*/qemu-system-arm
+    Load Address:    0x10f181000
+    Identifier:      qemu-system-arm
+    Version:         ???
+    Code Type:       X86-64
+    Platform:        macOS
+    Parent Process:  leaks [64262]
 
+    Date/Time:       2022-07-02 08:22:43.852 -0700
+    Launch Time:     2022-07-02 08:22:42.125 -0700
+    OS Version:      macOS 12.4 (21F79)
+    Report Version:  7
+    Analysis Tool:   /usr/bin/leaks
+
+    Physical footprint:         443.5M
+    Physical footprint (peak):  546.2M
+    ----
+
+    leaks Report Version: 4.0
+    Process 64263: 62375 nodes malloced for 300124 KB
+    Process 64263: 1 leak for 128 total leaked bytes.
+
+        1 (128 bytes) ROOT LEAK: 0x600003b8ea00 [128]  length: 13  "aspeed.sram.2"
+
+With g_autofree:
+
+    $ leaks --atExit --  ./build/qemu-system-arm -machine fby35 -drive file=fby35.mtd,format=raw,if=mtd -device loader,file=Y35BCL.elf,addr=0,cpu-num=2 -serial pty -serial pty -serial mon:stdio -display none -S
+    char device redirected to /dev/ttys007 (label serial0)
+    char device redirected to /dev/ttys009 (label serial1)
+    qemu-system-arm: warning: Aspeed iBT has no chardev backend
+    QEMU 7.0.50 monitor - type 'help' for more information
+    (qemu) q
+    Process:         qemu-system-arm [65015]
+    Path:            /Users/USER/*/qemu-system-arm
+    Load Address:    0x10edf7000
+    Identifier:      qemu-system-arm
+    Version:         ???
+    Code Type:       X86-64
+    Platform:        macOS
+    Parent Process:  leaks [65014]
+
+    Date/Time:       2022-07-02 08:23:13.748 -0700
+    Launch Time:     2022-07-02 08:23:12.285 -0700
+    OS Version:      macOS 12.4 (21F79)
+    Report Version:  7
+    Analysis Tool:   /usr/bin/leaks
+
+    Physical footprint:         438.6M
+    Physical footprint (peak):  547.0M
+    ----
+
+    leaks Report Version: 4.0
+    Process 65015: 62154 nodes malloced for 299904 KB
+    Process 65015: 0 leaks for 0 total leaked bytes.
+
+So I'll send a v2 using g_autofree and g_strdup_printf.
+
+> 
+> > 
+> > > 
+> > > 
+> > > Thanks,
+> > > 
+> > > C.
+> > > 
+> > > 
+> > > >       /* IO space */
+> > > >       aspeed_mmio_map_unimplemented(s, SYS_BUS_DEVICE(&s->iomem), "aspeed.io",
+> > > > @@ -335,8 +336,8 @@ static void aspeed_soc_ast2600_realize(DeviceState *dev, Error **errp)
+> > > >       }
+> > > >       /* SRAM */
+> > > > -    memory_region_init_ram(&s->sram, OBJECT(dev), "aspeed.sram",
+> > > > -                           sc->sram_size, &err);
+> > > > +    snprintf(name, sizeof(name), "aspeed.sram.%d", CPU(&s->cpu[0])->cpu_index);
+> > > > +    memory_region_init_ram(&s->sram, OBJECT(dev), name, sc->sram_size, &err);
+> > > >       if (err) {
+> > > >           error_propagate(errp, err);
+> > > >           return;
+> > > > diff --git a/hw/arm/aspeed_soc.c b/hw/arm/aspeed_soc.c
+> > > > index 0f675e7fcd..1ddba33d2a 100644
+> > > > --- a/hw/arm/aspeed_soc.c
+> > > > +++ b/hw/arm/aspeed_soc.c
+> > > > @@ -239,6 +239,7 @@ static void aspeed_soc_realize(DeviceState *dev, Error **errp)
+> > > >       AspeedSoCState *s = ASPEED_SOC(dev);
+> > > >       AspeedSoCClass *sc = ASPEED_SOC_GET_CLASS(s);
+> > > >       Error *err = NULL;
+> > > > +    char name[64];
+> > > >       /* IO space */
+> > > >       aspeed_mmio_map_unimplemented(s, SYS_BUS_DEVICE(&s->iomem), "aspeed.io",
+> > > > @@ -259,8 +260,8 @@ static void aspeed_soc_realize(DeviceState *dev, Error **errp)
+> > > >       }
+> > > >       /* SRAM */
+> > > > -    memory_region_init_ram(&s->sram, OBJECT(dev), "aspeed.sram",
+> > > > -                           sc->sram_size, &err);
+> > > > +    snprintf(name, sizeof(name), "aspeed.sram.%d", CPU(&s->cpu[0])->cpu_index);
+> > > > +    memory_region_init_ram(&s->sram, OBJECT(dev), name, sc->sram_size, &err);
+> > > >       if (err) {
+> > > >           error_propagate(errp, err);
+> > > >           return;
+> > > 

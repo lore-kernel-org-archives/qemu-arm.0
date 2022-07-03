@@ -1,103 +1,103 @@
-Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp2433580lft;
-        Sun, 3 Jul 2022 01:25:06 -0700 (PDT)
-X-Google-Smtp-Source: AGRyM1tcnzfrdxP+o1tjlt7r5Fwfl/2xHgAdLVbALnQ43yv+y/4hX/Zl1MUpH9ZIDDHxog8Rd+vt
-X-Received: by 2002:a0d:d685:0:b0:317:73f9:ebac with SMTP id y127-20020a0dd685000000b0031773f9ebacmr26872998ywd.232.1656836705920;
-        Sun, 03 Jul 2022 01:25:05 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1656836705; cv=none;
+Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp2433731lft;
+        Sun, 3 Jul 2022 01:25:33 -0700 (PDT)
+X-Google-Smtp-Source: AGRyM1u7bjZG+l2n8KHSjFCx3f7ihqOcOCNKRd2G4KmgWFSSnF5bNjbAer8emnAPxaojuqRaAxs0
+X-Received: by 2002:a81:6b0a:0:b0:31c:827c:9388 with SMTP id g10-20020a816b0a000000b0031c827c9388mr5988729ywc.181.1656836733206;
+        Sun, 03 Jul 2022 01:25:33 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1656836733; cv=none;
         d=google.com; s=arc-20160816;
-        b=zVC4hM7hieAvc4ly0PVLJTQKigRZRbt/TShQ6fBT/B+Y7zyZkpu7M0ZOlnOD8Kt1n1
-         T20tQ0Z2Zq88UPg4eFh66uSh1nSY7eMETur91wUWwfC9r0vzMHcqAerXBCL6eVJRjbqj
-         zZbFki+29run9IEbjg3HjTG/IQMvtFF+IGnw2+dEB9t04uqq3MWqpESbjDsq27jYMqhS
-         g5au1Tl7vML7ZN2AcoW4Z1OvaRUV3lToGTwgGEfPre6K2z9Kgwsg8pFuH3H9aJfV5SlN
-         ViGEUHiDiIhm05jmXGMateIN8QcYZiSnRojCIm08V8OH/Tt5MLNSomjSLl9VOMX0v/aU
-         TJ2Q==
+        b=m72YKWFSKDvtVPniSUhem9//yJ5ABpHPA7bdU6YIJ5dwG5TN1w5bjTcRWFDUTypIma
+         7c8UpZfedJu2mKQRpS6Nv8FkIcYyLAe3lkr8S5uU9wmZcMR7MRoH2CQYWHbuITTjXv4q
+         aAcDfQ2Nsha0uRJkoL1yZ/3BYRrdglje9gJVh6eJsV94/sPAWmO2v6SETXSAx/lnrmu3
+         v2o1mVXp4kUWwQcV+UV0U6NIqGXOu3WlcBvDtStl8jPmoppBfItveKC6o2zFnbjbgeJ5
+         ziHr48q9Rcimb0N7Rqwuq0o6mgFYbd01GoWTwUwnKO6idojGOFKFNuBeZEbD4H2NFQIe
+         VDaw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=vbeQfFOZRxgjST6VhHPHw0Aocd+Vk/eMVmhwzhfwMAo=;
-        b=O/4NbJiy2sy70x2WG7FwPjJO64qWpkt5eGhT/3dwX+mZy02QAFja4PcwFz8pfp43MM
-         Lg953FxdX+5VEmUTrAI56joJA2eGOOONgn7gMjXClkTGuIbfa8JaneTKM7F1L/LhnP5u
-         MNeRQRyLleVFFP9whhyg/m2KWIp5YO+ndFfRZ/Ptw9TeCoy7u0yx80grqRi69wn52Y41
-         nknl7KvLV/iZ6Apl2+X5bLY7Rf9HR2ww3JbL6yInccAWCd9CjxxFSDoy4lwkQXmhyJ/I
-         owvcvZgGW9b0Ri26jDHOxH9qIC2UGRPNb+gBgm9GqneZg3/C1Dzz38Gvgv0rAhcfdo9u
-         ezMg==
+        bh=DdLOiptFXL9CcnkCotyXYaThQ0hCVa+9TlUHODJFgEk=;
+        b=rw0eTfeL0kvI+LLsfXvoaksJMcF4RnPx+3qHXGnjiF4SPAF0psye535Np6lf5tunZA
+         pt9GZO28TYvk8Ayw10e5PNC9Yo/mAiVboyuiM+7RYsbAlOD/A3nVD5TKJc17An4zsROz
+         7ykkBx2frlpV8gAtBxOpwYNgXO/hfi4dQoHMteHbvsN3JXg4QtDfX+rXTT2mXtovCPal
+         XfEJ72VelCo1Ft3B6oe8GEnrCext9XRGGCLY7PIl/WwxmPScKlKx3QQqRJoHx+cfPX26
+         p/Y670pE7qeWo1zIqISQdm5JWKMUgz5BlXZ4LC5PMrYoGszLgby/0QuuK3cAdcWJ5gW0
+         KN5Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=IZFadF2J;
+       dkim=pass header.i=@linaro.org header.s=google header.b=VecQKocG;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e4-20020a25b044000000b0065cabbe7127si40482245ybj.123.2022.07.03.01.25.05
+        by mx.google.com with ESMTPS id 62-20020a251241000000b0066cb7df7337si28130123ybs.500.2022.07.03.01.25.33
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 03 Jul 2022 01:25:05 -0700 (PDT)
+        Sun, 03 Jul 2022 01:25:33 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=IZFadF2J;
+       dkim=pass header.i=@linaro.org header.s=google header.b=VecQKocG;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:58820 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:59870 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1o7uuf-0006Lr-B4
-	for alex.bennee@linaro.org; Sun, 03 Jul 2022 04:25:05 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:52430)
+	id 1o7uv6-00076s-Gt
+	for alex.bennee@linaro.org; Sun, 03 Jul 2022 04:25:32 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:52392)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1o7uuA-0006HC-V6
- for qemu-arm@nongnu.org; Sun, 03 Jul 2022 04:24:34 -0400
-Received: from mail-pg1-x536.google.com ([2607:f8b0:4864:20::536]:41883)
+ id 1o7uu9-0006EB-5d
+ for qemu-arm@nongnu.org; Sun, 03 Jul 2022 04:24:33 -0400
+Received: from mail-pl1-x635.google.com ([2607:f8b0:4864:20::635]:36861)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1o7uu9-0005o3-91
- for qemu-arm@nongnu.org; Sun, 03 Jul 2022 04:24:34 -0400
-Received: by mail-pg1-x536.google.com with SMTP id 23so6238225pgc.8
- for <qemu-arm@nongnu.org>; Sun, 03 Jul 2022 01:24:32 -0700 (PDT)
+ id 1o7uu6-0005nb-KA
+ for qemu-arm@nongnu.org; Sun, 03 Jul 2022 04:24:32 -0400
+Received: by mail-pl1-x635.google.com with SMTP id m2so6033051plx.3
+ for <qemu-arm@nongnu.org>; Sun, 03 Jul 2022 01:24:30 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=vbeQfFOZRxgjST6VhHPHw0Aocd+Vk/eMVmhwzhfwMAo=;
- b=IZFadF2JtOwSikHfzQhBY1cZBZ3jjvQ1v5FyHvncvCFiKugtcp1mkbottcr73UE5wF
- /jL7fLaCRlPhYUQ1a6oFjNlMEh9goQW67mviJ0esESdRGlNfWYZF+pVrMKmYIT0h5xlw
- E5ROtB57nvNN0+8m9n330ixsDtPpKaU1hWLGR2cjTT0wIOo71JvN0G2dYt7I5JuXXxcZ
- QjLGpIUYzCeSNqjFaKVK6mNWXnV8eu3wtzgduy/lVz7qw4fTu0uLDX6s7OYaJAhWLEJ3
- uNDd23W3ELgDP4BoBpACw/K+/f7xCmXmyfpXTj9btDKitVNuVqJKLfKq8JYu+OHfStP8
- x40g==
+ bh=DdLOiptFXL9CcnkCotyXYaThQ0hCVa+9TlUHODJFgEk=;
+ b=VecQKocG1eKt0ihSygv1Rk7I8ZZdEo1pjTU903hoX144uKNnS9ciuF/CWSsMAHOgNv
+ 7h6Sb/YDUZy1qD/alplytzYFpx10HALTx54zzbXZ9NwJ/OemghMpJmF81ZhCXqosZ4Ow
+ xS3Y0GQAIsSAhi9IxFNGy0AbAT7WBoZYRSkRDLxaxpLhz/MwhQR/8lpQxae+lLi60/ap
+ N/nAoXykVzZwzSLfQGCpS65T4o1cv3STXyx+bADTGuEC1lvF+kTnSckfsSC+NBSp1RAp
+ GpVBwmbY+j98//xEaFMRfGC73oL76ct1xjv6vSpI/We+Q2aSZxDctGr7nLkm01yDep8V
+ PLEg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=vbeQfFOZRxgjST6VhHPHw0Aocd+Vk/eMVmhwzhfwMAo=;
- b=UoWgc+1HeiKM2PQdKp9jI0htAdLeSm0Ps4KDvXBf4LNN/1pYMFU4LhXExAmptFai8t
- nzd1z8XQ0BwgGfwgugpE1t1qtsmckTGDLv2Vu+i8pOrnCtD29Z/DhP1dIH5L7nkEP48q
- LKrK8GmkhJfggY8lDnJSdzccN4/N1IJ4jXyjg7BK7n65W9rTM0NqFF7J/+rIa79kylKX
- 9VNelHuLAsjajIX0ejhbK1cl7EOFp0L9goCVhuOb6HwnFKce85z9WUfepUm7cdoo6Tuh
- DJRC33YFSNVf+fOLNaJMNULsXPOs5dT6ZF41Rgqgm7RX9pdKOVUoaUZAHaSspOlalERq
- dCCw==
-X-Gm-Message-State: AJIora/JtfAqgaDqbl3u36xceHj1F/38fEdBX9Wqg+eUTH7pv6hyVfkx
- KchytH46oXXULu4F3+kXZW2OSn+3thvJc5sl
-X-Received: by 2002:a63:6cc8:0:b0:40d:e553:f200 with SMTP id
- h191-20020a636cc8000000b0040de553f200mr19271338pgc.166.1656836671862; 
- Sun, 03 Jul 2022 01:24:31 -0700 (PDT)
+ bh=DdLOiptFXL9CcnkCotyXYaThQ0hCVa+9TlUHODJFgEk=;
+ b=19F1xsd0cxaq9hxxzivpfVlJ03Fc6WJSFg0wdOQ1G4OQzYawSqrTHPFvtq8ndrPZ7t
+ Tb0dHBd2pg9BldosbLv9ubSthhFbDCaB7pbv272v9BNeywDrh/7SGa3j0pKzeroGwASk
+ f/vVnd7Xxpt1C0zgWIC1CTNDFqBQUT8XpUbPFHIatY9gCCZFtEEw9hGtjTZzEKsCxhct
+ Raa4aH5Djkt/aNjBL+lsdDmnBNmWeD6OtFEBFnWXv872W4iAP5bgcduyE7slWhB3pO5l
+ 56+bznpq1aq0YymSI7QQrh9BGuLB+VaBYDnW5xFnXLZp88vP9xS4YIWzch1y6UjqgN4+
+ caow==
+X-Gm-Message-State: AJIora/5/+W18tCz6VovLUuzHy4yc/BSjHjVx+NlSdyoAaxJIG1zqroe
+ kwo1f6stK+Ulc1+pxv9B0Tj/3Bx8dMp32t9f
+X-Received: by 2002:a17:90b:3ec7:b0:1ed:ded:abd1 with SMTP id
+ rm7-20020a17090b3ec700b001ed0dedabd1mr26943209pjb.56.1656836669229; 
+ Sun, 03 Jul 2022 01:24:29 -0700 (PDT)
 Received: from stoup.. ([122.255.60.245]) by smtp.gmail.com with ESMTPSA id
- im22-20020a170902bb1600b0016a3f9e528asm13569112plb.57.2022.07.03.01.24.29
+ im22-20020a170902bb1600b0016a3f9e528asm13569112plb.57.2022.07.03.01.24.26
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 03 Jul 2022 01:24:31 -0700 (PDT)
+ Sun, 03 Jul 2022 01:24:28 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org
-Subject: [PATCH 02/62] target/arm: Enable PageEntryExtra
-Date: Sun,  3 Jul 2022 13:53:19 +0530
-Message-Id: <20220703082419.770989-3-richard.henderson@linaro.org>
+Subject: [PATCH 01/62] accel/tcg: Introduce PageEntryExtra
+Date: Sun,  3 Jul 2022 13:53:18 +0530
+Message-Id: <20220703082419.770989-2-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20220703082419.770989-1-richard.henderson@linaro.org>
 References: <20220703082419.770989-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::536;
- envelope-from=richard.henderson@linaro.org; helo=mail-pg1-x536.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::635;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x635.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -119,90 +119,231 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: jvHrIgTWN8Kb
+X-TUID: JrXEVxDGwBL/
 
-Copy attrs, sharability, and the NS bit into the TLB.
+Add an optional structure, controlled by TARGET_PAGE_ENTRY_EXTRA,
+that allows arbitrary extra data to be saved in the TLB for a
+given page.  Set it with tlb_set_page_with_extra() and fetch it
+with probe_access_extra().
 
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/cpu-param.h  |  8 ++++++++
- target/arm/internals.h  |  5 +++++
- target/arm/tlb_helper.c | 14 ++++++++++++--
- 3 files changed, 25 insertions(+), 2 deletions(-)
+ include/exec/cpu-defs.h |  5 +++
+ include/exec/exec-all.h | 26 +++++++++++++--
+ include/qemu/typedefs.h |  1 +
+ accel/tcg/cputlb.c      | 73 ++++++++++++++++++++++++++++++-----------
+ 4 files changed, 84 insertions(+), 21 deletions(-)
 
-diff --git a/target/arm/cpu-param.h b/target/arm/cpu-param.h
-index 68ffb12427..a14f167d11 100644
---- a/target/arm/cpu-param.h
-+++ b/target/arm/cpu-param.h
-@@ -30,6 +30,14 @@
-  */
- # define TARGET_PAGE_BITS_VARY
- # define TARGET_PAGE_BITS_MIN  10
-+/*
-+ * Extra information stored in softmmu page tables.
+diff --git a/include/exec/cpu-defs.h b/include/exec/cpu-defs.h
+index ba3cd32a1e..f14586e219 100644
+--- a/include/exec/cpu-defs.h
++++ b/include/exec/cpu-defs.h
+@@ -76,6 +76,10 @@ typedef uint64_t target_ulong;
+ 
+ #if !defined(CONFIG_USER_ONLY) && defined(CONFIG_TCG)
+ 
++#ifndef TARGET_PAGE_ENTRY_EXTRA
++struct PageEntryExtra { };
++#endif
++
+ /* use a fully associative victim tlb of 8 entries */
+ #define CPU_VTLB_SIZE 8
+ 
+@@ -148,6 +152,7 @@ typedef struct CPUIOTLBEntry {
+      */
+     hwaddr addr;
+     MemTxAttrs attrs;
++    PageEntryExtra extra;
+ } CPUIOTLBEntry;
+ 
+ /*
+diff --git a/include/exec/exec-all.h b/include/exec/exec-all.h
+index 311e5fb422..2c036de3d8 100644
+--- a/include/exec/exec-all.h
++++ b/include/exec/exec-all.h
+@@ -259,11 +259,12 @@ void tlb_flush_range_by_mmuidx_all_cpus_synced(CPUState *cpu,
+                                                unsigned bits);
+ 
+ /**
+- * tlb_set_page_with_attrs:
++ * tlb_set_page_with_extra:
+  * @cpu: CPU to add this TLB entry for
+  * @vaddr: virtual address of page to add entry for
+  * @paddr: physical address of the page
+  * @attrs: memory transaction attributes
++ * @extra: cpu specific extra information
+  * @prot: access permissions (PAGE_READ/PAGE_WRITE/PAGE_EXEC bits)
+  * @mmu_idx: MMU index to insert TLB entry for
+  * @size: size of the page in bytes
+@@ -279,11 +280,25 @@ void tlb_flush_range_by_mmuidx_all_cpus_synced(CPUState *cpu,
+  * At most one entry for a given virtual address is permitted. Only a
+  * single TARGET_PAGE_SIZE region is mapped; the supplied @size is only
+  * used by tlb_flush_page.
++ *
++ * The @extra information is target-specific, and may be retrieved
++ * by calling probe_access_extra().
 + */
-+# define TARGET_PAGE_ENTRY_EXTRA
-+struct PageEntryExtra {
-+    /* See PAGEENTRYEXTRA fields in cpu.h */
-+    uint64_t x;
-+};
- #endif
- 
- #define NB_MMU_MODES 15
-diff --git a/target/arm/internals.h b/target/arm/internals.h
-index c66f74a0db..2b38a83574 100644
---- a/target/arm/internals.h
-+++ b/target/arm/internals.h
-@@ -74,6 +74,11 @@ FIELD(V7M_EXCRET, DCRS, 5, 1)
- FIELD(V7M_EXCRET, S, 6, 1)
- FIELD(V7M_EXCRET, RES1, 7, 25) /* including the must-be-1 prefix */
- 
-+/* Bit definitions for PageEntryExtra */
-+FIELD(PAGEENTRYEXTRA, ATTRS, 0, 8)
-+FIELD(PAGEENTRYEXTRA, SHAREABILITY, 8, 2)
-+FIELD(PAGEENTRYEXTRA, PA, 12, 52)
++void tlb_set_page_with_extra(CPUState *cpu, target_ulong vaddr, hwaddr paddr,
++                             MemTxAttrs attrs, PageEntryExtra extra,
++                             int prot, int mmu_idx, target_ulong size);
 +
- /* Minimum value which is a magic number for exception return */
- #define EXC_RETURN_MIN_MAGIC 0xff000000
- /* Minimum number which is a magic number for function or exception return
-diff --git a/target/arm/tlb_helper.c b/target/arm/tlb_helper.c
-index 7d8a86b3c4..9de3099153 100644
---- a/target/arm/tlb_helper.c
-+++ b/target/arm/tlb_helper.c
-@@ -226,21 +226,31 @@ bool arm_cpu_tlb_fill(CPUState *cs, vaddr address, int size,
-                         &phys_addr, &attrs, &prot, &page_size,
-                         &fi, &cacheattrs);
-     if (likely(!ret)) {
-+        PageEntryExtra extra = {};
-+
-         /*
-          * Map a single [sub]page. Regions smaller than our declared
-          * target page size are handled specially, so for those we
--         * pass in the exact addresses.
-+         * pass in the exact addresses.  This only happens for M-profile,
-+         * which does not use or require PageEntryExtra.
-          */
-         if (page_size >= TARGET_PAGE_SIZE) {
-             phys_addr &= TARGET_PAGE_MASK;
-             address &= TARGET_PAGE_MASK;
-+
-+            /* Record some particulars for later lookup. */
-+            extra.x = phys_addr;
-+            extra.x = FIELD_DP64(extra.x, PAGEENTRYEXTRA, ATTRS,
-+                                 cacheattrs.attrs);
-+            extra.x = FIELD_DP64(extra.x, PAGEENTRYEXTRA, SHAREABILITY,
-+                                 cacheattrs.shareability);
-         }
-         /* Notice and record tagged memory. */
-         if (cpu_isar_feature(aa64_mte, cpu) && cacheattrs.attrs == 0xf0) {
-             arm_tlb_mte_tagged(&attrs) = true;
-         }
++/**
++ * tlb_set_page_with_attrs:
++ *
++ * This function is equivalent to calling tlb_set_page_with_extra()
++ * with an @extra argument of all zeros.
+  */
+ void tlb_set_page_with_attrs(CPUState *cpu, target_ulong vaddr,
+                              hwaddr paddr, MemTxAttrs attrs,
+                              int prot, int mmu_idx, target_ulong size);
+-/* tlb_set_page:
++/**
++ * tlb_set_page:
+  *
+  * This function is equivalent to calling tlb_set_page_with_attrs()
+  * with an @attrs argument of MEMTXATTRS_UNSPECIFIED. It's provided
+@@ -435,6 +450,13 @@ int probe_access_flags(CPUArchState *env, target_ulong addr,
+                        MMUAccessType access_type, int mmu_idx,
+                        bool nonfault, void **phost, uintptr_t retaddr);
  
--        tlb_set_page_with_attrs(cs, address, phys_addr, attrs,
-+        tlb_set_page_with_extra(cs, address, phys_addr, attrs, extra,
-                                 prot, mmu_idx, page_size);
-         return true;
-     } else if (probe) {
++#ifdef CONFIG_SOFTMMU
++int probe_access_extra(CPUArchState *env, target_ulong addr,
++                       MMUAccessType access_type, int mmu_idx,
++                       bool nonfault, void **phost, MemTxAttrs *pattrs,
++                       PageEntryExtra *pextra, uintptr_t retaddr);
++#endif
++
+ #define CODE_GEN_ALIGN           16 /* must be >= of the size of a icache line */
+ 
+ /* Estimated block size for TB allocation.  */
+diff --git a/include/qemu/typedefs.h b/include/qemu/typedefs.h
+index 42f4ceb701..a4de3bb07c 100644
+--- a/include/qemu/typedefs.h
++++ b/include/qemu/typedefs.h
+@@ -82,6 +82,7 @@ typedef struct NodeInfo NodeInfo;
+ typedef struct NumaNodeMem NumaNodeMem;
+ typedef struct Object Object;
+ typedef struct ObjectClass ObjectClass;
++typedef struct PageEntryExtra PageEntryExtra;
+ typedef struct PCIBridge PCIBridge;
+ typedef struct PCIBus PCIBus;
+ typedef struct PCIDevice PCIDevice;
+diff --git a/accel/tcg/cputlb.c b/accel/tcg/cputlb.c
+index f90f4312ea..05555961c9 100644
+--- a/accel/tcg/cputlb.c
++++ b/accel/tcg/cputlb.c
+@@ -1095,16 +1095,21 @@ static void tlb_add_large_page(CPUArchState *env, int mmu_idx,
+     env_tlb(env)->d[mmu_idx].large_page_mask = lp_mask;
+ }
+ 
+-/* Add a new TLB entry. At most one entry for a given virtual address
++/*
++ * Add a new TLB entry. At most one entry for a given virtual address
+  * is permitted. Only a single TARGET_PAGE_SIZE region is mapped, the
+  * supplied size is only used by tlb_flush_page.
+  *
+  * Called from TCG-generated code, which is under an RCU read-side
+  * critical section.
++ *
++ * Returns a pointer to the iotlb entry, with env_tlb(env)->c.lock
++ * still locked, for final additions to the iotlb entry.  The caller
++ * must unlock the lock.
+  */
+-void tlb_set_page_with_attrs(CPUState *cpu, target_ulong vaddr,
+-                             hwaddr paddr, MemTxAttrs attrs, int prot,
+-                             int mmu_idx, target_ulong size)
++void tlb_set_page_with_extra(CPUState *cpu, target_ulong vaddr, hwaddr paddr,
++                             MemTxAttrs attrs, PageEntryExtra extra,
++                             int prot, int mmu_idx, target_ulong size)
+ {
+     CPUArchState *env = cpu->env_ptr;
+     CPUTLB *tlb = env_tlb(env);
+@@ -1238,6 +1243,7 @@ void tlb_set_page_with_attrs(CPUState *cpu, target_ulong vaddr,
+      */
+     desc->iotlb[index].addr = iotlb - vaddr_page;
+     desc->iotlb[index].attrs = attrs;
++    desc->iotlb[index].extra = extra;
+ 
+     /* Now calculate the new entry */
+     tn.addend = addend - vaddr_page;
+@@ -1272,7 +1278,23 @@ void tlb_set_page_with_attrs(CPUState *cpu, target_ulong vaddr,
+     qemu_spin_unlock(&tlb->c.lock);
+ }
+ 
+-/* Add a new TLB entry, but without specifying the memory
++/*
++ * Add a new TLB entry, specifying the memory transaction
++ * attributes to be used.
++ */
++void tlb_set_page_with_attrs(CPUState *cpu, target_ulong vaddr,
++                             hwaddr paddr, MemTxAttrs attrs, int prot,
++                             int mmu_idx, target_ulong size)
++{
++    PageEntryExtra extra;
++
++    memset(&extra, 0, sizeof(extra));
++    tlb_set_page_with_extra(cpu, vaddr, paddr, attrs, extra,
++                            prot, mmu_idx, size);
++}
++
++/*
++ * Add a new TLB entry, but without specifying the memory
+  * transaction attributes to be used.
+  */
+ void tlb_set_page(CPUState *cpu, target_ulong vaddr,
+@@ -1633,25 +1655,38 @@ static int probe_access_internal(CPUArchState *env, target_ulong addr,
+     return flags;
+ }
+ 
++int probe_access_extra(CPUArchState *env, target_ulong addr,
++                       MMUAccessType access_type, int mmu_idx,
++                       bool nonfault, void **phost, MemTxAttrs *pattrs,
++                       PageEntryExtra *pextra, uintptr_t retaddr)
++{
++    int flags = probe_access_internal(env, addr, 0, access_type, mmu_idx,
++                                      nonfault, phost, retaddr);
++
++    if (likely(!(flags & TLB_INVALID_MASK))) {
++        uintptr_t index = tlb_index(env, mmu_idx, addr);
++        CPUIOTLBEntry *iotlbentry = &env_tlb(env)->d[mmu_idx].iotlb[index];
++
++        /* Handle clean RAM pages.  */
++        if (unlikely(flags & TLB_NOTDIRTY)) {
++            notdirty_write(env_cpu(env), addr, 1, iotlbentry, retaddr);
++            flags &= ~TLB_NOTDIRTY;
++        }
++        *pattrs = iotlbentry->attrs;
++        *pextra = iotlbentry->extra;
++    }
++    return flags;
++}
++
+ int probe_access_flags(CPUArchState *env, target_ulong addr,
+                        MMUAccessType access_type, int mmu_idx,
+                        bool nonfault, void **phost, uintptr_t retaddr)
+ {
+-    int flags;
++    MemTxAttrs attrs;
++    PageEntryExtra extra;
+ 
+-    flags = probe_access_internal(env, addr, 0, access_type, mmu_idx,
+-                                  nonfault, phost, retaddr);
+-
+-    /* Handle clean RAM pages.  */
+-    if (unlikely(flags & TLB_NOTDIRTY)) {
+-        uintptr_t index = tlb_index(env, mmu_idx, addr);
+-        CPUIOTLBEntry *iotlbentry = &env_tlb(env)->d[mmu_idx].iotlb[index];
+-
+-        notdirty_write(env_cpu(env), addr, 1, iotlbentry, retaddr);
+-        flags &= ~TLB_NOTDIRTY;
+-    }
+-
+-    return flags;
++    return probe_access_extra(env, addr, access_type, mmu_idx, nonfault,
++                              phost, &attrs, &extra, retaddr);
+ }
+ 
+ void *probe_access(CPUArchState *env, target_ulong addr, int size,
 -- 
 2.34.1
 

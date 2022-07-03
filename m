@@ -1,103 +1,104 @@
-Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp2441634lft;
-        Sun, 3 Jul 2022 01:48:53 -0700 (PDT)
-X-Google-Smtp-Source: AGRyM1u8rLyzcVQUsV7fBsFy1ui0WvzSo2yiGqCJjLMsBLf43NhZKmYxkDwfSfVhDMPlbnNjZNKt
-X-Received: by 2002:a81:5909:0:b0:31c:864f:9464 with SMTP id n9-20020a815909000000b0031c864f9464mr4200408ywb.165.1656838133732;
-        Sun, 03 Jul 2022 01:48:53 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1656838133; cv=none;
+Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp2442423lft;
+        Sun, 3 Jul 2022 01:51:25 -0700 (PDT)
+X-Google-Smtp-Source: AGRyM1vO5UI6W5o+GUMz912cDFb32RRGhF9Ncr6Ly5wWwqEvMn/WszH58hIrsYHaWnvORG4sSkDI
+X-Received: by 2002:a25:3383:0:b0:66b:6205:1583 with SMTP id z125-20020a253383000000b0066b62051583mr23858065ybz.387.1656838285479;
+        Sun, 03 Jul 2022 01:51:25 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1656838285; cv=none;
         d=google.com; s=arc-20160816;
-        b=YINqCheYkzl/169pm+9t5q3GuJdcKHF3kTbf+yQkUv1j7AJ1loQJeJ3S/wWD3bq67x
-         EoJ2ImDo3mbr2yrKVpxvAwWspwaoi46OexWlenGZkv33bo4uW1J9AEmSyjiMGtGwFYMa
-         3lmWjLrhZ9mKONqEOsoqFLBW8UZiWWtwerU4Tol4mupvIpAtbaRcM2gDcvN7+ZnmQN5h
-         xhuL0HW6vtrmweWy+x+01rFOczqv6XVChnXoD2EpL8dc9GHblZh4Uk0kijnLd4rcz0aH
-         D2Rooc79QDWqLPlZ+9cuCJzeyHdDMl+cAeK6W0S+10rwmAa7CxmktajWxnFXApkWuCN3
-         q1Qg==
+        b=VnJd0nOKhdDTqp6QEEy/7k9hzuIhIGfcUd1Kdfcf7M5YfpKfVxzIGfjTZj1j/zPI6L
+         sE4tR1CzxYTOZq0CTgrpxDUtcRFIVw6W4A1MUS3qcQA8NgTUYCNBb9ARVQalEGOkZsMR
+         MFUw0+fzhRh7+5aV38K7l27VQwUuyB9yxygJVif5Kmg9gJkHb3cISsOits/L3JCns9tT
+         9VckLdWtlvNxIUQy6AxQACjm2Ximzb63fWBKTOwH+BwYCPwJVr0SGKggF/hClBOqZOLp
+         UUuW5qFq+ZBGtRxYUlpHIg5jeC0XCYuqtGaUUHFYJbGMamUXlc6UBlOEK1BsyGBvzUmi
+         LO1g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=UdWt/TITPMQtfVvFmAMORDuCVpC5zM3kt486JkKHmUA=;
-        b=HzV+8pzMJl84TjE93TkDVAWbQOOJUDrhKbOraWQTy1o1P5ulxzBxx/Tjr09JuvQHii
-         DfN7lgDkoZWLHSQ7+djeVlRhzVuQBXmEukgcu0QseDkT1ULtWGXIsqPS6GBBS8T64h5q
-         V3xGgD9h8y0Els3xkB4iPf+V5KkG9Zic/40nqXRqmSox1XI/tiB9YO98nwXoBmxQtnkh
-         SkKgTpvkIDXOr/dGCDDBsgQwa51J23GceMdhSjrd5m0PgJU1X8RMyy1r9i+yMqVRMKsY
-         efELuwQ55jTUuK5wHezQcBYA+796yyK+Gug3seouCjCRHxE+LYmQENd/WIay0ppb0u9F
-         wQLA==
+        bh=0mD6vxNSf+I50Th5Elr1blnSVn6mQpha4WrhIJX+W14=;
+        b=zsYQ/Mr9x0UBu7E/PG0SVmkWICfjLJfi7o76SEObhLOq1+6GjzjwFt4zJGqk0Arqf5
+         hqBbSIut3BEqdt8/+sTiQi5Xl/1nKl6/jIg6F6j77mMLFzsLfpUGq5Noy2vu6Hw86Wkl
+         /RUU35tTNT73mfRxZ/FmkncJqlTlNrU1+BgikF9aaUhFqhbF0wwDoAQdwRbhHi5Dpsan
+         8Kq4MKy9GzwNOft46eSmkpE2hxqL0U8CdnWaBjv3w9yBhX5QnhWnNfEDM5qljHj71PDN
+         1xk3cYaxJDS6GQxpXUTC4e2KsnPcKIJFvF4wLck04FRDoVC8fnMI2+Feq2Ho5/TsdVOq
+         hmmA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=nXmvw1i0;
+       dkim=pass header.i=@linaro.org header.s=google header.b=dG50zlki;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d130-20020a811d88000000b0030c5e3a5ebfsi35734510ywd.5.2022.07.03.01.48.53
+        by mx.google.com with ESMTPS id f127-20020a256a85000000b0066e3d7fbff9si670186ybc.339.2022.07.03.01.51.25
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 03 Jul 2022 01:48:53 -0700 (PDT)
+        Sun, 03 Jul 2022 01:51:25 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=nXmvw1i0;
+       dkim=pass header.i=@linaro.org header.s=google header.b=dG50zlki;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:35104 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:43550 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1o7vHh-000739-3Y
-	for alex.bennee@linaro.org; Sun, 03 Jul 2022 04:48:53 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53780)
+	id 1o7vK8-0004Lg-Qe
+	for alex.bennee@linaro.org; Sun, 03 Jul 2022 04:51:24 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53812)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1o7uvl-0001Fg-Jp
- for qemu-devel@nongnu.org; Sun, 03 Jul 2022 04:26:13 -0400
-Received: from mail-pg1-x52d.google.com ([2607:f8b0:4864:20::52d]:38471)
+ id 1o7uvo-0001R5-Gt
+ for qemu-devel@nongnu.org; Sun, 03 Jul 2022 04:26:16 -0400
+Received: from mail-pj1-x1030.google.com ([2607:f8b0:4864:20::1030]:43680)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1o7uvk-00068N-1c
- for qemu-devel@nongnu.org; Sun, 03 Jul 2022 04:26:13 -0400
-Received: by mail-pg1-x52d.google.com with SMTP id e132so6255935pgc.5
- for <qemu-devel@nongnu.org>; Sun, 03 Jul 2022 01:26:11 -0700 (PDT)
+ id 1o7uvm-0006GD-Ta
+ for qemu-devel@nongnu.org; Sun, 03 Jul 2022 04:26:16 -0400
+Received: by mail-pj1-x1030.google.com with SMTP id
+ o5-20020a17090a3d4500b001ef76490983so2183299pjf.2
+ for <qemu-devel@nongnu.org>; Sun, 03 Jul 2022 01:26:14 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=UdWt/TITPMQtfVvFmAMORDuCVpC5zM3kt486JkKHmUA=;
- b=nXmvw1i0mfLzABD1tf4QozsKqhjU6+wWtxKqzmE7eudXuYyL63DPkvCi2Av7Q6KDVJ
- /78w7K2g0Ht13ar+GxHdEpMsSnbt0jYD8duK9NfIakNkpGNRNRPEKvV1NykCxey7OuVh
- 4v/pu3TRp2fM6MBlUGcE5ZO6YOcZ3oBObgn+fc9jasGCKSPT7TuqgdeHUd8ujrLSTX1H
- /v0wkfpunxbAGBkQVCeQONJaMRFif726kXAgK5EcUX6Oi/bHxWibZyT0C0HDHvO0Z9Tw
- lERJiQ5ZIAvaJBoeEipLXX1MhIjxJeu7aHQzh6F2i/OJQGZnWUOOOUlLM/ROwwWt8Qj4
- 0fkw==
+ bh=0mD6vxNSf+I50Th5Elr1blnSVn6mQpha4WrhIJX+W14=;
+ b=dG50zlkicATMWfoLUCzIcNqFbb3hbpJPYI3VJs3a9UaSn41+2PXIxFpAK+ENWUhGy/
+ 52A3wQap/T84l/lln+i3O/sLTzv9uhmwG+mw8XnwhRKb9XHYdW1raMfgX8rcbLF6c4vV
+ G8h7hpR3IZM1dJGI6JUnbGGWRagUckwckZlVqTBmUa91heaYnd0Bv1HCPHBKDN3k8Ohl
+ s8t3YjHk2BH19NqtroktrM8+wkO0F0/5VxhgnkJdblh4ZnPeTFYPdezcNOjvij/pzRhq
+ NGBdIINZfGT84gzuIIsp34e9Dn5znXukPTAaXon86hKsVOIw5cJunjbppNx2pZPR04gL
+ 08lw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=UdWt/TITPMQtfVvFmAMORDuCVpC5zM3kt486JkKHmUA=;
- b=OydUTWWGZ6FFelz7ZyRcIk6D3hXAcfY5dbHDv+Fuq30eHAi8N2ldbhUPIW2453GyNl
- moIs5KtBOfg+UfMhAvq7xB/f/B52HXyLThXxgzO9TAad0hM5I7vvPNIbuQnD16m4VDLw
- yr5o+Pvvgjxp+zgs3QEl4r17ef6AZ8pbL2V4Kau4iWZWnOxNrsdooYnpSEh6VYYaiplJ
- sKgrIX2RR5qL+xbztls55DxNzu5PCCcMsEUVxIeX6+vMAPLeOW6+UZuhTbwRaSh+SFk4
- ZTFK/FI5GEqi1dwjYd5DaCP/IHvI/diDomtG7kt+yLtep/we1+ENzo0TYfu25FqHrxCv
- 5eRg==
-X-Gm-Message-State: AJIora/6mggVs8mfmFf72uKnGFEEcH3nbFa9x7nWe02AYW/sfdMXnopO
- Pl3FEOMZ1cWvQzubKF2BTxT60pvbfzmocI1y
-X-Received: by 2002:a65:6aa3:0:b0:40c:889d:4f16 with SMTP id
- x3-20020a656aa3000000b0040c889d4f16mr20274474pgu.106.1656836771216; 
- Sun, 03 Jul 2022 01:26:11 -0700 (PDT)
+ bh=0mD6vxNSf+I50Th5Elr1blnSVn6mQpha4WrhIJX+W14=;
+ b=3MKL5qExEFqIb9KWiO/Lz3O8xJK0jrbBRSdvoF261c4BNdY2Tb+foAguT3j6WAlZp2
+ JfMBMXC/mTq+C0JI6/e/HJoJH5uOEPemXlu+1oyyikz0u0qNaQsEZB+FjX6Q8AInw/Yt
+ KSV2Yz0Zs5GsuBCwezw19oVLbUeBmcwVJXLCy8IJMip19s6gFNxSUcGdhclHLU2PgNnd
+ +sZbvDNEWm//gZTGOHHNmSofhrSYYTcFjfmdTt0jklPOqRiuWaYDc2MogbOxD9BQQNUs
+ IHBPSlelERJ188Wh1T+HKqzEJBBp7XYMT8jIeL0swiuetWOu+gLJucXQIgywOQBzJTAl
+ AbRQ==
+X-Gm-Message-State: AJIora8H7vvR37QdBGNuHR7x1rvF0rsNeTvDC8ollxqzrtlKce0o3TSl
+ oflriD8zZn7EVqbceJ+Bkw7lYMhn70Tiy8vt
+X-Received: by 2002:a17:903:204c:b0:169:9e3:6840 with SMTP id
+ q12-20020a170903204c00b0016909e36840mr28823902pla.77.1656836774170; 
+ Sun, 03 Jul 2022 01:26:14 -0700 (PDT)
 Received: from stoup.. ([122.255.60.245]) by smtp.gmail.com with ESMTPSA id
- im22-20020a170902bb1600b0016a3f9e528asm13569112plb.57.2022.07.03.01.26.08
+ im22-20020a170902bb1600b0016a3f9e528asm13569112plb.57.2022.07.03.01.26.11
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 03 Jul 2022 01:26:10 -0700 (PDT)
+ Sun, 03 Jul 2022 01:26:13 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org
-Subject: [PATCH 35/62] target/arm: Drop secure check for HCR.TGE vs SCTLR_EL1.M
-Date: Sun,  3 Jul 2022 13:53:52 +0530
-Message-Id: <20220703082419.770989-36-richard.henderson@linaro.org>
+Subject: [PATCH 36/62] target/arm: Introduce arm_hcr_el2_eff_secstate
+Date: Sun,  3 Jul 2022 13:53:53 +0530
+Message-Id: <20220703082419.770989-37-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20220703082419.770989-1-richard.henderson@linaro.org>
 References: <20220703082419.770989-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::52d;
- envelope-from=richard.henderson@linaro.org; helo=mail-pg1-x52d.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1030;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x1030.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -119,31 +120,99 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: dfFouYX7wc6U
+X-TUID: GpzadmKKvFAu
 
-The effect of TGE does not only apply to non-secure state,
-now that Secure EL2 exists.
+For page walking, we may require HCR for a security state
+that is not "current".
 
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/ptw.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ target/arm/cpu.h    | 20 +++++++++++++-------
+ target/arm/helper.c | 11 ++++++++---
+ 2 files changed, 21 insertions(+), 10 deletions(-)
 
-diff --git a/target/arm/ptw.c b/target/arm/ptw.c
-index 8b80716e38..f76a8e931a 100644
---- a/target/arm/ptw.c
-+++ b/target/arm/ptw.c
-@@ -157,8 +157,8 @@ static bool regime_translation_disabled(CPUARMState *env, ARMMMUIdx mmu_idx,
-     case ARMMMUIdx_E10_0:
-     case ARMMMUIdx_E10_1:
-     case ARMMMUIdx_E10_1_PAN:
--        /* TGE means that NS EL0/1 act as if SCTLR_EL1.M is zero */
--        if (!is_secure && (hcr_el2 & HCR_TGE)) {
-+        /* TGE means that EL0/1 act as if SCTLR_EL1.M is zero */
-+        if (hcr_el2 & HCR_TGE) {
-             return true;
-         }
-         break;
+diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+index 04423f8d6c..dd577a08bc 100644
+--- a/target/arm/cpu.h
++++ b/target/arm/cpu.h
+@@ -2376,15 +2376,15 @@ static inline bool arm_is_secure(CPUARMState *env)
+  * Return true if the current security state has AArch64 EL2 or AArch32 Hyp.
+  * This corresponds to the pseudocode EL2Enabled()
+  */
++static inline bool arm_is_el2_enabled_secstate(CPUARMState *env, bool secure)
++{
++    return (arm_feature(env, ARM_FEATURE_EL2)
++            && (!secure || (env->cp15.scr_el3 & SCR_EEL2)));
++}
++
+ static inline bool arm_is_el2_enabled(CPUARMState *env)
+ {
+-    if (arm_feature(env, ARM_FEATURE_EL2)) {
+-        if (arm_is_secure_below_el3(env)) {
+-            return (env->cp15.scr_el3 & SCR_EEL2) != 0;
+-        }
+-        return true;
+-    }
+-    return false;
++    return arm_is_el2_enabled_secstate(env, arm_is_secure_below_el3(env));
+ }
+ 
+ #else
+@@ -2398,6 +2398,11 @@ static inline bool arm_is_secure(CPUARMState *env)
+     return false;
+ }
+ 
++static inline bool arm_is_el2_enabled_secstate(CPUARMState *env, bool secure)
++{
++    return false;
++}
++
+ static inline bool arm_is_el2_enabled(CPUARMState *env)
+ {
+     return false;
+@@ -2410,6 +2415,7 @@ static inline bool arm_is_el2_enabled(CPUARMState *env)
+  * "for all purposes other than a direct read or write access of HCR_EL2."
+  * Not included here is HCR_RW.
+  */
++uint64_t arm_hcr_el2_eff_secstate(CPUARMState *env, bool secure);
+ uint64_t arm_hcr_el2_eff(CPUARMState *env);
+ uint64_t arm_hcrx_el2_eff(CPUARMState *env);
+ 
+diff --git a/target/arm/helper.c b/target/arm/helper.c
+index 7d9d4a9ad9..176be48c46 100644
+--- a/target/arm/helper.c
++++ b/target/arm/helper.c
+@@ -5197,15 +5197,15 @@ static void hcr_writelow(CPUARMState *env, const ARMCPRegInfo *ri,
+ }
+ 
+ /*
+- * Return the effective value of HCR_EL2.
++ * Return the effective value of HCR_EL2, at the given security state.
+  * Bits that are not included here:
+  * RW       (read from SCR_EL3.RW as needed)
+  */
+-uint64_t arm_hcr_el2_eff(CPUARMState *env)
++uint64_t arm_hcr_el2_eff_secstate(CPUARMState *env, bool secure)
+ {
+     uint64_t ret = env->cp15.hcr_el2;
+ 
+-    if (!arm_is_el2_enabled(env)) {
++    if (!arm_is_el2_enabled_secstate(env, secure)) {
+         /*
+          * "This register has no effect if EL2 is not enabled in the
+          * current Security state".  This is ARMv8.4-SecEL2 speak for
+@@ -5264,6 +5264,11 @@ uint64_t arm_hcr_el2_eff(CPUARMState *env)
+     return ret;
+ }
+ 
++uint64_t arm_hcr_el2_eff(CPUARMState *env)
++{
++    return arm_hcr_el2_eff_secstate(env, arm_is_secure_below_el3(env));
++}
++
+ /*
+  * Corresponds to ARM pseudocode function ELIsInHost().
+  */
 -- 
 2.34.1
 

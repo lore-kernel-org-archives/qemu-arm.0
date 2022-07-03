@@ -1,104 +1,103 @@
-Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp2434221lft;
-        Sun, 3 Jul 2022 01:27:19 -0700 (PDT)
-X-Google-Smtp-Source: AGRyM1vS8szApcRGhzTkzaN0mdbTlBhv4sgj/Gi1zHxu4eBVv/MzS3ojKwOwgrWfu6rgCt6N5OpN
-X-Received: by 2002:a5b:f43:0:b0:665:6ff:c70b with SMTP id y3-20020a5b0f43000000b0066506ffc70bmr24740895ybr.216.1656836839240;
-        Sun, 03 Jul 2022 01:27:19 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1656836839; cv=none;
+Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp2434242lft;
+        Sun, 3 Jul 2022 01:27:22 -0700 (PDT)
+X-Google-Smtp-Source: AGRyM1txqCi+H1mz21fx4DH+bQnjKj93mVLunbHDrxDaMk/SU+08fkJOYH2cKJfXrBs/MnGkRRo2
+X-Received: by 2002:a0d:e586:0:b0:318:317e:b4e8 with SMTP id o128-20020a0de586000000b00318317eb4e8mr26779999ywe.291.1656836842221;
+        Sun, 03 Jul 2022 01:27:22 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1656836842; cv=none;
         d=google.com; s=arc-20160816;
-        b=CUV0mmszr1ShysbWV+QH+Y9F2suyWJibS+hQjpWbxNVrRjQR1dbu8oDztz/10bdMsu
-         du3m+vQAd7I3p1cOVD/C42aNmsc6Vw9PAdefiA7SOKCovpG3V1nzt4sW4zQG8Hqj8Oc+
-         9p7pWp5n3lcav1yFJMbaH2hyMGae1AtERlZ04TkwqxmaJtlipHasvWSVAL4wsn4PAZXb
-         7I3huzQ1k7OmOKyQTlaBV+7fAwhrZuq8Wi1COuaziZhycREThV0X6MrYmGI2EThu/SKF
-         gBOTohRFTMuqkVVpmsL7nQJrTv5NQTP3gwCOd1k3n9U4WQ9xGQYO0Q3qohu/W9hZUgL0
-         Oh2Q==
+        b=VaiQL3tZPcWIeZBz2zWVe3hZ8SUwJ9vGyGUfhQv+suOLbqmfhG26TcNNjMfe7MMS8X
+         0DuvTLbEa18Ggogc+d1t58CCzoFeps+vPxQV8WQWK5bo+jOYsFgHM9mGrXcOev7XNnJF
+         U04E+PazcyxxOYdc7BOUUWJYhxMhtGPE5dUdwMV+jOnAYGJDv9vecpzJmJqiD+izOP+B
+         FrrajTalkncjz9o2BL3aY/6mgRoMyHTiNVB0kBoilDssMqavmxgn7eUDBwrgbrWE9lAN
+         3mOK8k6wUcorouMmXnQT5SSl+z2GM45ffAfh/Cwf9uPw+2dzIXmN2ZRMEq4jVdGwy/2y
+         7Elg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=OyhgMtHZywg9GRP+8mihPGj8BuF/naRM6gs7r7z8hHQ=;
-        b=ROJqfww3o9lgGzGn3ju6RRPAT5ElxHCnVLHIouCi4C+NIM2cPc25jHznRaLvRQFaLa
-         8KxQXIwnoZxYKPsP7fasX/sTHOBAQHwZwXQtrBmoCKZkJRGA3ukZJ2sxhBY5L5DCfbUF
-         gJHROOOO+VlRLCTqYj+WoeLuRhr0uF5TzkDpo6D5OQXr8rj6+W5UTPnq6F+YAUI+mTVH
-         XhV6wfqIVnrTwQpM9D9prfmq302xIA3EIJWelRBoKH5+a0ji8Fpu5tRfb5klIzydePLl
-         JmwFD8ZqJl85KKEwS4d5X1bRmStjlgaPhrvKoQnXZO8gRvEsz1MHcjVa3RRoCaPGF8W+
-         +jcA==
+        bh=MmQAzcfABxlHx5cSzgemNY9cO4UZUm16Jrwpdca+cDs=;
+        b=HPmgoTggQwOYZ3b8JX8orIrqTDA2qxlvTsSrerA8F8PLKvZH5rQRJyPKH2yn+GpqxM
+         N+WF/sfhuzH/jvkkW0R8DJ4j0j6Ahst8dHYVKy+eCAIfInYlVZ0ssUOeyvp6C0QiQ7/7
+         nurHbq8PJeHwSegwkeit9mrR2lJreTCoEq+sLk6Jf5moIvwDApsHhFoN5qCKom0B9NuA
+         5NjahEBbQYY6r5G/UzF+1oJsyI3RaAOzYSD9KNLKRkN2zYE+4Ey7eDlclvuiEXThT3iT
+         XTpWuW5jzDIzXXfgSCGwwDy6pfQOc41te3dK3iQrmtpZx2F3KDA6Wd1CTgCmiILpbscr
+         sSBQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="ZJa/BhCd";
+       dkim=pass header.i=@linaro.org header.s=google header.b=syNrUrfq;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id q13-20020a056902150d00b0066e369d3248si1754469ybu.250.2022.07.03.01.27.19
+        by mx.google.com with ESMTPS id u196-20020a0debcd000000b003138b295fe2si44797120ywe.179.2022.07.03.01.27.22
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 03 Jul 2022 01:27:19 -0700 (PDT)
+        Sun, 03 Jul 2022 01:27:22 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="ZJa/BhCd";
+       dkim=pass header.i=@linaro.org header.s=google header.b=syNrUrfq;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:37208 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:37418 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1o7uwo-0002i1-Ks
-	for alex.bennee@linaro.org; Sun, 03 Jul 2022 04:27:18 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:52528)
+	id 1o7uwr-0002rj-JR
+	for alex.bennee@linaro.org; Sun, 03 Jul 2022 04:27:21 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:52614)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1o7uuF-0006UL-Ns
- for qemu-devel@nongnu.org; Sun, 03 Jul 2022 04:24:39 -0400
-Received: from mail-pg1-x52b.google.com ([2607:f8b0:4864:20::52b]:46668)
+ id 1o7uuM-0006c6-FZ
+ for qemu-devel@nongnu.org; Sun, 03 Jul 2022 04:24:46 -0400
+Received: from mail-pl1-x62b.google.com ([2607:f8b0:4864:20::62b]:44807)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1o7uuE-0005p1-8n
- for qemu-devel@nongnu.org; Sun, 03 Jul 2022 04:24:39 -0400
-Received: by mail-pg1-x52b.google.com with SMTP id s27so6221402pga.13
- for <qemu-devel@nongnu.org>; Sun, 03 Jul 2022 01:24:37 -0700 (PDT)
+ id 1o7uuK-0005qB-MS
+ for qemu-devel@nongnu.org; Sun, 03 Jul 2022 04:24:46 -0400
+Received: by mail-pl1-x62b.google.com with SMTP id l6so6000446plg.11
+ for <qemu-devel@nongnu.org>; Sun, 03 Jul 2022 01:24:44 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=OyhgMtHZywg9GRP+8mihPGj8BuF/naRM6gs7r7z8hHQ=;
- b=ZJa/BhCdw3nBLUTg7JIYQgmw28aG85EwS2+jkg2CpG55qsVxDWl8VDBLQ6JkQJOfCb
- r3dSK5fx2MJAB2YHdpIS29fjqlTWolNk/qYQz4Jxitmd5EVJlLPyY3qFRUkU9i7AItDY
- GYtXoCjYiV5JxlFtFjPUxDZUx0nsFZHH1xMT1TtBYLJ1HJqvrf3gJ6YTLMi8ZA99olgu
- /xLMbQ1APYyjcRJxZVMdBMt2huR9NlEeFQoM+xiVqN5K9RdQqlHqHNGHrhTzCTebJkhm
- q8RgVvANVFBd82Vs8+BHuLfXkWGYSs/PeROnBPncTqm03FeduNZVshAIHOBCvQpBGGCS
- 6gzw==
+ bh=MmQAzcfABxlHx5cSzgemNY9cO4UZUm16Jrwpdca+cDs=;
+ b=syNrUrfqTV+jUGLcamvcapouJjU71fCLgW0H6RozdhGOv+pGUMTLLB7gY5xM7RvN47
+ iV/bm/qXMac3vurt+0IwG5A6MIjC8Rdx95UyxEqICqOQnQqwvoRGhH8tGGI8CakZBSW9
+ AN7ajxRxZyoArEH2VHn49XTBBWaM8tMtdTOHPHM4nBM3s6GEmzy9WenYHZ0ivMqk0d0P
+ 5VNIUeTRv4X1JV+D7EEFvzr1WQWswfw6bX79foqItJFNY2MnaVqBdqWMb5aYkEYpf8D2
+ GEgz0EkOEyZ8AsdiTEOTeUnvT9pPMfqt1u5J4ZvXjvp4cLyQZQfLK/32dc4F3Eeln1ZV
+ JQlQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=OyhgMtHZywg9GRP+8mihPGj8BuF/naRM6gs7r7z8hHQ=;
- b=bIbx1IbtGldsg3ZvsCE/k8ND1iv4lqnvGrPLSrRzZCgx8ekdqLK9MWu8tBL31zuSUv
- cf/nJuaKbAR71l3m8nFQ2asRXINtLkS2B+9HFbBECIQRrHDNEteY7q9P6FPYxlZt06YD
- 5MZYIeHJ5JxUQP5AzHN8Kdo2hQuzIM+BWFgD38XOWcGLZHTZPs87p5+nIttbMXsHo9Up
- R2WhcV7QecUZM/+x+PP0I+Q/ffpvBsasiENFAlIIi2yQO/JBwVKhn9uLOP6qOB98rD1i
- kwmb+V7cAOtzxE5Blco4hjCklSkJ+u9/4EHKtskEeIyild5+mWOYuyg8hApvIU39GSv5
- DZ1g==
-X-Gm-Message-State: AJIora8SQ7AWOOJdAtBma9y/sefeqDBCnufcfaW3XSXe4PU7rasTxa0+
- jOWod08QziKXcMrJZl7kLsUY6RKkxpd4VfuY
-X-Received: by 2002:a63:1047:0:b0:40d:7553:d897 with SMTP id
- 7-20020a631047000000b0040d7553d897mr19436627pgq.485.1656836677017; 
- Sun, 03 Jul 2022 01:24:37 -0700 (PDT)
+ bh=MmQAzcfABxlHx5cSzgemNY9cO4UZUm16Jrwpdca+cDs=;
+ b=H3GJLTjN5wZfyB/xjUReEbq7vfDjA7m1mB1m9pQOlArL3GHHc79SIvsMCXPmF3kKJz
+ l1tcQ3smlKa3CUuFGoIJhsOhMsYP+fuKP216uL0rQbKOhY3AkfNOoxY9yAp0rklu8YXT
+ UDFXVYzMjRxJYkC+PM8P+xpTuSaPLpt69JgcEo37GJHz9Gu3RLDhWtbUL4vX46QJBDXY
+ /eg05f+G9hDGpoHA3THaF6YLefyDOUrkgSZXB9xkknIDZYyDWBSYptkdZ0jBBZ5w5QPk
+ 4e9mj+D3I7Qc6MIORmu2yAqoIukK8U3JKP1+3MU6BSzSUlIVSWM6ZTRaVd2jEAfmyJiE
+ j2ZQ==
+X-Gm-Message-State: AJIora/hVS164los5V2PbFwTCgWJc0IrKCS0GpDVVU+whpYSlZ5di7ld
+ 2TtQeKWW8c5K7ehJ9ZL4IYZBFtP5H6fXtFRt
+X-Received: by 2002:a17:902:f642:b0:169:714:b079 with SMTP id
+ m2-20020a170902f64200b001690714b079mr28754514plg.117.1656836683461; 
+ Sun, 03 Jul 2022 01:24:43 -0700 (PDT)
 Received: from stoup.. ([122.255.60.245]) by smtp.gmail.com with ESMTPSA id
- im22-20020a170902bb1600b0016a3f9e528asm13569112plb.57.2022.07.03.01.24.34
+ im22-20020a170902bb1600b0016a3f9e528asm13569112plb.57.2022.07.03.01.24.40
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 03 Jul 2022 01:24:36 -0700 (PDT)
+ Sun, 03 Jul 2022 01:24:42 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org
-Subject: [PATCH 04/62] target/arm: Record tagged bit for user-only in
- sve_probe_page
-Date: Sun,  3 Jul 2022 13:53:21 +0530
-Message-Id: <20220703082419.770989-5-richard.henderson@linaro.org>
+Subject: [PATCH 06/62] target/arm: Use PageEntryExtra for BTI
+Date: Sun,  3 Jul 2022 13:53:23 +0530
+Message-Id: <20220703082419.770989-7-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20220703082419.770989-1-richard.henderson@linaro.org>
 References: <20220703082419.770989-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::52b;
- envelope-from=richard.henderson@linaro.org; helo=mail-pg1-x52b.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::62b;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x62b.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -120,31 +119,132 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: RfmOxkNuYDZX
+X-TUID: Uc613QoQx7by
 
-Fixes a bug in that we were not honoring MTE from user-only
-SVE. Copy the user-only MTE logic from allocation_tag_mem
-into sve_probe_page.
+Add a bit to ARMCacheAttrs to hold the guarded bit between
+get_phys_addr_lpae and arm_cpu_tlb_fill, then put the bit
+into PageEntryExtra.
+
+In is_guarded_page, use probe_access_extra instead of just
+guessing that the tlb entry is still present.  Also handles
+the FIXME about executing from device memory.
 
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/sve_helper.c | 3 +++
- 1 file changed, 3 insertions(+)
+ target/arm/cpu.h           | 13 -------------
+ target/arm/internals.h     |  2 ++
+ target/arm/ptw.c           |  4 ++--
+ target/arm/tlb_helper.c    |  2 ++
+ target/arm/translate-a64.c | 22 ++++++++--------------
+ 5 files changed, 14 insertions(+), 29 deletions(-)
 
-diff --git a/target/arm/sve_helper.c b/target/arm/sve_helper.c
-index db15d03ded..0c6379e6e8 100644
---- a/target/arm/sve_helper.c
-+++ b/target/arm/sve_helper.c
-@@ -5337,6 +5337,9 @@ bool sve_probe_page(SVEHostPage *info, bool nofault, CPUARMState *env,
+diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+index a26b9437e9..4a41b5dcef 100644
+--- a/target/arm/cpu.h
++++ b/target/arm/cpu.h
+@@ -3357,19 +3357,6 @@ static inline uint64_t *aa64_vfp_qreg(CPUARMState *env, unsigned regno)
+ /* Shared between translate-sve.c and sve_helper.c.  */
+ extern const uint64_t pred_esz_masks[4];
  
+-/* Helper for the macros below, validating the argument type. */
+-static inline MemTxAttrs *typecheck_memtxattrs(MemTxAttrs *x)
+-{
+-    return x;
+-}
+-
+-/*
+- * Lvalue macros for ARM TLB bits that we must cache in the TCG TLB.
+- * Using these should be a bit more self-documenting than using the
+- * generic target bits directly.
+- */
+-#define arm_tlb_bti_gp(x) (typecheck_memtxattrs(x)->target_tlb_bit0)
+-
+ /*
+  * AArch64 usage of the PAGE_TARGET_* bits for linux-user.
+  */
+diff --git a/target/arm/internals.h b/target/arm/internals.h
+index 2b38a83574..268c3c7380 100644
+--- a/target/arm/internals.h
++++ b/target/arm/internals.h
+@@ -77,6 +77,7 @@ FIELD(V7M_EXCRET, RES1, 7, 25) /* including the must-be-1 prefix */
+ /* Bit definitions for PageEntryExtra */
+ FIELD(PAGEENTRYEXTRA, ATTRS, 0, 8)
+ FIELD(PAGEENTRYEXTRA, SHAREABILITY, 8, 2)
++FIELD(PAGEENTRYEXTRA, GUARDED, 10, 1)
+ FIELD(PAGEENTRYEXTRA, PA, 12, 52)
+ 
+ /* Minimum value which is a magic number for exception return */
+@@ -1129,6 +1130,7 @@ typedef struct ARMCacheAttrs {
+     unsigned int attrs:8;
+     unsigned int shareability:2; /* as in the SH field of the VMSAv8-64 PTEs */
+     bool is_s2_format:1;
++    bool guarded:1;              /* guarded bit of the v8-64 PTE */
+ } ARMCacheAttrs;
+ 
+ bool get_phys_addr(CPUARMState *env, target_ulong address,
+diff --git a/target/arm/ptw.c b/target/arm/ptw.c
+index da478104f0..204c820026 100644
+--- a/target/arm/ptw.c
++++ b/target/arm/ptw.c
+@@ -1320,8 +1320,8 @@ static bool get_phys_addr_lpae(CPUARMState *env, uint64_t address,
+         txattrs->secure = false;
+     }
+     /* When in aarch64 mode, and BTI is enabled, remember GP in the IOTLB.  */
+-    if (aarch64 && guarded && cpu_isar_feature(aa64_bti, cpu)) {
+-        arm_tlb_bti_gp(txattrs) = true;
++    if (aarch64 && cpu_isar_feature(aa64_bti, cpu)) {
++        cacheattrs->guarded = guarded;
+     }
+ 
+     if (mmu_idx == ARMMMUIdx_Stage2 || mmu_idx == ARMMMUIdx_Stage2_S) {
+diff --git a/target/arm/tlb_helper.c b/target/arm/tlb_helper.c
+index 1305b6ec7d..7476fcafeb 100644
+--- a/target/arm/tlb_helper.c
++++ b/target/arm/tlb_helper.c
+@@ -244,6 +244,8 @@ bool arm_cpu_tlb_fill(CPUState *cs, vaddr address, int size,
+                                  cacheattrs.attrs);
+             extra.x = FIELD_DP64(extra.x, PAGEENTRYEXTRA, SHAREABILITY,
+                                  cacheattrs.shareability);
++            extra.x = FIELD_DP64(extra.x, PAGEENTRYEXTRA, GUARDED,
++                                 cacheattrs.guarded);
+         }
+ 
+         tlb_set_page_with_extra(cs, address, phys_addr, attrs, extra,
+diff --git a/target/arm/translate-a64.c b/target/arm/translate-a64.c
+index c86b97b1d4..57f492ccef 100644
+--- a/target/arm/translate-a64.c
++++ b/target/arm/translate-a64.c
+@@ -14543,22 +14543,16 @@ static bool is_guarded_page(CPUARMState *env, DisasContext *s)
  #ifdef CONFIG_USER_ONLY
-     memset(&info->attrs, 0, sizeof(info->attrs));
-+    /* Require both MAP_ANON and PROT_MTE -- see allocation_tag_mem. */
-+    arm_tlb_mte_tagged(&info->attrs) =
-+        (flags & PAGE_ANON) && (flags & PAGE_MTE);
+     return page_get_flags(addr) & PAGE_BTI;
  #else
-     /*
-      * Find the iotlbentry for addr and return the transaction attributes.
++    MemTxAttrs attrs;
++    PageEntryExtra extra;
++    void *host;
+     int mmu_idx = arm_to_core_mmu_idx(s->mmu_idx);
+-    unsigned int index = tlb_index(env, mmu_idx, addr);
+-    CPUTLBEntry *entry = tlb_entry(env, mmu_idx, addr);
++    int flags;
+ 
+-    /*
+-     * We test this immediately after reading an insn, which means
+-     * that any normal page must be in the TLB.  The only exception
+-     * would be for executing from flash or device memory, which
+-     * does not retain the TLB entry.
+-     *
+-     * FIXME: Assume false for those, for now.  We could use
+-     * arm_cpu_get_phys_page_attrs_debug to re-read the page
+-     * table entry even for that case.
+-     */
+-    return (tlb_hit(entry->addr_code, addr) &&
+-            arm_tlb_bti_gp(&env_tlb(env)->d[mmu_idx].iotlb[index].attrs));
++    flags = probe_access_extra(env, addr, MMU_INST_FETCH, mmu_idx,
++                               false, &host, &attrs, &extra, 0);
++    assert(!(flags & TLB_INVALID_MASK));
++    return FIELD_EX64(extra.x, PAGEENTRYEXTRA, GUARDED);
+ #endif
+ }
+ 
 -- 
 2.34.1
 

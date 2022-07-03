@@ -1,250 +1,392 @@
-Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp2434242lft;
-        Sun, 3 Jul 2022 01:27:22 -0700 (PDT)
-X-Google-Smtp-Source: AGRyM1txqCi+H1mz21fx4DH+bQnjKj93mVLunbHDrxDaMk/SU+08fkJOYH2cKJfXrBs/MnGkRRo2
-X-Received: by 2002:a0d:e586:0:b0:318:317e:b4e8 with SMTP id o128-20020a0de586000000b00318317eb4e8mr26779999ywe.291.1656836842221;
-        Sun, 03 Jul 2022 01:27:22 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1656836842; cv=none;
+Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp2434514lft;
+        Sun, 3 Jul 2022 01:28:32 -0700 (PDT)
+X-Google-Smtp-Source: AGRyM1t7n+PjWoDUQ1i35ICY6WbMAELJOTIwLmOE2S6FAj+tiHA/noXzpg8UdCKVS5SUopPODVJL
+X-Received: by 2002:a0d:e80a:0:b0:31c:9394:dcc8 with SMTP id r10-20020a0de80a000000b0031c9394dcc8mr101254ywe.297.1656836911983;
+        Sun, 03 Jul 2022 01:28:31 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1656836911; cv=none;
         d=google.com; s=arc-20160816;
-        b=VaiQL3tZPcWIeZBz2zWVe3hZ8SUwJ9vGyGUfhQv+suOLbqmfhG26TcNNjMfe7MMS8X
-         0DuvTLbEa18Ggogc+d1t58CCzoFeps+vPxQV8WQWK5bo+jOYsFgHM9mGrXcOev7XNnJF
-         U04E+PazcyxxOYdc7BOUUWJYhxMhtGPE5dUdwMV+jOnAYGJDv9vecpzJmJqiD+izOP+B
-         FrrajTalkncjz9o2BL3aY/6mgRoMyHTiNVB0kBoilDssMqavmxgn7eUDBwrgbrWE9lAN
-         3mOK8k6wUcorouMmXnQT5SSl+z2GM45ffAfh/Cwf9uPw+2dzIXmN2ZRMEq4jVdGwy/2y
-         7Elg==
+        b=DOcHVAt4v2TjiJ0riVB866/PpLlcARMOqJc3P5CGcie9IOfw7ueSFCYlFBwbzQ99n2
+         SAiv2bYhhO2YZiblgNdHCk0KeDvtchBE53k2eHcWN/79FQL3kUiswLtxW7Kw+FbqeTfT
+         GuFOk3DUWlqvQzfBztBBNf3R70kkzdUjuXXlvDkmmJsetuYaH2zW22AlEjIAUk/tsOk+
+         KfxpsKTUM0Aflcq/bThC+HYMZc56RpR34iWl1pTQz2vDoN9gOKvA6Oncg23YubQQofKj
+         NgcOEsQS73ZYRxd0qtbqds1jnAItihx1LVYTs6wIs3CFQzDiSs67AteaIRxthx246LS6
+         2UyQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=MmQAzcfABxlHx5cSzgemNY9cO4UZUm16Jrwpdca+cDs=;
-        b=HPmgoTggQwOYZ3b8JX8orIrqTDA2qxlvTsSrerA8F8PLKvZH5rQRJyPKH2yn+GpqxM
-         N+WF/sfhuzH/jvkkW0R8DJ4j0j6Ahst8dHYVKy+eCAIfInYlVZ0ssUOeyvp6C0QiQ7/7
-         nurHbq8PJeHwSegwkeit9mrR2lJreTCoEq+sLk6Jf5moIvwDApsHhFoN5qCKom0B9NuA
-         5NjahEBbQYY6r5G/UzF+1oJsyI3RaAOzYSD9KNLKRkN2zYE+4Ey7eDlclvuiEXThT3iT
-         XTpWuW5jzDIzXXfgSCGwwDy6pfQOc41te3dK3iQrmtpZx2F3KDA6Wd1CTgCmiILpbscr
-         sSBQ==
+        bh=cfTTENCQsoGhQ/yqoDav68FHw7nBFVP+o4QSzS7SCR4=;
+        b=iWRNYovQspeTiRcTxeZmL7j6i5VjwZqy2fmF5nuqxwZg8EekniYphxGLRStyF4P6RT
+         BuEPEB1ddM2IOKdgC+O8rEPzJKGW/xvFBtdj6Mr/PoUbGD27KvGZLRoAB7/VFoYkgsCI
+         pw+oEbRuV3IupHFv/sy6q/O6jRE7Xk9hWTmmFcAdRQEEcRhYD37iro6109tDPtqh18Wz
+         ZzhzKNEdxg63Eg+Gf1LcGDjGDFZKb5gM6x4MiuN6v03bmuHj85/DY2wjNxWliHTtJ/N/
+         y9CyJqu4RUYR0sRNnhzaoD2FWCPAA4/JHBoIySvMC21hinHN02UpxUT/E9ed82TPxePQ
+         3SCg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=syNrUrfq;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=w0LNhix7;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id u196-20020a0debcd000000b003138b295fe2si44797120ywe.179.2022.07.03.01.27.22
+        by mx.google.com with ESMTPS id 188-20020a250cc5000000b0066e2336ea34si5381224ybm.418.2022.07.03.01.28.31
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 03 Jul 2022 01:27:22 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Sun, 03 Jul 2022 01:28:31 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=syNrUrfq;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=w0LNhix7;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:37418 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:41952 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1o7uwr-0002rj-JR
-	for alex.bennee@linaro.org; Sun, 03 Jul 2022 04:27:21 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:52614)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1o7uxz-0005v5-CR
+	for alex.bennee@linaro.org; Sun, 03 Jul 2022 04:28:31 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:52628)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1o7uuM-0006c6-FZ
- for qemu-devel@nongnu.org; Sun, 03 Jul 2022 04:24:46 -0400
-Received: from mail-pl1-x62b.google.com ([2607:f8b0:4864:20::62b]:44807)
+ id 1o7uuO-0006dP-1U
+ for qemu-arm@nongnu.org; Sun, 03 Jul 2022 04:24:48 -0400
+Received: from mail-pj1-x102f.google.com ([2607:f8b0:4864:20::102f]:44606)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1o7uuK-0005qB-MS
- for qemu-devel@nongnu.org; Sun, 03 Jul 2022 04:24:46 -0400
-Received: by mail-pl1-x62b.google.com with SMTP id l6so6000446plg.11
- for <qemu-devel@nongnu.org>; Sun, 03 Jul 2022 01:24:44 -0700 (PDT)
+ id 1o7uuI-0005px-8o
+ for qemu-arm@nongnu.org; Sun, 03 Jul 2022 04:24:47 -0400
+Received: by mail-pj1-x102f.google.com with SMTP id
+ n16-20020a17090ade9000b001ed15b37424so6696803pjv.3
+ for <qemu-arm@nongnu.org>; Sun, 03 Jul 2022 01:24:41 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=MmQAzcfABxlHx5cSzgemNY9cO4UZUm16Jrwpdca+cDs=;
- b=syNrUrfqTV+jUGLcamvcapouJjU71fCLgW0H6RozdhGOv+pGUMTLLB7gY5xM7RvN47
- iV/bm/qXMac3vurt+0IwG5A6MIjC8Rdx95UyxEqICqOQnQqwvoRGhH8tGGI8CakZBSW9
- AN7ajxRxZyoArEH2VHn49XTBBWaM8tMtdTOHPHM4nBM3s6GEmzy9WenYHZ0ivMqk0d0P
- 5VNIUeTRv4X1JV+D7EEFvzr1WQWswfw6bX79foqItJFNY2MnaVqBdqWMb5aYkEYpf8D2
- GEgz0EkOEyZ8AsdiTEOTeUnvT9pPMfqt1u5J4ZvXjvp4cLyQZQfLK/32dc4F3Eeln1ZV
- JQlQ==
+ bh=cfTTENCQsoGhQ/yqoDav68FHw7nBFVP+o4QSzS7SCR4=;
+ b=w0LNhix7WDlfFXazh2zyFfb0/2117zaf55YgABS6GOVxaotSGLoQv+xWkDn75XazNq
+ 7ofcFZPLqCP6tu01FNXcQ+Xmx36Z96ttgo0N6B/Y+6VIBozoiCZvc7Pjg+2D+JiEj8Hh
+ g42GJmmlZbv9Mzu732tQmBe3IusoR2JasH8xsxBCxorzQ9aiUYklB24vzYVKzkuJdzN2
+ CvNfSsMIt/nWe785FCxVn7RoyE7wE9CzjdXdLGDOO5ZabdFre4WwRdY/ZbTkcgueZsbn
+ nUt6/I3Xohml0QCSJ29wdSjS4Dh35qDN2+10wASpBhZwlmbo4QI4gfvMr0d2wi755H15
+ g8HQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=MmQAzcfABxlHx5cSzgemNY9cO4UZUm16Jrwpdca+cDs=;
- b=H3GJLTjN5wZfyB/xjUReEbq7vfDjA7m1mB1m9pQOlArL3GHHc79SIvsMCXPmF3kKJz
- l1tcQ3smlKa3CUuFGoIJhsOhMsYP+fuKP216uL0rQbKOhY3AkfNOoxY9yAp0rklu8YXT
- UDFXVYzMjRxJYkC+PM8P+xpTuSaPLpt69JgcEo37GJHz9Gu3RLDhWtbUL4vX46QJBDXY
- /eg05f+G9hDGpoHA3THaF6YLefyDOUrkgSZXB9xkknIDZYyDWBSYptkdZ0jBBZ5w5QPk
- 4e9mj+D3I7Qc6MIORmu2yAqoIukK8U3JKP1+3MU6BSzSUlIVSWM6ZTRaVd2jEAfmyJiE
- j2ZQ==
-X-Gm-Message-State: AJIora/hVS164los5V2PbFwTCgWJc0IrKCS0GpDVVU+whpYSlZ5di7ld
- 2TtQeKWW8c5K7ehJ9ZL4IYZBFtP5H6fXtFRt
-X-Received: by 2002:a17:902:f642:b0:169:714:b079 with SMTP id
- m2-20020a170902f64200b001690714b079mr28754514plg.117.1656836683461; 
- Sun, 03 Jul 2022 01:24:43 -0700 (PDT)
+ bh=cfTTENCQsoGhQ/yqoDav68FHw7nBFVP+o4QSzS7SCR4=;
+ b=w6WDourqfw9Y6vKTZ18+yZ1211qyEhPXMRda0i36p5u2hNIY0J+xFea6vNwdF5RV5a
+ TmRePC0jtW0Xs+fx4Y6t2es2Csdp3Vo2kEDASLqoBbksppRaMfHdbh0GIgPOPClRmDRd
+ 43l3fifE7EDHP3tlAwbP4qjRS6Piqe0M2qAL84DDXrCKjJUC+HdrMEWorQNcxScw3UDT
+ I4MQSNDdkjdjMDZ4cVlrBPP/jwr4Gw97A6rYtQu7PDukMlU4QOViuH0F+xGpkURLMyhG
+ WEhhvdXjGuRJ3cFhpVPB4jJ5I+2Uj4eCyb9cd6UuIjWkfLLv8E7KKMQ1CZWGbwatOYS4
+ sjkw==
+X-Gm-Message-State: AJIora/1Jk/DzrRZduN76QBagRh5mNQgCR/Zk3z7wddrRFuVsFsHUvEk
+ FteLR+ddItrjlkBA1A80BXTZ7zcFlBZh4NLP
+X-Received: by 2002:a17:90a:408f:b0:1e3:23a:2370 with SMTP id
+ l15-20020a17090a408f00b001e3023a2370mr27242211pjg.84.1656836680538; 
+ Sun, 03 Jul 2022 01:24:40 -0700 (PDT)
 Received: from stoup.. ([122.255.60.245]) by smtp.gmail.com with ESMTPSA id
- im22-20020a170902bb1600b0016a3f9e528asm13569112plb.57.2022.07.03.01.24.40
+ im22-20020a170902bb1600b0016a3f9e528asm13569112plb.57.2022.07.03.01.24.37
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 03 Jul 2022 01:24:42 -0700 (PDT)
+ Sun, 03 Jul 2022 01:24:39 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org
-Subject: [PATCH 06/62] target/arm: Use PageEntryExtra for BTI
-Date: Sun,  3 Jul 2022 13:53:23 +0530
-Message-Id: <20220703082419.770989-7-richard.henderson@linaro.org>
+Subject: [PATCH 05/62] target/arm: Use PageEntryExtra for MTE
+Date: Sun,  3 Jul 2022 13:53:22 +0530
+Message-Id: <20220703082419.770989-6-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20220703082419.770989-1-richard.henderson@linaro.org>
 References: <20220703082419.770989-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::62b;
- envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x62b.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::102f;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x102f.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, T_SCC_BODY_TEXT_LINE=-0.01,
+ T_SPF_TEMPERROR=0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Uc613QoQx7by
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: orDyxNyg6Av5
 
-Add a bit to ARMCacheAttrs to hold the guarded bit between
-get_phys_addr_lpae and arm_cpu_tlb_fill, then put the bit
-into PageEntryExtra.
-
-In is_guarded_page, use probe_access_extra instead of just
-guessing that the tlb entry is still present.  Also handles
-the FIXME about executing from device memory.
+Tagged pages are indicated by the page attributes, so we
+don't need to use a separate bit in MemTxAttrs.  Further,
+we store the PA, so we don't need to recover it by walking
+the tree of memory regions.
 
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/cpu.h           | 13 -------------
- target/arm/internals.h     |  2 ++
- target/arm/ptw.c           |  4 ++--
- target/arm/tlb_helper.c    |  2 ++
- target/arm/translate-a64.c | 22 ++++++++--------------
- 5 files changed, 14 insertions(+), 29 deletions(-)
+ target/arm/cpu.h               |  1 -
+ target/arm/sve_ldst_internal.h |  1 +
+ target/arm/mte_helper.c        | 52 +++++++--------------------------
+ target/arm/sve_helper.c        | 53 +++++++++++-----------------------
+ target/arm/tlb_helper.c        |  4 ---
+ 5 files changed, 28 insertions(+), 83 deletions(-)
 
 diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index a26b9437e9..4a41b5dcef 100644
+index 4a4342f262..a26b9437e9 100644
 --- a/target/arm/cpu.h
 +++ b/target/arm/cpu.h
-@@ -3357,19 +3357,6 @@ static inline uint64_t *aa64_vfp_qreg(CPUARMState *env, unsigned regno)
- /* Shared between translate-sve.c and sve_helper.c.  */
- extern const uint64_t pred_esz_masks[4];
+@@ -3369,7 +3369,6 @@ static inline MemTxAttrs *typecheck_memtxattrs(MemTxAttrs *x)
+  * generic target bits directly.
+  */
+ #define arm_tlb_bti_gp(x) (typecheck_memtxattrs(x)->target_tlb_bit0)
+-#define arm_tlb_mte_tagged(x) (typecheck_memtxattrs(x)->target_tlb_bit1)
  
--/* Helper for the macros below, validating the argument type. */
--static inline MemTxAttrs *typecheck_memtxattrs(MemTxAttrs *x)
--{
--    return x;
--}
--
--/*
-- * Lvalue macros for ARM TLB bits that we must cache in the TCG TLB.
-- * Using these should be a bit more self-documenting than using the
-- * generic target bits directly.
-- */
--#define arm_tlb_bti_gp(x) (typecheck_memtxattrs(x)->target_tlb_bit0)
--
  /*
   * AArch64 usage of the PAGE_TARGET_* bits for linux-user.
-  */
-diff --git a/target/arm/internals.h b/target/arm/internals.h
-index 2b38a83574..268c3c7380 100644
---- a/target/arm/internals.h
-+++ b/target/arm/internals.h
-@@ -77,6 +77,7 @@ FIELD(V7M_EXCRET, RES1, 7, 25) /* including the must-be-1 prefix */
- /* Bit definitions for PageEntryExtra */
- FIELD(PAGEENTRYEXTRA, ATTRS, 0, 8)
- FIELD(PAGEENTRYEXTRA, SHAREABILITY, 8, 2)
-+FIELD(PAGEENTRYEXTRA, GUARDED, 10, 1)
- FIELD(PAGEENTRYEXTRA, PA, 12, 52)
+diff --git a/target/arm/sve_ldst_internal.h b/target/arm/sve_ldst_internal.h
+index b5c473fc48..4f159ec4ad 100644
+--- a/target/arm/sve_ldst_internal.h
++++ b/target/arm/sve_ldst_internal.h
+@@ -134,6 +134,7 @@ typedef struct {
+     void *host;
+     int flags;
+     MemTxAttrs attrs;
++    bool tagged;
+ } SVEHostPage;
  
- /* Minimum value which is a magic number for exception return */
-@@ -1129,6 +1130,7 @@ typedef struct ARMCacheAttrs {
-     unsigned int attrs:8;
-     unsigned int shareability:2; /* as in the SH field of the VMSAv8-64 PTEs */
-     bool is_s2_format:1;
-+    bool guarded:1;              /* guarded bit of the v8-64 PTE */
- } ARMCacheAttrs;
- 
- bool get_phys_addr(CPUARMState *env, target_ulong address,
-diff --git a/target/arm/ptw.c b/target/arm/ptw.c
-index da478104f0..204c820026 100644
---- a/target/arm/ptw.c
-+++ b/target/arm/ptw.c
-@@ -1320,8 +1320,8 @@ static bool get_phys_addr_lpae(CPUARMState *env, uint64_t address,
-         txattrs->secure = false;
-     }
-     /* When in aarch64 mode, and BTI is enabled, remember GP in the IOTLB.  */
--    if (aarch64 && guarded && cpu_isar_feature(aa64_bti, cpu)) {
--        arm_tlb_bti_gp(txattrs) = true;
-+    if (aarch64 && cpu_isar_feature(aa64_bti, cpu)) {
-+        cacheattrs->guarded = guarded;
-     }
- 
-     if (mmu_idx == ARMMMUIdx_Stage2 || mmu_idx == ARMMMUIdx_Stage2_S) {
-diff --git a/target/arm/tlb_helper.c b/target/arm/tlb_helper.c
-index 1305b6ec7d..7476fcafeb 100644
---- a/target/arm/tlb_helper.c
-+++ b/target/arm/tlb_helper.c
-@@ -244,6 +244,8 @@ bool arm_cpu_tlb_fill(CPUState *cs, vaddr address, int size,
-                                  cacheattrs.attrs);
-             extra.x = FIELD_DP64(extra.x, PAGEENTRYEXTRA, SHAREABILITY,
-                                  cacheattrs.shareability);
-+            extra.x = FIELD_DP64(extra.x, PAGEENTRYEXTRA, GUARDED,
-+                                 cacheattrs.guarded);
-         }
- 
-         tlb_set_page_with_extra(cs, address, phys_addr, attrs, extra,
-diff --git a/target/arm/translate-a64.c b/target/arm/translate-a64.c
-index c86b97b1d4..57f492ccef 100644
---- a/target/arm/translate-a64.c
-+++ b/target/arm/translate-a64.c
-@@ -14543,22 +14543,16 @@ static bool is_guarded_page(CPUARMState *env, DisasContext *s)
- #ifdef CONFIG_USER_ONLY
-     return page_get_flags(addr) & PAGE_BTI;
+ bool sve_probe_page(SVEHostPage *info, bool nofault, CPUARMState *env,
+diff --git a/target/arm/mte_helper.c b/target/arm/mte_helper.c
+index d11a8c70d0..5327df96d9 100644
+--- a/target/arm/mte_helper.c
++++ b/target/arm/mte_helper.c
+@@ -105,10 +105,9 @@ static uint8_t *allocation_tag_mem(CPUARMState *env, int ptr_mmu_idx,
+                       TARGET_PAGE_BITS - LOG2_TAG_GRANULE - 1);
+     return tags + index;
  #else
+-    uintptr_t index;
+-    CPUIOTLBEntry *iotlbentry;
 +    MemTxAttrs attrs;
 +    PageEntryExtra extra;
-+    void *host;
-     int mmu_idx = arm_to_core_mmu_idx(s->mmu_idx);
--    unsigned int index = tlb_index(env, mmu_idx, addr);
--    CPUTLBEntry *entry = tlb_entry(env, mmu_idx, addr);
-+    int flags;
+     int in_page, flags;
+-    ram_addr_t ptr_ra;
+     hwaddr ptr_paddr, tag_paddr, xlat;
+     MemoryRegion *mr;
+     ARMASIdx tag_asi;
+@@ -124,30 +123,12 @@ static uint8_t *allocation_tag_mem(CPUARMState *env, int ptr_mmu_idx,
+      * valid.  Indicate to probe_access_flags no-fault, then assert that
+      * we received a valid page.
+      */
+-    flags = probe_access_flags(env, ptr, ptr_access, ptr_mmu_idx,
+-                               ra == 0, &host, ra);
++    flags = probe_access_extra(env, ptr, ptr_access, ptr_mmu_idx,
++                               ra == 0, &host, &attrs, &extra, ra);
+     assert(!(flags & TLB_INVALID_MASK));
  
 -    /*
--     * We test this immediately after reading an insn, which means
--     * that any normal page must be in the TLB.  The only exception
--     * would be for executing from flash or device memory, which
--     * does not retain the TLB entry.
--     *
--     * FIXME: Assume false for those, for now.  We could use
--     * arm_cpu_get_phys_page_attrs_debug to re-read the page
--     * table entry even for that case.
+-     * Find the iotlbentry for ptr.  This *must* be present in the TLB
+-     * because we just found the mapping.
+-     * TODO: Perhaps there should be a cputlb helper that returns a
+-     * matching tlb entry + iotlb entry.
 -     */
--    return (tlb_hit(entry->addr_code, addr) &&
--            arm_tlb_bti_gp(&env_tlb(env)->d[mmu_idx].iotlb[index].attrs));
-+    flags = probe_access_extra(env, addr, MMU_INST_FETCH, mmu_idx,
-+                               false, &host, &attrs, &extra, 0);
-+    assert(!(flags & TLB_INVALID_MASK));
-+    return FIELD_EX64(extra.x, PAGEENTRYEXTRA, GUARDED);
- #endif
+-    index = tlb_index(env, ptr_mmu_idx, ptr);
+-# ifdef CONFIG_DEBUG_TCG
+-    {
+-        CPUTLBEntry *entry = tlb_entry(env, ptr_mmu_idx, ptr);
+-        target_ulong comparator = (ptr_access == MMU_DATA_LOAD
+-                                   ? entry->addr_read
+-                                   : tlb_addr_write(entry));
+-        g_assert(tlb_hit(comparator, ptr));
+-    }
+-# endif
+-    iotlbentry = &env_tlb(env)->d[ptr_mmu_idx].iotlb[index];
+-
+     /* If the virtual page MemAttr != Tagged, access unchecked. */
+-    if (!arm_tlb_mte_tagged(&iotlbentry->attrs)) {
++    if (FIELD_EX64(extra.x, PAGEENTRYEXTRA, ATTRS) != 0xf0) {
+         return NULL;
+     }
+ 
+@@ -180,33 +161,20 @@ static uint8_t *allocation_tag_mem(CPUARMState *env, int ptr_mmu_idx,
+     if (unlikely(flags & TLB_WATCHPOINT)) {
+         int wp = ptr_access == MMU_DATA_LOAD ? BP_MEM_READ : BP_MEM_WRITE;
+         assert(ra != 0);
+-        cpu_check_watchpoint(env_cpu(env), ptr, ptr_size,
+-                             iotlbentry->attrs, wp, ra);
++        cpu_check_watchpoint(env_cpu(env), ptr, ptr_size, attrs, wp, ra);
+     }
+ 
+-    /*
+-     * Find the physical address within the normal mem space.
+-     * The memory region lookup must succeed because TLB_MMIO was
+-     * not set in the cputlb lookup above.
+-     */
+-    mr = memory_region_from_host(host, &ptr_ra);
+-    tcg_debug_assert(mr != NULL);
+-    tcg_debug_assert(memory_region_is_ram(mr));
+-    ptr_paddr = ptr_ra;
+-    do {
+-        ptr_paddr += mr->addr;
+-        mr = mr->container;
+-    } while (mr);
++    /* Recover the physical address from PageEntryExtra. */
++    ptr_paddr = extra.x & R_PAGEENTRYEXTRA_PA_MASK;
+ 
+     /* Convert to the physical address in tag space.  */
+     tag_paddr = ptr_paddr >> (LOG2_TAG_GRANULE + 1);
+ 
+     /* Look up the address in tag space. */
+-    tag_asi = iotlbentry->attrs.secure ? ARMASIdx_TagS : ARMASIdx_TagNS;
++    tag_asi = attrs.secure ? ARMASIdx_TagS : ARMASIdx_TagNS;
+     tag_as = cpu_get_address_space(env_cpu(env), tag_asi);
+     mr = address_space_translate(tag_as, tag_paddr, &xlat, NULL,
+-                                 tag_access == MMU_DATA_STORE,
+-                                 iotlbentry->attrs);
++                                 tag_access == MMU_DATA_STORE, attrs);
+ 
+     /*
+      * Note that @mr will never be NULL.  If there is nothing in the address
+diff --git a/target/arm/sve_helper.c b/target/arm/sve_helper.c
+index 0c6379e6e8..4b853a25aa 100644
+--- a/target/arm/sve_helper.c
++++ b/target/arm/sve_helper.c
+@@ -5323,8 +5323,18 @@ bool sve_probe_page(SVEHostPage *info, bool nofault, CPUARMState *env,
+      */
+     addr = useronly_clean_ptr(addr);
+ 
++#ifdef CONFIG_USER_ONLY
+     flags = probe_access_flags(env, addr, access_type, mmu_idx, nofault,
+                                &info->host, retaddr);
++    memset(&info->attrs, 0, sizeof(info->attrs));
++    /* Require both ANON and MTE; see allocation_tag_mem(). */
++    info->tagged = (flags & PAGE_ANON) && (flags & PAGE_MTE);
++#else
++    PageEntryExtra extra;
++    flags = probe_access_extra(env, addr, access_type, mmu_idx, nofault,
++                               &info->host, &info->attrs, &extra, retaddr);
++    info->tagged = FIELD_EX64(extra.x, PAGEENTRYEXTRA, ATTRS) == 0xf0;
++#endif
+     info->flags = flags;
+ 
+     if (flags & TLB_INVALID_MASK) {
+@@ -5334,33 +5344,6 @@ bool sve_probe_page(SVEHostPage *info, bool nofault, CPUARMState *env,
+ 
+     /* Ensure that info->host[] is relative to addr, not addr + mem_off. */
+     info->host -= mem_off;
+-
+-#ifdef CONFIG_USER_ONLY
+-    memset(&info->attrs, 0, sizeof(info->attrs));
+-    /* Require both MAP_ANON and PROT_MTE -- see allocation_tag_mem. */
+-    arm_tlb_mte_tagged(&info->attrs) =
+-        (flags & PAGE_ANON) && (flags & PAGE_MTE);
+-#else
+-    /*
+-     * Find the iotlbentry for addr and return the transaction attributes.
+-     * This *must* be present in the TLB because we just found the mapping.
+-     */
+-    {
+-        uintptr_t index = tlb_index(env, mmu_idx, addr);
+-
+-# ifdef CONFIG_DEBUG_TCG
+-        CPUTLBEntry *entry = tlb_entry(env, mmu_idx, addr);
+-        target_ulong comparator = (access_type == MMU_DATA_LOAD
+-                                   ? entry->addr_read
+-                                   : tlb_addr_write(entry));
+-        g_assert(tlb_hit(comparator, addr));
+-# endif
+-
+-        CPUIOTLBEntry *iotlbentry = &env_tlb(env)->d[mmu_idx].iotlb[index];
+-        info->attrs = iotlbentry->attrs;
+-    }
+-#endif
+-
+     return true;
  }
  
+@@ -5589,7 +5572,7 @@ void sve_cont_ldst_mte_check(SVEContLdSt *info, CPUARMState *env,
+     intptr_t mem_off, reg_off, reg_last;
+ 
+     /* Process the page only if MemAttr == Tagged. */
+-    if (arm_tlb_mte_tagged(&info->page[0].attrs)) {
++    if (info->page[0].tagged) {
+         mem_off = info->mem_off_first[0];
+         reg_off = info->reg_off_first[0];
+         reg_last = info->reg_off_split;
+@@ -5610,7 +5593,7 @@ void sve_cont_ldst_mte_check(SVEContLdSt *info, CPUARMState *env,
+     }
+ 
+     mem_off = info->mem_off_first[1];
+-    if (mem_off >= 0 && arm_tlb_mte_tagged(&info->page[1].attrs)) {
++    if (mem_off >= 0 && info->page[1].tagged) {
+         reg_off = info->reg_off_first[1];
+         reg_last = info->reg_off_last[1];
+ 
+@@ -5989,7 +5972,7 @@ void sve_ldnfff1_r(CPUARMState *env, void *vg, const target_ulong addr,
+      * Disable MTE checking if the Tagged bit is not set.  Since TBI must
+      * be set within MTEDESC for MTE, !mtedesc => !mte_active.
+      */
+-    if (!arm_tlb_mte_tagged(&info.page[0].attrs)) {
++    if (!info.page[0].tagged) {
+         mtedesc = 0;
+     }
+ 
+@@ -6540,7 +6523,7 @@ void sve_ld1_z(CPUARMState *env, void *vd, uint64_t *vg, void *vm,
+                         cpu_check_watchpoint(env_cpu(env), addr, msize,
+                                              info.attrs, BP_MEM_READ, retaddr);
+                     }
+-                    if (mtedesc && arm_tlb_mte_tagged(&info.attrs)) {
++                    if (mtedesc && info.tagged) {
+                         mte_check(env, mtedesc, addr, retaddr);
+                     }
+                     if (unlikely(info.flags & TLB_MMIO)) {
+@@ -6557,7 +6540,7 @@ void sve_ld1_z(CPUARMState *env, void *vd, uint64_t *vg, void *vm,
+                                              msize, info.attrs,
+                                              BP_MEM_READ, retaddr);
+                     }
+-                    if (mtedesc && arm_tlb_mte_tagged(&info.attrs)) {
++                    if (mtedesc && info.tagged) {
+                         mte_check(env, mtedesc, addr, retaddr);
+                     }
+                     tlb_fn(env, &scratch, reg_off, addr, retaddr);
+@@ -6758,9 +6741,7 @@ void sve_ldff1_z(CPUARMState *env, void *vd, uint64_t *vg, void *vm,
+                      (env_cpu(env), addr, msize) & BP_MEM_READ)) {
+                     goto fault;
+                 }
+-                if (mtedesc &&
+-                    arm_tlb_mte_tagged(&info.attrs) &&
+-                    !mte_probe(env, mtedesc, addr)) {
++                if (mtedesc && info.tagged && !mte_probe(env, mtedesc, addr)) {
+                     goto fault;
+                 }
+ 
+@@ -6946,7 +6927,7 @@ void sve_st1_z(CPUARMState *env, void *vd, uint64_t *vg, void *vm,
+                                          info.attrs, BP_MEM_WRITE, retaddr);
+                 }
+ 
+-                if (mtedesc && arm_tlb_mte_tagged(&info.attrs)) {
++                if (mtedesc && info.tagged) {
+                     mte_check(env, mtedesc, addr, retaddr);
+                 }
+             }
+diff --git a/target/arm/tlb_helper.c b/target/arm/tlb_helper.c
+index 9de3099153..1305b6ec7d 100644
+--- a/target/arm/tlb_helper.c
++++ b/target/arm/tlb_helper.c
+@@ -245,10 +245,6 @@ bool arm_cpu_tlb_fill(CPUState *cs, vaddr address, int size,
+             extra.x = FIELD_DP64(extra.x, PAGEENTRYEXTRA, SHAREABILITY,
+                                  cacheattrs.shareability);
+         }
+-        /* Notice and record tagged memory. */
+-        if (cpu_isar_feature(aa64_mte, cpu) && cacheattrs.attrs == 0xf0) {
+-            arm_tlb_mte_tagged(&attrs) = true;
+-        }
+ 
+         tlb_set_page_with_extra(cs, address, phys_addr, attrs, extra,
+                                 prot, mmu_idx, page_size);
 -- 
 2.34.1
 

@@ -1,148 +1,122 @@
-Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp3303463lft;
-        Mon, 4 Jul 2022 08:22:10 -0700 (PDT)
-X-Google-Smtp-Source: AGRyM1vgBuVdLtJoNyrMAZpXEQtugDlPfDLavghvXk6UUYpWROgd4sPBCcheQcttGIhUpo27Oc2H
-X-Received: by 2002:a25:738b:0:b0:66e:4943:b6cc with SMTP id o133-20020a25738b000000b0066e4943b6ccmr5975615ybc.261.1656948130355;
-        Mon, 04 Jul 2022 08:22:10 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1656948130; cv=none;
+Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp3447959lft;
+        Mon, 4 Jul 2022 12:51:57 -0700 (PDT)
+X-Google-Smtp-Source: AGRyM1vC4Hxrokm6FprGmkjp3XLRNknY/UFWQhrUZoDUHAvneMtDZpPHQ+zFNgjp0iG5MpVQNOIh
+X-Received: by 2002:a81:3a08:0:b0:31c:2f56:4fee with SMTP id h8-20020a813a08000000b0031c2f564feemr33474922ywa.449.1656964317140;
+        Mon, 04 Jul 2022 12:51:57 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1656964317; cv=none;
         d=google.com; s=arc-20160816;
-        b=srLJO/8iRLTaYDeHLMrD5ZEN7xFBFcNvVM1gTSyOWz5ogrCM18HaV/FvqUR8uV8btw
-         oIf7z3ZEvhHYwDy/+fSuYe1xP/T79QhZ1NffYdRJedTvLy1PFrINvEKiWdZfrkTmpmDe
-         AVQn3pMv/awyORmTq1oJAVlnZeGojryP7TTIcYuJD+/7mtuF/Fh6Na79vHURyTt5ilvP
-         IOTgWnMu1DIc56H/d1m/dSeCNpglT7/gZ7RC4tuqIPwDNZn1BGgQnqAmrvLO+9bDA9i1
-         pQh2Ma0vKC5PNvCLfUsvTO+z7zTjklHSh2t9A7xz/jb8o7F9gtBim35kSTLXxzqDNjV5
-         pAZw==
+        b=npjGcpPJcbNr23eN84RtADFJfKh8DL9XxcHFdstgR1+neWMV6XmqMMtaKZ8Q1z3lp/
+         DDH3S2HZOpSkQoT/NxA3x9WQ6eYkbj/5xgSf5x8wH2iQoo9RSVsFsB+ofGVba5sxiLT7
+         QplOtGDBsfAFO8GkvDVp+ANmIA3GhIgArntJGnoAl0rWUt3HOKG15VrBLexJDV9x7ouc
+         u2frnzS/h+Wn32KflfISLW4EwXGEq5t48r6rgYHCZiJ8kXIAO1ie6PkeZaKvNku0XYCo
+         l3SLUJQxiUGVJ3/z5AmpiUEpci1Sy5KPnVxDlb9tmI6HkOTg/oQsy42Znoym0yNsh7WJ
+         f01g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:from:references:cc:to:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=oAa20g9OAuQhUxFtb8haoc0C6+H5TmFHdFkWoYZZhpw=;
-        b=G8sMGwcaZfyiHuvlIK2W+pPSWgxF3AG6N6RTd1E/LPByaRZ4mA7aftcozwJ82qPanQ
-         QU12//eLW8tTas6GN+afvzx5a4gY4oG0S+7S9c6ObH4FZYbT1HEi2Mt9TNySd0JpDqTc
-         qon0gEQRZhmUqqshdVK/h6sn6DLpvTri1yjiBw1xDhQwd87GlBazSyUBAic1AtCpBDkK
-         X4Ok6ncK7NSOB9feRzJknCF/xZ7NuCtLLAI41M8/XUnuL6s38J+uzopH5k4XyGxuz0wL
-         6SN+g+1ufgeosPhCeCjCSkUSuuWh0N4YY5U2ujZz5sjpZhW2kSrKTqPSMq1hZRWUGfDr
-         lOww==
+         :mime-version:message-id:date:subject:cc:to:from:feedback-id
+         :dkim-signature:dkim-signature;
+        bh=Sw6AnPb2jkpWNlAF4H6i19pM/re/Qd9enb6AWeyfsnY=;
+        b=G0VcUa1i2pLb7T1nG5WVeWwerkScPYA/lwKCsR1VD5nFgm3WrDTm60yGHp3hjZGYrh
+         qdFhAXeyH/vEnJD+VE91SmsaAIl2EBmIGsF5TtrBLGvhgeoRfbDj7o0sUuBb3U4tTDEv
+         PcFponLCGi/ME56+aMOSJa+0W7tpo9JlpaNgB/ZZJz0tQULjGSqncrpDVbBDNmGb6wI0
+         X5EtRYDRI0cfnYoWvQ5uKOE6cIOLXP5wriEuvBNpbRYvOX5PPxotR4yGnBqsJRwDFKuH
+         Rs2Z+L/P+wHX8tJgldQp0KKIBr0mFGAOD9BSCfvOCSkON9HuT9GyrxrGThPNgQmHUBQn
+         cI7Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=iWzCXxH9;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dkim=fail header.i=@pjd.dev header.s=fm1 header.b=qVPRIbVG;
+       dkim=fail header.i=@messagingengine.com header.s=i9e814621.fm2 header.b="NwY4BSf/";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 124-20020a251282000000b00663e2ea09f5si42253538ybs.270.2022.07.04.08.22.10
+        by mx.google.com with ESMTPS id m128-20020a255886000000b0066e4b1e3da1si4144493ybb.35.2022.07.04.12.51.56
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 04 Jul 2022 08:22:10 -0700 (PDT)
+        Mon, 04 Jul 2022 12:51:57 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=iWzCXxH9;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:58386 helo=lists1p.gnu.org)
+       dkim=fail header.i=@pjd.dev header.s=fm1 header.b=qVPRIbVG;
+       dkim=fail header.i=@messagingengine.com header.s=i9e814621.fm2 header.b="NwY4BSf/";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:45132 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1o8Ntp-0002AB-OG
-	for alex.bennee@linaro.org; Mon, 04 Jul 2022 11:22:09 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:48110)
+	id 1o8S6u-0002w9-I6
+	for alex.bennee@linaro.org; Mon, 04 Jul 2022 15:51:56 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:45372)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <hreitz@redhat.com>) id 1o8NtF-0001ru-RT
- for qemu-arm@nongnu.org; Mon, 04 Jul 2022 11:21:33 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:42535)
+ (Exim 4.90_1) (envelope-from <peter@pjd.dev>)
+ id 1o8S6g-0002sC-Ss; Mon, 04 Jul 2022 15:51:42 -0400
+Received: from new3-smtp.messagingengine.com ([66.111.4.229]:40647)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <hreitz@redhat.com>) id 1o8NtE-0002Ab-BB
- for qemu-arm@nongnu.org; Mon, 04 Jul 2022 11:21:33 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1656948091;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=oAa20g9OAuQhUxFtb8haoc0C6+H5TmFHdFkWoYZZhpw=;
- b=iWzCXxH9QkG2P4hLUc6P7I+Dr78Zoj+Gn+n3J2es37hVLo1xYYyLdd03f+x9oVtbtRqHoG
- tpzfCcJKe9sBz9cu5MS6//TII2pbG3nYylS17hD7MwvzgnAzfFtb9Ul6f/a4ipItUqN3lZ
- XtMPhzAoAv6wN068dpk5ZLZmDf38g5I=
-Received: from mail-ej1-f71.google.com (mail-ej1-f71.google.com
- [209.85.218.71]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-617-BLVN88TkOwChg8nA2jfyxw-1; Mon, 04 Jul 2022 11:21:23 -0400
-X-MC-Unique: BLVN88TkOwChg8nA2jfyxw-1
-Received: by mail-ej1-f71.google.com with SMTP id
- nb10-20020a1709071c8a00b006e8f89863ceso2130326ejc.18
- for <qemu-arm@nongnu.org>; Mon, 04 Jul 2022 08:21:23 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
- :content-language:to:cc:references:from:in-reply-to
- :content-transfer-encoding;
- bh=oAa20g9OAuQhUxFtb8haoc0C6+H5TmFHdFkWoYZZhpw=;
- b=xwAEiLbcv/seTOu+YbnVtnsVkW8F7aSPIov0bneoIMhL1WG6GmAdWJq7yAJZVoNvXM
- 405eTDN7NV/XDjWxH8xeiCFFHSKp2u/r2n+MKTxQN7YPsBBZyUWCwd/2jj+Pw3FFRWKL
- wycB/3hB7yxA9unpzJ9ZGdwNl82p/UvHjNc+8Y4idOfiG2ZcfUzAlURDMHmst0No+eHO
- 1Y4Gh5GDarzZx+Tm88gsBOc0K1gH8a+LM+WMkZAtYqUFRqiLPP3J4U0NPbq1CcLvHIfC
- OFbfu9XUsCNz/wNC0bNn/CItlhPOi9nH3Q1qgtzkDwpL6VjfDL6Sl0VkNssCSFYns/EG
- MFoA==
-X-Gm-Message-State: AJIora9H+lqExMbzO63mHVcIq73C+ItIXFqXMBTEmyaCXfuBboW42Bmh
- IsRludp0dHLzOekStZ+gG1hueQBB1LquqS1eEkETPWZ4lTNntydiQPd1x8uUURlRBZuI2F9xIwk
- QxY+j6xAz+FyI
-X-Received: by 2002:a05:6402:390b:b0:43a:281e:48fc with SMTP id
- fe11-20020a056402390b00b0043a281e48fcmr10970263edb.214.1656948082194; 
- Mon, 04 Jul 2022 08:21:22 -0700 (PDT)
-X-Received: by 2002:a05:6402:390b:b0:43a:281e:48fc with SMTP id
- fe11-20020a056402390b00b0043a281e48fcmr10970195edb.214.1656948081840; 
- Mon, 04 Jul 2022 08:21:21 -0700 (PDT)
-Received: from ?IPV6:2a02:8071:5056:d40:63e3:25a7:c1a1:4455?
- ([2a02:8071:5056:d40:63e3:25a7:c1a1:4455])
- by smtp.gmail.com with ESMTPSA id
- fi9-20020a170906da0900b00722e5b234basm14391221ejb.179.2022.07.04.08.21.20
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 04 Jul 2022 08:21:21 -0700 (PDT)
-Message-ID: <741358f6-43fd-15d1-86c8-4591cef658bb@redhat.com>
-Date: Mon, 4 Jul 2022 17:21:19 +0200
+ (Exim 4.90_1) (envelope-from <peter@pjd.dev>)
+ id 1o8S6e-0000DE-Lr; Mon, 04 Jul 2022 15:51:42 -0400
+Received: from compute3.internal (compute3.nyi.internal [10.202.2.43])
+ by mailnew.nyi.internal (Postfix) with ESMTP id 64FA65803AF;
+ Mon,  4 Jul 2022 15:51:37 -0400 (EDT)
+Received: from mailfrontend1 ([10.202.2.162])
+ by compute3.internal (MEProxy); Mon, 04 Jul 2022 15:51:37 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=pjd.dev; h=cc:cc
+ :content-transfer-encoding:date:date:from:from:in-reply-to
+ :message-id:mime-version:reply-to:sender:subject:subject:to:to;
+ s=fm1; t=1656964297; x=1656967897; bh=Sw6AnPb2jkpWNlAF4H6i19pM/
+ re/Qd9enb6AWeyfsnY=; b=qVPRIbVGUT2IRQoGGUbPESyLe9PpV6nvE6CShBpnf
+ J+KyyMInnL9qri7qLlA/0C9+NyYInz2xf0WSsI6d+iLTem7kv7OoC4Tk7pE17966
+ tj8CzZlXu7nmp4OU8PGRDZkEaWg3A7ZS7VWCwJSFzDGys77bqSlFQJOsNWA+qzHI
+ ejFw7Wsm3bkM7ifZJRI4/n+cKnFK/e89UxswpLXJSxfJh4wAefS6joImkiFwWuqQ
+ d8UYc9PI0gfQLWVm7uPCZ4HvT/Zgd81AO0qnmOlwN3iDEiP37Mj3xr06ieUDTbMC
+ BPvTnmxTerhyABiAmfmn5WCv6lGilApt4SiC24T6V5rpA==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+ messagingengine.com; h=cc:cc:content-transfer-encoding:date:date
+ :feedback-id:feedback-id:from:from:in-reply-to:message-id
+ :mime-version:reply-to:sender:subject:subject:to:to:x-me-proxy
+ :x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=i9e814621.fm2;
+ t=1656964297; x=1656967897; bh=Sw6AnPb2jkpWNlAF4H6i19pM/re/Qd9e
+ nb6AWeyfsnY=; b=NwY4BSf/sFr8Nue7JjBTT20/KZZWKCQ4VxlG/bmAZ1tjuGY3
+ OQ4ChEfRgBz8rEOBdtLMsXLnId+lSb5v5vOCU9997tmrw/Wb0BxkPEjp2c17932a
+ YozK2OCklGqJ+nAC0znwkjtzp6e7VVhdv5EgyRZomPf3YsxTeVjDdHqDVEPbfsng
+ OhrGqgPSMH+zjA/bivZeDJnIP8OIAMsmhyfUywUwQZx+FM8/ViXDFHA6+UQFe8h/
+ iz9cjZNXmfhBdo/ufFMre1W+R3oGnZ07TA/DWvJD9PUv1zdcMs2gKr/RjtmOfBWT
+ bd9HMI2qa6oYSNdXM8tihuvBoiZeTYfK+PDB9g==
+X-ME-Sender: <xms:yETDYvW1XEJ934DHC8PFvxNvKKG39ocQcPFUohdFuyang2PYtJAhpA>
+ <xme:yETDYnmzxQgOIHkGXjP9gKdpZEsKevw_7mCzB6ds4eCThzMbf7-0yKUsRhHh2kEn0
+ j00vBRWmhel31jfp7k>
+X-ME-Received: <xmr:yETDYrZ4WLSGg5rThH8zqXPGn8-K_6XIHaXsQY2mcxs2ztNt4g8QHXAQL1jFRw>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvfedrudehledgudegfecutefuodetggdotefrod
+ ftvfcurfhrohhfihhlvgemucfhrghsthforghilhdpqfgfvfdpuffrtefokffrpgfnqfgh
+ necuuegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmd
+ enucfjughrpefhvfevufffkffoggfgsedtkeertdertddtnecuhfhrohhmpefrvghtvghr
+ ucffvghlvghvohhrhigrshcuoehpvghtvghrsehpjhgurdguvghvqeenucggtffrrghtth
+ gvrhhnpedvjeeghfekjeejiedtuddtvdeugeehheefleetffeugeejuddttefgvdegveei
+ geenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhgrihhlfhhrohhmpehpvg
+ htvghrsehpjhgurdguvghv
+X-ME-Proxy: <xmx:yETDYqVVyqZQkDqmeY5mh1bFcuF3Fncn7u__vk05XkUs1KZgjmw3pw>
+ <xmx:yETDYpl5eBPfI8NqEPVxAWCraseZoGwSh_gz4pyBQZ-RZyp1o6nDhg>
+ <xmx:yETDYnfYfc-h-w3O28yelggLvE4K28mzvhMj9_upCc_8IPupfLF3yg>
+ <xmx:yUTDYsvl_x8S0FHBkPcjDDmSAI9NcktOr60sAxF0Z9jCh_WyekmcGw>
+Feedback-ID: i9e814621:Fastmail
+Received: by mail.messagingengine.com (Postfix) with ESMTPA; Mon,
+ 4 Jul 2022 15:51:36 -0400 (EDT)
+From: Peter Delevoryas <peter@pjd.dev>
+To: clg@kaod.org
+Cc: Peter Delevoryas <peter@pjd.dev>, Peter Maydell <peter.maydell@linaro.org>,
+ Andrew Jeffery <andrew@aj.id.au>, Joel Stanley <joel@jms.id.au>,
+ qemu-arm@nongnu.org, qemu-devel@nongnu.org
+Subject: [PATCH 1/2] hw/i2c/aspeed: Allow machines to set I2CBus
+Date: Mon,  4 Jul 2022 12:51:34 -0700
+Message-Id: <20220704195135.10348-1-peter@pjd.dev>
+X-Mailer: git-send-email 2.37.0
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.10.0
-Subject: Re: [PATCH 03/18] block: Change blk_{pread,pwrite}() param order
-To: Alberto Faria <afaria@redhat.com>, qemu-devel@nongnu.org
-Cc: John Snow <jsnow@redhat.com>, Stefan Weil <sw@weilnetz.de>,
- Andrew Jeffery <andrew@aj.id.au>, Beniamino Galvani <b.galvani@gmail.com>,
- qemu-block@nongnu.org, Fam Zheng <fam@euphon.net>,
- Niek Linnenbank <nieklinnenbank@gmail.com>,
- "Dr. David Alan Gilbert" <dgilbert@redhat.com>, Kevin Wolf
- <kwolf@redhat.com>, Stefan Hajnoczi <stefanha@redhat.com>,
- Eric Blake <eblake@redhat.com>, Alistair Francis <alistair@alistair23.me>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
- qemu-arm@nongnu.org, qemu-riscv@nongnu.org, Jeff Cody <codyprime@gmail.com>,
- Daniel Henrique Barboza <danielhb413@gmail.com>,
- =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- Juan Quintela <quintela@redhat.com>, Joel Stanley <joel@jms.id.au>,
- Peter Maydell <peter.maydell@linaro.org>, Laurent Vivier
- <laurent@vivier.eu>, Bin Meng <bin.meng@windriver.com>,
- Greg Kurz <groug@kaod.org>,
- Vladimir Sementsov-Ogievskiy <v.sementsov-og@mail.ru>, qemu-ppc@nongnu.org,
- Palmer Dabbelt <palmer@dabbelt.com>,
- David Gibson <david@gibson.dropbear.id.au>, "Denis V. Lunev" <den@openvz.org>
-References: <20220517113524.197910-1-afaria@redhat.com>
- <20220517113746.198993-1-afaria@redhat.com>
-From: Hanna Reitz <hreitz@redhat.com>
-In-Reply-To: <20220517113746.198993-1-afaria@redhat.com>
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=hreitz@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=hreitz@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -28
-X-Spam_score: -2.9
-X-Spam_bar: --
-X-Spam_report: (-2.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.082,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=66.111.4.229; envelope-from=peter@pjd.dev;
+ helo=new3-smtp.messagingengine.com
+X-Spam_score_int: -12
+X-Spam_score: -1.3
+X-Spam_bar: -
+X-Spam_report: (-1.3 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ FROM_FMBLA_NEWDOM=1.498, RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -157,69 +131,73 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 8Ve3/YNv0CDL
+X-TUID: TlZUPgK8j+Rt
 
-On 17.05.22 13:37, Alberto Faria wrote:
-> Swap 'buf' and 'bytes' around for consistency with
-> blk_co_{pread,pwrite}(), and in preparation to implement these functions
-> using generated_co_wrapper.
->
-> Callers were updated using this Coccinelle script:
->
->      @@ expression blk, offset, buf, bytes, flags; @@
->      - blk_pread(blk, offset, buf, bytes, flags)
->      + blk_pread(blk, offset, bytes, buf, flags)
->
->      @@ expression blk, offset, buf, bytes, flags; @@
->      - blk_pwrite(blk, offset, buf, bytes, flags)
->      + blk_pwrite(blk, offset, bytes, buf, flags)
->
-> It had no effect on hw/block/nand.c, presumably due to the #if, so that
-> file was updated manually.
->
-> Overly-long lines were then fixed by hand.
->
-> Signed-off-by: Alberto Faria <afaria@redhat.com>
-> ---
->   block.c                           |  2 +-
->   block/block-backend.c             |  4 +--
->   block/commit.c                    |  4 +--
->   block/crypto.c                    |  2 +-
->   block/export/fuse.c               |  4 +--
->   block/parallels.c                 |  2 +-
->   block/qcow.c                      |  8 +++---
->   block/qcow2.c                     |  4 +--
->   block/qed.c                       |  8 +++---
->   block/vdi.c                       |  4 +--
->   block/vhdx.c                      | 20 ++++++-------
->   block/vmdk.c                      | 10 +++----
->   block/vpc.c                       | 12 ++++----
->   hw/arm/allwinner-h3.c             |  2 +-
->   hw/arm/aspeed.c                   |  2 +-
->   hw/block/block.c                  |  2 +-
->   hw/block/fdc.c                    | 20 ++++++-------
->   hw/block/hd-geometry.c            |  2 +-
->   hw/block/m25p80.c                 |  2 +-
->   hw/block/nand.c                   | 47 ++++++++++++++++---------------
->   hw/block/onenand.c                | 32 ++++++++++-----------
->   hw/block/pflash_cfi01.c           |  4 +--
->   hw/block/pflash_cfi02.c           |  4 +--
->   hw/ide/atapi.c                    |  4 +--
->   hw/misc/mac_via.c                 |  4 +--
->   hw/misc/sifive_u_otp.c            | 14 ++++-----
->   hw/nvram/eeprom_at24c.c           |  4 +--
->   hw/nvram/spapr_nvram.c            |  6 ++--
->   hw/nvram/xlnx-bbram.c             |  4 +--
->   hw/nvram/xlnx-efuse.c             |  4 +--
->   hw/ppc/pnv_pnor.c                 |  6 ++--
->   hw/sd/sd.c                        |  4 +--
->   include/sysemu/block-backend-io.h |  4 +--
->   migration/block.c                 |  6 ++--
->   nbd/server.c                      |  8 +++---
->   qemu-img.c                        | 18 ++++++------
->   qemu-io-cmds.c                    |  4 +--
->   tests/unit/test-block-iothread.c  |  8 +++---
->   38 files changed, 150 insertions(+), 149 deletions(-)
+In a multi-SoC board, we want to allow machines to construct shared
+I2CBus's, so that we can have two SoC I2C controllers attached to a single
+I2CBus. We already expose read-only access, this just adds a method for
+setting and using an external I2CBus in the Aspeed I2C bus controller.
 
-Reviewed-by: Hanna Reitz <hreitz@redhat.com>
+One issue is that in order to use these methods, the machine needs to reach
+into the SoC and call these methods on the I2C controller, and we would
+prefer to keep the abstraction at the SoC level. If we create a set of
+"aspeed_soc_i2c_get_bus/set_bus" methods though, they will just be
+one-liners that don't do anything interesting. I would prefer to avoid that
+if possible, because that doesn't seem scalable if we need to do the same
+thing for all of the peripherals later.
+
+In addition, we are already reaching into the Aspeed SoC to access the flash
+controller to determine the boot rom size, so there is a precedent that we
+need to reach into SoC peripherals for data sometimes.
+
+Signed-off-by: Peter Delevoryas <peter@pjd.dev>
+---
+ hw/i2c/aspeed_i2c.c         | 16 +++++++++++++++-
+ include/hw/i2c/aspeed_i2c.h |  1 +
+ 2 files changed, 16 insertions(+), 1 deletion(-)
+
+diff --git a/hw/i2c/aspeed_i2c.c b/hw/i2c/aspeed_i2c.c
+index 42c6d69b82..00bf58c7a3 100644
+--- a/hw/i2c/aspeed_i2c.c
++++ b/hw/i2c/aspeed_i2c.c
+@@ -1236,7 +1236,12 @@ static void aspeed_i2c_bus_realize(DeviceState *dev, Error **errp)
+ 
+     sysbus_init_irq(SYS_BUS_DEVICE(dev), &s->irq);
+ 
+-    s->bus = i2c_init_bus(dev, name);
++    /*
++     * If a bus hasn't been provided to the controller, create one from scratch.
++     */
++    if (!s->bus) {
++        s->bus = i2c_init_bus(dev, name);
++    }
+     s->slave = i2c_slave_create_simple(s->bus, TYPE_ASPEED_I2C_BUS_SLAVE,
+                                        0xff);
+ 
+@@ -1420,3 +1425,12 @@ I2CBus *aspeed_i2c_get_bus(AspeedI2CState *s, int busnr)
+ 
+     return bus;
+ }
++
++void aspeed_i2c_set_bus(AspeedI2CState *s, int busnr, I2CBus *bus)
++{
++    AspeedI2CClass *aic = ASPEED_I2C_GET_CLASS(s);
++
++    if (busnr >= 0 && busnr < aic->num_busses) {
++        s->busses[busnr].bus = bus;
++    }
++}
+diff --git a/include/hw/i2c/aspeed_i2c.h b/include/hw/i2c/aspeed_i2c.h
+index 300a89b343..c60f8b291d 100644
+--- a/include/hw/i2c/aspeed_i2c.h
++++ b/include/hw/i2c/aspeed_i2c.h
+@@ -376,5 +376,6 @@ static inline bool aspeed_i2c_bus_is_enabled(AspeedI2CBus *bus)
+ }
+ 
+ I2CBus *aspeed_i2c_get_bus(AspeedI2CState *s, int busnr);
++void aspeed_i2c_set_bus(AspeedI2CState *s, int busnr, I2CBus *bus);
+ 
+ #endif /* ASPEED_I2C_H */
+-- 
+2.37.0
 

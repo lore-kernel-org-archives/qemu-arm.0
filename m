@@ -1,119 +1,118 @@
-Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp3503978lft;
-        Mon, 4 Jul 2022 15:01:24 -0700 (PDT)
-X-Google-Smtp-Source: AGRyM1vBQew4f6D9u6+dAEhVS4NA+mVD61B0DTxBIXIRatmIkQG2cmroHq8MeeZqG/44c1R40IlJ
-X-Received: by 2002:ac8:7fc2:0:b0:318:291d:8f55 with SMTP id b2-20020ac87fc2000000b00318291d8f55mr25886544qtk.572.1656972083970;
-        Mon, 04 Jul 2022 15:01:23 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1656972083; cv=none;
+Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp3504356lft;
+        Mon, 4 Jul 2022 15:02:10 -0700 (PDT)
+X-Google-Smtp-Source: AGRyM1u40qdHTRsK4IcKFSfq3jolzRMNoY8DXWtnHJwQucBskzAFucfBVYzyWnK7cyP+QnmIn5hb
+X-Received: by 2002:a05:622a:1829:b0:318:e0bc:d81 with SMTP id t41-20020a05622a182900b00318e0bc0d81mr25711476qtc.429.1656972130083;
+        Mon, 04 Jul 2022 15:02:10 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1656972130; cv=none;
         d=google.com; s=arc-20160816;
-        b=s6VMuXBQmsuxszrZfmaVymi6V6p1Jip+JdpPmhJkXoUUhzN5+eynor9zkUaoPWS9BW
-         tRuq3dnIZ0E795ugSO+8uCjLVjO8P0efmR3ADse/U5RJv5l2JmgB9xg44dsCZKeF5+NP
-         VJYGlIFzaE1ZCdCASc16jdWOO0oVAxNffbQV8VvKbkmuwSo9b4eUOztplOFW8uyK9Y9Q
-         EnoDA0TgDq1bEEyoo23W8T5JiY92+ErgvScbL4bG3oo6txK9U+Gf5qDfO3M7PQsngjgf
-         VmCXJiMSxt9y4FKDN56iTFUndo8vwhFdQoHp9oIIRGMyXhZuL7EODGe/NMEUJelPsczX
-         QLSA==
+        b=YWfHLhRquJfZKVumCSmzOBi9wpB5vNY8xG4Xcl1bOGtKoBelNmxtfUcPlLLPkyp/dP
+         VPKLLw1nuDpgvgg/6Yar9OT1ScPGvK1+BlVVNmCmETH2whOU6yrBwgLYp7Z50jCzBN+G
+         02Hhhe2nA9k6LXWLDGBhevfRGH7Lu+11N4syXn4GBMN5nFz5HRZ1BxIVPgs3RJEFJ3cv
+         SfwZTZP3r0eox9REewCp2/7cmnSynn63A0Easy6zDakxyfQJjb0FYfM+2faXlxcLI+vY
+         fUoJndhXsPYt7SB6Ktl7Y8f2pmgbELuca7txjCGKoyYaeeDZYniYRTdvSj5987/TL2aV
+         muJA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:feedback-id:dkim-signature:dkim-signature;
-        bh=nUTitRz1TxZmUf62qy6RkmAW6MN3XsO2koccG7mGFHk=;
-        b=zXv/KH/EeOxEQrutv2Klw1y4dVsGYA6o7oCdN5fONCtvuPblp9asrtWQYmdFoK42oF
-         I3WLHSHAetsCJRxgvi1V52hC0l5rSfSZiGU9nad2RjNyU3YEiDMcKj8K/pYew/e+PYgB
-         kO09vZFY8ZZJ9j2hXBB+VVe06SOrHprFL/c2hxb0O17XC4v2Trp4xvbK4QhSlrlmkCgn
-         kAOhroIbIhsKPp5LH4D2uV8uEi+YoO+q7g+o6Y9fD5cSWmt7hDdOIdqPE8Np1IyyPY8O
-         5rYS2w0vjuxQBAGwlMIbxID1xIPgRnW7EjkM6Uw0gl5/K33GHpyotn66JGEhGDeSJKFT
-         ug2g==
+        bh=3QleoIU+1JT9mlYnyGHMjE1752p++/xyJu5dhMG40pw=;
+        b=tlsuELqVZ5Sb33XTF+/93LIHOfIMWt9UbURse/Z5HZLGP7LsU75h+rkpFQ0ImAbm+e
+         EszhcE/Xd0asbQ6joV0zZdgqSP2Oo8EuDNIdeQ5SE+kN+skgPHvzfVXKnPj17LW/0Tpz
+         lBRzJYnemcb/xYn7Kz12qq3zGs8ha3s4iM+v7MNYxFVRa14OwgTugDuw97ydf3cSytLk
+         OfT1Bh+ftr5MdmcOQTS41NmbjblCYkF9iuMmU8VzJuqMO0gpJEkymQWpXQWxjzaFA3VS
+         elLicCmPRBIWAxImTZOd+r622JNq/7doSauvgrEQG727iCkp6V2uIG80T+sujQk/xV+Y
+         PW+g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@pjd.dev header.s=fm1 header.b="bsDYXh/C";
-       dkim=fail header.i=@messagingengine.com header.s=i9e814621.fm2 header.b=Fg5unATp;
+       dkim=fail header.i=@pjd.dev header.s=fm1 header.b=Spg8PmGV;
+       dkim=fail header.i=@messagingengine.com header.s=i9e814621.fm2 header.b=LfGTVxW0;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v34-20020a05622a18a200b003193f243a33si16136527qtc.222.2022.07.04.15.01.23
+        by mx.google.com with ESMTPS id 125-20020a370583000000b006aedcafd253si17441422qkf.148.2022.07.04.15.02.09
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 04 Jul 2022 15:01:23 -0700 (PDT)
+        Mon, 04 Jul 2022 15:02:10 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@pjd.dev header.s=fm1 header.b="bsDYXh/C";
-       dkim=fail header.i=@messagingengine.com header.s=i9e814621.fm2 header.b=Fg5unATp;
+       dkim=fail header.i=@pjd.dev header.s=fm1 header.b=Spg8PmGV;
+       dkim=fail header.i=@messagingengine.com header.s=i9e814621.fm2 header.b=LfGTVxW0;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:50830 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:52836 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1o8U8B-0004KV-Ff
-	for alex.bennee@linaro.org; Mon, 04 Jul 2022 18:01:23 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34626)
+	id 1o8U8v-0005nv-EY
+	for alex.bennee@linaro.org; Mon, 04 Jul 2022 18:02:09 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:34706)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter@pjd.dev>)
- id 1o8U29-0003gT-4B; Mon, 04 Jul 2022 17:55:09 -0400
-Received: from new2-smtp.messagingengine.com ([66.111.4.224]:39177)
+ id 1o8U2F-0003tD-5u; Mon, 04 Jul 2022 17:55:18 -0400
+Received: from new2-smtp.messagingengine.com ([66.111.4.224]:35067)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter@pjd.dev>)
- id 1o8U27-0000LI-CP; Mon, 04 Jul 2022 17:55:08 -0400
+ id 1o8U2D-0000MJ-7v; Mon, 04 Jul 2022 17:55:14 -0400
 Received: from compute1.internal (compute1.nyi.internal [10.202.2.41])
- by mailnew.nyi.internal (Postfix) with ESMTP id 989FE580FDE;
- Mon,  4 Jul 2022 17:55:06 -0400 (EDT)
+ by mailnew.nyi.internal (Postfix) with ESMTP id 706FF580FDC;
+ Mon,  4 Jul 2022 17:55:11 -0400 (EDT)
 Received: from mailfrontend2 ([10.202.2.163])
- by compute1.internal (MEProxy); Mon, 04 Jul 2022 17:55:06 -0400
+ by compute1.internal (MEProxy); Mon, 04 Jul 2022 17:55:11 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=pjd.dev; h=cc:cc
- :content-transfer-encoding:content-type:date:date:from:from
- :in-reply-to:in-reply-to:message-id:mime-version:references
- :reply-to:sender:subject:subject:to:to; s=fm1; t=1656971706; x=
- 1656975306; bh=nUTitRz1TxZmUf62qy6RkmAW6MN3XsO2koccG7mGFHk=; b=b
- sDYXh/CJgt9lp2+s3DDRJMwplt8vGpWVrwQITzQV5d5fnaUR9+ynBJ/DDBiVfuAf
- N3Ymqw5Wc3JR8N1SvzYE5IMgXJlOm84/AVud2r1Qs/CKw05H3o0+EQ+A+chlH83z
- gi2h62KsRV9y1XgM5KHZtYVaUApMdD5Gz9zzJX72IoTlhi7KM4PolPfTF5VnOo5m
- /YTlqEscSdrizuGYzPfCL4OKHQeQlEimlfmd2N1OxiGpVhvsppgE0YMmQeTZgY4D
- QG5B/g2UxJGb4fCoG4hQ0jJLsXhTFHcBUGnfLJtoULCTAF+19dLmywYPWcZqII71
- ndSMK5THjBYrIeYSazpkQ==
+ :content-transfer-encoding:date:date:from:from:in-reply-to
+ :in-reply-to:message-id:mime-version:references:reply-to:sender
+ :subject:subject:to:to; s=fm1; t=1656971711; x=1656975311; bh=3Q
+ leoIU+1JT9mlYnyGHMjE1752p++/xyJu5dhMG40pw=; b=Spg8PmGVK8m/lcVUXu
+ ngDv+QT5TqDoeAANXH2sLmHDpZuRHu+nlJZARLZELMqD5O8rEGkSOua/9Eo1nvdk
+ 0bjdDyrM4K8tyj/VnpxjPbrZO+qeyVbJrwNuSWmbWv79y7XWNHOvhsb4Hd6x9PvS
+ yK+O9eoytt3ql4mE99LozFRHM6NH9mQTh0NnBiASjL7sX3lw8DcjFggKU+zlxfy3
+ KusKASyAJ5bAWnMD9tYtvwhlavtr3/Df0UZvOBM/b/Hm64wuwwlz9V7bKlY6UQFm
+ BtNnI7GoMNdNucETsThfDNnE+zNNyhac0iqlEwMkPXAyqhOaIsRVFGwJmIgY7zj/
+ o1IQ==
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
- messagingengine.com; h=cc:cc:content-transfer-encoding
- :content-type:date:date:feedback-id:feedback-id:from:from
- :in-reply-to:in-reply-to:message-id:mime-version:references
- :reply-to:sender:subject:subject:to:to:x-me-proxy:x-me-proxy
- :x-me-sender:x-me-sender:x-sasl-enc; s=i9e814621.fm2; t=
- 1656971706; x=1656975306; bh=nUTitRz1TxZmUf62qy6RkmAW6MN3XsO2koc
- cG7mGFHk=; b=Fg5unATpmgDDkuIdg8RD3z/0QBLhzI/eMUrl90BpGjsSLZarcOx
- CIAYmkMFUgL8C/lucNktSVloyWxn1iDKCR2VjIzygB8OgYMkHNVNnks09w2peUFn
- lJ0s8y/ahH5oSfCtD1mJi3nNKwjyiKjview8Ljg3lMaqHwIFX3adC7PLKfJBJHn9
- 78je2RGqGcOpVHWGZ2k9eDx6L+o2G/b9bN1SP5VV7Er8wXoeapg059BVNsoiwkZQ
- LIvytZQSQCSokJPmCbO85ACU0Hz5PgVByFpmPSwcqqmqIqDrsH38Rk9zoJ+rT7ia
- L0ykmr/fNncitrOz7vJ3rKEa4C9ONF7V+aw==
-X-ME-Sender: <xms:umHDYvuqZSXmL1P0zHSjSdoMFlpKyeNn4994Ax5L4YHsynhaaSJwFA>
- <xme:umHDYgdrQdUcqH91E9YhxGCs32wWUoOxCJVs-NprcFI4fLRk0yxR0qYxnvQquj9rG
- gMV4jtAUvbYoQI-SKE>
-X-ME-Received: <xmr:umHDYiw010aR8X_anC0V7Zf3v5afYV-AIufUHdCPdwesEco-ht6PekyHWk707g>
+ messagingengine.com; h=cc:cc:content-transfer-encoding:date:date
+ :feedback-id:feedback-id:from:from:in-reply-to:in-reply-to
+ :message-id:mime-version:references:reply-to:sender:subject
+ :subject:to:to:x-me-proxy:x-me-proxy:x-me-sender:x-me-sender
+ :x-sasl-enc; s=i9e814621.fm2; t=1656971711; x=1656975311; bh=3Ql
+ eoIU+1JT9mlYnyGHMjE1752p++/xyJu5dhMG40pw=; b=LfGTVxW0u1zgkXT49Fr
+ SyXIawza4tP98y7xjuPa1qLyn50c3VgoY4XtKRhMLHVZFxHXS4sObjk4vOuk2THN
+ Nmp8ljywRaByUHL/hy+OAsEsIdKc2THal6RGIeoCmYPwpS1ZChWln95qoaiPdcPw
+ Cvjs6IkzMxGNnSwxIs4vcCmp04vxFdK5wQ1AT1UsCaMXjIXeutSqhytXl4epNAqJ
+ irvcRf+Y5JpvJ4LSmM11DHbj8+RKyns8CDdjn+gt7YyUc6O4r+/gphf7oznwJUFB
+ GUVheR09seJdqmoC6aUKp0w2csdR8sVu6APJhEhN8omhcmWDF6P8i1g175s5HWcO
+ Wqg==
+X-ME-Sender: <xms:v2HDYoqnNMGLynEpezinUfngNn0-DvXqQ6Z18MCiihWfRI7uZTWizQ>
+ <xme:v2HDYuptH_mgvYrDducxytiBxv8weJ_GzenfvbPLodRuK2F0tAbi8J7LRQqSPeeIx
+ -VCQk5gcTCR_cl05DY>
+X-ME-Received: <xmr:v2HDYtNgOob3EpjDmD1nib2780q5QWxB8gel1ivt3la3dpV1HziJFy_Fcgo3zw>
 X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvfedrudeitdcutefuodetggdotefrodftvfcurf
  hrohhfihhlvgemucfhrghsthforghilhdpqfgfvfdpuffrtefokffrpgfnqfghnecuuegr
  ihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenmhhish
  hsihhnghcuvffquchfihgvlhguucdlfedtmdenogetfedtuddqtdduucdludehmdenucfj
- ughrpefhvfevufffkffojghfgggtgfesthekredtredtjeenucfhrhhomheprfgvthgvrh
- cuffgvlhgvvhhorhihrghsuceophgvthgvrhesphhjugdruggvvheqnecuggftrfgrthht
- vghrnhepkedtiefhkeffheegveevgeelteffleehhedvgeekkefffeegvdevfeevieevje
- einecuffhomhgrihhnpehmvghtrgdrtghomhenucevlhhushhtvghrufhiiigvpedtnecu
- rfgrrhgrmhepmhgrihhlfhhrohhmpehpvghtvghrsehpjhgurdguvghv
-X-ME-Proxy: <xmx:umHDYuMq9Aetdi-gOdL3DiGQYOefl7C7a6ejpGX3grJ0AEpCKj8ZNQ>
- <xmx:umHDYv_4BWE_JI-2OUHHWeO2FjfnbkNgLi-02_RLQbnjzKK96kMKDw>
- <xmx:umHDYuW6OtvDtw4ziu5zmKmqpZ2vsJEUVrPt_LgpkH8PvsAJylGugA>
- <xmx:umHDYqkW1OtVUaWwJHrpSvhOOzs9RZ_Y4_7OBEAnUE8yBcLWq2I2Jg>
+ ughrpefhvfevufffkffojghfggfgsedtkeertdertddtnecuhfhrohhmpefrvghtvghruc
+ ffvghlvghvohhrhigrshcuoehpvghtvghrsehpjhgurdguvghvqeenucggtffrrghtthgv
+ rhhnpedvgffhgfekheehgeeguedvfeethfeifeelfffgueevudeuiefgffffvdejveefle
+ enucffohhmrghinhepghhithhhuhgsrdgtohhmnecuvehluhhsthgvrhfuihiivgepuden
+ ucfrrghrrghmpehmrghilhhfrhhomhepphgvthgvrhesphhjugdruggvvh
+X-ME-Proxy: <xmx:v2HDYv43QBvAB7HT-9AqDtAAMGFbpzxTV2qnwpMfmAwr9uMbqRO7MA>
+ <xmx:v2HDYn7PEWuZC7IF_kBj-5y0gFMeDTRlBB8D0F02VlXEfQuSBtTyuA>
+ <xmx:v2HDYvgoD6Sq40jc9JKOz7X-e-jecWD-hmzN1Nzwyb1BjmRNcTN6Vg>
+ <xmx:v2HDYtSI8C0VVdVV0rAzCrAYNUT-bZ4LuKYyXp1E5AWQqUNsFhXPqA>
 Feedback-ID: i9e814621:Fastmail
 Received: by mail.messagingengine.com (Postfix) with ESMTPA; Mon,
- 4 Jul 2022 17:55:05 -0400 (EDT)
+ 4 Jul 2022 17:55:10 -0400 (EDT)
 From: Peter Delevoryas <peter@pjd.dev>
 To: 
 Cc: Peter Delevoryas <peter@pjd.dev>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
  Peter Maydell <peter.maydell@linaro.org>, Andrew Jeffery <andrew@aj.id.au>,
- Joel Stanley <joel@jms.id.au>, qemu-devel@nongnu.org, qemu-arm@nongnu.org
-Subject: [PATCH 5/8] aspeed: Add fby35 skeleton
-Date: Mon,  4 Jul 2022 14:54:54 -0700
-Message-Id: <20220704215457.38332-5-peter@pjd.dev>
+ Joel Stanley <joel@jms.id.au>, qemu-arm@nongnu.org, qemu-devel@nongnu.org
+Subject: [PATCH 8/8] aspeed: Add AST1030 (BIC) to fby35
+Date: Mon,  4 Jul 2022 14:54:57 -0700
+Message-Id: <20220704215457.38332-8-peter@pjd.dev>
 X-Mailer: git-send-email 2.37.0
 In-Reply-To: <20220704215457.38332-1-peter@pjd.dev>
 References: <20220704215457.38332-1-peter@pjd.dev>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 Received-SPF: pass client-ip=66.111.4.224; envelope-from=peter@pjd.dev;
  helo=new2-smtp.messagingengine.com
@@ -138,88 +137,94 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: gva4kFaa7hwH
+X-TUID: EwyOe0iRf458
+
+With the BIC, the easiest way to run everything is to create two pty's
+for each SoC and reserve stdin/stdout for the monitor:
+
+    wget https://github.com/facebook/openbmc/releases/download/openbmc-e2294ff5d31d/fby35.mtd
+    wget https://github.com/peterdelevoryas/OpenBIC/releases/download/oby35-cl-2022.13.01/Y35BCL.elf
+    qemu-system-arm -machine fby35 \
+        -drive file=fby35.mtd,format=raw,if=mtd \
+        -device loader,file=fby35.mtd,addr=0,cpu-num=0 \
+        -serial pty -serial pty -serial mon:stdio -display none -S
+
+    screen /dev/ttys0
+    screen /dev/ttys1
+    (qemu) c
 
 Signed-off-by: Peter Delevoryas <peter@pjd.dev>
-Reviewed-by: Cédric Le Goater <clg@kaod.org>
 ---
- MAINTAINERS        |  1 +
- hw/arm/fby35.c     | 39 +++++++++++++++++++++++++++++++++++++++
- hw/arm/meson.build |  3 ++-
- 3 files changed, 42 insertions(+), 1 deletion(-)
- create mode 100644 hw/arm/fby35.c
+ hw/arm/fby35.c | 27 ++++++++++++++++++++++++++-
+ 1 file changed, 26 insertions(+), 1 deletion(-)
 
-diff --git a/MAINTAINERS b/MAINTAINERS
-index d9378511b7..147330ddd7 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -1067,6 +1067,7 @@ F: hw/net/ftgmac100.c
- F: include/hw/net/ftgmac100.h
- F: docs/system/arm/aspeed.rst
- F: tests/qtest/*aspeed*
-+F: hw/arm/fby35.c
- 
- NRF51
- M: Joel Stanley <joel@jms.id.au>
 diff --git a/hw/arm/fby35.c b/hw/arm/fby35.c
-new file mode 100644
-index 0000000000..03b458584c
---- /dev/null
+index d3edfa3b10..031602800f 100644
+--- a/hw/arm/fby35.c
 +++ b/hw/arm/fby35.c
-@@ -0,0 +1,39 @@
-+/*
-+ * Copyright (c) Meta Platforms, Inc. and affiliates. (http://www.meta.com)
-+ *
-+ * This code is licensed under the GPL version 2 or later. See the COPYING
-+ * file in the top-level directory.
-+ */
-+
-+#include "qemu/osdep.h"
-+#include "hw/boards.h"
-+
-+#define TYPE_FBY35 MACHINE_TYPE_NAME("fby35")
-+OBJECT_DECLARE_SIMPLE_TYPE(Fby35State, FBY35);
-+
-+struct Fby35State {
-+    MachineState parent_obj;
-+};
-+
-+static void fby35_init(MachineState *machine)
+@@ -11,7 +11,9 @@
+ #include "sysemu/sysemu.h"
+ #include "sysemu/block-backend.h"
+ #include "hw/boards.h"
++#include "hw/qdev-clock.h"
+ #include "hw/arm/aspeed_soc.h"
++#include "hw/arm/boot.h"
+ 
+ #define TYPE_FBY35 MACHINE_TYPE_NAME("fby35")
+ OBJECT_DECLARE_SIMPLE_TYPE(Fby35State, FBY35);
+@@ -22,8 +24,11 @@ struct Fby35State {
+     MemoryRegion bmc_memory;
+     MemoryRegion bmc_dram;
+     MemoryRegion bmc_boot_rom;
++    MemoryRegion bic_memory;
++    Clock *bic_sysclk;
+ 
+     AspeedSoCState bmc;
++    AspeedSoCState bic;
+ 
+     bool mmio_exec;
+ };
+@@ -110,11 +115,31 @@ static void fby35_bmc_init(Fby35State *s)
+     }
+ }
+ 
++static void fby35_bic_init(Fby35State *s)
 +{
++    s->bic_sysclk = clock_new(OBJECT(s), "SYSCLK");
++    clock_set_hz(s->bic_sysclk, 200000000ULL);
++
++    memory_region_init(&s->bic_memory, OBJECT(s), "bic-memory", UINT64_MAX);
++
++    object_initialize_child(OBJECT(s), "bic", &s->bic, "ast1030-a1");
++    qdev_connect_clock_in(DEVICE(&s->bic), "sysclk", s->bic_sysclk);
++    object_property_set_link(OBJECT(&s->bic), "memory", OBJECT(&s->bic_memory),
++                             &error_abort);
++    aspeed_soc_uart_set_chr(&s->bic, ASPEED_DEV_UART5, serial_hd(1));
++    qdev_realize(DEVICE(&s->bic), NULL, &error_abort);
++
++    aspeed_board_init_flashes(&s->bic.fmc, "sst25vf032b", 2, 2);
++    aspeed_board_init_flashes(&s->bic.spi[0], "sst25vf032b", 2, 4);
++    aspeed_board_init_flashes(&s->bic.spi[1], "sst25vf032b", 2, 6);
 +}
 +
-+static void fby35_class_init(ObjectClass *oc, void *data)
-+{
-+    MachineClass *mc = MACHINE_CLASS(oc);
-+
-+    mc->desc = "Meta Platforms fby35";
-+    mc->init = fby35_init;
-+}
-+
-+static const TypeInfo fby35_types[] = {
-+    {
-+        .name = MACHINE_TYPE_NAME("fby35"),
-+        .parent = TYPE_MACHINE,
-+        .class_init = fby35_class_init,
-+        .instance_size = sizeof(Fby35State),
-+    },
-+};
-+
-+DEFINE_TYPES(fby35_types);
-diff --git a/hw/arm/meson.build b/hw/arm/meson.build
-index 2d8381339c..92f9f6e000 100644
---- a/hw/arm/meson.build
-+++ b/hw/arm/meson.build
-@@ -51,7 +51,8 @@ arm_ss.add(when: 'CONFIG_ASPEED_SOC', if_true: files(
-   'aspeed_soc.c',
-   'aspeed.c',
-   'aspeed_ast2600.c',
--  'aspeed_ast10x0.c'))
-+  'aspeed_ast10x0.c',
-+  'fby35.c'))
- arm_ss.add(when: 'CONFIG_MPS2', if_true: files('mps2.c'))
- arm_ss.add(when: 'CONFIG_MPS2', if_true: files('mps2-tz.c'))
- arm_ss.add(when: 'CONFIG_MSF2', if_true: files('msf2-soc.c'))
+ static void fby35_init(MachineState *machine)
+ {
+     Fby35State *s = FBY35(machine);
+ 
+     fby35_bmc_init(s);
++    fby35_bic_init(s);
+ }
+ 
+ 
+@@ -141,7 +166,7 @@ static void fby35_class_init(ObjectClass *oc, void *data)
+     mc->init = fby35_init;
+     mc->no_floppy = 1;
+     mc->no_cdrom = 1;
+-    mc->min_cpus = mc->max_cpus = mc->default_cpus = 2;
++    mc->min_cpus = mc->max_cpus = mc->default_cpus = 3;
+ 
+     object_class_property_add_bool(oc, "execute-in-place",
+                                    fby35_get_mmio_exec,
 -- 
 2.37.0
 

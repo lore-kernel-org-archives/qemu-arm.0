@@ -1,143 +1,109 @@
-Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp3269716lft;
-        Mon, 4 Jul 2022 07:30:11 -0700 (PDT)
-X-Google-Smtp-Source: AGRyM1uOrvUuLlhsRUCQksFN22fbh/sPxhPqqbJZbCxItmz7oYhxIycAY1DW5G/qurMcbBncCviP
-X-Received: by 2002:a05:622a:102:b0:31d:34f2:2170 with SMTP id u2-20020a05622a010200b0031d34f22170mr15860017qtw.373.1656945011055;
-        Mon, 04 Jul 2022 07:30:11 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1656945011; cv=none;
+Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp3273632lft;
+        Mon, 4 Jul 2022 07:35:28 -0700 (PDT)
+X-Google-Smtp-Source: AGRyM1tVE2NPor1gW57eq0jHJnNte1S560PyRt44iEE2Zyn1PEMzXP+zxr5cvRLqQGMIViSVs61/
+X-Received: by 2002:a81:18d2:0:b0:31c:9dd4:66da with SMTP id 201-20020a8118d2000000b0031c9dd466damr4635158ywy.394.1656945328692;
+        Mon, 04 Jul 2022 07:35:28 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1656945328; cv=none;
         d=google.com; s=arc-20160816;
-        b=auwphzjeNSkytRnpHrUhm247hn/dxQ+1AdRPiZQF2Dh0qU/0JRk9RWxstOM6xqXd8+
-         uyBj61+U5Uq1yRkZd3NuxsAJPYoWlyvz6JD8iXFenTK2kZvQHhWuy40BQiaM2jLoJAD+
-         eFLeEZBDGuSCi/t4ii2xcGJ3WcKMDq+T4weEjQwKbv0YgTOBGyg0gfYGBcn/QUecU2Gy
-         8DY4O61sOL1bjXvBOuFKHQxV1CpOaPiCjta2+gYM6eMHLd2MMQ6tfmCENUp38AY1hrFB
-         pPM8u8aSDZ62Z1tRpdP9dkiSBkXdu1xgOFpUR8a/Ido2KwRIhY6opvQusxiyfHp1UJWr
-         xTxA==
+        b=NWslA3mxdNuvyIdGvIsG4njsDEpkrTCKs0Wmz7qGnAC/6sWx/jfm1SiWkXFpbSbO4s
+         mJncFcnXgjFzM8fNkxBfhvTjjFXSLdHLtIo0+L3W235Ybw5atIZxOmwCVCx0MeBkiQjp
+         HMIE+DEd6zJn43CUYI/bgLxhV0uPR7u4P5NNNsFXyt77i6MZEBzDjva0GrWMBqOjd/yB
+         LzpZn5MgMtFWXbpTawvvnqBNfPEBeyUbtVhyipyg9X55MyV+mZQ7aly0Gl7Ys2z0vmOR
+         fM2a3CErJ3smdxVlj8fWlcqNDzD00HrQavqOhLibyExzxvcE2mnVVqra9+BLfmbHVml/
+         kU+g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:cc:to:content-language:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=q751M0rPovJIc7Gzgfg8hbZcQMLANgFE95XkguNse7o=;
-        b=Gzb9+jdC7I7oXpfg8CyiduzC9USLW0xkr98c73/IjRUAq6OPaPfxYD25c2miDWIMo9
-         j8gbzgNz575+8TskKAyM/d6dWdsWihwBRus26q2KA3JU5/x+5ddyA+1RdTR20FpcPvTF
-         yAE0tiRddbWLJvFZOd0iVT0O3qMYf7A46OfGgNwFDVqCVFkQ3VjY30H+XaV6zcPkPi7a
-         SOOnSeGmV25XHQChgQgdh3B+veM0Ss1Y5eHaEt5ZNfyjLWiofzhNxYh9bqjQAADBPPce
-         6AvkhueQpwyktbE4biSR/PDPNlUQzJ71iI2dsxhcQgxiPMztMGzS6c85Mf52B80TXTxE
-         gfnQ==
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=832XTr8KnCCb8qjYa18XlWYpctrAuaSk1Zn5WeQ8iTA=;
+        b=GppnqfOuYnVQ0z/9JjfePCzEGpDW07sNYHnY+5V6PlyNHaJp+zWik4qCv8Qs97ms99
+         LWtAwf7I6CAJsB4i/B7hk7s+Ji8LZ2s9FtzVDwg4t1nQkaG/V1pI3GY2hYbMxfe65dHT
+         SpiB8GmxiiCyWkqNnVW5QB02urAALcfScv3xmRrNQkJHRaGwN35lVZTLZzzpEXpqR2UK
+         wxTrWq5kEkR1VwDXwcpoEpxOSQwoUCkLz+dUkvjHzYjHw8z8cfAuSnJZPStS3Z+HfH+K
+         AR3yhpjoHrBcbLhg7yaRFwQVwEMbSC0nclIe1C9EqcSXwgXI8IpYgnnfXZqx847lPEjc
+         BAcg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Rxxc0YZu;
+       dkim=pass header.i=@linaro.org header.s=google header.b=xjBJ7c8U;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x17-20020a05620a0ed100b006a73c548084si15404166qkm.151.2022.07.04.07.30.10
+        by mx.google.com with ESMTPS id v2-20020a056902108200b0066c7d0e2ca4si44886531ybu.402.2022.07.04.07.35.28
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 04 Jul 2022 07:30:11 -0700 (PDT)
+        Mon, 04 Jul 2022 07:35:28 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Rxxc0YZu;
+       dkim=pass header.i=@linaro.org header.s=google header.b=xjBJ7c8U;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:54118 helo=lists1p.gnu.org)
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:36668 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1o8N5W-00053E-GY
-	for alex.bennee@linaro.org; Mon, 04 Jul 2022 10:30:10 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:42332)
+	id 1o8NAe-0004Dl-2Z
+	for alex.bennee@linaro.org; Mon, 04 Jul 2022 10:35:28 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37834)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <hreitz@redhat.com>) id 1o8MUr-0005Ch-UA
- for qemu-devel@nongnu.org; Mon, 04 Jul 2022 09:52:17 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:57872)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <hreitz@redhat.com>) id 1o8MUo-0008BS-GI
- for qemu-devel@nongnu.org; Mon, 04 Jul 2022 09:52:16 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1656942733;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=q751M0rPovJIc7Gzgfg8hbZcQMLANgFE95XkguNse7o=;
- b=Rxxc0YZuGRu1HCrK1Y3kC4pYwW1DeWXkWE5ysm+gfsyOc3ZN7UpaWDZxmUszlw+Re2IkpD
- STQCTblu+aSU/11yYqnpFSXT0ljFBXbbgeMi835xGZES3HDZzX/JWTWqHzpYmnkWy17HM/
- JtQjUsj4IxZOryyUR88fPhBymBER+sM=
-Received: from mail-ed1-f72.google.com (mail-ed1-f72.google.com
- [209.85.208.72]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-520-_NxDMb3MNPmDLnoaeKI8yA-1; Mon, 04 Jul 2022 09:52:12 -0400
-X-MC-Unique: _NxDMb3MNPmDLnoaeKI8yA-1
-Received: by mail-ed1-f72.google.com with SMTP id
- x21-20020a05640226d500b00435bd7f9367so7221984edd.8
- for <qemu-devel@nongnu.org>; Mon, 04 Jul 2022 06:52:12 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1o8M8F-0000Gh-48
+ for qemu-devel@nongnu.org; Mon, 04 Jul 2022 09:28:55 -0400
+Received: from mail-yw1-x112a.google.com ([2607:f8b0:4864:20::112a]:40454)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1o8M8D-0003ui-H7
+ for qemu-devel@nongnu.org; Mon, 04 Jul 2022 09:28:54 -0400
+Received: by mail-yw1-x112a.google.com with SMTP id
+ 00721157ae682-317a66d62dfso82209657b3.7
+ for <qemu-devel@nongnu.org>; Mon, 04 Jul 2022 06:28:52 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=832XTr8KnCCb8qjYa18XlWYpctrAuaSk1Zn5WeQ8iTA=;
+ b=xjBJ7c8UBXeB3cX9N0W/34Nhh1JDZehn70cGsoBgCYfU+eDVZkNYIew5OpdxLT3Uw+
+ QChfDVqAxRfb7KXf4Y/aIQjaM0b7wPsEcQygIzEootW8iwCdFSOHO/DZqQn4gZYwP5+F
+ yN/NL/y1u2ARkjd/5QU8WMgYRMbTMT3vrW9d37d6MTudhoNhAku8O+MwCDJ6KgfWR7IF
+ CbwST6wqnwUl3zLnXbHHFDvpUDyj1EqTw7MES3y2W3ifVUOYb4mNqH8sv0zVrMwV+oMv
+ KSIXsbEMJnKEVV65LWy1dF8OivqmM5Df0GjkI+TIcPssfM8EzvI1hdvXOIo3DtpOpLLY
+ A4Ng==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
- :content-language:to:cc:references:from:in-reply-to
- :content-transfer-encoding;
- bh=q751M0rPovJIc7Gzgfg8hbZcQMLANgFE95XkguNse7o=;
- b=7ck1tPfWRKCRrQ8bgIxypmSKgNvbNJ+2LaXD/gjkQ01UWJP2+uJcYvNbjw6WEhuVm5
- Qu5AuqQNabpoC7Ak9L5p/4ABD8iyIMogR/jMjO4JfXWWB3Vm4zwM3mbyosplhKWAnfwz
- +dVx12ygNsNvaxzf+nZeLSim04oCrPE1d2ca0/RMD8Nx+TZ5lwQ6dN0k1UPN1M9lXw9l
- NVLvhLLJvXHdSP+fh2/w89lErh5wmq20PgyJbP3gTPQchBkukqRBm79vuWBxx6LQEqmi
- cUpdN4onXwB7rXhgnOjRnXqc70b6j3SuNj1yU+GDTddyKtaJ7bLtnBqxLhDysH0nx4Sw
- fClA==
-X-Gm-Message-State: AJIora8CTsJZ+rXnGgCDLz0DLzOlzdkZRaYmjhaHQxz4TWhMZujOcjcm
- XHkRhD2g2Af7tNX1tSe64fiXJCWj3IejDNKWOuPRG0OjzdDNfN2oFBDpVXyzBXhOhH8xqiYXQvf
- h7UwMQCuZSLF6JB4=
-X-Received: by 2002:a05:6402:5409:b0:42a:a643:4eb8 with SMTP id
- ev9-20020a056402540900b0042aa6434eb8mr38966568edb.71.1656942731584; 
- Mon, 04 Jul 2022 06:52:11 -0700 (PDT)
-X-Received: by 2002:a05:6402:5409:b0:42a:a643:4eb8 with SMTP id
- ev9-20020a056402540900b0042aa6434eb8mr38966511edb.71.1656942731297; 
- Mon, 04 Jul 2022 06:52:11 -0700 (PDT)
-Received: from ?IPV6:2a02:8071:5056:d40:63e3:25a7:c1a1:4455?
- ([2a02:8071:5056:d40:63e3:25a7:c1a1:4455])
- by smtp.gmail.com with ESMTPSA id
- pv1-20020a170907208100b00726abf9cd8esm9850728ejb.125.2022.07.04.06.52.09
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 04 Jul 2022 06:52:10 -0700 (PDT)
-Message-ID: <89089143-3f55-02c4-c881-95d356108569@redhat.com>
-Date: Mon, 4 Jul 2022 15:52:08 +0200
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=832XTr8KnCCb8qjYa18XlWYpctrAuaSk1Zn5WeQ8iTA=;
+ b=BkUs1ZJlI/R5zqELQK2ink7reRYTCZAWFNHA9gyr4DDdWKpa1AcjTznlNJREpfrh6x
+ HqQf9XvjWCrow0AZDv9aah5c3kbRR8b6oQ5GUUvMjpfdpYrC1P6jzqvY+SL8xGtvd6yj
+ iumNRzsTrdBSDBeXrxpuBw6yU7rEZCgsdB1wQ5MzDxURBkwt/obeC+tdLs+HwB2qn8pW
+ 7UeOtnvYNks/QvdGmIdXa97Q6EHgKL7CcZkDUCRsUShQ0UDS98FZHLiP5htbCn9Y3uwh
+ KC9Nf5aK31tz243nstSMoIj9tUG9xuBc1wNJoBnV3cDkBj0DHgZ/zdFcpGPGqrhjauWD
+ y7Zw==
+X-Gm-Message-State: AJIora9dKguxg+tHnN4a8XoNqAH3sG9oCve4uZOiSWoeaoObMLAzvdmd
+ w/4pDc81zpDtdwOOgR+0M5KtbJPXHdjD3GdfYCblXA==
+X-Received: by 2002:a81:6585:0:b0:31c:b55b:dd36 with SMTP id
+ z127-20020a816585000000b0031cb55bdd36mr861320ywb.469.1656941331889; Mon, 04
+ Jul 2022 06:28:51 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.10.0
-Subject: Re: [PATCH 01/18] block: Make blk_{pread,pwrite}() return 0 on success
-Content-Language: en-US
-To: Alberto Faria <afaria@redhat.com>, qemu-devel@nongnu.org
-Cc: Andrew Jeffery <andrew@aj.id.au>, Peter Maydell
- <peter.maydell@linaro.org>, qemu-block@nongnu.org,
- Palmer Dabbelt <palmer@dabbelt.com>, =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?=
- <f4bug@amsat.org>, qemu-ppc@nongnu.org, Eric Blake <eblake@redhat.com>,
- Vladimir Sementsov-Ogievskiy <v.sementsov-og@mail.ru>,
- John Snow <jsnow@redhat.com>, Stefan Hajnoczi <stefanha@redhat.com>,
- Jeff Cody <codyprime@gmail.com>, qemu-riscv@nongnu.org,
- =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>,
- Joel Stanley <joel@jms.id.au>, Stefan Weil <sw@weilnetz.de>,
- Laurent Vivier <laurent@vivier.eu>, "Denis V. Lunev" <den@openvz.org>,
- Juan Quintela <quintela@redhat.com>,
- "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
- Niek Linnenbank <nieklinnenbank@gmail.com>, Greg Kurz <groug@kaod.org>,
- Daniel Henrique Barboza <danielhb413@gmail.com>,
- Kevin Wolf <kwolf@redhat.com>, "Edgar E. Iglesias"
- <edgar.iglesias@gmail.com>, qemu-arm@nongnu.org, Fam Zheng <fam@euphon.net>,
- Alistair Francis <alistair@alistair23.me>,
- Beniamino Galvani <b.galvani@gmail.com>, Bin Meng <bin.meng@windriver.com>,
- David Gibson <david@gibson.dropbear.id.au>
-References: <20220517113524.197910-1-afaria@redhat.com>
- <20220517113524.197910-2-afaria@redhat.com>
-From: Hanna Reitz <hreitz@redhat.com>
-In-Reply-To: <20220517113524.197910-2-afaria@redhat.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=hreitz@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -21
-X-Spam_score: -2.2
+References: <20220629124026.1077021-1-mark.cave-ayland@ilande.co.uk>
+ <20220629124026.1077021-30-mark.cave-ayland@ilande.co.uk>
+In-Reply-To: <20220629124026.1077021-30-mark.cave-ayland@ilande.co.uk>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 4 Jul 2022 14:28:41 +0100
+Message-ID: <CAFEAcA_=zGYooKT6tNp5cJRDYj-XcpxSssd9as21st_DZav9Pg@mail.gmail.com>
+Subject: Re: [PATCH 29/40] lasips2: rename LASIPS2Port parent pointer to
+ lasips2
+To: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
+Cc: richard.henderson@linaro.org, deller@gmx.de, svens@stackframe.org, 
+ mst@redhat.com, pbonzini@redhat.com, hpoussin@reactos.org, 
+ aleksandar.rikalo@syrmia.com, f4bug@amsat.org, qemu-devel@nongnu.org, 
+ qemu-arm@nongnu.org
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::112a;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x112a.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.082,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -152,156 +118,17 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: +aXm+c1LmmVx
+X-TUID: Cf0fOZ3vpE8w
 
-On 17.05.22 13:35, Alberto Faria wrote:
-> They currently return the value of their 'bytes' parameter on success.
+On Wed, 29 Jun 2022 at 13:41, Mark Cave-Ayland
+<mark.cave-ayland@ilande.co.uk> wrote:
 >
-> Make them return 0 instead, for consistency with other I/O functions and
-> in preparation to implement them using generated_co_wrapper. This also
-> makes it clear that short reads/writes are not possible.
+> This makes it clearer that the pointer is a reference to the LASIPS2 container
+> device rather than an implied part of the QOM hierarchy.
 >
-> Signed-off-by: Alberto Faria <afaria@redhat.com>
-> ---
->   block.c                          |  8 +++++---
->   block/block-backend.c            |  7 ++-----
->   block/qcow.c                     |  6 +++---
->   hw/block/m25p80.c                |  2 +-
->   hw/misc/mac_via.c                |  2 +-
->   hw/misc/sifive_u_otp.c           |  2 +-
->   hw/nvram/eeprom_at24c.c          |  4 ++--
->   hw/nvram/spapr_nvram.c           | 12 ++++++------
->   hw/ppc/pnv_pnor.c                |  2 +-
->   qemu-img.c                       | 17 +++++++----------
->   qemu-io-cmds.c                   | 18 ++++++++++++------
->   tests/unit/test-block-iothread.c |  4 ++--
->   12 files changed, 43 insertions(+), 41 deletions(-)
+> Signed-off-by: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
 
-Overall, looks good to me, so first of all:
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
-Reviewed-by: Hanna Reitz <hreitz@redhat.com>
-
-There are a couple of places where you decided to replace “*len” 
-variables that used to store the return value by a plain “ret”. That 
-seems good to me, given how these functions no longer return length 
-values, but you haven’t done so consistently.  Below, I have noted 
-places where this wasn’t done; I wonder why, but my R-b stands 
-regardless of whether you change them too or not.
-
-[...]
-
-> diff --git a/hw/misc/mac_via.c b/hw/misc/mac_via.c
-> index 525e38ce93..0515d1818e 100644
-> --- a/hw/misc/mac_via.c
-> +++ b/hw/misc/mac_via.c
-> @@ -1030,7 +1030,7 @@ static void mos6522_q800_via1_realize(DeviceState *dev, Error **errp)
->           }
->   
->           len = blk_pread(v1s->blk, 0, v1s->PRAM, sizeof(v1s->PRAM));
-> -        if (len != sizeof(v1s->PRAM)) {
-> +        if (len < 0) {
-
-We could use `ret` here instead.
-
->               error_setg(errp, "can't read PRAM contents");
->               return;
->           }
-
-[...]
-
-> diff --git a/hw/nvram/eeprom_at24c.c b/hw/nvram/eeprom_at24c.c
-> index 01a3093600..84acd71f5a 100644
-> --- a/hw/nvram/eeprom_at24c.c
-> +++ b/hw/nvram/eeprom_at24c.c
-> @@ -65,7 +65,7 @@ int at24c_eeprom_event(I2CSlave *s, enum i2c_event event)
->           DPRINTK("clear\n");
->           if (ee->blk && ee->changed) {
->               int len = blk_pwrite(ee->blk, 0, ee->mem, ee->rsize, 0);
-> -            if (len != ee->rsize) {
-> +            if (len < 0) {
->                   ERR(TYPE_AT24C_EE
->                           " : failed to write backing file\n");
->               }
-> @@ -165,7 +165,7 @@ void at24c_eeprom_reset(DeviceState *state)
->       if (ee->blk) {
->           int len = blk_pread(ee->blk, 0, ee->mem, ee->rsize);
->   
-> -        if (len != ee->rsize) {
-> +        if (len < 0) {
-
-We could rename `len` to `ret` in both of these hunks.
-
->               ERR(TYPE_AT24C_EE
->                       " : Failed initial sync with backing file\n");
->           }
-> diff --git a/hw/nvram/spapr_nvram.c b/hw/nvram/spapr_nvram.c
-> index 18b43be7f6..6000b945c3 100644
-> --- a/hw/nvram/spapr_nvram.c
-> +++ b/hw/nvram/spapr_nvram.c
-
-[...]
-
-> @@ -181,7 +181,7 @@ static void spapr_nvram_realize(SpaprVioDevice *dev, Error **errp)
->       if (nvram->blk) {
->           int alen = blk_pread(nvram->blk, 0, nvram->buf, nvram->size);
->   
-> -        if (alen != nvram->size) {
-> +        if (alen < 0) {
-
-As above (and the other case in this file), might be nice to drop `alen` 
-here and just use `ret` instead.
-
->               error_setg(errp, "can't read spapr-nvram contents");
->               return;
->           }
-
-[...]
-
-> diff --git a/qemu-img.c b/qemu-img.c
-> index 4cf4d2423d..9d98ef63ac 100644
-> --- a/qemu-img.c
-> +++ b/qemu-img.c
-> @@ -5120,30 +5120,27 @@ static int img_dd(int argc, char **argv)
->       in.buf = g_new(uint8_t, in.bsz);
->   
->       for (out_pos = 0; in_pos < size; block_count++) {
-> -        int in_ret, out_ret;
-> +        int bytes, in_ret, out_ret;
->   
-> -        if (in_pos + in.bsz > size) {
-> -            in_ret = blk_pread(blk1, in_pos, in.buf, size - in_pos);
-> -        } else {
-> -            in_ret = blk_pread(blk1, in_pos, in.buf, in.bsz);
-> -        }
-> +        bytes = (in_pos + in.bsz > size) ? size - in_pos : in.bsz;
-> +
-> +        in_ret = blk_pread(blk1, in_pos, in.buf, bytes);
->           if (in_ret < 0) {
->               error_report("error while reading from input image file: %s",
->                            strerror(-in_ret));
->               ret = -1;
->               goto out;
->           }
-> -        in_pos += in_ret;
-> -
-> -        out_ret = blk_pwrite(blk2, out_pos, in.buf, in_ret, 0);
-> +        in_pos += bytes;
->   
-> +        out_ret = blk_pwrite(blk2, out_pos, in.buf, bytes, 0);
->           if (out_ret < 0) {
->               error_report("error while writing to output image file: %s",
->                            strerror(-out_ret));
->               ret = -1;
->               goto out;
->           }
-> -        out_pos += out_ret;
-> +        out_pos += bytes;
->       }
->   
->   out:
-
-We could use this opportunity to drop in_ret and out_ret altogether (but 
-we can also decide not to).
-
-Hanna
-
+thanks
+-- PMM

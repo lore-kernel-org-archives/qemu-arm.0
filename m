@@ -1,96 +1,104 @@
-Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp242954lft;
-        Thu, 30 Jun 2022 04:09:54 -0700 (PDT)
-X-Google-Smtp-Source: AGRyM1ssqTM0oGTPXUzygoYEowjjxc7fWn2TfPeWjccZO1tc5om3oThjjN9lXoIuVgYfw9joYMgq
-X-Received: by 2002:a37:a54f:0:b0:6ae:e60e:141b with SMTP id o76-20020a37a54f000000b006aee60e141bmr5790848qke.623.1656587394149;
-        Thu, 30 Jun 2022 04:09:54 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1656587394; cv=none;
+Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp3284081lft;
+        Mon, 4 Jul 2022 07:54:44 -0700 (PDT)
+X-Google-Smtp-Source: AGRyM1vtpoaFC+9OGUaOiKkJPRHpIHfroFnLQDjGr6ypKPpgqllHDwYropRakIs5IabZag/J6ud0
+X-Received: by 2002:a81:4bd7:0:b0:31c:91da:5a20 with SMTP id y206-20020a814bd7000000b0031c91da5a20mr8109446ywa.131.1656946484155;
+        Mon, 04 Jul 2022 07:54:44 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1656946484; cv=none;
         d=google.com; s=arc-20160816;
-        b=SurAm1k8T5Pz5taSXybM+zWwcnAMKUF6iE2fCdZ3t2KIYMBtsE5T+lXz7igMhEbEKQ
-         CbbGOp17mLKq6E96o72kU6X0lt/m3HlDtMkj1+TbJxdbjwq7wskQlySu9KJzGdkdhw+o
-         juz0CEUNj0/gseeuq14R7ziF6RlPsITKi6rxcJano1MmJiZsy8MkAdP9CQ3TMizG7Gcd
-         1Ezs4C80vxnOn7lmEXPd1+ZTjNmCKdifL6/V3OdOR1vuYIIy4EB9bTH6PFS3M2EOLlLx
-         Xz6oyPPA6u2i2BdYmBD3ewQp0Zz97Ra4FzZ0b/62SnOqV8KrIY2xkVV226uoDyzNBrIb
-         1rrA==
+        b=r6L94K4Pv0Ngf1ocP/4rZpSRWOFi3G13O4q/uAtqSL/gjI1fJ7FiaNOH3dFc+ELRKA
+         nI+wueg73pDvA86DsXI+UbJeJKQ0G87X3InSYlrTBIqBX/6Y1yzmN7qsi9c9GtSsScrv
+         6Ybpdreo5oe/7vbt05jrm6TVAoDZYGfQ9SAR7zXlxFc7yBj/MPmsgnqgFaKz//U92KA9
+         7tnEkomuvjNS1h+L8WZ5u6XK3hM5vwe7rWB0X98rR+NY0u5Hm6MyIMjFte6dI+aI8D6l
+         bJGSaqVVetJ0woVwr0WguPnvgOFpyHWLS0dDu13He1IHwNr2S7P7tRtcgtJceYW9qca5
+         R07A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:cc:to:content-language:subject
-         :user-agent:mime-version:date:message-id;
-        bh=4uYpaa5WNqIgKAwQkt9D8+LSPji+prHpqxBH0AgSdWQ=;
-        b=eN72Mqf5cG2QJI8vygp4ZXQIa8rEDictN8A935NNLy4vRsH8JML0a7Zw5ZNcs/ndU1
-         k6batS8zJbyWsabvNF3K9GzN7MECps8DmZjRb/9wYIW+G3xZlLRi6Y5Kv3/N62DgnrNz
-         WRLDY//8fwSE4hPNb6DtEtk6cN2ESDC+p3Yj27z6djvDwMo+iBHJrc7ybekSBxJrkN0S
-         0xjZURM9XzJAo7ZAI+m/4B9PaC6Y2UrzYLHNFz9cMj87XsL1DrQqQTJLXedqhxrIJ6ve
-         iCVfIAbxokWYpmsU0Jj+OZS4usyvxOx4CMmcy2ovDlb6V2ETVFHQomKnrC3z/K2Fkz45
-         ljwA==
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=5v5L/YeDwfdpkj4LzyQbq+hQlaBO9PJsx7CUU6kb8OI=;
+        b=rx2Q8XaPFhvaOHAV5xHFbowBtkS99Miu5LjmexUhTZt3wBWV99kslkbWAa0cIbf8YZ
+         UzRkkfsPKcfclQnbW1Cw506VAx30rlHUUXC2W4QjqKIiPUHNiC3wCI7qxlBWkCft2E53
+         /K8lErKyiHP7LFrCu7eSxJAVJgRnwVS3BzCfT+HSY3Erv90PUJPjSQ35bClQk8pmUrxS
+         UtSx9gAzfgZOosxsmf7cbWJbBJZ/b/CKI/tZOQyV66yJ0+BkNqYZ0mIM1dOqYWhesXBZ
+         MBGcjmpXL7Ulljdcy1ueo5du7jSgpojJqdE4dpXokkICc6TO3Zp7G5CcUILa0JyBSWCH
+         +eAQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@linaro.org header.s=google header.b=cbRG08eR;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id ey7-20020a0562140b6700b00472a893002csi3078104qvb.411.2022.06.30.04.09.53
+        by mx.google.com with ESMTPS id u4-20020a0dd204000000b003187ff85348si41272651ywd.343.2022.07.04.07.54.43
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 30 Jun 2022 04:09:54 -0700 (PDT)
+        Mon, 04 Jul 2022 07:54:44 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:33270 helo=lists1p.gnu.org)
+       dkim=pass header.i=@linaro.org header.s=google header.b=cbRG08eR;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:47430 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1o6s3V-00089T-8B
-	for alex.bennee@linaro.org; Thu, 30 Jun 2022 07:09:53 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:56804)
+	id 1o8NTH-0006kM-HL
+	for alex.bennee@linaro.org; Mon, 04 Jul 2022 10:54:43 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33976)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1o6s2x-0007qh-K1
- for qemu-arm@nongnu.org; Thu, 30 Jun 2022 07:09:19 -0400
-Received: from 1.mo552.mail-out.ovh.net ([178.32.96.117]:43217)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1o6s2t-0005br-6l
- for qemu-arm@nongnu.org; Thu, 30 Jun 2022 07:09:18 -0400
-Received: from mxplan5.mail.ovh.net (unknown [10.109.143.128])
- by mo552.mail-out.ovh.net (Postfix) with ESMTPS id DC565263BE;
- Thu, 30 Jun 2022 11:09:10 +0000 (UTC)
-Received: from kaod.org (37.59.142.105) by DAG4EX1.mxp5.local (172.16.2.31)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.9; Thu, 30 Jun
- 2022 13:09:09 +0200
-Authentication-Results: garm.ovh; auth=pass
- (GARM-105G006d8a99a13-7c59-44c8-b05f-b1c53ece09b9,
- 40551C6C823FDDA91B74F5D58A080B55BE22893A) smtp.auth=clg@kaod.org
-X-OVh-ClientIp: 82.64.250.170
-Message-ID: <b748ce35-d8bf-1804-bcf0-1024c527380c@kaod.org>
-Date: Thu, 30 Jun 2022 13:09:09 +0200
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1o8NSv-0006eL-58
+ for qemu-arm@nongnu.org; Mon, 04 Jul 2022 10:54:21 -0400
+Received: from mail-yw1-x1134.google.com ([2607:f8b0:4864:20::1134]:34575)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1o8NSt-0003Ml-EH
+ for qemu-arm@nongnu.org; Mon, 04 Jul 2022 10:54:20 -0400
+Received: by mail-yw1-x1134.google.com with SMTP id
+ 00721157ae682-31c86fe1dddso36841027b3.1
+ for <qemu-arm@nongnu.org>; Mon, 04 Jul 2022 07:54:19 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=5v5L/YeDwfdpkj4LzyQbq+hQlaBO9PJsx7CUU6kb8OI=;
+ b=cbRG08eR2ZdN/ykgSKFYRMsSInRhLElcnSikzl3CWLAQfsDWRyWs6p/s7yZ4Xbyz5E
+ hKRLOBKIm3MTeqa1a7TOhmEwFf7YdFW1QPCUfDGhIOyoQq7s3H3UdtE4P9iZHD8RiWrV
+ 1pzAusjtgnahskycc1aviLhjb1i/so88wqCTR/+xyCocEcS7aKvFPN/XDUhRhxXb4Tdg
+ 1IQw2OcYLgQ5GWvBaG699oqnl6dtvPwlLI8I1R1TxMMZJ1D4S6Eu5t6TV9+49HoYTHv0
+ 19AIkdKAKN0N4Fsqk5s8JZ1hVUQ1k/GetmQ6di9WucSHx8Xpdo6tp9nQO9+g8brpPonK
+ NRGA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=5v5L/YeDwfdpkj4LzyQbq+hQlaBO9PJsx7CUU6kb8OI=;
+ b=bs8jhVdvYGwTXYuCI0wrIKuiKoUOet4HUYSJlGEVnC9jDCTIdyJUTGxOXFCLsil81/
+ uf2oMN8hrFeceVANfIquVS0lNsxYOycg7LdqNK3uOnJt+gxKVUxzQDzuUvbfUXj9xWg2
+ jnIwvOxEa6kOIwO4sjKxyaJn8XuYgxDRkC3Iv5FZNmPhwlDey8bStf6uAlBN60zHs5PB
+ SdUNJCyWITxYJ4hUkhPKwvfh7cOINQs2Y1HwfiLfTQ6ksCdq7C36NNwoojoSGG4nJ+3M
+ +dOXD0bw1D2M6u7Di03CdHkDkisIWn5xM+VFzcHSCT/umOS51uDLJyhsoT47U27FZZ0p
+ zs5Q==
+X-Gm-Message-State: AJIora/0FLwHqlQsnnayXXLJXdHjcNbC8wekF0w5LPlsu2fY1ScBAN/T
+ V5/IiDEOyGAG3U+3yNX95B25xVi/M0Q3ewXW+0pGQA==
+X-Received: by 2002:a81:6a85:0:b0:31c:8624:b065 with SMTP id
+ f127-20020a816a85000000b0031c8624b065mr11775538ywc.64.1656946457685; Mon, 04
+ Jul 2022 07:54:17 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.9.0
-Subject: Re: [PATCH v3 13/14] hw/misc/aspeed: Add intel-me
-Content-Language: en-US
-To: Peter Delevoryas <me@pjd.dev>
-CC: <peter.maydell@linaro.org>, <andrew@aj.id.au>, <joel@jms.id.au>,
- <cminyard@mvista.com>, <titusr@google.com>, <qemu-devel@nongnu.org>,
- <qemu-arm@nongnu.org>, <zhdaniel@fb.com>, <pdel@fb.com>
-References: <20220630045133.32251-1-me@pjd.dev>
- <20220630045133.32251-14-me@pjd.dev>
-From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
-In-Reply-To: <20220630045133.32251-14-me@pjd.dev>
-Content-Type: text/plain; charset="UTF-8"; format=flowed
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [37.59.142.105]
-X-ClientProxiedBy: DAG2EX1.mxp5.local (172.16.2.11) To DAG4EX1.mxp5.local
- (172.16.2.31)
-X-Ovh-Tracer-GUID: 223fb1cb-02d0-49b4-be90-5b5cb6fc9ac8
-X-Ovh-Tracer-Id: 9535809263894694834
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: 0
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvfedrudehuddgfeehucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucenucfjughrpefkffggfgfuvfevfhfhjggtgfhisehtjeertddtfeejnecuhfhrohhmpeevrogurhhitggpnfgvpgfiohgrthgvrhcuoegtlhhgsehkrghougdrohhrgheqnecuggftrfgrthhtvghrnhepvdegleehgfeffefhudeutdfgfeekteekjeefveehfeektdeiueevvdfhueekjeeknecuffhomhgrihhnpehmvghtrgdrtghomhenucfkpheptddrtddrtddrtddpfeejrdehledrudegvddruddtheenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhhouggvpehsmhhtphhouhhtpdhhvghlohepmhigphhlrghnhedrmhgrihhlrdhovhhhrdhnvghtpdhinhgvtheptddrtddrtddrtddpmhgrihhlfhhrohhmpegtlhhgsehkrghougdrohhrghdpnhgspghrtghpthhtohepuddprhgtphhtthhopehpuggvlhesfhgsrdgtohhmpdfovfetjfhoshhtpehmohehhedv
-Received-SPF: pass client-ip=178.32.96.117; envelope-from=clg@kaod.org;
- helo=1.mo552.mail-out.ovh.net
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
+References: <20220703082419.770989-1-richard.henderson@linaro.org>
+In-Reply-To: <20220703082419.770989-1-richard.henderson@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 4 Jul 2022 15:54:06 +0100
+Message-ID: <CAFEAcA_5s3avpeHNO5cC0HS5Unq9QsCp9mTof4uqLJwE13h+pA@mail.gmail.com>
+Subject: Re: [PATCH 00/62] target/arm: Implement FEAT_HAFDBS
+To: Richard Henderson <richard.henderson@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1134;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x1134.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -105,240 +113,42 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: hbVCgVgVZRZa
+X-TUID: q/PWUyJ+u1Nd
 
-On 6/30/22 06:51, Peter Delevoryas wrote:
-> From: Peter Delevoryas <pdel@fb.com>
-> 
-> The Intel Management Engine is an IPMI endpoint that responds to various
-> IPMI commands. 
+On Sun, 3 Jul 2022 at 09:25, Richard Henderson
+<richard.henderson@linaro.org> wrote:
+>
+> This is a major reorg to arm page table walking.  While the result
+> here is "merely" Hardware-assited Access Flag and Dirty Bit Setting
+> (HAFDBS), the ultimate goal is the Realm Management Extension (RME).
+> RME "recommends" that HAFDBS be implemented (I_CSLWZ).
+>
+> For HAFDBS, being able to find a host pointer for the ram that
+> backs a given page table entry is required in order to perform the
+> atomic update to that PTE.  The easiest way to find a host pointer
+> is to use the existing softtlb mechanism.  Thus all of the page
+> table walkers have been adjusted to take an mmu_idx that corresponds
+> to the regime in which the page table is stored.  In some cases,
+> this is a new "physical" mmu_idx that has a permanent 1-1 mapping.
+>
+> For RME, "physical" addresses also have page permissions, coming
+> from the Root realm Granule Protection Table, which can be thought
+> of as a third stage page table lookup.  So eventually the new
+> Secure and Nonsecure physical mmu indexes will joined by
+> Realm and Root physical mmu indexes, and all of them will take
+> the new Granule Page Table into account.
+>
+> Previously, we had A-profile allocate separate mmu_idx for secure
+> vs non-secure.  I've done away with that.  Now, I flush all mmu_idx
+> when SCR_EL3.NS is changed.  I did not see how we could reasonably
+> add 8 more mmu_idx for Realm.  Moreover, I had a look through ARM
+> Trusted Firmware, at the code paths used to change between Secure
+> and Nonsecure.  We wind up flushing all of these mmu_idx anyway while
+> swapping the EL1+EL2 cpregs, so there is no gain at all in attempting
+> to keep them live at the same time within qemu.
 
-Have you looked at the ipmi-bmc-sim device ? It is relatively easy
-to attach to a bus.
+Is there no SMC/interrupt/etc at all which is handled as a "just do the
+thing at EL3" without dropping down to secure EL2/EL1 ?
 
-> In this commit, I've added some very basic functionality that
-> will respond back with a respond code of zero (success), while also setting
-> an appropriate response NetFN (request NetFN + 1), a matching command ID and
-> sequence number, and the 2 standard checksums. Other data is not provided,
-> but the model here could be extended to respond to more kinds of requests.
-> 
-> Signed-off-by: Peter Delevoryas <pdel@fb.com>
-> ---
->   MAINTAINERS          |   1 +
->   hw/misc/intel_me.c   | 162 +++++++++++++++++++++++++++++++++++++++++++
->   hw/misc/meson.build  |   3 +-
->   hw/misc/trace-events |   8 +++
->   4 files changed, 173 insertions(+), 1 deletion(-)
->   create mode 100644 hw/misc/intel_me.c
-> 
-> diff --git a/MAINTAINERS b/MAINTAINERS
-> index 3ffd473db1..3220644bb5 100644
-> --- a/MAINTAINERS
-> +++ b/MAINTAINERS
-> @@ -1068,6 +1068,7 @@ F: include/hw/net/ftgmac100.h
->   F: docs/system/arm/aspeed.rst
->   F: tests/qtest/*aspeed*
->   F: hw/misc/fby35_sb_cpld.c
-> +F: hw/misc/intel_me.c
->   
->   NRF51
->   M: Joel Stanley <joel@jms.id.au>
-> diff --git a/hw/misc/intel_me.c b/hw/misc/intel_me.c
-> new file mode 100644
-> index 0000000000..933ae45101
-> --- /dev/null
-> +++ b/hw/misc/intel_me.c
-> @@ -0,0 +1,162 @@
-> +/*
-> + * Copyright (c) Meta Platforms, Inc. and affiliates. (http://www.meta.com)
-> + *
-> + * This code is licensed under the GPL version 2 or later. See the COPYING
-> + * file in the top-level directory.
-> + */
-> +
-> +#include "qemu/osdep.h"
-> +#include "qemu/main-loop.h"
-> +#include "hw/i2c/i2c.h"
-> +#include "trace.h"
-> +
-> +#define TYPE_INTEL_ME "intel-me"
-> +OBJECT_DECLARE_SIMPLE_TYPE(IntelMEState, INTEL_ME);
-> +
-> +struct IntelMEState {
-> +    I2CSlave parent_obj;
-> +
-> +    I2CBus *bus;
-> +    QEMUBH *bh;
-> +    int rx_len;
-> +    int tx_len;
-> +    int tx_pos;
-> +    uint8_t rx_buf[512];
-> +    uint8_t tx_buf[512];
-> +};
-> +
-> +static void intel_me_bh(void *opaque)
-> +{
-> +    IntelMEState *s = opaque;
-> +    I2CSlave *i2c = I2C_SLAVE(s);
-> +    uint8_t target_addr;
-> +
-> +    assert(s->bus->bh == s->bh);
-> +
-> +    switch (s->tx_pos) {
-> +    case 0:
-> +        target_addr = s->tx_buf[s->tx_pos++];
-> +        trace_intel_me_tx_start(i2c->address, target_addr);
-> +        if (i2c_start_send_async(s->bus, target_addr) != 0) {
-> +            break;
-> +        }
-> +        return;
-> +    default:
-> +        if (s->tx_pos >= s->tx_len) {
-> +            break;
-> +        }
-> +        trace_intel_me_tx_data(i2c->address, s->tx_buf[s->tx_pos]);
-> +        if (i2c_send_async(s->bus, s->tx_buf[s->tx_pos++]) != 0) {
-> +            break;
-> +        }
-> +        return;
-> +    }
-> +
-> +    trace_intel_me_tx_end(i2c->address);
-> +    i2c_end_transfer(s->bus);
-> +    i2c_bus_release(s->bus);
-> +    s->tx_len = 0;
-> +    s->tx_pos = 0;
-> +    memset(s->tx_buf, 0, sizeof(s->tx_buf));
-> +}
-> +
-> +static void intel_me_realize(DeviceState *dev, Error **errp)
-> +{
-> +    IntelMEState *s = INTEL_ME(dev);
-> +
-> +    s->bus = I2C_BUS(qdev_get_parent_bus(dev));
-> +    s->bh = qemu_bh_new(intel_me_bh, s);
-> +    s->rx_len = 0;
-> +    s->tx_len = 0;
-> +    s->tx_pos = 0;
-> +    memset(s->rx_buf, 0, sizeof(s->rx_buf));
-> +    memset(s->tx_buf, 0, sizeof(s->tx_buf));
-> +}
-> +
-> +static uint8_t checksum(const uint8_t *ptr, int len)
-> +{
-> +    int sum = 0;
-> +
-> +    for (int i = 0; i < len; i++) {
-> +        sum += ptr[i];
-> +    }
-> +
-> +    return 256 - sum;
-> +}
-> +
-> +static int intel_me_i2c_event(I2CSlave *i2c, enum i2c_event event)
-> +{
-> +    IntelMEState *s = INTEL_ME(i2c);
-> +
-> +    switch (event) {
-> +    case I2C_START_RECV:
-> +        break;
-> +    case I2C_START_SEND:
-> +        trace_intel_me_rx_start(i2c->address);
-> +        s->rx_len = 0;
-> +        memset(s->rx_buf, 0, sizeof(s->rx_buf));
-> +        break;
-> +    case I2C_START_SEND_ASYNC:
-> +        break;
-> +    case I2C_FINISH:
-> +        trace_intel_me_rx_end(i2c->address);
-> +        s->tx_len = 10;
-> +        s->tx_pos = 0;
-> +        s->tx_buf[0] = s->rx_buf[2];
-> +        s->tx_buf[1] = ((s->rx_buf[0] >> 2) + 1) << 2;
-> +        s->tx_buf[2] = checksum(s->tx_buf, 2);
-> +        s->tx_buf[3] = i2c->address;
-> +        s->tx_buf[4] = (s->rx_buf[3] >> 2) << 2;
-> +        s->tx_buf[5] = s->rx_buf[4];
-> +        s->tx_buf[6] = 0x00;
-> +        s->tx_buf[7] = 0x55;
-> +        s->tx_buf[8] = 0x00;
-> +        s->tx_buf[9] = checksum(s->tx_buf, s->tx_len - 1);
-> +        s->tx_buf[0] >>= 1;
-> +        i2c_bus_master(s->bus, s->bh);
-> +        break;
-> +    case I2C_NACK:
-> +        break;
-> +    }
-> +
-> +    return 0;
-> +}
-> +
-> +static uint8_t intel_me_i2c_recv(I2CSlave *i2c)
-> +{
-> +    return 0xff;
-> +}
-> +
-> +static int intel_me_i2c_send(I2CSlave *i2c, uint8_t data)
-> +{
-> +    IntelMEState *s = INTEL_ME(i2c);
-> +
-> +    trace_intel_me_rx_data(i2c->address, data);
-> +
-> +    assert(s->rx_len < sizeof(s->rx_buf));
-> +    s->rx_buf[s->rx_len++] = data;
-> +
-> +    return 0;
-> +}
-> +
-> +static void intel_me_class_init(ObjectClass *oc, void *data)
-> +{
-> +    DeviceClass *dc = DEVICE_CLASS(oc);
-> +    I2CSlaveClass *i2c = I2C_SLAVE_CLASS(oc);
-> +
-> +    dc->realize = intel_me_realize;
-> +    i2c->event = intel_me_i2c_event;
-> +    i2c->recv = intel_me_i2c_recv;
-> +    i2c->send = intel_me_i2c_send;
-> +}
-> +
-> +static const TypeInfo types[] = {
-> +    {
-> +        .name = TYPE_INTEL_ME,
-> +        .parent = TYPE_I2C_SLAVE,
-> +        .instance_size = sizeof(IntelMEState),
-> +        .class_init = intel_me_class_init,
-> +    },
-> +};
-> +
-> +DEFINE_TYPES(types);
-> diff --git a/hw/misc/meson.build b/hw/misc/meson.build
-> index 948e25c440..165b9dce6d 100644
-> --- a/hw/misc/meson.build
-> +++ b/hw/misc/meson.build
-> @@ -118,7 +118,8 @@ softmmu_ss.add(when: 'CONFIG_ASPEED_SOC', if_true: files(
->     'aspeed_sdmc.c',
->     'aspeed_xdma.c',
->     'aspeed_peci.c',
-> -  'fby35_sb_cpld.c'))
-> +  'fby35_sb_cpld.c',
-> +  'intel_me.c'))
->   
->   softmmu_ss.add(when: 'CONFIG_MSF2', if_true: files('msf2-sysreg.c'))
->   softmmu_ss.add(when: 'CONFIG_NRF51_SOC', if_true: files('nrf51_rng.c'))
-> diff --git a/hw/misc/trace-events b/hw/misc/trace-events
-> index 90a0473b06..7ca23bcf27 100644
-> --- a/hw/misc/trace-events
-> +++ b/hw/misc/trace-events
-> @@ -273,3 +273,11 @@ virt_ctrl_instance_init(void *dev) "ctrl: %p"
->   lasi_chip_mem_valid(uint64_t addr, uint32_t val) "access to addr 0x%"PRIx64" is %d"
->   lasi_chip_read(uint64_t addr, uint32_t val) "addr 0x%"PRIx64" val 0x%08x"
->   lasi_chip_write(uint64_t addr, uint32_t val) "addr 0x%"PRIx64" val 0x%08x"
-> +
-> +# intel_me.c
-> +intel_me_rx_start(uint8_t addr) "addr 0x%02x"
-> +intel_me_rx_data(uint8_t addr, uint8_t data) "addr 0x%02x data 0x%02x"
-> +intel_me_rx_end(uint8_t addr) "addr 0x%02x"
-> +intel_me_tx_start(uint8_t addr, uint8_t target_addr) "addr 0x%02x target_addr 0x%02x"
-> +intel_me_tx_data(uint8_t addr, uint8_t data) "addr 0x%02x data 0x%02x"
-> +intel_me_tx_end(uint8_t addr) "addr 0x%02x"
-
+thanks
+-- PMM

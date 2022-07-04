@@ -1,85 +1,99 @@
-Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp269190lft;
-        Thu, 30 Jun 2022 04:50:10 -0700 (PDT)
-X-Google-Smtp-Source: AGRyM1t3RiSVIhC4gBqdvSK7rEbXUOGkISfNJGD8eCPVWT92m2MNep4s3CfY/jpMEQSSdJVMatH0
-X-Received: by 2002:a05:622a:5985:b0:31b:899:3093 with SMTP id gb5-20020a05622a598500b0031b08993093mr7054508qtb.616.1656589810826;
-        Thu, 30 Jun 2022 04:50:10 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1656589810; cv=none;
+Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp3475139lft;
+        Mon, 4 Jul 2022 13:50:34 -0700 (PDT)
+X-Google-Smtp-Source: AGRyM1tGeDd8HFq8GAATc26MgGdNFtwYzwYvOsjfcDLk92SQ/C46zrfMk6O6PpNTL6G++j22yZHX
+X-Received: by 2002:a05:620a:c43:b0:6a9:77ef:e000 with SMTP id u3-20020a05620a0c4300b006a977efe000mr21127082qki.396.1656967834352;
+        Mon, 04 Jul 2022 13:50:34 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1656967834; cv=none;
         d=google.com; s=arc-20160816;
-        b=n5XCXNUakAxpis7ZwCKvIj8/7ENPpPfZbn1nNmkPlaDQzp1x0Wqo2Ri12ZIcrzNEvC
-         BkxUHlOKg8zesxu5SGT6Uqqr7oFB9Gd9DogdP9008nTa6cEL7PXriq/T5c2r1gO8IJE5
-         S4tZ8FFRKcYLXmAz5qwIK6eD7XdGuGb6Tne7c9jNfuWF4yb6bpMsQivzh3+iV1VW9bn+
-         Aq+w+iURgViY+S8RH9JzxNqQdhf0IISLooYDr74/pM3fSr6ZaFbfEHxxVzvNPsmXNLyS
-         O5L6ltcdF5qiLIAQZb8Cv2P1WsZwZW+1CfB8N30VPkAypwMjyxchTQMgyLctbZHb07vN
-         3shA==
+        b=leUDCFBnONL05v8Va3vPspTU1f8jt0WUm3cSnTKTXqiiLj6PbaKsDlPCLYIj110m2q
+         lZw4z09k9TeU7vu+MO0zJX98Ri4r4cZ/dCJ076ih2KmRkaXhrrgxmQgoMUakW2KMvegi
+         JuNOaSNf9rKd6hvvOLeQikc7nwG9o+QIiCNV1qeIbcGi+6px8lRqWqte9nztNr1dLOfv
+         dNutlyKP1s9XxO96WGcJD+sNvTS6Usaf2S4yYSO65Con/s57auWC0XqM4qAqJuFnoGse
+         R0kKAU+TN5TIaBtufPjTcelL/qZAC+VBhbl8r7m7ohBLHkYzKE+oIFemzPZ0Nfh+a2tE
+         16Ng==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from;
-        bh=Nq1JhOirlOewFtVDnsuHxbYokQOtEvJ0bj9JrLAd068=;
-        b=Cfb3qt/+A8Y/iFGmh/DuvXzroEjpAzMOszt2vr7tNv4sE1sM+mp/vvSaeoJXP99dtu
-         I5SxAtINHa2V4THr42HZot7gAduriANuRb9p3QgUTh8eFP5acw/QRm0rvyzX1p+QRrIB
-         l+/QRQFo43LU+B2qOEhe/1tSIk59eHtbzSbdbjVnxlcJWvPWDPswsBiJMqiIm8ydnrfJ
-         ZZ/Vc/xxfKw6yoMEO+mZsqMwhYRaeoGW08zarnIfYy7CZRxQGSlY7CxtlJPC/Gv4G+lp
-         Wfky//kHhSQBpXZTQc/775RLSckCeWfdCtFzWhMUvtpZPBoP7Qh7LY0Gjfz8utgtC877
-         Ct4g==
+         :in-reply-to:from:references:cc:to:content-language:subject
+         :user-agent:mime-version:date:message-id;
+        bh=dxxTAU3dXA5Eeef+Cvg22eMYvTWWXjIGlxhzuwClTCQ=;
+        b=oLqhu2EP5LXWKPNyLKv4Aiglv3U8P71a3ya8H5YkD38uw6RUFXa04giE/a0T9H2HHr
+         yoiOnXsFQAT2d1QoFRwZX+LIkJlRFOUYKxjcEXBCsQDH2GB/m3HnZWERIgDJshYH96ym
+         1zRJR6Brmmi05x7t4sOxzYxCeBbB3wJ9N97VUuk4WT3s8MJg422eiwQKlnVcUtGNVLyP
+         ytH6rvtg5+gxDRrMu95SCBmcC4YJuHwnfa7YwrDxepoCd2wRAVEN6iEDIjQHi++bQpE/
+         6cr+kZpWu0nK6K5caBL4I5FTEe5Sku1gAuAmpjg1WEVUV9ZZYz4O5JjYEM25J0iwGYLj
+         XYqA==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id jm6-20020ad45ec6000000b00464646e6435si11691686qvb.166.2022.06.30.04.50.10
+        by mx.google.com with ESMTPS id jl10-20020ad45e8a000000b0046e7efcb13dsi19919345qvb.65.2022.07.04.13.50.34
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 30 Jun 2022 04:50:10 -0700 (PDT)
+        Mon, 04 Jul 2022 13:50:34 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:57140 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:52368 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1o6sgU-0005CL-9z
-	for alex.bennee@linaro.org; Thu, 30 Jun 2022 07:50:10 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34794)
+	id 1o8T1d-0006C3-Qh
+	for alex.bennee@linaro.org; Mon, 04 Jul 2022 16:50:33 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53478)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <SRS0=N4Bw=XF=kaod.org=clg@ozlabs.org>)
- id 1o6sIt-00015B-Ji; Thu, 30 Jun 2022 07:25:47 -0400
-Received: from gandalf.ozlabs.org ([150.107.74.76]:37755)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>)
+ id 1o8T1S-0006Bj-6V; Mon, 04 Jul 2022 16:50:22 -0400
+Received: from smtpout3.mo529.mail-out.ovh.net ([46.105.54.81]:56091)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <SRS0=N4Bw=XF=kaod.org=clg@ozlabs.org>)
- id 1o6sIr-0002X4-CI; Thu, 30 Jun 2022 07:25:47 -0400
-Received: from gandalf.ozlabs.org (gandalf.ozlabs.org [150.107.74.76])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4LYbbk6ZC9z4xXD;
- Thu, 30 Jun 2022 21:25:22 +1000 (AEST)
-Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
- (No client certificate requested)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4LYbbh6JdPz4xD5;
- Thu, 30 Jun 2022 21:25:20 +1000 (AEST)
-From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Richard Henderson <richard.henderson@linaro.org>,
- Klaus Jensen <k.jensen@samsung.com>,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
-Subject: [PULL 24/27] hw/i2c: add asynchronous send
-Date: Thu, 30 Jun 2022 13:24:08 +0200
-Message-Id: <20220630112411.1474431-25-clg@kaod.org>
-X-Mailer: git-send-email 2.35.3
-In-Reply-To: <20220630112411.1474431-1-clg@kaod.org>
-References: <20220630112411.1474431-1-clg@kaod.org>
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>)
+ id 1o8T1P-0008Ej-Oh; Mon, 04 Jul 2022 16:50:21 -0400
+Received: from mxplan5.mail.ovh.net (unknown [10.109.156.216])
+ by mo529.mail-out.ovh.net (Postfix) with ESMTPS id DEA2711448CA3;
+ Mon,  4 Jul 2022 22:50:14 +0200 (CEST)
+Received: from kaod.org (37.59.142.109) by DAG4EX1.mxp5.local (172.16.2.31)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.9; Mon, 4 Jul 2022
+ 22:50:13 +0200
+Authentication-Results: garm.ovh; auth=pass
+ (GARM-109S00324955e44-bb79-43c9-a3c9-0f56b08f63bd,
+ 37F03A08AC6718E95FD3DEE1BCAFFD005826E168) smtp.auth=clg@kaod.org
+X-OVh-ClientIp: 82.64.250.170
+Message-ID: <edf73253-3cdd-4bf9-9b3b-8f7dc7a4f567@kaod.org>
+Date: Mon, 4 Jul 2022 22:50:12 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=150.107.74.76;
- envelope-from=SRS0=N4Bw=XF=kaod.org=clg@ozlabs.org; helo=gandalf.ozlabs.org
-X-Spam_score_int: -16
-X-Spam_score: -1.7
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.10.0
+Subject: Re: [PATCH 1/2] hw: m25p80: Add Block Protect and Top Bottom bits for
+ write protect
+Content-Language: en-US
+To: Iris Chen <irischenlj@fb.com>
+CC: <pdel@fb.com>, <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>,
+ <patrick@stwcx.xyz>, <alistair@alistair23.me>, <kwolf@redhat.com>,
+ <hreitz@redhat.com>, <peter.maydell@linaro.org>, <andrew@aj.id.au>,
+ <joel@jms.id.au>, <thuth@redhat.com>, <lvivier@redhat.com>,
+ <pbonzini@redhat.com>, <qemu-block@nongnu.org>, <dz4list@gmail.com>
+References: <20220627185234.1911337-1-irischenlj@fb.com>
+ <20220627185234.1911337-2-irischenlj@fb.com>
+From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
+In-Reply-To: <20220627185234.1911337-2-irischenlj@fb.com>
+Content-Type: text/plain; charset="UTF-8"; format=flowed
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [37.59.142.109]
+X-ClientProxiedBy: DAG5EX2.mxp5.local (172.16.2.42) To DAG4EX1.mxp5.local
+ (172.16.2.31)
+X-Ovh-Tracer-GUID: 70ad59a5-073b-4cc9-a4bc-96a96db26ef9
+X-Ovh-Tracer-Id: 5946440358893423492
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: 0
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvfedrudehledgudehhecutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemucehtddtnecunecujfgurhepkfffgggfuffvvehfhfgjtgfgihesthejredttdefjeenucfhrhhomhepveorughrihgtpgfnvggpifhorghtvghruceotghlgheskhgrohgurdhorhhgqeenucggtffrrghtthgvrhhnpeelleeiiefgkeefiedtvdeigeetueetkeffkeelheeugfetteegvdekgfehgffgkeenucfkpheptddrtddrtddrtddpfeejrdehledrudegvddruddtleenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhhouggvpehsmhhtphhouhhtpdhhvghlohepmhigphhlrghnhedrmhgrihhlrdhovhhhrdhnvghtpdhinhgvtheptddrtddrtddrtddpmhgrihhlfhhrohhmpegtlhhgsehkrghougdrohhrghdpnhgspghrtghpthhtohepuddprhgtphhtthhopeguiieglhhishhtsehgmhgrihhlrdgtohhmpdfovfetjfhoshhtpehmohehvdel
+Received-SPF: pass client-ip=46.105.54.81; envelope-from=clg@kaod.org;
+ helo=smtpout3.mo529.mail-out.ovh.net
+X-Spam_score_int: -18
+X-Spam_score: -1.9
 X-Spam_bar: -
-X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9,
- HEADER_FROM_DIFFERENT_DOMAINS=0.249, SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -94,244 +108,148 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: sM++pXEe923x
+X-TUID: aqZQPY20bBMK
 
-From: Klaus Jensen <k.jensen@samsung.com>
+On 6/27/22 20:52, Iris Chen wrote:
+> Signed-off-by: Iris Chen <irischenlj@fb.com>
+> ---
+>   hw/block/m25p80.c | 74 +++++++++++++++++++++++++++++++++++++++--------
+>   1 file changed, 62 insertions(+), 12 deletions(-)
+> 
+> diff --git a/hw/block/m25p80.c b/hw/block/m25p80.c
+> index 50b523e5b1..0156a70f5e 100644
+> --- a/hw/block/m25p80.c
+> +++ b/hw/block/m25p80.c
+> @@ -38,21 +38,19 @@
+>   #include "trace.h"
+>   #include "qom/object.h"
+>   
+> -/* Fields for FlashPartInfo->flags */
+> -
+> -/* erase capabilities */
+> -#define ER_4K 1
+> -#define ER_32K 2
+> -/* set to allow the page program command to write 0s back to 1. Useful for
+> - * modelling EEPROM with SPI flash command set
+> - */
+> -#define EEPROM 0x100
+> -
+>   /* 16 MiB max in 3 byte address mode */
+>   #define MAX_3BYTES_SIZE 0x1000000
+> -
+>   #define SPI_NOR_MAX_ID_LEN 6
+>   
+> +/* Fields for FlashPartInfo->flags */
+> +enum spi_nor_option_flags {
+> +    ER_4K                  = BIT(0),
+> +    ER_32K                 = BIT(1),
+> +    EEPROM                 = BIT(2),
+> +    SNOR_F_HAS_SR_TB       = BIT(3),
+> +    SNOR_F_HAS_SR_BP3_BIT6 = BIT(4),
+> +};
+> +
+>   typedef struct FlashPartInfo {
+>       const char *part_name;
+>       /*
+> @@ -253,7 +251,8 @@ static const FlashPartInfo known_devices[] = {
+>       { INFO("n25q512a11",  0x20bb20,      0,  64 << 10, 1024, ER_4K) },
+>       { INFO("n25q512a13",  0x20ba20,      0,  64 << 10, 1024, ER_4K) },
+>       { INFO("n25q128",     0x20ba18,      0,  64 << 10, 256, 0) },
+> -    { INFO("n25q256a",    0x20ba19,      0,  64 << 10, 512, ER_4K) },
+> +    { INFO("n25q256a",    0x20ba19,      0,  64 << 10, 512,
+> +           ER_4K | SNOR_F_HAS_SR_BP3_BIT6 | SNOR_F_HAS_SR_TB) },
+>       { INFO("n25q512a",    0x20ba20,      0,  64 << 10, 1024, ER_4K) },
+>       { INFO("n25q512ax3",  0x20ba20,  0x1000,  64 << 10, 1024, ER_4K) },
+>       { INFO("mt25ql512ab", 0x20ba20, 0x1044, 64 << 10, 1024, ER_4K | ER_32K) },
+> @@ -480,6 +479,11 @@ struct Flash {
+>       bool reset_enable;
+>       bool quad_enable;
+>       bool aai_enable;
+> +    bool block_protect0;
+> +    bool block_protect1;
+> +    bool block_protect2;
+> +    bool block_protect3;
+> +    bool top_bottom_bit;
+>       bool status_register_write_disabled;
+>       uint8_t ear;
+>   
+> @@ -630,6 +634,29 @@ void flash_write8(Flash *s, uint32_t addr, uint8_t data)
+>           qemu_log_mask(LOG_GUEST_ERROR, "M25P80: write with write protect!\n");
+>           return;
+>       }
+> +    uint32_t block_protect_value = (s->block_protect3 << 3) |
+> +                                   (s->block_protect2 << 2) |
+> +                                   (s->block_protect1 << 1) |
+> +                                   (s->block_protect0 << 0);
+> +
+> +     uint32_t num_protected_sectors = 1 << (block_protect_value - 1);
 
-Add an asynchronous version of i2c_send() that requires the slave to
-explicitly acknowledge on the bus with i2c_ack().
+Something wrong will occur if all block_protect[0123] are zeroes.
 
-The current master must use the new i2c_start_send_async() to indicate
-that it wants to do an asynchronous transfer. This allows the i2c core
-to check if the target slave supports this or not. This approach relies
-on adding a new enum i2c_event member, which is why a bunch of other
-devices needs changes in their event handling switches.
+C.
 
-Signed-off-by: Klaus Jensen <k.jensen@samsung.com>
-Message-Id: <20220601210831.67259-5-its@irrelevant.dk>
-Signed-off-by: Cédric Le Goater <clg@kaod.org>
-Message-Id: <20220630045133.32251-6-me@pjd.dev>
-Signed-off-by: Cédric Le Goater <clg@kaod.org>
----
- include/hw/i2c/i2c.h       | 16 ++++++++++++++++
- hw/arm/pxa2xx.c            |  2 ++
- hw/display/sii9022.c       |  2 ++
- hw/display/ssd0303.c       |  2 ++
- hw/i2c/core.c              | 36 +++++++++++++++++++++++++++++++++++-
- hw/i2c/smbus_slave.c       |  4 ++++
- hw/nvram/eeprom_at24c.c    |  2 ++
- hw/sensor/lsm303dlhc_mag.c |  2 ++
- hw/i2c/trace-events        |  2 ++
- 9 files changed, 67 insertions(+), 1 deletion(-)
-
-diff --git a/include/hw/i2c/i2c.h b/include/hw/i2c/i2c.h
-index be8bb8b78a60..9b9581d23097 100644
---- a/include/hw/i2c/i2c.h
-+++ b/include/hw/i2c/i2c.h
-@@ -12,6 +12,7 @@
- enum i2c_event {
-     I2C_START_RECV,
-     I2C_START_SEND,
-+    I2C_START_SEND_ASYNC,
-     I2C_FINISH,
-     I2C_NACK /* Masker NACKed a receive byte.  */
- };
-@@ -28,6 +29,9 @@ struct I2CSlaveClass {
-     /* Master to slave. Returns non-zero for a NAK, 0 for success. */
-     int (*send)(I2CSlave *s, uint8_t data);
- 
-+    /* Master to slave (asynchronous). Receiving slave must call i2c_ack(). */
-+    void (*send_async)(I2CSlave *s, uint8_t data);
-+
-     /*
-      * Slave to master.  This cannot fail, the device should always
-      * return something here.
-@@ -127,11 +131,23 @@ int i2c_start_recv(I2CBus *bus, uint8_t address);
-  */
- int i2c_start_send(I2CBus *bus, uint8_t address);
- 
-+/**
-+ * i2c_start_send_async: start an asynchronous 'send' transfer on an I2C bus.
-+ *
-+ * @bus: #I2CBus to be used
-+ * @address: address of the slave
-+ *
-+ * Return: 0 on success, -1 on error
-+ */
-+int i2c_start_send_async(I2CBus *bus, uint8_t address);
-+
- void i2c_end_transfer(I2CBus *bus);
- void i2c_nack(I2CBus *bus);
-+void i2c_ack(I2CBus *bus);
- void i2c_bus_master(I2CBus *bus, QEMUBH *bh);
- void i2c_bus_release(I2CBus *bus);
- int i2c_send(I2CBus *bus, uint8_t data);
-+int i2c_send_async(I2CBus *bus, uint8_t data);
- uint8_t i2c_recv(I2CBus *bus);
- bool i2c_scan_bus(I2CBus *bus, uint8_t address, bool broadcast,
-                   I2CNodeList *current_devs);
-diff --git a/hw/arm/pxa2xx.c b/hw/arm/pxa2xx.c
-index f4f687df68ef..93dda83d7aa9 100644
---- a/hw/arm/pxa2xx.c
-+++ b/hw/arm/pxa2xx.c
-@@ -1305,6 +1305,8 @@ static int pxa2xx_i2c_event(I2CSlave *i2c, enum i2c_event event)
-     case I2C_NACK:
-         s->status |= 1 << 1;				/* set ACKNAK */
-         break;
-+    default:
-+        return -1;
-     }
-     pxa2xx_i2c_update(s);
- 
-diff --git a/hw/display/sii9022.c b/hw/display/sii9022.c
-index b591a5878901..664fd4046d82 100644
---- a/hw/display/sii9022.c
-+++ b/hw/display/sii9022.c
-@@ -76,6 +76,8 @@ static int sii9022_event(I2CSlave *i2c, enum i2c_event event)
-         break;
-     case I2C_NACK:
-         break;
-+    default:
-+        return -1;
-     }
- 
-     return 0;
-diff --git a/hw/display/ssd0303.c b/hw/display/ssd0303.c
-index aeae22da9c29..d67b0ad7b529 100644
---- a/hw/display/ssd0303.c
-+++ b/hw/display/ssd0303.c
-@@ -196,6 +196,8 @@ static int ssd0303_event(I2CSlave *i2c, enum i2c_event event)
-     case I2C_NACK:
-         /* Nothing to do.  */
-         break;
-+    default:
-+        return -1;
-     }
- 
-     return 0;
-diff --git a/hw/i2c/core.c b/hw/i2c/core.c
-index 145dce60782a..d4ba8146bffb 100644
---- a/hw/i2c/core.c
-+++ b/hw/i2c/core.c
-@@ -161,7 +161,8 @@ static int i2c_do_start_transfer(I2CBus *bus, uint8_t address,
-            start condition.  */
- 
-         if (sc->event) {
--            trace_i2c_event("start", s->address);
-+            trace_i2c_event(event == I2C_START_SEND ? "start" : "start_async",
-+                            s->address);
-             rv = sc->event(s, event);
-             if (rv && !bus->broadcast) {
-                 if (bus_scanned) {
-@@ -212,6 +213,11 @@ int i2c_start_send(I2CBus *bus, uint8_t address)
-     return i2c_do_start_transfer(bus, address, I2C_START_SEND);
- }
- 
-+int i2c_start_send_async(I2CBus *bus, uint8_t address)
-+{
-+    return i2c_do_start_transfer(bus, address, I2C_START_SEND_ASYNC);
-+}
-+
- void i2c_end_transfer(I2CBus *bus)
- {
-     I2CSlaveClass *sc;
-@@ -261,6 +267,23 @@ int i2c_send(I2CBus *bus, uint8_t data)
-     return ret ? -1 : 0;
- }
- 
-+int i2c_send_async(I2CBus *bus, uint8_t data)
-+{
-+    I2CNode *node = QLIST_FIRST(&bus->current_devs);
-+    I2CSlave *slave = node->elt;
-+    I2CSlaveClass *sc = I2C_SLAVE_GET_CLASS(slave);
-+
-+    if (!sc->send_async) {
-+        return -1;
-+    }
-+
-+    trace_i2c_send_async(slave->address, data);
-+
-+    sc->send_async(slave, data);
-+
-+    return 0;
-+}
-+
- uint8_t i2c_recv(I2CBus *bus)
- {
-     uint8_t data = 0xff;
-@@ -297,6 +320,17 @@ void i2c_nack(I2CBus *bus)
-     }
- }
- 
-+void i2c_ack(I2CBus *bus)
-+{
-+    if (!bus->bh) {
-+        return;
-+    }
-+
-+    trace_i2c_ack();
-+
-+    qemu_bh_schedule(bus->bh);
-+}
-+
- static int i2c_slave_post_load(void *opaque, int version_id)
- {
-     I2CSlave *dev = opaque;
-diff --git a/hw/i2c/smbus_slave.c b/hw/i2c/smbus_slave.c
-index 5d10e27664db..feb3ec633350 100644
---- a/hw/i2c/smbus_slave.c
-+++ b/hw/i2c/smbus_slave.c
-@@ -143,6 +143,10 @@ static int smbus_i2c_event(I2CSlave *s, enum i2c_event event)
-             dev->mode = SMBUS_CONFUSED;
-             break;
-         }
-+        break;
-+
-+    default:
-+        return -1;
-     }
- 
-     return 0;
-diff --git a/hw/nvram/eeprom_at24c.c b/hw/nvram/eeprom_at24c.c
-index 01a3093600fa..d695f6ae894a 100644
---- a/hw/nvram/eeprom_at24c.c
-+++ b/hw/nvram/eeprom_at24c.c
-@@ -75,6 +75,8 @@ int at24c_eeprom_event(I2CSlave *s, enum i2c_event event)
-         break;
-     case I2C_NACK:
-         break;
-+    default:
-+        return -1;
-     }
-     return 0;
- }
-diff --git a/hw/sensor/lsm303dlhc_mag.c b/hw/sensor/lsm303dlhc_mag.c
-index 4c98ddbf207c..bb8d48b2fdb0 100644
---- a/hw/sensor/lsm303dlhc_mag.c
-+++ b/hw/sensor/lsm303dlhc_mag.c
-@@ -427,6 +427,8 @@ static int lsm303dlhc_mag_event(I2CSlave *i2c, enum i2c_event event)
-         break;
-     case I2C_NACK:
-         break;
-+    default:
-+        return -1;
-     }
- 
-     s->len = 0;
-diff --git a/hw/i2c/trace-events b/hw/i2c/trace-events
-index 209275ed2dc8..af181d43ee64 100644
---- a/hw/i2c/trace-events
-+++ b/hw/i2c/trace-events
-@@ -4,7 +4,9 @@
- 
- i2c_event(const char *event, uint8_t address) "%s(addr:0x%02x)"
- i2c_send(uint8_t address, uint8_t data) "send(addr:0x%02x) data:0x%02x"
-+i2c_send_async(uint8_t address, uint8_t data) "send_async(addr:0x%02x) data:0x%02x"
- i2c_recv(uint8_t address, uint8_t data) "recv(addr:0x%02x) data:0x%02x"
-+i2c_ack(void) ""
- 
- # aspeed_i2c.c
- 
--- 
-2.35.3
+> +     uint32_t sector = addr / s->pi->sector_size;
+> +
+> +     /* top_bottom_bit == 0 means TOP */
+> +    if (!s->top_bottom_bit) {
+> +        if (block_protect_value > 0 &&
+> +            s->pi->n_sectors <= sector + num_protected_sectors) {
+> +            qemu_log_mask(LOG_GUEST_ERROR,
+> +                          "M25P80: write with write protect!\n");
+> +            return;
+> +        }
+> +    } else {
+> +        if (block_protect_value > 0 && sector < num_protected_sectors) {
+> +            qemu_log_mask(LOG_GUEST_ERROR,
+> +                          "M25P80: write with write protect!\n");
+> +            return;
+> +        }
+> +    }
+>   
+>       if ((prev ^ data) & data) {
+>           trace_m25p80_programming_zero_to_one(s, addr, prev, data);
+> @@ -728,6 +755,15 @@ static void complete_collecting_data(Flash *s)
+>           break;
+>       case WRSR:
+>           s->status_register_write_disabled = extract32(s->data[0], 7, 1);
+> +        s->block_protect0 = extract32(s->data[0], 2, 1);
+> +        s->block_protect1 = extract32(s->data[0], 3, 1);
+> +        s->block_protect2 = extract32(s->data[0], 4, 1);
+> +        if (s->pi->flags & SNOR_F_HAS_SR_TB) {
+> +            s->top_bottom_bit = extract32(s->data[0], 5, 1);
+> +        }
+> +        if (s->pi->flags & SNOR_F_HAS_SR_BP3_BIT6) {
+> +            s->block_protect3 = extract32(s->data[0], 6, 1);
+> +        }
+>   
+>           switch (get_man(s)) {
+>           case MAN_SPANSION:
+> @@ -1213,6 +1249,15 @@ static void decode_new_cmd(Flash *s, uint32_t value)
+>       case RDSR:
+>           s->data[0] = (!!s->write_enable) << 1;
+>           s->data[0] |= (!!s->status_register_write_disabled) << 7;
+> +        s->data[0] |= (!!s->block_protect0) << 2;
+> +        s->data[0] |= (!!s->block_protect1) << 3;
+> +        s->data[0] |= (!!s->block_protect2) << 4;
+> +        if (s->pi->flags & SNOR_F_HAS_SR_TB) {
+> +            s->data[0] |= (!!s->top_bottom_bit) << 5;
+> +        }
+> +        if (s->pi->flags & SNOR_F_HAS_SR_BP3_BIT6) {
+> +            s->data[0] |= (!!s->block_protect3) << 6;
+> +        }
+>   
+>           if (get_man(s) == MAN_MACRONIX || get_man(s) == MAN_ISSI) {
+>               s->data[0] |= (!!s->quad_enable) << 6;
+> @@ -1553,6 +1598,11 @@ static void m25p80_reset(DeviceState *d)
+>   
+>       s->wp_level = true;
+>       s->status_register_write_disabled = false;
+> +    s->block_protect0 = false;
+> +    s->block_protect1 = false;
+> +    s->block_protect2 = false;
+> +    s->block_protect3 = false;
+> +    s->top_bottom_bit = false;
+>   
+>       reset_memory(s);
+>   }
 

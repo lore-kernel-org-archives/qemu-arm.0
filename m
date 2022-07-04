@@ -1,239 +1,206 @@
-Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp3071835lft;
-        Mon, 4 Jul 2022 02:10:35 -0700 (PDT)
-X-Google-Smtp-Source: AGRyM1uGodeM6LmDdNv/8c/+l0DPNWudBxCB4j1wNGmsi5TRiaJZeK3cL4r22njEEvZgFBzTH0Vm
-X-Received: by 2002:a25:9b88:0:b0:66d:b166:a430 with SMTP id v8-20020a259b88000000b0066db166a430mr22838778ybo.80.1656925835166;
-        Mon, 04 Jul 2022 02:10:35 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1656925835; cv=none;
+Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp3075509lft;
+        Mon, 4 Jul 2022 02:16:26 -0700 (PDT)
+X-Google-Smtp-Source: AGRyM1uCQ23amipGT2X9oqF74LMO4OueOSW0bs4XBoX/KzE+WTQgplQHPfIe5eBOEbeQmsl97PN/
+X-Received: by 2002:a05:6902:34e:b0:669:acbd:b412 with SMTP id e14-20020a056902034e00b00669acbdb412mr29392182ybs.507.1656926186276;
+        Mon, 04 Jul 2022 02:16:26 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1656926186; cv=none;
         d=google.com; s=arc-20160816;
-        b=ECG9v5jFd3f1uF+i3bJIMGiJ9w/J+gi5roZL3lwz1eqmZwJbXuQ8YGz2h1iO4ofAaQ
-         lNu0X0IeBvKK4LHTMSIsNcj6ituTNNquUL67Ky2ijat3Da1HBe/tyuDC+8VOUC6a0MCz
-         kk5yE1x3+SZ0qQ/nqOA4CiCX/7qAoijFk7tmd7YfbVWh+22jJ+pDkZw9hddcXE2t45go
-         g0JIsSt7Q2ncCOIEsdS+8+DPgj27JBvnaVso1J9v5WtZ4lJo2Yv+p0z494NdIEl64GVd
-         bdg1vFRVTUcopHL0AM9OgrjRlokzpn/zpTs5t/lq9zTpXxJgoB2qt+EFU4Ae/AILQUeH
-         kzLw==
+        b=hmXpUqjl72oPagYQGfpRUysIKtkn7ivQzjqTLFV+4qpOQ8AIoDHpI2R4dDeE0AaQfd
+         KeJcod9DnfSh4c+cqc4Q2V4YIAVpZdVscfd+k/FU2uG6I487PNTZaeHjjtRCroeiBdKp
+         f1IeZXyIQpAegHhDHnfjHVdDwu0HQVVKPYCQO56MBi10o0Z9dWvY+2CJOY/x9A01lB03
+         yjEEIA5diT4OnRh04zOntSUT2DJhc1C0liqx38ZnosYcrsRM/PZ6bkckGqdxZSvWKo51
+         62SdZJVp+0POln0kyUn4kjoxq/SrQBCsgwOBVvp9RRBoi9he05TL9+Vx4D54R6cfFkHW
+         Cadg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:cc:to:content-language:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=BzSYqUDqIh66HgbhWmV+ZxG3+ESGQuCVc9Av+YEBkFc=;
-        b=kWNGb0M0eqNjvkLXoyin1+su46D1q/5ZUQw6xVwr3RlIMjHCg9KH0AuWkswWVdbqbF
-         Rbo3cDUfovqIgCTfYuJdJA3vSKFoPyODXE26je759ySc60KYsLgLSubikwTaku3D8nGB
-         YeRhzWYtbSpVtvExnwzP1O0+MnyfRVB832NkQayG8EVTNDC+wqwpSwEGvsn4fV12VJbc
-         KtJPxGzMSAMh239HdbyJFEqmKxHOIhboy6B33EV5IDEAG1o9EOwKv3+TwVTGu61/vp56
-         a00j5uVo8wp1ezUjvuWvuDmD6cInz/64+Y+8VmUk396tMACjavHmKB3S5jhv4UQvK2HJ
-         OVGQ==
+        h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence:user-agent
+         :in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:dkim-signature;
+        bh=3u1BWvclzkU74SeVV2/KiAHu2dxAEuuyeyxP23vA5KY=;
+        b=Tf6zmCdYDnRqcbzf/jRUB4rAANe/Dt91M3/avjc4y5OM0KN3frcbWobWIzBL+lS6Ah
+         6IRK6crFaVOQ+Y1QCB/moFtOlgfMH290BDHChIzpUlHbD071XNI20AbTvhifH9B44Oiu
+         7r2MSUZM2O8D0Q0nVu5l/PloI5okqhvbAC9ahhq+KKamroA2fGHG1FBBJQxAs+MUjoC2
+         p70ddNkYGKbGt1F6zYt0nLt9QO2/fM4F0SKS8stpQKHJNNn/5xDgwuWVVJR3QJ4pQVEy
+         RuLU+wKcE3e47OC88SgV+ua8Wo0RYfdXC8+qdtUM6QCiXZfBKGKSe/OEvu/TwLDOOIa0
+         Z2GA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=q33JID0N;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=eXJ0jS6t;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 14-20020a250b0e000000b0066e207eab72si8711295ybl.2.2022.07.04.02.10.34
+        by mx.google.com with ESMTPS id 186-20020a2510c3000000b0066e254f2539si8796409ybq.345.2022.07.04.02.16.26
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 04 Jul 2022 02:10:35 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 04 Jul 2022 02:16:26 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=q33JID0N;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:60700 helo=lists1p.gnu.org)
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=eXJ0jS6t;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:40978 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1o8I6E-0008WU-HB
-	for alex.bennee@linaro.org; Mon, 04 Jul 2022 05:10:34 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37838)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1o8IBt-00067z-Kf
+	for alex.bennee@linaro.org; Mon, 04 Jul 2022 05:16:25 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:39120)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1o8I4O-0006G6-6d
- for qemu-arm@nongnu.org; Mon, 04 Jul 2022 05:08:40 -0400
-Received: from mail-pj1-x1031.google.com ([2607:f8b0:4864:20::1031]:37747)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1o8I4M-0001Eu-9m
- for qemu-arm@nongnu.org; Mon, 04 Jul 2022 05:08:39 -0400
-Received: by mail-pj1-x1031.google.com with SMTP id
- y14-20020a17090a644e00b001ef775f7118so4648183pjm.2
- for <qemu-arm@nongnu.org>; Mon, 04 Jul 2022 02:08:37 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=message-id:date:mime-version:user-agent:subject:content-language:to
- :cc:references:from:in-reply-to:content-transfer-encoding;
- bh=BzSYqUDqIh66HgbhWmV+ZxG3+ESGQuCVc9Av+YEBkFc=;
- b=q33JID0N3HuGxQNQtODokipRa0WkqEQ2GL+m7IW1U6fxOFn0Ez4M/84OmRbSLivM+9
- ac3VB9r2UB3j9dX8STmLbbS7gxEgKBFjBVLAxz3a/sHrZQaztnSXbFVKwFGukp8kmqzF
- Pbj7tB/GHN3kyYQNiEkd3ar95Y3p57VEqhQWYBl9akqUG6Mo+6aHKrlHSXBEKF2k5P8N
- EdGBrI8Y1XEdriCUY6UaJNL4lAJHF40b7tQEjIp2vGr6K6GtsM8Tqk5wbIeUijS+TVQM
- mIdrCkpgwmYV0U3fa8n/CC1zJu0PSOz4ODORe8+RMAUPfBNQkVlZhRx3+JVEoxuRiE3M
- gkDA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
- :content-language:to:cc:references:from:in-reply-to
- :content-transfer-encoding;
- bh=BzSYqUDqIh66HgbhWmV+ZxG3+ESGQuCVc9Av+YEBkFc=;
- b=Ns5VQT1XwLV7lW82cherMRPHfUNsvYoBPe2RqRFze6kyKqYWhdkCaL2fuikt1oMwQt
- QslaDQ8ROJVJrqP3hGEv8HRDfyDLADXaE4nWzTk5YjsZmiZwOh0bu04MBWOuilzoVhIo
- 60FcRdV1trGxShJWZEHdmUI4pXFl7hSOI+31UXbgLuzb8KI7GrCu3KlHs2HYZ2T7aKip
- P4wjcmQpAWtVFyQ3vglkfqZt0J2F2+8zJL0u8X/6VlM3pjUWeq3001iXz57hmKvxCq6I
- dAcdAEqm/LvErXsXUdWVEpWeTTOJvDQxfHble9RqM44NqXM8DpTpMwLzQjEjhklGVgSq
- uP0A==
-X-Gm-Message-State: AJIora+lxdHCNK8to4vUh8aMwLEQIOW4MWGhUif5egKiungXifHa4A+k
- N7R67byf3ZehSalTCGddOpfYpQ==
-X-Received: by 2002:a17:90b:4f8c:b0:1ed:243:ba07 with SMTP id
- qe12-20020a17090b4f8c00b001ed0243ba07mr35077256pjb.89.1656925716631; 
- Mon, 04 Jul 2022 02:08:36 -0700 (PDT)
-Received: from [192.168.138.227] ([122.255.60.245])
- by smtp.gmail.com with ESMTPSA id
- d16-20020a170902b71000b0016a7b9558f7sm18026270pls.136.2022.07.04.02.08.34
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 04 Jul 2022 02:08:35 -0700 (PDT)
-Message-ID: <6176e126-60ae-7de5-1b22-dcfa585f4de6@linaro.org>
-Date: Mon, 4 Jul 2022 14:38:30 +0530
+ (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
+ id 1o8IA6-00053z-VR
+ for qemu-devel@nongnu.org; Mon, 04 Jul 2022 05:14:35 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:38755)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
+ id 1o8IA3-00023k-Hb
+ for qemu-devel@nongnu.org; Mon, 04 Jul 2022 05:14:33 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1656926068;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:in-reply-to:in-reply-to:  references:references;
+ bh=3u1BWvclzkU74SeVV2/KiAHu2dxAEuuyeyxP23vA5KY=;
+ b=eXJ0jS6tgLoD3RRW2+VbQOSV0uc/gEgyhraqiqMgNbJ2TUMi5C9U9Q5R2798zvKA3yA+Zs
+ 5lmLv/KUlsvs31wLc68UZ/pOKcXDvC5UN4i213bs5xADVW+MDxiPFLHqETSz0wLewiXx9T
+ VVoAhTPcBDaadrUqXdjr/K6cjGxkWA8=
+Received: from mimecast-mx02.redhat.com (mx3-rdu2.redhat.com
+ [66.187.233.73]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-2-dIPApKgYMtKHtvwb-TNuTg-1; Mon, 04 Jul 2022 05:14:25 -0400
+X-MC-Unique: dIPApKgYMtKHtvwb-TNuTg-1
+Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.7])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 51E921C05EB7;
+ Mon,  4 Jul 2022 09:14:24 +0000 (UTC)
+Received: from redhat.com (unknown [10.33.36.151])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id A6A9F141510F;
+ Mon,  4 Jul 2022 09:14:20 +0000 (UTC)
+Date: Mon, 4 Jul 2022 10:14:18 +0100
+From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
+To: Stefan Hajnoczi <stefanha@gmail.com>
+Cc: Thomas Huth <thuth@redhat.com>, qemu-devel <qemu-devel@nongnu.org>,
+ Stefan Hajnoczi <stefanha@redhat.com>, Michael Roth <michael.roth@amd.com>,
+ Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+ Gerd Hoffmann <kraxel@redhat.com>,
+ =?utf-8?Q?C=C3=A9dric?= Le Goater <clg@kaod.org>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Paolo Bonzini <pbonzini@redhat.com>, Michael Tokarev <mjt@tls.msk.ru>,
+ "qemu-ppc@nongnu.org list:PowerPC" <qemu-ppc@nongnu.org>,
+ qemu-arm <qemu-arm@nongnu.org>, Brad Smith <brad@comstyle.com>,
+ Kamil Rytarowski <kamil@netbsd.org>, Reinoud Zandijk <reinoud@netbsd.org>,
+ Ryo ONODERA <ryoon@netbsd.org>
+Subject: Re: [PATCH 1/3] scripts/make-release: Do not include the edk2
+ sources in the tarball anymore
+Message-ID: <YsKvalrPIO96wWuP@redhat.com>
+References: <20220704064254.18187-1-thuth@redhat.com>
+ <20220704064254.18187-2-thuth@redhat.com>
+ <CAJSP0QUx8456jPp4=MOjRwZMPrBYgU1669HnEpC_+gDobhOiCQ@mail.gmail.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.9.1
-Subject: Re: [PATCH v4 19/45] target/arm: Implement SME MOVA
-Content-Language: en-US
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
-References: <20220628042117.368549-1-richard.henderson@linaro.org>
- <20220628042117.368549-20-richard.henderson@linaro.org>
- <CAFEAcA-v6_atdSMggO7mAfW0H96F8s2fZWLD3biHLjsFnbzYgQ@mail.gmail.com>
-From: Richard Henderson <richard.henderson@linaro.org>
-In-Reply-To: <CAFEAcA-v6_atdSMggO7mAfW0H96F8s2fZWLD3biHLjsFnbzYgQ@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1031;
- envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x1031.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+In-Reply-To: <CAJSP0QUx8456jPp4=MOjRwZMPrBYgU1669HnEpC_+gDobhOiCQ@mail.gmail.com>
+User-Agent: Mutt/2.2.6 (2022-06-05)
+X-Scanned-By: MIMEDefang 2.85 on 10.11.54.7
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=berrange@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -21
+X-Spam_score: -2.2
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.001,
+X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.082,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: GIfR5a0t1E0v
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 8W+OIqbs7qBE
 
-On 7/1/22 21:49, Peter Maydell wrote:
-> On Tue, 28 Jun 2022 at 05:40, Richard Henderson
-> <richard.henderson@linaro.org> wrote:
->>
->> We can reuse the SVE functions for implementing moves to/from
->> horizontal tile slices, but we need new ones for moves to/from
->> vertical tile slices.
->>
->> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
->> ---
+On Mon, Jul 04, 2022 at 08:26:34AM +0100, Stefan Hajnoczi wrote:
+> On Mon, 4 Jul 2022 at 07:45, Thomas Huth <thuth@redhat.com> wrote:
+> >
+> > The edk2 sources are bigger than the sources of QEMU - so they double the
+> > size of our release tarballs if we include them. Fortunately, edk2 has a
+> > permissive license, so there is no need for us to do this as long as we
+> > continue to distribute the edk2 license information in our release tarball.
+> >
+> > Signed-off-by: Thomas Huth <thuth@redhat.com>
+> > ---
+> >  scripts/make-release | 27 +++++++++++++++++++++------
+> >  1 file changed, 21 insertions(+), 6 deletions(-)
+> >
+> > diff --git a/scripts/make-release b/scripts/make-release
+> > index 05b14ecc95..f79ed7a2ae 100755
+> > --- a/scripts/make-release
+> > +++ b/scripts/make-release
+> > @@ -20,19 +20,34 @@ git checkout "v${version}"
+> >  git submodule update --init
+> >  (cd roms/seabios && git describe --tags --long --dirty > .version)
+> >  (cd roms/skiboot && ./make_version.sh > .version)
+> > -# Fetch edk2 submodule's submodules, since it won't have access to them via
+> > -# the tarball later.
+> > +
+> > +# Fetch edk2 submodule's submodules to get their license information.
+> > +# Edk2 is distributed under permissive licenses, so we don't have to
+> > +# include the full source tree here (which is bigger than QEMU's sources)
+> > +# as long as we provide the license information in the tarball.
+> >  #
+> >  # A more uniform way to handle this sort of situation would be nice, but we
+> >  # don't necessarily have much control over how a submodule handles its
+> >  # submodule dependencies, so we continue to handle these on a case-by-case
+> >  # basis for now.
+> > -(cd roms/edk2 && \
+> > -    git submodule update --init -- \
+> > +cd roms/edk2
+> > +git submodule update --init --depth 1 -- \
+> >          ArmPkg/Library/ArmSoftFloatLib/berkeley-softfloat-3 \
+> >          BaseTools/Source/C/BrotliCompress/brotli \
+> > -        CryptoPkg/Library/OpensslLib/openssl \
+> > -        MdeModulePkg/Library/BrotliCustomDecompressLib/brotli)
+> > +        CryptoPkg/Library/OpensslLib/openssl
+> > +mv ArmPkg/Library/ArmSoftFloatLib/berkeley-softfloat-3/COPYING.txt \
+> > +   License-softfloat.txt
+> > +mv BaseTools/Source/C/BrotliCompress/brotli/LICENSE License-brotli.txt
+> > +mv CryptoPkg/Library/OpensslLib/openssl/LICENSE License-openssl.txt
+> > +edk2rev=$(git rev-parse --short=12 HEAD)
+> > +rm -r $(ls | grep -v License) .[a-z]*
+> > +cat > sources.txt <<EOF
+> > +The edk2 sources can be downloaded from:
+> > +
+> > +https://github.com/tianocore/edk2/archive/${edk2rev}.tar.gz
 > 
->> diff --git a/target/arm/sme_helper.c b/target/arm/sme_helper.c
->> index eef2df73e1..95159862de 100644
->> --- a/target/arm/sme_helper.c
->> +++ b/target/arm/sme_helper.c
->> @@ -19,8 +19,10 @@
->>
->>   #include "qemu/osdep.h"
->>   #include "cpu.h"
->> -#include "internals.h"
+> Please use QEMU's edk2 mirror:
+> https://gitlab.com/qemu-project/edk2
 > 
-> Did you mean to delete this #include line ?
+> QEMU mirrors all dependencies so that even if upstream projects go
+> offline we can still rebuild all of QEMU from source.
 
-I meant to go back and remove it from whence it came, but kept forgetting.
+Note that the github/lab generated tarballs are not signed, while
+QEMU's release tarballs are gpg signed, so from that POV this would
+be a regression no matter which site we point to.
 
->> +void HELPER(sme_mova_cz_d)(void *za, void *vn, void *vg, uint32_t desc)
->> +{
->> +    int i, oprsz = simd_oprsz(desc) / 8;
->> +    uint8_t *pg = vg;
->> +    uint64_t *n = vn;
->> +    uint64_t *a = za;
->> +
->> +    for (i = 0; i < oprsz; i++) {
->> +        if (pg[H1_2(i)] & 1) {
-> 
-> The documentation of the H macros says
-> "The H1_<N> macros are used when performing byte arithmetic and then
->   casting the final pointer to a type of size N."
-> but we're not casting anything to a 2-byte type, so what's happening here?
+Also it would need more guidance on what to actually do with the
+tarball, as if you merely unpack it into this dir, it won't work
+as it will be one level of dirs nesting too deep for QEMU's
+build scripts to work.
 
-Yep, error.
+With regards,
+Daniel
+-- 
+|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
+|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
+|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|
 
->> +void HELPER(sme_mova_cz_q)(void *za, void *vn, void *vg, uint32_t desc)
->> +{
->> +    int i, oprsz = simd_oprsz(desc) / 16;
->> +    uint16_t *pg = vg;
->> +    Int128 *n = vn;
->> +    Int128 *a = za;
->> +
->> +    for (i = 0; i < oprsz; i++) {
->> +        if (pg[H2(i)] & 1) {
->> +            a[i * sizeof(ARMVectorReg)] = n[i];
-> 
-> Is it really OK to do this with an Int128 store? That is
-> in host-order, but the two halves of a 128-bit quantity
-> in the ZA array are in architectural order. I suppose the
-> source also will have them in the architectural order, but
-> it does look odd, especially uncommented.
-
-Would memcpy be better for you?
-
->> +    /* Resolve tile.size[index] to an untyped ZA slice index. */
->> +    t_index = tcg_temp_new_i32();
->> +    tcg_gen_trunc_tl_i32(t_index, cpu_reg(s, rs));
->> +    tcg_gen_addi_i32(t_index, t_index, index);
-> 
-> This code isn't doing what the comment says; it's just calculating
-> the (not-yet-taken-MOD-dim) slice index, which does depend on the type.
-
-I guess the comment applies to a larger section than just these two lines.
-
-> 
->> +
->> +    len = ctz32(streaming_vec_reg_size(s)) - esz;
-> 
-> What is this the length of ?
-
-The length of the extract, aka the mod.
-
->> +        /* The tile slice offset within env->zarray is the column offset. */
->> +        offset = tile;
-> 
-> I don't understand why we can just add the tile index
-> (which is going to be an integer 0, 1, 2..) to a byte offset.
-> In the horizontal case we add tile * sizeof(ARMVectorReg),
-> which makes more sense to me.
-
-Hmm.  I think you're right this should be tile * column width, or
-
-   offset = tile << esz;
-
-I wish I could compare vs FVP...
-
->> +        /*
->> +         * For big-endian, adjust the column slice offset within
->> +         * the uint64_t host words that make up env->zarray.
->> +         * This must wait until index and offset are combined.
-> 
-> Why? Neither the byte-offset of the start of the tile nor
-> the byte offset of zarray in CPUARMState ought to be non-8-aligned.
-
-Columns will not be 8-aligned.  On page 38 of 0616A.a, see the illustration of ZA0V.B[22], 
-which is 6 mod 8.
-
-I'll try and improve the commentary.
-
-
-r~

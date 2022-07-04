@@ -1,89 +1,89 @@
-Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp3502002lft;
-        Mon, 4 Jul 2022 14:56:59 -0700 (PDT)
-X-Google-Smtp-Source: AGRyM1trpGrx3LwUJEGigYQkjoI8Vb64I/l0oeCN2EUwS/CMaPas5kfSDBw1bHrRVZrE/quy7kL+
-X-Received: by 2002:a05:620a:1319:b0:6ae:feb0:a003 with SMTP id o25-20020a05620a131900b006aefeb0a003mr21868439qkj.90.1656971819797;
-        Mon, 04 Jul 2022 14:56:59 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1656971819; cv=none;
+Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp3502023lft;
+        Mon, 4 Jul 2022 14:57:03 -0700 (PDT)
+X-Google-Smtp-Source: AGRyM1vK/jVg+m01uNzarQJMJ7FrM+CJb6hCRE24xv8Kxjmy1IIWFVSHnuDIvHsD5+7RWSxZqts4
+X-Received: by 2002:ad4:5ae6:0:b0:472:f085:853d with SMTP id c6-20020ad45ae6000000b00472f085853dmr8172385qvh.14.1656971823663;
+        Mon, 04 Jul 2022 14:57:03 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1656971823; cv=none;
         d=google.com; s=arc-20160816;
-        b=bow6236yLRxH2nZZuubV02srU5Zy540AQXzjoICd56bjxaeOIZ2ebMI9K2+KbO3AiW
-         eo5PUVRyV/EzYeSc3okC0dqCpR8/vajIdYxtI+7Spgw3vIjISgOFw/PAcpJcNQwyQ/r6
-         EQraW2IQl4sAyHpoCDTRWqhjXrHpWCTdymX3hyexg2YGmtkm0bwiuxumJpy+4fnySuZJ
-         CwkQdbwMX6xdDPpRqvZPiV8kvFpkspXndFJJXVBYnuWGm9fGJW0jmy1VgSEh7rWX/434
-         BRwc+1CJQaSI4YOyQ1DbnGi71P1rptgZL2ID9wVuDPCFCc1S3l53z2sKO2IxSDlkGLA8
-         UzUw==
+        b=BZ/FR2riRY+DKXad8Zor4j1SeazGaKjAzLQNfk1Tn7ay1w2goKUoOr9yNvSXl/SyEa
+         2qnxYk3wPKYbcQzwR/kDfp8Z7o8iPf4/MoYsqCM2hMEtxc5IoxYDMCxAUtD+2tkvxHg6
+         fNdQ1iG5a5ZQbkijehMTNJyd2lburh+rrHJiMKGAevKxXIPjBi9KqSxx0+lwZIM84IWc
+         eoVokp13aLT7H4F7o15xRtG5NJFLGu8HUkdXX7JkKtCzhcJ5YyXgGm8rX8D9Kthgnw24
+         of/YK/ul0JLLU3+C4bxrG91XYHYCtbJ43VgUaC6RUhmtRFHJ9wSYJaNBLfNvVeZknaJV
+         YpnQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:feedback-id:dkim-signature:dkim-signature;
-        bh=SDbWD8l4JEHfDcDBn/AoqsCvTO1am6yDlmfK+59RfvY=;
-        b=m+vgdzBqBB07+zq/fUg1NW/zUoQcr2AZsx3BFvCplgtXWNMN0rCWHzY3cqmq1RdO0Y
-         BsBslVKylFNcANUyQ/T5vnPIhvRLEDE5N3ebyp0riv/i+0HRhRJtlJ+aCawK086InY3g
-         t5kFH/e0wM1Cdef5XWdkCBF9RLgAgCp5GwE8l+Es0U2usRnuR0BqB8tGiNJZ+4PsytAs
-         dL20QPXE2C9bq1opXs/1qI4tyEfLsMi63VF3Or9ADUiFc914/SuMOlUbyRZ0H2NrbRFE
-         48E0mDihu7yb0BiBKCEVQYL9Gw2eWKc5uROcC1Wd3xfTOTaEJFjyp7nH8aZiDVf+Ezcs
-         4ZYA==
+        bh=KdzNLlPtoOQAR1V/yBPdUewvspHqmLHfngwqSvHO/IY=;
+        b=X3xd5ZXiWNQbuMWTyh1UrLTWIwo2vMXo8247+zUbPZhl1GMXs4BPlFykf6ZtBDaqs4
+         yQ/bQApksrYlOixV4itaf+7VmWT2oY79EOMPz9zhmR/TytWZQ4Lt/EGMlIHpV6eE+pFs
+         R2Q5riReZTlugEAQ6nHKhqNrBJ7vTRLwHmpdgHvKHi2BnVhGVng7VskJM4x8X2T9hh5D
+         y48RdCv8K7lwNJDM7ZSe9fY37TlbOB6rbajSznXrEqNSLmP8m+NbEn712PO4fFM023io
+         ZDwWnUCjTbvgmZfawPvs7n061naWGFlyywyiOfm6qLp9Ec7ub4cpIJOqLbcn5sAIugGA
+         QAvg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@pjd.dev header.s=fm1 header.b=3AOicbtG;
-       dkim=fail header.i=@messagingengine.com header.s=i9e814621.fm2 header.b=kEtmlPib;
+       dkim=fail header.i=@pjd.dev header.s=fm1 header.b=HDICCo1I;
+       dkim=fail header.i=@messagingengine.com header.s=i9e814621.fm2 header.b=ZMCUKH8c;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id u5-20020a05622a198500b00317ca5f6225si19519887qtc.280.2022.07.04.14.56.59
+        by mx.google.com with ESMTPS id v8-20020a05622a014800b00317cdbb7801si19353146qtw.462.2022.07.04.14.57.03
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 04 Jul 2022 14:56:59 -0700 (PDT)
+        Mon, 04 Jul 2022 14:57:03 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@pjd.dev header.s=fm1 header.b=3AOicbtG;
-       dkim=fail header.i=@messagingengine.com header.s=i9e814621.fm2 header.b=kEtmlPib;
+       dkim=fail header.i=@pjd.dev header.s=fm1 header.b=HDICCo1I;
+       dkim=fail header.i=@messagingengine.com header.s=i9e814621.fm2 header.b=ZMCUKH8c;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:41072 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:41452 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1o8U3v-0006Hj-9u
-	for alex.bennee@linaro.org; Mon, 04 Jul 2022 17:56:59 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34552)
+	id 1o8U3z-0006X9-3w
+	for alex.bennee@linaro.org; Mon, 04 Jul 2022 17:57:03 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:34602)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter@pjd.dev>)
- id 1o8U24-0003Yh-48; Mon, 04 Jul 2022 17:55:04 -0400
-Received: from new2-smtp.messagingengine.com ([66.111.4.224]:34867)
+ id 1o8U27-0003dU-LN; Mon, 04 Jul 2022 17:55:07 -0400
+Received: from new2-smtp.messagingengine.com ([66.111.4.224]:46425)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter@pjd.dev>)
- id 1o8U22-00009J-Fp; Mon, 04 Jul 2022 17:55:03 -0400
+ id 1o8U26-0000L0-6Z; Mon, 04 Jul 2022 17:55:07 -0400
 Received: from compute2.internal (compute2.nyi.internal [10.202.2.46])
- by mailnew.nyi.internal (Postfix) with ESMTP id 9978C580FDC;
- Mon,  4 Jul 2022 17:55:01 -0400 (EDT)
+ by mailnew.nyi.internal (Postfix) with ESMTP id E67BC580FDF;
+ Mon,  4 Jul 2022 17:55:04 -0400 (EDT)
 Received: from mailfrontend2 ([10.202.2.163])
- by compute2.internal (MEProxy); Mon, 04 Jul 2022 17:55:01 -0400
+ by compute2.internal (MEProxy); Mon, 04 Jul 2022 17:55:04 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=pjd.dev; h=cc:cc
  :content-transfer-encoding:date:date:from:from:in-reply-to
  :in-reply-to:message-id:mime-version:references:reply-to:sender
- :subject:subject:to:to; s=fm1; t=1656971701; x=1656975301; bh=SD
- bWD8l4JEHfDcDBn/AoqsCvTO1am6yDlmfK+59RfvY=; b=3AOicbtGFSwu84jr+N
- anelZz6XUU3DiMl+NyhZarGbO829dwuRYc0mdP0RabVEJdjGdDNxrVYITFvtoPwO
- +9Ow+SbCVbTm3eHcMQg2ml2MpMzkp8dbbS5gPwSRRRXxkP8XVhcWUX0iLPLl7jaE
- pFYcYVzl16eE19HHEow7w87pMWZ89VDp4UypdsOeEJOaZ4Eu+l0STjMN0qbFTaH3
- q4plqGDwBuqcRpjU1dV2pyF7hC6/1Gy1+bN1TMPklzzkoWAA+cjWu6Dd10vZaPhm
- vreMoX1NIuyS9afK11E9alueyww2dPRWtOXsIKjTfHTMN0WYaGZnQs4M/ZLiUn/J
- 02xg==
+ :subject:subject:to:to; s=fm1; t=1656971704; x=1656975304; bh=Kd
+ zNLlPtoOQAR1V/yBPdUewvspHqmLHfngwqSvHO/IY=; b=HDICCo1IpzG+GyR/Is
+ 232JsYku5x85Nk+SfTKr27dH0R7o3toChpbyn6XdsyASMnZZMywZJ/bfw8jE9KVN
+ y3nIhPXzligvZkQmf/L4dOilimONTHTysNHTT0Ffe1WRoJZbYrpWFDnYSPaWzewE
+ BrpTpaO94LbFMNUSv6sdmaATukPZoIcxjlpgjfkFDNiP2PI0HvE0/3tuGzMu2/cj
+ 7u1odk0OmsJps4AErgfINOZlTk2l9J29JIDaQBdMYsOiOSrggDttGCnvbaYiGLot
+ 4rX6MoIXRgy87f9/JvBjTQSkCHJU0mzOBRRNOO1+xhP2UToW9k//L+eR3hHnqTyE
+ myEA==
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
  messagingengine.com; h=cc:cc:content-transfer-encoding:date:date
  :feedback-id:feedback-id:from:from:in-reply-to:in-reply-to
  :message-id:mime-version:references:reply-to:sender:subject
  :subject:to:to:x-me-proxy:x-me-proxy:x-me-sender:x-me-sender
- :x-sasl-enc; s=i9e814621.fm2; t=1656971701; x=1656975301; bh=SDb
- WD8l4JEHfDcDBn/AoqsCvTO1am6yDlmfK+59RfvY=; b=kEtmlPibHLCRWDlaYRf
- oe8pL7vmO+mmvzwhQj1XuwxEE90k0nvemprmYHgkexOPJACEeeTdgnw7LWRXBpPN
- Tw9e7T9BmJUV/SMvQ/zt/UvncHhTH/kvuxqg64wUvhI99Q/qYPGNIYRa97/1seZJ
- wtpRZWeUUy6Pgdd4IMjMPZB+A27GwcXsuJ5cKZlpzDbwMHZHqa3FpDziaBu8tEG8
- DJM98kvX+pZMP6XGe4DVxYQvKBoJcgb2Lu+5aL2qNGC4OSrxiovLLxDtUPXUEsA6
- xP/OLCAM+7Yk9NkrGOWTUUOETphYTwk43/J9Ut+zYqHDzrLSRi2ondwWeBfoTjnd
- rVA==
-X-ME-Sender: <xms:tWHDYmMmDQmnVHAdTfNiw-Xs6wQFFwhEQtZ9KwjgIjr1YGLDkswdhg>
- <xme:tWHDYk9mUDBPezABHZNRnsfXAQWl_DO_rEgiXw6wmdRNroJZwAjA9YZzd5BNOLPFS
- jU6dRAri1dP56wDbCQ>
-X-ME-Received: <xmr:tWHDYtThWpiuFtqrIPUuu_BPZZK14nfOhiyA7T4f5yj3hLrP3pkvBp6oL054QQ>
+ :x-sasl-enc; s=i9e814621.fm2; t=1656971704; x=1656975304; bh=Kdz
+ NLlPtoOQAR1V/yBPdUewvspHqmLHfngwqSvHO/IY=; b=ZMCUKH8crwlLngpURBZ
+ MlDbROqHfaupoX1RTok0UeTf5Fpd58Sy+ZkIHFgNRPPlozl2JSWOJo/G5dMbdeJI
+ fH6Qse9BXdD9Q/OYKvsKmQn/XQbYLsDOOG1nGOa6nOg3asIEAXB7g8TXH0UL9i3N
+ 6ELYiZfhUAN2GaYO8/CYv/fVB+D4bnDqlT9y0dpWYF4jEroOvAGPgToU8FX+hu/5
+ MYo/cOQNaOm7cOh+aJA9Vl+judwR1Ea+fXqvilQn28UAEuLeGkykKaZUO7YjoNx/
+ xlZHtozc3x5oFWOE+XA7+Uww/0q7zLZaHlhobXDjI3ksQADsbJqi7S6kWJTNbDFE
+ qMw==
+X-ME-Sender: <xms:uGHDYrZw4Na7JaGEoQKGBjMfCfExmV7vZxn16bURK3lEwSJkxAHDBQ>
+ <xme:uGHDYqadkSZ1wjdv3k9TTY2jqcX6puuC8vGJqblJSTeUBVDJp82yzxqMEk9ZvuCjQ
+ WNJQTZMtBCUytNBM84>
+X-ME-Received: <xmr:uGHDYt-bC4BSFRkKqYezUTLT1Ghp2kZiU7yKOdlSZwm94x9sZhkaDaXlGhgc_g>
 X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvfedrudeitddgtdduucetufdoteggodetrfdotf
  fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
  uceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmne
@@ -93,22 +93,22 @@ X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvfedrudeitddgtdduucetufdoteggod
  thhtvghrnhepteelgfeuleeffffffeekiefghfejuefgtdfgteeigeekvdefffevieekvd
  elteevnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmrghilhhfrhhomhep
  phgvthgvrhesphhjugdruggvvh
-X-ME-Proxy: <xmx:tWHDYmsL6tFXt4xfrJ1Ee0VsaomW60DpD5-nZNTU_9x5Pss-gueMuA>
- <xmx:tWHDYufC0DMdnckG-gz5F62p4PGGI5uGhOf_8y5oKlcvXCFywAjkOw>
- <xmx:tWHDYq0i2R7N3y4MeXYdibddc72cZTdN7v4vWVn_-atrwAjZarY1fA>
- <xmx:tWHDYrGQEjhoByOZizqThjaHDkU2TVUswalr7THakcEYSlV_hP9SJw>
+X-ME-Proxy: <xmx:uGHDYhokc0uw8uveC9N-yA1lVfB9txilKU72Cr9WguHVWsDlEvqtOA>
+ <xmx:uGHDYmp_saLucO8ekuubLbhnFg9PT5A97MOLw__s0V7lTQ1gWCiofQ>
+ <xmx:uGHDYnQYq6BB-b3A_aJ_e5f3haE1_Xq2__2Q1LcxDlWio4AUP3GvhA>
+ <xmx:uGHDYjB6po05wzm06MhLJL2RTbfiwmt41PJjYLsvHkEW7jX-0WgESw>
 Feedback-ID: i9e814621:Fastmail
 Received: by mail.messagingengine.com (Postfix) with ESMTPA; Mon,
- 4 Jul 2022 17:55:00 -0400 (EDT)
+ 4 Jul 2022 17:55:04 -0400 (EDT)
 From: Peter Delevoryas <peter@pjd.dev>
 To: 
 Cc: Peter Delevoryas <peter@pjd.dev>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
  Peter Maydell <peter.maydell@linaro.org>, Andrew Jeffery <andrew@aj.id.au>,
  Joel Stanley <joel@jms.id.au>, qemu-arm@nongnu.org, qemu-devel@nongnu.org
-Subject: [PATCH 2/8] aspeed: Create SRAM name from first CPU index
-Date: Mon,  4 Jul 2022 14:54:51 -0700
-Message-Id: <20220704215457.38332-2-peter@pjd.dev>
+Subject: [PATCH 4/8] aspeed: Make aspeed_board_init_flashes public
+Date: Mon,  4 Jul 2022 14:54:53 -0700
+Message-Id: <20220704215457.38332-4-peter@pjd.dev>
 X-Mailer: git-send-email 2.37.0
 In-Reply-To: <20220704215457.38332-1-peter@pjd.dev>
 References: <20220704215457.38332-1-peter@pjd.dev>
@@ -137,95 +137,39 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: R/JggfT2t/Pe
-
-To support multiple SoC's running simultaneously, we need a unique name for
-each RAM region. DRAM is created by the machine, but SRAM is created by the
-SoC, since in hardware it is part of the SoC's internals.
-
-We need a way to uniquely identify each SRAM region though, for VM
-migration. Since each of the SoC's CPU's has an index which identifies it
-uniquely from other CPU's in the machine, we can use the index of any of the
-CPU's in the SoC to uniquely identify differentiate the SRAM name from other
-SoC SRAM's. In this change, I just elected to use the index of the first CPU
-in each SoC.
+X-TUID: WOq9qHSVsEFy
 
 Signed-off-by: Peter Delevoryas <peter@pjd.dev>
 ---
- hw/arm/aspeed_ast10x0.c | 5 ++++-
- hw/arm/aspeed_ast2600.c | 5 +++--
- hw/arm/aspeed_soc.c     | 5 +++--
- 3 files changed, 10 insertions(+), 5 deletions(-)
+ hw/arm/aspeed.c             | 2 +-
+ include/hw/arm/aspeed_soc.h | 2 ++
+ 2 files changed, 3 insertions(+), 1 deletion(-)
 
-diff --git a/hw/arm/aspeed_ast10x0.c b/hw/arm/aspeed_ast10x0.c
-index 33ef331771..677699e54c 100644
---- a/hw/arm/aspeed_ast10x0.c
-+++ b/hw/arm/aspeed_ast10x0.c
-@@ -159,6 +159,7 @@ static void aspeed_soc_ast1030_realize(DeviceState *dev_soc, Error **errp)
-     DeviceState *armv7m;
-     Error *err = NULL;
+diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
+index cc395f988c..b2486a9e78 100644
+--- a/hw/arm/aspeed.c
++++ b/hw/arm/aspeed.c
+@@ -262,7 +262,7 @@ static void write_boot_rom(DriveInfo *dinfo, hwaddr addr, size_t rom_size,
+     rom_add_blob_fixed("aspeed.boot_rom", storage, rom_size, addr);
+ }
+ 
+-static void aspeed_board_init_flashes(AspeedSMCState *s, const char *flashtype,
++void aspeed_board_init_flashes(AspeedSMCState *s, const char *flashtype,
+                                       unsigned int count, int unit0)
+ {
      int i;
-+    g_autofree char *sram_name = NULL;
+diff --git a/include/hw/arm/aspeed_soc.h b/include/hw/arm/aspeed_soc.h
+index 68e907cd64..8389200b2d 100644
+--- a/include/hw/arm/aspeed_soc.h
++++ b/include/hw/arm/aspeed_soc.h
+@@ -184,5 +184,7 @@ void aspeed_mmio_map(AspeedSoCState *s, SysBusDevice *dev, int n, hwaddr addr);
+ void aspeed_mmio_map_unimplemented(AspeedSoCState *s, SysBusDevice *dev,
+                                    const char *name, hwaddr addr,
+                                    uint64_t size);
++void aspeed_board_init_flashes(AspeedSMCState *s, const char *flashtype,
++                               unsigned int count, int unit0);
  
-     if (!clock_has_source(s->sysclk)) {
-         error_setg(errp, "sysclk clock must be wired up by the board code");
-@@ -183,7 +184,9 @@ static void aspeed_soc_ast1030_realize(DeviceState *dev_soc, Error **errp)
-     sysbus_realize(SYS_BUS_DEVICE(&s->armv7m), &error_abort);
- 
-     /* Internal SRAM */
--    memory_region_init_ram(&s->sram, NULL, "aspeed.sram", sc->sram_size, &err);
-+    sram_name = g_strdup_printf("aspeed.sram.%d",
-+                                CPU(s->armv7m.cpu)->cpu_index);
-+    memory_region_init_ram(&s->sram, OBJECT(s), sram_name, sc->sram_size, &err);
-     if (err != NULL) {
-         error_propagate(errp, err);
-         return;
-diff --git a/hw/arm/aspeed_ast2600.c b/hw/arm/aspeed_ast2600.c
-index 3f0611ac11..64eb5a7b26 100644
---- a/hw/arm/aspeed_ast2600.c
-+++ b/hw/arm/aspeed_ast2600.c
-@@ -276,6 +276,7 @@ static void aspeed_soc_ast2600_realize(DeviceState *dev, Error **errp)
-     AspeedSoCClass *sc = ASPEED_SOC_GET_CLASS(s);
-     Error *err = NULL;
-     qemu_irq irq;
-+    g_autofree char *sram_name = NULL;
- 
-     /* IO space */
-     aspeed_mmio_map_unimplemented(s, SYS_BUS_DEVICE(&s->iomem), "aspeed.io",
-@@ -335,8 +336,8 @@ static void aspeed_soc_ast2600_realize(DeviceState *dev, Error **errp)
-     }
- 
-     /* SRAM */
--    memory_region_init_ram(&s->sram, OBJECT(dev), "aspeed.sram",
--                           sc->sram_size, &err);
-+    sram_name = g_strdup_printf("aspeed.sram.%d", CPU(&s->cpu[0])->cpu_index);
-+    memory_region_init_ram(&s->sram, OBJECT(s), sram_name, sc->sram_size, &err);
-     if (err) {
-         error_propagate(errp, err);
-         return;
-diff --git a/hw/arm/aspeed_soc.c b/hw/arm/aspeed_soc.c
-index 0f675e7fcd..0bb6a2f092 100644
---- a/hw/arm/aspeed_soc.c
-+++ b/hw/arm/aspeed_soc.c
-@@ -239,6 +239,7 @@ static void aspeed_soc_realize(DeviceState *dev, Error **errp)
-     AspeedSoCState *s = ASPEED_SOC(dev);
-     AspeedSoCClass *sc = ASPEED_SOC_GET_CLASS(s);
-     Error *err = NULL;
-+    g_autofree char *sram_name = NULL;
- 
-     /* IO space */
-     aspeed_mmio_map_unimplemented(s, SYS_BUS_DEVICE(&s->iomem), "aspeed.io",
-@@ -259,8 +260,8 @@ static void aspeed_soc_realize(DeviceState *dev, Error **errp)
-     }
- 
-     /* SRAM */
--    memory_region_init_ram(&s->sram, OBJECT(dev), "aspeed.sram",
--                           sc->sram_size, &err);
-+    sram_name = g_strdup_printf("aspeed.sram.%d", CPU(&s->cpu[0])->cpu_index);
-+    memory_region_init_ram(&s->sram, OBJECT(s), sram_name, sc->sram_size, &err);
-     if (err) {
-         error_propagate(errp, err);
-         return;
+ #endif /* ASPEED_SOC_H */
 -- 
 2.37.0
 

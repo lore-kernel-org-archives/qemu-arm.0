@@ -1,118 +1,128 @@
-Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp4109180lft;
-        Tue, 5 Jul 2022 10:16:50 -0700 (PDT)
-X-Google-Smtp-Source: AGRyM1sJcPo7cBlw3kvE20lzHvrlkeOcXG7RsppH4vKCJH39sEqXcjA/JfG/274Rce8d7zCNxw00
-X-Received: by 2002:a81:6cf:0:b0:31c:913c:144c with SMTP id 198-20020a8106cf000000b0031c913c144cmr14982197ywg.437.1657041409925;
-        Tue, 05 Jul 2022 10:16:49 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1657041409; cv=none;
+Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp4177386lft;
+        Tue, 5 Jul 2022 12:14:32 -0700 (PDT)
+X-Google-Smtp-Source: AGRyM1tIENuOGRIWA1b2U0AJ3vHFrYqpmw8Bh9zHYfSCTgmwtv/KypgMiFzOAGrBVA55Vd4gb87v
+X-Received: by 2002:ae9:e402:0:b0:6a7:86a3:752e with SMTP id q2-20020ae9e402000000b006a786a3752emr24580142qkc.300.1657048472527;
+        Tue, 05 Jul 2022 12:14:32 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1657048472; cv=none;
         d=google.com; s=arc-20160816;
-        b=TJPKzAvj3XSLSULkpSSbKZsP6huAmBlEtuMu6JEQ1ZIEt0I/t+Wk5QfOtaFByo1Vbg
-         YngW1A/+lUQnGy7ZN+0UpI6pKhqkUVXWZtc/Omaw5uvldA2laqO/S0hnzvdLXwQfD/9d
-         Wl2WHgXMmtXZUdmSDuWpXgAduW0V86Ny5eT2Mt5M2n8n21PAoq5XWTgoZ8fQz4cQ40mH
-         0e8o9BpdNd4J+pwrnh/7vr96QRtaKE1VNQixZc8SUeB4IxV7JP8HsVznZ3yuWgIOGmKP
-         sTsTJdpHKd82J2gznvZG54S8hkCBRi03jpBFCc78Uf4hmk6vSKe4MY2B8SvwqzDFJfPv
-         ZeuA==
+        b=FIBQkxwPfCZ71sdJWLCjXjmTugCPQ4mpiIYcYanXXAzTa1hzml+SYX9m50GvscEHT0
+         eV0KSsi4F8/Plrrd3Dwa2u7LEE+FXf1Obc5IpuSdJ85D5EIZX89DtMxw7HeW+8ynP/8g
+         5E+h+E2cxAYf+VeEb5VcpAk6mroezBItUwSuI6dSDxsTGhXD2E+IfPhRPSxb9MF9FpUb
+         u6g8HuXOdc4xcsB4n2+Z+YRaL5wFZh9Nm65EMPgUjYjY5aDx7zwMEBeVZiVrS5RWOnaC
+         Cn5SjiF0Dq5Lq/8oCHUXxYFJL/7M9DUooqHmYFXNwlbOYz+lEJTJez5JBiRUz3N1aBNF
+         7yUQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:cc:to:content-language:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=RsheyObkH6nPm7s078ieDEVx4gIvhlxXzkit1L9GD0I=;
-        b=WgCCq6e+rWKg8wnNFeOxapsUMiVRo7OWV5kQtvuOoHgQ7T72EyYm+LXNzrcl7QFu8E
-         ICr80gkzuUrc0wZA8TOt3sbAs7Ow0uJ4kTRzZURl3nUNNgtkGG9WTVHQg2BXSrulJArR
-         ajCRBtBb5nIJ9qSYbVJXVyLq77OKRI7zQdBEoLNbB0jGWjgWN/zEUAWdw+wufxtippRC
-         ECwuzzkMN2NFhU/KHAUaKBsyyBHoV5EUt4b3zELzFI4+ab0Sf6AdlhWEAcKlkFL9/SyQ
-         6AcJE5JnuwDxNU4dZ9JnRfqy/0xvta1pDe1OmNDABRxC1nnOjcRed4e7DFAgsJZEFKcE
-         ofrA==
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:feedback-id:dkim-signature:dkim-signature;
+        bh=SDbWD8l4JEHfDcDBn/AoqsCvTO1am6yDlmfK+59RfvY=;
+        b=0TX17KAkVkHHVY4w6LTEHyL3Dln8dXfopMb3HirhK60zuuyVZqmhX23eRrxGdPUG2C
+         df9w9DHXcgyJkE2fLe2kLANPxsTsVtjwV3udUGvLa56Lg3S0SnmLsyjJ4nAQHBpxRcRb
+         Sb9xZm7VNDYDX2y5iYpIX2gUVpU33HrsEctP/P5V+vw78oKHT10Hz/S7xwuxl3PjWHyR
+         JIFvm58Cy5Ey2PtbKRfLAYvocAVP84DBy0geBPDIH1LRY8K4h5ySzCUK6baI4/r4ZPys
+         Hr7zQfNcwepeFy+3zpgmG80eBMYR0nuLmVlAkGdlWqJxxPN5Plp56ij4fQ/SZT13AoPG
+         7lsA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=wGGFgSYt;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dkim=fail header.i=@pjd.dev header.s=fm1 header.b=gRAswKE+;
+       dkim=fail header.i=@messagingengine.com header.s=i9e814621.fm2 header.b=I6+xAJfU;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 127-20020a250185000000b0066e492c48adsi9359421ybb.379.2022.07.05.10.16.49
+        by mx.google.com with ESMTPS id w11-20020ac857cb000000b00304fb73527dsi20113553qta.124.2022.07.05.12.14.32
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 05 Jul 2022 10:16:49 -0700 (PDT)
+        Tue, 05 Jul 2022 12:14:32 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=wGGFgSYt;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:32812 helo=lists1p.gnu.org)
+       dkim=fail header.i=@pjd.dev header.s=fm1 header.b=gRAswKE+;
+       dkim=fail header.i=@messagingengine.com header.s=i9e814621.fm2 header.b=I6+xAJfU;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:52580 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1o8mAL-0006Jj-5t
-	for alex.bennee@linaro.org; Tue, 05 Jul 2022 13:16:49 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49264)
+	id 1o8o0G-000173-1q
+	for alex.bennee@linaro.org; Tue, 05 Jul 2022 15:14:32 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46522)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1o8mA2-0006G3-59
- for qemu-arm@nongnu.org; Tue, 05 Jul 2022 13:16:31 -0400
-Received: from mail-pl1-x630.google.com ([2607:f8b0:4864:20::630]:45697)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1o8mA0-00081J-Du
- for qemu-arm@nongnu.org; Tue, 05 Jul 2022 13:16:29 -0400
-Received: by mail-pl1-x630.google.com with SMTP id d5so11479621plo.12
- for <qemu-arm@nongnu.org>; Tue, 05 Jul 2022 10:16:27 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=message-id:date:mime-version:user-agent:subject:content-language:to
- :cc:references:from:in-reply-to:content-transfer-encoding;
- bh=RsheyObkH6nPm7s078ieDEVx4gIvhlxXzkit1L9GD0I=;
- b=wGGFgSYttLTQzYq45eAK66z6UTNPpXb1aFYYWjcOpJMXVJhMyLJfz995dLsuvRR71l
- Vfpau2bt6NpISGAtYliPdiS7WVuTplyaTOgh8K9pN0MN4Sd2IavreUt2IKKBqPW4SV33
- jWmjp9B3+Q/Jy8UrSB9lYfwxqpsB1ujlmjeWG3BuonpCINule4Moby0tkxYjwYO81YDW
- 0we3ETGCSaPuHT+Sup0tzKcolxZH+W8uxUlC9q3WuuSy+h6qGBSMfKZDzAivFg+b1Zf6
- IcXYnNnc3mDCR9yATfQUF4cyotphhJr7PxqREWGTQZih8PgsZB4SCOR0pt/sd5a3zgcO
- 0epA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
- :content-language:to:cc:references:from:in-reply-to
- :content-transfer-encoding;
- bh=RsheyObkH6nPm7s078ieDEVx4gIvhlxXzkit1L9GD0I=;
- b=tEV+6rk5VvZx2XBHxh3NsmcQtiEVmGFIDDa/we0sq63PVZ2Eo/tycROhfez3a8ApvO
- 3VvZgZriP7bQhwLN2y6V58g26S/Nl6iy3FGT4yO+fI9hPmES2chBDMTRNZ647YlsOW3K
- FkZlHFD634N3BfFmXT332TMq4vnp9SUgzZ87UkTf4/c1KD4ujLqLn7A20lTbLLeD7LCC
- RRQ+haGf7ZzYlP4OufumLZqTa9R04AEiU/gWakS2I4foy/0iTa5eahZIzjWhtqviTOPW
- /9vrXLFxrnZDJGwcMj1OUVRQ3Vx8dTlAmJ9iQEvmBWH8OmY3fjUKKWer/YZoWa+EUsD3
- zmtQ==
-X-Gm-Message-State: AJIora+QuOeaNQ8IWnqHT0TqNuGAslz9m7YmqWDzboZm6y4P/k8nV3Jb
- 4D2ksWZO+2rbCAQ9FQmroNV2Xg==
-X-Received: by 2002:a17:90b:3b81:b0:1ed:3655:d0c8 with SMTP id
- pc1-20020a17090b3b8100b001ed3655d0c8mr45454183pjb.56.1657041386857; 
- Tue, 05 Jul 2022 10:16:26 -0700 (PDT)
-Received: from [192.168.138.227] ([122.255.60.245])
- by smtp.gmail.com with ESMTPSA id
- b9-20020a6567c9000000b003fd7e217686sm22741703pgs.57.2022.07.05.10.16.23
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 05 Jul 2022 10:16:25 -0700 (PDT)
-Message-ID: <af9aa8da-d76d-9da9-6f82-bb0341d01acb@linaro.org>
-Date: Tue, 5 Jul 2022 22:46:20 +0530
+ (Exim 4.90_1) (envelope-from <peter@pjd.dev>)
+ id 1o8nzv-00016C-26; Tue, 05 Jul 2022 15:14:11 -0400
+Received: from new3-smtp.messagingengine.com ([66.111.4.229]:58955)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <peter@pjd.dev>)
+ id 1o8nzt-00015f-2M; Tue, 05 Jul 2022 15:14:10 -0400
+Received: from compute3.internal (compute3.nyi.internal [10.202.2.43])
+ by mailnew.nyi.internal (Postfix) with ESMTP id 5286C580309;
+ Tue,  5 Jul 2022 15:14:08 -0400 (EDT)
+Received: from mailfrontend1 ([10.202.2.162])
+ by compute3.internal (MEProxy); Tue, 05 Jul 2022 15:14:08 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=pjd.dev; h=cc:cc
+ :content-transfer-encoding:date:date:from:from:in-reply-to
+ :in-reply-to:message-id:mime-version:references:reply-to:sender
+ :subject:subject:to:to; s=fm1; t=1657048448; x=1657052048; bh=SD
+ bWD8l4JEHfDcDBn/AoqsCvTO1am6yDlmfK+59RfvY=; b=gRAswKE+ayEqQVeIYJ
+ 2uV/3tq4h43lAhaFBCfH9H29teLk77b5ZhpyJCXhHrSE+q6K76+6dQ6r8HYe633H
+ +pYbqZdYQrFhJIJeOcPNNDZ1y0BoEFwpb43tfPm7+9y8YArtdPAAEgRcBwIrh614
+ WFbzZFNe6nHB5IASsMEWfzRsD5vicfApZ1BptuWeXJXcwrzCY+AzwDz+GkTw/0yZ
+ UUYDLqz9yZQMBlk5E8bjEFVS4To5Sln1YOySXHET/EOBcBZE9DMH8b/JVdCtywb6
+ FkqS6g7imKqWrvnK5J7/Jdq7wC+yviETgzNZxjL5epX24/LUO4XXIr/433x0oymW
+ seKQ==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+ messagingengine.com; h=cc:cc:content-transfer-encoding:date:date
+ :feedback-id:feedback-id:from:from:in-reply-to:in-reply-to
+ :message-id:mime-version:references:reply-to:sender:subject
+ :subject:to:to:x-me-proxy:x-me-proxy:x-me-sender:x-me-sender
+ :x-sasl-enc; s=i9e814621.fm2; t=1657048448; x=1657052048; bh=SDb
+ WD8l4JEHfDcDBn/AoqsCvTO1am6yDlmfK+59RfvY=; b=I6+xAJfUx6a93vDz241
+ NyN6YaR3CUkUprFiNXsUSSr6uqLGadyuawCF8EMoR5iGrrUYy/bcaRUCJirILs15
+ geIQxKotOy95iNkskmQs8zu8z8XMryS0e3iLmGcGWxEmYeBOu8/hbMECnB8vEm7M
+ P3b+SwdSJtpYg3u9ix92mgXzn15fnO9PGCb38utGjudtZQlbGO+5PxZrjVVpYYtm
+ gy1r2qfloloQx+lZUmCeoVKNb/GIhyGTqRAkyssNUvIxrRHtm3a8wNOJ54E6wUi8
+ mmS6j6tFrpVa6DsN0JTEZVyFFWq0MpPOc6I6ypQ4AnETZ24LWKmjV0UbR6P+2rze
+ l1A==
+X-ME-Sender: <xms:f43EYliWe8yvsEjZ6ORoejnnTa-5I1jcUUX_yNkw55of5MPNm7m0Ew>
+ <xme:f43EYqAvyErMeiWW30oAMr7l7cvB8GjLgGgSy0w037rFyGVqkuyoZBvYNMvNlfPcC
+ tGwyScHcfe11TOJeV4>
+X-ME-Received: <xmr:f43EYlFf5lDYXUOesMt4fG8R1Ay2YWJq1xILs5bmNBeiZIwl7mNknBQcaHwDXA>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvfedrudeiuddgudeflecutefuodetggdotefrod
+ ftvfcurfhrohhfihhlvgemucfhrghsthforghilhdpqfgfvfdpuffrtefokffrpgfnqfgh
+ necuuegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmd
+ enmhhishhsihhnghcuvffquchfihgvlhguucdlfedtmdenogetfedtuddqtdduucdludeh
+ mdenucfjughrpefhvfevufffkffojghfggfgsedtkeertdertddtnecuhfhrohhmpefrvg
+ htvghrucffvghlvghvohhrhigrshcuoehpvghtvghrsehpjhgurdguvghvqeenucggtffr
+ rghtthgvrhhnpeetlefgueelfeffffefkeeigffhjeeugfdtgfetieegkedvfeffveeike
+ dvleetveenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhgrihhlfhhrohhm
+ pehpvghtvghrsehpjhgurdguvghv
+X-ME-Proxy: <xmx:f43EYqTHSM2XoH9i4wfdfcPu2kZtzBIwM4Ug2DQTFuiabQuDU-cwKw>
+ <xmx:f43EYiwdzkqAWDTsE4g-PedVVp3yXdZFqxYHmw7syAFSkDYOpZmY5g>
+ <xmx:f43EYg6QbpVYXeSpIIBBY4CEsgv3aiZJdhT8KlVbDcHCzUXhB6yaKw>
+ <xmx:gI3EYprnmvJ9_wRkBJyjk30YqMgdV0SZc3vrZLJWqzyXEoXO0XK1nQ>
+Feedback-ID: i9e814621:Fastmail
+Received: by mail.messagingengine.com (Postfix) with ESMTPA; Tue,
+ 5 Jul 2022 15:14:07 -0400 (EDT)
+From: Peter Delevoryas <peter@pjd.dev>
+To: 
+Cc: Peter Delevoryas <peter@pjd.dev>,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
+ Peter Maydell <peter.maydell@linaro.org>, Andrew Jeffery <andrew@aj.id.au>,
+ Joel Stanley <joel@jms.id.au>, qemu-arm@nongnu.org, qemu-devel@nongnu.org
+Subject: [PATCH v2 2/9] aspeed: Create SRAM name from first CPU index
+Date: Tue,  5 Jul 2022 12:13:53 -0700
+Message-Id: <20220705191400.41632-3-peter@pjd.dev>
+X-Mailer: git-send-email 2.37.0
+In-Reply-To: <20220705191400.41632-1-peter@pjd.dev>
+References: <20220705191400.41632-1-peter@pjd.dev>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.9.1
-Subject: Re: [PATCH 5/5] target/arm: Correctly implement Feat_DoubleLock
-Content-Language: en-US
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org
-References: <20220630194116.3438513-1-peter.maydell@linaro.org>
- <20220630194116.3438513-6-peter.maydell@linaro.org>
- <d717bccb-09d1-99e5-f15b-fdecb2b224f6@linaro.org>
- <CAFEAcA_5QBpjRH_VGFDG8bYFDduRJ9eew98WpeXXpceuhK6s4Q@mail.gmail.com>
-From: Richard Henderson <richard.henderson@linaro.org>
-In-Reply-To: <CAFEAcA_5QBpjRH_VGFDG8bYFDduRJ9eew98WpeXXpceuhK6s4Q@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::630;
- envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x630.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=66.111.4.229; envelope-from=peter@pjd.dev;
+ helo=new3-smtp.messagingengine.com
+X-Spam_score_int: -12
+X-Spam_score: -1.3
+X-Spam_bar: -
+X-Spam_report: (-1.3 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ FROM_FMBLA_NEWDOM=1.498, RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -127,108 +137,95 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 6eTH189myADE
+X-TUID: w2WNrYmXIJMd
 
-On 7/5/22 21:06, Peter Maydell wrote:
-> On Sat, 2 Jul 2022 at 15:19, Richard Henderson
-> <richard.henderson@linaro.org> wrote:
->>
->> On 7/1/22 01:11, Peter Maydell wrote:
->>> +static inline bool isar_feature_any_doublelock(const ARMISARegisters *id)
->>> +{
->>> +    /*
->>> +     * We can't just OR together the aa32 and aa64 checks, because
->>> +     * if there is no AArch64 support the aa64 function will default
->>> +     * to returning true for a zero id_aa64dfr0.
->>> +     * We use "is id_aa64pfr0 non-zero" as a proxy for "do we have
->>> +     * the AArch64 ID register values in id", because it's always the
->>> +     * case that ID_AA64PFR0_EL1.EL0 at least will be non-zero.
->>> +     */
->>> +    if (id->id_aa64pfr0) {
->>> +        return isar_feature_aa64_doublelock(id);
->>> +    }
->>> +    return isar_feature_aa32_doublelock(id);
->>> +}
->>
->> If you're going to rely on this, you need to clear this register for -cpu aarch64=off.
->> It's probably easier to drop this function...
->>
->>> +static void osdlr_write(CPUARMState *env, const ARMCPRegInfo *ri,
->>> +                        uint64_t value)
->>> +{
->>> +    /*
->>> +     * Only defined bit is bit 0 (DLK); if Feat_DoubleLock is not
->>> +     * implemented this is RAZ/WI.
->>> +     */
->>> +    if (cpu_isar_feature(any_doublelock, env_archcpu(env))) {
->>
->> ... and use
->>
->>       if (arm_feature(env, ARM_FEATURE_AARCH64)
->>           ? cpu_isar_feature(aa64_doublelock, cpu)
->>           : cpu_isar_feature(aa32_doublelock, cpu)) {
->>
->> since it's just used once.
-> 
-> If I squash in this change:
-> 
-> diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-> index 069dfe1d308..1f4f3e0485c 100644
-> --- a/target/arm/cpu.h
-> +++ b/target/arm/cpu.h
-> @@ -4218,22 +4218,6 @@ static inline bool isar_feature_any_ras(const
-> ARMISARegisters *id)
->       return isar_feature_aa64_ras(id) || isar_feature_aa32_ras(id);
->   }
-> 
-> -static inline bool isar_feature_any_doublelock(const ARMISARegisters *id)
-> -{
-> -    /*
-> -     * We can't just OR together the aa32 and aa64 checks, because
-> -     * if there is no AArch64 support the aa64 function will default
-> -     * to returning true for a zero id_aa64dfr0.
-> -     * We use "is id_aa64pfr0 non-zero" as a proxy for "do we have
-> -     * the AArch64 ID register values in id", because it's always the
-> -     * case that ID_AA64PFR0_EL1.EL0 at least will be non-zero.
-> -     */
-> -    if (id->id_aa64pfr0) {
-> -        return isar_feature_aa64_doublelock(id);
-> -    }
-> -    return isar_feature_aa32_doublelock(id);
-> -}
-> -
->   /*
->    * Forward to the above feature tests given an ARMCPU pointer.
->    */
-> diff --git a/target/arm/debug_helper.c b/target/arm/debug_helper.c
-> index 62bd8f85383..d09fccb0a4f 100644
-> --- a/target/arm/debug_helper.c
-> +++ b/target/arm/debug_helper.c
-> @@ -617,11 +617,14 @@ static void oslar_write(CPUARMState *env, const
-> ARMCPRegInfo *ri,
->   static void osdlr_write(CPUARMState *env, const ARMCPRegInfo *ri,
->                           uint64_t value)
->   {
-> +    ARMCPU *cpu = env_archcpu(env);
->       /*
->        * Only defined bit is bit 0 (DLK); if Feat_DoubleLock is not
->        * implemented this is RAZ/WI.
->        */
-> -    if (cpu_isar_feature(any_doublelock, env_archcpu(env))) {
-> +    if(arm_feature(env, ARM_FEATURE_AARCH64)
-> +       ? cpu_isar_feature(aa64_doublelock, cpu)
-> +       : cpu_isar_feature(aa32_doublelock, cpu)) {
->           env->cp15.osdlr_el1 = value & 1;
->       }
->   }
-> 
-> 
-> 
-> 
-> can I have a reviewed-by? Would save me doing a respin.
+To support multiple SoC's running simultaneously, we need a unique name for
+each RAM region. DRAM is created by the machine, but SRAM is created by the
+SoC, since in hardware it is part of the SoC's internals.
 
-You may.
+We need a way to uniquely identify each SRAM region though, for VM
+migration. Since each of the SoC's CPU's has an index which identifies it
+uniquely from other CPU's in the machine, we can use the index of any of the
+CPU's in the SoC to uniquely identify differentiate the SRAM name from other
+SoC SRAM's. In this change, I just elected to use the index of the first CPU
+in each SoC.
 
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Signed-off-by: Peter Delevoryas <peter@pjd.dev>
+---
+ hw/arm/aspeed_ast10x0.c | 5 ++++-
+ hw/arm/aspeed_ast2600.c | 5 +++--
+ hw/arm/aspeed_soc.c     | 5 +++--
+ 3 files changed, 10 insertions(+), 5 deletions(-)
 
-r~
+diff --git a/hw/arm/aspeed_ast10x0.c b/hw/arm/aspeed_ast10x0.c
+index 33ef331771..677699e54c 100644
+--- a/hw/arm/aspeed_ast10x0.c
++++ b/hw/arm/aspeed_ast10x0.c
+@@ -159,6 +159,7 @@ static void aspeed_soc_ast1030_realize(DeviceState *dev_soc, Error **errp)
+     DeviceState *armv7m;
+     Error *err = NULL;
+     int i;
++    g_autofree char *sram_name = NULL;
+ 
+     if (!clock_has_source(s->sysclk)) {
+         error_setg(errp, "sysclk clock must be wired up by the board code");
+@@ -183,7 +184,9 @@ static void aspeed_soc_ast1030_realize(DeviceState *dev_soc, Error **errp)
+     sysbus_realize(SYS_BUS_DEVICE(&s->armv7m), &error_abort);
+ 
+     /* Internal SRAM */
+-    memory_region_init_ram(&s->sram, NULL, "aspeed.sram", sc->sram_size, &err);
++    sram_name = g_strdup_printf("aspeed.sram.%d",
++                                CPU(s->armv7m.cpu)->cpu_index);
++    memory_region_init_ram(&s->sram, OBJECT(s), sram_name, sc->sram_size, &err);
+     if (err != NULL) {
+         error_propagate(errp, err);
+         return;
+diff --git a/hw/arm/aspeed_ast2600.c b/hw/arm/aspeed_ast2600.c
+index 3f0611ac11..64eb5a7b26 100644
+--- a/hw/arm/aspeed_ast2600.c
++++ b/hw/arm/aspeed_ast2600.c
+@@ -276,6 +276,7 @@ static void aspeed_soc_ast2600_realize(DeviceState *dev, Error **errp)
+     AspeedSoCClass *sc = ASPEED_SOC_GET_CLASS(s);
+     Error *err = NULL;
+     qemu_irq irq;
++    g_autofree char *sram_name = NULL;
+ 
+     /* IO space */
+     aspeed_mmio_map_unimplemented(s, SYS_BUS_DEVICE(&s->iomem), "aspeed.io",
+@@ -335,8 +336,8 @@ static void aspeed_soc_ast2600_realize(DeviceState *dev, Error **errp)
+     }
+ 
+     /* SRAM */
+-    memory_region_init_ram(&s->sram, OBJECT(dev), "aspeed.sram",
+-                           sc->sram_size, &err);
++    sram_name = g_strdup_printf("aspeed.sram.%d", CPU(&s->cpu[0])->cpu_index);
++    memory_region_init_ram(&s->sram, OBJECT(s), sram_name, sc->sram_size, &err);
+     if (err) {
+         error_propagate(errp, err);
+         return;
+diff --git a/hw/arm/aspeed_soc.c b/hw/arm/aspeed_soc.c
+index 0f675e7fcd..0bb6a2f092 100644
+--- a/hw/arm/aspeed_soc.c
++++ b/hw/arm/aspeed_soc.c
+@@ -239,6 +239,7 @@ static void aspeed_soc_realize(DeviceState *dev, Error **errp)
+     AspeedSoCState *s = ASPEED_SOC(dev);
+     AspeedSoCClass *sc = ASPEED_SOC_GET_CLASS(s);
+     Error *err = NULL;
++    g_autofree char *sram_name = NULL;
+ 
+     /* IO space */
+     aspeed_mmio_map_unimplemented(s, SYS_BUS_DEVICE(&s->iomem), "aspeed.io",
+@@ -259,8 +260,8 @@ static void aspeed_soc_realize(DeviceState *dev, Error **errp)
+     }
+ 
+     /* SRAM */
+-    memory_region_init_ram(&s->sram, OBJECT(dev), "aspeed.sram",
+-                           sc->sram_size, &err);
++    sram_name = g_strdup_printf("aspeed.sram.%d", CPU(&s->cpu[0])->cpu_index);
++    memory_region_init_ram(&s->sram, OBJECT(s), sram_name, sc->sram_size, &err);
+     if (err) {
+         error_propagate(errp, err);
+         return;
+-- 
+2.37.0
+

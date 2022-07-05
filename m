@@ -1,106 +1,117 @@
-Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp3000083lft;
-        Sun, 3 Jul 2022 23:44:15 -0700 (PDT)
-X-Google-Smtp-Source: AGRyM1tyfsPbEZg6g1+axRwuGktGb5JnBC/9S/eH8za0cXZ4cB5wnMOGgSrXJeOrJNU5W4rovqPV
-X-Received: by 2002:a25:76ce:0:b0:66e:2a3e:c3b8 with SMTP id r197-20020a2576ce000000b0066e2a3ec3b8mr10216574ybc.222.1656917055595;
-        Sun, 03 Jul 2022 23:44:15 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1656917055; cv=none;
+Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp3581901lft;
+        Mon, 4 Jul 2022 18:02:03 -0700 (PDT)
+X-Google-Smtp-Source: AGRyM1uHE/oECTgl+6PFbG2lW+aO9kZ/imMn6/vBGNLiBFUaSj3lh7FU/QDbQt/BnSlYWZ03l1D3
+X-Received: by 2002:a25:eb02:0:b0:66e:71d7:86f6 with SMTP id d2-20020a25eb02000000b0066e71d786f6mr116956ybs.468.1656982923149;
+        Mon, 04 Jul 2022 18:02:03 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1656982923; cv=none;
         d=google.com; s=arc-20160816;
-        b=vowDd3rpg1dPPlTeuW3slC8Do0LV9f9N4rgFFM8dkGzAleZTgh2/Fw9DnHfmGcMDBZ
-         287yXIqvFG/quZKfco4fOb4CJi0i+yfPeNo3WclC2aaoU5YQUIfQO9XJqbwUYbxnK2xq
-         GCPP9MfIAyBKmDJfoeRz0vLgWxrpFXGwX+nwV2KH7VplymZKlS+4RLSsnl46SKcxeZQ4
-         i0r2Tj0rg5Za+SG78tALy2zBgVXKPS2pvlUFYUm0O6Z3DwbUjvhif1L50D41rXvlvq01
-         NdwRO3ic92YHQ5Cg2CcSlKU9qxdpNP0xNvR2+0I8PlCBZMlDqSuSVWXe7nShKajXUir6
-         Ovxw==
+        b=W97aS45vhWdRS56sAB/gvR8Vbn/SjpDkG61vmgOMBVRfZmTW/UCLLPaCT30ixeU5k7
+         eUuWe2SqOTNP70KDJyQpzaQ3h5M30WijVS6k35l//nuuUqCeLpvnFCb2gNfjoxMHi7a7
+         0fxixrIiwQc9zCAG3CDbI9Vr4ejlW0vHNV0ZnrDqJ3otKGUCgIzSDvGF1Zxu97dP7jCw
+         vuzbXPzEvpyvVzybyPLyaLA9xFqbQWV6R6WX07C7OhxBQERrFzwst6vldj0OPEjOmDK8
+         cIBQ62hdd/u1pgO2K/KRFKWahSj130zWCoPo6cuyBRDTg/7m0M0BZRh1gvwbrThmTknt
+         QucA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
-        bh=+85k7rYZluhbxXR+XXkdfAOni9VQpncMLo0xqt+DtRI=;
-        b=zpnXmxE2yFimiJkk0+OpHcTYNnGnuDVgT6jhu314CiIDCB+P5BGvs3MfuVqkxXy4H9
-         CdNDVzwhcAAqWa0Z+h5JD9oADp6ocl8tuOZB4MP+GYwW+1eybYd8fzX0l0W1m3IEKUNp
-         4XP2EJoXAkmEdE3aGOEfREWL2jX/XMXOIkNL2VKUFImC0X5CMm/xSqPmrQmjEc4norqR
-         eFjONeEPB0omWEI/q6tW7y+5Z6iceYEQVtcIs4ARYR29L1hVgpmfE8FNpX+RrX1NfcOa
-         vDfVxm50c537lbM5y7UyiBH3ryRnYP3Oqy5pvDCkNCOg/4wR4hM0zeztTjWfWVv9FGKm
-         k26g==
+         :in-reply-to:from:references:cc:to:content-language:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=R7RBnlbUt5BFwqxWwuuiKxs9cnYoeQUZlz9hjSTyulA=;
+        b=BxjQ7b5Xylkyk/nF6mECzgzI8fiAMf+gR4FHEpgEZHCKfkXJzPVjQCtxC67QBezI8U
+         t5LLeTN32LWfIXF5g63gktVfjcH6t54IdYZ5X2IPq5hVcbPSZ6NnPizMEKrNS/nAT/cT
+         B5jQthf9TYq3bBRwXhexEu1pzyV3LAUhEN1EzzXzgs8VYWqBdz69ICFaUMrZt0k65qbp
+         OArylPB3O+DrXyCn8p+DBjRS6KOMTMlQlxJ4HkKrkptM1WIIZjTQa3EzFrOzhSv0bnGE
+         h0gNkVQb2dGgd93ZmL+Y0lC7LYOk7XRSxLKi6n5X0JC7MTDT7JYohUFvwQ+bLhaGe9nI
+         0JOw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=JTu8RANe;
+       dkim=pass header.i=@linaro.org header.s=google header.b=FuLCZyHX;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 206-20020a2505d7000000b0066e348e8a21si5737694ybf.555.2022.07.03.23.44.15
+        by mx.google.com with ESMTPS id l5-20020a056902072500b0066e37004244si10692669ybt.671.2022.07.04.18.02.02
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 03 Jul 2022 23:44:15 -0700 (PDT)
+        Mon, 04 Jul 2022 18:02:03 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=JTu8RANe;
+       dkim=pass header.i=@linaro.org header.s=google header.b=FuLCZyHX;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:54298 helo=lists1p.gnu.org)
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:37600 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1o8Fod-0001Ar-0R
-	for alex.bennee@linaro.org; Mon, 04 Jul 2022 02:44:15 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:42674)
+	id 1o8Wx0-0004UC-GB
+	for alex.bennee@linaro.org; Mon, 04 Jul 2022 21:02:02 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55846)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1o8FnZ-000111-BT
- for qemu-arm@nongnu.org; Mon, 04 Jul 2022 02:43:09 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:48069)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1o8FnX-0005X5-Ra
- for qemu-arm@nongnu.org; Mon, 04 Jul 2022 02:43:09 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1656916986;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:
- content-transfer-encoding:content-transfer-encoding;
- bh=+85k7rYZluhbxXR+XXkdfAOni9VQpncMLo0xqt+DtRI=;
- b=JTu8RANeOS7WyaEs/N+sp7/bajNO9FYyMWcp+AQplShLoECzQc5Mt84Qi5XXkOSnVpa5AT
- x+eOs2zZc+5Jom0REVH37DLGXn5X5IOEQFn8EosNVNNyfm0U+u6i0NGwnTJmvvTT00wbgv
- Gg5ZsGgO6vzxw2jw+PiCnhZFw6dYGso=
-Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
- [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-149-HISVCJjwN8yBFEt6Rg6Xpg-1; Mon, 04 Jul 2022 02:43:00 -0400
-X-MC-Unique: HISVCJjwN8yBFEt6Rg6Xpg-1
-Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.rdu2.redhat.com
- [10.11.54.8])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 04D048001EA;
- Mon,  4 Jul 2022 06:43:00 +0000 (UTC)
-Received: from thuth.com (unknown [10.39.192.187])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 41270C15D42;
- Mon,  4 Jul 2022 06:42:56 +0000 (UTC)
-From: Thomas Huth <thuth@redhat.com>
-To: qemu-devel@nongnu.org, Stefan Hajnoczi <stefanha@redhat.com>,
- Michael Roth <michael.roth@amd.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
- Gerd Hoffmann <kraxel@redhat.com>,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
-Cc: Richard Henderson <richard.henderson@linaro.org>,
- Peter Maydell <peter.maydell@linaro.org>,
- Paolo Bonzini <pbonzini@redhat.com>,
- "Daniel P . Berrange" <berrange@redhat.com>,
- Michael Tokarev <mjt@tls.msk.ru>, qemu-ppc@nongnu.org, qemu-arm@nongnu.org,
- Brad Smith <brad@comstyle.com>, Kamil Rytarowski <kamil@netbsd.org>,
- Reinoud Zandijk <reinoud@netbsd.org>, Ryo ONODERA <ryoon@netbsd.org>
-Subject: [PATCH 0/3] scripts/make-release: Decrease the size of the release
- tarballs
-Date: Mon,  4 Jul 2022 08:42:51 +0200
-Message-Id: <20220704064254.18187-1-thuth@redhat.com>
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1o8WwZ-0004Tt-4f
+ for qemu-arm@nongnu.org; Mon, 04 Jul 2022 21:01:35 -0400
+Received: from mail-pj1-x1036.google.com ([2607:f8b0:4864:20::1036]:38580)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1o8WwW-00080j-RR
+ for qemu-arm@nongnu.org; Mon, 04 Jul 2022 21:01:34 -0400
+Received: by mail-pj1-x1036.google.com with SMTP id
+ 89-20020a17090a09e200b001ef7638e536so6967928pjo.3
+ for <qemu-arm@nongnu.org>; Mon, 04 Jul 2022 18:01:32 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=message-id:date:mime-version:user-agent:subject:content-language:to
+ :cc:references:from:in-reply-to:content-transfer-encoding;
+ bh=R7RBnlbUt5BFwqxWwuuiKxs9cnYoeQUZlz9hjSTyulA=;
+ b=FuLCZyHXNzbG9IAJZ4z58zmETr8tQMCAELFckSMxaMxOlVvdYw/zIb7c8DnY2B5chn
+ wgSB5Sm67RzWVZKA9NJ/LmQJv2vOu14E+v5/Bp3BwhPHIJDvEbCxdEdzH3laQbndFdpk
+ otKZN5fn1ES5VfW3bXQ1cd+Mp35dBUw7t72G4e6qSpffu+1kSKg4JuqKoPyNAO/vmspt
+ 0bljE1k6vm3jMkv0qwYfomyNRxcPv8+CRjRDof8MrXE+gjMb2kYoCn6Z30g2Dds+F7Zf
+ t3s/PX4Gc0pIGa1/XMHZtaAYWKEIKKmS9ESstcSXOMPZaODb5zpAY0wJ0SvZrNT6PTD9
+ HlkA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
+ :content-language:to:cc:references:from:in-reply-to
+ :content-transfer-encoding;
+ bh=R7RBnlbUt5BFwqxWwuuiKxs9cnYoeQUZlz9hjSTyulA=;
+ b=Qf5M+VgoaounZ4fBZcN5BKdLFj/8ZaRmCnrhja7XDuopNvj6BjbJUrfMgeed3nnuo3
+ szAcCcu66dBHKsoThrSx3NhUOxWUooTP5j72hAK/LtAkmXvIlR5E1XedWjSyPwJUCGy9
+ db4wiN12Okw/tUoCRLrMawZVvMiGKz2HxH35e4k2D8o0+LDd8R9vOMHqQiyLraOhKmJb
+ VilhmVabWJNQOprjxMZGkIREgDP3yltj2Ha4IuL8CVmFdipKzb1A91Ynhk9n/AgMh02+
+ rPn2stvFmEiD9mtekhdpJTZAzZqpJ0AhH6hAZHeOrvY8nEQe4yzAxDHi92qd9twCaMXb
+ +zbA==
+X-Gm-Message-State: AJIora9A+rJlHs+nUhYpC4tx++NAkrhkNwSfGLbJhk4sj5Ic8n6/0Jr7
+ RrVl0T4yA11YCPvwA7SAUYW0lw==
+X-Received: by 2002:a17:903:245:b0:16b:9c49:6b1c with SMTP id
+ j5-20020a170903024500b0016b9c496b1cmr32837674plh.153.1656982890955; 
+ Mon, 04 Jul 2022 18:01:30 -0700 (PDT)
+Received: from [192.168.138.227] ([122.255.60.245])
+ by smtp.gmail.com with ESMTPSA id
+ s91-20020a17090a69e400b001ef831a2015sm4003626pjj.22.2022.07.04.18.01.29
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 04 Jul 2022 18:01:30 -0700 (PDT)
+Message-ID: <6006e1bd-722f-a0dc-0207-5bb36b29cda6@linaro.org>
+Date: Tue, 5 Jul 2022 06:31:25 +0530
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 2.85 on 10.11.54.8
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=thuth@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -28
-X-Spam_score: -2.9
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.9.1
+Subject: Re: [PATCH 02/62] target/arm: Enable PageEntryExtra
+Content-Language: en-US
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
+References: <20220703082419.770989-1-richard.henderson@linaro.org>
+ <20220703082419.770989-3-richard.henderson@linaro.org>
+ <CAFEAcA8YowUZqpyC4k=7w_pFSZ5JrnC=cYpj0JUn8U4JaYOGDA@mail.gmail.com>
+From: Richard Henderson <richard.henderson@linaro.org>
+In-Reply-To: <CAFEAcA8YowUZqpyC4k=7w_pFSZ5JrnC=cYpj0JUn8U4JaYOGDA@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1036;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x1036.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.082,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -116,41 +127,89 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: HauFre+ZpdoX
+X-TUID: /LMHlJ3kT0OQ
 
-Our release tarballs are huge - qemu-7.0.0.tar.xz has a size of 119 MiB.
-If you look at the contents, more than half of the size is used for the
-edk2 sources that we ship along to provide the sources for the firmware
-binaries, too. This feels very wrong, why do we urge users to download
-such huge tarballs while 99.9% of them never will rebuilt the firmware
-sources? We were also struggeling a bit in the past already with server
-load and costs, so we should really try to decrease the size of our
-release tarballs to a saner level.
+On 7/4/22 20:52, Peter Maydell wrote:
+> On Sun, 3 Jul 2022 at 09:25, Richard Henderson
+> <richard.henderson@linaro.org> wrote:
+>>
+>> Copy attrs, sharability, and the NS bit into the TLB.
+>>
+>> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+>> ---
+>>   target/arm/cpu-param.h  |  8 ++++++++
+>>   target/arm/internals.h  |  5 +++++
+>>   target/arm/tlb_helper.c | 14 ++++++++++++--
+>>   3 files changed, 25 insertions(+), 2 deletions(-)
+>>
+>> diff --git a/target/arm/cpu-param.h b/target/arm/cpu-param.h
+>> index 68ffb12427..a14f167d11 100644
+>> --- a/target/arm/cpu-param.h
+>> +++ b/target/arm/cpu-param.h
+>> @@ -30,6 +30,14 @@
+>>    */
+>>   # define TARGET_PAGE_BITS_VARY
+>>   # define TARGET_PAGE_BITS_MIN  10
+>> +/*
+>> + * Extra information stored in softmmu page tables.
+>> + */
+>> +# define TARGET_PAGE_ENTRY_EXTRA
+>> +struct PageEntryExtra {
+>> +    /* See PAGEENTRYEXTRA fields in cpu.h */
+>> +    uint64_t x;
+>> +};
+>>   #endif
+>>
+>>   #define NB_MMU_MODES 15
+>> diff --git a/target/arm/internals.h b/target/arm/internals.h
+>> index c66f74a0db..2b38a83574 100644
+>> --- a/target/arm/internals.h
+>> +++ b/target/arm/internals.h
+>> @@ -74,6 +74,11 @@ FIELD(V7M_EXCRET, DCRS, 5, 1)
+>>   FIELD(V7M_EXCRET, S, 6, 1)
+>>   FIELD(V7M_EXCRET, RES1, 7, 25) /* including the must-be-1 prefix */
+>>
+>> +/* Bit definitions for PageEntryExtra */
+>> +FIELD(PAGEENTRYEXTRA, ATTRS, 0, 8)
+>> +FIELD(PAGEENTRYEXTRA, SHAREABILITY, 8, 2)
+>> +FIELD(PAGEENTRYEXTRA, PA, 12, 52)
+> 
+> So why do we want these things in particular? It would be
+> helpful to describe the intended uses in the commit message
+> to save the reader having to read the next 60 patches to
+> find out :-)
 
-Fortunately, edk2 has a permissive BSD license, so we are not forced
-to distribute the sources for this. Thus instead of packaging the whole
-edk2 source tree in our tarballs, let's just do the bare minimum and
-provide the license information and a pointer to where the users can
-download the edk2 sources instead. This decreases the size of our tarballs
-already to the half of the original size.
+Heh, yes.  Basically, it's what S1_ptw_translate requires (pa, attrs), so that we can 
+report a stage1 ptw failure, and what do_ats_write requires (pa, sh, attrs) for filling in 
+PAR_EL1.  Although within these 62 patches I didn't came back to finish converting 
+do_ats_write to use probe_access_flags_extra instead of using get_phys_addr directly, it 
+was a goal.
 
-Some few additional MiBs can be saved by omitting the sources of the
-skiboot firmware, which has a permissive license, too (see second patch).
-The final patch is rather cosmetics only - it drops some additional
-.yml and .git files from the tarball that are of no use for the normal
-user without the corresponding git repository.
+> Is wanting to cache the physaddr an Arm-specific thing, or is it
+> something we should consider having in the core softmmu code?
 
-Thomas Huth (3):
-  scripts/make-release: Do not include the edk2 sources in the tarball
-    anymore
-  scripts/make-release: Do not include the skiboot sources in the
-    tarball anymore
-  scripts/make-release: Remove CI yaml and more git files from the
-    tarball
+I'm not sure what other targets require for their 2-stage page table walks.  I guess I 
+should have a look (riscv, i386, ?).
 
- scripts/make-release | 46 ++++++++++++++++++++++++++++++++++++--------
- 1 file changed, 38 insertions(+), 8 deletions(-)
+It *is* possible to recover the phys addr from the iommutlb, because I was doing that in 
+mte_helper.c (see code removed in patch 5), but it's certainly not simple.
 
--- 
-2.31.1
+>>       if (likely(!ret)) {
+>> +        PageEntryExtra extra = {};
+>> +
+>>           /*
+>>            * Map a single [sub]page. Regions smaller than our declared
+>>            * target page size are handled specially, so for those we
+>> -         * pass in the exact addresses.
+>> +         * pass in the exact addresses.  This only happens for M-profile,
+>> +         * which does not use or require PageEntryExtra.
+>>            */
+> 
+> Do we have to exclude M-profile here because the PageEntryExtra
+> data is strictly-per-page, or because the way we've formatted
+> our extra uint64_t requires the physaddr to be page-aligned, or both?
 
+Because our extra uint64_t requires page alignment, and reuses those bits.
+
+
+r~

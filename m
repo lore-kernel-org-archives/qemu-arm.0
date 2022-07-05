@@ -1,118 +1,104 @@
-Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp4070212lft;
-        Tue, 5 Jul 2022 09:16:21 -0700 (PDT)
-X-Google-Smtp-Source: AGRyM1uhlq9JJFPQUVopWLaw0mlt6T2QTNGiwMpix0OHz3AM4VqUy2+uagM06WX2ZCCecnIbV0ex
-X-Received: by 2002:a05:622a:1182:b0:31d:31bf:527d with SMTP id m2-20020a05622a118200b0031d31bf527dmr22638849qtk.288.1657037781646;
-        Tue, 05 Jul 2022 09:16:21 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1657037781; cv=none;
+Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp3984112lft;
+        Tue, 5 Jul 2022 07:13:37 -0700 (PDT)
+X-Google-Smtp-Source: AGRyM1sazdR4ZnoAVVIoFziv5Ko0FC09/EFHqU9n6A40NVituq2H7maOYxkjWgeav44Bnaq6rTpI
+X-Received: by 2002:a05:620a:490:b0:6af:1ae:61bb with SMTP id 16-20020a05620a049000b006af01ae61bbmr23371156qkr.190.1657030416720;
+        Tue, 05 Jul 2022 07:13:36 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1657030416; cv=none;
         d=google.com; s=arc-20160816;
-        b=VdOoa5deHebWHc9NtM78TTPcQlwvnKy3LKLb5vwFHDXNvGBxjd2vRCbZW6ok0wGYHG
-         G4LoVSYMUXjZu7hrTcivhPzmsFGHFPmCaCWeLwkLXadLWTCGzZ+8ICoIV8lrGoUMeNtd
-         Dt2ZHtM8l6wnMtvwN+QpAfPbZgSFDnlFnGdyjVm1mC3BNtMmfsLD3tba8BXQKTvitk15
-         Y61xVVllHgPVJ4KAT1kefhHzMERDtquecX1nwETgX7384CyrbdOayeChSjWTwxkJ4Ugr
-         IhRQUhpwGsm3tbKXmBYbOvDYK6I85VAJaQ8Xo90NSBI4IEnuVntgvU2DTsY4rIz1NfRF
-         MQ8w==
+        b=LtPEf5x7dcUNRdQcY3WAWxInQfVWR6M/TQ98mrqQZQuMTwwnatzsPXUM7N+WvIUM4E
+         SYql5qZTfkxVjFnxeensxu4IF4SBeTyboABceaIwDKabi6sX8uOJwY1h+CQgmz8GGe15
+         ewOS4lHRuaG5cpt7N8a0VNcB5SW+3jaD/peYS0d4AHTI21JstDPYjQhkdtCB5WT1l7aZ
+         w+YqBGYUhVhWhmG8M6HMaRR5uUYI0ZlTIe5D2SzbCkbArLL6DXf47khJWoIYRDfBaGPi
+         Veeg3vj+aP06Aga+s4dvmqKgIqQfRVZ3AAycB/ONPKnThCQAq40JUTcYkq5zQr0uO15m
+         7hnw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
-        bh=3iiwX4Zb2vPEjyqXjWU9F/LncU1CSVkWi4099Dtqlpg=;
-        b=jI18fZMx8wOE2rNwmb0IivLzry7DxDHnFiLxPPTjdnaMgYHLQrBGPqGjZVdiJ3RD/v
-         TlkJHZJgk8YF71Uf9B3Wqf0mDILg4Th9TxRwd2usV8kw64DlVVLetrsSjjHktbswBkCP
-         RNgingtQVdEdGPx50V4xz8I8LXF5iSn8as624Z9wV3vZR1F+ZS84xUVkipdllJIsynXw
-         fBGCXvJjJLhLnSzvf90t43gk/zmkxKid5mz07OUkeeckjOdpXDjEA3UuVG0tbzTvqB0J
-         aS7I1EmbmwrvgSGXXnRDn3TE+ZjdxRtzvfr/p5IItybLvNepL0iwHs+YylJUVOqt1gFx
-         Qwyg==
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=d56NbgntuKaPhsz9w2swmsKP0dXTGKOGOeJn0h23PX0=;
+        b=XgW1WUCzPZIvbsNbVV+Hg37SQPnWhHV8ZvYUHk9XB+1e95l0//PiXR75XBRvoHNX8l
+         wtV8n2zVa42pIDLIK8c0X7RYuvpRlu3ZwjzdEr9i4f8pL2QY3KqnftPHGbcIvAnHE7Lk
+         Gq1t/xGCZ4MGLdmhAAyHVP+Wb9NrFVQcC3ywdM/D7/qAeRVybiyOk2twkuRIaPMNbKKd
+         IEZrJxdi1xEHpAd3MxQza+KYD5p+DjSwlOA3OEK3v1upNTUOdiBLxiuvmMuL/d2sEBAm
+         0//e8YcQpjV0BYsZTiPgoCA8fWMiNijtH5HmYw23YXrRtEVJRw1GbYyt5ptf7TWwStbw
+         V1fQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=ZeogUmLq;
+       dkim=pass header.i=@linaro.org header.s=google header.b=poZzacN0;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x22-20020a05620a0b5600b006b24f854d89si9217226qkg.626.2022.07.05.09.16.21
+        by mx.google.com with ESMTPS id d14-20020ae9ef0e000000b006a6a6ea7456si16244463qkg.153.2022.07.05.07.13.36
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 05 Jul 2022 09:16:21 -0700 (PDT)
+        Tue, 05 Jul 2022 07:13:36 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=ZeogUmLq;
+       dkim=pass header.i=@linaro.org header.s=google header.b=poZzacN0;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:35258 helo=lists1p.gnu.org)
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:35246 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1o8lDp-00031L-2U
-	for alex.bennee@linaro.org; Tue, 05 Jul 2022 12:16:21 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:60780)
+	id 1o8jJ2-0001jN-76
+	for alex.bennee@linaro.org; Tue, 05 Jul 2022 10:13:36 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:56262)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <afaria@redhat.com>) id 1o8lDL-0002xz-Hr
- for qemu-arm@nongnu.org; Tue, 05 Jul 2022 12:15:52 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:53083)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <afaria@redhat.com>) id 1o8lDH-0005eo-Gn
- for qemu-arm@nongnu.org; Tue, 05 Jul 2022 12:15:51 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1657037746;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding;
- bh=3iiwX4Zb2vPEjyqXjWU9F/LncU1CSVkWi4099Dtqlpg=;
- b=ZeogUmLqX1qORZKDJc1nqjTs4g+tts7a6pkzjo8cIblv3SpMioN2Cv/WBPhNJXKIXQlpIB
- W3PSaJW2B36WZeTTKqy/mNJfpVx4WeBSS7rBTqmzqNG7W6h5x2BkRAQoeSYu6f/7cnR1ea
- hcd8Dmdh5xlzZVLksJHxo5u81WCdCGc=
-Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
- [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-495-dwMQ7LhXN2aPKo70CQIF7A-1; Tue, 05 Jul 2022 12:15:43 -0400
-X-MC-Unique: dwMQ7LhXN2aPKo70CQIF7A-1
-Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.rdu2.redhat.com
- [10.11.54.7])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id B6C65811E9B;
- Tue,  5 Jul 2022 16:15:41 +0000 (UTC)
-Received: from localhost.localdomain (unknown [10.39.192.13])
- by smtp.corp.redhat.com (Postfix) with ESMTP id A2CB4140EBE4;
- Tue,  5 Jul 2022 16:15:35 +0000 (UTC)
-From: Alberto Faria <afaria@redhat.com>
-To: qemu-devel@nongnu.org
-Cc: Beniamino Galvani <b.galvani@gmail.com>,
- Juan Quintela <quintela@redhat.com>,
- Vladimir Sementsov-Ogievskiy <v.sementsov-og@mail.ru>,
- Eric Blake <eblake@redhat.com>, Niek Linnenbank <nieklinnenbank@gmail.com>,
- Palmer Dabbelt <palmer@dabbelt.com>, Laurent Vivier <laurent@vivier.eu>,
- Stefan Weil <sw@weilnetz.de>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- Stefan Hajnoczi <stefanha@redhat.com>,
- Alistair Francis <alistair@alistair23.me>, qemu-ppc@nongnu.org,
- Fam Zheng <fam@euphon.net>, Jeff Cody <codyprime@gmail.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
- Kevin Wolf <kwolf@redhat.com>,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
- David Gibson <david@gibson.dropbear.id.au>,
- "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
- Joel Stanley <joel@jms.id.au>, Bin Meng <bin.meng@windriver.com>,
- Emanuele Giuseppe Esposito <eesposit@redhat.com>,
- John Snow <jsnow@redhat.com>, Andrew Jeffery <andrew@aj.id.au>,
- qemu-riscv@nongnu.org, Greg Kurz <groug@kaod.org>,
- Daniel Henrique Barboza <danielhb413@gmail.com>,
- Peter Maydell <peter.maydell@linaro.org>, Hanna Reitz <hreitz@redhat.com>,
- qemu-block@nongnu.org, "Denis V. Lunev" <den@openvz.org>,
- qemu-arm@nongnu.org, Alberto Faria <afaria@redhat.com>
-Subject: [PATCH v2 00/18] Make block-backend-io.h API more consistent
-Date: Tue,  5 Jul 2022 17:15:08 +0100
-Message-Id: <20220705161527.1054072-1-afaria@redhat.com>
-Content-Type: text/plain; charset="utf-8"
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1o8jIY-0001h7-Mx
+ for qemu-arm@nongnu.org; Tue, 05 Jul 2022 10:13:07 -0400
+Received: from mail-yw1-x1133.google.com ([2607:f8b0:4864:20::1133]:37700)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1o8jIW-0001m5-B9
+ for qemu-arm@nongnu.org; Tue, 05 Jul 2022 10:13:06 -0400
+Received: by mail-yw1-x1133.google.com with SMTP id
+ 00721157ae682-31c8340a6f7so69263087b3.4
+ for <qemu-arm@nongnu.org>; Tue, 05 Jul 2022 07:13:03 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=d56NbgntuKaPhsz9w2swmsKP0dXTGKOGOeJn0h23PX0=;
+ b=poZzacN0JdHCa2cYtabOYgBm49mtT5jh9UTW2n/LquJ34uHtf/ZxcZzge9Ikm37Y3k
+ 0J0uu1Uaf7Bb9g+AQSzQWGufubCRYikTj5ARoYwzWXud5cuzAMQkO+qKy9bLRcljejL6
+ 5Jc1AHzbiYTEWvY0QvfOoICSpRgIfe3EGsZIlizz6NxKVGx8AuwtRViRhN/H2d2Fqtgw
+ 1xPqv4LDTWQi27aQQeYlZMCWLD0H/9a48IPqVxLmMXcr4z80Cvh3oRwvXCWEjHKiQ9Jt
+ b2ksTiRmd5RDAUFnt57hkmq88JlTF1EXsFEq+MMcYNFCsNPr6kzIamMMnDU7NB72hb0a
+ 9Iuw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=d56NbgntuKaPhsz9w2swmsKP0dXTGKOGOeJn0h23PX0=;
+ b=xAOa7i5m8adwul0cwp8yb5kt3tdyoYsQMWDanL+LAenAU7YgGoH9wGbU03b6KZnvdv
+ gPMuyPMVH67+BT17YwVI2NQEjrzGpaUzEbVOYXxTvN//3VO/R5M64ToyvoJUqDkpicbb
+ kvG3F9MmVxZQHogimJifeRTFE9AYxIKPAKcK2+AJDPzhlWMmFvyqLh/kUHi194JFSyMR
+ JBcQItIRo9r9DZusE1evnjzxxUnq/oDxPvdB0fZWOeyhPbCfMGwmHhDbwK72lfPkmze3
+ WgVaLgxvoZVJiKGlKLsEhxt4Q5bnDC02zQFHMW5fe98xi6y+66s3R9CctYcfmhGw50YZ
+ 3QAQ==
+X-Gm-Message-State: AJIora82u/l/qyv6XRXUYgzVDGX/zSlZxhFmMg8qBWQKuce+t+2IyLRd
+ LWrYfNJhEe7DYOkP06BSW3q8v4ZcEeoa9vERSX88GA==
+X-Received: by 2002:a81:8d08:0:b0:317:a4cd:d65d with SMTP id
+ d8-20020a818d08000000b00317a4cdd65dmr38752468ywg.329.1657030383383; Tue, 05
+ Jul 2022 07:13:03 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 2.85 on 10.11.54.7
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=afaria@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -28
-X-Spam_score: -2.9
+References: <20220703082419.770989-1-richard.henderson@linaro.org>
+ <20220703082419.770989-8-richard.henderson@linaro.org>
+In-Reply-To: <20220703082419.770989-8-richard.henderson@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 5 Jul 2022 15:12:52 +0100
+Message-ID: <CAFEAcA9dipRZVqvHvBrUGL6nxQtmz8C81W5Dog7uoBVye3m5UQ@mail.gmail.com>
+Subject: Re: [PATCH 07/62] include/exec: Remove target_tlb_bitN from MemTxAttrs
+To: Richard Henderson <richard.henderson@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1133;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x1133.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.082,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -128,92 +114,17 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: GQ8Vkjx6pmY2
+X-TUID: PJJ7s/2WLK2m
 
-Adjust existing pairs of non-coroutine and coroutine functions to share
-the same calling convention, and add non-coroutine/coroutine
-counterparts where they don't exist.
+On Sun, 3 Jul 2022 at 09:35, Richard Henderson
+<richard.henderson@linaro.org> wrote:
+>
+> We have now moved all uses to PageEntryExtra.
+>
+> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+> ---
 
-Also make the non-coroutine versions generated_co_wrappers.
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
-This series sits on top of "[PATCH v5 00/10] Implement
-bdrv_{pread,pwrite,pwrite_sync,pwrite_zeroes}() using
-generated_co_wrapper":
-
-    https://lore.kernel.org/qemu-devel/20220609152744.3891847-1-afaria@redhat.com/
-
-Based-on: <20220609152744.3891847-1-afaria@redhat.com>
-
-v2:
-  - Avoid using variables named 'len' or similar to hold return values
-    from blk_{pread,pwrite}(), as they don't return a length anymore.
-  - Drop variables in_ret and out_ret in qemu-img.c:img_dd().
-  - Initialize buf in test_sync_op_blk_pwritev_part().
-  - Keep blk_co_copy_range() in the "I/O API functions" section of
-    include/sysemu/block-backend-io.h.
-
-Alberto Faria (18):
-  block: Make blk_{pread,pwrite}() return 0 on success
-  block: Add a 'flags' param to blk_pread()
-  block: Change blk_{pread,pwrite}() param order
-  block: Make 'bytes' param of blk_{pread,pwrite}() an int64_t
-  block: Make blk_co_pwrite() take a const buffer
-  block: Implement blk_{pread,pwrite}() using generated_co_wrapper
-  block: Add blk_{preadv,pwritev}()
-  block: Add blk_[co_]preadv_part()
-  block: Export blk_pwritev_part() in block-backend-io.h
-  block: Change blk_pwrite_compressed() param order
-  block: Add blk_co_pwrite_compressed()
-  block: Implement blk_pwrite_zeroes() using generated_co_wrapper
-  block: Implement blk_pdiscard() using generated_co_wrapper
-  block: Implement blk_flush() using generated_co_wrapper
-  block: Add blk_co_ioctl()
-  block: Add blk_co_truncate()
-  block: Reorganize some declarations in block-backend-io.h
-  block: Remove remaining unused symbols in coroutines.h
-
- block.c                           |  10 +-
- block/block-backend.c             | 150 ++++++++++++------------------
- block/commit.c                    |   4 +-
- block/coroutines.h                |  44 ---------
- block/crypto.c                    |   2 +-
- block/export/fuse.c               |   4 +-
- block/meson.build                 |   1 +
- block/parallels.c                 |   2 +-
- block/qcow.c                      |  14 +--
- block/qcow2.c                     |   4 +-
- block/qed.c                       |   8 +-
- block/vdi.c                       |   4 +-
- block/vhdx.c                      |  20 ++--
- block/vmdk.c                      |  10 +-
- block/vpc.c                       |  12 +--
- hw/arm/allwinner-h3.c             |   2 +-
- hw/arm/aspeed.c                   |   2 +-
- hw/block/block.c                  |   2 +-
- hw/block/fdc.c                    |  20 ++--
- hw/block/hd-geometry.c            |   2 +-
- hw/block/m25p80.c                 |   2 +-
- hw/block/nand.c                   |  47 +++++-----
- hw/block/onenand.c                |  32 +++----
- hw/block/pflash_cfi01.c           |   4 +-
- hw/block/pflash_cfi02.c           |   4 +-
- hw/ide/atapi.c                    |   4 +-
- hw/misc/mac_via.c                 |   6 +-
- hw/misc/sifive_u_otp.c            |  14 +--
- hw/nvram/eeprom_at24c.c           |   8 +-
- hw/nvram/spapr_nvram.c            |  16 ++--
- hw/nvram/xlnx-bbram.c             |   4 +-
- hw/nvram/xlnx-efuse.c             |   4 +-
- hw/ppc/pnv_pnor.c                 |   6 +-
- hw/sd/sd.c                        |   4 +-
- include/sysemu/block-backend-io.h |  97 +++++++++++--------
- migration/block.c                 |   8 +-
- nbd/server.c                      |   8 +-
- qemu-img.c                        |  41 ++++----
- qemu-io-cmds.c                    |  20 ++--
- tests/unit/test-block-iothread.c  | 141 ++++++++++++++++++++++++++--
- 40 files changed, 431 insertions(+), 356 deletions(-)
-
--- 
-2.36.1
-
+thanks
+-- PMM

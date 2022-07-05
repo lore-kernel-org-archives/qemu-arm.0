@@ -1,104 +1,123 @@
-Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp4043364lft;
-        Tue, 5 Jul 2022 08:37:28 -0700 (PDT)
-X-Google-Smtp-Source: AGRyM1vwpoy3LaV6PshBc6LptkGFQPERPeR8uD8LHMC7lCdWgeX5EGdxC5Fhwalxunlo4VMDJTbQ
-X-Received: by 2002:ac8:5882:0:b0:31d:3da8:421d with SMTP id t2-20020ac85882000000b0031d3da8421dmr14932221qta.15.1657035447952;
-        Tue, 05 Jul 2022 08:37:27 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1657035447; cv=none;
+Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp4079029lft;
+        Tue, 5 Jul 2022 09:30:57 -0700 (PDT)
+X-Google-Smtp-Source: AGRyM1swf80Ms3JNy8ONIO/DnYeaTbaFWRSwWXhZP5nV+7T/PILhwDLRwRe3kN0bMXL1RFMpTcyO
+X-Received: by 2002:a05:620a:25d4:b0:6ab:8b17:3724 with SMTP id y20-20020a05620a25d400b006ab8b173724mr24649231qko.395.1657038657585;
+        Tue, 05 Jul 2022 09:30:57 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1657038657; cv=none;
         d=google.com; s=arc-20160816;
-        b=XDJ2AzQoZuMyeUqKbv7VZ1HybS03S2fs/fLBsB0ZdHUhA7Z3LDxzoTVJxlyD3ohwFW
-         7ASFhQE9OFeEZHIh0++9VbGIEb4J5EvA325C3zoJAHYbj6WdWITgpSySkn2VZ/4v5BEy
-         RbbymOQ6hWehEyCB7t6g4dfBVSQx53Y5AKT97/stXlF5QCtjlqLLwx0UcbRVOqNy74Cy
-         bwrYw9lEd8T1XIzc7rWuHU8vCsLZjit3WVrXXkAiXrm08sDdkORNJMDIIowEuGr//zP0
-         BmXA3znUeiXtH03UN0cKP31IQ8j08bsvuRKxjdNjjxAbyLJ49TrEP9BqY8ulNaiYuwV6
-         WHxg==
+        b=dD25xqSiwFhkz9iCj4kUGSfklhYhaNkpQUVLoZdKgni7vBz/zAEn6d9sefDyghWojC
+         uMzWvpuMizZv4l6Lu6X/DfB9kNJLZKMJk0Zhx/CuxTiskMbKbjG4D+spU67hILlrm0G0
+         VJtfbRaqLOOsRaRMRbpoyK1k9Zu/xGX0KY5loekVBa4vq+8MKR5iwrhwt+oLNSuqCMRM
+         VWYfW69I3G4gikDC8sn45JdEI3quMIoTn8MNu9fBJcbIH/xNL5bdwxRzN17RG1QhBhzj
+         E+HEYx1w4yKe+jugzfoeZ0ASk078suX+UBz1ZpO5rNKfPQ08b9Bpi4U4ePN0m8EABjf3
+         FixQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=B23Hv/JJ5V7B28rPjE1KNfCck5kfKEAAvzTIBAcZf58=;
-        b=CUCobDtHZk3LtJx0zTfEJl8ZBZdZfRlP+7QROTS28Y3ixKxrRF9GTKY0wMkuE55GYZ
-         7l3tX6Nv/N5J8PztLnCyN0Clq4+3Z/vwABrKZ3TxHr1WHlafkdbMMxFDBb2uy7THQ43p
-         lizCu1gyvnIaMLhlCtpB6UX9LdbGgYGSVU/S2N7ltGkoNARkPjoDvyXkHG0uVOixTdl3
-         cbBjv7/VZvn2/n142cnNz9Mn+RNsu5hoChbG58HhdopjuAs7gOExn+MbedbgdfkG18Ui
-         gw1alIETy1ljw/VudncPs/5ofg4X1ZAicbdCVJyUGwuIPZjYXCWYAdSHNxaLZ6Q78y+n
-         cXdg==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=s5NFGNgolZ/YljHW0KwUSMv6ruJwU5YNYfxBcIZUuwM=;
+        b=w7ZZwaZoSiyiaRn+USNXH2DyQuuOgReQ9tFRPKKgcQ66N6aoWRbwONoCyd/x1pzQ2u
+         uDazubmUTlx9SC4vM21AuDtOVBBZQkijgBeTCEGvjE5XCvNzeyuJ9IqHpwxTKd6lzQRv
+         JIuEL0fH6RznSJdTMa9ReLh4j+pVvT30/TIIdMUeCgG8VnpRvexBQ8V0JLegotqLV7Tq
+         lIklF7Vt+t8kPTuEIc7dXJi0qasbElP1u5pz/Rhq6u0orMIsngqutJBsQERde+fA9v+/
+         8H0scn/K2hD0Cf+jGMkoO0xXOzKOMMPJyV8RgmxQcbF6v65OOpBz1Snd/rhDRo4/Kr5D
+         hv4Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=iNfJ7S3c;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=EHmIo+hF;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id kc24-20020a056214411800b004704587c6c3si1059285qvb.119.2022.07.05.08.37.27
+        by mx.google.com with ESMTPS id y12-20020a05620a25cc00b006a5c6b56424si20919108qko.491.2022.07.05.09.30.57
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 05 Jul 2022 08:37:27 -0700 (PDT)
+        Tue, 05 Jul 2022 09:30:57 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=iNfJ7S3c;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=EHmIo+hF;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:37588 helo=lists1p.gnu.org)
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:42048 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1o8kcB-0006UT-EO
-	for alex.bennee@linaro.org; Tue, 05 Jul 2022 11:37:27 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:50028)
+	id 1o8lRx-0003IL-0Y
+	for alex.bennee@linaro.org; Tue, 05 Jul 2022 12:30:57 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33802)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1o8kc1-0006TA-KU
- for qemu-arm@nongnu.org; Tue, 05 Jul 2022 11:37:17 -0400
-Received: from mail-yb1-xb33.google.com ([2607:f8b0:4864:20::b33]:34384)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1o8kby-0007eq-RL
- for qemu-arm@nongnu.org; Tue, 05 Jul 2022 11:37:17 -0400
-Received: by mail-yb1-xb33.google.com with SMTP id i14so2757854yba.1
- for <qemu-arm@nongnu.org>; Tue, 05 Jul 2022 08:37:14 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=B23Hv/JJ5V7B28rPjE1KNfCck5kfKEAAvzTIBAcZf58=;
- b=iNfJ7S3cL3ZiCB7LBQnEV1qNkdXw1wyxT2kEpu8f2i0tgYoQphsJxa6CvNYCVEPEOp
- Q68cDQlanL6e8JRCAq6H4abbM1UQeUUK5w2OqNCOxaf7FZWHIMxYY2NXfUUl/6L28Y12
- KJjSeeNOIfnaOXcvPZpnClhzODei6gr5Rcs6/9Q6MGA02Xrnlb5xZxQzpWz5+tNf3T/V
- NCljJniDdxpCpOPg950os6WQf6h8KYNILkrli4zHGFCY2LdHkkJYLQGz4Eeph7f7Vinq
- NxXnasvquq7lKNIf4PBVZPNnztHDOQwKPqySqFJXs4d2R5PzU04DZyP2dT6Gxs3+9lrh
- WnOQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=B23Hv/JJ5V7B28rPjE1KNfCck5kfKEAAvzTIBAcZf58=;
- b=XsfWdVLZ/XX6BCrb4QJgdIHzsGRSTy79IbLODsF+osIhBmlYEuMPbCv72RXnMDWDmm
- 1Muuzx4mQ6ZwNqT4JUsxOfKaMNTiDR4e9xqKBs5VGT6jVrSQ5q8dMbXr03nEDL7g1/tW
- D4rf145hPq0gMUPyBre4rQ6Wl8cz7qXweXcbzB2IOgt94sq3rLxwiF+yzoFARvHdzO3J
- o7rWhgCccmrZY5z0fL4QB0t1XvAezBsL9ZFe9ScuUuPWUSykYBcj2mFq9nJpAsELM2lx
- xfQ38y7TuILdXcb4PWUwgcDMh+2FARmWVNLhcgvy+Vzs+OAf8HlPIEkdcKuE2LvIg+8d
- PSew==
-X-Gm-Message-State: AJIora9lzHk0jTFTRz4INBRnYvtKlvb/hE7XKDyl3P9zzHvzi9wNuNId
- 0Gf+bp/ulLGSKTiaGknficNUGU+HE/rdqlM808beDw==
-X-Received: by 2002:a25:500e:0:b0:66e:4c27:6223 with SMTP id
- e14-20020a25500e000000b0066e4c276223mr11845773ybb.85.1657035433664; Tue, 05
- Jul 2022 08:37:13 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <afaria@redhat.com>) id 1o8lEn-0005PU-GC
+ for qemu-arm@nongnu.org; Tue, 05 Jul 2022 12:17:22 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:59903)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <afaria@redhat.com>) id 1o8lEk-00066P-2m
+ for qemu-arm@nongnu.org; Tue, 05 Jul 2022 12:17:19 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1657037837;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=s5NFGNgolZ/YljHW0KwUSMv6ruJwU5YNYfxBcIZUuwM=;
+ b=EHmIo+hFfpANJKUpJrDiC1RIzH5B/hw09YdEltVA02mD/EESxqOcVSVRBS0LARIhUyvvzH
+ Q/JU0SJXJI/pSoA3pg2vbVjZdu8Lxz+PGroenAvKv7EgBOIaaP9XkhsHZils3wWQshOmiR
+ 7PL/7Fy8O7QOwTgAiZHXTGM1jfJdpy0=
+Received: from mimecast-mx02.redhat.com (mx3-rdu2.redhat.com
+ [66.187.233.73]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-147-mDdAtetyNiShvKjXz3lyiw-1; Tue, 05 Jul 2022 12:17:11 -0400
+X-MC-Unique: mDdAtetyNiShvKjXz3lyiw-1
+Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.7])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 65C071C1395B;
+ Tue,  5 Jul 2022 16:16:59 +0000 (UTC)
+Received: from localhost.localdomain (unknown [10.39.192.13])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 5401E140EBE4;
+ Tue,  5 Jul 2022 16:16:53 +0000 (UTC)
+From: Alberto Faria <afaria@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: Beniamino Galvani <b.galvani@gmail.com>,
+ Juan Quintela <quintela@redhat.com>,
+ Vladimir Sementsov-Ogievskiy <v.sementsov-og@mail.ru>,
+ Eric Blake <eblake@redhat.com>, Niek Linnenbank <nieklinnenbank@gmail.com>,
+ Palmer Dabbelt <palmer@dabbelt.com>, Laurent Vivier <laurent@vivier.eu>,
+ Stefan Weil <sw@weilnetz.de>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ Stefan Hajnoczi <stefanha@redhat.com>,
+ Alistair Francis <alistair@alistair23.me>, qemu-ppc@nongnu.org,
+ Fam Zheng <fam@euphon.net>, Jeff Cody <codyprime@gmail.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+ Kevin Wolf <kwolf@redhat.com>,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
+ David Gibson <david@gibson.dropbear.id.au>,
+ "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
+ Joel Stanley <joel@jms.id.au>, Bin Meng <bin.meng@windriver.com>,
+ Emanuele Giuseppe Esposito <eesposit@redhat.com>,
+ John Snow <jsnow@redhat.com>, Andrew Jeffery <andrew@aj.id.au>,
+ qemu-riscv@nongnu.org, Greg Kurz <groug@kaod.org>,
+ Daniel Henrique Barboza <danielhb413@gmail.com>,
+ Peter Maydell <peter.maydell@linaro.org>, Hanna Reitz <hreitz@redhat.com>,
+ qemu-block@nongnu.org, "Denis V. Lunev" <den@openvz.org>,
+ qemu-arm@nongnu.org, Alberto Faria <afaria@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>
+Subject: [PATCH v2 13/18] block: Implement blk_pdiscard() using
+ generated_co_wrapper
+Date: Tue,  5 Jul 2022 17:15:21 +0100
+Message-Id: <20220705161527.1054072-14-afaria@redhat.com>
+In-Reply-To: <20220705161527.1054072-1-afaria@redhat.com>
+References: <20220705161527.1054072-1-afaria@redhat.com>
 MIME-Version: 1.0
-References: <20220630194116.3438513-1-peter.maydell@linaro.org>
- <20220630194116.3438513-6-peter.maydell@linaro.org>
- <d717bccb-09d1-99e5-f15b-fdecb2b224f6@linaro.org>
-In-Reply-To: <d717bccb-09d1-99e5-f15b-fdecb2b224f6@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 5 Jul 2022 16:36:35 +0100
-Message-ID: <CAFEAcA_5QBpjRH_VGFDG8bYFDduRJ9eew98WpeXXpceuhK6s4Q@mail.gmail.com>
-Subject: Re: [PATCH 5/5] target/arm: Correctly implement Feat_DoubleLock
-To: Richard Henderson <richard.henderson@linaro.org>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b33;
- envelope-from=peter.maydell@linaro.org; helo=mail-yb1-xb33.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+Content-Transfer-Encoding: 8bit
+X-Scanned-By: MIMEDefang 2.85 on 10.11.54.7
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=afaria@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -28
+X-Spam_score: -2.9
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+X-Spam_report: (-2.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.082,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -114,104 +133,75 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: QcfTTf8m+UXm
+X-TUID: vJa0uZgdQhMp
 
-On Sat, 2 Jul 2022 at 15:19, Richard Henderson
-<richard.henderson@linaro.org> wrote:
->
-> On 7/1/22 01:11, Peter Maydell wrote:
-> > +static inline bool isar_feature_any_doublelock(const ARMISARegisters *id)
-> > +{
-> > +    /*
-> > +     * We can't just OR together the aa32 and aa64 checks, because
-> > +     * if there is no AArch64 support the aa64 function will default
-> > +     * to returning true for a zero id_aa64dfr0.
-> > +     * We use "is id_aa64pfr0 non-zero" as a proxy for "do we have
-> > +     * the AArch64 ID register values in id", because it's always the
-> > +     * case that ID_AA64PFR0_EL1.EL0 at least will be non-zero.
-> > +     */
-> > +    if (id->id_aa64pfr0) {
-> > +        return isar_feature_aa64_doublelock(id);
-> > +    }
-> > +    return isar_feature_aa32_doublelock(id);
-> > +}
->
-> If you're going to rely on this, you need to clear this register for -cpu aarch64=off.
-> It's probably easier to drop this function...
->
-> > +static void osdlr_write(CPUARMState *env, const ARMCPRegInfo *ri,
-> > +                        uint64_t value)
-> > +{
-> > +    /*
-> > +     * Only defined bit is bit 0 (DLK); if Feat_DoubleLock is not
-> > +     * implemented this is RAZ/WI.
-> > +     */
-> > +    if (cpu_isar_feature(any_doublelock, env_archcpu(env))) {
->
-> ... and use
->
->      if (arm_feature(env, ARM_FEATURE_AARCH64)
->          ? cpu_isar_feature(aa64_doublelock, cpu)
->          : cpu_isar_feature(aa32_doublelock, cpu)) {
->
-> since it's just used once.
+Signed-off-by: Alberto Faria <afaria@redhat.com>
+Reviewed-by: Paolo Bonzini <pbonzini@redhat.com>
+Reviewed-by: Hanna Reitz <hreitz@redhat.com>
+---
+ block/block-backend.c             | 12 ------------
+ block/coroutines.h                |  3 ---
+ include/sysemu/block-backend-io.h |  3 ++-
+ 3 files changed, 2 insertions(+), 16 deletions(-)
 
-If I squash in this change:
-
-diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index 069dfe1d308..1f4f3e0485c 100644
---- a/target/arm/cpu.h
-+++ b/target/arm/cpu.h
-@@ -4218,22 +4218,6 @@ static inline bool isar_feature_any_ras(const
-ARMISARegisters *id)
-     return isar_feature_aa64_ras(id) || isar_feature_aa32_ras(id);
+diff --git a/block/block-backend.c b/block/block-backend.c
+index 8129259e50..823c98a031 100644
+--- a/block/block-backend.c
++++ b/block/block-backend.c
+@@ -1715,18 +1715,6 @@ int coroutine_fn blk_co_pdiscard(BlockBackend *blk, int64_t offset,
+     return ret;
  }
-
--static inline bool isar_feature_any_doublelock(const ARMISARegisters *id)
+ 
+-int blk_pdiscard(BlockBackend *blk, int64_t offset, int64_t bytes)
 -{
--    /*
--     * We can't just OR together the aa32 and aa64 checks, because
--     * if there is no AArch64 support the aa64 function will default
--     * to returning true for a zero id_aa64dfr0.
--     * We use "is id_aa64pfr0 non-zero" as a proxy for "do we have
--     * the AArch64 ID register values in id", because it's always the
--     * case that ID_AA64PFR0_EL1.EL0 at least will be non-zero.
--     */
--    if (id->id_aa64pfr0) {
--        return isar_feature_aa64_doublelock(id);
--    }
--    return isar_feature_aa32_doublelock(id);
+-    int ret;
+-    IO_OR_GS_CODE();
+-
+-    blk_inc_in_flight(blk);
+-    ret = blk_do_pdiscard(blk, offset, bytes);
+-    blk_dec_in_flight(blk);
+-
+-    return ret;
 -}
 -
- /*
-  * Forward to the above feature tests given an ARMCPU pointer.
-  */
-diff --git a/target/arm/debug_helper.c b/target/arm/debug_helper.c
-index 62bd8f85383..d09fccb0a4f 100644
---- a/target/arm/debug_helper.c
-+++ b/target/arm/debug_helper.c
-@@ -617,11 +617,14 @@ static void oslar_write(CPUARMState *env, const
-ARMCPRegInfo *ri,
- static void osdlr_write(CPUARMState *env, const ARMCPRegInfo *ri,
-                         uint64_t value)
+ /* To be called between exactly one pair of blk_inc/dec_in_flight() */
+ int coroutine_fn blk_co_do_flush(BlockBackend *blk)
  {
-+    ARMCPU *cpu = env_archcpu(env);
-     /*
-      * Only defined bit is bit 0 (DLK); if Feat_DoubleLock is not
-      * implemented this is RAZ/WI.
-      */
--    if (cpu_isar_feature(any_doublelock, env_archcpu(env))) {
-+    if(arm_feature(env, ARM_FEATURE_AARCH64)
-+       ? cpu_isar_feature(aa64_doublelock, cpu)
-+       : cpu_isar_feature(aa32_doublelock, cpu)) {
-         env->cp15.osdlr_el1 = value & 1;
-     }
+diff --git a/block/coroutines.h b/block/coroutines.h
+index 94fd283f62..2693ecabfb 100644
+--- a/block/coroutines.h
++++ b/block/coroutines.h
+@@ -110,9 +110,6 @@ nbd_do_establish_connection(BlockDriverState *bs, bool blocking, Error **errp);
+ int generated_co_wrapper
+ blk_do_ioctl(BlockBackend *blk, unsigned long int req, void *buf);
+ 
+-int generated_co_wrapper
+-blk_do_pdiscard(BlockBackend *blk, int64_t offset, int64_t bytes);
+-
+ int generated_co_wrapper blk_do_flush(BlockBackend *blk);
+ 
+ #endif /* BLOCK_COROUTINES_H */
+diff --git a/include/sysemu/block-backend-io.h b/include/sysemu/block-backend-io.h
+index 5ce9b80023..5c56737453 100644
+--- a/include/sysemu/block-backend-io.h
++++ b/include/sysemu/block-backend-io.h
+@@ -160,6 +160,8 @@ static inline int coroutine_fn blk_co_pwrite(BlockBackend *blk, int64_t offset,
+     return blk_co_pwritev(blk, offset, bytes, &qiov, flags);
  }
+ 
++int generated_co_wrapper blk_pdiscard(BlockBackend *blk, int64_t offset,
++                                      int64_t bytes);
+ int coroutine_fn blk_co_pdiscard(BlockBackend *blk, int64_t offset,
+                                  int64_t bytes);
+ 
+@@ -173,7 +175,6 @@ int generated_co_wrapper blk_pwrite_compressed(BlockBackend *blk,
+                                                const void *buf);
+ int coroutine_fn blk_co_pwrite_compressed(BlockBackend *blk, int64_t offset,
+                                           int64_t bytes, const void *buf);
+-int blk_pdiscard(BlockBackend *blk, int64_t offset, int64_t bytes);
+ int generated_co_wrapper blk_pwrite_zeroes(BlockBackend *blk, int64_t offset,
+                                            int64_t bytes,
+                                            BdrvRequestFlags flags);
+-- 
+2.36.1
 
-
-
-
-can I have a reviewed-by? Would save me doing a respin.
-
-thanks
--- PMM

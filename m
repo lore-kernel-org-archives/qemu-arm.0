@@ -1,119 +1,128 @@
-Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp4205216lft;
-        Tue, 5 Jul 2022 13:07:05 -0700 (PDT)
-X-Google-Smtp-Source: AGRyM1sO9vldeBBGzb6iLxjzKMlrya6UzYQ9odu75incQhK58IxDGdGLjQW/qRlmqGME1ArXtB0/
-X-Received: by 2002:a05:620a:44c9:b0:6b2:1f49:f0f5 with SMTP id y9-20020a05620a44c900b006b21f49f0f5mr20691113qkp.327.1657051624866;
-        Tue, 05 Jul 2022 13:07:04 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1657051624; cv=none;
+Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp4256261lft;
+        Tue, 5 Jul 2022 14:41:01 -0700 (PDT)
+X-Google-Smtp-Source: AGRyM1v6JsAV8R8dxfCgf8YZ4Ds1kRcF3ijIfoT7+ezyr5jC5QVoUUn8QaMlGHBm6iiFUQjiGKRw
+X-Received: by 2002:a0d:c144:0:b0:31b:d12b:fca4 with SMTP id c65-20020a0dc144000000b0031bd12bfca4mr41549354ywd.366.1657057261482;
+        Tue, 05 Jul 2022 14:41:01 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1657057261; cv=none;
         d=google.com; s=arc-20160816;
-        b=fWzGsKJIiwosLidGE/jgPSD+Z3OmQAasRhom7S9FGhSihC+K1KV7SapY2dybmenQz2
-         82tK+gitsfz+4QX4X5trxNHcip9UGcZP5gQ8LBm6EfJjBZh3hoBogNMLaLkVnaMxX6TQ
-         sKs6rVePHk7O4+FgLVjYB/LlG7aB/nR8VMgJCqgvypm/TbtODcclxWhsWzJOuD1FnTLQ
-         3eIgQyRGi+0TzeGwNv1la/OgMAHGuEP+H/UKWFdXxLy9350ntrYHkCIP3ytcbxxQHIsx
-         t5UlDC/GJ/8z+dQLPUhEFBUJgzGZsyj5mXzf/1Qo1kaq5yC6bhDw6HR0MiDGx70rvOOG
-         X2OQ==
+        b=hgeIshqfyl+hI7V/+wpjVLxb8XnfK7NNrK56yCP4SyyOBiBv164VGoO+uubAooO7NB
+         Aa90Z1NVST/MoSkbhj/zU3cAteY87WGBXfgfBka09loNMCn/jMWshBsaf/akNacn2ULB
+         iGuHkBxDtXXHo0AWaJvpzIiWo0Df7fu53l1s4dqMPAsDBeAFUD6U6pRnld3jftm7h33N
+         lV//t1ydGw5pRC2ucxWQjL4jRZaG8u9gbjSblrRpqwZGJSouS4NPs3rf1D41aZ2jxy0l
+         jq0bW2nYlh+NiGkIiEpla7EgUM4DBPP+X5k70hjfnZ6KHRXAIlIaJRwKeVoU/3Cq7Zdl
+         PsGQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence:in-reply-to
-         :content-disposition:mime-version:references:message-id:subject:cc
-         :to:from:date:dkim-signature;
-        bh=MZ2xy2K+vrN/XA5j+0YELCsIk3fz2p5gCXyJJzwb6Eo=;
-        b=YRtf5gkQJmUKHgRoEcrBNcg6gu2AYPzHv0I+SEnhj4AXdTm3CAJQNBpBDyOsDmMGU0
-         9+a7B9hxw10EZ3luyMufqji5WpusBh5QhtR+q7Z+aXxKmFGBTwMHiXbJxhNhX8ECuXn4
-         9K/bY9FdRLVug0L4GaBNXU/4/oEmB0eJbU0plo1yuNC9FYdWlEMfDHNYm6S7QtPOMcZN
-         qGk2kMkVvpHSpy+U7b62aqq2XMn7txIeHSSM/8fUvYI+E0aIqpSjxiDmPYVT3IDCfM6N
-         0l6SAcEgtuKNCCdZb2YL3LWbCbbbrNyWwD3s2O7udtdB2bTAJzV40DTZUs4y/Jai/8Xq
-         dDRA==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
+         :feedback-id:dkim-signature:dkim-signature;
+        bh=NjR/aen/igs1bLr9UqKEIizfe1aZB4/04uwLBEmDpfM=;
+        b=nrt5qMFCCSZmi1j2vd97j9kNoGzEoFck21qbhR2AKwYNOEZ2RQtXlGlWTg+zYdFVvs
+         gtTKLtmlYavca8uIgNiGiJr6CthLuwXHsw0dncP/VROuV6dVlZJvrWnNglvcNFUJ7oOk
+         deeePplFonHFmhJncErGnUDLSmnjjG0EA2lvQ9GnjWsaRgX82qY8NHq99V2asPcrQWyN
+         Xp4xKGKSFesc7zvjL1bHqKf9bE66b/iW8gxnIpmZCuZjgJsgCV5In3qSWKchxs7rL+9j
+         IZCieOqmiBwna7+YahHA0tArSwXUS1yyUYvrEbYVsetAk0yjh/TlErBYziwmUUuu8dc7
+         Oh7g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20210112 header.b=hOBVKz36;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=acm.org
+       dkim=fail header.i=@pjd.dev header.s=fm1 header.b="g/8dFm2o";
+       dkim=fail header.i=@messagingengine.com header.s=i9e814621.fm2 header.b=Gq62DLPp;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 192-20020a3703c9000000b006aef4a102dasi18448250qkd.515.2022.07.05.13.07.04
+        by mx.google.com with ESMTPS id 7-20020a811107000000b0031c85d650c4si14190734ywr.57.2022.07.05.14.41.01
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 05 Jul 2022 13:07:04 -0700 (PDT)
+        Tue, 05 Jul 2022 14:41:01 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20210112 header.b=hOBVKz36;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=acm.org
-Received: from localhost ([::1]:40724 helo=lists1p.gnu.org)
+       dkim=fail header.i=@pjd.dev header.s=fm1 header.b="g/8dFm2o";
+       dkim=fail header.i=@messagingengine.com header.s=i9e814621.fm2 header.b=Gq62DLPp;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:44728 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1o8op6-0000yQ-4t
-	for alex.bennee@linaro.org; Tue, 05 Jul 2022 16:07:04 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:55688)
+	id 1o8qI0-000485-Ry
+	for alex.bennee@linaro.org; Tue, 05 Jul 2022 17:41:00 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:43512)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <tcminyard@gmail.com>)
- id 1o8ooa-0000vX-Mq; Tue, 05 Jul 2022 16:06:32 -0400
-Received: from mail-qk1-x72a.google.com ([2607:f8b0:4864:20::72a]:38830)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <tcminyard@gmail.com>)
- id 1o8ooY-0000Qf-Ly; Tue, 05 Jul 2022 16:06:32 -0400
-Received: by mail-qk1-x72a.google.com with SMTP id c137so9584700qkg.5;
- Tue, 05 Jul 2022 13:06:28 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=sender:date:from:to:cc:subject:message-id:reply-to:references
- :mime-version:content-disposition:in-reply-to;
- bh=MZ2xy2K+vrN/XA5j+0YELCsIk3fz2p5gCXyJJzwb6Eo=;
- b=hOBVKz36oHllO0/esX6KcPpe98Z2o4Ftelf9kgO1Q11GcZTJe/f8gm2CMfD0zKKfvx
- PPuF7qB6dLDZ1FKd9xKfRynmC4RCKBTh5RkyjQcCU2pHLteWavIQMGkTJic4RDujO7+J
- wNhtqI+czQSPV4jAoETwg+OeGwcVqmJtcVPanbOElWAJxOg89kSEy3zyyn7u29KtsD/R
- DXoKKo6U2J5TGFBPndtBt0veavvzzJ54wB50jYSNgJMw4h2REl0XLFApzQltXrOnTajl
- HPjBVhgRZQzB6anuNrWB3Rna2N0W4dNIyletqLq1Ca67roLGcp2PWY9fHGlF+PxxjOg7
- fRTw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:sender:date:from:to:cc:subject:message-id
- :reply-to:references:mime-version:content-disposition:in-reply-to;
- bh=MZ2xy2K+vrN/XA5j+0YELCsIk3fz2p5gCXyJJzwb6Eo=;
- b=5fbsi4H+yFq+t33CpVihfY97TGknLWdTYoMnxvkORHInvolBOoC8zM5EbM6QYvWHVG
- VpfQr7+ZGnRsU/L/XUpSC5N2B1SQEyFvW5HUY31WqCg7Yf9b8shBtp218VxYFnAzr1vb
- fB4ASKoXhh6aIP5QBTzfdID8WEpKOfRSKpeCj+2idJBhijtJaFwXLxx1OG5TYP/uF+bN
- hq0hmgRYmqjTNJZVPnoMcpyKC63gOa3u4Kh92CWCQhjt1lfYqW0D4w703A4XnnZabE3j
- Pbflmkw73ezqlnwpLx/tGf9kWit4SJ3E0wWwJY39acdE7iTZRs9rQRVRgOPsfih1dHf1
- dVGg==
-X-Gm-Message-State: AJIora/wUS0ifwW7j494jc4KFQTH8v2GSoFgj4jF6PbAV7EXoOnhLRJn
- sjOsqc3FtVMb5NKtiOJoWA==
-X-Received: by 2002:a37:bb06:0:b0:6af:1396:733a with SMTP id
- l6-20020a37bb06000000b006af1396733amr24728135qkf.19.1657051587770; 
- Tue, 05 Jul 2022 13:06:27 -0700 (PDT)
-Received: from serve.minyard.net ([47.184.144.75])
- by smtp.gmail.com with ESMTPSA id
- 196-20020a3704cd000000b006a6ae9150fesm27266591qke.41.2022.07.05.13.06.26
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 05 Jul 2022 13:06:27 -0700 (PDT)
-Received: from minyard.net (unknown
- [IPv6:2001:470:b8f6:1b:1895:1b49:2a68:29f7])
- by serve.minyard.net (Postfix) with ESMTPSA id 6C3DC1800BD;
- Tue,  5 Jul 2022 20:06:25 +0000 (UTC)
-Date: Tue, 5 Jul 2022 15:06:24 -0500
-From: Corey Minyard <minyard@acm.org>
-To: Peter Delevoryas <peter@pjd.dev>
-Cc: =?utf-8?Q?C=C3=A9dric?= Le Goater <clg@kaod.org>,
+ (Exim 4.90_1) (envelope-from <peter@pjd.dev>)
+ id 1o8qHi-00045z-F3; Tue, 05 Jul 2022 17:40:42 -0400
+Received: from new3-smtp.messagingengine.com ([66.111.4.229]:54345)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <peter@pjd.dev>)
+ id 1o8qHg-0005ck-Cc; Tue, 05 Jul 2022 17:40:42 -0400
+Received: from compute2.internal (compute2.nyi.internal [10.202.2.46])
+ by mailnew.nyi.internal (Postfix) with ESMTP id 56DB558026F;
+ Tue,  5 Jul 2022 17:40:35 -0400 (EDT)
+Received: from mailfrontend1 ([10.202.2.162])
+ by compute2.internal (MEProxy); Tue, 05 Jul 2022 17:40:35 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=pjd.dev; h=cc:cc
+ :content-type:date:date:from:from:in-reply-to:in-reply-to
+ :message-id:mime-version:references:reply-to:sender:subject
+ :subject:to:to; s=fm1; t=1657057235; x=1657060835; bh=NjR/aen/ig
+ s1bLr9UqKEIizfe1aZB4/04uwLBEmDpfM=; b=g/8dFm2o5Cu6BxZx+hGu8OsdC2
+ fAvqV+cCwfT4sPIBho3zgjoRtmjHjU+loAOD/lMxH1cX89b8h5ShyN3ynkRnetbD
+ 0SQjsh1Tw+barrz6RZoPZPU0FuXA3xHK3jBl07RJbfz5LhVOweVGYwkYmnMlDp2K
+ HA0x8TrWizzVPuRqFV2OGIoSZLSpJrznfLCpxzTEdYwvIt04rYE4C50D4bEo2rbb
+ rytOT/0LdVpxuyi15/ExxcQUGjF4frjasCbIo6mFFuLxtKRZyJg4CSs1Z9bv4XMW
+ Dr+t/kT8H7xyaVPoNLeLRMI16mwq8oFJgU4x22RJzeGxxVqVGoqrHqGQPAUw==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+ messagingengine.com; h=cc:cc:content-type:date:date:feedback-id
+ :feedback-id:from:from:in-reply-to:in-reply-to:message-id
+ :mime-version:references:reply-to:sender:subject:subject:to:to
+ :x-me-proxy:x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=
+ i9e814621.fm2; t=1657057235; x=1657060835; bh=NjR/aen/igs1bLr9Uq
+ KEIizfe1aZB4/04uwLBEmDpfM=; b=Gq62DLPpFLPKlnJEeVvBrtC0YDXd890Bon
+ HeYXibsMZ5WiJOt06857lBJ0N1AfVMrS30RcjvL75N/ZU5WHRYmxKyfmq+J66+/V
+ OExna2Vg70DApEDWkm+hJzlD1wCDnvnESTBlNe4XqMGiRrKCoCZHbKVlrZj3Qk5s
+ yOSM7dJ2h8iNt/N1eSVNxZcV3rp8c9oyBYmlSWAGwTKTEk97UlxbKIzHBG6svVnD
+ lC6LMGemSd3RG/PBtAIC4SB+9YTk89OVtYwvBQzfTR3DY+IWWauaMNSRZD7FBqTH
+ Ut4SxaAAy3D3mEU0YA9Zbiy7N9GvjpbvH1O6ROLibA8q2YyXyP7A==
+X-ME-Sender: <xms:0q_EYu3S74m3MIZ-fDQdN3OpBMnOK9FU_RDdmmDWzQm0pwYnVOiTfw>
+ <xme:0q_EYhHZD3Paimr4FIlxzS1_6FLz5Zeb_vsLd4ViPVeY8zhWhhCboDd4C_RS-PfkG
+ jqiiimYMUfxje61qBY>
+X-ME-Received: <xmr:0q_EYm4K0QthKjn2BP2yZD_A77Uua2PluDdCG5-ysJu4M7ftXeR_3DnHECvLd4JrOm91LPRlRZrU21Y9btg0vEly>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvfedrudeiuddgudeilecutefuodetggdotefrod
+ ftvfcurfhrohhfihhlvgemucfhrghsthforghilhdpqfgfvfdpuffrtefokffrpgfnqfgh
+ necuuegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmd
+ enucfjughrpeffhffvvefukfhfgggtuggjsehttdertddttddvnecuhfhrohhmpefrvght
+ vghrucffvghlvghvohhrhigrshcuoehpvghtvghrsehpjhgurdguvghvqeenucggtffrrg
+ htthgvrhhnpeevgfehgedvvdekveeifeekjeduueetieegvdeitedvffdvgffhjeekveek
+ tdehfeenucffohhmrghinhepghhithhhuhgsrdgtohhmnecuvehluhhsthgvrhfuihiivg
+ eptdenucfrrghrrghmpehmrghilhhfrhhomhepphgvthgvrhesphhjugdruggvvh
+X-ME-Proxy: <xmx:0q_EYv2wqx1RNUQaWOE4uz_8wa8JbZQW8yQZfgyshYIWiBhgHaGxew>
+ <xmx:0q_EYhFuna7wYIOHmuNHpNwci4OhXgTtCKP13zRQrnfKvQ2SiuzdxA>
+ <xmx:0q_EYo-_fYAFzuwuFma89borHJMETIFsLdWgABQ-HIPfbRI-LwMiRw>
+ <xmx:06_EYm7NWwS5BbEFdBD3SRpIfS7FpJ5ULRUIO2-tub2_hoi5HD6ZLg>
+Feedback-ID: i9e814621:Fastmail
+Received: by mail.messagingengine.com (Postfix) with ESMTPA; Tue,
+ 5 Jul 2022 17:40:33 -0400 (EDT)
+Date: Tue, 5 Jul 2022 14:40:32 -0700
+From: Peter Delevoryas <peter@pjd.dev>
+To: Corey Minyard <minyard@acm.org>
+Cc: =?iso-8859-1?Q?C=E9dric?= Le Goater <clg@kaod.org>,
  Peter Maydell <peter.maydell@linaro.org>,
  Andrew Jeffery <andrew@aj.id.au>, Joel Stanley <joel@jms.id.au>,
  Patrick Venture <venture@google.com>, qemu-arm@nongnu.org,
  qemu-devel@nongnu.org
 Subject: Re: [PATCH v2 1/9] hw/i2c/pca954x: Add method to get channels
-Message-ID: <20220705200624.GK908082@minyard.net>
+Message-ID: <YsSv0NU8WfU6APoN@pdel-mbp.dhcp.thefacebook.com>
 References: <20220705191400.41632-1-peter@pjd.dev>
  <20220705191400.41632-2-peter@pjd.dev>
+ <20220705200624.GK908082@minyard.net>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20220705191400.41632-2-peter@pjd.dev>
-Received-SPF: pass client-ip=2607:f8b0:4864:20::72a;
- envelope-from=tcminyard@gmail.com; helo=mail-qk1-x72a.google.com
-X-Spam_score_int: -14
-X-Spam_score: -1.5
+In-Reply-To: <20220705200624.GK908082@minyard.net>
+Received-SPF: pass client-ip=66.111.4.229; envelope-from=peter@pjd.dev;
+ helo=new3-smtp.messagingengine.com
+X-Spam_score_int: -12
+X-Spam_score: -1.3
 X-Spam_bar: -
-X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
+X-Spam_report: (-1.3 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ FROM_FMBLA_NEWDOM=1.498, RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -126,140 +135,148 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: minyard@acm.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: SuyUqYfoPFRL
+X-TUID: /ZOxQeVDsvNI
 
-On Tue, Jul 05, 2022 at 12:13:52PM -0700, Peter Delevoryas wrote:
-> I added this helper in the Aspeed machine file a while ago to help
-> initialize fuji-bmc i2c devices. This moves it to the official pca954x
-> file so that other files can use it.
+On Tue, Jul 05, 2022 at 03:06:24PM -0500, Corey Minyard wrote:
+> On Tue, Jul 05, 2022 at 12:13:52PM -0700, Peter Delevoryas wrote:
+> > I added this helper in the Aspeed machine file a while ago to help
+> > initialize fuji-bmc i2c devices. This moves it to the official pca954x
+> > file so that other files can use it.
+> > 
+> > This does something very similar to pca954x_i2c_get_bus, but I think
+> > this is useful when you have a very complicated dts with a lot of
+> > switches, like the fuji dts.
+> > 
+> > This convenience method lets you write code that produces a flat array
+> > of I2C buses that matches the naming in the dts. After that you can just
+> > add individual sensors using the flat array of I2C buses.
 > 
-> This does something very similar to pca954x_i2c_get_bus, but I think
-> this is useful when you have a very complicated dts with a lot of
-> switches, like the fuji dts.
+> This is an improvment, I think.  But it really needs to be two patches,
+> one with the I2C portion, and one with the aspeed portion.
 > 
-> This convenience method lets you write code that produces a flat array
-> of I2C buses that matches the naming in the dts. After that you can just
-> add individual sensors using the flat array of I2C buses.
+> Also, the name is a little misleading, you might want to name it 
+> pca954x_i2c_create_get_channels
 
-This is an improvment, I think.  But it really needs to be two patches,
-one with the I2C portion, and one with the aspeed portion.
+You're right: Cedric, you can just ignore the pca954x patch then if you'd like,
+I can resubmit it with the future I2C series that uses it. I probably shouldn't
+have submitted it quite yet.
 
-Also, the name is a little misleading, you might want to name it 
-pca954x_i2c_create_get_channels
-
--corey
+I can also resubmit the series with that patch removed, not sure if that's
+necessary or not.
 
 > 
-> See fuji_bmc_i2c_init to understand this point further.
+> -corey
 > 
-> The fuji dts is here for reference:
-> 
-> https://github.com/torvalds/linux/blob/40cb6373b46/arch/arm/boot/dts/aspeed-bmc-facebook-fuji.dts
-> 
-> Signed-off-by: Peter Delevoryas <peter@pjd.dev>
-> ---
->  hw/arm/aspeed.c                  | 29 +++++++++--------------------
->  hw/i2c/i2c_mux_pca954x.c         | 10 ++++++++++
->  include/hw/i2c/i2c_mux_pca954x.h | 13 +++++++++++++
->  3 files changed, 32 insertions(+), 20 deletions(-)
-> 
-> diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
-> index 6fe9b13548..bee8a748ec 100644
-> --- a/hw/arm/aspeed.c
-> +++ b/hw/arm/aspeed.c
-> @@ -793,15 +793,6 @@ static void rainier_bmc_i2c_init(AspeedMachineState *bmc)
->      create_pca9552(soc, 15, 0x60);
->  }
->  
-> -static void get_pca9548_channels(I2CBus *bus, uint8_t mux_addr,
-> -                                 I2CBus **channels)
-> -{
-> -    I2CSlave *mux = i2c_slave_create_simple(bus, "pca9548", mux_addr);
-> -    for (int i = 0; i < 8; i++) {
-> -        channels[i] = pca954x_i2c_get_bus(mux, i);
-> -    }
-> -}
-> -
->  #define TYPE_LM75 TYPE_TMP105
->  #define TYPE_TMP75 TYPE_TMP105
->  #define TYPE_TMP422 "tmp422"
-> @@ -814,20 +805,18 @@ static void fuji_bmc_i2c_init(AspeedMachineState *bmc)
->      for (int i = 0; i < 16; i++) {
->          i2c[i] = aspeed_i2c_get_bus(&soc->i2c, i);
->      }
-> -    I2CBus *i2c180 = i2c[2];
-> -    I2CBus *i2c480 = i2c[8];
-> -    I2CBus *i2c600 = i2c[11];
->  
-> -    get_pca9548_channels(i2c180, 0x70, &i2c[16]);
-> -    get_pca9548_channels(i2c480, 0x70, &i2c[24]);
-> +    pca954x_i2c_get_channels(i2c[2], 0x70, "pca9548", &i2c[16]);
-> +    pca954x_i2c_get_channels(i2c[8], 0x70, "pca9548", &i2c[24]);
->      /* NOTE: The device tree skips [32, 40) in the alias numbering */
-> -    get_pca9548_channels(i2c600, 0x77, &i2c[40]);
-> -    get_pca9548_channels(i2c[24], 0x71, &i2c[48]);
-> -    get_pca9548_channels(i2c[25], 0x72, &i2c[56]);
-> -    get_pca9548_channels(i2c[26], 0x76, &i2c[64]);
-> -    get_pca9548_channels(i2c[27], 0x76, &i2c[72]);
-> +    pca954x_i2c_get_channels(i2c[11], 0x77, "pca9548", &i2c[40]);
-> +    pca954x_i2c_get_channels(i2c[24], 0x71, "pca9548", &i2c[48]);
-> +    pca954x_i2c_get_channels(i2c[25], 0x72, "pca9548", &i2c[56]);
-> +    pca954x_i2c_get_channels(i2c[26], 0x76, "pca9548", &i2c[64]);
-> +    pca954x_i2c_get_channels(i2c[27], 0x76, "pca9548", &i2c[72]);
->      for (int i = 0; i < 8; i++) {
-> -        get_pca9548_channels(i2c[40 + i], 0x76, &i2c[80 + i * 8]);
-> +        pca954x_i2c_get_channels(i2c[40 + i], 0x76, "pca9548",
-> +                                 &i2c[80 + i * 8]);
->      }
->  
->      i2c_slave_create_simple(i2c[17], TYPE_LM75, 0x4c);
-> diff --git a/hw/i2c/i2c_mux_pca954x.c b/hw/i2c/i2c_mux_pca954x.c
-> index 3945de795c..6b07804546 100644
-> --- a/hw/i2c/i2c_mux_pca954x.c
-> +++ b/hw/i2c/i2c_mux_pca954x.c
-> @@ -169,6 +169,16 @@ I2CBus *pca954x_i2c_get_bus(I2CSlave *mux, uint8_t channel)
->      return pca954x->bus[channel];
->  }
->  
-> +void pca954x_i2c_get_channels(I2CBus *bus, uint8_t address,
-> +                              const char *type_name, I2CBus **channels)
-> +{
-> +    I2CSlave *mux = i2c_slave_create_simple(bus, type_name, address);
-> +    Pca954xClass *pc = PCA954X_GET_CLASS(mux);
-> +    Pca954xState *pca954x = PCA954X(mux);
-> +
-> +    memcpy(channels, pca954x->bus, pc->nchans * sizeof(channels[0]));
-> +}
-> +
->  static void pca9546_class_init(ObjectClass *klass, void *data)
->  {
->      Pca954xClass *s = PCA954X_CLASS(klass);
-> diff --git a/include/hw/i2c/i2c_mux_pca954x.h b/include/hw/i2c/i2c_mux_pca954x.h
-> index 3dd25ec983..3a676a30a9 100644
-> --- a/include/hw/i2c/i2c_mux_pca954x.h
-> +++ b/include/hw/i2c/i2c_mux_pca954x.h
-> @@ -16,4 +16,17 @@
->   */
->  I2CBus *pca954x_i2c_get_bus(I2CSlave *mux, uint8_t channel);
->  
-> +/**
-> + * Creates an i2c mux and retrieves all of the channels associated with it.
-> + *
-> + * @bus: the i2c bus where the i2c mux resides.
-> + * @address: the address of the i2c mux on the aforementioned i2c bus.
-> + * @type_name: name of the i2c mux type to create.
-> + * @channels: an output parameter specifying where to return the channels.
-> + *
-> + * Returns: None
-> + */
-> +void pca954x_i2c_get_channels(I2CBus *bus, uint8_t address,
-> +                              const char *type_name, I2CBus **channels);
-> +
->  #endif
-> -- 
-> 2.37.0
-> 
-> 
+> > 
+> > See fuji_bmc_i2c_init to understand this point further.
+> > 
+> > The fuji dts is here for reference:
+> > 
+> > https://github.com/torvalds/linux/blob/40cb6373b46/arch/arm/boot/dts/aspeed-bmc-facebook-fuji.dts
+> > 
+> > Signed-off-by: Peter Delevoryas <peter@pjd.dev>
+> > ---
+> >  hw/arm/aspeed.c                  | 29 +++++++++--------------------
+> >  hw/i2c/i2c_mux_pca954x.c         | 10 ++++++++++
+> >  include/hw/i2c/i2c_mux_pca954x.h | 13 +++++++++++++
+> >  3 files changed, 32 insertions(+), 20 deletions(-)
+> > 
+> > diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
+> > index 6fe9b13548..bee8a748ec 100644
+> > --- a/hw/arm/aspeed.c
+> > +++ b/hw/arm/aspeed.c
+> > @@ -793,15 +793,6 @@ static void rainier_bmc_i2c_init(AspeedMachineState *bmc)
+> >      create_pca9552(soc, 15, 0x60);
+> >  }
+> >  
+> > -static void get_pca9548_channels(I2CBus *bus, uint8_t mux_addr,
+> > -                                 I2CBus **channels)
+> > -{
+> > -    I2CSlave *mux = i2c_slave_create_simple(bus, "pca9548", mux_addr);
+> > -    for (int i = 0; i < 8; i++) {
+> > -        channels[i] = pca954x_i2c_get_bus(mux, i);
+> > -    }
+> > -}
+> > -
+> >  #define TYPE_LM75 TYPE_TMP105
+> >  #define TYPE_TMP75 TYPE_TMP105
+> >  #define TYPE_TMP422 "tmp422"
+> > @@ -814,20 +805,18 @@ static void fuji_bmc_i2c_init(AspeedMachineState *bmc)
+> >      for (int i = 0; i < 16; i++) {
+> >          i2c[i] = aspeed_i2c_get_bus(&soc->i2c, i);
+> >      }
+> > -    I2CBus *i2c180 = i2c[2];
+> > -    I2CBus *i2c480 = i2c[8];
+> > -    I2CBus *i2c600 = i2c[11];
+> >  
+> > -    get_pca9548_channels(i2c180, 0x70, &i2c[16]);
+> > -    get_pca9548_channels(i2c480, 0x70, &i2c[24]);
+> > +    pca954x_i2c_get_channels(i2c[2], 0x70, "pca9548", &i2c[16]);
+> > +    pca954x_i2c_get_channels(i2c[8], 0x70, "pca9548", &i2c[24]);
+> >      /* NOTE: The device tree skips [32, 40) in the alias numbering */
+> > -    get_pca9548_channels(i2c600, 0x77, &i2c[40]);
+> > -    get_pca9548_channels(i2c[24], 0x71, &i2c[48]);
+> > -    get_pca9548_channels(i2c[25], 0x72, &i2c[56]);
+> > -    get_pca9548_channels(i2c[26], 0x76, &i2c[64]);
+> > -    get_pca9548_channels(i2c[27], 0x76, &i2c[72]);
+> > +    pca954x_i2c_get_channels(i2c[11], 0x77, "pca9548", &i2c[40]);
+> > +    pca954x_i2c_get_channels(i2c[24], 0x71, "pca9548", &i2c[48]);
+> > +    pca954x_i2c_get_channels(i2c[25], 0x72, "pca9548", &i2c[56]);
+> > +    pca954x_i2c_get_channels(i2c[26], 0x76, "pca9548", &i2c[64]);
+> > +    pca954x_i2c_get_channels(i2c[27], 0x76, "pca9548", &i2c[72]);
+> >      for (int i = 0; i < 8; i++) {
+> > -        get_pca9548_channels(i2c[40 + i], 0x76, &i2c[80 + i * 8]);
+> > +        pca954x_i2c_get_channels(i2c[40 + i], 0x76, "pca9548",
+> > +                                 &i2c[80 + i * 8]);
+> >      }
+> >  
+> >      i2c_slave_create_simple(i2c[17], TYPE_LM75, 0x4c);
+> > diff --git a/hw/i2c/i2c_mux_pca954x.c b/hw/i2c/i2c_mux_pca954x.c
+> > index 3945de795c..6b07804546 100644
+> > --- a/hw/i2c/i2c_mux_pca954x.c
+> > +++ b/hw/i2c/i2c_mux_pca954x.c
+> > @@ -169,6 +169,16 @@ I2CBus *pca954x_i2c_get_bus(I2CSlave *mux, uint8_t channel)
+> >      return pca954x->bus[channel];
+> >  }
+> >  
+> > +void pca954x_i2c_get_channels(I2CBus *bus, uint8_t address,
+> > +                              const char *type_name, I2CBus **channels)
+> > +{
+> > +    I2CSlave *mux = i2c_slave_create_simple(bus, type_name, address);
+> > +    Pca954xClass *pc = PCA954X_GET_CLASS(mux);
+> > +    Pca954xState *pca954x = PCA954X(mux);
+> > +
+> > +    memcpy(channels, pca954x->bus, pc->nchans * sizeof(channels[0]));
+> > +}
+> > +
+> >  static void pca9546_class_init(ObjectClass *klass, void *data)
+> >  {
+> >      Pca954xClass *s = PCA954X_CLASS(klass);
+> > diff --git a/include/hw/i2c/i2c_mux_pca954x.h b/include/hw/i2c/i2c_mux_pca954x.h
+> > index 3dd25ec983..3a676a30a9 100644
+> > --- a/include/hw/i2c/i2c_mux_pca954x.h
+> > +++ b/include/hw/i2c/i2c_mux_pca954x.h
+> > @@ -16,4 +16,17 @@
+> >   */
+> >  I2CBus *pca954x_i2c_get_bus(I2CSlave *mux, uint8_t channel);
+> >  
+> > +/**
+> > + * Creates an i2c mux and retrieves all of the channels associated with it.
+> > + *
+> > + * @bus: the i2c bus where the i2c mux resides.
+> > + * @address: the address of the i2c mux on the aforementioned i2c bus.
+> > + * @type_name: name of the i2c mux type to create.
+> > + * @channels: an output parameter specifying where to return the channels.
+> > + *
+> > + * Returns: None
+> > + */
+> > +void pca954x_i2c_get_channels(I2CBus *bus, uint8_t address,
+> > +                              const char *type_name, I2CBus **channels);
+> > +
+> >  #endif
+> > -- 
+> > 2.37.0
+> > 
+> > 

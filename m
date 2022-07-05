@@ -1,105 +1,119 @@
-Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp3983293lft;
-        Tue, 5 Jul 2022 07:12:42 -0700 (PDT)
-X-Google-Smtp-Source: AGRyM1uyEjPzbEYMTZDb5Ge7W/Vy1rKEQRTu6NXLsNwFWzxxduPMWyd++jajC4J5Hlb9CoFni55V
-X-Received: by 2002:a05:620a:2845:b0:6a9:b149:8d31 with SMTP id h5-20020a05620a284500b006a9b1498d31mr23174163qkp.86.1657030361968;
-        Tue, 05 Jul 2022 07:12:41 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1657030361; cv=none;
+Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp4070212lft;
+        Tue, 5 Jul 2022 09:16:21 -0700 (PDT)
+X-Google-Smtp-Source: AGRyM1uhlq9JJFPQUVopWLaw0mlt6T2QTNGiwMpix0OHz3AM4VqUy2+uagM06WX2ZCCecnIbV0ex
+X-Received: by 2002:a05:622a:1182:b0:31d:31bf:527d with SMTP id m2-20020a05622a118200b0031d31bf527dmr22638849qtk.288.1657037781646;
+        Tue, 05 Jul 2022 09:16:21 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1657037781; cv=none;
         d=google.com; s=arc-20160816;
-        b=mfoS54D11EkSoHCWCdmFeZ4Nf1gn+/9l4vkVc4HikuS/EdwZBbAL+EBJ/JqjWB3qMx
-         x/C5VueTSLW95CZr5LTsBFKm3nHZiJ+DlkTcvYbV9fMmY9Po0UKKn+oJKnpO7xTNwMKR
-         esW0jrYf9BpccwUwEuK2qZf+p87nGPI4tQ7kBnpnh35dOPrAtvjbFJdCJq/P603Wel0z
-         Fb2dmbO1xS7Az4jCzEzi8LHIwaukKiMM3rfoE9wI9SGvQLuLAfVeM1jdi5XqHVxEbPgn
-         ptLp6z8YkEKq8BDkr+Le2iOnA/4l7AFed1fR+QAQRb3+MAa/zAiElTSO04cOOxpfBelh
-         n/dw==
+        b=VdOoa5deHebWHc9NtM78TTPcQlwvnKy3LKLb5vwFHDXNvGBxjd2vRCbZW6ok0wGYHG
+         G4LoVSYMUXjZu7hrTcivhPzmsFGHFPmCaCWeLwkLXadLWTCGzZ+8ICoIV8lrGoUMeNtd
+         Dt2ZHtM8l6wnMtvwN+QpAfPbZgSFDnlFnGdyjVm1mC3BNtMmfsLD3tba8BXQKTvitk15
+         Y61xVVllHgPVJ4KAT1kefhHzMERDtquecX1nwETgX7384CyrbdOayeChSjWTwxkJ4Ugr
+         IhRQUhpwGsm3tbKXmBYbOvDYK6I85VAJaQ8Xo90NSBI4IEnuVntgvU2DTsY4rIz1NfRF
+         MQ8w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=UqsobVuHM5F53h11JRDooFYJPVur6KDy5QXdIciqs7I=;
-        b=CPA8n82pnFF1TbJlX+dO8UxDODJ5VNxeP21S7ffkNaQ8OW0cq7VpCZthVGAcvnJTqs
-         XDD1TB8s52GEHpAZc1sWGzxOeXGWdjK4VK5QLB/92RwrK+U7xI2/2wSkCjoZ2XTU6d6g
-         vaK5hvtdZou0UfakdhC2g4bgfsqaYS3v7uCPdkuPVzRxM6F38/0NegS+IlY50rh0LzOJ
-         gWlyuVh7yaTFtlcBwkQWy72hZqT6ycuJJFoMYQjLEmGKpBWKTwinv+CASXqnb7bDa6Tp
-         x37FwpRXhN7CXdJZ0/Y054Y6n32KT0gR9J/sw4459Gv5BTWvdcT9S7SUflT0JIH3lODa
-         qSpQ==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
+        bh=3iiwX4Zb2vPEjyqXjWU9F/LncU1CSVkWi4099Dtqlpg=;
+        b=jI18fZMx8wOE2rNwmb0IivLzry7DxDHnFiLxPPTjdnaMgYHLQrBGPqGjZVdiJ3RD/v
+         TlkJHZJgk8YF71Uf9B3Wqf0mDILg4Th9TxRwd2usV8kw64DlVVLetrsSjjHktbswBkCP
+         RNgingtQVdEdGPx50V4xz8I8LXF5iSn8as624Z9wV3vZR1F+ZS84xUVkipdllJIsynXw
+         fBGCXvJjJLhLnSzvf90t43gk/zmkxKid5mz07OUkeeckjOdpXDjEA3UuVG0tbzTvqB0J
+         aS7I1EmbmwrvgSGXXnRDn3TE+ZjdxRtzvfr/p5IItybLvNepL0iwHs+YylJUVOqt1gFx
+         Qwyg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=yxv6JOV9;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=ZeogUmLq;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id gw8-20020a0562140f0800b004622a2cd4c2si18270628qvb.66.2022.07.05.07.12.41
+        by mx.google.com with ESMTPS id x22-20020a05620a0b5600b006b24f854d89si9217226qkg.626.2022.07.05.09.16.21
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 05 Jul 2022 07:12:41 -0700 (PDT)
+        Tue, 05 Jul 2022 09:16:21 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=yxv6JOV9;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=ZeogUmLq;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:33690 helo=lists1p.gnu.org)
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:35258 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1o8jI9-0000hg-GF
-	for alex.bennee@linaro.org; Tue, 05 Jul 2022 10:12:41 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:56152)
+	id 1o8lDp-00031L-2U
+	for alex.bennee@linaro.org; Tue, 05 Jul 2022 12:16:21 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:60780)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1o8jHx-0000f5-MV
- for qemu-arm@nongnu.org; Tue, 05 Jul 2022 10:12:29 -0400
-Received: from mail-yw1-x1136.google.com ([2607:f8b0:4864:20::1136]:39532)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1o8jHv-0001ik-03
- for qemu-arm@nongnu.org; Tue, 05 Jul 2022 10:12:28 -0400
-Received: by mail-yw1-x1136.google.com with SMTP id
- 00721157ae682-31c9b70c382so47695077b3.6
- for <qemu-arm@nongnu.org>; Tue, 05 Jul 2022 07:12:26 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=UqsobVuHM5F53h11JRDooFYJPVur6KDy5QXdIciqs7I=;
- b=yxv6JOV9rlORgTfxHCQc745Aw2SDyLvgy0ZwEpQRO20/j9Ojxb3NGWJe91/GC3YleN
- yO1Bils3vch93oxVVqCIkikPObLBlhsbFR/rHwY2JI6PoQZRV/kUUr1hDBcFctLO5My1
- +x+cIEd0XQfP8ldTfAuJ9KPR7dMlw4BqmQezHIJJB6F0YF6NJKt4KrXmbLzQPLKR7hHl
- MYYBghi/ioD7T1YVPYCzs2dKqRHNEtSE5lKkDFUx9jZHh0k3dO+cYKWLdCGfXf4t4Ejv
- 7IeWh4YE0uIF5dOTn94Nr3ytAmpznUHIHZv2YqA9meol9uIrBRoVllfbQRDzcbDpPrUa
- QIeQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=UqsobVuHM5F53h11JRDooFYJPVur6KDy5QXdIciqs7I=;
- b=yx0ymaPOwmlXrUJUE8FZorNI8Kw8milVCMQ5nVp91+kSCv7/k/AFJWc1zBfr55lWY6
- IsjHzCpiclR/wT+9VGpBHx6vDQ3EBSiCDy2jPljlLq6yRH2vaFsKVcUDiZBJxXvckdAa
- kHkMJaDYfOYqEOeqQ5gGq0346UyXkoWKECqqDhmzi0NesGzRFq3s5IKMkSCLRwBwWx3L
- t5X2w3wpiqvdj+M16HMrqQZb88lz+JTV5zt3gTG5o4MGH7p2SLOX96Ji5EPC8EaFV9BG
- LVHlm13N+bwlDJNCLCaGKgMrkTbBDufIuiBpsXBnWE0XEtzYy4cvy/hTAVE5ayHCNDrE
- T1eQ==
-X-Gm-Message-State: AJIora8ziDzPT0jk66IcbhG6KRGpTWCYkogzBxVpAUW+Ii3Y2vhOkO4g
- sHN/Fj5HGuGPwEvSEOUBmsQ4/Wxny71QbUMCo8HfGQ==
-X-Received: by 2002:a81:6a85:0:b0:31c:8624:b065 with SMTP id
- f127-20020a816a85000000b0031c8624b065mr17948485ywc.64.1657030345691; Tue, 05
- Jul 2022 07:12:25 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <afaria@redhat.com>) id 1o8lDL-0002xz-Hr
+ for qemu-arm@nongnu.org; Tue, 05 Jul 2022 12:15:52 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:53083)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <afaria@redhat.com>) id 1o8lDH-0005eo-Gn
+ for qemu-arm@nongnu.org; Tue, 05 Jul 2022 12:15:51 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1657037746;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=3iiwX4Zb2vPEjyqXjWU9F/LncU1CSVkWi4099Dtqlpg=;
+ b=ZeogUmLqX1qORZKDJc1nqjTs4g+tts7a6pkzjo8cIblv3SpMioN2Cv/WBPhNJXKIXQlpIB
+ W3PSaJW2B36WZeTTKqy/mNJfpVx4WeBSS7rBTqmzqNG7W6h5x2BkRAQoeSYu6f/7cnR1ea
+ hcd8Dmdh5xlzZVLksJHxo5u81WCdCGc=
+Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
+ [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-495-dwMQ7LhXN2aPKo70CQIF7A-1; Tue, 05 Jul 2022 12:15:43 -0400
+X-MC-Unique: dwMQ7LhXN2aPKo70CQIF7A-1
+Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.7])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id B6C65811E9B;
+ Tue,  5 Jul 2022 16:15:41 +0000 (UTC)
+Received: from localhost.localdomain (unknown [10.39.192.13])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id A2CB4140EBE4;
+ Tue,  5 Jul 2022 16:15:35 +0000 (UTC)
+From: Alberto Faria <afaria@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: Beniamino Galvani <b.galvani@gmail.com>,
+ Juan Quintela <quintela@redhat.com>,
+ Vladimir Sementsov-Ogievskiy <v.sementsov-og@mail.ru>,
+ Eric Blake <eblake@redhat.com>, Niek Linnenbank <nieklinnenbank@gmail.com>,
+ Palmer Dabbelt <palmer@dabbelt.com>, Laurent Vivier <laurent@vivier.eu>,
+ Stefan Weil <sw@weilnetz.de>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ Stefan Hajnoczi <stefanha@redhat.com>,
+ Alistair Francis <alistair@alistair23.me>, qemu-ppc@nongnu.org,
+ Fam Zheng <fam@euphon.net>, Jeff Cody <codyprime@gmail.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+ Kevin Wolf <kwolf@redhat.com>,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
+ David Gibson <david@gibson.dropbear.id.au>,
+ "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
+ Joel Stanley <joel@jms.id.au>, Bin Meng <bin.meng@windriver.com>,
+ Emanuele Giuseppe Esposito <eesposit@redhat.com>,
+ John Snow <jsnow@redhat.com>, Andrew Jeffery <andrew@aj.id.au>,
+ qemu-riscv@nongnu.org, Greg Kurz <groug@kaod.org>,
+ Daniel Henrique Barboza <danielhb413@gmail.com>,
+ Peter Maydell <peter.maydell@linaro.org>, Hanna Reitz <hreitz@redhat.com>,
+ qemu-block@nongnu.org, "Denis V. Lunev" <den@openvz.org>,
+ qemu-arm@nongnu.org, Alberto Faria <afaria@redhat.com>
+Subject: [PATCH v2 00/18] Make block-backend-io.h API more consistent
+Date: Tue,  5 Jul 2022 17:15:08 +0100
+Message-Id: <20220705161527.1054072-1-afaria@redhat.com>
+Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
-References: <20220703082419.770989-1-richard.henderson@linaro.org>
- <20220703082419.770989-7-richard.henderson@linaro.org>
-In-Reply-To: <20220703082419.770989-7-richard.henderson@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 5 Jul 2022 15:12:14 +0100
-Message-ID: <CAFEAcA8WN6DkZXFEXZFKQ3gN3GySCTVswhLiTSoeHvSCgjFtpA@mail.gmail.com>
-Subject: Re: [PATCH 06/62] target/arm: Use PageEntryExtra for BTI
-To: Richard Henderson <richard.henderson@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1136;
- envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x1136.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+Content-Transfer-Encoding: 8bit
+X-Scanned-By: MIMEDefang 2.85 on 10.11.54.7
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=afaria@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -28
+X-Spam_score: -2.9
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.082,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -114,23 +128,92 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ZN98NeVert2T
+X-TUID: GQ8Vkjx6pmY2
 
-On Sun, 3 Jul 2022 at 09:27, Richard Henderson
-<richard.henderson@linaro.org> wrote:
->
-> Add a bit to ARMCacheAttrs to hold the guarded bit between
-> get_phys_addr_lpae and arm_cpu_tlb_fill, then put the bit
-> into PageEntryExtra.
->
-> In is_guarded_page, use probe_access_extra instead of just
-> guessing that the tlb entry is still present.  Also handles
-> the FIXME about executing from device memory.
->
-> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
-> ---
+Adjust existing pairs of non-coroutine and coroutine functions to share
+the same calling convention, and add non-coroutine/coroutine
+counterparts where they don't exist.
 
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+Also make the non-coroutine versions generated_co_wrappers.
 
-thanks
--- PMM
+This series sits on top of "[PATCH v5 00/10] Implement
+bdrv_{pread,pwrite,pwrite_sync,pwrite_zeroes}() using
+generated_co_wrapper":
+
+    https://lore.kernel.org/qemu-devel/20220609152744.3891847-1-afaria@redhat.com/
+
+Based-on: <20220609152744.3891847-1-afaria@redhat.com>
+
+v2:
+  - Avoid using variables named 'len' or similar to hold return values
+    from blk_{pread,pwrite}(), as they don't return a length anymore.
+  - Drop variables in_ret and out_ret in qemu-img.c:img_dd().
+  - Initialize buf in test_sync_op_blk_pwritev_part().
+  - Keep blk_co_copy_range() in the "I/O API functions" section of
+    include/sysemu/block-backend-io.h.
+
+Alberto Faria (18):
+  block: Make blk_{pread,pwrite}() return 0 on success
+  block: Add a 'flags' param to blk_pread()
+  block: Change blk_{pread,pwrite}() param order
+  block: Make 'bytes' param of blk_{pread,pwrite}() an int64_t
+  block: Make blk_co_pwrite() take a const buffer
+  block: Implement blk_{pread,pwrite}() using generated_co_wrapper
+  block: Add blk_{preadv,pwritev}()
+  block: Add blk_[co_]preadv_part()
+  block: Export blk_pwritev_part() in block-backend-io.h
+  block: Change blk_pwrite_compressed() param order
+  block: Add blk_co_pwrite_compressed()
+  block: Implement blk_pwrite_zeroes() using generated_co_wrapper
+  block: Implement blk_pdiscard() using generated_co_wrapper
+  block: Implement blk_flush() using generated_co_wrapper
+  block: Add blk_co_ioctl()
+  block: Add blk_co_truncate()
+  block: Reorganize some declarations in block-backend-io.h
+  block: Remove remaining unused symbols in coroutines.h
+
+ block.c                           |  10 +-
+ block/block-backend.c             | 150 ++++++++++++------------------
+ block/commit.c                    |   4 +-
+ block/coroutines.h                |  44 ---------
+ block/crypto.c                    |   2 +-
+ block/export/fuse.c               |   4 +-
+ block/meson.build                 |   1 +
+ block/parallels.c                 |   2 +-
+ block/qcow.c                      |  14 +--
+ block/qcow2.c                     |   4 +-
+ block/qed.c                       |   8 +-
+ block/vdi.c                       |   4 +-
+ block/vhdx.c                      |  20 ++--
+ block/vmdk.c                      |  10 +-
+ block/vpc.c                       |  12 +--
+ hw/arm/allwinner-h3.c             |   2 +-
+ hw/arm/aspeed.c                   |   2 +-
+ hw/block/block.c                  |   2 +-
+ hw/block/fdc.c                    |  20 ++--
+ hw/block/hd-geometry.c            |   2 +-
+ hw/block/m25p80.c                 |   2 +-
+ hw/block/nand.c                   |  47 +++++-----
+ hw/block/onenand.c                |  32 +++----
+ hw/block/pflash_cfi01.c           |   4 +-
+ hw/block/pflash_cfi02.c           |   4 +-
+ hw/ide/atapi.c                    |   4 +-
+ hw/misc/mac_via.c                 |   6 +-
+ hw/misc/sifive_u_otp.c            |  14 +--
+ hw/nvram/eeprom_at24c.c           |   8 +-
+ hw/nvram/spapr_nvram.c            |  16 ++--
+ hw/nvram/xlnx-bbram.c             |   4 +-
+ hw/nvram/xlnx-efuse.c             |   4 +-
+ hw/ppc/pnv_pnor.c                 |   6 +-
+ hw/sd/sd.c                        |   4 +-
+ include/sysemu/block-backend-io.h |  97 +++++++++++--------
+ migration/block.c                 |   8 +-
+ nbd/server.c                      |   8 +-
+ qemu-img.c                        |  41 ++++----
+ qemu-io-cmds.c                    |  20 ++--
+ tests/unit/test-block-iothread.c  | 141 ++++++++++++++++++++++++++--
+ 40 files changed, 431 insertions(+), 356 deletions(-)
+
+-- 
+2.36.1
+

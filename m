@@ -1,250 +1,206 @@
-Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp3750559lft;
-        Tue, 5 Jul 2022 00:59:21 -0700 (PDT)
-X-Google-Smtp-Source: AGRyM1ufjE7kgm7CZ4t+8GnSZ5Hs9oAWJ81vz/ILi09AAV9bP6zgwBm+hYfzaiy0hlcIRpzROsan
-X-Received: by 2002:a81:3a8c:0:b0:31c:9afa:a2df with SMTP id h134-20020a813a8c000000b0031c9afaa2dfmr9478068ywa.281.1657007961210;
-        Tue, 05 Jul 2022 00:59:21 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1657007961; cv=none;
+Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp3765668lft;
+        Tue, 5 Jul 2022 01:34:11 -0700 (PDT)
+X-Google-Smtp-Source: AGRyM1vD04QsBKSD4kDEzbSNF7SYkDaqB7BvbPzb0mxCqyuhQ99vuEqqGYmd67bffi/prw/CnO7g
+X-Received: by 2002:a05:622a:4c8:b0:31d:4bfc:a9b5 with SMTP id q8-20020a05622a04c800b0031d4bfca9b5mr8001279qtx.68.1657010051009;
+        Tue, 05 Jul 2022 01:34:11 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1657010051; cv=none;
         d=google.com; s=arc-20160816;
-        b=R/ZCFExUrvm7FO+yfK5uWt2qtvB9fUGnM8Lfo5/xACReJCTuaVENV792j+UYGRa6Z+
-         okNZjynOHc1yw6uehkPKoC56h6bjk3J44GDmIwe8BtUq5gRgVqXxqsbkOeH4GxjhTCGV
-         /8I5Rwm+digE05eb+huNtO+DVG+qL8mN6dIp+fgl5BFlTyRTFrBvXA3O2Qk/oW/vFXII
-         5c110qiqOVc666EeGvE3Rmcj64TEW6eRBjf8H6rmzEmHJi/ErXURgIVcf3x1Kwt62uMG
-         rVhcQAT9+lLsKka3pLlWmEbQbNaj18pJmwdZ6PJFYWsiiCLg4tkV70eeHbMYY5MNIfdk
-         r41w==
+        b=xoJsB84dMSTO7kfU3i91c/0UCLIZsmKDXmENAp3PaCVJ2zvFaX/7fEQPBuqIbkF5Ge
+         Yfs5IIW6zP1fm4Wcl6J6j79iR0TidSWlWRDa5weyrqZGFWa1v1WWxv3lWXWC4i9i3qJa
+         W2sfr1MlGPmE5RThzlHwl1yG/H6rkDFW+sO3YgrHN7cHOvOzhh/uxm9jSLUQYL8vWXCW
+         i4sEtw7rPvfKD9mNrmll2TKmYGyCNFQrRkxkpk6A3/2G+5QRqXU/vF+eMZTJeYGkuU8b
+         YkrTQ+ne8C/szapeAr+GVOMdm3+st1HlOvKE+YQF7cGNQlRxP9ryNbUH5rTvRxcKBalI
+         YVAg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:in-reply-to
-         :content-transfer-encoding:content-disposition:mime-version
-         :references:message-id:subject:cc:to:from:date:feedback-id
-         :dkim-signature:dkim-signature;
-        bh=UPLQcbn7cs+U2CUyLFHeHmGYlAQ7n4zVGDasNdAocMc=;
-        b=l2cXwxtGy9MRoawNfwN0zb23GlyVtE6b2XMtxq665GkTdlr+UWfFMQOhwEqQYJDNqb
-         f0/GZ/Rsk8S/ajwI/Z4EK8G7Bo7Eo11SwrW4F07Byr7t4mSWkNEB2HT4gInaHFg0qncw
-         naQ4HJ5SpSA8roBU7R83TT9J9h+3nWE44vPxNtg0T7ppDkxwivcrpgVn/mwTpebLyO9A
-         H1LkW/lVzlJDGfsimPW7jOMondxV+Y9Kb/10zPon6wGy4Zv8W3x//quV6NIonwDNDT2r
-         VWeuoGqRfg45oijoNckhkyuAXugGesAEeo00KEfPi4xXJahJ3b4klS57/XBoGZR3Fg5f
-         Mw4Q==
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=yHUPEM7gJ+wdHtbdsYxoMIaCeLyiGHSP0yAN6tjEB8U=;
+        b=A1RFaJlO89MFrGcZFykIqUg8YhjA4VoobcthdJsBdme18qg7OwSsRInX1EsKSpth1I
+         kjEJmxRD49+hsX8q+pWBUVTC5EFwwlhVW4GttrkuzBJwVN+xg2+UehRraEeN6XKu2/TF
+         zPfptXdjE6fCa1SB+x8ZXZtyKMQFvHVTKl4kOfzkxmqzba7O6goC5c52yW9dz1rRqrai
+         q5dN3O2WgguNtxx0VXCSqi4kqz5lcy5DEj2M1RR4DA5Gbk/FpOQeVH1h3MpLTLG22ZoF
+         E57ZyH4PsK0NJJ2FGq3Zww/EP2vt7DWHpApEkxH5DwU/FDsY5B4uAJdd/299S+LDNgOu
+         n4pg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@pjd.dev header.s=fm1 header.b=SfS6mdJT;
-       dkim=fail header.i=@messagingengine.com header.s=i9e814621.fm2 header.b=fOqUSiRI;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@linaro.org header.s=google header.b=Sl6DLSoj;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v16-20020a81b810000000b00317cc136fa3si47740677ywe.319.2022.07.05.00.59.20
+        by mx.google.com with ESMTPS id bs43-20020a05620a472b00b006af23b50836si16408301qkb.83.2022.07.05.01.34.10
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 05 Jul 2022 00:59:21 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 05 Jul 2022 01:34:10 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@pjd.dev header.s=fm1 header.b=SfS6mdJT;
-       dkim=fail header.i=@messagingengine.com header.s=i9e814621.fm2 header.b=fOqUSiRI;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:43576 helo=lists1p.gnu.org)
+       dkim=pass header.i=@linaro.org header.s=google header.b=Sl6DLSoj;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:45462 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1o8dSq-0001BB-Ha
-	for alex.bennee@linaro.org; Tue, 05 Jul 2022 03:59:20 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:57726)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1o8e0Y-0000vS-FS
+	for alex.bennee@linaro.org; Tue, 05 Jul 2022 04:34:10 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:35288)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter@pjd.dev>)
- id 1o8dSP-0001A0-KR; Tue, 05 Jul 2022 03:58:54 -0400
-Received: from wnew1-smtp.messagingengine.com ([64.147.123.26]:43709)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter@pjd.dev>)
- id 1o8dSJ-0006ZX-7n; Tue, 05 Jul 2022 03:58:53 -0400
-Received: from compute1.internal (compute1.nyi.internal [10.202.2.41])
- by mailnew.west.internal (Postfix) with ESMTP id 9CD402B05950;
- Tue,  5 Jul 2022 03:58:44 -0400 (EDT)
-Received: from mailfrontend2 ([10.202.2.163])
- by compute1.internal (MEProxy); Tue, 05 Jul 2022 03:58:45 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=pjd.dev; h=cc:cc
- :content-transfer-encoding:content-type:date:date:from:from
- :in-reply-to:in-reply-to:message-id:mime-version:references
- :reply-to:sender:subject:subject:to:to; s=fm1; t=1657007924; x=
- 1657011524; bh=UPLQcbn7cs+U2CUyLFHeHmGYlAQ7n4zVGDasNdAocMc=; b=S
- fS6mdJTK5iL+ffy977ElWz9Ro7w0eZ6Yn66vgVyfs+L/wsO4u3lJO6KEfHwMDq3M
- LbOMW+AJUPt8bE4ehCn1KswwqKCJE7TMyhilRv/1bp39aOuPMF6qFPh1iciqL7YE
- RrTS6M20ugleDzaEwZ8cYtx+MIWc2bb5nL6n0V/ORGV0uMI/6iOFSW/mnVchz3DO
- +qE7fc/re1iz/C+Qob0I7lVZW4JUHpxo/unNOckRjzYBEe9j4DCils3J+ebnB+0R
- 9+ZB/o0gFeIepFPHH2X5z9K76fQ5w1sZUkY4jxHpIFT18QtLhGYytHGPGur0ynO5
- 6H+zhJ4Axz3XRRthpRNQQ==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
- messagingengine.com; h=cc:cc:content-transfer-encoding
- :content-type:date:date:feedback-id:feedback-id:from:from
- :in-reply-to:in-reply-to:message-id:mime-version:references
- :reply-to:sender:subject:subject:to:to:x-me-proxy:x-me-proxy
- :x-me-sender:x-me-sender:x-sasl-enc; s=i9e814621.fm2; t=
- 1657007924; x=1657011524; bh=UPLQcbn7cs+U2CUyLFHeHmGYlAQ7n4zVGDa
- sNdAocMc=; b=fOqUSiRIHFDRem6ytbIwMlvzLdFTlo+aj11yR/g2LOE+bNwKMYm
- rEMFTlJo69D+ih8dcVX1bCTS9Atf/8oxjDt1WtcKHSFQDe33AoMwiP4svIjqE0yv
- YWMHmcxMAQX2WG4VG61ayStNN9koxCrlV9eOmFoIlyt16ARHIiXADw/VPi5PzxPe
- gKDP14QB2inFMSvndqS1cO5Imayv4snb0U77GLdcyBsU2c18lnlcGTsjr+OX5SNO
- NrzR/HzrhSgAd0khIrDAiNlhZQ0f7sZF64MgsCmE/H1YPrjX5y6cztBckyboVA30
- +y2H3fr/ZlWPmKY1Ao7fSYlLWY/IN4t1e6w==
-X-ME-Sender: <xms:M-_DYqNrGwFqEwtPpAdhSB7uEokghQ8fTJM76j43GtuzwsDJrl9WVA>
- <xme:M-_DYo9im_dE9ceJk6VCK9_qNIfVMuHpwSjz-tETGCBiPhmhMPjQ3cS9BfmJeR-5K
- 1nFaztcSqmImmjHbSg>
-X-ME-Received: <xmr:M-_DYhTJ6dxXtleOjp7xHdqv5WrXYjBl0zPdmCsvxLxjhxEkw0H0_ToHPflKZjl2sypDyLChgOsc7mTT4_2_RkFfmPBKsYs>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvfedrudeitddguddvgecutefuodetggdotefrod
- ftvfcurfhrohhfihhlvgemucfhrghsthforghilhdpqfgfvfdpuffrtefokffrpgfnqfgh
- necuuegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmd
- enucfjughrpeffhffvvefukfhfgggtugfgjgesthekredttddtudenucfhrhhomheprfgv
- thgvrhcuffgvlhgvvhhorhihrghsuceophgvthgvrhesphhjugdruggvvheqnecuggftrf
- grthhtvghrnhephfeltdejhfdvudehgfdutefgfeduhfevffefveehteelteelgfdtvedv
- tdfgveeunecuffhomhgrihhnpehmvghtrgdrtghomhdpohhpvghntghomhhpuhhtvgdroh
- hrghenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhgrihhlfhhrohhmpehp
- vghtvghrsehpjhgurdguvghv
-X-ME-Proxy: <xmx:M-_DYqsBhhVTF-M7bKSudUJ-KA0yB4mCmj4Of12xkK3t9mbT_gD2rA>
- <xmx:M-_DYiccdp_v0VRahw3FnHdpo2K6u_u88rKzwKkHPmjs3tc4tdJfUA>
- <xmx:M-_DYu2ib0mnE77ithEnInW-ceII-hFS67tgkF3illIlkelpf0TAcg>
- <xmx:M-_DYh4sgnCEcFgCRgaE4l39DX4d1HGXYzkGjsg7Le9pAcRKFLFaj0qMpW0>
-Feedback-ID: i9e814621:Fastmail
-Received: by mail.messagingengine.com (Postfix) with ESMTPA; Tue,
- 5 Jul 2022 03:58:42 -0400 (EDT)
-Date: Tue, 5 Jul 2022 00:58:41 -0700
-From: Peter Delevoryas <peter@pjd.dev>
-To: Joel Stanley <joel@jms.id.au>
-Cc: =?iso-8859-1?Q?C=E9dric?= Le Goater <clg@kaod.org>,
- Peter Maydell <peter.maydell@linaro.org>, Andrew Jeffery <andrew@aj.id.au>,
- QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>
-Subject: Re: [PATCH 5/8] aspeed: Add fby35 skeleton
-Message-ID: <YsPvMUfG6CzK9LSz@pdel-mbp>
-References: <20220704215457.38332-1-peter@pjd.dev>
- <20220704215457.38332-5-peter@pjd.dev>
- <CACPK8XfcZM+9sk4f=fCtW2zVioN0sgoT=o+dF62U=AMZuUsL6g@mail.gmail.com>
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1o8dlx-0007P5-2g
+ for qemu-devel@nongnu.org; Tue, 05 Jul 2022 04:19:05 -0400
+Received: from mail-yb1-xb32.google.com ([2607:f8b0:4864:20::b32]:33658)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1o8dls-0001me-9S
+ for qemu-devel@nongnu.org; Tue, 05 Jul 2022 04:19:04 -0400
+Received: by mail-yb1-xb32.google.com with SMTP id 76so4924287ybd.0
+ for <qemu-devel@nongnu.org>; Tue, 05 Jul 2022 01:18:59 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=yHUPEM7gJ+wdHtbdsYxoMIaCeLyiGHSP0yAN6tjEB8U=;
+ b=Sl6DLSojWOIU3jwCkr79I3BBkdUGdk6mxm9X1OPytjiYynt6Y85nNKfUiWdDT72o3j
+ zX+MLB3tXpRsOxNk+o3HRWJ3lw83OvVF6Eo7qnqSZL8pHN1ZxLOtXzSzJ+zdihc+GMgM
+ l+cx8LMfUSbXw4+e8ix362LJcg2YDAhbn6ghE7q7Mqk1YIzNTWPq0IwWZFm0HwyorcmW
+ MM0UHGJTusNbvinHf08cL1/71dsv6j6wGPmxd89JvjhtNGuae64EjsU2LSg6ks0WLx7j
+ ArUJNNi0RYe3aMj1HCx9Gl9U6bdpIJhZxpfMJl3YuGo64Ith89KTedHVKXoKcK2udNVW
+ hDNQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=yHUPEM7gJ+wdHtbdsYxoMIaCeLyiGHSP0yAN6tjEB8U=;
+ b=UjJz2qsEHCe0mTWT+2GzS9e2p0Yhiiw+3oWaAU0qEOmibOY4OsQ76+eg0qTTWabbCE
+ oZhIglcRpXHMNLpMQn8T4V8q8G/rBT9draas/y2Snau4zlFjOZJs5aj6TxDfA26OMd76
+ wdeo02HnMXFkw1Go+Zdv7OY5XxTivGMpwdnPr4EkPFIYxJS738v0CS7bM4+qPkD7Ssym
+ MY6xREEC5S1fhoLsAiwKbRDnax4mXvWAOqmg7POYMiS+IrhUsJXX0xDh8B8XDc+nkeV3
+ /HKFZd5qJzu1EzuuCZKfGUDQeeVddBtGHXbW/Ln/JBIuQolJNHLYQQ/SUPLaMj4LhIam
+ QoEg==
+X-Gm-Message-State: AJIora8bhEZnx3FesWTgICVYAMz1UpgnvgqrceXKOsXTru0sEsJmV62I
+ +JMNYp9Cp880qfAA2kXlfdT3bLHk8WjLCUkunWTZ9w==
+X-Received: by 2002:a5b:e87:0:b0:66d:4669:9871 with SMTP id
+ z7-20020a5b0e87000000b0066d46699871mr36084343ybr.288.1657009139187; Tue, 05
+ Jul 2022 01:18:59 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <CACPK8XfcZM+9sk4f=fCtW2zVioN0sgoT=o+dF62U=AMZuUsL6g@mail.gmail.com>
-Received-SPF: pass client-ip=64.147.123.26; envelope-from=peter@pjd.dev;
- helo=wnew1-smtp.messagingengine.com
-X-Spam_score_int: -12
-X-Spam_score: -1.3
-X-Spam_bar: -
-X-Spam_report: (-1.3 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+References: <20220629124026.1077021-1-mark.cave-ayland@ilande.co.uk>
+ <20220629124026.1077021-35-mark.cave-ayland@ilande.co.uk>
+ <CAFEAcA-D6GhmGA=Det6PGvXC-sup7pKa3KoBsUHtBkK5e1K_Eg@mail.gmail.com>
+ <becf7d89-3d40-b40a-aeeb-9d99c79ef7a0@ilande.co.uk>
+In-Reply-To: <becf7d89-3d40-b40a-aeeb-9d99c79ef7a0@ilande.co.uk>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 5 Jul 2022 09:18:21 +0100
+Message-ID: <CAFEAcA-uTpGWoRqDOwW+W8gifbGrywt-ofY31RiiCvwEb0Yo+w@mail.gmail.com>
+Subject: Re: [PATCH 34/40] lasips2: update VMStateDescription for LASIPS2
+ device
+To: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
+Cc: richard.henderson@linaro.org, deller@gmx.de, svens@stackframe.org, 
+ mst@redhat.com, pbonzini@redhat.com, hpoussin@reactos.org, 
+ aleksandar.rikalo@syrmia.com, f4bug@amsat.org, qemu-devel@nongnu.org, 
+ qemu-arm@nongnu.org
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b32;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yb1-xb32.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FROM_FMBLA_NEWDOM=1.498, RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: DLt9ldCqTNE+
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: dyt7Kh6Enex3
 
-On Tue, Jul 05, 2022 at 06:53:43AM +0000, Joel Stanley wrote:
-> On Mon, 4 Jul 2022 at 21:55, Peter Delevoryas <peter@pjd.dev> wrote:
+On Tue, 5 Jul 2022 at 07:48, Mark Cave-Ayland
+<mark.cave-ayland@ilande.co.uk> wrote:
+>
+> On 04/07/2022 14:38, Peter Maydell wrote:
+>
+> > On Wed, 29 Jun 2022 at 13:41, Mark Cave-Ayland
+> > <mark.cave-ayland@ilande.co.uk> wrote:
+> >>
+> >> Since this series has already introduced a migration break for the HPPA B160L
+> >> machine, we can use this opportunity to improve the VMStateDescription for
+> >> the LASIPS2 device.
+> >>
+> >> Add the new int_status field to the VMStateDescription and remodel the ports
+> >> as separate VMSTATE_STRUCT instances.
+> >>
+> >> Signed-off-by: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
+> >> ---
+> >>   hw/input/lasips2.c | 25 +++++++++++++++++++------
+> >>   1 file changed, 19 insertions(+), 6 deletions(-)
+> >>
+> >> diff --git a/hw/input/lasips2.c b/hw/input/lasips2.c
+> >> index e602e3c986..ea7c07a2ba 100644
+> >> --- a/hw/input/lasips2.c
+> >> +++ b/hw/input/lasips2.c
+> >> @@ -35,15 +35,28 @@
+> >>   #include "qapi/error.h"
+> >>
+> >>
+> >> +static const VMStateDescription vmstate_lasips2_port = {
+> >> +    .name = "lasips2-port",
+> >> +    .version_id = 1,
+> >> +    .minimum_version_id = 1,
+> >> +    .fields = (VMStateField[]) {
+> >> +        VMSTATE_UINT8(control, LASIPS2Port),
+> >> +        VMSTATE_UINT8(buf, LASIPS2Port),
+> >> +        VMSTATE_BOOL(loopback_rbne, LASIPS2Port),
+> >> +        VMSTATE_END_OF_LIST()
+> >> +    }
+> >> +};
+> >> +
+> >>   static const VMStateDescription vmstate_lasips2 = {
+> >>       .name = "lasips2",
+> >> -    .version_id = 0,
+> >> -    .minimum_version_id = 0,
+> >> +    .version_id = 1,
+> >> +    .minimum_version_id = 1,
+> >>       .fields = (VMStateField[]) {
+> >> -        VMSTATE_UINT8(kbd_port.parent_obj.control, LASIPS2State),
+> >> -        VMSTATE_UINT8(kbd_port.parent_obj.id, LASIPS2State),
+> >> -        VMSTATE_UINT8(mouse_port.parent_obj.control, LASIPS2State),
+> >> -        VMSTATE_UINT8(mouse_port.parent_obj.id, LASIPS2State),
+> >> +        VMSTATE_UINT8(int_status, LASIPS2State),
+> >> +        VMSTATE_STRUCT(kbd_port.parent_obj, LASIPS2State, 1,
+> >> +                       vmstate_lasips2_port, LASIPS2Port),
+> >> +        VMSTATE_STRUCT(mouse_port.parent_obj, LASIPS2State, 1,
+> >> +                       vmstate_lasips2_port, LASIPS2Port),
+> >>           VMSTATE_END_OF_LIST()
+> >>       }
+> >>   };
 > >
-> > Signed-off-by: Peter Delevoryas <peter@pjd.dev>
-> > Reviewed-by: Cédric Le Goater <clg@kaod.org>
-> > ---
-> >  MAINTAINERS        |  1 +
-> >  hw/arm/fby35.c     | 39 +++++++++++++++++++++++++++++++++++++++
-> >  hw/arm/meson.build |  3 ++-
-> >  3 files changed, 42 insertions(+), 1 deletion(-)
-> >  create mode 100644 hw/arm/fby35.c
-> >
-> > diff --git a/MAINTAINERS b/MAINTAINERS
-> > index d9378511b7..147330ddd7 100644
-> > --- a/MAINTAINERS
-> > +++ b/MAINTAINERS
-> > @@ -1067,6 +1067,7 @@ F: hw/net/ftgmac100.c
-> >  F: include/hw/net/ftgmac100.h
-> >  F: docs/system/arm/aspeed.rst
-> >  F: tests/qtest/*aspeed*
-> > +F: hw/arm/fby35.c
-> >
-> >  NRF51
-> >  M: Joel Stanley <joel@jms.id.au>
-> > diff --git a/hw/arm/fby35.c b/hw/arm/fby35.c
-> > new file mode 100644
-> > index 0000000000..03b458584c
-> > --- /dev/null
-> > +++ b/hw/arm/fby35.c
-> > @@ -0,0 +1,39 @@
-> > +/*
-> > + * Copyright (c) Meta Platforms, Inc. and affiliates. (http://www.meta.com)
-> 
-> Can you mention what fby35 means? I keep reading your patches but can't recall.
+> > The set of things we were migrating and the set of
+> > things we now migrate don't seem to line up ?
+>
+> Yeah I should probably have documented this better in the commit message. The
+> existing VMStateDescription isn't correct since it misses both the buf and
+> loopback_rbne fields which are accessed across port reads and writes, and the port id
+> is not required because it is hardcoded to 0 for the keyboard port and 1 for the
+> mouse port.
+>
+> Rather than have the extra code churn throughout the series, I went for doing the
+> minimum to vmstate_lasips2 to make the patch compile and then fix up everything
+> (including add the new int_status bitmap) in this one patch. I think this is fine
+> since as we're introducing a migration break in the series, there are no concerns
+> over backward compatibility.
+>
+> Would an updated description for this commit message be sufficient? A quick skim over
+> the emails indicates that the only queries during review were related to the handling
+> of the VMStateDescription.
 
-Oh yeah sure, it means "Facebook Yosemite version 3.5". Facebook has a series
-of multi-node compute server designs named Yosemite, the most recent version
-was Yosemite 3:
+Yeah, if you comment this in the relevant commit messages that should be
+good enough.
 
-https://www.opencompute.org/documents/ocp-yosemite-v3-platform-design-specification-1v16-pdf
-
-Yosemite 3.5 is an iteration on this design. It's actually very similar in terms
-of there being a BMC on the baseboard, and a Bridge IC (BIC) on each server
-board, with room for expansion boards as well.
-
-I'm still debugging I2C a little bit, but my goal is to be able to test BMC <->
-BIC IPMB messages with the full OpenBMC firmware running on the BMC and the
-OpenBIC firmware running on the BIC, and to expand this machine to include the
-other 3 slot BIC's (in this patch series, I only included the BIC in the first
-slot).
-
-> 
-> > + *
-> > + * This code is licensed under the GPL version 2 or later. See the COPYING
-> > + * file in the top-level directory.
-> > + */
-> > +
-> > +#include "qemu/osdep.h"
-> > +#include "hw/boards.h"
-> > +
-> > +#define TYPE_FBY35 MACHINE_TYPE_NAME("fby35")
-> > +OBJECT_DECLARE_SIMPLE_TYPE(Fby35State, FBY35);
-> > +
-> > +struct Fby35State {
-> > +    MachineState parent_obj;
-> > +};
-> > +
-> > +static void fby35_init(MachineState *machine)
-> > +{
-> > +}
-> > +
-> > +static void fby35_class_init(ObjectClass *oc, void *data)
-> > +{
-> > +    MachineClass *mc = MACHINE_CLASS(oc);
-> > +
-> > +    mc->desc = "Meta Platforms fby35";
-> > +    mc->init = fby35_init;
-> > +}
-> > +
-> > +static const TypeInfo fby35_types[] = {
-> > +    {
-> > +        .name = MACHINE_TYPE_NAME("fby35"),
-> > +        .parent = TYPE_MACHINE,
-> > +        .class_init = fby35_class_init,
-> > +        .instance_size = sizeof(Fby35State),
-> > +    },
-> > +};
-> > +
-> > +DEFINE_TYPES(fby35_types);
-> > diff --git a/hw/arm/meson.build b/hw/arm/meson.build
-> > index 2d8381339c..92f9f6e000 100644
-> > --- a/hw/arm/meson.build
-> > +++ b/hw/arm/meson.build
-> > @@ -51,7 +51,8 @@ arm_ss.add(when: 'CONFIG_ASPEED_SOC', if_true: files(
-> >    'aspeed_soc.c',
-> >    'aspeed.c',
-> >    'aspeed_ast2600.c',
-> > -  'aspeed_ast10x0.c'))
-> > +  'aspeed_ast10x0.c',
-> > +  'fby35.c'))
-> >  arm_ss.add(when: 'CONFIG_MPS2', if_true: files('mps2.c'))
-> >  arm_ss.add(when: 'CONFIG_MPS2', if_true: files('mps2-tz.c'))
-> >  arm_ss.add(when: 'CONFIG_MSF2', if_true: files('msf2-soc.c'))
-> > --
-> > 2.37.0
-> >
+-- PMM

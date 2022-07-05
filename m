@@ -1,119 +1,129 @@
-Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp3863020lft;
-        Tue, 5 Jul 2022 04:23:32 -0700 (PDT)
-X-Google-Smtp-Source: AGRyM1vpb+STo1KD9bncRy8OPDYzv9V8K2bccj0sb5MfRcOed+r47pAG/n5Fq9eJ7dsdQmKtC0Qn
-X-Received: by 2002:a5b:489:0:b0:655:be22:4757 with SMTP id n9-20020a5b0489000000b00655be224757mr35929045ybp.92.1657020212092;
-        Tue, 05 Jul 2022 04:23:32 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1657020212; cv=none;
+Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp4177385lft;
+        Tue, 5 Jul 2022 12:14:32 -0700 (PDT)
+X-Google-Smtp-Source: AGRyM1uLGvo0TSfuIzZqkJ/PsdAooeRqHNChdbAtrNOWr3yfd7S2X4sF9y3BzaNFugUMUnyOfCAb
+X-Received: by 2002:ac8:5f13:0:b0:31b:b33f:2c09 with SMTP id x19-20020ac85f13000000b0031bb33f2c09mr29020293qta.686.1657048472405;
+        Tue, 05 Jul 2022 12:14:32 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1657048472; cv=none;
         d=google.com; s=arc-20160816;
-        b=RO10VcM5TyJkEX5rrtZHS5+8CZNK4f5cGdCG0GuOFILaM56Jnxx9spfQuIkUtm/mxH
-         bdzLw7vQO45JSIZux7oaDGX4PQBZNk0JWhvPBl2zt3cNsMPwF9XogHyQKq7sgj5aLNsX
-         P3lQV1kB1sGKbEVfJe8QjwYp58JFmFqJL5OO1Te137d220FvoNwUNjc6H2NkbmsrEYBT
-         ILtZG5wj4GfwcVDw/FhftSllX583WqrIT8XsSMUkBPT7Tg8MPDY8Wcqk+PPNgrMyldx7
-         y0BWoWrippgbMUVU8ozgYWnUTv1FpEBnTcnIWMCX73T6VNCzUmovusREvYOscld5xLNS
-         iyIQ==
+        b=JqL1+16MMqG4i4gejD6MEElYFY80JWvsIxgACFOcOD8uiKCWyf+sdtWW/cJ18PYeeX
+         OP+H7FfOv6zL8gjBqYpbR+rPhn9caV08IONoY4nzwC0UJzK9pWYoIvB1ib8mWadbHWDW
+         PfGE0C1nLsutzeiQBeOblnmINT3JnV9IV78NWpKcn6KcR6bc5P6S6aS8J6F0HmHpqs7B
+         MZw8+e3rNctnFTkCx/kcf1eEQz2Rq9Q9qGaMiK/lgW1W2UWA6TWPtAofVSWdT54ZaVVB
+         Lfytru3zt2vfrxP+OcOspbDwTkElau6AO3EDE3xRBhtmlHrFG2oZsH8KgiVc/l7eFgZ6
+         8wCA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:cc:to:content-language:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=3n3B3N4N3LhDjXPTbBXgy2ADSpXAlZ3UdK/+UO7BDJQ=;
-        b=d9OeelN2XOlpiK5OROLUM3vkyrKWTFpmArxeclnMpsITaXspFslKLG+b57kBoY2BbJ
-         Xa4MmE9vmw2ZnC3qWQSRyNSHao0wAu2AB/YMZUs8Yugd+IaF/q7Fx+uDa5PVLh5V/G66
-         OEW/bCQhTdCOI3TU8SbUVMXDL4tSMpLmFlo76exYlqL88//Xzs0Nsw6TSqWck0vVe3WM
-         7uSKbEqwkyt11eXsAvIPaQh8lBS0z3pHFpW90B1u65dYTDlZ3O9YuwPK4TIju+goxU3U
-         fEE5vkflezDvcZwlE3PVOSj5ZLlB8upHZOcRjY3o/g8F15IE6NCA3gwyUnJKoWQbR4bZ
-         muvg==
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:feedback-id:dkim-signature:dkim-signature;
+        bh=96mGIaGlFdmdXthJhBeohoBbi8sZAjUcJWCeLu+daBk=;
+        b=UKm7/OETqMTj3LUXwUhImp320dhYsadPRMimxKKH/CVfTFX0I/x1eYencQ+IAj0dOm
+         lpJpaQLf11WdJgmY0Mj5XWVDPfd7Gi4Oemt3YJktpF1SjBqIfE1zdgT8DvV8ZRg/U7oO
+         7T5RNJAol3toc3i6mQKCIPOMS1DUJPJV/ruJEKxfSkVwMkqjco8Ai4J2EMX7mdkrpGwk
+         GE2GI6ZjvQ8Kh+A21yPeD+gPGq1S1Z/dGG1vBzXAtTII/41yL5Fsql5A/pIz55KV0nMq
+         gvdtDDq7vWr8OKlW6cX8f0LjArfN5ziunQ8y+Gc7cYuDl1uyR31jUCNY2JkIeIFKhyse
+         6WGQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=V3gU8YhI;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dkim=fail header.i=@pjd.dev header.s=fm1 header.b=qiQxAeHU;
+       dkim=fail header.i=@messagingengine.com header.s=i9e814621.fm2 header.b=rqYpTxF8;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id bc30-20020a05690c001e00b003177ec8d1d8si57314046ywb.331.2022.07.05.04.23.31
+        by mx.google.com with ESMTPS id bl11-20020a05622a244b00b0031cc5db5aeasi4510099qtb.713.2022.07.05.12.14.31
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 05 Jul 2022 04:23:32 -0700 (PDT)
+        Tue, 05 Jul 2022 12:14:32 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=V3gU8YhI;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:43738 helo=lists1p.gnu.org)
+       dkim=fail header.i=@pjd.dev header.s=fm1 header.b=qiQxAeHU;
+       dkim=fail header.i=@messagingengine.com header.s=i9e814621.fm2 header.b=rqYpTxF8;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:52564 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1o8geR-0007D5-G2
-	for alex.bennee@linaro.org; Tue, 05 Jul 2022 07:23:31 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44876)
+	id 1o8o0E-00016S-HR
+	for alex.bennee@linaro.org; Tue, 05 Jul 2022 15:14:31 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46514)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1o8gct-0005B7-1i
- for qemu-arm@nongnu.org; Tue, 05 Jul 2022 07:21:55 -0400
-Received: from mail-pj1-x102c.google.com ([2607:f8b0:4864:20::102c]:54894)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1o8gcr-00059r-2x
- for qemu-arm@nongnu.org; Tue, 05 Jul 2022 07:21:54 -0400
-Received: by mail-pj1-x102c.google.com with SMTP id s21so7308637pjq.4
- for <qemu-arm@nongnu.org>; Tue, 05 Jul 2022 04:21:52 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=message-id:date:mime-version:user-agent:subject:content-language:to
- :cc:references:from:in-reply-to:content-transfer-encoding;
- bh=3n3B3N4N3LhDjXPTbBXgy2ADSpXAlZ3UdK/+UO7BDJQ=;
- b=V3gU8YhImQnupRFiPBdN36sfLAQ1hy+MxxLWRJi0IabfhCKBNq/Xs1zs4HRAVKjTn7
- psOdf68ThNVafjyB2RURdRE89dGPxAnR8CdXvYSEHf8s31K0KCD2b+uAhn8Tor0S9jQJ
- X4R6gp58AvEyBLXOvJ7BmEInp7btvxqahEXCy76t9A15efoO0qc/Q29aC0ObDnf3imMQ
- 5uuPUCT2FbH3eRGMAPJxQAp1qIny0ZNqI1PdUkiMPOkIRqGh/s4vakHK2kNaSmV5YFBr
- waz35Ou6a7Sm96G8ZgrQb6/UjQ2Pbd1y+XDP9uOoGOKho/J+Hki8UDnG29c6mhYcCXDh
- xofQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
- :content-language:to:cc:references:from:in-reply-to
- :content-transfer-encoding;
- bh=3n3B3N4N3LhDjXPTbBXgy2ADSpXAlZ3UdK/+UO7BDJQ=;
- b=JllBrZ4fYILKSf5t2G62UAYS2cPQJPxdaCkLswuyZmL5i/k8gbPJDzI4MyQCiw2Nv9
- DvjKyKTRcJLF61Co9iYRJjhtDZUswwfnHP4pJWn/WEGBY3L5RCi26XEDvc2NdXNcV9OC
- SjfSlEGPEStL6eJ+1K8jbhztBM9AcNgKIg2gwluz/QX2HmDGGiduydfKzT15Gfpf6JAy
- XOMzGUkYHOl3F9DjzOunQV4FhOVP9vFh7UCrSGha3HY9ux4GsvfCXlT85pXiMHhzKc8r
- LM2Tk3ZEqHOmWR03Q3HrYzhMU33icc/xsdS/BKPxU75WUyK4h8Mz6FMYb3H2WqXYCedy
- OuVQ==
-X-Gm-Message-State: AJIora8SwCn5ZBHGaDY4dhi/vJhK65L9hG8neTu/r3U/jHQW6xPQApOi
- j6Oj6j6Zh8QuR1Q7pXIFkPSpFw==
-X-Received: by 2002:a17:903:22c7:b0:16b:fa15:63d4 with SMTP id
- y7-20020a17090322c700b0016bfa1563d4mr58411plg.2.1657020111515; 
- Tue, 05 Jul 2022 04:21:51 -0700 (PDT)
-Received: from [192.168.138.227] ([122.255.60.245])
- by smtp.gmail.com with ESMTPSA id
- cn13-20020a056a00340d00b0051c6613b5basm22528521pfb.134.2022.07.05.04.21.49
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 05 Jul 2022 04:21:50 -0700 (PDT)
-Message-ID: <8d856268-551e-e53e-2f2a-b226374e0da5@linaro.org>
-Date: Tue, 5 Jul 2022 16:51:44 +0530
+ (Exim 4.90_1) (envelope-from <peter@pjd.dev>)
+ id 1o8nzu-000165-QI; Tue, 05 Jul 2022 15:14:10 -0400
+Received: from new3-smtp.messagingengine.com ([66.111.4.229]:57813)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <peter@pjd.dev>)
+ id 1o8nzs-00015b-Nc; Tue, 05 Jul 2022 15:14:10 -0400
+Received: from compute2.internal (compute2.nyi.internal [10.202.2.46])
+ by mailnew.nyi.internal (Postfix) with ESMTP id 7BF225802FB;
+ Tue,  5 Jul 2022 15:14:06 -0400 (EDT)
+Received: from mailfrontend2 ([10.202.2.163])
+ by compute2.internal (MEProxy); Tue, 05 Jul 2022 15:14:06 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=pjd.dev; h=cc:cc
+ :content-transfer-encoding:date:date:from:from:in-reply-to
+ :in-reply-to:message-id:mime-version:references:reply-to:sender
+ :subject:subject:to:to; s=fm1; t=1657048446; x=1657052046; bh=96
+ mGIaGlFdmdXthJhBeohoBbi8sZAjUcJWCeLu+daBk=; b=qiQxAeHURFTllnpk4V
+ RhAvDw9eEfq6GrLXbuvOmisyXFBVQwaRM1Edho5tjJeeYtNM0wjiBdZTEj4ovfA/
+ 7xeVbsLqZbazoNDjkskyvSm7wBtUY6CvyMumk9i8zrk2h7Kx5IcJR0lFhTQcteCG
+ oEkf8Z2gwR96mZlo6dEeNtH/ToLIc9NVw1A8FKt/vs0lNmluwelDTy+74jiPwl6g
+ Ds1MB184lCkvJ031zr4nq51/v0SG7y3mPZFZg+B4IqVQQhmt28msl+MfSqDIz6oA
+ sPlboWVsnvh0ozj84HRPujyzYRCWy7FCSC9pT4rjEJwFR5slhmBLtxAyehTpxXQ3
+ tchg==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+ messagingengine.com; h=cc:cc:content-transfer-encoding:date:date
+ :feedback-id:feedback-id:from:from:in-reply-to:in-reply-to
+ :message-id:mime-version:references:reply-to:sender:subject
+ :subject:to:to:x-me-proxy:x-me-proxy:x-me-sender:x-me-sender
+ :x-sasl-enc; s=i9e814621.fm2; t=1657048446; x=1657052046; bh=96m
+ GIaGlFdmdXthJhBeohoBbi8sZAjUcJWCeLu+daBk=; b=rqYpTxF8BfKbfmjh3vG
+ ILd8taTONkFamir2wx0Rfob2IsXJwlkXvVG2ZAzVsUZPW/bWoV/Kn9Dupix/h9Ow
+ JmV5QYpiUU44nK2f1th2PKZQapLUMyW48JH3XGWvnMvyouf2a8X4VwF+e4eDeIQM
+ p3wWzRQKprYGHkU69iCBn9ot2eXXQteb0cvvM7r+xQ+w7tbGrxialXn/9DjedC1d
+ xA53ic6b2ZWn1wZC/51PkhWMFrRb7Zp7gSSr13cQeScFlqzvPUt7B5gzbc+8mSEi
+ Hjy6YsN7K2sDrSpTauxD+9x8MIM4cjcF8p6spQS+R559Re4nc6plXyV7VE1vzFUd
+ 4qw==
+X-ME-Sender: <xms:fY3EYiJI2nVkOKDL10B8DkdIW_GL02CtXDNETF6qL-1fxqZXOlcf_A>
+ <xme:fY3EYqJeDY4q_ZQ7PdnQ5EopiPCpO2xIy6bkqyP-dWtNZagJ17zbyK5cTaI1xjvff
+ 5UWOgPn50xl9siPYW0>
+X-ME-Received: <xmr:fY3EYisvby9_uEM1iai4ogAYVwQtGCyvaWgEX2c3CT0PnS44aixvvobY-ETw4g>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvfedrudeiuddgudegtdcutefuodetggdotefrod
+ ftvfcurfhrohhfihhlvgemucfhrghsthforghilhdpqfgfvfdpuffrtefokffrpgfnqfgh
+ necuuegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmd
+ enmhhishhsihhnghcuvffquchfihgvlhguucdlfedtmdenogetfedtuddqtdduucdludeh
+ mdenucfjughrpefhvfevufffkffojghfggfgsedtkeertdertddtnecuhfhrohhmpefrvg
+ htvghrucffvghlvghvohhrhigrshcuoehpvghtvghrsehpjhgurdguvghvqeenucggtffr
+ rghtthgvrhhnpedvgffhgfekheehgeeguedvfeethfeifeelfffgueevudeuiefgffffvd
+ ejveefleenucffohhmrghinhepghhithhhuhgsrdgtohhmnecuvehluhhsthgvrhfuihii
+ vgeptdenucfrrghrrghmpehmrghilhhfrhhomhepphgvthgvrhesphhjugdruggvvh
+X-ME-Proxy: <xmx:fo3EYnYjPyH0zMyaa0xStfl_kV7gjLElsNYpndQJb2dzUdIIV5omRA>
+ <xmx:fo3EYpbhySKK8dbwtV6IE3jywqAKxH8JjZPa6KqksvBQDNhXBC4F4Q>
+ <xmx:fo3EYjBt0Ls1hjtqbZajBRtg9Tawy1kAP-BRE5GgYE0RNnkjPlZilw>
+ <xmx:fo3EYuP50bvioe38i6VT-94OFszTIH41SWeD5BLfs5P0PrwhnlX4Pg>
+Feedback-ID: i9e814621:Fastmail
+Received: by mail.messagingengine.com (Postfix) with ESMTPA; Tue,
+ 5 Jul 2022 15:14:05 -0400 (EDT)
+From: Peter Delevoryas <peter@pjd.dev>
+To: 
+Cc: Peter Delevoryas <peter@pjd.dev>,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
+ Peter Maydell <peter.maydell@linaro.org>, Andrew Jeffery <andrew@aj.id.au>,
+ Joel Stanley <joel@jms.id.au>, Patrick Venture <venture@google.com>,
+ qemu-arm@nongnu.org, qemu-devel@nongnu.org
+Subject: [PATCH v2 1/9] hw/i2c/pca954x: Add method to get channels
+Date: Tue,  5 Jul 2022 12:13:52 -0700
+Message-Id: <20220705191400.41632-2-peter@pjd.dev>
+X-Mailer: git-send-email 2.37.0
+In-Reply-To: <20220705191400.41632-1-peter@pjd.dev>
+References: <20220705191400.41632-1-peter@pjd.dev>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.9.1
-Subject: Re: [PATCH v4 20/45] target/arm: Implement SME LD1, ST1
-Content-Language: en-US
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
-References: <20220628042117.368549-1-richard.henderson@linaro.org>
- <20220628042117.368549-21-richard.henderson@linaro.org>
- <CAFEAcA_qDAR9YmXdZ0wuVVkaBeV3ArGzknjLkU=BqJn7hBAbjw@mail.gmail.com>
- <52d072c4-b6e7-c413-b15e-3aae358b4b00@linaro.org>
- <CAFEAcA-p_-vK6rNdc5yZ0bK5+RodDG_VOQVP=Y1U8ZS=OEBUpg@mail.gmail.com>
-From: Richard Henderson <richard.henderson@linaro.org>
-In-Reply-To: <CAFEAcA-p_-vK6rNdc5yZ0bK5+RodDG_VOQVP=Y1U8ZS=OEBUpg@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::102c;
- envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x102c.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=66.111.4.229; envelope-from=peter@pjd.dev;
+ helo=new3-smtp.messagingengine.com
+X-Spam_score_int: -12
+X-Spam_score: -1.3
+X-Spam_bar: -
+X-Spam_report: (-1.3 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ FROM_FMBLA_NEWDOM=1.498, RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -128,49 +138,126 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 5MRh2euBZVvU
+X-TUID: akJLhE1RLXTl
 
-On 7/5/22 16:18, Peter Maydell wrote:
-> Ah yes, I see how this works. I wonder if there's some way we
-> can abstract out this sort of index calculation into a macro
-> or function so that we can comment what it's doing there and
-> then all the use-sites are more "obviously correct". Perhaps:
-> 
-> /*
->   * When considering the ZA storage as an array of elements of
->   * type T, the index within that array of the Nth element of
->   * a vertical slice of a tile can be calculated like this,
->   * regardless of the size of type T. This is because the tiles
->   * are interleaved, so if type T is size N bytes then row 1 of
->   * the tile is N rows away from row 0. The division by N to
->   * convert a byte offset into an array index and the multiplication
->   * by N to convert from vslice-index-within-the-tile to
->   * the index within the ZA storage cancel out.
->   */
-> #define tile_vslice_index(i) ((i) * sizeof(ARMVectorReg))
-> 
-> /*
->   * When doing byte arithmetic on the ZA storage, the element
->   * byteoff bytes away in a tile vertical slice is always this
->   * many bytes away in the ZA storage, regardless of the
->   * size of the tile element, assuming that byteoff is a multiple
->   * of the element size. Again this is because of the interleaving
->   * of the tiles. For instance if we have 1 byte per element then
->   * each row of the ZA storage has one byte of the vslice data,
->   * and (counting from 0) byte 8 goes in row 8 of the storage
->   * at offset (8 * row-size-in-bytes).
->   * If we have 8 bytes per element then each row of the ZA storage
->   * has 8 bytes of the data, but there are 8 interleaved tiles and
->   * so byte 8 of the data goes into row 1 of the tile,
->   * which is again row 8 of the storage, so the offset is still
->   * (8 * row-size-in-bytes). Similarly for other element sizes.
->   */
-> #define tile_vslice_offset(byteoff) ((byteoff) * sizeof(ARMVectorReg))
-> 
-> (or use functions if you like. Maybe we want versions that
-> take (row,col) arguments too.)
+I added this helper in the Aspeed machine file a while ago to help
+initialize fuji-bmc i2c devices. This moves it to the official pca954x
+file so that other files can use it.
 
-That seems reasonable.  I'll work this into v5.
+This does something very similar to pca954x_i2c_get_bus, but I think
+this is useful when you have a very complicated dts with a lot of
+switches, like the fuji dts.
 
+This convenience method lets you write code that produces a flat array
+of I2C buses that matches the naming in the dts. After that you can just
+add individual sensors using the flat array of I2C buses.
 
-r~
+See fuji_bmc_i2c_init to understand this point further.
+
+The fuji dts is here for reference:
+
+https://github.com/torvalds/linux/blob/40cb6373b46/arch/arm/boot/dts/aspeed-bmc-facebook-fuji.dts
+
+Signed-off-by: Peter Delevoryas <peter@pjd.dev>
+---
+ hw/arm/aspeed.c                  | 29 +++++++++--------------------
+ hw/i2c/i2c_mux_pca954x.c         | 10 ++++++++++
+ include/hw/i2c/i2c_mux_pca954x.h | 13 +++++++++++++
+ 3 files changed, 32 insertions(+), 20 deletions(-)
+
+diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
+index 6fe9b13548..bee8a748ec 100644
+--- a/hw/arm/aspeed.c
++++ b/hw/arm/aspeed.c
+@@ -793,15 +793,6 @@ static void rainier_bmc_i2c_init(AspeedMachineState *bmc)
+     create_pca9552(soc, 15, 0x60);
+ }
+ 
+-static void get_pca9548_channels(I2CBus *bus, uint8_t mux_addr,
+-                                 I2CBus **channels)
+-{
+-    I2CSlave *mux = i2c_slave_create_simple(bus, "pca9548", mux_addr);
+-    for (int i = 0; i < 8; i++) {
+-        channels[i] = pca954x_i2c_get_bus(mux, i);
+-    }
+-}
+-
+ #define TYPE_LM75 TYPE_TMP105
+ #define TYPE_TMP75 TYPE_TMP105
+ #define TYPE_TMP422 "tmp422"
+@@ -814,20 +805,18 @@ static void fuji_bmc_i2c_init(AspeedMachineState *bmc)
+     for (int i = 0; i < 16; i++) {
+         i2c[i] = aspeed_i2c_get_bus(&soc->i2c, i);
+     }
+-    I2CBus *i2c180 = i2c[2];
+-    I2CBus *i2c480 = i2c[8];
+-    I2CBus *i2c600 = i2c[11];
+ 
+-    get_pca9548_channels(i2c180, 0x70, &i2c[16]);
+-    get_pca9548_channels(i2c480, 0x70, &i2c[24]);
++    pca954x_i2c_get_channels(i2c[2], 0x70, "pca9548", &i2c[16]);
++    pca954x_i2c_get_channels(i2c[8], 0x70, "pca9548", &i2c[24]);
+     /* NOTE: The device tree skips [32, 40) in the alias numbering */
+-    get_pca9548_channels(i2c600, 0x77, &i2c[40]);
+-    get_pca9548_channels(i2c[24], 0x71, &i2c[48]);
+-    get_pca9548_channels(i2c[25], 0x72, &i2c[56]);
+-    get_pca9548_channels(i2c[26], 0x76, &i2c[64]);
+-    get_pca9548_channels(i2c[27], 0x76, &i2c[72]);
++    pca954x_i2c_get_channels(i2c[11], 0x77, "pca9548", &i2c[40]);
++    pca954x_i2c_get_channels(i2c[24], 0x71, "pca9548", &i2c[48]);
++    pca954x_i2c_get_channels(i2c[25], 0x72, "pca9548", &i2c[56]);
++    pca954x_i2c_get_channels(i2c[26], 0x76, "pca9548", &i2c[64]);
++    pca954x_i2c_get_channels(i2c[27], 0x76, "pca9548", &i2c[72]);
+     for (int i = 0; i < 8; i++) {
+-        get_pca9548_channels(i2c[40 + i], 0x76, &i2c[80 + i * 8]);
++        pca954x_i2c_get_channels(i2c[40 + i], 0x76, "pca9548",
++                                 &i2c[80 + i * 8]);
+     }
+ 
+     i2c_slave_create_simple(i2c[17], TYPE_LM75, 0x4c);
+diff --git a/hw/i2c/i2c_mux_pca954x.c b/hw/i2c/i2c_mux_pca954x.c
+index 3945de795c..6b07804546 100644
+--- a/hw/i2c/i2c_mux_pca954x.c
++++ b/hw/i2c/i2c_mux_pca954x.c
+@@ -169,6 +169,16 @@ I2CBus *pca954x_i2c_get_bus(I2CSlave *mux, uint8_t channel)
+     return pca954x->bus[channel];
+ }
+ 
++void pca954x_i2c_get_channels(I2CBus *bus, uint8_t address,
++                              const char *type_name, I2CBus **channels)
++{
++    I2CSlave *mux = i2c_slave_create_simple(bus, type_name, address);
++    Pca954xClass *pc = PCA954X_GET_CLASS(mux);
++    Pca954xState *pca954x = PCA954X(mux);
++
++    memcpy(channels, pca954x->bus, pc->nchans * sizeof(channels[0]));
++}
++
+ static void pca9546_class_init(ObjectClass *klass, void *data)
+ {
+     Pca954xClass *s = PCA954X_CLASS(klass);
+diff --git a/include/hw/i2c/i2c_mux_pca954x.h b/include/hw/i2c/i2c_mux_pca954x.h
+index 3dd25ec983..3a676a30a9 100644
+--- a/include/hw/i2c/i2c_mux_pca954x.h
++++ b/include/hw/i2c/i2c_mux_pca954x.h
+@@ -16,4 +16,17 @@
+  */
+ I2CBus *pca954x_i2c_get_bus(I2CSlave *mux, uint8_t channel);
+ 
++/**
++ * Creates an i2c mux and retrieves all of the channels associated with it.
++ *
++ * @bus: the i2c bus where the i2c mux resides.
++ * @address: the address of the i2c mux on the aforementioned i2c bus.
++ * @type_name: name of the i2c mux type to create.
++ * @channels: an output parameter specifying where to return the channels.
++ *
++ * Returns: None
++ */
++void pca954x_i2c_get_channels(I2CBus *bus, uint8_t address,
++                              const char *type_name, I2CBus **channels);
++
+ #endif
+-- 
+2.37.0
+

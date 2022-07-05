@@ -1,162 +1,150 @@
-Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp3642643lft;
-        Mon, 4 Jul 2022 20:32:44 -0700 (PDT)
-X-Google-Smtp-Source: AGRyM1umNCBLCTc4QgJQPPqmR0+7ZO+s9AJTKXg2qCULA1JofPkOjCrnLq9XtL/wWbT5BwoPwj/D
-X-Received: by 2002:a25:838e:0:b0:66b:add7:f32c with SMTP id t14-20020a25838e000000b0066badd7f32cmr35311433ybk.384.1656991964796;
-        Mon, 04 Jul 2022 20:32:44 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1656991964; cv=none;
+Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp3697534lft;
+        Mon, 4 Jul 2022 22:52:04 -0700 (PDT)
+X-Google-Smtp-Source: AGRyM1thC1mc1FkjG+LCOtIqfFAJyxA9XVwypNoofQjoLfifvJLxfU/8QT46eJLULAoWllarx99R
+X-Received: by 2002:a05:622a:5cf:b0:31d:4c04:b642 with SMTP id d15-20020a05622a05cf00b0031d4c04b642mr7518660qtb.310.1657000324545;
+        Mon, 04 Jul 2022 22:52:04 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1657000324; cv=none;
         d=google.com; s=arc-20160816;
-        b=IolHcGVh0dZbrRZHlufUPcXeJmSE941wHGQpJMhUflTbsCk691asVLUgSokn3lHFI1
-         zSUFDJDNTXkLjMGalNbFuyk/cCNGKjvhRUhZ6uLDlEvtNlQERYVE0XVzG+NqvEz5TysA
-         mlwYhSo593tWJiYM1Gwv/5HRjxRUlXDexIeRaqUOUKmSAxHNjoa/flAaHUi5NvvyQ4Oz
-         AFQ9QQYa5ipgxpZJtO6BW0sVFmJQATLnuP3zyW/Y54aEyAzqSaSg+eWHJiqRIPiCq1Mt
-         zF4ZnUGxXdNE7++iETJ3C0kg69bHdlIOgQW1uCDijpks4mHyP+XySyk6ZALsC7LH5A55
-         t5rA==
+        b=SlRrBPUr4iPLlWiGXhlkXWd2lJz2ElPwfRAlN5/88ifHlKrXnOl/sEgjaVzjMtDq2G
+         HHXmJH1GYRyWJXjnG2nLTodBMECevXHyPIJrIDRsF4rq4E1w9m1r6myIzdInQ097W4cc
+         rVV2gX8Q0bqGpkGw+2m+90/Q2/gkWabFGD4KZ7mf2vUcgwocd7M6ItSMe+7cvlItyRod
+         E0l74vT+jyXc4hm3fyufApdDSVnxj8Hc8zod0O9G/gowMJ7TM0pBzydSucM1KL5xnnDQ
+         ssOo/SWWmAAT1N9XVBOXA+tVcxOyfRWQoY4BBx2cJFr+rL0aFz7iPRuXW0QAr4BlPQMw
+         To0Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:references:cc:to:from:content-language:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=n+tqJTvn7soNfiKqhPkChiNYQkgp2XITmS45YDF3Ma8=;
-        b=QbWeQz8VwVx0lww5vhixtu7cBOvLuhsrKtWnp7mL5HskprI9BLauDtXJf6gVA/vJrA
-         SkR1sWR4ZlcPKaSSDct2dzT6i/O19Vf8euIyFju9VUkojZmmV/x2VKya3zKExLMD3629
-         cx+q9IvGggx7br/LnYbLX0Yo+hVWtOwysNoo7wc6rAx0Yj7jO25s6dKEVtSRENqml0sS
-         wG3coxWYJsVckUcAz4F0HDqAnbNzRB45uMlxcSWqXeTMp4ZWaskOf3bLloSeTWieiX14
-         xij+sx5fS465TudSts0+BNqxUreteHrdck9kPS5O2VYku4AaENnUhnMi9ZRu5DJJpXE4
-         nnkg==
+         :in-reply-to:from:references:cc:to:content-language:subject
+         :user-agent:mime-version:date:message-id;
+        bh=ijIhVmwXu1X/blTFAdU1lKsPIsn+0cy0laSrnvr6D08=;
+        b=gi9jSe7qjzhzVmtaKOShztUNalCD343DaFK3IEkOVmNJZaB3cu95fn6K5sD/ctNThS
+         3WloGLd9KpnUj4lClgcMj0fWs8afCvsUg6dz60e76sJCeBD9cuuPPLMpmzjqxz9xC8W1
+         rRora/jipD5dskbTasSeRrGzjRmL2RXh+mGB/vcZvoL0NGB6ir48PTUTdvyUj3m5uaIf
+         NaEoDYERSJrl0Qoih9xfeWbYNYKg97fN56+1MF/UgeQe6zxlauXH4roSOvJXa3ozUwam
+         SjedNwXR1lOjE8Ab0OH7o0o3AiKXTAjxOZVQa7kJXS2rm/vt6xTBD0j+RVgG3N243HsR
+         azXw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Nys2pHb3;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id z126-20020a256584000000b0066988307799si41433355ybb.512.2022.07.04.20.32.44
+        by mx.google.com with ESMTPS id s18-20020a05622a179200b0031a08325b86si15516472qtk.513.2022.07.04.22.52.04
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 04 Jul 2022 20:32:44 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 04 Jul 2022 22:52:04 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Nys2pHb3;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:39096 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:47006 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1o8ZIq-0003Ow-74
-	for alex.bennee@linaro.org; Mon, 04 Jul 2022 23:32:44 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:50722)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1o8bTf-0003vI-Vh
+	for alex.bennee@linaro.org; Tue, 05 Jul 2022 01:52:04 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:36682)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1o8ZIg-0003OH-BD
- for qemu-arm@nongnu.org; Mon, 04 Jul 2022 23:32:34 -0400
-Received: from mail-pl1-x636.google.com ([2607:f8b0:4864:20::636]:35654)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1o8ZIe-0004sC-S6
- for qemu-arm@nongnu.org; Mon, 04 Jul 2022 23:32:34 -0400
-Received: by mail-pl1-x636.google.com with SMTP id y18so1930708plb.2
- for <qemu-arm@nongnu.org>; Mon, 04 Jul 2022 20:32:32 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=message-id:date:mime-version:user-agent:subject:content-language
- :from:to:cc:references:in-reply-to:content-transfer-encoding;
- bh=n+tqJTvn7soNfiKqhPkChiNYQkgp2XITmS45YDF3Ma8=;
- b=Nys2pHb3hFXi93JvCvilT9ych7WTQWJDdYv9rdmFYOvIHMMSSpiJDRJ6Z2f8NoR14B
- Ma+fnN1ULyiYYxdXaeXvYARafHMkboyKjSiVEK/w6Y36F1BnbWCp+fN7djRL6GZw7dMa
- 2JmuuzfPkeDcWLisPhs8xsFbT17urwzJKJ68kRzwlWLq7WJyLwn2gXGeqpiUxBaP/7c/
- b5uH4o6ia29KXmZ4oP8S4QADmOcA4suLvA5nAvUPUYdRtFpqGBaUThznWU5P/sBw5NXP
- l+vN2nDfp21x+uhhnmCN+M98tjWfkMCV/Yis+4LQig3te8ck9vWlDiZjUM5giHcbvFRx
- zuiA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
- :content-language:from:to:cc:references:in-reply-to
- :content-transfer-encoding;
- bh=n+tqJTvn7soNfiKqhPkChiNYQkgp2XITmS45YDF3Ma8=;
- b=JraCjiTnBWwxU5N33RD7za5mCuJ4NN2eI4OJb6xDOuHaeCPwLIqViAq1C9STEDzIMO
- wrmoi7hac4ujV2EPCN72EZZ3oH3Gzeb9o6HGtYfqILS+g5N4Z3Pz2zKPOMenF/AIMEV4
- q0p5khvviYm9OlyLBqY55nBlaJrCCwjVpzrEhtJs2cWlpAimQyDVcgtVsudRFdfDalG0
- 8RNUPxnzUmntG038jzgiBq6mOWWIGYiOhLzmmrCcpxYZiv+P9PviQ+0Rf5SrWnkC7KLF
- qWpAn2wAo4C1Nj3XDXZTqPem/s0u4BEeBTEQVf/xS/di2xeK08UqXLHJ0Yq0bqmNHYuV
- 1Ylw==
-X-Gm-Message-State: AJIora9PQz/5eqZK8zHn4ARI3c/7CHL3DNYr5WrZ+DetFSia9HAWqkGi
- E7phnY/MevotVuD35oqfJ1mjDQ==
-X-Received: by 2002:a17:90a:e7c6:b0:1ee:fed1:60a4 with SMTP id
- kb6-20020a17090ae7c600b001eefed160a4mr40500500pjb.100.1656991951443; 
- Mon, 04 Jul 2022 20:32:31 -0700 (PDT)
-Received: from [192.168.138.227] ([122.255.60.245])
- by smtp.gmail.com with ESMTPSA id
- d9-20020a170902f14900b0016368840c41sm21855191plb.14.2022.07.04.20.32.29
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 04 Jul 2022 20:32:31 -0700 (PDT)
-Message-ID: <b09aa13c-d7c1-d80e-fa80-c6720fb0c10a@linaro.org>
-Date: Tue, 5 Jul 2022 09:02:26 +0530
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1o8bRF-0001HY-TF
+ for qemu-devel@nongnu.org; Tue, 05 Jul 2022 01:49:34 -0400
+Received: from smtpout3.mo529.mail-out.ovh.net ([46.105.54.81]:34489)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1o8bRE-0005QS-5S
+ for qemu-devel@nongnu.org; Tue, 05 Jul 2022 01:49:33 -0400
+Received: from mxplan5.mail.ovh.net (unknown [10.109.146.107])
+ by mo529.mail-out.ovh.net (Postfix) with ESMTPS id 3A30411460544;
+ Tue,  5 Jul 2022 07:49:30 +0200 (CEST)
+Received: from kaod.org (37.59.142.97) by DAG4EX1.mxp5.local (172.16.2.31)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.9; Tue, 5 Jul 2022
+ 07:49:29 +0200
+Authentication-Results: garm.ovh; auth=pass
+ (GARM-97G00271c749b0-bb19-4acc-b544-7c7d087ea3f5,
+ 4FF77D4A254985FC0BE9A952312E42D6E34C6CC4) smtp.auth=clg@kaod.org
+X-OVh-ClientIp: 82.64.250.170
+Message-ID: <e6006847-fac1-2925-6aa7-ae9c09b737f0@kaod.org>
+Date: Tue, 5 Jul 2022 07:49:29 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.9.1
-Subject: Re: [PATCH v4 37/45] linux-user/aarch64: Do not allow duplicate or
- short sve records
+ Thunderbird/91.10.0
+Subject: Re: [PATCH 4/8] aspeed: Make aspeed_board_init_flashes public
 Content-Language: en-US
-From: Richard Henderson <richard.henderson@linaro.org>
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
-References: <20220628042117.368549-1-richard.henderson@linaro.org>
- <20220628042117.368549-38-richard.henderson@linaro.org>
- <CAFEAcA81Xc0kXrYTeq+Ck4b9vwu7jOAMerS0s_L0HaqyvfUcJg@mail.gmail.com>
- <1dcf1ad6-eb4e-5c20-b8f7-254eca7f58df@linaro.org>
-In-Reply-To: <1dcf1ad6-eb4e-5c20-b8f7-254eca7f58df@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+To: Peter Delevoryas <peter@pjd.dev>
+CC: Peter Maydell <peter.maydell@linaro.org>, Andrew Jeffery
+ <andrew@aj.id.au>, Joel Stanley <joel@jms.id.au>, <qemu-arm@nongnu.org>,
+ <qemu-devel@nongnu.org>
+References: <20220704215457.38332-1-peter@pjd.dev>
+ <20220704215457.38332-4-peter@pjd.dev>
+From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
+In-Reply-To: <20220704215457.38332-4-peter@pjd.dev>
+Content-Type: text/plain; charset="UTF-8"; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::636;
- envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x636.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+X-Originating-IP: [37.59.142.97]
+X-ClientProxiedBy: DAG2EX1.mxp5.local (172.16.2.11) To DAG4EX1.mxp5.local
+ (172.16.2.31)
+X-Ovh-Tracer-GUID: 28644541-8d28-4679-b8b5-a283ed8e4512
+X-Ovh-Tracer-Id: 15053844706887895846
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvfedrudeitddgleelucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhepkfffgggfuffvvehfhfgjtgfgihesthekredttdefjeenucfhrhhomhepveorughrihgtpgfnvggpifhorghtvghruceotghlgheskhgrohgurdhorhhgqeenucggtffrrghtthgvrhhnpeekteejtdelkeejvdevffduhfetteelieefgeefffeugffhfeekheffueefledujeenucfkpheptddrtddrtddrtddpfeejrdehledrudegvddrleejnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmohguvgepshhmthhpohhuthdphhgvlhhopehmgihplhgrnhehrdhmrghilhdrohhvhhdrnhgvthdpihhnvghtpedtrddtrddtrddtpdhmrghilhhfrhhomheptghlgheskhgrohgurdhorhhgpdhnsggprhgtphhtthhopedupdhrtghpthhtohepqhgvmhhuqdguvghvvghlsehnohhnghhnuhdrohhrghdpoffvtefjohhsthepmhhohedvle
+Received-SPF: pass client-ip=46.105.54.81; envelope-from=clg@kaod.org;
+ helo=smtpout3.mo529.mail-out.ovh.net
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 73DjMdBb38Dy
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: lCaDOKjXA3qC
 
-On 7/5/22 09:00, Richard Henderson wrote:
-> On 7/4/22 17:38, Peter Maydell wrote:
->>>           case TARGET_SVE_MAGIC:
->>> +            if (sve || size < sizeof(struct target_sve_context)) {
->>> +                goto err;
->>> +            }
->>>               if (cpu_isar_feature(aa64_sve, env_archcpu(env))) {
->>>                   vq = sve_vq(env);
->>>                   sve_size = QEMU_ALIGN_UP(TARGET_SVE_SIG_CONTEXT_SIZE(vq), 16);
->>> -                if (!sve && size == sve_size) {
->>> +                if (size == sve_size) {
->>>                       sve = (struct target_sve_context *)ctx;
->>>                       break;
->>>                   }
->>
->> On the other hand, the kernel seems to happily allow records
->> which are larger than the SVE_SIG_CONTEXT_SIZE, whereas we
->> ignore the record unless there's an exact size match.
+On 7/4/22 23:54, Peter Delevoryas wrote:
+> Signed-off-by: Peter Delevoryas <peter@pjd.dev>
+
+Reviewed-by: Cédric Le Goater <clg@kaod.org>
+
+Thanks,
+
+C.
+
+
+> ---
+>   hw/arm/aspeed.c             | 2 +-
+>   include/hw/arm/aspeed_soc.h | 2 ++
+>   2 files changed, 3 insertions(+), 1 deletion(-)
 > 
-> Yeah, this gets fixed properly in patch 39.
-> Perhaps I should simply squash this with that?
+> diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
+> index cc395f988c..b2486a9e78 100644
+> --- a/hw/arm/aspeed.c
+> +++ b/hw/arm/aspeed.c
+> @@ -262,7 +262,7 @@ static void write_boot_rom(DriveInfo *dinfo, hwaddr addr, size_t rom_size,
+>       rom_add_blob_fixed("aspeed.boot_rom", storage, rom_size, addr);
+>   }
+>   
+> -static void aspeed_board_init_flashes(AspeedSMCState *s, const char *flashtype,
+> +void aspeed_board_init_flashes(AspeedSMCState *s, const char *flashtype,
+>                                         unsigned int count, int unit0)
+>   {
+>       int i;
+> diff --git a/include/hw/arm/aspeed_soc.h b/include/hw/arm/aspeed_soc.h
+> index 68e907cd64..8389200b2d 100644
+> --- a/include/hw/arm/aspeed_soc.h
+> +++ b/include/hw/arm/aspeed_soc.h
+> @@ -184,5 +184,7 @@ void aspeed_mmio_map(AspeedSoCState *s, SysBusDevice *dev, int n, hwaddr addr);
+>   void aspeed_mmio_map_unimplemented(AspeedSoCState *s, SysBusDevice *dev,
+>                                      const char *name, hwaddr addr,
+>                                      uint64_t size);
+> +void aspeed_board_init_flashes(AspeedSMCState *s, const char *flashtype,
+> +                               unsigned int count, int unit0);
+>   
+>   #endif /* ASPEED_SOC_H */
 
-Bah!  No, those are two separate checks: the minimum size to contain vq and flags 
-(target_sve_context) and the minimum size to contain all of the vector data 
-(TARGET_SVE_SIG_CONTEXT_SIZE).
-
-The latter *is* fixed in patch 39, but this one should stay as-is.
-
-
-r~

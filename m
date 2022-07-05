@@ -1,80 +1,80 @@
-Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp4084510lft;
-        Tue, 5 Jul 2022 09:38:39 -0700 (PDT)
-X-Google-Smtp-Source: AGRyM1uGo+Yl50GTf0KtABUURjqwXT092mkCimVUnigrJC3H4i2U3qnL9Vx/irt/ypBGW2kIZofl
-X-Received: by 2002:a05:6214:194c:b0:472:6ff9:4f6d with SMTP id q12-20020a056214194c00b004726ff94f6dmr33934690qvk.105.1657039119019;
-        Tue, 05 Jul 2022 09:38:39 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1657039119; cv=none;
+Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp4089010lft;
+        Tue, 5 Jul 2022 09:46:04 -0700 (PDT)
+X-Google-Smtp-Source: AGRyM1u1HwFAcWBDlY943Y0q6pwM280NtDGY/51YG9Wzxi4ZB7wVLorLhWRRV9Do6Y8FAaM+jArs
+X-Received: by 2002:a25:bb06:0:b0:66d:9beb:9f23 with SMTP id z6-20020a25bb06000000b0066d9beb9f23mr33882727ybg.280.1657039564447;
+        Tue, 05 Jul 2022 09:46:04 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1657039564; cv=none;
         d=google.com; s=arc-20160816;
-        b=XrIk4R/rg2b9GeFnGJb5tc0ACVunSpe1ZzD+nTPTd6T5qUNAwP+kbhslh89/nW82m9
-         gc9e3IZIQa5QuqsZ3ESQAMNh0OdrdDGMl/t5Jo5PZikdMHo8IUGn+HKWg5N7WW+dt+cA
-         njv7BagB16qzO+jlSScMm9e9Fnrf540k8DlmcySpc8cMa0WKhq27NxQFQ4yVqPVI5H+I
-         hKHb8KtqYxxKHx2BfoN2ZaUqFHPu6xKRlMzlF9Y2IhecuuDkoy2zG6lc6EzwF35CgzE4
-         IaEcwPPmFCUIUUidH7gCnEUAn8Owv7aVNUlxhVMq9Mv40SgvD9en4aoJ7ycCiXBMGFTe
-         k/eA==
+        b=Q+cVI6OVz3tM0udT9jscUu51Tk1vztxtkyUFJYgVIkWsSRZ52rFxfkFDhSq2ziDefR
+         q0KWqyiczkRucmVv+iPKw85l/INKMocm7tAccrHGMiT/5FAJacTSlcD5kpcUzd0Ur17i
+         lXMLZMgURqkvPkoyTmCc0VNS+KoXK0EJxam4HXmGZIyJ/9FeGrGa0uDn1NtwZ1BIhE6N
+         DAQHRKaBk66vz8T64NxjXA5HQMTNgmO3NZBy94GZu19gV1nMvFJHSPWuOjMvE3bHe3/l
+         XQzk1Xd23vvw5BWMUHb9GjXgpSCbdxEkrc2ZwCCIWseiKq80z2UpNzT7R1wlpEjaQlGW
+         d4mA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=k6frTgrdzk9n4SJYadeqbPUcUusGpMFsVosyyUO2YQA=;
-        b=Jesdw8LrcC8Yv9oDimhNYe+tJqiJcMybu8ZJmVv51YBBC8Raji6eJ5w1mktoG5c3Ja
-         lueoV4D5qp8VTTBf35sNxzjkxsCYhhXDwY9FWOc4sODKSC7gEpUhAde7EGlbo20Qr1dp
-         1xVlO26vb/UsEXSc+MPQ1xaUUr/Jkp5vl3zLL67a/ZJteFYiiY+I0VUoscjTFWO7iPDA
-         jzqSfiKMs8Op9lq+YqEVAsaTVSCnjC470YBgHQEUHbdw8VA6XGZ5cGXKeyStvvcbrA5c
-         nt4iPUDqQ739W86EpD5lXyF0Ej4IXePOamQbknCga1KqvAkMlyC/oi0dIjqioHbJ1R0G
-         r8Yg==
+        bh=jqsFDGNvRFyyJz5IfEkH7E1QHQ9OXTkcwokq/IofF1U=;
+        b=lZUWPZoKL+r5RFt3WVo6mmaqI9ACmGGCfVsqt7V1eeEej4n65bk6y1f0WbhFmdG+0s
+         xPyOKBPhA4zoUk8vu3l1ZvJ85SKQ7lgVKrZOJkIHyh/YFkUVt8rbT1Bx/hLGvMIvM7OM
+         kemiTSJAhYf5B2byM8E86JU9cKcw4HRZLojnvY5Y4J8JUWmyCi/97xxxDWlb16MubeS4
+         BTYMVURto2VCDF4KwYDba1J7MeNbWytVCJF3Sw+PqyTDr7SsPc2OQzL9EiZ+H9lvf4aT
+         NYAMIek5F7TsgQJKdJwvqmzZkuJaKMJG0/KhjUU2b+R8LnfyoS0b5eaxTZ91IMQKIx+5
+         nQQQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=FZUqztZa;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=QHiRtprV;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v17-20020a05620a0f1100b006ab986a6b2bsi24303918qkl.701.2022.07.05.09.38.38
+        by mx.google.com with ESMTPS id z15-20020a814c0f000000b0031c70c17822si15759001ywa.338.2022.07.05.09.46.04
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 05 Jul 2022 09:38:39 -0700 (PDT)
+        Tue, 05 Jul 2022 09:46:04 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=FZUqztZa;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=QHiRtprV;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:56426 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:37534 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1o8lZO-000531-5B
-	for alex.bennee@linaro.org; Tue, 05 Jul 2022 12:38:38 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34322)
+	id 1o8lgZ-00038b-NN
+	for alex.bennee@linaro.org; Tue, 05 Jul 2022 12:46:03 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33654)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <afaria@redhat.com>) id 1o8lFL-0006Ap-Bs
- for qemu-devel@nongnu.org; Tue, 05 Jul 2022 12:18:00 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:32905)
+ (Exim 4.90_1) (envelope-from <afaria@redhat.com>) id 1o8lEc-0005G2-20
+ for qemu-devel@nongnu.org; Tue, 05 Jul 2022 12:17:10 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:21840)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <afaria@redhat.com>) id 1o8lFJ-0006F8-P8
- for qemu-devel@nongnu.org; Tue, 05 Jul 2022 12:17:55 -0400
+ (Exim 4.90_1) (envelope-from <afaria@redhat.com>) id 1o8lET-0005z6-8F
+ for qemu-devel@nongnu.org; Tue, 05 Jul 2022 12:17:08 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1657037873;
+ s=mimecast20190719; t=1657037819;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=k6frTgrdzk9n4SJYadeqbPUcUusGpMFsVosyyUO2YQA=;
- b=FZUqztZanozyq0zV3rZoBvL3dTeGhwUOK1l7GVfGYWq8MEwCaVfANqoaWb3ZIstFIzkylu
- odZpN8MsvbJiDS3C2MSr0RVdWm7im4BbzAvD2o4plorbzrX75ZeXAh15U7UA6U2dA7aokP
- Y1XxOZ/jDgc2SY4iShhbJ2gLwc0viPc=
-Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
- [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=jqsFDGNvRFyyJz5IfEkH7E1QHQ9OXTkcwokq/IofF1U=;
+ b=QHiRtprV+7S38d8D5RmUrZ70scTA0jCibKhodgmodIsVCK2nzIFMvnbRXb1BaPwFsqUyki
+ BBMrkmTwwl7yQLX7BMe/+vmmm8/VV21IFXZSLxyCMMwYgw0Fo67fklMM6ju6eept8et/Vl
+ 1YVU6LBBcYNfUZpa/wEQk82XVb4do2s=
+Received: from mimecast-mx02.redhat.com (mx3-rdu2.redhat.com
+ [66.187.233.73]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-160-r84Ew47JM32GuF_7w5bUKg-1; Tue, 05 Jul 2022 12:17:35 -0400
-X-MC-Unique: r84Ew47JM32GuF_7w5bUKg-1
+ us-mta-523-DqH036NLMFugs6LJV7BAnw-1; Tue, 05 Jul 2022 12:16:55 -0400
+X-MC-Unique: DqH036NLMFugs6LJV7BAnw-1
 Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.rdu2.redhat.com
  [10.11.54.7])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 1693E805AF5;
- Tue,  5 Jul 2022 16:17:30 +0000 (UTC)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id ED81D384F803;
+ Tue,  5 Jul 2022 16:16:52 +0000 (UTC)
 Received: from localhost.localdomain (unknown [10.39.192.13])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 94FC7140EBE4;
- Tue,  5 Jul 2022 16:17:24 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 79D1C140EBE4;
+ Tue,  5 Jul 2022 16:16:47 +0000 (UTC)
 From: Alberto Faria <afaria@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: Beniamino Galvani <b.galvani@gmail.com>,
@@ -101,23 +101,23 @@ Cc: Beniamino Galvani <b.galvani@gmail.com>,
  qemu-block@nongnu.org, "Denis V. Lunev" <den@openvz.org>,
  qemu-arm@nongnu.org, Alberto Faria <afaria@redhat.com>,
  Paolo Bonzini <pbonzini@redhat.com>
-Subject: [PATCH v2 18/18] block: Remove remaining unused symbols in
- coroutines.h
-Date: Tue,  5 Jul 2022 17:15:26 +0100
-Message-Id: <20220705161527.1054072-19-afaria@redhat.com>
+Subject: [PATCH v2 12/18] block: Implement blk_pwrite_zeroes() using
+ generated_co_wrapper
+Date: Tue,  5 Jul 2022 17:15:20 +0100
+Message-Id: <20220705161527.1054072-13-afaria@redhat.com>
 In-Reply-To: <20220705161527.1054072-1-afaria@redhat.com>
 References: <20220705161527.1054072-1-afaria@redhat.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-Scanned-By: MIMEDefang 2.85 on 10.11.54.7
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=afaria@redhat.com;
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=afaria@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -21
-X-Spam_score: -2.2
+X-Spam_score_int: -28
+X-Spam_score: -2.9
 X-Spam_bar: --
-X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.082,
+X-Spam_report: (-2.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.082,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
@@ -133,86 +133,87 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Fm8nmvDn/J4J
-
-Some can be made static, others are unused generated_co_wrappers.
+X-TUID: B1bBo+h0oNha
 
 Signed-off-by: Alberto Faria <afaria@redhat.com>
 Reviewed-by: Paolo Bonzini <pbonzini@redhat.com>
 Reviewed-by: Hanna Reitz <hreitz@redhat.com>
 ---
- block/block-backend.c |  6 +++---
- block/coroutines.h    | 19 -------------------
- 2 files changed, 3 insertions(+), 22 deletions(-)
+ block/block-backend.c             |  8 --------
+ include/sysemu/block-backend-io.h |  5 +++--
+ tests/unit/test-block-iothread.c  | 17 +++++++++++++++++
+ 3 files changed, 20 insertions(+), 10 deletions(-)
 
 diff --git a/block/block-backend.c b/block/block-backend.c
-index 920ba0dd1f..bf63f187ef 100644
+index cc85558813..8129259e50 100644
 --- a/block/block-backend.c
 +++ b/block/block-backend.c
-@@ -1358,7 +1358,7 @@ int coroutine_fn blk_co_preadv_part(BlockBackend *blk, int64_t offset,
- }
+@@ -1415,14 +1415,6 @@ typedef struct BlkRwCo {
+     BdrvRequestFlags flags;
+ } BlkRwCo;
  
- /* To be called between exactly one pair of blk_inc/dec_in_flight() */
--int coroutine_fn
-+static int coroutine_fn
- blk_co_do_pwritev_part(BlockBackend *blk, int64_t offset, int64_t bytes,
-                        QEMUIOVector *qiov, size_t qiov_offset,
-                        BdrvRequestFlags flags)
-@@ -1691,7 +1691,7 @@ BlockAIOCB *blk_aio_ioctl(BlockBackend *blk, unsigned long int req, void *buf,
- }
- 
- /* To be called between exactly one pair of blk_inc/dec_in_flight() */
--int coroutine_fn
-+static int coroutine_fn
- blk_co_do_pdiscard(BlockBackend *blk, int64_t offset, int64_t bytes)
+-int blk_pwrite_zeroes(BlockBackend *blk, int64_t offset,
+-                      int64_t bytes, BdrvRequestFlags flags)
+-{
+-    IO_OR_GS_CODE();
+-    return blk_pwritev_part(blk, offset, bytes, NULL, 0,
+-                            flags | BDRV_REQ_ZERO_WRITE);
+-}
+-
+ int blk_make_zero(BlockBackend *blk, BdrvRequestFlags flags)
  {
-     int ret;
-@@ -1739,7 +1739,7 @@ int coroutine_fn blk_co_pdiscard(BlockBackend *blk, int64_t offset,
+     GLOBAL_STATE_CODE();
+diff --git a/include/sysemu/block-backend-io.h b/include/sysemu/block-backend-io.h
+index d129e2bed3..5ce9b80023 100644
+--- a/include/sysemu/block-backend-io.h
++++ b/include/sysemu/block-backend-io.h
+@@ -174,8 +174,9 @@ int generated_co_wrapper blk_pwrite_compressed(BlockBackend *blk,
+ int coroutine_fn blk_co_pwrite_compressed(BlockBackend *blk, int64_t offset,
+                                           int64_t bytes, const void *buf);
+ int blk_pdiscard(BlockBackend *blk, int64_t offset, int64_t bytes);
+-int blk_pwrite_zeroes(BlockBackend *blk, int64_t offset,
+-                      int64_t bytes, BdrvRequestFlags flags);
++int generated_co_wrapper blk_pwrite_zeroes(BlockBackend *blk, int64_t offset,
++                                           int64_t bytes,
++                                           BdrvRequestFlags flags);
+ int coroutine_fn blk_co_pwrite_zeroes(BlockBackend *blk, int64_t offset,
+                                       int64_t bytes, BdrvRequestFlags flags);
+ int blk_truncate(BlockBackend *blk, int64_t offset, bool exact,
+diff --git a/tests/unit/test-block-iothread.c b/tests/unit/test-block-iothread.c
+index 3a46886784..bb9230a4b4 100644
+--- a/tests/unit/test-block-iothread.c
++++ b/tests/unit/test-block-iothread.c
+@@ -212,6 +212,19 @@ static void test_sync_op_blk_pwrite_compressed(BlockBackend *blk)
+     g_assert_cmpint(ret, ==, -EIO);
  }
  
- /* To be called between exactly one pair of blk_inc/dec_in_flight() */
--int coroutine_fn blk_co_do_flush(BlockBackend *blk)
-+static int coroutine_fn blk_co_do_flush(BlockBackend *blk)
++static void test_sync_op_blk_pwrite_zeroes(BlockBackend *blk)
++{
++    int ret;
++
++    /* Success */
++    ret = blk_pwrite_zeroes(blk, 0, 512, 0);
++    g_assert_cmpint(ret, ==, 0);
++
++    /* Early error: Negative offset */
++    ret = blk_pwrite_zeroes(blk, -2, 512, 0);
++    g_assert_cmpint(ret, ==, -EIO);
++}
++
+ static void test_sync_op_load_vmstate(BdrvChild *c)
  {
-     blk_wait_while_drained(blk);
-     IO_CODE();
-diff --git a/block/coroutines.h b/block/coroutines.h
-index d66551a277..3a2bad564f 100644
---- a/block/coroutines.h
-+++ b/block/coroutines.h
-@@ -63,17 +63,6 @@ nbd_co_do_establish_connection(BlockDriverState *bs, bool blocking,
-                                Error **errp);
- 
- 
--int coroutine_fn
--blk_co_do_pwritev_part(BlockBackend *blk, int64_t offset, int64_t bytes,
--                       QEMUIOVector *qiov, size_t qiov_offset,
--                       BdrvRequestFlags flags);
--
--int coroutine_fn
--blk_co_do_pdiscard(BlockBackend *blk, int64_t offset, int64_t bytes);
--
--int coroutine_fn blk_co_do_flush(BlockBackend *blk);
--
--
- /*
-  * "I/O or GS" API functions. These functions can run without
-  * the BQL, but only in one specific iothread/main loop.
-@@ -82,14 +71,6 @@ int coroutine_fn blk_co_do_flush(BlockBackend *blk);
-  * the "I/O or GS" API.
-  */
- 
--int generated_co_wrapper
--bdrv_preadv(BdrvChild *child, int64_t offset, int64_t bytes,
--            QEMUIOVector *qiov, BdrvRequestFlags flags);
--
--int generated_co_wrapper
--bdrv_pwritev(BdrvChild *child, int64_t offset, int64_t bytes,
--             QEMUIOVector *qiov, BdrvRequestFlags flags);
--
- int generated_co_wrapper
- bdrv_common_block_status_above(BlockDriverState *bs,
-                                BlockDriverState *base,
+     uint8_t buf[512];
+@@ -395,6 +408,10 @@ const SyncOpTest sync_op_tests[] = {
+         .name   = "/sync-op/pwrite_compressed",
+         .fn     = NULL,
+         .blkfn  = test_sync_op_blk_pwrite_compressed,
++    }, {
++        .name   = "/sync-op/pwrite_zeroes",
++        .fn     = NULL,
++        .blkfn  = test_sync_op_blk_pwrite_zeroes,
+     }, {
+         .name   = "/sync-op/load_vmstate",
+         .fn     = test_sync_op_load_vmstate,
 -- 
 2.36.1
 

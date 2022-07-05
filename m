@@ -1,88 +1,88 @@
-Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp3698036lft;
-        Mon, 4 Jul 2022 22:53:31 -0700 (PDT)
-X-Google-Smtp-Source: AGRyM1sg5+or1jra5YQqo3Rxhu+eL0p7oivVLYLkyQGl6LkoEwX37nHeCOdEKvDwE1fMlTKGk42e
-X-Received: by 2002:a05:622a:1494:b0:31d:47a2:13d9 with SMTP id t20-20020a05622a149400b0031d47a213d9mr9516324qtx.678.1657000411156;
-        Mon, 04 Jul 2022 22:53:31 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1657000411; cv=none;
+Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp3698296lft;
+        Mon, 4 Jul 2022 22:54:15 -0700 (PDT)
+X-Google-Smtp-Source: AGRyM1vchWaVcPfPm/Uvb/q0rlckAfx9gcnALpcyLG1PdWoFfn/Osoqw2AWMvr7xADGsVg/KKwB3
+X-Received: by 2002:a05:620a:2991:b0:6a7:1dc:2f94 with SMTP id r17-20020a05620a299100b006a701dc2f94mr22483469qkp.639.1657000455350;
+        Mon, 04 Jul 2022 22:54:15 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1657000455; cv=none;
         d=google.com; s=arc-20160816;
-        b=urw0V2ZmzYOrPRKWm0iDDpyLSTIdym85uO+dq5wfysUK59P4uSxF+cu/CzpXqhdOcM
-         ASaOwFwNf0tzPoCRdfyT8db0iahk9r3N1htB4gKm0WiHhSAp6JwO4EtLSidrbQ+P2jjj
-         IZdt8wIoofrwkfeiM3JV+OS+ETUlHlSBSa1rdqAEQ0ZemujfUaMMe7K7R4p0tPZ76pMq
-         LCtNgVvyDLBOKXz3HKury5ewVCU+VawWAuzL0bjnPGTSZBWuULTOBLQgr/FG3iBwBwKt
-         lRduuiRjTyHPvhh3j8vK2FHM+CYjrEbs1aZxGLrXIZV4yC5SJYZfgKrpEhfeiSwKhqm7
-         71XA==
+        b=OJaPStPwa8AF8w+xLNgHuw1V/fYfijC0tFC3QHIl6gLT/qPCPzUAC1L6MXInP3mkYR
+         zW4qaLGlWVb3KW/kJykmoWwcUQFBiLk0vy19tHSExpdVWd8md4M4fiG0/JEIVo0aG6XW
+         6IV005nGS1GNa8CmR23N1dA2FMJw/pouGS1NsieUFVasSwiyznbE5zw8khFV9S7gGt+l
+         pMTOowNuQUImykd7+terG6qFAyahpc08ogbhiNiu6ez6NuhSdZhBsY2bRUo4HYIbwU6H
+         fLoi/G2R9oa2YyKVXjhZDt/jdKcn8tGvooal1VpsRBUri+rtyIBcO0O7Ps+9QBABzIbb
+         nmUg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :in-reply-to:from:references:cc:to:content-language:subject
          :user-agent:mime-version:date:message-id;
-        bh=lyJ7AVqtF76LmJphodAgKOiQt/jZiwHdl5kToQ4EQWo=;
-        b=xwT7C3QPuBQagOMGKnCPxDlVo3CjoXP8Ypclt2NOrZQgyU+qxQW+X5O+Y8SGW2YyUF
-         EuYjB1MjhLVfyrTm84VWAtMi/p7wJlBNmpGGYciggVOnQ0pSRte1rnqlVTdVHbSL2gbL
-         giKmrj5xwrwL39LCl6OEy64820eht5ZjSZgJU0+76mj8oQihHrd9H4hOYKwHRTutBL4u
-         MlyihT8YKPIaBjQq1OOfdMQngtx4fyeNAfXfiNHZs+77X/Nz3h1etAqvqxy3utvsV9jw
-         Q4u/9TZL+Mh550nXU6t7vvS5tndjAUEoEq6bWD5+P4xedESBcBA1h5Q05lLsZ1CsOonY
-         RuHg==
+        bh=oCCTytm7HtzKWrl4RVzUl5fe0ShH/Uz5lycdS/xRscc=;
+        b=Lxbwa4A8IJ9cIHCxy0yTfXlM/2rH5GlYfqeKh4rJ6K9iz4FdMntd3pq6fOaVfuEsjK
+         PnD7OZYSdSqkpPvI8EFDTkOIS2+/dG09+4wdOWu+WBp2WwZfw8F1kvXk6iLtM2Jr/Qm7
+         xOvdttvN9VbPHTh1i12DHVEFfUgPO51GkR6opAIpivmltqEzuM2BJrWlALK8RhNKhpZT
+         7m2I3F66ZORuSlECExXVEqbpuRrDgMLfBnvFQMyY35rphR2OLl3atzEV/VtO8dY2u4c9
+         hSDvOhCnRdG016BZc5kdHM9Ye6dvFKkcutchUKYAnFuhwu/B5y2vsWAkVO1bqVkit3a1
+         BYXA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id fz18-20020a05622a5a9200b00304d8f33999si3657852qtb.386.2022.07.04.22.53.31
+        by mx.google.com with ESMTPS id fo6-20020ad45f06000000b004703be6b71esi18799163qvb.147.2022.07.04.22.54.15
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 04 Jul 2022 22:53:31 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 04 Jul 2022 22:54:15 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:51310 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:51584 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1o8bV4-0006vt-Lo
-	for alex.bennee@linaro.org; Tue, 05 Jul 2022 01:53:30 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:36828)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1o8bVm-00076b-SM
+	for alex.bennee@linaro.org; Tue, 05 Jul 2022 01:54:14 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:36634)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1o8bSD-0001yg-KC
- for qemu-arm@nongnu.org; Tue, 05 Jul 2022 01:50:35 -0400
-Received: from 7.mo552.mail-out.ovh.net ([188.165.59.253]:39819)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1o8bR4-00014B-Ve
+ for qemu-devel@nongnu.org; Tue, 05 Jul 2022 01:49:23 -0400
+Received: from 7.mo552.mail-out.ovh.net ([188.165.59.253]:42327)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1o8bS8-0005el-Ji
- for qemu-arm@nongnu.org; Tue, 05 Jul 2022 01:50:32 -0400
-Received: from mxplan5.mail.ovh.net (unknown [10.109.156.136])
- by mo552.mail-out.ovh.net (Postfix) with ESMTPS id E9BCF2654D;
- Tue,  5 Jul 2022 05:50:25 +0000 (UTC)
-Received: from kaod.org (37.59.142.102) by DAG4EX1.mxp5.local (172.16.2.31)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1o8bR2-0005Oa-0X
+ for qemu-devel@nongnu.org; Tue, 05 Jul 2022 01:49:22 -0400
+Received: from mxplan5.mail.ovh.net (unknown [10.108.16.68])
+ by mo552.mail-out.ovh.net (Postfix) with ESMTPS id 1BA2E26001;
+ Tue,  5 Jul 2022 05:49:16 +0000 (UTC)
+Received: from kaod.org (37.59.142.99) by DAG4EX1.mxp5.local (172.16.2.31)
  with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.9; Tue, 5 Jul 2022
- 07:50:25 +0200
+ 07:49:16 +0200
 Authentication-Results: garm.ovh; auth=pass
- (GARM-102R004ee893d4c-fa6b-495e-bd1c-76dfd4b20c90,
+ (GARM-99G003e83b9d84-117e-4d0e-84ab-82feb614ab79,
  4FF77D4A254985FC0BE9A952312E42D6E34C6CC4) smtp.auth=clg@kaod.org
 X-OVh-ClientIp: 82.64.250.170
-Message-ID: <78a03070-09f4-e290-7c33-639d6ae03c31@kaod.org>
-Date: Tue, 5 Jul 2022 07:50:25 +0200
+Message-ID: <c2adcaf0-c0aa-22fd-1922-972a90f8dc3c@kaod.org>
+Date: Tue, 5 Jul 2022 07:49:10 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
  Thunderbird/91.10.0
-Subject: Re: [PATCH 8/8] aspeed: Add AST1030 (BIC) to fby35
+Subject: Re: [PATCH 3/8] aspeed: Refactor UART init for multi-SoC machines
 Content-Language: en-US
 To: Peter Delevoryas <peter@pjd.dev>
 CC: Peter Maydell <peter.maydell@linaro.org>, Andrew Jeffery
  <andrew@aj.id.au>, Joel Stanley <joel@jms.id.au>, <qemu-arm@nongnu.org>,
  <qemu-devel@nongnu.org>
 References: <20220704215457.38332-1-peter@pjd.dev>
- <20220704215457.38332-8-peter@pjd.dev>
+ <20220704215457.38332-3-peter@pjd.dev>
 From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
-In-Reply-To: <20220704215457.38332-8-peter@pjd.dev>
+In-Reply-To: <20220704215457.38332-3-peter@pjd.dev>
 Content-Type: text/plain; charset="UTF-8"; format=flowed
 Content-Transfer-Encoding: 8bit
-X-Originating-IP: [37.59.142.102]
-X-ClientProxiedBy: DAG2EX1.mxp5.local (172.16.2.11) To DAG4EX1.mxp5.local
+X-Originating-IP: [37.59.142.99]
+X-ClientProxiedBy: DAG7EX1.mxp5.local (172.16.2.61) To DAG4EX1.mxp5.local
  (172.16.2.31)
-X-Ovh-Tracer-GUID: 500c8db9-81ab-494e-976d-8649bbbdfc5f
-X-Ovh-Tracer-Id: 15069325829979147046
+X-Ovh-Tracer-GUID: e2b3d199-6f54-49f3-824c-69d23e603e75
+X-Ovh-Tracer-Id: 15049904058637650726
 X-VR-SPAMSTATE: OK
 X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvfedrudeitddgleelucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhepkfffgggfuffvvehfhfgjtgfgihesthekredttdefjeenucfhrhhomhepveorughrihgtpgfnvggpifhorghtvghruceotghlgheskhgrohgurdhorhhgqeenucggtffrrghtthgvrhhnpeejgefggffgheejgfdufeeiueffveehteejgfelueekgfegtefgffejhedtgfejgfenucffohhmrghinhepghhithhhuhgsrdgtohhmnecukfhppedtrddtrddtrddtpdefjedrheelrddugedvrddutddvnecuvehluhhsthgvrhfuihiivgepvdenucfrrghrrghmpehmohguvgepshhmthhpohhuthdphhgvlhhopehmgihplhgrnhehrdhmrghilhdrohhvhhdrnhgvthdpihhnvghtpedtrddtrddtrddtpdhmrghilhhfrhhomheptghlgheskhgrohgurdhorhhgpdhnsggprhgtphhtthhopedupdhrtghpthhtohepqhgvmhhuqdguvghvvghlsehnohhnghhnuhdrohhrghdpoffvtefjohhsthepmhhoheehvd
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvfedrudeitddgleelucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhepkfffgggfuffvvehfhfgjtgfgihesthekredttdefjeenucfhrhhomhepveorughrihgtpgfnvggpifhorghtvghruceotghlgheskhgrohgurdhorhhgqeenucggtffrrghtthgvrhhnpeejgefggffgheejgfdufeeiueffveehteejgfelueekgfegtefgffejhedtgfejgfenucffohhmrghinhepghhithhhuhgsrdgtohhmnecukfhppedtrddtrddtrddtpdefjedrheelrddugedvrdelleenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhhouggvpehsmhhtphhouhhtpdhhvghlohepmhigphhlrghnhedrmhgrihhlrdhovhhhrdhnvghtpdhinhgvtheptddrtddrtddrtddpmhgrihhlfhhrohhmpegtlhhgsehkrghougdrohhrghdpnhgspghrtghpthhtohepuddprhgtphhtthhopehqvghmuhdquggvvhgvlhesnhhonhhgnhhurdhorhhgpdfovfetjfhoshhtpehmohehhedv
 Received-SPF: pass client-ip=188.165.59.253; envelope-from=clg@kaod.org;
  helo=7.mo552.mail-out.ovh.net
 X-Spam_score_int: -18
@@ -92,36 +92,68 @@ X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: JmAKVA5pXRf4
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 44K0DcR4npcu
 
 On 7/4/22 23:54, Peter Delevoryas wrote:
-> With the BIC, the easiest way to run everything is to create two pty's
-> for each SoC and reserve stdin/stdout for the monitor:
+> This change moves the code that connects the SoC UART's to serial_hd's
+> to the machine.
 > 
->      wget https://github.com/facebook/openbmc/releases/download/openbmc-e2294ff5d31d/fby35.mtd
+> It makes each UART a proper child member of the SoC, and then allows the
+> machine to selectively initialize the chardev for each UART with a
+> serial_hd.
+> 
+> This should preserve backwards compatibility, but also allow multi-SoC
+> boards to completely change the wiring of serial devices from the
+> command line to specific SoC UART's.
+> 
+> This also removes the uart-default property from the SoC, since the SoC
+> doesn't need to know what UART is the "default" on the machine anymore.
+> 
+> I tested this using the images and commands from the previous
+> refactoring, and another test image for the ast1030:
+> 
+>      wget https://github.com/facebook/openbmc/releases/download/v2021.49.0/fuji.mtd
+>      wget https://github.com/facebook/openbmc/releases/download/v2021.49.0/wedge100.mtd
 >      wget https://github.com/peterdelevoryas/OpenBIC/releases/download/oby35-cl-2022.13.01/Y35BCL.elf
->      qemu-system-arm -machine fby35 \
->          -drive file=fby35.mtd,format=raw,if=mtd \
->          -device loader,file=fby35.mtd,addr=0,cpu-num=0 \
->          -serial pty -serial pty -serial mon:stdio -display none -S
 > 
->      screen /dev/ttys0
->      screen /dev/ttys1
->      (qemu) c
+> Fuji uses UART1:
 > 
+>      qemu-system-arm -machine fuji-bmc \
+>          -drive file=fuji.mtd,format=raw,if=mtd \
+>          -nographic
+> 
+> ast2600-evb uses uart-default=UART5:
+> 
+>      qemu-system-arm -machine ast2600-evb \
+>          -drive file=fuji.mtd,format=raw,if=mtd \
+>          -serial null -serial mon:stdio -display none
+> 
+> Wedge100 uses UART3:
+> 
+>      qemu-system-arm -machine palmetto-bmc \
+>          -drive file=wedge100.mtd,format=raw,if=mtd \
+>          -serial null -serial null -serial null \
+>          -serial mon:stdio -display none
+> 
+> AST1030 EVB uses UART5:
+> 
+>      qemu-system-arm -machine ast1030-evb \
+>          -kernel Y35BCL.elf -nographic
+> 
+> Fixes: 6827ff20b2975 ("hw: aspeed: Init all UART's with serial devices")
 > Signed-off-by: Peter Delevoryas <peter@pjd.dev>
 
 
@@ -131,75 +163,243 @@ Thanks,
 
 C.
 
+
 > ---
->   hw/arm/fby35.c | 27 ++++++++++++++++++++++++++-
->   1 file changed, 26 insertions(+), 1 deletion(-)
+>   hw/arm/aspeed.c             | 22 +++++++++++++---
+>   hw/arm/aspeed_ast10x0.c     |  8 +++++-
+>   hw/arm/aspeed_ast2600.c     |  8 +++++-
+>   hw/arm/aspeed_soc.c         | 50 +++++++++++++++++++++++++------------
+>   include/hw/arm/aspeed_soc.h |  7 ++++--
+>   5 files changed, 71 insertions(+), 24 deletions(-)
 > 
-> diff --git a/hw/arm/fby35.c b/hw/arm/fby35.c
-> index d3edfa3b10..031602800f 100644
-> --- a/hw/arm/fby35.c
-> +++ b/hw/arm/fby35.c
-> @@ -11,7 +11,9 @@
->   #include "sysemu/sysemu.h"
->   #include "sysemu/block-backend.h"
->   #include "hw/boards.h"
-> +#include "hw/qdev-clock.h"
->   #include "hw/arm/aspeed_soc.h"
-> +#include "hw/arm/boot.h"
+> diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
+> index bee8a748ec..cc395f988c 100644
+> --- a/hw/arm/aspeed.c
+> +++ b/hw/arm/aspeed.c
+> @@ -26,6 +26,7 @@
+>   #include "qemu/error-report.h"
+>   #include "qemu/units.h"
+>   #include "hw/qdev-clock.h"
+> +#include "sysemu/sysemu.h"
 >   
->   #define TYPE_FBY35 MACHINE_TYPE_NAME("fby35")
->   OBJECT_DECLARE_SIMPLE_TYPE(Fby35State, FBY35);
-> @@ -22,8 +24,11 @@ struct Fby35State {
->       MemoryRegion bmc_memory;
->       MemoryRegion bmc_dram;
->       MemoryRegion bmc_boot_rom;
-> +    MemoryRegion bic_memory;
-> +    Clock *bic_sysclk;
->   
->       AspeedSoCState bmc;
-> +    AspeedSoCState bic;
->   
->       bool mmio_exec;
->   };
-> @@ -110,11 +115,31 @@ static void fby35_bmc_init(Fby35State *s)
->       }
+>   static struct arm_boot_info aspeed_board_binfo = {
+>       .board_id = -1, /* device-tree-only board */
+> @@ -301,6 +302,21 @@ static void sdhci_attach_drive(SDHCIState *sdhci, DriveInfo *dinfo)
+>                                  &error_fatal);
 >   }
 >   
-> +static void fby35_bic_init(Fby35State *s)
+> +static void connect_serial_hds_to_uarts(AspeedMachineState *bmc)
 > +{
-> +    s->bic_sysclk = clock_new(OBJECT(s), "SYSCLK");
-> +    clock_set_hz(s->bic_sysclk, 200000000ULL);
+> +    AspeedMachineClass *amc = ASPEED_MACHINE_GET_CLASS(bmc);
+> +    AspeedSoCState *s = &bmc->soc;
+> +    AspeedSoCClass *sc = ASPEED_SOC_GET_CLASS(s);
 > +
-> +    memory_region_init(&s->bic_memory, OBJECT(s), "bic-memory", UINT64_MAX);
-> +
-> +    object_initialize_child(OBJECT(s), "bic", &s->bic, "ast1030-a1");
-> +    qdev_connect_clock_in(DEVICE(&s->bic), "sysclk", s->bic_sysclk);
-> +    object_property_set_link(OBJECT(&s->bic), "memory", OBJECT(&s->bic_memory),
-> +                             &error_abort);
-> +    aspeed_soc_uart_set_chr(&s->bic, ASPEED_DEV_UART5, serial_hd(1));
-> +    qdev_realize(DEVICE(&s->bic), NULL, &error_abort);
-> +
-> +    aspeed_board_init_flashes(&s->bic.fmc, "sst25vf032b", 2, 2);
-> +    aspeed_board_init_flashes(&s->bic.spi[0], "sst25vf032b", 2, 4);
-> +    aspeed_board_init_flashes(&s->bic.spi[1], "sst25vf032b", 2, 6);
+> +    aspeed_soc_uart_set_chr(s, amc->uart_default, serial_hd(0));
+> +    for (int i = 1, uart = ASPEED_DEV_UART1; i < sc->uarts_num; i++, uart++) {
+> +        if (uart == amc->uart_default) {
+> +            continue;
+> +        }
+> +        aspeed_soc_uart_set_chr(s, uart, serial_hd(i));
+> +    }
 > +}
 > +
->   static void fby35_init(MachineState *machine)
+>   static void aspeed_machine_init(MachineState *machine)
 >   {
->       Fby35State *s = FBY35(machine);
+>       AspeedMachineState *bmc = ASPEED_MACHINE(machine);
+> @@ -346,8 +362,7 @@ static void aspeed_machine_init(MachineState *machine)
+>           object_property_set_int(OBJECT(&bmc->soc), "hw-prot-key",
+>                                   ASPEED_SCU_PROT_KEY, &error_abort);
+>       }
+> -    qdev_prop_set_uint32(DEVICE(&bmc->soc), "uart-default",
+> -                         amc->uart_default);
+> +    connect_serial_hds_to_uarts(bmc);
+>       qdev_realize(DEVICE(&bmc->soc), NULL, &error_abort);
 >   
->       fby35_bmc_init(s);
-> +    fby35_bic_init(s);
+>       aspeed_board_init_flashes(&bmc->soc.fmc,
+> @@ -1372,8 +1387,7 @@ static void aspeed_minibmc_machine_init(MachineState *machine)
+>   
+>       object_property_set_link(OBJECT(&bmc->soc), "memory",
+>                                OBJECT(get_system_memory()), &error_abort);
+> -    qdev_prop_set_uint32(DEVICE(&bmc->soc), "uart-default",
+> -                         amc->uart_default);
+> +    connect_serial_hds_to_uarts(bmc);
+>       qdev_realize(DEVICE(&bmc->soc), NULL, &error_abort);
+>   
+>       aspeed_board_init_flashes(&bmc->soc.fmc,
+> diff --git a/hw/arm/aspeed_ast10x0.c b/hw/arm/aspeed_ast10x0.c
+> index 677699e54c..4d0b9b115f 100644
+> --- a/hw/arm/aspeed_ast10x0.c
+> +++ b/hw/arm/aspeed_ast10x0.c
+> @@ -144,6 +144,10 @@ static void aspeed_soc_ast1030_init(Object *obj)
+>           object_initialize_child(obj, "wdt[*]", &s->wdt[i], typename);
+>       }
+>   
+> +    for (i = 0; i < sc->uarts_num; i++) {
+> +        object_initialize_child(obj, "uart[*]", &s->uart[i], TYPE_SERIAL_MM);
+> +    }
+> +
+>       snprintf(typename, sizeof(typename), "aspeed.gpio-%s", socname);
+>       object_initialize_child(obj, "gpio", &s->gpio, typename);
+>   
+> @@ -255,7 +259,9 @@ static void aspeed_soc_ast1030_realize(DeviceState *dev_soc, Error **errp)
+>                                   sc->irqmap[ASPEED_DEV_KCS] + aspeed_lpc_kcs_4));
+>   
+>       /* UART */
+> -    aspeed_soc_uart_init(s);
+> +    if (!aspeed_soc_uart_realize(s, errp)) {
+> +        return;
+> +    }
+>   
+>       /* Timer */
+>       object_property_set_link(OBJECT(&s->timerctrl), "scu", OBJECT(&s->scu),
+> diff --git a/hw/arm/aspeed_ast2600.c b/hw/arm/aspeed_ast2600.c
+> index 64eb5a7b26..aa2cd90bec 100644
+> --- a/hw/arm/aspeed_ast2600.c
+> +++ b/hw/arm/aspeed_ast2600.c
+> @@ -214,6 +214,10 @@ static void aspeed_soc_ast2600_init(Object *obj)
+>           object_initialize_child(obj, "mii[*]", &s->mii[i], TYPE_ASPEED_MII);
+>       }
+>   
+> +    for (i = 0; i < sc->uarts_num; i++) {
+> +        object_initialize_child(obj, "uart[*]", &s->uart[i], TYPE_SERIAL_MM);
+> +    }
+> +
+>       snprintf(typename, sizeof(typename), TYPE_ASPEED_XDMA "-%s", socname);
+>       object_initialize_child(obj, "xdma", &s->xdma, typename);
+>   
+> @@ -386,7 +390,9 @@ static void aspeed_soc_ast2600_realize(DeviceState *dev, Error **errp)
+>                          aspeed_soc_get_irq(s, ASPEED_DEV_ADC));
+>   
+>       /* UART */
+> -    aspeed_soc_uart_init(s);
+> +    if (!aspeed_soc_uart_realize(s, errp)) {
+> +        return;
+> +    }
+>   
+>       /* I2C */
+>       object_property_set_link(OBJECT(&s->i2c), "dram", OBJECT(s->dram_mr),
+> diff --git a/hw/arm/aspeed_soc.c b/hw/arm/aspeed_soc.c
+> index 0bb6a2f092..b05b9dd416 100644
+> --- a/hw/arm/aspeed_soc.c
+> +++ b/hw/arm/aspeed_soc.c
+> @@ -208,6 +208,10 @@ static void aspeed_soc_init(Object *obj)
+>                                   TYPE_FTGMAC100);
+>       }
+>   
+> +    for (i = 0; i < sc->uarts_num; i++) {
+> +        object_initialize_child(obj, "uart[*]", &s->uart[i], TYPE_SERIAL_MM);
+> +    }
+> +
+>       snprintf(typename, sizeof(typename), TYPE_ASPEED_XDMA "-%s", socname);
+>       object_initialize_child(obj, "xdma", &s->xdma, typename);
+>   
+> @@ -315,7 +319,9 @@ static void aspeed_soc_realize(DeviceState *dev, Error **errp)
+>                          aspeed_soc_get_irq(s, ASPEED_DEV_ADC));
+>   
+>       /* UART */
+> -    aspeed_soc_uart_init(s);
+> +    if (!aspeed_soc_uart_realize(s, errp)) {
+> +        return;
+> +    }
+>   
+>       /* I2C */
+>       object_property_set_link(OBJECT(&s->i2c), "dram", OBJECT(s->dram_mr),
+> @@ -482,8 +488,6 @@ static Property aspeed_soc_properties[] = {
+>                        MemoryRegion *),
+>       DEFINE_PROP_LINK("dram", AspeedSoCState, dram_mr, TYPE_MEMORY_REGION,
+>                        MemoryRegion *),
+> -    DEFINE_PROP_UINT32("uart-default", AspeedSoCState, uart_default,
+> -                       ASPEED_DEV_UART5),
+>       DEFINE_PROP_END_OF_LIST(),
+>   };
+>   
+> @@ -573,23 +577,37 @@ qemu_irq aspeed_soc_get_irq(AspeedSoCState *s, int dev)
+>       return ASPEED_SOC_GET_CLASS(s)->get_irq(s, dev);
 >   }
 >   
+> -void aspeed_soc_uart_init(AspeedSoCState *s)
+> +bool aspeed_soc_uart_realize(AspeedSoCState *s, Error **errp)
+>   {
+>       AspeedSoCClass *sc = ASPEED_SOC_GET_CLASS(s);
+> -    int i, uart;
+> -
+> -    /* Attach an 8250 to the IO space as our UART */
+> -    serial_mm_init(s->memory, sc->memmap[s->uart_default], 2,
+> -                   aspeed_soc_get_irq(s, s->uart_default), 38400,
+> -                   serial_hd(0), DEVICE_LITTLE_ENDIAN);
+> -    for (i = 1, uart = ASPEED_DEV_UART1; i < sc->uarts_num; i++, uart++) {
+> -        if (uart == s->uart_default) {
+> -            uart++;
+> +    SerialMM *smm;
+> +
+> +    for (int i = 0, uart = ASPEED_DEV_UART1; i < sc->uarts_num; i++, uart++) {
+> +        smm = &s->uart[i];
+> +
+> +        /* Chardev property is set by the machine. */
+> +        qdev_prop_set_uint8(DEVICE(smm), "regshift", 2);
+> +        qdev_prop_set_uint32(DEVICE(smm), "baudbase", 38400);
+> +        qdev_set_legacy_instance_id(DEVICE(smm), sc->memmap[uart], 2);
+> +        qdev_prop_set_uint8(DEVICE(smm), "endianness", DEVICE_LITTLE_ENDIAN);
+> +        if (!sysbus_realize(SYS_BUS_DEVICE(smm), errp)) {
+> +            return false;
+>           }
+> -        serial_mm_init(s->memory, sc->memmap[uart], 2,
+> -                       aspeed_soc_get_irq(s, uart), 38400,
+> -                       serial_hd(i), DEVICE_LITTLE_ENDIAN);
+> +
+> +        sysbus_connect_irq(SYS_BUS_DEVICE(smm), 0, aspeed_soc_get_irq(s, uart));
+> +        aspeed_mmio_map(s, SYS_BUS_DEVICE(smm), 0, sc->memmap[uart]);
+>       }
+> +
+> +    return true;
+> +}
+> +
+> +void aspeed_soc_uart_set_chr(AspeedSoCState *s, int dev, Chardev *chr)
+> +{
+> +    AspeedSoCClass *sc = ASPEED_SOC_GET_CLASS(s);
+> +    int i = dev - ASPEED_DEV_UART1;
+> +
+> +    g_assert(0 <= i && i < ARRAY_SIZE(s->uart) && i < sc->uarts_num);
+> +    qdev_prop_set_chr(DEVICE(&s->uart[i]), "chardev", chr);
+>   }
 >   
-> @@ -141,7 +166,7 @@ static void fby35_class_init(ObjectClass *oc, void *data)
->       mc->init = fby35_init;
->       mc->no_floppy = 1;
->       mc->no_cdrom = 1;
-> -    mc->min_cpus = mc->max_cpus = mc->default_cpus = 2;
-> +    mc->min_cpus = mc->max_cpus = mc->default_cpus = 3;
+>   /*
+> diff --git a/include/hw/arm/aspeed_soc.h b/include/hw/arm/aspeed_soc.h
+> index e65926a667..68e907cd64 100644
+> --- a/include/hw/arm/aspeed_soc.h
+> +++ b/include/hw/arm/aspeed_soc.h
+> @@ -36,12 +36,14 @@
+>   #include "hw/misc/aspeed_lpc.h"
+>   #include "hw/misc/unimp.h"
+>   #include "hw/misc/aspeed_peci.h"
+> +#include "hw/char/serial.h"
 >   
->       object_class_property_add_bool(oc, "execute-in-place",
->                                      fby35_get_mmio_exec,
+>   #define ASPEED_SPIS_NUM  2
+>   #define ASPEED_EHCIS_NUM 2
+>   #define ASPEED_WDTS_NUM  4
+>   #define ASPEED_CPUS_NUM  2
+>   #define ASPEED_MACS_NUM  4
+> +#define ASPEED_UARTS_NUM 13
+>   
+>   struct AspeedSoCState {
+>       /*< private >*/
+> @@ -79,7 +81,7 @@ struct AspeedSoCState {
+>       AspeedSDHCIState emmc;
+>       AspeedLPCState lpc;
+>       AspeedPECIState peci;
+> -    uint32_t uart_default;
+> +    SerialMM uart[ASPEED_UARTS_NUM];
+>       Clock *sysclk;
+>       UnimplementedDeviceState iomem;
+>       UnimplementedDeviceState video;
+> @@ -175,7 +177,8 @@ enum {
+>   };
+>   
+>   qemu_irq aspeed_soc_get_irq(AspeedSoCState *s, int dev);
+> -void aspeed_soc_uart_init(AspeedSoCState *s);
+> +bool aspeed_soc_uart_realize(AspeedSoCState *s, Error **errp);
+> +void aspeed_soc_uart_set_chr(AspeedSoCState *s, int dev, Chardev *chr);
+>   bool aspeed_soc_dram_init(AspeedSoCState *s, Error **errp);
+>   void aspeed_mmio_map(AspeedSoCState *s, SysBusDevice *dev, int n, hwaddr addr);
+>   void aspeed_mmio_map_unimplemented(AspeedSoCState *s, SysBusDevice *dev,
 

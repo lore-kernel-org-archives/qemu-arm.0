@@ -1,128 +1,105 @@
-Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp4860485lft;
-        Wed, 6 Jul 2022 09:50:57 -0700 (PDT)
-X-Google-Smtp-Source: AGRyM1shPHfUnOMtY3Obu8KarhIL/NFec4/5rAPLUhYb2/buIVPiI3w7G25FRpLSSVDXOqn7eP6v
-X-Received: by 2002:a0d:c144:0:b0:31b:d12b:fca4 with SMTP id c65-20020a0dc144000000b0031bd12bfca4mr46442628ywd.366.1657126257023;
-        Wed, 06 Jul 2022 09:50:57 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1657126257; cv=none;
+Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp4860996lft;
+        Wed, 6 Jul 2022 09:52:00 -0700 (PDT)
+X-Google-Smtp-Source: AGRyM1tkAidUYSm/nkKSSofeGI7sm/LxXF+5fIIcBXhC1ZXPa7DzV5W7ZvaWHahmbHGzyhMfbQ7I
+X-Received: by 2002:a25:f210:0:b0:66e:4872:d272 with SMTP id i16-20020a25f210000000b0066e4872d272mr19110266ybe.73.1657126320344;
+        Wed, 06 Jul 2022 09:52:00 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1657126320; cv=none;
         d=google.com; s=arc-20160816;
-        b=z/78oDbnEsqBEk9Uyv2dyOj+AgVh1PvZshFp3/Ctfa4Si2i2Vp3fZ8rIvomvHJxr8U
-         0VcBf4+7W8PD0CkiHLtUB3kKHxMqgdhhG/DrFrfhct4JRkCXxdjU5zq+D2STpwihrYtc
-         /R6TrajkXriaDGdXeDcvGrggNvFkEtXrGrF8edRmy10gY39KBHQHFf7twbo+dWz3q6Iv
-         qUEAdGviweps1ulQWXYDQkzPoP+XJm6AFW+ggR4Q6ttm22Vk1HsQTpo68IgruNu94nz+
-         sPS3+5sGLtnRPM6DX8nLZ9JPrLROymKB5Nc+k8jz9ro6YtTO0DMT3rMaNT/zRZbk2fx6
-         L6Zw==
+        b=1BHpbdmIXIKOT61cRHhYAOyx+wgsCyZ9cZJc5pi8u/gJss7PvLCViCtWJNBFUWw0U9
+         QovnStD3t1wCQUKfqY+I40wJyP1uJfqBVeSYwGafrwiUjOyq2aPN1G3wFoEktcVuEOfc
+         ypk6RIx2d18+ICHu53jk7tPZ2BsQXdeDneBLuwsmlTql5GHQQfwvReaRCDmLjDXU3Ig0
+         IZWgqb2zS6z1L2R1c2Q6XltauBfMDLu7gvfDK3i+52LaG6+rDQ5Wg/EE7rB4G3eT7L5p
+         TK/88me1jC5B6OMlXoUurEDN72hv9wtJmk8mhMUhkR1x3nJ3s+V8IwFkDTqVxbvv8pPm
+         ji6w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :feedback-id:dkim-signature:dkim-signature;
-        bh=KKnI6wC28U72N7o9Y37zs4FFtxaW2QBINMqrxwsdfWM=;
-        b=B6tb8tZ2DyS0PEeAUiJzk3wCYFJd6R56Gq+GIJiLCRwfLFz9qTVIgxDBD+OgkoXjC8
-         C7lejge9wcbNGvlZ9YKeyWP+YEOU5uqn0YWUj5C6uEcHrYpjp8nPUlXy8yE/IOCDwn8T
-         Mc1oFegZmeHBt+RoI97kyuko2WIPrlqkXZxP6ernOoamfMbhkjJu7fkkuKGJgeoZWjMG
-         RH5Tm/KynSYHNZ0EsW9oAMUr3lb0K9Jy/LCmdpUkLae4hjOikVTwZwvARlPjyg+lkTGk
-         YGFRXo6x8XeZhZLJ3Gz3hvhttYYaH0XAlu+mWuIBgW1kumLHy7idZQiVAEUoVXw0jN/l
-         XyRw==
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=LnY95ebbEKOL3mSLCMi2yyHc/+ogQ4/kJ58kxpMkYr0=;
+        b=C8xqnOFHidSLg4udKIGRdcXzQn+1K8r9vdFacV2PxOXTrUHfjojFsP5OLAo8Xb88R0
+         rNIdZRvwdVtZA6Z4Itr7bt3KQxxBBNEd7FJunQuvw1i6eBDgLnb2+hL7tWQUdA4/9KTH
+         AI5I8aJHS+Q3SBUHvq9ka6Ju1GlKXTX546wvWq1Eowz4LNVrdAjPD3awzqkG509V2bEM
+         D2McKMsoERdvFt7p7l82xupS4j8TmyapswW4jDjljm94pLb1M2MdmE/YxB4u4QaP+HhI
+         3MYKeDVHj4d+SLvQxRWTJO3PeVctFRiMAhTyDmnLJo1IO2My0w4RCACGYGKuWitXUupc
+         +sEg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@pjd.dev header.s=fm1 header.b=xhjIbmzS;
-       dkim=fail header.i=@messagingengine.com header.s=fm3 header.b=A7NJCsnS;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@linaro.org header.s=google header.b=cx26fcEq;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a7-20020a814d07000000b0031cb402b56csi10308033ywb.342.2022.07.06.09.50.56
+        by mx.google.com with ESMTPS id 15-20020a81090f000000b0031cb21eb1bbsi10687169ywj.21.2022.07.06.09.52.00
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 06 Jul 2022 09:50:57 -0700 (PDT)
+        Wed, 06 Jul 2022 09:52:00 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@pjd.dev header.s=fm1 header.b=xhjIbmzS;
-       dkim=fail header.i=@messagingengine.com header.s=fm3 header.b=A7NJCsnS;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:46018 helo=lists1p.gnu.org)
+       dkim=pass header.i=@linaro.org header.s=google header.b=cx26fcEq;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:47758 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1o98Eq-0001Eh-Da
-	for alex.bennee@linaro.org; Wed, 06 Jul 2022 12:50:56 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49796)
+	id 1o98Fr-0002Tn-OV
+	for alex.bennee@linaro.org; Wed, 06 Jul 2022 12:51:59 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:49948)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter@pjd.dev>)
- id 1o98Ec-0001De-P2; Wed, 06 Jul 2022 12:50:42 -0400
-Received: from wnew2-smtp.messagingengine.com ([64.147.123.27]:51547)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter@pjd.dev>)
- id 1o98EY-0003v9-R8; Wed, 06 Jul 2022 12:50:41 -0400
-Received: from compute4.internal (compute4.nyi.internal [10.202.2.44])
- by mailnew.west.internal (Postfix) with ESMTP id D2F312B059F0;
- Wed,  6 Jul 2022 12:50:36 -0400 (EDT)
-Received: from mailfrontend2 ([10.202.2.163])
- by compute4.internal (MEProxy); Wed, 06 Jul 2022 12:50:37 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=pjd.dev; h=cc:cc
- :content-type:date:date:from:from:in-reply-to:in-reply-to
- :message-id:mime-version:references:reply-to:sender:subject
- :subject:to:to; s=fm1; t=1657126236; x=1657129836; bh=KKnI6wC28U
- 72N7o9Y37zs4FFtxaW2QBINMqrxwsdfWM=; b=xhjIbmzSEfpNt29tr589h97DGM
- OW8pvLZs/rGRdJhBZSz9QKdnjelRXjiHVLLQAmPHrhaM7iMSGd791rfPRvCK4RWq
- F3MNFsbaMWGH/jT7vZC0upYmiJxk0sQBDdY3jHHEgY4wtsuEZDNNMFnQ2mm1o8G4
- CwO4nsJHSZSz9QbUwN8SQ6ZXd/7t+FX0Tueo89KKnah2zVnYk7TDFa54gMiSbGDU
- IsKyeaG+WWqV0lkC7fMT08OONKIL0rBoN0kZ1G6d6OZIq2xT93ZFvYpPk4VF93IL
- CV4+cGnbBnW+8yWZw+K4isu85u9iUrnDe0ZB4aq0ru4FMIOYnVeqskpgCF4g==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
- messagingengine.com; h=cc:cc:content-type:date:date:feedback-id
- :feedback-id:from:from:in-reply-to:in-reply-to:message-id
- :mime-version:references:reply-to:sender:subject:subject:to:to
- :x-me-proxy:x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=
- fm3; t=1657126236; x=1657129836; bh=KKnI6wC28U72N7o9Y37zs4FFtxaW
- 2QBINMqrxwsdfWM=; b=A7NJCsnSq4VhVL2S/84zE+7EtYSqbsoXC4bvrIj7t5iF
- lauS8tt6GjG9YcwTIrtwDUEpUu66/fsEB2mLZlo7M1IQt7M/wnJKLM36YgS8dJo8
- BTt5Hoo5E9SZP3/GuhOtcK1G5KFxp+GQUlQwtYT5YOZn8qJGCPP1VPwlqlvA3EOS
- u0N3RIfUIrlLyIaQq2WCNXDruOsYef6snBMZ89W6ee4dLvb7RzLG6lBdp2CKxNio
- w8voJAylUu2RDG7wMyweFQZioVNRYhG4xwFYyg111y8nsA0kGrWk9QBcU+ZVCjtr
- ZeEYBEtUkMD+SZknry+f/W8tWH+tyGICU/sP+nRGBQ==
-X-ME-Sender: <xms:W73FYk_4Hb98Dil8XMbL7ssyA6KDLQuTH4GkiAvOYlv2tTuIAYrtpA>
- <xme:W73FYsvPo_8igBcKSSn7_3W5lD4Q5mcAUkIflHxhK2SmytvWTglihoP29FMYI7vus
- i9fwCktea_tFSN0M_Y>
-X-ME-Received: <xmr:W73FYqAz9JUQmbcelUS7H8A1JqFvdracCdaChndHnLyQX6J7PjRGR4sycHzYALBTtT_NwDNWH50W4TPXdAWTdFEc>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvfedrudeifedguddthecutefuodetggdotefrod
- ftvfcurfhrohhfihhlvgemucfhrghsthforghilhdpqfgfvfdpuffrtefokffrpgfnqfgh
- necuuegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmd
- enucfjughrpeffhffvvefukfhfgggtuggjsehttdertddttddvnecuhfhrohhmpefrvght
- vghrucffvghlvghvohhrhigrshcuoehpvghtvghrsehpjhgurdguvghvqeenucggtffrrg
- htthgvrhhnpeefhedvveeifeekieelvddvfeehtdeuueegudeludevveeivdelleetffei
- gfetheenucffohhmrghinhepohhpvghntghomhhpuhhtvgdrohhrghdpghhithhhuhgsrd
- gtohhmnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmrghilhhfrhhomhep
- phgvthgvrhesphhjugdruggvvh
-X-ME-Proxy: <xmx:W73FYkcnv9t3Kwd5kM-3n3YcH-UHF6ariA8V27wfPATiQmoQpXFF7w>
- <xmx:W73FYpNHZVFQeCj41GCpL1b6jTPoRoqxbwCGLAklDO6j1Ncips0bmA>
- <xmx:W73FYukn2JzM5jfvHqVSbpWQhN9Lpg8ltjBA8ni9msTjpuCccVCl1g>
- <xmx:XL3FYupQskB78wM4PQow2GS2hRo_R_bNOvu5uelXU7Mhp0Q12JLaLTDynAY>
-Feedback-ID: i9e814621:Fastmail
-Received: by mail.messagingengine.com (Postfix) with ESMTPA; Wed,
- 6 Jul 2022 12:50:34 -0400 (EDT)
-Date: Wed, 6 Jul 2022 09:50:33 -0700
-From: Peter Delevoryas <peter@pjd.dev>
-To: Joel Stanley <joel@jms.id.au>
-Cc: =?iso-8859-1?Q?C=E9dric?= Le Goater <clg@kaod.org>,
- Peter Maydell <peter.maydell@linaro.org>,
- Andrew Jeffery <andrew@aj.id.au>, qemu-arm <qemu-arm@nongnu.org>,
- QEMU Developers <qemu-devel@nongnu.org>
-Subject: Re: [PATCH v2 9/9] docs: aspeed: Add fby35 multi-SoC machine section
-Message-ID: <YsW9WapRtTVmGBuJ@r37>
-References: <20220705191400.41632-1-peter@pjd.dev>
- <20220705191400.41632-10-peter@pjd.dev>
- <CACPK8Xd4iR1kdZRx8CCQn1n7w4L6ZUQhcyuUOGfinX6qbPOY-w@mail.gmail.com>
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1o98FP-0002Rc-Qq
+ for qemu-arm@nongnu.org; Wed, 06 Jul 2022 12:51:31 -0400
+Received: from mail-yw1-x1133.google.com ([2607:f8b0:4864:20::1133]:43529)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1o98FO-00043a-Bt
+ for qemu-arm@nongnu.org; Wed, 06 Jul 2022 12:51:31 -0400
+Received: by mail-yw1-x1133.google.com with SMTP id
+ 00721157ae682-3137316bb69so145958107b3.10
+ for <qemu-arm@nongnu.org>; Wed, 06 Jul 2022 09:51:29 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=LnY95ebbEKOL3mSLCMi2yyHc/+ogQ4/kJ58kxpMkYr0=;
+ b=cx26fcEqJdWkYI7I75yK9m+rwBrZ3CRvuaQMKrwnkhwwnqPoBjLxdMjXm99qwheYqZ
+ uWf1zlVJftMbw4IGhZRUFuLpb2qzrbfyn3QebiCo5+FFWo2YjFzXL1fIRN2wOtANdLDi
+ dkJap1qO11ahbRRHiozMABsrY/ZJJCtj8S6WDqARg6h/QWzaP7eYmQNctODOoVEXWsD5
+ R02WkYBlptxCqi7GVty2+ohG9q1ubJ2Bd/SsNJvczJ7Ol5eHDJ6N35gRoEQxdtTWcJKe
+ qRoRljdCtNySB9TWmXmsUtZHW6aD4pJ+0IllQ3F4sYihqISYx06MpXVTJtu/9pYIYn5d
+ ZIjQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=LnY95ebbEKOL3mSLCMi2yyHc/+ogQ4/kJ58kxpMkYr0=;
+ b=zcX/IZwnse9YysDR7UqFjawU2t8FqwwEUigPBKXKqYmvV3CvGentSRxt9j+wf0mroq
+ qfyhviy2NWeAqhJn/AJTFYCMbGVpAkexYCxQ3gmIZsx9tZHKeM72MjYgqiVtbfqO3hJa
+ HYor84+dnl8mrhk95fQmp67G3akAauDg57JOkhmCYiyDxdjRctdjpcINYkPkm3EDuGar
+ LqshxQqlKk6YIG5KPXC30xvNEk9Dy/VnYcuxl822R1ukFfmqe6IO5lO2YGw2sQQo02Dj
+ XZFoYD8WmxmMk2iTc0NJGItKBEjH/LT5qh4wZDx1RdIjyytYgKeVNbsI7Uikt4jI1Dw1
+ 4uqg==
+X-Gm-Message-State: AJIora8UrsvrxlqWeBrl7H3oRtgXHTKKmcyrQ7bHMqW9Yv++yfkJBMtx
+ xLTskG+BQNROvM4hFTf9AJAZW1iiMJYU4KtjPB87IKuSGuU=
+X-Received: by 2002:a81:6585:0:b0:31c:b55b:dd36 with SMTP id
+ z127-20020a816585000000b0031cb55bdd36mr14771488ywb.469.1657126288951; Wed, 06
+ Jul 2022 09:51:28 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <CACPK8Xd4iR1kdZRx8CCQn1n7w4L6ZUQhcyuUOGfinX6qbPOY-w@mail.gmail.com>
-Received-SPF: pass client-ip=64.147.123.27; envelope-from=peter@pjd.dev;
- helo=wnew2-smtp.messagingengine.com
-X-Spam_score_int: -17
-X-Spam_score: -1.8
-X-Spam_bar: -
-X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+References: <20220706082411.1664825-1-richard.henderson@linaro.org>
+ <20220706082411.1664825-21-richard.henderson@linaro.org>
+In-Reply-To: <20220706082411.1664825-21-richard.henderson@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Wed, 6 Jul 2022 17:50:51 +0100
+Message-ID: <CAFEAcA-dAC=9de3xrTRLZ8eigFGLraKcvHcfUgkQBpqa+PUMFw@mail.gmail.com>
+Subject: Re: [PATCH v5 20/45] target/arm: Implement SME LD1, ST1
+To: Richard Henderson <richard.henderson@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1133;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x1133.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FROM_FMBLA_NEWDOM14=0.998, RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -137,197 +114,19 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: F5UDW+qje7lk
+X-TUID: NYPrMHpn15WJ
 
-On Wed, Jul 06, 2022 at 08:21:12AM +0000, Joel Stanley wrote:
-> On Tue, 5 Jul 2022 at 19:14, Peter Delevoryas <peter@pjd.dev> wrote:
-> >
-> > Signed-off-by: Peter Delevoryas <peter@pjd.dev>
-> 
-> Reviewed-by: Joel Stanley <joel@jms.id.au>
-> 
-> > ---
-> >  docs/system/arm/aspeed.rst | 48 ++++++++++++++++++++++++++++++++++++++
-> >  1 file changed, 48 insertions(+)
-> >
-> > diff --git a/docs/system/arm/aspeed.rst b/docs/system/arm/aspeed.rst
-> > index 5d0a7865d3..b233191b67 100644
-> > --- a/docs/system/arm/aspeed.rst
-> > +++ b/docs/system/arm/aspeed.rst
-> > @@ -136,6 +136,54 @@ AST1030 SoC based machines :
-> >
-> >  - ``ast1030-evb``          Aspeed AST1030 Evaluation board (Cortex-M4F)
-> >
-> > +Facebook Yosemite v3.5 Platform and CraterLake Server (``fby35``)
-> > +==================================================================
-> > +
-> > +Facebook has a series of multi-node compute server designs named
-> > +Yosemite. The most recent version released was
-> > +`Yosemite v3 <https://www.opencompute.org/documents/ocp-yosemite-v3-platform-design-specification-1v16-pdf>`.
-> > +
-> > +Yosemite v3.5 is an iteration on this design, and is very similar: there's a
-> > +baseboard with a BMC, and 4 server slots. The new server board design termed
-> > +"CraterLake" includes a Bridge IC (BIC), with room for expansion boards to
-> > +include various compute accelerators (video, inferencing, etc). At the moment,
-> > +only the first server slot's BIC is included.
-> > +
-> > +Yosemite v3.5 is itself a sled which fits into a 40U chassis, and 3 sleds
-> > +can be fit into a chassis. See `here <https://www.opencompute.org/products/423/wiwynn-yosemite-v3-server>`
-> > +for an example.
-> > +
-> > +In this generation, the BMC is an AST2600 and each BIC is an AST1030. The BMC
-> > +runs `OpenBMC <https://github.com/facebook/openbmc>`, and the BIC runs
-> > +`OpenBIC <https://github.com/facebook/openbic>`.
-> > +
-> > +Firmware images can be retrieved from the Github releases or built from the
-> > +source code, see the README's for instructions on that. This image uses the
-> > +"fby35" machine recipe from OpenBMC, and the "yv35-cl" target from OpenBIC.
-> > +Some reference images can also be found here:
-> > +
-> > +.. code-block:: bash
-> > +
-> > +    $ wget https://github.com/facebook/openbmc/releases/download/openbmc-e2294ff5d31d/fby35.mtd
-> > +    $ wget https://github.com/peterdelevoryas/OpenBIC/releases/download/oby35-cl-2022.13.01/Y35BCL.elf
-> > +
-> > +Since this machine has multiple SoC's, each with their own serial console, the
-> > +recommended way to run it is to allocate a pseudoterminal for each serial
-> > +console and let the monitor use stdio. Also, starting in a paused state is
-> > +useful because it allows you to attach to the pseudoterminals before the boot
-> > +process starts.
-> > +
-> > +.. code-block:: bash
-> > +
-> > +    $ qemu-system-arm -machine fby35 \
-> > +        -drive file=fby35.mtd,format=raw,if=mtd \
-> > +        -device loader,file=Y35BCL.elf,addr=0,cpu-num=2 \
-> 
-> I came across a quirk of the qemu commandline when testing.
-> 
-> -drive knows how to expand ~ in a path, but -device loader does not.
-> Something for someone to look into on a rainy day!
-> 
-> eg:
-> 
-> $ build/qemu-system-arm -M fby35 -drive
-> file=~/tmp/fby35.mtd,format=raw,if=mtd -device
-> loader,file=~/tmp/Y35BCL.elf,addr=0,cpu-num=2 -serial pty -serial pty
-> -serial mon:stdio -display none -S
-> char device redirected to /dev/pts/3 (label serial0)
-> char device redirected to /dev/pts/5 (label serial1)
-> qemu-system-arm: warning: Aspeed iBT has no chardev backend
-> ~/tmp/Y35BCL.elf: No such file or directory
-> qemu-system-arm: -device
-> loader,file=~/tmp/Y35BCL.elf,addr=0,cpu-num=2: Cannot load specified
-> image ~/tmp/Y35BCL.elf
-> 
-> loader uses open(2) in load_elf_ram_sym.
-> 
-> The call stack for -drive looks like this (using a bad path to make it
-> easier to identify what's going on):
-> 
-> #0  __libc_open64 (file=file@entry=0xaaaaac009250
-> "/home/joel/tmp/fby35.mtda", oflag=oflag@entry=524288) at
-> ../sysdeps/unix/sysv/linux/open64.c:37
-> #1  0x0000aaaaab3b18bc in open64 (__oflag=524288,
-> __path=0xaaaaac009250 "/home/joel/tmp/fby35.mtda") at
-> /usr/include/aarch64-linux-gnu/bits/fcntl2.h:59
-> #2  qemu_open_cloexec (mode=0, flags=0, name=0xaaaaac009250
-> "/home/joel/tmp/fby35.mtda") at ../util/osdep.c:286
-> #3  qemu_open_internal (name=name@entry=0xaaaaac009250
-> "/home/joel/tmp/fby35.mtda", flags=flags@entry=0, mode=mode@entry=0,
-> errp=errp@entry=0xffffffffeb70) at ../util/osdep.c:330
-> #4  0x0000aaaaab3b1f30 in qemu_open (name=name@entry=0xaaaaac009250
-> "/home/joel/tmp/fby35.mtda", flags=flags@entry=0,
-> errp=errp@entry=0xffffffffeb70) at ../util/osdep.c:360
-> #5  0x0000aaaaab30d9d8 in raw_open_common (bs=0xaaaaac002c40,
-> options=<optimized out>, bdrv_flags=155650, open_flags=<optimized
-> out>, device=<optimized out>, errp=0xffffffffeb70)
->     at ../block/file-posix.c:680
-> #6  0x0000aaaaab2a53d0 in bdrv_open_driver
-> (bs=bs@entry=0xaaaaac002c40, drv=drv@entry=0xaaaaabc13250 <bdrv_file>,
-> node_name=<optimized out>, options=options@entry=0xaaaaac008230,
->     open_flags=open_flags@entry=155650,
-> errp=errp@entry=0xffffffffec18) at ../block.c:1625
-> #7  0x0000aaaaab2a9454 in bdrv_open_common (errp=0xffffffffec18,
-> options=0xaaaaac008230, file=0x0, bs=0xaaaaac002c40) at
-> ../block.c:1922
-> #8  bdrv_open_inherit (filename=<optimized out>,
-> filename@entry=0xaaaaabff9cd0 "/home/joel/tmp/fby35.mtda",
-> reference=reference@entry=0x0, options=0xaaaaac008230,
-> flags=<optimized out>,
->     flags@entry=0, parent=parent@entry=0xaaaaabffb580,
-> child_class=child_class@entry=0xaaaaab864498 <child_of_bds>,
-> child_role=child_role@entry=19, errp=errp@entry=0xffffffffed48)
->     at ../block.c:3991
-> #9  0x0000aaaaab2aa35c in bdrv_open_child_bs
-> (filename=filename@entry=0xaaaaabff9cd0 "/home/joel/tmp/fby35.mtda",
-> options=options@entry=0xaaaaac000a50,
->     bdref_key=bdref_key@entry=0xaaaaab573010 "file",
-> parent=parent@entry=0xaaaaabffb580,
-> child_class=child_class@entry=0xaaaaab864498 <child_of_bds>,
-> child_role=child_role@entry=19,
->     allow_none=allow_none@entry=true, errp=errp@entry=0xffffffffed48)
-> at ../block.c:3624
-> #10 0x0000aaaaab2a98e4 in bdrv_open_inherit
-> (filename=filename@entry=0xaaaaabff9cd0 "/home/joel/tmp/fby35.mtda",
-> reference=reference@entry=0x0, options=0xaaaaac000a50,
->     options@entry=0xaaaaabff8b70, flags=<optimized out>,
-> parent=parent@entry=0x0, child_class=child_class@entry=0x0,
-> child_role=child_role@entry=0,
->     errp=errp@entry=0xaaaaabc62368 <error_fatal>) at ../block.c:3938
-> #11 0x0000aaaaab2aa758 in bdrv_open
-> (filename=filename@entry=0xaaaaabff9cd0 "/home/joel/tmp/fby35.mtda",
-> reference=reference@entry=0x0, options=options@entry=0xaaaaabff8b70,
->     flags=<optimized out>, errp=errp@entry=0xaaaaabc62368
-> <error_fatal>) at ../block.c:4086
-> #12 0x0000aaaaab2c59c8 in blk_new_open
-> (filename=filename@entry=0xaaaaabff9cd0 "/home/joel/tmp/fby35.mtda",
-> reference=reference@entry=0x0, options=options@entry=0xaaaaabff8b70,
->     flags=<optimized out>, errp=errp@entry=0xaaaaabc62368
-> <error_fatal>) at ../block/block-backend.c:454
-> #13 0x0000aaaaab2956c8 in blockdev_init
-> (file=file@entry=0xaaaaabff9cd0 "/home/joel/tmp/fby35.mtda",
-> bs_opts=bs_opts@entry=0xaaaaabff8b70, errp=errp@entry=0xaaaaabc62368
-> <error_fatal>)
->     at ../blockdev.c:592
-> #14 0x0000aaaaab296884 in drive_new (all_opts=0xaaaaabd1a3b0,
-> block_default_type=<optimized out>, errp=0xaaaaabc62368 <error_fatal>)
-> at ../blockdev.c:981
-> #15 0x0000aaaaaafea1e8 in drive_init_func (opaque=<optimized out>,
-> opts=<optimized out>, errp=<optimized out>) at ../softmmu/vl.c:648
-> #16 0x0000aaaaab3c0a74 in qemu_opts_foreach (list=<optimized out>,
-> func=func@entry=0xaaaaaafea1d0 <drive_init_func>,
-> opaque=opaque@entry=0xaaaaabf3eb58,
->     errp=errp@entry=0xaaaaabc62368 <error_fatal>) at ../util/qemu-option.c:1135
-> #17 0x0000aaaaaafee9d8 in configure_blockdev (bdo_queue=0xaaaaabb866c0
-> <bdo_queue>, snapshot=0, machine_class=0xaaaaabf3eab0) at
-> ../softmmu/vl.c:707
-> #18 qemu_create_early_backends () at ../softmmu/vl.c:1882
-> #19 qemu_init (argc=<optimized out>, argv=0xfffffffff358,
-> envp=envp@entry=0x0) at ../softmmu/vl.c:3502
-> #20 0x0000aaaaaadb4300 in qemu_main (envp=0x0, argv=<optimized out>,
-> argc=<optimized out>) at ../softmmu/main.c:35
-> #21 main (argc=<optimized out>, argv=<optimized out>) at ../softmmu/main.c:45
-> 
-> and that was where I lost interest.
+On Wed, 6 Jul 2022 at 10:21, Richard Henderson
+<richard.henderson@linaro.org> wrote:
+>
+> We cannot reuse the SVE functions for LD[1-4] and ST[1-4],
+> because those functions accept only a Zreg register number.
+> For SME, we want to pass a pointer into ZA storage.
+>
+> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+> ---
 
-Oh that's odd. I can go look into this, I'd be curious to find out what's
-happening.
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
-Thanks for reviewing everything and trying it out!
-Peter
-
-> 
-> 
-> > +        -serial pty -serial pty -serial mon:stdio \
-> > +        -display none -S
-> > +    $ screen /dev/tty0 # In a separate TMUX pane, terminal window, etc.
-> > +    $ screen /dev/tty1
-> > +    $ (qemu) c            # Start the boot process once screen is setup.
-> > +
-> >  Supported devices
-> >  -----------------
-> >
-> > --
-> > 2.37.0
-> >
+thanks
+-- PMM

@@ -1,104 +1,105 @@
-Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp4555956lft;
-        Wed, 6 Jul 2022 02:06:03 -0700 (PDT)
-X-Google-Smtp-Source: AGRyM1v3/fBMZ+LLmvSzY8x1eEKuQ7zcNGvZ5yIf5eqNuVcghfusFwRNSA4ZEJFYwKTUWLNZ0weJ
-X-Received: by 2002:a05:622a:186:b0:319:1d49:2db7 with SMTP id s6-20020a05622a018600b003191d492db7mr31116949qtw.444.1657098363029;
-        Wed, 06 Jul 2022 02:06:03 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1657098363; cv=none;
+Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp4557738lft;
+        Wed, 6 Jul 2022 02:08:49 -0700 (PDT)
+X-Google-Smtp-Source: AGRyM1vJM0Sl4RT32/N+ZXu19M6HmRyihhSvkCZ5MY6Ft0HUK71rHfp6eOzO+x0KfkvG1Y0k/2Xn
+X-Received: by 2002:a05:622a:50d:b0:31e:7dcd:891a with SMTP id l13-20020a05622a050d00b0031e7dcd891amr9262249qtx.427.1657098529683;
+        Wed, 06 Jul 2022 02:08:49 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1657098529; cv=none;
         d=google.com; s=arc-20160816;
-        b=aku0dSS6GbrZEFYOlYQL6k12S3E41c257ezDi5fS5t4oz6ITSGUR61aLduBtGvE6/n
-         ryHlWvidaSxy1ihpQUwmg5w2BV4UjV9YhABjDcgm1KuSlFNjwS/c1ApUaFtTwqAkbC3U
-         VLO62HtBzPP6OqJ2Yef9CtCTmp2Uj95wzWADsMwvNvTe2M1EIc9GW44yzxSVwmZKUXlF
-         jKdTNwwjbDq2XLkE25Tuv3CHZBd6NQbW5iV1Eia/E2fTTKMnFgb4U80v6Ey5QzYu5BHx
-         nB2NlkAt5w0xmbyMiKkAxq53WaTy2S6igfW5DFVX3uH+AGct/+6IvsJahq4OQvK1CZrh
-         Melg==
+        b=F6CYdODti19tgtZjS+UkkDwavC0jQFHzNNCQbO9EbDND4fqWAwWLAtgBPeuKFVBiGb
+         i7x4/f9deztRSLCGeLSHtew/aeF/xAnqwPfuCkkBbSVnuGTPt83+yGqbw1EcHBLJp9GQ
+         vskNvcax2B38G9jcKbdoApw14Eo+Vc9l0E8YNZde/wpvb1SkD0BjoAcmJGTJchm5iKWi
+         LDnRmEVx115VdO2gy/zhfeFzej8OpctOJFfoMM8mBj018BCLp4bFB+OKbRccEXLe9Hq3
+         27mq2+7k406q3TJzhZ+Z4GkdH+qP+k3QizUCW9NMAOjEYTwRo6LQRHW+tfHTj1gPJWGD
+         Z8Gw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=KwsMd3cs1kMRtBrVlO0pZElFPRsZqBMQRBB6JbUzQes=;
-        b=lddHK503GoaCy9kU40ThyQOvrYz7nJTkLJ4T+3KatH4RZAUQMB/GddcG9tA4MCJqGf
-         ZZtKGdtxwK1vaoeyo1+BmRv4Jy0W14afD6KL/PAliUeHHlbbgoLxgF/8XnZJQcCAx1lj
-         0i/4VELDNUH5G8ucMQhGxKQNveX+wZLTzQvXQZdYSkJmHCvKZCAEZnvWYPOvkEAqB2CO
-         CNMqRHRetRRq9TmDFHZDATXhhs+CPqeqCyezEodXU4ppoyAfx5BSdq/+RhWLp2gv/l5Y
-         Jw/lR8o3JlOzcr+vU8k4Ez8qHYeTezdBV4fEE0UxmUBf5LZ2E7cG8TMKc/jOO5ksPHZg
-         KwaA==
+        bh=8q6UgHZNxgLAwjYyD3emx4pnHnGEMm3xg5CqdRKZ5yA=;
+        b=fhfcQFSUs6tx++KEqIvpe8Iy2e149GbDi9Jz+TQhRadv98S/XigLHT/jVvG+BDlDrA
+         k5Z0vaIdmUrUK/CW9FH4l3kT2xj2ASZs0sM1kDdQOAfC501AhRgdJXQyhv+vrrMEXvwd
+         NY0jc322KFTTaBAC/Hm4cKt/dDI+RIbFTZyxSrbwPTjJjvlUWwqk3FZoFWOXOAWUGr91
+         UoFRDsQQ2Th9UEaQBpiEkTxb8aSue2DMGGGfuR71FtWAg0LOJL2C+VifQ5YdxadI4nt6
+         nczGvgmS8ruubbdyFPWtTmNNAT4lvWYyjqBLXBcqOO+oXqZcAhvxgiK9qTvlMJtza8Bk
+         vBhg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="iawU5/78";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=NuXoMnXn;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id g21-20020ac85815000000b00304ed544f5csi6916707qtg.329.2022.07.06.02.06.02
+        by mx.google.com with ESMTPS id c21-20020ac85a95000000b003184128f6a5si19902334qtc.525.2022.07.06.02.08.49
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 06 Jul 2022 02:06:03 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 06 Jul 2022 02:08:49 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="iawU5/78";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=NuXoMnXn;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:49524 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:54686 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1o90yw-00021i-DK
-	for alex.bennee@linaro.org; Wed, 06 Jul 2022 05:06:02 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49228)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1o911d-0005es-5h
+	for alex.bennee@linaro.org; Wed, 06 Jul 2022 05:08:49 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:49350)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1o90LJ-0006B3-1e
- for qemu-arm@nongnu.org; Wed, 06 Jul 2022 04:25:05 -0400
-Received: from mail-pj1-x102d.google.com ([2607:f8b0:4864:20::102d]:50690)
+ id 1o90LP-0006Jh-KT
+ for qemu-devel@nongnu.org; Wed, 06 Jul 2022 04:25:11 -0400
+Received: from mail-pj1-x102e.google.com ([2607:f8b0:4864:20::102e]:41603)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1o90LF-0000SH-8I
- for qemu-arm@nongnu.org; Wed, 06 Jul 2022 04:25:02 -0400
-Received: by mail-pj1-x102d.google.com with SMTP id a15so7826797pjs.0
- for <qemu-arm@nongnu.org>; Wed, 06 Jul 2022 01:25:00 -0700 (PDT)
+ id 1o90LI-0000b7-Sa
+ for qemu-devel@nongnu.org; Wed, 06 Jul 2022 04:25:11 -0400
+Received: by mail-pj1-x102e.google.com with SMTP id
+ o31-20020a17090a0a2200b001ef7bd037bbso9762902pjo.0
+ for <qemu-devel@nongnu.org>; Wed, 06 Jul 2022 01:25:03 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=KwsMd3cs1kMRtBrVlO0pZElFPRsZqBMQRBB6JbUzQes=;
- b=iawU5/781n0h5P5w3Yci6+x3JiCI3jh+kUDROHXJOtZvmUGroIVHe/efdLxuYyq+sD
- 3k8Xg2biWNQNDy8r80Nn0dP80nHlV141tdkiE2/oQOWBLY3fpVvIvjYyIyPqa0TpXx2/
- L+aqzkO868m1895MZ2qcETVVQ6Vvq1Ii7vUyafqkap/LQ8vlVdBcoNV/wTJmz6iDDUxt
- 51eldjHyC9l8NkMOfaKujKKs1xEq71WQfhcoY4+BZQw152wbLNk+QbtNJ2/Np8MMsm2v
- t4oJ1dPvfgouGnpbCIbNtJ56YQ5ThPHQd9YOWIQKzFrDKQH5PWuUR8HzAskz+ZxkegHO
- i5ZA==
+ bh=8q6UgHZNxgLAwjYyD3emx4pnHnGEMm3xg5CqdRKZ5yA=;
+ b=NuXoMnXnfDmcOUZGSDzlpkHavqVKjx+UMW6mQRx7rkCl+/D6pwSBAdxqWFL95y3nNe
+ OLizIG56JLeziIkqo8ANNaW5NfP4CBFH0KB9xd0aRwDS9MtxTzj6C6vd4fprcCYhuqCv
+ MH/iL/wASq5iKXFAluXnmYH1Y9KIkgKG1leoWVUpkhMBuZcAUC48DPqjGu8honUMD7Fq
+ 19iPFzaYFjUB+690Tl/gtPp7poIXQ8cQYoqpv26/TdGT7mIHqSKNVh6kqsOfUm9cJQLt
+ 3ZPTwZK1stc/kIu/G0LJ+U1/2nj3wq7VbBx4KmAS+kz9P09jRl8EO43T9GI1uiC37Z4T
+ Pqgg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=KwsMd3cs1kMRtBrVlO0pZElFPRsZqBMQRBB6JbUzQes=;
- b=G/BIkFfQ1l5qEfGDaZcAh6/tfACJKp7e592WcSHDmoCNAO0gGVsnhdqsPcWvdREx3y
- McXNzIc2sT6hVqCQcrI+G/9vO8e20tqV2RWtjBSeBof5ohakBSY3MjwDE8UQEk2xdaek
- lcsFP6fcE+nVVKNitOY3q1gFA/BmGbUePDuDTHMQf46dm0WTXZ0FrqBPCyX9piGvg+jo
- 9Raj04vcg6D/zQMgSkM45OP4msjoUiK6zGkGoqyhKmZG0CevzPd+NKyc6ijH/W7qEwT/
- z3BMjBQRyRKcI4vS78YNO5Untm1+/haz5l0ZRyDFxe9mB1l4s5emquRwkzttvO81dfB+
- I0jw==
-X-Gm-Message-State: AJIora9wkQQOZvPMEK/5JQ78603Kem48md9lu6znGDarma1qI9pPbB5q
- VMpbtOclNVFk0RpEVu67pD6xjflEwLk3YCmx
-X-Received: by 2002:a17:90b:1b07:b0:1ec:c617:a314 with SMTP id
- nu7-20020a17090b1b0700b001ecc617a314mr45944585pjb.214.1657095899881; 
- Wed, 06 Jul 2022 01:24:59 -0700 (PDT)
+ bh=8q6UgHZNxgLAwjYyD3emx4pnHnGEMm3xg5CqdRKZ5yA=;
+ b=zHV3nOGwLrG0j7jOIuL4J055ZmdIP75ZZrb48ME3XZHDsc3QocdD9+i3Xev7usW8Iu
+ MSiq45Nv8UzMvjlFgZCzqAO3gHHvNtj1B3m7YCGZIL80NgFzu15k4H+w+DgAeT6eSf8U
+ eHDsL7bNlKbUGea5tStkSsqEAp0k99gTytFQWnDW6llCih4BGbQ4K67DkjBadCr6WS8Q
+ orkruAImmlz0oXATDIDZU8UH0F2kMCF1sk5M3yOnR2zsMzAmZQJN6AAcIpF+RuxLS63c
+ 42KFplAQ4/dAWZXzhAVoeXvI4BB/ZfcZO3XwR9RrSa9o3JL76EVDurzcYr9Sskk7kz70
+ ONKA==
+X-Gm-Message-State: AJIora+kMYx+YfZUBuEgDVg7MD2NzaefqUuyE6rVpMgd6BL+wvuJgxia
+ kWbYWCjjShp2nQBCqTkZ+I9irjM3gD8zqo3v
+X-Received: by 2002:a17:90a:ca89:b0:1ef:7de9:ac45 with SMTP id
+ y9-20020a17090aca8900b001ef7de9ac45mr23548856pjt.59.1657095902990; 
+ Wed, 06 Jul 2022 01:25:02 -0700 (PDT)
 Received: from stoup.. ([122.255.60.245]) by smtp.gmail.com with ESMTPSA id
- t17-20020a170902e85100b00162529828aesm25199256plg.109.2022.07.06.01.24.57
+ t17-20020a170902e85100b00162529828aesm25199256plg.109.2022.07.06.01.25.00
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 06 Jul 2022 01:24:59 -0700 (PDT)
+ Wed, 06 Jul 2022 01:25:02 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org,
 	Peter Maydell <peter.maydell@linaro.org>
-Subject: [PATCH v5 17/45] target/arm: Implement SME RDSVL, ADDSVL, ADDSPL
-Date: Wed,  6 Jul 2022 13:53:43 +0530
-Message-Id: <20220706082411.1664825-18-richard.henderson@linaro.org>
+Subject: [PATCH v5 18/45] target/arm: Implement SME ZERO
+Date: Wed,  6 Jul 2022 13:53:44 +0530
+Message-Id: <20220706082411.1664825-19-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20220706082411.1664825-1-richard.henderson@linaro.org>
 References: <20220706082411.1664825-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::102d;
- envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x102d.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::102e;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x102e.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -107,150 +108,108 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: tQkEwW3+1QhF
-
-These SME instructions are nominally within the SVE decode space,
-so we add them to sve.decode and translate-sve.c.
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: /aZDtfVaWGsM
 
 Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
-v4: Add streaming_{vec,pred}_reg_size.
+v4: Fix ZA[] comment in helper_sme_zero.
 ---
- target/arm/translate-a64.h | 12 ++++++++++++
- target/arm/sve.decode      |  5 ++++-
- target/arm/translate-sve.c | 38 ++++++++++++++++++++++++++++++++++++++
- 3 files changed, 54 insertions(+), 1 deletion(-)
+ target/arm/helper-sme.h    |  2 ++
+ target/arm/sme.decode      |  4 ++++
+ target/arm/sme_helper.c    | 25 +++++++++++++++++++++++++
+ target/arm/translate-sme.c | 13 +++++++++++++
+ 4 files changed, 44 insertions(+)
 
-diff --git a/target/arm/translate-a64.h b/target/arm/translate-a64.h
-index 02fb95e019..099d3d11d6 100644
---- a/target/arm/translate-a64.h
-+++ b/target/arm/translate-a64.h
-@@ -128,6 +128,12 @@ static inline int vec_full_reg_size(DisasContext *s)
-     return s->vl;
- }
+diff --git a/target/arm/helper-sme.h b/target/arm/helper-sme.h
+index 3bd48c235f..c4ee1f09e4 100644
+--- a/target/arm/helper-sme.h
++++ b/target/arm/helper-sme.h
+@@ -19,3 +19,5 @@
  
-+/* Return the byte size of the vector register, SVL / 8. */
-+static inline int streaming_vec_reg_size(DisasContext *s)
-+{
-+    return s->svl;
-+}
+ DEF_HELPER_FLAGS_2(set_pstate_sm, TCG_CALL_NO_RWG, void, env, i32)
+ DEF_HELPER_FLAGS_2(set_pstate_za, TCG_CALL_NO_RWG, void, env, i32)
 +
- /*
-  * Return the offset info CPUARMState of the predicate vector register Pn.
-  * Note for this purpose, FFR is P16.
-@@ -143,6 +149,12 @@ static inline int pred_full_reg_size(DisasContext *s)
-     return s->vl >> 3;
- }
- 
-+/* Return the byte size of the predicate register, SVL / 64.  */
-+static inline int streaming_pred_reg_size(DisasContext *s)
-+{
-+    return s->svl >> 3;
-+}
++DEF_HELPER_FLAGS_3(sme_zero, TCG_CALL_NO_RWG, void, env, i32, i32)
+diff --git a/target/arm/sme.decode b/target/arm/sme.decode
+index c25c031a71..6e4483fdce 100644
+--- a/target/arm/sme.decode
++++ b/target/arm/sme.decode
+@@ -18,3 +18,7 @@
+ #
+ # This file is processed by scripts/decodetree.py
+ #
 +
- /*
-  * Round up the size of a register to a size allowed by
-  * the tcg vector infrastructure.  Any operation which uses this
-diff --git a/target/arm/sve.decode b/target/arm/sve.decode
-index 908643d7d9..95af08c139 100644
---- a/target/arm/sve.decode
-+++ b/target/arm/sve.decode
-@@ -449,14 +449,17 @@ INDEX_ri        00000100 esz:2 1 imm:s5 010001 rn:5 rd:5
- # SVE index generation (register start, register increment)
- INDEX_rr        00000100 .. 1 ..... 010011 ..... .....          @rd_rn_rm
- 
--### SVE Stack Allocation Group
-+### SVE / Streaming SVE Stack Allocation Group
- 
- # SVE stack frame adjustment
- ADDVL           00000100 001 ..... 01010 ...... .....           @rd_rn_i6
-+ADDSVL          00000100 001 ..... 01011 ...... .....           @rd_rn_i6
- ADDPL           00000100 011 ..... 01010 ...... .....           @rd_rn_i6
-+ADDSPL          00000100 011 ..... 01011 ...... .....           @rd_rn_i6
- 
- # SVE stack frame size
- RDVL            00000100 101 11111 01010 imm:s6 rd:5
-+RDSVL           00000100 101 11111 01011 imm:s6 rd:5
- 
- ### SVE Bitwise Shift - Unpredicated Group
- 
-diff --git a/target/arm/translate-sve.c b/target/arm/translate-sve.c
-index 96e934c1ea..95016e49e9 100644
---- a/target/arm/translate-sve.c
-+++ b/target/arm/translate-sve.c
-@@ -1286,6 +1286,19 @@ static bool trans_ADDVL(DisasContext *s, arg_ADDVL *a)
-     return true;
- }
- 
-+static bool trans_ADDSVL(DisasContext *s, arg_ADDSVL *a)
-+{
-+    if (!dc_isar_feature(aa64_sme, s)) {
-+        return false;
-+    }
-+    if (sme_enabled_check(s)) {
-+        TCGv_i64 rd = cpu_reg_sp(s, a->rd);
-+        TCGv_i64 rn = cpu_reg_sp(s, a->rn);
-+        tcg_gen_addi_i64(rd, rn, a->imm * streaming_vec_reg_size(s));
-+    }
-+    return true;
-+}
++### SME Misc
 +
- static bool trans_ADDPL(DisasContext *s, arg_ADDPL *a)
- {
-     if (!dc_isar_feature(aa64_sve, s)) {
-@@ -1299,6 +1312,19 @@ static bool trans_ADDPL(DisasContext *s, arg_ADDPL *a)
-     return true;
++ZERO            11000000 00 001 00000000000 imm:8
+diff --git a/target/arm/sme_helper.c b/target/arm/sme_helper.c
+index b215725594..eef2df73e1 100644
+--- a/target/arm/sme_helper.c
++++ b/target/arm/sme_helper.c
+@@ -59,3 +59,28 @@ void helper_set_pstate_za(CPUARMState *env, uint32_t i)
+         memset(env->zarray, 0, sizeof(env->zarray));
+     }
  }
- 
-+static bool trans_ADDSPL(DisasContext *s, arg_ADDSPL *a)
-+{
-+    if (!dc_isar_feature(aa64_sme, s)) {
-+        return false;
-+    }
-+    if (sme_enabled_check(s)) {
-+        TCGv_i64 rd = cpu_reg_sp(s, a->rd);
-+        TCGv_i64 rn = cpu_reg_sp(s, a->rn);
-+        tcg_gen_addi_i64(rd, rn, a->imm * streaming_pred_reg_size(s));
-+    }
-+    return true;
-+}
 +
- static bool trans_RDVL(DisasContext *s, arg_RDVL *a)
- {
-     if (!dc_isar_feature(aa64_sve, s)) {
-@@ -1311,6 +1337,18 @@ static bool trans_RDVL(DisasContext *s, arg_RDVL *a)
-     return true;
- }
- 
-+static bool trans_RDSVL(DisasContext *s, arg_RDSVL *a)
++void helper_sme_zero(CPUARMState *env, uint32_t imm, uint32_t svl)
 +{
-+    if (!dc_isar_feature(aa64_sme, s)) {
-+        return false;
-+    }
-+    if (sme_enabled_check(s)) {
-+        TCGv_i64 reg = cpu_reg(s, a->rd);
-+        tcg_gen_movi_i64(reg, a->imm * streaming_vec_reg_size(s));
-+    }
-+    return true;
-+}
++    uint32_t i;
 +
- /*
-  *** SVE Compute Vector Address Group
++    /*
++     * Special case clearing the entire ZA space.
++     * This falls into the CONSTRAINED UNPREDICTABLE zeroing of any
++     * parts of the ZA storage outside of SVL.
++     */
++    if (imm == 0xff) {
++        memset(env->zarray, 0, sizeof(env->zarray));
++        return;
++    }
++
++    /*
++     * Recall that ZAnH.D[m] is spread across ZA[n+8*m],
++     * so each row is discontiguous within ZA[].
++     */
++    for (i = 0; i < svl; i++) {
++        if (imm & (1 << (i % 8))) {
++            memset(&env->zarray[i], 0, svl);
++        }
++    }
++}
+diff --git a/target/arm/translate-sme.c b/target/arm/translate-sme.c
+index 786c93fb2d..971504559b 100644
+--- a/target/arm/translate-sme.c
++++ b/target/arm/translate-sme.c
+@@ -33,3 +33,16 @@
   */
+ 
+ #include "decode-sme.c.inc"
++
++
++static bool trans_ZERO(DisasContext *s, arg_ZERO *a)
++{
++    if (!dc_isar_feature(aa64_sme, s)) {
++        return false;
++    }
++    if (sme_za_enabled_check(s)) {
++        gen_helper_sme_zero(cpu_env, tcg_constant_i32(a->imm),
++                            tcg_constant_i32(streaming_vec_reg_size(s)));
++    }
++    return true;
++}
 -- 
 2.34.1
 

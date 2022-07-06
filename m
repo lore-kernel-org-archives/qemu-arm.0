@@ -1,104 +1,105 @@
-Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp4574650lft;
-        Wed, 6 Jul 2022 02:39:49 -0700 (PDT)
-X-Google-Smtp-Source: AGRyM1uxxfA99T13NnSUkXsZkz8I7e0w58aJoXMqp8zBZsWjmqBxhwImaU3mkQ8YjDgGip2F1EIJ
-X-Received: by 2002:a05:620a:24ca:b0:6af:2462:e61e with SMTP id m10-20020a05620a24ca00b006af2462e61emr26435816qkn.755.1657100389355;
-        Wed, 06 Jul 2022 02:39:49 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1657100389; cv=none;
+Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp4576687lft;
+        Wed, 6 Jul 2022 02:43:25 -0700 (PDT)
+X-Google-Smtp-Source: AGRyM1uBTzjAsjQghRTK6pf26ZH4rtYeroLZHjs4b9zSpkocOepCXoaX7MO5Z/gX9udcRj02JsRB
+X-Received: by 2002:a05:620a:4491:b0:6af:2d17:899e with SMTP id x17-20020a05620a449100b006af2d17899emr26260484qkp.745.1657100604843;
+        Wed, 06 Jul 2022 02:43:24 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1657100604; cv=none;
         d=google.com; s=arc-20160816;
-        b=UlV1xRYsbTHpIYLViE2/Yb/AdjF+ma7aNyOMOKoKdYXIms88Pk9CMHjC7ytYVMTZpM
-         KE78+tfJLKGM7uaAGb2bO/Wope/Z7LZ6jysiEYcAgfb9qnaSxsuXRrHL7+q8RoRoAw2+
-         TPnxF017a99n7pQiYvS5cBfDtwLaVsXc+igBhQai9FAhnK9D+uyPh26ocQOKbiv51Qn+
-         p8Ez3aBxX1EL0AUv2F20/BhwDF9TS1KQX5mLpyt9Y/QdLGJfONOwwm79ToJuc4OEV4U2
-         HJW4ipZsn/2YTQi4huCnlygIuYFsezdnhAsO+OJC0dgJFITOD13so7A9ajfrtZZUp+Sd
-         yuZg==
+        b=x9w3yMVCgqreKOuOsw/AVLxzQ0Kwqkxcpe2GR7/IyqvAvCKX1ImOW/Ykn4j0md5CAQ
+         ahsmdU9o0B/dQziONS8tiEyiGogNdE+72vzhkDoJK07ptAjNDeIoUMoMnUcWfRCbd2qL
+         kHnZ7Zh6RWn0S9BJ1C8ZJcBrjXWEQrJZdhlfQFxUbDnYfLfLu4VIQZlsMM9GioBPiufJ
+         cy6xlFHb+yDTrAeyK95bQ/45ULkVVDNkcJpOndklOqA3TK3klR343h6YR05tpuYcpQWv
+         wHtgoHXGmvyjsNevHx2BmMG8sPGn1+udI69lWhRk5wKKfZgkTgpBkic3VKhuji6ZyeDd
+         WQlA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=bq7X2GhXVvfG6Er6nutJ7UEGp/1xvxDoz5E5KPgsbCU=;
-        b=j3nEqcvSK0NBPJNFzIhMcDBrRUHdhLtqLzklT/YBUjj2FfgrvCPMca7aw+u28jnH/n
-         9hOyUAKLQRGyXIApCgHWcxjtU3uxtm/D43g1S3ZlIk6QUyJ6tIESF5fioOUoSSdZirVp
-         dHEq2FyB7HMPpExf4xD0AHXVNbZHa/OT2tH8CQteGhM0/JTVnM3D8bqpATxwsNt+Uu1K
-         ADXcOoFskLTb36Djd80WAV3j1IjkI++OYNbhxyD+hvYljaXBCU53l6zmQiDz/8XH1m9z
-         RHD39Mk3P9d6n/knlbzX9je9qIXAPOdty4xtgP9zBHMjt4SuaBGrGmqGh7Afnti9OsGL
-         z3Sw==
+        bh=eZwyJS+DI6VXP8TVU6OuO37fm60h5FhLdjsLlNVqKXk=;
+        b=TVy19rcWoFMuE3rmx2ZlRuMbXHsLfq1Ox3JsPIYvoXIH6Hyqat7bkgIMhug1fXFh7N
+         +opzO1r49NOQzhGNQJjeXpQR2TAuEn4J7rbL2ef4ykENsfn9Anznii0q0JhJk/cgzruS
+         CKQwslE4SVJjnkUo6wZ99595YTa0N4ydRiCO0HywimGuC6z9apkIgaGCcVcegTFd+gKn
+         YKnRBQggIt+lTPBDjSv4XMXuHWu/GYeDFsjnGF0VQuhW9R9xDWS/1OacdmYmJxwrlAWO
+         LTpHI52A7VCXBLvD490L0Mre4Dfp9eUCtnMu0ZXdkmBMDqc7Scoq9E4zaQW9fqYWxla7
+         bxag==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=d6Ptz78P;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=J7Fqx9iI;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a1-20020a0562140c2100b00470ad5f538fsi20334123qvd.165.2022.07.06.02.39.49
+        by mx.google.com with ESMTPS id e8-20020a0562140d8800b0047314090689si1396362qve.350.2022.07.06.02.43.24
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 06 Jul 2022 02:39:49 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 06 Jul 2022 02:43:24 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=d6Ptz78P;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=J7Fqx9iI;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:33740 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:46744 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1o91Vb-0007Ub-7l
-	for alex.bennee@linaro.org; Wed, 06 Jul 2022 05:39:48 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49836)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1o91Z6-0007oj-A6
+	for alex.bennee@linaro.org; Wed, 06 Jul 2022 05:43:24 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:50608)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1o90Lu-0006dW-42
- for qemu-devel@nongnu.org; Wed, 06 Jul 2022 04:25:43 -0400
-Received: from mail-pg1-x52b.google.com ([2607:f8b0:4864:20::52b]:41737)
+ id 1o90PH-0000cq-Rj
+ for qemu-arm@nongnu.org; Wed, 06 Jul 2022 04:29:13 -0400
+Received: from mail-pj1-x1036.google.com ([2607:f8b0:4864:20::1036]:41637)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1o90Lq-0000fk-An
- for qemu-devel@nongnu.org; Wed, 06 Jul 2022 04:25:40 -0400
-Received: by mail-pg1-x52b.google.com with SMTP id 23so13442232pgc.8
- for <qemu-devel@nongnu.org>; Wed, 06 Jul 2022 01:25:37 -0700 (PDT)
+ id 1o90PF-0001DL-O8
+ for qemu-arm@nongnu.org; Wed, 06 Jul 2022 04:29:11 -0400
+Received: by mail-pj1-x1036.google.com with SMTP id
+ o31-20020a17090a0a2200b001ef7bd037bbso9771987pjo.0
+ for <qemu-arm@nongnu.org>; Wed, 06 Jul 2022 01:29:08 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=bq7X2GhXVvfG6Er6nutJ7UEGp/1xvxDoz5E5KPgsbCU=;
- b=d6Ptz78PcfIvBurU0XfR+GIVv4C/cw8l7/SFo+0sWHX4O2rDI8xHnZK1aLInY0sdC0
- xC/PsU7iF/OPbH/MFgM7vg7hr3ai664oExtF9+S1FR8Prv+vxMZHASLqla6ACSoskdAL
- d4khLB3oivkhk7fVnKnCdby+z2WXi4SBKk/WQ3RSwCbFQ6Lhx2JbwNxpeUeGZckaUjiW
- ijfgDuq3u0yBL7HMk6PpoFKVYPmY/oDzcsc8ClwuErPzlFa52EvaNBGXH3ZkoHuyr4Q/
- 3ib4DP+s5+7lNWfmwUMphMWEBt0szEsIi5kIO2qy6jlgoDSoNAPaSsiQ3pWpZHAcSH9F
- zZcA==
+ bh=eZwyJS+DI6VXP8TVU6OuO37fm60h5FhLdjsLlNVqKXk=;
+ b=J7Fqx9iIOVWXshZ1siWHTe0Mmciuh6qZI5OYFhx1BFYkd4YtsDpaFNbpikSvmucA7l
+ UGgvu/W/WmERiPO/sk8ahez8Q2NWusDP9bxXDaCbsWUfhDX9BJCevzjaCwCH0hHJ31Lf
+ oIc89EM4ckSv/B8HqKjqrmEiTC2kuJEMOfLLFSZjh4ZQbzdCZUjcofsY+0LZxLulroXh
+ EI+AQWAakGkLggolCzp4iOAbQ8kLrmYFeYaK+JMTFjT7EiDQqiFz1sHS6FzQ5Vg3vT5p
+ ireAZZYWLVh1WPoKaaNWyh7Z+xVSK1oQM+tNSwjS5zyt4IgukJoQNOc59UjDq0xN0nWY
+ XHog==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=bq7X2GhXVvfG6Er6nutJ7UEGp/1xvxDoz5E5KPgsbCU=;
- b=jXjMMbxwy4Q0q+oQgqeBgUrQB42zJzEEoGtdg7MNcEcT0MLjJw7ppE83R3Uullwr8s
- ieVzG5wZjJ957kqdV6z+kxRnXaQRxtAbh2/6QeOUd1CW0bRAnpC+TXH9DXZxX1F0XyCp
- ClDCBMCO3ZFf3Gem9qYjiygUYTmXjq9c8awTr4vULpku19m0e/iJtVzziIaCnT5KS9us
- Rk8RPERFuB5zBMYyxIfz1DWRMWnFQJpU1kcgH0IEj96BcxX20R0T6vC0pOXAXDrvOXte
- zjVlhY8eoLRhqxStYNNrk83SKF5aJ4TY9eJ00cXVxNnn49ZY/oXEctZ8IeCRD/CsSyM6
- KVUg==
-X-Gm-Message-State: AJIora8YV4MmSKUfbkgiundj5Gesj9NtAKMOjQOi41Upw0TSMnG8mkTx
- dCLQCCvt/eQigbX0Q+BCCMLVx821zgCJzuQv
-X-Received: by 2002:a63:dd4f:0:b0:411:e30d:6a0a with SMTP id
- g15-20020a63dd4f000000b00411e30d6a0amr22561093pgj.22.1657095937540; 
- Wed, 06 Jul 2022 01:25:37 -0700 (PDT)
+ bh=eZwyJS+DI6VXP8TVU6OuO37fm60h5FhLdjsLlNVqKXk=;
+ b=IN4h/Fxp2r0ZmgIpxerrkVIRiklw8L8lGD0JCb9OgiEK80PvR5vILqHdRI/ToTYswX
+ YuR74v3gPbnwf/BWGPqK/AVN5vk0ayPQisBvDegqjr22tZaPgzxBxJ8ejT+ziOPkPQi5
+ AofUH053BkiNuT+8qvrkalNxIMJHeRk2bpJsdronnEbCVCvpQsdXn0qd7HTm5xf81RzS
+ cx3uzkXeJlMngw2fDb4gpYQBzu7xporXofMncc7vPDhvMcnmu0sGOlixmQLpVTsXUsf9
+ cJ39Gyzq9nOFYLftMdgYjKkMUVGLKZNEAYrShTtJUSJZMBRXTlkIJW2fFgvjXKyPdOqk
+ OSZw==
+X-Gm-Message-State: AJIora+2cPKJh7BFPQn5AJpjx2sl984/uytSmPIYRy8tS6UrPRXdJEFG
+ NuHdTgL0UsKojrgVyLBwd/1jgw==
+X-Received: by 2002:a17:902:ab96:b0:16a:6db6:2715 with SMTP id
+ f22-20020a170902ab9600b0016a6db62715mr46983471plr.141.1657096147496; 
+ Wed, 06 Jul 2022 01:29:07 -0700 (PDT)
 Received: from stoup.. ([122.255.60.245]) by smtp.gmail.com with ESMTPSA id
- t17-20020a170902e85100b00162529828aesm25199256plg.109.2022.07.06.01.25.35
+ c17-20020a170903235100b0016bdf53b303sm6700529plh.205.2022.07.06.01.29.05
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 06 Jul 2022 01:25:37 -0700 (PDT)
+ Wed, 06 Jul 2022 01:29:07 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org,
 	Peter Maydell <peter.maydell@linaro.org>
-Subject: [PATCH v5 29/45] target/arm: Implement REVD
-Date: Wed,  6 Jul 2022 13:53:55 +0530
-Message-Id: <20220706082411.1664825-30-richard.henderson@linaro.org>
+Subject: [PATCH v5 40/45] linux-user/aarch64: Implement SME signal handling
+Date: Wed,  6 Jul 2022 13:54:06 +0530
+Message-Id: <20220706082411.1664825-41-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20220706082411.1664825-1-richard.henderson@linaro.org>
 References: <20220706082411.1664825-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::52b;
- envelope-from=richard.henderson@linaro.org; helo=mail-pg1-x52b.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1036;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x1036.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -107,98 +108,304 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: BvVfVieeUNlz
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: dml7UvnHQhaD
 
-This is an SVE instruction that operates using the SVE vector
-length but that it is present only if SME is implemented.
+Set the SM bit in the SVE record on signal delivery, create the ZA record.
+Restore SM and ZA state according to the records present on return.
 
 Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/helper-sve.h    |  2 ++
- target/arm/sve.decode      |  1 +
- target/arm/sve_helper.c    | 16 ++++++++++++++++
- target/arm/translate-sve.c |  2 ++
- 4 files changed, 21 insertions(+)
+ linux-user/aarch64/signal.c | 167 +++++++++++++++++++++++++++++++++---
+ 1 file changed, 154 insertions(+), 13 deletions(-)
 
-diff --git a/target/arm/helper-sve.h b/target/arm/helper-sve.h
-index ab0333400f..cc4e1d8948 100644
---- a/target/arm/helper-sve.h
-+++ b/target/arm/helper-sve.h
-@@ -719,6 +719,8 @@ DEF_HELPER_FLAGS_4(sve_revh_d, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
+diff --git a/linux-user/aarch64/signal.c b/linux-user/aarch64/signal.c
+index 22d0b8b4ec..6a2c6e06d2 100644
+--- a/linux-user/aarch64/signal.c
++++ b/linux-user/aarch64/signal.c
+@@ -104,6 +104,22 @@ struct target_sve_context {
  
- DEF_HELPER_FLAGS_4(sve_revw_d, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
+ #define TARGET_SVE_SIG_FLAG_SM  1
  
-+DEF_HELPER_FLAGS_4(sme_revd_q, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
++#define TARGET_ZA_MAGIC        0x54366345
 +
- DEF_HELPER_FLAGS_4(sve_rbit_b, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
- DEF_HELPER_FLAGS_4(sve_rbit_h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
- DEF_HELPER_FLAGS_4(sve_rbit_s, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
-diff --git a/target/arm/sve.decode b/target/arm/sve.decode
-index 966803cbb7..a9e48f07b4 100644
---- a/target/arm/sve.decode
-+++ b/target/arm/sve.decode
-@@ -652,6 +652,7 @@ REVB            00000101 .. 1001 00 100 ... ..... .....         @rd_pg_rn
- REVH            00000101 .. 1001 01 100 ... ..... .....         @rd_pg_rn
- REVW            00000101 .. 1001 10 100 ... ..... .....         @rd_pg_rn
- RBIT            00000101 .. 1001 11 100 ... ..... .....         @rd_pg_rn
-+REVD            00000101 00 1011 10 100 ... ..... .....         @rd_pg_rn_e0
++struct target_za_context {
++    struct target_aarch64_ctx head;
++    uint16_t vl;
++    uint16_t reserved[3];
++    /* The actual ZA data immediately follows. */
++};
++
++#define TARGET_ZA_SIG_REGS_OFFSET \
++    QEMU_ALIGN_UP(sizeof(struct target_za_context), TARGET_SVE_VQ_BYTES)
++#define TARGET_ZA_SIG_ZAV_OFFSET(VQ, N) \
++    (TARGET_ZA_SIG_REGS_OFFSET + (VQ) * TARGET_SVE_VQ_BYTES * (N))
++#define TARGET_ZA_SIG_CONTEXT_SIZE(VQ) \
++    TARGET_ZA_SIG_ZAV_OFFSET(VQ, VQ * TARGET_SVE_VQ_BYTES)
++
+ struct target_rt_sigframe {
+     struct target_siginfo info;
+     struct target_ucontext uc;
+@@ -176,9 +192,9 @@ static void target_setup_end_record(struct target_aarch64_ctx *end)
+ }
  
- # SVE vector splice (predicated, destructive)
- SPLICE          00000101 .. 101 100 100 ... ..... .....         @rdn_pg_rm
-diff --git a/target/arm/sve_helper.c b/target/arm/sve_helper.c
-index 9a26f253e0..5de82696b5 100644
---- a/target/arm/sve_helper.c
-+++ b/target/arm/sve_helper.c
-@@ -931,6 +931,22 @@ DO_ZPZ_D(sve_revh_d, uint64_t, hswap64)
+ static void target_setup_sve_record(struct target_sve_context *sve,
+-                                    CPUARMState *env, int vq, int size)
++                                    CPUARMState *env, int size)
+ {
+-    int i, j;
++    int i, j, vq = sve_vq(env);
  
- DO_ZPZ_D(sve_revw_d, uint64_t, wswap64)
+     memset(sve, 0, sizeof(*sve));
+     __put_user(TARGET_SVE_MAGIC, &sve->head.magic);
+@@ -207,6 +223,35 @@ static void target_setup_sve_record(struct target_sve_context *sve,
+     }
+ }
  
-+void HELPER(sme_revd_q)(void *vd, void *vn, void *vg, uint32_t desc)
++static void target_setup_za_record(struct target_za_context *za,
++                                   CPUARMState *env, int size)
 +{
-+    intptr_t i, opr_sz = simd_oprsz(desc) / 8;
-+    uint64_t *d = vd, *n = vn;
-+    uint8_t *pg = vg;
++    int vq = sme_vq(env);
++    int vl = vq * TARGET_SVE_VQ_BYTES;
++    int i, j;
 +
-+    for (i = 0; i < opr_sz; i += 2) {
-+        if (pg[H1(i)] & 1) {
-+            uint64_t n0 = n[i + 0];
-+            uint64_t n1 = n[i + 1];
-+            d[i + 0] = n1;
-+            d[i + 1] = n0;
++    memset(za, 0, sizeof(*za));
++    __put_user(TARGET_ZA_MAGIC, &za->head.magic);
++    __put_user(size, &za->head.size);
++    __put_user(vl, &za->vl);
++
++    if (size == TARGET_ZA_SIG_CONTEXT_SIZE(0)) {
++        return;
++    }
++    assert(size == TARGET_ZA_SIG_CONTEXT_SIZE(vq));
++
++    /*
++     * Note that ZA vectors are stored as a byte stream,
++     * with each byte element at a subsequent address.
++     */
++    for (i = 0; i < vl; ++i) {
++        uint64_t *z = (void *)za + TARGET_ZA_SIG_ZAV_OFFSET(vq, i);
++        for (j = 0; j < vq * 2; ++j) {
++            __put_user_e(env->zarray[i].d[j], z + j, le);
 +        }
 +    }
 +}
 +
- DO_ZPZ(sve_rbit_b, uint8_t, H1, revbit8)
- DO_ZPZ(sve_rbit_h, uint16_t, H1_2, revbit16)
- DO_ZPZ(sve_rbit_s, uint32_t, H1_4, revbit32)
-diff --git a/target/arm/translate-sve.c b/target/arm/translate-sve.c
-index 24ffb69a2a..9ed3b267fd 100644
---- a/target/arm/translate-sve.c
-+++ b/target/arm/translate-sve.c
-@@ -2901,6 +2901,8 @@ TRANS_FEAT(REVH, aa64_sve, gen_gvec_ool_arg_zpz, revh_fns[a->esz], a, 0)
- TRANS_FEAT(REVW, aa64_sve, gen_gvec_ool_arg_zpz,
-            a->esz == 3 ? gen_helper_sve_revw_d : NULL, a, 0)
+ static void target_restore_general_frame(CPUARMState *env,
+                                          struct target_rt_sigframe *sf)
+ {
+@@ -252,16 +297,28 @@ static void target_restore_fpsimd_record(CPUARMState *env,
  
-+TRANS_FEAT(REVD, aa64_sme, gen_gvec_ool_arg_zpz, gen_helper_sme_revd_q, a, 0)
+ static bool target_restore_sve_record(CPUARMState *env,
+                                       struct target_sve_context *sve,
+-                                      int size)
++                                      int size, int *svcr)
+ {
+-    int i, j, vl, vq;
++    int i, j, vl, vq, flags;
++    bool sm;
+ 
+-    if (!cpu_isar_feature(aa64_sve, env_archcpu(env))) {
++    __get_user(vl, &sve->vl);
++    __get_user(flags, &sve->flags);
 +
- TRANS_FEAT(SPLICE, aa64_sve, gen_gvec_ool_arg_zpzz,
-            gen_helper_sve_splice, a, a->esz)
++    sm = flags & TARGET_SVE_SIG_FLAG_SM;
++
++    /* The cpu must support Streaming or Non-streaming SVE. */
++    if (sm
++        ? !cpu_isar_feature(aa64_sme, env_archcpu(env))
++        : !cpu_isar_feature(aa64_sve, env_archcpu(env))) {
+         return false;
+     }
  
+-    __get_user(vl, &sve->vl);
+-    vq = sve_vq(env);
++    /*
++     * Note that we cannot use sve_vq() because that depends on the
++     * current setting of PSTATE.SM, not the state to be restored.
++     */
++    vq = sve_vqm1_for_el_sm(env, 0, sm) + 1;
+ 
+     /* Reject mismatched VL. */
+     if (vl != vq * TARGET_SVE_VQ_BYTES) {
+@@ -278,6 +335,8 @@ static bool target_restore_sve_record(CPUARMState *env,
+         return false;
+     }
+ 
++    *svcr = FIELD_DP64(*svcr, SVCR, SM, sm);
++
+     /*
+      * Note that SVE regs are stored as a byte stream, with each byte element
+      * at a subsequent address.  This corresponds to a little-endian load
+@@ -304,15 +363,57 @@ static bool target_restore_sve_record(CPUARMState *env,
+     return true;
+ }
+ 
++static bool target_restore_za_record(CPUARMState *env,
++                                     struct target_za_context *za,
++                                     int size, int *svcr)
++{
++    int i, j, vl, vq;
++
++    if (!cpu_isar_feature(aa64_sme, env_archcpu(env))) {
++        return false;
++    }
++
++    __get_user(vl, &za->vl);
++    vq = sme_vq(env);
++
++    /* Reject mismatched VL. */
++    if (vl != vq * TARGET_SVE_VQ_BYTES) {
++        return false;
++    }
++
++    /* Accept empty record -- used to clear PSTATE.ZA. */
++    if (size <= TARGET_ZA_SIG_CONTEXT_SIZE(0)) {
++        return true;
++    }
++
++    /* Reject non-empty but incomplete record. */
++    if (size < TARGET_ZA_SIG_CONTEXT_SIZE(vq)) {
++        return false;
++    }
++
++    *svcr = FIELD_DP64(*svcr, SVCR, ZA, 1);
++
++    for (i = 0; i < vl; ++i) {
++        uint64_t *z = (void *)za + TARGET_ZA_SIG_ZAV_OFFSET(vq, i);
++        for (j = 0; j < vq * 2; ++j) {
++            __get_user_e(env->zarray[i].d[j], z + j, le);
++        }
++    }
++    return true;
++}
++
+ static int target_restore_sigframe(CPUARMState *env,
+                                    struct target_rt_sigframe *sf)
+ {
+     struct target_aarch64_ctx *ctx, *extra = NULL;
+     struct target_fpsimd_context *fpsimd = NULL;
+     struct target_sve_context *sve = NULL;
++    struct target_za_context *za = NULL;
+     uint64_t extra_datap = 0;
+     bool used_extra = false;
+     int sve_size = 0;
++    int za_size = 0;
++    int svcr = 0;
+ 
+     target_restore_general_frame(env, sf);
+ 
+@@ -350,6 +451,14 @@ static int target_restore_sigframe(CPUARMState *env,
+             sve_size = size;
+             break;
+ 
++        case TARGET_ZA_MAGIC:
++            if (za || size < sizeof(struct target_za_context)) {
++                goto err;
++            }
++            za = (struct target_za_context *)ctx;
++            za_size = size;
++            break;
++
+         case TARGET_EXTRA_MAGIC:
+             if (extra || size != sizeof(struct target_extra_context)) {
+                 goto err;
+@@ -381,9 +490,16 @@ static int target_restore_sigframe(CPUARMState *env,
+     }
+ 
+     /* SVE data, if present, overwrites FPSIMD data.  */
+-    if (sve && !target_restore_sve_record(env, sve, sve_size)) {
++    if (sve && !target_restore_sve_record(env, sve, sve_size, &svcr)) {
+         goto err;
+     }
++    if (za && !target_restore_za_record(env, za, za_size, &svcr)) {
++        goto err;
++    }
++    if (env->svcr != svcr) {
++        env->svcr = svcr;
++        arm_rebuild_hflags(env);
++    }
+     unlock_user(extra, extra_datap, 0);
+     return 0;
+ 
+@@ -451,7 +567,8 @@ static void target_setup_frame(int usig, struct target_sigaction *ka,
+         .total_size = offsetof(struct target_rt_sigframe,
+                                uc.tuc_mcontext.__reserved),
+     };
+-    int fpsimd_ofs, fr_ofs, sve_ofs = 0, vq = 0, sve_size = 0;
++    int fpsimd_ofs, fr_ofs, sve_ofs = 0, za_ofs = 0;
++    int sve_size = 0, za_size = 0;
+     struct target_rt_sigframe *frame;
+     struct target_rt_frame_record *fr;
+     abi_ulong frame_addr, return_addr;
+@@ -461,11 +578,20 @@ static void target_setup_frame(int usig, struct target_sigaction *ka,
+                                       &layout);
+ 
+     /* SVE state needs saving only if it exists.  */
+-    if (cpu_isar_feature(aa64_sve, env_archcpu(env))) {
+-        vq = sve_vq(env);
+-        sve_size = QEMU_ALIGN_UP(TARGET_SVE_SIG_CONTEXT_SIZE(vq), 16);
++    if (cpu_isar_feature(aa64_sve, env_archcpu(env)) ||
++        cpu_isar_feature(aa64_sme, env_archcpu(env))) {
++        sve_size = QEMU_ALIGN_UP(TARGET_SVE_SIG_CONTEXT_SIZE(sve_vq(env)), 16);
+         sve_ofs = alloc_sigframe_space(sve_size, &layout);
+     }
++    if (cpu_isar_feature(aa64_sme, env_archcpu(env))) {
++        /* ZA state needs saving only if it is enabled.  */
++        if (FIELD_EX64(env->svcr, SVCR, ZA)) {
++            za_size = TARGET_ZA_SIG_CONTEXT_SIZE(sme_vq(env));
++        } else {
++            za_size = TARGET_ZA_SIG_CONTEXT_SIZE(0);
++        }
++        za_ofs = alloc_sigframe_space(za_size, &layout);
++    }
+ 
+     if (layout.extra_ofs) {
+         /* Reserve space for the extra end marker.  The standard end marker
+@@ -512,7 +638,10 @@ static void target_setup_frame(int usig, struct target_sigaction *ka,
+         target_setup_end_record((void *)frame + layout.extra_end_ofs);
+     }
+     if (sve_ofs) {
+-        target_setup_sve_record((void *)frame + sve_ofs, env, vq, sve_size);
++        target_setup_sve_record((void *)frame + sve_ofs, env, sve_size);
++    }
++    if (za_ofs) {
++        target_setup_za_record((void *)frame + za_ofs, env, za_size);
+     }
+ 
+     /* Set up the stack frame for unwinding.  */
+@@ -536,6 +665,18 @@ static void target_setup_frame(int usig, struct target_sigaction *ka,
+         env->btype = 2;
+     }
+ 
++    /*
++     * Invoke the signal handler with both SM and ZA disabled.
++     * When clearing SM, ResetSVEState, per SMSTOP.
++     */
++    if (FIELD_EX64(env->svcr, SVCR, SM)) {
++        arm_reset_sve_state(env);
++    }
++    if (env->svcr) {
++        env->svcr = 0;
++        arm_rebuild_hflags(env);
++    }
++
+     if (info) {
+         tswap_siginfo(&frame->info, info);
+         env->xregs[1] = frame_addr + offsetof(struct target_rt_sigframe, info);
 -- 
 2.34.1
 

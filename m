@@ -1,146 +1,127 @@
-Received: by 2002:a05:6512:230d:0:0:0:0 with SMTP id o13csp1363688lfu;
-        Wed, 27 Apr 2022 16:50:34 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzuQWdiYLB/CVVQOQ1HejnEqP+LJbaoD60ryVoKZdXeUjFOcbSnllB28qlwcA49z227Qe9R
-X-Received: by 2002:ac8:7f53:0:b0:2e0:77a0:1d35 with SMTP id g19-20020ac87f53000000b002e077a01d35mr20694485qtk.496.1651103434539;
-        Wed, 27 Apr 2022 16:50:34 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1651103434; cv=none;
+Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp5666708lft;
+        Thu, 7 Jul 2022 10:50:48 -0700 (PDT)
+X-Google-Smtp-Source: AGRyM1uYjGjWdPfPprMnXRo+e8vOTPX4fvyC2fZ9C58Fqb/MEeOMxXQDzzjablFNGO7n2azHehy1
+X-Received: by 2002:a0d:e8c8:0:b0:31d:555:b4ce with SMTP id r191-20020a0de8c8000000b0031d0555b4cemr6100240ywe.94.1657216248379;
+        Thu, 07 Jul 2022 10:50:48 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1657216248; cv=none;
         d=google.com; s=arc-20160816;
-        b=AbIJQ6+/93vcjeDQ1w0O1nNNLTO8LgyrzJJxntiK05vqVzysVZgVaWL3wjGP07rXqM
-         g4sugQ5f6/GtUWYsiHq3PS9ZGxtvQBQx8ZQDhbPrlCj3naqtMK8CWIrLHv9zZ0uNuBXi
-         rEyY/CoP9giwxOFRlU5gDDIIBv3Qv5f358IuRA3DxC7r3ZdGHvhA5g7JXYVgxKt8vtGc
-         eTkGCnD4yuzihMJkdc5rXCjaDpnj3OoWgJtdUt6qzu3tZZ/PSeUX/rq8J8UHZZwA8sGn
-         bycFBkwv60ddW14iLJ9oY2VrbIDhHYKFafP9EjvWArAYn7ucfyCwjYK8qeSfnQaPuYLs
-         BpyA==
+        b=j0+2EEMTdH2uPd5igKdhP27LjVjzmYyrX39G6akDRtzSkv+gnNd0DmrgR9wBoKWtQK
+         eIOoInYYM70eWq0bo+vmoRyihV6DD4XOKp2f0bBx8/fseNwxl8llsg671C/WXpNm/p8x
+         JecmvGFuCwOjmhs9pjvMp+ZzcaY41y/s82KPH0ljvB2qgAq+vp90UOdq5sMpP8fs/XJU
+         UrzAhxBrKYi/yNd2iMgtD1GbgWer8/nF4ltra5ewUR/TJIijcAhk7Fus1vl9/yoSD2bJ
+         Kig1F6z13jwLdXaFn6endKvWQJkUw6nuMI8zLCQKtf6vOIKhzPKo+ejZWa+sKPqo4vVx
+         +3CA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature:wdcironportexception:ironport-sdr:ironport-sdr
-         :dkim-signature;
-        bh=yWVwF36k1UURFAEd49Dob2SUuHJTV//YmHnagrFczcI=;
-        b=Zs/fbINqBu4jh5k5Fo7GjgxDRlnRK8g9aRZIg7iP8Lacsktwgni0AIHNsBe+sBVKwz
-         PohkgdgN+sHuba5iqIufsdp3w9cVswmGzv6TVbC4XKxn4K3gQUDwkObj64p1/hHkd002
-         prMHRXRlNVygP11EeITZoZ0qBqPbcPAAIpEtEBxfUSkeCLX0mMy855sQ7DbV8YGl7n5X
-         FF/zFUKPFzez/oGy5CFrgBIYd94rkPRag4sEybqYTzSurcrHqHHmM9Yh32cf9pJgl6+I
-         SRCjWPmfaSh1NADvRskhwBGYsG+P0C973PsjiNMaad8KFp4JNqeV+7TICdrecqb6fKmy
-         HxHQ==
+         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
+         :feedback-id:dkim-signature:dkim-signature;
+        bh=gQDLwY5ydqhtZSXB3M8Xr1FTL2/dl3ZEnOYN+KkdxG4=;
+        b=IU6FDCDOwuRwO70e6E3gm1XwXWAlReAIRqh8fSEpzXYQxnRBJbaS0+pdGzSbrGJ9gw
+         nOzmydLc2CAOLJikCVUednbKfsYrLjtINKGoWJnVb9ISj8pHBlzmAJdxeHqFb2U9wsgS
+         stGfnd7LgPxKmZQmIrBYpxxJQVbgCT6Dy388BvlRHn/kvVm8fpMdDSLVJkRRp0+JFjlR
+         pKBpXgcBc3zOrb+KGcAxXSpNTA02pVsQrcPJsE8gRvl1SnWKLrfR1Sqa56eOs/OuB8nu
+         mh7RyojM4KvZYHbBXVjaYcZ2q8a2r2aYoA/UBNUcC9F1QqcEUyGpCXZoQo0ui5SKZfGu
+         DYyA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@wdc.com header.s=dkim.wdc.com header.b=oOjVBRpt;
-       dkim=pass header.i=@opensource.wdc.com header.s=dkim header.b=qhVky5MS;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=opensource.wdc.com
+       dkim=fail header.i=@pjd.dev header.s=fm1 header.b=b0fZQoJR;
+       dkim=fail header.i=@messagingengine.com header.s=fm3 header.b=cOIWi5ta;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id l3-20020a05620a28c300b0069f6b8aa4e3si1122728qkp.449.2022.04.27.16.50.34
+        by mx.google.com with ESMTPS id 125-20020a251983000000b0066e2b64076csi20506510ybz.315.2022.07.07.10.50.48
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 27 Apr 2022 16:50:34 -0700 (PDT)
+        Thu, 07 Jul 2022 10:50:48 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@wdc.com header.s=dkim.wdc.com header.b=oOjVBRpt;
-       dkim=pass header.i=@opensource.wdc.com header.s=dkim header.b=qhVky5MS;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=opensource.wdc.com
-Received: from localhost ([::1]:38112 helo=lists1p.gnu.org)
+       dkim=fail header.i=@pjd.dev header.s=fm1 header.b=b0fZQoJR;
+       dkim=fail header.i=@messagingengine.com header.s=fm3 header.b=cOIWi5ta;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:40848 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1njrQY-0006rg-1g
-	for alex.bennee@linaro.org; Wed, 27 Apr 2022 19:50:34 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45724)
+	id 1o9VeJ-0007Tx-QP
+	for alex.bennee@linaro.org; Thu, 07 Jul 2022 13:50:47 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37892)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1)
- (envelope-from <prvs=109fe075d=alistair.francis@opensource.wdc.com>)
- id 1njrIX-0004vg-Po
- for qemu-arm@nongnu.org; Wed, 27 Apr 2022 19:42:20 -0400
-Received: from esa4.hgst.iphmx.com ([216.71.154.42]:48842)
+ (Exim 4.90_1) (envelope-from <peter@pjd.dev>)
+ id 1o9Ve9-0007TH-OA; Thu, 07 Jul 2022 13:50:37 -0400
+Received: from wnew2-smtp.messagingengine.com ([64.147.123.27]:56561)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1)
- (envelope-from <prvs=109fe075d=alistair.francis@opensource.wdc.com>)
- id 1njrIV-0004WI-8t
- for qemu-arm@nongnu.org; Wed, 27 Apr 2022 19:42:17 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
- d=wdc.com; i=@wdc.com; q=dns/txt; s=dkim.wdc.com;
- t=1651102935; x=1682638935;
- h=from:to:cc:subject:date:message-id:in-reply-to:
- references:mime-version:content-transfer-encoding;
- bh=l40sjyCp0l/BFK8+rhXyzxzFyGa7+yrMxywVjzjn3c0=;
- b=oOjVBRptU2EuCrD8WVWoiDKsOrDQ9MkYfNWlXYTBaUgJcW9V6N/wjx5Y
- oBlwbSYGu64UsQ9kTtbWoImpgRcD6EVFJI24h8GDD5+Lpn88rDYU4i/RM
- bH6OG3kit3bWGh53D1mrU0OWabJ9RAbTArtrcm325cJ/YOljcOG1xOzZE
- xNbBchnG6zTPNVlr3n2L/X1s9r9xyRvveLsUJsYQni7H3yRzh+UGb51ta
- F+pvizoeJ8AOquIForNx3e0hBV6srIxDr6qYFrjyA5S2E9o3LEf4G61Yq
- 3EDuktl2pYIQlEtuddDMB8Jcbe6fQWn1MLM3l0pHSLTNZoG57p3q0HV3S g==;
-X-IronPort-AV: E=Sophos;i="5.90,294,1643644800"; d="scan'208";a="197844547"
-Received: from h199-255-45-15.hgst.com (HELO uls-op-cesaep02.wdc.com)
- ([199.255.45.15])
- by ob1.hgst.iphmx.com with ESMTP; 28 Apr 2022 07:42:13 +0800
-IronPort-SDR: fuym3voKUTQOPZyfqcs1uVHS1tGsxCoFjo4A3IHA3CU80gbDTfmual89MjwhmAcFAmzN0ySQhI
- lgbmO83cA+Vn1eEjBdqMw7Q2eRHiRKg95Gh6THkEqcp6GulgrzTleqhSbmYwL9v+lquK0UtCKW
- rZbXqeCzz8//ms30DRsA/sRyUdy4kxYa/Kvs8KK/XcKCceGsYkWIr/LBGnw7N/4hnHa0r3iiYZ
- Dqh4SPfTb0LfxA4To4m3Xyr4z89QnYYxwHh8EJ86BzGU7TOmJ6vhdkMkR55oUBLOiZkAr+Fjce
- ikpFnUDA347e/8AJmjLTmcp+
-Received: from uls-op-cesaip01.wdc.com ([10.248.3.36])
- by uls-op-cesaep02.wdc.com with ESMTP/TLS/ECDHE-RSA-AES128-GCM-SHA256;
- 27 Apr 2022 16:12:22 -0700
-IronPort-SDR: HseFq1l6Sh1NGJQtKtVFo+Lppc/wivpDFWAWGRdSlETcgO+js/13uZVlwDt4jyd2S6HBx4eruQ
- vyOX0dCqhDYZ1+1szjCTknriFpgam/WT9HUan0IO7w4NLrQUIRps0soVqcVL1E1Y8PVkm7sLC3
- js3lxmwME0zt4sJoLueK9IjDaKPTlODl/m76SysjoxRorfjgyZFGqAy94cGTcDnCPVWqTfhY5c
- c757J7uDrdlyMNquY77WmICo1ghdIN7WZd1iqucU8KvqeyFxAseUI/A89GOCNruUapYzO88KWA
- CdI=
-WDCIronportException: Internal
-Received: from usg-ed-osssrv.wdc.com ([10.3.10.180])
- by uls-op-cesaip01.wdc.com with ESMTP/TLS/ECDHE-RSA-AES128-GCM-SHA256;
- 27 Apr 2022 16:42:13 -0700
-Received: from usg-ed-osssrv.wdc.com (usg-ed-osssrv.wdc.com [127.0.0.1])
- by usg-ed-osssrv.wdc.com (Postfix) with ESMTP id 4KpZzS3pfcz1SVp3
- for <qemu-arm@nongnu.org>; Wed, 27 Apr 2022 16:42:12 -0700 (PDT)
-Authentication-Results: usg-ed-osssrv.wdc.com (amavisd-new); dkim=pass
- reason="pass (just generated, assumed good)"
- header.d=opensource.wdc.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=
- opensource.wdc.com; h=content-transfer-encoding:mime-version
- :references:in-reply-to:x-mailer:message-id:date:subject:to
- :from; s=dkim; t=1651102931; x=1653694932; bh=l40sjyCp0l/BFK8+rh
- XyzxzFyGa7+yrMxywVjzjn3c0=; b=qhVky5MSkVeCOMD8I9vNFzl7Spz5R+s1Xh
- aWHZ9cz7/GpHPT7nU5EZGeqIr3+Ocsq5p0xQLSVvQLIiPM+FVOavojqSoN6Qxzi6
- r5aH+8HImotWgrz3klMTgvwCSQYbwUT+l4uiSHONsZBu8xWnm5oqP2wkj4TG6S23
- ePfrPFn5wNB+E8KzZ6MjM5Q9ZbWw/RL6Oh98w+nG2SxX86ahddvpYp2/502oPgyZ
- SIRP8WQEPSYdrtIfpZ2bT+a1QfX1zcMJD8lH2iM9LixIwAstp7cUeCpHcu0lajrK
- Ur0voFffn3bQDP33DdDq4lk+CyKsZfXVErZ+wQiMRsa0GaqHp86A==
-X-Virus-Scanned: amavisd-new at usg-ed-osssrv.wdc.com
-Received: from usg-ed-osssrv.wdc.com ([127.0.0.1])
- by usg-ed-osssrv.wdc.com (usg-ed-osssrv.wdc.com [127.0.0.1]) (amavisd-new,
- port 10026) with ESMTP id g7OKIgG25xCf for <qemu-arm@nongnu.org>;
- Wed, 27 Apr 2022 16:42:11 -0700 (PDT)
-Received: from toolbox.wdc.com (unknown [10.225.165.122])
- by usg-ed-osssrv.wdc.com (Postfix) with ESMTPSA id 4KpZzN0wFSz1Rvlc;
- Wed, 27 Apr 2022 16:42:07 -0700 (PDT)
-From: Alistair Francis <alistair.francis@opensource.wdc.com>
-To: qemu-riscv@nongnu.org,
-	qemu-devel@nongnu.org
-Cc: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, alistair23@gmail.com,
- Palmer Dabbelt <palmer@dabbelt.com>, qemu-arm@nongnu.org,
- Bin Meng <bin.meng@windriver.com>,
- Alistair Francis <alistair.francis@wdc.com>, bmeng.cn@gmail.com
-Subject: [PATCH v5 4/6] hw/riscv: virt: Add support for generating platform
- FDT entries
-Date: Thu, 28 Apr 2022 09:41:44 +1000
-Message-Id: <20220427234146.1130752-5-alistair.francis@opensource.wdc.com>
-X-Mailer: git-send-email 2.35.1
-In-Reply-To: <20220427234146.1130752-1-alistair.francis@opensource.wdc.com>
-References: <20220427234146.1130752-1-alistair.francis@opensource.wdc.com>
+ (Exim 4.90_1) (envelope-from <peter@pjd.dev>)
+ id 1o9Ve7-0006zW-Hq; Thu, 07 Jul 2022 13:50:37 -0400
+Received: from compute4.internal (compute4.nyi.internal [10.202.2.44])
+ by mailnew.west.internal (Postfix) with ESMTP id 2A9072B05DE3;
+ Thu,  7 Jul 2022 13:50:32 -0400 (EDT)
+Received: from mailfrontend2 ([10.202.2.163])
+ by compute4.internal (MEProxy); Thu, 07 Jul 2022 13:50:32 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=pjd.dev; h=cc:cc
+ :content-type:date:date:from:from:in-reply-to:in-reply-to
+ :message-id:mime-version:references:reply-to:sender:subject
+ :subject:to:to; s=fm1; t=1657216231; x=1657219831; bh=gQDLwY5ydq
+ htZSXB3M8Xr1FTL2/dl3ZEnOYN+KkdxG4=; b=b0fZQoJR2ZnIPZDQQp9Ppn2VPt
+ /JhLbgpfKHP/NY/03dshCbqc1RIqZFppEtcDOKJsJ6r8/H5yBUmgDX7CF7fO8Vv6
+ Zf3A8fY5YvgNY2umRcOBt2//Qn09unSQ/q6VgQ3XXwci6WxONddMfoehpMxk0s4G
+ w3iaL1Lbc19cjOfrEWkllcIVAtet+2muWQeGpJE4FHa762j9KYEppPJ6mqnXSKyl
+ h0Xd/7HOfkp/unIImSjGhZ5lvUxO9oOjs/pZw2Mpm5rrul2ztGpRHz3zAPlkm1JK
+ BuKKSU8Ynj2JybmSFGqX7M/S8xubXuoaqLEru/6M6qJhOp7Nmsa0ttIBFQ/g==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+ messagingengine.com; h=cc:cc:content-type:date:date:feedback-id
+ :feedback-id:from:from:in-reply-to:in-reply-to:message-id
+ :mime-version:references:reply-to:sender:subject:subject:to:to
+ :x-me-proxy:x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=
+ fm3; t=1657216231; x=1657219831; bh=gQDLwY5ydqhtZSXB3M8Xr1FTL2/d
+ l3ZEnOYN+KkdxG4=; b=cOIWi5taCqn7Wwz+MNlK5kR9G5iMky8biKAo8XiXLDAT
+ ScJokcopgNkdtO4KtX3KMCQu+EOuqKLHVrsYSNDnpDg/ZkIJhdsqZT8W7T/bUHBl
+ qCIipHsXThkq/ubwM0Ns2nchnBwF4TzfAWV5Q2rghG7xkw1J1TFAiydFy7+V4nRx
+ 1m1C0+RhTFT0iX7/kDgf3xT4XbeV2LteNXF7Wgwnya2dt0vFwXqM1Dwj68Lw33EK
+ V4sPFlc97IMLGHfokkzhInJ1IXYU8qc40QBIfo6IGWAPqTLMEVe4uT2wl8nnXIdC
+ k8jN7eXax0oOTIOGyRWrLty0lJ8as4eqffZ2qJcYiQ==
+X-ME-Sender: <xms:5xzHYmvY2uk8Z7kTWb3BzixZjhSoYOEyYd6cUXR8YRXkk_wf94UTbA>
+ <xme:5xzHYrdjOMW5J4H9c6z1Y0XSCqw6vOOYwyM6JupkNdtc-ZMG01C1IUN7tuwjnpyzp
+ guZAJbtUHGvLYqSoW8>
+X-ME-Received: <xmr:5xzHYhw3rTijH5IsIQEojbkqSAXWABtaZmwU1T9-_PYLI4i5V36sZvliZqMI>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvfedrudeihedguddujecutefuodetggdotefrod
+ ftvfcurfhrohhfihhlvgemucfhrghsthforghilhdpqfgfvfdpuffrtefokffrpgfnqfgh
+ necuuegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmd
+ enucfjughrpeffhffvvefukfhfgggtuggjsehttdertddttddvnecuhfhrohhmpefrvght
+ vghrucffvghlvghvohhrhigrshcuoehpvghtvghrsehpjhgurdguvghvqeenucggtffrrg
+ htthgvrhhnpeduteeihfffleeuveekgedugfeffeehtdeguefffffhleehgfduueejjeek
+ feeukeenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhgrihhlfhhrohhmpe
+ hpvghtvghrsehpjhgurdguvghv
+X-ME-Proxy: <xmx:5xzHYhML9xtnQ0wvjl_A2tWERZq5zzMpX1lseEJ7KNc5g0nJW83YVg>
+ <xmx:5xzHYm-N6sfoiQKCKVDiIzoJyyAWBPTA7DYrSKh1Mt1h7pdmCHE5Ug>
+ <xmx:5xzHYpWOKv9Eg2p2xs52kGRu85yOmeWOLVHkp7YnZaF8pM7arOMYlA>
+ <xmx:5xzHYqa7EJwW-p5LyLF6ZtEI2T-vIV1q3ZamWscIq6IuvkOMEdazw318YFY>
+Feedback-ID: i9e814621:Fastmail
+Received: by mail.messagingengine.com (Postfix) with ESMTPA; Thu,
+ 7 Jul 2022 13:50:30 -0400 (EDT)
+Date: Thu, 7 Jul 2022 10:50:28 -0700
+From: Peter Delevoryas <peter@pjd.dev>
+To: Joel Stanley <joel@jms.id.au>
+Cc: =?iso-8859-1?Q?C=E9dric?= Le Goater <clg@kaod.org>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Andrew Jeffery <andrew@aj.id.au>, qemu-arm <qemu-arm@nongnu.org>,
+ QEMU Developers <qemu-devel@nongnu.org>
+Subject: Re: [PATCH 1/2] hw/gpio/aspeed: Don't let guests modify input pins
+Message-ID: <Yscc5N0I/t/iYpED@pdel-mbp>
+References: <20220707071731.34047-1-peter@pjd.dev>
+ <20220707071731.34047-2-peter@pjd.dev>
+ <CACPK8Xe-BXFt7oefdO-QS67tQSRP6arzgnGO973MYDYOMrQK4w@mail.gmail.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=216.71.154.42;
- envelope-from=prvs=109fe075d=alistair.francis@opensource.wdc.com;
- helo=esa4.hgst.iphmx.com
-X-Spam_score_int: -43
-X-Spam_score: -4.4
-X-Spam_bar: ----
-X-Spam_report: (-4.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <CACPK8Xe-BXFt7oefdO-QS67tQSRP6arzgnGO973MYDYOMrQK4w@mail.gmail.com>
+Received-SPF: pass client-ip=64.147.123.27; envelope-from=peter@pjd.dev;
+ helo=wnew2-smtp.messagingengine.com
+X-Spam_score_int: -17
+X-Spam_score: -1.8
+X-Spam_bar: -
+X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_MED=-2.3, SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+ FROM_FMBLA_NEWDOM14=0.998, RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -155,75 +136,155 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: sEaSpMKCT47K
+X-TUID: O7njNrsyho7U
 
-From: Alistair Francis <alistair.francis@wdc.com>
+On Thu, Jul 07, 2022 at 08:20:01AM +0000, Joel Stanley wrote:
+> On Thu, 7 Jul 2022 at 07:17, Peter Delevoryas <peter@pjd.dev> wrote:
+> >
+> > It seems that aspeed_gpio_update is allowing the value for input pins to be
+> > modified through register writes and QOM property modification.
+> >
+> > The QOM property modification is fine, but modifying the value through
+> > register writes from the guest OS seems wrong if the pin's direction is set
+> > to input.
+> >
+> > The datasheet specifies that "0" bits in the direction register select input
+> > mode, and "1" selects output mode.
+> >
+> > OpenBMC userspace code is accidentally writing 0's to the GPIO data
+> > registers somewhere (or perhaps the driver is doing it through a reset or
+> > something), and this is overwriting GPIO FRU information (board ID, slot
+> > presence pins) that is initialized in Aspeed machine reset code (see
+> > fby35_reset() in hw/arm/aspeed.c).
+> >
+> > Signed-off-by: Peter Delevoryas <peter@pjd.dev>
+> > Fixes: 4b7f956862dc ("hw/gpio: Add basic Aspeed GPIO model for AST2400 and AST2500")
+> > ---
+> >  hw/gpio/aspeed_gpio.c | 22 ++++++++++++----------
+> >  1 file changed, 12 insertions(+), 10 deletions(-)
+> >
+> > diff --git a/hw/gpio/aspeed_gpio.c b/hw/gpio/aspeed_gpio.c
+> > index a62a673857..2eae427201 100644
+> > --- a/hw/gpio/aspeed_gpio.c
+> > +++ b/hw/gpio/aspeed_gpio.c
+> > @@ -268,7 +268,7 @@ static ptrdiff_t aspeed_gpio_set_idx(AspeedGPIOState *s, GPIOSets *regs)
+> >  }
+> >
+> >  static void aspeed_gpio_update(AspeedGPIOState *s, GPIOSets *regs,
+> > -                               uint32_t value)
+> > +                               uint32_t value, bool force)
+> >  {
+> >      uint32_t input_mask = regs->input_mask;
+> >      uint32_t direction = regs->direction;
+> > @@ -293,10 +293,12 @@ static void aspeed_gpio_update(AspeedGPIOState *s, GPIOSets *regs,
+> >              }
+> >
+> 
+> Reading this model hurts my head a little. Perhaps we also need to add
+> a test for this case to make it clear what's going on.
 
-Similar to the ARM virt machine add support for adding device tree
-entries for dynamically created devices.
+Yeah, I guess the idea was to create one function "aspeed_gpio_update"
+to handle register writes, so it takes a 32-bit register value function
+parameter.
 
-Signed-off-by: Alistair Francis <alistair.francis@wdc.com>
-Reviewed-by: Edgar E. Iglesias <edgar.iglesias@amd.com>
----
- hw/riscv/virt.c | 19 +++++++++++++++++++
- 1 file changed, 19 insertions(+)
+The problem is that it still iterates over all the GPIO's in the
+register and updates them individually anyways. Maybe there's an
+opportunity here to move the xor + for-loop to a wrapper.
 
-diff --git a/hw/riscv/virt.c b/hw/riscv/virt.c
-index 312138e7bf..a2ffd04a78 100644
---- a/hw/riscv/virt.c
-+++ b/hw/riscv/virt.c
-@@ -28,6 +28,7 @@
- #include "hw/qdev-properties.h"
- #include "hw/char/serial.h"
- #include "target/riscv/cpu.h"
-+#include "hw/core/sysbus-fdt.h"
- #include "hw/riscv/riscv_hart.h"
- #include "hw/riscv/virt.h"
- #include "hw/riscv/boot.h"
-@@ -475,6 +476,12 @@ static void create_fdt_socket_plic(RISCVVirtState *s=
-,
-     riscv_socket_fdt_write_id(mc, mc->fdt, plic_name, socket);
-     qemu_fdt_setprop_cell(mc->fdt, plic_name, "phandle",
-         plic_phandles[socket]);
-+
-+    platform_bus_add_all_fdt_nodes(mc->fdt, plic_name,
-+                                   memmap[VIRT_PLATFORM_BUS].base,
-+                                   memmap[VIRT_PLATFORM_BUS].size,
-+                                   VIRT_PLATFORM_BUS_IRQ);
-+
-     g_free(plic_name);
-=20
-     g_free(plic_cells);
-@@ -552,6 +559,12 @@ static void create_fdt_imsic(RISCVVirtState *s, cons=
-t MemMapEntry *memmap,
-             IMSIC_MMIO_GROUP_MIN_SHIFT);
-     }
-     qemu_fdt_setprop_cell(mc->fdt, imsic_name, "phandle", *msi_m_phandle=
-);
-+
-+    platform_bus_add_all_fdt_nodes(mc->fdt, imsic_name,
-+                                   memmap[VIRT_PLATFORM_BUS].base,
-+                                   memmap[VIRT_PLATFORM_BUS].size,
-+                                   VIRT_PLATFORM_BUS_IRQ);
-+
-     g_free(imsic_name);
-=20
-     /* S-level IMSIC node */
-@@ -689,6 +702,12 @@ static void create_fdt_socket_aplic(RISCVVirtState *=
-s,
-         VIRT_IRQCHIP_NUM_SOURCES);
-     riscv_socket_fdt_write_id(mc, mc->fdt, aplic_name, socket);
-     qemu_fdt_setprop_cell(mc->fdt, aplic_name, "phandle", aplic_s_phandl=
-e);
-+
-+    platform_bus_add_all_fdt_nodes(mc->fdt, aplic_name,
-+                                   memmap[VIRT_PLATFORM_BUS].base,
-+                                   memmap[VIRT_PLATFORM_BUS].size,
-+                                   VIRT_PLATFORM_BUS_IRQ);
-+
-     g_free(aplic_name);
-=20
-     g_free(aplic_cells);
---=20
-2.35.1
+But yeah, I'll add another commit that includes a test case for this.
 
+> The test above the code you've changed does this:
+> 
+> >            /* ...and we're output or not input-masked... */
+> >            if (!(direction & mask) && (input_mask & mask)) {
+> >                continue;
+> >            }
+> 
+> For clarity, !(direction & mask) means "is input".
+> 
+> The comment confuses me because it says "or", but the code has "and".
+
+Yeah I was looking at this as well and noticed the comment doesn't make
+any sense.
+
+> 
+> input_mask doesn't seem to feature in the Linux driver, so that will
+> always be zero. The test will be X && 0, which is always 0.
+
+Ohhhhhh I didn't notice that though. Good catch!!
+
+> 
+> If you changed it to || then we would do the test that the comment
+> suggests. When the pin is input, we will skip updating the value.
+> 
+> This will solve the bug you had with your input pins being reset. It
+> won't fix the QOM case, but we could consider handling that separately
+> without confusing the logic in this function.
+
+Yes good point: I'll change this to || and figure out a different way to
+update the value through the QOM property setter.
+
+> 
+> 
+> >              /* ...then update the state. */
+> > -            if (mask & new) {
+> > -                regs->data_value |= mask;
+> > -            } else {
+> > -                regs->data_value &= ~mask;
+> > +            if (direction & mask || force) {
+> > +                if (mask & new) {
+> > +                    regs->data_value |= mask;
+> > +                } else {
+> > +                    regs->data_value &= ~mask;
+> > +                }
+> >              }
+> >
+> >              /* If the gpio is set to output... */
+> > @@ -339,7 +341,7 @@ static void aspeed_gpio_set_pin_level(AspeedGPIOState *s, uint32_t set_idx,
+> >          value &= ~pin_mask;
+> >      }
+> >
+> > -    aspeed_gpio_update(s, &s->sets[set_idx], value);
+> > +    aspeed_gpio_update(s, &s->sets[set_idx], value, true);
+> >  }
+> >
+> >  /*
+> > @@ -653,7 +655,7 @@ static void aspeed_gpio_write_index_mode(void *opaque, hwaddr offset,
+> >          reg_value = update_value_control_source(set, set->data_value,
+> >                                                  reg_value);
+> >          set->data_read = reg_value;
+> > -        aspeed_gpio_update(s, set, reg_value);
+> > +        aspeed_gpio_update(s, set, reg_value, false);
+> >          return;
+> >      case gpio_reg_idx_direction:
+> >          reg_value = set->direction;
+> > @@ -753,7 +755,7 @@ static void aspeed_gpio_write_index_mode(void *opaque, hwaddr offset,
+> >              __func__, offset, data, reg_idx_type);
+> >          return;
+> >      }
+> > -    aspeed_gpio_update(s, set, set->data_value);
+> > +    aspeed_gpio_update(s, set, set->data_value, false);
+> >      return;
+> >  }
+> >
+> > @@ -799,7 +801,7 @@ static void aspeed_gpio_write(void *opaque, hwaddr offset, uint64_t data,
+> >          data &= props->output;
+> >          data = update_value_control_source(set, set->data_value, data);
+> >          set->data_read = data;
+> > -        aspeed_gpio_update(s, set, data);
+> > +        aspeed_gpio_update(s, set, data, false);
+> >          return;
+> >      case gpio_reg_direction:
+> >          /*
+> > @@ -875,7 +877,7 @@ static void aspeed_gpio_write(void *opaque, hwaddr offset, uint64_t data,
+> >                        PRIx64"\n", __func__, offset);
+> >          return;
+> >      }
+> > -    aspeed_gpio_update(s, set, set->data_value);
+> > +    aspeed_gpio_update(s, set, set->data_value, false);
+> >      return;
+> >  }
+> >
+> > --
+> > 2.36.1
+> >

@@ -1,98 +1,98 @@
-Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp5351443lft;
-        Thu, 7 Jul 2022 02:43:37 -0700 (PDT)
-X-Google-Smtp-Source: AGRyM1uwApta0PZEMwpb+4NesqQXjWypuMgvNa6kuXECS7dDkef7aIsQZ+Ry1ZROFjPf+RZI8vCn
-X-Received: by 2002:a25:bb52:0:b0:66e:5fc:3b42 with SMTP id b18-20020a25bb52000000b0066e05fc3b42mr31825312ybk.582.1657187017009;
-        Thu, 07 Jul 2022 02:43:37 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1657187017; cv=none;
+Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp5355112lft;
+        Thu, 7 Jul 2022 02:51:26 -0700 (PDT)
+X-Google-Smtp-Source: AGRyM1tVYt3szXR77AJEPPQu4rBc0E7NIEGo5jS4X+s5SpeUcR1RocA8YrL4gYKgdxDvHrKiEl/a
+X-Received: by 2002:a05:622a:514:b0:31d:351b:e366 with SMTP id l20-20020a05622a051400b0031d351be366mr28991972qtx.277.1657187484926;
+        Thu, 07 Jul 2022 02:51:24 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1657187484; cv=none;
         d=google.com; s=arc-20160816;
-        b=dmRxpNZONzdIiA2/xVdHptrdFc/4QcI8F+CLLSUmM/5Rg58ynmtlWVrEQy0rLLrL3/
-         BUFUbbKbzAoxznD+7l/y9Img2LbC0KjJIe91jHDk4wFEl5RyE6DdYbQAbFoynJyYLCKr
-         XeNfh8fL/uV/F3QATTX1bqXm49Cw2Qz8AjJXfiL6OM67eqDVGlDZxP4qiwoiY4PISocR
-         pyuD2T5AeQ07oK9BSxTKxj0upIMWKN7QyTnGqJvYzUMQ/QnhdTSBzMbJ+c222WQJ9JNM
-         DV4MDkmgf2ENT76q1uRDLactfhVXujGzLLbyZLgY5Ywj6nVZ+YVpbXpeqf8f7tJZQtIT
-         Bc9g==
+        b=KKQvCI0fica8j7692YNWsNgms++f1QDIk7t0k9fZX5x7CXD/UFfYO6Anwmfao6Vum+
+         ScteB/C6Ja5CVF8aNsdXpb6MLbsfFMnxVDlrNTfu9y/pOfoI9jjiHYOq5mqmvc5aHamq
+         knQHpne4wt17/1Tg/ocDGdcXmQ0dbOaCIanrPb4e/MIt8cJL8FHh4yCX3qWTdPvoUSXD
+         u1J91zRmbTdckUN9KN/9wZ3cCRYOIF7kPubfQQQBM/Xyw9x8T6VPl9YXoEGoJV9iWyIm
+         FvzkplqBSzzP/vMAKrXdpJdUDggv/+DZ5f7sF6Rwzlq696XSwE+fVtfdFOn4g5Nwmzc3
+         rAqQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
          :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=d3px6ppU1QpFYdnAU/tOdOALWEZdpB7TD3A5WxA0Hbo=;
-        b=c2c5nbMiz8zG3slKGBjQ/qRIA558AATA4oAalJfshbtFY1MlcMq6eTgSf4yMmnQLa4
-         88ZqhCKL1gQJh9dodhNt0N6I6HTkf+QuXhKHNIJeganiTegeIq443vg33riJ4k6TIgzl
-         nqtwI1n9aqAvNCDV/JwIP/BjAcULFAU7v4iEy7+4OK8NH685FgUXlSb+QS+TE7vNsOGs
-         jsyD2amXi3s+1iH4hYL+lAc9x64MqWayoiRfkBPh76UeREPAi08S7NDXparZ4RTuI6Xo
-         9jXGNpKv7KUS0y0KB95njZZK/ky24E4eG1k8MUaxQsvvSbhUhEMGI3U9z8epAeBQoS2s
-         5FMw==
+        bh=2+7wSShS7IOa9zHLBriGTQZefWIupB7YBUOj0bBdgqg=;
+        b=YRqa9d7RPD6CrxqB2MpdShals55TBmoCBJIdI/GDv9Ygcnq/A4Ek3L3O8enzSiu7L1
+         8yp1tHmfegCXwb8jbN90Rp5k5Js/S9RMdLSodnNU0edrb4SrBzpK9GDFdfX1X/P4UnMH
+         1VGew3LoqqOq++0m4rkxaJE8GzXdroRvE0mju2QJ1GmUlNqESeZad46LUM4miUxLsXft
+         QEAMvEK+waN5cwxz3swk4Bku0LBu/xagB9V6MXKkgrmgAjLCTHW/r1Xh2g1IshUxLt+k
+         BWVhV6PJc7nXlklMzE7xCm9fdSQBbgGyIy9nCwRJ/f4ogeqcFHTk83GEirAwdRT4N5iy
+         2llQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=wxatWTuX;
+       dkim=pass header.i=@linaro.org header.s=google header.b=gAbmPDEa;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 202-20020a8112d3000000b0031cf9cc8789si4991067yws.442.2022.07.07.02.43.36
+        by mx.google.com with ESMTPS id q12-20020a37f70c000000b006b3583a107esi6057006qkj.634.2022.07.07.02.51.24
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 07 Jul 2022 02:43:36 -0700 (PDT)
+        Thu, 07 Jul 2022 02:51:24 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=wxatWTuX;
+       dkim=pass header.i=@linaro.org header.s=google header.b=gAbmPDEa;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:47958 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:54164 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1o9O2q-0004A5-D7
-	for alex.bennee@linaro.org; Thu, 07 Jul 2022 05:43:36 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:52696)
+	id 1o9OAO-0000Fj-Dj
+	for alex.bennee@linaro.org; Thu, 07 Jul 2022 05:51:24 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:54158)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1o9O2V-00049o-7h
- for qemu-arm@nongnu.org; Thu, 07 Jul 2022 05:43:15 -0400
-Received: from mail-yw1-x112c.google.com ([2607:f8b0:4864:20::112c]:42969)
+ id 1o9O9n-0000B0-6t
+ for qemu-arm@nongnu.org; Thu, 07 Jul 2022 05:50:48 -0400
+Received: from mail-yw1-x1129.google.com ([2607:f8b0:4864:20::1129]:42497)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1o9O2S-00023d-H1
- for qemu-arm@nongnu.org; Thu, 07 Jul 2022 05:43:14 -0400
-Received: by mail-yw1-x112c.google.com with SMTP id
- 00721157ae682-2ef5380669cso164409147b3.9
- for <qemu-arm@nongnu.org>; Thu, 07 Jul 2022 02:43:11 -0700 (PDT)
+ id 1o9O9l-0003IN-JU
+ for qemu-arm@nongnu.org; Thu, 07 Jul 2022 05:50:46 -0400
+Received: by mail-yw1-x1129.google.com with SMTP id
+ 00721157ae682-2ef5380669cso164561527b3.9
+ for <qemu-arm@nongnu.org>; Thu, 07 Jul 2022 02:50:45 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=d3px6ppU1QpFYdnAU/tOdOALWEZdpB7TD3A5WxA0Hbo=;
- b=wxatWTuXZmzlOkWIlNeWpOZ2/qT7dF7W0iG8ncVzfDI6s9Y5D1M/zMpIyCm9cogl1W
- r22pXgp1O8bbpuZwI3O3N6ajATDkaiVW5HGS8PncVPhWGi9jBkr69iHpyRFehYtCeHbL
- NZzQnwouDgY65h9cg6PWJSOuxZOrgNceYvar7KFWcnmjHgz79QOk0KO9ULWL2C7Tpg/C
- sio0aG/IlQuCZ3bJHYg6IfWgM88HugV7wcOiTjvx8NgHOkF6AHKZV2+/w/18HizYsx8d
- C8F1P414TfNqsTfGH8FHCuvhiUl4iYGMDEtwaFr/F4Z6JYjNcZcVS4hL6R+8V6jFBhGJ
- bpjA==
+ :cc; bh=2+7wSShS7IOa9zHLBriGTQZefWIupB7YBUOj0bBdgqg=;
+ b=gAbmPDEak+kQlzi1wzrYT7SfLIO6SFgfMN6bFM9kEDc2/MKlsLnAZi/5Rge/q/zT5/
+ arw6TJvhRFYezNDzvuTeuW5guJ0piwaNxB4HyxF9DYpdR3Wr40+cpN8jG8XuPskfVRG+
+ yJRdsZM4KUVaEi9RNttBJfQz3gB+u8YMHhDXppI9JrA34YaolRIEGQH6P3ck2Hcojwg1
+ fkhhGXc8o/CB9Jgg695yL6udU1UdC//TPCXUhNq2HZM/DE/QvYosyCMCgQjP9wGINhww
+ rZF/KTnXAKDSbbfYHFcN2Kn0aIm6jsMKV1dYz2vK/oX4bMqlJ3XHszpSo6HHa6L5FhGA
+ unWA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=d3px6ppU1QpFYdnAU/tOdOALWEZdpB7TD3A5WxA0Hbo=;
- b=2iurDJnw1qovBNxumLyzLe3/J6Sousp1cK7Z+wO/DZZ6Uyp4gsMd5B2dBcLqSnKHYm
- tz/HZPMWJdbRI0bKR25nHikN4cUzAhLTqZMlUVld5gpoA7Bp9W3FwS6vF3mL7F7w4G94
- 3Aq4Qc/+PBHivITf00UkZyTspUwQyaK1O39pPCXMiDcLEx/GQq8Osq3pyhvvggz9+e7I
- 9HNWCU+oVcD3sI5dvzFacREDuQbMClyXAhnXF6etvsgAzZ5g7wMdt5h2HxfNdSe3y7MK
- t7WQXfiAV3FePSHzHLiYfIBwotfeL5KwelNwRZfiUuj33sliRoGLxUHEzsdZpZadhbFz
- g13A==
-X-Gm-Message-State: AJIora+WDATwvvKw+BdVcnrYYwYur+qf/T6IvzHLJbGhAT2yYP1yMDI2
- rQiOPkUWpWHebXeRQaMO4rEN7iKDomN3cKbdVOFOGdRiKFxJ3w==
-X-Received: by 2002:a81:f8f:0:b0:31c:bd9f:31ce with SMTP id
- 137-20020a810f8f000000b0031cbd9f31cemr17974576ywp.347.1657186990643; Thu, 07
- Jul 2022 02:43:10 -0700 (PDT)
+ bh=2+7wSShS7IOa9zHLBriGTQZefWIupB7YBUOj0bBdgqg=;
+ b=Y6T7eUsSWeUMEfjHmr2ubv4XxThqMLjyCXnOIaLnh3yT3CoydEcsEm7FkGox9GRO+N
+ BT1CaDw3tPdB2oOM+CGRDp7KFdbxxmSNmPqMzQrzQPKUSTHcE44z9Dx6c5rk9+Zf5kQk
+ kEW6MwWBZDnXwVhKUWhE4jDbFh7KTgNVHiWaMW4s2iPqxCOQOqlSEnRe7LDqWFNv8GLH
+ db38ZYTxhI6D8cesdtwLUBuHWJ7ntJTg9+FSrYBN93nMPaFaXdGTYZC2BR1ffpFyswI+
+ Cy+Na60BuxqG8bqXhaNXCwQd5j9THJOIM82y3fNYL+n/HKfiUXfraD9vr0N8j+OAZFgr
+ VwyQ==
+X-Gm-Message-State: AJIora+E2iCog2XmTXXMlI6H6EDwUoPErFMd9u6citk2uCqQc0MXrz1n
+ zK+NWTLEzLOIsPEAkAn5Kx6/I71Ij34qd/BhXcvD0A==
+X-Received: by 2002:a81:6585:0:b0:31c:b55b:dd36 with SMTP id
+ z127-20020a816585000000b0031cb55bdd36mr19171030ywb.469.1657187444238; Thu, 07
+ Jul 2022 02:50:44 -0700 (PDT)
 MIME-Version: 1.0
 References: <20220706082411.1664825-1-richard.henderson@linaro.org>
- <20220706082411.1664825-26-richard.henderson@linaro.org>
-In-Reply-To: <20220706082411.1664825-26-richard.henderson@linaro.org>
+ <20220706082411.1664825-27-richard.henderson@linaro.org>
+In-Reply-To: <20220706082411.1664825-27-richard.henderson@linaro.org>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 7 Jul 2022 10:42:32 +0100
-Message-ID: <CAFEAcA8Ou2N9qJyvSy2wkpGtguCjJrA9YWoio4jsrv5VrNE3VQ@mail.gmail.com>
-Subject: Re: [PATCH v5 25/45] target/arm: Implement BFMOPA, BFMOPS
+Date: Thu, 7 Jul 2022 10:50:05 +0100
+Message-ID: <CAFEAcA9pv2xH9mvydFK4zqB1viH1DebLB_s7bCYXDGqsCKatew@mail.gmail.com>
+Subject: Re: [PATCH v5 26/45] target/arm: Implement FMOPA, FMOPS (widening)
 To: Richard Henderson <richard.henderson@linaro.org>
 Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::112c;
- envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x112c.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1129;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x1129.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -114,81 +114,56 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: vmJqSvZsBmUm
+X-TUID: 9fj6vaVfqEyk
 
-On Wed, 6 Jul 2022 at 10:36, Richard Henderson
+On Wed, 6 Jul 2022 at 10:26, Richard Henderson
 <richard.henderson@linaro.org> wrote:
 >
 > Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
-> ---
->  target/arm/helper-sme.h    |  2 ++
->  target/arm/sme.decode      |  2 ++
->  target/arm/sme_helper.c    | 52 ++++++++++++++++++++++++++++++++++++++
->  target/arm/translate-sme.c | 30 ++++++++++++++++++++++
->  4 files changed, 86 insertions(+)
->
-> diff --git a/target/arm/helper-sme.h b/target/arm/helper-sme.h
-> index f50d0fe1d6..1d68fb8c74 100644
-> --- a/target/arm/helper-sme.h
-> +++ b/target/arm/helper-sme.h
-> @@ -125,3 +125,5 @@ DEF_HELPER_FLAGS_7(sme_fmopa_s, TCG_CALL_NO_RWG,
->                     void, ptr, ptr, ptr, ptr, ptr, ptr, i32)
->  DEF_HELPER_FLAGS_7(sme_fmopa_d, TCG_CALL_NO_RWG,
->                     void, ptr, ptr, ptr, ptr, ptr, ptr, i32)
-> +DEF_HELPER_FLAGS_6(sme_bfmopa, TCG_CALL_NO_RWG,
-> +                   void, ptr, ptr, ptr, ptr, ptr, i32)
-> diff --git a/target/arm/sme.decode b/target/arm/sme.decode
-> index ba4774d174..afd9c0dffd 100644
-> --- a/target/arm/sme.decode
-> +++ b/target/arm/sme.decode
-> @@ -73,3 +73,5 @@ ADDVA_d         11000000 11 01000 1 ... ... ..... 00 ...        @adda_64
->
->  FMOPA_s         10000000 100 ..... ... ... ..... . 00 ..        @op_32
->  FMOPA_d         10000000 110 ..... ... ... ..... . 0 ...        @op_64
-> +
-> +BFMOPA          10000001 100 ..... ... ... ..... . 00 ..        @op_32
-> diff --git a/target/arm/sme_helper.c b/target/arm/sme_helper.c
-> index 78ba34f3d2..4b437bb913 100644
-> --- a/target/arm/sme_helper.c
-> +++ b/target/arm/sme_helper.c
-> @@ -981,3 +981,55 @@ void HELPER(sme_fmopa_d)(void *vza, void *vzn, void *vzm, void *vpn,
->          }
->      }
->  }
-> +
-> +/*
-> + * Alter PAIR as needed for controlling predicates being false,
-> + * and for NEG on an enabled row element.
-> + */
-> +static inline uint32_t f16mop_adj_pair(uint32_t pair, uint32_t pg, uint32_t neg)
+
+
+> +static float32 f16_dotadd(float32 sum, uint32_t e1, uint32_t e2,
+> +                          float_status *s_std, float_status *s_odd)
 > +{
-> +    pair ^= neg;
+> +    float64 e1r = float16_to_float64(e1 & 0xffff, true, s_std);
+> +    float64 e1c = float16_to_float64(e1 >> 16, true, s_std);
+> +    float64 e2r = float16_to_float64(e2 & 0xffff, true, s_std);
+> +    float64 e2c = float16_to_float64(e2 >> 16, true, s_std);
+> +    float64 t64;
+> +    float32 t32;
+> +
+> +    /*
+> +     * The ARM pseudocode function FPDot performs both multiplies
+> +     * and the add with a single rounding operation.  Emulate this
+> +     * by performing the first multiply in round-to-odd, then doing
+> +     * the second multiply as fused multiply-add, and rounding to
+> +     * float32 all in one step.
+> +     */
 
-You seem to be negating element 1 of row and col ('neg' here is
-1 << 15 unless I've misread something, and it gets passed to
-the calls for both the row and column data), but the pseudocode
-says we want to negate element 0 and element 1 of row, and not
-negate the col elements.
+I guess if we find we're not producing quite bit-accurate results
+we can come back and revisit this :-)
 
-> +    if (!(pg & 1)) {
-> +        pair &= 0xffff0000u;
-> +    }
-> +    if (!(pg & 4)) {
-> +        pair &= 0x0000ffffu;
-> +    }
-
-The pseudocode sets the element to 0 if it is not
-predicated, and then applies the negation second.
-
-> +    return pair;
+> +    t64 = float64_mul(e1r, e2r, s_odd);
+> +    t64 = float64r32_muladd(e1c, e2c, t64, 0, s_std);
+> +
+> +    /* This conversion is exact, because we've already rounded. */
+> +    t32 = float64_to_float32(t64, s_std);
+> +
+> +    /* The final accumulation step is not fused. */
+> +    return float32_add(sum, t32, s_std);
 > +}
 > +
-> +void HELPER(sme_bfmopa)(void *vza, void *vzn, void *vzm, void *vpn,
-> +                        void *vpm, uint32_t desc)
+> +void HELPER(sme_fmopa_h)(void *vza, void *vzn, void *vzm, void *vpn,
+> +                         void *vpm, void *vst, uint32_t desc)
 > +{
 > +    intptr_t row, col, oprsz = simd_maxsz(desc);
 > +    uint32_t neg = simd_data(desc) << 15;
 > +    uint16_t *pn = vpn, *pm = vpm;
+> +    float_status fpst_odd, fpst_std = *(float_status *)vst;
+> +
+> +    set_default_nan_mode(true, &fpst_std);
+> +    fpst_odd = fpst_std;
+> +    set_float_rounding_mode(float_round_to_odd, &fpst_odd);
 > +
 > +    for (row = 0; row < oprsz; ) {
 > +        uint16_t pa = pn[H2(row >> 4)];
@@ -196,7 +171,7 @@ predicated, and then applies the negation second.
 > +            void *vza_row = vza + tile_vslice_offset(row);
 > +            uint32_t n = *(uint32_t *)(vzn + row);
 
-More missing H macros ?
+More missing H macros.
 
 > +
 > +            n = f16mop_adj_pair(n, pa, neg);
@@ -206,17 +181,13 @@ More missing H macros ?
 > +                do {
 > +                    if ((pa & 0b0101) == 0b0101 || (pb & 0b0101) == 0b0101) {
 
-The pseudocode test for "do we do anything" is
- (prow_0 && pcol_0) || (prow_1 && pcol_1)
-
-but isn't this C expression doing
- (prow_0 && prow_1) || (pcol_0 && pcol_1) ?
+Wrong condition again?
 
 > +                        uint32_t *a = vza_row + col;
 > +                        uint32_t m = *(uint32_t *)(vzm + col);
 > +
 > +                        m = f16mop_adj_pair(m, pb, neg);
-> +                        *a = bfdotadd(*a, n, m);
+> +                        *a = f16_dotadd(*a, n, m, &fpst_std, &fpst_odd);
 > +
 > +                        col += 4;
 > +                        pb >>= 4;

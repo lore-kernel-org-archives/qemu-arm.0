@@ -1,293 +1,268 @@
-Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp5713223lft;
-        Thu, 7 Jul 2022 12:10:30 -0700 (PDT)
-X-Google-Smtp-Source: AGRyM1s+a7Wfm0uPkbBjFUvjm3O4P2yCKt6cXAyV14jRqOSnsv5rgdkt8g3VvrvT/DRqfCVQAYUp
-X-Received: by 2002:ac8:7f0d:0:b0:31d:4894:ad54 with SMTP id f13-20020ac87f0d000000b0031d4894ad54mr20588511qtk.137.1657221030716;
-        Thu, 07 Jul 2022 12:10:30 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1657221030; cv=none;
+Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp5608177lft;
+        Thu, 7 Jul 2022 09:17:27 -0700 (PDT)
+X-Google-Smtp-Source: AGRyM1tEqkf16DjO9C6ivIhY0IM5UFstJ715Q3JJONT1EP+dHDxrxKccwfKOWxTr+6DQeO4tFggo
+X-Received: by 2002:a05:6402:228f:b0:43a:896:e4f0 with SMTP id cw15-20020a056402228f00b0043a0896e4f0mr37744965edb.81.1657210647524;
+        Thu, 07 Jul 2022 09:17:27 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1657210647; cv=none;
         d=google.com; s=arc-20160816;
-        b=bpa0jIrAwMQhb+jlBsRQcC0Xy/BO/aq9hKx2I9iW7aD/cELj0C1ELxl9AyNXYG8uaA
-         gpgXWkB+feUQOIeR3ebPTOHsku14gLi51R8RTMdCzNUB1Od121RswSfK9dFVW5Dh5MR0
-         3KelamGXaBDOCmkjnZNI6ksqeTX/xhTPXJkw+l5bnQ+e1l96tCjGEBnsJaYACu4Evnhs
-         qGCOKPBTqMu7dvjyeyygieJ3lF9IZ6noQqyT4qFLfOcSw7R9mK1AhiMXsWKw8XRg7MQz
-         MbmLZ17ZOemyi5mu+lp5yapPM/DlHaDI9+l2wpYj8qxilK5LoObqXAO/kK3F24uKMQO8
-         FByQ==
+        b=qKbF+HAQ97I0CaVk40lSbwjiw1vBsqZXdS/gElG3bB3ra5Qv+xPBpi30bYo7CmDee1
+         ysHBErwOK2MMnG7gyQGTlUnWxG5tYRT6Fgh+2FkfAz3NNW1C2zqReGP6DCL1DW1Rhn+X
+         MTNXYFrhrun4mCxqgnL3SVlv9xyT0RPAVtrF6txUuDJftMK6Qj6ZnAR5JmKj1Z1GfAD1
+         adNpXsdpFHb8eUfU9srTxlMg0XvJRqJJmeoS5an4pC2r+IqnNp+vcku3dSLVqbA6f1qV
+         9J82fZtZsGTxEa9XoHCVVeHoltye+z3rOU0H8RXJ4aQ6O9HHW+mISlJ8KzNz4zlBHSXH
+         dl0Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:in-reply-to
-         :content-transfer-encoding:content-disposition:mime-version
-         :references:message-id:subject:cc:to:from:date:feedback-id
-         :dkim-signature:dkim-signature;
-        bh=eYUc0MV2RVzG1/C7GW0kta5P2CfB8nCHdmDPuX9jZg4=;
-        b=p+3a/TjRJVDQ65WuBz/BtSv9sOYVH3mQzk6bY2flYAnwSceLLsP0NnpANi0fWe2C4m
-         NdkR0tbm0nLf7H4m7Z1014j9/1/4cHov0LQcaCrdQyl8+tJjzNzJL7aWJdKl/YwN6FOo
-         ZRZZ5tSf06cCigX1UpTWG2z/B13aP9xM65J34ZK0TXS7XWLODTuPh4RoTFJhw1qaayKR
-         Sd+bZ4r81jjBCL03OONtPEudaxU7fIr6b6XiMiQqG/cjRt7uc99uqyBHKFtH2gh2e/bP
-         zT3vKA17S/ANFdaPKOCYxDufGKV33PwQJOBOP+i0EErIgZeTUh+e9eIjlCxOF05TE2Ya
-         DuGw==
+        h=list-id:precedence:content-transfer-encoding:mime-version
+         :references:in-reply-to:message-id:date:subject:cc:to:from
+         :dkim-signature;
+        bh=E8sCoaxLOXpg7pnv4sV/NFcTS/eGnW5V+4PYPvvHC2M=;
+        b=GDS8JxhP43q0lvL+vnnTOgZChHRq2AwRQxa9r6qlVyriqjStGYs6QpLKkmYgQGfD8J
+         8lPCqFNo+KTQfZZpmM7ws8+9Zd+b4lumx826edi1nTpiicJ1TJxBykZLUd08iGFCm9sC
+         H+uD6WV6ZDTLA/fs3RAPq4uW2rquB9qIFYU2B8n/3E66NzEgp5m4T7vmn31MPH2h0xtT
+         39JdWvKIpVIMzZ32D6Aa3j1XC7WW2CUeGfV3M4/EABaFOgmzjhpGdN8mJ1Yz2rQqOYSC
+         faCRJpn7klPnBjt51j6YjdGhntyUm2QBm1c5deb2KQtsFBNfzAXvSDedXfaIHUjZPT4p
+         E48Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@pjd.dev header.s=fm1 header.b=WzmF6dY3;
-       dkim=fail header.i=@messagingengine.com header.s=fm3 header.b="uSeb8Rr/";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s15-20020a05620a29cf00b006a983802d3csi31074599qkp.201.2022.07.07.12.10.30
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 07 Jul 2022 12:10:30 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="d/jAaL7J";
+       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <kvm-owner@vger.kernel.org>
+Received: from out1.vger.email (out1.vger.email. [2620:137:e000::1:20])
+        by mx.google.com with ESMTP id p11-20020a056402500b00b00439eafe046bsi21267941eda.171.2022.07.07.09.17.27;
+        Thu, 07 Jul 2022 09:17:27 -0700 (PDT)
+Received-SPF: pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) client-ip=2620:137:e000::1:20;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@pjd.dev header.s=fm1 header.b=WzmF6dY3;
-       dkim=fail header.i=@messagingengine.com header.s=fm3 header.b="uSeb8Rr/";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:50900 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1o9WtS-00024Y-64
-	for alex.bennee@linaro.org; Thu, 07 Jul 2022 15:10:30 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:56460)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter@pjd.dev>)
- id 1o9WnR-0008R0-8h; Thu, 07 Jul 2022 15:04:17 -0400
-Received: from new1-smtp.messagingengine.com ([66.111.4.221]:43593)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter@pjd.dev>)
- id 1o9WnP-0005E1-1T; Thu, 07 Jul 2022 15:04:16 -0400
-Received: from compute2.internal (compute2.nyi.internal [10.202.2.46])
- by mailnew.nyi.internal (Postfix) with ESMTP id AFC0F5808BA;
- Thu,  7 Jul 2022 15:04:13 -0400 (EDT)
-Received: from mailfrontend2 ([10.202.2.163])
- by compute2.internal (MEProxy); Thu, 07 Jul 2022 15:04:13 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=pjd.dev; h=cc:cc
- :content-transfer-encoding:content-type:date:date:from:from
- :in-reply-to:in-reply-to:message-id:mime-version:references
- :reply-to:sender:subject:subject:to:to; s=fm1; t=1657220653; x=
- 1657224253; bh=eYUc0MV2RVzG1/C7GW0kta5P2CfB8nCHdmDPuX9jZg4=; b=W
- zmF6dY3zUeLFwDZlcBBI4yqUKvJm+JxbkhLUBuJa/Wo2H5zs63NjVpbHUzJC8sBh
- 8ZTxZMKOvrJaEOf3xM8pmI+pqVQk7C4HngEnB9AN7FVrJ0bo9MWsgRYOOCi6D19q
- k7HiXrnP1Og5PIuxZ6np4vhPS0Q5dcxsPyFeMfD/8gke5/Jhw31pc1nInE0+gC5E
- j+/xRigIz66dA3g93keK4wztJIkPjdKk6eXTl/UNCZphTJzgAtQkWBM8Go4wOL9T
- yQTQKFmvheMv+4TOiJ7sRa+earhcZLlcml8txak98Hz3jFW3/ilF1VfkDMyojEeO
- JHdTHw3944ep75Snf/zNA==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
- messagingengine.com; h=cc:cc:content-transfer-encoding
- :content-type:date:date:feedback-id:feedback-id:from:from
- :in-reply-to:in-reply-to:message-id:mime-version:references
- :reply-to:sender:subject:subject:to:to:x-me-proxy:x-me-proxy
- :x-me-sender:x-me-sender:x-sasl-enc; s=fm3; t=1657220653; x=
- 1657224253; bh=eYUc0MV2RVzG1/C7GW0kta5P2CfB8nCHdmDPuX9jZg4=; b=u
- Seb8Rr/yz2suH+PU1kvH+OSu8GkxRs7tZM/FVd/4I7ifXEWv0L+2X3ruHgBVlJbH
- Inju1pmFds1tkq0wTmD1hSm4FfPX7j9dnOaiWcWS/DZR00mQ2cAtCdGF83kLfVnu
- OpzgnGObDMajBNhWyHkWE0zanZZsVXTF1XuvDP7/8KIeoX1PED9Iis4MvXVkWPB4
- A+Jdw5587wV65VMbg+cmSuSPWP6/xqgxMYpGQiTVUTrho7IYQFliVUlFas//ArHy
- glduTs/FztP58wmPJ8a5My5LGTIltkxv3IzexZe2/bHEl0e4OkYX1xamGpGENBMw
- 4QcIBmFSuAFXilD2LPYaw==
-X-ME-Sender: <xms:LC7HYjJJqpWdzPQxngl9tIz2a1YDx6B5bGceOFH1z3vtPogSkkzNLQ>
- <xme:LC7HYnIyUtUgOpCBh4YIwdPfRkbEYedpQ5mhuaPbRuefmptxaOPM1MybHBuJh1KQv
- FA9IFFgxz0KYgXqwe8>
-X-ME-Received: <xmr:LC7HYrs-ygGROJVp2ksc0PF1JQDXHiYWKsbJIxG3B6reMlWjfmhi0CyYrITkHTYiEgdjsrwUCyYJvk7XjVMyvvNC>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvfedrudeihedgudefgecutefuodetggdotefrod
- ftvfcurfhrohhfihhlvgemucfhrghsthforghilhdpqfgfvfdpuffrtefokffrpgfnqfgh
- necuuegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmd
- enucfjughrpeffhffvvefukfhfgggtugfgjgesthekrodttddtudenucfhrhhomheprfgv
- thgvrhcuffgvlhgvvhhorhihrghsuceophgvthgvrhesphhjugdruggvvheqnecuggftrf
- grthhtvghrnhepffeiuddthfeifedtleektedvtdellefgffeujeehjeejiefhffduveeg
- leeiledtnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmrghilhhfrhhomh
- epphgvthgvrhesphhjugdruggvvh
-X-ME-Proxy: <xmx:LC7HYsYjwLp5xFI8qxV8izE4bJRv7N96k7kfre5JC9Kp0RQ0fS1gHg>
- <xmx:LC7HYqbjvg6i1sO0U4M3fDD8HUsODhokxHRNGlb3vOV_7GWH6Kcopg>
- <xmx:LC7HYgCuvBle7VrA44B-b0_rtZ58r7PGsXLSfYZ9F2nBTqv3OZZ9KA>
- <xmx:LS7HYhVhmCOUvr2Ic5RuFKiaK1gJ7WKjDYQMVCr_VOblYPCq6m7CHA>
-Feedback-ID: i9e814621:Fastmail
-Received: by mail.messagingengine.com (Postfix) with ESMTPA; Thu,
- 7 Jul 2022 15:04:12 -0400 (EDT)
-Date: Thu, 7 Jul 2022 12:04:10 -0700
-From: Peter Delevoryas <peter@pjd.dev>
-To: =?iso-8859-1?Q?C=E9dric?= Le Goater <clg@kaod.org>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Andrew Jeffery <andrew@aj.id.au>, Joel Stanley <joel@jms.id.au>,
- qemu-arm@nongnu.org, qemu-devel@nongnu.org
-Subject: Re: [PATCH 1/2] hw/gpio/aspeed: Don't let guests modify input pins
-Message-ID: <YscuKtVuZojYtqXo@pdel-mbp.dhcp.thefacebook.com>
-References: <20220707071731.34047-1-peter@pjd.dev>
- <20220707071731.34047-2-peter@pjd.dev>
- <fa52743a-5730-3b3f-f07f-99931bb66b01@kaod.org>
- <YscdtXYL5sJRSm6Z@pdel-mbp>
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="d/jAaL7J";
+       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
+        id S235953AbiGGQR0 (ORCPT <rfc822;daniel.diaz@linaro.org>
+        + 3 others); Thu, 7 Jul 2022 12:17:26 -0400
+Received: from lindbergh.monkeyblade.net ([23.128.96.19]:57016 "EHLO
+        lindbergh.monkeyblade.net" rhost-flags-OK-OK-OK-OK) by vger.kernel.org
+        with ESMTP id S235727AbiGGQRU (ORCPT <rfc822;kvm@vger.kernel.org>);
+        Thu, 7 Jul 2022 12:17:20 -0400
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com [170.10.133.124])
+        by lindbergh.monkeyblade.net (Postfix) with ESMTP id 5D4DF13DC8
+        for <kvm@vger.kernel.org>; Thu,  7 Jul 2022 09:17:18 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+        s=mimecast20190719; t=1657210638;
+        h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+         to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+         content-transfer-encoding:content-transfer-encoding:
+         in-reply-to:in-reply-to:references:references;
+        bh=E8sCoaxLOXpg7pnv4sV/NFcTS/eGnW5V+4PYPvvHC2M=;
+        b=d/jAaL7JXr0wiMMY9j4wHH19IcfHVlYYsqg9iq1ztsne/e6HvwN+Wg7r9ImYC8lDcLFVG/
+        3Jg8EW5FHwJMaVDiNQX8YGjgNZyLOt5nK+hLB3OB4bChYIKZ7TrRhKWE7mfsi10ZDOQBrK
+        GwQPC6w2ROxLp9ZpqR/pmmyvstA0VcU=
+Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
+ [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-308-3df8Gv1NMRGRwL9hfhEsCw-1; Thu, 07 Jul 2022 12:17:05 -0400
+X-MC-Unique: 3df8Gv1NMRGRwL9hfhEsCw-1
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.rdu2.redhat.com [10.11.54.6])
+        (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+        (No client certificate requested)
+        by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 94A0C811E75;
+        Thu,  7 Jul 2022 16:17:05 +0000 (UTC)
+Received: from gondolin.fritz.box (unknown [10.39.192.81])
+        by smtp.corp.redhat.com (Postfix) with ESMTP id 0CF1E2166B26;
+        Thu,  7 Jul 2022 16:17:03 +0000 (UTC)
+From:   Cornelia Huck <cohuck@redhat.com>
+To:     Peter Maydell <peter.maydell@linaro.org>,
+        Thomas Huth <thuth@redhat.com>,
+        Laurent Vivier <lvivier@redhat.com>
+Cc:     Eric Auger <eauger@redhat.com>,
+        "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
+        Juan Quintela <quintela@redhat.com>, qemu-arm@nongnu.org,
+        qemu-devel@nongnu.org, kvm@vger.kernel.org,
+        Cornelia Huck <cohuck@redhat.com>
+Subject: [PATCH RFC v2 2/2] qtests/arm: add some mte tests
+Date:   Thu,  7 Jul 2022 18:16:56 +0200
+Message-Id: <20220707161656.41664-3-cohuck@redhat.com>
+In-Reply-To: <20220707161656.41664-1-cohuck@redhat.com>
+References: <20220707161656.41664-1-cohuck@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
+Content-type: text/plain
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <YscdtXYL5sJRSm6Z@pdel-mbp>
-Received-SPF: pass client-ip=66.111.4.221; envelope-from=peter@pjd.dev;
- helo=new1-smtp.messagingengine.com
-X-Spam_score_int: -17
-X-Spam_score: -1.8
-X-Spam_bar: -
-X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FROM_FMBLA_NEWDOM14=0.998, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001,
- RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 9d1tR3ynNIzX
+X-Scanned-By: MIMEDefang 2.78 on 10.11.54.6
+X-Spam-Status: No, score=-2.8 required=5.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+        DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,RCVD_IN_DNSWL_NONE,
+        SPF_HELO_NONE,SPF_NONE,T_SCC_BODY_TEXT_LINE autolearn=ham
+        autolearn_force=no version=3.4.6
+X-Spam-Checker-Version: SpamAssassin 3.4.6 (2021-04-09) on
+        lindbergh.monkeyblade.net
+Precedence: bulk
+List-ID: <kvm.vger.kernel.org>
+X-Mailing-List: kvm@vger.kernel.org
+X-TUID: 0YH7h2vv0gle
 
-On Thu, Jul 07, 2022 at 10:53:57AM -0700, Peter Delevoryas wrote:
-> On Thu, Jul 07, 2022 at 10:56:02AM +0200, Cédric Le Goater wrote:
-> > On 7/7/22 09:17, Peter Delevoryas wrote:
-> > > It seems that aspeed_gpio_update is allowing the value for input pins to be
-> > > modified through register writes and QOM property modification.
-> > > 
-> > > The QOM property modification is fine, but modifying the value through
-> > > register writes from the guest OS seems wrong if the pin's direction is set
-> > > to input.
-> > > 
-> > > The datasheet specifies that "0" bits in the direction register select input
-> > > mode, and "1" selects output mode.
-> > > 
-> > > OpenBMC userspace code is accidentally writing 0's to the GPIO data
-> > > registers somewhere (or perhaps the driver is doing it through a reset or
-> > > something), and this is overwriting GPIO FRU information (board ID, slot
-> > > presence pins) that is initialized in Aspeed machine reset code (see
-> > > fby35_reset() in hw/arm/aspeed.c).
-> > 
-> > It might be good to log a GUEST_ERROR in that case, when writing to an
-> > input GPIO and when reading from an output GPIO.
-> 
-> Good idea, I'll include a GUEST_ERROR for writing to an input GPIO.
-> 
-> I'm actually not totally certain about emitting an error when reading from an
-> output GPIO, because the driver can only do 8-bit reads at the finest
-> granularity, and if 1 of the 8 pins' direction is output, then it will be
-> reading the value of an output pin. But, that's not really bad, because
-> presumably the value will be ignored. Maybe I can go test this out on
-> hardware and figure out what happens though.
+Signed-off-by: Cornelia Huck <cohuck@redhat.com>
+---
+ tests/qtest/arm-cpu-features.c | 77 ++++++++++++++++++++++++++++++++++
+ 1 file changed, 77 insertions(+)
 
-Did a small experiment, I was looking at some of the most significant
-bits:
-
-root@dhcp-100-96-192-133:~# devmem 0x1e780000
-0x3CFF303E
-root@dhcp-100-96-192-133:~# devmem 0x1e780004
-0x2800000C
-root@dhcp-100-96-192-133:~# devmem 0x1e780000 32 0xffffffff
-root@dhcp-100-96-192-133:~# devmem 0x1e780004
-0x2800000C
-root@dhcp-100-96-192-133:~# devmem 0x1e780000
-0x3CFF303E
-root@dhcp-100-96-192-133:~# devmem 0x1e780000
-0x3CFF303E
-root@dhcp-100-96-192-133:~# devmem 0x1e780000 32 0
-root@dhcp-100-96-192-133:~# devmem 0x1e780000
-0x14FF303A
-
-Seems like the output pin 0x20000000 was initially high, and the input
-pin right next to it 0x10000000 was also high. After writing 0 to the
-data register, the value in the data register changed for the output
-pin, but not the input pin.  Which matches what we're planning on doing
-in the controller.
-
-So yeah, I'll add GUEST_ERROR for writes to input pins but not output
-pins.  The driver should probably be doing a read-modify-update.
-Although...if it's not, that technically wouldn't matter, behavior
-wise...maybe GUEST_ERROR isn't appropriate for writes to input pins
-either, for the same reason as I mentioned with reads of output pins.
-I'll let you guys comment on what you think we should do.
-
-> 
-> Thanks,
-> Peter
-> 
-> > 
-> > Thanks,
-> > 
-> > C.
-> > 
-> > > 
-> > > Signed-off-by: Peter Delevoryas <peter@pjd.dev>
-> > > Fixes: 4b7f956862dc ("hw/gpio: Add basic Aspeed GPIO model for AST2400 and AST2500")
-> > > ---
-> > >   hw/gpio/aspeed_gpio.c | 22 ++++++++++++----------
-> > >   1 file changed, 12 insertions(+), 10 deletions(-)
-> > > 
-> > > diff --git a/hw/gpio/aspeed_gpio.c b/hw/gpio/aspeed_gpio.c
-> > > index a62a673857..2eae427201 100644
-> > > --- a/hw/gpio/aspeed_gpio.c
-> > > +++ b/hw/gpio/aspeed_gpio.c
-> > > @@ -268,7 +268,7 @@ static ptrdiff_t aspeed_gpio_set_idx(AspeedGPIOState *s, GPIOSets *regs)
-> > >   }
-> > >   static void aspeed_gpio_update(AspeedGPIOState *s, GPIOSets *regs,
-> > > -                               uint32_t value)
-> > > +                               uint32_t value, bool force)
-> > >   {
-> > >       uint32_t input_mask = regs->input_mask;
-> > >       uint32_t direction = regs->direction;
-> > > @@ -293,10 +293,12 @@ static void aspeed_gpio_update(AspeedGPIOState *s, GPIOSets *regs,
-> > >               }
-> > >               /* ...then update the state. */
-> > > -            if (mask & new) {
-> > > -                regs->data_value |= mask;
-> > > -            } else {
-> > > -                regs->data_value &= ~mask;
-> > > +            if (direction & mask || force) {
-> > > +                if (mask & new) {
-> > > +                    regs->data_value |= mask;
-> > > +                } else {
-> > > +                    regs->data_value &= ~mask;
-> > > +                }
-> > >               }
-> > >               /* If the gpio is set to output... */
-> > > @@ -339,7 +341,7 @@ static void aspeed_gpio_set_pin_level(AspeedGPIOState *s, uint32_t set_idx,
-> > >           value &= ~pin_mask;
-> > >       }
-> > > -    aspeed_gpio_update(s, &s->sets[set_idx], value);
-> > > +    aspeed_gpio_update(s, &s->sets[set_idx], value, true);
-> > >   }
-> > >   /*
-> > > @@ -653,7 +655,7 @@ static void aspeed_gpio_write_index_mode(void *opaque, hwaddr offset,
-> > >           reg_value = update_value_control_source(set, set->data_value,
-> > >                                                   reg_value);
-> > >           set->data_read = reg_value;
-> > > -        aspeed_gpio_update(s, set, reg_value);
-> > > +        aspeed_gpio_update(s, set, reg_value, false);
-> > >           return;
-> > >       case gpio_reg_idx_direction:
-> > >           reg_value = set->direction;
-> > > @@ -753,7 +755,7 @@ static void aspeed_gpio_write_index_mode(void *opaque, hwaddr offset,
-> > >               __func__, offset, data, reg_idx_type);
-> > >           return;
-> > >       }
-> > > -    aspeed_gpio_update(s, set, set->data_value);
-> > > +    aspeed_gpio_update(s, set, set->data_value, false);
-> > >       return;
-> > >   }
-> > > @@ -799,7 +801,7 @@ static void aspeed_gpio_write(void *opaque, hwaddr offset, uint64_t data,
-> > >           data &= props->output;
-> > >           data = update_value_control_source(set, set->data_value, data);
-> > >           set->data_read = data;
-> > > -        aspeed_gpio_update(s, set, data);
-> > > +        aspeed_gpio_update(s, set, data, false);
-> > >           return;
-> > >       case gpio_reg_direction:
-> > >           /*
-> > > @@ -875,7 +877,7 @@ static void aspeed_gpio_write(void *opaque, hwaddr offset, uint64_t data,
-> > >                         PRIx64"\n", __func__, offset);
-> > >           return;
-> > >       }
-> > > -    aspeed_gpio_update(s, set, set->data_value);
-> > > +    aspeed_gpio_update(s, set, set->data_value, false);
-> > >       return;
-> > >   }
-> > 
-> 
+diff --git a/tests/qtest/arm-cpu-features.c b/tests/qtest/arm-cpu-features.c
+index 5a145273860c..466be857d391 100644
+--- a/tests/qtest/arm-cpu-features.c
++++ b/tests/qtest/arm-cpu-features.c
+@@ -22,6 +22,7 @@
+ 
+ #define MACHINE     "-machine virt,gic-version=max -accel tcg "
+ #define MACHINE_KVM "-machine virt,gic-version=max -accel kvm -accel tcg "
++#define MACHINE_MTE "-machine virt,gic-version=max,mte=on -accel tcg "
+ #define QUERY_HEAD  "{ 'execute': 'query-cpu-model-expansion', " \
+                     "  'arguments': { 'type': 'full', "
+ #define QUERY_TAIL  "}}"
+@@ -155,6 +156,18 @@ static bool resp_get_feature(QDict *resp, const char *feature)
+     g_assert(qdict_get_bool(_props, feature) == (expected_value));     \
+ })
+ 
++#define resp_assert_feature_str(resp, feature, expected_value)         \
++({                                                                     \
++    QDict *_props;                                                     \
++                                                                       \
++    g_assert(_resp);                                                   \
++    g_assert(resp_has_props(_resp));                                   \
++    _props = resp_get_props(_resp);                                    \
++    g_assert(qdict_get(_props, feature));                              \
++    g_assert_cmpstr(qdict_get_try_str(_props, feature), ==,            \
++                    expected_value);                                   \
++})
++
+ #define assert_feature(qts, cpu_type, feature, expected_value)         \
+ ({                                                                     \
+     QDict *_resp;                                                      \
+@@ -165,6 +178,16 @@ static bool resp_get_feature(QDict *resp, const char *feature)
+     qobject_unref(_resp);                                              \
+ })
+ 
++#define assert_feature_str(qts, cpu_type, feature, expected_value)     \
++({                                                                     \
++    QDict *_resp;                                                      \
++                                                                       \
++    _resp = do_query_no_props(qts, cpu_type);                          \
++    g_assert(_resp);                                                   \
++    resp_assert_feature_str(_resp, feature, expected_value);           \
++    qobject_unref(_resp);                                              \
++})
++
+ #define assert_set_feature(qts, cpu_type, feature, value)              \
+ ({                                                                     \
+     const char *_fmt = (value) ? "{ %s: true }" : "{ %s: false }";     \
+@@ -176,6 +199,16 @@ static bool resp_get_feature(QDict *resp, const char *feature)
+     qobject_unref(_resp);                                              \
+ })
+ 
++#define assert_set_feature_str(qts, cpu_type, feature, value, _fmt)    \
++({                                                                     \
++    QDict *_resp;                                                      \
++                                                                       \
++    _resp = do_query(qts, cpu_type, _fmt, feature);                    \
++    g_assert(_resp);                                                   \
++    resp_assert_feature_str(_resp, feature, value);                    \
++    qobject_unref(_resp);                                              \
++})
++
+ #define assert_has_feature_enabled(qts, cpu_type, feature)             \
+     assert_feature(qts, cpu_type, feature, true)
+ 
+@@ -412,6 +445,24 @@ static void sve_tests_sve_off_kvm(const void *data)
+     qtest_quit(qts);
+ }
+ 
++static void mte_tests_tag_memory_on(const void *data)
++{
++    QTestState *qts;
++
++    qts = qtest_init(MACHINE_MTE "-cpu max");
++
++    /*
++     * With tag memory, "mte" should default to on, and explicitly specifying
++     * either on or off should be fine.
++     */
++    assert_has_feature(qts, "max", "mte");
++
++    assert_set_feature_str(qts, "max", "mte", "off", "{ 'mte': 'off' }");
++    assert_set_feature_str(qts, "max", "mte", "on", "{ 'mte': 'on' }");
++
++    qtest_quit(qts);
++}
++
+ static void pauth_tests_default(QTestState *qts, const char *cpu_type)
+ {
+     assert_has_feature_enabled(qts, cpu_type, "pauth");
+@@ -424,6 +475,21 @@ static void pauth_tests_default(QTestState *qts, const char *cpu_type)
+                  "{ 'pauth': false, 'pauth-impdef': true }");
+ }
+ 
++static void mte_tests_default(QTestState *qts, const char *cpu_type)
++{
++    assert_has_feature(qts, cpu_type, "mte");
++
++    /*
++     * Without tag memory, mte will be off under tcg.
++     * Explicitly enabling it yields an error.
++     */
++    assert_has_feature(qts, cpu_type, "mte");
++
++    assert_set_feature_str(qts, "max", "mte", "off", "{ 'mte': 'off' }");
++    assert_error(qts, cpu_type, "mte=on requires tag memory",
++                 "{ 'mte': 'on' }");
++}
++
+ static void test_query_cpu_model_expansion(const void *data)
+ {
+     QTestState *qts;
+@@ -473,6 +539,7 @@ static void test_query_cpu_model_expansion(const void *data)
+ 
+         sve_tests_default(qts, "max");
+         pauth_tests_default(qts, "max");
++        mte_tests_default(qts, "max");
+ 
+         /* Test that features that depend on KVM generate errors without. */
+         assert_error(qts, "max",
+@@ -499,6 +566,7 @@ static void test_query_cpu_model_expansion_kvm(const void *data)
+     if (g_str_equal(qtest_get_arch(), "aarch64")) {
+         bool kvm_supports_steal_time;
+         bool kvm_supports_sve;
++        bool kvm_supports_mte;
+         char max_name[8], name[8];
+         uint32_t max_vq, vq;
+         uint64_t vls;
+@@ -523,10 +591,12 @@ static void test_query_cpu_model_expansion_kvm(const void *data)
+          */
+         assert_has_feature(qts, "host", "kvm-steal-time");
+         assert_has_feature(qts, "host", "sve");
++        assert_has_feature(qts, "host", "mte");
+ 
+         resp = do_query_no_props(qts, "host");
+         kvm_supports_steal_time = resp_get_feature(resp, "kvm-steal-time");
+         kvm_supports_sve = resp_get_feature(resp, "sve");
++        kvm_supports_mte = resp_get_feature(resp, "mte");
+         vls = resp_get_sve_vls(resp);
+         qobject_unref(resp);
+ 
+@@ -592,6 +662,11 @@ static void test_query_cpu_model_expansion_kvm(const void *data)
+         } else {
+             g_assert(vls == 0);
+         }
++        if (kvm_supports_mte) {
++            /* If we have mte then we should be able to toggle it. */
++            assert_set_feature(qts, "host", "mte", false);
++            assert_set_feature(qts, "host", "mte", true);
++        }
+     } else {
+         assert_has_not_feature(qts, "host", "aarch64");
+         assert_has_not_feature(qts, "host", "pmu");
+@@ -630,6 +705,8 @@ int main(int argc, char **argv)
+                             NULL, sve_tests_sve_off);
+         qtest_add_data_func("/arm/kvm/query-cpu-model-expansion/sve-off",
+                             NULL, sve_tests_sve_off_kvm);
++        qtest_add_data_func("/arm/max/query-cpu-model-expansion/tag-memory",
++                            NULL, mte_tests_tag_memory_on);
+     }
+ 
+     return g_test_run();
+-- 
+2.35.3

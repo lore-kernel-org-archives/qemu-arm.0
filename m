@@ -1,130 +1,132 @@
-Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp5668618lft;
-        Thu, 7 Jul 2022 10:54:42 -0700 (PDT)
-X-Google-Smtp-Source: AGRyM1tCKuW2WSCeckDlZp9CEscS4aqUwQ9ObwyUpbORaUJ7imqAxA36rBbY+ST5ufT5XYiVcRdN
-X-Received: by 2002:a05:620a:2845:b0:6a9:b149:8d31 with SMTP id h5-20020a05620a284500b006a9b1498d31mr31880161qkp.86.1657216482620;
-        Thu, 07 Jul 2022 10:54:42 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1657216482; cv=none;
+Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp5713223lft;
+        Thu, 7 Jul 2022 12:10:30 -0700 (PDT)
+X-Google-Smtp-Source: AGRyM1s+a7Wfm0uPkbBjFUvjm3O4P2yCKt6cXAyV14jRqOSnsv5rgdkt8g3VvrvT/DRqfCVQAYUp
+X-Received: by 2002:ac8:7f0d:0:b0:31d:4894:ad54 with SMTP id f13-20020ac87f0d000000b0031d4894ad54mr20588511qtk.137.1657221030716;
+        Thu, 07 Jul 2022 12:10:30 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1657221030; cv=none;
         d=google.com; s=arc-20160816;
-        b=PQa6jV/NTCkDUhs5zP9bQM1zuw1oc51D/zcx0PnFYX6dhvc8N3eyw3J5nCQBryV6nh
-         /UKPt7f823fZXbetPecoIJvTBFITwjlbmeB0RuD/f/grU0/44nTccSBHGbfzbFYW2zEq
-         LfZG1d/1DoibiGEh6tasBIzAc/Qmmp11WRueaHljVUvDHiVpJ/HMSCd3nQveisBYcaZy
-         pNbG9pv/bQPT0MxMck+9y9b2W72bn7+QuBvR2kEJ15X8YC3IGi74O9TtTwo32+eSjdz8
-         eFeVjeace5h8xY3TkIY/oKjfigaL7Cx9a5FD2yLoi5VX5Wc0l6xI9tjomYAfqFj4zK0g
-         nmcw==
+        b=bpa0jIrAwMQhb+jlBsRQcC0Xy/BO/aq9hKx2I9iW7aD/cELj0C1ELxl9AyNXYG8uaA
+         gpgXWkB+feUQOIeR3ebPTOHsku14gLi51R8RTMdCzNUB1Od121RswSfK9dFVW5Dh5MR0
+         3KelamGXaBDOCmkjnZNI6ksqeTX/xhTPXJkw+l5bnQ+e1l96tCjGEBnsJaYACu4Evnhs
+         qGCOKPBTqMu7dvjyeyygieJ3lF9IZ6noQqyT4qFLfOcSw7R9mK1AhiMXsWKw8XRg7MQz
+         MbmLZ17ZOemyi5mu+lp5yapPM/DlHaDI9+l2wpYj8qxilK5LoObqXAO/kK3F24uKMQO8
+         FByQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:in-reply-to
          :content-transfer-encoding:content-disposition:mime-version
          :references:message-id:subject:cc:to:from:date:feedback-id
          :dkim-signature:dkim-signature;
-        bh=yPG/eYdVhjdJ32jsa+/xzrteYdA77S8EhopTZzDDysA=;
-        b=Tk0dnSTo3ie6kuW0FbNjiFOdH/N0HrjuTIXVW8edXY7+VS3l6fDf1WOy8rKcVibs9/
-         hXkaen98oO//K21PayCrLm0fV8OiezNYW/3TyxXM1lu4h3IkVa3k8eE3TQYC06vzfBqx
-         ijyFjfx+xd14uQJlaA8/oR71Ad8UIuQtsdLihCqy9B169bZVsuH1tKWz2/UWB2xn0lfo
-         2WCHpEAv5wVtw9GyP8f2tjb8vS2DoQ/SsKm4G6ht+8F0HwJEJpszH8aLwtCMGOU5cm2R
-         I4Ve4Gm+YVXXz/+IniKp9Mvi3T2/1y7t8jK+PziK9v+b2N7JKx48Rok1+XBzB6Gi0Meo
-         /ZEA==
+        bh=eYUc0MV2RVzG1/C7GW0kta5P2CfB8nCHdmDPuX9jZg4=;
+        b=p+3a/TjRJVDQ65WuBz/BtSv9sOYVH3mQzk6bY2flYAnwSceLLsP0NnpANi0fWe2C4m
+         NdkR0tbm0nLf7H4m7Z1014j9/1/4cHov0LQcaCrdQyl8+tJjzNzJL7aWJdKl/YwN6FOo
+         ZRZZ5tSf06cCigX1UpTWG2z/B13aP9xM65J34ZK0TXS7XWLODTuPh4RoTFJhw1qaayKR
+         Sd+bZ4r81jjBCL03OONtPEudaxU7fIr6b6XiMiQqG/cjRt7uc99uqyBHKFtH2gh2e/bP
+         zT3vKA17S/ANFdaPKOCYxDufGKV33PwQJOBOP+i0EErIgZeTUh+e9eIjlCxOF05TE2Ya
+         DuGw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@pjd.dev header.s=fm1 header.b=aqqMAWQ0;
-       dkim=fail header.i=@messagingengine.com header.s=fm3 header.b=Zp5BSb6u;
+       dkim=fail header.i=@pjd.dev header.s=fm1 header.b=WzmF6dY3;
+       dkim=fail header.i=@messagingengine.com header.s=fm3 header.b="uSeb8Rr/";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id b2-20020ac85bc2000000b0031d3c082244si12360187qtb.598.2022.07.07.10.54.42
+        by mx.google.com with ESMTPS id s15-20020a05620a29cf00b006a983802d3csi31074599qkp.201.2022.07.07.12.10.30
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 07 Jul 2022 10:54:42 -0700 (PDT)
+        Thu, 07 Jul 2022 12:10:30 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@pjd.dev header.s=fm1 header.b=aqqMAWQ0;
-       dkim=fail header.i=@messagingengine.com header.s=fm3 header.b=Zp5BSb6u;
+       dkim=fail header.i=@pjd.dev header.s=fm1 header.b=WzmF6dY3;
+       dkim=fail header.i=@messagingengine.com header.s=fm3 header.b="uSeb8Rr/";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:44092 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:50900 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1o9Vi6-0001K7-4A
-	for alex.bennee@linaro.org; Thu, 07 Jul 2022 13:54:42 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38872)
+	id 1o9WtS-00024Y-64
+	for alex.bennee@linaro.org; Thu, 07 Jul 2022 15:10:30 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:56460)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter@pjd.dev>)
- id 1o9VhU-0001JO-Q4; Thu, 07 Jul 2022 13:54:04 -0400
-Received: from wnew2-smtp.messagingengine.com ([64.147.123.27]:36625)
+ id 1o9WnR-0008R0-8h; Thu, 07 Jul 2022 15:04:17 -0400
+Received: from new1-smtp.messagingengine.com ([66.111.4.221]:43593)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter@pjd.dev>)
- id 1o9VhT-0002XZ-6X; Thu, 07 Jul 2022 13:54:04 -0400
-Received: from compute5.internal (compute5.nyi.internal [10.202.2.45])
- by mailnew.west.internal (Postfix) with ESMTP id EED7A2B05DE3;
- Thu,  7 Jul 2022 13:54:00 -0400 (EDT)
-Received: from mailfrontend1 ([10.202.2.162])
- by compute5.internal (MEProxy); Thu, 07 Jul 2022 13:54:01 -0400
+ id 1o9WnP-0005E1-1T; Thu, 07 Jul 2022 15:04:16 -0400
+Received: from compute2.internal (compute2.nyi.internal [10.202.2.46])
+ by mailnew.nyi.internal (Postfix) with ESMTP id AFC0F5808BA;
+ Thu,  7 Jul 2022 15:04:13 -0400 (EDT)
+Received: from mailfrontend2 ([10.202.2.163])
+ by compute2.internal (MEProxy); Thu, 07 Jul 2022 15:04:13 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=pjd.dev; h=cc:cc
  :content-transfer-encoding:content-type:date:date:from:from
  :in-reply-to:in-reply-to:message-id:mime-version:references
- :reply-to:sender:subject:subject:to:to; s=fm1; t=1657216440; x=
- 1657220040; bh=yPG/eYdVhjdJ32jsa+/xzrteYdA77S8EhopTZzDDysA=; b=a
- qqMAWQ03LjbO2nTyaWyVn3Z1FZ/hZkRX2fD7ZWqL8MMj5OFHPADtqoasEM/V0+6w
- BiCSdQmbrX3Wp5OISsQN0QZhOzS9mjcNRJ4991WARaRsWqGG5LeRqBMNgAqO1kQH
- PN+5W1cpqQqhwQnEq1aH9F3DWPeHM/FLg5wSNrneanEOUcMDvr4ft98/bPWV23UQ
- mOmWv//oF/t90t3bvG55sgEA0z5JTT/4Pv+CDbX/GMj66/wXsA7cSGBZ91xOeu9P
- ZyQpHY5YKDL92eCB/Ki2Fdn+tyEoSTeRC1P3krBSVy64s2e1uECXW3e3q8rMwvur
- 98BpCr67+nHFrbFkV6vGw==
+ :reply-to:sender:subject:subject:to:to; s=fm1; t=1657220653; x=
+ 1657224253; bh=eYUc0MV2RVzG1/C7GW0kta5P2CfB8nCHdmDPuX9jZg4=; b=W
+ zmF6dY3zUeLFwDZlcBBI4yqUKvJm+JxbkhLUBuJa/Wo2H5zs63NjVpbHUzJC8sBh
+ 8ZTxZMKOvrJaEOf3xM8pmI+pqVQk7C4HngEnB9AN7FVrJ0bo9MWsgRYOOCi6D19q
+ k7HiXrnP1Og5PIuxZ6np4vhPS0Q5dcxsPyFeMfD/8gke5/Jhw31pc1nInE0+gC5E
+ j+/xRigIz66dA3g93keK4wztJIkPjdKk6eXTl/UNCZphTJzgAtQkWBM8Go4wOL9T
+ yQTQKFmvheMv+4TOiJ7sRa+earhcZLlcml8txak98Hz3jFW3/ilF1VfkDMyojEeO
+ JHdTHw3944ep75Snf/zNA==
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
  messagingengine.com; h=cc:cc:content-transfer-encoding
  :content-type:date:date:feedback-id:feedback-id:from:from
  :in-reply-to:in-reply-to:message-id:mime-version:references
  :reply-to:sender:subject:subject:to:to:x-me-proxy:x-me-proxy
- :x-me-sender:x-me-sender:x-sasl-enc; s=fm3; t=1657216440; x=
- 1657220040; bh=yPG/eYdVhjdJ32jsa+/xzrteYdA77S8EhopTZzDDysA=; b=Z
- p5BSb6ug7KWmdZZtnBEIW7s0hruO7vKIGravkUZBWH2TOA/EezTuiwey2WPk3XK4
- lWoT/vKVDWQ3KkQnhlPn9MFqdDaWWsuo5WQK7+Dn0tRjmZHhxSBwXWQ84oWNz2kg
- yST72v9VTl//5c5D3IU+CGMhV2qo/DbzISwi6/ghYeti4xXNilxUQUJwJQezlvN3
- M4mu+5+H+kp8Iu2ScREGwolPpGDQ5hSWHwxfCRqUZbkojxHCWwvPbc5HW2lGYTaw
- tAACJ3mPb1e/6AEoA2fVZT8O9AicQWesceAEQ4f/L/Fk32zJZ1+QD7wJkgtAsvn9
- 380GsPTdFwiT1YVKReKJw==
-X-ME-Sender: <xms:uB3HYrCkoIfCpnQKuNVSQbPNusgGHVPCExJl-u5HQ9Mw8Q5spcO5YA>
- <xme:uB3HYhhbks13Usi8s5W2fk_V2yezAdSa55rlC9Ehtbz5akAZ5GPg7T9erkkvxAbnd
- uYOWLigKYm4RcyGNX8>
-X-ME-Received: <xmr:uB3HYmmxqMbrWY7jLdIfLDGf2sgKGV3IA_hwmY2PoLtTE3Q9WOaf0Gf0Rihl>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvfedrudeihedguddulecutefuodetggdotefrod
+ :x-me-sender:x-me-sender:x-sasl-enc; s=fm3; t=1657220653; x=
+ 1657224253; bh=eYUc0MV2RVzG1/C7GW0kta5P2CfB8nCHdmDPuX9jZg4=; b=u
+ Seb8Rr/yz2suH+PU1kvH+OSu8GkxRs7tZM/FVd/4I7ifXEWv0L+2X3ruHgBVlJbH
+ Inju1pmFds1tkq0wTmD1hSm4FfPX7j9dnOaiWcWS/DZR00mQ2cAtCdGF83kLfVnu
+ OpzgnGObDMajBNhWyHkWE0zanZZsVXTF1XuvDP7/8KIeoX1PED9Iis4MvXVkWPB4
+ A+Jdw5587wV65VMbg+cmSuSPWP6/xqgxMYpGQiTVUTrho7IYQFliVUlFas//ArHy
+ glduTs/FztP58wmPJ8a5My5LGTIltkxv3IzexZe2/bHEl0e4OkYX1xamGpGENBMw
+ 4QcIBmFSuAFXilD2LPYaw==
+X-ME-Sender: <xms:LC7HYjJJqpWdzPQxngl9tIz2a1YDx6B5bGceOFH1z3vtPogSkkzNLQ>
+ <xme:LC7HYnIyUtUgOpCBh4YIwdPfRkbEYedpQ5mhuaPbRuefmptxaOPM1MybHBuJh1KQv
+ FA9IFFgxz0KYgXqwe8>
+X-ME-Received: <xmr:LC7HYrs-ygGROJVp2ksc0PF1JQDXHiYWKsbJIxG3B6reMlWjfmhi0CyYrITkHTYiEgdjsrwUCyYJvk7XjVMyvvNC>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvfedrudeihedgudefgecutefuodetggdotefrod
  ftvfcurfhrohhfihhlvgemucfhrghsthforghilhdpqfgfvfdpuffrtefokffrpgfnqfgh
  necuuegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmd
- enucfjughrpeffhffvvefukfhfgggtugfgjgesthekredttddtudenucfhrhhomheprfgv
+ enucfjughrpeffhffvvefukfhfgggtugfgjgesthekrodttddtudenucfhrhhomheprfgv
  thgvrhcuffgvlhgvvhhorhihrghsuceophgvthgvrhesphhjugdruggvvheqnecuggftrf
- grthhtvghrnhephfegffevudefveetgeekteeijefhhfduueejvdegvdehffehjeevtefh
- hffffeeunecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmrghilhhfrhhomh
+ grthhtvghrnhepffeiuddthfeifedtleektedvtdellefgffeujeehjeejiefhffduveeg
+ leeiledtnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmrghilhhfrhhomh
  epphgvthgvrhesphhjugdruggvvh
-X-ME-Proxy: <xmx:uB3HYtxL5wS69vW0uqkZyrbryWwwQXG2FcGuQp-qDCnMoOZkE2UMSg>
- <xmx:uB3HYgS5ttfbrLFajU48x9zheS6nCQ0q3r0uziXmt1r8DgsDdxQWWQ>
- <xmx:uB3HYgb7nIvt1kIdwzw9oAImEMmQ31qsv7qAPHii0iRb1Ye9dveuaA>
- <xmx:uB3HYmO0abUxMG25DcY_iFxqTAxJ5gkEA4wXY70N3gphgbwrPRxA_2zVN88>
+X-ME-Proxy: <xmx:LC7HYsYjwLp5xFI8qxV8izE4bJRv7N96k7kfre5JC9Kp0RQ0fS1gHg>
+ <xmx:LC7HYqbjvg6i1sO0U4M3fDD8HUsODhokxHRNGlb3vOV_7GWH6Kcopg>
+ <xmx:LC7HYgCuvBle7VrA44B-b0_rtZ58r7PGsXLSfYZ9F2nBTqv3OZZ9KA>
+ <xmx:LS7HYhVhmCOUvr2Ic5RuFKiaK1gJ7WKjDYQMVCr_VOblYPCq6m7CHA>
 Feedback-ID: i9e814621:Fastmail
 Received: by mail.messagingengine.com (Postfix) with ESMTPA; Thu,
- 7 Jul 2022 13:53:59 -0400 (EDT)
-Date: Thu, 7 Jul 2022 10:53:57 -0700
+ 7 Jul 2022 15:04:12 -0400 (EDT)
+Date: Thu, 7 Jul 2022 12:04:10 -0700
 From: Peter Delevoryas <peter@pjd.dev>
 To: =?iso-8859-1?Q?C=E9dric?= Le Goater <clg@kaod.org>
 Cc: Peter Maydell <peter.maydell@linaro.org>,
  Andrew Jeffery <andrew@aj.id.au>, Joel Stanley <joel@jms.id.au>,
  qemu-arm@nongnu.org, qemu-devel@nongnu.org
 Subject: Re: [PATCH 1/2] hw/gpio/aspeed: Don't let guests modify input pins
-Message-ID: <YscdtXYL5sJRSm6Z@pdel-mbp>
+Message-ID: <YscuKtVuZojYtqXo@pdel-mbp.dhcp.thefacebook.com>
 References: <20220707071731.34047-1-peter@pjd.dev>
  <20220707071731.34047-2-peter@pjd.dev>
  <fa52743a-5730-3b3f-f07f-99931bb66b01@kaod.org>
+ <YscdtXYL5sJRSm6Z@pdel-mbp>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=iso-8859-1
 Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <fa52743a-5730-3b3f-f07f-99931bb66b01@kaod.org>
-Received-SPF: pass client-ip=64.147.123.27; envelope-from=peter@pjd.dev;
- helo=wnew2-smtp.messagingengine.com
+In-Reply-To: <YscdtXYL5sJRSm6Z@pdel-mbp>
+Received-SPF: pass client-ip=66.111.4.221; envelope-from=peter@pjd.dev;
+ helo=new1-smtp.messagingengine.com
 X-Spam_score_int: -17
 X-Spam_score: -1.8
 X-Spam_bar: -
 X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FROM_FMBLA_NEWDOM14=0.998, RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ FROM_FMBLA_NEWDOM14=0.998, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001,
+ RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -139,119 +141,153 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 5y1mytBz1YUr
+X-TUID: 9d1tR3ynNIzX
 
-On Thu, Jul 07, 2022 at 10:56:02AM +0200, Cédric Le Goater wrote:
-> On 7/7/22 09:17, Peter Delevoryas wrote:
-> > It seems that aspeed_gpio_update is allowing the value for input pins to be
-> > modified through register writes and QOM property modification.
+On Thu, Jul 07, 2022 at 10:53:57AM -0700, Peter Delevoryas wrote:
+> On Thu, Jul 07, 2022 at 10:56:02AM +0200, Cédric Le Goater wrote:
+> > On 7/7/22 09:17, Peter Delevoryas wrote:
+> > > It seems that aspeed_gpio_update is allowing the value for input pins to be
+> > > modified through register writes and QOM property modification.
+> > > 
+> > > The QOM property modification is fine, but modifying the value through
+> > > register writes from the guest OS seems wrong if the pin's direction is set
+> > > to input.
+> > > 
+> > > The datasheet specifies that "0" bits in the direction register select input
+> > > mode, and "1" selects output mode.
+> > > 
+> > > OpenBMC userspace code is accidentally writing 0's to the GPIO data
+> > > registers somewhere (or perhaps the driver is doing it through a reset or
+> > > something), and this is overwriting GPIO FRU information (board ID, slot
+> > > presence pins) that is initialized in Aspeed machine reset code (see
+> > > fby35_reset() in hw/arm/aspeed.c).
 > > 
-> > The QOM property modification is fine, but modifying the value through
-> > register writes from the guest OS seems wrong if the pin's direction is set
-> > to input.
-> > 
-> > The datasheet specifies that "0" bits in the direction register select input
-> > mode, and "1" selects output mode.
-> > 
-> > OpenBMC userspace code is accidentally writing 0's to the GPIO data
-> > registers somewhere (or perhaps the driver is doing it through a reset or
-> > something), and this is overwriting GPIO FRU information (board ID, slot
-> > presence pins) that is initialized in Aspeed machine reset code (see
-> > fby35_reset() in hw/arm/aspeed.c).
+> > It might be good to log a GUEST_ERROR in that case, when writing to an
+> > input GPIO and when reading from an output GPIO.
 > 
-> It might be good to log a GUEST_ERROR in that case, when writing to an
-> input GPIO and when reading from an output GPIO.
+> Good idea, I'll include a GUEST_ERROR for writing to an input GPIO.
+> 
+> I'm actually not totally certain about emitting an error when reading from an
+> output GPIO, because the driver can only do 8-bit reads at the finest
+> granularity, and if 1 of the 8 pins' direction is output, then it will be
+> reading the value of an output pin. But, that's not really bad, because
+> presumably the value will be ignored. Maybe I can go test this out on
+> hardware and figure out what happens though.
 
-Good idea, I'll include a GUEST_ERROR for writing to an input GPIO.
+Did a small experiment, I was looking at some of the most significant
+bits:
 
-I'm actually not totally certain about emitting an error when reading from an
-output GPIO, because the driver can only do 8-bit reads at the finest
-granularity, and if 1 of the 8 pins' direction is output, then it will be
-reading the value of an output pin. But, that's not really bad, because
-presumably the value will be ignored. Maybe I can go test this out on
-hardware and figure out what happens though.
+root@dhcp-100-96-192-133:~# devmem 0x1e780000
+0x3CFF303E
+root@dhcp-100-96-192-133:~# devmem 0x1e780004
+0x2800000C
+root@dhcp-100-96-192-133:~# devmem 0x1e780000 32 0xffffffff
+root@dhcp-100-96-192-133:~# devmem 0x1e780004
+0x2800000C
+root@dhcp-100-96-192-133:~# devmem 0x1e780000
+0x3CFF303E
+root@dhcp-100-96-192-133:~# devmem 0x1e780000
+0x3CFF303E
+root@dhcp-100-96-192-133:~# devmem 0x1e780000 32 0
+root@dhcp-100-96-192-133:~# devmem 0x1e780000
+0x14FF303A
 
-Thanks,
-Peter
+Seems like the output pin 0x20000000 was initially high, and the input
+pin right next to it 0x10000000 was also high. After writing 0 to the
+data register, the value in the data register changed for the output
+pin, but not the input pin.  Which matches what we're planning on doing
+in the controller.
+
+So yeah, I'll add GUEST_ERROR for writes to input pins but not output
+pins.  The driver should probably be doing a read-modify-update.
+Although...if it's not, that technically wouldn't matter, behavior
+wise...maybe GUEST_ERROR isn't appropriate for writes to input pins
+either, for the same reason as I mentioned with reads of output pins.
+I'll let you guys comment on what you think we should do.
 
 > 
 > Thanks,
-> 
-> C.
+> Peter
 > 
 > > 
-> > Signed-off-by: Peter Delevoryas <peter@pjd.dev>
-> > Fixes: 4b7f956862dc ("hw/gpio: Add basic Aspeed GPIO model for AST2400 and AST2500")
-> > ---
-> >   hw/gpio/aspeed_gpio.c | 22 ++++++++++++----------
-> >   1 file changed, 12 insertions(+), 10 deletions(-)
+> > Thanks,
 > > 
-> > diff --git a/hw/gpio/aspeed_gpio.c b/hw/gpio/aspeed_gpio.c
-> > index a62a673857..2eae427201 100644
-> > --- a/hw/gpio/aspeed_gpio.c
-> > +++ b/hw/gpio/aspeed_gpio.c
-> > @@ -268,7 +268,7 @@ static ptrdiff_t aspeed_gpio_set_idx(AspeedGPIOState *s, GPIOSets *regs)
-> >   }
-> >   static void aspeed_gpio_update(AspeedGPIOState *s, GPIOSets *regs,
-> > -                               uint32_t value)
-> > +                               uint32_t value, bool force)
-> >   {
-> >       uint32_t input_mask = regs->input_mask;
-> >       uint32_t direction = regs->direction;
-> > @@ -293,10 +293,12 @@ static void aspeed_gpio_update(AspeedGPIOState *s, GPIOSets *regs,
-> >               }
-> >               /* ...then update the state. */
-> > -            if (mask & new) {
-> > -                regs->data_value |= mask;
-> > -            } else {
-> > -                regs->data_value &= ~mask;
-> > +            if (direction & mask || force) {
-> > +                if (mask & new) {
-> > +                    regs->data_value |= mask;
-> > +                } else {
-> > +                    regs->data_value &= ~mask;
-> > +                }
-> >               }
-> >               /* If the gpio is set to output... */
-> > @@ -339,7 +341,7 @@ static void aspeed_gpio_set_pin_level(AspeedGPIOState *s, uint32_t set_idx,
-> >           value &= ~pin_mask;
-> >       }
-> > -    aspeed_gpio_update(s, &s->sets[set_idx], value);
-> > +    aspeed_gpio_update(s, &s->sets[set_idx], value, true);
-> >   }
-> >   /*
-> > @@ -653,7 +655,7 @@ static void aspeed_gpio_write_index_mode(void *opaque, hwaddr offset,
-> >           reg_value = update_value_control_source(set, set->data_value,
-> >                                                   reg_value);
-> >           set->data_read = reg_value;
-> > -        aspeed_gpio_update(s, set, reg_value);
-> > +        aspeed_gpio_update(s, set, reg_value, false);
-> >           return;
-> >       case gpio_reg_idx_direction:
-> >           reg_value = set->direction;
-> > @@ -753,7 +755,7 @@ static void aspeed_gpio_write_index_mode(void *opaque, hwaddr offset,
-> >               __func__, offset, data, reg_idx_type);
-> >           return;
-> >       }
-> > -    aspeed_gpio_update(s, set, set->data_value);
-> > +    aspeed_gpio_update(s, set, set->data_value, false);
-> >       return;
-> >   }
-> > @@ -799,7 +801,7 @@ static void aspeed_gpio_write(void *opaque, hwaddr offset, uint64_t data,
-> >           data &= props->output;
-> >           data = update_value_control_source(set, set->data_value, data);
-> >           set->data_read = data;
-> > -        aspeed_gpio_update(s, set, data);
-> > +        aspeed_gpio_update(s, set, data, false);
-> >           return;
-> >       case gpio_reg_direction:
-> >           /*
-> > @@ -875,7 +877,7 @@ static void aspeed_gpio_write(void *opaque, hwaddr offset, uint64_t data,
-> >                         PRIx64"\n", __func__, offset);
-> >           return;
-> >       }
-> > -    aspeed_gpio_update(s, set, set->data_value);
-> > +    aspeed_gpio_update(s, set, set->data_value, false);
-> >       return;
-> >   }
+> > C.
+> > 
+> > > 
+> > > Signed-off-by: Peter Delevoryas <peter@pjd.dev>
+> > > Fixes: 4b7f956862dc ("hw/gpio: Add basic Aspeed GPIO model for AST2400 and AST2500")
+> > > ---
+> > >   hw/gpio/aspeed_gpio.c | 22 ++++++++++++----------
+> > >   1 file changed, 12 insertions(+), 10 deletions(-)
+> > > 
+> > > diff --git a/hw/gpio/aspeed_gpio.c b/hw/gpio/aspeed_gpio.c
+> > > index a62a673857..2eae427201 100644
+> > > --- a/hw/gpio/aspeed_gpio.c
+> > > +++ b/hw/gpio/aspeed_gpio.c
+> > > @@ -268,7 +268,7 @@ static ptrdiff_t aspeed_gpio_set_idx(AspeedGPIOState *s, GPIOSets *regs)
+> > >   }
+> > >   static void aspeed_gpio_update(AspeedGPIOState *s, GPIOSets *regs,
+> > > -                               uint32_t value)
+> > > +                               uint32_t value, bool force)
+> > >   {
+> > >       uint32_t input_mask = regs->input_mask;
+> > >       uint32_t direction = regs->direction;
+> > > @@ -293,10 +293,12 @@ static void aspeed_gpio_update(AspeedGPIOState *s, GPIOSets *regs,
+> > >               }
+> > >               /* ...then update the state. */
+> > > -            if (mask & new) {
+> > > -                regs->data_value |= mask;
+> > > -            } else {
+> > > -                regs->data_value &= ~mask;
+> > > +            if (direction & mask || force) {
+> > > +                if (mask & new) {
+> > > +                    regs->data_value |= mask;
+> > > +                } else {
+> > > +                    regs->data_value &= ~mask;
+> > > +                }
+> > >               }
+> > >               /* If the gpio is set to output... */
+> > > @@ -339,7 +341,7 @@ static void aspeed_gpio_set_pin_level(AspeedGPIOState *s, uint32_t set_idx,
+> > >           value &= ~pin_mask;
+> > >       }
+> > > -    aspeed_gpio_update(s, &s->sets[set_idx], value);
+> > > +    aspeed_gpio_update(s, &s->sets[set_idx], value, true);
+> > >   }
+> > >   /*
+> > > @@ -653,7 +655,7 @@ static void aspeed_gpio_write_index_mode(void *opaque, hwaddr offset,
+> > >           reg_value = update_value_control_source(set, set->data_value,
+> > >                                                   reg_value);
+> > >           set->data_read = reg_value;
+> > > -        aspeed_gpio_update(s, set, reg_value);
+> > > +        aspeed_gpio_update(s, set, reg_value, false);
+> > >           return;
+> > >       case gpio_reg_idx_direction:
+> > >           reg_value = set->direction;
+> > > @@ -753,7 +755,7 @@ static void aspeed_gpio_write_index_mode(void *opaque, hwaddr offset,
+> > >               __func__, offset, data, reg_idx_type);
+> > >           return;
+> > >       }
+> > > -    aspeed_gpio_update(s, set, set->data_value);
+> > > +    aspeed_gpio_update(s, set, set->data_value, false);
+> > >       return;
+> > >   }
+> > > @@ -799,7 +801,7 @@ static void aspeed_gpio_write(void *opaque, hwaddr offset, uint64_t data,
+> > >           data &= props->output;
+> > >           data = update_value_control_source(set, set->data_value, data);
+> > >           set->data_read = data;
+> > > -        aspeed_gpio_update(s, set, data);
+> > > +        aspeed_gpio_update(s, set, data, false);
+> > >           return;
+> > >       case gpio_reg_direction:
+> > >           /*
+> > > @@ -875,7 +877,7 @@ static void aspeed_gpio_write(void *opaque, hwaddr offset, uint64_t data,
+> > >                         PRIx64"\n", __func__, offset);
+> > >           return;
+> > >       }
+> > > -    aspeed_gpio_update(s, set, set->data_value);
+> > > +    aspeed_gpio_update(s, set, set->data_value, false);
+> > >       return;
+> > >   }
+> > 
 > 

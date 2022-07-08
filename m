@@ -1,265 +1,223 @@
-Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp382732lft;
-        Fri, 8 Jul 2022 09:35:51 -0700 (PDT)
-X-Google-Smtp-Source: AGRyM1t91+bRrdGlGlI3FpGCN5El7D3364W6UAX6zPM/IHXJ4pMlRyyY4WQAqNO9pMrzs2x/mqpb
-X-Received: by 2002:ac8:5c16:0:b0:31e:a602:dd69 with SMTP id i22-20020ac85c16000000b0031ea602dd69mr2874057qti.342.1657298151049;
-        Fri, 08 Jul 2022 09:35:51 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1657298151; cv=none;
+Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp383218lft;
+        Fri, 8 Jul 2022 09:36:37 -0700 (PDT)
+X-Google-Smtp-Source: AGRyM1vvL2Hy6ShBkJPDrVWeYA1Tu6ExKAYOj6is67lJZjnHtj0aDZasLq0Q9C4FzJXaCRkC3PdL
+X-Received: by 2002:a05:620a:1364:b0:6b4:8ac6:5a88 with SMTP id d4-20020a05620a136400b006b48ac65a88mr3135349qkl.498.1657298195184;
+        Fri, 08 Jul 2022 09:36:35 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1657298195; cv=none;
         d=google.com; s=arc-20160816;
-        b=lIkjg9ui/sdwCuZcSzjXptwcOqpYg9V0G21mBtQjYWLixv3IoLbd4VsOEGciQ/33uR
-         trBZOzjwBXKi+Z9klyEDYdOl1rBs54PixMWdKt1xsCu5EfRWmAb4RGik4sea2gwU04ob
-         U9cbWAv4+uAMa8XRgLMFw32/UbVyw5p7DR5u8Q5IAr+QTkZgfMhVc/6EVKAc1ggm4OW7
-         lRXF8ar3bssSL8pZKsayLSvYTTcXbf1GEHRr2uRbJdob5P9tacY2meONyM3oiuCwIO9U
-         xjq32lmMdDF3bGLONB5HG+ZDjRfnqGY8Dg/wF2bBHGTS8N76lBLUb1BgfSrTkvwrI0ap
-         ABNA==
+        b=Mv3cKoezh3ZyF6CfP+ccVgD23imMXjAJHvIofYtgXBhWxUiuTujYa3fc8uwch4Wslu
+         tiYa1bivprQEMfc0EYmKMKY7809bLtWrajWeuzQi8Ul6YlxV6OwH/5TSM6FzVVrew0sO
+         VbAupAnkKA1HcqHo32QLzY0DGOWw7MJ0yLFMyuAODthlex4rtyitdtvutNWlH8eUGg6D
+         RrjLGhmsLolxC3iXOYHqCJFzsRxicd85CfGM2Qr1zW+mxCvxh7YEuxzYdUKWLqrRqBxU
+         Z1S7EUvJGY6wSTuVenUtIByRtxymtRBwQIyYD9j9oZndlItz+yynBhG2OIHo/cqw9+XF
+         bWag==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=cT93Lxc9mPWCnChsVCUCuYS7cifJUMOpzXauTBVN+y4=;
-        b=Obub4q+aZ4TR+dlXqmAk/Ur5bQT8prAqUYLqnjo5iggeu85je0+QS2lc/hcDb+/qst
-         aTDAnSQcTakcR/ODSrrIW/tuwrJRdvIRdyVXeAwzEbb8zFzUl7cySwgOBglgYAVXV/ML
-         iy7zJV8F7baHnJt85kwuvL7JORtJuyiCgAK+zUcBYIOmcB/dFLve9dAH9BCfBYPMva3T
-         luE7vIDXv+1KjfRBoCjzpwSLrTmc0NRuBW5ltUW9DS4maL+4ScqJANnNUjlZ9rukBr2u
-         9hK7jq15YX2OvqTGJXJxAW1dcvkJz15dFvUl2d4Q/9YvnCpsbRAZ+A/Xm1H0zbC4LMC9
-         yVgw==
+        bh=n2pj04eKwIIwfWxKRy+OpUcFUnQWI9QGoADis3HM7QI=;
+        b=c73px5ADm7Yf2xCwYf+ErjLUdwsN0NdBT+52Ny1lqqRy/wWvDbObCPz3hE/B4EJoTU
+         872EtZzWpJhX2h7nXsNCen1mx8opHp6o1Rm3NJtjzijOWufK4kznQyBh3dSN1WsuEVOu
+         xc18sHB9oBsc7Ck/4ApQTLq8oGVRECNTidcVJatarsgjvZvo+T4i4RlA06psjQRJgy2A
+         yfyimgLlm41ioif62t+GQDPVhvyRTkQQF1Ef0TriP/dvdymMlFcTtE0S1d9zBzbBvIiE
+         Dj+ZwN5ks5eTlYVELpnd+K/UH1lIi1Avy6TA9vs3e0wac9VNJdW+r90j98p63hh7YwGv
+         hLyA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=kLncZh2c;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=bDdTgLPq;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id eo5-20020ad45945000000b004733252d9a2si2622725qvb.159.2022.07.08.09.35.50
+        by mx.google.com with ESMTPS id e9-20020ac85989000000b00304fde367ddsi26933085qte.188.2022.07.08.09.36.34
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 08 Jul 2022 09:35:51 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 08 Jul 2022 09:36:35 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=kLncZh2c;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=bDdTgLPq;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:45780 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:46274 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1o9qxK-0007yf-Fm
-	for alex.bennee@linaro.org; Fri, 08 Jul 2022 12:35:50 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45056)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1o9qy2-0008Ja-Et
+	for alex.bennee@linaro.org; Fri, 08 Jul 2022 12:36:34 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:44970)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1o9qD7-0005ye-TJ
- for qemu-arm@nongnu.org; Fri, 08 Jul 2022 11:48:08 -0400
-Received: from mail-pj1-x102b.google.com ([2607:f8b0:4864:20::102b]:55110)
+ id 1o9qD1-0005qn-Bs
+ for qemu-devel@nongnu.org; Fri, 08 Jul 2022 11:47:59 -0400
+Received: from mail-pl1-x630.google.com ([2607:f8b0:4864:20::630]:37643)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1o9qD5-0002X1-EV
- for qemu-arm@nongnu.org; Fri, 08 Jul 2022 11:48:05 -0400
-Received: by mail-pj1-x102b.google.com with SMTP id s21so13826730pjq.4
- for <qemu-arm@nongnu.org>; Fri, 08 Jul 2022 08:48:03 -0700 (PDT)
+ id 1o9qCz-0002Ux-PM
+ for qemu-devel@nongnu.org; Fri, 08 Jul 2022 11:47:59 -0400
+Received: by mail-pl1-x630.google.com with SMTP id f11so4115351plr.4
+ for <qemu-devel@nongnu.org>; Fri, 08 Jul 2022 08:47:57 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=cT93Lxc9mPWCnChsVCUCuYS7cifJUMOpzXauTBVN+y4=;
- b=kLncZh2cCRZ0gNjwCfYl6p1PQyezmnZItOPl8xO95pu1Ti/hLdJbXVrou1ysqmXazB
- 7PH9ENNq2Q5B4DeJMpxogBK0l9MYkeHiCoSBZRhkcmK9VEMZJQAetH+5Luc3G4n0inb9
- LARN+uSTx4uiUHwup0IrGD6hc5c5iEwp35LUboyTZJLxBrlWbxIBv34Qpf5aoFe0hpqw
- C4tp7+sNjjLemzpJZ9JnbnTPg5lfeeyADPfE8iDUbLEcgKmjKPNMJhauhx+Z6rOoRp9G
- Wz9bi7yTWfEIMMcehYPdAIKBTtok6KK1GAbp5ntrwgD7JOUg4Go66lcXxxsC3xnC9f9+
- uhXA==
+ bh=n2pj04eKwIIwfWxKRy+OpUcFUnQWI9QGoADis3HM7QI=;
+ b=bDdTgLPqjoJsQLTGlQpoH2VllST0upphtnER5sE74xLt8M0k8GiIbBk6DoQReqsOxh
+ D8fWlxZRYBzi+YAW66mq1XnNRURgbE9uts8JuApSsVlPb6B5Qb9YaSJljEfjC5kuHQ/n
+ MD4F8OL9qOKbBAxPq/X0P5yJFQeCcN6JngRk1VIFMXQJNWc/SIkQhjq5jlXZView9o0H
+ 3jGofyxe3IcHDuKf+seMGFMB1VLIAdKkVB8DcfXexBPwqZb0YX7DpxIEJa2hH35vGWiI
+ +LKx+WjWPf7LLRIFneW9E/3h/5rFW2S9i1saERHLoKAaIAeI24eQsUIIMxOS5ZrUenCl
+ nxWA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=cT93Lxc9mPWCnChsVCUCuYS7cifJUMOpzXauTBVN+y4=;
- b=cUM4ThX7etRYdskkV3pfWydI0OfCD5XoLQVUOa4NqYEaGzbYZXJintwV1jagdd3GQc
- q/7WLWCZIj0/IWngIL+c+tjGwsffcmYY9Pbx0vKisKIbKjzbR+paFAXZGUzyvB/aIOaP
- NpknrkqFZFOoCcO1D8uHwf6TTnyBwhB8MNEzhEtLymDz2iWw4aa9VGkoZHhSmBTeHJ2p
- fGZo1etqPqhxBI4Y8OE+BtcHnxriAzOzYUQrAgkXo6xgTkcoDd24dljq9/zdT9BU5w0p
- yeXea59QEzUJZVCnF7o0z0p+P7GgWzxf4iIQSn+NzLkl2Dv51RMJAmlwiQoHDcQEDznK
- fFcg==
-X-Gm-Message-State: AJIora8R+F+OA8CefZLaJ13gYmB/pyRZ/9OpoKttFa420tyVJusrIxDk
- fkkfSJ4cqaUKT5Ov8iBuj7kJ0w==
-X-Received: by 2002:a17:902:7402:b0:16c:9e2:3b1c with SMTP id
- g2-20020a170902740200b0016c09e23b1cmr4179855pll.128.1657295282168; 
- Fri, 08 Jul 2022 08:48:02 -0700 (PDT)
+ bh=n2pj04eKwIIwfWxKRy+OpUcFUnQWI9QGoADis3HM7QI=;
+ b=KUcFRKlH9QyCitfGdJq9Mk6bZvP1PzLur3aAzgV2TNfv/CemeBdBQVTSrJrPrPR9UQ
+ o9nGFjTCdYQ4P48IV03JHYERAT04T1tC0nEEwYiXL3PlTFNWyEZG1kCQqI0EnaTL8eA5
+ Hdgi2jHweeiveGEFEOYfOv9cdp4aZG1Vr9ytGvqS9tl9ROJhV3jaFFz7pl3FPkJ+3kvh
+ vD5ZmAuX/x12nkGC40kInceh1e6ZzJNGb67od4JC/6oDW8ah3pFtc29uNrCzd8m0b5Dz
+ 58ld97pQxgc8XisYsQA47oqCzjKCVHgvawGyhXP4WehWVUx5OeNyKWXcTZutze7iWz4q
+ ZYGg==
+X-Gm-Message-State: AJIora8LPFj/C7y2og71wDnZGzl0xlX3JUSBXAV2XQ3Tgspd7UMrx2wf
+ hxEg2H17dKOT0hGjfP+x1C7q3iLB8QJvhflM
+X-Received: by 2002:a17:90a:e391:b0:1ef:83c2:2527 with SMTP id
+ b17-20020a17090ae39100b001ef83c22527mr541978pjz.94.1657295276984; 
+ Fri, 08 Jul 2022 08:47:56 -0700 (PDT)
 Received: from stoup.. ([122.255.60.245]) by smtp.gmail.com with ESMTPSA id
- y3-20020a17090a390300b001ef81bac701sm1782089pjb.42.2022.07.08.08.48.00
+ y3-20020a17090a390300b001ef81bac701sm1782089pjb.42.2022.07.08.08.47.54
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 08 Jul 2022 08:48:01 -0700 (PDT)
+ Fri, 08 Jul 2022 08:47:56 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org
-Subject: [RISU PATCH v4 18/29] Compute reginfo_size based on the reginfo
-Date: Fri,  8 Jul 2022 21:16:49 +0530
-Message-Id: <20220708154700.18682-19-richard.henderson@linaro.org>
+Subject: [RISU PATCH v4 16/29] Split out recv_register_info
+Date: Fri,  8 Jul 2022 21:16:47 +0530
+Message-Id: <20220708154700.18682-17-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20220708154700.18682-1-richard.henderson@linaro.org>
 References: <20220708154700.18682-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::102b;
- envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x102b.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::630;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x630.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: kAzoaI6mFQ82
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: vaeCYDDRkDSs
 
-This will allow dumping of SVE frames without having
-to know the SVE vector length beforehand.
+We will want to share this code when dumping.
 
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- risu.h                 | 2 +-
- risu.c                 | 9 +++++++--
- risu_reginfo_aarch64.c | 4 ++--
- risu_reginfo_arm.c     | 4 ++--
- risu_reginfo_i386.c    | 4 ++--
- risu_reginfo_m68k.c    | 4 ++--
- risu_reginfo_ppc64.c   | 4 ++--
- 7 files changed, 18 insertions(+), 13 deletions(-)
+ risu.c | 50 ++++++++++++++++++++++++++++++++++----------------
+ 1 file changed, 34 insertions(+), 16 deletions(-)
 
-diff --git a/risu.h b/risu.h
-index bfcf0af..3cad3d5 100644
---- a/risu.h
-+++ b/risu.h
-@@ -126,6 +126,6 @@ int reginfo_dump(struct reginfo *ri, FILE * f);
- int reginfo_dump_mismatch(struct reginfo *m, struct reginfo *a, FILE *f);
- 
- /* return size of reginfo */
--const int reginfo_size(void);
-+int reginfo_size(struct reginfo *ri);
- 
- #endif /* RISU_H */
 diff --git a/risu.c b/risu.c
-index a248db1..a70b778 100644
+index b91ad38..80bc3b1 100644
 --- a/risu.c
 +++ b/risu.c
-@@ -125,7 +125,7 @@ static RisuResult send_register_info(void *uc)
-     case OP_TESTEND:
-     case OP_COMPARE:
-     case OP_SIGILL:
--        header.size = reginfo_size();
-+        header.size = reginfo_size(&ri[MASTER]);
-         extra = &ri[MASTER];
-         break;
-     case OP_COMPAREMEM:
-@@ -209,7 +209,12 @@ static RisuResult recv_register_info(struct reginfo *ri)
-             return RES_BAD_SIZE;
-         }
-         respond(RES_OK);
--        return read_buffer(ri, header.size);
-+        res = read_buffer(ri, header.size);
-+        if (res == RES_OK && header.size != reginfo_size(ri)) {
-+            /* The payload size is not self-consistent with the data. */
-+            return RES_BAD_SIZE;
-+        }
-+        return res;
- 
-     case OP_COMPAREMEM:
-         if (header.size != MEMBLOCKLEN) {
-diff --git a/risu_reginfo_aarch64.c b/risu_reginfo_aarch64.c
-index 028c690..7044648 100644
---- a/risu_reginfo_aarch64.c
-+++ b/risu_reginfo_aarch64.c
-@@ -69,7 +69,7 @@ void process_arch_opt(int opt, const char *arg)
- #endif
- }
- 
--const int reginfo_size(void)
-+int reginfo_size(struct reginfo *ri)
- {
-     int size = offsetof(struct reginfo, simd.end);
- #ifdef SVE_MAGIC
-@@ -194,7 +194,7 @@ void reginfo_init(struct reginfo *ri, ucontext_t *uc)
- /* reginfo_is_eq: compare the reginfo structs, returns nonzero if equal */
- int reginfo_is_eq(struct reginfo *r1, struct reginfo *r2)
- {
--    return memcmp(r1, r2, reginfo_size()) == 0;
-+    return memcmp(r1, r2, reginfo_size(r1)) == 0;
- }
- 
- #ifdef SVE_MAGIC
-diff --git a/risu_reginfo_arm.c b/risu_reginfo_arm.c
-index 3662f12..47c52e8 100644
---- a/risu_reginfo_arm.c
-+++ b/risu_reginfo_arm.c
-@@ -36,9 +36,9 @@ void process_arch_opt(int opt, const char *arg)
-     abort();
- }
- 
--const int reginfo_size(void)
-+int reginfo_size(struct reginfo *ri)
- {
--    return sizeof(struct reginfo);
-+    return sizeof(*ri);
- }
- 
- static void reginfo_init_vfp(struct reginfo *ri, ucontext_t *uc)
-diff --git a/risu_reginfo_i386.c b/risu_reginfo_i386.c
-index 60fc239..50505ab 100644
---- a/risu_reginfo_i386.c
-+++ b/risu_reginfo_i386.c
-@@ -74,9 +74,9 @@ void process_arch_opt(int opt, const char *arg)
+@@ -166,6 +166,34 @@ static void master_sigill(int sig, siginfo_t *si, void *uc)
      }
  }
  
--const int reginfo_size(void)
-+int reginfo_size(struct reginfo *ri)
++static RisuResult recv_register_info(struct reginfo *ri)
++{
++    RisuResult res;
++
++    res = read_buffer(&header, sizeof(header));
++    if (res != RES_OK) {
++        return res;
++    }
++
++    /* send OK for the header */
++    respond(RES_OK);
++
++    switch (header.risu_op) {
++    case OP_COMPARE:
++    case OP_TESTEND:
++    case OP_SIGILL:
++        return read_buffer(ri, reginfo_size());
++    case OP_COMPAREMEM:
++        return read_buffer(other_memblock, MEMBLOCKLEN);
++    case OP_SETMEMBLOCK:
++    case OP_GETMEMBLOCK:
++        return RES_OK;
++    default:
++        /* TODO: Create a better error message. */
++        return RES_BAD_IO;
++    }
++}
++
+ static RisuResult recv_and_compare_register_info(void *uc)
  {
--    return sizeof(struct reginfo);
-+    return sizeof(*ri);
- }
+     uint64_t paramreg;
+@@ -173,33 +201,26 @@ static RisuResult recv_and_compare_register_info(void *uc)
+     RisuOp op;
  
- static void *xsave_feature_buf(struct _xstate *xs, int feature)
-diff --git a/risu_reginfo_m68k.c b/risu_reginfo_m68k.c
-index 32b28c8..4eb30cd 100644
---- a/risu_reginfo_m68k.c
-+++ b/risu_reginfo_m68k.c
-@@ -23,9 +23,9 @@ void process_arch_opt(int opt, const char *arg)
-     abort();
- }
+     reginfo_init(&ri[APPRENTICE], uc);
+-    op = get_risuop(&ri[APPRENTICE]);
  
--const int reginfo_size(void)
-+int reginfo_size(struct reginfo *ri)
- {
--    return sizeof(struct reginfo);
-+    return sizeof(*ri);
- }
+-    res = read_buffer(&header, sizeof(header));
++    res = recv_register_info(&ri[MASTER]);
+     if (res != RES_OK) {
++        /* I/O error.  Tell master to exit. */
++        respond(RES_END);
+         return res;
+     }
  
- /* reginfo_init: initialize with a ucontext */
-diff --git a/risu_reginfo_ppc64.c b/risu_reginfo_ppc64.c
-index 071c951..39e8f1c 100644
---- a/risu_reginfo_ppc64.c
-+++ b/risu_reginfo_ppc64.c
-@@ -32,9 +32,9 @@ void process_arch_opt(int opt, const char *arg)
-     abort();
- }
++    op = get_risuop(&ri[APPRENTICE]);
+     if (header.risu_op != op) {
+         /* We are out of sync.  Tell master to exit. */
+         respond(RES_END);
+         return RES_BAD_IO;
+     }
  
--const int reginfo_size(void)
-+int reginfo_size(struct reginfo *ri)
- {
--    return sizeof(struct reginfo);
-+    return sizeof(*ri);
- }
- 
- /* reginfo_init: initialize with a ucontext */
+-    /* send OK for the header */
+-    respond(RES_OK);
+-
+     switch (op) {
+     case OP_COMPARE:
+     case OP_TESTEND:
+     case OP_SIGILL:
+-        /* Do a simple register compare on (a) explicit request
+-         * (b) end of test (c) a non-risuop UNDEF
+-         */
+-        res = read_buffer(&ri[MASTER], reginfo_size());
+-        if (res != RES_OK) {
+-            /* fail */
+-        } else if (!reginfo_is_eq(&ri[MASTER], &ri[APPRENTICE])) {
++        if (!reginfo_is_eq(&ri[MASTER], &ri[APPRENTICE])) {
+             /* register mismatch */
+             res = RES_MISMATCH_REG;
+         } else if (op == OP_TESTEND) {
+@@ -216,10 +237,7 @@ static RisuResult recv_and_compare_register_info(void *uc)
+         set_ucontext_paramreg(uc, paramreg + (uintptr_t)memblock);
+         break;
+     case OP_COMPAREMEM:
+-        res = read_buffer(other_memblock, MEMBLOCKLEN);
+-        if (res != RES_OK) {
+-            /* fail */
+-        } else if (memcmp(memblock, other_memblock, MEMBLOCKLEN) != 0) {
++        if (memcmp(memblock, other_memblock, MEMBLOCKLEN) != 0) {
+             /* memory mismatch */
+             res = RES_MISMATCH_MEM;
+         }
 -- 
 2.34.1
 

@@ -1,112 +1,108 @@
-Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp331351lft;
-        Fri, 8 Jul 2022 08:17:56 -0700 (PDT)
-X-Google-Smtp-Source: AGRyM1sV6eCBOVS+pAuFszhznoahBGyg4yaHW/dmHbp3MAbKuwandLH09tD2N9NVodjDXEv5/Tpz
-X-Received: by 2002:a05:620a:2727:b0:6b2:52ed:913 with SMTP id b39-20020a05620a272700b006b252ed0913mr2718153qkp.435.1657293476156;
-        Fri, 08 Jul 2022 08:17:56 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1657293476; cv=none;
+Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp332345lft;
+        Fri, 8 Jul 2022 08:19:26 -0700 (PDT)
+X-Google-Smtp-Source: AGRyM1sMfJMPBnUA2QTG0ZM6X5KB8IF58RowlfTrxGVL6rLcG21lTf1Btn5XdyjVLh5Ir2ab8U/G
+X-Received: by 2002:a37:5341:0:b0:6b5:5971:5981 with SMTP id h62-20020a375341000000b006b559715981mr2723171qkb.562.1657293566124;
+        Fri, 08 Jul 2022 08:19:26 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1657293566; cv=none;
         d=google.com; s=arc-20160816;
-        b=nL6zJqX5PnKFJqs61DCkQCwFN73DVNouclKTDlcsx/KpY8lWB8h29/NhCzHPuBOwEI
-         yz5XWiJLooJ0TrufXv0bQxUB26jT8JQwW1N/zNmNq3TR4PDGGfYv+kniraGZu0A4oqPG
-         9V/pCgpMJE2H+8ZKfiFUGwOsYJNqUJ6kulO8ET6lHmBFCUIRooQf0WnRT3jS5hcEyjAE
-         X+PDLW+Lhhd8WARZU9QYhI+G2cWp7YfAHvVukQQ8AuK5139K5m38+eRjyKRWIwQiPZRn
-         dm4m4jcq53fG88fQ3/DJitkAeqXYCWjyQtcwVE8wi0+IVo5PUnAzJelFSYoG9zQvcO4u
-         F03A==
+        b=hWpF5q7nvU0DxBmvQ6RAhHxs0CaxFOCAPLB9kte8WJ1dkm/jkK7oQNpFUJ4H7Tp4kY
+         KB5qXXlzwTIHj7kEy60XEKdBjftjgptjDReWMJQJJc/o4I0ENoJ0fuLLzALFTcDCQG88
+         UTPGMOqole5j6PKeZ/zS5e0YE2JmXoSM7Tvu+fZo0kmEhFEyjGp8umE4GcUl8tieTeo8
+         0UbHAT9cl3qooou+kGwaU4H5qGMGQ9SGTBTeuxpbXe7uIk1zv7XsKnSacAtVXjTGzwNY
+         wq7Skn3mwyvriNAA4q3eaDJm3vAmt9/RHDPFB3oD93w8tZWDYwv+ISGv3F7267qHNvHE
+         Rr8A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=TCGRYaM9CMo/9aFeB3/W5WDfDKYHUGdwXwE5N2wq+aM=;
-        b=dXdf+RPSyQ5ISoQGawfVgd51KzXQUyJDNjYuJcu3eoPFhB5Hxg8pqrGONcSOzfDteW
-         cBVKFtn72d1idiGVqjZdlYuZLDrPH2Rl6I8ZeOtcgag6DjoZLEfwViYJ9fu1lAbVlye+
-         D0rsPRSkJLsXJJSnukC2PICQdDDbNA7q161COJhXlBzvm7QrFFeXmFDoXV0OCfMpxrT9
-         /DzXUJuNwzFuFZDf62tpzncjVRijWWRQez5LRpvK85+PFVBHim4wukMN2fMQSZ8S5bbT
-         bljsUoHw1VLLIvYeyrzepaUCugGpv6yoRPdsi4WYXF/g6ENrnq04uXwAc1jadLbWM8Bv
-         otNg==
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
+        bh=1mHWMd8rxjTcZd8VSZBiybJK+Vy8ZjvVBl26hIoOM7Y=;
+        b=J9pze4FWkXonVnPLTnBTs3AZtWb06jxJ6j5kUxZdOZLFVeb9hB4+Ky8c/0TPKZw/rQ
+         hm2JsGpEhTx/nfcsMgl2TfVTc48f1fqypPbsQXoXd0IopRlLJok+ELeLafZqip4a33Cn
+         rpHd86ahqLJJgSJpONd4WoJx79IEArbnKXqF4Y0Nn1MF9OGkPt9njlPX83HMggnOxfd0
+         mezDfhNvE6NT81JqW71dd1sBIF+YjeCvpjkslkpWBjRaJYuY2B65IbHEz8yMR3k4x8z6
+         fNmg+rJLgaIw+XTZvj7FAMDGZQt9jabjXEjzt24kPqDzGSJd0ln6fXMRLZn7FLlan4hn
+         lTIA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=xhrrwgLb;
+       dkim=pass header.i=@linaro.org header.s=google header.b=qgWiSBu5;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e12-20020a05622a110c00b0031e9c0643d8si3288611qty.58.2022.07.08.08.17.55
+        by mx.google.com with ESMTPS id f22-20020a05620a409600b006af4b2c7406si25050831qko.490.2022.07.08.08.19.25
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 08 Jul 2022 08:17:56 -0700 (PDT)
+        Fri, 08 Jul 2022 08:19:26 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=xhrrwgLb;
+       dkim=pass header.i=@linaro.org header.s=google header.b=qgWiSBu5;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:46586 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:52834 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1o9pjv-000440-I8
-	for alex.bennee@linaro.org; Fri, 08 Jul 2022 11:17:55 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:36632)
+	id 1o9plN-0008Fg-JW
+	for alex.bennee@linaro.org; Fri, 08 Jul 2022 11:19:25 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:36588)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1o9pi7-00028T-0o
- for qemu-arm@nongnu.org; Fri, 08 Jul 2022 11:16:03 -0400
-Received: from mail-pl1-x632.google.com ([2607:f8b0:4864:20::632]:40572)
+ id 1o9pi5-00027p-T6
+ for qemu-arm@nongnu.org; Fri, 08 Jul 2022 11:16:02 -0400
+Received: from mail-pj1-x1034.google.com ([2607:f8b0:4864:20::1034]:38761)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1o9pi2-00025Z-92
- for qemu-arm@nongnu.org; Fri, 08 Jul 2022 11:16:02 -0400
-Received: by mail-pl1-x632.google.com with SMTP id b2so16585274plx.7
- for <qemu-arm@nongnu.org>; Fri, 08 Jul 2022 08:15:57 -0700 (PDT)
+ id 1o9phy-00024d-RZ
+ for qemu-arm@nongnu.org; Fri, 08 Jul 2022 11:16:01 -0400
+Received: by mail-pj1-x1034.google.com with SMTP id
+ 89-20020a17090a09e200b001ef7638e536so2218817pjo.3
+ for <qemu-arm@nongnu.org>; Fri, 08 Jul 2022 08:15:48 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=TCGRYaM9CMo/9aFeB3/W5WDfDKYHUGdwXwE5N2wq+aM=;
- b=xhrrwgLbr4SHQKd4EHCEbLL3Qyx4MBX/QJd1HsTS1NEyMYUEBAXQfgW0m+6lpoMQSt
- QgGfmgztvQEc7pKEJknsq6/mDtEKaXsjNwzSbosC+B+bzhGBy/ctETZs7brCu2TfLBOn
- mp7CqQldjrnrrEOTzpSAZd6830+teJsk8X+8GZwJqQsI5yhAzsWhn/oqs8YBi+jXuaP4
- cd3eIiro2gtV3xfwMhsU/e11U5h8c2eo+6cMUtH9LOIJhO+ogCn/ywG07XMJHQkqtbQa
- pQZ3YRGRXX6PHxBa3+A7gDGk4bNJWHkbLSU4iUdLAz8Ii/0jU8iVN4d3pE9j1fWstG9L
- LU7Q==
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=1mHWMd8rxjTcZd8VSZBiybJK+Vy8ZjvVBl26hIoOM7Y=;
+ b=qgWiSBu5KImlVbg+v6ZIe1LNlGUqcRXzeYkj8mBnaHvIM5PNq03mYcXzqE3LzJN1h9
+ 1i1hn0O85H9uH646Rmkfuawk048usBPUoNGCV7XqObAAUUbYE73glGdwZOhWggXuZUok
+ UOY24fhQdM3j31jD7jsdRQOKX5avIUI70F/XYYAp8FbFgENjN/1QJK2Xhpn9zT7IZFYy
+ c5xRrpMqqWQ9Swm+hUDzz6wvZayj5wdCFG8t4QVuPwW0Yne+W9L9kRe+JIjt+KEohpDh
+ GTRov9OSusl9cptWHgFllyuUjDIeBHtBaLKBfDruFB04Asbj+M+3YplVSO7a+ajlJorR
+ PejQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=TCGRYaM9CMo/9aFeB3/W5WDfDKYHUGdwXwE5N2wq+aM=;
- b=hZ4qeDFGo5WaUBC99hT+fvhzVLuxKa/ElQ56o6LK+G6x9igKq3TVXtKuw326/8koez
- ug7tZB8QjptC6B4/HCO+Tclgpw6m+RlH9X7YLBbYsYeO+13uqADWl7pyiQWZLAKzyKFU
- ca+1eksVbcLTdNCL5XYVSAzcVQ0qcKqFdcPE/N4AO8zJ/efRwN7sENx3Huz2mlPRtc+b
- AMKlTgMWaqSxdQb3+d5R+CLXx/BbCM+vL/bYYvECwi2e+BqpgfxWMSh4FHoCvj+6eTEr
- WleFBcCkBmzo/AC6ISv5h5FjDcmBsdF/b9gg8qGnhspPfz2uI93EKW5n154D5U8jGRgh
- 04WQ==
-X-Gm-Message-State: AJIora9K7VQDfnTdEa+2G4iAf7C07+5a/1O8mUaps+bIeYC6skrDrMU2
- ihH6EkPPspzR6uMXYG4vd7lx6MTBic3aejn9
-X-Received: by 2002:a17:902:ef50:b0:16b:e2de:1c24 with SMTP id
- e16-20020a170902ef5000b0016be2de1c24mr4284954plx.99.1657293356212; 
- Fri, 08 Jul 2022 08:15:56 -0700 (PDT)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=1mHWMd8rxjTcZd8VSZBiybJK+Vy8ZjvVBl26hIoOM7Y=;
+ b=LXNQW0IXVDLtBetNAaYf4ocXTXJdHAE1sPZL8Cv6jNBVP3aDqA4Kt8+ePFniJOi4En
+ pFKPoRYkFmlqvP6jyncnXG+hWaFzXQt7wnb0PSqRpWfZH5u8sABGV9lgVlh/Pffz9r/v
+ AYLf2hRNC8OPk4KWju52fi1GWCtur7M4BwoZgbCpuQs/4iQWltfh83Cqnt8R2r9j6jXa
+ C3OFjNx2Npb6Jiazx26qpY2hFROXFpb+aJ0GCFDuX6wEqEL0aQ8vyFeUh69pl63Webqd
+ mt0a+G2I7CiI2/ywyNn/eCNSLCWgarBi85rjv78xrJpZZIZTm3QFPrexhaOMXhbWrwEX
+ LHkw==
+X-Gm-Message-State: AJIora/KKfHWVThhlL7A/4CkSmAFscjEhLA1ma73yC9rpvpZyd4LtI9i
+ Ei/WwptEQ9HxhJQqGD3cXbNTy5J4x9qoMsO5
+X-Received: by 2002:a17:902:ec84:b0:16c:278d:add with SMTP id
+ x4-20020a170902ec8400b0016c278d0addmr2174104plg.12.1657293346912; 
+ Fri, 08 Jul 2022 08:15:46 -0700 (PDT)
 Received: from stoup.. ([122.255.60.245]) by smtp.gmail.com with ESMTPSA id
- n17-20020a056a0007d100b0051bada81bc7sm29085774pfu.161.2022.07.08.08.15.53
+ n17-20020a056a0007d100b0051bada81bc7sm29085774pfu.161.2022.07.08.08.15.44
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 08 Jul 2022 08:15:55 -0700 (PDT)
+ Fri, 08 Jul 2022 08:15:46 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org,
-	Peter Maydell <peter.maydell@linaro.org>
-Subject: [PATCH v6 03/45] target/arm: Trap non-streaming usage when Streaming
- SVE is active
-Date: Fri,  8 Jul 2022 20:44:58 +0530
-Message-Id: <20220708151540.18136-4-richard.henderson@linaro.org>
+Cc: qemu-arm@nongnu.org
+Subject: [PATCH v6 00/45] target/arm: Scalable Matrix Extension
+Date: Fri,  8 Jul 2022 20:44:55 +0530
+Message-Id: <20220708151540.18136-1-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20220708151540.18136-1-richard.henderson@linaro.org>
-References: <20220708151540.18136-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::632;
- envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x632.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1034;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x1034.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -121,375 +117,96 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: dyoMOvkTNLXZ
+X-TUID: DQ/uJKflPBXA
 
-This new behaviour is in the ARM pseudocode function
-AArch64.CheckFPAdvSIMDEnabled, which applies to AArch32
-via AArch32.CheckAdvSIMDOrFPEnabled when the EL to which
-the trap would be delivered is in AArch64 mode.
+Changes for v6:
+  * Some sub-word big-endian addressing fixups (pmm).
+  * Logic errors for BFMOPA/FMOPA (pmm).
+  * Fix for PR_SME_SET_VL hflags rebuild.
 
-Given that ARMv9 drops support for AArch32 outside EL0, the trap EL
-detection ought to be trivially true, but the pseudocode still contains
-a number of conditions, and QEMU has not yet committed to dropping A32
-support for EL[12] when v9 features are present.
+r~
 
-Since the computation of SME_TRAP_NONSTREAMING is necessarily different
-for the two modes, we might as well preserve bits within TBFLAG_ANY and
-allocate separate bits within TBFLAG_A32 and TBFLAG_A64 instead.
+Richard Henderson (45):
+  target/arm: Handle SME in aarch64_cpu_dump_state
+  target/arm: Add infrastructure for disas_sme
+  target/arm: Trap non-streaming usage when Streaming SVE is active
+  target/arm: Mark ADR as non-streaming
+  target/arm: Mark RDFFR, WRFFR, SETFFR as non-streaming
+  target/arm: Mark BDEP, BEXT, BGRP, COMPACT, FEXPA, FTSSEL as
+    non-streaming
+  target/arm: Mark PMULL, FMMLA as non-streaming
+  target/arm: Mark FTSMUL, FTMAD, FADDA as non-streaming
+  target/arm: Mark SMMLA, UMMLA, USMMLA as non-streaming
+  target/arm: Mark string/histo/crypto as non-streaming
+  target/arm: Mark gather/scatter load/store as non-streaming
+  target/arm: Mark gather prefetch as non-streaming
+  target/arm: Mark LDFF1 and LDNF1 as non-streaming
+  target/arm: Mark LD1RO as non-streaming
+  target/arm: Add SME enablement checks
+  target/arm: Handle SME in sve_access_check
+  target/arm: Implement SME RDSVL, ADDSVL, ADDSPL
+  target/arm: Implement SME ZERO
+  target/arm: Implement SME MOVA
+  target/arm: Implement SME LD1, ST1
+  target/arm: Export unpredicated ld/st from translate-sve.c
+  target/arm: Implement SME LDR, STR
+  target/arm: Implement SME ADDHA, ADDVA
+  target/arm: Implement FMOPA, FMOPS (non-widening)
+  target/arm: Implement BFMOPA, BFMOPS
+  target/arm: Implement FMOPA, FMOPS (widening)
+  target/arm: Implement SME integer outer product
+  target/arm: Implement PSEL
+  target/arm: Implement REVD
+  target/arm: Implement SCLAMP, UCLAMP
+  target/arm: Reset streaming sve state on exception boundaries
+  target/arm: Enable SME for -cpu max
+  linux-user/aarch64: Clear tpidr2_el0 if CLONE_SETTLS
+  linux-user/aarch64: Reset PSTATE.SM on syscalls
+  linux-user/aarch64: Add SM bit to SVE signal context
+  linux-user/aarch64: Tidy target_restore_sigframe error return
+  linux-user/aarch64: Do not allow duplicate or short sve records
+  linux-user/aarch64: Verify extra record lock succeeded
+  linux-user/aarch64: Move sve record checks into restore
+  linux-user/aarch64: Implement SME signal handling
+  linux-user: Rename sve prctls
+  linux-user/aarch64: Implement PR_SME_GET_VL, PR_SME_SET_VL
+  target/arm: Only set ZEN in reset if SVE present
+  target/arm: Enable SME for user-only
+  linux-user/aarch64: Add SME related hwcap entries
 
-Note that DDI0616A.a has typos for bits [22:21] of LD1RO in the table
-of instructions illegal in streaming mode.
-
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
-Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
----
- target/arm/cpu.h           |  7 +++
- target/arm/translate.h     |  4 ++
- target/arm/sme-fa64.decode | 90 ++++++++++++++++++++++++++++++++++++++
- target/arm/helper.c        | 41 +++++++++++++++++
- target/arm/translate-a64.c | 40 ++++++++++++++++-
- target/arm/translate-vfp.c | 12 +++++
- target/arm/translate.c     |  2 +
- target/arm/meson.build     |  1 +
- 8 files changed, 195 insertions(+), 2 deletions(-)
+ docs/system/arm/emulation.rst     |    4 +
+ linux-user/aarch64/target_cpu.h   |    5 +-
+ linux-user/aarch64/target_prctl.h |   62 +-
+ target/arm/cpu.h                  |    7 +
+ target/arm/helper-sme.h           |  126 ++++
+ target/arm/helper-sve.h           |    4 +
+ target/arm/helper.h               |   18 +
+ target/arm/translate-a64.h        |   45 ++
+ target/arm/translate.h            |   16 +
+ target/arm/sme-fa64.decode        |   60 ++
+ target/arm/sme.decode             |   88 +++
+ target/arm/sve.decode             |   41 +-
+ linux-user/aarch64/cpu_loop.c     |    9 +
+ linux-user/aarch64/signal.c       |  243 +++++-
+ linux-user/elfload.c              |   20 +
+ linux-user/syscall.c              |   28 +-
+ target/arm/cpu.c                  |   35 +-
+ target/arm/cpu64.c                |   11 +
+ target/arm/helper.c               |   56 +-
+ target/arm/sme_helper.c           | 1140 +++++++++++++++++++++++++++++
+ target/arm/sve_helper.c           |   28 +
+ target/arm/translate-a64.c        |  103 ++-
+ target/arm/translate-sme.c        |  373 ++++++++++
+ target/arm/translate-sve.c        |  393 ++++++++--
+ target/arm/translate-vfp.c        |   12 +
+ target/arm/translate.c            |    2 +
+ target/arm/vec_helper.c           |   24 +
+ target/arm/meson.build            |    3 +
+ 28 files changed, 2821 insertions(+), 135 deletions(-)
  create mode 100644 target/arm/sme-fa64.decode
+ create mode 100644 target/arm/sme.decode
+ create mode 100644 target/arm/translate-sme.c
 
-diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index 1f4f3e0485..1e36a839ee 100644
---- a/target/arm/cpu.h
-+++ b/target/arm/cpu.h
-@@ -3158,6 +3158,11 @@ FIELD(TBFLAG_A32, HSTR_ACTIVE, 9, 1)
-  * the same thing as the current security state of the processor!
-  */
- FIELD(TBFLAG_A32, NS, 10, 1)
-+/*
-+ * Indicates that SME Streaming mode is active, and SMCR_ELx.FA64 is not.
-+ * This requires an SME trap from AArch32 mode when using NEON.
-+ */
-+FIELD(TBFLAG_A32, SME_TRAP_NONSTREAMING, 11, 1)
- 
- /*
-  * Bit usage when in AArch32 state, for M-profile only.
-@@ -3195,6 +3200,8 @@ FIELD(TBFLAG_A64, SMEEXC_EL, 20, 2)
- FIELD(TBFLAG_A64, PSTATE_SM, 22, 1)
- FIELD(TBFLAG_A64, PSTATE_ZA, 23, 1)
- FIELD(TBFLAG_A64, SVL, 24, 4)
-+/* Indicates that SME Streaming mode is active, and SMCR_ELx.FA64 is not. */
-+FIELD(TBFLAG_A64, SME_TRAP_NONSTREAMING, 28, 1)
- 
- /*
-  * Helpers for using the above.
-diff --git a/target/arm/translate.h b/target/arm/translate.h
-index 22fd882368..cbc907c751 100644
---- a/target/arm/translate.h
-+++ b/target/arm/translate.h
-@@ -102,6 +102,10 @@ typedef struct DisasContext {
-     bool pstate_sm;
-     /* True if PSTATE.ZA is set. */
-     bool pstate_za;
-+    /* True if non-streaming insns should raise an SME Streaming exception. */
-+    bool sme_trap_nonstreaming;
-+    /* True if the current instruction is non-streaming. */
-+    bool is_nonstreaming;
-     /* True if MVE insns are definitely not predicated by VPR or LTPSIZE */
-     bool mve_no_pred;
-     /*
-diff --git a/target/arm/sme-fa64.decode b/target/arm/sme-fa64.decode
-new file mode 100644
-index 0000000000..3d90837fc7
---- /dev/null
-+++ b/target/arm/sme-fa64.decode
-@@ -0,0 +1,90 @@
-+# AArch64 SME allowed instruction decoding
-+#
-+#  Copyright (c) 2022 Linaro, Ltd
-+#
-+# This library is free software; you can redistribute it and/or
-+# modify it under the terms of the GNU Lesser General Public
-+# License as published by the Free Software Foundation; either
-+# version 2.1 of the License, or (at your option) any later version.
-+#
-+# This library is distributed in the hope that it will be useful,
-+# but WITHOUT ANY WARRANTY; without even the implied warranty of
-+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-+# Lesser General Public License for more details.
-+#
-+# You should have received a copy of the GNU Lesser General Public
-+# License along with this library; if not, see <http://www.gnu.org/licenses/>.
-+
-+#
-+# This file is processed by scripts/decodetree.py
-+#
-+
-+# These patterns are taken from Appendix E1.1 of DDI0616 A.a,
-+# Arm Architecture Reference Manual Supplement,
-+# The Scalable Matrix Extension (SME), for Armv9-A
-+
-+{
-+  [
-+    OK  0-00 1110 0000 0001 0010 11-- ---- ----   # SMOV W|Xd,Vn.B[0]
-+    OK  0-00 1110 0000 0010 0010 11-- ---- ----   # SMOV W|Xd,Vn.H[0]
-+    OK  0100 1110 0000 0100 0010 11-- ---- ----   # SMOV Xd,Vn.S[0]
-+    OK  0000 1110 0000 0001 0011 11-- ---- ----   # UMOV Wd,Vn.B[0]
-+    OK  0000 1110 0000 0010 0011 11-- ---- ----   # UMOV Wd,Vn.H[0]
-+    OK  0000 1110 0000 0100 0011 11-- ---- ----   # UMOV Wd,Vn.S[0]
-+    OK  0100 1110 0000 1000 0011 11-- ---- ----   # UMOV Xd,Vn.D[0]
-+  ]
-+  FAIL  0--0 111- ---- ---- ---- ---- ---- ----   # Advanced SIMD vector operations
-+}
-+
-+{
-+  [
-+    OK  0101 1110 --1- ---- 11-1 11-- ---- ----   # FMULX/FRECPS/FRSQRTS (scalar)
-+    OK  0101 1110 -10- ---- 00-1 11-- ---- ----   # FMULX/FRECPS/FRSQRTS (scalar, FP16)
-+    OK  01-1 1110 1-10 0001 11-1 10-- ---- ----   # FRECPE/FRSQRTE/FRECPX (scalar)
-+    OK  01-1 1110 1111 1001 11-1 10-- ---- ----   # FRECPE/FRSQRTE/FRECPX (scalar, FP16)
-+  ]
-+  FAIL  01-1 111- ---- ---- ---- ---- ---- ----   # Advanced SIMD single-element operations
-+}
-+
-+FAIL    0-00 110- ---- ---- ---- ---- ---- ----   # Advanced SIMD structure load/store
-+FAIL    1100 1110 ---- ---- ---- ---- ---- ----   # Advanced SIMD cryptography extensions
-+FAIL    0001 1110 0111 1110 0000 00-- ---- ----   # FJCVTZS
-+
-+# These are the "avoidance of doubt" final table of Illegal Advanced SIMD instructions
-+# We don't actually need to include these, as the default is OK.
-+#       -001 111- ---- ---- ---- ---- ---- ----   # Scalar floating-point operations
-+#       --10 110- ---- ---- ---- ---- ---- ----   # Load/store pair of FP registers
-+#       --01 1100 ---- ---- ---- ---- ---- ----   # Load FP register (PC-relative literal)
-+#       --11 1100 --0- ---- ---- ---- ---- ----   # Load/store FP register (unscaled imm)
-+#       --11 1100 --1- ---- ---- ---- ---- --10   # Load/store FP register (register offset)
-+#       --11 1101 ---- ---- ---- ---- ---- ----   # Load/store FP register (scaled imm)
-+
-+FAIL    0000 0100 --1- ---- 1010 ---- ---- ----   # ADR
-+FAIL    0000 0100 --1- ---- 1011 -0-- ---- ----   # FTSSEL, FEXPA
-+FAIL    0000 0101 --10 0001 100- ---- ---- ----   # COMPACT
-+FAIL    0010 0101 --01 100- 1111 000- ---0 ----   # RDFFR, RDFFRS
-+FAIL    0010 0101 --10 1--- 1001 ---- ---- ----   # WRFFR, SETFFR
-+FAIL    0100 0101 --0- ---- 1011 ---- ---- ----   # BDEP, BEXT, BGRP
-+FAIL    0100 0101 000- ---- 0110 1--- ---- ----   # PMULLB, PMULLT (128b result)
-+FAIL    0110 0100 --1- ---- 1110 01-- ---- ----   # FMMLA, BFMMLA
-+FAIL    0110 0101 --0- ---- 0000 11-- ---- ----   # FTSMUL
-+FAIL    0110 0101 --01 0--- 100- ---- ---- ----   # FTMAD
-+FAIL    0110 0101 --01 1--- 001- ---- ---- ----   # FADDA
-+FAIL    0100 0101 --0- ---- 1001 10-- ---- ----   # SMMLA, UMMLA, USMMLA
-+FAIL    0100 0101 --1- ---- 1--- ---- ---- ----   # SVE2 string/histo/crypto instructions
-+FAIL    1000 010- -00- ---- 10-- ---- ---- ----   # SVE2 32-bit gather NT load (vector+scalar)
-+FAIL    1000 010- -00- ---- 111- ---- ---- ----   # SVE 32-bit gather prefetch (vector+imm)
-+FAIL    1000 0100 0-1- ---- 0--- ---- ---- ----   # SVE 32-bit gather prefetch (scalar+vector)
-+FAIL    1000 010- -01- ---- 1--- ---- ---- ----   # SVE 32-bit gather load (vector+imm)
-+FAIL    1000 0100 0-0- ---- 0--- ---- ---- ----   # SVE 32-bit gather load byte (scalar+vector)
-+FAIL    1000 0100 1--- ---- 0--- ---- ---- ----   # SVE 32-bit gather load half (scalar+vector)
-+FAIL    1000 0101 0--- ---- 0--- ---- ---- ----   # SVE 32-bit gather load word (scalar+vector)
-+FAIL    1010 010- ---- ---- 011- ---- ---- ----   # SVE contiguous FF load (scalar+scalar)
-+FAIL    1010 010- ---1 ---- 101- ---- ---- ----   # SVE contiguous NF load (scalar+imm)
-+FAIL    1010 010- -01- ---- 000- ---- ---- ----   # SVE load & replicate 32 bytes (scalar+scalar)
-+FAIL    1010 010- -010 ---- 001- ---- ---- ----   # SVE load & replicate 32 bytes (scalar+imm)
-+FAIL    1100 010- ---- ---- ---- ---- ---- ----   # SVE 64-bit gather load/prefetch
-+FAIL    1110 010- -00- ---- 001- ---- ---- ----   # SVE2 64-bit scatter NT store (vector+scalar)
-+FAIL    1110 010- -10- ---- 001- ---- ---- ----   # SVE2 32-bit scatter NT store (vector+scalar)
-+FAIL    1110 010- ---- ---- 1-0- ---- ---- ----   # SVE scatter store (scalar+32-bit vector)
-+FAIL    1110 010- ---- ---- 101- ---- ---- ----   # SVE scatter store (misc)
-diff --git a/target/arm/helper.c b/target/arm/helper.c
-index e6f37e160f..73a5b2b86d 100644
---- a/target/arm/helper.c
-+++ b/target/arm/helper.c
-@@ -6098,6 +6098,32 @@ int sme_exception_el(CPUARMState *env, int el)
-     return 0;
- }
- 
-+/* This corresponds to the ARM pseudocode function IsFullA64Enabled(). */
-+static bool sme_fa64(CPUARMState *env, int el)
-+{
-+    if (!cpu_isar_feature(aa64_sme_fa64, env_archcpu(env))) {
-+        return false;
-+    }
-+
-+    if (el <= 1 && !el_is_in_host(env, el)) {
-+        if (!FIELD_EX64(env->vfp.smcr_el[1], SMCR, FA64)) {
-+            return false;
-+        }
-+    }
-+    if (el <= 2 && arm_is_el2_enabled(env)) {
-+        if (!FIELD_EX64(env->vfp.smcr_el[2], SMCR, FA64)) {
-+            return false;
-+        }
-+    }
-+    if (arm_feature(env, ARM_FEATURE_EL3)) {
-+        if (!FIELD_EX64(env->vfp.smcr_el[3], SMCR, FA64)) {
-+            return false;
-+        }
-+    }
-+
-+    return true;
-+}
-+
- /*
-  * Given that SVE is enabled, return the vector length for EL.
-  */
-@@ -10801,6 +10827,20 @@ static CPUARMTBFlags rebuild_hflags_a32(CPUARMState *env, int fp_el,
-         DP_TBFLAG_ANY(flags, PSTATE__IL, 1);
-     }
- 
-+    /*
-+     * The SME exception we are testing for is raised via
-+     * AArch64.CheckFPAdvSIMDEnabled(), as called from
-+     * AArch32.CheckAdvSIMDOrFPEnabled().
-+     */
-+    if (el == 0
-+        && FIELD_EX64(env->svcr, SVCR, SM)
-+        && (!arm_is_el2_enabled(env)
-+            || (arm_el_is_aa64(env, 2) && !(env->cp15.hcr_el2 & HCR_TGE)))
-+        && arm_el_is_aa64(env, 1)
-+        && !sme_fa64(env, el)) {
-+        DP_TBFLAG_A32(flags, SME_TRAP_NONSTREAMING, 1);
-+    }
-+
-     return rebuild_hflags_common_32(env, fp_el, mmu_idx, flags);
- }
- 
-@@ -10850,6 +10890,7 @@ static CPUARMTBFlags rebuild_hflags_a64(CPUARMState *env, int el, int fp_el,
-         }
-         if (FIELD_EX64(env->svcr, SVCR, SM)) {
-             DP_TBFLAG_A64(flags, PSTATE_SM, 1);
-+            DP_TBFLAG_A64(flags, SME_TRAP_NONSTREAMING, !sme_fa64(env, el));
-         }
-         DP_TBFLAG_A64(flags, PSTATE_ZA, FIELD_EX64(env->svcr, SVCR, ZA));
-     }
-diff --git a/target/arm/translate-a64.c b/target/arm/translate-a64.c
-index a5f8a6c771..7fab7f64f8 100644
---- a/target/arm/translate-a64.c
-+++ b/target/arm/translate-a64.c
-@@ -1155,7 +1155,7 @@ static void do_vec_ld(DisasContext *s, int destidx, int element,
-  * unallocated-encoding checks (otherwise the syndrome information
-  * for the resulting exception will be incorrect).
-  */
--static bool fp_access_check(DisasContext *s)
-+static bool fp_access_check_only(DisasContext *s)
- {
-     if (s->fp_excp_el) {
-         assert(!s->fp_access_checked);
-@@ -1170,6 +1170,19 @@ static bool fp_access_check(DisasContext *s)
-     return true;
- }
- 
-+static bool fp_access_check(DisasContext *s)
-+{
-+    if (!fp_access_check_only(s)) {
-+        return false;
-+    }
-+    if (s->sme_trap_nonstreaming && s->is_nonstreaming) {
-+        gen_exception_insn(s, s->pc_curr, EXCP_UDEF,
-+                           syn_smetrap(SME_ET_Streaming, false));
-+        return false;
-+    }
-+    return true;
-+}
-+
- /* Check that SVE access is enabled.  If it is, return true.
-  * If not, emit code to generate an appropriate exception and return false.
-  */
-@@ -1994,7 +2007,7 @@ static void handle_sys(DisasContext *s, uint32_t insn, bool isread,
-     default:
-         g_assert_not_reached();
-     }
--    if ((ri->type & ARM_CP_FPU) && !fp_access_check(s)) {
-+    if ((ri->type & ARM_CP_FPU) && !fp_access_check_only(s)) {
-         return;
-     } else if ((ri->type & ARM_CP_SVE) && !sve_access_check(s)) {
-         return;
-@@ -14530,6 +14543,23 @@ static void disas_data_proc_simd_fp(DisasContext *s, uint32_t insn)
-     }
- }
- 
-+/*
-+ * Include the generated SME FA64 decoder.
-+ */
-+
-+#include "decode-sme-fa64.c.inc"
-+
-+static bool trans_OK(DisasContext *s, arg_OK *a)
-+{
-+    return true;
-+}
-+
-+static bool trans_FAIL(DisasContext *s, arg_OK *a)
-+{
-+    s->is_nonstreaming = true;
-+    return true;
-+}
-+
- /**
-  * is_guarded_page:
-  * @env: The cpu environment
-@@ -14657,6 +14687,7 @@ static void aarch64_tr_init_disas_context(DisasContextBase *dcbase,
-     dc->mte_active[1] = EX_TBFLAG_A64(tb_flags, MTE0_ACTIVE);
-     dc->pstate_sm = EX_TBFLAG_A64(tb_flags, PSTATE_SM);
-     dc->pstate_za = EX_TBFLAG_A64(tb_flags, PSTATE_ZA);
-+    dc->sme_trap_nonstreaming = EX_TBFLAG_A64(tb_flags, SME_TRAP_NONSTREAMING);
-     dc->vec_len = 0;
-     dc->vec_stride = 0;
-     dc->cp_regs = arm_cpu->cp_regs;
-@@ -14805,6 +14836,11 @@ static void aarch64_tr_translate_insn(DisasContextBase *dcbase, CPUState *cpu)
-         }
-     }
- 
-+    s->is_nonstreaming = false;
-+    if (s->sme_trap_nonstreaming) {
-+        disas_sme_fa64(s, insn);
-+    }
-+
-     switch (extract32(insn, 25, 4)) {
-     case 0x0:
-         if (!extract32(insn, 31, 1) || !disas_sme(s, insn)) {
-diff --git a/target/arm/translate-vfp.c b/target/arm/translate-vfp.c
-index 82fdbcae53..bd5ae27d09 100644
---- a/target/arm/translate-vfp.c
-+++ b/target/arm/translate-vfp.c
-@@ -234,6 +234,18 @@ static bool vfp_access_check_a(DisasContext *s, bool ignore_vfp_enabled)
-         return false;
-     }
- 
-+    /*
-+     * Note that rebuild_hflags_a32 has already accounted for being in EL0
-+     * and the higher EL in A64 mode, etc.  Unlike A64 mode, there do not
-+     * appear to be any insns which touch VFP which are allowed.
-+     */
-+    if (s->sme_trap_nonstreaming) {
-+        gen_exception_insn(s, s->pc_curr, EXCP_UDEF,
-+                           syn_smetrap(SME_ET_Streaming,
-+                                       s->base.pc_next - s->pc_curr == 2));
-+        return false;
-+    }
-+
-     if (!s->vfp_enabled && !ignore_vfp_enabled) {
-         assert(!arm_dc_feature(s, ARM_FEATURE_M));
-         unallocated_encoding(s);
-diff --git a/target/arm/translate.c b/target/arm/translate.c
-index 6617de775f..4ffb095c73 100644
---- a/target/arm/translate.c
-+++ b/target/arm/translate.c
-@@ -9378,6 +9378,8 @@ static void arm_tr_init_disas_context(DisasContextBase *dcbase, CPUState *cs)
-             dc->vec_len = EX_TBFLAG_A32(tb_flags, VECLEN);
-             dc->vec_stride = EX_TBFLAG_A32(tb_flags, VECSTRIDE);
-         }
-+        dc->sme_trap_nonstreaming =
-+            EX_TBFLAG_A32(tb_flags, SME_TRAP_NONSTREAMING);
-     }
-     dc->cp_regs = cpu->cp_regs;
-     dc->features = env->features;
-diff --git a/target/arm/meson.build b/target/arm/meson.build
-index 6dd7e93643..87e911b27f 100644
---- a/target/arm/meson.build
-+++ b/target/arm/meson.build
-@@ -1,6 +1,7 @@
- gen = [
-   decodetree.process('sve.decode', extra_args: '--decode=disas_sve'),
-   decodetree.process('sme.decode', extra_args: '--decode=disas_sme'),
-+  decodetree.process('sme-fa64.decode', extra_args: '--static-decode=disas_sme_fa64'),
-   decodetree.process('neon-shared.decode', extra_args: '--decode=disas_neon_shared'),
-   decodetree.process('neon-dp.decode', extra_args: '--decode=disas_neon_dp'),
-   decodetree.process('neon-ls.decode', extra_args: '--decode=disas_neon_ls'),
 -- 
 2.34.1
 

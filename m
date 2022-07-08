@@ -1,268 +1,174 @@
-Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp5608177lft;
-        Thu, 7 Jul 2022 09:17:27 -0700 (PDT)
-X-Google-Smtp-Source: AGRyM1tEqkf16DjO9C6ivIhY0IM5UFstJ715Q3JJONT1EP+dHDxrxKccwfKOWxTr+6DQeO4tFggo
-X-Received: by 2002:a05:6402:228f:b0:43a:896:e4f0 with SMTP id cw15-20020a056402228f00b0043a0896e4f0mr37744965edb.81.1657210647524;
-        Thu, 07 Jul 2022 09:17:27 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1657210647; cv=none;
+Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp308153lft;
+        Fri, 8 Jul 2022 07:43:37 -0700 (PDT)
+X-Google-Smtp-Source: AGRyM1t98VEJXPo7NeasWvnvE5Dbj7+jOF3d7THgPWlZNAv95uIHYsLHN0Vnc9VBks3wZ0ZO9ngo
+X-Received: by 2002:a05:6214:20a7:b0:473:4571:3721 with SMTP id 7-20020a05621420a700b0047345713721mr1498115qvd.60.1657291417518;
+        Fri, 08 Jul 2022 07:43:37 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1657291417; cv=none;
         d=google.com; s=arc-20160816;
-        b=qKbF+HAQ97I0CaVk40lSbwjiw1vBsqZXdS/gElG3bB3ra5Qv+xPBpi30bYo7CmDee1
-         ysHBErwOK2MMnG7gyQGTlUnWxG5tYRT6Fgh+2FkfAz3NNW1C2zqReGP6DCL1DW1Rhn+X
-         MTNXYFrhrun4mCxqgnL3SVlv9xyT0RPAVtrF6txUuDJftMK6Qj6ZnAR5JmKj1Z1GfAD1
-         adNpXsdpFHb8eUfU9srTxlMg0XvJRqJJmeoS5an4pC2r+IqnNp+vcku3dSLVqbA6f1qV
-         9J82fZtZsGTxEa9XoHCVVeHoltye+z3rOU0H8RXJ4aQ6O9HHW+mISlJ8KzNz4zlBHSXH
-         dl0Q==
+        b=Tj2B+QzXcMxs7gyixSuLYb/v6BDjcU5Dy0m6eh0jP7CxwiqYpUIjsNpV2hs44ulY8t
+         MH4xikO9HKqSXIEjV5q+m6aiTLrwseEGxLBWkzVZn/7HdYZlwFTJgnsXNghtxZ1H4efU
+         8ynRWbwDKVr6YhEvNoPClgj+ohwZ4rdNB03V3VI8T7/xCu5vyFMU89GZXiOr4tI/zgDz
+         4NVaH2iHozAH4WyHPtiX6wNzSxj/iOJjsKOZS61l26iQG6O0drgnKDXULIZMsdpdNMcP
+         lYCMtobHk9hkALSYtxF2JCp4f6AVHBnZjmt40TPHnEFuJjEMFCreJF8KMZLxTf9Qgb67
+         GaiA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=list-id:precedence:content-transfer-encoding:mime-version
-         :references:in-reply-to:message-id:date:subject:cc:to:from
-         :dkim-signature;
-        bh=E8sCoaxLOXpg7pnv4sV/NFcTS/eGnW5V+4PYPvvHC2M=;
-        b=GDS8JxhP43q0lvL+vnnTOgZChHRq2AwRQxa9r6qlVyriqjStGYs6QpLKkmYgQGfD8J
-         8lPCqFNo+KTQfZZpmM7ws8+9Zd+b4lumx826edi1nTpiicJ1TJxBykZLUd08iGFCm9sC
-         H+uD6WV6ZDTLA/fs3RAPq4uW2rquB9qIFYU2B8n/3E66NzEgp5m4T7vmn31MPH2h0xtT
-         39JdWvKIpVIMzZ32D6Aa3j1XC7WW2CUeGfV3M4/EABaFOgmzjhpGdN8mJ1Yz2rQqOYSC
-         faCRJpn7klPnBjt51j6YjdGhntyUm2QBm1c5deb2KQtsFBNfzAXvSDedXfaIHUjZPT4p
-         E48Q==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:references:cc:to:content-language:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=ZPbrArNFZ/rWeA8x7cl5tNZ595+1bD1UnZfj1X9XxkA=;
+        b=0MwY2rU0B5gnnR8kG7FPvCJX3fLEUpv4Xmwb9EV5WVrq/WJDyZLBAlo6aWOWORzF9j
+         UPh3ZCVL42kOEH0tUGQWrcx82aCHoTNUKd6NCIzkeFka11G3fKHgxBHCpUoet+URPssz
+         4ngBOKyyF1+SFhthL2lVriVwuzaug8PC8LW2ETrz7/9z22eAcXh6H+z9CyzhrzH7W6I0
+         zt7UurZLPK7aeZQwR3MqDhMyC/AqI0L6smAZo6mO/0Nn3RPs2tUVNR5MGkRkH9DSOWEb
+         GfJG86luM+BQg8YE0w3ENncIsqbBqWERYai3TOmkSnE2iyX/PQuL7p51j7kmDg71q7jX
+         rdBw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="d/jAaL7J";
-       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <kvm-owner@vger.kernel.org>
-Received: from out1.vger.email (out1.vger.email. [2620:137:e000::1:20])
-        by mx.google.com with ESMTP id p11-20020a056402500b00b00439eafe046bsi21267941eda.171.2022.07.07.09.17.27;
-        Thu, 07 Jul 2022 09:17:27 -0700 (PDT)
-Received-SPF: pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) client-ip=2620:137:e000::1:20;
+       dkim=pass header.i=@linaro.org header.s=google header.b=XzIE5gqa;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id gw8-20020a0562140f0800b004622a2cd4c2si24506835qvb.66.2022.07.08.07.43.37
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Fri, 08 Jul 2022 07:43:37 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="d/jAaL7J";
-       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S235953AbiGGQR0 (ORCPT <rfc822;daniel.diaz@linaro.org>
-        + 3 others); Thu, 7 Jul 2022 12:17:26 -0400
-Received: from lindbergh.monkeyblade.net ([23.128.96.19]:57016 "EHLO
-        lindbergh.monkeyblade.net" rhost-flags-OK-OK-OK-OK) by vger.kernel.org
-        with ESMTP id S235727AbiGGQRU (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Thu, 7 Jul 2022 12:17:20 -0400
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com [170.10.133.124])
-        by lindbergh.monkeyblade.net (Postfix) with ESMTP id 5D4DF13DC8
-        for <kvm@vger.kernel.org>; Thu,  7 Jul 2022 09:17:18 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-        s=mimecast20190719; t=1657210638;
-        h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-         to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-         content-transfer-encoding:content-transfer-encoding:
-         in-reply-to:in-reply-to:references:references;
-        bh=E8sCoaxLOXpg7pnv4sV/NFcTS/eGnW5V+4PYPvvHC2M=;
-        b=d/jAaL7JXr0wiMMY9j4wHH19IcfHVlYYsqg9iq1ztsne/e6HvwN+Wg7r9ImYC8lDcLFVG/
-        3Jg8EW5FHwJMaVDiNQX8YGjgNZyLOt5nK+hLB3OB4bChYIKZ7TrRhKWE7mfsi10ZDOQBrK
-        GwQPC6w2ROxLp9ZpqR/pmmyvstA0VcU=
-Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
- [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-308-3df8Gv1NMRGRwL9hfhEsCw-1; Thu, 07 Jul 2022 12:17:05 -0400
-X-MC-Unique: 3df8Gv1NMRGRwL9hfhEsCw-1
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.rdu2.redhat.com [10.11.54.6])
-        (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-        (No client certificate requested)
-        by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 94A0C811E75;
-        Thu,  7 Jul 2022 16:17:05 +0000 (UTC)
-Received: from gondolin.fritz.box (unknown [10.39.192.81])
-        by smtp.corp.redhat.com (Postfix) with ESMTP id 0CF1E2166B26;
-        Thu,  7 Jul 2022 16:17:03 +0000 (UTC)
-From:   Cornelia Huck <cohuck@redhat.com>
-To:     Peter Maydell <peter.maydell@linaro.org>,
-        Thomas Huth <thuth@redhat.com>,
-        Laurent Vivier <lvivier@redhat.com>
-Cc:     Eric Auger <eauger@redhat.com>,
-        "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
-        Juan Quintela <quintela@redhat.com>, qemu-arm@nongnu.org,
-        qemu-devel@nongnu.org, kvm@vger.kernel.org,
-        Cornelia Huck <cohuck@redhat.com>
-Subject: [PATCH RFC v2 2/2] qtests/arm: add some mte tests
-Date:   Thu,  7 Jul 2022 18:16:56 +0200
-Message-Id: <20220707161656.41664-3-cohuck@redhat.com>
-In-Reply-To: <20220707161656.41664-1-cohuck@redhat.com>
-References: <20220707161656.41664-1-cohuck@redhat.com>
+       dkim=pass header.i=@linaro.org header.s=google header.b=XzIE5gqa;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:57144 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1o9pCj-0005Ea-1T
+	for alex.bennee@linaro.org; Fri, 08 Jul 2022 10:43:37 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:56346)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1o9pC9-0005EF-6d
+ for qemu-arm@nongnu.org; Fri, 08 Jul 2022 10:43:02 -0400
+Received: from mail-pg1-x532.google.com ([2607:f8b0:4864:20::532]:36654)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1o9pC7-0002Z1-NF
+ for qemu-arm@nongnu.org; Fri, 08 Jul 2022 10:43:00 -0400
+Received: by mail-pg1-x532.google.com with SMTP id s206so22550581pgs.3
+ for <qemu-arm@nongnu.org>; Fri, 08 Jul 2022 07:42:59 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=message-id:date:mime-version:user-agent:subject:content-language:to
+ :cc:references:from:in-reply-to:content-transfer-encoding;
+ bh=ZPbrArNFZ/rWeA8x7cl5tNZ595+1bD1UnZfj1X9XxkA=;
+ b=XzIE5gqayEQOT+n4vcOqBRkm488gYNyZCAsBYo7ua49q4UZ9KXeVv69h2jbMDLtCvS
+ wqmUnkzPzLjn1Gqus6eGIglSLfGtpR5sH/w1jdOFt7zvxFabDOQIuGXIPPGhB4N5zUG/
+ sOBNB5f6kea1tLjBSiILLdakELgvl7QPC5n8RYFXhueLdpy339tsEc/6k/0OaXnM3bxg
+ pXbecybgtDRWnCZpFWNR93Nh0EC42ChLxMg1OpD+lfBpshAnY1583s0GbqBk5rczN6jQ
+ xG3jidQr1mPIP1QuhcwXXLt+XItfoN5CPjxJGv/LD9SQN3QkxNXkUP4yRk727AjIWwbH
+ ilUA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
+ :content-language:to:cc:references:from:in-reply-to
+ :content-transfer-encoding;
+ bh=ZPbrArNFZ/rWeA8x7cl5tNZ595+1bD1UnZfj1X9XxkA=;
+ b=AEqT/9jr6quK02SgEO8cMn/pl5frfjlUDPi9p89FWhCTchdywZansX3sbxc1JXpkgR
+ h38mETzNoAxiBzF1GqyxTCbsOtFcgiQXHQRZPgZQeUmweVgt8hqum4N1qz4em/twGc8+
+ HmdZ3LKhcAtviGjiwt/HLpNwcOue6wRrIuT1U3dZ6GXosYzBwHC+TCOCqR1ltrEatCq5
+ X+8HusAEwNpX4qim+ow+ScNwybHAKyU8LtMdn8tgWfkbz6OyKhj9Pi09FHIwyFuXtPWK
+ JT0/TT70drAWxDXL18Lajd3iUfkg/oDsYOKAQyBt52QmRijN50U0vib8v+wv9NOm8j56
+ H1QA==
+X-Gm-Message-State: AJIora+WFKhzWwvesvupUlsF33rUxZ9t2JXRAvh930rrp7PicMAaPSm1
+ Iog1iU8glPJQDLjphs4+Jwlq9w==
+X-Received: by 2002:a63:4604:0:b0:40d:a0ec:5dc4 with SMTP id
+ t4-20020a634604000000b0040da0ec5dc4mr3693668pga.510.1657291378038; 
+ Fri, 08 Jul 2022 07:42:58 -0700 (PDT)
+Received: from [192.168.138.227] ([122.255.60.245])
+ by smtp.gmail.com with ESMTPSA id
+ d2-20020a170903230200b0016b90620910sm22677315plh.71.2022.07.08.07.42.54
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 08 Jul 2022 07:42:57 -0700 (PDT)
+Message-ID: <83f71b37-848b-ad6f-d51f-b3d6e0d4cf24@linaro.org>
+Date: Fri, 8 Jul 2022 20:12:50 +0530
 MIME-Version: 1.0
-Content-type: text/plain
-Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 2.78 on 10.11.54.6
-X-Spam-Status: No, score=-2.8 required=5.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-        DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,RCVD_IN_DNSWL_NONE,
-        SPF_HELO_NONE,SPF_NONE,T_SCC_BODY_TEXT_LINE autolearn=ham
-        autolearn_force=no version=3.4.6
-X-Spam-Checker-Version: SpamAssassin 3.4.6 (2021-04-09) on
-        lindbergh.monkeyblade.net
-Precedence: bulk
-List-ID: <kvm.vger.kernel.org>
-X-Mailing-List: kvm@vger.kernel.org
-X-TUID: 0YH7h2vv0gle
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.9.1
+Subject: Re: [PATCH v5 25/45] target/arm: Implement BFMOPA, BFMOPS
+Content-Language: en-US
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
+References: <20220706082411.1664825-1-richard.henderson@linaro.org>
+ <20220706082411.1664825-26-richard.henderson@linaro.org>
+ <CAFEAcA8Ou2N9qJyvSy2wkpGtguCjJrA9YWoio4jsrv5VrNE3VQ@mail.gmail.com>
+From: Richard Henderson <richard.henderson@linaro.org>
+In-Reply-To: <CAFEAcA8Ou2N9qJyvSy2wkpGtguCjJrA9YWoio4jsrv5VrNE3VQ@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::532;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pg1-x532.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: q3itEMR9wjiZ
 
-Signed-off-by: Cornelia Huck <cohuck@redhat.com>
----
- tests/qtest/arm-cpu-features.c | 77 ++++++++++++++++++++++++++++++++++
- 1 file changed, 77 insertions(+)
+On 7/7/22 15:12, Peter Maydell wrote:
+>> +static inline uint32_t f16mop_adj_pair(uint32_t pair, uint32_t pg, uint32_t neg)
+>> +{
+>> +    pair ^= neg;
+> 
+> You seem to be negating element 1 of row and col ('neg' here is
+> 1 << 15 unless I've misread something, and it gets passed to
+> the calls for both the row and column data), but the pseudocode
+> says we want to negate element 0 and element 1 of row, and not
+> negate the col elements.
 
-diff --git a/tests/qtest/arm-cpu-features.c b/tests/qtest/arm-cpu-features.c
-index 5a145273860c..466be857d391 100644
---- a/tests/qtest/arm-cpu-features.c
-+++ b/tests/qtest/arm-cpu-features.c
-@@ -22,6 +22,7 @@
- 
- #define MACHINE     "-machine virt,gic-version=max -accel tcg "
- #define MACHINE_KVM "-machine virt,gic-version=max -accel kvm -accel tcg "
-+#define MACHINE_MTE "-machine virt,gic-version=max,mte=on -accel tcg "
- #define QUERY_HEAD  "{ 'execute': 'query-cpu-model-expansion', " \
-                     "  'arguments': { 'type': 'full', "
- #define QUERY_TAIL  "}}"
-@@ -155,6 +156,18 @@ static bool resp_get_feature(QDict *resp, const char *feature)
-     g_assert(qdict_get_bool(_props, feature) == (expected_value));     \
- })
- 
-+#define resp_assert_feature_str(resp, feature, expected_value)         \
-+({                                                                     \
-+    QDict *_props;                                                     \
-+                                                                       \
-+    g_assert(_resp);                                                   \
-+    g_assert(resp_has_props(_resp));                                   \
-+    _props = resp_get_props(_resp);                                    \
-+    g_assert(qdict_get(_props, feature));                              \
-+    g_assert_cmpstr(qdict_get_try_str(_props, feature), ==,            \
-+                    expected_value);                                   \
-+})
-+
- #define assert_feature(qts, cpu_type, feature, expected_value)         \
- ({                                                                     \
-     QDict *_resp;                                                      \
-@@ -165,6 +178,16 @@ static bool resp_get_feature(QDict *resp, const char *feature)
-     qobject_unref(_resp);                                              \
- })
- 
-+#define assert_feature_str(qts, cpu_type, feature, expected_value)     \
-+({                                                                     \
-+    QDict *_resp;                                                      \
-+                                                                       \
-+    _resp = do_query_no_props(qts, cpu_type);                          \
-+    g_assert(_resp);                                                   \
-+    resp_assert_feature_str(_resp, feature, expected_value);           \
-+    qobject_unref(_resp);                                              \
-+})
-+
- #define assert_set_feature(qts, cpu_type, feature, value)              \
- ({                                                                     \
-     const char *_fmt = (value) ? "{ %s: true }" : "{ %s: false }";     \
-@@ -176,6 +199,16 @@ static bool resp_get_feature(QDict *resp, const char *feature)
-     qobject_unref(_resp);                                              \
- })
- 
-+#define assert_set_feature_str(qts, cpu_type, feature, value, _fmt)    \
-+({                                                                     \
-+    QDict *_resp;                                                      \
-+                                                                       \
-+    _resp = do_query(qts, cpu_type, _fmt, feature);                    \
-+    g_assert(_resp);                                                   \
-+    resp_assert_feature_str(_resp, feature, value);                    \
-+    qobject_unref(_resp);                                              \
-+})
-+
- #define assert_has_feature_enabled(qts, cpu_type, feature)             \
-     assert_feature(qts, cpu_type, feature, true)
- 
-@@ -412,6 +445,24 @@ static void sve_tests_sve_off_kvm(const void *data)
-     qtest_quit(qts);
- }
- 
-+static void mte_tests_tag_memory_on(const void *data)
-+{
-+    QTestState *qts;
-+
-+    qts = qtest_init(MACHINE_MTE "-cpu max");
-+
-+    /*
-+     * With tag memory, "mte" should default to on, and explicitly specifying
-+     * either on or off should be fine.
-+     */
-+    assert_has_feature(qts, "max", "mte");
-+
-+    assert_set_feature_str(qts, "max", "mte", "off", "{ 'mte': 'off' }");
-+    assert_set_feature_str(qts, "max", "mte", "on", "{ 'mte': 'on' }");
-+
-+    qtest_quit(qts);
-+}
-+
- static void pauth_tests_default(QTestState *qts, const char *cpu_type)
- {
-     assert_has_feature_enabled(qts, cpu_type, "pauth");
-@@ -424,6 +475,21 @@ static void pauth_tests_default(QTestState *qts, const char *cpu_type)
-                  "{ 'pauth': false, 'pauth-impdef': true }");
- }
- 
-+static void mte_tests_default(QTestState *qts, const char *cpu_type)
-+{
-+    assert_has_feature(qts, cpu_type, "mte");
-+
-+    /*
-+     * Without tag memory, mte will be off under tcg.
-+     * Explicitly enabling it yields an error.
-+     */
-+    assert_has_feature(qts, cpu_type, "mte");
-+
-+    assert_set_feature_str(qts, "max", "mte", "off", "{ 'mte': 'off' }");
-+    assert_error(qts, cpu_type, "mte=on requires tag memory",
-+                 "{ 'mte': 'on' }");
-+}
-+
- static void test_query_cpu_model_expansion(const void *data)
- {
-     QTestState *qts;
-@@ -473,6 +539,7 @@ static void test_query_cpu_model_expansion(const void *data)
- 
-         sve_tests_default(qts, "max");
-         pauth_tests_default(qts, "max");
-+        mte_tests_default(qts, "max");
- 
-         /* Test that features that depend on KVM generate errors without. */
-         assert_error(qts, "max",
-@@ -499,6 +566,7 @@ static void test_query_cpu_model_expansion_kvm(const void *data)
-     if (g_str_equal(qtest_get_arch(), "aarch64")) {
-         bool kvm_supports_steal_time;
-         bool kvm_supports_sve;
-+        bool kvm_supports_mte;
-         char max_name[8], name[8];
-         uint32_t max_vq, vq;
-         uint64_t vls;
-@@ -523,10 +591,12 @@ static void test_query_cpu_model_expansion_kvm(const void *data)
-          */
-         assert_has_feature(qts, "host", "kvm-steal-time");
-         assert_has_feature(qts, "host", "sve");
-+        assert_has_feature(qts, "host", "mte");
- 
-         resp = do_query_no_props(qts, "host");
-         kvm_supports_steal_time = resp_get_feature(resp, "kvm-steal-time");
-         kvm_supports_sve = resp_get_feature(resp, "sve");
-+        kvm_supports_mte = resp_get_feature(resp, "mte");
-         vls = resp_get_sve_vls(resp);
-         qobject_unref(resp);
- 
-@@ -592,6 +662,11 @@ static void test_query_cpu_model_expansion_kvm(const void *data)
-         } else {
-             g_assert(vls == 0);
-         }
-+        if (kvm_supports_mte) {
-+            /* If we have mte then we should be able to toggle it. */
-+            assert_set_feature(qts, "host", "mte", false);
-+            assert_set_feature(qts, "host", "mte", true);
-+        }
-     } else {
-         assert_has_not_feature(qts, "host", "aarch64");
-         assert_has_not_feature(qts, "host", "pmu");
-@@ -630,6 +705,8 @@ int main(int argc, char **argv)
-                             NULL, sve_tests_sve_off);
-         qtest_add_data_func("/arm/kvm/query-cpu-model-expansion/sve-off",
-                             NULL, sve_tests_sve_off_kvm);
-+        qtest_add_data_func("/arm/max/query-cpu-model-expansion/tag-memory",
-+                            NULL, mte_tests_tag_memory_on);
-     }
- 
-     return g_test_run();
--- 
-2.35.3
+Yep, thanks.
+
+>> +    if (!(pg & 1)) {
+>> +        pair &= 0xffff0000u;
+>> +    }
+>> +    if (!(pg & 4)) {
+>> +        pair &= 0x0000ffffu;
+>> +    }
+> 
+> The pseudocode sets the element to 0 if it is not
+> predicated, and then applies the negation second.
+
+Yes.  However, the negation is predicated too -- the squashed FPZero is never negated.  I 
+found it simpler to unconditionally negate and then conditionally squash to zero.
+
+>> +            uint32_t n = *(uint32_t *)(vzn + row);
+> 
+> More missing H macros ?
+
+Yep.
+
+>> +                    if ((pa & 0b0101) == 0b0101 || (pb & 0b0101) == 0b0101) {
+> 
+> The pseudocode test for "do we do anything" is
+>   (prow_0 && pcol_0) || (prow_1 && pcol_1)
+> 
+> but isn't this C expression doing
+>   (prow_0 && prow_1) || (pcol_0 && pcol_1) ?
+
+Yep, thanks.
+
+
+r~

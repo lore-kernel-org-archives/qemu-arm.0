@@ -1,105 +1,104 @@
-Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp353016lft;
-        Fri, 8 Jul 2022 08:54:20 -0700 (PDT)
-X-Google-Smtp-Source: AGRyM1uaADvWTiZ1YOqITCN4gsgHzlJX3RI9JNZrK9K1XvY5rxHc0xUd8LOhrcFUuz3R3ejvnt8b
-X-Received: by 2002:ac8:57c1:0:b0:31e:99c2:642e with SMTP id w1-20020ac857c1000000b0031e99c2642emr3590783qta.224.1657295659874;
-        Fri, 08 Jul 2022 08:54:19 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1657295659; cv=none;
+Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp354530lft;
+        Fri, 8 Jul 2022 08:57:15 -0700 (PDT)
+X-Google-Smtp-Source: AGRyM1tsAz/h0JnZzZjEGGEHEJMHqfL6TVoaCBGYaem+PZvq/SQoMu9rW3+p8To20I2QOFUXvwJn
+X-Received: by 2002:a0c:c186:0:b0:473:bed:a148 with SMTP id n6-20020a0cc186000000b004730beda148mr3443091qvh.34.1657295835447;
+        Fri, 08 Jul 2022 08:57:15 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1657295835; cv=none;
         d=google.com; s=arc-20160816;
-        b=xChEgykJ4YgFeVaVIoNzn0mVIqbDl2E1weHQ4ObcMk4PgPAmYag2c39lihhis5ZYLs
-         0vVeVafgseD34H6tjRmzDZZvBUZMrGENXYGq9wVMgRTRD27cQsuWOhDdbM68nXOonJly
-         E5PBMhyJKyiDTeY+blmd/2LPEujRun/+Ymk49WrS62A9jtG/ktFtPwz9ieVBwLTu7adn
-         hcPEDCVzhPiAidrYUMuW7dahyTTsV1vSGeULLkr7YynENE6XF6UANeVa1mGzYoo/AWDE
-         YSh+elFA3No1LYJJNlqf5d/v3VUXvnep+DUETKOGSADKdiCJHRN1n7zx+TyERri89g+O
-         b41w==
+        b=ub85LboNjG0rzwCbtA+HMvV2/XNXCjjUxapfnoKRWaSLch7KZ+s6XKRQlo/7c7gxwb
+         wbKMN1cB+VoIY4RZRVUlEK2YVpJSV66rdVlxfSyf58drHJLqM6a++MJlQ9QxcB9+MAWA
+         R2va38vyicFo5p7z8BqbqPE58GlvPYAzrBYHGkltH5HlK4wZrq4kCjZEYgc4/W6cO/nN
+         sIsYZR7/iezWsKdqzvU+Guu1wJS/Oq/CcTxE/xfBcbl/ZzNv3ZIkE6/wvqNqhMyXgmyD
+         /QmSp0YJFO9rdriPvMNmxQNw6VX1h9kCBfVm22MJxanxTRZs9USzJ3BlyeXhHHYHj4/X
+         k29g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=f5ee/kpTJRv70/KN+irqbHOKZ1TmVta3xQPxo1FwOpU=;
-        b=tG819djJJN7QGLMzENUMO9MiX1ZwMCP8hxG0RZNEbcBaBOo1pEoCfmcf0++piU9VSw
-         9KusdHceHqpRCoF5OhAsflb0ta6Imt7Hx+i9MH8QFVU2XrdBxAkiee9YQtzJ6vSXSH0v
-         7QASLlejVMmWFXvhhvukYy03FJaTO0AOi375zN2TEys2t33ftzjsEk12KOZby1a4sIgI
-         62YNyptVOtcbl/CEpmtIB4CPSVESZ0F0uRD1Kr+wJlHSupYP98ybaKVX5kuqW3fNGIru
-         OCUsnBUDhiVO0mhSGEJ2ZfTxTFSYctuaISj51zj2sJ75AHzYiwkzcNoJ2Ru2/5/hVjRv
-         WBXQ==
+        bh=QXu/KgUnFX9XdonKOb4RpodqXgfNtkqVhXPaRa0Wz+g=;
+        b=blohG/QljrCcbuvZElRBLu0kIQdpJ8AiIlR5k6IdIeG3bUNJdXwP2j+ck1glGDCpUz
+         w1vQM7UHLOTrZqxBsZbPWIZbc4DwthuLpb2+wp7ovAPWgoEQE60XAsvuSRMVP5TquVff
+         TshCXXgO3a2qDHs5PUQbAygAKo/Ltgem/FfvxmAGjDYhjL0x5LlhBgwTHe6lR4fds/b3
+         kAwvEFFpb9UR5gP8gZahyYt6QuFDpeJp1iLUODMX4Z4WP1UG9n8UJ4vr1oEMDYguAAlI
+         qHJDnxcgjC4oE2mO1nyq2bMDX2oB7GuxQPkvMQgGHU6HbZUqeO8Loa/lHHEOIKh8RLby
+         9eMA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="m8lc/pwb";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=iPqiAvNn;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id m8-20020ac84448000000b0031e9adc1711si2964137qtn.203.2022.07.08.08.54.19
+        by mx.google.com with ESMTPS id q30-20020a37f71e000000b006b2849cdd41si8682452qkj.78.2022.07.08.08.57.15
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 08 Jul 2022 08:54:19 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 08 Jul 2022 08:57:15 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="m8lc/pwb";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=iPqiAvNn;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:37554 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:46910 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1o9qJ9-0000rW-CG
-	for alex.bennee@linaro.org; Fri, 08 Jul 2022 11:54:19 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38016)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1o9qLy-0007A3-Vy
+	for alex.bennee@linaro.org; Fri, 08 Jul 2022 11:57:15 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37938)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1o9pjf-0004QE-JT
- for qemu-devel@nongnu.org; Fri, 08 Jul 2022 11:17:40 -0400
-Received: from mail-pg1-x533.google.com ([2607:f8b0:4864:20::533]:40672)
+ id 1o9pja-0004Py-Tz
+ for qemu-arm@nongnu.org; Fri, 08 Jul 2022 11:17:40 -0400
+Received: from mail-pf1-x430.google.com ([2607:f8b0:4864:20::430]:34460)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1o9pje-0002WJ-73
- for qemu-devel@nongnu.org; Fri, 08 Jul 2022 11:17:39 -0400
-Received: by mail-pg1-x533.google.com with SMTP id i190so10006478pge.7
- for <qemu-devel@nongnu.org>; Fri, 08 Jul 2022 08:17:37 -0700 (PDT)
+ id 1o9pjY-0002Xo-F9
+ for qemu-arm@nongnu.org; Fri, 08 Jul 2022 11:17:34 -0400
+Received: by mail-pf1-x430.google.com with SMTP id 70so8680692pfx.1
+ for <qemu-arm@nongnu.org>; Fri, 08 Jul 2022 08:17:28 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=f5ee/kpTJRv70/KN+irqbHOKZ1TmVta3xQPxo1FwOpU=;
- b=m8lc/pwbr7mOPs+Mt8Ipy+vH/nDdM+Nqn1gbwlAUSUBI6tZAAXjkjlgKDBB6vq0lTg
- /JprRslQkO5G4EufQ5oGWEPQqZT2u/09UPtj4AG+/RJyYHLAhXgVO/YGiFy+EHYgpy34
- 7fWedvVT0sBScEMW+LttyKyRtKi3a6xRx7nbJkDDO1ufBoIk9w8lsKsRNAzbRqz+Rsz4
- JdPIQUhJcQEo/goTJukhEldVy+iBVYc0TWXHr/818dqiSvs9OIiYWmpE0n7ATNoyONRD
- Nupm6pM8EzbH/4hqNqpa0IsnP+6IU3jifpFXfcZxppcae8PtoCMcKP5JD1lO/SKfl8Ku
- o1kg==
+ bh=QXu/KgUnFX9XdonKOb4RpodqXgfNtkqVhXPaRa0Wz+g=;
+ b=iPqiAvNnaPHiE+AFIGN3QAnhp87OHXfDLk7LAnf0PL92ygxf9A/1QsN8BOPsAA89lw
+ 4tkayynTtTHbSXgy5HFOAqxP+pvV20i6XZ3jd8pMmu/VP1DrdIUsmAbp+9lL4GD8GDyN
+ 9PQcUZzU27o/FB5ctTGsLVVXVRhV5mfb1bMBwXHYsCov9RQnMk4iKojYCq6xAhelh30N
+ H6LF3VNsSokP9E+fxT5jj8O44Ajzp45v1gxk2X1iTqDjwF9PWHqGAkba4s/mH/KY9rak
+ UF2R2/uOAekTQM9WyEYuSIPqcmYpyXNmQP2b3scGTLtW7WMpVvCOoSGW04V+QsCu8lqD
+ w+EA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=f5ee/kpTJRv70/KN+irqbHOKZ1TmVta3xQPxo1FwOpU=;
- b=VjHtBe+yc6Gdj3D4auEx1aZxGsvmELY87xCiK8pMtl3eNBPKcUqN+mXI03ahtdPPIV
- IqVcUqlcFGin9/Mh8uhbLTysQDNyzBv3nw4RR34gucMHShWn10sr2SGxZ76bt9Vmt0AY
- G1EX5mDXeSoaH4DalhP9/vor8SsYHPuvw9xQNu1BtjzQY3K85lsZC9lei6JP75mbV6WS
- RPT7f5LmGYMIAlqUcNnB92cyjJ1miRmuzBJhiEuffKbpl2iVnHpesIkOc7oe5v0+/VwG
- +BvPP1pT4Gu7pUy4nJw1uRBL/16wibtqEqJyhGmYs7oOKF8TwSYEUrtrqmcHOYInQQzh
- LTXA==
-X-Gm-Message-State: AJIora9mT5mpqhNqcrFaRDjX+H4G7cZtOrvJDXlFTAQrlZLYJvq+uRxV
- qxMDV7CRUNVA2tENtmJOC+y/wvyp8DBoGpsi
-X-Received: by 2002:a05:6a00:2188:b0:50c:ef4d:ef3b with SMTP id
- h8-20020a056a00218800b0050cef4def3bmr4224400pfi.83.1657293456949; 
- Fri, 08 Jul 2022 08:17:36 -0700 (PDT)
+ bh=QXu/KgUnFX9XdonKOb4RpodqXgfNtkqVhXPaRa0Wz+g=;
+ b=VloBBce8roeRdji4EmICWo7S2iZwNMJv1AzCaPIswWTPZApYraLzYA4yVT3Ua+eeDs
+ rotDunj/xnFfCIEmVfJx4wN+vYfPnMoZczxtbcweO3AxGSkjOZshTkYpTXTuXhrcWnJP
+ koCB7iW3ZmPU2y8r2U0/hejO/Hc46AXY0otdQMnNRQcyFgFVw8c0Hd+ryMRqwKdZ7z2T
+ 9SKYWkxVF9vmRA52Kr7EgbgsIVpbDBg3Od/QJEIiL4h9EldcF/Y1I+dD5KXkaU724uBy
+ 5+ZJ+WheoqmEvcGLbUFGupyan4hrjTKhmrwWRAshZAqdD+Po7u4TiQRmnv5Qnlc1Divx
+ QdMg==
+X-Gm-Message-State: AJIora9plac4Ifzjnyz7DcFE6AyqEKhg6QiIgibwpjPtYZwVcy65UyPq
+ r0VmKpqoJaKJJW/N+pqHCtBhXA==
+X-Received: by 2002:a62:29c2:0:b0:527:ab6a:c310 with SMTP id
+ p185-20020a6229c2000000b00527ab6ac310mr4239129pfp.12.1657293448077; 
+ Fri, 08 Jul 2022 08:17:28 -0700 (PDT)
 Received: from stoup.. ([122.255.60.245]) by smtp.gmail.com with ESMTPSA id
- n17-20020a056a0007d100b0051bada81bc7sm29085774pfu.161.2022.07.08.08.17.34
+ n17-20020a056a0007d100b0051bada81bc7sm29085774pfu.161.2022.07.08.08.17.25
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 08 Jul 2022 08:17:36 -0700 (PDT)
+ Fri, 08 Jul 2022 08:17:27 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org,
 	Peter Maydell <peter.maydell@linaro.org>
-Subject: [PATCH v6 37/45] linux-user/aarch64: Do not allow duplicate or short
- sve records
-Date: Fri,  8 Jul 2022 20:45:32 +0530
-Message-Id: <20220708151540.18136-38-richard.henderson@linaro.org>
+Subject: [PATCH v6 34/45] linux-user/aarch64: Reset PSTATE.SM on syscalls
+Date: Fri,  8 Jul 2022 20:45:29 +0530
+Message-Id: <20220708151540.18136-35-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20220708151540.18136-1-richard.henderson@linaro.org>
 References: <20220708151540.18136-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::533;
- envelope-from=richard.henderson@linaro.org; helo=mail-pg1-x533.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::430;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x430.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -108,50 +107,47 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: w/uTDK+AcN5q
-
-In parse_user_sigframe, the kernel rejects duplicate sve records,
-or records that are smaller than the header.  We were silently
-allowing these cases to pass, dropping the record.
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: tt46bMn38bAt
 
 Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- linux-user/aarch64/signal.c | 5 ++++-
- 1 file changed, 4 insertions(+), 1 deletion(-)
+ linux-user/aarch64/cpu_loop.c | 9 +++++++++
+ 1 file changed, 9 insertions(+)
 
-diff --git a/linux-user/aarch64/signal.c b/linux-user/aarch64/signal.c
-index 8b352abb97..8fbe98d72f 100644
---- a/linux-user/aarch64/signal.c
-+++ b/linux-user/aarch64/signal.c
-@@ -318,10 +318,13 @@ static int target_restore_sigframe(CPUARMState *env,
-             break;
+diff --git a/linux-user/aarch64/cpu_loop.c b/linux-user/aarch64/cpu_loop.c
+index f7ef36cd9f..9875d609a9 100644
+--- a/linux-user/aarch64/cpu_loop.c
++++ b/linux-user/aarch64/cpu_loop.c
+@@ -89,6 +89,15 @@ void cpu_loop(CPUARMState *env)
  
-         case TARGET_SVE_MAGIC:
-+            if (sve || size < sizeof(struct target_sve_context)) {
-+                goto err;
+         switch (trapnr) {
+         case EXCP_SWI:
++            /*
++             * On syscall, PSTATE.ZA is preserved, along with the ZA matrix.
++             * PSTATE.SM is cleared, per SMSTOP, which does ResetSVEState.
++             */
++            if (FIELD_EX64(env->svcr, SVCR, SM)) {
++                env->svcr = FIELD_DP64(env->svcr, SVCR, SM, 0);
++                arm_rebuild_hflags(env);
++                arm_reset_sve_state(env);
 +            }
-             if (cpu_isar_feature(aa64_sve, env_archcpu(env))) {
-                 vq = sve_vq(env);
-                 sve_size = QEMU_ALIGN_UP(TARGET_SVE_SIG_CONTEXT_SIZE(vq), 16);
--                if (!sve && size == sve_size) {
-+                if (size == sve_size) {
-                     sve = (struct target_sve_context *)ctx;
-                     break;
-                 }
+             ret = do_syscall(env,
+                              env->xregs[8],
+                              env->xregs[0],
 -- 
 2.34.1
 

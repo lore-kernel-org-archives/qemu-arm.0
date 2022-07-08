@@ -1,300 +1,312 @@
-Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp391175lft;
-        Fri, 8 Jul 2022 09:49:49 -0700 (PDT)
-X-Google-Smtp-Source: AGRyM1tFVx5TpJtsiHeEp5dL5snrenWUGquEVwntsOGVbXy/b9IbFtW9rAuiaveelPkQ3v5nhwoe
-X-Received: by 2002:a05:6214:4014:b0:473:4433:1346 with SMTP id kd20-20020a056214401400b0047344331346mr2278755qvb.96.1657298989187;
-        Fri, 08 Jul 2022 09:49:49 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1657298989; cv=none;
+Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp392371lft;
+        Fri, 8 Jul 2022 09:52:25 -0700 (PDT)
+X-Google-Smtp-Source: AGRyM1sTRZUk7hdNMpaA+cVz1Lk3ExuR+Ytr6RLUNA0vicvRKDmOa1995C+PYqo5zC5EWUjT0kHA
+X-Received: by 2002:a05:620a:4690:b0:6af:51c1:4198 with SMTP id bq16-20020a05620a469000b006af51c14198mr2970394qkb.288.1657299145525;
+        Fri, 08 Jul 2022 09:52:25 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1657299145; cv=none;
         d=google.com; s=arc-20160816;
-        b=d7zXjpeyGkhiHiZOUnA4GtKLBHd9SYP089q7Qx4AprEEKo35GmNq2GgYjtP0z40uCM
-         BZxpR7UbEnMFFb+01rJ0dHNbUaJ9i1HCUlsrRk/p1BeF4gr9gOa9HE4xqtoAdDIhMXcj
-         HDg5Pt+to5FSdRM5Uls1fk65LeCm9cLHJmFfBIfIwTKYngZK0vHr9iI0x9SNu77h2Ir7
-         6IvnPpgPdB75yuPH8bDPvC4zk8PCxgTUIJziDeTYlQzbbC+8gUSEN707XqsDDbdBj4im
-         hyy0KMckaukzFx/Vf4GX9GwvmN7Ig6iv0o/NGRDpce1xhuR9o3LFV1DSydGC6YeThmoL
-         rXbg==
+        b=dgS6uDhEnghBRbRkH6SgPzTmQDwDhaOX4LSuHs8uesL6Zjv4nnSs2Iw1+9uzoO6iFQ
+         PWN/m0EnodK0ftQO0thTmIPX8KKc5qLy49tDZkj85Vk+sx471CtMpryDvI9ioeASbJ4P
+         fVFfIr5j3rgbDFXLDvoEaRcFxi5A6ElrbeIQrDYoKKxa25UFdEU3U6KN1aBk0Nrn84Us
+         WcH8luSw/WwVt/fOQLHZButA3ElM4dh+1EMPcARnsVQDjy9VLyfFpM0C94ullAnZ8hyu
+         6lYa6R2FYhXTbVII2CqMzkVt6A/NhhcMfK4tnkaRqOMyVeLWxxHBLw90Si7vQX+KgXHC
+         3r1g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=0Z/3Dbr+/QrC8cn7TV42VKcjGJrg87Itb54NG8zLcNw=;
-        b=Rytkv0XreqD0P6p0h1WXOquSo7F3hKO+D9/phB+Az8OqCBCB/NIzZLIBNEKZJwNIa1
-         0WjGXaxBm9pLpYxgMegRNtWjh6WF4S0QVKnWwrUEiv1Ivr2gff4IqiJ81aHuRKtGC/nB
-         mCPfNhhsSLt1CI+vWLJbfDQGqnP3zk5svIXC2/zNmvq58n05qA7i5NFjcrcxNFfObV1S
-         2qHkc6v30lDdZr2h2LKGFYxfUltQWQJOoJlXfMbF1P8UwZ6DYRaW1p/WOIGx0OGiQsoT
-         vClJhO9CxPEl3da5lpsqFdqY8NDPKI/UwnirYpsJ5GxiJg2RKt49rvM6If4EseNCwLif
-         u/CQ==
+        bh=p9odgMFQVS6eEY1Gg3Dw2pe3XQ7rqLYMCNrXMb8STH4=;
+        b=n+kwi2JWC+Xi6Mbwcx49ufuPZi2TeMpEDQCF+c17T5NK5VY0E6qGcpBFDvrqhV3k0Z
+         5tBVJvXjbi0uwS/V99OGvR9qCSSgjb7Tqe/13KWOqAPqsxuEAZLvnbMqwYIrdpSwDdWz
+         q//gQb3E/LFDlisimYQLSpb6PFhVtRzfV4YXXf+ix4oGQLB4k8sOSKL+H02w3CipoxNl
+         j25gkMCvOZWjJoPF/VLPUyKLiFUHz5ep2mkAHnZY4/f+Ip0xRQoL+5JlzZzYO6uaKWTz
+         dVdfiuM1sa+MyyxtifkLAugstrAmvUiS4OoenvZPru4yigYNyW8MdtI0rzd3j4T/dPiJ
+         7CSQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=p4hQzLPI;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@fb.com header.s=facebook header.b=ImTpjtuL;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=fb.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id b42-20020a05620a272a00b006b54efe4d3esi3857493qkp.517.2022.07.08.09.49.49
+        by mx.google.com with ESMTPS id 11-20020a05621420ab00b0046e7eddf22fsi5901159qvd.109.2022.07.08.09.52.25
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 08 Jul 2022 09:49:49 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 08 Jul 2022 09:52:25 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=p4hQzLPI;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:40812 helo=lists1p.gnu.org)
+       dkim=pass header.i=@fb.com header.s=facebook header.b=ImTpjtuL;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=fb.com
+Received: from localhost ([::1]:43880 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1o9rAl-0000FN-Fh
-	for alex.bennee@linaro.org; Fri, 08 Jul 2022 12:49:44 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45284)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1o9rDM-0002dN-TJ
+	for alex.bennee@linaro.org; Fri, 08 Jul 2022 12:52:24 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:57160)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1o9qDO-0006Bq-6K
- for qemu-devel@nongnu.org; Fri, 08 Jul 2022 11:48:22 -0400
-Received: from mail-pl1-x62c.google.com ([2607:f8b0:4864:20::62c]:40715)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1o9qDM-0002Y0-5W
- for qemu-devel@nongnu.org; Fri, 08 Jul 2022 11:48:21 -0400
-Received: by mail-pl1-x62c.google.com with SMTP id b2so16657171plx.7
- for <qemu-devel@nongnu.org>; Fri, 08 Jul 2022 08:48:19 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=0Z/3Dbr+/QrC8cn7TV42VKcjGJrg87Itb54NG8zLcNw=;
- b=p4hQzLPICnUpOLOSIrooAeEV0I8IJaC4V251azmGcCkHvDgFr7/cH8NBU/8NW1uo9U
- +nq2VtFp5QVd5IW5+tc9s/+EqW0XwSRTsAo1kj+VlV4ixGQ5aXTH8P0ZPQyLrcRZ5Sht
- R+d8zn6hTwXOXcgdG68c+6gsZ/jsczH2dkGHQJ+WmqBaeHMruVuGBRt40/LoIBl9JFdm
- xy+RLOW98ztWgNt95dbKm2kv2v2cHRrG8a4rIwRwbrIs9HFwoGjxi8PQt7pxEqFcyXvr
- 8c1taC1xusBFFxSba6E4Yibj09WB7fLqIMdUI6f1/3iU2e0Nu9Xo9nqJu2BkwzXNNiWG
- MlFA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=0Z/3Dbr+/QrC8cn7TV42VKcjGJrg87Itb54NG8zLcNw=;
- b=fmLAKr2jq/2d9swLL1itcrOsMk+OFMMso89PuoZa9SU8XEILSjCnIFUEDiWCWWgToV
- IyQJ5AX/lARx/hzRHcu+KIEQr0rI68/LxA74KRf6/iVDGYSQ2gcPc+/7x0LB2Hm2hWP2
- ve92tXNC8C2+x5qAzPPgri0iaURDtH76bCfz4W282GYlYtZGLfQsQMDM9Xr31v9w5B8J
- z4HD0oxcv3WAc0tydieNZhS41qA3+90XPbe2Ygqqp1l05rKzS8KcFN6qGnnQdQnhlUNc
- xb/y4oct0kUNyNaUAeoYGDBONjXBYo/qv9FmuKKcnaDkqHt1HsI2cjdUDgkbtPYcWJE8
- Kgfw==
-X-Gm-Message-State: AJIora/w0Y1iNSPTC0VXrytwaOpIyOBWsVmk1tnfunKmu/1Woam8V7L/
- WneweKkXPtlq3+86VigobuRE7TzdPMjFMG5h
-X-Received: by 2002:a17:903:228b:b0:16b:ee10:b91 with SMTP id
- b11-20020a170903228b00b0016bee100b91mr4445375plh.27.1657295299400; 
- Fri, 08 Jul 2022 08:48:19 -0700 (PDT)
-Received: from stoup.. ([122.255.60.245]) by smtp.gmail.com with ESMTPSA id
- y3-20020a17090a390300b001ef81bac701sm1782089pjb.42.2022.07.08.08.48.17
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 08 Jul 2022 08:48:19 -0700 (PDT)
-From: Richard Henderson <richard.henderson@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org
-Subject: [RISU PATCH v4 24/29] Add --fulldump and --diffdup options
-Date: Fri,  8 Jul 2022 21:16:55 +0530
-Message-Id: <20220708154700.18682-25-richard.henderson@linaro.org>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20220708154700.18682-1-richard.henderson@linaro.org>
-References: <20220708154700.18682-1-richard.henderson@linaro.org>
+ (Exim 4.90_1) (envelope-from <prvs=8188451133=irischenlj@fb.com>)
+ id 1o9r7P-0006fX-BP; Fri, 08 Jul 2022 12:46:16 -0400
+Received: from mx0b-00082601.pphosted.com ([67.231.153.30]:21296)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <prvs=8188451133=irischenlj@fb.com>)
+ id 1o9r7M-00081J-N6; Fri, 08 Jul 2022 12:46:14 -0400
+Received: from pps.filterd (m0109331.ppops.net [127.0.0.1])
+ by mx0a-00082601.pphosted.com (8.17.1.5/8.17.1.5) with ESMTP id 268Csr6Z024591;
+ Fri, 8 Jul 2022 09:45:58 -0700
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=fb.com;
+ h=from : to : cc : subject
+ : date : message-id : in-reply-to : references : mime-version :
+ content-transfer-encoding : content-type; s=facebook;
+ bh=p9odgMFQVS6eEY1Gg3Dw2pe3XQ7rqLYMCNrXMb8STH4=;
+ b=ImTpjtuLZuUWkGIbn1bhVZTP5ud+EGP+l9t2QIqWiwPxMW4kXBcPrvFMdr28xITXO/ZS
+ lw1aOhe9fK/sdzfSTk8ZFhfRmOJW8u5EYBNxzySeAb756ONQrumsvD6M8zpY4ZsxZPXS
+ l7gcJcmNxBoZX68uYzepCI3tU6iEdIa6O64= 
+Received: from maileast.thefacebook.com ([163.114.130.16])
+ by mx0a-00082601.pphosted.com (PPS) with ESMTPS id 3h624uqyqc-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128 verify=NOT);
+ Fri, 08 Jul 2022 09:45:57 -0700
+Received: from localhost (2620:10d:c0a8:1b::d) by mail.thefacebook.com
+ (2620:10d:c0a8:83::5) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2375.28; Fri, 8 Jul
+ 2022 09:45:56 -0700
+From: Iris Chen <irischenlj@fb.com>
+To: 
+CC: <irischenlj@fb.com>, <pdel@fb.com>, <qemu-devel@nongnu.org>,
+ <qemu-arm@nongnu.org>, <clg@kaod.org>, <patrick@stwcx.xyz>,
+ <alistair@alistair23.me>, <kwolf@redhat.com>, <hreitz@redhat.com>,
+ <peter.maydell@linaro.org>, <andrew@aj.id.au>, <joel@jms.id.au>,
+ <thuth@redhat.com>, <lvivier@redhat.com>, <pbonzini@redhat.com>,
+ <qemu-block@nongnu.org>, <dz4list@gmail.com>
+Subject: [PATCH v3] hw: m25p80: Add Block Protect and Top Bottom bits for
+ write protect
+Date: Fri, 8 Jul 2022 09:45:52 -0700
+Message-ID: <20220708164552.3462620-1-irischenlj@fb.com>
+X-Mailer: git-send-email 2.30.2
+In-Reply-To: <20220627185234.1911337-1-irischenlj@fb.com>
+References: <20220627185234.1911337-1-irischenlj@fb.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::62c;
- envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x62c.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+Content-Type: text/plain
+X-Originating-IP: [2620:10d:c0a8:1b::d]
+X-Proofpoint-GUID: v3yMS-q7J_PPqhgqFHrrq9c8wPIJQ6tF
+X-Proofpoint-ORIG-GUID: v3yMS-q7J_PPqhgqFHrrq9c8wPIJQ6tF
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.205,Aquarius:18.0.883,Hydra:6.0.517,FMLib:17.11.122.1
+ definitions=2022-07-08_14,2022-07-08_01,2022-06-22_01
+Received-SPF: pass client-ip=67.231.153.30;
+ envelope-from=prvs=8188451133=irischenlj@fb.com;
+ helo=mx0b-00082601.pphosted.com
+X-Spam_score_int: -21
+X-Spam_score: -2.2
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.082,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: vrBcqrtNfzSL
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: BPxGqo4K/7Ip
 
-These allow the inspection of the trace files.
-
-Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+Signed-off-by: Iris Chen <irischenlj@fb.com>
 ---
- risu.c | 117 +++++++++++++++++++++++++++++++++++++++++++++++++--------
- 1 file changed, 102 insertions(+), 15 deletions(-)
+Cosmetic suggestions addressed. 
 
-diff --git a/risu.c b/risu.c
-index f613fa9..8d907d9 100644
---- a/risu.c
-+++ b/risu.c
-@@ -484,23 +484,101 @@ static int apprentice(void)
-     }
- }
+ hw/block/m25p80.c | 102 ++++++++++++++++++++++++++++++++++++++++------
+ 1 file changed, 90 insertions(+), 12 deletions(-)
+
+diff --git a/hw/block/m25p80.c b/hw/block/m25p80.c
+index 50b523e5b1..f3b401cf90 100644
+--- a/hw/block/m25p80.c
++++ b/hw/block/m25p80.c
+@@ -38,21 +38,19 @@
+ #include "trace.h"
+ #include "qom/object.h"
  
--static int ismaster;
-+static int dump_trace(bool isfull)
-+{
-+    RisuResult res;
-+    int tick = 0;
-+
-+    while (1) {
-+        struct reginfo *this_ri;
-+
-+        this_ri = &ri[tick & 1];
-+        res = recv_register_info(this_ri);
-+
-+        switch (res) {
-+        case RES_OK:
-+            switch (header.risu_op) {
-+            case OP_COMPARE:
-+            case OP_TESTEND:
-+            case OP_SIGILL:
-+                printf("%s: (pc %#lx)\n", op_name(header.risu_op),
-+                       (unsigned long)header.pc);
-+
-+                if (isfull || tick == 0) {
-+                    reginfo_dump(this_ri, stdout);
-+                } else {
-+                    struct reginfo *prev_ri = &ri[(tick - 1) & 1];
-+
-+                    if (reginfo_is_eq(prev_ri, this_ri)) {
-+                        /*
-+                         * ??? There should never be no change -- at minimum
-+                         * PC should have advanced.  But for completeness...
-+                         */
-+                        printf("change detail: none\n");
-+                    } else {
-+                        printf("change detail (prev : next):\n");
-+                        reginfo_dump_mismatch(prev_ri, this_ri, stdout);
-+                    }
-+                }
-+                putchar('\n');
-+                if (header.risu_op == OP_TESTEND) {
-+                    return EXIT_SUCCESS;
-+                }
-+                tick++;
-+                break;
-+
-+            case OP_COMPAREMEM:
-+                /* TODO: Dump 8k of data? */
-+                /* fall through */
-+            default:
-+                printf("%s\n", op_name(header.risu_op));
-+                break;
-+            }
-+            break;
-+
-+        case RES_BAD_IO:
-+            fprintf(stderr, "I/O error\n");
-+            return EXIT_FAILURE;
-+        case RES_BAD_MAGIC:
-+            fprintf(stderr, "Unexpected magic number: %#08x\n", header.magic);
-+            return EXIT_FAILURE;
-+        case RES_BAD_SIZE:
-+            fprintf(stderr, "Unexpected payload size: %u\n", header.size);
-+            return EXIT_FAILURE;
-+        case RES_BAD_OP:
-+            fprintf(stderr, "Unexpected opcode: %d\n", header.risu_op);
-+            return EXIT_FAILURE;
-+        default:
-+            fprintf(stderr, "Unexpected recv result %d\n", res);
-+            return EXIT_FAILURE;
-+        }
-+    }
-+}
-+
-+enum {
-+    DO_APPRENTICE,
-+    DO_MASTER,
-+    DO_FULLDUMP,
-+    DO_DIFFDUMP,
+-/* Fields for FlashPartInfo->flags */
+-
+-/* erase capabilities */
+-#define ER_4K 1
+-#define ER_32K 2
+-/* set to allow the page program command to write 0s back to 1. Useful for
+- * modelling EEPROM with SPI flash command set
+- */
+-#define EEPROM 0x100
+-
+ /* 16 MiB max in 3 byte address mode */
+ #define MAX_3BYTES_SIZE 0x1000000
+-
+ #define SPI_NOR_MAX_ID_LEN 6
+ 
++/* Fields for FlashPartInfo->flags */
++enum spi_flash_option_flags {
++    ER_4K                  = BIT(0),
++    ER_32K                 = BIT(1),
++    EEPROM                 = BIT(2),
++    HAS_SR_TB              = BIT(3),
++    HAS_SR_BP3_BIT6        = BIT(4),
 +};
 +
-+static int operation = DO_APPRENTICE;
+ typedef struct FlashPartInfo {
+     const char *part_name;
+     /*
+@@ -253,7 +251,8 @@ static const FlashPartInfo known_devices[] = {
+     { INFO("n25q512a11",  0x20bb20,      0,  64 << 10, 1024, ER_4K) },
+     { INFO("n25q512a13",  0x20ba20,      0,  64 << 10, 1024, ER_4K) },
+     { INFO("n25q128",     0x20ba18,      0,  64 << 10, 256, 0) },
+-    { INFO("n25q256a",    0x20ba19,      0,  64 << 10, 512, ER_4K) },
++    { INFO("n25q256a",    0x20ba19,      0,  64 << 10, 512,
++           ER_4K | HAS_SR_BP3_BIT6 | HAS_SR_TB) },
+     { INFO("n25q512a",    0x20ba20,      0,  64 << 10, 1024, ER_4K) },
+     { INFO("n25q512ax3",  0x20ba20,  0x1000,  64 << 10, 1024, ER_4K) },
+     { INFO("mt25ql512ab", 0x20ba20, 0x1044, 64 << 10, 1024, ER_4K | ER_32K) },
+@@ -480,6 +479,11 @@ struct Flash {
+     bool reset_enable;
+     bool quad_enable;
+     bool aai_enable;
++    bool block_protect0;
++    bool block_protect1;
++    bool block_protect2;
++    bool block_protect3;
++    bool top_bottom_bit;
+     bool status_register_write_disabled;
+     uint8_t ear;
  
- static void usage(void)
+@@ -625,12 +629,36 @@ void flash_write8(Flash *s, uint32_t addr, uint8_t data)
  {
-     fprintf(stderr,
--            "Usage: risu [--master] [--host <ip>] [--port <port>] <image file>"
--            "\n\n");
--    fprintf(stderr,
--            "Run through the pattern file verifying each instruction\n");
--    fprintf(stderr, "between master and apprentice risu processes.\n\n");
--    fprintf(stderr, "Options:\n");
--    fprintf(stderr, "  --master          Be the master (server)\n");
--    fprintf(stderr, "  -t, --trace=FILE  Record/playback " TRACE_TYPE " trace file\n");
--    fprintf(stderr,
--            "  -h, --host=HOST   Specify master host machine (apprentice only)"
--            "\n");
--    fprintf(stderr,
-+            "Usage: risu [--master|--fulldump|--diffdump]\n"
-+            "            [--host <ip>] [--port <port>] <image file>\n"
-+            "\n"
-+            "Run through the pattern file verifying each instruction\n"
-+            "between master and apprentice risu processes.\n"
-+            "\n"
-+            "Options:\n"
-+            "  --master          Be the master (server)\n"
-+            "  --fulldump        Dump each record\n"
-+            "  --diffdump        Dump difference between each record\n"
-+            "  -t, --trace=FILE  Record/playback " TRACE_TYPE " trace file\n"
-+            "  -h, --host=HOST   Specify master host machine\n"
-             "  -p, --port=PORT   Specify the port to connect to/listen on "
-             "(default 9191)\n");
-     if (arch_extra_help) {
-@@ -512,7 +590,9 @@ static struct option * setup_options(char **short_opts)
- {
-     static struct option default_longopts[] = {
-         {"help", no_argument, 0, '?'},
--        {"master", no_argument, &ismaster, 1},
-+        {"master", no_argument, &operation, DO_MASTER},
-+        {"fulldump", no_argument, &operation, DO_FULLDUMP},
-+        {"diffdump", no_argument, &operation, DO_DIFFDUMP},
-         {"host", required_argument, 0, 'h'},
-         {"port", required_argument, 0, 'p'},
-         {"trace", required_argument, 0, 't'},
-@@ -520,7 +600,7 @@ static struct option * setup_options(char **short_opts)
-     };
-     struct option *lopts = &default_longopts[0];
+     uint32_t page = addr / s->pi->page_size;
+     uint8_t prev = s->storage[s->cur_addr];
++    uint32_t block_protect_value = (s->block_protect3 << 3) |
++                                   (s->block_protect2 << 2) |
++                                   (s->block_protect1 << 1) |
++                                   (s->block_protect0 << 0);
  
--    *short_opts = "h:p:t:";
-+    *short_opts = "d:h:p:t:";
- 
-     if (arch_long_opts) {
-         const size_t osize = sizeof(struct option);
-@@ -551,6 +631,7 @@ int main(int argc, char **argv)
-     char *trace_fn = NULL;
-     struct option *longopts;
-     char *shortopts;
-+    bool ismaster;
- 
-     longopts = setup_options(&shortopts);
- 
-@@ -586,6 +667,8 @@ int main(int argc, char **argv)
-         }
+     if (!s->write_enable) {
+         qemu_log_mask(LOG_GUEST_ERROR, "M25P80: write with write protect!\n");
+         return;
      }
  
-+    ismaster = operation == DO_MASTER;
++    if (block_protect_value > 0) {
++        uint32_t num_protected_sectors = 1 << (block_protect_value - 1);
++        uint32_t sector = addr / s->pi->sector_size;
 +
-     if (trace) {
-         if (strcmp(trace_fn, "-") == 0) {
-             comm_fd = ismaster ? STDOUT_FILENO : STDIN_FILENO;
-@@ -609,6 +692,10 @@ int main(int argc, char **argv)
-         }
-     }
- 
-+    if (operation == DO_FULLDUMP || operation == DO_DIFFDUMP) {
-+        return dump_trace(operation == DO_FULLDUMP);
++        /* top_bottom_bit == 0 means TOP */
++        if (!s->top_bottom_bit) {
++            if (s->pi->n_sectors <= sector + num_protected_sectors) {
++                qemu_log_mask(LOG_GUEST_ERROR,
++                              "M25P80: write with write protect!\n");
++                return;
++            }
++        } else {
++            if (sector < num_protected_sectors) {
++                qemu_log_mask(LOG_GUEST_ERROR,
++                              "M25P80: write with write protect!\n");
++                return;
++            }
++        }
 +    }
 +
-     imgfile = argv[optind];
-     if (!imgfile) {
-         fprintf(stderr, "Error: must specify image file name\n\n");
+     if ((prev ^ data) & data) {
+         trace_m25p80_programming_zero_to_one(s, addr, prev, data);
+     }
+@@ -728,6 +756,15 @@ static void complete_collecting_data(Flash *s)
+         break;
+     case WRSR:
+         s->status_register_write_disabled = extract32(s->data[0], 7, 1);
++        s->block_protect0 = extract32(s->data[0], 2, 1);
++        s->block_protect1 = extract32(s->data[0], 3, 1);
++        s->block_protect2 = extract32(s->data[0], 4, 1);
++        if (s->pi->flags & HAS_SR_TB) {
++            s->top_bottom_bit = extract32(s->data[0], 5, 1);
++        }
++        if (s->pi->flags & HAS_SR_BP3_BIT6) {
++            s->block_protect3 = extract32(s->data[0], 6, 1);
++        }
+ 
+         switch (get_man(s)) {
+         case MAN_SPANSION:
+@@ -1213,6 +1250,15 @@ static void decode_new_cmd(Flash *s, uint32_t value)
+     case RDSR:
+         s->data[0] = (!!s->write_enable) << 1;
+         s->data[0] |= (!!s->status_register_write_disabled) << 7;
++        s->data[0] |= (!!s->block_protect0) << 2;
++        s->data[0] |= (!!s->block_protect1) << 3;
++        s->data[0] |= (!!s->block_protect2) << 4;
++        if (s->pi->flags & HAS_SR_TB) {
++            s->data[0] |= (!!s->top_bottom_bit) << 5;
++        }
++        if (s->pi->flags & HAS_SR_BP3_BIT6) {
++            s->data[0] |= (!!s->block_protect3) << 6;
++        }
+ 
+         if (get_man(s) == MAN_MACRONIX || get_man(s) == MAN_ISSI) {
+             s->data[0] |= (!!s->quad_enable) << 6;
+@@ -1553,6 +1599,11 @@ static void m25p80_reset(DeviceState *d)
+ 
+     s->wp_level = true;
+     s->status_register_write_disabled = false;
++    s->block_protect0 = false;
++    s->block_protect1 = false;
++    s->block_protect2 = false;
++    s->block_protect3 = false;
++    s->top_bottom_bit = false;
+ 
+     reset_memory(s);
+ }
+@@ -1639,6 +1690,32 @@ static const VMStateDescription vmstate_m25p80_write_protect = {
+     }
+ };
+ 
++static bool m25p80_block_protect_needed(void *opaque)
++{
++    Flash *s = (Flash *)opaque;
++
++    return s->block_protect0 ||
++           s->block_protect1 ||
++           s->block_protect2 ||
++           s->block_protect3 ||
++           s->top_bottom_bit;
++}
++
++static const VMStateDescription vmstate_m25p80_block_protect = {
++    .name = "m25p80/block_protect",
++    .version_id = 1,
++    .minimum_version_id = 1,
++    .needed = m25p80_block_protect_needed,
++    .fields = (VMStateField[]) {
++        VMSTATE_BOOL(block_protect0, Flash),
++        VMSTATE_BOOL(block_protect1, Flash),
++        VMSTATE_BOOL(block_protect2, Flash),
++        VMSTATE_BOOL(block_protect3, Flash),
++        VMSTATE_BOOL(top_bottom_bit, Flash),
++        VMSTATE_END_OF_LIST()
++    }
++};
++
+ static const VMStateDescription vmstate_m25p80 = {
+     .name = "m25p80",
+     .version_id = 0,
+@@ -1671,6 +1748,7 @@ static const VMStateDescription vmstate_m25p80 = {
+         &vmstate_m25p80_data_read_loop,
+         &vmstate_m25p80_aai_enable,
+         &vmstate_m25p80_write_protect,
++        &vmstate_m25p80_block_protect,
+         NULL
+     }
+ };
 -- 
-2.34.1
+2.30.2
 

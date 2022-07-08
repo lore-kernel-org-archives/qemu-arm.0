@@ -1,538 +1,170 @@
-Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp357482lft;
-        Fri, 8 Jul 2022 09:01:37 -0700 (PDT)
-X-Google-Smtp-Source: AGRyM1sHuI/rPCxIbUi8dJ4uhAFWqo6Izuuk/iltmOQyU4byq7w/0SggubxTYQeRWHqOVj7W656i
-X-Received: by 2002:a05:6214:27cc:b0:470:9aaa:94b5 with SMTP id ge12-20020a05621427cc00b004709aaa94b5mr3333216qvb.129.1657296096931;
-        Fri, 08 Jul 2022 09:01:36 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1657296096; cv=none;
+Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp348983lft;
+        Fri, 8 Jul 2022 08:47:10 -0700 (PDT)
+X-Received: by 2002:a65:41ca:0:b0:408:aa25:5026 with SMTP id b10-20020a6541ca000000b00408aa255026mr4003581pgq.96.1657295230118;
+        Fri, 08 Jul 2022 08:47:10 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1657295230; cv=none;
         d=google.com; s=arc-20160816;
-        b=MueEOgMs/L1+zqvCQ/y58GfF+75GT9BllTd7Ne4d9uGFSJamf8TTNI1VFgNJbgKSW2
-         nWycqvYkX7yU+nTtVY0LmD4OCwkePVmOdvp/dOZl8SAvUmigjUBLEadeiuOyviFjrnph
-         z+EUPY/bNXUkbas8MWq7fo1GsM/h6jBPIPLBhNuPXgFdCTFkJl+bJfjNC9n9QSL3/GE4
-         aMvIKDMPYJAY9/d3d0Phwj3RwcIqcw+taw9CC6+1iDcvbcZcgF8M0T2ee8UXSsrFYMcG
-         dkcI4HHZKCFSI9uSCgrBvai+AMc72XxdnvjdpLp1sQ01xTMadecva1fzDgPodcDag6KA
-         sa7Q==
+        b=kihJ/dHVLZOHsD1zVNt3Z4iu1oviMga/ZVGAWj8OPJy+F5567GSNHbCMjGc3EgKeOR
+         ygN1/f/ZWnIFKp5AbAxY4OmZLtxxtzkPzWl/h9e7Ha6N+vzqIiNZmZOngIViCiQEKoAZ
+         r/TCzjONwsZa/50TWSSjkg0B64p4Upj97L6zXlzDpMU2STMwCZ0WHyMNHK93Vh1XS1CM
+         FYPd606qF4LT3CfRUoI/sbxecCN22YRaac8F8VB9si2LjPGm02iJ1w/y6y9UPK14QhL4
+         zFOf7uN4lXdgfq/juGc8OyZUrcpqqDdryKNQ/LgBf1rRI/cFN2nAaQ1+H+kCyW0Vi8/Y
+         w/1g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=Wwg5T7n5d4hEzm3DL2nMuno/i3EhmUsngOLpxo3zUx0=;
-        b=MKcN9ff1Kw20y1NbCEMPgHCemsCDPJ7CkwmRwaz9Q7GmADOpd++DNekMrZWmYreECr
-         i0YZz4Y0QFGHbJXD8cNDjkzNGcUHP1WF8N49BbdEpXjLpmf/CfEHGhZF456T3r2onXwP
-         R0qfJLUs5GNVJIyE1Pkzk2QrTHmQcgRME9lbPMY/rAS3uYmGhQ0ttx4xt2geCaUB34bl
-         P433i/AR+LI4BEjCWIldLj7dOokkywmwBic7MuagEUN+J3/bsgVBrDfku76rlRRyUJ2m
-         rdHZ/MpX1SCl1KmB3quRgmNU4m73wrAwHmslJ9A5TwhTc6f0HSR4eJBZcEYAw+tLgo8a
-         z16A==
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:dkim-signature;
+        bh=iiRXuoRm0+6hZcCT7CVhc/aX8fiaQgpUOM3IjX/kYqE=;
+        b=TtFUcH/wX54vE/v7jNdVthEt8S/DGXOqKfEFPcqru1kuQM3Siqi8LtRkpfKrKlGb1l
+         zrWhvhTG9hhUr+9rYhb6+SZocoaxaQz8S0qcrXmFq8CHOIfIQ1pka+5eP+lKlELihw1t
+         oEeYALvQF152/40II3lPna4GgPtfjKg8rQyFSZ37+Ay/brCW7bpd/L2trJ+EevBHwgXx
+         ciqezcxiSZmewACbiFvBWVEvkVvfLq7sE0Jmq/YKzkmH1Ac5QVBDZY5OIdPyGnaj4+m9
+         ffv61+iJuzxwKf1t6BoZBH3EN3RTxxevXq4KL7dtULippuONv9ZKRtsuSMEc2WTWp483
+         PJAA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=YedpQGh9;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=EXmm3to5;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id y12-20020a05622a164c00b0031bcf9b87d3si21558727qtj.553.2022.07.08.09.01.36
+Return-Path: <richard.henderson@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id 206-20020a6218d7000000b00528c6690363sor3272803pfy.46.2022.07.08.08.47.09
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 08 Jul 2022 09:01:36 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Fri, 08 Jul 2022 08:47:10 -0700 (PDT)
+Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=YedpQGh9;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=EXmm3to5;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:54486 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1o9qQA-0003yz-JX
-	for alex.bennee@linaro.org; Fri, 08 Jul 2022 12:01:34 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44926)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1o9qCy-0005hs-HP
- for qemu-devel@nongnu.org; Fri, 08 Jul 2022 11:47:57 -0400
-Received: from mail-pg1-x531.google.com ([2607:f8b0:4864:20::531]:33592)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1o9qCv-0002VG-JW
- for qemu-devel@nongnu.org; Fri, 08 Jul 2022 11:47:56 -0400
-Received: by mail-pg1-x531.google.com with SMTP id 72so1177528pge.0
- for <qemu-devel@nongnu.org>; Fri, 08 Jul 2022 08:47:53 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=Wwg5T7n5d4hEzm3DL2nMuno/i3EhmUsngOLpxo3zUx0=;
- b=YedpQGh97aaq2xTLJzikAZNr+edJLKplkc7dv2TTfR2VfCxO5ghAEFVny5JGu8UDVJ
- JEI6iL/Hy+w53gkBGIw3nSLnw0eqanltg4X3YW704In310Ss3TS4RCyBxQU9h5Pgk8Xu
- QR9wgapEkRN6l6LckDG0F1uBTumAqV4Nc+WcJiqbPVmRtmWD9ok6Baa7XKnrqvPFDpj6
- EQnTIj9uwYyOlMYVRVFcu1uiiXP8h8FQZQv35Rwet1zA3duKnv7Hae7QQtQBTpxliBzM
- a9xB03GbpzwCEl146BPw8njZbKp65dtXvgDb6MDhKO/+BGu1biGqMmN1gcz6Ks/+ksGR
- eomQ==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=from:to:cc:subject:date:message-id:in-reply-to:references
+         :mime-version:content-transfer-encoding;
+        bh=iiRXuoRm0+6hZcCT7CVhc/aX8fiaQgpUOM3IjX/kYqE=;
+        b=EXmm3to53nsWS9DEDIkMCrgn8NrlmwgZC0zqNF0sq2jMvUgM86rlQVlpm+BOjLiMig
+         zI73swUSdOvgPIT2s6enl1Vqs85aLOgSY58HzaHM0QivPslefXfMr1f38LYGIUHIVwtk
+         JMO0rEA8IlkAymc8l1yRM/WanxNeIp2isRHADdMWKIv57E3iiDgGeuWdYwrcDo2qWM8h
+         kMHCBnZBiXLG4ZWyfQ7Nfqf3zXK3OWt2uNRE2VQSG7gQjNWz4XJgyxCDF5ajolKLc1G4
+         F8iaXDUNsu2MvglKfZJKq6ciNbQyvLvbAQ7PWFmLrmdLakH4CdzjX9/6ix+/5hJo1IEk
+         wm1A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=Wwg5T7n5d4hEzm3DL2nMuno/i3EhmUsngOLpxo3zUx0=;
- b=dJcYL/Rsdd/s2QMlqIQ/tUNseXnzoPjbrhYVONncYX941oO5gyENMJYpRL5+GcfuGD
- 4dk9fF1nt4JohSRv5SsENk7pO6jiaismV/w8u2JK6r4nyVjVxQNQgcBmFj0WFBJD/Elc
- 7dOcb1/yxuf96fs8HAstn6iwwCnynH9qemtClweRDGGzYiZvXOcDeDQpFiGjQyEA9+/x
- M0HwpZNS2f0KYwxRsh4CAU5RZn5Ffr2x9QAyjyK+gWY7Zc8XI+svwyJktmyJ2AsDfe0k
- COAxXB8o3GFEEJK82X8GVkow2oWt2GJQTL77T+Y3M+2iUCFnk95Cx9C+xrDnuIQQfbl3
- 5sCw==
-X-Gm-Message-State: AJIora8ZLpm/Ns5l6sF9hwMeaxUOKfpoJIrsTzeLl2YTlV8wKRXb8WIp
- GoL/dyXURG2iQmX7MpzVkSFaiKU6aSernAHy
-X-Received: by 2002:a05:6a00:22d6:b0:525:74b3:d020 with SMTP id
- f22-20020a056a0022d600b0052574b3d020mr4543389pfj.80.1657295272144; 
- Fri, 08 Jul 2022 08:47:52 -0700 (PDT)
-Received: from stoup.. ([122.255.60.245]) by smtp.gmail.com with ESMTPSA id
- y3-20020a17090a390300b001ef81bac701sm1782089pjb.42.2022.07.08.08.47.49
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 08 Jul 2022 08:47:51 -0700 (PDT)
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+         :references:mime-version:content-transfer-encoding;
+        bh=iiRXuoRm0+6hZcCT7CVhc/aX8fiaQgpUOM3IjX/kYqE=;
+        b=FbEThZTUqaHpGc2BkvA48toW+rHE+XikJgxgFX8Byggkz41KdH+1VY2bMUd3bG4yeD
+         cOY6khF8W/glHUxwz/8ZaDJ2f16MVxKmb8rVczUl47Y7y++EBsWceWI/S7oLZbOoS3VF
+         bThxpzU/hpwN+9IrGXTWQQb1yEphAX1En1z9rf8gw7QMJp52xIwFPa1EPTAtr99AhhFt
+         eZJ/b/N/auwgKKi8oEWB/Fb68MOAuoDXoEcKPi8Gde/rJpUY9U2Eh56aSXqspdC2pOBN
+         L2Rylv+G4eVmMT9bnyqAu8FZaCH9UFPcH35WXy8b6DKXDcPLShQG6ioHMtRMF0fIrzmZ
+         T9Pw==
+X-Gm-Message-State: AJIora9jbm1ElA5vSsQ76SpwCf/a3KTU9EW4EEb+kRgesFcJx8vKwezu
+	3ZUs1q309O9Kv0UNOxvS2piZjUIBz1hvJeH2E7s=
+X-Google-Smtp-Source: AGRyM1vRq0YPcAc+6t0N3Eappi4kTgoYPE8pENcmvxwdkjIWfzASmXf4T2K6rp/6gkz8NlUaBQvkRA==
+X-Received: by 2002:a63:481a:0:b0:411:7951:cbcd with SMTP id v26-20020a63481a000000b004117951cbcdmr3866584pga.66.1657295229649;
+        Fri, 08 Jul 2022 08:47:09 -0700 (PDT)
+Return-Path: <richard.henderson@linaro.org>
+Received: from stoup.. ([122.255.60.245])
+        by smtp.gmail.com with ESMTPSA id y3-20020a17090a390300b001ef81bac701sm1782089pjb.42.2022.07.08.08.47.06
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 08 Jul 2022 08:47:09 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org
-Subject: [RISU PATCH v4 14/29] Merge reginfo.c into risu.c
-Date: Fri,  8 Jul 2022 21:16:45 +0530
-Message-Id: <20220708154700.18682-15-richard.henderson@linaro.org>
+Cc: qemu-arm@nongnu.org,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	Peter Maydell <peter.maydell@linaro.org>
+Subject: [RISU PATCH v4 01/29] Use bool for tracing variables
+Date: Fri,  8 Jul 2022 21:16:32 +0530
+Message-Id: <20220708154700.18682-2-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20220708154700.18682-1-richard.henderson@linaro.org>
 References: <20220708154700.18682-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::531;
- envelope-from=richard.henderson@linaro.org; helo=mail-pg1-x531.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 0kyKKMqG/OyD
+X-TUID: GdBJEy8NtANc
 
-The distinction between the two is artificial.  Following
-patches will rearrange the functions involved to make it
-easier for dumping of the trace file.
-
+Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- Makefile  |   2 +-
- risu.h    |  28 +---------
- reginfo.c | 151 ------------------------------------------------------
- risu.c    | 129 ++++++++++++++++++++++++++++++++++++++++++++--
- 4 files changed, 126 insertions(+), 184 deletions(-)
- delete mode 100644 reginfo.c
+ risu.h    | 3 ++-
+ reginfo.c | 2 +-
+ risu.c    | 8 ++++----
+ 3 files changed, 7 insertions(+), 6 deletions(-)
 
-diff --git a/Makefile b/Makefile
-index 6ab014a..ad7f879 100644
---- a/Makefile
-+++ b/Makefile
-@@ -20,7 +20,7 @@ CFLAGS ?= -g
- ALL_CFLAGS = -Wall -D_GNU_SOURCE -DARCH=$(ARCH) -U$(ARCH) $(BUILD_INC) $(CFLAGS) $(EXTRA_CFLAGS)
- 
- PROG=risu
--SRCS=risu.c comms.c reginfo.c risu_$(ARCH).c risu_reginfo_$(ARCH).c
-+SRCS=risu.c comms.c risu_$(ARCH).c risu_reginfo_$(ARCH).c
- HDRS=risu.h risu_reginfo_$(ARCH).h
- BINS=test_$(ARCH).bin
- 
 diff --git a/risu.h b/risu.h
-index 77d6128..dd9fda5 100644
+index 8d2d646..e2b4508 100644
 --- a/risu.h
 +++ b/risu.h
-@@ -35,7 +35,6 @@ void process_arch_opt(int opt, const char *arg);
- #include REGINFO_HEADER(ARCH)
+@@ -17,6 +17,7 @@
+ #include <ucontext.h>
+ #include <stdio.h>
+ #include <getopt.h>
++#include <stdbool.h>
  
- extern uintptr_t image_start_address;
--extern void *memblock;
+ /* Extra option processing for architectures */
+ extern const struct option * const arch_long_opts;
+@@ -96,7 +97,7 @@ int recv_and_compare_register_info(read_fn read_fn,
+  * Should return 0 if it was a good match (ie end of test)
+  * and 1 for a mismatch.
+  */
+-int report_match_status(int trace);
++int report_match_status(bool trace);
  
- /* Ops code under test can request from risu: */
- typedef enum {
-@@ -83,34 +82,9 @@ void send_response_byte(int sock, int resp);
- 
- /* Functions operating on reginfo */
- 
--/* Function prototypes for read/write helper functions. */
--RisuResult write_buffer(void *ptr, size_t bytes);
--RisuResult read_buffer(void *ptr, size_t bytes);
--void respond(RisuResult response);
--
--/*
-- * Send the register information from the struct ucontext down the socket.
-- * NB: called from a signal handler.
-- */
--RisuResult send_register_info(void *uc);
--
--/*
-- * Read register info from the socket and compare it with that from the
-- * ucontext.
-- * NB: called from a signal handler.
-- */
--RisuResult recv_and_compare_register_info(void *uc);
--
--/*
-- * Print a useful report on the status of the last reg comparison
-- * done in recv_and_compare_register_info().
-- */
--void report_mismatch_reg(void);
--
  /* Interface provided by CPU-specific code: */
  
--/* Move the PC past this faulting insn by adjusting ucontext
-- */
-+/* Move the PC past this faulting insn by adjusting ucontext. */
- void advance_pc(void *uc);
- 
- /* Set the parameter register in a ucontext_t to the specified value.
 diff --git a/reginfo.c b/reginfo.c
-deleted file mode 100644
-index a007f16..0000000
+index dd42ae2..1b2a821 100644
 --- a/reginfo.c
-+++ /dev/null
-@@ -1,151 +0,0 @@
--/******************************************************************************
-- * Copyright (c) 2017 Linaro Limited
-- * All rights reserved. This program and the accompanying materials
-- * are made available under the terms of the Eclipse Public License v1.0
-- * which accompanies this distribution, and is available at
-- * http://www.eclipse.org/legal/epl-v10.html
-- *
-- * Contributors:
-- *     Peter Maydell (Linaro) - initial implementation
-- *****************************************************************************/
--
--#include <stdio.h>
--#include <string.h>
--#include <stdlib.h>
--#include "risu.h"
--
--static struct reginfo master_ri, apprentice_ri;
--static uint8_t master_memblock[MEMBLOCKLEN];
--
--RisuResult send_register_info(void *uc)
--{
--    struct reginfo ri;
--    trace_header_t header;
--    RisuResult res;
--    RisuOp op;
--
--    reginfo_init(&ri, uc);
--    op = get_risuop(&ri);
--
--    /* Write a header with PC/op to keep in sync */
--    header.pc = get_pc(&ri);
--    header.risu_op = op;
--    res = write_buffer(&header, sizeof(header));
--    if (res != RES_OK) {
--        return res;
--    }
--
--    switch (op) {
--    case OP_COMPARE:
--    case OP_TESTEND:
--    case OP_SIGILL:
--        /*
--         * Do a simple register compare on (a) explicit request
--         * (b) end of test (c) a non-risuop UNDEF
--         */
--        res = write_buffer(&ri, reginfo_size());
--        /* For OP_TEST_END, force exit. */
--        if (res == RES_OK && op == OP_TESTEND) {
--            res = RES_END;
--        }
--        break;
--    case OP_SETMEMBLOCK:
--        memblock = (void *)(uintptr_t)get_reginfo_paramreg(&ri);
--        break;
--    case OP_GETMEMBLOCK:
--        set_ucontext_paramreg(uc,
--                              get_reginfo_paramreg(&ri) + (uintptr_t)memblock);
--        break;
--    case OP_COMPAREMEM:
--        return write_buffer(memblock, MEMBLOCKLEN);
--    default:
--        abort();
--    }
--    return res;
--}
--
--/* Read register info from the socket and compare it with that from the
-- * ucontext. Return 0 for match, 1 for end-of-test, 2 for mismatch.
-- * NB: called from a signal handler.
-- *
-- * We don't have any kind of identifying info in the incoming data
-- * that says whether it is register or memory data, so if the two
-- * sides get out of sync then we will fail obscurely.
-- */
--RisuResult recv_and_compare_register_info(void *uc)
--{
--    RisuResult res;
--    trace_header_t header;
--    RisuOp op;
--
--    reginfo_init(&apprentice_ri, uc);
--    op = get_risuop(&apprentice_ri);
--
--    res = read_buffer(&header, sizeof(header));
--    if (res != RES_OK) {
--        return res;
--    }
--
--    if (header.risu_op != op) {
--        /* We are out of sync.  Tell master to exit. */
--        respond(RES_END);
--        return RES_BAD_IO;
--    }
--
--    /* send OK for the header */
--    respond(RES_OK);
--
--    switch (op) {
--    case OP_COMPARE:
--    case OP_TESTEND:
--    case OP_SIGILL:
--        /* Do a simple register compare on (a) explicit request
--         * (b) end of test (c) a non-risuop UNDEF
--         */
--        res = read_buffer(&master_ri, reginfo_size());
--        if (res != RES_OK) {
--            /* fail */
--        } else if (!reginfo_is_eq(&master_ri, &apprentice_ri)) {
--            /* register mismatch */
--            res = RES_MISMATCH_REG;
--        } else if (op == OP_TESTEND) {
--            res = RES_END;
--        }
--        respond(res == RES_OK ? RES_OK : RES_END);
--        break;
--    case OP_SETMEMBLOCK:
--        memblock = (void *)(uintptr_t)get_reginfo_paramreg(&apprentice_ri);
--        break;
--    case OP_GETMEMBLOCK:
--        set_ucontext_paramreg(uc, get_reginfo_paramreg(&apprentice_ri) +
--                              (uintptr_t)memblock);
--        break;
--    case OP_COMPAREMEM:
--        res = read_buffer(master_memblock, MEMBLOCKLEN);
--        if (res != RES_OK) {
--            /* fail */
--        } else if (memcmp(memblock, master_memblock, MEMBLOCKLEN) != 0) {
--            /* memory mismatch */
--            res = RES_MISMATCH_MEM;
--        }
--        respond(res == RES_OK ? RES_OK : RES_END);
--        break;
--    default:
--        abort();
--    }
--
--    return res;
--}
--
--/*
-- * Print a useful report on the status of the last reg comparison
-- * done in recv_and_compare_register_info().
-- */
--void report_mismatch_reg(void)
--{
--    fprintf(stderr, "master reginfo:\n");
--    reginfo_dump(&master_ri, stderr);
--    fprintf(stderr, "apprentice reginfo:\n");
--    reginfo_dump(&apprentice_ri, stderr);
--    reginfo_dump_mismatch(&master_ri, &apprentice_ri, stderr);
--}
++++ b/reginfo.c
+@@ -141,7 +141,7 @@ int recv_and_compare_register_info(read_fn read_fn,
+  * Should return 0 if it was a good match (ie end of test)
+  * and 1 for a mismatch.
+  */
+-int report_match_status(int trace)
++int report_match_status(bool trace)
+ {
+     int resp = 0;
+     fprintf(stderr, "match status...\n");
 diff --git a/risu.c b/risu.c
-index d6c2deb..a0e20d5 100644
+index 01525d2..79b1092 100644
 --- a/risu.c
 +++ b/risu.c
-@@ -28,7 +28,10 @@
- #include "config.h"
- #include "risu.h"
+@@ -31,7 +31,7 @@
+ void *memblock;
  
--void *memblock;
-+static void *memblock;
-+static struct reginfo master_ri, apprentice_ri;
-+static uint8_t master_memblock[MEMBLOCKLEN];
-+
+ int apprentice_fd, master_fd;
+-int trace;
++bool trace;
+ size_t signal_count;
  
- static int comm_fd;
- static bool trace;
-@@ -48,7 +51,7 @@ static sigjmp_buf jmpbuf;
- 
- /* I/O functions */
- 
--RisuResult read_buffer(void *ptr, size_t bytes)
-+static RisuResult read_buffer(void *ptr, size_t bytes)
- {
-     size_t res;
- 
-@@ -69,7 +72,7 @@ RisuResult read_buffer(void *ptr, size_t bytes)
-     return res == bytes ? RES_OK : RES_BAD_IO;
- }
- 
--RisuResult write_buffer(void *ptr, size_t bytes)
-+static RisuResult write_buffer(void *ptr, size_t bytes)
- {
-     size_t res;
- 
-@@ -90,13 +93,60 @@ RisuResult write_buffer(void *ptr, size_t bytes)
-     return res == bytes ? RES_OK : RES_BAD_IO;
- }
- 
--void respond(RisuResult r)
-+static void respond(RisuResult r)
- {
-     if (!trace) {
-         send_response_byte(comm_fd, r);
+ #ifdef HAVE_ZLIB
+@@ -228,7 +228,7 @@ int master(void)
+                     signal_count);
+             return 0;
+         } else {
+-            return report_match_status(0);
++            return report_match_status(false);
+         }
      }
- }
- 
-+static RisuResult send_register_info(void *uc)
-+{
-+    struct reginfo ri;
-+    trace_header_t header;
-+    RisuResult res;
-+    RisuOp op;
-+
-+    reginfo_init(&ri, uc);
-+    op = get_risuop(&ri);
-+
-+    /* Write a header with PC/op to keep in sync */
-+    header.pc = get_pc(&ri);
-+    header.risu_op = op;
-+    res = write_buffer(&header, sizeof(header));
-+    if (res != RES_OK) {
-+        return res;
-+    }
-+
-+    switch (op) {
-+    case OP_COMPARE:
-+    case OP_TESTEND:
-+    case OP_SIGILL:
-+        /*
-+         * Do a simple register compare on (a) explicit request
-+         * (b) end of test (c) a non-risuop UNDEF
-+         */
-+        res = write_buffer(&ri, reginfo_size());
-+        /* For OP_TEST_END, force exit. */
-+        if (res == RES_OK && op == OP_TESTEND) {
-+            res = RES_END;
-+        }
-+        break;
-+    case OP_SETMEMBLOCK:
-+        memblock = (void *)(uintptr_t)get_reginfo_paramreg(&ri);
-+        break;
-+    case OP_GETMEMBLOCK:
-+        set_ucontext_paramreg(uc,
-+                              get_reginfo_paramreg(&ri) + (uintptr_t)memblock);
-+        break;
-+    case OP_COMPAREMEM:
-+        return write_buffer(memblock, MEMBLOCKLEN);
-+    default:
-+        abort();
-+    }
-+    return res;
-+}
-+
- static void master_sigill(int sig, siginfo_t *si, void *uc)
- {
-     RisuResult r;
-@@ -110,6 +160,71 @@ static void master_sigill(int sig, siginfo_t *si, void *uc)
+     set_sigill_handler(&master_sigill);
+@@ -250,7 +250,7 @@ int apprentice(void)
+ #endif
+         close(apprentice_fd);
+         fprintf(stderr, "finished early after %zd checkpoints\n", signal_count);
+-        return report_match_status(1);
++        return report_match_status(true);
      }
- }
- 
-+static RisuResult recv_and_compare_register_info(void *uc)
-+{
-+    RisuResult res;
-+    trace_header_t header;
-+    RisuOp op;
-+
-+    reginfo_init(&apprentice_ri, uc);
-+    op = get_risuop(&apprentice_ri);
-+
-+    res = read_buffer(&header, sizeof(header));
-+    if (res != RES_OK) {
-+        return res;
-+    }
-+
-+    if (header.risu_op != op) {
-+        /* We are out of sync.  Tell master to exit. */
-+        respond(RES_END);
-+        return RES_BAD_IO;
-+    }
-+
-+    /* send OK for the header */
-+    respond(RES_OK);
-+
-+    switch (op) {
-+    case OP_COMPARE:
-+    case OP_TESTEND:
-+    case OP_SIGILL:
-+        /* Do a simple register compare on (a) explicit request
-+         * (b) end of test (c) a non-risuop UNDEF
-+         */
-+        res = read_buffer(&master_ri, reginfo_size());
-+        if (res != RES_OK) {
-+            /* fail */
-+        } else if (!reginfo_is_eq(&master_ri, &apprentice_ri)) {
-+            /* register mismatch */
-+            res = RES_MISMATCH_REG;
-+        } else if (op == OP_TESTEND) {
-+            res = RES_END;
-+        }
-+        respond(res == RES_OK ? RES_OK : RES_END);
-+        break;
-+    case OP_SETMEMBLOCK:
-+        memblock = (void *)(uintptr_t)get_reginfo_paramreg(&apprentice_ri);
-+        break;
-+    case OP_GETMEMBLOCK:
-+        set_ucontext_paramreg(uc, get_reginfo_paramreg(&apprentice_ri) +
-+                              (uintptr_t)memblock);
-+        break;
-+    case OP_COMPAREMEM:
-+        res = read_buffer(master_memblock, MEMBLOCKLEN);
-+        if (res != RES_OK) {
-+            /* fail */
-+        } else if (memcmp(memblock, master_memblock, MEMBLOCKLEN) != 0) {
-+            /* memory mismatch */
-+            res = RES_MISMATCH_MEM;
-+        }
-+        respond(res == RES_OK ? RES_OK : RES_END);
-+        break;
-+    default:
-+        abort();
-+    }
-+
-+    return res;
-+}
-+
- static void apprentice_sigill(int sig, siginfo_t *si, void *uc)
- {
-     RisuResult r;
-@@ -226,7 +341,11 @@ static int apprentice(void)
- 
-     case RES_MISMATCH_REG:
-         fprintf(stderr, "mismatch reg after %zd checkpoints\n", signal_count);
--        report_mismatch_reg();
-+        fprintf(stderr, "master reginfo:\n");
-+        reginfo_dump(&master_ri, stderr);
-+        fprintf(stderr, "apprentice reginfo:\n");
-+        reginfo_dump(&apprentice_ri, stderr);
-+        reginfo_dump_mismatch(&master_ri, &apprentice_ri, stderr);
-         return EXIT_FAILURE;
- 
-     case RES_MISMATCH_MEM:
+     set_sigill_handler(&apprentice_sigill);
+     fprintf(stderr, "starting apprentice image at 0x%"PRIxPTR"\n",
+@@ -344,7 +344,7 @@ int main(int argc, char **argv)
+             break;
+         case 't':
+             trace_fn = optarg;
+-            trace = 1;
++            trace = true;
+             break;
+         case 'h':
+             hostname = optarg;
 -- 
 2.34.1
-

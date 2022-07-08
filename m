@@ -1,435 +1,324 @@
-Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp385219lft;
-        Fri, 8 Jul 2022 09:39:59 -0700 (PDT)
-X-Google-Smtp-Source: AGRyM1tHPA5TAX0koWBKdLnYT62k1nAQMO5H7zZZBgMMhO1cZ+SFQCPpyOAO9stTRxtKGZ9cJwOT
-X-Received: by 2002:ac8:5891:0:b0:31b:f627:7346 with SMTP id t17-20020ac85891000000b0031bf6277346mr3780396qta.610.1657298399042;
-        Fri, 08 Jul 2022 09:39:59 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1657298399; cv=none;
+Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp427036lft;
+        Fri, 8 Jul 2022 10:51:50 -0700 (PDT)
+X-Google-Smtp-Source: AGRyM1uLowZgNzeR47ZFCAuWcdmDi+3juKmeOctP9g0aogkvlX2qeyzJ5IbKlyxeAJSkLwuqGpq9
+X-Received: by 2002:a05:6214:19ee:b0:472:f5d9:ef with SMTP id q14-20020a05621419ee00b00472f5d900efmr3834310qvc.77.1657302709874;
+        Fri, 08 Jul 2022 10:51:49 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1657302709; cv=none;
         d=google.com; s=arc-20160816;
-        b=Y3LZukQicLC/WYM0VWI4AFLjG6xFJoInJQL/ySP1uZDGB6qFjiFJTxk64skr77K0++
-         JMO6TLADmQq0USC5MiH/pnP6oPtidZKS337mdVr7BOVuVy3hfrNqjlUaAvDPTfJ54nOv
-         CBBGEaEGFbOfLlueQe17U6cZ9f75x64NL3c8Iy3SRlWEFWR/pPd8Th92kTv06g1NKmfu
-         3dmK1WgxmWHX94UiQdKn0w/QEGuVoq0b68vErSAaC+dVYkT+K+SO95YNHSLUdSBPGvWW
-         hXcbWOc+aXYOCr+CxTUA07R061jsuRzMEonly5wll23lGKy6pUTH/Uu4CUgtcWUtmVt6
-         +6FQ==
+        b=pcGRkwIouIZ1QTHyGMtOpWjS5abFaeS5oLQl1f9tLbl5H1YwZlPydPSeQGFX3ZTdNp
+         DrtkuE98g1VsnhfUaCUtlCIwY6/dRjGj9J5zR8SbOMy6KosAMUSnESsbrpJkvjtLLUwA
+         PiOu+2JkJv3sfldpc9vgYM+qmdYOiwHFPS0Oeqjuas6EQp/APJ/VU9b0TX5bZzWCQXnF
+         TErebb8BPrHPFMHtQcHki+/MgdVQ/6Kj6j9rhnVnFrZV/pwic6dx0gfkca3xDGoDua1G
+         s0YqP+gnOZAPVjoRTcnEma8AmkMRb+v0uWSeeYMrhPh7uN3leY68Xk5oXcO1XThk1l9D
+         Zo6Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=OYX/d+01tGy3cBxW/0xpcYjEwZc6/OMjB3i/YA7k0a4=;
-        b=BNxNGaL14V4MzxHbd7N29GRh6TK3SZgZlX53XhnY7894R2exmRa/xn/jBH5sr+bgFl
-         j4lVNlOxK9tP7s/qV37g/aV5KROA754BNdLLgP6kay3Om+PIBhUgNkelZlU0T1XjkcnB
-         n2LBOecCeLeF6sWuDKjmePHFBQoOeDc5vTqn4/2bhgwD5QhKaA18NQrQCZATdsmCaFSg
-         wVqXffB6wdBCTzVrzMLsvSBGPTfdWY+hZgf/Ycef2LH42gZ362H1Gqcy5d5ZzRK2mH34
-         a6XHN9p2CcQ55srMA4/NERn+iQfPtlqVLpA5BQlFBZDi23cyuR9ocrJq7/5QIiFqz9fC
-         jnPg==
+         :list-unsubscribe:list-id:precedence:user-agent:in-reply-to
+         :content-disposition:mime-version:references:message-id:subject:cc
+         :to:from:date:dkim-signature;
+        bh=M8Plsecq4uec1YoYmqYuY1vMM7ihL4EU1U/NLAkXfqE=;
+        b=eiKlujrYvnffxKfFNBGJ5ICHXnQKU73LNDaPbE668yoK+dZTx8Et4smRr1nD1Fxqzs
+         PKfhKwH0aFu6K2/Aie+xHHEykrA7YvsP4eqh2O/8Kp0B1U6IeWgtABnXqonIUPyGylUC
+         alDMwOaj02+fVhjMKeP2DixcInKWmL3ayK25mJUBKGm/RSKnC08T/6N8266dK17TcpWW
+         PerdaU2Z30sNYHNNCiJ5yULzUGt9iZUIR9PqDXuyJV7RHkvu4XgCC/4lDH6ujdmL/bDO
+         kzO9dJWqq2MBXPpT/QkLnK4RY0cEQvVtWEuaekUZJZdAH6pSPtjKaKJaxubstoNRl8EU
+         Jniw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=SQ593bbc;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=Bz1wkrQQ;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v4-20020a05620a0f0400b006a6d365e9a9si5951263qkl.715.2022.07.08.09.39.58
+        by mx.google.com with ESMTPS id f1-20020a05620a280100b006b2537e068fsi17248217qkp.658.2022.07.08.10.51.49
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 08 Jul 2022 09:39:59 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 08 Jul 2022 10:51:49 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=SQ593bbc;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:53468 helo=lists1p.gnu.org)
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=Bz1wkrQQ;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:48308 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1o9r1K-0005V8-He
-	for alex.bennee@linaro.org; Fri, 08 Jul 2022 12:39:58 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45250)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1o9s8r-00068V-AQ
+	for alex.bennee@linaro.org; Fri, 08 Jul 2022 13:51:49 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:42224)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1o9qDM-00065c-NA
- for qemu-arm@nongnu.org; Fri, 08 Jul 2022 11:48:20 -0400
-Received: from mail-pj1-x1036.google.com ([2607:f8b0:4864:20::1036]:36643)
+ (Exim 4.90_1) (envelope-from <frasse.iglesias@gmail.com>)
+ id 1o9s2D-0001jM-1E; Fri, 08 Jul 2022 13:44:57 -0400
+Received: from mail-lj1-x22c.google.com ([2a00:1450:4864:20::22c]:37544)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1o9qDJ-0002X2-R4
- for qemu-arm@nongnu.org; Fri, 08 Jul 2022 11:48:20 -0400
-Received: by mail-pj1-x1036.google.com with SMTP id
- z12-20020a17090a7b8c00b001ef84000b8bso2314469pjc.1
- for <qemu-arm@nongnu.org>; Fri, 08 Jul 2022 08:48:17 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=OYX/d+01tGy3cBxW/0xpcYjEwZc6/OMjB3i/YA7k0a4=;
- b=SQ593bbcqoAQar/qHavBiBV3rQAYb1ufwNzL/zbCJDVwDWa7Pg8sFk6tlrYxJWNemW
- UTYvPPYRzU1DwFFDy5Mfdvh0iFc19pl9yoY9pOQ/gabJH1IiU8/jH0QSTge4WjK7YU+j
- efasqkOi/QirKx/y4ab3YLpcwURnG5i1Dw3cAe/LxDOinwS0TVPkpYRt6yJPfYZ3ktx/
- NO5mY/r6j160lMcpUiMb2N+D6kO/FkBx2blJiwEj8ncNcJSdPeujE6sBQlIFbPolda7A
- +hY3jvYVCrEjin/8ZrkdCQOkNZMdwUlo22GJSTJKA8Okr2U7dfozT/OLm4vQx/UM+lkh
- 7y5w==
+ (Exim 4.90_1) (envelope-from <frasse.iglesias@gmail.com>)
+ id 1o9s29-0002oi-AY; Fri, 08 Jul 2022 13:44:56 -0400
+Received: by mail-lj1-x22c.google.com with SMTP id 19so5875257ljz.4;
+ Fri, 08 Jul 2022 10:44:50 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to:user-agent;
+ bh=M8Plsecq4uec1YoYmqYuY1vMM7ihL4EU1U/NLAkXfqE=;
+ b=Bz1wkrQQzyucYP7PRdZsr4Z8ahupmIO+NRbWoxSxiH5D8Uj3bLXAplIE0myFhwXybx
+ yZnfonMhYKEROfahmOgPmKtOQCJ3d4YJ3reSPjO4K9BPT/VRZae8XXo1UxdAAbBmf2+1
+ ErArR22wRUZeU0gZySe29tZ9Eh+Vcmt7j4nq2/X16cSJgkML0sUw6r/nP6T50zfdSTwL
+ YOgcyPftK5LMsaJH+BnD4mHNqYaYRgmP5WhTPyLmqfjqho0zbJHRwFOT5EmO/9LSICDG
+ T3IpRyaCEc6RSfaCKshO+xEvzbF+KMWiKfJYjTHB4fqru6H5J+7+jtyKAjTwJSKG1ZNX
+ jqBg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=OYX/d+01tGy3cBxW/0xpcYjEwZc6/OMjB3i/YA7k0a4=;
- b=0mb6T4Mv+7iPTXcredWg35sJZ4ic6M45QS3yHfIr7aoZPzDh4yxu9KtMfQfcbzk3AE
- 6SgCuxvSDAV21IGa982xkZcUwg1txi5AT7vEKN3t6DLkr7xfQhhdXzE3smBjwpP+8rrC
- hvee9lYjS0crHeRR+nlDLZzTNGSdNPe66w/r+h6xSXLbzrDllPOMQkKMfquBqkr58E4t
- oG8ulj2QfJ0o8y/oFyE9Q2D9LtzQol3V2vJGcVPBpTy8cXE6Nsegz5MOV01zHQ/mGnPj
- r1LpcuF3sWxiiAA7f+X+0KaUzRkQmuSgSU9a5PT2efgXzVSnAW2VZzlmZNoywJve4z0Q
- eK8Q==
-X-Gm-Message-State: AJIora+igedsQXuQNZyMHArGKkoQEiLOGT8UubBg5vYERubwSxYQko4N
- z+gpJwZpIL9RudLCu3T/FLY/dwlgzKUfjSHZ
-X-Received: by 2002:a17:90a:9d8a:b0:1ef:7a8d:1808 with SMTP id
- k10-20020a17090a9d8a00b001ef7a8d1808mr496746pjp.135.1657295296928; 
- Fri, 08 Jul 2022 08:48:16 -0700 (PDT)
-Received: from stoup.. ([122.255.60.245]) by smtp.gmail.com with ESMTPSA id
- y3-20020a17090a390300b001ef81bac701sm1782089pjb.42.2022.07.08.08.48.14
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to:user-agent;
+ bh=M8Plsecq4uec1YoYmqYuY1vMM7ihL4EU1U/NLAkXfqE=;
+ b=xP9pd5ouWcpyBKlSuGe3tPucnRXRD1nF+4jeLAQIdgAe16k4tcK2cOReX4jsrjnvVw
+ cKFsCjERMS/5xVPe2IXXNK/kevIz4ifarU+6Rwqh8q3dM6lvC1gxzBHH/GYzJ1ybwFTO
+ 8hiWy4nCqOp/vdXqDbz0Ha5Jtr/yh5v0/9Ml+gLDHnM2/CZMqINGXaeAUpZbtncz90JL
+ F6F+mJizSAg4oyiovlqJl4xUJ2zOwU9k/4XqdcGBO+xe201mCdEXwi6ZcRpnrVNmi/HH
+ Qeug3ZI6qKy1A+lQj9ZSYJiBr2JV4Gu1wexQTr5U3I2HSPiyjLfHFz8KgmJ/YJa2cdHC
+ ZSEw==
+X-Gm-Message-State: AJIora+Rx5a+Fw8yTDtNnEHXDoQzf44Tszn7MD9s7e0B4jMajq0sySmq
+ pkUG+OLijOHfUKOPXBDYZFM=
+X-Received: by 2002:a2e:953:0:b0:25d:5c20:2265 with SMTP id
+ 80-20020a2e0953000000b0025d5c202265mr924508ljj.348.1657302288986; 
+ Fri, 08 Jul 2022 10:44:48 -0700 (PDT)
+Received: from fralle-msi (31-208-27-151.cust.bredband2.com. [31.208.27.151])
+ by smtp.gmail.com with ESMTPSA id
+ n5-20020a05651203e500b0048910301774sm797243lfq.307.2022.07.08.10.44.47
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 08 Jul 2022 08:48:16 -0700 (PDT)
-From: Richard Henderson <richard.henderson@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org
-Subject: [RISU PATCH v4 23/29] Standardize reginfo_dump_mismatch printing
-Date: Fri,  8 Jul 2022 21:16:54 +0530
-Message-Id: <20220708154700.18682-24-richard.henderson@linaro.org>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20220708154700.18682-1-richard.henderson@linaro.org>
-References: <20220708154700.18682-1-richard.henderson@linaro.org>
+ Fri, 08 Jul 2022 10:44:47 -0700 (PDT)
+Date: Fri, 8 Jul 2022 19:44:45 +0200
+From: Francisco Iglesias <frasse.iglesias@gmail.com>
+To: Iris Chen <irischenlj@fb.com>
+Cc: pdel@fb.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org, clg@kaod.org,
+ patrick@stwcx.xyz, alistair@alistair23.me, kwolf@redhat.com,
+ hreitz@redhat.com, peter.maydell@linaro.org, andrew@aj.id.au,
+ joel@jms.id.au, thuth@redhat.com, lvivier@redhat.com,
+ pbonzini@redhat.com, qemu-block@nongnu.org, dz4list@gmail.com
+Subject: Re: [PATCH v3] hw: m25p80: Add Block Protect and Top Bottom bits for
+ write protect
+Message-ID: <20220708174444.GA29533@fralle-msi>
+References: <20220627185234.1911337-1-irischenlj@fb.com>
+ <20220708164552.3462620-1-irischenlj@fb.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1036;
- envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x1036.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20220708164552.3462620-1-irischenlj@fb.com>
+User-Agent: Mutt/1.10.1 (2018-07-13)
+Received-SPF: pass client-ip=2a00:1450:4864:20::22c;
+ envelope-from=frasse.iglesias@gmail.com; helo=mail-lj1-x22c.google.com
+X-Spam_score_int: -1020
+X-Spam_score: -102.1
+X-Spam_bar: ---------------------------------------------------
+X-Spam_report: (-102.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01, USER_IN_WELCOMELIST=-0.01,
+ USER_IN_WHITELIST=-100 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: We4NApBMIsdh
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: dbSXJEUvATLu
 
-Hoist the "master vs apprentice" label to apprentice(), since
-we will want different labels for dumping.  Remove all of the
-"mismatch" text from reginfo_dump_mismatch -- just print "vs".
+On [2022 Jul 08] Fri 09:45:52, Iris Chen wrote:
+> Signed-off-by: Iris Chen <irischenlj@fb.com>
 
-Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
----
- risu.h                 |  4 ++--
- risu.c                 |  1 +
- risu_reginfo_aarch64.c | 12 +++++-------
- risu_reginfo_arm.c     | 18 ++++++++---------
- risu_reginfo_i386.c    |  6 +-----
- risu_reginfo_m68k.c    | 23 +++++++---------------
- risu_reginfo_ppc64.c   | 44 ++++++++++++++++++------------------------
- 7 files changed, 44 insertions(+), 64 deletions(-)
+Reviewed-by: Francisco Iglesias <frasse.iglesias@gmail.com>
 
-diff --git a/risu.h b/risu.h
-index bdb70c1..99f0d8e 100644
---- a/risu.h
-+++ b/risu.h
-@@ -123,8 +123,8 @@ int reginfo_is_eq(struct reginfo *r1, struct reginfo *r2);
- /* print reginfo state to a stream, returns 1 on success, 0 on failure */
- int reginfo_dump(struct reginfo *ri, FILE * f);
- 
--/* reginfo_dump_mismatch: print mismatch details to a stream, ret nonzero=ok */
--int reginfo_dump_mismatch(struct reginfo *m, struct reginfo *a, FILE *f);
-+/* reginfo_dump_mismatch: print mismatch details to a stream */
-+void reginfo_dump_mismatch(struct reginfo *m, struct reginfo *a, FILE *f);
- 
- /* return size of reginfo */
- int reginfo_size(struct reginfo *ri);
-diff --git a/risu.c b/risu.c
-index 1c096a8..f613fa9 100644
---- a/risu.c
-+++ b/risu.c
-@@ -449,6 +449,7 @@ static int apprentice(void)
-         reginfo_dump(&ri[MASTER], stderr);
-         fprintf(stderr, "apprentice reginfo:\n");
-         reginfo_dump(&ri[APPRENTICE], stderr);
-+        fprintf(stderr, "mismatch detail (master : apprentice):\n");
-         reginfo_dump_mismatch(&ri[MASTER], &ri[APPRENTICE], stderr);
-         return EXIT_FAILURE;
- 
-diff --git a/risu_reginfo_aarch64.c b/risu_reginfo_aarch64.c
-index be47980..e0f80c0 100644
---- a/risu_reginfo_aarch64.c
-+++ b/risu_reginfo_aarch64.c
-@@ -275,15 +275,15 @@ int reginfo_dump(struct reginfo *ri, FILE * f)
-     return !ferror(f);
- }
- 
--/* reginfo_dump_mismatch: print mismatch details to a stream, ret nonzero=ok */
--int reginfo_dump_mismatch(struct reginfo *m, struct reginfo *a, FILE * f)
-+void reginfo_dump_mismatch(struct reginfo *m, struct reginfo *a, FILE * f)
- {
-     int i;
--    fprintf(f, "mismatch detail (master : apprentice):\n");
-+
-     if (m->faulting_insn != a->faulting_insn) {
--        fprintf(f, "  faulting insn mismatch %08x vs %08x\n",
-+        fprintf(f, "  faulting insn: %08x vs %08x\n",
-                 m->faulting_insn, a->faulting_insn);
-     }
-+
-     for (i = 0; i < 31; i++) {
-         if (m->regs[i] != a->regs[i]) {
-             fprintf(f, "  X%-2d    : %016" PRIx64 " vs %016" PRIx64 "\n",
-@@ -342,7 +342,7 @@ int reginfo_dump_mismatch(struct reginfo *m, struct reginfo *a, FILE * f)
-                 sve_dump_preg_diff(f, vq, pm, pa);
-             }
-         }
--        return !ferror(f);
-+        return;
-     }
- 
-     for (i = 0; i < 32; i++) {
-@@ -356,6 +356,4 @@ int reginfo_dump_mismatch(struct reginfo *m, struct reginfo *a, FILE * f)
-                     i, mv[1], mv[0], av[1], av[0]);
-         }
-     }
--
--    return !ferror(f);
- }
-diff --git a/risu_reginfo_arm.c b/risu_reginfo_arm.c
-index 202120b..ba1035e 100644
---- a/risu_reginfo_arm.c
-+++ b/risu_reginfo_arm.c
-@@ -183,32 +183,33 @@ int reginfo_dump(struct reginfo *ri, FILE *f)
-     return !ferror(f);
- }
- 
--int reginfo_dump_mismatch(struct reginfo *m, struct reginfo *a, FILE *f)
-+void reginfo_dump_mismatch(struct reginfo *m, struct reginfo *a, FILE *f)
- {
-     int i;
--    fprintf(f, "mismatch detail (master : apprentice):\n");
- 
-     if (m->faulting_insn_size != a->faulting_insn_size) {
--        fprintf(f, "  faulting insn size mismatch %d vs %d\n",
-+        fprintf(f, "  faulting insn size: %d vs %d\n",
-                 m->faulting_insn_size, a->faulting_insn_size);
-     } else if (m->faulting_insn != a->faulting_insn) {
-         if (m->faulting_insn_size == 2) {
--            fprintf(f, "  faulting insn mismatch %04x vs %04x\n",
-+            fprintf(f, "  faulting insn: %04x vs %04x\n",
-                     m->faulting_insn, a->faulting_insn);
-         } else {
--            fprintf(f, "  faulting insn mismatch %08x vs %08x\n",
-+            fprintf(f, "  faulting insn: %08x vs %08x\n",
-                     m->faulting_insn, a->faulting_insn);
-         }
-     }
-+
-     for (i = 0; i < 16; i++) {
-         if (m->gpreg[i] != a->gpreg[i]) {
--            fprintf(f, "  r%d: %08x vs %08x\n", i, m->gpreg[i],
--                    a->gpreg[i]);
-+            fprintf(f, "  r%d: %08x vs %08x\n", i, m->gpreg[i], a->gpreg[i]);
-         }
-     }
-+
-     if (m->cpsr != a->cpsr) {
-         fprintf(f, "  cpsr: %08x vs %08x\n", m->cpsr, a->cpsr);
-     }
-+
-     for (i = 0; i < 32; i++) {
-         if (m->fpregs[i] != a->fpregs[i]) {
-             fprintf(f, "  d%d: %016llx vs %016llx\n", i,
-@@ -216,9 +217,8 @@ int reginfo_dump_mismatch(struct reginfo *m, struct reginfo *a, FILE *f)
-                     (unsigned long long) a->fpregs[i]);
-         }
-     }
-+
-     if (m->fpscr != a->fpscr) {
-         fprintf(f, "  fpscr: %08x vs %08x\n", m->fpscr, a->fpscr);
-     }
--
--    return !ferror(f);
- }
-diff --git a/risu_reginfo_i386.c b/risu_reginfo_i386.c
-index e9730be..57e4c00 100644
---- a/risu_reginfo_i386.c
-+++ b/risu_reginfo_i386.c
-@@ -349,14 +349,12 @@ int reginfo_dump(struct reginfo *ri, FILE *f)
-     return !ferror(f);
- }
- 
--int reginfo_dump_mismatch(struct reginfo *m, struct reginfo *a, FILE *f)
-+void reginfo_dump_mismatch(struct reginfo *m, struct reginfo *a, FILE *f)
- {
-     int i, j, n, w;
-     uint64_t features;
-     char r;
- 
--    fprintf(f, "Mismatch (master v apprentice):\n");
--
-     for (i = 0; i < NGREG; i++) {
-         if (m->gregs[i] != a->gregs[i]) {
-             assert(regname[i]);
-@@ -399,6 +397,4 @@ int reginfo_dump_mismatch(struct reginfo *m, struct reginfo *a, FILE *f)
-                     i, m->kregs[i], a->kregs[i]);
-         }
-     }
--
--    return !ferror(f);
- }
-diff --git a/risu_reginfo_m68k.c b/risu_reginfo_m68k.c
-index 4c25e77..29edce9 100644
---- a/risu_reginfo_m68k.c
-+++ b/risu_reginfo_m68k.c
-@@ -118,13 +118,12 @@ int reginfo_dump(struct reginfo *ri, FILE *f)
-     return !ferror(f);
- }
- 
--int reginfo_dump_mismatch(struct reginfo *m, struct reginfo *a, FILE * f)
-+void reginfo_dump_mismatch(struct reginfo *m, struct reginfo *a, FILE *f)
- {
-     int i;
- 
-     if (m->gregs[R_PS] != a->gregs[R_PS]) {
--        fprintf(f, "Mismatch: Register PS\n");
--        fprintf(f, "master: [%x] - apprentice: [%x]\n",
-+        fprintf(f, "    PS: %08x vs %08x\n",
-                 m->gregs[R_PS], a->gregs[R_PS]);
-     }
- 
-@@ -133,22 +132,18 @@ int reginfo_dump_mismatch(struct reginfo *m, struct reginfo *a, FILE * f)
-             continue;
-         }
-         if (m->gregs[i] != a->gregs[i]) {
--            fprintf(f, "Mismatch: Register %c%d\n", i < 8 ? 'D' : 'A',
--                    i % 8);
--            fprintf(f, "master: [%x] - apprentice: [%x]\n", m->gregs[i],
--                    a->gregs[i]);
-+            fprintf(f, "    %c%d: %08x vs %08x\n",
-+                    i < 8 ? 'D' : 'A', i % 8, m->gregs[i], a->gregs[i]);
-         }
-     }
- 
-     if (m->fpregs.f_pcr != a->fpregs.f_pcr) {
--        fprintf(f, "Mismatch: Register FPCR\n");
--        fprintf(f, "m: [%04x] != a: [%04x]\n",
-+        fprintf(f, "  FPCR: %04x vs %04x\n",
-                 m->fpregs.f_pcr, a->fpregs.f_pcr);
-     }
- 
-     if (m->fpregs.f_psr != a->fpregs.f_psr) {
--        fprintf(f, "Mismatch: Register FPSR\n");
--        fprintf(f, "m: [%08x] != a: [%08x]\n",
-+        fprintf(f, "  FPSR: %04x vs %04x\n",
-                 m->fpregs.f_psr, a->fpregs.f_psr);
-     }
- 
-@@ -156,14 +151,10 @@ int reginfo_dump_mismatch(struct reginfo *m, struct reginfo *a, FILE * f)
-         if (m->fpregs.f_fpregs[i][0] != a->fpregs.f_fpregs[i][0] ||
-             m->fpregs.f_fpregs[i][1] != a->fpregs.f_fpregs[i][1] ||
-             m->fpregs.f_fpregs[i][2] != a->fpregs.f_fpregs[i][2]) {
--            fprintf(f, "Mismatch: Register FP%d\n", i);
--            fprintf(f, "m: [%08x %08x %08x] != a: [%08x %08x %08x]\n",
-+            fprintf(f, "   FP%d: %08x%08x%08x vs %08x%08x%08x\n", i,
-                     m->fpregs.f_fpregs[i][0], m->fpregs.f_fpregs[i][1],
-                     m->fpregs.f_fpregs[i][2], a->fpregs.f_fpregs[i][0],
-                     a->fpregs.f_fpregs[i][1], a->fpregs.f_fpregs[i][2]);
-         }
-     }
--
--
--    return !ferror(f);
- }
-diff --git a/risu_reginfo_ppc64.c b/risu_reginfo_ppc64.c
-index 9899b36..e96dc48 100644
---- a/risu_reginfo_ppc64.c
-+++ b/risu_reginfo_ppc64.c
-@@ -27,6 +27,15 @@
- const struct option * const arch_long_opts;
- const char * const arch_extra_help;
- 
-+static const char * const greg_names[NGREG] = {
-+    "r0",  "r1",  "r2",  "r3",  "r4",  "r5",  "r6",  "r7",
-+    "r8",  "r9", "r10", "r11", "r12", "r13", "r14", "r15",
-+   "r16", "r17", "r18", "r19", "r20", "r21", "r22", "r23",
-+   "r24", "r25", "r26", "r27", "r28", "r29", "r30", "r31",
-+   [XER] = "xer",
-+   [CCR] = "ccr",
-+};
-+
- void process_arch_opt(int opt, const char *arg)
- {
-     abort();
-@@ -147,35 +156,21 @@ int reginfo_dump(struct reginfo *ri, FILE * f)
-     return !ferror(f);
- }
- 
--int reginfo_dump_mismatch(struct reginfo *m, struct reginfo *a, FILE *f)
-+void reginfo_dump_mismatch(struct reginfo *m, struct reginfo *a, FILE *f)
- {
-     int i;
--    for (i = 0; i < 32; i++) {
--        if (i == 1 || i == 13) {
--            continue;
-+
-+    for (i = 0; i < NGREG; i++) {
-+        if (greg_names[i] != NULL && m->gregs[i] != a->gregs[i]) {
-+            fprintf(f, "%6s: %016lx vs %016lx\n",
-+                    greg_names[i], m->gregs[i], a->gregs[i]);
-         }
--
--        if (m->gregs[i] != a->gregs[i]) {
--            fprintf(f, "Mismatch: Register r%d\n", i);
--            fprintf(f, "master: [%lx] - apprentice: [%lx]\n",
--                    m->gregs[i], a->gregs[i]);
--        }
--    }
--
--    if (m->gregs[XER] != a->gregs[XER]) {
--        fprintf(f, "Mismatch: XER\n");
--        fprintf(f, "m: [%lx] != a: [%lx]\n", m->gregs[XER], a->gregs[XER]);
--    }
--
--    if (m->gregs[CCR] != a->gregs[CCR]) {
--        fprintf(f, "Mismatch: Cond. Register\n");
--        fprintf(f, "m: [%lx] != a: [%lx]\n", m->gregs[CCR], a->gregs[CCR]);
-     }
- 
-     for (i = 0; i < 32; i++) {
-         if (m->fpregs[i] != a->fpregs[i]) {
--            fprintf(f, "Mismatch: Register f%d\n", i);
--            fprintf(f, "m: [%016lx] != a: [%016lx]\n",
-+            fprintf(f, "%*s%d: %016lx vs %016lx\n",
-+                    6 - (i < 10 ? 1 : 2), "f", i,
-                     m->fpregs[i], a->fpregs[i]);
-         }
-     }
-@@ -186,13 +181,12 @@ int reginfo_dump_mismatch(struct reginfo *m, struct reginfo *a, FILE *f)
-             m->vrregs.vrregs[i][2] != a->vrregs.vrregs[i][2] ||
-             m->vrregs.vrregs[i][3] != a->vrregs.vrregs[i][3]) {
- 
--            fprintf(f, "Mismatch: Register vr%d\n", i);
--            fprintf(f, "m: [%x, %x, %x, %x] != a: [%x, %x, %x, %x]\n",
-+            fprintf(f, "%*s%d: %08x%08x%08x%08x vs %08x%08x%08x%08x\n",
-+                    6 - (i < 10 ? 1 : 2), "vr", i,
-                     m->vrregs.vrregs[i][0], m->vrregs.vrregs[i][1],
-                     m->vrregs.vrregs[i][2], m->vrregs.vrregs[i][3],
-                     a->vrregs.vrregs[i][0], a->vrregs.vrregs[i][1],
-                     a->vrregs.vrregs[i][2], a->vrregs.vrregs[i][3]);
-         }
-     }
--    return !ferror(f);
- }
--- 
-2.34.1
-
+> ---
+> Cosmetic suggestions addressed. 
+> 
+>  hw/block/m25p80.c | 102 ++++++++++++++++++++++++++++++++++++++++------
+>  1 file changed, 90 insertions(+), 12 deletions(-)
+> 
+> diff --git a/hw/block/m25p80.c b/hw/block/m25p80.c
+> index 50b523e5b1..f3b401cf90 100644
+> --- a/hw/block/m25p80.c
+> +++ b/hw/block/m25p80.c
+> @@ -38,21 +38,19 @@
+>  #include "trace.h"
+>  #include "qom/object.h"
+>  
+> -/* Fields for FlashPartInfo->flags */
+> -
+> -/* erase capabilities */
+> -#define ER_4K 1
+> -#define ER_32K 2
+> -/* set to allow the page program command to write 0s back to 1. Useful for
+> - * modelling EEPROM with SPI flash command set
+> - */
+> -#define EEPROM 0x100
+> -
+>  /* 16 MiB max in 3 byte address mode */
+>  #define MAX_3BYTES_SIZE 0x1000000
+> -
+>  #define SPI_NOR_MAX_ID_LEN 6
+>  
+> +/* Fields for FlashPartInfo->flags */
+> +enum spi_flash_option_flags {
+> +    ER_4K                  = BIT(0),
+> +    ER_32K                 = BIT(1),
+> +    EEPROM                 = BIT(2),
+> +    HAS_SR_TB              = BIT(3),
+> +    HAS_SR_BP3_BIT6        = BIT(4),
+> +};
+> +
+>  typedef struct FlashPartInfo {
+>      const char *part_name;
+>      /*
+> @@ -253,7 +251,8 @@ static const FlashPartInfo known_devices[] = {
+>      { INFO("n25q512a11",  0x20bb20,      0,  64 << 10, 1024, ER_4K) },
+>      { INFO("n25q512a13",  0x20ba20,      0,  64 << 10, 1024, ER_4K) },
+>      { INFO("n25q128",     0x20ba18,      0,  64 << 10, 256, 0) },
+> -    { INFO("n25q256a",    0x20ba19,      0,  64 << 10, 512, ER_4K) },
+> +    { INFO("n25q256a",    0x20ba19,      0,  64 << 10, 512,
+> +           ER_4K | HAS_SR_BP3_BIT6 | HAS_SR_TB) },
+>      { INFO("n25q512a",    0x20ba20,      0,  64 << 10, 1024, ER_4K) },
+>      { INFO("n25q512ax3",  0x20ba20,  0x1000,  64 << 10, 1024, ER_4K) },
+>      { INFO("mt25ql512ab", 0x20ba20, 0x1044, 64 << 10, 1024, ER_4K | ER_32K) },
+> @@ -480,6 +479,11 @@ struct Flash {
+>      bool reset_enable;
+>      bool quad_enable;
+>      bool aai_enable;
+> +    bool block_protect0;
+> +    bool block_protect1;
+> +    bool block_protect2;
+> +    bool block_protect3;
+> +    bool top_bottom_bit;
+>      bool status_register_write_disabled;
+>      uint8_t ear;
+>  
+> @@ -625,12 +629,36 @@ void flash_write8(Flash *s, uint32_t addr, uint8_t data)
+>  {
+>      uint32_t page = addr / s->pi->page_size;
+>      uint8_t prev = s->storage[s->cur_addr];
+> +    uint32_t block_protect_value = (s->block_protect3 << 3) |
+> +                                   (s->block_protect2 << 2) |
+> +                                   (s->block_protect1 << 1) |
+> +                                   (s->block_protect0 << 0);
+>  
+>      if (!s->write_enable) {
+>          qemu_log_mask(LOG_GUEST_ERROR, "M25P80: write with write protect!\n");
+>          return;
+>      }
+>  
+> +    if (block_protect_value > 0) {
+> +        uint32_t num_protected_sectors = 1 << (block_protect_value - 1);
+> +        uint32_t sector = addr / s->pi->sector_size;
+> +
+> +        /* top_bottom_bit == 0 means TOP */
+> +        if (!s->top_bottom_bit) {
+> +            if (s->pi->n_sectors <= sector + num_protected_sectors) {
+> +                qemu_log_mask(LOG_GUEST_ERROR,
+> +                              "M25P80: write with write protect!\n");
+> +                return;
+> +            }
+> +        } else {
+> +            if (sector < num_protected_sectors) {
+> +                qemu_log_mask(LOG_GUEST_ERROR,
+> +                              "M25P80: write with write protect!\n");
+> +                return;
+> +            }
+> +        }
+> +    }
+> +
+>      if ((prev ^ data) & data) {
+>          trace_m25p80_programming_zero_to_one(s, addr, prev, data);
+>      }
+> @@ -728,6 +756,15 @@ static void complete_collecting_data(Flash *s)
+>          break;
+>      case WRSR:
+>          s->status_register_write_disabled = extract32(s->data[0], 7, 1);
+> +        s->block_protect0 = extract32(s->data[0], 2, 1);
+> +        s->block_protect1 = extract32(s->data[0], 3, 1);
+> +        s->block_protect2 = extract32(s->data[0], 4, 1);
+> +        if (s->pi->flags & HAS_SR_TB) {
+> +            s->top_bottom_bit = extract32(s->data[0], 5, 1);
+> +        }
+> +        if (s->pi->flags & HAS_SR_BP3_BIT6) {
+> +            s->block_protect3 = extract32(s->data[0], 6, 1);
+> +        }
+>  
+>          switch (get_man(s)) {
+>          case MAN_SPANSION:
+> @@ -1213,6 +1250,15 @@ static void decode_new_cmd(Flash *s, uint32_t value)
+>      case RDSR:
+>          s->data[0] = (!!s->write_enable) << 1;
+>          s->data[0] |= (!!s->status_register_write_disabled) << 7;
+> +        s->data[0] |= (!!s->block_protect0) << 2;
+> +        s->data[0] |= (!!s->block_protect1) << 3;
+> +        s->data[0] |= (!!s->block_protect2) << 4;
+> +        if (s->pi->flags & HAS_SR_TB) {
+> +            s->data[0] |= (!!s->top_bottom_bit) << 5;
+> +        }
+> +        if (s->pi->flags & HAS_SR_BP3_BIT6) {
+> +            s->data[0] |= (!!s->block_protect3) << 6;
+> +        }
+>  
+>          if (get_man(s) == MAN_MACRONIX || get_man(s) == MAN_ISSI) {
+>              s->data[0] |= (!!s->quad_enable) << 6;
+> @@ -1553,6 +1599,11 @@ static void m25p80_reset(DeviceState *d)
+>  
+>      s->wp_level = true;
+>      s->status_register_write_disabled = false;
+> +    s->block_protect0 = false;
+> +    s->block_protect1 = false;
+> +    s->block_protect2 = false;
+> +    s->block_protect3 = false;
+> +    s->top_bottom_bit = false;
+>  
+>      reset_memory(s);
+>  }
+> @@ -1639,6 +1690,32 @@ static const VMStateDescription vmstate_m25p80_write_protect = {
+>      }
+>  };
+>  
+> +static bool m25p80_block_protect_needed(void *opaque)
+> +{
+> +    Flash *s = (Flash *)opaque;
+> +
+> +    return s->block_protect0 ||
+> +           s->block_protect1 ||
+> +           s->block_protect2 ||
+> +           s->block_protect3 ||
+> +           s->top_bottom_bit;
+> +}
+> +
+> +static const VMStateDescription vmstate_m25p80_block_protect = {
+> +    .name = "m25p80/block_protect",
+> +    .version_id = 1,
+> +    .minimum_version_id = 1,
+> +    .needed = m25p80_block_protect_needed,
+> +    .fields = (VMStateField[]) {
+> +        VMSTATE_BOOL(block_protect0, Flash),
+> +        VMSTATE_BOOL(block_protect1, Flash),
+> +        VMSTATE_BOOL(block_protect2, Flash),
+> +        VMSTATE_BOOL(block_protect3, Flash),
+> +        VMSTATE_BOOL(top_bottom_bit, Flash),
+> +        VMSTATE_END_OF_LIST()
+> +    }
+> +};
+> +
+>  static const VMStateDescription vmstate_m25p80 = {
+>      .name = "m25p80",
+>      .version_id = 0,
+> @@ -1671,6 +1748,7 @@ static const VMStateDescription vmstate_m25p80 = {
+>          &vmstate_m25p80_data_read_loop,
+>          &vmstate_m25p80_aai_enable,
+>          &vmstate_m25p80_write_protect,
+> +        &vmstate_m25p80_block_protect,
+>          NULL
+>      }
+>  };
+> -- 
+> 2.30.2
+> 
+> 

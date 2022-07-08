@@ -1,103 +1,103 @@
-Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp387743lft;
-        Fri, 8 Jul 2022 09:43:46 -0700 (PDT)
-X-Google-Smtp-Source: AGRyM1vqmSfpD0Jvu818/TFggLEs3jK5lDLMsofLz4aM0dJO8iNDuC88LIJKzL+x65hTXOMuUUo4
-X-Received: by 2002:a05:6214:c8c:b0:473:5aa:f71d with SMTP id r12-20020a0562140c8c00b0047305aaf71dmr3286661qvr.18.1657298626476;
-        Fri, 08 Jul 2022 09:43:46 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1657298626; cv=none;
+Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp391175lft;
+        Fri, 8 Jul 2022 09:49:49 -0700 (PDT)
+X-Google-Smtp-Source: AGRyM1tFVx5TpJtsiHeEp5dL5snrenWUGquEVwntsOGVbXy/b9IbFtW9rAuiaveelPkQ3v5nhwoe
+X-Received: by 2002:a05:6214:4014:b0:473:4433:1346 with SMTP id kd20-20020a056214401400b0047344331346mr2278755qvb.96.1657298989187;
+        Fri, 08 Jul 2022 09:49:49 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1657298989; cv=none;
         d=google.com; s=arc-20160816;
-        b=AZnCtywWhS7cJEk7JvBmK4X/Z335EcckXbGzTynu8IcMC12aJgdpVJN85KIb0MBLp2
-         7TPOLKRONLi+ltWQSx2wsIEQZjc4z1CvJ6UNVnP1pjPVGZA2oG+bxItYB8FgPbWGeYdr
-         Ow++9F+2x3Q7fVglW/ZxEKCEaaoalYp6gufWBmlaOtQpLTtHlqKqshHygQCP5Fxif3bh
-         ckPoh8BmqM8+4AZD9pYGC0iB85sYNgdbhWet+8bdbFgjaiFFSa7FU+xL4Iq61I3Xbi5t
-         Bxjlwm5BTbNxQknxE3tBd2x3UpyjgBwejp2ykRzf2ysWe+X/vCnbXWSbCdX3QZppcRM/
-         O9dA==
+        b=d7zXjpeyGkhiHiZOUnA4GtKLBHd9SYP089q7Qx4AprEEKo35GmNq2GgYjtP0z40uCM
+         BZxpR7UbEnMFFb+01rJ0dHNbUaJ9i1HCUlsrRk/p1BeF4gr9gOa9HE4xqtoAdDIhMXcj
+         HDg5Pt+to5FSdRM5Uls1fk65LeCm9cLHJmFfBIfIwTKYngZK0vHr9iI0x9SNu77h2Ir7
+         6IvnPpgPdB75yuPH8bDPvC4zk8PCxgTUIJziDeTYlQzbbC+8gUSEN707XqsDDbdBj4im
+         hyy0KMckaukzFx/Vf4GX9GwvmN7Ig6iv0o/NGRDpce1xhuR9o3LFV1DSydGC6YeThmoL
+         rXbg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=myUdBY5H3tCXb2rWK3d2K6+iu2kUnl6sA6mhAcxF+sg=;
-        b=UDvdoEOOl4pKqMiFLSi4+nxaODb6W7vlwI60NxbEEV9h1+IjHNMB+N09SM/hpPTVSs
-         0D/xsrXtEbAqe+zymOl31g93mE23nEBA98FrOGK8ycNUjvXJ6ujfdAf3xigikNXQflOv
-         k5Gh3mnAacrFO08BQfz+ocBpU/lALZAuZY61sbZLseu8tUl8Og4FK/fuBgVDGraRIIj4
-         cNv5EmGESHRqvFaP5G+YVCh15pVjFr3dGZz/E9TuJs/qpPNSnatOT+2/qqTx6GaF+S7G
-         57uJVwSepjkr6e5RjKxUQCyFz8jOAO1Y2iDGxgzptBkQ4LMJmgmwvgPGdRzDyeF8zecK
-         cX8Q==
+        bh=0Z/3Dbr+/QrC8cn7TV42VKcjGJrg87Itb54NG8zLcNw=;
+        b=Rytkv0XreqD0P6p0h1WXOquSo7F3hKO+D9/phB+Az8OqCBCB/NIzZLIBNEKZJwNIa1
+         0WjGXaxBm9pLpYxgMegRNtWjh6WF4S0QVKnWwrUEiv1Ivr2gff4IqiJ81aHuRKtGC/nB
+         mCPfNhhsSLt1CI+vWLJbfDQGqnP3zk5svIXC2/zNmvq58n05qA7i5NFjcrcxNFfObV1S
+         2qHkc6v30lDdZr2h2LKGFYxfUltQWQJOoJlXfMbF1P8UwZ6DYRaW1p/WOIGx0OGiQsoT
+         vClJhO9CxPEl3da5lpsqFdqY8NDPKI/UwnirYpsJ5GxiJg2RKt49rvM6If4EseNCwLif
+         u/CQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=rCchghh7;
+       dkim=pass header.i=@linaro.org header.s=google header.b=p4hQzLPI;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id iu1-20020ad45cc1000000b00473197eea42si6361121qvb.461.2022.07.08.09.43.46
+        by mx.google.com with ESMTPS id b42-20020a05620a272a00b006b54efe4d3esi3857493qkp.517.2022.07.08.09.49.49
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 08 Jul 2022 09:43:46 -0700 (PDT)
+        Fri, 08 Jul 2022 09:49:49 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=rCchghh7;
+       dkim=pass header.i=@linaro.org header.s=google header.b=p4hQzLPI;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:60750 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:40812 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1o9r4z-0002Ix-Sc
-	for alex.bennee@linaro.org; Fri, 08 Jul 2022 12:43:46 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45220)
+	id 1o9rAl-0000FN-Fh
+	for alex.bennee@linaro.org; Fri, 08 Jul 2022 12:49:44 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:45284)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1o9qDK-00063t-QG
- for qemu-devel@nongnu.org; Fri, 08 Jul 2022 11:48:20 -0400
-Received: from mail-pg1-x533.google.com ([2607:f8b0:4864:20::533]:42655)
+ id 1o9qDO-0006Bq-6K
+ for qemu-devel@nongnu.org; Fri, 08 Jul 2022 11:48:22 -0400
+Received: from mail-pl1-x62c.google.com ([2607:f8b0:4864:20::62c]:40715)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1o9qDJ-0002Z2-7i
- for qemu-devel@nongnu.org; Fri, 08 Jul 2022 11:48:18 -0400
-Received: by mail-pg1-x533.google.com with SMTP id o18so21494706pgu.9
- for <qemu-devel@nongnu.org>; Fri, 08 Jul 2022 08:48:15 -0700 (PDT)
+ id 1o9qDM-0002Y0-5W
+ for qemu-devel@nongnu.org; Fri, 08 Jul 2022 11:48:21 -0400
+Received: by mail-pl1-x62c.google.com with SMTP id b2so16657171plx.7
+ for <qemu-devel@nongnu.org>; Fri, 08 Jul 2022 08:48:19 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=myUdBY5H3tCXb2rWK3d2K6+iu2kUnl6sA6mhAcxF+sg=;
- b=rCchghh7ehU5GXG+b3vmNZ3ff+p/FNFnmXx/WMgqVLAvfmjWeA4pmVn0blCirazz7C
- hH9MKyzDmBpDLN7oofbkhX17/Wowk4++60Kf8j9b2TPV5hhxEHqghQcm1nTELshNtpR/
- 5Jsf1svcQQVj4jNAsrDsn5KPJOfcLT7lHtmF/57dw3DanFCj2xNRsm+NbgmPJEMVPkwK
- +sxSLC9KgD4QCtwNFf5X61uNMyBJB/+jSkURI/gezI2w//gW1Mi9o7OxBJE3GOszohHJ
- q/UBPZoYoszX2hfyQtQCZMm0ax6X9Bk9zIqMRAdlWGS9j1PYDqXVpeN6IDdO+mM3baxq
- 8Jeg==
+ bh=0Z/3Dbr+/QrC8cn7TV42VKcjGJrg87Itb54NG8zLcNw=;
+ b=p4hQzLPICnUpOLOSIrooAeEV0I8IJaC4V251azmGcCkHvDgFr7/cH8NBU/8NW1uo9U
+ +nq2VtFp5QVd5IW5+tc9s/+EqW0XwSRTsAo1kj+VlV4ixGQ5aXTH8P0ZPQyLrcRZ5Sht
+ R+d8zn6hTwXOXcgdG68c+6gsZ/jsczH2dkGHQJ+WmqBaeHMruVuGBRt40/LoIBl9JFdm
+ xy+RLOW98ztWgNt95dbKm2kv2v2cHRrG8a4rIwRwbrIs9HFwoGjxi8PQt7pxEqFcyXvr
+ 8c1taC1xusBFFxSba6E4Yibj09WB7fLqIMdUI6f1/3iU2e0Nu9Xo9nqJu2BkwzXNNiWG
+ MlFA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=myUdBY5H3tCXb2rWK3d2K6+iu2kUnl6sA6mhAcxF+sg=;
- b=iIv4EAcK3vSS2qS2/x7owHBvZp54mcKuP7MZ0eM1RVih/5L3DWSfrWw5fgFyboCxRB
- GDEjnWgGTyJ56/JmaGMPt2qKaXKfLAczd3WGBdJYJvwmHQ4zHdli3Lf1FzmTu91Fq9IO
- txZvH5nkeI/AAHqOsOgectNLBIJIVO87AS5R/Duwtjfi+RwV8mwlBn4ueWznmSkq6PhJ
- zlWl6yQJmj1Z+MCys1/8TaCC1NTEitDjkJGCzNeiQ3d91KCpK9QCGsfj+WRVvcCmXccI
- mJSh2liswsAJG1zK/U1DS16qL1lWjyPE8d6vFQlA3FWLEoS4bUGzKBvHRXnJv6oAkTwH
- UDcQ==
-X-Gm-Message-State: AJIora9eihz6TI1LHrgCZMj9BKNNwo5OCcfJtOQj+OOrdJaEbjuq/t+w
- jvR5W22l9LN+tfA4RhF64mphNi8cvXYua9NV
-X-Received: by 2002:a05:6a00:1941:b0:50d:807d:530b with SMTP id
- s1-20020a056a00194100b0050d807d530bmr4354348pfk.17.1657295294218; 
- Fri, 08 Jul 2022 08:48:14 -0700 (PDT)
+ bh=0Z/3Dbr+/QrC8cn7TV42VKcjGJrg87Itb54NG8zLcNw=;
+ b=fmLAKr2jq/2d9swLL1itcrOsMk+OFMMso89PuoZa9SU8XEILSjCnIFUEDiWCWWgToV
+ IyQJ5AX/lARx/hzRHcu+KIEQr0rI68/LxA74KRf6/iVDGYSQ2gcPc+/7x0LB2Hm2hWP2
+ ve92tXNC8C2+x5qAzPPgri0iaURDtH76bCfz4W282GYlYtZGLfQsQMDM9Xr31v9w5B8J
+ z4HD0oxcv3WAc0tydieNZhS41qA3+90XPbe2Ygqqp1l05rKzS8KcFN6qGnnQdQnhlUNc
+ xb/y4oct0kUNyNaUAeoYGDBONjXBYo/qv9FmuKKcnaDkqHt1HsI2cjdUDgkbtPYcWJE8
+ Kgfw==
+X-Gm-Message-State: AJIora/w0Y1iNSPTC0VXrytwaOpIyOBWsVmk1tnfunKmu/1Woam8V7L/
+ WneweKkXPtlq3+86VigobuRE7TzdPMjFMG5h
+X-Received: by 2002:a17:903:228b:b0:16b:ee10:b91 with SMTP id
+ b11-20020a170903228b00b0016bee100b91mr4445375plh.27.1657295299400; 
+ Fri, 08 Jul 2022 08:48:19 -0700 (PDT)
 Received: from stoup.. ([122.255.60.245]) by smtp.gmail.com with ESMTPSA id
- y3-20020a17090a390300b001ef81bac701sm1782089pjb.42.2022.07.08.08.48.11
+ y3-20020a17090a390300b001ef81bac701sm1782089pjb.42.2022.07.08.08.48.17
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 08 Jul 2022 08:48:13 -0700 (PDT)
+ Fri, 08 Jul 2022 08:48:19 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org
-Subject: [RISU PATCH v4 22/29] ppc64: Use uint64_t to represent double
-Date: Fri,  8 Jul 2022 21:16:53 +0530
-Message-Id: <20220708154700.18682-23-richard.henderson@linaro.org>
+Subject: [RISU PATCH v4 24/29] Add --fulldump and --diffdup options
+Date: Fri,  8 Jul 2022 21:16:55 +0530
+Message-Id: <20220708154700.18682-25-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20220708154700.18682-1-richard.henderson@linaro.org>
 References: <20220708154700.18682-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::533;
- envelope-from=richard.henderson@linaro.org; helo=mail-pg1-x533.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::62c;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x62c.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -119,104 +119,182 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: aLmHBYGb9Nc3
+X-TUID: vrBcqrtNfzSL
 
-We want to do exact bitwise comparisons of the data,
-not be held hostage to IEEE comparisons and NaNs.
+These allow the inspection of the trace files.
 
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- risu_reginfo_ppc64.h |  3 ++-
- risu_reginfo_ppc64.c | 29 +++++++++--------------------
- 2 files changed, 11 insertions(+), 21 deletions(-)
+ risu.c | 117 +++++++++++++++++++++++++++++++++++++++++++++++++--------
+ 1 file changed, 102 insertions(+), 15 deletions(-)
 
-diff --git a/risu_reginfo_ppc64.h b/risu_reginfo_ppc64.h
-index 7f2c962..4b1d8bd 100644
---- a/risu_reginfo_ppc64.h
-+++ b/risu_reginfo_ppc64.h
-@@ -20,7 +20,8 @@ struct reginfo {
-     uint64_t nip;
-     uint64_t prev_addr;
-     gregset_t gregs;
--    fpregset_t fpregs;
-+    uint64_t fpregs[32];
-+    uint64_t fpscr;
-     vrregset_t vrregs;
- };
- 
-diff --git a/risu_reginfo_ppc64.c b/risu_reginfo_ppc64.c
-index c80e387..9899b36 100644
---- a/risu_reginfo_ppc64.c
-+++ b/risu_reginfo_ppc64.c
-@@ -45,6 +45,7 @@ int reginfo_size(struct reginfo *ri)
- void reginfo_init(struct reginfo *ri, ucontext_t *uc)
- {
-     int i;
-+
-     memset(ri, 0, sizeof(*ri));
- 
-     ri->faulting_insn = *((uint32_t *) uc->uc_mcontext.regs->nip);
-@@ -54,16 +55,11 @@ void reginfo_init(struct reginfo *ri, ucontext_t *uc)
-         ri->gregs[i] = uc->uc_mcontext.gp_regs[i];
+diff --git a/risu.c b/risu.c
+index f613fa9..8d907d9 100644
+--- a/risu.c
++++ b/risu.c
+@@ -484,23 +484,101 @@ static int apprentice(void)
      }
- 
--    for (i = 0; i < NFPREG; i++) {
--        ri->fpregs[i] = uc->uc_mcontext.fp_regs[i];
--    }
-+    memcpy(ri->fpregs, uc->uc_mcontext.fp_regs, 32 * sizeof(double));
-+    ri->fpscr = uc->uc_mcontext.fp_regs[32];
- 
--    for (i = 0; i < 32; i++) {
--        ri->vrregs.vrregs[i][0] = uc->uc_mcontext.v_regs->vrregs[i][0];
--        ri->vrregs.vrregs[i][1] = uc->uc_mcontext.v_regs->vrregs[i][1];
--        ri->vrregs.vrregs[i][2] = uc->uc_mcontext.v_regs->vrregs[i][2];
--        ri->vrregs.vrregs[i][3] = uc->uc_mcontext.v_regs->vrregs[i][3];
--    }
-+    memcpy(ri->vrregs.vrregs, uc->uc_mcontext.v_regs->vrregs,
-+           sizeof(ri->vrregs.vrregs[0]) * 32);
-     ri->vrregs.vscr = uc->uc_mcontext.v_regs->vscr;
-     ri->vrregs.vrsave = uc->uc_mcontext.v_regs->vrsave;
  }
-@@ -91,10 +87,6 @@ int reginfo_is_eq(struct reginfo *m, struct reginfo *a)
-     }
  
-     for (i = 0; i < 32; i++) {
--        if (isnan(m->fpregs[i]) && isnan(a->fpregs[i])) {
--            continue;
--        }
--
-         if (m->fpregs[i] != a->fpregs[i]) {
-             return 0;
+-static int ismaster;
++static int dump_trace(bool isfull)
++{
++    RisuResult res;
++    int tick = 0;
++
++    while (1) {
++        struct reginfo *this_ri;
++
++        this_ri = &ri[tick & 1];
++        res = recv_register_info(this_ri);
++
++        switch (res) {
++        case RES_OK:
++            switch (header.risu_op) {
++            case OP_COMPARE:
++            case OP_TESTEND:
++            case OP_SIGILL:
++                printf("%s: (pc %#lx)\n", op_name(header.risu_op),
++                       (unsigned long)header.pc);
++
++                if (isfull || tick == 0) {
++                    reginfo_dump(this_ri, stdout);
++                } else {
++                    struct reginfo *prev_ri = &ri[(tick - 1) & 1];
++
++                    if (reginfo_is_eq(prev_ri, this_ri)) {
++                        /*
++                         * ??? There should never be no change -- at minimum
++                         * PC should have advanced.  But for completeness...
++                         */
++                        printf("change detail: none\n");
++                    } else {
++                        printf("change detail (prev : next):\n");
++                        reginfo_dump_mismatch(prev_ri, this_ri, stdout);
++                    }
++                }
++                putchar('\n');
++                if (header.risu_op == OP_TESTEND) {
++                    return EXIT_SUCCESS;
++                }
++                tick++;
++                break;
++
++            case OP_COMPAREMEM:
++                /* TODO: Dump 8k of data? */
++                /* fall through */
++            default:
++                printf("%s\n", op_name(header.risu_op));
++                break;
++            }
++            break;
++
++        case RES_BAD_IO:
++            fprintf(stderr, "I/O error\n");
++            return EXIT_FAILURE;
++        case RES_BAD_MAGIC:
++            fprintf(stderr, "Unexpected magic number: %#08x\n", header.magic);
++            return EXIT_FAILURE;
++        case RES_BAD_SIZE:
++            fprintf(stderr, "Unexpected payload size: %u\n", header.size);
++            return EXIT_FAILURE;
++        case RES_BAD_OP:
++            fprintf(stderr, "Unexpected opcode: %d\n", header.risu_op);
++            return EXIT_FAILURE;
++        default:
++            fprintf(stderr, "Unexpected recv result %d\n", res);
++            return EXIT_FAILURE;
++        }
++    }
++}
++
++enum {
++    DO_APPRENTICE,
++    DO_MASTER,
++    DO_FULLDUMP,
++    DO_DIFFDUMP,
++};
++
++static int operation = DO_APPRENTICE;
+ 
+ static void usage(void)
+ {
+     fprintf(stderr,
+-            "Usage: risu [--master] [--host <ip>] [--port <port>] <image file>"
+-            "\n\n");
+-    fprintf(stderr,
+-            "Run through the pattern file verifying each instruction\n");
+-    fprintf(stderr, "between master and apprentice risu processes.\n\n");
+-    fprintf(stderr, "Options:\n");
+-    fprintf(stderr, "  --master          Be the master (server)\n");
+-    fprintf(stderr, "  -t, --trace=FILE  Record/playback " TRACE_TYPE " trace file\n");
+-    fprintf(stderr,
+-            "  -h, --host=HOST   Specify master host machine (apprentice only)"
+-            "\n");
+-    fprintf(stderr,
++            "Usage: risu [--master|--fulldump|--diffdump]\n"
++            "            [--host <ip>] [--port <port>] <image file>\n"
++            "\n"
++            "Run through the pattern file verifying each instruction\n"
++            "between master and apprentice risu processes.\n"
++            "\n"
++            "Options:\n"
++            "  --master          Be the master (server)\n"
++            "  --fulldump        Dump each record\n"
++            "  --diffdump        Dump difference between each record\n"
++            "  -t, --trace=FILE  Record/playback " TRACE_TYPE " trace file\n"
++            "  -h, --host=HOST   Specify master host machine\n"
+             "  -p, --port=PORT   Specify the port to connect to/listen on "
+             "(default 9191)\n");
+     if (arch_extra_help) {
+@@ -512,7 +590,9 @@ static struct option * setup_options(char **short_opts)
+ {
+     static struct option default_longopts[] = {
+         {"help", no_argument, 0, '?'},
+-        {"master", no_argument, &ismaster, 1},
++        {"master", no_argument, &operation, DO_MASTER},
++        {"fulldump", no_argument, &operation, DO_FULLDUMP},
++        {"diffdump", no_argument, &operation, DO_DIFFDUMP},
+         {"host", required_argument, 0, 'h'},
+         {"port", required_argument, 0, 'p'},
+         {"trace", required_argument, 0, 't'},
+@@ -520,7 +600,7 @@ static struct option * setup_options(char **short_opts)
+     };
+     struct option *lopts = &default_longopts[0];
+ 
+-    *short_opts = "h:p:t:";
++    *short_opts = "d:h:p:t:";
+ 
+     if (arch_long_opts) {
+         const size_t osize = sizeof(struct option);
+@@ -551,6 +631,7 @@ int main(int argc, char **argv)
+     char *trace_fn = NULL;
+     struct option *longopts;
+     char *shortopts;
++    bool ismaster;
+ 
+     longopts = setup_options(&shortopts);
+ 
+@@ -586,6 +667,8 @@ int main(int argc, char **argv)
          }
-@@ -141,10 +133,10 @@ int reginfo_dump(struct reginfo *ri, FILE * f)
-     fprintf(f, "\tdscr   : %16lx\n\n", ri->gregs[44]);
- 
-     for (i = 0; i < 16; i++) {
--        fprintf(f, "\tf%2d: %.4f\tf%2d: %.4f\n", i, ri->fpregs[i],
-+        fprintf(f, "\tf%2d: %016lx\tf%2d: %016lx\n", i, ri->fpregs[i],
-                 i + 16, ri->fpregs[i + 16]);
-     }
--    fprintf(f, "\tfpscr: %f\n\n", ri->fpregs[32]);
-+    fprintf(f, "\tfpscr: %016lx\n\n", ri->fpscr);
- 
-     for (i = 0; i < 32; i++) {
-         fprintf(f, "vr%02d: %8x, %8x, %8x, %8x\n", i,
-@@ -181,13 +173,10 @@ int reginfo_dump_mismatch(struct reginfo *m, struct reginfo *a, FILE *f)
      }
  
-     for (i = 0; i < 32; i++) {
--        if (isnan(m->fpregs[i]) && isnan(a->fpregs[i])) {
--            continue;
--        }
--
-         if (m->fpregs[i] != a->fpregs[i]) {
-             fprintf(f, "Mismatch: Register f%d\n", i);
--            fprintf(f, "m: [%f] != a: [%f]\n", m->fpregs[i], a->fpregs[i]);
-+            fprintf(f, "m: [%016lx] != a: [%016lx]\n",
-+                    m->fpregs[i], a->fpregs[i]);
++    ismaster = operation == DO_MASTER;
++
+     if (trace) {
+         if (strcmp(trace_fn, "-") == 0) {
+             comm_fd = ismaster ? STDOUT_FILENO : STDIN_FILENO;
+@@ -609,6 +692,10 @@ int main(int argc, char **argv)
          }
      }
  
++    if (operation == DO_FULLDUMP || operation == DO_DIFFDUMP) {
++        return dump_trace(operation == DO_FULLDUMP);
++    }
++
+     imgfile = argv[optind];
+     if (!imgfile) {
+         fprintf(stderr, "Error: must specify image file name\n\n");
 -- 
 2.34.1
 

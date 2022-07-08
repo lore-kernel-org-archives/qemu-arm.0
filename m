@@ -1,104 +1,105 @@
-Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp335057lft;
-        Fri, 8 Jul 2022 08:23:46 -0700 (PDT)
-X-Google-Smtp-Source: AGRyM1uYXl5P/1mmyZV8kb0ZD+3R8O/hPS7PmYMKbCj3JwVQjf0uwMpOkixZnARW1eIwD67/dv6i
-X-Received: by 2002:ac8:5a88:0:b0:31e:a700:52ce with SMTP id c8-20020ac85a88000000b0031ea70052cemr2216329qtc.372.1657293826562;
-        Fri, 08 Jul 2022 08:23:46 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1657293826; cv=none;
+Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp335231lft;
+        Fri, 8 Jul 2022 08:24:06 -0700 (PDT)
+X-Google-Smtp-Source: AGRyM1vHrRkStZu8YYsrsqrfBK47Ea+7IKj1C6oyqCEihmVSAQGN9itBE6b31VTbmr3IRnZDkpzm
+X-Received: by 2002:a05:620a:3725:b0:6af:4f5e:de00 with SMTP id de37-20020a05620a372500b006af4f5ede00mr2796611qkb.754.1657293846113;
+        Fri, 08 Jul 2022 08:24:06 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1657293846; cv=none;
         d=google.com; s=arc-20160816;
-        b=Puht5idldlRNzGidUhXprAXT4c5WlfC26Ihc7vh2patfdL8J5Eks2kzggrOfB14Mp+
-         3/XsM28hsDVk3Puxyua0PyNJYG4sv8kaIZnBXpf50AEsb7MHo5LJB5otccHj9rtCBtEk
-         wyGyOibE+5mFyldwdaboyBulklGwu1hYpxpanExbwOp1aA3KTwSM/VfhIlwagIZ4pW2M
-         dpZaJxTyGjfoB+Io21407vZWRrclxWEHTGTdIRa2peTjtLRTG7/rU72V2cikb3U2hwP6
-         PpVvXU47q6kQRWKHVjvUYf88Upss4mESOhyKjcm5LyhF4R4a2TXxu0QbnS8obpAW03zD
-         SbfQ==
+        b=KtfAGZuL8F2tTv7aH/3dY98P/8O2aJgG13MirhCwHazYoHB/FrT5K1sJteobZd+Xh4
+         xAaLBWFyUSi3DVv3EWxqkr9S01nWD3n7lJc/0OFWZOZxc3QbYLyHR0jQ2gOWxODXG+FH
+         blALbdsmXRmh21mD1ThMZITNbgG23WCnBbSUEuQbzRUAYlqiGAfPGBIZat4T/Go8Czux
+         LHPO5B8UTpg3+YIeVefz0YNqxvssj7xOZyBq+oVHxYQFlGfSK4/vQY3SV/TUI5UiQBAl
+         r2fh3+FUj5arIZK1hnSDMgUnIb8Wi38A1sZSzvwcv/Yvvf100Ba59evEu9VEk8UPwsnC
+         ZrQg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=0yTWCJ1DktZzYQTXntYaiEXNGmdccKtN6uvynpzt0IU=;
-        b=pL+hCaZ/FkfIk24aOyw2VaZ63ab4ua0OE53XtKrUYRnvMq8s9NczXVcD7t5HUiu6ow
-         VZKCG6Zy1gYty+xt4hdrjNETUqGUN+p1SGqfXP/xEbuDJP1XHIWRTRxwV+aqWa3CW4Hb
-         wDAiR3Ty/yrIKjymweNiNOWCPrdk5TEueYZ5vSMiFTV2LwOFmvbQ61iWaLuGpYf4frv+
-         9sK3lhFF5a1/Z8SsAwhwsXeVliJHJs8QX4pMkakutN0Fxs/XjzBC8Rg0RXT2yYJEQKXj
-         rcT6VuYzV0tzZuY6tEqRuh3Vf0gH3+dEt0rgO+6X7qccsVBMz43OTd9KZELZ+3XjGBct
-         34vw==
+        bh=FIJZTJDsU3bwgxqkNI4PQQPdcbVgY9UEzpNtvLgVDjw=;
+        b=xj8kMP5NGcnDHZTMtLe4HGVqWWimD64Ue5r5IpCDRLvPyZIE0x9OyQqrjr7yTEIB0V
+         nHv/NarU8QmbmhK+ZETKa1X4BdVS8r9p31IRzWxEYzJ1cN8vlTLQ4DAgDBWEOb0DbkKn
+         apgBeuisMD2F5VXgOXS2dV4WmJZjcS6ThIiBn1ycybzZfpbiEt8jFDlzYulWyvWpSDGJ
+         HuHLzR80t/QTeHlW3/81VdcqdKpYQfgEsecjPHdF3UfMeFle4pHDiJI+trl/3YUaL0RS
+         uYY4HwYDRnyglIqsiC8vmMasj9V9IIv9IhRhwtJ6q2tOLFPnOULfvZnnP8eeSyav/AYq
+         gfsg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=ykcqy5iL;
+       dkim=pass header.i=@linaro.org header.s=google header.b=QhM4tWZf;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id jr14-20020a0562142a8e00b0047068ebd850si25272529qvb.44.2022.07.08.08.23.46
+        by mx.google.com with ESMTPS id s11-20020a05620a080b00b006a799cd72acsi21342550qks.117.2022.07.08.08.24.05
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 08 Jul 2022 08:23:46 -0700 (PDT)
+        Fri, 08 Jul 2022 08:24:06 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=ykcqy5iL;
+       dkim=pass header.i=@linaro.org header.s=google header.b=QhM4tWZf;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:38796 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:40230 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1o9ppZ-0000tL-QJ
-	for alex.bennee@linaro.org; Fri, 08 Jul 2022 11:23:45 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37190)
+	id 1o9ppt-0001qA-Gc
+	for alex.bennee@linaro.org; Fri, 08 Jul 2022 11:24:05 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37316)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1o9pig-0002fP-Ne
- for qemu-arm@nongnu.org; Fri, 08 Jul 2022 11:16:39 -0400
-Received: from mail-pl1-x632.google.com ([2607:f8b0:4864:20::632]:44884)
+ id 1o9piq-00030F-DE
+ for qemu-arm@nongnu.org; Fri, 08 Jul 2022 11:16:48 -0400
+Received: from mail-pj1-x1035.google.com ([2607:f8b0:4864:20::1035]:45651)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1o9pie-0002Jh-Ar
- for qemu-arm@nongnu.org; Fri, 08 Jul 2022 11:16:37 -0400
-Received: by mail-pl1-x632.google.com with SMTP id q5so962004plr.11
- for <qemu-arm@nongnu.org>; Fri, 08 Jul 2022 08:16:35 -0700 (PDT)
+ id 1o9pio-0002LA-2M
+ for qemu-arm@nongnu.org; Fri, 08 Jul 2022 11:16:48 -0400
+Received: by mail-pj1-x1035.google.com with SMTP id
+ q5-20020a17090a304500b001efcc885cc4so2077506pjl.4
+ for <qemu-arm@nongnu.org>; Fri, 08 Jul 2022 08:16:45 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=0yTWCJ1DktZzYQTXntYaiEXNGmdccKtN6uvynpzt0IU=;
- b=ykcqy5iL8i8pOvOURorfK4XajYxKOyu/nILzzejoGJJTomorraf8K0UoY66N4a03Ho
- EraPgnG9p4j39gAKdGJIb6cx3pOQoXGsYSyqE0Bxo6uuTYepuUYOJclouaOBUDio4Nby
- 4mto7YjrmTJelbSupIdr/D8rvrJ3XqIZbGhlVhzkDD3hHfuZDtceJEQfaVPzXxUZCpBT
- IHpotTu/1b75bzRuYAWDegrm5Fifay3T/+DC1OFCU6ZgW9Bw0RvUSX/Vhulp8DoDXNuu
- D/OaTvGfgTTGHvhbEeh3eFWkTOwRB060RnFAPoISBBNHCeyfRKxwjvpE+9F4wUpGl73r
- 2ZHQ==
+ bh=FIJZTJDsU3bwgxqkNI4PQQPdcbVgY9UEzpNtvLgVDjw=;
+ b=QhM4tWZf/oA0nuWtfa++/biM8vIVag09ndJrhygQYNwfDf3VuXYXantnOf+XS79/nU
+ ql+EB17xFQjNCKf2qzhfbA0MIA8vqOqUluW7ztTQC9+eTBFDHosGftQ+aFSVA7Aa9w2z
+ ZKTG3lyTdLAekmlW+cZnC6sCA/qF0ksTyS/ThGQew14pZUU05dW3jtFDEqDiy8PWrymK
+ +KIIGfZbpm0ZRJAO7NZgdHZks0doA86GY0e8gSJUYFIhW3jttaAzt5xSdYPRBj9ntBuH
+ akEKa/yPnzcdG95AI6VL3oJLmMSzQg/DayntwtBsEvP/fjvkZYmBiBJTK6DaC+OY9rC8
+ 46/A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=0yTWCJ1DktZzYQTXntYaiEXNGmdccKtN6uvynpzt0IU=;
- b=knjT+8w66HnDfglR2JdSB2697HRWNq8o7RlVyDjVnSfKJveCZAKYH3gW6+rTCI13ap
- VjqBxSrZEjZVFDdT2BwoRwc2lr6xyyZiAguTVQ7L0MxYeJTJ6QkjsO6kzntgKQLyyEgZ
- UhdpEU2ITqIN3pZpl5/8ZbpwRsHIVpw6i4NScguQ0FfyVOTJ83LXue5s8/FcDBQhKX/5
- V2HHciaG/MsN1ehb5h20XHlBdXFgGncGKuPk8JSi4MX41HkNeljQvN4e88ue4FgBaDA8
- XjU+9WZc5xYemqVdTNEDTZ4ZoIBEEW8Ni20hBN5KvdDki56V/sK+Egg5oU6uBY2whVO8
- 7vHA==
-X-Gm-Message-State: AJIora8lCcMygPWlZ3IP9HVJY2Bu/lt7jE6Wq51oUtFP9zYFeaT7RB6N
- VcD0IjLGz50+SgB/kI0Y7uQBeQ==
-X-Received: by 2002:a17:90b:2c4a:b0:1ef:8f70:e125 with SMTP id
- rw10-20020a17090b2c4a00b001ef8f70e125mr401199pjb.50.1657293395076; 
- Fri, 08 Jul 2022 08:16:35 -0700 (PDT)
+ bh=FIJZTJDsU3bwgxqkNI4PQQPdcbVgY9UEzpNtvLgVDjw=;
+ b=rHJFApjusIZJdZbfSR6En0xaSZds9nte6dPbXaFa/noEZ0Y3rJNXNAnQ0q2SYKBL7w
+ SEEcsZEQt2SOFW0WNWp7/dh8NnhB1wsnbEj5N7BoA0uJbglIvE1ORyZ9gkVqkTTFbARP
+ TVZbzQFC1ae6NUlhft5nXzveqizJTWHQauqkMFKOOmjpdcdfMjjZZIGyY1ddvVtwPTt6
+ M4Xan11tssniZkgPXEZl/PGMFyo/8m/RyWr78t59MLnCRTTF6IopVnx/hXUbgE6wERw5
+ taMQvl33Hs0FaB/aadWKjfkJSDFfHrGrM8vzdL7GdpkzQQSnWBus33dn/AvlritbTLW5
+ nFiA==
+X-Gm-Message-State: AJIora8QMig+WmDJXWvPofrRTBhBS+YnsuhMZ65rLMH1KOp0Phps1ofp
+ 4daN9QfCLtVvlg9DLMZq/fGY0g==
+X-Received: by 2002:a17:90a:e7c6:b0:1ee:fed1:60a4 with SMTP id
+ kb6-20020a17090ae7c600b001eefed160a4mr376174pjb.100.1657293404536; 
+ Fri, 08 Jul 2022 08:16:44 -0700 (PDT)
 Received: from stoup.. ([122.255.60.245]) by smtp.gmail.com with ESMTPSA id
- n17-20020a056a0007d100b0051bada81bc7sm29085774pfu.161.2022.07.08.08.16.31
+ n17-20020a056a0007d100b0051bada81bc7sm29085774pfu.161.2022.07.08.08.16.41
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 08 Jul 2022 08:16:34 -0700 (PDT)
+ Fri, 08 Jul 2022 08:16:44 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org,
 	Peter Maydell <peter.maydell@linaro.org>
-Subject: [PATCH v6 16/45] target/arm: Handle SME in sve_access_check
-Date: Fri,  8 Jul 2022 20:45:11 +0530
-Message-Id: <20220708151540.18136-17-richard.henderson@linaro.org>
+Subject: [PATCH v6 19/45] target/arm: Implement SME MOVA
+Date: Fri,  8 Jul 2022 20:45:14 +0530
+Message-Id: <20220708151540.18136-20-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20220708151540.18136-1-richard.henderson@linaro.org>
 References: <20220708151540.18136-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::632;
- envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x632.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1035;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x1035.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -120,59 +121,448 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: MVsNm8qTYsW8
+X-TUID: eHrksDwEuFac
 
-The pseudocode for CheckSVEEnabled gains a check for Streaming
-SVE mode, and for SME present but SVE absent.
+We can reuse the SVE functions for implementing moves to/from
+horizontal tile slices, but we need new ones for moves to/from
+vertical tile slices.
 
 Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/translate-a64.c | 22 ++++++++++++++++------
- 1 file changed, 16 insertions(+), 6 deletions(-)
+ target/arm/helper-sme.h    |  12 +++
+ target/arm/helper-sve.h    |   2 +
+ target/arm/translate-a64.h |   8 ++
+ target/arm/translate.h     |   5 ++
+ target/arm/sme.decode      |  15 ++++
+ target/arm/sme_helper.c    | 151 ++++++++++++++++++++++++++++++++++++-
+ target/arm/sve_helper.c    |  12 +++
+ target/arm/translate-sme.c | 127 +++++++++++++++++++++++++++++++
+ 8 files changed, 331 insertions(+), 1 deletion(-)
 
-diff --git a/target/arm/translate-a64.c b/target/arm/translate-a64.c
-index b16d81bf19..b7b64f7358 100644
---- a/target/arm/translate-a64.c
-+++ b/target/arm/translate-a64.c
-@@ -1183,21 +1183,31 @@ static bool fp_access_check(DisasContext *s)
+diff --git a/target/arm/helper-sme.h b/target/arm/helper-sme.h
+index c4ee1f09e4..154bc73d2e 100644
+--- a/target/arm/helper-sme.h
++++ b/target/arm/helper-sme.h
+@@ -21,3 +21,15 @@ DEF_HELPER_FLAGS_2(set_pstate_sm, TCG_CALL_NO_RWG, void, env, i32)
+ DEF_HELPER_FLAGS_2(set_pstate_za, TCG_CALL_NO_RWG, void, env, i32)
+ 
+ DEF_HELPER_FLAGS_3(sme_zero, TCG_CALL_NO_RWG, void, env, i32, i32)
++
++/* Move to/from vertical array slices, i.e. columns, so 'c'.  */
++DEF_HELPER_FLAGS_4(sme_mova_cz_b, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_4(sme_mova_zc_b, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_4(sme_mova_cz_h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_4(sme_mova_zc_h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_4(sme_mova_cz_s, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_4(sme_mova_zc_s, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_4(sme_mova_cz_d, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_4(sme_mova_zc_d, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_4(sme_mova_cz_q, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_4(sme_mova_zc_q, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
+diff --git a/target/arm/helper-sve.h b/target/arm/helper-sve.h
+index dc629f851a..ab0333400f 100644
+--- a/target/arm/helper-sve.h
++++ b/target/arm/helper-sve.h
+@@ -325,6 +325,8 @@ DEF_HELPER_FLAGS_5(sve_sel_zpzz_s, TCG_CALL_NO_RWG,
+                    void, ptr, ptr, ptr, ptr, i32)
+ DEF_HELPER_FLAGS_5(sve_sel_zpzz_d, TCG_CALL_NO_RWG,
+                    void, ptr, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_5(sve_sel_zpzz_q, TCG_CALL_NO_RWG,
++                   void, ptr, ptr, ptr, ptr, i32)
+ 
+ DEF_HELPER_FLAGS_5(sve2_addp_zpzz_b, TCG_CALL_NO_RWG,
+                    void, ptr, ptr, ptr, ptr, i32)
+diff --git a/target/arm/translate-a64.h b/target/arm/translate-a64.h
+index 099d3d11d6..2a7fe6e9e7 100644
+--- a/target/arm/translate-a64.h
++++ b/target/arm/translate-a64.h
+@@ -178,6 +178,14 @@ static inline int pred_gvec_reg_size(DisasContext *s)
+     return size_for_gvec(pred_full_reg_size(s));
+ }
+ 
++/* Return a newly allocated pointer to the predicate register.  */
++static inline TCGv_ptr pred_full_reg_ptr(DisasContext *s, int regno)
++{
++    TCGv_ptr ret = tcg_temp_new_ptr();
++    tcg_gen_addi_ptr(ret, cpu_env, pred_full_reg_offset(s, regno));
++    return ret;
++}
++
+ bool disas_sve(DisasContext *, uint32_t);
+ bool disas_sme(DisasContext *, uint32_t);
+ 
+diff --git a/target/arm/translate.h b/target/arm/translate.h
+index e2e619dab2..af5d4a7086 100644
+--- a/target/arm/translate.h
++++ b/target/arm/translate.h
+@@ -156,6 +156,11 @@ static inline int plus_2(DisasContext *s, int x)
+     return x + 2;
+ }
+ 
++static inline int plus_12(DisasContext *s, int x)
++{
++    return x + 12;
++}
++
+ static inline int times_2(DisasContext *s, int x)
+ {
+     return x * 2;
+diff --git a/target/arm/sme.decode b/target/arm/sme.decode
+index 6e4483fdce..241b4895b7 100644
+--- a/target/arm/sme.decode
++++ b/target/arm/sme.decode
+@@ -22,3 +22,18 @@
+ ### SME Misc
+ 
+ ZERO            11000000 00 001 00000000000 imm:8
++
++### SME Move into/from Array
++
++%mova_rs        13:2 !function=plus_12
++&mova           esz rs pg zr za_imm v:bool to_vec:bool
++
++MOVA            11000000 esz:2 00000 0 v:1 .. pg:3 zr:5 0 za_imm:4  \
++                &mova to_vec=0 rs=%mova_rs
++MOVA            11000000 11    00000 1 v:1 .. pg:3 zr:5 0 za_imm:4  \
++                &mova to_vec=0 rs=%mova_rs esz=4
++
++MOVA            11000000 esz:2 00001 0 v:1 .. pg:3 0 za_imm:4 zr:5  \
++                &mova to_vec=1 rs=%mova_rs
++MOVA            11000000 11    00001 1 v:1 .. pg:3 0 za_imm:4 zr:5  \
++                &mova to_vec=1 rs=%mova_rs esz=4
+diff --git a/target/arm/sme_helper.c b/target/arm/sme_helper.c
+index eef2df73e1..e88244423d 100644
+--- a/target/arm/sme_helper.c
++++ b/target/arm/sme_helper.c
+@@ -19,8 +19,10 @@
+ 
+ #include "qemu/osdep.h"
+ #include "cpu.h"
+-#include "internals.h"
++#include "tcg/tcg-gvec-desc.h"
+ #include "exec/helper-proto.h"
++#include "qemu/int128.h"
++#include "vec_internal.h"
+ 
+ /* ResetSVEState */
+ void arm_reset_sve_state(CPUARMState *env)
+@@ -84,3 +86,150 @@ void helper_sme_zero(CPUARMState *env, uint32_t imm, uint32_t svl)
+         }
+     }
+ }
++
++
++/*
++ * When considering the ZA storage as an array of elements of
++ * type T, the index within that array of the Nth element of
++ * a vertical slice of a tile can be calculated like this,
++ * regardless of the size of type T. This is because the tiles
++ * are interleaved, so if type T is size N bytes then row 1 of
++ * the tile is N rows away from row 0. The division by N to
++ * convert a byte offset into an array index and the multiplication
++ * by N to convert from vslice-index-within-the-tile to
++ * the index within the ZA storage cancel out.
++ */
++#define tile_vslice_index(i) ((i) * sizeof(ARMVectorReg))
++
++/*
++ * When doing byte arithmetic on the ZA storage, the element
++ * byteoff bytes away in a tile vertical slice is always this
++ * many bytes away in the ZA storage, regardless of the
++ * size of the tile element, assuming that byteoff is a multiple
++ * of the element size. Again this is because of the interleaving
++ * of the tiles. For instance if we have 1 byte per element then
++ * each row of the ZA storage has one byte of the vslice data,
++ * and (counting from 0) byte 8 goes in row 8 of the storage
++ * at offset (8 * row-size-in-bytes).
++ * If we have 8 bytes per element then each row of the ZA storage
++ * has 8 bytes of the data, but there are 8 interleaved tiles and
++ * so byte 8 of the data goes into row 1 of the tile,
++ * which is again row 8 of the storage, so the offset is still
++ * (8 * row-size-in-bytes). Similarly for other element sizes.
++ */
++#define tile_vslice_offset(byteoff) ((byteoff) * sizeof(ARMVectorReg))
++
++
++/*
++ * Move Zreg vector to ZArray column.
++ */
++#define DO_MOVA_C(NAME, TYPE, H)                                        \
++void HELPER(NAME)(void *za, void *vn, void *vg, uint32_t desc)          \
++{                                                                       \
++    int i, oprsz = simd_oprsz(desc);                                    \
++    for (i = 0; i < oprsz; ) {                                          \
++        uint16_t pg = *(uint16_t *)(vg + H1_2(i >> 3));                 \
++        do {                                                            \
++            if (pg & 1) {                                               \
++                *(TYPE *)(za + tile_vslice_offset(i)) = *(TYPE *)(vn + H(i)); \
++            }                                                           \
++            i += sizeof(TYPE);                                          \
++            pg >>= sizeof(TYPE);                                        \
++        } while (i & 15);                                               \
++    }                                                                   \
++}
++
++DO_MOVA_C(sme_mova_cz_b, uint8_t, H1)
++DO_MOVA_C(sme_mova_cz_h, uint16_t, H1_2)
++DO_MOVA_C(sme_mova_cz_s, uint32_t, H1_4)
++
++void HELPER(sme_mova_cz_d)(void *za, void *vn, void *vg, uint32_t desc)
++{
++    int i, oprsz = simd_oprsz(desc) / 8;
++    uint8_t *pg = vg;
++    uint64_t *n = vn;
++    uint64_t *a = za;
++
++    for (i = 0; i < oprsz; i++) {
++        if (pg[H1(i)] & 1) {
++            a[tile_vslice_index(i)] = n[i];
++        }
++    }
++}
++
++void HELPER(sme_mova_cz_q)(void *za, void *vn, void *vg, uint32_t desc)
++{
++    int i, oprsz = simd_oprsz(desc) / 16;
++    uint16_t *pg = vg;
++    Int128 *n = vn;
++    Int128 *a = za;
++
++    /*
++     * Int128 is used here simply to copy 16 bytes, and to simplify
++     * the address arithmetic.
++     */
++    for (i = 0; i < oprsz; i++) {
++        if (pg[H2(i)] & 1) {
++            a[tile_vslice_index(i)] = n[i];
++        }
++    }
++}
++
++#undef DO_MOVA_C
++
++/*
++ * Move ZArray column to Zreg vector.
++ */
++#define DO_MOVA_Z(NAME, TYPE, H)                                        \
++void HELPER(NAME)(void *vd, void *za, void *vg, uint32_t desc)          \
++{                                                                       \
++    int i, oprsz = simd_oprsz(desc);                                    \
++    for (i = 0; i < oprsz; ) {                                          \
++        uint16_t pg = *(uint16_t *)(vg + H1_2(i >> 3));                 \
++        do {                                                            \
++            if (pg & 1) {                                               \
++                *(TYPE *)(vd + H(i)) = *(TYPE *)(za + tile_vslice_offset(i)); \
++            }                                                           \
++            i += sizeof(TYPE);                                          \
++            pg >>= sizeof(TYPE);                                        \
++        } while (i & 15);                                               \
++    }                                                                   \
++}
++
++DO_MOVA_Z(sme_mova_zc_b, uint8_t, H1)
++DO_MOVA_Z(sme_mova_zc_h, uint16_t, H1_2)
++DO_MOVA_Z(sme_mova_zc_s, uint32_t, H1_4)
++
++void HELPER(sme_mova_zc_d)(void *vd, void *za, void *vg, uint32_t desc)
++{
++    int i, oprsz = simd_oprsz(desc) / 8;
++    uint8_t *pg = vg;
++    uint64_t *d = vd;
++    uint64_t *a = za;
++
++    for (i = 0; i < oprsz; i++) {
++        if (pg[H1(i)] & 1) {
++            d[i] = a[tile_vslice_index(i)];
++        }
++    }
++}
++
++void HELPER(sme_mova_zc_q)(void *vd, void *za, void *vg, uint32_t desc)
++{
++    int i, oprsz = simd_oprsz(desc) / 16;
++    uint16_t *pg = vg;
++    Int128 *d = vd;
++    Int128 *a = za;
++
++    /*
++     * Int128 is used here simply to copy 16 bytes, and to simplify
++     * the address arithmetic.
++     */
++    for (i = 0; i < oprsz; i++, za += sizeof(ARMVectorReg)) {
++        if (pg[H2(i)] & 1) {
++            d[i] = a[tile_vslice_index(i)];
++        }
++    }
++}
++
++#undef DO_MOVA_Z
+diff --git a/target/arm/sve_helper.c b/target/arm/sve_helper.c
+index 0c6379e6e8..df16170469 100644
+--- a/target/arm/sve_helper.c
++++ b/target/arm/sve_helper.c
+@@ -3565,6 +3565,18 @@ void HELPER(sve_sel_zpzz_d)(void *vd, void *vn, void *vm,
+     }
+ }
+ 
++void HELPER(sve_sel_zpzz_q)(void *vd, void *vn, void *vm,
++                            void *vg, uint32_t desc)
++{
++    intptr_t i, opr_sz = simd_oprsz(desc) / 16;
++    Int128 *d = vd, *n = vn, *m = vm;
++    uint16_t *pg = vg;
++
++    for (i = 0; i < opr_sz; i += 1) {
++        d[i] = (pg[H2(i)] & 1 ? n : m)[i];
++    }
++}
++
+ /* Two operand comparison controlled by a predicate.
+  * ??? It is very tempting to want to be able to expand this inline
+  * with x86 instructions, e.g.
+diff --git a/target/arm/translate-sme.c b/target/arm/translate-sme.c
+index 971504559b..79c33d35c2 100644
+--- a/target/arm/translate-sme.c
++++ b/target/arm/translate-sme.c
+@@ -35,6 +35,74 @@
+ #include "decode-sme.c.inc"
+ 
+ 
++/*
++ * Resolve tile.size[index] to a host pointer, where tile and index
++ * are always decoded together, dependent on the element size.
++ */
++static TCGv_ptr get_tile_rowcol(DisasContext *s, int esz, int rs,
++                                int tile_index, bool vertical)
++{
++    int tile = tile_index >> (4 - esz);
++    int index = esz == MO_128 ? 0 : extract32(tile_index, 0, 4 - esz);
++    int pos, len, offset;
++    TCGv_i32 tmp;
++    TCGv_ptr addr;
++
++    /* Compute the final index, which is Rs+imm. */
++    tmp = tcg_temp_new_i32();
++    tcg_gen_trunc_tl_i32(tmp, cpu_reg(s, rs));
++    tcg_gen_addi_i32(tmp, tmp, index);
++
++    /* Prepare a power-of-two modulo via extraction of @len bits. */
++    len = ctz32(streaming_vec_reg_size(s)) - esz;
++
++    if (vertical) {
++        /*
++         * Compute the byte offset of the index within the tile:
++         *     (index % (svl / size)) * size
++         *   = (index % (svl >> esz)) << esz
++         * Perform the power-of-two modulo via extraction of the low @len bits.
++         * Perform the multiply by shifting left by @pos bits.
++         * Perform these operations simultaneously via deposit into zero.
++         */
++        pos = esz;
++        tcg_gen_deposit_z_i32(tmp, tmp, pos, len);
++
++        /*
++         * For big-endian, adjust the indexed column byte offset within
++         * the uint64_t host words that make up env->zarray[].
++         */
++        if (HOST_BIG_ENDIAN && esz < MO_64) {
++            tcg_gen_xori_i32(tmp, tmp, 8 - (1 << esz));
++        }
++    } else {
++        /*
++         * Compute the byte offset of the index within the tile:
++         *     (index % (svl / size)) * (size * sizeof(row))
++         *   = (index % (svl >> esz)) << (esz + log2(sizeof(row)))
++         */
++        pos = esz + ctz32(sizeof(ARMVectorReg));
++        tcg_gen_deposit_z_i32(tmp, tmp, pos, len);
++
++        /* Row slices are always aligned and need no endian adjustment. */
++    }
++
++    /* The tile byte offset within env->zarray is the row. */
++    offset = tile * sizeof(ARMVectorReg);
++
++    /* Include the byte offset of zarray to make this relative to env. */
++    offset += offsetof(CPUARMState, zarray);
++    tcg_gen_addi_i32(tmp, tmp, offset);
++
++    /* Add the byte offset to env to produce the final pointer. */
++    addr = tcg_temp_new_ptr();
++    tcg_gen_ext_i32_ptr(addr, tmp);
++    tcg_temp_free_i32(tmp);
++    tcg_gen_add_ptr(addr, addr, cpu_env);
++
++    return addr;
++}
++
+ static bool trans_ZERO(DisasContext *s, arg_ZERO *a)
+ {
+     if (!dc_isar_feature(aa64_sme, s)) {
+@@ -46,3 +114,62 @@ static bool trans_ZERO(DisasContext *s, arg_ZERO *a)
+     }
      return true;
  }
- 
--/* Check that SVE access is enabled.  If it is, return true.
-+/*
-+ * Check that SVE access is enabled.  If it is, return true.
-  * If not, emit code to generate an appropriate exception and return false.
-+ * This function corresponds to CheckSVEEnabled().
-  */
- bool sve_access_check(DisasContext *s)
- {
--    if (s->sve_excp_el) {
--        assert(!s->sve_access_checked);
--        s->sve_access_checked = true;
--
-+    if (s->pstate_sm || !dc_isar_feature(aa64_sve, s)) {
-+        assert(dc_isar_feature(aa64_sme, s));
-+        if (!sme_sm_enabled_check(s)) {
-+            goto fail_exit;
-+        }
-+    } else if (s->sve_excp_el) {
-         gen_exception_insn_el(s, s->pc_curr, EXCP_UDEF,
-                               syn_sve_access_trap(), s->sve_excp_el);
--        return false;
-+        goto fail_exit;
-     }
-     s->sve_access_checked = true;
-     return fp_access_check(s);
 +
-+ fail_exit:
-+    /* Assert that we only raise one exception per instruction. */
-+    assert(!s->sve_access_checked);
-+    s->sve_access_checked = true;
-+    return false;
- }
- 
- /*
++static bool trans_MOVA(DisasContext *s, arg_MOVA *a)
++{
++    static gen_helper_gvec_4 * const h_fns[5] = {
++        gen_helper_sve_sel_zpzz_b, gen_helper_sve_sel_zpzz_h,
++        gen_helper_sve_sel_zpzz_s, gen_helper_sve_sel_zpzz_d,
++        gen_helper_sve_sel_zpzz_q
++    };
++    static gen_helper_gvec_3 * const cz_fns[5] = {
++        gen_helper_sme_mova_cz_b, gen_helper_sme_mova_cz_h,
++        gen_helper_sme_mova_cz_s, gen_helper_sme_mova_cz_d,
++        gen_helper_sme_mova_cz_q,
++    };
++    static gen_helper_gvec_3 * const zc_fns[5] = {
++        gen_helper_sme_mova_zc_b, gen_helper_sme_mova_zc_h,
++        gen_helper_sme_mova_zc_s, gen_helper_sme_mova_zc_d,
++        gen_helper_sme_mova_zc_q,
++    };
++
++    TCGv_ptr t_za, t_zr, t_pg;
++    TCGv_i32 t_desc;
++    int svl;
++
++    if (!dc_isar_feature(aa64_sme, s)) {
++        return false;
++    }
++    if (!sme_smza_enabled_check(s)) {
++        return true;
++    }
++
++    t_za = get_tile_rowcol(s, a->esz, a->rs, a->za_imm, a->v);
++    t_zr = vec_full_reg_ptr(s, a->zr);
++    t_pg = pred_full_reg_ptr(s, a->pg);
++
++    svl = streaming_vec_reg_size(s);
++    t_desc = tcg_constant_i32(simd_desc(svl, svl, 0));
++
++    if (a->v) {
++        /* Vertical slice -- use sme mova helpers. */
++        if (a->to_vec) {
++            zc_fns[a->esz](t_zr, t_za, t_pg, t_desc);
++        } else {
++            cz_fns[a->esz](t_za, t_zr, t_pg, t_desc);
++        }
++    } else {
++        /* Horizontal slice -- reuse sve sel helpers. */
++        if (a->to_vec) {
++            h_fns[a->esz](t_zr, t_za, t_zr, t_pg, t_desc);
++        } else {
++            h_fns[a->esz](t_za, t_zr, t_za, t_pg, t_desc);
++        }
++    }
++
++    tcg_temp_free_ptr(t_za);
++    tcg_temp_free_ptr(t_zr);
++    tcg_temp_free_ptr(t_pg);
++
++    return true;
++}
 -- 
 2.34.1
 

@@ -1,181 +1,338 @@
-Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp349139lft;
-        Fri, 8 Jul 2022 08:47:26 -0700 (PDT)
-X-Received: by 2002:a05:6a00:2449:b0:528:3a29:e79d with SMTP id d9-20020a056a00244900b005283a29e79dmr4392347pfj.39.1657295246049;
-        Fri, 08 Jul 2022 08:47:26 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1657295246; cv=none;
+Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp349158lft;
+        Fri, 8 Jul 2022 08:47:29 -0700 (PDT)
+X-Received: by 2002:a17:903:2302:b0:16b:f554:b556 with SMTP id d2-20020a170903230200b0016bf554b556mr4197514plh.46.1657295249432;
+        Fri, 08 Jul 2022 08:47:29 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1657295249; cv=none;
         d=google.com; s=arc-20160816;
-        b=iD82wGyaaj1XEqWKYGPVzHTTQcssd1tDtb0sudK82S1TmdbIWWhNFfbkfM1SaerT3v
-         UdJxjWj2k4eIkbhEmaWk9lWgos2QXms1EMaUo7xVnO4QTLUbZ1N4dEzGOMqpu+ofGgoS
-         L6rY6MaF06VLk2WPU79uKyk3z9RjS3i3wptkTnwXSfT3thqwBQy7oD2EZDi3CtvvRDkr
-         rik8cEIYQFzieQsxQxi+NJ/PwThQX4DBlqK2xg233PdcNjXT0Z/B8TSt5/qaN0XTJbBt
-         Gq4sbcafMzKdN0xeAdVLezLO+PLIqViwxD3AXdeRsxexER+z0Fi+XweSpPUS8M5wx28a
-         6zZA==
+        b=tVUFYjMZWVUu5i7chhKAiTwjZ1aynycwYM8J3PztHbx4UjiRetvYK5fE/7VJIQqnAW
+         uZDG6w7Q+jgDklhnVH48iVRlBKcF6GKvz8BPSKX63385rpBR9xYJepH7cC4dW2JQDq8U
+         Y0AMIv3p4FXhftvOs7GK7tKKVEQ1+aICwXaiP03SEYTuKsMn710RunumQ/3CtgY4XmBo
+         G14zFKRsZauRY5YlU2zB/WFRDug5Vqhaxrq1bLvNlyT3cJMy48wHPRJStKcLZh/wBKb3
+         WYPP8F/joelfEJJEOqqkW0qZEWeRVsj5VtFGD/5pitRk+DvnZaUAcqL8y0+ZZIU0FEuX
+         tbWg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=K0p7VBr3aZVoDI9pUwFSD+XBTDwjM0eTDqSKAizakb0=;
-        b=IQJUUVCelpDWrEHzsreo2yuY8EpAFJ/VA3PDfkW5j9k1NtTDiEGofuNpVgYXpaAnvi
-         efv+3A9UaezS//5hs++gy6UMG5ZHua5ywRUiBbYwEj9KpGtk3y1Fw7pR5XSiPEosc4eB
-         DSSxOEWfv6su2usHN3LZEYm7pYeTqJP1J2ZU+U3R/4kk3PipJQJFAKa19P3tzrtTsOuI
-         1k8ZylTDnB3JBdmO7T7LGjFr5/eIVHQUH5+J8G9xnf0lA3Vqqq85tYwPI88w0qqeF6F/
-         jHNd1NqjmzJt/sf0QSw5vFza5D3WxOxL9b3dxRRFa4GBOq6fjqGRhgjb6Mzf2gG9i8Oq
-         sm3A==
+        bh=q073Mp4VcMDO3I3Vy8AI4TpHUeDs1rzP3KM+D2Dojc0=;
+        b=qN5We83qdP7wVQZhjUxQ4CHQtd48iMkWBV2kZzuiq+NlTVLzKG+yIoWuaJREeUJs/8
+         hA/K468AmJRRIVM6aYuOfNtzOxwJOkPnWtB9bgp1tTUwBhB5tNMkqz+fHsHdcnnrkpQY
+         /zNGG9Q+aYqKkjuzj9wqzPisZBAUrJttgzT8AgZsKpkA3hrdfrDW6sHfMTGjcB6roZ8p
+         DZ3b1nUgR0u0hizgACut6WvlUWfqxi4/0gxbZA5bg0vFsU4EXnbUeVrBVQw9gWQ4+x9w
+         hj436lDtJXDAEJmQqGRvF/LzD6ir/zdIL871RfX+MKozDQovt9vY/Oy/ZvfItr0ffov9
+         jwhw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=tBZ9gPj0;
+       dkim=pass header.i=@linaro.org header.s=google header.b=fgKbjynV;
        spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <richard.henderson@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id d1-20020a17090a114100b001ef8b289308sor921673pje.12.2022.07.08.08.47.25
+        by mx.google.com with SMTPS id g12-20020a65580c000000b00415abc3c2c1sor1363155pgr.16.2022.07.08.08.47.29
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Fri, 08 Jul 2022 08:47:26 -0700 (PDT)
+        Fri, 08 Jul 2022 08:47:29 -0700 (PDT)
 Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=tBZ9gPj0;
+       dkim=pass header.i=@linaro.org header.s=google header.b=fgKbjynV;
        spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
         h=from:to:cc:subject:date:message-id:in-reply-to:references
          :mime-version:content-transfer-encoding;
-        bh=K0p7VBr3aZVoDI9pUwFSD+XBTDwjM0eTDqSKAizakb0=;
-        b=tBZ9gPj0DZBefJt/34Pl0I6eyKEqPtgKbpHB8j1hu/pI/eH8IeNpmxNIve/MA/i0v0
-         bZ6W36dIcwyZMj6iJb4Hss65t7DF9E8kPim71tWkEtBQdEkHkS/ZyTMHxXpuiofYGmRx
-         GHyBTB4a1JSDNNUwJQYDVIunNQcPJxE1RrFWhNEXKYpJH2uh4CbLf9uYBfhXIu2EuDRo
-         B/kZGFyv4gVxq318jo5jN9NKAL4WDYFMo6G6vjKc0B7K4TTMuNoGlBq8L0a5zeK6bxKw
-         m0aOVb8TEq1ixaNeKhzgy3QfVenNYYyENp7AJMbhRQq9XxoOFv0a+2dUWIcnJxAZl5si
-         xdWg==
+        bh=q073Mp4VcMDO3I3Vy8AI4TpHUeDs1rzP3KM+D2Dojc0=;
+        b=fgKbjynVbMpZLRFnegJPE3DU229xWRdL/RcAZA3xZHUUrpy9bIyhxsExtYz95Wty6V
+         k1wQXM40TezwxDwBleIGmj1IMqDUuz76zAviOLhY0mMyo4N5g+wtpNh7wxhho216Vodu
+         b5hIW7HNDWvTiEg7rGBCdWEJIVF6hFVUamJNvawstYqUvpCaf3Cm0PHEvdmzGBDSck8E
+         xFJZHtuRHToCEu1BK7PFgnUn49D8t0WaiKd87+I+jmJMHuy8KgVrRx9IhiwHvkxR6q9y
+         P4Q400tSpzUJNw9mvZJCkVoKry1/Yhs+TZ6+Sx5Dmu8xRVzgzShP3EYP7HORZ4Ohr9Us
+         uiAQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
          :references:mime-version:content-transfer-encoding;
-        bh=K0p7VBr3aZVoDI9pUwFSD+XBTDwjM0eTDqSKAizakb0=;
-        b=eScZdhgXqTH/CuA1F/OKtf4vgs8i09QZf5bNTg95PpBcuRZqIoCI895RHqqDvaZxy5
-         tTrWN107PCoifKRLD7zAIliSTqeNrK6vH71BbZ6l/7eCfXhIBgRsXtvnknEke5Vq6aa8
-         pItO2/gLrcxx+P1Pm8+XHgPxr46KZz1UBwaT8tFgnY/DWndDhRRr2X5TFyPtxsykefGd
-         jajXypm4cxaBp0qcwpmV2DNhN0QlO8fH+GLKMh7nQlMGvXuv7fd0qDb0u7IXz6G3aYvZ
-         DyLlUkjuGaH0cPn42uPJqCN41R2lsHmlbt0COf1jCbhyA1wacwF2wBNgURmHPh473ISf
-         NWmw==
-X-Gm-Message-State: AJIora8a+NERWDTgTnTBDyCXQhRH/o8yQ0Q3jeXUY6IgUZXkIl9XZtiS
-	mhM1vwgwqM5kMxiMrbZ+HkxnEhRh
-X-Google-Smtp-Source: AGRyM1t5+nAuB4iZtxFm/R2ZRCLB2DfCr4ZUkG/ZVJsO0YGDC0CZmHkfygmqaggK3A4SxHPI3G1FKQ==
-X-Received: by 2002:a17:90b:4b49:b0:1ef:a03e:b671 with SMTP id mi9-20020a17090b4b4900b001efa03eb671mr525032pjb.108.1657295245521;
-        Fri, 08 Jul 2022 08:47:25 -0700 (PDT)
+        bh=q073Mp4VcMDO3I3Vy8AI4TpHUeDs1rzP3KM+D2Dojc0=;
+        b=gKFkzm6PWvI93EixFBlR7mxZ7tyDs/PJtL8jyke0RFiOwoHragjB7ehz6yffVYcGlD
+         JLFfyp2lvaeRTtU4Do3+UhZdjnyd25m/Oud1c5/kdVnnB8kzGqfEQjP/KO6I0X8rqkLL
+         6a4G8BjE47x9A0bW3y1JNqWszj1p1avbvERnhctsU4Mkl7PDwkJ0keEgCyICItBbmsFz
+         PBr5HBFvKXFUDdG4DoyZGqZ9Gk7+jsraKABctVgGNcB/yh8aL5kbNygCeBofCZINQUqe
+         0+nNZe6dyWRLS2a3GmxpvC4z+8BdnsSEWBKzo9mE/qk0nVQ3QmV979KhCvkG8KkgawZk
+         TNUQ==
+X-Gm-Message-State: AJIora/6C7JNKqnZZHQJG5+mboWITltbmnTvbT/mIEmvbYxdjbVEkk4N
+	Wl0ilPNk2jJiygx0uoTgsh1c6gyL
+X-Google-Smtp-Source: AGRyM1sc3OWUt5wzuqL+vIsTEiSb9rpjnX01UInnjEwf+D3HNcc2gGlnhmeRYcyZ3YuR2nxstFx8bA==
+X-Received: by 2002:a63:e658:0:b0:40d:dfde:89f7 with SMTP id p24-20020a63e658000000b0040ddfde89f7mr3857658pgj.178.1657295248857;
+        Fri, 08 Jul 2022 08:47:28 -0700 (PDT)
 Return-Path: <richard.henderson@linaro.org>
 Received: from stoup.. ([122.255.60.245])
-        by smtp.gmail.com with ESMTPSA id y3-20020a17090a390300b001ef81bac701sm1782089pjb.42.2022.07.08.08.47.23
+        by smtp.gmail.com with ESMTPSA id y3-20020a17090a390300b001ef81bac701sm1782089pjb.42.2022.07.08.08.47.25
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 08 Jul 2022 08:47:25 -0700 (PDT)
+        Fri, 08 Jul 2022 08:47:28 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-Subject: [RISU PATCH v4 06/29] Make some risu.c symbols static
-Date: Fri,  8 Jul 2022 21:16:37 +0530
-Message-Id: <20220708154700.18682-7-richard.henderson@linaro.org>
+Subject: [RISU PATCH v4 07/29] Add enum RisuOp
+Date: Fri,  8 Jul 2022 21:16:38 +0530
+Message-Id: <20220708154700.18682-8-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20220708154700.18682-1-richard.henderson@linaro.org>
 References: <20220708154700.18682-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: f3lSQfXGBCj/
+X-TUID: 9DcBacjCLuXJ
 
-These are unused in other translation units.
+Formalize the set of defines, plus -1, into an enum.
 
 Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- risu.c | 24 ++++++++++++------------
- 1 file changed, 12 insertions(+), 12 deletions(-)
+ risu.h         | 23 +++++++++++++++--------
+ reginfo.c      | 32 +++++++++++++++++++-------------
+ risu_aarch64.c |  6 +++---
+ risu_arm.c     |  6 +++---
+ risu_i386.c    |  4 ++--
+ risu_m68k.c    |  4 ++--
+ risu_ppc64.c   |  4 ++--
+ 7 files changed, 46 insertions(+), 33 deletions(-)
 
-diff --git a/risu.c b/risu.c
-index 26dc116..ab17c71 100644
---- a/risu.c
-+++ b/risu.c
-@@ -31,18 +31,18 @@
- void *memblock;
+diff --git a/risu.h b/risu.h
+index e2b4508..a7aa929 100644
+--- a/risu.h
++++ b/risu.h
+@@ -45,11 +45,17 @@ extern uintptr_t image_start_address;
+ extern void *memblock;
  
- static int comm_fd;
--bool trace;
--size_t signal_count;
-+static bool trace;
-+static size_t signal_count;
+ /* Ops code under test can request from risu: */
+-#define OP_COMPARE 0
+-#define OP_TESTEND 1
+-#define OP_SETMEMBLOCK 2
+-#define OP_GETMEMBLOCK 3
+-#define OP_COMPAREMEM 4
++typedef enum {
++    /* Any other sigill besides the destignated undefined insn.  */
++    OP_SIGILL = -1,
++
++    /* These are generated by the designated undefined insn. */
++    OP_COMPARE = 0,
++    OP_TESTEND = 1,
++    OP_SETMEMBLOCK = 2,
++    OP_GETMEMBLOCK = 3,
++    OP_COMPAREMEM = 4,
++} RisuOp;
  
- #ifdef HAVE_ZLIB
- #include <zlib.h>
--gzFile gz_trace_file;
-+static gzFile gz_trace_file;
- #define TRACE_TYPE "compressed"
- #else
- #define TRACE_TYPE "uncompressed"
- #endif
+ /* The memory block should be this long */
+ #define MEMBLOCKLEN 8192
+@@ -114,10 +120,11 @@ void set_ucontext_paramreg(void *vuc, uint64_t value);
+ /* Return the value of the parameter register from a reginfo. */
+ uint64_t get_reginfo_paramreg(struct reginfo *ri);
  
--sigjmp_buf jmpbuf;
-+static sigjmp_buf jmpbuf;
+-/* Return the risu operation number we have been asked to do,
+- * or -1 if this was a SIGILL for a non-risuop insn.
++/*
++ * Return the risu operation number we have been asked to do,
++ * or OP_SIGILL if this was a SIGILL for a non-risuop insn.
+  */
+-int get_risuop(struct reginfo *ri);
++RisuOp get_risuop(struct reginfo *ri);
  
- #define ARRAY_SIZE(x)	(sizeof(x) / sizeof((x)[0]))
+ /* Return the PC from a reginfo */
+ uintptr_t get_pc(struct reginfo *ri);
+diff --git a/reginfo.c b/reginfo.c
+index 1b2a821..2d67c93 100644
+--- a/reginfo.c
++++ b/reginfo.c
+@@ -11,7 +11,7 @@
  
-@@ -113,7 +113,7 @@ void respond_trace(int r)
+ #include <stdio.h>
+ #include <string.h>
+-
++#include <stdlib.h>
+ #include "risu.h"
+ 
+ struct reginfo master_ri, apprentice_ri;
+@@ -25,7 +25,7 @@ int send_register_info(write_fn write_fn, void *uc)
+ {
+     struct reginfo ri;
+     trace_header_t header;
+-    int op;
++    RisuOp op;
+ 
+     reginfo_init(&ri, uc);
+     op = get_risuop(&ri);
+@@ -38,11 +38,18 @@ int send_register_info(write_fn write_fn, void *uc)
      }
- }
  
--void master_sigill(int sig, siginfo_t *si, void *uc)
-+static void master_sigill(int sig, siginfo_t *si, void *uc)
- {
-     int r;
-     signal_count++;
-@@ -135,7 +135,7 @@ void master_sigill(int sig, siginfo_t *si, void *uc)
+     switch (op) {
++    case OP_COMPARE:
+     case OP_TESTEND:
+-        write_fn(&ri, reginfo_size());
+-        /* if we are tracing write_fn will return 0 unlike a remote
+-           end, hence we force return of 1 here */
+-        return 1;
++    case OP_SIGILL:
++        /*
++         * Do a simple register compare on (a) explicit request
++         * (b) end of test (c) a non-risuop UNDEF
++         */
++        if (write_fn(&ri, reginfo_size()) != 0) {
++            return -1;
++        }
++        /* For OP_TEST_END, force return 1 to exit. */
++        return op == OP_TESTEND;
+     case OP_SETMEMBLOCK:
+         memblock = (void *)(uintptr_t)get_reginfo_paramreg(&ri);
+         break;
+@@ -53,12 +60,8 @@ int send_register_info(write_fn write_fn, void *uc)
+     case OP_COMPAREMEM:
+         return write_fn(memblock, MEMBLOCKLEN);
+         break;
+-    case OP_COMPARE:
+     default:
+-        /* Do a simple register compare on (a) explicit request
+-         * (b) end of test (c) a non-risuop UNDEF
+-         */
+-        return write_fn(&ri, reginfo_size());
++        abort();
      }
+     return 0;
+ }
+@@ -74,8 +77,9 @@ int send_register_info(write_fn write_fn, void *uc)
+ int recv_and_compare_register_info(read_fn read_fn,
+                                    respond_fn resp_fn, void *uc)
+ {
+-    int resp = 0, op;
++    int resp = 0;
+     trace_header_t header;
++    RisuOp op;
+ 
+     reginfo_init(&master_ri, uc);
+     op = get_risuop(&master_ri);
+@@ -97,7 +101,7 @@ int recv_and_compare_register_info(read_fn read_fn,
+     switch (op) {
+     case OP_COMPARE:
+     case OP_TESTEND:
+-    default:
++    case OP_SIGILL:
+         /* Do a simple register compare on (a) explicit request
+          * (b) end of test (c) a non-risuop UNDEF
+          */
+@@ -130,6 +134,8 @@ int recv_and_compare_register_info(read_fn read_fn,
+         }
+         resp_fn(resp);
+         break;
++    default:
++        abort();
+     }
+ 
+     return resp;
+diff --git a/risu_aarch64.c b/risu_aarch64.c
+index 492d141..f8a8412 100644
+--- a/risu_aarch64.c
++++ b/risu_aarch64.c
+@@ -29,16 +29,16 @@ uint64_t get_reginfo_paramreg(struct reginfo *ri)
+     return ri->regs[0];
  }
  
--void apprentice_sigill(int sig, siginfo_t *si, void *uc)
-+static void apprentice_sigill(int sig, siginfo_t *si, void *uc)
+-int get_risuop(struct reginfo *ri)
++RisuOp get_risuop(struct reginfo *ri)
  {
-     int r;
-     signal_count++;
-@@ -180,9 +180,9 @@ static void set_sigill_handler(void (*fn) (int, siginfo_t *, void *))
- typedef void entrypoint_fn(void);
- 
- uintptr_t image_start_address;
--entrypoint_fn *image_start;
-+static entrypoint_fn *image_start;
- 
--void load_image(const char *imgfile)
-+static void load_image(const char *imgfile)
- {
-     /* Load image file into memory as executable */
-     struct stat st;
-@@ -214,7 +214,7 @@ void load_image(const char *imgfile)
-     image_start_address = (uintptr_t) addr;
+     /* Return the risuop we have been asked to do
+-     * (or -1 if this was a SIGILL for a non-risuop insn)
++     * (or OP_SIGILL if this was a SIGILL for a non-risuop insn)
+      */
+     uint32_t insn = ri->faulting_insn;
+     uint32_t op = insn & 0xf;
+     uint32_t key = insn & ~0xf;
+     uint32_t risukey = 0x00005af0;
+-    return (key != risukey) ? -1 : op;
++    return (key != risukey) ? OP_SIGILL : op;
  }
  
--int master(void)
-+static int master(void)
- {
-     if (sigsetjmp(jmpbuf, 1)) {
- #ifdef HAVE_ZLIB
-@@ -240,7 +240,7 @@ int master(void)
-     return EXIT_FAILURE;
+ uintptr_t get_pc(struct reginfo *ri)
+diff --git a/risu_arm.c b/risu_arm.c
+index 5fcb2a5..a20bf73 100644
+--- a/risu_arm.c
++++ b/risu_arm.c
+@@ -56,17 +56,17 @@ uint64_t get_reginfo_paramreg(struct reginfo *ri)
+     return ri->gpreg[0];
  }
  
--int apprentice(void)
-+static int apprentice(void)
+-int get_risuop(struct reginfo *ri)
++RisuOp get_risuop(struct reginfo *ri)
  {
-     if (sigsetjmp(jmpbuf, 1)) {
- #ifdef HAVE_ZLIB
-@@ -261,9 +261,9 @@ int apprentice(void)
-     return EXIT_FAILURE;
+     /* Return the risuop we have been asked to do
+-     * (or -1 if this was a SIGILL for a non-risuop insn)
++     * (or OP_SIGILL if this was a SIGILL for a non-risuop insn)
+      */
+     uint32_t insn = ri->faulting_insn;
+     int isz = ri->faulting_insn_size;
+     uint32_t op = insn & 0xf;
+     uint32_t key = insn & ~0xf;
+     uint32_t risukey = (isz == 2) ? 0xdee0 : 0xe7fe5af0;
+-    return (key != risukey) ? -1 : op;
++    return (key != risukey) ? OP_SIGILL : op;
  }
  
--int ismaster;
-+static int ismaster;
+ uintptr_t get_pc(struct reginfo *ri)
+diff --git a/risu_i386.c b/risu_i386.c
+index 9962b8f..127e816 100644
+--- a/risu_i386.c
++++ b/risu_i386.c
+@@ -38,12 +38,12 @@ uint64_t get_reginfo_paramreg(struct reginfo *ri)
+     return ri->gregs[REG_E(AX)];
+ }
  
--void usage(void)
-+static void usage(void)
+-int get_risuop(struct reginfo *ri)
++RisuOp get_risuop(struct reginfo *ri)
  {
-     fprintf(stderr,
-             "Usage: risu [--master] [--host <ip>] [--port <port>] <image file>"
+     if ((ri->faulting_insn & 0xf8ffff) == 0xc0b90f) { /* UD1 %xxx,%eax */
+         return (ri->faulting_insn >> 16) & 7;
+     }
+-    return -1;
++    return OP_SIGILL;
+ }
+ 
+ uintptr_t get_pc(struct reginfo *ri)
+diff --git a/risu_m68k.c b/risu_m68k.c
+index 1056eef..acdd57a 100644
+--- a/risu_m68k.c
++++ b/risu_m68k.c
+@@ -25,13 +25,13 @@ uint64_t get_reginfo_paramreg(struct reginfo *ri)
+     return ri->gregs[R_A0];
+ }
+ 
+-int get_risuop(struct reginfo *ri)
++RisuOp get_risuop(struct reginfo *ri)
+ {
+     uint32_t insn = ri->faulting_insn;
+     uint32_t op = insn & 0xf;
+     uint32_t key = insn & ~0xf;
+     uint32_t risukey = 0x4afc7000;
+-    return (key != risukey) ? -1 : op;
++    return (key != risukey) ? OP_SIGILL : op;
+ }
+ 
+ uintptr_t get_pc(struct reginfo *ri)
+diff --git a/risu_ppc64.c b/risu_ppc64.c
+index a3028f7..9df8d58 100644
+--- a/risu_ppc64.c
++++ b/risu_ppc64.c
+@@ -32,13 +32,13 @@ uint64_t get_reginfo_paramreg(struct reginfo *ri)
+     return ri->gregs[0];
+ }
+ 
+-int get_risuop(struct reginfo *ri)
++RisuOp get_risuop(struct reginfo *ri)
+ {
+     uint32_t insn = ri->faulting_insn;
+     uint32_t op = insn & 0xf;
+     uint32_t key = insn & ~0xf;
+     uint32_t risukey = 0x00005af0;
+-    return (key != risukey) ? -1 : op;
++    return (key != risukey) ? OP_SIGILL : op;
+ }
+ 
+ uintptr_t get_pc(struct reginfo *ri)
 -- 
 2.34.1

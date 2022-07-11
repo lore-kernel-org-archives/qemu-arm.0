@@ -1,218 +1,188 @@
-Received: by 2002:ac2:596f:0:0:0:0:0 with SMTP id h15csp795158lfp;
-        Mon, 11 Jul 2022 05:26:52 -0700 (PDT)
-X-Google-Smtp-Source: AGRyM1s3yfs377eYXZTns8bKCqtMg/0E28MKqD+0Sxcz3NI+N/IHMItgQANyK7/wX5o0EO5zDza2
-X-Received: by 2002:a05:622a:201:b0:319:fd74:3771 with SMTP id b1-20020a05622a020100b00319fd743771mr13470811qtx.669.1657542412340;
-        Mon, 11 Jul 2022 05:26:52 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1657542412; cv=none;
+Received: by 2002:ac2:596f:0:0:0:0:0 with SMTP id h15csp848786lfp;
+        Mon, 11 Jul 2022 06:55:22 -0700 (PDT)
+X-Google-Smtp-Source: AGRyM1tOwmzp0w5HQLXih+guwv0mQz1VBBpQw0dZietXc9ZF8fIPg0NFLAUiWrvwhi+UCstM7im4
+X-Received: by 2002:a05:6402:27ca:b0:43a:c342:b226 with SMTP id c10-20020a05640227ca00b0043ac342b226mr16189118ede.342.1657547722645;
+        Mon, 11 Jul 2022 06:55:22 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1657547722; cv=none;
         d=google.com; s=arc-20160816;
-        b=mWyckWwmfIHJD41TdI2DVfVjue4rh1Ns4A/2HVk5W2egZ6i/NGLQuiJkWMm7ADCUKy
-         m7Z+t9ksDLz8HQD28v3Vxed5MZKv4ihbSfvC9MPWj1UZoRxMRVGsqBFi3r+dhS2dtrYu
-         1pFqj0R5RGolG1JQa/DHLOd3HmcdgtJZ5AOKy31PnRlZa989+2UwWOGD9794BjRIp57g
-         2cUFsb06eef1PBhngKRsYUXG789G/QUdE7QlhZ9qQbDSUvEyks5/FlTIlk5rl+1IZLrU
-         a2cOJBni1fPeyX6cq6xysOh3x5cl6yuQJJA5G8YKoFQ0rb4ZPuPcC3tU1yJYCaB3laXq
-         UmpQ==
+        b=I5ZefBPd4CCNadzLu7r4rLTMk6LhnqxQNiTbg3yA7Mz399KyGe8MQ3GI4s0SAggxpd
+         j/M4OzoMO7fNS798+eBFH1h/UD2j6f/3kYfRV7FcypE62w+ahYIbGXEImD6qbY4pzvuR
+         lmTpjYCMSMUJTOSojVHNrkos+rAQs3lwx+k5U1RDwXvYRDqNsqnwnttMbuWi+Vtg8Wl+
+         XnPZ1q7zRYkRIFML9yp3OKMwWA2mjyry2P4pAPxQUmI3lqOGt41UHQITL0LFkjM8efz9
+         UwhsE8IvWA0e+okR7W9fkTliDKHk9b0u0qnf6VeYU2Z4fZ8o0QMXPpzt0/CyZJhhRFa2
+         hDDA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:cc:to:from:date
-         :references:in-reply-to:message-id:mime-version:user-agent
-         :feedback-id:dkim-signature:dkim-signature;
-        bh=Vi4vr9+Iaqsnwt0/FE4RWix28SqDR8s2ycbcSmiry1U=;
-        b=AR0zl3Qnygz7OzM1FY4qBDydl/CKdSmqChPq+Ye1pKpIEfvzGRx0rBvlQ/NNuZQ9o4
-         LBxVXSJUFufyPkpHQtHzEtF6GFw86EOaLfnhMxjqjmepCuhtxCd1v/P0++cy5zUVboE/
-         vOcbMLVk/KUU3go1c4N5cWoljPVIsOv0dlMkrtWZuONL1nnWRAkvTShdKnxdJk8Eb1GZ
-         XXsOmjacGfFoAdyUWEENshFJjcvYiW99McpjT+hoOEStOUXgRwg8Qvsfgo3PMDpXlEWp
-         cYjfpAh7cLKrIm/aJF2hmdvOBA/2EjDaNG6iii46sGT9SnTDqI+1CTqPOOJluvTPYpO1
-         m4wA==
+        h=list-id:precedence:user-agent:in-reply-to:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
+         :dkim-signature;
+        bh=i6aMyK5Ntv0hUxRexx3zBfDiHceMvVJG/f5gGbTdYak=;
+        b=w5kHZEL4jK3aLpobk7Sv7rBI3tyObMlrYpSV54haoYrHxY+0QC5xSfqRBUYVhiI+FW
+         jsOJBxsV8ZayRkwDo6QTAp8JcSFN2QUzNXaL78g1xG9qxzNMeTaUX7WVwsR5ZWlt0FA3
+         hfn85givlh8I+jicykU3zwi7ZGPpiLgR4/jricmDlf5ymS1PdI3xjPGT6MgAzXmP23qZ
+         LCuV+zss+JeJNagrB8QMXY+0ueSgJjBNHw/UWmyAWp6tjlfg+8ByZNu7k+Td0szyx7SM
+         rYlEvYfTLKI9RpLTfTvPxT1cwrsb+cT+LpEVHjeiixADXisyUA2VYrhXdMBBHXbgtRuC
+         WRAw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@aj.id.au header.s=fm2 header.b=LFJmge2u;
-       dkim=fail header.i=@messagingengine.com header.s=fm3 header.b=GByfh8qo;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id w12-20020a05622a134c00b0031ea89b9a12si4566573qtk.284.2022.07.11.05.26.52
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 11 Jul 2022 05:26:52 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=fWH0uEx+;
+       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <kvm-owner@vger.kernel.org>
+Received: from out1.vger.email (out1.vger.email. [2620:137:e000::1:20])
+        by mx.google.com with ESMTP id k12-20020a17090632cc00b00715a028661asi9277091ejk.345.2022.07.11.06.55.22;
+        Mon, 11 Jul 2022 06:55:22 -0700 (PDT)
+Received-SPF: pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) client-ip=2620:137:e000::1:20;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@aj.id.au header.s=fm2 header.b=LFJmge2u;
-       dkim=fail header.i=@messagingengine.com header.s=fm3 header.b=GByfh8qo;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:46636 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1oAsV1-0004lL-OT
-	for alex.bennee@linaro.org; Mon, 11 Jul 2022 08:26:51 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46068)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <andrew@aj.id.au>)
- id 1oAsUf-0004is-QP; Mon, 11 Jul 2022 08:26:30 -0400
-Received: from out2-smtp.messagingengine.com ([66.111.4.26]:54081)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <andrew@aj.id.au>)
- id 1oAsUd-0001sT-Up; Mon, 11 Jul 2022 08:26:29 -0400
-Received: from compute3.internal (compute3.nyi.internal [10.202.2.43])
- by mailout.nyi.internal (Postfix) with ESMTP id 010C95C0094;
- Mon, 11 Jul 2022 08:26:24 -0400 (EDT)
-Received: from imap50 ([10.202.2.100])
- by compute3.internal (MEProxy); Mon, 11 Jul 2022 08:26:24 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=aj.id.au; h=cc
- :cc:content-type:date:date:from:from:in-reply-to:in-reply-to
- :message-id:mime-version:references:reply-to:sender:subject
- :subject:to:to; s=fm2; t=1657542383; x=1657628783; bh=Vi4vr9+Iaq
- snwt0/FE4RWix28SqDR8s2ycbcSmiry1U=; b=LFJmge2uvDDrO+4hbPfPL0HN9b
- n9Q01U/92wjVO+Th1tdmRZe/c5mKwzdAo/V6jpV0da/DRIZIBldAgOn+oJycyDaw
- hl8rPguU1At5lPqMbFcI/9REyRKBfobdPY/JFleD+nvYjXXYNMtau/Sr0OvwXiCc
- MDz+in7BmfXPimhQdVF4sLdPmx+q8n4QL7Kf7BGEpHbpAXBezJZa9nUyAvKk5aTg
- TLgAXGdFGwmHhN59ISz/ORz4vQcEPHZAeHNx3ZTTdVO84aCxGrUvDNYRX3w5pFd6
- rX04/9C+coS7UZKmqUp37KG04hdY7CWclZJ6jtOdO/tPzt0L+H7ui/fmBKtA==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
- messagingengine.com; h=cc:cc:content-type:date:date:feedback-id
- :feedback-id:from:from:in-reply-to:in-reply-to:message-id
- :mime-version:references:reply-to:sender:subject:subject:to:to
- :x-me-proxy:x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=
- fm3; t=1657542383; x=1657628783; bh=Vi4vr9+Iaqsnwt0/FE4RWix28SqD
- R8s2ycbcSmiry1U=; b=GByfh8qoXktQY1NKAzeVLhdEpWNprnRafhU++FXa56w3
- 8FdVMgz9bMo7ScQdQBOqtqRPngqFkY36fTVbeWdBrs6cEKYgXQSHQeNWEhmqm7se
- 5JtX492AcGXXDFoNZpprXLrHqcY2UtC39lRyjyKwjjrLPW7jWM1sxAmK3sp1BS6Q
- sTONhWIlzfRJa3AMx48TVEswIUqtXdKzYrMWvfETuIHt0W86aW67P/L+myS8zVO+
- F40hlAUgqMrP4h6qzS8AJrsfQmE8MThNe8TRkll0VnuvWql3+E65mvQZUYT/+e8j
- KpQ20JRcFoQ/Hp383LbMiMfFnq2CYu7AL8qLLqiUiw==
-X-ME-Sender: <xms:7xbMYmc8FLPLW65-mxWarB-qcxJpYuHTPnzH0D8c20VcgO0b9mLTsg>
- <xme:7xbMYgNezLaa1fm8urXMwx144pZCO7Sf3XQ3c8c9qAJTFfNhs-8oFJJSccEMKMZQs
- W9vUjM6LMFN0H-9Ig>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvfedrudejfedggeelucetufdoteggodetrfdotf
- fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
- uceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmne
- cujfgurhepofgfggfkjghffffhvfevufgtsehttdertderredtnecuhfhrohhmpedftehn
- ughrvgifucflvghffhgvrhihfdcuoegrnhgurhgvfiesrghjrdhiugdrrghuqeenucggtf
- frrghtthgvrhhnpeekvdekjeekgfejudffteetgeejkeetteduvedtffdtledutdfhheev
- feetkeeiteenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhgrihhlfhhroh
- hmpegrnhgurhgvfiesrghjrdhiugdrrghu
-X-ME-Proxy: <xmx:7xbMYngRn61VDknnfb6Av79lgeJLLgLrxDObqNcXbGd5Px8e-0OIhQ>
- <xmx:7xbMYj-s70UcZY-mf91miRAUOs3FOrNe5WYcMfKuOEyDHE3xVc-WaQ>
- <xmx:7xbMYiu1JMQOaMkR9NTfv6xqB-2SVBbU5M_lwGYqPdCyvIbsfuMXWA>
- <xmx:7xbMYmL6jDgK6HURkXsleWjg5rKSn5fo0inD9JaKbXad7QCXnI3tvg>
-Feedback-ID: idfb84289:Fastmail
-Received: by mailuser.nyi.internal (Postfix, from userid 501)
- id A7980170007E; Mon, 11 Jul 2022 08:26:23 -0400 (EDT)
-X-Mailer: MessagingEngine.com Webmail Interface
-User-Agent: Cyrus-JMAP/3.7.0-alpha0-720-gbf5afa95ff-fm-20220708.001-gbf5afa95
-Mime-Version: 1.0
-Message-Id: <db1ffbd9-a827-4fba-8e4f-83522634f20b@www.fastmail.com>
-In-Reply-To: <CACPK8Xe-BXFt7oefdO-QS67tQSRP6arzgnGO973MYDYOMrQK4w@mail.gmail.com>
-References: <20220707071731.34047-1-peter@pjd.dev>
- <20220707071731.34047-2-peter@pjd.dev>
- <CACPK8Xe-BXFt7oefdO-QS67tQSRP6arzgnGO973MYDYOMrQK4w@mail.gmail.com>
-Date: Mon, 11 Jul 2022 21:55:55 +0930
-From: "Andrew Jeffery" <andrew@aj.id.au>
-To: "Joel Stanley" <joel@jms.id.au>, "Peter Delevoryas" <peter@pjd.dev>
-Cc: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>,
- "Peter Maydell" <peter.maydell@linaro.org>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9_via?= <qemu-arm@nongnu.org>,
- "Cameron Esfahani via" <qemu-devel@nongnu.org>
-Subject: Re: [PATCH 1/2] hw/gpio/aspeed: Don't let guests modify input pins
-Content-Type: text/plain
-Received-SPF: pass client-ip=66.111.4.26; envelope-from=andrew@aj.id.au;
- helo=out2-smtp.messagingengine.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
-X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: VX3fzrrc1YM2
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=fWH0uEx+;
+       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
+        id S229832AbiGKNzV (ORCPT <rfc822;daniel.diaz@linaro.org>
+        + 2 others); Mon, 11 Jul 2022 09:55:21 -0400
+Received: from lindbergh.monkeyblade.net ([23.128.96.19]:52158 "EHLO
+        lindbergh.monkeyblade.net" rhost-flags-OK-OK-OK-OK) by vger.kernel.org
+        with ESMTP id S229641AbiGKNzU (ORCPT <rfc822;kvm@vger.kernel.org>);
+        Mon, 11 Jul 2022 09:55:20 -0400
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com [170.10.129.124])
+        by lindbergh.monkeyblade.net (Postfix) with ESMTP id 0D6C65FAE2
+        for <kvm@vger.kernel.org>; Mon, 11 Jul 2022 06:55:19 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+        s=mimecast20190719; t=1657547719;
+        h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+         to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+         in-reply-to:in-reply-to:references:references;
+        bh=i6aMyK5Ntv0hUxRexx3zBfDiHceMvVJG/f5gGbTdYak=;
+        b=fWH0uEx+PdlwAHTS/lTplmYno3tWqoVgFNC0lBQ7gMo77V1juoFexqcnUWLky/OjREbRlw
+        Y5DqcLMVaQByVYQJEFyrVoefPltfb63VRmRItHjIYy+PTktvMi4iCbdldRCwXwejoR08BS
+        h6Cku7+z3dqR2+ZKRHUELmkF4tbmT2Q=
+Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
+ [209.85.221.70]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-453-jDekvvC-Pt20m1oMqXj7BA-1; Mon, 11 Jul 2022 09:55:17 -0400
+X-MC-Unique: jDekvvC-Pt20m1oMqXj7BA-1
+Received: by mail-wr1-f70.google.com with SMTP id g10-20020adfa58a000000b0021d419f7751so669363wrc.23
+        for <kvm@vger.kernel.org>; Mon, 11 Jul 2022 06:55:17 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+         :mime-version:content-disposition:in-reply-to:user-agent;
+        bh=i6aMyK5Ntv0hUxRexx3zBfDiHceMvVJG/f5gGbTdYak=;
+        b=n7nAgQhTS7a4Dnkwe59s1yHP0vxXji5sXOS7itXD8mdsaNwaN3hQ78/iWdToZ1YZhz
+         Gz2MDWheLvUdHm5wxsG+N1ekHxSOAQgX9yV5FWqoZmWVL3taTNgC2pUzZa0teD2vHrJi
+         gEiZYhPuMHZSTIs5f/jt/mwo919SSLY1d1NJSdZEF8HnsaPnoK4ZzUvlxivEq1bkVbEF
+         XrFvEobLec9AB+9BKfAZ4INF+W1OCxJFyrPHRXm7JOvMRAy7/J43quftDY0VnAiM0cGd
+         Jb9LUPx6pZ3PUuMo+pMTHQs8WDLfqxro5CpnDDQ/h005G1lk7Vh0G5MxmonAoMxdy1dJ
+         vi+A==
+X-Gm-Message-State: AJIora8atK0dambNKvc39DHyEnxC3G87atqY4ShqThNWH+oz+QM+FxmV
+        +30+OgK9a1qvzAjOXzLWGG3Fhh/zoilLHMDv57UY3KTLJdUi2WrYWJv1oSuPGrmbMJ+hq7BodDW
+        k1zUZI2TBJ7LK
+X-Received: by 2002:a5d:440f:0:b0:21d:888b:a65b with SMTP id z15-20020a5d440f000000b0021d888ba65bmr17363556wrq.655.1657547716773;
+        Mon, 11 Jul 2022 06:55:16 -0700 (PDT)
+X-Received: by 2002:a5d:440f:0:b0:21d:888b:a65b with SMTP id z15-20020a5d440f000000b0021d888ba65bmr17363542wrq.655.1657547716581;
+        Mon, 11 Jul 2022 06:55:16 -0700 (PDT)
+Received: from work-vm (cpc109025-salf6-2-0-cust480.10-2.cable.virginm.net. [82.30.61.225])
+        by smtp.gmail.com with ESMTPSA id f12-20020a05600c4e8c00b003a2cf17a894sm11047981wmq.41.2022.07.11.06.55.14
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 11 Jul 2022 06:55:15 -0700 (PDT)
+Date:   Mon, 11 Jul 2022 14:55:13 +0100
+From:   "Dr. David Alan Gilbert" <dgilbert@redhat.com>
+To:     Cornelia Huck <cohuck@redhat.com>
+Cc:     Peter Maydell <peter.maydell@linaro.org>,
+        Thomas Huth <thuth@redhat.com>,
+        Laurent Vivier <lvivier@redhat.com>,
+        Eric Auger <eauger@redhat.com>,
+        Juan Quintela <quintela@redhat.com>, qemu-arm@nongnu.org,
+        qemu-devel@nongnu.org, kvm@vger.kernel.org
+Subject: Re: [PATCH RFC v2 0/2] arm: enable MTE for QEMU + kvm
+Message-ID: <YswrwWVLlhoF2fN6@work-vm>
+References: <20220707161656.41664-1-cohuck@redhat.com>
+ <YswkdVeESqf5sknQ@work-vm>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <YswkdVeESqf5sknQ@work-vm>
+User-Agent: Mutt/2.2.6 (2022-06-05)
+X-Spam-Status: No, score=-3.4 required=5.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+        DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,RCVD_IN_DNSWL_LOW,
+        SPF_HELO_NONE,SPF_NONE,T_SCC_BODY_TEXT_LINE autolearn=ham
+        autolearn_force=no version=3.4.6
+X-Spam-Checker-Version: SpamAssassin 3.4.6 (2021-04-09) on
+        lindbergh.monkeyblade.net
+Precedence: bulk
+List-ID: <kvm.vger.kernel.org>
+X-Mailing-List: kvm@vger.kernel.org
+X-TUID: hzmPvkKtHDma
 
+* Dr. David Alan Gilbert (dgilbert@redhat.com) wrote:
+> * Cornelia Huck (cohuck@redhat.com) wrote:
+> > This series makes it possible to enable MTE for kvm guests, if the kernel
+> > supports it. Again, tested on the simulator via patiently waiting for the
+> > arm64/mte kselftests to finish successfully.
+> > 
+> > For tcg, turning on mte on the machine level (to get tag memory) stays a
+> > requirement. If the new mte cpu feature is not explicitly specified, a tcg
+> > vm will get mte depending on the presence of tag memory (just as today).
+> > 
+> > For kvm, mte stays off by default; this is because migration is not yet
+> > supported (postcopy will need an extension of the kernel interface, possibly
+> > an extension of the userfaultfd interface), and turning on mte will add a
+> > migration blocker.
+> 
+> My assumption was that a normal migration would need something as well
+> to retrieve and place the MTE flags; albeit not atomically.
+> 
+> > My biggest question going forward is actually concerning migration; I gather
+> > that we should not bother adding something unless postcopy is working as well?
+> 
+> I don't think that restriction is fair on you; just make sure
+> postcopy_ram_supported_by_host gains an arch call and fails cleanly;
+> that way if anyone tries to enable postcopy they'll find out with a
+> clean fail.
+> 
+> > If I'm not misunderstanding things, we need a way to fault in a page together
+> > with the tag; doing that in one go is probably the only way that we can be
+> > sure that this is race-free on the QEMU side. Comments welcome :)
+> 
+> I think it will.
+> But, ignoring postcopy for a minute, with KVM how do different types of
+> backing memory work - e.g. if I back a region of guest memory with
+> /dev/shm/something or a hugepage equivalent, where does the MTE memory
+> come from, and how do you set it?
 
+Another case that just came to mind, are the data content optimisations;
+we special case all-zero pages, which I guess you still need to transmit
+tags for, and the xbzrle page-difference code wouldn't notice
+differences in tags.
 
-On Thu, 7 Jul 2022, at 17:50, Joel Stanley wrote:
-> On Thu, 7 Jul 2022 at 07:17, Peter Delevoryas <peter@pjd.dev> wrote:
->>
->> It seems that aspeed_gpio_update is allowing the value for input pins to be
->> modified through register writes and QOM property modification.
->>
->> The QOM property modification is fine, but modifying the value through
->> register writes from the guest OS seems wrong if the pin's direction is set
->> to input.
->>
->> The datasheet specifies that "0" bits in the direction register select input
->> mode, and "1" selects output mode.
->>
->> OpenBMC userspace code is accidentally writing 0's to the GPIO data
->> registers somewhere (or perhaps the driver is doing it through a reset or
->> something), and this is overwriting GPIO FRU information (board ID, slot
->> presence pins) that is initialized in Aspeed machine reset code (see
->> fby35_reset() in hw/arm/aspeed.c).
->>
->> Signed-off-by: Peter Delevoryas <peter@pjd.dev>
->> Fixes: 4b7f956862dc ("hw/gpio: Add basic Aspeed GPIO model for AST2400 and AST2500")
->> ---
->>  hw/gpio/aspeed_gpio.c | 22 ++++++++++++----------
->>  1 file changed, 12 insertions(+), 10 deletions(-)
->>
->> diff --git a/hw/gpio/aspeed_gpio.c b/hw/gpio/aspeed_gpio.c
->> index a62a673857..2eae427201 100644
->> --- a/hw/gpio/aspeed_gpio.c
->> +++ b/hw/gpio/aspeed_gpio.c
->> @@ -268,7 +268,7 @@ static ptrdiff_t aspeed_gpio_set_idx(AspeedGPIOState *s, GPIOSets *regs)
->>  }
->>
->>  static void aspeed_gpio_update(AspeedGPIOState *s, GPIOSets *regs,
->> -                               uint32_t value)
->> +                               uint32_t value, bool force)
->>  {
->>      uint32_t input_mask = regs->input_mask;
->>      uint32_t direction = regs->direction;
->> @@ -293,10 +293,12 @@ static void aspeed_gpio_update(AspeedGPIOState *s, GPIOSets *regs,
->>              }
->>
->
-> Reading this model hurts my head a little. Perhaps we also need to add
-> a test for this case to make it clear what's going on.
->
-> The test above the code you've changed does this:
->
->>            /* ...and we're output or not input-masked... */
->>            if (!(direction & mask) && (input_mask & mask)) {
->>                continue;
->>            }
->
-> For clarity, !(direction & mask) means "is input".
->
-> The comment confuses me because it says "or", but the code has "and".
+Dave
 
-The comment documents what conditions we need before we actually go and set the
-output value.
-
-The test is whether we fail to meet those conditions.
-
-If the condition evaluates true we don't want to modify the GPIO value, so we
-`continue` to the next loop iteration to test the next GPIO.
-
->
-> input_mask doesn't seem to feature in the Linux driver, so that will
-> always be zero. The test will be X && 0, which is always 0.
->
-> If you changed it to || then we would do the test that the comment
-> suggests. When the pin is input, we will skip updating the value.
-
-The condition shouldn't change, rather if the comment makes things more
-confusing rather than less, we should change that instead.
-
-Andrew
+> Dave
+> 
+> > Changes v1->v2: [Thanks to Eric for the feedback!]
+> > - add documentation
+> > - switch the mte prop to OnOffAuto; this improves the interaction with the
+> >   existing mte machine prop
+> > - leave mte off for kvm by default
+> > - improve tests; the poking in QDicts feels a bit ugly, but seems to work
+> > 
+> > Cornelia Huck (2):
+> >   arm/kvm: add support for MTE
+> >   qtests/arm: add some mte tests
+> > 
+> >  docs/system/arm/cpu-features.rst |  21 +++++
+> >  target/arm/cpu.c                 |  18 ++---
+> >  target/arm/cpu.h                 |   1 +
+> >  target/arm/cpu64.c               | 132 +++++++++++++++++++++++++++++++
+> >  target/arm/internals.h           |   1 +
+> >  target/arm/kvm64.c               |   5 ++
+> >  target/arm/kvm_arm.h             |  12 +++
+> >  target/arm/monitor.c             |   1 +
+> >  tests/qtest/arm-cpu-features.c   |  77 ++++++++++++++++++
+> >  9 files changed, 256 insertions(+), 12 deletions(-)
+> > 
+> > -- 
+> > 2.35.3
+> > 
+> -- 
+> Dr. David Alan Gilbert / dgilbert@redhat.com / Manchester, UK
+-- 
+Dr. David Alan Gilbert / dgilbert@redhat.com / Manchester, UK

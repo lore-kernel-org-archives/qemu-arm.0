@@ -1,120 +1,199 @@
-Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp672853lft;
-        Fri, 8 Jul 2022 20:00:00 -0700 (PDT)
-X-Google-Smtp-Source: AGRyM1sKKOmHxcQn+/45yzaXLpRTmPfxmcDu/0epWOVK6cMD94wmV9Jq47nyBl+H8vDqfxt46z11
-X-Received: by 2002:a05:6402:34c1:b0:43a:bd7a:898a with SMTP id w1-20020a05640234c100b0043abd7a898amr1339593edc.426.1657335600822;
-        Fri, 08 Jul 2022 20:00:00 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1657335600; cv=none;
+Received: by 2002:ac2:596f:0:0:0:0:0 with SMTP id h15csp554884lfp;
+        Sun, 10 Jul 2022 20:14:48 -0700 (PDT)
+X-Google-Smtp-Source: AGRyM1vACKK90+jLpSKmkR35ViqjupRxiZbXQ7ARtebpQ+3DpkG06ShHV9bQTUYdP3Rofk0ATu0i
+X-Received: by 2002:a05:620a:2848:b0:6ad:db0a:f227 with SMTP id h8-20020a05620a284800b006addb0af227mr9855497qkp.44.1657509287979;
+        Sun, 10 Jul 2022 20:14:47 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1657509287; cv=none;
         d=google.com; s=arc-20160816;
-        b=bHnv514TkeixXWlCsrYhBqap7//Ng95Ge6omHc+d8V/+8FCaEtbix2qkdKcTdBr82s
-         Ftn1k74+872ocixFmWeLOKIj50D+2ktdnCH/ZNUlKxsKxZ1uSb/aNat4Tld+SxnmJw0J
-         b0I3zJ92bfKb8CIrPkDdwiaJLOZTFRNMp9+rPQLQf9hW877xXN0vIxOu2CWN7Z7RdC4X
-         eociMSUd858VSH2D5Mg1bA8X1BMxBtrL2nQnnqUmTyQHSekaL5rSx64aE1splwofOaBH
-         apK8kMSCshM7rq50A5f6DfozQysgX/uTfrWQAnCGVh85wpEa2odpQ6tUMwKwUTMaX8RM
-         omPA==
+        b=HVBAcb6TcHtfAQZLl7jbdB4uCeTdxZC9cXvn0Q4ORiJ6AgJliMSEqUO8SLVpuDXhBr
+         fPKaOD3fXvc6H7rn+EjHLTt4y8gJUQxYgV96da6I82goUywBf0cLED7PzA/ytxhosCwG
+         XO6z2mbSUJQs4xJIgWEFjUDww9ePh+WJ3HM25vSaWgNULk5BZE29HStaXCgY83C5YC37
+         Besi/milz/gyaUKoqhryBB3cdzTitgWEvfR6nCzVjVbxZ00mPlAWLimQX60PTOb2gXQd
+         Vd44KgZ5qrkqqkzIcsR4+eysHfvPeaxdLdaXQjY8OY5YO9Wxa2deFMB/Pu4fh0j8NQhy
+         y8Jw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=list-id:precedence:content-transfer-encoding:in-reply-to:from
-         :references:cc:to:content-language:subject:user-agent:mime-version
-         :date:message-id:dkim-signature;
-        bh=+wfnHbZqha+Bnbae0/WVZKsuUJrB7fybdYg9Vfg9MfA=;
-        b=QeYKojDDrtEAtzsozjMMLxbx/QreLvmjiZdmfa69HnV+DyyWquYTCT7q/p68f1XFsp
-         V+oU+vDNFWGoIOhZUZhq9IfwgzcmsLQwrNI6aQAwPQsf323VDT5xfh5V4hP8is2RqoLB
-         4xUl6y/zt/7Ckok4HUbdbEjZRdhlZlB4XRgW1uUr7QSVrS+TJwFfLT7HwMqYai8NoKFZ
-         cZl7+qxSif1niwSMcfVLmRvJhVAc7wvQjwaauw9Yuy1X8cZeI2DMYXSfsPu3SF3kczqz
-         S/97TcVHsfIt7nv2U+Fug9bao0lr0vUSAIKpn5DlS3VyQWcbH8jhL0Xs74aOHMO0fhKg
-         tSqg==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
+        bh=k+sfQEgSsbvS9wtJSqfw3sWZdwFCpVNA33aansD5syA=;
+        b=ZwyYp+VroMulcpGZ8IorylqNkkpiB9RB5oKpNSUgnKoynFFQ0+SVjG5yucl2n+Ax27
+         8mgTZ2xQSeGXV908q8G1e5OZSXexY+SbSfRsNJx67ra7ggVsL9JFtrEHzWl+tqzcJxhk
+         Dd8sj9u7Xx6uMpnA3aM4k5MyE/HOsHOl/BBXCgtqrRB+fI0eMPhRiYiasaytWYfq2W1W
+         chVdzPOabcGaTWXygdNgDORKMz/yvFk3expQa9Rfef7ST7dbvzwI4iJ7n9tcphSyB4jG
+         Zsgffn5QFfBGw6DPlKNjfmYPNxSy3RZ2oGKASae/La3t7mhz5DP6Q5vQbkY0X8q/lWQs
+         SF7Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=aUxyPdXK;
-       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=n6aLtUAn;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <kvm-owner@vger.kernel.org>
-Received: from out1.vger.email (out1.vger.email. [2620:137:e000::1:20])
-        by mx.google.com with ESMTP id hq37-20020a1709073f2500b006f3969d2189si601550ejc.576.2022.07.08.20.00.00;
-        Fri, 08 Jul 2022 20:00:00 -0700 (PDT)
-Received-SPF: pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) client-ip=2620:137:e000::1:20;
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id u16-20020a05620a0c5000b006b24e08a413si4281693qki.547.2022.07.10.20.14.47
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Sun, 10 Jul 2022 20:14:47 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=aUxyPdXK;
-       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=n6aLtUAn;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S229459AbiGIDAA (ORCPT <rfc822;daniel.diaz@linaro.org>
-        + 2 others); Fri, 8 Jul 2022 23:00:00 -0400
-Received: from lindbergh.monkeyblade.net ([23.128.96.19]:40986 "EHLO
-        lindbergh.monkeyblade.net" rhost-flags-OK-OK-OK-OK) by vger.kernel.org
-        with ESMTP id S229379AbiGIC77 (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Fri, 8 Jul 2022 22:59:59 -0400
-Received: from mail-pl1-x62c.google.com (mail-pl1-x62c.google.com [IPv6:2607:f8b0:4864:20::62c])
-        by lindbergh.monkeyblade.net (Postfix) with ESMTPS id EFDB87AB21
-        for <kvm@vger.kernel.org>; Fri,  8 Jul 2022 19:59:56 -0700 (PDT)
-Received: by mail-pl1-x62c.google.com with SMTP id d5so270457plo.12
-        for <kvm@vger.kernel.org>; Fri, 08 Jul 2022 19:59:56 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=message-id:date:mime-version:user-agent:subject:content-language:to
-         :cc:references:from:in-reply-to:content-transfer-encoding;
-        bh=+wfnHbZqha+Bnbae0/WVZKsuUJrB7fybdYg9Vfg9MfA=;
-        b=aUxyPdXKSwd0UinnwmEnUJ3e4lJl/uGAGrPQOIHOvoKrX2HFgl1tHixPc2A1/3jmjc
-         AU8WbfjbJb1p0vM1gZMezxccJIcNg3o5xfyxEBwzl1hnAwOZmSdhLk33Acy61qbtcPIO
-         DbH0IR1sR3g2aNCKNPvYLYrDRH7pw1wJFiDnVzqaSVEkIIu5geIeJsZfdq60//s8y+PR
-         NQSZsKLlwHIrrfo5uaoIR8wm1LczJ/7I2OfK5MAD1GH/KZqk2VHbD08HfI5sQgEwVGMQ
-         IE/r2922aK0OsZvTvoGARRG7qCnT2qkQUklP/8iStdK9HNSmwcgmJqjj+jfxUG/IGvVd
-         SSjQ==
+Received: from localhost ([::1]:34506 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1oAjsl-0000vS-F8
+	for alex.bennee@linaro.org; Sun, 10 Jul 2022 23:14:47 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:58138)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1oAjsY-0000sz-06
+ for qemu-arm@nongnu.org; Sun, 10 Jul 2022 23:14:34 -0400
+Received: from mail-pf1-x434.google.com ([2607:f8b0:4864:20::434]:35512)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1oAjsT-0001Lk-Ux
+ for qemu-arm@nongnu.org; Sun, 10 Jul 2022 23:14:31 -0400
+Received: by mail-pf1-x434.google.com with SMTP id x184so3721263pfx.2
+ for <qemu-arm@nongnu.org>; Sun, 10 Jul 2022 20:14:28 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=k+sfQEgSsbvS9wtJSqfw3sWZdwFCpVNA33aansD5syA=;
+ b=n6aLtUAnFSFNqfa8lzqMSVpVsrhOXnh4SNA5WJ0QW103A823s6F1BuUJTjVW6gNlVn
+ PjO/gsLZphOEi0RbsT56mKhA3gWC2ufpOelO9OKYEgC29y6WnpXymtMZJW4zrr1x1Tu5
+ 4qJa6VAuV4gTt00GbTo30xkHhL/WB5eCJLRdO+97t4PwaxZEWdyWRqztD9v9DJsv+jIl
+ PsX5MN+RO5JH+fHgcOmr0KfZluLh1bxcMCKYx5SOZvwVaztbKoJM4vvX6E/bw72z35pF
+ Kdj6rYO8GnG6ypZAvBxEny3WSOzYfTR2sGnpcXUgwQOGn70SOOZaCa4Cj4uX0mpGtE2P
+ aukQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
-         :content-language:to:cc:references:from:in-reply-to
-         :content-transfer-encoding;
-        bh=+wfnHbZqha+Bnbae0/WVZKsuUJrB7fybdYg9Vfg9MfA=;
-        b=RiPBKLC4MXiHZkdI38GUxqg9z1xkGkI1RxzODXdRT/bdaMIgng0IWRYhBZX0UuyKb8
-         RiHkqALvcR2Y52zttWXWHGqRxwY95usFnsv4PW/bqc3Ez9H2bAqVMBfFCAI38glHUadF
-         etl1PiyPx6GYkGPgk85xlerx7RiQehh+OHI+l5tfNYy8gA4miVh94GAwB5ISaRwe15+X
-         C8MEutMxAkbDNsXNVuhsQ81LieBBR757/e2ArdWY43vCC6Se21Fvsx1S0aPZmCmiJlVs
-         FcoKeNFAPQrWn8us7rABezx619QpoJPm5LodK4MS1xZbRIAswXzWu1GpQZgsTpZy/hOu
-         XVuA==
-X-Gm-Message-State: AJIora9K8ZCRwc/5FwWQw88+HiSVsZMgJdD7LTbVTCgqgg9u2Gqt/iHq
-        mk0Cm9vMtD7EK3KiYd8FEkU7mA==
-X-Received: by 2002:a17:90b:3ec2:b0:1ee:d9c3:53ce with SMTP id rm2-20020a17090b3ec200b001eed9c353cemr3438524pjb.189.1657335596424;
-        Fri, 08 Jul 2022 19:59:56 -0700 (PDT)
-Received: from [192.168.138.227] ([122.255.60.245])
-        by smtp.gmail.com with ESMTPSA id t8-20020a17090a2f8800b001e31fea8c85sm2050578pjd.14.2022.07.08.19.59.52
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 08 Jul 2022 19:59:56 -0700 (PDT)
-Message-ID: <89098547-6e30-96b0-2e7a-f131999c5528@linaro.org>
-Date:   Sat, 9 Jul 2022 08:29:47 +0530
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=k+sfQEgSsbvS9wtJSqfw3sWZdwFCpVNA33aansD5syA=;
+ b=RfV2FeyDw8lHmOO8Zfhgb4hqSit4voPGdhe32hi43bUUIpbaqqF+pOuELBSkZNV6kt
+ 5axoWvUn6NvLYKhxG1fFDH0eoutvRGXx+BNHcIc/rNSSfb+LD0mCacu/mZIg4ACJ281H
+ bIPuRX/4Wt+nUGP4DvJkwIwtwjhAbboyuYs/pVBqPJsubR/6alnzKPiHy/KbTjAgawAo
+ yWdSpRFe0RKervWv26CdLjDSftaqJWFiBIu9PjG3afAuIYFCaAxORVrt8D6+6YcyPzH0
+ GsUprqFSHnyfN5n33ZHeMQPrVa1mZcpUaOxeoZ/FV4C/IzMV1paC9OXLXs2yjqcG36ab
+ kNOQ==
+X-Gm-Message-State: AJIora/MrBS8OFKyK8FsEWVlVWaI6WPJmsl0l9cWaf1jP72/kzmuDDAk
+ F1g6psdtE8S8X9LNhT02NaInew==
+X-Received: by 2002:a63:d1:0:b0:411:885e:1503 with SMTP id
+ 200-20020a6300d1000000b00411885e1503mr13832979pga.65.1657509267810; 
+ Sun, 10 Jul 2022 20:14:27 -0700 (PDT)
+Received: from stoup.. ([122.255.60.245]) by smtp.gmail.com with ESMTPSA id
+ p10-20020a1709028a8a00b0016c0408932dsm3436697plo.129.2022.07.10.20.14.24
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sun, 10 Jul 2022 20:14:27 -0700 (PDT)
+From: Richard Henderson <richard.henderson@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: laurent@vivier.eu, qemu-arm@nongnu.org, Vitaly Buka <vitalybuka@google.com>
+Subject: [PATCH] linux-user/aarch64: Do not clear PROT_MTE on mprotect
+Date: Mon, 11 Jul 2022 08:44:20 +0530
+Message-Id: <20220711031420.17820-1-richard.henderson@linaro.org>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.9.1
-Subject: Re: [PATCH RFC v2 0/2] arm: enable MTE for QEMU + kvm
-Content-Language: en-US
-To:     Cornelia Huck <cohuck@redhat.com>,
-        Peter Maydell <peter.maydell@linaro.org>,
-        Thomas Huth <thuth@redhat.com>,
-        Laurent Vivier <lvivier@redhat.com>
-Cc:     Eric Auger <eauger@redhat.com>,
-        "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
-        Juan Quintela <quintela@redhat.com>, qemu-arm@nongnu.org,
-        qemu-devel@nongnu.org, kvm@vger.kernel.org
-References: <20220707161656.41664-1-cohuck@redhat.com>
-From:   Richard Henderson <richard.henderson@linaro.org>
-In-Reply-To: <20220707161656.41664-1-cohuck@redhat.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-Spam-Status: No, score=-2.1 required=5.0 tests=BAYES_00,DKIM_SIGNED,
-        DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,NICE_REPLY_A,RCVD_IN_DNSWL_NONE,
-        SPF_HELO_NONE,SPF_PASS,T_SCC_BODY_TEXT_LINE autolearn=ham
-        autolearn_force=no version=3.4.6
-X-Spam-Checker-Version: SpamAssassin 3.4.6 (2021-04-09) on
-        lindbergh.monkeyblade.net
-Precedence: bulk
-List-ID: <kvm.vger.kernel.org>
-X-Mailing-List: kvm@vger.kernel.org
-X-TUID: ccKuSRMUw8Mx
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::434;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x434.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: Te1jURKUUxom
 
-On 7/7/22 21:46, Cornelia Huck wrote:
-> If I'm not misunderstanding things, we need a way to fault in a page together
-> with the tag; doing that in one go is probably the only way that we can be
-> sure that this is race-free on the QEMU side.
+The documentation for PROT_MTE says that it cannot be cleared
+by mprotect.  Further, the implementation of the VM_ARCH_CLEAR bit,
+contains PROT_BTI confiming that bit should be cleared.
 
-That's my understanding as well.
+Introduce PAGE_TARGET_STICKY to allow target/arch/cpu.h to control
+which bits may be reset during page_set_flags.  This is sort of the
+opposite of VM_ARCH_CLEAR, but works better with qemu's PAGE_* bits
+that are separate from PROT_* bits.
+
+Reported-by: Vitaly Buka <vitalybuka@google.com>
+Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+---
+
+My initial reaction to the bug report was that we weren't treating
+the other PAGE_* bits properly during the update.  But auditing the
+code more thoroughly shows we are -- it's just PROT_MTE that's not
+up to scratch.
 
 
 r~
+
+---
+ target/arm/cpu.h          |  7 +++++--
+ accel/tcg/translate-all.c | 13 +++++++++++--
+ 2 files changed, 16 insertions(+), 4 deletions(-)
+
+diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+index 1f4f3e0485..35c279e1f1 100644
+--- a/target/arm/cpu.h
++++ b/target/arm/cpu.h
+@@ -3385,9 +3385,12 @@ static inline MemTxAttrs *typecheck_memtxattrs(MemTxAttrs *x)
+ 
+ /*
+  * AArch64 usage of the PAGE_TARGET_* bits for linux-user.
++ * Note that with the Linux kernel, PROT_MTE may not be cleared by mprotect
++ * mprotect but PROT_BTI may be cleared.  C.f. the kernel's VM_ARCH_CLEAR.
+  */
+-#define PAGE_BTI  PAGE_TARGET_1
+-#define PAGE_MTE  PAGE_TARGET_2
++#define PAGE_BTI            PAGE_TARGET_1
++#define PAGE_MTE            PAGE_TARGET_2
++#define PAGE_TARGET_STICKY  PAGE_MTE
+ 
+ #ifdef TARGET_TAGGED_ADDRESSES
+ /**
+diff --git a/accel/tcg/translate-all.c b/accel/tcg/translate-all.c
+index 8fd23a9d05..ef62a199c7 100644
+--- a/accel/tcg/translate-all.c
++++ b/accel/tcg/translate-all.c
+@@ -2256,6 +2256,15 @@ int page_get_flags(target_ulong address)
+     return p->flags;
+ }
+ 
++/*
++ * Allow the target to decide if PAGE_TARGET_[12] may be reset.
++ * By default, they are not kept.
++ */
++#ifndef PAGE_TARGET_STICKY
++#define PAGE_TARGET_STICKY  0
++#endif
++#define PAGE_STICKY  (PAGE_ANON | PAGE_TARGET_STICKY)
++
+ /* Modify the flags of a page and invalidate the code if necessary.
+    The flag PAGE_WRITE_ORG is positioned automatically depending
+    on PAGE_WRITE.  The mmap_lock should already be held.  */
+@@ -2299,8 +2308,8 @@ void page_set_flags(target_ulong start, target_ulong end, int flags)
+             p->target_data = NULL;
+             p->flags = flags;
+         } else {
+-            /* Using mprotect on a page does not change MAP_ANON. */
+-            p->flags = (p->flags & PAGE_ANON) | flags;
++            /* Using mprotect on a page does not change sticky bits. */
++            p->flags = (p->flags & PAGE_STICKY) | flags;
+         }
+     }
+ }
+-- 
+2.34.1
+

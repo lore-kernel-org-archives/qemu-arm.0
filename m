@@ -1,74 +1,75 @@
-Received: by 2002:ac2:596f:0:0:0:0:0 with SMTP id h15csp742743lfp;
-        Mon, 11 Jul 2022 03:54:32 -0700 (PDT)
-X-Google-Smtp-Source: AGRyM1t9J5MvXHmiPdzRvAID7xbGMCYtJzaLAtB+npcYZuVAp+0YP7s9fh+X3dr1yzx8PLLi8Udi
-X-Received: by 2002:a37:5401:0:b0:6b5:5bce:e975 with SMTP id i1-20020a375401000000b006b55bcee975mr10782489qkb.289.1657536872592;
-        Mon, 11 Jul 2022 03:54:32 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1657536872; cv=none;
+Received: by 2002:ac2:596f:0:0:0:0:0 with SMTP id h15csp742930lfp;
+        Mon, 11 Jul 2022 03:54:51 -0700 (PDT)
+X-Google-Smtp-Source: AGRyM1u2zhGkWK743mhFRkKHBP9pRsRRJt5ZuR6t5GSQneduTYyxA88KoKG0HAZzNLq0ifPHHUVR
+X-Received: by 2002:a05:6214:194a:b0:473:75f5:ec8d with SMTP id q10-20020a056214194a00b0047375f5ec8dmr1610268qvk.130.1657536890835;
+        Mon, 11 Jul 2022 03:54:50 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1657536890; cv=none;
         d=google.com; s=arc-20160816;
-        b=fLNuDW+Crnjnp95UOsZVcsf0JzdoYu40W2OvlpvSnCkopQXfoOR6NcuTruVCaa1VkQ
-         lqWxsi09wKdNCVr9HWemN8rH0MBjbxqZWnVVP7QJJ8xOkr/a7Rn53iBhQXG8kZMCjhuS
-         gfVF/PeEbHhXTKelkJc198gvn5az6wt0zBp0ZzKFmJAKJ6SRPl+lfgnEx0Y83uz9oSU3
-         YEZvLw1lPDf8o1DG9OUF28fxGWFwfHqlv+OMexPirTDEX3DHlnfLB1AC6EALdq2F/b91
-         qsMJvfBF4p468A3O798y5iFRBhXG1iomHVzoEMrtWyf/Ul1KmVMo/WlQ+k0dXeSnUUQb
-         pHIw==
+        b=kR3vndohJKLV2+nNBIpypTjUlhFUAjuLnwKsPhZZ0H/MNEywN5LeeJ0MOnOa4vnR3H
+         tzhrgRsh+vknxJJ3ZfFQzLTs/X8b1OTj9QNessSQrHlzsSiYlOiGq5VFr2+QMc6puNDG
+         BBSvPJp/+VLFJ3cx0qCWt5o5Q8tmZo/HWLWZ+uwl3/WP3EZiBkXokTmBztUt7046wC5g
+         xeQeTcfvONl6lTeZxzhRaeDFzhAaY9bp3wcZ6DIm/95unZjdHBMTLWttUmD2pA0BbCDB
+         hSXx9l3nqAyn9FncbDK96WRC0xkdsPfEBOZnUjeWSAsjmqkVZIKTRBVJxuETPC655dre
+         ZefA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=from:reply-to:sender:errors-to:list-subscribe:list-help:list-post
          :list-archive:list-unsubscribe:list-id:precedence
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to;
-        bh=5zKhcXloY3LQBzIFZiMuuZe5JpDFr1qqRTmYU+07pLA=;
-        b=usqVyZ6HVi0ORvAnsynrc/+dOWrY2Kfoa4zp35sgE70u/Oou8mdlxcv0xhnMCOfqB2
-         CkvjqBf5tVh4QMvgCW0paCd/He3B7UwGR24ugHBSLF+VLusfea8iTLdixFk32l5VfnzX
-         NAivdb7rnlYJVNu9792jyv/Hg4Vk5ikySxUJmYoFb9a8NX0tlVg4gjhl1BAbB7fAbTvu
-         iQzy+PdnygdoJSYk8LMtdfVk5v0NL+fjKPKEAkcLPZFk8iANiVPMjhemOTEFcXTJfe1R
-         gOQ5NkapsoeL5CFRgk56er8iBuTDUO321+Su9CiRwtXYiP3kjz5AUUijorNnJ7c28cuv
-         m9Pg==
+        bh=EvvmDPAj9WTIIHf97PTmQ6ULyWYG9Yq2MQVS2LupsQY=;
+        b=sYj1yyg3OnGJCs+HAynRpU6U/Zo1NToi0m2O0LyW9oZgKOE0pcqhPygdqPevjxgbxM
+         o9gYLDzT+WUbGia31uTlcUKgQiC8/v0YYF+JmOFyf3Q0+DriksOIOAAK2/G/KEtn4g+j
+         J8Hl7KmG5E7xa+sSwdXOBaiSfZ7W9eGey21keBPCnFkUIuFgPQeif51XSYtrpT+N3T/1
+         p7BPDMKEE4D8lR7DD0aDYNDlzQBZy2WWxObbrgUSWg0xN7ES0GbcNNOdji4VRCLiMf0B
+         piy/e66z3dOpAV9DDemO0Ntr9eO1OyVoKVb0csuz3kJrs0fOw/KrPlPZVVwgJTz+DOKZ
+         zGNQ==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t21-20020a37ea15000000b006af08104887si3677180qkj.372.2022.07.11.03.54.32
+        by mx.google.com with ESMTPS id o7-20020a05622a138700b0031d4bdcc5b2si4679420qtk.265.2022.07.11.03.54.50
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 11 Jul 2022 03:54:32 -0700 (PDT)
+        Mon, 11 Jul 2022 03:54:50 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
-Received: from localhost ([::1]:59702 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:60778 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1oAr3f-0001C4-UF
-	for alex.bennee@linaro.org; Mon, 11 Jul 2022 06:54:31 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:52272)
+	id 1oAr3y-0001vp-CN
+	for alex.bennee@linaro.org; Mon, 11 Jul 2022 06:54:50 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:52534)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <hesham.almatary@huawei.com>)
- id 1oAqwe-0007BL-M2; Mon, 11 Jul 2022 06:47:19 -0400
-Received: from frasgout.his.huawei.com ([185.176.79.56]:2655)
+ id 1oAqxe-0007yn-8P; Mon, 11 Jul 2022 06:48:18 -0400
+Received: from frasgout.his.huawei.com ([185.176.79.56]:2657)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <hesham.almatary@huawei.com>)
- id 1oAqwd-0000VN-6m; Mon, 11 Jul 2022 06:47:16 -0400
-Received: from fraeml735-chm.china.huawei.com (unknown [172.18.147.201])
- by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4LhLC43pNHz686my;
- Mon, 11 Jul 2022 18:45:52 +0800 (CST)
+ id 1oAqxb-0001Lf-Ve; Mon, 11 Jul 2022 06:48:17 -0400
+Received: from fraeml713-chm.china.huawei.com (unknown [172.18.147.226])
+ by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4LhL8n5TMCz6889W;
+ Mon, 11 Jul 2022 18:43:53 +0800 (CST)
 Received: from lhreml751-chm.china.huawei.com (10.201.108.201) by
- fraeml735-chm.china.huawei.com (10.206.15.216) with Microsoft SMTP Server
+ fraeml713-chm.china.huawei.com (10.206.15.32) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2375.24; Mon, 11 Jul 2022 12:47:12 +0200
+ 15.1.2375.24; Mon, 11 Jul 2022 12:48:13 +0200
 Received: from O84201547D.china.huawei.com (10.122.247.218) by
  lhreml751-chm.china.huawei.com (10.201.108.201) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2375.24; Mon, 11 Jul 2022 11:47:11 +0100
+ 15.1.2375.24; Mon, 11 Jul 2022 11:48:12 +0100
 To: <jonathan.cameron@huawei.com>, <qemu-devel@nongnu.org>
 CC: <yangyicong@huawei.com>, <chenxiang66@hisilicon.com>,
  <linuxarm@huawei.com>, <qemu-arm@nongnu.org>, <peter.maydell@linaro.org>,
  <imammedo@redhat.com>, <wangyanan55@huawei.com>,
  <marcel.apfelbaum@gmail.com>, <eduardo@habkost.net>, <Brice.Goglin@inria.fr>, 
  <mst@redhat.com>
-Subject: [PATCH 5/8] tests: Add HMAT AArch64/virt empty table files
-Date: Mon, 11 Jul 2022 11:44:33 +0100
-Message-ID: <20220711104436.8363-6-hesham.almatary@huawei.com>
+Subject: [PATCH 7/8] tests: acpi: aarch64/virt: add a test for hmat nodes with
+ no initiators
+Date: Mon, 11 Jul 2022 11:44:35 +0100
+Message-ID: <20220711104436.8363-8-hesham.almatary@huawei.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20220711104436.8363-1-hesham.almatary@huawei.com>
 References: <20220711104436.8363-1-hesham.almatary@huawei.com>
@@ -103,43 +104,120 @@ Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Reply-to:  Hesham Almatary <hesham.almatary@huawei.com>
 From:  Hesham Almatary via <qemu-devel@nongnu.org>
-X-TUID: jLH+k2PryOvF
+X-TUID: Gea93E0NV3Qr
+
+This patch imitates the "tests: acpi: q35: add test for hmat nodes
+without initiators" commit to test numa nodes with different HMAT
+attributes, but on AArch64/virt.
+
+Tested with:
+qemu-system-aarch64 -accel tcg \
+ -machine virt,hmat=on,gic-version=3  -cpu cortex-a57 \
+ -bios qemu-efi-aarch64/QEMU_EFI.fd \
+ -kernel Image -append "root=/dev/vda2 console=ttyAMA0" \
+ -drive if=virtio,file=aarch64.qcow2,format=qcow2,id=hd \
+ -device virtio-rng-pci \
+ -net user,hostfwd=tcp::10022-:22 -net nic \
+ -device intel-hda -device hda-duplex -nographic \
+ -smp 4 \
+ -m 3G \
+ -object memory-backend-ram,size=1G,id=ram0 \
+ -object memory-backend-ram,size=1G,id=ram1 \
+ -object memory-backend-ram,size=1G,id=ram2 \
+ -numa node,nodeid=0,memdev=ram0,cpus=0-1 \
+ -numa node,nodeid=1,memdev=ram1,cpus=2-3 \
+ -numa node,nodeid=2,memdev=ram2 \
+ -numa hmat-lb,initiator=0,target=0,hierarchy=memory,data-type=access-latency,latency=10 \
+ -numa hmat-lb,initiator=0,target=0,hierarchy=memory,data-type=access-bandwidth,bandwidth=10485760 \
+ -numa hmat-lb,initiator=0,target=1,hierarchy=memory,data-type=access-latency,latency=20 \
+ -numa hmat-lb,initiator=0,target=1,hierarchy=memory,data-type=access-bandwidth,bandwidth=5242880 \
+ -numa hmat-lb,initiator=0,target=2,hierarchy=memory,data-type=access-latency,latency=30 \
+ -numa hmat-lb,initiator=0,target=2,hierarchy=memory,data-type=access-bandwidth,bandwidth=1048576 \
+ -numa hmat-lb,initiator=1,target=0,hierarchy=memory,data-type=access-latency,latency=20 \
+ -numa hmat-lb,initiator=1,target=0,hierarchy=memory,data-type=access-bandwidth,bandwidth=5242880 \
+ -numa hmat-lb,initiator=1,target=1,hierarchy=memory,data-type=access-latency,latency=10 \
+ -numa hmat-lb,initiator=1,target=1,hierarchy=memory,data-type=access-bandwidth,bandwidth=10485760 \
+ -numa hmat-lb,initiator=1,target=2,hierarchy=memory,data-type=access-latency,latency=30 \
+ -numa hmat-lb,initiator=1,target=2,hierarchy=memory,data-type=access-bandwidth,bandwidth=1048576
 
 Signed-off-by: Hesham Almatary <hesham.almatary@huawei.com>
 ---
- tests/data/acpi/virt/DSDT.acpihmatvirt      | 0
- tests/data/acpi/virt/FACP.acpihmatvirt      | 0
- tests/data/acpi/virt/HMAT.acpihmatvirt      | 0
- tests/data/acpi/virt/SRAT.acpihmatvirt      | 0
- tests/qtest/bios-tables-test-allowed-diff.h | 4 ++++
- 5 files changed, 4 insertions(+)
- create mode 100644 tests/data/acpi/virt/DSDT.acpihmatvirt
- create mode 100644 tests/data/acpi/virt/FACP.acpihmatvirt
- create mode 100644 tests/data/acpi/virt/HMAT.acpihmatvirt
- create mode 100644 tests/data/acpi/virt/SRAT.acpihmatvirt
+ tests/qtest/bios-tables-test.c | 55 ++++++++++++++++++++++++++++++++++
+ 1 file changed, 55 insertions(+)
 
-diff --git a/tests/data/acpi/virt/DSDT.acpihmatvirt b/tests/data/acpi/virt/DSDT.acpihmatvirt
-new file mode 100644
-index 0000000000..e69de29bb2
-diff --git a/tests/data/acpi/virt/FACP.acpihmatvirt b/tests/data/acpi/virt/FACP.acpihmatvirt
-new file mode 100644
-index 0000000000..e69de29bb2
-diff --git a/tests/data/acpi/virt/HMAT.acpihmatvirt b/tests/data/acpi/virt/HMAT.acpihmatvirt
-new file mode 100644
-index 0000000000..e69de29bb2
-diff --git a/tests/data/acpi/virt/SRAT.acpihmatvirt b/tests/data/acpi/virt/SRAT.acpihmatvirt
-new file mode 100644
-index 0000000000..e69de29bb2
-diff --git a/tests/qtest/bios-tables-test-allowed-diff.h b/tests/qtest/bios-tables-test-allowed-diff.h
-index dfb8523c8b..44594cae59 100644
---- a/tests/qtest/bios-tables-test-allowed-diff.h
-+++ b/tests/qtest/bios-tables-test-allowed-diff.h
-@@ -1 +1,5 @@
- /* List of comma-separated changed AML files to ignore */
-+"tests/data/acpi/virt/DSDT.acpihmatvirt",
-+"tests/data/acpi/virt/FACP.acpihmatvirt",
-+"tests/data/acpi/virt/HMAT.acpihmatvirt",
-+"tests/data/acpi/virt/SRAT.acpihmatvirt",
+diff --git a/tests/qtest/bios-tables-test.c b/tests/qtest/bios-tables-test.c
+index f02b386d75..ed843c2abf 100644
+--- a/tests/qtest/bios-tables-test.c
++++ b/tests/qtest/bios-tables-test.c
+@@ -1461,6 +1461,59 @@ static void test_acpi_piix4_tcg_acpi_hmat(void)
+     test_acpi_tcg_acpi_hmat(MACHINE_PC);
+ }
+ 
++static void test_acpi_virt_tcg_acpi_hmat(void)
++{
++    test_data data = {
++        .machine = "virt",
++        .tcg_only = true,
++        .uefi_fl1 = "pc-bios/edk2-aarch64-code.fd",
++        .uefi_fl2 = "pc-bios/edk2-arm-vars.fd",
++        .cd = "tests/data/uefi-boot-images/bios-tables-test.aarch64.iso.qcow2",
++        .ram_start = 0x40000000ULL,
++        .scan_len = 128ULL * 1024 * 1024,
++    };
++
++    data.variant = ".acpihmatvirt";
++
++    test_acpi_one(" -machine hmat=on"
++                  " -cpu cortex-a57"
++                  " -smp 4"
++                  " -m 256M"
++                  " -object memory-backend-ram,size=64M,id=ram0"
++                  " -object memory-backend-ram,size=64M,id=ram1"
++                  " -object memory-backend-ram,size=128M,id=ram2"
++                  " -numa node,nodeid=0,memdev=ram0,cpus=0-1"
++                  " -numa node,nodeid=1,memdev=ram1,cpus=2-3"
++                  " -numa node,nodeid=2,memdev=ram2"
++                  " -numa hmat-lb,initiator=0,target=0,hierarchy=memory,"
++                  "data-type=access-latency,latency=10"
++                  " -numa hmat-lb,initiator=0,target=0,hierarchy=memory,"
++                  "data-type=access-bandwidth,bandwidth=10485760"
++                  " -numa hmat-lb,initiator=0,target=1,hierarchy=memory,"
++                  "data-type=access-latency,latency=20"
++                  " -numa hmat-lb,initiator=0,target=1,hierarchy=memory,"
++                  "data-type=access-bandwidth,bandwidth=5242880"
++                  " -numa hmat-lb,initiator=0,target=2,hierarchy=memory,"
++                  "data-type=access-latency,latency=30"
++                  " -numa hmat-lb,initiator=0,target=2,hierarchy=memory,"
++                  "data-type=access-bandwidth,bandwidth=1048576"
++                  " -numa hmat-lb,initiator=1,target=0,hierarchy=memory,"
++                  "data-type=access-latency,latency=20"
++                  " -numa hmat-lb,initiator=1,target=0,hierarchy=memory,"
++                  "data-type=access-bandwidth,bandwidth=5242880"
++                  " -numa hmat-lb,initiator=1,target=1,hierarchy=memory,"
++                  "data-type=access-latency,latency=10"
++                  " -numa hmat-lb,initiator=1,target=1,hierarchy=memory,"
++                  "data-type=access-bandwidth,bandwidth=10485760"
++                  " -numa hmat-lb,initiator=1,target=2,hierarchy=memory,"
++                  "data-type=access-latency,latency=30"
++                  " -numa hmat-lb,initiator=1,target=2,hierarchy=memory,"
++                  "data-type=access-bandwidth,bandwidth=1048576",
++                  &data);
++
++    free_test_data(&data);
++}
++
+ static void test_acpi_q35_tcg_acpi_hmat_noinitiator(void)
+ {
+     test_data data;
+@@ -1875,6 +1928,8 @@ int main(int argc, char *argv[])
+     } else if (strcmp(arch, "aarch64") == 0) {
+         if (has_tcg) {
+             qtest_add_func("acpi/virt", test_acpi_virt_tcg);
++            qtest_add_func("acpi/virt/acpihmatvirt",
++                            test_acpi_virt_tcg_acpi_hmat);
+             qtest_add_func("acpi/virt/numamem", test_acpi_virt_tcg_numamem);
+             qtest_add_func("acpi/virt/memhp", test_acpi_virt_tcg_memhp);
+             qtest_add_func("acpi/virt/pxb", test_acpi_virt_tcg_pxb);
 -- 
 2.25.1
 

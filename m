@@ -1,106 +1,97 @@
-Received: by 2002:ac2:596f:0:0:0:0:0 with SMTP id h15csp554884lfp;
-        Sun, 10 Jul 2022 20:14:48 -0700 (PDT)
-X-Google-Smtp-Source: AGRyM1vACKK90+jLpSKmkR35ViqjupRxiZbXQ7ARtebpQ+3DpkG06ShHV9bQTUYdP3Rofk0ATu0i
-X-Received: by 2002:a05:620a:2848:b0:6ad:db0a:f227 with SMTP id h8-20020a05620a284800b006addb0af227mr9855497qkp.44.1657509287979;
-        Sun, 10 Jul 2022 20:14:47 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1657509287; cv=none;
+Received: by 2002:ac2:596f:0:0:0:0:0 with SMTP id h15csp668036lfp;
+        Mon, 11 Jul 2022 01:14:44 -0700 (PDT)
+X-Google-Smtp-Source: AGRyM1v8Wr3uzBHvqfIE1zbvne72lNsQwBObyKXnudy+ubBYhOXU9A8DH445rNtqtYEtc19lVcZP
+X-Received: by 2002:a05:622a:4:b0:31d:2a64:3d1c with SMTP id x4-20020a05622a000400b0031d2a643d1cmr12572476qtw.43.1657527284180;
+        Mon, 11 Jul 2022 01:14:44 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1657527284; cv=none;
         d=google.com; s=arc-20160816;
-        b=HVBAcb6TcHtfAQZLl7jbdB4uCeTdxZC9cXvn0Q4ORiJ6AgJliMSEqUO8SLVpuDXhBr
-         fPKaOD3fXvc6H7rn+EjHLTt4y8gJUQxYgV96da6I82goUywBf0cLED7PzA/ytxhosCwG
-         XO6z2mbSUJQs4xJIgWEFjUDww9ePh+WJ3HM25vSaWgNULk5BZE29HStaXCgY83C5YC37
-         Besi/milz/gyaUKoqhryBB3cdzTitgWEvfR6nCzVjVbxZ00mPlAWLimQX60PTOb2gXQd
-         Vd44KgZ5qrkqqkzIcsR4+eysHfvPeaxdLdaXQjY8OY5YO9Wxa2deFMB/Pu4fh0j8NQhy
-         y8Jw==
+        b=bIttv1l3rBQvowdBIs2pIGlrytiGEbq4jxBhDROMoa+GyUgQa5gHJUgq3Yg18wRF29
+         q5keCmQHrcZt0o1mc9tvmhLmr9rfyKb5zGWo0CRr+NkMw/s6HQ4B0FnA+gZ8aBF3G17j
+         k3Omrb+ec4fr708o1/OTkZLFj6+BP0zEWnxUvH6Rf2haA+flnBbN2jHMF+RxQjoK+jFq
+         4CgaJb1XOyvmFGRrlJ64cKeapnzSrhZVyZ2d7mUG7BvJ+01MRowoJklXGL5z14wExE2h
+         QXfI5PkNZAEgq9NbIHIr2PWnmcB/WC38Za7YM7ZC/BUT75/gxTwFhp0a7q/WDo2M5fG3
+         1Ddw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
-        bh=k+sfQEgSsbvS9wtJSqfw3sWZdwFCpVNA33aansD5syA=;
-        b=ZwyYp+VroMulcpGZ8IorylqNkkpiB9RB5oKpNSUgnKoynFFQ0+SVjG5yucl2n+Ax27
-         8mgTZ2xQSeGXV908q8G1e5OZSXexY+SbSfRsNJx67ra7ggVsL9JFtrEHzWl+tqzcJxhk
-         Dd8sj9u7Xx6uMpnA3aM4k5MyE/HOsHOl/BBXCgtqrRB+fI0eMPhRiYiasaytWYfq2W1W
-         chVdzPOabcGaTWXygdNgDORKMz/yvFk3expQa9Rfef7ST7dbvzwI4iJ7n9tcphSyB4jG
-         Zsgffn5QFfBGw6DPlKNjfmYPNxSy3RZ2oGKASae/La3t7mhz5DP6Q5vQbkY0X8q/lWQs
-         SF7Q==
+         :in-reply-to:from:references:cc:to:content-language:subject
+         :user-agent:mime-version:date:message-id;
+        bh=SsqPT1DoUWFtbBDVjrWBZNI3luKxmQM2BQK6mbWz2EI=;
+        b=aqrh5z7qhwfW7mQuTzCKurmVPfYvY4dGdygOjcBiF+u5UnixkfgcV+ObH+10kScZjC
+         IVEYTH9pfjrhMcxatAN4ooN/oA1YWrhIVK9y8VeyDHPwZw9zYQtRkJVIImMx513an6ir
+         p0LJyZO5uUgH31ZjHbnn+VRfPm2LSaSDOqBMLItC9M6m+tSHq6sz4KMBuKR/ng8CBBcf
+         m4xRhis1GSTIvDoBZSxc+FvJqOc80HSX59RJ8FXXIwRVuTmWUFRuMQOQFuFx5Ct3VkwR
+         2+5Hc+5lUcKeIUDUFAbqbrvqe6CdKzhvmfvB7ML0xghdsWLwuRZk1p4sOCbW/YIy4GGF
+         Zyew==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=n6aLtUAn;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id u16-20020a05620a0c5000b006b24e08a413si4281693qki.547.2022.07.10.20.14.47
+        by mx.google.com with ESMTPS id h124-20020a375382000000b006a67b4c112fsi3013192qkb.99.2022.07.11.01.14.44
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 10 Jul 2022 20:14:47 -0700 (PDT)
+        Mon, 11 Jul 2022 01:14:44 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=n6aLtUAn;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:34506 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:60240 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1oAjsl-0000vS-F8
-	for alex.bennee@linaro.org; Sun, 10 Jul 2022 23:14:47 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:58138)
+	id 1oAoZ1-00015U-MR
+	for alex.bennee@linaro.org; Mon, 11 Jul 2022 04:14:43 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:47420)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1oAjsY-0000sz-06
- for qemu-arm@nongnu.org; Sun, 10 Jul 2022 23:14:34 -0400
-Received: from mail-pf1-x434.google.com ([2607:f8b0:4864:20::434]:35512)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1oAjsT-0001Lk-Ux
- for qemu-arm@nongnu.org; Sun, 10 Jul 2022 23:14:31 -0400
-Received: by mail-pf1-x434.google.com with SMTP id x184so3721263pfx.2
- for <qemu-arm@nongnu.org>; Sun, 10 Jul 2022 20:14:28 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=k+sfQEgSsbvS9wtJSqfw3sWZdwFCpVNA33aansD5syA=;
- b=n6aLtUAnFSFNqfa8lzqMSVpVsrhOXnh4SNA5WJ0QW103A823s6F1BuUJTjVW6gNlVn
- PjO/gsLZphOEi0RbsT56mKhA3gWC2ufpOelO9OKYEgC29y6WnpXymtMZJW4zrr1x1Tu5
- 4qJa6VAuV4gTt00GbTo30xkHhL/WB5eCJLRdO+97t4PwaxZEWdyWRqztD9v9DJsv+jIl
- PsX5MN+RO5JH+fHgcOmr0KfZluLh1bxcMCKYx5SOZvwVaztbKoJM4vvX6E/bw72z35pF
- Kdj6rYO8GnG6ypZAvBxEny3WSOzYfTR2sGnpcXUgwQOGn70SOOZaCa4Cj4uX0mpGtE2P
- aukQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=k+sfQEgSsbvS9wtJSqfw3sWZdwFCpVNA33aansD5syA=;
- b=RfV2FeyDw8lHmOO8Zfhgb4hqSit4voPGdhe32hi43bUUIpbaqqF+pOuELBSkZNV6kt
- 5axoWvUn6NvLYKhxG1fFDH0eoutvRGXx+BNHcIc/rNSSfb+LD0mCacu/mZIg4ACJ281H
- bIPuRX/4Wt+nUGP4DvJkwIwtwjhAbboyuYs/pVBqPJsubR/6alnzKPiHy/KbTjAgawAo
- yWdSpRFe0RKervWv26CdLjDSftaqJWFiBIu9PjG3afAuIYFCaAxORVrt8D6+6YcyPzH0
- GsUprqFSHnyfN5n33ZHeMQPrVa1mZcpUaOxeoZ/FV4C/IzMV1paC9OXLXs2yjqcG36ab
- kNOQ==
-X-Gm-Message-State: AJIora/MrBS8OFKyK8FsEWVlVWaI6WPJmsl0l9cWaf1jP72/kzmuDDAk
- F1g6psdtE8S8X9LNhT02NaInew==
-X-Received: by 2002:a63:d1:0:b0:411:885e:1503 with SMTP id
- 200-20020a6300d1000000b00411885e1503mr13832979pga.65.1657509267810; 
- Sun, 10 Jul 2022 20:14:27 -0700 (PDT)
-Received: from stoup.. ([122.255.60.245]) by smtp.gmail.com with ESMTPSA id
- p10-20020a1709028a8a00b0016c0408932dsm3436697plo.129.2022.07.10.20.14.24
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 10 Jul 2022 20:14:27 -0700 (PDT)
-From: Richard Henderson <richard.henderson@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: laurent@vivier.eu, qemu-arm@nongnu.org, Vitaly Buka <vitalybuka@google.com>
-Subject: [PATCH] linux-user/aarch64: Do not clear PROT_MTE on mprotect
-Date: Mon, 11 Jul 2022 08:44:20 +0530
-Message-Id: <20220711031420.17820-1-richard.henderson@linaro.org>
-X-Mailer: git-send-email 2.34.1
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1oAoYd-00010K-Ck
+ for qemu-arm@nongnu.org; Mon, 11 Jul 2022 04:14:19 -0400
+Received: from 5.mo552.mail-out.ovh.net ([188.165.45.220]:45173)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1oAoYZ-0001y3-2U
+ for qemu-arm@nongnu.org; Mon, 11 Jul 2022 04:14:17 -0400
+Received: from mxplan5.mail.ovh.net (unknown [10.109.143.118])
+ by mo552.mail-out.ovh.net (Postfix) with ESMTPS id 9D34326E63;
+ Mon, 11 Jul 2022 08:14:08 +0000 (UTC)
+Received: from kaod.org (37.59.142.95) by DAG4EX2.mxp5.local (172.16.2.32)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.9; Mon, 11 Jul
+ 2022 10:14:01 +0200
+Authentication-Results: garm.ovh; auth=pass
+ (GARM-95G0012d5bb2cf-29b7-4301-a400-05aea7395715,
+ B4A626E929F7F6A388BA3F96B07B1F4CEE71A9BF) smtp.auth=clg@kaod.org
+X-OVh-ClientIp: 82.66.77.115
+Message-ID: <c893d821-381f-06ea-3aa8-e6354ea3f95d@kaod.org>
+Date: Mon, 11 Jul 2022 10:13:54 +0200
 MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.10.0
+Subject: Re: [PATCH 1/2] hw/gpio/aspeed: Don't let guests modify input pins
+Content-Language: en-US
+To: Peter Delevoryas <peter@pjd.dev>
+CC: Peter Maydell <peter.maydell@linaro.org>, Andrew Jeffery
+ <andrew@aj.id.au>, Joel Stanley <joel@jms.id.au>, <qemu-arm@nongnu.org>,
+ <qemu-devel@nongnu.org>
+References: <20220707071731.34047-1-peter@pjd.dev>
+ <20220707071731.34047-2-peter@pjd.dev>
+ <fa52743a-5730-3b3f-f07f-99931bb66b01@kaod.org> <YscdtXYL5sJRSm6Z@pdel-mbp>
+ <YscuKtVuZojYtqXo@pdel-mbp.dhcp.thefacebook.com>
+From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
+In-Reply-To: <YscuKtVuZojYtqXo@pdel-mbp.dhcp.thefacebook.com>
+Content-Type: text/plain; charset="UTF-8"; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::434;
- envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x434.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+X-Originating-IP: [37.59.142.95]
+X-ClientProxiedBy: DAG1EX2.mxp5.local (172.16.2.2) To DAG4EX2.mxp5.local
+ (172.16.2.32)
+X-Ovh-Tracer-GUID: dfd50cae-17b8-4a8b-a638-59f29c702d66
+X-Ovh-Tracer-Id: 15839159891890309926
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvfedrudejfecutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemucehtddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpefkffggfgfuvfevfhfhjggtgfhisehtkeertddtfeejnecuhfhrohhmpeevrogurhhitggpnfgvpgfiohgrthgvrhcuoegtlhhgsehkrghougdrohhrgheqnecuggftrfgrthhtvghrnhepkeetjedtleekjedvveffudfhteetleeifeegfeffuefghfefkeehffeufeeludejnecukfhppedtrddtrddtrddtpdefjedrheelrddugedvrdelheenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhhouggvpehsmhhtphhouhhtpdhhvghlohepmhigphhlrghnhedrmhgrihhlrdhovhhhrdhnvghtpdhinhgvtheptddrtddrtddrtddpmhgrihhlfhhrohhmpegtlhhgsehkrghougdrohhrghdpnhgspghrtghpthhtohepuddprhgtphhtthhopehqvghmuhdquggvvhgvlhesnhhonhhgnhhurdhorhhgpdfovfetjfhoshhtpehmohehhedv
+Received-SPF: pass client-ip=188.165.45.220; envelope-from=clg@kaod.org;
+ helo=5.mo552.mail-out.ovh.net
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
+ RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -116,84 +107,77 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Te1jURKUUxom
+X-TUID: wtnf2WzTazQo
 
-The documentation for PROT_MTE says that it cannot be cleared
-by mprotect.  Further, the implementation of the VM_ARCH_CLEAR bit,
-contains PROT_BTI confiming that bit should be cleared.
+On 7/7/22 21:04, Peter Delevoryas wrote:
+> On Thu, Jul 07, 2022 at 10:53:57AM -0700, Peter Delevoryas wrote:
+>> On Thu, Jul 07, 2022 at 10:56:02AM +0200, Cédric Le Goater wrote:
+>>> On 7/7/22 09:17, Peter Delevoryas wrote:
+>>>> It seems that aspeed_gpio_update is allowing the value for input pins to be
+>>>> modified through register writes and QOM property modification.
+>>>>
+>>>> The QOM property modification is fine, but modifying the value through
+>>>> register writes from the guest OS seems wrong if the pin's direction is set
+>>>> to input.
+>>>>
+>>>> The datasheet specifies that "0" bits in the direction register select input
+>>>> mode, and "1" selects output mode.
+>>>>
+>>>> OpenBMC userspace code is accidentally writing 0's to the GPIO data
+>>>> registers somewhere (or perhaps the driver is doing it through a reset or
+>>>> something), and this is overwriting GPIO FRU information (board ID, slot
+>>>> presence pins) that is initialized in Aspeed machine reset code (see
+>>>> fby35_reset() in hw/arm/aspeed.c).
+>>>
+>>> It might be good to log a GUEST_ERROR in that case, when writing to an
+>>> input GPIO and when reading from an output GPIO.
+>>
+>> Good idea, I'll include a GUEST_ERROR for writing to an input GPIO.
+>>
+>> I'm actually not totally certain about emitting an error when reading from an
+>> output GPIO, because the driver can only do 8-bit reads at the finest
+>> granularity, and if 1 of the 8 pins' direction is output, then it will be
+>> reading the value of an output pin. But, that's not really bad, because
+>> presumably the value will be ignored. Maybe I can go test this out on
+>> hardware and figure out what happens though.
+> 
+> Did a small experiment, I was looking at some of the most significant
+> bits:
+> 
+> root@dhcp-100-96-192-133:~# devmem 0x1e780000
+> 0x3CFF303E
+> root@dhcp-100-96-192-133:~# devmem 0x1e780004
+> 0x2800000C
+> root@dhcp-100-96-192-133:~# devmem 0x1e780000 32 0xffffffff
+> root@dhcp-100-96-192-133:~# devmem 0x1e780004
+> 0x2800000C
+> root@dhcp-100-96-192-133:~# devmem 0x1e780000
+> 0x3CFF303E
+> root@dhcp-100-96-192-133:~# devmem 0x1e780000
+> 0x3CFF303E
+> root@dhcp-100-96-192-133:~# devmem 0x1e780000 32 0
+> root@dhcp-100-96-192-133:~# devmem 0x1e780000
+> 0x14FF303A
+> 
+> Seems like the output pin 0x20000000 was initially high, and the input
+> pin right next to it 0x10000000 was also high. After writing 0 to the
+> data register, the value in the data register changed for the output
+> pin, but not the input pin.  Which matches what we're planning on doing
+> in the controller.
+> 
+> So yeah, I'll add GUEST_ERROR for writes to input pins but not output
+> pins. The driver should probably be doing a read-modify-update.
+> Although...if it's not, that technically wouldn't matter, behavior
+> wise...maybe GUEST_ERROR isn't appropriate for writes to input pins
+> either, for the same reason as I mentioned with reads of output pins.
+> I'll let you guys comment on what you think we should do.
 
-Introduce PAGE_TARGET_STICKY to allow target/arch/cpu.h to control
-which bits may be reset during page_set_flags.  This is sort of the
-opposite of VM_ARCH_CLEAR, but works better with qemu's PAGE_* bits
-that are separate from PROT_* bits.
+I am not an expert of the GPIO controller. Andrew may be ?
 
-Reported-by: Vitaly Buka <vitalybuka@google.com>
-Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
----
+Anyhow, anything that can help tracking invalid software operations
+is good to have and it seems that your patch is trying to fix one.
+Hence my suggestion to add some logging where it makes sense.
 
-My initial reaction to the bug report was that we weren't treating
-the other PAGE_* bits properly during the update.  But auditing the
-code more thoroughly shows we are -- it's just PROT_MTE that's not
-up to scratch.
+Thanks,
 
-
-r~
-
----
- target/arm/cpu.h          |  7 +++++--
- accel/tcg/translate-all.c | 13 +++++++++++--
- 2 files changed, 16 insertions(+), 4 deletions(-)
-
-diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index 1f4f3e0485..35c279e1f1 100644
---- a/target/arm/cpu.h
-+++ b/target/arm/cpu.h
-@@ -3385,9 +3385,12 @@ static inline MemTxAttrs *typecheck_memtxattrs(MemTxAttrs *x)
- 
- /*
-  * AArch64 usage of the PAGE_TARGET_* bits for linux-user.
-+ * Note that with the Linux kernel, PROT_MTE may not be cleared by mprotect
-+ * mprotect but PROT_BTI may be cleared.  C.f. the kernel's VM_ARCH_CLEAR.
-  */
--#define PAGE_BTI  PAGE_TARGET_1
--#define PAGE_MTE  PAGE_TARGET_2
-+#define PAGE_BTI            PAGE_TARGET_1
-+#define PAGE_MTE            PAGE_TARGET_2
-+#define PAGE_TARGET_STICKY  PAGE_MTE
- 
- #ifdef TARGET_TAGGED_ADDRESSES
- /**
-diff --git a/accel/tcg/translate-all.c b/accel/tcg/translate-all.c
-index 8fd23a9d05..ef62a199c7 100644
---- a/accel/tcg/translate-all.c
-+++ b/accel/tcg/translate-all.c
-@@ -2256,6 +2256,15 @@ int page_get_flags(target_ulong address)
-     return p->flags;
- }
- 
-+/*
-+ * Allow the target to decide if PAGE_TARGET_[12] may be reset.
-+ * By default, they are not kept.
-+ */
-+#ifndef PAGE_TARGET_STICKY
-+#define PAGE_TARGET_STICKY  0
-+#endif
-+#define PAGE_STICKY  (PAGE_ANON | PAGE_TARGET_STICKY)
-+
- /* Modify the flags of a page and invalidate the code if necessary.
-    The flag PAGE_WRITE_ORG is positioned automatically depending
-    on PAGE_WRITE.  The mmap_lock should already be held.  */
-@@ -2299,8 +2308,8 @@ void page_set_flags(target_ulong start, target_ulong end, int flags)
-             p->target_data = NULL;
-             p->flags = flags;
-         } else {
--            /* Using mprotect on a page does not change MAP_ANON. */
--            p->flags = (p->flags & PAGE_ANON) | flags;
-+            /* Using mprotect on a page does not change sticky bits. */
-+            p->flags = (p->flags & PAGE_STICKY) | flags;
-         }
-     }
- }
--- 
-2.34.1
-
+C.

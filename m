@@ -1,74 +1,91 @@
-Received: by 2002:ac2:596f:0:0:0:0:0 with SMTP id h15csp897426lfp;
-        Mon, 11 Jul 2022 08:09:19 -0700 (PDT)
-X-Google-Smtp-Source: AGRyM1tApdOa5mrGH1M/7dew1oRPM1qAgQ/Wff+0REX78t6AUbzTgl4YxQ9Y8nIhHpf0wHoPprs9
-X-Received: by 2002:a05:6402:f2a:b0:43a:9d53:e0e6 with SMTP id i42-20020a0564020f2a00b0043a9d53e0e6mr25941675eda.394.1657552159736;
-        Mon, 11 Jul 2022 08:09:19 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1657552159; cv=none;
+Received: by 2002:ac2:596f:0:0:0:0:0 with SMTP id h15csp908391lfp;
+        Mon, 11 Jul 2022 08:28:22 -0700 (PDT)
+X-Google-Smtp-Source: AGRyM1tq3VqtKkJeDuD41TaBftyv0UIsneWDrcYb1ywVWxBCLxPAitrJ8otJLDurprF5MojEtc3m
+X-Received: by 2002:a05:6402:1741:b0:433:4e4d:bfb4 with SMTP id v1-20020a056402174100b004334e4dbfb4mr25343512edx.7.1657553302154;
+        Mon, 11 Jul 2022 08:28:22 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1657553302; cv=none;
         d=google.com; s=arc-20160816;
-        b=JPNjL3f3bchgwIMf0z342Ffght2YDJ/lOZBi9rmI/aQQ+3eNt6tn8fgriW5iug7YSO
-         ewgwIzNn0+pO3n0RJp7LvWTz4/haGCm9KCwIeqnvJiMbVRnFBgay8iVhebs+rWkOXMmu
-         1SMJuIZX+aXF383EPJu8whPweyB2wYbVmh6L6WIBQDl6PtjT8ynN5OiGfYOQLFXc2dBJ
-         yeeZSqk/HpQ7E9wyjevnsVHy+mVRtDDg5EjgjKjDhBMbSeikx+BcRtrIEs2VGk06RDVs
-         rkOTq/PZIn7b6pH5SPBzy+pz2pGFUw886ZmrNM4R0+WLyL0jJhSyDsiUYsF2gEEcmuav
-         uq/g==
+        b=tRDmts+EE8GabhQ7tlpmDuES6yLNjs0irOJkp8ODwuvUdB+M10SnViRi2fSzDI4EhJ
+         vMSaxPzkQ2msFalVqbVoF1QSMz1KzkbWxf5ET81jpqPGu5ZH7DohbtsmYcDpdfOO55y4
+         JkaG5OhT0Ws4SNZlhf8S/9Zb/2kT5e1t5NDpZ2Lml38IboNAvUjGztxfmGZ1sll6kPhU
+         8JNLkyxL7pCpJgiOQQV+cXltU66Eanvfo1eLcDtszaFcPXiiWVD0aNEH8lwZu80oe9mq
+         wfWGRe1h7GDqxWRsXY5WdSBC/bpBGOCzp2tx8xDmxAfAx/zc0J8ZK56ge7i8VNWpJzZu
+         F1Nw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=list-id:precedence:mime-version:message-id:date:user-agent
-         :references:organization:in-reply-to:subject:cc:to:from
+        h=list-id:precedence:user-agent:in-reply-to:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
          :dkim-signature;
-        bh=kFM/HEtXZOYwhdUDHDICOY0NO6iZvyQ10TFIilDHEGc=;
-        b=zNEdzXWYi7/yacfFFnatL57e1BNNx7/10rGoG7Gh1IFzJ8felcvPs71gZBg1Mx8l2A
-         r+gkgu4NydC5dtmy6KPVNtTtzhlTBdQ9Dt2rNNKDV5HS/UOJsL3g0P5uQv+SsxvmkD65
-         +/WHBZHzIK+qnuXMPY34gh48f1qe2dzE6bZKjCMlUCgJ9ZmUHWt15C7kl4m5OPe+0XHW
-         l83IAFz2S3uIstkE3WDwDYJqCNYk3doVEdbAghrYr6TOdQN/CW582HJa8f00MLPixQSE
-         0OdRQAy4Znp3pd6mNZB2qfAW994mz/AhOUziRBt8/1Ers62uVcKEN2uFS58rECX7ImBJ
-         WGyQ==
+        bh=AQ9AFgjAq9AFWyJhWhhuGWEoRzdPmRiYM2CqArRFNmo=;
+        b=qaqMecc50gd45D0ZsG5tvGjGcxlowqYuklJjv7MSD1XwJe7QzZLesSXzWuhavhtxWu
+         JYjo+hHb9s4aoFED43jxYyQV2J94EtW+kzv9Gwr41OIB5Tq/a7P+t0nFGr6PvOGtZuvs
+         XxhrmGS9cH9hP3G8+BFduNEFANTU85n1hQE4WrsF8R3CO679FQuRQGzYbc2sFzW3fJCl
+         7BzHGidtmJN3OiFMrnyzw16e6fZAraUm/S+YEGOa2gNQcgnOqM2OpLvGgWiqLx/5s1ag
+         TOHxUU0pVcf0Xez4NN5Tq8KK/qi1QubTg0FcpJ2RkaNJ7OBNco3nwXS9NYeYfH96u3B6
+         v7Mw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=XT9q6TV0;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=IuLweYSc;
        spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <kvm-owner@vger.kernel.org>
 Received: from out1.vger.email (out1.vger.email. [2620:137:e000::1:20])
-        by mx.google.com with ESMTP id ne17-20020a1709077b9100b0072b3b4f015csi11124692ejc.311.2022.07.11.08.09.19;
-        Mon, 11 Jul 2022 08:09:19 -0700 (PDT)
+        by mx.google.com with ESMTP id x18-20020aa7dad2000000b0043ab81e4240si56648eds.501.2022.07.11.08.28.22;
+        Mon, 11 Jul 2022 08:28:22 -0700 (PDT)
 Received-SPF: pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) client-ip=2620:137:e000::1:20;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=XT9q6TV0;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=IuLweYSc;
        spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S232059AbiGKPJJ (ORCPT <rfc822;daniel.diaz@linaro.org>
-        + 2 others); Mon, 11 Jul 2022 11:09:09 -0400
-Received: from lindbergh.monkeyblade.net ([23.128.96.19]:36800 "EHLO
+        id S229792AbiGKP2V (ORCPT <rfc822;daniel.diaz@linaro.org>
+        + 2 others); Mon, 11 Jul 2022 11:28:21 -0400
+Received: from lindbergh.monkeyblade.net ([23.128.96.19]:52444 "EHLO
         lindbergh.monkeyblade.net" rhost-flags-OK-OK-OK-OK) by vger.kernel.org
-        with ESMTP id S232070AbiGKPJG (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Mon, 11 Jul 2022 11:09:06 -0400
+        with ESMTP id S229545AbiGKP2U (ORCPT <rfc822;kvm@vger.kernel.org>);
+        Mon, 11 Jul 2022 11:28:20 -0400
 Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com [170.10.129.124])
-        by lindbergh.monkeyblade.net (Postfix) with ESMTP id 414465C97A
-        for <kvm@vger.kernel.org>; Mon, 11 Jul 2022 08:09:05 -0700 (PDT)
+        by lindbergh.monkeyblade.net (Postfix) with ESMTP id 2817C275C0
+        for <kvm@vger.kernel.org>; Mon, 11 Jul 2022 08:28:15 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-        s=mimecast20190719; t=1657552144;
+        s=mimecast20190719; t=1657553294;
         h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
          to:to:cc:cc:mime-version:mime-version:content-type:content-type:
          in-reply-to:in-reply-to:references:references;
-        bh=kFM/HEtXZOYwhdUDHDICOY0NO6iZvyQ10TFIilDHEGc=;
-        b=XT9q6TV0h7psBO01URMoMfLDTVlCpVDm/wisVAYGSP+BU23Cf8IxxJo/GKAyI31M74Le5B
-        Olps4tUZ/iySF1vYxtZ3MhRjhoURv5Hk68Y7/PMatTpnUQvOBD1emmsMusjEXFVGlIjLGj
-        Yp4lL8EKhRR5FbwJRZayULe+RE8zQ5g=
-Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
- [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
+        bh=AQ9AFgjAq9AFWyJhWhhuGWEoRzdPmRiYM2CqArRFNmo=;
+        b=IuLweYScR4mLFkhU/v4xp5cwrizEPSs0cXl4i0azFTuffSvYTpCc1PXTMORiApbHFWfQ5j
+        Br0FbhrFEtqpLDqOf3LtiniobO2eXw+GsDIwK9WqFbIVYEZbNbdiqvTHCCsKjYL/peHwKp
+        FmZvqmtV8Mvc7b75vZcDATfuijX/wyI=
+Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
+ [209.85.221.69]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-675-YLpegqmMNImf2jGbCwM8ZA-1; Mon, 11 Jul 2022 11:09:02 -0400
-X-MC-Unique: YLpegqmMNImf2jGbCwM8ZA-1
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.rdu2.redhat.com [10.11.54.2])
-        (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-        (No client certificate requested)
-        by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 5BE2F811E9B;
-        Mon, 11 Jul 2022 15:09:01 +0000 (UTC)
-Received: from localhost (unknown [10.39.192.23])
-        by smtp.corp.redhat.com (Postfix) with ESMTPS id 13C6440D296C;
-        Mon, 11 Jul 2022 15:09:00 +0000 (UTC)
-From:   Cornelia Huck <cohuck@redhat.com>
-To:     "Dr. David Alan Gilbert" <dgilbert@redhat.com>
+ us-mta-605-sZRYSwjUOV--3C-eegOFiQ-1; Mon, 11 Jul 2022 11:28:12 -0400
+X-MC-Unique: sZRYSwjUOV--3C-eegOFiQ-1
+Received: by mail-wr1-f69.google.com with SMTP id l11-20020adfbd8b000000b0021d754b84c5so744625wrh.17
+        for <kvm@vger.kernel.org>; Mon, 11 Jul 2022 08:28:11 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+         :mime-version:content-disposition:in-reply-to:user-agent;
+        bh=AQ9AFgjAq9AFWyJhWhhuGWEoRzdPmRiYM2CqArRFNmo=;
+        b=ko3cX3zEqA+5iPfvCjM7jdhfkkyl+cjAq2tcMKO3vEVhSXtDp41/N3RHkeTRiqOCbQ
+         H8JFH/GRUJP3kyylHiMGyYyhnDdDn/09PcdIgD1jbVnBOmI/olveVqbAidYpOK0SseXi
+         tvzfY0HvVv2n5nYNXfRoGhr00r2HVmPaYOxUs2C+H1blpwknbRmpRdcR+b0/6494IkqW
+         vYE+lnAUyRsiHj6+GHb7qOpBHvSkgfzVfenPpaxy+4UaxZAlkGIJ5wXjhd9qa8JFkLeS
+         Cix3Az+F7X6w+UKxkK99Ag9vicy55cV08+51dvIVbCpMescdsAtT3utAKdNwWqkcOV+7
+         J68g==
+X-Gm-Message-State: AJIora9yuN+W6QyXHAAP/7tvGqUNYaMmEv+7NOkmHVe9Cnb9XkIgVOSh
+        tAThW7Wkk3ySU2MF3psn7WgPlxTuUBFlX6ipMQv8B2ESdHDM/IVDoVXGgOXzypmtWYfr+IQlWYy
+        LkoYhZTTce0uG
+X-Received: by 2002:a5d:47a8:0:b0:21b:a318:2c31 with SMTP id 8-20020a5d47a8000000b0021ba3182c31mr17271983wrb.463.1657553290622;
+        Mon, 11 Jul 2022 08:28:10 -0700 (PDT)
+X-Received: by 2002:a5d:47a8:0:b0:21b:a318:2c31 with SMTP id 8-20020a5d47a8000000b0021ba3182c31mr17271965wrb.463.1657553290404;
+        Mon, 11 Jul 2022 08:28:10 -0700 (PDT)
+Received: from work-vm (cpc109025-salf6-2-0-cust480.10-2.cable.virginm.net. [82.30.61.225])
+        by smtp.gmail.com with ESMTPSA id j16-20020adfff90000000b0021d76a1b0e3sm6039975wrr.6.2022.07.11.08.28.09
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 11 Jul 2022 08:28:09 -0700 (PDT)
+Date:   Mon, 11 Jul 2022 16:28:07 +0100
+From:   "Dr. David Alan Gilbert" <dgilbert@redhat.com>
+To:     Cornelia Huck <cohuck@redhat.com>
 Cc:     Peter Maydell <peter.maydell@linaro.org>,
         Thomas Huth <thuth@redhat.com>,
         Laurent Vivier <lvivier@redhat.com>,
@@ -76,16 +93,15 @@ Cc:     Peter Maydell <peter.maydell@linaro.org>,
         Juan Quintela <quintela@redhat.com>, qemu-arm@nongnu.org,
         qemu-devel@nongnu.org, kvm@vger.kernel.org
 Subject: Re: [PATCH RFC v2 0/2] arm: enable MTE for QEMU + kvm
-In-Reply-To: <YswkdVeESqf5sknQ@work-vm>
-Organization: Red Hat GmbH
+Message-ID: <YsxBh3bJmbF8MvsJ@work-vm>
 References: <20220707161656.41664-1-cohuck@redhat.com>
  <YswkdVeESqf5sknQ@work-vm>
-User-Agent: Notmuch/0.36 (https://notmuchmail.org)
-Date:   Mon, 11 Jul 2022 17:08:59 +0200
-Message-ID: <87o7xv660k.fsf@redhat.com>
+ <87o7xv660k.fsf@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Scanned-By: MIMEDefang 2.84 on 10.11.54.2
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <87o7xv660k.fsf@redhat.com>
+User-Agent: Mutt/2.2.6 (2022-06-05)
 X-Spam-Status: No, score=-3.4 required=5.0 tests=BAYES_00,DKIMWL_WL_HIGH,
         DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,RCVD_IN_DNSWL_LOW,
         SPF_HELO_NONE,SPF_NONE,T_SCC_BODY_TEXT_LINE autolearn=ham
@@ -95,33 +111,42 @@ X-Spam-Checker-Version: SpamAssassin 3.4.6 (2021-04-09) on
 Precedence: bulk
 List-ID: <kvm.vger.kernel.org>
 X-Mailing-List: kvm@vger.kernel.org
-X-TUID: AcCserUqAGUl
+X-TUID: 76/FhXrQhK67
 
-On Mon, Jul 11 2022, "Dr. David Alan Gilbert" <dgilbert@redhat.com> wrote:
+* Cornelia Huck (cohuck@redhat.com) wrote:
+> On Mon, Jul 11 2022, "Dr. David Alan Gilbert" <dgilbert@redhat.com> wrote:
+> 
+> > * Cornelia Huck (cohuck@redhat.com) wrote:
+> >> For kvm, mte stays off by default; this is because migration is not yet
+> >> supported (postcopy will need an extension of the kernel interface, possibly
+> >> an extension of the userfaultfd interface), and turning on mte will add a
+> >> migration blocker.
+> >
+> > My assumption was that a normal migration would need something as well
+> > to retrieve and place the MTE flags; albeit not atomically.
+> 
+> There's KVM_ARM_MTE_COPY_TAGS, which should be sufficient to move tags
+> around for normal migration.
+> 
+> >
+> >> My biggest question going forward is actually concerning migration; I gather
+> >> that we should not bother adding something unless postcopy is working as well?
+> >
+> > I don't think that restriction is fair on you; just make sure
+> > postcopy_ram_supported_by_host gains an arch call and fails cleanly;
+> > that way if anyone tries to enable postcopy they'll find out with a
+> > clean fail.
+> 
+> Ok, if simply fencing off postcopy is fine, we can try to move forward
+> with what we have now. The original attempt at
+> https://lore.kernel.org/all/881871e8394fa18a656dfb105d42e6099335c721.1615972140.git.haibo.xu@linaro.org/
+> hooked itself directly into common code; maybe we should rather copy the
+> approach used for s390 storage keys (extra "device") instead?
 
-> * Cornelia Huck (cohuck@redhat.com) wrote:
->> For kvm, mte stays off by default; this is because migration is not yet
->> supported (postcopy will need an extension of the kernel interface, possibly
->> an extension of the userfaultfd interface), and turning on mte will add a
->> migration blocker.
->
-> My assumption was that a normal migration would need something as well
-> to retrieve and place the MTE flags; albeit not atomically.
+I don't understand how a separate device would keep the idea of page
+changed flags coherent with the main RAM that the tags correspond to.
 
-There's KVM_ARM_MTE_COPY_TAGS, which should be sufficient to move tags
-around for normal migration.
+Dave
 
->
->> My biggest question going forward is actually concerning migration; I gather
->> that we should not bother adding something unless postcopy is working as well?
->
-> I don't think that restriction is fair on you; just make sure
-> postcopy_ram_supported_by_host gains an arch call and fails cleanly;
-> that way if anyone tries to enable postcopy they'll find out with a
-> clean fail.
-
-Ok, if simply fencing off postcopy is fine, we can try to move forward
-with what we have now. The original attempt at
-https://lore.kernel.org/all/881871e8394fa18a656dfb105d42e6099335c721.1615972140.git.haibo.xu@linaro.org/
-hooked itself directly into common code; maybe we should rather copy the
-approach used for s390 storage keys (extra "device") instead?
+-- 
+Dr. David Alan Gilbert / dgilbert@redhat.com / Manchester, UK

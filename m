@@ -1,74 +1,74 @@
-Received: by 2002:ac2:596f:0:0:0:0:0 with SMTP id h15csp742071lfp;
-        Mon, 11 Jul 2022 03:53:23 -0700 (PDT)
-X-Google-Smtp-Source: AGRyM1u15DES+Utv/OFxuXCCzV+uM+25Ff9mfY+zBIGfaffMAhBI4NVrXKeKfSjdX0/JDzeqF/WT
-X-Received: by 2002:a05:6214:f05:b0:473:7b68:9260 with SMTP id gw5-20020a0562140f0500b004737b689260mr714119qvb.124.1657536802985;
-        Mon, 11 Jul 2022 03:53:22 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1657536802; cv=none;
+Received: by 2002:ac2:596f:0:0:0:0:0 with SMTP id h15csp742743lfp;
+        Mon, 11 Jul 2022 03:54:32 -0700 (PDT)
+X-Google-Smtp-Source: AGRyM1t9J5MvXHmiPdzRvAID7xbGMCYtJzaLAtB+npcYZuVAp+0YP7s9fh+X3dr1yzx8PLLi8Udi
+X-Received: by 2002:a37:5401:0:b0:6b5:5bce:e975 with SMTP id i1-20020a375401000000b006b55bcee975mr10782489qkb.289.1657536872592;
+        Mon, 11 Jul 2022 03:54:32 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1657536872; cv=none;
         d=google.com; s=arc-20160816;
-        b=CxsrBG5rXsI8a+3Q/vLp6TaZIz0IBScmi6iOG5xdvJw7ISuLOAKuG01kMAcVh93N4d
-         bvOkZ5PsWNtQ5rOCcdSMy+Q4DQ2vwhCvrV2KWjAiGzdZ/AXJp9aN2pQay0xVPVEXCPvw
-         1vsNxPtcz9x1+/Npvv8FzNRYSrRsHJv8K/KDP+rr/qd3apbU33t2PZV/JfKsXYWyCjIq
-         97L7EQIwF2PEcsfgIEGiCw2uzuEde1fOx2ufGGW1/0bKA9d0RnZWqcnWQLzh8uLW4pui
-         pElnTgpw9fsQa2ZcdPi+oXsZUwGDc3ANLc0meT1433juvfA7dbwRfuHJZqZqYr++wlH8
-         fbmQ==
+        b=fLNuDW+Crnjnp95UOsZVcsf0JzdoYu40W2OvlpvSnCkopQXfoOR6NcuTruVCaa1VkQ
+         lqWxsi09wKdNCVr9HWemN8rH0MBjbxqZWnVVP7QJJ8xOkr/a7Rn53iBhQXG8kZMCjhuS
+         gfVF/PeEbHhXTKelkJc198gvn5az6wt0zBp0ZzKFmJAKJ6SRPl+lfgnEx0Y83uz9oSU3
+         YEZvLw1lPDf8o1DG9OUF28fxGWFwfHqlv+OMexPirTDEX3DHlnfLB1AC6EALdq2F/b91
+         qsMJvfBF4p468A3O798y5iFRBhXG1iomHVzoEMrtWyf/Ul1KmVMo/WlQ+k0dXeSnUUQb
+         pHIw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=from:reply-to:sender:errors-to:list-subscribe:list-help:list-post
          :list-archive:list-unsubscribe:list-id:precedence
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to;
-        bh=uXcaItdGRv97/M0bEESxUnQ4Bf2p0VDmoud1dbkbUIQ=;
-        b=DtpdSOvv/D81FvcJYF+5tD/S0sWRGNTa+63N2BMOONNrGerphSWDqMKv1fMQl6NoHW
-         tNVrAMIokoMFfZ9/+l1NnlAn/S/LGPrazVEzPcPtSVPe5rSg+btMbonIZNLzBzpjfVla
-         CJpKpbzaDt1M55eqdCPHD5rhVLtnGskjGQCwPSbawx7oAtVb5T1J0vR8TOflVrn6ukcZ
-         /n52QNY4id/3Wl4+9w3+9RN1yqdMUkWnYMYKp9Pynob8nF8uPkT+ozZ1SeYAxvG+zbZW
-         a4gNTOFrRwU/h4pcfID/oBEWBl1lFd6NCOo874ea841b2bJIcw8W2ZQjsz1kQjY1C5kB
-         LQkA==
+        bh=5zKhcXloY3LQBzIFZiMuuZe5JpDFr1qqRTmYU+07pLA=;
+        b=usqVyZ6HVi0ORvAnsynrc/+dOWrY2Kfoa4zp35sgE70u/Oou8mdlxcv0xhnMCOfqB2
+         CkvjqBf5tVh4QMvgCW0paCd/He3B7UwGR24ugHBSLF+VLusfea8iTLdixFk32l5VfnzX
+         NAivdb7rnlYJVNu9792jyv/Hg4Vk5ikySxUJmYoFb9a8NX0tlVg4gjhl1BAbB7fAbTvu
+         iQzy+PdnygdoJSYk8LMtdfVk5v0NL+fjKPKEAkcLPZFk8iANiVPMjhemOTEFcXTJfe1R
+         gOQ5NkapsoeL5CFRgk56er8iBuTDUO321+Su9CiRwtXYiP3kjz5AUUijorNnJ7c28cuv
+         m9Pg==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id f11-20020a0562141d2b00b00472f7ce4ca6si4234265qvd.427.2022.07.11.03.53.22
+        by mx.google.com with ESMTPS id t21-20020a37ea15000000b006af08104887si3677180qkj.372.2022.07.11.03.54.32
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 11 Jul 2022 03:53:22 -0700 (PDT)
+        Mon, 11 Jul 2022 03:54:32 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
-Received: from localhost ([::1]:55782 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:59702 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1oAr2Y-0006yX-H8
-	for alex.bennee@linaro.org; Mon, 11 Jul 2022 06:53:22 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:52402)
+	id 1oAr3f-0001C4-UF
+	for alex.bennee@linaro.org; Mon, 11 Jul 2022 06:54:31 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:52272)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <hesham.almatary@huawei.com>)
- id 1oAqx8-0007JW-GH; Mon, 11 Jul 2022 06:47:48 -0400
-Received: from frasgout.his.huawei.com ([185.176.79.56]:2656)
+ id 1oAqwe-0007BL-M2; Mon, 11 Jul 2022 06:47:19 -0400
+Received: from frasgout.his.huawei.com ([185.176.79.56]:2655)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <hesham.almatary@huawei.com>)
- id 1oAqx6-0000dA-Vr; Mon, 11 Jul 2022 06:47:46 -0400
-Received: from fraeml734-chm.china.huawei.com (unknown [172.18.147.226])
- by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4LhL8C1QV0z687Rd;
- Mon, 11 Jul 2022 18:43:23 +0800 (CST)
+ id 1oAqwd-0000VN-6m; Mon, 11 Jul 2022 06:47:16 -0400
+Received: from fraeml735-chm.china.huawei.com (unknown [172.18.147.201])
+ by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4LhLC43pNHz686my;
+ Mon, 11 Jul 2022 18:45:52 +0800 (CST)
 Received: from lhreml751-chm.china.huawei.com (10.201.108.201) by
- fraeml734-chm.china.huawei.com (10.206.15.215) with Microsoft SMTP Server
+ fraeml735-chm.china.huawei.com (10.206.15.216) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2375.24; Mon, 11 Jul 2022 12:47:42 +0200
+ 15.1.2375.24; Mon, 11 Jul 2022 12:47:12 +0200
 Received: from O84201547D.china.huawei.com (10.122.247.218) by
  lhreml751-chm.china.huawei.com (10.201.108.201) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2375.24; Mon, 11 Jul 2022 11:47:42 +0100
+ 15.1.2375.24; Mon, 11 Jul 2022 11:47:11 +0100
 To: <jonathan.cameron@huawei.com>, <qemu-devel@nongnu.org>
 CC: <yangyicong@huawei.com>, <chenxiang66@hisilicon.com>,
  <linuxarm@huawei.com>, <qemu-arm@nongnu.org>, <peter.maydell@linaro.org>,
  <imammedo@redhat.com>, <wangyanan55@huawei.com>,
  <marcel.apfelbaum@gmail.com>, <eduardo@habkost.net>, <Brice.Goglin@inria.fr>, 
  <mst@redhat.com>
-Subject: [PATCH 6/8] hw/arm/virt: Enable HMAT on arm virt machine
-Date: Mon, 11 Jul 2022 11:44:34 +0100
-Message-ID: <20220711104436.8363-7-hesham.almatary@huawei.com>
+Subject: [PATCH 5/8] tests: Add HMAT AArch64/virt empty table files
+Date: Mon, 11 Jul 2022 11:44:33 +0100
+Message-ID: <20220711104436.8363-6-hesham.almatary@huawei.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20220711104436.8363-1-hesham.almatary@huawei.com>
 References: <20220711104436.8363-1-hesham.almatary@huawei.com>
@@ -103,56 +103,43 @@ Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Reply-to:  Hesham Almatary <hesham.almatary@huawei.com>
 From:  Hesham Almatary via <qemu-devel@nongnu.org>
-X-TUID: NigFLB1Oz2ku
+X-TUID: jLH+k2PryOvF
 
-From: Xiang Chen <chenxiang66@hisilicon.com>
-
-Since the patchset ("Build ACPI Heterogeneous Memory Attribute Table (HMAT)"),
-HMAT is supported, but only x86 is enabled. Enable HMAT on arm virt machine.
-
-Signed-off-by: Xiang Chen <chenxiang66@hisilicon.com>
+Signed-off-by: Hesham Almatary <hesham.almatary@huawei.com>
 ---
- hw/arm/Kconfig           | 1 +
- hw/arm/virt-acpi-build.c | 7 +++++++
- 2 files changed, 8 insertions(+)
+ tests/data/acpi/virt/DSDT.acpihmatvirt      | 0
+ tests/data/acpi/virt/FACP.acpihmatvirt      | 0
+ tests/data/acpi/virt/HMAT.acpihmatvirt      | 0
+ tests/data/acpi/virt/SRAT.acpihmatvirt      | 0
+ tests/qtest/bios-tables-test-allowed-diff.h | 4 ++++
+ 5 files changed, 4 insertions(+)
+ create mode 100644 tests/data/acpi/virt/DSDT.acpihmatvirt
+ create mode 100644 tests/data/acpi/virt/FACP.acpihmatvirt
+ create mode 100644 tests/data/acpi/virt/HMAT.acpihmatvirt
+ create mode 100644 tests/data/acpi/virt/SRAT.acpihmatvirt
 
-diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
-index 15fa79afd3..17fcde8e1c 100644
---- a/hw/arm/Kconfig
-+++ b/hw/arm/Kconfig
-@@ -30,6 +30,7 @@ config ARM_VIRT
-     select ACPI_VIOT
-     select VIRTIO_MEM_SUPPORTED
-     select ACPI_CXL
-+    select ACPI_HMAT
- 
- config CHEETAH
-     bool
-diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
-index 449fab0080..f19b55e486 100644
---- a/hw/arm/virt-acpi-build.c
-+++ b/hw/arm/virt-acpi-build.c
-@@ -42,6 +42,7 @@
- #include "hw/acpi/memory_hotplug.h"
- #include "hw/acpi/generic_event_device.h"
- #include "hw/acpi/tpm.h"
-+#include "hw/acpi/hmat.h"
- #include "hw/pci/pcie_host.h"
- #include "hw/pci/pci.h"
- #include "hw/pci/pci_bus.h"
-@@ -990,6 +991,12 @@ void virt_acpi_build(VirtMachineState *vms, AcpiBuildTables *tables)
-             build_slit(tables_blob, tables->linker, ms, vms->oem_id,
-                        vms->oem_table_id);
-         }
-+
-+        if (ms->numa_state->hmat_enabled) {
-+            acpi_add_table(table_offsets, tables_blob);
-+            build_hmat(tables_blob, tables->linker, ms->numa_state,
-+                       vms->oem_id, vms->oem_table_id);
-+        }
-     }
- 
-     if (ms->nvdimms_state->is_enabled) {
+diff --git a/tests/data/acpi/virt/DSDT.acpihmatvirt b/tests/data/acpi/virt/DSDT.acpihmatvirt
+new file mode 100644
+index 0000000000..e69de29bb2
+diff --git a/tests/data/acpi/virt/FACP.acpihmatvirt b/tests/data/acpi/virt/FACP.acpihmatvirt
+new file mode 100644
+index 0000000000..e69de29bb2
+diff --git a/tests/data/acpi/virt/HMAT.acpihmatvirt b/tests/data/acpi/virt/HMAT.acpihmatvirt
+new file mode 100644
+index 0000000000..e69de29bb2
+diff --git a/tests/data/acpi/virt/SRAT.acpihmatvirt b/tests/data/acpi/virt/SRAT.acpihmatvirt
+new file mode 100644
+index 0000000000..e69de29bb2
+diff --git a/tests/qtest/bios-tables-test-allowed-diff.h b/tests/qtest/bios-tables-test-allowed-diff.h
+index dfb8523c8b..44594cae59 100644
+--- a/tests/qtest/bios-tables-test-allowed-diff.h
++++ b/tests/qtest/bios-tables-test-allowed-diff.h
+@@ -1 +1,5 @@
+ /* List of comma-separated changed AML files to ignore */
++"tests/data/acpi/virt/DSDT.acpihmatvirt",
++"tests/data/acpi/virt/FACP.acpihmatvirt",
++"tests/data/acpi/virt/HMAT.acpihmatvirt",
++"tests/data/acpi/virt/SRAT.acpihmatvirt",
 -- 
 2.25.1
 

@@ -1,83 +1,83 @@
-Received: by 2002:ac2:596f:0:0:0:0:0 with SMTP id h15csp1713909lfp;
-        Tue, 12 Jul 2022 15:28:57 -0700 (PDT)
-X-Google-Smtp-Source: AGRyM1sgax6DLW97woC7fDDZCf8qj5++m+d6BIS4YqQ0wTDatE/RWQHoByB5aumSHSHMAytKk0fo
-X-Received: by 2002:a05:622a:64f:b0:31e:6182:933b with SMTP id a15-20020a05622a064f00b0031e6182933bmr254953qtb.380.1657664937672;
-        Tue, 12 Jul 2022 15:28:57 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1657664937; cv=none;
+Received: by 2002:ac2:596f:0:0:0:0:0 with SMTP id h15csp1714198lfp;
+        Tue, 12 Jul 2022 15:29:58 -0700 (PDT)
+X-Google-Smtp-Source: AGRyM1sFTdak90Nyq4gZODWaXEemIZ3gqhibJQGRkxt4n93X4FSOVUU9D47uWmyFlMeqsUYAoAEl
+X-Received: by 2002:a0c:cb86:0:b0:473:37d:9f48 with SMTP id p6-20020a0ccb86000000b00473037d9f48mr224411qvk.81.1657664998433;
+        Tue, 12 Jul 2022 15:29:58 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1657664998; cv=none;
         d=google.com; s=arc-20160816;
-        b=VZUhjnDCJs3iEC/qyol2D+wNsHNiazdNzOXLSKTHuxDNhwUZz6jT/q6XSTPNA2Kiaz
-         j/WazLf3gbTeUKjpI+E8Nelzn7GrORcsnpJOQKaozaLCGtHOaJk1+YKxHLD6ihGzlxRS
-         CJ+O0yLq5fil3jF8Atud1jK4qH5aZ5crVpQlQ3LzRUWPeOZILjZLAFoHc0L/lxqwn8YB
-         QjO4FGt3/J6nJeOU1yn0vWf7VjMHiC0pQ7t5RRY4n7hfacv9YjQNtKh6/mkP46PuY1xV
-         LnoY9Tszri4gY7FOSMGemPYUpAgDbnbBqlbKyJ6LCPUWpkLtKCStYDVF9iX1/LtwaDYk
-         fGeg==
+        b=pAW/x8XgUZzb+C2biUEQDBIYSUaj+EZzb+/Ry0sNxnNKxSERYookdVUG0e9tJk7cd+
+         0ddCdJecoCr6+04JmpTXDrDuAx7BgqoXL0FSBFTVhEHMnQ8Sl7tKAwTDF8A17G/wzce9
+         wqJIFxKma5qPwDrMb8JXmqE+qeDIwO8/soDGrbx7ktY5QyR4y7Mog+vcOtPxPhrqSpm6
+         PqFKF4ACLKiWVnU8S+8gzqrQ0jsHAyoinLR+Fwdn5ZJjv1XyY1/U7/+1uZzQ7mmp0clS
+         LATuH++3s39RWE6irJrIjVu7MvMSRMvTetyfieHy5udVRG+hNBBIi6eXIzNrakGVyPiA
+         Jk3w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:to:from:dkim-signature;
-        bh=OnuiQkD/doPGjmSJoFJNK/BQF0b2VudiyT/o1PVirc8=;
-        b=gLvYXcKqdYCmYeNNUAMCtzQB14dumkvTvBjKWolN4vBr5QsX82mgTeXQ2OMgWw5MhT
-         U4nGvYL0a4eUFp5BSG0G3w1VFQ5o/JB7cd+yisU/YfjpMLyb/AHXXElEbcV4Y45q+U6H
-         +q4Cb7NsKWauDFSQw6Ok28uHsJe23NRrsB7UMLgczwthmTB9qcmQ44mYw5+wx8Msorj1
-         5C0SPsspoM0poAphTc99kSOr8QmmjXxEifXm/meUlLV5MH89rP327txY0SUueQCTvssZ
-         mRM3TOOW9UmyyK7+Gnum8tiPz857/1PJ4KcPHryyJTObmYrXwDvx8WsTx+aRnvP/wZj5
-         QLNA==
+        bh=0CoI6KZ6avna/eIj3WpIJ8W6RFVeKBzEJk7ld1BAT6k=;
+        b=EgkDDd3Ioza4OYvjvksbDCRp4q1nFsuJLcP3nrZvOC2XDucKdUKS43hlR7buHO9XO6
+         U5/PgpmXwl2UVMHylB7aDIXk/sEDgeH67z4pmBYGRKoPoi3f/BzLxtpRFXuvWEDGntPh
+         DApgXlbf4Gm8TVelXFVpZqsP6BgsXE6i3JeArGeBNjKfALS6U6l6gDXRUNwJGhEULpmQ
+         5uTpKviN53W2HFrroGBgVGh5b93lWxZLz+BLnbD0ONk44tZtVA3jJ5RhjvbNxpYl46CV
+         JhzBo97FK4eqF2xgNP2cbwBmr1/AYu1UBy06zc4WVQhQd07oVsNg46If71h2kUaenfMM
+         77Qw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@ilande.co.uk header.s=20220518 header.b=QqSHCGrZ;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@ilande.co.uk header.s=20220518 header.b=os4wykSM;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=ilande.co.uk
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id q6-20020a05621419e600b00473223bfb82si7245799qvc.458.2022.07.12.15.28.57
+        by mx.google.com with ESMTPS id d4-20020a05620a240400b006b57b073ba2si6663555qkn.439.2022.07.12.15.29.58
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 12 Jul 2022 15:28:57 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 12 Jul 2022 15:29:58 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@ilande.co.uk header.s=20220518 header.b=QqSHCGrZ;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@ilande.co.uk header.s=20220518 header.b=os4wykSM;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=ilande.co.uk
-Received: from localhost ([::1]:57238 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:57562 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1oBONF-0001y4-41
-	for alex.bennee@linaro.org; Tue, 12 Jul 2022 18:28:57 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:43598)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1oBOOC-0002B8-QW
+	for alex.bennee@linaro.org; Tue, 12 Jul 2022 18:29:56 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:43522)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mark.cave-ayland@ilande.co.uk>)
- id 1oBNqs-0004nO-V5; Tue, 12 Jul 2022 17:55:31 -0400
-Received: from mail.ilande.co.uk ([2001:41c9:1:41f::167]:42548)
+ id 1oBNqg-0004bg-WF; Tue, 12 Jul 2022 17:55:19 -0400
+Received: from mail.ilande.co.uk ([2001:41c9:1:41f::167]:42488)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mark.cave-ayland@ilande.co.uk>)
- id 1oBNqr-0008At-GJ; Tue, 12 Jul 2022 17:55:30 -0400
+ id 1oBNqf-0007yn-LA; Tue, 12 Jul 2022 17:55:18 -0400
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=ilande.co.uk; s=20220518; h=Subject:Content-Transfer-Encoding:MIME-Version:
  References:In-Reply-To:Message-Id:Date:To:From:Sender:Reply-To:Cc:
  Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
  Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:
  List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=OnuiQkD/doPGjmSJoFJNK/BQF0b2VudiyT/o1PVirc8=; b=QqSHCGrZwQRcUKnUWmGxDcrDrz
- oarMj06URswLWSoLymljotHfikFr+Vy+OaQ8oMpIPfXSBjf2zM+OOutYZbQFzjk/5MVqmBddt7tnT
- zehyKbmvNM7Nm2xb4vryXUhWhNhmPR0yqhBmHoUbx233MV9AdxmlPkV8r0DCOBBLUKqFUP+PdxqR0
- WuIXe0CDlAi0JkspEzOnhVpzs97ztDCw3WXQ0Kh005x/+bvN2DY81J5rcuNTdv6LM8fdsX9hUwGAW
- lizZCSUFgukUVWnbifuI3+HxsjPYeJ5yGOKrK7FTUGG16yKqmkY3jqCooewr9BIkDZ5V93h9T2tM/
- O/Xiv1XJ9/5nwm0Kk1Ew1hz/ETAxuWaNSYTBO2PsyVbFHKHne7KpFSxke8a79I5l8T9xJMirg4bo0
- M058RzQk0mytj7iQno2mmBuK/M3RSAehnomP/pVbqaSnfDPk9ngCharSzWOVEdVU8rdDykzeUBqRg
- kD7sT4JYy5gHlF/o7oJQ+MjW5bJV2P1T5zQFC1Unnkbht0mRCLb+ZNM9HRHavp/IcY9ngBmVWw9A+
- w/X1XHaS8FaC6q5/kbi0oDUWajIQGdG65FVUPI9dWp7uy9Ck49DIEMqrr6pj4dmiVO3KvevuGr3Bm
- e8GrszaLBsZpOoOgvhYIJ/kYmFu3JyCb7PWERjVDM=;
+ bh=0CoI6KZ6avna/eIj3WpIJ8W6RFVeKBzEJk7ld1BAT6k=; b=os4wykSMQGSNDaRE/+ytqrzqmu
+ hssCc+WUTh0JWkuN2kgNhEEjqDJ16nIpNN8CtGJW5UB7YGWm1aMU7yKZV1pHdNa5svg1iv0maMHHA
+ 5GmgbdDrQwcA02feCLe8hilWUOqoucNxmuU2q/naqlHCHixDr3UfGrBzi/SOPqlNK/3qSG6b8qa/Q
+ 0ZhzBdsXtIJ6rbB42sb31rvy6Fwe7Dms8VF6aUQLmBMUqX3KZ2Ww9vVWgynYsFNJm1hAFUOkm0LuK
+ VKXduqaaqEW1xh9vd0w5aIKUqYghP46rcEA5YhvA24rj3e/QkR6UqcgJwWROApXp3aKbLtcRPXf3v
+ CdZd2CEbNJEtwS9ID9vwytKcQyZk4R21rvyE+ZWvU8B8wrReEuKKQW3Dk4xLfFH9kVIOqTr0F6IRg
+ bRghOL2nFUDQ8E280g6N8UiCrUa5VBqBRanCB/ygnbP1CayiRlWFxEWC7fX/9lcQNrcIJ3iG4yVDI
+ 7jBF8+OREt73aXN1Hw9/TL2fJvmsdLCgWLKUnj/3jrf5JOXQBnVQ1TbiAj2nxaaiHMYALLgkCWx80
+ 7f74GlLN78WtuZg98zwUOXXxi9TWx60SFv/1M4Mwic0BTXQrNBgzINGaSlI8H555p86BJncnhzlhY
+ iy6JMncygjG8E+kskye2WaPaIxoV0+EP9Ouj70Xlw=;
 Received: from [2a00:23c4:8ba5:df00:fd7d:1c3a:1dd0:c576] (helo=kentang.home)
  by mail.ilande.co.uk with esmtpsa (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.92) (envelope-from <mark.cave-ayland@ilande.co.uk>)
- id 1oBNp6-000Bqt-8v; Tue, 12 Jul 2022 22:53:43 +0100
+ id 1oBNou-000Bqt-DT; Tue, 12 Jul 2022 22:53:31 +0100
 From: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
 To: richard.henderson@linaro.org, deller@gmx.de, svens@stackframe.org,
  pbonzini@redhat.com, peter.maydell@linaro.org, hpoussin@reactos.org,
  aleksandar.rikalo@syrmia.com, f4bug@amsat.org, qemu-devel@nongnu.org,
  qemu-arm@nongnu.org
-Date: Tue, 12 Jul 2022 22:52:45 +0100
-Message-Id: <20220712215251.7944-35-mark.cave-ayland@ilande.co.uk>
+Date: Tue, 12 Jul 2022 22:52:42 +0100
+Message-Id: <20220712215251.7944-32-mark.cave-ayland@ilande.co.uk>
 X-Mailer: git-send-email 2.30.2
 In-Reply-To: <20220712215251.7944-1-mark.cave-ayland@ilande.co.uk>
 References: <20220712215251.7944-1-mark.cave-ayland@ilande.co.uk>
@@ -85,7 +85,8 @@ MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-SA-Exim-Connect-IP: 2a00:23c4:8ba5:df00:fd7d:1c3a:1dd0:c576
 X-SA-Exim-Mail-From: mark.cave-ayland@ilande.co.uk
-Subject: [PATCH v2 34/40] lasips2: update VMStateDescription for LASIPS2 device
+Subject: [PATCH v2 31/40] lasips2: switch register memory region to
+ DEVICE_BIG_ENDIAN
 X-SA-Exim-Version: 4.2.1 (built Wed, 08 May 2019 21:11:16 +0000)
 X-SA-Exim-Scanned: Yes (on mail.ilande.co.uk)
 Received-SPF: pass client-ip=2001:41c9:1:41f::167;
@@ -97,77 +98,45 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 0EEhULCkvH+R
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: CUle3FV7jumM
 
-Since this series has already introduced a migration break for the HPPA B160L
-machine, we can use this opportunity to improve the VMStateDescription for
-the LASIPS2 device.
-
-Add the new int_status field to the VMStateDescription and remodel the ports
-as separate VMSTATE_STRUCT instances representing each LASIPS2Port. Once this
-is done, the migration stream can be updated to include buf and loopback_rbne
-for each port (which is necessary since the values are accessed across separate
-IO accesses), and drop the port id as this is hardcoded for each port type.
+The LASI device (and so also the LASIPS2 device) are only used for the HPPA
+B160L machine which is a big endian architecture.
 
 Signed-off-by: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
 Tested-by: Helge Deller <deller@gmx.de>
 Acked-by: Helge Deller <deller@gmx.de>
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- hw/input/lasips2.c | 25 +++++++++++++++++++------
- 1 file changed, 19 insertions(+), 6 deletions(-)
+ hw/input/lasips2.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/hw/input/lasips2.c b/hw/input/lasips2.c
-index e602e3c986..ea7c07a2ba 100644
+index 09d909c843..7bf6077b58 100644
 --- a/hw/input/lasips2.c
 +++ b/hw/input/lasips2.c
-@@ -35,15 +35,28 @@
- #include "qapi/error.h"
- 
- 
-+static const VMStateDescription vmstate_lasips2_port = {
-+    .name = "lasips2-port",
-+    .version_id = 1,
-+    .minimum_version_id = 1,
-+    .fields = (VMStateField[]) {
-+        VMSTATE_UINT8(control, LASIPS2Port),
-+        VMSTATE_UINT8(buf, LASIPS2Port),
-+        VMSTATE_BOOL(loopback_rbne, LASIPS2Port),
-+        VMSTATE_END_OF_LIST()
-+    }
-+};
-+
- static const VMStateDescription vmstate_lasips2 = {
-     .name = "lasips2",
--    .version_id = 0,
--    .minimum_version_id = 0,
-+    .version_id = 1,
-+    .minimum_version_id = 1,
-     .fields = (VMStateField[]) {
--        VMSTATE_UINT8(kbd_port.parent_obj.control, LASIPS2State),
--        VMSTATE_UINT8(kbd_port.parent_obj.id, LASIPS2State),
--        VMSTATE_UINT8(mouse_port.parent_obj.control, LASIPS2State),
--        VMSTATE_UINT8(mouse_port.parent_obj.id, LASIPS2State),
-+        VMSTATE_UINT8(int_status, LASIPS2State),
-+        VMSTATE_STRUCT(kbd_port.parent_obj, LASIPS2State, 1,
-+                       vmstate_lasips2_port, LASIPS2Port),
-+        VMSTATE_STRUCT(mouse_port.parent_obj, LASIPS2State, 1,
-+                       vmstate_lasips2_port, LASIPS2Port),
-         VMSTATE_END_OF_LIST()
-     }
+@@ -245,7 +245,7 @@ static const MemoryRegionOps lasips2_reg_ops = {
+         .min_access_size = 1,
+         .max_access_size = 4,
+     },
+-    .endianness = DEVICE_NATIVE_ENDIAN,
++    .endianness = DEVICE_BIG_ENDIAN,
  };
+ 
+ static void lasips2_realize(DeviceState *dev, Error **errp)
 -- 
 2.30.2
 

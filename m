@@ -1,108 +1,87 @@
-Received: by 2002:ac2:596f:0:0:0:0:0 with SMTP id h15csp20631lfp;
-        Tue, 12 Jul 2022 21:59:21 -0700 (PDT)
-X-Google-Smtp-Source: AGRyM1uIwXRx5zl+QEkk57dpotnkGyjdwMfnYY0ppOaQi1E8MKDygFaANkcmdNKdnimCiqJDgLtG
-X-Received: by 2002:ad4:5bce:0:b0:473:9233:e898 with SMTP id t14-20020ad45bce000000b004739233e898mr1002753qvt.107.1657688361619;
-        Tue, 12 Jul 2022 21:59:21 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1657688361; cv=none;
+Received: by 2002:ac2:596f:0:0:0:0:0 with SMTP id h15csp70519lfp;
+        Wed, 13 Jul 2022 00:59:55 -0700 (PDT)
+X-Google-Smtp-Source: AGRyM1vDmmB+V/tK9OMo1aEzZTK/Sn3WpPX2RbjUExhyF5ehdVqTvqB3WtLxg6W0gY0SYC7VRYmf
+X-Received: by 2002:a05:622a:114:b0:31d:2388:4df4 with SMTP id u20-20020a05622a011400b0031d23884df4mr1724905qtw.488.1657699195050;
+        Wed, 13 Jul 2022 00:59:55 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1657699195; cv=none;
         d=google.com; s=arc-20160816;
-        b=mAQ/svbLpUoC7ImNzihe+TGfXu9h0NpX8dM8ySWxkxKhikT/tDGLp3BtZ/mofVGgP+
-         wBReACuIzRXMxt2kWqA0a22B9L5HCQP96KeJYBTSuGhMuV/ecRyWYDUFkaSXaLgg+o98
-         PA2lHV9pYwTD9+D3zaYr6eTtX7cv8qAfCvWImXwXXR5lhha2IUzSf1mS97gNcUr1CGMp
-         qxaXB2a5tKq8ekO9Lpq54yJJOI1xMAZdFcuS5rmULI7ZcLKj4nS5i23CVKR8fjfKjn+2
-         y3h2SaXvCfausz8HBuWX7GtYuJ6gh3jNYKk5V3xYqrsGV7sIAd476GnDnJkc0q2m4mXn
-         sW+w==
+        b=HOeiRfe/xhNIw+xb9KoAqb+rHQBFrMHAW+FTWzeRbZqynqBqKa2TA19N2GN0p5CjZ2
+         KpSXvz/CDit9uC6JyS8Ndx217W8tHlInJepLe6Fk/4ilCZR3yN/9WwuNrPsOsdOcx6CI
+         WYgb678RrAgOWoHANg3xucF67Us5SCH40JNj6xlCO5oNDqhJmAYsQn/VhMTrkrfdWJo9
+         I2fG4VTntHzim3mHDkcSR7meznA6hkrG/j1RAEV3zsSJmQ+MHOAH8wytKqsZmU07vml/
+         A5+cd/TUXak9sKmB0I/Hb3/1RTPFtE2EwIiQENG6bi82esi3lpXMDNHFrR1MlCuQifzU
+         W2/g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
-        bh=QHtaGb+0bceVj4ZA4UdjMCU/5EVY5lNfh75m/ENra58=;
-        b=Py0ueYsdfcK+ydBCBIwPAaRyqFeXiBiunPRWt7In12GT+22hp8Vr9fib55UghjNC5y
-         0H15+FIKWIJgaGWwpPk4mIFgYnYDJG+XeqyBpVRE79JfZwAjOKj44gb1mhC7IeTxYT5S
-         qQbfadc6GCS+uxqHrv3PedUJ/z/o62OW45ox4+0ko0HhTML7bSIauzXz7wVm4y6MCA9p
-         fstsbxNtRLexZ84Uc97SN/68vNV9tfM1nM1aqe/qogAGa/TF/6WTR26F2i0t5RpwdzC5
-         Q213vA+NrF9Fk9zf1FbtD7ISEdUsJcOnhV+9Wm641Zxc9tWroTtrMhkkoUNIteS2GnNt
-         4YIQ==
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from;
+        bh=CqLKGnJwJfAMW2/5OEP0/E+bblBycySyJ8oQBpYtJpI=;
+        b=BqGj9/X97lQtx3naMrmBEba0aQG0nZAJzQftYOJyDWZn7aqlwDv2TxNE0u+m33AJUT
+         4q0yzG7P4NREOklUqFe8fL37atxXEK8ClhGnZrzFK8+q09BMwdUv34LufLjpFjY6Puks
+         c+zFJeSCJ96aD+x6iiyYTl3nUgVdCEfpc+6Tne7m9cOVlfxhsyVVx8r8637ROVEweLTi
+         KiC4bfFA0bzSwzX4iL+ftwqVgGU5YsvkDXfQMP3yVcTUvfSa2RftPI/wTCjWaJBLrq1O
+         eVPKCWKZv+akyFCn719/kmBo4OqLc3Er0I19n5TnjU98TmmGzwl7I77wr4rTgs2TKx9m
+         KLoQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="Q6D6H/i4";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id c2-20020ac80082000000b0031bef908883si6794329qtg.752.2022.07.12.21.59.21
+        by mx.google.com with ESMTPS id b15-20020a05622a020f00b0030520ccb80fsi8002783qtx.615.2022.07.13.00.59.54
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 12 Jul 2022 21:59:21 -0700 (PDT)
+        Wed, 13 Jul 2022 00:59:55 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="Q6D6H/i4";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:45306 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:60240 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1oBUT1-0000wi-RM
-	for alex.bennee@linaro.org; Wed, 13 Jul 2022 00:59:21 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:54512)
+	id 1oBXHl-0007pO-JQ
+	for alex.bennee@linaro.org; Wed, 13 Jul 2022 03:59:54 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:32882)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1oBUSh-0000wR-6H
- for qemu-arm@nongnu.org; Wed, 13 Jul 2022 00:58:59 -0400
-Received: from mail-pj1-x1032.google.com ([2607:f8b0:4864:20::1032]:55208)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1oBUSf-0006qW-I8
- for qemu-arm@nongnu.org; Wed, 13 Jul 2022 00:58:58 -0400
-Received: by mail-pj1-x1032.google.com with SMTP id s21so10407458pjq.4
- for <qemu-arm@nongnu.org>; Tue, 12 Jul 2022 21:58:56 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=QHtaGb+0bceVj4ZA4UdjMCU/5EVY5lNfh75m/ENra58=;
- b=Q6D6H/i4M8lN458NExEdCt5K7DQ/Br+xfz0c4/U0ifLNSLF++9Hf0x24wQMycXy4+u
- 4GwPWXsBSmAMH65ZN9WHCgTiLdv0mqwvdAI3Y8YnKy944/J5a2y8iZXd0BPYh+P+jZLz
- jWd6+Tt47GHZ33Nj+tVWVvWugrHWbQ3242BFlY+1OYyaGHF7lF0qDGWTnHoBtxfiMHXR
- Eg/mNwLo/mnxs0ntFXA8dgURlZTZP9ZIhB417spWDKvmm75kVYXG6Pcaa2dDIBR5mqIa
- 4r91iO5APVUZhbHX1jSK9w8oCD/5PY/V8iLjzZtzpQ1y5zy2n8WL/AuwpKmJaUJhK59i
- qUAg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=QHtaGb+0bceVj4ZA4UdjMCU/5EVY5lNfh75m/ENra58=;
- b=6Z4yosIwgEyo4xOUrcoOwLNn4zgWzjKGgqRF8RMUTnrYp7CTojaLHqrY33+YXxfHZm
- lUM82R5DBCqcD80kaUhvojqRx35ny6paLUGz+SyFqzWwvqsVpiMg56tsr5YJwbM6mHCj
- f70Msld/+ww5j5WUlJqy9rTS2bJzIEyElXyQoLfG94T7bri3fV9w6DaDPDShM+Y8jKVu
- IM35TGEajLsdIVjERCBfbirmPfq5X1wQork5T4Ojj5uATT7/CGcbxz2o4nNE8v1pQCdP
- Oh4bK0yih7KToSlbGwfLCqxIESGbqo4vWIgNyvdka7kWJf/eiFzSZ/hXyHxnfFenXmOJ
- i40A==
-X-Gm-Message-State: AJIora9UG3huyCZSA/2/wsBZfq1VzBGpvpMt4UjtUgwgee3DkOAOLV/j
- nITsLVd5fgXU0231C8FNXCNuhQ==
-X-Received: by 2002:a17:90b:1bc8:b0:1f0:5854:f761 with SMTP id
- oa8-20020a17090b1bc800b001f05854f761mr1860660pjb.116.1657688335409; 
- Tue, 12 Jul 2022 21:58:55 -0700 (PDT)
-Received: from stoup.. ([122.255.60.245]) by smtp.gmail.com with ESMTPSA id
- d194-20020a621dcb000000b00525302fe9c4sm7677047pfd.190.2022.07.12.21.58.52
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 12 Jul 2022 21:58:54 -0700 (PDT)
-From: Richard Henderson <richard.henderson@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: broonie@kernel.org,
-	qemu-arm@nongnu.org
-Subject: [PATCH 0/2] target/arm: Two SME fixes
-Date: Wed, 13 Jul 2022 10:28:46 +0530
-Message-Id: <20220713045848.217364-1-richard.henderson@linaro.org>
-X-Mailer: git-send-email 2.34.1
+ (Exim 4.90_1) (envelope-from <SRS0=zHgX=XS=kaod.org=clg@ozlabs.org>)
+ id 1oBXBU-00080A-Mz; Wed, 13 Jul 2022 03:53:30 -0400
+Received: from mail.ozlabs.org ([2404:9400:2221:ea00::3]:54209
+ helo=gandalf.ozlabs.org)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <SRS0=zHgX=XS=kaod.org=clg@ozlabs.org>)
+ id 1oBXBS-0002YM-G3; Wed, 13 Jul 2022 03:53:24 -0400
+Received: from gandalf.ozlabs.org (gandalf.ozlabs.org [150.107.74.76])
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4LjVH24stCz4ySZ;
+ Wed, 13 Jul 2022 17:53:18 +1000 (AEST)
+Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4LjVGz6vzwz4ySW;
+ Wed, 13 Jul 2022 17:53:15 +1000 (AEST)
+From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Peter Delevoryas <peter@pjd.dev>,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
+Subject: [PULL 05/19] aspeed: Create SRAM name from first CPU index
+Date: Wed, 13 Jul 2022 09:52:41 +0200
+Message-Id: <20220713075255.2248923-6-clg@kaod.org>
+X-Mailer: git-send-email 2.35.3
+In-Reply-To: <20220713075255.2248923-1-clg@kaod.org>
+References: <20220713075255.2248923-1-clg@kaod.org>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1032;
- envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x1032.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+Received-SPF: pass client-ip=2404:9400:2221:ea00::3;
+ envelope-from=SRS0=zHgX=XS=kaod.org=clg@ozlabs.org; helo=gandalf.ozlabs.org
+X-Spam_score_int: -23
+X-Spam_score: -2.4
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.4 / 5.0 requ) BAYES_00=-1.9,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.249, RCVD_IN_DNSWL_LOW=-0.7,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -117,24 +96,100 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: lsX9vvkLRMfl
+X-TUID: TBp6aXIRJPcR
 
-Ho hum.  Let a feature loose on users and they find bugs.  Mark noticed
-that the wrong value was being picked up for VL when SVE is disabled.
-I had run the same test but failed to notice the vector length wasn't
-as expected, though the test otherwise produced expected results.
+From: Peter Delevoryas <peter@pjd.dev>
 
+To support multiple SoC's running simultaneously, we need a unique name for
+each RAM region. DRAM is created by the machine, but SRAM is created by the
+SoC, since in hardware it is part of the SoC's internals.
 
-r~
+We need a way to uniquely identify each SRAM region though, for VM
+migration. Since each of the SoC's CPU's has an index which identifies it
+uniquely from other CPU's in the machine, we can use the index of any of the
+CPU's in the SoC to uniquely identify differentiate the SRAM name from other
+SoC SRAM's. In this change, I just elected to use the index of the first CPU
+in each SoC.
 
+Signed-off-by: Peter Delevoryas <peter@pjd.dev>
+Reviewed-by: Cédric Le Goater <clg@kaod.org>
+Message-Id: <20220705191400.41632-3-peter@pjd.dev>
+Signed-off-by: Cédric Le Goater <clg@kaod.org>
+---
+ hw/arm/aspeed_ast10x0.c | 5 ++++-
+ hw/arm/aspeed_ast2600.c | 5 +++--
+ hw/arm/aspeed_soc.c     | 5 +++--
+ 3 files changed, 10 insertions(+), 5 deletions(-)
 
-Richard Henderson (2):
-  target/arm: Fill in VL for tbflags when SME enabled and SVE disabled
-  target/arm: Fix aarch64_sve_change_el for SME
-
- target/arm/helper.c | 41 +++++++++++++++++++++++++++++++++--------
- 1 file changed, 33 insertions(+), 8 deletions(-)
-
+diff --git a/hw/arm/aspeed_ast10x0.c b/hw/arm/aspeed_ast10x0.c
+index 33ef33177199..677699e54c0a 100644
+--- a/hw/arm/aspeed_ast10x0.c
++++ b/hw/arm/aspeed_ast10x0.c
+@@ -159,6 +159,7 @@ static void aspeed_soc_ast1030_realize(DeviceState *dev_soc, Error **errp)
+     DeviceState *armv7m;
+     Error *err = NULL;
+     int i;
++    g_autofree char *sram_name = NULL;
+ 
+     if (!clock_has_source(s->sysclk)) {
+         error_setg(errp, "sysclk clock must be wired up by the board code");
+@@ -183,7 +184,9 @@ static void aspeed_soc_ast1030_realize(DeviceState *dev_soc, Error **errp)
+     sysbus_realize(SYS_BUS_DEVICE(&s->armv7m), &error_abort);
+ 
+     /* Internal SRAM */
+-    memory_region_init_ram(&s->sram, NULL, "aspeed.sram", sc->sram_size, &err);
++    sram_name = g_strdup_printf("aspeed.sram.%d",
++                                CPU(s->armv7m.cpu)->cpu_index);
++    memory_region_init_ram(&s->sram, OBJECT(s), sram_name, sc->sram_size, &err);
+     if (err != NULL) {
+         error_propagate(errp, err);
+         return;
+diff --git a/hw/arm/aspeed_ast2600.c b/hw/arm/aspeed_ast2600.c
+index 3f0611ac11cd..64eb5a7b2600 100644
+--- a/hw/arm/aspeed_ast2600.c
++++ b/hw/arm/aspeed_ast2600.c
+@@ -276,6 +276,7 @@ static void aspeed_soc_ast2600_realize(DeviceState *dev, Error **errp)
+     AspeedSoCClass *sc = ASPEED_SOC_GET_CLASS(s);
+     Error *err = NULL;
+     qemu_irq irq;
++    g_autofree char *sram_name = NULL;
+ 
+     /* IO space */
+     aspeed_mmio_map_unimplemented(s, SYS_BUS_DEVICE(&s->iomem), "aspeed.io",
+@@ -335,8 +336,8 @@ static void aspeed_soc_ast2600_realize(DeviceState *dev, Error **errp)
+     }
+ 
+     /* SRAM */
+-    memory_region_init_ram(&s->sram, OBJECT(dev), "aspeed.sram",
+-                           sc->sram_size, &err);
++    sram_name = g_strdup_printf("aspeed.sram.%d", CPU(&s->cpu[0])->cpu_index);
++    memory_region_init_ram(&s->sram, OBJECT(s), sram_name, sc->sram_size, &err);
+     if (err) {
+         error_propagate(errp, err);
+         return;
+diff --git a/hw/arm/aspeed_soc.c b/hw/arm/aspeed_soc.c
+index 0f675e7fcdf5..0bb6a2f092c9 100644
+--- a/hw/arm/aspeed_soc.c
++++ b/hw/arm/aspeed_soc.c
+@@ -239,6 +239,7 @@ static void aspeed_soc_realize(DeviceState *dev, Error **errp)
+     AspeedSoCState *s = ASPEED_SOC(dev);
+     AspeedSoCClass *sc = ASPEED_SOC_GET_CLASS(s);
+     Error *err = NULL;
++    g_autofree char *sram_name = NULL;
+ 
+     /* IO space */
+     aspeed_mmio_map_unimplemented(s, SYS_BUS_DEVICE(&s->iomem), "aspeed.io",
+@@ -259,8 +260,8 @@ static void aspeed_soc_realize(DeviceState *dev, Error **errp)
+     }
+ 
+     /* SRAM */
+-    memory_region_init_ram(&s->sram, OBJECT(dev), "aspeed.sram",
+-                           sc->sram_size, &err);
++    sram_name = g_strdup_printf("aspeed.sram.%d", CPU(&s->cpu[0])->cpu_index);
++    memory_region_init_ram(&s->sram, OBJECT(s), sram_name, sc->sram_size, &err);
+     if (err) {
+         error_propagate(errp, err);
+         return;
 -- 
-2.34.1
+2.35.3
 

@@ -1,85 +1,88 @@
-Received: by 2002:ac2:596f:0:0:0:0:0 with SMTP id h15csp368543lfp;
-        Wed, 13 Jul 2022 13:46:27 -0700 (PDT)
-X-Google-Smtp-Source: AGRyM1uClrdKIe3pxqJsBOUPSpvMj4NNDKvuC/tw+p7Nvaxz2rpscMqpWaOKfrRzuBygj9k5cKvZ
-X-Received: by 2002:a05:622a:2d3:b0:31e:b00e:ab31 with SMTP id a19-20020a05622a02d300b0031eb00eab31mr5058190qtx.460.1657745186856;
-        Wed, 13 Jul 2022 13:46:26 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1657745186; cv=none;
+Received: by 2002:ac2:596f:0:0:0:0:0 with SMTP id h15csp71942lfp;
+        Wed, 13 Jul 2022 01:03:37 -0700 (PDT)
+X-Google-Smtp-Source: AGRyM1vHHsUG7K6HC9jy+88bfstTCr34OiYpj9WdyeFrwHYMfZPy2ZrRHAL249uQurvlNjtZHso4
+X-Received: by 2002:a05:620a:2981:b0:6b5:7af7:7cfb with SMTP id r1-20020a05620a298100b006b57af77cfbmr1379802qkp.361.1657699417700;
+        Wed, 13 Jul 2022 01:03:37 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1657699417; cv=none;
         d=google.com; s=arc-20160816;
-        b=QWJYeQFOv1n73jo7JET2QXlmmsTY6vEbtJnC3hHDNe3nfperMuVOgtvP1GkOzq/Yk/
-         W1STW4nrSm4lpZL83mUalT3dofL5Rhgpb/xrdMHRdGXO9FInS6f482gGd68c4SYSx6Za
-         jLD5m9lEJ5CtQUrj6l+hXYWglUiF3j8Cicq9zRiWJ/0QiObB51LVI2Gy+ulM5SgVNl0F
-         29AjjJVtlHb3NMZQSalIcufwkuhMoc3ZNgjef/Q+xRO15NdJuYYXYFxHC+VYqSfKZSbo
-         krT5gKeQI1ZUthpJQ7hw/BNEWJ2VZJPqHoMUjpQ83QfgI514+NEfemja2QHnI0+IRbqM
-         fmvA==
+        b=cbt03mLW2/8g4XingaOmnn3l1mUqwmRcNfrlEBi0KCMdqe7NU0kLkXUIigPh7k1fTc
+         jGqBr+U1z8o614s6e8TNrScVxo14W1xx+cVxOWG24jDJ0YrV104OF0V79ldOXdrTX5nw
+         NMMTpUl5xRJNpU4fq0itIrEGoowvQaRh0TCOdzfFzCqMjHMWtJ0FvVh6dnLA7VYI5+Cn
+         Inq3yE59GML9ZofsGsAoKCN/N9oFP7r9cBkBMD8dJBeRO5k0ayJKzKsX90HN4O6SXzZ0
+         xZ/cr2vUm9TKDGOYl3x4OeUg7ZQ/sT63ZSWalBgQsZzAl6/4s58MxeAQHdtYvQMQ+fPK
+         IcbQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from;
-        bh=7Ym/0UewYsJclqyjgxFRKS32miEpez91YXpV6pQocqg=;
-        b=tQw4jGMcTd59JXdIN9scE222th5gy5hAeKM425DoB5H/bsx0WLNEWoDmVDUGiCxEU0
-         6eQNMTKGe/rfhkDyXqiDO4HOXt+wrUW5/Y02h4MKdRO29EaJ+zSH8hedBsyo45OvnjSv
-         HDVcbCHZVP14prHABrYWrbI8lOUbP1kM+wNAby2gu89rcShm+g4+H9GfGbwvTbD86xn7
-         Gw0S0Vn1UyC3A02+AT+KE/sxAO0bJ9qGPplj6WIBkP8S190hFP36e4ozl51gK0zwKRWK
-         DFt6exHhjyB9ptOcbnSQZKQWlB+WZ/dSSCyqk0qZU9Q1CL9TxfoGvgSRSwgvSrPFwR85
-         +DXQ==
+        bh=oWq45uXFuWzonDWj69AG8Q/IX5y13K0zohT9Cakuk74=;
+        b=WMZW1y/VPzZDl0q01H5Mr8KIqMjZGB0cSy/CaBd5WoAWtWSElRd6bOj4gFwO+tnrUy
+         YqPgeLcxEJek0GVTuE0N1uJgYRSBw3Z1DTlvzT3XfPu0YNZh7Q0kgwIgp5mBJENKF/I/
+         Nt7r7Nfroc5n7AdHukFfGqlkVH/fQrxdI5aApBARV6cbBb1AOirfWOF/4O5trO2kIBR0
+         pZ7c6ayYnymBPkTdc9LjctOaC8sAl2bFunYvPUGyVq8H31m/lYy5iBXjEOor03OA7wPM
+         C1Mckj7AVNbzw2jWUkdS/Bt/cjTF6ZWPIrLFIuimih9V1o7Hk6JwZCTsqlUYl3i7Yr57
+         F2zg==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id fy25-20020a05622a5a1900b003050f9b59absi8174833qtb.68.2022.07.13.13.46.26
+        by mx.google.com with ESMTPS id h139-20020a379e91000000b006b551685bf9si6095172qke.145.2022.07.13.01.03.37
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 13 Jul 2022 13:46:26 -0700 (PDT)
+        Wed, 13 Jul 2022 01:03:37 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:59248 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:35188 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1oBjFZ-0004rv-Fp
-	for alex.bennee@linaro.org; Wed, 13 Jul 2022 16:46:25 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:52958)
+	id 1oBXLN-0001i1-3q
+	for alex.bennee@linaro.org; Wed, 13 Jul 2022 04:03:37 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33152)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ben@codethink.co.uk>)
- id 1oBfwG-0006Ys-IB; Wed, 13 Jul 2022 13:14:16 -0400
-Received: from imap4.hz.codethink.co.uk ([188.40.203.114]:48444)
+ (Exim 4.90_1) (envelope-from <SRS0=zHgX=XS=kaod.org=clg@ozlabs.org>)
+ id 1oBXBy-0008IT-AN; Wed, 13 Jul 2022 03:53:54 -0400
+Received: from mail.ozlabs.org ([2404:9400:2221:ea00::3]:33587
+ helo=gandalf.ozlabs.org)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ben@codethink.co.uk>)
- id 1oBfw9-00038p-L3; Wed, 13 Jul 2022 13:14:15 -0400
-Received: from cpc152649-stkp13-2-0-cust121.10-2.cable.virginm.net
- ([86.15.83.122] helo=rainbowdash)
- by imap4.hz.codethink.co.uk with esmtpsa  (Exim 4.94.2 #2 (Debian))
- id 1oBfdU-003M8q-19; Wed, 13 Jul 2022 17:54:51 +0100
-Received: from ben by rainbowdash with local (Exim 4.96)
- (envelope-from <ben@rainbowdash>) id 1oBfdS-0009l1-1y;
- Wed, 13 Jul 2022 17:54:50 +0100
-From: Ben Dooks <ben.dooks@sifive.com>
-To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, Jude Onyenegecha <jude.onyenegecha@sifive.com>,
- Sudip Mukherjee <sudip.mukherjee@sifive.com>,
- William Salmon <william.salmon@sifive.com>,
- Adnan Chowdhury <adnan.chowdhury@sifive.com>,
- Ben Dooks <ben.dooks@sifive.com>
-Subject: [PATCH 6/7] pci: designware: correct host's class_id
-Date: Wed, 13 Jul 2022 17:54:48 +0100
-Message-Id: <20220713165449.37433-7-ben.dooks@sifive.com>
-X-Mailer: git-send-email 2.35.1
-In-Reply-To: <20220713165449.37433-1-ben.dooks@sifive.com>
-References: <20220713165449.37433-1-ben.dooks@sifive.com>
+ (Exim 4.90_1) (envelope-from <SRS0=zHgX=XS=kaod.org=clg@ozlabs.org>)
+ id 1oBXBw-0002d0-Lp; Wed, 13 Jul 2022 03:53:54 -0400
+Received: from gandalf.ozlabs.org (gandalf.ozlabs.org [150.107.74.76])
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4LjVHf1tNtz4ySl;
+ Wed, 13 Jul 2022 17:53:50 +1000 (AEST)
+Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4LjVHc1N1pz4ySW;
+ Wed, 13 Jul 2022 17:53:47 +1000 (AEST)
+From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Peter Delevoryas <peter@pjd.dev>,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
+Subject: [PULL 17/19] qtest/aspeed_gpio: Add input pin modification test
+Date: Wed, 13 Jul 2022 09:52:53 +0200
+Message-Id: <20220713075255.2248923-18-clg@kaod.org>
+X-Mailer: git-send-email 2.35.3
+In-Reply-To: <20220713075255.2248923-1-clg@kaod.org>
+References: <20220713075255.2248923-1-clg@kaod.org>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=188.40.203.114; envelope-from=ben@codethink.co.uk;
- helo=imap4.hz.codethink.co.uk
-X-Spam_score_int: -16
-X-Spam_score: -1.7
-X-Spam_bar: -
-X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9,
- HEADER_FROM_DIFFERENT_DOMAINS=0.249, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01,
- T_SPF_HELO_TEMPERROR=0.01 autolearn=no autolearn_force=no
+Received-SPF: pass client-ip=2404:9400:2221:ea00::3;
+ envelope-from=SRS0=zHgX=XS=kaod.org=clg@ozlabs.org; helo=gandalf.ozlabs.org
+X-Spam_score_int: -23
+X-Spam_score: -2.4
+X-Spam_bar: --
+X-Spam_report: (-2.4 / 5.0 requ) BAYES_00=-1.9,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.249, RCVD_IN_DNSWL_LOW=-0.7,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Wed, 13 Jul 2022 16:45:07 -0400
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -93,29 +96,73 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: SCkbCqAagx+N
+X-TUID: tEnDBD/1Vs4D
 
-This is a host to pcie bridge, so use PCI_CLASS_BRIDGE_HOST
-for the class.
+From: Peter Delevoryas <peter@pjd.dev>
 
-Signed-off-by: Ben Dooks <ben.dooks@sifive.com>
+Verify the current behavior, which is that input pins can be modified by
+guest OS register writes.
+
+Signed-off-by: Peter Delevoryas <peter@pjd.dev>
+Reviewed-by: Cédric Le Goater <clg@kaod.org>
+Message-Id: <20220712023219.41065-2-peter@pjd.dev>
+Signed-off-by: Cédric Le Goater <clg@kaod.org>
 ---
- hw/pci-host/designware.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ tests/qtest/aspeed_gpio-test.c | 27 +++++++++++++++++++++++++++
+ 1 file changed, 27 insertions(+)
 
-diff --git a/hw/pci-host/designware.c b/hw/pci-host/designware.c
-index b5d5b2b8a5..a47ae48071 100644
---- a/hw/pci-host/designware.c
-+++ b/hw/pci-host/designware.c
-@@ -615,7 +615,7 @@ static void designware_pcie_root_class_init(ObjectClass *klass, void *data)
-     k->vendor_id = PCI_VENDOR_ID_SYNOPSYS;
-     k->device_id = 0xABCD;
-     k->revision = 0;
--    k->class_id = PCI_CLASS_BRIDGE_PCI;
-+    k->class_id = PCI_CLASS_BRIDGE_HOST;
-     k->is_bridge = true;
-     k->exit = pci_bridge_exitfn;
-     k->realize = designware_pcie_root_realize;
+diff --git a/tests/qtest/aspeed_gpio-test.c b/tests/qtest/aspeed_gpio-test.c
+index bac63e8742f4..8f524540998d 100644
+--- a/tests/qtest/aspeed_gpio-test.c
++++ b/tests/qtest/aspeed_gpio-test.c
+@@ -28,6 +28,11 @@
+ #include "qapi/qmp/qdict.h"
+ #include "libqtest-single.h"
+ 
++#define AST2600_GPIO_BASE 0x1E780000
++
++#define GPIO_ABCD_DATA_VALUE 0x000
++#define GPIO_ABCD_DIRECTION  0x004
++
+ static void test_set_colocated_pins(const void *data)
+ {
+     QTestState *s = (QTestState *)data;
+@@ -46,6 +51,27 @@ static void test_set_colocated_pins(const void *data)
+     g_assert(!qtest_qom_get_bool(s, "/machine/soc/gpio", "gpioV7"));
+ }
+ 
++static void test_set_input_pins(const void *data)
++{
++    QTestState *s = (QTestState *)data;
++    char name[16];
++    uint32_t value;
++
++    qtest_writel(s, AST2600_GPIO_BASE + GPIO_ABCD_DIRECTION, 0x00000000);
++    for (char c = 'A'; c <= 'D'; c++) {
++        for (int i = 0; i < 8; i++) {
++            sprintf(name, "gpio%c%d", c, i);
++            qtest_qom_set_bool(s, "/machine/soc/gpio", name, true);
++        }
++    }
++    value = qtest_readl(s, AST2600_GPIO_BASE + GPIO_ABCD_DATA_VALUE);
++    g_assert_cmphex(value, ==, 0xffffffff);
++
++    qtest_writel(s, AST2600_GPIO_BASE + GPIO_ABCD_DATA_VALUE, 0x00000000);
++    value = qtest_readl(s, AST2600_GPIO_BASE + GPIO_ABCD_DATA_VALUE);
++    g_assert_cmphex(value, ==, 0x00000000);
++}
++
+ int main(int argc, char **argv)
+ {
+     QTestState *s;
+@@ -56,6 +82,7 @@ int main(int argc, char **argv)
+     s = qtest_init("-machine ast2600-evb");
+     qtest_add_data_func("/ast2600/gpio/set_colocated_pins", s,
+                         test_set_colocated_pins);
++    qtest_add_data_func("/ast2600/gpio/set_input_pins", s, test_set_input_pins);
+     r = g_test_run();
+     qtest_quit(s);
+ 
 -- 
-2.35.1
+2.35.3
 

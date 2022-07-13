@@ -1,209 +1,196 @@
-Received: by 2002:ac2:596f:0:0:0:0:0 with SMTP id h15csp74218lfp;
-        Wed, 13 Jul 2022 01:10:42 -0700 (PDT)
-X-Google-Smtp-Source: AGRyM1sndc8K97Sn8IepqB5r1gIqDEKkWgddj0OlAr1paU4PrEpWtfEfz0q3Ebpx6f0fhPs1LBiH
-X-Received: by 2002:ac8:7d01:0:b0:31e:a8b6:4b51 with SMTP id g1-20020ac87d01000000b0031ea8b64b51mr1660638qtb.537.1657699842753;
-        Wed, 13 Jul 2022 01:10:42 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1657699842; cv=none;
+Received: by 2002:ac2:596f:0:0:0:0:0 with SMTP id h15csp74224lfp;
+        Wed, 13 Jul 2022 01:10:45 -0700 (PDT)
+X-Google-Smtp-Source: AGRyM1sfuGgNUKQf3Ixa+h/zLO/gED7jrUpZ5ZfFmgMd+S3PScNJGyXsu0UgM7GDTAdZf9uDRUpn
+X-Received: by 2002:a37:a544:0:b0:6b5:7bfe:cd1c with SMTP id o65-20020a37a544000000b006b57bfecd1cmr1439881qke.186.1657699844828;
+        Wed, 13 Jul 2022 01:10:44 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1657699844; cv=none;
         d=google.com; s=arc-20160816;
-        b=rCs0kwoZ+tUNsNmAGp8QqW7uoH2E5TtZolebzmKBFE3q90I9A6ITKr2Gmp69dKTs61
-         t1tnI/xYd4yT3eDfv17GQCFF28SDu2JKB1/ovk2josK23JhL+8MAQgizq3i8DWAjRnqf
-         zJowKJCEu9k+lJ9y3scT0KOEx6REY3fYCf3AjvHhDmtCe/awd30HiqujWW6kt+ccpx3f
-         FTPwaL+Q5Bk92C6mtDz0cEbmwZajGrjVBH2kvYbGo99TKYk50jxuvUyddwaCC2Txw70M
-         9krrKh5+HdHNvNHv5+/p2ACvWWTjQSpZnB6KA2R6JswQqaHZEEXMBMX9t1MCTc4Zvcfr
-         S6cg==
+        b=C2PUaIL0hW5NT2pcXK6emZkSnVbmz6Nga/P/DBlfYFx0ZvhpxxgQx9OlJSTcLit178
+         bcTtabCZaQkE+Cc6vGlqoFjRdlJoXXgmim3POdaAWP39yg4dJbCxpUV9i+GfQ2xsf5Bi
+         p3gpyVDFsXWOKUxMdrf1WkZIMU7XWxY/ZbeRbByaabxktQaLPARgUAeKFvfZ8B/PZ8TS
+         wcyWV83UEEMEQ4aMfsegGRJfAshERIZJCvIMZPAZcLgwW5zWlSDUNxRC0mhiTIWuZUbe
+         EEmYDgnRs2OSxa5NKa9KtruPCf5etQ40ZdhnvKCRK+X0jK+p6ArExrhizQhvk9O8c2EM
+         IBTQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from;
-        bh=nmzI786MrQNPrMfWpb3zhbq4bwwiFcirYGiOu2LUW1c=;
-        b=WJLmFGHGOQBx1Ihh59rBFJGtT8APxtN8rPmRCdQQP2T/ovwWDQamfCyaOIe794hM7e
-         2Xyy8fU0hy4qoa58OV9TOPAGJJk4XW03PVFwthi3dHzqlySWAbhEgqTOyxFVxPkcldES
-         I8bXKqpt956G0vGqMOYT4HiNcVYu/+rha0bw+88HIf+G/mHNofCs1giThqoVUTiC/bxr
-         BaWiKH+EKpyOhFBATUuhMkwLs6otYrzP88tBIR4eFD35oE/N8jrCOs9OVcUPju9jmNlm
-         5ksMdElkdj1o2cETIpPMsaQfOecPPFmaIsxNduMXkskcTbOQVqmue7pK6sH93SyPsKxt
-         XHJg==
+        bh=A5BYM8/kp9XOKGJiEGt+msMi/ypyw0s48VjzU6I1Uis=;
+        b=C5qp3XV6TwJpseMHoqN4SM4OjtBeXil/Y7qff+x+NRg0xTwPEGmUs918Ra0KtX9w1H
+         vKJJ2SYOckMEvUiPOJDISu8SaiOQ2qpwkMfWifc+8fhqkNoJ11D0MRBcs3VhefHf9ZH2
+         5a8SHtDOPcTAL6oqyC2OoCTx5RtKdBrFsTDTRltEM68BHwoWusFUjWrVbeaDdmsKrq0q
+         5JkLP6bUQSxat0vzhx/ifHOCTN4byGkYeEM/Xnuu7a0xId5oB/hYmcgfQ32bA0b3tHk4
+         WKObE2cqGonSpM1UttUMXP+vU+ebBt6IHIcKWQjUmoHSO9whFUAvvZ9ibeQIssLclMT9
+         DhNw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s2-20020a0562140ca200b004734828a915si7691708qvs.377.2022.07.13.01.10.42
+        by mx.google.com with ESMTPS id js8-20020a0562142aa800b00473236380b7si8180142qvb.187.2022.07.13.01.10.44
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 13 Jul 2022 01:10:42 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 13 Jul 2022 01:10:44 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:40536 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:41890 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1oBXSE-0005ar-5j
-	for alex.bennee@linaro.org; Wed, 13 Jul 2022 04:10:42 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33182)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1oBXSF-0006c9-FS
+	for alex.bennee@linaro.org; Wed, 13 Jul 2022 04:10:44 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:32998)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=zHgX=XS=kaod.org=clg@ozlabs.org>)
- id 1oBXC2-0008OD-Qu; Wed, 13 Jul 2022 03:53:58 -0400
-Received: from mail.ozlabs.org ([2404:9400:2221:ea00::3]:46751
- helo=gandalf.ozlabs.org)
+ id 1oBXBm-00086A-FN; Wed, 13 Jul 2022 03:53:43 -0400
+Received: from gandalf.ozlabs.org ([150.107.74.76]:44897)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=zHgX=XS=kaod.org=clg@ozlabs.org>)
- id 1oBXBz-0002dU-LS; Wed, 13 Jul 2022 03:53:57 -0400
+ id 1oBXBi-0002aJ-10; Wed, 13 Jul 2022 03:53:41 -0400
 Received: from gandalf.ozlabs.org (gandalf.ozlabs.org [150.107.74.76])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4LjVHj22mLz4ySc;
- Wed, 13 Jul 2022 17:53:53 +1000 (AEST)
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4LjVHL1ZcMz4ySb;
+ Wed, 13 Jul 2022 17:53:34 +1000 (AEST)
 Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
  (No client certificate requested)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4LjVHf5ZMXz4ySW;
- Wed, 13 Jul 2022 17:53:50 +1000 (AEST)
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4LjVHJ136lz4ySW;
+ Wed, 13 Jul 2022 17:53:31 +1000 (AEST)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>,
  Richard Henderson <richard.henderson@linaro.org>,
- Peter Delevoryas <peter@pjd.dev>, Andrew Jeffery <andrew@aj.id.au>,
+ Peter Delevoryas <peter@pjd.dev>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
-Subject: [PULL 18/19] hw/gpio/aspeed: Don't let guests modify input pins
-Date: Wed, 13 Jul 2022 09:52:54 +0200
-Message-Id: <20220713075255.2248923-19-clg@kaod.org>
+Subject: [PULL 11/19] aspeed: Add AST1030 (BIC) to fby35
+Date: Wed, 13 Jul 2022 09:52:47 +0200
+Message-Id: <20220713075255.2248923-12-clg@kaod.org>
 X-Mailer: git-send-email 2.35.3
 In-Reply-To: <20220713075255.2248923-1-clg@kaod.org>
 References: <20220713075255.2248923-1-clg@kaod.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2404:9400:2221:ea00::3;
+Received-SPF: pass client-ip=150.107.74.76;
  envelope-from=SRS0=zHgX=XS=kaod.org=clg@ozlabs.org; helo=gandalf.ozlabs.org
-X-Spam_score_int: -23
-X-Spam_score: -2.4
-X-Spam_bar: --
-X-Spam_report: (-2.4 / 5.0 requ) BAYES_00=-1.9,
- HEADER_FROM_DIFFERENT_DOMAINS=0.249, RCVD_IN_DNSWL_LOW=-0.7,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_score_int: -16
+X-Spam_score: -1.7
+X-Spam_bar: -
+X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.249, SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: lK6yLrVGbL36
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: uNfDLNIpyV1v
 
 From: Peter Delevoryas <peter@pjd.dev>
 
-Up until now, guests could modify input pins by overwriting the data
-value register. The guest OS should only be allowed to modify output pin
-values, and the QOM property setter should only be permitted to modify
-input pins.
+With the BIC, the easiest way to run everything is to create two pty's
+for each SoC and reserve stdin/stdout for the monitor:
 
-This change also updates the gpio input pin test to match this
-expectation.
+    wget https://github.com/facebook/openbmc/releases/download/openbmc-e2294ff5d31d/fby35.mtd
+    wget https://github.com/peterdelevoryas/OpenBIC/releases/download/oby35-cl-2022.13.01/Y35BCL.elf
+    qemu-system-arm -machine fby35 \
+        -drive file=fby35.mtd,format=raw,if=mtd \
+        -device loader,file=fby35.mtd,addr=0,cpu-num=0 \
+        -serial pty -serial pty -serial mon:stdio -display none -S
 
-Andrew suggested this particularly refactoring here:
+    screen /dev/ttys0
+    screen /dev/ttys1
+    (qemu) c
 
-    https://lore.kernel.org/qemu-devel/23523aa1-ba81-412b-92cc-8174faba3612@www.fastmail.com/
+This commit only adds the the first server board's Bridge IC, but in the
+future we'll try to include the other three server board Bridge IC's
+too.
 
-Suggested-by: Andrew Jeffery <andrew@aj.id.au>
 Signed-off-by: Peter Delevoryas <peter@pjd.dev>
-Fixes: 4b7f956862dc ("hw/gpio: Add basic Aspeed GPIO model for AST2400 and AST2500")
 Reviewed-by: Cédric Le Goater <clg@kaod.org>
-Message-Id: <20220712023219.41065-3-peter@pjd.dev>
+Message-Id: <20220705191400.41632-9-peter@pjd.dev>
 Signed-off-by: Cédric Le Goater <clg@kaod.org>
 ---
- hw/gpio/aspeed_gpio.c          | 15 ++++++++-------
- tests/qtest/aspeed_gpio-test.c |  2 +-
- 2 files changed, 9 insertions(+), 8 deletions(-)
+ hw/arm/fby35.c | 27 ++++++++++++++++++++++++++-
+ 1 file changed, 26 insertions(+), 1 deletion(-)
 
-diff --git a/hw/gpio/aspeed_gpio.c b/hw/gpio/aspeed_gpio.c
-index a62a673857c2..1e267dd48203 100644
---- a/hw/gpio/aspeed_gpio.c
-+++ b/hw/gpio/aspeed_gpio.c
-@@ -268,7 +268,7 @@ static ptrdiff_t aspeed_gpio_set_idx(AspeedGPIOState *s, GPIOSets *regs)
+diff --git a/hw/arm/fby35.c b/hw/arm/fby35.c
+index d3edfa3b108e..031602800fde 100644
+--- a/hw/arm/fby35.c
++++ b/hw/arm/fby35.c
+@@ -11,7 +11,9 @@
+ #include "sysemu/sysemu.h"
+ #include "sysemu/block-backend.h"
+ #include "hw/boards.h"
++#include "hw/qdev-clock.h"
+ #include "hw/arm/aspeed_soc.h"
++#include "hw/arm/boot.h"
+ 
+ #define TYPE_FBY35 MACHINE_TYPE_NAME("fby35")
+ OBJECT_DECLARE_SIMPLE_TYPE(Fby35State, FBY35);
+@@ -22,8 +24,11 @@ struct Fby35State {
+     MemoryRegion bmc_memory;
+     MemoryRegion bmc_dram;
+     MemoryRegion bmc_boot_rom;
++    MemoryRegion bic_memory;
++    Clock *bic_sysclk;
+ 
+     AspeedSoCState bmc;
++    AspeedSoCState bic;
+ 
+     bool mmio_exec;
+ };
+@@ -110,11 +115,31 @@ static void fby35_bmc_init(Fby35State *s)
+     }
  }
  
- static void aspeed_gpio_update(AspeedGPIOState *s, GPIOSets *regs,
--                               uint32_t value)
-+                               uint32_t value, uint32_t mode_mask)
++static void fby35_bic_init(Fby35State *s)
++{
++    s->bic_sysclk = clock_new(OBJECT(s), "SYSCLK");
++    clock_set_hz(s->bic_sysclk, 200000000ULL);
++
++    memory_region_init(&s->bic_memory, OBJECT(s), "bic-memory", UINT64_MAX);
++
++    object_initialize_child(OBJECT(s), "bic", &s->bic, "ast1030-a1");
++    qdev_connect_clock_in(DEVICE(&s->bic), "sysclk", s->bic_sysclk);
++    object_property_set_link(OBJECT(&s->bic), "memory", OBJECT(&s->bic_memory),
++                             &error_abort);
++    aspeed_soc_uart_set_chr(&s->bic, ASPEED_DEV_UART5, serial_hd(1));
++    qdev_realize(DEVICE(&s->bic), NULL, &error_abort);
++
++    aspeed_board_init_flashes(&s->bic.fmc, "sst25vf032b", 2, 2);
++    aspeed_board_init_flashes(&s->bic.spi[0], "sst25vf032b", 2, 4);
++    aspeed_board_init_flashes(&s->bic.spi[1], "sst25vf032b", 2, 6);
++}
++
+ static void fby35_init(MachineState *machine)
  {
-     uint32_t input_mask = regs->input_mask;
-     uint32_t direction = regs->direction;
-@@ -277,7 +277,8 @@ static void aspeed_gpio_update(AspeedGPIOState *s, GPIOSets *regs,
-     uint32_t diff;
-     int gpio;
+     Fby35State *s = FBY35(machine);
  
--    diff = old ^ new;
-+    diff = (old ^ new);
-+    diff &= mode_mask;
-     if (diff) {
-         for (gpio = 0; gpio < ASPEED_GPIOS_PER_SET; gpio++) {
-             uint32_t mask = 1 << gpio;
-@@ -339,7 +340,7 @@ static void aspeed_gpio_set_pin_level(AspeedGPIOState *s, uint32_t set_idx,
-         value &= ~pin_mask;
-     }
- 
--    aspeed_gpio_update(s, &s->sets[set_idx], value);
-+    aspeed_gpio_update(s, &s->sets[set_idx], value, ~s->sets[set_idx].direction);
+     fby35_bmc_init(s);
++    fby35_bic_init(s);
  }
  
- /*
-@@ -653,7 +654,7 @@ static void aspeed_gpio_write_index_mode(void *opaque, hwaddr offset,
-         reg_value = update_value_control_source(set, set->data_value,
-                                                 reg_value);
-         set->data_read = reg_value;
--        aspeed_gpio_update(s, set, reg_value);
-+        aspeed_gpio_update(s, set, reg_value, set->direction);
-         return;
-     case gpio_reg_idx_direction:
-         reg_value = set->direction;
-@@ -753,7 +754,7 @@ static void aspeed_gpio_write_index_mode(void *opaque, hwaddr offset,
-             __func__, offset, data, reg_idx_type);
-         return;
-     }
--    aspeed_gpio_update(s, set, set->data_value);
-+    aspeed_gpio_update(s, set, set->data_value, UINT32_MAX);
-     return;
- }
  
-@@ -799,7 +800,7 @@ static void aspeed_gpio_write(void *opaque, hwaddr offset, uint64_t data,
-         data &= props->output;
-         data = update_value_control_source(set, set->data_value, data);
-         set->data_read = data;
--        aspeed_gpio_update(s, set, data);
-+        aspeed_gpio_update(s, set, data, set->direction);
-         return;
-     case gpio_reg_direction:
-         /*
-@@ -875,7 +876,7 @@ static void aspeed_gpio_write(void *opaque, hwaddr offset, uint64_t data,
-                       PRIx64"\n", __func__, offset);
-         return;
-     }
--    aspeed_gpio_update(s, set, set->data_value);
-+    aspeed_gpio_update(s, set, set->data_value, UINT32_MAX);
-     return;
- }
+@@ -141,7 +166,7 @@ static void fby35_class_init(ObjectClass *oc, void *data)
+     mc->init = fby35_init;
+     mc->no_floppy = 1;
+     mc->no_cdrom = 1;
+-    mc->min_cpus = mc->max_cpus = mc->default_cpus = 2;
++    mc->min_cpus = mc->max_cpus = mc->default_cpus = 3;
  
-diff --git a/tests/qtest/aspeed_gpio-test.c b/tests/qtest/aspeed_gpio-test.c
-index 8f524540998d..d38f51d71908 100644
---- a/tests/qtest/aspeed_gpio-test.c
-+++ b/tests/qtest/aspeed_gpio-test.c
-@@ -69,7 +69,7 @@ static void test_set_input_pins(const void *data)
- 
-     qtest_writel(s, AST2600_GPIO_BASE + GPIO_ABCD_DATA_VALUE, 0x00000000);
-     value = qtest_readl(s, AST2600_GPIO_BASE + GPIO_ABCD_DATA_VALUE);
--    g_assert_cmphex(value, ==, 0x00000000);
-+    g_assert_cmphex(value, ==, 0xffffffff);
- }
- 
- int main(int argc, char **argv)
+     object_class_property_add_bool(oc, "execute-in-place",
+                                    fby35_get_mmio_exec,
 -- 
 2.35.3
 

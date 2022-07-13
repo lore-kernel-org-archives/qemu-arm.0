@@ -1,72 +1,74 @@
-Received: by 2002:ac2:596f:0:0:0:0:0 with SMTP id h15csp77367lfp;
-        Wed, 13 Jul 2022 01:21:27 -0700 (PDT)
-X-Google-Smtp-Source: AGRyM1tfmFCtb8p4PjCEg746u/mZuoNLHjZ9uK/rG6YcxyuwPmjGX50GutT4D63ZgYFRmY8INIIA
-X-Received: by 2002:a05:6214:cc7:b0:472:f2c1:cf39 with SMTP id 7-20020a0562140cc700b00472f2c1cf39mr1769949qvx.38.1657700487703;
-        Wed, 13 Jul 2022 01:21:27 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1657700487; cv=none;
+Received: by 2002:ac2:596f:0:0:0:0:0 with SMTP id h15csp77804lfp;
+        Wed, 13 Jul 2022 01:23:11 -0700 (PDT)
+X-Google-Smtp-Source: AGRyM1sLjQQN1+wLGu8OjOSKTSTSXJb8A2gbPNl8pz/pyGad8+ATvgp9LiraA+Nz+SSEk6f0NY8g
+X-Received: by 2002:a05:620a:490b:b0:6b5:50ba:df51 with SMTP id ed11-20020a05620a490b00b006b550badf51mr1499708qkb.53.1657700591676;
+        Wed, 13 Jul 2022 01:23:11 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1657700591; cv=none;
         d=google.com; s=arc-20160816;
-        b=L7cnbE4M+xgfa5ZTnOdbxw/SbD5g6Grw3t6MkLA6gb0AaSgXGI9t7T8GXMyGb3BUsW
-         KrplSYkTCWMrcyJpwy65t/DfnCOBPtppGf0QNi40m3/3HtlZoCExKNqRRfkv2MHZgDip
-         cPqrke1gk0heqbVuZ0JIiNQEIdboZ74pQkEuRQFCQ+tffm3bhFeawZMaogwMvk/bsE/s
-         j6bhZjh4c9qfqmL603mr2k+lLcQT+J/rrwVoovW/dONZLydleiFB5GZRPAWAKgWMpkDa
-         g6KqXlKS6JjCbTP1yk8FCTChH90YnU/AWPAICPCndJbM++Lnt9UITjBcfG1qHWS27fHW
-         Nq0Q==
+        b=U7pt0JttVkB3nI1KH1e4ba2Yg62Hkl+l4Fu6f50ETxYjOni+JS9xTrhS692wYTCLeX
+         MLSkHx6NyQ3G2TSUpVfgXKx8OlTnAjijVYKO1Z5immD+HNoL0zgG3ryvGDwIplqKV8u/
+         8utJ35PvljuF2HiC4cY5tdmQeALEX2ErTZg49DS081sMoKnTN8gsmphJYjxByfWXABdb
+         eUHRaS7YZXil3dtIGdFXpCETkUq396Kn9sSI8A0ebYzwZcPVZ5/HsOfrs4huNz03uKC+
+         llGTLWTfn8uQZH6Z5f3qbF+GR8NM6/vt6I6wK5y52N05DFlgDkd2M0rmS+irymL862g4
+         d7Yw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from;
-        bh=0PC2pdviT33r4mmOvELrpazkWz56BPJcKuPmrjJp3tc=;
-        b=RsdK4mbi/yQorj1OqpW2CPqLs+QwgKFs4hg8tM2EiAyjwf3laGxvoLxrbwFkVtQPTk
-         KzFWr1Xt348mnzQdvMKAYs5yf/oOytRdYOCo1pozFMlurGO1fzO+AA7AGqsCCblqb2r0
-         PFCErLnYdderSN1HaR6QXVJ2ceUidp60J1n+OTuXaFCrjzZN3MGbvlcFJVKdPx0/9LOv
-         rExFCuijz0xS25dn8uD2FWtKRfCRN2XRiZu2PeY9TeFErdzkIDVdGEENTwzsbOMFcrnE
-         J407j+7fEtgNxVpkMW7XZJFn4p0bpv9twAYmn4U00nh+4Ud1AQZ+rz4JZv+DtA8MSZTh
-         Pq7g==
+        bh=a/DuJBYGxHLTw9xDDV/q4G0P9NX54BC4JMKxdbfmeec=;
+        b=ezCvrFwR5uML/AUaWMe/w+Z2CgLe2GPSBB2LV7ihMvWGPrwyjFTP2iQFYNZWC4f419
+         ibfU04D9QalAy7/8YKsKrULJvaf0Ep/YoCCmN+JnHWtErY1gbqQy5JYZeQILfIoWOccV
+         eIDeSGp95I15RnBIEMQmfGddB9jxTt2sp2pQzZhnxk4ROeoYDdRra0hpNDtgN9PMoXfj
+         DZCtiJdsVgY/ukWJ/LvE21aPGet/blfuNz/iWZq51a88J8+9VgR9LCO0IRSTX3er9uEp
+         hdHmGtmyp8/CO5566wwmt5yXn7noYJVwp25P2NcEg5AyyklTEHeDy/FmI8vqokAYsccS
+         de1g==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id c4-20020ad45ae4000000b0047302f487cbsi8116631qvh.41.2022.07.13.01.21.27
+        by mx.google.com with ESMTPS id t12-20020a05620a450c00b006af08a8ec78si7374102qkp.398.2022.07.13.01.23.11
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 13 Jul 2022 01:21:27 -0700 (PDT)
+        Wed, 13 Jul 2022 01:23:11 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:57588 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:60072 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1oBXcd-0000l1-4T
-	for alex.bennee@linaro.org; Wed, 13 Jul 2022 04:21:27 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33130)
+	id 1oBXeJ-0002RC-4m
+	for alex.bennee@linaro.org; Wed, 13 Jul 2022 04:23:11 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33106)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=zHgX=XS=kaod.org=clg@ozlabs.org>)
- id 1oBXBu-0008EW-Or; Wed, 13 Jul 2022 03:53:51 -0400
-Received: from mail.ozlabs.org ([2404:9400:2221:ea00::3]:52951
+ id 1oBXBs-0008Bw-An; Wed, 13 Jul 2022 03:53:49 -0400
+Received: from mail.ozlabs.org ([2404:9400:2221:ea00::3]:60413
  helo=gandalf.ozlabs.org)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=zHgX=XS=kaod.org=clg@ozlabs.org>)
- id 1oBXBs-0002bb-M2; Wed, 13 Jul 2022 03:53:50 -0400
+ id 1oBXBq-0002b7-1x; Wed, 13 Jul 2022 03:53:48 -0400
 Received: from gandalf.ozlabs.org (gandalf.ozlabs.org [150.107.74.76])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4LjVHb4ql9z4ySb;
- Wed, 13 Jul 2022 17:53:47 +1000 (AEST)
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4LjVHY0ghfz4ySZ;
+ Wed, 13 Jul 2022 17:53:45 +1000 (AEST)
 Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
  (No client certificate requested)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4LjVHY4LLXz4ySW;
- Wed, 13 Jul 2022 17:53:45 +1000 (AEST)
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4LjVHV5Ps8z4ySW;
+ Wed, 13 Jul 2022 17:53:42 +1000 (AEST)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>,
  Richard Henderson <richard.henderson@linaro.org>,
  Iris Chen <irischenlj@fb.com>,
+ Francisco Iglesias <frasse.iglesias@gmail.com>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
-Subject: [PULL 16/19] hw: m25p80: add tests for BP and TB bit write protect
-Date: Wed, 13 Jul 2022 09:52:52 +0200
-Message-Id: <20220713075255.2248923-17-clg@kaod.org>
+Subject: [PULL 15/19] hw: m25p80: Add Block Protect and Top Bottom bits for
+ write protect
+Date: Wed, 13 Jul 2022 09:52:51 +0200
+Message-Id: <20220713075255.2248923-16-clg@kaod.org>
 X-Mailer: git-send-email 2.35.3
 In-Reply-To: <20220713075255.2248923-1-clg@kaod.org>
 References: <20220713075255.2248923-1-clg@kaod.org>
@@ -96,154 +98,197 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: uSNJIv1BI3fA
+X-TUID: EQgZkFtVw6EZ
 
 From: Iris Chen <irischenlj@fb.com>
 
 Signed-off-by: Iris Chen <irischenlj@fb.com>
-Reviewed-by: Cédric Le Goater <clg@kaod.org>
-Message-Id: <20220627185234.1911337-3-irischenlj@fb.com>
+Reviewed-by: Francisco Iglesias <frasse.iglesias@gmail.com>
+Message-Id: <20220708164552.3462620-1-irischenlj@fb.com>
 Signed-off-by: Cédric Le Goater <clg@kaod.org>
 ---
- tests/qtest/aspeed_smc-test.c | 111 ++++++++++++++++++++++++++++++++++
- 1 file changed, 111 insertions(+)
+ hw/block/m25p80.c | 102 ++++++++++++++++++++++++++++++++++++++++------
+ 1 file changed, 90 insertions(+), 12 deletions(-)
 
-diff --git a/tests/qtest/aspeed_smc-test.c b/tests/qtest/aspeed_smc-test.c
-index 1258687eacd8..05ce941566e6 100644
---- a/tests/qtest/aspeed_smc-test.c
-+++ b/tests/qtest/aspeed_smc-test.c
-@@ -192,6 +192,24 @@ static void read_page_mem(uint32_t addr, uint32_t *page)
-     }
- }
+diff --git a/hw/block/m25p80.c b/hw/block/m25p80.c
+index 3045dda53b81..7879f7399ac6 100644
+--- a/hw/block/m25p80.c
++++ b/hw/block/m25p80.c
+@@ -36,21 +36,19 @@
+ #include "trace.h"
+ #include "qom/object.h"
  
-+static void write_page_mem(uint32_t addr, uint32_t write_value)
-+{
-+    spi_ctrl_setmode(CTRL_WRITEMODE, PP);
+-/* Fields for FlashPartInfo->flags */
+-
+-/* erase capabilities */
+-#define ER_4K 1
+-#define ER_32K 2
+-/* set to allow the page program command to write 0s back to 1. Useful for
+- * modelling EEPROM with SPI flash command set
+- */
+-#define EEPROM 0x100
+-
+ /* 16 MiB max in 3 byte address mode */
+ #define MAX_3BYTES_SIZE 0x1000000
+-
+ #define SPI_NOR_MAX_ID_LEN 6
+ 
++/* Fields for FlashPartInfo->flags */
++enum spi_flash_option_flags {
++    ER_4K                  = BIT(0),
++    ER_32K                 = BIT(1),
++    EEPROM                 = BIT(2),
++    HAS_SR_TB              = BIT(3),
++    HAS_SR_BP3_BIT6        = BIT(4),
++};
 +
-+    for (int i = 0; i < FLASH_PAGE_SIZE / 4; i++) {
-+        writel(ASPEED_FLASH_BASE + addr + i * 4, write_value);
-+    }
-+}
-+
-+static void assert_page_mem(uint32_t addr, uint32_t expected_value)
-+{
-+    uint32_t page[FLASH_PAGE_SIZE / 4];
-+    read_page_mem(addr, page);
-+    for (int i = 0; i < FLASH_PAGE_SIZE / 4; i++) {
-+        g_assert_cmphex(page[i], ==, expected_value);
-+    }
-+}
-+
- static void test_erase_sector(void)
+ typedef struct FlashPartInfo {
+     const char *part_name;
+     /*
+@@ -251,7 +249,8 @@ static const FlashPartInfo known_devices[] = {
+     { INFO("n25q512a11",  0x20bb20,      0,  64 << 10, 1024, ER_4K) },
+     { INFO("n25q512a13",  0x20ba20,      0,  64 << 10, 1024, ER_4K) },
+     { INFO("n25q128",     0x20ba18,      0,  64 << 10, 256, 0) },
+-    { INFO("n25q256a",    0x20ba19,      0,  64 << 10, 512, ER_4K) },
++    { INFO("n25q256a",    0x20ba19,      0,  64 << 10, 512,
++           ER_4K | HAS_SR_BP3_BIT6 | HAS_SR_TB) },
+     { INFO("n25q512a",    0x20ba20,      0,  64 << 10, 1024, ER_4K) },
+     { INFO("n25q512ax3",  0x20ba20,  0x1000,  64 << 10, 1024, ER_4K) },
+     { INFO("mt25ql512ab", 0x20ba20, 0x1044, 64 << 10, 1024, ER_4K | ER_32K) },
+@@ -478,6 +477,11 @@ struct Flash {
+     bool reset_enable;
+     bool quad_enable;
+     bool aai_enable;
++    bool block_protect0;
++    bool block_protect1;
++    bool block_protect2;
++    bool block_protect3;
++    bool top_bottom_bit;
+     bool status_register_write_disabled;
+     uint8_t ear;
+ 
+@@ -623,12 +627,36 @@ void flash_write8(Flash *s, uint32_t addr, uint8_t data)
  {
-     uint32_t some_page_addr = 0x600 * FLASH_PAGE_SIZE;
-@@ -501,6 +519,95 @@ static void test_status_reg_write_protection(void)
-     flash_reset();
+     uint32_t page = addr / s->pi->page_size;
+     uint8_t prev = s->storage[s->cur_addr];
++    uint32_t block_protect_value = (s->block_protect3 << 3) |
++                                   (s->block_protect2 << 2) |
++                                   (s->block_protect1 << 1) |
++                                   (s->block_protect0 << 0);
+ 
+     if (!s->write_enable) {
+         qemu_log_mask(LOG_GUEST_ERROR, "M25P80: write with write protect!\n");
+         return;
+     }
+ 
++    if (block_protect_value > 0) {
++        uint32_t num_protected_sectors = 1 << (block_protect_value - 1);
++        uint32_t sector = addr / s->pi->sector_size;
++
++        /* top_bottom_bit == 0 means TOP */
++        if (!s->top_bottom_bit) {
++            if (s->pi->n_sectors <= sector + num_protected_sectors) {
++                qemu_log_mask(LOG_GUEST_ERROR,
++                              "M25P80: write with write protect!\n");
++                return;
++            }
++        } else {
++            if (sector < num_protected_sectors) {
++                qemu_log_mask(LOG_GUEST_ERROR,
++                              "M25P80: write with write protect!\n");
++                return;
++            }
++        }
++    }
++
+     if ((prev ^ data) & data) {
+         trace_m25p80_programming_zero_to_one(s, addr, prev, data);
+     }
+@@ -726,6 +754,15 @@ static void complete_collecting_data(Flash *s)
+         break;
+     case WRSR:
+         s->status_register_write_disabled = extract32(s->data[0], 7, 1);
++        s->block_protect0 = extract32(s->data[0], 2, 1);
++        s->block_protect1 = extract32(s->data[0], 3, 1);
++        s->block_protect2 = extract32(s->data[0], 4, 1);
++        if (s->pi->flags & HAS_SR_TB) {
++            s->top_bottom_bit = extract32(s->data[0], 5, 1);
++        }
++        if (s->pi->flags & HAS_SR_BP3_BIT6) {
++            s->block_protect3 = extract32(s->data[0], 6, 1);
++        }
+ 
+         switch (get_man(s)) {
+         case MAN_SPANSION:
+@@ -1212,6 +1249,15 @@ static void decode_new_cmd(Flash *s, uint32_t value)
+     case RDSR:
+         s->data[0] = (!!s->write_enable) << 1;
+         s->data[0] |= (!!s->status_register_write_disabled) << 7;
++        s->data[0] |= (!!s->block_protect0) << 2;
++        s->data[0] |= (!!s->block_protect1) << 3;
++        s->data[0] |= (!!s->block_protect2) << 4;
++        if (s->pi->flags & HAS_SR_TB) {
++            s->data[0] |= (!!s->top_bottom_bit) << 5;
++        }
++        if (s->pi->flags & HAS_SR_BP3_BIT6) {
++            s->data[0] |= (!!s->block_protect3) << 6;
++        }
+ 
+         if (get_man(s) == MAN_MACRONIX || get_man(s) == MAN_ISSI) {
+             s->data[0] |= (!!s->quad_enable) << 6;
+@@ -1552,6 +1598,11 @@ static void m25p80_reset(DeviceState *d)
+ 
+     s->wp_level = true;
+     s->status_register_write_disabled = false;
++    s->block_protect0 = false;
++    s->block_protect1 = false;
++    s->block_protect2 = false;
++    s->block_protect3 = false;
++    s->top_bottom_bit = false;
+ 
+     reset_memory(s);
  }
+@@ -1638,6 +1689,32 @@ static const VMStateDescription vmstate_m25p80_write_protect = {
+     }
+ };
  
-+static void test_write_block_protect(void)
++static bool m25p80_block_protect_needed(void *opaque)
 +{
-+    uint32_t sector_size = 65536;
-+    uint32_t n_sectors = 512;
++    Flash *s = (Flash *)opaque;
 +
-+    spi_ce_ctrl(1 << CRTL_EXTENDED0);
-+    spi_conf(CONF_ENABLE_W0);
-+
-+    uint32_t bp_bits = 0b0;
-+
-+    for (int i = 0; i < 16; i++) {
-+        bp_bits = ((i & 0b1000) << 3) | ((i & 0b0111) << 2);
-+
-+        spi_ctrl_start_user();
-+        writeb(ASPEED_FLASH_BASE, WREN);
-+        writeb(ASPEED_FLASH_BASE, BULK_ERASE);
-+        writeb(ASPEED_FLASH_BASE, WREN);
-+        writeb(ASPEED_FLASH_BASE, WRSR);
-+        writeb(ASPEED_FLASH_BASE, bp_bits);
-+        writeb(ASPEED_FLASH_BASE, EN_4BYTE_ADDR);
-+        writeb(ASPEED_FLASH_BASE, WREN);
-+        spi_ctrl_stop_user();
-+
-+        uint32_t num_protected_sectors = i ? MIN(1 << (i - 1), n_sectors) : 0;
-+        uint32_t protection_start = n_sectors - num_protected_sectors;
-+        uint32_t protection_end = n_sectors;
-+
-+        for (int sector = 0; sector < n_sectors; sector++) {
-+            uint32_t addr = sector * sector_size;
-+
-+            assert_page_mem(addr, 0xffffffff);
-+            write_page_mem(addr, make_be32(0xabcdef12));
-+
-+            uint32_t expected_value = protection_start <= sector
-+                                      && sector < protection_end
-+                                      ? 0xffffffff : 0xabcdef12;
-+
-+            assert_page_mem(addr, expected_value);
-+        }
-+    }
-+
-+    flash_reset();
++    return s->block_protect0 ||
++           s->block_protect1 ||
++           s->block_protect2 ||
++           s->block_protect3 ||
++           s->top_bottom_bit;
 +}
 +
-+static void test_write_block_protect_bottom_bit(void)
-+{
-+    uint32_t sector_size = 65536;
-+    uint32_t n_sectors = 512;
-+
-+    spi_ce_ctrl(1 << CRTL_EXTENDED0);
-+    spi_conf(CONF_ENABLE_W0);
-+
-+    /* top bottom bit is enabled */
-+    uint32_t bp_bits = 0b00100 << 3;
-+
-+    for (int i = 0; i < 16; i++) {
-+        bp_bits = (((i & 0b1000) | 0b0100) << 3) | ((i & 0b0111) << 2);
-+
-+        spi_ctrl_start_user();
-+        writeb(ASPEED_FLASH_BASE, WREN);
-+        writeb(ASPEED_FLASH_BASE, BULK_ERASE);
-+        writeb(ASPEED_FLASH_BASE, WREN);
-+        writeb(ASPEED_FLASH_BASE, WRSR);
-+        writeb(ASPEED_FLASH_BASE, bp_bits);
-+        writeb(ASPEED_FLASH_BASE, EN_4BYTE_ADDR);
-+        writeb(ASPEED_FLASH_BASE, WREN);
-+        spi_ctrl_stop_user();
-+
-+        uint32_t num_protected_sectors = i ? MIN(1 << (i - 1), n_sectors) : 0;
-+        uint32_t protection_start = 0;
-+        uint32_t protection_end = num_protected_sectors;
-+
-+        for (int sector = 0; sector < n_sectors; sector++) {
-+            uint32_t addr = sector * sector_size;
-+
-+            assert_page_mem(addr, 0xffffffff);
-+            write_page_mem(addr, make_be32(0xabcdef12));
-+
-+            uint32_t expected_value = protection_start <= sector
-+                                      && sector < protection_end
-+                                      ? 0xffffffff : 0xabcdef12;
-+
-+            assert_page_mem(addr, expected_value);
-+        }
++static const VMStateDescription vmstate_m25p80_block_protect = {
++    .name = "m25p80/block_protect",
++    .version_id = 1,
++    .minimum_version_id = 1,
++    .needed = m25p80_block_protect_needed,
++    .fields = (VMStateField[]) {
++        VMSTATE_BOOL(block_protect0, Flash),
++        VMSTATE_BOOL(block_protect1, Flash),
++        VMSTATE_BOOL(block_protect2, Flash),
++        VMSTATE_BOOL(block_protect3, Flash),
++        VMSTATE_BOOL(top_bottom_bit, Flash),
++        VMSTATE_END_OF_LIST()
 +    }
++};
 +
-+    flash_reset();
-+}
-+
- static char tmp_path[] = "/tmp/qtest.m25p80.XXXXXX";
- 
- int main(int argc, char **argv)
-@@ -529,6 +636,10 @@ int main(int argc, char **argv)
-     qtest_add_func("/ast2400/smc/read_status_reg", test_read_status_reg);
-     qtest_add_func("/ast2400/smc/status_reg_write_protection",
-                    test_status_reg_write_protection);
-+    qtest_add_func("/ast2400/smc/write_block_protect",
-+                   test_write_block_protect);
-+    qtest_add_func("/ast2400/smc/write_block_protect_bottom_bit",
-+                   test_write_block_protect_bottom_bit);
- 
-     flash_reset();
-     ret = g_test_run();
+ static const VMStateDescription vmstate_m25p80 = {
+     .name = "m25p80",
+     .version_id = 0,
+@@ -1670,6 +1747,7 @@ static const VMStateDescription vmstate_m25p80 = {
+         &vmstate_m25p80_data_read_loop,
+         &vmstate_m25p80_aai_enable,
+         &vmstate_m25p80_write_protect,
++        &vmstate_m25p80_block_protect,
+         NULL
+     }
+ };
 -- 
 2.35.3
 

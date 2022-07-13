@@ -1,73 +1,73 @@
-Received: by 2002:ac2:596f:0:0:0:0:0 with SMTP id h15csp75704lfp;
-        Wed, 13 Jul 2022 01:15:37 -0700 (PDT)
-X-Google-Smtp-Source: AGRyM1uURSIjXL/rfweOSWPy0At3JgZKu9W99NHkXzN+OJtBqBe/YbLXm4QZ6NllTVWAKyYKiyrm
-X-Received: by 2002:a37:e217:0:b0:6b5:7432:d5f9 with SMTP id g23-20020a37e217000000b006b57432d5f9mr1488059qki.272.1657700137502;
-        Wed, 13 Jul 2022 01:15:37 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1657700137; cv=none;
+Received: by 2002:ac2:596f:0:0:0:0:0 with SMTP id h15csp76013lfp;
+        Wed, 13 Jul 2022 01:16:33 -0700 (PDT)
+X-Google-Smtp-Source: AGRyM1uDFU4XQew36Jd26ZsUi+iUGny6b10U0DTngpssBNV2Uhnl1wKBYKM2yX2YUfbTS5cKzGaK
+X-Received: by 2002:a05:620a:1aa8:b0:6b5:9edd:5f54 with SMTP id bl40-20020a05620a1aa800b006b59edd5f54mr1552844qkb.506.1657700193055;
+        Wed, 13 Jul 2022 01:16:33 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1657700193; cv=none;
         d=google.com; s=arc-20160816;
-        b=hqJ4BSkK8oGcvaMqLsad0HELtTF8lCKSwtglL05IT1wZupFuyueSaTGmvjwNjGKJvB
-         xhkaZfSyZ/El4aqyTda2Jyc+UD2w6nqCQikXLaYxipbWOgdTa9tSAgTKJ9ohq+kFsbag
-         m39fhj2klrtdJK7vVRUEsMu35wMLRX43UErki9Bl5ZG3DJNJ2t19gsY6wfYHMZa6Xn8W
-         RxcvEqU7wRCQp/JW6Y6ygDoVKknmjTP7Hix1dVihT0kNeGbmE+Abb1FetZ77pniWazMY
-         KdA46MGxbD47Kf5RuUOmfwyz3031cgqr2yzExZZdCr84Jr32zeSJwuhsqUPkJ5qvDf9b
-         JF0g==
+        b=Y68CYxlYcT/MAoIYP5cz0LtTknMHhBxQhejAIBgezq4Nv1+YQf72yDOWLoWQRt+USs
+         u59j8TCTMiOPTUkE/akB+XCqpxjTYF04bUJk2UxICJBOB82sO07/1YHNCOQfSm7dg3zk
+         9YPROYSi0eplbaxfjYAoH1gpoK6R8gE0ZstNOl/X5RSz9m4/pFdCaAWgfdypWMXLofSo
+         R3z23wEMJZyn+BNvfozjYqpqxuCjjfcSMOY5lbvfthycFlswVYoqYWmNMERGMbH4/8a0
+         60UlYCLvguaLSVVZt5wqZOcRmTifqiR5R0GJ6gvSbPwZubnuN/GuJC+rwuybG7z98c+H
+         Ha5Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from;
-        bh=LAbabs2IoNkJnPCGxNf9SNT/WbCVj85TxoLBRreGf0U=;
-        b=rAij76YmEcSedDCPTg6JEa4z7nADC1RTkhWrt962CiN2MG1aHc4yQ8etZGYSYSe/0e
-         9N/nOHju4xtdF+mvAEsuExYgMI2FhWBo0i/xI1BjlsOT/H56bH1KmxNxWkIPDD2IMQkF
-         R9YHlAH8l7TahgmzG77Bc9fxAreYYiUmvzd59CgC+GVzBif0G7x+kB8uKgEhHg+NuCKv
-         SVfp7evzCskRzAyhoIp2k8bQefvssvJoeJN2CW8bB21i4a5lxkeSFj+/tS85UlxH2+EP
-         hLRmZxSyAwPej/mHDZSEUBP7Q7qjrQcwCBN4LDJElwDvwb318ezilI0wRXJe50+vEepR
-         FNNA==
+        bh=aVEawmUEDi+0wVTvegIWktfXqozFazTJs6ycclcwaOw=;
+        b=ubplo7O5nTRt6mZc/p95DFxp2yWMuaTU/lPc5dVcjUAbJ+JGXqY/25Rud4LD+4vAXR
+         OuY6DhwhgsNonTPjvfZWm07Ge2XYIr9icvI2+ROBWf57N/4UImCktuYfEv/4po2rZR4K
+         3klL7bPpvp77ZgNBUH7I5Rs0syOodTYVvAMvd5jWs/ZSyv2m7mCvqRvkJUlw8v8DeatT
+         PTmuzE8yxnSoQ2MUVJAWv+r6WiZHJXT+oBu4RzOzVwFFuA7JejB1/dlpAhy7oWQ8jfov
+         Fa5lrWQaLan2QfzUDdufU3TQ/cXtiQd5tcyPeEBPE1XQ4f3uHXXytqu93eUWrpzrs2LL
+         zDzw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id f8-20020a05622a114800b0031ecd3b0906si191702qty.53.2022.07.13.01.15.37
+        by mx.google.com with ESMTPS id kj17-20020a056214529100b0047320d4ee2fsi7619817qvb.101.2022.07.13.01.16.32
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 13 Jul 2022 01:15:37 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 13 Jul 2022 01:16:33 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:47814 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:47332 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1oBXWy-0002KO-Vd
-	for alex.bennee@linaro.org; Wed, 13 Jul 2022 04:15:37 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:32960)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1oBXXs-0001zV-HG
+	for alex.bennee@linaro.org; Wed, 13 Jul 2022 04:16:32 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33066)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=zHgX=XS=kaod.org=clg@ozlabs.org>)
- id 1oBXBe-00082g-NU; Wed, 13 Jul 2022 03:53:34 -0400
-Received: from mail.ozlabs.org ([2404:9400:2221:ea00::3]:55085
+ id 1oBXBp-00089I-5K; Wed, 13 Jul 2022 03:53:46 -0400
+Received: from mail.ozlabs.org ([2404:9400:2221:ea00::3]:60413
  helo=gandalf.ozlabs.org)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=zHgX=XS=kaod.org=clg@ozlabs.org>)
- id 1oBXBc-0002ZX-HC; Wed, 13 Jul 2022 03:53:34 -0400
+ id 1oBXBm-0002b7-Ib; Wed, 13 Jul 2022 03:53:44 -0400
 Received: from gandalf.ozlabs.org (mail.ozlabs.org
  [IPv6:2404:9400:2221:ea00::3])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4LjVHH4RPpz4ySZ;
- Wed, 13 Jul 2022 17:53:31 +1000 (AEST)
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4LjVHR6VMgz4ySc;
+ Wed, 13 Jul 2022 17:53:39 +1000 (AEST)
 Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
  (No client certificate requested)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4LjVHF3sxWz4ySW;
- Wed, 13 Jul 2022 17:53:29 +1000 (AEST)
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4LjVHP48sHz4ySW;
+ Wed, 13 Jul 2022 17:53:37 +1000 (AEST)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>,
  Richard Henderson <richard.henderson@linaro.org>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
- Peter Delevoryas <peter@pjd.dev>
-Subject: [PULL 10/19] aspeed: fby35: Add a bootrom for the BMC
-Date: Wed, 13 Jul 2022 09:52:46 +0200
-Message-Id: <20220713075255.2248923-11-clg@kaod.org>
+ Peter Delevoryas <peter@pjd.dev>, Joel Stanley <joel@jms.id.au>
+Subject: [PULL 13/19] docs: aspeed: Minor updates
+Date: Wed, 13 Jul 2022 09:52:49 +0200
+Message-Id: <20220713075255.2248923-14-clg@kaod.org>
 X-Mailer: git-send-email 2.35.3
 In-Reply-To: <20220713075255.2248923-1-clg@kaod.org>
 References: <20220713075255.2248923-1-clg@kaod.org>
@@ -84,173 +84,98 @@ X-Spam_report: (-2.4 / 5.0 requ) BAYES_00=-1.9,
  SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Ag9eVQgWUOOH
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: yNiGSCmMd6To
 
-The BMC boots from the first flash device by fetching instructions
-from the flash contents. Add an alias region on 0x0 for this
-purpose. There are currently performance issues with this method (TBs
-being flushed too often), so as a faster alternative, install the
-flash contents as a ROM in the BMC memory space.
-
-See commit 1a15311a12fa ("hw/arm/aspeed: add a 'execute-in-place'
-property to boot directly from CE0")
+Some more controllers have been modeled recently. Reflect that in the
+list of supported devices. New machines were also added.
 
 Signed-off-by: Cédric Le Goater <clg@kaod.org>
-Signed-off-by: Peter Delevoryas <peter@pjd.dev>
-Message-Id: <20220705191400.41632-8-peter@pjd.dev>
+Reviewed-by: Peter Delevoryas <peter@pjd.dev>
+Reviewed-by: Joel Stanley <joel@jms.id.au>
+Message-Id: <20220706172131.809255-1-clg@kaod.org>
 Signed-off-by: Cédric Le Goater <clg@kaod.org>
 ---
- hw/arm/fby35.c | 83 ++++++++++++++++++++++++++++++++++++++++++++++++++
- 1 file changed, 83 insertions(+)
+ docs/system/arm/aspeed.rst | 14 ++++++++++----
+ 1 file changed, 10 insertions(+), 4 deletions(-)
 
-diff --git a/hw/arm/fby35.c b/hw/arm/fby35.c
-index 5c5224d37471..d3edfa3b108e 100644
---- a/hw/arm/fby35.c
-+++ b/hw/arm/fby35.c
-@@ -9,6 +9,7 @@
- #include "qemu/units.h"
- #include "qapi/error.h"
- #include "sysemu/sysemu.h"
-+#include "sysemu/block-backend.h"
- #include "hw/boards.h"
- #include "hw/arm/aspeed_soc.h"
+diff --git a/docs/system/arm/aspeed.rst b/docs/system/arm/aspeed.rst
+index 445095690c04..6c5b05128ea8 100644
+--- a/docs/system/arm/aspeed.rst
++++ b/docs/system/arm/aspeed.rst
+@@ -31,7 +31,10 @@ AST2600 SoC based machines :
+ - ``tacoma-bmc``           OpenPOWER Witherspoon POWER9 AST2600 BMC
+ - ``rainier-bmc``          IBM Rainier POWER10 BMC
+ - ``fuji-bmc``             Facebook Fuji BMC
++- ``bletchley-bmc``        Facebook Bletchley BMC
+ - ``fby35-bmc``            Facebook fby35 BMC
++- ``qcom-dc-scm-v1-bmc``   Qualcomm DC-SCM V1 BMC
++- ``qcom-firework-bmc``    Qualcomm Firework BMC
  
-@@ -23,12 +24,49 @@ struct Fby35State {
-     MemoryRegion bmc_boot_rom;
+ Supported devices
+ -----------------
+@@ -40,7 +43,7 @@ Supported devices
+  * Interrupt Controller (VIC)
+  * Timer Controller
+  * RTC Controller
+- * I2C Controller
++ * I2C Controller, including the new register interface of the AST2600
+  * System Control Unit (SCU)
+  * SRAM mapping
+  * X-DMA Controller (basic interface)
+@@ -57,6 +60,10 @@ Supported devices
+  * LPC Peripheral Controller (a subset of subdevices are supported)
+  * Hash/Crypto Engine (HACE) - Hash support only. TODO: HMAC and RSA
+  * ADC
++ * Secure Boot Controller (AST2600)
++ * eMMC Boot Controller (dummy)
++ * PECI Controller (minimal)
++ * I3C Controller
  
-     AspeedSoCState bmc;
-+
-+    bool mmio_exec;
- };
  
- #define FBY35_BMC_RAM_SIZE (2 * GiB)
-+#define FBY35_BMC_FIRMWARE_ADDR 0x0
-+
-+static void fby35_bmc_write_boot_rom(DriveInfo *dinfo, MemoryRegion *mr,
-+                                     hwaddr offset, size_t rom_size,
-+                                     Error **errp)
-+{
-+    BlockBackend *blk = blk_by_legacy_dinfo(dinfo);
-+    g_autofree void *storage = NULL;
-+    int64_t size;
-+
-+    /*
-+     * The block backend size should have already been 'validated' by
-+     * the creation of the m25p80 object.
-+     */
-+    size = blk_getlength(blk);
-+    if (size <= 0) {
-+        error_setg(errp, "failed to get flash size");
-+        return;
-+    }
-+
-+    if (rom_size > size) {
-+        rom_size = size;
-+    }
-+
-+    storage = g_malloc0(rom_size);
-+    if (blk_pread(blk, 0, storage, rom_size) < 0) {
-+        error_setg(errp, "failed to read the initial flash content");
-+        return;
-+    }
-+
-+    /* TODO: find a better way to install the ROM */
-+    memcpy(memory_region_get_ram_ptr(mr) + offset, storage, rom_size);
-+}
+ Missing devices
+@@ -68,12 +75,10 @@ Missing devices
+  * Super I/O Controller
+  * PCI-Express 1 Controller
+  * Graphic Display Controller
+- * PECI Controller
+  * MCTP Controller
+  * Mailbox Controller
+  * Virtual UART
+  * eSPI Controller
+- * I3C Controller
  
- static void fby35_bmc_init(Fby35State *s)
- {
-+    DriveInfo *drive0 = drive_get(IF_MTD, 0, 0);
-+
-     memory_region_init(&s->bmc_memory, OBJECT(s), "bmc-memory", UINT64_MAX);
-     memory_region_init_ram(&s->bmc_dram, OBJECT(s), "bmc-dram",
-                            FBY35_BMC_RAM_SIZE, &error_abort);
-@@ -48,6 +86,28 @@ static void fby35_bmc_init(Fby35State *s)
-     qdev_realize(DEVICE(&s->bmc), NULL, &error_abort);
+ Boot options
+ ------------
+@@ -154,6 +159,8 @@ Supported devices
+  * LPC Peripheral Controller (a subset of subdevices are supported)
+  * Hash/Crypto Engine (HACE) - Hash support only. TODO: HMAC and RSA
+  * ADC
++ * Secure Boot Controller
++ * PECI Controller (minimal)
  
-     aspeed_board_init_flashes(&s->bmc.fmc, "n25q00", 2, 0);
-+
-+    /* Install first FMC flash content as a boot rom. */
-+    if (drive0) {
-+        AspeedSMCFlash *fl = &s->bmc.fmc.flashes[0];
-+        MemoryRegion *boot_rom = g_new(MemoryRegion, 1);
-+        uint64_t size = memory_region_size(&fl->mmio);
-+
-+        if (s->mmio_exec) {
-+            memory_region_init_alias(boot_rom, NULL, "aspeed.boot_rom",
-+                                     &fl->mmio, 0, size);
-+            memory_region_add_subregion(&s->bmc_memory, FBY35_BMC_FIRMWARE_ADDR,
-+                                        boot_rom);
-+        } else {
-+
-+            memory_region_init_rom(boot_rom, NULL, "aspeed.boot_rom",
-+                                   size, &error_abort);
-+            memory_region_add_subregion(&s->bmc_memory, FBY35_BMC_FIRMWARE_ADDR,
-+                                        boot_rom);
-+            fby35_bmc_write_boot_rom(drive0, boot_rom, FBY35_BMC_FIRMWARE_ADDR,
-+                                     size, &error_abort);
-+        }
-+    }
- }
  
- static void fby35_init(MachineState *machine)
-@@ -57,6 +117,22 @@ static void fby35_init(MachineState *machine)
-     fby35_bmc_init(s);
- }
+ Missing devices
+@@ -161,7 +168,6 @@ Missing devices
  
-+
-+static bool fby35_get_mmio_exec(Object *obj, Error **errp)
-+{
-+    return FBY35(obj)->mmio_exec;
-+}
-+
-+static void fby35_set_mmio_exec(Object *obj, bool value, Error **errp)
-+{
-+    FBY35(obj)->mmio_exec = value;
-+}
-+
-+static void fby35_instance_init(Object *obj)
-+{
-+    FBY35(obj)->mmio_exec = false;
-+}
-+
- static void fby35_class_init(ObjectClass *oc, void *data)
- {
-     MachineClass *mc = MACHINE_CLASS(oc);
-@@ -66,6 +142,12 @@ static void fby35_class_init(ObjectClass *oc, void *data)
-     mc->no_floppy = 1;
-     mc->no_cdrom = 1;
-     mc->min_cpus = mc->max_cpus = mc->default_cpus = 2;
-+
-+    object_class_property_add_bool(oc, "execute-in-place",
-+                                   fby35_get_mmio_exec,
-+                                   fby35_set_mmio_exec);
-+    object_class_property_set_description(oc, "execute-in-place",
-+                           "boot directly from CE0 flash device");
- }
- 
- static const TypeInfo fby35_types[] = {
-@@ -74,6 +156,7 @@ static const TypeInfo fby35_types[] = {
-         .parent = TYPE_MACHINE,
-         .class_init = fby35_class_init,
-         .instance_size = sizeof(Fby35State),
-+        .instance_init = fby35_instance_init,
-     },
- };
- 
+  * PWM and Fan Controller
+  * Slave GPIO Controller
+- * PECI Controller
+  * Mailbox Controller
+  * Virtual UART
+  * eSPI Controller
 -- 
 2.35.3
 

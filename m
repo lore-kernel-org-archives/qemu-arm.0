@@ -1,117 +1,96 @@
-Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp308153lft;
-        Fri, 8 Jul 2022 07:43:37 -0700 (PDT)
-X-Google-Smtp-Source: AGRyM1t98VEJXPo7NeasWvnvE5Dbj7+jOF3d7THgPWlZNAv95uIHYsLHN0Vnc9VBks3wZ0ZO9ngo
-X-Received: by 2002:a05:6214:20a7:b0:473:4571:3721 with SMTP id 7-20020a05621420a700b0047345713721mr1498115qvd.60.1657291417518;
-        Fri, 08 Jul 2022 07:43:37 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1657291417; cv=none;
+Received: by 2002:ac2:596f:0:0:0:0:0 with SMTP id h15csp42574lfp;
+        Tue, 12 Jul 2022 23:16:16 -0700 (PDT)
+X-Google-Smtp-Source: AGRyM1u3bbEWWP3xp9kdwHSoFnvjnKkDtXuU9pJwmR7O8abJ4yQbZEQKdnuqWfX01wt2+ts20btj
+X-Received: by 2002:a05:622a:28e:b0:31e:c38d:82bd with SMTP id z14-20020a05622a028e00b0031ec38d82bdmr1448223qtw.204.1657692976731;
+        Tue, 12 Jul 2022 23:16:16 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1657692976; cv=none;
         d=google.com; s=arc-20160816;
-        b=Tj2B+QzXcMxs7gyixSuLYb/v6BDjcU5Dy0m6eh0jP7CxwiqYpUIjsNpV2hs44ulY8t
-         MH4xikO9HKqSXIEjV5q+m6aiTLrwseEGxLBWkzVZn/7HdYZlwFTJgnsXNghtxZ1H4efU
-         8ynRWbwDKVr6YhEvNoPClgj+ohwZ4rdNB03V3VI8T7/xCu5vyFMU89GZXiOr4tI/zgDz
-         4NVaH2iHozAH4WyHPtiX6wNzSxj/iOJjsKOZS61l26iQG6O0drgnKDXULIZMsdpdNMcP
-         lYCMtobHk9hkALSYtxF2JCp4f6AVHBnZjmt40TPHnEFuJjEMFCreJF8KMZLxTf9Qgb67
-         GaiA==
+        b=u5CnkJzmoX/4o41/vy6eWr9PkQ+yapY/qP8ttcFXKC8L1pQ1swDhxD8xywmZRSU3ZU
+         L6qdBq6po8gCGjR9Jc5RQo8PxSA9S3L5mL1R46FG2lUWRRItrJ+v6BmNdYw1Bi4aCH9c
+         NpPHLOmk0EogKhrgVq4/G2GySMVPZxHDDqUeH9bNwSWNj7+ej4fckk/CDyXrnitLj2zs
+         G42Bb1QQnyfTG7VAg94F6p1Y7ebypkjYOoJPgBqY14Z0kR+taK0/6L6L9QVckuDpjeRk
+         YsPSASWWRCRzoDHsYyP7vC9zQPk936n0836g1iQrgM/NAp0LWx8DF6QigOs/211Bkn3w
+         e0GA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :in-reply-to:from:references:cc:to:content-language:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=ZPbrArNFZ/rWeA8x7cl5tNZ595+1bD1UnZfj1X9XxkA=;
-        b=0MwY2rU0B5gnnR8kG7FPvCJX3fLEUpv4Xmwb9EV5WVrq/WJDyZLBAlo6aWOWORzF9j
-         UPh3ZCVL42kOEH0tUGQWrcx82aCHoTNUKd6NCIzkeFka11G3fKHgxBHCpUoet+URPssz
-         4ngBOKyyF1+SFhthL2lVriVwuzaug8PC8LW2ETrz7/9z22eAcXh6H+z9CyzhrzH7W6I0
-         zt7UurZLPK7aeZQwR3MqDhMyC/AqI0L6smAZo6mO/0Nn3RPs2tUVNR5MGkRkH9DSOWEb
-         GfJG86luM+BQg8YE0w3ENncIsqbBqWERYai3TOmkSnE2iyX/PQuL7p51j7kmDg71q7jX
-         rdBw==
+         :user-agent:mime-version:date:message-id;
+        bh=OLKdwaxgGKRF5st+u4rOR4HcDpQS8FLIlU9pDEj2tOA=;
+        b=FzOAwx3REfN+Mka72cRddVSTZbayPFMWnz0oo9bs6eTtC5WvgM4qBkX5gzU63girDn
+         U/AV0QaPXGNz8dODk6AZK7OxznHVQ0xsfH8Izk0ZQ5ejtyv4q/3Mzz6+LAfsjUsUkRpx
+         GD92MWs0oMyCOOg3uTaazeVRY5CKUMU4s9afgLOegf49UZoYVvwAsF84lzF0PmhUU04r
+         JieJ6fVBBXwNleTOApoeHhpfQ8zxBE0OArwogz0VzwBqpavxXnBfT/ragd43s1hBq+a/
+         OvHsnXE7BgDCqee86KQ+m2/hfFPckLDC6TB602shroUJXSKasClxrLp2Wfmg84UHAsHg
+         2N2A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=XzIE5gqa;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id gw8-20020a0562140f0800b004622a2cd4c2si24506835qvb.66.2022.07.08.07.43.37
+        by mx.google.com with ESMTPS id v18-20020ac85792000000b0031ea8b64b73si8689171qta.527.2022.07.12.23.16.16
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 08 Jul 2022 07:43:37 -0700 (PDT)
+        Tue, 12 Jul 2022 23:16:16 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=XzIE5gqa;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:57144 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:47626 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1o9pCj-0005Ea-1T
-	for alex.bennee@linaro.org; Fri, 08 Jul 2022 10:43:37 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:56346)
+	id 1oBVfT-0000kt-77
+	for alex.bennee@linaro.org; Wed, 13 Jul 2022 02:16:15 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:43814)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1o9pC9-0005EF-6d
- for qemu-arm@nongnu.org; Fri, 08 Jul 2022 10:43:02 -0400
-Received: from mail-pg1-x532.google.com ([2607:f8b0:4864:20::532]:36654)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1o9pC7-0002Z1-NF
- for qemu-arm@nongnu.org; Fri, 08 Jul 2022 10:43:00 -0400
-Received: by mail-pg1-x532.google.com with SMTP id s206so22550581pgs.3
- for <qemu-arm@nongnu.org>; Fri, 08 Jul 2022 07:42:59 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=message-id:date:mime-version:user-agent:subject:content-language:to
- :cc:references:from:in-reply-to:content-transfer-encoding;
- bh=ZPbrArNFZ/rWeA8x7cl5tNZ595+1bD1UnZfj1X9XxkA=;
- b=XzIE5gqayEQOT+n4vcOqBRkm488gYNyZCAsBYo7ua49q4UZ9KXeVv69h2jbMDLtCvS
- wqmUnkzPzLjn1Gqus6eGIglSLfGtpR5sH/w1jdOFt7zvxFabDOQIuGXIPPGhB4N5zUG/
- sOBNB5f6kea1tLjBSiILLdakELgvl7QPC5n8RYFXhueLdpy339tsEc/6k/0OaXnM3bxg
- pXbecybgtDRWnCZpFWNR93Nh0EC42ChLxMg1OpD+lfBpshAnY1583s0GbqBk5rczN6jQ
- xG3jidQr1mPIP1QuhcwXXLt+XItfoN5CPjxJGv/LD9SQN3QkxNXkUP4yRk727AjIWwbH
- ilUA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
- :content-language:to:cc:references:from:in-reply-to
- :content-transfer-encoding;
- bh=ZPbrArNFZ/rWeA8x7cl5tNZ595+1bD1UnZfj1X9XxkA=;
- b=AEqT/9jr6quK02SgEO8cMn/pl5frfjlUDPi9p89FWhCTchdywZansX3sbxc1JXpkgR
- h38mETzNoAxiBzF1GqyxTCbsOtFcgiQXHQRZPgZQeUmweVgt8hqum4N1qz4em/twGc8+
- HmdZ3LKhcAtviGjiwt/HLpNwcOue6wRrIuT1U3dZ6GXosYzBwHC+TCOCqR1ltrEatCq5
- X+8HusAEwNpX4qim+ow+ScNwybHAKyU8LtMdn8tgWfkbz6OyKhj9Pi09FHIwyFuXtPWK
- JT0/TT70drAWxDXL18Lajd3iUfkg/oDsYOKAQyBt52QmRijN50U0vib8v+wv9NOm8j56
- H1QA==
-X-Gm-Message-State: AJIora+WFKhzWwvesvupUlsF33rUxZ9t2JXRAvh930rrp7PicMAaPSm1
- Iog1iU8glPJQDLjphs4+Jwlq9w==
-X-Received: by 2002:a63:4604:0:b0:40d:a0ec:5dc4 with SMTP id
- t4-20020a634604000000b0040da0ec5dc4mr3693668pga.510.1657291378038; 
- Fri, 08 Jul 2022 07:42:58 -0700 (PDT)
-Received: from [192.168.138.227] ([122.255.60.245])
- by smtp.gmail.com with ESMTPSA id
- d2-20020a170903230200b0016b90620910sm22677315plh.71.2022.07.08.07.42.54
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 08 Jul 2022 07:42:57 -0700 (PDT)
-Message-ID: <83f71b37-848b-ad6f-d51f-b3d6e0d4cf24@linaro.org>
-Date: Fri, 8 Jul 2022 20:12:50 +0530
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1oBVeh-0000kU-SS
+ for qemu-arm@nongnu.org; Wed, 13 Jul 2022 02:15:28 -0400
+Received: from 6.mo552.mail-out.ovh.net ([188.165.49.222]:52653)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1oBVef-0008Jw-8Q
+ for qemu-arm@nongnu.org; Wed, 13 Jul 2022 02:15:27 -0400
+Received: from mxplan5.mail.ovh.net (unknown [10.108.16.128])
+ by mo552.mail-out.ovh.net (Postfix) with ESMTPS id 817BC260A6;
+ Wed, 13 Jul 2022 06:15:21 +0000 (UTC)
+Received: from kaod.org (37.59.142.97) by DAG4EX2.mxp5.local (172.16.2.32)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.9; Wed, 13 Jul
+ 2022 08:15:20 +0200
+Authentication-Results: garm.ovh; auth=pass
+ (GARM-97G002d9e9464b-fe28-434c-87cf-675b7432ceda,
+ B7C06120255AFE5421B63915098EA76FE65B5110) smtp.auth=clg@kaod.org
+X-OVh-ClientIp: 82.66.77.115
+Message-ID: <b87060c9-5bcb-848c-73f1-86831a20a1fb@kaod.org>
+Date: Wed, 13 Jul 2022 08:15:15 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.9.1
-Subject: Re: [PATCH v5 25/45] target/arm: Implement BFMOPA, BFMOPS
+ Thunderbird/91.11.0
+Subject: Re: [PATCH v3 2/3] hw/gpio/aspeed: Don't let guests modify input pins
 Content-Language: en-US
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
-References: <20220706082411.1664825-1-richard.henderson@linaro.org>
- <20220706082411.1664825-26-richard.henderson@linaro.org>
- <CAFEAcA8Ou2N9qJyvSy2wkpGtguCjJrA9YWoio4jsrv5VrNE3VQ@mail.gmail.com>
-From: Richard Henderson <richard.henderson@linaro.org>
-In-Reply-To: <CAFEAcA8Ou2N9qJyvSy2wkpGtguCjJrA9YWoio4jsrv5VrNE3VQ@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::532;
- envelope-from=richard.henderson@linaro.org; helo=mail-pg1-x532.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.001,
+To: Peter Delevoryas <peter@pjd.dev>
+CC: <peter.maydell@linaro.org>, <andrew@aj.id.au>, <joel@jms.id.au>,
+ <thuth@redhat.com>, <lvivier@redhat.com>, <pbonzini@redhat.com>,
+ <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>
+References: <20220712023219.41065-1-peter@pjd.dev>
+ <20220712023219.41065-3-peter@pjd.dev>
+From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
+In-Reply-To: <20220712023219.41065-3-peter@pjd.dev>
+Content-Type: text/plain; charset="UTF-8"; format=flowed
+Content-Transfer-Encoding: 8bit
+X-Originating-IP: [37.59.142.97]
+X-ClientProxiedBy: DAG8EX1.mxp5.local (172.16.2.71) To DAG4EX2.mxp5.local
+ (172.16.2.32)
+X-Ovh-Tracer-GUID: 5381905e-69b8-4883-91b0-fab7de670b25
+X-Ovh-Tracer-Id: 7131731487341906735
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvfedrudejiedguddtkecutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemucehtddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpefkffggfgfuvfevfhfhjggtgfhisehtkeertddtfeejnecuhfhrohhmpeevrogurhhitggpnfgvpgfiohgrthgvrhcuoegtlhhgsehkrghougdrohhrgheqnecuggftrfgrthhtvghrnheptdehkeelieetvddtlefgveeuheduheetledvtdfgfeffledvjeekjeegledvkeeunecuffhomhgrihhnpehkvghrnhgvlhdrohhrghenucfkpheptddrtddrtddrtddpfeejrdehledrudegvddrleejnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmohguvgepshhmthhpohhuthdphhgvlhhopehmgihplhgrnhehrdhmrghilhdrohhvhhdrnhgvthdpihhnvghtpedtrddtrddtrddtpdhmrghilhhfrhhomheptghlgheskhgrohgurdhorhhgpdhnsggprhgtphhtthhopedupdhrtghpthhtohepqhgvmhhuqdguvghvvghlsehnohhnghhnuhdrohhrghdpoffvtefjohhsthepmhhoheehvd
+Received-SPF: pass client-ip=188.165.49.222; envelope-from=clg@kaod.org;
+ helo=6.mo552.mail-out.ovh.net
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -126,49 +105,117 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: q3itEMR9wjiZ
+X-TUID: 1AEKK1gVYs97
 
-On 7/7/22 15:12, Peter Maydell wrote:
->> +static inline uint32_t f16mop_adj_pair(uint32_t pair, uint32_t pg, uint32_t neg)
->> +{
->> +    pair ^= neg;
+On 7/12/22 04:32, Peter Delevoryas wrote:
+> Up until now, guests could modify input pins by overwriting the data
+> value register. The guest OS should only be allowed to modify output pin
+> values, and the QOM property setter should only be permitted to modify
+> input pins.
 > 
-> You seem to be negating element 1 of row and col ('neg' here is
-> 1 << 15 unless I've misread something, and it gets passed to
-> the calls for both the row and column data), but the pseudocode
-> says we want to negate element 0 and element 1 of row, and not
-> negate the col elements.
-
-Yep, thanks.
-
->> +    if (!(pg & 1)) {
->> +        pair &= 0xffff0000u;
->> +    }
->> +    if (!(pg & 4)) {
->> +        pair &= 0x0000ffffu;
->> +    }
+> This change also updates the gpio input pin test to match this
+> expectation.
 > 
-> The pseudocode sets the element to 0 if it is not
-> predicated, and then applies the negation second.
-
-Yes.  However, the negation is predicated too -- the squashed FPZero is never negated.  I 
-found it simpler to unconditionally negate and then conditionally squash to zero.
-
->> +            uint32_t n = *(uint32_t *)(vzn + row);
+> Andrew suggested this particularly refactoring here:
 > 
-> More missing H macros ?
-
-Yep.
-
->> +                    if ((pa & 0b0101) == 0b0101 || (pb & 0b0101) == 0b0101) {
+>      https://lore.kernel.org/qemu-devel/23523aa1-ba81-412b-92cc-8174faba3612@www.fastmail.com/
 > 
-> The pseudocode test for "do we do anything" is
->   (prow_0 && pcol_0) || (prow_1 && pcol_1)
+> Suggested-by: Andrew Jeffery <andrew@aj.id.au>
+> Signed-off-by: Peter Delevoryas <peter@pjd.dev>
+> Fixes: 4b7f956862dc ("hw/gpio: Add basic Aspeed GPIO model for AST2400 and AST2500")
+> ---
+
+
+Reviewed-by: Cédric Le Goater <clg@kaod.org>
+
+Thanks,
+
+C.
+
+
+>   hw/gpio/aspeed_gpio.c          | 15 ++++++++-------
+>   tests/qtest/aspeed_gpio-test.c |  2 +-
+>   2 files changed, 9 insertions(+), 8 deletions(-)
 > 
-> but isn't this C expression doing
->   (prow_0 && prow_1) || (pcol_0 && pcol_1) ?
+> diff --git a/hw/gpio/aspeed_gpio.c b/hw/gpio/aspeed_gpio.c
+> index a62a673857..1e267dd482 100644
+> --- a/hw/gpio/aspeed_gpio.c
+> +++ b/hw/gpio/aspeed_gpio.c
+> @@ -268,7 +268,7 @@ static ptrdiff_t aspeed_gpio_set_idx(AspeedGPIOState *s, GPIOSets *regs)
+>   }
+>   
+>   static void aspeed_gpio_update(AspeedGPIOState *s, GPIOSets *regs,
+> -                               uint32_t value)
+> +                               uint32_t value, uint32_t mode_mask)
+>   {
+>       uint32_t input_mask = regs->input_mask;
+>       uint32_t direction = regs->direction;
+> @@ -277,7 +277,8 @@ static void aspeed_gpio_update(AspeedGPIOState *s, GPIOSets *regs,
+>       uint32_t diff;
+>       int gpio;
+>   
+> -    diff = old ^ new;
+> +    diff = (old ^ new);
+> +    diff &= mode_mask;
+>       if (diff) {
+>           for (gpio = 0; gpio < ASPEED_GPIOS_PER_SET; gpio++) {
+>               uint32_t mask = 1 << gpio;
+> @@ -339,7 +340,7 @@ static void aspeed_gpio_set_pin_level(AspeedGPIOState *s, uint32_t set_idx,
+>           value &= ~pin_mask;
+>       }
+>   
+> -    aspeed_gpio_update(s, &s->sets[set_idx], value);
+> +    aspeed_gpio_update(s, &s->sets[set_idx], value, ~s->sets[set_idx].direction);
+>   }
+>   
+>   /*
+> @@ -653,7 +654,7 @@ static void aspeed_gpio_write_index_mode(void *opaque, hwaddr offset,
+>           reg_value = update_value_control_source(set, set->data_value,
+>                                                   reg_value);
+>           set->data_read = reg_value;
+> -        aspeed_gpio_update(s, set, reg_value);
+> +        aspeed_gpio_update(s, set, reg_value, set->direction);
+>           return;
+>       case gpio_reg_idx_direction:
+>           reg_value = set->direction;
+> @@ -753,7 +754,7 @@ static void aspeed_gpio_write_index_mode(void *opaque, hwaddr offset,
+>               __func__, offset, data, reg_idx_type);
+>           return;
+>       }
+> -    aspeed_gpio_update(s, set, set->data_value);
+> +    aspeed_gpio_update(s, set, set->data_value, UINT32_MAX);
+>       return;
+>   }
+>   
+> @@ -799,7 +800,7 @@ static void aspeed_gpio_write(void *opaque, hwaddr offset, uint64_t data,
+>           data &= props->output;
+>           data = update_value_control_source(set, set->data_value, data);
+>           set->data_read = data;
+> -        aspeed_gpio_update(s, set, data);
+> +        aspeed_gpio_update(s, set, data, set->direction);
+>           return;
+>       case gpio_reg_direction:
+>           /*
+> @@ -875,7 +876,7 @@ static void aspeed_gpio_write(void *opaque, hwaddr offset, uint64_t data,
+>                         PRIx64"\n", __func__, offset);
+>           return;
+>       }
+> -    aspeed_gpio_update(s, set, set->data_value);
+> +    aspeed_gpio_update(s, set, set->data_value, UINT32_MAX);
+>       return;
+>   }
+>   
+> diff --git a/tests/qtest/aspeed_gpio-test.c b/tests/qtest/aspeed_gpio-test.c
+> index 8f52454099..d38f51d719 100644
+> --- a/tests/qtest/aspeed_gpio-test.c
+> +++ b/tests/qtest/aspeed_gpio-test.c
+> @@ -69,7 +69,7 @@ static void test_set_input_pins(const void *data)
+>   
+>       qtest_writel(s, AST2600_GPIO_BASE + GPIO_ABCD_DATA_VALUE, 0x00000000);
+>       value = qtest_readl(s, AST2600_GPIO_BASE + GPIO_ABCD_DATA_VALUE);
+> -    g_assert_cmphex(value, ==, 0x00000000);
+> +    g_assert_cmphex(value, ==, 0xffffffff);
+>   }
+>   
+>   int main(int argc, char **argv)
 
-Yep, thanks.
-
-
-r~

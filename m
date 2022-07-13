@@ -1,59 +1,58 @@
-Received: by 2002:ac2:596f:0:0:0:0:0 with SMTP id h15csp369027lfp;
-        Wed, 13 Jul 2022 13:48:12 -0700 (PDT)
-X-Google-Smtp-Source: AGRyM1snswDaLs12gNjZSnKi9A9n8hkDY8gClxbd3ygUQQ6LePZuMP5sDExdvBSVB47JgtPxnp5G
-X-Received: by 2002:a05:622a:7:b0:31e:cd6a:899c with SMTP id x7-20020a05622a000700b0031ecd6a899cmr3411509qtw.43.1657745292015;
-        Wed, 13 Jul 2022 13:48:12 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1657745292; cv=none;
+Received: by 2002:ac2:596f:0:0:0:0:0 with SMTP id h15csp369269lfp;
+        Wed, 13 Jul 2022 13:48:58 -0700 (PDT)
+X-Google-Smtp-Source: AGRyM1va/nmuQGNMND3VzIucRJfP6FQ1pkIbwUQKVAMX13fthMcz0A4vo8JqKpsin0ZcxyAuu0dI
+X-Received: by 2002:a05:6214:5087:b0:473:3b04:ef41 with SMTP id kk7-20020a056214508700b004733b04ef41mr4525339qvb.81.1657745338242;
+        Wed, 13 Jul 2022 13:48:58 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1657745338; cv=none;
         d=google.com; s=arc-20160816;
-        b=k58ktPrS/XMq8s7y34Oylo4XtBOSrtCszdCXvvQe92UoEo+LRNOopFQzHxrW3HnY2y
-         ZnJl9ZqxLRuAzJbJce93duFcP5bP/hY/GiGsasXwmQHewvxHF3m0Pt5nVIEBB6dUeJqp
-         Ugd+01M7hwgncSo4EEPevFsxTYcnITL/wkMNgQ0j8727jWvR+bw5dciqibgwf2TPVbED
-         DhmMjcyRz4KJx5zkBobP1yZX5w7Pp/wmxGA52gNXN3poPUfUNtdUQU2k+SG8+ZJzXinP
-         2y4e0HRWPxOFGUapuMWCVI6jemHB2TaLUdyMdGD8qNdXxaQdpMKobzKdkMC6pdzJgCd2
-         FEeg==
+        b=kzKqy8jtanvtKHP12uiYJ/Bm7qZKQa+3a8CL/qJaJhk4xA+swSsN6EcZOGwF/CZy1A
+         KsRmmmfzwDSTSVoqCG1zcTejrOjpWxA4tXbpG6myuthlRDNoPWQvGkxrtiru4NZih6Uw
+         iw08KDwJnKqjdt4auCOFfeTdK/4GgyHIvcmL1A3aDrRW8lOfQ2JvuISK12tDTI3Beuxq
+         ee1WsAVtoJKTpaQtjVxIKjOKRhVbwTEDVH+8lWNCvn34c0h9SFUPoJKvPVcTsYjnB2Em
+         5TU/mj6HhJoR4cHXXshvhOJofFZzOTHEyC1bsJ1KdFWggfLkV8muyV7o1norLBdic2ZW
+         eBWQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from;
-        bh=6Tjc+ICaWvg56S8Liz4DYzWfFdFBZeGlc3iAJB+HmUY=;
-        b=feojmc1SxSQX2dhPWmi97wTovxPAmV/i+jLyL9+IL6sYqyrI3PgSX9K7sTyYKp9f4E
-         tVB5aFgk699gK4PnoO21qN5SbiUSOffaudUUzbllOdDrc4KZrY0pDGHc0be9sGAmyeql
-         8AGGAAjhHdRjSjQmlU7rmkmf4rlQfS9stNA0WOuXeD1GlXZXkLj8rDKv6or3yDtJP8kd
-         0l0gAkTliQGOxhVcdgqwmgtM5rffO201C9NULjbtPAyPBdNR0iAq6oPkN1h3+JTQgR2/
-         vQSQP3vIMaG51P7CDicSRiw8d4MyPnASkkW6lZrhkAC9OIMz9rqNlmF50LIs/zuE4V00
-         NZHw==
+         :mime-version:message-id:date:subject:cc:to:from;
+        bh=JvijkaoErb3H24qVDfHSRouLGSm/Dkj3Yw72icpeCeQ=;
+        b=aBEmtIXtbRj2ikrtFq7GvtOiFbYEKMswT32SE34HVOxFW4WrPTULqNLFVGcLJSxI1K
+         2aWMyKdHd6F1z/jqk51ka61lUkHOjilD7S14/nZcvyw6WbBNtGF/f+AxC2J465LzJEAl
+         qxK7Bqbuy3RYbq9Q2bypwWP86r1AUYFr/kg9gW72q/hLTj6OSRZyuc2aRdVhodXI69IM
+         OLVuuFqqaPu8Uim/EWBFRWVwqZbPlgxX2W7gdKn3m297+tMZO0UWy10AcEfAq+qdHvyp
+         7/iU8GH9Km7Sl7Rt+VxgugRaD7MDX3edzCFT1w2bpVIajZ1760TUPZwVpaX11CwOeGgi
+         Uxlg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id iw7-20020a0562140f2700b00472c0a6e698si7274694qvb.233.2022.07.13.13.48.11
+        by mx.google.com with ESMTPS id 66-20020a370745000000b006a725e6199csi6985404qkh.16.2022.07.13.13.48.58
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 13 Jul 2022 13:48:12 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 13 Jul 2022 13:48:58 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:35768 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:36276 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1oBjHH-0008EB-I7
-	for alex.bennee@linaro.org; Wed, 13 Jul 2022 16:48:11 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53082)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1oBjHz-00007F-90
+	for alex.bennee@linaro.org; Wed, 13 Jul 2022 16:48:55 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:54346)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <ben@codethink.co.uk>)
- id 1oBfwW-0006fD-68; Wed, 13 Jul 2022 13:14:32 -0400
-Received: from imap4.hz.codethink.co.uk ([188.40.203.114]:38716)
+ id 1oBg2J-0000LM-6K; Wed, 13 Jul 2022 13:20:33 -0400
+Received: from imap4.hz.codethink.co.uk ([188.40.203.114]:43308)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <ben@codethink.co.uk>)
- id 1oBfwU-0003DM-OB; Wed, 13 Jul 2022 13:14:31 -0400
+ id 1oBg2G-0004Fj-Ls; Wed, 13 Jul 2022 13:20:30 -0400
 Received: from cpc152649-stkp13-2-0-cust121.10-2.cable.virginm.net
  ([86.15.83.122] helo=rainbowdash)
  by imap4.hz.codethink.co.uk with esmtpsa  (Exim 4.94.2 #2 (Debian))
- id 1oBfdU-003M8p-1I; Wed, 13 Jul 2022 17:54:51 +0100
+ id 1oBg21-003Mcx-KX; Wed, 13 Jul 2022 18:20:12 +0100
 Received: from ben by rainbowdash with local (Exim 4.96)
- (envelope-from <ben@rainbowdash>) id 1oBfdS-0009kt-1o;
- Wed, 13 Jul 2022 17:54:50 +0100
+ (envelope-from <ben@rainbowdash>) id 1oBg1z-000ABu-2v;
+ Wed, 13 Jul 2022 18:20:11 +0100
 From: Ben Dooks <ben.dooks@sifive.com>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, Jude Onyenegecha <jude.onyenegecha@sifive.com>,
@@ -61,13 +60,12 @@ Cc: qemu-arm@nongnu.org, Jude Onyenegecha <jude.onyenegecha@sifive.com>,
  William Salmon <william.salmon@sifive.com>,
  Adnan Chowdhury <adnan.chowdhury@sifive.com>,
  Ben Dooks <ben.dooks@sifive.com>
-Subject: [PATCH 4/7] pci: designware: ignore new bits in ATU CR1
-Date: Wed, 13 Jul 2022 17:54:46 +0100
-Message-Id: <20220713165449.37433-5-ben.dooks@sifive.com>
+Subject: [PATCH] gpio: designware gpio driver
+Date: Wed, 13 Jul 2022 18:20:10 +0100
+Message-Id: <20220713172010.39163-1-ben.dooks@sifive.com>
 X-Mailer: git-send-email 2.35.1
-In-Reply-To: <20220713165449.37433-1-ben.dooks@sifive.com>
-References: <20220713165449.37433-1-ben.dooks@sifive.com>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 Received-SPF: pass client-ip=188.40.203.114; envelope-from=ben@codethink.co.uk;
  helo=imap4.hz.codethink.co.uk
@@ -78,48 +76,502 @@ X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9,
  HEADER_FROM_DIFFERENT_DOMAINS=0.249, SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Wed, 13 Jul 2022 16:45:07 -0400
-X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Approved-At: Wed, 13 Jul 2022 16:45:29 -0400
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: yLgFsfGEYbfx
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: gyvaOKqLKMUx
 
-In version 4 and anver ATU CR1 has more bits in it than just the
-viewport type. Make a guess at masking these out to avoid issues
-where Linux writes these bits and fails to enable memory ATUs.
+A model for the DesignWare GPIO (v1) block.
 
 Signed-off-by: Ben Dooks <ben.dooks@sifive.com>
 ---
- hw/pci-host/designware.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ hw/gpio/Kconfig                   |   3 +
+ hw/gpio/designware_gpio.c         | 327 ++++++++++++++++++++++++++++++
+ hw/gpio/meson.build               |   1 +
+ hw/gpio/trace-events              |   7 +
+ include/hw/gpio/designware_gpio.h |  89 ++++++++
+ 5 files changed, 427 insertions(+)
+ create mode 100644 hw/gpio/designware_gpio.c
+ create mode 100644 include/hw/gpio/designware_gpio.h
 
-diff --git a/hw/pci-host/designware.c b/hw/pci-host/designware.c
-index 6403416634..947547d153 100644
---- a/hw/pci-host/designware.c
-+++ b/hw/pci-host/designware.c
-@@ -276,10 +276,10 @@ static void designware_pcie_update_viewport(DesignwarePCIERoot *root,
-     const uint64_t base   = viewport->base;
-     const uint64_t size   = viewport->limit - base + 1;
-     const bool enabled    = viewport->cr[1] & DESIGNWARE_PCIE_ATU_ENABLE;
--
-+    uint32_t cr0          = viewport->cr[0];
-     MemoryRegion *current, *other;
+diff --git a/hw/gpio/Kconfig b/hw/gpio/Kconfig
+index f0e7405f6e..e5883d9763 100644
+--- a/hw/gpio/Kconfig
++++ b/hw/gpio/Kconfig
+@@ -13,3 +13,6 @@ config GPIO_PWR
  
--    if (viewport->cr[0] == DESIGNWARE_PCIE_ATU_TYPE_MEM) {
-+    if ((cr0 & 0xFF) == DESIGNWARE_PCIE_ATU_TYPE_MEM) {
-         current = &viewport->mem;
-         other   = &viewport->cfg;
-         memory_region_set_alias_offset(current, target);
+ config SIFIVE_GPIO
+     bool
++
++config DESIGNWARE_GPIO
++    bool
+\ No newline at end of file
+diff --git a/hw/gpio/designware_gpio.c b/hw/gpio/designware_gpio.c
+new file mode 100644
+index 0000000000..417bccd630
+--- /dev/null
++++ b/hw/gpio/designware_gpio.c
+@@ -0,0 +1,327 @@
++/*
++ * Synopsys Desgignware general purpose input/output register definition
++ *
++ * Based on sifive_gpio.c and imx_gpio.c
++ *
++ * Copyright 2022 Sifive, Inc.
++ * Copyright 2018 Steffen Görtz <contrib@steffen-goertz.de>
++ *
++ * This code is licensed under the GPL version 2 or later.  See
++ * the COPYING file in the top-level directory.
++ */
++
++#include "qemu/osdep.h"
++#include "qemu/log.h"
++#include "hw/irq.h"
++#include "hw/qdev-properties.h"
++#include "hw/gpio/designware_gpio.h"
++#include "migration/vmstate.h"
++#include "trace.h"
++
++/* only bank A can provide interrupts */
++static void update_output_irqs(DESIGNWAREGPIOState *s)
++{
++    struct DESIGNWAREGPIOBank *bank = &s->bank[0];
++    uint32_t level_irqs, edge_irqs = 0;
++
++    /* re-calculate interrupts for raw_int_status */
++    level_irqs = bank->dr_val ^ s->int_polarity;
++    level_irqs &= ~s->int_level;
++
++    edge_irqs = bank->dr_val ^ bank->last_dr_val;
++    edge_irqs &= s->int_level;
++    bank->last_dr_val = bank->dr_val;
++
++    /* update irq from raw-status and the mask */
++    s->int_status_raw = level_irqs | edge_irqs;
++    s->int_status = s->int_status_raw & s->int_mask;
++
++    qemu_set_irq(s->irq, s->int_status ? 1 : 0);
++    trace_designware_gpio_update_output_irq(s->int_status);
++}
++
++static void update_state(DESIGNWAREGPIOState *s)
++{
++    struct DESIGNWAREGPIOBank *bank;
++    int banknr, basenr, nr;
++
++    for (banknr = 0; banknr < DESIGNWARE_GPIO_BANKS; banknr++) {
++        basenr = banknr * DESIGNWARE_GPIO_NR_PER_BANK;
++        bank = &s->bank[banknr];
++
++        /* check for data-direction differences */
++        if (bank->ddr & bank->in) {
++            qemu_log_mask(LOG_GUEST_ERROR,
++                          "GPIO bank %d: pins shorted, DDR=%x, IN=%x, overlap=%x\n",
++                          banknr, bank->ddr, bank->in, bank->ddr & bank->in);
++        }
++
++        bank->dr_val = (bank->dr & bank->ddr) | (bank->in & ~bank->ddr);
++
++        /* update any outputs marked as outputs */
++        for (nr = 0; nr < DESIGNWARE_GPIO_NR_PER_BANK; nr++) {
++            if (!extract32(bank->ddr, nr, 1))
++                continue;
++            qemu_set_irq(s->output[basenr+nr], extract32(bank->dr_val, nr, 1));
++        }
++    }
++
++    update_output_irqs(s);
++}
++
++
++static uint64_t designware_gpio_read(void *opaque, hwaddr offset, unsigned int size)
++{
++    struct DESIGNWAREGPIOState *s = DESIGNWARE_GPIO(opaque);
++    struct DESIGNWAREGPIOBank *bank;
++    hwaddr banknr, reg;
++    uint64_t r = 0;
++    bool handled = true;
++
++    if (offset < (REG_SWPORTD_DDR + 4)) {
++        banknr = offset / REG_SWPORT_DR_STRIDE;
++        reg = offset % REG_SWPORT_DR_STRIDE;
++        bank = &s->bank[banknr];
++
++        switch (reg) {
++        case REG_SWPORTA_DR:
++            r = bank->dr;
++            break;
++        case REG_SWPORTA_DDR:
++            r = bank->ddr;
++            break;
++        default:
++            handled = false;
++        }
++    } else {
++        switch (offset) {
++        case REG_INTEN:
++            r= s->int_en;
++            break;
++        case REG_INTMASK:
++            r = s->int_mask;
++            break;
++        case REG_INTTYPE_LEVEL:
++            r = s->int_level;
++            break;
++        case REG_INT_POLARITY:
++            r = s->int_polarity;
++            break;
++        case REG_INTSTATUS:
++            r = s->int_status;
++            break;
++        case REG_INTSTATUS_RAW:
++            r = s->int_status_raw;
++            break;
++        case REG_PORTA_DEBOUNCE:
++            r = s->porta_debounce;
++            break;
++        case REG_PORTA_EOI:
++            r = 0x0;    /* write only */
++            break;
++        case REG_EXT_PORTA:
++            r = s->bank[0].dr_val;
++            break;
++        case REG_EXT_PORTB:
++            r = s->bank[1].dr_val;
++            break;
++        case REG_EXT_PORTC:
++            r = s->bank[2].dr_val;
++            break;
++        case REG_EXT_PORTD:
++            r = s->bank[3].dr_val;
++            break;
++        case REG_ID:
++            r = 0x0;
++            break;
++        default:
++            handled = false;
++        }
++    }
++
++    if (!handled)
++        qemu_log_mask(LOG_GUEST_ERROR,
++                "%s: bad read offset 0x%" HWADDR_PRIx "\n",
++                      __func__, offset);
++
++    trace_designware_gpio_read(offset, r);
++
++    return r;
++}
++
++static void designware_gpio_write(void *opaque, hwaddr offset,
++                              uint64_t value, unsigned int size)
++{
++    struct DESIGNWAREGPIOState *s = DESIGNWARE_GPIO(opaque);
++    struct DESIGNWAREGPIOBank *bank;
++    hwaddr banknr, reg;
++    bool handled = true;
++
++    trace_designware_gpio_write(offset, value);
++
++    if (offset < (REG_SWPORTD_DDR + 4)) {
++        banknr = offset / REG_SWPORT_DR_STRIDE;
++        reg = offset % REG_SWPORT_DR_STRIDE;
++        bank = &s->bank[banknr];
++
++        switch (reg) {
++        case REG_SWPORTA_DR:
++            bank->dr = value;
++            break;
++        case REG_SWPORTA_DDR:
++            bank->ddr = value;
++            break;
++        default:
++            handled = false;
++        }
++    } else {
++        switch (offset) {
++        case REG_INTEN:
++            s->int_en = value;
++            break;
++        case REG_INTMASK:
++            s->int_mask = value;
++            break;
++        case REG_INTTYPE_LEVEL:
++            s->int_level = value;
++            break;
++        case REG_INT_POLARITY:
++            s->int_polarity = value;
++            break;
++        case REG_INTSTATUS:
++            /* read only */
++        case REG_INTSTATUS_RAW:
++            /* read only */
++            break;
++        case REG_PORTA_DEBOUNCE:
++            s->porta_debounce = value;
++            break;
++        case REG_PORTA_EOI:
++            /* assume level irqs will just re-trigger */
++            s->int_status_raw &= ~value;
++            break;
++        case REG_EXT_PORTA:
++        case REG_EXT_PORTB:
++        case REG_EXT_PORTC:
++        case REG_EXT_PORTD:
++            /* read only, ignore */
++            break;
++        }
++    }
++
++    if (!handled)
++        qemu_log_mask(LOG_GUEST_ERROR,
++                      "%s: bad write offset 0x%" HWADDR_PRIx "\n",
++                      __func__, offset);
++
++    update_state(s);
++}
++
++
++static const MemoryRegionOps gpio_ops = {
++    .read =  designware_gpio_read,
++    .write = designware_gpio_write,
++    .endianness = DEVICE_LITTLE_ENDIAN,
++    .impl.min_access_size = 4,
++    .impl.max_access_size = 4,
++};
++
++static void designware_gpio_set(void *opaque, int line, int value)
++{
++    DESIGNWAREGPIOState *s = DESIGNWARE_GPIO(opaque);
++    struct DESIGNWAREGPIOBank *bank = &s->bank[line / DESIGNWARE_GPIO_NR_PER_BANK];
++
++    trace_designware_gpio_set(line, value);
++    assert(line >= 0 && line < DESIGNWARE_GPIO_PINS);
++
++    bank->in_mask = deposit32(bank->in_mask, line, 1, value >= 0);
++    if (value >= 0) {
++        bank->in = deposit32(bank->in, line, 1, value != 0);
++    }
++
++    update_state(s);
++}
++
++static void designware_gpio_reset(DeviceState *dev)
++{
++    DESIGNWAREGPIOState *s = DESIGNWARE_GPIO(dev);
++
++    memset(s->bank, 0, sizeof(s->bank));
++    s->int_en = 0;
++    s->int_mask = 0;
++    s->int_level = 0;
++    s->int_polarity = 0;
++    s->int_status = 0;
++    s->porta_debounce = 0;
++}
++
++#define STATE_BANK(__nr) \
++    VMSTATE_UINT32(bank[__nr].dr,      DESIGNWAREGPIOState), \
++    VMSTATE_UINT32(bank[__nr].dr_val,  DESIGNWAREGPIOState), \
++    VMSTATE_UINT32(bank[__nr].ddr,     DESIGNWAREGPIOState), \
++    VMSTATE_UINT32(bank[__nr].in,      DESIGNWAREGPIOState), \
++    VMSTATE_UINT32(bank[__nr].in_mask,  DESIGNWAREGPIOState)
++
++static const VMStateDescription vmstate_designware_gpio = {
++    .name = TYPE_DESIGNWARE_GPIO,
++    .version_id = 1,
++    .minimum_version_id = 1,
++    .fields = (VMStateField[]) {
++        STATE_BANK(0),
++        STATE_BANK(1),
++        STATE_BANK(2),
++        STATE_BANK(3),
++        VMSTATE_UINT32(int_en,       DESIGNWAREGPIOState),
++        VMSTATE_UINT32(int_mask,     DESIGNWAREGPIOState),
++        VMSTATE_UINT32(int_level,    DESIGNWAREGPIOState),
++        VMSTATE_UINT32(int_polarity, DESIGNWAREGPIOState),
++        VMSTATE_UINT32(int_status,   DESIGNWAREGPIOState),
++        VMSTATE_UINT32(int_status_raw, DESIGNWAREGPIOState),
++        VMSTATE_UINT32(porta_debounce, DESIGNWAREGPIOState),
++        VMSTATE_END_OF_LIST()
++    }
++};
++
++static Property designware_gpio_properties[] = {
++    DEFINE_PROP_UINT32("ngpio", DESIGNWAREGPIOState, ngpio, DESIGNWARE_GPIO_PINS),
++    DEFINE_PROP_END_OF_LIST(),
++};
++
++static void designware_gpio_realize(DeviceState *dev, Error **errp)
++{
++    DESIGNWAREGPIOState *s = DESIGNWARE_GPIO(dev);
++
++    memory_region_init_io(&s->mmio, OBJECT(dev), &gpio_ops, s,
++            TYPE_DESIGNWARE_GPIO, DESIGNWARE_GPIO_SIZE);
++
++    sysbus_init_mmio(SYS_BUS_DEVICE(dev), &s->mmio);
++    sysbus_init_irq(SYS_BUS_DEVICE(dev), &s->irq);
++
++    qdev_init_gpio_in(DEVICE(s), designware_gpio_set, s->ngpio);
++    qdev_init_gpio_out(DEVICE(s), s->output, s->ngpio);
++}
++
++static void designware_gpio_class_init(ObjectClass *klass, void *data)
++{
++    DeviceClass *dc = DEVICE_CLASS(klass);
++
++    device_class_set_props(dc, designware_gpio_properties);
++    dc->vmsd = &vmstate_designware_gpio;
++    dc->realize = designware_gpio_realize;
++    dc->reset = designware_gpio_reset;
++    dc->desc = "SiFive GPIO";
++}
++
++static const TypeInfo designware_gpio_info = {
++    .name = TYPE_DESIGNWARE_GPIO,
++    .parent = TYPE_SYS_BUS_DEVICE,
++    .instance_size = sizeof(DESIGNWAREGPIOState),
++    .class_init = designware_gpio_class_init
++};
++
++static void designware_gpio_register_types(void)
++{
++    type_register_static(&designware_gpio_info);
++}
++
++type_init(designware_gpio_register_types)
+diff --git a/hw/gpio/meson.build b/hw/gpio/meson.build
+index 7bd6a57264..66959c33de 100644
+--- a/hw/gpio/meson.build
++++ b/hw/gpio/meson.build
+@@ -5,6 +5,7 @@ softmmu_ss.add(when: 'CONFIG_MAX7310', if_true: files('max7310.c'))
+ softmmu_ss.add(when: 'CONFIG_PL061', if_true: files('pl061.c'))
+ softmmu_ss.add(when: 'CONFIG_ZAURUS', if_true: files('zaurus.c'))
+ 
++softmmu_ss.add(when: 'CONFIG_DESIGNWARE_GPIO', if_true: files('designware_gpio.c'))
+ softmmu_ss.add(when: 'CONFIG_IMX', if_true: files('imx_gpio.c'))
+ softmmu_ss.add(when: 'CONFIG_NPCM7XX', if_true: files('npcm7xx_gpio.c'))
+ softmmu_ss.add(when: 'CONFIG_NRF51_SOC', if_true: files('nrf51_gpio.c'))
+diff --git a/hw/gpio/trace-events b/hw/gpio/trace-events
+index 9736b362ac..45dac8b706 100644
+--- a/hw/gpio/trace-events
++++ b/hw/gpio/trace-events
+@@ -31,3 +31,10 @@ sifive_gpio_update_output_irq(int64_t line, int64_t value) "line %" PRIi64 " val
+ # aspeed_gpio.c
+ aspeed_gpio_read(uint64_t offset, uint64_t value) "offset: 0x%" PRIx64 " value 0x%" PRIx64
+ aspeed_gpio_write(uint64_t offset, uint64_t value) "offset: 0x%" PRIx64 " value 0x%" PRIx64
++
++# designware_gpio
++designware_gpio_read(uint64_t offset, uint64_t r) "offset 0x%" PRIx64 " value 0x%" PRIx64
++designware_gpio_write(uint64_t offset, uint64_t value) "offset 0x%" PRIx64 " value 0x%" PRIx64
++designware_gpio_set(int64_t line, int64_t value) "line %" PRIi64 " value %" PRIi64
++designware_gpio_update_output_irq(int64_t value) " value %" PRIi64
++
+diff --git a/include/hw/gpio/designware_gpio.h b/include/hw/gpio/designware_gpio.h
+new file mode 100644
+index 0000000000..2d151d3823
+--- /dev/null
++++ b/include/hw/gpio/designware_gpio.h
+@@ -0,0 +1,89 @@
++/*
++ * Designware System-on-Chip general purpose input/output register definition
++ *
++ * Copyright 2022 SiFive, Inc.
++ * Copyright (c) 2011 Jamie Iles
++ *
++ * This code is licensed under the GPL version 2 or later.  See
++ * the COPYING file in the top-level directory.
++*/
++
++#ifndef DESIGNWARE_GPIO_H
++#define DESIGNWARE_GPIO_H
++
++#include "hw/sysbus.h"
++#include "qom/object.h"
++
++#define TYPE_DESIGNWARE_GPIO "designware.gpio"
++typedef struct DESIGNWAREGPIOState DESIGNWAREGPIOState;
++DECLARE_INSTANCE_CHECKER(DESIGNWAREGPIOState, DESIGNWARE_GPIO,
++                         TYPE_DESIGNWARE_GPIO)
++
++/* maximum pins for 4 banks */
++#define DESIGNWARE_GPIO_BANKS (4)
++#define DESIGNWARE_GPIO_NR_PER_BANK (32)
++#define DESIGNWARE_GPIO_PINS (32 * DESIGNWARE_GPIO_BANKS)
++
++#define DESIGNWARE_GPIO_SIZE 0x100
++
++/* registers copied from linux driver */
++#define REG_SWPORTA_DR		0x00
++#define REG_SWPORTA_DDR         0x04
++#define REG_SWPORTB_DR		0x0c
++#define REG_SWPORTB_DDR         0x10
++#define REG_SWPORTC_DR		0x18
++#define REG_SWPORTC_DDR         0x1c
++#define REG_SWPORTD_DR		0x24
++#define REG_SWPORTD_DDR         0x28
++#define REG_INTEN		0x30
++#define REG_INTMASK		0x34
++#define REG_INTTYPE_LEVEL	0x38
++#define REG_INT_POLARITY	0x3c
++#define REG_INTSTATUS		0x40
++#define REG_INTSTATUS_RAW       0x44
++#define REG_PORTA_DEBOUNCE	0x48
++#define REG_PORTA_EOI		0x4c    /* write to clear edge irq */
++#define REG_EXT_PORTA		0x50
++#define REG_EXT_PORTB		0x54
++#define REG_EXT_PORTC		0x58
++#define REG_EXT_PORTD		0x5c
++#define REG_ID                  0x64
++
++#define REG_EXT_PORT_STRIDE	0x04 /* register stride 32 bits */
++#define REG_SWPORT_DR_STRIDE	0x0c /* register stride 3*32 bits */
++#define REG_SWPORT_DDR_STRIDE	0x0c /* register stride 3*32 bits */
++\
++    
++struct DESIGNWAREGPIOBank {
++    uint32_t    dr;
++    uint32_t    dr_val;
++    uint32_t    ddr;    /* 0=in, 1=out */
++    uint32_t    last_dr_val;
++
++    /* internal state */
++    /* state from user */
++    uint32_t    in_mask;
++    uint32_t    in;
++};
++
++struct DESIGNWAREGPIOState {
++    SysBusDevice parent_obj;
++    MemoryRegion mmio;
++
++    qemu_irq irq;
++    qemu_irq output[DESIGNWARE_GPIO_PINS];
++
++    struct DESIGNWAREGPIOBank bank[DESIGNWARE_GPIO_BANKS];
++
++    uint32_t int_en;
++    uint32_t int_mask;
++    uint32_t int_level;         /* 0 = level, 1 = edge */
++    uint32_t int_polarity;
++    uint32_t int_status;
++    uint32_t int_status_raw;
++    uint32_t porta_debounce;
++    /* config */
++    uint32_t ngpio;
++};
++
++#endif /* DESIGNWARE_GPIO_H */
 -- 
 2.35.1
 

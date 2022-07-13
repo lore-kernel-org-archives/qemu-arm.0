@@ -1,58 +1,58 @@
-Received: by 2002:ac2:596f:0:0:0:0:0 with SMTP id h15csp368534lfp;
+Received: by 2002:ac2:596f:0:0:0:0:0 with SMTP id h15csp368538lfp;
         Wed, 13 Jul 2022 13:46:26 -0700 (PDT)
-X-Google-Smtp-Source: AGRyM1tvHI8bM6jiWDKk9pD6lYOLA/U+soT0IGDrCpZTfIVF4HxzAffjgxRSv+69Uq8mZ/ldAuyx
-X-Received: by 2002:a05:6214:27e3:b0:472:ece6:3af5 with SMTP id jt3-20020a05621427e300b00472ece63af5mr4891539qvb.63.1657745185704;
-        Wed, 13 Jul 2022 13:46:25 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1657745185; cv=none;
+X-Google-Smtp-Source: AGRyM1smEGQ/vzHH8HQSzTNhrdDYYZhA9taj7hs31Ny+dhHoiWK7IVrYjOIY8jLOjXGWG/MF9z8e
+X-Received: by 2002:ad4:5bcf:0:b0:473:75b0:e8fa with SMTP id t15-20020ad45bcf000000b0047375b0e8famr4925419qvt.53.1657745186176;
+        Wed, 13 Jul 2022 13:46:26 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1657745186; cv=none;
         d=google.com; s=arc-20160816;
-        b=Ys5ZjiuBD8rPvqazRm2yMvhPxwoMWwASTcyxgbsdtEgZh1zmcOoYDkSLv8yIaWc337
-         3+HhmvtjxBhqrcEq9B00gn2tklAGVppn+cAGFkMWXx3C5uCykl3PifQANQnNlyZrJHXi
-         +26FKF3N1foxQaPO4ZglPRqlxx9Onr9kEOOr6WnTZnQcOyFhqTicVaZlVuIjnLhU0c0J
-         +tu2kSU4QILj+Tnh225mtzogJtR36OTeoOGYYpuLaxNqLCmGoIIwkd9rTvUuch9c6uUt
-         g1/87wEL9WNirtjRoc7d3wSFRzjh7SltZyCs9gd11bYdVWWinM33hhRwi0VPrXZFhpiV
-         1vyA==
+        b=zoJOaTgYQN0nyxVFumhNH9I/iQnTmV8dA19vhx1YH7/Uis54y/OuSIet3YoLR1Xvwo
+         T4Bg3hf9l5ybnd+Hn0ThgdYWQPtdj5kSB1g6Zp03iWfQ51JCyWxncEzzNwewIYEL8BH8
+         QxwwbOjs+PxIY2Qvc89gl7YtxB3ybGvs8ueYiCqUEvuOHtSxUK74ebK8iNHlOu/iW4Ui
+         hok2z2U4vpkCeuAE8b0/jztn3LzzJ9mqn/p1VzD53U5ti+4N/9ffEwJz8a2L8PvsNKTX
+         szDShtJupC1hvJVxoehHETbjWceV663FfEbi0VDyKvNjlV/HFellDM24mLXHz878MkZ0
+         plhQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from;
-        bh=tK06T2W3+JLkkMe2S91NVgB1xmT4qcMzcP0oc2eKE/I=;
-        b=ikUnKqJSH9N4ZiuWwKAmWuLfl9RBLBpr4XCxVigPl9KRCZ8AY95iqWYeTwnjS6zxD6
-         4GbECwrz/WPDh1jwiDxpx62mlo+8MCHrecaN/mApGBtuc0j3PWuxph/dynnvX/vOzhqN
-         uq3ShfNLPEtqevRxFwHDQ0ua2r5B8jquMr5Jg9H/KV1COa/PD6GbAPqld1xGrLME8EkF
-         Xw3HCGhVmut4dGGxPnMRQcnXbOBFXiXwGQtqvTt7ZEzUXSJs6y8n4JVdUR9ALsP6wXOk
-         F1tS6AhtgAqVHWBBnxuU8zeRN10sGh8wxvez3aiBM09etaUCbotX3W2UgnjP8CbC6h10
-         9glg==
+        bh=CR4E5X+vDJOT74Bz3AI3F+4skqbv2D/QtU9jph6gSwo=;
+        b=OkmVQdyX12lwEM5IDHvMvSfBMAJl5absKzPiiIjdj67tVkw6cW/XZqWiBA0T8Gt2yh
+         TY/OFCSYxm3TX0FS3VqxzdNrbhstH/XP6yhvK9r1hBdTX3F1qZ98BA+m43+Gktv+s1Ji
+         vuB2uU/EIfiCiVEk4ECpBbQJW5BIayQNjZy9aF1YBhaLrVdP3XDUCbQKHoAoJdBd1Bm7
+         QMseNLpf0VuGiF34gyLcZUO7MgWFbQfazEIlpGw1muZMfkEM6S+PqaMiiJRb9ok3pPzI
+         0prC/S3JKlKEvlcyEJid93JU3fhxH5zbCXNS7D6cBjgO6FrE30HebM9DjCKQAh2ZgOBu
+         fGSw==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id m6-20020ad45dc6000000b004737285613csi5501366qvh.405.2022.07.13.13.46.25
+        by mx.google.com with ESMTPS id i127-20020a378685000000b006b28c9d8056si7157416qkd.192.2022.07.13.13.46.25
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 13 Jul 2022 13:46:25 -0700 (PDT)
+        Wed, 13 Jul 2022 13:46:26 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:59250 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:59266 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1oBjFZ-0004rw-5k
+	id 1oBjFZ-0004sZ-Em
 	for alex.bennee@linaro.org; Wed, 13 Jul 2022 16:46:25 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:55916)
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53034)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <ben@codethink.co.uk>)
- id 1oBg9w-00044N-8M; Wed, 13 Jul 2022 13:28:24 -0400
-Received: from imap5.colo.codethink.co.uk ([78.40.148.171]:53198)
+ id 1oBfwP-0006c7-SW; Wed, 13 Jul 2022 13:14:25 -0400
+Received: from imap4.hz.codethink.co.uk ([188.40.203.114]:38712)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <ben@codethink.co.uk>)
- id 1oBg9u-0006uS-Hi; Wed, 13 Jul 2022 13:28:23 -0400
+ id 1oBfwO-0003Bp-FU; Wed, 13 Jul 2022 13:14:25 -0400
 Received: from cpc152649-stkp13-2-0-cust121.10-2.cable.virginm.net
  ([86.15.83.122] helo=rainbowdash)
- by imap5.colo.codethink.co.uk with esmtpsa  (Exim 4.94.2 #2 (Debian))
- id 1oBfdU-003eoU-Hg; Wed, 13 Jul 2022 17:54:51 +0100
+ by imap4.hz.codethink.co.uk with esmtpsa  (Exim 4.94.2 #2 (Debian))
+ id 1oBfdU-003M8m-0n; Wed, 13 Jul 2022 17:54:51 +0100
 Received: from ben by rainbowdash with local (Exim 4.96)
- (envelope-from <ben@rainbowdash>) id 1oBfdS-0009kx-1t;
+ (envelope-from <ben@rainbowdash>) id 1oBfdS-0009kk-1f;
  Wed, 13 Jul 2022 17:54:50 +0100
 From: Ben Dooks <ben.dooks@sifive.com>
 To: qemu-devel@nongnu.org
@@ -61,16 +61,16 @@ Cc: qemu-arm@nongnu.org, Jude Onyenegecha <jude.onyenegecha@sifive.com>,
  William Salmon <william.salmon@sifive.com>,
  Adnan Chowdhury <adnan.chowdhury@sifive.com>,
  Ben Dooks <ben.dooks@sifive.com>
-Subject: [PATCH 5/7] pci: designware: move msi to entry 5
-Date: Wed, 13 Jul 2022 17:54:47 +0100
-Message-Id: <20220713165449.37433-6-ben.dooks@sifive.com>
+Subject: [PATCH 2/7] pci: designware: fix DESIGNWARE_PCIE_ATU_UPPER_TARGET
+Date: Wed, 13 Jul 2022 17:54:44 +0100
+Message-Id: <20220713165449.37433-3-ben.dooks@sifive.com>
 X-Mailer: git-send-email 2.35.1
 In-Reply-To: <20220713165449.37433-1-ben.dooks@sifive.com>
 References: <20220713165449.37433-1-ben.dooks@sifive.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=78.40.148.171; envelope-from=ben@codethink.co.uk;
- helo=imap5.colo.codethink.co.uk
+Received-SPF: pass client-ip=188.40.203.114; envelope-from=ben@codethink.co.uk;
+ helo=imap4.hz.codethink.co.uk
 X-Spam_score_int: -16
 X-Spam_score: -1.7
 X-Spam_bar: -
@@ -92,44 +92,30 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: bdreP1sfrfD4
+X-TUID: 0LrYSkvABMsu
 
-The driver should leave irq[0..3] for INT[A..D] but seems to put the
-MSI IRQ at entry 3 which should also be INT_D. Extend the irqs[] array
-to 5 entires and put the MSI at entry irqs[4].
+By inspection DESIGNWARE_PCIE_ATU_UPPER_TARGET should be writing to
+the upper 32-bits of viewport->target, so fix this by shifting the
+32-bit value before the or.
 
 Signed-off-by: Ben Dooks <ben.dooks@sifive.com>
 ---
- hw/pci-host/designware.c         | 2 +-
- include/hw/pci-host/designware.h | 2 +-
- 2 files changed, 2 insertions(+), 2 deletions(-)
+ hw/pci-host/designware.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/hw/pci-host/designware.c b/hw/pci-host/designware.c
-index 947547d153..b5d5b2b8a5 100644
+index 296f1b9760..d213d7324c 100644
 --- a/hw/pci-host/designware.c
 +++ b/hw/pci-host/designware.c
-@@ -56,7 +56,7 @@
- #define DESIGNWARE_PCIE_ATU_UPPER_TARGET           0x91C
- #define DESIGNWARE_PCIE_ATU_UPPER_LIMIT            0x924
+@@ -365,7 +365,7 @@ static void designware_pcie_root_config_write(PCIDevice *d, uint32_t address,
  
--#define DESIGNWARE_PCIE_IRQ_MSI                    3
-+#define DESIGNWARE_PCIE_IRQ_MSI                    4
+     case DESIGNWARE_PCIE_ATU_UPPER_TARGET:
+         viewport->target &= 0x00000000FFFFFFFFULL;
+-        viewport->target |= val;
++        viewport->target |= (uint64_t)val << 32;
+         break;
  
- static DesignwarePCIEHost *
- designware_pcie_root_to_host(DesignwarePCIERoot *root)
-diff --git a/include/hw/pci-host/designware.h b/include/hw/pci-host/designware.h
-index bd4dd49aec..37f90c5000 100644
---- a/include/hw/pci-host/designware.h
-+++ b/include/hw/pci-host/designware.h
-@@ -90,7 +90,7 @@ struct DesignwarePCIEHost {
-         MemoryRegion memory;
-         MemoryRegion io;
- 
--        qemu_irq     irqs[4];
-+        qemu_irq     irqs[5];
-     } pci;
- 
-     MemoryRegion mmio;
+     case DESIGNWARE_PCIE_ATU_UPPER_LIMIT:
 -- 
 2.35.1
 

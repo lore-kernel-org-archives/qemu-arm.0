@@ -1,69 +1,70 @@
-Received: by 2002:ac2:596f:0:0:0:0:0 with SMTP id h15csp729494lfp;
-        Thu, 14 Jul 2022 08:52:12 -0700 (PDT)
-X-Google-Smtp-Source: AGRyM1vT+LBE8zvu2+2IyrV4VuvfXov35L6Zf8jwrYBV9Dv3uWjBkltq2onOmALtQHer8ZGS7JXs
-X-Received: by 2002:ac8:5dcf:0:b0:31e:bd7b:348a with SMTP id e15-20020ac85dcf000000b0031ebd7b348amr8709427qtx.242.1657813931863;
-        Thu, 14 Jul 2022 08:52:11 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1657813931; cv=none;
+Received: by 2002:ac2:596f:0:0:0:0:0 with SMTP id h15csp729933lfp;
+        Thu, 14 Jul 2022 08:53:35 -0700 (PDT)
+X-Google-Smtp-Source: AGRyM1smzgXrfXrw+yz1dBCZn6F9MY3aFWsxge73IF+6WiIyRVeCwiQxrqA4WVktFVmRG/K9tWvB
+X-Received: by 2002:a05:620a:4091:b0:6af:31c8:d1eb with SMTP id f17-20020a05620a409100b006af31c8d1ebmr6464871qko.346.1657814015153;
+        Thu, 14 Jul 2022 08:53:35 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1657814015; cv=none;
         d=google.com; s=arc-20160816;
-        b=m6mDL5oNm1lATHbEPEBfHqBN8Jm7k4EYU7eeu2j4O8y1+MmH6uzbr2jril7BSnEpJR
-         wyI45ZqxDQse8/jIJMGWuPp1TJU0HN9W+paFLdPre63TAkGUGWpzi2s9n7syB9eQPm5o
-         Df9ZKjaHMnYTmlztTl24moh8yHwdfvj3Ev3hK1JJ48ORshlQUxx5YR+sJUOm0oxcHweC
-         rTVoy1qyFea2ZuSW0nA2A3yvXPjcH43U0tOFIIPVl6p/Y76j13nSz16VDD9Vs4EgIhBO
-         dPgDmOFXMpCzRhSgsygaLo1VpYyPkMV1jBA722pLaUuaQ3j8oWxzsCZMTaQO5e78Bwwj
-         fKJg==
+        b=x9CS8616Qfn6gebv8EwLBhLarD/p5TMccrdFWU5wx0cJFzxjAdOdMceEtKJLcxT44c
+         HOSfhN0FXYJobP7R9FjxW+ZhiiWwJmBJQlJTbcK/IzPsxYJi6DFXFc++NHROgXqdFxnA
+         H6P33FA9YAmWUWgZqMurdSD0cXXRlWGh0QFIO1zlS5KjXd3XoKox93TR/vNvJ3Lp1kXs
+         D5NAX98UTIFU+4Pcnt0tQhFxLeJ3KxwTVBGQTsaxo2DgnN2Tg6EqLnCQHiWx3Upzzq4Z
+         f9eUefpISqPL/hN2JHiYCJKTh1Xz8NnUFIEcUjqi2zNrUuDljg4Q+rPHKMZ//DL9+NBN
+         IcsQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from;
-        bh=Zhg/dzIqV2hI0NHRu8xPF4cHmhk9zG7upi2H94hdGa8=;
-        b=ucwrkYsBH4r9uBPfHm+dI9Ft+TFAl4gJWPd7/fN6rT5JxEB7UvFJat5oqP5QJoi/Nd
-         V2qc8dpf7JopORJ9Npd4yy1Ywt80X57odFya/zOSyfye3c7/LCXG+y0i0mnfmySp9kHo
-         cltttWn682bjEzxu6dwTEiO3VRc6Yym+iQDnzFu2kn/R3q6ngZy89f5V1o94iKT1NelM
-         T1wUZdK1OZDLIwi+K5tBdQ+D5Nyx4D7zDDOW3GM0Bpd8pjUDeTblm8vXjiZZN8UfXyLe
-         lulZVDAqHqFRc7pm2yyZiiIBFzXW8//4zf+S6pmFTcjebYkUUAa3LgBVDbSjidVE/lAx
-         KEBg==
+        bh=CqLKGnJwJfAMW2/5OEP0/E+bblBycySyJ8oQBpYtJpI=;
+        b=MlvhrHGIrVvTz8a2pukYEkEFaQ6JHUqxbdu3EVS6+kgMqYuNBmaYncMmN7/F2vUxNK
+         FZZbTXs4tqfjaHECZFYRrFfEYNqMjoNV1HHgjGP8L1VEis0YpgYrmdNZYDakoq+OwCMX
+         MZUHg69JNkVH15NieWJLTXJW0gF3buK5A9Vt0MOfj6rukBvgGlnlCUCmhcXtAkL0l1nh
+         bCuM9Wd1eC6mY+q6L6YQUvBadx4XbT7zs2S2+1dKVHUkg8O+dlQy5FyhQhLdnWVi7NiQ
+         GLIbyl51XPpW59ajs5Yo1Vmz0G3u7L4B+Ub1mFsvFu3MIXtKkkGYfl/wx158NfQavtad
+         8RHg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id ke21-20020a056214301500b0047309cecac8si888964qvb.144.2022.07.14.08.52.11
+        by mx.google.com with ESMTPS id ed3-20020ad44ea3000000b00473322c050esi1117009qvb.352.2022.07.14.08.53.35
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 14 Jul 2022 08:52:11 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 14 Jul 2022 08:53:35 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:45142 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:48552 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1oC18N-0007Uo-BU
-	for alex.bennee@linaro.org; Thu, 14 Jul 2022 11:52:11 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53842)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1oC19h-0001eB-38
+	for alex.bennee@linaro.org; Thu, 14 Jul 2022 11:53:34 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53680)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=QWOl=XT=kaod.org=clg@ozlabs.org>)
- id 1oC121-0005N3-44; Thu, 14 Jul 2022 11:45:38 -0400
-Received: from gandalf.ozlabs.org ([150.107.74.76]:58539)
+ id 1oC11k-0005Ft-Kb; Thu, 14 Jul 2022 11:45:21 -0400
+Received: from gandalf.ozlabs.org ([150.107.74.76]:52145)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=QWOl=XT=kaod.org=clg@ozlabs.org>)
- id 1oC11r-0000Y1-VA; Thu, 14 Jul 2022 11:45:35 -0400
-Received: from gandalf.ozlabs.org (gandalf.ozlabs.org [150.107.74.76])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4LkJjJ6Y3lz4xRC;
- Fri, 15 Jul 2022 01:45:24 +1000 (AEST)
+ id 1oC11i-0000Xe-Bx; Thu, 14 Jul 2022 11:45:20 -0400
+Received: from gandalf.ozlabs.org (mail.ozlabs.org
+ [IPv6:2404:9400:2221:ea00::3])
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4LkJj762Jsz4xht;
+ Fri, 15 Jul 2022 01:45:15 +1000 (AEST)
 Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
  (No client certificate requested)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4LkJjH19r7z4xdJ;
- Fri, 15 Jul 2022 01:45:22 +1000 (AEST)
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4LkJj55lV8z4xdJ;
+ Fri, 15 Jul 2022 01:45:13 +1000 (AEST)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>, Peter Delevoryas <peter@pjd.dev>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
-Subject: [PULL 09/19] aspeed: Add AST2600 (BMC) to fby35
-Date: Thu, 14 Jul 2022 17:44:46 +0200
-Message-Id: <20220714154456.2565189-10-clg@kaod.org>
+Subject: [PULL 05/19] aspeed: Create SRAM name from first CPU index
+Date: Thu, 14 Jul 2022 17:44:42 +0200
+Message-Id: <20220714154456.2565189-6-clg@kaod.org>
 X-Mailer: git-send-email 2.35.3
 In-Reply-To: <20220714154456.2565189-1-clg@kaod.org>
 References: <20220714154456.2565189-1-clg@kaod.org>
@@ -79,109 +80,113 @@ X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9,
  HEADER_FROM_DIFFERENT_DOMAINS=0.249, SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: I4QTS+DliyAr
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: CzNR6sfKcZAG
 
 From: Peter Delevoryas <peter@pjd.dev>
 
-You can test booting the BMC with both '-device loader' and '-drive
-file'. This is necessary because of how the fb-openbmc boot sequence
-works (jump to 0x20000000 after U-Boot SPL).
+To support multiple SoC's running simultaneously, we need a unique name for
+each RAM region. DRAM is created by the machine, but SRAM is created by the
+SoC, since in hardware it is part of the SoC's internals.
 
-    wget https://github.com/facebook/openbmc/releases/download/openbmc-e2294ff5d31d/fby35.mtd
-    qemu-system-arm -machine fby35 -nographic \
-        -device loader,file=fby35.mtd,addr=0,cpu-num=0 -drive file=fby35.mtd,format=raw,if=mtd
+We need a way to uniquely identify each SRAM region though, for VM
+migration. Since each of the SoC's CPU's has an index which identifies it
+uniquely from other CPU's in the machine, we can use the index of any of the
+CPU's in the SoC to uniquely identify differentiate the SRAM name from other
+SoC SRAM's. In this change, I just elected to use the index of the first CPU
+in each SoC.
 
 Signed-off-by: Peter Delevoryas <peter@pjd.dev>
 Reviewed-by: Cédric Le Goater <clg@kaod.org>
-Message-Id: <20220705191400.41632-7-peter@pjd.dev>
+Message-Id: <20220705191400.41632-3-peter@pjd.dev>
 Signed-off-by: Cédric Le Goater <clg@kaod.org>
 ---
- hw/arm/fby35.c | 41 +++++++++++++++++++++++++++++++++++++++++
- 1 file changed, 41 insertions(+)
+ hw/arm/aspeed_ast10x0.c | 5 ++++-
+ hw/arm/aspeed_ast2600.c | 5 +++--
+ hw/arm/aspeed_soc.c     | 5 +++--
+ 3 files changed, 10 insertions(+), 5 deletions(-)
 
-diff --git a/hw/arm/fby35.c b/hw/arm/fby35.c
-index 03b458584c26..5c5224d37471 100644
---- a/hw/arm/fby35.c
-+++ b/hw/arm/fby35.c
-@@ -6,17 +6,55 @@
-  */
+diff --git a/hw/arm/aspeed_ast10x0.c b/hw/arm/aspeed_ast10x0.c
+index 33ef33177199..677699e54c0a 100644
+--- a/hw/arm/aspeed_ast10x0.c
++++ b/hw/arm/aspeed_ast10x0.c
+@@ -159,6 +159,7 @@ static void aspeed_soc_ast1030_realize(DeviceState *dev_soc, Error **errp)
+     DeviceState *armv7m;
+     Error *err = NULL;
+     int i;
++    g_autofree char *sram_name = NULL;
  
- #include "qemu/osdep.h"
-+#include "qemu/units.h"
-+#include "qapi/error.h"
-+#include "sysemu/sysemu.h"
- #include "hw/boards.h"
-+#include "hw/arm/aspeed_soc.h"
+     if (!clock_has_source(s->sysclk)) {
+         error_setg(errp, "sysclk clock must be wired up by the board code");
+@@ -183,7 +184,9 @@ static void aspeed_soc_ast1030_realize(DeviceState *dev_soc, Error **errp)
+     sysbus_realize(SYS_BUS_DEVICE(&s->armv7m), &error_abort);
  
- #define TYPE_FBY35 MACHINE_TYPE_NAME("fby35")
- OBJECT_DECLARE_SIMPLE_TYPE(Fby35State, FBY35);
+     /* Internal SRAM */
+-    memory_region_init_ram(&s->sram, NULL, "aspeed.sram", sc->sram_size, &err);
++    sram_name = g_strdup_printf("aspeed.sram.%d",
++                                CPU(s->armv7m.cpu)->cpu_index);
++    memory_region_init_ram(&s->sram, OBJECT(s), sram_name, sc->sram_size, &err);
+     if (err != NULL) {
+         error_propagate(errp, err);
+         return;
+diff --git a/hw/arm/aspeed_ast2600.c b/hw/arm/aspeed_ast2600.c
+index 3f0611ac11cd..64eb5a7b2600 100644
+--- a/hw/arm/aspeed_ast2600.c
++++ b/hw/arm/aspeed_ast2600.c
+@@ -276,6 +276,7 @@ static void aspeed_soc_ast2600_realize(DeviceState *dev, Error **errp)
+     AspeedSoCClass *sc = ASPEED_SOC_GET_CLASS(s);
+     Error *err = NULL;
+     qemu_irq irq;
++    g_autofree char *sram_name = NULL;
  
- struct Fby35State {
-     MachineState parent_obj;
-+
-+    MemoryRegion bmc_memory;
-+    MemoryRegion bmc_dram;
-+    MemoryRegion bmc_boot_rom;
-+
-+    AspeedSoCState bmc;
- };
+     /* IO space */
+     aspeed_mmio_map_unimplemented(s, SYS_BUS_DEVICE(&s->iomem), "aspeed.io",
+@@ -335,8 +336,8 @@ static void aspeed_soc_ast2600_realize(DeviceState *dev, Error **errp)
+     }
  
-+#define FBY35_BMC_RAM_SIZE (2 * GiB)
-+
-+static void fby35_bmc_init(Fby35State *s)
-+{
-+    memory_region_init(&s->bmc_memory, OBJECT(s), "bmc-memory", UINT64_MAX);
-+    memory_region_init_ram(&s->bmc_dram, OBJECT(s), "bmc-dram",
-+                           FBY35_BMC_RAM_SIZE, &error_abort);
-+
-+    object_initialize_child(OBJECT(s), "bmc", &s->bmc, "ast2600-a3");
-+    object_property_set_int(OBJECT(&s->bmc), "ram-size", FBY35_BMC_RAM_SIZE,
-+                            &error_abort);
-+    object_property_set_link(OBJECT(&s->bmc), "memory", OBJECT(&s->bmc_memory),
-+                             &error_abort);
-+    object_property_set_link(OBJECT(&s->bmc), "dram", OBJECT(&s->bmc_dram),
-+                             &error_abort);
-+    object_property_set_int(OBJECT(&s->bmc), "hw-strap1", 0x000000C0,
-+                            &error_abort);
-+    object_property_set_int(OBJECT(&s->bmc), "hw-strap2", 0x00000003,
-+                            &error_abort);
-+    aspeed_soc_uart_set_chr(&s->bmc, ASPEED_DEV_UART5, serial_hd(0));
-+    qdev_realize(DEVICE(&s->bmc), NULL, &error_abort);
-+
-+    aspeed_board_init_flashes(&s->bmc.fmc, "n25q00", 2, 0);
-+}
-+
- static void fby35_init(MachineState *machine)
- {
-+    Fby35State *s = FBY35(machine);
-+
-+    fby35_bmc_init(s);
- }
+     /* SRAM */
+-    memory_region_init_ram(&s->sram, OBJECT(dev), "aspeed.sram",
+-                           sc->sram_size, &err);
++    sram_name = g_strdup_printf("aspeed.sram.%d", CPU(&s->cpu[0])->cpu_index);
++    memory_region_init_ram(&s->sram, OBJECT(s), sram_name, sc->sram_size, &err);
+     if (err) {
+         error_propagate(errp, err);
+         return;
+diff --git a/hw/arm/aspeed_soc.c b/hw/arm/aspeed_soc.c
+index 0f675e7fcdf5..0bb6a2f092c9 100644
+--- a/hw/arm/aspeed_soc.c
++++ b/hw/arm/aspeed_soc.c
+@@ -239,6 +239,7 @@ static void aspeed_soc_realize(DeviceState *dev, Error **errp)
+     AspeedSoCState *s = ASPEED_SOC(dev);
+     AspeedSoCClass *sc = ASPEED_SOC_GET_CLASS(s);
+     Error *err = NULL;
++    g_autofree char *sram_name = NULL;
  
- static void fby35_class_init(ObjectClass *oc, void *data)
-@@ -25,6 +63,9 @@ static void fby35_class_init(ObjectClass *oc, void *data)
+     /* IO space */
+     aspeed_mmio_map_unimplemented(s, SYS_BUS_DEVICE(&s->iomem), "aspeed.io",
+@@ -259,8 +260,8 @@ static void aspeed_soc_realize(DeviceState *dev, Error **errp)
+     }
  
-     mc->desc = "Meta Platforms fby35";
-     mc->init = fby35_init;
-+    mc->no_floppy = 1;
-+    mc->no_cdrom = 1;
-+    mc->min_cpus = mc->max_cpus = mc->default_cpus = 2;
- }
- 
- static const TypeInfo fby35_types[] = {
+     /* SRAM */
+-    memory_region_init_ram(&s->sram, OBJECT(dev), "aspeed.sram",
+-                           sc->sram_size, &err);
++    sram_name = g_strdup_printf("aspeed.sram.%d", CPU(&s->cpu[0])->cpu_index);
++    memory_region_init_ram(&s->sram, OBJECT(s), sram_name, sc->sram_size, &err);
+     if (err) {
+         error_propagate(errp, err);
+         return;
 -- 
 2.35.3
 

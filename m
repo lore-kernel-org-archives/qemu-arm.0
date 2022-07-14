@@ -1,84 +1,87 @@
-Received: by 2002:ac2:596f:0:0:0:0:0 with SMTP id h15csp727652lfp;
+Received: by 2002:ac2:596f:0:0:0:0:0 with SMTP id h15csp727655lfp;
         Thu, 14 Jul 2022 08:46:38 -0700 (PDT)
-X-Google-Smtp-Source: AGRyM1vi2k5qNFMas92MJy4ur21gPFsG1ojHHCgUgux329SkXX+7NRmY/yRnRU2dHJtaWx3affcH
-X-Received: by 2002:ac8:5996:0:b0:31e:92c8:bd98 with SMTP id e22-20020ac85996000000b0031e92c8bd98mr8848379qte.232.1657813598215;
+X-Google-Smtp-Source: AGRyM1vQntsZMF3zA78ZvVTtWnMHRjz2h8/6cMPjMGmKd16VCpn+me8ivDuMO8xlCEaSQb0ljTX2
+X-Received: by 2002:a05:6214:2521:b0:472:f72b:a58f with SMTP id gg1-20020a056214252100b00472f72ba58fmr8320654qvb.97.1657813598444;
         Thu, 14 Jul 2022 08:46:38 -0700 (PDT)
 ARC-Seal: i=1; a=rsa-sha256; t=1657813598; cv=none;
         d=google.com; s=arc-20160816;
-        b=PxxgT3dZF91IZCwVHuQqc/xpqX5f1DlE6TgERqprSAmKkxvTa8QvbZm4ZtwdhCk9lb
-         xfNzymJau9lDDtYpSNeRBB/7zMtwE05sf5rG4fR4UDVfpah6oHGIotr0n4CR+3bMbCt1
-         kiH9Llmj2T7Im+6ulpoRoGzSnbZuapJEAlRjyACCdI40R+7GdDtZEWgG14BiFwp3YPCm
-         TpVL8424xnBzFzR/Ba+BPTtAAsbLzP4KPNHBPo8dA+M+6CFhaXxHMqe5Z5Qt0X5P012t
-         wJgmBMYJgCqUxkS0Jlp2oykKTviilMfI/D6boljSkeiYIBRn+2oCrPtqVQknOV3cq6ka
-         olPw==
+        b=Tg53zNZVmeCbUsEmfjVfvgsglYVVao8qaXX+CQaMz8BZbGJoQeC7YFjtqypYS+2yLo
+         DkRYLcX5y1kfoaOp+VCNSWBJ930dkwsZy5UvYglDulnrS+P45cf2s+z8Buj8dF/8AXJm
+         vjhCNj64f8+VVc91V92X01B6p6X//G10h46eUHZF79HN3JT5htchY+bzJiTwlDNjUo6e
+         ITlA7czHM/G69s0lRO6zWesmrrtr6JNEpZ9AHaEdcxZ1L8+9Pc0bUoBZQXBUioT1qrE7
+         hYO8Ifr1bD0NjjeYnwDZgBovD5acmCY/SC4QX82AW30EidEsZvZgJq2bJEQD4eJqHJa7
+         /8tw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from;
-        bh=jw+hr/py1udeSqXNAcDKMkeO/XSpwVNIzLzWNl3jisE=;
-        b=mkWvEeivJzebsLa1mFML75FFxwxIHauKcITLkcCIoK9GZYSLvz8PAcxf1QM9Rhq231
-         bgAjDojCErjMYbV0l6i+GeP/oMu1wy9K+gLKy/IYNfwRxJLGkXCTVPfczJo1/hIL863s
-         SHvofz3QkQl60QkxtL2ISBDODAiFU1X60otgKEI8YezeWLyZSVaK48+vxP8U2MP5WG3c
-         hk8jp2tvCqeRPK9ynQAztDp7gFjtNIKDSvC0bPVkQjGgfyVauiwYmhKnf6chQzJSp7mf
-         wGqzcJHFy96Y55YHkIJRMI98A7hegn93xFwSLO7J/9ELHYYEBCJkBS9lwL5EwZoo/YRb
-         NBbA==
+        bh=CW4jPABm70pxmKsRQZs+n1DfNH0NV1KkWQmnTFUmgJA=;
+        b=CFwC5C1K0JdfF5eo7iziqz5A2hCk/+5ITip7A6L9VgjXcnNxXWC5Sdxqbv04793A9z
+         T1A1vreWMXNo2b3aMl2NBWd0wrmn0D3AyEilT6+JQVF6poIyLMR1Yo3AgSioxPtxb6YV
+         r3UAdjRVdoZEdwAi5KIy4HU7FobqcEKP28NXkfKd9VZRUXPCXgTJM6Ru3T+1NefB8VLv
+         ZVz59mU7X9re503wIKyPNBhNY8zJKP8ylHKOzHFsVtzpNVOxAnAvOMBkRQEbLt7CR8o+
+         KGztGVTuB8ZBN2agOoAtZmoGHbBYWNTAUMU/sMuoPzp64/y1kGe6f8FnSuwL6laT8MLM
+         FNTA==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id q30-20020a05620a039e00b006b5bb9f4462si1108386qkm.92.2022.07.14.08.46.38
+        by mx.google.com with ESMTPS id bb39-20020a05622a1b2700b0031ed2695f88si1051041qtb.565.2022.07.14.08.46.38
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
         Thu, 14 Jul 2022 08:46:38 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:58660 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:58664 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1oC12z-0005Fr-JC
+	id 1oC12z-0005GH-T7
 	for alex.bennee@linaro.org; Thu, 14 Jul 2022 11:46:37 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53596)
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53640)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=QWOl=XT=kaod.org=clg@ozlabs.org>)
- id 1oC11c-0005Eq-Rc; Thu, 14 Jul 2022 11:45:13 -0400
-Received: from gandalf.ozlabs.org ([150.107.74.76]:38425)
+ id 1oC11f-0005FD-NW; Thu, 14 Jul 2022 11:45:17 -0400
+Received: from mail.ozlabs.org ([2404:9400:2221:ea00::3]:36341
+ helo=gandalf.ozlabs.org)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=QWOl=XT=kaod.org=clg@ozlabs.org>)
- id 1oC11a-0000VZ-9t; Thu, 14 Jul 2022 11:45:12 -0400
-Received: from gandalf.ozlabs.org (gandalf.ozlabs.org [150.107.74.76])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4LkJhx4V5hz4xvN;
- Fri, 15 Jul 2022 01:45:05 +1000 (AEST)
+ id 1oC11d-0000Vt-HU; Thu, 14 Jul 2022 11:45:14 -0400
+Received: from gandalf.ozlabs.org (mail.ozlabs.org
+ [IPv6:2404:9400:2221:ea00::3])
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4LkJj01rrQz4ySg;
+ Fri, 15 Jul 2022 01:45:08 +1000 (AEST)
 Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
  (No client certificate requested)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4LkJhv00Jrz4xhp;
- Fri, 15 Jul 2022 01:45:02 +1000 (AEST)
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4LkJhy0w0hz4xj5;
+ Fri, 15 Jul 2022 01:45:05 +1000 (AEST)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>, Joel Stanley <joel@jms.id.au>,
- Peter Delevoryas <pdel@fb.com>,
+Cc: Peter Maydell <peter.maydell@linaro.org>, Peter Delevoryas <pdel@fb.com>,
+ Titus Rwantare <titusr@google.com>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
-Subject: [PULL 01/19] aspeed: sbc: Allow per-machine settings
-Date: Thu, 14 Jul 2022 17:44:38 +0200
-Message-Id: <20220714154456.2565189-2-clg@kaod.org>
+Subject: [PULL 02/19] hw/i2c/pmbus: Add idle state to return 0xff's
+Date: Thu, 14 Jul 2022 17:44:39 +0200
+Message-Id: <20220714154456.2565189-3-clg@kaod.org>
 X-Mailer: git-send-email 2.35.3
 In-Reply-To: <20220714154456.2565189-1-clg@kaod.org>
 References: <20220714154456.2565189-1-clg@kaod.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=150.107.74.76;
+Received-SPF: pass client-ip=2404:9400:2221:ea00::3;
  envelope-from=SRS0=QWOl=XT=kaod.org=clg@ozlabs.org; helo=gandalf.ozlabs.org
-X-Spam_score_int: -16
-X-Spam_score: -1.7
-X-Spam_bar: -
-X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9,
- HEADER_FROM_DIFFERENT_DOMAINS=0.249, SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
+X-Spam_score_int: -23
+X-Spam_score: -2.4
+X-Spam_bar: --
+X-Spam_report: (-2.4 / 5.0 requ) BAYES_00=-1.9,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.249, RCVD_IN_DNSWL_LOW=-0.7,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -93,136 +96,71 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: GBVoZRKYoh7C
+X-TUID: deybl8mSCBR4
 
-From: Joel Stanley <joel@jms.id.au>
+From: Peter Delevoryas <pdel@fb.com>
 
-In order to correctly report secure boot running firmware the values
-of certain registers must be set.
-
-We don't yet have documentation from ASPEED on what they mean. The
-meaning is inferred from u-boot's use of them.
-
-Introduce properties so the settings can be configured per-machine.
-
-Reviewed-by: Peter Delevoryas <pdel@fb.com>
-Tested-by: Peter Delevoryas <pdel@fb.com>
-Signed-off-by: Joel Stanley <joel@jms.id.au>
-Message-Id: <20220628154740.1117349-4-clg@kaod.org>
+Signed-off-by: Peter Delevoryas <pdel@fb.com>
+Reviewed-by: Titus Rwantare <titusr@google.com>
+Message-Id: <20220701000626.77395-2-me@pjd.dev>
 Signed-off-by: Cédric Le Goater <clg@kaod.org>
 ---
- include/hw/misc/aspeed_sbc.h | 13 +++++++++++
- hw/misc/aspeed_sbc.c         | 42 ++++++++++++++++++++++++++++++++++--
- 2 files changed, 53 insertions(+), 2 deletions(-)
+ include/hw/i2c/pmbus_device.h | 7 +++++++
+ hw/i2c/pmbus_device.c         | 9 +++++++++
+ 2 files changed, 16 insertions(+)
 
-diff --git a/include/hw/misc/aspeed_sbc.h b/include/hw/misc/aspeed_sbc.h
-index 67e43b53ecc3..405e6782b97a 100644
---- a/include/hw/misc/aspeed_sbc.h
-+++ b/include/hw/misc/aspeed_sbc.h
-@@ -17,9 +17,22 @@ OBJECT_DECLARE_TYPE(AspeedSBCState, AspeedSBCClass, ASPEED_SBC)
- 
- #define ASPEED_SBC_NR_REGS (0x93c >> 2)
- 
-+#define QSR_AES                     BIT(27)
-+#define QSR_RSA1024                 (0x0 << 12)
-+#define QSR_RSA2048                 (0x1 << 12)
-+#define QSR_RSA3072                 (0x2 << 12)
-+#define QSR_RSA4096                 (0x3 << 12)
-+#define QSR_SHA224                  (0x0 << 10)
-+#define QSR_SHA256                  (0x1 << 10)
-+#define QSR_SHA384                  (0x2 << 10)
-+#define QSR_SHA512                  (0x3 << 10)
-+
- struct AspeedSBCState {
-     SysBusDevice parent;
- 
-+    bool emmc_abr;
-+    uint32_t signing_settings;
-+
-     MemoryRegion iomem;
- 
-     uint32_t regs[ASPEED_SBC_NR_REGS];
-diff --git a/hw/misc/aspeed_sbc.c b/hw/misc/aspeed_sbc.c
-index bfa8b81d01c7..c6f328e3be23 100644
---- a/hw/misc/aspeed_sbc.c
-+++ b/hw/misc/aspeed_sbc.c
-@@ -11,6 +11,7 @@
- #include "qemu/osdep.h"
- #include "qemu/log.h"
- #include "qemu/error-report.h"
-+#include "hw/qdev-properties.h"
- #include "hw/misc/aspeed_sbc.h"
- #include "qapi/error.h"
- #include "migration/vmstate.h"
-@@ -19,6 +20,27 @@
- #define R_STATUS        (0x014 / 4)
- #define R_QSR           (0x040 / 4)
- 
-+/* R_STATUS */
-+#define ABR_EN                  BIT(14) /* Mirrors SCU510[11] */
-+#define ABR_IMAGE_SOURCE        BIT(13)
-+#define SPI_ABR_IMAGE_SOURCE    BIT(12)
-+#define SB_CRYPTO_KEY_EXP_DONE  BIT(11)
-+#define SB_CRYPTO_BUSY          BIT(10)
-+#define OTP_WP_EN               BIT(9)
-+#define OTP_ADDR_WP_EN          BIT(8)
-+#define LOW_SEC_KEY_EN          BIT(7)
-+#define SECURE_BOOT_EN          BIT(6)
-+#define UART_BOOT_EN            BIT(5)
-+/* bit 4 reserved*/
-+#define OTP_CHARGE_PUMP_READY   BIT(3)
-+#define OTP_IDLE                BIT(2)
-+#define OTP_MEM_IDLE            BIT(1)
-+#define OTP_COMPARE_STATUS      BIT(0)
-+
-+/* QSR */
-+#define QSR_RSA_MASK           (0x3 << 12)
-+#define QSR_HASH_MASK          (0x3 << 10)
-+
- static uint64_t aspeed_sbc_read(void *opaque, hwaddr addr, unsigned int size)
- {
-     AspeedSBCState *s = ASPEED_SBC(opaque);
-@@ -80,8 +102,17 @@ static void aspeed_sbc_reset(DeviceState *dev)
-     memset(s->regs, 0, sizeof(s->regs));
- 
-     /* Set secure boot enabled with RSA4096_SHA256 and enable eMMC ABR */
--    s->regs[R_STATUS] = 0x000044C6;
--    s->regs[R_QSR] = 0x07C07C89;
-+    s->regs[R_STATUS] = OTP_IDLE | OTP_MEM_IDLE;
-+
-+    if (s->emmc_abr) {
-+        s->regs[R_STATUS] &= ABR_EN;
-+    }
-+
-+    if (s->signing_settings) {
-+        s->regs[R_STATUS] &= SECURE_BOOT_EN;
-+    }
-+
-+    s->regs[R_QSR] = s->signing_settings;
- }
- 
- static void aspeed_sbc_realize(DeviceState *dev, Error **errp)
-@@ -105,6 +136,12 @@ static const VMStateDescription vmstate_aspeed_sbc = {
-     }
+diff --git a/include/hw/i2c/pmbus_device.h b/include/hw/i2c/pmbus_device.h
+index 0f4d6b3fada0..93f5d57c9dc6 100644
+--- a/include/hw/i2c/pmbus_device.h
++++ b/include/hw/i2c/pmbus_device.h
+@@ -155,6 +155,7 @@ enum pmbus_registers {
+     PMBUS_MFR_MAX_TEMP_1            = 0xC0, /* R/W word */
+     PMBUS_MFR_MAX_TEMP_2            = 0xC1, /* R/W word */
+     PMBUS_MFR_MAX_TEMP_3            = 0xC2, /* R/W word */
++    PMBUS_IDLE_STATE                = 0xFF,
  };
  
-+static Property aspeed_sbc_properties[] = {
-+    DEFINE_PROP_BOOL("emmc-abr", AspeedSBCState, emmc_abr, 0),
-+    DEFINE_PROP_UINT32("signing-settings", AspeedSBCState, signing_settings, 0),
-+    DEFINE_PROP_END_OF_LIST(),
-+};
+ /* STATUS_WORD */
+@@ -527,6 +528,12 @@ int pmbus_page_config(PMBusDevice *pmdev, uint8_t page_index, uint64_t flags);
+  */
+ void pmbus_check_limits(PMBusDevice *pmdev);
+ 
++/**
++ * Enter an idle state where only the PMBUS_ERR_BYTE will be returned
++ * indefinitely until a new command is issued.
++ */
++void pmbus_idle(PMBusDevice *pmdev);
 +
- static void aspeed_sbc_class_init(ObjectClass *klass, void *data)
- {
-     DeviceClass *dc = DEVICE_CLASS(klass);
-@@ -112,6 +149,7 @@ static void aspeed_sbc_class_init(ObjectClass *klass, void *data)
-     dc->realize = aspeed_sbc_realize;
-     dc->reset = aspeed_sbc_reset;
-     dc->vmsd = &vmstate_aspeed_sbc;
-+    device_class_set_props(dc, aspeed_sbc_properties);
+ extern const VMStateDescription vmstate_pmbus_device;
+ 
+ #define VMSTATE_PMBUS_DEVICE(_field, _state) {                       \
+diff --git a/hw/i2c/pmbus_device.c b/hw/i2c/pmbus_device.c
+index 749a33af827b..4071a88cfcd1 100644
+--- a/hw/i2c/pmbus_device.c
++++ b/hw/i2c/pmbus_device.c
+@@ -261,6 +261,11 @@ void pmbus_check_limits(PMBusDevice *pmdev)
+     }
  }
  
- static const TypeInfo aspeed_sbc_info = {
++void pmbus_idle(PMBusDevice *pmdev)
++{
++    pmdev->code = PMBUS_IDLE_STATE;
++}
++
+ /* assert the status_cml error upon receipt of malformed command */
+ static void pmbus_cml_error(PMBusDevice *pmdev)
+ {
+@@ -980,6 +985,10 @@ static uint8_t pmbus_receive_byte(SMBusDevice *smd)
+         }
+         break;
+ 
++    case PMBUS_IDLE_STATE:
++        pmbus_send8(pmdev, PMBUS_ERR_BYTE);
++        break;
++
+     case PMBUS_CLEAR_FAULTS:              /* Send Byte */
+     case PMBUS_PAGE_PLUS_WRITE:           /* Block Write-only */
+     case PMBUS_STORE_DEFAULT_ALL:         /* Send Byte */
 -- 
 2.35.3
 

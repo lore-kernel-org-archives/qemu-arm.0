@@ -1,108 +1,106 @@
-Received: by 2002:ac2:596f:0:0:0:0:0 with SMTP id h15csp795026lfp;
-        Thu, 14 Jul 2022 11:40:22 -0700 (PDT)
-X-Google-Smtp-Source: AGRyM1tHgSZWEVmLxgW9Vz/Qz55cYaqdsX7PRSFDboW4E0KnI4uTHslloUlOBliArHfWRadl25Z6
-X-Received: by 2002:ad4:5dea:0:b0:473:8378:ab8c with SMTP id jn10-20020ad45dea000000b004738378ab8cmr8967433qvb.75.1657824022019;
-        Thu, 14 Jul 2022 11:40:22 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1657824022; cv=none;
+Received: by 2002:ac2:596f:0:0:0:0:0 with SMTP id h15csp795843lfp;
+        Thu, 14 Jul 2022 11:42:31 -0700 (PDT)
+X-Google-Smtp-Source: AGRyM1sP9ghaN1ddOJy48qxPTMUAs14q6v2il8UhXZLGH/atWBqJMobkj/TP9yFEY35zwOO9Btcw
+X-Received: by 2002:a0c:f903:0:b0:473:14ff:f089 with SMTP id v3-20020a0cf903000000b0047314fff089mr9125991qvn.20.1657824150855;
+        Thu, 14 Jul 2022 11:42:30 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1657824150; cv=none;
         d=google.com; s=arc-20160816;
-        b=1J2DSTbtXn+QfmBcoqAGgh8XMKswDlndV+4WGZoqwmSD7m2N+hzlj7I70WbFgaZjJs
-         cFKVsNuJ0DNVTEB3DFUkw/cI1siKMFjpzcWgc3SvFoPWCSlfS5TgOEB6RzBYMjbocb/W
-         +xSv0qLW/VvpHjAv3UhWEShzOIo9Sg7JQO/zEgoHcytE+oHnpenX+NoHOGa4w3h359J/
-         zqtzRkGzMMkpbOgt9Sizp+acBn4A9CrPaBWN8OnWDs0Cfb3mqKdLErky/U+rtD1EKzal
-         DrAJKNngRia5IrDEORBfpoQqt1keQK7ssJNp3w9l5CjZUHWFgrpgcw2utXSGynx2AgA5
-         kIew==
+        b=NqFMQsBkNhfskAjwljjO8i6HO0ZyH3BJEF2R46hc8tBEdELmtBt12jIi9xKqyMYjTt
+         Er/Q+/2DVOKYBDFG5XLEswBdrtUwAy/DU4H4nLrsWKg4UV94QX3r2e4UY9t/PY0B15XJ
+         BPhm2+kHyh7+HUMJsiPEsbwNk4YcxiRRAbBzhBLnl6Tct9gQicw0ajSkZakv5cRw7JcY
+         T9XMQuIel0JSA8Yv1kkUmW7EuAl3GhSJkqdAh3YpU6oQJuZBXP8JcdomzR5fFc/hrzT+
+         yHeW25+rSUttSdpPfPpxNJqpUnLnS5jPORu90wWFdUq+OY6lZagYzdKrK20n/YliTDsq
+         arSg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:cc:to:from:subject:references
          :mime-version:message-id:in-reply-to:date:dkim-signature;
-        bh=TM8Kh0gGU2hIWoEk51Qm6WG9lPFo5JxHmzkWdY1yzZE=;
-        b=kC6HHk+eTPUSSslndyuW7orqZjRiV4cBGnn2Axit/iqFlZtaKkemqw7Jst1/v3ikBX
-         MdOwGrgkybNWVdJix4SZ4hSJlvTdYkISJrxMvTtnzTEl3Mdm4ZVmhfvSznv5m4zQviwk
-         370K5g5vT83p3PtG8T5oVntHAZnp/z3wM8aKDZMSGKdlvmQdSYfQg3DPhagEEaDBcilU
-         nJoqmUBsGzV377662CY8frxuh5R3EhwsaEmvluqIf6wJqrmJAVxpOhhtksZEM2Zc+ZF3
-         oygYS4IL+cLysp/OpfFG3FpI+ug+g4qt+2K1aYI2LWgzoInrwKWuoOrpuQHoWyIcLJ2P
-         Ewzw==
+        bh=YlaS2Gn+M7J56MUm3aAdhmb9BSTR0X4xwnRU+8E1xMI=;
+        b=uB2Z3PyzxRNj8zimYl5AnhG1HJKHTZvzWzJPsiLkq2JlLmKyz6ke3WgecuNWK8/ckZ
+         OldZ0JF1I8Aj1CiN45dOlXnZNk4C5FkiICKv8OsubNt9ButwTkrlUBMpX3lL3kxc0813
+         LTJhh/pGwuHyFHxwxTeeUj36I5mu4ILgkZpZfZJfMeLJSfROJQRN9JCMAZTFxziiup12
+         i5g94x3a8t7lKn6UumLv69oiZR316GNoDjMxyo0Zsd8b1raWIKcce3rhCYvyeRZqjVgb
+         ZBVq8G1b/eaxn5QiEr2ob0kWYneQSgcTV1Ae+LcPYxvi/up54nWBkqASRa2D1bhF64Nu
+         +Yug==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@google.com header.s=20210112 header.b=MLn3dePo;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@google.com header.s=20210112 header.b=L14cs+Gb;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 1-20020ac85901000000b0031ed2d83240si1392356qty.515.2022.07.14.11.40.21
+        by mx.google.com with ESMTPS id gw5-20020a0562140f0500b0047359ca7bacsi1527424qvb.268.2022.07.14.11.42.30
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 14 Jul 2022 11:40:22 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 14 Jul 2022 11:42:30 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@google.com header.s=20210112 header.b=MLn3dePo;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@google.com header.s=20210112 header.b=L14cs+Gb;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
-Received: from localhost ([::1]:36776 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:40890 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1oC3l6-0002B5-HS
-	for alex.bennee@linaro.org; Thu, 14 Jul 2022 14:40:20 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37016)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1oC3nC-000569-AG
+	for alex.bennee@linaro.org; Thu, 14 Jul 2022 14:42:30 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37320)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from
- <3WmDQYggKCHktreXlqpedlldib.Zljnbjr-Xojklkdkr.lod@flex--wuhaotsh.bounces.google.com>)
- id 1oC3Zv-0005cn-Nz
- for qemu-arm@nongnu.org; Thu, 14 Jul 2022 14:28:47 -0400
-Received: from mail-pg1-x54a.google.com ([2607:f8b0:4864:20::54a]:43873)
+ <3ZmDQYggKCoU53qjx21qpxxpun.lxvznv3-mn4nuwxwpw3.x0p@flex--wuhaotsh.bounces.google.com>)
+ id 1oC3a6-00068K-IU
+ for qemu-devel@nongnu.org; Thu, 14 Jul 2022 14:28:59 -0400
+Received: from mail-pl1-x649.google.com ([2607:f8b0:4864:20::649]:35714)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from
- <3WmDQYggKCHktreXlqpedlldib.Zljnbjr-Xojklkdkr.lod@flex--wuhaotsh.bounces.google.com>)
- id 1oC3Zt-00082m-SW
- for qemu-arm@nongnu.org; Thu, 14 Jul 2022 14:28:47 -0400
-Received: by mail-pg1-x54a.google.com with SMTP id
- r133-20020a632b8b000000b004197b8c4843so1597889pgr.10
- for <qemu-arm@nongnu.org>; Thu, 14 Jul 2022 11:28:44 -0700 (PDT)
+ <3ZmDQYggKCoU53qjx21qpxxpun.lxvznv3-mn4nuwxwpw3.x0p@flex--wuhaotsh.bounces.google.com>)
+ id 1oC3a3-00083E-TB
+ for qemu-devel@nongnu.org; Thu, 14 Jul 2022 14:28:57 -0400
+Received: by mail-pl1-x649.google.com with SMTP id
+ l16-20020a170902f69000b0016bf6a77effso577430plg.2
+ for <qemu-devel@nongnu.org>; Thu, 14 Jul 2022 11:28:55 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20210112;
  h=date:in-reply-to:message-id:mime-version:references:subject:from:to
- :cc; bh=TM8Kh0gGU2hIWoEk51Qm6WG9lPFo5JxHmzkWdY1yzZE=;
- b=MLn3dePojaqOfuYboTRLKZVoCwOEvHwBDCuU+uURDISko1txFuo8ogiJvFR0qzgTDJ
- hi5njeMpS6Y2RJ2VZcxZKs1Qi6kaRpb/H4wImmuk/7FSekY6ofs+nlhhuKKWTAdt7XdY
- CZs60l9OutALiiRm98T2m2Cxoy1oCcOY+I38anILmozB8mwAzpVckdFnwU+tXDrbo7cS
- nDELiHm5l5Ptjhyqio6sRjUnh8TE6ycdrmas2dtkG9XPM1NPDFwxzOQeIk/pIsOFl1DB
- eXqdqKocyr+FCUtN0ru4CfIqKJneNVNvvnSiu/Txcvd2pWbdUZu1QIuWL6/ok9mjf9tr
- 6SOA==
+ :cc; bh=YlaS2Gn+M7J56MUm3aAdhmb9BSTR0X4xwnRU+8E1xMI=;
+ b=L14cs+Gbb/T/SU3W0zM0Qr5FJmommGyh8je60D0OtDArgi+Ob5ViAnt/LA8nQ+nPYS
+ aFnXNwUmsb6HT+iz2TwEg8O3YlMAUhClnaXPiMbNt21OX0p0aWWXus95OgMMffkgq0Fv
+ EerZHEcRY/fIcEBNymhspCI2yHK9XCo7CQ9iK60C+gRwHw/akEZOwdSkxMvPeV/gKCpl
+ RRiRfRwJGUNK5tSyun03Tk7lqVTTBGxy96VGIINOD3r6m32bWU8+JOs3oofZVp5HWHZ/
+ mAynMMEUWNP6JBtUcmO2ae4fewecRN9mNHhGI12nY3Bu6JwojXC31SlQxmMq9GHwQJpa
+ b7aw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:date:in-reply-to:message-id:mime-version
  :references:subject:from:to:cc;
- bh=TM8Kh0gGU2hIWoEk51Qm6WG9lPFo5JxHmzkWdY1yzZE=;
- b=29TD0U9gEO6I0saYyboBLJubtTIT1RmHBlx7U0LWTka5sMEiKw4DoTumPamebNFbk6
- mwzrm9B4GD5dbCNTpyxtg+ASyqAgiergXWLL/VnXCvxeukN7WFn6t9f1HsPfj471K4MU
- /JM7TBkMQjzYaUUMpd0KNZa2tOtZX+ByWRR/2SR6tifwGGgoTJbRUDzNpDtgcNl2j0lN
- J4OM9KOqNUwaIsFo9uAn9dxOsfR2NBmp1T8qmzAcwCzCs1v6IeWRO34RHZDJgZa02Kql
- dzO93U/rE5ryE0L+GRK2xm2LoIaAnGZW4mToQhI/sfU4Iy84iw2N5y3N2oJEWw50RxJV
- ocxQ==
-X-Gm-Message-State: AJIora8JNYLE+w27Kh5vHq/0/HUhZCO4jNOT4+PWXZ1ayLhyUyGIeve1
- j2F8xVkCqv7ZZeRwvwmvFQluSf2FWA9fIg==
+ bh=YlaS2Gn+M7J56MUm3aAdhmb9BSTR0X4xwnRU+8E1xMI=;
+ b=Ly8C1aQdNVvRt4Kb1Qd+p7FU1nVprdLi14HGL+ncgjLKswzhqU18KAJIhYrnYMSkVT
+ vAJPddMxmw2dnf7H15ZzaZGEwySUsz8UUHPkLV4MDJfTk2t3oo1wiicjb4/4VNeFe95e
+ Jzzc+vNX7UMp3DSoUjwG0l9Lrbe6dWSzsRRoO/ekDLULHN6NLuwVs0VvFe2sNwqvOMKh
+ rf+u3JdvhUYjoRhiXkokDhwQ8fGd+pildaVaWKhRDUbaVVuOVFyeY2Nz6XUH1evLQ2LF
+ Npb4z8DH3ERsaLf9z0yi51RtSaM4JNyVn9KVGatflWM6wH6cp1y3/CxvptnIEfsevOjv
+ r10w==
+X-Gm-Message-State: AJIora94KmnYj/lwE2O4gOnw2FBjDEn8EHKfNgJ/p4u0XJuOTWfJvZuT
+ tm8Ulz2eSQO6Z6lPq+iCXCEElgPpDAkeNA==
 X-Received: from mimik.c.googlers.com ([fda3:e722:ac3:cc00:7f:e700:c0a8:4e])
- (user=wuhaotsh job=sendgmr) by 2002:a17:90a:249:b0:1e0:a8a3:3c6c with SMTP id
- t9-20020a17090a024900b001e0a8a33c6cmr627282pje.0.1657823322905; Thu, 14 Jul
- 2022 11:28:42 -0700 (PDT)
-Date: Thu, 14 Jul 2022 11:28:30 -0700
+ (user=wuhaotsh job=sendgmr) by 2002:a17:902:c14a:b0:16b:d07c:ad60 with SMTP
+ id 10-20020a170902c14a00b0016bd07cad60mr9456631plj.141.1657823334813; Thu, 14
+ Jul 2022 11:28:54 -0700 (PDT)
+Date: Thu, 14 Jul 2022 11:28:36 -0700
 In-Reply-To: <20220714182836.89602-1-wuhaotsh@google.com>
-Message-Id: <20220714182836.89602-3-wuhaotsh@google.com>
+Message-Id: <20220714182836.89602-9-wuhaotsh@google.com>
 Mime-Version: 1.0
 References: <20220714182836.89602-1-wuhaotsh@google.com>
 X-Mailer: git-send-email 2.37.0.170.g444d1eabd0-goog
-Subject: [PATCH v5 2/8] hw/i2c: Read FIFO during RXF_CTL change in NPCM7XX
- SMBus
+Subject: [PATCH v5 8/8] hw/arm: quanta-gbs-bmc add i2c devices
 From: Hao Wu <wuhaotsh@google.com>
 To: peter.maydell@linaro.org
 Cc: richard.henderson@linaro.org, qemu-arm@nongnu.org, qemu-devel@nongnu.org, 
  wuhaotsh@google.com, venture@google.com, Avi.Fishman@nuvoton.com, 
  kfting@nuvoton.com, hskinnemoen@google.com, f4bug@amsat.org, 
  bin.meng@windriver.com, qemu-block@nongnu.org, armbru@redhat.com, 
- thuth@redhat.com, Titus Rwantare <titusr@google.com>,
- Corey Minyard <cminyard@mvista.com>
+ thuth@redhat.com
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::54a;
- envelope-from=3WmDQYggKCHktreXlqpedlldib.Zljnbjr-Xojklkdkr.lod@flex--wuhaotsh.bounces.google.com;
- helo=mail-pg1-x54a.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::649;
+ envelope-from=3ZmDQYggKCoU53qjx21qpxxpun.lxvznv3-mn4nuwxwpw3.x0p@flex--wuhaotsh.bounces.google.com;
+ helo=mail-pl1-x649.google.com
 X-Spam_score_int: -95
 X-Spam_score: -9.6
 X-Spam_bar: ---------
@@ -110,59 +108,144 @@ X-Spam_report: (-9.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01,
- USER_IN_DEF_DKIM_WL=-7.5 autolearn=unavailable autolearn_force=no
+ USER_IN_DEF_DKIM_WL=-7.5 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 3LgXjceT+Jt9
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: cPYb6EztZEWl
 
-Originally we read in from SMBus when RXF_STS is cleared. However,
-the driver clears RXF_STS before setting RXF_CTL, causing the SM bus
-module to read incorrect amount of bytes in FIFO mode when the number
-of bytes read changed. This patch fixes this issue.
+From: Patrick Venture <venture@google.com>
 
-Signed-off-by: Hao Wu <wuhaotsh@google.com>
-Reviewed-by: Titus Rwantare <titusr@google.com>
-Acked-by: Corey Minyard <cminyard@mvista.com>
+Adds supported i2c devices to the quanta-gbc-bmc board.
+
+Signed-off-by: Patrick Venture <venture@google.com>
+Reviewed-by: Hao Wu <wuhaotsh@google.com>
 ---
- hw/i2c/npcm7xx_smbus.c | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+ hw/arm/npcm7xx_boards.c | 82 ++++++++++++++++++++++++-----------------
+ 1 file changed, 49 insertions(+), 33 deletions(-)
 
-diff --git a/hw/i2c/npcm7xx_smbus.c b/hw/i2c/npcm7xx_smbus.c
-index f18e311556..1435daea94 100644
---- a/hw/i2c/npcm7xx_smbus.c
-+++ b/hw/i2c/npcm7xx_smbus.c
-@@ -637,9 +637,6 @@ static void npcm7xx_smbus_write_rxf_sts(NPCM7xxSMBusState *s, uint8_t value)
+diff --git a/hw/arm/npcm7xx_boards.c b/hw/arm/npcm7xx_boards.c
+index b8337871ba..4bae5589f0 100644
+--- a/hw/arm/npcm7xx_boards.c
++++ b/hw/arm/npcm7xx_boards.c
+@@ -290,10 +290,12 @@ static void quanta_gsj_fan_init(NPCM7xxMachine *machine, NPCM7xxState *soc)
+ 
+ static void quanta_gbs_i2c_init(NPCM7xxState *soc)
  {
-     if (value & NPCM7XX_SMBRXF_STS_RX_THST) {
-         s->rxf_sts &= ~NPCM7XX_SMBRXF_STS_RX_THST;
--        if (s->status == NPCM7XX_SMBUS_STATUS_RECEIVING) {
--            npcm7xx_smbus_recv_fifo(s);
--        }
-     }
- }
- 
-@@ -651,6 +648,9 @@ static void npcm7xx_smbus_write_rxf_ctl(NPCM7xxSMBusState *s, uint8_t value)
-         new_ctl = KEEP_OLD_BIT(s->rxf_ctl, new_ctl, NPCM7XX_SMBRXF_CTL_LAST);
-     }
-     s->rxf_ctl = new_ctl;
-+    if (s->status == NPCM7XX_SMBUS_STATUS_RECEIVING) {
-+        npcm7xx_smbus_recv_fifo(s);
-+    }
- }
- 
- static uint64_t npcm7xx_smbus_read(void *opaque, hwaddr offset, unsigned size)
++    I2CSlave *i2c_mux;
++
++    /* i2c-0: */
++    i2c_slave_create_simple(npcm7xx_i2c_get_bus(soc, 0), TYPE_PCA9546, 0x71);
++
+     /*
+-     * i2c-0:
+-     *     pca9546@71
+-     *
+      * i2c-1:
+      *     pca9535@24
+      *     pca9535@20
+@@ -302,46 +304,60 @@ static void quanta_gbs_i2c_init(NPCM7xxState *soc)
+      *     pca9535@23
+      *     pca9535@25
+      *     pca9535@26
+-     *
+-     * i2c-2:
+-     *     sbtsi@4c
+-     *
+-     * i2c-5:
+-     *     atmel,24c64@50 mb_fru
+-     *     pca9546@71
+-     *         - channel 0: max31725@54
+-     *         - channel 1: max31725@55
+-     *         - channel 2: max31725@5d
+-     *                      atmel,24c64@51 fan_fru
+-     *         - channel 3: atmel,24c64@52 hsbp_fru
+-     *
++     */
++
++    /* i2c-2: sbtsi@4c */
++
++    /* i2c-5: */
++    /* mb_fru */
++    at24c_eeprom_init(npcm7xx_i2c_get_bus(soc, 5), 5, 0x50, 8192, 0);
++    i2c_mux = i2c_slave_create_simple(npcm7xx_i2c_get_bus(soc, 5),
++                                      TYPE_PCA9546, 0x71);
++    /* max31725 is tmp105 compatible. */
++    i2c_slave_create_simple(pca954x_i2c_get_bus(i2c_mux, 0), "tmp105", 0x54);
++    i2c_slave_create_simple(pca954x_i2c_get_bus(i2c_mux, 1), "tmp105", 0x55);
++    i2c_slave_create_simple(pca954x_i2c_get_bus(i2c_mux, 2), "tmp105", 0x5d);
++    /* fan_fru */
++    at24c_eeprom_init(pca954x_i2c_get_bus(i2c_mux, 2), 5, 0x51, 8192, 1);
++    /* hsbp_fru */
++    at24c_eeprom_init(pca954x_i2c_get_bus(i2c_mux, 3), 5, 0x52, 8192, 2);
++
++    /*
+      * i2c-6:
+      *     pca9545@73
+      *
+      * i2c-7:
+      *     pca9545@72
+-     *
+-     * i2c-8:
+-     *     adi,adm1272@10
+-     *
+-     * i2c-9:
+-     *     pca9546@71
+-     *         - channel 0: isil,isl68137@60
+-     *         - channel 1: isil,isl68137@61
+-     *         - channel 2: isil,isl68137@63
+-     *         - channel 3: isil,isl68137@45
+-     *
++     */
++
++    /* i2c-8: */
++    i2c_slave_create_simple(npcm7xx_i2c_get_bus(soc, 8), "adm1272", 0x10);
++
++    /* i2c-9: */
++    i2c_slave_create_simple(npcm7xx_i2c_get_bus(soc, 9), TYPE_PCA9546, 0x71);
++    /*
++     * - channel 0: isil,isl68137@60
++     * - channel 1: isil,isl68137@61
++     * - channel 2: isil,isl68137@63
++     * - channel 3: isil,isl68137@45
++     */
++
++    /*
+      * i2c-10:
+      *     pca9545@71
+      *
+      * i2c-11:
+      *     pca9545@76
+-     *
+-     * i2c-12:
+-     *     maxim,max34451@4e
+-     *     isil,isl68137@5d
+-     *     isil,isl68137@5e
+-     *
++     */
++
++    /* i2c-12: */
++    i2c_slave_create_simple(npcm7xx_i2c_get_bus(soc, 12), "max34451", 0x4e);
++    /*
++     * isil,isl68137@5d
++     * isil,isl68137@5e
++     */
++
++    /*
+      * i2c-14:
+      *     pca9545@70
+      */
 -- 
 2.37.0.170.g444d1eabd0-goog
 

@@ -1,71 +1,69 @@
-Received: by 2002:ac2:596f:0:0:0:0:0 with SMTP id h15csp728500lfp;
-        Thu, 14 Jul 2022 08:49:15 -0700 (PDT)
-X-Google-Smtp-Source: AGRyM1vQv0O5+E8YrPxvphw/lSAa8EczGV4DLLSbmvE3YJo6F1oRxKyvI9huQc/tmex+uiVPCGb3
-X-Received: by 2002:a05:622a:138e:b0:31e:a239:fccc with SMTP id o14-20020a05622a138e00b0031ea239fcccmr8386185qtk.523.1657813755502;
-        Thu, 14 Jul 2022 08:49:15 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1657813755; cv=none;
+Received: by 2002:ac2:596f:0:0:0:0:0 with SMTP id h15csp728525lfp;
+        Thu, 14 Jul 2022 08:49:19 -0700 (PDT)
+X-Google-Smtp-Source: AGRyM1s77h0DSi8mIG5FUSnsT6OqPqLXdK+Vu5gc+xM7TRsrpKy/1jPvgW2y9mD1jR7yHZSFcjeq
+X-Received: by 2002:a05:622a:394:b0:31b:ed25:393f with SMTP id j20-20020a05622a039400b0031bed25393fmr8826094qtx.88.1657813759226;
+        Thu, 14 Jul 2022 08:49:19 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1657813759; cv=none;
         d=google.com; s=arc-20160816;
-        b=FmsFt/DpjT4ncqJKD5xwQQvF/L6btKc5GQ8rZpNFqyUyBp9dPwl14b6n2x0nBXcNdz
-         un26z5qTPqVeNlLHjjwFKhtgCEL8LqhG/fbDDvKLfxy4V6qNZfJ2ozLAJFEZmhhT3obA
-         Z9oarHtdoFQQC/p6ZksgqODz71q3PdoI6HninxAmP43dSkDP8S7v/c3x4chN0JRzavWM
-         Q37n09f0eakDj5kjZSrVrRP8GjvENaL3An/mjnHTsnih17LvyOqKakuJFMVhgJC6tjxx
-         dbHoNh9ofyUV69C7sDTz7ae2jN9aI55c5EkJYkZkIF/htFCdQTfYEe2CU8GhOR58ZAUj
-         E/OQ==
+        b=GBt3pdKN2sMwspcW/lkp7foj2HiCSgro/2iCwyfamvZBBTWhceaxvAtmk7V8YDJCHU
+         vnh2sCW+PjDTTE+khf/ANMU3kDTEv95dyZzUP5+3Cp87pmT/In3QuG0paiEkRkOShavG
+         LdF/nraMzNNlqaM9VaBwg0gq1euWc9aVkxdNtXEDDuCrrnA185FLu0mDQhe6fs5Kwm9R
+         MlGANV5726aBZXG64zJej3702sS8QNf/SdYPbIxX/pKKXgnJTwhW9lnW1MIibhIepvmE
+         xvXiZSNQcS7PCXknNR3MT481td+1MBDz7t3TG8idRztbSeKa/Yxleze9o1rfhXeo80nV
+         HDBw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from;
-        bh=lzBu2EmAk2flyuG58o45+LkLNdpaWOaQD1OmN5Nu7sw=;
-        b=RYMAk5+4YhEiRReaPpQ0fuPZxg+m8sgZOxFuZ7TcIgG/GEPB0cxdIiPq9162z/+H5t
-         nR0tG0ybOnrWuogoRchsEMsaWaNEZeIFTQDB3DGjSdEJF8IXkOJRfS/ql8jYqs3iXBE7
-         ItwzNKWyOloEsDq6LOpPLzUSCRT3FLotOyZpC2HPiyYLpGoS+eIHm0m3OLS7CI3cKpu9
-         9ieuSJZG/AIebrliFoSRuKfi6CyS8uIRj3QCHcJl27oS6DstJcjZ7OK/qIJ4g6vAF2V/
-         Qt0Nlyxmd4z9TR91jjH/OoQHYuoJlpDAFVKlGsAUMfrGYjVFaylQ/jtzPAYUpdPvCU3r
-         LQ5g==
+        bh=sdToyV64I8Q2SSCPTO0B6m96X3Y5CY7EWP0SenSuOWM=;
+        b=Fd4HTqwaM2l/snbLMxJ/b3ESq5cX1HcwLIfLN64ldoGBngWuIL0mPqicTjszUAnHPb
+         ST8TQjvnJGbAg4d/Z6aI1z/zMKsgNNTdhoT1UQc9yErjNwiMC2XwhGBBMfr8d5MXJQhb
+         Sw/e54ghbtuJrKvcZdnH0Ax8hU17DMpGBbeTiiGgFjYSYO4sVOStUcFkJQR8e6d96NSI
+         DKeUdONOQcasMOQua/ouPXv89Wz8+uq1sbXHna/XuxtoONSWbJtdTHO9vOCsgmMjafg0
+         TUXlHBb+47kpJNF2IW4WQMI3ttNanYHn6B+z21ZYuRKpq7KiJf4Ro8J8h31Tkgsn/Cim
+         qAkA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id k12-20020a05622a03cc00b0031a816f9d42si1444902qtx.641.2022.07.14.08.49.15
+        by mx.google.com with ESMTPS id gs8-20020a056214226800b00472f75492e7si1139404qvb.420.2022.07.14.08.49.19
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 14 Jul 2022 08:49:15 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 14 Jul 2022 08:49:19 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:37230 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:38850 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1oC15W-0001vW-OJ
-	for alex.bennee@linaro.org; Thu, 14 Jul 2022 11:49:14 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53682)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1oC15a-00035Q-OR
+	for alex.bennee@linaro.org; Thu, 14 Jul 2022 11:49:18 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53838)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=QWOl=XT=kaod.org=clg@ozlabs.org>)
- id 1oC11k-0005Fu-Km; Thu, 14 Jul 2022 11:45:21 -0400
-Received: from gandalf.ozlabs.org ([150.107.74.76]:33127)
+ id 1oC121-0005Mk-2U; Thu, 14 Jul 2022 11:45:38 -0400
+Received: from gandalf.ozlabs.org ([150.107.74.76]:32919)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=QWOl=XT=kaod.org=clg@ozlabs.org>)
- id 1oC11i-0000X3-24; Thu, 14 Jul 2022 11:45:19 -0400
-Received: from gandalf.ozlabs.org (mail.ozlabs.org
- [IPv6:2404:9400:2221:ea00::3])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4LkJj528hhz4xRC;
- Fri, 15 Jul 2022 01:45:13 +1000 (AEST)
+ id 1oC11x-0000es-BZ; Thu, 14 Jul 2022 11:45:36 -0400
+Received: from gandalf.ozlabs.org (gandalf.ozlabs.org [150.107.74.76])
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4LkJjP39bRz4xht;
+ Fri, 15 Jul 2022 01:45:29 +1000 (AEST)
 Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
  (No client certificate requested)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4LkJj31zZNz4xdJ;
- Fri, 15 Jul 2022 01:45:11 +1000 (AEST)
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4LkJjM4vg5z4xdJ;
+ Fri, 15 Jul 2022 01:45:27 +1000 (AEST)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>, Peter Delevoryas <pdel@fb.com>,
- Titus Rwantare <titusr@google.com>,
+Cc: Peter Maydell <peter.maydell@linaro.org>, Peter Delevoryas <peter@pjd.dev>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
-Subject: [PULL 04/19] hw/sensor: Add Renesas ISL69259 device model
-Date: Thu, 14 Jul 2022 17:44:41 +0200
-Message-Id: <20220714154456.2565189-5-clg@kaod.org>
+Subject: [PULL 11/19] aspeed: Add AST1030 (BIC) to fby35
+Date: Thu, 14 Jul 2022 17:44:48 +0200
+Message-Id: <20220714154456.2565189-12-clg@kaod.org>
 X-Mailer: git-send-email 2.35.3
 In-Reply-To: <20220714154456.2565189-1-clg@kaod.org>
 References: <20220714154456.2565189-1-clg@kaod.org>
@@ -81,87 +79,116 @@ X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9,
  HEADER_FROM_DIFFERENT_DOMAINS=0.249, SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: XiWmtge7rcOE
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: l17odqDPjnqE
 
-From: Peter Delevoryas <pdel@fb.com>
+From: Peter Delevoryas <peter@pjd.dev>
 
-This adds the ISL69259, using all the same functionality as the existing
-ISL69260 but overriding the IC_DEVICE_ID.
+With the BIC, the easiest way to run everything is to create two pty's
+for each SoC and reserve stdin/stdout for the monitor:
 
-Signed-off-by: Peter Delevoryas <pdel@fb.com>
-Reviewed-by: Titus Rwantare <titusr@google.com>
-Message-Id: <20220701000626.77395-4-me@pjd.dev>
+    wget https://github.com/facebook/openbmc/releases/download/openbmc-e2294ff5d31d/fby35.mtd
+    wget https://github.com/peterdelevoryas/OpenBIC/releases/download/oby35-cl-2022.13.01/Y35BCL.elf
+    qemu-system-arm -machine fby35 \
+        -drive file=fby35.mtd,format=raw,if=mtd \
+        -device loader,file=fby35.mtd,addr=0,cpu-num=0 \
+        -serial pty -serial pty -serial mon:stdio -display none -S
+
+    screen /dev/ttys0
+    screen /dev/ttys1
+    (qemu) c
+
+This commit only adds the the first server board's Bridge IC, but in the
+future we'll try to include the other three server board Bridge IC's
+too.
+
+Signed-off-by: Peter Delevoryas <peter@pjd.dev>
+Reviewed-by: Cédric Le Goater <clg@kaod.org>
+Message-Id: <20220705191400.41632-9-peter@pjd.dev>
 Signed-off-by: Cédric Le Goater <clg@kaod.org>
 ---
- hw/sensor/isl_pmbus_vr.c | 28 ++++++++++++++++++++++++++++
- 1 file changed, 28 insertions(+)
+ hw/arm/fby35.c | 27 ++++++++++++++++++++++++++-
+ 1 file changed, 26 insertions(+), 1 deletion(-)
 
-diff --git a/hw/sensor/isl_pmbus_vr.c b/hw/sensor/isl_pmbus_vr.c
-index 799ea9d89edb..eb344dd5a9d5 100644
---- a/hw/sensor/isl_pmbus_vr.c
-+++ b/hw/sensor/isl_pmbus_vr.c
-@@ -119,6 +119,18 @@ static void raa228000_exit_reset(Object *obj)
-     pmdev->pages[0].read_temperature_3 = 0;
+diff --git a/hw/arm/fby35.c b/hw/arm/fby35.c
+index e7405f6570b3..79605f306462 100644
+--- a/hw/arm/fby35.c
++++ b/hw/arm/fby35.c
+@@ -11,7 +11,9 @@
+ #include "sysemu/sysemu.h"
+ #include "sysemu/block-backend.h"
+ #include "hw/boards.h"
++#include "hw/qdev-clock.h"
+ #include "hw/arm/aspeed_soc.h"
++#include "hw/arm/boot.h"
+ 
+ #define TYPE_FBY35 MACHINE_TYPE_NAME("fby35")
+ OBJECT_DECLARE_SIMPLE_TYPE(Fby35State, FBY35);
+@@ -22,8 +24,11 @@ struct Fby35State {
+     MemoryRegion bmc_memory;
+     MemoryRegion bmc_dram;
+     MemoryRegion bmc_boot_rom;
++    MemoryRegion bic_memory;
++    Clock *bic_sysclk;
+ 
+     AspeedSoCState bmc;
++    AspeedSoCState bic;
+ 
+     bool mmio_exec;
+ };
+@@ -110,11 +115,31 @@ static void fby35_bmc_init(Fby35State *s)
+     }
  }
  
-+static void isl69259_exit_reset(Object *obj)
++static void fby35_bic_init(Fby35State *s)
 +{
-+    ISLState *s = ISL69260(obj);
-+    static const uint8_t ic_device_id[] = {0x04, 0x00, 0x81, 0xD2, 0x49, 0x3c};
-+    g_assert(sizeof(ic_device_id) <= sizeof(s->ic_device_id));
++    s->bic_sysclk = clock_new(OBJECT(s), "SYSCLK");
++    clock_set_hz(s->bic_sysclk, 200000000ULL);
 +
-+    isl_pmbus_vr_exit_reset(obj);
++    memory_region_init(&s->bic_memory, OBJECT(s), "bic-memory", UINT64_MAX);
 +
-+    s->ic_device_id_len = sizeof(ic_device_id);
-+    memcpy(s->ic_device_id, ic_device_id, sizeof(ic_device_id));
++    object_initialize_child(OBJECT(s), "bic", &s->bic, "ast1030-a1");
++    qdev_connect_clock_in(DEVICE(&s->bic), "sysclk", s->bic_sysclk);
++    object_property_set_link(OBJECT(&s->bic), "memory", OBJECT(&s->bic_memory),
++                             &error_abort);
++    aspeed_soc_uart_set_chr(&s->bic, ASPEED_DEV_UART5, serial_hd(1));
++    qdev_realize(DEVICE(&s->bic), NULL, &error_abort);
++
++    aspeed_board_init_flashes(&s->bic.fmc, "sst25vf032b", 2, 2);
++    aspeed_board_init_flashes(&s->bic.spi[0], "sst25vf032b", 2, 4);
++    aspeed_board_init_flashes(&s->bic.spi[1], "sst25vf032b", 2, 6);
 +}
 +
- static void isl_pmbus_vr_add_props(Object *obj, uint64_t *flags, uint8_t pages)
+ static void fby35_init(MachineState *machine)
  {
-     PMBusDevice *pmdev = PMBUS_DEVICE(obj);
-@@ -257,6 +269,21 @@ static void raa229004_class_init(ObjectClass *klass, void *data)
-     isl_pmbus_vr_class_init(klass, data, 2);
+     Fby35State *s = FBY35(machine);
+ 
+     fby35_bmc_init(s);
++    fby35_bic_init(s);
  }
  
-+static void isl69259_class_init(ObjectClass *klass, void *data)
-+{
-+    ResettableClass *rc = RESETTABLE_CLASS(klass);
-+    DeviceClass *dc = DEVICE_CLASS(klass);
-+    dc->desc = "Renesas ISL69259 Digital Multiphase Voltage Regulator";
-+    rc->phases.exit = isl69259_exit_reset;
-+    isl_pmbus_vr_class_init(klass, data, 2);
-+}
-+
-+static const TypeInfo isl69259_info = {
-+    .name = TYPE_ISL69259,
-+    .parent = TYPE_ISL69260,
-+    .class_init = isl69259_class_init,
-+};
-+
- static const TypeInfo isl69260_info = {
-     .name = TYPE_ISL69260,
-     .parent = TYPE_PMBUS_DEVICE,
-@@ -283,6 +310,7 @@ static const TypeInfo raa228000_info = {
  
- static void isl_pmbus_vr_register_types(void)
- {
-+    type_register_static(&isl69259_info);
-     type_register_static(&isl69260_info);
-     type_register_static(&raa228000_info);
-     type_register_static(&raa229004_info);
+@@ -141,7 +166,7 @@ static void fby35_class_init(ObjectClass *oc, void *data)
+     mc->init = fby35_init;
+     mc->no_floppy = 1;
+     mc->no_cdrom = 1;
+-    mc->min_cpus = mc->max_cpus = mc->default_cpus = 2;
++    mc->min_cpus = mc->max_cpus = mc->default_cpus = 3;
+ 
+     object_class_property_add_bool(oc, "execute-in-place",
+                                    fby35_get_mmio_exec,
 -- 
 2.35.3
 

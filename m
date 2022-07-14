@@ -1,95 +1,95 @@
-Received: by 2002:ac2:596f:0:0:0:0:0 with SMTP id h15csp782643lfp;
-        Thu, 14 Jul 2022 11:04:57 -0700 (PDT)
-X-Google-Smtp-Source: AGRyM1v7jslOSLt230lvrY7C1Eld8zmbA8Xu7kzcUcN1mfynni3EL+N/L+XM/5ytqD9qIma/o5bC
-X-Received: by 2002:a05:622a:1e0e:b0:31e:c9f9:fe1e with SMTP id br14-20020a05622a1e0e00b0031ec9f9fe1emr8772080qtb.369.1657821897728;
-        Thu, 14 Jul 2022 11:04:57 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1657821897; cv=none;
+Received: by 2002:ac2:596f:0:0:0:0:0 with SMTP id h15csp783150lfp;
+        Thu, 14 Jul 2022 11:06:03 -0700 (PDT)
+X-Google-Smtp-Source: AGRyM1vGveJTzBweVHCy3w0nCMz9sguwY4BVLEE0vBwmTOO/++AT87I58AkV2500Hf+KYJpCT2fY
+X-Received: by 2002:ac8:5e0e:0:b0:31d:380b:c59d with SMTP id h14-20020ac85e0e000000b0031d380bc59dmr8927419qtx.197.1657821962990;
+        Thu, 14 Jul 2022 11:06:02 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1657821962; cv=none;
         d=google.com; s=arc-20160816;
-        b=aoRzgJ6n87UPHmIBaFuQCY0FDtBQSrgZxOIoaKeDVIHaOmenFid2gs3x4f0v7z8UWq
-         kFdjPAyI6GSrE7fX62Y5XN1383l6u6VLfccUx6x8P2AQAbRY3M7oIymDLNXdQZ7xxB7t
-         kLsVULqrbEIPylBFO+dsmcLL62Kg2wNowq4ahHME8sLITybfYV+2kG7GmUu9UHGz9d9y
-         wsLggWmw/uOe6w618yEkqg1H597YbKLaWp/uH9jgconpdcLZOAUU3ZucQD7j+em84CbZ
-         KXx68LmFARdOyCmt4TN9a6ww8T3t3zWNfUR1ubGwgmvV3gCKdMNDPwPJJi1JRzL+mzPn
-         rBig==
+        b=LdHSUumC7XyYvC5ajepmPlgTmk4gwtWZ+9k8XbdJAk76hMs2V3/j0mit+51jhBSfxu
+         u3hv3InONWcY9hregiaeOBCc4mLqW/qMr22BddLpAVFcd5O03xbwUEjhNxsiayZDeFP5
+         ulXIRNmcNhV9kE33jqVSf0sbkWGGa/v08RfFPCSXjqE9R1bh0VtgPMbF5dMIX4gnJswf
+         LINSlLSze8ddIlb46SLQpnrSVg9AMDxHsxSqjWTeHAuuJfwQ3uvAcsZQtr6GgIM7KJ2S
+         aLpL5LN5vYd1d1vZb6Ra3WbQezeuikbUv2sZ6W7CLiuRQn9ugBJfRxjraWNXXJt4tlLs
+         pIeg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:cc:to:from:subject:references
          :mime-version:message-id:in-reply-to:date:dkim-signature;
-        bh=W5HdIYZvabDXn88OiY+HL0ZIRBJ+FpGhhsFX/xssn/M=;
-        b=YH2cjEgDMIYx14/0TsGxIKUqFVuq6rE1h+ZhC5kOycQoxjmTbyImKcgZRRqZBFb4oq
-         chj7UJPpH45hIoMmjLV8V1MNrjF3PONwgk5QkCjewT99dUZ0UQ5QUS2iwTx8zTRcEsYB
-         0hBCPD08DJbPzTQN1krbPoc62kOhtZgldMQa9BV31ioma5G3mt6yyQfLtz0ByN2jC+QF
-         XoTLSH9VqrzAZfr9Nzwnx8F9Q+xXrE8t4pIpMm//KP/0WCgCW2JCjCcd4Wm/3AfP4liA
-         7DZGWdjm3zTAPCBlrm3HvfypTlRLyDPpcnlnq0L8m6/AZY4Hrn3oYdqzhC9pmtatyek6
-         fHnw==
+        bh=ZPy/+0dqgBOB4uWjUnv2kiH/6vyYCxfU19RjpK4Qvr8=;
+        b=sNvQwRZAwNi/dwIa9GjMVD49txmfSEdM4C0kjSB44YqJ6+tl0BZ1AMbw1m/2PJOz5r
+         oPpavEz1QaEvLA8jAvoh3szES1WJASqwOnVEwcjdQejwTFHBSs5dXgJuKlDC6p/x89YQ
+         8ukb988/7DlN5zxVa6fk8+oe+rcmq5ujhjwJ8/8RlmfoCnkn20Z4O2jji9HNlC4p88JZ
+         LtILZupy8m0AXp9lrNJuKsMM9/ESpJCO2wPD3oHwGzydvcyBwXOU9xY/6qPo5Nzosj9C
+         RV7i0kCJqUrqMG+pHlBGYL1yT446RdPo9heB1BVzLhXdHz4e7a8am7AgAIkHmHwOwWeQ
+         MAoA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@google.com header.s=20210112 header.b=G7IYwQ5h;
+       dkim=pass header.i=@google.com header.s=20210112 header.b=l4wky4vx;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id gc13-20020a056214230d00b00470aaf26e3esi1257458qvb.586.2022.07.14.11.04.57
+        by mx.google.com with ESMTPS id c15-20020ac81e8f000000b003051a9c7f2esi1565989qtm.334.2022.07.14.11.06.02
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 14 Jul 2022 11:04:57 -0700 (PDT)
+        Thu, 14 Jul 2022 11:06:02 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@google.com header.s=20210112 header.b=G7IYwQ5h;
+       dkim=pass header.i=@google.com header.s=20210112 header.b=l4wky4vx;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
-Received: from localhost ([::1]:35518 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:37812 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1oC3Cr-0002xI-6O
-	for alex.bennee@linaro.org; Thu, 14 Jul 2022 14:04:57 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:58302)
+	id 1oC3Du-0004Tv-E7
+	for alex.bennee@linaro.org; Thu, 14 Jul 2022 14:06:02 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:58296)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from
- <3wFnQYggKCtEJH4xBGF43BB381.zB9D19H-01I18ABA3AH.BE3@flex--wuhaotsh.bounces.google.com>)
- id 1oC38u-0007UF-RD
+ <3wlnQYggKCtMLJ6zDIH65DD5A3.1DBF3BJ-23K3ACDC5CJ.DG5@flex--wuhaotsh.bounces.google.com>)
+ id 1oC38u-0007TC-IE
  for qemu-devel@nongnu.org; Thu, 14 Jul 2022 14:00:52 -0400
-Received: from mail-pf1-x449.google.com ([2607:f8b0:4864:20::449]:33446)
+Received: from mail-pg1-x54a.google.com ([2607:f8b0:4864:20::54a]:36716)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from
- <3wFnQYggKCtEJH4xBGF43BB381.zB9D19H-01I18ABA3AH.BE3@flex--wuhaotsh.bounces.google.com>)
- id 1oC38r-0005iz-K3
+ <3wlnQYggKCtMLJ6zDIH65DD5A3.1DBF3BJ-23K3ACDC5CJ.DG5@flex--wuhaotsh.bounces.google.com>)
+ id 1oC38r-0005l3-5p
  for qemu-devel@nongnu.org; Thu, 14 Jul 2022 14:00:52 -0400
-Received: by mail-pf1-x449.google.com with SMTP id
- a127-20020a624d85000000b00525950b1feeso1509461pfb.0
- for <qemu-devel@nongnu.org>; Thu, 14 Jul 2022 11:00:33 -0700 (PDT)
+Received: by mail-pg1-x54a.google.com with SMTP id
+ q12-20020a632a0c000000b00419b66851e8so1331461pgq.3
+ for <qemu-devel@nongnu.org>; Thu, 14 Jul 2022 11:00:35 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20210112;
  h=date:in-reply-to:message-id:mime-version:references:subject:from:to
- :cc; bh=W5HdIYZvabDXn88OiY+HL0ZIRBJ+FpGhhsFX/xssn/M=;
- b=G7IYwQ5h1bHSdQ3N/q8pFT24ntNQ5vvXIm8atu3VilaUa26UORR7UxTJOmJEglp7A7
- 6G1KcQ1bBoEZxO+Qjc8RVxYb1UY1ABt8RnVNbJW8clf/88gUOH1japMiNdsnZsrybX96
- d4JV4me52Klxm9iz0hKhwosK9xudupOJNE0V89fvvUvRmaszOPUhlG5y16qzhZERXThG
- DqDzM7gldaDksPHx1GqLhnnb62NTljnlzvIue87+UPARA730QsPmSP8Hdrldp9P8PjmD
- kUQJI3VYgDlV0rb11APm6Z94qwYbOjMwTAqAzpGpADoQIq44O8JbJklhereGmi3qcdNl
- WXFA==
+ :cc; bh=ZPy/+0dqgBOB4uWjUnv2kiH/6vyYCxfU19RjpK4Qvr8=;
+ b=l4wky4vxHY1rK6lrsYf/BLssFZWpoA7zrEAaFueK6tBq18uNtdFoijJDEoczWpt7Mx
+ tu5ezsC7C8o4aSaxvtgOSU5RKr5iSy73VkULPXU2LsMC2z5bB7D/xn1HjZWzFqW9zj67
+ gveoPsnSoPZmrk9wIHzZQm/GI1KUr7UAERMf/Wngv+uSzHQtdY138GF87NELkGk5v30+
+ csud0uu15xaiw5Zjc4l9eHdx75PCEn9r13Kk18fcWzAknbFJZbFBpkD+qifKsHVgdhji
+ JHjhHEOdWEVdXyhjteRkK2518kMbi6wC0KGeOnjtbSsdLF8F4vDIuwsD0PcJZtVDasfi
+ 3vCQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:date:in-reply-to:message-id:mime-version
  :references:subject:from:to:cc;
- bh=W5HdIYZvabDXn88OiY+HL0ZIRBJ+FpGhhsFX/xssn/M=;
- b=Gec0WcntFL4UIu8fG5cMxcOkOS0qJ4o5AJ3wXc61bbqdqdYqWBMdiz4E1LIrORxga4
- ULCv5mV23LfZPKxvgYAFA0SATxR17UfLW8WFXxeO1paYgCLisDHFSQMFGFvC3j/A2/JE
- OF9VohuhP8IxhDdRfMt8ktDlujUZSm/hk+xcsIBK9+JPZko2KGge9cyYy8vZqVefgYpv
- LcPx40g/RV4/cd9hOuJeYEIma9GHPSwNyS6HnOTwzGKuTJtDYyhfEZ5xv/DxqXy1EV72
- MzDvJ0QHWztTShL0IPSU71DF5gvuUPrbCjP3ZdMBSNlSSdEL9kJNmxOaUFfRLHL0Uldf
- peSA==
-X-Gm-Message-State: AJIora+KqfpOC1pq5SKyGT+MoLx4sNGkbc0qBYh4Ww3CZfpQDCfcjA/6
- x69EVq+o0MZ/JCYNQ56aJtQgsWfstNNU1A==
+ bh=ZPy/+0dqgBOB4uWjUnv2kiH/6vyYCxfU19RjpK4Qvr8=;
+ b=lLuVrE+ofimy6ukTvwlqNffzeKlFvJ/PILfWFA572SVFxmtSgIPB1I/FvRbYb648h6
+ qEkSNUoxlfZnhwuI+ZcOWRn2W+/s2cuMqwIEVikrnUtkW9rOdm2G9yyFxdZjyLab4Qp6
+ +cU2jqAWKvodarMDLVSOpbPxVeZUpDw8d9c7g8irfLozecfSv9Ji79DXvmH/JB74VFra
+ kuAYRjYNoi5ZLAVWpKjDg+fCg2WzIx+2+U267S+roz7wk/tjZHa2XuspXRuEMM9rTsgL
+ REfWPhKqvvBD9ZOSwhrdzE+VpMyUDGeETFADl7DDkVo12w42ldzZIylOS36degKl0auX
+ orlQ==
+X-Gm-Message-State: AJIora/umzfKeXqcBxgImyP84jOnE8MQ2R6K0uOs2cCQYkwFxaxW5sQ9
+ ZnyVz+4Wd87PH20H/jq0LY/QmEMVtbOcbQ==
 X-Received: from mimik.c.googlers.com ([fda3:e722:ac3:cc00:7f:e700:c0a8:4e])
- (user=wuhaotsh job=sendgmr) by 2002:a62:3346:0:b0:52a:c0cb:ae8 with SMTP id
- z67-20020a623346000000b0052ac0cb0ae8mr9452245pfz.37.1657821632780; Thu, 14
- Jul 2022 11:00:32 -0700 (PDT)
-Date: Thu, 14 Jul 2022 11:00:03 -0700
+ (user=wuhaotsh job=sendgmr) by 2002:a17:90b:181:b0:1ef:c348:6835 with SMTP id
+ t1-20020a17090b018100b001efc3486835mr627924pjs.1.1657821634239; Thu, 14 Jul
+ 2022 11:00:34 -0700 (PDT)
+Date: Thu, 14 Jul 2022 11:00:04 -0700
 In-Reply-To: <20220714180006.77360-1-wuhaotsh@google.com>
-Message-Id: <20220714180006.77360-6-wuhaotsh@google.com>
+Message-Id: <20220714180006.77360-7-wuhaotsh@google.com>
 Mime-Version: 1.0
 References: <20220714180006.77360-1-wuhaotsh@google.com>
 X-Mailer: git-send-email 2.37.0.170.g444d1eabd0-goog
-Subject: [PATCH 5/8] blockdev: Add a new IF type IF_OTHER
+Subject: [PATCH 6/8] hw/arm: npcm8xx_boards: EEPROMs can take bus as parameter
 From: Hao Wu <wuhaotsh@google.com>
 To: peter.maydell@linaro.org
 Cc: richard.henderson@linaro.org, qemu-arm@nongnu.org, qemu-devel@nongnu.org, 
@@ -98,9 +98,9 @@ Cc: richard.henderson@linaro.org, qemu-arm@nongnu.org, qemu-devel@nongnu.org,
  bin.meng@windriver.com, qemu-block@nongnu.org, armbru@redhat.com, 
  thuth@redhat.com
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::449;
- envelope-from=3wFnQYggKCtEJH4xBGF43BB381.zB9D19H-01I18ABA3AH.BE3@flex--wuhaotsh.bounces.google.com;
- helo=mail-pf1-x449.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::54a;
+ envelope-from=3wlnQYggKCtMLJ6zDIH65DD5A3.1DBF3BJ-23K3ACDC5CJ.DG5@flex--wuhaotsh.bounces.google.com;
+ helo=mail-pg1-x54a.google.com
 X-Spam_score_int: -95
 X-Spam_score: -9.6
 X-Spam_bar: ---------
@@ -123,55 +123,64 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 36G2njZRK5Tm
+X-TUID: zv+E8nxVVWcG
 
-This type is used to represent block devs that are not suitable to
-be represented by other existing types.
-
-A sample use is to represent an at24c eeprom device defined in
-hw/nvram/eeprom_at24c.c. The block device can be used to contain the
-content of the said eeprom device.
+We allow at24c_eeprom_init to take a I2CBus* as parameter. This allows
+us to attach an EEPROM device behind an I2C mux which is not
+possible with the old method.
 
 Signed-off-by: Hao Wu <wuhaotsh@google.com>
 ---
- blockdev.c                | 4 +++-
- include/sysemu/blockdev.h | 1 +
- 2 files changed, 4 insertions(+), 1 deletion(-)
+ hw/arm/npcm7xx_boards.c | 13 +++++++------
+ 1 file changed, 7 insertions(+), 6 deletions(-)
 
-diff --git a/blockdev.c b/blockdev.c
-index 9230888e34..befd69ac5f 100644
---- a/blockdev.c
-+++ b/blockdev.c
-@@ -82,6 +82,7 @@ static const char *const if_name[IF_COUNT] = {
-     [IF_MTD] = "mtd",
-     [IF_SD] = "sd",
-     [IF_VIRTIO] = "virtio",
-+    [IF_OTHER] = "other",
-     [IF_XEN] = "xen",
- };
+diff --git a/hw/arm/npcm7xx_boards.c b/hw/arm/npcm7xx_boards.c
+index 6bc6f5d2fe..b083b0c572 100644
+--- a/hw/arm/npcm7xx_boards.c
++++ b/hw/arm/npcm7xx_boards.c
+@@ -140,10 +140,9 @@ static I2CBus *npcm7xx_i2c_get_bus(NPCM7xxState *soc, uint32_t num)
+     return I2C_BUS(qdev_get_child_bus(DEVICE(&soc->smbus[num]), "i2c-bus"));
+ }
  
-@@ -726,7 +727,8 @@ QemuOptsList qemu_legacy_drive_opts = {
-         },{
-             .name = "if",
-             .type = QEMU_OPT_STRING,
--            .help = "interface (ide, scsi, sd, mtd, floppy, pflash, virtio)",
-+            .help = "interface (ide, scsi, sd, mtd, floppy, pflash, virtio,"
-+                    " other)",
-         },{
-             .name = "file",
-             .type = QEMU_OPT_STRING,
-diff --git a/include/sysemu/blockdev.h b/include/sysemu/blockdev.h
-index 3211b16513..d9dd5af291 100644
---- a/include/sysemu/blockdev.h
-+++ b/include/sysemu/blockdev.h
-@@ -21,6 +21,7 @@ typedef enum {
-      */
-     IF_NONE = 0,
-     IF_IDE, IF_SCSI, IF_FLOPPY, IF_PFLASH, IF_MTD, IF_SD, IF_VIRTIO, IF_XEN,
-+    IF_OTHER,
-     IF_COUNT
- } BlockInterfaceType;
+-static void at24c_eeprom_init(NPCM7xxState *soc, int bus, uint8_t addr,
++static void at24c_eeprom_init(I2CBus *i2c_bus, int bus, uint8_t addr,
+                               uint32_t rsize)
+ {
+-    I2CBus *i2c_bus = npcm7xx_i2c_get_bus(soc, bus);
+     I2CSlave *i2c_dev = i2c_slave_new("at24c-eeprom", addr);
+     DeviceState *dev = DEVICE(i2c_dev);
  
+@@ -253,8 +252,8 @@ static void quanta_gsj_i2c_init(NPCM7xxState *soc)
+     i2c_slave_create_simple(npcm7xx_i2c_get_bus(soc, 3), "tmp105", 0x5c);
+     i2c_slave_create_simple(npcm7xx_i2c_get_bus(soc, 4), "tmp105", 0x5c);
+ 
+-    at24c_eeprom_init(soc, 9, 0x55, 8192);
+-    at24c_eeprom_init(soc, 10, 0x55, 8192);
++    at24c_eeprom_init(npcm7xx_i2c_get_bus(soc, 9), 9, 0x55, 8192);
++    at24c_eeprom_init(npcm7xx_i2c_get_bus(soc, 10), 10, 0x55, 8192);
+ 
+     /*
+      * i2c-11:
+@@ -360,7 +359,8 @@ static void kudo_bmc_i2c_init(NPCM7xxState *soc)
+ 
+     i2c_slave_create_simple(npcm7xx_i2c_get_bus(soc, 4), TYPE_PCA9548, 0x77);
+ 
+-    at24c_eeprom_init(soc, 4, 0x50, 8192); /* mbfru */
++    /* mbfru */
++    at24c_eeprom_init(npcm7xx_i2c_get_bus(soc, 4), 4, 0x50, 8192);
+ 
+     i2c_mux = i2c_slave_create_simple(npcm7xx_i2c_get_bus(soc, 13),
+                                       TYPE_PCA9548, 0x77);
+@@ -371,7 +371,8 @@ static void kudo_bmc_i2c_init(NPCM7xxState *soc)
+     i2c_slave_create_simple(pca954x_i2c_get_bus(i2c_mux, 4), "tmp105", 0x48);
+     i2c_slave_create_simple(pca954x_i2c_get_bus(i2c_mux, 5), "tmp105", 0x49);
+ 
+-    at24c_eeprom_init(soc, 14, 0x55, 8192); /* bmcfru */
++    /* bmcfru */
++    at24c_eeprom_init(npcm7xx_i2c_get_bus(soc, 14), 14, 0x55, 8192);
+ 
+     /* TODO: Add remaining i2c devices. */
+ }
 -- 
 2.37.0.170.g444d1eabd0-goog
 

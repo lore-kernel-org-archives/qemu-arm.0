@@ -1,85 +1,103 @@
-Received: by 2002:ac2:596f:0:0:0:0:0 with SMTP id h15csp1398872lfp;
-        Tue, 12 Jul 2022 04:21:33 -0700 (PDT)
-X-Google-Smtp-Source: AGRyM1vTVhYX4y64tfh0x9Qtnt8xzZ8mehKf5bLz7gsseCXKw3J7Q7OVff9/ByeUw4VqtdvYjTFU
-X-Received: by 2002:a37:390:0:b0:6b5:531f:a72a with SMTP id 138-20020a370390000000b006b5531fa72amr14216440qkd.45.1657624892881;
-        Tue, 12 Jul 2022 04:21:32 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1657624892; cv=none;
+Received: by 2002:ac2:596f:0:0:0:0:0 with SMTP id h15csp713166lfp;
+        Thu, 14 Jul 2022 08:10:46 -0700 (PDT)
+X-Google-Smtp-Source: AGRyM1vO/31r+K7zUBJRkRNU/OqTWJjDlKZiKvArUOPU3ftsJM2xQV4yKRTw5vh13dtjGfQgwR3Y
+X-Received: by 2002:a05:620a:2054:b0:6b5:70b6:6e5a with SMTP id d20-20020a05620a205400b006b570b66e5amr6038621qka.764.1657811446114;
+        Thu, 14 Jul 2022 08:10:46 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1657811446; cv=none;
         d=google.com; s=arc-20160816;
-        b=JlfbIYjvrOSdL7nTjOSo8ZSh3rr5oa93Ugp01mOuErDEUnp4fcF4mgJd6y51DDTPUY
-         eQrIqDMPF6mFRLUeDMcHSxLfWbdHx3IgqG7dmG0KD9HYkgPFypxUkbUJzv40N5MW0rw+
-         rZJ/noEqIR704i0iH3/yAudLtosfeGVtUnSDoiBaLnsEzZlgZqZYX1zS42YROXYHPLco
-         3nBavA305GfN7tFp4Z0TdsZjrxXt14bCHBIV4ZXvYV/72Kplu9uBP1OAn5lbtKI29NhH
-         1gDjSblKO/UkjhqxEGK5GdMAbEJkR6XwoNVA9lgBCz2WXOyOD6R6VtMwhs5rMNfjE+OH
-         4ycA==
+        b=kwyU6nRMcmKwCX4apYavQVyhaAWlsmMvIjehVQgA6g7qhQXj2YcBV+wgv6e06Dt5EK
+         e/Qg/6ehSFfAjFW9W8+oAlGwOK6YKW6+FoZdVkF4Em/KKXT8Pa31PTrbK+4jdK1DapLI
+         sYlSyw5IOX9Jb1q5iB9ygEphb88sOd0K+NmzTFWta+o9kwIXDXcGuoOWumt2JEQ+y5PY
+         m5WPtO6v8ng+lvcHYGEnsp84JDvz055QV6Ahw6SF8oIeFbquXGYiH5H5z37Fq0CRWUV4
+         QzS/w/R94V9u88KdP9YidpbvkWQbuaPncASUtxBjjHFurLiS++PRMseb3YAlhnTRmhvl
+         ZnUg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:cc:to:content-language:subject
-         :user-agent:mime-version:date:message-id;
-        bh=79Ycl1Q6aF+d/eOpefAx++GIvB9uBAvD2DobUUTQDac=;
-        b=mP3W38RvMgmHHd6YmN26xhYZzvtkheg+ILW7EXyewTvK8fSbPbfPwM6ZHWdOACfzlN
-         /9p+cQwqf5vo4XPZPxSIXOXaZQ8+A7nqrBmCNb6dGwZuNZ1/B+TXijfAiF/xTWQqkfmH
-         tV1uqeLmdsTuWL8zGzu6N9nXPzPE/Nw86VAusv/E9LwLnN/Cd5W0JjdFmn/UtBzlNozR
-         EllGj0x+eS2U1QzzS7xIOdvehb9DXicgyC6bv3SZHJMqSf67Wgw8XGcNBYD/HiApeU5m
-         6bbue5hz4U4f0kA9+lN7xnvQP3RgGZ39jwYie8UOF362sMWewpSqj50xx2xZTs4F5D9S
-         KU2g==
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
+        bh=w3qFBJ4lZKPtX8B25djV/LPhr1pfsJvM9Pvk5hSVTFs=;
+        b=f4TKnJr20lSC1mrzdSFrt6pr8f49UrhiggWDRyNbd3wfesXxDgK7M7m1wm1IanxspQ
+         e9GqSAFjw1MVADaoxi+BcPszfMIC/ekZoR1kWtnkV3gRjXo/2bgdXqbnyzUyC4IcGXD/
+         8hrzps/HvYjW4J5GX26JyvPzAq3KpwfdjO4saUrEkGeQ37kX4GGkxadZJnAbBHRBN37w
+         CuRW40OQCdiPVY7FkPRCFRr1ywpptpCDAnlGQG5t3z81n3TJjd+dhdJph10ZGVK6ZgC/
+         O8NlpZfSnRe7CfAjobquHU/HijA/mml41VzTckXcypD/5YVbypXUdn7CaJ7OdZBMKUGm
+         mtiw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=MfnKm7Pb;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id o13-20020a37a50d000000b006b54814df46si4930934qke.612.2022.07.12.04.21.32
+        by mx.google.com with ESMTPS id f4-20020a0562141d2400b004735e62133fsi1148930qvd.105.2022.07.14.08.10.45
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 12 Jul 2022 04:21:32 -0700 (PDT)
+        Thu, 14 Jul 2022 08:10:46 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:35336 helo=lists1p.gnu.org)
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=MfnKm7Pb;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:42692 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1oBDxM-0003Ok-0U
-	for alex.bennee@linaro.org; Tue, 12 Jul 2022 07:21:32 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:58548)
+	id 1oC0UH-00088H-Ga
+	for alex.bennee@linaro.org; Thu, 14 Jul 2022 11:10:45 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:43394)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <matheus.ferst@eldorado.org.br>)
- id 1oBDuW-0001vL-D6
- for qemu-devel@nongnu.org; Tue, 12 Jul 2022 07:18:36 -0400
-Received: from [200.168.210.66] (port=2792 helo=outlook.eldorado.org.br)
- by eggs.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <matheus.ferst@eldorado.org.br>) id 1oBDuT-00022N-VS
- for qemu-devel@nongnu.org; Tue, 12 Jul 2022 07:18:35 -0400
-Received: from p9ibm ([10.10.71.235]) by outlook.eldorado.org.br over TLS
- secured channel with Microsoft SMTPSVC(8.5.9600.16384); 
- Tue, 12 Jul 2022 08:17:26 -0300
-Received: from [127.0.0.1] (unknown [10.10.70.45])
- by p9ibm (Postfix) with ESMTPS id B7B49800146;
- Tue, 12 Jul 2022 08:17:26 -0300 (-03)
-Message-ID: <3653bc8d-6505-badf-bd99-882001b897e6@eldorado.org.br>
-Date: Tue, 12 Jul 2022 08:17:26 -0300
+ (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
+ id 1oC0RV-0005Jk-AP
+ for qemu-devel@nongnu.org; Thu, 14 Jul 2022 11:07:53 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:49156)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
+ id 1oC0RO-0000RS-C9
+ for qemu-devel@nongnu.org; Thu, 14 Jul 2022 11:07:51 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1657811264;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=w3qFBJ4lZKPtX8B25djV/LPhr1pfsJvM9Pvk5hSVTFs=;
+ b=MfnKm7Pb7agpxP14EWtY1iSvnNBMp33Put/Cn9w7lDv0uKi0siWuL4EWQc8p47xuNGRyM2
+ ofs804489PFI5Jn6UBd2OjNwqnzuOx/VkCEtSQ6QIYyLze0PJWxc4p3q95dl493HgCgwNC
+ Skd594kC/1dnsdhFgPSIam+g7y8Og8g=
+Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
+ [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-643-CCwJ4NcYMWSlE0ZXqGRmug-1; Thu, 14 Jul 2022 11:07:40 -0400
+X-MC-Unique: CCwJ4NcYMWSlE0ZXqGRmug-1
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.6])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 9D70E188499F;
+ Thu, 14 Jul 2022 15:07:39 +0000 (UTC)
+Received: from localhost.localdomain.com (unknown [10.33.36.128])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 4D6D12166B2A;
+ Thu, 14 Jul 2022 15:07:37 +0000 (UTC)
+From: =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: qemu-s390x@nongnu.org, Thomas Huth <thuth@redhat.com>, qemu-arm@nongnu.org,
+ David Hildenbrand <david@redhat.com>, Cornelia Huck <cohuck@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>
+Subject: [PATCH 0/3] target: RFC: display deprecation note for '-cpu help'
+Date: Thu, 14 Jul 2022 16:07:32 +0100
+Message-Id: <20220714150735.1835166-1-berrange@redhat.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.9.1
-Subject: Re: [RISU PATCH v4 26/29] ppc64: Clean up reginfo handling
-Content-Language: en-US
-To: Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org
-References: <20220708154700.18682-1-richard.henderson@linaro.org>
- <20220708154700.18682-27-richard.henderson@linaro.org>
-From: "Matheus K. Ferst" <matheus.ferst@eldorado.org.br>
-In-Reply-To: <20220708154700.18682-27-richard.henderson@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-OriginalArrivalTime: 12 Jul 2022 11:17:26.0932 (UTC)
- FILETIME=[F7C1DD40:01D895E0]
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 200.168.210.66 (failed)
-Received-SPF: pass client-ip=200.168.210.66;
- envelope-from=matheus.ferst@eldorado.org.br; helo=outlook.eldorado.org.br
-X-Spam_score_int: -4
-X-Spam_score: -0.5
-X-Spam_bar: /
-X-Spam_report: (-0.5 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
- PDS_HP_HELO_NORDNS=0.659, RDNS_NONE=0.793, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+X-Scanned-By: MIMEDefang 2.78 on 10.11.54.6
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=berrange@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -28
+X-Spam_score: -2.9
+X-Spam_bar: --
+X-Spam_report: (-2.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.082,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -94,204 +112,68 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 47ONusyVT57o
+X-TUID: ciW2URIDd5HJ
 
-On 08/07/2022 12:46, Richard Henderson wrote:
-> Several of the gp_reg[] elements are not relevant -- e.g. orig r3,
-> which is related to system calls.  Omit those from the original
-> reginfo_init(), so that any differences are automatically hidden.
-> 
-> Do not only compare bit 4 of CCR -- this register is 32 bits wide
-> with 8 cr subfields.  We should compare all of them.
-> 
-> Tidy reginfo_dump() output.  Especially, do not dump the non-
-> relevant fields.
-> 
-> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
-> ---
->   risu_reginfo_ppc64.c | 114 +++++++++++++++++--------------------------
->   1 file changed, 44 insertions(+), 70 deletions(-)
-> 
-> diff --git a/risu_reginfo_ppc64.c b/risu_reginfo_ppc64.c
-> index 134a152..eeb0460 100644
-> --- a/risu_reginfo_ppc64.c
-> +++ b/risu_reginfo_ppc64.c
-> @@ -21,19 +21,30 @@
->   #include "risu.h"
->   #include "risu_reginfo_ppc64.h"
-> 
-> -#define XER 37
-> -#define CCR 38
-> +/* Names for indexes within gregset_t, ignoring those irrelevant here */
-> +enum {
-> +    NIP = 32,
-> +    MSR = 33,
-> +    CTR = 35,
-> +    LNK = 36,
-> +    XER = 37,
-> +    CCR = 38,
-> +};
-> 
->   const struct option * const arch_long_opts;
->   const char * const arch_extra_help;
-> 
->   static const char * const greg_names[NGREG] = {
-> -    "r0",  "r1",  "r2",  "r3",  "r4",  "r5",  "r6",  "r7",
-> -    "r8",  "r9", "r10", "r11", "r12", "r13", "r14", "r15",
-> -   "r16", "r17", "r18", "r19", "r20", "r21", "r22", "r23",
-> -   "r24", "r25", "r26", "r27", "r28", "r29", "r30", "r31",
-> -   [XER] = "xer",
-> -   [CCR] = "ccr",
-> +     "r0",  "r1",  "r2",  "r3",  "r4",  "r5",  "r6",  "r7",
-> +     "r8",  "r9", "r10", "r11", "r12", "r13", "r14", "r15",
-> +    "r16", "r17", "r18", "r19", "r20", "r21", "r22", "r23",
-> +    "r24", "r25", "r26", "r27", "r28", "r29", "r30", "r31",
-> +    [NIP] = "nip",
-> +    [MSR] = "msr",
-> +    [CTR] = "ctr",
-> +    [LNK] = "lnk",
-> +    [XER] = "xer",
-> +    [CCR] = "ccr",
->   };
-> 
-NIP value depends on image_start address, and LNK will be the return 
-address, so I guess we shouldn't compare them. Some MSR bits are defined 
-from start under linux-user (e.g. FE0 and FE1), but I think we can work 
-around that.
+When querying '-cpu help' there is no presentation of fact that a
+CPU may be deprecated. The user just has to try it and see if they
+get a depecation message at runtime.  The QMP command for querying
+CPUs report a deprecation bool flag, but not the explanatory
+reason.
 
-CTR will likely be image_start since calling a function pointer is 
-usually implemented with mtctr/bctr, but risugen doesn't initialize it, 
-so the comparison will fail at the first checkpoint. VRSAVE is also not 
-initialized, so I guess we need something like
+The Icelake-Client CPU (removed in 6df39f5e583ca0f67bd934d1327f9ead2e3bd49c)
+handled this by modifying the '.notes' section to add the word
+'deprecated':
 
- >    write_mov_ri(0, rand(0xffffffff));
- >    insn32(0x7c0903a6); # mtctr r0
- >
- >    write_mov_ri(0, rand(0xffffffff));
- >    insn32(0x7c0043a6); # mtvrsave r0
+            {
+                .version = 2,
+                .note = "no TSX, deprecated",
+                .alias = "Icelake-Client-noTSX",
+                .props = (PropValue[]) {
+                    { "hle", "off" },
+                    { "rtm", "off" },
+                    { /* end of list */ }
+                },
+            },
 
-in write_random_regdata
+This relies on the person deprecating the CPU to remember to do this,
+and is redundant when this info is already expressed in the
+'.deprecation_note' field.
 
->   void process_arch_opt(int opt, const char *arg)
-> @@ -61,8 +72,13 @@ void reginfo_init(struct reginfo *ri, ucontext_t *uc)
->       ri->nip = uc->uc_mcontext.regs->nip - image_start_address;
-> 
->       for (i = 0; i < NGREG; i++) {
-> -        ri->gregs[i] = uc->uc_mcontext.gp_regs[i];
-> +        /* Do not copy gp_reg entries not relevant to the context. */
-> +        if (greg_names[i]) {
-> +            ri->gregs[i] = uc->uc_mcontext.gp_regs[i];
-> +        }
->       }
-> +    ri->gregs[1] = 0xdeadbeef;   /* sp */
-> +    ri->gregs[13] = 0xdeadbeef;  /* gp */
-> 
->       memcpy(ri->fpregs, uc->uc_mcontext.fp_regs, 32 * sizeof(double));
->       ri->fpscr = uc->uc_mcontext.fp_regs[32];
-> @@ -76,79 +92,37 @@ void reginfo_init(struct reginfo *ri, ucontext_t *uc)
->   /* reginfo_is_eq: compare the reginfo structs, returns nonzero if equal */
->   int reginfo_is_eq(struct reginfo *m, struct reginfo *a)
->   {
-> -    int i;
-> -    for (i = 0; i < 32; i++) {
-> -        if (i == 1 || i == 13) {
-> -            continue;
-> -        }
-> -
-> -        if (m->gregs[i] != a->gregs[i]) {
-> -            return 0;
-> -        }
-> -    }
-> -
-> -    if (m->gregs[XER] != a->gregs[XER]) {
-> -        return 0;
-> -    }
-> -
-> -    if ((m->gregs[CCR] & 0x10) != (a->gregs[CCR] & 0x10)) {
-> -        return 0;
-> -    }
-> -
-> -    for (i = 0; i < 32; i++) {
-> -        if (m->fpregs[i] != a->fpregs[i]) {
-> -            return 0;
-> -        }
-> -    }
-> -
-> -    for (i = 0; i < 32; i++) {
-> -        if (m->vrregs.vrregs[i][0] != a->vrregs.vrregs[i][0] ||
-> -            m->vrregs.vrregs[i][1] != a->vrregs.vrregs[i][1] ||
-> -            m->vrregs.vrregs[i][2] != a->vrregs.vrregs[i][2] ||
-> -            m->vrregs.vrregs[i][3] != a->vrregs.vrregs[i][3]) {
-> -            return 0;
-> -        }
-> -    }
-> -    return 1;
-> +    return memcmp(m, a, sizeof(*m)) == 0;
->   }
-> 
->   /* reginfo_dump: print state to a stream */
->   void reginfo_dump(struct reginfo *ri, FILE * f)
->   {
-> -    int i;
-> +    const char *sep;
-> +    int i, j;
-> 
-> -    fprintf(f, "  faulting insn 0x%x\n", ri->faulting_insn);
-> -    fprintf(f, "  prev insn     0x%x\n", ri->prev_insn);
-> -    fprintf(f, "  prev addr    0x%" PRIx64 "\n\n", ri->nip);
-> +    fprintf(f, "%6s: %08x\n", "insn", ri->faulting_insn);
-> +    fprintf(f, "%6s: %016lx\n", "pc", ri->nip) >
-> -    for (i = 0; i < 16; i++) {
-> -        fprintf(f, "\tr%2d: %16lx\tr%2d: %16lx\n", i, ri->gregs[i],
-> -                i + 16, ri->gregs[i + 16]);
-> +    sep = "";
-> +    for (i = j = 0; i < NGREG; i++) {
-> +        if (greg_names[i] != NULL) {
-> +            fprintf(f, "%s%6s: %016lx", sep, greg_names[i], ri->gregs[i]);
-> +            sep = (++j & 1 ? "  " : "\n");
-> +        }
->       }
-> 
-> -    fprintf(f, "\n");
-> -    fprintf(f, "\tnip    : %16lx\n", ri->gregs[32]);
-> -    fprintf(f, "\tmsr    : %16lx\n", ri->gregs[33]);
-> -    fprintf(f, "\torig r3: %16lx\n", ri->gregs[34]);
-> -    fprintf(f, "\tctr    : %16lx\n", ri->gregs[35]);
-> -    fprintf(f, "\tlnk    : %16lx\n", ri->gregs[36]);
-> -    fprintf(f, "\txer    : %16lx\n", ri->gregs[37]);
-> -    fprintf(f, "\tccr    : %16lx\n", ri->gregs[38]);
-> -    fprintf(f, "\tmq     : %16lx\n", ri->gregs[39]);
-> -    fprintf(f, "\ttrap   : %16lx\n", ri->gregs[40]);
-> -    fprintf(f, "\tdar    : %16lx\n", ri->gregs[41]);
-> -    fprintf(f, "\tdsisr  : %16lx\n", ri->gregs[42]);
-> -    fprintf(f, "\tresult : %16lx\n", ri->gregs[43]);
-> -    fprintf(f, "\tdscr   : %16lx\n\n", ri->gregs[44]);
-> -
-> -    for (i = 0; i < 16; i++) {
-> -        fprintf(f, "\tf%2d: %016lx\tf%2d: %016lx\n", i, ri->fpregs[i],
-> -                i + 16, ri->fpregs[i + 16]);
-> +    sep = "\n";
-> +    for (i = j = 0; i < 32; i++) {
-> +        fprintf(f, "%s%*s%d: %016lx",
-> +                sep, 6 - (i < 10 ? 1 : 2), "f", i, ri->fpregs[i]);
-> +        sep = (++j & 1 ? "  " : "\n");
->       }
-> -    fprintf(f, "\tfpscr: %016lx\n\n", ri->fpscr);
-> +    fprintf(f, "\n%6s: %016lx\n", "fpscr", ri->fpscr);
-> 
->       for (i = 0; i < 32; i++) {
-> -        fprintf(f, "vr%02d: %8x, %8x, %8x, %8x\n", i,
-> +        fprintf(f, "%*s%d: %08x %08x %08x %08x\n",
-> +                6 - (i < 10 ? 1 : 2), "vr", i,
->                   ri->vrregs.vrregs[i][0], ri->vrregs.vrregs[i][1],
->                   ri->vrregs.vrregs[i][2], ri->vrregs.vrregs[i][3]);
->       }
-> --
-> 2.34.1
-> 
->
-Thanks,
-Matheus K. Ferst
-Instituto de Pesquisas ELDORADO <http://www.eldorado.org.br/>
-Analista de Software
-Aviso Legal - Disclaimer <https://www.eldorado.org.br/disclaimer.html>
+This short series suggests just modifying the '-cpu help'
+formatter so that it displays the full deprecation message
+
+eg
+
+$ qemu-system-x86_64 -cpu help:
+Available CPUs:
+x86 486                   (alias configured by machine type) (deprecated: use at least 'Nehalem' / 'Opteron_G4', or 'host' / 'max')
+
+I wonder if this is too verbose, and we should just do a
+concise flag like approach, similar to QMP:
+
+$ qemu-system-x86_64 -cpu help:
+Available CPUs:
+x86 486                   (alias configured by machine type) (deprecated)
+
+leaving the full message to be displayed at runtime ? I'm slightly
+inclined to the simpler more concise output.
+
+This series touched x86_64, s390x, and aarch64 because that's all I
+personally needed from a downstream POV, but any & all of the targets
+would benefit from this. They have each implemneted the '-cpu help'
+logic independantly though, and unifying that code is not entirely
+straightforward.
+
+Daniel P. Berrangé (3):
+  target/i386: display deprecation note in '-cpu help'
+  target/s390x: display deprecation note in '-cpu help'
+  target/arm: display deprecation note in '-cpu help'
+
+ target/arm/helper.c       | 10 +++++++++-
+ target/i386/cpu.c         | 13 ++++++++++++-
+ target/s390x/cpu_models.c | 28 +++++++++++++++++++++++-----
+ 3 files changed, 44 insertions(+), 7 deletions(-)
+
+-- 
+2.36.1
+

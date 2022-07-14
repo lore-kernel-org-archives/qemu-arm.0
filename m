@@ -1,179 +1,154 @@
-Received: by 2002:ac2:596f:0:0:0:0:0 with SMTP id h15csp713166lfp;
-        Thu, 14 Jul 2022 08:10:46 -0700 (PDT)
-X-Google-Smtp-Source: AGRyM1vO/31r+K7zUBJRkRNU/OqTWJjDlKZiKvArUOPU3ftsJM2xQV4yKRTw5vh13dtjGfQgwR3Y
-X-Received: by 2002:a05:620a:2054:b0:6b5:70b6:6e5a with SMTP id d20-20020a05620a205400b006b570b66e5amr6038621qka.764.1657811446114;
-        Thu, 14 Jul 2022 08:10:46 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1657811446; cv=none;
+Received: by 2002:ac2:596f:0:0:0:0:0 with SMTP id h15csp793979lfp;
+        Thu, 14 Jul 2022 11:36:46 -0700 (PDT)
+X-Google-Smtp-Source: AGRyM1senH33s4ZOiA144GjmDzcfojctnuFs9VIsAfmelt1QvdEhYYKACz3qXNP56wWuoP819Ghs
+X-Received: by 2002:a05:622a:11cc:b0:31d:3d12:6583 with SMTP id n12-20020a05622a11cc00b0031d3d126583mr9571604qtk.260.1657823806066;
+        Thu, 14 Jul 2022 11:36:46 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1657823806; cv=none;
         d=google.com; s=arc-20160816;
-        b=kwyU6nRMcmKwCX4apYavQVyhaAWlsmMvIjehVQgA6g7qhQXj2YcBV+wgv6e06Dt5EK
-         e/Qg/6ehSFfAjFW9W8+oAlGwOK6YKW6+FoZdVkF4Em/KKXT8Pa31PTrbK+4jdK1DapLI
-         sYlSyw5IOX9Jb1q5iB9ygEphb88sOd0K+NmzTFWta+o9kwIXDXcGuoOWumt2JEQ+y5PY
-         m5WPtO6v8ng+lvcHYGEnsp84JDvz055QV6Ahw6SF8oIeFbquXGYiH5H5z37Fq0CRWUV4
-         QzS/w/R94V9u88KdP9YidpbvkWQbuaPncASUtxBjjHFurLiS++PRMseb3YAlhnTRmhvl
-         ZnUg==
+        b=tZWQXtnHAPmi65jf88uw9sEqKZnn4WyACkEiuN26DdYcYUZSGsmoX9Az0F8tvegzDt
+         sTyIBsbm9LdMKZz80u+8P2+d3LlpM+yBGaYTvG+YlDBM37nqzYunbuqI5nhsV3moc3uh
+         D+1vGRNKyh7Kpock6ApzXBYQz9tgIXIx1SSoU4a5gvwXaVWBkEzPJl2CdT/v8Ttwkf5h
+         9fmyMtn6qVyb6eIe94zD9WFWuw7YWEcgnVRxaA0l1pgQhiZucj7DS0gMoT/CTnQdfNcY
+         L3tNJm8BVpOCB5tNpIxPx66cvEAa9gglpnLCm1VNyN73ipgGG0cfZp3Qg0iYWEsRJOPF
+         e+Sg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
-        bh=w3qFBJ4lZKPtX8B25djV/LPhr1pfsJvM9Pvk5hSVTFs=;
-        b=f4TKnJr20lSC1mrzdSFrt6pr8f49UrhiggWDRyNbd3wfesXxDgK7M7m1wm1IanxspQ
-         e9GqSAFjw1MVADaoxi+BcPszfMIC/ekZoR1kWtnkV3gRjXo/2bgdXqbnyzUyC4IcGXD/
-         8hrzps/HvYjW4J5GX26JyvPzAq3KpwfdjO4saUrEkGeQ37kX4GGkxadZJnAbBHRBN37w
-         CuRW40OQCdiPVY7FkPRCFRr1ywpptpCDAnlGQG5t3z81n3TJjd+dhdJph10ZGVK6ZgC/
-         O8NlpZfSnRe7CfAjobquHU/HijA/mml41VzTckXcypD/5YVbypXUdn7CaJ7OdZBMKUGm
-         mtiw==
+         :list-unsubscribe:list-id:precedence:cc:to:from:subject:references
+         :mime-version:message-id:in-reply-to:date:dkim-signature;
+        bh=v6m/uiCVYIYdHovo0UBGiIH0rA+CsNRH+5x6YrDpxrQ=;
+        b=Q7MPEVSm4BewElCJGQ4Paesu1aYDoIT6p+g6sb2qlFfYWRwzh4J4nXbwYwnadNjJ3b
+         d60BiAVaPfuX8DK+vHb4/5+28T29QbKx0ekILpCxY0XjuZgo6CjJm3LskvWOMDv9e+Er
+         BZJwJP7cOGbVFXh5IJCEVAWvt+4PPPK5gQYEYubwMYW0yogAfR5IEMXY5I/s7r5e/RiZ
+         uIdWiirLIBRw8JszSxyTQyqGEctGyEL6ESBAhUpq/6ZVs94mHAC+FMB79XDpWdxCUsOd
+         NAjNRk3Jj0IV0jg66Jx2SFR/Rp4NW0CtcjaTIhaFlZR/4EW4S0tzAaMc2YzcZhOjMA0F
+         wdtA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=MfnKm7Pb;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@google.com header.s=20210112 header.b=mf0oDkX7;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id f4-20020a0562141d2400b004735e62133fsi1148930qvd.105.2022.07.14.08.10.45
+        by mx.google.com with ESMTPS id n68-20020a37bd47000000b006b5c05a9eafsi1424261qkf.167.2022.07.14.11.36.45
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 14 Jul 2022 08:10:46 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 14 Jul 2022 11:36:46 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=MfnKm7Pb;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:42692 helo=lists1p.gnu.org)
+       dkim=pass header.i=@google.com header.s=20210112 header.b=mf0oDkX7;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
+Received: from localhost ([::1]:57562 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1oC0UH-00088H-Ga
-	for alex.bennee@linaro.org; Thu, 14 Jul 2022 11:10:45 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:43394)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1oC3hd-0005Z6-Ib
+	for alex.bennee@linaro.org; Thu, 14 Jul 2022 14:36:45 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37092)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1oC0RV-0005Jk-AP
- for qemu-devel@nongnu.org; Thu, 14 Jul 2022 11:07:53 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:49156)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1oC0RO-0000RS-C9
- for qemu-devel@nongnu.org; Thu, 14 Jul 2022 11:07:51 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1657811264;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding;
- bh=w3qFBJ4lZKPtX8B25djV/LPhr1pfsJvM9Pvk5hSVTFs=;
- b=MfnKm7Pb7agpxP14EWtY1iSvnNBMp33Put/Cn9w7lDv0uKi0siWuL4EWQc8p47xuNGRyM2
- ofs804489PFI5Jn6UBd2OjNwqnzuOx/VkCEtSQ6QIYyLze0PJWxc4p3q95dl493HgCgwNC
- Skd594kC/1dnsdhFgPSIam+g7y8Og8g=
-Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
- [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-643-CCwJ4NcYMWSlE0ZXqGRmug-1; Thu, 14 Jul 2022 11:07:40 -0400
-X-MC-Unique: CCwJ4NcYMWSlE0ZXqGRmug-1
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.rdu2.redhat.com
- [10.11.54.6])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 9D70E188499F;
- Thu, 14 Jul 2022 15:07:39 +0000 (UTC)
-Received: from localhost.localdomain.com (unknown [10.33.36.128])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 4D6D12166B2A;
- Thu, 14 Jul 2022 15:07:37 +0000 (UTC)
-From: =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>
-To: qemu-devel@nongnu.org
-Cc: qemu-s390x@nongnu.org, Thomas Huth <thuth@redhat.com>, qemu-arm@nongnu.org,
- David Hildenbrand <david@redhat.com>, Cornelia Huck <cohuck@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- Peter Maydell <peter.maydell@linaro.org>,
- =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>
-Subject: [PATCH 0/3] target: RFC: display deprecation note for '-cpu help'
-Date: Thu, 14 Jul 2022 16:07:32 +0100
-Message-Id: <20220714150735.1835166-1-berrange@redhat.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 2.78 on 10.11.54.6
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=berrange@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -28
-X-Spam_score: -2.9
-X-Spam_bar: --
-X-Spam_report: (-2.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.082,
+ (Exim 4.90_1) (envelope-from
+ <3X2DQYggKCH4ywjcqvujiqqing.eqosgow-ctopqpipw.qti@flex--wuhaotsh.bounces.google.com>)
+ id 1oC3Zz-0005nE-CN
+ for qemu-arm@nongnu.org; Thu, 14 Jul 2022 14:28:51 -0400
+Received: from mail-pl1-x649.google.com ([2607:f8b0:4864:20::649]:46607)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from
+ <3X2DQYggKCH4ywjcqvujiqqing.eqosgow-ctopqpipw.qti@flex--wuhaotsh.bounces.google.com>)
+ id 1oC3Zx-00085D-Sr
+ for qemu-arm@nongnu.org; Thu, 14 Jul 2022 14:28:51 -0400
+Received: by mail-pl1-x649.google.com with SMTP id
+ o5-20020a170902d4c500b0016c643623e8so583925plg.13
+ for <qemu-arm@nongnu.org>; Thu, 14 Jul 2022 11:28:49 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20210112;
+ h=date:in-reply-to:message-id:mime-version:references:subject:from:to
+ :cc; bh=v6m/uiCVYIYdHovo0UBGiIH0rA+CsNRH+5x6YrDpxrQ=;
+ b=mf0oDkX7fjw1v48O0pywLMLCuTCMDdPWLFJp44Qw4B7l6CV+7FO38XDw+8tvASslJN
+ hyUiCc6pMp5XkHZSDV6pB5dNqVKR84RW7+sV56uXOmAmZVJMkQ8gAS2UKQLCgsgoixQd
+ sxDrywkKOqe0YoIF9ggx9yMkUY9RKDTY1VkQsHC0PS3oxm0OKnAEzYyurE0CoyoQNROh
+ tGqUtCNuVp8hWnxbNFZDJUSAAdYm5+aGTSxyL3g1w8DKbtaWQQMhMARvRVXUzbe7tsN3
+ 7YTQ2b0TEw9/o9RhnQuK0sRjnrhmbAHQJcxPd1TnT94btxVhtlHuihj+6G7zfLylzPHY
+ JIBg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:date:in-reply-to:message-id:mime-version
+ :references:subject:from:to:cc;
+ bh=v6m/uiCVYIYdHovo0UBGiIH0rA+CsNRH+5x6YrDpxrQ=;
+ b=6ZdVgFSVEPq/U65/H+xcQcUzQFHI2CAKIoJk6qNxxmw1G0FUKdAw47V32cSbfFFCB4
+ qE7aG3KC0BLjLNtbAAWx3x2+iaU9qOzXBw1eRv+rXfbfJR1RuApSHj+cQY7CPxQvR2PR
+ fnE9n3DQdnUWsHC5fDgxx4Vio4ZGfwKUlyPXNTEA48Ey6vUXTIzHApS28KwpjIs1kj6P
+ gfG1cNkhZ8qRrM+wcHhcp8R8IftAIxhP7djCv6qQvemaNw9Uy3nngAE/qdsq8RrZBn92
+ peVb57xve6CdsbGpxoxtqL3hd1t8ie31ulttvZGwaVp3ZoqPRjFw25R8p8eE0hkFjZf8
+ NK8w==
+X-Gm-Message-State: AJIora9AyzIe7tzDX+mpJjqkF3egKm5TnqsspAbwCRl1/+zkfOUZ4rVw
+ VJR4uTnFFlMWAuuCOP0Ya1VD9wURvlJ3tQ==
+X-Received: from mimik.c.googlers.com ([fda3:e722:ac3:cc00:7f:e700:c0a8:4e])
+ (user=wuhaotsh job=sendgmr) by 2002:a17:90a:249:b0:1e0:a8a3:3c6c with SMTP id
+ t9-20020a17090a024900b001e0a8a33c6cmr627285pje.0.1657823327147; Thu, 14 Jul
+ 2022 11:28:47 -0700 (PDT)
+Date: Thu, 14 Jul 2022 11:28:32 -0700
+In-Reply-To: <20220714182836.89602-1-wuhaotsh@google.com>
+Message-Id: <20220714182836.89602-5-wuhaotsh@google.com>
+Mime-Version: 1.0
+References: <20220714182836.89602-1-wuhaotsh@google.com>
+X-Mailer: git-send-email 2.37.0.170.g444d1eabd0-goog
+Subject: [PATCH v5 4/8] hw/adc: Make adci[*] R/W in NPCM7XX ADC
+From: Hao Wu <wuhaotsh@google.com>
+To: peter.maydell@linaro.org
+Cc: richard.henderson@linaro.org, qemu-arm@nongnu.org, qemu-devel@nongnu.org, 
+ wuhaotsh@google.com, venture@google.com, Avi.Fishman@nuvoton.com, 
+ kfting@nuvoton.com, hskinnemoen@google.com, f4bug@amsat.org, 
+ bin.meng@windriver.com, qemu-block@nongnu.org, armbru@redhat.com, 
+ thuth@redhat.com, Titus Rwantare <titusr@google.com>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::649;
+ envelope-from=3X2DQYggKCH4ywjcqvujiqqing.eqosgow-ctopqpipw.qti@flex--wuhaotsh.bounces.google.com;
+ helo=mail-pl1-x649.google.com
+X-Spam_score_int: -95
+X-Spam_score: -9.6
+X-Spam_bar: ---------
+X-Spam_report: (-9.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01,
+ USER_IN_DEF_DKIM_WL=-7.5 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ciW2URIDd5HJ
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: AplZ1xW27+5A
 
-When querying '-cpu help' there is no presentation of fact that a
-CPU may be deprecated. The user just has to try it and see if they
-get a depecation message at runtime.  The QMP command for querying
-CPUs report a deprecation bool flag, but not the explanatory
-reason.
+Our sensor test requires both reading and writing from a sensor's
+QOM property. So we need to make the input of ADC module R/W instead
+of write only for that to work.
 
-The Icelake-Client CPU (removed in 6df39f5e583ca0f67bd934d1327f9ead2e3bd49c)
-handled this by modifying the '.notes' section to add the word
-'deprecated':
+Signed-off-by: Hao Wu <wuhaotsh@google.com>
+Reviewed-by: Titus Rwantare <titusr@google.com>
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+---
+ hw/adc/npcm7xx_adc.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-            {
-                .version = 2,
-                .note = "no TSX, deprecated",
-                .alias = "Icelake-Client-noTSX",
-                .props = (PropValue[]) {
-                    { "hle", "off" },
-                    { "rtm", "off" },
-                    { /* end of list */ }
-                },
-            },
-
-This relies on the person deprecating the CPU to remember to do this,
-and is redundant when this info is already expressed in the
-'.deprecation_note' field.
-
-This short series suggests just modifying the '-cpu help'
-formatter so that it displays the full deprecation message
-
-eg
-
-$ qemu-system-x86_64 -cpu help:
-Available CPUs:
-x86 486                   (alias configured by machine type) (deprecated: use at least 'Nehalem' / 'Opteron_G4', or 'host' / 'max')
-
-I wonder if this is too verbose, and we should just do a
-concise flag like approach, similar to QMP:
-
-$ qemu-system-x86_64 -cpu help:
-Available CPUs:
-x86 486                   (alias configured by machine type) (deprecated)
-
-leaving the full message to be displayed at runtime ? I'm slightly
-inclined to the simpler more concise output.
-
-This series touched x86_64, s390x, and aarch64 because that's all I
-personally needed from a downstream POV, but any & all of the targets
-would benefit from this. They have each implemneted the '-cpu help'
-logic independantly though, and unifying that code is not entirely
-straightforward.
-
-Daniel P. Berrangé (3):
-  target/i386: display deprecation note in '-cpu help'
-  target/s390x: display deprecation note in '-cpu help'
-  target/arm: display deprecation note in '-cpu help'
-
- target/arm/helper.c       | 10 +++++++++-
- target/i386/cpu.c         | 13 ++++++++++++-
- target/s390x/cpu_models.c | 28 +++++++++++++++++++++++-----
- 3 files changed, 44 insertions(+), 7 deletions(-)
-
+diff --git a/hw/adc/npcm7xx_adc.c b/hw/adc/npcm7xx_adc.c
+index 47fb9e5f74..bc6f3f55e6 100644
+--- a/hw/adc/npcm7xx_adc.c
++++ b/hw/adc/npcm7xx_adc.c
+@@ -242,7 +242,7 @@ static void npcm7xx_adc_init(Object *obj)
+ 
+     for (i = 0; i < NPCM7XX_ADC_NUM_INPUTS; ++i) {
+         object_property_add_uint32_ptr(obj, "adci[*]",
+-                &s->adci[i], OBJ_PROP_FLAG_WRITE);
++                &s->adci[i], OBJ_PROP_FLAG_READWRITE);
+     }
+     object_property_add_uint32_ptr(obj, "vref",
+             &s->vref, OBJ_PROP_FLAG_WRITE);
 -- 
-2.36.1
+2.37.0.170.g444d1eabd0-goog
 

@@ -1,110 +1,112 @@
-Received: by 2002:ac2:596f:0:0:0:0:0 with SMTP id h15csp659518lfp;
-        Thu, 14 Jul 2022 06:06:46 -0700 (PDT)
-X-Google-Smtp-Source: AGRyM1uvuxQUeBlWzoW/Sr7OFWvHlXCJQEk1mTfbCCzRywXMy5XF2sczxMM9mqHPqTB1tGMUdlcC
-X-Received: by 2002:a05:622a:1a10:b0:31e:bb0d:3d9a with SMTP id f16-20020a05622a1a1000b0031ebb0d3d9amr7831867qtb.345.1657804006091;
-        Thu, 14 Jul 2022 06:06:46 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1657804006; cv=none;
+Received: by 2002:ac2:596f:0:0:0:0:0 with SMTP id h15csp662625lfp;
+        Thu, 14 Jul 2022 06:12:55 -0700 (PDT)
+X-Google-Smtp-Source: AGRyM1u8jED7ZgHMf4nIuSwoKFW3r11T/Ugd1iJMa2dg1ZRfxT1RIb1BRfBTYkgo/8hEytFVTrvm
+X-Received: by 2002:a05:6214:19cd:b0:472:fdc3:9226 with SMTP id j13-20020a05621419cd00b00472fdc39226mr7752443qvc.81.1657804374861;
+        Thu, 14 Jul 2022 06:12:54 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1657804374; cv=none;
         d=google.com; s=arc-20160816;
-        b=TDW5G68Ynp7tGy27tpIiaq3lkA8hX9+KDdbMhoJSa1Xn0/3kLofbKRpIIfTDSHkOwu
-         qePXf+PHaMfYj+qvrhC6wPOKrNe7H9Auxkg0x5xLkbVV+Oup2tb/Sw/k3O7+YP2oWtJH
-         +nGx+/aslNpyET4VV0a1UIYJztNPQ/G9WelpIhi147gGkWcBu2CBGlcY4XbV76eXE9bK
-         D7SVaDH/aR0TuUvu+hB1buZanA5pPXoSIhvOjueA32OT/UBcrMwmCtE+Z/1CW/tr2wxO
-         wrROhiL1kl5zuG6syAEw63GtdoGkR2wKwXYO7r7F5HpRINtMDF+P1r9JvWPwzS8QrB0z
-         kuzA==
+        b=DBLpWGYjzTuViz7jborAE9iBcOfIxSFupKYCR2zrbvrrCsBpu9ljoxI/wU2aDB8uJS
+         tbxEQJCRdfqa5u+K5138CHjB7v0sgYScQ8T1MyRnR26ruvpefTpdmsiJiAmItUZKERkm
+         9dI+NB0spNAC+dE88AMS9UTL+Bud3iOFYXpBwi89zMTUfUT9C5V4xwKdc4O8hmH11ygS
+         HMJo4Yig7SVpbiq9fAhQeGayK5Dt1hfKi+WPpHEtFl02ebsxz4ej8cvchJSL2QST1NW3
+         s+oI/MS6r9PxT4If7EXcCJiHuVzoYOGBeq31/3kGKRJAttOJLG00IPZFyjwH/6/k5ZyX
+         Qovg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=Mdg9Jruk/D6blRzaGREhg7fOIzA0MUljG20KF/x/WcI=;
-        b=cplnQfArdhVN4RL3NRiLXVAdzyKOAIQJRVSHPtw/R+YLro1ps1caRtQWdJjJIfA7XY
-         lFLFB8c8kpeNp+BKgJmDmpjDf1ADvbMtBYqf4PvpG0aGkKBeNLNLyuBHp16bACNFkPTk
-         MrBB80bvKSLI4bBAXZ0e48gZlPVP/8Sd1AHPb4Eh7UWxlZuD/z2JsRXWHDFBFXoLVtZB
-         egY/mqS8S6F38UqzWde/u1UlFgsc+DeAIA0BWpT72QZHsvvxiohN1BuCjEbYGyXTQPew
-         XTz6wPLkwIIRO7V2MOa8U64DoXSf7mFCU0MPrvxvA/hWF+yYbUhgOPReNdmf6wFeY759
-         Kw9g==
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=QD27bBhlVdE43TqgGMIodY/Vyoldr8oJUxuP7kDOwK0=;
+        b=tV2dMqmjwjVcjMQsWYvCZcD0nViMqvGry4gGxSIKiREkZg9PMyYVmRia62yeLJTTCh
+         gV1/n4sYxqMnt296JW5eg3VHsJv1raS0P4uFbz7FG4FTLXe/aIuoBUsrOPr8kR3CjBXw
+         aS/E81vqiYYs8iJT/6FIYC2ipwR2c/Ey0LCZyscpdRrGoAPGnjr2qGk6Tcl8MyLoQnh8
+         +vRKeEEQo1+3daIg2ukgyxXfmzERQNQnXzAqQEyo2l3U+P0/ni9OQPYjkwxLXzoRUZJd
+         syvliWZToMprart/tO69Q+VdArIVxFLHLEwFG+dnwxbtZTqcasR+xt31A4jkRL15EoL5
+         +VRw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@quicinc.com header.s=qcdkim header.b=BZ2t+ktt;
+       dkim=pass header.i=@linaro.org header.s=google header.b=YFjn7Icr;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=quicinc.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 22-20020a370616000000b006b59da52abfsi880022qkg.705.2022.07.14.06.06.45
+        by mx.google.com with ESMTPS id o9-20020ad45c89000000b0047059799e9bsi911310qvh.70.2022.07.14.06.12.54
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 14 Jul 2022 06:06:46 -0700 (PDT)
+        Thu, 14 Jul 2022 06:12:54 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@quicinc.com header.s=qcdkim header.b=BZ2t+ktt;
+       dkim=pass header.i=@linaro.org header.s=google header.b=YFjn7Icr;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=quicinc.com
-Received: from localhost ([::1]:44606 helo=lists1p.gnu.org)
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:56082 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1oByYH-0006Ub-8E
-	for alex.bennee@linaro.org; Thu, 14 Jul 2022 09:06:45 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34190)
+	id 1oByeE-0005up-Br
+	for alex.bennee@linaro.org; Thu, 14 Jul 2022 09:12:54 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:43180)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <quic_mkurapat@quicinc.com>)
- id 1oBoCI-0004CU-I1; Wed, 13 Jul 2022 22:03:22 -0400
-Received: from alexa-out.qualcomm.com ([129.46.98.28]:7091)
- by eggs.gnu.org with esmtps (TLS1.2:RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <quic_mkurapat@quicinc.com>)
- id 1oBoCG-0001Zg-QN; Wed, 13 Jul 2022 22:03:22 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=quicinc.com; i=@quicinc.com; q=dns/txt; s=qcdkim;
- t=1657764201; x=1689300201;
- h=from:to:cc:subject:date:message-id:in-reply-to:
- references:mime-version:content-transfer-encoding;
- bh=Mdg9Jruk/D6blRzaGREhg7fOIzA0MUljG20KF/x/WcI=;
- b=BZ2t+ktts0ySXVs8MOJABw+krTPCaQwCeSjZIzl6GOsN//A4zPWRhqU3
- cY2/UK92iCcCOMk751Dj24WTBkQdkdr3JQ9ze/HgVT8AZ9k5ATdx8chOZ
- nzb+c9V8hdCGz4nvwYiClA9TLNfJWd+q0vaBuE1NTpp9o77/gUrjC2NZk I=;
-Received: from ironmsg-lv-alpha.qualcomm.com ([10.47.202.13])
- by alexa-out.qualcomm.com with ESMTP; 13 Jul 2022 18:57:08 -0700
-X-QCInternal: smtphost
-Received: from nasanex01c.na.qualcomm.com ([10.47.97.222])
- by ironmsg-lv-alpha.qualcomm.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 13 Jul 2022 18:57:08 -0700
-Received: from nalasex01a.na.qualcomm.com (10.47.209.196) by
- nasanex01c.na.qualcomm.com (10.47.97.222) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.986.22; Wed, 13 Jul 2022 18:57:07 -0700
-Received: from perseverance.qualcomm.com (10.80.80.8) by
- nalasex01a.na.qualcomm.com (10.47.209.196) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.986.22; Wed, 13 Jul 2022 18:57:06 -0700
-From: Maheswara Kurapati <quic_mkurapat@quicinc.com>
-To: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
-CC: Paolo Bonzini <pbonzini@redhat.com>, "Daniel P . Berrange"
- <berrange@redhat.com>, Eduardo Habkost <eduardo@habkost.net>, Graeme Gregory
- <quic_ggregory@quicinc.com>, Jae Hyun Yoo <quic_jaehyoo@quicinc.com>,
- Maheswara Kurapati <quic_mkurapat@quicinc.com>
-Subject: [PATCH 3/3] hw/sensor: max31785 : update the tach input based on the
- tach margin percentage
-Date: Wed, 13 Jul 2022 20:56:37 -0500
-Message-ID: <20220714015637.817066-4-quic_mkurapat@quicinc.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20220714015637.817066-1-quic_mkurapat@quicinc.com>
-References: <20220714015637.817066-1-quic_mkurapat@quicinc.com>
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1oBycg-0004Yb-Qq
+ for qemu-devel@nongnu.org; Thu, 14 Jul 2022 09:11:20 -0400
+Received: from mail-yb1-xb36.google.com ([2607:f8b0:4864:20::b36]:35820)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1oByce-0005CV-KQ
+ for qemu-devel@nongnu.org; Thu, 14 Jul 2022 09:11:17 -0400
+Received: by mail-yb1-xb36.google.com with SMTP id e69so3132202ybh.2
+ for <qemu-devel@nongnu.org>; Thu, 14 Jul 2022 06:11:15 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=QD27bBhlVdE43TqgGMIodY/Vyoldr8oJUxuP7kDOwK0=;
+ b=YFjn7IcrGhGB9m8tzO5pr+RDoH0aYApgzsYuffUtiplp+o/Yj80NawojA3iQ5LZz8n
+ yDMUr2fPreXUqW8T+2TYimEtsko5rlzaolYqOke4rQ61KgDQxuryFnFhJpMMTsflWMgY
+ OPAymon6CKC3MvtlrPSuQlyplGwI/KeO254gQAwLr3eFL4GIU0xR73j7yPkWLxadIOU3
+ 4hZBNNUHY7EZNQsngWIUvasI6igtJy/ltSfkBvx6a/9ma0vPa6/ULpm/RG9fuooVcm1k
+ j4k08RyDnCIAkqPhg4an9mcvezp1ixFu+UCSp8Y25i5PXT7uHDanXpiWoRUOXaJrKRsK
+ 1caw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=QD27bBhlVdE43TqgGMIodY/Vyoldr8oJUxuP7kDOwK0=;
+ b=ccEo9nRsU3I8uLWhUNde1WCsjHhslJnbfV7zhOb+oMK5ByiOFE9BMtHW4589/S6N39
+ 3U1VzIpQ/D7ojkyeh/JVRB/j/QIM1frevKXdTqgnjN6rd9tqLYXiEIW/22GM3zd+llcj
+ A4DZFnvADz/KYg60DVIyS2F6Tq4VDLb4+JSpjzEJztenZMj51q+PpTK+fBcbikdFiN/F
+ s96+RnblrtkT3Bi+JX0RulkwfqGWy1V+8um5Uoq/wXwXMVA2DGKz9QKLamiGf0VXBwEZ
+ tZgHrT5iOSD97WTZeRimv6AuZlguZY0006fNXAhgozWu907rLeuvW9ESCNYJMrt3dh68
+ R10A==
+X-Gm-Message-State: AJIora+elDfY1la0XqRmaRFObXvETNboYp7NGoZs7tJxrtsgYxIOZrpO
+ DAJo1ggU4eb+8QrzQDfFREeQHVqUtlU45DpJjWU6TA==
+X-Received: by 2002:a25:2f58:0:b0:66e:cf9a:6a2 with SMTP id
+ v85-20020a252f58000000b0066ecf9a06a2mr9364834ybv.193.1657804274749; Thu, 14
+ Jul 2022 06:11:14 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-Originating-IP: [10.80.80.8]
-X-ClientProxiedBy: nasanex01a.na.qualcomm.com (10.52.223.231) To
- nalasex01a.na.qualcomm.com (10.47.209.196)
-Received-SPF: pass client-ip=129.46.98.28;
- envelope-from=quic_mkurapat@quicinc.com; helo=alexa-out.qualcomm.com
-X-Spam_score_int: -43
-X-Spam_score: -4.4
-X-Spam_bar: ----
-X-Spam_report: (-4.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+References: <20220714015637.817066-1-quic_mkurapat@quicinc.com>
+ <20220714015637.817066-3-quic_mkurapat@quicinc.com>
+In-Reply-To: <20220714015637.817066-3-quic_mkurapat@quicinc.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 14 Jul 2022 14:10:35 +0100
+Message-ID: <CAFEAcA9MZ-yNSY0c7MiXex1U-t3XNzQRUwXiMhJg84tYVMeyiA@mail.gmail.com>
+Subject: Re: [PATCH 2/3] hw/sensor: max31785 : add fan status, tach target,
+ and tach input object properties
+To: Maheswara Kurapati <quic_mkurapat@quicinc.com>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, 
+ =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>, 
+ Paolo Bonzini <pbonzini@redhat.com>,
+ "Daniel P . Berrange" <berrange@redhat.com>, 
+ Eduardo Habkost <eduardo@habkost.net>,
+ Graeme Gregory <quic_ggregory@quicinc.com>, 
+ Jae Hyun Yoo <quic_jaehyoo@quicinc.com>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b36;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yb1-xb36.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_MED=-2.3, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Thu, 14 Jul 2022 09:02:08 -0400
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -118,65 +120,31 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: useup01WETtQ
+X-TUID: nBqmU8Ext75L
 
-Update the tach input based on the percentage of tach target.  The tach margin
-could be a +ve or -ve margin of the target tach rpm.
+On Thu, 14 Jul 2022 at 14:04, Maheswara Kurapati
+<quic_mkurapat@quicinc.com> wrote:
+>
+> This fix adds object properties for the FAN_COMMAND_1 (3Bh), STATUS_FANS_1_2 (81h),
+> READ_FAN_SPEED_1 (90h) registers for the MAX31785 instrumentation. An additional
+> property tach_margin_percent updates the tachs for a configured percent of
+> FAN_COMMAND_1 value.
+>
+> Register                property
+> --------------------------------------
+> FAN_COMMAND_1 (3Bh)     fan_target
+> STATUS_FANS_1_2 (81h)   status_fans_1_2
+> READ_FAN_SPEED_1 (90h)  fan_input
 
-Signed-off-by: Maheswara Kurapati <quic_mkurapat@quicinc.com>
----
- hw/sensor/max31785.c | 24 ++++++++++++++++++++----
- 1 file changed, 20 insertions(+), 4 deletions(-)
+This commit message is missing the rationale -- why do we need this?
 
-diff --git a/hw/sensor/max31785.c b/hw/sensor/max31785.c
-index 1cb31c2e82..c37b154130 100644
---- a/hw/sensor/max31785.c
-+++ b/hw/sensor/max31785.c
-@@ -71,7 +71,7 @@
- /* FAN_CONFIG_1_2 */
- #define MAX31785_MFR_FAN_CONFIG                0xF1
- #define MAX31785_FAN_CONFIG_ENABLE             BIT(7)
--#define MAX31785_FAN_CONFIG_RPM_PWM            BIT(6)
-+#define MAX31785_FAN_CONFIG_FAN_MODE_RPM       BIT(6)
- #define MAX31785_FAN_CONFIG_PULSE(pulse)       (pulse << 4)
- #define MAX31785_DEFAULT_FAN_CONFIG_1_2(pulse)                                 \
-     (MAX31785_FAN_CONFIG_ENABLE | MAX31785_FAN_CONFIG_PULSE(pulse))
-@@ -316,6 +316,8 @@ static int max31785_write_data(PMBusDevice *pmdev, const uint8_t *buf,
-                                uint8_t len)
- {
-     MAX31785State *s = MAX31785(pmdev);
-+    int16_t   tach_margin = 0;
-+
-     if (len == 0) {
-         qemu_log_mask(LOG_GUEST_ERROR, "%s: writing empty data\n", __func__);
-         return -1;
-@@ -342,9 +344,23 @@ static int max31785_write_data(PMBusDevice *pmdev, const uint8_t *buf,
-     case PMBUS_FAN_COMMAND_1:
-         if (pmdev->page <= MAX31785_MAX_FAN_PAGE) {
-             pmdev->pages[pmdev->page].fan_command_1 = pmbus_receive16(pmdev);
--            pmdev->pages[pmdev->page].read_fan_speed_1 =
--                ((MAX31785_DEFAULT_FAN_SPEED / MAX31785_DEFAULT_FAN_MAX_PWM) *
--                pmdev->pages[pmdev->page].fan_command_1);
-+            if ((pmdev->pages[pmdev->page].fan_config_1_2 &
-+                 MAX31785_FAN_CONFIG_FAN_MODE_RPM)
-+                  == MAX31785_FAN_CONFIG_FAN_MODE_RPM) {
-+                /* calculate the tach margin (+ve or -ve) */
-+                tach_margin = (int16_t)pmdev->pages[pmdev->page].fan_command_1 *
-+                        ((float)s->tach_margin_percent[pmdev->page] / 100.0);
-+
-+                /* set the tach */
-+                pmdev->pages[pmdev->page].read_fan_speed_1 =
-+                 (uint16_t)(pmdev->pages[pmdev->page].fan_command_1 +
-+                            tach_margin);
-+            } else {
-+                /* pwm mode */
-+                pmdev->pages[pmdev->page].read_fan_speed_1 =
-+                  ((MAX31785_DEFAULT_FAN_SPEED / MAX31785_DEFAULT_FAN_MAX_PWM) *
-+                   pmdev->pages[pmdev->page].fan_command_1);
-+            }
-         }
-         break;
- 
--- 
-2.25.1
+I am also not sure that we should be defining properties that are
+just straight 1:1 with the device registers. Compare the way we
+handle temperature-sensor values, where the property values are
+defined in a generic manner (same units representation) regardless
+of the underlying device and the device's property-set-get implementation
+then handles converting that to and from whatever internal implementation
+representation the device happens to use.
 
+thanks
+-- PMM

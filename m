@@ -1,106 +1,103 @@
-Received: by 2002:ac2:596f:0:0:0:0:0 with SMTP id h15csp791412lfp;
+Received: by 2002:ac2:596f:0:0:0:0:0 with SMTP id h15csp791411lfp;
         Thu, 14 Jul 2022 11:28:37 -0700 (PDT)
-X-Google-Smtp-Source: AGRyM1uaxrFIHvaQx0LTXWw1LWGjATVZgSs7AG1WJGmD0r5v19hMFutDl/s5HBQoVCFFU4rXEZBy
-X-Received: by 2002:ac8:5c54:0:b0:31d:2b08:b9a with SMTP id j20-20020ac85c54000000b0031d2b080b9amr9287511qtj.281.1657823317081;
-        Thu, 14 Jul 2022 11:28:37 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1657823317; cv=none;
+X-Google-Smtp-Source: AGRyM1sgJ8cT9f+72K+/VyKtjIEvct8UUvBRxSNTv0y4JXeAZyF9gogw9IcWELFkNZUV/n0g26l2
+X-Received: by 2002:a05:620a:942:b0:6b5:c733:eeb6 with SMTP id w2-20020a05620a094200b006b5c733eeb6mr1841935qkw.473.1657823316973;
+        Thu, 14 Jul 2022 11:28:36 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1657823316; cv=none;
         d=google.com; s=arc-20160816;
-        b=Xt1n/qTE9dt6DpekNQb7BkeuAYmXgoXFaibSZJM5SK4cOyKbR+4jrP6Ogf8VwTicPT
-         0ebH42VjgDNY1ITCmQQAVUrhXH47C8JTiR/aUQZPyn2pWuv0Jn27BKEEufBcRjhaerjS
-         Vy4yvn564FesF115YNxzF9PNIdm9OANTNwx/Gm9dDL8vDh+tHs71NDsjTyCnXQiv1yn7
-         I54UR4D9ftJS25QkPTXUL29Gl1DN2MPLUUJ1bJgrQWYAtVFxmDrDQ0w+p1Gb29yMLnzt
-         hHGUEihui/ha08D/G2wQjAGE1yDzoRWK5+ro0G1Pv5oRPeE1HKpl3p+zxrgLvpRt6Af0
-         N3Qw==
+        b=sQQkKTQIRww6sXpeqLdl9xFOFEDNVSG1591n5/EEL0RjH9oOMFT6Qhg39tPnTpb5om
+         R4cqwgHkNhmNjbIP1W/3vRtfewjresB3vBorgddRWqy3UAqKetPMW7TRQLs6AQFsw2SN
+         l3wgUDIV4uGWjqsunK3z+29OrzfgI7RFNZVCFWcCwkup3Tfoawp6zmFhxR7f1QffmHjn
+         hQuOpd0AnwGAGFyd+aqzCMWFFoUC5MDeCJRA3HZNmAAyLQ8/TC0T9BzNUGowysQ9kPBY
+         f5iMMnBF61ikH029cnA0kLa361jP5W+AXCThoA5GjYciOgrQjFbmMih4WOfSdVqcXXzD
+         Vfhw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:from:subject:references
-         :mime-version:message-id:in-reply-to:date:dkim-signature;
-        bh=vhcn9HX+W8BDC3zc9EzHTKhU6VuXS2Qk41Wg69c1pG8=;
-        b=rqZQ0b1VoKwfxmeXABPoADANpNPVT39A3el/QTeS1+Zm0Fb4SvIwI2jIk6DE4tPfd+
-         XMEQ0Egf49JVPZJ9bWwghAFBTV3szLcyLlWt3xD5+cesXOEBh6L+4lrV5ehbFb2s7SKD
-         cdBGCZ4IQ73suBcVxfihq3+kbrj53Hnh/cqoM3BoZDLX9R4B8ir56gOXNfmwGOVany9Z
-         3uHOUqpoGmweXupbrMwi3kO2TgrN2yizF7pHiK+yOIozpKkwSgqGjS0ncY4zbdJthNM1
-         kBejjbbnP/aiAJir6A4bgmw/B94B96apARs0/fOsrO2mOMMbuYIQProGx/E49Om+uDjU
-         xjEA==
+         :list-unsubscribe:list-id:precedence:cc:to:from:subject:mime-version
+         :message-id:date:dkim-signature;
+        bh=gV+TyTQO6jOPvTt4hw3npsX3ehauWxm2nzUt3iPAaNg=;
+        b=F9eHRZvdMaXdohQHMQHP6S+OEphBrJq96gjbwu1uCL2BHFDzcgV2rlaFKoA9VvrODs
+         tu9RJzQ6DQvKQvWJ4VgkNHPh55FsP5ryrjk7513TUYJ0gWaxI2t5Au7E1lG6SxcPaFHK
+         mKg+Md193bATI9rXmgdmfrkg27C3hDaIeZQ1plhSyXrrCcjZZzU5451hgt1AclDawyKI
+         g2X53ue/CU5EGBP0NY/fBq1xpmFZyFIkn0Sl1LWP/lysCj/NOR9ZRTZK5y4GdUohFudh
+         q0//ejgOBcb6GJ71qpL+/7juNcYMG0INFeKn7gqYYdad9ASELQgLbUWrqbA3kIS3+2UO
+         t6wg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@google.com header.s=20210112 header.b=tBQdneFk;
+       dkim=pass header.i=@google.com header.s=20210112 header.b=kLGYQTOl;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id k15-20020ad45bef000000b00473413b293dsi1237863qvc.503.2022.07.14.11.28.36
+        by mx.google.com with ESMTPS id q11-20020a05620a2a4b00b006b21f49f135si1140638qkp.37.2022.07.14.11.28.36
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 14 Jul 2022 11:28:37 -0700 (PDT)
+        Thu, 14 Jul 2022 11:28:36 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@google.com header.s=20210112 header.b=tBQdneFk;
+       dkim=pass header.i=@google.com header.s=20210112 header.b=kLGYQTOl;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
-Received: from localhost ([::1]:43878 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:43872 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1oC3Zk-0004Mm-GA
+	id 1oC3Zk-0004MZ-F0
 	for alex.bennee@linaro.org; Thu, 14 Jul 2022 14:28:36 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:36544)
+Received: from eggs.gnu.org ([2001:470:142:3::10]:36526)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from
- <3MGDQYggKCE8DByr5A9yx55x2v.t537v3B-r83454x4B.58x@flex--wuhaotsh.bounces.google.com>)
- id 1oC3ZE-0004JF-B0
- for qemu-arm@nongnu.org; Thu, 14 Jul 2022 14:28:04 -0400
-Received: from mail-pj1-x1049.google.com ([2607:f8b0:4864:20::1049]:34712)
+ <3L2DQYggKCE4CAxq498xw44w1u.s426u2A-q72343w3A.47w@flex--wuhaotsh.bounces.google.com>)
+ id 1oC3ZD-0004IW-Qk
+ for qemu-arm@nongnu.org; Thu, 14 Jul 2022 14:28:03 -0400
+Received: from mail-pg1-x54a.google.com ([2607:f8b0:4864:20::54a]:35651)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from
- <3MGDQYggKCE8DByr5A9yx55x2v.t537v3B-r83454x4B.58x@flex--wuhaotsh.bounces.google.com>)
- id 1oC3ZC-0007Ml-OJ
- for qemu-arm@nongnu.org; Thu, 14 Jul 2022 14:28:04 -0400
-Received: by mail-pj1-x1049.google.com with SMTP id
- rm8-20020a17090b3ec800b001f07b25d636so1647582pjb.1
+ <3L2DQYggKCE4CAxq498xw44w1u.s426u2A-q72343w3A.47w@flex--wuhaotsh.bounces.google.com>)
+ id 1oC3ZC-0007KY-2N
+ for qemu-arm@nongnu.org; Thu, 14 Jul 2022 14:28:03 -0400
+Received: by mail-pg1-x54a.google.com with SMTP id
+ 9-20020a631449000000b00412b1418c79so1591931pgu.2
  for <qemu-arm@nongnu.org>; Thu, 14 Jul 2022 11:28:01 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20210112;
- h=date:in-reply-to:message-id:mime-version:references:subject:from:to
- :cc; bh=vhcn9HX+W8BDC3zc9EzHTKhU6VuXS2Qk41Wg69c1pG8=;
- b=tBQdneFk1mZ3l+qSjTrc7swcXUrArsAjIK7JSlXHfs9mMU1T+GXX+1JzNeRPZUVhLZ
- 8fphVp/crtIfCay4H/u7cwDF8cRdum8s1gq4LIRni/jZcdbb+Kvm2wKHBUHKNjiSfjcF
- k+v4VWkRUQFbNfdbo3DJMwxJ/LeXocq6r2qpliEyrdws0LbtQEHosChiWsdKXKEQoKEH
- steCSxWKWMDdhQ53lYADXQajyKaOo6SioTNHvxIiZn8y8Txc/Jrl/zs576JRo5W/ozxS
- r5+ALQyOia4QG4+jnef3SC0Juv18jMGKyHqaJw2tBSpZvllcjEr3O0DHjoIbOonP+gyC
- WQhQ==
+ h=date:message-id:mime-version:subject:from:to:cc;
+ bh=gV+TyTQO6jOPvTt4hw3npsX3ehauWxm2nzUt3iPAaNg=;
+ b=kLGYQTOltKFMIWpKXDHPPMGzDvYNwzq0N+zsA07XjNzJemKSRW4jWvnDF1nc77z9sn
+ 8mx5tafTnJOuG39WxfAvI3JAPNfwuv+o2mZaks+tu2SmkuvXR2W2k0uGgTNvY4e2g2VT
+ cpMgmgTOe0FwYQPgv9SygYJFNwpfPf2q+MjO7NmfF7JW4g43+ohvlWze8PlMGPEmLJFp
+ VL66VpkZQj24+mRSKyUExeI4xWWZAlBbn6Jk384lQ0gFDF6KShh7HQG9rugmXiBaqR+I
+ INDs7v69MQyaQ6MTvade7dDSxDfu8RTDTq1q1mDWsG/iQF8NnecNkI3Jjp3c/2HxoqWw
+ MPKw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:date:in-reply-to:message-id:mime-version
- :references:subject:from:to:cc;
- bh=vhcn9HX+W8BDC3zc9EzHTKhU6VuXS2Qk41Wg69c1pG8=;
- b=hzxdT4035tqyibr1XZmV0q55C/sLI1IIBjYE0dxU39W3CxPCrLSpAB7XmOwd4L8R5Q
- haM+ZhICohzOMvdwN6r+bmSp+88+g/hfV18Hy7rvLhPKGuS1k3bEJ8HtcTFcmIxLHpsY
- Fw9DiMVWoCVeg3xmIqwDuOWyETxNSxyiEGl15JiEm3LWul+UZ1e8BD01xBgKcMJ/U+0Z
- UxamV3z2Jnt4Kl5AURbymA5LBUbbFWV5OpiooPz4OZzl5oYIQMZMtDksMAJa5/fmqshd
- ULZb+6QdsylC11QggfIYDlBjcFysf8/kg81YDgrnhfbwEy4g15OE+3iT8Uc5fuQbdSMy
- Xg0Q==
-X-Gm-Message-State: AJIora+TstLJky8tRigpmtEU9Lbj1rrhdWyZaVaP/sxAT0acMaNZDdd0
- 56TO8ldNASmQuw7fJNR9CdL+eAnoyP0r7g==
+ h=x-gm-message-state:date:message-id:mime-version:subject:from:to:cc;
+ bh=gV+TyTQO6jOPvTt4hw3npsX3ehauWxm2nzUt3iPAaNg=;
+ b=cywoYKkvPB5NAQCltCOBNOihaPCRZPY9NLT9+xDTVkzz1i3PsfzLZ8beQ7s3K427qH
+ 3Njtz9mMLaeYTmnRSHO7Q97/PnveR+Aag7jvEYA+BTpdq5xNk/yCBrqZ5Ip0ahzIg6Gp
+ je5ZNlP8bnvODfPdYSWK0vXcpDiFYoNO+ZDabER6D47ZcneRJshcFt8ZlnCC8eq3wDY0
+ MGO4zw/LkyeTzInkRcqhXe8LA+HHvPIa5s38Bsuos6mIWH3vKvufSXJZB+hA6dlq/Qyi
+ Y4fbw/yClGvUTWNHbaGt3aHgDa3ZQS/TqCnk1EoUCgjRPZ/+UnsICyOJzH5+Oc2wwsR1
+ h9TA==
+X-Gm-Message-State: AJIora8v/r5yh4SVCSj31LIN43J/5XGI+XBGd2H5NwBa12whemWEl0Bp
+ uoOPAdNYwbm0OL0cFzqBt2funbmHewTIQQ==
 X-Received: from mimik.c.googlers.com ([fda3:e722:ac3:cc00:7f:e700:c0a8:4e])
- (user=wuhaotsh job=sendgmr) by 2002:a62:6183:0:b0:52a:c31d:11b7 with SMTP id
- v125-20020a626183000000b0052ac31d11b7mr9562442pfb.74.1657823280730; Thu, 14
- Jul 2022 11:28:00 -0700 (PDT)
-Date: Thu, 14 Jul 2022 11:27:40 -0700
-In-Reply-To: <20220714182756.85664-1-wuhaotsh@google.com>
-Message-Id: <20220714182756.85664-2-wuhaotsh@google.com>
+ (user=wuhaotsh job=sendgmr) by 2002:a17:903:2301:b0:16c:58a3:639f with SMTP
+ id d1-20020a170903230100b0016c58a3639fmr9608024plh.122.1657823279143; Thu, 14
+ Jul 2022 11:27:59 -0700 (PDT)
+Date: Thu, 14 Jul 2022 11:27:39 -0700
+Message-Id: <20220714182756.85664-1-wuhaotsh@google.com>
 Mime-Version: 1.0
-References: <20220714182756.85664-1-wuhaotsh@google.com>
 X-Mailer: git-send-email 2.37.0.170.g444d1eabd0-goog
-Subject: [PATCH 1/8] hw/i2c: Clear ACK bit in NPCM7xx SMBus module
+Subject: [PATCH 0/8] Misc NPCM7XX patches
 From: Hao Wu <wuhaotsh@google.com>
 To: peter.maydell@linaro.org
 Cc: richard.henderson@linaro.org, qemu-arm@nongnu.org, qemu-devel@nongnu.org, 
  wuhaotsh@google.com, venture@google.com, Avi.Fishman@nuvoton.com, 
  kfting@nuvoton.com, hskinnemoen@google.com, f4bug@amsat.org, 
  bin.meng@windriver.com, qemu-block@nongnu.org, armbru@redhat.com, 
- thuth@redhat.com, Titus Rwantare <titusr@google.com>
+ thuth@redhat.com
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1049;
- envelope-from=3MGDQYggKCE8DByr5A9yx55x2v.t537v3B-r83454x4B.58x@flex--wuhaotsh.bounces.google.com;
- helo=mail-pj1-x1049.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::54a;
+ envelope-from=3L2DQYggKCE4CAxq498xw44w1u.s426u2A-q72343w3A.47w@flex--wuhaotsh.bounces.google.com;
+ helo=mail-pg1-x54a.google.com
 X-Spam_score_int: -95
 X-Spam_score: -9.6
 X-Spam_bar: ---------
@@ -123,32 +120,73 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 6Xtovmg9sqhn
+X-TUID: siW8PtsMgeJT
 
-The ACK bit in NPCM7XX SMBus module should be cleared each time it
-sends out a NACK signal. This patch fixes the bug that it fails to
-do so.
+[NOTE: I'm reviving a bunch of patches that was in the process of
+upstreaming a while ago but paused.]
 
-Signed-off-by: Hao Wu <wuhaotsh@google.com>
-Reviewed-by: Titus Rwantare <titusr@google.com>
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
----
- hw/i2c/npcm7xx_smbus.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+This patch set contains a few bug fixes and I2C devices for some
+NPCM7XX boards.
 
-diff --git a/hw/i2c/npcm7xx_smbus.c b/hw/i2c/npcm7xx_smbus.c
-index e7e0ba66fe..f18e311556 100644
---- a/hw/i2c/npcm7xx_smbus.c
-+++ b/hw/i2c/npcm7xx_smbus.c
-@@ -270,7 +270,7 @@ static void npcm7xx_smbus_recv_byte(NPCM7xxSMBusState *s)
-     if (s->st & NPCM7XX_SMBCTL1_ACK) {
-         trace_npcm7xx_smbus_nack(DEVICE(s)->canonical_path);
-         i2c_nack(s->bus);
--        s->st &= NPCM7XX_SMBCTL1_ACK;
-+        s->st &= ~NPCM7XX_SMBCTL1_ACK;
-     }
-     trace_npcm7xx_smbus_recv_byte((DEVICE(s)->canonical_path), s->sda);
-     npcm7xx_smbus_update_irq(s);
+Patch 1~2 fix a problem that causes the SMBus module to behave
+incorrectly when it's in FIFO mode and trying to receive more than
+16 bytes at a time.
+
+Patch 3 fixes a error in a register for ADC module.
+
+Patch 4 makes the ADC input to be R/W instead of write only. It allows
+a test system to read these via QMP and has no negative effect.
+
+Patch 5 adds a new blockdev IF type IF_OTHER.
+
+Patch 6 allows at24c_eeprom_init to take a bus as parameter so it can
+be used by more use cases (e.g. behind an I2C mux.)
+
+Patch 7 allows at24c_eeprom_init to take a drive as property, similar
+to sdhci_attach_device().
+
+Patch 8 uses the function defined in patch 5 to add the EEPROM and other
+I2C devices for Quanta GBS board.
+
+-- Changes since v4:
+1. Add comments to patch 5.
+2. Split patch 6 into 2 patches according to the feedback.  Each patch does it own task.
+
+-- Changes since v3:
+1. Add a new blockdev IF type IF_OTHER.
+2. Use IF_OTHER instead of IF_NONE.
+
+-- Changes since v2:
+1. Dropped patch 7.
+2. Drop an extra variable in patch 5.
+
+-- Changes since v1:
+1. Rewrote patch 5 to implement the function in NPCM7xx board file instead
+   of the EEPROM device file.
+2. Slightly modify patch 6 to adapt to the changes and QEMU comment style.
+3. Squash patch 7 into patch 5 to make it compile.
+4. Add a new patch 7.
+
+Hao Wu (7):
+  hw/i2c: Clear ACK bit in NPCM7xx SMBus module
+  hw/i2c: Read FIFO during RXF_CTL change in NPCM7XX SMBus
+  hw/adc: Fix CONV bit in NPCM7XX ADC CON register
+  hw/adc: Make adci[*] R/W in NPCM7XX ADC
+  blockdev: Add a new IF type IF_OTHER
+  hw/arm: npcm8xx_boards: EEPROMs can take bus as parameter
+  hw/arm: Set drive property for at24c eeprom
+
+Patrick Venture (1):
+  hw/arm: quanta-gbs-bmc add i2c devices
+
+ blockdev.c                     |   4 +-
+ hw/adc/npcm7xx_adc.c           |   4 +-
+ hw/arm/npcm7xx_boards.c        | 102 ++++++++++++++++++++-------------
+ hw/i2c/npcm7xx_smbus.c         |   8 +--
+ include/sysemu/blockdev.h      |   1 +
+ tests/qtest/npcm7xx_adc-test.c |   2 +-
+ 6 files changed, 73 insertions(+), 48 deletions(-)
+
 -- 
 2.37.0.170.g444d1eabd0-goog
 

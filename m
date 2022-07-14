@@ -1,117 +1,117 @@
-Received: by 2002:ac2:596f:0:0:0:0:0 with SMTP id h15csp887402lfp;
-        Thu, 14 Jul 2022 16:23:50 -0700 (PDT)
-X-Google-Smtp-Source: AGRyM1s+iS5/QVs7XDAtgjGCKtCgSk+u2RNSgIZxgP5DfxLo+Df/ZNHrheOd5YzITMTVtPKWiLIh
-X-Received: by 2002:ae9:eb08:0:b0:6b5:cc8a:a041 with SMTP id b8-20020ae9eb08000000b006b5cc8aa041mr1255139qkg.413.1657841030287;
-        Thu, 14 Jul 2022 16:23:50 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1657841030; cv=none;
+Received: by 2002:ac2:596f:0:0:0:0:0 with SMTP id h15csp887849lfp;
+        Thu, 14 Jul 2022 16:25:31 -0700 (PDT)
+X-Google-Smtp-Source: AGRyM1t7b1AenoDBmw16V9kNEmOqka7Ul0o+jQnmDZHh68O+KQupDebVLx0hetbjJq0KZXDnS54K
+X-Received: by 2002:ac8:5b90:0:b0:31e:b9fb:791a with SMTP id a16-20020ac85b90000000b0031eb9fb791amr10301549qta.135.1657841131250;
+        Thu, 14 Jul 2022 16:25:31 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1657841131; cv=none;
         d=google.com; s=arc-20160816;
-        b=dm6u+4RD1tmHQakCc22+5ot2EhMlrZQki7JdliproMnFdLH2qI6SL+ZiQ0HycFYsYK
-         Fm6lR9SjRSHPpZBgKX5IHuP3Sz/Jvybsb3InhW/bJj5ApKTPVdMq1aSFVqqxPXeLexiV
-         DZEol0cwuhoK7yqBbzkMogofmrWtzAFUXbfc59XSzUl9u01bc+3a7URn6WE9aDp++m7W
-         hWuyohLUmDBVyf8CPqKjXDbp0YUT663JwSuRJPdS2kuWtZ7Mto+LpLaOnoNvEOBJ5Qxg
-         EUCY7jxqFeOGV4mp1yUGrhHLi9qj9I+uxX81M3SxQd15QGM0PPr5akgyaQ+3p5b0KGJw
-         zTjw==
+        b=OGEd3EQuzz5xWfXmiDMzxZdJBQZYAHH2GMCNRYpuwsUAxafjw+Y77O9wiNg3GAeHwL
+         YQBDwRg2M3oaSCWe2gwIDwSUG2Lwg1fhD8jUJivSvOE2sOvQmtXsULLtuYkpQVWIN9ff
+         rlkvbkbyGwBdmlkqHWUIsOpHymjF706it4vq9FigngAPWRX15kjXb0YUp73AipZYATHF
+         Pef41fvqR+n8V8164oXesxDwgmTNzbYS7nkO3kFQDKrq2N9911DkXNB6P0rPk98SR8Tp
+         M9YO+rXAtXUBsURmFPVR/2PvQ4v2Lk8gte1E4UNw3ke88/Aw1e6GnJNGzUxgYmJxjgVv
+         jD+w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :in-reply-to:from:references:cc:to:content-language:subject
          :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=LzvX9q6R52TkTLuhnBqHqW2KLCPqvPUV7UKwMbTEkfE=;
-        b=I7V+mqlA8u71Ibgc3p+tb6V9tll5gBxI+2WByqy8CNawkyD6uFaPPADiPSOJvuVILV
-         PJ0v1ObOX82761K/OxPJ9iZWa5TbW+775fVAOuRcdGacY5Kor/TK9TabQH442Y7UBYya
-         6MN0l6EkXvuh3CHpsjxGUj3gduCXZ71eiJC4bfwtl7CIcx1AmbFxlWeVFeqWpWEpLwtz
-         FUB5SC4VX7Z3Sk4vQuUjBm5xluhERcVK4zZqcvHvJaDf4u0W2sGqlCx40XVqdJ/W8qDG
-         jA1gpRgZDiThiZgaKS/HyahP2sLn3wMzC1x3ykT4nCH89q0fp2t0/l19yr6mQR0HSJVG
-         zPjQ==
+        bh=DYHA0vS6o2loJ0ayUbzePztWuoDPFLJm7DKTMngrwyw=;
+        b=SF7JZuF+1WijVzlFEgo7HO88LM4Dh4Ej4AO8CI+pQOaCB46dRihuShjUOiqklz7m5q
+         6UB6RVPj4dTqBx7YWPIbnzL0j1aUJOqg2r5PheIDIG2TZ2BjsCOT9VUYWxp3ohJ2DSWb
+         FKlgJVYA9+2BpsEtvdul9DEJcPapU3grO0Xp/OKgVd0GQwygmY3KpLSFiArzYGJc2yZQ
+         kvgQWTusGkoCz0ETPlkz7EsmjK8dYCxp+ILa8GNesvi8dnUJ/HLLNHMB/Nv4dOfsD2kH
+         HsZ2VL/OOV9JHHB2rLNcW6EdoQdxMF8jEw57KIKYZbQRt+mQCxCpPeGvbrvAKZQWIH7e
+         0smQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=BSSqgGpo;
+       dkim=pass header.i=@linaro.org header.s=google header.b=CzD14DgX;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e68-20020a37b547000000b006b599512c02si1649077qkf.159.2022.07.14.16.23.50
+        by mx.google.com with ESMTPS id 2-20020a05620a078200b006b56da882bbsi1728952qka.158.2022.07.14.16.25.31
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 14 Jul 2022 16:23:50 -0700 (PDT)
+        Thu, 14 Jul 2022 16:25:31 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=BSSqgGpo;
+       dkim=pass header.i=@linaro.org header.s=google header.b=CzD14DgX;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:56046 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:58542 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1oC8BR-0001Z5-QK
-	for alex.bennee@linaro.org; Thu, 14 Jul 2022 19:23:49 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:40506)
+	id 1oC8D4-0003Jq-QA
+	for alex.bennee@linaro.org; Thu, 14 Jul 2022 19:25:30 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:40814)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1oC8BF-0001X1-UR
- for qemu-arm@nongnu.org; Thu, 14 Jul 2022 19:23:37 -0400
-Received: from mail-io1-xd2c.google.com ([2607:f8b0:4864:20::d2c]:39753)
+ id 1oC8Cw-0003IQ-MG
+ for qemu-arm@nongnu.org; Thu, 14 Jul 2022 19:25:22 -0400
+Received: from mail-io1-xd35.google.com ([2607:f8b0:4864:20::d35]:46601)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1oC8BE-0007rL-8S
- for qemu-arm@nongnu.org; Thu, 14 Jul 2022 19:23:37 -0400
-Received: by mail-io1-xd2c.google.com with SMTP id 125so2707171iou.6
- for <qemu-arm@nongnu.org>; Thu, 14 Jul 2022 16:23:35 -0700 (PDT)
+ id 1oC8Cu-0008BK-Kx
+ for qemu-arm@nongnu.org; Thu, 14 Jul 2022 19:25:22 -0400
+Received: by mail-io1-xd35.google.com with SMTP id l24so2685294ion.13
+ for <qemu-arm@nongnu.org>; Thu, 14 Jul 2022 16:25:20 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=message-id:date:mime-version:user-agent:subject:content-language:to
  :cc:references:from:in-reply-to:content-transfer-encoding;
- bh=LzvX9q6R52TkTLuhnBqHqW2KLCPqvPUV7UKwMbTEkfE=;
- b=BSSqgGpo1Slu5Bf36CI1cVaV9qh2Zk0bkbhhlBOdfLQPoae0UhM1T4ygwirzbZJASB
- 04vgtWKx/p9vlT3SCZzLAm1LrT5f1rGfEF7hWtxpk8BiCW466VgjQnDHhUtvevQG0jJe
- YUlmT2n/6qJ+iqgM6I0PooPA8h3Rd269vHrUMQ8NqJlCQUBCkhw+17raeU0o0AuHia/3
- XT4g5M97Co2F5DdxrgyVUhJDK6zhQRUhGJTEYfyMZ0cF0ZIUsnDAI5F8ndi2Yx/WVv2u
- Uff1MvCRdJsnJD3jvVbW8ZJFLZPA50zmFtedT6UoMGBOAEDgPM1g3kkNZ+gZIYD1Cqc8
- qXWw==
+ bh=DYHA0vS6o2loJ0ayUbzePztWuoDPFLJm7DKTMngrwyw=;
+ b=CzD14DgXhuMmnKqXU8CniHR8whVMhWsPZ5Zk1KlkR+/IK0Mbfqzg2tXRZ0GmGEayH6
+ IN5ZqxtQINhV2GXUDdEEoebr4o/LhLxImMYs6l56pgpxKEPnlhzicW8W1kolyZ7w4+ZL
+ Uj+nbbFr+zP18mpuOR3bwaZi08DD6OtdZBjAe90bku97iM3yJGAzEO9ZVFctCVOYd8e3
+ Ql4MJsTTQkHqIQ2O4PHKLnzKegyRuvQ/wOIt2fMT/ihKdCd0jHIspunObE03KYkEm4uj
+ AmcINKNo8uiKaji42xoHL5PPLM5bGeFE7Is0ufg9dAVhLw3Y9Yrw0Cnc8NYIPPhVkKrX
+ 1n/g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
  :content-language:to:cc:references:from:in-reply-to
  :content-transfer-encoding;
- bh=LzvX9q6R52TkTLuhnBqHqW2KLCPqvPUV7UKwMbTEkfE=;
- b=xkfT5FB0xrKDOEN3ZBh3xAmvPyFO89WqS1EYVr7gmu//GTqYSC7N5NB++QiSHt/uMK
- 4KHm069IWNWph1+Yo58ryixBgttdwMtsNWM6VK91E394Jlh9Dl+3UTfkrPb0LbqQDTSo
- RKJ1rnrNe6ts65rqt8nYx4awOa+QOktNWneBtws+AwyHFbL3IV5jhhiHPW8JkDJq1S6l
- oFVpJc82UP9YSaN9jdm9Gcdvj1V9uYhSS6bHsH/qn8VVW6ykrs7QGMn7W6m4t4q3BxLz
- DTRuHRcWroslfxB+Y0F5lhG9ij4TU2fL8QORqHJ+BO1U+uXwVItakbQk66tNVI0lqgYp
- F8SA==
-X-Gm-Message-State: AJIora/G1YImUuABzSuc37dIrFhTdY6xn+1g8Oj+Z3lan2idm7bfGVJT
- ZEr/B48EFKiXNlhQobflFsaiXA==
-X-Received: by 2002:a6b:3fd6:0:b0:67b:d97f:47d3 with SMTP id
- m205-20020a6b3fd6000000b0067bd97f47d3mr1410339ioa.46.1657841014998; 
- Thu, 14 Jul 2022 16:23:34 -0700 (PDT)
+ bh=DYHA0vS6o2loJ0ayUbzePztWuoDPFLJm7DKTMngrwyw=;
+ b=rRgkcJuCDfudzRnmGX3IeBBbZ0QfjcMI1qaDFpI+wCBiSdW2aawWGwnIwHl75Dc9NJ
+ tuHtX2l3etRp8zAd+2EVJx406/2HYXqlNgtSaxaB5/B2b/Zyqf3gXsYxF1wYdu1J1xJx
+ N+PO7nYGrLcIIKZYzGtz5/JG5UrsMxJaOzSetFGIcGgCXZmhpeLyQEAll7xa/ka9yWIx
+ 6gGJQe5hQMQPpooOdxPEdAbS/GfElsQ7S3p8fjpWc00xDaU0MB49RFNVwiBDw73Bbikx
+ MCYD0EFuvTshpQLJhVdNdYYtEv6j9AExc/kUqcFr8tLkjth667/RK9I7NFNToa1Stlin
+ RiSg==
+X-Gm-Message-State: AJIora+XJvb5KKShIZgZOTLWaf1PNevBhePC7HI9m0OnuQ0SlhzU5NPI
+ 8Uz6zZFoF9KNe4x8YNuo0/bvfA==
+X-Received: by 2002:a05:6638:1483:b0:33f:7944:a30d with SMTP id
+ j3-20020a056638148300b0033f7944a30dmr6244596jak.155.1657841119498; 
+ Thu, 14 Jul 2022 16:25:19 -0700 (PDT)
 Received: from [192.168.113.227] ([172.58.139.185])
  by smtp.gmail.com with ESMTPSA id
- bw7-20020a056638460700b00331c58086d8sm1277649jab.147.2022.07.14.16.23.32
+ z22-20020a056638001600b0033a29ec646dsm1288831jao.4.2022.07.14.16.25.16
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 14 Jul 2022 16:23:34 -0700 (PDT)
-Message-ID: <93eb992a-4619-dbfe-5df1-ad54cfa7d40e@linaro.org>
-Date: Fri, 15 Jul 2022 04:53:28 +0530
+ Thu, 14 Jul 2022 16:25:19 -0700 (PDT)
+Message-ID: <23b6b693-be9f-1b22-0397-569988829994@linaro.org>
+Date: Fri, 15 Jul 2022 04:55:12 +0530
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
  Thunderbird/91.9.1
-Subject: Re: [PATCH 6/7] target/arm: Store TCR_EL* registers as uint64_t
+Subject: Re: [PATCH 7/7] target/arm: Honour VTCR_EL2 bits in Secure EL2
 Content-Language: en-US
 To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
  qemu-devel@nongnu.org
 Cc: Idan Horowitz <idan.horowitz@gmail.com>
 References: <20220714132303.1287193-1-peter.maydell@linaro.org>
- <20220714132303.1287193-7-peter.maydell@linaro.org>
+ <20220714132303.1287193-8-peter.maydell@linaro.org>
 From: Richard Henderson <richard.henderson@linaro.org>
-In-Reply-To: <20220714132303.1287193-7-peter.maydell@linaro.org>
+In-Reply-To: <20220714132303.1287193-8-peter.maydell@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::d2c;
- envelope-from=richard.henderson@linaro.org; helo=mail-io1-xd2c.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::d35;
+ envelope-from=richard.henderson@linaro.org; helo=mail-io1-xd35.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -126,24 +126,26 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: lNXQUywzpcAz
+X-TUID: fhTIQchIncTK
 
 On 7/14/22 18:53, Peter Maydell wrote:
-> Change the representation of the TCR_EL* registers in the CPU state
-> struct from struct TCR to uint64_t.  This allows us to drop the
-> custom vmsa_ttbcr_raw_write() function, moving the "enforce RES0"
-> checks to their more usual location in the writefn
-> vmsa_ttbcr_write().  We also don't need the resetfn any more.
+> In regime_tcr() we return the appropriate TCR register for the
+> translation regime.  For Secure EL2, we return the VSTCR_EL2 value,
+> but in this translation regime some fields that control behaviour are
+> in VTCR_EL2.  When this code was originally written (as the comment
+> notes), QEMU didn't care about any of those fields, but we have since
+> added support for features such as LPA2 which do need the values from
+> those fields.
 > 
+> Synthesize a TCR value by merging in the relevant VTCR_EL2 fields to
+> the VSTCR_EL2 value.
+> 
+> Resolves:https://gitlab.com/qemu-project/qemu/-/issues/1103
 > Signed-off-by: Peter Maydell<peter.maydell@linaro.org>
 > ---
->   target/arm/cpu.h          |  8 +----
->   target/arm/internals.h    |  6 ++--
->   target/arm/cpu.c          |  2 +-
->   target/arm/debug_helper.c |  2 +-
->   target/arm/helper.c       | 75 +++++++++++----------------------------
->   target/arm/ptw.c          |  2 +-
->   6 files changed, 27 insertions(+), 68 deletions(-)
+>   target/arm/cpu.h       | 19 +++++++++++++++++++
+>   target/arm/internals.h | 22 +++++++++++++++++++---
+>   2 files changed, 38 insertions(+), 3 deletions(-)
 
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 

@@ -1,119 +1,110 @@
-Received: by 2002:ac2:596f:0:0:0:0:0 with SMTP id h15csp1722714lfp;
-        Tue, 12 Jul 2022 15:58:25 -0700 (PDT)
-X-Google-Smtp-Source: AGRyM1vRqRWFJUCKtlEnU9WGUsVfIya+uOzAGxP66eoLZqk5BNbwMfs9sZkz6jl/YMLPDem8NlMC
-X-Received: by 2002:ae9:c315:0:b0:6b5:5782:6fc8 with SMTP id n21-20020ae9c315000000b006b557826fc8mr487685qkg.275.1657666705777;
-        Tue, 12 Jul 2022 15:58:25 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1657666705; cv=none;
+Received: by 2002:ac2:596f:0:0:0:0:0 with SMTP id h15csp658336lfp;
+        Thu, 14 Jul 2022 06:04:29 -0700 (PDT)
+X-Google-Smtp-Source: AGRyM1uYEUkv9OgVB1j+boYLBwpGgZKbYPlq3IZLMBdpL90Edd2f17Ua9PAEkGOiqxeEUUDxAdsV
+X-Received: by 2002:a05:622a:1047:b0:31e:d70a:a646 with SMTP id f7-20020a05622a104700b0031ed70aa646mr347035qte.209.1657803869108;
+        Thu, 14 Jul 2022 06:04:29 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1657803869; cv=none;
         d=google.com; s=arc-20160816;
-        b=MhQs9DcUJN/GN3uBFeT2qTKnCHSJklMJ+/J3CkmkBNUEmK0TwlTAt42dhZQrw+qdKl
-         vChb1ZJ6h7+2NxKhdGw7pwyKctAnIs6KbfNWQpbHjgFuiY9J/3Ih5Rjh51X30ih8IzEy
-         XFuhXo8T/4w3vZ54PSjXwGuFoXdGxPvOHDlvUcND7jI+UdJcXQfjJ9aX2XY+mLny25dH
-         9E+x9Ap9vEy8r677N/ggLm1suiuPfe+UqHMQl6JZTywtFIUJSwF3P0A4osIQQYeuE+vh
-         9YjQGlpSrp6HYZNEcjvDJxo3yFpfdGzg/eFCJ+SoRfrHwfkc08DIDymkgQE3NZyL+RH1
-         K7tg==
+        b=P2w44w039HVGoYlNW2jlCWzDS25IZiG1S5xTdqIoUOMQhaJKlJ2G9xVqIzv94lssTa
+         HaagLTpLMJeDnnoDbg+UUTtmZffbFBEZ2YMXwdtqF1fVIrAttyflScrf+4PHxZL1BdjC
+         A2+vJC4oFmXgc2czvnvgObq/RPFoErKFmetMVIUx7PWA+5O7scnMNVsW8UKiYm2jH7UZ
+         DRjXVAEl5qUAwd4dXjxRjGIBhV5rJGKaokNgeBdAz5sjP+324+7in/bczy5rx7ZJ8NlO
+         tM0uZgths8+d8uuTJp4/dudQihsY0Jv+6c7/JHLUvzNNipgP/PCwDXo+w34kAjtd4m9k
+         MCWw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=from:reply-to:sender:errors-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:in-reply-to:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=iFcbEq5EcWcD0N59ldTbRHmsAO55vzJgRKUltLXBJCU=;
-        b=Cf1HWkCxEO2mJtIc9aSR7pHee/zgsNbSu+nGo3G26PY75gjQ191EaqUHb2LUtvHzAV
-         CLfliaOZXw59l0X6gEoqSOfxTPD5ygWl6MOgdriSr7c/zJhgDQaMfb3DtKgOmtbRNLo7
-         yaESWyrlzVwxwGgluF885p5hxmVxqoeryDsnyRj2XD2gwLSpvU0k8AxF8k0OitbjA40w
-         BoAOhXyWzlXD7mP015uFSsABo8Y33P0PTmqPFVJkyDqRkl1jUIqFrA4CE4pOpI5EwGXl
-         O3bhB0EXyotun6ZtuuSMNDFjtyXqjbmGJ+GxVVuCU5/UE82R3ld7elUYmk9949gvJJ9z
-         rbCQ==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=RIKpd2Q+yGIVTQRutafUU3qoU3iFdQUM9sknwaRG9ho=;
+        b=mevwOvIk5Vg2i1Nc0W8qJ8wSHFFp4Dkq0TYKlgZjs4K3V4N1BgxJFVBYbOHTOT0H/Q
+         zRnVwcI2VgYr3muwPmnTseMz1NbTMcPa7rxxL1GMZAi1uAieovnNCxWQKdvJwE0SD4ZG
+         Gqb8ctAalZdnyvLdRmv7ja3QBO+Fw0NB9srz6fUpekH3ToJc3/UvUgTvCXz4JQ0wdXpo
+         D2Dk9dkSpy1j6BlOQjpn1B20XzX1xwd0x2KRbCtkXl8UFlOd39A5wVZXS8d5GR+XDCuD
+         MKt3CDW4FXB10LY7jZsq/Bxt0QtcEApaujI3Y5SIZJXHM9oxySPa2J+nD5hpv461IFiF
+         7x1A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20210112 header.b="kj573/Sz";
+       dkim=pass header.i=@quicinc.com header.s=qcdkim header.b=xoypgF2e;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=quicinc.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id l4-20020ac81484000000b0031ebdb7dd9bsi2178084qtj.274.2022.07.12.15.58.25
+        by mx.google.com with ESMTPS id ey15-20020a0562140b6f00b0047335b07da7si846010qvb.467.2022.07.14.06.04.28
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 12 Jul 2022 15:58:25 -0700 (PDT)
+        Thu, 14 Jul 2022 06:04:29 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20210112 header.b="kj573/Sz";
+       dkim=pass header.i=@quicinc.com header.s=qcdkim header.b=xoypgF2e;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
-Received: from localhost ([::1]:53100 helo=lists1p.gnu.org)
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=quicinc.com
+Received: from localhost ([::1]:39474 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1oBOpl-0005Ge-73
-	for alex.bennee@linaro.org; Tue, 12 Jul 2022 18:58:25 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:52816)
+	id 1oByW4-0002t1-H2
+	for alex.bennee@linaro.org; Thu, 14 Jul 2022 09:04:28 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:60600)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1oBOiu-00042m-Ud; Tue, 12 Jul 2022 18:51:23 -0400
-Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c]:43533)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1oBOim-00077E-5d; Tue, 12 Jul 2022 18:51:18 -0400
-Received: by mail-wm1-x32c.google.com with SMTP id
- v10-20020a05600c15ca00b003a2db8aa2c4so223181wmf.2; 
- Tue, 12 Jul 2022 15:51:11 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=sender:message-id:date:mime-version:user-agent:subject
- :content-language:to:cc:references:from:in-reply-to
- :content-transfer-encoding;
- bh=iFcbEq5EcWcD0N59ldTbRHmsAO55vzJgRKUltLXBJCU=;
- b=kj573/SzpUceO/Ljb4ef1nmJD6ojXQu2rGp8qErAVMUYzi3Rs8CFP4LfMu9Wx0nXCz
- LWPwnePMUbsXTvrWBSu8DJEwaGlWQ3WiKSYES+2rQkiscYiBNHo8Vvf4VsuIgDetlPy2
- 2aooR2bZAifW9mxkhJYBTNjiZfzfJFATzBxYvEh7jrtgRmOe1P57MouXbc6SKZRAzDcX
- 45qBaMFAloCXH5JzKK6aLv1BINGlMbkQFUhct4z9jOR021+wvBgGsTqtd+jMvdALXbLv
- DS6v+NMXMFqT82NTve2Sjc/PDquCLSZyjrIuiqGPMikzD3ee8Oco63KqPlK8Mq2P59fy
- efew==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:sender:message-id:date:mime-version:user-agent
- :subject:content-language:to:cc:references:from:in-reply-to
- :content-transfer-encoding;
- bh=iFcbEq5EcWcD0N59ldTbRHmsAO55vzJgRKUltLXBJCU=;
- b=J2e6qJhD12DCzd6f3eT2pZgY5Yb8CfQoNTL12u26ER4MQR6h5RIaBjXBkPqxwLBwMT
- OSSHyDURujRDcolqjg3S2ni5hNdRpk5hQSGvkGeN6f5UAnFWh7QJxTKSfqEc77EuyFOK
- +iWHYybBVfCjqjxEs90hOyP2yQ2KV9WX2Ibsku2CPSpU0R5NhIyRRl5TDxf7TlLicozs
- JsylwRdZGt6+KMhgs5EndAIyQzYszfX71HY5/QNV4ROvLGKFqVxTQ6yxZKdIiKq4/NLt
- qLlGYkujWmbAkuIjrrOx5ixu20u0swvXhpmDcUixlJ8PyZwlRBvNyhbZ6QUEREFSWj14
- DwNQ==
-X-Gm-Message-State: AJIora/7S2GV28pB5nIgjxGEyF71Y+a7dBq1o0Afkmf5KFRXw/x8aJMI
- vmqWyQIxbmZEy16Q9GgT50g=
-X-Received: by 2002:a05:600c:3545:b0:3a2:f3e3:c382 with SMTP id
- i5-20020a05600c354500b003a2f3e3c382mr987750wmq.142.1657666269934; 
- Tue, 12 Jul 2022 15:51:09 -0700 (PDT)
-Received: from [192.168.1.115] ([185.126.107.38])
- by smtp.gmail.com with ESMTPSA id
- d15-20020adfe84f000000b0021a56cda047sm9276709wrn.60.2022.07.12.15.51.08
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 12 Jul 2022 15:51:08 -0700 (PDT)
-Message-ID: <e693246c-5469-2010-2b2b-93bff3621276@amsat.org>
-Date: Wed, 13 Jul 2022 00:51:07 +0200
+ (Exim 4.90_1) (envelope-from <quic_mkurapat@quicinc.com>)
+ id 1oBo6I-0003YM-Cw; Wed, 13 Jul 2022 21:57:10 -0400
+Received: from alexa-out-sd-01.qualcomm.com ([199.106.114.38]:17042)
+ by eggs.gnu.org with esmtps (TLS1.2:RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <quic_mkurapat@quicinc.com>)
+ id 1oBo6D-0000VC-BY; Wed, 13 Jul 2022 21:57:09 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=quicinc.com; i=@quicinc.com; q=dns/txt; s=qcdkim;
+ t=1657763825; x=1689299825;
+ h=from:to:cc:subject:date:message-id:in-reply-to:
+ references:mime-version:content-transfer-encoding;
+ bh=RIKpd2Q+yGIVTQRutafUU3qoU3iFdQUM9sknwaRG9ho=;
+ b=xoypgF2eJUzEwdaOwr6zQM1vtFBE1Um5PBTzduBvZEFEI8I5cNuwvlWb
+ jYbcnslZBpV/KqeH8dT0vu/uP4vBnaTUhec0aYBX/WQfkZEah0p597FNq
+ iUNsFr9TCW8FF+hvXuSgSQ6IG5b2RKol7Sfce+mSBgNiS5BpX1L4ku616 g=;
+Received: from unknown (HELO ironmsg01-sd.qualcomm.com) ([10.53.140.141])
+ by alexa-out-sd-01.qualcomm.com with ESMTP; 13 Jul 2022 18:57:04 -0700
+X-QCInternal: smtphost
+Received: from nasanex01c.na.qualcomm.com ([10.47.97.222])
+ by ironmsg01-sd.qualcomm.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 13 Jul 2022 18:57:04 -0700
+Received: from nalasex01a.na.qualcomm.com (10.47.209.196) by
+ nasanex01c.na.qualcomm.com (10.47.97.222) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.986.22; Wed, 13 Jul 2022 18:57:03 -0700
+Received: from perseverance.qualcomm.com (10.80.80.8) by
+ nalasex01a.na.qualcomm.com (10.47.209.196) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.986.22; Wed, 13 Jul 2022 18:57:02 -0700
+From: Maheswara Kurapati <quic_mkurapat@quicinc.com>
+To: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
+CC: Paolo Bonzini <pbonzini@redhat.com>, "Daniel P . Berrange"
+ <berrange@redhat.com>, Eduardo Habkost <eduardo@habkost.net>, Graeme Gregory
+ <quic_ggregory@quicinc.com>, Jae Hyun Yoo <quic_jaehyoo@quicinc.com>,
+ Maheswara Kurapati <quic_mkurapat@quicinc.com>
+Subject: [PATCH 1/3] qom/object : add object_property_add_int8_ptr() property
+ for 8 bit signed integers.
+Date: Wed, 13 Jul 2022 20:56:35 -0500
+Message-ID: <20220714015637.817066-2-quic_mkurapat@quicinc.com>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20220714015637.817066-1-quic_mkurapat@quicinc.com>
+References: <20220714015637.817066-1-quic_mkurapat@quicinc.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:91.0)
- Gecko/20100101 Thunderbird/91.11.0
-Subject: Re: [PATCH] hw/intc/armv7m_nvic: ICPRn must not unpend an IRQ that is
- being held high
-Content-Language: en-US
-To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
-Cc: =?UTF-8?Q?Igor_Kotrasi=c5=84ski?= <i.kotrasinsk@samsung.com>
-References: <20220628154724.3297442-1-peter.maydell@linaro.org>
-In-Reply-To: <20220628154724.3297442-1-peter.maydell@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32c;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x32c.google.com
-X-Spam_score_int: -14
-X-Spam_score: -1.5
-X-Spam_bar: -
-X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249, NICE_REPLY_A=-0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
+Content-Type: text/plain
+X-Originating-IP: [10.80.80.8]
+X-ClientProxiedBy: nasanex01a.na.qualcomm.com (10.52.223.231) To
+ nalasex01a.na.qualcomm.com (10.47.209.196)
+Received-SPF: pass client-ip=199.106.114.38;
+ envelope-from=quic_mkurapat@quicinc.com; helo=alexa-out-sd-01.qualcomm.com
+X-Spam_score_int: -43
+X-Spam_score: -4.4
+X-Spam_bar: ----
+X-Spam_report: (-4.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_MED=-2.3, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
+X-Mailman-Approved-At: Thu, 14 Jul 2022 09:01:55 -0400
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -127,77 +118,128 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Reply-to:  =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-From:  =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= via <qemu-arm@nongnu.org>
-X-TUID: xkMVPtR3mXEm
+X-TUID: 8G93EDXzrCO/
 
-On 28/6/22 17:47, Peter Maydell wrote:
-> In the M-profile Arm ARM, rule R_CVJS defines when an interrupt should
-> be set to the Pending state:
->   A) when the input line is high and the interrupt is not Active
->   B) when the input line transitions from low to high and the interrupt
->      is Active
-> (Note that the first of these is an ongoing condition, and the
-> second is a point-in-time event.)
-> 
-> This can be rephrased as:
->   1 when the line goes from low to high, set Pending
->   2 when Active goes from 1 to 0, if line is high then set Pending
->   3 ignore attempts to clear Pending when the line is high
->     and Active is 0
-> 
-> where 1 covers both B and one of the "transition into condition A"
-> cases, 2 deals with the other "transition into condition A"
-> possibility, and 3 is "don't drop Pending if we're already in
-> condition A".  Transitions out of condition A don't affect Pending
-> state.
-> 
-> We handle case 1 in set_irq_level(). For an interrupt (as opposed
-> to other kinds of exception) the only place where we clear Active
-> is in armv7m_nvic_complete_irq(), where we handle case 2 by
-> checking for whether we need to re-pend the exception. For case 3,
-> the only places where we clear Pending state on an interrupt are in
-> armv7m_nvic_acknowledge_irq() (where we are setting Active so it
-> doesn't count) and for writes to NVIC_CPSRn.
-> 
-> It is the "write to NVIC_ICPRn" case that we missed: we must ignore
-> this if the input line is high and the interrupt is not Active.
-> (This required behaviour is differently and perhaps more clearly
-> stated in the v7M Arm ARM, which has pseudocode in section B3.4.1
-> that implies it.)
-> 
-> Reported-by: Igor Kotrasiński <i.kotrasinsk@samsung.com>
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> ---
-> Simple change, commit message long because I included all
-> the analysis that we haven't forgotten any other cases.
-> This is essentially the change Igor suggested in the qemu-arm
-> thread, but it took me a while to find time to audit the code
-> to confirm that was the only change we needed here.
-> ---
->   hw/intc/armv7m_nvic.c | 9 ++++++++-
->   1 file changed, 8 insertions(+), 1 deletion(-)
-> 
-> diff --git a/hw/intc/armv7m_nvic.c b/hw/intc/armv7m_nvic.c
-> index 13df002ce4d..1f7763964c3 100644
-> --- a/hw/intc/armv7m_nvic.c
-> +++ b/hw/intc/armv7m_nvic.c
-> @@ -2389,8 +2389,15 @@ static MemTxResult nvic_sysreg_write(void *opaque, hwaddr addr,
->           startvec = 8 * (offset - 0x280) + NVIC_FIRST_IRQ; /* vector # */
->   
->           for (i = 0, end = size * 8; i < end && startvec + i < s->num_irq; i++) {
-> +            /*
-> +             * Note that if the input line is still held high and the interrupt
-> +             * is not active then rule R_CVJS requires that the Pending state
-> +             * remains set; in that case we mustn't let it be cleared.
-> +             */
->               if (value & (1 << i) &&
-> -                (attrs.secure || s->itns[startvec + i])) {
-> +                (attrs.secure || s->itns[startvec + i]) &&
-> +                !(setval == 0 && s->vectors[startvec + i].level &&
-> +                  !s->vectors[startvec + i].active)) {
->                   s->vectors[startvec + i].pending = setval;
->               }
->           }
+Current implementation lacks the support to add signed 8 bit integer
+property to an Object.  This fix adds the necessary infrastructure
+routines.
 
-Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+Signed-off-by: Maheswara Kurapati <quic_mkurapat@quicinc.com>
+---
+ include/qom/object.h | 21 ++++++++++++++++
+ qom/object.c         | 60 ++++++++++++++++++++++++++++++++++++++++++++
+ 2 files changed, 81 insertions(+)
+
+diff --git a/include/qom/object.h b/include/qom/object.h
+index ef7258a5e1..60b88ed685 100644
+--- a/include/qom/object.h
++++ b/include/qom/object.h
+@@ -1764,6 +1764,27 @@ typedef enum {
+     OBJ_PROP_FLAG_READWRITE = (OBJ_PROP_FLAG_READ | OBJ_PROP_FLAG_WRITE),
+ } ObjectPropertyFlags;
+ 
++/**
++ * object_property_add_int8_ptr:
++ * @obj: the object to add a property to
++ * @name: the name of the property
++ * @v: pointer to value
++ * @flags: bitwise-or'd ObjectPropertyFlags
++ *
++ * Add a signed integer property in memory.  This function will add a
++ * property of type 'int8'.
++ *
++ * Returns: The newly added property on success, or %NULL on failure.
++ */
++ObjectProperty *object_property_add_int8_ptr(Object *obj, const char *name,
++                                              const int8_t *v,
++                                              ObjectPropertyFlags flags);
++
++ObjectProperty *object_class_property_add_int8_ptr(ObjectClass *klass,
++                                         const char *name,
++                                         const int8_t *v,
++                                         ObjectPropertyFlags flags);
++
+ /**
+  * object_property_add_uint8_ptr:
+  * @obj: the object to add a property to
+diff --git a/qom/object.c b/qom/object.c
+index d34608558e..1a0e64157f 100644
+--- a/qom/object.c
++++ b/qom/object.c
+@@ -2450,6 +2450,26 @@ static char *object_get_type(Object *obj, Error **errp)
+     return g_strdup(object_get_typename(obj));
+ }
+ 
++static void property_get_int8_ptr(Object *obj, Visitor *v, const char *name,
++                                   void *opaque, Error **errp)
++{
++    int8_t value = *(int8_t *)opaque;
++    visit_type_int8(v, name, &value, errp);
++}
++
++static void property_set_int8_ptr(Object *obj, Visitor *v, const char *name,
++                                   void *opaque, Error **errp)
++{
++    int8_t *field = opaque;
++    int8_t value;
++
++    if (!visit_type_int8(v, name, &value, errp)) {
++        return;
++    }
++
++    *field = value;
++}
++
+ static void property_get_uint8_ptr(Object *obj, Visitor *v, const char *name,
+                                    void *opaque, Error **errp)
+ {
+@@ -2530,6 +2550,46 @@ static void property_set_uint64_ptr(Object *obj, Visitor *v, const char *name,
+     *field = value;
+ }
+ 
++ObjectProperty *
++object_property_add_int8_ptr(Object *obj, const char *name,
++                              const int8_t *v,
++                              ObjectPropertyFlags flags)
++{
++    ObjectPropertyAccessor *getter = NULL;
++    ObjectPropertyAccessor *setter = NULL;
++
++    if ((flags & OBJ_PROP_FLAG_READ) == OBJ_PROP_FLAG_READ) {
++        getter = property_get_int8_ptr;
++    }
++
++    if ((flags & OBJ_PROP_FLAG_WRITE) == OBJ_PROP_FLAG_WRITE) {
++        setter = property_set_int8_ptr;
++    }
++
++    return object_property_add(obj, name, "int8",
++                               getter, setter, NULL, (void *)v);
++}
++
++ObjectProperty *
++object_class_property_add_int8_ptr(ObjectClass *klass, const char *name,
++                                    const int8_t *v,
++                                    ObjectPropertyFlags flags)
++{
++    ObjectPropertyAccessor *getter = NULL;
++    ObjectPropertyAccessor *setter = NULL;
++
++    if ((flags & OBJ_PROP_FLAG_READ) == OBJ_PROP_FLAG_READ) {
++        getter = property_get_int8_ptr;
++    }
++
++    if ((flags & OBJ_PROP_FLAG_WRITE) == OBJ_PROP_FLAG_WRITE) {
++        setter = property_set_int8_ptr;
++    }
++
++    return object_class_property_add(klass, name, "int8",
++                                     getter, setter, NULL, (void *)v);
++}
++
+ ObjectProperty *
+ object_property_add_uint8_ptr(Object *obj, const char *name,
+                               const uint8_t *v,
+-- 
+2.25.1
+

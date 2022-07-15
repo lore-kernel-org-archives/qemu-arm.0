@@ -1,114 +1,109 @@
-Received: by 2002:ac2:596f:0:0:0:0:0 with SMTP id h15csp59029lfp;
-        Fri, 15 Jul 2022 01:26:58 -0700 (PDT)
-X-Google-Smtp-Source: AGRyM1vNK0ALVCAVLTugiNOYgkIqZG+5z3PNQ0ky6yHneN86cmwsFh9/WkCRM1T33MUYFq8wv9OQ
-X-Received: by 2002:a05:620a:2796:b0:6b5:a453:3740 with SMTP id g22-20020a05620a279600b006b5a4533740mr8543267qkp.717.1657873618505;
-        Fri, 15 Jul 2022 01:26:58 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1657873618; cv=none;
+Received: by 2002:ac2:596f:0:0:0:0:0 with SMTP id h15csp59722lfp;
+        Fri, 15 Jul 2022 01:29:25 -0700 (PDT)
+X-Google-Smtp-Source: AGRyM1s1BtCNFTM7jOZbcfyO6WMwrNze8zbTADBMrHZnBD363TA4xhHMru0ifjbmFkkWr2iwE6br
+X-Received: by 2002:a05:6214:20a9:b0:473:6e47:956 with SMTP id 9-20020a05621420a900b004736e470956mr11069104qvd.31.1657873765673;
+        Fri, 15 Jul 2022 01:29:25 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1657873765; cv=none;
         d=google.com; s=arc-20160816;
-        b=lV3i0egxMA6N+903ZJACrEaGgCLInPsW2U5PfvFQbvVW3t9MHNNVEjvyyb/Yl7tteW
-         nws6SHl0Be28Dki+8FXcCJ2FBwZTzoNxIAhfdVo+zTpnE5YKs6PDtzyWytdb/6QtyQDq
-         mBs+nkyuiw7CFPnZkjq30DgiGEWG3tfSK7vadLjj7jhD5ttgmf3zG3H5xwN8IrmKTJaK
-         yLjAG8jVvkzP2YuUDF5ZGx1j3bco5oKkwMnuOG1a9gO/RrqU3Av7HBVNRVqvgAhihW/i
-         CH36XmpwmC988/jNSPoXafsaJn8cib4ZX7wVOOaIyDIHAdiqCEk9jWt/ay9+rMmPkNpF
-         gdaQ==
+        b=dhdH32opz7bGoUL0ISOQcBKZWKM+daM0BtTMwOagS7zsL422bxygfNALXTEhDi7Wg2
+         NhrZYQCCBVTMRitNR8tMyb5LeSpSdxUw3Bq/4j1yvvO3bvioSO6O7Irk7VYmAKPPMv9n
+         1eF26i9m5TiOD4xHQaEAqQbWfM2iv9jS4t4u+dNcPueSDXYbwhPGl+nv33s/PR3CgXso
+         WSip/tZdoLeB2w2rv1AJbLUs0tPgzXcnHXdH8pdJEmccegVHg+sk2aK4TPHxlYgxqvLq
+         Z3iLfywQ7SfxpRBGjmkIVcyHyOEdkCIHH/tnGVL7ExiRH1faqBstOPz/W0p7DNVm6490
+         S7+A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=4+e4JROKuz771w3kwRmCoJ57xO3bV3Zq7zUo8kQs2h4=;
-        b=NN5tqcQW8NX/ch3InrJ7yew1KH+jcPNUE/KrFcNOBeijjFi/zmCkg8OJY/xYsmOVY+
-         1oJ9AUZMY9JmmRhSdtc74KCuO6byy0PjtHR56OULKKG1hxda+QTXYiq26Oa8F5YjKtwC
-         xpu1NALEact3cNPmtQwZ6y6Pk6xpXq4tu3jNiTOxMODrwapouSW4k+4ssisKtIsVk9cC
-         cK+DiuYZk1H9DPzg3SdJv3oCv31A5yIz/3kG9bkkhY4dDQzGv6UAlX9B8g8HwyHF8x/N
-         KriMxk5rQCAbaCZegww6xVd79hcFq2EyK6SpQLY7Ym+RFr7/AVUGuKSXjA6eVMru7N7K
-         IRSA==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:user-agent:references:organization
+         :in-reply-to:subject:cc:to:from:dkim-signature;
+        bh=Cx0I3ThQ8ipnE8Y+qblNRLmVYbCja5pWR7v8MFyQnis=;
+        b=JebSOCbxVuSjMacMMJ547nMRv1n6Hg3oEobFKySESHFQAndZP96RenRP4fCyN4RiYe
+         ucshLD1NjRJfzYlJQbnQUDAJGjjqBEwaW+ZKj1ML0wicRAy/0zK0+LuuhciApBS0acRe
+         90ONYR1RtliPA90dyMUGmbT4llKu/d5QEyMZfHDEEkyGb8/nXDBuv5LD3O7zYg2GWUaQ
+         1dlI8Aq52I67e3IF0WNFs3wmEihgGswMRDQcIEQxNuSqBqNnculmQvj57u2eQ7aUgeCI
+         OIsIOuBNkVY9981v621vYnzOcKOkcOXNXoEYLKv7xO6ZzwDgmxhuUNQtgpyoP+bhKkkk
+         2DIg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=XyvdHgZq;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=PQIY0cbq;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id r5-20020a0562140c8500b004736fab5617si1943401qvr.488.2022.07.15.01.26.58
+        by mx.google.com with ESMTPS id if13-20020a0562141c4d00b004702e734bd7si2458267qvb.439.2022.07.15.01.29.25
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 15 Jul 2022 01:26:58 -0700 (PDT)
+        Fri, 15 Jul 2022 01:29:25 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=XyvdHgZq;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=PQIY0cbq;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:56218 helo=lists1p.gnu.org)
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:59786 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1oCGf3-0007kh-VB
-	for alex.bennee@linaro.org; Fri, 15 Jul 2022 04:26:58 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:39160)
+	id 1oCGhR-0001qX-5V
+	for alex.bennee@linaro.org; Fri, 15 Jul 2022 04:29:25 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:39534)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1oCGeO-0007jf-6h
- for qemu-arm@nongnu.org; Fri, 15 Jul 2022 04:26:17 -0400
-Received: from mail-yw1-x112c.google.com ([2607:f8b0:4864:20::112c]:42915)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1oCGeL-0001r3-U0
- for qemu-arm@nongnu.org; Fri, 15 Jul 2022 04:26:15 -0400
-Received: by mail-yw1-x112c.google.com with SMTP id
- 00721157ae682-2ef5380669cso40301737b3.9
- for <qemu-arm@nongnu.org>; Fri, 15 Jul 2022 01:26:08 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=4+e4JROKuz771w3kwRmCoJ57xO3bV3Zq7zUo8kQs2h4=;
- b=XyvdHgZqLVoATNkid/bYH2QAphwCFxoUsbChypsWkkVirdk0STmidtbG1r+4P9P3g7
- DXdt8NFOW8FVz1697WpLeFH28rxgs5qzlxRYAPqAyLOnZoF00hCdTeI+MIAnXZUKJeHU
- +CHHNdRC4gWAZIWpFRaHIT0HJEr0qV3RYHyUgcbresXwK2krwX0JcD7pzSg6G83Yn/8E
- IdCb0ysFcbckiMs57NMr32BehqWIV526Z7aYOMp0AlQLAHa0EwDnWwsIw+r+5JHFChfs
- FTyXlUAfK2MQ7lipd1atEYPneiEIINTgJ5jAnKvo8Z05CC9aQW7OrwpnNJTBkeFbQCoF
- aEYg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=4+e4JROKuz771w3kwRmCoJ57xO3bV3Zq7zUo8kQs2h4=;
- b=cjFzN7et+DhYVkH9XwUIlk9HO/5Ku9Y83CJBGiGPRVvsnv65q2D1BQ/hZ00db9Ifwh
- JNxIbmQ63G3vwSkf/o3ym9bUUACkOBnYzP0EnjMAvC1teg67Fq5XKYx1Tt4BB8tR6U72
- gAGNq5CSbICiYIjX9c1CA93YtvG+FUfpGgDvWeuIHuq+HyW9H6nEx9gU7IK7TQwnix5P
- dJQ+HnR7qIGhiZ48mTtiBhEl+70nIpLYzYcY9AXKC9Db/mXhUnNNajAaGJSBhjdotRCg
- l6pHS34Dqcqa6XF4qlpLCkq89/+Aex6YwcybGFTpfahGlKW2vo0auI4YXjWEzFqqBo7A
- u58Q==
-X-Gm-Message-State: AJIora9qKOtFk1d66hYZqXPFpgdbyrxxLAfXgpu47kc3xCjEC/CvS6AI
- bTWd7zZMInn0i6Imlie3nYXJpVolWZYJBBxNxOZJ2g==
-X-Received: by 2002:a0d:eb83:0:b0:31c:8741:a033 with SMTP id
- u125-20020a0deb83000000b0031c8741a033mr14859270ywe.455.1657873568146; Fri, 15
- Jul 2022 01:26:08 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <cohuck@redhat.com>) id 1oCGgy-0001Me-1r
+ for qemu-arm@nongnu.org; Fri, 15 Jul 2022 04:28:56 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:55261)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <cohuck@redhat.com>) id 1oCGgw-00021y-JW
+ for qemu-arm@nongnu.org; Fri, 15 Jul 2022 04:28:55 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1657873734;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=Cx0I3ThQ8ipnE8Y+qblNRLmVYbCja5pWR7v8MFyQnis=;
+ b=PQIY0cbqOStnpSZp9rSmdyDxUcd4/AJTTPHHsyT0IUxJZG0ZbUPy4AnxrOJOldeeVqvf60
+ d2ZSthzn6xPO9ZvN9Vk7MYptg23+SYWZTBB3XcLXtywmJeWYs+BQ8F7ZNYH1Wpvr3luhRb
+ i6pEt0njecHr4D++EK6j2Jw9smBoXlE=
+Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
+ [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-590-nEfZnabUM42Jsh6Sg596Lw-1; Fri, 15 Jul 2022 04:28:37 -0400
+X-MC-Unique: nEfZnabUM42Jsh6Sg596Lw-1
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.8])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id A571B802D2C;
+ Fri, 15 Jul 2022 08:28:36 +0000 (UTC)
+Received: from localhost (dhcp-192-213.str.redhat.com [10.33.192.213])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 674F1C1D3AD;
+ Fri, 15 Jul 2022 08:28:36 +0000 (UTC)
+From: Cornelia Huck <cohuck@redhat.com>
+To: =?utf-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
+ qemu-devel@nongnu.org
+Cc: qemu-s390x@nongnu.org, Thomas Huth <thuth@redhat.com>,
+ qemu-arm@nongnu.org, David Hildenbrand <david@redhat.com>, Richard
+ Henderson <richard.henderson@linaro.org>, Peter Maydell
+ <peter.maydell@linaro.org>, =?utf-8?Q?Daniel_P=2E_Berrang=C3=A9?=
+ <berrange@redhat.com>
+Subject: Re: [PATCH 1/3] target/i386: display deprecation note in '-cpu help'
+In-Reply-To: <20220714150735.1835166-2-berrange@redhat.com>
+Organization: Red Hat GmbH
+References: <20220714150735.1835166-1-berrange@redhat.com>
+ <20220714150735.1835166-2-berrange@redhat.com>
+User-Agent: Notmuch/0.36 (https://notmuchmail.org)
+Date: Fri, 15 Jul 2022 10:28:35 +0200
+Message-ID: <87y1wu3hl8.fsf@redhat.com>
 MIME-Version: 1.0
-References: <20220714015637.817066-1-quic_mkurapat@quicinc.com>
- <20220714015637.817066-3-quic_mkurapat@quicinc.com>
- <CAFEAcA9MZ-yNSY0c7MiXex1U-t3XNzQRUwXiMhJg84tYVMeyiA@mail.gmail.com>
- <a285e9f6-9ae6-7abc-eedd-22ec1919ba99@quicinc.com>
-In-Reply-To: <a285e9f6-9ae6-7abc-eedd-22ec1919ba99@quicinc.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 15 Jul 2022 09:25:28 +0100
-Message-ID: <CAFEAcA9Yt1nEJU+C+H4OajKrSb8rBMLoVmfrUzR-xjc6qx8yfw@mail.gmail.com>
-Subject: Re: [PATCH 2/3] hw/sensor: max31785 : add fan status, tach target,
- and tach input object properties
-To: Maheswara Kurapati <quic_mkurapat@quicinc.com>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, 
- =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>, 
- Paolo Bonzini <pbonzini@redhat.com>,
- "Daniel P . Berrange" <berrange@redhat.com>, 
- Eduardo Habkost <eduardo@habkost.net>,
- Graeme Gregory <quic_ggregory@quicinc.com>, 
- Jae Hyun Yoo <quic_jaehyoo@quicinc.com>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::112c;
- envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x112c.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-Scanned-By: MIMEDefang 2.85 on 10.11.54.8
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=cohuck@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -21
+X-Spam_score: -2.2
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.082,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -123,48 +118,22 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: AwIlhp0og12X
+X-TUID: bYctSU1Ar58d
 
-On Thu, 14 Jul 2022 at 22:14, Maheswara Kurapati
-<quic_mkurapat@quicinc.com> wrote:
-> On 7/14/22 8:10 AM, Peter Maydell wrote:
-> > On Thu, 14 Jul 2022 at 14:04, Maheswara Kurapati
-> > <quic_mkurapat@quicinc.com> wrote:
-> >> This fix adds object properties for the FAN_COMMAND_1 (3Bh), STATUS_FANS_1_2 (81h),
-> >> READ_FAN_SPEED_1 (90h) registers for the MAX31785 instrumentation. An additional
-> >> property tach_margin_percent updates the tachs for a configured percent of
-> >> FAN_COMMAND_1 value.
-> >>
-> >> Register                property
-> >> --------------------------------------
-> >> FAN_COMMAND_1 (3Bh)     fan_target
-> >> STATUS_FANS_1_2 (81h)   status_fans_1_2
-> >> READ_FAN_SPEED_1 (90h)  fan_input
-> > This commit message is missing the rationale -- why do we need this?
-> The STATUS_FANS_1_2, and READ_FAN_SPEED_1 registers are read-only. I
-> added these properties to simulate the error device faults.
+On Thu, Jul 14 2022, Daniel P. Berrang=C3=A9 <berrange@redhat.com> wrote:
 
-I'm not entirely sure what you have in mind here, but
-QEMU doesn't generally simulate device error injection.
+> The deprecation notes are currently only displayed at runtime when the
+> user activates a CPU. The QMP query displays a simple flag for
+> deprecation, while '-cpu help' displays nothing unless the deprecation
+> info is duplicated into the 'notes' field.
+>
+> This changes the code so that deprecation notes are explicitly shown
+> in '-cpu help', to assist the user in deciding what to use.
+>
+> Signed-off-by: Daniel P. Berrang=C3=A9 <berrange@redhat.com>
+> ---
+>  target/i386/cpu.c | 13 ++++++++++++-
+>  1 file changed, 12 insertions(+), 1 deletion(-)
 
-> > I am also not sure that we should be defining properties that are
-> > just straight 1:1 with the device registers. Compare the way we
-> > handle temperature-sensor values, where the property values are
-> > defined in a generic manner (same units representation) regardless
-> > of the underlying device and the device's property-set-get implementation
-> > then handles converting that to and from whatever internal implementation
-> > representation the device happens to use.
+Reviewed-by: Cornelia Huck <cohuck@redhat.com>
 
-> I am not sure I understood your comment.  I checked hw/sensors/tmp105.c,
-> in which a "temperature" property is added for the tmp_input field in
-> almost the similar way what I did, except that the registers in the
-> MAX31785 are in direct format.
-
-Yes, that is my point. My impression is that you've provided
-properties that directly match the register format of this
-device because that's easy. I think that instead we should
-consider what the properties are intended to do, and perhaps
-have a standard convention for what format to use for particular
-kinds of data, as we do for temperature already.
-
--- PMM

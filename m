@@ -1,577 +1,174 @@
-Received: by 2002:ac2:596f:0:0:0:0:0 with SMTP id h15csp369269lfp;
-        Wed, 13 Jul 2022 13:48:58 -0700 (PDT)
-X-Google-Smtp-Source: AGRyM1va/nmuQGNMND3VzIucRJfP6FQ1pkIbwUQKVAMX13fthMcz0A4vo8JqKpsin0ZcxyAuu0dI
-X-Received: by 2002:a05:6214:5087:b0:473:3b04:ef41 with SMTP id kk7-20020a056214508700b004733b04ef41mr4525339qvb.81.1657745338242;
-        Wed, 13 Jul 2022 13:48:58 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1657745338; cv=none;
+Received: by 2002:ac2:596f:0:0:0:0:0 with SMTP id h15csp223137lfp;
+        Fri, 15 Jul 2022 08:37:43 -0700 (PDT)
+X-Google-Smtp-Source: AGRyM1t5A6hC+RFk+xbRVeyuBSWtn+/sIWYPhdNEngIBwCLtU8Samo4VYfqQnk1U9D5jDtCoT8cG
+X-Received: by 2002:a05:620a:468e:b0:6b5:af5b:6e5f with SMTP id bq14-20020a05620a468e00b006b5af5b6e5fmr9660168qkb.288.1657899463357;
+        Fri, 15 Jul 2022 08:37:43 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1657899463; cv=none;
         d=google.com; s=arc-20160816;
-        b=kzKqy8jtanvtKHP12uiYJ/Bm7qZKQa+3a8CL/qJaJhk4xA+swSsN6EcZOGwF/CZy1A
-         KsRmmmfzwDSTSVoqCG1zcTejrOjpWxA4tXbpG6myuthlRDNoPWQvGkxrtiru4NZih6Uw
-         iw08KDwJnKqjdt4auCOFfeTdK/4GgyHIvcmL1A3aDrRW8lOfQ2JvuISK12tDTI3Beuxq
-         ee1WsAVtoJKTpaQtjVxIKjOKRhVbwTEDVH+8lWNCvn34c0h9SFUPoJKvPVcTsYjnB2Em
-         5TU/mj6HhJoR4cHXXshvhOJofFZzOTHEyC1bsJ1KdFWggfLkV8muyV7o1norLBdic2ZW
-         eBWQ==
+        b=0PEoZpo5zeyGbn0B/NzpUkYZMkQLN5PnSRkv2K8WcQ7guOUZH4vNGQg2iJ5P+gVtCR
+         ccceXN83RZmcft/vUQ2g3g9Z2spBA3keh0vANg1AUm5XQaZE0FXylRCRaRGdJNu37kbO
+         Uc7hQQCqjeNegY850VJHyrNOB5i9YWJPeLC5JUYHl6EDZ4tifuyEHptefaQDfq7aBTIg
+         1WlIXDctaYpUmWs2gu97px8Fr/72Pa1YBP/ANV2gpDK07o2MNs1Vqjo+ECghU68glFe/
+         WW+N0w1h7KfCBChAdUB3r2ss0EISvc1NwiwcF/0jzEPaBAXL1teooUHjA9bd5rwqAdxO
+         jg8Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:cc:to:from;
-        bh=JvijkaoErb3H24qVDfHSRouLGSm/Dkj3Yw72icpeCeQ=;
-        b=aBEmtIXtbRj2ikrtFq7GvtOiFbYEKMswT32SE34HVOxFW4WrPTULqNLFVGcLJSxI1K
-         2aWMyKdHd6F1z/jqk51ka61lUkHOjilD7S14/nZcvyw6WbBNtGF/f+AxC2J465LzJEAl
-         qxK7Bqbuy3RYbq9Q2bypwWP86r1AUYFr/kg9gW72q/hLTj6OSRZyuc2aRdVhodXI69IM
-         OLVuuFqqaPu8Uim/EWBFRWVwqZbPlgxX2W7gdKn3m297+tMZO0UWy10AcEfAq+qdHvyp
-         7/iU8GH9Km7Sl7Rt+VxgugRaD7MDX3edzCFT1w2bpVIajZ1760TUPZwVpaX11CwOeGgi
-         Uxlg==
+         :in-reply-to:from:references:to:content-language:subject:user-agent
+         :mime-version:date:message-id:dkim-signature;
+        bh=qFr6h49n4HTvrei/G3kkjtjB9MT0qj+/xJKpu1oZjz8=;
+        b=P69cUCQm6lqH1NznOGANWYk2lzUQ772oDhLP0BABxupu2vJ17PQ5uucNZjptccHWSF
+         T8nsjom5VDQGQFVydNeGrQaBjI2AIq7gUN75PuheuhW54ob2ciG+eP81kh75HfJAVLNe
+         Sd8N5Hi0qQ2V9TamkAAiq0g61HRKfstPg096fddbg7CHcmZkm6rq0ci/4cRMqmePeCOa
+         RHQC6et6tPeXF7NyE1RAG9G3USp96yId7bx/mFClrFQayRrnJhA4xOBwCkQV+kBkhm5j
+         suuw9VqGXAMjiTQG8IRRIAzl8qzNmaLVaYNcJZu4dvBCoCaQJbZC5ElkSihhIacBPLJR
+         SU+w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@linaro.org header.s=google header.b=LyqgGvV4;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 66-20020a370745000000b006a725e6199csi6985404qkh.16.2022.07.13.13.48.58
+        by mx.google.com with ESMTPS id u10-20020a0562141c0a00b004701c375a4asi2749448qvc.30.2022.07.15.08.37.43
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 13 Jul 2022 13:48:58 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 15 Jul 2022 08:37:43 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:36276 helo=lists1p.gnu.org)
+       dkim=pass header.i=@linaro.org header.s=google header.b=LyqgGvV4;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:35114 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1oBjHz-00007F-90
-	for alex.bennee@linaro.org; Wed, 13 Jul 2022 16:48:55 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:54346)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1oCNNu-0000WK-R3
+	for alex.bennee@linaro.org; Fri, 15 Jul 2022 11:37:42 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:51256)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ben@codethink.co.uk>)
- id 1oBg2J-0000LM-6K; Wed, 13 Jul 2022 13:20:33 -0400
-Received: from imap4.hz.codethink.co.uk ([188.40.203.114]:43308)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ben@codethink.co.uk>)
- id 1oBg2G-0004Fj-Ls; Wed, 13 Jul 2022 13:20:30 -0400
-Received: from cpc152649-stkp13-2-0-cust121.10-2.cable.virginm.net
- ([86.15.83.122] helo=rainbowdash)
- by imap4.hz.codethink.co.uk with esmtpsa  (Exim 4.94.2 #2 (Debian))
- id 1oBg21-003Mcx-KX; Wed, 13 Jul 2022 18:20:12 +0100
-Received: from ben by rainbowdash with local (Exim 4.96)
- (envelope-from <ben@rainbowdash>) id 1oBg1z-000ABu-2v;
- Wed, 13 Jul 2022 18:20:11 +0100
-From: Ben Dooks <ben.dooks@sifive.com>
-To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, Jude Onyenegecha <jude.onyenegecha@sifive.com>,
- Sudip Mukherjee <sudip.mukherjee@sifive.com>,
- William Salmon <william.salmon@sifive.com>,
- Adnan Chowdhury <adnan.chowdhury@sifive.com>,
- Ben Dooks <ben.dooks@sifive.com>
-Subject: [PATCH] gpio: designware gpio driver
-Date: Wed, 13 Jul 2022 18:20:10 +0100
-Message-Id: <20220713172010.39163-1-ben.dooks@sifive.com>
-X-Mailer: git-send-email 2.35.1
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1oCNNh-0000U8-V6
+ for qemu-arm@nongnu.org; Fri, 15 Jul 2022 11:37:29 -0400
+Received: from mail-ot1-x32a.google.com ([2607:f8b0:4864:20::32a]:45900)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1oCNNg-0002US-7r
+ for qemu-arm@nongnu.org; Fri, 15 Jul 2022 11:37:29 -0400
+Received: by mail-ot1-x32a.google.com with SMTP id
+ r22-20020a056830419600b0061c6edc5dcfso3714045otu.12
+ for <qemu-arm@nongnu.org>; Fri, 15 Jul 2022 08:37:27 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=message-id:date:mime-version:user-agent:subject:content-language:to
+ :references:from:in-reply-to:content-transfer-encoding;
+ bh=qFr6h49n4HTvrei/G3kkjtjB9MT0qj+/xJKpu1oZjz8=;
+ b=LyqgGvV4gg9jsbq2fKVRfXP1t1Vm/7koJKEzpn4epoaInkElYTUMnHHx9rt4zE9gjQ
+ 75ZEdhZb+f2SYjxvichZhUNSIDZD1zBkrq13N75Todzz/siU8vBU7uGIC9oYTErVWGgM
+ 9LUFGqx3fVPg9FVHjmqB4p6+okdVnJh0W4ImtCgoZ3TZPf0R7XPlJ9af6I7axVvnlu2N
+ xjpQSfvHOUYoBonyKfZuwJ4w0MQy9uW6Inrnf8yKwJCMpHGxQ1JSK/aRyVE4ew29RfbI
+ oEXIANHyx88p0T0RnsULZtgp2xQBcxTtoP5KKTK6sh+B5W3oLEJv6H/Fy5KVfU0itHbu
+ Xlyw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
+ :content-language:to:references:from:in-reply-to
+ :content-transfer-encoding;
+ bh=qFr6h49n4HTvrei/G3kkjtjB9MT0qj+/xJKpu1oZjz8=;
+ b=xQlFYSSfAsFMtSAnpCQRA1LxVOIArEWvb/xyIRN3nejnc9cWtiB3QhDe0to2+o2bjc
+ 9A9Xfdiaq75/rLS+am0uA5l/97LZgBpZVJtRHzvL7/i+rW5E5AeGaLgQ4BS8vRhblSN9
+ GxGsH3+3PwPkS9RdbvUsrcRr2Li8eLQtiyBchgAY+Qer4f7989EzVRl7CN19HH16tlpD
+ Jlrmx/8RQTRtxI5Vh6x2V6eqvnn/iW3cbgZmfUQrFHr1tpkFlIcnpmDjtjECJfFuk7nk
+ nfV+scazxb5G25+t+GVnUkEuB2nGTGkVdQ+XEy7vNgb5vE5/WPxrhgIIGmPU3ItmfJ6d
+ 0vdA==
+X-Gm-Message-State: AJIora+78DzNH9kzRYJMONOgmnU+yG+oSsyp2wpblTdYPX0VqfmOfBAP
+ jvVoS2vXtNq8zp6BDxamkxxoJg==
+X-Received: by 2002:a9d:2663:0:b0:61c:7ef9:c117 with SMTP id
+ a90-20020a9d2663000000b0061c7ef9c117mr2789518otb.170.1657899447103; 
+ Fri, 15 Jul 2022 08:37:27 -0700 (PDT)
+Received: from [192.168.113.227] ([172.58.176.74])
+ by smtp.gmail.com with ESMTPSA id
+ 1-20020a4a0301000000b004357c1d1efasm783098ooi.21.2022.07.15.08.37.24
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 15 Jul 2022 08:37:26 -0700 (PDT)
+Message-ID: <d5dd076a-1a93-61cd-2ae8-5204b516d4c7@linaro.org>
+Date: Fri, 15 Jul 2022 21:07:15 +0530
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=188.40.203.114; envelope-from=ben@codethink.co.uk;
- helo=imap4.hz.codethink.co.uk
-X-Spam_score_int: -16
-X-Spam_score: -1.7
-X-Spam_bar: -
-X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9,
- HEADER_FROM_DIFFERENT_DOMAINS=0.249, SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.9.1
+Subject: Re: [PATCH] target/arm: Don't set syndrome ISS for loads and stores
+ with writeback
+Content-Language: en-US
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+References: <20220715123323.1550983-1-peter.maydell@linaro.org>
+From: Richard Henderson <richard.henderson@linaro.org>
+In-Reply-To: <20220715123323.1550983-1-peter.maydell@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::32a;
+ envelope-from=richard.henderson@linaro.org; helo=mail-ot1-x32a.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Wed, 13 Jul 2022 16:45:29 -0400
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: gyvaOKqLKMUx
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: Psr5yke3IQg2
 
-A model for the DesignWare GPIO (v1) block.
+On 7/15/22 18:03, Peter Maydell wrote:
+> The architecture requires that for faults on loads and stores which
+> do writeback, the syndrome information does not have the ISS
+> instruction syndrome information (i.e. ISV is 0).  We got this wrong
+> for the load and store instructions covered by disas_ldst_reg_imm9().
+> Calculate iss_valid correctly so that if the insn is a writeback one
+> it is false.
+> 
+> Resolves: https://gitlab.com/qemu-project/qemu/-/issues/1057
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> ---
+> Tested with RTH's test case attached to the bug report.
+> ---
+>   target/arm/translate-a64.c | 4 +++-
+>   1 file changed, 3 insertions(+), 1 deletion(-)
 
-Signed-off-by: Ben Dooks <ben.dooks@sifive.com>
----
- hw/gpio/Kconfig                   |   3 +
- hw/gpio/designware_gpio.c         | 327 ++++++++++++++++++++++++++++++
- hw/gpio/meson.build               |   1 +
- hw/gpio/trace-events              |   7 +
- include/hw/gpio/designware_gpio.h |  89 ++++++++
- 5 files changed, 427 insertions(+)
- create mode 100644 hw/gpio/designware_gpio.c
- create mode 100644 include/hw/gpio/designware_gpio.h
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 
-diff --git a/hw/gpio/Kconfig b/hw/gpio/Kconfig
-index f0e7405f6e..e5883d9763 100644
---- a/hw/gpio/Kconfig
-+++ b/hw/gpio/Kconfig
-@@ -13,3 +13,6 @@ config GPIO_PWR
- 
- config SIFIVE_GPIO
-     bool
-+
-+config DESIGNWARE_GPIO
-+    bool
-\ No newline at end of file
-diff --git a/hw/gpio/designware_gpio.c b/hw/gpio/designware_gpio.c
-new file mode 100644
-index 0000000000..417bccd630
---- /dev/null
-+++ b/hw/gpio/designware_gpio.c
-@@ -0,0 +1,327 @@
-+/*
-+ * Synopsys Desgignware general purpose input/output register definition
-+ *
-+ * Based on sifive_gpio.c and imx_gpio.c
-+ *
-+ * Copyright 2022 Sifive, Inc.
-+ * Copyright 2018 Steffen Görtz <contrib@steffen-goertz.de>
-+ *
-+ * This code is licensed under the GPL version 2 or later.  See
-+ * the COPYING file in the top-level directory.
-+ */
-+
-+#include "qemu/osdep.h"
-+#include "qemu/log.h"
-+#include "hw/irq.h"
-+#include "hw/qdev-properties.h"
-+#include "hw/gpio/designware_gpio.h"
-+#include "migration/vmstate.h"
-+#include "trace.h"
-+
-+/* only bank A can provide interrupts */
-+static void update_output_irqs(DESIGNWAREGPIOState *s)
-+{
-+    struct DESIGNWAREGPIOBank *bank = &s->bank[0];
-+    uint32_t level_irqs, edge_irqs = 0;
-+
-+    /* re-calculate interrupts for raw_int_status */
-+    level_irqs = bank->dr_val ^ s->int_polarity;
-+    level_irqs &= ~s->int_level;
-+
-+    edge_irqs = bank->dr_val ^ bank->last_dr_val;
-+    edge_irqs &= s->int_level;
-+    bank->last_dr_val = bank->dr_val;
-+
-+    /* update irq from raw-status and the mask */
-+    s->int_status_raw = level_irqs | edge_irqs;
-+    s->int_status = s->int_status_raw & s->int_mask;
-+
-+    qemu_set_irq(s->irq, s->int_status ? 1 : 0);
-+    trace_designware_gpio_update_output_irq(s->int_status);
-+}
-+
-+static void update_state(DESIGNWAREGPIOState *s)
-+{
-+    struct DESIGNWAREGPIOBank *bank;
-+    int banknr, basenr, nr;
-+
-+    for (banknr = 0; banknr < DESIGNWARE_GPIO_BANKS; banknr++) {
-+        basenr = banknr * DESIGNWARE_GPIO_NR_PER_BANK;
-+        bank = &s->bank[banknr];
-+
-+        /* check for data-direction differences */
-+        if (bank->ddr & bank->in) {
-+            qemu_log_mask(LOG_GUEST_ERROR,
-+                          "GPIO bank %d: pins shorted, DDR=%x, IN=%x, overlap=%x\n",
-+                          banknr, bank->ddr, bank->in, bank->ddr & bank->in);
-+        }
-+
-+        bank->dr_val = (bank->dr & bank->ddr) | (bank->in & ~bank->ddr);
-+
-+        /* update any outputs marked as outputs */
-+        for (nr = 0; nr < DESIGNWARE_GPIO_NR_PER_BANK; nr++) {
-+            if (!extract32(bank->ddr, nr, 1))
-+                continue;
-+            qemu_set_irq(s->output[basenr+nr], extract32(bank->dr_val, nr, 1));
-+        }
-+    }
-+
-+    update_output_irqs(s);
-+}
-+
-+
-+static uint64_t designware_gpio_read(void *opaque, hwaddr offset, unsigned int size)
-+{
-+    struct DESIGNWAREGPIOState *s = DESIGNWARE_GPIO(opaque);
-+    struct DESIGNWAREGPIOBank *bank;
-+    hwaddr banknr, reg;
-+    uint64_t r = 0;
-+    bool handled = true;
-+
-+    if (offset < (REG_SWPORTD_DDR + 4)) {
-+        banknr = offset / REG_SWPORT_DR_STRIDE;
-+        reg = offset % REG_SWPORT_DR_STRIDE;
-+        bank = &s->bank[banknr];
-+
-+        switch (reg) {
-+        case REG_SWPORTA_DR:
-+            r = bank->dr;
-+            break;
-+        case REG_SWPORTA_DDR:
-+            r = bank->ddr;
-+            break;
-+        default:
-+            handled = false;
-+        }
-+    } else {
-+        switch (offset) {
-+        case REG_INTEN:
-+            r= s->int_en;
-+            break;
-+        case REG_INTMASK:
-+            r = s->int_mask;
-+            break;
-+        case REG_INTTYPE_LEVEL:
-+            r = s->int_level;
-+            break;
-+        case REG_INT_POLARITY:
-+            r = s->int_polarity;
-+            break;
-+        case REG_INTSTATUS:
-+            r = s->int_status;
-+            break;
-+        case REG_INTSTATUS_RAW:
-+            r = s->int_status_raw;
-+            break;
-+        case REG_PORTA_DEBOUNCE:
-+            r = s->porta_debounce;
-+            break;
-+        case REG_PORTA_EOI:
-+            r = 0x0;    /* write only */
-+            break;
-+        case REG_EXT_PORTA:
-+            r = s->bank[0].dr_val;
-+            break;
-+        case REG_EXT_PORTB:
-+            r = s->bank[1].dr_val;
-+            break;
-+        case REG_EXT_PORTC:
-+            r = s->bank[2].dr_val;
-+            break;
-+        case REG_EXT_PORTD:
-+            r = s->bank[3].dr_val;
-+            break;
-+        case REG_ID:
-+            r = 0x0;
-+            break;
-+        default:
-+            handled = false;
-+        }
-+    }
-+
-+    if (!handled)
-+        qemu_log_mask(LOG_GUEST_ERROR,
-+                "%s: bad read offset 0x%" HWADDR_PRIx "\n",
-+                      __func__, offset);
-+
-+    trace_designware_gpio_read(offset, r);
-+
-+    return r;
-+}
-+
-+static void designware_gpio_write(void *opaque, hwaddr offset,
-+                              uint64_t value, unsigned int size)
-+{
-+    struct DESIGNWAREGPIOState *s = DESIGNWARE_GPIO(opaque);
-+    struct DESIGNWAREGPIOBank *bank;
-+    hwaddr banknr, reg;
-+    bool handled = true;
-+
-+    trace_designware_gpio_write(offset, value);
-+
-+    if (offset < (REG_SWPORTD_DDR + 4)) {
-+        banknr = offset / REG_SWPORT_DR_STRIDE;
-+        reg = offset % REG_SWPORT_DR_STRIDE;
-+        bank = &s->bank[banknr];
-+
-+        switch (reg) {
-+        case REG_SWPORTA_DR:
-+            bank->dr = value;
-+            break;
-+        case REG_SWPORTA_DDR:
-+            bank->ddr = value;
-+            break;
-+        default:
-+            handled = false;
-+        }
-+    } else {
-+        switch (offset) {
-+        case REG_INTEN:
-+            s->int_en = value;
-+            break;
-+        case REG_INTMASK:
-+            s->int_mask = value;
-+            break;
-+        case REG_INTTYPE_LEVEL:
-+            s->int_level = value;
-+            break;
-+        case REG_INT_POLARITY:
-+            s->int_polarity = value;
-+            break;
-+        case REG_INTSTATUS:
-+            /* read only */
-+        case REG_INTSTATUS_RAW:
-+            /* read only */
-+            break;
-+        case REG_PORTA_DEBOUNCE:
-+            s->porta_debounce = value;
-+            break;
-+        case REG_PORTA_EOI:
-+            /* assume level irqs will just re-trigger */
-+            s->int_status_raw &= ~value;
-+            break;
-+        case REG_EXT_PORTA:
-+        case REG_EXT_PORTB:
-+        case REG_EXT_PORTC:
-+        case REG_EXT_PORTD:
-+            /* read only, ignore */
-+            break;
-+        }
-+    }
-+
-+    if (!handled)
-+        qemu_log_mask(LOG_GUEST_ERROR,
-+                      "%s: bad write offset 0x%" HWADDR_PRIx "\n",
-+                      __func__, offset);
-+
-+    update_state(s);
-+}
-+
-+
-+static const MemoryRegionOps gpio_ops = {
-+    .read =  designware_gpio_read,
-+    .write = designware_gpio_write,
-+    .endianness = DEVICE_LITTLE_ENDIAN,
-+    .impl.min_access_size = 4,
-+    .impl.max_access_size = 4,
-+};
-+
-+static void designware_gpio_set(void *opaque, int line, int value)
-+{
-+    DESIGNWAREGPIOState *s = DESIGNWARE_GPIO(opaque);
-+    struct DESIGNWAREGPIOBank *bank = &s->bank[line / DESIGNWARE_GPIO_NR_PER_BANK];
-+
-+    trace_designware_gpio_set(line, value);
-+    assert(line >= 0 && line < DESIGNWARE_GPIO_PINS);
-+
-+    bank->in_mask = deposit32(bank->in_mask, line, 1, value >= 0);
-+    if (value >= 0) {
-+        bank->in = deposit32(bank->in, line, 1, value != 0);
-+    }
-+
-+    update_state(s);
-+}
-+
-+static void designware_gpio_reset(DeviceState *dev)
-+{
-+    DESIGNWAREGPIOState *s = DESIGNWARE_GPIO(dev);
-+
-+    memset(s->bank, 0, sizeof(s->bank));
-+    s->int_en = 0;
-+    s->int_mask = 0;
-+    s->int_level = 0;
-+    s->int_polarity = 0;
-+    s->int_status = 0;
-+    s->porta_debounce = 0;
-+}
-+
-+#define STATE_BANK(__nr) \
-+    VMSTATE_UINT32(bank[__nr].dr,      DESIGNWAREGPIOState), \
-+    VMSTATE_UINT32(bank[__nr].dr_val,  DESIGNWAREGPIOState), \
-+    VMSTATE_UINT32(bank[__nr].ddr,     DESIGNWAREGPIOState), \
-+    VMSTATE_UINT32(bank[__nr].in,      DESIGNWAREGPIOState), \
-+    VMSTATE_UINT32(bank[__nr].in_mask,  DESIGNWAREGPIOState)
-+
-+static const VMStateDescription vmstate_designware_gpio = {
-+    .name = TYPE_DESIGNWARE_GPIO,
-+    .version_id = 1,
-+    .minimum_version_id = 1,
-+    .fields = (VMStateField[]) {
-+        STATE_BANK(0),
-+        STATE_BANK(1),
-+        STATE_BANK(2),
-+        STATE_BANK(3),
-+        VMSTATE_UINT32(int_en,       DESIGNWAREGPIOState),
-+        VMSTATE_UINT32(int_mask,     DESIGNWAREGPIOState),
-+        VMSTATE_UINT32(int_level,    DESIGNWAREGPIOState),
-+        VMSTATE_UINT32(int_polarity, DESIGNWAREGPIOState),
-+        VMSTATE_UINT32(int_status,   DESIGNWAREGPIOState),
-+        VMSTATE_UINT32(int_status_raw, DESIGNWAREGPIOState),
-+        VMSTATE_UINT32(porta_debounce, DESIGNWAREGPIOState),
-+        VMSTATE_END_OF_LIST()
-+    }
-+};
-+
-+static Property designware_gpio_properties[] = {
-+    DEFINE_PROP_UINT32("ngpio", DESIGNWAREGPIOState, ngpio, DESIGNWARE_GPIO_PINS),
-+    DEFINE_PROP_END_OF_LIST(),
-+};
-+
-+static void designware_gpio_realize(DeviceState *dev, Error **errp)
-+{
-+    DESIGNWAREGPIOState *s = DESIGNWARE_GPIO(dev);
-+
-+    memory_region_init_io(&s->mmio, OBJECT(dev), &gpio_ops, s,
-+            TYPE_DESIGNWARE_GPIO, DESIGNWARE_GPIO_SIZE);
-+
-+    sysbus_init_mmio(SYS_BUS_DEVICE(dev), &s->mmio);
-+    sysbus_init_irq(SYS_BUS_DEVICE(dev), &s->irq);
-+
-+    qdev_init_gpio_in(DEVICE(s), designware_gpio_set, s->ngpio);
-+    qdev_init_gpio_out(DEVICE(s), s->output, s->ngpio);
-+}
-+
-+static void designware_gpio_class_init(ObjectClass *klass, void *data)
-+{
-+    DeviceClass *dc = DEVICE_CLASS(klass);
-+
-+    device_class_set_props(dc, designware_gpio_properties);
-+    dc->vmsd = &vmstate_designware_gpio;
-+    dc->realize = designware_gpio_realize;
-+    dc->reset = designware_gpio_reset;
-+    dc->desc = "SiFive GPIO";
-+}
-+
-+static const TypeInfo designware_gpio_info = {
-+    .name = TYPE_DESIGNWARE_GPIO,
-+    .parent = TYPE_SYS_BUS_DEVICE,
-+    .instance_size = sizeof(DESIGNWAREGPIOState),
-+    .class_init = designware_gpio_class_init
-+};
-+
-+static void designware_gpio_register_types(void)
-+{
-+    type_register_static(&designware_gpio_info);
-+}
-+
-+type_init(designware_gpio_register_types)
-diff --git a/hw/gpio/meson.build b/hw/gpio/meson.build
-index 7bd6a57264..66959c33de 100644
---- a/hw/gpio/meson.build
-+++ b/hw/gpio/meson.build
-@@ -5,6 +5,7 @@ softmmu_ss.add(when: 'CONFIG_MAX7310', if_true: files('max7310.c'))
- softmmu_ss.add(when: 'CONFIG_PL061', if_true: files('pl061.c'))
- softmmu_ss.add(when: 'CONFIG_ZAURUS', if_true: files('zaurus.c'))
- 
-+softmmu_ss.add(when: 'CONFIG_DESIGNWARE_GPIO', if_true: files('designware_gpio.c'))
- softmmu_ss.add(when: 'CONFIG_IMX', if_true: files('imx_gpio.c'))
- softmmu_ss.add(when: 'CONFIG_NPCM7XX', if_true: files('npcm7xx_gpio.c'))
- softmmu_ss.add(when: 'CONFIG_NRF51_SOC', if_true: files('nrf51_gpio.c'))
-diff --git a/hw/gpio/trace-events b/hw/gpio/trace-events
-index 9736b362ac..45dac8b706 100644
---- a/hw/gpio/trace-events
-+++ b/hw/gpio/trace-events
-@@ -31,3 +31,10 @@ sifive_gpio_update_output_irq(int64_t line, int64_t value) "line %" PRIi64 " val
- # aspeed_gpio.c
- aspeed_gpio_read(uint64_t offset, uint64_t value) "offset: 0x%" PRIx64 " value 0x%" PRIx64
- aspeed_gpio_write(uint64_t offset, uint64_t value) "offset: 0x%" PRIx64 " value 0x%" PRIx64
-+
-+# designware_gpio
-+designware_gpio_read(uint64_t offset, uint64_t r) "offset 0x%" PRIx64 " value 0x%" PRIx64
-+designware_gpio_write(uint64_t offset, uint64_t value) "offset 0x%" PRIx64 " value 0x%" PRIx64
-+designware_gpio_set(int64_t line, int64_t value) "line %" PRIi64 " value %" PRIi64
-+designware_gpio_update_output_irq(int64_t value) " value %" PRIi64
-+
-diff --git a/include/hw/gpio/designware_gpio.h b/include/hw/gpio/designware_gpio.h
-new file mode 100644
-index 0000000000..2d151d3823
---- /dev/null
-+++ b/include/hw/gpio/designware_gpio.h
-@@ -0,0 +1,89 @@
-+/*
-+ * Designware System-on-Chip general purpose input/output register definition
-+ *
-+ * Copyright 2022 SiFive, Inc.
-+ * Copyright (c) 2011 Jamie Iles
-+ *
-+ * This code is licensed under the GPL version 2 or later.  See
-+ * the COPYING file in the top-level directory.
-+*/
-+
-+#ifndef DESIGNWARE_GPIO_H
-+#define DESIGNWARE_GPIO_H
-+
-+#include "hw/sysbus.h"
-+#include "qom/object.h"
-+
-+#define TYPE_DESIGNWARE_GPIO "designware.gpio"
-+typedef struct DESIGNWAREGPIOState DESIGNWAREGPIOState;
-+DECLARE_INSTANCE_CHECKER(DESIGNWAREGPIOState, DESIGNWARE_GPIO,
-+                         TYPE_DESIGNWARE_GPIO)
-+
-+/* maximum pins for 4 banks */
-+#define DESIGNWARE_GPIO_BANKS (4)
-+#define DESIGNWARE_GPIO_NR_PER_BANK (32)
-+#define DESIGNWARE_GPIO_PINS (32 * DESIGNWARE_GPIO_BANKS)
-+
-+#define DESIGNWARE_GPIO_SIZE 0x100
-+
-+/* registers copied from linux driver */
-+#define REG_SWPORTA_DR		0x00
-+#define REG_SWPORTA_DDR         0x04
-+#define REG_SWPORTB_DR		0x0c
-+#define REG_SWPORTB_DDR         0x10
-+#define REG_SWPORTC_DR		0x18
-+#define REG_SWPORTC_DDR         0x1c
-+#define REG_SWPORTD_DR		0x24
-+#define REG_SWPORTD_DDR         0x28
-+#define REG_INTEN		0x30
-+#define REG_INTMASK		0x34
-+#define REG_INTTYPE_LEVEL	0x38
-+#define REG_INT_POLARITY	0x3c
-+#define REG_INTSTATUS		0x40
-+#define REG_INTSTATUS_RAW       0x44
-+#define REG_PORTA_DEBOUNCE	0x48
-+#define REG_PORTA_EOI		0x4c    /* write to clear edge irq */
-+#define REG_EXT_PORTA		0x50
-+#define REG_EXT_PORTB		0x54
-+#define REG_EXT_PORTC		0x58
-+#define REG_EXT_PORTD		0x5c
-+#define REG_ID                  0x64
-+
-+#define REG_EXT_PORT_STRIDE	0x04 /* register stride 32 bits */
-+#define REG_SWPORT_DR_STRIDE	0x0c /* register stride 3*32 bits */
-+#define REG_SWPORT_DDR_STRIDE	0x0c /* register stride 3*32 bits */
-+\
-+    
-+struct DESIGNWAREGPIOBank {
-+    uint32_t    dr;
-+    uint32_t    dr_val;
-+    uint32_t    ddr;    /* 0=in, 1=out */
-+    uint32_t    last_dr_val;
-+
-+    /* internal state */
-+    /* state from user */
-+    uint32_t    in_mask;
-+    uint32_t    in;
-+};
-+
-+struct DESIGNWAREGPIOState {
-+    SysBusDevice parent_obj;
-+    MemoryRegion mmio;
-+
-+    qemu_irq irq;
-+    qemu_irq output[DESIGNWARE_GPIO_PINS];
-+
-+    struct DESIGNWAREGPIOBank bank[DESIGNWARE_GPIO_BANKS];
-+
-+    uint32_t int_en;
-+    uint32_t int_mask;
-+    uint32_t int_level;         /* 0 = level, 1 = edge */
-+    uint32_t int_polarity;
-+    uint32_t int_status;
-+    uint32_t int_status_raw;
-+    uint32_t porta_debounce;
-+    /* config */
-+    uint32_t ngpio;
-+};
-+
-+#endif /* DESIGNWARE_GPIO_H */
--- 
-2.35.1
+r~
+
+> 
+> diff --git a/target/arm/translate-a64.c b/target/arm/translate-a64.c
+> index b7b64f73584..163df8c6157 100644
+> --- a/target/arm/translate-a64.c
+> +++ b/target/arm/translate-a64.c
+> @@ -3138,7 +3138,7 @@ static void disas_ldst_reg_imm9(DisasContext *s, uint32_t insn,
+>       bool is_store = false;
+>       bool is_extended = false;
+>       bool is_unpriv = (idx == 2);
+> -    bool iss_valid = !is_vector;
+> +    bool iss_valid;
+>       bool post_index;
+>       bool writeback;
+>       int memidx;
+> @@ -3191,6 +3191,8 @@ static void disas_ldst_reg_imm9(DisasContext *s, uint32_t insn,
+>           g_assert_not_reached();
+>       }
+>   
+> +    iss_valid = !is_vector && !writeback;
+> +
+>       if (rn == 31) {
+>           gen_check_sp_alignment(s);
+>       }
 

@@ -1,102 +1,102 @@
-Received: by 2002:ac2:596f:0:0:0:0:0 with SMTP id h15csp1338389lfp;
-        Mon, 18 Jul 2022 07:36:47 -0700 (PDT)
-X-Google-Smtp-Source: AGRyM1uHP+iAo5hwE1xydI6PglJJpaaiXlPOy4kXH+ycLi3QNHEPvnyosMk6bO09gKmywCXG7p8Y
-X-Received: by 2002:a05:6214:21a3:b0:473:2161:f820 with SMTP id t3-20020a05621421a300b004732161f820mr21596032qvc.123.1658155007597;
-        Mon, 18 Jul 2022 07:36:47 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1658155007; cv=none;
+Received: by 2002:ac2:596f:0:0:0:0:0 with SMTP id h15csp1338697lfp;
+        Mon, 18 Jul 2022 07:37:25 -0700 (PDT)
+X-Google-Smtp-Source: AGRyM1ttAc69CKkXqIe1wuc1OEex9MK5FZarSk3bSn7fy4Wg7gy6s3M3ukB91CBfsMnfFFYT94qT
+X-Received: by 2002:a05:620a:288a:b0:6b5:3d7d:5c22 with SMTP id j10-20020a05620a288a00b006b53d7d5c22mr17302230qkp.603.1658155044993;
+        Mon, 18 Jul 2022 07:37:24 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1658155044; cv=none;
         d=google.com; s=arc-20160816;
-        b=uQ7iGmZ81Y9ASee6DSxqTbT36bsOQMUkk0E3NuUoGF8/02+FXYpQmH4y1epXTTuybn
-         alJfuvUWdFzWncHCB+FE+WR/w/j/nU/b4qe9JR0OQCn+yTsmLYs2/JiitgfEmknFqh+c
-         itj2pnNfSelamwEofD9B1fSD6yP5nElLBrq6BXQ2otxIHcrnQCBQxU/7oWsDdYMH1mb1
-         VgqLk63P4RtK1bIaVCeCCgtjU21cx7Tha+RL1eJwcRVHIzD3eyu1CgoQHHG1hh+n7wSe
-         g8qhoFa8d+gafOAnX0k8gfiYJ6QVd5d14hE4WEPPe88c3Q78RPca1goVtVi/ZxLBXP0Q
-         j4GQ==
+        b=kZSh5cOc8raZoByUmNBflT8+ElZAwxfstRwCIYfByIFjlYu8U8WZgEs82huwdltuKY
+         Apub6SroWfFTqwX4jtYk7EJtg3PY8Img2GLr25bcY/oMFUADxfs2I6jh9Y9mW4joCm/9
+         Al3Olu2AWEPln42YhBqjx+itgUtd6C3xjHMqX8vQyERuUn5fmNbKD88z6eFMnNmfxqsI
+         Mjv6lB2KkfYGXC8InTG7DkyKmTEMysq2EmxwKU94OAREHDEslRDBYqg2uzy/Nc6L7Egq
+         t9i/0oThHGkUhumPbAYfuymxdQOUGskPYCatgkTJAIWNUVcmVkF9TipRiKUxrKBh4NIq
+         Jhxw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:subject:cc:to:from
          :date:dkim-signature;
-        bh=WNGaGEJT0I1fOnuHXH+I3Qjr0Ym2bfirs4XSjpZw1GU=;
-        b=R4yc/q61r2DKuyeGRq5tUW5/J6M1hPIcIvBaNkltZrj2Hu7pqnGKo2vVNWXQFm1zH8
-         fcyhEuzyWlNvGpppRvpW7OxWXszNTajexCvtMx5YseJ5JPQCIQm0oGxBcbY9Jz11Ucwy
-         LZCSwZgYO/BnulxTHcMpKIxyaThW0fZc8BzAAHj4DaKJGFD8LLVV4sIFHROSEYiH0ZTI
-         Y3e1CSyuTyg7Z5Bhjs2aoQhJJLLD0BC7Q15A0kP3KGNBSC6A+48gpiapVUsJ+XeocPEg
-         zKV5lYTXqWLLL3CPv42pYbG3biClcBuJ+yRb01mQJIUrGib9JcWXODyNazLNYZEmfKxB
-         3MxA==
+        bh=fjBX/M3VUQYW/3IstOcq0FchP7CfVgdwV5UVREED5xA=;
+        b=WJ6A+Sm3kwYiBN/sW3R6cW08bGXFzmffjegkHwD3tQ+rwyZGPIjP5HFuWYpJN9LPKG
+         NzLamPFZVPV23xgrRveoNfFMeRWrx6eJr0qkyK5Y23UYnXowlfKtcv+t9TxORQ5l6dNn
+         j7r/mfgOUa0xWXNQiRIvO0DVraCQefECUOBaemCQmEeV1dN8qRmVgJe6DxxEdLuDZbmG
+         FkO/AGVyWwN87lGiNY95I87wZZNUwSJvSm35m0dOVXOEDoWxM48IoEpVxvoPlqIS2wa+
+         4yiGkR4uYyJbnrWRAjDQRZWD3PyMQx3ScRk7hI9/Mfm3QawbakZ2Hobn3EfK9iT2hMuz
+         eC8Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=SY3l21mU;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=NlEfR1jr;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id i8-20020ad45c68000000b00470a7fba635si6395888qvh.592.2022.07.18.07.36.47
+        by mx.google.com with ESMTPS id ay42-20020a05620a17aa00b006b5cc12c592si4254031qkb.266.2022.07.18.07.37.24
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 18 Jul 2022 07:36:47 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 18 Jul 2022 07:37:24 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=SY3l21mU;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=NlEfR1jr;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:35454 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:38658 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1oDRrb-00066v-2b
-	for alex.bennee@linaro.org; Mon, 18 Jul 2022 10:36:47 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:56574)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1oDRsC-0008Lc-H7
+	for alex.bennee@linaro.org; Mon, 18 Jul 2022 10:37:24 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53828)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
- id 1oDRbS-0001mn-1a
- for qemu-devel@nongnu.org; Mon, 18 Jul 2022 10:20:08 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:36527)
+ id 1oDRPx-0006jK-Jz
+ for qemu-arm@nongnu.org; Mon, 18 Jul 2022 10:08:14 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:43655)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
- id 1oDRbN-0006Ew-Le
- for qemu-devel@nongnu.org; Mon, 18 Jul 2022 10:20:04 -0400
+ id 1oDRPu-0004Qf-DM
+ for qemu-arm@nongnu.org; Mon, 18 Jul 2022 10:08:11 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1658154001;
+ s=mimecast20190719; t=1658153289;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=WNGaGEJT0I1fOnuHXH+I3Qjr0Ym2bfirs4XSjpZw1GU=;
- b=SY3l21mUGMPbPCKffr7a9e3LazcWFMs5DqA9BICxR89N4Yu5UhnPTikRwj+/sk7D4NZGyJ
- keyaPXB3+V1XAWRDDymTr9ujiAAuvLvmFCnAxM84wkmH8e40tlxqWfw8XITbFHMKyZ2GZo
- vOydC/mpQ3YDqxoS8d0l379uKY3CvdI=
+ bh=fjBX/M3VUQYW/3IstOcq0FchP7CfVgdwV5UVREED5xA=;
+ b=NlEfR1jr7X1Vo5CTBjkeFAW8lJSdPnsmasl8Ei81scmNZw+B0NTVXCkVp+X5Z/3W14Xfgv
+ 9bjFVg6LGqtdHRRIONxWqbSnc33YMbEmnIa0vmzHZJp/d/kn2/0n6Us+EWtx7qTdxpyQwk
+ KkUxV5n0H2AfnejRNZjeWJrXt4ZZTFU=
 Received: from mail-ed1-f72.google.com (mail-ed1-f72.google.com
  [209.85.208.72]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-582-dh-nlDWXMmGGzJvLVvKGGA-1; Mon, 18 Jul 2022 10:19:59 -0400
-X-MC-Unique: dh-nlDWXMmGGzJvLVvKGGA-1
+ us-mta-536-ieu1NenROc6mUXY-PvVqWQ-1; Mon, 18 Jul 2022 10:08:08 -0400
+X-MC-Unique: ieu1NenROc6mUXY-PvVqWQ-1
 Received: by mail-ed1-f72.google.com with SMTP id
- w15-20020a056402268f00b0043ac600a6bcso7918957edd.6
- for <qemu-devel@nongnu.org>; Mon, 18 Jul 2022 07:19:59 -0700 (PDT)
+ s17-20020a056402521100b0043ade613038so8018382edd.17
+ for <qemu-arm@nongnu.org>; Mon, 18 Jul 2022 07:08:07 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:date:from:to:cc:subject:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=WNGaGEJT0I1fOnuHXH+I3Qjr0Ym2bfirs4XSjpZw1GU=;
- b=d/NI7X5ayjSiqjxYt7fTOjt8JUy/qec7k66RI7YwxcoOxrZKvV5a1nR/YNgCe0jmBu
- GXkx8UMA8QOKWd9VrwgCgLHGjHLwwUji9HAE0KSKiGRJpLj7TIV0zqr3UKWzx4f0oNTY
- x0BeqSOP8n+6rLO+97TvWniFzjiZc5JwDP805IkZTlfckahZ3QyEKpRzYAYbyAzE118c
- TnGtJi3VdNEPdJQgsyFKGiz9DAo3mJtyqlbolW5KItX3jdf2oXSiTct4rtrRBOEj5d7v
- tQZsUr2JvmVr5YVEENopJ8KwpFL39/n0D1sp8D5dM0JGS9Zgl0juy6c3yg+MczV2K9y1
- S1iA==
-X-Gm-Message-State: AJIora+raIVkhWwH9vf3ZRNtEUuaTJzvdQs9xcdAQ5YURWojmxJcjUCM
- 6l/90W6vvlyRywFqRPW4qFAlKY/2u6l0K6sq6QYeE+X4pDMQcU4rKgZr1PPEMI32fgIhkXlCvUC
- HpRJnkIB7l13dUIY=
-X-Received: by 2002:aa7:d695:0:b0:43b:6c14:140d with SMTP id
- d21-20020aa7d695000000b0043b6c14140dmr4153708edr.276.1658153996949; 
- Mon, 18 Jul 2022 07:19:56 -0700 (PDT)
-X-Received: by 2002:aa7:d695:0:b0:43b:6c14:140d with SMTP id
- d21-20020aa7d695000000b0043b6c14140dmr4153672edr.276.1658153996638; 
- Mon, 18 Jul 2022 07:19:56 -0700 (PDT)
+ bh=fjBX/M3VUQYW/3IstOcq0FchP7CfVgdwV5UVREED5xA=;
+ b=s/8xQ7k4+Plx0Gr79PYda8YcP5WdSpA3Fggqj/ToaArV2ckoOaVKWwZ9i/W/i2nwcI
+ BkiIBCyupi8p6d7iQn6hONnRWBcGP9kxC+SiUyuQnu4F/QGzSflgJLRQeURnu+ADYt93
+ 3YNDC8Fq2G9SdYnC50sIsm3+IuBuzlvNYcZy1zRjTTNh0uBdS1W4+KMyM4emzJaUbFmY
+ 4uoKVgZPRe7pCmNqsywEx/qPrPcHFNwYCUN+8dURTXQRpg6Un6AUlkRiWxowMraw/5Eu
+ SC3g7Fy59pB5Hm5nZdAH07CO4g8+PQ5RXEApMOwV3b69VhYAc+1dDnCuuUqpcy6u+gS2
+ Ncfg==
+X-Gm-Message-State: AJIora+0aaZsW357Om6Ou0AboSyzhXN18fLj3ynTVDsfEZhTPwqdwJIT
+ HKA8SdSNDcfNuAtG2Na8vktlbOOBMj5oPBSiZleUbrtGD4mIsva4EO88nyXUQRdsR9DhqT1+WZ3
+ ZQbHBVgv/kOjX
+X-Received: by 2002:a05:6402:51ce:b0:43a:d409:b3e8 with SMTP id
+ r14-20020a05640251ce00b0043ad409b3e8mr36889855edd.166.1658153286980; 
+ Mon, 18 Jul 2022 07:08:06 -0700 (PDT)
+X-Received: by 2002:a05:6402:51ce:b0:43a:d409:b3e8 with SMTP id
+ r14-20020a05640251ce00b0043ad409b3e8mr36889638edd.166.1658153284788; 
+ Mon, 18 Jul 2022 07:08:04 -0700 (PDT)
 Received: from localhost (nat-pool-brq-t.redhat.com. [213.175.37.10])
  by smtp.gmail.com with ESMTPSA id
- sz20-20020a1709078b1400b0072b31307a79sm5507248ejc.60.2022.07.18.07.19.55
+ b18-20020a170906d11200b0072b4e4cd346sm5486158ejz.188.2022.07.18.07.08.03
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 18 Jul 2022 07:19:56 -0700 (PDT)
-Date: Mon, 18 Jul 2022 16:19:55 +0200
+ Mon, 18 Jul 2022 07:08:04 -0700 (PDT)
+Date: Mon, 18 Jul 2022 16:08:03 +0200
 From: Igor Mammedov <imammedo@redhat.com>
 To: Hesham Almatary <hesham.almatary@huawei.com>
 Cc: <jonathan.cameron@huawei.com>, <qemu-devel@nongnu.org>,
@@ -104,14 +104,18 @@ Cc: <jonathan.cameron@huawei.com>, <qemu-devel@nongnu.org>,
  <linuxarm@huawei.com>, <qemu-arm@nongnu.org>, <peter.maydell@linaro.org>,
  <wangyanan55@huawei.com>, <marcel.apfelbaum@gmail.com>,
  <eduardo@habkost.net>, <Brice.Goglin@inria.fr>, <mst@redhat.com>
-Subject: Re: [PATCH 3/8] tests: acpi: q35: add test for hmat nodes without
- initiators
-Message-ID: <20220718161955.071bbc5b@redhat.com>
-In-Reply-To: <20220711104436.8363-4-hesham.almatary@huawei.com>
+Subject: Re: [PATCH 4/8] tests: acpi: q35: update expected blobs
+ *.hmat-noinitiators
+Message-ID: <20220718160803.06febe5b@redhat.com>
+In-Reply-To: <20220711104436.8363-5-hesham.almatary@huawei.com>
 References: <20220711104436.8363-1-hesham.almatary@huawei.com>
- <20220711104436.8363-4-hesham.almatary@huawei.com>
+ <20220711104436.8363-5-hesham.almatary@huawei.com>
 X-Mailer: Claws Mail 4.1.0 (GTK 3.24.34; x86_64-redhat-linux-gnu)
 MIME-Version: 1.0
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=imammedo@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: 7bit
 Received-SPF: pass client-ip=170.10.133.124; envelope-from=imammedo@redhat.com;
@@ -122,215 +126,42 @@ X-Spam_bar: --
 X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.082,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: CUUb799nWLc+
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: Y4GGjZ3FujTI
 
-On Mon, 11 Jul 2022 11:44:31 +0100
+On Mon, 11 Jul 2022 11:44:32 +0100
 Hesham Almatary <hesham.almatary@huawei.com> wrote:
 
 > From: Brice Goglin <Brice.Goglin@inria.fr>
 > 
-> expected HMAT:
-> 
-> [000h 0000   4]                    Signature : "HMAT"    [Heterogeneous Memory Attributes Table]
-> [004h 0004   4]                 Table Length : 00000120
-> [008h 0008   1]                     Revision : 02
-> [009h 0009   1]                     Checksum : 4F
-> [00Ah 0010   6]                       Oem ID : "BOCHS "
-> [010h 0016   8]                 Oem Table ID : "BXPC    "
-> [018h 0024   4]                 Oem Revision : 00000001
-> [01Ch 0028   4]              Asl Compiler ID : "BXPC"
-> [020h 0032   4]        Asl Compiler Revision : 00000001
-> 
-> [024h 0036   4]                     Reserved : 00000000
-> 
-> [028h 0040   2]               Structure Type : 0000 [Memory Proximity Domain Attributes]
-> [02Ah 0042   2]                     Reserved : 0000
-> [02Ch 0044   4]                       Length : 00000028
-> [030h 0048   2]        Flags (decoded below) : 0001
->             Processor Proximity Domain Valid : 1
-> [032h 0050   2]                    Reserved1 : 0000
-> [034h 0052   4] Attached Initiator Proximity Domain : 00000000
-> [038h 0056   4]      Memory Proximity Domain : 00000000
-> [03Ch 0060   4]                    Reserved2 : 00000000
-> [040h 0064   8]                    Reserved3 : 0000000000000000
-> [048h 0072   8]                    Reserved4 : 0000000000000000
-> 
-> [050h 0080   2]               Structure Type : 0000 [Memory Proximity Domain Attributes]
-> [052h 0082   2]                     Reserved : 0000
-> [054h 0084   4]                       Length : 00000028
-> [058h 0088   2]        Flags (decoded below) : 0001
->             Processor Proximity Domain Valid : 1
-> [05Ah 0090   2]                    Reserved1 : 0000
-> [05Ch 0092   4] Attached Initiator Proximity Domain : 00000001
-> [060h 0096   4]      Memory Proximity Domain : 00000001
-> [064h 0100   4]                    Reserved2 : 00000000
-> [068h 0104   8]                    Reserved3 : 0000000000000000
-> [070h 0112   8]                    Reserved4 : 0000000000000000
-> 
-> [078h 0120   2]               Structure Type : 0000 [Memory Proximity Domain Attributes]
-> [07Ah 0122   2]                     Reserved : 0000
-> [07Ch 0124   4]                       Length : 00000028
-> [080h 0128   2]        Flags (decoded below) : 0000
->             Processor Proximity Domain Valid : 0
-> [082h 0130   2]                    Reserved1 : 0000
-> [084h 0132   4] Attached Initiator Proximity Domain : 00000080
-> [088h 0136   4]      Memory Proximity Domain : 00000002
-> [08Ch 0140   4]                    Reserved2 : 00000000
-> [090h 0144   8]                    Reserved3 : 0000000000000000
-> [098h 0152   8]                    Reserved4 : 0000000000000000
-> 
-> [0A0h 0160   2]               Structure Type : 0001 [System Locality Latency and Bandwidth Information]
-> [0A2h 0162   2]                     Reserved : 0000
-> [0A4h 0164   4]                       Length : 00000040
-> [0A8h 0168   1]        Flags (decoded below) : 00
->                             Memory Hierarchy : 0
-> [0A9h 0169   1]                    Data Type : 00
-> [0AAh 0170   2]                    Reserved1 : 0000
-> [0ACh 0172   4] Initiator Proximity Domains # : 00000002
-> [0B0h 0176   4]   Target Proximity Domains # : 00000003
-> [0B4h 0180   4]                    Reserved2 : 00000000
-> [0B8h 0184   8]              Entry Base Unit : 0000000000002710
-> [0C0h 0192   4] Initiator Proximity Domain List : 00000000
-> [0C4h 0196   4] Initiator Proximity Domain List : 00000001
-> [0C8h 0200   4] Target Proximity Domain List : 00000000
-> [0CCh 0204   4] Target Proximity Domain List : 00000001
-> [0D0h 0208   4] Target Proximity Domain List : 00000002
-> [0D4h 0212   2]                        Entry : 0001
-> [0D6h 0214   2]                        Entry : 0002
-> [0D8h 0216   2]                        Entry : 0003
-> [0DAh 0218   2]                        Entry : 0002
-> [0DCh 0220   2]                        Entry : 0001
-> [0DEh 0222   2]                        Entry : 0003
-> 
-> [0E0h 0224   2]               Structure Type : 0001 [System Locality Latency and Bandwidth Information]
-> [0E2h 0226   2]                     Reserved : 0000
-> [0E4h 0228   4]                       Length : 00000040
-> [0E8h 0232   1]        Flags (decoded below) : 00
->                             Memory Hierarchy : 0
-> [0E9h 0233   1]                    Data Type : 03
-> [0EAh 0234   2]                    Reserved1 : 0000
-> [0ECh 0236   4] Initiator Proximity Domains # : 00000002
-> [0F0h 0240   4]   Target Proximity Domains # : 00000003
-> [0F4h 0244   4]                    Reserved2 : 00000000
-> [0F8h 0248   8]              Entry Base Unit : 0000000000000001
-> [100h 0256   4] Initiator Proximity Domain List : 00000000
-> [104h 0260   4] Initiator Proximity Domain List : 00000001
-> [108h 0264   4] Target Proximity Domain List : 00000000
-> [10Ch 0268   4] Target Proximity Domain List : 00000001
-> [110h 0272   4] Target Proximity Domain List : 00000002
-> [114h 0276   2]                        Entry : 000A
-> [116h 0278   2]                        Entry : 0005
-> [118h 0280   2]                        Entry : 0001
-> [11Ah 0282   2]                        Entry : 0005
-> [11Ch 0284   2]                        Entry : 000A
-> [11Eh 0286   2]                        Entry : 0001
-> 
-> Raw Table Data: Length 288 (0x120)
-> 
->     0000: 48 4D 41 54 20 01 00 00 02 4F 42 4F 43 48 53 20  // HMAT ....OBOCHS
->     0010: 42 58 50 43 20 20 20 20 01 00 00 00 42 58 50 43  // BXPC    ....BXPC
->     0020: 01 00 00 00 00 00 00 00 00 00 00 00 28 00 00 00  // ............(...
->     0030: 01 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  // ................
->     0040: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  // ................
->     0050: 00 00 00 00 28 00 00 00 01 00 00 00 01 00 00 00  // ....(...........
->     0060: 01 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  // ................
->     0070: 00 00 00 00 00 00 00 00 00 00 00 00 28 00 00 00  // ............(...
->     0080: 00 00 00 00 80 00 00 00 02 00 00 00 00 00 00 00  // ................
->     0090: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  // ................
->     00A0: 01 00 00 00 40 00 00 00 00 00 00 00 02 00 00 00  // ....@...........
->     00B0: 03 00 00 00 00 00 00 00 10 27 00 00 00 00 00 00  // .........'......
->     00C0: 00 00 00 00 01 00 00 00 00 00 00 00 01 00 00 00  // ................
->     00D0: 02 00 00 00 01 00 02 00 03 00 02 00 01 00 03 00  // ................
->     00E0: 01 00 00 00 40 00 00 00 00 03 00 00 02 00 00 00  // ....@...........
->     00F0: 03 00 00 00 00 00 00 00 01 00 00 00 00 00 00 00  // ................
->     0100: 00 00 00 00 01 00 00 00 00 00 00 00 01 00 00 00  // ................
->     0110: 02 00 00 00 0A 00 05 00 01 00 05 00 0A 00 01 00  // ................
-> 
+[...]
 > Signed-off-by: Brice Goglin <Brice.Goglin@inria.fr>
 > ---
->  tests/qtest/bios-tables-test.c | 46 ++++++++++++++++++++++++++++++++++
->  1 file changed, 46 insertions(+)
-> 
-> diff --git a/tests/qtest/bios-tables-test.c b/tests/qtest/bios-tables-test.c
-> index 359916c228..f02b386d75 100644
-> --- a/tests/qtest/bios-tables-test.c
-> +++ b/tests/qtest/bios-tables-test.c
-> @@ -1461,6 +1461,50 @@ static void test_acpi_piix4_tcg_acpi_hmat(void)
->      test_acpi_tcg_acpi_hmat(MACHINE_PC);
->  }
->  
-> +static void test_acpi_q35_tcg_acpi_hmat_noinitiator(void)
-> +{
-> +    test_data data;
-> +
-> +    memset(&data, 0, sizeof(data));
-> +    data.machine = MACHINE_Q35;
-> +    data.variant = ".acpihmat-noinitiator";
-> +    test_acpi_one(" -machine hmat=on"
-> +                  " -smp 4"
-> +                  " -m 128M"
-> +                  " -object memory-backend-ram,size=32M,id=ram0"
-> +                  " -object memory-backend-ram,size=32M,id=ram1"
-> +                  " -object memory-backend-ram,size=64M,id=ram2"
 
-> +                  " -numa node,nodeid=0,memdev=ram0,cpus=0-1"
-> +                  " -numa node,nodeid=1,memdev=ram1,cpus=2-3"
-don't use legacy syntax, see test_acpi_tcg_dimm_pxm() for example
+>  tests/data/acpi/q35/APIC.acpihmat-noinitiator | Bin 0 -> 144 bytes
+[...]
+>  tests/data/acpi/q35/FACP.acpihmat-noinitiator | Bin 0 -> 244 bytes
+drop these 2 tables, they are the same as default ones (i.e.without suffix)
+so test will fallback to default ones when there is no matching file with suffix.
 
-> +                  " -numa node,nodeid=2,memdev=ram2"
-> +                  " -numa hmat-lb,initiator=0,target=0,hierarchy=memory,"
-> +                  "data-type=access-latency,latency=10"
-> +                  " -numa hmat-lb,initiator=0,target=0,hierarchy=memory,"
-> +                  "data-type=access-bandwidth,bandwidth=10485760"
-> +                  " -numa hmat-lb,initiator=0,target=1,hierarchy=memory,"
-> +                  "data-type=access-latency,latency=20"
-> +                  " -numa hmat-lb,initiator=0,target=1,hierarchy=memory,"
-> +                  "data-type=access-bandwidth,bandwidth=5242880"
-> +                  " -numa hmat-lb,initiator=0,target=2,hierarchy=memory,"
-> +                  "data-type=access-latency,latency=30"
-> +                  " -numa hmat-lb,initiator=0,target=2,hierarchy=memory,"
-> +                  "data-type=access-bandwidth,bandwidth=1048576"
-> +                  " -numa hmat-lb,initiator=1,target=0,hierarchy=memory,"
-> +                  "data-type=access-latency,latency=20"
-> +                  " -numa hmat-lb,initiator=1,target=0,hierarchy=memory,"
-> +                  "data-type=access-bandwidth,bandwidth=5242880"
-> +                  " -numa hmat-lb,initiator=1,target=1,hierarchy=memory,"
-> +                  "data-type=access-latency,latency=10"
-> +                  " -numa hmat-lb,initiator=1,target=1,hierarchy=memory,"
-> +                  "data-type=access-bandwidth,bandwidth=10485760"
-> +                  " -numa hmat-lb,initiator=1,target=2,hierarchy=memory,"
-> +                  "data-type=access-latency,latency=30"
-> +                  " -numa hmat-lb,initiator=1,target=2,hierarchy=memory,"
-> +                  "data-type=access-bandwidth,bandwidth=1048576",
-> +                  &data);
-> +    free_test_data(&data);
-> +}
-> +
->  static void test_acpi_erst(const char *machine)
->  {
->      gchar *tmp_path = g_dir_make_tmp("qemu-test-erst.XXXXXX", NULL);
-> @@ -1803,6 +1847,8 @@ int main(int argc, char *argv[])
->          qtest_add_func("acpi/q35/dimmpxm", test_acpi_q35_tcg_dimm_pxm);
->          qtest_add_func("acpi/piix4/acpihmat", test_acpi_piix4_tcg_acpi_hmat);
->          qtest_add_func("acpi/q35/acpihmat", test_acpi_q35_tcg_acpi_hmat);
-> +        qtest_add_func("acpi/q35/acpihmat-noinitiator",
-> +                        test_acpi_q35_tcg_acpi_hmat_noinitiator);
->          qtest_add_func("acpi/piix4/acpierst", test_acpi_piix4_acpi_erst);
->          qtest_add_func("acpi/q35/acpierst", test_acpi_q35_acpi_erst);
->          qtest_add_func("acpi/q35/applesmc", test_acpi_q35_applesmc);
+also fixup 2/8 to account for that
+
+>  tests/data/acpi/q35/HMAT.acpihmat-noinitiator | Bin 0 -> 288 bytes
+>  tests/data/acpi/q35/SRAT.acpihmat-noinitiator | Bin 0 -> 312 bytes
+>  tests/qtest/bios-tables-test-allowed-diff.h   |   5 -----
+>  6 files changed, 5 deletions(-)
 

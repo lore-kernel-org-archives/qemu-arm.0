@@ -1,102 +1,102 @@
-Received: by 2002:ac2:596f:0:0:0:0:0 with SMTP id h15csp1338697lfp;
-        Mon, 18 Jul 2022 07:37:25 -0700 (PDT)
-X-Google-Smtp-Source: AGRyM1ttAc69CKkXqIe1wuc1OEex9MK5FZarSk3bSn7fy4Wg7gy6s3M3ukB91CBfsMnfFFYT94qT
-X-Received: by 2002:a05:620a:288a:b0:6b5:3d7d:5c22 with SMTP id j10-20020a05620a288a00b006b53d7d5c22mr17302230qkp.603.1658155044993;
-        Mon, 18 Jul 2022 07:37:24 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1658155044; cv=none;
+Received: by 2002:ac2:596f:0:0:0:0:0 with SMTP id h15csp1340339lfp;
+        Mon, 18 Jul 2022 07:41:30 -0700 (PDT)
+X-Google-Smtp-Source: AGRyM1sBjTtbrvipu4dMa5r9mOe6G2ShsOmvogOJhcNxpW5uZRMd9AbiHKC9u0JttJF9TP/7reVA
+X-Received: by 2002:ae9:efd8:0:b0:6b5:df92:dc3b with SMTP id d207-20020ae9efd8000000b006b5df92dc3bmr5758740qkg.510.1658155290151;
+        Mon, 18 Jul 2022 07:41:30 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1658155290; cv=none;
         d=google.com; s=arc-20160816;
-        b=kZSh5cOc8raZoByUmNBflT8+ElZAwxfstRwCIYfByIFjlYu8U8WZgEs82huwdltuKY
-         Apub6SroWfFTqwX4jtYk7EJtg3PY8Img2GLr25bcY/oMFUADxfs2I6jh9Y9mW4joCm/9
-         Al3Olu2AWEPln42YhBqjx+itgUtd6C3xjHMqX8vQyERuUn5fmNbKD88z6eFMnNmfxqsI
-         Mjv6lB2KkfYGXC8InTG7DkyKmTEMysq2EmxwKU94OAREHDEslRDBYqg2uzy/Nc6L7Egq
-         t9i/0oThHGkUhumPbAYfuymxdQOUGskPYCatgkTJAIWNUVcmVkF9TipRiKUxrKBh4NIq
-         Jhxw==
+        b=lZoMLehkZfTAqsfesjJm1HB3Szv/9NjsEdEWFTTQDMMvL8PZVF+b+Av4jvBE5aK7bz
+         hJ1Tyz/0TpL9JkRDkCnKTb9MdXxuVgqQkhNxpGEdhFOPieM1huLGY+oD5lGQBT4i7sjj
+         RX9Bu1O65JWl5C1IzPkHaud/9d+Ww968bK2yMJou8uiaxm5j+hAevCp1oth98jG677er
+         92sUbif4GC/ti1vUlAaGfeHedVnhl7uKBIQw8MQBFxSsFGoXB1Cx/H+nHYlicQ75SrsF
+         cp0h9vzVrFNhLYigJ5MV48sJMvB8NE7xu0Te36+o8J9ChYtznzTYorcZk/ZlrzOAdNPX
+         sLJA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:subject:cc:to:from
          :date:dkim-signature;
-        bh=fjBX/M3VUQYW/3IstOcq0FchP7CfVgdwV5UVREED5xA=;
-        b=WJ6A+Sm3kwYiBN/sW3R6cW08bGXFzmffjegkHwD3tQ+rwyZGPIjP5HFuWYpJN9LPKG
-         NzLamPFZVPV23xgrRveoNfFMeRWrx6eJr0qkyK5Y23UYnXowlfKtcv+t9TxORQ5l6dNn
-         j7r/mfgOUa0xWXNQiRIvO0DVraCQefECUOBaemCQmEeV1dN8qRmVgJe6DxxEdLuDZbmG
-         FkO/AGVyWwN87lGiNY95I87wZZNUwSJvSm35m0dOVXOEDoWxM48IoEpVxvoPlqIS2wa+
-         4yiGkR4uYyJbnrWRAjDQRZWD3PyMQx3ScRk7hI9/Mfm3QawbakZ2Hobn3EfK9iT2hMuz
-         eC8Q==
+        bh=KcdLCsFpqRGORG5Gklxq5tpO1A/StMsFhTS+ry5h+xo=;
+        b=tIG5Wl13Woyw9NMay5cA6ScITRPHDYtHnlMCI0U1Yy61UYScxK/yoHdPMZPGJMi0N3
+         xSkbuIIVmaQD5LRa3sJIYJjYjEBQ2DxpI919YKOjeu7EsVIy0/tKyuvt0mwT1SdeRRY9
+         MwT82/4tGtcPkeOKOKPESODhu8Zje9esEbQmEJB5ofdTwqPUPE0Wq0m1JlMLkn3Dt4Ur
+         V6KSx8ZWqox69eAUHEhrqdgIR270YV+zZeAeR5bD0qB/dUMoeOaLhfYKN7CiD9foW+jV
+         RN8nIGMEbKFZlYD3kKH6UR1TcOFASW1g9rWwgDx6vXcI1vVm9K+byjRfHgK1gFj2XM1A
+         ZWqg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=NlEfR1jr;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=daDsJV35;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id ay42-20020a05620a17aa00b006b5cc12c592si4254031qkb.266.2022.07.18.07.37.24
+        by mx.google.com with ESMTPS id jn13-20020ad45ded000000b00470b640e173si5788046qvb.382.2022.07.18.07.41.29
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 18 Jul 2022 07:37:24 -0700 (PDT)
+        Mon, 18 Jul 2022 07:41:30 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=NlEfR1jr;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=daDsJV35;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:38658 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:44932 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1oDRsC-0008Lc-H7
-	for alex.bennee@linaro.org; Mon, 18 Jul 2022 10:37:24 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53828)
+	id 1oDRw9-0004Fi-IO
+	for alex.bennee@linaro.org; Mon, 18 Jul 2022 10:41:29 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:56422)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
- id 1oDRPx-0006jK-Jz
- for qemu-arm@nongnu.org; Mon, 18 Jul 2022 10:08:14 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:43655)
+ id 1oDRax-0001FV-L5
+ for qemu-arm@nongnu.org; Mon, 18 Jul 2022 10:19:37 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:41386)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
- id 1oDRPu-0004Qf-DM
- for qemu-arm@nongnu.org; Mon, 18 Jul 2022 10:08:11 -0400
+ id 1oDRau-00069Z-P2
+ for qemu-arm@nongnu.org; Mon, 18 Jul 2022 10:19:34 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1658153289;
+ s=mimecast20190719; t=1658153972;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=fjBX/M3VUQYW/3IstOcq0FchP7CfVgdwV5UVREED5xA=;
- b=NlEfR1jr7X1Vo5CTBjkeFAW8lJSdPnsmasl8Ei81scmNZw+B0NTVXCkVp+X5Z/3W14Xfgv
- 9bjFVg6LGqtdHRRIONxWqbSnc33YMbEmnIa0vmzHZJp/d/kn2/0n6Us+EWtx7qTdxpyQwk
- KkUxV5n0H2AfnejRNZjeWJrXt4ZZTFU=
-Received: from mail-ed1-f72.google.com (mail-ed1-f72.google.com
- [209.85.208.72]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=KcdLCsFpqRGORG5Gklxq5tpO1A/StMsFhTS+ry5h+xo=;
+ b=daDsJV35gWSYtgrme5d3tgnYOitq1KCo17jO/Y55GVUUDl4Nt+cdQ/NDCr5sdWMfkD11ct
+ Se9vJNwDnKRUMhF+BFvft0oqDu9FpajY2R2OLAuU5mhZokh/hWNPlhqa3M2iqokg8Sbfvd
+ QoxwJ3oZCMkCi8pzxW1+WPsSLtRNCpo=
+Received: from mail-ed1-f71.google.com (mail-ed1-f71.google.com
+ [209.85.208.71]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-536-ieu1NenROc6mUXY-PvVqWQ-1; Mon, 18 Jul 2022 10:08:08 -0400
-X-MC-Unique: ieu1NenROc6mUXY-PvVqWQ-1
-Received: by mail-ed1-f72.google.com with SMTP id
- s17-20020a056402521100b0043ade613038so8018382edd.17
- for <qemu-arm@nongnu.org>; Mon, 18 Jul 2022 07:08:07 -0700 (PDT)
+ us-mta-466-GO6EgeNnPoeXtL7rzvHNaA-1; Mon, 18 Jul 2022 10:19:30 -0400
+X-MC-Unique: GO6EgeNnPoeXtL7rzvHNaA-1
+Received: by mail-ed1-f71.google.com with SMTP id
+ w13-20020a05640234cd00b0043a991fb3f3so7973428edc.3
+ for <qemu-arm@nongnu.org>; Mon, 18 Jul 2022 07:19:30 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:date:from:to:cc:subject:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=fjBX/M3VUQYW/3IstOcq0FchP7CfVgdwV5UVREED5xA=;
- b=s/8xQ7k4+Plx0Gr79PYda8YcP5WdSpA3Fggqj/ToaArV2ckoOaVKWwZ9i/W/i2nwcI
- BkiIBCyupi8p6d7iQn6hONnRWBcGP9kxC+SiUyuQnu4F/QGzSflgJLRQeURnu+ADYt93
- 3YNDC8Fq2G9SdYnC50sIsm3+IuBuzlvNYcZy1zRjTTNh0uBdS1W4+KMyM4emzJaUbFmY
- 4uoKVgZPRe7pCmNqsywEx/qPrPcHFNwYCUN+8dURTXQRpg6Un6AUlkRiWxowMraw/5Eu
- SC3g7Fy59pB5Hm5nZdAH07CO4g8+PQ5RXEApMOwV3b69VhYAc+1dDnCuuUqpcy6u+gS2
- Ncfg==
-X-Gm-Message-State: AJIora+0aaZsW357Om6Ou0AboSyzhXN18fLj3ynTVDsfEZhTPwqdwJIT
- HKA8SdSNDcfNuAtG2Na8vktlbOOBMj5oPBSiZleUbrtGD4mIsva4EO88nyXUQRdsR9DhqT1+WZ3
- ZQbHBVgv/kOjX
-X-Received: by 2002:a05:6402:51ce:b0:43a:d409:b3e8 with SMTP id
- r14-20020a05640251ce00b0043ad409b3e8mr36889855edd.166.1658153286980; 
- Mon, 18 Jul 2022 07:08:06 -0700 (PDT)
-X-Received: by 2002:a05:6402:51ce:b0:43a:d409:b3e8 with SMTP id
- r14-20020a05640251ce00b0043ad409b3e8mr36889638edd.166.1658153284788; 
- Mon, 18 Jul 2022 07:08:04 -0700 (PDT)
+ bh=KcdLCsFpqRGORG5Gklxq5tpO1A/StMsFhTS+ry5h+xo=;
+ b=NmsDff+5Cgu7T1CH/37hmcpv7BC0ihObdZJ9vTqJayl50mtTtQfuokTNPhr7BKZFjK
+ M8pRN8eIVs3ffX+BxxX6GLBkxpm9P6OMcUiaYK7VA9dU9e/fDBAK3nC6iSsi3HT91OoF
+ 3aDeGfPnU8gWLk5U8KhIFoC/4pXhE0ae3KCyq06krUaacrMF2SeZszQPgA00xC1tSAUs
+ Ju6/LlwE5x4S7E4u4K76+LWEukY+QA7inltvQXHqa2P3XndU14WUYqYCpEq5I+RAw2O6
+ EcHRp5cHCTNi0puwQuF4LP5UuUFnJ7ukUHSQt85NVrj9hUTcXoj5cccrUTJJBSyUfVEU
+ N/Kg==
+X-Gm-Message-State: AJIora9Ioqv4fecnka8SvUAe9CHG9fqmPex2JeSxEteI57lOXhjQlt6L
+ U4WUXseDacMSpKN+YUEzwakrdqXoV2RNiL2SXZBEIZke3CgQgdugMjecQq8MtSSkidNRrvqER1d
+ ymlx8s2sGL+QU
+X-Received: by 2002:a05:6402:ca7:b0:43b:5cbd:291e with SMTP id
+ cn7-20020a0564020ca700b0043b5cbd291emr10200324edb.4.1658153969831; 
+ Mon, 18 Jul 2022 07:19:29 -0700 (PDT)
+X-Received: by 2002:a05:6402:ca7:b0:43b:5cbd:291e with SMTP id
+ cn7-20020a0564020ca700b0043b5cbd291emr10200294edb.4.1658153969676; 
+ Mon, 18 Jul 2022 07:19:29 -0700 (PDT)
 Received: from localhost (nat-pool-brq-t.redhat.com. [213.175.37.10])
  by smtp.gmail.com with ESMTPSA id
- b18-20020a170906d11200b0072b4e4cd346sm5486158ejz.188.2022.07.18.07.08.03
+ a21-20020a1709066d5500b0072a4bb6bce8sm5527551ejt.168.2022.07.18.07.19.28
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 18 Jul 2022 07:08:04 -0700 (PDT)
-Date: Mon, 18 Jul 2022 16:08:03 +0200
+ Mon, 18 Jul 2022 07:19:29 -0700 (PDT)
+Date: Mon, 18 Jul 2022 16:19:28 +0200
 From: Igor Mammedov <imammedo@redhat.com>
 To: Hesham Almatary <hesham.almatary@huawei.com>
 Cc: <jonathan.cameron@huawei.com>, <qemu-devel@nongnu.org>,
@@ -104,12 +104,12 @@ Cc: <jonathan.cameron@huawei.com>, <qemu-devel@nongnu.org>,
  <linuxarm@huawei.com>, <qemu-arm@nongnu.org>, <peter.maydell@linaro.org>,
  <wangyanan55@huawei.com>, <marcel.apfelbaum@gmail.com>,
  <eduardo@habkost.net>, <Brice.Goglin@inria.fr>, <mst@redhat.com>
-Subject: Re: [PATCH 4/8] tests: acpi: q35: update expected blobs
- *.hmat-noinitiators
-Message-ID: <20220718160803.06febe5b@redhat.com>
-In-Reply-To: <20220711104436.8363-5-hesham.almatary@huawei.com>
+Subject: Re: [PATCH 7/8] tests: acpi: aarch64/virt: add a test for hmat
+ nodes with no initiators
+Message-ID: <20220718161928.08fe6a4e@redhat.com>
+In-Reply-To: <20220711104436.8363-8-hesham.almatary@huawei.com>
 References: <20220711104436.8363-1-hesham.almatary@huawei.com>
- <20220711104436.8363-5-hesham.almatary@huawei.com>
+ <20220711104436.8363-8-hesham.almatary@huawei.com>
 X-Mailer: Claws Mail 4.1.0 (GTK 3.24.34; x86_64-redhat-linux-gnu)
 MIME-Version: 1.0
 Authentication-Results: relay.mimecast.com;
@@ -141,27 +141,124 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Y4GGjZ3FujTI
+X-TUID: bha5hLAhletw
 
-On Mon, 11 Jul 2022 11:44:32 +0100
+On Mon, 11 Jul 2022 11:44:35 +0100
 Hesham Almatary <hesham.almatary@huawei.com> wrote:
 
-> From: Brice Goglin <Brice.Goglin@inria.fr>
+> This patch imitates the "tests: acpi: q35: add test for hmat nodes
+> without initiators" commit to test numa nodes with different HMAT
+> attributes, but on AArch64/virt.
 > 
-[...]
-> Signed-off-by: Brice Goglin <Brice.Goglin@inria.fr>
+> Tested with:
+> qemu-system-aarch64 -accel tcg \
+>  -machine virt,hmat=on,gic-version=3  -cpu cortex-a57 \
+>  -bios qemu-efi-aarch64/QEMU_EFI.fd \
+>  -kernel Image -append "root=/dev/vda2 console=ttyAMA0" \
+>  -drive if=virtio,file=aarch64.qcow2,format=qcow2,id=hd \
+>  -device virtio-rng-pci \
+>  -net user,hostfwd=tcp::10022-:22 -net nic \
+>  -device intel-hda -device hda-duplex -nographic \
+>  -smp 4 \
+>  -m 3G \
+>  -object memory-backend-ram,size=1G,id=ram0 \
+>  -object memory-backend-ram,size=1G,id=ram1 \
+>  -object memory-backend-ram,size=1G,id=ram2 \
+>  -numa node,nodeid=0,memdev=ram0,cpus=0-1 \
+>  -numa node,nodeid=1,memdev=ram1,cpus=2-3 \
+>  -numa node,nodeid=2,memdev=ram2 \
+>  -numa hmat-lb,initiator=0,target=0,hierarchy=memory,data-type=access-latency,latency=10 \
+>  -numa hmat-lb,initiator=0,target=0,hierarchy=memory,data-type=access-bandwidth,bandwidth=10485760 \
+>  -numa hmat-lb,initiator=0,target=1,hierarchy=memory,data-type=access-latency,latency=20 \
+>  -numa hmat-lb,initiator=0,target=1,hierarchy=memory,data-type=access-bandwidth,bandwidth=5242880 \
+>  -numa hmat-lb,initiator=0,target=2,hierarchy=memory,data-type=access-latency,latency=30 \
+>  -numa hmat-lb,initiator=0,target=2,hierarchy=memory,data-type=access-bandwidth,bandwidth=1048576 \
+>  -numa hmat-lb,initiator=1,target=0,hierarchy=memory,data-type=access-latency,latency=20 \
+>  -numa hmat-lb,initiator=1,target=0,hierarchy=memory,data-type=access-bandwidth,bandwidth=5242880 \
+>  -numa hmat-lb,initiator=1,target=1,hierarchy=memory,data-type=access-latency,latency=10 \
+>  -numa hmat-lb,initiator=1,target=1,hierarchy=memory,data-type=access-bandwidth,bandwidth=10485760 \
+>  -numa hmat-lb,initiator=1,target=2,hierarchy=memory,data-type=access-latency,latency=30 \
+>  -numa hmat-lb,initiator=1,target=2,hierarchy=memory,data-type=access-bandwidth,bandwidth=1048576
+> 
+> Signed-off-by: Hesham Almatary <hesham.almatary@huawei.com>
 > ---
+>  tests/qtest/bios-tables-test.c | 55 ++++++++++++++++++++++++++++++++++
+>  1 file changed, 55 insertions(+)
+> 
+> diff --git a/tests/qtest/bios-tables-test.c b/tests/qtest/bios-tables-test.c
+> index f02b386d75..ed843c2abf 100644
+> --- a/tests/qtest/bios-tables-test.c
+> +++ b/tests/qtest/bios-tables-test.c
+> @@ -1461,6 +1461,59 @@ static void test_acpi_piix4_tcg_acpi_hmat(void)
+>      test_acpi_tcg_acpi_hmat(MACHINE_PC);
+>  }
+>  
+> +static void test_acpi_virt_tcg_acpi_hmat(void)
+> +{
+> +    test_data data = {
+> +        .machine = "virt",
+> +        .tcg_only = true,
+> +        .uefi_fl1 = "pc-bios/edk2-aarch64-code.fd",
+> +        .uefi_fl2 = "pc-bios/edk2-arm-vars.fd",
+> +        .cd = "tests/data/uefi-boot-images/bios-tables-test.aarch64.iso.qcow2",
+> +        .ram_start = 0x40000000ULL,
+> +        .scan_len = 128ULL * 1024 * 1024,
+> +    };
+> +
+> +    data.variant = ".acpihmatvirt";
+> +
+> +    test_acpi_one(" -machine hmat=on"
+> +                  " -cpu cortex-a57"
+> +                  " -smp 4"
+> +                  " -m 256M"
+> +                  " -object memory-backend-ram,size=64M,id=ram0"
+> +                  " -object memory-backend-ram,size=64M,id=ram1"
+> +                  " -object memory-backend-ram,size=128M,id=ram2"
 
->  tests/data/acpi/q35/APIC.acpihmat-noinitiator | Bin 0 -> 144 bytes
-[...]
->  tests/data/acpi/q35/FACP.acpihmat-noinitiator | Bin 0 -> 244 bytes
-drop these 2 tables, they are the same as default ones (i.e.without suffix)
-so test will fallback to default ones when there is no matching file with suffix.
+> +                  " -numa node,nodeid=0,memdev=ram0,cpus=0-1"
+> +                  " -numa node,nodeid=1,memdev=ram1,cpus=2-3"
+don't use legacy syntax, see test_acpi_tcg_dimm_pxm() for example
 
-also fixup 2/8 to account for that
-
->  tests/data/acpi/q35/HMAT.acpihmat-noinitiator | Bin 0 -> 288 bytes
->  tests/data/acpi/q35/SRAT.acpihmat-noinitiator | Bin 0 -> 312 bytes
->  tests/qtest/bios-tables-test-allowed-diff.h   |   5 -----
->  6 files changed, 5 deletions(-)
+> +                  " -numa node,nodeid=2,memdev=ram2"
+> +                  " -numa hmat-lb,initiator=0,target=0,hierarchy=memory,"
+> +                  "data-type=access-latency,latency=10"
+> +                  " -numa hmat-lb,initiator=0,target=0,hierarchy=memory,"
+> +                  "data-type=access-bandwidth,bandwidth=10485760"
+> +                  " -numa hmat-lb,initiator=0,target=1,hierarchy=memory,"
+> +                  "data-type=access-latency,latency=20"
+> +                  " -numa hmat-lb,initiator=0,target=1,hierarchy=memory,"
+> +                  "data-type=access-bandwidth,bandwidth=5242880"
+> +                  " -numa hmat-lb,initiator=0,target=2,hierarchy=memory,"
+> +                  "data-type=access-latency,latency=30"
+> +                  " -numa hmat-lb,initiator=0,target=2,hierarchy=memory,"
+> +                  "data-type=access-bandwidth,bandwidth=1048576"
+> +                  " -numa hmat-lb,initiator=1,target=0,hierarchy=memory,"
+> +                  "data-type=access-latency,latency=20"
+> +                  " -numa hmat-lb,initiator=1,target=0,hierarchy=memory,"
+> +                  "data-type=access-bandwidth,bandwidth=5242880"
+> +                  " -numa hmat-lb,initiator=1,target=1,hierarchy=memory,"
+> +                  "data-type=access-latency,latency=10"
+> +                  " -numa hmat-lb,initiator=1,target=1,hierarchy=memory,"
+> +                  "data-type=access-bandwidth,bandwidth=10485760"
+> +                  " -numa hmat-lb,initiator=1,target=2,hierarchy=memory,"
+> +                  "data-type=access-latency,latency=30"
+> +                  " -numa hmat-lb,initiator=1,target=2,hierarchy=memory,"
+> +                  "data-type=access-bandwidth,bandwidth=1048576",
+> +                  &data);
+> +
+> +    free_test_data(&data);
+> +}
+> +
+>  static void test_acpi_q35_tcg_acpi_hmat_noinitiator(void)
+>  {
+>      test_data data;
+> @@ -1875,6 +1928,8 @@ int main(int argc, char *argv[])
+>      } else if (strcmp(arch, "aarch64") == 0) {
+>          if (has_tcg) {
+>              qtest_add_func("acpi/virt", test_acpi_virt_tcg);
+> +            qtest_add_func("acpi/virt/acpihmatvirt",
+> +                            test_acpi_virt_tcg_acpi_hmat);
+>              qtest_add_func("acpi/virt/numamem", test_acpi_virt_tcg_numamem);
+>              qtest_add_func("acpi/virt/memhp", test_acpi_virt_tcg_memhp);
+>              qtest_add_func("acpi/virt/pxb", test_acpi_virt_tcg_pxb);
 

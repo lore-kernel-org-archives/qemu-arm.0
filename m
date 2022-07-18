@@ -1,106 +1,108 @@
-Received: by 2002:ac2:596f:0:0:0:0:0 with SMTP id h15csp1205672lfp;
-        Mon, 18 Jul 2022 02:59:07 -0700 (PDT)
-X-Google-Smtp-Source: AGRyM1smHAhAAbeplIPjxxNWgDvJXPWxGormNX65ac1M+NWqvx1i3VnKTk+HIB1TAYDsgsf+T3Lm
-X-Received: by 2002:a05:6214:1c4f:b0:473:7909:85e2 with SMTP id if15-20020a0562141c4f00b00473790985e2mr21259044qvb.69.1658138347321;
-        Mon, 18 Jul 2022 02:59:07 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1658138347; cv=none;
+Received: by 2002:ac2:596f:0:0:0:0:0 with SMTP id h15csp1208495lfp;
+        Mon, 18 Jul 2022 03:02:00 -0700 (PDT)
+X-Google-Smtp-Source: AGRyM1s7zHgAhSbxakthWyltWzbCO0ciF/NYRV1baMoCj3uhOlkmiC0SnR3FrrtVw8e3Eh+epfgR
+X-Received: by 2002:a05:6214:76d:b0:473:2a39:45fb with SMTP id f13-20020a056214076d00b004732a3945fbmr20594659qvz.129.1658138520070;
+        Mon, 18 Jul 2022 03:02:00 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1658138520; cv=none;
         d=google.com; s=arc-20160816;
-        b=NMG4Bjg0GET1bYL2/hLLv4+v686IUep8CPqWGMnJ/OLUA1Wq9NWmRam4rppHlsu1QH
-         seKt30/fNuZYiSuSV+G91Lso9o6UCr8xs0F/4MtZaejx0JEx8UbbpuMj5uzRlbzncRTM
-         XUKhm8OibudD0mSXNtJkM8PPjg7ZDJc5uiRQY7jO58e0hjBdbd8U553PRjYYB7IcG9mB
-         Gh/9fWkF8fk4NsNPrEdauXCwaudmrhqBJyD8ju8Utspmnf9fHfnqA1aNKzrtVZ1UYLRc
-         rPL5BXDbJIGp6I0HYgp5V8nlqN80y0WbOUrIUX3HKaYs0H5qQrAC+li2YB5KYnwg9Fgv
-         fP3g==
+        b=uQsqiOa86l5VZ/W6IkmgBhYlRvmFDXDTCyhpCPnC1/VXBmUoiBo4Q0Cx0NKvew6aLB
+         cP9Fkr5ESCO7FFgekrTAbWt2FKcBOlIkMgU8t+0mC8ckS4+WME9xgejdgx/uz9d9+FeN
+         Wq1+7z9lUKLCelXPR/TllG5dzCaz62g4OlmP2hCwmf73nzAJHxARInxtJhiHg3asowgn
+         KOF3+69G5JK/CDHeG37xKy5/fnvbpMdlIw4O55WueBniD1j8cS355Rbek1X8XAZddyop
+         cnOmggkGrHhgMfWy/BTHQfVfUJ0ujZ0S4EadrhTi8kcqIgEhJMAiyY6zdaPJ5gLrJUjZ
+         y5Cg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:user-agent:references:organization
-         :in-reply-to:subject:cc:to:from:dkim-signature;
-        bh=8RC28/19rL8+Sf+1qwBzTWLMUHeGZguk4g6w8ww5xXQ=;
-        b=h8n77GUpaXcOjbF2naXOWROJO1vwKCrle0lY21gd5TBGdI/TyAm+V3/sVvKYXfpPZP
-         nJg37Rm3In0A3nxRAOzzOkprnl7XhlbSw0fqbVcZDZDdL+B9PSqM6Eo8EihorO3e4X+Z
-         heb1RyxJ4HmjgQOmzYfAR29ZEvoxJ/r7VgOgIhyiK9ocpGG/DB4utPVIsXK1LWMF0IHb
-         8CJui8nQ7b0hYkh84kKcCXG/k+79Fbt9CSzTW6Zw2IuqT9+PLQ9UEqa/t/LUfzSCaNy9
-         sByl0xTKeXmPim+5lhVYCZ3Y4W+uhq0uF2LzzeJ9QGo4vH6RZSH89xSfmGCSypE2PphX
-         VOrg==
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
+        bh=LADKvz6NGwtTpJM5NpBVGy0mPvkc4sq8YRH/zAnJtNo=;
+        b=z1Dg8HkE7am+y32l5yRjqFykw0je3TWV3LXVIXVDORQ7T8EyN+5fJYrKAwDbMsCZv7
+         6GdO7Jq6rXYfLwL8FLa9hG8LjVqqWWtAd7FeO1MuSnQm0IsWUPBLKBlLBordpvnF64Mt
+         ccfCbPNGvCr5bVBS/WZl6UoN1nmMbCa4tc7f0P9ryaYNitgjqswZmexdTIPammMQaZAu
+         ZIHzmYhoKfphPBwpp1becDH8p3paKJin0+1yWd8YXvYhrXRgog/Pmm7oOefB7X+z68hM
+         VDV2MQcwJPhyGyKHbbhy+m9wxY/L88PPpSlpjErHngGiSpbrcZmWYKlFablkU1IjKVSU
+         nQaw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=A9czobt+;
+       dkim=pass header.i=@linaro.org header.s=google header.b=sD30wY8b;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e11-20020a0562141d0b00b00472f1de95e7si3164952qvd.385.2022.07.18.02.59.07
+        by mx.google.com with ESMTPS id bm17-20020a05620a199100b006b5851ab15bsi5859969qkb.486.2022.07.18.03.01.59
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 18 Jul 2022 02:59:07 -0700 (PDT)
+        Mon, 18 Jul 2022 03:02:00 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=A9czobt+;
+       dkim=pass header.i=@linaro.org header.s=google header.b=sD30wY8b;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:52978 helo=lists1p.gnu.org)
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:57118 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1oDNWs-00070s-QI
-	for alex.bennee@linaro.org; Mon, 18 Jul 2022 05:59:06 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:47020)
+	id 1oDNZf-0001ZH-JN
+	for alex.bennee@linaro.org; Mon, 18 Jul 2022 06:01:59 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:47596)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <cohuck@redhat.com>) id 1oDNWb-0006xV-TO
- for qemu-arm@nongnu.org; Mon, 18 Jul 2022 05:58:51 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:27917)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <cohuck@redhat.com>) id 1oDNWa-0004XO-9T
- for qemu-arm@nongnu.org; Mon, 18 Jul 2022 05:58:49 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1658138327;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=8RC28/19rL8+Sf+1qwBzTWLMUHeGZguk4g6w8ww5xXQ=;
- b=A9czobt+t7sxKcdPqhhtYJE+5BdmOSXFxrxGD4w2evhxna81+U7Y/rQfX/z0n7bcR25nw1
- S7C+GyY7oHErnJH+hdO1LhvuMTVNaq9yaPR2LkBVCFv6plqkCzCzcxnI0H+Bcm0EP+JPux
- C9C477v/O7X/9nSFav0EkyBs7fqWaVc=
-Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
- [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-86-dZEHY1DtMWuB0dZvFhVxBQ-1; Mon, 18 Jul 2022 05:58:46 -0400
-X-MC-Unique: dZEHY1DtMWuB0dZvFhVxBQ-1
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.rdu2.redhat.com
- [10.11.54.6])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id D432985A584;
- Mon, 18 Jul 2022 09:58:45 +0000 (UTC)
-Received: from localhost (unknown [10.39.193.60])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 897D12166B26;
- Mon, 18 Jul 2022 09:58:45 +0000 (UTC)
-From: Cornelia Huck <cohuck@redhat.com>
-To: =?utf-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>
-Cc: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org,
- qemu-s390x@nongnu.org, qemu-arm@nongnu.org, David Hildenbrand
- <david@redhat.com>, Richard Henderson <richard.henderson@linaro.org>,
- Peter Maydell <peter.maydell@linaro.org>
-Subject: Re: [PATCH 0/3] target: RFC: display deprecation note for '-cpu help'
-In-Reply-To: <YtUr2qG9r0zfyY2J@redhat.com>
-Organization: Red Hat GmbH
-References: <20220714150735.1835166-1-berrange@redhat.com>
- <30e66f70-a004-6789-d66a-351becaa48e2@redhat.com>
- <87wncapxr4.fsf@redhat.com> <YtUr2qG9r0zfyY2J@redhat.com>
-User-Agent: Notmuch/0.36 (https://notmuchmail.org)
-Date: Mon, 18 Jul 2022 11:58:44 +0200
-Message-ID: <87tu7epwrv.fsf@redhat.com>
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1oDNZV-0001Z2-Mh
+ for qemu-arm@nongnu.org; Mon, 18 Jul 2022 06:01:49 -0400
+Received: from mail-wm1-x32a.google.com ([2a00:1450:4864:20::32a]:43915)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1oDNZT-00054i-VQ
+ for qemu-arm@nongnu.org; Mon, 18 Jul 2022 06:01:49 -0400
+Received: by mail-wm1-x32a.google.com with SMTP id
+ j29-20020a05600c1c1d00b003a2fdafdefbso7007805wms.2
+ for <qemu-arm@nongnu.org>; Mon, 18 Jul 2022 03:01:47 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=LADKvz6NGwtTpJM5NpBVGy0mPvkc4sq8YRH/zAnJtNo=;
+ b=sD30wY8bZN83brGu8oFmRrq+oAKISV2fydR2wdGzyxa1cxOXfvchvA4ZPYnelyjDjm
+ GdWhwfQ9aeZHeJN6LMp63KwczQ+VM/3CtTq250ctTlXdyG8QAWK0utmVtPa1kapOseTP
+ A29QeF7s7XGsMciBHaD2hd4f+dOANOOOzjvcpj12OfH2pZ4bZT8+ErDnpbV+bk7WQcYQ
+ Sb06qv5DZNO+v7A/Ouzf57q5kXMBYI8UlYicPgcgaN10stMyBEr1bnhWmquz5ugVVTIH
+ PfqDN8E8getvQjhS42kRszl+HTqf3gL4p5y1jtiP4FDWl6kcvKXCvpTYNj0eNH91Xqky
+ tKFw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=LADKvz6NGwtTpJM5NpBVGy0mPvkc4sq8YRH/zAnJtNo=;
+ b=3vW6gOt9acWvNFaBxlWAKRSQf3CloZl38SY4cFtibTJPHHLtzE+VSGnqAVsFL+qJrN
+ Ik4DtMs6RQcT8YI9oL+JywXBQdI6UGCv5QDsus6oRC/UP5w4UdkFbq5YShdckf8n6tba
+ 8RSEBwfWvlxr3z+6iF6o6wd/sTcWU/p3g5J04fqdsVe0MQWajxrFTqcdzF4HhPk9YkA5
+ 1QUtA0PZ8rqh3Voi5tsaTfTAyyAnkDs9/os2teG9NhspPWpAW9c6OXeeZGnP0BMZ8WBX
+ MCL7ZxkI5v0XKWt+Aa1OjxGEIEdna8ff72OQHgXQmIunQms6uVCH3inT3krJSlWqzfD/
+ d0pg==
+X-Gm-Message-State: AJIora8LvDXTlToBSprm7W+NvCb4Jk/aaKFdeRDrlHj/XFJ83EpAH1KM
+ rqLeM5AfGG5lsbKMpWslgVzeRTFDlY9MMA==
+X-Received: by 2002:a05:600c:3b07:b0:3a3:1433:10b5 with SMTP id
+ m7-20020a05600c3b0700b003a3143310b5mr8683144wms.129.1658138506135; 
+ Mon, 18 Jul 2022 03:01:46 -0700 (PDT)
+Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
+ by smtp.gmail.com with ESMTPSA id
+ c15-20020adfef4f000000b0021d6f03b524sm10251990wrp.48.2022.07.18.03.01.45
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 18 Jul 2022 03:01:45 -0700 (PDT)
+From: Peter Maydell <peter.maydell@linaro.org>
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Cc: Richard Henderson <richard.henderson@linaro.org>
+Subject: [PATCH] target/arm: Add MO_128 entry to pred_esz_masks[]
+Date: Mon, 18 Jul 2022 11:01:44 +0100
+Message-Id: <20220718100144.3248052-1-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-Scanned-By: MIMEDefang 2.78 on 10.11.54.6
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=cohuck@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -21
-X-Spam_score: -2.2
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::32a;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x32a.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.082,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
@@ -117,26 +119,59 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: PHbr1TAo9mxs
+X-TUID: ZzvE4a3xiCoO
 
-On Mon, Jul 18 2022, Daniel P. Berrang=C3=A9 <berrange@redhat.com> wrote:
+In commit 7390e0e9ab8475, we added support for SME loads and stores.
+Unlike SVE loads and stores, these include handling of 128-bit
+elements.  The SME load/store functions call down into the existing
+sve_cont_ldst_elements() function, which uses the element size MO_*
+value as an index into the pred_esz_masks[] array.  Because this code
+path now has to handle MO_128, we need to add an extra element to the
+array.
 
-> On Mon, Jul 18, 2022 at 11:37:35AM +0200, Cornelia Huck wrote:
->> Is it easy enough the figure out the deprecation note? I think you
->> either have to actually start something with the deprecated entity, or
->> use qmp (which is not that straightforward)?
->
-> QMP doesn't tell you the note, just a boolean deprecation flag. It is
-> only printed on startup only right now.
->
-> In the context of libvirt what happens is that libvirt can report that
-> something is deprecated (based on the QMP response). If you go ahead
-> and use it anyway, you'll get the deprecation message in the logfile
-> for the VM, and the VM gets marked tainted by libvirt, which serves
-> as a guide to look in the logfile.
+This bug was spotted by Coverity because it meant we were reading off
+the end of the array.
 
-Hm... so, a user who notes via -help that 'foo' is deprecated does not
-really have a good way to figure out what they should use instead, other
-than actually trying to use 'foo'? Is that a use case worth spending
-some effort on, or do we consider it more of a niche case?
+Resolves: Coverity CID 1490539, 1490541, 1490543, 1490544, 1490545,
+ 1490546, 1490548, 1490549, 1490550, 1490551, 1490555, 1490557,
+ 1490558, 1490560, 1490561, 1490563
+Fixes: 7390e0e9ab8475 ("target/arm: Implement SME LD1, ST1")
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
+ target/arm/cpu.h           | 2 +-
+ target/arm/translate-sve.c | 5 +++--
+ 2 files changed, 4 insertions(+), 3 deletions(-)
+
+diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+index 1e36a839ee4..3123488014d 100644
+--- a/target/arm/cpu.h
++++ b/target/arm/cpu.h
+@@ -3374,7 +3374,7 @@ static inline uint64_t *aa64_vfp_qreg(CPUARMState *env, unsigned regno)
+ }
+ 
+ /* Shared between translate-sve.c and sve_helper.c.  */
+-extern const uint64_t pred_esz_masks[4];
++extern const uint64_t pred_esz_masks[5];
+ 
+ /* Helper for the macros below, validating the argument type. */
+ static inline MemTxAttrs *typecheck_memtxattrs(MemTxAttrs *x)
+diff --git a/target/arm/translate-sve.c b/target/arm/translate-sve.c
+index 41f8b12259e..621a2abb22f 100644
+--- a/target/arm/translate-sve.c
++++ b/target/arm/translate-sve.c
+@@ -529,9 +529,10 @@ static void do_predtest(DisasContext *s, int dofs, int gofs, int words)
+ }
+ 
+ /* For each element size, the bits within a predicate word that are active.  */
+-const uint64_t pred_esz_masks[4] = {
++const uint64_t pred_esz_masks[5] = {
+     0xffffffffffffffffull, 0x5555555555555555ull,
+-    0x1111111111111111ull, 0x0101010101010101ull
++    0x1111111111111111ull, 0x0101010101010101ull,
++    0x0001000100010001ull,
+ };
+ 
+ static bool trans_INVALID(DisasContext *s, arg_INVALID *a)
+-- 
+2.25.1
 

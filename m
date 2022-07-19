@@ -1,326 +1,656 @@
-Received: by 2002:ac2:596f:0:0:0:0:0 with SMTP id h15csp1806568lfp;
-        Tue, 19 Jul 2022 02:58:58 -0700 (PDT)
-X-Google-Smtp-Source: AGRyM1sUmS1Gss0gQ/A/6uAsR/2qM9ySkrFqmhcWlXn5dKusewEYJMSzMiZlztMA4f5FneGpZBpV
-X-Received: by 2002:a05:6214:260b:b0:473:6ef4:491b with SMTP id gu11-20020a056214260b00b004736ef4491bmr23996046qvb.34.1658224738780;
-        Tue, 19 Jul 2022 02:58:58 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1658224738; cv=none;
+Received: by 2002:ac2:596f:0:0:0:0:0 with SMTP id h15csp1868248lfp;
+        Tue, 19 Jul 2022 04:58:49 -0700 (PDT)
+X-Google-Smtp-Source: AGRyM1uux1VMu9+sYZeA9P6QvxkzpWlIFWF3iZFt3ijEK/qVr7oa9Mi3ZbwYVWh9c7S2FjfRlyDm
+X-Received: by 2002:a05:622a:613:b0:31e:f64a:6d88 with SMTP id z19-20020a05622a061300b0031ef64a6d88mr4621320qta.321.1658231929000;
+        Tue, 19 Jul 2022 04:58:49 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1658231928; cv=none;
         d=google.com; s=arc-20160816;
-        b=AUwUMSZuD/oTWJGnAISt4R3wNzo79Fa7rrJ1kUz0a1CJGtab3YcF/Th8mqJQwVZeUB
-         /Zbg4xwpjCSVG/SwlsPx/FjrcvJlv3GE21jltt4YPJBnpxJenVj/WmEiFqmfAtmTi6eL
-         rhpv6sZfAkzGvJwAUrBBliM2mIEPlsyvhZ7DA0wqMdHSbPOC9XdR/nqbgtvP80oCn8kj
-         FfgBqm70Z/1n96Jpe3759DROB3sq3G3okzSatiGZ5FYHFZGPa2Jw4nV+Lp74Y6ROW+V9
-         24iR2XoJ1tT45oy97go4DSaVViBtdSWimjMBPU6TwcAbO3reayZB3wWbPQaqo6C+kHeq
-         8jJg==
+        b=wrUZX35NvRZhia+AskwgJ1nPtk+mJ5seuL/WtySZwiSzbvMXy2HenCAbzMBDNVOUOn
+         JlOsFyJWQG1QYkuX5yl7sOUenaQcOG16AUP4MRnFyVEHbkCuSbYbYb8M7JB5tE89bDST
+         T4NqJ41++5ejCJYyAOGFQ097+o5BpNevbwwYkpbUewMfAPES81rLAXRDEmIGkg9Ff+9q
+         AlV/+giSVov950x36wM8LgNG/xb03os82aIrpMvu77Dj3B4E/LQx//qVK9OZFky5yTKX
+         Xay/Hm9TqwfLJIsi6mw3wFYfzw/rhblEAnK9+fOxnOMBCQng5nv7Qn8s3E4vs5tOE03p
+         67cg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=JZDTyp1S6HEHLmFjsat/agY1zZrNf6qFg9Tltc3kKBw=;
-        b=dmUA0xlW9YAftARLxzJwFhFNUZl09P0YkVHNHnsynbVyruWBr9lSQy6ceVlrkiYqDM
-         azxnGWixRUarUbcmKy/F5YqLxgsC+76KCLJznZWcsMWoX2URRUwIdb/LFSPWwerUhNsz
-         mFQEn+LcAejUzhWCXQ65BkEjfkFm8WpgNdW9CkxddlwXkT9Gj/6glqlIBG4gfrs9ANpf
-         z8UZe0B8IMCXCcH4EXtVumZ1socqprl1nFIYBrrRK/PlI7VD6LBiovsx/xSLFgz8qK09
-         eZyGfDaz2pz5fFUpVXxkCCSnZrsBe7URfrW/J7xvlMNqzeAwIIGvz1Rfcpz9p9k65YQZ
-         GTBg==
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=JtR5tfFUoU7dhQSDkammYovUnGPr/0AZzezjaifbMuA=;
+        b=ZsPGW1jv7mMbx6enbLqBA1uGyEsvziV9PRAFe8+F+UIza3C28ceJB7AltCWH7kBpoF
+         1u7D0/dWQLBtDKjMpuIB5/FcsahAKtKSb4urUDmRyc53+57zbn1wJmIRqb4jhNwmJ1CK
+         2Y+RJSayKM5A6KYIIHpwomggTqsr2VzzKVIhLcN9+fV95G2ePkRX+1f67ksnH90FU9kU
+         Zt0RoPIPrrLLSLiRfjA24HdmmM1a1ntDw10aLc9hO+2Hl2tn5lUPEiSIR51N+dkncBWs
+         rJBbCsAUL94LU4z63STRDbkKquybGU9H6repnrt3RvgT9RjxaG7V6XUV1FvVN1X4j09b
+         2Dtg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20210112 header.b=enFOmqAf;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=cl.cam.ac.uk
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=VQtURURx;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id u11-20020a05620a454b00b006afc53e0bdfsi7921360qkp.444.2022.07.19.02.58.58
+        by mx.google.com with ESMTPS id jt1-20020a05621427e100b00473a3e622fbsi6291291qvb.192.2022.07.19.04.58.48
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 19 Jul 2022 02:58:58 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 19 Jul 2022 04:58:48 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20210112 header.b=enFOmqAf;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=cl.cam.ac.uk
-Received: from localhost ([::1]:47990 helo=lists1p.gnu.org)
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=VQtURURx;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:35676 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1oDk0I-0001ZO-70
-	for alex.bennee@linaro.org; Tue, 19 Jul 2022 05:58:58 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:47908)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1oDlsG-00045n-Gx
+	for alex.bennee@linaro.org; Tue, 19 Jul 2022 07:58:48 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:48202)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <heshamelmatary@gmail.com>)
- id 1oDjtC-0004v9-52; Tue, 19 Jul 2022 05:51:38 -0400
-Received: from mail-wm1-x32a.google.com ([2a00:1450:4864:20::32a]:46620)
+ (Exim 4.90_1) (envelope-from <jon.alduan@gmail.com>)
+ id 1oDlri-000451-IF
+ for qemu-arm@nongnu.org; Tue, 19 Jul 2022 07:58:14 -0400
+Received: from mail-ed1-x533.google.com ([2a00:1450:4864:20::533]:35740)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <heshamelmatary@gmail.com>)
- id 1oDjt9-0003kq-Fu; Tue, 19 Jul 2022 05:51:37 -0400
-Received: by mail-wm1-x32a.google.com with SMTP id
- h14-20020a1ccc0e000000b0039eff745c53so8829712wmb.5; 
- Tue, 19 Jul 2022 02:51:34 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <jon.alduan@gmail.com>)
+ id 1oDlrg-0007u2-60
+ for qemu-arm@nongnu.org; Tue, 19 Jul 2022 07:58:14 -0400
+Received: by mail-ed1-x533.google.com with SMTP id e15so19262553edj.2
+ for <qemu-arm@nongnu.org>; Tue, 19 Jul 2022 04:58:11 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=JZDTyp1S6HEHLmFjsat/agY1zZrNf6qFg9Tltc3kKBw=;
- b=enFOmqAfTKzuzQOY+Ty5DLEG8UB2KS++ncfvpQQhRf70PsVQIlnnJAp5iyn9kJbpbF
- yg6+4fsjST+CHsfZCN/gp9CYZ8wsEFKAkAX2KWmF1ErIX2GZ93PMBM/6+i+5tD3SBmGB
- gvTbK5qdOSCoHRkqmiVgV6RWJ3j7AvZds7+2Dfd6GSwB7UcCbfadLwWLnD4omrruWsZn
- fFTbDk6IHB3tFHaZ8tplP+2o8oLHiVCY7mSl1JLtHIyyiijf46BSmRoF1q9oZ31UR9Jo
- RGrzDLdRLKtroLHy2SQ3BeghpXTqBasb27cadM0IjJZvr0tWwd8Ym+n2o+mwP5qoxALI
- GI6Q==
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=JtR5tfFUoU7dhQSDkammYovUnGPr/0AZzezjaifbMuA=;
+ b=VQtURURxfDlrAGYzCDYxKVzxzkD46uT/2YfuV6gJWjEuKGIiiHUzVnkVKd7jtP32Qx
+ etcbRyZU1OfN85CjTcGX3LennPoDg5zuDbGNmfzv9WICDP6A11RDdhojfWqdjMuxolLG
+ BTvSG0ocwCtoFHcGI3draWSi6sCDBqJ5niK1owwRK9PoVBjLguZcymnl5AlLoImM9GEm
+ GDrWHFTKTUXWdudexh7ilaLBTwx+ebD6/o7/AYYzK7BQ6yfg6N74ACwaZ7PqXWPPa/id
+ OKZm5QyycjodttyoQOX0++0FlElvqZD3+9PtD0a9wXGJKdAUfmMThvSV/V51/RyIBExf
+ urOw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
- :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=JZDTyp1S6HEHLmFjsat/agY1zZrNf6qFg9Tltc3kKBw=;
- b=af6MzocwbgFZwnIpEK6Zl6OgZ0paXObZf+XvLOJmnI/sSkuzpqY3Sq3lSnu4BVkz0v
- YsFRenA6P/wbMVuLYzLIIDM7zum+c5gF8Jx67l93odK0tBeSLMZdSSsc67TKpeVLPHTw
- XYUUkHnnUhCOGP6Q4Nq0gL6J2CkWp8iYyWQRTDYsrzqRIEurc8i51nR2J4kvHIeeG6tU
- ZcfVYsAiBEPK4VGEURDuhoqg/uStDNvc/o2X8rz8YDinMO8oLM32jrURRR4188vUn+tA
- MHcLzOWjviV+gHhUQZXeKak9n9vRS5egjF7Vg4ScR3TcCUeBUYUFpwV2k/3BbphNZESB
- FA3g==
-X-Gm-Message-State: AJIora+OmeBYTKUqMYUbTI5gk+jPLDk9C3GAYIjgAGRTgTKz/s12t9bg
- R9KxR28UBb86J6GUcR+ETaI=
-X-Received: by 2002:a05:600c:211:b0:3a3:194d:7282 with SMTP id
- 17-20020a05600c021100b003a3194d7282mr9866227wmi.132.1658224293460; 
- Tue, 19 Jul 2022 02:51:33 -0700 (PDT)
-Received: from localhost.localdomain ([86.188.218.117])
- by smtp.gmail.com with ESMTPSA id
- k20-20020a05600c1c9400b003a31fd05e0fsm3487735wms.2.2022.07.19.02.51.32
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 19 Jul 2022 02:51:33 -0700 (PDT)
-From: Hesham Almatary <Hesham.Almatary@cl.cam.ac.uk>
-X-Google-Original-From: Hesham Almatary <hesham.almatary@huawei.com>
-To: jonathan.cameron@huawei.com,
-	qemu-devel@nongnu.org
-Cc: yangyicong@huawei.com, chenxiang66@hisilicon.com, linuxarm@huawei.com,
- qemu-arm@nongnu.org, peter.maydell@linaro.org, imammedo@redhat.com,
- wangyanan55@huawei.com, marcel.apfelbaum@gmail.com, eduardo@habkost.net,
- Brice.Goglin@inria.fr, mst@redhat.com, jingqi.liu@intel.com
-Subject: [PATCH v2 3/8] tests: acpi: q35: add test for hmat nodes without
- initiators
-Date: Tue, 19 Jul 2022 10:49:45 +0100
-Message-Id: <20220719094950.1049516-4-hesham.almatary@huawei.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20220719094950.1049516-1-hesham.almatary@huawei.com>
-References: <20220719094950.1049516-1-hesham.almatary@huawei.com>
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=JtR5tfFUoU7dhQSDkammYovUnGPr/0AZzezjaifbMuA=;
+ b=6A6DnM/9L//emfZvBDf3QDyLUdKbW9+tkjmA3H7hA4qT6IcVrliEhJiP+rgyGpA16y
+ iXlcB31tcRefspgQftV5j07iI8NWTXY286K2xSaABTolXdrxQPR7vjpSsmLu2PJih7b4
+ CHa22Hq0PMDqozrvWK/j2bt5xwq9FboAPWyOWYssdRMfsS3+Otx5ireayXc/2vajSc5X
+ ShYG1E5kX6dxwFMQUDR1mrpAfwOPSIABQEkgis8AjNAxGQCzmijnQTqVlhR5L4kxfb7P
+ VXFlCuSSC7nLrfGj4Rm7fxQtkVmmMYCcAOQ/V3cwgK0MWeD3yX99cYH8F0xzRVWX4roE
+ coxA==
+X-Gm-Message-State: AJIora9lReVuOrQdepo6ZUt/XK0S5vaBAnaIdTPwBT/+98g8ur5OO9yX
+ czigGIv5IETjUcuxwKTJAidxuqjV2IBG/tsoFyc=
+X-Received: by 2002:a05:6402:3047:b0:43a:9e43:95e5 with SMTP id
+ bs7-20020a056402304700b0043a9e4395e5mr43561411edb.385.1658231889656; Tue, 19
+ Jul 2022 04:58:09 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32a;
- envelope-from=heshamelmatary@gmail.com; helo=mail-wm1-x32a.google.com
-X-Spam_score_int: -14
-X-Spam_score: -1.5
-X-Spam_bar: -
-X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
+References: <CAL7npF9T0148jkgTigVfE7cSzH2HKqy0NG0VQtAH2HMXjdBOOg@mail.gmail.com>
+ <CAFEAcA8RHhRcrMSO_3MK0hSH=zWzde7S0DHHaLPZf4jOv48RLQ@mail.gmail.com>
+ <CAL7npF9hKFsQF18Udi9QFnRZSH-G8cafXHBSBQcrs7jpJmPd7Q@mail.gmail.com>
+ <CAFEAcA92=ne8weVYDnLLzNk0+z+aMFJgOJvW_7hSYcY1TimyHw@mail.gmail.com>
+In-Reply-To: <CAFEAcA92=ne8weVYDnLLzNk0+z+aMFJgOJvW_7hSYcY1TimyHw@mail.gmail.com>
+From: Jon Alduan <jon.alduan@gmail.com>
+Date: Tue, 19 Jul 2022 13:57:58 +0200
+Message-ID: <CAL7npF8Hg7hJBxw9j-1_7GRV_E52KS+hP1WXKfD3+r05C=CBgg@mail.gmail.com>
+Subject: Re: [qemu-arm-static] timer_delete issue from Qemu 5.0.0 onwards
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-arm@nongnu.org
+Content-Type: multipart/alternative; boundary="000000000000bcff1f05e4273203"
+Received-SPF: pass client-ip=2a00:1450:4864:20::533;
+ envelope-from=jon.alduan@gmail.com; helo=mail-ed1-x533.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: C+FPEc7pm2Nc
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: /34lgA1r7zEG
 
-From: Brice Goglin <Brice.Goglin@inria.fr>
+--000000000000bcff1f05e4273203
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-expected HMAT:
+Hello Peter,
 
-[000h 0000   4]                    Signature : "HMAT"    [Heterogeneous Memory Attributes Table]
-[004h 0004   4]                 Table Length : 00000120
-[008h 0008   1]                     Revision : 02
-[009h 0009   1]                     Checksum : 4F
-[00Ah 0010   6]                       Oem ID : "BOCHS "
-[010h 0016   8]                 Oem Table ID : "BXPC    "
-[018h 0024   4]                 Oem Revision : 00000001
-[01Ch 0028   4]              Asl Compiler ID : "BXPC"
-[020h 0032   4]        Asl Compiler Revision : 00000001
+this is not what I expected. I did the same as you again to be sure I was
+not missing something. but I get the same bad result (see below)
+Are you using qemu-arm as static bin or qemu-arm as dynamic bin?
 
-[024h 0036   4]                     Reserved : 00000000
+I also tested it on an another machine with another Kernel version, same
+result.
+So, what is the difference between your environment and mine?
+I send you my binary, so that you can test it directly on your machine. If
+it works, the issue comes within the compile phase.
 
-[028h 0040   2]               Structure Type : 0000 [Memory Proximity Domain Attributes]
-[02Ah 0042   2]                     Reserved : 0000
-[02Ch 0044   4]                       Length : 00000028
-[030h 0048   2]        Flags (decoded below) : 0001
-            Processor Proximity Domain Valid : 1
-[032h 0050   2]                    Reserved1 : 0000
-[034h 0052   4] Attached Initiator Proximity Domain : 00000000
-[038h 0056   4]      Memory Proximity Domain : 00000000
-[03Ch 0060   4]                    Reserved2 : 00000000
-[040h 0064   8]                    Reserved3 : 0000000000000000
-[048h 0072   8]                    Reserved4 : 0000000000000000
+Thank you for your support, again.
 
-[050h 0080   2]               Structure Type : 0000 [Memory Proximity Domain Attributes]
-[052h 0082   2]                     Reserved : 0000
-[054h 0084   4]                       Length : 00000028
-[058h 0088   2]        Flags (decoded below) : 0001
-            Processor Proximity Domain Valid : 1
-[05Ah 0090   2]                    Reserved1 : 0000
-[05Ch 0092   4] Attached Initiator Proximity Domain : 00000001
-[060h 0096   4]      Memory Proximity Domain : 00000001
-[064h 0100   4]                    Reserved2 : 00000000
-[068h 0104   8]                    Reserved3 : 0000000000000000
-[070h 0112   8]                    Reserved4 : 0000000000000000
+Best regards
+Jon
 
-[078h 0120   2]               Structure Type : 0000 [Memory Proximity Domain Attributes]
-[07Ah 0122   2]                     Reserved : 0000
-[07Ch 0124   4]                       Length : 00000028
-[080h 0128   2]        Flags (decoded below) : 0000
-            Processor Proximity Domain Valid : 0
-[082h 0130   2]                    Reserved1 : 0000
-[084h 0132   4] Attached Initiator Proximity Domain : 00000080
-[088h 0136   4]      Memory Proximity Domain : 00000002
-[08Ch 0140   4]                    Reserved2 : 00000000
-[090h 0144   8]                    Reserved3 : 0000000000000000
-[098h 0152   8]                    Reserved4 : 0000000000000000
 
-[0A0h 0160   2]               Structure Type : 0001 [System Locality Latency and Bandwidth Information]
-[0A2h 0162   2]                     Reserved : 0000
-[0A4h 0164   4]                       Length : 00000040
-[0A8h 0168   1]        Flags (decoded below) : 00
-                            Memory Hierarchy : 0
-[0A9h 0169   1]                    Data Type : 00
-[0AAh 0170   2]                    Reserved1 : 0000
-[0ACh 0172   4] Initiator Proximity Domains # : 00000002
-[0B0h 0176   4]   Target Proximity Domains # : 00000003
-[0B4h 0180   4]                    Reserved2 : 00000000
-[0B8h 0184   8]              Entry Base Unit : 0000000000002710
-[0C0h 0192   4] Initiator Proximity Domain List : 00000000
-[0C4h 0196   4] Initiator Proximity Domain List : 00000001
-[0C8h 0200   4] Target Proximity Domain List : 00000000
-[0CCh 0204   4] Target Proximity Domain List : 00000001
-[0D0h 0208   4] Target Proximity Domain List : 00000002
-[0D4h 0212   2]                        Entry : 0001
-[0D6h 0214   2]                        Entry : 0002
-[0D8h 0216   2]                        Entry : 0003
-[0DAh 0218   2]                        Entry : 0002
-[0DCh 0220   2]                        Entry : 0001
-[0DEh 0222   2]                        Entry : 0003
 
-[0E0h 0224   2]               Structure Type : 0001 [System Locality Latency and Bandwidth Information]
-[0E2h 0226   2]                     Reserved : 0000
-[0E4h 0228   4]                       Length : 00000040
-[0E8h 0232   1]        Flags (decoded below) : 00
-                            Memory Hierarchy : 0
-[0E9h 0233   1]                    Data Type : 03
-[0EAh 0234   2]                    Reserved1 : 0000
-[0ECh 0236   4] Initiator Proximity Domains # : 00000002
-[0F0h 0240   4]   Target Proximity Domains # : 00000003
-[0F4h 0244   4]                    Reserved2 : 00000000
-[0F8h 0248   8]              Entry Base Unit : 0000000000000001
-[100h 0256   4] Initiator Proximity Domain List : 00000000
-[104h 0260   4] Initiator Proximity Domain List : 00000001
-[108h 0264   4] Target Proximity Domain List : 00000000
-[10Ch 0268   4] Target Proximity Domain List : 00000001
-[110h 0272   4] Target Proximity Domain List : 00000002
-[114h 0276   2]                        Entry : 000A
-[116h 0278   2]                        Entry : 0005
-[118h 0280   2]                        Entry : 0001
-[11Ah 0282   2]                        Entry : 0005
-[11Ch 0284   2]                        Entry : 000A
-[11Eh 0286   2]                        Entry : 0001
 
-Raw Table Data: Length 288 (0x120)
 
-    0000: 48 4D 41 54 20 01 00 00 02 4F 42 4F 43 48 53 20  // HMAT ....OBOCHS
-    0010: 42 58 50 43 20 20 20 20 01 00 00 00 42 58 50 43  // BXPC    ....BXPC
-    0020: 01 00 00 00 00 00 00 00 00 00 00 00 28 00 00 00  // ............(...
-    0030: 01 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  // ................
-    0040: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  // ................
-    0050: 00 00 00 00 28 00 00 00 01 00 00 00 01 00 00 00  // ....(...........
-    0060: 01 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  // ................
-    0070: 00 00 00 00 00 00 00 00 00 00 00 00 28 00 00 00  // ............(...
-    0080: 00 00 00 00 80 00 00 00 02 00 00 00 00 00 00 00  // ................
-    0090: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  // ................
-    00A0: 01 00 00 00 40 00 00 00 00 00 00 00 02 00 00 00  // ....@...........
-    00B0: 03 00 00 00 00 00 00 00 10 27 00 00 00 00 00 00  // .........'......
-    00C0: 00 00 00 00 01 00 00 00 00 00 00 00 01 00 00 00  // ................
-    00D0: 02 00 00 00 01 00 02 00 03 00 02 00 01 00 03 00  // ................
-    00E0: 01 00 00 00 40 00 00 00 00 03 00 00 02 00 00 00  // ....@...........
-    00F0: 03 00 00 00 00 00 00 00 01 00 00 00 00 00 00 00  // ................
-    0100: 00 00 00 00 01 00 00 00 00 00 00 00 01 00 00 00  // ................
-    0110: 02 00 00 00 0A 00 05 00 01 00 05 00 0A 00 01 00  // ................
 
-Signed-off-by: Brice Goglin <Brice.Goglin@inria.fr>
-Signed-off-by: Hesham Almatary <hesham.almatary@huawei.com>
----
- tests/qtest/bios-tables-test.c | 50 ++++++++++++++++++++++++++++++++++
- 1 file changed, 50 insertions(+)
 
-diff --git a/tests/qtest/bios-tables-test.c b/tests/qtest/bios-tables-test.c
-index 359916c228..db14908bb4 100644
---- a/tests/qtest/bios-tables-test.c
-+++ b/tests/qtest/bios-tables-test.c
-@@ -1461,6 +1461,54 @@ static void test_acpi_piix4_tcg_acpi_hmat(void)
-     test_acpi_tcg_acpi_hmat(MACHINE_PC);
- }
- 
-+static void test_acpi_q35_tcg_acpi_hmat_noinitiator(void)
-+{
-+    test_data data;
-+
-+    memset(&data, 0, sizeof(data));
-+    data.machine = MACHINE_Q35;
-+    data.variant = ".acpihmat-noinitiator";
-+    test_acpi_one(" -machine hmat=on"
-+                  " -smp 4,sockets=2"
-+                  " -m 128M"
-+                  " -object memory-backend-ram,size=32M,id=ram0"
-+                  " -object memory-backend-ram,size=32M,id=ram1"
-+                  " -object memory-backend-ram,size=64M,id=ram2"
-+                  " -numa node,nodeid=0,memdev=ram0"
-+                  " -numa node,nodeid=1,memdev=ram1"
-+                  " -numa node,nodeid=2,memdev=ram2"
-+                  " -numa cpu,node-id=0,socket-id=0"
-+                  " -numa cpu,node-id=0,socket-id=0"
-+                  " -numa cpu,node-id=1,socket-id=1"
-+                  " -numa cpu,node-id=1,socket-id=1"
-+                  " -numa hmat-lb,initiator=0,target=0,hierarchy=memory,"
-+                  "data-type=access-latency,latency=10"
-+                  " -numa hmat-lb,initiator=0,target=0,hierarchy=memory,"
-+                  "data-type=access-bandwidth,bandwidth=10485760"
-+                  " -numa hmat-lb,initiator=0,target=1,hierarchy=memory,"
-+                  "data-type=access-latency,latency=20"
-+                  " -numa hmat-lb,initiator=0,target=1,hierarchy=memory,"
-+                  "data-type=access-bandwidth,bandwidth=5242880"
-+                  " -numa hmat-lb,initiator=0,target=2,hierarchy=memory,"
-+                  "data-type=access-latency,latency=30"
-+                  " -numa hmat-lb,initiator=0,target=2,hierarchy=memory,"
-+                  "data-type=access-bandwidth,bandwidth=1048576"
-+                  " -numa hmat-lb,initiator=1,target=0,hierarchy=memory,"
-+                  "data-type=access-latency,latency=20"
-+                  " -numa hmat-lb,initiator=1,target=0,hierarchy=memory,"
-+                  "data-type=access-bandwidth,bandwidth=5242880"
-+                  " -numa hmat-lb,initiator=1,target=1,hierarchy=memory,"
-+                  "data-type=access-latency,latency=10"
-+                  " -numa hmat-lb,initiator=1,target=1,hierarchy=memory,"
-+                  "data-type=access-bandwidth,bandwidth=10485760"
-+                  " -numa hmat-lb,initiator=1,target=2,hierarchy=memory,"
-+                  "data-type=access-latency,latency=30"
-+                  " -numa hmat-lb,initiator=1,target=2,hierarchy=memory,"
-+                  "data-type=access-bandwidth,bandwidth=1048576",
-+                  &data);
-+    free_test_data(&data);
-+}
-+
- static void test_acpi_erst(const char *machine)
- {
-     gchar *tmp_path = g_dir_make_tmp("qemu-test-erst.XXXXXX", NULL);
-@@ -1803,6 +1851,8 @@ int main(int argc, char *argv[])
-         qtest_add_func("acpi/q35/dimmpxm", test_acpi_q35_tcg_dimm_pxm);
-         qtest_add_func("acpi/piix4/acpihmat", test_acpi_piix4_tcg_acpi_hmat);
-         qtest_add_func("acpi/q35/acpihmat", test_acpi_q35_tcg_acpi_hmat);
-+        qtest_add_func("acpi/q35/acpihmat-noinitiator",
-+                        test_acpi_q35_tcg_acpi_hmat_noinitiator);
-         qtest_add_func("acpi/piix4/acpierst", test_acpi_piix4_acpi_erst);
-         qtest_add_func("acpi/q35/acpierst", test_acpi_q35_acpi_erst);
-         qtest_add_func("acpi/q35/applesmc", test_acpi_q35_applesmc);
--- 
-2.25.1
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+*$#/home/test_qemu_timer/src# arm-linux-gnueabihf-gcc -O2 -o timertest
+testTimer.cpp -static -pthread -lrttestTimer.cpp: In function =E2=80=98void
+sig_alarm(int, siginfo_t*, void*)=E2=80=99:testTimer.cpp:105:35: warning: f=
+ormat
+=E2=80=98%d=E2=80=99 expects argument of type =E2=80=98int=E2=80=99, but ar=
+gument 3 has type =E2=80=98timer_t=E2=80=99 {aka
+=E2=80=98void=E2=80=99} [-Wformat=3D]  105 |     printf("signal from alarm =
+%d %d %X\n",
+info->si_value.sival_int, m_tid[info->si_value.sival_int],
+info->si_value.sival_ptr);      |                                  ~^
+                           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~      |
+                        |
+             |      |                                   int
+                                             timer_t {aka void*}      |
+                             %ptestTimer.cpp:105:38: warning: format =E2=80=
+=98%X=E2=80=99
+expects argument of type =E2=80=98unsigned int=E2=80=99, but argument 4 has=
+ type =E2=80=98void*=E2=80=99
+[-Wformat=3D]  105 |     printf("signal from alarm %d %d %X\n",
+info->si_value.sival_int, m_tid[info->si_value.sival_int],
+info->si_value.sival_ptr);      |                                     ~^
+
+ ~~~~~~~~~~~~~~~~~~~~~~~~      |                                      |
+ |      |                                      unsigned int     void*
+|                                     %ptestTimer.cpp: In function =E2=80=
+=98void
+create_alarm(int, int)=E2=80=99:testTimer.cpp:131:30: warning: format =E2=
+=80=98%d=E2=80=99 expects
+argument of type =E2=80=98int=E2=80=99, but argument 3 has type =E2=80=98ti=
+mer_t=E2=80=99 {aka =E2=80=98void=E2=80=99}
+[-Wformat=3D]  131 |     printf("Create timer %d %d\n", m_iNr, tid);      |
+                          ~^            ~~~      |
+     |            |      |                              int
+ timer_t {aka void*}      |                             %ptestTimer.cpp: In
+function =E2=80=98void delete_alarm(int)=E2=80=99:testTimer.cpp:143:30: war=
+ning: format
+=E2=80=98%d=E2=80=99 expects argument of type =E2=80=98int=E2=80=99, but ar=
+gument 3 has type =E2=80=98timer_t=E2=80=99 {aka
+=E2=80=98void=E2=80=99} [-Wformat=3D]  143 |     printf("Remove timer %d %d=
+\n", nr,
+m_tid[nr]);      |                             ~^         ~~~~~~~~~      |
+                             |                 |      |
+         int               timer_t {aka void*}      |
+      %p$#/home/test_qemu_timer/src# ls -ltotal 764-rw-r--r-- 1 root root
+ 116 Jul 15 18:16 CMakeLists.txt-rw-r--r-- 1 root root   4269 Jul  6 00:12
+testTimer.cpp-rwxr-xr-x 1 root root 766532 Jul 19 13:31
+timertest$/home/jon/test_qemu_timer/src# qemu-arm-static_ -versionqemu-arm
+version 5.2.0 (Debian 1:5.2+dfsg-9ubuntu3.3)Copyright (c) 2003-2020 Fabrice
+Bellard and the QEMU Project developers$#/home/test_qemu_timer/src#
+qemu-arm-static_ -L ../ timertestCreate timer 0 212795392Create timer 1
+212795392Create timer 2 212795393Create timer 3 212795394Create timer 4
+212795395thread0: startedthread0: saw 0 alarms from 0thread1:
+startedthread2: startedthread3: startedthread4: startedthread5:
+startedthread6: startedthread7: startedthread8: startedthread9:
+startedsignal from alarm 0 212795392 0signal from alarm 2 212795393 2signal
+from alarm 4 212795395 4signal from alarm 0 212795392 0signal from alarm 1
+212795392 1signal from alarm 3 212795394 3signal from alarm 2 212795393
+2signal from alarm 4 212795395 4signal from alarm 0 212795392 0signal from
+alarm 2 212795393 2signal from alarm 4 212795395 4Remove timer 0
+212795392signal from alarm 0 0 0Error, already deletedsignal from alarm 2
+212795393 2signal from alarm 3 212795394 3signal from alarm 4 212795395
+4signal from alarm 0 0 0Error, already deletedsignal from alarm 2 212795393
+2signal from alarm 4 212795395 4signal from alarm 0 0 0Error, already
+deletedsignal from alarm 2 212795393 2signal from alarm 4 212795395 4signal
+from alarm 3 212795394 3signal from alarm 0 0 0Error, already deletedsignal
+from alarm 2 212795393 2Remove timer 1 212795392signal from alarm 4
+212795395 4^C$#/home/test_qemu_timer/src# qemu-arm-static_ timertestCreate
+timer 0 212795392Create timer 1 212795392Create timer 2 212795393Create
+timer 3 212795394Create timer 4 212795395thread0: startedthread0: saw 0
+alarms from 0thread1: startedthread2: startedthread3: startedthread4:
+startedthread5: startedthread6: startedthread7: startedthread8:
+startedthread9: startedsignal from alarm 0 212795392 0signal from alarm 2
+212795393 2signal from alarm 4 212795395 4signal from alarm 0 212795392
+0signal from alarm 1 212795392 1signal from alarm 4 212795395 4signal from
+alarm 3 212795394 3signal from alarm 2 212795393 2signal from alarm 0
+212795392 0signal from alarm 2 212795393 2signal from alarm 4 212795395
+4Remove timer 0 212795392signal from alarm 0 0 0signal from alarm 2
+212795393 2signal from alarm 4 212795395 4Error, already deletedsignal from
+alarm 3 212795394 3signal from alarm 0 0 0Error, already deletedsignal from
+alarm 2 212795393 2signal from alarm 4 212795395 4signal from alarm 0 0
+0Error, already deletedsignal from alarm 4 212795395 4signal from alarm 3
+212795394 3signal from alarm 2 212795393 2signal from alarm 0 0 0Error,
+already deletedsignal from alarm 2 212795393 2Remove timer 1
+212795392signal from alarm 4 212795395 4signal from alarm 2 212795393
+2signal from alarm 3 212795394 3signal from alarm 4 212795395 4signal from
+alarm 2 212795393 2signal from alarm 4 212795395 4*
+
+
+
+
+
+El lun, 18 jul 2022 a las 18:44, Peter Maydell (<peter.maydell@linaro.org>)
+escribi=C3=B3:
+
+> On Fri, 15 Jul 2022 at 17:18, Jon Alduan <jon.alduan@gmail.com> wrote:
+> > thanks for answering so fast.
+> > Attached a tarball file containing everything you need to reproduce it
+> (If not, please let me know).
+>
+> I can't repro this compiling your test from source, either with
+> a build of QEMU 5.0 or with current git:
+>
+> $ arm-linux-gnueabihf-gcc -O2 -o /tmp/timertest src/testTimer.cpp
+> -static -pthread -lrt
+> $ ~/linaro/qemu-from-laptop/qemu/build/qemu-5.0/arm-linux-user/qemu-arm
+> /tmp/timertest
+> Create timer 0 536856
+> Create timer 1 537904
+> Create timer 2 537920
+> Create timer 3 537936
+> Create timer 4 537952
+> thread1: started
+> thread9: started
+> thread0: started
+> thread3: started
+> thread2: started
+> thread4: started
+> thread5: started
+> thread6: started
+> thread7: started
+> thread8: started
+> thread0: saw 0 alarms from 0
+> signal from alarm 0 536856 0
+> signal from alarm 2 537920 2
+> signal from alarm 4 537952 4
+> signal from alarm 0 536856 0
+> signal from alarm 1 537904 1
+> signal from alarm 4 537952 4
+> signal from alarm 3 537936 3
+> signal from alarm 2 537920 2
+> signal from alarm 0 536856 0
+> signal from alarm 2 537920 2
+> signal from alarm 4 537952 4
+> Remove timer 0 536856
+> signal from alarm 1 537904 1
+> signal from alarm 2 537920 2
+> signal from alarm 4 537952 4
+> signal from alarm 3 537936 3
+> signal from alarm 2 537920 2
+> signal from alarm 4 537952 4
+> signal from alarm 1 537904 1
+> signal from alarm 4 537952 4
+> signal from alarm 3 537936 3
+> signal from alarm 2 537920 2
+> signal from alarm 2 537920 2
+> signal from alarm 4 537952 4
+> signal from alarm 2 537920 2
+> signal from alarm 1 537904 1
+> Remove timer 1 537904
+> signal from alarm 3 537936 3
+> signal from alarm 4 537952 4
+> signal from alarm 2 537920 2
+> signal from alarm 4 537952 4
+> signal from alarm 3 537936 3
+> signal from alarm 2 537920 2
+> signal from alarm 4 537952 4
+> ^C
+>
+> thanks
+> -- PMM
+>
+
+
+--=20
+j.A
+
+--000000000000bcff1f05e4273203
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><div>Hello Peter,</div><div><br></div><div>this is not wha=
+t I expected. I did the same as you again to be sure I was not missing some=
+thing. but I get the same bad result (see below)<br></div><div>Are you usin=
+g qemu-arm as static bin or qemu-arm as dynamic bin?</div><div><br></div><d=
+iv>I also tested it on an another machine with another Kernel version, same=
+ result.</div><div>So, what is the difference between your environment and =
+mine?</div><div>I send you my binary, so that you can test it directly on y=
+our machine. If it works, the issue comes within the compile phase. <br></d=
+iv><div><br></div><div>Thank you for your support, again.</div><div><br></d=
+iv><div>Best regards</div><div>Jon<br></div><div><br></div><div><span style=
+=3D"font-family:monospace"><i><b>$#/home/test_qemu_timer/src# arm-linux-gnu=
+eabihf-gcc -O2 -o timertest testTimer.cpp -static -pthread -lrt</b><br>test=
+Timer.cpp: In function =E2=80=98void sig_alarm(int, siginfo_t*, void*)=E2=
+=80=99:<br>testTimer.cpp:105:35: warning: format =E2=80=98%d=E2=80=99 expec=
+ts argument of type =E2=80=98int=E2=80=99, but argument 3 has type =E2=80=
+=98timer_t=E2=80=99 {aka =E2=80=98void<br>=E2=80=99} [-Wformat=3D]<br>=C2=
+=A0 105 | =C2=A0 =C2=A0 printf(&quot;signal from alarm %d %d %X\n&quot;, in=
+fo-&gt;si_value.sival_int, m_tid[info-&gt;si_value.sival_int], info-&gt;si_=
+value.sival_ptr);<br>=C2=A0 =C2=A0 =C2=A0 | =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0~^ =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0~~~~~~~~~~~~~~~~=
+~~~~~~~~~~~~~~~<br>=C2=A0 =C2=A0 =C2=A0 | =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 | =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0|<br>=C2=A0 =C2=A0 =C2=A0 | =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 int =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0timer_t {aka void*}<br>=C2=A0 =C2=A0 =C2=A0 | =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0%p<br>testTimer.cpp:105:38: warning: form=
+at =E2=80=98%X=E2=80=99 expects argument of type =E2=80=98unsigned int=E2=
+=80=99, but argument 4 has type =E2=80=98void*=E2=80=99 [-Wformat=3D]<br>=
+=C2=A0 105 | =C2=A0 =C2=A0 printf(&quot;signal from alarm %d %d %X\n&quot;,=
+ info-&gt;si_value.sival_int, m_tid[info-&gt;si_value.sival_int], info-&gt;=
+si_value.sival_ptr);<br>=C2=A0 =C2=A0 =C2=A0 | =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 ~^ =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0~~~~~~~~~~~~~~~~~~~~~~~~<br>=C2=A0 =C2=A0 =
+=C2=A0 | =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0|<br>=C2=
+=A0 =C2=A0 =C2=A0|<br>=C2=A0 =C2=A0 =C2=A0 | =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0unsigned int<br>=C2=A0 =C2=A0 =C2=A0void*<br=
+>=C2=A0 =C2=A0 =C2=A0 | =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 %p<br>testTimer.cpp: In function =E2=80=98void create_alarm(int, int)=
+=E2=80=99:<br>testTimer.cpp:131:30: warning: format =E2=80=98%d=E2=80=99 ex=
+pects argument of type =E2=80=98int=E2=80=99, but argument 3 has type =E2=
+=80=98timer_t=E2=80=99 {aka =E2=80=98void<br>=E2=80=99} [-Wformat=3D]<br>=
+=C2=A0 131 | =C2=A0 =C2=A0 printf(&quot;Create timer %d %d\n&quot;, m_iNr, =
+tid);<br>=C2=A0 =C2=A0 =C2=A0 | =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 ~^ =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0~~~<br>=C2=A0 =C2=A0 =C2=A0 | =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0| =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0|<br>=C2=A0 =C2=A0 =
+=C2=A0 | =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0int =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0timer_t {aka void*}<br>=C2=A0 =C2=A0 =C2=A0 | =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 %=
+p<br>testTimer.cpp: In function =E2=80=98void delete_alarm(int)=E2=80=99:<b=
+r>testTimer.cpp:143:30: warning: format =E2=80=98%d=E2=80=99 expects argume=
+nt of type =E2=80=98int=E2=80=99, but argument 3 has type =E2=80=98timer_t=
+=E2=80=99 {aka =E2=80=98void<br>=E2=80=99} [-Wformat=3D]<br>=C2=A0 143 | =
+=C2=A0 =C2=A0 printf(&quot;Remove timer %d %d\n&quot;, nr, m_tid[nr]);<br>=
+=C2=A0 =C2=A0 =C2=A0 | =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 ~^ =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 ~~~~~~~~~<br>=C2=A0 =C2=A0 =C2=A0 | =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0| =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 |<br>=C2=A0 =C2=A0 =C2=
+=A0 | =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+ =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0int =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 timer_t {aka void*}<br>=C2=A0 =C2=A0 =C2=A0 | =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 %p<br><b>$#/home/test_qemu_timer/src# ls -l</b><br>total 764<br>=
+-rw-r--r-- 1 root root =C2=A0 =C2=A0116 Jul 15 18:16 CMakeLists.txt<br>-rw-=
+r--r-- 1 root root =C2=A0 4269 Jul =C2=A06 00:12 testTimer.cpp<br>-rwxr-xr-=
+x 1 root root 766532 Jul 19 13:31 timertest<br><b>$/home/jon/test_qemu_time=
+r/src# qemu-arm-static_ -version</b><br>qemu-arm version 5.2.0 (Debian 1:5.=
+2+dfsg-9ubuntu3.3)<br>Copyright (c) 2003-2020 Fabrice Bellard and the QEMU =
+Project developers<br><b>$#/home/test_qemu_timer/src# qemu-arm-static_ -L .=
+./ timertest</b><br>Create timer 0 212795392<br>Create timer 1 212795392<br=
+>Create timer 2 212795393<br>Create timer 3 212795394<br>Create timer 4 212=
+795395<br>thread0: started<br>thread0: saw 0 alarms from 0<br>thread1: star=
+ted<br>thread2: started<br>thread3: started<br>thread4: started<br>thread5:=
+ started<br>thread6: started<br>thread7: started<br>thread8: started<br>thr=
+ead9: started<br>signal from alarm 0 212795392 0<br>signal from alarm 2 212=
+795393 2<br>signal from alarm 4 212795395 4<br>signal from alarm 0 21279539=
+2 0<br>signal from alarm 1 212795392 1<br>signal from alarm 3 212795394 3<b=
+r>signal from alarm 2 212795393 2<br>signal from alarm 4 212795395 4<br>sig=
+nal from alarm 0 212795392 0<br>signal from alarm 2 212795393 2<br>signal f=
+rom alarm 4 212795395 4<br>Remove timer 0 212795392<br>signal from alarm 0 =
+0 0<br>Error, already deleted<br>signal from alarm 2 212795393 2<br>signal =
+from alarm 3 212795394 3<br>signal from alarm 4 212795395 4<br>signal from =
+alarm 0 0 0<br>Error, already deleted<br>signal from alarm 2 212795393 2<br=
+>signal from alarm 4 212795395 4<br>signal from alarm 0 0 0<br>Error, alrea=
+dy deleted<br>signal from alarm 2 212795393 2<br>signal from alarm 4 212795=
+395 4<br>signal from alarm 3 212795394 3<br>signal from alarm 0 0 0<br>Erro=
+r, already deleted<br>signal from alarm 2 212795393 2<br>Remove timer 1 212=
+795392<br>signal from alarm 4 212795395 4<br>^C<br><b>$#/home/test_qemu_tim=
+er/src# qemu-arm-static_ timertest</b><br>Create timer 0 212795392<br>Creat=
+e timer 1 212795392<br>Create timer 2 212795393<br>Create timer 3 212795394=
+<br>Create timer 4 212795395<br>thread0: started<br>thread0: saw 0 alarms f=
+rom 0<br>thread1: started<br>thread2: started<br>thread3: started<br>thread=
+4: started<br>thread5: started<br>thread6: started<br>thread7: started<br>t=
+hread8: started<br>thread9: started<br>signal from alarm 0 212795392 0<br>s=
+ignal from alarm 2 212795393 2<br>signal from alarm 4 212795395 4<br>signal=
+ from alarm 0 212795392 0<br>signal from alarm 1 212795392 1<br>signal from=
+ alarm 4 212795395 4<br>signal from alarm 3 212795394 3<br>signal from alar=
+m 2 212795393 2<br>signal from alarm 0 212795392 0<br>signal from alarm 2 2=
+12795393 2<br>signal from alarm 4 212795395 4<br>Remove timer 0 212795392<b=
+r>signal from alarm 0 0 0<br>signal from alarm 2 212795393 2<br>signal from=
+ alarm 4 212795395 4<br>Error, already deleted<br>signal from alarm 3 21279=
+5394 3<br>signal from alarm 0 0 0<br>Error, already deleted<br>signal from =
+alarm 2 212795393 2<br>signal from alarm 4 212795395 4<br>signal from alarm=
+ 0 0 0<br>Error, already deleted<br>signal from alarm 4 212795395 4<br>sign=
+al from alarm 3 212795394 3<br>signal from alarm 2 212795393 2<br>signal fr=
+om alarm 0 0 0<br>Error, already deleted<br>signal from alarm 2 212795393 2=
+<br>Remove timer 1 212795392<br>signal from alarm 4 212795395 4<br>signal f=
+rom alarm 2 212795393 2<br>signal from alarm 3 212795394 3<br>signal from a=
+larm 4 212795395 4<br>signal from alarm 2 212795393 2<br>signal from alarm =
+4 212795395 4</i></span></div><div><br></div><div><br></div><div><br></div>=
+<div><br></div></div><br><div class=3D"gmail_quote"><div dir=3D"ltr" class=
+=3D"gmail_attr">El lun, 18 jul 2022 a las 18:44, Peter Maydell (&lt;<a href=
+=3D"mailto:peter.maydell@linaro.org">peter.maydell@linaro.org</a>&gt;) escr=
+ibi=C3=B3:<br></div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0=
+px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex">On Fr=
+i, 15 Jul 2022 at 17:18, Jon Alduan &lt;<a href=3D"mailto:jon.alduan@gmail.=
+com" target=3D"_blank">jon.alduan@gmail.com</a>&gt; wrote:<br>
+&gt; thanks for answering so fast.<br>
+&gt; Attached a tarball file containing everything you need to reproduce it=
+ (If not, please let me know).<br>
+<br>
+I can&#39;t repro this compiling your test from source, either with<br>
+a build of QEMU 5.0 or with current git:<br>
+<br>
+$ arm-linux-gnueabihf-gcc -O2 -o /tmp/timertest src/testTimer.cpp<br>
+-static -pthread -lrt<br>
+$ ~/linaro/qemu-from-laptop/qemu/build/qemu-5.0/arm-linux-user/qemu-arm<br>
+/tmp/timertest<br>
+Create timer 0 536856<br>
+Create timer 1 537904<br>
+Create timer 2 537920<br>
+Create timer 3 537936<br>
+Create timer 4 537952<br>
+thread1: started<br>
+thread9: started<br>
+thread0: started<br>
+thread3: started<br>
+thread2: started<br>
+thread4: started<br>
+thread5: started<br>
+thread6: started<br>
+thread7: started<br>
+thread8: started<br>
+thread0: saw 0 alarms from 0<br>
+signal from alarm 0 536856 0<br>
+signal from alarm 2 537920 2<br>
+signal from alarm 4 537952 4<br>
+signal from alarm 0 536856 0<br>
+signal from alarm 1 537904 1<br>
+signal from alarm 4 537952 4<br>
+signal from alarm 3 537936 3<br>
+signal from alarm 2 537920 2<br>
+signal from alarm 0 536856 0<br>
+signal from alarm 2 537920 2<br>
+signal from alarm 4 537952 4<br>
+Remove timer 0 536856<br>
+signal from alarm 1 537904 1<br>
+signal from alarm 2 537920 2<br>
+signal from alarm 4 537952 4<br>
+signal from alarm 3 537936 3<br>
+signal from alarm 2 537920 2<br>
+signal from alarm 4 537952 4<br>
+signal from alarm 1 537904 1<br>
+signal from alarm 4 537952 4<br>
+signal from alarm 3 537936 3<br>
+signal from alarm 2 537920 2<br>
+signal from alarm 2 537920 2<br>
+signal from alarm 4 537952 4<br>
+signal from alarm 2 537920 2<br>
+signal from alarm 1 537904 1<br>
+Remove timer 1 537904<br>
+signal from alarm 3 537936 3<br>
+signal from alarm 4 537952 4<br>
+signal from alarm 2 537920 2<br>
+signal from alarm 4 537952 4<br>
+signal from alarm 3 537936 3<br>
+signal from alarm 2 537920 2<br>
+signal from alarm 4 537952 4<br>
+^C<br>
+<br>
+thanks<br>
+-- PMM<br>
+</blockquote></div><br clear=3D"all"><br>-- <br><div dir=3D"ltr" class=3D"g=
+mail_signature">j.A</div>
+
+--000000000000bcff1f05e4273203--

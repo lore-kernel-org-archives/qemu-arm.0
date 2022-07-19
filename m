@@ -1,90 +1,90 @@
-Received: by 2002:ac2:596f:0:0:0:0:0 with SMTP id h15csp1804775lfp;
-        Tue, 19 Jul 2022 02:55:12 -0700 (PDT)
-X-Google-Smtp-Source: AGRyM1uEF5hENutBuU09sJB85Gh+LVx8zLIPNIURKRqk3V13JxRVpor9sFPNO7/qTIdGGE4PJsGf
-X-Received: by 2002:a37:444b:0:b0:6b1:48dd:e56e with SMTP id r72-20020a37444b000000b006b148dde56emr20250810qka.501.1658224511910;
-        Tue, 19 Jul 2022 02:55:11 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1658224511; cv=none;
+Received: by 2002:ac2:596f:0:0:0:0:0 with SMTP id h15csp1805198lfp;
+        Tue, 19 Jul 2022 02:56:11 -0700 (PDT)
+X-Google-Smtp-Source: AGRyM1soBPCJ8NSqw8rG9FM3/4dt17WjODFiy1AJSVugv/avXH8w4UMV3nNrrzb60b8YMm2uXoAo
+X-Received: by 2002:a37:a57:0:b0:6b5:d65f:82ef with SMTP id 84-20020a370a57000000b006b5d65f82efmr10549971qkk.110.1658224571010;
+        Tue, 19 Jul 2022 02:56:11 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1658224571; cv=none;
         d=google.com; s=arc-20160816;
-        b=oyMQCz68ORThxyXObvkCSpgJjCIFOUwo/oUu4aM5SgDb7zy0g13xec7MzHRlNX/ogc
-         cx/5EYKcaMTyn/INt3GHqOxugao3ZmPGK1knPBf2i5tnOEppDYJN407lC2llN5A9nNvm
-         6ApvbaZJX4QR0i/oZ5IbRZRTLLWA3sXIZtWKK5/LuXkTvG2uyQBHh3KAUHx6EFtcEYKI
-         1vyqsOWF7EW2rjGO9WHdfcNm17wntON/7/vEYifBXXSFYFg8RBZ1aYoS5R3LWxru2Gwg
-         KAjCRn6cvU8R522Gf+RcFrSxU/ErN0TY1ILoePw8AQ2ECXYv4a8HfQAajvq40TTg+cJI
-         pZWw==
+        b=Q96zYfxusK++7AbZrEHsR4IvaxZEelN4tFcA0MqqimTyzlcGI58aNKUKLgbCa9WGL1
+         ctowEcmIuccfZimzG1cEWIyPz9rEmVapK0jsomRdYUCFSoKgLP3bagbEzV1NwFgDI5NG
+         qyJP91VZPt5seBDj/A9kPI+a/b1QNrzmCkjZltRj1MZh78f1KMPNFs7BJ2KLVR5ZPjdD
+         yoJUe27DPt9tV/nzvNB4jbjQe7bvQkK2y7cbwpWb4l/io7vB2oZl01c1jZx33E6wSXR9
+         3j0ZbAx43Zz91D7Ammi0bKhmJmYqo7Gk4s4Ud8NOFBn+vlhTOXA+HISTQzpCRDDezGQJ
+         AFBw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=S6RZKWZer2m66jkGICoK4W6mH52++axNmDZzeqvlUBA=;
-        b=FnkabFp1WrxZhhAQFB0brMsoYXPmnKcYBo5NXUooWndeUIYsWYCE6w8sxdafRdKyyA
-         8bqjtKz2RH/FnU2LVsto95dFB79SpYLjreIgVsZKKMs1nkv9GNdKaVhAMmAqcNpY2b15
-         eWchKnDUl1Y1dnclmh1suW1yAR6kH5MKR9BjgkWfWQoaxdmO2afeBqpOioHBYoK8ZhHG
-         csOO32bBSLiCX9d8cQfYAw6N9X/bBLEI8GC8dKU4ukFwn97JBQyzVcbpyoBp9MadYWsd
-         zuFUleoAtbYJljXguRriUfOPHiryEkondr5xSIp1RPxprDcG0Gfe+t7lPoDmZyVyiazK
-         8A2w==
+        bh=F9Z2uy4g8Ct2OgMS3JKQ4Rli/sEtDSG4EP2iBDjVkwc=;
+        b=tX3SLay+0/9uNMcjagoveq+IHkQTO7G9IZMYQ2W+6JkKcH5IswVfabjXY8O6+tXFpF
+         G33pK/j0TlOV0dJ/xzjv0H9SuWyjNulCSX7tJK/5QHYqEov1VNzR0XgmeCPh5mmjW2fO
+         hKgl7+0Wn8fjeKffA9LNCi1WjLBxf2dEoUF4ytS1m3YLd1Tg5i8zkzqgABRwF+CbtFa3
+         GUU1xIJcE193zmHz5/eNbx33VCSlZIscpOk165iM7VxjnGvMI9EW7xzdMN9aveU7wPj0
+         N8zp9MdCz/8WOx3h3G3akhpr/pBhbpEMnn1U+Vbian8RmY5DfTzwyTWjngfPjCurIlEP
+         ykMg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20210112 header.b="agBKVFq/";
+       dkim=fail header.i=@gmail.com header.s=20210112 header.b=md2XJSVt;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=cl.cam.ac.uk
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id g1-20020a05620a40c100b006b5d9542553si4596564qko.380.2022.07.19.02.55.11
+        by mx.google.com with ESMTPS id y19-20020a05622a121300b0031ed3486e93si6883711qtx.377.2022.07.19.02.56.10
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 19 Jul 2022 02:55:11 -0700 (PDT)
+        Tue, 19 Jul 2022 02:56:11 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20210112 header.b="agBKVFq/";
+       dkim=fail header.i=@gmail.com header.s=20210112 header.b=md2XJSVt;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=cl.cam.ac.uk
-Received: from localhost ([::1]:39232 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:41056 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1oDjwd-0003jD-Eb
-	for alex.bennee@linaro.org; Tue, 19 Jul 2022 05:55:11 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:48320)
+	id 1oDjxa-00051Y-Gs
+	for alex.bennee@linaro.org; Tue, 19 Jul 2022 05:56:10 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:47696)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <heshamelmatary@gmail.com>)
- id 1oDjuB-0006UO-E3; Tue, 19 Jul 2022 05:52:39 -0400
-Received: from mail-wm1-x32a.google.com ([2a00:1450:4864:20::32a]:38429)
+ id 1oDjsg-0003px-3W; Tue, 19 Jul 2022 05:51:06 -0400
+Received: from mail-wm1-x333.google.com ([2a00:1450:4864:20::333]:44871)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <heshamelmatary@gmail.com>)
- id 1oDju9-0003yH-S9; Tue, 19 Jul 2022 05:52:39 -0400
-Received: by mail-wm1-x32a.google.com with SMTP id
- f24-20020a1cc918000000b003a30178c022so9535760wmb.3; 
- Tue, 19 Jul 2022 02:52:36 -0700 (PDT)
+ id 1oDjse-0003d8-Hw; Tue, 19 Jul 2022 05:51:05 -0400
+Received: by mail-wm1-x333.google.com with SMTP id
+ be14-20020a05600c1e8e00b003a04a458c54so8835300wmb.3; 
+ Tue, 19 Jul 2022 02:51:03 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
  h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=S6RZKWZer2m66jkGICoK4W6mH52++axNmDZzeqvlUBA=;
- b=agBKVFq/ygq5+EilZWlCM2E87O9C6j/nKWEen19qkFJi1flJKTeWQ6pRWqbpVd4dOo
- Gas+ogV0zyVUOu4FkNYCqYPQDh7wXqaPcVTtf7jWcU1Vtc3sr6efSPh4W4jV5muhmPru
- CQVizSDzw+OvrzFPWa2oy4p00TztlhYIYzI6PlwDygfSqoq8Jip0eaVwRsUcNI2S5/u2
- 8uJPb91ukTb/3/xhXZjjCzT2wBRh5nxPO3qkQPUSL9o28WxpS6o8Mq4rcIhrjYSpiGpm
- 74WAjLstc/ngtV9J1+ScnTm4ErypeHImY3RHGKtmGc4xgWBBU1zKzhzuIGmR3+tEtXpN
- WXng==
+ bh=F9Z2uy4g8Ct2OgMS3JKQ4Rli/sEtDSG4EP2iBDjVkwc=;
+ b=md2XJSVt98a1/sKSnuEIT+RJ9+avMttJW7OX8uqpp8pCy/+yPOz7AXmE22Ont/TUUm
+ ZvuRETJv3st5RDIfVEZdhs3D66Ng2shUjDPwydDkyyBSK+N3sq+IL6G1dooK0kv3y760
+ TOdIxjCChcZrRTlZRFlZRfW8GOLqgf7x6ssF134AoX3boL2S2laxSGI4ugQQGN1dGxWL
+ XLBA4kX9P8v4xx/bm0xLK26B8yNaPMq8/WdL0hpI+UkELDjpf1VVww//yCmKiSfF1xNe
+ ubYaIqjMF30aRqum1za12X4gImYB6Uu7rsG+dLpWd8CwI189rfhMCGSFNydQRf6qgYbI
+ 9MXw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
  :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=S6RZKWZer2m66jkGICoK4W6mH52++axNmDZzeqvlUBA=;
- b=USHT0/v92tlyVIhcg8KrTfuEsja8Ik4A+BgjiZQKYsWWk0oCnSWdyNPIfSpCeujZ94
- frpfhY4ldzA6e9AhSEsD0QWJSYpuv/VyV0BnM5g25as1FrF1AqefSwJ3xaNw2/ehek+Q
- g9be8O3kg8QoCmqmC8UJemdgWhA+mbr+AilemBtl8mDydq4NxCZ45PuR9jQnng4n5YQk
- 5ea7femUhvTgoYqjJNWutSZsElytTF2eLzpCBUK4Q87k/rc+cnuzzm0G1WqkflFvQ0ol
- NoGMtzrfpAUsN89y0Rr3eIB84LijqDLyRDs/1rcOnlCzkEv6J1Rkv8XWNhwUzqz3zFGe
- +Y+Q==
-X-Gm-Message-State: AJIora8jagx9tRGUnxP7cDTnRmZfkoDWtgM9UI42gBRxQ7RyqAR3nEM7
- KNjpJTXbNRyRI74hHwcevbg=
-X-Received: by 2002:a05:600c:3d10:b0:3a0:4956:9a84 with SMTP id
- bh16-20020a05600c3d1000b003a049569a84mr30450352wmb.133.1658224355980; 
- Tue, 19 Jul 2022 02:52:35 -0700 (PDT)
+ bh=F9Z2uy4g8Ct2OgMS3JKQ4Rli/sEtDSG4EP2iBDjVkwc=;
+ b=DXxOn4hfD0tbiyF3X/CrpOOXLwNbf33z0ZOA1R1oQg5paJoHtfKOb5TIi3r5VXh6sM
+ bbLjTofGeXFCEps4BWVS8t4wQ6rqROiVnxGdM7R68cXUFa+1bnguZy92ZvgLk9aksucW
+ ocOvlzyh/qNV9tkvUaCePJ4dmypLgTkCLY6MBtkAy80Lc7qvLBK0lNsdWkblV93sxXv2
+ 4+F0+d5T4xvL2MVugvbK4afr0Y2UA/AuSz9vt674irN6B2e/U8p+z7pHKMA4PbpbaE1B
+ 1VpB3oGyPjg3XymVofvK58TWdnFsTCzgB54gZYJLB2xYUOQ1qar9qdPMzAoo59CI6zXs
+ G9bA==
+X-Gm-Message-State: AJIora++CwfLs7kGcYxq8gL3vFRaFeNgoCebHdkQDfwJnnpz7VXBFfhS
+ Os4af5jLt25kt0jgQqshuDI=
+X-Received: by 2002:a05:600c:4f43:b0:3a2:ee79:2dd5 with SMTP id
+ m3-20020a05600c4f4300b003a2ee792dd5mr29845584wmq.143.1658224262185; 
+ Tue, 19 Jul 2022 02:51:02 -0700 (PDT)
 Received: from localhost.localdomain ([86.188.218.117])
  by smtp.gmail.com with ESMTPSA id
- o20-20020a05600c511400b003a30fbde91dsm13359458wms.20.2022.07.19.02.52.35
+ n4-20020a5d4c44000000b0021b956da1dcsm12841263wrt.113.2022.07.19.02.51.01
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 19 Jul 2022 02:52:35 -0700 (PDT)
+ Tue, 19 Jul 2022 02:51:01 -0700 (PDT)
 From: Hesham Almatary <Hesham.Almatary@cl.cam.ac.uk>
 X-Google-Original-From: Hesham Almatary <hesham.almatary@huawei.com>
 To: jonathan.cameron@huawei.com,
@@ -93,16 +93,17 @@ Cc: yangyicong@huawei.com, chenxiang66@hisilicon.com, linuxarm@huawei.com,
  qemu-arm@nongnu.org, peter.maydell@linaro.org, imammedo@redhat.com,
  wangyanan55@huawei.com, marcel.apfelbaum@gmail.com, eduardo@habkost.net,
  Brice.Goglin@inria.fr, mst@redhat.com, jingqi.liu@intel.com
-Subject: [PATCH v2 5/8] tests: Add HMAT AArch64/virt empty table files
-Date: Tue, 19 Jul 2022 10:49:47 +0100
-Message-Id: <20220719094950.1049516-6-hesham.almatary@huawei.com>
+Subject: [PATCH v2 2/8] tests: acpi: add and whitelist *.hmat-noinitiator
+ expected blobs
+Date: Tue, 19 Jul 2022 10:49:44 +0100
+Message-Id: <20220719094950.1049516-3-hesham.almatary@huawei.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20220719094950.1049516-1-hesham.almatary@huawei.com>
 References: <20220719094950.1049516-1-hesham.almatary@huawei.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32a;
- envelope-from=heshamelmatary@gmail.com; helo=mail-wm1-x32a.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::333;
+ envelope-from=heshamelmatary@gmail.com; helo=mail-wm1-x333.google.com
 X-Spam_score_int: -14
 X-Spam_score: -1.5
 X-Spam_bar: -
@@ -125,49 +126,48 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Vd+eL+GNg/PO
+X-TUID: V/0ULU74NS9H
 
+From: Brice Goglin <Brice.Goglin@inria.fr>
+
+.. which will be used by follow up hmat-noinitiator test-case.
+
+Signed-off-by: Brice Goglin <Brice.Goglin@inria.fr>
 Signed-off-by: Hesham Almatary <hesham.almatary@huawei.com>
 ---
- tests/data/acpi/virt/APIC.acpihmatvirt      | 0
- tests/data/acpi/virt/DSDT.acpihmatvirt      | 0
- tests/data/acpi/virt/HMAT.acpihmatvirt      | 0
- tests/data/acpi/virt/PPTT.acpihmatvirt      | 0
- tests/data/acpi/virt/SRAT.acpihmatvirt      | 0
- tests/qtest/bios-tables-test-allowed-diff.h | 5 +++++
- 6 files changed, 5 insertions(+)
- create mode 100644 tests/data/acpi/virt/APIC.acpihmatvirt
- create mode 100644 tests/data/acpi/virt/DSDT.acpihmatvirt
- create mode 100644 tests/data/acpi/virt/HMAT.acpihmatvirt
- create mode 100644 tests/data/acpi/virt/PPTT.acpihmatvirt
- create mode 100644 tests/data/acpi/virt/SRAT.acpihmatvirt
+ tests/data/acpi/q35/APIC.acpihmat-noinitiator | 0
+ tests/data/acpi/q35/DSDT.acpihmat-noinitiator | 0
+ tests/data/acpi/q35/HMAT.acpihmat-noinitiator | 0
+ tests/data/acpi/q35/SRAT.acpihmat-noinitiator | 0
+ tests/qtest/bios-tables-test-allowed-diff.h   | 4 ++++
+ 5 files changed, 4 insertions(+)
+ create mode 100644 tests/data/acpi/q35/APIC.acpihmat-noinitiator
+ create mode 100644 tests/data/acpi/q35/DSDT.acpihmat-noinitiator
+ create mode 100644 tests/data/acpi/q35/HMAT.acpihmat-noinitiator
+ create mode 100644 tests/data/acpi/q35/SRAT.acpihmat-noinitiator
 
-diff --git a/tests/data/acpi/virt/APIC.acpihmatvirt b/tests/data/acpi/virt/APIC.acpihmatvirt
+diff --git a/tests/data/acpi/q35/APIC.acpihmat-noinitiator b/tests/data/acpi/q35/APIC.acpihmat-noinitiator
 new file mode 100644
 index 0000000000..e69de29bb2
-diff --git a/tests/data/acpi/virt/DSDT.acpihmatvirt b/tests/data/acpi/virt/DSDT.acpihmatvirt
+diff --git a/tests/data/acpi/q35/DSDT.acpihmat-noinitiator b/tests/data/acpi/q35/DSDT.acpihmat-noinitiator
 new file mode 100644
 index 0000000000..e69de29bb2
-diff --git a/tests/data/acpi/virt/HMAT.acpihmatvirt b/tests/data/acpi/virt/HMAT.acpihmatvirt
+diff --git a/tests/data/acpi/q35/HMAT.acpihmat-noinitiator b/tests/data/acpi/q35/HMAT.acpihmat-noinitiator
 new file mode 100644
 index 0000000000..e69de29bb2
-diff --git a/tests/data/acpi/virt/PPTT.acpihmatvirt b/tests/data/acpi/virt/PPTT.acpihmatvirt
-new file mode 100644
-index 0000000000..e69de29bb2
-diff --git a/tests/data/acpi/virt/SRAT.acpihmatvirt b/tests/data/acpi/virt/SRAT.acpihmatvirt
+diff --git a/tests/data/acpi/q35/SRAT.acpihmat-noinitiator b/tests/data/acpi/q35/SRAT.acpihmat-noinitiator
 new file mode 100644
 index 0000000000..e69de29bb2
 diff --git a/tests/qtest/bios-tables-test-allowed-diff.h b/tests/qtest/bios-tables-test-allowed-diff.h
-index dfb8523c8b..4f849715bd 100644
+index dfb8523c8b..245fa66bcc 100644
 --- a/tests/qtest/bios-tables-test-allowed-diff.h
 +++ b/tests/qtest/bios-tables-test-allowed-diff.h
-@@ -1 +1,6 @@
+@@ -1 +1,5 @@
  /* List of comma-separated changed AML files to ignore */
-+"tests/data/acpi/virt/APIC.acpihmatvirt",
-+"tests/data/acpi/virt/DSDT.acpihmatvirt",
-+"tests/data/acpi/virt/HMAT.acpihmatvirt",
-+"tests/data/acpi/virt/PPTT.acpihmatvirt",
-+"tests/data/acpi/virt/SRAT.acpihmatvirt",
++"tests/data/acpi/q35/APIC.acpihmat-noinitiator",
++"tests/data/acpi/q35/DSDT.acpihmat-noinitiator",
++"tests/data/acpi/q35/HMAT.acpihmat-noinitiator",
++"tests/data/acpi/q35/SRAT.acpihmat-noinitiator",
 -- 
 2.25.1
 

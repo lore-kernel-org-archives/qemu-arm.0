@@ -1,84 +1,84 @@
-Received: by 2002:ac2:596f:0:0:0:0:0 with SMTP id h15csp3369190lfp;
-        Thu, 21 Jul 2022 07:53:15 -0700 (PDT)
-X-Google-Smtp-Source: AGRyM1sxFwp9QKcFd/A24dd44c01XTmzClM7RQyPDAx6ShMya2qCNDflu8AF6moduJZ2MUVJ24yO
-X-Received: by 2002:ad4:5c64:0:b0:472:f016:bfde with SMTP id i4-20020ad45c64000000b00472f016bfdemr34885847qvh.52.1658415195104;
-        Thu, 21 Jul 2022 07:53:15 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1658415195; cv=none;
+Received: by 2002:ac2:596f:0:0:0:0:0 with SMTP id h15csp3517433lfp;
+        Thu, 21 Jul 2022 12:03:52 -0700 (PDT)
+X-Google-Smtp-Source: AGRyM1vOt8SmX29IzPaPobatapIDXHJgSYaNVXUcZ7PhM+DBWVOszHp7SEukgpb4tNbeyU7DhGHG
+X-Received: by 2002:a05:622a:10e:b0:31f:1edf:c417 with SMTP id u14-20020a05622a010e00b0031f1edfc417mr130qtw.488.1658430232280;
+        Thu, 21 Jul 2022 12:03:52 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1658430232; cv=none;
         d=google.com; s=arc-20160816;
-        b=d/JBm6AP4s309MT8DTAO8dQ6FuTgrrI9HxuS4VOL4MJ7KWJfn9kQxt7eQjmteEXLXF
-         h/uajbnQzfsZp5frk2D/y2PNQPtbXfiFoMjPgp4c3yj8qmiV87nuLNRMtvgNI7S/JR8b
-         U3c1XVM7ZOYCL4gCFC3EVbdqPI2Dq0d6c+DwxXUBAuoEdsoCCr7ByS3+XAWQHexAw3OU
-         TxnfdwJ7Ov2ykLZk5ErRefoSvV8UO8cocQTn4rdQJvMhWPNvJvSsnF6pgVYOYzGWa3M2
-         BhrdI/nsmuz2AQsLPO2dF6xoHZKqfOVmmHhbqqjOPzYLnEUHHpgsWZchg13OGYb8ayO6
-         8LoA==
+        b=0kspxgcFEdFflQAWZRaWFTfhiyc8cuK3ov/xIV9ky+efrfiJ8Ur+5RYy6RAKKEXrl6
+         KS+Fi4V81RZHAjmedEkXeqvERGXS4blZSC77X6tpzD12PyxDbTpJ0LqtE+P5+z2zQudo
+         PCfpoFrWP4fv5jwc8bP5CGYGhqVHodsZ2437SbS59PV9JFuDi6oGgE8gUANEu/da+cWz
+         eg3H1M97BNEV02JaSMFuMf1KfGc2Yso4+luIbd6S6PXU4rLS4dhfc/p6oTmPwRZ4qxMO
+         IFNLeRgMdM3YDOg2CziibohfeB4sLBebUjOzjZuhrabBTIdB5cVDvHFQcUheii60OKeq
+         Plhg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
          :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=d99UFWPtetONp9XYceiMv4No6MjiG3yJabU3e66KD2k=;
-        b=JR0liIoMrISReX6ESN9kFOz7r7z2oX+wkiKRn+r9Awy0LOqXL9mWCqQWtMiWyPC9LB
-         f6AO193/dQRO7g/YWc37H6rbW7oNnNcfBa1nQRJxzls8LmdufrtkvclA9aOmbPaQhnIV
-         to8I+EHimg9QTeWSQlPQCapaCtt7Ea3gOkZHPBMXbAjSZZ4+hYmx1n7mM8WNA1ohIn/x
-         mh2GJKFQbpoAPrerlOddVOGwgOoGdIlgYaN1YUpvknGOI3nVNzMazbthA1DzyREXGzQj
-         k8L/uSJooRfrEKbmlhiI2zsUB3FyH6cmQC8t7DXCyMmhEfcE7s9aBYj7Co5lkv6aKzhO
-         5+zQ==
+        bh=p7EepByjxCdF7wWWvcgowKPWm7VslJ8jUkWIXNUWThw=;
+        b=wg9ikgXdWvk2zoEEKlSXXWm60UYbDGOHN4Itt+D+Qy/VFgGQQRD6oInGDyI5TOUzo1
+         tr3zrMJ84enBNA2yT+DU7GJN874TsSCNM8zO21g2Wgh//G305DscUkdZAtj/zYQEoWxx
+         6x48s+xhLi3mDaAI2Rxjr5raM4/Vdr7QNsy2OgMgkpCwnSN8wLiNXRBkVZ47kyjcrkHz
+         EK3YZrLmH5gN5T9PGqoGF7btqywnb9k/fGHgYFRehMxO8DCYE3R/v9tQrKqSCkU2tvp/
+         5p3NfBjHvpg+Cwl5ThgqV1hKIucwGTTWACh3J4Jz76jhTCz0tuqq1xm3YyUnAmpF8MSh
+         q9TQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=cqtcOx4l;
+       dkim=neutral (body hash did not verify) header.i=@gmail.com header.s=20210112 header.b=o9A3jvY3;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v6-20020a05620a0f0600b006af148dc31esi1579912qkl.222.2022.07.21.07.53.14
+        by mx.google.com with ESMTPS id f9-20020ac80149000000b0031ed2b5664bsi1633654qtg.133.2022.07.21.12.03.52
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 21 Jul 2022 07:53:15 -0700 (PDT)
+        Thu, 21 Jul 2022 12:03:52 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=cqtcOx4l;
+       dkim=neutral (body hash did not verify) header.i=@gmail.com header.s=20210112 header.b=o9A3jvY3;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:54514 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:37940 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1oEXYA-00068X-J7
-	for alex.bennee@linaro.org; Thu, 21 Jul 2022 10:53:14 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:39322)
+	id 1oEbSh-00072t-PU
+	for alex.bennee@linaro.org; Thu, 21 Jul 2022 15:03:51 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55274)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1oEXXx-00063C-6O
- for qemu-arm@nongnu.org; Thu, 21 Jul 2022 10:53:01 -0400
-Received: from mail-yb1-xb2a.google.com ([2607:f8b0:4864:20::b2a]:44931)
+ (Exim 4.90_1) (envelope-from <jon.alduan@gmail.com>)
+ id 1oEbST-00072i-FZ
+ for qemu-arm@nongnu.org; Thu, 21 Jul 2022 15:03:37 -0400
+Received: from mail-ed1-x52c.google.com ([2a00:1450:4864:20::52c]:33591)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1oEXXv-0004kp-Aw
- for qemu-arm@nongnu.org; Thu, 21 Jul 2022 10:53:00 -0400
-Received: by mail-yb1-xb2a.google.com with SMTP id b143so1942332yba.11
- for <qemu-arm@nongnu.org>; Thu, 21 Jul 2022 07:52:58 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ (Exim 4.90_1) (envelope-from <jon.alduan@gmail.com>)
+ id 1oEbSR-0006jJ-O6
+ for qemu-arm@nongnu.org; Thu, 21 Jul 2022 15:03:37 -0400
+Received: by mail-ed1-x52c.google.com with SMTP id t3so3378347edd.0
+ for <qemu-arm@nongnu.org>; Thu, 21 Jul 2022 12:03:35 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=d99UFWPtetONp9XYceiMv4No6MjiG3yJabU3e66KD2k=;
- b=cqtcOx4lQ1HlJSn5rUdhWMnWiME7x+BqxwAjHGKOZLQlbLG+QZgarel+pf/ZEpINlJ
- SM/S9J3jGKiWAWmzIhqhu0R2Ec59JpHu3feIItmdOV2RDj12KIQjBjIWtboGhWBoUxw+
- Gz5vLDMFWiHdS0JdCZHgxntNwPk+APo5tqeoS9uFX8sq86lV8abpA9YRz8LEAyqgPCM/
- gsV5fjQnuJEmWzt2R55yGjicCo7x0QVoNT7Km6aTpbpkbiBP48EPs7AyQNF/AL4zpai7
- BeRfsIjFohloDMh3KKuGe4emRZYk/6D84YW3h6zsnAiYMvXxMwmsPFE89FAyWaA1RMzr
- fMDw==
+ :cc; bh=uslML0Phs0m6IoSSS2vUWYGnu4eekUfnFZBEtSx8SYo=;
+ b=o9A3jvY3ByGnVE5ue+OhnFiJMepK8J7LcTMOd1lRxMLk6HDS2waeNsFoV7n4rX4vKP
+ CBqv7W37WFvBVrzUjBNdx0io3cT9Yg8xeB1ORSBcfc3dJw4tLrJeTTa3ODDcZ3ospbZl
+ f6pjT1B+sj9D4ryAHZTWVvJy7uUcI+4Riew/H15P1+kS4AcewERJV3dYWf3zxqV573N1
+ jDuvB+ygfecpDrDWLPBKR4RLmymvxE/C0H2RaJA4UZKj07DBbCgT8e0bXJAsi4Q5d6Zt
+ cudvAvfgPaV/YCMuNiw8LRW1lerA5bDDri+8zR+CL8ITYuVkCtO5u3MEkgueJw8813bu
+ qXAA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=d99UFWPtetONp9XYceiMv4No6MjiG3yJabU3e66KD2k=;
- b=beJE2K+pMaAX1Mns5KJVQNt1oblUxoejndvhjQ7PAznHGDKu0ZfWRI4C6+sFcvgOIL
- lZQ9p+4h1JV6ayqONvckPsPjHZYO76GMfc6Pr/cUz/sT9f6EkmU8l79KO10pY3IxHiU1
- 5tMSSeCbFR4vArAirKPki2zMJzk2nOO4R9qzwv12K/tZR868tR8t4F8HNfMpUQR6ieo0
- C3Aej0+WSg3Ig9rXCu9n230hRIQXLeMfpHkkySZgYgYUTxkXHd2Qxx8AiKSnt0X8SpFp
- t/lkMtombIa08uXHwAokSXzcB1qYT57aw9nK0IAeNxj082YiCs8RcRohfe8WUg6YVy1S
- p5Zg==
-X-Gm-Message-State: AJIora9Xv35qJH+n7/hQ/INrjqoqrWEiKNdJ1Bg7faeeFsRFp8si81i5
- cI68mNW/tVowH6/h9rHuUnB467bJvEtCwr+61grO/g==
-X-Received: by 2002:a25:d307:0:b0:670:80fd:85c4 with SMTP id
- e7-20020a25d307000000b0067080fd85c4mr11917003ybf.67.1658415178185; Thu, 21
- Jul 2022 07:52:58 -0700 (PDT)
+ bh=uslML0Phs0m6IoSSS2vUWYGnu4eekUfnFZBEtSx8SYo=;
+ b=hFdyIgTZu5MRLw1zxip+IdBLjQQrQKH7eJESJkk3K5lbMLqcys/jTgl5atRjbGgNKP
+ hvshAN7Z6Zquqzvrrl/M81PHMr+77nfjsomHJEykyADJh4jIE/djuSNRPkgh2igU/sM/
+ 7RgZWq3WRuu8hJva5K74aqRH8kU3NmIjrg/ofXZroZQTbPR72FGsQDjU+kKVfROyhDPx
+ oaudkzpssLqxbG/1HiJP9Ng7QLAf0oqWdN0HLIBaF3mj1MNQ3UxWlzPnsUIZ0OBQbYMw
+ tnYuWdK7ngGZ291PhpQo0pCL2FkJPlVuoACnd5aGVzzebTdpnRi4xHYlOXpqYOVUrtLG
+ wzBA==
+X-Gm-Message-State: AJIora/lvbtKfz2t4dWRRmv6qAKxUrIf9fm6cQwKTTy2AAv/+XibyyAf
+ pwG+y7PSu5hXFibegWSc5SuiSnPJ5pcA1lWJwaM=
+X-Received: by 2002:aa7:d6d0:0:b0:43b:c997:25da with SMTP id
+ x16-20020aa7d6d0000000b0043bc99725damr3406658edr.224.1658430214026; Thu, 21
+ Jul 2022 12:03:34 -0700 (PDT)
 MIME-Version: 1.0
 References: <CAL7npF9T0148jkgTigVfE7cSzH2HKqy0NG0VQtAH2HMXjdBOOg@mail.gmail.com>
  <CAFEAcA8RHhRcrMSO_3MK0hSH=zWzde7S0DHHaLPZf4jOv48RLQ@mail.gmail.com>
@@ -100,23 +100,24 @@ References: <CAL7npF9T0148jkgTigVfE7cSzH2HKqy0NG0VQtAH2HMXjdBOOg@mail.gmail.com>
  <CAFEAcA8hVyCwMbQ_ZNUgw8Nfb3wTvRk3gvUr8RC3gSH7Pkuv_g@mail.gmail.com>
  <CAL7npF897P3=Rro4pe_i_cmO+rUe-b1NqnJtmEM3K0kEF5VC7Q@mail.gmail.com>
  <CAFEAcA9y6zwErffpvrJrenS0hyLvGyoyhdF8Vo3mgFhLOvvOSw@mail.gmail.com>
-In-Reply-To: <CAFEAcA9y6zwErffpvrJrenS0hyLvGyoyhdF8Vo3mgFhLOvvOSw@mail.gmail.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 21 Jul 2022 15:52:18 +0100
-Message-ID: <CAFEAcA-9F6QDzEiAfiMa=DUVK3LGe9vLmD_OcMTfbU8ayv3Ffw@mail.gmail.com>
+ <CAFEAcA-9F6QDzEiAfiMa=DUVK3LGe9vLmD_OcMTfbU8ayv3Ffw@mail.gmail.com>
+In-Reply-To: <CAFEAcA-9F6QDzEiAfiMa=DUVK3LGe9vLmD_OcMTfbU8ayv3Ffw@mail.gmail.com>
+From: Jon Alduan <jon.alduan@gmail.com>
+Date: Thu, 21 Jul 2022 21:03:22 +0200
+Message-ID: <CAL7npF839onoBJxewXraSGRPmbK=8SqbPeU2W3YN7kFYW6j9tQ@mail.gmail.com>
 Subject: Re: [qemu-arm-static] timer_delete issue from Qemu 5.0.0 onwards
-To: Jon Alduan <jon.alduan@gmail.com>
+To: Peter Maydell <peter.maydell@linaro.org>
 Cc: qemu-arm@nongnu.org
-Content-Type: multipart/mixed; boundary="00000000000096491705e451df9a"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b2a;
- envelope-from=peter.maydell@linaro.org; helo=mail-yb1-xb2a.google.com
+Content-Type: multipart/mixed; boundary="000000000000cacb8405e4555f08"
+Received-SPF: pass client-ip=2a00:1450:4864:20::52c;
+ envelope-from=jon.alduan@gmail.com; helo=mail-ed1-x52c.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -131,80 +132,189 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: SpE7upBcp7JR
+X-TUID: NkgtvdoP7zQm
 
---00000000000096491705e451df9a
+--000000000000cacb8405e4555f08
+Content-Type: multipart/alternative; boundary="000000000000cacb8105e4555f06"
+
+--000000000000cacb8105e4555f06
 Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-On Thu, 21 Jul 2022 at 14:44, Peter Maydell <peter.maydell@linaro.org> wrote:
+Here you have the output with the debug logs:
+
+
+
+
+*next_free_host_timer: returning 0timer_create: host timer_create: returned
+0x00000000, set phtimer 0x559dc5d8aa00 to (nil)timer_create: wrote
+0xcaf0000 to guest address 0x408002e8*
+
+
+
+
+
+
+
+*Create timer 0 536880get_timer_id: guest timer id 0xcaf0000 -> index
+0next_free_host_timer: returning 0timer_create: host timer_create: returned
+0x00000000, set phtimer 0x559dc5d8aa00 to 0x1timer_create: wrote 0xcaf0000
+to guest address 0x408002e8Create timer 1 537928get_timer_id: guest timer
+id 0xcaf0000 -> index 0next_free_host_timer: returning 1*
+
+So, it does create two different timers, but second one will be addressed
+as being first one?
+...
+
+El jue, 21 jul 2022 a las 16:52, Peter Maydell (<peter.maydell@linaro.org>)
+escribi=C3=B3:
+
+> On Thu, 21 Jul 2022 at 14:44, Peter Maydell <peter.maydell@linaro.org>
+> wrote:
+> >
+> > On Thu, 21 Jul 2022 at 14:10, Jon Alduan <jon.alduan@gmail.com> wrote:
+> > > Yes, exactly. When removing timer 0, time 1 will be removed instead.
+> > > Other timers are not affected. If you create a dummy timer 0, there
+> > > are no more problems (that I can address).
+> >
+> > Yeah, but it's complicated, because there are multiple "timer IDs" here=
+:
 >
-> On Thu, 21 Jul 2022 at 14:10, Jon Alduan <jon.alduan@gmail.com> wrote:
-> > Yes, exactly. When removing timer 0, time 1 will be removed instead.
-> > Other timers are not affected. If you create a dummy timer 0, there
-> > are no more problems (that I can address).
+> I've attached a patch which adds some debug printing to QEMU's
+> timer_create/timer_delete code. Could you please apply this patch,
+> rebuild QEMU, run that with the test program, and send me the
+> output ?
 >
-> Yeah, but it's complicated, because there are multiple "timer IDs" here:
+> thanks
+> -- PMM
+>
 
-I've attached a patch which adds some debug printing to QEMU's
-timer_create/timer_delete code. Could you please apply this patch,
-rebuild QEMU, run that with the test program, and send me the
-output ?
 
-thanks
--- PMM
+--=20
+j.A
 
---00000000000096491705e451df9a
-Content-Type: text/x-patch; charset="US-ASCII"; 
-	name="0001-linux-user-Print-debug-info-for-timer_create-and-tim.patch"
+--000000000000cacb8105e4555f06
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><div>Here you have the output with the debug logs:</div><d=
+iv><br></div><div><i>next_free_host_timer: returning 0<br>timer_create: hos=
+t timer_create: returned 0x00000000, set phtimer 0x559dc5d8aa00 to <span st=
+yle=3D"color:rgb(255,153,0)">(nil)</span><br>timer_create: wrote 0xcaf0000 =
+to guest address 0x408002e8<br></i></div><div><i><b>Create timer 0 536880<b=
+r>get_timer_id: guest timer id 0xcaf0000 -&gt; index 0</b><br><span style=
+=3D"color:rgb(255,0,0)">next_free_host_timer: returning 0</span><br>timer_c=
+reate: host timer_create: returned 0x00000000, set phtimer <span style=3D"c=
+olor:rgb(255,0,0)">0x559dc5d8aa00 </span>to 0x1<br>timer_create: wrote 0xca=
+f0000 to guest address 0x408002e8<br><b>Create timer 1 537928<br>get_timer_=
+id: guest timer id <span style=3D"color:rgb(255,0,0)">0xcaf0000</span> -&gt=
+;<span style=3D"background-color:rgb(255,255,255)"> <span style=3D"color:rg=
+b(255,0,0)">index 0</span></span></b><br>next_free_host_timer: returning 1<=
+/i></div><div><br></div><div>So, it does create two different timers, but s=
+econd one will be addressed as being first one?<br></div><div>...<br></div>=
+</div><br><div class=3D"gmail_quote"><div dir=3D"ltr" class=3D"gmail_attr">=
+El jue, 21 jul 2022 a las 16:52, Peter Maydell (&lt;<a href=3D"mailto:peter=
+.maydell@linaro.org">peter.maydell@linaro.org</a>&gt;) escribi=C3=B3:<br></=
+div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;bor=
+der-left:1px solid rgb(204,204,204);padding-left:1ex">On Thu, 21 Jul 2022 a=
+t 14:44, Peter Maydell &lt;<a href=3D"mailto:peter.maydell@linaro.org" targ=
+et=3D"_blank">peter.maydell@linaro.org</a>&gt; wrote:<br>
+&gt;<br>
+&gt; On Thu, 21 Jul 2022 at 14:10, Jon Alduan &lt;<a href=3D"mailto:jon.ald=
+uan@gmail.com" target=3D"_blank">jon.alduan@gmail.com</a>&gt; wrote:<br>
+&gt; &gt; Yes, exactly. When removing timer 0, time 1 will be removed inste=
+ad.<br>
+&gt; &gt; Other timers are not affected. If you create a dummy timer 0, the=
+re<br>
+&gt; &gt; are no more problems (that I can address).<br>
+&gt;<br>
+&gt; Yeah, but it&#39;s complicated, because there are multiple &quot;timer=
+ IDs&quot; here:<br>
+<br>
+I&#39;ve attached a patch which adds some debug printing to QEMU&#39;s<br>
+timer_create/timer_delete code. Could you please apply this patch,<br>
+rebuild QEMU, run that with the test program, and send me the<br>
+output ?<br>
+<br>
+thanks<br>
+-- PMM<br>
+</blockquote></div><br clear=3D"all"><br>-- <br><div dir=3D"ltr" class=3D"g=
+mail_signature">j.A</div>
+
+--000000000000cacb8105e4555f06--
+
+--000000000000cacb8405e4555f08
+Content-Type: application/octet-stream; 
+	name="testTimer_peter_patch_debug_output.log"
 Content-Disposition: attachment; 
-	filename="0001-linux-user-Print-debug-info-for-timer_create-and-tim.patch"
+	filename="testTimer_peter_patch_debug_output.log"
 Content-Transfer-Encoding: base64
-Content-ID: <f_l5v5jkll0>
-X-Attachment-Id: f_l5v5jkll0
+Content-ID: <f_l5ve9mx00>
+X-Attachment-Id: f_l5ve9mx00
 
-RnJvbSA2OTRmNjdhN2FkZGViMTQ3YWVkMTU2YzllMzY2ZjZiYjE1ZjhiMDJjIE1vbiBTZXAgMTcg
-MDA6MDA6MDAgMjAwMQpGcm9tOiBQZXRlciBNYXlkZWxsIDxwZXRlci5tYXlkZWxsQGxpbmFyby5v
-cmc+CkRhdGU6IFRodSwgMjEgSnVsIDIwMjIgMTU6MzY6MjkgKzAxMDAKU3ViamVjdDogW1BBVENI
-XSBsaW51eC11c2VyOiBQcmludCBkZWJ1ZyBpbmZvIGZvciB0aW1lcl9jcmVhdGUgYW5kCiB0aW1l
-cl9kZWxldGUKClRlbXBvcmFyeSBkZWJ1ZyBwcmludGluZyB0byBzaG93IGhvc3QgYW5kIGd1ZXN0
-IHRpbWVyIElECmhhbmRsaW5nIGluIHRpbWVyX2NyZWF0ZSBhbmQgdGltZXJfZGVsZXRlIHN5c2Nh
-bGxzLgoKU2lnbmVkLW9mZi1ieTogUGV0ZXIgTWF5ZGVsbCA8cGV0ZXIubWF5ZGVsbEBsaW5hcm8u
-b3JnPgotLS0KIGxpbnV4LXVzZXIvc3lzY2FsbC5jIHwgMTIgKysrKysrKysrKysrCiAxIGZpbGUg
-Y2hhbmdlZCwgMTIgaW5zZXJ0aW9ucygrKQoKZGlmZiAtLWdpdCBhL2xpbnV4LXVzZXIvc3lzY2Fs
-bC5jIGIvbGludXgtdXNlci9zeXNjYWxsLmMKaW5kZXggOTkxYjg1ZTZiNGQuLmNjNGI2MjcwNDI5
-IDEwMDY0NAotLS0gYS9saW51eC11c2VyL3N5c2NhbGwuYworKysgYi9saW51eC11c2VyL3N5c2Nh
-bGwuYwpAQCAtNTA2LDkgKzUwNiwxMSBAQCBzdGF0aWMgaW5saW5lIGludCBuZXh0X2ZyZWVfaG9z
-dF90aW1lcih2b2lkKQogICAgIGZvciAoayA9IDA7IGsgPCBBUlJBWV9TSVpFKGdfcG9zaXhfdGlt
-ZXJzKTsgaysrKSB7CiAgICAgICAgIGlmIChnX3Bvc2l4X3RpbWVyc1trXSA9PSAwKSB7CiAgICAg
-ICAgICAgICBnX3Bvc2l4X3RpbWVyc1trXSA9ICh0aW1lcl90KSAxOworICAgICAgICAgICAgcHJp
-bnRmKCJuZXh0X2ZyZWVfaG9zdF90aW1lcjogcmV0dXJuaW5nICVkXG4iLCBrKTsKICAgICAgICAg
-ICAgIHJldHVybiBrOwogICAgICAgICB9CiAgICAgfQorICAgIHByaW50ZigibmV4dF9mcmVlX2hv
-c3RfdGltZXI6IGFsbCB0aW1lcnMgYWxsb2NhdGVkLCByZXR1cm5pbmcgLTFcbiIpOwogICAgIHJl
-dHVybiAtMTsKIH0KICNlbmRpZgpAQCAtODMxMiw2ICs4MzE0LDggQEAgc3RhdGljIHRhcmdldF90
-aW1lcl90IGdldF90aW1lcl9pZChhYmlfbG9uZyBhcmcpCiAgICAgICAgIHJldHVybiAtVEFSR0VU
-X0VJTlZBTDsKICAgICB9CiAKKyAgICBwcmludGYoImdldF90aW1lcl9pZDogZ3Vlc3QgdGltZXIg
-aWQgMHgleCAtPiBpbmRleCAlZFxuIiwKKyAgICAgICAgICAgKHRhcmdldF90aW1lcl90KWFyZywg
-dGltZXJpZCk7CiAgICAgcmV0dXJuIHRpbWVyaWQ7CiB9CiAKQEAgLTEyODM3LDEyICsxMjg0MSwx
-OCBAQCBzdGF0aWMgYWJpX2xvbmcgZG9fc3lzY2FsbDEoQ1BVQXJjaFN0YXRlICpjcHVfZW52LCBp
-bnQgbnVtLCBhYmlfbG9uZyBhcmcxLAogICAgICAgICAgICAgfQogCiAgICAgICAgICAgICByZXQg
-PSBnZXRfZXJybm8odGltZXJfY3JlYXRlKGNsa2lkLCBwaG9zdF9zZXZwLCBwaHRpbWVyKSk7Cisg
-ICAgICAgICAgICBwcmludGYoInRpbWVyX2NyZWF0ZTogaG9zdCB0aW1lcl9jcmVhdGU6IHJldHVy
-bmVkIDB4IgorICAgICAgICAgICAgICAgICAgIFRBUkdFVF9BQklfRk1UX2x4ICIsIHNldCBwaHRp
-bWVyICVwIHRvICVwXG4iLAorICAgICAgICAgICAgICAgICAgIHJldCwgcGh0aW1lciwgKnBodGlt
-ZXIpOwogICAgICAgICAgICAgaWYgKHJldCkgewogICAgICAgICAgICAgICAgIHBodGltZXIgPSBO
-VUxMOwogICAgICAgICAgICAgfSBlbHNlIHsKICAgICAgICAgICAgICAgICBpZiAocHV0X3VzZXIo
-VElNRVJfTUFHSUMgfCB0aW1lcl9pbmRleCwgYXJnMywgdGFyZ2V0X3RpbWVyX3QpKSB7CiAgICAg
-ICAgICAgICAgICAgICAgIHJldHVybiAtVEFSR0VUX0VGQVVMVDsKICAgICAgICAgICAgICAgICB9
-CisgICAgICAgICAgICAgICAgcHJpbnRmKCJ0aW1lcl9jcmVhdGU6IHdyb3RlIDB4JXggdG8gZ3Vl
-c3QgYWRkcmVzcyAweCIKKyAgICAgICAgICAgICAgICAgICAgICAgVEFSR0VUX0FCSV9GTVRfbHgg
-IlxuIiwKKyAgICAgICAgICAgICAgICAgICAgICAgKFRJTUVSX01BR0lDIHwgdGltZXJfaW5kZXgp
-LCBhcmczKTsKICAgICAgICAgICAgIH0KICAgICAgICAgfQogICAgICAgICByZXR1cm4gcmV0OwpA
-QCAtMTI5NzUsNiArMTI5ODUsOCBAQCBzdGF0aWMgYWJpX2xvbmcgZG9fc3lzY2FsbDEoQ1BVQXJj
-aFN0YXRlICpjcHVfZW52LCBpbnQgbnVtLCBhYmlfbG9uZyBhcmcxLAogICAgICAgICAgICAgcmV0
-ID0gdGltZXJpZDsKICAgICAgICAgfSBlbHNlIHsKICAgICAgICAgICAgIHRpbWVyX3QgaHRpbWVy
-ID0gZ19wb3NpeF90aW1lcnNbdGltZXJpZF07CisgICAgICAgICAgICBwcmludGYoInRpbWVyX2Rl
-bGV0ZTogZ3Vlc3QgYXJnIDB4IiBUQVJHRVRfQUJJX0ZNVF9seAorICAgICAgICAgICAgICAgICAg
-ICIgaG9zdCB0aW1lcl90ICVwOiBkZWxldGluZ1xuIiwgYXJnMSwgaHRpbWVyKTsKICAgICAgICAg
-ICAgIHJldCA9IGdldF9lcnJubyh0aW1lcl9kZWxldGUoaHRpbWVyKSk7CiAgICAgICAgICAgICBn
-X3Bvc2l4X3RpbWVyc1t0aW1lcmlkXSA9IDA7CiAgICAgICAgIH0KLS0gCjIuMjUuMQoK
---00000000000096491705e451df9a--
+JDovaG9tZS9naXQvcWVtdSMgL2hvbWUvZ2l0L3FlbXUvYnVpbGQvcWVtdS1hcm0gL2hvbWUvam9u
+L3Rlc3RfcWVtdV90aW1lci9wZXRlci90aW1lcnRlc3QNCm5leHRfZnJlZV9ob3N0X3RpbWVyOiBy
+ZXR1cm5pbmcgMA0KdGltZXJfY3JlYXRlOiBob3N0IHRpbWVyX2NyZWF0ZTogcmV0dXJuZWQgMHgw
+MDAwMDAwMCwgc2V0IHBodGltZXIgMHg1NTlkYzVkOGFhMDAgdG8gKG5pbCkNCnRpbWVyX2NyZWF0
+ZTogd3JvdGUgMHhjYWYwMDAwIHRvIGd1ZXN0IGFkZHJlc3MgMHg0MDgwMDJlOA0KQ3JlYXRlIHRp
+bWVyIDAgNTM2ODgwDQpnZXRfdGltZXJfaWQ6IGd1ZXN0IHRpbWVyIGlkIDB4Y2FmMDAwMCAtPiBp
+bmRleCAwDQpuZXh0X2ZyZWVfaG9zdF90aW1lcjogcmV0dXJuaW5nIDANCnRpbWVyX2NyZWF0ZTog
+aG9zdCB0aW1lcl9jcmVhdGU6IHJldHVybmVkIDB4MDAwMDAwMDAsIHNldCBwaHRpbWVyIDB4NTU5
+ZGM1ZDhhYTAwIHRvIDB4MQ0KdGltZXJfY3JlYXRlOiB3cm90ZSAweGNhZjAwMDAgdG8gZ3Vlc3Qg
+YWRkcmVzcyAweDQwODAwMmU4DQpDcmVhdGUgdGltZXIgMSA1Mzc5MjgNCmdldF90aW1lcl9pZDog
+Z3Vlc3QgdGltZXIgaWQgMHhjYWYwMDAwIC0+IGluZGV4IDANCm5leHRfZnJlZV9ob3N0X3RpbWVy
+OiByZXR1cm5pbmcgMQ0KdGltZXJfY3JlYXRlOiBob3N0IHRpbWVyX2NyZWF0ZTogcmV0dXJuZWQg
+MHgwMDAwMDAwMCwgc2V0IHBodGltZXIgMHg1NTlkYzVkOGFhMDggdG8gMHgyDQp0aW1lcl9jcmVh
+dGU6IHdyb3RlIDB4Y2FmMDAwMSB0byBndWVzdCBhZGRyZXNzIDB4NDA4MDAyZTgNCkNyZWF0ZSB0
+aW1lciAyIDUzNzk0NA0KZ2V0X3RpbWVyX2lkOiBndWVzdCB0aW1lciBpZCAweGNhZjAwMDEgLT4g
+aW5kZXggMQ0KbmV4dF9mcmVlX2hvc3RfdGltZXI6IHJldHVybmluZyAyDQp0aW1lcl9jcmVhdGU6
+IGhvc3QgdGltZXJfY3JlYXRlOiByZXR1cm5lZCAweDAwMDAwMDAwLCBzZXQgcGh0aW1lciAweDU1
+OWRjNWQ4YWExMCB0byAweDMNCnRpbWVyX2NyZWF0ZTogd3JvdGUgMHhjYWYwMDAyIHRvIGd1ZXN0
+IGFkZHJlc3MgMHg0MDgwMDJlOA0KQ3JlYXRlIHRpbWVyIDMgNTM3OTYwDQpnZXRfdGltZXJfaWQ6
+IGd1ZXN0IHRpbWVyIGlkIDB4Y2FmMDAwMiAtPiBpbmRleCAyDQpuZXh0X2ZyZWVfaG9zdF90aW1l
+cjogcmV0dXJuaW5nIDMNCnRpbWVyX2NyZWF0ZTogaG9zdCB0aW1lcl9jcmVhdGU6IHJldHVybmVk
+IDB4MDAwMDAwMDAsIHNldCBwaHRpbWVyIDB4NTU5ZGM1ZDhhYTE4IHRvIDB4NA0KdGltZXJfY3Jl
+YXRlOiB3cm90ZSAweGNhZjAwMDMgdG8gZ3Vlc3QgYWRkcmVzcyAweDQwODAwMmU4DQpDcmVhdGUg
+dGltZXIgNCA1Mzc5NzYNCmdldF90aW1lcl9pZDogZ3Vlc3QgdGltZXIgaWQgMHhjYWYwMDAzIC0+
+IGluZGV4IDMNCnRocmVhZDA6IHN0YXJ0ZWQNCnRocmVhZDA6IHNhdyAwIGFsYXJtcyBmcm9tIDAN
+CnRocmVhZDE6IHN0YXJ0ZWQNCnRocmVhZDI6IHN0YXJ0ZWQNCnRocmVhZDM6IHN0YXJ0ZWQNCnRo
+cmVhZDQ6IHN0YXJ0ZWQNCnRocmVhZDU6IHN0YXJ0ZWQNCnRocmVhZDY6IHN0YXJ0ZWQNCnRocmVh
+ZDc6IHN0YXJ0ZWQNCnRocmVhZDg6IHN0YXJ0ZWQNCnRocmVhZDk6IHN0YXJ0ZWQNCnNpZ25hbCBm
+cm9tIGFsYXJtIDQgNTM3OTc2IDQNCnNpZ25hbCBmcm9tIGFsYXJtIDAgNTM2ODgwIDANCnNpZ25h
+bCBmcm9tIGFsYXJtIDIgNTM3OTQ0IDINCnNpZ25hbCBmcm9tIGFsYXJtIDQgNTM3OTc2IDQNCnNp
+Z25hbCBmcm9tIGFsYXJtIDEgNTM3OTI4IDENCnNpZ25hbCBmcm9tIGFsYXJtIDMgNTM3OTYwIDMN
+CnNpZ25hbCBmcm9tIGFsYXJtIDAgNTM2ODgwIDANCnNpZ25hbCBmcm9tIGFsYXJtIDIgNTM3OTQ0
+IDINCnNpZ25hbCBmcm9tIGFsYXJtIDQgNTM3OTc2IDQNCnNpZ25hbCBmcm9tIGFsYXJtIDIgNTM3
+OTQ0IDINCnNpZ25hbCBmcm9tIGFsYXJtIDAgNTM2ODgwIDANCnNpZ25hbCBmcm9tIGFsYXJtIDAg
+NTM2ODgwIDANCnNpZ25hbCBmcm9tIGFsYXJtIDIgNTM3OTQ0IDINCnNpZ25hbCBmcm9tIGFsYXJt
+IDQgNTM3OTc2IDQNClJlbW92ZSB0aW1lciAwIDUzNjg4MA0KZ2V0X3RpbWVyX2lkOiBndWVzdCB0
+aW1lciBpZCAweGNhZjAwMDAgLT4gaW5kZXggMA0KdGltZXJfZGVsZXRlOiBndWVzdCBhcmcgMHgw
+Y2FmMDAwMCBob3N0IHRpbWVyX3QgMHgxOiBkZWxldGluZw0Kc2lnbmFsIGZyb20gYWxhcm0gMyA1
+Mzc5NjAgMw0Kc2lnbmFsIGZyb20gYWxhcm0gMSA1Mzc5MjggMQ0Kc2lnbmFsIGZyb20gYWxhcm0g
+MCAwIDANCnNpZ25hbCBmcm9tIGFsYXJtIDIgNTM3OTQ0IDINCkVycm9yLCBhbHJlYWR5IGRlbGV0
+ZWQNCnNpZ25hbCBmcm9tIGFsYXJtIDQgNTM3OTc2IDQNCnNpZ25hbCBmcm9tIGFsYXJtIDAgMCAw
+DQpFcnJvciwgYWxyZWFkeSBkZWxldGVkDQpzaWduYWwgZnJvbSBhbGFybSAyIDUzNzk0NCAyDQpz
+aWduYWwgZnJvbSBhbGFybSA0IDUzNzk3NiA0DQpzaWduYWwgZnJvbSBhbGFybSAzIDUzNzk2MCAz
+DQpzaWduYWwgZnJvbSBhbGFybSAwIDAgMA0KRXJyb3IsIGFscmVhZHkgZGVsZXRlZA0Kc2lnbmFs
+IGZyb20gYWxhcm0gMiA1Mzc5NDQgMg0KUmVtb3ZlIHRpbWVyIDEgNTM3OTI4DQpnZXRfdGltZXJf
+aWQ6IGd1ZXN0IHRpbWVyIGlkIDB4Y2FmMDAwMCAtPiBpbmRleCAwDQp0aW1lcl9kZWxldGU6IGd1
+ZXN0IGFyZyAweDBjYWYwMDAwIGhvc3QgdGltZXJfdCAobmlsKTogZGVsZXRpbmcNCnNpZ25hbCBm
+cm9tIGFsYXJtIDQgNTM3OTc2IDQNCnNpZ25hbCBmcm9tIGFsYXJtIDIgNTM3OTQ0IDINCnNpZ25h
+bCBmcm9tIGFsYXJtIDMgNTM3OTYwIDMNCnNpZ25hbCBmcm9tIGFsYXJtIDQgNTM3OTc2IDQNCnNp
+Z25hbCBmcm9tIGFsYXJtIDIgNTM3OTQ0IDINCnNpZ25hbCBmcm9tIGFsYXJtIDQgNTM3OTc2IDQN
+CnNpZ25hbCBmcm9tIGFsYXJtIDIgNTM3OTQ0IDINCnNpZ25hbCBmcm9tIGFsYXJtIDMgNTM3OTYw
+IDMNCnNpZ25hbCBmcm9tIGFsYXJtIDQgNTM3OTc2IDQNCnNpZ25hbCBmcm9tIGFsYXJtIDIgNTM3
+OTQ0IDINCnNpZ25hbCBmcm9tIGFsYXJtIDQgNTM3OTc2IDQNClJlbW92ZSB0aW1lciAyIDUzNzk0
+NA0KZ2V0X3RpbWVyX2lkOiBndWVzdCB0aW1lciBpZCAweGNhZjAwMDEgLT4gaW5kZXggMQ0KdGlt
+ZXJfZGVsZXRlOiBndWVzdCBhcmcgMHgwY2FmMDAwMSBob3N0IHRpbWVyX3QgMHgyOiBkZWxldGlu
+Zw0Kc2lnbmFsIGZyb20gYWxhcm0gNCA1Mzc5NzYgNA0Kc2lnbmFsIGZyb20gYWxhcm0gMyA1Mzc5
+NjAgMw0Kc2lnbmFsIGZyb20gYWxhcm0gNCA1Mzc5NzYgNA0Kc2lnbmFsIGZyb20gYWxhcm0gMyA1
+Mzc5NjAgMw0Kc2lnbmFsIGZyb20gYWxhcm0gNCA1Mzc5NzYgNA0Kc2lnbmFsIGZyb20gYWxhcm0g
+NCA1Mzc5NzYgNA0Kc2lnbmFsIGZyb20gYWxhcm0gMyA1Mzc5NjAgMw0Kc2lnbmFsIGZyb20gYWxh
+cm0gNCA1Mzc5NzYgNA0KUmVtb3ZlIHRpbWVyIDMgNTM3OTYwDQpnZXRfdGltZXJfaWQ6IGd1ZXN0
+IHRpbWVyIGlkIDB4Y2FmMDAwMiAtPiBpbmRleCAyDQp0aW1lcl9kZWxldGU6IGd1ZXN0IGFyZyAw
+eDBjYWYwMDAyIGhvc3QgdGltZXJfdCAweDM6IGRlbGV0aW5nDQpzaWduYWwgZnJvbSBhbGFybSA0
+IDUzNzk3NiA0DQpzaWduYWwgZnJvbSBhbGFybSA0IDUzNzk3NiA0DQpzaWduYWwgZnJvbSBhbGFy
+bSA0IDUzNzk3NiA0DQpzaWduYWwgZnJvbSBhbGFybSA0IDUzNzk3NiA0DQpzaWduYWwgZnJvbSBh
+bGFybSA0IDUzNzk3NiA0DQpzaWduYWwgZnJvbSBhbGFybSA0IDUzNzk3NiA0
+--000000000000cacb8405e4555f08--

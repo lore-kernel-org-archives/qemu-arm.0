@@ -1,109 +1,115 @@
-Received: by 2002:ac2:596f:0:0:0:0:0 with SMTP id h15csp370908lfp;
-        Fri, 22 Jul 2022 08:41:37 -0700 (PDT)
-X-Google-Smtp-Source: AGRyM1vvQUbzXi0kWKe4rH5d9znzqWKnRmgh9B2FHdZmY4/J1bduDkNLHq5Azbbb5br7jdEsKi6J
-X-Received: by 2002:ad4:5ca9:0:b0:474:b2d:439b with SMTP id q9-20020ad45ca9000000b004740b2d439bmr657290qvh.0.1658504497424;
-        Fri, 22 Jul 2022 08:41:37 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1658504497; cv=none;
+Received: by 2002:ac2:596f:0:0:0:0:0 with SMTP id h15csp520780lfp;
+        Fri, 22 Jul 2022 13:01:23 -0700 (PDT)
+X-Google-Smtp-Source: AGRyM1vAP2QYrrXDILegitYxLbcFzGVPUKl7a3GAsLeRMSxlJJQ7mCDMpYeGPTkeYODdSZcUrrNu
+X-Received: by 2002:a05:620a:4450:b0:6b6:9ec:cd9a with SMTP id w16-20020a05620a445000b006b609eccd9amr1268326qkp.5.1658520083579;
+        Fri, 22 Jul 2022 13:01:23 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1658520083; cv=none;
         d=google.com; s=arc-20160816;
-        b=GxB5DZgMjSm/VVH4AHqEWguUhjBWZsv/rqOA2SvOwzo9/HWIujSIR+JPNaeTiCuYpH
-         Ix4tbW2Vh0J6Y2qmFie0Q+S3Nng5mQa+UnHObYJ+tucvsWIxW5qoiWffmrf1YumNtfif
-         XTPdZZkzsiU79pioXL6uJ/AFqWAPZrfgZtMuNlZxrgfs5DTAasELpYwYkMA33kYRs+L0
-         ZQu4/SzcRoNBNZWylpITRDbVbFnwbG6BChf+E3qSeFvdD6Wro46jcm9aGuPktClUd480
-         mT1PRK/qbNaPUhN/mbWFz7tkapHUM1brIXkPfXh2msSBA8WsKVY9HWaxvVSj73zPKvPR
-         OCiQ==
+        b=vl0erJpuOYgbLuFIIv8q0503+iTV0yrCEI60Eq/asGL6YsuurJoA/HZbOqy2WQ9Wbe
+         qp2s2pgrcEiPFwUwlqv5vAScjLzOWaRX9eQumxmwrmFL5agdLCF9q92xoWZ3Mr4OGwue
+         xiagM3OV4N2+jWhHtCSImwyU+fPqxs2DLPEEzTDty989LY3rNYlfpu7i0cJDOTMBUGTg
+         U7YGGQhqP2ghZGpD6OZILupqbtolGuMHHwLd95gJSSz61FFwDGXdooBQcdUDw1gFayOK
+         BuYXUgb7I/OZJkGZCbxR1xqAWe3N1ss0gD6T2S662PJcVARzkm5sRLupS22qoPje7puj
+         SYYw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:user-agent:references:organization
-         :in-reply-to:subject:cc:to:from:dkim-signature;
-        bh=4NCYf1ws68F6X86Cf7QAFbjrw9NgeWslbdBpAs3+x4o=;
-        b=c/yoYwZc8o4kUgfxY639E+xGoWnXDUeZ3TWp4dWDsPawxKPz29T+84Lq74Be41wXjR
-         o5HDwkxvgvkBTkzlv+Z166PoGVniZmwMnoE6abXQPlyXo/MTEJWJcqpHu5YPMCscRNAe
-         3UdGDEiEJE4fMq5XkIZvdm9P5YTmqZ5DgcRATxW1/50+ArDsAxG8uZs+2J2YooGtBgLK
-         e08AAtue9yezNR3QSEEKXo32IgSKwrFUcWNoe65rFebY0nrdUcAr2187MARM/e2SEXaW
-         M/qrR6O/qhQTJNqWjOBXmJPOY6GcdQmakq80b0/xHEfLNdGaYghQP0IDhe999L7dasqL
-         FuNg==
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=9JxcmPY5cRnsfdU9CxHMKESf5qPzNpvz9n+hCJIAKF8=;
+        b=Dl+diD8N50nQ3+p3ZfzmV6sJaXrNerYNI3fgEk+N5vFKXng07Z0uw2RkILlBVETeeF
+         /k9KPbMq2Uw89Gq09VHNUOA8KGfsN7pZdG1qdH5To0Bj2zW+wgNJMeV6WP++gJoe0g7W
+         npgewg39qJn4xOh/Selc6s7iKL2jE5lXb3YMIfffnKTqSS+b8KBwgr9cybvhZ3zcLsqR
+         t27C70pAhHyt5aCZz+JFXp+aBAflixpL39wqSZCyuidS8dWTe3jr2FiNdahI10fjh2Vl
+         sVH4jpLJsJKJcgc5sR3V+aD1J/hMZQiqBzbdRvOEG/OE95dT24W3Z4X0Mg0NfImh5ffF
+         dj1A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=i3iSs5Mf;
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=hlFpPKGL;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v8-20020a05620a440800b006b5d6ad8b9asi4045674qkp.516.2022.07.22.08.41.37
+        by mx.google.com with ESMTPS id i6-20020ac85c06000000b0031ec55a294asi4311465qti.379.2022.07.22.13.01.23
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 22 Jul 2022 08:41:37 -0700 (PDT)
+        Fri, 22 Jul 2022 13:01:23 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=i3iSs5Mf;
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=hlFpPKGL;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:48834 helo=lists1p.gnu.org)
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:42182 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1oEumW-0005bv-Ts
-	for alex.bennee@linaro.org; Fri, 22 Jul 2022 11:41:36 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45474)
+	id 1oEypu-0002ty-FY
+	for alex.bennee@linaro.org; Fri, 22 Jul 2022 16:01:23 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:51420)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <cohuck@redhat.com>) id 1oEulG-0005Oh-9z
- for qemu-arm@nongnu.org; Fri, 22 Jul 2022 11:40:18 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:35377)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <cohuck@redhat.com>) id 1oEulE-0004ac-J7
- for qemu-arm@nongnu.org; Fri, 22 Jul 2022 11:40:17 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1658504416;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=4NCYf1ws68F6X86Cf7QAFbjrw9NgeWslbdBpAs3+x4o=;
- b=i3iSs5MfshOhN5k597RsO4k7z6Tdg2coudUYkq5cE5mmREOKMulaSPwyl05Dpey82vHLL1
- Sfj3hEM0azLCFBSIt417SUtSOuILLI/CQb2w4WKQFdr0QMZoMLmC/rx1ltK6DbuTOTSPPS
- uTZ+OpxEqHXIALUwwn92e9HqzrEsXA4=
-Received: from mimecast-mx02.redhat.com (mx3-rdu2.redhat.com
- [66.187.233.73]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-403-qHjkgsrTM_mvbn9Hm3Db7A-1; Fri, 22 Jul 2022 11:40:12 -0400
-X-MC-Unique: qHjkgsrTM_mvbn9Hm3Db7A-1
-Received: from smtp.corp.redhat.com (int-mx09.intmail.prod.int.rdu2.redhat.com
- [10.11.54.9])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 4EE693810795;
- Fri, 22 Jul 2022 15:40:12 +0000 (UTC)
-Received: from localhost (unknown [10.39.192.163])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 05ED8492CA5;
- Fri, 22 Jul 2022 15:40:11 +0000 (UTC)
-From: Cornelia Huck <cohuck@redhat.com>
-To: =?utf-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
- qemu-devel@nongnu.org
-Cc: qemu-s390x@nongnu.org, Richard Henderson <richard.henderson@linaro.org>,
- Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
- David Hildenbrand <david@redhat.com>, qemu-arm@nongnu.org, =?utf-8?Q?Dani?=
- =?utf-8?Q?el_P=2E_Berrang=C3=A9?= <berrange@redhat.com>
-Subject: Re: [PATCH v2 3/3] target/arm: display deprecation status in '-cpu
- help'
-In-Reply-To: <20220722120224.2311982-4-berrange@redhat.com>
-Organization: Red Hat GmbH
-References: <20220722120224.2311982-1-berrange@redhat.com>
- <20220722120224.2311982-4-berrange@redhat.com>
-User-Agent: Notmuch/0.36 (https://notmuchmail.org)
-Date: Fri, 22 Jul 2022 17:40:10 +0200
-Message-ID: <87wnc5ma05.fsf@redhat.com>
+ (Exim 4.90_1) (envelope-from <danielhb413@gmail.com>)
+ id 1oEyov-0002sE-DV; Fri, 22 Jul 2022 16:00:21 -0400
+Received: from mail-ot1-x331.google.com ([2607:f8b0:4864:20::331]:45996)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <danielhb413@gmail.com>)
+ id 1oEyor-0005C9-OB; Fri, 22 Jul 2022 16:00:20 -0400
+Received: by mail-ot1-x331.google.com with SMTP id
+ r22-20020a056830419600b0061c6edc5dcfso4092028otu.12; 
+ Fri, 22 Jul 2022 13:00:15 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=9JxcmPY5cRnsfdU9CxHMKESf5qPzNpvz9n+hCJIAKF8=;
+ b=hlFpPKGLj+MpDBYY6Vo8KeLXGsG10xnociaYKgpxAeZp+lxEu4lQleNhHDCeRj1WVn
+ /b7GlWV5ycqiJ9wHHG1JeoaW3oUC1Xp6gHvLcA1UFlDKKEZbOeAeBQojYcwspXdqdmT6
+ Ap3etde7fuQHGaxqYXS2iu7Lqen7zx/fNJx+vAvItSJOU3fDHHPNoeiyoOQSg42LyQCv
+ WamVgZI9Av6QLcl5EgiSEHBc1OQHmeI+FqdWh9gsQZTWbZXOUHbAwNpTUiRxZL+Q2now
+ pq7JSqslhKcDxRSS+Rrwrnm29wh90XX2QDaX35GSfNB9kPrRGC78+ORwZaFAvxg3F+be
+ 96rA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=9JxcmPY5cRnsfdU9CxHMKESf5qPzNpvz9n+hCJIAKF8=;
+ b=3XHmpcLz8KWqNNlFEk0B/86EKI0qJGWfPfX3TYi3uAFi0ogM4DYBpEDDuLxzC7QAcF
+ QQmYmQBzlYff9O3l4iWEQHzAaaFjjFAhU2MCZWC6BtHpxEpRi/k0kJY3QBKBc1bQg3UC
+ ZfvwZ18wfCmNoBvK5DeRnT1AxWDuqssAmSGtCTCltKPd548NH7tL1p5Es7JqBcZbnd9P
+ uaEh4IG9LajYpv6y4xgGwAuv+1Ljg4QyOVrPVHIyYadCD88yo6pfkEQ6Hwvxo/60QrPj
+ sM/4r1eopfAnwv1/Ujb7uDt5x3XLhfrylEMxpvrQASNeROPpDneD1xnj+eMfcDXvWPhL
+ y5Eg==
+X-Gm-Message-State: AJIora9ibHfISAvMhbcGKBhDfhc6fh1hJ1uhZrusoDArVHJR+uw2YlFo
+ hdiOMNQ4AEidFuCJxMCFvh/MS0iqoGY=
+X-Received: by 2002:a05:6830:4188:b0:60b:83f8:e8d0 with SMTP id
+ r8-20020a056830418800b0060b83f8e8d0mr615946otu.32.1658520014778; 
+ Fri, 22 Jul 2022 13:00:14 -0700 (PDT)
+Received: from balboa.COMFAST ([152.254.206.198])
+ by smtp.gmail.com with ESMTPSA id
+ n14-20020a9d740e000000b0061cae62aafcsm2388218otk.20.2022.07.22.13.00.12
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 22 Jul 2022 13:00:14 -0700 (PDT)
+From: Daniel Henrique Barboza <danielhb413@gmail.com>
+To: qemu-devel@nongnu.org
+Cc: Alistair Francis <alistair.francis@wdc.com>,
+ David Gibson <david@gibson.dropbear.id.au>,
+ Daniel Henrique Barboza <danielhb413@gmail.com>,
+ Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org
+Subject: [PATCH for-7.2 01/10] hw/arm/boot.c: do not free machine->fdt in
+ arm_load_dtb()
+Date: Fri, 22 Jul 2022 16:59:58 -0300
+Message-Id: <20220722200007.1602174-2-danielhb413@gmail.com>
+X-Mailer: git-send-email 2.36.1
+In-Reply-To: <20220722200007.1602174-1-danielhb413@gmail.com>
+References: <20220722200007.1602174-1-danielhb413@gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-Scanned-By: MIMEDefang 2.85 on 10.11.54.9
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=cohuck@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -28
-X-Spam_score: -2.9
-X-Spam_bar: --
-X-Spam_report: (-2.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.082,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::331;
+ envelope-from=danielhb413@gmail.com; helo=mail-ot1-x331.google.com
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -118,17 +124,49 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: k9eEEnJ7REDn
+X-TUID: i1gh5MyC2E/Y
 
-On Fri, Jul 22 2022, Daniel P. Berrang=C3=A9 <berrange@redhat.com> wrote:
+At this moment, arm_load_dtb() can free machine->fdt when
+binfo->dtb_filename is NULL. If there's no 'dtb_filename', 'fdt' will be
+retrieved by binfo->get_dtb(). If get_dtb() returns machine->fdt, as is
+the case of machvirt_dtb() from hw/arm/virt.c, fdt now has a pointer to
+machine->fdt. And, in that case, the existing g_free(fdt) at the end of
+arm_load_dtb() will make machine->fdt point to an invalid memory region.
 
-> When the user queries CPU models via QMP there is a 'deprecated' flag
-> present, however, this is not done for the CLI '-cpu help' command.
->
-> Signed-off-by: Daniel P. Berrang=C3=A9 <berrange@redhat.com>
-> ---
->  target/arm/helper.c | 7 ++++++-
->  1 file changed, 6 insertions(+), 1 deletion(-)
+This is not an issue right now because there's no code that access
+machine->fdt after arm_load_dtb(), but we're going to add a couple do
+FDT HMP commands that will rely on machine->fdt being valid.
 
-Reviewed-by: Cornelia Huck <cohuck@redhat.com>
+Instead of freeing 'fdt' at the end of arm_load_dtb(), assign it to
+machine->fdt. This will allow the FDT of ARM machines that relies on
+arm_load_dtb() to be accessed later on.
+
+Since all ARM machines allocates the FDT only once, we don't need to
+worry about leaking the existing FDT during a machine reset (which is
+something that other machines have to look after, e.g. the ppc64 pSeries
+machine).
+
+Cc: Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-arm@nongnu.org
+Signed-off-by: Daniel Henrique Barboza <danielhb413@gmail.com>
+---
+ hw/arm/boot.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/hw/arm/boot.c b/hw/arm/boot.c
+index ada2717f76..1d9c6047b1 100644
+--- a/hw/arm/boot.c
++++ b/hw/arm/boot.c
+@@ -684,7 +684,8 @@ int arm_load_dtb(hwaddr addr, const struct arm_boot_info *binfo,
+      */
+     rom_add_blob_fixed_as("dtb", fdt, size, addr, as);
+ 
+-    g_free(fdt);
++    /* Update ms->fdt pointer */
++    ms->fdt = fdt;
+ 
+     return size;
+ 
+-- 
+2.36.1
 

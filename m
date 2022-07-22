@@ -1,183 +1,166 @@
-Received: by 2002:ac2:596f:0:0:0:0:0 with SMTP id h15csp1803331lfp;
-        Tue, 19 Jul 2022 02:52:25 -0700 (PDT)
-X-Google-Smtp-Source: AGRyM1uCIRGrH69SbHhUIy0TPtUSv5Ktm+x7enTR+Q5jmHg4zLYijDOZy5XOpX7VVG0GqYOnM+XP
-X-Received: by 2002:ac8:9:0:b0:305:3451:f384 with SMTP id a9-20020ac80009000000b003053451f384mr24652674qtg.409.1658224344854;
-        Tue, 19 Jul 2022 02:52:24 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1658224344; cv=none;
+Received: by 2002:ac2:596f:0:0:0:0:0 with SMTP id h15csp148388lfp;
+        Fri, 22 Jul 2022 02:27:18 -0700 (PDT)
+X-Google-Smtp-Source: AGRyM1sUWhyt+t9HYIJNU8ylPfCVBDZBfOW287ySoJ9iDjlv3W7pRP1xVpCnNeNl3O2V/AeZMpNK
+X-Received: by 2002:a0c:da90:0:b0:473:f707:c6a7 with SMTP id z16-20020a0cda90000000b00473f707c6a7mr2252988qvj.18.1658482037862;
+        Fri, 22 Jul 2022 02:27:17 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1658482037; cv=none;
         d=google.com; s=arc-20160816;
-        b=zGw+qNVZyyFifAcQBg6XeiBdhfYy0dn+zCeu9hpg5ue0Tn1yqe/Q5ueGxPXLn1Awb/
-         d+Qk2qMZZkf+P/fZX56PpN/YRymnancsH898bpelkBvQayGItCeAS1c17hLvKUG7vHo8
-         dx8YXyYxu9zZ0ALuiKBEIb4ZLgiwfXJP4x8cv7VIUqBjhHYVzl1ZQDHO5/SWCoxga1Qz
-         oXwIntr2wyu32hdX7aZqutMY356gWWnQqCIufz1uKer46L1vs73sT8RrsfmLJcTeT93i
-         FVvnzK5YgjomEm0/dXRFDeZSy+y3GtrMma8RLYDXNIlrhg2ub9JU6brzFYIIjemS2M8/
-         oetA==
+        b=MnvZzYmZ58zOpsg3u96AAoeLHSAr1zrjSUCBENhLXJNE3sxhWjFGb0/7G+QRQYNADr
+         QTENdhRse2K0p2UP9YeKDeiuz5KiVJdrBilC+ocyE43UoIXdz2QM2AJt07FcRXpMaIrM
+         hvm2PS0XybLKXTh0oafT8PjDAWg6/wPKimM8Z9rpNk29ByUGrSHYUo3usphSSyjzPgar
+         ryPPP3RRHQUvbkPA5ipM9pFCxDpx6YYv4963YU7pmqJ1EUSoyXgo2OjNEoe1lIrShVQG
+         b07wmH8FlzaYeVHNoCr48gzbwS9mzCy14t1VVZziss3dWd3zwBpN3rxFeBwEfsKopFD9
+         nKrg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
-        bh=IEUCcOYSJr1/EUOP9HoBVWfHOZkdTL8hhiO+jgXlnng=;
-        b=XV6wiRzI46cAMUg7sRkOBU/MVTv+eMvNeDFFpomY89OhCR+Rcc3BHtsRAlPJ3x01wl
-         KdT2d4UnT7enVDW3rlX7/t4fEN7cUZ26KquGV8cAMP6GyILDj6ahFpB4jddzy4Q7vUn1
-         I2RjDZ+Q7vCZszsF6SPTj9C8XLdRT0VBUYaqIkKZG0+5/SssqzfdyKnCxSU/8qLio0Uy
-         aLYpKp7QGiXO3Hjj/t3uYWAEmVQx8GMgKemoUFCLUPZRuxCMZ4Wa9zKCGKu3h3kQ8zwV
-         UuaWrFWGaEc1Ur6ptpSIvMpXflqKm2SegCXJdw4PpyCKgrv0cMBtgQKtwb5kNAaWS02j
-         g2rw==
+         :content-language:in-reply-to:from:cc:references:to:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=V6QZ1czF51C+g6GnvsBTVWA9cOGVWu2XPkXNWt4MC6Q=;
+        b=q8OTLVgYC8uKJwi3GN2Dj0xKgKuSr0yLCxC7loJilYJPAbtYUH6WvbQ//KzcSMRvBC
+         om7goezp+mDTj5JSyNU6GMhhfLthRzPZVt9qHsUObl9KX7UYv5ucDjOpp26/ybA6T4js
+         46sXbUZl9COE7VQAkZ2GG4ifqOokTP4Mn5HkuLKz+jtqz8X7IEL8GoEVEGzLgxdU7QZN
+         4ySbQEZsezjEH8cxNQESl9nCdmaFB/pp+kLtWEKLp3euX1vck/VESaB5giLFlu/BkTLT
+         gurqyBy4dqvsyywf29nWvYBj6fMr3H5R6PDzMJnJ7z+ml2Eq0AwIt1aNfoADOpfyNo4A
+         oAqA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20210112 header.b=Qs8yT5yn;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=cl.cam.ac.uk
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=PaiFT5Hb;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id kk28-20020a056214509c00b00472fab266c1si6635451qvb.275.2022.07.19.02.52.24
+        by mx.google.com with ESMTPS id i63-20020a375442000000b006b61b2516e6si2468370qkb.142.2022.07.22.02.27.17
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 19 Jul 2022 02:52:24 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 22 Jul 2022 02:27:17 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20210112 header.b=Qs8yT5yn;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=cl.cam.ac.uk
-Received: from localhost ([::1]:57778 helo=lists1p.gnu.org)
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=PaiFT5Hb;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:45666 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1oDjtw-0004xj-AI
-	for alex.bennee@linaro.org; Tue, 19 Jul 2022 05:52:24 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:47252)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1oEowH-0003nn-C8
+	for alex.bennee@linaro.org; Fri, 22 Jul 2022 05:27:17 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:49298)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <heshamelmatary@gmail.com>)
- id 1oDjrh-0003Q3-An; Tue, 19 Jul 2022 05:50:05 -0400
-Received: from mail-wr1-x429.google.com ([2a00:1450:4864:20::429]:33594)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <heshamelmatary@gmail.com>)
- id 1oDjrf-0003Bp-41; Tue, 19 Jul 2022 05:50:04 -0400
-Received: by mail-wr1-x429.google.com with SMTP id h17so20822535wrx.0;
- Tue, 19 Jul 2022 02:50:01 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=sender:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=IEUCcOYSJr1/EUOP9HoBVWfHOZkdTL8hhiO+jgXlnng=;
- b=Qs8yT5ynq3TCORC8+O0XknZ52z5+HXOlhzxjkEOa8NKx5YZJG/aaWQGYCWB48sAWzX
- zRUP9bW3TlXtVLCmpHy1yZcF7xhO4OP3Atrb5n7IN5DZSvHLzm/z84jmXh0jB5ZSSdKU
- BfFN8nyz99U8wZ+cfMVEo4bwt5Yu8LSasbHqz6GDAT9GKue7K+stYtj2lOSxAg9LIbz2
- PSxwiOUZ+a6RdpKUTJU1J5UTmC4pCKmPxv21GP6483Fb7VCCPhUcGJSeqmZQmcUcXf4z
- 4V9krBd5p+3wiCcVHpuQV5yr/YzuWtya9+XSwdDRbCGKHZGPs6zFzoomuRtC0SR4FQ5a
- z+Ow==
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1oEovi-0003nc-CQ
+ for qemu-arm@nongnu.org; Fri, 22 Jul 2022 05:26:42 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:46385)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1oEovf-0004fH-Gr
+ for qemu-arm@nongnu.org; Fri, 22 Jul 2022 05:26:41 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1658481998;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=V6QZ1czF51C+g6GnvsBTVWA9cOGVWu2XPkXNWt4MC6Q=;
+ b=PaiFT5Hbq3QavkLKVZQ2ebykVu37BS9d3GkgEX/tRpZu/N8KuZ8QPb57ry9pJ25wMm5Hqc
+ bnV3mYOXItV8D/VFzzgzS0e0dW9Xbkuyw76+BhmKNTmRYPcStpWGOx51gyDmUpn3RjxD72
+ hNCAfQo7fj5UMVD/OjSLFpc30+elVs0=
+Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
+ [209.85.128.69]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-440-SEovG_lQN7qiiE6rnRaBZQ-1; Fri, 22 Jul 2022 05:26:37 -0400
+X-MC-Unique: SEovG_lQN7qiiE6rnRaBZQ-1
+Received: by mail-wm1-f69.google.com with SMTP id
+ p36-20020a05600c1da400b003a33a8c14f2so1144109wms.7
+ for <qemu-arm@nongnu.org>; Fri, 22 Jul 2022 02:26:36 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
- :mime-version:content-transfer-encoding;
- bh=IEUCcOYSJr1/EUOP9HoBVWfHOZkdTL8hhiO+jgXlnng=;
- b=GFFF43cs4tc4ulsH0uJ1Yqf9lQqb+6YHyCdRVB+AYViuC2TlCuZsxB7Dlru6skA6EL
- cZu2UVURKFQuRhpjUVSE0OspZb75j23fWnyoT/kKjyEsqcpS2jbb5t4ByN5r5HQ7MnvM
- LvgdHFhCLr4CnPXTwsUdBvTZhX0+BF28qirgouvu9E9lcQub+jecKf5wxR63cppvTbuN
- XjtsJynAWXaqFu9oAe5GBJLzvrZTjZxpfhBkaGGFOAf++NpgxQH5FwaFMSsgYwjaWeS3
- jYwpyPiyIDnPiN0ihNxZJ54pZD/W4vY6r6SNE9VRFfkVEJPiY05uuDLGtKLHnmhXISOQ
- KW0Q==
-X-Gm-Message-State: AJIora/3aWHCeSXy7on6GgctAHrQxxmHtXU/q+cc9j23x4hYhlMUpLR3
- LtRSUrjyLU/WjB3SWuGec2Y=
-X-Received: by 2002:adf:b650:0:b0:21e:24a1:b839 with SMTP id
- i16-20020adfb650000000b0021e24a1b839mr5611110wre.207.1658224199661; 
- Tue, 19 Jul 2022 02:49:59 -0700 (PDT)
-Received: from localhost.localdomain ([86.188.218.117])
- by smtp.gmail.com with ESMTPSA id
- z18-20020a5d44d2000000b0021cf31e1f7csm8318500wrr.102.2022.07.19.02.49.58
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 19 Jul 2022 02:49:59 -0700 (PDT)
-From: Hesham Almatary <Hesham.Almatary@cl.cam.ac.uk>
-X-Google-Original-From: Hesham Almatary <hesham.almatary@huawei.com>
-To: jonathan.cameron@huawei.com,
-	qemu-devel@nongnu.org
-Cc: yangyicong@huawei.com, chenxiang66@hisilicon.com, linuxarm@huawei.com,
- qemu-arm@nongnu.org, peter.maydell@linaro.org, imammedo@redhat.com,
- wangyanan55@huawei.com, marcel.apfelbaum@gmail.com, eduardo@habkost.net,
- Brice.Goglin@inria.fr, mst@redhat.com, jingqi.liu@intel.com
-Subject: [PATCH v2 0/8] AArch64/HMAT support and tests
-Date: Tue, 19 Jul 2022 10:49:42 +0100
-Message-Id: <20220719094950.1049516-1-hesham.almatary@huawei.com>
-X-Mailer: git-send-email 2.25.1
+ h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
+ :content-language:to:references:cc:from:in-reply-to
+ :content-transfer-encoding;
+ bh=V6QZ1czF51C+g6GnvsBTVWA9cOGVWu2XPkXNWt4MC6Q=;
+ b=RvD/gqSBSRoioecE0/LuhKFo4SN5F5Y8IVPBVZeE7qzFwp7jXKI3cMFp7qYRbwBRui
+ pESbL+sUEXmdcMxxFkQ0D16V4jnBSdVIcUo2p8BXkRbB63sozkj7PzqHArsWcOs7Omuc
+ irjZycPUik6pCb0BDS6mvfDxTglFTyKAXNaA6dHzLUBf3QkuyK+NkzCB/NsB4iW2DDJS
+ NnQf6tViUCur8N35tx0AdcDhBepRVGFbnpBWKsn0ptmpKqfCs3xN3tuSl7xPBudO/jqX
+ xn/wS4yBWUjsAtcF3+cQg27eXGwuMRWp6qPZ8UKEHaGokgbEeOHtPzNwADaKJNTP7PMh
+ kP8w==
+X-Gm-Message-State: AJIora+OeqW/gcKzUHYwr/UENvr2ckEn9emjZpSMaGfJTjCHpIawL4ey
+ DQDG5JBta2TMbIo5Pe4djmAOrfNj6XF7Dc0McpLw+CT+avzutP3/iCmstJqmJIF4olPAbJBu34Z
+ 0tlaQ64XdJMLs
+X-Received: by 2002:a05:600c:3556:b0:3a3:2a9c:f26 with SMTP id
+ i22-20020a05600c355600b003a32a9c0f26mr10197849wmq.58.1658481995984; 
+ Fri, 22 Jul 2022 02:26:35 -0700 (PDT)
+X-Received: by 2002:a05:600c:3556:b0:3a3:2a9c:f26 with SMTP id
+ i22-20020a05600c355600b003a32a9c0f26mr10197817wmq.58.1658481995568; 
+ Fri, 22 Jul 2022 02:26:35 -0700 (PDT)
+Received: from [192.168.0.5] (ip-109-43-176-42.web.vodafone.de.
+ [109.43.176.42]) by smtp.gmail.com with ESMTPSA id
+ b12-20020a05600c4e0c00b003a2fde6ef62sm4375839wmq.7.2022.07.22.02.26.35
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 22 Jul 2022 02:26:35 -0700 (PDT)
+Message-ID: <a33c9ea1-e622-ae8d-5f12-1b20599e8b4b@redhat.com>
+Date: Fri, 22 Jul 2022 11:26:33 +0200
 MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.10.0
+Subject: Re: Hard limit on 256 IRQs in qtest
+To: Roque Arcudia Hernandez <roqueh@google.com>, qemu-devel@nongnu.org
+References: <CAKbPEtZxCGfz4_h8_YMg2bb-kQF0sorLAppKcBTweV0gxM+OLA@mail.gmail.com>
+Cc: qemu-arm <qemu-arm@nongnu.org>
+From: Thomas Huth <thuth@redhat.com>
+In-Reply-To: <CAKbPEtZxCGfz4_h8_YMg2bb-kQF0sorLAppKcBTweV0gxM+OLA@mail.gmail.com>
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=thuth@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::429;
- envelope-from=heshamelmatary@gmail.com; helo=mail-wr1-x429.google.com
-X-Spam_score_int: -14
-X-Spam_score: -1.5
-X-Spam_bar: -
-X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=thuth@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -21
+X-Spam_score: -2.2
+X-Spam_bar: --
+X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.082,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 0DL+fY+SGrOW
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: RyD9LzHahvuA
 
-This patchset adds support for AArch64/HMAT including a test.
-It relies on other two patch sets from:
+On 21/07/2022 18.17, Roque Arcudia Hernandez wrote:
+> Hello,
+> 
+> 
+> To write a qtest for an SoC using ARM GICv3 as interrupt controller the 
+> qtest infrastructure is short on IRQs.
+> 
+> File tests/qtest/libqtest.c defines:
+> 
+> #define MAX_IRQ 256
+> 
+> Which is the number of elements in the array that is used to keep track of 
+> the value of the irq gpio:
+> 
+>      bool irq_level[MAX_IRQ];
+> 
+> The GICv3 can take up to 1020. The SoC we are trying to emulate uses more 
+> than the current 256 limit we can observe at the GIC input. If we focus just 
+> on the external interrupt range the GIC would need 1020 - 32 = 988 IRQs. 
+> Will it be OK to make this change to the qtest infrastructure?
 
-Brice Goglin: to support -numa without initiators on q35/x86.
-  https://lore.kernel.org/all/ed23accb-2c8b-90f4-a7a3-f81cc57bf678@inria.fr/
-Xiang Chen: to enable/support HMAT on AArch64.
-  https://lore.kernel.org/all/1643102134-15506-1-git-send-email-chenxiang66@hisilicon.com/
+I guess it should be fine. Just not that you have to adjust the same #define 
+in softmmu/qtest.c, too.
 
-I further add a test with ACPI/HMAT tables that uses the two
-patch sets.
-
-Changes from v1:
-- Generate APIC and PPTT ACPI tables for AArch64/virt
-- Avoid using legacy syntax in numa/bios tests
-- Delete unchanged FACP tables
-
-Brice Goglin (4):
-  hmat acpi: Don't require initiator value in -numa
-  tests: acpi: add and whitelist *.hmat-noinitiator expected blobs
-  tests: acpi: q35: add test for hmat nodes without initiators
-  tests: acpi: q35: update expected blobs *.hmat-noinitiators expected
-    HMAT:
-
-Hesham Almatary (3):
-  tests: Add HMAT AArch64/virt empty table files
-  tests: acpi: aarch64/virt: add a test for hmat nodes with no initiators
-  tests: virt: Update expected *.acpihmatvirt tables
-
-Xiang Chen (1):
-  hw/arm/virt: Enable HMAT on arm virt machine
-
- hw/arm/Kconfig                                |   1 +
- hw/arm/virt-acpi-build.c                      |   7 ++
- hw/core/machine.c                             |   4 +-
- tests/data/acpi/q35/APIC.acpihmat-noinitiator | Bin 0 -> 144 bytes
- tests/data/acpi/q35/DSDT.acpihmat-noinitiator | Bin 0 -> 8553 bytes
- tests/data/acpi/q35/HMAT.acpihmat-noinitiator | Bin 0 -> 288 bytes
- tests/data/acpi/q35/SRAT.acpihmat-noinitiator | Bin 0 -> 312 bytes
- tests/data/acpi/virt/APIC.acpihmatvirt        | Bin 0 -> 396 bytes
- tests/data/acpi/virt/DSDT.acpihmatvirt        | Bin 0 -> 5282 bytes
- tests/data/acpi/virt/HMAT.acpihmatvirt        | Bin 0 -> 288 bytes
- tests/data/acpi/virt/PPTT.acpihmatvirt        | Bin 0 -> 196 bytes
- tests/data/acpi/virt/SRAT.acpihmatvirt        | Bin 0 -> 240 bytes
- tests/qtest/bios-tables-test.c                | 109 ++++++++++++++++++
- 13 files changed, 118 insertions(+), 3 deletions(-)
- create mode 100644 tests/data/acpi/q35/APIC.acpihmat-noinitiator
- create mode 100644 tests/data/acpi/q35/DSDT.acpihmat-noinitiator
- create mode 100644 tests/data/acpi/q35/HMAT.acpihmat-noinitiator
- create mode 100644 tests/data/acpi/q35/SRAT.acpihmat-noinitiator
- create mode 100644 tests/data/acpi/virt/APIC.acpihmatvirt
- create mode 100644 tests/data/acpi/virt/DSDT.acpihmatvirt
- create mode 100644 tests/data/acpi/virt/HMAT.acpihmatvirt
- create mode 100644 tests/data/acpi/virt/PPTT.acpihmatvirt
- create mode 100644 tests/data/acpi/virt/SRAT.acpihmatvirt
-
--- 
-2.25.1
+  Thomas
 

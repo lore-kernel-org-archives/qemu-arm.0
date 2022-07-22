@@ -1,124 +1,89 @@
-Received: by 2002:ac2:596f:0:0:0:0:0 with SMTP id h15csp3564332lfp;
-        Thu, 21 Jul 2022 13:37:22 -0700 (PDT)
-X-Google-Smtp-Source: AGRyM1tWJN8RA6yipWruMxHBbZk3Rh9FpmEGgUlT2JKVO5bLMYbD1CWoUjPhHUsO8fdp5GWhqWWA
-X-Received: by 2002:a37:98c3:0:b0:6b5:f2a1:ab4b with SMTP id a186-20020a3798c3000000b006b5f2a1ab4bmr223388qke.210.1658435842631;
-        Thu, 21 Jul 2022 13:37:22 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1658435842; cv=none;
+Received: by 2002:ac2:596f:0:0:0:0:0 with SMTP id h15csp73563lfp;
+        Thu, 21 Jul 2022 23:37:26 -0700 (PDT)
+X-Google-Smtp-Source: AGRyM1twSWzgguKfvX/PPN0a9GGMKuyjQ+/uOFwKLVnWSATRpjYm5aX6XjQOIebSxdSo7uQ0PdAN
+X-Received: by 2002:ac8:4e91:0:b0:31f:cfa:7669 with SMTP id 17-20020ac84e91000000b0031f0cfa7669mr1841247qtp.264.1658471846219;
+        Thu, 21 Jul 2022 23:37:26 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1658471846; cv=none;
         d=google.com; s=arc-20160816;
-        b=P6pD4fzZ2KDLgdV4dZC/3cW1VcxDM0mdLnHMv5F2JZcOnmXj6lyxq3o7vrZ7s9wKoe
-         FNQwX99I9tDJLbNTDZtYH6N+4Sw+CRtekq+c9bzPCugt8opZH0AVtFQS/XFGtmRcGtgs
-         0pLG+KHfof1BvtFAbwW84VQweU+IS2bYOdUiZJyE7ZqY5/n4NlPZxEH4TG4URTiyIgEs
-         OsBM7hqRRMeEvXxgP+MDXboYccTjilzJ7VbU4Uy8jD4DNYP5+5B3UbbN8g1xM4tDrm/Z
-         ioKrsN1EoOtuA9Mk4SaGYfzl6d3QgLlXEo5UAvMvV6vyuqHGrXtFdVOgCaU+Qpz8YGYk
-         tGFg==
+        b=jRAh6hsIif1vY2EWN39uVgALzIRpgvMmLlm/zWzynHXJERYILh11Z8LZfTdA7AUPG5
+         DqXUL3Hs/usfszci5rMLIUdruzbNdQOmogiNcaeQ8JxBQH81xQudtMEBC6JKVwsjBKC/
+         3WDxBnvr7wLd9vMAIkOJl/xr/KCUGygIG+0Wo5wGFULiJoCNqbwAZM1mx7esMpwPrg8U
+         LRqDVnBMNOGMXdxUfkwlVRHNujpkCAHtLZZVJCkndNEgdkcl2n8+nZSaM7FDgYE3D62W
+         UK36eAP+iFUVLe08bVyGttND0oX6MCn+usInmZs4y+3aWpH+x3gHaM5CT+lMiZk1VjnW
+         2ZFg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=1KMSPZt7dXYque1/g30OP2vns3HirBf35P8XjAm1P/E=;
-        b=VHEWO9O/fhKSN+HmKEbBC/ohCHFXz+pbqAyBANFC3KRnYQwY63tQrPoEyzF8xu/S2Z
-         Mm3x91VBEbwQDsXsCqjVjn7O4rbnBpirEd7ERsIJV2BNkY3/Wp/5C4aOhUq9NIYszAyZ
-         i0JcWVYKyKZNnGoHMRdcPiafxR/q53az2pcmDNRoxKBR5Yi8xjTDBgbQ06sCPg6du+l3
-         2ICwM87UzzYP5xtmBC+enpSnDoQVkz95B7w+BHt3XNx8JS8h7eHxj9cMK63dvdw4F6xi
-         pxBsJkdnRiQXeZV4BnGGQgYVOuUx6yBh099SHoXi9zumqLowqXF8B66Es/bCSeAFOHdG
-         8NXA==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from;
+        bh=6tzG0Tm4NVwHz0UxslhP+PlVMwdlsqVXqvHgvri8w00=;
+        b=V+wV3/gaYxKksoFmqh53bzO8G/WdcCFOUP4NelPEUXlGsGvuXCOoCfX/vy1nPaqli0
+         iXUAikWeZFRc/yvWPoPKUFcVdLsRiQEHwjgPjcEhrTVoXAoxRqeouW4yrLCZuhIKo/Yy
+         LgPWfSW6xZhjABg9rs69jTvBXdShVA4s0IX7V1gOMcgqbBfwyynsqknRWW1e6EgUzP2w
+         /cdapFXaU2YcP+SiboOjw8Hy7UW0bGQV5XQW7GR9X9sPqA5a9B/r2UpkYnACsyAiGZ7w
+         U6sFLQF12aeqmOiabcQI8pfZ3SFreAzFbnfk54+sqY9qq6rSh7ST2k+vqsoIITzONmDO
+         sf7A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="LeZ9K6/o";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 2-20020ac85902000000b0031eaed115dasi2201233qty.652.2022.07.21.13.37.22
+        by mx.google.com with ESMTPS id br18-20020a05622a1e1200b0031eb5fa4b46si2643807qtb.583.2022.07.21.23.37.26
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 21 Jul 2022 13:37:22 -0700 (PDT)
+        Thu, 21 Jul 2022 23:37:26 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="LeZ9K6/o";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:45136 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:58250 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1oEcvC-0005s1-5Z
-	for alex.bennee@linaro.org; Thu, 21 Jul 2022 16:37:22 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46658)
+	id 1oEmHt-0008AO-IV
+	for alex.bennee@linaro.org; Fri, 22 Jul 2022 02:37:25 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:43284)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1oEcuh-0005rk-1e
- for qemu-arm@nongnu.org; Thu, 21 Jul 2022 16:36:51 -0400
-Received: from mail-yw1-x1132.google.com ([2607:f8b0:4864:20::1132]:46693)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1oEcuf-0004Zr-8X
- for qemu-arm@nongnu.org; Thu, 21 Jul 2022 16:36:50 -0400
-Received: by mail-yw1-x1132.google.com with SMTP id
- 00721157ae682-31e7c4b593fso29237687b3.13
- for <qemu-arm@nongnu.org>; Thu, 21 Jul 2022 13:36:44 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=1KMSPZt7dXYque1/g30OP2vns3HirBf35P8XjAm1P/E=;
- b=LeZ9K6/oBfbMU4d+7pXyr2Eh+4ZXK7EJq7YREyEZ7ubRW2sx6mSVYq1K784Wqvn1fU
- 2qYCNexQECo6qIrNJWfxQ8NcqTHMpUg6OZVYXdW57+LEGkCUpDgUk4Z3x5PNJuul0vD5
- 99upho5o/edWaEvIuTKyppmUy5OYJT7f2F8EXHA5Nu31pDGhsIjl1hzdkX4OfVFnQl9s
- iu82QdCocovBZUq6ugu7XD1MTtbjXrPe3Oa4eBpSBg62cBPSoJMtiDS9a0H/hKjfuYZu
- 2XGqMF68dA6+Z/BTWUeJkSz1GBpOuOsI+FZk74eaL/NK3+qYl0a4IoZ6GynnrBhOFeH/
- Qx+g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=1KMSPZt7dXYque1/g30OP2vns3HirBf35P8XjAm1P/E=;
- b=IN1rkHAJVOrICSz6ABjxifollXrCNRd2GiFuAeY5LGy/APWJXBGOYu1U+OqYQ6JTUB
- StgQg4xLxae3D8qka7ZPY0oRW+5T4mcTldJ5SnhtTokqiY7Yd0PZq/XR3oke3Rct4zrk
- rPvjmQf61uaWrcvROYijuu5Yx+NVP7yiuHbozXSnXmOmchcb1VXq0Cx0MIs1aOyZrULs
- shtEfFfO/NzQUh5R8qUMUjrsBuW77068SzBTsXDp9FQkrwFBDgUy/iNXlUw0P9yo0an8
- XvjPkFYJZpabxnN9PnG0zbzmqQDqFAuw5Fk3+Gv4JVtHyeatI54tseobJuhOwEiWdE2D
- FQUg==
-X-Gm-Message-State: AJIora+MtuxUIdAER7CQiUMGdqd7X8ysTztrHadY+0Ubipq1F/mnMBtj
- Cj2l6n11wqrfiynZOc4qQ3jEcDb9SU4orXG2hVl8gQ==
-X-Received: by 2002:a81:8d08:0:b0:317:a4cd:d65d with SMTP id
- d8-20020a818d08000000b00317a4cdd65dmr298942ywg.329.1658435803557; Thu, 21 Jul
- 2022 13:36:43 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <SRS0=w2Kw=X3=kaod.org=clg@ozlabs.org>)
+ id 1oEmGt-000893-VZ; Fri, 22 Jul 2022 02:36:24 -0400
+Received: from mail.ozlabs.org ([2404:9400:2221:ea00::3]:48699
+ helo=gandalf.ozlabs.org)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <SRS0=w2Kw=X3=kaod.org=clg@ozlabs.org>)
+ id 1oEmGr-00011z-Df; Fri, 22 Jul 2022 02:36:23 -0400
+Received: from gandalf.ozlabs.org (mail.ozlabs.org
+ [IPv6:2404:9400:2221:ea00::3])
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4Lq0801KTtz4xGJ;
+ Fri, 22 Jul 2022 16:36:16 +1000 (AEST)
+Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4Lq07w2Nnvz4xG6;
+ Fri, 22 Jul 2022 16:36:12 +1000 (AEST)
+From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
+To: qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org, qemu-block@nongnu.org,
+ Peter Maydell <peter.maydell@linaro.org>, Joel Stanley <joel@jms.id.au>,
+ Andrew Jeffery <andrew@aj.id.au>,
+ Alistair Francis <alistair@alistair23.me>,
+ Francisco Iglesias <frasse.iglesias@gmail.com>,
+ Iris Chen <irischenlj@fb.com>, Michael Walle <michael@walle.cc>,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
+Subject: [PATCH v3 1/8] m25p80: Add basic support for the SFDP command
+Date: Fri, 22 Jul 2022 08:35:55 +0200
+Message-Id: <20220722063602.128144-2-clg@kaod.org>
+X-Mailer: git-send-email 2.35.3
+In-Reply-To: <20220722063602.128144-1-clg@kaod.org>
+References: <20220722063602.128144-1-clg@kaod.org>
 MIME-Version: 1.0
-References: <CAL7npF9T0148jkgTigVfE7cSzH2HKqy0NG0VQtAH2HMXjdBOOg@mail.gmail.com>
- <CAFEAcA8RHhRcrMSO_3MK0hSH=zWzde7S0DHHaLPZf4jOv48RLQ@mail.gmail.com>
- <CAL7npF9hKFsQF18Udi9QFnRZSH-G8cafXHBSBQcrs7jpJmPd7Q@mail.gmail.com>
- <CAFEAcA92=ne8weVYDnLLzNk0+z+aMFJgOJvW_7hSYcY1TimyHw@mail.gmail.com>
- <CAL7npF8Hg7hJBxw9j-1_7GRV_E52KS+hP1WXKfD3+r05C=CBgg@mail.gmail.com>
- <CAFEAcA8tGiaXq+y40-BtdG3jiBJpP=L6x9tsPL_5dF6dr=afEA@mail.gmail.com>
- <CAL7npF8d6LZHZtLWe65JiwQW+X-48JxLa2xBoGdxjJJWpKx-Fw@mail.gmail.com>
- <CAFEAcA9SM--_+Ret6fZwvWNe0J3E8TE-+do614TtTpi0rbAM9A@mail.gmail.com>
- <CAL7npF_8ErAn2cvFBQxVCdP96uKpdRQMs_3aL_UW5OLzm3Q=GQ@mail.gmail.com>
- <CAFEAcA-cTzrA6fZXw7onDJ77NMwjBrSFVwADYmttCgdOf9ODYw@mail.gmail.com>
- <CAL7npF9H_eKi0jA_m-wV=jSHy9hc6re7TpTe2ni=9NYK4CxRpA@mail.gmail.com>
- <CAFEAcA8xV-BdhvwvkzRHxqqEX9BAwDJGwHS=koBRbDeGHwQHEw@mail.gmail.com>
- <CAL7npF9bOP=bPtyFS-K+HgXGy9+W11M0ELRJMqQp1-JB_jVx1g@mail.gmail.com>
- <CAFEAcA8hbU7PJK-YvOkbjj2F2PBW1M9J10DkHqUPXTSxYOS-5Q@mail.gmail.com>
- <CAL7npF9neZUWweuZFqDkO5mh5=tZj3ybjZUvVoF932cJibpRiw@mail.gmail.com>
- <CAFEAcA9CnC5P4Myf1qMO=DLas93+kSVjNvnj6Vgty_yvdjH5vQ@mail.gmail.com>
- <CAL7npF8KNQKyfeW5ONY53+_u6Q4H8BDtY386Eyt-+gxaXdBBJA@mail.gmail.com>
- <CAFEAcA8hVyCwMbQ_ZNUgw8Nfb3wTvRk3gvUr8RC3gSH7Pkuv_g@mail.gmail.com>
- <CAL7npF897P3=Rro4pe_i_cmO+rUe-b1NqnJtmEM3K0kEF5VC7Q@mail.gmail.com>
- <CAFEAcA9y6zwErffpvrJrenS0hyLvGyoyhdF8Vo3mgFhLOvvOSw@mail.gmail.com>
- <CAFEAcA-9F6QDzEiAfiMa=DUVK3LGe9vLmD_OcMTfbU8ayv3Ffw@mail.gmail.com>
- <CAL7npF839onoBJxewXraSGRPmbK=8SqbPeU2W3YN7kFYW6j9tQ@mail.gmail.com>
-In-Reply-To: <CAL7npF839onoBJxewXraSGRPmbK=8SqbPeU2W3YN7kFYW6j9tQ@mail.gmail.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 21 Jul 2022 21:36:04 +0100
-Message-ID: <CAFEAcA8wfEfxZh4NFpbDAsB=Rz=9-UcafOWbEtGkJ1WGZs71WQ@mail.gmail.com>
-Subject: Re: [qemu-arm-static] timer_delete issue from Qemu 5.0.0 onwards
-To: Jon Alduan <jon.alduan@gmail.com>
-Cc: qemu-arm@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1132;
- envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x1132.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2404:9400:2221:ea00::3;
+ envelope-from=SRS0=w2Kw=X3=kaod.org=clg@ozlabs.org; helo=gandalf.ozlabs.org
+X-Spam_score_int: -23
+X-Spam_score: -2.4
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+X-Spam_report: (-2.4 / 5.0 requ) BAYES_00=-1.9,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.249, RCVD_IN_DNSWL_LOW=-0.7,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -134,76 +99,161 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: mlBsYrgvC3/3
+X-TUID: dX+xy7RT9YUr
 
-On Thu, 21 Jul 2022 at 20:03, Jon Alduan <jon.alduan@gmail.com> wrote:
->
-> Here you have the output with the debug logs:
->
-> next_free_host_timer: returning 0
-> timer_create: host timer_create: returned 0x00000000, set phtimer 0x559dc5d8aa00 to (nil)
-> timer_create: wrote 0xcaf0000 to guest address 0x408002e8
-> Create timer 0 536880
-> get_timer_id: guest timer id 0xcaf0000 -> index 0
-> next_free_host_timer: returning 0
-> timer_create: host timer_create: returned 0x00000000, set phtimer 0x559dc5d8aa00 to 0x1
-> timer_create: wrote 0xcaf0000 to guest address 0x408002e8
-> Create timer 1 537928
-> get_timer_id: guest timer id 0xcaf0000 -> index 0
-> next_free_host_timer: returning 1
+JEDEC STANDARD JESD216 for Serial Flash Discovery Parameters (SFDP)
+provides a mean to describe the features of a serial flash device
+using a set of internal parameter tables.
 
-For me I get:
+This is the initial framework for the RDSFDP command giving access to
+a private SFDP area under the flash. This area now needs to be
+populated with the flash device characteristics, using a new
+'sfdp_read' handler under FlashPartInfo.
 
-next_free_host_timer: returning 0
-timer_create: host timer_create: returned 0x00000000, set phtimer
-0x562e7f755e20 to 0x562e81150040
-timer_create: wrote 0xcaf0000 to guest address 0x407ffe90
-Create timer 0 0x0x83520
-get_timer_id: guest timer id 0xcaf0000 -> index 0
-next_free_host_timer: returning 1
-timer_create: host timer_create: returned 0x00000000, set phtimer
-0x562e7f755e28 to 0x562e81215230
-timer_create: wrote 0xcaf0001 to guest address 0x407ffe90
-Create timer 1 0x0x83530
-get_timer_id: guest timer id 0xcaf0001 -> index 1
-next_free_host_timer: returning 2
-timer_create: host timer_create: returned 0x00000000, set phtimer
-0x562e7f755e30 to 0x562e81150720
-timer_create: wrote 0xcaf0002 to guest address 0x407ffe90
-Create timer 2 0x0x83540
-get_timer_id: guest timer id 0xcaf0002 -> index 2
-next_free_host_timer: returning 3
-timer_create: host timer_create: returned 0x00000000, set phtimer
-0x562e7f755e38 to 0x562e81150fc0
-timer_create: wrote 0xcaf0003 to guest address 0x407ffe90
-Create timer 3 0x0x83550
-get_timer_id: guest timer id 0xcaf0003 -> index 3
-next_free_host_timer: returning 4
-timer_create: host timer_create: returned 0x00000000, set phtimer
-0x562e7f755e40 to 0x562e81151200
-timer_create: wrote 0xcaf0004 to guest address 0x407ffe90
-Create timer 4 0x0x83560
-get_timer_id: guest timer id 0xcaf0004 -> index 4
+Signed-off-by: Cédric Le Goater <clg@kaod.org>
+---
+ hw/block/m25p80_sfdp.h | 18 ++++++++++++++++++
+ hw/block/m25p80.c      | 27 +++++++++++++++++++++++++++
+ MAINTAINERS            |  2 +-
+ hw/block/trace-events  |  1 +
+ 4 files changed, 47 insertions(+), 1 deletion(-)
+ create mode 100644 hw/block/m25p80_sfdp.h
 
-I think what is happening here is that for your system, the host
-libc is returning timer ID values (host libc timer_t values)
-which are integers 0, 1, 2, ... On my system the host libc returns
-timer_t values which are pointers -- you can see they are
-0x562e81150040, 0x562e81215230, etc.
+diff --git a/hw/block/m25p80_sfdp.h b/hw/block/m25p80_sfdp.h
+new file mode 100644
+index 000000000000..230b07ef3308
+--- /dev/null
++++ b/hw/block/m25p80_sfdp.h
+@@ -0,0 +1,18 @@
++/*
++ * M25P80 SFDP
++ *
++ * Copyright (c) 2020, IBM Corporation.
++ *
++ * This code is licensed under the GPL version 2 or later. See the
++ * COPYING file in the top-level directory.
++ */
++
++#ifndef HW_M25P80_SFDP_H
++#define HW_M25P80_SFDP_H
++
++/*
++ * SFDP area has a 3 bytes address space.
++ */
++#define M25P80_SFDP_MAX_SIZE  (1 << 24)
++
++#endif
+diff --git a/hw/block/m25p80.c b/hw/block/m25p80.c
+index a8d2519141f7..abdc4c0b0da7 100644
+--- a/hw/block/m25p80.c
++++ b/hw/block/m25p80.c
+@@ -35,6 +35,7 @@
+ #include "qapi/error.h"
+ #include "trace.h"
+ #include "qom/object.h"
++#include "m25p80_sfdp.h"
+ 
+ /* 16 MiB max in 3 byte address mode */
+ #define MAX_3BYTES_SIZE 0x1000000
+@@ -72,6 +73,7 @@ typedef struct FlashPartInfo {
+      * This field inform how many die is in the chip.
+      */
+     uint8_t die_cnt;
++    uint8_t (*sfdp_read)(uint32_t sfdp_addr);
+ } FlashPartInfo;
+ 
+ /* adapted from linux */
+@@ -355,6 +357,7 @@ typedef enum {
+     BULK_ERASE = 0xc7,
+     READ_FSR = 0x70,
+     RDCR = 0x15,
++    RDSFDP = 0x5a,
+ 
+     READ = 0x03,
+     READ4 = 0x13,
+@@ -421,6 +424,7 @@ typedef enum {
+     STATE_COLLECTING_DATA,
+     STATE_COLLECTING_VAR_LEN_DATA,
+     STATE_READING_DATA,
++    STATE_READING_SFDP,
+ } CMDState;
+ 
+ typedef enum {
+@@ -679,6 +683,8 @@ static inline int get_addr_length(Flash *s)
+     }
+ 
+    switch (s->cmd_in_progress) {
++   case RDSFDP:
++       return 3;
+    case PP4:
+    case PP4_4:
+    case QPP_4:
+@@ -823,6 +829,11 @@ static void complete_collecting_data(Flash *s)
+                           " by device\n");
+         }
+         break;
++
++    case RDSFDP:
++        s->state = STATE_READING_SFDP;
++        break;
++
+     default:
+         break;
+     }
+@@ -1431,6 +1442,16 @@ static void decode_new_cmd(Flash *s, uint32_t value)
+             qemu_log_mask(LOG_GUEST_ERROR, "M25P80: Unknown cmd %x\n", value);
+         }
+         break;
++    case RDSFDP:
++        if (s->pi->sfdp_read) {
++            s->needed_bytes = get_addr_length(s) + 1; /* SFDP addr + dummy */
++            s->pos = 0;
++            s->len = 0;
++            s->state = STATE_COLLECTING_DATA;
++            break;
++        }
++        /* Fallthrough */
++
+     default:
+         s->pos = 0;
+         s->len = 1;
+@@ -1538,6 +1559,12 @@ static uint32_t m25p80_transfer8(SSIPeripheral *ss, uint32_t tx)
+             }
+         }
+         break;
++    case STATE_READING_SFDP:
++        assert(s->pi->sfdp_read);
++        r = s->pi->sfdp_read(s->cur_addr);
++        trace_m25p80_read_sfdp(s, s->cur_addr, (uint8_t)r);
++        s->cur_addr = (s->cur_addr + 1) & (M25P80_SFDP_MAX_SIZE - 1);
++        break;
+ 
+     default:
+     case STATE_IDLE:
+diff --git a/MAINTAINERS b/MAINTAINERS
+index 6af9cd985cea..92f232f01e3c 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -1915,7 +1915,7 @@ SSI
+ M: Alistair Francis <alistair@alistair23.me>
+ S: Maintained
+ F: hw/ssi/*
+-F: hw/block/m25p80.c
++F: hw/block/m25p80*
+ F: include/hw/ssi/ssi.h
+ X: hw/ssi/xilinx_*
+ F: tests/qtest/m25p80-test.c
+diff --git a/hw/block/trace-events b/hw/block/trace-events
+index d86b53520cc5..2c45a62bd59c 100644
+--- a/hw/block/trace-events
++++ b/hw/block/trace-events
+@@ -80,5 +80,6 @@ m25p80_page_program(void *s, uint32_t addr, uint8_t tx) "[%p] page program cur_a
+ m25p80_transfer(void *s, uint8_t state, uint32_t len, uint8_t needed, uint32_t pos, uint32_t cur_addr, uint8_t t) "[%p] Transfer state 0x%"PRIx8" len 0x%"PRIx32" needed 0x%"PRIx8" pos 0x%"PRIx32" addr 0x%"PRIx32" tx 0x%"PRIx8
+ m25p80_read_byte(void *s, uint32_t addr, uint8_t v) "[%p] Read byte 0x%"PRIx32"=0x%"PRIx8
+ m25p80_read_data(void *s, uint32_t pos, uint8_t v) "[%p] Read data 0x%"PRIx32"=0x%"PRIx8
++m25p80_read_sfdp(void *s, uint32_t addr, uint8_t v) "[%p] Read SFDP 0x%"PRIx32"=0x%"PRIx8
+ m25p80_binding(void *s) "[%p] Binding to IF_MTD drive"
+ m25p80_binding_no_bdrv(void *s) "[%p] No BDRV - binding to RAM"
+-- 
+2.35.3
 
-The code in QEMU that determines "is this slot in the array
-in use or not?" assumes that 0 is a value it can use to mark
-"not used", ie that it is not a valid timer_t. That's clearly
-a broken assumption. The effect is that when we're allocating
-an ID for the second timer that gets created we look at the
-slot that has the first timer's host timer_t ID, and because
-on your system it's 0 we think it's not in use and reuse it.
-
-Presumably your host has a different (older?) libc than mine,
-which is why the difference.
-
-Now I understand the cause of the bug I'll think about how to
-best fix it, but I won't get to that until next week.
-
-thanks
--- PMM

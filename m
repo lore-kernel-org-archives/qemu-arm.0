@@ -1,111 +1,117 @@
-Received: by 2002:a05:6512:1086:0:0:0:0 with SMTP id j6csp1021094lfg;
-        Mon, 25 Jul 2022 11:20:34 -0700 (PDT)
-X-Google-Smtp-Source: AGRyM1udAoWpGLD5iyjUViwuWtvm0rBUg2JzeEGkCwD9V7Z2r++Y6Upg2hOtc9qoFsu6Sy6MKYmE
-X-Received: by 2002:ac8:7dca:0:b0:31e:f231:6f76 with SMTP id c10-20020ac87dca000000b0031ef2316f76mr11675276qte.568.1658773234156;
-        Mon, 25 Jul 2022 11:20:34 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1658773234; cv=none;
+Received: by 2002:a05:6512:1086:0:0:0:0 with SMTP id j6csp1022501lfg;
+        Mon, 25 Jul 2022 11:23:34 -0700 (PDT)
+X-Google-Smtp-Source: AGRyM1vmNCTRRnJ0Q6YZb6/0/R249j9p8CRKbw4QLQ7hqwC9b7GoP/9mTh56X30B0RwwbDgTJHwQ
+X-Received: by 2002:a05:620a:19a9:b0:6b6:4f9c:fc24 with SMTP id bm41-20020a05620a19a900b006b64f9cfc24mr6792383qkb.252.1658773414014;
+        Mon, 25 Jul 2022 11:23:34 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1658773414; cv=none;
         d=google.com; s=arc-20160816;
-        b=qWIerENLObVzdfPdxfFLEhnp8uKE6HGcQ2G1GhoVAXX2+2WLQWdOqwMkl7gP3qhH7N
-         SykjsJLx0luVSZ5hoR4kLZD6QWeSe6oviohqsZJp97smDEtZFS9pmTg84EohtwZSwcSm
-         bZj/YHIRa+KJRcvvUN/1+ufOaDx6zqxBJjoGkXCgYoWI9eYqHQbiiukw7arFZ+AdEoz+
-         jcWA1/4vkA+/CwEuXkBkHLaYF83PjHAq8jfbRmeF54+L6bb1cwLsfpVvpeTQPonQLqFl
-         8fsnPTNs8vPqjr6vYGlqm5XWdZi99gTsYCeenWdr4vPty2DQABG/evTobNua3M7UcGhv
-         5RUQ==
+        b=Pu0n8pGd/Gn6X7Ho61hD5kA3vD44709i73mU530dzmzlPzr7RU8GpjsgebU0/xaQUC
+         nRgX1xrYs+oWgsW4VCxNV3L0FvdZDpI91EfAEgUfjazlyNbJxa+y9FM2FWYDYlg8bEGu
+         +0xtAfx25pokZAQ4fd+VIZd1D8q95X6626++NBUQSMtiMZOo+ajWrMs7NXpsb05A858p
+         daEAgmehYN93RH304Ri/oFKbKITmmlakzGlcD0FZjIFKHy9eRGkS2pY9F2b4Kh4ktM1I
+         IT9wp+utvt3qnTpzDpG32guPyzDdO8WII819W4p3/VLFS3vsRUjmUeBDSurAwf4qIgzl
+         PY+w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=RMuYv4EVFHYkxhumjJ2SxEr+kwKlkg7raeV+cD/IvUA=;
-        b=r8olLQIiLz3zDM43UHS/Yy1/pOinIgHoD5SNXs/OsCqnFwL6D2zA3RMOAM3TvpjLoS
-         UBUQqXf1QI08daewVBCc6x2wtiuWdUkGY+XDFZ4urzEh0Ae6JmiFtAlGtbUP73ERQayP
-         mmDcTBPOW6Emfg+7lDxzPTF6HgDXvATfZE54ObcU4X8AW5Z1r3JQRDpRRQI/D3NGvXgP
-         NoiwMjHiw5H0o420jLY4qQz5CqcH4TM47YQX/J5UnnIyXVw6Z2zkctXgwMN9dBi7wrbk
-         5AmzxeRao1bjVxJY3mBk2N3CsoG9PnYQ58EXNVGUrXJJOCfElrf+1A7xh+lYf4+vEaEH
-         CMwg==
+         :in-reply-to:references:cc:to:from:content-language:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=ACzgSzCa5ERQJBIyGWPc4HKpcVCvjGP1xHu7xLPnF8Q=;
+        b=GmTPtTGphwfD35+jiyRqC94+zcf0hHCFvUAx6eEoVA2ZT8l8w39tZhQbSwFMJ8BfNi
+         aIl6bU+iAC7ruok/69+v8CYoEviy92q8MlrQidXCUJ6QXVLoDw78B/tNYphVyd+k0Job
+         u3jGDNKwJnGQtCU082UvkciveB3LQKDuBdOJ+AbYO15aPrZbetSgaBi35wVw/SgEIK6B
+         Ka1eu2zqMtwsfbeOYSATHm7Qwx+I/22c+RGaoQwyi36+esbHSEb1p/XhAdBfGHdz+XWx
+         OJoG3q6Llp+HibxGVoY3jrvpBIs8isqfMHsCNzE26fTUPypAVAYsFsvdHTgAHUoi9/j5
+         6f0A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=gdkKLSsn;
+       dkim=pass header.i=@linaro.org header.s=google header.b=lP3NpA87;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id ge13-20020a05621427cd00b0047421fb14dbsi5263566qvb.61.2022.07.25.11.20.34
+        by mx.google.com with ESMTPS id e124-20020a378282000000b006b57485aff2si7112750qkd.648.2022.07.25.11.23.33
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 25 Jul 2022 11:20:34 -0700 (PDT)
+        Mon, 25 Jul 2022 11:23:34 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=gdkKLSsn;
+       dkim=pass header.i=@linaro.org header.s=google header.b=lP3NpA87;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:57296 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:33968 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1oG2gz-0000Do-KA
-	for alex.bennee@linaro.org; Mon, 25 Jul 2022 14:20:33 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:47038)
+	id 1oG2jt-0003ed-Gb
+	for alex.bennee@linaro.org; Mon, 25 Jul 2022 14:23:33 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:47790)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1oG2bp-0004mk-8q
- for qemu-arm@nongnu.org; Mon, 25 Jul 2022 14:15:20 -0400
-Received: from mail-pj1-x102f.google.com ([2607:f8b0:4864:20::102f]:37539)
+ id 1oG2gx-0000bV-9L
+ for qemu-arm@nongnu.org; Mon, 25 Jul 2022 14:20:31 -0400
+Received: from mail-pj1-x1034.google.com ([2607:f8b0:4864:20::1034]:43670)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1oG2bm-0005qT-He
- for qemu-arm@nongnu.org; Mon, 25 Jul 2022 14:15:12 -0400
-Received: by mail-pj1-x102f.google.com with SMTP id
- v16-20020a17090abb9000b001f25244c65dso7725325pjr.2
- for <qemu-arm@nongnu.org>; Mon, 25 Jul 2022 11:15:10 -0700 (PDT)
+ id 1oG2gv-0006Zy-HT
+ for qemu-arm@nongnu.org; Mon, 25 Jul 2022 14:20:30 -0400
+Received: by mail-pj1-x1034.google.com with SMTP id
+ o5-20020a17090a3d4500b001ef76490983so11034859pjf.2
+ for <qemu-arm@nongnu.org>; Mon, 25 Jul 2022 11:20:27 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=RMuYv4EVFHYkxhumjJ2SxEr+kwKlkg7raeV+cD/IvUA=;
- b=gdkKLSsn67CGhJcgVZK6E1oznK8FiA2GeWq8C5g/ShfoaiPh7tWV3dMdpTGb1uKEhM
- x7adCPIMCKbE5h1nf3LOQkd95D8YEruVYo76URWAmy/PN/RI0poGBdafZYcoUhvarlQX
- tYD8TMikMYuxhi2hNttDdklf909MIQcgxZepLxEn+pzn/+9SJV4c/IDYGaKqnVGg1Dk0
- jVcbdRRf7hQbilgjF6YK8/M5SBTHlQavxHu5AMhCclx5MqzL0kGntA7w2KTvF+ijPpFN
- yEJ+OGdg7R1KfOpfOJ5+E1QFVkdluph/gvw4aNR80bzghkcqrd0LiBEyvF9EqtYCOFG2
- 7oVg==
+ h=message-id:date:mime-version:user-agent:subject:content-language
+ :from:to:cc:references:in-reply-to:content-transfer-encoding;
+ bh=ACzgSzCa5ERQJBIyGWPc4HKpcVCvjGP1xHu7xLPnF8Q=;
+ b=lP3NpA87wvstnTj22Ldd6LwAxx0lXpE//vOfrAQly0mU4fmI0S/b0tEYcHA9rvAtmz
+ eLQJY4ETzHWGsQxHf6H8alLOMTHoNqn3T+3Wh+Rk6ahz8BAx/mYTD6aoWBNWNHD9Qwih
+ G1X3N7y8gqwyCQXyhiYzcR4X1fD8NPUeO9HidAq2Kc8TAeO1hzvJKHKUBCrg9ZtdLE3m
+ ndyW9E9TWejCHUIytFgkdBwgjFOz7wybg0poemHKHHp3f1WU+yAWl7iLc0Pwt7Eb0Jy7
+ zdPu3DEwvCXrd9wmtzB2dUaYwe0u/Qgp7iuRcXKIDLITGEojANNWYM8a10WmtFrgdDHX
+ FovA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=RMuYv4EVFHYkxhumjJ2SxEr+kwKlkg7raeV+cD/IvUA=;
- b=EjMJILagVC9DFsET3DG5112zTshv9pr4VNMxmPdZcV59t9be6u10XWa4ZdEg3LExHr
- axY1wX0dk1Y5LFZZHVYyl4+VI3j6R/hU0hycRK0W38zJxuKmFBjuv0K4KbtIBS580W+W
- QSKrS4zOlODvVLypE/ZitejPuf3ccuoJMtZANu++4J7OVOmAMMmLS69rVBmpRrY7A5Yv
- utqBPRQoJPq8Bwb0lCT4OhoE4hfIzjkGreNB77z3dgH3QNFlsxlKf8hl6Cykzz2HRdC4
- 3qlfVyxN/7pq/mOYaIVx2E0ej89Fkrve/UK+tFZ6aKqiPJakG1uBAN2sfgQ/t6jYmqO1
- iHpA==
-X-Gm-Message-State: AJIora/1Or8aXJHmff6V3IPcg46SDqIyFa8M/8lmH1lRhYQmd5POfskG
- 2dshFmPcSd8+p9fawwgwnRPOjw==
-X-Received: by 2002:a17:902:8b88:b0:16d:2a70:26d9 with SMTP id
- ay8-20020a1709028b8800b0016d2a7026d9mr13502777plb.84.1658772909150; 
- Mon, 25 Jul 2022 11:15:09 -0700 (PDT)
-Received: from stoup.. ([2602:ae:1549:801:30c1:2484:a853:233d])
+ h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
+ :content-language:from:to:cc:references:in-reply-to
+ :content-transfer-encoding;
+ bh=ACzgSzCa5ERQJBIyGWPc4HKpcVCvjGP1xHu7xLPnF8Q=;
+ b=7rKt8wTQwj7y0CutLTa8GOOqSgmhjQra+Mw74heyg4r25jp3ajudbnEbScRXb8a9nz
+ ki60PTQGB82t7rSE1+WHJL1M34iJVueVEf/aG5P9EZdCovvXvXRydywuWPt9S6nUpFJn
+ aOboFY4fq0yBZi5BvMg5bbn/gCNLZanDimqDiIuiwVgcZg8pcdFq0gwCcWK45mPClEGg
+ yF/345NiQC12z+rU1lFo6mdTeCE+rm6cc7fRKWGyVhQENxCrc6V3sJHQ8pps09urNjjl
+ VqFUWAfTm1X9jgTdSE4agWjSMy8NMSL2U+sD5PQaQan47KhMB0km21KgARNAWrvaNz6x
+ 1+ZQ==
+X-Gm-Message-State: AJIora9JAQIoPAvcnHS1kfMBgyONvWZd3JY/hkGT4x4QDZdrUBD7HjOm
+ J+P3EtgO5rKt62pOG7oZ92buUA==
+X-Received: by 2002:a17:90b:1d01:b0:1f2:104:6424 with SMTP id
+ on1-20020a17090b1d0100b001f201046424mr15263086pjb.101.1658773226097; 
+ Mon, 25 Jul 2022 11:20:26 -0700 (PDT)
+Received: from ?IPV6:2602:ae:1549:801:30c1:2484:a853:233d?
+ ([2602:ae:1549:801:30c1:2484:a853:233d])
  by smtp.gmail.com with ESMTPSA id
- bg5-20020a1709028e8500b0016d8d277c02sm1125004plb.25.2022.07.25.11.15.08
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 25 Jul 2022 11:15:08 -0700 (PDT)
+ 6-20020a620606000000b005255489187fsm9948324pfg.135.2022.07.25.11.20.24
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 25 Jul 2022 11:20:25 -0700 (PDT)
+Message-ID: <8ee6d63a-67a9-0025-06ef-412f042fffae@linaro.org>
+Date: Mon, 25 Jul 2022 11:20:23 -0700
+MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.11.0
+Subject: Re: [PATCH 2/3] target/arm: Set KVM_ARM_VCPU_SVE while probing the
+ host
+Content-Language: en-US
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
-Cc: yuzenghui@huawei.com,
-	qemu-arm@nongnu.org
-Subject: [PATCH 3/3] target/arm: Move sve probe inside kvm >= 4.15 branch
-Date: Mon, 25 Jul 2022 11:14:57 -0700
-Message-Id: <20220725181457.41083-4-richard.henderson@linaro.org>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20220725181457.41083-1-richard.henderson@linaro.org>
+Cc: yuzenghui@huawei.com, qemu-arm@nongnu.org
 References: <20220725181457.41083-1-richard.henderson@linaro.org>
-MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::102f;
- envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x102f.google.com
+ <20220725181457.41083-3-richard.henderson@linaro.org>
+In-Reply-To: <20220725181457.41083-3-richard.henderson@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1034;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x1034.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
@@ -122,50 +128,84 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: vr7IZlMrM8LF
+X-TUID: UmukJCRI8u+A
 
-The test for the IF block indicates no ID registers are exposed, much
-less host support for SVE.  Move the SVE probe into the ELSE block.
+On 7/25/22 11:14, Richard Henderson wrote:
+> Because we weren't setting this flag, our probe of ID_AA64ZFR0
+> was always returning zero.  This also obviates the adjustment
+> of ID_AA64PFR0, which had sanitized the SVE field.
 
-Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
----
- target/arm/kvm64.c | 22 +++++++++++-----------
- 1 file changed, 11 insertions(+), 11 deletions(-)
 
-diff --git a/target/arm/kvm64.c b/target/arm/kvm64.c
-index 8b2ae9948a..bc3d7d9883 100644
---- a/target/arm/kvm64.c
-+++ b/target/arm/kvm64.c
-@@ -684,18 +684,18 @@ bool kvm_arm_get_host_cpu_features(ARMHostCPUFeatures *ahcf)
-             err |= read_sys_reg64(fdarray[2], &ahcf->isar.reset_pmcr_el0,
-                                   ARM64_SYS_REG(3, 3, 9, 12, 0));
-         }
--    }
- 
--    if (sve_supported) {
--        /*
--         * There is a range of kernels between kernel commit 73433762fcae
--         * and f81cb2c3ad41 which have a bug where the kernel doesn't expose
--         * SYS_ID_AA64ZFR0_EL1 via the ONE_REG API unless the VM has enabled
--         * SVE support, which resulted in an error rather than RAZ.
--         * So only read the register if we set KVM_ARM_VCPU_SVE above.
--         */
--        err |= read_sys_reg64(fdarray[2], &ahcf->isar.id_aa64zfr0,
--                              ARM64_SYS_REG(3, 0, 0, 4, 4));
-+        if (sve_supported) {
-+            /*
-+             * There is a range of kernels between kernel commit 73433762fcae
-+             * and f81cb2c3ad41 which have a bug where the kernel doesn't
-+             * expose SYS_ID_AA64ZFR0_EL1 via the ONE_REG API unless the VM has
-+             * enabled SVE support, which resulted in an error rather than RAZ.
-+             * So only read the register if we set KVM_ARM_VCPU_SVE above.
-+             */
-+            err |= read_sys_reg64(fdarray[2], &ahcf->isar.id_aa64zfr0,
-+                                  ARM64_SYS_REG(3, 0, 0, 4, 4));
-+        }
-     }
- 
-     kvm_arm_destroy_scratch_host_vcpu(fdarray);
--- 
-2.34.1
+Oh, I meant to say here that this the effects of the bug are not visible, because the only 
+thing that ISAR.ID_AA64ZFR0 is used for within qemu at present is tcg translation.  The 
+other tests for SVE within KVM are via ISAR.ID_AA64PFR0.SVE.
+
+
+r~
+
+
+> 
+> Reported-by: Zenghui Yu <yuzenghui@huawei.com>
+> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+> ---
+>   target/arm/kvm64.c | 27 +++++++++++++--------------
+>   1 file changed, 13 insertions(+), 14 deletions(-)
+> 
+> diff --git a/target/arm/kvm64.c b/target/arm/kvm64.c
+> index 36ff20c9e3..8b2ae9948a 100644
+> --- a/target/arm/kvm64.c
+> +++ b/target/arm/kvm64.c
+> @@ -512,7 +512,6 @@ bool kvm_arm_get_host_cpu_features(ARMHostCPUFeatures *ahcf)
+>       bool sve_supported;
+>       bool pmu_supported = false;
+>       uint64_t features = 0;
+> -    uint64_t t;
+>       int err;
+>   
+>       /* Old kernels may not know about the PREFERRED_TARGET ioctl: however
+> @@ -533,10 +532,17 @@ bool kvm_arm_get_host_cpu_features(ARMHostCPUFeatures *ahcf)
+>       struct kvm_vcpu_init init = { .target = -1, };
+>   
+>       /*
+> -     * Ask for Pointer Authentication if supported. We can't play the
+> -     * SVE trick of synthesising the ID reg as KVM won't tell us
+> -     * whether we have the architected or IMPDEF version of PAuth, so
+> -     * we have to use the actual ID regs.
+> +     * Ask for SVE if supported, so that we can query ID_AA64ZFR0,
+> +     * which is otherwise RAZ.
+> +     */
+> +    sve_supported = kvm_arm_svm_supported();
+> +    if (sve_supported) {
+> +        init.features[0] |= 1 << KVM_ARM_VCPU_SVE;
+> +    }
+> +
+> +    /*
+> +     * Ask for Pointer Authentication if supported, so that we get
+> +     * the unsanitized field values for AA64ISAR1_EL1.
+>        */
+>       if (kvm_arm_pauth_supported()) {
+>           init.features[0] |= (1 << KVM_ARM_VCPU_PTRAUTH_ADDRESS |
+> @@ -680,20 +686,13 @@ bool kvm_arm_get_host_cpu_features(ARMHostCPUFeatures *ahcf)
+>           }
+>       }
+>   
+> -    sve_supported = kvm_arm_svm_supported();
+> -
+> -    /* Add feature bits that can't appear until after VCPU init. */
+>       if (sve_supported) {
+> -        t = ahcf->isar.id_aa64pfr0;
+> -        t = FIELD_DP64(t, ID_AA64PFR0, SVE, 1);
+> -        ahcf->isar.id_aa64pfr0 = t;
+> -
+>           /*
+>            * There is a range of kernels between kernel commit 73433762fcae
+>            * and f81cb2c3ad41 which have a bug where the kernel doesn't expose
+>            * SYS_ID_AA64ZFR0_EL1 via the ONE_REG API unless the VM has enabled
+> -         * SVE support, so we only read it here, rather than together with all
+> -         * the other ID registers earlier.
+> +         * SVE support, which resulted in an error rather than RAZ.
+> +         * So only read the register if we set KVM_ARM_VCPU_SVE above.
+>            */
+>           err |= read_sys_reg64(fdarray[2], &ahcf->isar.id_aa64zfr0,
+>                                 ARM64_SYS_REG(3, 0, 0, 4, 4));
 

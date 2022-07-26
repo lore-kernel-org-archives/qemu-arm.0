@@ -1,117 +1,124 @@
-Received: by 2002:a05:6512:1086:0:0:0:0 with SMTP id j6csp1022501lfg;
-        Mon, 25 Jul 2022 11:23:34 -0700 (PDT)
-X-Google-Smtp-Source: AGRyM1vmNCTRRnJ0Q6YZb6/0/R249j9p8CRKbw4QLQ7hqwC9b7GoP/9mTh56X30B0RwwbDgTJHwQ
-X-Received: by 2002:a05:620a:19a9:b0:6b6:4f9c:fc24 with SMTP id bm41-20020a05620a19a900b006b64f9cfc24mr6792383qkb.252.1658773414014;
-        Mon, 25 Jul 2022 11:23:34 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1658773414; cv=none;
+Received: by 2002:a05:6512:1086:0:0:0:0 with SMTP id j6csp1568146lfg;
+        Tue, 26 Jul 2022 08:06:32 -0700 (PDT)
+X-Google-Smtp-Source: AGRyM1s5vW3CRDKI2H6R1xWlkvrZJNO3FyZvs9F11sa5jA4p4ew+a6lVOLQh1O3dr7pqyCexZEJY
+X-Received: by 2002:a05:620a:4591:b0:6b5:ff44:39c1 with SMTP id bp17-20020a05620a459100b006b5ff4439c1mr12487567qkb.204.1658847992351;
+        Tue, 26 Jul 2022 08:06:32 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1658847992; cv=none;
         d=google.com; s=arc-20160816;
-        b=Pu0n8pGd/Gn6X7Ho61hD5kA3vD44709i73mU530dzmzlPzr7RU8GpjsgebU0/xaQUC
-         nRgX1xrYs+oWgsW4VCxNV3L0FvdZDpI91EfAEgUfjazlyNbJxa+y9FM2FWYDYlg8bEGu
-         +0xtAfx25pokZAQ4fd+VIZd1D8q95X6626++NBUQSMtiMZOo+ajWrMs7NXpsb05A858p
-         daEAgmehYN93RH304Ri/oFKbKITmmlakzGlcD0FZjIFKHy9eRGkS2pY9F2b4Kh4ktM1I
-         IT9wp+utvt3qnTpzDpG32guPyzDdO8WII819W4p3/VLFS3vsRUjmUeBDSurAwf4qIgzl
-         PY+w==
+        b=jFGxYHPa1tQXDiyvmcGRj5AgHhuE1KK0BvUDNijVy3YyPOy+gEM3DPx2QeAfvDFHrA
+         VMZvFraOmo3tFEoyrNkmDZnJZSfyJC3s0t5AdJzg7Mxk9fFGXJdy1OVtXr0ekmxc45cY
+         bqJ+AgwV1AezS0Ccb6+bZu3R82rkDZNy/lHVQqVu5fNzRu98fsOKcMgHROUsx+Dfo2Vp
+         tqHgYJerN8HttdpfvEI3TYdYFM2fKtcHzuZfz/g86n2T5NdAjCiUR76GmcbcGQKyf1HA
+         zo4ykIa/I19OdfZUinPXA/I9z9ZdYJOUQuRn8z1+oKmduGxhP8TgTq+9O/yLiiwvVWxF
+         a8rw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:references:cc:to:from:content-language:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=ACzgSzCa5ERQJBIyGWPc4HKpcVCvjGP1xHu7xLPnF8Q=;
-        b=GmTPtTGphwfD35+jiyRqC94+zcf0hHCFvUAx6eEoVA2ZT8l8w39tZhQbSwFMJ8BfNi
-         aIl6bU+iAC7ruok/69+v8CYoEviy92q8MlrQidXCUJ6QXVLoDw78B/tNYphVyd+k0Job
-         u3jGDNKwJnGQtCU082UvkciveB3LQKDuBdOJ+AbYO15aPrZbetSgaBi35wVw/SgEIK6B
-         Ka1eu2zqMtwsfbeOYSATHm7Qwx+I/22c+RGaoQwyi36+esbHSEb1p/XhAdBfGHdz+XWx
-         OJoG3q6Llp+HibxGVoY3jrvpBIs8isqfMHsCNzE26fTUPypAVAYsFsvdHTgAHUoi9/j5
-         6f0A==
+         :list-unsubscribe:list-id:precedence:content-disposition:in-reply-to
+         :mime-version:references:message-id:subject:cc:to:from:date
+         :dkim-signature;
+        bh=WvUq+4+UZEdCZNghObbzTIsHwGzQaP0cbPTa0Ik0SXE=;
+        b=a0x5KE05gGXKtb1gXlVA7zXoRhCwVNZuKgXw5LLWV8PjBqdHA5ueUXKo+z4QNYvptH
+         ZRyrsyBuTE+EJWEPfl5V60vUUPyS2oCH8vlmOprUtp9y6jCO/4VnFqybfVHYZNlocKFS
+         hKdAW/ISkhDArPvAJJ4R+cH8N6UQ0kPD/mUJGgNjWo/lOwPvWdH+v3heMyFxQ5Spiw0j
+         ka5SHyJhoplrR0WZAa0jwvbhmvN905IFKNgOYzOTC3Kp6maSx5QSxX6i/RTW6GZ+c/Ku
+         +LB7FWmN40kjydoTVjfTjrWwS51tJeu9M4HA17BChSfMNWVJuSa1vRTx6LgKysKAgZGG
+         EdMQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=lP3NpA87;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=LLvcf3aj;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e124-20020a378282000000b006b57485aff2si7112750qkd.648.2022.07.25.11.23.33
+        by mx.google.com with ESMTPS id jx11-20020a0562142b0b00b00474247be353si7345650qvb.25.2022.07.26.08.06.32
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 25 Jul 2022 11:23:34 -0700 (PDT)
+        Tue, 26 Jul 2022 08:06:32 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=lP3NpA87;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=LLvcf3aj;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:33968 helo=lists1p.gnu.org)
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:49220 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1oG2jt-0003ed-Gb
-	for alex.bennee@linaro.org; Mon, 25 Jul 2022 14:23:33 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:47790)
+	id 1oGM8l-0005OI-RZ
+	for alex.bennee@linaro.org; Tue, 26 Jul 2022 11:06:31 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:45484)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1oG2gx-0000bV-9L
- for qemu-arm@nongnu.org; Mon, 25 Jul 2022 14:20:31 -0400
-Received: from mail-pj1-x1034.google.com ([2607:f8b0:4864:20::1034]:43670)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1oG2gv-0006Zy-HT
- for qemu-arm@nongnu.org; Mon, 25 Jul 2022 14:20:30 -0400
-Received: by mail-pj1-x1034.google.com with SMTP id
- o5-20020a17090a3d4500b001ef76490983so11034859pjf.2
- for <qemu-arm@nongnu.org>; Mon, 25 Jul 2022 11:20:27 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=message-id:date:mime-version:user-agent:subject:content-language
- :from:to:cc:references:in-reply-to:content-transfer-encoding;
- bh=ACzgSzCa5ERQJBIyGWPc4HKpcVCvjGP1xHu7xLPnF8Q=;
- b=lP3NpA87wvstnTj22Ldd6LwAxx0lXpE//vOfrAQly0mU4fmI0S/b0tEYcHA9rvAtmz
- eLQJY4ETzHWGsQxHf6H8alLOMTHoNqn3T+3Wh+Rk6ahz8BAx/mYTD6aoWBNWNHD9Qwih
- G1X3N7y8gqwyCQXyhiYzcR4X1fD8NPUeO9HidAq2Kc8TAeO1hzvJKHKUBCrg9ZtdLE3m
- ndyW9E9TWejCHUIytFgkdBwgjFOz7wybg0poemHKHHp3f1WU+yAWl7iLc0Pwt7Eb0Jy7
- zdPu3DEwvCXrd9wmtzB2dUaYwe0u/Qgp7iuRcXKIDLITGEojANNWYM8a10WmtFrgdDHX
- FovA==
+ (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1oGM7J-0005JI-9T
+ for qemu-arm@nongnu.org; Tue, 26 Jul 2022 11:05:01 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:46549)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1oGM7F-0002zW-U2
+ for qemu-arm@nongnu.org; Tue, 26 Jul 2022 11:04:59 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1658847896;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=WvUq+4+UZEdCZNghObbzTIsHwGzQaP0cbPTa0Ik0SXE=;
+ b=LLvcf3ajyUkgi375WzvQRzlMdwoxE8jdb3NBrgsri3jCHeJZ8cnIZ5f/KVKyqj5Mpw2f/0
+ ZGxupO95zQ5Drdc1ji14uE2+TpYIjOVUtyawkIkGppWDGKjaCKrQWcerwqghFUaBoBSpJj
+ QBGARUzdXJ5mGMLpMIUoVrPnK8hpMOY=
+Received: from mail-ed1-f72.google.com (mail-ed1-f72.google.com
+ [209.85.208.72]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-584-QZp1JAIhNxi8KSg5FHMbOA-1; Tue, 26 Jul 2022 11:04:55 -0400
+X-MC-Unique: QZp1JAIhNxi8KSg5FHMbOA-1
+Received: by mail-ed1-f72.google.com with SMTP id
+ w5-20020a05640234c500b0043be08bb082so5169418edc.9
+ for <qemu-arm@nongnu.org>; Tue, 26 Jul 2022 08:04:54 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
- :content-language:from:to:cc:references:in-reply-to
- :content-transfer-encoding;
- bh=ACzgSzCa5ERQJBIyGWPc4HKpcVCvjGP1xHu7xLPnF8Q=;
- b=7rKt8wTQwj7y0CutLTa8GOOqSgmhjQra+Mw74heyg4r25jp3ajudbnEbScRXb8a9nz
- ki60PTQGB82t7rSE1+WHJL1M34iJVueVEf/aG5P9EZdCovvXvXRydywuWPt9S6nUpFJn
- aOboFY4fq0yBZi5BvMg5bbn/gCNLZanDimqDiIuiwVgcZg8pcdFq0gwCcWK45mPClEGg
- yF/345NiQC12z+rU1lFo6mdTeCE+rm6cc7fRKWGyVhQENxCrc6V3sJHQ8pps09urNjjl
- VqFUWAfTm1X9jgTdSE4agWjSMy8NMSL2U+sD5PQaQan47KhMB0km21KgARNAWrvaNz6x
- 1+ZQ==
-X-Gm-Message-State: AJIora9JAQIoPAvcnHS1kfMBgyONvWZd3JY/hkGT4x4QDZdrUBD7HjOm
- J+P3EtgO5rKt62pOG7oZ92buUA==
-X-Received: by 2002:a17:90b:1d01:b0:1f2:104:6424 with SMTP id
- on1-20020a17090b1d0100b001f201046424mr15263086pjb.101.1658773226097; 
- Mon, 25 Jul 2022 11:20:26 -0700 (PDT)
-Received: from ?IPV6:2602:ae:1549:801:30c1:2484:a853:233d?
- ([2602:ae:1549:801:30c1:2484:a853:233d])
- by smtp.gmail.com with ESMTPSA id
- 6-20020a620606000000b005255489187fsm9948324pfg.135.2022.07.25.11.20.24
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 25 Jul 2022 11:20:25 -0700 (PDT)
-Message-ID: <8ee6d63a-67a9-0025-06ef-412f042fffae@linaro.org>
-Date: Mon, 25 Jul 2022 11:20:23 -0700
+ h=in-reply-to:content-disposition:mime-version:references:message-id
+ :subject:cc:to:from:date:x-gm-message-state:from:to:cc;
+ bh=WvUq+4+UZEdCZNghObbzTIsHwGzQaP0cbPTa0Ik0SXE=;
+ b=1Kto7EUlVDD/muLVi9Wp4jSgNgIMeya+ARlAkK+yxUWakvg2n46UukhD0wvRPV5hca
+ +ouQvxGsPcT7rJC73yU+vvqNDZvxJzAcxpmE+nnSjz+ZYH0mkR+UdzoZxdgcPVEXqMDk
+ SXG/nM5xwtTQ/hyNGrgj6Os7C4yDae/3JNXexa2LJjdPy7hVea5tZ59Cgs5wTm19opaX
+ 4QNIIqrrKe8IuSxBXVC/zKsC4mWqtlGMwQgnkKp1cuumm5W1zZhXZm3vgHwU8rIgu0ng
+ zI5dGbD7c5L0mMmzCHL5026NpJQieU6P3KsqqSGqLS1hlHIQJ6FkKdn3XGXfJu6vqgzn
+ 2+lA==
+X-Gm-Message-State: AJIora+lCHQF4tYoYSyzQanT3dE4WH75Nm3owOmgQ091sglLbARvNflr
+ O7ZPp+Pn05VofD9cILS0+iANqMBcBjdJRgPjFxRNjBxuAEprRX5NCQqSSnzID5/PAYAqKOb/GNu
+ pl/15bjACy8i/
+X-Received: by 2002:a05:6402:278c:b0:43a:91cb:c43a with SMTP id
+ b12-20020a056402278c00b0043a91cbc43amr18768250ede.188.1658847894027; 
+ Tue, 26 Jul 2022 08:04:54 -0700 (PDT)
+X-Received: by 2002:a05:6402:278c:b0:43a:91cb:c43a with SMTP id
+ b12-20020a056402278c00b0043a91cbc43amr18768213ede.188.1658847893371; 
+ Tue, 26 Jul 2022 08:04:53 -0700 (PDT)
+Received: from redhat.com ([2.55.43.166]) by smtp.gmail.com with ESMTPSA id
+ b7-20020aa7c6c7000000b0043a78236cd2sm8784603eds.89.2022.07.26.08.04.50
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 26 Jul 2022 08:04:52 -0700 (PDT)
+Date: Tue, 26 Jul 2022 11:04:48 -0400
+From: "Michael S. Tsirkin" <mst@redhat.com>
+To: Hesham Almatary <Hesham.Almatary@cl.cam.ac.uk>
+Cc: jonathan.cameron@huawei.com, qemu-devel@nongnu.org,
+ yangyicong@huawei.com, chenxiang66@hisilicon.com,
+ linuxarm@huawei.com, qemu-arm@nongnu.org, peter.maydell@linaro.org,
+ imammedo@redhat.com, wangyanan55@huawei.com,
+ marcel.apfelbaum@gmail.com, eduardo@habkost.net,
+ Brice.Goglin@inria.fr, jingqi.liu@intel.com
+Subject: Re: [PATCH v2 0/8] AArch64/HMAT support and tests
+Message-ID: <20220726110406-mutt-send-email-mst@kernel.org>
+References: <20220719094950.1049516-1-hesham.almatary@huawei.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.11.0
-Subject: Re: [PATCH 2/3] target/arm: Set KVM_ARM_VCPU_SVE while probing the
- host
-Content-Language: en-US
-From: Richard Henderson <richard.henderson@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: yuzenghui@huawei.com, qemu-arm@nongnu.org
-References: <20220725181457.41083-1-richard.henderson@linaro.org>
- <20220725181457.41083-3-richard.henderson@linaro.org>
-In-Reply-To: <20220725181457.41083-3-richard.henderson@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1034;
- envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x1034.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+In-Reply-To: <20220719094950.1049516-1-hesham.almatary@huawei.com>
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=mst@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=mst@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -21
+X-Spam_score: -2.2
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.001,
+X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.082,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
@@ -128,84 +135,69 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: UmukJCRI8u+A
+X-TUID: 75Ihi/CypMwU
 
-On 7/25/22 11:14, Richard Henderson wrote:
-> Because we weren't setting this flag, our probe of ID_AA64ZFR0
-> was always returning zero.  This also obviates the adjustment
-> of ID_AA64PFR0, which had sanitized the SVE field.
-
-
-Oh, I meant to say here that this the effects of the bug are not visible, because the only 
-thing that ISAR.ID_AA64ZFR0 is used for within qemu at present is tcg translation.  The 
-other tests for SVE within KVM are via ISAR.ID_AA64PFR0.SVE.
-
-
-r~
-
-
+On Tue, Jul 19, 2022 at 10:49:42AM +0100, Hesham Almatary wrote:
+> This patchset adds support for AArch64/HMAT including a test.
+> It relies on other two patch sets from:
 > 
-> Reported-by: Zenghui Yu <yuzenghui@huawei.com>
-> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
-> ---
->   target/arm/kvm64.c | 27 +++++++++++++--------------
->   1 file changed, 13 insertions(+), 14 deletions(-)
+> Brice Goglin: to support -numa without initiators on q35/x86.
+>   https://lore.kernel.org/all/ed23accb-2c8b-90f4-a7a3-f81cc57bf678@inria.fr/
+> Xiang Chen: to enable/support HMAT on AArch64.
+>   https://lore.kernel.org/all/1643102134-15506-1-git-send-email-chenxiang66@hisilicon.com/
+
+Thanks!
+I think it's best to merge this all after the release.
+I've tagged this but please ping me after the release
+just to make sure. Thanks everyone!
+
+> I further add a test with ACPI/HMAT tables that uses the two
+> patch sets.
 > 
-> diff --git a/target/arm/kvm64.c b/target/arm/kvm64.c
-> index 36ff20c9e3..8b2ae9948a 100644
-> --- a/target/arm/kvm64.c
-> +++ b/target/arm/kvm64.c
-> @@ -512,7 +512,6 @@ bool kvm_arm_get_host_cpu_features(ARMHostCPUFeatures *ahcf)
->       bool sve_supported;
->       bool pmu_supported = false;
->       uint64_t features = 0;
-> -    uint64_t t;
->       int err;
->   
->       /* Old kernels may not know about the PREFERRED_TARGET ioctl: however
-> @@ -533,10 +532,17 @@ bool kvm_arm_get_host_cpu_features(ARMHostCPUFeatures *ahcf)
->       struct kvm_vcpu_init init = { .target = -1, };
->   
->       /*
-> -     * Ask for Pointer Authentication if supported. We can't play the
-> -     * SVE trick of synthesising the ID reg as KVM won't tell us
-> -     * whether we have the architected or IMPDEF version of PAuth, so
-> -     * we have to use the actual ID regs.
-> +     * Ask for SVE if supported, so that we can query ID_AA64ZFR0,
-> +     * which is otherwise RAZ.
-> +     */
-> +    sve_supported = kvm_arm_svm_supported();
-> +    if (sve_supported) {
-> +        init.features[0] |= 1 << KVM_ARM_VCPU_SVE;
-> +    }
-> +
-> +    /*
-> +     * Ask for Pointer Authentication if supported, so that we get
-> +     * the unsanitized field values for AA64ISAR1_EL1.
->        */
->       if (kvm_arm_pauth_supported()) {
->           init.features[0] |= (1 << KVM_ARM_VCPU_PTRAUTH_ADDRESS |
-> @@ -680,20 +686,13 @@ bool kvm_arm_get_host_cpu_features(ARMHostCPUFeatures *ahcf)
->           }
->       }
->   
-> -    sve_supported = kvm_arm_svm_supported();
-> -
-> -    /* Add feature bits that can't appear until after VCPU init. */
->       if (sve_supported) {
-> -        t = ahcf->isar.id_aa64pfr0;
-> -        t = FIELD_DP64(t, ID_AA64PFR0, SVE, 1);
-> -        ahcf->isar.id_aa64pfr0 = t;
-> -
->           /*
->            * There is a range of kernels between kernel commit 73433762fcae
->            * and f81cb2c3ad41 which have a bug where the kernel doesn't expose
->            * SYS_ID_AA64ZFR0_EL1 via the ONE_REG API unless the VM has enabled
-> -         * SVE support, so we only read it here, rather than together with all
-> -         * the other ID registers earlier.
-> +         * SVE support, which resulted in an error rather than RAZ.
-> +         * So only read the register if we set KVM_ARM_VCPU_SVE above.
->            */
->           err |= read_sys_reg64(fdarray[2], &ahcf->isar.id_aa64zfr0,
->                                 ARM64_SYS_REG(3, 0, 0, 4, 4));
+> Changes from v1:
+> - Generate APIC and PPTT ACPI tables for AArch64/virt
+> - Avoid using legacy syntax in numa/bios tests
+> - Delete unchanged FACP tables
+> 
+> Brice Goglin (4):
+>   hmat acpi: Don't require initiator value in -numa
+>   tests: acpi: add and whitelist *.hmat-noinitiator expected blobs
+>   tests: acpi: q35: add test for hmat nodes without initiators
+>   tests: acpi: q35: update expected blobs *.hmat-noinitiators expected
+>     HMAT:
+> 
+> Hesham Almatary (3):
+>   tests: Add HMAT AArch64/virt empty table files
+>   tests: acpi: aarch64/virt: add a test for hmat nodes with no initiators
+>   tests: virt: Update expected *.acpihmatvirt tables
+> 
+> Xiang Chen (1):
+>   hw/arm/virt: Enable HMAT on arm virt machine
+> 
+>  hw/arm/Kconfig                                |   1 +
+>  hw/arm/virt-acpi-build.c                      |   7 ++
+>  hw/core/machine.c                             |   4 +-
+>  tests/data/acpi/q35/APIC.acpihmat-noinitiator | Bin 0 -> 144 bytes
+>  tests/data/acpi/q35/DSDT.acpihmat-noinitiator | Bin 0 -> 8553 bytes
+>  tests/data/acpi/q35/HMAT.acpihmat-noinitiator | Bin 0 -> 288 bytes
+>  tests/data/acpi/q35/SRAT.acpihmat-noinitiator | Bin 0 -> 312 bytes
+>  tests/data/acpi/virt/APIC.acpihmatvirt        | Bin 0 -> 396 bytes
+>  tests/data/acpi/virt/DSDT.acpihmatvirt        | Bin 0 -> 5282 bytes
+>  tests/data/acpi/virt/HMAT.acpihmatvirt        | Bin 0 -> 288 bytes
+>  tests/data/acpi/virt/PPTT.acpihmatvirt        | Bin 0 -> 196 bytes
+>  tests/data/acpi/virt/SRAT.acpihmatvirt        | Bin 0 -> 240 bytes
+>  tests/qtest/bios-tables-test.c                | 109 ++++++++++++++++++
+>  13 files changed, 118 insertions(+), 3 deletions(-)
+>  create mode 100644 tests/data/acpi/q35/APIC.acpihmat-noinitiator
+>  create mode 100644 tests/data/acpi/q35/DSDT.acpihmat-noinitiator
+>  create mode 100644 tests/data/acpi/q35/HMAT.acpihmat-noinitiator
+>  create mode 100644 tests/data/acpi/q35/SRAT.acpihmat-noinitiator
+>  create mode 100644 tests/data/acpi/virt/APIC.acpihmatvirt
+>  create mode 100644 tests/data/acpi/virt/DSDT.acpihmatvirt
+>  create mode 100644 tests/data/acpi/virt/HMAT.acpihmatvirt
+>  create mode 100644 tests/data/acpi/virt/PPTT.acpihmatvirt
+>  create mode 100644 tests/data/acpi/virt/SRAT.acpihmatvirt
+> 
+> -- 
+> 2.25.1
 

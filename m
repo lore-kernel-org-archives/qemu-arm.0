@@ -1,157 +1,136 @@
-Received: by 2002:a05:6512:1086:0:0:0:0 with SMTP id j6csp914772lfg;
-        Mon, 25 Jul 2022 08:06:11 -0700 (PDT)
-X-Google-Smtp-Source: AGRyM1tqE73PMu3WipKSXJdcNqeP7yv8WbZjANm8G2DBkAG03K9oNy+cLXP8kfHPKBIZBjFSgx30
-X-Received: by 2002:a05:6102:3e0d:b0:358:5c4f:5253 with SMTP id j13-20020a0561023e0d00b003585c4f5253mr1433995vsv.58.1658761571588;
-        Mon, 25 Jul 2022 08:06:11 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1658761571; cv=none;
+Received: by 2002:a05:6512:1086:0:0:0:0 with SMTP id j6csp1215513lfg;
+        Mon, 25 Jul 2022 19:03:29 -0700 (PDT)
+X-Google-Smtp-Source: AGRyM1umXeh3ziQ82NVwUZVIevymE2Tl1poV6InSIx0fPzW/wdODDeiLK6lKRl1XjpkwLHbUWGMc
+X-Received: by 2002:a05:620a:404a:b0:6b6:1f33:36ca with SMTP id i10-20020a05620a404a00b006b61f3336camr10680774qko.689.1658801008974;
+        Mon, 25 Jul 2022 19:03:28 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1658801008; cv=none;
         d=google.com; s=arc-20160816;
-        b=g0m/4c0YT1imAx6EUM6aXVijK5HCt3nWUzaQC4peCjDE8BD9f7qesHjPJV7NGtH15a
-         oBux/IoGmZx/O9nczj1jENhFk6ZzNBGSfvEcKQ02F5swvilAfJANWdWWprWTNc+fHmi3
-         OvTUbR7EtIkAT9aKS5vtIxIVZeHK+vkXK4r+CJoKF5y1L34KmLTFc6Mb2t/P9zRLTNxx
-         bZrQWyOWb5YvDBDDKGbjMAh29LxS+5B0jwnQ5jaeK73k5rZHP0gJlbK+8ws0Rl/X7yH9
-         jSci+VnOVeq7ZlZtFqyG/DBiSxOpZSRo5WF+1rDa3b1EYnHchWKRd2cA8aKHaXoxMXNL
-         tBRw==
+        b=0dnIqOisnEJh2LgSNyxu7f9zynWpDnB033peaeb7wHE7yOxCNbOTB3KDx9renBOSZM
+         MhDsIr5kfU7seu5npb+mOWTWoDwSgDb/GNCmr5utRicZIIJmwkxihxN87dFtHKW9ezfe
+         msOKPkULD3CcwfegGVC6D6nnVL6tL2Fjm4yu+vIpb2ya0ob7rIz0xcplxo70htcEis84
+         G3QYqIORQkndvcwkfjh2+XVSMNjJadf4VeeGh+nmCxWdXxExgjaKAZv+4ugU8DIXIg2H
+         P48lcd/km0VIa/p++EN37VCobQK4YmhifMph+9c0brxT0BCQ0cap2kVGf9YLcrPcs60P
+         2DwQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
-        bh=O630ZHvwqLA8MIAsYUIHlxVlcbZ6jvT8+3Z4HLFNcpA=;
-        b=UucHbWswtnIQSDuwtBaTDQbUEvN1EIdWX7cD/tkUvdGC+hQvqv63BxZMFAViUPJ8AX
-         WrY4Pi9RAK1T/8yp8j9bU16g4fqH1hV6fOQmIfuf0oB3xs9T/KXCYUY3EDZ2Gi9JE+ml
-         9MoODbttEoLiLM1SAxTixr991KgZgchmbnKdvF21gCbyWqQSPlVgSUGNRDJwXAkdomYA
-         Q/yCp0OTmAdNxmGwaOc36xmQtvdVNJE03KLiorbE82XOQQPiizd53qhocqwe+3YYd/zh
-         cZdfQGMgJuk5ehR92iZmJtguHthqF81XLyLDjwz/u3HTzaAyxeP9G8RCqb8zP5KJ9jx9
-         qCgg==
+        h=from:reply-to:sender:errors-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:references:cc:to:subject;
+        bh=iu8BNw14DLphszZc/rnCtjkErirdh7fHA4qICXXmtDk=;
+        b=AP/eoTVe6dnMzcRXL4ancxM3OWwzg0uyRmkC9tfzc1358JzkqQSPo3lgz1W1kUH29s
+         xfMudBTSGvLV8tyR0Yq6qB2eTrrVGIiHt02SOC3/MIuWFg6NAwzGTuRiF0RV/2HvENSE
+         v/NVjBNWQ333BUEj+CVxscPtKanS9SFb4Uve5DRF8zNtHtXHJPXYzVMpEeWz4Y0r4ool
+         tJOym/VF2kbdTe94vRvBAAcyehlk3v0T2xsxfryOhphk3gVv/d8UD7qxaqG3eO60gV1O
+         UbWejWylBpS+9EyxaFze8eqiJa5RX4dZprir0gUZTa/hT6P3DyzJLPEyejzJiLShMbKA
+         Eyvg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=eRAGsAxK;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id k193-20020a1f24ca000000b003704153329csi1418290vkk.213.2022.07.25.08.06.11
+        by mx.google.com with ESMTPS id c15-20020a05622a058f00b00304a5c5f331si6334168qtb.595.2022.07.25.19.03.28
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 25 Jul 2022 08:06:11 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 25 Jul 2022 19:03:28 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=eRAGsAxK;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:57962 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+Received: from localhost ([::1]:46178 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1oFzet-0005Mw-2X
-	for alex.bennee@linaro.org; Mon, 25 Jul 2022 11:06:11 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34380)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1oG9uy-0002v3-B3
+	for alex.bennee@linaro.org; Mon, 25 Jul 2022 22:03:28 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:57556)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alanjian85@gmail.com>)
- id 1oFzbz-0003F1-UP; Mon, 25 Jul 2022 11:03:14 -0400
-Received: from mail-pg1-x52e.google.com ([2607:f8b0:4864:20::52e]:39541)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <alanjian85@gmail.com>)
- id 1oFzbu-0001Gc-Hk; Mon, 25 Jul 2022 11:03:11 -0400
-Received: by mail-pg1-x52e.google.com with SMTP id q16so10608435pgq.6;
- Mon, 25 Jul 2022 08:03:05 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=O630ZHvwqLA8MIAsYUIHlxVlcbZ6jvT8+3Z4HLFNcpA=;
- b=eRAGsAxKHo5Lpsz9vVqcxTSUplv11TxiVeENA34Uq0wZQrZPhJfp2ps2XfC4rMEzt+
- qBnXxbrZEg4EP0nTwP6tK0VayCXsfMMKdYCzqkC7QBjVMvsY/2sYNbMkv4Y3Ad7vYE+h
- ZCi6IeIlegfKnVwllLJEV3qu/3/7flFYatSwT0nRzATknwlGEwfDCPFyfq+/XIspgY2Y
- mOo5FCUwovYxNZl1jb59VqhHoj0MdQiuICCglg5/AqDwsjiIAvypC+kXtjPCrFvtszid
- czg4zkqiv+E1GhOIbzrAXGURdS0qOCcBmsq0QfsOn+CpL22OPbVbuJO2z3d97jOu7RSx
- K6RA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=O630ZHvwqLA8MIAsYUIHlxVlcbZ6jvT8+3Z4HLFNcpA=;
- b=lJs7dMkJ7RFepgVT2yVfh0W6mCpimFdLySGRuIGNO4r+ZoT0nLpWpAdPY0Mv7YLm+G
- BTxx7VCr/IRFL3H2qKYbpnYutE1AoRB9jvCCUlFuCtm9qVhJIfipvl21JCoisg59zJLE
- /EPJKc1fYDr6cE6ab9M0EdU27PkE4NoqHU6j3HMjhHb5XVF6/V+hUFYAxtuvqJl6tkYq
- MRgzZqy6llsD1ALcj52xEBFSZ//Hdl9H63T9JqF1SxZhJs/KBlJtyZTKoYqlVieiKAPi
- g7kM64ox1QAerkeWGS+d/GpAzBA7hDUK5SAoEMkRHRkE38hP8hSNuxj+ERTLfx+jKb3F
- DOcw==
-X-Gm-Message-State: AJIora9MAdw2xuBZSJSs94oN3o7dOW0U7SY4NdW/gCz/fqBFaXCkmKnJ
- kgvPF9lrp+z3kKyZ6va2txQZ3jkSCAZrXQ==
-X-Received: by 2002:a05:6a00:198f:b0:52a:dc25:cc78 with SMTP id
- d15-20020a056a00198f00b0052adc25cc78mr13114669pfl.20.1658761384295; 
- Mon, 25 Jul 2022 08:03:04 -0700 (PDT)
-Received: from alanjian85-Vostro-5490.. (36-227-56-150.dynamic-ip.hinet.net.
- [36.227.56.150]) by smtp.gmail.com with ESMTPSA id
- h7-20020a17090a604700b001f1ef42fd7bsm11209451pjm.36.2022.07.25.08.03.02
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 25 Jul 2022 08:03:03 -0700 (PDT)
-From: Alan Jian <alanjian85@gmail.com>
-X-Google-Original-From: Alan Jian <alanjian85@outlook.com>
-To: qemu-arm@nongnu.org
-Cc: qemu-devel@nongnu.org,
-	Alan Jian <alanjian85@outlook.com>
-Subject: [PATCH v2] hw/display/bcm2835_fb: Fix framebuffer allocation address
-Date: Mon, 25 Jul 2022 22:58:39 +0800
-Message-Id: <20220725145838.8412-1-alanjian85@outlook.com>
-X-Mailer: git-send-email 2.34.1
+ (Exim 4.90_1) (envelope-from <yuzenghui@huawei.com>)
+ id 1oG9tx-0002uo-VB; Mon, 25 Jul 2022 22:02:25 -0400
+Received: from szxga03-in.huawei.com ([45.249.212.189]:5163)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <yuzenghui@huawei.com>)
+ id 1oG9tu-00044M-Bg; Mon, 25 Jul 2022 22:02:24 -0400
+Received: from dggemv711-chm.china.huawei.com (unknown [172.30.72.54])
+ by szxga03-in.huawei.com (SkyGuard) with ESMTP id 4LsKrd6X2Wz9svL;
+ Tue, 26 Jul 2022 10:01:05 +0800 (CST)
+Received: from kwepemm600007.china.huawei.com (7.193.23.208) by
+ dggemv711-chm.china.huawei.com (10.1.198.66) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2375.24; Tue, 26 Jul 2022 10:02:10 +0800
+Received: from [10.174.185.179] (10.174.185.179) by
+ kwepemm600007.china.huawei.com (7.193.23.208) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2375.24; Tue, 26 Jul 2022 10:02:09 +0800
+Subject: Re: [PATCH 1/3] target/arm: Create kvm_arm_svm_supported
+To: Richard Henderson <richard.henderson@linaro.org>
+CC: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>
+References: <20220725181457.41083-1-richard.henderson@linaro.org>
+ <20220725181457.41083-2-richard.henderson@linaro.org>
+Message-ID: <8d493056-fc22-cc0a-29ab-15a810ff1c30@huawei.com>
+Date: Tue, 26 Jul 2022 10:02:08 +0800
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:68.0) Gecko/20100101
+ Thunderbird/68.9.0
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::52e;
- envelope-from=alanjian85@gmail.com; helo=mail-pg1-x52e.google.com
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+In-Reply-To: <20220725181457.41083-2-richard.henderson@linaro.org>
+Content-Type: text/plain; charset="utf-8"; format=flowed
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [10.174.185.179]
+X-ClientProxiedBy: dggems701-chm.china.huawei.com (10.3.19.178) To
+ kwepemm600007.china.huawei.com (7.193.23.208)
+X-CFilter-Loop: Reflected
+Received-SPF: pass client-ip=45.249.212.189; envelope-from=yuzenghui@huawei.com;
+ helo=szxga03-in.huawei.com
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_MED=-2.3, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Hpa2VaNvZucg
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Reply-to:  Zenghui Yu <yuzenghui@huawei.com>
+From:  Zenghui Yu via <qemu-arm@nongnu.org>
+X-TUID: qvqC7lY37Uvs
 
-This patch fixes the dedicated framebuffer mailbox interface(marked as
-deprecated in official docs, but can still be fixed for emulation purposes)
-by removing unneeded offset to make it works like buffer allocate tag in
-bcm2835_property interface[1], some baremetal applications like the
-Screen01/Screen02 examples from Baking Pi tutorial[2] didn't work
-before this patch.
+Hi Richard,
 
-[1] https://github.com/qemu/qemu/blob/master/hw/misc/bcm2835_property.c#L158
-[2] https://www.cl.cam.ac.uk/projects/raspberrypi/tutorials/os/screen01.html
+On 2022/7/26 2:14, Richard Henderson wrote:
+> Indication for support for SVE will not depend on whether we
+> perform the query on the main kvm_state or the temp vcpu.
+> Mirror kvm_arm_pauth_supported.
+> 
+> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+> ---
+>  target/arm/kvm64.c | 7 ++++++-
+>  1 file changed, 6 insertions(+), 1 deletion(-)
+> 
+> diff --git a/target/arm/kvm64.c b/target/arm/kvm64.c
+> index d16d4ea250..36ff20c9e3 100644
+> --- a/target/arm/kvm64.c
+> +++ b/target/arm/kvm64.c
+> @@ -496,6 +496,11 @@ static bool kvm_arm_pauth_supported(void)
+>              kvm_check_extension(kvm_state, KVM_CAP_ARM_PTRAUTH_GENERIC));
+>  }
+>  
+> +static bool kvm_arm_svm_supported(void)
+> +{
+> +    return kvm_check_extension(kvm_state, KVM_CAP_ARM_SVE);
+> +}
+> +
 
-Signed-off-by: Alan Jian <alanjian85@outlook.com>
----
-This patch is v2 because the previous one is signed by my username, not my full name, 
-which is not allowed in the submission rule of QEMU.
+Not sure if it's a typo. Maybe we should instead use
+kvm_arm_sve_supported() which was introduced in commit 14e99e0fbbc6.
 
- hw/display/bcm2835_fb.c | 3 +--
- 1 file changed, 1 insertion(+), 2 deletions(-)
-
-diff --git a/hw/display/bcm2835_fb.c b/hw/display/bcm2835_fb.c
-index 088fc3d51c..a05277674f 100644
---- a/hw/display/bcm2835_fb.c
-+++ b/hw/display/bcm2835_fb.c
-@@ -279,8 +279,7 @@ static void bcm2835_fb_mbox_push(BCM2835FBState *s, uint32_t value)
-     newconf.xoffset = ldl_le_phys(&s->dma_as, value + 24);
-     newconf.yoffset = ldl_le_phys(&s->dma_as, value + 28);
- 
--    newconf.base = s->vcram_base | (value & 0xc0000000);
--    newconf.base += BCM2835_FB_OFFSET;
-+    newconf.base = s->vcram_base + BCM2835_FB_OFFSET;
- 
-     /* Copy fields which we don't want to change from the existing config */
-     newconf.pixo = s->config.pixo;
--- 
-2.34.1
-
+Zenghui

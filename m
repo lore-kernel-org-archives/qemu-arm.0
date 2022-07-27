@@ -1,121 +1,115 @@
-Received: by 2002:a05:6512:1086:0:0:0:0 with SMTP id j6csp171966lfg;
-        Wed, 27 Jul 2022 03:32:46 -0700 (PDT)
-X-Google-Smtp-Source: AGRyM1vGw89SqAyuo4kQ+AO/J68e4g64Xo7tMO0OmOXoNGo65TxzWAW7QDgEtH5dm0oJejLchY4h
-X-Received: by 2002:ac8:5f0f:0:b0:31f:3966:3f87 with SMTP id x15-20020ac85f0f000000b0031f39663f87mr10413732qta.578.1658917966173;
-        Wed, 27 Jul 2022 03:32:46 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1658917966; cv=none;
+Received: by 2002:a05:6512:1086:0:0:0:0 with SMTP id j6csp192739lfg;
+        Wed, 27 Jul 2022 04:14:52 -0700 (PDT)
+X-Google-Smtp-Source: AGRyM1tE9NS+rOJUWoKJeKPkaiICY6hyLyDhYeLK1mjSlApM80XNXF1muVVjWv5bIaYub8iVg4ng
+X-Received: by 2002:a05:622a:1a8b:b0:31f:82e:8b1c with SMTP id s11-20020a05622a1a8b00b0031f082e8b1cmr18268417qtc.659.1658920491928;
+        Wed, 27 Jul 2022 04:14:51 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1658920491; cv=none;
         d=google.com; s=arc-20160816;
-        b=fWU7Trh1CeN4qJhC0AJFs6IoMpay15eqmQ/GZIVc2n0/0KSaKd9NQnA0CW4LdZ8OqS
-         DlOtniH+C1Dqj93ejcqSrMirOdCs1XMEfay0sUGPkw5MiXyqkGLoLTRGHfKDGs2itf9W
-         BcNKLUgdEzC8K/pxHBBrWyUM/GQH2YvSesPWTF54CdRk2eCPGa/BdhAVEtTyHBgA6txX
-         UrxBtnFz4TvOj/xWEaR5bmTZ8SMFWESAFNN6GXNBZFfSGWT865rpU2QoR+DED3GGLNgU
-         DxNavr5okj1TP9moVSAmpwoyiquSzuwZkcnc2T80L35nClcLNglzsQNDX64Zy3FP1KzW
-         6l2w==
+        b=VY1GVcfmLOJmbo9fIvkiF0tL4+v0XHNffHhBloFmp77LhkiQ1vzvprWWuYhAkSvjzx
+         6CbpDtUvnFTe7GK5okiDFlXov6Ck+hv/qcsOMf9hNgkOzF0ZCz0Y3KBnWseAascQVWcJ
+         0u1p4GTYi3cQivVlfFEpXwfCXoIuRX4aADs5LJHbqNM6MFkUpkJ0maX39DLeV62mBGVH
+         ickYn51Xv8+ey/YubvrlHk05pBtPIJbffQmVuaDHQawENpqwTG4IlChyvGxgZVIaTvus
+         abIGp5dVSr07skW8pAOl7UpLFhrLXoelXRDGuebxpeGiLBksjIs+NGeFyA6ZsPtMpvTc
+         tJMw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from;
-        bh=sYcksN8fjsamWTt1crTxsApkAbJZDKHBI6jIxkWZRCg=;
-        b=D2affiP2hYjNvxbVc48E1Ccdme838oJkFkngpK+XAXM2vevHQxEH4UUHxYnFjjt/Lh
-         5iz8uX9h/2wloWMCDjitbOeLasTa+IlYt2bjeCXf/qTndlXrelZvIu0yvmvckvrLq/cc
-         n74HxUREkx+3w+NDy0C+3N4n3R+rAPmVR6NqhuO/uC6f1ie4qJTMu2NPUxJV2DHsQja7
-         Y52vRFp00Sg5TmlhKaUk8ajSXtWm47fXE4lla/ZXlWncFnMRK/SMIyR9nGBKjxFaiUVj
-         fANYeFSEGN/CBCi6EthtFfmu0w3F/z91+9ty11Ba637TX0d1lwoGE2+CswjFfJN1+xlQ
-         BP6w==
+         :list-unsubscribe:list-id:precedence:user-agent:in-reply-to
+         :content-disposition:mime-version:references:message-id:subject:cc
+         :to:from:date;
+        bh=k3rv5DmYn3BGri1vRHh0xaNG49+x2KHrsO+A9WoYBA4=;
+        b=eqU0ZFv2y2M4Aw11qag+jmLfgx2+V1GdmA9HiCuCc+nuNA3RM2myZMJNGAfoe8w3Hx
+         ukuE8GJnwPNKyJhsiXWi2E1D75nIjAyd7YvYc6CAmRTdIPXVIKNohrAF2vUSIWlno8Ew
+         GUBy6du/7/35q5UZ4pvB/jOEwr/qtNoyrF5OjthM1U3T5qQ/4Sn51SUP4oqbCYfiF9iW
+         3eiKnWVNpGThxeH15aNFvojoC9m830pxsX+7aiBOWbfmZJeGIFZW4z2U/jLF3V04Jxt/
+         4jtqZUyYy4GIX+nMjolSQeyU4ekt/oKSpEDUaqQKaypco2LTTNCLVFTzkaAAaKuWwqdE
+         FpUw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a1-20020ac84d81000000b0031f36ef0ce0si4283082qtw.652.2022.07.27.03.32.46
+        by mx.google.com with ESMTPS id br18-20020a05622a1e1200b0031eb5fa4b46si11183152qtb.583.2022.07.27.04.14.51
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 27 Jul 2022 03:32:46 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 27 Jul 2022 04:14:51 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:48464 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:47224 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1oGeLN-0001g6-BI
-	for alex.bennee@linaro.org; Wed, 27 Jul 2022 06:32:45 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:55154)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1oGf07-0006Zd-FF
+	for alex.bennee@linaro.org; Wed, 27 Jul 2022 07:14:51 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37208)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <SRS0=RDWM=YA=kaod.org=clg@ozlabs.org>)
- id 1oGeGQ-00069n-Ao; Wed, 27 Jul 2022 06:27:38 -0400
-Received: from gandalf.ozlabs.org ([150.107.74.76]:34861)
+ (Exim 4.90_1) (envelope-from <ben@fluff.org>)
+ id 1oGeyn-0005n2-Ud; Wed, 27 Jul 2022 07:13:30 -0400
+Received: from test-v6.fluff.org ([2a01:4f8:222:2004::3]:59394
+ helo=hetzy.fluff.org)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <SRS0=RDWM=YA=kaod.org=clg@ozlabs.org>)
- id 1oGeGJ-0004VB-W4; Wed, 27 Jul 2022 06:27:36 -0400
-Received: from gandalf.ozlabs.org (mail.ozlabs.org
- [IPv6:2404:9400:2221:ea00::3])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4Lt92N2y4wz4x3v;
- Wed, 27 Jul 2022 20:27:24 +1000 (AEST)
-Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
- (No client certificate requested)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4Lt92L2JL8z4x1N;
- Wed, 27 Jul 2022 20:27:22 +1000 (AEST)
-From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>, Andrew Jeffery <andrew@aj.id.au>,
- Joel Stanley <joel@jms.id.au>,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
-Subject: [PATCH for 7.1 1/2] aspeed: Remove unused fields from
- AspeedMachineState
-Date: Wed, 27 Jul 2022 12:27:13 +0200
-Message-Id: <20220727102714.803041-2-clg@kaod.org>
-X-Mailer: git-send-email 2.37.1
-In-Reply-To: <20220727102714.803041-1-clg@kaod.org>
-References: <20220727102714.803041-1-clg@kaod.org>
+ (Exim 4.90_1) (envelope-from <ben@fluff.org>)
+ id 1oGeyl-0004Uv-OP; Wed, 27 Jul 2022 07:13:29 -0400
+Received: from ben by hetzy.fluff.org with local (Exim 4.89)
+ (envelope-from <ben@fluff.org>)
+ id 1oGeye-0005I4-Bf; Wed, 27 Jul 2022 12:13:20 +0100
+Date: Wed, 27 Jul 2022 12:13:20 +0100
+From: Ben Dooks <qemu@ben.fluff.org>
+To: Ben Dooks <ben.dooks@sifive.com>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+ Jude Onyenegecha <jude.onyenegecha@sifive.com>,
+ Sudip Mukherjee <sudip.mukherjee@sifive.com>,
+ William Salmon <william.salmon@sifive.com>,
+ Adnan Chowdhury <adnan.chowdhury@sifive.com>
+Subject: Re: updates for designware pci-host
+Message-ID: <20220727111320.5b7qobwx5bbwh65d@hetzy.fluff.org>
+References: <20220713165449.37433-1-ben.dooks@sifive.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=150.107.74.76;
- envelope-from=SRS0=RDWM=YA=kaod.org=clg@ozlabs.org; helo=gandalf.ozlabs.org
-X-Spam_score_int: -16
-X-Spam_score: -1.7
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20220713165449.37433-1-ben.dooks@sifive.com>
+X-Disclaimer: These are my views alone.
+X-URL: http://www.fluff.org/
+User-Agent: NeoMutt/20170113 (1.7.2)
+X-SA-Exim-Connect-IP: <locally generated>
+X-SA-Exim-Mail-From: ben@fluff.org
+X-SA-Exim-Scanned: No (on hetzy.fluff.org); SAEximRunCond expanded to false
+Received-SPF: pass client-ip=2a01:4f8:222:2004::3; envelope-from=ben@fluff.org;
+ helo=hetzy.fluff.org
+X-Spam_score_int: -18
+X-Spam_score: -1.9
 X-Spam_bar: -
-X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9,
- HEADER_FROM_DIFFERENT_DOMAINS=0.249, SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: sONZArg4OP4d
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 8FssKJ6Le7AH
 
-Fixes: 346160cbf2af ("aspeed: Set the dram container at the SoC level")
-Signed-off-by: Cédric Le Goater <clg@kaod.org>
----
- hw/arm/aspeed.c | 2 --
- 1 file changed, 2 deletions(-)
+On Wed, Jul 13, 2022 at 05:54:42PM +0100, Ben Dooks wrote:
+> As part of a project we have been looking at using the DesignWare
+> PCIe host. We found a few issues of missing features or small bugs
+> when using this with a recent Linux kernel (v5.17.x)
+> 
+> Whilst doing this we also made a start on some tracing events.
 
-diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
-index 4193a3d23d1d..b3bbe06f8fa4 100644
---- a/hw/arm/aspeed.c
-+++ b/hw/arm/aspeed.c
-@@ -38,8 +38,6 @@ struct AspeedMachineState {
-     /* Public */
- 
-     AspeedSoCState soc;
--    MemoryRegion ram_container;
--    MemoryRegion max_ram;
-     bool mmio_exec;
-     char *fmc_model;
-     char *spi_model;
+Hi, has anyone had a chance to review these. If so can this series
+get applied? If not should anyone else be added to the review list?
+
+If it would be easier I can try and find a git tree to publish this
+branch on if a pull request would be easier.
+
 -- 
-2.37.1
+Ben Dooks, ben@fluff.org, http://www.fluff.org/ben/
+
+Large Hadron Colada: A large Pina Colada that makes the universe disappear.
 

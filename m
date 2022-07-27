@@ -1,95 +1,83 @@
-Received: by 2002:a05:6512:1086:0:0:0:0 with SMTP id j6csp159851lfg;
-        Wed, 27 Jul 2022 03:06:42 -0700 (PDT)
-X-Google-Smtp-Source: AGRyM1utRWQ6zBbwuBeZRsRGVi76o4pfRrOk2KeffantgHz4LRCvVQxlpGbvCtmeWdftPxfArl+3
-X-Received: by 2002:a05:6214:2308:b0:432:e69f:5d71 with SMTP id gc8-20020a056214230800b00432e69f5d71mr18514729qvb.19.1658916402146;
-        Wed, 27 Jul 2022 03:06:42 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1658916402; cv=none;
+Received: by 2002:a05:6512:1086:0:0:0:0 with SMTP id j6csp169947lfg;
+        Wed, 27 Jul 2022 03:28:32 -0700 (PDT)
+X-Google-Smtp-Source: AGRyM1t/P4vaTKNy2d6J6N/PjNrgiozcY+sKvEjc4jEGrOzZe3Sb2/lvev3i4fEhS8gqA2SbuCcH
+X-Received: by 2002:a37:bc82:0:b0:6b5:7a17:bf1c with SMTP id m124-20020a37bc82000000b006b57a17bf1cmr15529388qkf.97.1658917712395;
+        Wed, 27 Jul 2022 03:28:32 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1658917712; cv=none;
         d=google.com; s=arc-20160816;
-        b=AnwC9J8HPdplWfjd458to2b4jffjx9V18awxMB+z7XI7dHiXI55VcnSaX02dR/cl4R
-         MMlqszwkJZ8EHdbbkcPiOPhCmL+SUeg4iNHFgCI+a0pQXACI65lTT3QzceVyca12RYG6
-         AN7l2kzc3cjtplRO5ZkT6jNGISPYnbNdHmpZcjLO5BUm5eTi+0ewnu2Hz/RHx5Mn2bwf
-         TnlDlmEXJNzGxO9ximf3B+t3eQL1ImJres+D44rKNb+AbS8litxndMKBn440iGIHvdRg
-         FLhmTnCB7AfrXmRrnDTsRW/zDHpSnacHggBicpKsu3X6TJNXijyX+CdTQ4eihIw9sJWn
-         8weQ==
+        b=IanpXpPMkD8bMmezDkeAr6aJKdd/AM5+LYU3neJs3RQQsgxvAkuYgaqR+wf4wCrcZj
+         HU7Ff6QCLiiLeD8zOPX3Ej0IuVgUZLsnGBSyA7ne+A8wrEGmpi9jSoFbxARiFWv0KcwR
+         B1zdE6U8RXTVh4yYGo7a4R3y8rA/vz5CqmzPJh2lih2rT289elZx6YYv89TAZGX5ptwA
+         /3gF9p0+Rdg69Z4R5bDZnfiFR7Dwx8GmFCgkq/5hTxwHWbOCPDYBjWsbbWEvs9+OIDQL
+         Jx7dJjC/wnBC6njSDsJx3aA4wyhttFcI2Lxb9HDW/qWbTHpjoYGBBuwaTyA2RudqUf9A
+         GpQw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:cc:to:content-language:subject
-         :user-agent:mime-version:date:message-id;
-        bh=iDfqQjJrKYKCAC5uiv4PR4zjglH3dJyXfTzFG5N5nnY=;
-        b=MwKqTa35IId3z6IWl+5Fy/htwoHeOqb2u7vQ4YsDEPgN3fDQpv0eGKb45raBN6vkRe
-         VXuz8YVv5n2btqDQU3nwzEoSUUqiPoYqZ2yApZobiCEjZqyfuLJwYe8JbxD0VtzUw/1U
-         dDYd0odNkwmhWfLKIIkuJfp2c5/dEyyvkkOxOUTpHFc177fvJ5C19giwVe/KJjtYO4by
-         VKH1oreudPJw9tQzw2NjiFySDSCJfMo42yFnXBRih9t64CNPtsQfecjd94BIbEae1f39
-         cEmqQFLd4sGxVfEUrYKygpKEpdQV4uRjTbHSGBy6MSsfPYvXQ7UfO3VjguriJ6t1bdXy
-         9kBw==
+         :mime-version:message-id:date:subject:cc:to:from;
+        bh=G8ZksOHUY8aWot2afeL2+8dRJXqgetE6lhkDnsFjrXw=;
+        b=tVfZJvGRJcfTz3zG98V2nFYjFkrXx53u1xFjEujeh3geWv84tseuyP27lg2Be7VMc6
+         2WTeBBJOiCkVFHS7ZlRwJduOiXHR8kuL86SuzgpyeB+9HC+nroDKKk3boXXvTzPdCQyq
+         ESVbeizexmo0ECGZlMOVIRjBcdI6BRBlIOJq9x0MgS+uJoqZzjlSkfP42hL74uyAU3cV
+         vG9yWAgvmYm/+OFqD5UOAlzPCoGGqjRs80c8G4jmnnvbjKwb6XY7BLPkTLZei6VGWBHG
+         2ME2f0Cyb2eDtZjYNE2/EMO8vjxibehTQDrZN00jqL5ZFVHxhe/E6cIVFhlP1N1eiCcc
+         gv0Q==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id br14-20020a05622a1e0e00b0031f22fc2e85si7551942qtb.748.2022.07.27.03.06.42
+        by mx.google.com with ESMTPS id o3-20020a05620a2a0300b006b5e1d2fca4si13535656qkp.0.2022.07.27.03.28.32
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 27 Jul 2022 03:06:42 -0700 (PDT)
+        Wed, 27 Jul 2022 03:28:32 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:60212 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:43400 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1oGdw9-0005oI-Hd
-	for alex.bennee@linaro.org; Wed, 27 Jul 2022 06:06:41 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:51036)
+	id 1oGeHH-0006EA-MY
+	for alex.bennee@linaro.org; Wed, 27 Jul 2022 06:28:31 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55156)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>)
- id 1oGdvo-0005mB-Qv; Wed, 27 Jul 2022 06:06:21 -0400
-Received: from smtpout4.mo529.mail-out.ovh.net ([217.182.185.173]:45221)
+ (Exim 4.90_1) (envelope-from <SRS0=RDWM=YA=kaod.org=clg@ozlabs.org>)
+ id 1oGeGQ-00069o-As; Wed, 27 Jul 2022 06:27:38 -0400
+Received: from mail.ozlabs.org ([2404:9400:2221:ea00::3]:39889
+ helo=gandalf.ozlabs.org)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>)
- id 1oGdvm-00014i-0u; Wed, 27 Jul 2022 06:06:20 -0400
-Received: from mxplan5.mail.ovh.net (unknown [10.109.146.192])
- by mo529.mail-out.ovh.net (Postfix) with ESMTPS id 02B5511AA13AA;
- Wed, 27 Jul 2022 12:06:13 +0200 (CEST)
-Received: from kaod.org (37.59.142.101) by DAG4EX2.mxp5.local (172.16.2.32)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.9; Wed, 27 Jul
- 2022 12:06:00 +0200
-Authentication-Results: garm.ovh; auth=pass
- (GARM-101G00469e61e53-652a-4331-90e8-38b25b7e1b70,
- E44A067E472E6C720F6619EB00F9B7C009C32E64) smtp.auth=clg@kaod.org
-X-OVh-ClientIp: 82.64.250.170
-Message-ID: <69fc7600-052b-a077-27b0-da5751ca3379@kaod.org>
-Date: Wed, 27 Jul 2022 12:05:58 +0200
+ (Exim 4.90_1) (envelope-from <SRS0=RDWM=YA=kaod.org=clg@ozlabs.org>)
+ id 1oGeGI-0004To-8o; Wed, 27 Jul 2022 06:27:32 -0400
+Received: from gandalf.ozlabs.org (mail.ozlabs.org
+ [IPv6:2404:9400:2221:ea00::3])
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4Lt92K5lgKz4x1k;
+ Wed, 27 Jul 2022 20:27:21 +1000 (AEST)
+Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4Lt92G5Rw6z4x1N;
+ Wed, 27 Jul 2022 20:27:18 +1000 (AEST)
+From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>, Andrew Jeffery <andrew@aj.id.au>,
+ Joel Stanley <joel@jms.id.au>,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
+Subject: [PATCH for 7.1 0/2] aspeed: QOM fixes
+Date: Wed, 27 Jul 2022 12:27:12 +0200
+Message-Id: <20220727102714.803041-1-clg@kaod.org>
+X-Mailer: git-send-email 2.37.1
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.11.0
-Subject: Re: [PATCH v2 6/9] aspeed: Add AST2600 (BMC) to fby35
-Content-Language: en-US
-To: Peter Delevoryas <peter@pjd.dev>
-CC: Peter Maydell <peter.maydell@linaro.org>, Andrew Jeffery
- <andrew@aj.id.au>, Joel Stanley <joel@jms.id.au>, <qemu-arm@nongnu.org>,
- <qemu-devel@nongnu.org>
-References: <20220705191400.41632-1-peter@pjd.dev>
- <20220705191400.41632-7-peter@pjd.dev>
-From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
-In-Reply-To: <20220705191400.41632-7-peter@pjd.dev>
-Content-Type: text/plain; charset="UTF-8"; format=flowed
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [37.59.142.101]
-X-ClientProxiedBy: DAG6EX1.mxp5.local (172.16.2.51) To DAG4EX2.mxp5.local
- (172.16.2.32)
-X-Ovh-Tracer-GUID: 08e4de2a-a86f-4ae3-8694-cdb0fe5a2457
-X-Ovh-Tracer-Id: 1011058119300582182
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvfedrvdduvddgvdefucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhepkfffgggfuffvvehfhfgjtgfgihesthejredttdefjeenucfhrhhomhepveorughrihgtpgfnvggpifhorghtvghruceotghlgheskhgrohgurdhorhhgqeenucggtffrrghtthgvrhhnpeffgefgkeevvedvvdffleefheelfffhhfetgeekudeuveffffekjeeiveffledthfenucffohhmrghinhepghhithhhuhgsrdgtohhmnecukfhppedtrddtrddtrddtpdefjedrheelrddugedvrddutddunecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmohguvgepshhmthhpohhuthdphhgvlhhopehmgihplhgrnhehrdhmrghilhdrohhvhhdrnhgvthdpihhnvghtpedtrddtrddtrddtpdhmrghilhhfrhhomheptghlgheskhgrohgurdhorhhgpdhnsggprhgtphhtthhopedupdhrtghpthhtohepqhgvmhhuqdguvghvvghlsehnohhnghhnuhdrohhrghdpoffvtefjohhsthepmhhohedvle
-Received-SPF: pass client-ip=217.182.185.173; envelope-from=clg@kaod.org;
- helo=smtpout4.mo529.mail-out.ovh.net
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2404:9400:2221:ea00::3;
+ envelope-from=SRS0=RDWM=YA=kaod.org=clg@ozlabs.org; helo=gandalf.ozlabs.org
+X-Spam_score_int: -23
+X-Spam_score: -2.4
+X-Spam_bar: --
+X-Spam_report: (-2.4 / 5.0 requ) BAYES_00=-1.9,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.249, RCVD_IN_DNSWL_LOW=-0.7,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -105,111 +93,25 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: EpHIj4HmQcKW
+X-TUID: weoBZok9XJvl
 
-On 7/5/22 21:13, Peter Delevoryas wrote:
-> You can test booting the BMC with both '-device loader' and '-drive
-> file'. This is necessary because of how the fb-openbmc boot sequence
-> works (jump to 0x20000000 after U-Boot SPL).
-> 
->      wget https://github.com/facebook/openbmc/releases/download/openbmc-e2294ff5d31d/fby35.mtd
->      qemu-system-arm -machine fby35 -nographic \
->          -device loader,file=fby35.mtd,addr=0,cpu-num=0 -drive file=fby35.mtd,format=raw,if=mtd
-> 
-> Signed-off-by: Peter Delevoryas <peter@pjd.dev>
-> ---
->   hw/arm/fby35.c | 41 +++++++++++++++++++++++++++++++++++++++++
->   1 file changed, 41 insertions(+)
-> 
-> diff --git a/hw/arm/fby35.c b/hw/arm/fby35.c
-> index 03b458584c..5c5224d374 100644
-> --- a/hw/arm/fby35.c
-> +++ b/hw/arm/fby35.c
-> @@ -6,17 +6,55 @@
->    */
->   
->   #include "qemu/osdep.h"
-> +#include "qemu/units.h"
-> +#include "qapi/error.h"
-> +#include "sysemu/sysemu.h"
->   #include "hw/boards.h"
-> +#include "hw/arm/aspeed_soc.h"
->   
->   #define TYPE_FBY35 MACHINE_TYPE_NAME("fby35")
->   OBJECT_DECLARE_SIMPLE_TYPE(Fby35State, FBY35);
->   
->   struct Fby35State {
->       MachineState parent_obj;
-> +
-> +    MemoryRegion bmc_memory;
-> +    MemoryRegion bmc_dram;
-> +    MemoryRegion bmc_boot_rom;
-> +
-> +    AspeedSoCState bmc;
->   };
->   
-> +#define FBY35_BMC_RAM_SIZE (2 * GiB)
-> +
-> +static void fby35_bmc_init(Fby35State *s)
-> +{
-> +    memory_region_init(&s->bmc_memory, OBJECT(s), "bmc-memory", UINT64_MAX);
-> +    memory_region_init_ram(&s->bmc_dram, OBJECT(s), "bmc-dram",
-> +                           FBY35_BMC_RAM_SIZE, &error_abort);
+Hello,
 
-A MachineState object is used as a owner of the RAM region and this
-should assert in memory_region_init_ram() :
+Compiling with CONFIG_QOM_CAST_DEBUG caught a QOM issue in the fby35
+machine. The series also includes a trivial cleanup of unused code.
 
-     /* This will assert if owner is neither NULL nor a DeviceState.
-      * We only want the owner here for the purposes of defining a
-      * unique name for migration. TODO: Ideally we should implement
-      * a naming scheme for Objects which are not DeviceStates, in
-      * which case we can relax this restriction.
-      */
-     owner_dev = DEVICE(owner);
+Thanks,
 
-It went unnoticed until I started experimenting with some MachineState
-modifications. CONFIG_QOM_CAST_DEBUG needs to be defined to catch the
-error. I would have thought that CI was doing this check. It seems not,
-which is surprising.
+C. 
 
-Anyhow, this needs a fix for 7.1 and I will work on it.
+Cédric Le Goater (2):
+  aspeed: Remove unused fields from AspeedMachineState
+  aspeed/fby35: Fix owner of the BMC RAM memory region
 
-C.
+ hw/arm/aspeed.c |  2 --
+ hw/arm/fby35.c  | 14 +++++++++-----
+ 2 files changed, 9 insertions(+), 7 deletions(-)
 
-> +
-> +    object_initialize_child(OBJECT(s), "bmc", &s->bmc, "ast2600-a3");
-> +    object_property_set_int(OBJECT(&s->bmc), "ram-size", FBY35_BMC_RAM_SIZE,
-> +                            &error_abort);
-> +    object_property_set_link(OBJECT(&s->bmc), "memory", OBJECT(&s->bmc_memory),
-> +                             &error_abort);
-> +    object_property_set_link(OBJECT(&s->bmc), "dram", OBJECT(&s->bmc_dram),
-> +                             &error_abort);
-> +    object_property_set_int(OBJECT(&s->bmc), "hw-strap1", 0x000000C0,
-> +                            &error_abort);
-> +    object_property_set_int(OBJECT(&s->bmc), "hw-strap2", 0x00000003,
-> +                            &error_abort);
-> +    aspeed_soc_uart_set_chr(&s->bmc, ASPEED_DEV_UART5, serial_hd(0));
-> +    qdev_realize(DEVICE(&s->bmc), NULL, &error_abort);
-> +
-> +    aspeed_board_init_flashes(&s->bmc.fmc, "n25q00", 2, 0);
-> +}
-> +
->   static void fby35_init(MachineState *machine)
->   {
-> +    Fby35State *s = FBY35(machine);
-> +
-> +    fby35_bmc_init(s);
->   }
->   
->   static void fby35_class_init(ObjectClass *oc, void *data)
-> @@ -25,6 +63,9 @@ static void fby35_class_init(ObjectClass *oc, void *data)
->   
->       mc->desc = "Meta Platforms fby35";
->       mc->init = fby35_init;
-> +    mc->no_floppy = 1;
-> +    mc->no_cdrom = 1;
-> +    mc->min_cpus = mc->max_cpus = mc->default_cpus = 2;
->   }
->   
->   static const TypeInfo fby35_types[] = {
+-- 
+2.37.1
 

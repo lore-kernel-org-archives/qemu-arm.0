@@ -1,131 +1,77 @@
-Received: by 2002:a05:6512:1086:0:0:0:0 with SMTP id j6csp463383lfg;
-        Wed, 27 Jul 2022 11:20:16 -0700 (PDT)
-X-Google-Smtp-Source: AGRyM1tDnnX8dbZoddWc8FkO48KWjoY8nDuIQphqkJw0PFPPahTURXSl8VJZHALysEO5blxsWYJV
-X-Received: by 2002:a05:622a:82:b0:31f:4b:5303 with SMTP id o2-20020a05622a008200b0031f004b5303mr19861755qtw.172.1658946016653;
-        Wed, 27 Jul 2022 11:20:16 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1658946016; cv=none;
+Received: by 2002:a05:6512:1086:0:0:0:0 with SMTP id j6csp578058lfg;
+        Wed, 27 Jul 2022 15:40:53 -0700 (PDT)
+X-Google-Smtp-Source: AGRyM1sny3zIkJGwCYV/iQTwPjBR1MABt746YmMn77jpu7CC6N1qOYzxHaw6ebQYfla9NLzuwA5c
+X-Received: by 2002:ae9:e113:0:b0:6b5:cdd9:68cd with SMTP id g19-20020ae9e113000000b006b5cdd968cdmr18181254qkm.671.1658961653805;
+        Wed, 27 Jul 2022 15:40:53 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1658961653; cv=none;
         d=google.com; s=arc-20160816;
-        b=Z7bV9kOZioOm0AMjWN6ud/TpHyrotr0P7ljqz4siCp4MoYwJ38ByLPv/fB7x6WZ2kX
-         JoMyp6Jqq4+VyrNST7cJ7z5h/d3emMkFy+nDq6FGTudOzkSrta45Jb7hhJDIt5aujUwl
-         h2gkSZCvOQ+RKDs5FzBB10yiAhyiJyzJVjFimr1SSV9T6I4a09CaOc4Kqmufd0pBs+sg
-         ZZl1Z+4OfaiWiqjlHWoVTLhWSVD5zSZ9si0I2rLqKZO6C4DagfrYYrtZyqqwrDl7+tRy
-         FJVjqIyjUZIj2Xm9vDFa6N7eqfgzAdwSYAED0vK4ksSU/hoieRw9HQqGCRDzVPRcZ5EB
-         Hxpw==
+        b=m4YVdU0Afz4b3/a/zCQ2YL9m8fJ/HkAnHzxG6iW6M7R3DH2eVo9gDaKrWQxpH+zR1A
+         YOfYNhLel6dfzMaA2SZM5Wo1KnP1rYHt0KDdKqjjOB8aMVdeMyHfHVKqC5leYb/AeoXg
+         XIiV5+9HZ3IG7L43v0fgzQ3QuzvlMjSAOjq54LAJlhzYODIIEu4ujwLCtOK6+1HEwtem
+         V1zJZAy54ymPLmJK9PCVda6YxL5UMGGLMJHMiDUVvvXHRR+Hm09UTRMVukVRJCXfHbIW
+         J3h+kJAKbyWouqDme0XhOPO7ki1bPTXLD87Vs53s3uzBi2B+k27SCHEiv+izdQizBwY9
+         GIUg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:in-reply-to
-         :content-transfer-encoding:content-disposition:mime-version
-         :references:message-id:subject:cc:to:from:date:feedback-id
-         :dkim-signature:dkim-signature;
-        bh=I6o5+aqKdGAf1PI13B0XJeL3DLZqir/p32rXy/Htx9M=;
-        b=tMehYlMCHZtyMl61L38TUBGA/gUU7/HgzAdLPN6swRptT9Erfu3wrhWRmQdONxD6uh
-         srD0gsX0GMlHDdUmvkkLJVq4bVuow6qdjpqI4C7OkVRacGwUjPrj/x/fWHPmnGvddWCl
-         bXeFfR0KnXWzjNfBN6Ci3ef+7oVf+GDbCtxqkXizbMZLO4FTxJ2amyOifm/iEf8c+1Ip
-         IMENFCltipwizMEaJb/WUsEGzfet214q0piRvhUujt/n2W2LIMkeZB+/4fO4K9GLjav0
-         N6hCZPqRoxyU5gOotyXDS1PthQBmrq3rLnmUPLXo9apXk9kNIsKWScds2JhzoKNF6FbG
-         LK3Q==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from;
+        bh=q6xhnQCKv+mYbrM0sNCdIKA7Rp5XoZblhcZu1vrnCV8=;
+        b=d96DtD0OX3TmuvKIMW4utCG4wpg9De+Cls8I98NHrkf66fCzvGAhrcp28dFxbploW8
+         Be4WlG/RGceG/xy4lv/8v8ebIm61od0Ex8LL5pu4jrgyhYtHUVGw3Rx15CQgNf0hpnVb
+         ydkXXx7j/hp6or7Mm9BRST4bYKRV0XwN8zLk5iq95gHSslmlxY6Z+VfriIkA1vxDMVnQ
+         DJK4dAV7hz/ag7681/G2yQujyfTv7XeS4umyahowYW+tKVB9iZzfghORzOfAcp5uZTAg
+         eYPWMDKa1QafcMaOUoSLwzf2ZlA0uIeRa0SNwTJH21lKR2mxwZVPgahCR5MuaBGr8kl4
+         kIRA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@pjd.dev header.s=fm1 header.b=bXRaPGzV;
-       dkim=fail header.i=@messagingengine.com header.s=fm3 header.b=GFI8R8pW;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id h11-20020ae9ec0b000000b006b568d321f3si11131238qkg.280.2022.07.27.11.20.16
+        by mx.google.com with ESMTPS id fn4-20020ad45d64000000b004738fd6fa4bsi13807719qvb.87.2022.07.27.15.40.53
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 27 Jul 2022 11:20:16 -0700 (PDT)
+        Wed, 27 Jul 2022 15:40:53 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@pjd.dev header.s=fm1 header.b=bXRaPGzV;
-       dkim=fail header.i=@messagingengine.com header.s=fm3 header.b=GFI8R8pW;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:56142 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:35728 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1oGldo-0007qX-2q
-	for alex.bennee@linaro.org; Wed, 27 Jul 2022 14:20:16 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:42454)
+	id 1oGpi1-0005oI-4z
+	for alex.bennee@linaro.org; Wed, 27 Jul 2022 18:40:53 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33138)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter@pjd.dev>)
- id 1oGlVc-00041A-8k; Wed, 27 Jul 2022 14:11:48 -0400
-Received: from new1-smtp.messagingengine.com ([66.111.4.221]:50161)
+ (Exim 4.90_1) (envelope-from <ben@luna.fluff.org>)
+ id 1oGpgU-0003gv-CQ; Wed, 27 Jul 2022 18:39:18 -0400
+Received: from cpc152649-stkp13-2-0-cust121.10-2.cable.virginm.net
+ ([86.15.83.122]:52720 helo=luna)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter@pjd.dev>)
- id 1oGlVa-0005Fj-N3; Wed, 27 Jul 2022 14:11:47 -0400
-Received: from compute3.internal (compute3.nyi.internal [10.202.2.43])
- by mailnew.nyi.internal (Postfix) with ESMTP id D266B58047C;
- Wed, 27 Jul 2022 14:11:45 -0400 (EDT)
-Received: from mailfrontend1 ([10.202.2.162])
- by compute3.internal (MEProxy); Wed, 27 Jul 2022 14:11:45 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=pjd.dev; h=cc:cc
- :content-transfer-encoding:content-type:date:date:from:from
- :in-reply-to:in-reply-to:message-id:mime-version:references
- :reply-to:sender:subject:subject:to:to; s=fm1; t=1658945505; x=
- 1658949105; bh=I6o5+aqKdGAf1PI13B0XJeL3DLZqir/p32rXy/Htx9M=; b=b
- XRaPGzVC+qmeQWxc2vw3Vi15ahxvAAf729w4dMHfBwvUKxcviApPt8Z5K+rCbbpz
- 4PYRmB1cedU+vI+9+T0+Rs9OKKrA7N+GUvu239Gb0NdnJnod5zFku/6yGmKrEiB4
- JrO/aCaoAwZEZUAkeC0A+5IXWZu4J9UNfcAHcLMPLlSwiRfizcU7UXYGY85C1EjP
- NnXbpRLOmwNiRkliPRRKe7oz4RXs/D0Ra0v58gOdSKS6Ihb292FgeSkJFJR/Mt86
- ISAHd2RYpvN/k3/4MYn0gny8YhPnNH93MYN1laDfSnXuvAe86tWhJERmozidL3mS
- 0yK4B0o4ENZ68cWxAX5Nw==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
- messagingengine.com; h=cc:cc:content-transfer-encoding
- :content-type:date:date:feedback-id:feedback-id:from:from
- :in-reply-to:in-reply-to:message-id:mime-version:references
- :reply-to:sender:subject:subject:to:to:x-me-proxy:x-me-proxy
- :x-me-sender:x-me-sender:x-sasl-enc; s=fm3; t=1658945505; x=
- 1658949105; bh=I6o5+aqKdGAf1PI13B0XJeL3DLZqir/p32rXy/Htx9M=; b=G
- FI8R8pWTbckLK2J6vWM1ypi8xwkGfFrQD/P7+iR5CtGCsL0vURGsgZWbg/lT8EQ8
- tXBm3voyfXerzy6+mW2CxmDmjbUFx20gl/Tul9HQV1bSSWdfy4FpOwnZoS5YegTM
- c+pMALtBsTXCHQSnjK0hrrqceweeOZTU7cyh8rXxnyFHKHPIgnE08FnH7mAROXjs
- QS/FvLUxZrrPpzfJf/OFtyxGh8H5w0uDybNzubRtP2sbA+IiGyPAtfmjrvS5TzYq
- OgTRAzfeDOn/1pj1nHlf7UiH8h4HBSNIq5w7OmqKF4j4S9lJKSwMR2Ng7LHAkrUQ
- 5dRazAOr1pMkFt69aQkSA==
-X-ME-Sender: <xms:4X_hYpt2rIGcSwkT1RQd741RZmPpnZ08jAmuk409p_S6HLp-tCz_9w>
- <xme:4X_hYife1zGscQp9giGE-OiTZadT7ZpkDqh0cGIJVOYRYrKt5DanJJ3UYB3Ms_4F2
- dwGiS5AuT75EJp7VtI>
-X-ME-Received: <xmr:4X_hYsz41L9sjPlq9rHG6R4EJIPNEie3EHJEFcT4AL9FgQZHkBWqTAnyEg1RwznT0jdVlawqwqx7>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvfedrvdduvddguddvvdcutefuodetggdotefrod
- ftvfcurfhrohhfihhlvgemucfhrghsthforghilhdpqfgfvfdpuffrtefokffrpgfnqfgh
- necuuegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmd
- enucfjughrpeffhffvvefukfhfgggtugfgjgesthekredttddtudenucfhrhhomheprfgv
- thgvrhcuffgvlhgvvhhorhihrghsuceophgvthgvrhesphhjugdruggvvheqnecuggftrf
- grthhtvghrnhephfegffevudefveetgeekteeijefhhfduueejvdegvdehffehjeevtefh
- hffffeeunecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmrghilhhfrhhomh
- epphgvthgvrhesphhjugdruggvvh
-X-ME-Proxy: <xmx:4X_hYgOjKI4SumPotnqq9MKQlc-KI47hvolEuEDKwtt58IY9t3I4Tg>
- <xmx:4X_hYp_eySakimI-SWx1NOO33_2g6uKmiJht3HiY7JvYR-SMqdgnvg>
- <xmx:4X_hYgVAcX8roifjYXZrJjYDYEWzCy65e1djPvSfirdqwiLQi_5THQ>
- <xmx:4X_hYlbOi6bDDBZlBQj5OU039zksGxmR0WIu96VgDc4wPlvCGoHF6A>
-Feedback-ID: i9e814621:Fastmail
-Received: by mail.messagingengine.com (Postfix) with ESMTPA; Wed,
- 27 Jul 2022 14:11:44 -0400 (EDT)
-Date: Wed, 27 Jul 2022 11:11:43 -0700
-From: Peter Delevoryas <peter@pjd.dev>
-To: =?iso-8859-1?Q?C=E9dric?= Le Goater <clg@kaod.org>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org,
- Peter Maydell <peter.maydell@linaro.org>,
- Andrew Jeffery <andrew@aj.id.au>, Joel Stanley <joel@jms.id.au>
-Subject: Re: [PATCH for 7.1 2/2] aspeed/fby35: Fix owner of the BMC RAM
- memory region
-Message-ID: <YuF/34NFoBr4Ey6D@pdel-fedora-MJ0HJWH9>
-References: <20220727102714.803041-1-clg@kaod.org>
- <20220727102714.803041-3-clg@kaod.org>
+ (Exim 4.90_1) (envelope-from <ben@luna.fluff.org>)
+ id 1oGpgR-0007uh-Jb; Wed, 27 Jul 2022 18:39:18 -0400
+Received: from ben by luna with local (Exim 4.96)
+ (envelope-from <ben@luna.fluff.org>) id 1oGpgI-002cR2-0Y;
+ Wed, 27 Jul 2022 23:39:06 +0100
+From: Ben Dooks <qemu@ben.fluff.org>
+To: qemu-devel@nongnu.org
+Cc: qemu-riscv@nongnu.org, Alistair Francis <Alistair.Francis@wdc.com>,
+ qemu-arm@nongnu.org, Ben Dooks <qemu@ben.fluff.org>
+Subject: [PATCH v3 4/5] hw/mips: use qemu_fdt_setprop_strings()
+Date: Wed, 27 Jul 2022 23:39:04 +0100
+Message-Id: <20220727223905.624285-5-qemu@ben.fluff.org>
+X-Mailer: git-send-email 2.35.1
+In-Reply-To: <20220727223905.624285-1-qemu@ben.fluff.org>
+References: <20220727223905.624285-1-qemu@ben.fluff.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <20220727102714.803041-3-clg@kaod.org>
-Received-SPF: pass client-ip=66.111.4.221; envelope-from=peter@pjd.dev;
- helo=new1-smtp.messagingengine.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
-X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+Received-SPF: none client-ip=86.15.83.122; envelope-from=ben@luna.fluff.org;
+ helo=luna
+X-Spam_score_int: -6
+X-Spam_score: -0.7
+X-Spam_bar: /
+X-Spam_report: (-0.7 / 5.0 requ) BAYES_00=-1.9, FSL_HELO_NON_FQDN_1=0.001,
+ HELO_NO_DOMAIN=0.001, KHOP_HELO_FCRDNS=0.187, PDS_RDNS_DYNAMIC_FP=0.001,
+ RCVD_IN_SORBS_DUL=0.001, RDNS_DYNAMIC=0.982, SPF_NONE=0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -140,71 +86,41 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: t7dwfrXl4XVm
+X-TUID: IdS7/ZSccRSF
 
-On Wed, Jul 27, 2022 at 12:27:14PM +0200, Cédric Le Goater wrote:
-> A MachineState object is used as a owner of the RAM region and this
-> asserts in memory_region_init_ram() when QEMU is built with
-> CONFIG_QOM_CAST_DEBUG :
-> 
->     /* This will assert if owner is neither NULL nor a DeviceState.
->      * We only want the owner here for the purposes of defining a
->      * unique name for migration. TODO: Ideally we should implement
->      * a naming scheme for Objects which are not DeviceStates, in
->      * which case we can relax this restriction.
->      */
->     owner_dev = DEVICE(owner);
-> 
-> Use the BMC and BIC objects as the owners of their memory regions.
-> 
-> Cc: Peter Delevoryas <peter@pjd.dev>
-> Fixes: 778e14cc5cd5 ("aspeed: Add AST2600 (BMC) to fby35")
-> Signed-off-by: Cédric Le Goater <clg@kaod.org>
-> ---
+Change to using qemu_fdt_setprop_strings() helper in hw/mips.
 
-Looks good to me, thanks for fixing this Cedric!
-Peter
+Signed-off-by: Ben Dooks <qemu@ben.fluff.org>
+---
+ hw/mips/boston.c | 8 ++------
+ 1 file changed, 2 insertions(+), 6 deletions(-)
 
-Reviewed-by: Peter Delevoryas <peter@pjd.dev>
+diff --git a/hw/mips/boston.c b/hw/mips/boston.c
+index d2ab9da1a0..759f6daafe 100644
+--- a/hw/mips/boston.c
++++ b/hw/mips/boston.c
+@@ -515,9 +515,6 @@ static const void *create_fdt(BostonState *s,
+     MachineState *mc = s->mach;
+     uint32_t platreg_ph, gic_ph, clk_ph;
+     char *name, *gic_name, *platreg_name, *stdout_name;
+-    static const char * const syscon_compat[2] = {
+-        "img,boston-platform-regs", "syscon"
+-    };
+ 
+     fdt = create_device_tree(dt_size);
+     if (!fdt) {
+@@ -608,9 +605,8 @@ static const void *create_fdt(BostonState *s,
+     platreg_name = g_strdup_printf("/soc/system-controller@%" HWADDR_PRIx,
+                                    memmap[BOSTON_PLATREG].base);
+     qemu_fdt_add_subnode(fdt, platreg_name);
+-    qemu_fdt_setprop_string_array(fdt, platreg_name, "compatible",
+-                                 (char **)&syscon_compat,
+-                                 ARRAY_SIZE(syscon_compat));
++    qemu_fdt_setprop_strings(fdt, platreg_name, "compatible",
++                             "img,boston-platform-regs", "syscon");
+     qemu_fdt_setprop_cells(fdt, platreg_name, "reg",
+                            memmap[BOSTON_PLATREG].base,
+                            memmap[BOSTON_PLATREG].size);
+-- 
+2.35.1
 
->  hw/arm/fby35.c | 14 +++++++++-----
->  1 file changed, 9 insertions(+), 5 deletions(-)
-> 
-> diff --git a/hw/arm/fby35.c b/hw/arm/fby35.c
-> index 79605f306462..90c04bbc3389 100644
-> --- a/hw/arm/fby35.c
-> +++ b/hw/arm/fby35.c
-> @@ -72,11 +72,13 @@ static void fby35_bmc_init(Fby35State *s)
->  {
->      DriveInfo *drive0 = drive_get(IF_MTD, 0, 0);
->  
-> -    memory_region_init(&s->bmc_memory, OBJECT(s), "bmc-memory", UINT64_MAX);
-> -    memory_region_init_ram(&s->bmc_dram, OBJECT(s), "bmc-dram",
-> +    object_initialize_child(OBJECT(s), "bmc", &s->bmc, "ast2600-a3");
-> +
-> +    memory_region_init(&s->bmc_memory, OBJECT(&s->bmc), "bmc-memory",
-> +                       UINT64_MAX);
-> +    memory_region_init_ram(&s->bmc_dram, OBJECT(&s->bmc), "bmc-dram",
->                             FBY35_BMC_RAM_SIZE, &error_abort);
->  
-> -    object_initialize_child(OBJECT(s), "bmc", &s->bmc, "ast2600-a3");
->      object_property_set_int(OBJECT(&s->bmc), "ram-size", FBY35_BMC_RAM_SIZE,
->                              &error_abort);
->      object_property_set_link(OBJECT(&s->bmc), "memory", OBJECT(&s->bmc_memory),
-> @@ -120,9 +122,11 @@ static void fby35_bic_init(Fby35State *s)
->      s->bic_sysclk = clock_new(OBJECT(s), "SYSCLK");
->      clock_set_hz(s->bic_sysclk, 200000000ULL);
->  
-> -    memory_region_init(&s->bic_memory, OBJECT(s), "bic-memory", UINT64_MAX);
-> -
->      object_initialize_child(OBJECT(s), "bic", &s->bic, "ast1030-a1");
-> +
-> +    memory_region_init(&s->bic_memory, OBJECT(&s->bic), "bic-memory",
-> +                       UINT64_MAX);
-> +
->      qdev_connect_clock_in(DEVICE(&s->bic), "sysclk", s->bic_sysclk);
->      object_property_set_link(OBJECT(&s->bic), "memory", OBJECT(&s->bic_memory),
->                               &error_abort);
-> -- 
-> 2.37.1
-> 

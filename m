@@ -1,373 +1,157 @@
-Received: by 2002:a05:6512:1086:0:0:0:0 with SMTP id j6csp233114lfg;
-        Wed, 27 Jul 2022 05:19:29 -0700 (PDT)
-X-Google-Smtp-Source: AGRyM1vl+zKfu6TVcaBYfKoFIBwUPRcklJWFgXMl1qSDV4GAThuptFLmHhqeMJLWOEU3t8g4F85+
-X-Received: by 2002:a05:622a:14c7:b0:31f:7f9:2d72 with SMTP id u7-20020a05622a14c700b0031f07f92d72mr18497194qtx.591.1658924369604;
-        Wed, 27 Jul 2022 05:19:29 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1658924369; cv=none;
+Received: by 2002:a05:6512:1086:0:0:0:0 with SMTP id j6csp279942lfg;
+        Wed, 27 Jul 2022 06:39:52 -0700 (PDT)
+X-Google-Smtp-Source: AGRyM1u5OXu+xwHbE1MR4Cjdxoz60EgU8ZEQ4aDE22wtT70vU/uB+TLZzyinSGEB20eU8Sq6drEv
+X-Received: by 2002:a05:620a:1728:b0:6b6:9c1:ac3c with SMTP id az40-20020a05620a172800b006b609c1ac3cmr16197584qkb.555.1658929191825;
+        Wed, 27 Jul 2022 06:39:51 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1658929191; cv=none;
         d=google.com; s=arc-20160816;
-        b=cddPq3ThSD18+d+Merewm5e0RbZqVAJ5MRsooujdA+LTOnVG1SRw0+UayLTcy/VJEq
-         KeMVjAdL/QQYFdCOsLfguRbEBqzcK9o32MZC9tAXAN+zHWHJhux1ecH760FNMeJfKYFc
-         UkjMc+Gl7CcsM1YDOQphanqZ0kfxfGBfPZQSpxggdHZv8uHh8bvNB5tX/mh4D9utbIs2
-         5gKmn/0r1a2Au/PB1KD9lQghs4hYn+++dgH+7jfZwSdYPg8ZkklnNOpdA9ft1gMfTSQE
-         FoTHoRtMNYuEyuz1t1ywy1Gf9/YLL3xK9felMMeNIWMUhhbIYcquv6TyT/74tiopRp2X
-         JpQw==
+        b=oLlhDKWsg3ZEkNpbpXqF+wvQo5VjIO0gV5bufu+4PIlZXmhOB3B3WSej0montW5zPg
+         hLUqEd70P2ffk30utThWMEOCZmJzOD1bUQ04E+/8JBofnVynqCV1pC2fP0GElND+5LLz
+         kSn/rWOkKAOVxpaHDQiznUaIqIYRp0Yunx3Eg0fYjum/NIdJ0yJPFEGt0rMBM8o70nM1
+         HA2jkgM04WjQAfSe+hi74L+v1ue25dSTOJ72s+lIFStbQhGLWq14W4dDDyqHsE5KmonO
+         lW+szn1se/kpTJYBkNmMa7sIn96K5kzcp4ftuVQ9nMQIV0cB4ujJJ4rigqmw4O5/8hCf
+         Kw9g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
-        bh=O9fnthMzfJLVM79QjbbMjM8a3h7O0bHpxqPLXB+XmNs=;
-        b=jq9jHZoQoMKybWcRzs0VX7BnRHWN7M5mj5bMyQyCiZ/bXc58OBkjBQ4I/RansRTanS
-         22/V4N+Gt07OHmi3Fq1HAQnLowD3ONqP2qlMb3VC3UlDjcHkn8sSCQoWR9SJBgJhHwK6
-         s+XLtN47S8JL/Z16ij2ogWSDHV5CXbrG4p0UHQdUE1wmO/ns8/LrylnU8/PermKxSs4W
-         d2EFLlXMMiXxCZVMLjCQh9WIGwkIhfKwfj4DAVXNfHl57w3cYwFVRGLCjaJi8AqZ4FGc
-         DeEvOvwOf6v/RWast0XvfVKz/by057aCibiZUa1rpAulg5rWbP1NPAOM2eZTaVZ8jeEz
-         U/xg==
+         :in-reply-to:from:references:cc:to:content-language:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=za+XFaxYM1zjp716YegZdTkj9nfX0PGGnKcdUSnInXI=;
+        b=DCjV5pdDeJtdp1afghnM2tV+EvenH5FC44gLkjv82tGcS2gJ/VS5P1B7UWLjZEWMPs
+         3gI/2mw1gBXxOR18pUQHl8f96fAdZvvvIV1roVb+UwiTV2hM3o8uj+8fPRR44Go2tABF
+         pQbj9SNrDSDOo4zO1LMtocZyt79WnRw1jftMknu2qSOelwOKeIVYrLxlV1TocR64HLt3
+         N1FwA9fK7t7cm8aNp8lQxq4tWJOXSC6FuryvKzqHPyxb7eg7Otltp026SU85ISwo+UaR
+         VSUAmUwQlo8P6iiPdBLe85hpk2z5+ar20pi/7IQWmPurHS6XKnwunjIW++tuKxxc22CL
+         Vqow==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=K0HvuuYw;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@sifive.com header.s=google header.b=kJPjOMwQ;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id dm50-20020a05620a1d7200b006b614daf40bsi12295612qkb.440.2022.07.27.05.19.29
+        by mx.google.com with ESMTPS id if8-20020a0562141c4800b0047418f595easi10106486qvb.128.2022.07.27.06.39.51
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 27 Jul 2022 05:19:29 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 27 Jul 2022 06:39:51 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=K0HvuuYw;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:55444 helo=lists1p.gnu.org)
+       dkim=pass header.i=@sifive.com header.s=google header.b=kJPjOMwQ;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:55612 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1oGg0f-0001Tk-2M
-	for alex.bennee@linaro.org; Wed, 27 Jul 2022 08:19:29 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49940)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1oGhGR-0004ZF-6d
+	for alex.bennee@linaro.org; Wed, 27 Jul 2022 09:39:51 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:34682)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <cohuck@redhat.com>) id 1oGfzm-0001Pe-4C
- for qemu-arm@nongnu.org; Wed, 27 Jul 2022 08:18:34 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:43703)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <cohuck@redhat.com>) id 1oGfzi-0006gc-Cb
- for qemu-arm@nongnu.org; Wed, 27 Jul 2022 08:18:32 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1658924309;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding;
- bh=O9fnthMzfJLVM79QjbbMjM8a3h7O0bHpxqPLXB+XmNs=;
- b=K0HvuuYwhmPVclBqjCTVCwiwp8GLP6zSc7XqSG7YrYysfCja2dgMm6jYD3Aj0EA+Hu+ZZj
- 7P79Em9exQteC6+YzOfWKEsaSKJ9rAaQsZLqejrlV+Rw2ikV3EJZeRajo2c0KsPet0dr9t
- 01jSPTNT9COXgcgR7ffLxUCSjWSQ7Tc=
-Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
- [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-75-JYsAZtImMMG7lDpsGE4WQA-1; Wed, 27 Jul 2022 08:18:25 -0400
-X-MC-Unique: JYsAZtImMMG7lDpsGE4WQA-1
-Received: from smtp.corp.redhat.com (int-mx09.intmail.prod.int.rdu2.redhat.com
- [10.11.54.9])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id D36758001EA;
- Wed, 27 Jul 2022 12:18:24 +0000 (UTC)
-Received: from gondolin.fritz.box (unknown [10.39.193.143])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 73B8C492CA2;
- Wed, 27 Jul 2022 12:18:20 +0000 (UTC)
-From: Cornelia Huck <cohuck@redhat.com>
-To: Peter Maydell <peter.maydell@linaro.org>,
- Eduardo Habkost <eduardo@habkost.net>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
- Yanan Wang <wangyanan55@huawei.com>, Paolo Bonzini <pbonzini@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- "Michael S. Tsirkin" <mst@redhat.com>, Laurent Vivier <laurent@vivier.eu>,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
- Daniel Henrique Barboza <danielhb413@gmail.com>,
- David Gibson <david@gibson.dropbear.id.au>, Greg Kurz <groug@kaod.org>,
- Thomas Huth <thuth@redhat.com>, David Hildenbrand <david@redhat.com>,
- Halil Pasic <pasic@linux.ibm.com>,
- Christian Borntraeger <borntraeger@linux.ibm.com>,
- Eric Farman <farman@linux.ibm.com>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, qemu-ppc@nongnu.org,
- qemu-s390x@nongnu.org, Cornelia Huck <cohuck@redhat.com>
-Subject: [PATCH for-7.2] hw: Add compat machines for 7.2
-Date: Wed, 27 Jul 2022 14:17:55 +0200
-Message-Id: <20220727121755.395894-1-cohuck@redhat.com>
+ (Exim 4.90_1) (envelope-from <ben.dooks@sifive.com>)
+ id 1oGh6Y-0004yT-86
+ for qemu-devel@nongnu.org; Wed, 27 Jul 2022 09:29:38 -0400
+Received: from mail-wr1-x434.google.com ([2a00:1450:4864:20::434]:33388)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <ben.dooks@sifive.com>)
+ id 1oGh6V-0002Fl-2g
+ for qemu-devel@nongnu.org; Wed, 27 Jul 2022 09:29:37 -0400
+Received: by mail-wr1-x434.google.com with SMTP id h9so24224750wrm.0
+ for <qemu-devel@nongnu.org>; Wed, 27 Jul 2022 06:29:34 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sifive.com; s=google;
+ h=message-id:date:mime-version:user-agent:subject:content-language:to
+ :cc:references:from:in-reply-to:content-transfer-encoding;
+ bh=za+XFaxYM1zjp716YegZdTkj9nfX0PGGnKcdUSnInXI=;
+ b=kJPjOMwQ3Z/dYWEXV1KXKYOVWZBWPnhq3biLtaYX9HmlgQUrBSQIt1yy/7KxGAdTnN
+ p7O/kA/f5imkz7lI11e+ZNWYLUJkr6JgaRrEsXhGpDJ7LwcXQjIbG3/el90M63J7TrqO
+ nBoy7pU8+XK2c2Bo4wEWw3BldLurUNyHSt14hlV/zGMmfPT6VFAKtfl6xyI7p8rQyZKI
+ boOeSJRq2FsoFUvAZyfvhduNvIq3Sgrm0vPzSS1o2wxOtGagfMKh9U5+EsvKY789wIlW
+ kTv3VwMrINzJE6NLZ8kkay74gF8OM9N5RIWLRTBzxec+T5Gw2SlgexgPy1QySjFuRMa9
+ TXZw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
+ :content-language:to:cc:references:from:in-reply-to
+ :content-transfer-encoding;
+ bh=za+XFaxYM1zjp716YegZdTkj9nfX0PGGnKcdUSnInXI=;
+ b=dmCZtTmJgNBJjSxG+d6hT/L0219Dh4ytJcYGSjE2KCM2WXKdj8Ma4kEgCXLqmRXmi/
+ kAYOBpxjFsYlg05wdmTRyEUANT6/PgeQTh7crq7cs+3mVt+LkEJ7xG9dM+BxpN1DpC89
+ TDwqp5U/zsY2Pc2Bq8JzWyzbedtgqi0+SWWHTj5fUSEnZ0SkTAwOTNE6h/V+ABLYxJQU
+ bWLBOtc6NgMlYpGkd5o2qVHgcVEpk0XqRDWhBABfcYHRVisJdG3L3gwIShX3DlhZiptP
+ 94D/5CwjjZraz4u4lOeHOsj/lnqZcgXsXUNC3PVpwi97dnQbGm2RNpp2ca1FHZHCJWqi
+ 3xKw==
+X-Gm-Message-State: AJIora941VbBCYwaoecwypCsy69Hxv1prP12/eH8PtxpJ+9quQP2O+ws
+ Jh59d8/4ljxQMkuJ2Ao6DYRgbg==
+X-Received: by 2002:a05:6000:1888:b0:21d:beeb:7873 with SMTP id
+ a8-20020a056000188800b0021dbeeb7873mr14201528wri.393.1658928573408; 
+ Wed, 27 Jul 2022 06:29:33 -0700 (PDT)
+Received: from [192.168.0.17]
+ (cpc152649-stkp13-2-0-cust121.10-2.cable.virginm.net. [86.15.83.122])
+ by smtp.gmail.com with ESMTPSA id
+ a7-20020adffac7000000b0021e3e73dec6sm20329302wrs.72.2022.07.27.06.29.32
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 27 Jul 2022 06:29:33 -0700 (PDT)
+Message-ID: <a8962df7-cbf8-3134-9160-7c5d45e91215@sifive.com>
+Date: Wed, 27 Jul 2022 14:29:31 +0100
 MIME-Version: 1.0
-Content-type: text/plain
-Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 2.85 on 10.11.54.9
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=cohuck@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -28
-X-Spam_score: -2.9
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.10.0
+Subject: Re: updates for designware pci-host
+Content-Language: en-GB
+To: Peter Maydell <peter.maydell@linaro.org>, Ben Dooks <qemu@ben.fluff.org>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+ Jude Onyenegecha <jude.onyenegecha@sifive.com>,
+ Sudip Mukherjee <sudip.mukherjee@sifive.com>,
+ William Salmon <william.salmon@sifive.com>,
+ Adnan Chowdhury <adnan.chowdhury@sifive.com>
+References: <20220713165449.37433-1-ben.dooks@sifive.com>
+ <20220727111320.5b7qobwx5bbwh65d@hetzy.fluff.org>
+ <CAFEAcA_aw002ZP6a=M5VyjVSs9Ln-Pv3ED0-eTtJj4bFM+KcJw@mail.gmail.com>
+From: Ben Dooks <ben.dooks@sifive.com>
+In-Reply-To: <CAFEAcA_aw002ZP6a=M5VyjVSs9Ln-Pv3ED0-eTtJj4bFM+KcJw@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::434;
+ envelope-from=ben.dooks@sifive.com; helo=mail-wr1-x434.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.082,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: nUSoTuKtGtO1
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 6UWrjKBNnOps
 
-Add 7.2 machine types for arm/i440fx/m68k/q35/s390x/spapr.
+On 27/07/2022 13:56, Peter Maydell wrote:
+> On Wed, 27 Jul 2022 at 12:15, Ben Dooks <qemu@ben.fluff.org> wrote:
+>>
+>> On Wed, Jul 13, 2022 at 05:54:42PM +0100, Ben Dooks wrote:
+>>> As part of a project we have been looking at using the DesignWare
+>>> PCIe host. We found a few issues of missing features or small bugs
+>>> when using this with a recent Linux kernel (v5.17.x)
+>>>
+>>> Whilst doing this we also made a start on some tracing events.
+>>
+>> Hi, has anyone had a chance to review these. If so can this series
+>> get applied? If not should anyone else be added to the review list?
+>>
+>> If it would be easier I can try and find a git tree to publish this
+>> branch on if a pull request would be easier.
+> 
+> Is there a public spec for the hardware? There isn't anything
+> listed in the source file in the tree. Without the h/w specs
+> it's pretty difficult to review changes.
 
-Signed-off-by: Cornelia Huck <cohuck@redhat.com>
----
- hw/arm/virt.c              |  9 ++++++++-
- hw/core/machine.c          |  3 +++
- hw/i386/pc.c               |  3 +++
- hw/i386/pc_piix.c          | 14 +++++++++++++-
- hw/i386/pc_q35.c           | 13 ++++++++++++-
- hw/m68k/virt.c             |  9 ++++++++-
- hw/ppc/spapr.c             | 15 +++++++++++++--
- hw/s390x/s390-virtio-ccw.c | 14 +++++++++++++-
- include/hw/boards.h        |  3 +++
- include/hw/i386/pc.h       |  3 +++
- 10 files changed, 79 insertions(+), 7 deletions(-)
+Would it be helpful if i put out a v2 series with pointers into the
+Linux tree to where the info is available there?
 
-diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index 9633f822f361..1a6480fd2a76 100644
---- a/hw/arm/virt.c
-+++ b/hw/arm/virt.c
-@@ -3094,10 +3094,17 @@ static void machvirt_machine_init(void)
- }
- type_init(machvirt_machine_init);
- 
-+static void virt_machine_7_2_options(MachineClass *mc)
-+{
-+}
-+DEFINE_VIRT_MACHINE_AS_LATEST(7, 2)
-+
- static void virt_machine_7_1_options(MachineClass *mc)
- {
-+    virt_machine_7_2_options(mc);
-+    compat_props_add(mc->compat_props, hw_compat_7_1, hw_compat_7_1_len);
- }
--DEFINE_VIRT_MACHINE_AS_LATEST(7, 1)
-+DEFINE_VIRT_MACHINE(7, 1)
- 
- static void virt_machine_7_0_options(MachineClass *mc)
- {
-diff --git a/hw/core/machine.c b/hw/core/machine.c
-index a673302ccec5..aa520e74a8c8 100644
---- a/hw/core/machine.c
-+++ b/hw/core/machine.c
-@@ -40,6 +40,9 @@
- #include "hw/virtio/virtio-pci.h"
- #include "qom/object_interfaces.h"
- 
-+GlobalProperty hw_compat_7_1[] = {};
-+const size_t hw_compat_7_1_len = G_N_ELEMENTS(hw_compat_7_1);
-+
- GlobalProperty hw_compat_7_0[] = {
-     { "arm-gicv3-common", "force-8-bit-prio", "on" },
-     { "nvme-ns", "eui64-default", "on"},
-diff --git a/hw/i386/pc.c b/hw/i386/pc.c
-index 774cb2bf0748..31724c42ac90 100644
---- a/hw/i386/pc.c
-+++ b/hw/i386/pc.c
-@@ -107,6 +107,9 @@
-     { "qemu64-" TYPE_X86_CPU, "model-id", "QEMU Virtual CPU version " v, },\
-     { "athlon-" TYPE_X86_CPU, "model-id", "QEMU Virtual CPU version " v, },
- 
-+GlobalProperty pc_compat_7_1[] = {};
-+const size_t pc_compat_7_1_len = G_N_ELEMENTS(pc_compat_7_1);
-+
- GlobalProperty pc_compat_7_0[] = {};
- const size_t pc_compat_7_0_len = G_N_ELEMENTS(pc_compat_7_0);
- 
-diff --git a/hw/i386/pc_piix.c b/hw/i386/pc_piix.c
-index a234989ac363..34fa0021c7be 100644
---- a/hw/i386/pc_piix.c
-+++ b/hw/i386/pc_piix.c
-@@ -424,7 +424,7 @@ static void pc_i440fx_machine_options(MachineClass *m)
-     machine_class_allow_dynamic_sysbus_dev(m, TYPE_VMBUS_BRIDGE);
- }
- 
--static void pc_i440fx_7_1_machine_options(MachineClass *m)
-+static void pc_i440fx_7_2_machine_options(MachineClass *m)
- {
-     PCMachineClass *pcmc = PC_MACHINE_CLASS(m);
-     pc_i440fx_machine_options(m);
-@@ -433,6 +433,18 @@ static void pc_i440fx_7_1_machine_options(MachineClass *m)
-     pcmc->default_cpu_version = 1;
- }
- 
-+DEFINE_I440FX_MACHINE(v7_2, "pc-i440fx-7.2", NULL,
-+                      pc_i440fx_7_2_machine_options);
-+
-+static void pc_i440fx_7_1_machine_options(MachineClass *m)
-+{
-+    pc_i440fx_7_2_machine_options(m);
-+    m->alias = NULL;
-+    m->is_default = false;
-+    compat_props_add(m->compat_props, hw_compat_7_1, hw_compat_7_1_len);
-+    compat_props_add(m->compat_props, pc_compat_7_1, pc_compat_7_1_len);
-+}
-+
- DEFINE_I440FX_MACHINE(v7_1, "pc-i440fx-7.1", NULL,
-                       pc_i440fx_7_1_machine_options);
- 
-diff --git a/hw/i386/pc_q35.c b/hw/i386/pc_q35.c
-index f96cbd04e284..38634cd11413 100644
---- a/hw/i386/pc_q35.c
-+++ b/hw/i386/pc_q35.c
-@@ -362,7 +362,7 @@ static void pc_q35_machine_options(MachineClass *m)
-     m->max_cpus = 288;
- }
- 
--static void pc_q35_7_1_machine_options(MachineClass *m)
-+static void pc_q35_7_2_machine_options(MachineClass *m)
- {
-     PCMachineClass *pcmc = PC_MACHINE_CLASS(m);
-     pc_q35_machine_options(m);
-@@ -370,6 +370,17 @@ static void pc_q35_7_1_machine_options(MachineClass *m)
-     pcmc->default_cpu_version = 1;
- }
- 
-+DEFINE_Q35_MACHINE(v7_2, "pc-q35-7.2", NULL,
-+                   pc_q35_7_2_machine_options);
-+
-+static void pc_q35_7_1_machine_options(MachineClass *m)
-+{
-+    pc_q35_7_2_machine_options(m);
-+    m->alias = NULL;
-+    compat_props_add(m->compat_props, hw_compat_7_1, hw_compat_7_1_len);
-+    compat_props_add(m->compat_props, pc_compat_7_1, pc_compat_7_1_len);
-+}
-+
- DEFINE_Q35_MACHINE(v7_1, "pc-q35-7.1", NULL,
-                    pc_q35_7_1_machine_options);
- 
-diff --git a/hw/m68k/virt.c b/hw/m68k/virt.c
-index 0aa383fa6bda..3122c8ef2c38 100644
---- a/hw/m68k/virt.c
-+++ b/hw/m68k/virt.c
-@@ -322,10 +322,17 @@ type_init(virt_machine_register_types)
-     } \
-     type_init(machvirt_machine_##major##_##minor##_init);
- 
-+static void virt_machine_7_2_options(MachineClass *mc)
-+{
-+}
-+DEFINE_VIRT_MACHINE(7, 2, true)
-+
- static void virt_machine_7_1_options(MachineClass *mc)
- {
-+    virt_machine_7_2_options(mc);
-+    compat_props_add(mc->compat_props, hw_compat_7_1, hw_compat_7_1_len);
- }
--DEFINE_VIRT_MACHINE(7, 1, true)
-+DEFINE_VIRT_MACHINE(7, 1, false)
- 
- static void virt_machine_7_0_options(MachineClass *mc)
- {
-diff --git a/hw/ppc/spapr.c b/hw/ppc/spapr.c
-index bc9ba6e6dcf2..fb790b61e442 100644
---- a/hw/ppc/spapr.c
-+++ b/hw/ppc/spapr.c
-@@ -4730,15 +4730,26 @@ static void spapr_machine_latest_class_options(MachineClass *mc)
-     }                                                                \
-     type_init(spapr_machine_register_##suffix)
- 
-+/*
-+ * pseries-7.2
-+ */
-+static void spapr_machine_7_2_class_options(MachineClass *mc)
-+{
-+    /* Defaults for the latest behaviour inherited from the base class */
-+}
-+
-+DEFINE_SPAPR_MACHINE(7_2, "7.2", true);
-+
- /*
-  * pseries-7.1
-  */
- static void spapr_machine_7_1_class_options(MachineClass *mc)
- {
--    /* Defaults for the latest behaviour inherited from the base class */
-+    spapr_machine_7_2_class_options(mc);
-+    compat_props_add(mc->compat_props, hw_compat_7_1, hw_compat_7_1_len);
- }
- 
--DEFINE_SPAPR_MACHINE(7_1, "7.1", true);
-+DEFINE_SPAPR_MACHINE(7_1, "7.1", false);
- 
- /*
-  * pseries-7.0
-diff --git a/hw/s390x/s390-virtio-ccw.c b/hw/s390x/s390-virtio-ccw.c
-index cc3097bfee80..bf1b36d824db 100644
---- a/hw/s390x/s390-virtio-ccw.c
-+++ b/hw/s390x/s390-virtio-ccw.c
-@@ -792,14 +792,26 @@ bool css_migration_enabled(void)
-     }                                                                         \
-     type_init(ccw_machine_register_##suffix)
- 
-+static void ccw_machine_7_2_instance_options(MachineState *machine)
-+{
-+}
-+
-+static void ccw_machine_7_2_class_options(MachineClass *mc)
-+{
-+}
-+DEFINE_CCW_MACHINE(7_2, "7.2", true);
-+
- static void ccw_machine_7_1_instance_options(MachineState *machine)
- {
-+    ccw_machine_7_2_instance_options(machine);
- }
- 
- static void ccw_machine_7_1_class_options(MachineClass *mc)
- {
-+    ccw_machine_7_2_class_options(mc);
-+    compat_props_add(mc->compat_props, hw_compat_7_1, hw_compat_7_1_len);
- }
--DEFINE_CCW_MACHINE(7_1, "7.1", true);
-+DEFINE_CCW_MACHINE(7_1, "7.1", false);
- 
- static void ccw_machine_7_0_instance_options(MachineState *machine)
- {
-diff --git a/include/hw/boards.h b/include/hw/boards.h
-index d94edcef2883..487243a39c84 100644
---- a/include/hw/boards.h
-+++ b/include/hw/boards.h
-@@ -380,6 +380,9 @@ struct MachineState {
-     } \
-     type_init(machine_initfn##_register_types)
- 
-+extern GlobalProperty hw_compat_7_1[];
-+extern const size_t hw_compat_7_1_len;
-+
- extern GlobalProperty hw_compat_7_0[];
- extern const size_t hw_compat_7_0_len;
- 
-diff --git a/include/hw/i386/pc.h b/include/hw/i386/pc.h
-index b7735dccfc81..4517fa08f2e9 100644
---- a/include/hw/i386/pc.h
-+++ b/include/hw/i386/pc.h
-@@ -195,6 +195,9 @@ void pc_madt_cpu_entry(AcpiDeviceIf *adev, int uid,
- /* sgx.c */
- void pc_machine_init_sgx_epc(PCMachineState *pcms);
- 
-+extern GlobalProperty pc_compat_7_1[];
-+extern const size_t pc_compat_7_1_len;
-+
- extern GlobalProperty pc_compat_7_0[];
- extern const size_t pc_compat_7_0_len;
- 
--- 
-2.35.3
 

@@ -1,167 +1,173 @@
-Received: by 2002:a05:6512:1086:0:0:0:0 with SMTP id j6csp181327lfg;
-        Thu, 28 Jul 2022 03:44:17 -0700 (PDT)
-X-Google-Smtp-Source: AGRyM1vsL3DERRCt3G+1bUSxV49H+Woax27cB340UbrxIYZcscFtfg44vR5yAeTTRxDIWzyPIzk2
-X-Received: by 2002:a05:622a:106:b0:31f:79a:8468 with SMTP id u6-20020a05622a010600b0031f079a8468mr21974077qtw.58.1659005057302;
-        Thu, 28 Jul 2022 03:44:17 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1659005057; cv=none;
+Received: by 2002:a05:6512:1086:0:0:0:0 with SMTP id j6csp276737lfg;
+        Thu, 28 Jul 2022 06:35:54 -0700 (PDT)
+X-Google-Smtp-Source: AGRyM1viJmhtlezCKvbMOh6PXtHbt2xAQ0bslwCoZFsDyQX92bKWfok8qxdr9DB9rCE//fwHps2v
+X-Received: by 2002:a05:620a:4312:b0:6a6:5b66:5b9b with SMTP id u18-20020a05620a431200b006a65b665b9bmr20164472qko.224.1659015354273;
+        Thu, 28 Jul 2022 06:35:54 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1659015354; cv=none;
         d=google.com; s=arc-20160816;
-        b=EIFkDZpFG0h3WMr8pEsAlZmcbobySVCM3lVZPFay17dY/E7HWeBL99old1okmAeph5
-         cCQeHtV4rgL97OBq4y1N3h4SNh1QIRR5OW4e+qCRXS8WkAILGOcFgvAsSoLiusv4Cdtt
-         SXczjoXR/hjBljJeBu3vVcmQ2V1isgAvXabZFSnYtsw1neo6nvIPOriiBNaWtUD2ALUE
-         vaXxM/T+e4q//Eivh4F1IhrwbljYJ5kBDHLjhrHsGW5F34QfZxtbhTrZCfIfzMDXs3RG
-         7KzLejS7eGN4QLRI9SCgggxrEYSs3MigEfY56kTOTTfrck+1SQZdqEW3y+35AdaTL2Jr
-         9cdA==
+        b=JknDt+vQ0iCa92c8rirBDWbCkFnCnTVah4SnAmSz+MUalzCulOixoL2h72DOzNXD+u
+         BYMHK2G4uSaxcUVdAk4wNYV0u8Xfi51giV7U8Vl9JL9rz+1q8SGDEI4J2U7B8x3zDB5q
+         fIuFEcfwdUgGGD5f3WwtkzuLSMO4kRNFBoDfaf/27nMmur97cVVuWN0s7H9nr5JOPTGB
+         e90J/lAnwf9bopq2OXDSm+UI7uz96UJV3GluTFCzZbxEwonEYMzVIO/TRpFBQL3/d/X5
+         IPSEANIZK0hle0aJ8/dm8v5BKwsIHdZTvaK5fFXeUd9fJG/Mbo2q8l9FbSbVAGliLAZD
+         +z8w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:user-agent:in-reply-to
-         :content-disposition:mime-version:references:message-id:subject:cc
-         :to:from:date;
-        bh=QAxFvo6T1XuQllsg/TeZkAOWMUA9wr05QSDN3iSa68Q=;
-        b=ZH/YJHSMetqnOBDUqlGaHlY/iB7YiSUAqe9lnHlQWbxT/lskydwXNSRiehvFN1x64C
-         bEKAJyJClcVfyGi7eqwoS1isLTf715ezPztDSI/StNVGHM64toQEGrllIrVBbB0dYosN
-         t/DTLYX8NrrPXfTLYa35ruN+iXUfnOjdXOyHrQJoaH2uWEAGnuM8FFZdUntg+MxYKSUg
-         MlNTc7HLoeMUJuWwt2DRumasNRmavAGK194ht1MtEMVhSNC/CRiN2Zeu+eOCeO0G+/vw
-         krlXKBUzxe2LJUIii4ePfXNBNHw26rV/ddGAxUb8oo88lDacIL1WiNzwMB1hJ9GEmDpd
-         sSdQ==
+         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
+         :dkim-signature;
+        bh=v4NDBabO87eMgw//tm5IPRl769IKkg8ma5inkeF5aJk=;
+        b=GxM1l8zjqJpKAgvQK4+qyIwmshn23upYAZUd+f7nYH2HtpCKgeGl0+6/kvpoUXn9DP
+         J0pj0cxA+v+lWtZqt7ZX7nMCfu6mDn9udVe2awDGdubl1O9Q6g6vWoYgMDMDECUfq6pz
+         OtnTYZFqk1AsZmbipFp/+B7mcBl4+Maizgokmfb2y6eEMWcaj/+4P/xP6iM8982Xg38x
+         F1W6jDmK/t337Eu9AQI2qF77wNm2vR2CnolpDTNQuPdiRblWOTwHGrRa0CiXkhDWi+O+
+         aA9BYinu2b06SqoVFWKz7f02Fony96Ke1WOq9/zGIuRUzlW5gSMNygDQKhelC6Yy7SyL
+         WOvg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Jk+XGeZH;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t7-20020a05622a148700b0031eeab86e26si232366qtx.463.2022.07.28.03.44.17
+        by mx.google.com with ESMTPS id bz21-20020a05622a1e9500b0031f3851a513si454332qtb.89.2022.07.28.06.35.54
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 28 Jul 2022 03:44:17 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 28 Jul 2022 06:35:54 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:58016 helo=lists1p.gnu.org)
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Jk+XGeZH;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:53228 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1oH104-0000Ag-PF
-	for alex.bennee@linaro.org; Thu, 28 Jul 2022 06:44:16 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:52090)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1oH3g9-0000nz-2D
+	for alex.bennee@linaro.org; Thu, 28 Jul 2022 09:35:53 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33468)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ben@fluff.org>)
- id 1oH0xV-00060n-9J; Thu, 28 Jul 2022 06:41:37 -0400
-Received: from test-v6.fluff.org ([2a01:4f8:222:2004::3]:36764
- helo=hetzy.fluff.org)
+ (Exim 4.90_1) (envelope-from <kwolf@redhat.com>) id 1oH3ae-0005ew-CQ
+ for qemu-devel@nongnu.org; Thu, 28 Jul 2022 09:30:12 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:46394)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ben@fluff.org>)
- id 1oH0xS-0007BU-PK; Thu, 28 Jul 2022 06:41:36 -0400
-Received: from ben by hetzy.fluff.org with local (Exim 4.89)
- (envelope-from <ben@fluff.org>)
- id 1oH0xN-0007FI-GV; Thu, 28 Jul 2022 11:41:29 +0100
-Date: Thu, 28 Jul 2022 11:41:29 +0100
-From: Ben Dooks <qemu@ben.fluff.org>
-To: Andrew Jones <ajones@ventanamicro.com>
-Cc: Ben Dooks <qemu@ben.fluff.org>, qemu-devel@nongnu.org,
- qemu-riscv@nongnu.org, Alistair Francis <Alistair.Francis@wdc.com>,
- qemu-arm@nongnu.org
-Subject: Re: [PATCH v3 1/5] device_tree: add qemu_fdt_setprop_strings() helper
-Message-ID: <20220728104129.gfbxpf4stnv5v6wa@hetzy.fluff.org>
-References: <20220727223905.624285-1-qemu@ben.fluff.org>
- <20220727223905.624285-2-qemu@ben.fluff.org>
- <20220728092227.m2v6nyy4eblcreo2@kamzik>
+ (Exim 4.90_1) (envelope-from <kwolf@redhat.com>) id 1oH3ac-0002tf-Pf
+ for qemu-devel@nongnu.org; Thu, 28 Jul 2022 09:30:12 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1659015010;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=v4NDBabO87eMgw//tm5IPRl769IKkg8ma5inkeF5aJk=;
+ b=Jk+XGeZHh+AfnXww3tflHD02CWsjUEwJZDGI+1uTr2roepVErKCAf7sb9p/N4sgTqM1AOA
+ IfU/Ou4VKwUeA5VvYyeb1nbxCv3sx+GlANESR5TIXfjiiX9/V/GBvY2mQdVg+/5ERjOil5
+ VKsi8eLwv+nR0lB+QAVUQ/+/6sJJTlY=
+Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
+ [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-218-YXXznu3sOuO5zX7Aqn0Xqw-1; Thu, 28 Jul 2022 09:30:04 -0400
+X-MC-Unique: YXXznu3sOuO5zX7Aqn0Xqw-1
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.8])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 9C746801755;
+ Thu, 28 Jul 2022 13:30:03 +0000 (UTC)
+Received: from redhat.com (unknown [10.39.194.41])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 209DDC04482;
+ Thu, 28 Jul 2022 13:29:59 +0000 (UTC)
+Date: Thu, 28 Jul 2022 15:29:58 +0200
+From: Kevin Wolf <kwolf@redhat.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: Markus Armbruster <armbru@redhat.com>, Hao Wu <wuhaotsh@google.com>,
+ richard.henderson@linaro.org, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org, venture@google.com, Avi.Fishman@nuvoton.com,
+ kfting@nuvoton.com, hskinnemoen@google.com, f4bug@amsat.org,
+ bin.meng@windriver.com, qemu-block@nongnu.org, thuth@redhat.com,
+ Hanna Reitz <hreitz@redhat.com>
+Subject: Re: [PATCH v5 5/8] blockdev: Add a new IF type IF_OTHER
+Message-ID: <YuKPVi9UjmZVqw5a@redhat.com>
+References: <20220714182836.89602-1-wuhaotsh@google.com>
+ <20220714182836.89602-6-wuhaotsh@google.com>
+ <87ilnuda33.fsf@pond.sub.org> <YuGMFRDj3tLOIJK7@redhat.com>
+ <CAFEAcA-_TkDW4tPxvmwEt-Rr6VAr_7aWNX2++CE+1G5cBPtiBg@mail.gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20220728092227.m2v6nyy4eblcreo2@kamzik>
-X-Disclaimer: These are my views alone.
-X-URL: http://www.fluff.org/
-User-Agent: NeoMutt/20170113 (1.7.2)
-X-SA-Exim-Connect-IP: <locally generated>
-X-SA-Exim-Mail-From: ben@fluff.org
-X-SA-Exim-Scanned: No (on hetzy.fluff.org); SAEximRunCond expanded to false
-Received-SPF: pass client-ip=2a01:4f8:222:2004::3; envelope-from=ben@fluff.org;
- helo=hetzy.fluff.org
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+In-Reply-To: <CAFEAcA-_TkDW4tPxvmwEt-Rr6VAr_7aWNX2++CE+1G5cBPtiBg@mail.gmail.com>
+X-Scanned-By: MIMEDefang 2.85 on 10.11.54.8
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=kwolf@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -21
+X-Spam_score: -2.2
+X-Spam_bar: --
+X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.082,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: eobMgTULzcYq
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 1ZSTU2voWxUi
 
-On Thu, Jul 28, 2022 at 11:22:27AM +0200, Andrew Jones wrote:
-> On Wed, Jul 27, 2022 at 11:39:01PM +0100, Ben Dooks wrote:
-> > Add a helper to set a property from a set of strings
-> > to reduce the following code:
-> > 
-> >     static const char * const clint_compat[2] = {
-> >         "sifive,clint0", "riscv,clint0"
-> >     };
-> > 
-> >     qemu_fdt_setprop_string_array(fdt, nodename, "compatible",
-> >         (char **)&clint_compat, ARRAY_SIZE(clint_compat));
-> > 
-> > Signed-off-by: Ben Dooks <qemu@ben.fluff.org>
-> > ---
-> > v3;
-> >  - fix return value for the call
-> >  - add better help text
-> > v2:
-> >  - fix node/path in comment
-> > ---
-> >  include/sysemu/device_tree.h | 19 +++++++++++++++++++
-> >  1 file changed, 19 insertions(+)
-> > 
-> > diff --git a/include/sysemu/device_tree.h b/include/sysemu/device_tree.h
-> > index ef060a9759..83bdfe390e 100644
-> > --- a/include/sysemu/device_tree.h
-> > +++ b/include/sysemu/device_tree.h
-> > @@ -87,6 +87,25 @@ int qemu_fdt_setprop_string(void *fdt, const char *node_path,
-> >  int qemu_fdt_setprop_string_array(void *fdt, const char *node_path,
-> >                                    const char *prop, char **array, int len);
-> >  
-> > +/**
-> > + * qemu_fdt_setprop_strings: set a property from a set of strings
-> > + *
-> > + * @fdt: pointer to the dt blob
-> > + * @path: node name
-> > + * @prop: property array
-> > + *
-> > + * This is a helper for the qemu_fdt_setprop_string_array() function
-> > + * which takes a va-arg set of strings instead of having to setup a
-> > + * single use string array.
-> > + */
-> > +#define qemu_fdt_setprop_strings(fdt, path, prop, ...)          \
-> > +    ({ int __ret; do {                                          \
-> > +        static const char * const __strs[] = { __VA_ARGS__ };   \
-> > +        __ret = qemu_fdt_setprop_string_array(fdt, path, prop,  \
-> > +                (char **)&__strs, ARRAY_SIZE(__strs));          \
-> > +     } while(0); __ret; })
+Am 28.07.2022 um 11:46 hat Peter Maydell geschrieben:
+> On Wed, 27 Jul 2022 at 20:03, Kevin Wolf <kwolf@redhat.com> wrote:
+> >
+> > Am 18.07.2022 um 11:49 hat Markus Armbruster geschrieben:
+> > > An OTP device isn't really a parallel flash, and neither are eFuses.
+> > > More fast-and-lose use of IF_PFLASH may exist in the tree, and maybe of
+> > > other interface types, too.
+> > >
+> > > This patch introduces IF_OTHER.  The patch after next uses it for an
+> > > EEPROM device.
+> > >
+> > > Do we want IF_OTHER?
+> >
+> > What would the semantics even be? Any block device that doesn't pick up
+> > a different category may pick up IF_OTHER backends?
+> >
+> > It certainly feels like a strange interface to ask for "other" disk and
+> > then getting as surprise what this other thing might be. It's
+> > essentially the same as having an explicit '-device other', and I
+> > suppose most people would find that strange.
+> >
+> > > If no, I guess we get to abuse IF_PFLASH some more.
+> > >
+> > > If yes, I guess we should use IF_PFLASH only for actual parallel flash
+> > > memory going forward.  Cleaning up existing abuse of IF_PFLASH may not
+> > > be worth the trouble, though.
+> > >
+> > > Thoughts?
+> >
+> > If the existing types aren't good enough (I don't have an opinion on
+> > whether IF_PFLASH is a good match), let's add a new one. But a specific
+> > new one, not just "other".
 > 
-> The do { } while (0) shouldn't be necessary inside the ({}), but I
-> think we should change the places that are checking the return value
-> of qemu_fdt_setprop_string_array() to not check the return value,
-> because it will always be zero. qemu_fdt_setprop_string_array() calls
-> qemu_fdt_setprop() which exits QEMU on error. Then, after there are
-> no callers checking the return value we can change this macro to
+> I think the common thread is "this isn't what anybody actually thinks
+> of as being a 'disk', but we would like to back it with a block device
+> anyway". That can cover a fair range of possibilities...
 
-I think I did this due to the hw/ppc changes that /do/ check the
-return code but are different enough to not be trivially changable.
+How confident are we that no board will ever have two devices of this
+kind?
 
-I'll go back and make this the original do {} while() tongith and
-post a v4 for people to look. The hw/ppc stuff can stay as is for
-now.
+As long as every board has at most one, if=other is a bad user interface
+in terms of descriptiveness, but still more or less workable as long as
+you know what it means for the specific board you use.
 
-Thank you for the review.
+But if you have more than one device, it becomes hard to predict which
+device gets which backend - it depends on the initialisation order in
+the code then, and I'm pretty sure that this isn't something that should
+have significance in external interfaces and therefore become a stable
+API.
 
--- 
-Ben Dooks, ben@fluff.org, http://www.fluff.org/ben/
-
-Large Hadron Colada: A large Pina Colada that makes the universe disappear.
+Kevin
 

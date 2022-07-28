@@ -1,162 +1,187 @@
-Received: by 2002:a05:6512:1086:0:0:0:0 with SMTP id j6csp315761lfg;
-        Thu, 28 Jul 2022 07:36:32 -0700 (PDT)
-X-Google-Smtp-Source: AGRyM1ttudnpv4Cfu8te1K7EHx9+GKbLFWV8XugUqoq6wAEuH0INmz3BicfvGEWpeIkvsbM6AehJ
-X-Received: by 2002:ac8:5a48:0:b0:31e:f288:3d68 with SMTP id o8-20020ac85a48000000b0031ef2883d68mr22620575qta.111.1659018992363;
-        Thu, 28 Jul 2022 07:36:32 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1659018992; cv=none;
+Received: by 2002:a05:6512:1086:0:0:0:0 with SMTP id j6csp325176lfg;
+        Thu, 28 Jul 2022 07:53:54 -0700 (PDT)
+X-Google-Smtp-Source: AGRyM1tmvE8JSgSEXo91J3h/oDEHXi3Q3zvVt9N7X2UaCjQZKSmXYOvluKlOUCMpesizaWsoAKQF
+X-Received: by 2002:a05:620a:1723:b0:6b5:f1b7:b945 with SMTP id az35-20020a05620a172300b006b5f1b7b945mr19903916qkb.613.1659020034121;
+        Thu, 28 Jul 2022 07:53:54 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1659020034; cv=none;
         d=google.com; s=arc-20160816;
-        b=I5vferbnopHuVxjccuonO3y10tGwfgg4ZnR/CRth/LlEa3sbSbnbaFNg/n+WwuH6Wj
-         0cPESgiyZSbQOEm7RhynMz3laSiC7jVW2L2EWMI2BoURSNBFnkV0WWKGvuOooQJMtHc/
-         vYcHZgA5n66OngNNjEx+FAuEVTWQRedvN1Y4FBvwOsp0PNeumv5+f+0WTQu9OqMm2ZF5
-         rBJbcXxGbCKXNQBHOsbSB/bBdlYHAWFSgIEzlyduhmvrOYNe9XBaWr6S12GRGvpiJQ3P
-         4rvFw/sBNv4luPMYQfm+xSfjg0VsAaDGKNEQNwIW9Icdk1xz5kbJLGUaGI/O3zUWGVN0
-         BhKA==
+        b=dNdufPwhdJbAh1J0FsPRJnlZc3bDwUTZ/1BqchqI2GFrvfcwMoEnxjiXrl6DZgccj5
+         hUzckPRCypad6Svf5DphoDNMYSiY6HauAueTNH0DsgwLzuzP//5/qjcx5IGuEgvTJXNd
+         /en1UnkOEtfD6mQ3C8Ipv81CGYNuSNQiU5CUeE/E+TwSq9TZ2aCfgmp3zOD4RH42TYA6
+         P5GxYlYNAEJ9y1h8gOD6jj7j/BZ1O8K8IYSAhBXtkEuTXNQmzziT0RzC8wQjVZ/LTZz6
+         1yuENzMJ4vlsBVbz5eAvAww/bV03tYDZydd5cwqUwjVmDioPSI7us7EI30rL8jCrVqLb
+         VvMw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
-        bh=fglnNCosP9QgBJWtrBjvGJmWv4b9V9TVGXzTPP4S5WY=;
-        b=CRBK37WkOmvfSxDC0myORuzv2Ej1xu7GdJcXIOsDRirePyx6fKhhsUeBWD0NamBmFy
-         I1ME8sTilDbxVTyMial0WiwdXZurXRNcU7pGHpIFBPrOFQX+7xE1sbPf7NwrhXDUHuWL
-         DIOWGxhAc5/eBFUujuvP678IrvZeFGchPDWTar2CX8oy94jgWPuXmlu2uDteZV5nFcNO
-         BsjJPG58HZ+MAPP7R+V/ysPwbRS5jfsn4JKlVeVLw1aQ9c+yjrOUfS0W8QJUcB1qsvDJ
-         kjoE7ZmlHqWumI8Ao4e+JlgR1weT9NS+vtHPAVLHls7pHiNnS0t3+dN9fopeTrXRxVdr
-         J++g==
+         :list-unsubscribe:list-id:precedence:mime-version:user-agent
+         :message-id:in-reply-to:date:references:subject:cc:to:from
+         :dkim-signature;
+        bh=h1THK366nG+yLMgHoIdTGT8kQ1oG9u1RyeAzzR/3KV8=;
+        b=I9mWMJg49hBqVAEeK5hVwVjerT/6m4EuFtsjAx/acCaU01/A7L5+poQxOKAaL3IGI4
+         AxfY+QNt4d1C59ZNA5WgL31NFvyInvyMdKOqbXt5x72/K+Bs1AyhZ8LlBACEoVsYwxPX
+         zu9NsUDBPwznM5BNaTe595GnwDNXA8ON1O8p0L9cHi2YiZKsLEACtRycI1Pjgt5FDqpt
+         iTiX879wJwOzRI6YQrWXmJ9WYoV9UBsJl7BkcE1KXF/lslHbTK9O/972T5uD8+ehtx07
+         zMf6i1636s8ulcwNu1WzS8DSH6OKCbLjqHDTsNEXxk0kMU0Fyca1gd60RTrrIVdfPe8J
+         LobA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=QwjLuDYW;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=JnaGl0W7;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id gf10-20020a056214250a00b0047469cbc395si573986qvb.385.2022.07.28.07.36.32
+        by mx.google.com with ESMTPS id o20-20020a05622a009400b0031eb390dd83si589717qtw.376.2022.07.28.07.53.53
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 28 Jul 2022 07:36:32 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 28 Jul 2022 07:53:54 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=QwjLuDYW;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=JnaGl0W7;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:48936 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:42842 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1oH4cp-0008Ui-Ob
-	for alex.bennee@linaro.org; Thu, 28 Jul 2022 10:36:31 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46698)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1oH4td-0008Rs-K3
+	for alex.bennee@linaro.org; Thu, 28 Jul 2022 10:53:53 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55122)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <cohuck@redhat.com>) id 1oH4Rr-0007Fd-4t
- for qemu-arm@nongnu.org; Thu, 28 Jul 2022 10:25:17 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:43832)
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1oH4q9-0006MU-6e
+ for qemu-devel@nongnu.org; Thu, 28 Jul 2022 10:50:17 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:41748)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <cohuck@redhat.com>) id 1oH4Rk-00024t-QU
- for qemu-arm@nongnu.org; Thu, 28 Jul 2022 10:25:05 -0400
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1oH4q5-0005Ll-Gw
+ for qemu-devel@nongnu.org; Thu, 28 Jul 2022 10:50:14 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1659018300;
+ s=mimecast20190719; t=1659019812;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding;
- bh=fglnNCosP9QgBJWtrBjvGJmWv4b9V9TVGXzTPP4S5WY=;
- b=QwjLuDYW8+d4d+jquPMKbIxjD+6MKGxYkLlN0OnWqxtgZmAgJgTz/FDZaJh84VTzBeglRl
- 9yz7XldO/vD4hvmo4FHxfnPpFyNB7FsXZptGyW1pgqL218dtd4eC+s7s76GviUwtnxCjaU
- S9I74ish4JXgjpAEofIJVIxbYi9oMWk=
+ in-reply-to:in-reply-to:references:references;
+ bh=h1THK366nG+yLMgHoIdTGT8kQ1oG9u1RyeAzzR/3KV8=;
+ b=JnaGl0W77Xfn0LP5VK6E2yd87V0IetMsLwLDajjLYEkzFjzod0vchWfiowKJ2pL/67mAJr
+ wcADW9w+uJTr24+Zekb5GVS/yJaLuRAVZuy2+EdWmYuv1JDjqxNQC+yqxCf9rxtKOW34hx
+ 2T43Bzwy0j4s5k7aVaj01rvTZorNTFg=
 Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
  [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-248-q5mOU6PBO_aqT1DD5oCukQ-1; Thu, 28 Jul 2022 10:24:57 -0400
-X-MC-Unique: q5mOU6PBO_aqT1DD5oCukQ-1
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.rdu2.redhat.com
- [10.11.54.5])
+ us-mta-185-Gy4yZ42fOnivYoaQEuBBTw-1; Thu, 28 Jul 2022 10:50:08 -0400
+X-MC-Unique: Gy4yZ42fOnivYoaQEuBBTw-1
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.6])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 7C9941019C8E;
- Thu, 28 Jul 2022 14:24:56 +0000 (UTC)
-Received: from gondolin.fritz.box (unknown [10.39.193.162])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 3C73418EB7;
- Thu, 28 Jul 2022 14:24:53 +0000 (UTC)
-From: Cornelia Huck <cohuck@redhat.com>
-To: Paolo Bonzini <pbonzini@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org,
- Cornelia Huck <cohuck@redhat.com>
-Subject: [PATCH for-7.1?] kvm: don't use perror() without useful errno
-Date: Thu, 28 Jul 2022 16:24:46 +0200
-Message-Id: <20220728142446.438177-1-cohuck@redhat.com>
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id DA92218A6506;
+ Thu, 28 Jul 2022 14:50:07 +0000 (UTC)
+Received: from blackfin.pond.sub.org (unknown [10.39.194.81])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 592B72166B26;
+ Thu, 28 Jul 2022 14:50:07 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+ id EE2D421E6930; Thu, 28 Jul 2022 16:50:05 +0200 (CEST)
+From: Markus Armbruster <armbru@redhat.com>
+To: Kevin Wolf <kwolf@redhat.com>
+Cc: Peter Maydell <peter.maydell@linaro.org>,  Hao Wu <wuhaotsh@google.com>,
+ richard.henderson@linaro.org,  qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org,  venture@google.com,  Avi.Fishman@nuvoton.com,
+ kfting@nuvoton.com,  hskinnemoen@google.com,  f4bug@amsat.org,
+ bin.meng@windriver.com,  qemu-block@nongnu.org,  thuth@redhat.com,  Hanna
+ Reitz <hreitz@redhat.com>
+Subject: Re: [PATCH v5 5/8] blockdev: Add a new IF type IF_OTHER
+References: <20220714182836.89602-1-wuhaotsh@google.com>
+ <20220714182836.89602-6-wuhaotsh@google.com>
+ <87ilnuda33.fsf@pond.sub.org> <YuGMFRDj3tLOIJK7@redhat.com>
+ <CAFEAcA-_TkDW4tPxvmwEt-Rr6VAr_7aWNX2++CE+1G5cBPtiBg@mail.gmail.com>
+ <YuKPVi9UjmZVqw5a@redhat.com>
+Date: Thu, 28 Jul 2022 16:50:05 +0200
+In-Reply-To: <YuKPVi9UjmZVqw5a@redhat.com> (Kevin Wolf's message of "Thu, 28
+ Jul 2022 15:29:58 +0200")
+Message-ID: <878rodxpeq.fsf@pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/27.2 (gnu/linux)
 MIME-Version: 1.0
-Content-type: text/plain
-Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 2.79 on 10.11.54.5
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=cohuck@redhat.com;
+Content-Type: text/plain
+X-Scanned-By: MIMEDefang 2.78 on 10.11.54.6
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=armbru@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -21
-X-Spam_score: -2.2
+X-Spam_score_int: -28
+X-Spam_score: -2.9
 X-Spam_bar: --
-X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.082,
+X-Spam_report: (-2.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.082,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+ RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: qzrbmTCrwSy3
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: pX9KxuEWB8+W
 
-perror() is designed to append the decoded errno value to a
-string. This, however, only makes sense if we called something that
-actually sets errno prior to that.
+Kevin Wolf <kwolf@redhat.com> writes:
 
-For the callers that check for split irqchip support that is not the
-case, and we end up with confusing error messages that end in
-"success". Use error_report() instead.
+> Am 28.07.2022 um 11:46 hat Peter Maydell geschrieben:
+>> On Wed, 27 Jul 2022 at 20:03, Kevin Wolf <kwolf@redhat.com> wrote:
+>> >
+>> > Am 18.07.2022 um 11:49 hat Markus Armbruster geschrieben:
+>> > > An OTP device isn't really a parallel flash, and neither are eFuses.
+>> > > More fast-and-lose use of IF_PFLASH may exist in the tree, and maybe of
+>> > > other interface types, too.
+>> > >
+>> > > This patch introduces IF_OTHER.  The patch after next uses it for an
+>> > > EEPROM device.
+>> > >
+>> > > Do we want IF_OTHER?
+>> >
+>> > What would the semantics even be? Any block device that doesn't pick up
+>> > a different category may pick up IF_OTHER backends?
+>> >
+>> > It certainly feels like a strange interface to ask for "other" disk and
+>> > then getting as surprise what this other thing might be. It's
+>> > essentially the same as having an explicit '-device other', and I
+>> > suppose most people would find that strange.
+>> >
+>> > > If no, I guess we get to abuse IF_PFLASH some more.
+>> > >
+>> > > If yes, I guess we should use IF_PFLASH only for actual parallel flash
+>> > > memory going forward.  Cleaning up existing abuse of IF_PFLASH may not
+>> > > be worth the trouble, though.
+>> > >
+>> > > Thoughts?
+>> >
+>> > If the existing types aren't good enough (I don't have an opinion on
+>> > whether IF_PFLASH is a good match), let's add a new one. But a specific
+>> > new one, not just "other".
+>> 
+>> I think the common thread is "this isn't what anybody actually thinks
+>> of as being a 'disk', but we would like to back it with a block device
+>> anyway". That can cover a fair range of possibilities...
+>
+> How confident are we that no board will ever have two devices of this
+> kind?
+>
+> As long as every board has at most one, if=other is a bad user interface
+> in terms of descriptiveness, but still more or less workable as long as
+> you know what it means for the specific board you use.
+>
+> But if you have more than one device, it becomes hard to predict which
+> device gets which backend - it depends on the initialisation order in
+> the code then,
 
-Signed-off-by: Cornelia Huck <cohuck@redhat.com>
----
+Really?  Board code should use IF_OTHER devices just like it uses the
+other interface types, namely connecting each frontend device to a
+backend device with a well-known and fixed interface type and index (or
+bus and unit instead, where appropriate).
 
-Not sure if that is still 7.1 material; on the one hand, it's a small
-fix; on the other hand, it has been like that forever...
+>                and I'm pretty sure that this isn't something that should
+> have significance in external interfaces and therefore become a stable
+> API.
 
-I've kept the Arm-specific message in place, although it might be redundant.
-
----
- accel/kvm/kvm-all.c | 2 +-
- target/arm/kvm.c    | 2 +-
- 2 files changed, 2 insertions(+), 2 deletions(-)
-
-diff --git a/accel/kvm/kvm-all.c b/accel/kvm/kvm-all.c
-index 99aede73b7cb..6955c0b23a22 100644
---- a/accel/kvm/kvm-all.c
-+++ b/accel/kvm/kvm-all.c
-@@ -2265,7 +2265,7 @@ static void kvm_irqchip_create(KVMState *s)
-     ret = kvm_arch_irqchip_create(s);
-     if (ret == 0) {
-         if (s->kernel_irqchip_split == ON_OFF_AUTO_ON) {
--            perror("Split IRQ chip mode not supported.");
-+            error_report("Split IRQ chip mode not supported.");
-             exit(1);
-         } else {
-             ret = kvm_vm_ioctl(s, KVM_CREATE_IRQCHIP);
-diff --git a/target/arm/kvm.c b/target/arm/kvm.c
-index 4339e1cd6e08..e5c1bd50d29b 100644
---- a/target/arm/kvm.c
-+++ b/target/arm/kvm.c
-@@ -959,7 +959,7 @@ void kvm_arch_init_irq_routing(KVMState *s)
- int kvm_arch_irqchip_create(KVMState *s)
- {
-     if (kvm_kernel_irqchip_split()) {
--        perror("-machine kernel_irqchip=split is not supported on ARM.");
-+        error_report("-machine kernel_irqchip=split is not supported on ARM.");
-         exit(1);
-     }
- 
--- 
-2.35.3
+I agree that "implied by execution order" is a bad idea: commit
+95fd260f0a "blockdev: Drop unused drive_get_next()".
 

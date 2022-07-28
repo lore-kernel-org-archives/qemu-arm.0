@@ -1,110 +1,107 @@
-Received: by 2002:a05:6512:1086:0:0:0:0 with SMTP id j6csp331649lfg;
-        Thu, 28 Jul 2022 08:04:31 -0700 (PDT)
-X-Google-Smtp-Source: AGRyM1vFvcuP0xEbCl3e3baFB5tdCgILHMcU82Sz8OSph9KTsXUSew3cU8fbOFDWEasqqBWK/6Cm
-X-Received: by 2002:a05:6214:501e:b0:474:5230:f0c3 with SMTP id jo30-20020a056214501e00b004745230f0c3mr15832443qvb.110.1659020671343;
-        Thu, 28 Jul 2022 08:04:31 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1659020671; cv=none;
+Received: by 2002:a05:6512:1086:0:0:0:0 with SMTP id j6csp408447lfg;
+        Thu, 28 Jul 2022 10:09:34 -0700 (PDT)
+X-Google-Smtp-Source: AGRyM1suZEulxGh7FdIUUPNEarbuVZnKNK9OzzwQrYiVs+8fk3zcbITpkNoNfbs0tGiUY5e70n4o
+X-Received: by 2002:ad4:57ae:0:b0:474:3edc:89cf with SMTP id g14-20020ad457ae000000b004743edc89cfmr20947814qvx.28.1659028174135;
+        Thu, 28 Jul 2022 10:09:34 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1659028174; cv=none;
         d=google.com; s=arc-20160816;
-        b=OkMyHAP4mvVx8VNE44uMa+aQ2rOEewIoXaYDd/WZV5V5RNQoUZVmLWP0X5chYSf6/m
-         FS9kNvBVLQewEGlanVxHWuf7N8KslAMJxoGSgYeYWR5H0J0gGPr6r63nH0zSnfMH9JQu
-         Hmmd09F+AwXbakHPM6upiixfseRaSi7YIAWy5BePQ9f8QFSTU9OMoAzaQ1vdNPHCDBxV
-         dhET4wFUzW9VweEChiL1YxaLQ0fE1m8jo1BXwm6N2s62C2c1EGy5t7lDa0YI41H52+Uc
-         Xq2d6xJoCrj0dwQChVXWCn4TXrmN2QPRf2rJfdUe/RZaFCzmGCHan6badWCC8qpnHUk8
-         nsVA==
+        b=LTsQ2BSr6SopDiucmByYtAGmovVsiU32yiwd8gPUtQHyY6wAEq+vcCbjKjRgJkbr9b
+         SFDZev2ZFEDi+M69u4cYzM+85wTIaPKoGYYUtYhBiZlv4W5tm7x1LUyUTbAUB0UAo32P
+         +Ye3DDMv1Hgh4fwPc2/5NORxn9LSaYDRLL/GLtvRegAZeLwI1yWZw+2GnlSikymZSr6B
+         ba7ZGj/kfptrK6FjpUOtxy6wrYbdozSINlr1uJ+OPeFeKwWIFhN5IrH1+GFnpvDffQSD
+         t+RHr6aMWVtqSjtGHMlBe2s/+kYkDk8bnxIEf+NJIf1aB04NEzF45yzAeZc9R59iWfAQ
+         qIZg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=Lnf+TMUXbt/kQAgMdjh+++TtQJ+1pRGY9fD05kQD3to=;
-        b=vcq55wrBrSoCVRiFMk3cPN7I9lZvyNsbV54IHLRUC/at6JVF6swtqZr8f5haaxItnG
-         egzTDbgvqZmj5Qzp4ImIHEhlGCyZ9upFmUO9j08fTFBd2NhnpgE0Hg7r5GVGybO6NGef
-         okR2xAfql+n8dGZlwU6whrfnTJ4Op+LNvHDexLNsWoSk3J9WPVylWXM9zDCS/4dj+Bhq
-         bNGsTVt647ISBuvcNrLDWHm+FKQuhj8fHvi98mFwjqctswKPua71Phhw9/8lYZBLB6aJ
-         aMoxBUvcqs/+++JS5YQ7IE45DuZQWtTCEXNxvUboAw2D+pYA2hdZ5tVqLzdHhDb9SH5R
-         12AQ==
+         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
+         :dkim-signature;
+        bh=DogADKDCHu9M+X1pX23VQYzagzQQ9RO4hkFFwkg90B8=;
+        b=ZVtccSCMWNjFfAq1jZf0QXIVX5g+Ps80vfj6ipFZM2eJIkiuie5RuVF/KXefqzty02
+         i6Om5Pm5Ts7y6OXzcPUHK318I9sjCqQ3PGJ2QZKyjcDuWb42za1ZfLYboxivdhx7jY/l
+         V08E06xQwcKSahTY3CimWQQQG/U3OJeOJYxSTK/72jpFyg9F8d0aLU5ZLT0sM0VDvI0P
+         cQ5FLMHCdZUjC8ZSFa2x8TcuKLeVCgt8iGoYtx7Bh3vFxrW+tAwK+y+eUPD96nyTTtbz
+         yexP8Jde0AXd7rosr2+GOWs5fKmc5A/33vfIW29x0o62F4nOcFi7oj4HJ5lYgXEXZGIe
+         1yrg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=j7DnhQbF;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=abfQZYZG;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id kd3-20020a056214400300b00470597b4aa4si485861qvb.302.2022.07.28.08.04.31
+        by mx.google.com with ESMTPS id fz14-20020a05622a5a8e00b0031ed3add06fsi765794qtb.282.2022.07.28.10.09.33
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 28 Jul 2022 08:04:31 -0700 (PDT)
+        Thu, 28 Jul 2022 10:09:34 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=j7DnhQbF;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=abfQZYZG;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:58496 helo=lists1p.gnu.org)
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:34950 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1oH53s-0002tK-G9
-	for alex.bennee@linaro.org; Thu, 28 Jul 2022 11:04:30 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:58142)
+	id 1oH70v-0004mF-K5
+	for alex.bennee@linaro.org; Thu, 28 Jul 2022 13:09:33 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:42348)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1oH4z8-0000MG-Ji
- for qemu-arm@nongnu.org; Thu, 28 Jul 2022 10:59:34 -0400
-Received: from mail-yb1-xb29.google.com ([2607:f8b0:4864:20::b29]:42709)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1oH4z7-0002XW-1i
- for qemu-arm@nongnu.org; Thu, 28 Jul 2022 10:59:34 -0400
-Received: by mail-yb1-xb29.google.com with SMTP id c131so3652308ybf.9
- for <qemu-arm@nongnu.org>; Thu, 28 Jul 2022 07:59:32 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=Lnf+TMUXbt/kQAgMdjh+++TtQJ+1pRGY9fD05kQD3to=;
- b=j7DnhQbFs1O0d+7Wq0j4LIKrHMAYISEL9TX3ChQ2WLydSnw3jVL3gVGq2nVu8NQPuU
- J1jXCzQKXN41CnMcU1hL/JJUO/FjgYyxL1ff1C7x5JXRdyUxr5Jgd78FZsbDpT2ofPYB
- /wAwcTwx1NaBpQ3HFpu5LJQEM+hSYecFs49WYg6dHP3dVH+VhIlA5fCLpobM5hRFKz9/
- nL76RY5XvoeYkOw/nynwciBe0IyQuRs5uyA1o89yNW2UWGuRgPJf/H91dH5N8oeZmRLB
- nWUn9VdgAVJNmiD6RSF4SIjsyw9fhwwPnbwC6q0Xz5TxIJnqfVSb6iz6sEbj+Qpgygln
- 2N2Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=Lnf+TMUXbt/kQAgMdjh+++TtQJ+1pRGY9fD05kQD3to=;
- b=jfniKvNXiyCJbHUsBBBLrDoapXR1SC7Tk80+29NSw1S3RJbGbhIjdiVqt8nj0gOJZC
- y2anmOvXDMmtcCkyCLR42Sqyo+z61vrJjOiuYBjIsNU8XrFmAmpjKpfBjK1NcXnwbRuh
- rC3k0UwEDZrGhLY/qHTEZrPArG5Ba3JkuWChPX6992FQHNbc/glyLh674i4GtpbcZnMe
- JRtJwUynDgXkYv3qzWSFwCc9TShk185IZNcbu+gs/zBvx5UsUX2mfhDNYEt3A8//U65B
- cXPDPgbAkS+J0oAT2YHX/P8XUOZaebRSwY9BLAhps9z1EMyfIDweTXvXWXL5CAd69isb
- ETsw==
-X-Gm-Message-State: AJIora9azkzBviEw+aDFFEWQN8surJe2ryshXDcafkQVBFH29Tx6Sx3q
- 6xjty+m5fslsKelSldjgOtpcM+5cDggqWV/8CfapMw==
-X-Received: by 2002:a25:cf47:0:b0:671:8224:75c6 with SMTP id
- f68-20020a25cf47000000b00671822475c6mr6284216ybg.288.1659020371965; Thu, 28
- Jul 2022 07:59:31 -0700 (PDT)
-MIME-Version: 1.0
+ (Exim 4.90_1) (envelope-from <kwolf@redhat.com>) id 1oH70a-0004la-Aq
+ for qemu-arm@nongnu.org; Thu, 28 Jul 2022 13:09:12 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:47242)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <kwolf@redhat.com>) id 1oH70X-0000pa-KN
+ for qemu-arm@nongnu.org; Thu, 28 Jul 2022 13:09:10 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1659028147;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=DogADKDCHu9M+X1pX23VQYzagzQQ9RO4hkFFwkg90B8=;
+ b=abfQZYZGxA/Wocr08utuRaQcSkD1jUMkCUiTzooylfc5hbrfirOj5Sbtwg0b4MlvCvNiXt
+ dp840SpKmCFQd5M67tl0h9Ay1LhUXVWUtH0B/OYU5vzVL4uO7YE5WtkwYi4YIo7oaO0UmX
+ lEI5O6SHGwgPlJ7ZNZmyxgtWRMuKE1s=
+Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
+ [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-50-6wLUm-IRPUu0CNEkCYNGQQ-1; Thu, 28 Jul 2022 13:09:03 -0400
+X-MC-Unique: 6wLUm-IRPUu0CNEkCYNGQQ-1
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.4])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id BACA51824600;
+ Thu, 28 Jul 2022 17:09:01 +0000 (UTC)
+Received: from redhat.com (unknown [10.39.194.41])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 87EAB2026D64;
+ Thu, 28 Jul 2022 17:08:58 +0000 (UTC)
+Date: Thu, 28 Jul 2022 19:08:57 +0200
+From: Kevin Wolf <kwolf@redhat.com>
+To: Markus Armbruster <armbru@redhat.com>
+Cc: Peter Maydell <peter.maydell@linaro.org>, Hao Wu <wuhaotsh@google.com>,
+ richard.henderson@linaro.org, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org, venture@google.com, Avi.Fishman@nuvoton.com,
+ kfting@nuvoton.com, hskinnemoen@google.com, f4bug@amsat.org,
+ bin.meng@windriver.com, qemu-block@nongnu.org, thuth@redhat.com,
+ Hanna Reitz <hreitz@redhat.com>
+Subject: Re: [PATCH v5 5/8] blockdev: Add a new IF type IF_OTHER
+Message-ID: <YuLCqeG21TCyBSTF@redhat.com>
 References: <20220714182836.89602-1-wuhaotsh@google.com>
  <20220714182836.89602-6-wuhaotsh@google.com>
  <87ilnuda33.fsf@pond.sub.org> <YuGMFRDj3tLOIJK7@redhat.com>
  <CAFEAcA-_TkDW4tPxvmwEt-Rr6VAr_7aWNX2++CE+1G5cBPtiBg@mail.gmail.com>
  <YuKPVi9UjmZVqw5a@redhat.com> <878rodxpeq.fsf@pond.sub.org>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 In-Reply-To: <878rodxpeq.fsf@pond.sub.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 28 Jul 2022 15:58:51 +0100
-Message-ID: <CAFEAcA_=PPJO5K8r5QFKJRhX4j9jwPPSceAUPjhK0z_bmLdyrA@mail.gmail.com>
-Subject: Re: [PATCH v5 5/8] blockdev: Add a new IF type IF_OTHER
-To: Markus Armbruster <armbru@redhat.com>
-Cc: Kevin Wolf <kwolf@redhat.com>, Hao Wu <wuhaotsh@google.com>,
- richard.henderson@linaro.org, 
- qemu-arm@nongnu.org, qemu-devel@nongnu.org, venture@google.com, 
- Avi.Fishman@nuvoton.com, kfting@nuvoton.com, hskinnemoen@google.com, 
- f4bug@amsat.org, bin.meng@windriver.com, qemu-block@nongnu.org, 
- thuth@redhat.com, Hanna Reitz <hreitz@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b29;
- envelope-from=peter.maydell@linaro.org; helo=mail-yb1-xb29.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+X-Scanned-By: MIMEDefang 2.78 on 10.11.54.4
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=kwolf@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -21
+X-Spam_score: -2.2
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.082,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
@@ -121,28 +118,85 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 74aG3DL/wZiD
+X-TUID: E+hwBZm/H1hK
 
-On Thu, 28 Jul 2022 at 15:50, Markus Armbruster <armbru@redhat.com> wrote:
+Am 28.07.2022 um 16:50 hat Markus Armbruster geschrieben:
 > Kevin Wolf <kwolf@redhat.com> writes:
+> 
+> > Am 28.07.2022 um 11:46 hat Peter Maydell geschrieben:
+> >> On Wed, 27 Jul 2022 at 20:03, Kevin Wolf <kwolf@redhat.com> wrote:
+> >> >
+> >> > Am 18.07.2022 um 11:49 hat Markus Armbruster geschrieben:
+> >> > > An OTP device isn't really a parallel flash, and neither are eFuses.
+> >> > > More fast-and-lose use of IF_PFLASH may exist in the tree, and maybe of
+> >> > > other interface types, too.
+> >> > >
+> >> > > This patch introduces IF_OTHER.  The patch after next uses it for an
+> >> > > EEPROM device.
+> >> > >
+> >> > > Do we want IF_OTHER?
+> >> >
+> >> > What would the semantics even be? Any block device that doesn't pick up
+> >> > a different category may pick up IF_OTHER backends?
+> >> >
+> >> > It certainly feels like a strange interface to ask for "other" disk and
+> >> > then getting as surprise what this other thing might be. It's
+> >> > essentially the same as having an explicit '-device other', and I
+> >> > suppose most people would find that strange.
+> >> >
+> >> > > If no, I guess we get to abuse IF_PFLASH some more.
+> >> > >
+> >> > > If yes, I guess we should use IF_PFLASH only for actual parallel flash
+> >> > > memory going forward.  Cleaning up existing abuse of IF_PFLASH may not
+> >> > > be worth the trouble, though.
+> >> > >
+> >> > > Thoughts?
+> >> >
+> >> > If the existing types aren't good enough (I don't have an opinion on
+> >> > whether IF_PFLASH is a good match), let's add a new one. But a specific
+> >> > new one, not just "other".
+> >> 
+> >> I think the common thread is "this isn't what anybody actually thinks
+> >> of as being a 'disk', but we would like to back it with a block device
+> >> anyway". That can cover a fair range of possibilities...
+> >
+> > How confident are we that no board will ever have two devices of this
+> > kind?
+> >
+> > As long as every board has at most one, if=other is a bad user interface
+> > in terms of descriptiveness, but still more or less workable as long as
+> > you know what it means for the specific board you use.
 > >
 > > But if you have more than one device, it becomes hard to predict which
 > > device gets which backend - it depends on the initialisation order in
 > > the code then,
->
+> 
 > Really?  Board code should use IF_OTHER devices just like it uses the
 > other interface types, namely connecting each frontend device to a
 > backend device with a well-known and fixed interface type and index (or
 > bus and unit instead, where appropriate).
+> 
+> >                and I'm pretty sure that this isn't something that should
+> > have significance in external interfaces and therefore become a stable
+> > API.
+> 
+> I agree that "implied by execution order" is a bad idea: commit
+> 95fd260f0a "blockdev: Drop unused drive_get_next()".
 
-I think part of the problem is that unlike the typical disk
-interface, where there is some idea of bus-and-unit-number or
-index number that it makes sense to expose to users, these
-"miscellaneous storage" devices don't have any particular index
-concept -- in the real hardware there are just a random set of
-devices that are connected in various places. So you're requiring
-users to look up the documentation for "index 0 is this eeprom,
-index 1 is that other eeprom, index 2 is ...".
+Ah good, I was indeed thinking of something drive_get_next()-like.
 
-thanks
--- PMM
+In case the board works with explicit indices, the situation is not as
+bad as I was afraid. It will certainly be workable (even if not obvious)
+for any boards that have a fixed number of devices with block backends,
+which should cover everything we're intending to cover here.
+
+I still consider if=other a bad user interface because what it means is
+completely opaque, but if that's okay for you in your board, who am I to
+object.
+
+(Of course, the real solution would be having a generic way to set qdev
+properties for on-board devices. I'm not expecting that we're getting
+this anytime soon, though.)
+
+Kevin
+

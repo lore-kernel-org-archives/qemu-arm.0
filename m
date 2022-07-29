@@ -1,87 +1,87 @@
-Received: by 2002:a05:6512:1086:0:0:0:0 with SMTP id j6csp970928lfg;
-        Fri, 29 Jul 2022 07:39:03 -0700 (PDT)
-X-Google-Smtp-Source: AGRyM1uW6vwSPoeaaCWQ1rOh3uY9bZeCDIjp/P7WRW2w7YMZ1mHV90fK0uPJE+yeHS9s4RomzBnH
-X-Received: by 2002:a37:b483:0:b0:6b5:8688:5299 with SMTP id d125-20020a37b483000000b006b586885299mr2927461qkf.147.1659105543514;
-        Fri, 29 Jul 2022 07:39:03 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1659105543; cv=none;
+Received: by 2002:a05:6512:1086:0:0:0:0 with SMTP id j6csp972264lfg;
+        Fri, 29 Jul 2022 07:41:46 -0700 (PDT)
+X-Google-Smtp-Source: AGRyM1syUsBfRhWGjIPkIz6lgXnvWIGJC9twOL+1zRxqP5FOv2TfEwhpt6Gp3uVb7Fzjoto4zcG+
+X-Received: by 2002:a05:620a:1a23:b0:6b5:f6e3:92b7 with SMTP id bk35-20020a05620a1a2300b006b5f6e392b7mr3019471qkb.488.1659105706617;
+        Fri, 29 Jul 2022 07:41:46 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1659105706; cv=none;
         d=google.com; s=arc-20160816;
-        b=tv8AUaUrXUQ7vhyIYNBzp8u99nTF+tIxq9W9R4bWPnnBVAoKBqvgnSqKACLkHOVnvm
-         rpUxt03Vs5mWg5t5q72fUO0NaQ40HLTEjg1wSaOBHfeGGaDQAEBJgugwQMV9kqhDoJSE
-         eOtPx1rnZDkbLNNHmbQgpG5zffDiRKcTZQNAMuB2y8x8fyW2wYZMfrYuCWJGmtCvVWn1
-         ql8LJrI4EKae5t+2c0F+5HFbN8hgR6jHKS71tJdecNkY1gVI8QiHB9jy4RMVfZjgrRIe
-         DuXN2xLQbFeUE5IocQCOizpmUcnWYqVlB1bDYMhbislujpp4WM4uA2xK5IShAMwj0IZI
-         /ZrA==
+        b=dYgWRbQa2K6OW2ZjEi4kWyrZPAHj4URmyIg9RmPcdvkz+4lowWNJ4d1UAiVmxsjw4a
+         W2ypphWJ9llwgtJuHoBANptnQYM2iL/wDZHeELxDggcHYHXYlRnNsudxfruxe2vWkZ6T
+         iHKCAHmenP/KM04d6mzAian+WvkCRrAkSoY0J/cRJYIFihugdIe5U2H2zOEdlFz4PW6V
+         fa726PWAk0w12jNTk7aj+k3XG8TshmQBHscm844jNJybrsWbcvXfKxSn+EcW2e/xSnbK
+         etb0pEnxXwkymPXSGa8ndhBgNSAfW6+t4Wc7TQlHjRxV6CyNfPAvaGaYmX4uCnfyphKb
+         q0lQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
          :mime-version:references:message-id:subject:cc:to:from:date
          :feedback-id:dkim-signature:dkim-signature;
-        bh=dwDWhwWtd1UwGDpT/e/X5sZQv3LmMrrGlT4WK+vl3aw=;
-        b=jxsKsWH54GUMbBFlo7M8MI6mRxATFPlTR/u+e2xsHEkokseUMmAm9uDDMhXU5k9I/h
-         o7VqzeweSA0d4ykpYex9Ge3AbQofGgKstM005adW8o61wNzR//dy7EipLlLzcwWO/Qqx
-         WqJyJMiuMIacbNnMhcxvYeFaKVOMUB9D6l8QMZf54NBJ1zBV/7RHxYxFIQlC2tq6eIG9
-         M+hOzx9gshXAVM7pM/AAFRTrvAPt16a6GOEob/5aiGbW++np/rs93R6Rjgo24j78VEHT
-         rHbnF8M6W0R3q7X52IZ2yDagjD/0s1RXtt3kAoLQkY7X/aYQqKQvTmlAI0rdpJ8Qs5za
-         Da3A==
+        bh=oOFL5HOHH8Br6v1A6zEzjvrIsMcHqaRWyGFHEuoRzlU=;
+        b=MCafBHHNihT+qFbTntVlg3maeTZKALtzVJY6PzOws1kddyEulnfCyLDh5snTYJwCtf
+         QVaj5c0EwoYXWhZlXp9e7CSS0qiSFMbRtvDClWMkR9MVT6Gv+WBweRbYJvaoiuD/FYa0
+         CPKYu3L7PGj/7bIfpPk2l2TeFfIeII7k9NMsm5x8ZIntEvLVj8UrL1qP8GVElzcN6etd
+         CvaC8H0nrd83akOVv9gCqcIH8Px4zsyxFqLOHNJKzQ6fCP8kTavzztEt7OUn70eFgHPL
+         9FmtlrHUuB97PvFf9+pBDBERXTFQEyt5zS2HFHNOSZ9z2sRmvtN4m/N0eTPgePbJpPiv
+         ri+Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@stwcx.xyz header.s=fm1 header.b=RnqMF+op;
-       dkim=fail header.i=@messagingengine.com header.s=fm3 header.b=zvAkoUtO;
+       dkim=fail header.i=@stwcx.xyz header.s=fm1 header.b=hA79VGRF;
+       dkim=fail header.i=@messagingengine.com header.s=fm3 header.b=fYTeD3y0;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id j5-20020a05620a288500b006b5e3b35017si2140226qkp.746.2022.07.29.07.39.03
+        by mx.google.com with ESMTPS id p13-20020ad451cd000000b004734b0c7d68si1633537qvq.326.2022.07.29.07.41.46
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 29 Jul 2022 07:39:03 -0700 (PDT)
+        Fri, 29 Jul 2022 07:41:46 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@stwcx.xyz header.s=fm1 header.b=RnqMF+op;
-       dkim=fail header.i=@messagingengine.com header.s=fm3 header.b=zvAkoUtO;
+       dkim=fail header.i=@stwcx.xyz header.s=fm1 header.b=hA79VGRF;
+       dkim=fail header.i=@messagingengine.com header.s=fm3 header.b=fYTeD3y0;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:41424 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:46068 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1oHR8p-00066y-14
-	for alex.bennee@linaro.org; Fri, 29 Jul 2022 10:39:03 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34538)
+	id 1oHRBR-0000xI-Qe
+	for alex.bennee@linaro.org; Fri, 29 Jul 2022 10:41:45 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:35182)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <patrick@stwcx.xyz>)
- id 1oHR8c-00066a-Ay; Fri, 29 Jul 2022 10:38:50 -0400
-Received: from out1-smtp.messagingengine.com ([66.111.4.25]:43583)
+ id 1oHRBE-0000te-St; Fri, 29 Jul 2022 10:41:32 -0400
+Received: from out2-smtp.messagingengine.com ([66.111.4.26]:50371)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <patrick@stwcx.xyz>)
- id 1oHR8a-00005I-7z; Fri, 29 Jul 2022 10:38:50 -0400
-Received: from compute2.internal (compute2.nyi.internal [10.202.2.46])
- by mailout.nyi.internal (Postfix) with ESMTP id D9EA65C0172;
- Fri, 29 Jul 2022 10:38:43 -0400 (EDT)
+ id 1oHRBD-0000WH-A2; Fri, 29 Jul 2022 10:41:32 -0400
+Received: from compute5.internal (compute5.nyi.internal [10.202.2.45])
+ by mailout.nyi.internal (Postfix) with ESMTP id 0A1E85C0058;
+ Fri, 29 Jul 2022 10:41:30 -0400 (EDT)
 Received: from mailfrontend2 ([10.202.2.163])
- by compute2.internal (MEProxy); Fri, 29 Jul 2022 10:38:43 -0400
+ by compute5.internal (MEProxy); Fri, 29 Jul 2022 10:41:30 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=stwcx.xyz; h=cc
  :cc:content-type:date:date:from:from:in-reply-to:in-reply-to
  :message-id:mime-version:references:reply-to:sender:subject
- :subject:to:to; s=fm1; t=1659105523; x=1659191923; bh=dwDWhwWtd1
- UwGDpT/e/X5sZQv3LmMrrGlT4WK+vl3aw=; b=RnqMF+opd/xbIemMIJRxvitnZY
- fFkCBlwgU463tXnMuLga5L0gKYgYCDkQWDcUWxLcpXnyRpkwz6gD58qFLRseuTjI
- Or9likc4rhhjium8BNU6wU7EOznB+/Vep0HZ9Hu/3qPtwJiegDox0AlyDfusPOcB
- o1H+FnFz9/XsHPnvxr7kYUTXjY/mfQhlNVFzMNtuco5mqCTUX6mAmCsVaydBvq69
- ByFROlM0LUn98VPdN+DT6jih2xg5+MNqhluKJkmFGngzO5B9Pp8mpLN92bgHiu9U
- 3pw8GIUdeF2ERB2b7xNDGhF/6T083birb3a4FmmIeArrgfrI3lsOdDLToZCQ==
+ :subject:to:to; s=fm1; t=1659105690; x=1659192090; bh=oOFL5HOHH8
+ Br6v1A6zEzjvrIsMcHqaRWyGFHEuoRzlU=; b=hA79VGRFSGeLQlefrrKbk29QyA
+ zd4amETq1Kdab0/9fEv7wrnUav+J2kSUCX7JNxGOJSDEsTNPXswWjm2ZLfyygMLB
+ gs4iQV4OifCu4tS0hR2DYKAno3sDkFp42wGvYBMsPpqhKx9S/CHWgIyOZSKvgEOm
+ wCSNP/dEw5fiRCF86f9wjAattV6IG3n0ZE5fRoGONzt+WL4WQJRWktnMu1XFuwYG
+ YM96KcyNE7XocBxX6tY+1TCR77eW3dYF+zsV15dBeUXfGlZOgFzNGQTsWzRLP6kw
+ I1vjPkS8k2ed5kstbbF4Lqj+H4mXBaM4nIGeiXNyeY7PEenQVp5EWB0w35KQ==
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
  messagingengine.com; h=cc:cc:content-type:date:date:feedback-id
  :feedback-id:from:from:in-reply-to:in-reply-to:message-id
  :mime-version:references:reply-to:sender:subject:subject:to:to
  :x-me-proxy:x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=
- fm3; t=1659105523; x=1659191923; bh=dwDWhwWtd1UwGDpT/e/X5sZQv3Lm
- MrrGlT4WK+vl3aw=; b=zvAkoUtOxOEpd06HhaKcLJTpB9+CJBZCLKG9WCDxTa0J
- vP11N4UvwcqwPnZY9AWRo0ZPTsslgps8rGWjImzrlFS5B8zm1wX5fvoXe/W2zv9u
- nwIYew5IdtK9kRSu1zkZjYm9ehhQI9LVZ+MT5m+1My7YARf8esIu0wbiLfWcJUwy
- vkbrXoCntUNiqfbpir1tTB7Gay0zM84w6r6Xu+QPEZz+I5bQOb1KwoiAnKhZBkjZ
- tBRNgn0HqlZ3PfPbGA6RQaqKcNYPwXSeiMKW7PsI0atYxKDokF2JD2VGxm3TZPhl
- M1CIX8XhesGufXAVwgoHwo5z7tXRtvpSw9va9pa4gQ==
-X-ME-Sender: <xms:8vDjYqDPNuDwWTJx3EWpSjz5XNQdp-awmFjsuBKEQlKV3CcQRi8GOA>
- <xme:8vDjYkhDViXVe7pRoiwy7QeCm5OL_8QVMlrA3jWcvXMMzssn45mRZe2p_yydPgtr1
- vucyQfvNR9aa7pTuCk>
-X-ME-Received: <xmr:8vDjYtmt7dMOT5fHLvsYzMCyVV2Wito4-nQA22-86J_FJk8KycuVNMEUfwda-bcZnj1Bzg4Rhpmr3t5OkXVHRSo8VP12GMlH>
+ fm3; t=1659105690; x=1659192090; bh=oOFL5HOHH8Br6v1A6zEzjvrIsMcH
+ qaRWyGFHEuoRzlU=; b=fYTeD3y0o7+nACRAEBRPH1E47dNmGHMT28uOT9XYtuB1
+ LEUEcbSUM7wbak/HAan1QbrTJpnjhZcUEnzLc17nrBaGkkIY4sUo22P+Iq8HMP++
+ l6v7lAKWHRKPp14C4Ym+deMx+E5my8GTZD76Y1b9zCM3SJUw0edmvLcAVHLaQK3O
+ HtB2T9hkd1emvx1O6IWZJ/jeaZAVHuuU6L/Hq5Skcc7pUE8xGqHZ7qPb+xaVqu9M
+ jLhb5T2GJezH13/id7Y2A7o4evZD8HDUNkhCR9O11cmSJvzxMbqQlKEuF1Z0TREx
+ UHiHW5fEQslpwLDcygRIEFOmCVc+zUGgOuMS+NVc3A==
+X-ME-Sender: <xms:mfHjYiDQo0tDjAi5W2zzW0WFDQXcwh77H7v8MJaMDH3_8o-esEtMaQ>
+ <xme:mfHjYsh5MkcA2f9T0tmFe82qo7jI4FNm8SxaRBSaLb4aL4cbHhbhe-JZ0rze_cf0R
+ J4z1Q2bny4JFMlhmpc>
+X-ME-Received: <xmr:mfHjYlnip1VuedW5kKOF2W5TcFR0XghIRa0kfp9kfqabjaPskOUN6HiIVsBs6LCjBynqHOALzi3Aj80nITs8YVgBWdJW2E-L>
 X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvfedrvddujedgkedtucetufdoteggodetrfdotf
  fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
  uceurghilhhouhhtmecufedttdenucgfrhhlucfvnfffucdlfeehmdenucfjughrpeffhf
@@ -90,14 +90,14 @@ X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvfedrvddujedgkedtucetufdoteggod
  hnpedtjeejgfdugefhtedvudfghfejfeejfefhffeffeelgeduveejleelffefvdffleen
  ucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhgrihhlfhhrohhmpehprghtrh
  hitghksehsthiftgigrdighiii
-X-ME-Proxy: <xmx:8vDjYoxnU31aCY9GCiyGsSAuLk4ZUiSec_nlKA7BYPV_RzLUf0nmuw>
- <xmx:8vDjYvSi3mQTRzTI_3YSggHDYAoBWSHemcVZJR91nzyHt_NTljoiTQ>
- <xmx:8vDjYjY2CUt_jqUii1ECUH81QmDbSsEb8_Raq3akmsPPaDnOAQxmAw>
- <xmx:8_DjYggo0k1_K-u2sEo33gIUj1wBR0qczTtU4fSalvN2WrzZ3Nr0vw>
+X-ME-Proxy: <xmx:mfHjYgzCxmqM1k4eOEYxrbfVgzPa_pp0h4Vx0pgfp9zHpTCtvb2Thg>
+ <xmx:mfHjYnQrS5DhxcO_zAWg3r0xtne4k20Yyh0YpVWtEIx-5dMgGtrfbg>
+ <xmx:mfHjYrZU4iDELHMbE-xQECihsCOpRy4BZH_XbUGVybzC_7J8HRJ98g>
+ <xmx:mvHjYohOvStgXGRXNessNMcGNPs-I2jscAwdCnPZsVjsAMr7_EPI2A>
 Feedback-ID: i68a1478a:Fastmail
 Received: by mail.messagingengine.com (Postfix) with ESMTPA; Fri,
- 29 Jul 2022 10:38:42 -0400 (EDT)
-Date: Fri, 29 Jul 2022 09:38:41 -0500
+ 29 Jul 2022 10:41:29 -0400 (EDT)
+Date: Fri, 29 Jul 2022 09:41:28 -0500
 From: Patrick Williams <patrick@stwcx.xyz>
 To: =?iso-8859-1?Q?C=E9dric?= Le Goater <clg@kaod.org>
 Cc: Iris Chen <irischenlj@fb.com>, peter@pjd.dev, pdel@fb.com,
@@ -107,16 +107,16 @@ Cc: Iris Chen <irischenlj@fb.com>, peter@pjd.dev, pdel@fb.com,
  lvivier@redhat.com, pbonzini@redhat.com, qemu-block@nongnu.org,
  dz4list@gmail.com
 Subject: Re: [RFC 0/3] Add Generic SPI GPIO model
-Message-ID: <YuPw8aQ2cfJIx+1f@heinlein.stwcx.org.github.beta.tailscale.net>
+Message-ID: <YuPxmO63cE13Lgjd@heinlein.stwcx.org.github.beta.tailscale.net>
 References: <20220728232322.2921703-1-irischenlj@fb.com>
  <435b3e89-f9fd-c257-b03d-a12d4b59ac6b@kaod.org>
 MIME-Version: 1.0
 Content-Type: multipart/signed; micalg=pgp-sha256;
- protocol="application/pgp-signature"; boundary="beczAmmun8celmZJ"
+ protocol="application/pgp-signature"; boundary="0iO6xrwk87ZolTFE"
 Content-Disposition: inline
 In-Reply-To: <435b3e89-f9fd-c257-b03d-a12d4b59ac6b@kaod.org>
-Received-SPF: pass client-ip=66.111.4.25; envelope-from=patrick@stwcx.xyz;
- helo=out1-smtp.messagingengine.com
+Received-SPF: pass client-ip=66.111.4.26; envelope-from=patrick@stwcx.xyz;
+ helo=out2-smtp.messagingengine.com
 X-Spam_score_int: -2
 X-Spam_score: -0.3
 X-Spam_bar: /
@@ -139,10 +139,10 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: c52nWy9G1Frw
+X-TUID: GeLCWF0bq3yc
 
 
---beczAmmun8celmZJ
+--0iO6xrwk87ZolTFE
 Content-Type: text/plain; charset=iso-8859-1
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
@@ -151,58 +151,44 @@ On Fri, Jul 29, 2022 at 03:25:55PM +0200, C=E9dric Le Goater wrote:
 > Hello Iris,
 >=20
 > On 7/29/22 01:23, Iris Chen wrote:
-> > Currently, most of our vboot platforms using a SPI-based TPM use the Li=
-nux
-> > SPI-GPIO driver to "bit-bang" the SPI protocol. This is because the Asp=
-eed
-> > SPI controller (modeled in QEMU under hw/ssi/aspeed_smc.c) has an imple=
-mentation
-> > deficiency that prevents bi-directional operations.=20
-> aspeed_smc models the Aspeed FMC/SPI controllers which have a well defined
-> HW interface. Your model proposal adds support for a new SPI controller
-> using bitbang GPIOs. These are really two differents models. I don't see
-> how you could reuse aspeed_smc for this purpose.
 
-(I don't think there was anything here that proposed reusing the QEMU
- aspeed_smc model, but it might have been poorly worded).
+> > MOSI pin in spi_gpio: the mosi pin is not included and we poll the real=
+time value
+> > of the gpio for input bits to prevent bugs with caching the mosi value.=
+ It was discovered
+> > during testing that when using the mosi pin as the input pin, the mosi =
+value was not
+> > being updated due to a kernel and aspeed_gpio model optimization.=20
+>=20
+> ah. We need help from Andrew ! the model should have a mosi pin .
 
-> or you mean that Linux is using the SPI-GPIO driver because the Linux
-> Aspeed SMC driver doesn't match the need ? It is true that the Linux
-> driver is not generic, it deals with flash devices only. But that's
-> another problem.
-
-We actually mean that the _hardware_ has a deficiency, not any of the
-code for it.  The Aspeed SPI controller has a single byte FIFO in its
-implementation, which can only read or write in a single operation.  It
-is *impossible* to perform bi-directional access with it (ie. you cannot
-write the MOSI and read the MISO in the same transaction).  This is
-broken for many SPI protocols, other than flash devices, including the one
-used for TPMs.
-
-In order to connect to SPI-based TPMs on an Aspeed chip, you have to use
-the SPI-GPIO method.
+This discussion about SMC reminded me of something that might be leading
+to the issues we're seeing.  Our hardware implementation uses the same
+GPIOs as one of the SMCs and doesn't use the SMC.  It could be that both
+QEMU models (the SPI-GPIO and the SMC) are trying to grab the same
+GPIOs.
 
 --=20
 Patrick Williams
 
---beczAmmun8celmZJ
+--0iO6xrwk87ZolTFE
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iQIzBAABCAAdFiEEBGD9ii4LE9cNbqJBqwNHzC0AwRkFAmLj8O8ACgkQqwNHzC0A
-wRkdhw/+P0+Z6wkd5RvVJLA8Cr8vE5sEP4ehgOI8hUhTTxFUtAIgCbAbpv5dN8Wf
-PFts22zcJSNo9n84SvYvat4EjfmpWfsjYoUDpPLwCv28LDfLd6Pfr2vMcwLBe7E+
-g6uw24S5VBmYoCSOA5xRt9wf/5iWhjXVedtz4Or8RnGKXnvQVWcyzABMaSTDrEKE
-g8iJ2q838HQtVVoyeRXzrCfGPC8hQw9uUUgalSWEODTg58vQnkbbS1EX9jBH/H0f
-+VZd4LzPX/2N9prWudWbFWVrgoXrOzm/45dGMQhStEf4cVYX3k7l841FJfP/jTkG
-W1/uIyfNRmcD9srrFUW6KTh8A1f/EbenM8wqK1xH6FKWDh+AcJmqKqcE0JLqH4bH
-z8wOCRhdq1/RCPqf2UKA4eWSg+6WcTGMQahOksjE6AfY2sA4dgCnrw7qP9loYSua
-vY7kwM6ugy4yOzHS51rr/J90V/FVHBmKJm9skZYrHLenOYDZE8LaGwRMyFBy4pXr
-Qz76sDzfXqywKHemCxOL/8BzZL80rQVsKt0YSg7lSN0pGPxYkcSQQ0DJMKYUPR/u
-Sgd3qXIYUDrrolAGA5O6CE1onKCDsx7jRPxWuxvCFYVtWxbdQOYAcAmDOXTupzH3
-6p1bMnrbNhXvyJMVROrJMdVYR5ttDbWO/+Ws4chxRf7Y6DAe1v8=
-=GqtG
+iQIzBAABCAAdFiEEBGD9ii4LE9cNbqJBqwNHzC0AwRkFAmLj8ZgACgkQqwNHzC0A
+wRkZvhAAgScFLj//BkHVTPNmqSHKmkJWkyxuN+0+1hESlu7L5S9ud+VncLTbDscT
+D+MrqHXBPNzca8qc2wSgGVkqBw7f+HyC59+L0GbiDcJIBbA+RsL4H3sw/9mR4tD4
+1bEiuCAsPhSxfntoaIIsSHe9nbXcT38fakKcHQIHBkgKhcerSAbjwQl8nUgLBBYD
+LyfeEB00JdRD2t5CV6/SpuYo2xtTihp7Vl+SVzqRhJHuaznj+2eRy+967vTqSJVU
+P4jV31xOqilnJgWmlgAz5HEwR3GsVZ8RSWhCmnE7J5hui7M/eVAMQxGPjiQUSvE6
+q7uMpDkYVq4rcirXhhImAoa7I2xP0WhxboJxxe+uvaX0vx5LOZ44JrVxqh+FT7wD
+7oNu/egJbbwfbERmvaJsUU4hXRh6faVXTm9mjNQgHjeIGttCi/Jnvq8WBeR6fYI5
+4iHf4Vw3EJNL/sT67fsA0gf8b0CzKCA37otbe9O8/nlKY0Gi6gwoD41lpa9HYm34
+jVq/ZyXIgdJ2pduGFTSe8C6q2OfnGlqvjietM0tfIKprKgXd8ymjYwyr+XtODCnd
+rP3a99Z7EwM3zSQ4l0wL0Xxi81BoJe0BY1OkYUoJTG1vZuQPYft3VNsxoeGumikT
+UCzNNQiQMuIZI7VirbEQ8q6Fu3YT8IK/62TVEeg9b/oCYOan8tc=
+=M/ZB
 -----END PGP SIGNATURE-----
 
---beczAmmun8celmZJ--
+--0iO6xrwk87ZolTFE--

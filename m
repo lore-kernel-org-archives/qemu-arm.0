@@ -1,124 +1,102 @@
-Received: by 2002:a17:504:17d6:b0:1be9:327d:8ee3 with SMTP id o22csp8262384njd;
-        Thu, 10 Apr 2025 02:25:24 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUcHli+6v6ww3B11rEGmBwPAq4ydlivgM0DRJ+/4OQAY+u/BoKO95uiec2JMqdkop3Oor7wIhrtwPlgGg==@linaro.org
-X-Google-Smtp-Source: AGHT+IE8TasYM4CBxauESQTvgPA0DTh+k/s/Z7Iq79oqzTr4FD9lG/6Kn+hmiYFtQSyE3+6CDx0F
-X-Received: by 2002:ad4:5c8c:0:b0:6eb:28e4:8516 with SMTP id 6a1803df08f44-6f0e77c0770mr21798986d6.33.1744277124759;
-        Thu, 10 Apr 2025 02:25:24 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1744277124; cv=none;
-        d=google.com; s=arc-20240605;
-        b=CIZZ4cno88lvtM8tQTgIqnB2ro89463NH22nEabUzRvmAINLDojpoCOvnjCbupRoiD
-         qdqMpakq+YTjTWBYOQOTrM9cpsbYGMo2PAucuPzG8Jd38YjLTto3cUPmed1RlzCgXlfw
-         RSm/0rszBTS3nejO1NsRQKZs4zF22+kwJzIN54QqC0WIHmy+naPPNhHMpg22AocndHTJ
-         oJ+OiF6t2XB2gsP3w26grhzcxqOA3K9SWABD04H9NcJd4+o5A89pEhi+cNt4J3Y4IE/S
-         RVru6JjDuDT8szXpKtCeF1iSEmrq9eqkbzm+to/k2XpwpzTIMGVSezYR9rcUDXEuf1QU
-         bRoA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+Received: by 2002:a05:6512:1086:0:0:0:0 with SMTP id j6csp2051247lfg;
+        Sun, 31 Jul 2022 09:57:53 -0700 (PDT)
+X-Google-Smtp-Source: AA6agR4YJqhYBbGVxO6RiA0eu1CPWGI/d+aIBbhCnvwbbBCAnqdQ1/2KCWDt9FI+xnvTlDNswOXI
+X-Received: by 2002:ad4:4ee8:0:b0:474:6f9c:a103 with SMTP id dv8-20020ad44ee8000000b004746f9ca103mr11254269qvb.47.1659286673189;
+        Sun, 31 Jul 2022 09:57:53 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1659286673; cv=none;
+        d=google.com; s=arc-20160816;
+        b=wyuQ51Vh72p2GrZq9MR8N0mp2sXDMftE4FZVtmVYTdVbzonyQavlFSP9NGz5H3qEhB
+         QujR4OLnrkzGZl/V5r7OV16nVOBlEQm9f/DZGKdw8aDtbC0zdUtnT3iy8uYe54Mn6Ivp
+         VD0EamwIAk54WxeFMQj9hRCP2pDTUcRoUAETsTMeeRbTujnW604WV8C9JP1+u5n6V6jx
+         VVGT+Xzz4WkqPeT3OZoWyxGdvsAEB+nR6GCZEDqR75u9P5yheV6/cuYBrjhfm9R1mJ2L
+         pDFSaS+DS59fRPKlwS0GooRO0Ybh3rKgRB8Ck5ucPTWFwHPDOj2E1BuMnicYxhnGpwoC
+         yVeQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :dkim-signature;
-        bh=UzIfLtsz8ODLabWHZ++h1JXGyuNjwbZR1gQnM9lqAQE=;
-        fh=MAffrn4U4uG1V2DrepAitVuUISIAqDfmc8PNRNXcHoo=;
-        b=Dz5a19qe5tUb4LFPaz68EM3+ZK/gbPluONcrqY8fDKxFg825blZk5jTnXQn0DeOr3c
-         paxEsPws5azAM5Wy8fSmxXZ9AHxu9ZzOXF90FTJ+492lp5t5bJZI5EupQ9zB/Xm/vXFq
-         ylDbrs2ghvcYOA41V5z0fgOSraIWXhcXolBSj4ZGpS7HFtxq3sXbx5onSWp2+OBcXEX/
-         j6/U3/U3jCV9f5ltMZ5HaNVPBVYw/oYwrUjd7aCzKw0Iqo14Z9gqjDEI2CMpFonuWn6v
-         Lw3jx5ZLvvhA8Dr4jF7tT826q/Bq4OhYWBKj+O1qolG2GSkM/mzacWr23VSJfesy0AFH
-         ROfg==;
-        dara=google.com
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :mime-version:dkim-signature;
+        bh=v8EkYReevnLVurivgrCXYPvraEnYGiMC5caSy0jh1Go=;
+        b=yFLlIo9qnwqpa48r1xWrUhBcwxD0lhrU5BKhXbsEYFkUMMXlr632DqdzRBQKisy5XJ
+         ai5KHGzpM39a2rASaKDRoHKBj2FYH2pYx8vUsKOuHO010eTylHaNxtXag4TYfb7EtN85
+         CowjGRssbw+MHcwaxfLObvsHUThWZVZ+K1waKx+k/MzPoorUkLk/jsEeUC5OBtPsswVm
+         5BhPn+9j/o/eHTuQZ6yhgC8PMskxwelsV+fuC5D6tKC5TOlOebJUeugSP3YG7DyszGtu
+         Fkj1mKkNz5QigEbTRew0DP0Xz0KPEkx0vLFhda/tqG3ysiVYBgPCOS0w8Rn5Ico00p+U
+         I3pg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@intel.com header.s=Intel header.b=CAGLPQl7;
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=CcJ9RD0O;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6f0de95fbacsi25872976d6.38.2025.04.10.02.25.24
+        by mx.google.com with ESMTPS id cb27-20020a05622a1f9b00b0031ed83e3cc6si5399166qtb.197.2022.07.31.09.57.53
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 10 Apr 2025 02:25:24 -0700 (PDT)
+        Sun, 31 Jul 2022 09:57:53 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@intel.com header.s=Intel header.b=CAGLPQl7;
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=CcJ9RD0O;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
-Received: from localhost ([::1] helo=lists1p.gnu.org)
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:53002 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1u2o9r-0006v2-3i; Thu, 10 Apr 2025 05:25:15 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1oICGG-0007pF-My
+	for alex.bennee@linaro.org; Sun, 31 Jul 2022 12:57:52 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:52828)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <zhao1.liu@intel.com>)
- id 1u2o9l-0006si-UX; Thu, 10 Apr 2025 05:25:10 -0400
-Received: from mgamail.intel.com ([192.198.163.12])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <zhao1.liu@intel.com>)
- id 1u2o9j-00026A-9F; Thu, 10 Apr 2025 05:25:09 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1744277107; x=1775813107;
- h=date:from:to:cc:subject:message-id:references:
- mime-version:in-reply-to;
- bh=vWFTCAHyc4ZZSNblinRf0t8BBfuIQYEI8cO6hq8NbrA=;
- b=CAGLPQl78R5F/0eb8DNCrhKsax4H8oLxcWT2JI5YQkfjoPvE6V3ZsJZs
- z6DogORdau5iKKoShp6lla52jwJmoJPjtQ7uqxf+1nPyxt3JNrHHEzdP7
- OIkum8zy1tUayGCMXP/NY6axmXrwUjjHoBhxooKmShKeatvnl5hzegPUG
- F3katX1LpNIjL8ETP0+30y+R/SLTxC0OSxqZh0qlORH9BwUH3p/lMBl9U
- n3vMKzwlJMmIbUmphPOQrtEKDYCtYTETaKAPTJGWC4MWJLq1eJiR/99jr
- 8QIq0jIjVJa0ITghG3jyOYj5mX86KDQIvyydEc+VwrbOG+pG323l7xoIo A==;
-X-CSE-ConnectionGUID: Xx6nNb4dTQGIrOXlLCgZuA==
-X-CSE-MsgGUID: hE6bzLpVRNKkM6EHcckQPw==
-X-IronPort-AV: E=McAfee;i="6700,10204,11399"; a="49625375"
-X-IronPort-AV: E=Sophos;i="6.15,202,1739865600"; d="scan'208";a="49625375"
-Received: from fmviesa009.fm.intel.com ([10.60.135.149])
- by fmvoesa106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 10 Apr 2025 02:25:00 -0700
-X-CSE-ConnectionGUID: 7EFLD+8sQoiP2fdPZgk4+Q==
-X-CSE-MsgGUID: aiCRLBNDQsqVw5PNhNlRAg==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.15,202,1739865600"; d="scan'208";a="129685784"
-Received: from liuzhao-optiplex-7080.sh.intel.com (HELO localhost)
- ([10.239.160.39])
- by fmviesa009.fm.intel.com with ESMTP; 10 Apr 2025 02:24:51 -0700
-Date: Thu, 10 Apr 2025 17:45:41 +0800
-From: Zhao Liu <zhao1.liu@intel.com>
-To: Dongli Zhang <dongli.zhang@oracle.com>
-Cc: qemu-devel@nongnu.org, kvm@vger.kernel.org, qemu-arm@nongnu.org,
- qemu-ppc@nongnu.org, qemu-riscv@nongnu.org, qemu-s390x@nongnu.org,
- pbonzini@redhat.com, mtosatti@redhat.com, sandipan.das@amd.com,
- babu.moger@amd.com, likexu@tencent.com, like.xu.linux@gmail.com,
- groug@kaod.org, khorenko@virtuozzo.com,
- alexander.ivanov@virtuozzo.com, den@virtuozzo.com,
- davydov-max@yandex-team.ru, xiaoyao.li@intel.com,
- dapeng1.mi@linux.intel.com, joe.jin@oracle.com,
- peter.maydell@linaro.org, gaosong@loongson.cn,
- chenhuacai@kernel.org, philmd@linaro.org, aurelien@aurel32.net,
- jiaxun.yang@flygoat.com, arikalo@gmail.com, npiggin@gmail.com,
- danielhb413@gmail.com, palmer@dabbelt.com, alistair.francis@wdc.com,
- liwei1518@gmail.com, zhiwei_liu@linux.alibaba.com,
- pasic@linux.ibm.com, borntraeger@linux.ibm.com,
- richard.henderson@linaro.org, david@redhat.com, iii@linux.ibm.com,
- thuth@redhat.com, flavra@baylibre.com, ewanhai-oc@zhaoxin.com,
- ewanhai@zhaoxin.com, cobechen@zhaoxin.com, louisqi@zhaoxin.com,
- liamni@zhaoxin.com, frankzhu@zhaoxin.com, silviazhao@zhaoxin.com
-Subject: Re: [PATCH v3 10/10] target/i386/kvm: don't stop Intel PMU counters
-Message-ID: <Z/eTRVSveNMwZBaa@intel.com>
-References: <20250331013307.11937-1-dongli.zhang@oracle.com>
- <20250331013307.11937-11-dongli.zhang@oracle.com>
+ (Exim 4.90_1) (envelope-from <misakamm20001@gmail.com>)
+ id 1oIAXp-0003uf-0f
+ for qemu-arm@nongnu.org; Sun, 31 Jul 2022 11:07:53 -0400
+Received: from mail-lf1-x136.google.com ([2a00:1450:4864:20::136]:33766)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <misakamm20001@gmail.com>)
+ id 1oIAXn-0004ji-2b
+ for qemu-arm@nongnu.org; Sun, 31 Jul 2022 11:07:52 -0400
+Received: by mail-lf1-x136.google.com with SMTP id e15so3654540lfs.0
+ for <qemu-arm@nongnu.org>; Sun, 31 Jul 2022 08:07:50 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=mime-version:from:date:message-id:subject:to;
+ bh=v8EkYReevnLVurivgrCXYPvraEnYGiMC5caSy0jh1Go=;
+ b=CcJ9RD0O7uwU122AdR0WrBQwzQlMPAH1C7STSlmnkhAXBxoC85Rl4uss3cFoSuYTLp
+ hokq1kjkBbsMgEzDeTZD5xzn7exIGcUcO8iWw/j+QNfb+0QKN5ElcGcwsIvVzyiyJUnE
+ bZ4Hvth4fCLamPYP6a7qDJ4qzLl/OP8kWkU4vuK5i1W94AMBX2BTzWn/w8n8rszk7nxI
+ 4yjrFTh6+PpCIYGxySUfxPlZa/eY8uENcD/38UHD3lplQX/bNUUiyhpK7o6+kXiHKlpM
+ lAdIVwSRQ2i965ULekj/00XeovcGUTbv6TGaWA9vVtfyEA84mLCW9Keq9Pd3PUiqGR58
+ t6xw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:mime-version:from:date:message-id:subject:to;
+ bh=v8EkYReevnLVurivgrCXYPvraEnYGiMC5caSy0jh1Go=;
+ b=H8BxcuZLMfOc4siT8rw7ACkCg/Cc1B295tGnyIwv7KFG+M9MxLjaZ+frdMtEzI8AHW
+ NSSRXtCa7RsHiExt3IlnPHnJ41bWdGkUUsewpNTpp8eNfNxNXh6xMgUZROl2nf6sUxUs
+ GCqJCKuJJuCXcOPRVUH3310vcmS9SqMH+S6KQRRUSml/Gxe/txpQzrOi+B89fOkHMDrS
+ A2GAj4DbY+WfkMdxJiLaLkfeOSAyOO8Jg2DSu8j3FnXCbwXtOI9cV7CX3dpsysCr8/J9
+ uZtYUaiT91BCGr3pOeAgD4Z+m/JDH/0tDXUhVm/klqZeuFp1GDCx3/rweGobgXdCyJX/
+ +mhw==
+X-Gm-Message-State: AJIora9HOJutl3SaHiz2rZrcO6FSLIqphXYaGL9x7ujVpFTc1u+khOiK
+ 4klAtHTswJkwqt3GG5kxPsoFtnAdu4IdQF0sqz29IYaA3u0=
+X-Received: by 2002:a05:6512:5d7:b0:48a:83e0:a507 with SMTP id
+ o23-20020a05651205d700b0048a83e0a507mr4509367lfo.452.1659280068698; Sun, 31
+ Jul 2022 08:07:48 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20250331013307.11937-11-dongli.zhang@oracle.com>
-Received-SPF: pass client-ip=192.198.163.12; envelope-from=zhao1.liu@intel.com;
- helo=mgamail.intel.com
-X-Spam_score_int: -48
-X-Spam_score: -4.9
-X-Spam_bar: ----
-X-Spam_report: (-4.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.505,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+From: =?UTF-8?B?5aSP56OK5p2w?= <misakamm20001@gmail.com>
+Date: Sun, 31 Jul 2022 23:07:37 +0800
+Message-ID: <CAAT5=SW9ihmFR_G=_BSqC_ss5C6zV6F2vu48ds=uah+eYM-dNA@mail.gmail.com>
+Subject: why the below code can't attach alias bus
+To: qemu-arm@nongnu.org
+Content-Type: multipart/alternative; boundary="00000000000013e6fd05e51b3f81"
+Received-SPF: pass client-ip=2a00:1450:4864:20::136;
+ envelope-from=misakamm20001@gmail.com; helo=mail-lf1-x136.google.com
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001, HTML_MESSAGE=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
+X-Mailman-Approved-At: Sun, 31 Jul 2022 12:57:40 -0400
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -131,43 +109,167 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: /T5EGl3oh35z
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: y2m737Ci3GEO
 
-On Sun, Mar 30, 2025 at 06:32:29PM -0700, Dongli Zhang wrote:
-> Date: Sun, 30 Mar 2025 18:32:29 -0700
-> From: Dongli Zhang <dongli.zhang@oracle.com>
-> Subject: [PATCH v3 10/10] target/i386/kvm: don't stop Intel PMU counters
-> X-Mailer: git-send-email 2.43.5
-> 
-> The kvm_put_msrs() sets the MSRs using KVM_SET_MSRS. The x86 KVM processes
-> these MSRs one by one in a loop, only saving the config and triggering the
-> KVM_REQ_PMU request. This approach does not immediately stop the event
-> before updating PMC.
+--00000000000013e6fd05e51b3f81
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-This is ture after KVM's 68fb4757e867 (v6.2). QEMU even supports v4.5
-(docs/system/target-i386.rst)... I'm not sure whether it is outdated,
-but it's better to mention the Linux version.
+Hi All,
 
-> In additional, PMU MSRs are set only at levels >= KVM_PUT_RESET_STATE,
-> excluding runtime. Therefore, updating these MSRs without stopping events
-> should be acceptable.
+In sabrelite, all 4 sd controller bus name is sd-bus, in order to attach a
+specific sd controller, I have already tested below two ways in v6.0.0, I
+want to understand why alias is not working in this case:
+1. overwrite bus name in fsl-imx6.c, this is working, so I can attach a
+specific sd controller by passing such parameters  "bus=3Dsd-bus2=E2=80=9C =
+to qemu,
+also from "info qtree", I can see the bus name was been overwrote.
+diff --git a/hw/arm/fsl-imx6.c b/hw/arm/fsl-imx6.c
+index 00dafe3f62..b68212b5a9 100644
+--- a/hw/arm/fsl-imx6.c
++++ b/hw/arm/fsl-imx6.c
+@@ -314,6 +314,8 @@ static void fsl_imx6_realize(DeviceState *dev, Error
+**errp)
+             { FSL_IMX6_uSDHC3_ADDR, FSL_IMX6_uSDHC3_IRQ },
+             { FSL_IMX6_uSDHC4_ADDR, FSL_IMX6_uSDHC4_IRQ },
+         };
++       //g_autofree char *bus_name =3D NULL;
++       BusState *bus =3D NULL;
 
-I agree.
+         /* UHS-I SDIO3.0 SDR104 1.8V ADMA */
+         object_property_set_uint(OBJECT(&s->esdhc[i]), "sd-spec-version",
+3,
+@@ -329,6 +331,15 @@ static void fsl_imx6_realize(DeviceState *dev, Error
+**errp)
+         sysbus_connect_irq(SYS_BUS_DEVICE(&s->esdhc[i]), 0,
+                            qdev_get_gpio_in(DEVICE(&s->a9mpcore),
+                                             esdhc_table[i].irq));
++
++       /* give unique name with index for all 4 sd controller bus, simply
+overwrite origin name */
++       bus =3D qdev_get_child_bus(DEVICE(&s->esdhc[i]), "sd-bus");
++       bus->name =3D g_strdup_printf("sd-bus%d", i);
++
++        /* Alias controller SD bus to the SoC itself */
++       //bus_name =3D g_strdup_printf("sd-bus%d", i);
++       //object_property_add_alias(OBJECT(s), bus_name,
++                                 //OBJECT(&s->esdhc[i]), "sd-bus");
 
-> Finally, KVM creates kernel perf events with host mode excluded
-> (exclude_host = 1). While the events remain active, they don't increment
-> the counter during QEMU vCPU userspace mode.
-> 
-> No Fixed tag is going to be added for the commit 0d89436786b0 ("kvm:
-> migrate vPMU state"), because this isn't a bugfix.
-> 
-> Signed-off-by: Dongli Zhang <dongli.zhang@oracle.com>
-> ---
->  target/i386/kvm/kvm.c | 9 ---------
->  1 file changed, 9 deletions(-)
+2. as suggested in some related thread, by create an alias for bus name,
+this is not working, when I checked "info qtree", I didn't even find my
+alias bus. I debugged a little, seems the alias property waas been created,
+but the type is link<sdhci-bus>, not child<sdhci-bus>.
 
-Fine for me,
+diff --git a/hw/arm/fsl-imx6.c b/hw/arm/fsl-imx6.c
+index 00dafe3f62..1d631583e5 100644
+--- a/hw/arm/fsl-imx6.c
++++ b/hw/arm/fsl-imx6.c
+@@ -314,6 +314,8 @@ static void fsl_imx6_realize(DeviceState *dev, Error
+**errp)
+             { FSL_IMX6_uSDHC3_ADDR, FSL_IMX6_uSDHC3_IRQ },
+             { FSL_IMX6_uSDHC4_ADDR, FSL_IMX6_uSDHC4_IRQ },
+         };
++       g_autofree char *bus_name =3D NULL;
++       //BusState *bus =3D NULL;
 
-Reviewed-by: Zhao Liu <zhao1.liu@intel.com>
+         /* UHS-I SDIO3.0 SDR104 1.8V ADMA */
+         object_property_set_uint(OBJECT(&s->esdhc[i]), "sd-spec-version",
+3,
+@@ -329,6 +331,15 @@ static void fsl_imx6_realize(DeviceState *dev, Error
+**errp)
+         sysbus_connect_irq(SYS_BUS_DEVICE(&s->esdhc[i]), 0,
+                            qdev_get_gpio_in(DEVICE(&s->a9mpcore),
+                                             esdhc_table[i].irq));
++
++       /* give unique name with index for all 4 sd controller bus, simply
+overwrite origin name */
++       //bus =3D qdev_get_child_bus(DEVICE(&s->esdhc[i]), "sd-bus");
++       //bus->name =3D g_strdup_printf("sd-bus%d", i);
++
++        /* Alias controller SD bus to the SoC itself */
++       bus_name =3D g_strdup_printf("sd-bus%d", i);
++       object_property_add_alias(OBJECT(s), bus_name,
++                                 OBJECT(&s->esdhc[i]), "sd-bus");
 
+So I want to understand why the second way is not working, I understand
+read the implementation of object_property_add_alias can answer this
+question=EF=BC=8C
+but here just want to get some comments from you. Thanks in advance
+
+--00000000000013e6fd05e51b3f81
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr">Hi All,<div><br></div><div>In sabrelite, all 4 sd controll=
+er bus name is sd-bus, in order to attach a specific sd controller, I have =
+already tested below two ways in v6.0.0, I want to understand why alias is =
+not working in this case:</div><div>1. overwrite bus name in fsl-imx6.c, th=
+is is working, so I can attach a specific sd controller by passing such par=
+ameters=C2=A0 &quot;bus=3Dsd-bus2=E2=80=9C to qemu, also from &quot;info qt=
+ree&quot;, I can see the bus name was been overwrote.</div><div>diff --git =
+a/hw/arm/fsl-imx6.c b/hw/arm/fsl-imx6.c<br>index 00dafe3f62..b68212b5a9 100=
+644<br>--- a/hw/arm/fsl-imx6.c<br>+++ b/hw/arm/fsl-imx6.c<br>@@ -314,6 +314=
+,8 @@ static void fsl_imx6_realize(DeviceState *dev, Error **errp)<br>=C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0{ FSL_IMX6_uSDHC3_ADDR, FSL_IM=
+X6_uSDHC3_IRQ },<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0{ FSL_I=
+MX6_uSDHC4_ADDR, FSL_IMX6_uSDHC4_IRQ },<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0};<br>+ =C2=A0 =C2=A0 =C2=A0 //g_autofree char *bus_name =3D NULL;<br>+ =
+=C2=A0 =C2=A0 =C2=A0 BusState *bus =3D NULL;<br><br>=C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0/* UHS-I SDIO3.0 SDR104 1.8V ADMA */<br>=C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0object_property_set_uint(OBJECT(&amp;s-&gt;esdhc[i]), &quot;sd=
+-spec-version&quot;, 3,<br>@@ -329,6 +331,15 @@ static void fsl_imx6_realiz=
+e(DeviceState *dev, Error **errp)<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0sysb=
+us_connect_irq(SYS_BUS_DEVICE(&amp;s-&gt;esdhc[i]), 0,<br>=C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 qdev_get_gpio_in(DEVICE(&amp;s-&gt;a9mpcore),<br>=C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0esdhc_=
+table[i].irq));<br>+<br>+ =C2=A0 =C2=A0 =C2=A0 /* give unique name with ind=
+ex for all 4 sd controller bus, simply overwrite origin name */<br>+ =C2=A0=
+ =C2=A0 =C2=A0 bus =3D qdev_get_child_bus(DEVICE(&amp;s-&gt;esdhc[i]), &quo=
+t;sd-bus&quot;);<br>+ =C2=A0 =C2=A0 =C2=A0 bus-&gt;name =3D g_strdup_printf=
+(&quot;sd-bus%d&quot;, i);<br>+<br>+ =C2=A0 =C2=A0 =C2=A0 =C2=A0/* Alias co=
+ntroller SD bus to the SoC itself */<br>+ =C2=A0 =C2=A0 =C2=A0 //bus_name =
+=3D g_strdup_printf(&quot;sd-bus%d&quot;, i);<br>+ =C2=A0 =C2=A0 =C2=A0 //o=
+bject_property_add_alias(OBJECT(s), bus_name,<br>+ =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 //OBJECT(&amp;s-&gt;esdhc[i]), &quot;sd-bus&quot;);<br></div>=
+<div><br></div><div>2. as suggested in some related thread, by create an al=
+ias for bus name, this is not working, when I checked &quot;info qtree&quot=
+;, I didn&#39;t even find my alias bus. I debugged a little, seems the alia=
+s property waas been created, but the type is=C2=A0link&lt;sdhci-bus&gt;, n=
+ot child&lt;sdhci-bus&gt;.</div><div><br></div><div>diff --git a/hw/arm/fsl=
+-imx6.c b/hw/arm/fsl-imx6.c<br>index 00dafe3f62..1d631583e5 100644<br>--- a=
+/hw/arm/fsl-imx6.c<br>+++ b/hw/arm/fsl-imx6.c<br>@@ -314,6 +314,8 @@ static=
+ void fsl_imx6_realize(DeviceState *dev, Error **errp)<br>=C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0{ FSL_IMX6_uSDHC3_ADDR, FSL_IMX6_uSDHC3_IRQ =
+},<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0{ FSL_IMX6_uSDHC4_ADD=
+R, FSL_IMX6_uSDHC4_IRQ },<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0};<br>+ =C2=
+=A0 =C2=A0 =C2=A0 g_autofree char *bus_name =3D NULL;<br>+ =C2=A0 =C2=A0 =
+=C2=A0 //BusState *bus =3D NULL;<br><br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0/=
+* UHS-I SDIO3.0 SDR104 1.8V ADMA */<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0ob=
+ject_property_set_uint(OBJECT(&amp;s-&gt;esdhc[i]), &quot;sd-spec-version&q=
+uot;, 3,<br>@@ -329,6 +331,15 @@ static void fsl_imx6_realize(DeviceState *=
+dev, Error **errp)<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0sysbus_connect_irq(=
+SYS_BUS_DEVICE(&amp;s-&gt;esdhc[i]), 0,<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 qdev_get=
+_gpio_in(DEVICE(&amp;s-&gt;a9mpcore),<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+ =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0esdhc_table[i].irq));<b=
+r>+<br>+ =C2=A0 =C2=A0 =C2=A0 /* give unique name with index for all 4 sd c=
+ontroller bus, simply overwrite origin name */<br>+ =C2=A0 =C2=A0 =C2=A0 //=
+bus =3D qdev_get_child_bus(DEVICE(&amp;s-&gt;esdhc[i]), &quot;sd-bus&quot;)=
+;<br>+ =C2=A0 =C2=A0 =C2=A0 //bus-&gt;name =3D g_strdup_printf(&quot;sd-bus=
+%d&quot;, i);<br>+<br>+ =C2=A0 =C2=A0 =C2=A0 =C2=A0/* Alias controller SD b=
+us to the SoC itself */<br>+ =C2=A0 =C2=A0 =C2=A0 bus_name =3D g_strdup_pri=
+ntf(&quot;sd-bus%d&quot;, i);<br>+ =C2=A0 =C2=A0 =C2=A0 object_property_add=
+_alias(OBJECT(s), bus_name,<br>+ =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 OBJEC=
+T(&amp;s-&gt;esdhc[i]), &quot;sd-bus&quot;);<br></div><div><br></div><div>S=
+o I want to understand why the second way is not working, I understand read=
+ the implementation of object_property_add_alias can answer this question=
+=EF=BC=8C</div><div>but here just want to get some comments from you. Thank=
+s in advance</div></div>
+
+--00000000000013e6fd05e51b3f81--

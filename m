@@ -1,138 +1,132 @@
-Received: by 2002:a05:6512:1086:0:0:0:0 with SMTP id j6csp2224338lfg;
-        Sun, 31 Jul 2022 19:19:49 -0700 (PDT)
-X-Google-Smtp-Source: AA6agR5YW3RApgjdXETYBS+TXce4PeVgotJBLlaJUHgm2XbUvIYPdjhmaFNq+I/hLut0U7y4cn5n
-X-Received: by 2002:a05:6214:2307:b0:46e:5fbc:3c30 with SMTP id gc7-20020a056214230700b0046e5fbc3c30mr12073433qvb.21.1659320388946;
-        Sun, 31 Jul 2022 19:19:48 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1659320388; cv=none;
+Received: by 2002:a05:6512:1086:0:0:0:0 with SMTP id j6csp2408284lfg;
+        Mon, 1 Aug 2022 03:42:03 -0700 (PDT)
+X-Google-Smtp-Source: AGRyM1sfe2PXRcuEl8EZZe5QlqGSsXHgNnbbovbRCjjP2KZYugoH7ET/JAOkcPIOMRJcWS4kdHe8
+X-Received: by 2002:a05:620a:2848:b0:6af:6c3f:7141 with SMTP id h8-20020a05620a284800b006af6c3f7141mr10933795qkp.548.1659350523836;
+        Mon, 01 Aug 2022 03:42:03 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1659350523; cv=none;
         d=google.com; s=arc-20160816;
-        b=MLrJozgxZW/h9ZQRsyC0+HnAKbYcMsFj5SwLAt42rTklDPttmATzlsuYkjd7iFSdza
-         9lKoepkvGa3D8IGgsMLyzdEqsD9CgPFgNFZs5vHk6gk7vc8LnthKBU2NOP6p1J9TeN8E
-         v+zEwTul7RgMqdlYBwsoN9GWXjqgfa0G/ywzVuSjOLjVwV/QZZf0W36ALc+GXiICIxvP
-         zKIbVPxpgTWIJJ9hyEAUEl5NY7xbHsapBm9uviOMq2qFH3xCYr8lew8kpRNFPPTnYiAQ
-         4nRw8hTfzNTMPcCrJv3wmgcR2Jgyo/Tfkp9CNp5ejMeiF/WUJPZgxnMZbnh6E46Hw9YM
-         mLzg==
+        b=MzeUxKhGv+mnvjBfXvqzw0vf0BuUSshLL0X+j53gSX4vIqhe8Hoa7ol5jvM7fnFNiY
+         mLGbQLXsLM/UDQXsCKXyE3xvpM3hPY8y/8eEvIqvbG7MO5eE69T8GSTmB3DTJOh6+FxT
+         tOibKuPrloOJ5eRU4Q7YNKm4nVI1q+ldVecWfYC/dd63pVaibcKhTfOkp2LnakrlFZ1o
+         V8Qayzf644gRBvT+UCwHixC8XLNV4fyJmPh2vizH4xAhTaS9GciKaRRE+dEQJLMR/2SA
+         5JjlpoetBuFAZ/6yuymnXWu4kmaWF1ffMFH6fWn1R1oaGp4/2UQG1VUVveCPGwrEcnCp
+         N8Ig==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :subject:cc:to:from:date:references:in-reply-to:message-id
-         :mime-version:user-agent:feedback-id:dkim-signature:dkim-signature;
-        bh=94SQCVOv87NvBj4h4hrsvcG17dfnbrIG600jYpAufZQ=;
-        b=aWv61QS5CW4GJbQVRGcwkfyTqaX+ttg/Lnw0OCDBl4lV4qqmCIM+nykjgOqD9gdN+M
-         5clRqH4HmXrkv/0ev+1L2rUbqLb6NDDXHAxgUG+D7KhOgoHvz8JVTEJcnwpiLCIEJSwa
-         HiAcBicJaxZhh/E+BNbmrR3MhVJrPnY98lJogzTeRujI91YjMgNdyM1FPk5fXalkYUrU
-         roqI+iVxIJyWok9f05U8J0ffLbOcXhkK9ENbIiumotfMGUwouUwEXcG0/Fu6wg3Rc5s9
-         dKeos6fjE0GiYzaYSy4dsdoqLiCBFehe7QaBzJtjhorX9MyA5tqAjG1xmprNxja33CAf
-         WLgA==
+         :content-language:in-reply-to:subject:cc:from:references:to
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=hMRGCraIgOer8Fq0tpAr3ja28zDWULG0LAVxGdRhgM8=;
+        b=EprnC2zsMla5W7WpZdq4tpqH3NVQ5Wlf8yOaX8p+CQTbs9gFHaS8WMtqF+CI4TxL86
+         +7OKerUE6PcCiV4KHkJHwSdTdGgYA/MNsF1a3KEdOEpndrTOdAWNFQn7GwA8e/wGFoL6
+         4HKKHwq1w/W8Bqcwan1m7c3ChRl5Ptw1FW3hJhJsHwO8IVu8RmZysbI2pooFHEZw0Ffn
+         JeCUfej35Nx2BxDz2BnUv75b2IdVEkeuQTjBKbUZK3oAxRIrMJC5AHTdC+USVOepeepN
+         ZPzTGhfcWPamxVFeFahNX9bjBCwZVmse1x3cfjJAOkVXTC5GCARGREVvRT1ld7Yr8rRB
+         jRGQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@aj.id.au header.s=fm2 header.b=kkCTaXXp;
-       dkim=fail header.i=@messagingengine.com header.s=fm3 header.b=t8RAwpts;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=II+Szplw;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id kk2-20020a056214508200b004730bcbaef4si2246375qvb.588.2022.07.31.19.19.48
+        by mx.google.com with ESMTPS id j9-20020a05620a288900b006b5f9b7ac84si6922139qkp.365.2022.08.01.03.42.03
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 31 Jul 2022 19:19:48 -0700 (PDT)
+        Mon, 01 Aug 2022 03:42:03 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@aj.id.au header.s=fm2 header.b=kkCTaXXp;
-       dkim=fail header.i=@messagingengine.com header.s=fm3 header.b=t8RAwpts;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:48884 helo=lists1p.gnu.org)
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=II+Szplw;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:53332 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1oIL24-0001ek-FY
-	for alex.bennee@linaro.org; Sun, 31 Jul 2022 22:19:48 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33368)
+	id 1oISs7-0008AQ-5v
+	for alex.bennee@linaro.org; Mon, 01 Aug 2022 06:42:03 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53264)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <andrew@aj.id.au>)
- id 1oIL1s-0001eE-AR; Sun, 31 Jul 2022 22:19:36 -0400
-Received: from out1-smtp.messagingengine.com ([66.111.4.25]:51237)
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1oISrY-00086q-Pi
+ for qemu-arm@nongnu.org; Mon, 01 Aug 2022 06:41:28 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:49099)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <andrew@aj.id.au>)
- id 1oIL1q-0006ZG-MC; Sun, 31 Jul 2022 22:19:36 -0400
-Received: from compute3.internal (compute3.nyi.internal [10.202.2.43])
- by mailout.nyi.internal (Postfix) with ESMTP id 6DCA45C00FD;
- Sun, 31 Jul 2022 22:19:31 -0400 (EDT)
-Received: from imap50 ([10.202.2.100])
- by compute3.internal (MEProxy); Sun, 31 Jul 2022 22:19:31 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=aj.id.au; h=cc
- :cc:content-transfer-encoding:content-type:date:date:from:from
- :in-reply-to:in-reply-to:message-id:mime-version:references
- :reply-to:sender:subject:subject:to:to; s=fm2; t=1659320371; x=
- 1659406771; bh=94SQCVOv87NvBj4h4hrsvcG17dfnbrIG600jYpAufZQ=; b=k
- kCTaXXpyvSzZexgPkyOMcgYCybhkTkiIvE+hIDqw98lk+WCTx1kCMImnbF7I54jo
- qTntR16RTBHnb/GBjy9oM9X+MU9b4o1cLcINa1kSplj4VdKXc4hwrmRLz1OZgeAN
- c707eOgtfBYSnIzSh+uaR07pCGKu0Nh/8B/DFWQCkULXJ+OZw+KH8CHyWJ7FAmC2
- 6PL9V7LbPMIB9OsVGZT+h6zdDAulCOmvjp4QXbBGbcz1ZDi685QIiOVFIrx3GSUv
- hi2lBTdNEYJHUr7/Er+k54X4ZnmCx7NPY/Uet4htMWEfkCbtmmgAcISny6vHiAAz
- mfokU7yYt3WlQIBYOvs7w==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
- messagingengine.com; h=cc:cc:content-transfer-encoding
- :content-type:date:date:feedback-id:feedback-id:from:from
- :in-reply-to:in-reply-to:message-id:mime-version:references
- :reply-to:sender:subject:subject:to:to:x-me-proxy:x-me-proxy
- :x-me-sender:x-me-sender:x-sasl-enc; s=fm3; t=1659320371; x=
- 1659406771; bh=94SQCVOv87NvBj4h4hrsvcG17dfnbrIG600jYpAufZQ=; b=t
- 8RAwptsQ4vQ2hWvpJS59q60CxIZ5SounhOL8LNcL+LLl/rzEzpDkKzqR5KpjHNht
- RI7YByY6yTd/rPQLZqA+NWV5v7XIQ4c+s5v7yfU3LX/I4qySrDjfPt+M3FoPSA4D
- eC1vqZKjTFVNCchf9UhkurtALQpwNcEOUtbxXgf9OZ2raaVXVCwc1lSAotR3IOhl
- 3j5a2GDTJ3V5VjdMGZXy8tckqtaXJLx8Di4Sfuj46ZPiIOS1eENLE5MQWraNeigV
- 1JypHPpHA9i7U17qb5ju8teK3MPQZ8cS2VCy2izWRhTu6jmh+7YM7o57waWLVP8Y
- uu9RqSMo5Vw41wN8e0M9g==
-X-ME-Sender: <xms:MjjnYkJZv4SE-jX-vmlhGX1uXTuXyKPbYC_em-UC-Z7OUe6zQDKfvg>
- <xme:MjjnYkJpeDy4QPyah0gXnC177jY-qGZVdu5ntZAYWWw0x3uGzhcwzIfvwuYY-FE35
- 8Y3GJ3ctA_W3Tc3lw>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvfedrvddvvddggeekucetufdoteggodetrfdotf
- fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
- uceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmne
- cujfgurhepofgfggfkjghffffhvfevufgtgfesthhqredtreerjeenucfhrhhomhepfdet
- nhgurhgvficulfgvfhhfvghrhidfuceorghnughrvgifsegrjhdrihgurdgruheqnecugg
- ftrfgrthhtvghrnhepgfeiieettdelkeehffevieetgeejgeffveefhfffkedvudefuddv
- veejgeehheevnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmrghilhhfrh
- homheprghnughrvgifsegrjhdrihgurdgruh
-X-ME-Proxy: <xmx:MjjnYkt1Dirl1hZGUTKmmV78788wnCkimbAugRiwISQqlTzyELMElg>
- <xmx:MjjnYha_kFXknFYr5XYSY7OJZx38TqxJeGthr40-ZA9XgfCuCiqksQ>
- <xmx:MjjnYrbk2vLBTMvsDxzXu3ZwK6Yp-ZGEEdbPR2buBVnH8uQ5MiM6bA>
- <xmx:MzjnYhy4AE2bf1J-iXNYor0dwAXj1uaitvtbL3f5BBjTRmIMpb_f_g>
-Feedback-ID: idfb84289:Fastmail
-Received: by mailuser.nyi.internal (Postfix, from userid 501)
- id B67AA170007E; Sun, 31 Jul 2022 22:19:30 -0400 (EDT)
-X-Mailer: MessagingEngine.com Webmail Interface
-User-Agent: Cyrus-JMAP/3.7.0-alpha0-758-ge0d20a54e1-fm-20220729.001-ge0d20a54
-Mime-Version: 1.0
-Message-Id: <55427f60-0e51-4219-a753-d30d617fc35d@www.fastmail.com>
-In-Reply-To: <6d4a3912-a386-a784-8db4-7743bb1f1063@kaod.org>
-References: <20220728232322.2921703-1-irischenlj@fb.com>
- <435b3e89-f9fd-c257-b03d-a12d4b59ac6b@kaod.org>
- <YuQZP4xkkU2R9VmO@pdel-mbp.dhcp.thefacebook.com>
- <6d4a3912-a386-a784-8db4-7743bb1f1063@kaod.org>
-Date: Mon, 01 Aug 2022 11:49:09 +0930
-From: "Andrew Jeffery" <andrew@aj.id.au>
-To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>,
- "Peter Delevoryas" <peter@pjd.dev>
-Cc: "Iris Chen" <irischenlj@fb.com>, "Peter Delevoryas" <pdel@fb.com>,
- "Cameron Esfahani via" <qemu-devel@nongnu.org>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9_via?= <qemu-arm@nongnu.org>,
- "Patrick Williams" <patrick@stwcx.xyz>,
- "Alistair Francis" <alistair@alistair23.me>, "Kevin Wolf" <kwolf@redhat.com>, 
- hreitz@redhat.com, "Peter Maydell" <peter.maydell@linaro.org>,
- "Joel Stanley" <joel@jms.id.au>, "Thomas Huth" <thuth@redhat.com>,
- "Laurent Vivier" <lvivier@redhat.com>, "Paolo Bonzini" <pbonzini@redhat.com>, 
- qemu-block@nongnu.org, dz4list@gmail.com
-Subject: Re: [RFC 0/3] Add Generic SPI GPIO model
-Content-Type: text/plain;charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=66.111.4.25; envelope-from=andrew@aj.id.au;
- helo=out1-smtp.messagingengine.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
-X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1oISrV-0005rI-Ll
+ for qemu-arm@nongnu.org; Mon, 01 Aug 2022 06:41:27 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1659350484;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=hMRGCraIgOer8Fq0tpAr3ja28zDWULG0LAVxGdRhgM8=;
+ b=II+SzplwIheaLmXV4xo5oU86JoaKYfBrQDTN979AkhJzx+ccTIalq2HMN2ws/FiKfKBnTV
+ ThllaweucQriivXXd3ANwnYv9NbcMIbCl/eIPmTmX6O9BpNV70dFshF83sULjS0Nfmc+Q8
+ i5156khQ+Quhn4iuwlTyahhCvxpmUcE=
+Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
+ [209.85.128.71]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-326-OS3SLS-MO220GdzMITLqjQ-1; Mon, 01 Aug 2022 06:41:23 -0400
+X-MC-Unique: OS3SLS-MO220GdzMITLqjQ-1
+Received: by mail-wm1-f71.google.com with SMTP id
+ ay19-20020a05600c1e1300b003a315c2c1c0so7929037wmb.7
+ for <qemu-arm@nongnu.org>; Mon, 01 Aug 2022 03:41:23 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:message-id:date:mime-version:user-agent
+ :content-language:to:references:from:cc:subject:in-reply-to
+ :content-transfer-encoding;
+ bh=hMRGCraIgOer8Fq0tpAr3ja28zDWULG0LAVxGdRhgM8=;
+ b=MbtO3s6iZsb1l1WfbWlIwkdq2Tv/tIyp+2+zeXJnR2ojDFvHUAbg444XGXvhuzbbTm
+ 35DXmOmjWfQkJFxojuraBSvcQWJorejQsWx/BJl1unYdMTuen6QTBK71jyCT/7PGyrJ+
+ cbdrjNDg2rnvrOAOd4Yx+aivIHO7g/ITJJhdN/nWK4WHKbFKDoDwmZwfgvDqQFbaSFT9
+ a1NXSwp/qte1aTSERkvtXgDSUtFClvsP4ayXdamzk6zeI2E8mVn/Czcm4xh189zjDRHn
+ kTgkbj1AmDvGsrp71j5n3cQvs0yu8gbYeD/hCztrxa1nWsY9b/Lkt9S0HVvgyGYeMwoY
+ 8jyw==
+X-Gm-Message-State: ACgBeo1jga6vj3xkThC1IZP/raRf2ujagdAiu64PHOEsyweyT2xMxlpC
+ 1BHAdlcCeb2q6ykGZH81CkRd3pYWHw0R0eB89unsTlJG/dZnsB0nCfUIa5yyyZqKzcbx1obU1+p
+ HzwWFlJsVThgA
+X-Received: by 2002:a05:6000:4084:b0:21e:c694:80db with SMTP id
+ da4-20020a056000408400b0021ec69480dbmr9223194wrb.681.1659350482322; 
+ Mon, 01 Aug 2022 03:41:22 -0700 (PDT)
+X-Received: by 2002:a05:6000:4084:b0:21e:c694:80db with SMTP id
+ da4-20020a056000408400b0021ec69480dbmr9223173wrb.681.1659350482076; 
+ Mon, 01 Aug 2022 03:41:22 -0700 (PDT)
+Received: from [192.168.8.104] (tmo-096-80.customers.d1-online.com.
+ [80.187.96.80]) by smtp.gmail.com with ESMTPSA id
+ e13-20020a5d65cd000000b0020fcaba73bcsm11518373wrw.104.2022.08.01.03.41.20
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 01 Aug 2022 03:41:21 -0700 (PDT)
+Message-ID: <c4ad47a1-a946-0f4e-69a2-65a6cc679a6e@redhat.com>
+Date: Mon, 1 Aug 2022 12:41:19 +0200
+MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.11.0
+To: "Dr. David Alan Gilbert (git)" <dgilbert@redhat.com>,
+ qemu-devel@nongnu.org, leobras@redhat.com, quintela@redhat.com,
+ berrange@redhat.com, peterx@redhat.com, iii@linux.ibm.com,
+ huangy81@chinatelecom.cn
+References: <20220720111926.107055-1-dgilbert@redhat.com>
+ <20220720111926.107055-9-dgilbert@redhat.com>
+From: Thomas Huth <thuth@redhat.com>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ qemu-arm <qemu-arm@nongnu.org>
+Subject: migration test fails for aarch64 target (was: Re: [PULL 08/30] tests:
+ Add dirty page rate limit test)
+In-Reply-To: <20220720111926.107055-9-dgilbert@redhat.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=thuth@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -6
+X-Spam_score: -0.7
+X-Spam_bar: /
+X-Spam_report: (-0.7 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.082,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_SORBS_WEB=1.5, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -147,40 +141,71 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: r2aNlxatqmes
+X-TUID: uYdj2AiS2iur
 
+On 20/07/2022 13.19, Dr. David Alan Gilbert (git) wrote:
+> From: Hyman Huang(黄勇) <huangy81@chinatelecom.cn>
+> 
+> Add dirty page rate limit test if kernel support dirty ring,
+> 
+> The following qmp commands are covered by this test case:
+> "calc-dirty-rate", "query-dirty-rate", "set-vcpu-dirty-limit",
+> "cancel-vcpu-dirty-limit" and "query-vcpu-dirty-limit".
+> 
+> Signed-off-by: Hyman Huang(黄勇) <huangy81@chinatelecom.cn>
+> Acked-by: Peter Xu <peterx@redhat.com>
+> Message-Id: <eed5b847a6ef0a9c02a36383dbdd7db367dd1e7e.1656177590.git.huangy81@chinatelecom.cn>
+> Signed-off-by: Dr. David Alan Gilbert <dgilbert@redhat.com>
+> ---
+>   tests/qtest/migration-helpers.c |  22 +++
+>   tests/qtest/migration-helpers.h |   2 +
+>   tests/qtest/migration-test.c    | 256 ++++++++++++++++++++++++++++++++
+>   3 files changed, 280 insertions(+)
+[...]
+> +static QTestState *dirtylimit_start_vm(void)
+> +{
+> +    QTestState *vm = NULL;
+> +    g_autofree gchar *cmd = NULL;
+> +    const char *arch = qtest_get_arch();
+> +    g_autofree char *bootpath = NULL;
+> +
+> +    assert((strcmp(arch, "x86_64") == 0));
 
+  Hi!
 
-On Sun, 31 Jul 2022, at 06:48, C=C3=A9dric Le Goater wrote:
-> On 7/29/22 19:30, Peter Delevoryas wrote:
->> Certainly we'd like to use IRQ's instead, but she ran into correctness
->> problems. Maybe we can investigate that further and fix it.
+This assert triggers on my x86 laptop when I run "make check" there. More 
+precisely, it triggers when qemu-system-aarch64 is getting tested:
 
-Yes, let's not work around problems that we have the ability to fix.
+$ QTEST_QEMU_BINARY=./qemu-system-aarch64 tests/qtest/migration-test
+/aarch64/migration/bad_dest: OK
+/aarch64/migration/fd_proto: OK
+/aarch64/migration/validate_uuid: OK
+/aarch64/migration/validate_uuid_error: OK
+/aarch64/migration/validate_uuid_src_not_set: OK
+/aarch64/migration/validate_uuid_dst_not_set: OK
+/aarch64/migration/auto_converge: OK
+/aarch64/migration/dirty_ring: OK
+/aarch64/migration/vcpu_dirty_limit: migration-test: 
+../../devel/qemu/tests/qtest/migration-test.c:2304: dirtylimit_start_vm: 
+Assertion `(strcmp(arch, "x86_64") == 0)' failed.
+Aborted (core dumped)
 
->
-> So much is happening in that mode.
+>   static bool kvm_dirty_ring_supported(void)
+>   {
+>   #if defined(__linux__) && defined(HOST_X86_64)
+> @@ -2204,6 +2458,8 @@ int main(int argc, char **argv)
+>       if (kvm_dirty_ring_supported()) {
+>           qtest_add_func("/migration/dirty_ring",
+>                          test_precopy_unix_dirty_ring);
+> +        qtest_add_func("/migration/vcpu_dirty_limit",
+> +                       test_vcpu_dirty_limit);
+>       }
 
-Yes, though while there's no-doubt accidental complexity in terms of=20
-its implementation, the underlying hardware is also quite haphazard and=20
-we need an approach that scales to the large number of GPIOs it=20
-provides. So I'd argue there's a bunch of essential complexity involved=20
-as well.
+kvm_dirty_ring_supported() returns "true" if the KVM of the *host* is x86 
+and has the dirty ring support, but it does *not* check the target 
+architecture that is currently tested, so you also get here "true" for 
+qemu-system-aarch64 being tested on a x86 host... Thus I guess 
+kvm_dirty_ring_supported() needs also a check for the right target architecture?
 
-Do we start with a fresh implementation that allows us to get the=20
-expected behaviour and then build that out to replace the current=20
-implementation?
+  Thomas
 
-Or, can we add more tests for the existing model to pin down where the=20
-bugs are?
-
-> We need more trace events in the Aspeed
-> GPIO model at least an extra in aspeed_gpio_update()
-
-We can always fall back to this but my hope is we can get better test=20
-coverage to iron out the bugs. Maybe that gets us a more refined and=20
-maintainable model implementation along the way.
-
-Cheers,
-
-Andrew

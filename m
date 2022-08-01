@@ -1,115 +1,107 @@
-Received: by 2002:a05:6512:1086:0:0:0:0 with SMTP id j6csp2427338lfg;
-        Mon, 1 Aug 2022 04:21:17 -0700 (PDT)
-X-Google-Smtp-Source: AGRyM1ueFhGBQuho/aSjRWF2XJoboGBIlgqvQmWNsooy/b+YPPv3p+OPXJkY8nw31P5vF/MRnYi3
-X-Received: by 2002:ac8:5c4e:0:b0:31e:f6e6:c62 with SMTP id j14-20020ac85c4e000000b0031ef6e60c62mr14145935qtj.460.1659352877217;
-        Mon, 01 Aug 2022 04:21:17 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1659352877; cv=none;
+Received: by 2002:a05:6512:1086:0:0:0:0 with SMTP id j6csp2435919lfg;
+        Mon, 1 Aug 2022 04:38:05 -0700 (PDT)
+X-Google-Smtp-Source: AA6agR4QAjV+ovqhiTlccC6YBVqNvjn+f11G+8CMP2fUKgsFG+Jf06l2idjRQjRAPsBHaC5s0ikB
+X-Received: by 2002:a05:6214:5281:b0:474:16b4:9676 with SMTP id kj1-20020a056214528100b0047416b49676mr13842098qvb.13.1659353885547;
+        Mon, 01 Aug 2022 04:38:05 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1659353885; cv=none;
         d=google.com; s=arc-20160816;
-        b=bYTaCOv30AQjtMDN0TQ8wihippZxWOZnyCY9Z3mFSUWfqv4vkNur3lqgZ57q382q/E
-         qVKOEtQuncSWfITpkOZFs4rGNs0hZYyn5OJIaLli4UrWNojlt6zzwl6eq72VKnHqWoo5
-         3tdOJl8uXepOkBlBntfJbJVs0aTYvxL9nB/yzTwe2RIRnGvVIjMRn6KuBNAuxFwVo50Z
-         Cz1SLxzfc1MEH3qJhCkXv+e0dzgPfhtQ/kQhGNdqzf6ixDAnqYm/VtzlQvY8QflT5bmm
-         5gd8TiUSH91N7h1F76SehHphUMoLC0h8DglQmgkKY1zTtnEVmPKMUW5ZsUu9EyXYGI5I
-         6RUw==
+        b=ZZDg1KCuV8N7rfCr+PaL8YeAVziltnVEZ/z30BkRua5TJ6UTbOImPv5vv7xDsX3LpQ
+         BJ5y9/0276N3xWPoOA/SBfe8p+dV6ZRxzsnlYX5KpCfCbjoHy8cNMxNgRDgXdjPeswZP
+         eGElFK+O2KTw7OVJIPrPY5hFleeafXVjKZBPA4cFPqElfVu672hg8qF4PWtLrHVSScGp
+         eaXXEC66Par9rCzQ37g+PVVU/+mDZ5yVMz3fBCjhiZfco+COJKOtI560Un0EE2exx2k3
+         0ZlTV2mlgco5kUdcuimedEzClrGutpvgXeAwsC37sYyrG7Grf+MnoVmybAOg1D44VSf7
+         2azg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=gmt6LtA/nwGnB8J/Ffl0WACr25McveDQYoFW5UmbV1M=;
-        b=u7vljVHRGX2JnJCF/tPA5HL7BOQd2bKUmj/hibWsNC6B4qNeeWYVoFFN0RdhESdW8K
-         oV4CR7dxeNoR/loGTKRrPSCTeBw9te0PWGeG+qbEXVvg2a7W74ywc7XghkDFO44cxgP1
-         YH8+jhQ/dEBw0vKPcll7prC19geSqyGDgHG9fxK02dNi7nCT6YKG59dSdvvJrYTrcSse
-         OwylsqvANIpw2QSuDYMm0tEPEfL5+9M1vyem2dpXbyIwwJExWVLWKuRmydv5nqSxNWJr
-         CuOw3W6kj8JZoFwq7UDUJV9pNswq8Zh5ec9AXfz36s9rtybOAu7mdRKhR3oEdPCXwXkY
-         kq2w==
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=HaAXL/qO9BHNnDeVfHOncjqYo30Q5/KoR/nNrpYAUlI=;
+        b=wWx+LI28uImHES4WkpbG4CjRWlneWX7gTyk5cQksPp8ii2h9sSWAEDsHacZZhBUaRK
+         Iyh4cxYb6ilU9NYFfDIXIRaU/rGK2wuDviyR53DKgKe+RzbweXZzJwFGetPqsHGIIxee
+         50zSoXS9lF5fpdO8q4OdYU9/wTdDIr/wwYQa+4dBp3XlpqtQtxndhBRm39yxsSG1RS8j
+         x7PoiVczcBHMiphybu5WxK7ok9LcY0RMG5XhWfO79KBoHidTfF0lVAVzUf9KpiAON8Jg
+         r9ddSMqvwkOUjOFy0+MWSUhLVMKqQlLLwhUYgduTZzdB/WTpVtV1kpmFZ3g+s22deMg/
+         85/g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=D8Q9uWja;
+       dkim=pass header.i=@linaro.org header.s=google header.b=RR626Bnn;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id dv17-20020a05620a1b9100b006b568c07ae9si7259799qkb.143.2022.08.01.04.21.17
+        by mx.google.com with ESMTPS id m1-20020a05620a24c100b006b63aada7e7si7732489qkn.329.2022.08.01.04.38.05
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 01 Aug 2022 04:21:17 -0700 (PDT)
+        Mon, 01 Aug 2022 04:38:05 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=D8Q9uWja;
+       dkim=pass header.i=@linaro.org header.s=google header.b=RR626Bnn;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:45336 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:57040 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1oITU4-0008Ck-O6
-	for alex.bennee@linaro.org; Mon, 01 Aug 2022 07:21:16 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:60186)
+	id 1oITkK-0000Ue-WF
+	for alex.bennee@linaro.org; Mon, 01 Aug 2022 07:38:05 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:35378)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1oITTR-0008CI-2J
- for qemu-arm@nongnu.org; Mon, 01 Aug 2022 07:20:37 -0400
-Received: from mail-yw1-x1132.google.com ([2607:f8b0:4864:20::1132]:34802)
+ id 1oITk4-0000TD-4n
+ for qemu-arm@nongnu.org; Mon, 01 Aug 2022 07:37:48 -0400
+Received: from mail-yb1-xb34.google.com ([2607:f8b0:4864:20::b34]:35491)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1oITTJ-0004Ne-Bi
- for qemu-arm@nongnu.org; Mon, 01 Aug 2022 07:20:35 -0400
-Received: by mail-yw1-x1132.google.com with SMTP id
- 00721157ae682-31f443e276fso105602507b3.1
- for <qemu-arm@nongnu.org>; Mon, 01 Aug 2022 04:20:28 -0700 (PDT)
+ id 1oITk1-0007AS-RO
+ for qemu-arm@nongnu.org; Mon, 01 Aug 2022 07:37:47 -0400
+Received: by mail-yb1-xb34.google.com with SMTP id n8so18498360yba.2
+ for <qemu-arm@nongnu.org>; Mon, 01 Aug 2022 04:37:45 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc;
- bh=gmt6LtA/nwGnB8J/Ffl0WACr25McveDQYoFW5UmbV1M=;
- b=D8Q9uWjaRLtWoCACwbPqrmWVT7giijyNk27JcZjldV9/8bwpmxgKUBrXXhrhGCk607
- IznJ0qwT34wD5bMLBtKMe3bEKn3Jw8q9GBqla4Un1aneF/yNPYI2Zu9i80Vh5UQI85ro
- yuuYHGwYEJRk+1QLbT845ikX6C1pBhdIfjg2az7ZWmrnhG+WwpMy06s7tRJ4bHaQFzgb
- 0xOemn5qAhGwp4t5DJhKgqsoltPmsFQo8+2otCN4CF/Us2IjHuOoqgk1V/dwTurUGMwW
- JStwA6SXlSd6OZtQrUiN0PVPS+U1MbFJ3z/wTNV6u7nmVKGE3z3nZzTI1qq+3QcpQPm2
- VviA==
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc;
+ bh=HaAXL/qO9BHNnDeVfHOncjqYo30Q5/KoR/nNrpYAUlI=;
+ b=RR626BnnnUqVpHR4u/9Y42KwEPCx4LhSwEEihKPew0M+c1ck/T30rngFX8Xl0+MGaU
+ qeJGNr4YfASuVOnIlT8QueH3Hg5mD+4JbrahCQPCrWaAnb9iaMmDKJz9iVz8poYvYtXV
+ TU5M6NQKsG7G1UrsB2bsrMWNy3YzEq9SPDHsw3TVYaNF2cFrlfrkhtcfM/aVh+QNTkDn
+ uzXybcXTkHiJzpmNVB+0lEQkKiTbokXt0kIk/Uin26tLVHYtW0C9xbNAiwVFjVo1KDqO
+ JrOtBpRk10uHpNGtum2erWWooejtJhKI08UwIj8i/3GnYvl+DPpFJ2PtPGJcgJQ+r3jL
+ 7IVg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc;
- bh=gmt6LtA/nwGnB8J/Ffl0WACr25McveDQYoFW5UmbV1M=;
- b=HWCaCkT17l4gQmlkEVvVXs3C4gVpEiHN1CYO4YIcHO35cqLZCiMqEVP9P5MAM0Ur6H
- YYwIwh5CW2mH7S1Xt6W+K0Su+1TsQrNIb6b4Hkyw+E3PFAdgdMv2fGX8UMJIEkgylDgT
- 26LGvhazFjznkY0eLI2tRGllzPshNfQKlxV5X21frMmqep2KGyQKFccq7U7j5uq9V+/x
- hFUlA3OLbUZfD9WQmfE47/HzNZSCn69+S3uXupI4X9xJdpMT7TZ+qkPyHnHRXzWT6zfj
- UNtHswrZqZVkHOOo7UEBq5A6//S6VFpqaYJcsSjcjMZhHybLNsjumATYRbIPrA+BRpSD
- 06DA==
-X-Gm-Message-State: ACgBeo2E6NQdHiTZ5yhJPL+q7zaqEhbcaW9RbX+3TDI4Qn1XU5LGWXjK
- Gb32eGc0dCltXsnDVjdk16VRROSN6QegTD6Mnq2wwg==
-X-Received: by 2002:a0d:cc0d:0:b0:31f:8a70:38e0 with SMTP id
- o13-20020a0dcc0d000000b0031f8a7038e0mr12437670ywd.347.1659352828194; Mon, 01
- Aug 2022 04:20:28 -0700 (PDT)
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc;
+ bh=HaAXL/qO9BHNnDeVfHOncjqYo30Q5/KoR/nNrpYAUlI=;
+ b=GisAms8DG6bQ0AJi6XQSsFUd4qBVSRBZvM8r/yA2VfOmSv7YDf1d1vpn9H5sotMmM/
+ Gt5yR8wUwmHafS5/rwkNNHXExOXNVfbI+4zXxAWr80uCtUb6qvUTXiP/tYb2C/hNxWvm
+ wDj7RqHmdyrM1U/mxFZUZGmB1vGTxzOJar8vlr13Dq3l5w4kVDS4BcSZHzMFmx2xAmZc
+ 4cN00AuYhPBswd3YcOz4JlLrRYDI98GWaDdLQQzJWBaohw3sRB24ZeMSSjbU3RFD8E4W
+ /U2xzweY1VzwvARCVXMr8GMheY7wL/hVLUotR0grtAGAwud8+38ctQGZApSiBr/QgukP
+ T/Rg==
+X-Gm-Message-State: ACgBeo0m0WHz5+U9WV0MOtMF2Zu+HNYy6WGsCqs/rEI/vbzj1lhaL0LN
+ 5hgVDZXN75ZGPZrrBbBaeV5HPASEgntzucPPPDd2qg==
+X-Received: by 2002:a5b:7c6:0:b0:670:6ba6:d046 with SMTP id
+ t6-20020a5b07c6000000b006706ba6d046mr10603556ybq.140.1659353864693; Mon, 01
+ Aug 2022 04:37:44 -0700 (PDT)
 MIME-Version: 1.0
-References: <20220720111926.107055-1-dgilbert@redhat.com>
- <20220720111926.107055-9-dgilbert@redhat.com>
- <c4ad47a1-a946-0f4e-69a2-65a6cc679a6e@redhat.com>
-In-Reply-To: <c4ad47a1-a946-0f4e-69a2-65a6cc679a6e@redhat.com>
+References: <20220727223905.624285-1-qemu@ben.fluff.org>
+ <20220727223905.624285-6-qemu@ben.fluff.org>
+In-Reply-To: <20220727223905.624285-6-qemu@ben.fluff.org>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 1 Aug 2022 12:20:16 +0100
-Message-ID: <CAFEAcA-jET2fWX0C5uCW3q5_-SRpsCpM3mGJUQTH-Bj5LY0+8A@mail.gmail.com>
-Subject: Re: migration test fails for aarch64 target (was: Re: [PULL 08/30]
- tests: Add dirty page rate limit test)
-To: Thomas Huth <thuth@redhat.com>
-Cc: "Dr. David Alan Gilbert (git)" <dgilbert@redhat.com>, qemu-devel@nongnu.org,
- leobras@redhat.com, 
- quintela@redhat.com, berrange@redhat.com, peterx@redhat.com, 
- iii@linux.ibm.com, huangy81@chinatelecom.cn, 
- Richard Henderson <richard.henderson@linaro.org>,
- qemu-arm <qemu-arm@nongnu.org>
+Date: Mon, 1 Aug 2022 12:37:33 +0100
+Message-ID: <CAFEAcA9DADLZaSrRmRLXxex6V1ewbi8zV+ey9NLv0JNPJOc9hw@mail.gmail.com>
+Subject: Re: [PATCH v3 5/5] hw/arm: change to use qemu_fdt_setprop_strings()
+To: Ben Dooks <qemu@ben.fluff.org>
+Cc: qemu-devel@nongnu.org, qemu-riscv@nongnu.org, 
+ Alistair Francis <Alistair.Francis@wdc.com>, qemu-arm@nongnu.org, 
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
 Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1132;
- envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x1132.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b34;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yb1-xb34.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -124,57 +116,141 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: vhF1yQ/2Mvcd
+X-TUID: jUFyRdu7io+z
 
-On Mon, 1 Aug 2022 at 11:41, Thomas Huth <thuth@redhat.com> wrote:
+On Wed, 27 Jul 2022 at 23:44, Ben Dooks <qemu@ben.fluff.org> wrote:
 >
-> On 20/07/2022 13.19, Dr. David Alan Gilbert (git) wrote:
-> > From: Hyman Huang(=E9=BB=84=E5=8B=87) <huangy81@chinatelecom.cn>
-> >
-> > Add dirty page rate limit test if kernel support dirty ring,
-> >
-> > The following qmp commands are covered by this test case:
-> > "calc-dirty-rate", "query-dirty-rate", "set-vcpu-dirty-limit",
-> > "cancel-vcpu-dirty-limit" and "query-vcpu-dirty-limit".
+> Change to using qemu_fdt_setprop_strings() instead of using
+> \0 separated string arrays.
+>
+> Signed-off-by: Ben Dooks <qemu@ben.fluff.org>
+> ---
+>  hw/arm/boot.c             |  8 +++---
+>  hw/arm/virt.c             | 28 +++++++++------------
+>  hw/arm/xlnx-versal-virt.c | 51 ++++++++++++++++-----------------------
+>  3 files changed, 37 insertions(+), 50 deletions(-)
+>
+> diff --git a/hw/arm/boot.c b/hw/arm/boot.c
+> index ada2717f76..bf29b7ae60 100644
+> --- a/hw/arm/boot.c
+> +++ b/hw/arm/boot.c
+> @@ -490,11 +490,11 @@ static void fdt_add_psci_node(void *fdt)
+>      qemu_fdt_add_subnode(fdt, "/psci");
+>      if (armcpu->psci_version >= QEMU_PSCI_VERSION_0_2) {
+>          if (armcpu->psci_version < QEMU_PSCI_VERSION_1_0) {
+> -            const char comp[] = "arm,psci-0.2\0arm,psci";
+> -            qemu_fdt_setprop(fdt, "/psci", "compatible", comp, sizeof(comp));
+> +            qemu_fdt_setprop_strings(fdt, "/psci", "compatible",
+> +                                     "arm,psci-0.2", "arm,psci");
 
-> This assert triggers on my x86 laptop when I run "make check" there. More
-> precisely, it triggers when qemu-system-aarch64 is getting tested:
->
-> $ QTEST_QEMU_BINARY=3D./qemu-system-aarch64 tests/qtest/migration-test
-> /aarch64/migration/bad_dest: OK
-> /aarch64/migration/fd_proto: OK
-> /aarch64/migration/validate_uuid: OK
-> /aarch64/migration/validate_uuid_error: OK
-> /aarch64/migration/validate_uuid_src_not_set: OK
-> /aarch64/migration/validate_uuid_dst_not_set: OK
-> /aarch64/migration/auto_converge: OK
-> /aarch64/migration/dirty_ring: OK
-> /aarch64/migration/vcpu_dirty_limit: migration-test:
-> ../../devel/qemu/tests/qtest/migration-test.c:2304: dirtylimit_start_vm:
-> Assertion `(strcmp(arch, "x86_64") =3D=3D 0)' failed.
-> Aborted (core dumped)
->
-> >   static bool kvm_dirty_ring_supported(void)
-> >   {
-> >   #if defined(__linux__) && defined(HOST_X86_64)
-> > @@ -2204,6 +2458,8 @@ int main(int argc, char **argv)
-> >       if (kvm_dirty_ring_supported()) {
-> >           qtest_add_func("/migration/dirty_ring",
-> >                          test_precopy_unix_dirty_ring);
-> > +        qtest_add_func("/migration/vcpu_dirty_limit",
-> > +                       test_vcpu_dirty_limit);
-> >       }
->
-> kvm_dirty_ring_supported() returns "true" if the KVM of the *host* is x86
-> and has the dirty ring support, but it does *not* check the target
-> architecture that is currently tested, so you also get here "true" for
-> qemu-system-aarch64 being tested on a x86 host... Thus I guess
-> kvm_dirty_ring_supported() needs also a check for the right target archit=
-ecture?
+I think you may have some stray trailing whitespace here.
+checkpatch should be able to tell you.
 
-Presumably it should be checking qtest_has_accel("kvm") -- even
-if you're on an x86 host and with an x86 guest, if you're using
-TCG you're not going to get KVM dirty ring support...
+> @@ -858,8 +855,8 @@ static void create_uart(const VirtMachineState *vms, int uart,
+>      nodename = g_strdup_printf("/pl011@%" PRIx64, base);
+>      qemu_fdt_add_subnode(ms->fdt, nodename);
+>      /* Note that we can't use setprop_string because of the embedded NUL */
+
+With this change, this comment becomes obsolete, and we should delete it too.
+
+> -    qemu_fdt_setprop(ms->fdt, nodename, "compatible",
+> -                         compat, sizeof(compat));
+> +    qemu_fdt_setprop_strings(ms->fdt, nodename, "compatible",
+> +                             "arm,pl011", "arm,primecell");
+>      qemu_fdt_setprop_sized_cells(ms->fdt, nodename, "reg",
+>                                       2, base, 2, size);
+>      qemu_fdt_setprop_cells(ms->fdt, nodename, "interrupts",
+
+
+
+> @@ -285,8 +280,6 @@ static void fdt_add_gem_nodes(VersalVirt *s)
+>
+>  static void fdt_add_zdma_nodes(VersalVirt *s)
+>  {
+> -    const char clocknames[] = "clk_main\0clk_apb";
+> -    const char compat[] = "xlnx,zynqmp-dma-1.0";
+
+This looks suspiciously like a pre-existing bug to me.
+Alaistair, Edgar -- shouldn't this be a NUL-separated
+'compatible' string, rather than a comma-separated one?
+
+>      int i;
+>
+>      for (i = XLNX_VERSAL_NR_ADMAS - 1; i >= 0; i--) {
+> @@ -298,22 +291,21 @@ static void fdt_add_zdma_nodes(VersalVirt *s)
+>          qemu_fdt_setprop_cell(s->fdt, name, "xlnx,bus-width", 64);
+>          qemu_fdt_setprop_cells(s->fdt, name, "clocks",
+>                                 s->phandle.clk_25Mhz, s->phandle.clk_25Mhz);
+> -        qemu_fdt_setprop(s->fdt, name, "clock-names",
+> -                         clocknames, sizeof(clocknames));
+> +        qemu_fdt_setprop_strings(s->fdt, name, "clock-names",
+> +                                 "clk_main", "clk_apb");
+>          qemu_fdt_setprop_cells(s->fdt, name, "interrupts",
+>                                 GIC_FDT_IRQ_TYPE_SPI, VERSAL_ADMA_IRQ_0 + i,
+>                                 GIC_FDT_IRQ_FLAGS_LEVEL_HI);
+>          qemu_fdt_setprop_sized_cells(s->fdt, name, "reg",
+>                                       2, addr, 2, 0x1000);
+> -        qemu_fdt_setprop(s->fdt, name, "compatible", compat, sizeof(compat));
+> +        qemu_fdt_setprop_string(s->fdt, name, "compatible",
+> +                                "xlnx,zynqmp-dma-1.0");
+>          g_free(name);
+>      }
+>  }
+>
+>  static void fdt_add_sd_nodes(VersalVirt *s)
+>  {
+> -    const char clocknames[] = "clk_xin\0clk_ahb";
+> -    const char compat[] = "arasan,sdhci-8.9a";
+
+Ditto here...
+
+>      int i;
+>
+>      for (i = ARRAY_SIZE(s->soc.pmc.iou.sd) - 1; i >= 0; i--) {
+> @@ -324,22 +316,21 @@ static void fdt_add_sd_nodes(VersalVirt *s)
+>
+>          qemu_fdt_setprop_cells(s->fdt, name, "clocks",
+>                                 s->phandle.clk_25Mhz, s->phandle.clk_25Mhz);
+> -        qemu_fdt_setprop(s->fdt, name, "clock-names",
+> -                         clocknames, sizeof(clocknames));
+> +        qemu_fdt_setprop_strings(s->fdt, name, "clock-names",
+> +                                 "clk_xin", "clk_ahb");
+>          qemu_fdt_setprop_cells(s->fdt, name, "interrupts",
+>                                 GIC_FDT_IRQ_TYPE_SPI, VERSAL_SD0_IRQ_0 + i * 2,
+>                                 GIC_FDT_IRQ_FLAGS_LEVEL_HI);
+>          qemu_fdt_setprop_sized_cells(s->fdt, name, "reg",
+>                                       2, addr, 2, MM_PMC_SD0_SIZE);
+> -        qemu_fdt_setprop(s->fdt, name, "compatible", compat, sizeof(compat));
+> +        qemu_fdt_setprop_string(s->fdt, name, "compatible",
+> +                                "arasan,sdhci-8.9a");
+>          g_free(name);
+>      }
+>  }
+>
+>  static void fdt_add_rtc_node(VersalVirt *s)
+>  {
+> -    const char compat[] = "xlnx,zynqmp-rtc";
+
+...and here.
+
+> -    const char interrupt_names[] = "alarm\0sec";
+>      char *name = g_strdup_printf("/rtc@%x", MM_PMC_RTC);
+>
+>      qemu_fdt_add_subnode(s->fdt, name);
+> @@ -349,11 +340,11 @@ static void fdt_add_rtc_node(VersalVirt *s)
+>                             GIC_FDT_IRQ_FLAGS_LEVEL_HI,
+>                             GIC_FDT_IRQ_TYPE_SPI, VERSAL_RTC_SECONDS_IRQ,
+>                             GIC_FDT_IRQ_FLAGS_LEVEL_HI);
+> -    qemu_fdt_setprop(s->fdt, name, "interrupt-names",
+> -                     interrupt_names, sizeof(interrupt_names));
+> +    qemu_fdt_setprop_strings(s->fdt, name, "interrupt-names",
+> +                             "alarm", "sec");
+>      qemu_fdt_setprop_sized_cells(s->fdt, name, "reg",
+>                                   2, MM_PMC_RTC, 2, MM_PMC_RTC_SIZE);
+> -    qemu_fdt_setprop(s->fdt, name, "compatible", compat, sizeof(compat));
+> +    qemu_fdt_setprop_string(s->fdt, name, "compatible", "xlnx,zynqmp-rtc");
+>      g_free(name);
+>  }
 
 thanks
 -- PMM

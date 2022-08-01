@@ -1,211 +1,136 @@
-Received: by 2002:a05:6512:1086:0:0:0:0 with SMTP id j6csp2408284lfg;
-        Mon, 1 Aug 2022 03:42:03 -0700 (PDT)
-X-Google-Smtp-Source: AGRyM1sfe2PXRcuEl8EZZe5QlqGSsXHgNnbbovbRCjjP2KZYugoH7ET/JAOkcPIOMRJcWS4kdHe8
-X-Received: by 2002:a05:620a:2848:b0:6af:6c3f:7141 with SMTP id h8-20020a05620a284800b006af6c3f7141mr10933795qkp.548.1659350523836;
-        Mon, 01 Aug 2022 03:42:03 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1659350523; cv=none;
+Received: by 2002:a05:6512:1086:0:0:0:0 with SMTP id j6csp2414289lfg;
+        Mon, 1 Aug 2022 03:56:28 -0700 (PDT)
+X-Google-Smtp-Source: AGRyM1u2v5o/JcPqQlfS6GHDa4eq04HT/I96Eawh+Ltxryhb/HvGNM9PHPC2WKoXlIbxkAotZPIS
+X-Received: by 2002:a05:620a:4096:b0:6b6:3968:7cce with SMTP id f22-20020a05620a409600b006b639687ccemr11096255qko.721.1659351388212;
+        Mon, 01 Aug 2022 03:56:28 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1659351388; cv=none;
         d=google.com; s=arc-20160816;
-        b=MzeUxKhGv+mnvjBfXvqzw0vf0BuUSshLL0X+j53gSX4vIqhe8Hoa7ol5jvM7fnFNiY
-         mLGbQLXsLM/UDQXsCKXyE3xvpM3hPY8y/8eEvIqvbG7MO5eE69T8GSTmB3DTJOh6+FxT
-         tOibKuPrloOJ5eRU4Q7YNKm4nVI1q+ldVecWfYC/dd63pVaibcKhTfOkp2LnakrlFZ1o
-         V8Qayzf644gRBvT+UCwHixC8XLNV4fyJmPh2vizH4xAhTaS9GciKaRRE+dEQJLMR/2SA
-         5JjlpoetBuFAZ/6yuymnXWu4kmaWF1ffMFH6fWn1R1oaGp4/2UQG1VUVveCPGwrEcnCp
-         N8Ig==
+        b=hYNvmyMOA1TyCXXTYlDanCwN14XfI3kYJq9PPkmkr7aBs6oh6GIzB73JGW8YeYG7AC
+         Mvy9FNLSCpZsXMGlTkH0WTrdXE/suvRgpjpjIomuhY0IFDrm7PThwSc2UFD7rnDm2K+n
+         E/dLnBbrVgxrf3gismdwLaIMu+ksJvOT8fSbL/21zBZ+PF6huGJoHVQNH9tnN7DBwTTz
+         TMZE4H1m+KA0bNcLvoBWB9gyZlBkOyOxOGjhoYEo9e85V9wYhkw+/Q1fi+oJLCYxO49D
+         SmTl+Dj1M3fhtc9tvg97/QkDmI59QIhXP2ZwLFC6cL5RBsX6DNYbofGeqvIXxYdZJWds
+         A12Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:subject:cc:from:references:to
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=hMRGCraIgOer8Fq0tpAr3ja28zDWULG0LAVxGdRhgM8=;
-        b=EprnC2zsMla5W7WpZdq4tpqH3NVQ5Wlf8yOaX8p+CQTbs9gFHaS8WMtqF+CI4TxL86
-         +7OKerUE6PcCiV4KHkJHwSdTdGgYA/MNsF1a3KEdOEpndrTOdAWNFQn7GwA8e/wGFoL6
-         4HKKHwq1w/W8Bqcwan1m7c3ChRl5Ptw1FW3hJhJsHwO8IVu8RmZysbI2pooFHEZw0Ffn
-         JeCUfej35Nx2BxDz2BnUv75b2IdVEkeuQTjBKbUZK3oAxRIrMJC5AHTdC+USVOepeepN
-         ZPzTGhfcWPamxVFeFahNX9bjBCwZVmse1x3cfjJAOkVXTC5GCARGREVvRT1ld7Yr8rRB
-         jRGQ==
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=DXbU4DQTx25+WxEtHhbS2Yj7rATTbj7JGsPIG9uNmsk=;
+        b=AEpGg8VU7TzwA62iEzXPYtAEtLxTsIttX5H46eAE/W1Zxj7MaghycA0D0ntVv9ZDK0
+         ujppAoT8zVQXHnBGmKiufyQC9vY0Y4+BWCW+lYtUH+eItAzLdZ2QeFpa2RmZ9sqc0nGC
+         DIh0ODvuK1nHIoNz7W75OTixhcGhMjXjT+7qtmMeQa9zYJgv+4sSogkP4+0liYswfjsd
+         sfF8G88IpHdQJKos+3h3OCrX1h967AimJvh8lbdfkmwbkqMKN2aafdOYCfRmRBw+OPlm
+         zm1sYjRd1qrGAi2qO0rHSo6W85sen9FbgIBWAxr3YN3CzynYZzBCXVn76XaVUiLmD69h
+         BJ1g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=II+Szplw;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@linaro.org header.s=google header.b=aKoj8Jmp;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id j9-20020a05620a288900b006b5f9b7ac84si6922139qkp.365.2022.08.01.03.42.03
+        by mx.google.com with ESMTPS id l8-20020a05620a28c800b006b14d4dc7cfsi8075934qkp.620.2022.08.01.03.56.28
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 01 Aug 2022 03:42:03 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 01 Aug 2022 03:56:28 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=II+Szplw;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:53332 helo=lists1p.gnu.org)
+       dkim=pass header.i=@linaro.org header.s=google header.b=aKoj8Jmp;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:34540 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1oISs7-0008AQ-5v
-	for alex.bennee@linaro.org; Mon, 01 Aug 2022 06:42:03 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53264)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1oIT63-0006o2-Jn
+	for alex.bennee@linaro.org; Mon, 01 Aug 2022 06:56:27 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55818)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1oISrY-00086q-Pi
- for qemu-arm@nongnu.org; Mon, 01 Aug 2022 06:41:28 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:49099)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1oISrV-0005rI-Ll
- for qemu-arm@nongnu.org; Mon, 01 Aug 2022 06:41:27 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1659350484;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=hMRGCraIgOer8Fq0tpAr3ja28zDWULG0LAVxGdRhgM8=;
- b=II+SzplwIheaLmXV4xo5oU86JoaKYfBrQDTN979AkhJzx+ccTIalq2HMN2ws/FiKfKBnTV
- ThllaweucQriivXXd3ANwnYv9NbcMIbCl/eIPmTmX6O9BpNV70dFshF83sULjS0Nfmc+Q8
- i5156khQ+Quhn4iuwlTyahhCvxpmUcE=
-Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
- [209.85.128.71]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-326-OS3SLS-MO220GdzMITLqjQ-1; Mon, 01 Aug 2022 06:41:23 -0400
-X-MC-Unique: OS3SLS-MO220GdzMITLqjQ-1
-Received: by mail-wm1-f71.google.com with SMTP id
- ay19-20020a05600c1e1300b003a315c2c1c0so7929037wmb.7
- for <qemu-arm@nongnu.org>; Mon, 01 Aug 2022 03:41:23 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1oIT1y-0005b4-1o
+ for qemu-devel@nongnu.org; Mon, 01 Aug 2022 06:52:16 -0400
+Received: from mail-yw1-x1134.google.com ([2607:f8b0:4864:20::1134]:43764)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1oIT1w-0007MN-JW
+ for qemu-devel@nongnu.org; Mon, 01 Aug 2022 06:52:13 -0400
+Received: by mail-yw1-x1134.google.com with SMTP id
+ 00721157ae682-31f56c42ab5so104626207b3.10
+ for <qemu-devel@nongnu.org>; Mon, 01 Aug 2022 03:52:11 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc;
+ bh=DXbU4DQTx25+WxEtHhbS2Yj7rATTbj7JGsPIG9uNmsk=;
+ b=aKoj8JmpQJH31Bmj92Y53TCRqEM+nq4DNCKLyWmCnCxt1XtIBUX6t7x0oYq1GC4zgD
+ Z0JA+UMJj1Mg6mnKmL1xg0UUN6rBWlf1ZGEvdbXWnljC6drmijDtM8M1+ZWrNKutGYxW
+ FJ32tqcSzWYQikd4vZ4t0Z5sWUFoFISnVvq/UiWolzGeF8ot33D2XCG2b62Ke+PTflaq
+ qrYXtfknDRpGlYgGuJYdgrSu1uvHTXCA7+C/SyZwSb81eTqYD4GJ+W7FyUjKDDQZQ6ZW
+ 9Nscaz59gXZgaprp61NIIgrw/71LNeeKSX3viLHQnPXaEsQYoGv3RP1fnys5iGRuUX05
+ BuYA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:message-id:date:mime-version:user-agent
- :content-language:to:references:from:cc:subject:in-reply-to
- :content-transfer-encoding;
- bh=hMRGCraIgOer8Fq0tpAr3ja28zDWULG0LAVxGdRhgM8=;
- b=MbtO3s6iZsb1l1WfbWlIwkdq2Tv/tIyp+2+zeXJnR2ojDFvHUAbg444XGXvhuzbbTm
- 35DXmOmjWfQkJFxojuraBSvcQWJorejQsWx/BJl1unYdMTuen6QTBK71jyCT/7PGyrJ+
- cbdrjNDg2rnvrOAOd4Yx+aivIHO7g/ITJJhdN/nWK4WHKbFKDoDwmZwfgvDqQFbaSFT9
- a1NXSwp/qte1aTSERkvtXgDSUtFClvsP4ayXdamzk6zeI2E8mVn/Czcm4xh189zjDRHn
- kTgkbj1AmDvGsrp71j5n3cQvs0yu8gbYeD/hCztrxa1nWsY9b/Lkt9S0HVvgyGYeMwoY
- 8jyw==
-X-Gm-Message-State: ACgBeo1jga6vj3xkThC1IZP/raRf2ujagdAiu64PHOEsyweyT2xMxlpC
- 1BHAdlcCeb2q6ykGZH81CkRd3pYWHw0R0eB89unsTlJG/dZnsB0nCfUIa5yyyZqKzcbx1obU1+p
- HzwWFlJsVThgA
-X-Received: by 2002:a05:6000:4084:b0:21e:c694:80db with SMTP id
- da4-20020a056000408400b0021ec69480dbmr9223194wrb.681.1659350482322; 
- Mon, 01 Aug 2022 03:41:22 -0700 (PDT)
-X-Received: by 2002:a05:6000:4084:b0:21e:c694:80db with SMTP id
- da4-20020a056000408400b0021ec69480dbmr9223173wrb.681.1659350482076; 
- Mon, 01 Aug 2022 03:41:22 -0700 (PDT)
-Received: from [192.168.8.104] (tmo-096-80.customers.d1-online.com.
- [80.187.96.80]) by smtp.gmail.com with ESMTPSA id
- e13-20020a5d65cd000000b0020fcaba73bcsm11518373wrw.104.2022.08.01.03.41.20
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 01 Aug 2022 03:41:21 -0700 (PDT)
-Message-ID: <c4ad47a1-a946-0f4e-69a2-65a6cc679a6e@redhat.com>
-Date: Mon, 1 Aug 2022 12:41:19 +0200
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc;
+ bh=DXbU4DQTx25+WxEtHhbS2Yj7rATTbj7JGsPIG9uNmsk=;
+ b=AKwBLj1c0YeFFmkVqiheHtlQB/S6WPmLU+WJITSWt5FosEBAaEVa+7bWgiS5ff8nOE
+ 7GA4sCMVKpHMnPbnWCQ18mJ1xTIl2iEzQNwkKiATFW5LDJQAtyWFmRleeFHEoiPwhBYX
+ bGydOPho6vtMeixA9+Ez90Xw+nGQWJSrAuMYVgOaaWoCu+81e56+nnIlVISSDp3pgC8z
+ PeO13h2XL1SgZwYuVzSm4+SzisMUUUYuScAnx41GWHt7N7nnQbsPprWRwJK6AQ7Rlg65
+ Q6oDBF2dbgv3vpVnuclSJ4YbLqc1AbwM7MwK5frBkYxZEeujTyclNm6Xx+ssAJitBA8q
+ o9eA==
+X-Gm-Message-State: ACgBeo0GOOm7959fez1KyYGLtC2Ul2vkJNvlzMcp/BOfOvfOxGq6Tta0
+ +pSO5oTwiwv3V7xfcqM5DMTCeEgP6AwwZapH8yefVg==
+X-Received: by 2002:a81:a247:0:b0:31d:72da:e931 with SMTP id
+ z7-20020a81a247000000b0031d72dae931mr12630137ywg.469.1659351130499; Mon, 01
+ Aug 2022 03:52:10 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.11.0
-To: "Dr. David Alan Gilbert (git)" <dgilbert@redhat.com>,
- qemu-devel@nongnu.org, leobras@redhat.com, quintela@redhat.com,
- berrange@redhat.com, peterx@redhat.com, iii@linux.ibm.com,
- huangy81@chinatelecom.cn
-References: <20220720111926.107055-1-dgilbert@redhat.com>
- <20220720111926.107055-9-dgilbert@redhat.com>
-From: Thomas Huth <thuth@redhat.com>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Richard Henderson <richard.henderson@linaro.org>,
- qemu-arm <qemu-arm@nongnu.org>
-Subject: migration test fails for aarch64 target (was: Re: [PULL 08/30] tests:
- Add dirty page rate limit test)
-In-Reply-To: <20220720111926.107055-9-dgilbert@redhat.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=thuth@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -6
-X-Spam_score: -0.7
-X-Spam_bar: /
-X-Spam_report: (-0.7 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.082,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_SORBS_WEB=1.5, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
+References: <20220726045828.53697-1-richard.henderson@linaro.org>
+In-Reply-To: <20220726045828.53697-1-richard.henderson@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 1 Aug 2022 11:51:59 +0100
+Message-ID: <CAFEAcA_JU2AOF1wkqOM9G0p58dUT+ErDeEvxsVseLiVzyy2C_g@mail.gmail.com>
+Subject: Re: [PATCH v2 0/3] target/arm: Fix kvm probe of ID_AA64ZFR0
+To: Richard Henderson <richard.henderson@linaro.org>
+Cc: qemu-devel@nongnu.org, yuzenghui@huawei.com, qemu-arm@nongnu.org
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1134;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x1134.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: uYdj2AiS2iur
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: QgZg9FgB1WhN
 
-On 20/07/2022 13.19, Dr. David Alan Gilbert (git) wrote:
-> From: Hyman Huang(黄勇) <huangy81@chinatelecom.cn>
-> 
-> Add dirty page rate limit test if kernel support dirty ring,
-> 
-> The following qmp commands are covered by this test case:
-> "calc-dirty-rate", "query-dirty-rate", "set-vcpu-dirty-limit",
-> "cancel-vcpu-dirty-limit" and "query-vcpu-dirty-limit".
-> 
-> Signed-off-by: Hyman Huang(黄勇) <huangy81@chinatelecom.cn>
-> Acked-by: Peter Xu <peterx@redhat.com>
-> Message-Id: <eed5b847a6ef0a9c02a36383dbdd7db367dd1e7e.1656177590.git.huangy81@chinatelecom.cn>
-> Signed-off-by: Dr. David Alan Gilbert <dgilbert@redhat.com>
-> ---
->   tests/qtest/migration-helpers.c |  22 +++
->   tests/qtest/migration-helpers.h |   2 +
->   tests/qtest/migration-test.c    | 256 ++++++++++++++++++++++++++++++++
->   3 files changed, 280 insertions(+)
-[...]
-> +static QTestState *dirtylimit_start_vm(void)
-> +{
-> +    QTestState *vm = NULL;
-> +    g_autofree gchar *cmd = NULL;
-> +    const char *arch = qtest_get_arch();
-> +    g_autofree char *bootpath = NULL;
-> +
-> +    assert((strcmp(arch, "x86_64") == 0));
+On Tue, 26 Jul 2022 at 06:03, Richard Henderson
+<richard.henderson@linaro.org> wrote:
+>
+> Our probing of this SVE register was done within an incorrect
+> vCPU environment, so that the id register was always RAZ.
+>
+> Changes for v2:
+>   * Include the commit text I forgot.
+>   * Fix svm thinko.
+>
+>
+> r~
 
-  Hi!
 
-This assert triggers on my x86 laptop when I run "make check" there. More 
-precisely, it triggers when qemu-system-aarch64 is getting tested:
 
-$ QTEST_QEMU_BINARY=./qemu-system-aarch64 tests/qtest/migration-test
-/aarch64/migration/bad_dest: OK
-/aarch64/migration/fd_proto: OK
-/aarch64/migration/validate_uuid: OK
-/aarch64/migration/validate_uuid_error: OK
-/aarch64/migration/validate_uuid_src_not_set: OK
-/aarch64/migration/validate_uuid_dst_not_set: OK
-/aarch64/migration/auto_converge: OK
-/aarch64/migration/dirty_ring: OK
-/aarch64/migration/vcpu_dirty_limit: migration-test: 
-../../devel/qemu/tests/qtest/migration-test.c:2304: dirtylimit_start_vm: 
-Assertion `(strcmp(arch, "x86_64") == 0)' failed.
-Aborted (core dumped)
+Applied to target-arm.next, thanks.
 
->   static bool kvm_dirty_ring_supported(void)
->   {
->   #if defined(__linux__) && defined(HOST_X86_64)
-> @@ -2204,6 +2458,8 @@ int main(int argc, char **argv)
->       if (kvm_dirty_ring_supported()) {
->           qtest_add_func("/migration/dirty_ring",
->                          test_precopy_unix_dirty_ring);
-> +        qtest_add_func("/migration/vcpu_dirty_limit",
-> +                       test_vcpu_dirty_limit);
->       }
-
-kvm_dirty_ring_supported() returns "true" if the KVM of the *host* is x86 
-and has the dirty ring support, but it does *not* check the target 
-architecture that is currently tested, so you also get here "true" for 
-qemu-system-aarch64 being tested on a x86 host... Thus I guess 
-kvm_dirty_ring_supported() needs also a check for the right target architecture?
-
-  Thomas
-
+-- PMM

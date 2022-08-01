@@ -1,119 +1,204 @@
-Received: by 2002:a05:6512:1086:0:0:0:0 with SMTP id j6csp2625835lfg;
-        Mon, 1 Aug 2022 09:44:28 -0700 (PDT)
-X-Google-Smtp-Source: AGRyM1sBpd6UUtQg0xaMUj1rxpDJRM25+Q7qIfO4GQQ6hwhHo1OpcIkqzqB6amIqbbV6niYr372S
-X-Received: by 2002:a05:620a:d96:b0:6a7:9300:2ce1 with SMTP id q22-20020a05620a0d9600b006a793002ce1mr12369155qkl.661.1659372267977;
-        Mon, 01 Aug 2022 09:44:27 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1659372267; cv=none;
+Received: by 2002:a05:6512:1086:0:0:0:0 with SMTP id j6csp2798382lfg;
+        Mon, 1 Aug 2022 15:33:08 -0700 (PDT)
+X-Google-Smtp-Source: AGRyM1sRJootipK1ElyLPl/fOwYx5bwl9o8UI+6leattVW0HgPiPBNwr7h+fC5RbcaJAji4qyyvD
+X-Received: by 2002:a37:2749:0:b0:6b5:cb5e:1213 with SMTP id n70-20020a372749000000b006b5cb5e1213mr13233325qkn.743.1659393188606;
+        Mon, 01 Aug 2022 15:33:08 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1659393188; cv=none;
         d=google.com; s=arc-20160816;
-        b=Bzq8Xi3VRrDKdGJvTo1cp2FgEXmOgQIS3AY16uXxv0WTu7LlI396WrhuoOGI/sbtPK
-         22/dTEacbPZ0DzIb9UysnrezHiyIm0pHCOjKn3+Pa4+vC8mx0E8G1FVTU1rk3oAtnFOb
-         FyROmCXdxG2Sir8g4b/mgDjhvg2czSapRjefUSlbW3AvdlrvYq7R908taSktvecFy+jw
-         TiOZnhsPhTqP6vvDnGtAGjXNwQt+x8OaMHyRqXkPd55Hu7g3gNcJ92uMaQJN36O5+CSz
-         kxpj0oh9b3mbtXMFIIivfxmaY87HXvanPo2bRWNpdPI8ZTSUOJjbothLCxp9xiIAMYPF
-         Ta9g==
+        b=vco6vUthkwBl352cAC0Sm1D7HFfLxg03kvSVDKR6s+ookxESY4aGS2OoS66iiQ1JJF
+         yJIh3w+/H0OcM7WAGEtWWGTV9Udmut1L5jEyQXL2ZmbA6Qu4FtrqKS6ie3MpDG1De8zT
+         sMCdxLHrEbWvNOWhx6OT3+sltRvIykwpLSa7PKK++O1uoqPTK0p7/xC+3/kkTu0WY05Z
+         8mS6q5OjVn3ihJS8XqSk7n18gaw2ENaQ2WSu/Ooj2dO+ToaN4GK5D1ULF3Dc5YZEFFsY
+         9zB6vkkCbJOuJVjFkHZHqRdsl2SFj9ZnEMbISe+XW4v9B7tJ77P1S8rPam2aE9vCmD3w
+         gRfg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:cc:to:from;
-        bh=Z0Y9YdxRlgN25SZAc2/guzYPYCo60u8PwZL8904RgRM=;
-        b=mdMUxzSiHbsAaslYd99qkSdczIkR4bUZ1+8h7GGgmS1T6QwKqpDaRVSbitaJurc4AX
-         TO19DjzwGZuoKWRWIfikQofaXOPq4nCS1nmlx2W0kzRXI7F8+ce9JOBuakKTsNF8JVpi
-         NeEJe69JkQuMeYFb0pxKXhbxhqkwT3GAby3ASJGYb0VYFXdIAdRbrD9ZZzaQVbHDvQFK
-         Ef5mGbKGOwHQywYnCVh5tP4zb3NfT9qZ2Td/fjDA1/0m7Kr7VgH7iQGp3ZN6/cGKPelz
-         Hpe28zBv2q8rEwKIrufHkWobS6hX0fjnlIrcudyLNQNZeF+SadXmSIFwwo4SifuW+qTn
-         1PSA==
+         :list-unsubscribe:list-id:precedence:in-reply-to
+         :content-transfer-encoding:content-disposition:mime-version
+         :references:message-id:subject:cc:to:from:date:feedback-id
+         :dkim-signature:dkim-signature;
+        bh=YqFbCRlmg4g6CkkaVgMDNvfhvXtt5yzZKEzS6Ev4QqQ=;
+        b=bRZa3RRG8+PqLKn3KeO2ZSY+0hoHvlmwvrTAM6HQG6fT+djImdkWWwIsgnfR0GruV4
+         hHbL7t4Os050mvg0i8Y6VTnoOoFIB+bYikeqKQMLhIEHAC0KlhUME7xdwRWtELiBoQMB
+         vb/G9XckpcUtgHJ/fs0yHVOiVQ5mxxJpz0X8O6xJPJgOXv4up1ti1g4ZlFFAaUM20HNm
+         n1S2HmegjSNJCbxZ78yalVTTonnDEokTqJVTMwQqRiw7UqgHCmznifSymc+SnvNffIim
+         cK26H1xRCYR8fYiFzuxkQSDNdnbBLDKzQarmsoAX5/kPm397Z0dResldX8U5CNik0ixl
+         xmDg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@pjd.dev header.s=fm2 header.b=nQHLEhO4;
+       dkim=fail header.i=@messagingengine.com header.s=fm3 header.b=y+WEuZ5g;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v16-20020a05620a0f1000b006b472e047b1si7703450qkl.641.2022.08.01.09.44.27
+        by mx.google.com with ESMTPS id f26-20020ac8499a000000b0031ed09d5895si6256093qtq.242.2022.08.01.15.33.08
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 01 Aug 2022 09:44:27 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 01 Aug 2022 15:33:08 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:36884 helo=lists1p.gnu.org)
+       dkim=fail header.i=@pjd.dev header.s=fm2 header.b=nQHLEhO4;
+       dkim=fail header.i=@messagingengine.com header.s=fm3 header.b=y+WEuZ5g;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:40034 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1oIYWp-0006Gt-6A
-	for alex.bennee@linaro.org; Mon, 01 Aug 2022 12:44:27 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:47358)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1oIdyF-00051b-4M
+	for alex.bennee@linaro.org; Mon, 01 Aug 2022 18:33:08 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41980)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <SRS0=LBbo=YF=kaod.org=clg@ozlabs.org>)
- id 1oIYJF-00053J-Cj; Mon, 01 Aug 2022 12:30:25 -0400
-Received: from gandalf.ozlabs.org ([150.107.74.76]:48247)
+ (Exim 4.90_1) (envelope-from <peter@pjd.dev>)
+ id 1oIdxE-0004Ss-O2; Mon, 01 Aug 2022 18:32:04 -0400
+Received: from new1-smtp.messagingengine.com ([66.111.4.221]:59837)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <SRS0=LBbo=YF=kaod.org=clg@ozlabs.org>)
- id 1oIYJ1-0006t2-Tn; Mon, 01 Aug 2022 12:30:25 -0400
-Received: from gandalf.ozlabs.org (gandalf.ozlabs.org [150.107.74.76])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4LxNrX6gvLz4x1d;
- Tue,  2 Aug 2022 02:30:04 +1000 (AEST)
-Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
- (No client certificate requested)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4LxNrV1C8Lz4x1N;
- Tue,  2 Aug 2022 02:30:01 +1000 (AEST)
-From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Richard Henderson <richard.henderson@linaro.org>,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
-Subject: [PULL 0/2] aspeed queue
-Date: Mon,  1 Aug 2022 18:29:46 +0200
-Message-Id: <20220801162948.1920497-1-clg@kaod.org>
-X-Mailer: git-send-email 2.37.1
+ (Exim 4.90_1) (envelope-from <peter@pjd.dev>)
+ id 1oIdwx-0006wq-W4; Mon, 01 Aug 2022 18:32:03 -0400
+Received: from compute5.internal (compute5.nyi.internal [10.202.2.45])
+ by mailnew.nyi.internal (Postfix) with ESMTP id 8C081580433;
+ Mon,  1 Aug 2022 18:31:44 -0400 (EDT)
+Received: from mailfrontend2 ([10.202.2.163])
+ by compute5.internal (MEProxy); Mon, 01 Aug 2022 18:31:44 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=pjd.dev; h=cc:cc
+ :content-transfer-encoding:content-type:date:date:from:from
+ :in-reply-to:in-reply-to:message-id:mime-version:references
+ :reply-to:sender:subject:subject:to:to; s=fm2; t=1659393104; x=
+ 1659396704; bh=YqFbCRlmg4g6CkkaVgMDNvfhvXtt5yzZKEzS6Ev4QqQ=; b=n
+ QHLEhO4cX7ERV+XbmYdxcqYJTi3RhwPVio0kUckT6KWnHGdJLZ+p9c0SINztbrhL
+ 3TnIhsOK3PeTRm47COGEsuj9hUmjR7gKpI4PIns4CwNpnjJKRvmub/MxO+ghGHXy
+ Za3ANTkDW4aPhmNkZsaAcgZJuIZDaJEppbqFWdTvRrwrFssvDzv8V6GPo/2mXpb2
+ 7VNpupDyEyJQ/RzVvJpqBCJjBflEmKajpUpbvuMNBn/glASkSmxiZ+YhZWtd8EQ8
+ 72GCchTlS/QljmLex9gcy4aMn/UuuVhQhg/XZtwpyCc7dKdNjitHnydILxnBx+o/
+ wSRX8cxAmsY55t4rHrMYA==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+ messagingengine.com; h=cc:cc:content-transfer-encoding
+ :content-type:date:date:feedback-id:feedback-id:from:from
+ :in-reply-to:in-reply-to:message-id:mime-version:references
+ :reply-to:sender:subject:subject:to:to:x-me-proxy:x-me-proxy
+ :x-me-sender:x-me-sender:x-sasl-enc; s=fm3; t=1659393104; x=
+ 1659396704; bh=YqFbCRlmg4g6CkkaVgMDNvfhvXtt5yzZKEzS6Ev4QqQ=; b=y
+ +WEuZ5g/YWHmg2/OhO5a1sy2mYUZNVeNCkzp8pHFueZmbyHgcNZiRQ31nFOgMc+K
+ H81IChkxv8hvWmAYt0bSH84nbS2qQAanwXfgnW6lgOcocZMWMgMFDyVRlSznuWJx
+ b8bf+5mlZGcvtn/F8gaLTzJuxXx89HcHc404FpAHsGBfCMM3byqStXhkkkJ8CZSp
+ /1yhnls+cfgo2Ju42pPBQtoKOv4ZixArJ1covJMQG9hcW1sp+Pn1/cBXFnC9+285
+ lDOtPUuZArVgqgUu6+GqHsErUJQ2iIgwTD37otLuEiIOEIwOgKEBpdooqMxgP4cZ
+ phh0bh2CWvv3BE4NcFlJw==
+X-ME-Sender: <xms:UFToYiY8xzZ0wbEgXx16BaTbkEMmV35VH32xXc7tdVe43_rgCBn4mw>
+ <xme:UFToYlbc3AF87WVoysYofqBAX4YbU55VjkObPa72dBNGFvMid-gagEQ1v3E5XvEk3
+ 5UWE9-S3UFB1YoTIAc>
+X-ME-Received: <xmr:UFToYs9sp-OqiXzKkqpcwiVhtFWMu9d7B5tAH3qkp6_Tebm5VRVVbONO2yf6RFRYgWy61Dgp2rRS5OlxMQNKeQ>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvfedrvddvgedguddtucetufdoteggodetrfdotf
+ fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
+ uceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmne
+ cujfgurhepfffhvfevuffkfhggtggugfgjsehtkeertddttddunecuhfhrohhmpefrvght
+ vghrucffvghlvghvohhrhigrshcuoehpvghtvghrsehpjhgurdguvghvqeenucggtffrrg
+ htthgvrhhnpefhgeffvedufeevteegkeetieejhffhudeujedvgedvheffheejveethffh
+ ffefueenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhgrihhlfhhrohhmpe
+ hpvghtvghrsehpjhgurdguvghv
+X-ME-Proxy: <xmx:UFToYkq6wm8I4S_DpCDJrKiYD1xssLQhKg8XNUF8vaKfwi1uKfnJ2w>
+ <xmx:UFToYtqRw63z04OEdeAZxARZvufL2PxdFPvpMRUWdv9cJtvOaYg9NQ>
+ <xmx:UFToYiSSLbPDz8iBIKcz6HhgIc8L4Q01JEw4YevZt3rpLESmMbZ9zA>
+ <xmx:UFToYlZkTm00D-UfRRWOD_7lWgJsxBWoQfDQOaIc1GjRirBovCQ5VA>
+Feedback-ID: i9e814621:Fastmail
+Received: by mail.messagingengine.com (Postfix) with ESMTPA; Mon,
+ 1 Aug 2022 18:31:41 -0400 (EDT)
+Date: Mon, 1 Aug 2022 15:31:39 -0700
+From: Peter Delevoryas <peter@pjd.dev>
+To: Andrew Jeffery <andrew@aj.id.au>
+Cc: =?iso-8859-1?Q?C=E9dric?= Le Goater <clg@kaod.org>,
+ Iris Chen <irischenlj@fb.com>, Peter Delevoryas <pdel@fb.com>,
+ Cameron Esfahani via <qemu-devel@nongnu.org>,
+ Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= via <qemu-arm@nongnu.org>,
+ Patrick Williams <patrick@stwcx.xyz>,
+ Alistair Francis <alistair@alistair23.me>,
+ Kevin Wolf <kwolf@redhat.com>, hreitz@redhat.com,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Joel Stanley <joel@jms.id.au>, Thomas Huth <thuth@redhat.com>,
+ Laurent Vivier <lvivier@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, qemu-block@nongnu.org,
+ dz4list@gmail.com
+Subject: Re: [RFC 0/3] Add Generic SPI GPIO model
+Message-ID: <YuhUSxjqj8y5VbYQ@pdel-mbp.dhcp.thefacebook.com>
+References: <20220728232322.2921703-1-irischenlj@fb.com>
+ <435b3e89-f9fd-c257-b03d-a12d4b59ac6b@kaod.org>
+ <YuQZP4xkkU2R9VmO@pdel-mbp.dhcp.thefacebook.com>
+ <6d4a3912-a386-a784-8db4-7743bb1f1063@kaod.org>
+ <55427f60-0e51-4219-a753-d30d617fc35d@www.fastmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=150.107.74.76;
- envelope-from=SRS0=LBbo=YF=kaod.org=clg@ozlabs.org; helo=gandalf.ozlabs.org
-X-Spam_score_int: -16
-X-Spam_score: -1.7
-X-Spam_bar: -
-X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9,
- HEADER_FROM_DIFFERENT_DOMAINS=0.249, SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
+In-Reply-To: <55427f60-0e51-4219-a753-d30d617fc35d@www.fastmail.com>
+Received-SPF: pass client-ip=66.111.4.221; envelope-from=peter@pjd.dev;
+ helo=new1-smtp.messagingengine.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01,
+ T_SPF_HELO_TEMPERROR=0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: VB2FGhsXYboF
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: K3OIuYUjz4Fz
 
-The following changes since commit 3916603e0c1d909e14e09d5ebcbdaa9c9e21adf3:
+On Mon, Aug 01, 2022 at 11:49:09AM +0930, Andrew Jeffery wrote:
+> 
+> 
+> On Sun, 31 Jul 2022, at 06:48, Cédric Le Goater wrote:
+> > On 7/29/22 19:30, Peter Delevoryas wrote:
+> >> Certainly we'd like to use IRQ's instead, but she ran into correctness
+> >> problems. Maybe we can investigate that further and fix it.
+> 
+> Yes, let's not work around problems that we have the ability to fix.
 
-  Merge tag 'pull-la-20220729' of https://gitlab.com/rth7680/qemu into staging (2022-07-29 17:39:17 -0700)
++1
 
-are available in the Git repository at:
+> 
+> >
+> > So much is happening in that mode.
+> 
+> Yes, though while there's no-doubt accidental complexity in terms of 
+> its implementation, the underlying hardware is also quite haphazard and 
+> we need an approach that scales to the large number of GPIOs it 
+> provides. So I'd argue there's a bunch of essential complexity involved 
+> as well.
 
-  https://github.com/legoater/qemu/ tags/pull-aspeed-20220801
++1
 
-for you to fetch changes up to 398c01da9c8c8af5db0b2b4b4888c2bd27218230:
+> 
+> Do we start with a fresh implementation that allows us to get the 
+> expected behaviour and then build that out to replace the current 
+> implementation?
+> 
+> Or, can we add more tests for the existing model to pin down where the 
+> bugs are?
 
-  aspeed/fby35: Fix owner of the BMC RAM memory region (2022-08-01 15:24:15 +0200)
+Mmmm good question, I think we might end up doing both. Tests would make
+it much easier to develop either way though.
 
-----------------------------------------------------------------
-aspeed queue:
+> 
+> > We need more trace events in the Aspeed
+> > GPIO model at least an extra in aspeed_gpio_update()
+> 
+> We can always fall back to this but my hope is we can get better test 
+> coverage to iron out the bugs. Maybe that gets us a more refined and 
+> maintainable model implementation along the way.
 
-* Fix ownership of RAM regions on the fby35 machine
++1
 
-----------------------------------------------------------------
-CÃ©dric Le Goater (2):
-      aspeed: Remove unused fields from AspeedMachineState
-      aspeed/fby35: Fix owner of the BMC RAM memory region
-
- hw/arm/aspeed.c |  2 --
- hw/arm/fby35.c  | 14 +++++++++-----
- 2 files changed, 9 insertions(+), 7 deletions(-)
+> 
+> Cheers,
+> 
+> Andrew
+> 

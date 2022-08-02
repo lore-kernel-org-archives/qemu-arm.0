@@ -1,93 +1,96 @@
-Received: by 2002:a19:2d51:0:0:0:0:0 with SMTP id t17csp1000730lft;
-        Fri, 1 Jul 2022 00:13:06 -0700 (PDT)
-X-Google-Smtp-Source: AGRyM1tV2gGJPsZaDmgaX59uPQf3YvfnhaXHFAtG5F2jR0l7OkJY9vJ5o+SXi92nMf7d7yju0TrP
-X-Received: by 2002:ad4:5907:0:b0:470:4b8d:2898 with SMTP id ez7-20020ad45907000000b004704b8d2898mr16131516qvb.91.1656659586253;
-        Fri, 01 Jul 2022 00:13:06 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1656659586; cv=none;
+Received: by 2002:a05:6512:1086:0:0:0:0 with SMTP id j6csp3211436lfg;
+        Tue, 2 Aug 2022 07:26:02 -0700 (PDT)
+X-Google-Smtp-Source: AGRyM1tpWiujtKPR/UAPehRnbcGPaDStQHCRGidQYp6MCrVo8egANEXsUDQDUk33bK7xvjHm2Vd0
+X-Received: by 2002:a05:620a:78c:b0:6b4:7012:97bd with SMTP id 12-20020a05620a078c00b006b4701297bdmr15333038qka.135.1659450361845;
+        Tue, 02 Aug 2022 07:26:01 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1659450361; cv=none;
         d=google.com; s=arc-20160816;
-        b=A0usrICgEKKBNqeHwPA5cqSg/ZfVwcUNKDvE0iyhM9p1eg5z06oVwdWiH/zxJxRwVk
-         PIrwUcmBBd2URc/ro92JZNp+nz6qJ8F7YaCIv/63qD38NOMTbb+Qyc5kL2I5cGK9Rt6C
-         zpNXUkPsJuH0dxn5vT3+m4g+MEX0JBQYh7aWjbgLd6woKt1EI9mUjOde78RON/uIRM4H
-         L+ubCy7baWTg+qRCls6wuv9pCuuSc4lB5OxKQWZcvdQ+ULNJsMjMXuH5ttkslQ2Hkjci
-         LuZxNxIhLT/RlXJY+6RWJafVkLT137UkoA+f5Ssp1WaLccqYdPHoybWzVQoQ10L/ch8p
-         X8KA==
+        b=PTKwdy3oPfA5uf5FUIsuKNra7hxl+KjXFvn7ZeJSEG/ou7iMUfhIzNPj9dSmfdiyrv
+         EJ8wCKXHq3PDFujxPSOWk1c1MdqGFLpfa1cF1tF3CZefkmCOqeFQuZlCVXD7TlhVoTG6
+         p9qhGZ0wfkHB2ZZdgMT8SCwQ5A+8a3LGFTlbDA0b6ZMKtdfIZyv6G9y8Ntx7ruMfPBh4
+         s2xQRFlnZGRCJoqf/fuL6hC1UsdY7dqY83cKDSs3ruskXOHlIQqRl4QppnbCIs5CRrh8
+         hl4Yrvv3hGSYSwrn2B4hF2vV1I94QqCZ4Vw++NhBZXZ6fbUMpSqzPZ8p+HbHKXr74yEx
+         cfoQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :in-reply-to:from:references:cc:to:content-language:subject
          :user-agent:mime-version:date:message-id;
-        bh=miLwAQlEDwpBcRrCU0XLktYtlwanhTvciUmYvJfK2ME=;
-        b=AG8wPWyOCx47TJCtVjMo2+SzMZzOrOmcSvT6hqV3Qouz+8nJ0z14k1NmS+yTBxxToH
-         hICS+cHhRTWTptDd+vfxPKq51RGGG8QB+xzmo+/fu2oeBc+v9F2HcuGXjT62+MeXcvI0
-         HA+3o6r8Idmj8t8enHKJXitzY+kkfOfUMhPK9xF/n3WwNABwE+/chpEteweWSVKtRkg+
-         pdm5OtlOLx7EcQzHxfOiTd6Ok52hn0KOVkXDnQBLFQq0rj19u8hVxNXyLNw94KjC2wRr
-         eQXRRzt2hfzQBqjGFz4apV0nVsCBaQyBWDG1P12cSGp1PrQezBHgCIkym/nSMJo46wm8
-         6T4A==
+        bh=bsfkD67kO8hjNJkv3los/aBOtrdUfl5ySX6JPLnssO0=;
+        b=v6leNuOjSq7FyvknX2AWaxjSVfMEiuAgwx+b5TAFcgQNTa+mqZy47PIx1Cg8Dk7YO3
+         vj5KHsbhVtBgrSuhO204GJmmpMogGt5w1GDwZdC9AeN+ydoVk7b7RLlmNeqFEtdmk8hF
+         fy5w27yTilFxkOHFwY3IXMt5f3G9ZTQiLYPVx735QNq+Rho9kuU1b3AqR5jkS93VTSuu
+         pH7y5IagNABLFCizX+wD8/wrpZetxKLofwYD5IbqoCVxJrlrWRnDJLLgndt/xk2+r/Pb
+         31UQGf92dLOVnDH85FZ0q9ZamGcmUWWisu1BQzeP3ZM5kj2KOXlEBpovMViA7HTXa12P
+         snEw==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id jz8-20020a0562140e6800b004704f751352si12412016qvb.570.2022.07.01.00.13.05
+        by mx.google.com with ESMTPS id j3-20020a05621419c300b004747a8bf644si8107369qvc.130.2022.08.02.07.26.01
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 01 Jul 2022 00:13:06 -0700 (PDT)
+        Tue, 02 Aug 2022 07:26:01 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:57068 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:46336 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1o7Apt-0000n3-E9
-	for alex.bennee@linaro.org; Fri, 01 Jul 2022 03:13:05 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:51562)
+	id 1oIsqP-0005iw-Ad
+	for alex.bennee@linaro.org; Tue, 02 Aug 2022 10:26:01 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:48972)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1o7Ap5-0000VG-Sp
- for qemu-arm@nongnu.org; Fri, 01 Jul 2022 03:12:15 -0400
-Received: from 6.mo552.mail-out.ovh.net ([188.165.49.222]:51673)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1oIspx-0005gs-Il
+ for qemu-arm@nongnu.org; Tue, 02 Aug 2022 10:25:33 -0400
+Received: from smtpout2.mo529.mail-out.ovh.net ([79.137.123.220]:58527)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1o7Aop-0001XR-2r
- for qemu-arm@nongnu.org; Fri, 01 Jul 2022 03:12:15 -0400
-Received: from mxplan5.mail.ovh.net (unknown [10.108.4.25])
- by mo552.mail-out.ovh.net (Postfix) with ESMTPS id A7E9D24E65;
- Fri,  1 Jul 2022 07:11:53 +0000 (UTC)
-Received: from kaod.org (37.59.142.96) by DAG4EX1.mxp5.local (172.16.2.31)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1oIspt-0001GJ-99
+ for qemu-arm@nongnu.org; Tue, 02 Aug 2022 10:25:33 -0400
+Received: from mxplan5.mail.ovh.net (unknown [10.108.16.163])
+ by mo529.mail-out.ovh.net (Postfix) with ESMTPS id 1691611C3A612;
+ Tue,  2 Aug 2022 16:25:15 +0200 (CEST)
+Received: from kaod.org (37.59.142.98) by DAG4EX2.mxp5.local (172.16.2.32)
  with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.9; Fri, 1 Jul 2022
- 09:11:52 +0200
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.9; Tue, 2 Aug 2022
+ 16:25:14 +0200
 Authentication-Results: garm.ovh; auth=pass
- (GARM-96R0017bf0d554-44ee-4314-b7d6-a5b04acb4fad,
- D594F7ECFE8920C5FAE37748FDFD57525B476B5E) smtp.auth=clg@kaod.org
+ (GARM-98R002a67fcf03-59ba-4f24-bc5c-1d845736a101,
+ 2E83F348A6A75C54EB16E73D725C8CB72A31113C) smtp.auth=clg@kaod.org
 X-OVh-ClientIp: 82.64.250.170
-Message-ID: <23008cae-c14f-281d-39af-17d4cef6d208@kaod.org>
-Date: Fri, 1 Jul 2022 09:11:13 +0200
+Message-ID: <2f7f05aa-6aa2-970e-b4ab-bfbed80b381b@kaod.org>
+Date: Tue, 2 Aug 2022 16:25:01 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.9.0
-Subject: Re: [PATCH 1/2] hw: m25p80: Add Block Protect and Top Bottom bits for
- write protect
+ Thunderbird/91.11.0
+Subject: Re: [RFC 0/3] Add Generic SPI GPIO model
 Content-Language: en-US
-To: Iris Chen <irischenlj@fb.com>
-CC: <pdel@fb.com>, <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>,
- <patrick@stwcx.xyz>, <alistair@alistair23.me>, <kwolf@redhat.com>,
- <hreitz@redhat.com>, <peter.maydell@linaro.org>, <andrew@aj.id.au>,
- <joel@jms.id.au>, <thuth@redhat.com>, <lvivier@redhat.com>,
- <pbonzini@redhat.com>, <qemu-block@nongnu.org>, <dz4list@gmail.com>
-References: <20220627185234.1911337-1-irischenlj@fb.com>
- <20220627185234.1911337-2-irischenlj@fb.com>
+To: Peter Delevoryas <peter@pjd.dev>
+CC: Iris Chen <irischenlj@fb.com>, <pdel@fb.com>, <qemu-devel@nongnu.org>,
+ <qemu-arm@nongnu.org>, <patrick@stwcx.xyz>, <alistair@alistair23.me>,
+ <kwolf@redhat.com>, <hreitz@redhat.com>, <peter.maydell@linaro.org>,
+ <andrew@aj.id.au>, <joel@jms.id.au>, <thuth@redhat.com>,
+ <lvivier@redhat.com>, <pbonzini@redhat.com>, <qemu-block@nongnu.org>,
+ <dz4list@gmail.com>
+References: <20220728232322.2921703-1-irischenlj@fb.com>
+ <435b3e89-f9fd-c257-b03d-a12d4b59ac6b@kaod.org>
+ <YuQZP4xkkU2R9VmO@pdel-mbp.dhcp.thefacebook.com>
+ <6d4a3912-a386-a784-8db4-7743bb1f1063@kaod.org>
+ <YuWrbJglNYdGOmUh@pdel-mbp.dhcp.thefacebook.com>
 From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
-In-Reply-To: <20220627185234.1911337-2-irischenlj@fb.com>
+In-Reply-To: <YuWrbJglNYdGOmUh@pdel-mbp.dhcp.thefacebook.com>
 Content-Type: text/plain; charset="UTF-8"; format=flowed
 Content-Transfer-Encoding: 8bit
-X-Originating-IP: [37.59.142.96]
-X-ClientProxiedBy: DAG9EX1.mxp5.local (172.16.2.81) To DAG4EX1.mxp5.local
- (172.16.2.31)
-X-Ovh-Tracer-GUID: 35a00944-817c-415c-94f4-45aa1cff30bb
-X-Ovh-Tracer-Id: 11401143933627632516
+X-Originating-IP: [37.59.142.98]
+X-ClientProxiedBy: DAG2EX2.mxp5.local (172.16.2.12) To DAG4EX2.mxp5.local
+ (172.16.2.32)
+X-Ovh-Tracer-GUID: ba2d6968-dc0d-49a0-b3d5-50dcd87c9e45
+X-Ovh-Tracer-Id: 3732076719603026759
 X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: 0
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvfedrudehvddguddvtdcutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemucehtddtnecunecujfgurhepkfffgggfuffvvehfhfgjtgfgihesthekredttdefjeenucfhrhhomhepveorughrihgtpgfnvggpifhorghtvghruceotghlgheskhgrohgurdhorhhgqeenucggtffrrghtthgvrhhnpeekteejtdelkeejvdevffduhfetteelieefgeefffeugffhfeekheffueefledujeenucfkpheptddrtddrtddrtddpfeejrdehledrudegvddrleeinecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmohguvgepshhmthhpohhuthdphhgvlhhopehmgihplhgrnhehrdhmrghilhdrohhvhhdrnhgvthdpihhnvghtpedtrddtrddtrddtpdhmrghilhhfrhhomheptghlgheskhgrohgurdhorhhgpdhnsggprhgtphhtthhopedupdhrtghpthhtohepugiigehlihhsthesghhmrghilhdrtghomhdpoffvtefjohhsthepmhhoheehvd
-Received-SPF: pass client-ip=188.165.49.222; envelope-from=clg@kaod.org;
- helo=6.mo552.mail-out.ovh.net
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvfedrvddvhedgjeeiucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhepkfffgggfuffvvehfhfgjtgfgihesthekredttdefjeenucfhrhhomhepveorughrihgtpgfnvggpifhorghtvghruceotghlgheskhgrohgurdhorhhgqeenucggtffrrghtthgvrhhnpeekteejtdelkeejvdevffduhfetteelieefgeefffeugffhfeekheffueefledujeenucfkpheptddrtddrtddrtddpfeejrdehledrudegvddrleeknecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmohguvgepshhmthhpohhuthdphhgvlhhopehmgihplhgrnhehrdhmrghilhdrohhvhhdrnhgvthdpihhnvghtpedtrddtrddtrddtpdhmrghilhhfrhhomheptghlgheskhgrohgurdhorhhgpdhnsggprhgtphhtthhopedupdhrtghpthhtohepugiigehlihhsthesghhmrghilhdrtghomhdpoffvtefjohhsthepmhhohedvle
+Received-SPF: pass client-ip=79.137.123.220; envelope-from=clg@kaod.org;
+ helo=smtpout2.mo529.mail-out.ovh.net
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
@@ -108,157 +111,246 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 9XfoMi3k3Y5/
+X-TUID: ETN7n8bqonxr
 
-Even for a simple addition a quick intro is always nice to have.
+On 7/31/22 00:06, Peter Delevoryas wrote:
+> On Sat, Jul 30, 2022 at 11:18:33PM +0200, Cédric Le Goater wrote:
+>> On 7/29/22 19:30, Peter Delevoryas wrote:
+>>> On Fri, Jul 29, 2022 at 03:25:55PM +0200, Cédric Le Goater wrote:
+>>>> Hello Iris,
+>>>>
+>>>> On 7/29/22 01:23, Iris Chen wrote:
+>>>>> Hey everyone,
+>>>>>
+>>>>> I have been working on a project to add support for SPI-based TPMs in QEMU.
+>>>>> Currently, most of our vboot platforms using a SPI-based TPM use the Linux
+>>>>> SPI-GPIO driver to "bit-bang" the SPI protocol. This is because the Aspeed
+>>>>> SPI controller (modeled in QEMU under hw/ssi/aspeed_smc.c) has an implementation
+>>>>> deficiency that prevents bi-directional operations.
+>>>> aspeed_smc models the Aspeed FMC/SPI controllers which have a well defined
+>>>> HW interface. Your model proposal adds support for a new SPI controller
+>>>> using bitbang GPIOs. These are really two differents models. I don't see
+>>>> how you could reuse aspeed_smc for this purpose.
+>>>>
+>>>> or you mean that Linux is using the SPI-GPIO driver because the Linux
+>>>> Aspeed SMC driver doesn't match the need ? It is true that the Linux
+>>>> driver is not generic, it deals with flash devices only. But that's
+>>>> another problem.
+>>>>
+>>>>> Thus, in order to connect
+>>>>> a TPM to this bus, my patch implements a QEMU SPI-GPIO driver (as the QEMU
+>>>>> counterpart of the Linux SPI-GPIO driver).
+>>>>>
+>>>>> As we use SPI-based TPMs on many of our BMCs for the secure-boot implementation,
+>>>>> I have already tested this implementation locally with our Yosemite-v3.5 platform
+>>>>> and Facebook-OpenBMC. This model was tested by connecting a generic SPI-NOR (m25p80
+>>>>> for example) to the Yosemite-v3.5 SPI bus containing the TPM.
+>>>>>
+>>>>> This patch is an RFC because I have several questions about design. Although the
+>>>>> model is working, I understand there are many areas where the design decision
+>>>>> is not deal (ie. abstracting hard coded GPIO values). Below are some details of the
+>>>>> patch and specific areas where I would appreciate feedback on how to make this better:
+>>>>> hw/arm/aspeed.c:
+>>>>> I am not sure where the best place is to instantiate the spi_gpio besides the
+>>>>> aspeed_machine_init.
+>>>>
+>>>> The SPI GPIO device would be a platform device and not a SoC device.
+>>>> Hence, it should be instantiated at the machine level, like the I2C
+>>>> device are, using properties to let the model know about the GPIOs
+>>>> that should be driven to implement the SPI protocol.
+>>>
+>>> Agreed, should be like an I2C device.
+>>>
+>>>>
+>>>> Ideally, the state of the GPIO controller pins and the SPI GPIO state
+>>>> should be shared. I think that's what you are trying to do that with
+>>>> attribute 'controller_state' in your patch ? But, the way it is done
+>>>> today, is too tightly coupled (names) with the Aspeed GPIO model to
+>>>> be generic.
+>>>>
+>>>> I think we need an intermediate QOM interface, or a base class, to
+>>>> implement an abstract SPI GPIO model and an Aspeed SPI GPIO model
+>>>> on top which would be linked to the Aspeed GPIO model of the SoC
+>>>> in use.
+>>>
+>>> Disagree, I feel like we can accomplish this without inheritance.
+>>>
+>>>>
+>>>> Or we could introduce some kind of generic GPIO controller that
+>>>> we would link the SPI GPIO model with (using a property). The
+>>>> Aspeed GPIO model would be of that kind and the SPI GPIO model
+>>>> would be able to drive the pins using a common interface.
+>>>> That's another way to do it.
+>>>
+>>> Agree, I would like to go in this direction if at all possible.
+>> Let's give it a try then. I would introduce a new QOM interface,
+>> something like  :
+>>
+>>      #define TYPE_GPIO_INTERFACE "gpio-interface"
+>>      #define GPIO_INTERFACE(obj)                                     \
+>>          INTERFACE_CHECK(GpioInterface, (obj), TYPE_GPIO_INTERFACE)
+>>      typedef struct GpioInterfaceClass GpioInterfaceClass;
+>>      DECLARE_CLASS_CHECKERS(GpioInterfaceClass, GPIO_INTERFACE,
+>>                             TYPE_GPIO_INTERFACE)
+>>      struct GpioInterfaceClass {
+>>          InterfaceClass parent;
+>>          int (*get)(GpioInterface *gi, ...);
+>>          int (*set)(GpioInterface *gi, ...);
+>>          ...
+>>      };
+>>
+>> and implement the interface handlers under the AspeedGPIO model.
+>> The SPI GPIO model would have a link to such an interface to drive
+>> the GPIO pins.
+>>
+>> See IPMI and XIVE for some more complete models.
+> 
+> This sounds good, but I just want to clarify first:
+> 
+> Is it necessary to introduce a GPIO interface?
 
-On 6/27/22 20:52, Iris Chen wrote:
-> Signed-off-by: Iris Chen <irischenlj@fb.com>
+Well, my feeling is that we need an abstract layer to interface the
+SPI GPIO model with any model of GPIO controller.
+  
+> Or, could we connect the IRQ's just using the existing
+> QOM/sysbus/object/IRQ infrastructure?
 
-Too bad that we are modeling 5 bits with 5 bools but given the layout
-it makes the code easier to read. LGTM.
+and we would use the QOM canonical path to identify the GPIO pins
+and QOM routines to get and set the values ? It looks feasible.
+That's how I would do it in a script but not in model.
+  
+> I'll investigate if we can connect the IRQ's without introducing a new
+> interface. We can continue with this design for now though.
 
-Reviewed-by: Cédric Le Goater <clg@kaod.org>
+OK. Let's see.
+
+>>>>> Could we add the ability to instantiate it on the command line?
+>>>>
+>>>> It might be complex to identify the QOM object to use as the GPIO
+>>>> controller from the command line since it is on the SoC and not
+>>>> a platform device. In that case, an Aspeed SPI GPIO model would
+>>>> be a better approach. we  would have to peek in the machine/soc to
+>>>> get a link on the Aspeed GPIO model in the realize routine of the
+>>>> Aspeed SPI GPIO model.
+>>>
+>>> Hrrrm perhaps, I feel like it shouldn't be that hard though.
+>>>
+>>> - Get a pointer to the QOM object that holds the GPIO's using object
+>>>     path or ID. Something similar to '-device ftgmac100,netdev=<id>'
+>>>     right?
+>>
+>> yes. something like that.
+> 
+> +1
+> 
+>>
+>>> - Get the GPIO's by name from the QOM object.
+>>
+>> yes.
+> 
+> +1
+> 
+>>
+>>> In this situation, I think we should be able to get the GPIO controller
+>>> object, and then get the IRQ's by the "sysbus-irq[126]"/etc name.
+>>>
+>>> We could refactor the aspeed_gpio.c model to name the IRQ's like the
+>>> properties,.  to use "gpioX4" instead of "sysbus-irq[*]".
+>>
+>> we could use qdev_init_gpio_out_named() instead of sysbus_init_irq()
+>> to name them.
+>>
+> 
+> +1, I actually suggested to Iris offline that this change might be
+> useful regardless.
+
+yes. This change can come as a preliminary.
+
+> 
+>>
+>>>>> m25p80_transfer8_ex in hw/block/m25p80.c:
+>>>>> Existing SPI model assumed that the output byte is fully formed, can be passed to
+>>>>> the SPI device, and the input byte can be returned, all in one operation. With
+>>>>> SPI-GPIO we don't have the input byte until all 8 bits of the output have been
+>>>>> shifted out, so we have to prime the MISO with bogus values (0xFF).
+>>>>
+>>>> That's fine I think. We do something similar for dummies.
+>>>>
+>>>>> MOSI pin in spi_gpio: the mosi pin is not included and we poll the realtime value
+>>>>> of the gpio for input bits to prevent bugs with caching the mosi value. It was discovered
+>>>>> during testing that when using the mosi pin as the input pin, the mosi value was not
+>>>>> being updated due to a kernel and aspeed_gpio model optimization.
+>>>>
+>>>> ah. We need help from Andrew ! the model should have a mosi pin .
+>>>
+>>> Not sure if this was clear, but Iris is just saying that she used object
+>>> properties to read and write the mosi, miso, and clk pins, rather than
+>>> the IRQ's.
+>>
+>> The IRQ line is not raised ?
+> 
+> Something like that, yes. She was having trouble following the IRQ level
+> purely through edge changes. Perhaps this is due to a bug in
+> aspeed_gpio.c.
+
+That could be it. The HW logic is quite complex. Adding more tests as
+suggested by Andrew would help.
+
 
 Thanks,
 
 C.
 
+  
 
-
-> ---
->   hw/block/m25p80.c | 74 +++++++++++++++++++++++++++++++++++++++--------
->   1 file changed, 62 insertions(+), 12 deletions(-)
 > 
-> diff --git a/hw/block/m25p80.c b/hw/block/m25p80.c
-> index 50b523e5b1..0156a70f5e 100644
-> --- a/hw/block/m25p80.c
-> +++ b/hw/block/m25p80.c
-> @@ -38,21 +38,19 @@
->   #include "trace.h"
->   #include "qom/object.h"
->   
-> -/* Fields for FlashPartInfo->flags */
-> -
-> -/* erase capabilities */
-> -#define ER_4K 1
-> -#define ER_32K 2
-> -/* set to allow the page program command to write 0s back to 1. Useful for
-> - * modelling EEPROM with SPI flash command set
-> - */
-> -#define EEPROM 0x100
-> -
->   /* 16 MiB max in 3 byte address mode */
->   #define MAX_3BYTES_SIZE 0x1000000
-> -
->   #define SPI_NOR_MAX_ID_LEN 6
->   
-> +/* Fields for FlashPartInfo->flags */
-> +enum spi_nor_option_flags {
-> +    ER_4K                  = BIT(0),
-> +    ER_32K                 = BIT(1),
-> +    EEPROM                 = BIT(2),
-> +    SNOR_F_HAS_SR_TB       = BIT(3),
-> +    SNOR_F_HAS_SR_BP3_BIT6 = BIT(4),
-> +};
-> +
->   typedef struct FlashPartInfo {
->       const char *part_name;
->       /*
-> @@ -253,7 +251,8 @@ static const FlashPartInfo known_devices[] = {
->       { INFO("n25q512a11",  0x20bb20,      0,  64 << 10, 1024, ER_4K) },
->       { INFO("n25q512a13",  0x20ba20,      0,  64 << 10, 1024, ER_4K) },
->       { INFO("n25q128",     0x20ba18,      0,  64 << 10, 256, 0) },
-> -    { INFO("n25q256a",    0x20ba19,      0,  64 << 10, 512, ER_4K) },
-> +    { INFO("n25q256a",    0x20ba19,      0,  64 << 10, 512,
-> +           ER_4K | SNOR_F_HAS_SR_BP3_BIT6 | SNOR_F_HAS_SR_TB) },
->       { INFO("n25q512a",    0x20ba20,      0,  64 << 10, 1024, ER_4K) },
->       { INFO("n25q512ax3",  0x20ba20,  0x1000,  64 << 10, 1024, ER_4K) },
->       { INFO("mt25ql512ab", 0x20ba20, 0x1044, 64 << 10, 1024, ER_4K | ER_32K) },
-> @@ -480,6 +479,11 @@ struct Flash {
->       bool reset_enable;
->       bool quad_enable;
->       bool aai_enable;
-> +    bool block_protect0;
-> +    bool block_protect1;
-> +    bool block_protect2;
-> +    bool block_protect3;
-> +    bool top_bottom_bit;
->       bool status_register_write_disabled;
->       uint8_t ear;
->   
-> @@ -630,6 +634,29 @@ void flash_write8(Flash *s, uint32_t addr, uint8_t data)
->           qemu_log_mask(LOG_GUEST_ERROR, "M25P80: write with write protect!\n");
->           return;
->       }
-> +    uint32_t block_protect_value = (s->block_protect3 << 3) |
-> +                                   (s->block_protect2 << 2) |
-> +                                   (s->block_protect1 << 1) |
-> +                                   (s->block_protect0 << 0);
-> +
-> +     uint32_t num_protected_sectors = 1 << (block_protect_value - 1);
-> +     uint32_t sector = addr / s->pi->sector_size;
-> +
-> +     /* top_bottom_bit == 0 means TOP */
-> +    if (!s->top_bottom_bit) {
-> +        if (block_protect_value > 0 &&
-> +            s->pi->n_sectors <= sector + num_protected_sectors) {
-> +            qemu_log_mask(LOG_GUEST_ERROR,
-> +                          "M25P80: write with write protect!\n");
-> +            return;
-> +        }
-> +    } else {
-> +        if (block_protect_value > 0 && sector < num_protected_sectors) {
-> +            qemu_log_mask(LOG_GUEST_ERROR,
-> +                          "M25P80: write with write protect!\n");
-> +            return;
-> +        }
-> +    }
->   
->       if ((prev ^ data) & data) {
->           trace_m25p80_programming_zero_to_one(s, addr, prev, data);
-> @@ -728,6 +755,15 @@ static void complete_collecting_data(Flash *s)
->           break;
->       case WRSR:
->           s->status_register_write_disabled = extract32(s->data[0], 7, 1);
-> +        s->block_protect0 = extract32(s->data[0], 2, 1);
-> +        s->block_protect1 = extract32(s->data[0], 3, 1);
-> +        s->block_protect2 = extract32(s->data[0], 4, 1);
-> +        if (s->pi->flags & SNOR_F_HAS_SR_TB) {
-> +            s->top_bottom_bit = extract32(s->data[0], 5, 1);
-> +        }
-> +        if (s->pi->flags & SNOR_F_HAS_SR_BP3_BIT6) {
-> +            s->block_protect3 = extract32(s->data[0], 6, 1);
-> +        }
->   
->           switch (get_man(s)) {
->           case MAN_SPANSION:
-> @@ -1213,6 +1249,15 @@ static void decode_new_cmd(Flash *s, uint32_t value)
->       case RDSR:
->           s->data[0] = (!!s->write_enable) << 1;
->           s->data[0] |= (!!s->status_register_write_disabled) << 7;
-> +        s->data[0] |= (!!s->block_protect0) << 2;
-> +        s->data[0] |= (!!s->block_protect1) << 3;
-> +        s->data[0] |= (!!s->block_protect2) << 4;
-> +        if (s->pi->flags & SNOR_F_HAS_SR_TB) {
-> +            s->data[0] |= (!!s->top_bottom_bit) << 5;
-> +        }
-> +        if (s->pi->flags & SNOR_F_HAS_SR_BP3_BIT6) {
-> +            s->data[0] |= (!!s->block_protect3) << 6;
-> +        }
->   
->           if (get_man(s) == MAN_MACRONIX || get_man(s) == MAN_ISSI) {
->               s->data[0] |= (!!s->quad_enable) << 6;
-> @@ -1553,6 +1598,11 @@ static void m25p80_reset(DeviceState *d)
->   
->       s->wp_level = true;
->       s->status_register_write_disabled = false;
-> +    s->block_protect0 = false;
-> +    s->block_protect1 = false;
-> +    s->block_protect2 = false;
-> +    s->block_protect3 = false;
-> +    s->top_bottom_bit = false;
->   
->       reset_memory(s);
->   }
+>>
+>>> Certainly we'd like to use IRQ's instead, but she ran into correctness
+>>> problems. Maybe we can investigate that further and fix it.
+>>
+>> So much is happening in that mode. We need more trace events in the Aspeed
+>> GPIO model at least an extra in aspeed_gpio_update()
+> 
+> +1
+> 
+>>
+>> Thanks,
+>>
+>> C.
+>>
+>>>
+>>>>
+>>>> Thanks,
+>>>>
+>>>> C.
+>>>>
+>>>>> Thus, here we are
+>>>>> reading the value directly from the gpio controller instead of waiting for the push.
+>>>>>
+>>>>> I realize there are Aspeed specifics in the spi_gpio model. To make this extensible,
+>>>>> is it preferred to make this into a base class and have our Aspeed SPI GPIO extend
+>>>>> this or we could set up params to pass in the constructor?
+>>>>>
+>>>>> Thanks for your review and any direction here would be helpful :)
+>>>>>
+>>>>> Iris Chen (3):
+>>>>>      hw: m25p80: add prereading ability in transfer8
+>>>>>      hw: spi_gpio: add spi gpio model
+>>>>>      hw: aspeed: hook up the spi gpio model
+>>>>>
+>>>>>     hw/arm/Kconfig            |   1 +
+>>>>>     hw/arm/aspeed.c           |   5 ++
+>>>>>     hw/block/m25p80.c         |  29 ++++++-
+>>>>>     hw/ssi/Kconfig            |   4 +
+>>>>>     hw/ssi/meson.build        |   1 +
+>>>>>     hw/ssi/spi_gpio.c         | 166 ++++++++++++++++++++++++++++++++++++++
+>>>>>     hw/ssi/ssi.c              |   4 -
+>>>>>     include/hw/ssi/spi_gpio.h |  38 +++++++++
+>>>>>     include/hw/ssi/ssi.h      |   5 ++
+>>>>>     9 files changed, 248 insertions(+), 5 deletions(-)
+>>>>>     create mode 100644 hw/ssi/spi_gpio.c
+>>>>>     create mode 100644 include/hw/ssi/spi_gpio.h
+>>>>>
+>>>>
+>>
 

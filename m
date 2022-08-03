@@ -1,217 +1,295 @@
-Received: by 2002:a05:6512:1086:0:0:0:0 with SMTP id j6csp3466207lfg;
-        Tue, 2 Aug 2022 16:06:00 -0700 (PDT)
-X-Google-Smtp-Source: AA6agR6Tw4EtQxlykpIogQZlkZ/NS6FMe0ZgtzCT22oMSkjTqgJqVqI/XR1tPs5gdvrXJFzD4cq6
-X-Received: by 2002:a05:6214:d82:b0:473:b41:aabf with SMTP id e2-20020a0562140d8200b004730b41aabfmr20008183qve.115.1659481560584;
-        Tue, 02 Aug 2022 16:06:00 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1659481560; cv=pass;
+Received: by 2002:a05:6512:1086:0:0:0:0 with SMTP id j6csp40679lfg;
+        Tue, 2 Aug 2022 18:05:02 -0700 (PDT)
+X-Google-Smtp-Source: AGRyM1t/zuViYQ+0FBlsEjG7QjVcVXTyKRbnZ3/7DNJHeNeVRw8/X2oSozUtMkwjpTISq8b1By+i
+X-Received: by 2002:a05:622a:251:b0:31e:f986:5566 with SMTP id c17-20020a05622a025100b0031ef9865566mr20139260qtx.225.1659488701856;
+        Tue, 02 Aug 2022 18:05:01 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1659488701; cv=none;
         d=google.com; s=arc-20160816;
-        b=Su2bfCjX/g/nEw5rODUuxteC2XGs2wELRSlOUNi39KEyIHxilcEK8X/chk2efmT9jS
-         iOSsWfyKdXC7QL/m2Z4c9Zyuriic6gm9tT+Wj2MLFssYBppTt6aZxRfn0oJ738tzXIpA
-         FOAxXaWfl4DY1ly5aXm76iZIb2er0VrhgPLyadAU5cYyTr+/HzAOLUMTOLXqP6jtYg/R
-         BmAuZUQlRotY7werKJZ+MnM6tAGWaNQZxYQAnX4RHUScHalGHrRDAjHDWK12uFd8B/yQ
-         PlPi6wM48Gk+kIw9qEul702U8ak4lrt52zTdlpjRYmed3wRTSFN/4jCTOM3WOMbd4RNa
-         3RBg==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version
-         :content-transfer-encoding:msip_labels:content-language
-         :accept-language:in-reply-to:references:message-id:date:thread-index
-         :thread-topic:subject:cc:to:from:dkim-signature;
-        bh=ZgeacT8P7E8OePXnkmTcfYh+HaBb9j7hhp20BhRiaQ0=;
-        b=G7EAGH4JjroMu0dWF3SKpLX5oKyq/I4qJGFXb1K0weWltU1ZHO2mDe668WUugh+Axo
-         hejsdcC2cT3/dUJCzsau0YjvVoJQ/djksuH8BtYWKaholhvvEKVsZGVEbDvzX231QP+z
-         GIP4O0QdzpKk9XCtefyUMVG2TWt6OL0j0pyQpY/dS3t4NgMIawN5hgY8ZEdL/a9LbKkA
-         TPpJAvuQDoMhW+MSY/kGJbFFxWbxWj/PcC1omp1hDXnBJUocPbhD9bZXe4n4kawXLUW5
-         p8wAzYXKYuX0TuofrWBxb9XeOQtxm8ltHbVj4irpBqX6FvI1X4DlprI3KTE88UndEQxK
-         xrtQ==
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@fb.com header.s=facebook header.b=Lemrwhxo;
-       arc=pass (i=1 spf=pass spfdomain=fb.com dkim=pass dkdomain=fb.com dmarc=pass fromdomain=fb.com);
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=fb.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+        b=OZ6zdYIAw9gOwMSHAjeiLSiwdjjGU2/RDo7Dn0hhBBeeTpFf+NnK87ZZlqpS10ysHO
+         WowkvEApXrDFlYgT8tZG5ryHHYexBHev6KmUSS4PmmouQP0pDpU4llySGxr9SKmvQrl1
+         miC7lhaBa8+UYBnzoEx67ymoWs/hTVt0MOeMj+7mWccxD0nVwPSYBEPgZw25Q/FXs/ay
+         OBiSKGTdEr4ovl5MY3SKuCGHsP5rX0m7wtNob1gFRQi7AaprtoLt82oVvDs4Ql6czFVL
+         agDDHQWUJz4F6E/W/pituxMYnjbQLW9OzfwNqChTYzahWeCxFRjvMqoikOTIK84KondN
+         6BGA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:cc:to:subject
+         :dkim-signature;
+        bh=siJ+LpUUJpIwKagpm691Cglg3JiFYHwfBgLziBl8+sc=;
+        b=jezQqI1VHqduGdj/mCmLpF16RyvPwJKsi6udfUeLzmY61f8NTN5cH7WJZy59gvLogT
+         Q9BC+4dIZxs9RQo2jHYWZeCUD4vSczc89NtDak1PexufbnZd1Le0W3TGNVGVw4hc6MIl
+         Tvx2Mw8r9Lv+0gqwSAw7prqwVjDERLZ9Aj2J+atmhbad5LG4PIR8ZlR5zqErXLLdK1Qk
+         WCJ/lnAoIQxc7lR6Di+f+ayVWY+R9UebaAPQJshSfazKUijg3i12gMU5CKA1mtpJNi/9
+         wyiYGU9BJ7M73E8lE0Bs4TaYzCQb70QVl/pMVcWMglqpcM0/in3cnC2/UUrxD5g+yWG1
+         u7eA==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=hwrwWKdi;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id i16-20020a05620a405000b006b66d9dd917si10365352qko.117.2022.08.02.16.06.00
+        by mx.google.com with ESMTPS id f9-20020a0562141d2900b004749170e1fdsi8566573qvd.198.2022.08.02.18.05.01
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 02 Aug 2022 16:06:00 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 02 Aug 2022 18:05:01 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@fb.com header.s=facebook header.b=Lemrwhxo;
-       arc=pass (i=1 spf=pass spfdomain=fb.com dkim=pass dkdomain=fb.com dmarc=pass fromdomain=fb.com);
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=fb.com
-Received: from localhost ([::1]:34824 helo=lists1p.gnu.org)
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=hwrwWKdi;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:51234 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1oJ0xc-0004V0-29
-	for alex.bennee@linaro.org; Tue, 02 Aug 2022 19:06:00 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:35922)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1oJ2on-0001s7-BN
+	for alex.bennee@linaro.org; Tue, 02 Aug 2022 21:05:01 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:34368)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <prvs=9213ef72d3=irischenlj@fb.com>)
- id 1oJ0wg-0004Uh-JD; Tue, 02 Aug 2022 19:05:02 -0400
-Received: from mx0a-00082601.pphosted.com ([67.231.145.42]:36956)
+ (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1oJ2kW-00080S-QB
+ for qemu-devel@nongnu.org; Tue, 02 Aug 2022 21:00:41 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:27317)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <prvs=9213ef72d3=irischenlj@fb.com>)
- id 1oJ0we-00071a-Gc; Tue, 02 Aug 2022 19:05:02 -0400
-Received: from pps.filterd (m0148461.ppops.net [127.0.0.1])
- by mx0a-00082601.pphosted.com (8.17.1.5/8.17.1.5) with ESMTP id 272I2Qp7028893;
- Tue, 2 Aug 2022 16:04:47 -0700
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=fb.com;
- h=from : to : cc : subject
- : date : message-id : references : in-reply-to : content-type :
- content-transfer-encoding : mime-version; s=facebook;
- bh=ZgeacT8P7E8OePXnkmTcfYh+HaBb9j7hhp20BhRiaQ0=;
- b=Lemrwhxo+Mk3yqP8+dk11MT6t1b3HK3wHTxVu0wVPWMh+6zy6BwlAu8hXDB3JPpTX46R
- QhFrRqDwt1S6yYLOx0yLRjJ6UD1D4WxHAgipp60SzqcZytRj8+v+OoNznRQ9uTbOYqgH
- DpMAWD+J9QIqHCpaNiW0C/XEckWA/TZ3aDg= 
-Received: from nam12-dm6-obe.outbound.protection.outlook.com
- (mail-dm6nam12lp2176.outbound.protection.outlook.com [104.47.59.176])
- by mx0a-00082601.pphosted.com (PPS) with ESMTPS id 3hpy32e1xg-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Tue, 02 Aug 2022 16:04:46 -0700
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=VqIWzNtB85Kbe0y7guVCuMNFeetHeOsxnoYK2ooLKAiyO3PczzRoZKE9Fu6bw1orxK/wiKSDlkdSMkw0ZRktI0Js/Z314byXQzVVFY0UydsWuacRJe3JBt1ys83xIbLfRO7qxzkfZoM+0D5qIz6o9hLOSakbcghNDBxr+FeC8ovwS9vpA9PPqAeVP6iB/xQVp6K+FjGwdAfiD2zcuw1NrSX6VQCkYw6OINztboVd8b2/z8Sw1Huv0rOm28jo5J44dB7czeHjkPqDr0nzii5VTbvRzFbTycLqqLNWFWnqEh/PlfEj1gXdbSjZnXDYJNLL3KNYjTedIaT7SC4gfvCGvQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=ZgeacT8P7E8OePXnkmTcfYh+HaBb9j7hhp20BhRiaQ0=;
- b=PQjoXnm/Z1tG6daVJqZC6SaMsXw2Hj02lKCI/zbTGgk8dVOD/C/oBjV7rkKL2R1ZL4H3fQDqSeWPm/uiz6+wIVyfM7MWV0yHG5b+Bm0Um/HAShf4VrxeR0DHEryBNUARP1ffAKt5nEVBOIOT1ThQLNnb2clrcxAYzzaLfORUq7DWqhzxvF0Qw+QSlOBtrLQRE9FQw53udx1ETU5OA8sCwSVOwkQ/62mF74mXmRzrRFU6a8VtHL5151Buqij7SFIdNBPa9NHryUYvwdsHybbG3XdDLaNYHOhtAfjbHic5F557NSv4fGAE2ytyXU57Njy5tOD8ud1TEag/lrWUWwIduw==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=fb.com; dmarc=pass action=none header.from=fb.com; dkim=pass
- header.d=fb.com; arc=none
-Received: from DM6PR15MB3547.namprd15.prod.outlook.com (2603:10b6:5:1ff::32)
- by BN7PR15MB2290.namprd15.prod.outlook.com (2603:10b6:406:82::16) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5482.16; Tue, 2 Aug
- 2022 23:04:45 +0000
-Received: from DM6PR15MB3547.namprd15.prod.outlook.com
- ([fe80::d819:c439:c4e0:9f7b]) by DM6PR15MB3547.namprd15.prod.outlook.com
- ([fe80::d819:c439:c4e0:9f7b%5]) with mapi id 15.20.5482.016; Tue, 2 Aug 2022
- 23:04:44 +0000
-From: Iris Chen <irischenlj@fb.com>
-To: =?iso-8859-1?Q?C=E9dric_Le_Goater?= <clg@kaod.org>, Peter Delevoryas
- <peter@pjd.dev>
-CC: Peter Delevoryas <pdel@fb.com>, "qemu-devel@nongnu.org"
- <qemu-devel@nongnu.org>, "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
- "patrick@stwcx.xyz" <patrick@stwcx.xyz>, "alistair@alistair23.me"
- <alistair@alistair23.me>, "kwolf@redhat.com" <kwolf@redhat.com>,
- "hreitz@redhat.com" <hreitz@redhat.com>, "peter.maydell@linaro.org"
- <peter.maydell@linaro.org>,
- "andrew@aj.id.au" <andrew@aj.id.au>, "joel@jms.id.au" <joel@jms.id.au>,
- "thuth@redhat.com" <thuth@redhat.com>,
- "lvivier@redhat.com" <lvivier@redhat.com>, "pbonzini@redhat.com"
- <pbonzini@redhat.com>, "qemu-block@nongnu.org" <qemu-block@nongnu.org>,
- "dz4list@gmail.com" <dz4list@gmail.com>
-Subject: Re: [RFC 0/3] Add Generic SPI GPIO model
-Thread-Topic: [RFC 0/3] Add Generic SPI GPIO model
-Thread-Index: AQHYotkNGdgEJUtF6k2sE4dbYssc9q2VV8SAgAIWdd+AAA1aAIAENgeAgACQ5dY=
-Date: Tue, 2 Aug 2022 23:04:44 +0000
-Message-ID: <DM6PR15MB3547511E94901A7B53F46A02B69D9@DM6PR15MB3547.namprd15.prod.outlook.com>
-References: <20220728232322.2921703-1-irischenlj@fb.com>
- <435b3e89-f9fd-c257-b03d-a12d4b59ac6b@kaod.org>
- <YuQZP4xkkU2R9VmO@pdel-mbp.dhcp.thefacebook.com>
- <6d4a3912-a386-a784-8db4-7743bb1f1063@kaod.org>
- <YuWrbJglNYdGOmUh@pdel-mbp.dhcp.thefacebook.com>
- <2f7f05aa-6aa2-970e-b4ab-bfbed80b381b@kaod.org>
-In-Reply-To: <2f7f05aa-6aa2-970e-b4ab-bfbed80b381b@kaod.org>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-msip_labels: 
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: eef657b0-e395-4d3b-6163-08da74db63dc
-x-ms-traffictypediagnostic: BN7PR15MB2290:EE_
-x-fb-source: Internal
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: LyxEoHI3j73zuB1sZlJ3PT82M/DT2IhjotGKMdsTVsEA1yobgInK3cbSLslkNUZaaOmC5Dp24MmuUeKnTRCoNegn9RK/QRUOXGveE9e//zscSNlgXkZjh2JLAsanSBw0uro5k4ImwlBOKyL/gcqFofWhtR24yzigdHH+bTV9ACP+9W7ZM4xxQsl2ADe64oXmS7JZPM1RDShhXCWlNktwzIErPsvsFaYM+bO+GF9+HT5glKv7FC0BZVTn9JGtzzsmXDsFkCa7vlLlgxB5UbsD5YPj/UsjSwvez5eI1nrYb7rCbC7N9GbU1bvHFyrWtMSm/CyUgM1UlXWm5F7O/kfi/HhpSzg6Cao9NJDPuW6W2bqFNeXQpEJX+3rI9LEaNLTX6PtRTPBHgYEPJYoV7fUuS9qSzOQBiLO7Ax4I41JHhwD+C2/vPRn82RHNOzqia8c5kJseqLNFsEnlbeAFgmXYYjVRmgPcu50hL5a/VzbFpwXz/RmlOWpxg2EBQbkAlNhJIY+UQ1j0IefaLWRWxtiM22J1rdJ9AXJyU8bmeyuzJs1QegV8qatAr5d7lnsJBX8lsfk9c9FA/vUeqiLqbjZMnfopSzSj7tJfWdO5UVNCuRGNsXFzsTnVLxVOm0+UmRBvuFBgSwSs4vH4YbighRCBymTEtvJKhZfUX/HXMO3ugHOfLILLJl7zED2lEhV17CkntXicd1ag44KW6jD90SY4WblzwjJyUK9kl3Clcx4rPAFTdjmObsXThIokiXP7wwirS125LPdSJeIAl2VXcInaXgEp3AVQvyhuxL6K4f0QWsbm/kvQ272+gAiAbHmqYeSE+YicVYGXhOxeykSRmC3SJw==
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:DM6PR15MB3547.namprd15.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230016)(4636009)(346002)(376002)(396003)(136003)(366004)(39860400002)(6506007)(7696005)(41300700001)(9686003)(558084003)(316002)(55016003)(478600001)(54906003)(110136005)(86362001)(71200400001)(122000001)(38070700005)(38100700002)(186003)(91956017)(2906002)(8936002)(7416002)(66446008)(66556008)(76116006)(66476007)(64756008)(33656002)(66946007)(52536014)(8676002)(5660300002)(4326008)(41533002);
- DIR:OUT; SFP:1102; 
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?iso-8859-1?Q?Ofr3Zt+P02sh97lup8Ikviei+nn6XUgJr02SboiA60HCAKARkSCGQNJhFQ?=
- =?iso-8859-1?Q?2K55JmS/wSap5EQbfJ5Zqw9KV6M+r2FhJbwQSNiNeA6oTp5lolXdL4TGaC?=
- =?iso-8859-1?Q?rIfA/0+Qy+4RQSgp7jbbehCWirgOKN4GyTFizFyztaJXUDpFtFiRwwMrdB?=
- =?iso-8859-1?Q?8GSiBKnnLM1vB+QoW9ykYI1ij23D94TXKCYT0YcvlsZ/Xuj9iuepd9oPlA?=
- =?iso-8859-1?Q?3Bij94SILTt47mYYNFylQs2CTgA0Z0+ul5dogVIIpJzjvpFe8lypDnGRHy?=
- =?iso-8859-1?Q?ZhBKp71SzqOAuev5gBmsGpA5vW2m3fJCnCGTY0Ye/XmyJ4yBqPTQKMirBy?=
- =?iso-8859-1?Q?ai2rpLvtv2wFbYE0H1h3r5LBqN5BFXyZyXVH6AOe6DnXCX3N9AiJdYZobq?=
- =?iso-8859-1?Q?rDk5vXivRxwQHwIfxa7ljw38I8d0jD0izcXFhpxf56Xbqy+cn5VxZ8Nbzq?=
- =?iso-8859-1?Q?P6TOQ9WS/5li+lFR3vKuNfTeYEKns+2+PZDcw6Bz6796FVK7gOmLFnuk6V?=
- =?iso-8859-1?Q?VSZvjTkJC+/cUZ5adazalqriFvCP/cxoZITKVeVhgTbnI/FI1WOKSGwq5O?=
- =?iso-8859-1?Q?AbAhBVc0nq1H7nniMgo3lUrAgGEByw+RroP4oI2SyPOBZtM+ox9Yy2u+1c?=
- =?iso-8859-1?Q?eUpbQXlOUTPIcn3kiAiaF/p1PwSmT1ZEsnwRiGvEmDfqTZEWpZ+fhrm1J6?=
- =?iso-8859-1?Q?s8Hd7NFLrgDK3dxdGZ+QqiQb2oijnk6zovzifEX1u2LPFqPmLm2NYgP0LC?=
- =?iso-8859-1?Q?nz6uwsnk98GovC+fDtvCFu/6/NZ0EXvV1yhukx/dN/meCILTdMBLRgcPwe?=
- =?iso-8859-1?Q?cShn3XYXqI8H0kl4gv2HobHHOrcR4rvZVbA39u4jEAkortAdky7xDbb6mS?=
- =?iso-8859-1?Q?Rd7TD+bExYcHkvTny/FWJy6tTPxpAL2ENsArSgCHjRyM6TIQ9RxnWXK2Dl?=
- =?iso-8859-1?Q?YagpPrnLxrmxBB8VGBsfywGzkNpJlI/JcZOb722dlNVFWEGQ3yQSO4SwO7?=
- =?iso-8859-1?Q?/AD0M4wfpF9vuok6LdEJP+ctGZQaeOyL57TJaVTggb815wr42URPKobmXH?=
- =?iso-8859-1?Q?ru4V3DA5JfO5tIywbZPZ2UWIBXKzCMdP/TPquOJXt9VpM278q1b2pt1KtM?=
- =?iso-8859-1?Q?Fc/OWgSRHIVbmcn5MHEtp1hvkDKleKlZ7PP/kIY57rJ7oA81lwoh0+2mTS?=
- =?iso-8859-1?Q?mWPik/F/krMo7nk4Fboz2jp1yWCrZnmo/NZe1eENNmxzC43PbveiSLo+QD?=
- =?iso-8859-1?Q?8wl744QiUS8DRyv5u/vV/BvTbGo/OzJ2j4oYyJj0m0rHRH2z1ihsBdD7MT?=
- =?iso-8859-1?Q?3l7TenE4cbwBBsLUFHD8gwWnmNsA9h71d63+6tU0KypxpVHAeIpO9U2eLM?=
- =?iso-8859-1?Q?vXQ5vJ+FZUEFpK3dlFYKgMz7MeBfAV7PDsDQJ9xewX4fmtCuqx+nZdJRPN?=
- =?iso-8859-1?Q?VEZ9nNPDv/4NciFDir0/fW/h6+XKc+tolGiBzzazVy0E5phiSMrttLZbxA?=
- =?iso-8859-1?Q?TnATfutSGAdUkj+5WRAemqQ/N5SMmFLib5ua4TRj4iPgDzKPk0S0uXE78I?=
- =?iso-8859-1?Q?zmk5uJLr1tDvMIAVh96wKIC1VBEVgDawZdzpmObNZ5tck0u3hzzy1zAPUA?=
- =?iso-8859-1?Q?gLXdgkrIXSoVOyeicjVaRUFAMHctAzxbOS3AHy5UfxupvUnQw0pJoC0Q?=
- =?iso-8859-1?Q?=3D=3D?=
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+ (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1oJ2kS-0000Rr-V5
+ for qemu-devel@nongnu.org; Tue, 02 Aug 2022 21:00:34 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1659488431;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=siJ+LpUUJpIwKagpm691Cglg3JiFYHwfBgLziBl8+sc=;
+ b=hwrwWKdiRhacslUB4GjMExVKPSJLlyGILL4+kJc4CgB/UJmiPjK0lAMyTK32+vbfe67W6k
+ ry6QotOzfsv3+0kyGScYaz/65v3BH36o01rj3SyVOjL/EiM1jn/CHRbWF0/rDDdhphpRPQ
+ vad+foOo5egW8bE6G/F6xd1sy2J2rA0=
+Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
+ [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-636-M7i9KbLfO065vTtRWgJYLw-1; Tue, 02 Aug 2022 21:00:27 -0400
+X-MC-Unique: M7i9KbLfO065vTtRWgJYLw-1
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.8])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 2AE69185A7B2;
+ Wed,  3 Aug 2022 01:00:27 +0000 (UTC)
+Received: from [10.64.54.20] (vpn2-54-20.bne.redhat.com [10.64.54.20])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id BE3FDC3598B;
+ Wed,  3 Aug 2022 01:00:23 +0000 (UTC)
+Subject: Re: [PATCH 1/2] hw/arm/virt: Improve address assignment for highmem
+ IO regions
+To: eric.auger@redhat.com, qemu-arm@nongnu.org
+Cc: qemu-devel@nongnu.org, peter.maydell@linaro.org,
+ richard.henderson@linaro.org, cohuck@redhat.com, zhenyzha@redhat.com,
+ shan.gavin@gmail.com, Marc Zyngier <maz@kernel.org>
+References: <20220802064529.547361-1-gshan@redhat.com>
+ <20220802064529.547361-2-gshan@redhat.com>
+ <dcca0792-4f62-2cf0-9080-309d2e78e690@redhat.com>
+From: Gavin Shan <gshan@redhat.com>
+Message-ID: <9c8365c6-d27b-df76-371d-bd32ca2a26f7@redhat.com>
+Date: Wed, 3 Aug 2022 13:01:04 +1000
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.2.0
 MIME-Version: 1.0
-X-OriginatorOrg: fb.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: DM6PR15MB3547.namprd15.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: eef657b0-e395-4d3b-6163-08da74db63dc
-X-MS-Exchange-CrossTenant-originalarrivaltime: 02 Aug 2022 23:04:44.8081 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 8ae927fe-1255-47a7-a2af-5f3a069daaa2
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: 12XCxQ0Z9+fB7P9O4qn+PV1yraPr6NdwtmFZm6hBR4Cwe64RCLWgEr6dAk+xZ7PMXaZVylrj2FN1xasaOVEXWQ==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: BN7PR15MB2290
-X-Proofpoint-ORIG-GUID: AwToj4TiIblxk_IxZ3c-KM39X3fcf099
-X-Proofpoint-GUID: AwToj4TiIblxk_IxZ3c-KM39X3fcf099
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.205,Aquarius:18.0.883,Hydra:6.0.517,FMLib:17.11.122.1
- definitions=2022-08-02_14,2022-08-02_01,2022-06-22_01
-Received-SPF: pass client-ip=67.231.145.42;
- envelope-from=prvs=9213ef72d3=irischenlj@fb.com;
- helo=mx0a-00082601.pphosted.com
+In-Reply-To: <dcca0792-4f62-2cf0-9080-309d2e78e690@redhat.com>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.85 on 10.11.54.8
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=gshan@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -21
 X-Spam_score: -2.2
 X-Spam_bar: --
 X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.082,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: qpF59SBKtZjW
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Reply-To: Gavin Shan <gshan@redhat.com>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: bxM6YzUfj8eH
 
-Thanks everyone for the insightful feedback! This is really helpful for me.=
- =0A=
-=0A=
-I am taking a look at all the comments now and will investigate into it. =
-=0A=
-=0A=
-Best, =0A=
-Iris =
+Hi Eric,
+
+On 8/2/22 7:41 PM, Eric Auger wrote:
+> On 8/2/22 08:45, Gavin Shan wrote:
+>> There are 3 highmem IO regions as below. They can be disabled in
+>> two situations: (a) The specific region is disabled by user. (b)
+>> The specific region doesn't fit in the PA space. However, the base
+>> address and highest_gpa are still updated no matter if the region
+>> is enabled or disabled. It's incorrectly incurring waste in the PA
+>> space.
+> If I am not wrong highmem_redists and highmem_mmio are not user selectable
+> 
+> Only highmem ecam depends on machine type & ACPI setup. But I would say
+> that in server use case it is always set. So is that optimization really
+> needed?
+
+There are two other cases you missed.
+
+- highmem_ecam is enabled after virt-2.12, meaning it stays disabled
+   before that.
+
+- The high memory region can be disabled if user is asking large
+   (normal) memory space through 'maxmem=' option. When the requested
+   memory by 'maxmem=' is large enough, the high memory regions are
+   disabled. It means the normal memory has higher priority than those
+   high memory regions. This is the case I provided in (b) of the
+   commit log.
+
+In the commit log, I was supposed to say something like below for
+(a):
+
+- The specific high memory region can be disabled through changing
+   the code by user or developer. For example, 'vms->highmem_mmio'
+   is changed from true to false in virt_instance_init().
+
+>>
+>> Improve address assignment for highmem IO regions to avoid the waste
+>> in the PA space by putting the logic into virt_memmap_fits().
+>>
+>> Signed-off-by: Gavin Shan <gshan@redhat.com>
+>> ---
+>>   hw/arm/virt.c | 54 +++++++++++++++++++++++++++++----------------------
+>>   1 file changed, 31 insertions(+), 23 deletions(-)
+>>
+>> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+>> index 9633f822f3..bc0cd218f9 100644
+>> --- a/hw/arm/virt.c
+>> +++ b/hw/arm/virt.c
+>> @@ -1688,6 +1688,34 @@ static uint64_t virt_cpu_mp_affinity(VirtMachineState *vms, int idx)
+>>       return arm_cpu_mp_affinity(idx, clustersz);
+>>   }
+>>   
+>> +static void virt_memmap_fits(VirtMachineState *vms, int index,
+>> +                             bool *enabled, hwaddr *base, int pa_bits)
+>> +{
+>> +    hwaddr size = extended_memmap[index].size;
+>> +
+>> +    /* The region will be disabled if its size isn't given */
+>> +    if (!*enabled || !size) {
+> In which case do you have !size?
+
+Yeah, we don't have !size and the condition should be removed.
+
+>> +        *enabled = false;
+>> +        vms->memmap[index].base = 0;
+>> +        vms->memmap[index].size = 0;
+> It looks dangerous to me to reset the region's base and size like that.
+> for instance fdt_add_gic_node() will add dummy data in the dt.
+
+I would guess you missed that the high memory regions won't be exported
+through device-tree if they have been disabled. We have a check there,
+which is "if (nb_redist_regions == 1)"
+
+>> +        return;
+>> +    }
+>> +
+>> +    /*
+>> +     * Check if the memory region fits in the PA space. The memory map
+>> +     * and highest_gpa are updated if it fits. Otherwise, it's disabled.
+>> +     */
+>> +    *enabled = (ROUND_UP(*base, size) + size <= BIT_ULL(pa_bits));
+> using a 'fits' local variable would make the code more obvious I think
+
+Lets confirm if you're suggesting something like below?
+
+         bool fits;
+
+         fits = (ROUND_UP(*base, size) + size <= BIT_ULL(pa_bits));
+
+         if (fits) {
+            /* update *base, memory mapping, highest_gpa */
+         } else {
+            *enabled = false;
+         }
+
+I guess we can simply do
+
+         if (ROUND_UP(*base, size) + size <= BIT_ULL(pa_bits)) {
+            /* update *base, memory mapping, highest_gpa */
+         } else {
+            *enabled = false;
+         }
+
+Please let me know which one looks best to you.
+
+>> +    if (*enabled) {
+>> +        *base = ROUND_UP(*base, size);
+>> +        vms->memmap[index].base = *base;
+>> +        vms->memmap[index].size = size;
+>> +        vms->highest_gpa = *base + size - 1;
+>> +
+>> +	*base = *base + size;
+>> +    }
+>> +}
+>> +
+>>   static void virt_set_memmap(VirtMachineState *vms, int pa_bits)
+>>   {
+>>       MachineState *ms = MACHINE(vms);
+>> @@ -1744,37 +1772,17 @@ static void virt_set_memmap(VirtMachineState *vms, int pa_bits)
+>>       vms->highest_gpa = memtop - 1;
+>>   
+>>       for (i = VIRT_LOWMEMMAP_LAST; i < ARRAY_SIZE(extended_memmap); i++) {
+>> -        hwaddr size = extended_memmap[i].size;
+>> -        bool fits;
+>> -
+>> -        base = ROUND_UP(base, size);
+>> -        vms->memmap[i].base = base;
+>> -        vms->memmap[i].size = size;
+>> -
+>> -        /*
+>> -         * Check each device to see if they fit in the PA space,
+>> -         * moving highest_gpa as we go.
+>> -         *
+>> -         * For each device that doesn't fit, disable it.
+>> -         */
+>> -        fits = (base + size) <= BIT_ULL(pa_bits);
+>> -        if (fits) {
+>> -            vms->highest_gpa = base + size - 1;
+>> -        }
+>> -
+> 
+> we could avoid running the code below in case highmem is not set. We would need to reset that flags though.
+> 
+
+Yeah, I think it's not a big deal. My though is to update the flag in virt_memmap_fits().
+
+>>           switch (i) {
+>>           case VIRT_HIGH_GIC_REDIST2:
+>> -            vms->highmem_redists &= fits;
+>> +            virt_memmap_fits(vms, i, &vms->highmem_redists, &base, pa_bits);
+>>               break;
+>>           case VIRT_HIGH_PCIE_ECAM:
+>> -            vms->highmem_ecam &= fits;
+>> +            virt_memmap_fits(vms, i, &vms->highmem_ecam, &base, pa_bits);
+>>               break;
+>>           case VIRT_HIGH_PCIE_MMIO:
+>> -            vms->highmem_mmio &= fits;
+>> +            virt_memmap_fits(vms, i, &vms->highmem_mmio, &base, pa_bits);
+>>               break;
+>>           }
+>> -
+>> -        base += size;
+>>       }
+>>   
+>>       if (device_memory_size > 0) {
+
+Thanks,
+Gavin
+

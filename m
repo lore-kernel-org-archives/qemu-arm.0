@@ -1,112 +1,114 @@
-Received: by 2002:a05:6512:1086:0:0:0:0 with SMTP id j6csp40679lfg;
-        Tue, 2 Aug 2022 18:05:02 -0700 (PDT)
-X-Google-Smtp-Source: AGRyM1t/zuViYQ+0FBlsEjG7QjVcVXTyKRbnZ3/7DNJHeNeVRw8/X2oSozUtMkwjpTISq8b1By+i
-X-Received: by 2002:a05:622a:251:b0:31e:f986:5566 with SMTP id c17-20020a05622a025100b0031ef9865566mr20139260qtx.225.1659488701856;
-        Tue, 02 Aug 2022 18:05:01 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1659488701; cv=none;
+Received: by 2002:a05:6512:1086:0:0:0:0 with SMTP id j6csp165375lfg;
+        Wed, 3 Aug 2022 00:08:03 -0700 (PDT)
+X-Google-Smtp-Source: AGRyM1s5mJHx6DQ/upRN7xetDGDrNfNeH8YKEk/qf82f4YQLsCvO9ksl8EBBS42OLi6oyvq+GRxC
+X-Received: by 2002:a05:622a:148c:b0:31e:e643:953f with SMTP id t12-20020a05622a148c00b0031ee643953fmr21635951qtx.678.1659510482922;
+        Wed, 03 Aug 2022 00:08:02 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1659510482; cv=none;
         d=google.com; s=arc-20160816;
-        b=OZ6zdYIAw9gOwMSHAjeiLSiwdjjGU2/RDo7Dn0hhBBeeTpFf+NnK87ZZlqpS10ysHO
-         WowkvEApXrDFlYgT8tZG5ryHHYexBHev6KmUSS4PmmouQP0pDpU4llySGxr9SKmvQrl1
-         miC7lhaBa8+UYBnzoEx67ymoWs/hTVt0MOeMj+7mWccxD0nVwPSYBEPgZw25Q/FXs/ay
-         OBiSKGTdEr4ovl5MY3SKuCGHsP5rX0m7wtNob1gFRQi7AaprtoLt82oVvDs4Ql6czFVL
-         agDDHQWUJz4F6E/W/pituxMYnjbQLW9OzfwNqChTYzahWeCxFRjvMqoikOTIK84KondN
-         6BGA==
+        b=c1nvcwTqKXxvSs81nIHTACUYld9SN0BoHgRqYnt0xBRPBMj7mGsnH9Xex7dSJkQV9R
+         6MDa86mFZjzl/NjFmtKIh/2X3xHl7YqBNAxROQVyVWAuF+xM97o3REG0aQm3x4YVLjO9
+         jRIq8DI9o9VBexBwKCe7sSz/i0pzkBBn6dnO2WlKipgtqKl+Kqh7A37m1AM5L5pW+DhG
+         OdyJDKxhzP8qo31bikcXCG3TTM0CpRb2RVL/ibg+nwFao1c2wu4Rr7E47fqe19QgcZzt
+         yrWiExYYxhVhEe4ofdMaX9VAowm/Yqp8usoZ+LgvGCRJjBypeP7qouhIEVTR9JiQfbLV
+         5VUQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:cc:to:subject
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:mime-version:user-agent
+         :references:in-reply-to:subject:cc:to:from:message-id:date
          :dkim-signature;
-        bh=siJ+LpUUJpIwKagpm691Cglg3JiFYHwfBgLziBl8+sc=;
-        b=jezQqI1VHqduGdj/mCmLpF16RyvPwJKsi6udfUeLzmY61f8NTN5cH7WJZy59gvLogT
-         Q9BC+4dIZxs9RQo2jHYWZeCUD4vSczc89NtDak1PexufbnZd1Le0W3TGNVGVw4hc6MIl
-         Tvx2Mw8r9Lv+0gqwSAw7prqwVjDERLZ9Aj2J+atmhbad5LG4PIR8ZlR5zqErXLLdK1Qk
-         WCJ/lnAoIQxc7lR6Di+f+ayVWY+R9UebaAPQJshSfazKUijg3i12gMU5CKA1mtpJNi/9
-         wyiYGU9BJ7M73E8lE0Bs4TaYzCQb70QVl/pMVcWMglqpcM0/in3cnC2/UUrxD5g+yWG1
-         u7eA==
+        bh=r0M4vvPG5mdHgzguPQwfilz5gF+2imsM85AZdfdXzq8=;
+        b=Whnz3IasLYVPN70xLmlAuAUgWmXEd1XQ7Hwz5KfXfNbpdKV6CyPW9S3Ah1zDOMVHJb
+         /sLKetNxQeTNc1zdbxuXyYYMbDLJvvhz2pZU+vy4YqITk0QC1qWiApn1lnpZYs23/cVG
+         kCLFj/QFP3/wbqdy42W70AGfGZENgshlCWL7xMWZYO8DtjI+M5CsmGJBADhZ7bpOgyiy
+         YwG5M4VL1IfwgH8mtX6SVHSVHjrFX7xqv+YTPTsAkBKacG0WZMo+0Ic+/cK4gxNUc9CE
+         iMhrFLyZfXpgM0XRWNDIn8iq6n4s6WSVMwz+vxoDBVZjemeueIfuNX4uwROf5ouvZt+m
+         w30w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=hwrwWKdi;
+       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=VbDPd9GM;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=kernel.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id f9-20020a0562141d2900b004749170e1fdsi8566573qvd.198.2022.08.02.18.05.01
+        by mx.google.com with ESMTPS id r3-20020ad45763000000b004745f17417fsi10099602qvx.240.2022.08.03.00.08.02
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 02 Aug 2022 18:05:01 -0700 (PDT)
+        Wed, 03 Aug 2022 00:08:02 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=hwrwWKdi;
+       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=VbDPd9GM;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:51234 helo=lists1p.gnu.org)
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=kernel.org
+Received: from localhost ([::1]:47590 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1oJ2on-0001s7-BN
-	for alex.bennee@linaro.org; Tue, 02 Aug 2022 21:05:01 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34368)
+	id 1oJ8U6-0003q5-8F
+	for alex.bennee@linaro.org; Wed, 03 Aug 2022 03:08:02 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55418)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1oJ2kW-00080S-QB
- for qemu-devel@nongnu.org; Tue, 02 Aug 2022 21:00:41 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:27317)
+ (Exim 4.90_1) (envelope-from <maz@kernel.org>)
+ id 1oJ8O0-0001nV-Hu; Wed, 03 Aug 2022 03:01:44 -0400
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1]:54658)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1oJ2kS-0000Rr-V5
- for qemu-devel@nongnu.org; Tue, 02 Aug 2022 21:00:34 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1659488431;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=siJ+LpUUJpIwKagpm691Cglg3JiFYHwfBgLziBl8+sc=;
- b=hwrwWKdiRhacslUB4GjMExVKPSJLlyGILL4+kJc4CgB/UJmiPjK0lAMyTK32+vbfe67W6k
- ry6QotOzfsv3+0kyGScYaz/65v3BH36o01rj3SyVOjL/EiM1jn/CHRbWF0/rDDdhphpRPQ
- vad+foOo5egW8bE6G/F6xd1sy2J2rA0=
-Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
- [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-636-M7i9KbLfO065vTtRWgJYLw-1; Tue, 02 Aug 2022 21:00:27 -0400
-X-MC-Unique: M7i9KbLfO065vTtRWgJYLw-1
-Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.rdu2.redhat.com
- [10.11.54.8])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (Exim 4.90_1) (envelope-from <maz@kernel.org>)
+ id 1oJ8Ny-0001GN-5C; Wed, 03 Aug 2022 03:01:44 -0400
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 2AE69185A7B2;
- Wed,  3 Aug 2022 01:00:27 +0000 (UTC)
-Received: from [10.64.54.20] (vpn2-54-20.bne.redhat.com [10.64.54.20])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id BE3FDC3598B;
- Wed,  3 Aug 2022 01:00:23 +0000 (UTC)
+ by dfw.source.kernel.org (Postfix) with ESMTPS id 967BE61530;
+ Wed,  3 Aug 2022 07:01:38 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id DE359C433B5;
+ Wed,  3 Aug 2022 07:01:37 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1659510097;
+ bh=G1NuuPtrWalLU4mCCrk/uKnmVB8Ee3tHK/jpI7TUFfw=;
+ h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+ b=VbDPd9GM6i1t1PcB8IQn0dykxqjpNi8BuSQkgkcOL3KV8sSrtG/GXvWODe+VwzEm/
+ moYZYAumov7v2XJXEEc83/CC/it5W18C3lRpu+ShxnZiISEi7IdMpg/fLf4626WwUg
+ WbUUkCMZC6vDPx6HK8AQbac9lq0yoAkd0ihdqIYw/+pG2lvm8YNIV4slrDvGNV14rD
+ WuGQzGIC3ZCdLGScL43K7B9cykIgPPWAfiaPTRBY1XdBiDt/kbz2JJCRUCiPPTdS1B
+ 2buJtPBqdZFxK7kw9kHpV9yZHDDnfBGJ64TJ434d94fyb6vCnl3Hm2xHSfoBHZQNzz
+ SUZrzYm3IvxMA==
+Received: from ip-185-104-136-29.ptr.icomera.net ([185.104.136.29]
+ helo=wait-a-minute.misterjones.org)
+ by disco-boy.misterjones.org with esmtpsa (TLS1.3) tls
+ TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.95)
+ (envelope-from <maz@kernel.org>) id 1oJ8Np-000gbu-UM;
+ Wed, 03 Aug 2022 08:01:35 +0100
+Date: Wed, 03 Aug 2022 08:01:26 +0100
+Message-ID: <87tu6tbyk9.wl-maz@kernel.org>
+From: Marc Zyngier <maz@kernel.org>
+To: Gavin Shan <gshan@redhat.com>
+Cc: eric.auger@redhat.com, qemu-arm@nongnu.org, qemu-devel@nongnu.org,
+ peter.maydell@linaro.org, richard.henderson@linaro.org, cohuck@redhat.com,
+ zhenyzha@redhat.com, shan.gavin@gmail.com
 Subject: Re: [PATCH 1/2] hw/arm/virt: Improve address assignment for highmem
  IO regions
-To: eric.auger@redhat.com, qemu-arm@nongnu.org
-Cc: qemu-devel@nongnu.org, peter.maydell@linaro.org,
- richard.henderson@linaro.org, cohuck@redhat.com, zhenyzha@redhat.com,
- shan.gavin@gmail.com, Marc Zyngier <maz@kernel.org>
+In-Reply-To: <9c8365c6-d27b-df76-371d-bd32ca2a26f7@redhat.com>
 References: <20220802064529.547361-1-gshan@redhat.com>
  <20220802064529.547361-2-gshan@redhat.com>
  <dcca0792-4f62-2cf0-9080-309d2e78e690@redhat.com>
-From: Gavin Shan <gshan@redhat.com>
-Message-ID: <9c8365c6-d27b-df76-371d-bd32ca2a26f7@redhat.com>
-Date: Wed, 3 Aug 2022 13:01:04 +1000
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.2.0
-MIME-Version: 1.0
-In-Reply-To: <dcca0792-4f62-2cf0-9080-309d2e78e690@redhat.com>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.85 on 10.11.54.8
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=gshan@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -21
-X-Spam_score: -2.2
-X-Spam_bar: --
-X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.082,
+ <9c8365c6-d27b-df76-371d-bd32ca2a26f7@redhat.com>
+User-Agent: Wanderlust/2.15.9 (Almost Unreal) SEMI-EPG/1.14.7 (Harue)
+ FLIM-LB/1.14.9 (=?UTF-8?B?R29qxY0=?=) APEL-LB/10.8 EasyPG/1.0.0 Emacs/27.1
+ (x86_64-pc-linux-gnu) MULE/6.0 (HANACHIRUSATO)
+MIME-Version: 1.0 (generated by SEMI-EPG 1.14.7 - "Harue")
+Content-Type: text/plain; charset=US-ASCII
+X-SA-Exim-Connect-IP: 185.104.136.29
+X-SA-Exim-Rcpt-To: gshan@redhat.com, eric.auger@redhat.com, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org, peter.maydell@linaro.org, richard.henderson@linaro.org,
+ cohuck@redhat.com, zhenyzha@redhat.com, shan.gavin@gmail.com
+X-SA-Exim-Mail-From: maz@kernel.org
+X-SA-Exim-Scanned: No (on disco-boy.misterjones.org);
+ SAEximRunCond expanded to false
+Received-SPF: pass client-ip=2604:1380:4641:c500::1;
+ envelope-from=maz@kernel.org; helo=dfw.source.kernel.org
+X-Spam_score_int: -71
+X-Spam_score: -7.2
+X-Spam_bar: -------
+X-Spam_report: (-7.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.082,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+ RCVD_IN_DNSWL_HI=-5, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -119,177 +121,143 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Reply-To: Gavin Shan <gshan@redhat.com>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: bxM6YzUfj8eH
+X-TUID: PQseq+8wVShm
 
-Hi Eric,
-
-On 8/2/22 7:41 PM, Eric Auger wrote:
-> On 8/2/22 08:45, Gavin Shan wrote:
->> There are 3 highmem IO regions as below. They can be disabled in
->> two situations: (a) The specific region is disabled by user. (b)
->> The specific region doesn't fit in the PA space. However, the base
->> address and highest_gpa are still updated no matter if the region
->> is enabled or disabled. It's incorrectly incurring waste in the PA
->> space.
-> If I am not wrong highmem_redists and highmem_mmio are not user selectable
+On Wed, 03 Aug 2022 04:01:04 +0100,
+Gavin Shan <gshan@redhat.com> wrote:
 > 
-> Only highmem ecam depends on machine type & ACPI setup. But I would say
-> that in server use case it is always set. So is that optimization really
-> needed?
-
-There are two other cases you missed.
-
-- highmem_ecam is enabled after virt-2.12, meaning it stays disabled
-   before that.
-
-- The high memory region can be disabled if user is asking large
-   (normal) memory space through 'maxmem=' option. When the requested
-   memory by 'maxmem=' is large enough, the high memory regions are
-   disabled. It means the normal memory has higher priority than those
-   high memory regions. This is the case I provided in (b) of the
-   commit log.
-
-In the commit log, I was supposed to say something like below for
-(a):
-
-- The specific high memory region can be disabled through changing
-   the code by user or developer. For example, 'vms->highmem_mmio'
-   is changed from true to false in virt_instance_init().
-
->>
->> Improve address assignment for highmem IO regions to avoid the waste
->> in the PA space by putting the logic into virt_memmap_fits().
->>
->> Signed-off-by: Gavin Shan <gshan@redhat.com>
->> ---
->>   hw/arm/virt.c | 54 +++++++++++++++++++++++++++++----------------------
->>   1 file changed, 31 insertions(+), 23 deletions(-)
->>
->> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
->> index 9633f822f3..bc0cd218f9 100644
->> --- a/hw/arm/virt.c
->> +++ b/hw/arm/virt.c
->> @@ -1688,6 +1688,34 @@ static uint64_t virt_cpu_mp_affinity(VirtMachineState *vms, int idx)
->>       return arm_cpu_mp_affinity(idx, clustersz);
->>   }
->>   
->> +static void virt_memmap_fits(VirtMachineState *vms, int index,
->> +                             bool *enabled, hwaddr *base, int pa_bits)
->> +{
->> +    hwaddr size = extended_memmap[index].size;
->> +
->> +    /* The region will be disabled if its size isn't given */
->> +    if (!*enabled || !size) {
-> In which case do you have !size?
-
-Yeah, we don't have !size and the condition should be removed.
-
->> +        *enabled = false;
->> +        vms->memmap[index].base = 0;
->> +        vms->memmap[index].size = 0;
-> It looks dangerous to me to reset the region's base and size like that.
-> for instance fdt_add_gic_node() will add dummy data in the dt.
-
-I would guess you missed that the high memory regions won't be exported
-through device-tree if they have been disabled. We have a check there,
-which is "if (nb_redist_regions == 1)"
-
->> +        return;
->> +    }
->> +
->> +    /*
->> +     * Check if the memory region fits in the PA space. The memory map
->> +     * and highest_gpa are updated if it fits. Otherwise, it's disabled.
->> +     */
->> +    *enabled = (ROUND_UP(*base, size) + size <= BIT_ULL(pa_bits));
-> using a 'fits' local variable would make the code more obvious I think
-
-Lets confirm if you're suggesting something like below?
-
-         bool fits;
-
-         fits = (ROUND_UP(*base, size) + size <= BIT_ULL(pa_bits));
-
-         if (fits) {
-            /* update *base, memory mapping, highest_gpa */
-         } else {
-            *enabled = false;
-         }
-
-I guess we can simply do
-
-         if (ROUND_UP(*base, size) + size <= BIT_ULL(pa_bits)) {
-            /* update *base, memory mapping, highest_gpa */
-         } else {
-            *enabled = false;
-         }
-
-Please let me know which one looks best to you.
-
->> +    if (*enabled) {
->> +        *base = ROUND_UP(*base, size);
->> +        vms->memmap[index].base = *base;
->> +        vms->memmap[index].size = size;
->> +        vms->highest_gpa = *base + size - 1;
->> +
->> +	*base = *base + size;
->> +    }
->> +}
->> +
->>   static void virt_set_memmap(VirtMachineState *vms, int pa_bits)
->>   {
->>       MachineState *ms = MACHINE(vms);
->> @@ -1744,37 +1772,17 @@ static void virt_set_memmap(VirtMachineState *vms, int pa_bits)
->>       vms->highest_gpa = memtop - 1;
->>   
->>       for (i = VIRT_LOWMEMMAP_LAST; i < ARRAY_SIZE(extended_memmap); i++) {
->> -        hwaddr size = extended_memmap[i].size;
->> -        bool fits;
->> -
->> -        base = ROUND_UP(base, size);
->> -        vms->memmap[i].base = base;
->> -        vms->memmap[i].size = size;
->> -
->> -        /*
->> -         * Check each device to see if they fit in the PA space,
->> -         * moving highest_gpa as we go.
->> -         *
->> -         * For each device that doesn't fit, disable it.
->> -         */
->> -        fits = (base + size) <= BIT_ULL(pa_bits);
->> -        if (fits) {
->> -            vms->highest_gpa = base + size - 1;
->> -        }
->> -
+> Hi Eric,
 > 
-> we could avoid running the code below in case highmem is not set. We would need to reset that flags though.
+> On 8/2/22 7:41 PM, Eric Auger wrote:
+> > On 8/2/22 08:45, Gavin Shan wrote:
+> >> There are 3 highmem IO regions as below. They can be disabled in
+> >> two situations: (a) The specific region is disabled by user. (b)
+> >> The specific region doesn't fit in the PA space. However, the base
+> >> address and highest_gpa are still updated no matter if the region
+> >> is enabled or disabled. It's incorrectly incurring waste in the PA
+> >> space.
+> > If I am not wrong highmem_redists and highmem_mmio are not user selectable
+> > 
+> > Only highmem ecam depends on machine type & ACPI setup. But I would say
+> > that in server use case it is always set. So is that optimization really
+> > needed?
 > 
+> There are two other cases you missed.
+> 
+> - highmem_ecam is enabled after virt-2.12, meaning it stays disabled
+>   before that.
 
-Yeah, I think it's not a big deal. My though is to update the flag in virt_memmap_fits().
+I don't get this. The current behaviour is to disable highmem_ecam if
+it doesn't fit in the PA space. I can't see anything that enables it
+if it was disabled the first place.
 
->>           switch (i) {
->>           case VIRT_HIGH_GIC_REDIST2:
->> -            vms->highmem_redists &= fits;
->> +            virt_memmap_fits(vms, i, &vms->highmem_redists, &base, pa_bits);
->>               break;
->>           case VIRT_HIGH_PCIE_ECAM:
->> -            vms->highmem_ecam &= fits;
->> +            virt_memmap_fits(vms, i, &vms->highmem_ecam, &base, pa_bits);
->>               break;
->>           case VIRT_HIGH_PCIE_MMIO:
->> -            vms->highmem_mmio &= fits;
->> +            virt_memmap_fits(vms, i, &vms->highmem_mmio, &base, pa_bits);
->>               break;
->>           }
->> -
->> -        base += size;
->>       }
->>   
->>       if (device_memory_size > 0) {
+> 
+> - The high memory region can be disabled if user is asking large
+>   (normal) memory space through 'maxmem=' option. When the requested
+>   memory by 'maxmem=' is large enough, the high memory regions are
+>   disabled. It means the normal memory has higher priority than those
+>   high memory regions. This is the case I provided in (b) of the
+>   commit log.
+
+Why is that a problem? It matches the expected behaviour, as the
+highmem IO region is floating and is pushed up by the memory region.
+
+> 
+> In the commit log, I was supposed to say something like below for
+> (a):
+> 
+> - The specific high memory region can be disabled through changing
+>   the code by user or developer. For example, 'vms->highmem_mmio'
+>   is changed from true to false in virt_instance_init().
+
+Huh. By this principle, the user can change anything. Why is it
+important?
+
+> 
+> >> 
+> >> Improve address assignment for highmem IO regions to avoid the waste
+> >> in the PA space by putting the logic into virt_memmap_fits().
+
+I guess that this is what I understand the least. What do you mean by
+"wasted PA space"? Either the regions fit in the PA space, and
+computing their addresses in relevant, or they fall outside of it and
+what we stick in memap[index].base is completely irrelevant.
+
+> >> 
+> >> Signed-off-by: Gavin Shan <gshan@redhat.com>
+> >> ---
+> >>   hw/arm/virt.c | 54 +++++++++++++++++++++++++++++----------------------
+> >>   1 file changed, 31 insertions(+), 23 deletions(-)
+> >> 
+> >> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+> >> index 9633f822f3..bc0cd218f9 100644
+> >> --- a/hw/arm/virt.c
+> >> +++ b/hw/arm/virt.c
+> >> @@ -1688,6 +1688,34 @@ static uint64_t virt_cpu_mp_affinity(VirtMachineState *vms, int idx)
+> >>       return arm_cpu_mp_affinity(idx, clustersz);
+> >>   }
+> >>   +static void virt_memmap_fits(VirtMachineState *vms, int index,
+> >> +                             bool *enabled, hwaddr *base, int pa_bits)
+> >> +{
+> >> +    hwaddr size = extended_memmap[index].size;
+> >> +
+> >> +    /* The region will be disabled if its size isn't given */
+> >> +    if (!*enabled || !size) {
+> > In which case do you have !size?
+> 
+> Yeah, we don't have !size and the condition should be removed.
+> 
+> >> +        *enabled = false;
+> >> +        vms->memmap[index].base = 0;
+> >> +        vms->memmap[index].size = 0;
+> > It looks dangerous to me to reset the region's base and size like that.
+> > for instance fdt_add_gic_node() will add dummy data in the dt.
+> 
+> I would guess you missed that the high memory regions won't be exported
+> through device-tree if they have been disabled. We have a check there,
+> which is "if (nb_redist_regions == 1)"
+> 
+> >> +        return;
+> >> +    }
+> >> +
+> >> +    /*
+> >> +     * Check if the memory region fits in the PA space. The memory map
+> >> +     * and highest_gpa are updated if it fits. Otherwise, it's disabled.
+> >> +     */
+> >> +    *enabled = (ROUND_UP(*base, size) + size <= BIT_ULL(pa_bits));
+> > using a 'fits' local variable would make the code more obvious I think
+> 
+> Lets confirm if you're suggesting something like below?
+> 
+>         bool fits;
+> 
+>         fits = (ROUND_UP(*base, size) + size <= BIT_ULL(pa_bits));
+> 
+>         if (fits) {
+>            /* update *base, memory mapping, highest_gpa */
+>         } else {
+>            *enabled = false;
+>         }
+> 
+> I guess we can simply do
+> 
+>         if (ROUND_UP(*base, size) + size <= BIT_ULL(pa_bits)) {
+>            /* update *base, memory mapping, highest_gpa */
+>         } else {
+>            *enabled = false;
+>         }
+> 
+> Please let me know which one looks best to you.
+
+Why should the 'enabled' flag be updated by this function, instead of
+returning the value and keeping it as an assignment in the caller
+function? It is purely stylistic though.
 
 Thanks,
-Gavin
 
+	M.
+
+-- 
+Without deviation from the norm, progress is not possible.

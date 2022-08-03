@@ -1,137 +1,101 @@
-Received: by 2002:a05:6512:1086:0:0:0:0 with SMTP id j6csp209651lfg;
-        Wed, 3 Aug 2022 01:46:38 -0700 (PDT)
-X-Google-Smtp-Source: AGRyM1v9Aqw3driAgD+CHvDJHVB9+ubW0B5Vpi81Zte5iV1bmdE4LCX2UpKP/vyMpnPnKDPR6T8W
-X-Received: by 2002:ac8:7f10:0:b0:31f:13c6:1694 with SMTP id f16-20020ac87f10000000b0031f13c61694mr20517027qtk.137.1659516398354;
-        Wed, 03 Aug 2022 01:46:38 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1659516398; cv=none;
+Received: by 2002:a05:6512:1086:0:0:0:0 with SMTP id j6csp212896lfg;
+        Wed, 3 Aug 2022 01:53:56 -0700 (PDT)
+X-Google-Smtp-Source: AGRyM1uAx/oN692F620y4JcT7xSmBEleTRSjyR0YXrKQAaI2DmvvRjL22xpLiX5LhOz6jFu64kQ/
+X-Received: by 2002:a05:622a:110f:b0:31e:d7a5:59bd with SMTP id e15-20020a05622a110f00b0031ed7a559bdmr21513128qty.580.1659516836602;
+        Wed, 03 Aug 2022 01:53:56 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1659516836; cv=none;
         d=google.com; s=arc-20160816;
-        b=m1JpAYzVQpZOf8aS9hrl8GHBKB6KZs4CnuyGLxN5ISQWLAQS3BSMmrT/Pn03gt+01k
-         9yrDzzURNjoQtbGrhIzo7t0UxPWKKJss/aGQu3k6KwQnfZgH3mrnrbRgfAGXHbY4wXoh
-         dCJQUyhg0iWYFnTZNHK7Rr8k+dqd+7t9fgl+t8gce6UeYbHi7rL+XeigY40cR4EYE02v
-         nKPl9zsF2HJbz7+Afa5svBI9X18PibFYEywtW0jnqH6Kbi6+J6h3eI+jOg3sIIX76wFk
-         i+MRJPdDl3+fH+fyVtHCa6vKLJl/Q/R9nBC4AITyC34O3D3PTXU7o14nZMDPb+Q2Ga/4
-         bpDg==
+        b=rFp8I/lUYGUzgkbjom5tGtE1mbQEGck99KOhSizFcir/3dcpebJZ8gVkqrM1yACjja
+         aaXXC1Hg/qX05B+z+Haz4WKHJes2c7rwLBiKLm1lSr2rBUg+YWZv6iux95cfIIMDw4Wa
+         pUC+UJNm7V3BzQb75ZC8/WpGChp7gy6dOzoQ5TxBXhhKDoJ3c8AaoUcwolprbh3RhQGs
+         +8CaZpKNIzUi1ETLJN+jAiOrI800043ycMJpVtwgE78hM/R+0KyKLT9etAd3A/XZcsaK
+         Y6OSjN8lEX4NpEvXUlz9WQDcWG3rY72ii9YU6u1oZd74LC7Q/2mCd9in38iEnTTP+dF8
+         mYMQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:content-language:in-reply-to:from
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=0UdVWeIFGGS7zSoqVlveA45svPiOW3ZaMZDtR3sYifs=;
-        b=vTi512E+VjpK3Tt3fIhL6pFUdIyJ51Kcyk/R5T+M36OAIQJpLwbMLgjzBnN+qO2FBU
-         3/twRkd2ENVqSF+QvTrV8Xr2YZz+YABIhJx93dl1rTN5BcPS2axtBlHuFxXU8NRWt9G3
-         WHUp4vbk6+l+HFNrr54uc68pkKSC4yC1GOWLSVdf4hwNsxZ62cR0BtRSp11hmZqPPfrS
-         AsqxruJLRu0/2yUXvkcD/cCEELf/2LUXUqtt3ddoUU5wHTFYKbilLFmSFgf8QbAmqkwT
-         zLLkRTpK/SgeB4bIsDR3iDpXigy6dHNkT0FKvA3c7mt+FyWvzZe625bgF5Mrt5alwckf
-         5KRw==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:references:cc:to:content-language:subject
+         :user-agent:mime-version:date:message-id;
+        bh=w7Si6sn8Ldu/vs+I2/9ru/u0Gq4U833Or3xem8pA8oM=;
+        b=0MnyBXrxNZgq7cAiv5a2S1qnd0mWK47LjG6+1qk6Kz7xf9SMqz91Avlxq3EgP/gGjq
+         mgBpZJpeQMXJN3cJKEcQH0geKVHs0HRaULJxSzrt4j0M9GQJ+3/VuJMxv4XgnCaL5eoD
+         s2FDy5H+4bJ3EW+vcBI7Ap924wK2TMLhZFPBOeQQaoyiOSklWNQxenTlCzaLA8V23S4s
+         CrR3YXZ8J2FCqMyKMt6F9tKk8xbIgJCLHn/kHHlQNTRQIqyi3um//mXnOhOE+2/DTcUL
+         72icNZe/QWLNpLO1DTf39Ro+jwZkMlOe9UKgmOmD3qZb5HdPxSfN//Ohz/u5o+CfXBDc
+         xDaQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="VfwAY/Tv";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id ok28-20020a0562143c9c00b004736b0bd377si7748933qvb.561.2022.08.03.01.46.38
+        by mx.google.com with ESMTPS id bn14-20020a05622a1dce00b0031edf9fc422si8800511qtb.386.2022.08.03.01.53.56
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 03 Aug 2022 01:46:38 -0700 (PDT)
+        Wed, 03 Aug 2022 01:53:56 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="VfwAY/Tv";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:59510 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:35202 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1oJA1V-00040D-Ps
-	for alex.bennee@linaro.org; Wed, 03 Aug 2022 04:46:37 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45010)
+	id 1oJA8X-0006zz-0Z
+	for alex.bennee@linaro.org; Wed, 03 Aug 2022 04:53:53 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46258)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1oJ9zv-0003yi-DB
- for qemu-arm@nongnu.org; Wed, 03 Aug 2022 04:45:02 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:46718)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1oJA7K-0006yc-7F
+ for qemu-arm@nongnu.org; Wed, 03 Aug 2022 04:52:44 -0400
+Received: from 8.mo548.mail-out.ovh.net ([46.105.45.231]:36403)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1oJ9zs-0000gD-0r
- for qemu-arm@nongnu.org; Wed, 03 Aug 2022 04:44:57 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1659516295;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=0UdVWeIFGGS7zSoqVlveA45svPiOW3ZaMZDtR3sYifs=;
- b=VfwAY/Tv3nILQDm1BrhmCPd6wQ7NGtJyQ8lQBW8ToBTNi8ZFcpkfVUDtZ19A8vgQuc9TDo
- PNdvajr3uGXsU7BIoCKO9Mg0g6ZuwHJ6y+v24b/3pmATOCZ/t5K0BtLLqX+snSPpu7Uxy6
- nlOtt/dkmbFaJSdEAFvhFrFS3SRoLNY=
-Received: from mail-qk1-f197.google.com (mail-qk1-f197.google.com
- [209.85.222.197]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-459-dycf6cZDO163uZ8ti7EUXA-1; Wed, 03 Aug 2022 04:44:51 -0400
-X-MC-Unique: dycf6cZDO163uZ8ti7EUXA-1
-Received: by mail-qk1-f197.google.com with SMTP id
- f20-20020a05620a409400b006b5fc740485so13124901qko.12
- for <qemu-arm@nongnu.org>; Wed, 03 Aug 2022 01:44:51 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:reply-to:user-agent:mime-version:date
- :message-id:x-gm-message-state:from:to:cc;
- bh=0UdVWeIFGGS7zSoqVlveA45svPiOW3ZaMZDtR3sYifs=;
- b=lbkik7Ct9xmoX1Aeyu6s4PK+9/RhkX8XByfraR3VSL/wyYjd/IXpB8JGIxQMkO6WEi
- WoOHmLL9ScKpDTFnC1yX0OajoM6mJ68JUQw5XxYK/Pl9pBf4VVwwRL4rzCGEFQC1i8Ip
- bKhSuruhohDCWKMkqrtMKljW8TB6x+HTZaNjMY8u4RkExizHb/f6pOzKQk032udPBDXQ
- IQD6XWffagWFYQPp3a4bxomac784kUw7UOAHDZNdXeBPCdJ8WZ5jSWQPrlseWJxTF3wr
- p0HsvQgvBy4scCyD70FpdP79Yt+tk0ORtKMBR5MhlVGtn69yE5Z2UzGmLD7viNn0umzP
- Kr0w==
-X-Gm-Message-State: ACgBeo1Cz1CBEUvXVIvsIff1s63cwSG5mRi5hW+1OJVG5Q38Lq7qec+A
- lhTMfn31IkdaEqADHQLMJR5AAck9u4fWhQklD1vE/IVTPo0yurb1MDG+GXTVR0MInrN1n+TI3gc
- qm4P0BTqTIrrW
-X-Received: by 2002:a0c:9022:0:b0:473:5be3:321 with SMTP id
- o31-20020a0c9022000000b004735be30321mr21161176qvo.79.1659516291170; 
- Wed, 03 Aug 2022 01:44:51 -0700 (PDT)
-X-Received: by 2002:a0c:9022:0:b0:473:5be3:321 with SMTP id
- o31-20020a0c9022000000b004735be30321mr21161158qvo.79.1659516290889; 
- Wed, 03 Aug 2022 01:44:50 -0700 (PDT)
-Received: from ?IPV6:2a01:e0a:59e:9d80:527b:9dff:feef:3874?
- ([2a01:e0a:59e:9d80:527b:9dff:feef:3874])
- by smtp.gmail.com with ESMTPSA id
- p22-20020ac84616000000b0031ea864d3b2sm10496340qtn.30.2022.08.03.01.44.48
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 03 Aug 2022 01:44:50 -0700 (PDT)
-Message-ID: <3db8b274-dfe6-7b68-0ef3-d72c3597dd10@redhat.com>
-Date: Wed, 3 Aug 2022 10:44:46 +0200
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1oJA7H-0002Xc-0k
+ for qemu-arm@nongnu.org; Wed, 03 Aug 2022 04:52:37 -0400
+Received: from mxplan5.mail.ovh.net (unknown [10.109.156.124])
+ by mo548.mail-out.ovh.net (Postfix) with ESMTPS id 05F3721A7B;
+ Wed,  3 Aug 2022 08:52:31 +0000 (UTC)
+Received: from kaod.org (37.59.142.107) by DAG4EX2.mxp5.local (172.16.2.32)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.9; Wed, 3 Aug 2022
+ 10:52:29 +0200
+Authentication-Results: garm.ovh; auth=pass
+ (GARM-107S0012c017a39-ac20-4c76-8aac-49e1909a297e,
+ CC7AE06ED68251E997EA4638F74AFDA4D8EEB002) smtp.auth=clg@kaod.org
+X-OVh-ClientIp: 82.64.250.170
+Message-ID: <36a20515-461d-0f27-3be8-a4edd099165a@kaod.org>
+Date: Wed, 3 Aug 2022 10:52:23 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
  Thunderbird/91.11.0
-Subject: Re: [PATCH 1/2] hw/arm/virt: Improve address assignment for highmem
- IO regions
-To: Gavin Shan <gshan@redhat.com>, qemu-arm@nongnu.org
-Cc: qemu-devel@nongnu.org, peter.maydell@linaro.org,
- richard.henderson@linaro.org, cohuck@redhat.com, zhenyzha@redhat.com,
- shan.gavin@gmail.com, Marc Zyngier <maz@kernel.org>
-References: <20220802064529.547361-1-gshan@redhat.com>
- <20220802064529.547361-2-gshan@redhat.com>
- <dcca0792-4f62-2cf0-9080-309d2e78e690@redhat.com>
- <9c8365c6-d27b-df76-371d-bd32ca2a26f7@redhat.com>
-From: Eric Auger <eric.auger@redhat.com>
-In-Reply-To: <9c8365c6-d27b-df76-371d-bd32ca2a26f7@redhat.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
+Subject: Re: [RFC 1/1] hw: tpmtisspi: add SPI support to QEMU TPM
+ implementation
 Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.129.124;
- envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -28
-X-Spam_score: -2.9
-X-Spam_bar: --
-X-Spam_report: (-2.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.082,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+To: Iris Chen <irischenlj@gmail.com>
+CC: <irischenlj@fb.com>, <peter@pjd.dev>, <pdel@fb.com>,
+ <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>, <patrick@stwcx.xyz>,
+ <alistair@alistair23.me>, <kwolf@redhat.com>, <hreitz@redhat.com>,
+ <peter.maydell@linaro.org>, <andrew@aj.id.au>, <joel@jms.id.au>,
+ <thuth@redhat.com>, <lvivier@redhat.com>, <pbonzini@redhat.com>,
+ <qemu-block@nongnu.org>, <dz4list@gmail.com>, Stefan Berger
+ <stefanb@linux.ibm.com>
+References: <20220803023241.63739-1-irischenlj@gmail.com>
+ <20220803023241.63739-2-irischenlj@gmail.com>
+From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
+In-Reply-To: <20220803023241.63739-2-irischenlj@gmail.com>
+Content-Type: text/plain; charset="UTF-8"; format=flowed
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [37.59.142.107]
+X-ClientProxiedBy: DAG5EX2.mxp5.local (172.16.2.42) To DAG4EX2.mxp5.local
+ (172.16.2.32)
+X-Ovh-Tracer-GUID: 5df9b9fc-b37b-4a34-9ce7-dc25bbd549f0
+X-Ovh-Tracer-Id: 3985122720548489997
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvfedrvddvjedgtdekucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhepkfffgggfuffvvehfhfgjtgfgihesthejredttdefjeenucfhrhhomhepveorughrihgtpgfnvggpifhorghtvghruceotghlgheskhgrohgurdhorhhgqeenucggtffrrghtthgvrhhnpeelleeiiefgkeefiedtvdeigeetueetkeffkeelheeugfetteegvdekgfehgffgkeenucfkpheptddrtddrtddrtddpfeejrdehledrudegvddruddtjeenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhhouggvpehsmhhtphhouhhtpdhhvghlohepmhigphhlrghnhedrmhgrihhlrdhovhhhrdhnvghtpdhinhgvtheptddrtddrtddrtddpmhgrihhlfhhrohhmpegtlhhgsehkrghougdrohhrghdpnhgspghrtghpthhtohepuddprhgtphhtthhopehsthgvfhgrnhgssehlihhnuhigrdhisghmrdgtohhmpdfovfetjfhoshhtpehmohehgeek
+Received-SPF: pass client-ip=46.105.45.231; envelope-from=clg@kaod.org;
+ helo=8.mo548.mail-out.ovh.net
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -144,204 +108,435 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Me2htA/zEosM
+X-TUID: afkJ5M/2trL6
 
-Hi Gavin,
+On 8/3/22 04:32, Iris Chen wrote:
+> From: Iris Chen <irischenlj@fb.com>
 
-On 8/3/22 05:01, Gavin Shan wrote:
-> Hi Eric,
->
-> On 8/2/22 7:41 PM, Eric Auger wrote:
->> On 8/2/22 08:45, Gavin Shan wrote:
->>> There are 3 highmem IO regions as below. They can be disabled in
->>> two situations: (a) The specific region is disabled by user. (b)
->>> The specific region doesn't fit in the PA space. However, the base
->>> address and highest_gpa are still updated no matter if the region
->>> is enabled or disabled. It's incorrectly incurring waste in the PA
->>> space.
->> If I am not wrong highmem_redists and highmem_mmio are not user
->> selectable
->>
->> Only highmem ecam depends on machine type & ACPI setup. But I would say
->> that in server use case it is always set. So is that optimization really
->> needed?
->
-> There are two other cases you missed.
->
-> - highmem_ecam is enabled after virt-2.12, meaning it stays disabled
->   before that.
-Yes that's what I meant above by 'depends on machine type'
->
-> - The high memory region can be disabled if user is asking large
->   (normal) memory space through 'maxmem=' option. When the requested
->   memory by 'maxmem=' is large enough, the high memory regions are
->   disabled. It means the normal memory has higher priority than those
->   high memory regions. This is the case I provided in (b) of the
->   commit log.
-yes but in such a case you don't "waste" IPA as you mention in the
-commit log because you only ask for a VM dimensionned for the highest_gpa.
-The only case where you would "waste" IPA is for high ecam which can
-disabled by option combination but it is marginal.
+A commit log telling us about this new device would be good to have.
 
->
-> In the commit log, I was supposed to say something like below for
-> (a):
->
-> - The specific high memory region can be disabled through changing
->   the code by user or developer. For example, 'vms->highmem_mmio'
->   is changed from true to false in virt_instance_init().
->
->>>
->>> Improve address assignment for highmem IO regions to avoid the waste
->>> in the PA space by putting the logic into virt_memmap_fits().
->>>
->>> Signed-off-by: Gavin Shan <gshan@redhat.com>
->>> ---
->>>   hw/arm/virt.c | 54
->>> +++++++++++++++++++++++++++++----------------------
->>>   1 file changed, 31 insertions(+), 23 deletions(-)
->>>
->>> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
->>> index 9633f822f3..bc0cd218f9 100644
->>> --- a/hw/arm/virt.c
->>> +++ b/hw/arm/virt.c
->>> @@ -1688,6 +1688,34 @@ static uint64_t
->>> virt_cpu_mp_affinity(VirtMachineState *vms, int idx)
->>>       return arm_cpu_mp_affinity(idx, clustersz);
->>>   }
->>>   +static void virt_memmap_fits(VirtMachineState *vms, int index,
->>> +                             bool *enabled, hwaddr *base, int pa_bits)
->>> +{
->>> +    hwaddr size = extended_memmap[index].size;
->>> +
->>> +    /* The region will be disabled if its size isn't given */
->>> +    if (!*enabled || !size) {
->> In which case do you have !size?
->
-> Yeah, we don't have !size and the condition should be removed.
->
->>> +        *enabled = false;
->>> +        vms->memmap[index].base = 0;
->>> +        vms->memmap[index].size = 0;
->> It looks dangerous to me to reset the region's base and size like that.
->> for instance fdt_add_gic_node() will add dummy data in the dt.
->
-> I would guess you missed that the high memory regions won't be exported
-> through device-tree if they have been disabled. We have a check there,
-> which is "if (nb_redist_regions == 1)"
-OK I missed a check was added in virt_gicv3_redist_region_count.
-Nevertheless, your comment "The region will be disabled if its size
-isn't given */ is not obvious to me. To me the region is disabled if the
-corresponding flag is not set. From your comment I have the impression
-the size is checked to see if the region is exposed, it does not look
-obvious.
->
->>> +        return;
->>> +    }
->>> +
->>> +    /*
->>> +     * Check if the memory region fits in the PA space. The memory map
->>> +     * and highest_gpa are updated if it fits. Otherwise, it's
->>> disabled.
->>> +     */
->>> +    *enabled = (ROUND_UP(*base, size) + size <= BIT_ULL(pa_bits));
->> using a 'fits' local variable would make the code more obvious I think
->
-> Lets confirm if you're suggesting something like below?
->
->         bool fits;
->
->         fits = (ROUND_UP(*base, size) + size <= BIT_ULL(pa_bits));
->
->         if (fits) {
->            /* update *base, memory mapping, highest_gpa */
->         } else {
->            *enabled = false;
->         }
-yes that's what I suggested.
->
-> I guess we can simply do
->
->         if (ROUND_UP(*base, size) + size <= BIT_ULL(pa_bits)) {
->            /* update *base, memory mapping, highest_gpa */
->         } else {
->            *enabled = false;
->         }
->
-> Please let me know which one looks best to you.
->
->>> +    if (*enabled) {
->>> +        *base = ROUND_UP(*base, size);
->>> +        vms->memmap[index].base = *base;
->>> +        vms->memmap[index].size = size;
->>> +        vms->highest_gpa = *base + size - 1;
->>> +
->>> +    *base = *base + size;
->>> +    }
->>> +}
->>> +
->>>   static void virt_set_memmap(VirtMachineState *vms, int pa_bits)
->>>   {
->>>       MachineState *ms = MACHINE(vms);
->>> @@ -1744,37 +1772,17 @@ static void virt_set_memmap(VirtMachineState
->>> *vms, int pa_bits)
->>>       vms->highest_gpa = memtop - 1;
->>>         for (i = VIRT_LOWMEMMAP_LAST; i <
->>> ARRAY_SIZE(extended_memmap); i++) {
->>> -        hwaddr size = extended_memmap[i].size;
->>> -        bool fits;
->>> -
->>> -        base = ROUND_UP(base, size);
->>> -        vms->memmap[i].base = base;
->>> -        vms->memmap[i].size = size;
->>> -
->>> -        /*
->>> -         * Check each device to see if they fit in the PA space,
->>> -         * moving highest_gpa as we go.
->>> -         *
->>> -         * For each device that doesn't fit, disable it.
->>> -         */
->>> -        fits = (base + size) <= BIT_ULL(pa_bits);
->>> -        if (fits) {
->>> -            vms->highest_gpa = base + size - 1;
->>> -        }
->>> -
->>
->> we could avoid running the code below in case highmem is not set. We
->> would need to reset that flags though.
->>
->
-> Yeah, I think it's not a big deal. My though is to update the flag in
-> virt_memmap_fits().
 
-Eric
->
->>>           switch (i) {
->>>           case VIRT_HIGH_GIC_REDIST2:
->>> -            vms->highmem_redists &= fits;
->>> +            virt_memmap_fits(vms, i, &vms->highmem_redists, &base,
->>> pa_bits);
->>>               break;
->>>           case VIRT_HIGH_PCIE_ECAM:
->>> -            vms->highmem_ecam &= fits;
->>> +            virt_memmap_fits(vms, i, &vms->highmem_ecam, &base,
->>> pa_bits);
->>>               break;
->>>           case VIRT_HIGH_PCIE_MMIO:
->>> -            vms->highmem_mmio &= fits;
->>> +            virt_memmap_fits(vms, i, &vms->highmem_mmio, &base,
->>> pa_bits);
->>>               break;
->>>           }
->>> -
->>> -        base += size;
->>>       }
->>>         if (device_memory_size > 0) {
->
-> Thanks,
-> Gavin
->
+> Signed-off-by: Iris Chen <irischenlj@fb.com>
+> ---
+>   configs/devices/arm-softmmu/default.mak |   1 +
+>   hw/arm/Kconfig                          |   5 +
+>   hw/tpm/Kconfig                          |   5 +
+>   hw/tpm/meson.build                      |   1 +
+>   hw/tpm/tpm_tis_spi.c                    | 311 ++++++++++++++++++++++++
+>   include/sysemu/tpm.h                    |   3 +
+>   6 files changed, 326 insertions(+)
+>   create mode 100644 hw/tpm/tpm_tis_spi.c
+> 
+> diff --git a/configs/devices/arm-softmmu/default.mak b/configs/devices/arm-softmmu/default.mak
+> index 6985a25377..80d2841568 100644
+> --- a/configs/devices/arm-softmmu/default.mak
+> +++ b/configs/devices/arm-softmmu/default.mak
+> @@ -42,3 +42,4 @@ CONFIG_FSL_IMX6UL=y
+>   CONFIG_SEMIHOSTING=y
+>   CONFIG_ARM_COMPATIBLE_SEMIHOSTING=y
+>   CONFIG_ALLWINNER_H3=y
+> +CONFIG_FBOBMC_AST=y
+
+I don't think this extra config is useful for now
+
+> diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
+> index 15fa79afd3..193decaec1 100644
+> --- a/hw/arm/Kconfig
+> +++ b/hw/arm/Kconfig
+> @@ -458,6 +458,11 @@ config ASPEED_SOC
+>       select PMBUS
+>       select MAX31785
+>   
+> +config FBOBMC_AST
+> +    bool
+> +    select ASPEED_SOC
+> +    select TPM_TIS_SPI
+> +
+>   config MPS2
+>       bool
+>       imply I2C_DEVICES
+> diff --git a/hw/tpm/Kconfig b/hw/tpm/Kconfig
+> index 29e82f3c92..370a43f045 100644
+> --- a/hw/tpm/Kconfig
+> +++ b/hw/tpm/Kconfig
+> @@ -8,6 +8,11 @@ config TPM_TIS_SYSBUS
+>       depends on TPM
+>       select TPM_TIS
+>   
+> +config TPM_TIS_SPI
+> +    bool
+> +    depends on TPM
+> +    select TPM_TIS
+> +
+>   config TPM_TIS
+>       bool
+>       depends on TPM
+> diff --git a/hw/tpm/meson.build b/hw/tpm/meson.build
+> index 1c68d81d6a..1a057f4e36 100644
+> --- a/hw/tpm/meson.build
+> +++ b/hw/tpm/meson.build
+> @@ -2,6 +2,7 @@ softmmu_ss.add(when: 'CONFIG_TPM_TIS', if_true: files('tpm_tis_common.c'))
+>   softmmu_ss.add(when: 'CONFIG_TPM_TIS_ISA', if_true: files('tpm_tis_isa.c'))
+>   softmmu_ss.add(when: 'CONFIG_TPM_TIS_SYSBUS', if_true: files('tpm_tis_sysbus.c'))
+>   softmmu_ss.add(when: 'CONFIG_TPM_CRB', if_true: files('tpm_crb.c'))
+> +softmmu_ss.add(when: 'CONFIG_TPM_TIS_SPI', if_true: files('tpm_tis_spi.c'))
+>   
+>   specific_ss.add(when: ['CONFIG_SOFTMMU', 'CONFIG_TPM_TIS'], if_true: files('tpm_ppi.c'))
+>   specific_ss.add(when: ['CONFIG_SOFTMMU', 'CONFIG_TPM_CRB'], if_true: files('tpm_ppi.c'))
+> diff --git a/hw/tpm/tpm_tis_spi.c b/hw/tpm/tpm_tis_spi.c
+> new file mode 100644
+> index 0000000000..c98ddcfddb
+> --- /dev/null
+> +++ b/hw/tpm/tpm_tis_spi.c
+> @@ -0,0 +1,311 @@
+> +#include "qemu/osdep.h"
+> +#include "hw/qdev-properties.h"
+> +#include "migration/vmstate.h"
+> +#include "hw/acpi/tpm.h"
+> +#include "tpm_prop.h"
+> +#include "tpm_tis.h"
+> +#include "qom/object.h"
+> +#include "hw/ssi/ssi.h"
+> +#include "hw/ssi/spi_gpio.h"
+> +
+> +#define TPM_TIS_SPI_ADDR_BYTES 3
+> +#define SPI_WRITE 0
+> +
+> +typedef enum {
+> +    TIS_SPI_PKT_STATE_DEACTIVATED = 0,
+> +    TIS_SPI_PKT_STATE_START,
+> +    TIS_SPI_PKT_STATE_ADDRESS,
+> +    TIS_SPI_PKT_STATE_DATA_WR,
+> +    TIS_SPI_PKT_STATE_DATA_RD,
+> +    TIS_SPI_PKT_STATE_DONE,
+> +} TpmTisSpiPktState;
+> +
+> +union TpmTisRWSizeByte {
+> +    uint8_t byte;
+> +    struct {
+> +        uint8_t data_expected_size:6;
+> +        uint8_t resv:1;
+> +        uint8_t rwflag:1;
+> +    };
+> +};
+> +
+> +union TpmTisSpiHwAddr {
+> +    hwaddr addr;
+> +    uint8_t bytes[sizeof(hwaddr)];
+> +};
+> +
+> +union TpmTisSpiData {
+> +    uint32_t data;
+> +    uint8_t bytes[64];
+> +};
+> +
+> +struct TpmTisSpiState {
+> +    /*< private >*/
+> +    SSIPeripheral parent_obj;
+> +
+> +    /*< public >*/
+> +    TPMState tpm_state; /* not a QOM object */
+> +    TpmTisSpiPktState tpm_tis_spi_state;
+> +
+> +    union TpmTisRWSizeByte first_byte;
+> +    union TpmTisSpiHwAddr addr;
+> +    union TpmTisSpiData data;
+
+Are these device registers ? I am not sure the unions are very useful.
+
+> +    uint32_t data_size;
+> +    uint8_t data_idx;
+> +    uint8_t addr_idx;
+> +};
+> +
+> +struct TpmTisSpiClass {
+> +    SSIPeripheralClass parent_class;
+> +};
+> +
+> +OBJECT_DECLARE_TYPE(TpmTisSpiState, TpmTisSpiClass, TPM_TIS_SPI)
+> +
+> +static void tpm_tis_spi_mmio_read(TpmTisSpiState *tts)
+> +{
+> +    uint16_t offset = tts->addr.addr & 0xffc;
+> +
+> +    switch (offset) {
+> +    case TPM_TIS_REG_DATA_FIFO:
+> +        for (uint8_t i = 0; i < tts->data_size; i++) {
+> +            tts->data.bytes[i] = (uint8_t)tpm_tis_memory_ops.read(
+
+
+you should add an address space for these memory transactions. Look for
+address_space_read/write calls, in the Aspeed I2C model for example.
+
+> +                                          &tts->tpm_state,
+> +                                          tts->addr.addr,
+> +                                          1);
+> +        }
+> +        break;
+> +    default:
+> +        tts->data.data = (uint32_t)tpm_tis_memory_ops.read(
+> +                                   &tts->tpm_state,
+> +                                   tts->addr.addr,
+> +                                   tts->data_size);
+> +    }
+> +}
+> +
+> +static void tpm_tis_spi_mmio_write(TpmTisSpiState *tts)
+> +{
+> +    uint16_t offset = tts->addr.addr & 0xffc;
+> +
+> +    switch (offset) {
+> +    case TPM_TIS_REG_DATA_FIFO:
+> +        for (uint8_t i = 0; i < tts->data_size; i++) {
+> +            tpm_tis_memory_ops.write(&tts->tpm_state,
+> +                                     tts->addr.addr,
+> +                                     tts->data.bytes[i],
+> +                                     1);
+> +        }
+> +        break;
+> +    default:
+> +        tpm_tis_memory_ops.write(&tts->tpm_state,
+> +                                 tts->addr.addr,
+> +                                 tts->data.data,
+> +                                 tts->data_size);
+> +        }
+> +}
+> +
+> +static uint32_t tpm_tis_spi_transfer8(SSIPeripheral *ss, uint32_t tx)
+> +{
+> +    TpmTisSpiState *tts = TPM_TIS_SPI(ss);
+> +    uint32_t r = 1;
+> +
+> +    switch (tts->tpm_tis_spi_state) {
+> +    case TIS_SPI_PKT_STATE_START:
+> +        tts->first_byte.byte = (uint8_t)tx;
+> +        tts->data_size = tts->first_byte.data_expected_size + 1;
+> +        tts->data_idx = 0;
+> +        tts->addr_idx = TPM_TIS_SPI_ADDR_BYTES;
+> +        tts->tpm_tis_spi_state = TIS_SPI_PKT_STATE_ADDRESS;
+> +        break;
+> +    case TIS_SPI_PKT_STATE_ADDRESS:
+> +        assert(tts->addr_idx > 0);
+> +        tts->addr.bytes[--tts->addr_idx] = (uint8_t)tx;
+> +
+> +        if (tts->addr_idx == 0) {
+> +            if (tts->first_byte.rwflag == SPI_WRITE) {
+> +                tts->tpm_tis_spi_state = TIS_SPI_PKT_STATE_DATA_WR;
+> +            } else { /* read and get the data ready */
+> +                tpm_tis_spi_mmio_read(tts);
+> +                tts->tpm_tis_spi_state = TIS_SPI_PKT_STATE_DATA_RD;
+> +            }
+> +        }
+> +        break;
+> +    case TIS_SPI_PKT_STATE_DATA_WR:
+> +        tts->data.bytes[tts->data_idx++] = (uint8_t)tx;
+> +        if (tts->data_idx == tts->data_size) {
+> +            tpm_tis_spi_mmio_write(tts);
+> +            tts->tpm_tis_spi_state = TIS_SPI_PKT_STATE_DONE;
+> +        }
+> +        break;
+> +    case TIS_SPI_PKT_STATE_DATA_RD:
+> +        r = tts->data.bytes[tts->data_idx++];
+> +        if (tts->data_idx == tts->data_size) {
+> +            tts->tpm_tis_spi_state = TIS_SPI_PKT_STATE_DONE;
+> +        }
+> +        break;
+> +    default:
+> +        tts->tpm_tis_spi_state = TIS_SPI_PKT_STATE_DEACTIVATED;
+> +        r = (uint32_t) -1;
+> +    }
+> +
+> +    return r;
+> +}
+> +
+> +/*
+> + * Pre-reading logic for transfer:
+> + * This is to fix the transaction between reading and writing.
+> + * The first byte is arbitrarily inserted so we need to
+> + * shift the all the output bytes (timeline) one byte right.
+> + */
+> +static uint32_t tpm_tis_spi_transfer8_ex(SSIPeripheral *ss, uint32_t tx)
+> +{
+> +    TpmTisSpiState *tts = TPM_TIS_SPI(ss);
+> +    SSIBus *ssibus = (SSIBus *)qdev_get_parent_bus(DEVICE(tts));
+> +
+> +    TpmTisSpiPktState prev_state = tts->tpm_tis_spi_state;
+> +    uint32_t r = tpm_tis_spi_transfer8(ss, tx);
+> +    TpmTisSpiPktState curr_state = tts->tpm_tis_spi_state;
+> +
+> +    if (ssibus->preread &&
+> +       /* cmd state has changed into DATA reading state */
+> +       prev_state != TIS_SPI_PKT_STATE_DATA_RD &&
+> +       curr_state == TIS_SPI_PKT_STATE_DATA_RD) {
+> +        r = tpm_tis_spi_transfer8(ss, 0xFF);
+> +    }
+> +
+> +    return r;
+> +}
+> +
+> +static int tpm_tis_spi_cs(SSIPeripheral *ss, bool select)
+> +{
+> +    TpmTisSpiState *tts = TPM_TIS_SPI(ss);
+> +
+> +    if (select) { /* cs de-assert */
+> +        tts->tpm_tis_spi_state = TIS_SPI_PKT_STATE_DEACTIVATED;
+> +    } else {
+> +        tts->tpm_tis_spi_state = TIS_SPI_PKT_STATE_START;
+> +        tts->first_byte.byte = 0;
+> +        tts->addr.addr = 0;
+> +        tts->data.data = 0;
+> +    }
+> +
+> +    return 0;
+> +}
+> +
+> +static int tpm_tis_pre_save_spi(void *opaque)
+> +{
+> +    TpmTisSpiState *sbdev = opaque;
+> +
+> +    return tpm_tis_pre_save(&sbdev->tpm_state);
+> +}
+> +
+> +static const VMStateDescription vmstate_tpm_tis_spi = {
+> +    .name = "tpm-tis-spi",
+> +    .version_id = 0,
+> +    .pre_save  = tpm_tis_pre_save_spi,
+> +    .fields = (VMStateField[]) {
+> +        VMSTATE_BUFFER(tpm_state.buffer, TpmTisSpiState),
+> +        VMSTATE_UINT16(tpm_state.rw_offset, TpmTisSpiState),
+> +        VMSTATE_UINT8(tpm_state.active_locty, TpmTisSpiState),
+> +        VMSTATE_UINT8(tpm_state.aborting_locty, TpmTisSpiState),
+> +        VMSTATE_UINT8(tpm_state.next_locty, TpmTisSpiState),
+> +
+> +        VMSTATE_STRUCT_ARRAY(tpm_state.loc, TpmTisSpiState, TPM_TIS_NUM_LOCALITIES,
+> +                             0, vmstate_locty, TPMLocality),
+> +
+> +        VMSTATE_END_OF_LIST()
+> +    }
+> +};
+> +
+> +static void tpm_tis_spi_request_completed(TPMIf *ti, int ret)
+> +{
+> +    TpmTisSpiState *sbdev = TPM_TIS_SPI(ti);
+> +    TPMState *s = &sbdev->tpm_state;
+> +
+> +    tpm_tis_request_completed(s, ret);
+> +}
+> +
+> +static enum TPMVersion tpm_tis_spi_get_tpm_version(TPMIf *ti)
+> +{
+> +    TpmTisSpiState *sbdev = TPM_TIS_SPI(ti);
+> +    TPMState *s = &sbdev->tpm_state;
+> +
+> +    return tpm_tis_get_tpm_version(s);
+> +}
+> +
+> +static void tpm_tis_spi_reset(DeviceState *dev)
+> +{
+> +    TpmTisSpiState *sbdev = TPM_TIS_SPI(dev);
+> +    TPMState *s = &sbdev->tpm_state;
+> +
+> +    return tpm_tis_reset(s);
+> +}
+> +
+> +static Property tpm_tis_spi_properties[] = {
+> +    DEFINE_PROP_UINT32("irq", TpmTisSpiState, tpm_state.irq_num, TPM_TIS_IRQ),
+> +    DEFINE_PROP_TPMBE("tpmdev", TpmTisSpiState, tpm_state.be_driver),
+> +    DEFINE_PROP_BOOL("ppi", TpmTisSpiState, tpm_state.ppi_enabled, false),
+> +    DEFINE_PROP_END_OF_LIST(),
+> +};
+> +
+> +static void tpm_tis_spi_realizefn(SSIPeripheral *ss, Error **errp)
+> +{
+> +    TpmTisSpiState *sbdev = TPM_TIS_SPI(ss);
+> +
+> +    if (!tpm_find()) {
+> +        error_setg(errp, "at most one TPM device is permitted");
+> +        return;
+> +    }
+> +
+> +    if (!sbdev->tpm_state.be_driver) {
+> +        error_setg(errp, "'tpmdev' property is required");
+> +        return;
+> +    }
+> +
+> +    DeviceState *spi_gpio = qdev_find_recursive(sysbus_get_default(),
+> +                                                TYPE_SPI_GPIO);
+> +    qdev_connect_gpio_out_named(spi_gpio,
+> +                                "SPI_CS_out", 0,
+> +                                qdev_get_gpio_in_named(DEVICE(ss),
+> +                                SSI_GPIO_CS, 0));
+Typically, this part is done at the machine/board level because it
+has knowledge of all devices but it is possible with the TPM devices?
+
+How do you invoke QEMU ?
+
+Thanks,
+
+C.
+
+> +}
+> +
+> +static void tpm_tis_spi_class_init(ObjectClass *klass, void *data)
+> +{
+> +    DeviceClass *dc = DEVICE_CLASS(klass);
+> +    SSIPeripheralClass *k = SSI_PERIPHERAL_CLASS(klass);
+> +    TPMIfClass *tc = TPM_IF_CLASS(klass);
+> +
+> +    device_class_set_props(dc, tpm_tis_spi_properties);
+> +    k->realize = tpm_tis_spi_realizefn;
+> +    k->transfer = tpm_tis_spi_transfer8_ex;
+> +    k->set_cs = tpm_tis_spi_cs;
+> +    k->cs_polarity = SSI_CS_LOW;
+> +
+> +    dc->vmsd  = &vmstate_tpm_tis_spi;
+> +    tc->model = TPM_MODEL_TPM_TIS;
+> +    dc->user_creatable = true;
+> +    dc->reset = tpm_tis_spi_reset;
+> +    tc->request_completed = tpm_tis_spi_request_completed;
+> +    tc->get_version = tpm_tis_spi_get_tpm_version;
+> +    set_bit(DEVICE_CATEGORY_MISC, dc->categories);
+> +}
+> +
+> +static const TypeInfo tpm_tis_spi_info = {
+> +    .name = TYPE_TPM_TIS_SPI,
+> +    .parent = TYPE_SSI_PERIPHERAL,
+> +    .instance_size = sizeof(TpmTisSpiState),
+> +    .class_size = sizeof(TpmTisSpiClass),
+> +    .class_init  = tpm_tis_spi_class_init,
+> +    .interfaces = (InterfaceInfo[]) {
+> +        { TYPE_TPM_IF },
+> +        { }
+> +    }
+> +};
+> +
+> +static void tpm_tis_spi_register(void)
+> +{
+> +    type_register_static(&tpm_tis_spi_info);
+> +}
+> +
+> +type_init(tpm_tis_spi_register)
+> diff --git a/include/sysemu/tpm.h b/include/sysemu/tpm.h
+> index fb40e30ff6..6a6b311e47 100644
+> --- a/include/sysemu/tpm.h
+> +++ b/include/sysemu/tpm.h
+> @@ -46,6 +46,7 @@ struct TPMIfClass {
+>   
+>   #define TYPE_TPM_TIS_ISA            "tpm-tis"
+>   #define TYPE_TPM_TIS_SYSBUS         "tpm-tis-device"
+> +#define TYPE_TPM_TIS_SPI            "tpm-tis-spi-device"
+>   #define TYPE_TPM_CRB                "tpm-crb"
+>   #define TYPE_TPM_SPAPR              "tpm-spapr"
+>   
+> @@ -53,6 +54,8 @@ struct TPMIfClass {
+>       object_dynamic_cast(OBJECT(chr), TYPE_TPM_TIS_ISA)
+>   #define TPM_IS_TIS_SYSBUS(chr)                      \
+>       object_dynamic_cast(OBJECT(chr), TYPE_TPM_TIS_SYSBUS)
+> +#define TPM_IS_TIS_SPI(chr)                      \
+> +    object_dynamic_cast(OBJECT(chr), TYPE_TPM_TIS_SPI)
+>   #define TPM_IS_CRB(chr)                             \
+>       object_dynamic_cast(OBJECT(chr), TYPE_TPM_CRB)
+>   #define TPM_IS_SPAPR(chr)                           \
 

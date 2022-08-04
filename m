@@ -1,117 +1,116 @@
-Received: by 2002:a05:6512:1086:0:0:0:0 with SMTP id j6csp451624lfg;
-        Thu, 4 Aug 2022 08:31:21 -0700 (PDT)
-X-Google-Smtp-Source: AA6agR607QkKmM6jcAwt0zDCeWDfzacnGriNvlPMfcfhuFLIwWY/lHyLRjQG7hU8K99L3ZT+OPsR
-X-Received: by 2002:ac8:5bd2:0:b0:31e:f083:7e57 with SMTP id b18-20020ac85bd2000000b0031ef0837e57mr1966249qtb.524.1659627080835;
-        Thu, 04 Aug 2022 08:31:20 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1659627080; cv=none;
+Received: by 2002:a05:6512:1086:0:0:0:0 with SMTP id j6csp507517lfg;
+        Thu, 4 Aug 2022 10:12:02 -0700 (PDT)
+X-Google-Smtp-Source: AA6agR6SvlM8jDzWWFwuE7lbix4a4qctJ0YlKTpU9Y7KIKhJ9NCqHBVtGtg9k3hwGhqM/htKP5+K
+X-Received: by 2002:a05:620a:b86:b0:6b8:d74e:1e08 with SMTP id k6-20020a05620a0b8600b006b8d74e1e08mr2178582qkh.166.1659633122187;
+        Thu, 04 Aug 2022 10:12:02 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1659633122; cv=none;
         d=google.com; s=arc-20160816;
-        b=YAUDSbRlVb3aAyWXTpQrdtvfySTAqZAZimx0ISwULHTVjrnvJso0OAD+VSxYwQTE1a
-         vNQEDzbeX/+/WpER6BOywUW1jGdLncQmODwf2AZ2WQo5/PjYADXH+FrL9WKXlcMkpMia
-         WdsVJcOcSDADM5GJtJrquN2XGyDBkfDb/bmVg2gBxI6OaoA7p5m1bZaT/LrYHsIgdP9P
-         MDHy3DVQtMd8CgS0dt3pScsiKpYBLL2m77fDwg9q2L3vNoT99tVLyUqPndrSriFCrYvh
-         UQ9VISmdIbYruYzKPzzhVB8/aBg3g0CR0R4oCTcq0fDHU9rSSByM9DJdMC9bsZElPeG7
-         RK8A==
+        b=blLbMZWngHVaOtxGzx78SOTVCANZvr+sQ5p12t0/iwApzYJkNhbugvkD0nqIkgt25W
+         Wy7R1+N0xONjgXymN2Ogo/UDM/T/QSHbi/6ipJRnOTPpqI4DQQR7ViHB8yeKsjWcAS1m
+         iNc7znoG25eWBmE1Ay4ilm07bKHNgWz8JMkMbLb5L+TeTNe3w87W3BU7kUiCQxLCZ6cF
+         ewNeCLOKIZG0vogu5y6aqEReXn5doC9NC+ltUcTfxUD+gb9NoEHTIBgYSBm+7tacMiV7
+         HU1dNlFO6lT/amzs5IO6DcdU58+vxYyTkNzVxchfVqcX15jc3BHd6l+209PFo9RlBxQg
+         xhhA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:user-agent:message-id:in-reply-to:date:references
-         :subject:cc:to:from:dkim-signature;
-        bh=HjjoDrRt+Z99LDEg+TYoLdNecAFcWqX3uBfxYF1sm4s=;
-        b=dZw/qpeVbp5a000AbkxapKqke2nPTxeWz58nTXyakO4n0VJEqET2g9ILYmps4ckOsE
-         9/swG/+qfa5SiMvWCQDnxjQzDNExuMCX0h4n0DSmh8fADzEUxQ4tnROpO7OifhGtG9jt
-         6i9bPBPPikd5D0olIz76DGQPYKeHhFMu+mWchHHHVsmeLLKBE6JARxxNuAo+IbI3Qwgg
-         X6jNrvikIAgfDRpbdXlTD6xd9op41BjHJ49+6WckDr3G6pw9rimzzDFiNb+kBcZZA7ef
-         pgxrY9TjlojgOlBjt78BUzYjN+QgGeZv3EBFGomKdFu2SDz94yC/O/cQislo52LKFFxB
-         eAcw==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=sxFq4MkCefRbaVSTryF7kaatZcdfcgqjn/6pFaw1Z6w=;
+        b=BYsFKsQsIJlRJgQavV/ub5+GVB93fzOuQ84RUHWuIZ7baiFDJAqoKVcBY1QtgeOMYE
+         10F02QsKNl/VYcnAs/1VQ8VVY6wifhyJwOnPsXFh+LsgWRHn5ipsJLwX0a8oDBM+R2BX
+         Fg2MrU8fxEyngWeI8dj7cpZc26NCwFbCrd9COCyl2kCwDpIZHLZDmWaGE7GeqHN4pj3R
+         rvN/NRtdIiFv0SdqJnNltP83D50RJvBpcOjaWnP//x8O/9NVUGv0ZJI4DlzkPCqkpqxJ
+         vz7Ty74gjP1LCneK76PD+CXU4SUh2dNhshfhWQB9RB6xElt01I+o9CvRilJ+7DPGG959
+         e4TQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=YWWsrZVF;
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=gLzyeAZY;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id n17-20020a05620a295100b006b90dcf6b30si462908qkp.696.2022.08.04.08.31.20
+        by mx.google.com with ESMTPS id d13-20020ac8060d000000b0033c616d2192si858991qth.713.2022.08.04.10.12.02
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 04 Aug 2022 08:31:20 -0700 (PDT)
+        Thu, 04 Aug 2022 10:12:02 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=YWWsrZVF;
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=gLzyeAZY;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:46444 helo=lists1p.gnu.org)
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:48488 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1oJcoi-0007OR-Ad
-	for alex.bennee@linaro.org; Thu, 04 Aug 2022 11:31:20 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:55036)
+	id 1oJeO9-0002X3-KO
+	for alex.bennee@linaro.org; Thu, 04 Aug 2022 13:12:01 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:45994)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1oJcoD-0007K5-19
- for qemu-arm@nongnu.org; Thu, 04 Aug 2022 11:30:52 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:50156)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1oJcoA-0008RU-GK
- for qemu-arm@nongnu.org; Thu, 04 Aug 2022 11:30:47 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1659627045;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=HjjoDrRt+Z99LDEg+TYoLdNecAFcWqX3uBfxYF1sm4s=;
- b=YWWsrZVF9LecJ1FJlG+DBr6zIbKloLxQUwLg8H+YDkCsv/U2nJCvQwDqUVkbC3ge1XnrFr
- SNTNlMEKDxLODGstqXAeEKEom8vvidyhE5oeUR77U6kF5tIF2ZV3m0i9S9dti4IpkUJudM
- LmP7dPPEqj1dUcnakg6PN7hr7JC0M8s=
-Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
- [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-65-FaZ2rS4gPwW3B_R13xVExg-1; Thu, 04 Aug 2022 11:30:42 -0400
-X-MC-Unique: FaZ2rS4gPwW3B_R13xVExg-1
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.rdu2.redhat.com
- [10.11.54.1])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id CDB06801585;
- Thu,  4 Aug 2022 15:30:41 +0000 (UTC)
-Received: from blackfin.pond.sub.org (unknown [10.39.194.81])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 5EC8740CF8EA;
- Thu,  4 Aug 2022 15:30:41 +0000 (UTC)
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
- id 1B13C21E6930; Thu,  4 Aug 2022 17:30:40 +0200 (CEST)
-From: Markus Armbruster <armbru@redhat.com>
-To: Daniel P. =?utf-8?Q?Berrang=C3=A9?= <berrange@redhat.com>
-Cc: Markus Armbruster <armbru@redhat.com>,  Peter Maydell
- <peter.maydell@linaro.org>,  Kevin Wolf <kwolf@redhat.com>,  Hao Wu
- <wuhaotsh@google.com>,  richard.henderson@linaro.org,
- qemu-arm@nongnu.org,  qemu-devel@nongnu.org,  venture@google.com,
- Avi.Fishman@nuvoton.com,  kfting@nuvoton.com,  hskinnemoen@google.com,
- f4bug@amsat.org,  bin.meng@windriver.com,  qemu-block@nongnu.org,
- thuth@redhat.com,  Hanna Reitz <hreitz@redhat.com>
-Subject: Re: [PATCH v5 5/8] blockdev: Add a new IF type IF_OTHER
-References: <20220714182836.89602-1-wuhaotsh@google.com>
- <20220714182836.89602-6-wuhaotsh@google.com>
- <87ilnuda33.fsf@pond.sub.org> <YuGMFRDj3tLOIJK7@redhat.com>
- <CAFEAcA-_TkDW4tPxvmwEt-Rr6VAr_7aWNX2++CE+1G5cBPtiBg@mail.gmail.com>
- <YuvY8/WL0Jojv1Uj@redhat.com> <877d3odpm8.fsf@pond.sub.org>
- <YuvjJ7+B61UCLDrK@redhat.com>
-Date: Thu, 04 Aug 2022 17:30:40 +0200
-In-Reply-To: <YuvjJ7+B61UCLDrK@redhat.com> ("Daniel P. =?utf-8?Q?Berrang?=
- =?utf-8?Q?=C3=A9=22's?= message of
- "Thu, 4 Aug 2022 16:17:59 +0100")
-Message-ID: <87bkt0c9gf.fsf@pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/27.2 (gnu/linux)
+ (Exim 4.90_1) (envelope-from <dz4list@gmail.com>)
+ id 1oJeIa-0001sW-LY; Thu, 04 Aug 2022 13:06:16 -0400
+Received: from mail-qv1-xf30.google.com ([2607:f8b0:4864:20::f30]:36598)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <dz4list@gmail.com>)
+ id 1oJeIY-0006QD-Bo; Thu, 04 Aug 2022 13:06:16 -0400
+Received: by mail-qv1-xf30.google.com with SMTP id y11so61019qvn.3;
+ Thu, 04 Aug 2022 10:06:12 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:from:to:cc;
+ bh=sxFq4MkCefRbaVSTryF7kaatZcdfcgqjn/6pFaw1Z6w=;
+ b=gLzyeAZY30lYh6BWf1CAh2Zvq73Gy9ikqJ7pZhZyN8BcQ2e3TqE30jjLUkejXOtbF2
+ cK5H87+sMDH70GiTFelQBcQTXCwxx8NMSThr+fFGB+QxZG+WciMyviSk+vjXARXuNeW+
+ +Zc6c1pZ1j0KqUhxfjuO8gfvP+rk81dAS5uwZ15Hk0a6IeUN+hNg/13J0wmX9QUufZug
+ qfGxHZwHrWueL0cpKjBcpSY9YKm6OfNQQs/yZphQgydOEHUIgFLgm9qnsOp4s6F5JA2E
+ sHmJr0vLKBety+61lkCHM1oYrCOVcs4JL2wAfmYZODVC0wridePK5FRgzSfxbLl+wCS2
+ wwdw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc;
+ bh=sxFq4MkCefRbaVSTryF7kaatZcdfcgqjn/6pFaw1Z6w=;
+ b=HSkSXuh9D9UBJpY3e0OSf51VZterwEItgGiaxg0aqW1L+x47C1B9Vi85Nl8+CzgT0E
+ 4EXIFAz5SOYKK77qKria3sWjlqJsPcdcX041cg96RiCd6uQb/jwJ6V87oOWBqqCkB+R/
+ eKhIomD0/JszqwIlmvDCJ7Mtd0xv8a7FQAldlkl8JH8uW7jWZw4xqgrU6rxRloNcEvx6
+ TnFrtmHTb+k7rzaX6g0V9NK1DL2vMnA7S+Hz6xQuCgClKaHQS4dvxuiahBE3jEnK2eqm
+ w9d1ZTJvgYmIUnqAwwdgFw0aFQ8/WIsMBD/L2aBd5a67f0sbYRFl6cVdpCV+5pnLFObn
+ QX1Q==
+X-Gm-Message-State: ACgBeo1LBes+YZ1yrclfFtNWBGHrvh8+FQHqwKIOIvDaXCA3zl7ukZIo
+ qoCJlUooXfFT6g2FO473CtDq+e7dFjTRquiwFoQ=
+X-Received: by 2002:a05:6214:d88:b0:478:c84c:6c17 with SMTP id
+ e8-20020a0562140d8800b00478c84c6c17mr1058274qve.63.1659632771577; Thu, 04 Aug
+ 2022 10:06:11 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+References: <20220728232322.2921703-1-irischenlj@fb.com>
+ <435b3e89-f9fd-c257-b03d-a12d4b59ac6b@kaod.org>
+ <YuQZP4xkkU2R9VmO@pdel-mbp.dhcp.thefacebook.com>
+ <6d4a3912-a386-a784-8db4-7743bb1f1063@kaod.org>
+ <YuWrbJglNYdGOmUh@pdel-mbp.dhcp.thefacebook.com>
+ <2f7f05aa-6aa2-970e-b4ab-bfbed80b381b@kaod.org>
+In-Reply-To: <2f7f05aa-6aa2-970e-b4ab-bfbed80b381b@kaod.org>
+From: Dan Zhang <dz4list@gmail.com>
+Date: Thu, 4 Aug 2022 10:06:00 -0700
+Message-ID: <CAJxKyLfOs9aQar5NP7j-1qsqeZGbsofEzDfr5QbvRrH_rv2gjg@mail.gmail.com>
+Subject: Re: [RFC 0/3] Add Generic SPI GPIO model
+To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
+Cc: Peter Delevoryas <peter@pjd.dev>, Iris Chen <irischenlj@fb.com>,
+ Peter Delevoryas <pdel@fb.com>, 
+ Cameron Esfahani via <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
+ patrick@stwcx.xyz, 
+ Alistair Francis <alistair@alistair23.me>, kwolf@redhat.com, hreitz@redhat.com,
+ Peter Maydell <peter.maydell@linaro.org>, Andrew Jeffery <andrew@aj.id.au>, 
+ Joel Stanley <joel@jms.id.au>, thuth@redhat.com, lvivier@redhat.com,
+ pbonzini@redhat.com, qemu-block@nongnu.org
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-X-Scanned-By: MIMEDefang 2.84 on 10.11.54.1
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=armbru@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -28
-X-Spam_score: -2.9
+Received-SPF: pass client-ip=2607:f8b0:4864:20::f30;
+ envelope-from=dz4list@gmail.com; helo=mail-qv1-xf30.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.082,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -126,76 +125,312 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: szri0JPiZ2GI
+X-TUID: XB6cMrVJjDZL
 
-Daniel P. Berrang=C3=A9 <berrange@redhat.com> writes:
-
-> On Thu, Aug 04, 2022 at 04:56:15PM +0200, Markus Armbruster wrote:
->> Daniel P. Berrang=C3=A9 <berrange@redhat.com> writes:
->>=20
->> > On Thu, Jul 28, 2022 at 10:46:35AM +0100, Peter Maydell wrote:
->> >> On Wed, 27 Jul 2022 at 20:03, Kevin Wolf <kwolf@redhat.com> wrote:
->> >> >
->> >> > Am 18.07.2022 um 11:49 hat Markus Armbruster geschrieben:
->> >> > > An OTP device isn't really a parallel flash, and neither are eFus=
-es.
->> >> > > More fast-and-lose use of IF_PFLASH may exist in the tree, and ma=
-ybe of
->> >> > > other interface types, too.
->> >> > >
->> >> > > This patch introduces IF_OTHER.  The patch after next uses it for=
- an
->> >> > > EEPROM device.
->> >> > >
->> >> > > Do we want IF_OTHER?
->> >> >
->> >> > What would the semantics even be? Any block device that doesn't pic=
-k up
->> >> > a different category may pick up IF_OTHER backends?
->> >> >
->> >> > It certainly feels like a strange interface to ask for "other" disk=
- and
->> >> > then getting as surprise what this other thing might be. It's
->> >> > essentially the same as having an explicit '-device other', and I
->> >> > suppose most people would find that strange.
->> >> >
->> >> > > If no, I guess we get to abuse IF_PFLASH some more.
->> >> > >
->> >> > > If yes, I guess we should use IF_PFLASH only for actual parallel =
-flash
->> >> > > memory going forward.  Cleaning up existing abuse of IF_PFLASH ma=
-y not
->> >> > > be worth the trouble, though.
->> >> > >
->> >> > > Thoughts?
->> >> >
->> >> > If the existing types aren't good enough (I don't have an opinion on
->> >> > whether IF_PFLASH is a good match), let's add a new one. But a spec=
-ific
->> >> > new one, not just "other".
->> >>=20
->> >> I think the common thread is "this isn't what anybody actually thinks
->> >> of as being a 'disk', but we would like to back it with a block device
->> >> anyway". That can cover a fair range of possibilities...
->> >
->> > Given that, do we even want/have to use -drive for this ?    We can use
->> > -blockdev for the backend and reference that from any -device we want
->> > to create, and leave -drive out of the picture entirely
->>=20
->> -drive is our only means to configure onboard devices.
->>=20
->> We've talked about better means a few times, but no conclusions.  I can
->> dig up pointers, if you're interested.
+On Tue, Aug 2, 2022 at 7:25 AM C=C3=A9dric Le Goater <clg@kaod.org> wrote:
 >
-> For onboard pflash with x86, we've just got properties against the
-> machine that we can point to a blockdev.
+> On 7/31/22 00:06, Peter Delevoryas wrote:
+> > On Sat, Jul 30, 2022 at 11:18:33PM +0200, C=C3=A9dric Le Goater wrote:
+> >> On 7/29/22 19:30, Peter Delevoryas wrote:
+> >>> On Fri, Jul 29, 2022 at 03:25:55PM +0200, C=C3=A9dric Le Goater wrote=
+:
+> >>>> Hello Iris,
+> >>>>
+> >>>> On 7/29/22 01:23, Iris Chen wrote:
+> >>>>> Hey everyone,
+> >>>>>
+> >>>>> I have been working on a project to add support for SPI-based TPMs =
+in QEMU.
+> >>>>> Currently, most of our vboot platforms using a SPI-based TPM use th=
+e Linux
+> >>>>> SPI-GPIO driver to "bit-bang" the SPI protocol. This is because the=
+ Aspeed
+> >>>>> SPI controller (modeled in QEMU under hw/ssi/aspeed_smc.c) has an i=
+mplementation
+> >>>>> deficiency that prevents bi-directional operations.
+> >>>> aspeed_smc models the Aspeed FMC/SPI controllers which have a well d=
+efined
+> >>>> HW interface. Your model proposal adds support for a new SPI control=
+ler
+> >>>> using bitbang GPIOs. These are really two differents models. I don't=
+ see
+> >>>> how you could reuse aspeed_smc for this purpose.
+> >>>>
+> >>>> or you mean that Linux is using the SPI-GPIO driver because the Linu=
+x
+> >>>> Aspeed SMC driver doesn't match the need ? It is true that the Linux
+> >>>> driver is not generic, it deals with flash devices only. But that's
+> >>>> another problem.
+> >>>>
+> >>>>> Thus, in order to connect
+> >>>>> a TPM to this bus, my patch implements a QEMU SPI-GPIO driver (as t=
+he QEMU
+> >>>>> counterpart of the Linux SPI-GPIO driver).
+> >>>>>
+> >>>>> As we use SPI-based TPMs on many of our BMCs for the secure-boot im=
+plementation,
+> >>>>> I have already tested this implementation locally with our Yosemite=
+-v3.5 platform
+> >>>>> and Facebook-OpenBMC. This model was tested by connecting a generic=
+ SPI-NOR (m25p80
+> >>>>> for example) to the Yosemite-v3.5 SPI bus containing the TPM.
+> >>>>>
+> >>>>> This patch is an RFC because I have several questions about design.=
+ Although the
+> >>>>> model is working, I understand there are many areas where the desig=
+n decision
+> >>>>> is not deal (ie. abstracting hard coded GPIO values). Below are som=
+e details of the
+> >>>>> patch and specific areas where I would appreciate feedback on how t=
+o make this better:
+> >>>>> hw/arm/aspeed.c:
+> >>>>> I am not sure where the best place is to instantiate the spi_gpio b=
+esides the
+> >>>>> aspeed_machine_init.
+> >>>>
+> >>>> The SPI GPIO device would be a platform device and not a SoC device.
+> >>>> Hence, it should be instantiated at the machine level, like the I2C
+> >>>> device are, using properties to let the model know about the GPIOs
+> >>>> that should be driven to implement the SPI protocol.
+> >>>
+> >>> Agreed, should be like an I2C device.
+> >>>
+> >>>>
+> >>>> Ideally, the state of the GPIO controller pins and the SPI GPIO stat=
+e
+> >>>> should be shared. I think that's what you are trying to do that with
+> >>>> attribute 'controller_state' in your patch ? But, the way it is done
+> >>>> today, is too tightly coupled (names) with the Aspeed GPIO model to
+> >>>> be generic.
+> >>>>
+> >>>> I think we need an intermediate QOM interface, or a base class, to
+> >>>> implement an abstract SPI GPIO model and an Aspeed SPI GPIO model
+> >>>> on top which would be linked to the Aspeed GPIO model of the SoC
+> >>>> in use.
+> >>>
+> >>> Disagree, I feel like we can accomplish this without inheritance.
+> >>>
+> >>>>
+> >>>> Or we could introduce some kind of generic GPIO controller that
+> >>>> we would link the SPI GPIO model with (using a property). The
+> >>>> Aspeed GPIO model would be of that kind and the SPI GPIO model
+> >>>> would be able to drive the pins using a common interface.
+> >>>> That's another way to do it.
+> >>>
+> >>> Agree, I would like to go in this direction if at all possible.
+> >> Let's give it a try then. I would introduce a new QOM interface,
+> >> something like  :
+> >>
+> >>      #define TYPE_GPIO_INTERFACE "gpio-interface"
+> >>      #define GPIO_INTERFACE(obj)                                     \
+> >>          INTERFACE_CHECK(GpioInterface, (obj), TYPE_GPIO_INTERFACE)
+> >>      typedef struct GpioInterfaceClass GpioInterfaceClass;
+> >>      DECLARE_CLASS_CHECKERS(GpioInterfaceClass, GPIO_INTERFACE,
+> >>                             TYPE_GPIO_INTERFACE)
+> >>      struct GpioInterfaceClass {
+> >>          InterfaceClass parent;
+> >>          int (*get)(GpioInterface *gi, ...);
+> >>          int (*set)(GpioInterface *gi, ...);
+> >>          ...
+> >>      };
+> >>
+> >> and implement the interface handlers under the AspeedGPIO model.
+> >> The SPI GPIO model would have a link to such an interface to drive
+> >> the GPIO pins.
+> >>
+> >> See IPMI and XIVE for some more complete models.
+> >
+> > This sounds good, but I just want to clarify first:
+> >
+> > Is it necessary to introduce a GPIO interface?
+>
+> Well, my feeling is that we need an abstract layer to interface the
+> SPI GPIO model with any model of GPIO controller.
+>
+This abstract layer can be in form of virtual func of spi_gpio base class
+set_cs(bool), set_clk(), set_mosi(), get_miso().
+This give user (normally the board model creator ) the full flexibility as
+how to implement these function in inherit class of spi_gpio i.e.
+aspeed_spi_gpio
 
-True, but the vast majority of onboard block devices doesn't come with
-such properties.  Please see
+The down side of virtual function "abstract" layer is that user need
+to write QEMU code.
 
-Subject: On configuring onboard block devices with -blockdev (was: [PATCH v=
-4 6/7] hw/nvram: Update at24c EEPROM init function in NPCM7xx boards)
-Date: Mon, 15 Nov 2021 16:28:33 +0100
-Message-ID: <875ystigke.fsf_-_@dusky.pond.sub.org>
-https://lists.gnu.org/archive/html/qemu-devel/2021-11/msg03173.html
+Another form of abstract layer is "output pin and properties of GPIO
+controller model"
+The pro of this is that as long as the GPIO controller provides these
+required output pin
+and property, the final user can use command line input parameters to
+connect the
+spi_gpio with the gpio controller.
 
+The required pin and property to controller model will be:
+Two named output pins exposed as QEMUIrq, which will be used as SPI_CS
+and SPI_CLK.
+Two properties which can be used by spi_gpio to get (sample) the level
+as SPI_MOSI and
+set the level as SPI_MISO.
+
+
+> > Or, could we connect the IRQ's just using the existing
+> > QOM/sysbus/object/IRQ infrastructure?
+>
+> and we would use the QOM canonical path to identify the GPIO pins
+> and QOM routines to get and set the values ? It looks feasible.
+> That's how I would do it in a script but not in model.
+
+
+
+>
+> > I'll investigate if we can connect the IRQ's without introducing a new
+> > interface. We can continue with this design for now though.
+>
+> OK. Let's see.
+>
+> >>>>> Could we add the ability to instantiate it on the command line?
+> >>>>
+> >>>> It might be complex to identify the QOM object to use as the GPIO
+> >>>> controller from the command line since it is on the SoC and not
+> >>>> a platform device. In that case, an Aspeed SPI GPIO model would
+> >>>> be a better approach. we  would have to peek in the machine/soc to
+> >>>> get a link on the Aspeed GPIO model in the realize routine of the
+> >>>> Aspeed SPI GPIO model.
+> >>>
+> >>> Hrrrm perhaps, I feel like it shouldn't be that hard though.
+> >>>
+> >>> - Get a pointer to the QOM object that holds the GPIO's using object
+> >>>     path or ID. Something similar to '-device ftgmac100,netdev=3D<id>=
+'
+> >>>     right?
+> >>
+> >> yes. something like that.
+> >
+> > +1
+> >
+> >>
+> >>> - Get the GPIO's by name from the QOM object.
+> >>
+> >> yes.
+> >
+> > +1
+> >
+> >>
+> >>> In this situation, I think we should be able to get the GPIO controll=
+er
+> >>> object, and then get the IRQ's by the "sysbus-irq[126]"/etc name.
+> >>>
+> >>> We could refactor the aspeed_gpio.c model to name the IRQ's like the
+> >>> properties,.  to use "gpioX4" instead of "sysbus-irq[*]".
+> >>
+> >> we could use qdev_init_gpio_out_named() instead of sysbus_init_irq()
+> >> to name them.
+> >>
+> >
+> > +1, I actually suggested to Iris offline that this change might be
+> > useful regardless.
+>
+> yes. This change can come as a preliminary.
+>
+> >
+> >>
+> >>>>> m25p80_transfer8_ex in hw/block/m25p80.c:
+> >>>>> Existing SPI model assumed that the output byte is fully formed, ca=
+n be passed to
+> >>>>> the SPI device, and the input byte can be returned, all in one oper=
+ation. With
+> >>>>> SPI-GPIO we don't have the input byte until all 8 bits of the outpu=
+t have been
+> >>>>> shifted out, so we have to prime the MISO with bogus values (0xFF).
+> >>>>
+> >>>> That's fine I think. We do something similar for dummies.
+> >>>>
+> >>>>> MOSI pin in spi_gpio: the mosi pin is not included and we poll the =
+realtime value
+> >>>>> of the gpio for input bits to prevent bugs with caching the mosi va=
+lue. It was discovered
+> >>>>> during testing that when using the mosi pin as the input pin, the m=
+osi value was not
+> >>>>> being updated due to a kernel and aspeed_gpio model optimization.
+> >>>>
+> >>>> ah. We need help from Andrew ! the model should have a mosi pin .
+> >>>
+> >>> Not sure if this was clear, but Iris is just saying that she used obj=
+ect
+> >>> properties to read and write the mosi, miso, and clk pins, rather tha=
+n
+> >>> the IRQ's.
+> >>
+> >> The IRQ line is not raised ?
+> >
+> > Something like that, yes. She was having trouble following the IRQ leve=
+l
+> > purely through edge changes. Perhaps this is due to a bug in
+> > aspeed_gpio.c.
+>
+> That could be it. The HW logic is quite complex. Adding more tests as
+> suggested by Andrew would help.
+>
+>
+> Thanks,
+>
+> C.
+>
+>
+>
+> >
+> >>
+> >>> Certainly we'd like to use IRQ's instead, but she ran into correctnes=
+s
+> >>> problems. Maybe we can investigate that further and fix it.
+> >>
+> >> So much is happening in that mode. We need more trace events in the As=
+peed
+> >> GPIO model at least an extra in aspeed_gpio_update()
+> >
+> > +1
+> >
+> >>
+> >> Thanks,
+> >>
+> >> C.
+> >>
+> >>>
+> >>>>
+> >>>> Thanks,
+> >>>>
+> >>>> C.
+> >>>>
+> >>>>> Thus, here we are
+> >>>>> reading the value directly from the gpio controller instead of wait=
+ing for the push.
+> >>>>>
+> >>>>> I realize there are Aspeed specifics in the spi_gpio model. To make=
+ this extensible,
+> >>>>> is it preferred to make this into a base class and have our Aspeed =
+SPI GPIO extend
+> >>>>> this or we could set up params to pass in the constructor?
+> >>>>>
+> >>>>> Thanks for your review and any direction here would be helpful :)
+> >>>>>
+> >>>>> Iris Chen (3):
+> >>>>>      hw: m25p80: add prereading ability in transfer8
+> >>>>>      hw: spi_gpio: add spi gpio model
+> >>>>>      hw: aspeed: hook up the spi gpio model
+> >>>>>
+> >>>>>     hw/arm/Kconfig            |   1 +
+> >>>>>     hw/arm/aspeed.c           |   5 ++
+> >>>>>     hw/block/m25p80.c         |  29 ++++++-
+> >>>>>     hw/ssi/Kconfig            |   4 +
+> >>>>>     hw/ssi/meson.build        |   1 +
+> >>>>>     hw/ssi/spi_gpio.c         | 166 +++++++++++++++++++++++++++++++=
++++++++
+> >>>>>     hw/ssi/ssi.c              |   4 -
+> >>>>>     include/hw/ssi/spi_gpio.h |  38 +++++++++
+> >>>>>     include/hw/ssi/ssi.h      |   5 ++
+> >>>>>     9 files changed, 248 insertions(+), 5 deletions(-)
+> >>>>>     create mode 100644 hw/ssi/spi_gpio.c
+> >>>>>     create mode 100644 include/hw/ssi/spi_gpio.h
+> >>>>>
+> >>>>
+> >>
+>

@@ -1,109 +1,110 @@
-Received: by 2002:a05:6512:1086:0:0:0:0 with SMTP id j6csp507517lfg;
-        Thu, 4 Aug 2022 10:12:02 -0700 (PDT)
-X-Google-Smtp-Source: AA6agR6SvlM8jDzWWFwuE7lbix4a4qctJ0YlKTpU9Y7KIKhJ9NCqHBVtGtg9k3hwGhqM/htKP5+K
-X-Received: by 2002:a05:620a:b86:b0:6b8:d74e:1e08 with SMTP id k6-20020a05620a0b8600b006b8d74e1e08mr2178582qkh.166.1659633122187;
-        Thu, 04 Aug 2022 10:12:02 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1659633122; cv=none;
+Received: by 2002:a05:6512:1086:0:0:0:0 with SMTP id j6csp536171lfg;
+        Thu, 4 Aug 2022 11:08:51 -0700 (PDT)
+X-Google-Smtp-Source: AA6agR672SZppChc/NwnRJgRaovJJYoSYMrtPqBtMnb79KKSYh1mqBtANK/3dO0biuDiES1VYssH
+X-Received: by 2002:a05:6214:cad:b0:474:92f4:3db3 with SMTP id s13-20020a0562140cad00b0047492f43db3mr2531996qvs.78.1659636531602;
+        Thu, 04 Aug 2022 11:08:51 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1659636531; cv=none;
         d=google.com; s=arc-20160816;
-        b=blLbMZWngHVaOtxGzx78SOTVCANZvr+sQ5p12t0/iwApzYJkNhbugvkD0nqIkgt25W
-         Wy7R1+N0xONjgXymN2Ogo/UDM/T/QSHbi/6ipJRnOTPpqI4DQQR7ViHB8yeKsjWcAS1m
-         iNc7znoG25eWBmE1Ay4ilm07bKHNgWz8JMkMbLb5L+TeTNe3w87W3BU7kUiCQxLCZ6cF
-         ewNeCLOKIZG0vogu5y6aqEReXn5doC9NC+ltUcTfxUD+gb9NoEHTIBgYSBm+7tacMiV7
-         HU1dNlFO6lT/amzs5IO6DcdU58+vxYyTkNzVxchfVqcX15jc3BHd6l+209PFo9RlBxQg
-         xhhA==
+        b=h8Uk2oeeTBzOQO/iYbCub7Ms8qcC0O2mhpmtOLuQCQdmchELPFyrHJjS3RsPCJ0MYL
+         b6df/QqmgRJAaM8nIV5t0ExAt4+IO7yYiIxLZsaD5AUtqGIZXLZY3AeWztAekzJCJ/sl
+         XhFYk+r6LsMSpvdSfr5ta3Yb0uixTPXgNcD1UFT4no782dUjaiafgEKopflZUiQNIygc
+         AKaPXopML67wtlNFVMkKRbhwNd+jPNZx9gX6Oh1jK0PqHRlz07/gfyxbFOGLsX7CDzfA
+         CyT4hBIBawqbeknF/VQbO959QD2qZGmQlkeQfe0+up+TZF0v93wT8zsMxYCzsO8O67Kj
+         iGqA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
          :subject:message-id:date:from:in-reply-to:references:mime-version
          :dkim-signature;
-        bh=sxFq4MkCefRbaVSTryF7kaatZcdfcgqjn/6pFaw1Z6w=;
-        b=BYsFKsQsIJlRJgQavV/ub5+GVB93fzOuQ84RUHWuIZ7baiFDJAqoKVcBY1QtgeOMYE
-         10F02QsKNl/VYcnAs/1VQ8VVY6wifhyJwOnPsXFh+LsgWRHn5ipsJLwX0a8oDBM+R2BX
-         Fg2MrU8fxEyngWeI8dj7cpZc26NCwFbCrd9COCyl2kCwDpIZHLZDmWaGE7GeqHN4pj3R
-         rvN/NRtdIiFv0SdqJnNltP83D50RJvBpcOjaWnP//x8O/9NVUGv0ZJI4DlzkPCqkpqxJ
-         vz7Ty74gjP1LCneK76PD+CXU4SUh2dNhshfhWQB9RB6xElt01I+o9CvRilJ+7DPGG959
-         e4TQ==
+        bh=3b5Vj2xeH8mRPvwr3nsSzNInUGNHMkJh4gypXzt6Kd0=;
+        b=jd6A8qscYWAxhkc5rOAhiYJ4VDC5U+YV6WtQT3vHt0pEwnr4ihcJ1fNSgs1OhdCJ7w
+         ZTEPahSV6LWRAPc7MyQ1Rxt912DBuGe4+Hq5eR9auArbBQDNvhY6LfEeOTwPCIfMdigb
+         naIg1aF720GKObg+5ig+3yyAvFfcsAyfbacOkBFTryjBxbKjddv+xBeRIznHrLQve47B
+         yVn4mD4fOrVotZGtyMTh9Va2rXkYH34EAV9rzg4weoSLtRmURSfXtxTGebWJvNz6EUGR
+         RBMCnuMqBQYr82h0FUAfMU7A8g9ogrB9hW2zBYjTPKbswjsIB37bIw5ExnkiXVQBRAZ1
+         reTg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=gLzyeAZY;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=Var5bLAF;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d13-20020ac8060d000000b0033c616d2192si858991qth.713.2022.08.04.10.12.02
+        by mx.google.com with ESMTPS id w13-20020ac857cd000000b0033af1d0f288si1357985qta.738.2022.08.04.11.08.51
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 04 Aug 2022 10:12:02 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 04 Aug 2022 11:08:51 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=gLzyeAZY;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=Var5bLAF;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:48488 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:43324 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1oJeO9-0002X3-KO
-	for alex.bennee@linaro.org; Thu, 04 Aug 2022 13:12:01 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45994)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1oJfH9-0008Nr-2q
+	for alex.bennee@linaro.org; Thu, 04 Aug 2022 14:08:51 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:58764)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <dz4list@gmail.com>)
- id 1oJeIa-0001sW-LY; Thu, 04 Aug 2022 13:06:16 -0400
-Received: from mail-qv1-xf30.google.com ([2607:f8b0:4864:20::f30]:36598)
+ id 1oJfFp-0006rR-B4; Thu, 04 Aug 2022 14:07:29 -0400
+Received: from mail-qv1-xf34.google.com ([2607:f8b0:4864:20::f34]:35411)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <dz4list@gmail.com>)
- id 1oJeIY-0006QD-Bo; Thu, 04 Aug 2022 13:06:16 -0400
-Received: by mail-qv1-xf30.google.com with SMTP id y11so61019qvn.3;
- Thu, 04 Aug 2022 10:06:12 -0700 (PDT)
+ id 1oJfFl-00085D-29; Thu, 04 Aug 2022 14:07:28 -0400
+Received: by mail-qv1-xf34.google.com with SMTP id b7so187879qvq.2;
+ Thu, 04 Aug 2022 11:07:22 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
  h=content-transfer-encoding:cc:to:subject:message-id:date:from
  :in-reply-to:references:mime-version:from:to:cc;
- bh=sxFq4MkCefRbaVSTryF7kaatZcdfcgqjn/6pFaw1Z6w=;
- b=gLzyeAZY30lYh6BWf1CAh2Zvq73Gy9ikqJ7pZhZyN8BcQ2e3TqE30jjLUkejXOtbF2
- cK5H87+sMDH70GiTFelQBcQTXCwxx8NMSThr+fFGB+QxZG+WciMyviSk+vjXARXuNeW+
- +Zc6c1pZ1j0KqUhxfjuO8gfvP+rk81dAS5uwZ15Hk0a6IeUN+hNg/13J0wmX9QUufZug
- qfGxHZwHrWueL0cpKjBcpSY9YKm6OfNQQs/yZphQgydOEHUIgFLgm9qnsOp4s6F5JA2E
- sHmJr0vLKBety+61lkCHM1oYrCOVcs4JL2wAfmYZODVC0wridePK5FRgzSfxbLl+wCS2
- wwdw==
+ bh=3b5Vj2xeH8mRPvwr3nsSzNInUGNHMkJh4gypXzt6Kd0=;
+ b=Var5bLAFGeYxWYH3ftfaRmYjuPV4f5ckjTSg5c9h3ffuRx9FxP+Gpbj2Rt8ngfhQzM
+ MhIzk6VyyLSYWMlkjyxzYVdBTQqzPjSOV2ykBcRhZEwKlFb7VYZvwUwdpHDrjm7A2Yd5
+ E3mzaunadARQqMxlmfhIm04aBeg80OJ9X/GlAGAg4QiSvxt16Qx8wtD315iKIAHr/eQH
+ 7vOwy28Q0rCg0frNnVd665xnESdhZ6My65scy6bJsahsI6GrjqEJ0RR0IPx85pz1gtqZ
+ +89C7tkPggcH8p+DWl1ryDdFEJOAAJY+4CBltYDxqk51oRlZotE0LHJMZbEAZsv1gQmj
+ jf7g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=content-transfer-encoding:cc:to:subject:message-id:date:from
  :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc;
- bh=sxFq4MkCefRbaVSTryF7kaatZcdfcgqjn/6pFaw1Z6w=;
- b=HSkSXuh9D9UBJpY3e0OSf51VZterwEItgGiaxg0aqW1L+x47C1B9Vi85Nl8+CzgT0E
- 4EXIFAz5SOYKK77qKria3sWjlqJsPcdcX041cg96RiCd6uQb/jwJ6V87oOWBqqCkB+R/
- eKhIomD0/JszqwIlmvDCJ7Mtd0xv8a7FQAldlkl8JH8uW7jWZw4xqgrU6rxRloNcEvx6
- TnFrtmHTb+k7rzaX6g0V9NK1DL2vMnA7S+Hz6xQuCgClKaHQS4dvxuiahBE3jEnK2eqm
- w9d1ZTJvgYmIUnqAwwdgFw0aFQ8/WIsMBD/L2aBd5a67f0sbYRFl6cVdpCV+5pnLFObn
- QX1Q==
-X-Gm-Message-State: ACgBeo1LBes+YZ1yrclfFtNWBGHrvh8+FQHqwKIOIvDaXCA3zl7ukZIo
- qoCJlUooXfFT6g2FO473CtDq+e7dFjTRquiwFoQ=
-X-Received: by 2002:a05:6214:d88:b0:478:c84c:6c17 with SMTP id
- e8-20020a0562140d8800b00478c84c6c17mr1058274qve.63.1659632771577; Thu, 04 Aug
- 2022 10:06:11 -0700 (PDT)
+ bh=3b5Vj2xeH8mRPvwr3nsSzNInUGNHMkJh4gypXzt6Kd0=;
+ b=oZLbWhLn8yZeA/MZPvqjUYpiEWBHGFIz7dUF0t8dpa5dx5gWb093+pIcfdEItYCVlE
+ 0ZKzJ2MuLGUDB0vuXmJG+fWFrN7Hcl6+a58NeISW/6Awub0mQSnc+BjjtOLXia/QA063
+ ou7QKf/vgkSEQGcyr7pFzol6fxWM9zAN4qh0mRbr5K2ZRk8aXNWKHb8s2Lwq8QX6Sx6n
+ ytgNyTfrzj7d3P8ccgWrl7BoS9qp6+i8vdsO0eAr776UEB2lVA+Vji4jCMcS38Njq+Pl
+ 7iXk8JZPA6erZ/MQJyltpP8dtOBa49R28n5qQkAPTryWYqcL3iP0bEBabZhZRlcoTey4
+ VziA==
+X-Gm-Message-State: ACgBeo3VneJFu2Y9rxJr0nll361V13Zr+5uxx6G/rcl7bCwACa1/d/5N
+ ZDYDGG00+plR8X7228M426xGFIg4lsNV6SinqXU=
+X-Received: by 2002:a05:6214:2621:b0:476:6092:3687 with SMTP id
+ gv1-20020a056214262100b0047660923687mr2548460qvb.21.1659636441648; Thu, 04
+ Aug 2022 11:07:21 -0700 (PDT)
 MIME-Version: 1.0
-References: <20220728232322.2921703-1-irischenlj@fb.com>
- <435b3e89-f9fd-c257-b03d-a12d4b59ac6b@kaod.org>
- <YuQZP4xkkU2R9VmO@pdel-mbp.dhcp.thefacebook.com>
- <6d4a3912-a386-a784-8db4-7743bb1f1063@kaod.org>
- <YuWrbJglNYdGOmUh@pdel-mbp.dhcp.thefacebook.com>
- <2f7f05aa-6aa2-970e-b4ab-bfbed80b381b@kaod.org>
-In-Reply-To: <2f7f05aa-6aa2-970e-b4ab-bfbed80b381b@kaod.org>
+References: <20220803023241.63739-1-irischenlj@gmail.com>
+ <20220803023241.63739-2-irischenlj@gmail.com>
+ <36a20515-461d-0f27-3be8-a4edd099165a@kaod.org>
+ <YuqwpCFNnh/wyNNe@pdel-mbp.dhcp.thefacebook.com>
+In-Reply-To: <YuqwpCFNnh/wyNNe@pdel-mbp.dhcp.thefacebook.com>
 From: Dan Zhang <dz4list@gmail.com>
-Date: Thu, 4 Aug 2022 10:06:00 -0700
-Message-ID: <CAJxKyLfOs9aQar5NP7j-1qsqeZGbsofEzDfr5QbvRrH_rv2gjg@mail.gmail.com>
-Subject: Re: [RFC 0/3] Add Generic SPI GPIO model
-To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-Cc: Peter Delevoryas <peter@pjd.dev>, Iris Chen <irischenlj@fb.com>,
+Date: Thu, 4 Aug 2022 11:07:10 -0700
+Message-ID: <CAJxKyLfMFDGhVGBCdPEm6dCyuV4NPFfn3vPZW+ugwZfsFtFgMg@mail.gmail.com>
+Subject: Re: [RFC 1/1] hw: tpmtisspi: add SPI support to QEMU TPM
+ implementation
+To: Peter Delevoryas <peter@pjd.dev>
+Cc: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>, 
+ Iris Chen <irischenlj@gmail.com>, Iris Chen <irischenlj@fb.com>,
  Peter Delevoryas <pdel@fb.com>, 
  Cameron Esfahani via <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
  patrick@stwcx.xyz, 
  Alistair Francis <alistair@alistair23.me>, kwolf@redhat.com, hreitz@redhat.com,
  Peter Maydell <peter.maydell@linaro.org>, Andrew Jeffery <andrew@aj.id.au>, 
  Joel Stanley <joel@jms.id.au>, thuth@redhat.com, lvivier@redhat.com,
- pbonzini@redhat.com, qemu-block@nongnu.org
+ pbonzini@redhat.com, 
+ qemu-block@nongnu.org, Stefan Berger <stefanb@linux.ibm.com>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::f30;
- envelope-from=dz4list@gmail.com; helo=mail-qv1-xf30.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::f34;
+ envelope-from=dz4list@gmail.com; helo=mail-qv1-xf34.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -112,325 +113,494 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: XB6cMrVJjDZL
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: XphiwtbWnrbB
 
-On Tue, Aug 2, 2022 at 7:25 AM C=C3=A9dric Le Goater <clg@kaod.org> wrote:
+On Wed, Aug 3, 2022 at 10:30 AM Peter Delevoryas <peter@pjd.dev> wrote:
 >
-> On 7/31/22 00:06, Peter Delevoryas wrote:
-> > On Sat, Jul 30, 2022 at 11:18:33PM +0200, C=C3=A9dric Le Goater wrote:
-> >> On 7/29/22 19:30, Peter Delevoryas wrote:
-> >>> On Fri, Jul 29, 2022 at 03:25:55PM +0200, C=C3=A9dric Le Goater wrote=
-:
-> >>>> Hello Iris,
-> >>>>
-> >>>> On 7/29/22 01:23, Iris Chen wrote:
-> >>>>> Hey everyone,
-> >>>>>
-> >>>>> I have been working on a project to add support for SPI-based TPMs =
-in QEMU.
-> >>>>> Currently, most of our vboot platforms using a SPI-based TPM use th=
-e Linux
-> >>>>> SPI-GPIO driver to "bit-bang" the SPI protocol. This is because the=
- Aspeed
-> >>>>> SPI controller (modeled in QEMU under hw/ssi/aspeed_smc.c) has an i=
-mplementation
-> >>>>> deficiency that prevents bi-directional operations.
-> >>>> aspeed_smc models the Aspeed FMC/SPI controllers which have a well d=
-efined
-> >>>> HW interface. Your model proposal adds support for a new SPI control=
-ler
-> >>>> using bitbang GPIOs. These are really two differents models. I don't=
- see
-> >>>> how you could reuse aspeed_smc for this purpose.
-> >>>>
-> >>>> or you mean that Linux is using the SPI-GPIO driver because the Linu=
-x
-> >>>> Aspeed SMC driver doesn't match the need ? It is true that the Linux
-> >>>> driver is not generic, it deals with flash devices only. But that's
-> >>>> another problem.
-> >>>>
-> >>>>> Thus, in order to connect
-> >>>>> a TPM to this bus, my patch implements a QEMU SPI-GPIO driver (as t=
-he QEMU
-> >>>>> counterpart of the Linux SPI-GPIO driver).
-> >>>>>
-> >>>>> As we use SPI-based TPMs on many of our BMCs for the secure-boot im=
-plementation,
-> >>>>> I have already tested this implementation locally with our Yosemite=
--v3.5 platform
-> >>>>> and Facebook-OpenBMC. This model was tested by connecting a generic=
- SPI-NOR (m25p80
-> >>>>> for example) to the Yosemite-v3.5 SPI bus containing the TPM.
-> >>>>>
-> >>>>> This patch is an RFC because I have several questions about design.=
- Although the
-> >>>>> model is working, I understand there are many areas where the desig=
-n decision
-> >>>>> is not deal (ie. abstracting hard coded GPIO values). Below are som=
-e details of the
-> >>>>> patch and specific areas where I would appreciate feedback on how t=
-o make this better:
-> >>>>> hw/arm/aspeed.c:
-> >>>>> I am not sure where the best place is to instantiate the spi_gpio b=
-esides the
-> >>>>> aspeed_machine_init.
-> >>>>
-> >>>> The SPI GPIO device would be a platform device and not a SoC device.
-> >>>> Hence, it should be instantiated at the machine level, like the I2C
-> >>>> device are, using properties to let the model know about the GPIOs
-> >>>> that should be driven to implement the SPI protocol.
-> >>>
-> >>> Agreed, should be like an I2C device.
-> >>>
-> >>>>
-> >>>> Ideally, the state of the GPIO controller pins and the SPI GPIO stat=
-e
-> >>>> should be shared. I think that's what you are trying to do that with
-> >>>> attribute 'controller_state' in your patch ? But, the way it is done
-> >>>> today, is too tightly coupled (names) with the Aspeed GPIO model to
-> >>>> be generic.
-> >>>>
-> >>>> I think we need an intermediate QOM interface, or a base class, to
-> >>>> implement an abstract SPI GPIO model and an Aspeed SPI GPIO model
-> >>>> on top which would be linked to the Aspeed GPIO model of the SoC
-> >>>> in use.
-> >>>
-> >>> Disagree, I feel like we can accomplish this without inheritance.
-> >>>
-> >>>>
-> >>>> Or we could introduce some kind of generic GPIO controller that
-> >>>> we would link the SPI GPIO model with (using a property). The
-> >>>> Aspeed GPIO model would be of that kind and the SPI GPIO model
-> >>>> would be able to drive the pins using a common interface.
-> >>>> That's another way to do it.
-> >>>
-> >>> Agree, I would like to go in this direction if at all possible.
-> >> Let's give it a try then. I would introduce a new QOM interface,
-> >> something like  :
-> >>
-> >>      #define TYPE_GPIO_INTERFACE "gpio-interface"
-> >>      #define GPIO_INTERFACE(obj)                                     \
-> >>          INTERFACE_CHECK(GpioInterface, (obj), TYPE_GPIO_INTERFACE)
-> >>      typedef struct GpioInterfaceClass GpioInterfaceClass;
-> >>      DECLARE_CLASS_CHECKERS(GpioInterfaceClass, GPIO_INTERFACE,
-> >>                             TYPE_GPIO_INTERFACE)
-> >>      struct GpioInterfaceClass {
-> >>          InterfaceClass parent;
-> >>          int (*get)(GpioInterface *gi, ...);
-> >>          int (*set)(GpioInterface *gi, ...);
-> >>          ...
-> >>      };
-> >>
-> >> and implement the interface handlers under the AspeedGPIO model.
-> >> The SPI GPIO model would have a link to such an interface to drive
-> >> the GPIO pins.
-> >>
-> >> See IPMI and XIVE for some more complete models.
+> On Wed, Aug 03, 2022 at 10:52:23AM +0200, C=C3=A9dric Le Goater wrote:
+> > On 8/3/22 04:32, Iris Chen wrote:
+> > > From: Iris Chen <irischenlj@fb.com>
 > >
-> > This sounds good, but I just want to clarify first:
+> > A commit log telling us about this new device would be good to have.
 > >
-> > Is it necessary to introduce a GPIO interface?
+> >
+> > > Signed-off-by: Iris Chen <irischenlj@fb.com>
+> > > ---
+> > >   configs/devices/arm-softmmu/default.mak |   1 +
+> > >   hw/arm/Kconfig                          |   5 +
+> > >   hw/tpm/Kconfig                          |   5 +
+> > >   hw/tpm/meson.build                      |   1 +
+> > >   hw/tpm/tpm_tis_spi.c                    | 311 +++++++++++++++++++++=
++++
+> > >   include/sysemu/tpm.h                    |   3 +
+> > >   6 files changed, 326 insertions(+)
+> > >   create mode 100644 hw/tpm/tpm_tis_spi.c
+> > >
+> > > diff --git a/configs/devices/arm-softmmu/default.mak b/configs/device=
+s/arm-softmmu/default.mak
+> > > index 6985a25377..80d2841568 100644
+> > > --- a/configs/devices/arm-softmmu/default.mak
+> > > +++ b/configs/devices/arm-softmmu/default.mak
+> > > @@ -42,3 +42,4 @@ CONFIG_FSL_IMX6UL=3Dy
+> > >   CONFIG_SEMIHOSTING=3Dy
+> > >   CONFIG_ARM_COMPATIBLE_SEMIHOSTING=3Dy
+> > >   CONFIG_ALLWINNER_H3=3Dy
+> > > +CONFIG_FBOBMC_AST=3Dy
+> >
+> > I don't think this extra config is useful for now
+> >
+> > > diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
+> > > index 15fa79afd3..193decaec1 100644
+> > > --- a/hw/arm/Kconfig
+> > > +++ b/hw/arm/Kconfig
+> > > @@ -458,6 +458,11 @@ config ASPEED_SOC
+> > >       select PMBUS
+> > >       select MAX31785
+> > > +config FBOBMC_AST
+> > > +    bool
+> > > +    select ASPEED_SOC
+> > > +    select TPM_TIS_SPI
+> > > +
+> > >   config MPS2
+> > >       bool
+> > >       imply I2C_DEVICES
+> > > diff --git a/hw/tpm/Kconfig b/hw/tpm/Kconfig
+> > > index 29e82f3c92..370a43f045 100644
+> > > --- a/hw/tpm/Kconfig
+> > > +++ b/hw/tpm/Kconfig
+> > > @@ -8,6 +8,11 @@ config TPM_TIS_SYSBUS
+> > >       depends on TPM
+> > >       select TPM_TIS
+> > > +config TPM_TIS_SPI
+> > > +    bool
+> > > +    depends on TPM
+> > > +    select TPM_TIS
+> > > +
+> > >   config TPM_TIS
+> > >       bool
+> > >       depends on TPM
+> > > diff --git a/hw/tpm/meson.build b/hw/tpm/meson.build
+> > > index 1c68d81d6a..1a057f4e36 100644
+> > > --- a/hw/tpm/meson.build
+> > > +++ b/hw/tpm/meson.build
+> > > @@ -2,6 +2,7 @@ softmmu_ss.add(when: 'CONFIG_TPM_TIS', if_true: files=
+('tpm_tis_common.c'))
+> > >   softmmu_ss.add(when: 'CONFIG_TPM_TIS_ISA', if_true: files('tpm_tis_=
+isa.c'))
+> > >   softmmu_ss.add(when: 'CONFIG_TPM_TIS_SYSBUS', if_true: files('tpm_t=
+is_sysbus.c'))
+> > >   softmmu_ss.add(when: 'CONFIG_TPM_CRB', if_true: files('tpm_crb.c'))
+> > > +softmmu_ss.add(when: 'CONFIG_TPM_TIS_SPI', if_true: files('tpm_tis_s=
+pi.c'))
+> > >   specific_ss.add(when: ['CONFIG_SOFTMMU', 'CONFIG_TPM_TIS'], if_true=
+: files('tpm_ppi.c'))
+> > >   specific_ss.add(when: ['CONFIG_SOFTMMU', 'CONFIG_TPM_CRB'], if_true=
+: files('tpm_ppi.c'))
+> > > diff --git a/hw/tpm/tpm_tis_spi.c b/hw/tpm/tpm_tis_spi.c
+> > > new file mode 100644
+> > > index 0000000000..c98ddcfddb
+> > > --- /dev/null
+> > > +++ b/hw/tpm/tpm_tis_spi.c
+> > > @@ -0,0 +1,311 @@
+> > > +#include "qemu/osdep.h"
+> > > +#include "hw/qdev-properties.h"
+> > > +#include "migration/vmstate.h"
+> > > +#include "hw/acpi/tpm.h"
+> > > +#include "tpm_prop.h"
+> > > +#include "tpm_tis.h"
+> > > +#include "qom/object.h"
+> > > +#include "hw/ssi/ssi.h"
+> > > +#include "hw/ssi/spi_gpio.h"
+> > > +
+> > > +#define TPM_TIS_SPI_ADDR_BYTES 3
+> > > +#define SPI_WRITE 0
+> > > +
+> > > +typedef enum {
+> > > +    TIS_SPI_PKT_STATE_DEACTIVATED =3D 0,
+> > > +    TIS_SPI_PKT_STATE_START,
+> > > +    TIS_SPI_PKT_STATE_ADDRESS,
+> > > +    TIS_SPI_PKT_STATE_DATA_WR,
+> > > +    TIS_SPI_PKT_STATE_DATA_RD,
+> > > +    TIS_SPI_PKT_STATE_DONE,
+> > > +} TpmTisSpiPktState;
+> > > +
+> > > +union TpmTisRWSizeByte {
+> > > +    uint8_t byte;
+> > > +    struct {
+> > > +        uint8_t data_expected_size:6;
+> > > +        uint8_t resv:1;
+> > > +        uint8_t rwflag:1;
+> > > +    };
+> > > +};
+> > > +
+> > > +union TpmTisSpiHwAddr {
+> > > +    hwaddr addr;
+> > > +    uint8_t bytes[sizeof(hwaddr)];
+> > > +};
+> > > +
+> > > +union TpmTisSpiData {
+> > > +    uint32_t data;
+> > > +    uint8_t bytes[64];
+> > > +};
+> > > +
+> > > +struct TpmTisSpiState {
+> > > +    /*< private >*/
+> > > +    SSIPeripheral parent_obj;
+> > > +
+> > > +    /*< public >*/
+> > > +    TPMState tpm_state; /* not a QOM object */
+> > > +    TpmTisSpiPktState tpm_tis_spi_state;
+> > > +
+> > > +    union TpmTisRWSizeByte first_byte;
+> > > +    union TpmTisSpiHwAddr addr;
+> > > +    union TpmTisSpiData data;
+> >
+> > Are these device registers ? I am not sure the unions are very useful.
 >
-> Well, my feeling is that we need an abstract layer to interface the
-> SPI GPIO model with any model of GPIO controller.
->
-This abstract layer can be in form of virtual func of spi_gpio base class
-set_cs(bool), set_clk(), set_mosi(), get_miso().
-This give user (normally the board model creator ) the full flexibility as
-how to implement these function in inherit class of spi_gpio i.e.
-aspeed_spi_gpio
-
-The down side of virtual function "abstract" layer is that user need
-to write QEMU code.
-
-Another form of abstract layer is "output pin and properties of GPIO
-controller model"
-The pro of this is that as long as the GPIO controller provides these
-required output pin
-and property, the final user can use command line input parameters to
-connect the
-spi_gpio with the gpio controller.
-
-The required pin and property to controller model will be:
-Two named output pins exposed as QEMUIrq, which will be used as SPI_CS
-and SPI_CLK.
-Two properties which can be used by spi_gpio to get (sample) the level
-as SPI_MOSI and
-set the level as SPI_MISO.
-
-
-> > Or, could we connect the IRQ's just using the existing
-> > QOM/sysbus/object/IRQ infrastructure?
->
-> and we would use the QOM canonical path to identify the GPIO pins
-> and QOM routines to get and set the values ? It looks feasible.
-> That's how I would do it in a script but not in model.
-
-
+> +1, I don't think we should be using unions, instead we should split out
+> all the relevant fields we want to store and use extract32/deposit32/etc
+> if necessary.
+These union is used to saving us code to extract the bits from first byte
+and assembling the hwaddr and unint32_t data from bytes.
+I think as the bitfields has compiler implementation dependency of endianne=
+ss
+we can switch to use extract8. or handle it for gcc
+https://stackoverflow.com/questions/47600584/bitfield-endianness-in-gcc
 
 >
-> > I'll investigate if we can connect the IRQ's without introducing a new
-> > interface. We can continue with this design for now though.
->
-> OK. Let's see.
->
-> >>>>> Could we add the ability to instantiate it on the command line?
-> >>>>
-> >>>> It might be complex to identify the QOM object to use as the GPIO
-> >>>> controller from the command line since it is on the SoC and not
-> >>>> a platform device. In that case, an Aspeed SPI GPIO model would
-> >>>> be a better approach. we  would have to peek in the machine/soc to
-> >>>> get a link on the Aspeed GPIO model in the realize routine of the
-> >>>> Aspeed SPI GPIO model.
-> >>>
-> >>> Hrrrm perhaps, I feel like it shouldn't be that hard though.
-> >>>
-> >>> - Get a pointer to the QOM object that holds the GPIO's using object
-> >>>     path or ID. Something similar to '-device ftgmac100,netdev=3D<id>=
-'
-> >>>     right?
-> >>
-> >> yes. something like that.
 > >
-> > +1
+> > > +    uint32_t data_size;
+> > > +    uint8_t data_idx;
+> > > +    uint8_t addr_idx;
+> > > +};
+> > > +
+> > > +struct TpmTisSpiClass {
+> > > +    SSIPeripheralClass parent_class;
+> > > +};
+> > > +
+> > > +OBJECT_DECLARE_TYPE(TpmTisSpiState, TpmTisSpiClass, TPM_TIS_SPI)
+> > > +
+> > > +static void tpm_tis_spi_mmio_read(TpmTisSpiState *tts)
+> > > +{
+> > > +    uint16_t offset =3D tts->addr.addr & 0xffc;
+> > > +
+> > > +    switch (offset) {
+> > > +    case TPM_TIS_REG_DATA_FIFO:
+> > > +        for (uint8_t i =3D 0; i < tts->data_size; i++) {
+> > > +            tts->data.bytes[i] =3D (uint8_t)tpm_tis_memory_ops.read(
 > >
-> >>
-> >>> - Get the GPIO's by name from the QOM object.
-> >>
-> >> yes.
 > >
-> > +1
+> > you should add an address space for these memory transactions. Look for
+> > address_space_read/write calls, in the Aspeed I2C model for example.
+>
+> Yeah, or an even better example might be tpm_tis_isa. I feel like a
+> shortcut might have been taken here to pull in tpm_tis_memory_ops
+> directly, but we should have been treating the interface with the TPM as
+> a generic address space.
+>
+No, in our application we did not have those memory region
+[0xFFD4_0000 ~ 0xFFD4_FFFF]
+here we mapping the TPM TIS SPI message operations into mmio operations is =
+to
+reuse the TIS registers models already implemented in tpm_tis_common.c
 > >
-> >>
-> >>> In this situation, I think we should be able to get the GPIO controll=
-er
-> >>> object, and then get the IRQ's by the "sysbus-irq[126]"/etc name.
-> >>>
-> >>> We could refactor the aspeed_gpio.c model to name the IRQ's like the
-> >>> properties,.  to use "gpioX4" instead of "sysbus-irq[*]".
-> >>
-> >> we could use qdev_init_gpio_out_named() instead of sysbus_init_irq()
-> >> to name them.
-> >>
+> > > +                                          &tts->tpm_state,
+> > > +                                          tts->addr.addr,
+> > > +                                          1);
+> > > +        }
+> > > +        break;
+> > > +    default:
+> > > +        tts->data.data =3D (uint32_t)tpm_tis_memory_ops.read(
+> > > +                                   &tts->tpm_state,
+> > > +                                   tts->addr.addr,
+> > > +                                   tts->data_size);
+> > > +    }
+> > > +}
+> > > +
+> > > +static void tpm_tis_spi_mmio_write(TpmTisSpiState *tts)
+> > > +{
+> > > +    uint16_t offset =3D tts->addr.addr & 0xffc;
+> > > +
+> > > +    switch (offset) {
+> > > +    case TPM_TIS_REG_DATA_FIFO:
+> > > +        for (uint8_t i =3D 0; i < tts->data_size; i++) {
+> > > +            tpm_tis_memory_ops.write(&tts->tpm_state,
+> > > +                                     tts->addr.addr,
+> > > +                                     tts->data.bytes[i],
+> > > +                                     1);
+> > > +        }
+> > > +        break;
+> > > +    default:
+> > > +        tpm_tis_memory_ops.write(&tts->tpm_state,
+> > > +                                 tts->addr.addr,
+> > > +                                 tts->data.data,
+> > > +                                 tts->data_size);
+> > > +        }
+> > > +}
+> > > +
+> > > +static uint32_t tpm_tis_spi_transfer8(SSIPeripheral *ss, uint32_t tx=
+)
+> > > +{
+> > > +    TpmTisSpiState *tts =3D TPM_TIS_SPI(ss);
+> > > +    uint32_t r =3D 1;
+> > > +
+> > > +    switch (tts->tpm_tis_spi_state) {
+> > > +    case TIS_SPI_PKT_STATE_START:
+> > > +        tts->first_byte.byte =3D (uint8_t)tx;
+> > > +        tts->data_size =3D tts->first_byte.data_expected_size + 1;
+> > > +        tts->data_idx =3D 0;
+> > > +        tts->addr_idx =3D TPM_TIS_SPI_ADDR_BYTES;
+> > > +        tts->tpm_tis_spi_state =3D TIS_SPI_PKT_STATE_ADDRESS;
+> > > +        break;
+> > > +    case TIS_SPI_PKT_STATE_ADDRESS:
+> > > +        assert(tts->addr_idx > 0);
+> > > +        tts->addr.bytes[--tts->addr_idx] =3D (uint8_t)tx;
+> > > +
+> > > +        if (tts->addr_idx =3D=3D 0) {
+> > > +            if (tts->first_byte.rwflag =3D=3D SPI_WRITE) {
+> > > +                tts->tpm_tis_spi_state =3D TIS_SPI_PKT_STATE_DATA_WR=
+;
+> > > +            } else { /* read and get the data ready */
+> > > +                tpm_tis_spi_mmio_read(tts);
+> > > +                tts->tpm_tis_spi_state =3D TIS_SPI_PKT_STATE_DATA_RD=
+;
+> > > +            }
+> > > +        }
+> > > +        break;
+> > > +    case TIS_SPI_PKT_STATE_DATA_WR:
+> > > +        tts->data.bytes[tts->data_idx++] =3D (uint8_t)tx;
+> > > +        if (tts->data_idx =3D=3D tts->data_size) {
+> > > +            tpm_tis_spi_mmio_write(tts);
+> > > +            tts->tpm_tis_spi_state =3D TIS_SPI_PKT_STATE_DONE;
+> > > +        }
+> > > +        break;
+> > > +    case TIS_SPI_PKT_STATE_DATA_RD:
+> > > +        r =3D tts->data.bytes[tts->data_idx++];
+> > > +        if (tts->data_idx =3D=3D tts->data_size) {
+> > > +            tts->tpm_tis_spi_state =3D TIS_SPI_PKT_STATE_DONE;
+> > > +        }
+> > > +        break;
+> > > +    default:
+> > > +        tts->tpm_tis_spi_state =3D TIS_SPI_PKT_STATE_DEACTIVATED;
+> > > +        r =3D (uint32_t) -1;
+> > > +    }
+> > > +
+> > > +    return r;
+> > > +}
+> > > +
+> > > +/*
+> > > + * Pre-reading logic for transfer:
+> > > + * This is to fix the transaction between reading and writing.
+> > > + * The first byte is arbitrarily inserted so we need to
+> > > + * shift the all the output bytes (timeline) one byte right.
+> > > + */
+> > > +static uint32_t tpm_tis_spi_transfer8_ex(SSIPeripheral *ss, uint32_t=
+ tx)
+> > > +{
+> > > +    TpmTisSpiState *tts =3D TPM_TIS_SPI(ss);
+> > > +    SSIBus *ssibus =3D (SSIBus *)qdev_get_parent_bus(DEVICE(tts));
+> > > +
+> > > +    TpmTisSpiPktState prev_state =3D tts->tpm_tis_spi_state;
+> > > +    uint32_t r =3D tpm_tis_spi_transfer8(ss, tx);
+> > > +    TpmTisSpiPktState curr_state =3D tts->tpm_tis_spi_state;
+> > > +
+> > > +    if (ssibus->preread &&
+> > > +       /* cmd state has changed into DATA reading state */
+> > > +       prev_state !=3D TIS_SPI_PKT_STATE_DATA_RD &&
+> > > +       curr_state =3D=3D TIS_SPI_PKT_STATE_DATA_RD) {
+> > > +        r =3D tpm_tis_spi_transfer8(ss, 0xFF);
+> > > +    }
+> > > +
+> > > +    return r;
+> > > +}
+> > > +
+> > > +static int tpm_tis_spi_cs(SSIPeripheral *ss, bool select)
+> > > +{
+> > > +    TpmTisSpiState *tts =3D TPM_TIS_SPI(ss);
+> > > +
+> > > +    if (select) { /* cs de-assert */
+> > > +        tts->tpm_tis_spi_state =3D TIS_SPI_PKT_STATE_DEACTIVATED;
+> > > +    } else {
+> > > +        tts->tpm_tis_spi_state =3D TIS_SPI_PKT_STATE_START;
+> > > +        tts->first_byte.byte =3D 0;
+> > > +        tts->addr.addr =3D 0;
+> > > +        tts->data.data =3D 0;
+> > > +    }
+> > > +
+> > > +    return 0;
+> > > +}
+> > > +
+> > > +static int tpm_tis_pre_save_spi(void *opaque)
+> > > +{
+> > > +    TpmTisSpiState *sbdev =3D opaque;
+> > > +
+> > > +    return tpm_tis_pre_save(&sbdev->tpm_state);
+> > > +}
+> > > +
+> > > +static const VMStateDescription vmstate_tpm_tis_spi =3D {
+> > > +    .name =3D "tpm-tis-spi",
+> > > +    .version_id =3D 0,
+> > > +    .pre_save  =3D tpm_tis_pre_save_spi,
+> > > +    .fields =3D (VMStateField[]) {
+> > > +        VMSTATE_BUFFER(tpm_state.buffer, TpmTisSpiState),
+> > > +        VMSTATE_UINT16(tpm_state.rw_offset, TpmTisSpiState),
+> > > +        VMSTATE_UINT8(tpm_state.active_locty, TpmTisSpiState),
+> > > +        VMSTATE_UINT8(tpm_state.aborting_locty, TpmTisSpiState),
+> > > +        VMSTATE_UINT8(tpm_state.next_locty, TpmTisSpiState),
+> > > +
+> > > +        VMSTATE_STRUCT_ARRAY(tpm_state.loc, TpmTisSpiState, TPM_TIS_=
+NUM_LOCALITIES,
+> > > +                             0, vmstate_locty, TPMLocality),
+> > > +
+> > > +        VMSTATE_END_OF_LIST()
+> > > +    }
+> > > +};
+> > > +
+> > > +static void tpm_tis_spi_request_completed(TPMIf *ti, int ret)
+> > > +{
+> > > +    TpmTisSpiState *sbdev =3D TPM_TIS_SPI(ti);
+> > > +    TPMState *s =3D &sbdev->tpm_state;
+> > > +
+> > > +    tpm_tis_request_completed(s, ret);
+> > > +}
+> > > +
+> > > +static enum TPMVersion tpm_tis_spi_get_tpm_version(TPMIf *ti)
+> > > +{
+> > > +    TpmTisSpiState *sbdev =3D TPM_TIS_SPI(ti);
+> > > +    TPMState *s =3D &sbdev->tpm_state;
+> > > +
+> > > +    return tpm_tis_get_tpm_version(s);
+> > > +}
+> > > +
+> > > +static void tpm_tis_spi_reset(DeviceState *dev)
+> > > +{
+> > > +    TpmTisSpiState *sbdev =3D TPM_TIS_SPI(dev);
+> > > +    TPMState *s =3D &sbdev->tpm_state;
+> > > +
+> > > +    return tpm_tis_reset(s);
+> > > +}
+> > > +
+> > > +static Property tpm_tis_spi_properties[] =3D {
+> > > +    DEFINE_PROP_UINT32("irq", TpmTisSpiState, tpm_state.irq_num, TPM=
+_TIS_IRQ),
+> > > +    DEFINE_PROP_TPMBE("tpmdev", TpmTisSpiState, tpm_state.be_driver)=
+,
+> > > +    DEFINE_PROP_BOOL("ppi", TpmTisSpiState, tpm_state.ppi_enabled, f=
+alse),
+> > > +    DEFINE_PROP_END_OF_LIST(),
+> > > +};
+> > > +
+> > > +static void tpm_tis_spi_realizefn(SSIPeripheral *ss, Error **errp)
+> > > +{
+> > > +    TpmTisSpiState *sbdev =3D TPM_TIS_SPI(ss);
+> > > +
+> > > +    if (!tpm_find()) {
+> > > +        error_setg(errp, "at most one TPM device is permitted");
+> > > +        return;
+> > > +    }
+> > > +
+> > > +    if (!sbdev->tpm_state.be_driver) {
+> > > +        error_setg(errp, "'tpmdev' property is required");
+> > > +        return;
+> > > +    }
+> > > +
+> > > +    DeviceState *spi_gpio =3D qdev_find_recursive(sysbus_get_default=
+(),
+> > > +                                                TYPE_SPI_GPIO);
+> > > +    qdev_connect_gpio_out_named(spi_gpio,
+> > > +                                "SPI_CS_out", 0,
+> > > +                                qdev_get_gpio_in_named(DEVICE(ss),
+> > > +                                SSI_GPIO_CS, 0));
+> > Typically, this part is done at the machine/board level because it
+> > has knowledge of all devices but it is possible with the TPM devices?
+>
+> +1, yeah this part should be removed.
+>
 > >
-> > +1, I actually suggested to Iris offline that this change might be
-> > useful regardless.
+> > How do you invoke QEMU ?
 >
-> yes. This change can come as a preliminary.
->
-> >
-> >>
-> >>>>> m25p80_transfer8_ex in hw/block/m25p80.c:
-> >>>>> Existing SPI model assumed that the output byte is fully formed, ca=
-n be passed to
-> >>>>> the SPI device, and the input byte can be returned, all in one oper=
-ation. With
-> >>>>> SPI-GPIO we don't have the input byte until all 8 bits of the outpu=
-t have been
-> >>>>> shifted out, so we have to prime the MISO with bogus values (0xFF).
-> >>>>
-> >>>> That's fine I think. We do something similar for dummies.
-> >>>>
-> >>>>> MOSI pin in spi_gpio: the mosi pin is not included and we poll the =
-realtime value
-> >>>>> of the gpio for input bits to prevent bugs with caching the mosi va=
-lue. It was discovered
-> >>>>> during testing that when using the mosi pin as the input pin, the m=
-osi value was not
-> >>>>> being updated due to a kernel and aspeed_gpio model optimization.
-> >>>>
-> >>>> ah. We need help from Andrew ! the model should have a mosi pin .
-> >>>
-> >>> Not sure if this was clear, but Iris is just saying that she used obj=
-ect
-> >>> properties to read and write the mosi, miso, and clk pins, rather tha=
-n
-> >>> the IRQ's.
-> >>
-> >> The IRQ line is not raised ?
-> >
-> > Something like that, yes. She was having trouble following the IRQ leve=
-l
-> > purely through edge changes. Perhaps this is due to a bug in
-> > aspeed_gpio.c.
->
-> That could be it. The HW logic is quite complex. Adding more tests as
-> suggested by Andrew would help.
->
->
-> Thanks,
->
-> C.
->
->
+> We have some hard-coded machine/board level code that wires up stuff,
+> and then I think Iris was hard-coding this stuff in the TPM TIS SPI
+> model so that the whole thing could be hidden behind a Kconfig and wired
+> in automatically when the Kconfig was enabled. But we should require
+> users to wire it up themselves in the board code.
 >
 > >
-> >>
-> >>> Certainly we'd like to use IRQ's instead, but she ran into correctnes=
-s
-> >>> problems. Maybe we can investigate that further and fix it.
-> >>
-> >> So much is happening in that mode. We need more trace events in the As=
-peed
-> >> GPIO model at least an extra in aspeed_gpio_update()
+> > Thanks,
 > >
-> > +1
+> > C.
 > >
-> >>
-> >> Thanks,
-> >>
-> >> C.
-> >>
-> >>>
-> >>>>
-> >>>> Thanks,
-> >>>>
-> >>>> C.
-> >>>>
-> >>>>> Thus, here we are
-> >>>>> reading the value directly from the gpio controller instead of wait=
-ing for the push.
-> >>>>>
-> >>>>> I realize there are Aspeed specifics in the spi_gpio model. To make=
- this extensible,
-> >>>>> is it preferred to make this into a base class and have our Aspeed =
-SPI GPIO extend
-> >>>>> this or we could set up params to pass in the constructor?
-> >>>>>
-> >>>>> Thanks for your review and any direction here would be helpful :)
-> >>>>>
-> >>>>> Iris Chen (3):
-> >>>>>      hw: m25p80: add prereading ability in transfer8
-> >>>>>      hw: spi_gpio: add spi gpio model
-> >>>>>      hw: aspeed: hook up the spi gpio model
-> >>>>>
-> >>>>>     hw/arm/Kconfig            |   1 +
-> >>>>>     hw/arm/aspeed.c           |   5 ++
-> >>>>>     hw/block/m25p80.c         |  29 ++++++-
-> >>>>>     hw/ssi/Kconfig            |   4 +
-> >>>>>     hw/ssi/meson.build        |   1 +
-> >>>>>     hw/ssi/spi_gpio.c         | 166 +++++++++++++++++++++++++++++++=
-+++++++
-> >>>>>     hw/ssi/ssi.c              |   4 -
-> >>>>>     include/hw/ssi/spi_gpio.h |  38 +++++++++
-> >>>>>     include/hw/ssi/ssi.h      |   5 ++
-> >>>>>     9 files changed, 248 insertions(+), 5 deletions(-)
-> >>>>>     create mode 100644 hw/ssi/spi_gpio.c
-> >>>>>     create mode 100644 include/hw/ssi/spi_gpio.h
-> >>>>>
-> >>>>
-> >>
->
+> > > +}
+> > > +
+> > > +static void tpm_tis_spi_class_init(ObjectClass *klass, void *data)
+> > > +{
+> > > +    DeviceClass *dc =3D DEVICE_CLASS(klass);
+> > > +    SSIPeripheralClass *k =3D SSI_PERIPHERAL_CLASS(klass);
+> > > +    TPMIfClass *tc =3D TPM_IF_CLASS(klass);
+> > > +
+> > > +    device_class_set_props(dc, tpm_tis_spi_properties);
+> > > +    k->realize =3D tpm_tis_spi_realizefn;
+> > > +    k->transfer =3D tpm_tis_spi_transfer8_ex;
+> > > +    k->set_cs =3D tpm_tis_spi_cs;
+> > > +    k->cs_polarity =3D SSI_CS_LOW;
+> > > +
+> > > +    dc->vmsd  =3D &vmstate_tpm_tis_spi;
+> > > +    tc->model =3D TPM_MODEL_TPM_TIS;
+> > > +    dc->user_creatable =3D true;
+> > > +    dc->reset =3D tpm_tis_spi_reset;
+> > > +    tc->request_completed =3D tpm_tis_spi_request_completed;
+> > > +    tc->get_version =3D tpm_tis_spi_get_tpm_version;
+> > > +    set_bit(DEVICE_CATEGORY_MISC, dc->categories);
+> > > +}
+> > > +
+> > > +static const TypeInfo tpm_tis_spi_info =3D {
+> > > +    .name =3D TYPE_TPM_TIS_SPI,
+> > > +    .parent =3D TYPE_SSI_PERIPHERAL,
+> > > +    .instance_size =3D sizeof(TpmTisSpiState),
+> > > +    .class_size =3D sizeof(TpmTisSpiClass),
+> > > +    .class_init  =3D tpm_tis_spi_class_init,
+> > > +    .interfaces =3D (InterfaceInfo[]) {
+> > > +        { TYPE_TPM_IF },
+> > > +        { }
+> > > +    }
+> > > +};
+> > > +
+> > > +static void tpm_tis_spi_register(void)
+> > > +{
+> > > +    type_register_static(&tpm_tis_spi_info);
+> > > +}
+> > > +
+> > > +type_init(tpm_tis_spi_register)
+> > > diff --git a/include/sysemu/tpm.h b/include/sysemu/tpm.h
+> > > index fb40e30ff6..6a6b311e47 100644
+> > > --- a/include/sysemu/tpm.h
+> > > +++ b/include/sysemu/tpm.h
+> > > @@ -46,6 +46,7 @@ struct TPMIfClass {
+> > >   #define TYPE_TPM_TIS_ISA            "tpm-tis"
+> > >   #define TYPE_TPM_TIS_SYSBUS         "tpm-tis-device"
+> > > +#define TYPE_TPM_TIS_SPI            "tpm-tis-spi-device"
+> > >   #define TYPE_TPM_CRB                "tpm-crb"
+> > >   #define TYPE_TPM_SPAPR              "tpm-spapr"
+> > > @@ -53,6 +54,8 @@ struct TPMIfClass {
+> > >       object_dynamic_cast(OBJECT(chr), TYPE_TPM_TIS_ISA)
+> > >   #define TPM_IS_TIS_SYSBUS(chr)                      \
+> > >       object_dynamic_cast(OBJECT(chr), TYPE_TPM_TIS_SYSBUS)
+> > > +#define TPM_IS_TIS_SPI(chr)                      \
+> > > +    object_dynamic_cast(OBJECT(chr), TYPE_TPM_TIS_SPI)
+> > >   #define TPM_IS_CRB(chr)                             \
+> > >       object_dynamic_cast(OBJECT(chr), TYPE_TPM_CRB)
+> > >   #define TPM_IS_SPAPR(chr)                           \
+> >

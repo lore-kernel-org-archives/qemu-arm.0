@@ -1,175 +1,134 @@
-Received: by 2002:a05:6512:1086:0:0:0:0 with SMTP id j6csp906181lfg;
-        Fri, 5 Aug 2022 02:45:11 -0700 (PDT)
-X-Google-Smtp-Source: AA6agR7YGKNTq5HJT/5kxPQCbKkm49JuKX9PKkt2r2WU/pBRz1vK6D+LkdNDlpIAr5QjxZM7u8Q+
-X-Received: by 2002:a05:622a:3:b0:31e:f25a:3f54 with SMTP id x3-20020a05622a000300b0031ef25a3f54mr5104345qtw.269.1659692711040;
-        Fri, 05 Aug 2022 02:45:11 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1659692711; cv=none;
+Received: by 2002:a05:6512:1086:0:0:0:0 with SMTP id j6csp1106735lfg;
+        Fri, 5 Aug 2022 08:20:27 -0700 (PDT)
+X-Google-Smtp-Source: AA6agR53Agz0c+9gYPHPpvtyLXukWXVjTzJMt9vMiyw/f38Wn6bAyyru8aWRrgHAtaD6eliU+16K
+X-Received: by 2002:a17:907:2c41:b0:730:a07d:c720 with SMTP id hf1-20020a1709072c4100b00730a07dc720mr5672632ejc.102.1659712826885;
+        Fri, 05 Aug 2022 08:20:26 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1659712826; cv=none;
         d=google.com; s=arc-20160816;
-        b=BOTHciq59Ohe3D6Ppvq3usLzv2D9G3d+rnenSdj2yg5j7KJNuu6uPuNKTahVbGzhcl
-         bLPKMgRo18WBEwFL0PgsKoCZD1JFFxoe1mMwjZNddWWyDrJoWOOkioMg8iv3P+Y/vk+z
-         +83DufpEHRm7YhCmpi7wPOikg1cJudDr/rfU4cHJzG6hDISweAoLr8P+5Lfbleg1mvLx
-         XMMcXjTHcHHO9j858gwnTdkqYND3N75TqyO1wXYtvqPfr+ULVrxrs6yRep6fIz2v9yuy
-         jwTsbBKyXKFky7AFc9OKwkOdVx/Rrf4NdGT5yDZu/ozOfj3IB+wSKIwT4Ey1b+3Td2Iq
-         1QjQ==
+        b=v1GogY8WV58Z8pgM/MmQ6Mq8dCHFQ+YFd9vZg4FJHnbBhl8iXJAz4+etK66m/99SUZ
+         9XBvNIve55tUkSIwJZTojBJ2az3X0oaJvzCd5PTGxzRY1cRYMIw9MZ0KluX/c93tE72d
+         49YY2p59U2hOYUgX7ibV/qDNcpres/lxGK8mouSFvOI0U05maja4LEcY5mcjS69BB5tz
+         uwqUM1h3+z3hQX9Nax+1MN3+6nF3gU0vQSipEt9M3fDqvjOciZ5Ck6aVrpbP1va1cfvE
+         A5wu3ES3st7YPpImqBJeWtrVodB42jW9y0Mk34LJoa3gY/VMyXoTGzF5GJKttpbkkyjM
+         cFqA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=mO1pyhNh7FBjFV2nX8yrWBbovbYOVIGYqaGtZXY/PXk=;
-        b=MVvqs//LC5JodSWO6qfG9ewxVj81nBzSPny6uCoXn1HfFgSJFcHnzkhx56/0ybMlUW
-         pX2RXdHWo1GHb2152BrX8k6PWX3LEpoAlxjZ34MR4MvN+J3Llorga89QWf463sNfs0iM
-         CmcPPNbrcS8NBjQ/K64FdyubHYtRGR3MoZSVodtwi8ZtXTjxePv8gJ3PaoUSNmyWyDZc
-         KJsk9CDMXpApBkIsL39wtcgKOB2mmpd1pvgHddTNVu/2lTei5s/WnTubq3P0CfljR4DL
-         loeTjPY9UX6Ejm1QS1UpJl2p0PCySbJsiiF1SXBL7G7x0LZEu9UUR4Yy2ShYU1ziHN5v
-         Ragg==
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:dkim-signature;
+        bh=L2Qk/T5pDEpCliz/Xg2eicSxsZkuhsTGbYJsBsWi2cE=;
+        b=HWqe33QJm0UF/R4oizKhWpfp/nPPqp/iJjSfvMcULUoM48GSA4a7VrnyNruvXB0wOt
+         Nx5Z4F0q9MyGEfb+Iqivp3vggJCB824IdBsR6ubWbEuRc5twHB/EfW7tF5Smvwhe10+b
+         dTEHH88CIW/9RanT9hDxg6A92QMy1xDz1fyBmnpZaqU5iQyVHrWiBD22LWFBqUUkKl2c
+         gEbwCva/NBCU6QS8fFXl3H+o+xGuVN+/CCkPhp0JEM84Y6IOj00gDBnBuq+VI3RTUVVz
+         8scI5lN6QW/YJwIoqLkVSvhsk59b0HRljivIRSlNg6qJTsm6g1tCajEH4CQ5ff6VoxLz
+         7Lyg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=QSaN6gPZ;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s14-20020ac8758e000000b0031d49d02d9dsi1993856qtq.477.2022.08.05.02.45.10
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=L+gLsbYz;
+       spf=pass (google.com: domain of berrange@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=berrange@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <berrange@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
+        by mx.google.com with ESMTPS id o19-20020a170906975300b00730e93aa2ddsi2376497ejy.903.2022.08.05.08.20.26
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 05 Aug 2022 02:45:11 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Fri, 05 Aug 2022 08:20:26 -0700 (PDT)
+Received-SPF: pass (google.com: domain of berrange@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=QSaN6gPZ;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:39670 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1oJttG-000531-Ee
-	for alex.bennee@linaro.org; Fri, 05 Aug 2022 05:45:10 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49816)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <danielhb413@gmail.com>)
- id 1oJtoE-0007Jk-F2; Fri, 05 Aug 2022 05:39:58 -0400
-Received: from mail-vs1-xe2f.google.com ([2607:f8b0:4864:20::e2f]:33384)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <danielhb413@gmail.com>)
- id 1oJtoC-0001Qv-Mw; Fri, 05 Aug 2022 05:39:58 -0400
-Received: by mail-vs1-xe2f.google.com with SMTP id q15so1988994vsr.0;
- Fri, 05 Aug 2022 02:39:56 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc;
- bh=mO1pyhNh7FBjFV2nX8yrWBbovbYOVIGYqaGtZXY/PXk=;
- b=QSaN6gPZtzTjgdDmTcn3DNchbUulwX9Yy/j7a8aoeijxntzeCEPrKZkq9wtV5rXdnd
- 0mmSXrjpQCC4DgTKiGR2e97YRQWUMldHpvMXiSgLuBDrJ8CTdYUtEIJz39xT2oSmzW1p
- NwrJwbgW3oESUSyE/iOQFjyjIVr3PdQnHMSPjnZ5EgHQo2F2bY3su8CyUnKhB9QvN5Go
- xvg+ZJd+nth7jHz2vNYGCEvWW1iHYYLg32PvUg957WyYOIpbHjWk3SeS06YEpzI+Xycb
- 2YaAloEL3rDDwbGhMIpglKGnFg4aIwwgyggyXG2rUFm13Y3AcW0P8mNxOQcITbvLVrAg
- gS/A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc;
- bh=mO1pyhNh7FBjFV2nX8yrWBbovbYOVIGYqaGtZXY/PXk=;
- b=DdfI2oxuSzh4rdrhVs8OwypgjwLUTrpyQFp1RMdozsAfRgJgAysdT10cmyEhEktrhm
- K/exwRwGHrVzx/I2qXB8+XVUVIyoBdfkhUYwGNnrZIe/IkvYtbCKZQAy7RVjdP8Qsbyb
- O9Mm4RN5sC6VLmhTb47fWL8PVvWlYIl1RTr1c59FHmyFdcr5mnu8wIRHI0g3kcwFkHBG
- ZsjZ00MX6G3+XmB+CDsElVcZdFRZ7Qi0ZfPGqdo8KmmST5gBiE16O5SoHQ6p6Zk65VC8
- x1ivNdWqTZyDRtJk9vJTlmiI0SF33iE8iKmxORMXzJJb9t42gz8cUz2RI0xJE5Cc8uwI
- 9ITA==
-X-Gm-Message-State: ACgBeo1eptIKauWrSH0J3vwEQZ5Ya7sNS7ClZ6jI+xLj9JBwf/pBpp7f
- +b3HRth6iYGMgJ13MMCK9tp8WNl6/bw=
-X-Received: by 2002:a67:cb93:0:b0:388:494d:4419 with SMTP id
- h19-20020a67cb93000000b00388494d4419mr2510881vsl.28.1659692395327; 
- Fri, 05 Aug 2022 02:39:55 -0700 (PDT)
-Received: from balboa.COMFAST ([191.19.239.67])
- by smtp.gmail.com with ESMTPSA id
- f9-20020a1f1f09000000b00376f4f93745sm2668496vkf.10.2022.08.05.02.39.53
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 05 Aug 2022 02:39:54 -0700 (PDT)
-From: Daniel Henrique Barboza <danielhb413@gmail.com>
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=L+gLsbYz;
+       spf=pass (google.com: domain of berrange@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=berrange@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1659712825;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding;
+	bh=L2Qk/T5pDEpCliz/Xg2eicSxsZkuhsTGbYJsBsWi2cE=;
+	b=L+gLsbYzEixqsRjhk3yp2D9fkPyU228EI8cTzmP+4Ol1oJGo7hJPforZ6hefgwCuQvtEiZ
+	l63QfWcghO8USTkjAVVRfHTALhBfuYv4C7xaIP+eqPyzFcC897Sde7WdT/74b7n4Cfc6VI
+	kWWUHY2jQmiK0/FvocThJhZk6ZI3sAU=
+Received: from mimecast-mx02.redhat.com (mx3-rdu2.redhat.com
+ [66.187.233.73]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-106-mgVc0uUAP7S7s4-olnTXaw-1; Fri, 05 Aug 2022 11:20:22 -0400
+X-MC-Unique: mgVc0uUAP7S7s4-olnTXaw-1
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.rdu2.redhat.com [10.11.54.4])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 72D883C0E236;
+	Fri,  5 Aug 2022 15:20:21 +0000 (UTC)
+Received: from localhost.localdomain.com (unknown [10.39.194.117])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id B1A0F2026D4C;
+	Fri,  5 Aug 2022 15:20:16 +0000 (UTC)
+From: =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>
 To: qemu-devel@nongnu.org
-Cc: alistair.francis@wdc.com, david@gibson.dropbear.id.au,
- Daniel Henrique Barboza <danielhb413@gmail.com>,
- Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org
-Subject: [PATCH for-7.2 v2 01/20] hw/arm: do not free machine->fdt in
- arm_load_dtb()
-Date: Fri,  5 Aug 2022 06:39:29 -0300
-Message-Id: <20220805093948.82561-2-danielhb413@gmail.com>
-X-Mailer: git-send-email 2.36.1
-In-Reply-To: <20220805093948.82561-1-danielhb413@gmail.com>
-References: <20220805093948.82561-1-danielhb413@gmail.com>
+Cc: libvir-list@redhat.com,
+	Beraldo Leal <bleal@redhat.com>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+	Thomas Huth <thuth@redhat.com>,
+	Richard Henderson <richard.henderson@linaro.org>,
+	=?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
+	qemu-arm@nongnu.org,
+	Cornelia Huck <cohuck@redhat.com>,
+	Gerd Hoffmann <kraxel@redhat.com>,
+	=?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
+	qemu-s390x@nongnu.org,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	David Hildenbrand <david@redhat.com>,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	Wainer dos Santos Moschetta <wainersm@redhat.com>
+Subject: [PULL 0/6] Misc next patches
+Date: Fri,  5 Aug 2022 16:20:08 +0100
+Message-Id: <20220805152014.135768-1-berrange@redhat.com>
 MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::e2f;
- envelope-from=danielhb413@gmail.com; helo=mail-vs1-xe2f.google.com
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: M2u8+AF4JyKQ
+X-Scanned-By: MIMEDefang 2.78 on 10.11.54.4
+X-TUID: omIsVl1OpHcJ
 
-At this moment, arm_load_dtb() can free machine->fdt when
-binfo->dtb_filename is NULL. If there's no 'dtb_filename', 'fdt' will be
-retrieved by binfo->get_dtb(). If get_dtb() returns machine->fdt, as is
-the case of machvirt_dtb() from hw/arm/virt.c, fdt now has a pointer to
-machine->fdt. And, in that case, the existing g_free(fdt) at the end of
-arm_load_dtb() will make machine->fdt point to an invalid memory region.
+The following changes since commit 09ed077d7fae5f825e18ff9a2004dcdd1b165edb:
 
-This is not an issue right now because there's no code that access
-machine->fdt after arm_load_dtb(), but we're going to add a couple do
-FDT HMP commands that will rely on machine->fdt being valid.
+  Merge tag 'trivial-branch-for-7.1-pull-request' of https://gitlab.com/laurent_vivier/qemu into staging (2022-08-04 17:21:13 -0700)
 
-Instead of freeing 'fdt' at the end of arm_load_dtb(), assign it to
-machine->fdt. This will allow the FDT of ARM machines that relies on
-arm_load_dtb() to be accessed later on.
+are available in the Git repository at:
 
-Since all ARM machines allocates the FDT only once, we don't need to
-worry about leaking the existing FDT during a machine reset (which is
-something that other machines have to look after, e.g. the ppc64 pSeries
-machine).
+  https://gitlab.com/berrange/qemu tags/misc-next-pull-request
 
-Cc: Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-arm@nongnu.org
-Signed-off-by: Daniel Henrique Barboza <danielhb413@gmail.com>
----
- hw/arm/boot.c | 8 +++++++-
- 1 file changed, 7 insertions(+), 1 deletion(-)
+for you to fetch changes up to e3fdb13e8851be570db41a50589ce82d11d61c12:
 
-diff --git a/hw/arm/boot.c b/hw/arm/boot.c
-index ada2717f76..9f5ceb62d2 100644
---- a/hw/arm/boot.c
-+++ b/hw/arm/boot.c
-@@ -684,7 +684,13 @@ int arm_load_dtb(hwaddr addr, const struct arm_boot_info *binfo,
-      */
-     rom_add_blob_fixed_as("dtb", fdt, size, addr, as);
- 
--    g_free(fdt);
-+    /*
-+     * Update the ms->fdt pointer to enable support for 'dumpdtb'
-+     * and 'info fdt' commands. Use fdt_pack() to shrink the blob
-+     * size we're going to store.
-+     */
-+    fdt_pack(fdt);
-+    ms->fdt = fdt;
- 
-     return size;
- 
+  util/qemu-sockets: Replace the call to close a socket with closesocket() (2022-08-05 16:18:15 +0100)
+
+----------------------------------------------------------------
+Merge misc patches
+
+ * Display deprecation warnings in -cpu help
+ * Fix zerocopy IPv6 handling
+ * Clarify platform support policy on minor release/backports
+ * Fix closesocket call in error path
+
+----------------------------------------------------------------
+
+Andrea Bolognani (1):
+  docs: build-platforms: Clarify stance on minor releases and backports
+
+Bin Meng (1):
+  util/qemu-sockets: Replace the call to close a socket with
+    closesocket()
+
+Daniel P. Berrangé (3):
+  target/i386: display deprecation status in '-cpu help'
+  target/s390x: display deprecation status in '-cpu help'
+  target/arm: display deprecation status in '-cpu help'
+
+Leonardo Bras (1):
+  QIOChannelSocket: Add support for MSG_ZEROCOPY + IPV6
+
+ docs/about/build-platforms.rst |  5 ++++-
+ io/channel-socket.c            |  4 ++--
+ target/arm/helper.c            |  7 ++++++-
+ target/i386/cpu.c              |  5 +++++
+ target/s390x/cpu_models.c      | 23 ++++++++++++++++++-----
+ util/qemu-sockets.c            |  4 ++--
+ 6 files changed, 37 insertions(+), 11 deletions(-)
+
 -- 
-2.36.1
-
+2.37.1

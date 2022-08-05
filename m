@@ -1,63 +1,64 @@
-Received: by 2002:a05:6512:1086:0:0:0:0 with SMTP id j6csp1106735lfg;
-        Fri, 5 Aug 2022 08:20:27 -0700 (PDT)
-X-Google-Smtp-Source: AA6agR53Agz0c+9gYPHPpvtyLXukWXVjTzJMt9vMiyw/f38Wn6bAyyru8aWRrgHAtaD6eliU+16K
-X-Received: by 2002:a17:907:2c41:b0:730:a07d:c720 with SMTP id hf1-20020a1709072c4100b00730a07dc720mr5672632ejc.102.1659712826885;
-        Fri, 05 Aug 2022 08:20:26 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1659712826; cv=none;
+Received: by 2002:a05:6512:1086:0:0:0:0 with SMTP id j6csp1106771lfg;
+        Fri, 5 Aug 2022 08:20:30 -0700 (PDT)
+X-Google-Smtp-Source: AA6agR4F1cJC58+zHxgIQEg2OvX3CFwNDi0oqxQYrB8anciGlK1di4kdc0WfeCrzCYHk8ljDGI6y
+X-Received: by 2002:a05:6402:2753:b0:43a:d6f2:9839 with SMTP id z19-20020a056402275300b0043ad6f29839mr6828425edd.73.1659712830586;
+        Fri, 05 Aug 2022 08:20:30 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1659712830; cv=none;
         d=google.com; s=arc-20160816;
-        b=v1GogY8WV58Z8pgM/MmQ6Mq8dCHFQ+YFd9vZg4FJHnbBhl8iXJAz4+etK66m/99SUZ
-         9XBvNIve55tUkSIwJZTojBJ2az3X0oaJvzCd5PTGxzRY1cRYMIw9MZ0KluX/c93tE72d
-         49YY2p59U2hOYUgX7ibV/qDNcpres/lxGK8mouSFvOI0U05maja4LEcY5mcjS69BB5tz
-         uwqUM1h3+z3hQX9Nax+1MN3+6nF3gU0vQSipEt9M3fDqvjOciZ5Ck6aVrpbP1va1cfvE
-         A5wu3ES3st7YPpImqBJeWtrVodB42jW9y0Mk34LJoa3gY/VMyXoTGzF5GJKttpbkkyjM
-         cFqA==
+        b=GK2l4PhU32oGyCA7veSrFQPTfP+/ePXmMhebC/u/rnyoA8MrgNxIVxymqyA92E60w5
+         b/9U+93zltvXXEZf3YP/A/US5Pp9S97E6k1+ef4ideI9CmZJ9C/5nhD0yDkv/1cdN34M
+         oD5/j2jiiTGV+h2xhSP67x6BV1qIzoL5cKEC3DAHnEsLHimRNrHt010+FGU/upGUA9q6
+         vXTChq2jH3LsHAI7HS1vFGTT96Wn1Yq34vC7CnVqEZkKnsg7g5c4Hl04HGMbyIvD7WhC
+         ovQF7hkcaDF249YQupZ61sYp58IgSNM0XdxGEq8ZIHXhArWHYTN0ibyHAZDOe5KbWOz7
+         pu8A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:dkim-signature;
-        bh=L2Qk/T5pDEpCliz/Xg2eicSxsZkuhsTGbYJsBsWi2cE=;
-        b=HWqe33QJm0UF/R4oizKhWpfp/nPPqp/iJjSfvMcULUoM48GSA4a7VrnyNruvXB0wOt
-         Nx5Z4F0q9MyGEfb+Iqivp3vggJCB824IdBsR6ubWbEuRc5twHB/EfW7tF5Smvwhe10+b
-         dTEHH88CIW/9RanT9hDxg6A92QMy1xDz1fyBmnpZaqU5iQyVHrWiBD22LWFBqUUkKl2c
-         gEbwCva/NBCU6QS8fFXl3H+o+xGuVN+/CCkPhp0JEM84Y6IOj00gDBnBuq+VI3RTUVVz
-         8scI5lN6QW/YJwIoqLkVSvhsk59b0HRljivIRSlNg6qJTsm6g1tCajEH4CQ5ff6VoxLz
-         7Lyg==
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:dkim-signature;
+        bh=4tbOtoX+okfrNQpn+JtCKcqsZHP3f6wk1WRWkOWk6Cs=;
+        b=onI8LZ6/tfIc+9mIIcHZHs3G6fI5iCUV2ypom+Rp3sNt1jSuA2/9ncK40rFzqHsTMO
+         QyxnGotbGGuFlGI+0Ajn4Mz+rwTqNrH0CgmcjSy/ea2Vgc0h2pPR6G0rmOjhwTLYTN/q
+         fhGfOGM52nXH0KXd5gZ8d7xfbZkx/oEybmiytjVSP7vx6aHP9mWpH7xAIYFaqeIZ/MEU
+         IZOVJQiBybORZYadDPqALOb90/PQF4PgSFktvQ0OS3DO7iE5Ct17O0EQNnVtw9At9M0Y
+         KULIXyYvJQZm7bImmp4c5NFxTlTIiBl5lvooXno+O+gD0DGXQteTMeEukEy84Z2yo2yB
+         ZNCQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=L+gLsbYz;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="ejeEFG/0";
        spf=pass (google.com: domain of berrange@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=berrange@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <berrange@redhat.com>
 Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
-        by mx.google.com with ESMTPS id o19-20020a170906975300b00730e93aa2ddsi2376497ejy.903.2022.08.05.08.20.26
+        by mx.google.com with ESMTPS id cs14-20020a170906dc8e00b0072b8311a17dsi1937317ejc.310.2022.08.05.08.20.30
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 05 Aug 2022 08:20:26 -0700 (PDT)
+        Fri, 05 Aug 2022 08:20:30 -0700 (PDT)
 Received-SPF: pass (google.com: domain of berrange@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=L+gLsbYz;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="ejeEFG/0";
        spf=pass (google.com: domain of berrange@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=berrange@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1659712825;
+	s=mimecast20190719; t=1659712829;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding;
-	bh=L2Qk/T5pDEpCliz/Xg2eicSxsZkuhsTGbYJsBsWi2cE=;
-	b=L+gLsbYzEixqsRjhk3yp2D9fkPyU228EI8cTzmP+4Ol1oJGo7hJPforZ6hefgwCuQvtEiZ
-	l63QfWcghO8USTkjAVVRfHTALhBfuYv4C7xaIP+eqPyzFcC897Sde7WdT/74b7n4Cfc6VI
-	kWWUHY2jQmiK0/FvocThJhZk6ZI3sAU=
-Received: from mimecast-mx02.redhat.com (mx3-rdu2.redhat.com
- [66.187.233.73]) by relay.mimecast.com with ESMTP with STARTTLS
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=4tbOtoX+okfrNQpn+JtCKcqsZHP3f6wk1WRWkOWk6Cs=;
+	b=ejeEFG/0PtraZNBfq5XLyDf02Z45R3Uo0YqfM+wuBARI3NiIrWti/loga4L1eK1XQIeI2Q
+	1PE1wtAWlBY57ckYoY7eOzkz2rIGcwZ4DdGPaARAv+GqxpYYJZbCfQa4yMVfVdjutCHdot
+	B32uuunXvs4m6dDqJo2LM4e5WNRChts=
+Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
+ [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-106-mgVc0uUAP7S7s4-olnTXaw-1; Fri, 05 Aug 2022 11:20:22 -0400
-X-MC-Unique: mgVc0uUAP7S7s4-olnTXaw-1
+ us-mta-632-m06YNuqTOc-EoHGLVZ7PNg-1; Fri, 05 Aug 2022 11:20:26 -0400
+X-MC-Unique: m06YNuqTOc-EoHGLVZ7PNg-1
 Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.rdu2.redhat.com [10.11.54.4])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 72D883C0E236;
-	Fri,  5 Aug 2022 15:20:21 +0000 (UTC)
+	by mimecast-mx02.redhat.com (Postfix) with ESMTPS id EB39D101A58D;
+	Fri,  5 Aug 2022 15:20:25 +0000 (UTC)
 Received: from localhost.localdomain.com (unknown [10.39.194.117])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id B1A0F2026D4C;
-	Fri,  5 Aug 2022 15:20:16 +0000 (UTC)
+	by smtp.corp.redhat.com (Postfix) with ESMTP id B8D532026D4C;
+	Fri,  5 Aug 2022 15:20:21 +0000 (UTC)
 From: =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: libvir-list@redhat.com,
@@ -75,60 +76,54 @@ Cc: libvir-list@redhat.com,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
 	David Hildenbrand <david@redhat.com>,
 	Paolo Bonzini <pbonzini@redhat.com>,
-	Wainer dos Santos Moschetta <wainersm@redhat.com>
-Subject: [PULL 0/6] Misc next patches
-Date: Fri,  5 Aug 2022 16:20:08 +0100
-Message-Id: <20220805152014.135768-1-berrange@redhat.com>
+	Wainer dos Santos Moschetta <wainersm@redhat.com>,
+	Andrea Bolognani <abologna@redhat.com>
+Subject: [PULL 1/6] docs: build-platforms: Clarify stance on minor releases and backports
+Date: Fri,  5 Aug 2022 16:20:09 +0100
+Message-Id: <20220805152014.135768-2-berrange@redhat.com>
+In-Reply-To: <20220805152014.135768-1-berrange@redhat.com>
+References: <20220805152014.135768-1-berrange@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-Scanned-By: MIMEDefang 2.78 on 10.11.54.4
-X-TUID: omIsVl1OpHcJ
+X-TUID: qTNXpkGeTUUL
 
-The following changes since commit 09ed077d7fae5f825e18ff9a2004dcdd1b165edb:
+From: Andrea Bolognani <abologna@redhat.com>
 
-  Merge tag 'trivial-branch-for-7.1-pull-request' of https://gitlab.com/laurent_vivier/qemu into staging (2022-08-04 17:21:13 -0700)
+These changes match those made in the following libvirt commits:
 
-are available in the Git repository at:
+  2ac78307af docs: Clarify our stance on backported packages
+  78cffd450a docs: Spell out our policy concerning minor releases
 
-  https://gitlab.com/berrange/qemu tags/misc-next-pull-request
+Since QEMU's platform support policy is based on libvirt's, it
+makes sense to mirror these recent changes made to the latter.
 
-for you to fetch changes up to e3fdb13e8851be570db41a50589ce82d11d61c12:
+The policy is not altered significantly - we're simply spelling
+out some rules that were likely already being implicitly
+enforced.
 
-  util/qemu-sockets: Replace the call to close a socket with closesocket() (2022-08-05 16:18:15 +0100)
+Signed-off-by: Andrea Bolognani <abologna@redhat.com>
+Signed-off-by: Daniel P. Berrangé <berrange@redhat.com>
+---
+ docs/about/build-platforms.rst | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
 
-----------------------------------------------------------------
-Merge misc patches
-
- * Display deprecation warnings in -cpu help
- * Fix zerocopy IPv6 handling
- * Clarify platform support policy on minor release/backports
- * Fix closesocket call in error path
-
-----------------------------------------------------------------
-
-Andrea Bolognani (1):
-  docs: build-platforms: Clarify stance on minor releases and backports
-
-Bin Meng (1):
-  util/qemu-sockets: Replace the call to close a socket with
-    closesocket()
-
-Daniel P. Berrangé (3):
-  target/i386: display deprecation status in '-cpu help'
-  target/s390x: display deprecation status in '-cpu help'
-  target/arm: display deprecation status in '-cpu help'
-
-Leonardo Bras (1):
-  QIOChannelSocket: Add support for MSG_ZEROCOPY + IPV6
-
- docs/about/build-platforms.rst |  5 ++++-
- io/channel-socket.c            |  4 ++--
- target/arm/helper.c            |  7 ++++++-
- target/i386/cpu.c              |  5 +++++
- target/s390x/cpu_models.c      | 23 ++++++++++++++++++-----
- util/qemu-sockets.c            |  4 ++--
- 6 files changed, 37 insertions(+), 11 deletions(-)
-
+diff --git a/docs/about/build-platforms.rst b/docs/about/build-platforms.rst
+index 6b8496c430..26028756d0 100644
+--- a/docs/about/build-platforms.rst
++++ b/docs/about/build-platforms.rst
+@@ -71,7 +71,10 @@ The project aims to support the most recent major version at all times. Support
+ for the previous major version will be dropped 2 years after the new major
+ version is released or when the vendor itself drops support, whichever comes
+ first. In this context, third-party efforts to extend the lifetime of a distro
+-are not considered, even when they are endorsed by the vendor (eg. Debian LTS).
++are not considered, even when they are endorsed by the vendor (eg. Debian LTS);
++the same is true of repositories that contain packages backported from later
++releases (e.g. Debian backports). Within each major release, only the most
++recent minor release is considered.
+ 
+ For the purposes of identifying supported software versions available on Linux,
+ the project will look at CentOS, Debian, Fedora, openSUSE, RHEL, SLES and
 -- 
 2.37.1

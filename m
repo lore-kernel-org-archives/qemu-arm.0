@@ -1,120 +1,99 @@
-Received: by 2002:a05:6512:1086:0:0:0:0 with SMTP id j6csp898088lfg;
-        Fri, 5 Aug 2022 02:25:13 -0700 (PDT)
-X-Google-Smtp-Source: AA6agR5+QxCMdAHBhiWDQNysOnHPGSpFfMpt0/xDz0S+tqdNFaAhFqBfW329qJvp4dKhiTSbAnZU
-X-Received: by 2002:a0c:eb09:0:b0:474:9b46:f9f6 with SMTP id j9-20020a0ceb09000000b004749b46f9f6mr4875098qvp.78.1659691512846;
-        Fri, 05 Aug 2022 02:25:12 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1659691512; cv=none;
+Received: by 2002:a05:6512:1086:0:0:0:0 with SMTP id j6csp899034lfg;
+        Fri, 5 Aug 2022 02:27:28 -0700 (PDT)
+X-Google-Smtp-Source: AA6agR7sPqDEjGHaH29EnaPO3+MLvMe0dWYGFaCSzkF24EOVeWqaaRcjmLvLDa45dshNPLwbNX17
+X-Received: by 2002:a05:6214:4186:b0:474:74d0:7aeb with SMTP id ld6-20020a056214418600b0047474d07aebmr4780900qvb.75.1659691648740;
+        Fri, 05 Aug 2022 02:27:28 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1659691648; cv=none;
         d=google.com; s=arc-20160816;
-        b=OvXjQSVH9ttX49FabEqU5kOYD/l/aChIxc+SE81leUtxo+o/znjp8VQrm4PjNPmbjn
-         HOEvk62KKGju2gt5DMm8d3siD2c/omxTyfRkh/6Cax6Yo6sDPWmqGYLtGJGUV1E5RAHF
-         b5D6N6y/z5rDV7UMUeZmPA7KF+DOtkjm1RIETWJQMtybl4K5gDSSQjF8/NR8kRX4QxCA
-         pHm8qubLLgOsHw5yowU3rh8VnhsjHqOY0sDcRDKwpowHWSOnlxB9VBk8XwtTr78X/xOH
-         iOlaK2zAzFgMBvNtLBfAwYYTAZkm7kXhCNDR5F9Y4VzH9UdsgsHQcvzrALqwhe1+c2F3
-         NiHg==
+        b=mtEph36l4ACg1oFamhF/CsYwxbPHXLrslWpcSlhUV0EmOZPSUfqUkzEqpBIzflgja+
+         gccY1hZz0MFAHEDmUIW6LG6gmFq1FpzlUHPDWUNp9o6loksMcVs0o16MAPfsMo85SL5S
+         yxDDHt6XEWhZjVjaWL0gCJY3i18Sw+sNaKwlfYGDYoSddm55/LlaFfSip0U2LB5rUkmO
+         rRn7/ugp30HGuWF+WEOnqPFWK/cf8Tvjn0o1xeFZyVT3H9Ibub9NCEp9T6eQNTqrmK9K
+         Toc20avGePpP3a6krx4PFZYHoTfEfJzowCbq0kIY8lD95p8A+rwK3UexBHWiC8C7bcEY
+         5ADw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
          :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=Nk0MpEGp6s06a+FVqnJVQ0MagwkoRyanPy1l9WyWctI=;
-        b=qQfOJxwFabE5wdedCanE684K2a2J+/8S++f8mIYUn58OsIBuMpb7O8sH88uqnjD6Yf
-         t5vlwGR+8QQYic6Ic+8/2sPzIrbLoIBnwx20ikwZN3vA/rnuLSnws99eUT2kX0dZnz46
-         NMELEBh/t2y2HbtOwUiX8vX9buRYrhQa5NMZtafF3fxILvcS4ABYxMLw1OYPsN26aaUr
-         lVkkW9bjGT7KBHOiV3bpvnMWdSWRa7DVOEtat77Uf4AejmSddmXASAWL+irjEaUKZ4DO
-         KnctFnrTzWLqyma8npdE7XHzi1bn3A/NcsNM4hlgyXUbw+S761Up1QyMTBBCJ/4L0UeM
-         YGtQ==
+        bh=Tl3CkRBUYMxN3HCo0CqvoNObtX4UDwKdhSw6OJigr7c=;
+        b=GyufyIJBlrAvKNzuSvvG3JPiwEFdY1acLUagl6lrHY/TDryfY11HwdR2bje4JgXeUO
+         ZdoDtqZ7Ca0g5L2M7y2wEHj3NdEM9gFzEJipRtttnuiJgCRpfERfm90l7oj0MxBvAnYE
+         MLyOVYxIMAZ8T04jeC08L6rO2RFYl+EjHULKUrENSilGemMHmwVldvo4+7lPO+KSxSoR
+         P2mHH1dgfRm15NqNfNKC/oyk1NskWNtKXLwZe/pZE8knWuKj1qI7hJoGc6Qf+IdM1ZVt
+         byYlw4g4Xvw/Wtfcj60WPWD03KSqVOZjavOkq3V85X2wGtECw2Az9wIK0w4gPPBWzTKn
+         T6hA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=KXH3EnKZ;
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=PvQ3pkdn;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id hr9-20020a05621423c900b00474108c0fd1si1805439qvb.580.2022.08.05.02.25.12
+        by mx.google.com with ESMTPS id kc7-20020a056214410700b0047298eab3f8si1573868qvb.487.2022.08.05.02.27.28
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 05 Aug 2022 02:25:12 -0700 (PDT)
+        Fri, 05 Aug 2022 02:27:28 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=KXH3EnKZ;
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=PvQ3pkdn;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:46106 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:49732 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1oJtZw-0005QH-BC
-	for alex.bennee@linaro.org; Fri, 05 Aug 2022 05:25:12 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46572)
+	id 1oJtc8-0007yH-8t
+	for alex.bennee@linaro.org; Fri, 05 Aug 2022 05:27:28 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46726)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jon.alduan@gmail.com>)
- id 1oJtXJ-0003rd-Qe
- for qemu-arm@nongnu.org; Fri, 05 Aug 2022 05:22:30 -0400
-Received: from mail-ej1-x632.google.com ([2a00:1450:4864:20::632]:41699)
+ id 1oJtYV-0004h8-Nv
+ for qemu-arm@nongnu.org; Fri, 05 Aug 2022 05:23:48 -0400
+Received: from mail-ed1-x52c.google.com ([2a00:1450:4864:20::52c]:38812)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <jon.alduan@gmail.com>)
- id 1oJtXI-00070N-3y
- for qemu-arm@nongnu.org; Fri, 05 Aug 2022 05:22:29 -0400
-Received: by mail-ej1-x632.google.com with SMTP id gk3so3943344ejb.8
- for <qemu-arm@nongnu.org>; Fri, 05 Aug 2022 02:22:27 -0700 (PDT)
+ id 1oJtYT-0007Ce-Ds
+ for qemu-arm@nongnu.org; Fri, 05 Aug 2022 05:23:43 -0400
+Received: by mail-ed1-x52c.google.com with SMTP id a89so2629135edf.5
+ for <qemu-arm@nongnu.org>; Fri, 05 Aug 2022 02:23:41 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:from:to:cc;
- bh=Nk0MpEGp6s06a+FVqnJVQ0MagwkoRyanPy1l9WyWctI=;
- b=KXH3EnKZBF+UpntR/tOc5VdfiIqGaq68Y7yWM4qq3FUnU18BO69U+fcFuYIf3/qKcP
- FWek7yCbOp9ycRfz7PYbw7l7ayeee3ADrvMCvPE4Np5Jbwv2lMV8WrurfFAyU5hxALlE
- xKM+Yz+W0kuY+L68UHYu1tQHKw62tSsKlOfnc26AZ3ueFzC61pukAqqHkERj5QTb6red
- EtzgihfaupMhCsMOb/5tOesAtzJdTfFJOCnkIx/fEc+Fdxyg6DHhZGQc72ewHEXOMiWO
- etBdnt93IGGPoDhqYCVdDZWlkTdwbPiVauFe5203L+hKb457ue0PJ+pj8c4HJPu9pNOR
- o1MA==
+ bh=Tl3CkRBUYMxN3HCo0CqvoNObtX4UDwKdhSw6OJigr7c=;
+ b=PvQ3pkdn/16TKaJyH5udZucRcCZBbCzVo2PXJ2w4VqqWt+ljGbiRxD68jSZ47JV4iI
+ q0mYIzaMvTWLjgkvITR9qWzmfJn7uTmtSnbf1oJXPrRckOQtjkKcYr7DF3s3AEt3uMkL
+ ImlSEkKyj7/uXdUcz9bhEVJmOXp8wpI1oceMJ13mIrtuAF5EWE4qLrUvOfRsoUprdWXu
+ KMv1b7N6tmzXFIqDjDQeanqrRm3LOVi9vjbZBM1GNpJFLwOZbJpbCZg1AdyAniF95o2T
+ eIvecPYSRPQaLBXnCi1FsDr5TeNGRcb4MqCgAbvZRYej5LgjnQMsz1QMbWAhMWAAvURo
+ BJRQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:x-gm-message-state:from:to:cc;
- bh=Nk0MpEGp6s06a+FVqnJVQ0MagwkoRyanPy1l9WyWctI=;
- b=DtsiLFe26ndpGg+CAJ/E+YBAhVnE+3d5m6tAJ8JdYG9DLovZa2V9q+f2ckpaHfA9f3
- 9Vb3U83r5Lel6rDc2Gc3gjq42jQ5Uq0dQ1/iVxTQCZlxkiXdoXuyV6CHZF9zGQn/bAr6
- ECeJtxyd90bjHEo6IoC3e6WJwrzLwBt/RI+h8lPJ1x9JjgKrERg+lwse6C4ZYmli8nWG
- g1EL32p5bPXrvy3diGyEiEV+28Rj3+o5Bvd4GhAwg8v33yvhcRf5//mut5WbmzOgUxOK
- ltXjEo3Ct1QFj24ZJfQ41HhcQ1f8N3hYNNnnCjlvHQqiAX/nzkuINpJR+9Pauj+0bEGt
- s2eg==
-X-Gm-Message-State: ACgBeo2xQU4DDEFrShUDxvbWkmC3X2K2X34dFD1vTJ+kkX8ZHkyCLUOy
- rbA3CDhzNStuIlA5uNLCyYf4X/X8KJbuC3HGrUg=
-X-Received: by 2002:a17:907:2bc4:b0:730:aa9c:bd86 with SMTP id
- gv4-20020a1709072bc400b00730aa9cbd86mr4702686ejc.341.1659691345665; Fri, 05
- Aug 2022 02:22:25 -0700 (PDT)
+ bh=Tl3CkRBUYMxN3HCo0CqvoNObtX4UDwKdhSw6OJigr7c=;
+ b=6LJggkjKWVl/zT6MknaedOcJWfRnV0pWOJ2WLuZvmGUCQyhv0vyZjhUWcEAoarxrfN
+ rzYuKp80nozM6qSiS8RjcBdf+JR32VaZYA6cmPHChpVQ6tUx5ngQI7wn5z7JRFiSbcV5
+ M3899FYoGEp7g3HZ7SVhEntWbw5xHDjHwGh5rZwNotl+bLEpma22Pp1BW6yCfAUi6snU
+ xrng/zQTZHe4zZIhymCk2Rdq6LtRUQ+fek4ASXO+WJW/KHkYRlXKodmqyjWYI5j8tk0B
+ 8dE6QeNuWiKBXWC0L0ZM/Z9qzsN2PwYnvSWZxeyLUKFuFUFJbq0w+VkShoeRD4jK2EAM
+ no4Q==
+X-Gm-Message-State: ACgBeo1eijLKlor1GPFO11LdCUv2dYooDMN8ESe47wqvyRwWkbhJ6NzD
+ nYVgsLySOQh0qMTrlgzSLAP2k+1jOY9dwB/bFD2UyHL3Zj8=
+X-Received: by 2002:a05:6402:520e:b0:43d:df14:fbed with SMTP id
+ s14-20020a056402520e00b0043ddf14fbedmr5849846edd.16.1659691419854; Fri, 05
+ Aug 2022 02:23:39 -0700 (PDT)
 MIME-Version: 1.0
-References: <CAL7npF9T0148jkgTigVfE7cSzH2HKqy0NG0VQtAH2HMXjdBOOg@mail.gmail.com>
- <CAFEAcA8RHhRcrMSO_3MK0hSH=zWzde7S0DHHaLPZf4jOv48RLQ@mail.gmail.com>
- <CAL7npF9hKFsQF18Udi9QFnRZSH-G8cafXHBSBQcrs7jpJmPd7Q@mail.gmail.com>
- <CAFEAcA92=ne8weVYDnLLzNk0+z+aMFJgOJvW_7hSYcY1TimyHw@mail.gmail.com>
- <CAL7npF8Hg7hJBxw9j-1_7GRV_E52KS+hP1WXKfD3+r05C=CBgg@mail.gmail.com>
- <CAFEAcA8tGiaXq+y40-BtdG3jiBJpP=L6x9tsPL_5dF6dr=afEA@mail.gmail.com>
- <CAL7npF8d6LZHZtLWe65JiwQW+X-48JxLa2xBoGdxjJJWpKx-Fw@mail.gmail.com>
- <CAFEAcA9SM--_+Ret6fZwvWNe0J3E8TE-+do614TtTpi0rbAM9A@mail.gmail.com>
- <CAL7npF_8ErAn2cvFBQxVCdP96uKpdRQMs_3aL_UW5OLzm3Q=GQ@mail.gmail.com>
- <CAFEAcA-cTzrA6fZXw7onDJ77NMwjBrSFVwADYmttCgdOf9ODYw@mail.gmail.com>
- <CAL7npF9H_eKi0jA_m-wV=jSHy9hc6re7TpTe2ni=9NYK4CxRpA@mail.gmail.com>
- <CAFEAcA8xV-BdhvwvkzRHxqqEX9BAwDJGwHS=koBRbDeGHwQHEw@mail.gmail.com>
- <CAL7npF9bOP=bPtyFS-K+HgXGy9+W11M0ELRJMqQp1-JB_jVx1g@mail.gmail.com>
- <CAFEAcA8hbU7PJK-YvOkbjj2F2PBW1M9J10DkHqUPXTSxYOS-5Q@mail.gmail.com>
- <CAL7npF9neZUWweuZFqDkO5mh5=tZj3ybjZUvVoF932cJibpRiw@mail.gmail.com>
- <CAFEAcA9CnC5P4Myf1qMO=DLas93+kSVjNvnj6Vgty_yvdjH5vQ@mail.gmail.com>
- <CAL7npF8KNQKyfeW5ONY53+_u6Q4H8BDtY386Eyt-+gxaXdBBJA@mail.gmail.com>
- <CAFEAcA8hVyCwMbQ_ZNUgw8Nfb3wTvRk3gvUr8RC3gSH7Pkuv_g@mail.gmail.com>
- <CAL7npF897P3=Rro4pe_i_cmO+rUe-b1NqnJtmEM3K0kEF5VC7Q@mail.gmail.com>
- <CAFEAcA9y6zwErffpvrJrenS0hyLvGyoyhdF8Vo3mgFhLOvvOSw@mail.gmail.com>
- <CAFEAcA-9F6QDzEiAfiMa=DUVK3LGe9vLmD_OcMTfbU8ayv3Ffw@mail.gmail.com>
- <CAL7npF839onoBJxewXraSGRPmbK=8SqbPeU2W3YN7kFYW6j9tQ@mail.gmail.com>
- <CAFEAcA8wfEfxZh4NFpbDAsB=Rz=9-UcafOWbEtGkJ1WGZs71WQ@mail.gmail.com>
- <CAFEAcA9GdtaUmn_Ft3uYobfwNX0wkg2tDUTC2uS2erim32W8YA@mail.gmail.com>
-In-Reply-To: <CAFEAcA9GdtaUmn_Ft3uYobfwNX0wkg2tDUTC2uS2erim32W8YA@mail.gmail.com>
+References: <CAL7npF8ZPDC+HOoJd=ssDT++KVbGyXV6bZUmri1anz08tfdWMA@mail.gmail.com>
+ <CAFEAcA_qOWrJt45gffZCBTDGku=K7NLhQ=zp20efYDm5jMAe9A@mail.gmail.com>
+In-Reply-To: <CAFEAcA_qOWrJt45gffZCBTDGku=K7NLhQ=zp20efYDm5jMAe9A@mail.gmail.com>
 From: Jon Alduan <jon.alduan@gmail.com>
-Date: Fri, 5 Aug 2022 11:22:13 +0200
-Message-ID: <CAL7npF89woO0-rXJkc2chvAwpH+mtbBnz+QZt8q2B+YY=hb2FQ@mail.gmail.com>
-Subject: Re: [qemu-arm-static] timer_delete issue from Qemu 5.0.0 onwards
+Date: Fri, 5 Aug 2022 11:23:28 +0200
+Message-ID: <CAL7npF--=JXKYYpSZ39y+DAg6Z1WJG_w5ZZzFcM8YHEjFzd8Ew@mail.gmail.com>
+Subject: Re: [qemu-arm-static] [Known-issue] readdir() returns NULL
+ (errno=EOVERFLOW) for 32-bit user-static qemu on 64-bit host
 To: Peter Maydell <peter.maydell@linaro.org>
 Cc: qemu-arm@nongnu.org
-Content-Type: multipart/alternative; boundary="00000000000018633b05e57b0130"
-Received-SPF: pass client-ip=2a00:1450:4864:20::632;
- envelope-from=jon.alduan@gmail.com; helo=mail-ej1-x632.google.com
+Content-Type: multipart/alternative; boundary="000000000000846a9105e57b0578"
+Received-SPF: pass client-ip=2a00:1450:4864:20::52c;
+ envelope-from=jon.alduan@gmail.com; helo=mail-ed1-x52c.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -136,34 +115,58 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 0Cp0OZwrGPOn
+X-TUID: wt8/80QierYH
 
---00000000000018633b05e57b0130
+--000000000000846a9105e57b0578
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 
 Hello Peter,
 
-I did some more tests and saw that you have limited the max. number of
-POSIX timers at any time to 32. Do you have any special reason to do that?
-
-Thank you for your support.
+thank you for the updated information.
+I have to go for a workaround then :-)
 
 Best regards
 Jon
 
-El lun, 25 jul 2022 a las 13:07, Peter Maydell (<peter.maydell@linaro.org>)
+
+El jue, 4 ago 2022 a las 10:49, Peter Maydell (<peter.maydell@linaro.org>)
 escribi=C3=B3:
 
-> On Thu, 21 Jul 2022 at 21:36, Peter Maydell <peter.maydell@linaro.org>
-> wrote:
-> > Now I understand the cause of the bug I'll think about how to
-> > best fix it, but I won't get to that until next week.
+> On Wed, 3 Aug 2022 at 23:16, Jon Alduan <jon.alduan@gmail.com> wrote:
+> >
+> > Hello qemu-arm community,
+> >
+> > I did not set up this email with usual format and contents, as this is =
+a
+> known issue.
+> > See Bug #1805913 =E2=80=9Creaddir() returns NULL (errno=3DEOVERFLOW) fo=
+r 32-bi...=E2=80=9D
+> : Bugs : QEMU (launchpad.net)
 >
-> I've now posted a patch which I think should fix it:
-> https://patchew.org/QEMU/20220725110035.1273441-1-peter.maydell@linaro.or=
-g/
+> We don't use launchpad any more; the current gitlab issue is:
+> https://gitlab.com/qemu-project/qemu/-/issues/263
 >
+> > I have currently this issue as I am using libc2.28. If I take specially
+> for that, libc2.27, as explained within the link, the issue disappears.
+> > However, I would like to avoid this effort because of maintenance
+> problems.
+> > I was not able to find a solution to this problem and I see, it is stil=
+l
+> reproducible on latest QEMU versions (7.0.50).
+> > In the link's thread a Kernel adaptation could fix it, but I saw nothin=
+g
+> valuable there.
+> > Do you know how to fix or at least workaround it with QEMU or with
+> Kernel?
+>
+> This cannot be fixed in QEMU -- the only way to fix it is for the
+> kernel to gain a new API that QEMU can use to insist that
+> readdir directory offsets are restricted to 32 bit values.
+> So far that appears to be stalled: we have failed to persuade
+> the kernel developers to do anything :-(
+>
+> thanks
 > -- PMM
 >
 
@@ -171,32 +174,55 @@ g/
 --=20
 j.A
 
---00000000000018633b05e57b0130
+--000000000000846a9105e57b0578
 Content-Type: text/html; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 
-<div dir=3D"ltr"><div>Hello Peter,</div><div><br></div><div>I did some more=
- tests and saw that you have limited the max. number of POSIX timers at any=
- time to 32. Do you have any special reason to do that?</div><div><br></div=
-><div>Thank you for your support.</div><div><br></div><div>Best regards</di=
-v><div>Jon<br></div></div><br><div class=3D"gmail_quote"><div dir=3D"ltr" c=
-lass=3D"gmail_attr">El lun, 25 jul 2022 a las 13:07, Peter Maydell (&lt;<a =
-href=3D"mailto:peter.maydell@linaro.org">peter.maydell@linaro.org</a>&gt;) =
-escribi=C3=B3:<br></div><blockquote class=3D"gmail_quote" style=3D"margin:0=
-px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex">O=
-n Thu, 21 Jul 2022 at 21:36, Peter Maydell &lt;<a href=3D"mailto:peter.mayd=
-ell@linaro.org" target=3D"_blank">peter.maydell@linaro.org</a>&gt; wrote:<b=
+<div dir=3D"ltr"><div>Hello Peter,</div><div><br></div><div>thank you for t=
+he updated information.</div><div>I have to go for a workaround then :-)</d=
+iv><div><br></div><div>Best regards</div><div>Jon</div><div><br></div></div=
+><br><div class=3D"gmail_quote"><div dir=3D"ltr" class=3D"gmail_attr">El ju=
+e, 4 ago 2022 a las 10:49, Peter Maydell (&lt;<a href=3D"mailto:peter.mayde=
+ll@linaro.org">peter.maydell@linaro.org</a>&gt;) escribi=C3=B3:<br></div><b=
+lockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-le=
+ft:1px solid rgb(204,204,204);padding-left:1ex">On Wed, 3 Aug 2022 at 23:16=
+, Jon Alduan &lt;<a href=3D"mailto:jon.alduan@gmail.com" target=3D"_blank">=
+jon.alduan@gmail.com</a>&gt; wrote:<br>
+&gt;<br>
+&gt; Hello qemu-arm community,<br>
+&gt;<br>
+&gt; I did not set up this email with usual format and contents, as this is=
+ a known issue.<br>
+&gt; See Bug #1805913 =E2=80=9Creaddir() returns NULL (errno=3DEOVERFLOW) f=
+or 32-bi...=E2=80=9D : Bugs : QEMU (<a href=3D"http://launchpad.net" rel=3D=
+"noreferrer" target=3D"_blank">launchpad.net</a>)<br>
+<br>
+We don&#39;t use launchpad any more; the current gitlab issue is:<br>
+<a href=3D"https://gitlab.com/qemu-project/qemu/-/issues/263" rel=3D"norefe=
+rrer" target=3D"_blank">https://gitlab.com/qemu-project/qemu/-/issues/263</=
+a><br>
+<br>
+&gt; I have currently this issue as I am using libc2.28. If I take speciall=
+y for that, libc2.27, as explained within the link, the issue disappears.<b=
 r>
-&gt; Now I understand the cause of the bug I&#39;ll think about how to<br>
-&gt; best fix it, but I won&#39;t get to that until next week.<br>
+&gt; However, I would like to avoid this effort because of maintenance prob=
+lems.<br>
+&gt; I was not able to find a solution to this problem and I see, it is sti=
+ll reproducible on latest QEMU versions (7.0.50).<br>
+&gt; In the link&#39;s thread a Kernel adaptation could fix it, but I saw n=
+othing valuable there.<br>
+&gt; Do you know how to fix or at least workaround it with QEMU or with Ker=
+nel?<br>
 <br>
-I&#39;ve now posted a patch which I think should fix it:<br>
-<a href=3D"https://patchew.org/QEMU/20220725110035.1273441-1-peter.maydell@=
-linaro.org/" rel=3D"noreferrer" target=3D"_blank">https://patchew.org/QEMU/=
-20220725110035.1273441-1-peter.maydell@linaro.org/</a><br>
+This cannot be fixed in QEMU -- the only way to fix it is for the<br>
+kernel to gain a new API that QEMU can use to insist that<br>
+readdir directory offsets are restricted to 32 bit values.<br>
+So far that appears to be stalled: we have failed to persuade<br>
+the kernel developers to do anything :-(<br>
 <br>
+thanks<br>
 -- PMM<br>
 </blockquote></div><br clear=3D"all"><br>-- <br><div dir=3D"ltr" class=3D"g=
 mail_signature">j.A</div>
 
---00000000000018633b05e57b0130--
+--000000000000846a9105e57b0578--

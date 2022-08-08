@@ -1,87 +1,89 @@
-Received: by 2002:a05:6512:618:0:0:0:0 with SMTP id b24csp317838lfe;
-        Sun, 7 Aug 2022 20:37:45 -0700 (PDT)
-X-Google-Smtp-Source: AA6agR6xy3ZDSt48UCxX8QMe7uh+JrTofkcQcCVilOXllvKGcxVICnGIhLPGzxwpoffKujeARsHi
-X-Received: by 2002:a05:620a:4513:b0:6b8:f52c:f100 with SMTP id t19-20020a05620a451300b006b8f52cf100mr12837626qkp.155.1659929865090;
-        Sun, 07 Aug 2022 20:37:45 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1659929865; cv=none;
+Received: by 2002:a17:906:3b11:0:0:0:0 with SMTP id g17csp2487968ejf;
+        Mon, 8 Aug 2022 05:40:11 -0700 (PDT)
+X-Google-Smtp-Source: AA6agR4PkE8aiaNG+zSz034PuZtW946/d0gt6/mRY0sGkvCicv4bJNX3pFVd3gxfRGZGReAHeN0e
+X-Received: by 2002:a05:6214:2346:b0:479:71a9:91b1 with SMTP id hu6-20020a056214234600b0047971a991b1mr10028531qvb.20.1659962411371;
+        Mon, 08 Aug 2022 05:40:11 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1659962411; cv=none;
         d=google.com; s=arc-20160816;
-        b=PnaaRL/IJMVq4lwWho2EMIuRa0Ts/yDMBwBNDkhD3opP4ZC5vCIxrQVSD5MPlkc/Cz
-         o6y+z0K7mk6D7DQpg5qNkJAxDdlAXTev2n8x0NLPRTfjflp4IV6Reo0RpNynA7m6Yp9g
-         z6KhMMVWh3FVBS63Uzr6ULyjD/CLeSbw3zwsqp5iUJ5Y3Z/HNZad/b16WdFHJUrb9x2S
-         B8WKdSz/GWAdFOK9kXUIRl4mwNFavP9dtmI+zP6ql9hZL0xdQvMu6icQSTiXWLP/+SSk
-         HBYIEa4DENN7p1PaApPh/c8OcXlCJ/Jzj84SWE4WaNNR1ZnmNlePp6qMpkqoaOBZs3Gq
-         mmvg==
+        b=faZjwUrjArjRYftVUV1adgUYNsq9mMeboc9BtY5tZjr4eM1akbRIyjwesTnC/2nuh/
+         bSmGZs7NvR/+cVGwdoU0/xK8+3/KVlekI1/w5pgImxL63ruVXGrA1SEPYvx1lTzST0dC
+         cZVz/9US0xRnf1tMkLMeLEwzPO+70zDQHijug4/IffboTPTbFzNqyuYppbFCyA1/VI9x
+         vRKNGTPsagoK7Ryuru4R0ZxxWxcKAZShKmD3vdDUvS+Wd7XJnFozZhsd0gv3O0IOZdh8
+         LZmJERaciGD1NtwB07dtBX5qAKnJ1JpoTwuQyiSmFSP0ewjYfr7d22M07XNZX9NdDYiL
+         wXIg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :dkim-signature;
-        bh=4VvvaKCJhPUo2Ye8oEnieV7F5GByqSGI8pv/QBMYplE=;
-        b=IWu7YS+14XDZdCeA42OD+Fc/q+MfGPqjMXPg8C1lQoW8XhxDS4IkP2jOc8t5393YDk
-         eRfmbq+YHOgXVX/vyOlWkp7AJgi3wh0QU7SmdPPAvSym+T3deJ6AWBKNRY8h6FduOdwW
-         jvztC8w5GqCdDQkiyHqsQwpKucHjb+MG1RVGQeqq/l1izfY4iNCWCJAt0yb0W2Bpkuty
-         Hvadp3SIXTro85+Ur8ftKMXxwYXozpjG4UexHazlokDhF3/6y7nyb4s4aXF68LfWuOm+
-         kzI7ASidny9hxRPR1SCcpin1Ws86TnhWte6RGfEuewKvoiynxUmU2yZ9+jFoLTEzm609
-         7RJA==
+        h=from:reply-to:sender:errors-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence
+         :content-transfer-encoding:mime-version:organization:references
+         :in-reply-to:message-id:subject:cc:to:date;
+        bh=dQliVWv3vBAW02Oybs9nZ4MO5ZhJW0TceuAjsA2Z794=;
+        b=F5ch1clD9TNdTIBmTt9ylKr85fZ+sQxGHJG/hF/QgBkM3dk9Blj8kwxlFpIV3p/aBb
+         o9lF5x8kU5rnTIXQEeAU3d+EGuWRhEgYbrGIquJlhkMiigraowRSARIEPX+tJtqv/eCC
+         ZSxR6G1YSCzVCLqwibxGZDO+untpD4K6bxfCeorpha6j4pQqSzw1yd90qJoq9rJbtjGN
+         RMWE/IRoB0TjcxvchnPePzXZ+Rb7umw4gMBu31S2sg08M++WHXnonpTXccIVIsEb633C
+         mxajcUDcnTCtrIQcABMQNrEQC5Lkkm/LHE46QtPbb1CzxSpGtmA2crOG3dXvXvw2VX8D
+         Pvgw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gibson.dropbear.id.au header.s=201602 header.b=EmTm7LVx;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id q3-20020a05620a0d8300b006b47631b63dsi7065198qkl.115.2022.08.07.20.37.44
+        by mx.google.com with ESMTPS id do10-20020a05620a2b0a00b006b9433aa0desi2942224qkb.497.2022.08.08.05.40.11
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 07 Aug 2022 20:37:45 -0700 (PDT)
+        Mon, 08 Aug 2022 05:40:11 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gibson.dropbear.id.au header.s=201602 header.b=EmTm7LVx;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:55260 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+Received: from localhost ([::1]:55270 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1oKtaK-0003wo-HC
-	for alex.bennee@linaro.org; Sun, 07 Aug 2022 23:37:44 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:36906)
+	id 1oL23G-00048G-RU
+	for alex.bennee@linaro.org; Mon, 08 Aug 2022 08:40:10 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:48468)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <dgibson@gandalf.ozlabs.org>)
- id 1oKtZi-0003uE-8Q; Sun, 07 Aug 2022 23:37:06 -0400
-Received: from gandalf.ozlabs.org ([150.107.74.76]:40261)
+ (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
+ id 1oL20m-0001h3-T9; Mon, 08 Aug 2022 08:37:45 -0400
+Received: from frasgout.his.huawei.com ([185.176.79.56]:2668)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <dgibson@gandalf.ozlabs.org>)
- id 1oKtZe-0006a5-8V; Sun, 07 Aug 2022 23:37:05 -0400
-Received: by gandalf.ozlabs.org (Postfix, from userid 1007)
- id 4M1MM85834z4xMW; Mon,  8 Aug 2022 13:36:52 +1000 (AEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gibson.dropbear.id.au; s=201602; t=1659929812;
- bh=4VvvaKCJhPUo2Ye8oEnieV7F5GByqSGI8pv/QBMYplE=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=EmTm7LVxFxGvfFtjmwO5XzBQDOVmzJDa6ZaFrc346AOyA3078yQ+ol8XsQDz5JqHZ
- tmKRvkSgKlXpOnoEpXZUDZDMqerxGWBedl1zlPdL2sbpkIE5ghnKZr/m+/EsafBE0S
- JKslmVYkhLykxpy+kZvLdmRk3cvA/NqB3edmWHr8=
-Date: Mon, 8 Aug 2022 13:23:44 +1000
-From: David Gibson <david@gibson.dropbear.id.au>
-To: Daniel Henrique Barboza <danielhb413@gmail.com>
-Cc: qemu-devel@nongnu.org, alistair.francis@wdc.com,
- Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org
-Subject: Re: [PATCH for-7.2 v2 01/20] hw/arm: do not free machine->fdt in
- arm_load_dtb()
-Message-ID: <YvCBwE200sVzMixz@yekko>
-References: <20220805093948.82561-1-danielhb413@gmail.com>
- <20220805093948.82561-2-danielhb413@gmail.com>
+ (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
+ id 1oL20i-0006Gy-EH; Mon, 08 Aug 2022 08:37:36 -0400
+Received: from fraeml708-chm.china.huawei.com (unknown [172.18.147.200])
+ by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4M1bLw110Wz67Qtq;
+ Mon,  8 Aug 2022 20:37:28 +0800 (CST)
+Received: from lhrpeml500005.china.huawei.com (7.191.163.240) by
+ fraeml708-chm.china.huawei.com (10.206.15.36) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2375.24; Mon, 8 Aug 2022 14:37:28 +0200
+Received: from localhost (10.122.247.231) by lhrpeml500005.china.huawei.com
+ (7.191.163.240) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2375.24; Mon, 8 Aug
+ 2022 13:37:28 +0100
+Date: Mon, 8 Aug 2022 13:37:27 +0100
+To: Bobo WL <lmw.bobo@gmail.com>
+CC: <linux-cxl@vger.kernel.org>, <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>
+Subject: Re: [BUG] cxl can not create region
+Message-ID: <20220808133727.00001171@huawei.com>
+In-Reply-To: <CAGr_yG0UrfJAMWta3EkR1F0JZ4j--sig74p6vKL3K6TZDx9YGA@mail.gmail.com>
+References: <CAGr_yG0UrfJAMWta3EkR1F0JZ4j--sig74p6vKL3K6TZDx9YGA@mail.gmail.com>
+Organization: Huawei Technologies R&D (UK) Ltd.
+X-Mailer: Claws Mail 4.0.0 (GTK+ 3.24.29; x86_64-w64-mingw32)
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
- protocol="application/pgp-signature"; boundary="bPHyV/5iBO3d7ztV"
-Content-Disposition: inline
-In-Reply-To: <20220805093948.82561-2-danielhb413@gmail.com>
-Received-SPF: pass client-ip=150.107.74.76;
- envelope-from=dgibson@gandalf.ozlabs.org; helo=gandalf.ozlabs.org
-X-Spam_score_int: -17
-X-Spam_score: -1.8
-X-Spam_bar: -
-X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, HEADER_FROM_DIFFERENT_DOMAINS=0.249,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
+Content-Type: text/plain; charset="US-ASCII"
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [10.122.247.231]
+X-ClientProxiedBy: lhrpeml100001.china.huawei.com (7.191.160.183) To
+ lhrpeml500005.china.huawei.com (7.191.163.240)
+X-CFilter-Loop: Reflected
+Received-SPF: pass client-ip=185.176.79.56;
+ envelope-from=jonathan.cameron@huawei.com; helo=frasgout.his.huawei.com
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -96,92 +98,238 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: lU1AdXxWVnWH
+Reply-to:  Jonathan Cameron <Jonathan.Cameron@huawei.com>
+From:  Jonathan Cameron via <qemu-arm@nongnu.org>
+X-TUID: 3YlUn1EaM/li
+
+On Fri, 5 Aug 2022 10:20:23 +0800
+Bobo WL <lmw.bobo@gmail.com> wrote:
+
+> Hi list
+> 
+> I want to test cxl functions in arm64, and found some problems I can't
+> figure out.
+Hi Bob,
+
+Glad to see people testing this code.
+
+> 
+> My test environment:
+> 
+> 1. build latest bios from https://github.com/tianocore/edk2.git master
+> branch(cc2db6ebfb6d9d85ba4c7b35fba1fa37fffc0bc2)
+> 2. build latest qemu-system-aarch64 from git://git.qemu.org/qemu.git
+> master branch(846dcf0ba4eff824c295f06550b8673ff3f31314). With cxl arm
+> support patch: https://patchwork.kernel.org/project/cxl/cover/20220616141950.23374-1-Jonathan.Cameron@huawei.com/
+> 3. build Linux kernel from
+> https://git.kernel.org/pub/scm/linux/kernel/git/cxl/cxl.git preview
+> branch(65fc1c3d26b96002a5aa1f4012fae4dc98fd5683)
+> 4. build latest ndctl tools from https://github.com/pmem/ndctl
+> create_region branch(8558b394e449779e3a4f3ae90fae77ede0bca159)
+> 
+> And my qemu test commands:
+> sudo $QEMU_BIN -M virt,gic-version=3,cxl=on -m 4g,maxmem=8G,slots=8 \
+>         -cpu max -smp 8 -nographic -no-reboot \
+>         -kernel $KERNEL -bios $BIOS_BIN \
+>         -drive if=none,file=$ROOTFS,format=qcow2,id=hd \
+>         -device virtio-blk-pci,drive=hd -append 'root=/dev/vda1
+> nokaslr dyndbg="module cxl* +p"' \
+>         -object memory-backend-ram,size=4G,id=mem0 \
+>         -numa node,nodeid=0,cpus=0-7,memdev=mem0 \
+>         -net nic -net user,hostfwd=tcp::2222-:22 -enable-kvm \
+>         -object
+> memory-backend-file,id=cxl-mem0,share=on,mem-path=/tmp/cxltest.raw,size=256M
+> \
+>         -object
+> memory-backend-file,id=cxl-mem1,share=on,mem-path=/tmp/cxltest1.raw,size=256M
+> \
+>         -object
+> memory-backend-file,id=cxl-mem2,share=on,mem-path=/tmp/cxltest2.raw,size=256M
+> \
+>         -object
+> memory-backend-file,id=cxl-mem3,share=on,mem-path=/tmp/cxltest3.raw,size=256M
+> \
+>         -object
+> memory-backend-file,id=cxl-lsa0,share=on,mem-path=/tmp/lsa0.raw,size=256M
+> \
+>         -object
+> memory-backend-file,id=cxl-lsa1,share=on,mem-path=/tmp/lsa1.raw,size=256M
+> \
+>         -object
+> memory-backend-file,id=cxl-lsa2,share=on,mem-path=/tmp/lsa2.raw,size=256M
+> \
+>         -object
+> memory-backend-file,id=cxl-lsa3,share=on,mem-path=/tmp/lsa3.raw,size=256M
+> \
+>         -device pxb-cxl,bus_nr=12,bus=pcie.0,id=cxl.1 \
+>         -device cxl-rp,port=0,bus=cxl.1,id=root_port0,chassis=0,slot=0 \
+
+Probably not related to your problem, but there is a disconnect in QEMU /
+kernel assumptionsaround the presence of an HDM decoder when a HB only
+has a single root port. Spec allows it to be provided or not as an implementation choice.
+Kernel assumes it isn't provide. Qemu assumes it is.
+
+The temporary solution is to throw in a second root port on the HB and not
+connect anything to it.  Longer term I may special case this so that the particular
+decoder defaults to pass through settings in QEMU if there is only one root port.
+
+>         -device cxl-upstream,bus=root_port0,id=us0 \
+>         -device cxl-downstream,port=0,bus=us0,id=swport0,chassis=0,slot=4 \
+>         -device
+> cxl-type3,bus=swport0,memdev=cxl-mem0,lsa=cxl-lsa0,id=cxl-pmem0 \
+>         -device cxl-downstream,port=1,bus=us0,id=swport1,chassis=0,slot=5 \
+>         -device
+> cxl-type3,bus=swport1,memdev=cxl-mem1,lsa=cxl-lsa1,id=cxl-pmem1 \
+>         -device cxl-downstream,port=2,bus=us0,id=swport2,chassis=0,slot=6 \
+>         -device
+> cxl-type3,bus=swport2,memdev=cxl-mem2,lsa=cxl-lsa2,id=cxl-pmem2 \
+>         -device cxl-downstream,port=3,bus=us0,id=swport3,chassis=0,slot=7 \
+>         -device
+> cxl-type3,bus=swport3,memdev=cxl-mem3,lsa=cxl-lsa3,id=cxl-pmem3 \
+>         -M cxl-fmw.0.targets.0=cxl.1,cxl-fmw.0.size=4G,cxl-fmw.0.interleave-granularity=4k
+> 
+> And I have got two problems.
+> 1. When I want to create x1 region with command: "cxl create-region -d
+> decoder0.0 -w 1 -g 4096 mem0", kernel crashed with null pointer
+> reference. Crash log:
+> 
+> [  534.697324] cxl_region region0: config state: 0
+> [  534.697346] cxl_region region0: probe: -6
+
+Seems odd this is up here.  But maybe fine.
+
+> [  534.697368] cxl_acpi ACPI0017:00: decoder0.0: created region0
+> [  534.699115] cxl region0: mem0:endpoint3 decoder3.0 add:
+> mem0:decoder3.0 @ 0 next: none nr_eps: 1 nr_targets: 1
+> [  534.699149] cxl region0: 0000:0d:00.0:port2 decoder2.0 add:
+> mem0:decoder3.0 @ 0 next: mem0 nr_eps: 1 nr_targets: 1
+> [  534.699167] cxl region0: ACPI0016:00:port1 decoder1.0 add:
+> mem0:decoder3.0 @ 0 next: 0000:0d:00.0 nr_eps: 1 nr_targets: 1
+> [  534.699176] cxl region0: ACPI0016:00:port1 iw: 1 ig: 256
+> [  534.699182] cxl region0: ACPI0016:00:port1 target[0] = 0000:0c:00.0
+> for mem0:decoder3.0 @ 0
+> [  534.699189] cxl region0: 0000:0d:00.0:port2 iw: 1 ig: 256
+> [  534.699193] cxl region0: 0000:0d:00.0:port2 target[0] =
+> 0000:0e:00.0 for mem0:decoder3.0 @ 0
+> [  534.699405] Unable to handle kernel NULL pointer dereference at
+> virtual address 0000000000000000
+> [  534.701474] Mem abort info:
+> [  534.701994]   ESR = 0x0000000086000004
+> [  534.702653]   EC = 0x21: IABT (current EL), IL = 32 bits
+> [  534.703616]   SET = 0, FnV = 0
+> [  534.704174]   EA = 0, S1PTW = 0
+> [  534.704803]   FSC = 0x04: level 0 translation fault
+> [  534.705694] user pgtable: 4k pages, 48-bit VAs, pgdp=000000010144a000
+> [  534.706875] [0000000000000000] pgd=0000000000000000, p4d=0000000000000000
+> [  534.709855] Internal error: Oops: 86000004 [#1] PREEMPT SMP
+> [  534.710301] Modules linked in:
+> [  534.710546] CPU: 7 PID: 331 Comm: cxl Not tainted
+> 5.19.0-rc3-00064-g65fc1c3d26b9-dirty #11
+> [  534.715393] Hardware name: QEMU KVM Virtual Machine, BIOS 0.0.0 02/06/2015
+> [  534.717179] pstate: 60400005 (nZCv daif +PAN -UAO -TCO -DIT -SSBS BTYPE=--)
+> [  534.719190] pc : 0x0
+> [  534.719928] lr : commit_store+0x118/0x2cc
+> [  534.721007] sp : ffff80000aec3c30
+> [  534.721793] x29: ffff80000aec3c30 x28: ffff0000da62e740 x27: ffff0000c0c06b30
+> [  534.723875] x26: 0000000000000000 x25: ffff0000c0a2a400 x24: ffff0000c0a29400
+> [  534.725440] x23: 0000000000000003 x22: 0000000000000000 x21: ffff0000c0c06800
+> [  534.727312] x20: 0000000000000000 x19: ffff0000c1559800 x18: 0000000000000000
+> [  534.729138] x17: 0000000000000000 x16: 0000000000000000 x15: 0000ffffd41fe838
+> [  534.731046] x14: 0000000000000000 x13: 0000000000000000 x12: 0000000000000000
+> [  534.732402] x11: 0000000000000000 x10: 0000000000000000 x9 : 0000000000000000
+> [  534.734432] x8 : 0000000000000000 x7 : 0000000000000000 x6 : ffff0000c0906e80
+> [  534.735921] x5 : 0000000000000000 x4 : 0000000000000000 x3 : ffff80000aec3bf0
+> [  534.737437] x2 : 0000000000000000 x1 : 0000000000000000 x0 : ffff0000c155a000
+> [  534.738878] Call trace:
+> [  534.739368]  0x0
+> [  534.739713]  dev_attr_store+0x1c/0x30
+> [  534.740186]  sysfs_kf_write+0x48/0x58
+> [  534.740961]  kernfs_fop_write_iter+0x128/0x184
+> [  534.741872]  new_sync_write+0xdc/0x158
+> [  534.742706]  vfs_write+0x1ac/0x2a8
+> [  534.743440]  ksys_write+0x68/0xf0
+> [  534.744328]  __arm64_sys_write+0x1c/0x28
+> [  534.745180]  invoke_syscall+0x44/0xf0
+> [  534.745989]  el0_svc_common+0x4c/0xfc
+> [  534.746661]  do_el0_svc+0x60/0xa8
+> [  534.747378]  el0_svc+0x2c/0x78
+> [  534.748066]  el0t_64_sync_handler+0xb8/0x12c
+> [  534.748919]  el0t_64_sync+0x18c/0x190
+> [  534.749629] Code: bad PC value
+> [  534.750169] ---[ end trace 0000000000000000 ]---
+> 
+> 2. When I want to create x4 region with command: "cxl create-region -d
+> decoder0.0 -w 4 -g 4096 -m mem0 mem1 mem2 mem3". I got below errors:
+> 
+> cxl region: create_region: region0: failed to set target3 to mem3
+> cxl region: cmd_create_region: created 0 regions
+> 
+> And kernel log as below:
+> [   60.536663] cxl_region region0: config state: 0
+> [   60.536675] cxl_region region0: probe: -6
+> [   60.536696] cxl_acpi ACPI0017:00: decoder0.0: created region0
+> [   60.538251] cxl region0: mem0:endpoint3 decoder3.0 add:
+> mem0:decoder3.0 @ 0 next: none nr_eps: 1 nr_targets: 1
+> [   60.538278] cxl region0: 0000:0d:00.0:port2 decoder2.0 add:
+> mem0:decoder3.0 @ 0 next: mem0 nr_eps: 1 nr_targets: 1
+> [   60.538295] cxl region0: ACPI0016:00:port1 decoder1.0 add:
+> mem0:decoder3.0 @ 0 next: 0000:0d:00.0 nr_eps: 1 nr_targets: 1
+> [   60.538647] cxl region0: mem1:endpoint4 decoder4.0 add:
+> mem1:decoder4.0 @ 1 next: none nr_eps: 1 nr_targets: 1
+> [   60.538663] cxl region0: 0000:0d:00.0:port2 decoder2.0 add:
+> mem1:decoder4.0 @ 1 next: mem1 nr_eps: 2 nr_targets: 2
+> [   60.538675] cxl region0: ACPI0016:00:port1 decoder1.0 add:
+> mem1:decoder4.0 @ 1 next: 0000:0d:00.0 nr_eps: 2 nr_targets: 1
+> [   60.539311] cxl region0: mem2:endpoint5 decoder5.0 add:
+> mem2:decoder5.0 @ 2 next: none nr_eps: 1 nr_targets: 1
+> [   60.539332] cxl region0: 0000:0d:00.0:port2 decoder2.0 add:
+> mem2:decoder5.0 @ 2 next: mem2 nr_eps: 3 nr_targets: 3
+> [   60.539343] cxl region0: ACPI0016:00:port1 decoder1.0 add:
+> mem2:decoder5.0 @ 2 next: 0000:0d:00.0 nr_eps: 3 nr_targets: 1
+> [   60.539711] cxl region0: mem3:endpoint6 decoder6.0 add:
+> mem3:decoder6.0 @ 3 next: none nr_eps: 1 nr_targets: 1
+> [   60.539723] cxl region0: 0000:0d:00.0:port2 decoder2.0 add:
+> mem3:decoder6.0 @ 3 next: mem3 nr_eps: 4 nr_targets: 4
+> [   60.539735] cxl region0: ACPI0016:00:port1 decoder1.0 add:
+> mem3:decoder6.0 @ 3 next: 0000:0d:00.0 nr_eps: 4 nr_targets: 1
+> [   60.539742] cxl region0: ACPI0016:00:port1 iw: 1 ig: 256
+> [   60.539747] cxl region0: ACPI0016:00:port1 target[0] = 0000:0c:00.0
+> for mem0:decoder3.0 @ 0
+> [   60.539754] cxl region0: 0000:0d:00.0:port2 iw: 4 ig: 512
+
+This looks like off by 1 that should be fixed in the below mentioned
+cxl/pending branch.  That ig should be 256.  Note the fix was
+for a test case with a fat HB and no switch, but certainly looks
+like this is the same issue.
+
+> [   60.539758] cxl region0: 0000:0d:00.0:port2 target[0] =
+> 0000:0e:00.0 for mem0:decoder3.0 @ 0
+> [   60.539764] cxl region0: ACPI0016:00:port1: cannot host mem1:decoder4.0 at 1
+> 
+> I have tried to write sysfs node manually, got same errors.
+When stepping through by hand, which sysfs write triggers the crash above?
+
+Not sure it's related, but I've just sent out a fix to the
+target register handling in QEMU. 
+
+https://lore.kernel.org/linux-cxl/20220808122051.14822-1-Jonathan.Cameron@huawei.com/T/#m47ff985412ce44559e6b04d677c302f8cd371330
+
+I did have one instance last week of triggering what looked to be a race condition but
+the stack trace doesn't looks related to what you've hit.
+
+It will probably be a few days before I have time to take a look at replicating
+what you have seen.
+
+If you have time, try using the kernel.org cxl/pending branch as there are
+a few additional fixes on there since you sent this email.  Optimistic to hope
+this is covered by one of those, but at least it will mean we are trying to replicate
+on same branch.
+
+Jonathan
 
 
---bPHyV/5iBO3d7ztV
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+> 
+> Hope I can get some helps here.
+> 
+> Bob
 
-On Fri, Aug 05, 2022 at 06:39:29AM -0300, Daniel Henrique Barboza wrote:
-> At this moment, arm_load_dtb() can free machine->fdt when
-> binfo->dtb_filename is NULL. If there's no 'dtb_filename', 'fdt' will be
-> retrieved by binfo->get_dtb(). If get_dtb() returns machine->fdt, as is
-> the case of machvirt_dtb() from hw/arm/virt.c, fdt now has a pointer to
-> machine->fdt. And, in that case, the existing g_free(fdt) at the end of
-> arm_load_dtb() will make machine->fdt point to an invalid memory region.
->=20
-> This is not an issue right now because there's no code that access
-> machine->fdt after arm_load_dtb(), but we're going to add a couple do
-> FDT HMP commands that will rely on machine->fdt being valid.
->=20
-> Instead of freeing 'fdt' at the end of arm_load_dtb(), assign it to
-> machine->fdt. This will allow the FDT of ARM machines that relies on
-> arm_load_dtb() to be accessed later on.
->=20
-> Since all ARM machines allocates the FDT only once, we don't need to
-> worry about leaking the existing FDT during a machine reset (which is
-> something that other machines have to look after, e.g. the ppc64 pSeries
-> machine).
->=20
-> Cc: Peter Maydell <peter.maydell@linaro.org>
-> Cc: qemu-arm@nongnu.org
-> Signed-off-by: Daniel Henrique Barboza <danielhb413@gmail.com>
-> ---
->  hw/arm/boot.c | 8 +++++++-
->  1 file changed, 7 insertions(+), 1 deletion(-)
->=20
-> diff --git a/hw/arm/boot.c b/hw/arm/boot.c
-> index ada2717f76..9f5ceb62d2 100644
-> --- a/hw/arm/boot.c
-> +++ b/hw/arm/boot.c
-> @@ -684,7 +684,13 @@ int arm_load_dtb(hwaddr addr, const struct arm_boot_=
-info *binfo,
->       */
->      rom_add_blob_fixed_as("dtb", fdt, size, addr, as);
-> =20
-> -    g_free(fdt);
-> +    /*
-> +     * Update the ms->fdt pointer to enable support for 'dumpdtb'
-> +     * and 'info fdt' commands. Use fdt_pack() to shrink the blob
-> +     * size we're going to store.
-> +     */
-> +    fdt_pack(fdt);
-> +    ms->fdt =3D fdt;
-> =20
->      return size;
-
-fdt_pack() could change (reduce) the effective size of the dtb blob,
-so returning a 'size' value from above rather than the new value of
-fdt_totalsize(fdt) doesn't see right.
-
-I believe some of the other patches in the series have similar concerns.
-
---=20
-David Gibson			| I'll have my music baroque, and my code
-david AT gibson.dropbear.id.au	| minimalist, thank you.  NOT _the_ _other_
-				| _way_ _around_!
-http://www.ozlabs.org/~dgibson
-
---bPHyV/5iBO3d7ztV
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAEBCAAdFiEEoULxWu4/Ws0dB+XtgypY4gEwYSIFAmLwgakACgkQgypY4gEw
-YSJlqA/8CD358Ck1lrnt1Xfx7HqJpqx4IA8M0LUL2UBWdaL0aVME14E1GMKb80Wk
-i95WJOWrf8lZilVEOkR28k2y61KK0dP5pQ/iTLSaltNXugRJwTVbeawWcqWaXYZX
-tuBaA/EWUHsI37nimF6LT7DTbxscoY0VWhgysORZN6LujgojkSAdNnHxcDl9zkZY
-e9BpSBLfAxzWoDBQoNQZqGuJCWLw2sfZShTw9bXYE2Vo5wI2fBGoHyz7TbKd34MF
-ydsmvOS6PpbBWuzAOorYqSfmD/27mhxAOQqIq8TzZFLcbj3dNkPtbsLzMBE4Rhja
-O0SVw53Qk0Rc9kesaoPcY1iQPG1bzdcUB3i3VQP0rAwXUEksgBc6KKukqopFo8Ly
-vELGp5q79RmgMlS2ZEYyMPxazzpirwZcrbCLqsf/Lsg2JwCuBhANjycoTKRFLFts
-Fml1jNwuAx/OyzTCKPZHV5EaBt+ZVYvAH7vgugRSgM1VaZFv6cYdyorodRABEbdR
-6nQ5WrDSmlwqOs26omleQ0Bp1OQLKC5+98D/mfrH0LuU0XYp8BWbE0iyX/1MsLDd
-U1zQ8l9LBvg1kcGirm06RJTxXS9v1DCPPq/PBQlu/KxU7GGC++W7HDOoBD2Aqp4R
-pXHFVAJBCCWbXhnnoWAgid1dmYe/wUWJSpW9e/wAOoJEiagqgZI=
-=gls5
------END PGP SIGNATURE-----
-
---bPHyV/5iBO3d7ztV--

@@ -1,131 +1,113 @@
-Received: by 2002:a17:906:3b11:0:0:0:0 with SMTP id g17csp2372258ejf;
-        Mon, 8 Aug 2022 01:22:01 -0700 (PDT)
-X-Google-Smtp-Source: AA6agR5rmKi2O+iEwz595lCog7Zs7kYO9AemSdNjOTvIt0JYoRmZ2ONwujlAgdK6NMvXzVaKth4k
-X-Received: by 2002:a05:622a:19a7:b0:33e:ca27:6206 with SMTP id u39-20020a05622a19a700b0033eca276206mr15213270qtc.629.1659946921029;
-        Mon, 08 Aug 2022 01:22:01 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1659946921; cv=none;
+Received: by 2002:a17:906:3b11:0:0:0:0 with SMTP id g17csp2377774ejf;
+        Mon, 8 Aug 2022 01:36:09 -0700 (PDT)
+X-Google-Smtp-Source: AA6agR6DhD2HjCe41NLx8IL7g/9S/xMVXIASPJAVEzSfY9ZudCjkf6ml0Gcm9uNFnbDbJuVQpsms
+X-Received: by 2002:a05:620a:40cf:b0:6b1:41dd:9710 with SMTP id g15-20020a05620a40cf00b006b141dd9710mr13042240qko.727.1659947768927;
+        Mon, 08 Aug 2022 01:36:08 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1659947768; cv=none;
         d=google.com; s=arc-20160816;
-        b=hcH4yZjjhMSNFs8YaPXtJwaEfPsOVSOCeMzXiPAOTRwSvR5+EfOHghU832YUBAwPaX
-         QIC3fWIzM/s8ahRV5zabgmq9ETjbi3g/tLotaHtP9Jk1VxmDt6jP4zlKBa7sx72FHMtF
-         D7XmT58mk5SRo/OY0J2sDRNPrq9WoGwKP5+9QgbkTONcqFI3cFGRxTWkHiHjTShbCyGF
-         tNWh3pBaKVxGT9e3P4tG7CPmRrFFD2TYWduTEokfAEHVIR54h383MQlWirt9Rpnw4Iv9
-         iW5e+8jI9349rhj3vJBtlGn6UvX5/wyABRKyWauPh1pA+q/R3CIU/gUvlFqzTC1NYOzM
-         xtIg==
+        b=YgD+Om65CoBQiC5wHFSKkK/p/a/Ck0HURHOuOBPsLkzcnAVlLwe9T37/uaGFMqjJAG
+         mDcliPvd8xg92w0hhRKJ+wBKPk/AQBdOw/wFc24636W5Ut48R5V9DZ5ueUm8owCdpzOf
+         y4yZGEsrZq08ByyujLaa9ArHasEipswPehuXdBKgvb4TOpJD0YLTbYjZiuw/x8OuL5M6
+         T2H2F1rtBvdsjModOWyiTcJlEulEZt8GdqeWuvOt44egpH/X17RW0T8i6+rXgE4ySApq
+         JkouDQUeQOjWLfXHpOAme5bHGY25tqW4mPKLv2Hi4oEISgjnunZ+MnpB/CoYWUmur/Ct
+         LJgw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:from:references:cc:to:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=Xu7/rsLO7YUq+P2lrkzebLtqZAoBu1yM0k2w3nmzSTc=;
-        b=R9OAaH0EYCfifDWTq/Pqs1TSYDCi1dDt5R9OzmGeD/sfJFtBACCBkZpmaR/5bBPts1
-         BOfUlbDyBY2yf3RxEpW2wluukKWl0ZsarX4DEiuFiGhBN87R2ptaZtTN5dW03tE+XzAm
-         5meLQDkNzzlRoGeqHpotax+BE9WKY6uKy892q4Xdx6R7BN7oktoYh85FLdA5MggO3sb7
-         PFQZPXt+iGuYwXGHqHL18FXpRMdTpLB6U5M5WvK0H2A1R+7aUCi6wRYAckJb9vyP0LiH
-         wkHDNo/+RV95hAzLcGKwr6mOmFr5ygIpNUIpKHNuMJnibxdYSR97gF/duK60N5LTbeRF
-         b2nA==
+         :list-unsubscribe:list-id:precedence:in-reply-to
+         :content-transfer-encoding:content-disposition:mime-version
+         :references:message-id:subject:cc:to:from:date:dkim-signature;
+        bh=bPq0LjEk3658WPodM0qnuCrIiCUmWdFxflN6qSyNcdo=;
+        b=G3SJuN2CI9CeoYrXb52DGvf20eQki0wDSQZlO/rkpW53uzNPKaAPxTvdlvAE1XIwAE
+         MKj7CvaP28YIxX24ewSvUmja1aycSIlVcZ+rhvf44BU3KIwocxm0h6tez/uFy+hWJK4x
+         luw1+t/Gx2WMloT+OvYbzK0lk7EGOD+5qrLDBh7P7k0y0uRI2nsjUG4e4SgNVf1C0oBr
+         TfTBljKSarXrOL9rH32TWa9l2m80R2whXd549K2ZNZnhJ4vgaRaXkMkEVbqHHCk2fonZ
+         RAPkKBO5DasM6FJ9AuGCYNBIw+OV8U44BqbBC0qtn1sk62rn6fRYcI9wv1ae1hMzky4+
+         +JNw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=AdTVd0fy;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=RvvTOOiZ;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t124-20020a372d82000000b006b625760264si5415912qkh.164.2022.08.08.01.22.00
+        by mx.google.com with ESMTPS id k8-20020a05622a03c800b00342f77a89f2si2020998qtx.642.2022.08.08.01.36.08
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 08 Aug 2022 01:22:01 -0700 (PDT)
+        Mon, 08 Aug 2022 01:36:08 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=AdTVd0fy;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=RvvTOOiZ;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:54824 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:35746 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1oKy1Q-0005yO-Ht
-	for alex.bennee@linaro.org; Mon, 08 Aug 2022 04:22:00 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:50406)
+	id 1oKyF5-0004Af-69
+	for alex.bennee@linaro.org; Mon, 08 Aug 2022 04:36:08 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:52676)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1oKy1E-0005xi-0B
- for qemu-arm@nongnu.org; Mon, 08 Aug 2022 04:21:48 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:31156)
+ (Exim 4.90_1) (envelope-from <kwolf@redhat.com>) id 1oKyDq-000487-3U
+ for qemu-arm@nongnu.org; Mon, 08 Aug 2022 04:34:53 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:49610)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1oKy1A-0004pV-I2
- for qemu-arm@nongnu.org; Mon, 08 Aug 2022 04:21:46 -0400
+ (Exim 4.90_1) (envelope-from <kwolf@redhat.com>) id 1oKyDl-0006gM-Bp
+ for qemu-arm@nongnu.org; Mon, 08 Aug 2022 04:34:47 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1659946903;
+ s=mimecast20190719; t=1659947681;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=Xu7/rsLO7YUq+P2lrkzebLtqZAoBu1yM0k2w3nmzSTc=;
- b=AdTVd0fy73uaQE04ggOI8TaMFe5vpWPp3kJklFUrHVMQs124Vzoh756x9GOVZDSjFvEmjF
- fFh6kohhmS5TcLGBl7GUlAHNBVPp+PIiiSCTgQBRfS+kNnTqku/CyuJZBK7Beg6tfW60V8
- DNawtH8+ren0GLsjl75CSy04bwZht5k=
-Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
- [209.85.128.72]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=bPq0LjEk3658WPodM0qnuCrIiCUmWdFxflN6qSyNcdo=;
+ b=RvvTOOiZb+CkzS3KOMMmxA5A0XL3ox07ps8Kndbzq5bWuLeSGsO1XDbG3KYImKjQsQsDOw
+ qD52iWPUtjSzglhzQ8dcDMZRqUiLO9JP0gfa+CtaJrVh/mfEVuIFL+GLM9yDT3dLJH2Q1N
+ JdNOHc2Rs4JOXd7fl8qy6Vt16ESnE0s=
+Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
+ [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-122-mwRDdhBOONO5roC3QYSYtw-1; Mon, 08 Aug 2022 04:21:41 -0400
-X-MC-Unique: mwRDdhBOONO5roC3QYSYtw-1
-Received: by mail-wm1-f72.google.com with SMTP id
- bh18-20020a05600c3d1200b003a32044cc9fso4460472wmb.6
- for <qemu-arm@nongnu.org>; Mon, 08 Aug 2022 01:21:40 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc;
- bh=Xu7/rsLO7YUq+P2lrkzebLtqZAoBu1yM0k2w3nmzSTc=;
- b=DULew7mGu/5YFKfPA3GmO9wpZWRIRuhUeTDRZmewPXzp3H22pH0v5sfLbCTzsYHNhc
- D3ZkpdLtuXa/MyuLx3z7C7wuLCA0M28iKgEISF+2p4y0+2lahDuXWN8/ExkiP4LdEp2n
- FqGS/Hv4O78rxA2tO6vYWF/dgR77S7UdRzhKJx2X+ayB82dQkcBmy+V/FhztuKumFapP
- vj0qIGqlFBQ7ADUe5NpefDiiaow+Im3PEdfnL8p1J6MtVRGZ0Lv0xjlDE0/BcjSAFdPO
- JgwaCMBhoExBvcnhHj+HVB8agNGWK8IVmMsnbNrCqpLgh7wUCEYH3BM5fJT+mPIpeap9
- MMOg==
-X-Gm-Message-State: ACgBeo3phn7LG/GY6fERQmy7cI51m8IyJSPQxO9usKNOsg48SBWfEAiy
- p9/gLZbK1XmIn0lx2Y4cEokFiTVuTSzYxg+8I2iTMvcFgBK81FZE7fguP3gDj5d3z2S7rhSJQdO
- bbAwCYCSFJ7JM
-X-Received: by 2002:a05:6000:1848:b0:223:5eb9:d1d5 with SMTP id
- c8-20020a056000184800b002235eb9d1d5mr620375wri.381.1659946899986; 
- Mon, 08 Aug 2022 01:21:39 -0700 (PDT)
-X-Received: by 2002:a05:6000:1848:b0:223:5eb9:d1d5 with SMTP id
- c8-20020a056000184800b002235eb9d1d5mr620361wri.381.1659946899700; 
- Mon, 08 Aug 2022 01:21:39 -0700 (PDT)
-Received: from [192.168.0.5] (ip-109-42-113-71.web.vodafone.de.
- [109.42.113.71]) by smtp.gmail.com with ESMTPSA id
- 11-20020a05600c240b00b003a331c6bffdsm13277511wmp.47.2022.08.08.01.21.38
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 08 Aug 2022 01:21:39 -0700 (PDT)
-Message-ID: <3f913138-4746-c8ec-6b54-4bc2d0f49cdf@redhat.com>
-Date: Mon, 8 Aug 2022 10:21:37 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.12.0
-Subject: Re: [PATCH] xlnx_dp: drop unsupported AUXCommand in
- xlnx_dp_aux_set_command
-To: Qiang Liu <cyruscyliu@gmail.com>, qemu-devel@nongnu.org
-Cc: Alistair Francis <alistair@alistair23.me>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ us-mta-81-FBJP2ItUPzCGHkbUgCY7XQ-1; Mon, 08 Aug 2022 04:34:35 -0400
+X-MC-Unique: FBJP2ItUPzCGHkbUgCY7XQ-1
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.6])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 542C618A6523;
+ Mon,  8 Aug 2022 08:34:34 +0000 (UTC)
+Received: from redhat.com (unknown [10.39.192.146])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id D8FA42166B29;
+ Mon,  8 Aug 2022 08:34:31 +0000 (UTC)
+Date: Mon, 8 Aug 2022 10:34:30 +0200
+From: Kevin Wolf <kwolf@redhat.com>
+To: Markus Armbruster <armbru@redhat.com>
+Cc: Daniel =?iso-8859-1?Q?P=2E_Berrang=E9?= <berrange@redhat.com>,
  Peter Maydell <peter.maydell@linaro.org>,
- "open list:Xilinx ZynqMP and..." <qemu-arm@nongnu.org>,
- QEMU Trivial <qemu-trivial@nongnu.org>
-References: <20220808080116.2184881-1-cyruscyliu@gmail.com>
-From: Thomas Huth <thuth@redhat.com>
-In-Reply-To: <20220808080116.2184881-1-cyruscyliu@gmail.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=thuth@redhat.com;
+ Hao Wu <wuhaotsh@google.com>, richard.henderson@linaro.org,
+ qemu-arm@nongnu.org, qemu-devel@nongnu.org, venture@google.com,
+ Avi.Fishman@nuvoton.com, kfting@nuvoton.com, hskinnemoen@google.com,
+ f4bug@amsat.org, bin.meng@windriver.com, qemu-block@nongnu.org,
+ thuth@redhat.com, Hanna Reitz <hreitz@redhat.com>
+Subject: Re: [PATCH v5 5/8] blockdev: Add a new IF type IF_OTHER
+Message-ID: <YvDKljfYh+DF4029@redhat.com>
+References: <20220714182836.89602-6-wuhaotsh@google.com>
+ <87ilnuda33.fsf@pond.sub.org> <YuGMFRDj3tLOIJK7@redhat.com>
+ <CAFEAcA-_TkDW4tPxvmwEt-Rr6VAr_7aWNX2++CE+1G5cBPtiBg@mail.gmail.com>
+ <YuvY8/WL0Jojv1Uj@redhat.com> <877d3odpm8.fsf@pond.sub.org>
+ <YuvjJ7+B61UCLDrK@redhat.com> <87bkt0c9gf.fsf@pond.sub.org>
+ <YuvpYExeQfW2zUd7@redhat.com> <87lerzxnc5.fsf@pond.sub.org>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <87lerzxnc5.fsf@pond.sub.org>
+X-Scanned-By: MIMEDefang 2.78 on 10.11.54.6
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=kwolf@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -21
-X-Spam_score: -2.2
+X-Spam_score_int: -28
+X-Spam_score: -2.9
 X-Spam_bar: --
-X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.082,
+X-Spam_report: (-2.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.082,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+ RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -140,39 +122,117 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: RedfuXXboUeF
+X-TUID: sy0hrL815QCN
 
-On 08/08/2022 10.01, Qiang Liu wrote:
-> In xlnx_dp_aux_set_command, when the command leads to the default
-> branch, xlxn-dp will abort and then crash.
+Am 08.08.2022 um 08:26 hat Markus Armbruster geschrieben:
+> Daniel P. Berrangé <berrange@redhat.com> writes:
 > 
-> This patch removes this abort and drops this operation.
+> > On Thu, Aug 04, 2022 at 05:30:40PM +0200, Markus Armbruster wrote:
+> >> Daniel P. Berrangé <berrange@redhat.com> writes:
+> >> 
+> >> > On Thu, Aug 04, 2022 at 04:56:15PM +0200, Markus Armbruster wrote:
+> >> >> Daniel P. Berrangé <berrange@redhat.com> writes:
+> >> >> 
+> >> >> > On Thu, Jul 28, 2022 at 10:46:35AM +0100, Peter Maydell wrote:
+> >> >> >> On Wed, 27 Jul 2022 at 20:03, Kevin Wolf <kwolf@redhat.com> wrote:
+> >> >> >> >
+> >> >> >> > Am 18.07.2022 um 11:49 hat Markus Armbruster geschrieben:
+> >> >> >> > > An OTP device isn't really a parallel flash, and neither are eFuses.
+> >> >> >> > > More fast-and-lose use of IF_PFLASH may exist in the tree, and maybe of
+> >> >> >> > > other interface types, too.
+> >> >> >> > >
+> >> >> >> > > This patch introduces IF_OTHER.  The patch after next uses it for an
+> >> >> >> > > EEPROM device.
+> >> >> >> > >
+> >> >> >> > > Do we want IF_OTHER?
+> >> >> >> >
+> >> >> >> > What would the semantics even be? Any block device that doesn't pick up
+> >> >> >> > a different category may pick up IF_OTHER backends?
+> >> >> >> >
+> >> >> >> > It certainly feels like a strange interface to ask for "other" disk and
+> >> >> >> > then getting as surprise what this other thing might be. It's
+> >> >> >> > essentially the same as having an explicit '-device other', and I
+> >> >> >> > suppose most people would find that strange.
+> >> >> >> >
+> >> >> >> > > If no, I guess we get to abuse IF_PFLASH some more.
+> >> >> >> > >
+> >> >> >> > > If yes, I guess we should use IF_PFLASH only for actual parallel flash
+> >> >> >> > > memory going forward.  Cleaning up existing abuse of IF_PFLASH may not
+> >> >> >> > > be worth the trouble, though.
+> >> >> >> > >
+> >> >> >> > > Thoughts?
+> >> >> >> >
+> >> >> >> > If the existing types aren't good enough (I don't have an opinion on
+> >> >> >> > whether IF_PFLASH is a good match), let's add a new one. But a specific
+> >> >> >> > new one, not just "other".
+> >> >> >> 
+> >> >> >> I think the common thread is "this isn't what anybody actually thinks
+> >> >> >> of as being a 'disk', but we would like to back it with a block device
+> >> >> >> anyway". That can cover a fair range of possibilities...
+> >> >> >
+> >> >> > Given that, do we even want/have to use -drive for this ?    We can use
+> >> >> > -blockdev for the backend and reference that from any -device we want
+> >> >> > to create, and leave -drive out of the picture entirely
+> >> >> 
+> >> >> -drive is our only means to configure onboard devices.
+> >> >> 
+> >> >> We've talked about better means a few times, but no conclusions.  I can
+> >> >> dig up pointers, if you're interested.
+> >> >
+> >> > For onboard pflash with x86, we've just got properties against the
+> >> > machine that we can point to a blockdev.
+> >> 
+> >> True, but the vast majority of onboard block devices doesn't come with
+> >> such properties.  Please see
+> >> 
+> >> Subject: On configuring onboard block devices with -blockdev (was: [PATCH v4 6/7] hw/nvram: Update at24c EEPROM init function in NPCM7xx boards)
+> >> Date: Mon, 15 Nov 2021 16:28:33 +0100
+> >> Message-ID: <875ystigke.fsf_-_@dusky.pond.sub.org>
+> >> https://lists.gnu.org/archive/html/qemu-devel/2021-11/msg03173.html
+> >
+> > My take away from your mail there is that in the absence of better ideas
+> > we should at least use machine properties for anything new we do so we
+> > don't make the problem worse than it already is. It feels more useful
+> > than inventing new IF_xxx possibilities for something we think is the
+> > wrong approach already.
 > 
-> Fixes: 58ac482 ("introduce xlnx-dp")
-> Resolves: https://gitlab.com/qemu-project/qemu/-/issues/411
-> Reported-by: Qiang Liu <cyruscyliu@gmail.com>
-> Tested-by: Qiang Liu <cyruscyliu@gmail.com>
-> Suggested-by: Thomas Huth <thuth@redhat.com>
-> Signed-off-by: Qiang Liu <cyruscyliu@gmail.com>
-> ---
->   hw/display/xlnx_dp.c | 4 ++--
->   1 file changed, 2 insertions(+), 2 deletions(-)
+> The difficulty of providing machine properties for existing devices and
+> the lack of adoption even for new devices make me doubt they are a
+> viable path forward.  In the message I referenced above, I wrote:
 > 
-> diff --git a/hw/display/xlnx_dp.c b/hw/display/xlnx_dp.c
-> index a071c81..b0828d6 100644
-> --- a/hw/display/xlnx_dp.c
-> +++ b/hw/display/xlnx_dp.c
-> @@ -532,8 +532,8 @@ static void xlnx_dp_aux_set_command(XlnxDPState *s, uint32_t value)
->           qemu_log_mask(LOG_UNIMP, "xlnx_dp: Write i2c status not implemented\n");
->           break;
->       default:
-> -        error_report("%s: invalid command: %u", __func__, cmd);
-> -        abort();
-> +        qemu_log_mask(LOG_GUEST_ERROR, "%s: invalid command: %u", __func__, cmd);
-> +        return;
->       }
->   
->       s->core_registers[DP_INTERRUPT_SIGNAL_STATE] |= 0x04;
+>     If "replace them all by machine properties" is the way forward, we
+>     need to get going.  At the current rate of one file a year (measured
+>     charitably), we'll be done around 2090, provided we don't add more
+>     (we've added quite a few since I did the first replacement).
+> 
+> I figure this has slipped to the 22nd century by now.
+> 
+> Yes, more uses of -drive are steps backward.  But they are trivially
+> easy, and also drops in the bucket.  Machine properties are more
+> difficult, and whether they actually take us forward seems doubtful.
 
-Reviewed-by: Thomas Huth <thuth@redhat.com>
+Machine properties are also not what we really want, but just a
+workaround. How about implementing the real thing, providing qdev
+properties for built-in devices?
+
+Looking at a few random users of drive_get(), they look like this:
+
+    DriveInfo *dinfo = drive_get(...);
+    dev = qdev_new("driver-type");
+    qdev_prop_set_drive(dev, "drive", blk_by_legacy_dinfo(dinfo));
+    qdev_realize_and_unref(...);
+
+What if we assigned a name to every built-in device and had a
+qdev_new_builtin(type, id) that applies qdev properties given on the
+command line to the device? Could be either with plain old '-device'
+(we're already doing a similar thing with default devices where adding
+-device for the existing device removes the default device) or with a
+new command line option.
+
+The qdev_prop_set_drive() would then become conditional and would only
+be done if the property wasn't already set in qdev_new_builtin(). Or
+maybe a new function that checks for conflicting -drive and -device.
+Though that part is just implementation details.
+
+Kevin
 

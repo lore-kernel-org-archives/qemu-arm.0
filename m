@@ -1,84 +1,116 @@
-Received: by 2002:a17:906:3b11:0:0:0:0 with SMTP id g17csp2384994ejf;
-        Mon, 8 Aug 2022 01:56:06 -0700 (PDT)
-X-Google-Smtp-Source: AA6agR6tOsL9LdBWrqZtTvU6tEQKmB5JzFJaYuaK1d5/cl/ay3XczpLCnuMDw7TvbUKsxIQbjj1Z
-X-Received: by 2002:a05:6214:29cb:b0:476:7027:7f70 with SMTP id gh11-20020a05621429cb00b0047670277f70mr14603673qvb.131.1659948966414;
-        Mon, 08 Aug 2022 01:56:06 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1659948966; cv=none;
+Received: by 2002:a17:906:3b11:0:0:0:0 with SMTP id g17csp2394268ejf;
+        Mon, 8 Aug 2022 02:17:46 -0700 (PDT)
+X-Google-Smtp-Source: AA6agR7p1/JNmerD4ypoLn698U2dcJBOsxwouaw1KFhLW4nDoQoLrf6m1KUL2LGDNjpu3kNoLgHB
+X-Received: by 2002:a05:6214:1c47:b0:474:8d1e:f432 with SMTP id if7-20020a0562141c4700b004748d1ef432mr14899054qvb.94.1659950265796;
+        Mon, 08 Aug 2022 02:17:45 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1659950265; cv=none;
         d=google.com; s=arc-20160816;
-        b=QwvyxvBGzR86MB+lfcgqgxeb2JjWISzJizJiir5NGQe01h1qjMlZ+Gc+XdvEA5jiDl
-         kJyMdtyClYhAHkIfSwIcaPKH2Jem3X98bJeXtmq47tI1a352AI+4JavgE1b9pnZj/TFl
-         9Olv8LMKTriEQsu37mFeRfDZXOBAkJWr3CPuZEkbhyBJQP667IAaUGdIJppz0j/vlh9V
-         8ot5TW85Uov0kxYZVYUgUs1SZgTrbU/+ItJQkzHjv5vIn1eoH9bFM/jAuKwpxkoNIU6t
-         MYMeKT2l0dM6MgLuUk+0kX5qZXNuhFc6ZUzxpMwK7mMPZrbp5cSfNc57RPTipN1vaLxJ
-         Xsig==
+        b=VynqBR42yZTbvAq/WTJQGbWaTvy8Pr7kDhADO4dbHtEPCONr15oJNDqHQxPRW6msb2
+         Cp0G67Qn5YEbk1KaMqTEs5InMeDT0O46+GvZvxcneCOrOnJJ/Pwh2Mf79G2CZlv1E3ZS
+         L8oV0cJcFHOTSUExc/H9YLuNzmV1U3EdkMByd1jfMPgHDeGC9lp/X8X3RcUQZt3mJqmH
+         ZPDTnQt5pzZlA+HoLMZT7NjdiOnUhGRxaA/3FvIpqWhHAmx5kma1MdBGNsYJI52XUBkQ
+         Jv53YujM4TsgpPBn7Lk+OfiqltVuVcd7BBuOD014eggLYaA+31D+SzknkrZQSJri6G7e
+         Qb7w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:cc:to:from;
-        bh=nDmWTtJUwqvKFPtJyCnzEXET3uwV3AcrrZWh0wc9MkY=;
-        b=Av3gKT6cnJIZQpcE3hTteEUU30C1y8tDxg30kXP06C/UBJvQluomkU+DM597QlayJ6
-         zVCfxQl98cSBmHbMUZGpDMBcdX8TQkQTLVYPYx9LPWX4S9AKjFe3jJbhscBQhAvFOl7Z
-         h4vtyJWoYxEe7yD3Xg8xH7l1c3y1AV9JIyOmoDc9bcvAlnlxnB0MZ0P2MrqXO0jCpy07
-         OLnIJkfU4Q6rhCfhGHYthBvYcp4sJnUhSVp0yly41zq5Ab2ipfgWg5O2B5J5SSTDOuCF
-         NePwA5LGwSBTzfVUc88qD4mZBX+j/si/SL4gTrJ0BjuHmXn58kBtk8PNoOSWvib5l7lK
-         kcCw==
+         :list-unsubscribe:list-id:precedence:mime-version:user-agent
+         :references:in-reply-to:subject:cc:to:from:message-id:date
+         :dkim-signature;
+        bh=0JRISw5/F6BQTf/AoaoF+vN9x30iJC3ABT/dmM+w+JI=;
+        b=rF4xev/OF6t2e4XUVwgjhVQipaio3Uhb+ZiTXWCsAUOSSH5luBBB8wzjSi/NnW7GQI
+         o68oTV5VQhL1H2z81+5dF1DLvfSLlcDvHRgQmbql0jaGBuS7ExNKMImFnG4te/kmc3MT
+         cVwdkDoevQJtJ8nx7epjbSCAWp2AU35fsQKi41oX+K+GnpflrDLLs/T15LZTpUjXAQgA
+         HYRnIiFgtVFzlqdsRA6jvCGW6PcvN5qB5fyMaHQWyEE7NORyNqScEkJRWQ6R50Vlbifa
+         UebV091wPZc4crqltIV4Z/eK/76AHIccdwS4FFWe9LdIsIRLad9EVIlhnR8J5ePLDK8Y
+         Db1Q==
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=UKCVH9K3;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=kernel.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id q23-20020a37f717000000b006b92af0a924si3111534qkj.341.2022.08.08.01.56.06
+        by mx.google.com with ESMTPS id ey16-20020a05622a4c1000b00342f18b0e50si3238502qtb.414.2022.08.08.02.17.45
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 08 Aug 2022 01:56:06 -0700 (PDT)
+        Mon, 08 Aug 2022 02:17:45 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
+       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=UKCVH9K3;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:44772 helo=lists1p.gnu.org)
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=kernel.org
+Received: from localhost ([::1]:42240 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1oKyYO-0002eS-M1
-	for alex.bennee@linaro.org; Mon, 08 Aug 2022 04:56:04 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:56272)
+	id 1oKytN-0003gw-7W
+	for alex.bennee@linaro.org; Mon, 08 Aug 2022 05:17:45 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:36590)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <cyruscyliu@gmail.com>)
- id 1oKyXg-0002ab-Ka; Mon, 08 Aug 2022 04:55:20 -0400
-Received: from [125.120.154.159] (port=57374 helo=liuqiang-OptiPlex-7060)
+ (Exim 4.90_1) (envelope-from <maz@kernel.org>)
+ id 1oKyst-0003bf-QM; Mon, 08 Aug 2022 05:17:15 -0400
+Received: from ams.source.kernel.org ([2604:1380:4601:e00::1]:44602)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <cyruscyliu@gmail.com>)
- id 1oKyXe-0001DJ-Lv; Mon, 08 Aug 2022 04:55:20 -0400
-Received: from localhost (liuqiang-OptiPlex-7060 [local])
- by liuqiang-OptiPlex-7060 (OpenSMTPD) with ESMTPA id 80313af4;
- Mon, 8 Aug 2022 07:55:09 +0000 (UTC)
-From: Qiang Liu <cyruscyliu@gmail.com>
-To: qemu-devel@nongnu.org
-Cc: Qiang Liu <cyruscyliu@gmail.com>, Thomas Huth <thuth@redhat.com>,
- Alistair Francis <alistair@alistair23.me>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- qemu-arm@nongnu.org (open list:Xilinx ZynqMP and...)
-Subject: [PATCH] xlnx_dp: drop unsupported AUXCommand in
- xlnx_dp_aux_set_command
-Date: Mon,  8 Aug 2022 15:55:07 +0800
-Message-Id: <20220808075507.2183603-1-cyruscyliu@gmail.com>
-X-Mailer: git-send-email 2.25.1
-MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 125.120.154.159 (failed)
-Received-SPF: softfail client-ip=125.120.154.159;
- envelope-from=cyruscyliu@gmail.com; helo=liuqiang-OptiPlex-7060
-X-Spam_score_int: 71
-X-Spam_score: 7.1
-X-Spam_bar: +++++++
-X-Spam_report: (7.1 / 5.0 requ) BAYES_00=-1.9, DKIM_ADSP_CUSTOM_MED=0.001,
- FORGED_GMAIL_RCVD=1, FREEMAIL_FROM=0.001, FSL_HELO_NON_FQDN_1=0.001,
- HELO_NO_DOMAIN=0.001, NML_ADSP_CUSTOM_MED=0.9, RCVD_IN_PBL=3.335,
- RDNS_NONE=0.793, SPF_SOFTFAIL=0.665, SPOOFED_FREEMAIL=1.522,
- SPOOFED_FREEMAIL_NO_RDNS=0.001, SPOOF_GMAIL_MID=0.799,
- T_SCC_BODY_TEXT_LINE=-0.01,
- UNPARSEABLE_RELAY=0.001 autolearn=no autolearn_force=no
-X-Spam_action: reject
+ (Exim 4.90_1) (envelope-from <maz@kernel.org>)
+ id 1oKysr-0005ih-8R; Mon, 08 Aug 2022 05:17:15 -0400
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by ams.source.kernel.org (Postfix) with ESMTPS id 4D44BB80A07;
+ Mon,  8 Aug 2022 09:17:04 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 14418C433D6;
+ Mon,  8 Aug 2022 09:17:03 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1659950223;
+ bh=zEDyLLb7DPexaoRG+gXjeV7xPt+Yzgy6jad7tKTi13s=;
+ h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+ b=UKCVH9K3QfaMYoEYiXmwfWh4DAumIfZiXa5cwraN0PUT/ULv3NWBvMES0sjusH29J
+ dB3QYQgRsc2joa3EuWIhaoOtlRcQadOgi7pcK+y/VPcO0CqqwGD1GOJe6QPsU+VG0F
+ 7UbBKTYsauYrrG0+xZkdT+AWlYZ1PuBuz4IHJYg0zNdI9RcCzNO2dUqQdaYCDacGYQ
+ J/b7hr3zmrL62JAlkkW72U97FSzsExaHqil4bXWt6SzNrMuu7uLk8mdIXVlMi+U9wP
+ ANEU2A0lr9UlHyFgAbUREjQ9v1Fh8BvLFxtqX7zr3lUxfaONXIVAzjqyR4Kdyvz6AR
+ RpnyLUtLY1uKA==
+Received: from sofa.misterjones.org ([185.219.108.64] helo=why.misterjones.org)
+ by disco-boy.misterjones.org with esmtpsa (TLS1.3) tls
+ TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.95)
+ (envelope-from <maz@kernel.org>) id 1oKyse-001cmS-P8;
+ Mon, 08 Aug 2022 10:17:00 +0100
+Date: Mon, 08 Aug 2022 10:17:00 +0100
+Message-ID: <87fsi7w0vn.wl-maz@kernel.org>
+From: Marc Zyngier <maz@kernel.org>
+To: Gavin Shan <gshan@redhat.com>
+Cc: eric.auger@redhat.com, qemu-arm@nongnu.org, qemu-devel@nongnu.org,
+ peter.maydell@linaro.org, richard.henderson@linaro.org, cohuck@redhat.com,
+ zhenyzha@redhat.com, shan.gavin@gmail.com
+Subject: Re: [PATCH 1/2] hw/arm/virt: Improve address assignment for highmem
+ IO regions
+In-Reply-To: <0ed2ebc7-8d6e-7555-3af4-31eb071a584b@redhat.com>
+References: <20220802064529.547361-1-gshan@redhat.com>
+ <20220802064529.547361-2-gshan@redhat.com>
+ <dcca0792-4f62-2cf0-9080-309d2e78e690@redhat.com>
+ <9c8365c6-d27b-df76-371d-bd32ca2a26f7@redhat.com>
+ <87tu6tbyk9.wl-maz@kernel.org>
+ <0ed2ebc7-8d6e-7555-3af4-31eb071a584b@redhat.com>
+User-Agent: Wanderlust/2.15.9 (Almost Unreal) SEMI-EPG/1.14.7 (Harue)
+ FLIM-LB/1.14.9 (=?UTF-8?B?R29qxY0=?=) APEL-LB/10.8 EasyPG/1.0.0 Emacs/27.1
+ (x86_64-pc-linux-gnu) MULE/6.0 (HANACHIRUSATO)
+MIME-Version: 1.0 (generated by SEMI-EPG 1.14.7 - "Harue")
+Content-Type: text/plain; charset=US-ASCII
+X-SA-Exim-Connect-IP: 185.219.108.64
+X-SA-Exim-Rcpt-To: gshan@redhat.com, eric.auger@redhat.com, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org, peter.maydell@linaro.org, richard.henderson@linaro.org,
+ cohuck@redhat.com, zhenyzha@redhat.com, shan.gavin@gmail.com
+X-SA-Exim-Mail-From: maz@kernel.org
+X-SA-Exim-Scanned: No (on disco-boy.misterjones.org);
+ SAEximRunCond expanded to false
+Received-SPF: pass client-ip=2604:1380:4601:e00::1;
+ envelope-from=maz@kernel.org; helo=ams.source.kernel.org
+X-Spam_score_int: -71
+X-Spam_score: -7.2
+X-Spam_bar: -------
+X-Spam_report: (-7.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.082,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_HI=-5, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -92,38 +124,145 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: JGzEVDTQTQS8
+X-TUID: 4dkhMIcZYgQY
 
-In xlnx_dp_aux_set_command, when the command leads to the default
-branch, xlxn-dp will abort and then crash.
+On Wed, 03 Aug 2022 14:02:04 +0100,
+Gavin Shan <gshan@redhat.com> wrote:
+> 
+> Hi Marc,
+> 
+> On 8/3/22 5:01 PM, Marc Zyngier wrote:
+> > On Wed, 03 Aug 2022 04:01:04 +0100,
+> > Gavin Shan <gshan@redhat.com> wrote:
+> >> On 8/2/22 7:41 PM, Eric Auger wrote:
+> >>> On 8/2/22 08:45, Gavin Shan wrote:
+> >>>> There are 3 highmem IO regions as below. They can be disabled in
+> >>>> two situations: (a) The specific region is disabled by user. (b)
+> >>>> The specific region doesn't fit in the PA space. However, the base
+> >>>> address and highest_gpa are still updated no matter if the region
+> >>>> is enabled or disabled. It's incorrectly incurring waste in the PA
+> >>>> space.
+> >>> If I am not wrong highmem_redists and highmem_mmio are not user selectable
+> >>> 
+> >>> Only highmem ecam depends on machine type & ACPI setup. But I would say
+> >>> that in server use case it is always set. So is that optimization really
+> >>> needed?
+> >> 
+> >> There are two other cases you missed.
+> >> 
+> >> - highmem_ecam is enabled after virt-2.12, meaning it stays disabled
+> >>    before that.
+> > 
+> > I don't get this. The current behaviour is to disable highmem_ecam if
+> > it doesn't fit in the PA space. I can't see anything that enables it
+> > if it was disabled the first place.
+> > 
+> 
+> There are several places or conditions where vms->highmem_ecam can be
+> disabled:
+> 
+> - virt_instance_init() where vms->highmem_ecam is inherited from
+>   !vmc->no_highmem_ecam. The option is set to true after virt-2.12
+>   in virt_machine_2_12_options().
+> 
+> - machvirt_init() where vms->highmem_ecam can be disable if we have
+>   32-bits vCPUs and failure on loading firmware.
 
-This patch removes this abort and drops this operation.
+Right. But at no point do we *enable* something that was disabled
+beforehand, which is how I understood your previous comment.
 
-Fixes: 58ac482 ("introduce xlnx-dp")
-Resolves: https://gitlab.com/qemu-project/qemu/-/issues/411
-Reported-by: Qiang Liu <cyruscyliu@gmail.com>
-Tested-by: Qiang Liu <cyruscyliu@gmail.com>
-Suggested-by: Thomas Huth <thuth@redhat.com>
-Signed-off-by: Qiang Liu <cyruscyliu@gmail.com>
----
- hw/display/xlnx_dp.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+> 
+> - Another place is where we're talking about. It's address assignment
+>   to fit the PA space.
 
-diff --git a/hw/display/xlnx_dp.c b/hw/display/xlnx_dp.c
-index a071c81..b0828d6 100644
---- a/hw/display/xlnx_dp.c
-+++ b/hw/display/xlnx_dp.c
-@@ -532,8 +532,8 @@ static void xlnx_dp_aux_set_command(XlnxDPState *s, uint32_t value)
-         qemu_log_mask(LOG_UNIMP, "xlnx_dp: Write i2c status not implemented\n");
-         break;
-     default:
--        error_report("%s: invalid command: %u", __func__, cmd);
--        abort();
-+        qemu_log_mask(LOG_GUEST_ERROR, "%s: invalid command: %u", __func__, cmd);
-+        return;
-     }
- 
-     s->core_registers[DP_INTERRUPT_SIGNAL_STATE] |= 0x04;
+Alignment? No, the alignment is cast into stone: it is set to the
+smallest power-of-two containing the region (natural alignment).
+
+> 
+> >> 
+> >> - The high memory region can be disabled if user is asking large
+> >>    (normal) memory space through 'maxmem=' option. When the requested
+> >>    memory by 'maxmem=' is large enough, the high memory regions are
+> >>    disabled. It means the normal memory has higher priority than those
+> >>    high memory regions. This is the case I provided in (b) of the
+> >>    commit log.
+> > 
+> > Why is that a problem? It matches the expected behaviour, as the
+> > highmem IO region is floating and is pushed up by the memory region.
+> > 
+> 
+> Eric thought that VIRT_HIGH_GIC_REDIST2 and VIRT_HIGH_PCIE_MMIO regions
+> aren't user selectable. I tended to explain why it's not true. 'maxmem='
+> can affect the outcome. When 'maxmem=' value is big enough, there will be
+> no free area in the PA space to hold those two regions.
+
+Right, that's an interesting point. This is a consequence of these
+upper regions floating above RAM.
+
+> 
+> >> 
+> >> In the commit log, I was supposed to say something like below for
+> >> (a):
+> >> 
+> >> - The specific high memory region can be disabled through changing
+> >>    the code by user or developer. For example, 'vms->highmem_mmio'
+> >>    is changed from true to false in virt_instance_init().
+> > 
+> > Huh. By this principle, the user can change anything. Why is it
+> > important?
+> > 
+> 
+> Still like above. I was explaining the possible cases where those
+> 3 switches can be turned on/off by users or developers. Our code
+> needs to be consistent and comprehensive.
+> 
+>   vms->highmem_redists
+>   vms->highmem_ecam
+>   vms->mmio
+> 
+> >> 
+> >>>> 
+> >>>> Improve address assignment for highmem IO regions to avoid the waste
+> >>>> in the PA space by putting the logic into virt_memmap_fits().
+> > 
+> > I guess that this is what I understand the least. What do you mean by
+> > "wasted PA space"? Either the regions fit in the PA space, and
+> > computing their addresses in relevant, or they fall outside of it and
+> > what we stick in memap[index].base is completely irrelevant.
+> > 
+> 
+> It's possible that we run into the following combination. we should
+> have enough PA space to enable VIRT_HIGH_PCIE_MMIO region. However,
+> the region is disabled in the original implementation because
+> VIRT_HIGH_{GIC_REDIST2, PCIE_ECAM} regions consumed 1GB, which is
+> unecessary and waste in the PA space.
+> 
+>     static MemMapEntry extended_memmap[] = {
+>         [VIRT_HIGH_GIC_REDIST2] =   { 0x0, 64 * MiB },
+>         [VIRT_HIGH_PCIE_ECAM] =     { 0x0, 256 * MiB },
+>         [VIRT_HIGH_PCIE_MMIO] =     { 0x0, 512 * GiB },
+>     };
+> 
+>     IPA_LIMIT           = (1UL << 40)
+>     '-maxmem'           = 511GB              /* Memory starts from 1GB */
+>     '-slots'            = 0
+>     vms->highmem_rdist2 = false
+>     vms->highmem_ecam   = false
+>     vms->highmem_mmio   = true
+>
+
+Sure. But that's not how QEMU works today, and these regions are
+enabled in order (though it could well be that my recent changes have
+made the situation more complicated).
+
+What you're suggesting is a pretty radical change in the way the
+memory map is set. My hunch is that allowing the highmem IO regions to
+be selectively enabled and allowed to float in the high IO space
+should come as a new virt machine revision, with user-visible options.
+
+Thanks,
+
+	M.
+
 -- 
-2.25.1
-
+Without deviation from the norm, progress is not possible.

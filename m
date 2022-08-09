@@ -1,63 +1,63 @@
-Received: by 2002:a17:906:3b11:0:0:0:0 with SMTP id g17csp3312667ejf;
-        Tue, 9 Aug 2022 12:09:47 -0700 (PDT)
-X-Google-Smtp-Source: AA6agR7ao2he23BI8EqjvuhPzzKPNOsDBt8I1J1qrDdyQukKcSSJCXDTQ355vjIGul32r/LY1SuV
-X-Received: by 2002:a05:6214:2b0b:b0:476:cc01:93af with SMTP id jx11-20020a0562142b0b00b00476cc0193afmr21345173qvb.56.1660072187650;
-        Tue, 09 Aug 2022 12:09:47 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1660072187; cv=none;
+Received: by 2002:a17:906:3b11:0:0:0:0 with SMTP id g17csp3313693ejf;
+        Tue, 9 Aug 2022 12:11:54 -0700 (PDT)
+X-Google-Smtp-Source: AA6agR5kLOIW94Okbj0mqQ22tTmEVFhRnhe1PoR6RBsDZtV/CXJl6PikXX7IVv6cE5nLHqjr8HoD
+X-Received: by 2002:a05:6214:e81:b0:476:8403:d044 with SMTP id hf1-20020a0562140e8100b004768403d044mr20556899qvb.18.1660072314276;
+        Tue, 09 Aug 2022 12:11:54 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1660072314; cv=none;
         d=google.com; s=arc-20160816;
-        b=tx1VDMwCr68GKVKL6oLU54uNHwy6c7yNzxga55a7rXKlI2JxuWKA/vo4T73Nd7nbhX
-         jT1kploBVpH9hSUQSDz2xzIX2nnwQHfw0I53sj5h2PJtrafuqe3Ei5vxL5lKjwyhm9/H
-         FchsLsn+zfyxxrkmK5+vQqBzMlHUPJkP1ea+Ff9qqp0ftuz5vZtqbxtfSJP7iZVdaYJa
-         2fuo+t0LYOVMO3tsaVjZdipPkOIs7kq/irketlaVwKNVwdP1PR/c6SfLzP3Z9jHWg/Rf
-         OTIWNB56X9AZp3/6acS3DXN4y5nKhhS7kQavGYekMCHAmWCN9baqhe8xuZm4JwGYVdYK
-         4WNA==
+        b=PWmkesFXCU1Uw2u4sowj+cuURZCKjGVi6dmrpKXkHEsx6XldFDAWR97d+wbl6K0NIT
+         mWYVPbmIn5QF7cxgXxCl2yeSg42QmkQka0R3oJCbsW8hAyP2AGl9N6eDdcExhd8gCeP+
+         9dUbv8pqlE58Av8pSlhXKj43Tp+QoivjLgvv/f221y0hbrcv9orm/oKhDTBb0ttrdvE1
+         72cOlhja8VQjBRmXctwMoPs0ZS6obrdg4QAzFvkJeI6oHEr/Jexm3W6p0wzwiXZqe8de
+         r99p3R+v654LzTeLSUuUovUH0tvnCvcQUNXtVzgOv9bxwtLR5TKp/FnecG5YcKZkzh2y
+         hNqg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from;
-        bh=7aBYPKmWS89youkFf6gBMfqEUaoD4TbG+Kcu2hy4mjM=;
-        b=nqBBbVKCXxLejvdGn0ifALsjFu8M4650gEVDSVX/Bm1xL5aMy2xbBxh82i1JVZfBLg
-         p1qORMOTEk6rA9AIL5m0Xxn3vRWn57Gbuo4YkckP4D7mPKwjtYpDjGNObQfA8w/8Sw6U
-         Elvb2vijxgY/GQ7m9CIq8jjJ2vRAxSMJugx2JQTjjVWLPu64bxWxWr4buIPgg6PrBUdI
-         /CM777sFqBtRMQsJCf1HgpHr0zABeA/vnylLkLsk0mK0citHyGGpQf2wOdcli82VcH4Y
-         hBRnHJ0nKBE4a02B6LKisB+GC0hTecaE0n+DrNp8o8Npnc/LEHaUJQ8b6VFYO9OU9gnI
-         Opdg==
+        bh=2k2XfnTnBHoPPx3RIqF/J0uStfuwV/whNXvVqTCzkLk=;
+        b=POINWQ5w4PhXOllTT+Tcf23c4GqtYJbsK4bNHfWCKgvhfW0NcM7p8dQ7FMsU3ojMTh
+         XUsEkoeaioSStjU56hQYhDT9jQaPnMMqKLTKMpqMCfkscm3I2oiiVBTT6GwVIt6z1nc1
+         lHVuun/U0PFXZw90eDN7MQqSXg3NY0agS4K8oGsOG3N0rrzEXyma/Bpz2qBjESTwMP8R
+         oP7S83wSB59XbhyBCMcWXvYyRCY3EzCLT9JgWqZ7+8pLr4OUajlL7TV0EutCmPbjoHeb
+         2HJFvHT+4xF4g1opw2RPxS3PONtlpRkZOGJh+UXEjj8Q0jODnRN+JEGUe0IQiweVKS44
+         lnsw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x17-20020ae9f811000000b006b97a0c0be2si1145998qkh.529.2022.08.09.12.09.47
+        by mx.google.com with ESMTPS id l18-20020ac81492000000b0033f447145bbsi8298153qtj.309.2022.08.09.12.11.54
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 09 Aug 2022 12:09:47 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 09 Aug 2022 12:11:54 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:46394 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:48494 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1oLUbr-0003DB-4Y
-	for alex.bennee@linaro.org; Tue, 09 Aug 2022 15:09:47 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:40212)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1oLUdt-0004cQ-Pp
+	for alex.bennee@linaro.org; Tue, 09 Aug 2022 15:11:53 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:40168)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <ben@luna.fluff.org>)
- id 1oLUQA-0007LJ-62; Tue, 09 Aug 2022 14:57:43 -0400
+ id 1oLUQ8-0007KV-F5; Tue, 09 Aug 2022 14:57:41 -0400
 Received: from cpc152649-stkp13-2-0-cust121.10-2.cable.virginm.net
- ([86.15.83.122]:57434 helo=luna)
+ ([86.15.83.122]:57398 helo=luna)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <ben@luna.fluff.org>)
- id 1oLUQ6-0003Ae-JX; Tue, 09 Aug 2022 14:57:41 -0400
+ id 1oLUQ6-0003AY-IV; Tue, 09 Aug 2022 14:57:40 -0400
 Received: from ben by luna with local (Exim 4.96)
- (envelope-from <ben@luna.fluff.org>) id 1oLUQ1-0039EA-1B;
+ (envelope-from <ben@luna.fluff.org>) id 1oLUQ1-0039Dt-0b;
  Tue, 09 Aug 2022 19:57:33 +0100
 From: Ben Dooks <qemu@ben.fluff.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-riscv@nongnu.org, Alistair.Francis@wdc.com, peter.maydell@linaro.org,
  qemu-arm@nongnu.org, Ben Dooks <qemu@ben.fluff.org>
-Subject: [PATCH v4 6/6] hw/arm: change to use qemu_fdt_setprop_strings()
-Date: Tue,  9 Aug 2022 19:56:40 +0100
-Message-Id: <20220809185639.750345-7-qemu@ben.fluff.org>
+Subject: [PATCH v4 1/6] device_tree: add qemu_fdt_setprop_strings() helper
+Date: Tue,  9 Aug 2022 19:56:35 +0100
+Message-Id: <20220809185639.750345-2-qemu@ben.fluff.org>
 X-Mailer: git-send-email 2.35.1
 In-Reply-To: <20220809185639.750345-1-qemu@ben.fluff.org>
 References: <20220809185639.750345-1-qemu@ben.fluff.org>
@@ -73,319 +73,74 @@ X-Spam_report: (-0.7 / 5.0 requ) BAYES_00=-1.9, FSL_HELO_NON_FQDN_1=0.001,
  RCVD_IN_SORBS_DUL=0.001, RDNS_DYNAMIC=0.982, SPF_NONE=0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: k8407jTS5OMS
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: zchKqCWcPaYX
 
-Change to using qemu_fdt_setprop_strings() instead of using
-\0 separated string arrays. Note, also there were a few places
-where qemu_fdt_setprop_string() can be used in the same areas.
+Add a helper to set a property from a set of strings
+to reduce the following code:
+
+    static const char * const clint_compat[2] = {
+        "sifive,clint0", "riscv,clint0"
+    };
+
+    qemu_fdt_setprop_string_array(fdt, nodename, "compatible",
+        (char **)&clint_compat, ARRAY_SIZE(clint_compat));
 
 Signed-off-by: Ben Dooks <qemu@ben.fluff.org>
 ---
 v4:
- - fixed checkpatch errors with string
- - fixed patch subject
+ - go back to the non-return call, no-one is using the result
+v3;
+ - fix return value for the call
+ - add better help text
+v2:
+ - fix node/path in comment
 ---
- hw/arm/boot.c             |  8 +++---
- hw/arm/virt.c             | 28 +++++++++------------
- hw/arm/xlnx-versal-virt.c | 51 ++++++++++++++++-----------------------
- 3 files changed, 37 insertions(+), 50 deletions(-)
+ include/sysemu/device_tree.h | 19 +++++++++++++++++++
+ 1 file changed, 19 insertions(+)
 
-diff --git a/hw/arm/boot.c b/hw/arm/boot.c
-index ada2717f76..766257cbfb 100644
---- a/hw/arm/boot.c
-+++ b/hw/arm/boot.c
-@@ -490,11 +490,11 @@ static void fdt_add_psci_node(void *fdt)
-     qemu_fdt_add_subnode(fdt, "/psci");
-     if (armcpu->psci_version >= QEMU_PSCI_VERSION_0_2) {
-         if (armcpu->psci_version < QEMU_PSCI_VERSION_1_0) {
--            const char comp[] = "arm,psci-0.2\0arm,psci";
--            qemu_fdt_setprop(fdt, "/psci", "compatible", comp, sizeof(comp));
-+            qemu_fdt_setprop_strings(fdt, "/psci", "compatible",
-+                                     "arm,psci-0.2", "arm,psci");
-         } else {
--            const char comp[] = "arm,psci-1.0\0arm,psci-0.2\0arm,psci";
--            qemu_fdt_setprop(fdt, "/psci", "compatible", comp, sizeof(comp));
-+            qemu_fdt_setprop_strings(fdt, "/psci", "compatible",
-+                                     "arm,psci-1.0", "arm,psci-0.2", "arm,psci");
-         }
+diff --git a/include/sysemu/device_tree.h b/include/sysemu/device_tree.h
+index ef060a9759..d5c05b5ebb 100644
+--- a/include/sysemu/device_tree.h
++++ b/include/sysemu/device_tree.h
+@@ -87,6 +87,25 @@ int qemu_fdt_setprop_string(void *fdt, const char *node_path,
+ int qemu_fdt_setprop_string_array(void *fdt, const char *node_path,
+                                   const char *prop, char **array, int len);
  
-         cpu_off_fn = QEMU_PSCI_0_2_FN_CPU_OFF;
-diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index 9633f822f3..2670c13ef1 100644
---- a/hw/arm/virt.c
-+++ b/hw/arm/virt.c
-@@ -343,9 +343,8 @@ static void fdt_add_timer_nodes(const VirtMachineState *vms)
- 
-     armcpu = ARM_CPU(qemu_get_cpu(0));
-     if (arm_feature(&armcpu->env, ARM_FEATURE_V8)) {
--        const char compat[] = "arm,armv8-timer\0arm,armv7-timer";
--        qemu_fdt_setprop(ms->fdt, "/timer", "compatible",
--                         compat, sizeof(compat));
-+        qemu_fdt_setprop_strings(ms->fdt, "/timer", "compatible",
-+                                 "arm,armv8-timer", "arm,armv7-timer");
-     } else {
-         qemu_fdt_setprop_string(ms->fdt, "/timer", "compatible",
-                                 "arm,armv7-timer");
-@@ -843,8 +842,6 @@ static void create_uart(const VirtMachineState *vms, int uart,
-     hwaddr base = vms->memmap[uart].base;
-     hwaddr size = vms->memmap[uart].size;
-     int irq = vms->irqmap[uart];
--    const char compat[] = "arm,pl011\0arm,primecell";
--    const char clocknames[] = "uartclk\0apb_pclk";
-     DeviceState *dev = qdev_new(TYPE_PL011);
-     SysBusDevice *s = SYS_BUS_DEVICE(dev);
-     MachineState *ms = MACHINE(vms);
-@@ -858,8 +855,8 @@ static void create_uart(const VirtMachineState *vms, int uart,
-     nodename = g_strdup_printf("/pl011@%" PRIx64, base);
-     qemu_fdt_add_subnode(ms->fdt, nodename);
-     /* Note that we can't use setprop_string because of the embedded NUL */
--    qemu_fdt_setprop(ms->fdt, nodename, "compatible",
--                         compat, sizeof(compat));
-+    qemu_fdt_setprop_strings(ms->fdt, nodename, "compatible",
-+                             "arm,pl011", "arm,primecell");
-     qemu_fdt_setprop_sized_cells(ms->fdt, nodename, "reg",
-                                      2, base, 2, size);
-     qemu_fdt_setprop_cells(ms->fdt, nodename, "interrupts",
-@@ -867,8 +864,8 @@ static void create_uart(const VirtMachineState *vms, int uart,
-                                GIC_FDT_IRQ_FLAGS_LEVEL_HI);
-     qemu_fdt_setprop_cells(ms->fdt, nodename, "clocks",
-                                vms->clock_phandle, vms->clock_phandle);
--    qemu_fdt_setprop(ms->fdt, nodename, "clock-names",
--                         clocknames, sizeof(clocknames));
-+    qemu_fdt_setprop_strings(ms->fdt, nodename, "clock-names",
-+                             "uartclk", "apb_pclk");
- 
-     if (uart == VIRT_UART) {
-         qemu_fdt_setprop_string(ms->fdt, "/chosen", "stdout-path", nodename);
-@@ -890,14 +887,14 @@ static void create_rtc(const VirtMachineState *vms)
-     hwaddr base = vms->memmap[VIRT_RTC].base;
-     hwaddr size = vms->memmap[VIRT_RTC].size;
-     int irq = vms->irqmap[VIRT_RTC];
--    const char compat[] = "arm,pl031\0arm,primecell";
-     MachineState *ms = MACHINE(vms);
- 
-     sysbus_create_simple("pl031", base, qdev_get_gpio_in(vms->gic, irq));
- 
-     nodename = g_strdup_printf("/pl031@%" PRIx64, base);
-     qemu_fdt_add_subnode(ms->fdt, nodename);
--    qemu_fdt_setprop(ms->fdt, nodename, "compatible", compat, sizeof(compat));
-+    qemu_fdt_setprop_strings(ms->fdt, nodename, "compatible",
-+                             "arm,pl031", "arm,primecell");
-     qemu_fdt_setprop_sized_cells(ms->fdt, nodename, "reg",
-                                  2, base, 2, size);
-     qemu_fdt_setprop_cells(ms->fdt, nodename, "interrupts",
-@@ -983,7 +980,6 @@ static void create_gpio_devices(const VirtMachineState *vms, int gpio,
-     hwaddr base = vms->memmap[gpio].base;
-     hwaddr size = vms->memmap[gpio].size;
-     int irq = vms->irqmap[gpio];
--    const char compat[] = "arm,pl061\0arm,primecell";
-     SysBusDevice *s;
-     MachineState *ms = MACHINE(vms);
- 
-@@ -1001,7 +997,8 @@ static void create_gpio_devices(const VirtMachineState *vms, int gpio,
-     qemu_fdt_add_subnode(ms->fdt, nodename);
-     qemu_fdt_setprop_sized_cells(ms->fdt, nodename, "reg",
-                                  2, base, 2, size);
--    qemu_fdt_setprop(ms->fdt, nodename, "compatible", compat, sizeof(compat));
-+    qemu_fdt_setprop_strings(ms->fdt, nodename, "compatible",
-+                             "arm,pl061", "arm,primecell");
-     qemu_fdt_setprop_cell(ms->fdt, nodename, "#gpio-cells", 2);
-     qemu_fdt_setprop(ms->fdt, nodename, "gpio-controller", NULL, 0);
-     qemu_fdt_setprop_cells(ms->fdt, nodename, "interrupts",
-@@ -1325,7 +1322,6 @@ static void create_smmu(const VirtMachineState *vms,
-     int i;
-     hwaddr base = vms->memmap[VIRT_SMMU].base;
-     hwaddr size = vms->memmap[VIRT_SMMU].size;
--    const char irq_names[] = "eventq\0priq\0cmdq-sync\0gerror";
-     DeviceState *dev;
-     MachineState *ms = MACHINE(vms);
- 
-@@ -1355,8 +1351,8 @@ static void create_smmu(const VirtMachineState *vms,
-             GIC_FDT_IRQ_TYPE_SPI, irq + 2, GIC_FDT_IRQ_FLAGS_EDGE_LO_HI,
-             GIC_FDT_IRQ_TYPE_SPI, irq + 3, GIC_FDT_IRQ_FLAGS_EDGE_LO_HI);
- 
--    qemu_fdt_setprop(ms->fdt, node, "interrupt-names", irq_names,
--                     sizeof(irq_names));
-+    qemu_fdt_setprop_strings(ms->fdt, node, "interrupt-names",
-+                             "eventq", "priq", "cmdq-sync", "gerror");
- 
-     qemu_fdt_setprop_cell(ms->fdt, node, "clocks", vms->clock_phandle);
-     qemu_fdt_setprop_string(ms->fdt, node, "clock-names", "apb_pclk");
-diff --git a/hw/arm/xlnx-versal-virt.c b/hw/arm/xlnx-versal-virt.c
-index 37fc9b919c..20ae5b0eb1 100644
---- a/hw/arm/xlnx-versal-virt.c
-+++ b/hw/arm/xlnx-versal-virt.c
-@@ -153,7 +153,6 @@ static void fdt_add_timer_nodes(VersalVirt *s)
- 
- static void fdt_add_usb_xhci_nodes(VersalVirt *s)
- {
--    const char clocknames[] = "bus_clk\0ref_clk";
-     const char irq_name[] = "dwc_usb3";
-     const char compatVersalDWC3[] = "xlnx,versal-dwc3";
-     const char compatDWC3[] = "snps,dwc3";
-@@ -165,8 +164,8 @@ static void fdt_add_usb_xhci_nodes(VersalVirt *s)
-     qemu_fdt_setprop_sized_cells(s->fdt, name, "reg",
-                                  2, MM_USB2_CTRL_REGS,
-                                  2, MM_USB2_CTRL_REGS_SIZE);
--    qemu_fdt_setprop(s->fdt, name, "clock-names",
--                         clocknames, sizeof(clocknames));
-+    qemu_fdt_setprop_strings(s->fdt, name, "clock-names",
-+                             "bus_clk", "ref_clk");
-     qemu_fdt_setprop_cells(s->fdt, name, "clocks",
-                                s->phandle.clk_25Mhz, s->phandle.clk_125Mhz);
-     qemu_fdt_setprop(s->fdt, name, "ranges", NULL, 0);
-@@ -205,8 +204,6 @@ static void fdt_add_uart_nodes(VersalVirt *s)
- {
-     uint64_t addrs[] = { MM_UART1, MM_UART0 };
-     unsigned int irqs[] = { VERSAL_UART1_IRQ_0, VERSAL_UART0_IRQ_0 };
--    const char compat[] = "arm,pl011\0arm,sbsa-uart";
--    const char clocknames[] = "uartclk\0apb_pclk";
-     int i;
- 
-     for (i = 0; i < ARRAY_SIZE(addrs); i++) {
-@@ -215,16 +212,16 @@ static void fdt_add_uart_nodes(VersalVirt *s)
-         qemu_fdt_setprop_cell(s->fdt, name, "current-speed", 115200);
-         qemu_fdt_setprop_cells(s->fdt, name, "clocks",
-                                s->phandle.clk_125Mhz, s->phandle.clk_125Mhz);
--        qemu_fdt_setprop(s->fdt, name, "clock-names",
--                         clocknames, sizeof(clocknames));
-+        qemu_fdt_setprop_strings(s->fdt, name, "clock-names",
-+                                 "uartclk", "apb_pclk");
- 
-         qemu_fdt_setprop_cells(s->fdt, name, "interrupts",
-                                GIC_FDT_IRQ_TYPE_SPI, irqs[i],
-                                GIC_FDT_IRQ_FLAGS_LEVEL_HI);
-         qemu_fdt_setprop_sized_cells(s->fdt, name, "reg",
-                                      2, addrs[i], 2, 0x1000);
--        qemu_fdt_setprop(s->fdt, name, "compatible",
--                         compat, sizeof(compat));
-+        qemu_fdt_setprop_strings(s->fdt, name, "compatible",
-+                                 "arm,pl011", "arm,sbsa-uart");
-         qemu_fdt_setprop(s->fdt, name, "u-boot,dm-pre-reloc", NULL, 0);
- 
-         if (addrs[i] == MM_UART0) {
-@@ -251,8 +248,6 @@ static void fdt_add_gem_nodes(VersalVirt *s)
- {
-     uint64_t addrs[] = { MM_GEM1, MM_GEM0 };
-     unsigned int irqs[] = { VERSAL_GEM1_IRQ_0, VERSAL_GEM0_IRQ_0 };
--    const char clocknames[] = "pclk\0hclk\0tx_clk\0rx_clk";
--    const char compat_gem[] = "cdns,zynqmp-gem\0cdns,gem";
-     int i;
- 
-     for (i = 0; i < ARRAY_SIZE(addrs); i++) {
-@@ -266,8 +261,8 @@ static void fdt_add_gem_nodes(VersalVirt *s)
-         qemu_fdt_setprop_cells(s->fdt, name, "clocks",
-                                s->phandle.clk_25Mhz, s->phandle.clk_25Mhz,
-                                s->phandle.clk_125Mhz, s->phandle.clk_125Mhz);
--        qemu_fdt_setprop(s->fdt, name, "clock-names",
--                         clocknames, sizeof(clocknames));
-+        qemu_fdt_setprop_strings(s->fdt, name, "clock-names",
-+                                 "pclk", "hclk", "tx_clk", "rx_clk");
-         qemu_fdt_setprop_cells(s->fdt, name, "interrupts",
-                                GIC_FDT_IRQ_TYPE_SPI, irqs[i],
-                                GIC_FDT_IRQ_FLAGS_LEVEL_HI,
-@@ -275,8 +270,8 @@ static void fdt_add_gem_nodes(VersalVirt *s)
-                                GIC_FDT_IRQ_FLAGS_LEVEL_HI);
-         qemu_fdt_setprop_sized_cells(s->fdt, name, "reg",
-                                      2, addrs[i], 2, 0x1000);
--        qemu_fdt_setprop(s->fdt, name, "compatible",
--                         compat_gem, sizeof(compat_gem));
-+        qemu_fdt_setprop_strings(s->fdt, name, "compatible",
-+                                 "cdns,zynqmp-gem", "cdns,gem");
-         qemu_fdt_setprop_cell(s->fdt, name, "#address-cells", 1);
-         qemu_fdt_setprop_cell(s->fdt, name, "#size-cells", 0);
-         g_free(name);
-@@ -285,8 +280,6 @@ static void fdt_add_gem_nodes(VersalVirt *s)
- 
- static void fdt_add_zdma_nodes(VersalVirt *s)
- {
--    const char clocknames[] = "clk_main\0clk_apb";
--    const char compat[] = "xlnx,zynqmp-dma-1.0";
-     int i;
- 
-     for (i = XLNX_VERSAL_NR_ADMAS - 1; i >= 0; i--) {
-@@ -298,22 +291,21 @@ static void fdt_add_zdma_nodes(VersalVirt *s)
-         qemu_fdt_setprop_cell(s->fdt, name, "xlnx,bus-width", 64);
-         qemu_fdt_setprop_cells(s->fdt, name, "clocks",
-                                s->phandle.clk_25Mhz, s->phandle.clk_25Mhz);
--        qemu_fdt_setprop(s->fdt, name, "clock-names",
--                         clocknames, sizeof(clocknames));
-+        qemu_fdt_setprop_strings(s->fdt, name, "clock-names",
-+                                 "clk_main", "clk_apb");
-         qemu_fdt_setprop_cells(s->fdt, name, "interrupts",
-                                GIC_FDT_IRQ_TYPE_SPI, VERSAL_ADMA_IRQ_0 + i,
-                                GIC_FDT_IRQ_FLAGS_LEVEL_HI);
-         qemu_fdt_setprop_sized_cells(s->fdt, name, "reg",
-                                      2, addr, 2, 0x1000);
--        qemu_fdt_setprop(s->fdt, name, "compatible", compat, sizeof(compat));
-+        qemu_fdt_setprop_string(s->fdt, name, "compatible",
-+                                "xlnx,zynqmp-dma-1.0");
-         g_free(name);
-     }
- }
- 
- static void fdt_add_sd_nodes(VersalVirt *s)
- {
--    const char clocknames[] = "clk_xin\0clk_ahb";
--    const char compat[] = "arasan,sdhci-8.9a";
-     int i;
- 
-     for (i = ARRAY_SIZE(s->soc.pmc.iou.sd) - 1; i >= 0; i--) {
-@@ -324,22 +316,21 @@ static void fdt_add_sd_nodes(VersalVirt *s)
- 
-         qemu_fdt_setprop_cells(s->fdt, name, "clocks",
-                                s->phandle.clk_25Mhz, s->phandle.clk_25Mhz);
--        qemu_fdt_setprop(s->fdt, name, "clock-names",
--                         clocknames, sizeof(clocknames));
-+        qemu_fdt_setprop_strings(s->fdt, name, "clock-names",
-+                                 "clk_xin", "clk_ahb");
-         qemu_fdt_setprop_cells(s->fdt, name, "interrupts",
-                                GIC_FDT_IRQ_TYPE_SPI, VERSAL_SD0_IRQ_0 + i * 2,
-                                GIC_FDT_IRQ_FLAGS_LEVEL_HI);
-         qemu_fdt_setprop_sized_cells(s->fdt, name, "reg",
-                                      2, addr, 2, MM_PMC_SD0_SIZE);
--        qemu_fdt_setprop(s->fdt, name, "compatible", compat, sizeof(compat));
-+        qemu_fdt_setprop_string(s->fdt, name, "compatible",
-+                                "arasan,sdhci-8.9a");
-         g_free(name);
-     }
- }
- 
- static void fdt_add_rtc_node(VersalVirt *s)
- {
--    const char compat[] = "xlnx,zynqmp-rtc";
--    const char interrupt_names[] = "alarm\0sec";
-     char *name = g_strdup_printf("/rtc@%x", MM_PMC_RTC);
- 
-     qemu_fdt_add_subnode(s->fdt, name);
-@@ -349,11 +340,11 @@ static void fdt_add_rtc_node(VersalVirt *s)
-                            GIC_FDT_IRQ_FLAGS_LEVEL_HI,
-                            GIC_FDT_IRQ_TYPE_SPI, VERSAL_RTC_SECONDS_IRQ,
-                            GIC_FDT_IRQ_FLAGS_LEVEL_HI);
--    qemu_fdt_setprop(s->fdt, name, "interrupt-names",
--                     interrupt_names, sizeof(interrupt_names));
-+    qemu_fdt_setprop_strings(s->fdt, name, "interrupt-names",
-+                             "alarm", "sec");
-     qemu_fdt_setprop_sized_cells(s->fdt, name, "reg",
-                                  2, MM_PMC_RTC, 2, MM_PMC_RTC_SIZE);
--    qemu_fdt_setprop(s->fdt, name, "compatible", compat, sizeof(compat));
-+    qemu_fdt_setprop_string(s->fdt, name, "compatible", "xlnx,zynqmp-rtc");
-     g_free(name);
- }
- 
++/**
++ * qemu_fdt_setprop_strings: set a property from a set of strings
++ *
++ * @fdt: pointer to the dt blob
++ * @path: node name
++ * @prop: property array
++ *
++ * This is a helper for the qemu_fdt_setprop_string_array() function
++ * which takes a va-arg set of strings instead of having to setup a
++ * single use string array.
++ */
++#define qemu_fdt_setprop_strings(fdt, path, prop, ...)          \
++    do {                                                        \
++        static const char * const __strs[] = { __VA_ARGS__ };   \
++        qemu_fdt_setprop_string_array(fdt, path, prop,          \
++                (char **)&__strs, ARRAY_SIZE(__strs));          \
++     } while(0)
++
++
+ int qemu_fdt_setprop_phandle(void *fdt, const char *node_path,
+                              const char *property,
+                              const char *target_node_path);
 -- 
 2.35.1
 

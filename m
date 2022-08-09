@@ -1,108 +1,84 @@
-Received: by 2002:a17:906:3b11:0:0:0:0 with SMTP id g17csp2436177ejf;
-        Mon, 8 Aug 2022 03:59:43 -0700 (PDT)
-X-Google-Smtp-Source: AA6agR5UJb8m/ehJhWMjQMZCwQiU0tj04NwwTFHbKbg+25sDdJt4NiHkMr1yhtckoYggL3Onmpi2
-X-Received: by 2002:a05:620a:c0e:b0:6b9:11d4:7484 with SMTP id l14-20020a05620a0c0e00b006b911d47484mr11078151qki.587.1659956383096;
-        Mon, 08 Aug 2022 03:59:43 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1659956383; cv=none;
+Received: by 2002:a17:906:3b11:0:0:0:0 with SMTP id g17csp3302973ejf;
+        Tue, 9 Aug 2022 11:49:40 -0700 (PDT)
+X-Google-Smtp-Source: AA6agR4G5Um9AzVXKY0XdU7akE/AIVKFEZJ/ah8RckyaUMng3vC3aWD3f1Kf4YOJmjjKxzZ2Ha5V
+X-Received: by 2002:a05:6214:400a:b0:476:10cc:f92c with SMTP id kd10-20020a056214400a00b0047610ccf92cmr21430715qvb.4.1660070980593;
+        Tue, 09 Aug 2022 11:49:40 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1660070980; cv=none;
         d=google.com; s=arc-20160816;
-        b=W4bHjhIXyqmsfF3lpPM4SG3/BsKJGrUnHrLi2g6vReDKzXuuEeH1X0mKidb9xAUk4x
-         o62kW2u58gDX9k10d7J+PTiHGgfqONdMBhJOxcJIPisXZOIHg0ExyE6fGIem1ldp/D+1
-         lFLK3YvYCd0/EfN9yoHmws9jSd21IT4JQ63W/dCTdNoOFRjw9nI4XIDwG1kNSig/oDFB
-         dPqhPFP4Z82bbsZUmQlFzsoI9SBsIa0uGQoM6g//wJBvPdzKs3vchbemopn5xOJPS84Q
-         v9snS2xiFNMdY8DW6zZ5CPP78bnXPozQDNfDcCok/ky32QyLXBfXoeFDjNQQF+HbMqpE
-         cAJA==
+        b=0g9YLZzeBEVDMfT7r3fEYoT3CWLT6kZmpkrBWkRMjvHP1S7w8Lklp+lacZK23kUxXi
+         XyRUUtYdF4JrEAx+xHgP8M0xO8G8KR/og3HNymGgLH69zcT5PQPqmjhuctlqlfJJO5dR
+         6rMsq1H/dVw8ou9RHq4kHVNPWWPC2lY1VhQaQLhPZdLGSC46UO6AtpyWrIy9cZf/TWNf
+         MFZXMkXo+VjSGQxy5tMaRUjPNOeCsjZEKpTwbizzk0Kp1kV1d4LtbRkdiO6wFuDlXPE2
+         +Zop8a5cqAdh3bp7dwQfhDUFxgSE/HiscB+xr6yC1/wERTSF+9BU77kva2QOQxD51xTb
+         unnA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=DeVYaj7uSNsCkDlnQqMl58pnDhVkolhQFiPB11T3pC0=;
-        b=ArzlPle9AaO3sSjffP8JFBwU9jOvkIj/Defu2mSlsh62usYDrSKqFxMi0voo4eVAYq
-         8slnNA0OnQwy8h4bVQPXAF39z9HQfNCD6evjbeu4lEqAikPghGK5CYSbHvcW4ZFwQ8aT
-         1c5nNe9cEbMF80qUfagZ8vUFnVviuGX3IdJx4PYGzwkaZUUmcrXCvI+H44vtprwP9p4Y
-         +pI3lEl81jtUtKJGxNlBJxT87YRmR3anQUsh8zCgEJfc8nAVTO8mY+gSX8dY/oDwpiU8
-         6uvcvuAG/+7PXkRTFt2k5lx+qULsNsROJgPG7Z0Lfzz8xB1xAhrBkFv+UAxG6RWcBBem
-         ZYtQ==
+         :list-unsubscribe:list-id:precedence:user-agent:in-reply-to
+         :content-disposition:mime-version:references:message-id:subject:cc
+         :to:from:date;
+        bh=c+HC5EWYBtG8/m4FRcCr1T4R5WfuFbkKhDR9Vcqqy8U=;
+        b=AFSObMvYulS2Du7DYKbOpPJcIhBzDiEzqHfFkvwnXcVEN4pvWRztJFqr51y2LaDuNy
+         fGzhDuIp2fK2s1X4S2xNLTbOOlvBCYezizzvdjUHwDwPoQIWkG5h8KBNvBPbfLGkELKA
+         KqAH7UJjR00whSjIVjDuwwiF17J/cWl6cMIHOEGtKUMObizVGW9mvTS3AEUV6RgrtnFD
+         D9GGfXgELlwW5wL0eDifCyZquVkeUNU8gFUv7MLfPGRaz/VLfQhmSy9ROQGKtuRzus+u
+         CgfCSHOpJwgZehzwNzNqZqYvjeknjReoeLjJ4n/9/7WFiodK47uWZBx3b6XNE2gZuNup
+         G/pw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=a4DK7BPG;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d23-20020a05620a141700b006a71a3878dfsi4935332qkj.347.2022.08.08.03.59.42
+        by mx.google.com with ESMTPS id k12-20020a05620a414c00b006b912c2e3f1si9611400qko.154.2022.08.09.11.49.40
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 08 Aug 2022 03:59:43 -0700 (PDT)
+        Tue, 09 Aug 2022 11:49:40 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=a4DK7BPG;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:51702 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:47782 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1oL0U0-0004WK-NQ
-	for alex.bennee@linaro.org; Mon, 08 Aug 2022 06:59:42 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:54496)
+	id 1oLUIO-0007Jb-0K
+	for alex.bennee@linaro.org; Tue, 09 Aug 2022 14:49:40 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38158)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1oL05K-0002cg-5n; Mon, 08 Aug 2022 06:34:13 -0400
-Received: from mail-pl1-x632.google.com ([2607:f8b0:4864:20::632]:35357)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1oL05I-0002GF-FD; Mon, 08 Aug 2022 06:34:09 -0400
-Received: by mail-pl1-x632.google.com with SMTP id y1so2540007plb.2;
- Mon, 08 Aug 2022 03:34:07 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc;
- bh=DeVYaj7uSNsCkDlnQqMl58pnDhVkolhQFiPB11T3pC0=;
- b=a4DK7BPG+xc+DHj+oVBesUO7ndE3EgekyDERQyXd7h41+WB6CiGi5N64NfHg8RlPUG
- m05YE8gHO1y82yafw1PA7F4QqmJJOVrMYK5wMVgYmYJHXQoQYzjIFM6QzysjiFqwNxvN
- z0sK44n/NxWbzNoox2rNAnn/shtsU0zs5yMikO8KM5pS7B+QYzxshdVWpZMP7rwmPMn7
- Z5+J+OEz9IXlWiLtCkj8ZKG+gMP2Totgc1WWI7BY7L0Fa5Pc1hGCmdmyOFHLyNl1vofI
- UrKdjC3N1lwGTWwqCw27HJ/6jHnU/28JUb7bnKUbCyxJFNGIaq04RLTz9h4MnRUucs06
- 3TgA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc;
- bh=DeVYaj7uSNsCkDlnQqMl58pnDhVkolhQFiPB11T3pC0=;
- b=eyuM+JAG4QIvEKRDv3E3Jw3nNa/Tm6g8m2jYm7/3OHl1KflxmSaM18JaAwU5L+tpfq
- jieSIMDrg08eL49dnjAfpdBQhv59VkK48KcBc6egNmRVecMLIMCr7JXByxZe5it+SVd8
- lv6NHAYkP5FOpU7OcuKZRkpdGnKiHpJMqz+JLybmELJW3vS8KQ0vFgD97+cIBjxE9EbT
- ej5++HqbgaWeDsCA6bSBHAWHfqwe12nMbRJh3Fb+b8zR9Mz5orodc4CMILY9G5k77+Fm
- uiyikt4C5EDWWWvmv1hxI7PU4dDAH7GQKshFbRFR1+q70hE9yJ99g/GK+Ku0nPg92UDg
- zMjQ==
-X-Gm-Message-State: ACgBeo3EjRQEXupqoAZXqr9/7rwLOtCxq66Ka2F45Ay0JeLMdZcQcEyQ
- NjRE94iio+0qj9NP61u3+3aebe1GA9Y8p/gOZXY=
-X-Received: by 2002:a17:90b:3b49:b0:1f4:df09:d671 with SMTP id
- ot9-20020a17090b3b4900b001f4df09d671mr20155464pjb.129.1659954846622; Mon, 08
- Aug 2022 03:34:06 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <ben@fluff.org>)
+ id 1oLUHX-0007Gy-P3; Tue, 09 Aug 2022 14:48:48 -0400
+Received: from test-v6.fluff.org ([2a01:4f8:222:2004::3]:40862
+ helo=hetzy.fluff.org)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <ben@fluff.org>)
+ id 1oLUHV-0001Rm-CF; Tue, 09 Aug 2022 14:48:47 -0400
+Received: from ben by hetzy.fluff.org with local (Exim 4.89)
+ (envelope-from <ben@fluff.org>)
+ id 1oLUHO-0007yn-On; Tue, 09 Aug 2022 19:48:38 +0100
+Date: Tue, 9 Aug 2022 19:48:38 +0100
+From: Ben Dooks <ben@fluff.org>
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: Ben Dooks <qemu@ben.fluff.org>, qemu-devel@nongnu.org,
+ qemu-riscv@nongnu.org, Alistair Francis <Alistair.Francis@wdc.com>,
+ qemu-arm@nongnu.org, "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
+Subject: Re: [PATCH v3 5/5] hw/arm: change to use qemu_fdt_setprop_strings()
+Message-ID: <20220809184838.en4x5kcxiatclmfy@hetzy.fluff.org>
+References: <20220727223905.624285-1-qemu@ben.fluff.org>
+ <20220727223905.624285-6-qemu@ben.fluff.org>
+ <CAFEAcA9DADLZaSrRmRLXxex6V1ewbi8zV+ey9NLv0JNPJOc9hw@mail.gmail.com>
 MIME-Version: 1.0
-References: <20220808080116.2184881-1-cyruscyliu@gmail.com>
-In-Reply-To: <20220808080116.2184881-1-cyruscyliu@gmail.com>
-From: Alistair Francis <alistair23@gmail.com>
-Date: Mon, 8 Aug 2022 20:33:40 +1000
-Message-ID: <CAKmqyKPvvY9WGz1xRmn4-mS4JTzfZ4PK7aawDaaW53+n0y2UNQ@mail.gmail.com>
-Subject: Re: [PATCH] xlnx_dp: drop unsupported AUXCommand in
- xlnx_dp_aux_set_command
-To: Qiang Liu <cyruscyliu@gmail.com>
-Cc: "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
- Thomas Huth <thuth@redhat.com>, Alistair Francis <alistair@alistair23.me>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, 
- Peter Maydell <peter.maydell@linaro.org>, 
- "open list:Xilinx ZynqMP and..." <qemu-arm@nongnu.org>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::632;
- envelope-from=alistair23@gmail.com; helo=mail-pl1-x632.google.com
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <CAFEAcA9DADLZaSrRmRLXxex6V1ewbi8zV+ey9NLv0JNPJOc9hw@mail.gmail.com>
+X-Disclaimer: These are my views alone.
+X-URL: http://www.fluff.org/
+User-Agent: NeoMutt/20170113 (1.7.2)
+X-SA-Exim-Connect-IP: <locally generated>
+X-SA-Exim-Mail-From: ben@fluff.org
+X-SA-Exim-Scanned: No (on hetzy.fluff.org); SAEximRunCond expanded to false
+Received-SPF: pass client-ip=2a01:4f8:222:2004::3; envelope-from=ben@fluff.org;
+ helo=hetzy.fluff.org
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -117,46 +93,154 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: L2TQqpTupLBp
+X-TUID: BiEhwsdp+wLV
 
-On Mon, Aug 8, 2022 at 6:09 PM Qiang Liu <cyruscyliu@gmail.com> wrote:
->
-> In xlnx_dp_aux_set_command, when the command leads to the default
-> branch, xlxn-dp will abort and then crash.
->
-> This patch removes this abort and drops this operation.
->
-> Fixes: 58ac482 ("introduce xlnx-dp")
-> Resolves: https://gitlab.com/qemu-project/qemu/-/issues/411
-> Reported-by: Qiang Liu <cyruscyliu@gmail.com>
-> Tested-by: Qiang Liu <cyruscyliu@gmail.com>
-> Suggested-by: Thomas Huth <thuth@redhat.com>
-> Signed-off-by: Qiang Liu <cyruscyliu@gmail.com>
+On Mon, Aug 01, 2022 at 12:37:33PM +0100, Peter Maydell wrote:
+> On Wed, 27 Jul 2022 at 23:44, Ben Dooks <qemu@ben.fluff.org> wrote:
+> >
+> > Change to using qemu_fdt_setprop_strings() instead of using
+> > \0 separated string arrays.
+> >
+> > Signed-off-by: Ben Dooks <qemu@ben.fluff.org>
+> > ---
+> >  hw/arm/boot.c             |  8 +++---
+> >  hw/arm/virt.c             | 28 +++++++++------------
+> >  hw/arm/xlnx-versal-virt.c | 51 ++++++++++++++++-----------------------
+> >  3 files changed, 37 insertions(+), 50 deletions(-)
+> >
+> > diff --git a/hw/arm/boot.c b/hw/arm/boot.c
+> > index ada2717f76..bf29b7ae60 100644
+> > --- a/hw/arm/boot.c
+> > +++ b/hw/arm/boot.c
+> > @@ -490,11 +490,11 @@ static void fdt_add_psci_node(void *fdt)
+> >      qemu_fdt_add_subnode(fdt, "/psci");
+> >      if (armcpu->psci_version >= QEMU_PSCI_VERSION_0_2) {
+> >          if (armcpu->psci_version < QEMU_PSCI_VERSION_1_0) {
+> > -            const char comp[] = "arm,psci-0.2\0arm,psci";
+> > -            qemu_fdt_setprop(fdt, "/psci", "compatible", comp, sizeof(comp));
+> > +            qemu_fdt_setprop_strings(fdt, "/psci", "compatible",
+> > +                                     "arm,psci-0.2", "arm,psci");
+> 
+> I think you may have some stray trailing whitespace here.
+> checkpatch should be able to tell you.
 
-Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
+ok, will check
 
-Alistair
+> > @@ -858,8 +855,8 @@ static void create_uart(const VirtMachineState *vms, int uart,
+> >      nodename = g_strdup_printf("/pl011@%" PRIx64, base);
+> >      qemu_fdt_add_subnode(ms->fdt, nodename);
+> >      /* Note that we can't use setprop_string because of the embedded NUL */
+> 
+> With this change, this comment becomes obsolete, and we should delete it too.
+> 
+> > -    qemu_fdt_setprop(ms->fdt, nodename, "compatible",
+> > -                         compat, sizeof(compat));
+> > +    qemu_fdt_setprop_strings(ms->fdt, nodename, "compatible",
+> > +                             "arm,pl011", "arm,primecell");
+> >      qemu_fdt_setprop_sized_cells(ms->fdt, nodename, "reg",
+> >                                       2, base, 2, size);
+> >      qemu_fdt_setprop_cells(ms->fdt, nodename, "interrupts",
+> 
+> 
+> 
+> > @@ -285,8 +280,6 @@ static void fdt_add_gem_nodes(VersalVirt *s)
+> >
+> >  static void fdt_add_zdma_nodes(VersalVirt *s)
+> >  {
+> > -    const char clocknames[] = "clk_main\0clk_apb";
+> > -    const char compat[] = "xlnx,zynqmp-dma-1.0";
+> 
+> This looks suspiciously like a pre-existing bug to me.
+> Alaistair, Edgar -- shouldn't this be a NUL-separated
+> 'compatible' string, rather than a comma-separated one?
 
-> ---
->  hw/display/xlnx_dp.c | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
->
-> diff --git a/hw/display/xlnx_dp.c b/hw/display/xlnx_dp.c
-> index a071c81..b0828d6 100644
-> --- a/hw/display/xlnx_dp.c
-> +++ b/hw/display/xlnx_dp.c
-> @@ -532,8 +532,8 @@ static void xlnx_dp_aux_set_command(XlnxDPState *s, uint32_t value)
->          qemu_log_mask(LOG_UNIMP, "xlnx_dp: Write i2c status not implemented\n");
->          break;
->      default:
-> -        error_report("%s: invalid command: %u", __func__, cmd);
-> -        abort();
-> +        qemu_log_mask(LOG_GUEST_ERROR, "%s: invalid command: %u", __func__, cmd);
-> +        return;
->      }
->
->      s->core_registers[DP_INTERRUPT_SIGNAL_STATE] |= 0x04;
-> --
-> 2.25.1
->
->
+I think the compat[] is fine, I should have probably added I also fixed
+up to just call qemu_fdt_setprop_string()
+
+> >      int i;
+> >
+> >      for (i = XLNX_VERSAL_NR_ADMAS - 1; i >= 0; i--) {
+> > @@ -298,22 +291,21 @@ static void fdt_add_zdma_nodes(VersalVirt *s)
+> >          qemu_fdt_setprop_cell(s->fdt, name, "xlnx,bus-width", 64);
+> >          qemu_fdt_setprop_cells(s->fdt, name, "clocks",
+> >                                 s->phandle.clk_25Mhz, s->phandle.clk_25Mhz);
+> > -        qemu_fdt_setprop(s->fdt, name, "clock-names",
+> > -                         clocknames, sizeof(clocknames));
+> > +        qemu_fdt_setprop_strings(s->fdt, name, "clock-names",
+> > +                                 "clk_main", "clk_apb");
+> >          qemu_fdt_setprop_cells(s->fdt, name, "interrupts",
+> >                                 GIC_FDT_IRQ_TYPE_SPI, VERSAL_ADMA_IRQ_0 + i,
+> >                                 GIC_FDT_IRQ_FLAGS_LEVEL_HI);
+> >          qemu_fdt_setprop_sized_cells(s->fdt, name, "reg",
+> >                                       2, addr, 2, 0x1000);
+> > -        qemu_fdt_setprop(s->fdt, name, "compatible", compat, sizeof(compat));
+> > +        qemu_fdt_setprop_string(s->fdt, name, "compatible",
+> > +                                "xlnx,zynqmp-dma-1.0");
+> >          g_free(name);
+> >      }
+> >  }
+> >
+> >  static void fdt_add_sd_nodes(VersalVirt *s)
+> >  {
+> > -    const char clocknames[] = "clk_xin\0clk_ahb";
+> > -    const char compat[] = "arasan,sdhci-8.9a";
+> 
+> Ditto here...
+> 
+> >      int i;
+> >
+> >      for (i = ARRAY_SIZE(s->soc.pmc.iou.sd) - 1; i >= 0; i--) {
+> > @@ -324,22 +316,21 @@ static void fdt_add_sd_nodes(VersalVirt *s)
+> >
+> >          qemu_fdt_setprop_cells(s->fdt, name, "clocks",
+> >                                 s->phandle.clk_25Mhz, s->phandle.clk_25Mhz);
+> > -        qemu_fdt_setprop(s->fdt, name, "clock-names",
+> > -                         clocknames, sizeof(clocknames));
+> > +        qemu_fdt_setprop_strings(s->fdt, name, "clock-names",
+> > +                                 "clk_xin", "clk_ahb");
+> >          qemu_fdt_setprop_cells(s->fdt, name, "interrupts",
+> >                                 GIC_FDT_IRQ_TYPE_SPI, VERSAL_SD0_IRQ_0 + i * 2,
+> >                                 GIC_FDT_IRQ_FLAGS_LEVEL_HI);
+> >          qemu_fdt_setprop_sized_cells(s->fdt, name, "reg",
+> >                                       2, addr, 2, MM_PMC_SD0_SIZE);
+> > -        qemu_fdt_setprop(s->fdt, name, "compatible", compat, sizeof(compat));
+> > +        qemu_fdt_setprop_string(s->fdt, name, "compatible",
+> > +                                "arasan,sdhci-8.9a");
+> >          g_free(name);
+> >      }
+> >  }
+> >
+> >  static void fdt_add_rtc_node(VersalVirt *s)
+> >  {
+> > -    const char compat[] = "xlnx,zynqmp-rtc";
+> 
+> ...and here.
+> 
+> > -    const char interrupt_names[] = "alarm\0sec";
+> >      char *name = g_strdup_printf("/rtc@%x", MM_PMC_RTC);
+> >
+> >      qemu_fdt_add_subnode(s->fdt, name);
+> > @@ -349,11 +340,11 @@ static void fdt_add_rtc_node(VersalVirt *s)
+> >                             GIC_FDT_IRQ_FLAGS_LEVEL_HI,
+> >                             GIC_FDT_IRQ_TYPE_SPI, VERSAL_RTC_SECONDS_IRQ,
+> >                             GIC_FDT_IRQ_FLAGS_LEVEL_HI);
+> > -    qemu_fdt_setprop(s->fdt, name, "interrupt-names",
+> > -                     interrupt_names, sizeof(interrupt_names));
+> > +    qemu_fdt_setprop_strings(s->fdt, name, "interrupt-names",
+> > +                             "alarm", "sec");
+> >      qemu_fdt_setprop_sized_cells(s->fdt, name, "reg",
+> >                                   2, MM_PMC_RTC, 2, MM_PMC_RTC_SIZE);
+> > -    qemu_fdt_setprop(s->fdt, name, "compatible", compat, sizeof(compat));
+> > +    qemu_fdt_setprop_string(s->fdt, name, "compatible", "xlnx,zynqmp-rtc");
+> >      g_free(name);
+> >  }
+> 
+> thanks
+> -- PMM
+> 
+
+-- 
+Ben Dooks, ben@fluff.org, http://www.fluff.org/ben/
+
+Large Hadron Colada: A large Pina Colada that makes the universe disappear.
+

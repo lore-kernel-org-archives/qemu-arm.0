@@ -1,146 +1,419 @@
-Received: by 2002:a17:906:3b11:0:0:0:0 with SMTP id g17csp3777590ejf;
-        Wed, 10 Aug 2022 06:40:46 -0700 (PDT)
-X-Google-Smtp-Source: AA6agR4OAKcp+U8Ipgkp0aXHMCLxQgNvgRKYKGZnhrxq1itCpxykojumk/JDmifv4AkcBqq8IGv8
-X-Received: by 2002:a05:6214:21cc:b0:474:86ae:bb91 with SMTP id d12-20020a05621421cc00b0047486aebb91mr23365594qvh.110.1660138846113;
-        Wed, 10 Aug 2022 06:40:46 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1660138846; cv=none;
+Received: by 2002:a17:906:3b11:0:0:0:0 with SMTP id g17csp3805270ejf;
+        Wed, 10 Aug 2022 07:25:49 -0700 (PDT)
+X-Google-Smtp-Source: AA6agR6D8rRTu8CLRLYldA4APhDOFBUfoqDm+Coi2Lirwkdp9CUTFd0ljqysLu0LbKGxReBJiw3U
+X-Received: by 2002:a05:6214:19e6:b0:479:af0d:3566 with SMTP id q6-20020a05621419e600b00479af0d3566mr18296184qvc.100.1660141549000;
+        Wed, 10 Aug 2022 07:25:49 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1660141548; cv=none;
         d=google.com; s=arc-20160816;
-        b=JCSeYqIU6/m16rySzCpg2FOwUkozvsY0ltZGj6viyovGwjSig3QFA1OM9OjtaoFA8i
-         wLjsp3x/EN6n43/hvyraKOUY+QBp1n1WlIjV23DXL+kXOJm4O7g2utbGO6GjVPVKzkNn
-         jRrbxI+ZgrtJxdvYTvkYMCxy1FsW7h/ihF1z/eIE2zLjs8KMZhLc1IoBV/qWTJjB5Ueb
-         G5ysi2Iet6w+5QcU3QlcHp7McKbpVU7CGxjGr0+JO5yDlWpvySyos/0hFPhaEeEaQi2r
-         gtKwbpmQuHCs7pQuG+4R60wPjD6/T7O9q+3pJzf3+rnEHvbm8iyvfa8gqMj4HSOSfrsq
-         iTDA==
+        b=qkdOBr/G1LSkzrPH602MgWeEtyx4WkBOF4LRKQpwlE2dLh+DMN7Cs2VpuDpnWDbzPZ
+         tRclh/pMx5PMfAH0iVVW7E1bhdlsA2wJbITHcniAAYfqRcmflaBPH1nFmRrmwb+MmgOY
+         KzHh39O/soLpFqAAFtgSHkdNtU+1YteY+TKJfn+1XCpshxc1A82Mis+ZNrTLpfw54c5A
+         XZcjWkkscpw/8mi+Q7XTF+cOqmM1euuPRTPu1WeedxK1PwJIm0SgY4C5YRpiGrgQpz/b
+         TeBy8y49jcJJBNYE553jBOVVvaXDmgsxzd6Y8UD1VpgfCk/i+YW0edcxtC/L7qpmbzsk
+         nFZg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=from:reply-to:sender:errors-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:references:cc:to:subject;
-        bh=50PMH3gLkuHREUWdjRITMpEviNLIJVqMWWnjONDsyM8=;
-        b=Lx4QRVltfyJOaopmku6n22BopyBWUtksEImE/9fdQgMgU3yOQ/0rBR0tV/7Gc7Rytm
-         W3ddNl7/IrDI4uw8OZLL/BeJhicLIpvbrZdWKTIMVvq/8UkjpzTMvLYVyXlEeN0UFH0K
-         ZI1uXdlmd43BP93c3BV+pyK/uIsrFiA0zVEs+MVjdinevGAVQMXGuS41GnJ01thSWBiJ
-         SQ41EDdcahrWyBc5Lk67WNzyhk8T6xze7opE6a3hCgToedcqVo7b3DUI6xmSkp1LViNb
-         uC1JHc/dNFRiMZOjh3+V/bPNsWk+7vgDeIjdrtPYZCZaCRTu1yCNe/ZCP/vqA2Qcl9+b
-         MdrQ==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:mime-version
+         :content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:date:message-id:dkim-signature;
+        bh=Wno38apHfxRT267uMHyCulTON6VF15fJmAvTeRl9k+E=;
+        b=zUHs8IudJt7LxSVFl8V/gAUchz5yvgeC3OybUxp5RDnLoAaPX6Qan+K25P4xzQHpAJ
+         h0Mr+jGSOOSOf/4Yjye44Cl25LJUM979xz0yotG1grZyAva+mOdIjH2rXasJNJCsfZFp
+         VSvQTGSYW0ybMDQVSbYunfn+5C6CDCdJmflikzjDXw3A0JS4Xh4tyej4oAjXSyL6dRRZ
+         DrRR4DAmCoei/PxIeXvl4zywPXIn7UpJk6Zf7sXwWh/jlwo9YIaMz6Wpkhrc9Of3dsvb
+         +j0YUiwbdXE6iy6nQMEtx8TR19SA6OaZOXhdZK7Wqu+oLNF0tPY6iZLuCRF7ywZoPoYY
+         pQeg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@ibm.com header.s=pp1 header.b=ZD61WviB;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=ibm.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e11-20020ac84b4b000000b0034216c65bfasi676949qts.232.2022.08.10.06.40.45
+        by mx.google.com with ESMTPS id bs22-20020ac86f16000000b003435fa84babsi468308qtb.613.2022.08.10.07.25.48
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 10 Aug 2022 06:40:46 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 10 Aug 2022 07:25:48 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
-Received: from localhost ([::1]:38560 helo=lists1p.gnu.org)
+       dkim=pass header.i=@ibm.com header.s=pp1 header.b=ZD61WviB;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=ibm.com
+Received: from localhost ([::1]:40714 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1oLlwz-0005rZ-Kj
-	for alex.bennee@linaro.org; Wed, 10 Aug 2022 09:40:45 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:52644)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1oLmea-0001BF-CO
+	for alex.bennee@linaro.org; Wed, 10 Aug 2022 10:25:48 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:34136)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <yuzenghui@huawei.com>)
- id 1oLlWJ-0006Nu-Gc; Wed, 10 Aug 2022 09:13:11 -0400
-Received: from szxga03-in.huawei.com ([45.249.212.189]:5168)
+ (Exim 4.90_1) (envelope-from <stefanb@linux.ibm.com>)
+ id 1oLmD3-0007am-6r; Wed, 10 Aug 2022 09:57:21 -0400
+Received: from mx0b-001b2d01.pphosted.com ([148.163.158.5]:52108)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <yuzenghui@huawei.com>)
- id 1oLlWF-0003Cn-A4; Wed, 10 Aug 2022 09:13:10 -0400
-Received: from dggemv703-chm.china.huawei.com (unknown [172.30.72.53])
- by szxga03-in.huawei.com (SkyGuard) with ESMTP id 4M2r1G50hTzGpHW;
- Wed, 10 Aug 2022 21:11:30 +0800 (CST)
-Received: from kwepemm600007.china.huawei.com (7.193.23.208) by
- dggemv703-chm.china.huawei.com (10.3.19.46) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2375.24; Wed, 10 Aug 2022 21:12:55 +0800
-Received: from [10.174.185.179] (10.174.185.179) by
- kwepemm600007.china.huawei.com (7.193.23.208) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2375.24; Wed, 10 Aug 2022 21:12:55 +0800
-Subject: Re: [PATCH v6 24/24] target/arm: Define neoverse-n1
-To: Richard Henderson <richard.henderson@linaro.org>
-CC: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>, Peter Maydell
- <peter.maydell@linaro.org>
-References: <20220506180242.216785-1-richard.henderson@linaro.org>
- <20220506180242.216785-25-richard.henderson@linaro.org>
-Message-ID: <1d915529-cd32-82b3-42ad-4d202d3590d8@huawei.com>
-Date: Wed, 10 Aug 2022 21:12:54 +0800
-User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:68.0) Gecko/20100101
- Thunderbird/68.9.0
-MIME-Version: 1.0
-In-Reply-To: <20220506180242.216785-25-richard.henderson@linaro.org>
-Content-Type: text/plain; charset="utf-8"; format=flowed
+ (Exim 4.90_1) (envelope-from <stefanb@linux.ibm.com>)
+ id 1oLmD0-0002q1-LV; Wed, 10 Aug 2022 09:57:20 -0400
+Received: from pps.filterd (m0127361.ppops.net [127.0.0.1])
+ by mx0a-001b2d01.pphosted.com (8.17.1.5/8.17.1.5) with ESMTP id 27AD6m2N020952;
+ Wed, 10 Aug 2022 13:57:08 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com;
+ h=message-id : date :
+ subject : to : cc : references : from : in-reply-to : content-type :
+ content-transfer-encoding : mime-version; s=pp1;
+ bh=Wno38apHfxRT267uMHyCulTON6VF15fJmAvTeRl9k+E=;
+ b=ZD61WviBS/HeTxijtsxrSYpUz4Q2OrNBudw7WXH6QtKdDYB4emZZIwcqGsOcaCzM5AGk
+ L3a8yDDj5EGHU8/fyfcbcDoipedm5mbPb6kot+RSsrdfeYmbxx88kjetkgRj7tQwlhwG
+ 8L/cbqHP8W3BqY1PhjNatYuKahxlhsO5CptF4VTChsdjrhYQ5x4meIfY3f7i1mtI8iD3
+ YmddNtVfuSxMUN0azxuk3Xp3sF9do8KAZw6csRMDRk+wTntqx0mt7/iaU3cyvHLMKUuL
+ ZKJZZ/YWSWsxenu1Fa0J9VxNGLdj1UcgPK5BBnNtuphvGffBHY6JlyyabpC+RFRWreAS og== 
+Received: from pps.reinject (localhost [127.0.0.1])
+ by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3hv3fg3y7d-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Wed, 10 Aug 2022 13:57:08 +0000
+Received: from m0127361.ppops.net (m0127361.ppops.net [127.0.0.1])
+ by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 27ADZhUW034343;
+ Wed, 10 Aug 2022 13:57:07 GMT
+Received: from ppma03dal.us.ibm.com (b.bd.3ea9.ip4.static.sl-reverse.com
+ [169.62.189.11])
+ by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3hv3fg3y6g-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Wed, 10 Aug 2022 13:57:07 +0000
+Received: from pps.filterd (ppma03dal.us.ibm.com [127.0.0.1])
+ by ppma03dal.us.ibm.com (8.16.1.2/8.16.1.2) with SMTP id 27ADpIYp016942;
+ Wed, 10 Aug 2022 13:57:06 GMT
+Received: from b01cxnp22036.gho.pok.ibm.com (b01cxnp22036.gho.pok.ibm.com
+ [9.57.198.26]) by ppma03dal.us.ibm.com with ESMTP id 3huwvke0nm-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Wed, 10 Aug 2022 13:57:06 +0000
+Received: from b01ledav004.gho.pok.ibm.com (b01ledav004.gho.pok.ibm.com
+ [9.57.199.109])
+ by b01cxnp22036.gho.pok.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
+ 27ADv5Yg18547508
+ (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Wed, 10 Aug 2022 13:57:05 GMT
+Received: from b01ledav004.gho.pok.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id B5C9B112067;
+ Wed, 10 Aug 2022 13:57:05 +0000 (GMT)
+Received: from b01ledav004.gho.pok.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 693EC112062;
+ Wed, 10 Aug 2022 13:57:05 +0000 (GMT)
+Received: from [9.47.158.152] (unknown [9.47.158.152])
+ by b01ledav004.gho.pok.ibm.com (Postfix) with ESMTP;
+ Wed, 10 Aug 2022 13:57:05 +0000 (GMT)
+Message-ID: <89c560e2-b23e-6ae2-7703-be97a6e09f50@linux.ibm.com>
+Date: Wed, 10 Aug 2022 09:57:05 -0400
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.12.0
+Subject: Re: [RFC 1/1] hw: tpmtisspi: add SPI support to QEMU TPM
+ implementation
 Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.174.185.179]
-X-ClientProxiedBy: dggems705-chm.china.huawei.com (10.3.19.182) To
- kwepemm600007.china.huawei.com (7.193.23.208)
-X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.189; envelope-from=yuzenghui@huawei.com;
- helo=szxga03-in.huawei.com
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
- RCVD_IN_DNSWL_MED=-2.3, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+To: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>,
+ Iris Chen <irischenlj@gmail.com>
+Cc: irischenlj@fb.com, peter@pjd.dev, pdel@fb.com, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org, patrick@stwcx.xyz, alistair@alistair23.me,
+ kwolf@redhat.com, hreitz@redhat.com, peter.maydell@linaro.org,
+ andrew@aj.id.au, joel@jms.id.au, thuth@redhat.com, lvivier@redhat.com,
+ pbonzini@redhat.com, qemu-block@nongnu.org, dz4list@gmail.com
+References: <20220803023241.63739-1-irischenlj@gmail.com>
+ <20220803023241.63739-2-irischenlj@gmail.com>
+ <36a20515-461d-0f27-3be8-a4edd099165a@kaod.org>
+From: Stefan Berger <stefanb@linux.ibm.com>
+In-Reply-To: <36a20515-461d-0f27-3be8-a4edd099165a@kaod.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+X-TM-AS-GCONF: 00
+X-Proofpoint-ORIG-GUID: boAFOwiAmwP8zBXjD1qzaD9mkJJ7Eams
+X-Proofpoint-GUID: S7jj2AMyMa1PTtIa1rJCndG5sqYMHuEX
+Content-Transfer-Encoding: 8bit
+X-Proofpoint-UnRewURL: 0 URL was un-rewritten
+MIME-Version: 1.0
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.205,Aquarius:18.0.883,Hydra:6.0.517,FMLib:17.11.122.1
+ definitions=2022-08-10_08,2022-08-10_01,2022-06-22_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ adultscore=0 mlxscore=0
+ impostorscore=0 phishscore=0 mlxlogscore=999 bulkscore=0 clxscore=1011
+ lowpriorityscore=0 suspectscore=0 spamscore=0 malwarescore=0
+ priorityscore=1501 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2207270000 definitions=main-2208100042
+Received-SPF: pass client-ip=148.163.158.5; envelope-from=stefanb@linux.ibm.com;
+ helo=mx0b-001b2d01.pphosted.com
+X-Spam_score_int: -19
+X-Spam_score: -2.0
+X-Spam_bar: --
+X-Spam_report: (-2.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.001,
+ RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Reply-to:  Zenghui Yu <yuzenghui@huawei.com>
-From:  Zenghui Yu via <qemu-arm@nongnu.org>
-X-TUID: dviQeruM4+h5
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: V0yGxGaiKhKt
 
-On 2022/5/7 2:02, Richard Henderson wrote:
+On 8/3/22 04:52, Cédric Le Goater wrote:
+> On 8/3/22 04:32, Iris Chen wrote:
+>> From: Iris Chen <irischenlj@fb.com>
+> 
+> A commit log telling us about this new device would be good to have.
+> 
+> 
+>> Signed-off-by: Iris Chen <irischenlj@fb.com>
+>> ---
+>>   configs/devices/arm-softmmu/default.mak |   1 +
+>>   hw/arm/Kconfig                          |   5 +
+>>   hw/tpm/Kconfig                          |   5 +
+>>   hw/tpm/meson.build                      |   1 +
+>>   hw/tpm/tpm_tis_spi.c                    | 311 ++++++++++++++++++++++++
+>>   include/sysemu/tpm.h                    |   3 +
+>>   6 files changed, 326 insertions(+)
+>>   create mode 100644 hw/tpm/tpm_tis_spi.c
+>>
+>> diff --git a/configs/devices/arm-softmmu/default.mak 
+>> b/configs/devices/arm-softmmu/default.mak
+>> index 6985a25377..80d2841568 100644
+>> --- a/configs/devices/arm-softmmu/default.mak
+>> +++ b/configs/devices/arm-softmmu/default.mak
+>> @@ -42,3 +42,4 @@ CONFIG_FSL_IMX6UL=y
+>>   CONFIG_SEMIHOSTING=y
+>>   CONFIG_ARM_COMPATIBLE_SEMIHOSTING=y
+>>   CONFIG_ALLWINNER_H3=y
+>> +CONFIG_FBOBMC_AST=y
+> 
+> I don't think this extra config is useful for now
+> 
+>> diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
+>> index 15fa79afd3..193decaec1 100644
+>> --- a/hw/arm/Kconfig
+>> +++ b/hw/arm/Kconfig
+>> @@ -458,6 +458,11 @@ config ASPEED_SOC
+>>       select PMBUS
+>>       select MAX31785
+>> +config FBOBMC_AST
+>> +    bool
+>> +    select ASPEED_SOC
+>> +    select TPM_TIS_SPI
+>> +
+>>   config MPS2
+>>       bool
+>>       imply I2C_DEVICES
+>> diff --git a/hw/tpm/Kconfig b/hw/tpm/Kconfig
+>> index 29e82f3c92..370a43f045 100644
+>> --- a/hw/tpm/Kconfig
+>> +++ b/hw/tpm/Kconfig
+>> @@ -8,6 +8,11 @@ config TPM_TIS_SYSBUS
+>>       depends on TPM
+>>       select TPM_TIS
+>> +config TPM_TIS_SPI
+>> +    bool
+>> +    depends on TPM
+>> +    select TPM_TIS
+>> +
+>>   config TPM_TIS
+>>       bool
+>>       depends on TPM
+>> diff --git a/hw/tpm/meson.build b/hw/tpm/meson.build
+>> index 1c68d81d6a..1a057f4e36 100644
+>> --- a/hw/tpm/meson.build
+>> +++ b/hw/tpm/meson.build
+>> @@ -2,6 +2,7 @@ softmmu_ss.add(when: 'CONFIG_TPM_TIS', if_true: 
+>> files('tpm_tis_common.c'))
+>>   softmmu_ss.add(when: 'CONFIG_TPM_TIS_ISA', if_true: 
+>> files('tpm_tis_isa.c'))
+>>   softmmu_ss.add(when: 'CONFIG_TPM_TIS_SYSBUS', if_true: 
+>> files('tpm_tis_sysbus.c'))
+>>   softmmu_ss.add(when: 'CONFIG_TPM_CRB', if_true: files('tpm_crb.c'))
+>> +softmmu_ss.add(when: 'CONFIG_TPM_TIS_SPI', if_true: 
+>> files('tpm_tis_spi.c'))
+>>   specific_ss.add(when: ['CONFIG_SOFTMMU', 'CONFIG_TPM_TIS'], if_true: 
+>> files('tpm_ppi.c'))
+>>   specific_ss.add(when: ['CONFIG_SOFTMMU', 'CONFIG_TPM_CRB'], if_true: 
+>> files('tpm_ppi.c'))
+>> diff --git a/hw/tpm/tpm_tis_spi.c b/hw/tpm/tpm_tis_spi.c
+>> new file mode 100644
+>> index 0000000000..c98ddcfddb
+>> --- /dev/null
+>> +++ b/hw/tpm/tpm_tis_spi.c
+>> @@ -0,0 +1,311 @@
+>> +#include "qemu/osdep.h"
+>> +#include "hw/qdev-properties.h"
+>> +#include "migration/vmstate.h"
+>> +#include "hw/acpi/tpm.h"
+>> +#include "tpm_prop.h"
+>> +#include "tpm_tis.h"
+>> +#include "qom/object.h"
+>> +#include "hw/ssi/ssi.h"
+>> +#include "hw/ssi/spi_gpio.h"
+>> +
+>> +#define TPM_TIS_SPI_ADDR_BYTES 3
+>> +#define SPI_WRITE 0
+>> +
+>> +typedef enum {
+>> +    TIS_SPI_PKT_STATE_DEACTIVATED = 0,
+>> +    TIS_SPI_PKT_STATE_START,
+>> +    TIS_SPI_PKT_STATE_ADDRESS,
+>> +    TIS_SPI_PKT_STATE_DATA_WR,
+>> +    TIS_SPI_PKT_STATE_DATA_RD,
+>> +    TIS_SPI_PKT_STATE_DONE,
+>> +} TpmTisSpiPktState;
+>> +
+>> +union TpmTisRWSizeByte {
+>> +    uint8_t byte;
+>> +    struct {
+>> +        uint8_t data_expected_size:6;
+>> +        uint8_t resv:1;
+>> +        uint8_t rwflag:1;
+>> +    };
+>> +};
+>> +
+>> +union TpmTisSpiHwAddr {
+>> +    hwaddr addr;
+>> +    uint8_t bytes[sizeof(hwaddr)];
+>> +};
+>> +
+>> +union TpmTisSpiData {
+>> +    uint32_t data;
+>> +    uint8_t bytes[64];
+>> +};
+>> +
+>> +struct TpmTisSpiState {
+>> +    /*< private >*/
+>> +    SSIPeripheral parent_obj;
+>> +
+>> +    /*< public >*/
+>> +    TPMState tpm_state; /* not a QOM object */
+>> +    TpmTisSpiPktState tpm_tis_spi_state;
+>> +
+>> +    union TpmTisRWSizeByte first_byte;
+>> +    union TpmTisSpiHwAddr addr;
+>> +    union TpmTisSpiData data;
+> 
+> Are these device registers ? I am not sure the unions are very useful.
 
-> +static void aarch64_neoverse_n1_initfn(Object *obj)
-> +{
-> +    ARMCPU *cpu = ARM_CPU(obj);
-> +
-> +    cpu->dtb_compatible = "arm,neoverse-n1";
-> +    set_feature(&cpu->env, ARM_FEATURE_V8);
-> +    set_feature(&cpu->env, ARM_FEATURE_NEON);
-> +    set_feature(&cpu->env, ARM_FEATURE_GENERIC_TIMER);
-> +    set_feature(&cpu->env, ARM_FEATURE_AARCH64);
-> +    set_feature(&cpu->env, ARM_FEATURE_CBAR_RO);
-> +    set_feature(&cpu->env, ARM_FEATURE_EL2);
-> +    set_feature(&cpu->env, ARM_FEATURE_EL3);
-> +    set_feature(&cpu->env, ARM_FEATURE_PMU);
-> +
-> +    /* Ordered by B2.4 AArch64 registers by functional group */
-> +    cpu->clidr = 0x82000023;
-> +    cpu->ctr = 0x8444c004;
-> +    cpu->dcz_blocksize = 4;
-> +    cpu->isar.id_aa64dfr0  = 0x0000000110305408ull;
 
-The r4p1 TRM says that the Neoverse N1 core supports SPE (the value
-of ID_AA64DFR0.PMSVer is 0b0001) but do we really support SPE
-emulation in QEMU?
+> 
+>> +    uint32_t data_size;
+>> +    uint8_t data_idx;
+>> +    uint8_t addr_idx; >> +};
 
-The guest immediately received an unexpected exception (with EC==0,
-at EFI stage) when I tried to boot it using something like:
+I suppose that these registers will also have to be stored as part of 
+the device state (for suspend/resume).
 
-/path/to/qemu-system-aarch64 \
--M virt,gic-version=3,virtualization=on \
--cpu neoverse-n1 -accel tcg \
--bios QEMU_EFI.fd [...]
+>> +/*
+>> + * Pre-reading logic for transfer:
+>> + * This is to fix the transaction between reading and writing.
+>> + * The first byte is arbitrarily inserted so we need to
+>> + * shift the all the output bytes (timeline) one byte right.
 
-and QEMU shouted that "read access to unsupported AArch64 system
-register op0:3 op1:0 crn:9 crm:10 op2:7", which told us that the
-guest attempted to read the PMBIDR_EL1 register.
+-> shift all the output bytes (timeline) one byte to the right
 
-Zenghui
+>> +
+>> +static void tpm_tis_spi_realizefn(SSIPeripheral *ss, Error **errp)
+>> +{
+>> +    TpmTisSpiState *sbdev = TPM_TIS_SPI(ss);
+>> +
+>> +    if (!tpm_find()) {
+>> +        error_setg(errp, "at most one TPM device is permitted");
+>> +        return;
+>> +    }
+>> +
+>> +    if (!sbdev->tpm_state.be_driver) {
+>> +        error_setg(errp, "'tpmdev' property is required");
+>> +        return;
+>> +    }
+>> +
+>> +    DeviceState *spi_gpio = qdev_find_recursive(sysbus_get_default(),
+>> +                                                TYPE_SPI_GPIO);
+>> +    qdev_connect_gpio_out_named(spi_gpio,
+>> +                                "SPI_CS_out", 0,
+>> +                                qdev_get_gpio_in_named(DEVICE(ss),
+>> +                                SSI_GPIO_CS, 0));
+> Typically, this part is done at the machine/board level because it
+> has knowledge of all devices but it is possible with the TPM devices?
+> 
+> How do you invoke QEMU ?
+
+I you could extend the documentation for how to start QEMU with this 
+device I think that would be very helpful: docs/specs/tpm.rst.
+
+Did you get Linux to work with it? Poeple are particularly interested in 
+getting Windows 11 on ARM to use a TPM 2: 
+https://github.com/stefanberger/swtpm/issues/493
+
+Thanks,
+
+    Stefan
+
+> 
+> Thanks,
+> 
+> C.
+> 
+>> +}
+>> +
+>> +static void tpm_tis_spi_class_init(ObjectClass *klass, void *data)
+>> +{
+>> +    DeviceClass *dc = DEVICE_CLASS(klass);
+>> +    SSIPeripheralClass *k = SSI_PERIPHERAL_CLASS(klass);
+>> +    TPMIfClass *tc = TPM_IF_CLASS(klass);
+>> +
+>> +    device_class_set_props(dc, tpm_tis_spi_properties);
+>> +    k->realize = tpm_tis_spi_realizefn;
+>> +    k->transfer = tpm_tis_spi_transfer8_ex;
+>> +    k->set_cs = tpm_tis_spi_cs;
+>> +    k->cs_polarity = SSI_CS_LOW;
+>> +
+>> +    dc->vmsd  = &vmstate_tpm_tis_spi;
+>> +    tc->model = TPM_MODEL_TPM_TIS;
+>> +    dc->user_creatable = true;
+>> +    dc->reset = tpm_tis_spi_reset;
+>> +    tc->request_completed = tpm_tis_spi_request_completed;
+>> +    tc->get_version = tpm_tis_spi_get_tpm_version;
+>> +    set_bit(DEVICE_CATEGORY_MISC, dc->categories);
+>> +}
+>> +
+>> +static const TypeInfo tpm_tis_spi_info = {
+>> +    .name = TYPE_TPM_TIS_SPI,
+>> +    .parent = TYPE_SSI_PERIPHERAL,
+>> +    .instance_size = sizeof(TpmTisSpiState),
+>> +    .class_size = sizeof(TpmTisSpiClass),
+>> +    .class_init  = tpm_tis_spi_class_init,
+>> +    .interfaces = (InterfaceInfo[]) {
+>> +        { TYPE_TPM_IF },
+>> +        { }
+>> +    }
+>> +};
+>> +
+>> +static void tpm_tis_spi_register(void)
+>> +{
+>> +    type_register_static(&tpm_tis_spi_info);
+>> +}
+>> +
+>> +type_init(tpm_tis_spi_register)
+>> diff --git a/include/sysemu/tpm.h b/include/sysemu/tpm.h
+>> index fb40e30ff6..6a6b311e47 100644
+>> --- a/include/sysemu/tpm.h
+>> +++ b/include/sysemu/tpm.h
+>> @@ -46,6 +46,7 @@ struct TPMIfClass {
+>>   #define TYPE_TPM_TIS_ISA            "tpm-tis"
+>>   #define TYPE_TPM_TIS_SYSBUS         "tpm-tis-device"
+>> +#define TYPE_TPM_TIS_SPI            "tpm-tis-spi-device"
+>>   #define TYPE_TPM_CRB                "tpm-crb"
+>>   #define TYPE_TPM_SPAPR              "tpm-spapr"
+>> @@ -53,6 +54,8 @@ struct TPMIfClass {
+>>       object_dynamic_cast(OBJECT(chr), TYPE_TPM_TIS_ISA)
+>>   #define TPM_IS_TIS_SYSBUS(chr)                      \
+>>       object_dynamic_cast(OBJECT(chr), TYPE_TPM_TIS_SYSBUS)
+>> +#define TPM_IS_TIS_SPI(chr)                      \
+>> +    object_dynamic_cast(OBJECT(chr), TYPE_TPM_TIS_SPI)
+>>   #define TPM_IS_CRB(chr)                             \
+>>       object_dynamic_cast(OBJECT(chr), TYPE_TPM_CRB)
+>>   #define TPM_IS_SPAPR(chr)                           \
+> 

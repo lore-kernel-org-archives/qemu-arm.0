@@ -1,100 +1,99 @@
-Received: by 2002:a17:906:3b11:0:0:0:0 with SMTP id g17csp147989ejf;
-        Wed, 10 Aug 2022 15:03:26 -0700 (PDT)
-X-Google-Smtp-Source: AA6agR7z/wQ2PXu8yWM517RQ78hvVBz7NfMJV4PzjknDXRBdpA27NKzqRzOUXs/XBTGhri00G/fp
-X-Received: by 2002:a05:6214:2268:b0:476:c04e:65f6 with SMTP id gs8-20020a056214226800b00476c04e65f6mr25802645qvb.21.1660169006390;
-        Wed, 10 Aug 2022 15:03:26 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1660169006; cv=none;
+Received: by 2002:a17:906:3b11:0:0:0:0 with SMTP id g17csp148295ejf;
+        Wed, 10 Aug 2022 15:03:55 -0700 (PDT)
+X-Google-Smtp-Source: AA6agR7UY/Zg0N5L3YekTMEDiIng0aYF27C2Knc8RM680DY5KJm9BxOlFYbiglMKTaSDnZjzy+6m
+X-Received: by 2002:ac8:5755:0:b0:343:560d:f4e1 with SMTP id 21-20020ac85755000000b00343560df4e1mr5053829qtx.630.1660169035470;
+        Wed, 10 Aug 2022 15:03:55 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1660169035; cv=none;
         d=google.com; s=arc-20160816;
-        b=SiSybGSdfdLzOL4zPiJar4aris/zcI0HyYWRj0bL+Rv9YCzf6DvUUc2mqReW9U0o31
-         dRpgY1AuqIyFW2fx0ZqH5rGfLguONurxFJTkIcsoHG/JB4v9qXMlqRP9OixfZqaVNisY
-         bi0am0heOtrU1h0fEeKPbnuumqOcbYn/6asPF88vqhv80IRSoPYI0WVfY6zbZvAoCAmg
-         oEBGCF4wkkBbCNSFMtYszdzrw7fOCcmoglqLMoF048RT5sThphoL44EZIes3ig1mgt0I
-         HMadQ2cjLghEpl46UGhbPc4hWnXYvgQ29m2xNgxb/CX8YC6xkBkflMkJsgwrS82dUAmE
-         udiQ==
+        b=1DGRWN9h4y6tBpal7cMmFnQoz2vk3DYeYBpig5ucUNbKjqBdMshmfwYEmGmc9TB8Bc
+         Nv/iP/b8tT9nzgexGLEnY8EuAcCKNG8Z/fY3EX/yxmOZad673eAfd4NqkYvHN+tZ+p0v
+         T+HwcvpMpVg5uUAiN2/vASdDXrRcUE+Z3cPc7GAflltmfd4Kcjw2GNtPgR5ZCEPcN9d0
+         IRpOCLHiXqwcfx8CnkQl7NG6OgCSxfuX/Ut0nmKtN3NDGvq5ElX4tg7OFgF7K0ZTEuf6
+         PUnv4FJW1ZJpaom+ZnU5TJ3fIwFqVZEi5INCOANpYLUiyk7z/gvL//zkK6XGM513kEn/
+         Zvcg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
          :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=pAItA24cGn5njCvLy4RqHVxTj0RMwJKQAyccAsUwZyw=;
-        b=OJSLEtus90nuecnh5Xd0fP+Z28ayFxxCMkHml6VPoVHJNsfnLs14wqdAxblIywxJqn
-         eicCFPLAWkksixA/jFDTiG2MUAW28b55ruUQkf+HdLYTXPmyfM50R5cUrTbDAFJlAqvG
-         gkmUhWGIJ5YMh2edS9BopqPiRrZ9is7RFARYkadem5KVFG3rt2vd8YenoibGKam30mnP
-         ZlkO1U4a0tllCwTXo4XG/sekR6m9cKZl4Yb8gzzvcBbXcBdirv/3sUiFOrtuxO2DnlJf
-         XF315U9tKLCqrEBW7sShyPEV9I47NSBh3XzeTQ0Qlx7kkxOHX0gqh02ovlg4AztpasHK
-         qIWQ==
+        bh=DNpQsd4YfubZwp4IIujnt4Jmh8W5T0Br99zl1yh92OQ=;
+        b=m3XHjC5b45tI+3/qVqgHkEQnNrSByaOd9q6toVPq2546DzJKmAzdN/4UC/tIfhp4Tx
+         rgzsVgctqY+t80NsA6sKmvmpPo4t1m/Er6+dVMCMRogOnKiKM7vhx/79V0tSY4jxF6oE
+         M/N6bm1hNhw50Zwlk+mzc4BePYdxgeAY7WdUBOcIDkEAbZeB2cRjfJ+p95MODaByeMnz
+         QdFs1l51ND/Dq3FLD8/zCLH6R1Gn9H7M3iN+bZTVSGlWy7apbfr3+uCTsiI6HIp44IuK
+         th7MVGOjJD/Yci7YlWWQMmWFh6XLg7Z1LxIf9uQ9VDngk1bO+ozqa2YtTbp7MuiUiTMB
+         HiCA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=pUFsC7x5;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b="DtCXwE/8";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id jn15-20020ad45def000000b0047422f6dbb4si482719qvb.435.2022.08.10.15.03.26
+        by mx.google.com with ESMTPS id x27-20020ac84d5b000000b00342f6181dafsi511441qtv.397.2022.08.10.15.03.55
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 10 Aug 2022 15:03:26 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 10 Aug 2022 15:03:55 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=pUFsC7x5;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b="DtCXwE/8";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:42742 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:42576 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1oLtnR-0008My-R0
-	for alex.bennee@linaro.org; Wed, 10 Aug 2022 18:03:25 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49844)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1oLtnu-0008Fk-Uy
+	for alex.bennee@linaro.org; Wed, 10 Aug 2022 18:03:54 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:49360)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1oLtnD-0008Jh-92; Wed, 10 Aug 2022 18:03:11 -0400
-Received: from mail-pf1-x430.google.com ([2607:f8b0:4864:20::430]:34519)
+ id 1oLtjj-0005jy-HB; Wed, 10 Aug 2022 17:59:36 -0400
+Received: from mail-pg1-x52f.google.com ([2607:f8b0:4864:20::52f]:40704)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1oLtnB-0003Xh-AY; Wed, 10 Aug 2022 18:03:10 -0400
-Received: by mail-pf1-x430.google.com with SMTP id f28so14922312pfk.1;
- Wed, 10 Aug 2022 15:03:08 -0700 (PDT)
+ id 1oLtjh-0002tb-VY; Wed, 10 Aug 2022 17:59:35 -0400
+Received: by mail-pg1-x52f.google.com with SMTP id f11so15505102pgj.7;
+ Wed, 10 Aug 2022 14:59:32 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:from:to:cc;
- bh=pAItA24cGn5njCvLy4RqHVxTj0RMwJKQAyccAsUwZyw=;
- b=pUFsC7x5pVBNnxC0fZVrCWQUSpFnQAyTy99K3NZDthO2pNNSByjcM8iRJDoY5/5+uT
- icaQxIJztYe0tbwAxbZYmdeBIROVSUwoTh4biByifi50K60NY2r+ZD0pXMvwLLG4OWjW
- SI6HNIjEOXDhmyRlPwwUr9fJDTMbfGpvOWydae5DVqtxYGr8duSRUKLStSNA3VydOuK/
- GbrCg1VjWqbqHTbPrQAiXICfIzmEdKOWEaAL/jtp8DbmT0Vd1OFuQacmtAUwdKWTHp+d
- 8bvU1wgbmNxufhuyqPdxbuNBWHHTAB1Gam1wmd70l0jfsF0zKirW5JURtH5kO+p66JUx
- HAqQ==
+ bh=DNpQsd4YfubZwp4IIujnt4Jmh8W5T0Br99zl1yh92OQ=;
+ b=DtCXwE/8qa14r0TP1qUH07FikkYJj3y71cKMbzne0lkJgNJha2LFvq2uSMiRweNJTe
+ a9yR7uFZ81wx6JfCV9ILXKgi+SyzSR+ZPXP76I65s1f0T6rwVjtNRczPMYDTTzAT7fgc
+ 3CNs6D7gwRqMuObzfRtaUO5lthBSCXRXDB2zt6C/+fuXPrcK7MDttM8czG+72sISkf9n
+ ERIwf9YU5aLrHlzdjlqcsw8sSfptCx5wDD6Zrs6DartZ/dY9YzwgNRJ4Zdsc7ey8lnyJ
+ osHy6hpDR62/C170mXEliUBQkq39H6fnwf9RNQa9tu+v7NcCgR3bRUT1jDhXAmZ64pMH
+ v+Vg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:x-gm-message-state:from:to:cc;
- bh=pAItA24cGn5njCvLy4RqHVxTj0RMwJKQAyccAsUwZyw=;
- b=oE2XblOmmsE/Ro+GvpksCMzt1N28nAF4aAxgC9s5gL85D68/p6fNP9WF5zfvLG1tnx
- hb+D2VDhVa5ORToe5rG3NLE8kJGQ1jWnqdwBkMvrpXmdduwlVpSCAEKu1OitC4CEZKW9
- rFSwIcXmekXK9SuH3Ayc/aM3x6jEox/raRVobDIqtX/tbp0SW24rPPEyKOCj2KOSYYqZ
- w1B0otYZu0kutDZM72EA4JDjXHWAY2FAW28u2UR3HGPBa/XxI5TJ0p2NIMHJg9lfcSyS
- Sy1cl1rHk3zee0N36eNrGban5swwnJNXT5wUxATDNfM1vKTwwOGknU8yGaS5bujqQ1lE
- TDjg==
-X-Gm-Message-State: ACgBeo0VRd+HbwNem7Dwk1efBJhTEi0cMfuJ0Ov7Oc9rvrVGkBVsjESQ
- fzdREh4Mj9Xl5EeadwkVI8HdpH/7LzttGRKK86o=
-X-Received: by 2002:a05:6a00:88e:b0:52c:65a3:fdb4 with SMTP id
- q14-20020a056a00088e00b0052c65a3fdb4mr28531273pfj.83.1660168986964; Wed, 10
- Aug 2022 15:03:06 -0700 (PDT)
+ bh=DNpQsd4YfubZwp4IIujnt4Jmh8W5T0Br99zl1yh92OQ=;
+ b=pu66C9yewTFOnJ8+1W+Jktkj3fLhuJxPS2J5HL2mqY+aY9sQbM30r6i8UGwIHFslr8
+ VjWgzm1Fv2EPGSHOVGnRP5fhYU/j6RaI0UBbx6FE/LE6VGnLYr1iOKxnX5jPQKHC9PhS
+ l8TJEu7vWsUegUzEOb6A+F0yPn278FlDSF2igXk/rQvDkKH1S6J7n5QAfdiDUBiiqypD
+ rt30DkeP6lCPqAZa6HVHiUvQlw7LIQaHJ7YJ7HbJw5ufq1RSkcyihEBffqvWTclF1bcs
+ 2DJDbrDQdAHVrnRalE4qE0v1VVRh3xKwxeKYUjdlPTYA1JQcha1AJIrrgvF5LvwTJBhe
+ kXwg==
+X-Gm-Message-State: ACgBeo0hI0kGfCt8dbWA9xADTvGo9EOBtCRXixVet+Qxl3BOrZuPMkN3
+ 0iGXNliGtos5nMMAabX6E+D85Sb7BJ+txkGVP2Y=
+X-Received: by 2002:a63:f14c:0:b0:41a:b83d:a636 with SMTP id
+ o12-20020a63f14c000000b0041ab83da636mr24443983pgk.361.1660168771843; Wed, 10
+ Aug 2022 14:59:31 -0700 (PDT)
 MIME-Version: 1.0
 References: <20220809185639.750345-1-qemu@ben.fluff.org>
- <20220809185639.750345-4-qemu@ben.fluff.org>
-In-Reply-To: <20220809185639.750345-4-qemu@ben.fluff.org>
+ <20220809185639.750345-5-qemu@ben.fluff.org>
+In-Reply-To: <20220809185639.750345-5-qemu@ben.fluff.org>
 From: Alistair Francis <alistair23@gmail.com>
-Date: Thu, 11 Aug 2022 08:02:40 +1000
-Message-ID: <CAKmqyKNBr3M0RuXhOW_hrfWz7GOHpE+HKp9m6HaityV7a_qJ9g@mail.gmail.com>
-Subject: Re: [PATCH v4 3/6] hw/riscv: use qemu_fdt_setprop_strings() for
- string arrays
+Date: Thu, 11 Aug 2022 07:59:05 +1000
+Message-ID: <CAKmqyKM9Ws8bG4xDDNQr8A3XcafpA5RqQXwLUhsozZTzuD50Tg@mail.gmail.com>
+Subject: Re: [PATCH v4 4/6] hw/core: use qemu_fdt_setprop_strings()
 To: Ben Dooks <qemu@ben.fluff.org>
 Cc: "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
  "open list:RISC-V" <qemu-riscv@nongnu.org>, 
  Alistair Francis <Alistair.Francis@wdc.com>,
  Peter Maydell <peter.maydell@linaro.org>, qemu-arm <qemu-arm@nongnu.org>
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::430;
- envelope-from=alistair23@gmail.com; helo=mail-pf1-x430.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::52f;
+ envelope-from=alistair23@gmail.com; helo=mail-pg1-x52f.google.com
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
@@ -104,24 +103,25 @@ X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: x79VHaPCSGWR
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: P+EwGJjDBD5y
 
-On Wed, Aug 10, 2022 at 4:58 AM Ben Dooks <qemu@ben.fluff.org> wrote:
+On Wed, Aug 10, 2022 at 5:13 AM Ben Dooks <qemu@ben.fluff.org> wrote:
 >
-> Use the qemu_fdt_setprop_strings() in sifve_u.c to simplify the code.
+> Change to using the qemu_fdt_setprop_strings() helper in
+> hw/core code.
 >
 > Signed-off-by: Ben Dooks <qemu@ben.fluff.org>
 
@@ -130,167 +130,37 @@ Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
 Alistair
 
 > ---
->  hw/riscv/sifive_u.c | 18 +++++-------------
->  hw/riscv/spike.c    |  7 ++-----
->  hw/riscv/virt.c     | 32 ++++++++------------------------
->  3 files changed, 15 insertions(+), 42 deletions(-)
+>  hw/core/guest-loader.c | 13 +++++--------
+>  1 file changed, 5 insertions(+), 8 deletions(-)
 >
-> diff --git a/hw/riscv/sifive_u.c b/hw/riscv/sifive_u.c
-> index e4c814a3ea..dc112a253a 100644
-> --- a/hw/riscv/sifive_u.c
-> +++ b/hw/riscv/sifive_u.c
-> @@ -103,13 +103,6 @@ static void create_fdt(SiFiveUState *s, const MemMapEntry *memmap,
->      char *nodename;
->      uint32_t plic_phandle, prci_phandle, gpio_phandle, phandle = 1;
->      uint32_t hfclk_phandle, rtcclk_phandle, phy_phandle;
-> -    static const char * const ethclk_names[2] = { "pclk", "hclk" };
-> -    static const char * const clint_compat[2] = {
-> -        "sifive,clint0", "riscv,clint0"
-> -    };
-> -    static const char * const plic_compat[2] = {
-> -        "sifive,plic-1.0.0", "riscv,plic0"
-> -    };
+> diff --git a/hw/core/guest-loader.c b/hw/core/guest-loader.c
+> index c61ebc4144..7b8e32e06f 100644
+> --- a/hw/core/guest-loader.c
+> +++ b/hw/core/guest-loader.c
+> @@ -56,18 +56,15 @@ static void loader_insert_platform_data(GuestLoaderState *s, int size,
+>      qemu_fdt_setprop(fdt, node, "reg", &reg_attr, sizeof(reg_attr));
 >
->      if (ms->dtb) {
->          fdt = s->fdt = load_device_tree(ms->dtb, &s->fdt_size);
-> @@ -221,11 +214,11 @@ static void create_fdt(SiFiveUState *s, const MemMapEntry *memmap,
->      nodename = g_strdup_printf("/soc/clint@%lx",
->          (long)memmap[SIFIVE_U_DEV_CLINT].base);
->      qemu_fdt_add_subnode(fdt, nodename);
-> -    qemu_fdt_setprop_string_array(fdt, nodename, "compatible",
-> -        (char **)&clint_compat, ARRAY_SIZE(clint_compat));
->      qemu_fdt_setprop_cells(fdt, nodename, "reg",
->          0x0, memmap[SIFIVE_U_DEV_CLINT].base,
->          0x0, memmap[SIFIVE_U_DEV_CLINT].size);
-> +    qemu_fdt_setprop_strings(fdt, nodename, "compatible",
-> +                             "sifive,clint0", "riscv,clint0");
->      qemu_fdt_setprop(fdt, nodename, "interrupts-extended",
->          cells, ms->smp.cpus * sizeof(uint32_t) * 4);
->      g_free(cells);
-> @@ -279,8 +272,8 @@ static void create_fdt(SiFiveUState *s, const MemMapEntry *memmap,
->          (long)memmap[SIFIVE_U_DEV_PLIC].base);
->      qemu_fdt_add_subnode(fdt, nodename);
->      qemu_fdt_setprop_cell(fdt, nodename, "#interrupt-cells", 1);
-> -    qemu_fdt_setprop_string_array(fdt, nodename, "compatible",
-> -        (char **)&plic_compat, ARRAY_SIZE(plic_compat));
-> +    qemu_fdt_setprop_strings(fdt, nodename, "compatbile",
-> +                             "sifive,plic-1.0.0", "riscv,plic0");
->      qemu_fdt_setprop(fdt, nodename, "interrupt-controller", NULL, 0);
->      qemu_fdt_setprop(fdt, nodename, "interrupts-extended",
->          cells, (ms->smp.cpus * 4 - 2) * sizeof(uint32_t));
-> @@ -426,8 +419,7 @@ static void create_fdt(SiFiveUState *s, const MemMapEntry *memmap,
->      qemu_fdt_setprop_cell(fdt, nodename, "interrupts", SIFIVE_U_GEM_IRQ);
->      qemu_fdt_setprop_cells(fdt, nodename, "clocks",
->          prci_phandle, PRCI_CLK_GEMGXLPLL, prci_phandle, PRCI_CLK_GEMGXLPLL);
-> -    qemu_fdt_setprop_string_array(fdt, nodename, "clock-names",
-> -        (char **)&ethclk_names, ARRAY_SIZE(ethclk_names));
-> +    qemu_fdt_setprop_strings(fdt, nodename, "clock-names", "pclk", "hclk");
->      qemu_fdt_setprop(fdt, nodename, "local-mac-address",
->          s->soc.gem.conf.macaddr.a, ETH_ALEN);
->      qemu_fdt_setprop_cell(fdt, nodename, "#address-cells", 1);
-> diff --git a/hw/riscv/spike.c b/hw/riscv/spike.c
-> index e41b6aa9f0..aa895779cd 100644
-> --- a/hw/riscv/spike.c
-> +++ b/hw/riscv/spike.c
-> @@ -59,9 +59,6 @@ static void create_fdt(SpikeState *s, const MemMapEntry *memmap,
->      uint32_t cpu_phandle, intc_phandle, phandle = 1;
->      char *name, *mem_name, *clint_name, *clust_name;
->      char *core_name, *cpu_name, *intc_name;
-> -    static const char * const clint_compat[2] = {
-> -        "sifive,clint0", "riscv,clint0"
-> -    };
+>      if (s->kernel) {
+> -        const char *compat[2] = { "multiboot,module", "multiboot,kernel" };
+> -        qemu_fdt_setprop_string_array(fdt, node, "compatible",
+> -                                      (char **) &compat,
+> -                                      ARRAY_SIZE(compat));
+> +        qemu_fdt_setprop_strings(fdt, node, "compatible",
+> +                                 "multiboot,module", "multiboot,kernel");
+> +
+>          if (s->args) {
+>              qemu_fdt_setprop_string(fdt, node, "bootargs", s->args);
+>          }
+>      } else if (s->initrd) {
+> -        const char *compat[2] = { "multiboot,module", "multiboot,ramdisk" };
+> -        qemu_fdt_setprop_string_array(fdt, node, "compatible",
+> -                                      (char **) &compat,
+> -                                      ARRAY_SIZE(compat));
+> +        qemu_fdt_setprop_strings(fdt, node, "compatible",
+> +                                 "multiboot,module", "multiboot,ramdisk");
+>      }
+>  }
 >
->      fdt = s->fdt = create_device_tree(&s->fdt_size);
->      if (!fdt) {
-> @@ -159,8 +156,8 @@ static void create_fdt(SpikeState *s, const MemMapEntry *memmap,
->              (memmap[SPIKE_CLINT].size * socket);
->          clint_name = g_strdup_printf("/soc/clint@%lx", clint_addr);
->          qemu_fdt_add_subnode(fdt, clint_name);
-> -        qemu_fdt_setprop_string_array(fdt, clint_name, "compatible",
-> -            (char **)&clint_compat, ARRAY_SIZE(clint_compat));
-> +        qemu_fdt_setprop_strings(fdt, clint_name, "compatible",
-> +                                 "sifive,clint0", "riscv,clint0");
->          qemu_fdt_setprop_cells(fdt, clint_name, "reg",
->              0x0, clint_addr, 0x0, memmap[SPIKE_CLINT].size);
->          qemu_fdt_setprop(fdt, clint_name, "interrupts-extended",
-> diff --git a/hw/riscv/virt.c b/hw/riscv/virt.c
-> index bc424dd2f5..c6aaa611a6 100644
-> --- a/hw/riscv/virt.c
-> +++ b/hw/riscv/virt.c
-> @@ -261,11 +261,8 @@ static void create_fdt_socket_cpus(RISCVVirtState *s, int socket,
->              intc_phandles[cpu]);
->          if (riscv_feature(&s->soc[socket].harts[cpu].env,
->                            RISCV_FEATURE_AIA)) {
-> -            static const char * const compat[2] = {
-> -                "riscv,cpu-intc-aia", "riscv,cpu-intc"
-> -            };
-> -            qemu_fdt_setprop_string_array(mc->fdt, intc_name, "compatible",
-> -                                      (char **)&compat, ARRAY_SIZE(compat));
-> +            qemu_fdt_setprop_strings(mc->fdt, intc_name, "compatible",
-> +                                     "riscv,cpu-intc-aia", "riscv,cpu-intc");
->          } else {
->              qemu_fdt_setprop_string(mc->fdt, intc_name, "compatible",
->                  "riscv,cpu-intc");
-> @@ -310,9 +307,6 @@ static void create_fdt_socket_clint(RISCVVirtState *s,
->      uint32_t *clint_cells;
->      unsigned long clint_addr;
->      MachineState *mc = MACHINE(s);
-> -    static const char * const clint_compat[2] = {
-> -        "sifive,clint0", "riscv,clint0"
-> -    };
->
->      clint_cells = g_new0(uint32_t, s->soc[socket].num_harts * 4);
->
-> @@ -326,9 +320,8 @@ static void create_fdt_socket_clint(RISCVVirtState *s,
->      clint_addr = memmap[VIRT_CLINT].base + (memmap[VIRT_CLINT].size * socket);
->      clint_name = g_strdup_printf("/soc/clint@%lx", clint_addr);
->      qemu_fdt_add_subnode(mc->fdt, clint_name);
-> -    qemu_fdt_setprop_string_array(mc->fdt, clint_name, "compatible",
-> -                                  (char **)&clint_compat,
-> -                                  ARRAY_SIZE(clint_compat));
-> +    qemu_fdt_setprop_strings(mc->fdt, clint_name, "compatible",
-> +                             "sifive,clint0", "riscv,clint0");
->      qemu_fdt_setprop_cells(mc->fdt, clint_name, "reg",
->          0x0, clint_addr, 0x0, memmap[VIRT_CLINT].size);
->      qemu_fdt_setprop(mc->fdt, clint_name, "interrupts-extended",
-> @@ -437,9 +430,6 @@ static void create_fdt_socket_plic(RISCVVirtState *s,
->      uint32_t *plic_cells;
->      unsigned long plic_addr;
->      MachineState *mc = MACHINE(s);
-> -    static const char * const plic_compat[2] = {
-> -        "sifive,plic-1.0.0", "riscv,plic0"
-> -    };
->
->      if (kvm_enabled()) {
->          plic_cells = g_new0(uint32_t, s->soc[socket].num_harts * 2);
-> @@ -465,9 +455,8 @@ static void create_fdt_socket_plic(RISCVVirtState *s,
->      qemu_fdt_add_subnode(mc->fdt, plic_name);
->      qemu_fdt_setprop_cell(mc->fdt, plic_name,
->          "#interrupt-cells", FDT_PLIC_INT_CELLS);
-> -    qemu_fdt_setprop_string_array(mc->fdt, plic_name, "compatible",
-> -                                  (char **)&plic_compat,
-> -                                  ARRAY_SIZE(plic_compat));
-> +    qemu_fdt_setprop_strings(mc->fdt, plic_name, "compatible",
-> +                             "sifive,plic-1.0.0", "riscv,plic0");
->      qemu_fdt_setprop(mc->fdt, plic_name, "interrupt-controller", NULL, 0);
->      qemu_fdt_setprop(mc->fdt, plic_name, "interrupts-extended",
->          plic_cells, s->soc[socket].num_harts * sizeof(uint32_t) * 4);
-> @@ -881,13 +870,8 @@ static void create_fdt_reset(RISCVVirtState *s, const MemMapEntry *memmap,
->      name = g_strdup_printf("/soc/test@%lx",
->          (long)memmap[VIRT_TEST].base);
->      qemu_fdt_add_subnode(mc->fdt, name);
-> -    {
-> -        static const char * const compat[3] = {
-> -            "sifive,test1", "sifive,test0", "syscon"
-> -        };
-> -        qemu_fdt_setprop_string_array(mc->fdt, name, "compatible",
-> -                                      (char **)&compat, ARRAY_SIZE(compat));
-> -    }
-> +    qemu_fdt_setprop_strings(mc->fdt, name, "compatible",
-> +                             "sifive,test1", "sifive,test0", "syscon");
->      qemu_fdt_setprop_cells(mc->fdt, name, "reg",
->          0x0, memmap[VIRT_TEST].base, 0x0, memmap[VIRT_TEST].size);
->      qemu_fdt_setprop_cell(mc->fdt, name, "phandle", test_phandle);
 > --
 > 2.35.1
 >

@@ -1,146 +1,106 @@
-Received: by 2002:a17:906:3b11:0:0:0:0 with SMTP id g17csp3813469ejf;
-        Wed, 10 Aug 2022 07:39:23 -0700 (PDT)
-X-Google-Smtp-Source: AA6agR7xB8qpvcDUOm0qS/hGibOfa2AIfTaMU6adj0IoGZwEa78Sp/DVNm3b3t/xXswEuilKOkHr
-X-Received: by 2002:a37:903:0:b0:6b9:402a:e395 with SMTP id 3-20020a370903000000b006b9402ae395mr13074717qkj.4.1660142362763;
-        Wed, 10 Aug 2022 07:39:22 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1660142362; cv=none;
+Received: by 2002:a17:906:3b11:0:0:0:0 with SMTP id g17csp8856ejf;
+        Wed, 10 Aug 2022 09:49:00 -0700 (PDT)
+X-Google-Smtp-Source: AA6agR4pZww11HAXGQMYBQ5u2SxlC4JtG654+XDa7e7ZoG6aH3JYfATCdWVx2qG2z8aWpzsixXT0
+X-Received: by 2002:ac8:5843:0:b0:31e:f855:5a7a with SMTP id h3-20020ac85843000000b0031ef8555a7amr25410928qth.307.1660150140388;
+        Wed, 10 Aug 2022 09:49:00 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1660150140; cv=none;
         d=google.com; s=arc-20160816;
-        b=zaSNxhviMpfyx3E3CUux09mraF+2eXjpus07OaAmVqgXy3GE2GBNQiMYTWN46+fOam
-         RKrzEiyq+CdTxOoWIEDaXVEuyOrC2yExK+Lifj9033TvWKjAtwX/ytlwK325Zvj/Cmlu
-         hkSjTKF+FwwKWpImd7MEFGvRS2MP2VaFfpEJcPLHh9K8KNnH/k0CTXZeEBSTOpi5VwKu
-         GJzyVirqQIyD1Lp8puq5u/VIsem+qJmub3yz4PkUwPC4R3D88pLkYflbpJU1JnBbPyT6
-         /Run2MjCM5vrcuXZOXsgVcPysjGq9x8+BUbKaXOlwJjxXlN6LWywFmbbu8/boMMcWx8y
-         MqUQ==
+        b=MwjlVJqBUr4BjKnGq1lOOBnj55qR1NssnqFOBVyDAGJEe1MR0B4igjDAVXtxNJHC87
+         gEJy3RaCQNc0sNJLLl/0oitCNC//BX/GzQsjEin4zOvv8sGCJGaarAM3o3ZOIVkPL+cH
+         XIaT4NKdf1QIKVMaRGOIyA+oqgkMguMTZHnGZRZ0vhdzVwycRaCtChMONJbtTiPa+LQK
+         FQO3NL+b9Dp9ZebzioloBS1alCDHBcfydCLtmuJ7xKneNqMMsrIpkppkG88BwEPzQ8WQ
+         k9oOLrZDIYY/K3kNkF3ZsOEPV38wEiBeHB0MulEq8zOMKz+k68LIgX6yktBCNg0XsCAT
+         U8Ew==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:cc:to:content-language:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=A8h4g01n62DRhvQzYbW3g3Wl7zcqdfeiFcBmaZRXSiE=;
-        b=fZHtPL36vJJcvKcIIUiQFOLUPyWai16lccTpMcSlSnCs1b3Pqi8MmLdplwfkl4ZUPQ
-         SHz9qBY2GBVSq8CUiIa91bFycQkIHZMuUWyn1PMmGockHTgG67ff7aVft+Vt41/s2CY1
-         2sgMwq56DwB4pzkEixvoysDKTFpawXcNjYRNz6tz7gACcHNca1NOtSRDhAHRPGoSV4DS
-         Csrv+wDkMzkrhBsmKhUm1Oi19YUXwMnI4okSjX7hYFfK9uR4uyYLcpTCxOUP5aJ/cTjI
-         xapd+RG33ZlKbAEJLzo49TJ4UqshdAhSj7Qjzgmk2TdegS359vN6HNlCGDCa8PMeqEkb
-         K8rw==
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=tNqpNUl55dURjmOoDIIeRz/Oe+X/6cGqsZptlEpA/Tc=;
+        b=qFlhR+o0BWaj17auH/jWdsALf9KEVf4R5O/mBrgjrpBfH3pmQPYhagi63DGOzCszW5
+         c9EN4VN3IuAC6kYNlhnNWzwARAT7hAz1Q7eIS/5B9O2F2sZ+JXamzcmgkCJOJs1RTE4X
+         wmuFoD2+vAX4cLyTlTtWml5Pkk7cQ/TpwwqfBcMkgLzvzhIDdHOOtDNuk6dtrZiNStXr
+         o8vLdGN/jmJ7zz8KoRV7Ow4D3aeqGngNdC5y13lc1ZmGnuC6n7A6JzPOc/B6r+3C6j05
+         0XMHPLk9QtwFCNdXw5OKdAB+wRdz18zKCwAHJlsQxcPdkwENh/1p/kRZiUPZr3zK+ZQr
+         oEQw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@ibm.com header.s=pp1 header.b=FW5pxaqZ;
+       dkim=pass header.i=@linaro.org header.s=google header.b=xCvnu+6v;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=ibm.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 10-20020a0562140d0a00b004748cf3c9ecsi9482240qvh.504.2022.08.10.07.39.22
+        by mx.google.com with ESMTPS id t13-20020a05622a180d00b00342f651ce5asi141083qtc.540.2022.08.10.09.49.00
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 10 Aug 2022 07:39:22 -0700 (PDT)
+        Wed, 10 Aug 2022 09:49:00 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@ibm.com header.s=pp1 header.b=FW5pxaqZ;
+       dkim=pass header.i=@linaro.org header.s=google header.b=xCvnu+6v;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=ibm.com
-Received: from localhost ([::1]:56482 helo=lists1p.gnu.org)
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:49684 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1oLmri-0004oa-8S
-	for alex.bennee@linaro.org; Wed, 10 Aug 2022 10:39:22 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45270)
+	id 1oLot9-0007Fg-Oq
+	for alex.bennee@linaro.org; Wed, 10 Aug 2022 12:48:59 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:48176)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <stefanb@linux.ibm.com>)
- id 1oLmrP-0004kd-Ou; Wed, 10 Aug 2022 10:39:04 -0400
-Received: from mx0b-001b2d01.pphosted.com ([148.163.158.5]:23158)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <stefanb@linux.ibm.com>)
- id 1oLmrM-0002Ef-Md; Wed, 10 Aug 2022 10:39:03 -0400
-Received: from pps.filterd (m0127361.ppops.net [127.0.0.1])
- by mx0a-001b2d01.pphosted.com (8.17.1.5/8.17.1.5) with ESMTP id 27AEViAK020688;
- Wed, 10 Aug 2022 14:38:50 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com;
- h=message-id : date :
- mime-version : subject : to : cc : references : from : in-reply-to :
- content-type : content-transfer-encoding; s=pp1;
- bh=A8h4g01n62DRhvQzYbW3g3Wl7zcqdfeiFcBmaZRXSiE=;
- b=FW5pxaqZlR1F+4u40RIF0BbHyIj2j2tlvXNgHDPJj815qxWgVD/BNQ20gtrIzjhB6JB0
- Kt6R1gjCSB4sgf4y0VZyQJOnXttPCpbbWwJztBcTMpqH+OFzd93T5gr4PLBnbrfijxMd
- N9UeNacq2KLwTxjrP566h0u6CNxNVQ9BhBVK02Zb+IcIP20T3ZB+27JVCu9CXnUvG+6u
- tn17MCEHMERuz6NFHAml+HYHQiPThlPqzhrQ+BYtgO4yFvhqPxiupkPjT9XgE315+/Zo
- UgfWMgJz4CrVimrxMG7fA2kzg8jMC9m1k6+roav8Hl/aBhHmvIeQDaprOGGfIS+LgxbU 7A== 
-Received: from pps.reinject (localhost [127.0.0.1])
- by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3hv3fg5pgq-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Wed, 10 Aug 2022 14:38:50 +0000
-Received: from m0127361.ppops.net (m0127361.ppops.net [127.0.0.1])
- by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 27AEI0A6028027;
- Wed, 10 Aug 2022 14:38:46 GMT
-Received: from ppma03dal.us.ibm.com (b.bd.3ea9.ip4.static.sl-reverse.com
- [169.62.189.11])
- by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3hv3fg5p12-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Wed, 10 Aug 2022 14:38:46 +0000
-Received: from pps.filterd (ppma03dal.us.ibm.com [127.0.0.1])
- by ppma03dal.us.ibm.com (8.16.1.2/8.16.1.2) with SMTP id 27AEVQSK005349;
- Wed, 10 Aug 2022 14:38:16 GMT
-Received: from b03cxnp08027.gho.boulder.ibm.com
- (b03cxnp08027.gho.boulder.ibm.com [9.17.130.19])
- by ppma03dal.us.ibm.com with ESMTP id 3huwvke8rq-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Wed, 10 Aug 2022 14:38:16 +0000
-Received: from b03ledav001.gho.boulder.ibm.com
- (b03ledav001.gho.boulder.ibm.com [9.17.130.232])
- by b03cxnp08027.gho.boulder.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
- 27AEcFm218612622
- (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Wed, 10 Aug 2022 14:38:15 GMT
-Received: from b03ledav001.gho.boulder.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 7CA5D6E04E;
- Wed, 10 Aug 2022 14:38:15 +0000 (GMT)
-Received: from b03ledav001.gho.boulder.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 70CDA6E050;
- Wed, 10 Aug 2022 14:38:14 +0000 (GMT)
-Received: from [9.47.158.152] (unknown [9.47.158.152])
- by b03ledav001.gho.boulder.ibm.com (Postfix) with ESMTP;
- Wed, 10 Aug 2022 14:38:14 +0000 (GMT)
-Message-ID: <b09c7104-d329-2185-9ab8-042b12309668@linux.ibm.com>
-Date: Wed, 10 Aug 2022 10:38:13 -0400
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1oLosr-0007Dy-TC
+ for qemu-arm@nongnu.org; Wed, 10 Aug 2022 12:48:41 -0400
+Received: from mail-yb1-xb29.google.com ([2607:f8b0:4864:20::b29]:35487)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1oLosq-00067e-42
+ for qemu-arm@nongnu.org; Wed, 10 Aug 2022 12:48:41 -0400
+Received: by mail-yb1-xb29.google.com with SMTP id n8so24231964yba.2
+ for <qemu-arm@nongnu.org>; Wed, 10 Aug 2022 09:48:39 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc;
+ bh=tNqpNUl55dURjmOoDIIeRz/Oe+X/6cGqsZptlEpA/Tc=;
+ b=xCvnu+6v0rd7a9YmUbz4ldOZDtZgYfDlb1W5JwwXYJKjjPGyXTJoXkDD8dlZMRDuS1
+ WZ12Kt/ee4Iy8dmj8aRYtbMyRHlklo7S7nHKdTduuB5ebhVVMQ375KwaroasivElg6zI
+ qu3x+BXM1kffq1280pooOWJIeCjjZgTy4vgMqqVYZLrg2TOMUk9OdZvZSXlFBMhTvAzS
+ 0+RGC+fEppuSJaosfoKbpZhnxS3v2QWYR1YFmWtVq3tk4pur5/Ll5Lfk8JolXHBglzWB
+ aUr+M6w4idy45kuS9vVJR7Kf2f4UV1f20mNfIStpcJ/6CNeJ+KGd6h8TavV4cMdQSJyH
+ YUVg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc;
+ bh=tNqpNUl55dURjmOoDIIeRz/Oe+X/6cGqsZptlEpA/Tc=;
+ b=yXICTYeoImds+qTnviVh5BJKsauN+f9r4C2bN6b3oc1X28uc1IbfWEdi6+LQV9IdCE
+ faQKW0LOonSh+HHE8GVH8rZjvA6PBPMAZ9R8/BIUo171KroorikEvkH8bYxrZ301/JEX
+ 7EW2DsQhTWVj1A9CgTk3KbnTa/8vPnRuIWVuRqQKGG28yTMYhm5QLV8ZuhDxZm/GMHAM
+ e7EWKEOiLBw/NuxcR2zkNLIfVj68sosgzl1xiRRjEDkhz1oHR/rHMYB3uwwSfpmxYcyv
+ vCT7P/3Vdfuriphch5SI7oiAnBmFFXHRPihaJvR7Z6CPdhGL5ekE8HJ846CYHCK9kSC8
+ pf0w==
+X-Gm-Message-State: ACgBeo2wnGpWSMrNy50mAOYOU41KJkHB88Q1pxCioxhYlB9Fmlu25Ye7
+ YMqRTDZn57snuT6sSQ+s7BV0P8JgpTraW//ChRlkaQ==
+X-Received: by 2002:a5b:7c6:0:b0:670:6ba6:d046 with SMTP id
+ t6-20020a5b07c6000000b006706ba6d046mr25359730ybq.140.1660150118827; Wed, 10
+ Aug 2022 09:48:38 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.12.0
-Subject: Re: [RFC 1/1] hw: tpmtisspi: add SPI support to QEMU TPM
- implementation
-Content-Language: en-US
-To: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>,
- Iris Chen <irischenlj@gmail.com>
-Cc: irischenlj@fb.com, peter@pjd.dev, pdel@fb.com, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org, patrick@stwcx.xyz, alistair@alistair23.me,
- kwolf@redhat.com, hreitz@redhat.com, peter.maydell@linaro.org,
- andrew@aj.id.au, joel@jms.id.au, thuth@redhat.com, lvivier@redhat.com,
- pbonzini@redhat.com, qemu-block@nongnu.org, dz4list@gmail.com
-References: <20220803023241.63739-1-irischenlj@gmail.com>
- <20220803023241.63739-2-irischenlj@gmail.com>
- <36a20515-461d-0f27-3be8-a4edd099165a@kaod.org>
-From: Stefan Berger <stefanb@linux.ibm.com>
-In-Reply-To: <36a20515-461d-0f27-3be8-a4edd099165a@kaod.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-TM-AS-GCONF: 00
-X-Proofpoint-ORIG-GUID: 4YM5H_xk6FfdASQgZUOF1hgm_wrx3nDO
-X-Proofpoint-GUID: nklUcGatdC3pimg8aKk4zjT7xmc65pSS
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.205,Aquarius:18.0.883,Hydra:6.0.517,FMLib:17.11.122.1
- definitions=2022-08-10_08,2022-08-10_01,2022-06-22_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- adultscore=0 mlxscore=0
- impostorscore=0 phishscore=0 mlxlogscore=999 bulkscore=0 clxscore=1015
- lowpriorityscore=0 suspectscore=0 spamscore=0 malwarescore=0
- priorityscore=1501 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2207270000 definitions=main-2208100046
-Received-SPF: pass client-ip=148.163.158.5; envelope-from=stefanb@linux.ibm.com;
- helo=mx0b-001b2d01.pphosted.com
-X-Spam_score_int: -19
-X-Spam_score: -2.0
+References: <20220506180242.216785-1-richard.henderson@linaro.org>
+ <20220506180242.216785-25-richard.henderson@linaro.org>
+ <1d915529-cd32-82b3-42ad-4d202d3590d8@huawei.com>
+In-Reply-To: <1d915529-cd32-82b3-42ad-4d202d3590d8@huawei.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Wed, 10 Aug 2022 17:47:58 +0100
+Message-ID: <CAFEAcA-FQ3W78c=kwzZZ=wCuCbPWO=9vxG7ge4wnEZR6qBGHVA@mail.gmail.com>
+Subject: Re: [PATCH v6 24/24] target/arm: Define neoverse-n1
+To: Zenghui Yu <yuzenghui@huawei.com>
+Cc: Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org, 
+ qemu-arm@nongnu.org
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b29;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yb1-xb29.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.001,
- RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -156,49 +116,29 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: cOzG5/k2eKkY
+X-TUID: hxYaYRoeVfMr
 
+On Wed, 10 Aug 2022 at 14:14, Zenghui Yu <yuzenghui@huawei.com> wrote:
+> The r4p1 TRM says that the Neoverse N1 core supports SPE (the value
+> of ID_AA64DFR0.PMSVer is 0b0001) but do we really support SPE
+> emulation in QEMU?
+>
+> The guest immediately received an unexpected exception (with EC==0,
+> at EFI stage) when I tried to boot it using something like:
+>
+> /path/to/qemu-system-aarch64 \
+> -M virt,gic-version=3,virtualization=on \
+> -cpu neoverse-n1 -accel tcg \
+> -bios QEMU_EFI.fd [...]
+>
+> and QEMU shouted that "read access to unsupported AArch64 system
+> register op0:3 op1:0 crn:9 crm:10 op2:7", which told us that the
+> guest attempted to read the PMBIDR_EL1 register.
 
+No, we don't emulate SPE. We should probably not advertise it
+(we might do a no-op implementation eventually).
 
-On 8/3/22 04:52, Cédric Le Goater wrote:
-> On 8/3/22 04:32, Iris Chen wrote:
->> From: Iris Chen <irischenlj@fb.com>
-> 
+What guest is this ?
 
->> +++ b/hw/tpm/tpm_tis_spi.c
->> @@ -0,0 +1,311 @@
->> +#include "qemu/osdep.h"
->> +#include "hw/qdev-properties.h"
->> +#include "migration/vmstate.h"
->> +#include "hw/acpi/tpm.h"
->> +#include "tpm_prop.h"
->> +#include "tpm_tis.h"
->> +#include "qom/object.h"
->> +#include "hw/ssi/ssi.h"
->> +#include "hw/ssi/spi_gpio.h"
->> +
->> +#define TPM_TIS_SPI_ADDR_BYTES 3
->> +#define SPI_WRITE 0
->> +
->> +typedef enum {
->> +    TIS_SPI_PKT_STATE_DEACTIVATED = 0,
->> +    TIS_SPI_PKT_STATE_START,
->> +    TIS_SPI_PKT_STATE_ADDRESS,
->> +    TIS_SPI_PKT_STATE_DATA_WR,
->> +    TIS_SPI_PKT_STATE_DATA_RD,
->> +    TIS_SPI_PKT_STATE_DONE,
->> +} TpmTisSpiPktState;
->> +
->> +union TpmTisRWSizeByte {
->> +    uint8_t byte;
->> +    struct {
->> +        uint8_t data_expected_size:6;
->> +        uint8_t resv:1;
->> +        uint8_t rwflag:1;
->> +    };
-
-I think it would be better to define a mask for the number of bytes and 
-a flag for read/write rather than using bitfields. It should better for 
-portability.
-
-    Stefan
+thanks
+-- PMM

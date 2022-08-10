@@ -1,111 +1,91 @@
-Received: by 2002:a17:906:3b11:0:0:0:0 with SMTP id g17csp3746260ejf;
-        Wed, 10 Aug 2022 05:46:35 -0700 (PDT)
-X-Google-Smtp-Source: AA6agR7Vv+w9MbTx6MPYydqTnQDDXvGBLbKhI0IOEMaBiGZoIoEz7fKNHwGVT9S5tQafzZuIWZRV
-X-Received: by 2002:a37:45d1:0:b0:6b8:62a6:ba6b with SMTP id s200-20020a3745d1000000b006b862a6ba6bmr20399168qka.406.1660135594845;
-        Wed, 10 Aug 2022 05:46:34 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1660135594; cv=none;
+Received: by 2002:a17:906:3b11:0:0:0:0 with SMTP id g17csp3777590ejf;
+        Wed, 10 Aug 2022 06:40:46 -0700 (PDT)
+X-Google-Smtp-Source: AA6agR4OAKcp+U8Ipgkp0aXHMCLxQgNvgRKYKGZnhrxq1itCpxykojumk/JDmifv4AkcBqq8IGv8
+X-Received: by 2002:a05:6214:21cc:b0:474:86ae:bb91 with SMTP id d12-20020a05621421cc00b0047486aebb91mr23365594qvh.110.1660138846113;
+        Wed, 10 Aug 2022 06:40:46 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1660138846; cv=none;
         d=google.com; s=arc-20160816;
-        b=ulQzD8rvjXr6/vWQ4+vL846LcD+fYdNtCztI3FT/v+oec/QNp2vKaNFkVjPe8GbQXV
-         RTHlccAyTORujLKikTbaa+cd5RQKk5uMckOyZNvcMoiH5EQ/fQ9E2hpvqI194hzL15BR
-         XIMtb27BeT0YaPBZqzoLHDQODs6i+z7TQ4jhklmwXwCmYzYY03jJBXHrihR4gB4bDrQX
-         0B3PeguPdWLPo7jRTqoYeKS1RlJdIT6D0oHwU5kYxAPKwCRi21cngD1TQVeVqM6apOFt
-         YgJ3T89l5+Jrq2CBJ54xKMehQ9RfdNQTYfIudEttlBLZ8WoiEP+1ovOatjUkASncUxSN
-         noRQ==
+        b=JCSeYqIU6/m16rySzCpg2FOwUkozvsY0ltZGj6viyovGwjSig3QFA1OM9OjtaoFA8i
+         wLjsp3x/EN6n43/hvyraKOUY+QBp1n1WlIjV23DXL+kXOJm4O7g2utbGO6GjVPVKzkNn
+         jRrbxI+ZgrtJxdvYTvkYMCxy1FsW7h/ihF1z/eIE2zLjs8KMZhLc1IoBV/qWTJjB5Ueb
+         G5ysi2Iet6w+5QcU3QlcHp7McKbpVU7CGxjGr0+JO5yDlWpvySyos/0hFPhaEeEaQi2r
+         gtKwbpmQuHCs7pQuG+4R60wPjD6/T7O9q+3pJzf3+rnEHvbm8iyvfa8gqMj4HSOSfrsq
+         iTDA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :dkim-signature;
-        bh=lCNEjUUOL+K7ivB3Bsp5vnl640q/xKKPyEI979dGd7E=;
-        b=HWWUDnbI+cHPThwOLTjKUoyq4AX6eIppDm49WuDrqM/+WvAJ9gCPS2cni6v9HK+gFV
-         3pIJAzqkLYTqcFxRqQReQBoooD1CHylOWIjNqgdV5RdBnonlZjDIaGNluuKtfiMSuA6U
-         Vtw9+nelibK/0XqvJIL6Lh2/pn+s2TcOWud/3VFRPVWc/E3sbYfqetqYac4QXmXmWVw4
-         RBjbodjQaHRL7UX8MoAKolZRuRWkcUQivvOsbREgitzLFw6mDZRDOJeX0GV3iTE2GIar
-         ts2+5MCUQMrxgVfb+TzoZ8E/fYp1M3OINqj3JPWWr+p+Nqnj5bpA5fOisOovdouW9zCN
-         PRGA==
+        h=from:reply-to:sender:errors-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:references:cc:to:subject;
+        bh=50PMH3gLkuHREUWdjRITMpEviNLIJVqMWWnjONDsyM8=;
+        b=Lx4QRVltfyJOaopmku6n22BopyBWUtksEImE/9fdQgMgU3yOQ/0rBR0tV/7Gc7Rytm
+         W3ddNl7/IrDI4uw8OZLL/BeJhicLIpvbrZdWKTIMVvq/8UkjpzTMvLYVyXlEeN0UFH0K
+         ZI1uXdlmd43BP93c3BV+pyK/uIsrFiA0zVEs+MVjdinevGAVQMXGuS41GnJ01thSWBiJ
+         SQ41EDdcahrWyBc5Lk67WNzyhk8T6xze7opE6a3hCgToedcqVo7b3DUI6xmSkp1LViNb
+         uC1JHc/dNFRiMZOjh3+V/bPNsWk+7vgDeIjdrtPYZCZaCRTu1yCNe/ZCP/vqA2Qcl9+b
+         MdrQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@ventanamicro.com header.s=google header.b=Q5muJBqA;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 16-20020ac856f0000000b0033da79267d5si10146922qtu.327.2022.08.10.05.46.34
+        by mx.google.com with ESMTPS id e11-20020ac84b4b000000b0034216c65bfasi676949qts.232.2022.08.10.06.40.45
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 10 Aug 2022 05:46:34 -0700 (PDT)
+        Wed, 10 Aug 2022 06:40:46 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@ventanamicro.com header.s=google header.b=Q5muJBqA;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:47220 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+Received: from localhost ([::1]:38560 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1oLl6Y-0006jH-9y
-	for alex.bennee@linaro.org; Wed, 10 Aug 2022 08:46:34 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:43322)
+	id 1oLlwz-0005rZ-Kj
+	for alex.bennee@linaro.org; Wed, 10 Aug 2022 09:40:45 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:52644)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ajones@ventanamicro.com>)
- id 1oLkwU-0001je-Jx
- for qemu-arm@nongnu.org; Wed, 10 Aug 2022 08:36:11 -0400
-Received: from mail-wr1-x431.google.com ([2a00:1450:4864:20::431]:42883)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <ajones@ventanamicro.com>)
- id 1oLkwT-0004VX-14
- for qemu-arm@nongnu.org; Wed, 10 Aug 2022 08:36:10 -0400
-Received: by mail-wr1-x431.google.com with SMTP id z12so17584438wrs.9
- for <qemu-arm@nongnu.org>; Wed, 10 Aug 2022 05:36:08 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=ventanamicro.com; s=google;
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:to:from:date:from:to:cc;
- bh=lCNEjUUOL+K7ivB3Bsp5vnl640q/xKKPyEI979dGd7E=;
- b=Q5muJBqAiD0aaRMbnHFR3339WU1V+ABAzWuc9rnhShfqfe2qNBFBmJaLZQe9PIHXN+
- xsvESEEbf9woe7sXaa9E278h0rfmGRZW08inLt0WanABBE7hzi0w0huivhFesv4LZhab
- C/AI0QDiXj/rffzqO4Qfsbjm2adPrAycIoshbTGjkw+/7HJGxaB5/SUPkAnPgsXPfL/t
- GVRb35ERN7YRXNlDAZr1jZVFBNRCbUQP3Df6sfcb2QwipZz5c8o2ugwRmBUqmqwDZ3O3
- uo0bk1NU2qRrxKTx66H23+88YclFDRd6wrCz0x9i7gqkYyKnLbUHsoMMyNldlTy4wxVY
- FBwg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:to:from:date:x-gm-message-state:from:to:cc;
- bh=lCNEjUUOL+K7ivB3Bsp5vnl640q/xKKPyEI979dGd7E=;
- b=eEztiRHRh5I6nrTrm+Lt/KVE7p2ZDZxR9a30H5XMAvK+CmKz4HmwmFtWaEbzuUbKSn
- D5rlNgXpzs8pbHlF33TMYd1KWobce3SoJMieOtNZjdez9WHO4dUYSMPP8cyiHqiFJNHQ
- nN6/79MRCLaLZK4BOGRrx2j4uyBbPvR1Jvo11ddF2QgFvbNKTOpxan/McftUgBHjsXzA
- MoHHGc4Dzaou1qZO1UcrkbAPMZykFZZ3axCzVCsfd/hKzg05EDGBEJ2uXgsGak4+XnY8
- /qZMhzmlBDC8o6Oew74DffkxM6ubhpL0h4i5LG64VAfjAl8u4I00AkYM6x/GN+XNbqgr
- GvyQ==
-X-Gm-Message-State: ACgBeo1ovVwLQb9Ko7BQp1jmr7zxWAZMYIztL6/QjZOJkHn/KDgQDya5
- /DpjtVN8/24SDixT4AY1KEm5cA==
-X-Received: by 2002:a05:6000:985:b0:223:8131:e1f4 with SMTP id
- by5-20020a056000098500b002238131e1f4mr1500759wrb.65.1660134967617; 
- Wed, 10 Aug 2022 05:36:07 -0700 (PDT)
-Received: from localhost (cst2-173-67.cust.vodafone.cz. [31.30.173.67])
- by smtp.gmail.com with ESMTPSA id
- j42-20020a05600c1c2a00b003a30c3d0c9csm2628871wms.8.2022.08.10.05.36.06
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 10 Aug 2022 05:36:06 -0700 (PDT)
-Date: Wed, 10 Aug 2022 14:36:05 +0200
-From: Andrew Jones <ajones@ventanamicro.com>
-To: Ben Dooks <qemu@ben.fluff.org>
-Cc: qemu-devel@nongnu.org, qemu-riscv@nongnu.org, Alistair.Francis@wdc.com,
- peter.maydell@linaro.org, qemu-arm@nongnu.org
-Subject: Re: [PATCH v4 5/6] hw/mips: use qemu_fdt_setprop_strings()
-Message-ID: <20220810123605.rsn4vjduxxyd7zln@kamzik>
-References: <20220809185639.750345-1-qemu@ben.fluff.org>
- <20220809185639.750345-6-qemu@ben.fluff.org>
+ (Exim 4.90_1) (envelope-from <yuzenghui@huawei.com>)
+ id 1oLlWJ-0006Nu-Gc; Wed, 10 Aug 2022 09:13:11 -0400
+Received: from szxga03-in.huawei.com ([45.249.212.189]:5168)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <yuzenghui@huawei.com>)
+ id 1oLlWF-0003Cn-A4; Wed, 10 Aug 2022 09:13:10 -0400
+Received: from dggemv703-chm.china.huawei.com (unknown [172.30.72.53])
+ by szxga03-in.huawei.com (SkyGuard) with ESMTP id 4M2r1G50hTzGpHW;
+ Wed, 10 Aug 2022 21:11:30 +0800 (CST)
+Received: from kwepemm600007.china.huawei.com (7.193.23.208) by
+ dggemv703-chm.china.huawei.com (10.3.19.46) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2375.24; Wed, 10 Aug 2022 21:12:55 +0800
+Received: from [10.174.185.179] (10.174.185.179) by
+ kwepemm600007.china.huawei.com (7.193.23.208) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2375.24; Wed, 10 Aug 2022 21:12:55 +0800
+Subject: Re: [PATCH v6 24/24] target/arm: Define neoverse-n1
+To: Richard Henderson <richard.henderson@linaro.org>
+CC: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>, Peter Maydell
+ <peter.maydell@linaro.org>
+References: <20220506180242.216785-1-richard.henderson@linaro.org>
+ <20220506180242.216785-25-richard.henderson@linaro.org>
+Message-ID: <1d915529-cd32-82b3-42ad-4d202d3590d8@huawei.com>
+Date: Wed, 10 Aug 2022 21:12:54 +0800
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:68.0) Gecko/20100101
+ Thunderbird/68.9.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20220809185639.750345-6-qemu@ben.fluff.org>
-Received-SPF: pass client-ip=2a00:1450:4864:20::431;
- envelope-from=ajones@ventanamicro.com; helo=mail-wr1-x431.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+In-Reply-To: <20220506180242.216785-25-richard.henderson@linaro.org>
+Content-Type: text/plain; charset="utf-8"; format=flowed
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [10.174.185.179]
+X-ClientProxiedBy: dggems705-chm.china.huawei.com (10.3.19.182) To
+ kwepemm600007.china.huawei.com (7.193.23.208)
+X-CFilter-Loop: Reflected
+Received-SPF: pass client-ip=45.249.212.189; envelope-from=yuzenghui@huawei.com;
+ helo=szxga03-in.huawei.com
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_MED=-2.3, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -121,46 +101,46 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: YpmesAXFT6R6
+Reply-to:  Zenghui Yu <yuzenghui@huawei.com>
+From:  Zenghui Yu via <qemu-arm@nongnu.org>
+X-TUID: dviQeruM4+h5
 
-On Tue, Aug 09, 2022 at 07:56:39PM +0100, Ben Dooks wrote:
-> Change to using qemu_fdt_setprop_strings() helper in hw/mips.
-> 
-> Signed-off-by: Ben Dooks <qemu@ben.fluff.org>
-> Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
-> ---
->  hw/mips/boston.c | 8 ++------
->  1 file changed, 2 insertions(+), 6 deletions(-)
-> 
-> diff --git a/hw/mips/boston.c b/hw/mips/boston.c
-> index d2ab9da1a0..759f6daafe 100644
-> --- a/hw/mips/boston.c
-> +++ b/hw/mips/boston.c
-> @@ -515,9 +515,6 @@ static const void *create_fdt(BostonState *s,
->      MachineState *mc = s->mach;
->      uint32_t platreg_ph, gic_ph, clk_ph;
->      char *name, *gic_name, *platreg_name, *stdout_name;
-> -    static const char * const syscon_compat[2] = {
-> -        "img,boston-platform-regs", "syscon"
-> -    };
->  
->      fdt = create_device_tree(dt_size);
->      if (!fdt) {
-> @@ -608,9 +605,8 @@ static const void *create_fdt(BostonState *s,
->      platreg_name = g_strdup_printf("/soc/system-controller@%" HWADDR_PRIx,
->                                     memmap[BOSTON_PLATREG].base);
->      qemu_fdt_add_subnode(fdt, platreg_name);
-> -    qemu_fdt_setprop_string_array(fdt, platreg_name, "compatible",
-> -                                 (char **)&syscon_compat,
-> -                                 ARRAY_SIZE(syscon_compat));
-> +    qemu_fdt_setprop_strings(fdt, platreg_name, "compatible",
-> +                             "img,boston-platform-regs", "syscon");
->      qemu_fdt_setprop_cells(fdt, platreg_name, "reg",
->                             memmap[BOSTON_PLATREG].base,
->                             memmap[BOSTON_PLATREG].size);
-> -- 
-> 2.35.1
-> 
->
+On 2022/5/7 2:02, Richard Henderson wrote:
 
-Reviewed-by: Andrew Jones <ajones@ventanamicro.com>
+> +static void aarch64_neoverse_n1_initfn(Object *obj)
+> +{
+> +    ARMCPU *cpu = ARM_CPU(obj);
+> +
+> +    cpu->dtb_compatible = "arm,neoverse-n1";
+> +    set_feature(&cpu->env, ARM_FEATURE_V8);
+> +    set_feature(&cpu->env, ARM_FEATURE_NEON);
+> +    set_feature(&cpu->env, ARM_FEATURE_GENERIC_TIMER);
+> +    set_feature(&cpu->env, ARM_FEATURE_AARCH64);
+> +    set_feature(&cpu->env, ARM_FEATURE_CBAR_RO);
+> +    set_feature(&cpu->env, ARM_FEATURE_EL2);
+> +    set_feature(&cpu->env, ARM_FEATURE_EL3);
+> +    set_feature(&cpu->env, ARM_FEATURE_PMU);
+> +
+> +    /* Ordered by B2.4 AArch64 registers by functional group */
+> +    cpu->clidr = 0x82000023;
+> +    cpu->ctr = 0x8444c004;
+> +    cpu->dcz_blocksize = 4;
+> +    cpu->isar.id_aa64dfr0  = 0x0000000110305408ull;
+
+The r4p1 TRM says that the Neoverse N1 core supports SPE (the value
+of ID_AA64DFR0.PMSVer is 0b0001) but do we really support SPE
+emulation in QEMU?
+
+The guest immediately received an unexpected exception (with EC==0,
+at EFI stage) when I tried to boot it using something like:
+
+/path/to/qemu-system-aarch64 \
+-M virt,gic-version=3,virtualization=on \
+-cpu neoverse-n1 -accel tcg \
+-bios QEMU_EFI.fd [...]
+
+and QEMU shouted that "read access to unsupported AArch64 system
+register op0:3 op1:0 crn:9 crm:10 op2:7", which told us that the
+guest attempted to read the PMBIDR_EL1 register.
+
+Zenghui

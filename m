@@ -1,90 +1,101 @@
-Received: by 2002:a17:906:3b11:0:0:0:0 with SMTP id g17csp3232189ejf;
-        Tue, 9 Aug 2022 09:27:40 -0700 (PDT)
-X-Google-Smtp-Source: AA6agR6RmFobTu50umsW14mCSTRrvGtV5udbIU54afCA8WIHRRzshgrSy04OsvvM5OtNQ7geWCTT
-X-Received: by 2002:a05:622a:44:b0:31e:d448:8746 with SMTP id y4-20020a05622a004400b0031ed4488746mr20740684qtw.664.1660062460298;
-        Tue, 09 Aug 2022 09:27:40 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1660062460; cv=none;
+Received: by 2002:a17:906:3b11:0:0:0:0 with SMTP id g17csp3554364ejf;
+        Tue, 9 Aug 2022 22:51:51 -0700 (PDT)
+X-Google-Smtp-Source: AA6agR4QIq2OeAbJwdJxf1Sf4Gv6zVopdNe5RFhu7aafm6ksvENJXVULeWIaUZ60zGmrUIatKipB
+X-Received: by 2002:a05:620a:d8c:b0:6a7:91a4:2669 with SMTP id q12-20020a05620a0d8c00b006a791a42669mr19839155qkl.269.1660110711293;
+        Tue, 09 Aug 2022 22:51:51 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1660110711; cv=none;
         d=google.com; s=arc-20160816;
-        b=VcIA8GN9Ytn0/FYaQBVjz1vFcvf7wpFBrwMM2QyEK4TcVEvveO7NL9cfKvEsEDpQCr
-         b6sVL7MIpBqls39vgi3gKOCuU7Z+RrGuGC2dY5al1g3JXOZdA4CnsTEbTY0+6N8TCErE
-         f8p+piLDQb0OZhEM9GmnDGGEcsyoDMk0sHrj+YGhmtPYT/VNVpoTMPe3hAFmL3yFCHmq
-         iCmoPR6YiwtU5BoaSA8JEnJJX35owo463LQpU5sOXJO9JRGHKEF+103zv2NAq4qZoF/E
-         n6GHVFWVhbrbq+GdvFj9lw6dZjU0dJd4tZXB1WNi15m1tKVXyZVztyqfrg1mlc6xaYOU
-         Djgw==
+        b=iHO9qtYwhD+w45gu3nJNg1RM+GBGGogt0ZZLStuXigVD0Ne3DIMEL/KlqYjgYLtkau
+         1oN3q9HGPLYQGl0X01RM1ke8L5On/80GobhrFTt1pWoXUcgEE6zvmkoiDZjjuuHf34u9
+         g0aOXyLSqKwZ2FCcWceuhbVk54RSRCijTeppELd1zMHgXSbzy7NbHyib40049z750A5O
+         i4MewTQhUgQTlSkfJS70YjwuDVb+kxo5hHuqqwoXhiwsXfPso9+QQTHSGIrQi/iizgGw
+         jub42A6om80Hz9yLX2TFU+vt91KkApQHcqbZU8CBNZXEycFdR+6PjAL2kBY2ZrCnahCp
+         bAjQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=from:reply-to:sender:errors-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:subject:cc:to:date;
-        bh=iW8cwznzCWOE+04b4ohIcFns0A3hF4rEQqgP0uA/sbk=;
-        b=JKqB1hNePVt9oKE2rD07gAS1EnnIZIQr0GCD2Ys5f9ACgt5Zmjs4t2IwteP6h2RYB6
-         RUJQyl7N2ivigKovJ5nBmktJ/QuFftbpdtLJr7QihYC172Nl4RTQbVbSXyHSH85wN6rN
-         uVGomCO7+DYUNSvjpDi325goCBwxskr2GTSXeSlXMz1b9NSg2DN0p+fkYy2vGV7/QiS3
-         D3pO2ZY0CyyZRyZjV5UUv+5psX9KkU24Mx5LRsdnMTNn6tpxnjPdJ4Bps7rP/tH0Aies
-         etpwB5X8DVFeAblgUrPTpAl5vsgLKHsoj0iZBLfbyRNT+onp/LOsz+V+iVHaCcJgQc1w
-         8u8g==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:references:cc:to:content-language:subject
+         :user-agent:mime-version:date:message-id;
+        bh=ESzGP8pNbv7K2zLAjEAJP/oF3SAvmWERFgjRdN29czk=;
+        b=bXoIYPqkQJ6G414y8cvVXhn6qlBhQLPX+SG93x4NA15gIWOuoVusDTwnjMYNg3xzSE
+         sx+o2pT3DER9+xRPizTIaIX7jWMvGvr5doUCp77koFFNpLKI4M1SYurGV4TUkxNcPtBT
+         MwHXHuPFZR6VyzdTFnnTvvu/Gq/b8WoHGL758I5w5d1gpybZrxDXRFq6EK+aXnxm/BuG
+         CFwwrCvVWtWKO062ACAPC56ZxoccJ0hvgnIisdi35BuxgmnokX8dIAAXFC1HdePNXJPM
+         LpQtIQLm7qGVpAVzIhLKwinboWj5jLBkFjWGkE7RIIdH/4wV4kjxawNywP0wv8DGxHOs
+         kyug==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s134-20020a37a98c000000b006b5c5138141si2072243qke.709.2022.08.09.09.27.40
+        by mx.google.com with ESMTPS id w13-20020a05620a444d00b006b5939b6ea2si3574345qkp.144.2022.08.09.22.51.51
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 09 Aug 2022 09:27:40 -0700 (PDT)
+        Tue, 09 Aug 2022 22:51:51 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
-Received: from localhost ([::1]:35104 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:47164 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1oLS4x-0000dA-Nv
-	for alex.bennee@linaro.org; Tue, 09 Aug 2022 12:27:39 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:35532)
+	id 1oLedC-00086F-O0
+	for alex.bennee@linaro.org; Wed, 10 Aug 2022 01:51:50 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:49064)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
- id 1oLRme-0007ii-T3; Tue, 09 Aug 2022 12:08:45 -0400
-Received: from frasgout.his.huawei.com ([185.176.79.56]:2669)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1oLebu-00083S-FR
+ for qemu-arm@nongnu.org; Wed, 10 Aug 2022 01:50:35 -0400
+Received: from smtpout1.mo529.mail-out.ovh.net ([178.32.125.2]:37713)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
- id 1oLRmb-0000br-FM; Tue, 09 Aug 2022 12:08:43 -0400
-Received: from fraeml703-chm.china.huawei.com (unknown [172.18.147.226])
- by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4M2Hwm10Sdz685PJ;
- Wed, 10 Aug 2022 00:05:44 +0800 (CST)
-Received: from lhrpeml500005.china.huawei.com (7.191.163.240) by
- fraeml703-chm.china.huawei.com (10.206.15.52) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id
- 15.1.2375.24; Tue, 9 Aug 2022 18:08:26 +0200
-Received: from localhost (10.202.226.42) by lhrpeml500005.china.huawei.com
- (7.191.163.240) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2375.24; Tue, 9 Aug
- 2022 17:08:26 +0100
-Date: Tue, 9 Aug 2022 17:08:25 +0100
-To: Bobo WL <lmw.bobo@gmail.com>
-CC: <linux-cxl@vger.kernel.org>, <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>
-Subject: Re: [BUG] cxl can not create region
-Message-ID: <20220809170825.00001b61@huawei.com>
-In-Reply-To: <CAGr_yG36GSO8esyO9nn6OeOEN5zPSosEmBHbfYGwqNGiYOh9vw@mail.gmail.com>
-References: <CAGr_yG0UrfJAMWta3EkR1F0JZ4j--sig74p6vKL3K6TZDx9YGA@mail.gmail.com>
- <20220808133727.00001171@huawei.com>
- <CAGr_yG36GSO8esyO9nn6OeOEN5zPSosEmBHbfYGwqNGiYOh9vw@mail.gmail.com>
-X-Mailer: Claws Mail 4.0.0 (GTK+ 3.24.29; i686-w64-mingw32)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1oLebp-0004Qe-6f
+ for qemu-arm@nongnu.org; Wed, 10 Aug 2022 01:50:30 -0400
+Received: from mxplan5.mail.ovh.net (unknown [10.109.146.140])
+ by mo529.mail-out.ovh.net (Postfix) with ESMTPS id 7C88A11DAB619;
+ Wed, 10 Aug 2022 07:50:19 +0200 (CEST)
+Received: from kaod.org (37.59.142.104) by DAG4EX2.mxp5.local (172.16.2.32)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.9; Wed, 10 Aug
+ 2022 07:50:18 +0200
+Authentication-Results: garm.ovh; auth=pass
+ (GARM-104R0053efc9228-2276-4688-87bd-a50bd676867b,
+ 043EABA4B22CD34FCE1B70F8CBB6C707CA017DB3) smtp.auth=clg@kaod.org
+X-OVh-ClientIp: 82.64.250.170
+Message-ID: <ec20d3af-5f99-8e56-9352-75562c4548de@kaod.org>
+Date: Wed, 10 Aug 2022 07:50:12 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset="US-ASCII"
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.12.0
+Subject: Re: AST2600 support in QEMU
+Content-Language: en-US
+To: Joel Stanley <joel@jms.id.au>, Shivi Fotedar <sfotedar@nvidia.com>, Peter
+ Delevoryas <peter@pjd.dev>, Jeremy Kerr <jk@ozlabs.org>, Klaus Jensen
+ <its@irrelevant.dk>, Jonathan Cameron <jonathan.cameron@huawei.com>
+CC: "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, Andrew Jeffery
+ <andrew@aj.id.au>, "Amit Kumar (Engrg-SW)" <asinghal@nvidia.com>, Prasanna
+ Karmalkar <pkarmalkar@nvidia.com>, "Tim Chen (SW-GPU)" <timch@nvidia.com>,
+ Newton Liu <newtonl@nvidia.com>, Deepak Kodihalli <dkodihalli@nvidia.com>,
+ qemu-arm <qemu-arm@nongnu.org>
+References: <BY5PR12MB38917595B0306085EEBB1921B4629@BY5PR12MB3891.namprd12.prod.outlook.com>
+ <CACPK8XfjXq6RW=M++UebfiGeij=GDSk5f6ZftNaL+2oeyCGnHw@mail.gmail.com>
+From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
+In-Reply-To: <CACPK8XfjXq6RW=M++UebfiGeij=GDSk5f6ZftNaL+2oeyCGnHw@mail.gmail.com>
+Content-Type: text/plain; charset="UTF-8"; format=flowed
 Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.202.226.42]
-X-ClientProxiedBy: lhrpeml500006.china.huawei.com (7.191.161.198) To
- lhrpeml500005.china.huawei.com (7.191.163.240)
-X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=185.176.79.56;
- envelope-from=jonathan.cameron@huawei.com; helo=frasgout.his.huawei.com
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
- RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Originating-IP: [37.59.142.104]
+X-ClientProxiedBy: DAG8EX2.mxp5.local (172.16.2.72) To DAG4EX2.mxp5.local
+ (172.16.2.32)
+X-Ovh-Tracer-GUID: 72d95958-5578-4506-84ee-9835959a8797
+X-Ovh-Tracer-Id: 5123407530004417342
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvfedrvdeguddguddtvdcutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemucehtddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpefkffggfgfuvfevfhfhjggtgfhisehtjeertddtfeejnecuhfhrohhmpeevrogurhhitggpnfgvpgfiohgrthgvrhcuoegtlhhgsehkrghougdrohhrgheqnecuggftrfgrthhtvghrnhepvefhleeuvefgjeejteevteffveeigefhvefgudetueeuvdelieffhfeikeelkeehnecuffhomhgrihhnpehkvghrnhgvlhdrohhrghenucfkpheptddrtddrtddrtddpfeejrdehledrudegvddruddtgeenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhhouggvpehsmhhtphhouhhtpdhhvghlohepmhigphhlrghnhedrmhgrihhlrdhovhhhrdhnvghtpdhinhgvtheptddrtddrtddrtddpmhgrihhlfhhrohhmpegtlhhgsehkrghougdrohhrghdpnhgspghrtghpthhtohepuddprhgtphhtthhopehqvghmuhdqrghrmhesnhhonhhgnhhurdhorhhgpdfovfetjfhoshhtpehmohehvdel
+Received-SPF: pass client-ip=178.32.125.2; envelope-from=clg@kaod.org;
+ helo=smtpout1.mo529.mail-out.ovh.net
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -99,47 +110,48 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Reply-to:  Jonathan Cameron <Jonathan.Cameron@huawei.com>
-From:  Jonathan Cameron via <qemu-arm@nongnu.org>
-X-TUID: R8LStKOeJOSK
+X-TUID: 4wYuTLVfPjmu
 
-On Tue, 9 Aug 2022 21:07:06 +0800
-Bobo WL <lmw.bobo@gmail.com> wrote:
+Hello,
 
-> Hi Jonathan
+On 8/10/22 04:37, Joel Stanley wrote:
+> Hello Shivi,
 > 
-> Thanks for your reply!
+> I've added others to cc who may have some input.
 > 
-> On Mon, Aug 8, 2022 at 8:37 PM Jonathan Cameron
-> <Jonathan.Cameron@huawei.com> wrote:
-> >
-> > Probably not related to your problem, but there is a disconnect in QEMU /
-> > kernel assumptionsaround the presence of an HDM decoder when a HB only
-> > has a single root port. Spec allows it to be provided or not as an implementation choice.
-> > Kernel assumes it isn't provide. Qemu assumes it is.
-> >
-> > The temporary solution is to throw in a second root port on the HB and not
-> > connect anything to it.  Longer term I may special case this so that the particular
-> > decoder defaults to pass through settings in QEMU if there is only one root port.
-> >  
+> On Tue, 9 Aug 2022 at 21:38, Shivi Fotedar <sfotedar@nvidia.com> wrote:
+>>
+>> Hello, we are looking for support for few features for AST2600 in QEMU, specifically
+>>
+>> PCIe RC support so BMC can talk to downstream devices for management functions.
 > 
-> You are right! After adding an extra HB in qemu, I can create a x1
-> region successfully.
-> But have some errors in Nvdimm:
-> 
-> [   74.925838] Unknown online node for memory at 0x10000000000, assuming node 0
-> [   74.925846] Unknown target node for memory at 0x10000000000, assuming node 0
-> [   74.927470] nd_region region0: nmem0: is disabled, failing probe
+> I haven't seen any PCIe work done yet.
 
-Ah. I've seen this one, but not chased it down yet.  Was on my todo list to chase
-down. Once I reach this state I can verify the HDM Decode is correct which is what
-I've been using to test (Which wasn't true until earlier this week). 
-I'm currently testing via devmem, more for historical reasons than because it makes
-that much sense anymore.  
+I haven't either. There is clearly a need now that we are moving
+away from LPC.
 
+>> MCTP controller to run MCTP protocol on top of PCIe or I2C.
 > 
-> And x4 region still failed with same errors, using latest cxl/preview
-> branch don't work.
-> I have picked "Two CXL emulation fixes" patches in qemu, still not working.
-> 
-> Bob
+> What work would be required to do this on top of i2c?
+
+I think Jonathan and Klaus worked on this. See :
+
+   https://lore.kernel.org/qemu-devel/20220525121422.00003a84@Huawei.com/
+
+>> I2C slave so BMC can talk to host CPU QEMU for IPMI
+>
+> Some support for slave mode was merged in v7.1.
+
+yes.
+
+Peter D. experimented with IPMI. See :
+
+   https://lore.kernel.org/qemu-devel/20220630045133.32251-14-me@pjd.dev/
+
+We also merged a new machine including a BMC ast2600 running OpenBMC
+and an ast1030 SoC running OpenBIC. Work to interconnect them on the
+same I2C bus is in progress.
+
+Thanks,
+
+C.

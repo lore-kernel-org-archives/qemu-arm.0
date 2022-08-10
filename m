@@ -1,157 +1,645 @@
-Received: by 2002:a17:906:3b11:0:0:0:0 with SMTP id g17csp3554364ejf;
-        Tue, 9 Aug 2022 22:51:51 -0700 (PDT)
-X-Google-Smtp-Source: AA6agR4QIq2OeAbJwdJxf1Sf4Gv6zVopdNe5RFhu7aafm6ksvENJXVULeWIaUZ60zGmrUIatKipB
-X-Received: by 2002:a05:620a:d8c:b0:6a7:91a4:2669 with SMTP id q12-20020a05620a0d8c00b006a791a42669mr19839155qkl.269.1660110711293;
-        Tue, 09 Aug 2022 22:51:51 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1660110711; cv=none;
-        d=google.com; s=arc-20160816;
-        b=iHO9qtYwhD+w45gu3nJNg1RM+GBGGogt0ZZLStuXigVD0Ne3DIMEL/KlqYjgYLtkau
-         1oN3q9HGPLYQGl0X01RM1ke8L5On/80GobhrFTt1pWoXUcgEE6zvmkoiDZjjuuHf34u9
-         g0aOXyLSqKwZ2FCcWceuhbVk54RSRCijTeppELd1zMHgXSbzy7NbHyib40049z750A5O
-         i4MewTQhUgQTlSkfJS70YjwuDVb+kxo5hHuqqwoXhiwsXfPso9+QQTHSGIrQi/iizgGw
-         jub42A6om80Hz9yLX2TFU+vt91KkApQHcqbZU8CBNZXEycFdR+6PjAL2kBY2ZrCnahCp
-         bAjQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:cc:to:content-language:subject
-         :user-agent:mime-version:date:message-id;
-        bh=ESzGP8pNbv7K2zLAjEAJP/oF3SAvmWERFgjRdN29czk=;
-        b=bXoIYPqkQJ6G414y8cvVXhn6qlBhQLPX+SG93x4NA15gIWOuoVusDTwnjMYNg3xzSE
-         sx+o2pT3DER9+xRPizTIaIX7jWMvGvr5doUCp77koFFNpLKI4M1SYurGV4TUkxNcPtBT
-         MwHXHuPFZR6VyzdTFnnTvvu/Gq/b8WoHGL758I5w5d1gpybZrxDXRFq6EK+aXnxm/BuG
-         CFwwrCvVWtWKO062ACAPC56ZxoccJ0hvgnIisdi35BuxgmnokX8dIAAXFC1HdePNXJPM
-         LpQtIQLm7qGVpAVzIhLKwinboWj5jLBkFjWGkE7RIIdH/4wV4kjxawNywP0wv8DGxHOs
-         kyug==
-ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id w13-20020a05620a444d00b006b5939b6ea2si3574345qkp.144.2022.08.09.22.51.51
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 09 Aug 2022 22:51:51 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
-Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:47164 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1oLedC-00086F-O0
-	for alex.bennee@linaro.org; Wed, 10 Aug 2022 01:51:50 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49064)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1oLebu-00083S-FR
- for qemu-arm@nongnu.org; Wed, 10 Aug 2022 01:50:35 -0400
-Received: from smtpout1.mo529.mail-out.ovh.net ([178.32.125.2]:37713)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1oLebp-0004Qe-6f
- for qemu-arm@nongnu.org; Wed, 10 Aug 2022 01:50:30 -0400
-Received: from mxplan5.mail.ovh.net (unknown [10.109.146.140])
- by mo529.mail-out.ovh.net (Postfix) with ESMTPS id 7C88A11DAB619;
- Wed, 10 Aug 2022 07:50:19 +0200 (CEST)
-Received: from kaod.org (37.59.142.104) by DAG4EX2.mxp5.local (172.16.2.32)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.9; Wed, 10 Aug
- 2022 07:50:18 +0200
-Authentication-Results: garm.ovh; auth=pass
- (GARM-104R0053efc9228-2276-4688-87bd-a50bd676867b,
- 043EABA4B22CD34FCE1B70F8CBB6C707CA017DB3) smtp.auth=clg@kaod.org
-X-OVh-ClientIp: 82.64.250.170
-Message-ID: <ec20d3af-5f99-8e56-9352-75562c4548de@kaod.org>
-Date: Wed, 10 Aug 2022 07:50:12 +0200
+Return-Path: <alex.bennee@linaro.org>
+Received: from zen.linaroharston ([185.81.254.11])
+        by smtp.gmail.com with ESMTPSA id ew12-20020a056402538c00b0043bbbaa323dsm7580611edb.0.2022.08.10.06.03.42
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 10 Aug 2022 06:03:42 -0700 (PDT)
+Received: from zen (localhost [127.0.0.1])
+	by zen.linaroharston (Postfix) with ESMTP id 3BD191FFB7;
+	Wed, 10 Aug 2022 14:03:42 +0100 (BST)
+References: <20220703082419.770989-1-richard.henderson@linaro.org>
+ <20220703082419.770989-9-richard.henderson@linaro.org>
+User-agent: mu4e 1.8.8; emacs 28.1.91
+From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: Richard Henderson <richard.henderson@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
+Subject: Re: [PATCH 08/62] target/arm: Create GetPhysAddrResult
+Date: Wed, 10 Aug 2022 14:02:20 +0100
+In-reply-to: <20220703082419.770989-9-richard.henderson@linaro.org>
+Message-ID: <87zggcmes1.fsf@linaro.org>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.12.0
-Subject: Re: AST2600 support in QEMU
-Content-Language: en-US
-To: Joel Stanley <joel@jms.id.au>, Shivi Fotedar <sfotedar@nvidia.com>, Peter
- Delevoryas <peter@pjd.dev>, Jeremy Kerr <jk@ozlabs.org>, Klaus Jensen
- <its@irrelevant.dk>, Jonathan Cameron <jonathan.cameron@huawei.com>
-CC: "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, Andrew Jeffery
- <andrew@aj.id.au>, "Amit Kumar (Engrg-SW)" <asinghal@nvidia.com>, Prasanna
- Karmalkar <pkarmalkar@nvidia.com>, "Tim Chen (SW-GPU)" <timch@nvidia.com>,
- Newton Liu <newtonl@nvidia.com>, Deepak Kodihalli <dkodihalli@nvidia.com>,
- qemu-arm <qemu-arm@nongnu.org>
-References: <BY5PR12MB38917595B0306085EEBB1921B4629@BY5PR12MB3891.namprd12.prod.outlook.com>
- <CACPK8XfjXq6RW=M++UebfiGeij=GDSk5f6ZftNaL+2oeyCGnHw@mail.gmail.com>
-From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
-In-Reply-To: <CACPK8XfjXq6RW=M++UebfiGeij=GDSk5f6ZftNaL+2oeyCGnHw@mail.gmail.com>
-Content-Type: text/plain; charset="UTF-8"; format=flowed
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [37.59.142.104]
-X-ClientProxiedBy: DAG8EX2.mxp5.local (172.16.2.72) To DAG4EX2.mxp5.local
- (172.16.2.32)
-X-Ovh-Tracer-GUID: 72d95958-5578-4506-84ee-9835959a8797
-X-Ovh-Tracer-Id: 5123407530004417342
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvfedrvdeguddguddtvdcutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemucehtddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpefkffggfgfuvfevfhfhjggtgfhisehtjeertddtfeejnecuhfhrohhmpeevrogurhhitggpnfgvpgfiohgrthgvrhcuoegtlhhgsehkrghougdrohhrgheqnecuggftrfgrthhtvghrnhepvefhleeuvefgjeejteevteffveeigefhvefgudetueeuvdelieffhfeikeelkeehnecuffhomhgrihhnpehkvghrnhgvlhdrohhrghenucfkpheptddrtddrtddrtddpfeejrdehledrudegvddruddtgeenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhhouggvpehsmhhtphhouhhtpdhhvghlohepmhigphhlrghnhedrmhgrihhlrdhovhhhrdhnvghtpdhinhgvtheptddrtddrtddrtddpmhgrihhlfhhrohhmpegtlhhgsehkrghougdrohhrghdpnhgspghrtghpthhtohepuddprhgtphhtthhopehqvghmuhdqrghrmhesnhhonhhgnhhurdhorhhgpdfovfetjfhoshhtpehmohehvdel
-Received-SPF: pass client-ip=178.32.125.2; envelope-from=clg@kaod.org;
- helo=smtpout1.mo529.mail-out.ovh.net
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 4wYuTLVfPjmu
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-TUID: t596/X3qxhvr
 
-Hello,
 
-On 8/10/22 04:37, Joel Stanley wrote:
-> Hello Shivi,
-> 
-> I've added others to cc who may have some input.
-> 
-> On Tue, 9 Aug 2022 at 21:38, Shivi Fotedar <sfotedar@nvidia.com> wrote:
->>
->> Hello, we are looking for support for few features for AST2600 in QEMU, specifically
->>
->> PCIe RC support so BMC can talk to downstream devices for management functions.
-> 
-> I haven't seen any PCIe work done yet.
+Richard Henderson <richard.henderson@linaro.org> writes:
 
-I haven't either. There is clearly a need now that we are moving
-away from LPC.
+> Combine 5 output pointer argument from get_phys_addr
+> into a single struct.  Adjust all callers.
 
->> MCTP controller to run MCTP protocol on top of PCIe or I2C.
-> 
-> What work would be required to do this on top of i2c?
+This looks to be an improvement - I guess the real benefit is the
+compiler isn't jamming so many closely aligned pointers on the stack
+frame for all the return values?
 
-I think Jonathan and Klaus worked on this. See :
-
-   https://lore.kernel.org/qemu-devel/20220525121422.00003a84@Huawei.com/
-
->> I2C slave so BMC can talk to host CPU QEMU for IPMI
 >
-> Some support for slave mode was merged in v7.1.
+> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+> ---
+>  target/arm/internals.h  |  13 ++++-
+>  target/arm/helper.c     |  27 ++++-----
+>  target/arm/m_helper.c   |  52 +++++------------
+>  target/arm/ptw.c        | 125 +++++++++++++++++++++-------------------
+>  target/arm/tlb_helper.c |  26 ++++-----
+>  5 files changed, 113 insertions(+), 130 deletions(-)
+>
+> diff --git a/target/arm/internals.h b/target/arm/internals.h
+> index 268c3c7380..7d08917f88 100644
+> --- a/target/arm/internals.h
+> +++ b/target/arm/internals.h
+> @@ -1133,11 +1133,18 @@ typedef struct ARMCacheAttrs {
+>      bool guarded:1;              /* guarded bit of the v8-64 PTE */
+>  } ARMCacheAttrs;
+>=20=20
+> +/* Fields that are valid upon success. */
+> +typedef struct GetPhysAddrResult {
+> +    hwaddr phys;
+> +    target_ulong page_size;
+> +    int prot;
+> +    MemTxAttrs attrs;
+> +    ARMCacheAttrs cacheattrs;
+> +} GetPhysAddrResult;
+> +
+>  bool get_phys_addr(CPUARMState *env, target_ulong address,
+>                     MMUAccessType access_type, ARMMMUIdx mmu_idx,
+> -                   hwaddr *phys_ptr, MemTxAttrs *attrs, int *prot,
+> -                   target_ulong *page_size,
+> -                   ARMMMUFaultInfo *fi, ARMCacheAttrs *cacheattrs)
+> +                   GetPhysAddrResult *result, ARMMMUFaultInfo *fi)
+>      __attribute__((nonnull));
+>=20=20
+>  void arm_log_exception(CPUState *cs);
+> diff --git a/target/arm/helper.c b/target/arm/helper.c
+> index f6dcb1a115..fb13e0f4c0 100644
+> --- a/target/arm/helper.c
+> +++ b/target/arm/helper.c
+> @@ -3173,24 +3173,19 @@ static CPAccessResult ats_access(CPUARMState *env=
+, const ARMCPRegInfo *ri,
+>  static uint64_t do_ats_write(CPUARMState *env, uint64_t value,
+>                               MMUAccessType access_type, ARMMMUIdx mmu_id=
+x)
+>  {
+> -    hwaddr phys_addr;
+> -    target_ulong page_size;
+> -    int prot;
+>      bool ret;
+>      uint64_t par64;
+>      bool format64 =3D false;
+> -    MemTxAttrs attrs =3D {};
+>      ARMMMUFaultInfo fi =3D {};
+> -    ARMCacheAttrs cacheattrs =3D {};
+> +    GetPhysAddrResult res =3D {};
+>=20=20
+> -    ret =3D get_phys_addr(env, value, access_type, mmu_idx, &phys_addr, =
+&attrs,
+> -                        &prot, &page_size, &fi, &cacheattrs);
+> +    ret =3D get_phys_addr(env, value, access_type, mmu_idx, &res, &fi);
+>=20=20
+>      /*
+>       * ATS operations only do S1 or S1+S2 translations, so we never
+>       * have to deal with the ARMCacheAttrs format for S2 only.
+>       */
+> -    assert(!cacheattrs.is_s2_format);
+> +    assert(!res.cacheattrs.is_s2_format);
+>=20=20
+>      if (ret) {
+>          /*
+> @@ -3296,12 +3291,12 @@ static uint64_t do_ats_write(CPUARMState *env, ui=
+nt64_t value,
+>          /* Create a 64-bit PAR */
+>          par64 =3D (1 << 11); /* LPAE bit always set */
+>          if (!ret) {
+> -            par64 |=3D phys_addr & ~0xfffULL;
+> -            if (!attrs.secure) {
+> +            par64 |=3D res.phys & ~0xfffULL;
+> +            if (!res.attrs.secure) {
+>                  par64 |=3D (1 << 9); /* NS */
+>              }
+> -            par64 |=3D (uint64_t)cacheattrs.attrs << 56; /* ATTR */
+> -            par64 |=3D cacheattrs.shareability << 7; /* SH */
+> +            par64 |=3D (uint64_t)res.cacheattrs.attrs << 56; /* ATTR */
+> +            par64 |=3D res.cacheattrs.shareability << 7; /* SH */
+>          } else {
+>              uint32_t fsr =3D arm_fi_to_lfsc(&fi);
+>=20=20
+> @@ -3321,13 +3316,13 @@ static uint64_t do_ats_write(CPUARMState *env, ui=
+nt64_t value,
+>           */
+>          if (!ret) {
+>              /* We do not set any attribute bits in the PAR */
+> -            if (page_size =3D=3D (1 << 24)
+> +            if (res.page_size =3D=3D (1 << 24)
+>                  && arm_feature(env, ARM_FEATURE_V7)) {
+> -                par64 =3D (phys_addr & 0xff000000) | (1 << 1);
+> +                par64 =3D (res.phys & 0xff000000) | (1 << 1);
+>              } else {
+> -                par64 =3D phys_addr & 0xfffff000;
+> +                par64 =3D res.phys & 0xfffff000;
+>              }
+> -            if (!attrs.secure) {
+> +            if (!res.attrs.secure) {
+>                  par64 |=3D (1 << 9); /* NS */
+>              }
+>          } else {
+> diff --git a/target/arm/m_helper.c b/target/arm/m_helper.c
+> index 308610f6b4..84c6796b8d 100644
+> --- a/target/arm/m_helper.c
+> +++ b/target/arm/m_helper.c
+> @@ -183,19 +183,14 @@ static bool v7m_stack_write(ARMCPU *cpu, uint32_t a=
+ddr, uint32_t value,
+>  {
+>      CPUState *cs =3D CPU(cpu);
+>      CPUARMState *env =3D &cpu->env;
+> -    MemTxAttrs attrs =3D {};
+>      MemTxResult txres;
+> -    target_ulong page_size;
+> -    hwaddr physaddr;
+> -    int prot;
+> +    GetPhysAddrResult res =3D {};
+>      ARMMMUFaultInfo fi =3D {};
+> -    ARMCacheAttrs cacheattrs =3D {};
+>      bool secure =3D mmu_idx & ARM_MMU_IDX_M_S;
+>      int exc;
+>      bool exc_secure;
+>=20=20
+> -    if (get_phys_addr(env, addr, MMU_DATA_STORE, mmu_idx, &physaddr,
+> -                      &attrs, &prot, &page_size, &fi, &cacheattrs)) {
+> +    if (get_phys_addr(env, addr, MMU_DATA_STORE, mmu_idx, &res, &fi)) {
+>          /* MPU/SAU lookup failed */
+>          if (fi.type =3D=3D ARMFault_QEMU_SFault) {
+>              if (mode =3D=3D STACK_LAZYFP) {
+> @@ -228,8 +223,8 @@ static bool v7m_stack_write(ARMCPU *cpu, uint32_t add=
+r, uint32_t value,
+>          }
+>          goto pend_fault;
+>      }
+> -    address_space_stl_le(arm_addressspace(cs, attrs), physaddr, value,
+> -                         attrs, &txres);
+> +    address_space_stl_le(arm_addressspace(cs, res.attrs), res.phys, valu=
+e,
+> +                         res.attrs, &txres);
+>      if (txres !=3D MEMTX_OK) {
+>          /* BusFault trying to write the data */
+>          if (mode =3D=3D STACK_LAZYFP) {
+> @@ -276,20 +271,15 @@ static bool v7m_stack_read(ARMCPU *cpu, uint32_t *d=
+est, uint32_t addr,
+>  {
+>      CPUState *cs =3D CPU(cpu);
+>      CPUARMState *env =3D &cpu->env;
+> -    MemTxAttrs attrs =3D {};
+>      MemTxResult txres;
+> -    target_ulong page_size;
+> -    hwaddr physaddr;
+> -    int prot;
+> +    GetPhysAddrResult res =3D {};
+>      ARMMMUFaultInfo fi =3D {};
+> -    ARMCacheAttrs cacheattrs =3D {};
+>      bool secure =3D mmu_idx & ARM_MMU_IDX_M_S;
+>      int exc;
+>      bool exc_secure;
+>      uint32_t value;
+>=20=20
+> -    if (get_phys_addr(env, addr, MMU_DATA_LOAD, mmu_idx, &physaddr,
+> -                      &attrs, &prot, &page_size, &fi, &cacheattrs)) {
+> +    if (get_phys_addr(env, addr, MMU_DATA_LOAD, mmu_idx, &res, &fi)) {
+>          /* MPU/SAU lookup failed */
+>          if (fi.type =3D=3D ARMFault_QEMU_SFault) {
+>              qemu_log_mask(CPU_LOG_INT,
+> @@ -308,8 +298,8 @@ static bool v7m_stack_read(ARMCPU *cpu, uint32_t *des=
+t, uint32_t addr,
+>          goto pend_fault;
+>      }
+>=20=20
+> -    value =3D address_space_ldl(arm_addressspace(cs, attrs), physaddr,
+> -                              attrs, &txres);
+> +    value =3D address_space_ldl(arm_addressspace(cs, res.attrs), res.phy=
+s,
+> +                              res.attrs, &txres);
+>      if (txres !=3D MEMTX_OK) {
+>          /* BusFault trying to read the data */
+>          qemu_log_mask(CPU_LOG_INT, "...BusFault with BFSR.UNSTKERR\n");
+> @@ -2008,13 +1998,9 @@ static bool v7m_read_half_insn(ARMCPU *cpu, ARMMMU=
+Idx mmu_idx,
+>      CPUState *cs =3D CPU(cpu);
+>      CPUARMState *env =3D &cpu->env;
+>      V8M_SAttributes sattrs =3D {};
+> -    MemTxAttrs attrs =3D {};
+> +    GetPhysAddrResult res =3D {};
+>      ARMMMUFaultInfo fi =3D {};
+> -    ARMCacheAttrs cacheattrs =3D {};
+>      MemTxResult txres;
+> -    target_ulong page_size;
+> -    hwaddr physaddr;
+> -    int prot;
+>=20=20
+>      v8m_security_lookup(env, addr, MMU_INST_FETCH, mmu_idx, &sattrs);
+>      if (!sattrs.nsc || sattrs.ns) {
+> @@ -2028,16 +2014,15 @@ static bool v7m_read_half_insn(ARMCPU *cpu, ARMMM=
+UIdx mmu_idx,
+>                        "...really SecureFault with SFSR.INVEP\n");
+>          return false;
+>      }
+> -    if (get_phys_addr(env, addr, MMU_INST_FETCH, mmu_idx, &physaddr,
+> -                      &attrs, &prot, &page_size, &fi, &cacheattrs)) {
+> +    if (get_phys_addr(env, addr, MMU_INST_FETCH, mmu_idx, &res, &fi)) {
+>          /* the MPU lookup failed */
+>          env->v7m.cfsr[env->v7m.secure] |=3D R_V7M_CFSR_IACCVIOL_MASK;
+>          armv7m_nvic_set_pending(env->nvic, ARMV7M_EXCP_MEM, env->v7m.sec=
+ure);
+>          qemu_log_mask(CPU_LOG_INT, "...really MemManage with CFSR.IACCVI=
+OL\n");
+>          return false;
+>      }
+> -    *insn =3D address_space_lduw_le(arm_addressspace(cs, attrs), physadd=
+r,
+> -                                 attrs, &txres);
+> +    *insn =3D address_space_lduw_le(arm_addressspace(cs, res.attrs), res=
+.phys,
+> +                                  res.attrs, &txres);
+>      if (txres !=3D MEMTX_OK) {
+>          env->v7m.cfsr[M_REG_NS] |=3D R_V7M_CFSR_IBUSERR_MASK;
+>          armv7m_nvic_set_pending(env->nvic, ARMV7M_EXCP_BUS, false);
+> @@ -2060,17 +2045,12 @@ static bool v7m_read_sg_stack_word(ARMCPU *cpu, A=
+RMMMUIdx mmu_idx,
+>       */
+>      CPUState *cs =3D CPU(cpu);
+>      CPUARMState *env =3D &cpu->env;
+> -    MemTxAttrs attrs =3D {};
+>      MemTxResult txres;
+> -    target_ulong page_size;
+> -    hwaddr physaddr;
+> -    int prot;
+> +    GetPhysAddrResult res =3D {};
+>      ARMMMUFaultInfo fi =3D {};
+> -    ARMCacheAttrs cacheattrs =3D {};
+>      uint32_t value;
+>=20=20
+> -    if (get_phys_addr(env, addr, MMU_DATA_LOAD, mmu_idx, &physaddr,
+> -                      &attrs, &prot, &page_size, &fi, &cacheattrs)) {
+> +    if (get_phys_addr(env, addr, MMU_DATA_LOAD, mmu_idx, &res, &fi)) {
+>          /* MPU/SAU lookup failed */
+>          if (fi.type =3D=3D ARMFault_QEMU_SFault) {
+>              qemu_log_mask(CPU_LOG_INT,
+> @@ -2088,8 +2068,8 @@ static bool v7m_read_sg_stack_word(ARMCPU *cpu, ARM=
+MMUIdx mmu_idx,
+>          }
+>          return false;
+>      }
+> -    value =3D address_space_ldl(arm_addressspace(cs, attrs), physaddr,
+> -                              attrs, &txres);
+> +    value =3D address_space_ldl(arm_addressspace(cs, res.attrs), res.phy=
+s,
+> +                              res.attrs, &txres);
+>      if (txres !=3D MEMTX_OK) {
+>          /* BusFault trying to read the data */
+>          qemu_log_mask(CPU_LOG_INT,
+> diff --git a/target/arm/ptw.c b/target/arm/ptw.c
+> index 204c820026..1a946f3757 100644
+> --- a/target/arm/ptw.c
+> +++ b/target/arm/ptw.c
+> @@ -2296,18 +2296,12 @@ static ARMCacheAttrs combine_cacheattrs(CPUARMSta=
+te *env,
+>   * @address: virtual address to get physical address for
+>   * @access_type: 0 for read, 1 for write, 2 for execute
+>   * @mmu_idx: MMU index indicating required translation regime
+> - * @phys_ptr: set to the physical address corresponding to the virtual a=
+ddress
+> - * @attrs: set to the memory transaction attributes to use
+> - * @prot: set to the permissions for the page containing phys_ptr
+> - * @page_size: set to the size of the page containing phys_ptr
+> + * @result: set on translation success.
+>   * @fi: set to fault info if the translation fails
+> - * @cacheattrs: (if non-NULL) set to the cacheability/shareability attri=
+butes
+>   */
+>  bool get_phys_addr(CPUARMState *env, target_ulong address,
+>                     MMUAccessType access_type, ARMMMUIdx mmu_idx,
+> -                   hwaddr *phys_ptr, MemTxAttrs *attrs, int *prot,
+> -                   target_ulong *page_size,
+> -                   ARMMMUFaultInfo *fi, ARMCacheAttrs *cacheattrs)
+> +                   GetPhysAddrResult *result, ARMMMUFaultInfo *fi)
+>  {
+>      ARMMMUIdx s1_mmu_idx =3D stage_1_mmu_idx(mmu_idx);
+>=20=20
+> @@ -2318,43 +2312,53 @@ bool get_phys_addr(CPUARMState *env, target_ulong=
+ address,
+>           */
+>          if (arm_feature(env, ARM_FEATURE_EL2)) {
+>              hwaddr ipa;
+> -            int s2_prot;
+> +            int s1_prot;
+>              int ret;
+>              bool ipa_secure;
+> -            ARMCacheAttrs cacheattrs2 =3D {};
+> +            ARMCacheAttrs cacheattrs1;
+>              ARMMMUIdx s2_mmu_idx;
+>              bool is_el0;
+>=20=20
+> -            ret =3D get_phys_addr(env, address, access_type, s1_mmu_idx,=
+ &ipa,
+> -                                attrs, prot, page_size, fi, cacheattrs);
+> +            ret =3D get_phys_addr(env, address, access_type, s1_mmu_idx,
+> +                                result, fi);
+>=20=20
+>              /* If S1 fails or S2 is disabled, return early.  */
+>              if (ret || regime_translation_disabled(env, ARMMMUIdx_Stage2=
+)) {
+> -                *phys_ptr =3D ipa;
+>                  return ret;
+>              }
+>=20=20
+> -            ipa_secure =3D attrs->secure;
+> +            ipa =3D result->phys;
+> +            ipa_secure =3D result->attrs.secure;
+>              if (arm_is_secure_below_el3(env)) {
+> -                if (ipa_secure) {
+> -                    attrs->secure =3D !(env->cp15.vstcr_el2.raw_tcr & VS=
+TCR_SW);
+> -                } else {
+> -                    attrs->secure =3D !(env->cp15.vtcr_el2.raw_tcr & VTC=
+R_NSW);
+> -                }
+> +                result->attrs.secure =3D
+> +                    (ipa_secure
+> +                     ? !(env->cp15.vstcr_el2.raw_tcr & VSTCR_SW)
+> +                     : !(env->cp15.vtcr_el2.raw_tcr & VTCR_NSW));
+>              } else {
+>                  assert(!ipa_secure);
+>              }
+>=20=20
+> -            s2_mmu_idx =3D attrs->secure ? ARMMMUIdx_Stage2_S : ARMMMUId=
+x_Stage2;
+> +            s2_mmu_idx =3D (result->attrs.secure
+> +                          ? ARMMMUIdx_Stage2_S : ARMMMUIdx_Stage2);
+>              is_el0 =3D mmu_idx =3D=3D ARMMMUIdx_E10_0 || mmu_idx =3D=3D =
+ARMMMUIdx_SE10_0;
+>=20=20
+> -            /* S1 is done. Now do S2 translation.  */
+> +            /*
+> +             * S1 is done, now do S2 translation.
+> +             * Save the stage1 results so that we may merge
+> +             * prot and cacheattrs later.
+> +             */
+> +            s1_prot =3D result->prot;
+> +            cacheattrs1 =3D result->cacheattrs;
+> +            memset(result, 0, sizeof(*result));
+> +
+>              ret =3D get_phys_addr_lpae(env, ipa, access_type, s2_mmu_idx=
+, is_el0,
+> -                                     phys_ptr, attrs, &s2_prot,
+> -                                     page_size, fi, &cacheattrs2);
+> +                                     &result->phys, &result->attrs,
+> +                                     &result->prot, &result->page_size,
+> +                                     fi, &result->cacheattrs);
+>              fi->s2addr =3D ipa;
+> +
+>              /* Combine the S1 and S2 perms.  */
+> -            *prot &=3D s2_prot;
+> +            result->prot &=3D s1_prot;
+>=20=20
+>              /* If S2 fails, return early.  */
+>              if (ret) {
+> @@ -2370,20 +2374,21 @@ bool get_phys_addr(CPUARMState *env, target_ulong=
+ address,
+>                   *  Outer Write-Back Read-Allocate Write-Allocate.
+>                   * Do not overwrite Tagged within attrs.
+>                   */
+> -                if (cacheattrs->attrs !=3D 0xf0) {
+> -                    cacheattrs->attrs =3D 0xff;
+> +                if (cacheattrs1.attrs !=3D 0xf0) {
+> +                    cacheattrs1.attrs =3D 0xff;
+>                  }
+> -                cacheattrs->shareability =3D 0;
+> +                cacheattrs1.shareability =3D 0;
+>              }
+> -            *cacheattrs =3D combine_cacheattrs(env, *cacheattrs, cacheat=
+trs2);
+> +            result->cacheattrs =3D combine_cacheattrs(env, cacheattrs1,
+> +                                                    result->cacheattrs);
+>=20=20
+>              /* Check if IPA translates to secure or non-secure PA space.=
+ */
+>              if (arm_is_secure_below_el3(env)) {
+>                  if (ipa_secure) {
+> -                    attrs->secure =3D
+> +                    result->attrs.secure =3D
+>                          !(env->cp15.vstcr_el2.raw_tcr & (VSTCR_SA | VSTC=
+R_SW));
+>                  } else {
+> -                    attrs->secure =3D
+> +                    result->attrs.secure =3D
+>                          !((env->cp15.vtcr_el2.raw_tcr & (VTCR_NSA | VTCR=
+_NSW))
+>                          || (env->cp15.vstcr_el2.raw_tcr & (VSTCR_SA | VS=
+TCR_SW)));
+>                  }
+> @@ -2402,8 +2407,8 @@ bool get_phys_addr(CPUARMState *env, target_ulong a=
+ddress,
+>       * cannot upgrade an non-secure translation regime's attributes
+>       * to secure.
+>       */
+> -    attrs->secure =3D regime_is_secure(env, mmu_idx);
+> -    attrs->user =3D regime_is_user(env, mmu_idx);
+> +    result->attrs.secure =3D regime_is_secure(env, mmu_idx);
+> +    result->attrs.user =3D regime_is_user(env, mmu_idx);
+>=20=20
+>      /*
+>       * Fast Context Switch Extension. This doesn't exist at all in v8.
+> @@ -2420,20 +2425,22 @@ bool get_phys_addr(CPUARMState *env, target_ulong=
+ address,
+>=20=20
+>      if (arm_feature(env, ARM_FEATURE_PMSA)) {
+>          bool ret;
+> -        *page_size =3D TARGET_PAGE_SIZE;
+> +        result->page_size =3D TARGET_PAGE_SIZE;
+>=20=20
+>          if (arm_feature(env, ARM_FEATURE_V8)) {
+>              /* PMSAv8 */
+>              ret =3D get_phys_addr_pmsav8(env, address, access_type, mmu_=
+idx,
+> -                                       phys_ptr, attrs, prot, page_size,=
+ fi);
+> +                                       &result->phys, &result->attrs,
+> +                                       &result->prot, &result->page_size=
+, fi);
+>          } else if (arm_feature(env, ARM_FEATURE_V7)) {
+>              /* PMSAv7 */
+>              ret =3D get_phys_addr_pmsav7(env, address, access_type, mmu_=
+idx,
+> -                                       phys_ptr, prot, page_size, fi);
+> +                                       &result->phys, &result->prot,
+> +                                       &result->page_size, fi);
+>          } else {
+>              /* Pre-v7 MPU */
+>              ret =3D get_phys_addr_pmsav5(env, address, access_type, mmu_=
+idx,
+> -                                       phys_ptr, prot, fi);
+> +                                       &result->phys, &result->prot, fi);
+>          }
+>          qemu_log_mask(CPU_LOG_MMU, "PMSA MPU lookup for %s at 0x%08" PRI=
+x32
+>                        " mmu_idx %u -> %s (prot %c%c%c)\n",
+> @@ -2441,9 +2448,9 @@ bool get_phys_addr(CPUARMState *env, target_ulong a=
+ddress,
+>                        (access_type =3D=3D MMU_DATA_STORE ? "writing" : "=
+execute"),
+>                        (uint32_t)address, mmu_idx,
+>                        ret ? "Miss" : "Hit",
+> -                      *prot & PAGE_READ ? 'r' : '-',
+> -                      *prot & PAGE_WRITE ? 'w' : '-',
+> -                      *prot & PAGE_EXEC ? 'x' : '-');
+> +                      result->prot & PAGE_READ ? 'r' : '-',
+> +                      result->prot & PAGE_WRITE ? 'w' : '-',
+> +                      result->prot & PAGE_EXEC ? 'x' : '-');
+>=20=20
+>          return ret;
+>      }
+> @@ -2488,14 +2495,14 @@ bool get_phys_addr(CPUARMState *env, target_ulong=
+ address,
+>                  address =3D extract64(address, 0, 52);
+>              }
+>          }
+> -        *phys_ptr =3D address;
+> -        *prot =3D PAGE_READ | PAGE_WRITE | PAGE_EXEC;
+> -        *page_size =3D TARGET_PAGE_SIZE;
+> +        result->phys =3D address;
+> +        result->prot =3D PAGE_READ | PAGE_WRITE | PAGE_EXEC;
+> +        result->page_size =3D TARGET_PAGE_SIZE;
+>=20=20
+>          /* Fill in cacheattr a-la AArch64.TranslateAddressS1Off. */
+>          hcr =3D arm_hcr_el2_eff(env);
+> -        cacheattrs->shareability =3D 0;
+> -        cacheattrs->is_s2_format =3D false;
+> +        result->cacheattrs.shareability =3D 0;
+> +        result->cacheattrs.is_s2_format =3D false;
+>          if (hcr & HCR_DC) {
+>              if (hcr & HCR_DCT) {
+>                  memattr =3D 0xf0;  /* Tagged, Normal, WB, RWA */
+> @@ -2508,24 +2515,27 @@ bool get_phys_addr(CPUARMState *env, target_ulong=
+ address,
+>              } else {
+>                  memattr =3D 0x44;  /* Normal, NC, No */
+>              }
+> -            cacheattrs->shareability =3D 2; /* outer sharable */
+> +            result->cacheattrs.shareability =3D 2; /* outer sharable */
+>          } else {
+>              memattr =3D 0x00;      /* Device, nGnRnE */
+>          }
+> -        cacheattrs->attrs =3D memattr;
+> +        result->cacheattrs.attrs =3D memattr;
+>          return 0;
+>      }
+>=20=20
+>      if (regime_using_lpae_format(env, mmu_idx)) {
+>          return get_phys_addr_lpae(env, address, access_type, mmu_idx, fa=
+lse,
+> -                                  phys_ptr, attrs, prot, page_size,
+> -                                  fi, cacheattrs);
+> +                                  &result->phys, &result->attrs,
+> +                                  &result->prot, &result->page_size,
+> +                                  fi, &result->cacheattrs);
+>      } else if (regime_sctlr(env, mmu_idx) & SCTLR_XP) {
+>          return get_phys_addr_v6(env, address, access_type, mmu_idx,
+> -                                phys_ptr, attrs, prot, page_size, fi);
+> +                                &result->phys, &result->attrs,
+> +                                &result->prot, &result->page_size, fi);
+>      } else {
+>          return get_phys_addr_v5(env, address, access_type, mmu_idx,
+> -                                    phys_ptr, prot, page_size, fi);
+> +                                &result->phys, &result->prot,
+> +                                &result->page_size, fi);
+>      }
+>  }
+>=20=20
+> @@ -2534,21 +2544,16 @@ hwaddr arm_cpu_get_phys_page_attrs_debug(CPUState=
+ *cs, vaddr addr,
+>  {
+>      ARMCPU *cpu =3D ARM_CPU(cs);
+>      CPUARMState *env =3D &cpu->env;
+> -    hwaddr phys_addr;
+> -    target_ulong page_size;
+> -    int prot;
+> -    bool ret;
+> +    GetPhysAddrResult res =3D {};
+>      ARMMMUFaultInfo fi =3D {};
+>      ARMMMUIdx mmu_idx =3D arm_mmu_idx(env);
+> -    ARMCacheAttrs cacheattrs =3D {};
+> +    bool ret;
+>=20=20
+> -    *attrs =3D (MemTxAttrs) {};
+> -
+> -    ret =3D get_phys_addr(env, addr, MMU_DATA_LOAD, mmu_idx, &phys_addr,
+> -                        attrs, &prot, &page_size, &fi, &cacheattrs);
+> +    ret =3D get_phys_addr(env, addr, MMU_DATA_LOAD, mmu_idx, &res, &fi);
+> +    *attrs =3D res.attrs;
+>=20=20
+>      if (ret) {
+>          return -1;
+>      }
+> -    return phys_addr;
+> +    return res.phys;
+>  }
+> diff --git a/target/arm/tlb_helper.c b/target/arm/tlb_helper.c
+> index 7476fcafeb..28495ff525 100644
+> --- a/target/arm/tlb_helper.c
+> +++ b/target/arm/tlb_helper.c
+> @@ -209,11 +209,8 @@ bool arm_cpu_tlb_fill(CPUState *cs, vaddr address, i=
+nt size,
+>  {
+>      ARMCPU *cpu =3D ARM_CPU(cs);
+>      ARMMMUFaultInfo fi =3D {};
+> -    hwaddr phys_addr;
+> -    target_ulong page_size;
+> -    int prot, ret;
+> -    MemTxAttrs attrs =3D {};
+> -    ARMCacheAttrs cacheattrs =3D {};
+> +    GetPhysAddrResult res =3D {};
+> +    int ret;
+>=20=20
+>      /*
+>       * Walk the page table and (if the mapping exists) add the page
+> @@ -223,8 +220,7 @@ bool arm_cpu_tlb_fill(CPUState *cs, vaddr address, in=
+t size,
+>       */
+>      ret =3D get_phys_addr(&cpu->env, address, access_type,
+>                          core_to_arm_mmu_idx(&cpu->env, mmu_idx),
+> -                        &phys_addr, &attrs, &prot, &page_size,
+> -                        &fi, &cacheattrs);
+> +                        &res, &fi);
+>      if (likely(!ret)) {
+>          PageEntryExtra extra =3D {};
+>=20=20
+> @@ -234,22 +230,22 @@ bool arm_cpu_tlb_fill(CPUState *cs, vaddr address, =
+int size,
+>           * pass in the exact addresses.  This only happens for M-profile,
+>           * which does not use or require PageEntryExtra.
+>           */
+> -        if (page_size >=3D TARGET_PAGE_SIZE) {
+> -            phys_addr &=3D TARGET_PAGE_MASK;
+> +        if (res.page_size >=3D TARGET_PAGE_SIZE) {
+> +            res.phys &=3D TARGET_PAGE_MASK;
+>              address &=3D TARGET_PAGE_MASK;
+>=20=20
+>              /* Record some particulars for later lookup. */
+> -            extra.x =3D phys_addr;
+> +            extra.x =3D res.phys;
+>              extra.x =3D FIELD_DP64(extra.x, PAGEENTRYEXTRA, ATTRS,
+> -                                 cacheattrs.attrs);
+> +                                 res.cacheattrs.attrs);
+>              extra.x =3D FIELD_DP64(extra.x, PAGEENTRYEXTRA, SHAREABILITY,
+> -                                 cacheattrs.shareability);
+> +                                 res.cacheattrs.shareability);
+>              extra.x =3D FIELD_DP64(extra.x, PAGEENTRYEXTRA, GUARDED,
+> -                                 cacheattrs.guarded);
+> +                                 res.cacheattrs.guarded);
+>          }
+>=20=20
+> -        tlb_set_page_with_extra(cs, address, phys_addr, attrs, extra,
+> -                                prot, mmu_idx, page_size);
+> +        tlb_set_page_with_extra(cs, address, res.phys, res.attrs, extra,
+> +                                res.prot, mmu_idx, res.page_size);
+>          return true;
+>      } else if (probe) {
+>          return false;
 
-yes.
 
-Peter D. experimented with IPMI. See :
-
-   https://lore.kernel.org/qemu-devel/20220630045133.32251-14-me@pjd.dev/
-
-We also merged a new machine including a BMC ast2600 running OpenBMC
-and an ast1030 SoC running OpenBIC. Work to interconnect them on the
-same I2C bus is in progress.
-
-Thanks,
-
-C.
+--=20
+Alex Benn=C3=A9e

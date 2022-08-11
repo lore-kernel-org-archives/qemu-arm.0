@@ -1,102 +1,98 @@
-Received: by 2002:a17:906:3b11:0:0:0:0 with SMTP id g17csp651049ejf;
-        Thu, 11 Aug 2022 10:16:41 -0700 (PDT)
-X-Google-Smtp-Source: AA6agR4BaEudZea0mWbjUS5p9RCOqA5chu7Jp8JlVwm+qZKK9+9s/jSBwRnMzDdTmirloLero4Dj
-X-Received: by 2002:ac8:5dce:0:b0:343:605c:be24 with SMTP id e14-20020ac85dce000000b00343605cbe24mr98702qtx.123.1660238200867;
-        Thu, 11 Aug 2022 10:16:40 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1660238200; cv=none;
+Received: by 2002:a17:906:3b11:0:0:0:0 with SMTP id g17csp651500ejf;
+        Thu, 11 Aug 2022 10:17:20 -0700 (PDT)
+X-Google-Smtp-Source: AA6agR7kcYDRbXq8VSGaJyavMZ6Wml3m7Uzh6pECZohLlV27IPWSY35pWEZqLp9IHbVFR83blh17
+X-Received: by 2002:a37:9606:0:b0:6b9:8a88:b2bd with SMTP id y6-20020a379606000000b006b98a88b2bdmr8844103qkd.381.1660238239845;
+        Thu, 11 Aug 2022 10:17:19 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1660238239; cv=none;
         d=google.com; s=arc-20160816;
-        b=gH3hToE1y6BbzLok6bS6+Uryt9thzRxRO2YsEupP9TVet1cwtoRUkGE7OzoY3YiFMa
-         YtyWDWuwlGEnhLFQLuXxvtDWpLmV6UnQn0J7iezQ00Jdx4kMBXy3Y5JWdcz3GiwAVOrG
-         6QMWDTfekDQjfwONXbBVxr4W9LU9CZQUjK+qvVqlhanNlkRmglUsBwSPxg2ix/Tew2qh
-         vzVuXydNoiK8W+IiK9BfNB7IuoNKhIqequHqwYaIP/ft26CISO0twL/9z7XXTzYUmu5Q
-         gyneARkULXyn4KoJpSk3d04oFa4nCbxOqNc6k/gYq5k7rZsSPuS65KDjOyudmaiPD5Zy
-         UZ5Q==
+        b=l2ak9CetZ1fSNwuabbf9A4+3d4oTIXDpIhnksxB/JBGM4jjJgKGOA1YzHwE2E5UACi
+         pvuiPSg4+vKJ5pu3ow/1YDrlxl8uqqFrvxujldKD/uxaFQfad7tnWl+HiIZE8AkV+6qw
+         iui+1zMmFO1kN55iraiNWalnEcz+7iLJ9/3bThMF8gJ2b3kfUiZt7mJuUsAKQR+fdY/C
+         8M7ZWwx4blaAv0FWrITh5ozCe0OkWO89TH7Y4jmCET26kO/unLkW99hgDdxF1GJogtQz
+         wyRCIP9tXeKtyxyRP8Phao0a2ctzADyZg4qXwHwreCxX2xyemHwQGv5VNH0LtoISQbTM
+         RL5A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=bBQi63nUBjyD4P8li6gSvAkrvfkoQz4taZFgjQpefug=;
-        b=IENbMUqxc+30y8xn+bg0bOeXPG+1SN7KZXiL2S0daESxGKLXk4tItkwmAJh3nLJoYB
-         vx89Xep4R5NuE119vilOYwc+hFq+Xyycclb+8uTQ9Ax9A6xVsCBF7vI1C3RH1yaYn6NW
-         JDLa7AYNv9Smb0aCZSgTVgmr9BJF4zWumwwWdrtY0gkP6QU4adC/SrtLvHaacMliFD1+
-         COhS6I1fL7itJxMYXEDI0uXZPL2WYeOuVti4xVzDdx8OEqmIgjcfymecJJvVFPM1VTyX
-         PM0qK+yOgV1YTezsEM5euBvE4ocKi8eQeKOnBWerQlT8ZEMOtoc46DfDyqi2gbuKLuXh
-         KGzw==
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=LAPtWKrKaZqjEi+4+qsyZ39lAOW3AbKKlekZOCCWKzU=;
+        b=AaxPvf4x78bT8eI8f6EBd95cUetXL6rdr7qDJJLiRepA119/bpteogp6MM5R0pbyuz
+         FNeh3s0kAVlF5aZ+JUD7Y3qvnCM58ia9qG7tvUYRiDdV5xdpyxokdBahN/rWUveqg70E
+         r0gXQkEd4BHvuk9houj6KwxulFXW5krsjJkzKLm88Oagh4N89YxbiK1145EkxKgeX+3r
+         8jYEC3RZ/2OJ5Hl2j49hV2s5YhaANPnL/TAFRvBlzmf00df+ydFoS9IwjBKXoOmeU2SG
+         Mcv2rdRvvgNDo5Rqp5tj9/LJSYlo5VTxf4tZYTBmtguUTpIWOA0Y2w4NEfVW5rmWZk1W
+         tG6A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=PbYn+Imq;
+       dkim=pass header.i=@linaro.org header.s=google header.b="pGRI/RsF";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id m20-20020aed27d4000000b003192a70cb93si34312qtg.127.2022.08.11.10.16.40
+        by mx.google.com with ESMTPS id o4-20020ac85a44000000b0031ee3fceb62si2317016qta.524.2022.08.11.10.17.19
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 11 Aug 2022 10:16:40 -0700 (PDT)
+        Thu, 11 Aug 2022 10:17:19 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=PbYn+Imq;
+       dkim=pass header.i=@linaro.org header.s=google header.b="pGRI/RsF";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:38922 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:41720 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1oMBnU-0006le-Bg
-	for alex.bennee@linaro.org; Thu, 11 Aug 2022 13:16:40 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:43014)
+	id 1oMBo7-0000GJ-AJ
+	for alex.bennee@linaro.org; Thu, 11 Aug 2022 13:17:19 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:43080)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1oMBnF-0006jV-QL
- for qemu-arm@nongnu.org; Thu, 11 Aug 2022 13:16:25 -0400
-Received: from mail-wm1-x32d.google.com ([2a00:1450:4864:20::32d]:33489)
+ id 1oMBnH-0006mY-Cq
+ for qemu-arm@nongnu.org; Thu, 11 Aug 2022 13:16:27 -0400
+Received: from mail-wm1-x32d.google.com ([2a00:1450:4864:20::32d]:37848)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1oMBnE-0000sP-2c
- for qemu-arm@nongnu.org; Thu, 11 Aug 2022 13:16:25 -0400
+ id 1oMBnE-0000sH-2l
+ for qemu-arm@nongnu.org; Thu, 11 Aug 2022 13:16:27 -0400
 Received: by mail-wm1-x32d.google.com with SMTP id
- a18-20020a05600c349200b003a30de68697so3020813wmq.0
+ c187-20020a1c35c4000000b003a30d88fe8eso3044146wma.2
  for <qemu-arm@nongnu.org>; Thu, 11 Aug 2022 10:16:23 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:to:from:from:to:cc;
- bh=bBQi63nUBjyD4P8li6gSvAkrvfkoQz4taZFgjQpefug=;
- b=PbYn+ImqxRrZalnxqoq/L7G3eeVOoA1PJW/yAjviXUWAX+SeJOcxBlEcleqJiCZMpN
- FrLIdXdmMJzuy4ZYThI8Cf2Bv/VTFdyeDK0Uak54EHTMy/FH9qzaAUZc0Sn4f4aYtIio
- KXyZAa4mgg+atjvuZShVXpjgTnyyQ4sSINOT53lo5uEc4HHfrfaA80potRaKMlqq5QSS
- j1KbJajodGlcLI4pIFPOQsRucVtFaagMSu48mmoA3e4EO+DBvsy27PH3PVWK13MbK8eQ
- 0vAa9g+l0huGd8R6ZD7RqYlo3AsoX9jdqnBnMg7gJNEUo4JSSFJ/tinXBkPiq+2Equhd
- 5RsQ==
+ h=content-transfer-encoding:mime-version:message-id:date:subject:to
+ :from:from:to:cc;
+ bh=LAPtWKrKaZqjEi+4+qsyZ39lAOW3AbKKlekZOCCWKzU=;
+ b=pGRI/RsFcnnKlcZ0VsCfUSq1w7tIY9lfBhEqS3zVmdv0LncpOaFuB0Fkg7gDZLUAEt
+ DV0dpunuy4zlOTbEpDvcxyeO3FRSnZ+KhHBCn0Z/vgmA3ecqk3nI/blrb/StPNJWp68V
+ 7F509+FXi00Sivz9Fe2k9+KW6LmWfUM8mFWFOxSUoHJWUCymmqNFPrTmgIcsapG9urhv
+ VdfQzQ+C2PHtZzs8UdWM0WLKQfPVn2ERGyX4QxQYjdPOChnI7aRfVVLUguGo2POhVL2G
+ 7bDzAFcEnLSwEKb0SByQb4fcEarut9336NFbPB1eNa7CqbhxEMpgXgYINVLNWBU4CdWf
+ u4fg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:to:from:x-gm-message-state:from:to:cc;
- bh=bBQi63nUBjyD4P8li6gSvAkrvfkoQz4taZFgjQpefug=;
- b=zDsBrXVp+o6fgnan8/usCb+TuF88zTWQkYkeeJRuB6lYiLjXVfqA/SCMeea+7FIsLM
- RQhA0SwyWBq5OQSZGeRGDj3VJzGWNyht4oClfqYqcWBqPwyCgX65NFDl3kFfikIgWLjK
- MrLyADk/hKjbmV0EwaFvfFpWwOlfnqPwKmugeUnDglYowvXrXtRcFbkKPQVT7dIwIa4h
- QCCHSPYUcqi4KqKYd2zi/lOpJvdNm6DFM1eLQx//7Qi2nFlnNHJ8FkWTbd59nDrHZ9Pg
- fqwhNQei0vrXXNumWu3Zlazfp4zXngXYRGJ2d5/p2mvvUUyZfrdlIFTSwYOk6QIIzedT
- QfFg==
-X-Gm-Message-State: ACgBeo0iqc5aofiV66ESzV0sTbeSSGHc8zCQ9y+bsblzPBpsuPSnB5WR
- ybOo/J5TmKrqzedgoeiYmYM9ZRDsL28DFw==
-X-Received: by 2002:a1c:6a0a:0:b0:3a5:bcad:f2cc with SMTP id
- f10-20020a1c6a0a000000b003a5bcadf2ccmr2907305wmc.74.1660238181983; 
+ h=content-transfer-encoding:mime-version:message-id:date:subject:to
+ :from:x-gm-message-state:from:to:cc;
+ bh=LAPtWKrKaZqjEi+4+qsyZ39lAOW3AbKKlekZOCCWKzU=;
+ b=S/I4rffq1FmS3JVQmWNwefYpbzfV442fR5W7SgcHzi9svvZ3OKZMYWEqNVKwLyMS9t
+ X232fTQjEgfHrfLwRXkTdc9AGr/xpOPSFNM0i/16oryYw55mUoleP3Am61TN9EfwqobU
+ 4U/TgTU8fOqUjKBCLhkB/LCsGEC5rkYkJeQaYr+ns8tL26Pj5AhEkHSiURvuFnCCSMc0
+ daAgaTCJM5YZzujqUeOHY2ATDXb3fxiN6NPYIDguOao7aWWrTwgdeCKctfoS+NR+AhEU
+ vvAjYaDQ/a07692T01l/xIh4LU37Casr6DfsqWxE/BxD0ddtJRASVtgfQ5DxHHTwLO4K
+ tZUg==
+X-Gm-Message-State: ACgBeo3mrtLgeISrK8Ez/Jyv377csiKr9sx5nlDhnjDcLwHoOGXbi5NA
+ Mfi76Se1CnrXzU0WpAJK4iAFbiFV0tjfQg==
+X-Received: by 2002:a1c:541b:0:b0:3a5:411:5575 with SMTP id
+ i27-20020a1c541b000000b003a504115575mr139082wmb.65.1660238181177; 
  Thu, 11 Aug 2022 10:16:21 -0700 (PDT)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
  by smtp.gmail.com with ESMTPSA id
- b1-20020a05600c4e0100b003a2f6367049sm6633918wmq.48.2022.08.11.10.16.21
+ b1-20020a05600c4e0100b003a2f6367049sm6633918wmq.48.2022.08.11.10.16.20
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 11 Aug 2022 10:16:21 -0700 (PDT)
+ Thu, 11 Aug 2022 10:16:20 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH 01/10] target/arm: Don't corrupt high half of PMOVSR when
- cycle counter overflows
-Date: Thu, 11 Aug 2022 18:16:10 +0100
-Message-Id: <20220811171619.1154755-2-peter.maydell@linaro.org>
+Subject: [PATCH 00/10] target/arm: Implement FEAT_PMUv3p5
+Date: Thu, 11 Aug 2022 18:16:09 +0100
+Message-Id: <20220811171619.1154755-1-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20220811171619.1154755-1-peter.maydell@linaro.org>
-References: <20220811171619.1154755-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Received-SPF: pass client-ip=2a00:1450:4864:20::32d;
@@ -122,30 +118,45 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: rVgvJqcdZQZh
+X-TUID: u8p8E3R2NzTj
 
-When the cycle counter overflows, we are intended to set bit 31 in PMOVSR
-to indicate this. However a missing ULL suffix means that we end up
-setting all of bits 63-31. Fix the bug.
+This patchset implements the Armv8.5 feature FEAT_PMUv3p5, which is
+a set of minor enhancements to the PMU:
+ * EL2 and EL3 can now prohibit the cycle counter from counting
+   when in EL2 or when Secure, using new MDCR_EL2.HCCD and
+   MDCR_EL3.SCCD bits
+ * event counters are now 64 bits, with the overflow detection
+   configurably at the 32 bit or 64 bit mark
 
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
- target/arm/helper.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+It also fixes a set of bugs in the existing PMU emulation which I
+discovered while trying to test my additions.
 
-diff --git a/target/arm/helper.c b/target/arm/helper.c
-index d7bc467a2a5..87c89748954 100644
---- a/target/arm/helper.c
-+++ b/target/arm/helper.c
-@@ -1186,7 +1186,7 @@ static void pmccntr_op_start(CPUARMState *env)
-         uint64_t overflow_mask = env->cp15.c9_pmcr & PMCRLC ? \
-                                  1ull << 63 : 1ull << 31;
-         if (env->cp15.c15_ccnt & ~new_pmccntr & overflow_mask) {
--            env->cp15.c9_pmovsr |= (1 << 31);
-+            env->cp15.c9_pmovsr |= (1ULL << 31);
-             pmu_update_irq(env);
-         }
- 
+This is of course all intended for 7.2.
+
+thanks
+-- PMM
+
+Peter Maydell (10):
+  target/arm: Don't corrupt high half of PMOVSR when cycle counter
+    overflows
+  target/arm: Correct value returned by pmu_counter_mask()
+  target/arm: Don't mishandle count when enabling or disabling PMU
+    counters
+  target/arm: Ignore PMCR.D when PMCR.LC is set
+  target/arm: Honour MDCR_EL2.HPMD in Secure EL2
+  target/arm: Detect overflow when calculating next PMU interrupt
+  target/arm: Rename pmu_8_n feature test functions
+  target/arm: Implement FEAT_PMUv3p5 cycle counter disable bits
+  target/arm: Support 64-bit event counters for FEAT_PMUv3p5
+  target/arm: Report FEAT_PMUv3p5 for TCG '-cpu max'
+
+ target/arm/cpu.h       |  37 ++++++--
+ target/arm/internals.h |   5 +-
+ target/arm/cpu64.c     |   2 +-
+ target/arm/cpu_tcg.c   |   2 +-
+ target/arm/helper.c    | 197 ++++++++++++++++++++++++++++++++---------
+ 5 files changed, 190 insertions(+), 53 deletions(-)
+
 -- 
 2.25.1
 

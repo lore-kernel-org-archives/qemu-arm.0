@@ -1,115 +1,115 @@
-Received: by 2002:a17:906:3b11:0:0:0:0 with SMTP id g17csp1311381ejf;
-        Fri, 12 Aug 2022 11:49:43 -0700 (PDT)
-X-Google-Smtp-Source: AA6agR58J/W16c846wCgT8sSkq3n3P7JO0RlkRjBXyMStaC1u7TP2m9NnTqBJshipCuM2J60Z4HL
-X-Received: by 2002:a05:6214:c8c:b0:479:2293:4cd9 with SMTP id r12-20020a0562140c8c00b0047922934cd9mr4678719qvr.104.1660330183012;
-        Fri, 12 Aug 2022 11:49:43 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1660330183; cv=none;
+Received: by 2002:a17:906:3b11:0:0:0:0 with SMTP id g17csp1386277ejf;
+        Fri, 12 Aug 2022 15:03:48 -0700 (PDT)
+X-Google-Smtp-Source: AA6agR4XppnMCu8Pn8OUd2u58+zgpGUZinIF4vbbQ81EBcENLhByOspMSAT7QnHDFk5UwcnndEbr
+X-Received: by 2002:a0c:9071:0:b0:489:d8ec:8abf with SMTP id o104-20020a0c9071000000b00489d8ec8abfmr2450062qvo.102.1660341828617;
+        Fri, 12 Aug 2022 15:03:48 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1660341828; cv=none;
         d=google.com; s=arc-20160816;
-        b=oHos6XRnvrfRZncRCXHFFZ0NLukF2RIYlsbLBhMF+JIYBTRyLCWEc3g96Pb5bSG19D
-         DlFYe+D14pIYFF5RC+aagUj9Yc4Qr3EiTY77/eEgv/gH4Y5wwVx+uAHzRnAhrFzYQiS6
-         IHWp4d9Pe84d7v0XT+nD1LcDFdKZVuRevhMatnSDvhyS01VbvpDIV6F5y31ssMiSH6f3
-         kbMo48NETjI7UlPRCrdoIqIgF8H20u/Ut0MK7gmGjAJvqTGPlqB7QAKyvgSW0ea4fpBO
-         ObYL4a9dNeeetV5HR9znvM3FABXMRjKs4Ql/KMOEoC6t9r4BW7cr04oMzASf7MMA/nNa
-         H8Cg==
+        b=Bus25sOD9QECplh/BXkZa/ND4cDPqGzgeq6PCVRZHaVOECN9zHo70vAVisu6VUWfHn
+         gWfCpVurfJJJLt+wqjwygyZPsvjuERty8p3ciuK7ep9TN5W8CvCj+SYWBr4euNHmHgin
+         uRx2PnUZO/FCrWFcwV+3feWQJToMO2QtdIlMSwWi7rNwPzwI/M94tg5y4yJhsZrnurXu
+         Fg+DKQ7AXMDefailmSR4F9f7YbPMhRLCkfucpdcH8qTwC/cxQnshSIF1gWmP337r/b+7
+         Z5S9pCFIcHAbBzLV7pIsPFGBYpHemg2oYMZTtHiyyGVeiFmBdVd+umIfX2WRQYAimChe
+         IvOQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:to:content-language:subject:user-agent
-         :mime-version:date:message-id:dkim-signature;
-        bh=gTqMZbvThYf+YZ8rZTncJub37ToENrJ/c+STF8b9lyU=;
-        b=itlIQw80M0Gg+wAj3wsJ4FZ+H0QA3Suk8JMsm5afQTHuSLKfz3r4jKYfy0MM8ZMQQJ
-         y7OhBM+T4xIp7qIBElvJyyVCoTqT/fsVYhj68rR/1ranULie60Gk+xBeEFhBM1RqvHuM
-         sBzYVzljEfEUnGbrz0ZIEEjxRg3QOxZrojTFz9asYEsbAjy+7QEKPZ+9B4J+GQB9sLHB
-         nvh54HMA+M/xmyO0ef2P7c73IBPTp+ZzJdj0gXHN4aYZApvhgG93rBDw49bugLJrd9hF
-         qpBxbmlx+Fh1Mb7HACB6FTM2Cgg/EPSA/oPe1dVnx+sNvymV0hPz/6oel1GCz1K6xaDh
-         l/Cw==
+         :in-reply-to:from:references:cc:to:content-language:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=kM9vEiKOIgNnWwn/LCRDisQyrRsPNNHjB+s+Dk18WAk=;
+        b=sRZiMQoIMpRep2egeXFVRhBmwGW/7GTIewj7tc9RxL7MZ9U1QJQ7CtibF6VpqdwTAc
+         xBp4tzlCsg3LcmWUgpDtpP/65AS5pYFTZ4Vj6NJmLkT4+9b2S2btKwhZ0JfSslYsCFk7
+         7/F2fNErw9kJv56HmBKwVq71hw+iQwpvyx0OOq0jqIBSWm/4BP2JUgo70Fpi5tWrAAUx
+         Rx/3eoN4YHtTqC3M1ylkj5rJ+pLy4SpGrrNwiTLrrjhg9uOXvzQ7twUTmiZY23BSDdk6
+         BJ5YJ4rOnEp1EvDEbqmU6s5NYyWP7zIE6/RbfFNxFN/KMCdBNJxPAnaVap8r3Wc3uY/P
+         VQVg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=YSNkC6Y4;
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=HEnChPUE;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t10-20020ad45bca000000b0047b295589d2si1489906qvt.554.2022.08.12.11.49.42
+        by mx.google.com with ESMTPS id 4-20020a0562140d6400b0047b2f67cd2esi1944726qvs.235.2022.08.12.15.03.48
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 12 Aug 2022 11:49:42 -0700 (PDT)
+        Fri, 12 Aug 2022 15:03:48 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=YSNkC6Y4;
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=HEnChPUE;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:44598 helo=lists1p.gnu.org)
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:57786 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1oMZj4-0001zk-A2
-	for alex.bennee@linaro.org; Fri, 12 Aug 2022 14:49:42 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:55518)
+	id 1oMcku-0006Y4-4G
+	for alex.bennee@linaro.org; Fri, 12 Aug 2022 18:03:48 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33954)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1oMZB0-0003Yk-HC
- for qemu-arm@nongnu.org; Fri, 12 Aug 2022 14:14:30 -0400
-Received: from mail-pl1-x62c.google.com ([2607:f8b0:4864:20::62c]:35637)
+ (Exim 4.90_1) (envelope-from <danielhb413@gmail.com>)
+ id 1oMckg-0006Vh-Ei; Fri, 12 Aug 2022 18:03:34 -0400
+Received: from mail-ua1-x929.google.com ([2607:f8b0:4864:20::929]:37803)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1oMZAy-0007Ha-Nn
- for qemu-arm@nongnu.org; Fri, 12 Aug 2022 14:14:30 -0400
-Received: by mail-pl1-x62c.google.com with SMTP id y1so1427031plb.2
- for <qemu-arm@nongnu.org>; Fri, 12 Aug 2022 11:14:28 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=content-transfer-encoding:in-reply-to:from:references:to
+ (Exim 4.90_1) (envelope-from <danielhb413@gmail.com>)
+ id 1oMcke-00084k-Kv; Fri, 12 Aug 2022 18:03:34 -0400
+Received: by mail-ua1-x929.google.com with SMTP id 38so803869uau.4;
+ Fri, 12 Aug 2022 15:03:31 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc; bh=gTqMZbvThYf+YZ8rZTncJub37ToENrJ/c+STF8b9lyU=;
- b=YSNkC6Y4lrG6oOWpZrc3ZbrUPYlspKbsgnBnDdopJtAFYN89tFn1NyjrwxkUB3j/uG
- GiN75U1vZxaCdMZYgOEAfNo9yKdahkuD3Vy6aftuKvpz/Sjj2+VnLR8ZEPjaMUcrrrE7
- /+LNZdH6pRLSZxpdH37rS9XuqxBR/bkfVRF6oCW99fKsYxF2J4PKTtQuyXxSME6vz0Nu
- o6MiyiuFsHGEQsb9vk55jAe3KN6h45hn8LUuSdluATyzOnvTNPN8xMr6cVl1ruJhkGxl
- WsBn/xesY3S05cAwJ8H+bapbxeYmM2EOXA1EHrXY03kGuM0AiJGcwytvdiDP8GQqoLsO
- /5dA==
+ :from:to:cc; bh=kM9vEiKOIgNnWwn/LCRDisQyrRsPNNHjB+s+Dk18WAk=;
+ b=HEnChPUEWm99Dg7LdYrDEdQUkxoc5g5kYbnVIKALoCsHtebPYJ4jh5DpY16lxYGfpi
+ cdHsISNwu2866wmpq2lQBjt1Sss+ekR90oO2pNQk3k4XfCtgucGWmH19Fi4KklrrsCm0
+ EbHn4R8oPyoDW+OAr0z9bkEC99G9JQfXyLorW92SEGslrL/SCuAw2GOrXBhNSWeHAMAk
+ /jXzz0xAjMw1x9UlN1zJ2RNjnY9618NghdKfTajKvUCG9bds23GWS+7JGSwEnPEUvGsL
+ 4FAd9jvsDfYX9vwaz4mXGprCfesVgEE4tIkbK3Xax/LXH2RKdM0qFLkQqvKGlAM1BNe7
+ eToQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=content-transfer-encoding:in-reply-to:from:references:to
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc;
- bh=gTqMZbvThYf+YZ8rZTncJub37ToENrJ/c+STF8b9lyU=;
- b=gV5R2TY7Kbc+DQy/2b2BTpI28eh4QWNB2xdFLAVLoZTJGPAb5XBhtwdpcc11vykwHm
- FTrpTPZcdNEcqnm+AoWz/x19fZ+l/RtLkYwckad6EBUBFFm2T4L/0DJxlJijjjN6ZnNp
- uMMl1rFYbKaZYtTHUB5zMVI2wMimJOFf/ERpGck8LKK2/auBuDCt8dnbVa84f8+/rDst
- NtIPEtsC/vrCk6CCc9zfF5H1FfFJe2JJLTtBmja2v8kaBIMBJG66t6jFSfyXg3J0F9xw
- bmDM1RijkzU0k95TWxenyLT74/sJ0txVCH2rlXAaBYXdItdENi1P3jJa7xR9J0wGwo5O
- G2Tg==
-X-Gm-Message-State: ACgBeo2iYHeG0cPbe0IoQ0kV4NCUhrozYsoaeyjA6JW2ig1dk8fnRZ8C
- fDtmqkDYYG8gdFjqXQsh2nOKfQ==
-X-Received: by 2002:a17:90a:9b85:b0:1fa:5d22:c92 with SMTP id
- g5-20020a17090a9b8500b001fa5d220c92mr77002pjp.51.1660328067085; 
- Fri, 12 Aug 2022 11:14:27 -0700 (PDT)
-Received: from ?IPV6:2602:ae:154e:e201:a7aa:1d1d:c857:5500?
- ([2602:ae:154e:e201:a7aa:1d1d:c857:5500])
- by smtp.gmail.com with ESMTPSA id
- t17-20020a656091000000b00415d873b7a2sm1625154pgu.11.2022.08.12.11.14.25
+ bh=kM9vEiKOIgNnWwn/LCRDisQyrRsPNNHjB+s+Dk18WAk=;
+ b=ix2719DQfRbibO1nGiJA4L0xGRRaSGMDP21kqmlQS8a4AAOesy2C5Mp7CefYgYYtFK
+ YvjSFR1gr0biO23zIJR/ZOqkjlB5rJapA0OlR5l2ikVfXhQl+5+ecF4g3kyn5SUgpNdl
+ r+ZvGnDR3pWkT6pYe54NMaL2IkiObEQRKhNtxo4aq/8yexpBnB2fHJO2bPOQFuxyWT3K
+ FmgfuFPkxXI6my8f35ZEDVfdQrYAtcjkcRZbvzBN33AzNPFsYOm62AXNkAaPFMds5Yl7
+ tF/l4pVZ2IrYz4rIpUtWw3IwX42ufNf4Tx+Q3ezz5rsLxOjQ+X7wB+2IUBICe+HB4GT5
+ mF/g==
+X-Gm-Message-State: ACgBeo1n3gxv25N+U/gx5ehUX/kH9Zd3el1nwfsTZsHjuaITj6KA/vms
+ Xza2XdxuzI6jxZEZVNoP8mw=
+X-Received: by 2002:ab0:3da5:0:b0:382:7933:fdcc with SMTP id
+ l37-20020ab03da5000000b003827933fdccmr2817471uac.88.1660341810867; 
+ Fri, 12 Aug 2022 15:03:30 -0700 (PDT)
+Received: from [192.168.10.102] (201-43-216-47.dsl.telesp.net.br.
+ [201.43.216.47]) by smtp.gmail.com with ESMTPSA id
+ m23-20020a056102053700b00388510a234dsm2004831vsa.4.2022.08.12.15.03.28
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 12 Aug 2022 11:14:25 -0700 (PDT)
-Message-ID: <6bf620cd-6601-e624-ac4b-9d2f5f4a11d0@linaro.org>
-Date: Fri, 12 Aug 2022 11:14:24 -0700
+ Fri, 12 Aug 2022 15:03:30 -0700 (PDT)
+Message-ID: <2414971c-5e65-96f2-26ee-6d0a35823bdd@gmail.com>
+Date: Fri, 12 Aug 2022 19:03:26 -0300
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.11.0
-Subject: Re: [PATCH] target/arm: Rearrange cpu64.c so all the CPU initfns are
- together
+ Thunderbird/91.12.0
+Subject: Re: [PATCH for-7.2 v2 01/20] hw/arm: do not free machine->fdt in
+ arm_load_dtb()
 Content-Language: en-US
-To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
-References: <20220812174156.1460714-1-peter.maydell@linaro.org>
-From: Richard Henderson <richard.henderson@linaro.org>
-In-Reply-To: <20220812174156.1460714-1-peter.maydell@linaro.org>
+To: David Gibson <david@gibson.dropbear.id.au>
+Cc: qemu-devel@nongnu.org, alistair.francis@wdc.com,
+ Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org
+References: <20220805093948.82561-1-danielhb413@gmail.com>
+ <20220805093948.82561-2-danielhb413@gmail.com> <YvCBwE200sVzMixz@yekko>
+From: Daniel Henrique Barboza <danielhb413@gmail.com>
+In-Reply-To: <YvCBwE200sVzMixz@yekko>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::62c;
- envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x62c.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.001,
+Received-SPF: pass client-ip=2607:f8b0:4864:20::929;
+ envelope-from=danielhb413@gmail.com; helo=mail-ua1-x929.google.com
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001, NICE_REPLY_A=-0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
@@ -126,34 +126,94 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: CWk2Lg1I+qD/
+X-TUID: yev5lEqpZ+KD
 
-On 8/12/22 10:41, Peter Maydell wrote:
-> cpu64.c has ended up in a slightly odd order -- it starts with the
-> initfns for most of the models-real-hardware CPUs; after that comes a
-> bunch of support code for SVE, SME, pauth and LPA2 properties.  Then
-> come the initfns for the 'host' and 'max' CPU types, and then after
-> that one more models-real-hardware CPU initfn, for a64fx.  (This
-> ordering is partly historical and partly required because a64fx needs
-> the SVE properties.)
+David,
+
+On 8/8/22 00:23, David Gibson wrote:
+> On Fri, Aug 05, 2022 at 06:39:29AM -0300, Daniel Henrique Barboza wrote:
+>> At this moment, arm_load_dtb() can free machine->fdt when
+>> binfo->dtb_filename is NULL. If there's no 'dtb_filename', 'fdt' will be
+>> retrieved by binfo->get_dtb(). If get_dtb() returns machine->fdt, as is
+>> the case of machvirt_dtb() from hw/arm/virt.c, fdt now has a pointer to
+>> machine->fdt. And, in that case, the existing g_free(fdt) at the end of
+>> arm_load_dtb() will make machine->fdt point to an invalid memory region.
+>>
+>> This is not an issue right now because there's no code that access
+>> machine->fdt after arm_load_dtb(), but we're going to add a couple do
+>> FDT HMP commands that will rely on machine->fdt being valid.
+>>
+>> Instead of freeing 'fdt' at the end of arm_load_dtb(), assign it to
+>> machine->fdt. This will allow the FDT of ARM machines that relies on
+>> arm_load_dtb() to be accessed later on.
+>>
+>> Since all ARM machines allocates the FDT only once, we don't need to
+>> worry about leaking the existing FDT during a machine reset (which is
+>> something that other machines have to look after, e.g. the ppc64 pSeries
+>> machine).
+>>
+>> Cc: Peter Maydell <peter.maydell@linaro.org>
+>> Cc: qemu-arm@nongnu.org
+>> Signed-off-by: Daniel Henrique Barboza <danielhb413@gmail.com>
+>> ---
+>>   hw/arm/boot.c | 8 +++++++-
+>>   1 file changed, 7 insertions(+), 1 deletion(-)
+>>
+>> diff --git a/hw/arm/boot.c b/hw/arm/boot.c
+>> index ada2717f76..9f5ceb62d2 100644
+>> --- a/hw/arm/boot.c
+>> +++ b/hw/arm/boot.c
+>> @@ -684,7 +684,13 @@ int arm_load_dtb(hwaddr addr, const struct arm_boot_info *binfo,
+>>        */
+>>       rom_add_blob_fixed_as("dtb", fdt, size, addr, as);
+>>   
+>> -    g_free(fdt);
+>> +    /*
+>> +     * Update the ms->fdt pointer to enable support for 'dumpdtb'
+>> +     * and 'info fdt' commands. Use fdt_pack() to shrink the blob
+>> +     * size we're going to store.
+>> +     */
+>> +    fdt_pack(fdt);
+>> +    ms->fdt = fdt;
+>>   
+>>       return size;
 > 
-> Reorder the file into:
->   * CPU property support functions
->   * initfns for real hardware CPUs
->   * initfns for host and max
->   * class boilerplate
+> fdt_pack() could change (reduce) the effective size of the dtb blob,
+> so returning a 'size' value from above rather than the new value of
+> fdt_totalsize(fdt) doesn't see right.
+
+After some thought I think executing fdt_pack() like I'm doing here is not
+a good idea. The first problem is that I'm not returning the updated size,
+as you've said.
+
+But I can't just amend a 'return fdt_totalsize(fdt);' either. I'm packing the
+FDT **after** the machine store it in the guest physical memory. If I return
+the packed size, but the machine isn't packing the FDT before a
+cpu_physical_memory_write(), I'll be under-reporting the FDT size written.
+
+Machines such as e500 (patch 4) uses this returned value to put more stuff in
+the guest memory. In that case, returning a smaller size that what was actually
+written can cause the machine to overwrite the FDT by accident. In fact, only
+a handful of machines (ppc/pseries, ppc/pvn, riscv, oepenrisc) is doing a
+fdt_pack() before a cpu_physical_memory_write(). So this change would be
+potentially harmful to a lot of people.
+
+One alternative would be to do a fdt_pack() before the machine writes the
+FDT in the guest memory, but that is too intrusive to do because I can't say
+if each of these machines will be OK with that. I have a hunch that it would
+be OK, but a hunch isn't going to cut it.
+
+I'll just drop the fdt_pack() for each of these patches. If the machine code
+is already packing it, fine. If not, that's fine too. Each maintainer can
+assess whether packing the FDT is worth it or not.
+
+
+Thanks,
+
+
+Daniel
+
+
 > 
-> Signed-off-by: Peter Maydell<peter.maydell@linaro.org>
-> ---
-> I started off thinking this would be a relatively simple "move the
-> a64fx initfn up to live with the others", but because we effectively
-> have to move all the cpu initfns the diffstat has ended up quite big.
-> On the other hand this patch is purely code motion, and the resulting
-> order in the file does seem to me to be more sensible.
-> ---
->   target/arm/cpu64.c | 712 ++++++++++++++++++++++-----------------------
->   1 file changed, 356 insertions(+), 356 deletions(-)
-
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-
-r~
+> I believe some of the other patches in the series have similar concerns.
+> 

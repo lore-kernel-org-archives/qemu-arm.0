@@ -1,44 +1,44 @@
-Received: by 2002:a17:906:3b11:0:0:0:0 with SMTP id g17csp1021592ejf;
-        Fri, 12 Aug 2022 02:26:13 -0700 (PDT)
-X-Google-Smtp-Source: AA6agR5sMrPeLis3JbciWlcwDsclD2Hm25ycyWN5lCj/VTpE3496Hgh8WHYrJN6PGNPZCQBbst7+
-X-Received: by 2002:a37:f501:0:b0:6b9:5bdd:fb08 with SMTP id l1-20020a37f501000000b006b95bddfb08mr2160471qkk.116.1660296372814;
-        Fri, 12 Aug 2022 02:26:12 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1660296372; cv=none;
+Received: by 2002:a17:906:3b11:0:0:0:0 with SMTP id g17csp1196551ejf;
+        Fri, 12 Aug 2022 08:02:49 -0700 (PDT)
+X-Google-Smtp-Source: AA6agR6B2Vf8dpX+Clg/EssjMAj8EiAH0oqh7PcPw8uUjtw34be3asKXBQxwHRd3Y3JffvTj9aK4
+X-Received: by 2002:ad4:5b8c:0:b0:47b:4d2b:fa4a with SMTP id 12-20020ad45b8c000000b0047b4d2bfa4amr3690668qvp.31.1660316569292;
+        Fri, 12 Aug 2022 08:02:49 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1660316569; cv=none;
         d=google.com; s=arc-20160816;
-        b=ngSsyytVwXpIKXn5w5lyZl65IU0EFeENvddV2T1DPphi0w8aeYz6ibRcEgWkNc0ILh
-         BSoIJMMnBiAil9sBI26I3tV3jLW1VvxFF6lQb6T76SUBFV6aGP/MPOmC+LF3l165JHbm
-         ZhCVHX1iXEJceqYhQRT6E0xALS1LmhJBOwyrWV+507Qx2W3RYpXTk51MGAtcuuDnHrzD
-         z3KaXGTGqCC4YSxhZ+TNllfv+ZJPGmOo/fIk3oXNxIT8uMnEeAEVHVgLPWd0LcjeWI7b
-         00oh8ZV5AvLzg4v+ovloZxrDZ44Oq7abhZWaGl4FODpNWgM99dSHLi/+bQlMJZDxHjq3
-         7PjA==
+        b=JQfJkmerH2KmUgXLSUeuJ1pQU+xxkiqXWDXxZp1zY/WS7kqVhupQs29nlPUiVavmeO
+         HbRQAArx/o0unqHTS4PXtDnmKcPJAv4qVOood4Phj2ZMO9eeBbj0Eu+x1Tdv7Oqc+7At
+         BYAdTQgrG51z758bqShD5O+TopSkO2uqqA6PZQR3Z/WnPYKh351zrtLGaTEZwkIFGq+K
+         EXfbdIvZtOcRzNCeQgIOHI2Z1HBYKyNgRF6keuyq5FNX8kM5+FPpdRnrhDm1+bdaak4V
+         8G9mWygZbbuWkpSKiNnXmAftrDlQ/Gi0Rgk8dr2MP9lKFtCTP21lezjOYfo2C75RNots
+         ov/g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:content-transfer-encoding:list-subscribe:list-help
-         :list-post:list-archive:list-unsubscribe:list-id:precedence:cc:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=pPVV4BFD7fKmFC32bOrIoGEkKGmyP5H4TYZeAbDpIBM=;
-        b=05o5m/iKumnnE65slFl5Hwntom1YHhbSnkFs2VbT3sd+gxr4aA6yiM3D6wtiP8esNP
-         K5bOT2cwQsDzPtIaTAYPgVguDwijYkQntJI9XsaEGNjgVtKfC5J/WdQLfYvuINlRneDg
-         +VsJFCBhHJYCi+dGujkwYHHg7PHwBIwVcfxWG05VQnM1sw0DMHH0WV6CUnTU5gcnDK/x
-         JDY9rtbrAg9iBJN65pRJXIdh4JlA3M4P3lr0dFSY4uQuOHS238uLphlvFzLEfv4rmRwP
-         dNBZWMyLbjbYoEVBoaxfIjiTaDpxj/2xfmG3t1Q021scdGD7jUKjhZB6fkOqTQ1462Bw
-         f38A==
+         :list-post:list-archive:list-unsubscribe:list-id:precedence:cc
+         :mime-version:user-agent:references:in-reply-to:subject:to:from
+         :message-id:date:dkim-signature;
+        bh=cKBnkJdj3xQlE+OO4ESmQT9QrUpvvgSCyvUL0bm/BEw=;
+        b=Iur1oRUIpB95wYcnrR2sTzBy56s53aC3xyWufOrjnFIgyM+0VDjeBAktoEyihHCAHB
+         TfuGAZCjFHvlaMh3Acx3OXK84Nu1hV8u+hhpOpzwBef5LqY0mCaie8Qh2UgkYYj2Wt1y
+         oMIFfBRDZlOl+zwzO+TL67rS98e77aq1Ymf0URd/kK1G5qC250W2a4m4a3vb2ihECoTE
+         KQgxHneveIFkB6bHqdRDEG2Zm9MzEAMGaPOj7Dp9NeYvpIcsJd8Z3VxjTld2gGN/pg2o
+         MPzmsuTdHXcN6gJiaevi9I2RiX6v7ArEPbgoIWnJt9NEl7tXGoscUzW4AWj/XrM/0JI9
+         6BsQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=neutral (body hash did not verify) header.i=@linaro.org header.s=google header.b=MYucwdMg;
+       dkim=neutral (body hash did not verify) header.i=@kernel.org header.s=k20201202 header.b=ToW1FfDk;
        spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=kernel.org
 Return-Path: <kvmarm-bounces@lists.cs.columbia.edu>
 Received: from mm01.cs.columbia.edu (mm01.cs.columbia.edu. [128.59.11.253])
-        by mx.google.com with ESMTP id s15-20020ac85ccf000000b0034319a8cd83si1230838qta.112.2022.08.12.02.26.12;
-        Fri, 12 Aug 2022 02:26:12 -0700 (PDT)
+        by mx.google.com with ESMTP id 19-20020ac85913000000b0031f06dbd45bsi1728090qty.434.2022.08.12.08.02.49;
+        Fri, 12 Aug 2022 08:02:49 -0700 (PDT)
 Received-SPF: pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) client-ip=128.59.11.253;
 Authentication-Results: mx.google.com;
-       dkim=neutral (body hash did not verify) header.i=@linaro.org header.s=google header.b=MYucwdMg;
+       dkim=neutral (body hash did not verify) header.i=@kernel.org header.s=k20201202 header.b=ToW1FfDk;
        spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=kernel.org
 Received: from localhost (localhost [127.0.0.1])
-	by mm01.cs.columbia.edu (Postfix) with ESMTP id 6ECAE4F3C6;
-	Fri, 12 Aug 2022 05:26:12 -0400 (EDT)
+	by mm01.cs.columbia.edu (Postfix) with ESMTP id CE74B4EDC3;
+	Fri, 12 Aug 2022 11:02:48 -0400 (EDT)
 X-Virus-Scanned: at lists.cs.columbia.edu
 X-Spam-Flag: NO
 X-Spam-Score: -1.789
@@ -47,65 +47,68 @@ X-Spam-Status: No, score=-1.789 required=6.1 tests=[BAYES_00=-1.9,
 	DKIM_SIGNED=0.1, T_DKIM_INVALID=0.01, URIBL_BLOCKED=0.001]
 	autolearn=no
 Authentication-Results: mm01.cs.columbia.edu (amavisd-new); dkim=softfail
-	(fail, message has been altered) header.i=@linaro.org
+	(fail, message has been altered) header.i=@kernel.org
 Received: from mm01.cs.columbia.edu ([127.0.0.1])
 	by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id O1xYVCvH26n4; Fri, 12 Aug 2022 05:26:11 -0400 (EDT)
+	with ESMTP id qoGkbjB+ACTY; Fri, 12 Aug 2022 11:02:47 -0400 (EDT)
 Received: from mm01.cs.columbia.edu (localhost [127.0.0.1])
-	by mm01.cs.columbia.edu (Postfix) with ESMTP id 1C63E4F2EC;
-	Fri, 12 Aug 2022 05:26:11 -0400 (EDT)
+	by mm01.cs.columbia.edu (Postfix) with ESMTP id 8CF8F4EC43;
+	Fri, 12 Aug 2022 11:02:47 -0400 (EDT)
 Received: from localhost (localhost [127.0.0.1])
- by mm01.cs.columbia.edu (Postfix) with ESMTP id 514DD4F2E6
- for <kvmarm@lists.cs.columbia.edu>; Fri, 12 Aug 2022 05:26:09 -0400 (EDT)
+ by mm01.cs.columbia.edu (Postfix) with ESMTP id 466AF4EBE9
+ for <kvmarm@lists.cs.columbia.edu>; Fri, 12 Aug 2022 11:02:46 -0400 (EDT)
 X-Virus-Scanned: at lists.cs.columbia.edu
 Received: from mm01.cs.columbia.edu ([127.0.0.1])
  by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id wZfaatsQpAqj for <kvmarm@lists.cs.columbia.edu>;
- Fri, 12 Aug 2022 05:26:07 -0400 (EDT)
-Received: from mail-yw1-f173.google.com (mail-yw1-f173.google.com
- [209.85.128.173])
- by mm01.cs.columbia.edu (Postfix) with ESMTPS id E89D34F2EC
- for <kvmarm@lists.cs.columbia.edu>; Fri, 12 Aug 2022 05:26:06 -0400 (EDT)
-Received: by mail-yw1-f173.google.com with SMTP id
- 00721157ae682-31e7ca45091so4628147b3.3
- for <kvmarm@lists.cs.columbia.edu>; Fri, 12 Aug 2022 02:26:06 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc;
- bh=JiQM/TVvq7gIOXd+ik/4Sp+rHwPd1vHDw41KWuB5cBU=;
- b=MYucwdMgwjiDONh6lNH5p2lZ+fiDv274tSHE5xMSV6K1Y+PvJC4Peguik9xdoSC2K4
- RbO4Uxqmk4EkXEizAl8goNz6Fz9aJIm5X5Lihskbfp2MnR2IydOvZamjxza3wCRPNffF
- EQx4bjkFqUwCW/6lVx1cWNfLlKERWNrlI/wEDZASMaJMNU6RrIxzqhkE5rLK8H5ghJuO
- 40ka+7dKMGBg5ZlFqeq2tkdJ+V+WOc8qpFR9bl4GgGbVkxoIWLgzY3h2xDd6e9H32FQR
- b1qKG8ClM+S44Vjsra3jmeXhG0YcaodBx2eTogZPlJKNoFZsUxkjhm6np2y3nZT5om+b
- OSPg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc;
- bh=JiQM/TVvq7gIOXd+ik/4Sp+rHwPd1vHDw41KWuB5cBU=;
- b=YhJT+M9NoA7c2XZ/9v/Nsw3i05q3ULxedZO/aufcz0IBQ9PmasqzPXo+z31X9DyyyN
- IUUtiTPNuX72PqWTIROwLhVHzkThNUa4K9VlJB+RrqedZB7nQjElWEhfzC0iHJgjySLq
- hWvj65Ydhz0psS17CoiFieesBqQ31cogposefIJn6OZxuCfvD/0uG99mXyiRZJMfSmon
- dXZX5LKCbgh2ov3lqgOMi44a2UxRnSEP004Otu+BvFwoXkzzUVcSYoWSNoYcvdr1zXkQ
- P9LQ9TnRQnF974lf6fZ2rUCTdTEXNm1sHUkr2xkcjjboy9GW5L0H3rkB7sW6L7hut09j
- dzGg==
-X-Gm-Message-State: ACgBeo2ysrPE8iGyV7KrSiz3me3+DnDeLK0ZVfWmlbwcxvcg6dUJd9Aq
- Gdtdj2RkfdSe/IHZsVXfyeINnCNJsXN9S0Q7LKZcOg==
-X-Received: by 2002:a0d:fd05:0:b0:329:3836:53ac with SMTP id
- n5-20020a0dfd05000000b00329383653acmr3112172ywf.455.1660296366452; Fri, 12
- Aug 2022 02:26:06 -0700 (PDT)
-MIME-Version: 1.0
+ with ESMTP id 32-9+1tuZQ5N for <kvmarm@lists.cs.columbia.edu>;
+ Fri, 12 Aug 2022 11:02:44 -0400 (EDT)
+Received: from ams.source.kernel.org (ams.source.kernel.org [145.40.68.75])
+ by mm01.cs.columbia.edu (Postfix) with ESMTPS id C640F4EBB1
+ for <kvmarm@lists.cs.columbia.edu>; Fri, 12 Aug 2022 11:02:44 -0400 (EDT)
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by ams.source.kernel.org (Postfix) with ESMTPS id 60EB6B82447;
+ Fri, 12 Aug 2022 15:02:43 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 181E8C433C1;
+ Fri, 12 Aug 2022 15:02:42 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1660316562;
+ bh=0WIPonzh8UP/C2DNgLQtcEkMTLeNrhVRs4GOGjQm2xI=;
+ h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+ b=ToW1FfDkfFCNGCU4s7rW5Ojr1KjM+w4+tCEyf4NBpF0WYsRe8N0Qt0sqTRoBXNfU4
+ SfMBc7YwQcuUA5yuTv1OxjhgCtihnaqU1G5JwNUmbaY75Yt2FyrKMEveNjdYrvmuKw
+ LfAA7rO1BfpaPGImC2mOu1MaUTfPYsQiosCNEtZgup2uAroza54siTKVJN03bUBAPY
+ JOa9p/C7XAURwIt/XLiIPfty0OQIxEQE5OXX7zpbFv5lc5wwZscntxdphQZMGH+FVI
+ 8FhH5APNCANCQtmS0lAiO1/YYz5c5YJHOupvIwKCaXHpBScV2vBA9ZpznGyzPG6CFw
+ DB04JG9dt9Y2Q==
+Received: from sofa.misterjones.org ([185.219.108.64] helo=why.misterjones.org)
+ by disco-boy.misterjones.org with esmtpsa (TLS1.3) tls
+ TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.95)
+ (envelope-from <maz@kernel.org>) id 1oMWBM-002ZnC-1E;
+ Fri, 12 Aug 2022 16:02:40 +0100
+Date: Fri, 12 Aug 2022 16:02:37 +0100
+Message-ID: <87h72hv71u.wl-maz@kernel.org>
+From: Marc Zyngier <maz@kernel.org>
+To: Peter Maydell <peter.maydell@linaro.org>, Vitaly Chikunov <vt@altlinux.org>
+Subject: Re: qemu-system-aarch64: Failed to retrieve host CPU features
+In-Reply-To: <CAFEAcA9BuSe4SwpoWTALURaxoj-8U2y83k=und7oKrZBggLarQ@mail.gmail.com>
 References: <20220812021427.cwenhciuftgtaj64@altlinux.org>
  <20220812084529.ur5qcyws5qvoyvuc@altlinux.org>
-In-Reply-To: <20220812084529.ur5qcyws5qvoyvuc@altlinux.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 12 Aug 2022 10:25:55 +0100
-Message-ID: <CAFEAcA9BuSe4SwpoWTALURaxoj-8U2y83k=und7oKrZBggLarQ@mail.gmail.com>
-Subject: Re: qemu-system-aarch64: Failed to retrieve host CPU features
-To: Vitaly Chikunov <vt@altlinux.org>
-Cc: qemu-arm@nongnu.org, kvmarm <kvmarm@lists.cs.columbia.edu>,
- QEMU Developers <qemu-devel@nongnu.org>, "Dmitry V. Levin" <ldv@altlinux.org>
+ <CAFEAcA9BuSe4SwpoWTALURaxoj-8U2y83k=und7oKrZBggLarQ@mail.gmail.com>
+User-Agent: Wanderlust/2.15.9 (Almost Unreal) SEMI-EPG/1.14.7 (Harue)
+ FLIM-LB/1.14.9 (=?UTF-8?B?R29qxY0=?=) APEL-LB/10.8 EasyPG/1.0.0 Emacs/27.1
+ (x86_64-pc-linux-gnu) MULE/6.0 (HANACHIRUSATO)
+MIME-Version: 1.0 (generated by SEMI-EPG 1.14.7 - "Harue")
+X-SA-Exim-Connect-IP: 185.219.108.64
+X-SA-Exim-Rcpt-To: peter.maydell@linaro.org, vt@altlinux.org,
+ qemu-arm@nongnu.org, kvmarm@lists.cs.columbia.edu, qemu-devel@nongnu.org,
+ ldv@altlinux.org
+X-SA-Exim-Mail-From: maz@kernel.org
+X-SA-Exim-Scanned: No (on disco-boy.misterjones.org);
+ SAEximRunCond expanded to false
+Cc: qemu-arm@nongnu.org, "Dmitry V. Levin" <ldv@altlinux.org>,
+ kvmarm <kvmarm@lists.cs.columbia.edu>, QEMU Developers <qemu-devel@nongnu.org>
 X-BeenThere: kvmarm@lists.cs.columbia.edu
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -121,59 +124,79 @@ Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: kvmarm-bounces@lists.cs.columbia.edu
 Sender: kvmarm-bounces@lists.cs.columbia.edu
-X-TUID: 4rw8HaHZvBCt
+X-TUID: 8Ov9wnLvfCXA
 
-I've added some more relevant mailing lists to the cc.
+Hi Peter,
 
-On Fri, 12 Aug 2022 at 09:45, Vitaly Chikunov <vt@altlinux.org> wrote:
-> On Fri, Aug 12, 2022 at 05:14:27AM +0300, Vitaly Chikunov wrote:
-> > I noticed that we starting to get many errors like this:
+On Fri, 12 Aug 2022 10:25:55 +0100,
+Peter Maydell <peter.maydell@linaro.org> wrote:
+> 
+> I've added some more relevant mailing lists to the cc.
+> 
+> On Fri, 12 Aug 2022 at 09:45, Vitaly Chikunov <vt@altlinux.org> wrote:
+> > On Fri, Aug 12, 2022 at 05:14:27AM +0300, Vitaly Chikunov wrote:
+> > > I noticed that we starting to get many errors like this:
+> > >
+> > >   qemu-system-aarch64: Failed to retrieve host CPU features
+> > >
+> > > Where many is 1-2% per run, depends on host, host is Kunpeng-920, and
+> > > Linux kernel is v5.15.59, but it started to appear months before that.
+> > >
+> > > strace shows in erroneous case:
+> > >
+> > >   1152244 ioctl(9, KVM_CREATE_VM, 0x30)   = -1 EINTR (Interrupted system call)
+> > >
+> > > And I see in target/arm/kvm.c:kvm_arm_create_scratch_host_vcpu:
+> > >
+> > >     vmfd = ioctl(kvmfd, KVM_CREATE_VM, max_vm_pa_size);
+> > >     if (vmfd < 0) {
+> > >         goto err;
+> > >     }
+> > >
+> > > Maybe it should restart ioctl on EINTR?
+> > >
+> > > I don't see EINTR documented in ioctl(2) nor in Linux'
+> > > Documentation/virt/kvm/api.rst for KVM_CREATE_VM, but for KVM_RUN it
+> > > says "an unmasked signal is pending".
 > >
-> >   qemu-system-aarch64: Failed to retrieve host CPU features
+> > I am suggested that almost any blocking syscall could return EINTR, so I
+> > checked the strace log and it does not show evidence of arriving a signal,
+> > the log ends like this:
 > >
-> > Where many is 1-2% per run, depends on host, host is Kunpeng-920, and
-> > Linux kernel is v5.15.59, but it started to appear months before that.
-> >
-> > strace shows in erroneous case:
-> >
+> >   1152244 openat(AT_FDCWD, "/dev/kvm", O_RDWR|O_CLOEXEC) = 9
+> >   1152244 ioctl(9, KVM_CHECK_EXTENSION, KVM_CAP_ARM_VM_IPA_SIZE) = 48
 > >   1152244 ioctl(9, KVM_CREATE_VM, 0x30)   = -1 EINTR (Interrupted system call)
-> >
-> > And I see in target/arm/kvm.c:kvm_arm_create_scratch_host_vcpu:
-> >
-> >     vmfd = ioctl(kvmfd, KVM_CREATE_VM, max_vm_pa_size);
-> >     if (vmfd < 0) {
-> >         goto err;
-> >     }
-> >
-> > Maybe it should restart ioctl on EINTR?
-> >
-> > I don't see EINTR documented in ioctl(2) nor in Linux'
-> > Documentation/virt/kvm/api.rst for KVM_CREATE_VM, but for KVM_RUN it
-> > says "an unmasked signal is pending".
->
-> I am suggested that almost any blocking syscall could return EINTR, so I
-> checked the strace log and it does not show evidence of arriving a signal,
-> the log ends like this:
->
->   1152244 openat(AT_FDCWD, "/dev/kvm", O_RDWR|O_CLOEXEC) = 9
->   1152244 ioctl(9, KVM_CHECK_EXTENSION, KVM_CAP_ARM_VM_IPA_SIZE) = 48
->   1152244 ioctl(9, KVM_CREATE_VM, 0x30)   = -1 EINTR (Interrupted system call)
->   1152244 close(9)                        = 0
->   1152244 newfstatat(2, "", {st_dev=makedev(0, 0xd), st_ino=57869925, st_mode=S_IFIFO|0600, st_nlink=1, st_uid=517, st_gid=517, st_blksize=4096, st_blocks=0, st_size=0, st_atime=1660268019 /* 2022-08-12T01:33:39.850436293+0000 */, st_atime_nsec=850436293, st_mtime=1660268019 /* 2022-08-12T01:33:39.850436293+0000 */, st_mtime_nsec=850436293, st_ctime=1660268019 /* 2022-08-12T01:33:39.850436293+0000 */, st_ctime_nsec=850436293}, AT_EMPTY_PATH) = 0
->   1152244 write(2, "qemu-system-aarch64: Failed to r"..., 58) = 58
->   1152244 exit_group(1)                   = ?
->   1152245 <... clock_nanosleep resumed> <unfinished ...>) = ?
->   1152245 +++ exited with 1 +++
->   1152244 +++ exited with 1 +++
+> >   1152244 close(9)                        = 0
+> >   1152244 newfstatat(2, "", {st_dev=makedev(0, 0xd), st_ino=57869925, st_mode=S_IFIFO|0600, st_nlink=1, st_uid=517, st_gid=517, st_blksize=4096, st_blocks=0, st_size=0, st_atime=1660268019 /* 2022-08-12T01:33:39.850436293+0000 */, st_atime_nsec=850436293, st_mtime=1660268019 /* 2022-08-12T01:33:39.850436293+0000 */, st_mtime_nsec=850436293, st_ctime=1660268019 /* 2022-08-12T01:33:39.850436293+0000 */, st_ctime_nsec=850436293}, AT_EMPTY_PATH) = 0
+> >   1152244 write(2, "qemu-system-aarch64: Failed to r"..., 58) = 58
+> >   1152244 exit_group(1)                   = ?
+> >   1152245 <... clock_nanosleep resumed> <unfinished ...>) = ?
+> >   1152245 +++ exited with 1 +++
+> >   1152244 +++ exited with 1 +++
+> 
+> KVM folks: should we expect that KVM_CREATE_VM might fail EINTR
+> and need retrying?
 
-KVM folks: should we expect that KVM_CREATE_VM might fail EINTR
-and need retrying?
+In general, yes. But for this particular one, this is pretty odd.
 
-(I suspect the answer is "yes", given we do this in the generic
-code in kvm-all.c.)
+The only path I can so far see that would match this behaviour is if
+mm_take_all_locks() (called from __mmu_notifier_register()) was
+getting interrupted by a signal (I'm looking at a 5.19-ish kernel,
+which may slightly differ from the 5.15 mentioned above).
 
-thanks
--- PMM
+But as Vitaly points out, it doesn't seem to be a signal delivered
+here.
+
+Vitaly: could you please share your exact test case (full qemu command
+line), and instrument your kernel to see if mm_take_all_locks() is the
+one failing?
+
+Thanks,
+
+	M.
+
+-- 
+Without deviation from the norm, progress is not possible.
 _______________________________________________
 kvmarm mailing list
 kvmarm@lists.cs.columbia.edu

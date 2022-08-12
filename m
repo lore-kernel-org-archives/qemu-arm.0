@@ -1,110 +1,110 @@
-Received: by 2002:a17:906:3b11:0:0:0:0 with SMTP id g17csp1288498ejf;
-        Fri, 12 Aug 2022 10:56:27 -0700 (PDT)
-X-Google-Smtp-Source: AA6agR574hYw2c8dEE+hwTi7C5bKvFU6ginXU8IGnyrgeQWxfDc/G92e02Q+Ac3SsblMvvP2JRBZ
-X-Received: by 2002:a05:6214:29ef:b0:477:388:cb50 with SMTP id jv15-20020a05621429ef00b004770388cb50mr4312694qvb.107.1660326987481;
-        Fri, 12 Aug 2022 10:56:27 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1660326987; cv=none;
+Received: by 2002:a17:906:3b11:0:0:0:0 with SMTP id g17csp1311381ejf;
+        Fri, 12 Aug 2022 11:49:43 -0700 (PDT)
+X-Google-Smtp-Source: AA6agR58J/W16c846wCgT8sSkq3n3P7JO0RlkRjBXyMStaC1u7TP2m9NnTqBJshipCuM2J60Z4HL
+X-Received: by 2002:a05:6214:c8c:b0:479:2293:4cd9 with SMTP id r12-20020a0562140c8c00b0047922934cd9mr4678719qvr.104.1660330183012;
+        Fri, 12 Aug 2022 11:49:43 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1660330183; cv=none;
         d=google.com; s=arc-20160816;
-        b=GZBI4XiVtJJIQrflMxbB+voauYJeNjXb8a2mdP6LRuKX7RgBhyMvh8bcCyvzfZ0Ha9
-         t5ucqw6Y+ZMdrES/ctGtb5WMGzQDyCH6Q+KGzvUauXCOsVfkFBvZD2VBEOwG5wKkzyyT
-         BB7G3GEQZYj+Nizjl4juBHGpKt1ohao7rIvbemoQnXlmHRJUbBLIA2Qt+9tP+l6FMEMr
-         HgSpRjG5K1JjNKfMyo2Jy+ENC6rK53TpzFZiWIqDyUauXJr2I6xPENoD1KkTDeAmPpHz
-         v2F6Sa4ZGS3PmIzXw+n12UBFkd3wwyr88QgdnoqYUYh7wvGTJjPs1RYn4T2mQu/xL0ac
-         8hiw==
+        b=oHos6XRnvrfRZncRCXHFFZ0NLukF2RIYlsbLBhMF+JIYBTRyLCWEc3g96Pb5bSG19D
+         DlFYe+D14pIYFF5RC+aagUj9Yc4Qr3EiTY77/eEgv/gH4Y5wwVx+uAHzRnAhrFzYQiS6
+         IHWp4d9Pe84d7v0XT+nD1LcDFdKZVuRevhMatnSDvhyS01VbvpDIV6F5y31ssMiSH6f3
+         kbMo48NETjI7UlPRCrdoIqIgF8H20u/Ut0MK7gmGjAJvqTGPlqB7QAKyvgSW0ea4fpBO
+         ObYL4a9dNeeetV5HR9znvM3FABXMRjKs4Ql/KMOEoC6t9r4BW7cr04oMzASf7MMA/nNa
+         H8Cg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:cc:to:content-language:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=1hhCpWSM04GCt+NsDHRBvvjLjdGAbeiIi7V9QJIyBBg=;
-        b=VKLvg1p5f8Fx51+R5aiN8SrrHX9Zp8dU3BxqF6TUzd0aBBE5s3z1xf2u5sQ1zBUfbZ
-         +cg8BSrvIO0mGQA2izjiBLFwt3mD6iPE/lbJY2fh3hsrNTmWKk/CeJikzL/YjJWjk5Ll
-         ibdtKOYR8Bu1h/oKIIY8P8qU0hHIkS64JzRJ0mdYED5e2RotH/sCOnhV4C9b+7m6GFb4
-         dtRZe6bfD+lzAVgzj08ePDUtemToaOwdnbpiFJ5Y0BOEXseeOrOrEBMDVmXP3EYNieFs
-         5dAtwW1YFTVJkxp5v9c01BdmRrR6EISM8VXPi8XuyCkJISOlky0HZUK6DaOrzXmCi8pD
-         gHLw==
+         :in-reply-to:from:references:to:content-language:subject:user-agent
+         :mime-version:date:message-id:dkim-signature;
+        bh=gTqMZbvThYf+YZ8rZTncJub37ToENrJ/c+STF8b9lyU=;
+        b=itlIQw80M0Gg+wAj3wsJ4FZ+H0QA3Suk8JMsm5afQTHuSLKfz3r4jKYfy0MM8ZMQQJ
+         y7OhBM+T4xIp7qIBElvJyyVCoTqT/fsVYhj68rR/1ranULie60Gk+xBeEFhBM1RqvHuM
+         sBzYVzljEfEUnGbrz0ZIEEjxRg3QOxZrojTFz9asYEsbAjy+7QEKPZ+9B4J+GQB9sLHB
+         nvh54HMA+M/xmyO0ef2P7c73IBPTp+ZzJdj0gXHN4aYZApvhgG93rBDw49bugLJrd9hF
+         qpBxbmlx+Fh1Mb7HACB6FTM2Cgg/EPSA/oPe1dVnx+sNvymV0hPz/6oel1GCz1K6xaDh
+         l/Cw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=v3x2vPQj;
+       dkim=pass header.i=@linaro.org header.s=google header.b=YSNkC6Y4;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d24-20020ac86158000000b0033c95909615si1696705qtm.495.2022.08.12.10.56.27
+        by mx.google.com with ESMTPS id t10-20020ad45bca000000b0047b295589d2si1489906qvt.554.2022.08.12.11.49.42
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 12 Aug 2022 10:56:27 -0700 (PDT)
+        Fri, 12 Aug 2022 11:49:42 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=v3x2vPQj;
+       dkim=pass header.i=@linaro.org header.s=google header.b=YSNkC6Y4;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:37164 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:44598 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1oMYtV-0004cO-IF
-	for alex.bennee@linaro.org; Fri, 12 Aug 2022 13:56:25 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:51448)
+	id 1oMZj4-0001zk-A2
+	for alex.bennee@linaro.org; Fri, 12 Aug 2022 14:49:42 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55518)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1oMYs1-0003rN-Hs
- for qemu-arm@nongnu.org; Fri, 12 Aug 2022 13:54:53 -0400
-Received: from mail-pj1-x1031.google.com ([2607:f8b0:4864:20::1031]:53029)
+ id 1oMZB0-0003Yk-HC
+ for qemu-arm@nongnu.org; Fri, 12 Aug 2022 14:14:30 -0400
+Received: from mail-pl1-x62c.google.com ([2607:f8b0:4864:20::62c]:35637)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1oMYrz-00046e-V6
- for qemu-arm@nongnu.org; Fri, 12 Aug 2022 13:54:53 -0400
-Received: by mail-pj1-x1031.google.com with SMTP id ha11so1654321pjb.2
- for <qemu-arm@nongnu.org>; Fri, 12 Aug 2022 10:54:51 -0700 (PDT)
+ id 1oMZAy-0007Ha-Nn
+ for qemu-arm@nongnu.org; Fri, 12 Aug 2022 14:14:30 -0400
+Received: by mail-pl1-x62c.google.com with SMTP id y1so1427031plb.2
+ for <qemu-arm@nongnu.org>; Fri, 12 Aug 2022 11:14:28 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ h=content-transfer-encoding:in-reply-to:from:references:to
  :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc; bh=1hhCpWSM04GCt+NsDHRBvvjLjdGAbeiIi7V9QJIyBBg=;
- b=v3x2vPQjl9XDcdPWu8QXJE3FzHXTvqTVNeDx1v+X8m0iB45MDhyVZDTgW5o2+MGU03
- g57BFagW2gVuNMFZ+hAW6H8buGFm//ZiKOCo1XA2Dg3VPd2jyroVrSTEw3Zy1DAA401i
- nhpUwsEzeX6upRV0zxa8CjC1Jm2e1KkCICIVfpslSffPGv/2N0fGTtWaFRxhaXO89OQz
- Hnuw3KnXcXY8KezBp/hyPyYSrwGNLbnnKBf3tkB/C4lcN0ygz4TqDztYU3Loj7LeE8xm
- 9dps2MdJ3IIKtvtGDPrt4hBzrdG+69hI8v8xNuPv1Dw2dwb34VnivZSyB2SqaMaXdAJd
- 1bGw==
+ :from:to:cc; bh=gTqMZbvThYf+YZ8rZTncJub37ToENrJ/c+STF8b9lyU=;
+ b=YSNkC6Y4lrG6oOWpZrc3ZbrUPYlspKbsgnBnDdopJtAFYN89tFn1NyjrwxkUB3j/uG
+ GiN75U1vZxaCdMZYgOEAfNo9yKdahkuD3Vy6aftuKvpz/Sjj2+VnLR8ZEPjaMUcrrrE7
+ /+LNZdH6pRLSZxpdH37rS9XuqxBR/bkfVRF6oCW99fKsYxF2J4PKTtQuyXxSME6vz0Nu
+ o6MiyiuFsHGEQsb9vk55jAe3KN6h45hn8LUuSdluATyzOnvTNPN8xMr6cVl1ruJhkGxl
+ WsBn/xesY3S05cAwJ8H+bapbxeYmM2EOXA1EHrXY03kGuM0AiJGcwytvdiDP8GQqoLsO
+ /5dA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ h=content-transfer-encoding:in-reply-to:from:references:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc;
- bh=1hhCpWSM04GCt+NsDHRBvvjLjdGAbeiIi7V9QJIyBBg=;
- b=DBqPOaw8ifHRuPSJ1I8ncoANelffniJcphWHC+CzIWUjBiTEEiNsocERShq8Ug8fPl
- CI0aWym/ThmT40d6lDOY8hM8SgzHwuTK5eNY5O1XuH/0EsH+Wquj2445cdpERaBz6uN4
- zeA0YWjuxAUH+2uSLjOtVDDyQrg+R25c3Y2F6ZWaoSjPPtD5/jqHwFkgCvtsuFLmKLRG
- qIr1hx00if4ICy59hAVb+Z/ap5QQUDuLB9knpmysetEhbaiVs6MCKGgoqr37LyCyGK8L
- PRtsvXIRJV8+WGFudweAupiDBSi5NVVMDUrNH78wjHh2myTeI1JMsHavBWiEjx+w77Bs
- 0Fdw==
-X-Gm-Message-State: ACgBeo0nBVLgU383SX0HUc1BmD7EVuIKMSJGqiKSJm7GlFjiPa0PdOBY
- SnRy1hXxeVnPnHD7ajLUGSBNuw==
-X-Received: by 2002:a17:902:d2c6:b0:16e:d285:c602 with SMTP id
- n6-20020a170902d2c600b0016ed285c602mr5116115plc.81.1660326890472; 
- Fri, 12 Aug 2022 10:54:50 -0700 (PDT)
+ bh=gTqMZbvThYf+YZ8rZTncJub37ToENrJ/c+STF8b9lyU=;
+ b=gV5R2TY7Kbc+DQy/2b2BTpI28eh4QWNB2xdFLAVLoZTJGPAb5XBhtwdpcc11vykwHm
+ FTrpTPZcdNEcqnm+AoWz/x19fZ+l/RtLkYwckad6EBUBFFm2T4L/0DJxlJijjjN6ZnNp
+ uMMl1rFYbKaZYtTHUB5zMVI2wMimJOFf/ERpGck8LKK2/auBuDCt8dnbVa84f8+/rDst
+ NtIPEtsC/vrCk6CCc9zfF5H1FfFJe2JJLTtBmja2v8kaBIMBJG66t6jFSfyXg3J0F9xw
+ bmDM1RijkzU0k95TWxenyLT74/sJ0txVCH2rlXAaBYXdItdENi1P3jJa7xR9J0wGwo5O
+ G2Tg==
+X-Gm-Message-State: ACgBeo2iYHeG0cPbe0IoQ0kV4NCUhrozYsoaeyjA6JW2ig1dk8fnRZ8C
+ fDtmqkDYYG8gdFjqXQsh2nOKfQ==
+X-Received: by 2002:a17:90a:9b85:b0:1fa:5d22:c92 with SMTP id
+ g5-20020a17090a9b8500b001fa5d220c92mr77002pjp.51.1660328067085; 
+ Fri, 12 Aug 2022 11:14:27 -0700 (PDT)
 Received: from ?IPV6:2602:ae:154e:e201:a7aa:1d1d:c857:5500?
  ([2602:ae:154e:e201:a7aa:1d1d:c857:5500])
  by smtp.gmail.com with ESMTPSA id
- e9-20020a170902d38900b0016dcc381bbasm2005173pld.144.2022.08.12.10.54.48
+ t17-20020a656091000000b00415d873b7a2sm1625154pgu.11.2022.08.12.11.14.25
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 12 Aug 2022 10:54:48 -0700 (PDT)
-Message-ID: <a159021a-bcad-aadd-f57a-197b54eb0160@linaro.org>
-Date: Fri, 12 Aug 2022 10:54:46 -0700
+ Fri, 12 Aug 2022 11:14:25 -0700 (PDT)
+Message-ID: <6bf620cd-6601-e624-ac4b-9d2f5f4a11d0@linaro.org>
+Date: Fri, 12 Aug 2022 11:14:24 -0700
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
  Thunderbird/91.11.0
-Subject: Re: [PATCH 00/62] target/arm: Implement FEAT_HAFDBS
+Subject: Re: [PATCH] target/arm: Rearrange cpu64.c so all the CPU initfns are
+ together
 Content-Language: en-US
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
-References: <20220703082419.770989-1-richard.henderson@linaro.org>
- <CAFEAcA95O5N_gOJ88zkaPx5BvTFYSSOLF=7XMFc3egCU+s1RkQ@mail.gmail.com>
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+References: <20220812174156.1460714-1-peter.maydell@linaro.org>
 From: Richard Henderson <richard.henderson@linaro.org>
-In-Reply-To: <CAFEAcA95O5N_gOJ88zkaPx5BvTFYSSOLF=7XMFc3egCU+s1RkQ@mail.gmail.com>
+In-Reply-To: <20220812174156.1460714-1-peter.maydell@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1031;
- envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x1031.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::62c;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x62c.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -126,17 +126,34 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: PKwAbumJIyfR
+X-TUID: CWk2Lg1I+qD/
 
-On 8/12/22 09:31, Peter Maydell wrote:
-> Is it possible to rearrange this patchset so the easy
-> refactoring patches that do "use a struct to return
-> values from get_phys_addr and friends" are at the front
-> (ie before the stuff that touches core code) ?
-> That way they're easy to take into the tree early while
-> the rest of the series is still under review...
+On 8/12/22 10:41, Peter Maydell wrote:
+> cpu64.c has ended up in a slightly odd order -- it starts with the
+> initfns for most of the models-real-hardware CPUs; after that comes a
+> bunch of support code for SVE, SME, pauth and LPA2 properties.  Then
+> come the initfns for the 'host' and 'max' CPU types, and then after
+> that one more models-real-hardware CPU initfn, for a64fx.  (This
+> ordering is partly historical and partly required because a64fx needs
+> the SVE properties.)
+> 
+> Reorder the file into:
+>   * CPU property support functions
+>   * initfns for real hardware CPUs
+>   * initfns for host and max
+>   * class boilerplate
+> 
+> Signed-off-by: Peter Maydell<peter.maydell@linaro.org>
+> ---
+> I started off thinking this would be a relatively simple "move the
+> a64fx initfn up to live with the others", but because we effectively
+> have to move all the cpu initfns the diffstat has ended up quite big.
+> On the other hand this patch is purely code motion, and the resulting
+> order in the file does seem to me to be more sensible.
+> ---
+>   target/arm/cpu64.c | 712 ++++++++++++++++++++++-----------------------
+>   1 file changed, 356 insertions(+), 356 deletions(-)
 
-Yes, I think so.
-
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 
 r~

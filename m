@@ -1,112 +1,75 @@
-Received: by 2002:a17:906:3b11:0:0:0:0 with SMTP id g17csp861991ejf;
-        Thu, 11 Aug 2022 19:00:17 -0700 (PDT)
-X-Google-Smtp-Source: AA6agR6BPd29uffrSmVjyjhCweaQUEP5nxilV2dohPRoNZBMwrB1q7vC6AmuBr5A2fSERHzK7dBg
-X-Received: by 2002:a05:620a:4724:b0:6b8:c82f:74d9 with SMTP id bs36-20020a05620a472400b006b8c82f74d9mr1373183qkb.455.1660269617011;
-        Thu, 11 Aug 2022 19:00:17 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1660269617; cv=none;
+Received: by 2002:a17:906:3b11:0:0:0:0 with SMTP id g17csp892902ejf;
+        Thu, 11 Aug 2022 20:34:14 -0700 (PDT)
+X-Google-Smtp-Source: AA6agR4J6REL5kjaYrZ/oTnT6RouwugS2JraMg+hNn5pRFmVrI7NiQeLbTg0Y5r77p1e4xJeyhV/
+X-Received: by 2002:a05:6214:27ca:b0:476:c754:6288 with SMTP id ge10-20020a05621427ca00b00476c7546288mr1724476qvb.54.1660275254511;
+        Thu, 11 Aug 2022 20:34:14 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1660275254; cv=none;
         d=google.com; s=arc-20160816;
-        b=gxAXztW+0vHYEjhA2HUHHLmbjAqp5bEC+Q8n8fJHyDbPIATU8frrvCJqjM38FPeZv6
-         RNYF+3cT9W+E6BsvmVUqUTsm6Nha0QwvuhXUjrVPfJRhk+trDz78zuD0uZMv3H7fJ/2J
-         WnmI+eCHLdLeSxISGNOR+4LMH9S/2VU6kTKab1XUo1MBkdVvzLKVX20XlF0ODyL5sfsN
-         BMvlWBRFs/baVBrKaP3HEfDJ8hffSMdkQCy3/1hfEpeS5j+j3t2qkoZ45BwuPc08tDVi
-         PNMOk8fs9e3cQeLAKO8QBWoJPCf7XRz7HymNoDKcPDZ+ldbadR0aEQEvlSlpGIOHyO9d
-         nNww==
+        b=Sa45qd02xH8Y+ASwte5pmfxJIMpkuYf4dpn5bE30fomac6YsXSOsL0J7ME/05ejWcr
+         JSgTK2QZKPeroL857qVzL7a9Z4zBh329HfLjwx/5nEstYHs+Xv2SCfwkvwcrFmjrO7IJ
+         yvio2mtqF61hjDGiiKmyEMaCWKx2PBDxHdyDBV/KsZ/J5CmTrkQ8cGJd7vxGT8SEDs2E
+         Eo/DKs84eM8GLLpzgpchO7KUgKurBR14sWN2gbT/QXXTw2n2ASl6ss/7LFJwzD9ifUni
+         BRypw5jvnkJ7Ur4knzzYFqqZAwEPcfaw/CtUIHb3QMQMMECH3lMGZlEblcFu9oPCIpma
+         LEjA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=C8+KqLztKYkJjjXYlQY59dPpn/wowHneDEgdExIgpso=;
-        b=daXY6l26jlAH+1jzhpYJ1dRWWB4VKAnCBo1kG1IzdemCGNcmeTmmVPIBfDANDDgJZO
-         DdA8fqxfoU4ZlzywB1OB/qUmWS77euw8BBFvnrdIPt8m2EMdUQGdTPLRwMg4GJvGJT0O
-         cLDI5WWqu4Gkb6nCQW/3eNccY5pl+embwmJ/kEjSsRbSRY5kFq68bIdNLRdZZi7w2Kma
-         P9IIK5QpLWyjg7ekuEVtSil5qiTixFO7dwqcXS4sNFDKbAZi9jInPu3a3GRsGbA6VJh0
-         bfzORgUSti6rFLnxzio3J0Sgapi0PqDyE16dHyuuPnmzmojYAR258Z4tcA9rfOlGoQPE
-         0G4A==
+         :list-unsubscribe:list-id:precedence:content-disposition
+         :mime-version:message-id:subject:cc:to:from:date;
+        bh=Sg8mDrXmWeDyw8jdJWiIxoGHmL29I7eIBd6w27qO404=;
+        b=YQUhkgDPBINLRxaFwhFh9I068BFnmPkkgdoJd4qbyKB7bwPGphy6fSUbrikOGFDPYx
+         83Z24GU6SKKoqFZvdermMh5IENSL64nPSe9cMDDvf6Vx4+raGduRE5uGh6HAEdoKzz0w
+         exMEtGCcu0TJkyh8FZ9MaMwCFTlht+037AYbdL6AQJwoC9Bu/+z99hckpiwO8QaEKNmZ
+         Zw1knZHKK5goP3XrA5YEs5oK+dmDT2VnYg0XbwIqQuyqbcCSMz1UfKjapZmam9A9D3V4
+         dBPEedTI22hV8B/OhotA85bzXRF0/Lgwp7myCnnii5/ACb4/3jqlt1jaHeo7YY894cUS
+         1dZA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@jms.id.au header.s=google header.b=X5NK068A;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id o3-20020ae9f503000000b006b8f3cfec88si489971qkg.446.2022.08.11.19.00.16
+        by mx.google.com with ESMTPS id v1-20020ae9e301000000b006b9585d5c29si594765qkf.97.2022.08.11.20.34.14
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 11 Aug 2022 19:00:17 -0700 (PDT)
+        Thu, 11 Aug 2022 20:34:14 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@jms.id.au header.s=google header.b=X5NK068A;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:37850 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:43648 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1oMJyC-0004bh-GP
-	for alex.bennee@linaro.org; Thu, 11 Aug 2022 22:00:16 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:32794)
+	id 1oMLR8-0002Vz-1g
+	for alex.bennee@linaro.org; Thu, 11 Aug 2022 23:34:14 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:35572)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <joel.stan@gmail.com>)
- id 1oMJxn-0004bV-IM; Thu, 11 Aug 2022 21:59:51 -0400
-Received: from mail-wm1-x333.google.com ([2a00:1450:4864:20::333]:34316)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <joel.stan@gmail.com>)
- id 1oMJxl-0007lO-7Q; Thu, 11 Aug 2022 21:59:51 -0400
-Received: by mail-wm1-x333.google.com with SMTP id
- l4-20020a1ced04000000b003a5c761aeebso309799wmh.1; 
- Thu, 11 Aug 2022 18:59:48 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=jms.id.au; s=google;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc;
- bh=C8+KqLztKYkJjjXYlQY59dPpn/wowHneDEgdExIgpso=;
- b=X5NK068AQ6z4uyGXsX0ny1Z4794o9lvAEwL4D86uqCauTcNV7R64boobPju7RnAuZv
- +B4NSEp3aUkQS1GIm0TMEKvT2ygD384fpcy1qXaiLc4ANFWCMfJ1kSYISukQ4ptTwMp0
- ED4ZmF7jqxOwd8gL+Kp1l5nq/070YoS2DR6aQ=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc;
- bh=C8+KqLztKYkJjjXYlQY59dPpn/wowHneDEgdExIgpso=;
- b=uYLbStmVA9xpxgaNleQGjGwV8wx8qL29o5pCc4mRorq+u9K0sDf8VsZQOGNxIz9Yp5
- cYyDLsBi3LNzpzTeJoC/sVZtyBoc1w/0GVNdM79oko0f4mk0UC6r0QEPMiv2M/wHqm53
- EbVopxWGjGvbecwSMSxMvxOGGILYLgAukUC9P8+Vu35SoCsTCj7pt+7qf8gD4mG/jUd0
- JxGZ5vRJ1xrdaLLsWUPp0kXnb81VyFmBB9FrFcVxnplgfkNXZpQtUFec5OVv735+8Mh0
- Vu2koVtLH0Sbk9Eld+UHlj2lQBpKbqAreefxWr+8oRke7/vU1NFt0Jf8x5X8ZKssxyrq
- sPjQ==
-X-Gm-Message-State: ACgBeo3laAlpCyyv7UJ+IRBQxCybqTjRaY3S5nIOe6+NT9YTbV6DTiJp
- SpSseGVYuPlMOA6coMzkqkgJAbc1PSG7NUnugY0=
-X-Received: by 2002:a1c:ed0e:0:b0:3a2:d7d0:c607 with SMTP id
- l14-20020a1ced0e000000b003a2d7d0c607mr6866926wmh.147.1660269586853; Thu, 11
- Aug 2022 18:59:46 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <vt@altlinux.org>) id 1oMKC0-0002Mt-Ho
+ for qemu-arm@nongnu.org; Thu, 11 Aug 2022 22:14:32 -0400
+Received: from vmicros1.altlinux.org ([194.107.17.57]:46422)
+ by eggs.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <vt@altlinux.org>) id 1oMKBy-0001L4-Aw
+ for qemu-arm@nongnu.org; Thu, 11 Aug 2022 22:14:32 -0400
+Received: from imap.altlinux.org (imap.altlinux.org [194.107.17.38])
+ by vmicros1.altlinux.org (Postfix) with ESMTP id 86D0A72C90B;
+ Fri, 12 Aug 2022 05:14:27 +0300 (MSK)
+Received: from altlinux.org (sole.flsd.net [185.75.180.6])
+ by imap.altlinux.org (Postfix) with ESMTPSA id 71F234A46FE;
+ Fri, 12 Aug 2022 05:14:27 +0300 (MSK)
+Date: Fri, 12 Aug 2022 05:14:27 +0300
+From: Vitaly Chikunov <vt@altlinux.org>
+To: qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>
+Cc: "Dmitry V. Levin" <ldv@altlinux.org>
+Subject: qemu-system-aarch64: Failed to retrieve host CPU features
+Message-ID: <20220812021427.cwenhciuftgtaj64@altlinux.org>
 MIME-Version: 1.0
-References: <BY5PR12MB38917595B0306085EEBB1921B4629@BY5PR12MB3891.namprd12.prod.outlook.com>
- <CACPK8XfjXq6RW=M++UebfiGeij=GDSk5f6ZftNaL+2oeyCGnHw@mail.gmail.com>
- <ec20d3af-5f99-8e56-9352-75562c4548de@kaod.org>
- <BY5PR12MB38914647135A9AB3A006090CB4659@BY5PR12MB3891.namprd12.prod.outlook.com>
-In-Reply-To: <BY5PR12MB38914647135A9AB3A006090CB4659@BY5PR12MB3891.namprd12.prod.outlook.com>
-From: Joel Stanley <joel@jms.id.au>
-Date: Fri, 12 Aug 2022 01:59:34 +0000
-Message-ID: <CACPK8XeBu3-aUwYQPKbERWxrMCPiBFL5tRX9hQPNNJfcnKEOcg@mail.gmail.com>
-Subject: Re: AST2600 support in QEMU
-To: Shivi Fotedar <sfotedar@nvidia.com>
-Cc: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>, 
- Peter Delevoryas <peter@pjd.dev>, Jeremy Kerr <jk@ozlabs.org>,
- Klaus Jensen <its@irrelevant.dk>, 
- Jonathan Cameron <jonathan.cameron@huawei.com>, 
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
- Andrew Jeffery <andrew@aj.id.au>, 
- "Amit Kumar (Engrg-SW)" <asinghal@nvidia.com>,
- Prasanna Karmalkar <pkarmalkar@nvidia.com>, 
- "Tim Chen (SW-GPU)" <timch@nvidia.com>, Newton Liu <newtonl@nvidia.com>, 
- Deepak Kodihalli <dkodihalli@nvidia.com>, qemu-arm <qemu-arm@nongnu.org>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::333;
- envelope-from=joel.stan@gmail.com; helo=mail-wm1-x333.google.com
-X-Spam_score_int: -14
-X-Spam_score: -1.5
+Content-Type: text/plain; charset=koi8-r
+Content-Disposition: inline
+Received-SPF: pass client-ip=194.107.17.57; envelope-from=vt@altlinux.org;
+ helo=vmicros1.altlinux.org
+X-Spam_score_int: -18
+X-Spam_score: -1.9
 X-Spam_bar: -
-X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
+X-Mailman-Approved-At: Thu, 11 Aug 2022 23:30:52 -0400
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -120,17 +83,33 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: iKtSStK2xbSs
+X-TUID: ENyHlxxuGH+o
 
-On Wed, 10 Aug 2022 at 19:12, Shivi Fotedar <sfotedar@nvidia.com> wrote:
->
-> Cedric, Joel
->
-> Thanks so much for the pointers. This definitely helps. We will get back to you with any further questions once we have looked them over.
+Hi,
 
-Great! We look forward to your contributions. I am particularly
-interested in reviewing your PCIe changes.
+I noticed that we starting to get many errors like this:
 
-Cheers,
+  qemu-system-aarch64: Failed to retrieve host CPU features
+ 
+Where many is 1-2% per run, depends on host, host is Kunpeng-920, and
+Linux kernel is v5.15.59, but it started to appear months before that.
 
-Joel
+strace shows in erroneous case:
+
+  1152244 ioctl(9, KVM_CREATE_VM, 0x30)   = -1 EINTR (Interrupted system call)
+
+And I see in target/arm/kvm.c:kvm_arm_create_scratch_host_vcpu:
+
+    vmfd = ioctl(kvmfd, KVM_CREATE_VM, max_vm_pa_size);
+    if (vmfd < 0) {
+        goto err;
+    }
+
+Maybe it should restart ioctl on EINTR?
+
+I don't see EINTR documented in ioctl(2) nor in Linux'
+Documentation/virt/kvm/api.rst for KVM_CREATE_VM, but for KVM_RUN it
+says "an unmasked signal is pending".
+
+Thanks,
+

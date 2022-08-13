@@ -1,147 +1,262 @@
-Received: by 2002:a17:906:3b11:0:0:0:0 with SMTP id g17csp211233ejf;
-        Sat, 13 Aug 2022 04:30:15 -0700 (PDT)
-X-Google-Smtp-Source: AA6agR7RHvFZrRWw+zUGHsoZwmIWy0RTifKFELX+6ZQXiVkRQo1Te7vvlyeE9UCS4S/lk3WDBp67
-X-Received: by 2002:ad4:5b87:0:b0:476:c32f:f4e9 with SMTP id 7-20020ad45b87000000b00476c32ff4e9mr7045691qvp.50.1660390215310;
-        Sat, 13 Aug 2022 04:30:15 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1660390215; cv=none;
+Received: by 2002:a17:906:3b11:0:0:0:0 with SMTP id g17csp260529ejf;
+        Sat, 13 Aug 2022 06:32:30 -0700 (PDT)
+X-Google-Smtp-Source: AA6agR5cnXoiTRzGKdvohVjh0EZuafepu6/CYGzNEewSCd5H/5YA3zghNmatQMoEZbRJF1qaquc7
+X-Received: by 2002:a05:6214:2342:b0:473:bcd6:a3b7 with SMTP id hu2-20020a056214234200b00473bcd6a3b7mr7280420qvb.88.1660397550460;
+        Sat, 13 Aug 2022 06:32:30 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1660397550; cv=none;
         d=google.com; s=arc-20160816;
-        b=U/BzFXPTQjPlFG1cV1nC6OUTpN4mLrFVCDPN76v/xE2FDlIV1B61Byjml59f9URLIK
-         1FnoxNwolVFpbqjzq2DnAOqevnm+sibdblTd7WjTpN+/jOsawljtcOq82hVxFkMYg2de
-         InXauTFdghEli1O7DzXcjQ6vfN4X9aRUyVW8u2hSIueUjvIlsHPm47OWEGaYYNmy2P3V
-         uAypkc1HRd6oVNGigP+EiceDL7vk//kTgIDbtojm2MMEJLAMvOggrCWQ5W0ASdkys4Eu
-         CUIwpD4cj7t0X76jNsEs5opJzdlax0RnaQXr2D1RUpNyCz9lciUldcndplSJbLN9wgAb
-         Htwg==
+        b=D20sGdrY86fwLnr1mAuoxmRexq6dB+TeKfmlwyd7Q4CRyxsNj0QsLKr6gDo5a+/h+2
+         QXq8M4S/vXUddLvN7tjSpFrUeFjDG0hBYTKGfhvfcaFV1zNNRvDx48n4O7mWIi+fzZAP
+         sbqcJ/8fbp3d7VQkSAQPC9vu6U+juGwWPWg5MWjJxcbwC+PVfFCWVYXQZ4r/3F6cLYi0
+         F4LkjBR4J6grzzxK2L7rLJ/xNA/1W3SPiuS9Np+ONBSfctuNOMeZ3rbvgzCmVMbr+JV4
+         LvcmRDkHoOoo5AYgsi/R3REwamZ7fpwHtmKEE6gVKWafqyva/WUlhJpEnJ0+K+BDslUn
+         Vjmw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:mime-version:feedback-id:message-id
-         :subject:cc:from:to:dkim-signature:date;
-        bh=Qdl3AKs8mRhBU+Ik9gzjoy7AEpjWD6DCO/69ZqSKWxI=;
-        b=ST3r8hjKZCwuRTKNj3bO2TnB6OMK6xMuoZVVeRJ1pJc8agGeU6Ag4+LGHzQdlbnqh5
-         N3ISrc0gKafa54jI1SQ/CxwPHblvt/njaB8nn2cNGfRcj6Sgy8ccQO5c96Nw9Buxh/gy
-         dUUUbPrX4ouonBr2TlWwaO5UIjYtX3VK+q+LGj0U0ZsE/a7uLvtYxepkisPuGZr0jM4/
-         LR48rBPv9K8dmItgNIgZNZFnFoxXRWWO6yJTZ9nuPgZiujb/WmMKokrO2xh9YlCRxtv6
-         EuacK1W0WgbTjRrZWFsRdINp7xrE8jJRYpK20eu+Ih2e456fttQOWnH+Cd1bj8Hd2xJF
-         t27g==
+        h=sender:errors-to:content-transfer-encoding:list-subscribe:list-help
+         :list-post:list-archive:list-unsubscribe:list-id:precedence:cc
+         :mime-version:user-agent:references:in-reply-to:subject:to:from
+         :message-id:date:dkim-signature;
+        bh=rJy1VieaDZBqe4rXO6sTzGneRWIpZoBI7UXGp/JWvdo=;
+        b=AL8tOKESnTNuMxAYAg3SizW2C9KXMGmUCwVJazcKWDqmIuZ2kPLfQQaYriS29Mhj1L
+         2vN0Ms0iu7lmMSnPGOY3GCRht7CGuVUBOaNk0zxQcD0VXIBO0Swrp9YGZLRTr7Gtrqpc
+         BgsEfLNNE/CYVciy3GMRhz/A5gKlDCZ4ZY2n7W4Wa7IKFsaGhZZzNMD31EczzS31jp1m
+         GLup/fs9hjIXlPTw0+qqon42Rympca9kETPXEh3GbvuwLaocFdq+xe3TDfosDPgwp1+0
+         xyXW/pNs3fwZICSQEGUMDitTAI0c3kzuH7PYmupB+d284fpQ+8b6CHL/KNnTCm9X11pK
+         uzJg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@proton.me header.s=protonmail header.b=UMA8qiaZ;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=proton.me
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id j13-20020a05620a288d00b006b8d79c90bdsi3120281qkp.215.2022.08.13.04.30.15
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 13 Aug 2022 04:30:15 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       dkim=neutral (body hash did not verify) header.i=@kernel.org header.s=k20201202 header.b=pQAAWq9Q;
+       spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=kernel.org
+Return-Path: <kvmarm-bounces@lists.cs.columbia.edu>
+Received: from mm01.cs.columbia.edu (mm01.cs.columbia.edu. [128.59.11.253])
+        by mx.google.com with ESMTP id f8-20020a056214076800b004730a4e4bf2si2233377qvz.436.2022.08.13.06.32.30;
+        Sat, 13 Aug 2022 06:32:30 -0700 (PDT)
+Received-SPF: pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) client-ip=128.59.11.253;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@proton.me header.s=protonmail header.b=UMA8qiaZ;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=proton.me
-Received: from localhost ([::1]:36408 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1oMpLK-0005LH-Sn
-	for alex.bennee@linaro.org; Sat, 13 Aug 2022 07:30:14 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45850)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <anton.kochkov@proton.me>)
- id 1oMpIW-0004DC-9a; Sat, 13 Aug 2022 07:27:20 -0400
-Received: from mail-0201.mail-europe.com ([51.77.79.158]:48774)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <anton.kochkov@proton.me>)
- id 1oMpIN-0002Kk-Nd; Sat, 13 Aug 2022 07:27:16 -0400
-Date: Sat, 13 Aug 2022 11:26:55 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=proton.me;
- s=protonmail; t=1660390021; x=1660649221;
- bh=Qdl3AKs8mRhBU+Ik9gzjoy7AEpjWD6DCO/69ZqSKWxI=;
- h=Date:To:From:Cc:Reply-To:Subject:Message-ID:Feedback-ID:From:To:
- Cc:Date:Subject:Reply-To:Feedback-ID:Message-ID;
- b=UMA8qiaZ3teD4qEXRXG5o5JLx3B0J3hfWsaE/kbSYYB8ya+BVpso+hcEHhkyC5sf1
- eZlY/I0s+vV1LLL0+itRItZy832Iwe7RbgUSQG72K7f4S8Ey0WE8iydgC6knd9nM8t
- ggdIxu+R+zkHAN/xEW7HiCkK5rc6L2Uof7is7ONSqIW4I4QveC1L6HAre54CerXa4p
- hSCMvdZMIQdntDn/QrXxSCy3aJF77jXYlGGFVWkf/C5jMz7/FjHLVu6jydW/38wUuY
- tbxXznrwYrFHR8dDpPXgK+BGVEktBemDKPLBEj6k6u530vvKeBpPOsTL/1p+IKgrg4
- PCNBHRicZJivQ==
-To: qemu-devel@nongnu.org
-From: Anton Kochkov <anton.kochkov@proton.me>
-Cc: Anton Kochkov <anton.kochkov@proton.me>,
- Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org
-Subject: [PATCH] hw/arm/nvic: implement "num-prio-bits" property
-Message-ID: <20220813112559.1974427-1-anton.kochkov@proton.me>
-Feedback-ID: 53490844:user:proton
-MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=51.77.79.158;
- envelope-from=anton.kochkov@proton.me; helo=mail-0201.mail-europe.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.29
+       dkim=neutral (body hash did not verify) header.i=@kernel.org header.s=k20201202 header.b=pQAAWq9Q;
+       spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=kernel.org
+Received: from localhost (localhost [127.0.0.1])
+	by mm01.cs.columbia.edu (Postfix) with ESMTP id 015344F5B2;
+	Sat, 13 Aug 2022 09:32:30 -0400 (EDT)
+X-Virus-Scanned: at lists.cs.columbia.edu
+X-Spam-Flag: NO
+X-Spam-Score: -1.789
+X-Spam-Level: 
+X-Spam-Status: No, score=-1.789 required=6.1 tests=[BAYES_00=-1.9,
+	DKIM_SIGNED=0.1, T_DKIM_INVALID=0.01, URIBL_BLOCKED=0.001]
+	autolearn=no
+Authentication-Results: mm01.cs.columbia.edu (amavisd-new); dkim=softfail
+	(fail, message has been altered) header.i=@kernel.org
+Received: from mm01.cs.columbia.edu ([127.0.0.1])
+	by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id MN+x1hdEahLt; Sat, 13 Aug 2022 09:32:28 -0400 (EDT)
+Received: from mm01.cs.columbia.edu (localhost [127.0.0.1])
+	by mm01.cs.columbia.edu (Postfix) with ESMTP id 79C234F5B3;
+	Sat, 13 Aug 2022 09:32:28 -0400 (EDT)
+Received: from localhost (localhost [127.0.0.1])
+ by mm01.cs.columbia.edu (Postfix) with ESMTP id 2B9A44F5B1
+ for <kvmarm@lists.cs.columbia.edu>; Sat, 13 Aug 2022 09:32:27 -0400 (EDT)
+X-Virus-Scanned: at lists.cs.columbia.edu
+Received: from mm01.cs.columbia.edu ([127.0.0.1])
+ by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id qKPzvAyE7KVy for <kvmarm@lists.cs.columbia.edu>;
+ Sat, 13 Aug 2022 09:32:25 -0400 (EDT)
+Received: from ams.source.kernel.org (ams.source.kernel.org [145.40.68.75])
+ by mm01.cs.columbia.edu (Postfix) with ESMTPS id 9C90C4F5B0
+ for <kvmarm@lists.cs.columbia.edu>; Sat, 13 Aug 2022 09:32:25 -0400 (EDT)
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by ams.source.kernel.org (Postfix) with ESMTPS id EF318B800E2;
+ Sat, 13 Aug 2022 13:32:23 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 95D22C433C1;
+ Sat, 13 Aug 2022 13:32:22 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1660397542;
+ bh=4tt7rfBTVdPNcYX1M4pLZ2pBDu1cWuKg6CQTeYZJTL8=;
+ h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+ b=pQAAWq9Q3rJzp7x/PtLEfq3vmnHAh0bW8QQEYaQhkuFYyo6EoeKg2W+Z9XiyxR1ZX
+ xq52lNyN6iYxFzCSQPMS8zQEq/rCIbadzx+kwKfhLYjKGbBbTrcVrqfqdrSlu5Hs0Z
+ zCIhVBiPuqEf2V5tNzqVdWJueqzUMOUyhgwJIKTV84xhTxOAuytriiAcjLhBOEO+uV
+ 8ZPBpRm9dfEXftW7mn24xtGOfBzNA2bnRDKllwx0nYw4NQfCECyLY5w/Xb7g0R3yUI
+ bdVtH5hcfNQzk8gLd7O7mdQCYt0ExHt+kEj9F9QdhI8y0e2DV5p/IVk+rVwX4sKQ6S
+ 2IyOSx7r0NsDw==
+Received: from sofa.misterjones.org ([185.219.108.64]
+ helo=wait-a-minute.misterjones.org)
+ by disco-boy.misterjones.org with esmtpsa (TLS1.3) tls
+ TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.95)
+ (envelope-from <maz@kernel.org>) id 1oMrFU-002iqS-AU;
+ Sat, 13 Aug 2022 14:32:20 +0100
+Date: Sat, 13 Aug 2022 14:32:19 +0100
+Message-ID: <8735e0s1zw.wl-maz@kernel.org>
+From: Marc Zyngier <maz@kernel.org>
+To: Vitaly Chikunov <vt@altlinux.org>
+Subject: Re: qemu-system-aarch64: Failed to retrieve host CPU features
+In-Reply-To: <20220813111137.5plgwrfnosolj2bp@altlinux.org>
+References: <20220812021427.cwenhciuftgtaj64@altlinux.org>
+ <20220812084529.ur5qcyws5qvoyvuc@altlinux.org>
+ <CAFEAcA9BuSe4SwpoWTALURaxoj-8U2y83k=und7oKrZBggLarQ@mail.gmail.com>
+ <87h72hv71u.wl-maz@kernel.org>
+ <20220813111137.5plgwrfnosolj2bp@altlinux.org>
+User-Agent: Wanderlust/2.15.9 (Almost Unreal) SEMI-EPG/1.14.7 (Harue)
+ FLIM-LB/1.14.9 (=?UTF-8?B?R29qxY0=?=) APEL-LB/10.8 EasyPG/1.0.0 Emacs/27.1
+ (x86_64-pc-linux-gnu) MULE/6.0 (HANACHIRUSATO)
+MIME-Version: 1.0 (generated by SEMI-EPG 1.14.7 - "Harue")
+X-SA-Exim-Connect-IP: 185.219.108.64
+X-SA-Exim-Rcpt-To: vt@altlinux.org, peter.maydell@linaro.org,
+ qemu-arm@nongnu.org, kvmarm@lists.cs.columbia.edu, qemu-devel@nongnu.org,
+ ldv@altlinux.org
+X-SA-Exim-Mail-From: maz@kernel.org
+X-SA-Exim-Scanned: No (on disco-boy.misterjones.org);
+ SAEximRunCond expanded to false
+Cc: qemu-arm@nongnu.org, "Dmitry V. Levin" <ldv@altlinux.org>,
+ kvmarm <kvmarm@lists.cs.columbia.edu>, QEMU Developers <qemu-devel@nongnu.org>
+X-BeenThere: kvmarm@lists.cs.columbia.edu
+X-Mailman-Version: 2.1.14
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Reply-To: Anton Kochkov <anton.kochkov@proton.me>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: uDbHTtGdkblz
+List-Id: Where KVM/ARM decisions are made <kvmarm.lists.cs.columbia.edu>
+List-Unsubscribe: <https://lists.cs.columbia.edu/mailman/options/kvmarm>,
+ <mailto:kvmarm-request@lists.cs.columbia.edu?subject=unsubscribe>
+List-Archive: <https://lists.cs.columbia.edu/pipermail/kvmarm>
+List-Post: <mailto:kvmarm@lists.cs.columbia.edu>
+List-Help: <mailto:kvmarm-request@lists.cs.columbia.edu?subject=help>
+List-Subscribe: <https://lists.cs.columbia.edu/mailman/listinfo/kvmarm>,
+ <mailto:kvmarm-request@lists.cs.columbia.edu?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Errors-To: kvmarm-bounces@lists.cs.columbia.edu
+Sender: kvmarm-bounces@lists.cs.columbia.edu
+X-TUID: DJ5Oq37r+Vwt
 
-Cortex-M NVIC can be configured with different amount of
-the maximum available priority bits. FreeRTOS has asserts
-that checks if the all unavailable priority bits are unset
-after writing into this register in real hardware.
-To allow setting this number depending on the machine or
-configuration expose priority bits as QDev property
-which is by default is set to 8 as it was hardcoded in the past.
-Thus, existing code doesn't require any additional changes,
-and it doesn't change the default behavior of NVIC.
+On Sat, 13 Aug 2022 12:11:37 +0100,
+Vitaly Chikunov <vt@altlinux.org> wrote:
+> 
+> Marc,
+> 
+> On Fri, Aug 12, 2022 at 04:02:37PM +0100, Marc Zyngier wrote:
+> > On Fri, 12 Aug 2022 10:25:55 +0100,
+> > Peter Maydell <peter.maydell@linaro.org> wrote:
+> > > 
+> > > I've added some more relevant mailing lists to the cc.
+> > > 
+> > > On Fri, 12 Aug 2022 at 09:45, Vitaly Chikunov <vt@altlinux.org> wrote:
+> > > > On Fri, Aug 12, 2022 at 05:14:27AM +0300, Vitaly Chikunov wrote:
+> > > > > I noticed that we starting to get many errors like this:
+> > > > >
+> > > > >   qemu-system-aarch64: Failed to retrieve host CPU features
+> > > > >
+> > > > > Where many is 1-2% per run, depends on host, host is Kunpeng-920, and
+> > > > > Linux kernel is v5.15.59, but it started to appear months before that.
+> > > > >
+> > > > > strace shows in erroneous case:
+> > > > >
+> > > > >   1152244 ioctl(9, KVM_CREATE_VM, 0x30)   = -1 EINTR (Interrupted system call)
+> > > > >
+> > > > > And I see in target/arm/kvm.c:kvm_arm_create_scratch_host_vcpu:
+> > > > >
+> > > > >     vmfd = ioctl(kvmfd, KVM_CREATE_VM, max_vm_pa_size);
+> > > > >     if (vmfd < 0) {
+> > > > >         goto err;
+> > > > >     }
+> > > > >
+> > > > > Maybe it should restart ioctl on EINTR?
+> > > > >
+> > > > > I don't see EINTR documented in ioctl(2) nor in Linux'
+> > > > > Documentation/virt/kvm/api.rst for KVM_CREATE_VM, but for KVM_RUN it
+> > > > > says "an unmasked signal is pending".
+> > > >
+> > > > I am suggested that almost any blocking syscall could return EINTR, so I
+> > > > checked the strace log and it does not show evidence of arriving a signal,
+> > > > the log ends like this:
+> > > >
+> > > >   1152244 openat(AT_FDCWD, "/dev/kvm", O_RDWR|O_CLOEXEC) = 9
+> > > >   1152244 ioctl(9, KVM_CHECK_EXTENSION, KVM_CAP_ARM_VM_IPA_SIZE) = 48
+> > > >   1152244 ioctl(9, KVM_CREATE_VM, 0x30)   = -1 EINTR (Interrupted system call)
+> > > >   1152244 close(9)                        = 0
+> > > >   1152244 newfstatat(2, "", {st_dev=makedev(0, 0xd), st_ino=57869925, st_mode=S_IFIFO|0600, st_nlink=1, st_uid=517, st_gid=517, st_blksize=4096, st_blocks=0, st_size=0, st_atime=1660268019 /* 2022-08-12T01:33:39.850436293+0000 */, st_atime_nsec=850436293, st_mtime=1660268019 /* 2022-08-12T01:33:39.850436293+0000 */, st_mtime_nsec=850436293, st_ctime=1660268019 /* 2022-08-12T01:33:39.850436293+0000 */, st_ctime_nsec=850436293}, AT_EMPTY_PATH) = 0
+> > > >   1152244 write(2, "qemu-system-aarch64: Failed to r"..., 58) = 58
+> > > >   1152244 exit_group(1)                   = ?
+> > > >   1152245 <... clock_nanosleep resumed> <unfinished ...>) = ?
+> > > >   1152245 +++ exited with 1 +++
+> > > >   1152244 +++ exited with 1 +++
+> > > 
+> > > KVM folks: should we expect that KVM_CREATE_VM might fail EINTR
+> > > and need retrying?
+> > 
+> > In general, yes. But for this particular one, this is pretty odd.
+> > 
+> > The only path I can so far see that would match this behaviour is if
+> > mm_take_all_locks() (called from __mmu_notifier_register()) was
+> > getting interrupted by a signal (I'm looking at a 5.19-ish kernel,
+> > which may slightly differ from the 5.15 mentioned above).
+> > 
+> > But as Vitaly points out, it doesn't seem to be a signal delivered
+> > here.
+> > 
+> > Vitaly: could you please share your exact test case (full qemu command
+> > line), and instrument your kernel to see if mm_take_all_locks() is the
+> > one failing?
+> 
+> Full command is `qemu-system-aarch64 -M accel=kvm:tcg -m 4096M -smp
+>   cores=8 -nodefaults -nographic -no-reboot -fsdev
+>   local,id=root,path=/,security_model=none,multidevs=remap -device
+>   virtio-9p-pci,fsdev=root,mount_tag=/dev/root -device virtio-rng-pci
+>   -serial mon:stdio -kernel /boot/vmlinuz-5.18.16-un-def-alt1 -initrd
+>   /usr/src/tmp/initramfs-5.18.16-un-def-alt1.img -sandbox on,spawn=deny -M
+>   virt,gic-version=3 -cpu max -append 'console=ttyAMA0 mitigations=off
+>   nokaslr quiet panic=-1 SCRIPT=/usr/src/tmp/tmp.458pkF5r8d'`.
+> 
+> But a minified reproducer is `qemu-system-aarch64 -M virt,accel=kvm -cpu max -kernel qwe`. 
 
-Signed-off-by: Anton Kochkov <anton.kochkov@proton.me>
-Resolves: https://gitlab.com/qemu-project/qemu/-/issues/1122
----
- hw/intc/armv7m_nvic.c | 6 +++++-
- 1 file changed, 5 insertions(+), 1 deletion(-)
+Ah, couldn't be smaller! ;-) Thanks for that!
 
-diff --git a/hw/intc/armv7m_nvic.c b/hw/intc/armv7m_nvic.c
-index 1f7763964c..b8959d645d 100644
---- a/hw/intc/armv7m_nvic.c
-+++ b/hw/intc/armv7m_nvic.c
-@@ -2580,6 +2580,8 @@ static const VMStateDescription vmstate_nvic =3D {
- static Property props_nvic[] =3D {
-     /* Number of external IRQ lines (so excluding the 16 internal exceptio=
-ns) */
-     DEFINE_PROP_UINT32("num-irq", NVICState, num_irq, 64),
-+    /* Number of the maximum priority bits that can be used */
-+    DEFINE_PROP_UINT8("num-prio-bits", NVICState, num_prio_bits, 8),
-     DEFINE_PROP_END_OF_LIST()
- };
+>
+> I traced with kprobe event tracer with the probes:
+> 
+>   echo 'p kvm_dev_ioctl'               > kprobe_events
+>   echo 'r kvm_dev_ioctl $retval'      >> kprobe_events
+>   echo 'p mm_take_all_locks'          >> kprobe_events
+>   echo 'r mm_take_all_locks $retval'  >> kprobe_events
+> 
+> Then run reproducer in the loop
+> 
+>   for ((i=0;i<100;i++));do echo $i; strace -fvo bb.$i qemu-system-aarch64 -M virt,accel=kvm -cpu max -kernel qwe 2>&1 | grep Failed && break; done
+> 
+> And on 97th iteration it's failed, strace log to check that PID is the same with
+> the following trace:
+> 
+>   3611463 ioctl(9, KVM_CREATE_VM, 0x30)   = -1 EINTR (Interrupted system call)
+> 
+> Event trace log:
+> 
+>   qemu-system-aar-3611463 [002] d.... 342920.535549: p_kvm_dev_ioctl_0: (kvm_dev_ioctl+0x0/0x910)
+>   qemu-system-aar-3611463 [002] d.... 342920.535635: p_mm_take_all_locks_0: (mm_take_all_locks+0x0/0x390)
+>   qemu-system-aar-3611463 [002] ..... 342920.535657: r_mm_take_all_locks_0: (__mmu_notifier_register+0x44/0x200 <- mm_take_all_locks) arg1=0xfffffffc
+>   qemu-system-aar-3611463 [002] ..... 342920.535695: r_kvm_dev_ioctl_0: (__arm64_sys_ioctl+0xcc/0x124 <- kvm_dev_ioctl) arg1=0xfffffffffffffffc
+> 
+> So that's mm_take_all_locks returns EINTR.
+> 
+> (I tried also to make C reproducer which opens /dev/kvm and call
+> `ioctl(kvm, KVM_CREATE_VM, 0)` in the loop and it does not reproduce the
+> problem, so it seems it's also something additional that QEMU does.)
 
-@@ -2690,7 +2692,9 @@ static void armv7m_nvic_realize(DeviceState *dev, Err=
-or **errp)
-     /* include space for internal exception vectors */
-     s->num_irq +=3D NVIC_FIRST_IRQ;
+On my fast test box, it takes several hundreds of iterations to fire,
+but that's not completely impossible to trigger (strace actually helps
+here). I was expecting it to fire more on a slow one, but that's not
+the case.
 
--    s->num_prio_bits =3D arm_feature(&s->cpu->env, ARM_FEATURE_V7) ? 8 : 2=
-;
-+    if (!arm_feature(&s->cpu->env, ARM_FEATURE_V7)) {
-+        s->num_prio_bits =3D 2;
-+    }
+And indeed, no signal seems to be delivered. I suspect that
+FIT_NOTIFY_SIGNAL is set, but I need to investigate more. With a
+reproducer, it should be easier to diagnose fully.
 
-     /*
-      * This device provides a single memory region which covers the
---
-2.37.1
+But we probably need to handle EINTR when creating the mini VM.
 
+	M.
 
+-- 
+Without deviation from the norm, progress is not possible.
+_______________________________________________
+kvmarm mailing list
+kvmarm@lists.cs.columbia.edu
+https://lists.cs.columbia.edu/mailman/listinfo/kvmarm

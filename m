@@ -1,140 +1,149 @@
-Received: by 2002:a17:906:3b11:0:0:0:0 with SMTP id g17csp317060ejf;
-        Sat, 13 Aug 2022 08:54:39 -0700 (PDT)
-X-Google-Smtp-Source: AA6agR64CaTpiwdw+X2y4IJaa8xP4OdNLN7ECuybgFIrKSPazGwtJkedE9zXLi45K0/LwJVdPMI1
-X-Received: by 2002:a5d:5985:0:b0:222:c827:11d5 with SMTP id n5-20020a5d5985000000b00222c82711d5mr4687364wri.323.1660406079116;
-        Sat, 13 Aug 2022 08:54:39 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1660406079; cv=none;
+Received: by 2002:a17:906:3b11:0:0:0:0 with SMTP id g17csp359734ejf;
+        Sat, 13 Aug 2022 10:54:37 -0700 (PDT)
+X-Google-Smtp-Source: AA6agR7Ls4n2FIUJoFs7wkpSgQujwaS61/CdR6T+JMzfilNX/RqEQtuLClzzgSFg1p5kLmX+SnWY
+X-Received: by 2002:a05:622a:1e12:b0:344:54ee:6865 with SMTP id br18-20020a05622a1e1200b0034454ee6865mr1636240qtb.200.1660413277157;
+        Sat, 13 Aug 2022 10:54:37 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1660413277; cv=none;
         d=google.com; s=arc-20160816;
-        b=wKoqXMy1hZUW3TPwimhp16TK/HHF3U3HN4TXMrMW8kRmHHVwOCfaVwqnpzWWZ+fL3g
-         baCu2u1Mih+DIRpfi4zmQOqZAPUE0zGgiX+hIEIeZR7cvY88VBdc7rIwi5VLYkRhDnuY
-         LsuFsA0c5p/+doDlVqwwMYE3i53qNI9GdUBYCItxvZu9242vofdRcDiVmCvM8GfsCh1D
-         Aekt6jqI/ApC5hEpiGbEwuBGjOc7z8UnkVt/1mZpHUpiSl+PBd+4hZ1kXpqfdWvF+Arx
-         gRqFRX0XOG1Ml4oD8Onbqgk/PBRHpGBT+/Mo+ShqXxjS5lcNSTMu7KdJhtFxK8q/Llt7
-         v/oA==
+        b=Mylm+mDKJfHqIPOetuGNn0oyhI/7TlB8kgt0iq/FBwn5JFoJZ6heDqJiXCFbkktgGh
+         cbkyaCg5Kx/J6Cgmx254NleMgmXJfd3ZNJMd1//9fy7AbhVg7AGW4QPKgJSlHP7finiH
+         nIlCYWdSxrXy77gKc54tLB7jhlce+cNUo/+yugsGRvKa/ttzEOQowMDgNMK5EBKZFrbg
+         1f+6uyM1bPOdgdo6xBwmuJhREPSI5x4jWltYVQdDZaMy6XA3mTHLcdj87Kwsh8bR1kTu
+         EL4HN5BuOPdMB8Ge7dF987eIud8N1XUkQsEQfDgb7CGW1YAFF4b50rBasYtBMbMqaIA1
+         U0sw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id;
-        bh=vmKQeOmtrKcOtGX0100qIBCXUfc5fnQaRCUOdUINaLM=;
-        b=w2so2/reCC0apRi18slvO/HHiaYlcVP6sNlVJHpLa5gmI3kYs1sFDD9EN9TdJDRAXH
-         Dag5tSqTa8WxRFbNEMQRnYCLCbEuYZwDkXEn4bpJNVumqZxYbDP+NfyARWGqw9Rs2b7c
-         rYOCm5VJu7gwFYACji2r4Yu137LSzsJS4rDHmJFoccYaX5Leai1gZtxmJ6XHzw/oV5Uu
-         c1E52ey2c1CXznkiQ5zYDoOhn/7HXK7/9fRf2GBNkb+XOwGQdc0sjpq/ptG5ueL7jbwT
-         FYTllq15TU/MqI8AS9paxF8oZy2x3RYo7mo5k7LZ4WXxcIjfKzShywTzsE4SR/2nONAL
-         zOIg==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:mime-version:dkim-signature;
+        bh=d6+WqawZ6bYb/eT0yzkwDBNoVUw3EGLEc13+cWpGXLQ=;
+        b=QYPgauZ1iTyhTImlpRX1i9OF+FKc/bbX/xyM2rhFIC/Q/2P9aBTkybNod12s+5yFzj
+         GvFu3nH/TCE+EJFU2xPHfdCRtWTVTJ9RbDXjVYeekPzksTws27kxxGs51eQYi9ErQO1O
+         X4wHnVaWEjKI6CSU906fJw1BgWn8HCPBeKpn40P4pszLXQKuUBj5zl6wWuvoF5P8dFsi
+         /qNRDRC/WIK6LTTEioHhoo+ZAIOzn341xAX5JijY4dwZqVDBy7WJbBf/mGY+WLwuHCHM
+         hpq1fdOzrV/sbIR0JkX8G2/6nHZrInoX41nWfcGl4oHQLsXmrAufh3O8QRgPgdsMPjN0
+         5zGg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=neutral (google.com: 212.227.17.24 is neither permitted nor denied by best guess record for domain of laurent@vivier.eu) smtp.mailfrom=laurent@vivier.eu
-Return-Path: <laurent@vivier.eu>
-Received: from mout.kundenserver.de (mout.kundenserver.de. [212.227.17.24])
-        by mx.google.com with ESMTPS id f14-20020adff98e000000b0021bbace5486si1156630wrr.262.2022.08.13.08.54.38
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 13 Aug 2022 08:54:39 -0700 (PDT)
-Received-SPF: neutral (google.com: 212.227.17.24 is neither permitted nor denied by best guess record for domain of laurent@vivier.eu) client-ip=212.227.17.24;
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=KAYC0xNy;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id j22-20020ac85516000000b0034216c65bfasi2691638qtq.232.2022.08.13.10.54.37
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Sat, 13 Aug 2022 10:54:37 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=neutral (google.com: 212.227.17.24 is neither permitted nor denied by best guess record for domain of laurent@vivier.eu) smtp.mailfrom=laurent@vivier.eu
-Received: from [192.168.100.1] ([82.142.8.70]) by mrelayeu.kundenserver.de
- (mreue108 [213.165.67.119]) with ESMTPSA (Nemesis) id
- 1N1whr-1nP2do3yKv-012GCh; Sat, 13 Aug 2022 17:54:38 +0200
-Message-ID: <531cdb6a-f660-b671-375c-a3819d90c030@vivier.eu>
-Date: Sat, 13 Aug 2022 17:54:35 +0200
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=KAYC0xNy;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:38220 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1oMvLI-0007R9-NI
+	for alex.bennee@linaro.org; Sat, 13 Aug 2022 13:54:36 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37592)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <shinysaana@gmail.com>)
+ id 1oMub7-0000MD-Px; Sat, 13 Aug 2022 13:06:53 -0400
+Received: from mail-pj1-x1032.google.com ([2607:f8b0:4864:20::1032]:46712)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <shinysaana@gmail.com>)
+ id 1oMub6-0002UU-8G; Sat, 13 Aug 2022 13:06:53 -0400
+Received: by mail-pj1-x1032.google.com with SMTP id
+ q7-20020a17090a7a8700b001f300db8677so3453228pjf.5; 
+ Sat, 13 Aug 2022 10:06:51 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=cc:to:subject:message-id:date:from:mime-version:from:to:cc;
+ bh=d6+WqawZ6bYb/eT0yzkwDBNoVUw3EGLEc13+cWpGXLQ=;
+ b=KAYC0xNyrOaKh9jCG9lrXY0n+ZkVjpnCWGwqjFfW1SUOW8H6BmMU1YsMbS/R3VmXxG
+ 7YZt+FAPxhc4SqjyWljN41y8fa0asa/c5JgPUMxA8wqzBIny2jSngPIrlewx30Z9owKe
+ 9FGtkCtoJy+0m2hsYfbftuuLZauFgaU/r1NxQKPQObNcraucAiu71ctxwtGQ50hDyjkX
+ mXlI5l7Nblmac/Iyc2jE/+ss4k8nGVXmAZoJE8Vg3yEz1+8ksIiyxpET93uJd4mF95To
+ 6KDnnFQap3tD1Btgu3XnYuRc6zvnlO6JVKXYnSLlR2XbTCFJBCTrTZOYFbGMMZ8wl2sy
+ Wn1Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=cc:to:subject:message-id:date:from:mime-version:x-gm-message-state
+ :from:to:cc;
+ bh=d6+WqawZ6bYb/eT0yzkwDBNoVUw3EGLEc13+cWpGXLQ=;
+ b=MqrDMLjslkCY8OlJggFHSVjg4KqPzJA7KotiRFO7G/PvkAMwKv6SOhwcWVrxLFjl+T
+ iol++FdGxi/98RVVlFPgb/CrGHvq1X17hu1NAhvmxsVQJ8A1oIQD0VE9quRN7G5OLT9b
+ Y98SZxxwfy4Y8h4TiYGeyj3C0hQEqld6pvX+hRS5nPd7MukNS0x53cjwoCe97L7tBT8s
+ SVgjmkxB3HhoBBqz8Zyvz1k2H5lfDpKWd2tmCSbTWNqGoqiW0rPSteu6gTK0NjTsGqrg
+ X5+jy87JQ3ztEq+5zpXlQ6p521/4jjImDS4/yjHPvIx2zLnmTtkgpUxcezdCPjpppAn1
+ Ci9g==
+X-Gm-Message-State: ACgBeo2slKEr6hjC9HRa4CbDOjeLHyl2u6wj5t2GRgmAl0PAI94eyAfV
+ 0Xz0RD410oEv11r6FnoqreLdhnVgDZKUvWNJetcOHtaOKOU=
+X-Received: by 2002:a17:902:c408:b0:16d:c48d:978e with SMTP id
+ k8-20020a170902c40800b0016dc48d978emr9321178plk.70.1660410409803; Sat, 13 Aug
+ 2022 10:06:49 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.11.0
-Subject: Re: [PATCH] [PATCH] linux-user/aarch64: Reset target data on
- MADV_DONTNEED
-Content-Language: fr
-To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Richard Henderson <richard.henderson@linaro.org>,
- Vitaly Buka <vitalybuka@google.com>, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org
-References: <CAPjTjwsb0jAsQq4PHOsFGW7SjpAe=Ug2b_fxhdccEEnzh=cQUA@mail.gmail.com>
- <CAFEAcA-F8rUTH1FimHf+FaV0O6dQ4QGHihaygxdjn9BKYPazBg@mail.gmail.com>
- <CAPjTjwuNwXdemwFYOUDi4Qnc5fA9KWzAEZQ1JaCNu+0x3RUh7Q@mail.gmail.com>
- <8b32824b-4dc1-3d1a-1916-918a3fffab26@linaro.org>
- <67a42d65-8289-b26c-26f6-275ea0bfac98@vivier.eu>
- <CAFEAcA8AXodRV=eG2Ra4Sf9rsap499zDJEu6hC=c+V9gE2KjfA@mail.gmail.com>
- <52225a7c-310f-444f-0b75-0ad2536a30c0@vivier.eu> <87r11miz8i.fsf@linaro.org>
-From: Laurent Vivier <laurent@vivier.eu>
-In-Reply-To: <87r11miz8i.fsf@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:8nWnS8Fw0Kbrg56GpVJiYTJk+CQeS/Z3+Ew4Fqsh/reHwORm9Y8
- evLfHpOV/f1uV69kh9LkFrR7gqrhrOUD8ITlbyIulyEbx3BmKOhRMsUZNCA+i6pKEp93qIW
- kRkEraQra69gaRukDi3nPB8Lie6XUJdpDLHlTX0vuII3g0a5h+Rik35qF8nBk8wsMBavcOs
- SjMCQEArE5IEesUxWJ+Ng==
-X-Spam-Flag: NO
-X-UI-Out-Filterresults: notjunk:1;V03:K0:DoAKKLWKxgw=:4tpbR/6022nCs4AL25Cvey
- kavUjQo4cl5CKz2L6lUtQFPxqmDRnsWs2ymeYcLC0h6hojHf7s4bcdJu4sikJPQIs/jEn6Rl3
- tzWnSVUN1wJ2ukHfax2oY4L1Iinrlr1ez7lZ/rr7LKseHx6/YPPQuaBnrRFcMDn036ELHrmYk
- 0ZcNGavLjzO5kziPikHV2shtoJPbRw2FNUMDyzURJPykVrziJgPw2Kg7oeESiplRNU6eG6B5M
- Z/XyxSxrXsAXmPw+xAlRx9FsPWYr9hOv2Ibsb6gIyeoPOTbwQT6SRmdZtnFja4IXXdqZZZG3i
- It8eKIUOZHeewRiMq2c00W3YCvKtDywcoGgYXm82/NKzuEKTT7XAIUV6C+ZKXKXdx+QNjuEe6
- m4hnnMC1soReNZJKwXnXmwl9imNivZ6f0ON62H2gASRGXG9UI1+1XMeY1JTJTbJ0lqcBffgby
- gHkCrYJ8edCw1Dbvx08uy373kZY1oNQGeckFThvB57yGMdC58Sh0MZy35bh6xGWXs5Brvo/0A
- hdoSxrgjHSY1JAv+UtpfAkWzFC33GvJ7Pg3UCDNaXYDE2XNNnlZqXseFhIZ04EtRqtZUZueqo
- G7AmiERyR78903vbT2w+vz8EFVm4EdG3VKFleRko5VwREIC8LC62dPFMNmSJ/hszlFFXqan4s
- 5qQK8lAxqO/v7V9kXyk36vTmrtJPyECBlE/53i8nI6PDYwnHUs/WRu2L4nIR0g1g1i1Lw3lIY
- ScJG/Lrt2AZRd/OwYzDe87OccZyYZABKY9WlEg==
-X-TUID: dQ0zQcZb77pG
+From: Shiny Saana <shinysaana@gmail.com>
+Date: Sat, 13 Aug 2022 19:06:39 +0200
+Message-ID: <CAJtCPL0rRU9Q=s6kUFDHjC5uUmx2w=ePYMMaib6vq57g48qk0Q@mail.gmail.com>
+Subject: Teensy 4.1 Implementation
+To: qemu-arm@nongnu.org
+Cc: qemu-devel@nongnu.org
+Content-Type: multipart/alternative; boundary="000000000000a8661305e6226cef"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1032;
+ envelope-from=shinysaana@gmail.com; helo=mail-pj1-x1032.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-Mailman-Approved-At: Sat, 13 Aug 2022 13:54:17 -0400
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: RrQ4LEjrDOjZ
 
-Le 11/08/2022 à 17:18, Alex Bennée a écrit :
-> 
-> Laurent Vivier <laurent@vivier.eu> writes:
-> 
->> Le 11/08/2022 à 13:54, Peter Maydell a écrit :
->>> On Thu, 11 Aug 2022 at 09:29, Laurent Vivier <laurent@vivier.eu> wrote:
->>>>
->>>> Le 10/08/2022 à 22:47, Richard Henderson a écrit :
->>>>> On 8/10/22 13:32, Vitaly Buka wrote:
->>>>>> Sorry, I only noticed today that it's not submitted.
->>>>>> Version is not critical for us, as we build from masters anyway.
->>>>>> Richard, do you know a reason to consider this critical?
->>>>>>
->>>>>> On Wed, 10 Aug 2022 at 13:04, Peter Maydell <peter.maydell@linaro.org
->>>>>> <mailto:peter.maydell@linaro.org>> wrote:
->>>>>>
->>>>>>       On Wed, 10 Aug 2022 at 21:00, Vitaly Buka <vitalybuka@google.com
->>>>>>       <mailto:vitalybuka@google.com>> wrote:
->>>>>>        >
->>>>>>        > How can we land this one?
->>>>>>
->>>>>>       Pinging it a week ago rather than now would have been a good start :-(
->>>>>>       I think it got missed because you didn't cc the linux-user maintainer.
->>>>>>
->>>>>>       Is this a critical fix for 7.1 or can we let it slip to 7.2 ?
->>>>>
->>>>> It's unfortunate that it got missed.  It's not critical, but it would be nice, because support for
->>>>> MADV_DONTNEED is new in 7.1 (previously, we ignored all madvise).
->>>>>
->>>>> I'll note there are missing braces for coding style on an IF.
->>>>>
->>>>> Laurent, do you have an objection to merging this for rc3?
->>>>>
->>>>
->>>> No objection.
->>>>
->>>> Do you want it goes via the arm branch or via the linux-user branch?
->>>>
->>>> If it goes via linux-user I can run the LTP testsuite but it takes 1 day.
->>> I think we should definitely run the LTP testsuite on it, so
->>> taking it via linux-user probably makes more sense.
->>
->> ok, applied to my linux-user-for-7.1 branch.
->>
->> Running tests.
-> 
-> Any chance you could pick up:
-> 
->    Subject: [PATCH v2] linux-user: un-parent OBJECT(cpu) when closing thread
->    Date: Wed,  3 Aug 2022 14:05:37 +0100
->    Message-Id: <20220803130537.763666-1-alex.bennee@linaro.org>
-> 
-> before you run the tests?
-> 
+--000000000000a8661305e6226cef
+Content-Type: text/plain; charset="UTF-8"
 
-I've tested it, it works fine.
+Hello!
 
-Do you plan to do a PR including it or do you want I do (there will be only this one in mine)?
+I'd like to implement support for emulating the teensy 4.1 board (
+https://www.pjrc.com/store/teensy41.html) to QEMU.
 
-Thanks,
-Laurent
+I'm honestly quite lost as to where to start at the moment, since I can't
+really find any emulated Cortex-M7 that would be close to that board
+already implemented.
+
+I asked around on IRC, and I was redirected to those two mailing lists, for
+guidance, and also as writing code without maintainers approval would be
+pointless.
+
+Thank you!
+
+--000000000000a8661305e6226cef
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+Hello!<div><br></div><div dir=3D"auto">I&#39;d like to implement support fo=
+r emulating the teensy 4.1 board (<div dir=3D"auto"><a href=3D"https://www.=
+pjrc.com/store/teensy41.html">https://www.pjrc.com/store/teensy41.html</a>)=
+ to QEMU.</div><div dir=3D"auto"><br></div><div dir=3D"auto">I&#39;m honest=
+ly quite lost as to where to start at the moment, since I can&#39;t really =
+find any emulated Cortex-M7 that would be close to that board already imple=
+mented.</div><div dir=3D"auto"><br></div><div dir=3D"auto">I asked around o=
+n IRC, and I was redirected to those two mailing lists, for guidance, and a=
+lso as writing code without maintainers approval would be pointless.</div><=
+div dir=3D"auto"><br></div><div dir=3D"auto">Thank you!</div><div dir=3D"au=
+to"><br></div></div>
+
+--000000000000a8661305e6226cef--

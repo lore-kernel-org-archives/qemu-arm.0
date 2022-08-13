@@ -1,189 +1,140 @@
-Received: by 2002:a17:906:3b11:0:0:0:0 with SMTP id g17csp279977ejf;
-        Sat, 13 Aug 2022 07:18:55 -0700 (PDT)
-X-Google-Smtp-Source: AA6agR6Sl4n5fQIXrJwj9hsBP6tvp0EQ+XgDxpluEAu8cb3ciKS9LQtRWO0KsU9weg52nvujceQD
-X-Received: by 2002:a0c:8084:0:b0:472:f26b:59f7 with SMTP id 4-20020a0c8084000000b00472f26b59f7mr7464010qvb.62.1660400335320;
-        Sat, 13 Aug 2022 07:18:55 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1660400335; cv=none;
+Received: by 2002:a17:906:3b11:0:0:0:0 with SMTP id g17csp317060ejf;
+        Sat, 13 Aug 2022 08:54:39 -0700 (PDT)
+X-Google-Smtp-Source: AA6agR64CaTpiwdw+X2y4IJaa8xP4OdNLN7ECuybgFIrKSPazGwtJkedE9zXLi45K0/LwJVdPMI1
+X-Received: by 2002:a5d:5985:0:b0:222:c827:11d5 with SMTP id n5-20020a5d5985000000b00222c82711d5mr4687364wri.323.1660406079116;
+        Sat, 13 Aug 2022 08:54:39 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1660406079; cv=none;
         d=google.com; s=arc-20160816;
-        b=nltJ2clqCM3yD7kjyhI2qaOWQhUGTnMCqe8llpyraw2MFJNaY+2/CiaFs1FTMT3ufn
-         jap9NdvnszTNOoa4TwAX941eti09Zwisyso/B3PS/zARlsiehfm7gprXsenvKFnlFGYL
-         8xzfpej7/CzTf9MZtTy+oG728tjvQTmsHXcDIGGth0roOobaQEjc+SliOFiH0nywxk+U
-         AUcEqxQkGeHg74+pLkMLz35vLaWkzE2dQBsnfBdhZtG6fv2m16+XAoYDFVafb2i1j6il
-         jpSTplm6dEJ5mw5+E1K/rhxhX5b4qwZliABusErHaKbw4AL8IOHNQ/3rcxnAKLlF65/6
-         Uuxg==
+        b=wKoqXMy1hZUW3TPwimhp16TK/HHF3U3HN4TXMrMW8kRmHHVwOCfaVwqnpzWWZ+fL3g
+         baCu2u1Mih+DIRpfi4zmQOqZAPUE0zGgiX+hIEIeZR7cvY88VBdc7rIwi5VLYkRhDnuY
+         LsuFsA0c5p/+doDlVqwwMYE3i53qNI9GdUBYCItxvZu9242vofdRcDiVmCvM8GfsCh1D
+         Aekt6jqI/ApC5hEpiGbEwuBGjOc7z8UnkVt/1mZpHUpiSl+PBd+4hZ1kXpqfdWvF+Arx
+         gRqFRX0XOG1Ml4oD8Onbqgk/PBRHpGBT+/Mo+ShqXxjS5lcNSTMu7KdJhtFxK8q/Llt7
+         v/oA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=cln1ienKJU2fm+CMnf2Xs3JEnZca3prWoVGFOCyv7u4=;
-        b=WyaqyVi5wEseIjb8v37tifnA9u2oVFL0e8YQQsdZueWy9qh45MMK234YWR9RvQVFT4
-         i9eRfeQSHpKpPIL7j7nMYXkaYBC3EP6Due05IckJ3PQ3Ur9F23xHZlnA7iwmu0XEDvYo
-         Fq6f76wBjbkHU7sDApTAtv/ewM4lxubWSl/bbLiOHh4Tl2zLxxyXAlZK7LQJutckf8gv
-         H4AF6SYSCrAaasHVIot/9FCQWcv1HorVwAtHG6iZjnYOf/WQm06JezWo+vyuPpOETpA7
-         kFjRhjfF0658meWI7T8YzMemaZUyz00Tb1NZljL7lhTyzBPeUE08QB4ATMXRj0PMxh3Q
-         z64A==
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id;
+        bh=vmKQeOmtrKcOtGX0100qIBCXUfc5fnQaRCUOdUINaLM=;
+        b=w2so2/reCC0apRi18slvO/HHiaYlcVP6sNlVJHpLa5gmI3kYs1sFDD9EN9TdJDRAXH
+         Dag5tSqTa8WxRFbNEMQRnYCLCbEuYZwDkXEn4bpJNVumqZxYbDP+NfyARWGqw9Rs2b7c
+         rYOCm5VJu7gwFYACji2r4Yu137LSzsJS4rDHmJFoccYaX5Leai1gZtxmJ6XHzw/oV5Uu
+         c1E52ey2c1CXznkiQ5zYDoOhn/7HXK7/9fRf2GBNkb+XOwGQdc0sjpq/ptG5ueL7jbwT
+         FYTllq15TU/MqI8AS9paxF8oZy2x3RYo7mo5k7LZ4WXxcIjfKzShywTzsE4SR/2nONAL
+         zOIg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=IkE2GE6n;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v8-20020a0ce1c8000000b00474887d9878si2078269qvl.34.2022.08.13.07.18.55
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 13 Aug 2022 07:18:55 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       spf=neutral (google.com: 212.227.17.24 is neither permitted nor denied by best guess record for domain of laurent@vivier.eu) smtp.mailfrom=laurent@vivier.eu
+Return-Path: <laurent@vivier.eu>
+Received: from mout.kundenserver.de (mout.kundenserver.de. [212.227.17.24])
+        by mx.google.com with ESMTPS id f14-20020adff98e000000b0021bbace5486si1156630wrr.262.2022.08.13.08.54.38
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sat, 13 Aug 2022 08:54:39 -0700 (PDT)
+Received-SPF: neutral (google.com: 212.227.17.24 is neither permitted nor denied by best guess record for domain of laurent@vivier.eu) client-ip=212.227.17.24;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=IkE2GE6n;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:47984 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1oMryY-0002jf-Rn
-	for alex.bennee@linaro.org; Sat, 13 Aug 2022 10:18:54 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:40958)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1oMrxo-0001NE-Nd
- for qemu-arm@nongnu.org; Sat, 13 Aug 2022 10:18:08 -0400
-Received: from mail-yb1-xb35.google.com ([2607:f8b0:4864:20::b35]:36614)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1oMrxn-0003dH-1g
- for qemu-arm@nongnu.org; Sat, 13 Aug 2022 10:18:08 -0400
-Received: by mail-yb1-xb35.google.com with SMTP id h81so1091726ybh.3
- for <qemu-arm@nongnu.org>; Sat, 13 Aug 2022 07:18:06 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc;
- bh=cln1ienKJU2fm+CMnf2Xs3JEnZca3prWoVGFOCyv7u4=;
- b=IkE2GE6nUJO9WgSIPAHmUxd/eC2/TH+LxLM7g+VU0uJoKMmH42xmedfoAqy+boGkUd
- DVkVFHGlqr7Gzhe7wNLYMxovXwOmLpO4lNJ/Hw33aYcbJC68HL16/ubZNnLRkYAqOPld
- w+7HYz3aTjYjqN6ezsDLx1Ja2FUPTLM8BCKor+krky33yxxLpvHhuBPQ99yfEugxji0v
- HooRJyOLMSKYg6UuZbZjEVk5Wkw5HILICe4gBu/y//CGi2P4WNGE3X3siTSaAnIZcX/c
- qXbm6gq7TvQCjfyktFiD+IQ9YHjLzPYSCJbgb+nNSAr+wIu/PX8h4MLj61pZQaxo5YO7
- qdEw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc;
- bh=cln1ienKJU2fm+CMnf2Xs3JEnZca3prWoVGFOCyv7u4=;
- b=Oy02JKQjzjTStXwzCSXhyIq7gBPquh17x/vesu9XXdF6X3IqTr7NIYpNxFOjqIce+e
- 9XIPHLVeebmLWYJeo88IO3amgpa9CyKY3H6PQrFt871nwykdLSUxt7DUrfVHTQsKT2FV
- GHLNq7bisctHHeXs8Ho7G/q+KZrlNgzY3FAjv+5AwZbrtEB7V4Fwr2ZwdRNHunli74KR
- kUY+d6y5D4IGUgD0xQd1SpqOjvEyxy0cbIcJnoGGK3KEmqlY6Mjv5iRDiJ3TdRB4W09T
- ih01ITehByeyObgLxW/i3h0jA1a6ciX9vQ2i4aJto7dGSj+1worX6dmYQaIahHo50onj
- Uusg==
-X-Gm-Message-State: ACgBeo1rE849p5QRlBCvEE2f2diYra3Xzdk3hS+CRwZwoqVYdHIYumaH
- CY+LLX2aqEc5R9tvBoMnjc/BqrfnTHCwmTA2qfzx2A==
-X-Received: by 2002:a25:3d0:0:b0:67c:2231:65e with SMTP id
- 199-20020a2503d0000000b0067c2231065emr6112145ybd.67.1660400285880; 
- Sat, 13 Aug 2022 07:18:05 -0700 (PDT)
+       spf=neutral (google.com: 212.227.17.24 is neither permitted nor denied by best guess record for domain of laurent@vivier.eu) smtp.mailfrom=laurent@vivier.eu
+Received: from [192.168.100.1] ([82.142.8.70]) by mrelayeu.kundenserver.de
+ (mreue108 [213.165.67.119]) with ESMTPSA (Nemesis) id
+ 1N1whr-1nP2do3yKv-012GCh; Sat, 13 Aug 2022 17:54:38 +0200
+Message-ID: <531cdb6a-f660-b671-375c-a3819d90c030@vivier.eu>
+Date: Sat, 13 Aug 2022 17:54:35 +0200
 MIME-Version: 1.0
-References: <20220813112559.1974427-1-anton.kochkov@proton.me>
-In-Reply-To: <20220813112559.1974427-1-anton.kochkov@proton.me>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Sat, 13 Aug 2022 15:17:24 +0100
-Message-ID: <CAFEAcA9TAsaz2edpQ+V0LqZ1NPfd6Tz4M5A-OL0naz-Owo=32Q@mail.gmail.com>
-Subject: Re: [PATCH] hw/arm/nvic: implement "num-prio-bits" property
-To: Anton Kochkov <anton.kochkov@proton.me>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b35;
- envelope-from=peter.maydell@linaro.org; helo=mail-yb1-xb35.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: baJwNolTyQTB
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.11.0
+Subject: Re: [PATCH] [PATCH] linux-user/aarch64: Reset target data on
+ MADV_DONTNEED
+Content-Language: fr
+To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Vitaly Buka <vitalybuka@google.com>, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org
+References: <CAPjTjwsb0jAsQq4PHOsFGW7SjpAe=Ug2b_fxhdccEEnzh=cQUA@mail.gmail.com>
+ <CAFEAcA-F8rUTH1FimHf+FaV0O6dQ4QGHihaygxdjn9BKYPazBg@mail.gmail.com>
+ <CAPjTjwuNwXdemwFYOUDi4Qnc5fA9KWzAEZQ1JaCNu+0x3RUh7Q@mail.gmail.com>
+ <8b32824b-4dc1-3d1a-1916-918a3fffab26@linaro.org>
+ <67a42d65-8289-b26c-26f6-275ea0bfac98@vivier.eu>
+ <CAFEAcA8AXodRV=eG2Ra4Sf9rsap499zDJEu6hC=c+V9gE2KjfA@mail.gmail.com>
+ <52225a7c-310f-444f-0b75-0ad2536a30c0@vivier.eu> <87r11miz8i.fsf@linaro.org>
+From: Laurent Vivier <laurent@vivier.eu>
+In-Reply-To: <87r11miz8i.fsf@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-Provags-ID: V03:K1:8nWnS8Fw0Kbrg56GpVJiYTJk+CQeS/Z3+Ew4Fqsh/reHwORm9Y8
+ evLfHpOV/f1uV69kh9LkFrR7gqrhrOUD8ITlbyIulyEbx3BmKOhRMsUZNCA+i6pKEp93qIW
+ kRkEraQra69gaRukDi3nPB8Lie6XUJdpDLHlTX0vuII3g0a5h+Rik35qF8nBk8wsMBavcOs
+ SjMCQEArE5IEesUxWJ+Ng==
+X-Spam-Flag: NO
+X-UI-Out-Filterresults: notjunk:1;V03:K0:DoAKKLWKxgw=:4tpbR/6022nCs4AL25Cvey
+ kavUjQo4cl5CKz2L6lUtQFPxqmDRnsWs2ymeYcLC0h6hojHf7s4bcdJu4sikJPQIs/jEn6Rl3
+ tzWnSVUN1wJ2ukHfax2oY4L1Iinrlr1ez7lZ/rr7LKseHx6/YPPQuaBnrRFcMDn036ELHrmYk
+ 0ZcNGavLjzO5kziPikHV2shtoJPbRw2FNUMDyzURJPykVrziJgPw2Kg7oeESiplRNU6eG6B5M
+ Z/XyxSxrXsAXmPw+xAlRx9FsPWYr9hOv2Ibsb6gIyeoPOTbwQT6SRmdZtnFja4IXXdqZZZG3i
+ It8eKIUOZHeewRiMq2c00W3YCvKtDywcoGgYXm82/NKzuEKTT7XAIUV6C+ZKXKXdx+QNjuEe6
+ m4hnnMC1soReNZJKwXnXmwl9imNivZ6f0ON62H2gASRGXG9UI1+1XMeY1JTJTbJ0lqcBffgby
+ gHkCrYJ8edCw1Dbvx08uy373kZY1oNQGeckFThvB57yGMdC58Sh0MZy35bh6xGWXs5Brvo/0A
+ hdoSxrgjHSY1JAv+UtpfAkWzFC33GvJ7Pg3UCDNaXYDE2XNNnlZqXseFhIZ04EtRqtZUZueqo
+ G7AmiERyR78903vbT2w+vz8EFVm4EdG3VKFleRko5VwREIC8LC62dPFMNmSJ/hszlFFXqan4s
+ 5qQK8lAxqO/v7V9kXyk36vTmrtJPyECBlE/53i8nI6PDYwnHUs/WRu2L4nIR0g1g1i1Lw3lIY
+ ScJG/Lrt2AZRd/OwYzDe87OccZyYZABKY9WlEg==
+X-TUID: dQ0zQcZb77pG
 
-On Sat, 13 Aug 2022 at 12:27, Anton Kochkov <anton.kochkov@proton.me> wrote:
->
-> Cortex-M NVIC can be configured with different amount of
-> the maximum available priority bits. FreeRTOS has asserts
-> that checks if the all unavailable priority bits are unset
-> after writing into this register in real hardware.
+Le 11/08/2022 à 17:18, Alex Bennée a écrit :
+> 
+> Laurent Vivier <laurent@vivier.eu> writes:
+> 
+>> Le 11/08/2022 à 13:54, Peter Maydell a écrit :
+>>> On Thu, 11 Aug 2022 at 09:29, Laurent Vivier <laurent@vivier.eu> wrote:
+>>>>
+>>>> Le 10/08/2022 à 22:47, Richard Henderson a écrit :
+>>>>> On 8/10/22 13:32, Vitaly Buka wrote:
+>>>>>> Sorry, I only noticed today that it's not submitted.
+>>>>>> Version is not critical for us, as we build from masters anyway.
+>>>>>> Richard, do you know a reason to consider this critical?
+>>>>>>
+>>>>>> On Wed, 10 Aug 2022 at 13:04, Peter Maydell <peter.maydell@linaro.org
+>>>>>> <mailto:peter.maydell@linaro.org>> wrote:
+>>>>>>
+>>>>>>       On Wed, 10 Aug 2022 at 21:00, Vitaly Buka <vitalybuka@google.com
+>>>>>>       <mailto:vitalybuka@google.com>> wrote:
+>>>>>>        >
+>>>>>>        > How can we land this one?
+>>>>>>
+>>>>>>       Pinging it a week ago rather than now would have been a good start :-(
+>>>>>>       I think it got missed because you didn't cc the linux-user maintainer.
+>>>>>>
+>>>>>>       Is this a critical fix for 7.1 or can we let it slip to 7.2 ?
+>>>>>
+>>>>> It's unfortunate that it got missed.  It's not critical, but it would be nice, because support for
+>>>>> MADV_DONTNEED is new in 7.1 (previously, we ignored all madvise).
+>>>>>
+>>>>> I'll note there are missing braces for coding style on an IF.
+>>>>>
+>>>>> Laurent, do you have an objection to merging this for rc3?
+>>>>>
+>>>>
+>>>> No objection.
+>>>>
+>>>> Do you want it goes via the arm branch or via the linux-user branch?
+>>>>
+>>>> If it goes via linux-user I can run the LTP testsuite but it takes 1 day.
+>>> I think we should definitely run the LTP testsuite on it, so
+>>> taking it via linux-user probably makes more sense.
+>>
+>> ok, applied to my linux-user-for-7.1 branch.
+>>
+>> Running tests.
+> 
+> Any chance you could pick up:
+> 
+>    Subject: [PATCH v2] linux-user: un-parent OBJECT(cpu) when closing thread
+>    Date: Wed,  3 Aug 2022 14:05:37 +0100
+>    Message-Id: <20220803130537.763666-1-alex.bennee@linaro.org>
+> 
+> before you run the tests?
+> 
 
-This assert in FreeRTOS is misguided, incidentally. It's
-reasonable to assert that the CPU has at least enough priority
-bits for whatever the OS build was configured for, but
-asserting that it exactly matches is pointless unless you're
-trying to write a test suite for "test that software model
-exactly matches hardware".
+I've tested it, it works fine.
 
-> To allow setting this number depending on the machine or
-> configuration expose priority bits as QDev property
-> which is by default is set to 8 as it was hardcoded in the past.
-> Thus, existing code doesn't require any additional changes,
-> and it doesn't change the default behavior of NVIC.
->
-> Signed-off-by: Anton Kochkov <anton.kochkov@proton.me>
-> Resolves: https://gitlab.com/qemu-project/qemu/-/issues/1122
-> ---
->  hw/intc/armv7m_nvic.c | 6 +++++-
->  1 file changed, 5 insertions(+), 1 deletion(-)
->
-> diff --git a/hw/intc/armv7m_nvic.c b/hw/intc/armv7m_nvic.c
-> index 1f7763964c..b8959d645d 100644
-> --- a/hw/intc/armv7m_nvic.c
-> +++ b/hw/intc/armv7m_nvic.c
-> @@ -2580,6 +2580,8 @@ static const VMStateDescription vmstate_nvic = {
->  static Property props_nvic[] = {
->      /* Number of external IRQ lines (so excluding the 16 internal exceptions) */
->      DEFINE_PROP_UINT32("num-irq", NVICState, num_irq, 64),
-> +    /* Number of the maximum priority bits that can be used */
-> +    DEFINE_PROP_UINT8("num-prio-bits", NVICState, num_prio_bits, 8),
->      DEFINE_PROP_END_OF_LIST()
->  };
->
-> @@ -2690,7 +2692,9 @@ static void armv7m_nvic_realize(DeviceState *dev, Error **errp)
->      /* include space for internal exception vectors */
->      s->num_irq += NVIC_FIRST_IRQ;
->
-> -    s->num_prio_bits = arm_feature(&s->cpu->env, ARM_FEATURE_V7) ? 8 : 2;
-> +    if (!arm_feature(&s->cpu->env, ARM_FEATURE_V7)) {
-> +        s->num_prio_bits = 2;
-> +    }
+Do you plan to do a PR including it or do you want I do (there will be only this one in mine)?
 
-Thanks for this patch. It's correct as far as it goes, but it's
-missing some pieces.
-
-Firstly, armv7m_nvic_realize now needs to do sanity checking
-on the num_prio_bits value at the top of the function, the way
-we do for num_irq, so that we return an error if the property
-was set to an out of range value (ie less than 2 or more than 8).
-
-Secondly, the armv7m container object needs to have an alias
-property for this (because SoCs don't create the NVIC directly,
-they create the armv7m object). That's just a one-liner in
-armv7m_instance_init() to call object_property_add_alias() the
-way we do already for "num-irq". You also need to add a line to
-the comment in include/hw/arm/armv7m.h that documents the
-properties of the container object describing the new property.
-
-Thirdly, you need code in the board models which actually sets
-the property to something other than the default when it creates
-the armv7m container (at least for whichever board model you care
-about, we don't necessarily have to fix all of them). Otherwise
-this is all dead code that doesn't change QEMU's behaviour.
-
-thanks
--- PMM
+Thanks,
+Laurent

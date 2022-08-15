@@ -1,246 +1,106 @@
-Received: by 2002:a17:906:3b11:0:0:0:0 with SMTP id g17csp1425085ejf;
-        Mon, 15 Aug 2022 14:37:28 -0700 (PDT)
-X-Google-Smtp-Source: AA6agR6up5SGuqVbo8vCqzvgztk2OK6gyCR1tXypSktvGbd0HpTYr+uoaDsZ6HM+0YB+v5R+1dLn
-X-Received: by 2002:a05:620a:2490:b0:6bb:23b:6fc5 with SMTP id i16-20020a05620a249000b006bb023b6fc5mr7371075qkn.405.1660599448740;
-        Mon, 15 Aug 2022 14:37:28 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1660599448; cv=none;
+Received: by 2002:a17:906:3b11:0:0:0:0 with SMTP id g17csp1463992ejf;
+        Mon, 15 Aug 2022 16:15:09 -0700 (PDT)
+X-Received: by 2002:a67:d215:0:b0:386:94f6:f228 with SMTP id y21-20020a67d215000000b0038694f6f228mr7477804vsi.10.1660605309301;
+        Mon, 15 Aug 2022 16:15:09 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1660605309; cv=none;
         d=google.com; s=arc-20160816;
-        b=IzVSkCVJeqK6tIp2zoxE4wdfy88Zm9TXUkuF1CLVuop4sVoiK+ozilyDh3FmaTrWau
-         dnut7UAozzJlC3xekR5FgyP+zWO/8FxeMawLeRVs6JCnEoXOUWzTx4Fn2M1rA2VPnZ5y
-         GjGluYEKS3b0Ez9rmFFHGztrPiMaYy04VDgwWP5+zhRjs+5HyzLP9x9t3/0j6UzpoDtd
-         Ns86YeDlvnnTpkSExuzH1hOiODhCJ52k0li10/+/Y1hIMTbZ/ZsLMwP7maeHMCgWpyFw
-         oEpg6IgzbYuLrhcakwOs6fTenl2BxqNHLUyKlpIvtHTly720q+4YCnQRhz/uZ0NXLNNS
-         HkSg==
+        b=IIGzn4PhmhJlqESgS22RwwNuHbIzQcNHilGAGa5vY+pss56Bj6t7vpEiVrBdBTZNpD
+         pcOnRfttzYDue8x2q2HXsw0xmFJUuuMy5jKusDcfLgJ77pOMNuf1dngOV7rkRtuIPhFk
+         Za+Eqj1FkGq2vc/ONolnPrAWmbqFpn4f2Wpv06QNTD9DxOLIQ/7iKW/OZmPlgNAsN8wU
+         8insESlZmXXByFfdVehmJUxu7edPXg5aGiGB9PKZVhJGV1bx/aWrWETeZVpqDfDP4iPw
+         YyzUt//t2rf7aprsq7xIlyBtpar/q3a33rgMWe4BJ+HHgXR3A0kd9psgz4F/JgoD8QPo
+         WLhg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:from:subject:mime-version
-         :message-id:date:dkim-signature;
-        bh=R/RKbEDeWYV+VonQAg9pdVD04PJy9FUG+uuZBibfjtQ=;
-        b=VVyxHf1rD3F91XEw2Dtwva+hUk3TKPDYOsmHPFvuEfYZWdE0UqxI+7UBJhL2vaQzMH
-         xncVL62ekJIXY7uV6eIjj+JgMb1pK0U6928Qz6DXLCDZx/GOzFeMExREtDNH8qDuUh45
-         np9c/auEQ00kCgnnZCHfiFxyT3Cwhy3do+w6BBGVlq1XC2y86HDxV9PX8Vhyz5IIx2OS
-         O1k//cY7jCq+UzJd+hhacpNLpQ0tUVIlRwDgzmykJwX0O5w08v1jXAK4C0zdyyjQPBGY
-         IZ/JpxOI1ELYGyQkV/KyQfg1GKiIumKQ74Sc7+Qr6xFFCL7AzE80eMgFFIEH7eojC5f3
-         U1BQ==
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature;
+        bh=1p30cTHaDHwD3tSkpCHUqDSGnIBEry22la+MZDLe2QE=;
+        b=gpLpGeYL6dd2wupb5dbC1hQdp8NnKkbXIyWsbXkFuvYl1XsiN+HOnnFc84E266h6ab
+         ZfXUrZuE4/NBif7KSJu+y992R8CpivHpgCeGjcEUnKnj0Mt7r8z6isTEI9GzEN3Ovxn2
+         IgIJVqLPutLVhNbYn5uoZlzPD2Spd9GGj8ts10J7XG8aVa0odSQrEQ3CYaeTufaCTX24
+         vGvFDYcaehT1R8mxUW1xYSbTWEXnrMlhsmG3umtUjS/e6VnFHZu2NFbDMz+XQ2GzFGVS
+         kv79HxOkweUjrasUl/CQnMSWlJm1192OgOu2kC63dttEF0wPqEj3WFhS7NNHvd/gz2JN
+         fjJg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@google.com header.s=20210112 header.b=BKx0iArG;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 3-20020ad45ba3000000b004770f8d7a9esi5716706qvq.22.2022.08.15.14.37.28
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 15 Aug 2022 14:37:28 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=QpeHYiSf;
+       spf=pass (google.com: domain of jcmvbkbc@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=jcmvbkbc@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <jcmvbkbc@gmail.com>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id x12-20020a056122118c00b0037cf8349812sor2625128vkn.32.2022.08.15.16.15.09
+        (Google Transport Security);
+        Mon, 15 Aug 2022 16:15:09 -0700 (PDT)
+Received-SPF: pass (google.com: domain of jcmvbkbc@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@google.com header.s=20210112 header.b=BKx0iArG;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
-Received: from localhost ([::1]:47664 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1oNhm4-0008NY-94
-	for alex.bennee@linaro.org; Mon, 15 Aug 2022 17:37:28 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37894)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from
- <3C7z6YggKCowCAxq498xw44w1u.s426u2A-tuBu1343w3A.47w@flex--wuhaotsh.bounces.google.com>)
- id 1oNhjv-0005aW-Pz
- for qemu-devel@nongnu.org; Mon, 15 Aug 2022 17:35:15 -0400
-Received: from mail-pg1-x549.google.com ([2607:f8b0:4864:20::549]:36730)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from
- <3C7z6YggKCowCAxq498xw44w1u.s426u2A-tuBu1343w3A.47w@flex--wuhaotsh.bounces.google.com>)
- id 1oNhjr-0003jO-TB
- for qemu-devel@nongnu.org; Mon, 15 Aug 2022 17:35:15 -0400
-Received: by mail-pg1-x549.google.com with SMTP id
- q193-20020a632aca000000b0041d95d7ee81so3013212pgq.3
- for <qemu-devel@nongnu.org>; Mon, 15 Aug 2022 14:35:08 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20210112;
- h=cc:to:from:subject:mime-version:message-id:date:from:to:cc;
- bh=R/RKbEDeWYV+VonQAg9pdVD04PJy9FUG+uuZBibfjtQ=;
- b=BKx0iArG1l0avpAgG5jIFMOkKA5o75xG8pKAtI5gFScUansM5fXBwgh/OocL82x+V/
- 2yYky6u8tTWeI9dNyDaww1AYSCcc0hf4PPzNNzLUGc7MH21OWDWjRwroi7IutYUKvXs9
- MUO8EPjh+WCtFQmcan1h2gbMAm3pi/3/aH93+VuTPycK0PEQCLYP6WTonnTATpM3f7a5
- dNDIKE1s02eNRxmgyxn7d9rq0sJwAAL0BiDS5xCNoZuc60DzM+xe3bZm+sTd+9pkQkDJ
- 0QiwJRbFWMAXS/XmySVAsLEbqBUN1kEVB1rOTHC0HSFNivUPVIEHTox82rm6aH84LCi9
- AauA==
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=QpeHYiSf;
+       spf=pass (google.com: domain of jcmvbkbc@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=jcmvbkbc@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc;
+        bh=1p30cTHaDHwD3tSkpCHUqDSGnIBEry22la+MZDLe2QE=;
+        b=QpeHYiSfjc0RfUXDTcFFJbmXhDW5Atha1lUgiAFk08pgPrAIvFpi4aWFhziG4MArSH
+         rTqZjfPrUgJp5DYwtQXc5jKFH/PdHHAW+6qXk3D4Jpas4tQ1xcwm38lHaNTr5a8v1W5+
+         fjblPy3CmO8lLIBzg0A3Z9aO/f3UTKusU26IgbUcC4lLH4EypS6W2CSl0hiZdsXNOKQ7
+         S51bkOXsit0IA3BJM+q0NWriwXJI2g9IZIk3fGTYlruFv0rni94Xrl3ccxVdohTqULyd
+         MSGtTp6SUf0dvsu/OeQp8YKRgsmwo4kVcZZQj2C4uW/W2iol+jdo8eJsitqdCAWwDkZ6
+         4baA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=cc:to:from:subject:mime-version:message-id:date:x-gm-message-state
- :from:to:cc;
- bh=R/RKbEDeWYV+VonQAg9pdVD04PJy9FUG+uuZBibfjtQ=;
- b=aa3VnCP6JnB/Tf0eiWPu1QAAjCm0zN9LkEt4pPWBXqL06Qh4DgNoqt4SWKtFRuu3eE
- +2fsO9EC3LsvM5Fs7Ycwfs7aQ9b+/Ppy35D+8a7dN6EGdDBpeP81WdSyGgmKsXz+fYgk
- Ema9y19L4GK72AX56qnwQY2c90n0A5sp9Z2KOaOEYb+zKmW+V4fTcrPXiF3XBexbA/Y9
- VDX9H9zpxw/va1dC3uvh8R4XbYnCFI+vEeHVRYl5aaYt6TiS/JmGlcu7JqzqqQXxi0Tf
- TnuiCnqwkx9lyzPExIor5h923lh5wosW1UHISCCQHrKFr1w1Zkds+iWja87pJYqgnUy1
- GP7w==
-X-Gm-Message-State: ACgBeo04APhrB2mhpVlpyXF27K714LYcYkGO2uBPuX9Ix3bwqWcCqBIk
- vco4ykD/BMy3T437FlMYN6XznFlOKlwNsA==
-X-Received: from mimik.c.googlers.com ([fda3:e722:ac3:cc00:7f:e700:c0a8:4e])
- (user=wuhaotsh job=sendgmr) by 2002:a17:90a:df03:b0:1f3:396c:dd94 with SMTP
- id gp3-20020a17090adf0300b001f3396cdd94mr34335pjb.1.1660599307097; Mon, 15
- Aug 2022 14:35:07 -0700 (PDT)
-Date: Mon, 15 Aug 2022 14:34:57 -0700
-Message-Id: <20220815213458.733701-1-wuhaotsh@google.com>
-Mime-Version: 1.0
-X-Mailer: git-send-email 2.37.1.595.g718a3a8f04-goog
-Subject: [PATCH] target/arm: Add cortex-a35
-From: Hao Wu <wuhaotsh@google.com>
-To: peter.maydell@linaro.org
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, wuhaotsh@google.com, 
- Joe Komlodi <komlodi@google.com>
+        d=1e100.net; s=20210112;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc;
+        bh=1p30cTHaDHwD3tSkpCHUqDSGnIBEry22la+MZDLe2QE=;
+        b=5vayBinLStgiUfMmyMtgIoUa5ZsUwJBEJxT9IfeQ+oKgVsOWhRhmehQrFqh7GXhUkP
+         uL0xwtWfCaaW1kktz49GFiGpu09R1gExOeQW9mnQIVDaFzTuCwMP61frc2ARGIvnA1kV
+         DVdKtIbS2nuP8X6uKJtMJfOH2K3pBKZbwQBzM+CBuub9JOBj4aps3S22lmJWjDrYhpjw
+         dC3GwtmsjjCATUNyDRrXl2Sr9/+55Myn1kwb0oiFcigYoqSSY9/mdneVKeYv9MKWdq19
+         g2weVIFZVKEE+iETL6UpSOnJvu6KhC9Ju49y3YFZ2R3968UGRSk3pyl9oIw9FwId9P5T
+         bS/A==
+X-Gm-Message-State: ACgBeo2EjZkXsvkDiCFTfUFwD8+dWTlLMzz6uekEpkxPHgc06j4IkBSf
+	UF+KxgFyWf7k14UwlE+cbPLaXremFD4JErzlMMCkaoIJ
+X-Google-Smtp-Source: AA6agR7sdJxpn4iBDV36au4BAIv/LrJGW3rDhg/l6Jr9L6KO9mbxxnzQaBK/Vv0AlaJd0ORH5jgY6QobctFNen4BEBc=
+X-Received: by 2002:a05:6122:ca3:b0:378:cf0d:b458 with SMTP id
+ ba35-20020a0561220ca300b00378cf0db458mr7534274vkb.15.1660605308334; Mon, 15
+ Aug 2022 16:15:08 -0700 (PDT)
+MIME-Version: 1.0
+References: <20220815190303.2061559-1-peter.maydell@linaro.org> <20220815190303.2061559-7-peter.maydell@linaro.org>
+In-Reply-To: <20220815190303.2061559-7-peter.maydell@linaro.org>
+From: Max Filippov <jcmvbkbc@gmail.com>
+Date: Mon, 15 Aug 2022 16:15:19 -0700
+Message-ID: <CAMo8BfLzPLit=fyN9Q4fUbrucWrewmPnsNx8JiH3gZwVQ8aHxw@mail.gmail.com>
+Subject: Re: [PATCH 6/7] target/xtensa: Honour -semihosting-config userspace=on
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, qemu-riscv@nongnu.org, 
+	=?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
+	Laurent Vivier <laurent@vivier.eu>, =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>, 
+	Jiaxun Yang <jiaxun.yang@flygoat.com>, Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>, 
+	Stefan Pejic <stefan.pejic@syrmia.com>, Chris Wulff <crwulff@gmail.com>, Marek Vasut <marex@denx.de>, 
+	Palmer Dabbelt <palmer@dabbelt.com>, Alistair Francis <alistair.francis@wdc.com>, 
+	Bin Meng <bin.meng@windriver.com>, Richard Henderson <richard.henderson@linaro.org>, 
+	Furquan Shaikh <furquan@rivosinc.com>
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::549;
- envelope-from=3C7z6YggKCowCAxq498xw44w1u.s426u2A-tuBu1343w3A.47w@flex--wuhaotsh.bounces.google.com;
- helo=mail-pg1-x549.google.com
-X-Spam_score_int: -95
-X-Spam_score: -9.6
-X-Spam_bar: ---------
-X-Spam_report: (-9.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01,
- USER_IN_DEF_DKIM_WL=-7.5 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 9TvBtYt5hOKf
+X-TUID: gBLC2tFIBYI8
 
-Add cortex A35 core and enable it for virt board.
+On Mon, Aug 15, 2022 at 12:03 PM Peter Maydell <peter.maydell@linaro.org> wrote:
+>
+> Honour the commandline -semihosting-config userspace=on option,
+> instead of always permitting userspace semihosting calls in system
+> emulation mode, by passing the correct value to the is_userspace
+> argument of semihosting_enabled().
+>
+> Note that this is a behaviour change: if the user wants to
+> do semihosting calls from userspace they must now specifically
+> enable them on the command line.
+>
+> xtensa semihosting is not implemented for linux-user builds.
+>
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> ---
+>  target/xtensa/translate.c | 7 ++++---
+>  1 file changed, 4 insertions(+), 3 deletions(-)
 
-Signed-off-by: Hao Wu <wuhaotsh@google.com>
-Reviewed-by: Joe Komlodi <komlodi@google.com>
----
- docs/system/arm/virt.rst |  1 +
- hw/arm/virt.c            |  1 +
- target/arm/cpu64.c       | 69 ++++++++++++++++++++++++++++++++++++++++
- 3 files changed, 71 insertions(+)
+Acked-by: Max Filippov <jcmvbkbc@gmail.com>
 
-diff --git a/docs/system/arm/virt.rst b/docs/system/arm/virt.rst
-index 3b6ba69a9a..20442ea2c1 100644
---- a/docs/system/arm/virt.rst
-+++ b/docs/system/arm/virt.rst
-@@ -52,6 +52,7 @@ Supported guest CPU types:
- 
- - ``cortex-a7`` (32-bit)
- - ``cortex-a15`` (32-bit; the default)
-+- ``cortex-a35`` (64-bit)
- - ``cortex-a53`` (64-bit)
- - ``cortex-a57`` (64-bit)
- - ``cortex-a72`` (64-bit)
-diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index 9633f822f3..ee06003aed 100644
---- a/hw/arm/virt.c
-+++ b/hw/arm/virt.c
-@@ -199,6 +199,7 @@ static const int a15irqmap[] = {
- static const char *valid_cpus[] = {
-     ARM_CPU_TYPE_NAME("cortex-a7"),
-     ARM_CPU_TYPE_NAME("cortex-a15"),
-+    ARM_CPU_TYPE_NAME("cortex-a35"),
-     ARM_CPU_TYPE_NAME("cortex-a53"),
-     ARM_CPU_TYPE_NAME("cortex-a57"),
-     ARM_CPU_TYPE_NAME("cortex-a72"),
-diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
-index 78e27f778a..4f96b80ffb 100644
---- a/target/arm/cpu64.c
-+++ b/target/arm/cpu64.c
-@@ -36,6 +36,74 @@
- #include "hw/qdev-properties.h"
- #include "internals.h"
- 
-+static void aarch64_a35_initfn(Object *obj)
-+{
-+    ARMCPU *cpu = ARM_CPU(obj);
-+
-+    cpu->dtb_compatible = "arm,cortex-a35";
-+    set_feature(&cpu->env, ARM_FEATURE_V8);
-+    set_feature(&cpu->env, ARM_FEATURE_NEON);
-+    set_feature(&cpu->env, ARM_FEATURE_GENERIC_TIMER);
-+    set_feature(&cpu->env, ARM_FEATURE_AARCH64);
-+    set_feature(&cpu->env, ARM_FEATURE_CBAR_RO);
-+    set_feature(&cpu->env, ARM_FEATURE_EL2);
-+    set_feature(&cpu->env, ARM_FEATURE_EL3);
-+    set_feature(&cpu->env, ARM_FEATURE_PMU);
-+
-+    /* From B2.2 AArch64 identification registers. */
-+    cpu->midr = 0x410fd042;
-+    cpu->revidr = 0;
-+    cpu->ctr = 0x84448004;
-+    cpu->isar.id_pfr0 = 0x00000131;
-+    cpu->isar.id_pfr1 = 0x00011011;
-+    cpu->isar.id_dfr0 = 0x03010066;
-+    cpu->id_afr0 = 0;
-+    cpu->isar.id_mmfr0 = 0x10201105;
-+    cpu->isar.id_mmfr1 = 0x40000000;
-+    cpu->isar.id_mmfr2 = 0x01260000;
-+    cpu->isar.id_mmfr3 = 0x02102211;
-+    cpu->isar.id_isar0 = 0x02101110;
-+    cpu->isar.id_isar1 = 0x13112111;
-+    cpu->isar.id_isar2 = 0x21232042;
-+    cpu->isar.id_isar3 = 0x01112131;
-+    cpu->isar.id_isar4 = 0x00011142;
-+    cpu->isar.id_isar5 = 0x00011121;
-+    cpu->isar.id_aa64pfr0 = 0x00002222;
-+    cpu->isar.id_aa64pfr1 = 0;
-+    cpu->isar.id_aa64dfr0 = 0x10305106;
-+    cpu->isar.id_aa64dfr1 = 0;
-+    cpu->isar.id_aa64isar0 = 0x00011120;
-+    cpu->isar.id_aa64isar1 = 0;
-+    cpu->isar.id_aa64mmfr0 = 0x00101122;
-+    cpu->isar.id_aa64mmfr1 = 0;
-+    cpu->clidr = 0x0a200023;
-+    cpu->dcz_blocksize = 4;
-+
-+    /* From B2.4 AArch64 Virtual Memory control registers */
-+    cpu->reset_sctlr = 0x00c50838;
-+
-+    /* From B2.29 Cache ID registers */
-+    cpu->ccsidr[0] = 0x700fe01a; /* 32KB L1 dcache */
-+    cpu->ccsidr[1] = 0x201fe00a; /* 32KB L1 icache */
-+    cpu->ccsidr[2] = 0x703fe03a; /* 512KB L2 cache */
-+
-+    /* From B3.5 VGIC Type register */
-+    cpu->gic_num_lrs = 4;
-+    cpu->gic_vpribits = 5;
-+    cpu->gic_vprebits = 5;
-+
-+    /* From Cortex-A35 SIMD and Floating-point Support r1p0 */
-+    /* From 3.2 AArch32 register summary */
-+    cpu->reset_fpsid = 0x41034043;
-+
-+    /* From 2.2 AArch64 register summary */
-+    cpu->isar.mvfr0 = 0x10110222;
-+    cpu->isar.mvfr1 = 0x12111111;
-+    cpu->isar.mvfr2 = 0x00000043;
-+
-+    /* These values are the same with A53/A57/A72. */
-+    define_cortex_a72_a57_a53_cp_reginfo(cpu);
-+}
- 
- static void aarch64_a57_initfn(Object *obj)
- {
-@@ -1158,6 +1226,7 @@ static void aarch64_a64fx_initfn(Object *obj)
- }
- 
- static const ARMCPUInfo aarch64_cpus[] = {
-+    { .name = "cortex-a35",         .initfn = aarch64_a35_initfn },
-     { .name = "cortex-a57",         .initfn = aarch64_a57_initfn },
-     { .name = "cortex-a53",         .initfn = aarch64_a53_initfn },
-     { .name = "cortex-a72",         .initfn = aarch64_a72_initfn },
 -- 
-2.37.1.595.g718a3a8f04-goog
-
+Thanks.
+-- Max

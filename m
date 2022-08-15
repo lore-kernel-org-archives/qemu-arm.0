@@ -1,115 +1,104 @@
-Received: by 2002:a17:906:3b11:0:0:0:0 with SMTP id g17csp1000668ejf;
-        Sun, 14 Aug 2022 22:50:05 -0700 (PDT)
-X-Google-Smtp-Source: AA6agR4A5oFA52iJyboCjUHpg2LGYhI7Ino3WvX31K9er2KNVDGMt4GYoBxmRNL/7qnXVpJC758H
-X-Received: by 2002:a05:622a:1ba0:b0:343:f90e:f90c with SMTP id bp32-20020a05622a1ba000b00343f90ef90cmr8325197qtb.184.1660542605547;
-        Sun, 14 Aug 2022 22:50:05 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1660542605; cv=none;
+Received: by 2002:a17:906:3b11:0:0:0:0 with SMTP id g17csp1015286ejf;
+        Sun, 14 Aug 2022 23:31:39 -0700 (PDT)
+X-Google-Smtp-Source: AA6agR7LZ6Pu5svQ07yMOk7yp2KlgDL4vuoIzgYtW559WdmYcss2fKZ2SDor8ar39Jvl3a/N0Wzv
+X-Received: by 2002:a05:620a:459e:b0:6ba:c5a7:485c with SMTP id bp30-20020a05620a459e00b006bac5a7485cmr10071108qkb.267.1660545098843;
+        Sun, 14 Aug 2022 23:31:38 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1660545098; cv=none;
         d=google.com; s=arc-20160816;
-        b=kXcC1o+QzhX3k2F5K5RBbLdWqmMJydgLn6CMy6P+YbWkKLT6d6H6H9hkSNty6MLvVQ
-         UWwSwVpFAvWk0M1oqFSaw4tN3DwPQPl47IQdxWhGkFgQ6qWAdzeWuD89fmF+sOX7G9Cu
-         7Qk2D7T//ff9Jq5jAxSgSujLq9sLRsXYk/b+MCik9GFvCGttAXK3SQ6r96JaB+SCJIly
-         saGhBlbg/OCeJMgYfjf4I2k6lav6NaN4dgojd82yKSCvg29AinXALEXt+ayYuAd+ANES
-         VnqtqnOp/cmbbaD1pr0gdmJAnFAa5wQnbCTDudOHkBNDyA3UOvD6p35U8hAkutxrhWd0
-         hH4Q==
+        b=mtwwCv2x8QPOWqu6TPWZPJU6D7DM1QO2qkWZyDgh91fnlYloneqb6ejxiixiZr5LLu
+         CwARTzGe1nam14f1HSN7XR5khfVwWQu8eDIYshRDsQ/qupjnMSVRQFI0WymQAXsMyiEi
+         f6qABYaV7lRMB9xRYzy9DHazdklsoWMQosdIC0FloEZuDOj7ZvKmV/d+7pATYMsbUhtc
+         aHfVtlCTaaFs7T6FUe+KsuK1Sy4i9FteytPH5pidC/RYeJHM1GcdP5KppoNRJoDuApqx
+         ABjpmN7yS+OgXiRVP5YCfOUoAhByqPSiNLB4JNUqRx2cQjMWmBxScKSIh7GHV7USkg0R
+         4Fdg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=LQdwDoFdhJiFRqQAFor/83pFe9z3RF/99jVQ2ACLxCg=;
-        b=wrOPOioWegHOTbSUePvZT8F4Y+vkLkvlfiuPA+JUYhCKuoUM9NvI6iD3TiYmDy+6HV
-         xbCadG7TkKxaazQuFZSPBNNAsQ8RLv4q8wvL/0j15KmjLekOSZHKZ/zD4p4IktdKUMFM
-         nfIfxGbnBB0x1/ZIVjllkxa7m1jyeBeMcRyYv1lxsqf7ouPIQalikMo+deKuGUZ5BtL+
-         Lle45Qg26whl5MZgdNy/fOekJAW5PU5BfpP0d3C/j9+tab1gP2ZTEj1VCMhBthK98Vel
-         PUV4h0DdhuAXNyP4l+8GZ0JeRJf2EAD4lZR8dsIVZ64jgafYFlJWOhKpaQAYKJi21aH2
-         fyYg==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=EmiV3x1gWU2re0gh2VefbhJVOzd17tpkzlIBGJEs3SE=;
+        b=YWzO9SCvRUozSAwoLEy12ghztLr0koRH3DBGGs9RRp1HH+S5bwv+wybudL/yftBG0Z
+         gkCkELVLVcMN2J7sNCfKzCCCvN+cbhNBzEJVia3rjhHnYjp2hao21hSUVY5Bb/ThYD+z
+         Mkfyh20yIqUjn56TAXmpSwb0J//gcA3yF1GqJ9iW/Jp0A/ErWXmz1JHMdDuaw1RaHOpQ
+         MTCgxitt+6oj5PPRrJ2uxP1jMY/Ho7ZCMbfMVvC8vIDQjXNyCNtUtITMy7rQzF64EXun
+         kGbuPB2U8P1mKDVyBJzTBLF4y5ISfyQmKhEgAdt0p1y11knXOzQup5HZ5QNoiuC/uQlD
+         TLJQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=GTq8RElG;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=cJb3lqaV;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id c17-20020ac81e91000000b0033ab84f0090si4932208qtm.310.2022.08.14.22.50.05
+        by mx.google.com with ESMTPS id f6-20020a05622a104600b0031eadd7b8cbsi4827334qte.643.2022.08.14.23.31.38
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 14 Aug 2022 22:50:05 -0700 (PDT)
+        Sun, 14 Aug 2022 23:31:38 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=GTq8RElG;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=cJb3lqaV;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:44732 helo=lists1p.gnu.org)
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:58260 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1oNSzD-0007Oe-Kv
-	for alex.bennee@linaro.org; Mon, 15 Aug 2022 01:50:04 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44290)
+	id 1oNTdS-0000vN-7h
+	for alex.bennee@linaro.org; Mon, 15 Aug 2022 02:31:38 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:52028)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <dz4list@gmail.com>)
- id 1oNSxA-0007N7-C7; Mon, 15 Aug 2022 01:47:56 -0400
-Received: from mail-qk1-x735.google.com ([2607:f8b0:4864:20::735]:36370)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <dz4list@gmail.com>)
- id 1oNSx8-0002Dd-Ff; Mon, 15 Aug 2022 01:47:56 -0400
-Received: by mail-qk1-x735.google.com with SMTP id n21so4925342qkk.3;
- Sun, 14 Aug 2022 22:47:53 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc;
- bh=LQdwDoFdhJiFRqQAFor/83pFe9z3RF/99jVQ2ACLxCg=;
- b=GTq8RElGHIL5kxdS8o1ZJeF9QRRGl7Olt1wdrO99gdfCs0IFjZLrM3CHF+AHb3OdoC
- ncYiCZHFRmRpeFsTHev0ETg8G13QLr5Q6UB+6vLT+fKDJ3qFXJ+d3JwjGKlXlaqtf5kS
- iYj/ipXd0VS8ja25NJYS0lXYcO6BP90h97RUC86S7XN8dasQxB6gw1DSdbIljReVYrBq
- 3L1H2OErTlnIafBCJIDjhMvopL2s2Cn28s5/uPBrlNeswUxdByl7G0Qo4I1Wz05stnTo
- Fz6muLZbIukzS24EH6tCoB4GIQWOIabkuJHN7IvAvUw/fxXxke0jsdkzYY8ryu9qir2N
- qlEw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc;
- bh=LQdwDoFdhJiFRqQAFor/83pFe9z3RF/99jVQ2ACLxCg=;
- b=5xcFU/BcUCI98J/6VkgGbuAMDu/hIGtX3HlHFn9pmKRhptF0rzzojs6oSTLPZTtJBU
- oag+zXZsgtFwEMagJmSXNV1qy8c8VLi3VrDc4tkh//u08QfBB6ArEU5dQYR+VQ1VuZ5s
- A0Q7VABK4Vu9ZqtgkuIctX1W9crIsVcDAqUPJSy5li//gk2+HzKADioy0R56Ch0cG7rX
- OzhVAmtPhPEHNxi9zsdKVs8yZMRth5yfEUmeQ4NzzJE9L94LnqxBvgFGhAHF6IuBw23A
- tiInhtpgfQ1xrglgTMJ8HJjf5GsnrSyxX09czANLC+MfBpQL1wh917KGvb+SVnwQVOQb
- 1gMw==
-X-Gm-Message-State: ACgBeo017xKZlhK23xuNXKwZy6cO2RyPqOFnfgeM9866nSQsld4ZYc5U
- UDA94xttP2Ml6dU4dgEQFezTFsEP0Bp8nzbX/xo=
-X-Received: by 2002:a05:620a:573:b0:6bb:2865:e3cc with SMTP id
- p19-20020a05620a057300b006bb2865e3ccmr2606459qkp.15.1660542472802; Sun, 14
- Aug 2022 22:47:52 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1oNTcP-0000tE-0A
+ for qemu-arm@nongnu.org; Mon, 15 Aug 2022 02:30:37 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:20210)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1oNTcL-0000Rl-1d
+ for qemu-arm@nongnu.org; Mon, 15 Aug 2022 02:30:32 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1660545027;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=EmiV3x1gWU2re0gh2VefbhJVOzd17tpkzlIBGJEs3SE=;
+ b=cJb3lqaVbEAReiq/b+AYPwBAUs6Xw+R83uVY2C4Dd1pvT90nCQALtmQ6nmaI3ZvswSO55d
+ EzziiFJpeqRE/FICUdBlPvfWYsjHIEZN7j6inKAKK0iwSfJudFgG6j6vZQuEaZ/ZePIf5I
+ XPIojbbwb2zP1xJmncP9/O4RJ7COKLY=
+Received: from mimecast-mx02.redhat.com (mx3-rdu2.redhat.com
+ [66.187.233.73]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-63-F1yxOnxbNsm5dqfxcdIVcQ-1; Mon, 15 Aug 2022 02:30:24 -0400
+X-MC-Unique: F1yxOnxbNsm5dqfxcdIVcQ-1
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.4])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 1DC113804074;
+ Mon, 15 Aug 2022 06:30:24 +0000 (UTC)
+Received: from gshan.redhat.com (vpn2-54-77.bne.redhat.com [10.64.54.77])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 9688F2026D64;
+ Mon, 15 Aug 2022 06:30:20 +0000 (UTC)
+From: Gavin Shan <gshan@redhat.com>
+To: qemu-arm@nongnu.org
+Cc: qemu-devel@nongnu.org, maz@kernel.org, eric.auger@redhat.com,
+ cohuck@redhat.com, zhenyzha@redhat.com, peter.maydell@linaro.org,
+ richard.henderson@linaro.org, shan.gavin@gmail.com
+Subject: [PATCH v2 1/4] hw/arm/virt: Rename variable size to region_size in
+ virt_set_memmap()
+Date: Mon, 15 Aug 2022 14:29:55 +0800
+Message-Id: <20220815062958.100366-2-gshan@redhat.com>
+In-Reply-To: <20220815062958.100366-1-gshan@redhat.com>
+References: <20220815062958.100366-1-gshan@redhat.com>
 MIME-Version: 1.0
-References: <BY5PR12MB38917595B0306085EEBB1921B4629@BY5PR12MB3891.namprd12.prod.outlook.com>
- <CACPK8XfjXq6RW=M++UebfiGeij=GDSk5f6ZftNaL+2oeyCGnHw@mail.gmail.com>
- <ec20d3af-5f99-8e56-9352-75562c4548de@kaod.org>
-In-Reply-To: <ec20d3af-5f99-8e56-9352-75562c4548de@kaod.org>
-From: Dan Zhang <dz4list@gmail.com>
-Date: Sun, 14 Aug 2022 22:47:41 -0700
-Message-ID: <CAJxKyLf1jUvx6m=0u3cf+vEfj6j4t6L7g7cowxKpNx-Xhh+xyQ@mail.gmail.com>
-Subject: Re: AST2600 support in QEMU
-To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-Cc: Joel Stanley <joel@jms.id.au>, Shivi Fotedar <sfotedar@nvidia.com>, 
- Peter Delevoryas <peter@pjd.dev>, Jeremy Kerr <jk@ozlabs.org>,
- Klaus Jensen <its@irrelevant.dk>, 
- Jonathan Cameron <jonathan.cameron@huawei.com>, 
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
- Andrew Jeffery <andrew@aj.id.au>, 
- "Amit Kumar (Engrg-SW)" <asinghal@nvidia.com>,
- Prasanna Karmalkar <pkarmalkar@nvidia.com>, 
- "Tim Chen (SW-GPU)" <timch@nvidia.com>, Newton Liu <newtonl@nvidia.com>, 
- Deepak Kodihalli <dkodihalli@nvidia.com>, qemu-arm <qemu-arm@nongnu.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::735;
- envelope-from=dz4list@gmail.com; helo=mail-qk1-x735.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-Scanned-By: MIMEDefang 2.78 on 10.11.54.4
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=gshan@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -28
+X-Spam_score: -2.9
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.082,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -124,62 +113,60 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: JS4VpINSGC8L
+X-TUID: A01ys6ui0moH
 
-On Tue, Aug 9, 2022 at 10:51 PM C=C3=A9dric Le Goater <clg@kaod.org> wrote:
->
-> Hello,
->
-> On 8/10/22 04:37, Joel Stanley wrote:
-> > Hello Shivi,
-> >
-> > I've added others to cc who may have some input.
-> >
-> > On Tue, 9 Aug 2022 at 21:38, Shivi Fotedar <sfotedar@nvidia.com> wrote:
-> >>
-> >> Hello, we are looking for support for few features for AST2600 in QEMU=
-, specifically
-> >>
-> >> PCIe RC support so BMC can talk to downstream devices for management f=
-unctions.
-Normally the RC is the host CPU, BMC and the devices to be managed,
-which support MCTP-over-PCIe will be the endpoint (downstream) device
-as BMC.  The MCTP message Peer transaction between BMC and managed
-device will using route-by-Id to RC(host) then down to endpoint.  I am
-referring to DMTF DSP0238 spec. section 6.4
+This renames variable 'size' to 'region_size' in virt_set_memmap().
+It's counterpart to 'region_base', which will be introducded in
+next patch.
 
-So what does the "PCIe RC support" means? the BMC will be the PCIe RC?
-or BMC will be PCIe-Endpoint connect to host PCIe RC.
+No functional change intended.
 
-> >
-> > I haven't seen any PCIe work done yet.
->
-> I haven't either. There is clearly a need now that we are moving
-> away from LPC.
->
-> >> MCTP controller to run MCTP protocol on top of PCIe or I2C.
-> >
-> > What work would be required to do this on top of i2c?
->
-> I think Jonathan and Klaus worked on this. See :
->
->    https://lore.kernel.org/qemu-devel/20220525121422.00003a84@Huawei.com/
->
-> >> I2C slave so BMC can talk to host CPU QEMU for IPMI
-> >
-> > Some support for slave mode was merged in v7.1.
->
-> yes.
->
-> Peter D. experimented with IPMI. See :
->
->    https://lore.kernel.org/qemu-devel/20220630045133.32251-14-me@pjd.dev/
->
-> We also merged a new machine including a BMC ast2600 running OpenBMC
-> and an ast1030 SoC running OpenBIC. Work to interconnect them on the
-> same I2C bus is in progress.
->
-> Thanks,
->
-> C.
->
+Signed-off-by: Gavin Shan <gshan@redhat.com>
+---
+ hw/arm/virt.c | 12 ++++++------
+ 1 file changed, 6 insertions(+), 6 deletions(-)
+
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index 9633f822f3..f8e9f3e205 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -1744,12 +1744,12 @@ static void virt_set_memmap(VirtMachineState *vms, int pa_bits)
+     vms->highest_gpa = memtop - 1;
+ 
+     for (i = VIRT_LOWMEMMAP_LAST; i < ARRAY_SIZE(extended_memmap); i++) {
+-        hwaddr size = extended_memmap[i].size;
++        hwaddr region_size = extended_memmap[i].size;
+         bool fits;
+ 
+-        base = ROUND_UP(base, size);
++        base = ROUND_UP(base, region_size);
+         vms->memmap[i].base = base;
+-        vms->memmap[i].size = size;
++        vms->memmap[i].size = region_size;
+ 
+         /*
+          * Check each device to see if they fit in the PA space,
+@@ -1757,9 +1757,9 @@ static void virt_set_memmap(VirtMachineState *vms, int pa_bits)
+          *
+          * For each device that doesn't fit, disable it.
+          */
+-        fits = (base + size) <= BIT_ULL(pa_bits);
++        fits = (base + region_size) <= BIT_ULL(pa_bits);
+         if (fits) {
+-            vms->highest_gpa = base + size - 1;
++            vms->highest_gpa = base + region_size - 1;
+         }
+ 
+         switch (i) {
+@@ -1774,7 +1774,7 @@ static void virt_set_memmap(VirtMachineState *vms, int pa_bits)
+             break;
+         }
+ 
+-        base += size;
++        base += region_size;
+     }
+ 
+     if (device_memory_size > 0) {
+-- 
+2.23.0
+

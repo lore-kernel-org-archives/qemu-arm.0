@@ -1,134 +1,143 @@
-Received: by 2002:a17:906:3b11:0:0:0:0 with SMTP id g17csp1358544ejf;
-        Mon, 15 Aug 2022 12:03:18 -0700 (PDT)
-X-Received: by 2002:a5d:59c5:0:b0:223:808d:51bb with SMTP id v5-20020a5d59c5000000b00223808d51bbmr9570178wry.454.1660590198746;
-        Mon, 15 Aug 2022 12:03:18 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1660590198; cv=none;
+Received: by 2002:a17:906:3b11:0:0:0:0 with SMTP id g17csp1396072ejf;
+        Mon, 15 Aug 2022 13:26:59 -0700 (PDT)
+X-Received: by 2002:a37:c4c:0:b0:6bb:4ec0:b463 with SMTP id 73-20020a370c4c000000b006bb4ec0b463mr2456047qkm.666.1660595219723;
+        Mon, 15 Aug 2022 13:26:59 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1660595219; cv=none;
         d=google.com; s=arc-20160816;
-        b=jJboljsbX5cmEN9vGqLPO4KNLNB4cQKjR3PU7K6jYOMxWLJAUKJaKyNefdVWZEe6GA
-         +auUszjljaeegxrd5MRE9i2efugb29rwDuk8hcU/Svq34XZ/8bBg9WEdY6oqfoywngKO
-         K02WsJKOlLPV64vMq9VND2svqJL40Pl4FqTHlCunOar7hf6GtkQXPgrXB53/mf1MT+3Z
-         M/kFu7UEbDUOCpEmoim3NN/l6vPLHqhGqzR8t8l1g7grBwhGKp7THRE0tbqJbIa6sHnS
-         s0CwUVfkhyaeZVgEPCB87IGa6NAH72k/Qyov32mNA1zAFhzKv04xzAM7rKGe9Or0ZIi0
-         k2vQ==
+        b=enPsiNxO66xzciCWQTMzGBruu0NtRuB1kclwMhSUE1mevw+kAwkvPJJ+DJlmorW7+0
+         WjWWob+NXHkEmtcVS/F+wjVrTiERljLqGOkiveLMS2obOcdWiSzj1ydvor6nJU/T79X+
+         SlyA/ub2b2ikl5tWziw+AGR0Q5Uyvp90vfjrbHyuNVqftNcCkbCMaP+SzRO8UBvlUz5x
+         Gu2PIaveP4MxrftdJwLDfrifnyoL2QC8hmOMiP35LAjF7U9D2nmLXdaPYaIS9d88U5zD
+         qb9j2Yx4JQYG4MRwSHmnynNMweJD45tI+AJ7su6m6RIA7rojlVf/c6Oz3V/D/FSJX9u6
+         3/EA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=OGTDkR4LI4GDhkjGHuX42mV1KlnJTimkQ9agW47gbZY=;
-        b=nKogDXRLBqSMZ3Z2uwHuUV0efx0MRKulb264RanXSVppJ781s5ioWv7bK2/mfWRwj8
-         Swt0mlAEhH/tm3Dtwv87vCw25J4LqlXlcQZ8rOQcSGBtoSeOrin3coeFwZIZpgb6jYoX
-         NOYnr+fp2P/NnigvYUPpPgNK5cGO52Htgzh374zPdI4qZczYKqcbOYwMjzulD84z0RoA
-         ulpwty3r8nTKs1VNFTKsBf5Vyv4qL44aNyBUe3m2OCaJWXXjh+PMHfHSHkE+Enc5zqHg
-         VKmsh7RclZpzuUIK/omam+viTAzmJHJ1ick/pKrNXfwqTWu4Ifgd7+6loy7Rw4MNkE4C
-         BTBA==
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=7kvCSjUGbtTiTEBzCyfkVe/cnxqgIrI2gkhLBAH80cE=;
+        b=DhHWa5O0KV3zTpUAMPBBv9cTEz7UxulJk3wpkM7zTAeepdIlyTgpxEi9dm1x2uCmWj
+         NuRCXdcd5vpW/1Ws2MOaaOAIYQhnPsoyM1sKI/lxpdWQ+jrgKl3IFsILFNZIxnXXu5UW
+         qIBRRTVhNXk0zx1vJWitfURC5kotLInrDdfl/+ngPUgat/xTJ58VnfYD0TjgqYeGCDQh
+         DLHxNfvxYQ1nFARzKrPgWNH2ghxOBy01JK8QEbW0nZhzTHSoX5xvcFGimPLk0VTrz7mi
+         9D7qYFtX+LnKVmIGjyOyHfCZyL9buICzutCpCftap8x0mECTaEmvBi3Rzw+YM+eQy+F/
+         8Dcw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=jknClf+t;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=IX3afyZr;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <peter.maydell@linaro.org>
+Return-Path: <richard.henderson@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id y9-20020a05600015c900b00220630dd796sor2813697wry.18.2022.08.15.12.03.18
+        by mx.google.com with SMTPS id m17-20020ac86891000000b0034454b5ace3sor4268195qtq.21.2022.08.15.13.26.59
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Mon, 15 Aug 2022 12:03:18 -0700 (PDT)
-Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        Mon, 15 Aug 2022 13:26:59 -0700 (PDT)
+Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=jknClf+t;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=IX3afyZr;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc;
-        bh=OGTDkR4LI4GDhkjGHuX42mV1KlnJTimkQ9agW47gbZY=;
-        b=jknClf+toYIvPEkgUrydqqr9UCEeCEr58GLRzowOM/IR+L5/RRiMyasTBBMRmmqRh+
-         VXmtjuUtV6pE17LQfKKL1GbOlJaW2ahc7y2BGrrhYaOsBJt9c+92OFP70Cj8GUH4cpjt
-         FP+5S80H/lA3PfnsxbmYnpY4GG0F1g+qU5vO2TzsFXTvUY77ZLJIIbo/FeIaxLDF36xv
-         a2R0r4ph5J4G45NgcdWOmn1wde72VHauCcdnjAES4VC1OApf+xdpoHJrnLBL4816MbHb
-         KfF6rPf/qLx6WS2D4wOZsqK+d6jo6DcvcytgBHs1PuU0pgP5sxVqEV35A3KcyEKUgdq8
-         ljuw==
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc;
+        bh=7kvCSjUGbtTiTEBzCyfkVe/cnxqgIrI2gkhLBAH80cE=;
+        b=IX3afyZr6GMYKFotwlsFribmqXeF+YEQEjfChL5dzLFu5/TuBVUr0tXmm+nyY5hr16
+         /PscQe46oZj0GS4+Q0Fd1JVRxwgLYwQgpz/8a1HDrtGkqwnTYfIqK0CyNnyvwjqNEbL/
+         /6g2SGth2y6afnDduU6ticJ0PClb3o/JJLZqPxUMTYT55sdG+t0yc0WrhOW3xQXiQ/Az
+         wgQ3WPgsKYSYyI5eCm36ziimSi8hDjzmZYDFBTS508bF5Pnjke1rVl4JJM2Ahfxxmoyw
+         +c8YV0X+zGmXqL6U+8LuIoJbutTgisy0Mdnd6Q0HnOsIcwjiV174phSfhCxr2EfHxgAC
+         xmeg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc;
-        bh=OGTDkR4LI4GDhkjGHuX42mV1KlnJTimkQ9agW47gbZY=;
-        b=iB9OsQnHiBVvYMqJ/aFeCBrx692DvoOaOmqZ8qmhIBZcCB2Xnp8ccvlNSZ8KdekwAE
-         qwnMuQcZ7h0L7Y/YgDKgaJVdlu2ber2EAJGDowon//xSJ7ywfpp32gzLstBfPilaW2vH
-         qglxkW9iRbAl9F7JRveB7gA7a1r8bEvLFp0pg1stkrkg8BWMTZ5FUoRFWkDuWezEYxtN
-         9XJNI8R+9eCTDaJXwdDwhzBMAaXNb5LmWO9HibWfBRLkODsCX17uw1uYiES+GpQSqarA
-         QLc6p7Y5xBh+jBQ9B8dl4e+PNPNFMYuvp2kwG6n0nUgZ+iho4k1f0SHZVjlePgTSfdWJ
-         uZxw==
-X-Gm-Message-State: ACgBeo2IO5/0VWP31Tp3PVSloPvHHxqNm/+vSYCvCdgPePqf8fIO99Fk
-	/R+nWRuP+Vcbz45QYPKdveuod5Gc
-X-Google-Smtp-Source: AA6agR6EenKqtVnb6qh+v5OZDGtZ6StmoxTQ1eASfHElCzeymsfQZli0AJNuSum8kl6Yi5j4QTlgUw==
-X-Received: by 2002:a5d:6047:0:b0:220:6dc5:73ee with SMTP id j7-20020a5d6047000000b002206dc573eemr9634750wrt.213.1660590198464;
-        Mon, 15 Aug 2022 12:03:18 -0700 (PDT)
-Return-Path: <peter.maydell@linaro.org>
-Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
-        by smtp.gmail.com with ESMTPSA id u4-20020a5d5144000000b00220606afdf4sm8009162wrt.43.2022.08.15.12.03.17
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 15 Aug 2022 12:03:18 -0700 (PDT)
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Cc: qemu-riscv@nongnu.org,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Laurent Vivier <laurent@vivier.eu>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
-	Jiaxun Yang <jiaxun.yang@flygoat.com>,
-	Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
-	Stefan Pejic <stefan.pejic@syrmia.com>,
-	Chris Wulff <crwulff@gmail.com>,
-	Marek Vasut <marex@denx.de>,
-	Palmer Dabbelt <palmer@dabbelt.com>,
-	Alistair Francis <alistair.francis@wdc.com>,
-	Bin Meng <bin.meng@windriver.com>,
-	Max Filippov <jcmvbkbc@gmail.com>,
-	Richard Henderson <richard.henderson@linaro.org>,
-	Furquan Shaikh <furquan@rivosinc.com>
-Subject: [PATCH 7/7] target/riscv: Honour -semihosting-config userspace=on and enable=on
-Date: Mon, 15 Aug 2022 20:03:03 +0100
-Message-Id: <20220815190303.2061559-8-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20220815190303.2061559-1-peter.maydell@linaro.org>
-References: <20220815190303.2061559-1-peter.maydell@linaro.org>
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc;
+        bh=7kvCSjUGbtTiTEBzCyfkVe/cnxqgIrI2gkhLBAH80cE=;
+        b=a24ZQdMmsPAbXQaw0xqZ8NEqwDgEbLzPNviYcNZ8BHclqUcOTwjwI3sUTEjbgP+//L
+         nO8cmVInbP9KiGBdHJPrxg0yTnqwbOveEtgRhQ0QA/snSLXTi0di39C3VBdqUQEggmMZ
+         +RLYPwmt1/I1nIap9bKOJuZXwxcoOgaCypkoesvTfXdzYaVKS/Dio8leGBtpsdErjjN2
+         NMq//xVuOXtbwQ4I8edI1B6n4E/aIT4i4oY/Nhs2KWyfLgsR8CrhgkhMLpD+K2W1mRHh
+         +eG+rcVUOToYbE84oArgGINDCBEtuQ0FpMDf+6SdNcMIjhKyElzSaGhb0ZtPDb9D2i6q
+         nVLw==
+X-Gm-Message-State: ACgBeo25HmSi/DcKlT+UDHNQnfI84IFJarsMdiLzzZYEn5G3stCU6je3
+	JjF5JKx8GE1GGdAu3r4ttnJTqn7wxjP6NVoR
+X-Google-Smtp-Source: AA6agR4imi8S6bmmh3CWG/Q12I+YZIJaNpTGmLDBUea6LH/R7qo/8etEMthUPrYeC1qRoWObvcbpfQ==
+X-Received: by 2002:ac8:5ad1:0:b0:343:5e13:795d with SMTP id d17-20020ac85ad1000000b003435e13795dmr15694290qtd.625.1660595219306;
+        Mon, 15 Aug 2022 13:26:59 -0700 (PDT)
+Return-Path: <richard.henderson@linaro.org>
+Received: from [192.168.125.227] (173-11-255-51-houston.txt.hfc.comcastbusiness.net. [173.11.255.51])
+        by smtp.gmail.com with ESMTPSA id a8-20020ac86108000000b003435bb7fe9csm8443384qtm.78.2022.08.15.13.26.57
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Mon, 15 Aug 2022 13:26:58 -0700 (PDT)
+Message-ID: <08d41c28-728a-0ef2-c528-b55c4984ca2b@linaro.org>
+Date: Mon, 15 Aug 2022 15:26:55 -0500
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-TUID: esz+45DEFRmK
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.11.0
+Subject: Re: [PATCH 7/7] target/riscv: Honour -semihosting-config userspace=on
+ and enable=on
+Content-Language: en-US
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+Cc: qemu-riscv@nongnu.org, =?UTF-8?Q?Alex_Benn=c3=a9e?=
+ <alex.bennee@linaro.org>, Laurent Vivier <laurent@vivier.eu>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
+ Jiaxun Yang <jiaxun.yang@flygoat.com>,
+ Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
+ Stefan Pejic <stefan.pejic@syrmia.com>, Chris Wulff <crwulff@gmail.com>,
+ Marek Vasut <marex@denx.de>, Palmer Dabbelt <palmer@dabbelt.com>,
+ Alistair Francis <alistair.francis@wdc.com>,
+ Bin Meng <bin.meng@windriver.com>, Max Filippov <jcmvbkbc@gmail.com>,
+ Furquan Shaikh <furquan@rivosinc.com>
+References: <20220815190303.2061559-1-peter.maydell@linaro.org>
+ <20220815190303.2061559-8-peter.maydell@linaro.org>
+From: Richard Henderson <richard.henderson@linaro.org>
+In-Reply-To: <20220815190303.2061559-8-peter.maydell@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+X-TUID: 8vGDjIWubC2p
 
-The riscv target incorrectly enabled semihosting always, whether the
-user asked for it or not.  Call semihosting_enabled() passing the
-correct value to the is_userspace argument, which fixes this and also
-handles the userspace=on argument.
+On 8/15/22 14:03, Peter Maydell wrote:
+> The riscv target incorrectly enabled semihosting always, whether the
+> user asked for it or not.  Call semihosting_enabled() passing the
+> correct value to the is_userspace argument, which fixes this and also
+> handles the userspace=on argument.
+> 
+> Note that this is a behaviour change: we used to default to
+> semihosting being enabled, and now the user must pass
+> "-semihosting-config enable=on" if they want it.
+> 
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> ---
+>   target/riscv/cpu_helper.c | 3 ++-
+>   1 file changed, 2 insertions(+), 1 deletion(-)
+> 
+> diff --git a/target/riscv/cpu_helper.c b/target/riscv/cpu_helper.c
+> index 59b3680b1b2..49c4ea98ac9 100644
+> --- a/target/riscv/cpu_helper.c
+> +++ b/target/riscv/cpu_helper.c
+> @@ -24,6 +24,7 @@
+>   #include "exec/exec-all.h"
+>   #include "tcg/tcg-op.h"
+>   #include "trace.h"
+> +#include "semihosting/semihost.h"
+>   #include "semihosting/common-semi.h"
+>   
+>   int riscv_cpu_mmu_index(CPURISCVState *env, bool ifetch)
+> @@ -1342,7 +1343,7 @@ void riscv_cpu_do_interrupt(CPUState *cs)
+>       target_ulong mtval2 = 0;
+>   
+>       if  (cause == RISCV_EXCP_SEMIHOST) {
+> -        if (env->priv >= PRV_S) {
+> +        if (semihosting_enabled(env->priv < PRV_S)) {
+>               do_common_semihosting(cs);
+>               env->pc += 4;
+>               return;
 
-Note that this is a behaviour change: we used to default to
-semihosting being enabled, and now the user must pass
-"-semihosting-config enable=on" if they want it.
+I think this should be done in translate.  We should not have the overhead of checking the 
+three insn sequence around ebreak unless semihosting is enabled.  Note that ctx->mem_idx 
+== env->priv, per cpu_mem_index().
 
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
- target/riscv/cpu_helper.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
 
-diff --git a/target/riscv/cpu_helper.c b/target/riscv/cpu_helper.c
-index 59b3680b1b2..49c4ea98ac9 100644
---- a/target/riscv/cpu_helper.c
-+++ b/target/riscv/cpu_helper.c
-@@ -24,6 +24,7 @@
- #include "exec/exec-all.h"
- #include "tcg/tcg-op.h"
- #include "trace.h"
-+#include "semihosting/semihost.h"
- #include "semihosting/common-semi.h"
- 
- int riscv_cpu_mmu_index(CPURISCVState *env, bool ifetch)
-@@ -1342,7 +1343,7 @@ void riscv_cpu_do_interrupt(CPUState *cs)
-     target_ulong mtval2 = 0;
- 
-     if  (cause == RISCV_EXCP_SEMIHOST) {
--        if (env->priv >= PRV_S) {
-+        if (semihosting_enabled(env->priv < PRV_S)) {
-             do_common_semihosting(cs);
-             env->pc += 4;
-             return;
--- 
-2.25.1
+r~

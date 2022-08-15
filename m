@@ -1,259 +1,188 @@
-Received: by 2002:a17:906:3b11:0:0:0:0 with SMTP id g17csp1305214ejf;
-        Mon, 15 Aug 2022 10:07:21 -0700 (PDT)
-X-Google-Smtp-Source: AA6agR7cu9nsy+IaSGPJ5sLIB4WfcnIHUl++5Xecnx182rObNVYVOPv2rsFLyg4muTlGWNtQ8ktA
-X-Received: by 2002:a37:8a43:0:b0:699:fac5:224d with SMTP id m64-20020a378a43000000b00699fac5224dmr11960571qkd.599.1660583241381;
-        Mon, 15 Aug 2022 10:07:21 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1660583241; cv=none;
+Received: by 2002:a17:906:3b11:0:0:0:0 with SMTP id g17csp1358421ejf;
+        Mon, 15 Aug 2022 12:03:06 -0700 (PDT)
+X-Received: by 2002:a1c:ed05:0:b0:3a2:ebae:c5e7 with SMTP id l5-20020a1ced05000000b003a2ebaec5e7mr10646824wmh.78.1660590186851;
+        Mon, 15 Aug 2022 12:03:06 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1660590186; cv=none;
         d=google.com; s=arc-20160816;
-        b=Ts6VPp/nbrq47aI/MeX3sCQ7Ppxss1UcUJRgmWMgq8FOuEJwm5bVaoGfMszALubFzJ
-         4/hy7cdTMQsEjdf3aCvYJO3osO0yuj7sOaS6XxqWVJgACCzoAX20eR8+FcoEUaTzKY6j
-         7+igcyhjEOIcG4lXFWMUJxFrPHAaoc2ELpYydY8xpOHwnbbFq0UCykQCXbw19BTr8Pzf
-         jVFgYrXaJB2t15nShO1JIKRVjJjNCFL+O1d4ia27/gMlzeR5cGW9ZNclPih1q+VKPEV7
-         3VNPOAiIVcJt7KVgo6oCnSTP1ux9o2chxSOYxpUxH5wmXtwuK5+uuVcTOxXjV5gXQi/6
-         wzgQ==
+        b=vX0DkuxmPEwdk2RGIMWb/9EsQnTUCAnjXgkvrd1ISKHAvYFt9mnh3Tn53FDmQ56hhS
+         f4Q6rVbjv1d05HjBYdZ1w/B9oQUPbHvhxp73hfd8Rw2VXZSnoACz9SvVLTdUP7PvlK4e
+         kkR3CnzwMuwu2eU4Morn9yovuq/iUR6FnVRTphiVGH9cnQBeZ/9Ow4keTaCST2Ggee3J
+         gbHRmhE3hVIw/mdvy2KZTYwjDEPfdBO2g7M+4tOORvYqSysdIJRLs+MgKSH0CaE+Ro+2
+         SMf6U3TQDwZgG4ig0ygVRLePm7jgR+NClJ5Ii98oZXBuhI/TBTXILQWlCEO2nWiVvotR
+         aNKw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=from:reply-to:sender:errors-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:mime-version:organization:references
-         :in-reply-to:message-id:subject:cc:to:date;
-        bh=CiIVXZU71RtLllkihPZGGmtkckOUAwFlIbKKfj25fKo=;
-        b=rxfBTAUNRZSVzRSCUGC0STZ+JTKLH7k9JU7AeMTOWnGxuF5yN4xr9AlxuHU5f3+07V
-         jYXWXUVRVrsWCEfM8f0V7outtsJsz870NnOGuJOnyzyWDORMjwA52dJ18xCsRV0dr9vZ
-         ixwNiBvHUkscwNr4BUL6rX/38o2tN0ocsyn7LOA7oc/RCtbOU3Ma+0bibHqDxJkbd26J
-         lR/GuuMycaqVAQVVVN9LhV1yzIwX8dIayhGu2EBqSnthGaTe37r9Pc+I3UhKkEDn0sFo
-         gqjMEBezdSkfnpgpikXWhZcLKffXF6xsF691jNG4/Qezs9wX4OjwsnG3BhKP6e4mpBao
-         Pn/g==
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:dkim-signature;
+        bh=4Q67kU5Pa8qbKDq/p11cYTFwJU0Q6OYYwsmMELIDttI=;
+        b=tUYvAc9xOU2tVpboQ6GeaIeBgV2X5oBR/qolY7xoMGUJs0wG4C3A7ODHCaie1Y1joT
+         HA6Le+ZLBgedmjqm24R9wr8bNCbu8nzLHEn3U2ooGF6zwV+E8d/ONXVwX/avNfwbZWMO
+         BZEywCvrTtILdkTY4dPd0rJI9uMSX1WmC8vyr+aIukGJecJbzwQ70MTPS7QOxZcFT3vC
+         goe1zg2VEcC2982nR+NsFmENQmYGogKXdwk8TIDXI2unegEqnFByC3LXRrf8Z7FFxaVM
+         tubpfuZ3yarH9OZrqzyHzltqP1kXoNw+0hr5L/OVdRK6t3RrXFagbpeIZwmFJ3G9J7/V
+         45tg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x22-20020a05620a0b5600b006bb2f62bfe1si1726063qkg.178.2022.08.15.10.07.21
+       dkim=pass header.i=@linaro.org header.s=google header.b=ULEtzSDr;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <peter.maydell@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id w19-20020adf8bd3000000b00222cff73b44sor2708006wra.76.2022.08.15.12.03.06
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 15 Aug 2022 10:07:21 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Mon, 15 Aug 2022 12:03:06 -0700 (PDT)
+Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
-Received: from localhost ([::1]:58754 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1oNdYe-0003ZY-RV
-	for alex.bennee@linaro.org; Mon, 15 Aug 2022 13:07:20 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:41624)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
- id 1oNdWL-0000ko-1F; Mon, 15 Aug 2022 13:04:57 -0400
-Received: from frasgout.his.huawei.com ([185.176.79.56]:2675)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
- id 1oNdWI-0003xA-68; Mon, 15 Aug 2022 13:04:56 -0400
-Received: from fraeml737-chm.china.huawei.com (unknown [172.18.147.207])
- by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4M60xt6w5bz67Xcd;
- Tue, 16 Aug 2022 01:04:34 +0800 (CST)
-Received: from lhrpeml500005.china.huawei.com (7.191.163.240) by
- fraeml737-chm.china.huawei.com (10.206.15.218) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2375.24; Mon, 15 Aug 2022 19:04:45 +0200
-Received: from localhost (10.122.247.231) by lhrpeml500005.china.huawei.com
- (7.191.163.240) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2375.24; Mon, 15 Aug
- 2022 18:04:45 +0100
-Date: Mon, 15 Aug 2022 18:04:44 +0100
-To: Jonathan Cameron via <qemu-devel@nongnu.org>
-CC: Bobo WL <lmw.bobo@gmail.com>, <linux-cxl@vger.kernel.org>,
- <qemu-arm@nongnu.org>
-Subject: Re: [BUG] cxl can not create region
-Message-ID: <20220815180444.00006bdf@huawei.com>
-In-Reply-To: <20220812164403.00001654@huawei.com>
-References: <CAGr_yG0UrfJAMWta3EkR1F0JZ4j--sig74p6vKL3K6TZDx9YGA@mail.gmail.com>
- <20220808133727.00001171@huawei.com>
- <CAGr_yG36GSO8esyO9nn6OeOEN5zPSosEmBHbfYGwqNGiYOh9vw@mail.gmail.com>
- <20220809170825.00001b61@huawei.com>
- <20220811180857.00005e67@huawei.com>
- <20220812164403.00001654@huawei.com>
-Organization: Huawei Technologies R&D (UK) Ltd.
-X-Mailer: Claws Mail 4.0.0 (GTK+ 3.24.29; x86_64-w64-mingw32)
+       dkim=pass header.i=@linaro.org header.s=google header.b=ULEtzSDr;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc;
+        bh=4Q67kU5Pa8qbKDq/p11cYTFwJU0Q6OYYwsmMELIDttI=;
+        b=ULEtzSDrVV/7I099f4FZOktooS/YmI8a8LRkHckUIsJKCM2MWn5AwGB/CJq3J4Wiqr
+         XmVzkFsXqqvBTwfDN9DEj6TnfTn+iqtt809xSh7N9fMMjGRoGNvVCkZlHd/GjUBY5gIc
+         H8U8jakIiB2M/TlnuSskDz3b62wvWSv60fYcpDz9mvliI/cR64jaQNEBcg0shSzWLype
+         YE2BJpVP/9zf6BKBv/+4IAf1Dv03QVKvLMeCBZ5or1K98zy3nvFHYKGsd1cWLnmwx8T4
+         uZ+Kq+1WRMwP9cbL3OZg/7+aMaBUwEB7fLgHTqUuM44PpB73GUAwzv2rB662YEyVG0ow
+         we5A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc;
+        bh=4Q67kU5Pa8qbKDq/p11cYTFwJU0Q6OYYwsmMELIDttI=;
+        b=CzwWjfANcgxQcamKjgFNI5TJ26dDd0v5ChoDLisQAcK1Of6HvnijIAaXNTjmM/83/X
+         chxmL9JFl6W6nHpUxt05ZrPFnH8zcVf7U2cDkE7y2K2iM11ADNQ+Lhkp8O2xQ8b7BjGL
+         3dWcKy86GiqEvhO/pP3BPwycz/WERGJn7TMci9hnjsgTQfSdBwQUEUQHNleFmx0I+9BW
+         3vVP5UpoMsvtDJ7jo8MGwp1gjZwI+km1YWpO6rReL0gbOS0jfLkkeInkQIzbRu90aiOJ
+         fm8r3SVM7jLEU4gp0x35lZepxcH+7Q0f6ZlS+yBowXUJD8i4HF6ir2ChRWd/2lv+yZ/d
+         uLDQ==
+X-Gm-Message-State: ACgBeo3AS15xsxZBKLAtBuek2Z5kDQMBlVbeTHP9OyJNjwVMlezVNLkK
+	ERsO2a0WmnDg5bCUj1FijdGrkaXC
+X-Google-Smtp-Source: AA6agR686UYwqSFydtFEb6BIZHoBm6o2H+eBG9yToKIoNk3se1D/z4jlhfgUZitVhszq6vRf9kuSHA==
+X-Received: by 2002:a05:6000:18a1:b0:222:c477:e919 with SMTP id b1-20020a05600018a100b00222c477e919mr9521126wri.301.1660590186535;
+        Mon, 15 Aug 2022 12:03:06 -0700 (PDT)
+Return-Path: <peter.maydell@linaro.org>
+Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
+        by smtp.gmail.com with ESMTPSA id u4-20020a5d5144000000b00220606afdf4sm8009162wrt.43.2022.08.15.12.03.04
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 15 Aug 2022 12:03:05 -0700 (PDT)
+From: Peter Maydell <peter.maydell@linaro.org>
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Cc: qemu-riscv@nongnu.org,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	Laurent Vivier <laurent@vivier.eu>,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+	Jiaxun Yang <jiaxun.yang@flygoat.com>,
+	Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
+	Stefan Pejic <stefan.pejic@syrmia.com>,
+	Chris Wulff <crwulff@gmail.com>,
+	Marek Vasut <marex@denx.de>,
+	Palmer Dabbelt <palmer@dabbelt.com>,
+	Alistair Francis <alistair.francis@wdc.com>,
+	Bin Meng <bin.meng@windriver.com>,
+	Max Filippov <jcmvbkbc@gmail.com>,
+	Richard Henderson <richard.henderson@linaro.org>,
+	Furquan Shaikh <furquan@rivosinc.com>
+Subject: [PATCH 0/7] Allow semihosting from user mode
+Date: Mon, 15 Aug 2022 20:02:56 +0100
+Message-Id: <20220815190303.2061559-1-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset="US-ASCII"
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.122.247.231]
-X-ClientProxiedBy: lhrpeml500002.china.huawei.com (7.191.160.78) To
- lhrpeml500005.china.huawei.com (7.191.163.240)
-X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=185.176.79.56;
- envelope-from=jonathan.cameron@huawei.com; helo=frasgout.his.huawei.com
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
- RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Reply-to:  Jonathan Cameron <Jonathan.Cameron@huawei.com>
-From:  Jonathan Cameron via <qemu-devel@nongnu.org>
-X-TUID: cS8cfabW4jVc
+Content-Transfer-Encoding: 8bit
+X-TUID: QdwGBpsVaVj3
 
-On Fri, 12 Aug 2022 16:44:03 +0100
-Jonathan Cameron <Jonathan.Cameron@huawei.com> wrote:
+Currently our semihosting implementations usually prohibit use of
+semihosting calls in system emulation from the guest userspace.  This
+is a very long standing behaviour justified originally "to provide
+some semblance of security" (since code with access to the semihosting
+ABI can do things like read and write arbitrary files on the host
+system).  However, it is sometimes useful to be able to run trusted
+guest code which performs semihosting calls from guest userspace,
+notably for test code.
 
-> On Thu, 11 Aug 2022 18:08:57 +0100
-> Jonathan Cameron via <qemu-devel@nongnu.org> wrote:
-> 
-> > On Tue, 9 Aug 2022 17:08:25 +0100
-> > Jonathan Cameron <Jonathan.Cameron@huawei.com> wrote:
-> >   
-> > > On Tue, 9 Aug 2022 21:07:06 +0800
-> > > Bobo WL <lmw.bobo@gmail.com> wrote:
-> > >     
-> > > > Hi Jonathan
-> > > > 
-> > > > Thanks for your reply!
-> > > > 
-> > > > On Mon, Aug 8, 2022 at 8:37 PM Jonathan Cameron
-> > > > <Jonathan.Cameron@huawei.com> wrote:      
-> > > > >
-> > > > > Probably not related to your problem, but there is a disconnect in QEMU /
-> > > > > kernel assumptionsaround the presence of an HDM decoder when a HB only
-> > > > > has a single root port. Spec allows it to be provided or not as an implementation choice.
-> > > > > Kernel assumes it isn't provide. Qemu assumes it is.
-> > > > >
-> > > > > The temporary solution is to throw in a second root port on the HB and not
-> > > > > connect anything to it.  Longer term I may special case this so that the particular
-> > > > > decoder defaults to pass through settings in QEMU if there is only one root port.
-> > > > >        
-> > > > 
-> > > > You are right! After adding an extra HB in qemu, I can create a x1
-> > > > region successfully.
-> > > > But have some errors in Nvdimm:
-> > > > 
-> > > > [   74.925838] Unknown online node for memory at 0x10000000000, assuming node 0
-> > > > [   74.925846] Unknown target node for memory at 0x10000000000, assuming node 0
-> > > > [   74.927470] nd_region region0: nmem0: is disabled, failing probe      
-> > > 
-> > > Ah. I've seen this one, but not chased it down yet.  Was on my todo list to chase
-> > > down. Once I reach this state I can verify the HDM Decode is correct which is what
-> > > I've been using to test (Which wasn't true until earlier this week). 
-> > > I'm currently testing via devmem, more for historical reasons than because it makes
-> > > that much sense anymore.      
-> > 
-> > *embarassed cough*.  We haven't fully hooked the LSA up in qemu yet.
-> > I'd forgotten that was still on the todo list. I don't think it will
-> > be particularly hard to do and will take a look in next few days.
-> > 
-> > Very very indirectly this error is causing a driver probe fail that means that
-> > we hit a code path that has a rather odd looking check on NDD_LABELING.
-> > Should not have gotten near that path though - hence the problem is actually
-> > when we call cxl_pmem_get_config_data() and it returns an error because
-> > we haven't fully connected up the command in QEMU.  
-> 
-> So a least one bug in QEMU. We were not supporting variable length payloads on mailbox
-> inputs (but were on outputs).  That hasn't mattered until we get to LSA writes.
-> We just need to relax condition on the supplied length.
-> 
-> diff --git a/hw/cxl/cxl-mailbox-utils.c b/hw/cxl/cxl-mailbox-utils.c
-> index c352a935c4..fdda9529fe 100644
-> --- a/hw/cxl/cxl-mailbox-utils.c
-> +++ b/hw/cxl/cxl-mailbox-utils.c
-> @@ -510,7 +510,7 @@ void cxl_process_mailbox(CXLDeviceState *cxl_dstate)
->      cxl_cmd = &cxl_cmd_set[set][cmd];
->      h = cxl_cmd->handler;
->      if (h) {
-> -        if (len == cxl_cmd->in) {
-> +        if (len == cxl_cmd->in || !cxl_cmd->in) {
-Fix is wrong as we use ~0 as the placeholder for variable payload, not 0.
+This patchset adds a command line suboption to the existing
+semihosting-config option group so that you can explicitly opt in to
+semihosting from guest userspace with "-semihosting-config
+userspace=on".
 
-With that fixed we hit new fun paths - after some errors we get the
-worrying - not totally sure but looks like a failure on an error cleanup.
-I'll chase down the error source, but even then this is probably triggerable by
-hardware problem or similar.  Some bonus prints in here from me chasing
-error paths, but it's otherwise just cxl/next + the fix I posted earlier today.
+It also brings all our target architectures into line about
+how they handle semihosting. Currently these fall into three
+different groups:
 
-[   69.919877] nd_bus ndbus0: START: nd_region.probe(region0)
-[   69.920108] nd_region_probe
-[   69.920623] ------------[ cut here ]------------
-[   69.920675] refcount_t: addition on 0; use-after-free.
-[   69.921314] WARNING: CPU: 3 PID: 710 at lib/refcount.c:25 refcount_warn_saturate+0xa0/0x144
-[   69.926949] Modules linked in: cxl_pmem cxl_mem cxl_pci cxl_port cxl_acpi cxl_core
-[   69.928830] CPU: 3 PID: 710 Comm: kworker/u8:9 Not tainted 5.19.0-rc3+ #399
-[   69.930596] Hardware name: QEMU QEMU Virtual Machine, BIOS 0.0.0 02/06/2015
-[   69.931482] Workqueue: events_unbound async_run_entry_fn
-[   69.932403] pstate: 60400005 (nZCv daif +PAN -UAO -TCO -DIT -SSBS BTYPE=--)
-[   69.934023] pc : refcount_warn_saturate+0xa0/0x144
-[   69.935161] lr : refcount_warn_saturate+0xa0/0x144
-[   69.936541] sp : ffff80000890b960
-[   69.937921] x29: ffff80000890b960 x28: 0000000000000000 x27: 0000000000000000
-[   69.940917] x26: ffffa54a90d5cb10 x25: ffffa54a90809e98 x24: 0000000000000000
-[   69.942537] x23: ffffa54a91a3d8d8 x22: ffff0000c5254800 x21: ffff0000c5254800
-[   69.944013] x20: ffff0000ce924180 x19: ffff0000c5254800 x18: ffffffffffffffff
-[   69.946100] x17: ffff5ab66e5ef000 x16: ffff80000801c000 x15: 0000000000000000
-[   69.947585] x14: 0000000000000001 x13: 0a2e656572662d72 x12: 657466612d657375
-[   69.948670] x11: 203b30206e6f206e x10: 6f69746964646120 x9 : ffffa54a8f63d288
-[   69.950679] x8 : 206e6f206e6f6974 x7 : 69646461203a745f x6 : 00000000fffff31e
-[   69.952113] x5 : ffff0000ff61ba08 x4 : 00000000fffff31e x3 : ffff5ab66e5ef000
-root@debian:/sys/bus/cxl/devices/decoder0.0/region0# [   69.954752] x2 : 0000000000000000 x1 : 0000000000000000 x0 : ffff0000c512e740
-[   69.957098] Call trace:
-[   69.957959]  refcount_warn_saturate+0xa0/0x144
-[   69.958773]  get_ndd+0x5c/0x80
-[   69.959294]  nd_region_register_namespaces+0xe4/0xe90
-[   69.960253]  nd_region_probe+0x100/0x290
-[   69.960796]  nvdimm_bus_probe+0xf4/0x1c0
-[   69.962087]  really_probe+0x19c/0x3f0
-[   69.962620]  __driver_probe_device+0x11c/0x190
-[   69.963258]  driver_probe_device+0x44/0xf4
-[   69.963773]  __device_attach_driver+0xa4/0x140
-[   69.964471]  bus_for_each_drv+0x84/0xe0
-[   69.965068]  __device_attach+0xb0/0x1f0
-[   69.966101]  device_initial_probe+0x20/0x30
-[   69.967142]  bus_probe_device+0xa4/0xb0
-[   69.968104]  device_add+0x3e8/0x910
-[   69.969111]  nd_async_device_register+0x24/0x74
-[   69.969928]  async_run_entry_fn+0x40/0x150
-[   69.970725]  process_one_work+0x1dc/0x450
-[   69.971796]  worker_thread+0x154/0x450
-[   69.972700]  kthread+0x118/0x120
-[   69.974141]  ret_from_fork+0x10/0x20
-[   69.975141] ---[ end trace 0000000000000000 ]---
-[   70.117887] Into nd_namespace_pmem_set_resource()
+ * semihosting permitted only in privileged mode and only
+   if enabled on the command line:
+   - arm
+   - m68k
+ * semihosting permitted in any mode, if enabled on the command line:
+   - mips
+   - nios2
+   - xtensa
+ * semihosting permitted only in privileged mode, but fails
+   to honour the existing "enable semihosting" option, instead
+   enabling it all the time:
+   - riscv
 
->              cxl_cmd->payload = cxl_dstate->mbox_reg_state +
->                  A_CXL_DEV_CMD_PAYLOAD;
->              ret = (*h)(cxl_cmd, cxl_dstate, &len);
-> 
-> 
-> This lets the nvdimm/region probe fine, but I'm getting some issues with
-> namespace capacity so I'll look at what is causing that next.
-> Unfortunately I'm not that familiar with the driver/nvdimm side of things
-> so it's take a while to figure out what kicks off what!
-> 
-> Jonathan
-> 
-> > 
-> > Jonathan
-> > 
-> >   
-> > >     
-> > > > 
-> > > > And x4 region still failed with same errors, using latest cxl/preview
-> > > > branch don't work.
-> > > > I have picked "Two CXL emulation fixes" patches in qemu, still not working.
-> > > > 
-> > > > Bob      
-> > 
-> >   
-> 
+The effect of the new option for group 1 is:
+ * user can now optionally also allow semihosting in usermode
 
+For group 2 it is:
+ * usermode semihosting used to be permitted, but now changes
+   to default-disabled, needing explicit enablement
+
+For group 3 it is:
+ * semihosting overall used to be default-enabled and is
+   now default-disabled, needing explicit enablement.
+   Semihosting in usermode can also be enabled.
+
+That means this is a "things that used to work no longer do
+unless you change your commandline" change for groups 2 and 3
+(so, mips, nios2. xtensa, riscv). In this patchset I've opted
+to just make the change (with the intention of releasenoting
+it) but I'm open to arguments that we ought to put it through
+the deprecate-and-delete cycle. (I suspect this probably most
+affects riscv.)
+
+The patchset structure adds the option first and then updates
+each target architecture in turn to honour it. It didn't seem
+to me worth the extra patch-splitting to put the underlying
+infrastructure in first, then the target changes and finally
+exposing the option to the user only once it's honoured
+everywhere.
+
+NB: I haven't really tested this much, just 'make check'
+and 'make check-avocado'; I wanted to get it out to the
+mailing list for discussion, anyway.
+
+thanks
+-- PMM
+
+Peter Maydell (7):
+  semihosting: Allow optional use of semihosting from userspace
+  target/arm: Honour -semihosting-config userspace=on
+  target/m68k: Honour -semihosting-config userspace=on
+  target/mips: Honour -semihosting-config userspace=on
+  target/nios2: Honour -semihosting-config userspace=on
+  target/xtensa: Honour -semihosting-config userspace=on
+  target/riscv: Honour -semihosting-config userspace=on and enable=on
+
+ include/semihosting/semihost.h            | 10 ++++++++--
+ semihosting/config.c                      | 10 ++++++++--
+ softmmu/vl.c                              |  2 +-
+ stubs/semihost.c                          |  2 +-
+ target/arm/translate-a64.c                | 12 +-----------
+ target/arm/translate.c                    | 16 ++++------------
+ target/m68k/op_helper.c                   |  3 +--
+ target/mips/tcg/translate.c               |  9 +++++----
+ target/nios2/translate.c                  |  3 ++-
+ target/riscv/cpu_helper.c                 |  3 ++-
+ target/xtensa/translate.c                 |  7 ++++---
+ target/mips/tcg/micromips_translate.c.inc |  6 +++---
+ target/mips/tcg/mips16e_translate.c.inc   |  2 +-
+ target/mips/tcg/nanomips_translate.c.inc  |  4 ++--
+ qemu-options.hx                           | 11 +++++++++--
+ 15 files changed, 52 insertions(+), 48 deletions(-)
+
+-- 
+2.25.1

@@ -1,303 +1,259 @@
-Received: by 2002:a17:906:3b11:0:0:0:0 with SMTP id g17csp1255676ejf;
-        Mon, 15 Aug 2022 08:26:20 -0700 (PDT)
-X-Google-Smtp-Source: AA6agR71HIstQHbtIG+4FdazlnUrACUzgE2PhzFxuhPT2WMAVEes8ZZda3aB29Noe+oQEmW0Cgn5
-X-Received: by 2002:a05:620a:2721:b0:6ba:c74f:1e04 with SMTP id b33-20020a05620a272100b006bac74f1e04mr11101559qkp.605.1660577180787;
-        Mon, 15 Aug 2022 08:26:20 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1660577180; cv=none;
+Received: by 2002:a17:906:3b11:0:0:0:0 with SMTP id g17csp1305214ejf;
+        Mon, 15 Aug 2022 10:07:21 -0700 (PDT)
+X-Google-Smtp-Source: AA6agR7cu9nsy+IaSGPJ5sLIB4WfcnIHUl++5Xecnx182rObNVYVOPv2rsFLyg4muTlGWNtQ8ktA
+X-Received: by 2002:a37:8a43:0:b0:699:fac5:224d with SMTP id m64-20020a378a43000000b00699fac5224dmr11960571qkd.599.1660583241381;
+        Mon, 15 Aug 2022 10:07:21 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1660583241; cv=none;
         d=google.com; s=arc-20160816;
-        b=OrirGB+yR6Td4XcAFnBBKe8GxmAh6f0Ir3lJKPhLzmR/q8WqPQgEGi2ZNS/Hu6S8D0
-         jynPHs7ouUw9ic8PBnDDxkRwwI0PMhmp9S4q0iD7vh6h9iRV5flqXSM5rnEW5wUVnzA+
-         ys0RM4iZKg08rUCc3hRF9GJqzz4HPDNV5Unk1+R3Ycg8aRfC/PZXpQ6/S1oNi85vh6MP
-         o3kh+Dd/FvFe4sCW1Rx6A2I5vROAjP6TN9wX9te4pD+E0wZ+ZEr1Mmfr+7iRZtUUpJ/3
-         bXwRuSuazC4l5eKGv7DJyQl9YN+7knbMc2+Mfhz5BtM9yzfAMQCRhK1E8A6+BbWND/Nw
-         VFGQ==
+        b=Ts6VPp/nbrq47aI/MeX3sCQ7Ppxss1UcUJRgmWMgq8FOuEJwm5bVaoGfMszALubFzJ
+         4/hy7cdTMQsEjdf3aCvYJO3osO0yuj7sOaS6XxqWVJgACCzoAX20eR8+FcoEUaTzKY6j
+         7+igcyhjEOIcG4lXFWMUJxFrPHAaoc2ELpYydY8xpOHwnbbFq0UCykQCXbw19BTr8Pzf
+         jVFgYrXaJB2t15nShO1JIKRVjJjNCFL+O1d4ia27/gMlzeR5cGW9ZNclPih1q+VKPEV7
+         3VNPOAiIVcJt7KVgo6oCnSTP1ux9o2chxSOYxpUxH5wmXtwuK5+uuVcTOxXjV5gXQi/6
+         wzgQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=mM70xAC34StC6VrsmzyNOrhqrwX7UMnpS2OVpQpQ2Po=;
-        b=w4o1bchYqOEkjqkzryfhJVerraujt/6nPop6EZc+A7noq41UrGiPGBco016C+S73eZ
-         8F+DP/MHrja37AdNraiZaaJ83b6ZNoBzn5aaFmz5j1/4H5EEJR+FVch9zg0HTGIhnT0k
-         6IylR2YZ+LxUqMXuKQE8Z+icZzuSDogZ7LUsud3YVm6DGVn9OrOcaHYbobTs1rfCPtTQ
-         BmQGrWR0NOY3LO152B4Kq2N3iyOlQvDPQXRy6aVdyiRGsv2l4R5WfN6+EQ76qAfumy1a
-         VvcF8u3vx3DnfWjMsikk4Iwy7CC8nk9F4wkXPKU4BvF2j2r9Mc014OPn+3Uq7fl4szEq
-         yqLA==
+        h=from:reply-to:sender:errors-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence
+         :content-transfer-encoding:mime-version:organization:references
+         :in-reply-to:message-id:subject:cc:to:date;
+        bh=CiIVXZU71RtLllkihPZGGmtkckOUAwFlIbKKfj25fKo=;
+        b=rxfBTAUNRZSVzRSCUGC0STZ+JTKLH7k9JU7AeMTOWnGxuF5yN4xr9AlxuHU5f3+07V
+         jYXWXUVRVrsWCEfM8f0V7outtsJsz870NnOGuJOnyzyWDORMjwA52dJ18xCsRV0dr9vZ
+         ixwNiBvHUkscwNr4BUL6rX/38o2tN0ocsyn7LOA7oc/RCtbOU3Ma+0bibHqDxJkbd26J
+         lR/GuuMycaqVAQVVVN9LhV1yzIwX8dIayhGu2EBqSnthGaTe37r9Pc+I3UhKkEDn0sFo
+         gqjMEBezdSkfnpgpikXWhZcLKffXF6xsF691jNG4/Qezs9wX4OjwsnG3BhKP6e4mpBao
+         Pn/g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=I01Abgbm;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d20-20020ac81194000000b003446c6e015bsi428949qtj.407.2022.08.15.08.26.20
+        by mx.google.com with ESMTPS id x22-20020a05620a0b5600b006bb2f62bfe1si1726063qkg.178.2022.08.15.10.07.21
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 15 Aug 2022 08:26:20 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 15 Aug 2022 10:07:21 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=I01Abgbm;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:41916 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+Received: from localhost ([::1]:58754 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1oNbyu-0005k9-84
-	for alex.bennee@linaro.org; Mon, 15 Aug 2022 11:26:20 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:50056)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1oNdYe-0003ZY-RV
+	for alex.bennee@linaro.org; Mon, 15 Aug 2022 13:07:20 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41624)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <shinysaana@gmail.com>)
- id 1oNbyV-0005jj-NV; Mon, 15 Aug 2022 11:25:57 -0400
-Received: from mail-pj1-x1031.google.com ([2607:f8b0:4864:20::1031]:36424)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <shinysaana@gmail.com>)
- id 1oNbyR-0005tF-BD; Mon, 15 Aug 2022 11:25:55 -0400
-Received: by mail-pj1-x1031.google.com with SMTP id
- 15-20020a17090a098f00b001f305b453feso14770026pjo.1; 
- Mon, 15 Aug 2022 08:25:50 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=to:subject:message-id:date:from:in-reply-to:references:mime-version
- :from:to:cc; bh=mM70xAC34StC6VrsmzyNOrhqrwX7UMnpS2OVpQpQ2Po=;
- b=I01AbgbmGdeEO9oQEIMoq2zULcu8LSKamDqqGw0R6Z4w9jocTYFEMFnnMecMACblhz
- SnS8nRCPNlcd0dHdJuQcVuP8vLXD7Hj/GYO2B5QaTyuxdzRVQmxkfQ7dyiP1F7vFREwz
- bviVBcCnhWh5AYszLjRmz9maWPqhc9BaWXq002QMO4k+Vt2ITMaosyXPi1E5z53XJ/au
- OYSmVHZy62EodXJdPHRPL5LD/K6u98eTVK1TgL9hLlkMYrylwg2OkkcRTL37EABYzIwu
- MjKFf+lohnuBx+WgzlC2x62mh63agk7oZJW2ul13jSpqiK7ntGBxWKvY/HeNWyVJEF7B
- sK5A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=to:subject:message-id:date:from:in-reply-to:references:mime-version
- :x-gm-message-state:from:to:cc;
- bh=mM70xAC34StC6VrsmzyNOrhqrwX7UMnpS2OVpQpQ2Po=;
- b=eWS8AkAyy/bOgjU4kE83x4E/tgbTKYS3mEypeHFiyBMhC0s4qf89DUQqjq+BxGSbpX
- cEy2hfp3GYK50qczzmXs9wZ1lSivcVm3M1/xFqJXp25Wf7uKJjMn8ItriFhZVJWgr+hL
- sAaOzbgnrF+uCW7e2/jHnjgNHrbqpnxoPRYNoRZstbv+5O0Rjc4kjQhoe5LdWG9j7ICA
- u9ZuxzdVI4aavrh47dyRRY9WklartTmy6UpF6H3XY/Ancmz+z/f8ZQyGNA7l4h0L4gfQ
- b3KTDRHSZttp08z5Wc9v7UsJGZEKRVAWv8WZympHjURqGheHRKfyB9XyEfGQKtOsnBz2
- RbWA==
-X-Gm-Message-State: ACgBeo3Fk6mF1fhBYP361Ix/BwS3D5tFRU5sMRBpYHjaSof8kkh0iukS
- Wj3oTKAUT94JDjcJZHATiYyeNB8ozYIX24uWXsE=
-X-Received: by 2002:a17:90b:180f:b0:1f4:e294:d322 with SMTP id
- lw15-20020a17090b180f00b001f4e294d322mr28894529pjb.163.1660577149032; Mon, 15
- Aug 2022 08:25:49 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
+ id 1oNdWL-0000ko-1F; Mon, 15 Aug 2022 13:04:57 -0400
+Received: from frasgout.his.huawei.com ([185.176.79.56]:2675)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
+ id 1oNdWI-0003xA-68; Mon, 15 Aug 2022 13:04:56 -0400
+Received: from fraeml737-chm.china.huawei.com (unknown [172.18.147.207])
+ by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4M60xt6w5bz67Xcd;
+ Tue, 16 Aug 2022 01:04:34 +0800 (CST)
+Received: from lhrpeml500005.china.huawei.com (7.191.163.240) by
+ fraeml737-chm.china.huawei.com (10.206.15.218) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2375.24; Mon, 15 Aug 2022 19:04:45 +0200
+Received: from localhost (10.122.247.231) by lhrpeml500005.china.huawei.com
+ (7.191.163.240) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2375.24; Mon, 15 Aug
+ 2022 18:04:45 +0100
+Date: Mon, 15 Aug 2022 18:04:44 +0100
+To: Jonathan Cameron via <qemu-devel@nongnu.org>
+CC: Bobo WL <lmw.bobo@gmail.com>, <linux-cxl@vger.kernel.org>,
+ <qemu-arm@nongnu.org>
+Subject: Re: [BUG] cxl can not create region
+Message-ID: <20220815180444.00006bdf@huawei.com>
+In-Reply-To: <20220812164403.00001654@huawei.com>
+References: <CAGr_yG0UrfJAMWta3EkR1F0JZ4j--sig74p6vKL3K6TZDx9YGA@mail.gmail.com>
+ <20220808133727.00001171@huawei.com>
+ <CAGr_yG36GSO8esyO9nn6OeOEN5zPSosEmBHbfYGwqNGiYOh9vw@mail.gmail.com>
+ <20220809170825.00001b61@huawei.com>
+ <20220811180857.00005e67@huawei.com>
+ <20220812164403.00001654@huawei.com>
+Organization: Huawei Technologies R&D (UK) Ltd.
+X-Mailer: Claws Mail 4.0.0 (GTK+ 3.24.29; x86_64-w64-mingw32)
 MIME-Version: 1.0
-References: <CAJtCPL0rRU9Q=s6kUFDHjC5uUmx2w=ePYMMaib6vq57g48qk0Q@mail.gmail.com>
- <CAFEAcA81OfC_Z_uQvrSRUKHQf4mmOgbLrHYiwsfzmgH8u8sUqg@mail.gmail.com>
-In-Reply-To: <CAFEAcA81OfC_Z_uQvrSRUKHQf4mmOgbLrHYiwsfzmgH8u8sUqg@mail.gmail.com>
-From: Shiny Saana <shinysaana@gmail.com>
-Date: Mon, 15 Aug 2022 17:25:38 +0200
-Message-ID: <CAJtCPL3yNpNkK0Ljzo=QOFX_gLQtGGcqDoomwJ+RH0hq5G=YQA@mail.gmail.com>
-Subject: Re: Teensy 4.1 Implementation
-To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
-Content-Type: multipart/alternative; boundary="000000000000171b6805e6493fb9"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1031;
- envelope-from=shinysaana@gmail.com; helo=mail-pj1-x1031.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+Content-Type: text/plain; charset="US-ASCII"
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [10.122.247.231]
+X-ClientProxiedBy: lhrpeml500002.china.huawei.com (7.191.160.78) To
+ lhrpeml500005.china.huawei.com (7.191.163.240)
+X-CFilter-Loop: Reflected
+Received-SPF: pass client-ip=185.176.79.56;
+ envelope-from=jonathan.cameron@huawei.com; helo=frasgout.his.huawei.com
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: PbQm+G2/FMZg
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Reply-to:  Jonathan Cameron <Jonathan.Cameron@huawei.com>
+From:  Jonathan Cameron via <qemu-devel@nongnu.org>
+X-TUID: cS8cfabW4jVc
 
---000000000000171b6805e6493fb9
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+On Fri, 12 Aug 2022 16:44:03 +0100
+Jonathan Cameron <Jonathan.Cameron@huawei.com> wrote:
 
-Thank you very much for your answer!
+> On Thu, 11 Aug 2022 18:08:57 +0100
+> Jonathan Cameron via <qemu-devel@nongnu.org> wrote:
+> 
+> > On Tue, 9 Aug 2022 17:08:25 +0100
+> > Jonathan Cameron <Jonathan.Cameron@huawei.com> wrote:
+> >   
+> > > On Tue, 9 Aug 2022 21:07:06 +0800
+> > > Bobo WL <lmw.bobo@gmail.com> wrote:
+> > >     
+> > > > Hi Jonathan
+> > > > 
+> > > > Thanks for your reply!
+> > > > 
+> > > > On Mon, Aug 8, 2022 at 8:37 PM Jonathan Cameron
+> > > > <Jonathan.Cameron@huawei.com> wrote:      
+> > > > >
+> > > > > Probably not related to your problem, but there is a disconnect in QEMU /
+> > > > > kernel assumptionsaround the presence of an HDM decoder when a HB only
+> > > > > has a single root port. Spec allows it to be provided or not as an implementation choice.
+> > > > > Kernel assumes it isn't provide. Qemu assumes it is.
+> > > > >
+> > > > > The temporary solution is to throw in a second root port on the HB and not
+> > > > > connect anything to it.  Longer term I may special case this so that the particular
+> > > > > decoder defaults to pass through settings in QEMU if there is only one root port.
+> > > > >        
+> > > > 
+> > > > You are right! After adding an extra HB in qemu, I can create a x1
+> > > > region successfully.
+> > > > But have some errors in Nvdimm:
+> > > > 
+> > > > [   74.925838] Unknown online node for memory at 0x10000000000, assuming node 0
+> > > > [   74.925846] Unknown target node for memory at 0x10000000000, assuming node 0
+> > > > [   74.927470] nd_region region0: nmem0: is disabled, failing probe      
+> > > 
+> > > Ah. I've seen this one, but not chased it down yet.  Was on my todo list to chase
+> > > down. Once I reach this state I can verify the HDM Decode is correct which is what
+> > > I've been using to test (Which wasn't true until earlier this week). 
+> > > I'm currently testing via devmem, more for historical reasons than because it makes
+> > > that much sense anymore.      
+> > 
+> > *embarassed cough*.  We haven't fully hooked the LSA up in qemu yet.
+> > I'd forgotten that was still on the todo list. I don't think it will
+> > be particularly hard to do and will take a look in next few days.
+> > 
+> > Very very indirectly this error is causing a driver probe fail that means that
+> > we hit a code path that has a rather odd looking check on NDD_LABELING.
+> > Should not have gotten near that path though - hence the problem is actually
+> > when we call cxl_pmem_get_config_data() and it returns an error because
+> > we haven't fully connected up the command in QEMU.  
+> 
+> So a least one bug in QEMU. We were not supporting variable length payloads on mailbox
+> inputs (but were on outputs).  That hasn't mattered until we get to LSA writes.
+> We just need to relax condition on the supplied length.
+> 
+> diff --git a/hw/cxl/cxl-mailbox-utils.c b/hw/cxl/cxl-mailbox-utils.c
+> index c352a935c4..fdda9529fe 100644
+> --- a/hw/cxl/cxl-mailbox-utils.c
+> +++ b/hw/cxl/cxl-mailbox-utils.c
+> @@ -510,7 +510,7 @@ void cxl_process_mailbox(CXLDeviceState *cxl_dstate)
+>      cxl_cmd = &cxl_cmd_set[set][cmd];
+>      h = cxl_cmd->handler;
+>      if (h) {
+> -        if (len == cxl_cmd->in) {
+> +        if (len == cxl_cmd->in || !cxl_cmd->in) {
+Fix is wrong as we use ~0 as the placeholder for variable payload, not 0.
 
-Apologies if I mess up the process of communicating via mailing lists, it's
-my first time communicating via this channel.
+With that fixed we hit new fun paths - after some errors we get the
+worrying - not totally sure but looks like a failure on an error cleanup.
+I'll chase down the error source, but even then this is probably triggerable by
+hardware problem or similar.  Some bonus prints in here from me chasing
+error paths, but it's otherwise just cxl/next + the fix I posted earlier today.
 
-The project that requires me to implement this board in QEMU currently
-would require full USB interface and flash storage at the end of the day,
-and I feel on the same page that implementing UART via USB would indeed be
-a good place to start.
-I personally don't need any of the GPIO interfaces, but if needed by
-someone else, that could be a good second step to work on once that part of
-the board is implemented.
+[   69.919877] nd_bus ndbus0: START: nd_region.probe(region0)
+[   69.920108] nd_region_probe
+[   69.920623] ------------[ cut here ]------------
+[   69.920675] refcount_t: addition on 0; use-after-free.
+[   69.921314] WARNING: CPU: 3 PID: 710 at lib/refcount.c:25 refcount_warn_saturate+0xa0/0x144
+[   69.926949] Modules linked in: cxl_pmem cxl_mem cxl_pci cxl_port cxl_acpi cxl_core
+[   69.928830] CPU: 3 PID: 710 Comm: kworker/u8:9 Not tainted 5.19.0-rc3+ #399
+[   69.930596] Hardware name: QEMU QEMU Virtual Machine, BIOS 0.0.0 02/06/2015
+[   69.931482] Workqueue: events_unbound async_run_entry_fn
+[   69.932403] pstate: 60400005 (nZCv daif +PAN -UAO -TCO -DIT -SSBS BTYPE=--)
+[   69.934023] pc : refcount_warn_saturate+0xa0/0x144
+[   69.935161] lr : refcount_warn_saturate+0xa0/0x144
+[   69.936541] sp : ffff80000890b960
+[   69.937921] x29: ffff80000890b960 x28: 0000000000000000 x27: 0000000000000000
+[   69.940917] x26: ffffa54a90d5cb10 x25: ffffa54a90809e98 x24: 0000000000000000
+[   69.942537] x23: ffffa54a91a3d8d8 x22: ffff0000c5254800 x21: ffff0000c5254800
+[   69.944013] x20: ffff0000ce924180 x19: ffff0000c5254800 x18: ffffffffffffffff
+[   69.946100] x17: ffff5ab66e5ef000 x16: ffff80000801c000 x15: 0000000000000000
+[   69.947585] x14: 0000000000000001 x13: 0a2e656572662d72 x12: 657466612d657375
+[   69.948670] x11: 203b30206e6f206e x10: 6f69746964646120 x9 : ffffa54a8f63d288
+[   69.950679] x8 : 206e6f206e6f6974 x7 : 69646461203a745f x6 : 00000000fffff31e
+[   69.952113] x5 : ffff0000ff61ba08 x4 : 00000000fffff31e x3 : ffff5ab66e5ef000
+root@debian:/sys/bus/cxl/devices/decoder0.0/region0# [   69.954752] x2 : 0000000000000000 x1 : 0000000000000000 x0 : ffff0000c512e740
+[   69.957098] Call trace:
+[   69.957959]  refcount_warn_saturate+0xa0/0x144
+[   69.958773]  get_ndd+0x5c/0x80
+[   69.959294]  nd_region_register_namespaces+0xe4/0xe90
+[   69.960253]  nd_region_probe+0x100/0x290
+[   69.960796]  nvdimm_bus_probe+0xf4/0x1c0
+[   69.962087]  really_probe+0x19c/0x3f0
+[   69.962620]  __driver_probe_device+0x11c/0x190
+[   69.963258]  driver_probe_device+0x44/0xf4
+[   69.963773]  __device_attach_driver+0xa4/0x140
+[   69.964471]  bus_for_each_drv+0x84/0xe0
+[   69.965068]  __device_attach+0xb0/0x1f0
+[   69.966101]  device_initial_probe+0x20/0x30
+[   69.967142]  bus_probe_device+0xa4/0xb0
+[   69.968104]  device_add+0x3e8/0x910
+[   69.969111]  nd_async_device_register+0x24/0x74
+[   69.969928]  async_run_entry_fn+0x40/0x150
+[   69.970725]  process_one_work+0x1dc/0x450
+[   69.971796]  worker_thread+0x154/0x450
+[   69.972700]  kthread+0x118/0x120
+[   69.974141]  ret_from_fork+0x10/0x20
+[   69.975141] ---[ end trace 0000000000000000 ]---
+[   70.117887] Into nd_namespace_pmem_set_resource()
 
-I have jotted down a few lines based on the MPS2 implementation, which made
-me get a feel of how a board is implemented. I'll look at the board you
-recommended too, thanks a lot for the recommendation!
+>              cxl_cmd->payload = cxl_dstate->mbox_reg_state +
+>                  A_CXL_DEV_CMD_PAYLOAD;
+>              ret = (*h)(cxl_cmd, cxl_dstate, &len);
+> 
+> 
+> This lets the nvdimm/region probe fine, but I'm getting some issues with
+> namespace capacity so I'll look at what is causing that next.
+> Unfortunately I'm not that familiar with the driver/nvdimm side of things
+> so it's take a while to figure out what kicks off what!
+> 
+> Jonathan
+> 
+> > 
+> > Jonathan
+> > 
+> >   
+> > >     
+> > > > 
+> > > > And x4 region still failed with same errors, using latest cxl/preview
+> > > > branch don't work.
+> > > > I have picked "Two CXL emulation fixes" patches in qemu, still not working.
+> > > > 
+> > > > Bob      
+> > 
+> >   
+> 
 
-As for upstreaming, once (if?) I get a working "MVP", and if I cannot
-figure out the best way to submit the patches, I'll keep in touch to figure
-it out, if that's alright!
-
-Again, thanks a bunch!
-
-//Saana
-
-Le lun. 15 ao=C3=BBt 2022 =C3=A0 16:58, Peter Maydell <peter.maydell@linaro=
-.org> a
-=C3=A9crit :
-
-> On Sat, 13 Aug 2022 at 18:54, Shiny Saana <shinysaana@gmail.com> wrote:
-> > I'd like to implement support for emulating the teensy 4.1 board (
-> > https://www.pjrc.com/store/teensy41.html) to QEMU.
-> >
-> > I'm honestly quite lost as to where to start at the moment, since
-> > I can't really find any emulated Cortex-M7 that would be close to
-> > that board already implemented.
->
-> Hi! Yes, implementing a new board and SoC model is quite a bit of
-> work, and unfortunately the process isn't really documented, so
-> the best thing is to look for some other existing SoC model and
-> do something similar. In this case, we implement the Cortex-M7
-> CPU itself, but we don't implement the IMXRT1062 SoC that it uses,
-> or any similar SoC in that family. (We do have some of the older
-> A-profile IMX boards, so it's possible some device models are
-> reusable -- but equally they might be very different.)
->
-> As a pattern, I would look at the stm32vldiscovery machine.
-> This is a Cortex-M3 system based on the stm32f100 SoC, where
-> we have implemented a few of the SoC devices and have stub
-> implementations of most of the rest. That's a fairly recently
-> added M-profile SoC and it's written in the "modern" style we'd
-> recommend for new code, so it's a good pattern to copy, and
-> because it only has a few 'real' devices it's hopefully not an
-> overwhelmingly large amount of code.
->
-> An initial simple implementation would get a level of
-> functionality capable of basic "can run code and it will
-> be able to do serial port (UART) input and output".
-> (If you're hoping for/would need more than that, do say so,
-> so we can check how much effort what you're aiming for would be.
-> Some things QEMU doesn't really support very well, like
-> emulation of GPIO input/output line hardware lines being
-> connected to LEDs and switches... In any case "just a UART"
-> is a good first step.)
->
-> You'll need detailed documentation of both the board and the
-> SoC. Handily a lot of that is collected here:
-> https://www.pjrc.com/teensy/datasheets.html
->
-> If you're hoping to submit a new board model upstream you
-> should give some consideration to git commit structure
-> as you work on it -- for code review we need big changes like
-> a new board type to be broken up into smaller self-contained
-> pieces. It is possible to just write all the code first and
-> then split it into digestible pieces later, but personally
-> I find it much easier to try to keep the changes at least
-> roughly in a series of separate patches as I go along.
->
-> Our "submitting a patch" page has some general advice
-> and information on our patch processes:
-> https://www.qemu.org/docs/master/devel/submitting-a-patch.html
->
-> thanks
-> -- PMM
->
-
---000000000000171b6805e6493fb9
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"auto">Thank you very much for your answer!</div><div dir=3D"aut=
-o"><br></div><div dir=3D"auto">Apologies if I mess up the process of commun=
-icating via mailing lists, it&#39;s my first time communicating via this ch=
-annel.</div><div dir=3D"auto"><br></div><div dir=3D"auto">The project that =
-requires me to implement this board in QEMU currently would require full US=
-B interface and flash storage at the end of the day, and I feel on the same=
- page that implementing UART via USB would indeed be a good place to start.=
-=C2=A0</div><div dir=3D"auto">I personally don&#39;t need any of the GPIO i=
-nterfaces, but if needed by someone else, that could be a good second step =
-to work on once that part of the board is implemented.</div><div dir=3D"aut=
-o"><br></div><div dir=3D"auto">I have jotted down a few lines based on the =
-MPS2 implementation, which made me get a feel of how a board is implemented=
-. I&#39;ll look at the board you recommended too, thanks a lot for the reco=
-mmendation!</div><div dir=3D"auto"><br></div><div dir=3D"auto">As for upstr=
-eaming, once (if?) I get a working &quot;MVP&quot;, and if I cannot figure =
-out the best way to submit the patches, I&#39;ll keep in touch to figure it=
- out, if that&#39;s alright!</div><div dir=3D"auto"><br></div><div dir=3D"a=
-uto">Again, thanks a bunch!</div><div dir=3D"auto"><br></div><div dir=3D"au=
-to">//Saana</div><div dir=3D"auto"><br><div class=3D"gmail_quote"><div dir=
-=3D"ltr" class=3D"gmail_attr">Le=C2=A0lun. 15 ao=C3=BBt 2022 =C3=A0 16:58, =
-Peter Maydell &lt;<a href=3D"mailto:peter.maydell@linaro.org">peter.maydell=
-@linaro.org</a>&gt; a =C3=A9crit=C2=A0:<br></div><blockquote class=3D"gmail=
-_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left-width:1px;border-left=
--style:solid;padding-left:1ex;border-left-color:rgb(204,204,204)">On Sat, 1=
-3 Aug 2022 at 18:54, Shiny Saana &lt;<a href=3D"mailto:shinysaana@gmail.com=
-" target=3D"_blank">shinysaana@gmail.com</a>&gt; wrote:<br>
-&gt; I&#39;d like to implement support for emulating the teensy 4.1 board (=
-<br>
-&gt; <a href=3D"https://www.pjrc.com/store/teensy41.html" rel=3D"noreferrer=
-" target=3D"_blank">https://www.pjrc.com/store/teensy41.html</a>) to QEMU.<=
-br>
-&gt;<br>
-&gt; I&#39;m honestly quite lost as to where to start at the moment, since<=
-br>
-&gt; I can&#39;t really find any emulated Cortex-M7 that would be close to<=
-br>
-&gt; that board already implemented.<br>
-<br>
-Hi! Yes, implementing a new board and SoC model is quite a bit of<br>
-work, and unfortunately the process isn&#39;t really documented, so<br>
-the best thing is to look for some other existing SoC model and<br>
-do something similar. In this case, we implement the Cortex-M7<br>
-CPU itself, but we don&#39;t implement the IMXRT1062 SoC that it uses,<br>
-or any similar SoC in that family. (We do have some of the older<br>
-A-profile IMX boards, so it&#39;s possible some device models are<br>
-reusable -- but equally they might be very different.)<br>
-<br>
-As a pattern, I would look at the stm32vldiscovery machine.<br>
-This is a Cortex-M3 system based on the stm32f100 SoC, where<br>
-we have implemented a few of the SoC devices and have stub<br>
-implementations of most of the rest. That&#39;s a fairly recently<br>
-added M-profile SoC and it&#39;s written in the &quot;modern&quot; style we=
-&#39;d<br>
-recommend for new code, so it&#39;s a good pattern to copy, and<br>
-because it only has a few &#39;real&#39; devices it&#39;s hopefully not an<=
-br>
-overwhelmingly large amount of code.<br>
-<br>
-An initial simple implementation would get a level of<br>
-functionality capable of basic &quot;can run code and it will<br>
-be able to do serial port (UART) input and output&quot;.<br>
-(If you&#39;re hoping for/would need more than that, do say so,<br>
-so we can check how much effort what you&#39;re aiming for would be.<br>
-Some things QEMU doesn&#39;t really support very well, like<br>
-emulation of GPIO input/output line hardware lines being<br>
-connected to LEDs and switches... In any case &quot;just a UART&quot;<br>
-is a good first step.)<br>
-<br>
-You&#39;ll need detailed documentation of both the board and the<br>
-SoC. Handily a lot of that is collected here:<br>
-<a href=3D"https://www.pjrc.com/teensy/datasheets.html" rel=3D"noreferrer" =
-target=3D"_blank">https://www.pjrc.com/teensy/datasheets.html</a><br>
-<br>
-If you&#39;re hoping to submit a new board model upstream you<br>
-should give some consideration to git commit structure<br>
-as you work on it -- for code review we need big changes like<br>
-a new board type to be broken up into smaller self-contained<br>
-pieces. It is possible to just write all the code first and<br>
-then split it into digestible pieces later, but personally<br>
-I find it much easier to try to keep the changes at least<br>
-roughly in a series of separate patches as I go along.<br>
-<br>
-Our &quot;submitting a patch&quot; page has some general advice<br>
-and information on our patch processes:<br>
-<a href=3D"https://www.qemu.org/docs/master/devel/submitting-a-patch.html" =
-rel=3D"noreferrer" target=3D"_blank">https://www.qemu.org/docs/master/devel=
-/submitting-a-patch.html</a><br>
-<br>
-thanks<br>
--- PMM<br>
-</blockquote></div></div>
-
---000000000000171b6805e6493fb9--

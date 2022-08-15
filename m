@@ -1,72 +1,72 @@
-Received: by 2002:a17:906:3b11:0:0:0:0 with SMTP id g17csp1358519ejf;
-        Mon, 15 Aug 2022 12:03:15 -0700 (PDT)
-X-Received: by 2002:a5d:5550:0:b0:221:6d3a:1984 with SMTP id g16-20020a5d5550000000b002216d3a1984mr9553003wrw.326.1660590195451;
-        Mon, 15 Aug 2022 12:03:15 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1660590195; cv=none;
+Received: by 2002:a17:906:3b11:0:0:0:0 with SMTP id g17csp1358528ejf;
+        Mon, 15 Aug 2022 12:03:17 -0700 (PDT)
+X-Received: by 2002:a7b:cb55:0:b0:3a5:41a:829c with SMTP id v21-20020a7bcb55000000b003a5041a829cmr17512833wmj.153.1660590197211;
+        Mon, 15 Aug 2022 12:03:17 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1660590197; cv=none;
         d=google.com; s=arc-20160816;
-        b=hinD/oHs1iVWCu+5Ml/FCzDjupMtn7/sRLmoEETD9G8EIvKmEjxDdJb4VD6Ft9aXQk
-         In41jMaFlxRw0iUEfyRw3G4DQbHznpRy6+HBfo48TNI1EQj4imRREnBI/0Xk8eF84blU
-         +rHYczSLgnO1cs15ag3a2j5AJRtPEDok9fnsTkGxhK5AIEhnnQB8XL19APJQ+G5baDK+
-         uPwPkQynf+mXs8gjM/zdHj5D4/gdxiL0e+g6lwdf9hTxb8NmK4lwr40eQ45E2sEfmrAv
-         81eTigBM4lGG/HP2JapKkqBBHZurQOJjEXS+Cquq2oX98c6x9fjwawiYo11OQr9F0RWF
-         xlqw==
+        b=ezxzd5pRUg3dWXPvYat9OBN6KFtL8I6lrmUp2XK++Km8EFvOnsEE8DV5pnNXkkOtuY
+         QSGQbLMZdyIFlDVbfERB6igsSxfFj3lp3uLrc+mkMQPEZWrstTFA6r7HEIcJPyq1pgJK
+         nV9OU6VoqQYnCbLJIOOKSosoDztKnguRh2T2aqd/fD9jAb7nRNfOcXQiKpyVGXzMW4y0
+         UA7+a9wwOTIVdGSENIErPgu4D5vGs7GL344YbsuQHOSufZLxlYDHMzkIpg9SzAfvkuSR
+         6EI2vYjj5NA0YT37BkOAurmM2QZQ+FoInuP12hqANbK13xK8C1NhJPYDw5H0JGFxwJ0Q
+         lwNg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=sjyUnMJzfq++0t8oacR/+QsHL+4P2X7RJJ6Y2pg/KDw=;
-        b=HPzlfh1KG++4EVQ7FzlqGHYDdxiCR/32mecA9HyyeQxPXMwemHDxFnxTPZHX5Fj3D8
-         Vde/84poF+g4lIm8yru7o8iv2rxph+crc05CIxUgdBGLv4c+XIC94OPrKtuTATrcg05K
-         hBOQhupOC9aWbTSmsrbL0Vg/M+iuWcWj6B6EqR6hmPRolLtp19x7dJ5cKxLyaB98U9d4
-         qN8098WsGjazeex6w12CpFn49w4Ux/oGmzOVh8HP1eGlSRCddkvTiwiE9pd1kUy0H2Wt
-         9qVVgb6UnbuSldWUVVi/kHb9J4wI36VboAibptfyfoFU66s0fWmDChIgReehlnU2pc31
-         1oAQ==
+        bh=5A8TTs3Va2xGJWkOhhlXWoJrKWuE9dh71r64qnA1hXg=;
+        b=aFQ+GkrxtivRD4hJed6xV5SfmzZdvo4uOXA+FbzKngHkUy8qYgUXOgbRl39IUb4Ter
+         samsazwq8nIhSPbmGwfAmIXcniCw36qFLMQnv8NFQrRHSn2PnYNZdl5VOuKdYB+CDOg5
+         T814sJlNGcWAUJI7LqENw2ln6+Hvgv0DNZX4teWsoUHdTtmuMmWFkFwTpHqpHAZCwJg5
+         psiSsuAGI2EdnLAzpJCLoOh01OAswzrNT31VZ3j6rJtdlPtd9UIH2Dy9t5fuvcDJiLTO
+         Vdm2LHybyhuqLuVnbO6qPGmDmWjAUL9gI0/7nTs2AarRxIECE342Fr4vmgxm6nn5HaXY
+         0c6A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=UAj+CaFG;
+       dkim=pass header.i=@linaro.org header.s=google header.b=TeWQ0uXT;
        spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <peter.maydell@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id j14-20020adfa54e000000b0022504e895aesor1456989wrb.12.2022.08.15.12.03.15
+        by mx.google.com with SMTPS id v5-20020adfa1c5000000b00224fdd9a14csor1837250wrv.24.2022.08.15.12.03.17
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Mon, 15 Aug 2022 12:03:15 -0700 (PDT)
+        Mon, 15 Aug 2022 12:03:17 -0700 (PDT)
 Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=UAj+CaFG;
+       dkim=pass header.i=@linaro.org header.s=google header.b=TeWQ0uXT;
        spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc;
-        bh=sjyUnMJzfq++0t8oacR/+QsHL+4P2X7RJJ6Y2pg/KDw=;
-        b=UAj+CaFGYzEL5D7ZNriTDW2N797k1BN6Unm69rAFCPmO2hcVm+vkEeESdpQJ6eSDQf
-         AFbHWqnSV/jqgkVJXkdIaFvvolSyadh41KMoII2FTx3yLWKN4Q+WY/a8snn2hc3A5HLm
-         BRgGkdFRvSJ60eajasO4kykeAl7KzDv1TdHFXmvJNJClB1zbSTujppZ/nMfZw4KnHxb8
-         d8qlOnKn2f5ihClsar14O9GrtYNL0ooMGtI/vRjEb0bTsGRVR7mK7S8hUQ2053nvuMge
-         5QIcmJhcO9ZqM7UsODkBMXrCho6owfYQlNq+9onCMZjFg9ynF3bBepJqQ6E97fHrOI1D
-         1fLw==
+        bh=5A8TTs3Va2xGJWkOhhlXWoJrKWuE9dh71r64qnA1hXg=;
+        b=TeWQ0uXTpUmhrYxNlSOllS4QmD8AgsYS2jCWVfMlAFYXcQg2q8CEwCvzAKIYG86x1g
+         uhlmYiGFqLV0s2WRElGq4bgYA/Xs2y1MIEoJPuwfB7ZSaZ5u/hrzSiEbfRDSXu1jYuU4
+         ORn50gpZ/884Cr0T9N0zuAoYGNpSM3I+3PE32sDYDc2aq+xzV4Gj2uKyV2YVBgwrsGf2
+         E4GycyuDeNprCM8ZAfVYFljaGEvUg8Ba++BKffpBcHQR7RSLpAyjm3wFszg0IjxfLQwD
+         CFabguJUycjq5iVdrNRfLdbbls0bRnAxaidcXMaEFrINbd2oYydBtmLnt0eX87esq+qC
+         rlLQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc;
-        bh=sjyUnMJzfq++0t8oacR/+QsHL+4P2X7RJJ6Y2pg/KDw=;
-        b=pGC+lxIBuK/p6ViEDPxLeOgFBv3PAtQ9rgPtYzRkXuU00GtSy2mgZ1hUXwGT/ttN+r
-         8/pAiu5ELAND1CYofrwEwE9bxLogwVgGS1atxspc2fw0jO8VD1EuhHLj6kt4pG0nUGh8
-         oZO5hxDtIau7WBRmyWIj1MObnR1IPqQvE1ivfd6LHfqmCLJCq1rz5uMn6hU1da9CPXoO
-         qVBWmcgtXO2UJi0/NPRRlbXQGncQlzEgHaSiKuGjBU7cMaMxV/CFPUKMIeRH9Z1PGet1
-         3dl7YRF1VSqd1liRt/sK+N5uEz+nwPaCHazHrsjycC6ned5YVgBt2kf0UEYi6z1OxSct
-         b+0g==
-X-Gm-Message-State: ACgBeo2NjXYImkTCKkoo98NDNkmS9W9ARb0R+2g5t9wARuC+EF1xqcvS
-	EEIvL1z4OqSvw6re/JXrof1TTt2D
-X-Google-Smtp-Source: AA6agR5qp8Md7YBV5/7MNmmGYSntL1TgcfK0XGcCrzL5Nh6DY2C8EmLCSDg7IrKv8sCBSZ2sdxdQ/Q==
-X-Received: by 2002:adf:f7c7:0:b0:21e:fc10:b81b with SMTP id a7-20020adff7c7000000b0021efc10b81bmr9854483wrq.51.1660590195164;
-        Mon, 15 Aug 2022 12:03:15 -0700 (PDT)
+        bh=5A8TTs3Va2xGJWkOhhlXWoJrKWuE9dh71r64qnA1hXg=;
+        b=xacvqBu6rQIcXGp+BvEAE44iGreg+MyBENc9GOfQEXN7S4W7Fb2acI+eWdl8JsfFY4
+         +iYgPIeFTLec7870bSJ49QkjtwAvKLCjIHGyp4pL4riblZmX7Fof99UuXEt1TlWlf2cE
+         ONWP2DOJY0FcL6Qbnu9SvCcZLrC/e0aRGIpj99XU3dpJoJ/0T5OqcK6c46k1r5/APvs5
+         3g8ctBiMkK3K5j45fzuf0oNiFOH5sk1/yV3CEWPRN0K/T5RcMINmP2FDjFaTgWB53QKR
+         MV3ZejOudv76DyAzWrAaSXFETPITzrzFznXjTO78VztfMzhBBnF/mZoz3bDNXVo+P5ur
+         iemg==
+X-Gm-Message-State: ACgBeo0hyAqrjug9G/LnuX7+mhQ9+UYZoZLJFvhqeP/j4zI5rjGalCXR
+	0BYvzyIrPykY8yv3CRUM9O/3yM0+
+X-Google-Smtp-Source: AA6agR7ivGz6wiE4XkaUzAm7deCGF44hrBsgRWnrw1bfLTzdFA1uFKt/1pXreYySn9bfTKFExHCVZQ==
+X-Received: by 2002:adf:a448:0:b0:223:a061:521b with SMTP id e8-20020adfa448000000b00223a061521bmr9765234wra.695.1660590196996;
+        Mon, 15 Aug 2022 12:03:16 -0700 (PDT)
 Return-Path: <peter.maydell@linaro.org>
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
-        by smtp.gmail.com with ESMTPSA id u4-20020a5d5144000000b00220606afdf4sm8009162wrt.43.2022.08.15.12.03.13
+        by smtp.gmail.com with ESMTPSA id u4-20020a5d5144000000b00220606afdf4sm8009162wrt.43.2022.08.15.12.03.15
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 15 Aug 2022 12:03:14 -0700 (PDT)
+        Mon, 15 Aug 2022 12:03:16 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
@@ -85,15 +85,15 @@ Cc: qemu-riscv@nongnu.org,
 	Max Filippov <jcmvbkbc@gmail.com>,
 	Richard Henderson <richard.henderson@linaro.org>,
 	Furquan Shaikh <furquan@rivosinc.com>
-Subject: [PATCH 5/7] target/nios2: Honour -semihosting-config userspace=on
-Date: Mon, 15 Aug 2022 20:03:01 +0100
-Message-Id: <20220815190303.2061559-6-peter.maydell@linaro.org>
+Subject: [PATCH 6/7] target/xtensa: Honour -semihosting-config userspace=on
+Date: Mon, 15 Aug 2022 20:03:02 +0100
+Message-Id: <20220815190303.2061559-7-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20220815190303.2061559-1-peter.maydell@linaro.org>
 References: <20220815190303.2061559-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-TUID: GbvDY3e4v5x8
+X-TUID: Jux3UFLJzWaN
 
 Honour the commandline -semihosting-config userspace=on option,
 instead of always permitting userspace semihosting calls in system
@@ -104,27 +104,42 @@ Note that this is a behaviour change: if the user wants to
 do semihosting calls from userspace they must now specifically
 enable them on the command line.
 
-nios2 semihosting is not implemented for linux-user builds.
+xtensa semihosting is not implemented for linux-user builds.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- target/nios2/translate.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+ target/xtensa/translate.c | 7 ++++---
+ 1 file changed, 4 insertions(+), 3 deletions(-)
 
-diff --git a/target/nios2/translate.c b/target/nios2/translate.c
-index 2b556683422..d1786b43a69 100644
---- a/target/nios2/translate.c
-+++ b/target/nios2/translate.c
-@@ -817,8 +817,9 @@ static void gen_break(DisasContext *dc, uint32_t code, uint32_t flags)
+diff --git a/target/xtensa/translate.c b/target/xtensa/translate.c
+index dc475a4274b..43d55989349 100644
+--- a/target/xtensa/translate.c
++++ b/target/xtensa/translate.c
+@@ -2360,13 +2360,14 @@ static uint32_t test_exceptions_simcall(DisasContext *dc,
+                                         const OpcodeArg arg[],
+                                         const uint32_t par[])
+ {
++    bool is_semi = semihosting_enabled(dc->cring != 0);
+ #ifdef CONFIG_USER_ONLY
+     bool ill = true;
+ #else
+     /* Between RE.2 and RE.3 simcall opcode's become nop for the hardware. */
+-    bool ill = dc->config->hw_version <= 250002 && !semihosting_enabled(false);
++    bool ill = dc->config->hw_version <= 250002 && !is_semi;
+ #endif
+-    if (ill || !semihosting_enabled(false)) {
++    if (ill || !is_semi) {
+         qemu_log_mask(LOG_GUEST_ERROR, "SIMCALL but semihosting is disabled\n");
+     }
+     return ill ? XTENSA_OP_ILL : 0;
+@@ -2376,7 +2377,7 @@ static void translate_simcall(DisasContext *dc, const OpcodeArg arg[],
+                               const uint32_t par[])
  {
  #ifndef CONFIG_USER_ONLY
-     /* The semihosting instruction is "break 1".  */
-+    bool is_user = FIELD_EX32(dc->tb_flags, TBFLAGS, U);
-     R_TYPE(instr, code);
--    if (semihosting_enabled(false) && instr.imm5 == 1) {
-+    if (semihosting_enabled(is_user) && instr.imm5 == 1) {
-         t_gen_helper_raise_exception(dc, EXCP_SEMIHOST);
-         return;
+-    if (semihosting_enabled(false)) {
++    if (semihosting_enabled(dc->cring != 0)) {
+         gen_helper_simcall(cpu_env);
      }
+ #endif
 -- 
 2.25.1

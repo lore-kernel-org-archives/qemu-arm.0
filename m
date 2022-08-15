@@ -1,113 +1,246 @@
-Received: by 2002:a17:906:3b11:0:0:0:0 with SMTP id g17csp1396400ejf;
-        Mon, 15 Aug 2022 13:27:46 -0700 (PDT)
-X-Received: by 2002:a05:620a:4489:b0:6b5:d373:dd02 with SMTP id x9-20020a05620a448900b006b5d373dd02mr12547642qkp.409.1660595266062;
-        Mon, 15 Aug 2022 13:27:46 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1660595266; cv=none;
+Received: by 2002:a17:906:3b11:0:0:0:0 with SMTP id g17csp1425085ejf;
+        Mon, 15 Aug 2022 14:37:28 -0700 (PDT)
+X-Google-Smtp-Source: AA6agR6up5SGuqVbo8vCqzvgztk2OK6gyCR1tXypSktvGbd0HpTYr+uoaDsZ6HM+0YB+v5R+1dLn
+X-Received: by 2002:a05:620a:2490:b0:6bb:23b:6fc5 with SMTP id i16-20020a05620a249000b006bb023b6fc5mr7371075qkn.405.1660599448740;
+        Mon, 15 Aug 2022 14:37:28 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1660599448; cv=none;
         d=google.com; s=arc-20160816;
-        b=Atn2XzYCA+6KJ8TIHi3yXLMfTmpm8j4gOLvHU3sBv9HTrtdSTnOxuQLZtyMjUvprJn
-         rkCbRKKavoixgRMfvK6IHT+31XbwqwKd8xTwwnhLK/i3SITVmJwEUIgcFi3bU+iv/I3Y
-         zP89zIyAanVGXPeBHH4fumDXWX5+vDJRCMY6kAHYjkOMird+BaFBcDXN6gYIsYQRQ0at
-         BPm4Yz7bwdtIvInWTsRJN9Sl0X4/ZTQfaL/O0nsWyDbPUyw2Q2l2IY/3oQ75fjskbWp4
-         VyWsh38W31VnpPF7peJbURsELRmPw7+1EnhuL0buPhvOGNsEBZqqzGxgmzh8r24EKkT9
-         ngGg==
+        b=IzVSkCVJeqK6tIp2zoxE4wdfy88Zm9TXUkuF1CLVuop4sVoiK+ozilyDh3FmaTrWau
+         dnut7UAozzJlC3xekR5FgyP+zWO/8FxeMawLeRVs6JCnEoXOUWzTx4Fn2M1rA2VPnZ5y
+         GjGluYEKS3b0Ez9rmFFHGztrPiMaYy04VDgwWP5+zhRjs+5HyzLP9x9t3/0j6UzpoDtd
+         Ns86YeDlvnnTpkSExuzH1hOiODhCJ52k0li10/+/Y1hIMTbZ/ZsLMwP7maeHMCgWpyFw
+         oEpg6IgzbYuLrhcakwOs6fTenl2BxqNHLUyKlpIvtHTly720q+4YCnQRhz/uZ0NXLNNS
+         HkSg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=UYWcVUCm8A4Zo1ovf15GFjMc5swI2yDbuMF4qzITRzQ=;
-        b=YkNrUZUs7A3pkiPUsZP//GdbgLs/ONDXHPFLqePmodo584pyQFVkD8o5fvvDABwrBc
-         CxHwaKBgGxJXDJAXyR28LpopIrcFAVH2pJq//w1WP7J2ObfvJYz1aJhH8QG6DuJhzWCd
-         lCwR0VRr444um1gMrh4DkHYvYDgmdlLaVpGuAk7er6e5Mp7ZY1sbybfKDye4o7o686wP
-         VatfvdoHcO6NbA43jJ+sBocIQTItSKEToIk6wwMVkZjK62vdo/Q5ID21E3DJvmTOTXlm
-         jFg1Ta9JE9LDh2DaS7wfMtXdgUIob1IZmIhsoF7rYOV07XUbr0mlrLwIftUfiVzb0OCy
-         AKig==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:cc:to:from:subject:mime-version
+         :message-id:date:dkim-signature;
+        bh=R/RKbEDeWYV+VonQAg9pdVD04PJy9FUG+uuZBibfjtQ=;
+        b=VVyxHf1rD3F91XEw2Dtwva+hUk3TKPDYOsmHPFvuEfYZWdE0UqxI+7UBJhL2vaQzMH
+         xncVL62ekJIXY7uV6eIjj+JgMb1pK0U6928Qz6DXLCDZx/GOzFeMExREtDNH8qDuUh45
+         np9c/auEQ00kCgnnZCHfiFxyT3Cwhy3do+w6BBGVlq1XC2y86HDxV9PX8Vhyz5IIx2OS
+         O1k//cY7jCq+UzJd+hhacpNLpQ0tUVIlRwDgzmykJwX0O5w08v1jXAK4C0zdyyjQPBGY
+         IZ/JpxOI1ELYGyQkV/KyQfg1GKiIumKQ74Sc7+Qr6xFFCL7AzE80eMgFFIEH7eojC5f3
+         U1BQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=lQG36e3Z;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <richard.henderson@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id q10-20020a05620a024a00b006bb313439c3sor1072946qkn.21.2022.08.15.13.27.45
+       dkim=pass header.i=@google.com header.s=20210112 header.b=BKx0iArG;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id 3-20020ad45ba3000000b004770f8d7a9esi5716706qvq.22.2022.08.15.14.37.28
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Mon, 15 Aug 2022 13:27:46 -0700 (PDT)
-Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Mon, 15 Aug 2022 14:37:28 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=lQG36e3Z;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc;
-        bh=UYWcVUCm8A4Zo1ovf15GFjMc5swI2yDbuMF4qzITRzQ=;
-        b=lQG36e3Z9j1Fb8Sv3OiW9gqVl6zE0ARVF4wkOG87Q6QvUL+2O5bnhXqOY6mfnDql4X
-         X1Xd9UVAmRlEIylsVbu4QaOmcZnt1tUkgshZ06VYYDe0mBA4BKxPyFwAtCTk0DZ0Mly5
-         8Hh1kXRBWiz0KLHmpIxu+XyoHOenfD24GvftImzRsKFTwMwAvalpL6Wkc6ACS8aTos69
-         F1anHL+nAiZn95IF1E8mFE5lHWXgpGyntMRSs98tNVqf2Gk4Z/vzBSs6FMAz91rnV1ob
-         tnqnlnnGNS7dwEN0l6xBm39XxbDEQJC+yckIoqtXm/ZZOEIYU7Tci/AySiITK5N5kg4R
-         oxcw==
+       dkim=pass header.i=@google.com header.s=20210112 header.b=BKx0iArG;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
+Received: from localhost ([::1]:47664 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1oNhm4-0008NY-94
+	for alex.bennee@linaro.org; Mon, 15 Aug 2022 17:37:28 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37894)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from
+ <3C7z6YggKCowCAxq498xw44w1u.s426u2A-tuBu1343w3A.47w@flex--wuhaotsh.bounces.google.com>)
+ id 1oNhjv-0005aW-Pz
+ for qemu-devel@nongnu.org; Mon, 15 Aug 2022 17:35:15 -0400
+Received: from mail-pg1-x549.google.com ([2607:f8b0:4864:20::549]:36730)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from
+ <3C7z6YggKCowCAxq498xw44w1u.s426u2A-tuBu1343w3A.47w@flex--wuhaotsh.bounces.google.com>)
+ id 1oNhjr-0003jO-TB
+ for qemu-devel@nongnu.org; Mon, 15 Aug 2022 17:35:15 -0400
+Received: by mail-pg1-x549.google.com with SMTP id
+ q193-20020a632aca000000b0041d95d7ee81so3013212pgq.3
+ for <qemu-devel@nongnu.org>; Mon, 15 Aug 2022 14:35:08 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20210112;
+ h=cc:to:from:subject:mime-version:message-id:date:from:to:cc;
+ bh=R/RKbEDeWYV+VonQAg9pdVD04PJy9FUG+uuZBibfjtQ=;
+ b=BKx0iArG1l0avpAgG5jIFMOkKA5o75xG8pKAtI5gFScUansM5fXBwgh/OocL82x+V/
+ 2yYky6u8tTWeI9dNyDaww1AYSCcc0hf4PPzNNzLUGc7MH21OWDWjRwroi7IutYUKvXs9
+ MUO8EPjh+WCtFQmcan1h2gbMAm3pi/3/aH93+VuTPycK0PEQCLYP6WTonnTATpM3f7a5
+ dNDIKE1s02eNRxmgyxn7d9rq0sJwAAL0BiDS5xCNoZuc60DzM+xe3bZm+sTd+9pkQkDJ
+ 0QiwJRbFWMAXS/XmySVAsLEbqBUN1kEVB1rOTHC0HSFNivUPVIEHTox82rm6aH84LCi9
+ AauA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc;
-        bh=UYWcVUCm8A4Zo1ovf15GFjMc5swI2yDbuMF4qzITRzQ=;
-        b=3DQo6WI5UN1o5IXsCvYHOgDcT92U6wMGwXuuuJ4EeXRP/0DbtPmEqtPRsvmfyINKpa
-         i+EF3Ni2ArJP4g2Qan1SQudiXZL6Rw1nAfhAbiB2idhS6J15qFdra/aAf9BTKQKzhwq6
-         T45SG+mMdcFJIDyhgMgZwh/8uqiaHR4fREo1JGGjUl0/vEuRPa+24/ISdGScbZ3Psm87
-         iRfRIWsZ5VoOOWSLgB/TEJiznhvlLTs1t0xyVw9ZGtJf3b2opSjKBOHTT2QH0gg6DaR6
-         GH1nfu5ydNtIgEpGg4mFSfOqoSQUNA8k5wB4H15yEtYAOTD6Na/xRFcrnda2z0uBvwBd
-         wNvw==
-X-Gm-Message-State: ACgBeo22HP7fZ0Qp5+JQ+sdhYxEz1ZcHuiiJI43BxwcNKGs6fg+qEcek
-	8Gbm9lBBmn7q2u5iTxODtxkjg+HT2DRxMajh
-X-Google-Smtp-Source: AA6agR50wn9lxZ+Wt4WE7D++3xd+SMpVO2LFQ5j/5lLSnI/BFQyDrjHONWbgFwo4iMSPe08xJqSlkw==
-X-Received: by 2002:a05:620a:1426:b0:6bb:268c:1c67 with SMTP id k6-20020a05620a142600b006bb268c1c67mr4876535qkj.298.1660595265701;
-        Mon, 15 Aug 2022 13:27:45 -0700 (PDT)
-Return-Path: <richard.henderson@linaro.org>
-Received: from [192.168.125.227] (173-11-255-51-houston.txt.hfc.comcastbusiness.net. [173.11.255.51])
-        by smtp.gmail.com with ESMTPSA id o4-20020ac872c4000000b0033fc75c3469sm8309176qtp.27.2022.08.15.13.27.44
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 15 Aug 2022 13:27:45 -0700 (PDT)
-Message-ID: <ac44051d-ca57-a39d-90ba-d993efbcf924@linaro.org>
-Date: Mon, 15 Aug 2022 15:27:42 -0500
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.11.0
-Subject: Re: [PATCH 0/7] Allow semihosting from user mode
-Content-Language: en-US
-To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
-Cc: qemu-riscv@nongnu.org, =?UTF-8?Q?Alex_Benn=c3=a9e?=
- <alex.bennee@linaro.org>, Laurent Vivier <laurent@vivier.eu>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
- Jiaxun Yang <jiaxun.yang@flygoat.com>,
- Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
- Stefan Pejic <stefan.pejic@syrmia.com>, Chris Wulff <crwulff@gmail.com>,
- Marek Vasut <marex@denx.de>, Palmer Dabbelt <palmer@dabbelt.com>,
- Alistair Francis <alistair.francis@wdc.com>,
- Bin Meng <bin.meng@windriver.com>, Max Filippov <jcmvbkbc@gmail.com>,
- Furquan Shaikh <furquan@rivosinc.com>
-References: <20220815190303.2061559-1-peter.maydell@linaro.org>
-From: Richard Henderson <richard.henderson@linaro.org>
-In-Reply-To: <20220815190303.2061559-1-peter.maydell@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-TUID: jN1yff89k7C9
+ d=1e100.net; s=20210112;
+ h=cc:to:from:subject:mime-version:message-id:date:x-gm-message-state
+ :from:to:cc;
+ bh=R/RKbEDeWYV+VonQAg9pdVD04PJy9FUG+uuZBibfjtQ=;
+ b=aa3VnCP6JnB/Tf0eiWPu1QAAjCm0zN9LkEt4pPWBXqL06Qh4DgNoqt4SWKtFRuu3eE
+ +2fsO9EC3LsvM5Fs7Ycwfs7aQ9b+/Ppy35D+8a7dN6EGdDBpeP81WdSyGgmKsXz+fYgk
+ Ema9y19L4GK72AX56qnwQY2c90n0A5sp9Z2KOaOEYb+zKmW+V4fTcrPXiF3XBexbA/Y9
+ VDX9H9zpxw/va1dC3uvh8R4XbYnCFI+vEeHVRYl5aaYt6TiS/JmGlcu7JqzqqQXxi0Tf
+ TnuiCnqwkx9lyzPExIor5h923lh5wosW1UHISCCQHrKFr1w1Zkds+iWja87pJYqgnUy1
+ GP7w==
+X-Gm-Message-State: ACgBeo04APhrB2mhpVlpyXF27K714LYcYkGO2uBPuX9Ix3bwqWcCqBIk
+ vco4ykD/BMy3T437FlMYN6XznFlOKlwNsA==
+X-Received: from mimik.c.googlers.com ([fda3:e722:ac3:cc00:7f:e700:c0a8:4e])
+ (user=wuhaotsh job=sendgmr) by 2002:a17:90a:df03:b0:1f3:396c:dd94 with SMTP
+ id gp3-20020a17090adf0300b001f3396cdd94mr34335pjb.1.1660599307097; Mon, 15
+ Aug 2022 14:35:07 -0700 (PDT)
+Date: Mon, 15 Aug 2022 14:34:57 -0700
+Message-Id: <20220815213458.733701-1-wuhaotsh@google.com>
+Mime-Version: 1.0
+X-Mailer: git-send-email 2.37.1.595.g718a3a8f04-goog
+Subject: [PATCH] target/arm: Add cortex-a35
+From: Hao Wu <wuhaotsh@google.com>
+To: peter.maydell@linaro.org
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, wuhaotsh@google.com, 
+ Joe Komlodi <komlodi@google.com>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::549;
+ envelope-from=3C7z6YggKCowCAxq498xw44w1u.s426u2A-tuBu1343w3A.47w@flex--wuhaotsh.bounces.google.com;
+ helo=mail-pg1-x549.google.com
+X-Spam_score_int: -95
+X-Spam_score: -9.6
+X-Spam_bar: ---------
+X-Spam_report: (-9.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01,
+ USER_IN_DEF_DKIM_WL=-7.5 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 9TvBtYt5hOKf
 
-On 8/15/22 14:02, Peter Maydell wrote:
-> Peter Maydell (7):
->    semihosting: Allow optional use of semihosting from userspace
->    target/arm: Honour -semihosting-config userspace=on
->    target/m68k: Honour -semihosting-config userspace=on
->    target/mips: Honour -semihosting-config userspace=on
->    target/nios2: Honour -semihosting-config userspace=on
->    target/xtensa: Honour -semihosting-config userspace=on
->    target/riscv: Honour -semihosting-config userspace=on and enable=on
+Add cortex A35 core and enable it for virt board.
 
-Except riscv, for which I think needs changes,
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Signed-off-by: Hao Wu <wuhaotsh@google.com>
+Reviewed-by: Joe Komlodi <komlodi@google.com>
+---
+ docs/system/arm/virt.rst |  1 +
+ hw/arm/virt.c            |  1 +
+ target/arm/cpu64.c       | 69 ++++++++++++++++++++++++++++++++++++++++
+ 3 files changed, 71 insertions(+)
 
+diff --git a/docs/system/arm/virt.rst b/docs/system/arm/virt.rst
+index 3b6ba69a9a..20442ea2c1 100644
+--- a/docs/system/arm/virt.rst
++++ b/docs/system/arm/virt.rst
+@@ -52,6 +52,7 @@ Supported guest CPU types:
+ 
+ - ``cortex-a7`` (32-bit)
+ - ``cortex-a15`` (32-bit; the default)
++- ``cortex-a35`` (64-bit)
+ - ``cortex-a53`` (64-bit)
+ - ``cortex-a57`` (64-bit)
+ - ``cortex-a72`` (64-bit)
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index 9633f822f3..ee06003aed 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -199,6 +199,7 @@ static const int a15irqmap[] = {
+ static const char *valid_cpus[] = {
+     ARM_CPU_TYPE_NAME("cortex-a7"),
+     ARM_CPU_TYPE_NAME("cortex-a15"),
++    ARM_CPU_TYPE_NAME("cortex-a35"),
+     ARM_CPU_TYPE_NAME("cortex-a53"),
+     ARM_CPU_TYPE_NAME("cortex-a57"),
+     ARM_CPU_TYPE_NAME("cortex-a72"),
+diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
+index 78e27f778a..4f96b80ffb 100644
+--- a/target/arm/cpu64.c
++++ b/target/arm/cpu64.c
+@@ -36,6 +36,74 @@
+ #include "hw/qdev-properties.h"
+ #include "internals.h"
+ 
++static void aarch64_a35_initfn(Object *obj)
++{
++    ARMCPU *cpu = ARM_CPU(obj);
++
++    cpu->dtb_compatible = "arm,cortex-a35";
++    set_feature(&cpu->env, ARM_FEATURE_V8);
++    set_feature(&cpu->env, ARM_FEATURE_NEON);
++    set_feature(&cpu->env, ARM_FEATURE_GENERIC_TIMER);
++    set_feature(&cpu->env, ARM_FEATURE_AARCH64);
++    set_feature(&cpu->env, ARM_FEATURE_CBAR_RO);
++    set_feature(&cpu->env, ARM_FEATURE_EL2);
++    set_feature(&cpu->env, ARM_FEATURE_EL3);
++    set_feature(&cpu->env, ARM_FEATURE_PMU);
++
++    /* From B2.2 AArch64 identification registers. */
++    cpu->midr = 0x410fd042;
++    cpu->revidr = 0;
++    cpu->ctr = 0x84448004;
++    cpu->isar.id_pfr0 = 0x00000131;
++    cpu->isar.id_pfr1 = 0x00011011;
++    cpu->isar.id_dfr0 = 0x03010066;
++    cpu->id_afr0 = 0;
++    cpu->isar.id_mmfr0 = 0x10201105;
++    cpu->isar.id_mmfr1 = 0x40000000;
++    cpu->isar.id_mmfr2 = 0x01260000;
++    cpu->isar.id_mmfr3 = 0x02102211;
++    cpu->isar.id_isar0 = 0x02101110;
++    cpu->isar.id_isar1 = 0x13112111;
++    cpu->isar.id_isar2 = 0x21232042;
++    cpu->isar.id_isar3 = 0x01112131;
++    cpu->isar.id_isar4 = 0x00011142;
++    cpu->isar.id_isar5 = 0x00011121;
++    cpu->isar.id_aa64pfr0 = 0x00002222;
++    cpu->isar.id_aa64pfr1 = 0;
++    cpu->isar.id_aa64dfr0 = 0x10305106;
++    cpu->isar.id_aa64dfr1 = 0;
++    cpu->isar.id_aa64isar0 = 0x00011120;
++    cpu->isar.id_aa64isar1 = 0;
++    cpu->isar.id_aa64mmfr0 = 0x00101122;
++    cpu->isar.id_aa64mmfr1 = 0;
++    cpu->clidr = 0x0a200023;
++    cpu->dcz_blocksize = 4;
++
++    /* From B2.4 AArch64 Virtual Memory control registers */
++    cpu->reset_sctlr = 0x00c50838;
++
++    /* From B2.29 Cache ID registers */
++    cpu->ccsidr[0] = 0x700fe01a; /* 32KB L1 dcache */
++    cpu->ccsidr[1] = 0x201fe00a; /* 32KB L1 icache */
++    cpu->ccsidr[2] = 0x703fe03a; /* 512KB L2 cache */
++
++    /* From B3.5 VGIC Type register */
++    cpu->gic_num_lrs = 4;
++    cpu->gic_vpribits = 5;
++    cpu->gic_vprebits = 5;
++
++    /* From Cortex-A35 SIMD and Floating-point Support r1p0 */
++    /* From 3.2 AArch32 register summary */
++    cpu->reset_fpsid = 0x41034043;
++
++    /* From 2.2 AArch64 register summary */
++    cpu->isar.mvfr0 = 0x10110222;
++    cpu->isar.mvfr1 = 0x12111111;
++    cpu->isar.mvfr2 = 0x00000043;
++
++    /* These values are the same with A53/A57/A72. */
++    define_cortex_a72_a57_a53_cp_reginfo(cpu);
++}
+ 
+ static void aarch64_a57_initfn(Object *obj)
+ {
+@@ -1158,6 +1226,7 @@ static void aarch64_a64fx_initfn(Object *obj)
+ }
+ 
+ static const ARMCPUInfo aarch64_cpus[] = {
++    { .name = "cortex-a35",         .initfn = aarch64_a35_initfn },
+     { .name = "cortex-a57",         .initfn = aarch64_a57_initfn },
+     { .name = "cortex-a53",         .initfn = aarch64_a53_initfn },
+     { .name = "cortex-a72",         .initfn = aarch64_a72_initfn },
+-- 
+2.37.1.595.g718a3a8f04-goog
 
-r~

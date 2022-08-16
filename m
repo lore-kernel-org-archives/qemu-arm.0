@@ -1,134 +1,109 @@
-Received: by 2002:a17:906:3b11:0:0:0:0 with SMTP id g17csp1597057ejf;
-        Mon, 15 Aug 2022 22:39:19 -0700 (PDT)
-X-Received: by 2002:a17:902:b18e:b0:172:5c92:d8db with SMTP id s14-20020a170902b18e00b001725c92d8dbmr13627705plr.140.1660628359077;
-        Mon, 15 Aug 2022 22:39:19 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1660628359; cv=none;
-        d=google.com; s=arc-20160816;
-        b=lRYB3lnmyU7wq9CPTN76vEjD8MAMrVRIM8HX4N4hqboHd1w1n2D9BQcC3GX6qeq6Z2
-         3WKjqvsdOLul1etT1i07/8LtW3ufPRQyUm/LlLRxDNqY8Z/3X4/iYrVqn7wKqkia+mxz
-         01jzp3aQBs4q+nFzVkBjduhaEtomUPdJvcrvuaa5Cf/e+3qx6Fq/Ld1odwJgm/IFw9g9
-         nXiPzF8PxGMACBlyl3yP0YaF0TaqIwbDHgGPO7FDwr8TrguOG9EeVWYeCD+lp/NTFYfH
-         44vda31sNcxkIN33bVfr70wOjv6L2a31bP28gPCg+6YVNDyd0A9WmKVL4sFSQi7ArxET
-         HChg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:dkim-signature;
-        bh=oPI32NRdEuu65J89pNAl9YxqkxREdXP271MOrnzfAC8=;
-        b=qYPtNlqxSYLhxoTPdGIgUFXCJ0X33nHbF0LH9d5CHn3DCnqe1KtB84agZDXRIYJx2m
-         3vy9V2wTypk7bCsFVcWyk8SNFqrOpq21JeV4XHpFZxEStTuucJjUIE6CUFWRm9XDfRRf
-         FQf7OIi9WAo+MjUQJmBQ4joH50DuYvx8sp1C6PazePiXIorUg5q6pI8YNzBZmcZugfgV
-         YSQ2VLFcYgUrt2t829py7L3L5q1leGkWqnd+8kVgh2vRrQEWwN7giVhMUwMf398jKoHx
-         EIyhz/ES13dG2pBUnxOQaV1/cX1+j6KZK9P2HOTjwcnyJM4xlPSH0aPYGRAB4MgrJyCx
-         yNSQ==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@rivosinc-com.20210112.gappssmtp.com header.s=20210112 header.b=AbcZzQsa;
-       spf=pass (google.com: domain of furquan@rivosinc.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=furquan@rivosinc.com
-Return-Path: <furquan@rivosinc.com>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id c17-20020a62e811000000b0052d290c8561sor5348447pfi.69.2022.08.15.22.39.18
-        for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Mon, 15 Aug 2022 22:39:19 -0700 (PDT)
-Received-SPF: pass (google.com: domain of furquan@rivosinc.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@rivosinc-com.20210112.gappssmtp.com header.s=20210112 header.b=AbcZzQsa;
-       spf=pass (google.com: domain of furquan@rivosinc.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=furquan@rivosinc.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=rivosinc-com.20210112.gappssmtp.com; s=20210112;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc;
-        bh=oPI32NRdEuu65J89pNAl9YxqkxREdXP271MOrnzfAC8=;
-        b=AbcZzQsaVJ/o9mpLLvHgrYLRZp23uCwhGr7N78OvCO+DTfvlWlMPXa6wQZ10zJADKN
-         zVjajT/K7TBqIzrR84NqcAf+Q/7u9QTLuzoNv+U3K2QQGqwnWt7PjXt5yy8+DZVKxAf1
-         eIWms7QZ56KluxvemzTscvsh8IObjLdO0B+/R0+44SXCKXG4BKh+wyKUivG9v1t6dtAu
-         MRIBWZSGZB+MjGttl5gz/93J3VoORit73I9tVeqhUJquHCUNsWaisLNjSx+/kjezxyS7
-         gpuLadugcLv1+gteGbA0EiComt5HrXlMA1ijDVXqeG6191XSPZmAXSykTvso9POSS7jG
-         oiJA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc;
-        bh=oPI32NRdEuu65J89pNAl9YxqkxREdXP271MOrnzfAC8=;
-        b=npC8TL9mz6DiipfECJnMW0rqcLw4IFZGhiHKlG8/AuejZNOiSrcIRumB8tTTa6m3y9
-         RBhpd4l0kKI3BKX7vMSKiDIT/L/MAz1WPJQLOsaKhb+IjRW2Hpihi1gRq3/UkkAAZI4H
-         zfvMhxT/7YlRR/ldxqwmtYl9C4fceEzV2HjjUfwp8cV6iDDKYOBhoih/SLoWe/QaOL+P
-         4SKYoEmmyGy2xPB0gAryIxGsL4chZ6bqcoy6nSqOhzoVsU8w36ZaxFK98aAdD2WjZ5VV
-         0diex6fUtQbev9Ea7m+KK+fMQfZjRcRft/9riJmQUUBrPuQQYVB0HcDinl38kplE+8Vh
-         /KrA==
-X-Gm-Message-State: ACgBeo0gwLnuDmUnfuHZ9cP9JnF7XofFIviXy0lGwUGOEXPTjoqD5j05
-	qyIWlDyxM5TbG7szIwJPV77fXln+VrutTlFwhBgDNg==
-X-Google-Smtp-Source: AA6agR7VKuuXf2bVs+ahRggr80t5ngK204T/A5ROc5pjXf98Vz2YFwrE+7WPlMvcypFd8oeZBf9ZcqV5FNViMTn7/yc=
-X-Received: by 2002:a62:79c4:0:b0:52d:cd3d:2027 with SMTP id
- u187-20020a6279c4000000b0052dcd3d2027mr20054985pfc.71.1660628358460; Mon, 15
- Aug 2022 22:39:18 -0700 (PDT)
+Return-Path: <alex.bennee@linaro.org>
+Received: from zen.linaroharston ([185.81.254.11])
+        by smtp.gmail.com with ESMTPSA id y11-20020a5d620b000000b00222cf973e8csm9525547wru.69.2022.08.16.01.41.42
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 16 Aug 2022 01:41:42 -0700 (PDT)
+Received: from zen (localhost [127.0.0.1])
+	by zen.linaroharston (Postfix) with ESMTP id 864FC1FFB7;
+	Tue, 16 Aug 2022 09:41:41 +0100 (BST)
+References: <CAPjTjwsb0jAsQq4PHOsFGW7SjpAe=Ug2b_fxhdccEEnzh=cQUA@mail.gmail.com>
+ <CAFEAcA-F8rUTH1FimHf+FaV0O6dQ4QGHihaygxdjn9BKYPazBg@mail.gmail.com>
+ <CAPjTjwuNwXdemwFYOUDi4Qnc5fA9KWzAEZQ1JaCNu+0x3RUh7Q@mail.gmail.com>
+ <8b32824b-4dc1-3d1a-1916-918a3fffab26@linaro.org>
+ <67a42d65-8289-b26c-26f6-275ea0bfac98@vivier.eu>
+ <CAFEAcA8AXodRV=eG2Ra4Sf9rsap499zDJEu6hC=c+V9gE2KjfA@mail.gmail.com>
+ <52225a7c-310f-444f-0b75-0ad2536a30c0@vivier.eu>
+ <87r11miz8i.fsf@linaro.org>
+ <531cdb6a-f660-b671-375c-a3819d90c030@vivier.eu>
+User-agent: mu4e 1.8.9; emacs 28.1.91
+From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: Laurent Vivier <laurent@vivier.eu>
+Cc: Peter Maydell <peter.maydell@linaro.org>, Richard Henderson
+ <richard.henderson@linaro.org>, Vitaly Buka <vitalybuka@google.com>,
+ qemu-devel@nongnu.org, qemu-arm@nongnu.org
+Subject: Re: [PATCH] [PATCH] linux-user/aarch64: Reset target data on
+ MADV_DONTNEED
+Date: Tue, 16 Aug 2022 09:41:19 +0100
+In-reply-to: <531cdb6a-f660-b671-375c-a3819d90c030@vivier.eu>
+Message-ID: <87zgg4bmwq.fsf@linaro.org>
 MIME-Version: 1.0
-References: <20220815190303.2061559-1-peter.maydell@linaro.org>
- <20220815190303.2061559-8-peter.maydell@linaro.org> <08d41c28-728a-0ef2-c528-b55c4984ca2b@linaro.org>
-In-Reply-To: <08d41c28-728a-0ef2-c528-b55c4984ca2b@linaro.org>
-From: Furquan Shaikh <furquan@rivosinc.com>
-Date: Mon, 15 Aug 2022 22:39:07 -0700
-Message-ID: <CA+tJHD6pdQXBdeF_t_qmqhkae9sJdRUustAsKqeiWmu5WuCb2w@mail.gmail.com>
-Subject: Re: [PATCH 7/7] target/riscv: Honour -semihosting-config userspace=on
- and enable=on
-To: Richard Henderson <richard.henderson@linaro.org>
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org, 
-	"qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>, "open list:RISC-V" <qemu-riscv@nongnu.org>, 
-	=?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
-	Laurent Vivier <laurent@vivier.eu>, =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>, 
-	Jiaxun Yang <jiaxun.yang@flygoat.com>, Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>, 
-	Stefan Pejic <stefan.pejic@syrmia.com>, Chris Wulff <crwulff@gmail.com>, Marek Vasut <marex@denx.de>, 
-	Palmer Dabbelt <palmer@dabbelt.com>, Alistair Francis <alistair.francis@wdc.com>, 
-	Bin Meng <bin.meng@windriver.com>, Max Filippov <jcmvbkbc@gmail.com>
-Content-Type: text/plain; charset="UTF-8"
-X-TUID: AcO0RJ1a4kVG
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-TUID: 9PDvruGzaeK0
 
-On Mon, Aug 15, 2022 at 1:26 PM Richard Henderson
-<richard.henderson@linaro.org> wrote:
->
-> On 8/15/22 14:03, Peter Maydell wrote:
-> > The riscv target incorrectly enabled semihosting always, whether the
-> > user asked for it or not.  Call semihosting_enabled() passing the
-> > correct value to the is_userspace argument, which fixes this and also
-> > handles the userspace=on argument.
-> >
-> > Note that this is a behaviour change: we used to default to
-> > semihosting being enabled, and now the user must pass
-> > "-semihosting-config enable=on" if they want it.
-> >
-> > Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> > ---
-> >   target/riscv/cpu_helper.c | 3 ++-
-> >   1 file changed, 2 insertions(+), 1 deletion(-)
-> >
-> > diff --git a/target/riscv/cpu_helper.c b/target/riscv/cpu_helper.c
-> > index 59b3680b1b2..49c4ea98ac9 100644
-> > --- a/target/riscv/cpu_helper.c
-> > +++ b/target/riscv/cpu_helper.c
-> > @@ -24,6 +24,7 @@
-> >   #include "exec/exec-all.h"
-> >   #include "tcg/tcg-op.h"
-> >   #include "trace.h"
-> > +#include "semihosting/semihost.h"
-> >   #include "semihosting/common-semi.h"
-> >
-> >   int riscv_cpu_mmu_index(CPURISCVState *env, bool ifetch)
-> > @@ -1342,7 +1343,7 @@ void riscv_cpu_do_interrupt(CPUState *cs)
-> >       target_ulong mtval2 = 0;
-> >
-> >       if  (cause == RISCV_EXCP_SEMIHOST) {
-> > -        if (env->priv >= PRV_S) {
-> > +        if (semihosting_enabled(env->priv < PRV_S)) {
-> >               do_common_semihosting(cs);
-> >               env->pc += 4;
-> >               return;
->
-> I think this should be done in translate.  We should not have the overhead of checking the
-> three insn sequence around ebreak unless semihosting is enabled.  Note that ctx->mem_idx
-> == env->priv, per cpu_mem_index().
 
-FWIW, the current series worked fine for my risc-v use case. Thanks, Peter!
+Laurent Vivier <laurent@vivier.eu> writes:
+
+> Le 11/08/2022 =C3=A0 17:18, Alex Benn=C3=A9e a =C3=A9crit=C2=A0:
+>> Laurent Vivier <laurent@vivier.eu> writes:
+>>=20
+>>> Le 11/08/2022 =C3=A0 13:54, Peter Maydell a =C3=A9crit=C2=A0:
+>>>> On Thu, 11 Aug 2022 at 09:29, Laurent Vivier <laurent@vivier.eu> wrote:
+>>>>>
+>>>>> Le 10/08/2022 =C3=A0 22:47, Richard Henderson a =C3=A9crit :
+>>>>>> On 8/10/22 13:32, Vitaly Buka wrote:
+>>>>>>> Sorry, I only noticed today that it's not submitted.
+>>>>>>> Version is not critical for us, as we build from masters anyway.
+>>>>>>> Richard, do you know a reason to consider this critical?
+>>>>>>>
+>>>>>>> On Wed, 10 Aug 2022 at 13:04, Peter Maydell <peter.maydell@linaro.o=
+rg
+>>>>>>> <mailto:peter.maydell@linaro.org>> wrote:
+>>>>>>>
+>>>>>>>       On Wed, 10 Aug 2022 at 21:00, Vitaly Buka <vitalybuka@google.=
+com
+>>>>>>>       <mailto:vitalybuka@google.com>> wrote:
+>>>>>>>        >
+>>>>>>>        > How can we land this one?
+>>>>>>>
+>>>>>>>       Pinging it a week ago rather than now would have been a good =
+start :-(
+>>>>>>>       I think it got missed because you didn't cc the linux-user ma=
+intainer.
+>>>>>>>
+>>>>>>>       Is this a critical fix for 7.1 or can we let it slip to 7.2 ?
+>>>>>>
+>>>>>> It's unfortunate that it got missed.  It's not critical, but it woul=
+d be nice, because support for
+>>>>>> MADV_DONTNEED is new in 7.1 (previously, we ignored all madvise).
+>>>>>>
+>>>>>> I'll note there are missing braces for coding style on an IF.
+>>>>>>
+>>>>>> Laurent, do you have an objection to merging this for rc3?
+>>>>>>
+>>>>>
+>>>>> No objection.
+>>>>>
+>>>>> Do you want it goes via the arm branch or via the linux-user branch?
+>>>>>
+>>>>> If it goes via linux-user I can run the LTP testsuite but it takes 1 =
+day.
+>>>> I think we should definitely run the LTP testsuite on it, so
+>>>> taking it via linux-user probably makes more sense.
+>>>
+>>> ok, applied to my linux-user-for-7.1 branch.
+>>>
+>>> Running tests.
+>> Any chance you could pick up:
+>>    Subject: [PATCH v2] linux-user: un-parent OBJECT(cpu) when
+>> closing thread
+>>    Date: Wed,  3 Aug 2022 14:05:37 +0100
+>>    Message-Id: <20220803130537.763666-1-alex.bennee@linaro.org>
+>> before you run the tests?
+>>=20
+>
+> I've tested it, it works fine.
+>
+> Do you plan to do a PR including it or do you want I do (there will be
+> only this one in mine)?
+
+I'm going to a roll a PR today so I can include it. Shall I add a
+Tested-by for you?
 
 >
->
-> r~
->
+> Thanks,
+> Laurent
+
+
+--=20
+Alex Benn=C3=A9e

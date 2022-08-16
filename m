@@ -1,128 +1,122 @@
-Received: by 2002:a17:906:3b11:0:0:0:0 with SMTP id g17csp2009010ejf;
-        Tue, 16 Aug 2022 13:34:36 -0700 (PDT)
-X-Received: by 2002:aca:1901:0:b0:344:d4b5:9a1f with SMTP id l1-20020aca1901000000b00344d4b59a1fmr145065oii.170.1660682076268;
-        Tue, 16 Aug 2022 13:34:36 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1660682076; cv=none;
+Received: by 2002:a17:906:3b11:0:0:0:0 with SMTP id g17csp2009022ejf;
+        Tue, 16 Aug 2022 13:34:38 -0700 (PDT)
+X-Received: by 2002:a05:6870:d6a3:b0:10b:df7d:8243 with SMTP id z35-20020a056870d6a300b0010bdf7d8243mr171274oap.68.1660682078213;
+        Tue, 16 Aug 2022 13:34:38 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1660682078; cv=none;
         d=google.com; s=arc-20160816;
-        b=ow4WWYUxCUv/ONKaCPEAqgZGbP9VW1WDbrTiI4Sr2xQu5JSb64Cp7YRb1suW7IovlX
-         FY3ZuPEom/dqqwlRWkXd0/quZDpY2YVA4wZjynDxDiSJub2btwWrbjWWUCHzPF4RoYX/
-         dWNXVMoBsmxYFJ3gUrTwvrrVMrZFCZ1TwREADQwIzBZ2lPR83WCaHbqxC0JYWcYfhiHh
-         C8FiFzjIztLZEZnkCrRl5N7zXTiyzI6zLo6FTvIyb3kyPwdhhBMHYpUE2rPbvF7/o0Mn
-         isGVQfgeVH9svO2ck82hhO5RgSfne1N443mn1czSkj0Mf3Na9+jP2njH0+nE/udtPzHI
-         3LEA==
+        b=ppx/JgPL/wMdVzzAiLxwIu1OPQZk3WySmwPGZSVHQpAzJyjpK4Uhq2k7DhnuEPeadB
+         vPxTrLEAeEfMc2nd7t1KofOD6YwxUm1XMZoOStUKxQGST35E4fhgilZiMPCXv/bzwhu1
+         UigBE8s6I6vmWBXN+ticbsQPYlam1F/JlyDgI01bouoQ89u/mQ64cSL6KQXtnW3PAR8r
+         1E/AnTwKRvbwLylTPq4FWIsIVMb6OahZ7fKESjR+4bBbWZOSg2DB8Uz/SkPEN2blacVx
+         32Q2SUf+wsHKkvUJkDfeeobMu8+seigRj0ZiE2j6xn1U6rKqOXsxib3zUilg0EF3QHc9
+         QkPA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=21coxlkQNnNjbgRrssaJT5btbr5A+uXZSpoWQo/gmIc=;
-        b=WX3QkQEGrAjkGbqiMVRM65qi+yPiXD+6UDH98Kk3OpG12EAUwRh5zum+eObN28zVuR
-         /lmR2JEnxhHOuvFqPHi0oZnCx3lr4SJUNMjULVOw4yUty9cp6zueDUX4ZcI3ScozejGw
-         I03LBkAC7hCpMpLpyZ+DADVQWRtb/NX9Hebn1dNRYHG5dOGscdeNPr1N6u5KjQcnY6XT
-         mHIqGWk7bPSK/eZpX3mLMUTIm/LhoFNuQRoeiz/RtBI524iCSVatC3ccRjLGmgnnvKY0
-         UduMpxGmO3gmbrx8i6mQsCyyl+RwBcp/+nic7R4lEhllGaAJk0PHk6Qjl9NskD9oM0jl
-         1DAw==
+        bh=02+0PqV78M/uqtw50M+3MleQPnTNyfkwEaJtFvLiO+Q=;
+        b=mujTsinfVDfH06JzM/2C+BfxksHWvCnbJ29wguiD6pJUOTzN+WD8yK0zOsDy3Fwhhp
+         k/QTuuEj/hvVep5+7eeT3i/QPSwTAEk4Pm5VO7f6vC2Bpbmh9iWLBSKNcU2Maoaa2i+h
+         BBgpfH3f/V36nSG/IOEKR0yFcAuRzj7Zy7WHlSLzm9DK2VUpzseDsQm0uMDrYLE6vzUZ
+         YpD6MdeuPnD2FBI98RrQ1pMuW5bWHKraAseaFhtBqKWhyg7Q5TgYV4Pg1FNhaXAdgkny
+         q2rUzn2UkE65FjmzrCtqxGvbGDTGA5uYNbD0GtP59+edYMS/GW0TYqN1umnqSJBXFnZo
+         +nWg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=RQ7cq6OQ;
+       dkim=pass header.i=@linaro.org header.s=google header.b=M3vLF9Hg;
        spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <richard.henderson@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id gy20-20020a056870289400b0010bda6eadbesor2233596oab.87.2022.08.16.13.34.36
+        by mx.google.com with SMTPS id z22-20020a056808049600b0033ae05cd3c1sor2712410oid.173.2022.08.16.13.34.38
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Tue, 16 Aug 2022 13:34:36 -0700 (PDT)
+        Tue, 16 Aug 2022 13:34:38 -0700 (PDT)
 Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=RQ7cq6OQ;
+       dkim=pass header.i=@linaro.org header.s=google header.b=M3vLF9Hg;
        spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc;
-        bh=21coxlkQNnNjbgRrssaJT5btbr5A+uXZSpoWQo/gmIc=;
-        b=RQ7cq6OQSyl/ZNAxxoMYMMxBRVuTnEGsudt5CU6TahwAPP60Fkj1V4qs4QuL3reGhn
-         umbUv7vXzKp62soNbPTJ2lJhxRLco4DBjsDGkWoW3OTzOLZMm1ic24Mh9UPi9iA7GTR5
-         /WLlfNQJXsDNxL1gUI/ynPFpCupt/v0M9ZoOB06I+XKqkPFdNpxGLIb1mbZcmtMY0Swr
-         uL0+bfx7UgyksctqS5IAry2HPgwoFOCwMT4OZ2c2Qn9SAp1PZ0w8jKyHgLuZBqDLV+cU
-         DCJv6oWZOzXnmWM2lpXAVHwTO2YT07fx4VslNwNvRPQXLvNaK3n/lr3ZxwUBUxhEJCH1
-         p2Iw==
+        bh=02+0PqV78M/uqtw50M+3MleQPnTNyfkwEaJtFvLiO+Q=;
+        b=M3vLF9HgNXhc/1766Egl1iCWJS9pBruT371vggXZsr7+1LxNvOBFaMOURr6r9pzH+q
+         4DvWZm1Q+mCvwP4QIsQM1u6xEeTWkkcY49XR6/YJo2Ny+ShjBQAcAdgiEMTxRvD9XIpq
+         M0vwo8JT/U6p1jy3wbXy5fuWERXTjh4oxcIqz8neBPuktnYZz27wEsfZ761iUs2+So/w
+         7f20AlTumkYTZvAYs7RUDWrU5/W3HTpgPAqzHo+M1DWFODSRSLmp91SI3ingma+3Ns6S
+         TFp4foK8WO1DkAjt8pDEWcfdR5pPdTz+PR1KWNUJe9pzDSyLa5phFCxmCF63/35ON7Nw
+         kD/w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc;
-        bh=21coxlkQNnNjbgRrssaJT5btbr5A+uXZSpoWQo/gmIc=;
-        b=0ohCDUC0BFhfDOEEjrRehKu/9MCzEa6Tth7sqXjVk8R1bRnejba5mkiuKAIPk0nZqk
-         moLkQiG9CLdh9Gy8K4HdP+4xIohQcVVOvHXMQWQoGueGSXSJBWpl2WGVOKp/WRE0zNE6
-         RbUn9PNzc/OKtmgtq5IIiJC9wCW3E/yILNgzCYIZl1B8w3ipizzpRTlBH2XmEx+FQVkZ
-         U1Hl1MNDEwpJMSfX1yGOuP2rBKMJETtFz7PRrgv6Ba3epH9cq/uc9+QtNUy4382Xg2k7
-         HL7ZxFszDj5rpwtg5rc8Imm/6TbgWsawRgIYFCSr1qn/NY0HGrrF0UecTvrWcMlFnCJh
-         kSYQ==
-X-Gm-Message-State: ACgBeo0Aep70VmC2qqVi0e8CF//KRVy88RWVmQTdYPVkjV4dvIyC0AWA
-	TrlcxF2P+b+I+0GCrwGts4J6PnsK
-X-Google-Smtp-Source: AA6agR6fhLPdyHarGUDx1LVj42NmZAZZTi3JDTtEOfkpskMj+5PLDxdLnyb2aBwWgwVyF0huoZ55BQ==
-X-Received: by 2002:a05:6870:d78a:b0:10e:45a6:a400 with SMTP id bd10-20020a056870d78a00b0010e45a6a400mr146048oab.27.1660682075902;
-        Tue, 16 Aug 2022 13:34:35 -0700 (PDT)
+        bh=02+0PqV78M/uqtw50M+3MleQPnTNyfkwEaJtFvLiO+Q=;
+        b=6pHkHhH7Xp9uqKLa6djAZUtIcnE7DbH1Lz1dpKUOyYWjK2pSYAiAxfC8ymB4tG42Ko
+         o3e1QO0H6w77luZaYEp0RQzGsAp106iSQqA23b9tfuFBLbvWMmSVdLbix3L9k1pui852
+         PHG1sV7MzEgbkj0NFd/xjTZ4u1h1WnL2Ho6Hlv6cJP+qGJnvO0+CyOTImNr8bjWFoyV7
+         UEYCKo5ct4TbKGb0CBdjoeBS2zXyAcm9kTrZwG1HAQwYVYPF+fd6ByLXYfihU+nsN3RH
+         rzSnsKASiBr5FcfrWQfdEwvoAumqSax+Mbs23PxprA0VC3XOeqxyT+ZeuUDddYI+rnut
+         Zj0A==
+X-Gm-Message-State: ACgBeo2YtgkDyj0DpKGZrKAFYB6gWXKYoKLr6LgJv2CJ5FMnTSPw8yWe
+	i29BpUECx1vOqVSRlUzzrEu12VP2
+X-Google-Smtp-Source: AA6agR5+aB1DKznv1HwcuQIR7e0IiOEw/NSWXQyIWF7lOUYROQ/dgGtzRjVHJvP4KrWnH8chDcKS3A==
+X-Received: by 2002:a05:6808:3081:b0:343:56a3:cc23 with SMTP id bl1-20020a056808308100b0034356a3cc23mr153655oib.58.1660682077867;
+        Tue, 16 Aug 2022 13:34:37 -0700 (PDT)
 Return-Path: <richard.henderson@linaro.org>
 Received: from stoup.. ([2605:ef80:80f6:61fa:9bc2:5095:d612:5e22])
-        by smtp.gmail.com with ESMTPSA id y23-20020a056870b01700b0010ef8ccde67sm2285220oae.13.2022.08.16.13.34.34
+        by smtp.gmail.com with ESMTPSA id y23-20020a056870b01700b0010ef8ccde67sm2285220oae.13.2022.08.16.13.34.36
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 16 Aug 2022 13:34:34 -0700 (PDT)
+        Tue, 16 Aug 2022 13:34:36 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org,
 	alex.bennee@linaro.org,
 	iii@linux.ibm.com
-Subject: [PATCH v2 13/33] accel/tcg: Unlock mmap_lock after longjmp
-Date: Tue, 16 Aug 2022 15:33:40 -0500
-Message-Id: <20220816203400.161187-14-richard.henderson@linaro.org>
+Subject: [PATCH v2 14/33] accel/tcg: Raise PROT_EXEC exception early
+Date: Tue, 16 Aug 2022 15:33:41 -0500
+Message-Id: <20220816203400.161187-15-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20220816203400.161187-1-richard.henderson@linaro.org>
 References: <20220816203400.161187-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-TUID: pumElEcFNVCV
+X-TUID: CxLmR+d0YPOx
 
-The mmap_lock is held around tb_gen_code.  While the comment
-is correct that the lock is dropped when tb_gen_code runs out
-of memory, the lock is *not* dropped when an exception is
-raised reading code for translation.
+We currently ignore PROT_EXEC on the initial lookup, and
+defer raising the exception until cpu_ld*_code().
+It makes more sense to raise the exception early.
 
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- accel/tcg/cpu-exec.c | 12 ++++++------
- 1 file changed, 6 insertions(+), 6 deletions(-)
+ accel/tcg/cpu-exec.c      | 2 +-
+ accel/tcg/translate-all.c | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/accel/tcg/cpu-exec.c b/accel/tcg/cpu-exec.c
-index 711859d4d4..7887af6f45 100644
+index 7887af6f45..7b8977a0a4 100644
 --- a/accel/tcg/cpu-exec.c
 +++ b/accel/tcg/cpu-exec.c
-@@ -523,13 +523,11 @@ void cpu_exec_step_atomic(CPUState *cpu)
-         cpu_tb_exec(cpu, tb, &tb_exit);
-         cpu_exec_exit(cpu);
-     } else {
--        /*
--         * The mmap_lock is dropped by tb_gen_code if it runs out of
--         * memory.
--         */
- #ifndef CONFIG_SOFTMMU
-         clear_helper_retaddr();
--        tcg_debug_assert(!have_mmap_lock());
-+        if (have_mmap_lock()) {
-+            mmap_unlock();
-+        }
- #endif
-         if (qemu_mutex_iothread_locked()) {
-             qemu_mutex_unlock_iothread();
-@@ -936,7 +934,9 @@ int cpu_exec(CPUState *cpu)
+@@ -222,7 +222,7 @@ static TranslationBlock *tb_htable_lookup(CPUState *cpu, target_ulong pc,
+     desc.cflags = cflags;
+     desc.trace_vcpu_dstate = *cpu->trace_dstate;
+     desc.pc = pc;
+-    phys_pc = get_page_addr_code(desc.env, pc);
++    phys_pc = get_page_addr_code_hostp(desc.env, pc, false, NULL);
+     if (phys_pc == -1) {
+         return NULL;
+     }
+diff --git a/accel/tcg/translate-all.c b/accel/tcg/translate-all.c
+index 596029b26d..a5ca424f13 100644
+--- a/accel/tcg/translate-all.c
++++ b/accel/tcg/translate-all.c
+@@ -1343,7 +1343,7 @@ TranslationBlock *tb_gen_code(CPUState *cpu,
+     assert_memory_lock();
+     qemu_thread_jit_write();
  
- #ifndef CONFIG_SOFTMMU
-         clear_helper_retaddr();
--        tcg_debug_assert(!have_mmap_lock());
-+        if (have_mmap_lock()) {
-+            mmap_unlock();
-+        }
- #endif
-         if (qemu_mutex_iothread_locked()) {
-             qemu_mutex_unlock_iothread();
+-    phys_pc = get_page_addr_code(env, pc);
++    phys_pc = get_page_addr_code_hostp(env, pc, false, NULL);
+ 
+     if (phys_pc == -1) {
+         /* Generate a one-shot TB with 1 insn in it */
 -- 
 2.34.1

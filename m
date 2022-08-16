@@ -1,629 +1,389 @@
-Received: by 2002:a17:906:3b11:0:0:0:0 with SMTP id g17csp2009092ejf;
-        Tue, 16 Aug 2022 13:34:45 -0700 (PDT)
-X-Received: by 2002:a05:6870:a54e:b0:10f:7be:c290 with SMTP id p14-20020a056870a54e00b0010f07bec290mr149710oal.23.1660682085103;
-        Tue, 16 Aug 2022 13:34:45 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1660682085; cv=none;
+Received: by 2002:a17:906:3b11:0:0:0:0 with SMTP id g17csp2009106ejf;
+        Tue, 16 Aug 2022 13:34:47 -0700 (PDT)
+X-Received: by 2002:a05:6808:10d4:b0:344:f380:cf8c with SMTP id s20-20020a05680810d400b00344f380cf8cmr137354ois.27.1660682086980;
+        Tue, 16 Aug 2022 13:34:46 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1660682086; cv=none;
         d=google.com; s=arc-20160816;
-        b=rKk6uPlmneYgg1q9DVgMrzxLsXtN3lLOr9ysuPLyXT1p0PFa0MyNnBBW7Y0iNp2UYk
-         9lFDjhIV9XFdhlHlrlhm+mJ7TWzCF+23IXZMtzf7A2AxQDJMRf8RGWF8lgFvVn6+zkUx
-         sMIFZBviC6CZ0yJSCOIpcfzWnv1pQfCLzDQtWb3e7gVihWtjCOsKppxlZwqSk6cLcnUP
-         liV3VRJTugoGnAAtMLzH07jHDgL0r4gZ0WAjxeDs5fL0cxBtnKZB5AWXNbL7DZgjzidp
-         QIUnrDvQQUypjG5FcOMQWR6M83o4kCJmi5ai7Xj6e6tsOKH7WBdhpaMLtL9qw0pD6GXZ
-         TBhQ==
+        b=tqUVQnNbeTk0aBeC269d9Ft6DVkp9dYc63S9LS7q7Xsq3EN399eJTY6dfNJCfiv2+A
+         WHaH4JIDKuKf/SRHGF2w/bkj9dItoSXRxZpZYzPXPOdisnNBGia7O1p0X9L3OLTYFmro
+         OfUjmOC3dzhG44NSS1RdWC8D0vew/sO/1ecmO6g1Ep5/X5TrsYG7595cBwMcQMGs8WWg
+         RNNYKbkXd4gEF86P/xOhZuUDVcM+O/U3SAg2zS31Ref5eeFnc5A0r12Z67CkpzKfixns
+         i1sW02X0DA6BzE5do5ABytIIzYmgoDhYyd19ezMsJjkYCZMf9Dko+63yR/vXaWL6lZ8s
+         sT+w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=bUME8MpMD2f2x488JPZ5xVT2EqUsTLKQqkc1TJ7vid4=;
-        b=jjQzGIssJUqkUw4aOlgkBDqDcIamhMSe8JjgR0kFnfVp1XuaQnjuSz3krOrOCEUVMo
-         TAfCfBPrWeBgxsFNRVWGMudqjoYHZYqxlpG1smfNbB9I6wiK3olI9AL1CfFZX4/kp6qE
-         6sAwlQIgOwRBOHH5PJov3KJMJNGVwVw/G1FrXxbPeak4rXog9V75wvbDIKAn1za+KfiP
-         gvhXz1pBVB8a7vmfbPz5Cwvn15Dr8he/8GNrl/c2mMutiuHVj4DbCVMPpblKrED/Gi11
-         8+zKZV1V5R4jBduAjbsly1ceSON1O+upf4fYKSiaY7yPehFtPSftc0c4zDLk+rJIJspS
-         4kfw==
+        bh=0wEozwiMMGON8j83eoeWLlqUaXUdXZtfgTyD9icvNrg=;
+        b=lnGWb0YWLYe0/vfl898VZDVdPJW8luQZmL+Vi5ToQ/DmtdGzJpdcMOj2FKTsZI7ESf
+         0QnpLR+Y83iWsI4SspnRf3lwV4vjB04O4p4wzaFs6eDEBRUmb1lLtZycgDSm2IYAC5rT
+         Cqwb8b7EPJ1o6UbCgI1rgxZyDHXD/StWT0hRsy1TnZPfpoj8hVHW3FOnLOkc5iOige1Y
+         YsZ9qVQgRFiptvvfMXaibymLYSuhI3w5CqDuwHQ6d2yox7rAXsNl8ejADpJFKUvsClfu
+         OLF6WNmWdbgTD7/7xIZZcl3li77+J0cM52ObgHIvFrSGVQFMZsJ0OzWgelrmF/S3lrvI
+         FTkA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=ru9piWj1;
+       dkim=pass header.i=@linaro.org header.s=google header.b=nZlrGs7j;
        spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <richard.henderson@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id f30-20020a05680807de00b00335bd8921ffsor2761079oij.175.2022.08.16.13.34.44
+        by mx.google.com with SMTPS id e65-20020a9d01c7000000b00638ab46bb88sor870398ote.51.2022.08.16.13.34.46
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Tue, 16 Aug 2022 13:34:45 -0700 (PDT)
+        Tue, 16 Aug 2022 13:34:46 -0700 (PDT)
 Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=ru9piWj1;
+       dkim=pass header.i=@linaro.org header.s=google header.b=nZlrGs7j;
        spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc;
-        bh=bUME8MpMD2f2x488JPZ5xVT2EqUsTLKQqkc1TJ7vid4=;
-        b=ru9piWj1DG/8wGV3czJ4jOYtZrnk0GcFSYAZqwIRX8ghXOZwUQjz1EAYViYOqPRnSw
-         R5Z/z1aBYfsGr8LGO/72L8Ny5mCgNosFfeap2YbV56nGlTMVp810766pwiZhugDlhP4C
-         kA/jID++bYHRYfu2aDkeffDRUel23iVlEzq6Kz+FnlM11OdCaH0spF8W7velQUacQ+mH
-         smDWCbst3ouEu4VK8GIwWQwbrwT0vYxvm/ViA370zzJOCq/P3q6+zYB+zy4FczT/iN0p
-         KBH6G4UFeJ8nl6iy9qKxejDxpldca1k/DqyQU04i74DJAdFrAwguc1vlZRL0OwV2G71c
-         i9zg==
+        bh=0wEozwiMMGON8j83eoeWLlqUaXUdXZtfgTyD9icvNrg=;
+        b=nZlrGs7j0Pyx9eyNjRq5q83zXLIhsty9SfCOK3mtJbwRzuofKAcvINcGzM2zA9bARc
+         8+8JhLloISHL9Uawoi685+yW1HRf5rztbcXsCgJ5PsyrWaXFrXqEYCd+62WzTfhRC9RK
+         oa2Rd64FBSbwMfiiAHRrcY8SBs6/oVXMZ3wmiwfU8e5WRFVVLKYqAzSY9IfQJ1rNbVNc
+         VA+9Zw+LwJQZq/KgP53ozQq+SRO1uPXwrZfQ/BKOPY06ImRbB6KFRveB7bxQeA7Ms51I
+         nUO/g3IzhbjMrspJ1VGze0KVg57QgSnCRN6HtfVxL0/l/J6RnsAZZG53KE/fd1B6KUph
+         l1EA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc;
-        bh=bUME8MpMD2f2x488JPZ5xVT2EqUsTLKQqkc1TJ7vid4=;
-        b=DkRj6m1pJz2UxEWWNi97jgjo7wUo/UQ6UAVPZxCkI1pHOoGHYtl2x38zGrLkkbXvJs
-         BlslZoRnQF6oE/n5imW6RIGrpHZv2/xDsTPnQ8yURZWoAJMtVWFsRXa4aQjvxMHlKbCM
-         naxdR077UAnG1ycSlySMAxjsWveBRF4f48SBQizzW9Va87QWAoSM3AF2FXd8NzwHSLhr
-         mJdggFH1gUpXBOJxJFWZuH1abJaWdHGTKTHZV5dhA8uyPe8KZBtSiWzYJTZBAUVescwr
-         ADbJiw6dCCNRSSg6OCuWhwuicusTkLZJM+j6K0ccLEz2l1wxSen4IbEYYDgrbKmKw7nK
-         FA3w==
-X-Gm-Message-State: ACgBeo3leDzCAJcwJiDTKG288qDxqEp+es+rTqjps7w9J5+MPmb1bSE4
-	LGrM0n+fOrdkiBtw3IHTI0FvYU/Z
-X-Google-Smtp-Source: AA6agR5QLQ38iVVxAVPjoNIpiOx9gY9oedePUZqozsaZpMd+dBlYsL+s3+o7fjud/zIRdAQNjhgRhg==
-X-Received: by 2002:a54:480a:0:b0:344:9d67:f3de with SMTP id j10-20020a54480a000000b003449d67f3demr143485oij.236.1660682084587;
-        Tue, 16 Aug 2022 13:34:44 -0700 (PDT)
+        bh=0wEozwiMMGON8j83eoeWLlqUaXUdXZtfgTyD9icvNrg=;
+        b=oVeWdvyvQPPgIHoEif9GzAwqFVVBX4mrCxnvGRnq3sXwCM20E86XUPpzM6CLBJxyvT
+         vyecx6bW5cc2vTPHF9RjkXOoXOZjNrSHZ5TKguS+4slf+39vgaJNqdZz2tGY4rs/ykN5
+         TwdyDyrwJolhgabI8la+D2fnVKvlBLtT/mfKxn2kpT3RvkXQyRTJJor4XQyXzpU29m6G
+         4sfmo+Q371stB5fh8zwjCuq3vmebGCP2NNzhnY+D+CI1lQAttfNVALIIQNzm1cEkAIal
+         LRoVsZcU8IZtQTjjMNzDa78wp94YFFAOLyGAKyK5Q+wOUsEi38mBTg4GHE6JYwMhRwuu
+         +i3Q==
+X-Gm-Message-State: ACgBeo3T+3R5xgK8n7juyw4s+QKGJq12eIeMCrt5Ib5OCbLWppS14K+w
+	S5nI+0GV+oBWYmb5CiLX6Swm3BzA
+X-Google-Smtp-Source: AA6agR7X94qf3OtUDJGLzkj4cWsjYibg6YY4IV1xy6XLdAl9FD6j61Bdm2MS33CLMF48SwPwYFdsoQ==
+X-Received: by 2002:a9d:6ad7:0:b0:636:f76b:638a with SMTP id m23-20020a9d6ad7000000b00636f76b638amr8583857otq.233.1660682086486;
+        Tue, 16 Aug 2022 13:34:46 -0700 (PDT)
 Return-Path: <richard.henderson@linaro.org>
 Received: from stoup.. ([2605:ef80:80f6:61fa:9bc2:5095:d612:5e22])
-        by smtp.gmail.com with ESMTPSA id y23-20020a056870b01700b0010ef8ccde67sm2285220oae.13.2022.08.16.13.34.42
+        by smtp.gmail.com with ESMTPSA id y23-20020a056870b01700b0010ef8ccde67sm2285220oae.13.2022.08.16.13.34.44
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 16 Aug 2022 13:34:43 -0700 (PDT)
+        Tue, 16 Aug 2022 13:34:45 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org,
 	alex.bennee@linaro.org,
 	iii@linux.ibm.com
-Subject: [PATCH v2 17/33] accel/tcg: Add pc and host_pc params to gen_intermediate_code
-Date: Tue, 16 Aug 2022 15:33:44 -0500
-Message-Id: <20220816203400.161187-18-richard.henderson@linaro.org>
+Subject: [PATCH v2 18/33] accel/tcg: Add fast path for translator_ld*
+Date: Tue, 16 Aug 2022 15:33:45 -0500
+Message-Id: <20220816203400.161187-19-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20220816203400.161187-1-richard.henderson@linaro.org>
 References: <20220816203400.161187-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-TUID: d3oMxBhvHqnT
+X-TUID: IF3l0yqeBWiz
 
-Pass these along to translator_loop -- pc may be used instead
-of tb->pc, and host_pc is currently unused.  Adjust all targets
-at one time.
+Cache the translation from guest to host address, so we may
+use direct loads when we hit on the primary translation page.
+
+Look up the second translation page only once, during translation.
+This obviates another lookup of the second page within tb_gen_code
+after translation.
+
+Fixes a bug in that plugin_insn_append should be passed the bytes
+in the original memory order, not bswapped by pieces.
 
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- include/exec/exec-all.h       |  1 -
- include/exec/translator.h     | 24 ++++++++++++++++++++----
- accel/tcg/translate-all.c     |  3 ++-
- accel/tcg/translator.c        |  9 +++++----
- target/alpha/translate.c      |  5 +++--
- target/arm/translate.c        |  5 +++--
- target/avr/translate.c        |  5 +++--
- target/cris/translate.c       |  5 +++--
- target/hexagon/translate.c    |  6 ++++--
- target/hppa/translate.c       |  5 +++--
- target/i386/tcg/translate.c   |  5 +++--
- target/loongarch/translate.c  |  6 ++++--
- target/m68k/translate.c       |  5 +++--
- target/microblaze/translate.c |  5 +++--
- target/mips/tcg/translate.c   |  5 +++--
- target/nios2/translate.c      |  5 +++--
- target/openrisc/translate.c   |  6 ++++--
- target/ppc/translate.c        |  5 +++--
- target/riscv/translate.c      |  5 +++--
- target/rx/translate.c         |  5 +++--
- target/s390x/tcg/translate.c  |  5 +++--
- target/sh4/translate.c        |  5 +++--
- target/sparc/translate.c      |  5 +++--
- target/tricore/translate.c    |  6 ++++--
- target/xtensa/translate.c     |  6 ++++--
- 25 files changed, 95 insertions(+), 52 deletions(-)
+ include/exec/translator.h |  52 ++++++++++++------
+ accel/tcg/translate-all.c |  26 ++++-----
+ accel/tcg/translator.c    | 111 +++++++++++++++++++++++++++++++-------
+ 3 files changed, 138 insertions(+), 51 deletions(-)
 
-diff --git a/include/exec/exec-all.h b/include/exec/exec-all.h
-index 7a6dc44d86..4ad166966b 100644
---- a/include/exec/exec-all.h
-+++ b/include/exec/exec-all.h
-@@ -39,7 +39,6 @@ typedef ram_addr_t tb_page_addr_t;
- #define TB_PAGE_ADDR_FMT RAM_ADDR_FMT
- #endif
- 
--void gen_intermediate_code(CPUState *cpu, TranslationBlock *tb, int max_insns);
- void restore_state_to_opc(CPUArchState *env, TranslationBlock *tb,
-                           target_ulong *data);
- 
 diff --git a/include/exec/translator.h b/include/exec/translator.h
-index 45b9268ca4..69db0f5c21 100644
+index 69db0f5c21..177a001698 100644
 --- a/include/exec/translator.h
 +++ b/include/exec/translator.h
-@@ -26,6 +26,19 @@
- #include "exec/translate-all.h"
- #include "tcg/tcg.h"
- 
-+/**
-+ * gen_intermediate_code
-+ * @cpu: cpu context
-+ * @tb: translation block
-+ * @max_insns: max number of instructions to translate
-+ * @pc: guest virtual program counter address
-+ * @host_pc: host physical program counter address
-+ *
-+ * This function must be provided by the target, which should create
-+ * the target-specific DisasContext, and then invoke translator_loop.
-+ */
-+void gen_intermediate_code(CPUState *cpu, TranslationBlock *tb, int max_insns,
-+                           target_ulong pc, void *host_pc);
- 
- /**
-  * DisasJumpType:
-@@ -123,11 +136,13 @@ typedef struct TranslatorOps {
- 
- /**
-  * translator_loop:
-- * @ops: Target-specific operations.
-- * @db: Disassembly context.
-  * @cpu: Target vCPU.
-  * @tb: Translation block.
-  * @max_insns: Maximum number of insns to translate.
-+ * @pc: guest virtual program counter address
-+ * @host_pc: host physical program counter address
-+ * @ops: Target-specific operations.
-+ * @db: Disassembly context.
-  *
-  * Generic translator loop.
-  *
-@@ -141,8 +156,9 @@ typedef struct TranslatorOps {
-  * - When single-stepping is enabled (system-wide or on the current vCPU).
-  * - When too many instructions have been translated.
+@@ -81,13 +81,14 @@ typedef enum DisasJumpType {
+  * Architecture-agnostic disassembly context.
   */
--void translator_loop(const TranslatorOps *ops, DisasContextBase *db,
--                     CPUState *cpu, TranslationBlock *tb, int max_insns);
-+void translator_loop(CPUState *cpu, TranslationBlock *tb, int max_insns,
-+                     target_ulong pc, void *host_pc,
-+                     const TranslatorOps *ops, DisasContextBase *db);
+ typedef struct DisasContextBase {
+-    const TranslationBlock *tb;
++    TranslationBlock *tb;
+     target_ulong pc_first;
+     target_ulong pc_next;
+     DisasJumpType is_jmp;
+     int num_insns;
+     int max_insns;
+     bool singlestep_enabled;
++    void *host_addr[2];
+ #ifdef CONFIG_USER_ONLY
+     /*
+      * Guest address of the last byte of the last protected page.
+@@ -183,24 +184,43 @@ bool translator_use_goto_tb(DisasContextBase *db, target_ulong dest);
+  * the relevant information at translation time.
+  */
  
- void translator_loop_temp_check(DisasContextBase *db);
+-#define GEN_TRANSLATOR_LD(fullname, type, load_fn, swap_fn)             \
+-    type fullname ## _swap(CPUArchState *env, DisasContextBase *dcbase, \
+-                           abi_ptr pc, bool do_swap);                   \
+-    static inline type fullname(CPUArchState *env,                      \
+-                                DisasContextBase *dcbase, abi_ptr pc)   \
+-    {                                                                   \
+-        return fullname ## _swap(env, dcbase, pc, false);               \
++uint8_t translator_ldub(CPUArchState *env, DisasContextBase *db, abi_ptr pc);
++uint16_t translator_lduw(CPUArchState *env, DisasContextBase *db, abi_ptr pc);
++uint32_t translator_ldl(CPUArchState *env, DisasContextBase *db, abi_ptr pc);
++uint64_t translator_ldq(CPUArchState *env, DisasContextBase *db, abi_ptr pc);
++
++static inline uint16_t
++translator_lduw_swap(CPUArchState *env, DisasContextBase *db,
++                     abi_ptr pc, bool do_swap)
++{
++    uint16_t ret = translator_lduw(env, db, pc);
++    if (do_swap) {
++        ret = bswap16(ret);
+     }
++    return ret;
++}
  
+-#define FOR_EACH_TRANSLATOR_LD(F)                                       \
+-    F(translator_ldub, uint8_t, cpu_ldub_code, /* no swap */)           \
+-    F(translator_lduw, uint16_t, cpu_lduw_code, bswap16)                \
+-    F(translator_ldl, uint32_t, cpu_ldl_code, bswap32)                  \
+-    F(translator_ldq, uint64_t, cpu_ldq_code, bswap64)
++static inline uint32_t
++translator_ldl_swap(CPUArchState *env, DisasContextBase *db,
++                    abi_ptr pc, bool do_swap)
++{
++    uint32_t ret = translator_ldl(env, db, pc);
++    if (do_swap) {
++        ret = bswap32(ret);
++    }
++    return ret;
++}
+ 
+-FOR_EACH_TRANSLATOR_LD(GEN_TRANSLATOR_LD)
+-
+-#undef GEN_TRANSLATOR_LD
++static inline uint64_t
++translator_ldq_swap(CPUArchState *env, DisasContextBase *db,
++                    abi_ptr pc, bool do_swap)
++{
++    uint64_t ret = translator_ldq_swap(env, db, pc, false);
++    if (do_swap) {
++        ret = bswap64(ret);
++    }
++    return ret;
++}
+ 
+ /*
+  * Return whether addr is on the same page as where disassembly started.
 diff --git a/accel/tcg/translate-all.c b/accel/tcg/translate-all.c
-index a5ca424f13..7360ecdb38 100644
+index 7360ecdb38..a8f1c34c4e 100644
 --- a/accel/tcg/translate-all.c
 +++ b/accel/tcg/translate-all.c
-@@ -46,6 +46,7 @@
+@@ -1332,10 +1332,10 @@ TranslationBlock *tb_gen_code(CPUState *cpu,
+ {
+     CPUArchState *env = cpu->env_ptr;
+     TranslationBlock *tb, *existing_tb;
+-    tb_page_addr_t phys_pc, phys_page2;
+-    target_ulong virt_page2;
++    tb_page_addr_t phys_pc;
+     tcg_insn_unit *gen_code_buf;
+     int gen_code_size, search_size, max_insns;
++    void *host_pc;
+ #ifdef CONFIG_PROFILER
+     TCGProfile *prof = &tcg_ctx->prof;
+     int64_t ti;
+@@ -1344,7 +1344,7 @@ TranslationBlock *tb_gen_code(CPUState *cpu,
+     assert_memory_lock();
+     qemu_thread_jit_write();
  
- #include "exec/cputlb.h"
- #include "exec/translate-all.h"
-+#include "exec/translator.h"
- #include "qemu/bitmap.h"
- #include "qemu/qemu-print.h"
- #include "qemu/timer.h"
-@@ -1391,7 +1392,7 @@ TranslationBlock *tb_gen_code(CPUState *cpu,
-     tcg_func_start(tcg_ctx);
+-    phys_pc = get_page_addr_code_hostp(env, pc, false, NULL);
++    phys_pc = get_page_addr_code_hostp(env, pc, false, &host_pc);
  
-     tcg_ctx->cpu = env_cpu(env);
--    gen_intermediate_code(cpu, tb, max_insns);
-+    gen_intermediate_code(cpu, tb, max_insns, pc, host_pc);
-     assert(tb->size != 0);
-     tcg_ctx->cpu = NULL;
-     max_insns = tb->icount;
+     if (phys_pc == -1) {
+         /* Generate a one-shot TB with 1 insn in it */
+@@ -1375,6 +1375,8 @@ TranslationBlock *tb_gen_code(CPUState *cpu,
+     tb->flags = flags;
+     tb->cflags = cflags;
+     tb->trace_vcpu_dstate = *cpu->trace_dstate;
++    tb->page_addr[0] = phys_pc;
++    tb->page_addr[1] = -1;
+     tcg_ctx->tb_cflags = cflags;
+  tb_overflow:
+ 
+@@ -1568,13 +1570,11 @@ TranslationBlock *tb_gen_code(CPUState *cpu,
+     }
+ 
+     /*
+-     * If the TB is not associated with a physical RAM page then
+-     * it must be a temporary one-insn TB, and we have nothing to do
+-     * except fill in the page_addr[] fields. Return early before
+-     * attempting to link to other TBs or add to the lookup table.
++     * If the TB is not associated with a physical RAM page then it must be
++     * a temporary one-insn TB, and we have nothing left to do. Return early
++     * before attempting to link to other TBs or add to the lookup table.
+      */
+-    if (phys_pc == -1) {
+-        tb->page_addr[0] = tb->page_addr[1] = -1;
++    if (tb->page_addr[0] == -1) {
+         return tb;
+     }
+ 
+@@ -1585,17 +1585,11 @@ TranslationBlock *tb_gen_code(CPUState *cpu,
+      */
+     tcg_tb_insert(tb);
+ 
+-    /* check next page if needed */
+-    virt_page2 = (pc + tb->size - 1) & TARGET_PAGE_MASK;
+-    phys_page2 = -1;
+-    if ((pc & TARGET_PAGE_MASK) != virt_page2) {
+-        phys_page2 = get_page_addr_code(env, virt_page2);
+-    }
+     /*
+      * No explicit memory barrier is required -- tb_link_page() makes the
+      * TB visible in a consistent state.
+      */
+-    existing_tb = tb_link_page(tb, phys_pc, phys_page2);
++    existing_tb = tb_link_page(tb, tb->page_addr[0], tb->page_addr[1]);
+     /* if the TB already exists, discard what we just translated */
+     if (unlikely(existing_tb != tb)) {
+         uintptr_t orig_aligned = (uintptr_t)gen_code_buf;
 diff --git a/accel/tcg/translator.c b/accel/tcg/translator.c
-index fe7af9b943..3eef30d93a 100644
+index 3eef30d93a..a693c17259 100644
 --- a/accel/tcg/translator.c
 +++ b/accel/tcg/translator.c
-@@ -51,16 +51,17 @@ static inline void translator_page_protect(DisasContextBase *dcbase,
- #endif
- }
- 
--void translator_loop(const TranslatorOps *ops, DisasContextBase *db,
--                     CPUState *cpu, TranslationBlock *tb, int max_insns)
-+void translator_loop(CPUState *cpu, TranslationBlock *tb, int max_insns,
-+                     target_ulong pc, void *host_pc,
-+                     const TranslatorOps *ops, DisasContextBase *db)
- {
-     uint32_t cflags = tb_cflags(tb);
-     bool plugin_enabled;
- 
-     /* Initialize DisasContext */
-     db->tb = tb;
--    db->pc_first = tb->pc;
--    db->pc_next = db->pc_first;
-+    db->pc_first = pc;
-+    db->pc_next = pc;
-     db->is_jmp = DISAS_NEXT;
+@@ -66,6 +66,8 @@ void translator_loop(CPUState *cpu, TranslationBlock *tb, int max_insns,
      db->num_insns = 0;
      db->max_insns = max_insns;
-diff --git a/target/alpha/translate.c b/target/alpha/translate.c
-index 9af1627079..6766350f56 100644
---- a/target/alpha/translate.c
-+++ b/target/alpha/translate.c
-@@ -3043,10 +3043,11 @@ static const TranslatorOps alpha_tr_ops = {
-     .disas_log          = alpha_tr_disas_log,
- };
+     db->singlestep_enabled = cflags & CF_SINGLE_STEP;
++    db->host_addr[0] = host_pc;
++    db->host_addr[1] = NULL;
+     translator_page_protect(db, db->pc_next);
  
--void gen_intermediate_code(CPUState *cpu, TranslationBlock *tb, int max_insns)
-+void gen_intermediate_code(CPUState *cpu, TranslationBlock *tb, int max_insns,
-+                           target_ulong pc, void *host_pc)
- {
-     DisasContext dc;
--    translator_loop(&alpha_tr_ops, &dc.base, cpu, tb, max_insns);
-+    translator_loop(cpu, tb, max_insns, pc, host_pc, &alpha_tr_ops, &dc.base);
+     ops->init_disas_context(db, cpu);
+@@ -151,31 +153,102 @@ void translator_loop(CPUState *cpu, TranslationBlock *tb, int max_insns,
+ #endif
  }
  
- void restore_state_to_opc(CPUAlphaState *env, TranslationBlock *tb,
-diff --git a/target/arm/translate.c b/target/arm/translate.c
-index ad617b9948..9474e4b44b 100644
---- a/target/arm/translate.c
-+++ b/target/arm/translate.c
-@@ -9892,7 +9892,8 @@ static const TranslatorOps thumb_translator_ops = {
- };
- 
- /* generate intermediate code for basic block 'tb'.  */
--void gen_intermediate_code(CPUState *cpu, TranslationBlock *tb, int max_insns)
-+void gen_intermediate_code(CPUState *cpu, TranslationBlock *tb, int max_insns,
-+                           target_ulong pc, void *host_pc)
+-static inline void translator_maybe_page_protect(DisasContextBase *dcbase,
+-                                                 target_ulong pc, size_t len)
++static void *translator_access(CPUArchState *env, DisasContextBase *db,
++                               target_ulong pc, size_t len)
  {
-     DisasContext dc = { };
-     const TranslatorOps *ops = &arm_translator_ops;
-@@ -9907,7 +9908,7 @@ void gen_intermediate_code(CPUState *cpu, TranslationBlock *tb, int max_insns)
++    void *host;
++    target_ulong base;
++    TranslationBlock *tb;
++
+ #ifdef CONFIG_USER_ONLY
+     target_ulong end = pc + len - 1;
+-
+-    if (end > dcbase->page_protect_end) {
+-        translator_page_protect(dcbase, end);
++    if (end > db->page_protect_end) {
++        translator_page_protect(db, end);
      }
  #endif
+-}
  
--    translator_loop(ops, &dc.base, cpu, tb, max_insns);
-+    translator_loop(cpu, tb, max_insns, pc, host_pc, ops, &dc.base);
- }
+-#define GEN_TRANSLATOR_LD(fullname, type, load_fn, swap_fn)             \
+-    type fullname ## _swap(CPUArchState *env, DisasContextBase *dcbase, \
+-                           abi_ptr pc, bool do_swap)                    \
+-    {                                                                   \
+-        translator_maybe_page_protect(dcbase, pc, sizeof(type));        \
+-        type ret = load_fn(env, pc);                                    \
+-        if (do_swap) {                                                  \
+-            ret = swap_fn(ret);                                         \
+-        }                                                               \
+-        plugin_insn_append(pc, &ret, sizeof(ret));                      \
+-        return ret;                                                     \
++    tb = db->tb;
++    if (unlikely(tb->page_addr[0] == -1)) {
++        /* Use slow path if first page is MMIO. */
++        return NULL;
++    } else if (likely(is_same_page(db, pc + len - 1))) {
++        host = db->host_addr[0];
++        base = db->pc_first;
++    } else if (is_same_page(db, pc)) {
++        /* Use slow path when crossing pages. */
++        return NULL;
++    } else {
++        host = db->host_addr[1];
++        base = TARGET_PAGE_ALIGN(db->pc_first);
++        if (host == NULL) {
++            tb->page_addr[1] =
++                get_page_addr_code_hostp(env, base, false,
++                                         &db->host_addr[1]);
++            /* We cannot handle MMIO as second page. */
++            assert(tb->page_addr[1] != -1);
++            host = db->host_addr[1];
++        }
+     }
  
- void restore_state_to_opc(CPUARMState *env, TranslationBlock *tb,
-diff --git a/target/avr/translate.c b/target/avr/translate.c
-index dc9c3d6bcc..1da34da103 100644
---- a/target/avr/translate.c
-+++ b/target/avr/translate.c
-@@ -3031,10 +3031,11 @@ static const TranslatorOps avr_tr_ops = {
-     .disas_log          = avr_tr_disas_log,
- };
+-FOR_EACH_TRANSLATOR_LD(GEN_TRANSLATOR_LD)
++    tcg_debug_assert(pc >= base);
++    return host + (pc - base);
++}
  
--void gen_intermediate_code(CPUState *cs, TranslationBlock *tb, int max_insns)
-+void gen_intermediate_code(CPUState *cs, TranslationBlock *tb, int max_insns,
-+                           target_ulong pc, void *host_pc)
- {
-     DisasContext dc = { };
--    translator_loop(&avr_tr_ops, &dc.base, cs, tb, max_insns);
-+    translator_loop(cs, tb, max_insns, pc, host_pc, &avr_tr_ops, &dc.base);
- }
- 
- void restore_state_to_opc(CPUAVRState *env, TranslationBlock *tb,
-diff --git a/target/cris/translate.c b/target/cris/translate.c
-index ac101344a3..73385b0b3c 100644
---- a/target/cris/translate.c
-+++ b/target/cris/translate.c
-@@ -3286,10 +3286,11 @@ static const TranslatorOps cris_tr_ops = {
-     .disas_log          = cris_tr_disas_log,
- };
- 
--void gen_intermediate_code(CPUState *cs, TranslationBlock *tb, int max_insns)
-+void gen_intermediate_code(CPUState *cs, TranslationBlock *tb, int max_insns,
-+                           target_ulong pc, void *host_pc)
- {
-     DisasContext dc;
--    translator_loop(&cris_tr_ops, &dc.base, cs, tb, max_insns);
-+    translator_loop(cs, tb, max_insns, pc, host_pc, &cris_tr_ops, &dc.base);
- }
- 
- void cris_cpu_dump_state(CPUState *cs, FILE *f, int flags)
-diff --git a/target/hexagon/translate.c b/target/hexagon/translate.c
-index d4fc92f7e9..0e8a0772f7 100644
---- a/target/hexagon/translate.c
-+++ b/target/hexagon/translate.c
-@@ -850,11 +850,13 @@ static const TranslatorOps hexagon_tr_ops = {
-     .disas_log          = hexagon_tr_disas_log,
- };
- 
--void gen_intermediate_code(CPUState *cs, TranslationBlock *tb, int max_insns)
-+void gen_intermediate_code(CPUState *cs, TranslationBlock *tb, int max_insns,
-+                           target_ulong pc, void *host_pc)
- {
-     DisasContext ctx;
- 
--    translator_loop(&hexagon_tr_ops, &ctx.base, cs, tb, max_insns);
-+    translator_loop(cs, tb, max_insns, pc, host_pc,
-+                    &hexagon_tr_ops, &ctx.base);
- }
- 
- #define NAME_LEN               64
-diff --git a/target/hppa/translate.c b/target/hppa/translate.c
-index b8dbfee5e9..8b861957e0 100644
---- a/target/hppa/translate.c
-+++ b/target/hppa/translate.c
-@@ -4340,10 +4340,11 @@ static const TranslatorOps hppa_tr_ops = {
-     .disas_log          = hppa_tr_disas_log,
- };
- 
--void gen_intermediate_code(CPUState *cs, TranslationBlock *tb, int max_insns)
-+void gen_intermediate_code(CPUState *cs, TranslationBlock *tb, int max_insns,
-+                           target_ulong pc, void *host_pc)
- {
-     DisasContext ctx;
--    translator_loop(&hppa_tr_ops, &ctx.base, cs, tb, max_insns);
-+    translator_loop(cs, tb, max_insns, pc, host_pc, &hppa_tr_ops, &ctx.base);
- }
- 
- void restore_state_to_opc(CPUHPPAState *env, TranslationBlock *tb,
-diff --git a/target/i386/tcg/translate.c b/target/i386/tcg/translate.c
-index a23417d058..4836c889e0 100644
---- a/target/i386/tcg/translate.c
-+++ b/target/i386/tcg/translate.c
-@@ -8708,11 +8708,12 @@ static const TranslatorOps i386_tr_ops = {
- };
- 
- /* generate intermediate code for basic block 'tb'.  */
--void gen_intermediate_code(CPUState *cpu, TranslationBlock *tb, int max_insns)
-+void gen_intermediate_code(CPUState *cpu, TranslationBlock *tb, int max_insns,
-+                           target_ulong pc, void *host_pc)
- {
-     DisasContext dc;
- 
--    translator_loop(&i386_tr_ops, &dc.base, cpu, tb, max_insns);
-+    translator_loop(cpu, tb, max_insns, pc, host_pc, &i386_tr_ops, &dc.base);
- }
- 
- void restore_state_to_opc(CPUX86State *env, TranslationBlock *tb,
-diff --git a/target/loongarch/translate.c b/target/loongarch/translate.c
-index 51ba291430..95b37ea180 100644
---- a/target/loongarch/translate.c
-+++ b/target/loongarch/translate.c
-@@ -241,11 +241,13 @@ static const TranslatorOps loongarch_tr_ops = {
-     .disas_log          = loongarch_tr_disas_log,
- };
- 
--void gen_intermediate_code(CPUState *cs, TranslationBlock *tb, int max_insns)
-+void gen_intermediate_code(CPUState *cs, TranslationBlock *tb, int max_insns,
-+                           target_ulong pc, void *host_pc)
- {
-     DisasContext ctx;
- 
--    translator_loop(&loongarch_tr_ops, &ctx.base, cs, tb, max_insns);
-+    translator_loop(cs, tb, max_insns, pc, host_pc,
-+                    &loongarch_tr_ops, &ctx.base);
- }
- 
- void loongarch_translate_init(void)
-diff --git a/target/m68k/translate.c b/target/m68k/translate.c
-index 8f3c298ad0..5098f7e570 100644
---- a/target/m68k/translate.c
-+++ b/target/m68k/translate.c
-@@ -6361,10 +6361,11 @@ static const TranslatorOps m68k_tr_ops = {
-     .disas_log          = m68k_tr_disas_log,
- };
- 
--void gen_intermediate_code(CPUState *cpu, TranslationBlock *tb, int max_insns)
-+void gen_intermediate_code(CPUState *cpu, TranslationBlock *tb, int max_insns,
-+                           target_ulong pc, void *host_pc)
- {
-     DisasContext dc;
--    translator_loop(&m68k_tr_ops, &dc.base, cpu, tb, max_insns);
-+    translator_loop(cpu, tb, max_insns, pc, host_pc, &m68k_tr_ops, &dc.base);
- }
- 
- static double floatx80_to_double(CPUM68KState *env, uint16_t high, uint64_t low)
-diff --git a/target/microblaze/translate.c b/target/microblaze/translate.c
-index bf01384d33..c5546f93aa 100644
---- a/target/microblaze/translate.c
-+++ b/target/microblaze/translate.c
-@@ -1849,10 +1849,11 @@ static const TranslatorOps mb_tr_ops = {
-     .disas_log          = mb_tr_disas_log,
- };
- 
--void gen_intermediate_code(CPUState *cpu, TranslationBlock *tb, int max_insns)
-+void gen_intermediate_code(CPUState *cpu, TranslationBlock *tb, int max_insns,
-+                           target_ulong pc, void *host_pc)
- {
-     DisasContext dc;
--    translator_loop(&mb_tr_ops, &dc.base, cpu, tb, max_insns);
-+    translator_loop(cpu, tb, max_insns, pc, host_pc, &mb_tr_ops, &dc.base);
- }
- 
- void mb_cpu_dump_state(CPUState *cs, FILE *f, int flags)
-diff --git a/target/mips/tcg/translate.c b/target/mips/tcg/translate.c
-index de1511baaf..0d936e2648 100644
---- a/target/mips/tcg/translate.c
-+++ b/target/mips/tcg/translate.c
-@@ -16155,11 +16155,12 @@ static const TranslatorOps mips_tr_ops = {
-     .disas_log          = mips_tr_disas_log,
- };
- 
--void gen_intermediate_code(CPUState *cs, TranslationBlock *tb, int max_insns)
-+void gen_intermediate_code(CPUState *cs, TranslationBlock *tb, int max_insns,
-+                           target_ulong pc, void *host_pc)
- {
-     DisasContext ctx;
- 
--    translator_loop(&mips_tr_ops, &ctx.base, cs, tb, max_insns);
-+    translator_loop(cs, tb, max_insns, pc, host_pc, &mips_tr_ops, &ctx.base);
- }
- 
- void mips_tcg_init(void)
-diff --git a/target/nios2/translate.c b/target/nios2/translate.c
-index 3a037a68cc..c588e8e885 100644
---- a/target/nios2/translate.c
-+++ b/target/nios2/translate.c
-@@ -1038,10 +1038,11 @@ static const TranslatorOps nios2_tr_ops = {
-     .disas_log          = nios2_tr_disas_log,
- };
- 
--void gen_intermediate_code(CPUState *cs, TranslationBlock *tb, int max_insns)
-+void gen_intermediate_code(CPUState *cs, TranslationBlock *tb, int max_insns,
-+                           target_ulong pc, void *host_pc)
- {
-     DisasContext dc;
--    translator_loop(&nios2_tr_ops, &dc.base, cs, tb, max_insns);
-+    translator_loop(cs, tb, max_insns, pc, host_pc, &nios2_tr_ops, &dc.base);
- }
- 
- void nios2_cpu_dump_state(CPUState *cs, FILE *f, int flags)
-diff --git a/target/openrisc/translate.c b/target/openrisc/translate.c
-index 7b8ad43d5f..8154f9d744 100644
---- a/target/openrisc/translate.c
-+++ b/target/openrisc/translate.c
-@@ -1705,11 +1705,13 @@ static const TranslatorOps openrisc_tr_ops = {
-     .disas_log          = openrisc_tr_disas_log,
- };
- 
--void gen_intermediate_code(CPUState *cs, TranslationBlock *tb, int max_insns)
-+void gen_intermediate_code(CPUState *cs, TranslationBlock *tb, int max_insns,
-+                           target_ulong pc, void *host_pc)
- {
-     DisasContext ctx;
- 
--    translator_loop(&openrisc_tr_ops, &ctx.base, cs, tb, max_insns);
-+    translator_loop(cs, tb, max_insns, pc, host_pc,
-+                    &openrisc_tr_ops, &ctx.base);
- }
- 
- void openrisc_cpu_dump_state(CPUState *cs, FILE *f, int flags)
-diff --git a/target/ppc/translate.c b/target/ppc/translate.c
-index 388337f81b..000b1e518d 100644
---- a/target/ppc/translate.c
-+++ b/target/ppc/translate.c
-@@ -7719,11 +7719,12 @@ static const TranslatorOps ppc_tr_ops = {
-     .disas_log          = ppc_tr_disas_log,
- };
- 
--void gen_intermediate_code(CPUState *cs, TranslationBlock *tb, int max_insns)
-+void gen_intermediate_code(CPUState *cs, TranslationBlock *tb, int max_insns,
-+                           target_ulong pc, void *host_pc)
- {
-     DisasContext ctx;
- 
--    translator_loop(&ppc_tr_ops, &ctx.base, cs, tb, max_insns);
-+    translator_loop(cs, tb, max_insns, pc, host_pc, &ppc_tr_ops, &ctx.base);
- }
- 
- void restore_state_to_opc(CPUPPCState *env, TranslationBlock *tb,
-diff --git a/target/riscv/translate.c b/target/riscv/translate.c
-index 63b04e8a94..38666ddc91 100644
---- a/target/riscv/translate.c
-+++ b/target/riscv/translate.c
-@@ -1196,11 +1196,12 @@ static const TranslatorOps riscv_tr_ops = {
-     .disas_log          = riscv_tr_disas_log,
- };
- 
--void gen_intermediate_code(CPUState *cs, TranslationBlock *tb, int max_insns)
-+void gen_intermediate_code(CPUState *cs, TranslationBlock *tb, int max_insns,
-+                           target_ulong pc, void *host_pc)
- {
-     DisasContext ctx;
- 
--    translator_loop(&riscv_tr_ops, &ctx.base, cs, tb, max_insns);
-+    translator_loop(cs, tb, max_insns, pc, host_pc, &riscv_tr_ops, &ctx.base);
- }
- 
- void riscv_translate_init(void)
-diff --git a/target/rx/translate.c b/target/rx/translate.c
-index 62aee66937..ea5653bc95 100644
---- a/target/rx/translate.c
-+++ b/target/rx/translate.c
-@@ -2363,11 +2363,12 @@ static const TranslatorOps rx_tr_ops = {
-     .disas_log          = rx_tr_disas_log,
- };
- 
--void gen_intermediate_code(CPUState *cs, TranslationBlock *tb, int max_insns)
-+void gen_intermediate_code(CPUState *cs, TranslationBlock *tb, int max_insns,
-+                           target_ulong pc, void *host_pc)
- {
-     DisasContext dc;
- 
--    translator_loop(&rx_tr_ops, &dc.base, cs, tb, max_insns);
-+    translator_loop(cs, tb, max_insns, pc, host_pc, &rx_tr_ops, &dc.base);
- }
- 
- void restore_state_to_opc(CPURXState *env, TranslationBlock *tb,
-diff --git a/target/s390x/tcg/translate.c b/target/s390x/tcg/translate.c
-index e2ee005671..d4c0b9b3a2 100644
---- a/target/s390x/tcg/translate.c
-+++ b/target/s390x/tcg/translate.c
-@@ -6676,11 +6676,12 @@ static const TranslatorOps s390x_tr_ops = {
-     .disas_log          = s390x_tr_disas_log,
- };
- 
--void gen_intermediate_code(CPUState *cs, TranslationBlock *tb, int max_insns)
-+void gen_intermediate_code(CPUState *cs, TranslationBlock *tb, int max_insns,
-+                           target_ulong pc, void *host_pc)
- {
-     DisasContext dc;
- 
--    translator_loop(&s390x_tr_ops, &dc.base, cs, tb, max_insns);
-+    translator_loop(cs, tb, max_insns, pc, host_pc, &s390x_tr_ops, &dc.base);
- }
- 
- void restore_state_to_opc(CPUS390XState *env, TranslationBlock *tb,
-diff --git a/target/sh4/translate.c b/target/sh4/translate.c
-index f1b190e7cf..01056571c3 100644
---- a/target/sh4/translate.c
-+++ b/target/sh4/translate.c
-@@ -2368,11 +2368,12 @@ static const TranslatorOps sh4_tr_ops = {
-     .disas_log          = sh4_tr_disas_log,
- };
- 
--void gen_intermediate_code(CPUState *cs, TranslationBlock *tb, int max_insns)
-+void gen_intermediate_code(CPUState *cs, TranslationBlock *tb, int max_insns,
-+                           target_ulong pc, void *host_pc)
- {
-     DisasContext ctx;
- 
--    translator_loop(&sh4_tr_ops, &ctx.base, cs, tb, max_insns);
-+    translator_loop(cs, tb, max_insns, pc, host_pc, &sh4_tr_ops, &ctx.base);
- }
- 
- void restore_state_to_opc(CPUSH4State *env, TranslationBlock *tb,
-diff --git a/target/sparc/translate.c b/target/sparc/translate.c
-index 2e28222d31..2cbbe2396a 100644
---- a/target/sparc/translate.c
-+++ b/target/sparc/translate.c
-@@ -5917,11 +5917,12 @@ static const TranslatorOps sparc_tr_ops = {
-     .disas_log          = sparc_tr_disas_log,
- };
- 
--void gen_intermediate_code(CPUState *cs, TranslationBlock *tb, int max_insns)
-+void gen_intermediate_code(CPUState *cs, TranslationBlock *tb, int max_insns,
-+                           target_ulong pc, void *host_pc)
- {
-     DisasContext dc = {};
- 
--    translator_loop(&sparc_tr_ops, &dc.base, cs, tb, max_insns);
-+    translator_loop(cs, tb, max_insns, pc, host_pc, &sparc_tr_ops, &dc.base);
- }
- 
- void sparc_tcg_init(void)
-diff --git a/target/tricore/translate.c b/target/tricore/translate.c
-index d170500fa5..a0558ead71 100644
---- a/target/tricore/translate.c
-+++ b/target/tricore/translate.c
-@@ -8878,10 +8878,12 @@ static const TranslatorOps tricore_tr_ops = {
- };
- 
- 
--void gen_intermediate_code(CPUState *cs, TranslationBlock *tb, int max_insns)
-+void gen_intermediate_code(CPUState *cs, TranslationBlock *tb, int max_insns,
-+                           target_ulong pc, void *host_pc)
- {
-     DisasContext ctx;
--    translator_loop(&tricore_tr_ops, &ctx.base, cs, tb, max_insns);
-+    translator_loop(cs, tb, max_insns, pc, host_pc,
-+                    &tricore_tr_ops, &ctx.base);
- }
- 
- void
-diff --git a/target/xtensa/translate.c b/target/xtensa/translate.c
-index 70e11eeb45..8b864ef925 100644
---- a/target/xtensa/translate.c
-+++ b/target/xtensa/translate.c
-@@ -1279,10 +1279,12 @@ static const TranslatorOps xtensa_translator_ops = {
-     .disas_log          = xtensa_tr_disas_log,
- };
- 
--void gen_intermediate_code(CPUState *cpu, TranslationBlock *tb, int max_insns)
-+void gen_intermediate_code(CPUState *cpu, TranslationBlock *tb, int max_insns,
-+                           target_ulong pc, void *host_pc)
- {
-     DisasContext dc = {};
--    translator_loop(&xtensa_translator_ops, &dc.base, cpu, tb, max_insns);
-+    translator_loop(cpu, tb, max_insns, pc, host_pc,
-+                    &xtensa_translator_ops, &dc.base);
- }
- 
- void xtensa_cpu_dump_state(CPUState *cs, FILE *f, int flags)
+-#undef GEN_TRANSLATOR_LD
++uint8_t translator_ldub(CPUArchState *env, DisasContextBase *db, abi_ptr pc)
++{
++    uint8_t ret;
++    void *p = translator_access(env, db, pc, sizeof(ret));
++
++    if (p) {
++        plugin_insn_append(pc, p, sizeof(ret));
++        return ldub_p(p);
++    }
++    ret = cpu_ldub_code(env, pc);
++    plugin_insn_append(pc, &ret, sizeof(ret));
++    return ret;
++}
++
++uint16_t translator_lduw(CPUArchState *env, DisasContextBase *db, abi_ptr pc)
++{
++    uint16_t ret, plug;
++    void *p = translator_access(env, db, pc, sizeof(ret));
++
++    if (p) {
++        plugin_insn_append(pc, p, sizeof(ret));
++        return lduw_p(p);
++    }
++    ret = cpu_lduw_code(env, pc);
++    plug = tswap16(ret);
++    plugin_insn_append(pc, &plug, sizeof(ret));
++    return ret;
++}
++
++uint32_t translator_ldl(CPUArchState *env, DisasContextBase *db, abi_ptr pc)
++{
++    uint32_t ret, plug;
++    void *p = translator_access(env, db, pc, sizeof(ret));
++
++    if (p) {
++        plugin_insn_append(pc, p, sizeof(ret));
++        return ldl_p(p);
++    }
++    ret = cpu_ldl_code(env, pc);
++    plug = tswap32(ret);
++    plugin_insn_append(pc, &plug, sizeof(ret));
++    return ret;
++}
++
++uint64_t translator_ldq(CPUArchState *env, DisasContextBase *db, abi_ptr pc)
++{
++    uint64_t ret, plug;
++    void *p = translator_access(env, db, pc, sizeof(ret));
++
++    if (p) {
++        plugin_insn_append(pc, p, sizeof(ret));
++        return ldq_p(p);
++    }
++    ret = cpu_ldq_code(env, pc);
++    plug = tswap64(ret);
++    plugin_insn_append(pc, &plug, sizeof(ret));
++    return ret;
++}
 -- 
 2.34.1

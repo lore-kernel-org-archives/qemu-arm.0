@@ -1,158 +1,128 @@
-Received: by 2002:a17:906:3b11:0:0:0:0 with SMTP id g17csp2008825ejf;
-        Tue, 16 Aug 2022 13:34:11 -0700 (PDT)
-X-Received: by 2002:a9d:6e0a:0:b0:637:60a:795f with SMTP id e10-20020a9d6e0a000000b00637060a795fmr8100954otr.121.1660682050826;
-        Tue, 16 Aug 2022 13:34:10 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1660682050; cv=none;
+Received: by 2002:a17:906:3b11:0:0:0:0 with SMTP id g17csp2008836ejf;
+        Tue, 16 Aug 2022 13:34:12 -0700 (PDT)
+X-Received: by 2002:a05:6870:340f:b0:118:1d8e:7d4f with SMTP id g15-20020a056870340f00b001181d8e7d4fmr140402oah.121.1660682052528;
+        Tue, 16 Aug 2022 13:34:12 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1660682052; cv=none;
         d=google.com; s=arc-20160816;
-        b=YiYq5JY0QxhgYifCTLtsUo0z/QAvZsQgGmhM6YJkiA49tqFnImiZ+FXhJ9J8tK54i2
-         VSmdOh87w1SCRFVlxQaaGyHuzvKeIzFzZw+P7GZYW/Y/CudNsO+B+mXMB4/4K6E42GVt
-         B8OYuhMIf/NEhbFg59Boc/MV//Dlpg6154tMtYaIBVr4hp5nKDlzLw/Rg6HxcCWJ+4Ug
-         kOsuskV01iUyHpXoH4qCjFCfoDAgqFJt/5db8sP8gcKzdCCAE7AQB6teNs8en+pyYu/k
-         yLsvm2vyTU5u3otejX7pVXShnV+BWxuQFylz/kqbJTmnKHA92FN5Qkb/18laN531QTrz
-         hjnw==
+        b=SanjZwgpSX7pyfFCylimeJRkImqGYBBMoMQVnbOSFzEYLbKeV7owlazeUTAVA7+Nsq
+         hKz2bR4dzDDQpg0LTMPLzc30YPJWuMfe/XHnqW6h891OT6nM08X/6zD9K+RXLXYhAKS3
+         5pXM2wx2mHDaASqmKmJXVBeUzeWvTasR5ST1ZW4l/m9oREKbvTLpM8a1ee4aQl4gPy7b
+         vYkNC7BNVvbc9dym6x2BTUz7YpFWUqdNFzXyYv7mfFrCqPbufPfH9fuYJN4RmLsulqMT
+         E2SKwQkrJk2g7yQ6g1nk3DBnN6UdOEpQcOacRJldG0LdnKyuhWkbx6pC0z9PQ0ERHGBy
+         Vh/Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=aJaNQ6aSdE9rWibAJT4lh7LTRwz3SqqWw+/j8K8vQwg=;
-        b=s8dLlUCz18FeAM6rHL9GTi5ryTlSidmWIyEwLeI6MnHwoGFA0iaCSkN6quy5+jmcXm
-         oLtNkZup2T+2kBeFLyTxkyXVBCbjjuTxwQpkoDVRc0YbvKfLhHlfWI+0yofAmclBV74m
-         cTmpmZjrL9YcOi6dduV8xRhyaAenXqAXvRNF7eAB8PsWVlyg+L6l9CU4tm9eIX0EXdze
-         BHrZrswNhjInHEdLlCN8Mt10twZsiumV9lDjbuZQr7kEuUJRcYEr1IeoHTjS1cmz35sd
-         fbuU3yNTgO12Xp3AvQwgk/4XMcoVjKDp9RJBdk4Q9jcojdj7Usr5QHmmXZnmTfMlxYOB
-         LD4w==
+        bh=X+2CEfgvZFxpq8e6EY+n5lvWBzz+vc8fFcrenQ8ZGDI=;
+        b=KRY1xgFlndwNffMvNjyHmtJYz4WRVB44QCdn8jSfUHVYLZ/JwZeNaXNHKgEtXYXiva
+         zvuE3rEkfJV6Y6blnE/IVQl+QEQq5OUxGfGCE8Ek22xiAt5A5A6q6J+zDY5CR/3XwPJf
+         dd3W/hqt8/CwDJNoOZqwKgueAC04N2EwbXLQvVZP1Vk/9ErNNoz4xaszgd/OkO1Z9zwJ
+         98dpRjyjLNNm8oYs0Rv7TU06wAFGKJjlQgSjKOCGHUZ2bl0xX+1F5+RQq5Ih5n/TdLzA
+         SHvLRwb1mCMuBpmpCgbrcgijBdQXMxiaqF92E+TJR0I02gy3m3BtwjUOzOiydNxDLnC3
+         vHXg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=oEnMed6t;
+       dkim=pass header.i=@linaro.org header.s=google header.b=wxp36Q2m;
        spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <richard.henderson@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id qj2-20020a0568702f0200b0010cca90b1c5sor2286817oab.38.2022.08.16.13.34.10
+        by mx.google.com with SMTPS id z20-20020a056871015400b0010e86463650sor2356018oab.124.2022.08.16.13.34.12
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Tue, 16 Aug 2022 13:34:10 -0700 (PDT)
+        Tue, 16 Aug 2022 13:34:12 -0700 (PDT)
 Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=oEnMed6t;
+       dkim=pass header.i=@linaro.org header.s=google header.b=wxp36Q2m;
        spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc;
-        bh=aJaNQ6aSdE9rWibAJT4lh7LTRwz3SqqWw+/j8K8vQwg=;
-        b=oEnMed6tOl3Y+xrLCmvfWgfuaWYWu3X97xgc/ysSM9aVPWfbLsw6DQwmi77+Kwshfg
-         tkgqfIcJaqD7iI3n1EktcX/lH3sdryHe/fiJtnqIx3xjnwwKH/c+rw5qY1IYvtteTTMP
-         CDBo/zOLPFWGYqXJazEynH973s0k6lL+akWmhV+f6RQK7gUSX6M0G/G4OaMSVM05Igjd
-         Ora/qx2GvapfmEWp79EBQRS3PVu67MQBdDrwe9yKGxHPWM+0gvQ2psUntEveFX3/WBQK
-         VK1B1nki5NwOymq4tjFO13oaH03ZnwcHyo/UyzKdFr80JXAWpFFhlAiJafJ3x9kjOb4p
-         c5Pw==
+        bh=X+2CEfgvZFxpq8e6EY+n5lvWBzz+vc8fFcrenQ8ZGDI=;
+        b=wxp36Q2md0qnMRWC7iJRWrPljfk3YY4ss/v5NNmDqz9qd8HChkrMXEGw0Loj4dkLge
+         Wt+QpOsbZhnimu1x3djtflOdpVih/xCGv9eTfUjj2tjuWiwMJ5Ldl+iDOlevU0ZLaER0
+         GLVx3J+sWamaF93Oaekmt1B/ku/w8KBZ/EdabhHGvyewIGKKVzMKXUbWaCwW3JEXyRBS
+         PfNEKlL2fUst1eK4mkqlJMk3Y+2Mth0a+w8GRQAcB27FBiOsUqBOyd2ziSAzBsQRllAu
+         6Vkd4Z26TZ6Ev+NKzA5Vl11jrVX70XrkqWltEQGdCLey7vTXNc9IxaJV4ut3KRveN8KV
+         zc0g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc;
-        bh=aJaNQ6aSdE9rWibAJT4lh7LTRwz3SqqWw+/j8K8vQwg=;
-        b=N3OdRdD4/k8hm24Fjo0083mctaRX8o1byWvWKyh5NtfHWRSiNCRmh9rLD2O+khbMWz
-         y9zGrICY8LueC5aKnWwjlARxJ4C0ox8Ihm5RAP07vRZoDYcOckXlyob2M+9rNQ5dGHfS
-         LvGnycBcluaWujg6WxezjB00688PzNHVlG+hK1odZTDc/tsTCgabKjCeB9OStQFHaTsb
-         89EYBL6N7ZAgTirOG9Trafvf1g3Z/5VOdlRyozBHQQWb4ri7Mr6UZR8mHlOR7uQbCbw4
-         2HwTCxOeBPkufbFlf7SgqgjjAstuM+g6m87aSJ+g2HTrcAfJYQwZ3z7uuoggMI6Hw98b
-         wCbg==
-X-Gm-Message-State: ACgBeo1dFFfd0+hXfEsnoifWNPG17OkTYCRf9pTmaVkx2EfSAjHRpYrY
-	BWPd408tC0UpxN5lw6kG4pGvSV13
-X-Google-Smtp-Source: AA6agR5QloLnexmhB6aaW0yHTIzd3pfTqjdlI8EYIxlgEb2CSRznLrbSrCzZDw927/ez7i06DuLZWw==
-X-Received: by 2002:a05:6870:5584:b0:10d:ccda:433c with SMTP id n4-20020a056870558400b0010dccda433cmr135106oao.185.1660682050234;
-        Tue, 16 Aug 2022 13:34:10 -0700 (PDT)
+        bh=X+2CEfgvZFxpq8e6EY+n5lvWBzz+vc8fFcrenQ8ZGDI=;
+        b=ekk1WiWTjt2uOujBDDQV0wjoGNuL+lLSQVlwTwDfwpbM5nqTxlpuqnLqlkz6gfXESm
+         UFF8Am0VRiwGQkpPaZZlWpEjBoVQevOt3a06yJyh5xJSfIWz1AQsk2mcwXYUhXD6yV0v
+         9GN/jl8LEu4d0lWtxU0wiRfNOTRKuurt/19YtFBTYzpUYCafbeRNdzNlItd/wjq0Qh7P
+         fkbOPX/XI1Ta6csjkkeFTR7tHF4KAofzZm6R1AcE1vMLL4jPb3P63uAWQr2fadPcBMho
+         bz3wxmMi4th7XLbQTkbM+6IHgag5a0sOO5m+y1E0PX0IMCJATRKxO90pPby7sdtBFLOB
+         DrGg==
+X-Gm-Message-State: ACgBeo3rXn4gVTzrjlK6AwwR7/0nhCtvKamRWZExmYP/J4ZK004kxlvm
+	TS11Ai9nL9JE/7TjT42b1ewTivBa
+X-Google-Smtp-Source: AA6agR7AIyM0meJ38Q6g7vrxciJvzvnNhOeXxjVBeJC07Wx/zrjRlGJ0TyATHceV6K26OZb1lTWVVQ==
+X-Received: by 2002:a05:6870:4251:b0:10e:6ca2:5a29 with SMTP id v17-20020a056870425100b0010e6ca25a29mr161727oac.100.1660682052144;
+        Tue, 16 Aug 2022 13:34:12 -0700 (PDT)
 Return-Path: <richard.henderson@linaro.org>
 Received: from stoup.. ([2605:ef80:80f6:61fa:9bc2:5095:d612:5e22])
-        by smtp.gmail.com with ESMTPSA id y23-20020a056870b01700b0010ef8ccde67sm2285220oae.13.2022.08.16.13.34.08
+        by smtp.gmail.com with ESMTPSA id y23-20020a056870b01700b0010ef8ccde67sm2285220oae.13.2022.08.16.13.34.10
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 16 Aug 2022 13:34:09 -0700 (PDT)
+        Tue, 16 Aug 2022 13:34:11 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org,
 	alex.bennee@linaro.org,
 	iii@linux.ibm.com
-Subject: [PATCH v2 02/33] linux-user/hppa: Allocate page zero as a commpage
-Date: Tue, 16 Aug 2022 15:33:29 -0500
-Message-Id: <20220816203400.161187-3-richard.henderson@linaro.org>
+Subject: [PATCH v2 03/33] linux-user/x86_64: Allocate vsyscall page as a commpage
+Date: Tue, 16 Aug 2022 15:33:30 -0500
+Message-Id: <20220816203400.161187-4-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20220816203400.161187-1-richard.henderson@linaro.org>
 References: <20220816203400.161187-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-TUID: 0lHuueMgJGoK
+X-TUID: VLAWPv//S13J
 
 We're about to start validating PAGE_EXEC, which means that we've
-got to mark page zero executable.  We had been special casing this
-entirely within translate.
+got to the vsyscall page executable.  We had been special casing
+this entirely within translate.
 
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- linux-user/elfload.c | 34 +++++++++++++++++++++++++++++++---
- 1 file changed, 31 insertions(+), 3 deletions(-)
+ linux-user/elfload.c | 22 ++++++++++++++++++++++
+ 1 file changed, 22 insertions(+)
 
 diff --git a/linux-user/elfload.c b/linux-user/elfload.c
-index 3e3dc02499..29d910c4cc 100644
+index 29d910c4cc..d783240a36 100644
 --- a/linux-user/elfload.c
 +++ b/linux-user/elfload.c
-@@ -1646,6 +1646,34 @@ static inline void init_thread(struct target_pt_regs *regs,
-     regs->gr[31] = infop->entry;
+@@ -195,6 +195,28 @@ static void elf_core_copy_regs(target_elf_gregset_t *regs, const CPUX86State *en
+     (*regs)[26] = tswapreg(env->segs[R_GS].selector & 0xffff);
  }
  
-+#define LO_COMMPAGE  0
++#if ULONG_MAX >= TARGET_VSYSCALL_PAGE
++#define HI_COMMPAGE  TARGET_VSYSCALL_PAGE
 +
 +static bool init_guest_commpage(void)
 +{
-+    void *want = g2h_untagged(LO_COMMPAGE);
-+    void *addr = mmap(want, qemu_host_page_size, PROT_NONE,
-+                      MAP_ANONYMOUS | MAP_PRIVATE | MAP_FIXED, -1, 0);
-+
-+    if (addr == MAP_FAILED) {
-+        perror("Allocating guest commpage");
++    /*
++     * The vsyscall page is at a high negative address aka kernel space,
++     * which means that we cannot actually allocate it with target_mmap.
++     * We still should be able to use page_set_flags, unless the user
++     * has specified -R reserved_va, which would trigger an assert().
++     */
++    if (reserved_va != 0 &&
++        TARGET_VSYSCALL_PAGE + TARGET_PAGE_SIZE >= reserved_va) {
++        error_report("Cannot allocate vsyscall page");
 +        exit(EXIT_FAILURE);
 +    }
-+    if (addr != want) {
-+        return false;
-+    }
-+
-+    /*
-+     * On Linux, page zero is normally marked execute only + gateway.
-+     * Normal read or write is supposed to fail (thus PROT_NONE above),
-+     * but specific offsets have kernel code mapped to raise permissions
-+     * and implement syscalls.  Here, simply mark the page executable.
-+     * Special case the entry points during translation (see do_page_zero).
-+     */
-+    page_set_flags(LO_COMMPAGE, LO_COMMPAGE + TARGET_PAGE_SIZE,
++    page_set_flags(TARGET_VSYSCALL_PAGE,
++                   TARGET_VSYSCALL_PAGE + TARGET_PAGE_SIZE,
 +                   PAGE_EXEC | PAGE_VALID);
 +    return true;
 +}
-+
- #endif /* TARGET_HPPA */
- 
- #ifdef TARGET_XTENSA
-@@ -2326,12 +2354,12 @@ static abi_ulong create_elf_tables(abi_ulong p, int argc, int envc,
- }
- 
- #if defined(HI_COMMPAGE)
--#define LO_COMMPAGE 0
-+#define LO_COMMPAGE -1
- #elif defined(LO_COMMPAGE)
- #define HI_COMMPAGE 0
++#endif
  #else
- #define HI_COMMPAGE 0
--#define LO_COMMPAGE 0
-+#define LO_COMMPAGE -1
- #define init_guest_commpage() true
- #endif
  
-@@ -2555,7 +2583,7 @@ static void pgb_static(const char *image_name, abi_ulong orig_loaddr,
-         } else {
-             offset = -(HI_COMMPAGE & -align);
-         }
--    } else if (LO_COMMPAGE != 0) {
-+    } else if (LO_COMMPAGE != -1) {
-         loaddr = MIN(loaddr, LO_COMMPAGE & -align);
-     }
- 
+ #define ELF_START_MMAP 0x80000000
 -- 
 2.34.1

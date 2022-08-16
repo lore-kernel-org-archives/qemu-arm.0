@@ -1,149 +1,112 @@
-Received: by 2002:a17:906:3b11:0:0:0:0 with SMTP id g17csp1712033ejf;
-        Tue, 16 Aug 2022 03:50:25 -0700 (PDT)
-X-Google-Smtp-Source: AA6agR7oU2Ggy3U8VZkHS/V8O3GMLA89JxXiFxSxsvxwRJxIR+mo8i6WbWDQnktxMMtXb2meGpe9
-X-Received: by 2002:a5d:6d8f:0:b0:222:c96d:858a with SMTP id l15-20020a5d6d8f000000b00222c96d858amr10664346wrs.127.1660647025642;
-        Tue, 16 Aug 2022 03:50:25 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1660647025; cv=none;
+Received: by 2002:a17:906:3b11:0:0:0:0 with SMTP id g17csp1714020ejf;
+        Tue, 16 Aug 2022 03:55:46 -0700 (PDT)
+X-Google-Smtp-Source: AA6agR6lyYxK+mKhp7VlIg6rUSlMPRjXlo18FNlpqrqpDpMmXuYx9GsXPvXYAqAsBRZ2fXR/jtOj
+X-Received: by 2002:a05:600c:1993:b0:3a4:c0a9:5b6f with SMTP id t19-20020a05600c199300b003a4c0a95b6fmr12829205wmq.79.1660647346306;
+        Tue, 16 Aug 2022 03:55:46 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1660647346; cv=none;
         d=google.com; s=arc-20160816;
-        b=sfhkEn2VnAoo5YTo01qP3atPbVY0pPcLFn2rMyyIMm1G1/fwWqTcAlycwHdmOfLL1I
-         FQ30pgvVngzmjS/1h+KlmMn41EAMV3J4VspBCEakASdO8cs1zL3DWWCfZkf/Ee6likOu
-         jtD4uxHBAAS35TnxAJc7CbzZ7u8qDsIP+vB2CDHMbqM6jRjTYJv4zVLeFHdL9lvln4h8
-         g+0yPR/w4CMNQynv2Ici4iW4wI+id0Slump4atJe5vNsMIXoEDI1NQvViYGTAhcFhYGs
-         nw/5EHvutGhgKQLZlXRSy1QYTweJxAzin2DEpr+mwxwKaqMjo3uga0U4EKielFyIPWR4
-         OqvA==
+        b=FEy0XSsSTDhQ8uEiiMbgmbI8Eu10B9konxAPZWwb9qsbu6t5jWfS9/3NhBrMQJcIh+
+         uG5xv4L91vEHnkf+8ls1f7+Dri24hQBqcCYpWge2ecXW4NDpFCIA7UPNKrAUV5j2Rhg3
+         6/Nt9uGAhPMl83j2X0c/ilBeLCX5sxYRmyG3zJVYSDSyQ1CIUWvInjIjln51eKJv0bRV
+         AjRwdG9H2trR3qkSrPXrgf7RumiUXKjcNHJ8P861C/phqp5MyRn+auCqjsgRj4Vxdf/c
+         wuZblSFLs7qyFqhES2F1MB2G/p5whR7SG6StaC7JVjnIeRI58qHd/Oclj35PSvLxtx39
+         BiUQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id;
-        bh=XaGzZzqfhTfO/kwhwMlBrj8flISk3M4AxScYlWUA2R4=;
-        b=JXSEYMCidK2dOsYNcb2zjG+RauBkXJmCE++i2TD1zVpZL+o8hr0JelkQd/Zwx4uO+T
-         mOoI/LirwchZ/UR8GQWOpOtyUWDv3eEinvsyBh91NHZBGmgm6NIo6hzgoonPtthEHhjG
-         UHe9qxxxJmiNHGvmuR5OCaj1FUeODMgkTCskoApLt5oK38fKrpCTFqQv743amz5qmoHg
-         7mwvAqhOzcjR1Xg0oVdRUxMPsQn2QKSeifUhkmZyWcyd0xctJYd/GeUfv/Thch4F+mie
-         MNy3zPZBzWh/NijxElTh+sSdxEPSi99RhKEW1RCIysYSFWzb23O07x33E6cOTez/Pit4
-         l3wQ==
+        bh=/2jf+/PSEjx3A2EFA80z4L+syMnlRHxdyMYAVO36y7M=;
+        b=QaBpSc0SKIFueRkmxyDcFpU8d3zRZ0VdqUoO6S2jK9m/QvhXQuePqd8K5nxyuHXkoH
+         1veVVITr1b/RlNL1CZ160VFH1td7URGPdm3AKOMc+ydNoHH4HSNYaR83ah+MPY9xXLL/
+         bq6TGnp0M7L7jJowUnCOHnF9y18kzCHNhYlGJhV6kaxmAC6p2LWbCoo3iTfiJJVpcZTy
+         FZynyUP+omxK781fXxTVybUCT8Er8wTPDdGbUL4WMbE0RYLzdYMziD9UyvjVKzvvKeSh
+         1fw9dB/VW+kQ4KoJuEkEMn6gF4bMrbExd7Yto9zUaQ0sIWR20zTgupfZhBO9QcBhVfCL
+         FV1Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=neutral (google.com: 212.227.126.187 is neither permitted nor denied by best guess record for domain of laurent@vivier.eu) smtp.mailfrom=laurent@vivier.eu
+       spf=neutral (google.com: 212.227.126.135 is neither permitted nor denied by best guess record for domain of laurent@vivier.eu) smtp.mailfrom=laurent@vivier.eu
 Return-Path: <laurent@vivier.eu>
-Received: from mout.kundenserver.de (mout.kundenserver.de. [212.227.126.187])
-        by mx.google.com with ESMTPS id h2-20020adffd42000000b00224f759446dsi4193183wrs.156.2022.08.16.03.50.25
+Received: from mout.kundenserver.de (mout.kundenserver.de. [212.227.126.135])
+        by mx.google.com with ESMTPS id y4-20020a056000168400b0021d696183aasi6387812wrd.553.2022.08.16.03.55.46
+        for <alex.bennee@linaro.org>
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 16 Aug 2022 03:50:25 -0700 (PDT)
-Received-SPF: neutral (google.com: 212.227.126.187 is neither permitted nor denied by best guess record for domain of laurent@vivier.eu) client-ip=212.227.126.187;
+        Tue, 16 Aug 2022 03:55:46 -0700 (PDT)
+Received-SPF: neutral (google.com: 212.227.126.135 is neither permitted nor denied by best guess record for domain of laurent@vivier.eu) client-ip=212.227.126.135;
 Authentication-Results: mx.google.com;
-       spf=neutral (google.com: 212.227.126.187 is neither permitted nor denied by best guess record for domain of laurent@vivier.eu) smtp.mailfrom=laurent@vivier.eu
+       spf=neutral (google.com: 212.227.126.135 is neither permitted nor denied by best guess record for domain of laurent@vivier.eu) smtp.mailfrom=laurent@vivier.eu
 Received: from [192.168.100.1] ([82.142.8.70]) by mrelayeu.kundenserver.de
  (mreue012 [213.165.67.103]) with ESMTPSA (Nemesis) id
- 1MjgfT-1nczfv3pCF-00lFUN; Tue, 16 Aug 2022 12:50:25 +0200
-Message-ID: <cdf8a0a4-d196-bd84-53fe-5962292636fc@vivier.eu>
-Date: Tue, 16 Aug 2022 12:50:23 +0200
+ 1MkEdF-1ndXme1UgD-00khPV; Tue, 16 Aug 2022 12:55:41 +0200
+Message-ID: <19ca6b92-4bfa-de9d-3f96-f1c008bc42b7@vivier.eu>
+Date: Tue, 16 Aug 2022 12:55:38 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
  Thunderbird/91.11.0
-Subject: Re: [PATCH] [PATCH] linux-user/aarch64: Reset target data on
- MADV_DONTNEED
+Subject: Re: [PATCH 3/7] target/m68k: Honour -semihosting-config userspace=on
 Content-Language: fr
-To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+Cc: qemu-riscv@nongnu.org, =?UTF-8?Q?Alex_Benn=c3=a9e?=
+ <alex.bennee@linaro.org>, =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?=
+ <f4bug@amsat.org>, Jiaxun Yang <jiaxun.yang@flygoat.com>,
+ Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
+ Stefan Pejic <stefan.pejic@syrmia.com>, Chris Wulff <crwulff@gmail.com>,
+ Marek Vasut <marex@denx.de>, Palmer Dabbelt <palmer@dabbelt.com>,
+ Alistair Francis <alistair.francis@wdc.com>,
+ Bin Meng <bin.meng@windriver.com>, Max Filippov <jcmvbkbc@gmail.com>,
  Richard Henderson <richard.henderson@linaro.org>,
- Vitaly Buka <vitalybuka@google.com>, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org
-References: <CAPjTjwsb0jAsQq4PHOsFGW7SjpAe=Ug2b_fxhdccEEnzh=cQUA@mail.gmail.com>
- <CAFEAcA-F8rUTH1FimHf+FaV0O6dQ4QGHihaygxdjn9BKYPazBg@mail.gmail.com>
- <CAPjTjwuNwXdemwFYOUDi4Qnc5fA9KWzAEZQ1JaCNu+0x3RUh7Q@mail.gmail.com>
- <8b32824b-4dc1-3d1a-1916-918a3fffab26@linaro.org>
- <67a42d65-8289-b26c-26f6-275ea0bfac98@vivier.eu>
- <CAFEAcA8AXodRV=eG2Ra4Sf9rsap499zDJEu6hC=c+V9gE2KjfA@mail.gmail.com>
- <52225a7c-310f-444f-0b75-0ad2536a30c0@vivier.eu> <87r11miz8i.fsf@linaro.org>
- <531cdb6a-f660-b671-375c-a3819d90c030@vivier.eu> <87zgg4bmwq.fsf@linaro.org>
+ Furquan Shaikh <furquan@rivosinc.com>
+References: <20220815190303.2061559-1-peter.maydell@linaro.org>
+ <20220815190303.2061559-4-peter.maydell@linaro.org>
 From: Laurent Vivier <laurent@vivier.eu>
-In-Reply-To: <87zgg4bmwq.fsf@linaro.org>
+In-Reply-To: <20220815190303.2061559-4-peter.maydell@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:BLkwoyrF+1S4X3kARX+Z33hSL+OPE3Ch63e7rr+UrGFxCeKaOA2
- Lk9Rwj3r69sY4sf6eTa8Vaf8oPmwQlMSRZ5uvV37th6Z5DoeXV1TbioZimicWk+Crr7N6oo
- DHg/QhjyhPtfYwNKj/xtPMxbIsmhg8wMs//WnRT2AmjkemtBMv1vXb5YJ5bIxAoC4n42Krq
- bcItW0XfgoLFWXyzQBnjA==
+X-Provags-ID: V03:K1:tY6WgihIAzHHYynSTuPLVLzC5fhUU4qp5OIpiRobmqle3HZM5nQ
+ D2BpYvbmaiFKl+D21dzZmmbYgksHgS1b85wH0IJXllS8yNXH8tag3iZU6q2HM3WOYikoYbd
+ 20xdhT9jnfHuLgTQkdIbQT6llajQGbLzDW+nqZjA0xXTYCa+YtIzPqVswSdvuib/bGyxeNS
+ LMijM+UIXwc7BIt2dza1w==
 X-Spam-Flag: NO
-X-UI-Out-Filterresults: notjunk:1;V03:K0:b7jjD1o1Fiw=:ySSDdPB3uCKvYkt69cdNUJ
- kUwbM6ySo5N7oHXvfoJRCmb54sxV/DShQQVza0nLsjvkWKVbTLtv3KtEADUBiefNopWl2jtCx
- 5N7TsCzsmBFHv3SmHtc1KDSmu+5nXZp0z5Ox81157OOTDB/gniXs5+SmEcSqkL7qnfIIUrPIZ
- s80lnZ3I6LY3V1K4nv+0nPycD4Zb+FWtayBVVJ93YR4LRjCYhagWRl99Xe+hCqsOQVQKX1vQG
- vILExMPcxd2tSexEPIV3R+u5JrqeLN3fTMt+ZQcQwNHvQg4mEEUeErYA5VspNUXLu7ojsCr3K
- 7cx3ds0XAi/1iG6VhnpYkw83BE0llgecVEuisjtaS2LKG85/JBcYAF17eLtF20ftib9xnQ5Ce
- /CXJpLCxHkXxEYBVQXcmeSjpoTS36OOJnwwxG8wCvSa7w0h3QFHFUtflqusD+wV07o6NecNta
- ASbDNSB0+W2A9jsc0u4ZcgF+MB1qU/eRoUuSseGYkqevEO+tFnUsrQS7X5D2FZ5F58MhhBQo5
- RfJCQ4WYNgNvAumDnhZrfgNVN/AqOjR+/6RvmyXxVqvpJsQ0mRUu7OJiLCs0PFxU1ciQPmM0e
- hQ6bBS20W2b4cZQInWk3wD9tG3Qiv3BcPCIX+C/gV/zjB2h507QhwbyymWT/ZnL+GFbMKhoFL
- 4IR+IeLmT/3crw1sQsqoWkYzN0IJapnhf82gctZOryb6/GhuDIF0kk+HMnFhdYb4gmmkSv0O4
- HizMkhrMku1cTW5gsgriQQSsFheqWX6wL13+UQ==
-X-TUID: TuS8hWewY7t2
+X-UI-Out-Filterresults: notjunk:1;V03:K0:UxH64Jl9SuA=:uOU9d6DfC7MbSWQwl7W25Z
+ ROUcy8cn1G983BXxEUWOM0D0OUPUJXww6tP+x1OLhEP106PXLonmSkQHHQ87FaKaF0FioJAYS
+ /Q9IKcQ/c0AWP6/VcveiR7IVRsk0pEPfCMgY4514+T88F8qDnWU6b8thM0Ah0IhGixszdUkx2
+ hWo+RLfksbpMRKmlh66P5vPqU/bs7pcgWDLqnSIT12V+HBKyhatWXoN28108t1+nn5mW1V2Ex
+ dhuFNAJl4JF5zLbInRU3w5Om63pmz+uykHD3ZMhHjjdZOhmU6g44iykYLDCLrm965gdL4VlJ2
+ bkDjsAsG6RPrOGpvLoG1PuUCOmVLt5oLFFemwYGJq5ijTqqXzEyz/CgQP7OrG8BUKtMoMh3mN
+ xkFvUUCh4jP20seJRf1BObYcTnQg5OW5AzM1bHP5ZqEe0QGVk3bcxeTaNZ1j7R5PBYlXAxxFC
+ CLJvEc45djN1pXK3QCmJ1JNeQRNAVgpDF0Lzb3MVN+dxVs2e1ZzOSB1BSM7/gqxv3PNDeW9rp
+ wwgjdcsiFhTAHQ4R/2zZfZPG+KXmaWe+RLEKPhBcN2rzfm/3R3ZkXVTmz5jtLe0wukiBDeUkP
+ 2lBRxkWYPBPLdD5SYUFuoQj025+AfEBB/Jvq7rIXAJ68qM8QF3JnkAN3rfyOtamX8+xEDqzY5
+ N9mVgbvkvUnjwrD8VlyoGnH+kIm9M1POjCuKuqeQ/UpWLaP+bmp9PFGumqQssFvpFSO4BQ5K+
+ UjkaZEWgYO/w3eOKc7QPJxox3svulLmLNvd88A==
+X-TUID: tlERdEcRvhiz
 
-Le 16/08/2022 à 10:41, Alex Bennée a écrit :
+Le 15/08/2022 à 21:02, Peter Maydell a écrit :
+> Honour the commandline -semihosting-config userspace=on option,
+> instead of never permitting userspace semihosting calls in system
+> emulation mode, by passing the correct value to the is_userspace
+> argument of semihosting_enabled(), instead of manually checking and
+> always forbidding semihosting if the guest is in userspace.
 > 
-> Laurent Vivier <laurent@vivier.eu> writes:
+> (Note that target/m68k doesn't support semihosting at all
+> in the linux-user build.)
 > 
->> Le 11/08/2022 à 17:18, Alex Bennée a écrit :
->>> Laurent Vivier <laurent@vivier.eu> writes:
->>>
->>>> Le 11/08/2022 à 13:54, Peter Maydell a écrit :
->>>>> On Thu, 11 Aug 2022 at 09:29, Laurent Vivier <laurent@vivier.eu> wrote:
->>>>>>
->>>>>> Le 10/08/2022 à 22:47, Richard Henderson a écrit :
->>>>>>> On 8/10/22 13:32, Vitaly Buka wrote:
->>>>>>>> Sorry, I only noticed today that it's not submitted.
->>>>>>>> Version is not critical for us, as we build from masters anyway.
->>>>>>>> Richard, do you know a reason to consider this critical?
->>>>>>>>
->>>>>>>> On Wed, 10 Aug 2022 at 13:04, Peter Maydell <peter.maydell@linaro.org
->>>>>>>> <mailto:peter.maydell@linaro.org>> wrote:
->>>>>>>>
->>>>>>>>        On Wed, 10 Aug 2022 at 21:00, Vitaly Buka <vitalybuka@google.com
->>>>>>>>        <mailto:vitalybuka@google.com>> wrote:
->>>>>>>>         >
->>>>>>>>         > How can we land this one?
->>>>>>>>
->>>>>>>>        Pinging it a week ago rather than now would have been a good start :-(
->>>>>>>>        I think it got missed because you didn't cc the linux-user maintainer.
->>>>>>>>
->>>>>>>>        Is this a critical fix for 7.1 or can we let it slip to 7.2 ?
->>>>>>>
->>>>>>> It's unfortunate that it got missed.  It's not critical, but it would be nice, because support for
->>>>>>> MADV_DONTNEED is new in 7.1 (previously, we ignored all madvise).
->>>>>>>
->>>>>>> I'll note there are missing braces for coding style on an IF.
->>>>>>>
->>>>>>> Laurent, do you have an objection to merging this for rc3?
->>>>>>>
->>>>>>
->>>>>> No objection.
->>>>>>
->>>>>> Do you want it goes via the arm branch or via the linux-user branch?
->>>>>>
->>>>>> If it goes via linux-user I can run the LTP testsuite but it takes 1 day.
->>>>> I think we should definitely run the LTP testsuite on it, so
->>>>> taking it via linux-user probably makes more sense.
->>>>
->>>> ok, applied to my linux-user-for-7.1 branch.
->>>>
->>>> Running tests.
->>> Any chance you could pick up:
->>>     Subject: [PATCH v2] linux-user: un-parent OBJECT(cpu) when
->>> closing thread
->>>     Date: Wed,  3 Aug 2022 14:05:37 +0100
->>>     Message-Id: <20220803130537.763666-1-alex.bennee@linaro.org>
->>> before you run the tests?
->>>
->>
->> I've tested it, it works fine.
->>
->> Do you plan to do a PR including it or do you want I do (there will be
->> only this one in mine)?
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> ---
+>   target/m68k/op_helper.c | 3 +--
+>   1 file changed, 1 insertion(+), 2 deletions(-)
 > 
-> I'm going to a roll a PR today so I can include it. Shall I add a
-> Tested-by for you?
-> 
+> diff --git a/target/m68k/op_helper.c b/target/m68k/op_helper.c
+> index 4b3dfec1306..a96a0340506 100644
+> --- a/target/m68k/op_helper.c
+> +++ b/target/m68k/op_helper.c
+> @@ -203,8 +203,7 @@ static void cf_interrupt_all(CPUM68KState *env, int is_hw)
+>               cf_rte(env);
+>               return;
+>           case EXCP_HALT_INSN:
+> -            if (semihosting_enabled(false)
+> -                    && (env->sr & SR_S) != 0
+> +            if (semihosting_enabled((env->sr & SR_S) == 0)
+>                       && (env->pc & 3) == 0
+>                       && cpu_lduw_code(env, env->pc - 4) == 0x4e71
+>                       && cpu_ldl_code(env, env->pc) == 0x4e7bf000) {
 
-OK. No need to add the Tested-by, I've run generic tests, not targeted to this problem.
-
-Thanks,
-Laurent
+Reviewed-by: Laurent Vivier <laurent@vivier.eu>

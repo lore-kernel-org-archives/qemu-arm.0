@@ -1,93 +1,80 @@
-Received: by 2002:a17:906:3b11:0:0:0:0 with SMTP id g17csp1685326ejf;
-        Tue, 16 Aug 2022 02:48:46 -0700 (PDT)
-X-Google-Smtp-Source: AA6agR7TA/6t6JPXBJqltdtJe3ydRG/ApJ5mp34tUO+tMNc+m6Bp8pieL/lBKcwEyW8/SUhxGg1Z
-X-Received: by 2002:a05:622a:1001:b0:343:6004:9a25 with SMTP id d1-20020a05622a100100b0034360049a25mr17613829qte.479.1660643326611;
-        Tue, 16 Aug 2022 02:48:46 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1660643326; cv=none;
+Received: by 2002:a17:906:3b11:0:0:0:0 with SMTP id g17csp1686218ejf;
+        Tue, 16 Aug 2022 02:51:20 -0700 (PDT)
+X-Google-Smtp-Source: AA6agR4dFSGB5GW5648WNLDKTgakid7juTGGoHIKWO3ROzrwL2Hc6a7SlYDdQHuGiX/WtJwlOrqC
+X-Received: by 2002:ae9:ef0f:0:b0:6bb:1e6:cb69 with SMTP id d15-20020ae9ef0f000000b006bb01e6cb69mr9074281qkg.275.1660643480020;
+        Tue, 16 Aug 2022 02:51:20 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1660643480; cv=none;
         d=google.com; s=arc-20160816;
-        b=CJUD9+Gw/jXBCKn9+4BhbPkYwwp0iB+ADfPCIctXVlxFky213yZssLBGjzW2xGSIRi
-         GEz/yu0P+telXoHtAdLnekoCw5XhBS/Ve6dywzKEbnshkhZeU8nntoGPzpucO+/IZKla
-         +dbRUP1S80tirS1j2nDN7TEvmKUKe1fhAzRS7wGywztGDB+VWWFAsQ3BkMYfFepWlzww
-         jYHWYfSe/P5oHK1ueKHwGblIFC9gZzQcXROWtcZL+DQKwuJAlU/mvrwKEt5rxfCUbgvA
-         wSuEEZy5bPr84OyBQkBTQtZAJUXEHBnIRnWhd1l7GsP0kmFU4nbkKDXguR2CdD0THuAo
-         e0/g==
+        b=usK/6ILYKfR/1YKUiAyxFQqwyB6xblPA5eKjPeqeumle9ijif2EQA66ABdJaqMrE9P
+         7zeCQaAmaYJ6cmv7JKKBg+4+TDU4eac1u4+fORo23TYx7BK2+FbQ/dmQwdHs9lSlgpmv
+         eW8z6Aw4qrq3gQ+E/c4ntKcREPWj1tUqIqSIjTRy6zDMQG+Cc0HRtRY6UQjDvZs7npFH
+         1pKSFOCzvevklpm0AJP5KVM1FX4d65HdRVJisO7y+MyuHvCkLXTTbSVsNKZtsYM37sou
+         hv72Bnc/O1mu2fKK9HgaNlQcZhG1ra6JffdKY3siFCxknwEnn32C1oOff0pwo5K2Y9ZE
+         48Hw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=from:reply-to:sender:errors-to:list-subscribe:list-help:list-post
          :list-archive:list-unsubscribe:list-id:precedence:mime-version
-         :content-transfer-encoding:content-language:accept-language
-         :in-reply-to:references:message-id:date:thread-index:thread-topic
-         :subject:cc:to;
-        bh=1l02/xBjO/pM5SILN/2UMSH9I4Fk/fbJqll5qUiKbiw=;
-        b=vK5hqw9Zp32SH6MzAONAI132m+cUp7h8umZHqe1tsrOcpvpOiOfQY3jlYI0DgII+N2
-         90a5w8PNsz+JBdcBUroxAfl5hRTc6Icex2Hy5v3TthpcLWY8l1byCVmStvR8iEe3WwZ9
-         oV68Mn3Uel9mMT9sai5wReyah3U1LW3FNo2e5lmoFXfNnRbsL+CVQVTDzM/GwTHspMDV
-         JIsKofmLcgv8KiEwMfUUdb/EbCjErU5xy/msryFMA4sAqLP3GRVnU/2FWrn9R/wC+OiK
-         K+ul7hiFXW/2o9Xbkk0bM16uHd18Shf1R03LSkGJsMpEOh4uwUZZV1+OlJRdjnUZyfGT
-         5h/w==
+         :message-id:date:subject:cc:to;
+        bh=8VBu0JktVgSLQ8BBldfsJpmmi4HJF/zbQDAkLyo/fRE=;
+        b=IY0kG9Rgc/q5HerqULMT6IaqZYj0Qdp5vw9M/S4l+2C1VTh+eeKCf1Q9IIABvPGp4B
+         hoI0E49rRqcjY8Tg+pYEgtRNjXw3LsbEzN3E0vMVfq1og/ZGjJ7jR2RxPbt4VUsi0kf6
+         xeh1KmBjyvuHCAFJ8LJF7mllea9tePce2Pf21+UahZIQAyuUvwZ7xHeLSehy8xkyXZ6f
+         5AUdbk6JnEyf0iQ0+gI52hRAFs9ah8JOgNcupLHnek3/6aQ5haOEuZ0+dBuKT4umiNpM
+         1iaR0S8MGaQC9uosqDJ1hxHsoP9iZhckER8AmCS1aKE+IAlERxLofE9sk2p1DAxCPklp
+         lO6Q==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id c7-20020ac85187000000b0034359fc3490si6336060qtn.254.2022.08.16.02.48.46
+        by mx.google.com with ESMTPS id q9-20020a056214194900b00494c6ca52d0si492675qvk.85.2022.08.16.02.51.19
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 16 Aug 2022 02:48:46 -0700 (PDT)
+        Tue, 16 Aug 2022 02:51:20 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
-Received: from localhost ([::1]:60080 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:34842 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1oNtBm-0002js-3k
-	for alex.bennee@linaro.org; Tue, 16 Aug 2022 05:48:46 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38578)
+	id 1oNtEF-0004wR-H4
+	for alex.bennee@linaro.org; Tue, 16 Aug 2022 05:51:19 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:39180)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <zhukeqian1@huawei.com>)
- id 1oNtBU-0002hJ-A1; Tue, 16 Aug 2022 05:48:28 -0400
-Received: from szxga03-in.huawei.com ([45.249.212.189]:5170)
+ id 1oNtDH-0004CP-Mn; Tue, 16 Aug 2022 05:50:19 -0400
+Received: from szxga01-in.huawei.com ([45.249.212.187]:3951)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <zhukeqian1@huawei.com>)
- id 1oNtBS-0007RE-6e; Tue, 16 Aug 2022 05:48:27 -0400
-Received: from dggpeml500023.china.huawei.com (unknown [172.30.72.55])
- by szxga03-in.huawei.com (SkyGuard) with ESMTP id 4M6RBK4H39zGpVy;
- Tue, 16 Aug 2022 17:46:49 +0800 (CST)
+ id 1oNtD6-0007fA-Ub; Tue, 16 Aug 2022 05:50:19 -0400
+Received: from dggemv711-chm.china.huawei.com (unknown [172.30.72.57])
+ by szxga01-in.huawei.com (SkyGuard) with ESMTP id 4M6RCV4HYxzhYQn;
+ Tue, 16 Aug 2022 17:47:50 +0800 (CST)
 Received: from kwepemm600016.china.huawei.com (7.193.23.20) by
- dggpeml500023.china.huawei.com (7.185.36.114) with Microsoft SMTP Server
+ dggemv711-chm.china.huawei.com (10.1.198.66) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2375.24; Tue, 16 Aug 2022 17:48:20 +0800
-Received: from kwepemm600016.china.huawei.com ([7.193.23.20]) by
- kwepemm600016.china.huawei.com ([7.193.23.20]) with mapi id 15.01.2375.024;
- Tue, 16 Aug 2022 17:48:20 +0800
-To: Peter Maydell <peter.maydell@linaro.org>
-CC: "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, "qemu-arm@nongnu.org"
- <qemu-arm@nongnu.org>, "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>,
- Eric Auger <eric.auger@redhat.com>, Peter Xu <peterx@redhat.com>, "Igor
- Mammedov" <imammedo@redhat.com>, "Wanghaibin (D)"
- <wanghaibin.wang@huawei.com>
-Subject: =?utf-8?B?562U5aSNOiBbUEFUQ0hdIGFjcGlfZ2VkOiBBZGQgb3NwbV9zdGF0dXMgaG9v?=
- =?utf-8?Q?k_implementation?=
-Thread-Topic: [PATCH] acpi_ged: Add ospm_status hook implementation
-Thread-Index: AQHYsVJa+vqGTE7yt0qRXZ8lKONLy62wvNAAgACG/8D//3xFgIAAh8JQ
-Date: Tue, 16 Aug 2022 09:48:20 +0000
-Message-ID: <bd7cf21fa43541bb8d52801e928d7312@huawei.com>
-References: <20220816092624.15168-1-zhukeqian1@huawei.com>
- <CAFEAcA8UN=NABfNzzP-m5b3ki5mKH1qyfwgi6_yiT__6u_-1ng@mail.gmail.com>
- <47f60df98b514502b422adee6b970880@huawei.com>
- <CAFEAcA-DtHrfCF0nfvnrW6bTmjRco_rxu=vj3yNciBkM_0iUog@mail.gmail.com>
-In-Reply-To: <CAFEAcA-DtHrfCF0nfvnrW6bTmjRco_rxu=vj3yNciBkM_0iUog@mail.gmail.com>
-Accept-Language: zh-CN, en-US
-Content-Language: zh-CN
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-originating-ip: [10.174.187.224]
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+ 15.1.2375.24; Tue, 16 Aug 2022 17:50:01 +0800
+Received: from DESKTOP-5IS4806.china.huawei.com (10.174.187.224) by
+ kwepemm600016.china.huawei.com (7.193.23.20) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2375.24; Tue, 16 Aug 2022 17:50:00 +0800
+To: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>, <qemu-trivial@nongnu.org>
+CC: Peter Maydell <peter.maydell@linaro.org>, Eric Auger
+ <eric.auger@redhat.com>, Peter Xu <peterx@redhat.com>, Igor Mammedov
+ <imammedo@redhat.com>, <wanghaibin.wang@huawei.com>
+Subject: [PATCH v2] hw/acpi: Add ospm_status hook implementation for acpi-ged
+Date: Tue, 16 Aug 2022 17:49:57 +0800
+Message-ID: <20220816094957.31700-1-zhukeqian1@huawei.com>
+X-Mailer: git-send-email 2.8.4.windows.1
 MIME-Version: 1.0
+Content-Type: text/plain
+X-Originating-IP: [10.174.187.224]
+X-ClientProxiedBy: dggems706-chm.china.huawei.com (10.3.19.183) To
+ kwepemm600016.china.huawei.com (7.193.23.20)
 X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.189;
- envelope-from=zhukeqian1@huawei.com; helo=szxga03-in.huawei.com
+Received-SPF: pass client-ip=45.249.212.187;
+ envelope-from=zhukeqian1@huawei.com; helo=szxga01-in.huawei.com
 X-Spam_score_int: -41
 X-Spam_score: -4.2
 X-Spam_bar: ----
@@ -108,22 +95,59 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Reply-to:  zhukeqian <zhukeqian1@huawei.com>
-From:  zhukeqian via <qemu-arm@nongnu.org>
-X-TUID: Jw/VeQLQXde6
+Reply-to:  Keqian Zhu <zhukeqian1@huawei.com>
+From:  Keqian Zhu via <qemu-arm@nongnu.org>
+X-TUID: UaJQzrMg+IwL
 
-T0ssIEknbGwgc2VuZCB2MiBzb29uLg0KDQotLS0tLemCruS7tuWOn+S7ti0tLS0tDQrlj5Hku7bk
-uro6IFBldGVyIE1heWRlbGwgW21haWx0bzpwZXRlci5tYXlkZWxsQGxpbmFyby5vcmddIA0K5Y+R
-6YCB5pe26Ze0OiAyMDIy5bm0OOaciDE25pelIDE3OjQyDQrmlLbku7bkuro6IHpodWtlcWlhbiA8
-emh1a2VxaWFuMUBodWF3ZWkuY29tPg0K5oqE6YCBOiBxZW11LWRldmVsQG5vbmdudS5vcmc7IHFl
-bXUtYXJtQG5vbmdudS5vcmc7IHFlbXUtdHJpdmlhbEBub25nbnUub3JnOyBQaGlsaXBwZSBNYXRo
-aWV1LURhdWTDqSA8cGhpbG1kQHJlZGhhdC5jb20+OyBFcmljIEF1Z2VyIDxlcmljLmF1Z2VyQHJl
-ZGhhdC5jb20+OyBQZXRlciBYdSA8cGV0ZXJ4QHJlZGhhdC5jb20+OyBJZ29yIE1hbW1lZG92IDxp
-bWFtbWVkb0ByZWRoYXQuY29tPjsgV2FuZ2hhaWJpbiAoRCkgPHdhbmdoYWliaW4ud2FuZ0BodWF3
-ZWkuY29tPg0K5Li76aKYOiBSZTogW1BBVENIXSBhY3BpX2dlZDogQWRkIG9zcG1fc3RhdHVzIGhv
-b2sgaW1wbGVtZW50YXRpb24NCg0KT24gVHVlLCAxNiBBdWcgMjAyMiBhdCAxMDo0MCwgemh1a2Vx
-aWFuIDx6aHVrZXFpYW4xQGh1YXdlaS5jb20+IHdyb3RlOg0KPg0KPiBIaSBQZXRlciwNCj4NCj4g
-U2V0dXAgYW4gQVJNIHZpcnR1YWwgbWFjaGluZSBvZiBtYWNoaW5lIHZpcnQgYW5kIGV4ZWN1dGUg
-cW1wICJxdWVyeS1hY3BpLW9zcG0tc3RhdHVzIiBjYW4gdHJpZ2dlciB0aGlzIGJ1Zy4NCg0KVGhh
-bmtzLiBUaGF0IGlzIHdvcnRoIHN0YXRpbmcgaW4gdGhlIGNvbW1pdCBtZXNzYWdlLCBJIHRoaW5r
-Lg0KDQotLSBQTW0NCg==
+Setup an ARM virtual machine of machine virt and execute qmp "query-acpi-ospm-status"
+causes segmentation fault with following dumpstack:
+ #1  0x0000aaaaab64235c in qmp_query_acpi_ospm_status (errp=errp@entry=0xfffffffff030) at ../monitor/qmp-cmds.c:312
+ #2  0x0000aaaaabfc4e20 in qmp_marshal_query_acpi_ospm_status (args=<optimized out>, ret=0xffffea4ffe90, errp=0xffffea4ffe88) at qapi/qapi-commands-acpi.c:63
+ #3  0x0000aaaaabff8ba0 in do_qmp_dispatch_bh (opaque=0xffffea4ffe98) at ../qapi/qmp-dispatch.c:128
+ #4  0x0000aaaaac02e594 in aio_bh_call (bh=0xffffe0004d80) at ../util/async.c:150
+ #5  aio_bh_poll (ctx=ctx@entry=0xaaaaad0f6040) at ../util/async.c:178
+ #6  0x0000aaaaac00bd40 in aio_dispatch (ctx=ctx@entry=0xaaaaad0f6040) at ../util/aio-posix.c:421
+ #7  0x0000aaaaac02e010 in aio_ctx_dispatch (source=0xaaaaad0f6040, callback=<optimized out>, user_data=<optimized out>) at ../util/async.c:320
+ #8  0x0000fffff76f6884 in g_main_context_dispatch () at /usr/lib64/libglib-2.0.so.0
+ #9  0x0000aaaaac0452d4 in glib_pollfds_poll () at ../util/main-loop.c:297
+ #10 os_host_main_loop_wait (timeout=0) at ../util/main-loop.c:320
+ #11 main_loop_wait (nonblocking=nonblocking@entry=0) at ../util/main-loop.c:596
+ #12 0x0000aaaaab5c9e50 in qemu_main_loop () at ../softmmu/runstate.c:734
+ #13 0x0000aaaaab185370 in qemu_main (argc=argc@entry=47, argv=argv@entry=0xfffffffff518, envp=envp@entry=0x0) at ../softmmu/main.c:38
+ #14 0x0000aaaaab16f99c in main (argc=47, argv=0xfffffffff518) at ../softmmu/main.c:47
+
+Fixes: ebb62075021a ("hw/acpi: Add ACPI Generic Event Device Support")
+Signed-off-by: Keqian Zhu <zhukeqian1@huawei.com>
+---
+ hw/acpi/generic_event_device.c | 8 ++++++++
+ 1 file changed, 8 insertions(+)
+
+diff --git a/hw/acpi/generic_event_device.c b/hw/acpi/generic_event_device.c
+index e28457a7d1..a3d31631fe 100644
+--- a/hw/acpi/generic_event_device.c
++++ b/hw/acpi/generic_event_device.c
+@@ -267,6 +267,13 @@ static void acpi_ged_unplug_cb(HotplugHandler *hotplug_dev,
+     }
+ }
+ 
++static void acpi_ged_ospm_status(AcpiDeviceIf *adev, ACPIOSTInfoList ***list)
++{
++    AcpiGedState *s = ACPI_GED(adev);
++
++    acpi_memory_ospm_status(&s->memhp_state, list);
++}
++
+ static void acpi_ged_send_event(AcpiDeviceIf *adev, AcpiEventStatusBits ev)
+ {
+     AcpiGedState *s = ACPI_GED(adev);
+@@ -409,6 +416,7 @@ static void acpi_ged_class_init(ObjectClass *class, void *data)
+     hc->unplug_request = acpi_ged_unplug_request_cb;
+     hc->unplug = acpi_ged_unplug_cb;
+ 
++    adevc->ospm_status = acpi_ged_ospm_status;
+     adevc->send_event = acpi_ged_send_event;
+ }
+ 
+-- 
+2.33.0
+

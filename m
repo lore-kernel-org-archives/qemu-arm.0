@@ -1,199 +1,198 @@
-Received: by 2002:a17:906:3b11:0:0:0:0 with SMTP id g17csp2009122ejf;
-        Tue, 16 Aug 2022 13:34:49 -0700 (PDT)
-X-Received: by 2002:a05:6870:8305:b0:116:8e04:71c2 with SMTP id p5-20020a056870830500b001168e0471c2mr135356oae.201.1660682089695;
-        Tue, 16 Aug 2022 13:34:49 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1660682089; cv=none;
+Received: by 2002:a17:906:3b11:0:0:0:0 with SMTP id g17csp2009137ejf;
+        Tue, 16 Aug 2022 13:34:51 -0700 (PDT)
+X-Received: by 2002:a05:6870:b28f:b0:11c:25db:cc9e with SMTP id c15-20020a056870b28f00b0011c25dbcc9emr161378oao.166.1660682091534;
+        Tue, 16 Aug 2022 13:34:51 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1660682091; cv=none;
         d=google.com; s=arc-20160816;
-        b=mKFeB/Z1TLsXB7TVlXMS5Zcdtd+AIMJaFziV6h4EWk+HasU+/uzhknTJdL5x9xBZQu
-         zriT9TwNLuswY3r43TLmCP47D59toU1HrejAMTu+ujruBZgZWIDBi2uXDKrjwhRRaHQD
-         OuJ7JyuL/yCG/ngcVrjfcBkdgLiSVOe7BuefaAhWC1xCteAKWmXOwgYngGCUcNV0Ob43
-         7xHzGP09hKO9OiaS5pqtXPohAcIIOzrkC1g59EdUCMDuGy4dVrjArRYdO/xxJAXThA8b
-         Oi3s0QAYNmP66Y09IUgNaeK9xyRUGeckz6IS1T+5NeGKw81jTO/sWYGM8NQ+Z0Qx4vYB
-         IiAw==
+        b=W20H1ZR1G501e1SjoEZnuG73Yj0oQ/qP7J02Hq9RPqKTWxQ4HAneh7SJhrGBBYR33D
+         Xidu3pgpfyr9lZRoE1nSgonzoqI7S3VTJ1ZKnbSIpvK431eltaeUTsKkX2g7/sC1gYie
+         PrGQR0RUcckXDe5l6rH7kvIkfysZfz85IL+xEfaghdnXIR6Nq18dIcffzUF5EXd5PwG8
+         UHVBpJQZ8ZtT9Z20V0B0Fm9B0kKgPFAb/B2poPnRdnvRsk+MEHmYbN70B8BL/w66vXtm
+         yKLjhFzH2E/Rx2pco5ZM7KX0o5C7TmuMwsoh/cn71RxJ76GlS2z7l1lVGN98jH/Z6xwD
+         J4rQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=nnTf8vYQrhFGbCh9F71+TS9pu/cqcKGq2pxwJ/zBizo=;
-        b=pqd0hsEZEZ8UyrHCmz2pB3PVpVRTs4KbrPeGoJlnAkaiIftT6p+SR9I1UzA0l6szrg
-         xDVTsdYix2h6W/QJxhmUkUFVxGX5Aa8AtRw/C5hoe612YFhECsJ327pNCuCMtJy1cjCZ
-         c7tiRFFq/ghXKxkOas8r3kV+8LfkdOJ3ZpgtEiUg/ftpCAyz1W2JplZoaSZRR4BLZs/S
-         1HXOOQ9e4RqLwDTSayxk0A+kZVj6ufiL5RPnA1kUzn+jpD+hJd/vKvtQnWIK3kzLW08l
-         s1ATAyyGFe+dUml8DHwatPjNwj11nQGuWgge3JTz0MCEs/c4YQ73ZiR3/wg+f9AQegn0
-         YWfw==
+        bh=XGYmwpgiZPY1AsTDknzkrjEzLYeuV4sGoEw7odttBvA=;
+        b=Ywr85c8kNkZWoOrOTSHOhdJO+q/OeXBvOpfcen0LYKC8zdVsKd0RGUvz6VyN1DwnqW
+         rU0Me3BpleQ62LBVRwzNQr2qKE0gz2iqFpA+HoBSAZyljJr0r4ktnoCxCrc9DoIXtnnG
+         DKyh0T+U7Uz9nm7z2/ybfcm3xex7hFlON2E9Gmz3Qa4AiSLTBd93IAuVC5wDwLwTQzco
+         UOj8KxXpjVGdIHn4Ih4Nc5UDALJr7o8iDuKTT6j9f6HbBydDXt/ZtXlsiGmzG/dhHbll
+         Oji+RVSsnafSfNUhFznhjGMiCxxGb59lpKyqUZIlhcisE//tpwpFeReUs6pv0Px11b7S
+         A7rA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=kQWys5LK;
+       dkim=pass header.i=@linaro.org header.s=google header.b=UnMscL2t;
        spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <richard.henderson@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id x25-20020a9d6d99000000b00637121d7feasor1696682otp.8.2022.08.16.13.34.49
+        by mx.google.com with SMTPS id m131-20020acabc89000000b0033b15de461csor1398880oif.91.2022.08.16.13.34.51
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Tue, 16 Aug 2022 13:34:49 -0700 (PDT)
+        Tue, 16 Aug 2022 13:34:51 -0700 (PDT)
 Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=kQWys5LK;
+       dkim=pass header.i=@linaro.org header.s=google header.b=UnMscL2t;
        spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc;
-        bh=nnTf8vYQrhFGbCh9F71+TS9pu/cqcKGq2pxwJ/zBizo=;
-        b=kQWys5LKPME3++maxshyi9tj+cntKWUdfJhPQpwWnj1cYxmgIWhu4tBpmw3ONlN02s
-         TGgdIUN20FNABTeNBe/G8tkDudR+wer6XfpyWETM/ZZ4F+w97+O64wsq2FH60CRyBU9t
-         Y1cQ9W07hptdQuQkvNKn9JsbrvJ2qvKNHdkg3pxW4fwkrOIuhaCoTwwkjyfMQz9ef2GY
-         Htgs16/gDFMDBThSorwJhsUf1X1MAgJmNhQZtWCP9DE2xeDLSWkZSFpvTBb/nLP7NY1y
-         LcVDkI00LpRyKMicl2MFcDYewKNNLeK/RvzlDdmSahYCv+3QReVnIHng3ALaCqHe4296
-         9k2g==
+        bh=XGYmwpgiZPY1AsTDknzkrjEzLYeuV4sGoEw7odttBvA=;
+        b=UnMscL2tGHKxQ8TdC8xytlcZW/r7PhcnXy3TItnrZ47TsrTywSvBINJs52001Zqgq8
+         iXEVGm3hy1Wpt9zLgfyEY9E9yCU4wQlALd9D98sB6lyK9lxw8PMuKE+zfYUbQFyilMxi
+         IOrXGV6MQCo1jUm39K+9nv9gQvXz14aa40zy3SwAQX4m5qzeMh8UmoRdp4rWQ7fIT+le
+         vMdpjMw0sdcz1xz40XVtLDShRKru6Vv1wNSbKwGjwg3Cz0sHQacu+U3rPA151E9hmUr5
+         6BM32PQU2xnP6rC29ml7MAntrAjfjl2npY/PMXunwp+d9E8f9cdItfLw0XIC6rHSynxA
+         ISMA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc;
-        bh=nnTf8vYQrhFGbCh9F71+TS9pu/cqcKGq2pxwJ/zBizo=;
-        b=oE1G0yo1br5k6++6LsA3FymvvscrEH0wO+z48f11dvUOfZ2NuLCGkTJVaKNzvJQDKY
-         yxuCXKsu4ad+yWikCVYZ5vkDuu3lgMwRVlbfU/kzNR6zpoRZ3KoOC4Ndke53mTCzQhrA
-         M0/T+mlxqWE/h3pNEIg6DYBu783kpIIBEYsUUHG7TqBifLa/kQyfGtlMb5M6RCKtXDYE
-         janPf7FoKouUXIXCmE9w67fkn9Sau5tb+xJVG7vAOp09a5+a9grLgTs0iLGEbrKkWzK+
-         Ll+oO1PA0ZNjhRpA/pEhObF8lvfxxo33zWClBglOnq45ZdzJ085Zi1etWpIadYuGKeqb
-         iNdQ==
-X-Gm-Message-State: ACgBeo1dbx9clWfqN17GI3Z4mZNgaFpY07LqlFdi0Pgvfwpxqg0+upE4
-	KSXxG5061MSXfEIznLcpQmqg48KI
-X-Google-Smtp-Source: AA6agR4KMoSQu+76ek989FMN6dfPejgCUjTy705SwSiJeISQyZJTiGXDc4uV+j3iLUpbolhL/lTfww==
-X-Received: by 2002:a9d:7a55:0:b0:637:1874:a2cb with SMTP id z21-20020a9d7a55000000b006371874a2cbmr8269625otm.318.1660682089295;
-        Tue, 16 Aug 2022 13:34:49 -0700 (PDT)
+        bh=XGYmwpgiZPY1AsTDknzkrjEzLYeuV4sGoEw7odttBvA=;
+        b=eitW94/Z65oz8QwsODjDIruVcgIIbIBG1UCp1cAfWwjT/dgg3RIOs6Ik5RX2Hief/X
+         RpYJQyFpy7SAykbA1Le7GRJ/OV8yic8FNvMqt0/zolgslOOQJQiU3pqsQjCXnEhP8VrK
+         e7m1dO+aJAQ9Rl88PpCb2RtCba6VQnM7lqgVgurV2RzvrkEShGRUW0cMrHiwuHoz7OOo
+         oKFQ+HNRStbBAbrdGq1xeBaK1zE3pY48gOEssdDOJ5h97/VhYecmRjghCP/5kHG6sMG4
+         V6Wmrej2n/4+P+62YN8tN78bJbcqk3VZUABHA45RyVhJEcwrXsrWjdBaGFuf6XopGn6Q
+         TL+A==
+X-Gm-Message-State: ACgBeo1SAjJsVwVFdkkPH4GpX0BwgEGHTDzMNuX9E5/dSFj0oqExlCSI
+	+SZIMOh1CWjiMLjFLRGdVVGsn+jUZjo4TENa
+X-Google-Smtp-Source: AA6agR6s97iDZIwbLXL0lTAIkThy/SaWhzJUMzNdpbk2b7z0VDZgeeU4slgUEHl9QFY0DUdmH5G9Hw==
+X-Received: by 2002:a05:6808:23ca:b0:344:be60:144d with SMTP id bq10-20020a05680823ca00b00344be60144dmr154235oib.38.1660682091126;
+        Tue, 16 Aug 2022 13:34:51 -0700 (PDT)
 Return-Path: <richard.henderson@linaro.org>
 Received: from stoup.. ([2605:ef80:80f6:61fa:9bc2:5095:d612:5e22])
-        by smtp.gmail.com with ESMTPSA id y23-20020a056870b01700b0010ef8ccde67sm2285220oae.13.2022.08.16.13.34.48
+        by smtp.gmail.com with ESMTPSA id y23-20020a056870b01700b0010ef8ccde67sm2285220oae.13.2022.08.16.13.34.49
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 16 Aug 2022 13:34:48 -0700 (PDT)
+        Tue, 16 Aug 2022 13:34:50 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org,
 	alex.bennee@linaro.org,
 	iii@linux.ibm.com
-Subject: [PATCH v2 20/33] accel/tcg: Do not align tb->page_addr[0]
-Date: Tue, 16 Aug 2022 15:33:47 -0500
-Message-Id: <20220816203400.161187-21-richard.henderson@linaro.org>
+Subject: [PATCH v2 21/33] include/hw/core: Create struct CPUJumpCache
+Date: Tue, 16 Aug 2022 15:33:48 -0500
+Message-Id: <20220816203400.161187-22-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20220816203400.161187-1-richard.henderson@linaro.org>
 References: <20220816203400.161187-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-TUID: X5iGmWW+ahlX
+X-TUID: D9S3nIrKQ4lW
 
-Let tb->page_addr[0] contain the offset within the page of the
-start of the translation block.  We need to recover this value
-anyway at various points, and it is easier to discard the page
-offset when it's not needed, which happens naturally via the
-existing find_page shift.
+Wrap the bare TranslationBlock pointer into a structure.
 
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- accel/tcg/cpu-exec.c      | 16 ++++++++--------
- accel/tcg/cputlb.c        |  3 ++-
- accel/tcg/translate-all.c |  9 +++++----
- 3 files changed, 15 insertions(+), 13 deletions(-)
+ include/hw/core/cpu.h     | 8 ++++++--
+ accel/tcg/cpu-exec.c      | 9 ++++++---
+ accel/tcg/cputlb.c        | 2 +-
+ accel/tcg/translate-all.c | 4 ++--
+ 4 files changed, 15 insertions(+), 8 deletions(-)
 
+diff --git a/include/hw/core/cpu.h b/include/hw/core/cpu.h
+index 500503da13..8edef14199 100644
+--- a/include/hw/core/cpu.h
++++ b/include/hw/core/cpu.h
+@@ -233,6 +233,10 @@ struct hvf_vcpu_state;
+ #define TB_JMP_CACHE_BITS 12
+ #define TB_JMP_CACHE_SIZE (1 << TB_JMP_CACHE_BITS)
+ 
++typedef struct {
++    TranslationBlock *tb;
++} CPUJumpCache;
++
+ /* work queue */
+ 
+ /* The union type allows passing of 64 bit target pointers on 32 bit
+@@ -362,7 +366,7 @@ struct CPUState {
+     IcountDecr *icount_decr_ptr;
+ 
+     /* Accessed in parallel; all accesses must be atomic */
+-    TranslationBlock *tb_jmp_cache[TB_JMP_CACHE_SIZE];
++    CPUJumpCache tb_jmp_cache[TB_JMP_CACHE_SIZE];
+ 
+     struct GDBRegisterState *gdb_regs;
+     int gdb_num_regs;
+@@ -453,7 +457,7 @@ static inline void cpu_tb_jmp_cache_clear(CPUState *cpu)
+     unsigned int i;
+ 
+     for (i = 0; i < TB_JMP_CACHE_SIZE; i++) {
+-        qatomic_set(&cpu->tb_jmp_cache[i], NULL);
++        qatomic_set(&cpu->tb_jmp_cache[i].tb, NULL);
+     }
+ }
+ 
 diff --git a/accel/tcg/cpu-exec.c b/accel/tcg/cpu-exec.c
-index 7b8977a0a4..b1fd962718 100644
+index b1fd962718..3f8e4bbbc8 100644
 --- a/accel/tcg/cpu-exec.c
 +++ b/accel/tcg/cpu-exec.c
-@@ -174,7 +174,7 @@ struct tb_desc {
-     target_ulong pc;
-     target_ulong cs_base;
-     CPUArchState *env;
--    tb_page_addr_t phys_page1;
-+    tb_page_addr_t page_addr0;
-     uint32_t flags;
-     uint32_t cflags;
-     uint32_t trace_vcpu_dstate;
-@@ -186,7 +186,7 @@ static bool tb_lookup_cmp(const void *p, const void *d)
-     const struct tb_desc *desc = d;
+@@ -243,7 +243,7 @@ static inline TranslationBlock *tb_lookup(CPUState *cpu, target_ulong pc,
+     tcg_debug_assert(!(cflags & CF_INVALID));
  
-     if (tb->pc == desc->pc &&
--        tb->page_addr[0] == desc->phys_page1 &&
-+        tb->page_addr[0] == desc->page_addr0 &&
-         tb->cs_base == desc->cs_base &&
-         tb->flags == desc->flags &&
-         tb->trace_vcpu_dstate == desc->trace_vcpu_dstate &&
-@@ -195,12 +195,12 @@ static bool tb_lookup_cmp(const void *p, const void *d)
-         if (tb->page_addr[1] == -1) {
-             return true;
-         } else {
--            tb_page_addr_t phys_page2;
--            target_ulong virt_page2;
-+            tb_page_addr_t phys_page1;
-+            target_ulong virt_page1;
+     hash = tb_jmp_cache_hash_func(pc);
+-    tb = qatomic_rcu_read(&cpu->tb_jmp_cache[hash]);
++    tb = qatomic_rcu_read(&cpu->tb_jmp_cache[hash].tb);
  
--            virt_page2 = (desc->pc & TARGET_PAGE_MASK) + TARGET_PAGE_SIZE;
--            phys_page2 = get_page_addr_code(desc->env, virt_page2);
--            if (tb->page_addr[1] == phys_page2) {
-+            virt_page1 = TARGET_PAGE_ALIGN(desc->pc);
-+            phys_page1 = get_page_addr_code(desc->env, virt_page1);
-+            if (tb->page_addr[1] == phys_page1) {
-                 return true;
-             }
-         }
-@@ -226,7 +226,7 @@ static TranslationBlock *tb_htable_lookup(CPUState *cpu, target_ulong pc,
-     if (phys_pc == -1) {
+     if (likely(tb &&
+                tb->pc == pc &&
+@@ -257,7 +257,7 @@ static inline TranslationBlock *tb_lookup(CPUState *cpu, target_ulong pc,
+     if (tb == NULL) {
          return NULL;
      }
--    desc.phys_page1 = phys_pc & TARGET_PAGE_MASK;
-+    desc.page_addr0 = phys_pc;
-     h = tb_hash_func(phys_pc, pc, flags, cflags, *cpu->trace_dstate);
-     return qht_lookup_custom(&tb_ctx.htable, &desc, h, tb_lookup_cmp);
+-    qatomic_set(&cpu->tb_jmp_cache[hash], tb);
++    qatomic_set(&cpu->tb_jmp_cache[hash].tb, tb);
+     return tb;
  }
+ 
+@@ -978,6 +978,8 @@ int cpu_exec(CPUState *cpu)
+ 
+             tb = tb_lookup(cpu, pc, cs_base, flags, cflags);
+             if (tb == NULL) {
++                uint32_t h;
++
+                 mmap_lock();
+                 tb = tb_gen_code(cpu, pc, cs_base, flags, cflags);
+                 mmap_unlock();
+@@ -985,7 +987,8 @@ int cpu_exec(CPUState *cpu)
+                  * We add the TB in the virtual pc hash table
+                  * for the fast lookup
+                  */
+-                qatomic_set(&cpu->tb_jmp_cache[tb_jmp_cache_hash_func(pc)], tb);
++                h = tb_jmp_cache_hash_func(pc);
++                qatomic_set(&cpu->tb_jmp_cache[h].tb, tb);
+             }
+ 
+ #ifndef CONFIG_USER_ONLY
 diff --git a/accel/tcg/cputlb.c b/accel/tcg/cputlb.c
-index ae7b40dd51..8b81b07b79 100644
+index 8b81b07b79..a8afe1ab9f 100644
 --- a/accel/tcg/cputlb.c
 +++ b/accel/tcg/cputlb.c
-@@ -951,7 +951,8 @@ void tlb_flush_page_bits_by_mmuidx_all_cpus_synced(CPUState *src_cpu,
-    can be detected */
- void tlb_protect_code(ram_addr_t ram_addr)
- {
--    cpu_physical_memory_test_and_clear_dirty(ram_addr, TARGET_PAGE_SIZE,
-+    cpu_physical_memory_test_and_clear_dirty(ram_addr & TARGET_PAGE_MASK,
-+                                             TARGET_PAGE_SIZE,
-                                              DIRTY_MEMORY_CODE);
+@@ -103,7 +103,7 @@ static void tb_jmp_cache_clear_page(CPUState *cpu, target_ulong page_addr)
+     unsigned int i, i0 = tb_jmp_cache_hash_page(page_addr);
+ 
+     for (i = 0; i < TB_JMP_PAGE_SIZE; i++) {
+-        qatomic_set(&cpu->tb_jmp_cache[i0 + i], NULL);
++        qatomic_set(&cpu->tb_jmp_cache[i0 + i].tb, NULL);
+     }
  }
  
 diff --git a/accel/tcg/translate-all.c b/accel/tcg/translate-all.c
-index a8f1c34c4e..20f00f4335 100644
+index 20f00f4335..c2745f14a6 100644
 --- a/accel/tcg/translate-all.c
 +++ b/accel/tcg/translate-all.c
-@@ -1167,7 +1167,7 @@ static void do_tb_phys_invalidate(TranslationBlock *tb, bool rm_from_page_list)
-     qemu_spin_unlock(&tb->jmp_lock);
- 
+@@ -1187,8 +1187,8 @@ static void do_tb_phys_invalidate(TranslationBlock *tb, bool rm_from_page_list)
      /* remove the TB from the hash list */
--    phys_pc = tb->page_addr[0] + (tb->pc & ~TARGET_PAGE_MASK);
-+    phys_pc = tb->page_addr[0];
-     h = tb_hash_func(phys_pc, tb->pc, tb->flags, orig_cflags,
-                      tb->trace_vcpu_dstate);
-     if (!qht_remove(&tb_ctx.htable, tb, h)) {
-@@ -1291,7 +1291,7 @@ tb_link_page(TranslationBlock *tb, tb_page_addr_t phys_pc,
-      * we can only insert TBs that are fully initialized.
-      */
-     page_lock_pair(&p, phys_pc, &p2, phys_page2, true);
--    tb_page_add(p, tb, 0, phys_pc & TARGET_PAGE_MASK);
-+    tb_page_add(p, tb, 0, phys_pc);
-     if (p2) {
-         tb_page_add(p2, tb, 1, phys_page2);
-     } else {
-@@ -1644,11 +1644,12 @@ tb_invalidate_phys_page_range__locked(struct page_collection *pages,
-         if (n == 0) {
-             /* NOTE: tb_end may be after the end of the page, but
-                it is not a problem */
--            tb_start = tb->page_addr[0] + (tb->pc & ~TARGET_PAGE_MASK);
-+            tb_start = tb->page_addr[0];
-             tb_end = tb_start + tb->size;
-         } else {
-             tb_start = tb->page_addr[1];
--            tb_end = tb_start + ((tb->pc + tb->size) & ~TARGET_PAGE_MASK);
-+            tb_end = tb_start + ((tb->page_addr[0] + tb->size)
-+                                 & ~TARGET_PAGE_MASK);
+     h = tb_jmp_cache_hash_func(tb->pc);
+     CPU_FOREACH(cpu) {
+-        if (qatomic_read(&cpu->tb_jmp_cache[h]) == tb) {
+-            qatomic_set(&cpu->tb_jmp_cache[h], NULL);
++        if (qatomic_read(&cpu->tb_jmp_cache[h].tb) == tb) {
++            qatomic_set(&cpu->tb_jmp_cache[h].tb, NULL);
          }
-         if (!(tb_end <= start || tb_start >= end)) {
- #ifdef TARGET_HAS_PRECISE_SMC
+     }
+ 
 -- 
 2.34.1

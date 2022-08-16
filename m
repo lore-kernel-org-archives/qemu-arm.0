@@ -1,112 +1,144 @@
-Received: by 2002:a17:906:3b11:0:0:0:0 with SMTP id g17csp1714020ejf;
-        Tue, 16 Aug 2022 03:55:46 -0700 (PDT)
-X-Google-Smtp-Source: AA6agR6lyYxK+mKhp7VlIg6rUSlMPRjXlo18FNlpqrqpDpMmXuYx9GsXPvXYAqAsBRZ2fXR/jtOj
-X-Received: by 2002:a05:600c:1993:b0:3a4:c0a9:5b6f with SMTP id t19-20020a05600c199300b003a4c0a95b6fmr12829205wmq.79.1660647346306;
-        Tue, 16 Aug 2022 03:55:46 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1660647346; cv=none;
+Received: by 2002:a17:906:3b11:0:0:0:0 with SMTP id g17csp1762510ejf;
+        Tue, 16 Aug 2022 05:32:04 -0700 (PDT)
+X-Google-Smtp-Source: AA6agR57P04KXzTZgplH68VZDnHPAnnnT4mdr+ZDEA266F/S7K04xKN2tvicwWJhmTEBV+cmXWbs
+X-Received: by 2002:a05:6214:d89:b0:479:6726:7f42 with SMTP id e9-20020a0562140d8900b0047967267f42mr17175220qve.20.1660653124198;
+        Tue, 16 Aug 2022 05:32:04 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1660653124; cv=none;
         d=google.com; s=arc-20160816;
-        b=FEy0XSsSTDhQ8uEiiMbgmbI8Eu10B9konxAPZWwb9qsbu6t5jWfS9/3NhBrMQJcIh+
-         uG5xv4L91vEHnkf+8ls1f7+Dri24hQBqcCYpWge2ecXW4NDpFCIA7UPNKrAUV5j2Rhg3
-         6/Nt9uGAhPMl83j2X0c/ilBeLCX5sxYRmyG3zJVYSDSyQ1CIUWvInjIjln51eKJv0bRV
-         AjRwdG9H2trR3qkSrPXrgf7RumiUXKjcNHJ8P861C/phqp5MyRn+auCqjsgRj4Vxdf/c
-         wuZblSFLs7qyFqhES2F1MB2G/p5whR7SG6StaC7JVjnIeRI58qHd/Oclj35PSvLxtx39
-         BiUQ==
+        b=jm0aZcUJ7OUvGE4ly6nDLfD+FzOTPFG2E5byWnDEu/BcTTWiPDzyqtHRfwahVjpeUF
+         vot01PUVB1R5YshwGzWQ05WNDFs7as4Ivcx8zPzVOI0p7eyn6yBLZ7BDD8VR/OiOCgmS
+         bDIiK3Ir520HscFayP+GW0GnlOYIgFq94Ms2xo2EqArFkG7Qa7xxJXVrYO+tTZhnlJbF
+         Xr6hJryMEUX634rFCJZp1WIaGAuanGtJjXcqQxOQWQ81V+ILe62uTEh5XjY4BlalLnau
+         jZxBmI7JVoknTtlKUTQt3oIo5uDXqHw1IjJv3fUvWNy7A34BPqBZxqq5SUULhD26LGeE
+         PTeA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id;
-        bh=/2jf+/PSEjx3A2EFA80z4L+syMnlRHxdyMYAVO36y7M=;
-        b=QaBpSc0SKIFueRkmxyDcFpU8d3zRZ0VdqUoO6S2jK9m/QvhXQuePqd8K5nxyuHXkoH
-         1veVVITr1b/RlNL1CZ160VFH1td7URGPdm3AKOMc+ydNoHH4HSNYaR83ah+MPY9xXLL/
-         bq6TGnp0M7L7jJowUnCOHnF9y18kzCHNhYlGJhV6kaxmAC6p2LWbCoo3iTfiJJVpcZTy
-         FZynyUP+omxK781fXxTVybUCT8Er8wTPDdGbUL4WMbE0RYLzdYMziD9UyvjVKzvvKeSh
-         1fw9dB/VW+kQ4KoJuEkEMn6gF4bMrbExd7Yto9zUaQ0sIWR20zTgupfZhBO9QcBhVfCL
-         FV1Q==
+        h=sender:errors-to:content-transfer-encoding:list-subscribe:list-help
+         :list-post:list-archive:list-unsubscribe:list-id:precedence:cc:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=KxfYVhtvedHUdR2YPbcNZIs9fvLVJGcRbCLGdKED/38=;
+        b=AgXZ9u4hssZLw+oeiAMIPQ6E+9VkYB1mZ4DTmZm4F8Wpu4BPibf7tSfZot+A0CexUF
+         ee0cLofsYiredM3MRbWK9zFt5UfFTRaLsH8hvjPudyFLhbIzUXrKL7E/fH4meVt3BRx8
+         /ckbBq8Spypdm7CqowGpFS1//85EP3xeZHVXwFb0y/C2kE1Uzt/hvn0Fhxe4hU9xPMqJ
+         T4CjKCjPnTDD8hi2zxxQZVIghz6QsimG3j7mP1gdSS3Up37JeXHQUkKqAL3syxDA4341
+         El8GMr+n5tGXzL4o5vk62kWF3OSV/vL0qXyxzCFV6SXmZCuP2Ey6ZKmb3eA0Hs8t9H+F
+         BTgA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=neutral (google.com: 212.227.126.135 is neither permitted nor denied by best guess record for domain of laurent@vivier.eu) smtp.mailfrom=laurent@vivier.eu
-Return-Path: <laurent@vivier.eu>
-Received: from mout.kundenserver.de (mout.kundenserver.de. [212.227.126.135])
-        by mx.google.com with ESMTPS id y4-20020a056000168400b0021d696183aasi6387812wrd.553.2022.08.16.03.55.46
-        for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 16 Aug 2022 03:55:46 -0700 (PDT)
-Received-SPF: neutral (google.com: 212.227.126.135 is neither permitted nor denied by best guess record for domain of laurent@vivier.eu) client-ip=212.227.126.135;
+       dkim=neutral (body hash did not verify) header.i=@linaro.org header.s=google header.b=Uas8zK7a;
+       spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <kvmarm-bounces@lists.cs.columbia.edu>
+Received: from mm01.cs.columbia.edu (mm01.cs.columbia.edu. [128.59.11.253])
+        by mx.google.com with ESMTP id jq11-20020ad45fcb000000b00476ff29329fsi7229714qvb.418.2022.08.16.05.32.03;
+        Tue, 16 Aug 2022 05:32:04 -0700 (PDT)
+Received-SPF: pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) client-ip=128.59.11.253;
 Authentication-Results: mx.google.com;
-       spf=neutral (google.com: 212.227.126.135 is neither permitted nor denied by best guess record for domain of laurent@vivier.eu) smtp.mailfrom=laurent@vivier.eu
-Received: from [192.168.100.1] ([82.142.8.70]) by mrelayeu.kundenserver.de
- (mreue012 [213.165.67.103]) with ESMTPSA (Nemesis) id
- 1MkEdF-1ndXme1UgD-00khPV; Tue, 16 Aug 2022 12:55:41 +0200
-Message-ID: <19ca6b92-4bfa-de9d-3f96-f1c008bc42b7@vivier.eu>
-Date: Tue, 16 Aug 2022 12:55:38 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.11.0
-Subject: Re: [PATCH 3/7] target/m68k: Honour -semihosting-config userspace=on
-Content-Language: fr
-To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
-Cc: qemu-riscv@nongnu.org, =?UTF-8?Q?Alex_Benn=c3=a9e?=
- <alex.bennee@linaro.org>, =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?=
- <f4bug@amsat.org>, Jiaxun Yang <jiaxun.yang@flygoat.com>,
- Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
- Stefan Pejic <stefan.pejic@syrmia.com>, Chris Wulff <crwulff@gmail.com>,
- Marek Vasut <marex@denx.de>, Palmer Dabbelt <palmer@dabbelt.com>,
- Alistair Francis <alistair.francis@wdc.com>,
- Bin Meng <bin.meng@windriver.com>, Max Filippov <jcmvbkbc@gmail.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- Furquan Shaikh <furquan@rivosinc.com>
-References: <20220815190303.2061559-1-peter.maydell@linaro.org>
- <20220815190303.2061559-4-peter.maydell@linaro.org>
-From: Laurent Vivier <laurent@vivier.eu>
-In-Reply-To: <20220815190303.2061559-4-peter.maydell@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:tY6WgihIAzHHYynSTuPLVLzC5fhUU4qp5OIpiRobmqle3HZM5nQ
- D2BpYvbmaiFKl+D21dzZmmbYgksHgS1b85wH0IJXllS8yNXH8tag3iZU6q2HM3WOYikoYbd
- 20xdhT9jnfHuLgTQkdIbQT6llajQGbLzDW+nqZjA0xXTYCa+YtIzPqVswSdvuib/bGyxeNS
- LMijM+UIXwc7BIt2dza1w==
+       dkim=neutral (body hash did not verify) header.i=@linaro.org header.s=google header.b=Uas8zK7a;
+       spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost (localhost [127.0.0.1])
+	by mm01.cs.columbia.edu (Postfix) with ESMTP id CBFE54D595;
+	Tue, 16 Aug 2022 08:32:03 -0400 (EDT)
+X-Virus-Scanned: at lists.cs.columbia.edu
 X-Spam-Flag: NO
-X-UI-Out-Filterresults: notjunk:1;V03:K0:UxH64Jl9SuA=:uOU9d6DfC7MbSWQwl7W25Z
- ROUcy8cn1G983BXxEUWOM0D0OUPUJXww6tP+x1OLhEP106PXLonmSkQHHQ87FaKaF0FioJAYS
- /Q9IKcQ/c0AWP6/VcveiR7IVRsk0pEPfCMgY4514+T88F8qDnWU6b8thM0Ah0IhGixszdUkx2
- hWo+RLfksbpMRKmlh66P5vPqU/bs7pcgWDLqnSIT12V+HBKyhatWXoN28108t1+nn5mW1V2Ex
- dhuFNAJl4JF5zLbInRU3w5Om63pmz+uykHD3ZMhHjjdZOhmU6g44iykYLDCLrm965gdL4VlJ2
- bkDjsAsG6RPrOGpvLoG1PuUCOmVLt5oLFFemwYGJq5ijTqqXzEyz/CgQP7OrG8BUKtMoMh3mN
- xkFvUUCh4jP20seJRf1BObYcTnQg5OW5AzM1bHP5ZqEe0QGVk3bcxeTaNZ1j7R5PBYlXAxxFC
- CLJvEc45djN1pXK3QCmJ1JNeQRNAVgpDF0Lzb3MVN+dxVs2e1ZzOSB1BSM7/gqxv3PNDeW9rp
- wwgjdcsiFhTAHQ4R/2zZfZPG+KXmaWe+RLEKPhBcN2rzfm/3R3ZkXVTmz5jtLe0wukiBDeUkP
- 2lBRxkWYPBPLdD5SYUFuoQj025+AfEBB/Jvq7rIXAJ68qM8QF3JnkAN3rfyOtamX8+xEDqzY5
- N9mVgbvkvUnjwrD8VlyoGnH+kIm9M1POjCuKuqeQ/UpWLaP+bmp9PFGumqQssFvpFSO4BQ5K+
- UjkaZEWgYO/w3eOKc7QPJxox3svulLmLNvd88A==
-X-TUID: tlERdEcRvhiz
+X-Spam-Score: -1.789
+X-Spam-Level: 
+X-Spam-Status: No, score=-1.789 required=6.1 tests=[BAYES_00=-1.9,
+	DKIM_SIGNED=0.1, T_DKIM_INVALID=0.01, URIBL_BLOCKED=0.001]
+	autolearn=no
+Authentication-Results: mm01.cs.columbia.edu (amavisd-new); dkim=softfail
+	(fail, message has been altered) header.i=@linaro.org
+Received: from mm01.cs.columbia.edu ([127.0.0.1])
+	by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id iMqzHQDZF-W7; Tue, 16 Aug 2022 08:32:02 -0400 (EDT)
+Received: from mm01.cs.columbia.edu (localhost [127.0.0.1])
+	by mm01.cs.columbia.edu (Postfix) with ESMTP id 841F74D589;
+	Tue, 16 Aug 2022 08:32:02 -0400 (EDT)
+Received: from localhost (localhost [127.0.0.1])
+ by mm01.cs.columbia.edu (Postfix) with ESMTP id 3171B4D586
+ for <kvmarm@lists.cs.columbia.edu>; Tue, 16 Aug 2022 08:32:01 -0400 (EDT)
+X-Virus-Scanned: at lists.cs.columbia.edu
+Received: from mm01.cs.columbia.edu ([127.0.0.1])
+ by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id eJggl4X4wFge for <kvmarm@lists.cs.columbia.edu>;
+ Tue, 16 Aug 2022 08:32:00 -0400 (EDT)
+Received: from mail-yw1-f177.google.com (mail-yw1-f177.google.com
+ [209.85.128.177])
+ by mm01.cs.columbia.edu (Postfix) with ESMTPS id 244864D585
+ for <kvmarm@lists.cs.columbia.edu>; Tue, 16 Aug 2022 08:32:00 -0400 (EDT)
+Received: by mail-yw1-f177.google.com with SMTP id
+ 00721157ae682-33365a01f29so48799027b3.2
+ for <kvmarm@lists.cs.columbia.edu>; Tue, 16 Aug 2022 05:32:00 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc;
+ bh=v+DRertAfOhDVcUnuGx9lEwhV6sbeQ2CQXMPmOp/Nvs=;
+ b=Uas8zK7axSC01+TrTA/wNZ1xP2S+vma9C5mERK33X9vd/7Qf/yP3c8zuk8m0kAiPX5
+ bke4r+RjlXW89b9dkta4W3qO67/+havYt9AsG9MiIZi+72DYSae059SVy1V1rxmBZznq
+ TOWDpQyJVnUR+NNORwT+gx4EHHUCg198Xsg4H0m5tNXAMLxGu51X6d5ET49oz6xGBuVN
+ BdnbJ9q2WVCg79oU97HxKgFiZR+fNSd6B8MrGilYQSN+/p+gwjo4nrO9DZ4JX6ipr9E4
+ bH9SzVzzwOTj4VLjDb7WsEkzMmI1vP6GsYXkVmOgNiPqbrncLQyrRuvJi3+cduWpUHnD
+ RE1A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc;
+ bh=v+DRertAfOhDVcUnuGx9lEwhV6sbeQ2CQXMPmOp/Nvs=;
+ b=1nepVTCubPJsMB5UMXEZ/ai+OCNtqWcCq9EnM2biW2HCynyB6FKMTeLapiAKenwRxD
+ qAGhjjY1/HlcfAZkJ7LONO+mMgsNz1hBZTTAtRRFcBIGp9Ec2ep8htHV2QP4WY4A8xlW
+ Gv81zHpYMMF4LvtMahR7T//fZOkUqlrmDiZv0KUoAcNfcHaIieae3BNMhGUGG/zfrrkH
+ sQs7nJEVM5zfExTs8zJqSAw/Pfzm8e4o22D9msIwy2ZS0l9SKvLQvVeAKvSrUBfz0yY4
+ QLgnsVDAsMBVgfp1Fl2GKKLkWOzcrHOoeIfy4l7iuFkEYyWBBStu4+kd1ABjt+Nm3pYr
+ 025w==
+X-Gm-Message-State: ACgBeo183fSvjfL52TqFWfcf3K7VaaVhdRx/PGgiPqgmdIbYPxGnotau
+ ZMigvw2TG/8tewxmaRILG95vxMQgeGWuUfQB9NqdzQ==
+X-Received: by 2002:a25:3d0:0:b0:67c:2231:65e with SMTP id
+ 199-20020a2503d0000000b0067c2231065emr14218893ybd.67.1660653119619; 
+ Tue, 16 Aug 2022 05:31:59 -0700 (PDT)
+MIME-Version: 1.0
+References: <20220812021427.cwenhciuftgtaj64@altlinux.org>
+ <20220812084529.ur5qcyws5qvoyvuc@altlinux.org>
+ <CAFEAcA9BuSe4SwpoWTALURaxoj-8U2y83k=und7oKrZBggLarQ@mail.gmail.com>
+ <87h72hv71u.wl-maz@kernel.org> <20220813111137.5plgwrfnosolj2bp@altlinux.org>
+ <8735e0s1zw.wl-maz@kernel.org>
+In-Reply-To: <8735e0s1zw.wl-maz@kernel.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 16 Aug 2022 13:31:18 +0100
+Message-ID: <CAFEAcA__6WaoFwTHH1FhAU1xpvGpA2YvZTo1BTjbKw2GqS5q+w@mail.gmail.com>
+Subject: Re: qemu-system-aarch64: Failed to retrieve host CPU features
+To: Marc Zyngier <maz@kernel.org>
+Cc: Vitaly Chikunov <vt@altlinux.org>, qemu-arm@nongnu.org,
+ "Dmitry V. Levin" <ldv@altlinux.org>, kvmarm <kvmarm@lists.cs.columbia.edu>,
+ QEMU Developers <qemu-devel@nongnu.org>
+X-BeenThere: kvmarm@lists.cs.columbia.edu
+X-Mailman-Version: 2.1.14
+Precedence: list
+List-Id: Where KVM/ARM decisions are made <kvmarm.lists.cs.columbia.edu>
+List-Unsubscribe: <https://lists.cs.columbia.edu/mailman/options/kvmarm>,
+ <mailto:kvmarm-request@lists.cs.columbia.edu?subject=unsubscribe>
+List-Archive: <https://lists.cs.columbia.edu/pipermail/kvmarm>
+List-Post: <mailto:kvmarm@lists.cs.columbia.edu>
+List-Help: <mailto:kvmarm-request@lists.cs.columbia.edu?subject=help>
+List-Subscribe: <https://lists.cs.columbia.edu/mailman/listinfo/kvmarm>,
+ <mailto:kvmarm-request@lists.cs.columbia.edu?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Errors-To: kvmarm-bounces@lists.cs.columbia.edu
+Sender: kvmarm-bounces@lists.cs.columbia.edu
+X-TUID: KYhLSwo44EGV
 
-Le 15/08/2022 à 21:02, Peter Maydell a écrit :
-> Honour the commandline -semihosting-config userspace=on option,
-> instead of never permitting userspace semihosting calls in system
-> emulation mode, by passing the correct value to the is_userspace
-> argument of semihosting_enabled(), instead of manually checking and
-> always forbidding semihosting if the guest is in userspace.
-> 
-> (Note that target/m68k doesn't support semihosting at all
-> in the linux-user build.)
-> 
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> ---
->   target/m68k/op_helper.c | 3 +--
->   1 file changed, 1 insertion(+), 2 deletions(-)
-> 
-> diff --git a/target/m68k/op_helper.c b/target/m68k/op_helper.c
-> index 4b3dfec1306..a96a0340506 100644
-> --- a/target/m68k/op_helper.c
-> +++ b/target/m68k/op_helper.c
-> @@ -203,8 +203,7 @@ static void cf_interrupt_all(CPUM68KState *env, int is_hw)
->               cf_rte(env);
->               return;
->           case EXCP_HALT_INSN:
-> -            if (semihosting_enabled(false)
-> -                    && (env->sr & SR_S) != 0
-> +            if (semihosting_enabled((env->sr & SR_S) == 0)
->                       && (env->pc & 3) == 0
->                       && cpu_lduw_code(env, env->pc - 4) == 0x4e71
->                       && cpu_ldl_code(env, env->pc) == 0x4e7bf000) {
+On Sat, 13 Aug 2022 at 14:32, Marc Zyngier <maz@kernel.org> wrote:
+> But we probably need to handle EINTR when creating the mini VM.
 
-Reviewed-by: Laurent Vivier <laurent@vivier.eu>
+It's easy enough to add a retry-on-EINTR loop to the KVM_CREATE_VM
+ioctl in the target/arm/ code. But do we need to do that more
+widely ? At the moment QEMU seems to assume that KVM ioctls
+will never fail EINTR except for the one special-cased
+KVM_CREATE_VM, plus (more obviously) KVM_RUN...
+
+thanks
+-- PMM
+_______________________________________________
+kvmarm mailing list
+kvmarm@lists.cs.columbia.edu
+https://lists.cs.columbia.edu/mailman/listinfo/kvmarm

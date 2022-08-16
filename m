@@ -1,307 +1,259 @@
-Received: by 2002:a17:906:3b11:0:0:0:0 with SMTP id g17csp1896528ejf;
-        Tue, 16 Aug 2022 09:27:10 -0700 (PDT)
-X-Google-Smtp-Source: AA6agR6dLNFG1lLnVsblfhB58q4owG7RlbrWXO9qYrNG+PGsHaXxUiLnI17o+CfQSK35pf66IV6D
-X-Received: by 2002:a05:622a:5cb:b0:344:551a:c804 with SMTP id d11-20020a05622a05cb00b00344551ac804mr12118602qtb.645.1660667230359;
-        Tue, 16 Aug 2022 09:27:10 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1660667230; cv=none;
+Received: by 2002:a17:906:3b11:0:0:0:0 with SMTP id g17csp2008849ejf;
+        Tue, 16 Aug 2022 13:34:15 -0700 (PDT)
+X-Received: by 2002:a05:6830:d07:b0:638:d0b1:c2c1 with SMTP id bu7-20020a0568300d0700b00638d0b1c2c1mr1424561otb.273.1660682055147;
+        Tue, 16 Aug 2022 13:34:15 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1660682055; cv=none;
         d=google.com; s=arc-20160816;
-        b=qmYfOUk7TEo7tT9aN+MF8Y9HVe5SkJguqNDG0gbTRdtrgOWaPT+DvrcqMJ8QwqAoyk
-         VKDOmlxqF1fxsGcXKuFcmciUjeuDt3HDtPVtKz8KDflXgst8eyikpawKQT2ybBeqTQOX
-         0cbZXfJPQ4H9RLhTn+mzNN7G1MNh8as9aEpehFxv4IzLiOrJLV4JxyKusy7eX9hwpWrc
-         2ZfBc+ppI6SI21gBlzlU9gdHQUhrRoIf7vIWkbWYRlgoiCra2i5vyI3vgiqWsKLVZU0C
-         CxhYDpAZaFvKNKvlIK+0rGzYnLT/ZdARqhbnJTnYmUfnkcGIXtEJyvswNaclWkRz8Tko
-         Xwbg==
+        b=f5Eeliy3D/31j8ElAMJxa/FyRIBabGsILpe8rGx3v04R2RELlFq0Zt0A3LNXFvcr3F
+         zQNoAKSp6swhx6bCvgaFFP12lZqwSnYCxJ6g7GhgVaf1bUUTNjyImEfcJKBGqecJOX0c
+         ABXCchEZVQGn56haqtBrfffdDpr61aq+UYlbvXE45NzecKVuU0xZny64g/wyucTsFzBQ
+         AyeC8510N3MFvdtmvHVfSJdcB36jbyC+x4SHDtbQiDFyebkrMHRoo1ZrX97LgTICnKY6
+         afblgWLy7xBmG9MntsziwqHXwf9rqG2IJJJjeLXR0ol8mwJqf1FjTtaJI9BpbcEgCemH
+         crAw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=SZmbzNOS8NjSoBbl17bufFSjI9Oge7FAiTEfq0le+Wc=;
-        b=rhMkq3Wb/6xxb1mdv7592Uygnz69u99V6748GD3BgACE8AMJZWuB3MFqT2NhiP9YfH
-         LJ/qqDMt60KzufE3CdveGbwmoxLuA0WRmumzv7Qr0/Bgje5ErbvdQXuKPEl2inc3ZTnz
-         5DqVtsVIcl9Z4w2XfVf/0wJ17CSwBbK18inXqT+qkFYIkfl0+uY5Nddep/aScd3np7Sg
-         gc/hn0b6ZxPjhUFI9X1pbOMAG3AIS89hwenqUgHoaOFkMNE8d96R7gE1Lhm0vcw24Lwv
-         peMZleiUki4go715O6tiy0rsOIqxfg9SlrrsiCKqHmdT/7AXmHGXUK+HduoV95XQYA7r
-         +O4Q==
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:dkim-signature;
+        bh=G8c2iuTDo4UvuF2iefnqT1KVHhsC+sQtSAyF/QMhIQM=;
+        b=ngAgQ+LaM+uQ82kFhx0x2nwozZzRI0ZvaKr0jDOrV/Dkqs9pLZibwQa4qdz44MJaUD
+         yZRnqAGGhui009B1T85qBW9ZqlMG9C5KtcBHRDWlNMQY/+CHbsoOBZnyAxJHS2PtGOri
+         lGnEFhTjJBwezc7n1IaSWFGxct0CrTL0J8UfzyZwzAG6bF5I66QrwXoH+Bun4yevJsgT
+         w8YOamELKE3hiPrhQQXeGM41HAFYSHHy3TwV+namqTDVa6zqKztzU0FeIU/F1P6jreFh
+         i38vsRE/4cjm7xOAOOA6luJN5gzLvbBHfloRFQsdI9uwd2L9UI1I4QGAM0PFz1pw/lni
+         pP2w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=R1rHdmFq;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id n10-20020a05620a294a00b006bb6780f14fsi1105356qkp.496.2022.08.16.09.27.10
+       dkim=pass header.i=@linaro.org header.s=google header.b=w0zIOOHS;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <richard.henderson@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id p203-20020acaf1d4000000b00344c78e7eefsor1257563oih.106.2022.08.16.13.34.14
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 16 Aug 2022 09:27:10 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Tue, 16 Aug 2022 13:34:15 -0700 (PDT)
+Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=R1rHdmFq;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:51408 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1oNzPJ-0007gT-Lx
-	for alex.bennee@linaro.org; Tue, 16 Aug 2022 12:27:09 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:55218)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <zhenyzha@redhat.com>)
- id 1oNmrB-0007L6-0v
- for qemu-arm@nongnu.org; Mon, 15 Aug 2022 23:03:05 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:42487)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <zhenyzha@redhat.com>)
- id 1oNmr7-0007x4-TB
- for qemu-arm@nongnu.org; Mon, 15 Aug 2022 23:03:03 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1660618981;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=SZmbzNOS8NjSoBbl17bufFSjI9Oge7FAiTEfq0le+Wc=;
- b=R1rHdmFq9LF307+9qE0dtkDqDuec51Y/NFsUIKLnmtE6HKwpRDvJCxJYnGi80YdJBp7of3
- wBlpdfYtWw/y4k0Lf6eN0Xf1XtUSSivI5E7n5BNHZp76gEO/WMvocK+jWhJyGMUqchoVoz
- j9S7kl54DSgxJRRfIaXPetMdQE17Vvg=
-Received: from mail-yw1-f199.google.com (mail-yw1-f199.google.com
- [209.85.128.199]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_128_GCM_SHA256) id
- us-mta-491-8i8BSGH-MMK3jDbya4di6w-1; Mon, 15 Aug 2022 23:01:49 -0400
-X-MC-Unique: 8i8BSGH-MMK3jDbya4di6w-1
-Received: by mail-yw1-f199.google.com with SMTP id
- 00721157ae682-31f4b76446aso86005657b3.7
- for <qemu-arm@nongnu.org>; Mon, 15 Aug 2022 20:01:49 -0700 (PDT)
+       dkim=pass header.i=@linaro.org header.s=google header.b=w0zIOOHS;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc;
+        bh=G8c2iuTDo4UvuF2iefnqT1KVHhsC+sQtSAyF/QMhIQM=;
+        b=w0zIOOHS7ryC5iuQg72ubsMeLLPgjTuOPJ3tFEDfwQ0gavk1eJC5h6KXYzA1Z9RnO4
+         tEPS0+udpkEiQL7Nc7k3KbhaPSwAbtFuxu/n8Uieg4uEfru4qO8Ur9/G9iUHvKsniM/C
+         P3rLqCU1agm8OMMDBJjcieJj8//JywAe9NbPnZtYA/oPf5VunaMQpAgtxLQUCuZ2pGJ6
+         MkWj5lcTgiqi0F9yWU07choNbBVU6dV56MrLbl2kT2HtwQQTDx55wf3SrRHJELLz2WAX
+         FART2Hd9BzXN9DJYowsdP6+i5pPMXwqjPbwu9jOQpTEO95tPZ8MgfJ5zjux9/Pv2v/Ov
+         TWxw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc;
- bh=SZmbzNOS8NjSoBbl17bufFSjI9Oge7FAiTEfq0le+Wc=;
- b=diRBahR+eXjCb5xkEAXTnhk0Zcld/wsAJBq+sDc8Lrkoq8OKtoXPhjid4dpqLSeI0j
- 1DsPaOiRCee2ZiTIunLzJgoFuiZ0JzKM8q7qzKza5qZMBGn6v7X0zsDobCxxJl0KaGV1
- bHWKi379t2y3lv89drbiWbo3YQzojMADfdVvLqOLWuh1FN3iKKpJElWb8mr/r8jF2hBF
- reCFmn33WRb5QLwEYiaY9s70yXytWcD0GjxQ8wZuCJf4KvezzRc5wyEOmAxoSQCtAUTq
- kgmWfh+iY5zWPzpdMH0kps9NBN9s7N0PQ+aI+J6VjNvRD/1qDFGuBpBEo8Fu5srWhBny
- upbA==
-X-Gm-Message-State: ACgBeo36q1afihk81hwCJ0wfbSjq0FOl/1e+CCmo7t8FDQG1XzklpsTd
- R7Qk5zrl036toK4yy/bWwLbAR+wf0mZENgHJYUYz18JDDHeKB98e4DtiZN+K+wz9eQusIJlCsun
- sVkEfFpZHC4VzpmXtPK7iVSOYZvcR
-X-Received: by 2002:a5b:b49:0:b0:67c:cf0:4565 with SMTP id
- b9-20020a5b0b49000000b0067c0cf04565mr13219080ybr.442.1660618908667; 
- Mon, 15 Aug 2022 20:01:48 -0700 (PDT)
-X-Received: by 2002:a5b:b49:0:b0:67c:cf0:4565 with SMTP id
- b9-20020a5b0b49000000b0067c0cf04565mr13219062ybr.442.1660618908425; 
- Mon, 15 Aug 2022 20:01:48 -0700 (PDT)
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc;
+        bh=G8c2iuTDo4UvuF2iefnqT1KVHhsC+sQtSAyF/QMhIQM=;
+        b=2t1RAVJ4NmV0ujBSuWIu3BYzwCOEaSeTd/bS5GEhvLa/c3+ZW5IZlRx7Vt4NtBMdpE
+         mcp7tG/brIuXDvmu/jXgu9S7TVX6fPte1UQZPrmoRfD9Dq4DZcITsrgGaNv5wNe9y8yy
+         tvvX2G0vO2QXFgGifrRnwv05kfylCy5We+W/HJ2tfYAn2CQWA/v+TXDaVrGjFQW2OLly
+         UPox+wGTwLu5BXUXrpIH/EY1pG2nqbA9EbxlKGSBz3OUUicykOpa/PWVHycZy3Z8LOlh
+         H5tezXsTCiC86HGhWuDRkHgVuF6gbpf7T/XAWqU14LBTfstitK1kH/DKAiw5xf4wjAE9
+         ZfEA==
+X-Gm-Message-State: ACgBeo0P6otAuHbdxEVxNuSmO+d+0ChmvYcIJ+kv49j55YDZhyOYyAMJ
+	vO+Ny31ribscn+CwuzAIVsorJ29RgDQEMmuR
+X-Google-Smtp-Source: AA6agR57vG6MWxm9HtEq/26etcPAHY6doS70J5mZFCvIR+qFsBYS7CXodpCUKk45F/ZXRssjwiAnTg==
+X-Received: by 2002:aca:6088:0:b0:343:75a6:d6a3 with SMTP id u130-20020aca6088000000b0034375a6d6a3mr155569oib.92.1660682045494;
+        Tue, 16 Aug 2022 13:34:05 -0700 (PDT)
+Return-Path: <richard.henderson@linaro.org>
+Received: from stoup.. ([2605:ef80:80f6:61fa:9bc2:5095:d612:5e22])
+        by smtp.gmail.com with ESMTPSA id y23-20020a056870b01700b0010ef8ccde67sm2285220oae.13.2022.08.16.13.34.02
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 16 Aug 2022 13:34:04 -0700 (PDT)
+From: Richard Henderson <richard.henderson@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org,
+	alex.bennee@linaro.org,
+	iii@linux.ibm.com
+Subject: [PATCH v2 00/33] accel/tcg + target/arm: pc-relative translation
+Date: Tue, 16 Aug 2022 15:33:27 -0500
+Message-Id: <20220816203400.161187-1-richard.henderson@linaro.org>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-References: <20220815062958.100366-1-gshan@redhat.com>
- <20220815062958.100366-5-gshan@redhat.com>
-In-Reply-To: <20220815062958.100366-5-gshan@redhat.com>
-From: Zhenyu Zhang <zhenyzha@redhat.com>
-Date: Tue, 16 Aug 2022 11:01:12 +0800
-Message-ID: <CAJFLiB+2r2bphcMxjdaUcEs9LgtYXGODhpE47Deng03xN4Dz6A@mail.gmail.com>
-Subject: Re: [PATCH v2 4/4] virt/hw/virt: Add virt_set_high_memmap() helper
-To: Gavin Shan <gshan@redhat.com>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, maz@kernel.org, 
- Auger Eric <eric.auger@redhat.com>, cohuck@redhat.com, peter.maydell@linaro.org,
- richard.henderson@linaro.org, shan.gavin@gmail.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=zhenyzha@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -21
-X-Spam_score: -2.2
-X-Spam_bar: --
-X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.082,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-Mailman-Approved-At: Tue, 16 Aug 2022 12:26:58 -0400
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: e58bkzXy7mXL
+Content-Transfer-Encoding: 8bit
+X-TUID: DjoLtnyHhmGh
 
-commit 49e00c1fe2ab24b73ac16908f3c05ebe88b9186d (HEAD -> master)
-Author: Gavin Shan <gshan@redhat.com>
-Date:   Mon Aug 15 14:29:58 2022 +0800
+Supercedes: 20220812180806.2128593-1-richard.henderson@linaro.org
+("accel/tcg: minimize tlb lookups during translate + user-only PROT_EXEC fixes")
 
-    virt/hw/virt: Add virt_set_high_memmap() helper
+A few changes to the PROT_EXEC work that I posted last week, and
+then continuing to the main event.
 
-    The logic to assign high memory region's address in virt_set_memmap()
-    is independent. Lets move the logic to virt_set_high_memmap() helper.
-    "each device" is replaced by "each region" in the comments.
+My initial goal was to reduce the overhead of TB flushing, which
+Alex Bennee identified as a significant issue with respect to
+booting AArch64 kernels under avocado.  Our initial guess was that
+we need a more efficient data structure for walking TBs associated
+with a physical page.
 
-    No functional change intended.
+While I was looking at some of those numbers, I noted that we were
+seeing up to 16000 TBs attached to a single page, which is well more
+than I expected to see, and means that a new data structure isn't
+going to help as much as simply reducing the number of translations.
 
-    Signed-off-by: Gavin Shan <gshan@redhat.com>
+It turns out the retranslation is due to the guest kernel's userland
+address space randomization.  Each process gets e.g. libc mapped to
+a different virtual address, which caused a new translation.
 
-The patchs works well on my Fujitsu host.
+This, then, introduces some infrastructure for writing "pc-relative"
+translation blocks, in which the guest pc is treated as a variable
+just like any other guest cpu register.  The hashing for these TBs
+are adjusted to compare the physical address.  The target/arm backend
+is adjusted to use the new feature.
 
-[root@hpe-apollo80-02-n00 qemu]# /home/qemu/build/qemu-system-aarch64 -version
-QEMU emulator version 7.0.92 (v7.1.0-rc2-12-gd102b8162a)
-[root@hpe-apollo80-02-n00 qemu]# /home/qemu/build/qemu-system-aarch64
--accel kvm -m 4096,maxmem=1023G -machine virt-2.12 -cpu host
+This does result in a significant reduction in translation.  From the
+BootLinuxAarch64.test_virt_tcg_gicv2 test, at the login prompt:
 
-[root@hpe-apollo80-02-n00 qemu]# /home/qemu/build/qemu-system-aarch64
--accel kvm -m 4096,maxmem=1024G -machine virt-2.12 -cpu host
-qemu-system-aarch64: -accel kvm: Addressing limited to 40 bits, but
-memory exceeds it by 1073741824 bytes
+    Before:
 
-[root@hpe-apollo80-02-n00 qemu]# /home/qemu/build/qemu-system-aarch64
--accel kvm -m 4096,maxmem=1023G -machine virt -cpu host
+    gen code size       160684739/1073736704
+    TB count            289808
+    TB flush count      1
+    TB invalidate count 235143
 
-[root@hpe-apollo80-02-n00 qemu]# /home/qemu/build/qemu-system-aarch64
--accel kvm -m 4096,maxmem=1024G -machine virt -cpu host
-qemu-system-aarch64: -accel kvm: Addressing limited to 40 bits, but
-memory exceeds it by 1073741824 bytes
+    After:
 
-Tested-by:zhenyzha@redhat.com
+    gen code size       277992547/1073736704
+    TB count            503882
+    TB flush count      0
+    TB invalidate count 69282
+
+Before TARGET_TB_PCREL, we generate approximately 1.1GB of TBs
+(overflow 1GB, flush, and fill 153MB again).  Afterward, we only
+generate 265MB of TBs.
+
+Surprisingly, this does not affect wall-clock times nearly as
+much as I would have expected:
+
+                                       before   after   change
+ BootLinuxAarch64.test_virt_tcg_gicv2:  97.35    85.11   -12%
+ BootLinuxAarch64.test_virt_tcg_gicv3: 102.75    96.87    -5%
+
+Change in profile, top 10 entries before, matched up with after:
+
+  before                                                           after
+   9.01%  qemu-system-aar  [.] helper_lookup_tb_ptr                10.67%
+   4.92%  qemu-system-aar  [.] qht_lookup_custom                    5.06%
+   4.79%  qemu-system-aar  [.] get_phys_addr_lpae                   5.24%
+   2.57%  qemu-system-aar  [.] address_space_ldq_le                 2.77%
+   2.33%  qemu-system-aar  [.] liveness_pass_1                      0.60%
+   2.24%  qemu-system-aar  [.] cpu_get_tb_cpu_state                 2.58%
+   1.76%  qemu-system-aar  [.] address_space_translate_internal     1.75%
+   1.71%  qemu-system-aar  [.] tb_lookup_cmp                        1.92%
+   1.65%  qemu-system-aar  [.] tcg_gen_code                         0.44%
+   1.64%  qemu-system-aar  [.] do_tb_phys_invalidate                0.09%
 
 
-On Mon, Aug 15, 2022 at 2:30 PM Gavin Shan <gshan@redhat.com> wrote:
->
-> The logic to assign high memory region's address in virt_set_memmap()
-> is independent. Lets move the logic to virt_set_high_memmap() helper.
-> "each device" is replaced by "each region" in the comments.
->
-> No functional change intended.
->
-> Signed-off-by: Gavin Shan <gshan@redhat.com>
-> ---
->  hw/arm/virt.c | 92 ++++++++++++++++++++++++++++-----------------------
->  1 file changed, 50 insertions(+), 42 deletions(-)
->
-> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-> index e38b6919c9..4dde08a924 100644
-> --- a/hw/arm/virt.c
-> +++ b/hw/arm/virt.c
-> @@ -1688,6 +1688,55 @@ static uint64_t virt_cpu_mp_affinity(VirtMachineState *vms, int idx)
->      return arm_cpu_mp_affinity(idx, clustersz);
->  }
->
-> +static void virt_set_high_memmap(VirtMachineState *vms,
-> +                                 hwaddr base, int pa_bits)
-> +{
-> +    hwaddr region_base, region_size;
-> +    bool *region_enabled, fits;
-> +    int i;
-> +
-> +    for (i = VIRT_LOWMEMMAP_LAST; i < ARRAY_SIZE(extended_memmap); i++) {
-> +        region_base = ROUND_UP(base, extended_memmap[i].size);
-> +        region_size = extended_memmap[i].size;
-> +
-> +        switch (i) {
-> +        case VIRT_HIGH_GIC_REDIST2:
-> +            region_enabled = &vms->highmem_redists;
-> +            break;
-> +        case VIRT_HIGH_PCIE_ECAM:
-> +            region_enabled = &vms->highmem_ecam;
-> +            break;
-> +        case VIRT_HIGH_PCIE_MMIO:
-> +            region_enabled = &vms->highmem_mmio;
-> +            break;
-> +        default:
-> +            region_enabled = NULL;
-> +        }
-> +
-> +        /* Skip unknwon or disabled regions */
-> +        if (!region_enabled || !*region_enabled) {
-> +            continue;
-> +        }
-> +
-> +        /*
-> +         * Check each region to see if they fit in the PA space,
-> +         * moving highest_gpa as we go.
-> +         *
-> +         * For each device that doesn't fit, disable it.
-> +         */
-> +        fits = (region_base + region_size) <= BIT_ULL(pa_bits);
-> +        if (fits) {
-> +            vms->memmap[i].base = region_base;
-> +            vms->memmap[i].size = region_size;
-> +
-> +            base = region_base + region_size;
-> +            vms->highest_gpa = region_base + region_size - 1;
-> +        } else {
-> +            *region_enabled = false;
-> +        }
-> +    }
-> +}
-> +
->  static void virt_set_memmap(VirtMachineState *vms, int pa_bits)
->  {
->      MachineState *ms = MACHINE(vms);
-> @@ -1742,48 +1791,7 @@ static void virt_set_memmap(VirtMachineState *vms, int pa_bits)
->
->      /* We know for sure that at least the memory fits in the PA space */
->      vms->highest_gpa = memtop - 1;
-> -
-> -    for (i = VIRT_LOWMEMMAP_LAST; i < ARRAY_SIZE(extended_memmap); i++) {
-> -        hwaddr region_base = ROUND_UP(base, extended_memmap[i].size);
-> -        hwaddr region_size = extended_memmap[i].size;
-> -        bool *region_enabled, fits;
-> -
-> -        switch (i) {
-> -        case VIRT_HIGH_GIC_REDIST2:
-> -            region_enabled = &vms->highmem_redists;
-> -            break;
-> -        case VIRT_HIGH_PCIE_ECAM:
-> -            region_enabled = &vms->highmem_ecam;
-> -            break;
-> -        case VIRT_HIGH_PCIE_MMIO:
-> -            region_enabled = &vms->highmem_mmio;
-> -            break;
-> -        default:
-> -            region_enabled = NULL;
-> -        }
-> -
-> -        /* Skip unknwon or disabled regions */
-> -        if (!region_enabled || !*region_enabled) {
-> -            continue;
-> -        }
-> -
-> -        /*
-> -         * Check each device to see if they fit in the PA space,
-> -         * moving highest_gpa as we go.
-> -         *
-> -         * For each device that doesn't fit, disable it.
-> -         */
-> -        fits = (region_base + region_size) <= BIT_ULL(pa_bits);
-> -        if (fits) {
-> -            vms->memmap[i].base = region_base;
-> -            vms->memmap[i].size = region_size;
-> -
-> -            base = region_base + region_size;
-> -            vms->highest_gpa = region_base + region_size - 1;
-> -        } else {
-> -            *region_enabled = false;
-> -        }
-> -    }
-> +    virt_set_high_memmap(vms, base, pa_bits);
->
->      if (device_memory_size > 0) {
->          ms->device_memory = g_malloc0(sizeof(*ms->device_memory));
-> --
-> 2.23.0
->
+r~
 
+
+Ilya Leoshkevich (1):
+  accel/tcg: Introduce is_same_page()
+
+Richard Henderson (32):
+  linux-user/arm: Mark the commpage executable
+  linux-user/hppa: Allocate page zero as a commpage
+  linux-user/x86_64: Allocate vsyscall page as a commpage
+  linux-user: Honor PT_GNU_STACK
+  tests/tcg/i386: Move smc_code2 to an executable section
+  accel/tcg: Remove PageDesc code_bitmap
+  accel/tcg: Use bool for page_find_alloc
+  accel/tcg: Make tb_htable_lookup static
+  accel/tcg: Move qemu_ram_addr_from_host_nofail to physmem.c
+  accel/tcg: Properly implement get_page_addr_code for user-only
+  accel/tcg: Use probe_access_internal for softmmu
+    get_page_addr_code_hostp
+  accel/tcg: Add nofault parameter to get_page_addr_code_hostp
+  accel/tcg: Unlock mmap_lock after longjmp
+  accel/tcg: Raise PROT_EXEC exception early
+  accel/tcg: Remove translator_ldsw
+  accel/tcg: Add pc and host_pc params to gen_intermediate_code
+  accel/tcg: Add fast path for translator_ld*
+  accel/tcg: Use DisasContextBase in plugin_gen_tb_start
+  accel/tcg: Do not align tb->page_addr[0]
+  include/hw/core: Create struct CPUJumpCache
+  accel/tcg: Introduce tb_pc and tb_pc_log
+  accel/tcg: Introduce TARGET_TB_PCREL
+  accel/tcg: Split log_cpu_exec into inline and slow path
+  target/arm: Introduce curr_insn_len
+  target/arm: Change gen_goto_tb to work on displacements
+  target/arm: Change gen_*set_pc_im to gen_*update_pc
+  target/arm: Change gen_exception_insn* to work on displacements
+  target/arm: Change gen_exception_internal to work on displacements
+  target/arm: Change gen_jmp* to work on displacements
+  target/arm: Introduce gen_pc_plus_diff for aarch64
+  target/arm: Introduce gen_pc_plus_diff for aarch32
+  target/arm: Enable TARGET_TB_PCREL
+
+ include/elf.h                           |   1 +
+ include/exec/cpu-common.h               |   1 +
+ include/exec/cpu-defs.h                 |   3 +
+ include/exec/exec-all.h                 | 138 +++++++-------
+ include/exec/plugin-gen.h               |   7 +-
+ include/exec/translator.h               |  85 +++++++--
+ include/hw/core/cpu.h                   |   9 +-
+ linux-user/arm/target_cpu.h             |   4 +-
+ linux-user/qemu.h                       |   1 +
+ target/arm/cpu-param.h                  |   2 +
+ target/arm/translate-a32.h              |   2 +-
+ target/arm/translate.h                  |  21 ++-
+ accel/tcg/cpu-exec.c                    | 222 +++++++++++++---------
+ accel/tcg/cputlb.c                      |  98 +++-------
+ accel/tcg/plugin-gen.c                  |  23 +--
+ accel/tcg/translate-all.c               | 197 +++++++-------------
+ accel/tcg/translator.c                  | 122 +++++++++---
+ accel/tcg/user-exec.c                   |  15 ++
+ linux-user/elfload.c                    |  81 +++++++-
+ softmmu/physmem.c                       |  12 ++
+ target/alpha/translate.c                |   5 +-
+ target/arm/cpu.c                        |  23 +--
+ target/arm/translate-a64.c              | 174 ++++++++++-------
+ target/arm/translate-m-nocp.c           |   6 +-
+ target/arm/translate-mve.c              |   2 +-
+ target/arm/translate-vfp.c              |  10 +-
+ target/arm/translate.c                  | 237 +++++++++++++++---------
+ target/avr/cpu.c                        |   2 +-
+ target/avr/translate.c                  |   5 +-
+ target/cris/translate.c                 |   5 +-
+ target/hexagon/cpu.c                    |   2 +-
+ target/hexagon/translate.c              |   6 +-
+ target/hppa/cpu.c                       |   4 +-
+ target/hppa/translate.c                 |   5 +-
+ target/i386/tcg/tcg-cpu.c               |   2 +-
+ target/i386/tcg/translate.c             |   7 +-
+ target/loongarch/cpu.c                  |   2 +-
+ target/loongarch/translate.c            |   6 +-
+ target/m68k/translate.c                 |   5 +-
+ target/microblaze/cpu.c                 |   2 +-
+ target/microblaze/translate.c           |   5 +-
+ target/mips/tcg/exception.c             |   2 +-
+ target/mips/tcg/sysemu/special_helper.c |   2 +-
+ target/mips/tcg/translate.c             |   5 +-
+ target/nios2/translate.c                |   5 +-
+ target/openrisc/cpu.c                   |   2 +-
+ target/openrisc/translate.c             |   6 +-
+ target/ppc/translate.c                  |   5 +-
+ target/riscv/cpu.c                      |   4 +-
+ target/riscv/translate.c                |   5 +-
+ target/rx/cpu.c                         |   2 +-
+ target/rx/translate.c                   |   5 +-
+ target/s390x/tcg/translate.c            |   5 +-
+ target/sh4/cpu.c                        |   4 +-
+ target/sh4/translate.c                  |   5 +-
+ target/sparc/cpu.c                      |   2 +-
+ target/sparc/translate.c                |   5 +-
+ target/tricore/cpu.c                    |   2 +-
+ target/tricore/translate.c              |   6 +-
+ target/xtensa/translate.c               |   6 +-
+ tcg/tcg.c                               |   6 +-
+ tests/tcg/i386/test-i386.c              |   2 +-
+ 62 files changed, 979 insertions(+), 666 deletions(-)
 
 -- 
-I respect your work/life balance, no need to reply to this email if it
-is outside of your normal working hours.
-
-Zhenyu Zhang
-
-Senior Quality Engineer, Products And Technologies
-
-Red Hat Software (Beijing) Co., R&D Branch
-
+2.34.1

@@ -1,115 +1,286 @@
-Received: by 2002:a17:906:3b11:0:0:0:0 with SMTP id g17csp2011507ejf;
-        Tue, 16 Aug 2022 13:41:07 -0700 (PDT)
-X-Received: by 2002:a9d:1b8:0:b0:637:1c86:a402 with SMTP id e53-20020a9d01b8000000b006371c86a402mr3457004ote.113.1660682467315;
-        Tue, 16 Aug 2022 13:41:07 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1660682467; cv=none;
+Received: by 2002:a17:906:3b11:0:0:0:0 with SMTP id g17csp2344923ejf;
+        Wed, 17 Aug 2022 04:26:46 -0700 (PDT)
+X-Google-Smtp-Source: AA6agR6MjZbR+sii03JuQWwZ0a+eZE88PgVcaE6ZS5quiI1e3D4kZa3ZxbKDYLw/eAoyx9Hd745k
+X-Received: by 2002:ac8:5981:0:b0:344:789e:20d6 with SMTP id e1-20020ac85981000000b00344789e20d6mr5093387qte.213.1660735605905;
+        Wed, 17 Aug 2022 04:26:45 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1660735605; cv=none;
         d=google.com; s=arc-20160816;
-        b=0jwtI0Atut4JQYkp4A0HVV3QMVZfUlCB0ZhnLcIQ174zE5hn7kMCLaRTP/72mSK0DE
-         JOJ+50jpTwXPTAsX6ZBBMxTJ5o4gdZ8acNYF0yxpAcZWlTl99AJ2eC39gTCWb9ld3/ZO
-         9P9dONc3qYrRPgfdldPGAvmtZ//WavkopTP+fanIfsGUuSzQXmQ8yY9JKJYfdzkmac95
-         iZqh1E1uKhYw+FtlWlhM2aWoZgdgRd57TGX3YwV37mpBhAkdWdBo6KrISQWdrf17K4km
-         /akN4LtmEyh6soOJjHFsv05lilPfER9DDGn4GBXDLQJ80vv2yxRH6NkHmgFxbmZyVkji
-         wwKw==
+        b=Ut1c+NpiwATy+WlZOa2lW8Z7vBR1twZqxvNvhrUvLvAws3J+FGXbEKYGKMUmM7C4b6
+         Kqmi4CEOJn2ex8PeNA1/ycN9LzIbMs8cfEqg6dScrQm8ucZE3XugvX1AQKJW0/QDyzh7
+         AYlw2popusm6Be2bDwukq+bcK4g2nSlSlDLZnXLaNgwZ1IB7q5qFBv5G05eLpNKY3ndZ
+         Nefd0vg0rfPD4wcercJM+pgTISaf5/L43VSVPG/zFITI43QT5fyN0F4kPTAYTx1IPkwk
+         OSOpsh6h2loNGj8vRWM6LM2I8q6aRQKmtpJoiAXOItNXp5c6yEtex4MJZUiVIexsmALG
+         A4Pg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:in-reply-to:references:cc:to:from
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=Y3dMJQsWCzoReIC5Pnpjsru/SDKUKCLm1SMo3ujwlcs=;
-        b=LuGyfo6azL3CGSFwKVfRdcM+5TiBNJ8dP4hxdRP8usEKQSzQeksDh6jgVxhvDuTTD1
-         HcdNWe2zoTIyu2i8fr2OpdspU75N8ri9rqeJJLE9FRAjfoMBn5XK/aEeNMMBUHO9mkDJ
-         larOk7AB8IA4+1bVrx7L5C8yFe4ILQUDRUkujD+h7WnGhoK+jftKwQyDkw/UH5UdT+pn
-         RmmZZcNWOIXgLzQIhEWnweogMNbjggrKKGadDJXJtettavTl41MXgbgiI3SJwu1FQ5rx
-         SvzVnHpIATcCYIbAduMLZVYDAo0dFku8yrZLKsJUxSwyGnqotQPx7FPBCX4mRvA7E+AJ
-         /+GQ==
+        h=from:reply-to:sender:errors-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence
+         :content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:subject:cc:to:date;
+        bh=fp98+oLcRoEVPx6c9SQbmJZbvifhvsrgN85lhC4xzIw=;
+        b=lmFHnPQwTQXRMw/lR3s9dWvr7IJW0PDdQ3tT+jIPcX0zq9LgjBgP3VozAHneLxZxlu
+         8ciGdiSyoxf+WC74Nx7g3qHMy80vUdKIIZJFnz7N2Ra3wQu8ig2aHwi3NVo/0F96MQqa
+         P2ZVzHod1pKKr4gztTfjRe4aMSqDu+JlcNUhZqT6qlL5CxXfP/TmwUacxSje72n013zK
+         KUq94qu6A0PBBbgiA0FQqAbtKp15bxH3kmFCWKrum2jiPU0o2jC4IlM9LQeSNGYJhVWX
+         KEk0jJYJ9HitivghIQ7vGG5Ow3y37w8BCZ1v9XRxXDDTg/lRCUXXE7Ibl5QBLW99OKNh
+         qKXg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=zS+yVW1f;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <richard.henderson@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id i13-20020a056870578d00b0010e09af74bfsor2251401oap.125.2022.08.16.13.41.07
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id u27-20020a37ab1b000000b006bb7173318bsi1817762qke.723.2022.08.17.04.26.45
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Tue, 16 Aug 2022 13:41:07 -0700 (PDT)
-Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Wed, 17 Aug 2022 04:26:45 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=zS+yVW1f;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=content-transfer-encoding:in-reply-to:references:cc:to:from
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc;
-        bh=Y3dMJQsWCzoReIC5Pnpjsru/SDKUKCLm1SMo3ujwlcs=;
-        b=zS+yVW1fNAHYXW4RMmqDtJ/lsB/zw0MUnggol52OXnGDwjL2TsqHUpG4hoiGLIJKDR
-         JdlXfxA8jQqQ3WE1KsHJNnirJ/+yEyn2bh+f8rtfrdS4ehrzDLZK/Cg1b/+8HdQe0n2S
-         HF608XpO4LoQLrLAb+BmvIZjx7l8I+pCboyizM6mW/qutnbiLJ2FrPRSAJ6Z7qgtJOCL
-         YdYnq+d6Pc6QCcH2ibHrJ2hEPDfjLHLpIq2VrUIk8bqCLmMnIAubQf5p8noj+HpOnOMb
-         4pt9Akd80zPh52OLlp/0ge7YhtqQeRHlxhHgNbUI32jsVwUzpxRfiHYHsxmUR9pObZKc
-         gZRQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:in-reply-to:references:cc:to:from
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc;
-        bh=Y3dMJQsWCzoReIC5Pnpjsru/SDKUKCLm1SMo3ujwlcs=;
-        b=HM6Rsk2hUVBT03GmThyPoOpyPctm3/6zz7Gdagl7JiatFEtyA+jtVAEjuQi0q9bGH+
-         CVmw5N893eC3mldkGcc2MaHTWe9Z3HioUf2QgZBw32dr0utzEI/5LXX9L+QPPPl1NWBu
-         50yOe7miI2hYM5rBELug8lLYvYbE9C4EZF/kCAJO21zwrJ/xNRoYkn6n2qF8ObiUFunU
-         QcTdE7ASFsUXeuzCZYyGdShAZFuZZ1lqkpFfHhGAolbAQWgsSSTttkuV6vpYRUQ/+sAb
-         NLyEg7w/3A8ucbL5cUW86KZMQgSynFR2PJRnyuwwpgLhkPhBLi0ZUwjudAqt3ezLGSEU
-         GFFg==
-X-Gm-Message-State: ACgBeo0yLGiapuATbptPIRgJEVmLDW9ClpEahg0VEl4fyOsNab+1FBfy
-	GCbhl8N7KvTmZgSuqz5qV1xeNk6V
-X-Google-Smtp-Source: AA6agR51HJNAZ5MFAGopMMAospDifG3aNepvximyfZUIHZxvH7Pl4w2v+CHDtyeyQcRDm6SRcxNWPQ==
-X-Received: by 2002:a05:6870:56a8:b0:11c:3b32:e16a with SMTP id p40-20020a05687056a800b0011c3b32e16amr151644oao.117.1660682466969;
-        Tue, 16 Aug 2022 13:41:06 -0700 (PDT)
-Return-Path: <richard.henderson@linaro.org>
-Received: from ?IPV6:2605:ef80:80f6:61fa:9bc2:5095:d612:5e22? ([2605:ef80:80f6:61fa:9bc2:5095:d612:5e22])
-        by smtp.gmail.com with ESMTPSA id k24-20020a05680808d800b0033a37114eb0sm2547633oij.19.2022.08.16.13.41.04
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 16 Aug 2022 13:41:05 -0700 (PDT)
-Message-ID: <417621e6-d20b-f3c5-bafa-c011e0426b35@linaro.org>
-Date: Tue, 16 Aug 2022 15:41:01 -0500
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+Received: from localhost ([::1]:44276 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1oOHC9-00046u-Bn
+	for alex.bennee@linaro.org; Wed, 17 Aug 2022 07:26:45 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33584)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
+ id 1oOHBN-00044f-OG; Wed, 17 Aug 2022 07:26:01 -0400
+Received: from frasgout.his.huawei.com ([185.176.79.56]:2677)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
+ id 1oOHBJ-00026a-G8; Wed, 17 Aug 2022 07:25:56 -0400
+Received: from fraeml701-chm.china.huawei.com (unknown [172.18.147.206])
+ by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4M75GL0DDtz67Lmq;
+ Wed, 17 Aug 2022 19:22:34 +0800 (CST)
+Received: from lhrpeml500005.china.huawei.com (7.191.163.240) by
+ fraeml701-chm.china.huawei.com (10.206.15.50) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id
+ 15.1.2375.24; Wed, 17 Aug 2022 13:25:38 +0200
+Received: from localhost (10.202.226.42) by lhrpeml500005.china.huawei.com
+ (7.191.163.240) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2375.24; Wed, 17 Aug
+ 2022 12:25:38 +0100
+Date: Wed, 17 Aug 2022 12:25:37 +0100
+To: Dan Williams <dan.j.williams@intel.com>
+CC: Jonathan Cameron via <qemu-devel@nongnu.org>, Bobo WL
+ <lmw.bobo@gmail.com>, <linux-cxl@vger.kernel.org>, <qemu-arm@nongnu.org>
+Subject: Re: [BUG] cxl can not create region
+Message-ID: <20220817122537.00007b24@huawei.com>
+In-Reply-To: <62faced380b00_dfbc129494@dwillia2-xfh.jf.intel.com.notmuch>
+References: <CAGr_yG0UrfJAMWta3EkR1F0JZ4j--sig74p6vKL3K6TZDx9YGA@mail.gmail.com>
+ <20220808133727.00001171@huawei.com>
+ <CAGr_yG36GSO8esyO9nn6OeOEN5zPSosEmBHbfYGwqNGiYOh9vw@mail.gmail.com>
+ <20220809170825.00001b61@huawei.com>
+ <20220811180857.00005e67@huawei.com>
+ <20220812164403.00001654@huawei.com>
+ <20220815180444.00006bdf@huawei.com>
+ <62faced380b00_dfbc129494@dwillia2-xfh.jf.intel.com.notmuch>
+X-Mailer: Claws Mail 4.0.0 (GTK+ 3.24.29; i686-w64-mingw32)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.11.0
-Subject: Re: [PATCH v2 33/33] target/arm: Enable TARGET_TB_PCREL
-Content-Language: en-US
-From: Richard Henderson <richard.henderson@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, alex.bennee@linaro.org, iii@linux.ibm.com
-References: <20220816203400.161187-1-richard.henderson@linaro.org>
- <20220816203400.161187-34-richard.henderson@linaro.org>
-In-Reply-To: <20220816203400.161187-34-richard.henderson@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Type: text/plain; charset="US-ASCII"
 Content-Transfer-Encoding: 7bit
-X-TUID: AB5HIuLq9RnN
+X-Originating-IP: [10.202.226.42]
+X-ClientProxiedBy: lhrpeml100006.china.huawei.com (7.191.160.224) To
+ lhrpeml500005.china.huawei.com (7.191.163.240)
+X-CFilter-Loop: Reflected
+Received-SPF: pass client-ip=185.176.79.56;
+ envelope-from=jonathan.cameron@huawei.com; helo=frasgout.his.huawei.com
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Reply-to:  Jonathan Cameron <Jonathan.Cameron@huawei.com>
+From:  Jonathan Cameron via <qemu-arm@nongnu.org>
+X-TUID: KwQt1HydEFQs
 
-On 8/16/22 15:34, Richard Henderson wrote:
-> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
-> ---
->   target/arm/cpu-param.h     |  2 ++
->   target/arm/translate.h     |  6 ++++
->   target/arm/cpu.c           | 23 +++++++-------
->   target/arm/translate-a64.c | 37 ++++++++++++++++++-----
->   target/arm/translate.c     | 62 ++++++++++++++++++++++++++++++--------
->   5 files changed, 100 insertions(+), 30 deletions(-)
+On Mon, 15 Aug 2022 15:55:15 -0700
+Dan Williams <dan.j.williams@intel.com> wrote:
+
+> Jonathan Cameron wrote:
+> > On Fri, 12 Aug 2022 16:44:03 +0100
+> > Jonathan Cameron <Jonathan.Cameron@huawei.com> wrote:
+> >   
+> > > On Thu, 11 Aug 2022 18:08:57 +0100
+> > > Jonathan Cameron via <qemu-devel@nongnu.org> wrote:
+> > >   
+> > > > On Tue, 9 Aug 2022 17:08:25 +0100
+> > > > Jonathan Cameron <Jonathan.Cameron@huawei.com> wrote:
+> > > >     
+> > > > > On Tue, 9 Aug 2022 21:07:06 +0800
+> > > > > Bobo WL <lmw.bobo@gmail.com> wrote:
+> > > > >       
+> > > > > > Hi Jonathan
+> > > > > > 
+> > > > > > Thanks for your reply!
+> > > > > > 
+> > > > > > On Mon, Aug 8, 2022 at 8:37 PM Jonathan Cameron
+> > > > > > <Jonathan.Cameron@huawei.com> wrote:        
+> > > > > > >
+> > > > > > > Probably not related to your problem, but there is a disconnect in QEMU /
+> > > > > > > kernel assumptionsaround the presence of an HDM decoder when a HB only
+> > > > > > > has a single root port. Spec allows it to be provided or not as an implementation choice.
+> > > > > > > Kernel assumes it isn't provide. Qemu assumes it is.
+> > > > > > >
+> > > > > > > The temporary solution is to throw in a second root port on the HB and not
+> > > > > > > connect anything to it.  Longer term I may special case this so that the particular
+> > > > > > > decoder defaults to pass through settings in QEMU if there is only one root port.
+> > > > > > >          
+> > > > > > 
+> > > > > > You are right! After adding an extra HB in qemu, I can create a x1
+> > > > > > region successfully.
+> > > > > > But have some errors in Nvdimm:
+> > > > > > 
+> > > > > > [   74.925838] Unknown online node for memory at 0x10000000000, assuming node 0
+> > > > > > [   74.925846] Unknown target node for memory at 0x10000000000, assuming node 0
+> > > > > > [   74.927470] nd_region region0: nmem0: is disabled, failing probe        
+> > > > > 
+> > > > > Ah. I've seen this one, but not chased it down yet.  Was on my todo list to chase
+> > > > > down. Once I reach this state I can verify the HDM Decode is correct which is what
+> > > > > I've been using to test (Which wasn't true until earlier this week). 
+> > > > > I'm currently testing via devmem, more for historical reasons than because it makes
+> > > > > that much sense anymore.        
+> > > > 
+> > > > *embarassed cough*.  We haven't fully hooked the LSA up in qemu yet.
+> > > > I'd forgotten that was still on the todo list. I don't think it will
+> > > > be particularly hard to do and will take a look in next few days.
+> > > > 
+> > > > Very very indirectly this error is causing a driver probe fail that means that
+> > > > we hit a code path that has a rather odd looking check on NDD_LABELING.
+> > > > Should not have gotten near that path though - hence the problem is actually
+> > > > when we call cxl_pmem_get_config_data() and it returns an error because
+> > > > we haven't fully connected up the command in QEMU.    
+> > > 
+> > > So a least one bug in QEMU. We were not supporting variable length payloads on mailbox
+> > > inputs (but were on outputs).  That hasn't mattered until we get to LSA writes.
+> > > We just need to relax condition on the supplied length.
+> > > 
+> > > diff --git a/hw/cxl/cxl-mailbox-utils.c b/hw/cxl/cxl-mailbox-utils.c
+> > > index c352a935c4..fdda9529fe 100644
+> > > --- a/hw/cxl/cxl-mailbox-utils.c
+> > > +++ b/hw/cxl/cxl-mailbox-utils.c
+> > > @@ -510,7 +510,7 @@ void cxl_process_mailbox(CXLDeviceState *cxl_dstate)
+> > >      cxl_cmd = &cxl_cmd_set[set][cmd];
+> > >      h = cxl_cmd->handler;
+> > >      if (h) {
+> > > -        if (len == cxl_cmd->in) {
+> > > +        if (len == cxl_cmd->in || !cxl_cmd->in) {  
+> > Fix is wrong as we use ~0 as the placeholder for variable payload, not 0.
+> > 
+> > With that fixed we hit new fun paths - after some errors we get the
+> > worrying - not totally sure but looks like a failure on an error cleanup.
+> > I'll chase down the error source, but even then this is probably triggerable by
+> > hardware problem or similar.  Some bonus prints in here from me chasing
+> > error paths, but it's otherwise just cxl/next + the fix I posted earlier today.  
 > 
-> diff --git a/target/arm/cpu-param.h b/target/arm/cpu-param.h
-> index 68ffb12427..ef62371d8f 100644
-> --- a/target/arm/cpu-param.h
-> +++ b/target/arm/cpu-param.h
-> @@ -34,4 +34,6 @@
->   
->   #define NB_MMU_MODES 15
->   
-> +#define TARGET_TB_PCREL 1
+> One of the scenarios that I cannot rule out is nvdimm_probe() racing
+> nd_region_probe(), but given all the work it takes to create a region I
+> suspect all the nvdimm_probe() work to have completed...
+> 
+> It is at least one potentially wrong hypothesis that needs to be chased
+> down.
 
-Oh, this was meant to be system-mode only, as there is no virtual aliasing in user-only. 
-But during development it was handy to test the feature in user-only.  And we might find 
-that maintaining both mechanisms is more effort than not.
+Maybe there should be a special award for the non-intuitive 
+ndctl create-namespace command (modifies existing namespace and might create
+a different empty one...) I'm sure there is some interesting history behind that one :)
 
+Upshot is I just threw a filesystem on fsdax and wrote some text files on it
+to allow easy grepping. The right data ends up in the memory and a plausible
+namespace description is stored in the LSA.
 
-r~
+So to some degree at least it's 'working' on an 8 way direct connected
+set of emulated devices.
+
+One snag is that serial number support isn't yet upstream in QEMU.
+(I have had it in my tree for a while but not posted it yet because of
+ QEMU feature freeze)
+https://gitlab.com/jic23/qemu/-/commit/144c783ea8a5fbe169f46ea1ba92940157f42733
+That's needed for meaningful cookie generation.  Otherwise you can build the
+namespace once, but it won't work on next probe as the cookie is 0 and you
+hit some error paths.
+
+Maybe sensible to add a sanity check and fail namespace creation if
+cookie is 0?  (Silly side question, but is there a theoretical risk of
+a serial number / other data combination leading to a fletcher64()
+checksum that happens to be 0 - that would give a very odd bug report!)
+
+So to make it work the following is needed:
+
+1) The kernel fix for mailbox buffer overflow.
+2) Qemu fix for size of arguements for get_lsa
+3) Qemu fix to allow variable size input arguements (for set_lsa)
+4) Serial number patch above + command lines to qemu to set appropriate
+   serial numbers.
+
+I'll send out the QEMU fixes shortly and post the Serial number patch,
+though that almost certainly won't go in until next QEMU development
+cycle starts in a few weeks.
+
+Next up, run through same tests on some other topologies.
+
+Jonathan
+
+> 
+> > 
+> > [   69.919877] nd_bus ndbus0: START: nd_region.probe(region0)
+> > [   69.920108] nd_region_probe
+> > [   69.920623] ------------[ cut here ]------------
+> > [   69.920675] refcount_t: addition on 0; use-after-free.
+> > [   69.921314] WARNING: CPU: 3 PID: 710 at lib/refcount.c:25 refcount_warn_saturate+0xa0/0x144
+> > [   69.926949] Modules linked in: cxl_pmem cxl_mem cxl_pci cxl_port cxl_acpi cxl_core
+> > [   69.928830] CPU: 3 PID: 710 Comm: kworker/u8:9 Not tainted 5.19.0-rc3+ #399
+> > [   69.930596] Hardware name: QEMU QEMU Virtual Machine, BIOS 0.0.0 02/06/2015
+> > [   69.931482] Workqueue: events_unbound async_run_entry_fn
+> > [   69.932403] pstate: 60400005 (nZCv daif +PAN -UAO -TCO -DIT -SSBS BTYPE=--)
+> > [   69.934023] pc : refcount_warn_saturate+0xa0/0x144
+> > [   69.935161] lr : refcount_warn_saturate+0xa0/0x144
+> > [   69.936541] sp : ffff80000890b960
+> > [   69.937921] x29: ffff80000890b960 x28: 0000000000000000 x27: 0000000000000000
+> > [   69.940917] x26: ffffa54a90d5cb10 x25: ffffa54a90809e98 x24: 0000000000000000
+> > [   69.942537] x23: ffffa54a91a3d8d8 x22: ffff0000c5254800 x21: ffff0000c5254800
+> > [   69.944013] x20: ffff0000ce924180 x19: ffff0000c5254800 x18: ffffffffffffffff
+> > [   69.946100] x17: ffff5ab66e5ef000 x16: ffff80000801c000 x15: 0000000000000000
+> > [   69.947585] x14: 0000000000000001 x13: 0a2e656572662d72 x12: 657466612d657375
+> > [   69.948670] x11: 203b30206e6f206e x10: 6f69746964646120 x9 : ffffa54a8f63d288
+> > [   69.950679] x8 : 206e6f206e6f6974 x7 : 69646461203a745f x6 : 00000000fffff31e
+> > [   69.952113] x5 : ffff0000ff61ba08 x4 : 00000000fffff31e x3 : ffff5ab66e5ef000
+> > root@debian:/sys/bus/cxl/devices/decoder0.0/region0# [   69.954752] x2 : 0000000000000000 x1 : 0000000000000000 x0 : ffff0000c512e740
+> > [   69.957098] Call trace:
+> > [   69.957959]  refcount_warn_saturate+0xa0/0x144
+> > [   69.958773]  get_ndd+0x5c/0x80
+> > [   69.959294]  nd_region_register_namespaces+0xe4/0xe90
+> > [   69.960253]  nd_region_probe+0x100/0x290
+> > [   69.960796]  nvdimm_bus_probe+0xf4/0x1c0
+> > [   69.962087]  really_probe+0x19c/0x3f0
+> > [   69.962620]  __driver_probe_device+0x11c/0x190
+> > [   69.963258]  driver_probe_device+0x44/0xf4
+> > [   69.963773]  __device_attach_driver+0xa4/0x140
+> > [   69.964471]  bus_for_each_drv+0x84/0xe0
+> > [   69.965068]  __device_attach+0xb0/0x1f0
+> > [   69.966101]  device_initial_probe+0x20/0x30
+> > [   69.967142]  bus_probe_device+0xa4/0xb0
+> > [   69.968104]  device_add+0x3e8/0x910
+> > [   69.969111]  nd_async_device_register+0x24/0x74
+> > [   69.969928]  async_run_entry_fn+0x40/0x150
+> > [   69.970725]  process_one_work+0x1dc/0x450
+> > [   69.971796]  worker_thread+0x154/0x450
+> > [   69.972700]  kthread+0x118/0x120
+> > [   69.974141]  ret_from_fork+0x10/0x20
+> > [   69.975141] ---[ end trace 0000000000000000 ]---
+> > [   70.117887] Into nd_namespace_pmem_set_resource()  
+

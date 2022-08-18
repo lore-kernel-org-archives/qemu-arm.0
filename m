@@ -1,259 +1,361 @@
-Received: by 2002:a17:906:3b11:0:0:0:0 with SMTP id g17csp2008849ejf;
-        Tue, 16 Aug 2022 13:34:15 -0700 (PDT)
-X-Received: by 2002:a05:6830:d07:b0:638:d0b1:c2c1 with SMTP id bu7-20020a0568300d0700b00638d0b1c2c1mr1424561otb.273.1660682055147;
-        Tue, 16 Aug 2022 13:34:15 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1660682055; cv=none;
+Received: by 2002:a17:906:3b11:0:0:0:0 with SMTP id g17csp122639ejf;
+        Wed, 17 Aug 2022 21:17:59 -0700 (PDT)
+X-Received: by 2002:a63:1e10:0:b0:41d:f6f6:49cc with SMTP id e16-20020a631e10000000b0041df6f649ccmr1072524pge.223.1660796279123;
+        Wed, 17 Aug 2022 21:17:59 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1660796279; cv=none;
         d=google.com; s=arc-20160816;
-        b=f5Eeliy3D/31j8ElAMJxa/FyRIBabGsILpe8rGx3v04R2RELlFq0Zt0A3LNXFvcr3F
-         zQNoAKSp6swhx6bCvgaFFP12lZqwSnYCxJ6g7GhgVaf1bUUTNjyImEfcJKBGqecJOX0c
-         ABXCchEZVQGn56haqtBrfffdDpr61aq+UYlbvXE45NzecKVuU0xZny64g/wyucTsFzBQ
-         AyeC8510N3MFvdtmvHVfSJdcB36jbyC+x4SHDtbQiDFyebkrMHRoo1ZrX97LgTICnKY6
-         afblgWLy7xBmG9MntsziwqHXwf9rqG2IJJJjeLXR0ol8mwJqf1FjTtaJI9BpbcEgCemH
-         crAw==
+        b=UQkpPt8cBnhXw9NXZ8gvyPCuv6r8QIQUQv7IIbp1GrV+B1rerJkxnjyUZX7zVBh++r
+         ZTr9bl2LVc9uzBxEagrAvikQpzyxY7C5/uqbf/qVMqsmEQELYIlSg04Ujq9/xH2/3mx8
+         n40Pd19kz1JnTLdkAXFltvtIXtgZ6WVatkLVhEGucFqTjRssNQarUzYwW0irfJtoAsyg
+         BBntdVF4fhZkE0ZhjCU3L4ri7QtVm5iBvwDLyq/HauJbgOK8DwfEvjsHGoUEtmlhEGf6
+         i0FlS4SEiTVFeubMSBgdA9bB3c+XEnGGipCDJrYsU+9Z10Jrb85Z1adKWn2PP4V78KXl
+         agfg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:dkim-signature;
-        bh=G8c2iuTDo4UvuF2iefnqT1KVHhsC+sQtSAyF/QMhIQM=;
-        b=ngAgQ+LaM+uQ82kFhx0x2nwozZzRI0ZvaKr0jDOrV/Dkqs9pLZibwQa4qdz44MJaUD
-         yZRnqAGGhui009B1T85qBW9ZqlMG9C5KtcBHRDWlNMQY/+CHbsoOBZnyAxJHS2PtGOri
-         lGnEFhTjJBwezc7n1IaSWFGxct0CrTL0J8UfzyZwzAG6bF5I66QrwXoH+Bun4yevJsgT
-         w8YOamELKE3hiPrhQQXeGM41HAFYSHHy3TwV+namqTDVa6zqKztzU0FeIU/F1P6jreFh
-         i38vsRE/4cjm7xOAOOA6luJN5gzLvbBHfloRFQsdI9uwd2L9UI1I4QGAM0PFz1pw/lni
-         pP2w==
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature;
+        bh=RRXULwuI83NG8U8May4R7T2+NAOiaVvaNyB07bTxYBI=;
+        b=STZzLMImDa4G+CNlgNuCZ+AWyvyB2o29427rl8DswZpgwRWAXeCJT7wUoES5BCyjWX
+         35EKHsU6sZcBdkuu9qlemMHwJAibiWMT8JNdUueceRd1gG3FgVtOMqQ/aVLZ4JGVoysU
+         HUeovg4Sz+rp+EsnI751CqpzYJLQf5PXI6DLaFjCffGIFvX6k8++UiCumCak28X/AFcB
+         pQBnsb9Nf2hrAkGrQYYN2iO9IUpt1obOktL41rbzUAvT7CRw9CeOe9glvI9M8CcOzcCw
+         1sex9+UPO06Oz7U5DrGnjzSIhQ/RHBsgrZLq5P7li+kjth3kyuxcNgalcS/e9dDUcG9B
+         HmJQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=w0zIOOHS;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <richard.henderson@linaro.org>
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=EpJEQJCu;
+       spf=pass (google.com: domain of alistair23@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=alistair23@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <alistair23@gmail.com>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id p203-20020acaf1d4000000b00344c78e7eefsor1257563oih.106.2022.08.16.13.34.14
-        for <alex.bennee@linaro.org>
+        by mx.google.com with SMTPS id h15-20020a056a001a4f00b0052ba5b35dcesor392852pfv.15.2022.08.17.21.17.58
         (Google Transport Security);
-        Tue, 16 Aug 2022 13:34:15 -0700 (PDT)
-Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        Wed, 17 Aug 2022 21:17:59 -0700 (PDT)
+Received-SPF: pass (google.com: domain of alistair23@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=w0zIOOHS;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=EpJEQJCu;
+       spf=pass (google.com: domain of alistair23@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=alistair23@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc;
-        bh=G8c2iuTDo4UvuF2iefnqT1KVHhsC+sQtSAyF/QMhIQM=;
-        b=w0zIOOHS7ryC5iuQg72ubsMeLLPgjTuOPJ3tFEDfwQ0gavk1eJC5h6KXYzA1Z9RnO4
-         tEPS0+udpkEiQL7Nc7k3KbhaPSwAbtFuxu/n8Uieg4uEfru4qO8Ur9/G9iUHvKsniM/C
-         P3rLqCU1agm8OMMDBJjcieJj8//JywAe9NbPnZtYA/oPf5VunaMQpAgtxLQUCuZ2pGJ6
-         MkWj5lcTgiqi0F9yWU07choNbBVU6dV56MrLbl2kT2HtwQQTDx55wf3SrRHJELLz2WAX
-         FART2Hd9BzXN9DJYowsdP6+i5pPMXwqjPbwu9jOQpTEO95tPZ8MgfJ5zjux9/Pv2v/Ov
-         TWxw==
+        d=gmail.com; s=20210112;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc;
+        bh=RRXULwuI83NG8U8May4R7T2+NAOiaVvaNyB07bTxYBI=;
+        b=EpJEQJCuDIXgfrOEo9mlIxvJYUObtgiJCesEQTFPzDAHjvbjNZLoagaomL4Ww4wptw
+         Md122bBSi1g7+YVDfQbJa3sSeITPcJ+S1aJKGrsBCqddIhAM2WjnmwBG1udwmoIIQL2Z
+         bTBkgOL9NMkSvLafX6L8nFAQNcf+GP1Ut/+IgKt7UssAwqFxFAAB77kHz6VxV4UP8wMY
+         qBAtBlzSo3QbcYBWbdjQecs+4k5ROcXkuFHxtH6jmY4EL1YQZVZaPnQuz6ldHRLQPAPu
+         y2IGtd5cncSDSHcx5EdhViLX8IeUAzQnPFBns39jxH6uLCw2Ox0c+fcOXcXcJKk7BdEW
+         9zhg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc;
-        bh=G8c2iuTDo4UvuF2iefnqT1KVHhsC+sQtSAyF/QMhIQM=;
-        b=2t1RAVJ4NmV0ujBSuWIu3BYzwCOEaSeTd/bS5GEhvLa/c3+ZW5IZlRx7Vt4NtBMdpE
-         mcp7tG/brIuXDvmu/jXgu9S7TVX6fPte1UQZPrmoRfD9Dq4DZcITsrgGaNv5wNe9y8yy
-         tvvX2G0vO2QXFgGifrRnwv05kfylCy5We+W/HJ2tfYAn2CQWA/v+TXDaVrGjFQW2OLly
-         UPox+wGTwLu5BXUXrpIH/EY1pG2nqbA9EbxlKGSBz3OUUicykOpa/PWVHycZy3Z8LOlh
-         H5tezXsTCiC86HGhWuDRkHgVuF6gbpf7T/XAWqU14LBTfstitK1kH/DKAiw5xf4wjAE9
-         ZfEA==
-X-Gm-Message-State: ACgBeo0P6otAuHbdxEVxNuSmO+d+0ChmvYcIJ+kv49j55YDZhyOYyAMJ
-	vO+Ny31ribscn+CwuzAIVsorJ29RgDQEMmuR
-X-Google-Smtp-Source: AA6agR57vG6MWxm9HtEq/26etcPAHY6doS70J5mZFCvIR+qFsBYS7CXodpCUKk45F/ZXRssjwiAnTg==
-X-Received: by 2002:aca:6088:0:b0:343:75a6:d6a3 with SMTP id u130-20020aca6088000000b0034375a6d6a3mr155569oib.92.1660682045494;
-        Tue, 16 Aug 2022 13:34:05 -0700 (PDT)
-Return-Path: <richard.henderson@linaro.org>
-Received: from stoup.. ([2605:ef80:80f6:61fa:9bc2:5095:d612:5e22])
-        by smtp.gmail.com with ESMTPSA id y23-20020a056870b01700b0010ef8ccde67sm2285220oae.13.2022.08.16.13.34.02
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 16 Aug 2022 13:34:04 -0700 (PDT)
-From: Richard Henderson <richard.henderson@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org,
-	alex.bennee@linaro.org,
-	iii@linux.ibm.com
-Subject: [PATCH v2 00/33] accel/tcg + target/arm: pc-relative translation
-Date: Tue, 16 Aug 2022 15:33:27 -0500
-Message-Id: <20220816203400.161187-1-richard.henderson@linaro.org>
-X-Mailer: git-send-email 2.34.1
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc;
+        bh=RRXULwuI83NG8U8May4R7T2+NAOiaVvaNyB07bTxYBI=;
+        b=F5e03gqUxIy1N8vT34bEV3k+Y3ezoWJfmR+mM5qeqGaGu6QZXt4H+71nrMWb2WaAk3
+         yR5nFV629eZZM2ytQuAxg8dVxTYad3iuy0qIpjDu4svFZLYYYecbBO4Od8ZAELvKGaAa
+         iCd0ApD0JuyqS0AWK8ub1lxiO5zC/lqezGkytMo86+FT4beR3jMqKeiJ102SepgjVnr/
+         J/u9x0mRkuF1YHX0vVS+E9Y+gusDEFYATjcTQam+HqT85dART0xi9kz2Ew5XTf1kE/Av
+         CuqQo2hnbFh0731nlsLPZbS0sWQ50H4J8Zskbkbl115JUTeE2UrbVm4EfyKQoRQZLwNT
+         TKgg==
+X-Gm-Message-State: ACgBeo2w2BdbQ7kzxn44hBllXk/9BUl2gDQwx0b85LB1v9+foPdUw3s/
+	bFCQey3MY7Jd73gtWIFDItLa5F37e880FBPagotYutNlFXc=
+X-Google-Smtp-Source: AA6agR5CuXnDTE3w8fhNpJcp5nc3akl5kzsPyA2iCm18NrQRiTHBjwrC/9OauXxetIvmHyo8DH5DZ3i99uCJQGhMsFA=
+X-Received: by 2002:a05:6a00:88e:b0:52c:65a3:fdb4 with SMTP id
+ q14-20020a056a00088e00b0052c65a3fdb4mr1218936pfj.83.1660796278330; Wed, 17
+ Aug 2022 21:17:58 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-TUID: DjoLtnyHhmGh
+References: <20220815190303.2061559-1-peter.maydell@linaro.org> <20220815190303.2061559-2-peter.maydell@linaro.org>
+In-Reply-To: <20220815190303.2061559-2-peter.maydell@linaro.org>
+From: Alistair Francis <alistair23@gmail.com>
+Date: Thu, 18 Aug 2022 14:17:31 +1000
+Message-ID: <CAKmqyKNiU72_fykg5H6KgijippvyuMinx3kFwQziSzNU+myFbQ@mail.gmail.com>
+Subject: Re: [PATCH 1/7] semihosting: Allow optional use of semihosting from userspace
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-arm <qemu-arm@nongnu.org>, 
+	"qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>, "open list:RISC-V" <qemu-riscv@nongnu.org>, 
+	=?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
+	Laurent Vivier <laurent@vivier.eu>, =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>, 
+	Jiaxun Yang <jiaxun.yang@flygoat.com>, Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>, 
+	Stefan Pejic <stefan.pejic@syrmia.com>, Chris Wulff <crwulff@gmail.com>, Marek Vasut <marex@denx.de>, 
+	Palmer Dabbelt <palmer@dabbelt.com>, Alistair Francis <alistair.francis@wdc.com>, 
+	Bin Meng <bin.meng@windriver.com>, Max Filippov <jcmvbkbc@gmail.com>, 
+	Richard Henderson <richard.henderson@linaro.org>, Furquan Shaikh <furquan@rivosinc.com>
+Content-Type: text/plain; charset="UTF-8"
+X-TUID: BeT32gdf6hMC
 
-Supercedes: 20220812180806.2128593-1-richard.henderson@linaro.org
-("accel/tcg: minimize tlb lookups during translate + user-only PROT_EXEC fixes")
+On Tue, Aug 16, 2022 at 5:03 AM Peter Maydell <peter.maydell@linaro.org> wrote:
+>
+> Currently our semihosting implementations generally prohibit use of
+> semihosting calls in system emulation from the guest userspace.  This
+> is a very long standing behaviour justified originally "to provide
+> some semblance of security" (since code with access to the
+> semihosting ABI can do things like read and write arbitrary files on
+> the host system).  However, it is sometimes useful to be able to run
+> trusted guest code which performs semihosting calls from guest
+> userspace, notably for test code.  Add a command line suboption to
+> the existing semihosting-config option group so that you can
+> explicitly opt in to semihosting from guest userspace with
+>  -semihosting-config userspace=on
+>
+> (There is no equivalent option for the user-mode emulator, because
+> there by definition all code runs in userspace and has access to
+> semihosting already.)
+>
+> This commit adds the infrastructure for the command line option and
+> adds a bool 'is_user' parameter to the function
+> semihosting_userspace_enabled() that target code can use to check
+> whether it should be permitting the semihosting call for userspace.
+> It mechanically makes all the callsites pass 'false', so they
+> continue checking "is semihosting enabled in general".  Subsequent
+> commits will make each target that implements semihosting honour the
+> userspace=on option by passing the correct value and removing
+> whatever "don't do this for userspace" checking they were doing by
+> hand.
+>
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 
-A few changes to the PROT_EXEC work that I posted last week, and
-then continuing to the main event.
+Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
 
-My initial goal was to reduce the overhead of TB flushing, which
-Alex Bennee identified as a significant issue with respect to
-booting AArch64 kernels under avocado.  Our initial guess was that
-we need a more efficient data structure for walking TBs associated
-with a physical page.
+Alistair
 
-While I was looking at some of those numbers, I noted that we were
-seeing up to 16000 TBs attached to a single page, which is well more
-than I expected to see, and means that a new data structure isn't
-going to help as much as simply reducing the number of translations.
-
-It turns out the retranslation is due to the guest kernel's userland
-address space randomization.  Each process gets e.g. libc mapped to
-a different virtual address, which caused a new translation.
-
-This, then, introduces some infrastructure for writing "pc-relative"
-translation blocks, in which the guest pc is treated as a variable
-just like any other guest cpu register.  The hashing for these TBs
-are adjusted to compare the physical address.  The target/arm backend
-is adjusted to use the new feature.
-
-This does result in a significant reduction in translation.  From the
-BootLinuxAarch64.test_virt_tcg_gicv2 test, at the login prompt:
-
-    Before:
-
-    gen code size       160684739/1073736704
-    TB count            289808
-    TB flush count      1
-    TB invalidate count 235143
-
-    After:
-
-    gen code size       277992547/1073736704
-    TB count            503882
-    TB flush count      0
-    TB invalidate count 69282
-
-Before TARGET_TB_PCREL, we generate approximately 1.1GB of TBs
-(overflow 1GB, flush, and fill 153MB again).  Afterward, we only
-generate 265MB of TBs.
-
-Surprisingly, this does not affect wall-clock times nearly as
-much as I would have expected:
-
-                                       before   after   change
- BootLinuxAarch64.test_virt_tcg_gicv2:  97.35    85.11   -12%
- BootLinuxAarch64.test_virt_tcg_gicv3: 102.75    96.87    -5%
-
-Change in profile, top 10 entries before, matched up with after:
-
-  before                                                           after
-   9.01%  qemu-system-aar  [.] helper_lookup_tb_ptr                10.67%
-   4.92%  qemu-system-aar  [.] qht_lookup_custom                    5.06%
-   4.79%  qemu-system-aar  [.] get_phys_addr_lpae                   5.24%
-   2.57%  qemu-system-aar  [.] address_space_ldq_le                 2.77%
-   2.33%  qemu-system-aar  [.] liveness_pass_1                      0.60%
-   2.24%  qemu-system-aar  [.] cpu_get_tb_cpu_state                 2.58%
-   1.76%  qemu-system-aar  [.] address_space_translate_internal     1.75%
-   1.71%  qemu-system-aar  [.] tb_lookup_cmp                        1.92%
-   1.65%  qemu-system-aar  [.] tcg_gen_code                         0.44%
-   1.64%  qemu-system-aar  [.] do_tb_phys_invalidate                0.09%
-
-
-r~
-
-
-Ilya Leoshkevich (1):
-  accel/tcg: Introduce is_same_page()
-
-Richard Henderson (32):
-  linux-user/arm: Mark the commpage executable
-  linux-user/hppa: Allocate page zero as a commpage
-  linux-user/x86_64: Allocate vsyscall page as a commpage
-  linux-user: Honor PT_GNU_STACK
-  tests/tcg/i386: Move smc_code2 to an executable section
-  accel/tcg: Remove PageDesc code_bitmap
-  accel/tcg: Use bool for page_find_alloc
-  accel/tcg: Make tb_htable_lookup static
-  accel/tcg: Move qemu_ram_addr_from_host_nofail to physmem.c
-  accel/tcg: Properly implement get_page_addr_code for user-only
-  accel/tcg: Use probe_access_internal for softmmu
-    get_page_addr_code_hostp
-  accel/tcg: Add nofault parameter to get_page_addr_code_hostp
-  accel/tcg: Unlock mmap_lock after longjmp
-  accel/tcg: Raise PROT_EXEC exception early
-  accel/tcg: Remove translator_ldsw
-  accel/tcg: Add pc and host_pc params to gen_intermediate_code
-  accel/tcg: Add fast path for translator_ld*
-  accel/tcg: Use DisasContextBase in plugin_gen_tb_start
-  accel/tcg: Do not align tb->page_addr[0]
-  include/hw/core: Create struct CPUJumpCache
-  accel/tcg: Introduce tb_pc and tb_pc_log
-  accel/tcg: Introduce TARGET_TB_PCREL
-  accel/tcg: Split log_cpu_exec into inline and slow path
-  target/arm: Introduce curr_insn_len
-  target/arm: Change gen_goto_tb to work on displacements
-  target/arm: Change gen_*set_pc_im to gen_*update_pc
-  target/arm: Change gen_exception_insn* to work on displacements
-  target/arm: Change gen_exception_internal to work on displacements
-  target/arm: Change gen_jmp* to work on displacements
-  target/arm: Introduce gen_pc_plus_diff for aarch64
-  target/arm: Introduce gen_pc_plus_diff for aarch32
-  target/arm: Enable TARGET_TB_PCREL
-
- include/elf.h                           |   1 +
- include/exec/cpu-common.h               |   1 +
- include/exec/cpu-defs.h                 |   3 +
- include/exec/exec-all.h                 | 138 +++++++-------
- include/exec/plugin-gen.h               |   7 +-
- include/exec/translator.h               |  85 +++++++--
- include/hw/core/cpu.h                   |   9 +-
- linux-user/arm/target_cpu.h             |   4 +-
- linux-user/qemu.h                       |   1 +
- target/arm/cpu-param.h                  |   2 +
- target/arm/translate-a32.h              |   2 +-
- target/arm/translate.h                  |  21 ++-
- accel/tcg/cpu-exec.c                    | 222 +++++++++++++---------
- accel/tcg/cputlb.c                      |  98 +++-------
- accel/tcg/plugin-gen.c                  |  23 +--
- accel/tcg/translate-all.c               | 197 +++++++-------------
- accel/tcg/translator.c                  | 122 +++++++++---
- accel/tcg/user-exec.c                   |  15 ++
- linux-user/elfload.c                    |  81 +++++++-
- softmmu/physmem.c                       |  12 ++
- target/alpha/translate.c                |   5 +-
- target/arm/cpu.c                        |  23 +--
- target/arm/translate-a64.c              | 174 ++++++++++-------
- target/arm/translate-m-nocp.c           |   6 +-
- target/arm/translate-mve.c              |   2 +-
- target/arm/translate-vfp.c              |  10 +-
- target/arm/translate.c                  | 237 +++++++++++++++---------
- target/avr/cpu.c                        |   2 +-
- target/avr/translate.c                  |   5 +-
- target/cris/translate.c                 |   5 +-
- target/hexagon/cpu.c                    |   2 +-
- target/hexagon/translate.c              |   6 +-
- target/hppa/cpu.c                       |   4 +-
- target/hppa/translate.c                 |   5 +-
- target/i386/tcg/tcg-cpu.c               |   2 +-
- target/i386/tcg/translate.c             |   7 +-
- target/loongarch/cpu.c                  |   2 +-
- target/loongarch/translate.c            |   6 +-
- target/m68k/translate.c                 |   5 +-
- target/microblaze/cpu.c                 |   2 +-
- target/microblaze/translate.c           |   5 +-
- target/mips/tcg/exception.c             |   2 +-
- target/mips/tcg/sysemu/special_helper.c |   2 +-
- target/mips/tcg/translate.c             |   5 +-
- target/nios2/translate.c                |   5 +-
- target/openrisc/cpu.c                   |   2 +-
- target/openrisc/translate.c             |   6 +-
- target/ppc/translate.c                  |   5 +-
- target/riscv/cpu.c                      |   4 +-
- target/riscv/translate.c                |   5 +-
- target/rx/cpu.c                         |   2 +-
- target/rx/translate.c                   |   5 +-
- target/s390x/tcg/translate.c            |   5 +-
- target/sh4/cpu.c                        |   4 +-
- target/sh4/translate.c                  |   5 +-
- target/sparc/cpu.c                      |   2 +-
- target/sparc/translate.c                |   5 +-
- target/tricore/cpu.c                    |   2 +-
- target/tricore/translate.c              |   6 +-
- target/xtensa/translate.c               |   6 +-
- tcg/tcg.c                               |   6 +-
- tests/tcg/i386/test-i386.c              |   2 +-
- 62 files changed, 979 insertions(+), 666 deletions(-)
-
--- 
-2.34.1
+> ---
+>  include/semihosting/semihost.h | 10 ++++++++--
+>  semihosting/config.c           | 10 ++++++++--
+>  softmmu/vl.c                   |  2 +-
+>  stubs/semihost.c               |  2 +-
+>  target/arm/translate-a64.c     |  2 +-
+>  target/arm/translate.c         |  6 +++---
+>  target/m68k/op_helper.c        |  2 +-
+>  target/nios2/translate.c       |  2 +-
+>  target/xtensa/translate.c      |  6 +++---
+>  qemu-options.hx                | 11 +++++++++--
+>  10 files changed, 36 insertions(+), 17 deletions(-)
+>
+> diff --git a/include/semihosting/semihost.h b/include/semihosting/semihost.h
+> index 93a3c21b44d..efd2efa25ae 100644
+> --- a/include/semihosting/semihost.h
+> +++ b/include/semihosting/semihost.h
+> @@ -27,7 +27,7 @@ typedef enum SemihostingTarget {
+>  } SemihostingTarget;
+>
+>  #ifdef CONFIG_USER_ONLY
+> -static inline bool semihosting_enabled(void)
+> +static inline bool semihosting_enabled(bool is_user)
+>  {
+>      return true;
+>  }
+> @@ -52,7 +52,13 @@ static inline const char *semihosting_get_cmdline(void)
+>      return NULL;
+>  }
+>  #else /* !CONFIG_USER_ONLY */
+> -bool semihosting_enabled(void);
+> +/**
+> + * semihosting_enabled:
+> + * @is_user: true if guest code is in usermode (i.e. not privileged)
+> + *
+> + * Return true if guest code is allowed to make semihosting calls.
+> + */
+> +bool semihosting_enabled(bool is_user);
+>  SemihostingTarget semihosting_get_target(void);
+>  const char *semihosting_get_arg(int i);
+>  int semihosting_get_argc(void);
+> diff --git a/semihosting/config.c b/semihosting/config.c
+> index e171d4d6bc3..89a17596879 100644
+> --- a/semihosting/config.c
+> +++ b/semihosting/config.c
+> @@ -34,6 +34,9 @@ QemuOptsList qemu_semihosting_config_opts = {
+>          {
+>              .name = "enable",
+>              .type = QEMU_OPT_BOOL,
+> +        }, {
+> +            .name = "userspace",
+> +            .type = QEMU_OPT_BOOL,
+>          }, {
+>              .name = "target",
+>              .type = QEMU_OPT_STRING,
+> @@ -50,6 +53,7 @@ QemuOptsList qemu_semihosting_config_opts = {
+>
+>  typedef struct SemihostingConfig {
+>      bool enabled;
+> +    bool userspace_enabled;
+>      SemihostingTarget target;
+>      char **argv;
+>      int argc;
+> @@ -59,9 +63,9 @@ typedef struct SemihostingConfig {
+>  static SemihostingConfig semihosting;
+>  static const char *semihost_chardev;
+>
+> -bool semihosting_enabled(void)
+> +bool semihosting_enabled(bool is_user)
+>  {
+> -    return semihosting.enabled;
+> +    return semihosting.enabled && (!is_user || semihosting.userspace_enabled);
+>  }
+>
+>  SemihostingTarget semihosting_get_target(void)
+> @@ -137,6 +141,8 @@ int qemu_semihosting_config_options(const char *optarg)
+>      if (opts != NULL) {
+>          semihosting.enabled = qemu_opt_get_bool(opts, "enable",
+>                                                  true);
+> +        semihosting.userspace_enabled = qemu_opt_get_bool(opts, "userspace",
+> +                                                          false);
+>          const char *target = qemu_opt_get(opts, "target");
+>          /* setup of chardev is deferred until they are initialised */
+>          semihost_chardev = qemu_opt_get(opts, "chardev");
+> diff --git a/softmmu/vl.c b/softmmu/vl.c
+> index 706bd7cff79..3593f1d7821 100644
+> --- a/softmmu/vl.c
+> +++ b/softmmu/vl.c
+> @@ -1822,7 +1822,7 @@ static void qemu_apply_machine_options(QDict *qdict)
+>  {
+>      object_set_properties_from_keyval(OBJECT(current_machine), qdict, false, &error_fatal);
+>
+> -    if (semihosting_enabled() && !semihosting_get_argc()) {
+> +    if (semihosting_enabled(false) && !semihosting_get_argc()) {
+>          /* fall back to the -kernel/-append */
+>          semihosting_arg_fallback(current_machine->kernel_filename, current_machine->kernel_cmdline);
+>      }
+> diff --git a/stubs/semihost.c b/stubs/semihost.c
+> index f486651afbb..d65c9fd5dcf 100644
+> --- a/stubs/semihost.c
+> +++ b/stubs/semihost.c
+> @@ -23,7 +23,7 @@ QemuOptsList qemu_semihosting_config_opts = {
+>  };
+>
+>  /* Queries to config status default to off */
+> -bool semihosting_enabled(void)
+> +bool semihosting_enabled(bool is_user)
+>  {
+>      return false;
+>  }
+> diff --git a/target/arm/translate-a64.c b/target/arm/translate-a64.c
+> index 163df8c6157..3decc8da573 100644
+> --- a/target/arm/translate-a64.c
+> +++ b/target/arm/translate-a64.c
+> @@ -2219,7 +2219,7 @@ static void disas_exc(DisasContext *s, uint32_t insn)
+>           * it is required for halting debug disabled: it will UNDEF.
+>           * Secondly, "HLT 0xf000" is the A64 semihosting syscall instruction.
+>           */
+> -        if (semihosting_enabled() && imm16 == 0xf000) {
+> +        if (semihosting_enabled(false) && imm16 == 0xf000) {
+>  #ifndef CONFIG_USER_ONLY
+>              /* In system mode, don't allow userspace access to semihosting,
+>               * to provide some semblance of security (and for consistency
+> diff --git a/target/arm/translate.c b/target/arm/translate.c
+> index ad617b99481..b85be8a818d 100644
+> --- a/target/arm/translate.c
+> +++ b/target/arm/translate.c
+> @@ -1169,7 +1169,7 @@ static inline void gen_hlt(DisasContext *s, int imm)
+>       * semihosting, to provide some semblance of security
+>       * (and for consistency with our 32-bit semihosting).
+>       */
+> -    if (semihosting_enabled() &&
+> +    if (semihosting_enabled(false) &&
+>  #ifndef CONFIG_USER_ONLY
+>          s->current_el != 0 &&
+>  #endif
+> @@ -6556,7 +6556,7 @@ static bool trans_BKPT(DisasContext *s, arg_BKPT *a)
+>      /* BKPT is OK with ECI set and leaves it untouched */
+>      s->eci_handled = true;
+>      if (arm_dc_feature(s, ARM_FEATURE_M) &&
+> -        semihosting_enabled() &&
+> +        semihosting_enabled(false) &&
+>  #ifndef CONFIG_USER_ONLY
+>          !IS_USER(s) &&
+>  #endif
+> @@ -8764,7 +8764,7 @@ static bool trans_SVC(DisasContext *s, arg_SVC *a)
+>  {
+>      const uint32_t semihost_imm = s->thumb ? 0xab : 0x123456;
+>
+> -    if (!arm_dc_feature(s, ARM_FEATURE_M) && semihosting_enabled() &&
+> +    if (!arm_dc_feature(s, ARM_FEATURE_M) && semihosting_enabled(false) &&
+>  #ifndef CONFIG_USER_ONLY
+>          !IS_USER(s) &&
+>  #endif
+> diff --git a/target/m68k/op_helper.c b/target/m68k/op_helper.c
+> index d9937ca8dc5..4b3dfec1306 100644
+> --- a/target/m68k/op_helper.c
+> +++ b/target/m68k/op_helper.c
+> @@ -203,7 +203,7 @@ static void cf_interrupt_all(CPUM68KState *env, int is_hw)
+>              cf_rte(env);
+>              return;
+>          case EXCP_HALT_INSN:
+> -            if (semihosting_enabled()
+> +            if (semihosting_enabled(false)
+>                      && (env->sr & SR_S) != 0
+>                      && (env->pc & 3) == 0
+>                      && cpu_lduw_code(env, env->pc - 4) == 0x4e71
+> diff --git a/target/nios2/translate.c b/target/nios2/translate.c
+> index 3a037a68cc4..2b556683422 100644
+> --- a/target/nios2/translate.c
+> +++ b/target/nios2/translate.c
+> @@ -818,7 +818,7 @@ static void gen_break(DisasContext *dc, uint32_t code, uint32_t flags)
+>  #ifndef CONFIG_USER_ONLY
+>      /* The semihosting instruction is "break 1".  */
+>      R_TYPE(instr, code);
+> -    if (semihosting_enabled() && instr.imm5 == 1) {
+> +    if (semihosting_enabled(false) && instr.imm5 == 1) {
+>          t_gen_helper_raise_exception(dc, EXCP_SEMIHOST);
+>          return;
+>      }
+> diff --git a/target/xtensa/translate.c b/target/xtensa/translate.c
+> index 70e11eeb459..dc475a4274b 100644
+> --- a/target/xtensa/translate.c
+> +++ b/target/xtensa/translate.c
+> @@ -2364,9 +2364,9 @@ static uint32_t test_exceptions_simcall(DisasContext *dc,
+>      bool ill = true;
+>  #else
+>      /* Between RE.2 and RE.3 simcall opcode's become nop for the hardware. */
+> -    bool ill = dc->config->hw_version <= 250002 && !semihosting_enabled();
+> +    bool ill = dc->config->hw_version <= 250002 && !semihosting_enabled(false);
+>  #endif
+> -    if (ill || !semihosting_enabled()) {
+> +    if (ill || !semihosting_enabled(false)) {
+>          qemu_log_mask(LOG_GUEST_ERROR, "SIMCALL but semihosting is disabled\n");
+>      }
+>      return ill ? XTENSA_OP_ILL : 0;
+> @@ -2376,7 +2376,7 @@ static void translate_simcall(DisasContext *dc, const OpcodeArg arg[],
+>                                const uint32_t par[])
+>  {
+>  #ifndef CONFIG_USER_ONLY
+> -    if (semihosting_enabled()) {
+> +    if (semihosting_enabled(false)) {
+>          gen_helper_simcall(cpu_env);
+>      }
+>  #endif
+> diff --git a/qemu-options.hx b/qemu-options.hx
+> index 3f23a42fa87..4e7111abe3d 100644
+> --- a/qemu-options.hx
+> +++ b/qemu-options.hx
+> @@ -4614,12 +4614,12 @@ SRST
+>      information about the facilities this enables.
+>  ERST
+>  DEF("semihosting-config", HAS_ARG, QEMU_OPTION_semihosting_config,
+> -    "-semihosting-config [enable=on|off][,target=native|gdb|auto][,chardev=id][,arg=str[,...]]\n" \
+> +    "-semihosting-config [enable=on|off][,target=native|gdb|auto][,chardev=id][,userspace=on|off][,arg=str[,...]]\n" \
+>      "                semihosting configuration\n",
+>  QEMU_ARCH_ARM | QEMU_ARCH_M68K | QEMU_ARCH_XTENSA |
+>  QEMU_ARCH_MIPS | QEMU_ARCH_NIOS2 | QEMU_ARCH_RISCV)
+>  SRST
+> -``-semihosting-config [enable=on|off][,target=native|gdb|auto][,chardev=id][,arg=str[,...]]``
+> +``-semihosting-config [enable=on|off][,target=native|gdb|auto][,chardev=id][,userspace=on|off][,arg=str[,...]]``
+>      Enable and configure semihosting (ARM, M68K, Xtensa, MIPS, Nios II, RISC-V
+>      only).
+>
+> @@ -4646,6 +4646,13 @@ SRST
+>          Send the output to a chardev backend output for native or auto
+>          output when not in gdb
+>
+> +    ``userspace=on|off``
+> +        Allows code running in guest userspace to access the semihosting
+> +        interface. The default is that only privileged guest code can
+> +        make semihosting calls. Note that setting ``userspace=on`` should
+> +        only be used if all guest code is trusted (for example, in
+> +        bare-metal test case code).
+> +
+>      ``arg=str1,arg=str2,...``
+>          Allows the user to pass input arguments, and can be used
+>          multiple times to build up a list. The old-style
+> --
+> 2.25.1
+>
+>

@@ -1,118 +1,261 @@
-Received: by 2002:a17:906:3b11:0:0:0:0 with SMTP id g17csp671873ejf;
-        Thu, 18 Aug 2022 17:55:42 -0700 (PDT)
-X-Received: by 2002:a65:6d13:0:b0:41d:b593:e5ab with SMTP id bf19-20020a656d13000000b0041db593e5abmr4255001pgb.467.1660870542216;
-        Thu, 18 Aug 2022 17:55:42 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1660870542; cv=none;
+Received: by 2002:a17:906:3b11:0:0:0:0 with SMTP id g17csp840579ejf;
+        Fri, 19 Aug 2022 01:47:32 -0700 (PDT)
+X-Google-Smtp-Source: AA6agR4x/94ugJzFJzZYY/2D6GnEPbhj3fR6pSTe/kUefipZm9GGRaed57hMJTD+AnmXwTZJi/BU
+X-Received: by 2002:a05:6214:e6c:b0:476:a4bd:2b95 with SMTP id jz12-20020a0562140e6c00b00476a4bd2b95mr5397758qvb.25.1660898851888;
+        Fri, 19 Aug 2022 01:47:31 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1660898851; cv=none;
         d=google.com; s=arc-20160816;
-        b=jGVqPmubHeh5MRQWE4HyAQtZc0sIRbguW5l1GeZX+rVIdbT72/oJSsBqGcWu0m2YmT
-         rwEWiHV3A9nefUMseoKossGlkXCrSA64cIAQnVkIRm26Iwl6NQny04SMETNdBwzmNg8J
-         LFFEeMJsJZ8nU4wDdOVKfeSXne4XwW2LH+qiSCA0txQRJqDZ6NuSUVqmSjYXTTi3vxED
-         0Gp1NW6wucVyybIQ3HXP9Q3Ey0lYRNeGvMsgxZsxOCbFztmEeeELX+EsmBUYjxPOWrGD
-         TPIbUJmwr1U7f+18QMVndCDH4D/ZLxqEHf/r7WkDmOWbGc+0a/4ObFX4PdR6jGH5C+w7
-         zcdg==
+        b=pV6B7fP5CqtodeXXGWVbBBd4xpKXTEXx6W1gByxLKEgUmGa5LwompJKQpxquSqeJql
+         i/SZgMSNn99QO60rw4sQGmhyMCiYCqzTwUIKheEC5Q39VSSIYcAekdubWYWP0OZRJfIc
+         PuvwQ6Ky/6LBpdqvbwFCxSi7oSTRURqDqt5yFKfpaPERsbjLnqEygIh2/JdF3vQVOLqP
+         z4psy4BQBc0fuDOz+yH9btwWnz/bEIMDgwdTbTRoINev4FLwjaofSmTgtBNjBPK9EGw9
+         tEeOhHkAS7a/hEdewNpMNiug6TY8I5p3wOVJIolhkZJvzyCyqVVdvQC2ZbnNWt3DkRXE
+         i19g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:dkim-signature;
-        bh=ViX3w7UOMsABbI67Wt+CgaM/srhs7+VZppuRgGVKGAQ=;
-        b=MCUWY7SH9ViK+KGhsv2cKfG9y3Ui6sBFW7VmhHkkgoih3FXUpMBna64zRdpasXI1VW
-         1AgkJHeUkAmKqg75f1cVeRx8LIutunhUFIKEuEJ6dfxdPSgtIkTN/wPOy8fS2gAJlOuX
-         q4XpWUnk7gyQ1PSQLJ9yw1d4YBVAaxwY+77DxULEuezbxncfA3f/iHrjKt6/ACf71OPm
-         kDI9pj4YZGi99dUlSKV8wEpc+C8C0L6WRqDyoAmeaVhfwGOsIWBq+mhutsewgRd4AKYU
-         JZ6IHivspHS6IxoIJ1aDH9TcNpvogYS6G9icJzaX4HcGjfz/zj3DmUPiWXXtjjbXbcNk
-         fBuA==
+        h=from:reply-to:sender:errors-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence
+         :content-transfer-encoding:mime-version:organization:references
+         :in-reply-to:message-id:subject:cc:to:date;
+        bh=Jmsq9lmG8TzgrMxMV1YN/iTe44SinzIk0rejvPcxuac=;
+        b=AfkvwT8M8mEp6SonpyDie4skHhNEUlrjZWO0ZyEw3sKt3B0gUKZASWNqRbk8SDBguW
+         bisYmMym+wV4FYMDysJ/cL+RrJGTATVr8xfLdOrlL7CGc2m27codqahbD3IwJiDdOfS1
+         xM4GAz4AEnzDkaRaBHV/x1yc1ze4VgyNN4yQSJ11ixT7OPfX3Aqm/BGLop1901WDUhsx
+         YoyS7hXKz4ceEXrlvZMjizSuGcN88BTnqBFiacx7zK05mxvlijo8QaT2e24RuagiXtzV
+         O7IZ8jtKRFk749N5451EO0YeT+tNnOiHPNUNMAYzfhhwhCFXQgk4a70W9/yKVhVkjDln
+         AVdg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=Rjz8Qp7D;
-       spf=pass (google.com: domain of alistair23@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=alistair23@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <alistair23@gmail.com>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id b1-20020a170902d30100b0016d6c2e7f9esor1342721plc.79.2022.08.18.17.55.41
-        (Google Transport Security);
-        Thu, 18 Aug 2022 17:55:42 -0700 (PDT)
-Received-SPF: pass (google.com: domain of alistair23@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id i16-20020ac871d0000000b00342f87a09f0si1542612qtp.432.2022.08.19.01.47.31
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Fri, 19 Aug 2022 01:47:31 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=Rjz8Qp7D;
-       spf=pass (google.com: domain of alistair23@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=alistair23@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc;
-        bh=ViX3w7UOMsABbI67Wt+CgaM/srhs7+VZppuRgGVKGAQ=;
-        b=Rjz8Qp7DYrrgrChIfsPnmP4FzQTgbMHsumx8+W7DUWkYU8hmlUBtzAkNawxwIthg83
-         qI7vLk3HMUdes7XmBSdh7NPnOZgNgcq95LoM6Divf4S8rWKGdTuky6k8XayX8eYDmjVv
-         84rmlIMb2UaEUsA3s1pl0Paa1bPsUF8HythHmcGRlT5O2868zugHNJs2bpVTje+jl24w
-         xmX9NlTdzb+7HlflhlU+9cwE+yU0Wl2XTVkaWVz4/bcVfcs9XuiddP/VPA+gYGu7Qo40
-         0H8CyNDHx2zNNEU2q082Lu55kRCqgZhCMC0h6ELYdXsh/X8Ja1xqm6SLK8nu/T+/GsN5
-         dMbw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc;
-        bh=ViX3w7UOMsABbI67Wt+CgaM/srhs7+VZppuRgGVKGAQ=;
-        b=ZWIpzAhcqjRd3sJuIC4mnXNreOVe0n0mXvJj1ksv6JnUkGquySojX23V4l2dLn+8bo
-         q6dN0TVbkjjkBAdF4cRZXtLtm/2hPM64wSQOCDUOZ4ZRElrovvxIIbwdEay5EIdijYv1
-         zpJuJUiFHwV9ITUA1F2PK7lFdmaWdbXW5l853xN7Bihep5vmterGGuNbWWWNOTWbCfpy
-         yGfloxvi5G6MKUN/jnns+qu1LMEHF0x84ld98YR7Xad4b4pixR3vnzY3DbnDzG6q6yEv
-         lU63CgYiZf6h0ITBRw6dl6CC9rO9x/pttBBVMi+wHgNK6iP+AmjxE9w0PT2DhbBS4L0a
-         flIg==
-X-Gm-Message-State: ACgBeo29aympdZE3jyBG/q8jqPpe1+Tw74Caqf8v3V4l8PDzc5+4hJGp
-	gVE7G5+p4T5+mYC8gDzjs0vohd1S0eHXEVJUd8I40dAhPOs=
-X-Google-Smtp-Source: AA6agR4YoZpq77rtbvKyOhoUPd89zLND+qeJ1BrNdgUYYkTWyn35UHrB2WIVAzk0Aot0rtYH02+apRaTcTt5XWsEP2I=
-X-Received: by 2002:a17:903:2291:b0:16e:cf55:5c72 with SMTP id
- b17-20020a170903229100b0016ecf555c72mr5129254plh.121.1660870540881; Thu, 18
- Aug 2022 17:55:40 -0700 (PDT)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+Received: from localhost ([::1]:35064 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1oOxf9-00048R-A7
+	for alex.bennee@linaro.org; Fri, 19 Aug 2022 04:47:31 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:42168)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
+ id 1oOxeh-00048C-NN; Fri, 19 Aug 2022 04:47:03 -0400
+Received: from frasgout.his.huawei.com ([185.176.79.56]:2687)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
+ id 1oOxef-0006OO-0g; Fri, 19 Aug 2022 04:47:03 -0400
+Received: from fraeml714-chm.china.huawei.com (unknown [172.18.147.206])
+ by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4M8FfC0q2pz689lt;
+ Fri, 19 Aug 2022 16:43:47 +0800 (CST)
+Received: from lhrpeml500005.china.huawei.com (7.191.163.240) by
+ fraeml714-chm.china.huawei.com (10.206.15.33) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2375.24; Fri, 19 Aug 2022 10:46:57 +0200
+Received: from localhost (10.122.247.231) by lhrpeml500005.china.huawei.com
+ (7.191.163.240) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2375.24; Fri, 19 Aug
+ 2022 09:46:56 +0100
+Date: Fri, 19 Aug 2022 09:46:55 +0100
+To: Jonathan Cameron via <qemu-devel@nongnu.org>
+CC: Jonathan Cameron <Jonathan.Cameron@huawei.com>, Dan Williams
+ <dan.j.williams@intel.com>, Bobo WL <lmw.bobo@gmail.com>,
+ <linux-cxl@vger.kernel.org>, <qemu-arm@nongnu.org>
+Subject: Re: [BUG] cxl can not create region
+Message-ID: <20220819094655.000005ed@huawei.com>
+In-Reply-To: <20220818173740.00007f02@huawei.com>
+References: <CAGr_yG0UrfJAMWta3EkR1F0JZ4j--sig74p6vKL3K6TZDx9YGA@mail.gmail.com>
+ <62f132aee401b_1b3c294c@dwillia2-xfh.jf.intel.com.notmuch>
+ <CAGr_yG389Bm_NL8CLgo_ZkGd4staocNENbtb-ULVA5vh_ywmcw@mail.gmail.com>
+ <62f27a8e9acb6_1f18b294e2@dwillia2-xfh.jf.intel.com.notmuch>
+ <62f5a2ffe8be0_3ce68294a4@dwillia2-xfh.jf.intel.com.notmuch>
+ <20220817171619.000021ca@huawei.com>
+ <20220818173740.00007f02@huawei.com>
+Organization: Huawei Technologies R&D (UK) Ltd.
+X-Mailer: Claws Mail 4.0.0 (GTK+ 3.24.29; x86_64-w64-mingw32)
 MIME-Version: 1.0
-References: <20220815190303.2061559-1-peter.maydell@linaro.org>
- <20220815190303.2061559-8-peter.maydell@linaro.org> <CAKmqyKNo15Kz6-FtXL3C2wC7+aHHLTyGG5tOKQTpnM-c-kJO=w@mail.gmail.com>
- <CAFEAcA8wbST5bc_ZMFGAsFKGyFTkYRazeEqPnwh0aL6cNp0CeQ@mail.gmail.com>
-In-Reply-To: <CAFEAcA8wbST5bc_ZMFGAsFKGyFTkYRazeEqPnwh0aL6cNp0CeQ@mail.gmail.com>
-From: Alistair Francis <alistair23@gmail.com>
-Date: Fri, 19 Aug 2022 10:55:14 +1000
-Message-ID: <CAKmqyKMqrmrhRDTn11VAa1EKEmy=fzO_d+34Qp+jWYDP0uTd3Q@mail.gmail.com>
-Subject: Re: [PATCH 7/7] target/riscv: Honour -semihosting-config userspace=on
- and enable=on
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-arm <qemu-arm@nongnu.org>, 
-	"qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>, "open list:RISC-V" <qemu-riscv@nongnu.org>, 
-	=?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
-	Laurent Vivier <laurent@vivier.eu>, =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>, 
-	Jiaxun Yang <jiaxun.yang@flygoat.com>, Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>, 
-	Stefan Pejic <stefan.pejic@syrmia.com>, Chris Wulff <crwulff@gmail.com>, Marek Vasut <marex@denx.de>, 
-	Palmer Dabbelt <palmer@dabbelt.com>, Alistair Francis <alistair.francis@wdc.com>, 
-	Bin Meng <bin.meng@windriver.com>, Max Filippov <jcmvbkbc@gmail.com>, 
-	Richard Henderson <richard.henderson@linaro.org>, Furquan Shaikh <furquan@rivosinc.com>
-Content-Type: text/plain; charset="UTF-8"
-X-TUID: gECfH6CO0Y7Y
+Content-Type: text/plain; charset="US-ASCII"
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [10.122.247.231]
+X-ClientProxiedBy: lhrpeml100001.china.huawei.com (7.191.160.183) To
+ lhrpeml500005.china.huawei.com (7.191.163.240)
+X-CFilter-Loop: Reflected
+Received-SPF: pass client-ip=185.176.79.56;
+ envelope-from=jonathan.cameron@huawei.com; helo=frasgout.his.huawei.com
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Reply-to:  Jonathan Cameron <Jonathan.Cameron@huawei.com>
+From:  Jonathan Cameron via <qemu-arm@nongnu.org>
+X-TUID: AoIGevmNnVhX
 
-On Thu, Aug 18, 2022 at 11:58 PM Peter Maydell <peter.maydell@linaro.org> wrote:
->
-> On Thu, 18 Aug 2022 at 05:20, Alistair Francis <alistair23@gmail.com> wrote:
-> >
-> > On Tue, Aug 16, 2022 at 5:11 AM Peter Maydell <peter.maydell@linaro.org> wrote:
-> > >
-> > > The riscv target incorrectly enabled semihosting always, whether the
-> > > user asked for it or not.  Call semihosting_enabled() passing the
-> > > correct value to the is_userspace argument, which fixes this and also
-> > > handles the userspace=on argument.
-> > >
-> > > Note that this is a behaviour change: we used to default to
-> > > semihosting being enabled, and now the user must pass
-> > > "-semihosting-config enable=on" if they want it.
-> > >
-> > > Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> >
-> > I agree with Richard that a check in translate would be better, but
-> > this is also an improvement on the broken implementation we have now
->
-> Do you have an opinion on whether there are likely to be many
-> users who are using riscv semihosting without explicitly enabling it
-> on the command line ?
+On Thu, 18 Aug 2022 17:37:40 +0100
+Jonathan Cameron via <qemu-devel@nongnu.org> wrote:
 
-I don't think there are many users. We have always stated that
-semihosting had to be enabled via the command line
+> On Wed, 17 Aug 2022 17:16:19 +0100
+> Jonathan Cameron <Jonathan.Cameron@huawei.com> wrote:
+> 
+> > On Thu, 11 Aug 2022 17:46:55 -0700
+> > Dan Williams <dan.j.williams@intel.com> wrote:
+> >   
+> > > Dan Williams wrote:    
+> > > > Bobo WL wrote:      
+> > > > > Hi Dan,
+> > > > > 
+> > > > > Thanks for your reply!
+> > > > > 
+> > > > > On Mon, Aug 8, 2022 at 11:58 PM Dan Williams <dan.j.williams@intel.com> wrote:      
+> > > > > >
+> > > > > > What is the output of:
+> > > > > >
+> > > > > >     cxl list -MDTu -d decoder0.0
+> > > > > >
+> > > > > > ...? It might be the case that mem1 cannot be mapped by decoder0.0, or
+> > > > > > at least not in the specified order, or that validation check is broken.      
+> > > > > 
+> > > > > Command "cxl list -MDTu -d decoder0.0" output:      
+> > > > 
+> > > > Thanks for this, I think I know the problem, but will try some
+> > > > experiments with cxl_test first.      
+> > > 
+> > > Hmm, so my cxl_test experiment unfortunately passed so I'm not
+> > > reproducing the failure mode. This is the result of creating x4 region
+> > > with devices directly attached to a single host-bridge:
+> > > 
+> > > # cxl create-region -d decoder3.5 -w 4 -m -g 256 mem{12,10,9,11} -s $((1<<30))
+> > > {
+> > >   "region":"region8",
+> > >   "resource":"0xf1f0000000",
+> > >   "size":"1024.00 MiB (1073.74 MB)",
+> > >   "interleave_ways":4,
+> > >   "interleave_granularity":256,
+> > >   "decode_state":"commit",
+> > >   "mappings":[
+> > >     {
+> > >       "position":3,
+> > >       "memdev":"mem11",
+> > >       "decoder":"decoder21.0"
+> > >     },
+> > >     {
+> > >       "position":2,
+> > >       "memdev":"mem9",
+> > >       "decoder":"decoder19.0"
+> > >     },
+> > >     {
+> > >       "position":1,
+> > >       "memdev":"mem10",
+> > >       "decoder":"decoder20.0"
+> > >     },
+> > >     {
+> > >       "position":0,
+> > >       "memdev":"mem12",
+> > >       "decoder":"decoder22.0"
+> > >     }
+> > >   ]
+> > > }
+> > > cxl region: cmd_create_region: created 1 region
+> > >     
+> > > > Did the commit_store() crash stop reproducing with latest cxl/preview
+> > > > branch?      
+> > > 
+> > > I missed the answer to this question.
+> > > 
+> > > All of these changes are now in Linus' tree perhaps give that a try and
+> > > post the debug log again?    
+> > 
+> > Hi Dan,
+> > 
+> > I've moved onto looking at this one.
+> > 1 HB, 2RP (to make it configure the HDM decoder in the QEMU HB, I'll tidy that up
+> > at some stage), 1 switch, 4 downstream switch ports each with a type 3
+> > 
+> > I'm not getting a crash, but can't successfully setup a region.
+> > Upon adding the final target
+> > It's failing in check_last_peer() as pos < distance.
+> > Seems distance is 4 which makes me think it's using the wrong level of the heirarchy for
+> > some reason or that distance check is wrong.
+> > Wasn't a good idea to just skip that step though as it goes boom - though
+> > stack trace is not useful.  
+> 
+> Turns out really weird corruption happens if you accidentally back two type3 devices
+> with the same memory device. Who would have thought it :)
+> 
+> That aside ignoring the check_last_peer() failure seems to make everything work for this
+> topology.  I'm not seeing the crash, so my guess is we fixed it somewhere along the way.
+> 
+> Now for the fun one.  I've replicated the crash if we have
+> 
+> 1HB 1*RP 1SW, 4SW-DSP, 4Type3
+> 
+> Now, I'd expect to see it not 'work' because the QEMU HDM decoder won't be programmed
+> but the null pointer dereference isn't related to that.
+> 
+> The bug is straight forward.  Not all decoders have commit callbacks... Will send out
+> a possible fix shortly.
+> 
+For completeness I'm carrying this hack because I haven't gotten my head
+around the right fix for check_last_peer() failing on this test topology.
 
-Alistair
+diff --git a/drivers/cxl/core/region.c b/drivers/cxl/core/region.c
+index c49d9a5f1091..275e143bd748 100644
+--- a/drivers/cxl/core/region.c
++++ b/drivers/cxl/core/region.c
+@@ -978,7 +978,7 @@ static int cxl_port_setup_targets(struct cxl_port *port,
+                                rc = check_last_peer(cxled, ep, cxl_rr,
+                                                     distance);
+                                if (rc)
+-                                       return rc;
++                                       //      return rc;
+                                goto out_target_set;
+                        }
+                goto add_target;
+--
 
->
-> -- PMM
+I might find more bugs with more testing, but this is all the ones I've
+seen so far + in Bobo's reports.  Qemu fixes are now in upstream so
+will be there in the release. 
+
+As a reminder, testing on QEMU has a few corners...
+
+Need a patch to add serial number ECAP support. It is on list for revew,
+but will have wait for after QEMU 7.1 release (which may be next week)
+
+QEMU still assumes HDM decoder on the host bridge will be programmed.
+So if you want anything to work there should be at least
+2 RP below the HB (no need to plug anything in to one of them).
+
+I don't want to add a commandline parameter to hide the decoder in QEMU
+and detecting there is only one RP would require moving a bunch of static
+stuff into runtime code (I think).
+
+I still think we should make the kernel check to see if there is a decoder,
+but if not I might see how bad a hack it is to have QEMU ignore that decoder
+if not committed in this one special case (HB HDM decoder with only one place
+it can send stuff). Obviously that would be a break from specification
+so less than idea!
+
+Thanks,
+
+Jonathan
+

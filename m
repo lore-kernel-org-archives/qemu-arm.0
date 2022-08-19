@@ -1,93 +1,111 @@
-Received: by 2002:a17:906:3b11:0:0:0:0 with SMTP id g17csp462231ejf;
-        Thu, 18 Aug 2022 09:38:16 -0700 (PDT)
-X-Google-Smtp-Source: AA6agR42qc4X55+3Aw3qCUpFZeQ+zU0p1u6UiCAQllz/ceafTZF4NI1x2g+x7fOYocz8QXmIFtCi
-X-Received: by 2002:a05:620a:2804:b0:6b8:5f52:c66b with SMTP id f4-20020a05620a280400b006b85f52c66bmr2748824qkp.8.1660840695807;
-        Thu, 18 Aug 2022 09:38:15 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1660840695; cv=none;
+Received: by 2002:a17:906:3b11:0:0:0:0 with SMTP id g17csp895819ejf;
+        Fri, 19 Aug 2022 04:02:35 -0700 (PDT)
+X-Google-Smtp-Source: AA6agR56iew+qRaRiXeiBFLjiCCu+wzIGVyFsDV6WbIOweGonoYhuuZkaazmmgwDL4/H5V0fJ0Wu
+X-Received: by 2002:ac8:5888:0:b0:343:6cf2:e185 with SMTP id t8-20020ac85888000000b003436cf2e185mr5708523qta.285.1660906955615;
+        Fri, 19 Aug 2022 04:02:35 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1660906955; cv=none;
         d=google.com; s=arc-20160816;
-        b=MG9u0RSeoIEdn05GkueCMEF8q05fdZh12jy3Ma+031887F7gUj4AZQAN7k1cniYtY9
-         aF4AG2vmGqkwq+HMML5mw3OC5/NwmdAXSHcTBy1rqwuE0LthImeB6tpy85eSYLbCR48f
-         G2Rk3ain0SWdrOvEVBbwBjyTYkPq35ls+/1Va2SRgaKHlVcZcaQjHsTuTUmBlag8lpVr
-         vinaW+oFNCm223aC8WiKKMfyOpY77ms32nZsiUippUP/s/shB3E4rEdHM/5Ljywrr3XK
-         LF32IddiFSg2jQLh02aXNhD+8oVaVwmSHPeK/ozn/OIQT/v2/Wf+yCYHZ8HbabrBB1NH
-         hiaQ==
+        b=fCgBMm6wkPFEUWScoIewKIlMz601Sy3Wxn/HQNB2OC7zl4Rof3tpoG8rY+YDlFzQxA
+         9rGN26mdiRKIxOwW860BjBF6jC+ivxg/OBk0ENVStODR866iZ5EUAQ2VLHDgZWY3O8li
+         UGyh41BXw+90p6MvUMwZqh/Gb0tKa48Kwz/8nFGGzqFb1nkpbhsBcc0rixocHEF5Jhsa
+         w0e+7qJk5Lt4gWrnF6mHot90nW+OnhnWJXEBK/rHz2bwsh5V+NxZdA7O/p4chsP0wUjR
+         BekA/hwuakJqju4YoH4B0O8lT0mP5seI8YUOkPIeKedH8Pks1ikZcQUVVSkf4gh0elJM
+         SaOg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=from:reply-to:sender:errors-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:subject:cc:to:date;
-        bh=FeT4+F7qbQKJsL5/nlup3PJ1b90GyBt6jH8wUX05eUw=;
-        b=GRdFAYaYqXI9MtE0U/hfHgWTm8lWNzc6xGlXUA4kWOR9vJFXWlrQhU0pZj5u0JOHmq
-         qnD57AEocbqBKe4yV9KbwUk3LlfWU7s/nXSYt8ETZdMRzVnybJp46bOo12FyTybG8hqW
-         e1NIKXmDnAajmr7EColyGkoRu1aQOjphwNyMpVfbnE1asGacRZv+8lDZfzVWlL/6kcQu
-         7pjkxcLVl5ORZohs9UEx0ZN5wkBU8hhYH3VOuwxMPeoXqoB4e6RK+bYdjSZt/FYUDlON
-         xXDD9TZtgcmdL06fXUex1IZ9sKGsIBUbXTgYBrNS5pqqzLz8eSR/arKH8OMgiH1cTd/6
-         uz4g==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from
+         :dkim-signature;
+        bh=gmgWZcEd2xgM6CGJtMX2e3RN3Kslo8iCQtt3bLXG/as=;
+        b=n5lM9HcMm/OyHMzTbyLtYCcbWJfwIHDGKo7KXGFW0hXdmRsy30esl9gjfLzeBeXmCz
+         RsxHoV0Ll/Uv+T/9M/RrgvieT5k0eY/dHsTxFa7V3u11NElN5V9uf9o0iwhoMOlzZrFQ
+         OrZrESrxJ77k/amY4J28wdHJmCQf1sE3vrn3xDpDAnd+j5yAfkA5eRRl/oaq1MAUt9ND
+         6A6bFMK/lBtZm6ZeQ1d4CEN0o+6QM/Qv/imPNpD3KCVk4Y7IiINgK3H+1yKD6p6FL8dL
+         p/MDosIrUQJv4VNYvQABT+m4GV7dYX1vAx65Y50dR19wFSDxHSx2jQ3bt93+ycTlx/l8
+         4Xlw==
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=wBXAy7+s;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id f15-20020a056214076f00b0047715c8de6csi857520qvz.64.2022.08.18.09.38.15
+        by mx.google.com with ESMTPS id l24-20020ac84598000000b003448dc9c891si1777030qtn.115.2022.08.19.04.02.35
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 18 Aug 2022 09:38:15 -0700 (PDT)
+        Fri, 19 Aug 2022 04:02:35 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=wBXAy7+s;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
-Received: from localhost ([::1]:35050 helo=lists1p.gnu.org)
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:52458 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1oOiX9-0000Nh-3U
-	for alex.bennee@linaro.org; Thu, 18 Aug 2022 12:38:15 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:51170)
+	id 1oOzlq-0002H8-Mu
+	for alex.bennee@linaro.org; Fri, 19 Aug 2022 07:02:34 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:40092)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
- id 1oOiWz-0000NV-J1; Thu, 18 Aug 2022 12:38:05 -0400
-Received: from frasgout.his.huawei.com ([185.176.79.56]:2686)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
- id 1oOiWw-0002Zo-NW; Thu, 18 Aug 2022 12:38:05 -0400
-Received: from fraeml739-chm.china.huawei.com (unknown [172.18.147.206])
- by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4M7rCC35NDz688hZ;
- Fri, 19 Aug 2022 00:37:27 +0800 (CST)
-Received: from lhrpeml500005.china.huawei.com (7.191.163.240) by
- fraeml739-chm.china.huawei.com (10.206.15.220) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2375.24; Thu, 18 Aug 2022 18:37:42 +0200
-Received: from localhost (10.202.226.42) by lhrpeml500005.china.huawei.com
- (7.191.163.240) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2375.24; Thu, 18 Aug
- 2022 17:37:42 +0100
-Date: Thu, 18 Aug 2022 17:37:40 +0100
-To: Dan Williams <dan.j.williams@intel.com>
-CC: Bobo WL <lmw.bobo@gmail.com>, <linux-cxl@vger.kernel.org>,
- <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>
-Subject: Re: [BUG] cxl can not create region
-Message-ID: <20220818173740.00007f02@huawei.com>
-In-Reply-To: <20220817171619.000021ca@huawei.com>
-References: <CAGr_yG0UrfJAMWta3EkR1F0JZ4j--sig74p6vKL3K6TZDx9YGA@mail.gmail.com>
- <62f132aee401b_1b3c294c@dwillia2-xfh.jf.intel.com.notmuch>
- <CAGr_yG389Bm_NL8CLgo_ZkGd4staocNENbtb-ULVA5vh_ywmcw@mail.gmail.com>
- <62f27a8e9acb6_1f18b294e2@dwillia2-xfh.jf.intel.com.notmuch>
- <62f5a2ffe8be0_3ce68294a4@dwillia2-xfh.jf.intel.com.notmuch>
- <20220817171619.000021ca@huawei.com>
-X-Mailer: Claws Mail 4.0.0 (GTK+ 3.24.29; i686-w64-mingw32)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1oOzkN-0002Cd-08
+ for qemu-arm@nongnu.org; Fri, 19 Aug 2022 07:01:07 -0400
+Received: from mail-wr1-x433.google.com ([2a00:1450:4864:20::433]:34625)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1oOzkG-0001Q7-Iz
+ for qemu-arm@nongnu.org; Fri, 19 Aug 2022 07:01:02 -0400
+Received: by mail-wr1-x433.google.com with SMTP id a4so4770355wrq.1
+ for <qemu-arm@nongnu.org>; Fri, 19 Aug 2022 04:00:56 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:to:from:from:to:cc;
+ bh=gmgWZcEd2xgM6CGJtMX2e3RN3Kslo8iCQtt3bLXG/as=;
+ b=wBXAy7+sSeyMEqVnntIC1ZeLi6BGN4wS3BnY73ClYHUItCTrG9dH8HCgL75ICYr0p0
+ YEplB0xzns0gpHECYIrHWTOabRZs1lDo7W6ULemAsFxNJhEpGYrYCpefSWzQGbm8NWE/
+ 2h3EX7v9TlhSrtmKtk6z/RC8gFdPWPw2iAaeGv2ZLOEUfMxIasAdZ1f370yf2u3aAkW5
+ nDsjUEHehDljKX5IvtQa1BKM37h302dLASyU5m3hBpx2fqFt06FcA+nZT5riBY713hAM
+ 54msD/1aqUCrES5D5MPKZMAD4VEk4vCpODdch7C0yiywOUPHevz8T3Y0n8UIebeD8Z5V
+ OY8Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:to:from:x-gm-message-state:from:to:cc;
+ bh=gmgWZcEd2xgM6CGJtMX2e3RN3Kslo8iCQtt3bLXG/as=;
+ b=x3kVaCWNI0JRa8ve5tlAmPzF7cILGBzpnK61R8r5MnQAeNsRQqEEzvYB2OuPyivOeG
+ 4xnPD5XC/B7XROJ4Nd3Gu58P2oq0FcAQq7rcYFQFlBNDyUAoIvZ6Bd0hG0GczLbu+fn3
+ IJFPXhnFaiEedRm8CkVhtggu8eXeV2JeD6wADtlkNiuiyHGkhbJ3shGmrDKmTorGc0UM
+ HbH8DP9m3ruoGa+hFfuY0AQMcXozbVjbVkuNhrO1Jh9+FqVtc6+2401fVq+FhR/zPWQc
+ sfKb4YsAAdfmxbxbzvq92n9G+sVppl6zwTEGjDdypsbTwCSl4+xjm4RUxTqLKS3GvcZX
+ SHZQ==
+X-Gm-Message-State: ACgBeo2LLMxvxviiA3rVYLVitu3ZS84AhTUpNna5C8LRdlKEj5W7TmaW
+ 6bMIHfEz+my3A9+9Z/GkoI1gQjkkPGlFKA==
+X-Received: by 2002:a5d:4204:0:b0:225:382f:a8be with SMTP id
+ n4-20020a5d4204000000b00225382fa8bemr1631192wrq.379.1660906855117; 
+ Fri, 19 Aug 2022 04:00:55 -0700 (PDT)
+Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
+ by smtp.gmail.com with ESMTPSA id
+ p22-20020a7bcc96000000b003a52969e89csm8154985wma.4.2022.08.19.04.00.54
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 19 Aug 2022 04:00:54 -0700 (PDT)
+From: Peter Maydell <peter.maydell@linaro.org>
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Subject: [PATCH 1/6] target/arm: Make cpregs 0, c0, c{3-15},
+ {0-7} correctly RAZ in v8
+Date: Fri, 19 Aug 2022 12:00:47 +0100
+Message-Id: <20220819110052.2942289-2-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20220819110052.2942289-1-peter.maydell@linaro.org>
+References: <20220819110052.2942289-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="US-ASCII"
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.202.226.42]
-X-ClientProxiedBy: lhrpeml100004.china.huawei.com (7.191.162.219) To
- lhrpeml500005.china.huawei.com (7.191.163.240)
-X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=185.176.79.56;
- envelope-from=jonathan.cameron@huawei.com; helo=frasgout.his.huawei.com
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
- RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::433;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x433.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -103,121 +121,157 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Reply-to:  Jonathan Cameron <Jonathan.Cameron@huawei.com>
-From:  Jonathan Cameron via <qemu-arm@nongnu.org>
-X-TUID: O3Xgf1bEsy+c
+X-TUID: 7cV9NDIRwVW2
 
-On Wed, 17 Aug 2022 17:16:19 +0100
-Jonathan Cameron <Jonathan.Cameron@huawei.com> wrote:
+In the AArch32 ID register scheme, coprocessor registers with
+encoding cp15, 0, c0, c{0-7}, {0-7} are all in the space covered by
+what in v6 and v7 was called the "CPUID scheme", and are supposed to
+RAZ if they're not allocated to a specific ID register.  For our
+pre-v8 CPUs we get this right, because the regdefs in
+id_pre_v8_midr_cp_reginfo[] cover these RAZ requirements.  However
+for v8 we failed to put in the necessary patterns to cover this, so
+we end up UNDEFing on everything we didn't have an ID register for.
+This is a problem because in Armv8 some encodings in 0, c0, c3, {0-7}
+are now being used for new ID registers, and guests might thus start
+trying to read them.  (We already have one of these: ID_PFR2.)
 
-> On Thu, 11 Aug 2022 17:46:55 -0700
-> Dan Williams <dan.j.williams@intel.com> wrote:
-> 
-> > Dan Williams wrote:  
-> > > Bobo WL wrote:    
-> > > > Hi Dan,
-> > > > 
-> > > > Thanks for your reply!
-> > > > 
-> > > > On Mon, Aug 8, 2022 at 11:58 PM Dan Williams <dan.j.williams@intel.com> wrote:    
-> > > > >
-> > > > > What is the output of:
-> > > > >
-> > > > >     cxl list -MDTu -d decoder0.0
-> > > > >
-> > > > > ...? It might be the case that mem1 cannot be mapped by decoder0.0, or
-> > > > > at least not in the specified order, or that validation check is broken.    
-> > > > 
-> > > > Command "cxl list -MDTu -d decoder0.0" output:    
-> > > 
-> > > Thanks for this, I think I know the problem, but will try some
-> > > experiments with cxl_test first.    
-> > 
-> > Hmm, so my cxl_test experiment unfortunately passed so I'm not
-> > reproducing the failure mode. This is the result of creating x4 region
-> > with devices directly attached to a single host-bridge:
-> > 
-> > # cxl create-region -d decoder3.5 -w 4 -m -g 256 mem{12,10,9,11} -s $((1<<30))
-> > {
-> >   "region":"region8",
-> >   "resource":"0xf1f0000000",
-> >   "size":"1024.00 MiB (1073.74 MB)",
-> >   "interleave_ways":4,
-> >   "interleave_granularity":256,
-> >   "decode_state":"commit",
-> >   "mappings":[
-> >     {
-> >       "position":3,
-> >       "memdev":"mem11",
-> >       "decoder":"decoder21.0"
-> >     },
-> >     {
-> >       "position":2,
-> >       "memdev":"mem9",
-> >       "decoder":"decoder19.0"
-> >     },
-> >     {
-> >       "position":1,
-> >       "memdev":"mem10",
-> >       "decoder":"decoder20.0"
-> >     },
-> >     {
-> >       "position":0,
-> >       "memdev":"mem12",
-> >       "decoder":"decoder22.0"
-> >     }
-> >   ]
-> > }
-> > cxl region: cmd_create_region: created 1 region
-> >   
-> > > Did the commit_store() crash stop reproducing with latest cxl/preview
-> > > branch?    
-> > 
-> > I missed the answer to this question.
-> > 
-> > All of these changes are now in Linus' tree perhaps give that a try and
-> > post the debug log again?  
-> 
-> Hi Dan,
-> 
-> I've moved onto looking at this one.
-> 1 HB, 2RP (to make it configure the HDM decoder in the QEMU HB, I'll tidy that up
-> at some stage), 1 switch, 4 downstream switch ports each with a type 3
-> 
-> I'm not getting a crash, but can't successfully setup a region.
-> Upon adding the final target
-> It's failing in check_last_peer() as pos < distance.
-> Seems distance is 4 which makes me think it's using the wrong level of the heirarchy for
-> some reason or that distance check is wrong.
-> Wasn't a good idea to just skip that step though as it goes boom - though
-> stack trace is not useful.
+For v8 CPUs, we already have regdefs for 0, c0, c{0-2}, {0-7} (that
+is, the space is completely allocated with no reserved spaces).  Add
+entries to v8_idregs[] covering 0, c0, c3, {0-7}:
+ * c3, {0-2} is the reserved AArch32 space corresponding to the
+   AArch64 MVFR[012]_EL1
+ * c3, {3,5,6,7} are reserved RAZ for both AArch32 and AArch64
+   (in fact some of these are given defined meanings in Armv8.6,
+   but we don't implement them yet)
+ * c3, 4 is ID_PFR2 (already defined)
 
-Turns out really weird corruption happens if you accidentally back two type3 devices
-with the same memory device. Who would have thought it :)
+We then programmatically add RAZ patterns for AArch32 for
+0, c0, c{4..15}, {0-7}:
+ * c4-c7 are unused, and not shared with AArch64 (these
+   are the encodings corresponding to where the AArch64
+   specific ID registers live in the system register space)
+ * c8-c15 weren't required to RAZ in v6/v7, but v8 extends
+   the AArch32 reserved-should-RAZ space to cover these;
+   the equivalent area of the AArch64 sysreg space is not
+   defined as must-RAZ
 
-That aside ignoring the check_last_peer() failure seems to make everything work for this
-topology.  I'm not seeing the crash, so my guess is we fixed it somewhere along the way.
+Note that the architecture allows some registers in this space
+to return an UNKNOWN value; we always return 0.
 
-Now for the fun one.  I've replicated the crash if we have
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
+ target/arm/helper.c | 65 +++++++++++++++++++++++++++++++++++++++++----
+ 1 file changed, 60 insertions(+), 5 deletions(-)
 
-1HB 1*RP 1SW, 4SW-DSP, 4Type3
-
-Now, I'd expect to see it not 'work' because the QEMU HDM decoder won't be programmed
-but the null pointer dereference isn't related to that.
-
-The bug is straight forward.  Not all decoders have commit callbacks... Will send out
-a possible fix shortly.
-
-Jonathan
-
-
-
-> 
-> Jonathan
-> 
-> 
-> 
-> 
-> 
-> 
+diff --git a/target/arm/helper.c b/target/arm/helper.c
+index d7bc467a2a5..c171770b035 100644
+--- a/target/arm/helper.c
++++ b/target/arm/helper.c
+@@ -7345,11 +7345,16 @@ void register_cp_regs_for_features(ARMCPU *cpu)
+         define_arm_cp_regs(cpu, not_v7_cp_reginfo);
+     }
+     if (arm_feature(env, ARM_FEATURE_V8)) {
+-        /* AArch64 ID registers, which all have impdef reset values.
++        /*
++         * v8 ID registers, which all have impdef reset values.
+          * Note that within the ID register ranges the unused slots
+          * must all RAZ, not UNDEF; future architecture versions may
+          * define new registers here.
++         * ID registers which are AArch64 views of the AArch32 ID registers
++         * which already existed in v6 and v7 are handled elsewhere,
++         * in v6_idregs[].
+          */
++        int i;
+         ARMCPRegInfo v8_idregs[] = {
+             /*
+              * ID_AA64PFR0_EL1 is not a plain ARM_CP_CONST in system
+@@ -7539,7 +7544,34 @@ void register_cp_regs_for_features(ARMCPU *cpu)
+               .access = PL1_R, .type = ARM_CP_CONST,
+               .accessfn = access_aa64_tid3,
+               .resetvalue = cpu->isar.mvfr2 },
+-            { .name = "MVFR3_EL1_RESERVED", .state = ARM_CP_STATE_AA64,
++            /*
++             * "0, c0, c3, {0,1,2}" are the encodings corresponding to
++             * AArch64 MVFR[012]_EL1. Define the STATE_AA32 encoding
++             * as RAZ, since it is in the "reserved for future ID
++             * registers, RAZ" part of the AArch32 encoding space.
++             */
++            { .name = "RES_0_C0_C3_0", .state = ARM_CP_STATE_AA32,
++              .cp = 15, .opc1 = 0, .crn = 0, .crm = 3, .opc2 = 0,
++              .access = PL1_R, .type = ARM_CP_CONST,
++              .accessfn = access_aa64_tid3,
++              .resetvalue = 0 },
++            { .name = "RES_0_C0_C3_1", .state = ARM_CP_STATE_AA32,
++              .cp = 15, .opc1 = 0, .crn = 0, .crm = 3, .opc2 = 1,
++              .access = PL1_R, .type = ARM_CP_CONST,
++              .accessfn = access_aa64_tid3,
++              .resetvalue = 0 },
++            { .name = "RES_0_C0_C3_2", .state = ARM_CP_STATE_AA32,
++              .cp = 15, .opc1 = 0, .crn = 0, .crm = 3, .opc2 = 2,
++              .access = PL1_R, .type = ARM_CP_CONST,
++              .accessfn = access_aa64_tid3,
++              .resetvalue = 0 },
++            /*
++             * Other encodings in "0, c0, c3, ..." are STATE_BOTH because
++             * they're also RAZ for AArch64, and in v8 are gradually
++             * being filled with AArch64-view-of-AArch32-ID-register
++             * for new ID registers.
++             */
++            { .name = "RES_0_C0_C3_3", .state = ARM_CP_STATE_BOTH,
+               .opc0 = 3, .opc1 = 0, .crn = 0, .crm = 3, .opc2 = 3,
+               .access = PL1_R, .type = ARM_CP_CONST,
+               .accessfn = access_aa64_tid3,
+@@ -7549,17 +7581,17 @@ void register_cp_regs_for_features(ARMCPU *cpu)
+               .access = PL1_R, .type = ARM_CP_CONST,
+               .accessfn = access_aa64_tid3,
+               .resetvalue = cpu->isar.id_pfr2 },
+-            { .name = "MVFR5_EL1_RESERVED", .state = ARM_CP_STATE_AA64,
++            { .name = "RES_0_C0_C3_5", .state = ARM_CP_STATE_BOTH,
+               .opc0 = 3, .opc1 = 0, .crn = 0, .crm = 3, .opc2 = 5,
+               .access = PL1_R, .type = ARM_CP_CONST,
+               .accessfn = access_aa64_tid3,
+               .resetvalue = 0 },
+-            { .name = "MVFR6_EL1_RESERVED", .state = ARM_CP_STATE_AA64,
++            { .name = "RES_0_C0_C3_6", .state = ARM_CP_STATE_BOTH,
+               .opc0 = 3, .opc1 = 0, .crn = 0, .crm = 3, .opc2 = 6,
+               .access = PL1_R, .type = ARM_CP_CONST,
+               .accessfn = access_aa64_tid3,
+               .resetvalue = 0 },
+-            { .name = "MVFR7_EL1_RESERVED", .state = ARM_CP_STATE_AA64,
++            { .name = "RES_0_C0_C3_7", .state = ARM_CP_STATE_BOTH,
+               .opc0 = 3, .opc1 = 0, .crn = 0, .crm = 3, .opc2 = 7,
+               .access = PL1_R, .type = ARM_CP_CONST,
+               .accessfn = access_aa64_tid3,
+@@ -7625,6 +7657,29 @@ void register_cp_regs_for_features(ARMCPU *cpu)
+         }
+         define_arm_cp_regs(cpu, v8_idregs);
+         define_arm_cp_regs(cpu, v8_cp_reginfo);
++
++        for (i = 4; i < 16; i++) {
++            /*
++             * Encodings in "0, c0, {c4-c7}, {0-7}" are RAZ for AArch32.
++             * For pre-v8 cores there are RAZ patterns for these in
++             * id_pre_v8_midr_cp_reginfo[]; for v8 we do that here.
++             * v8 extends the "must RAZ" part of the ID register space
++             * to also cover c0, 0, c{8-15}, {0-7}.
++             * These are STATE_AA32 because in the AArch64 sysreg space
++             * c4-c7 is where the AArch64 ID registers live (and we've
++             * already defined those in v8_idregs[]), and c8-c15 are not
++             * "must RAZ" for AArch64.
++             */
++            g_autofree char *name = g_strdup_printf("RES_0_C0_C%d_X", i);
++            ARMCPRegInfo v8_aa32_raz_idregs = {
++                .name = name,
++                .state = ARM_CP_STATE_AA32,
++                .cp = 15, .opc1 = 0, .crn = 0, .crm = i, .opc2 = CP_ANY,
++                .access = PL1_R, .type = ARM_CP_CONST,
++                .accessfn = access_aa64_tid3,
++                .resetvalue = 0 };
++            define_one_arm_cp_reg(cpu, &v8_aa32_raz_idregs);
++        }
+     }
+ 
+     /*
+-- 
+2.25.1
 

@@ -1,110 +1,111 @@
-Received: by 2002:a17:906:3b11:0:0:0:0 with SMTP id g17csp62004ejf;
-        Fri, 19 Aug 2022 22:20:16 -0700 (PDT)
-X-Google-Smtp-Source: AA6agR448oRJlqh3vbNFyPSsKBAvQTyZszkwzvMoaRXqxCfL/cqsQcT3K7lsx6plHdRmg0mHGSiK
-X-Received: by 2002:a05:622a:90:b0:344:6471:ef13 with SMTP id o16-20020a05622a009000b003446471ef13mr8797005qtw.50.1660972816527;
-        Fri, 19 Aug 2022 22:20:16 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1660972816; cv=none;
+Received: by 2002:a17:906:3b11:0:0:0:0 with SMTP id g17csp62497ejf;
+        Fri, 19 Aug 2022 22:22:02 -0700 (PDT)
+X-Google-Smtp-Source: AA6agR7EAuQ3t7zPKnoim0o1nqhQh0wSabPl881EFMTKwxrP/O+ds1k/QVsPJLYTAxzyDvWAEpxb
+X-Received: by 2002:a05:622a:1394:b0:344:648b:575a with SMTP id o20-20020a05622a139400b00344648b575amr8519428qtk.607.1660972922041;
+        Fri, 19 Aug 2022 22:22:02 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1660972922; cv=none;
         d=google.com; s=arc-20160816;
-        b=TzbbBkVLHNoXDIiWTDRc4KSEDHXHuhUcBPVsBT/zGCNFagybqOEoWuIrcm3adtDa8n
-         NPdwR2UqMCqC/hWnAXdhJj+N45cK7hlqaU1zFoKllHAMQW2X8qxRxfDDGjzNNN4PiYLz
-         MVjhn3YdecWsH9xAgkbLtx6/V+l9PqldvMed9R5Daj5x+3Hv98eBlINSQa2D995KSGwI
-         IVLNMbUkqkk9ZjMYrBQu5sIFAmwMwQaTz2V+7wr1vYQxzjaJSrrwthLK1Kys3VaURD9Z
-         zjrrEFM+cEg3cbjUVy5iitRnlVuxfAT9e/3BDYdhoNLIoC3+a8XgDvd4u2YYH8UqkP95
-         ySxw==
+        b=SWOoz2zbky00DkKbyn150EQAt7zwnXUaUUCz81gEHU+kIoC+xbdvpzsR17UXj+Gaw8
+         6lwRyTAEzJEXyYIan0ylIKl7SFe9IY8Xf0VjLCXpwOlLa5UsCSXBQEh7IWsi9Hap6dw1
+         HtoiuNivW039OfLYT5NWuhaMqid8/Dimglhoxg3Rl87CuxN1nIkwUNTH5vaOvh3AovRm
+         VHtLYmt0fIGXJNM5lJbVwKVozmrss4pxvfODHC7NHSESLEaF2NTrBENZHvxG4SazWtlO
+         YAQ01RZseji5VcB+cCgj+tZpiAWmUee/UG1sr3KGQMdOqocRlEtSdCiWXNP7L4zHFSUS
+         dFYg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :in-reply-to:from:references:to:content-language:subject:user-agent
          :mime-version:date:message-id:dkim-signature;
-        bh=Gt1LQjHVm6dNUnA0JJYzhr+cF4q8Z4YhDdujLaWT6Is=;
-        b=qiylxsJ38ii7RXT4bYuObi4xWMK+fbwZlUY5uZAM2xVmDD60oHo9ABE4c/2OCH9XeD
-         /nIHnzEMr7JcdETrXJxspvfEF0yRz7cAm0QecWr1ynWBPqHd3RQSukI9rcMtwwdTyRpb
-         NkfBz5IYwpPUX+tKpSw+AVHgDnHY/ouHbAuDVemDX0/H998HaA0NyR3Uzt+8hLHouw+V
-         VbYm8G/DUn24DUgEohfweSJebkFXbR+rTzV8nbjr/GSyTJuPL94dFRQmXO7JCBq6Zg4y
-         dGg83vBT71250rgze7zS3iCN666cz+CxFN/nJXrpXUZbrt5Rey2IPy+5CniLDRLq8lqy
-         aRrQ==
+        bh=NDk5uDzmyZQmpEDy6CAJhPQ/D2di48CWnqJg/6Y0lW4=;
+        b=CqTSxM/KlfpTPTtHvG6tkzIvIKc1KImW2n5lcoa52UFTsC1mNidMfiUU3+kS72Os1/
+         TlpbK0YTQgA4ShAT+3nwKjJBe4vIGsnc0dm9059UiwnrPp74QurSkP7xnMCaj8RTIAFQ
+         5i2m7prM7SMK/mKyLB3qkP9QhRXK342kUiwk0GSS3ebWShrHYwE6J98eB1Hx7eRybSAx
+         aN7w62Q40LptPwhMSZHB4yTzY+0Twt9x6Do8WqpVjbDKlBFHpayR1ulsOj51y0ai+cxz
+         G+10FFkRWSVMbGMQHHcLSVd+QbrF6+k/LmlM9EGpZr3gc5tBazI0cB4GkjRmdKP+ySGi
+         RaSg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=uPlxWW2E;
+       dkim=pass header.i=@linaro.org header.s=google header.b=wQaB7Epa;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id m126-20020a375884000000b006b95ae33f37si2488234qkb.485.2022.08.19.22.20.16
+        by mx.google.com with ESMTPS id f18-20020ac84712000000b0031f06a28743si2391292qtp.205.2022.08.19.22.22.01
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 19 Aug 2022 22:20:16 -0700 (PDT)
+        Fri, 19 Aug 2022 22:22:02 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=uPlxWW2E;
+       dkim=pass header.i=@linaro.org header.s=google header.b=wQaB7Epa;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:56540 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:45920 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1oPGu8-0004IF-2Z
-	for alex.bennee@linaro.org; Sat, 20 Aug 2022 01:20:16 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:50144)
+	id 1oPGvp-0005qx-J1
+	for alex.bennee@linaro.org; Sat, 20 Aug 2022 01:22:01 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:45074)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1oPGtd-0004HO-0Q
- for qemu-arm@nongnu.org; Sat, 20 Aug 2022 01:19:45 -0400
-Received: from mail-pl1-x62c.google.com ([2607:f8b0:4864:20::62c]:43907)
+ id 1oPGve-0005oy-6i
+ for qemu-arm@nongnu.org; Sat, 20 Aug 2022 01:21:50 -0400
+Received: from mail-pj1-x102a.google.com ([2607:f8b0:4864:20::102a]:36497)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1oPGtb-0003rk-5w
- for qemu-arm@nongnu.org; Sat, 20 Aug 2022 01:19:44 -0400
-Received: by mail-pl1-x62c.google.com with SMTP id 20so5676602plo.10
- for <qemu-arm@nongnu.org>; Fri, 19 Aug 2022 22:19:42 -0700 (PDT)
+ id 1oPGvc-0004Ny-GJ
+ for qemu-arm@nongnu.org; Sat, 20 Aug 2022 01:21:49 -0400
+Received: by mail-pj1-x102a.google.com with SMTP id
+ r14-20020a17090a4dce00b001faa76931beso9291425pjl.1
+ for <qemu-arm@nongnu.org>; Fri, 19 Aug 2022 22:21:48 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=content-transfer-encoding:in-reply-to:from:references:to
  :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc; bh=Gt1LQjHVm6dNUnA0JJYzhr+cF4q8Z4YhDdujLaWT6Is=;
- b=uPlxWW2Ehzr4GIWWmOfNcBIMsTDsBqXWsVailm0dacC+SUucZJxWlY0Ady1j4I9e/g
- DELqmHiAWtvUWGxgJGmsiEhhMyCKRe0gsDerhuNKj6rQ4at1xrpZoZXQPEQ1BfZshPRU
- OPcWleayjJh4J4X7lzS8aqLaLMQMWfcalnQdCmVLgwQ/5Ixy62HmEPPQA5tBw3WJfxy+
- wieccBuH4TRkCEDSvrxHzHKaYQWPJ3bEOU+sOsLwjxvFEuN6zdPYGFMaITviYZ0iW09i
- UdaB+MYlUDXmFQI4TrlANVAUhSzZDa/vtRbh3IJJsrcXqwI+DatXeXFW2JyOufZsoAeY
- d5nQ==
+ :from:to:cc; bh=NDk5uDzmyZQmpEDy6CAJhPQ/D2di48CWnqJg/6Y0lW4=;
+ b=wQaB7Epaf39bre54T1G9PhMLdoq7y9c7YW+VzH90VeGtmKQAVN+lqIx5tROqaBc2nm
+ etQfvXHsJJHo6o5SpYu8fnDcBMF+TnVsMM9tpFtcdINaPDCduCLLDNX9yV9rZnjE4JEh
+ URReZ19skj0ut5urxyCWMUOOYtDIJnbH8gzI+8X+CDJ8dH38irZq3VvBDqIhc+rTsfNS
+ zBzk3M5ZLfWQAEoi8BwnGKTZmCxBXSRqBv1NuPjJvALRad5ysUmvTXxg9+AWrDWLPadQ
+ IxtYCIQDhJVifHQYvavxBm8NMnjUNHi/xEAP/JbPHg8Lhrngf31MJ1mXdL3DvqSiqeOc
+ tuQg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=content-transfer-encoding:in-reply-to:from:references:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc;
- bh=Gt1LQjHVm6dNUnA0JJYzhr+cF4q8Z4YhDdujLaWT6Is=;
- b=e6zgA/W4EDpfx+In6jN8G0J1ha88NXDKP5Bq9AjbaeTgtc2gqjXYlrc4F7eAf0l9QY
- zz//eoc/rByuUgublcTgCaI3ZexYyA0o8ewRRgDY8lAC8wva8s+BRgUpmPJFe4DEE61t
- XaPRSM9OAHdvpD6B3xX+G4JOnVXfBAqcnX3opf9hKTGRldSZ4wDav30ISbjwx0pOonLD
- Mei6Cplpma42ExuqTnu+NDgvZNVOoSOJgVMmKNeSSDLoRmYGW2EqYivne9iMW8UWtckt
- eLQZE7Wn77KkDQUxX42ldmZ8bTsAFdF7wo8mgYsCBiCEAm8UFMtCu5T/djk1mCFB5ziU
- Lwxg==
-X-Gm-Message-State: ACgBeo2KiDe0qFBucEsQcryHOr46uM4hAiXoI3xjOMxgk/+DsuDADlpe
- CaVr55djRZgL8P9AfErnWO+Q5Q==
-X-Received: by 2002:a17:902:f64d:b0:172:d004:8b2d with SMTP id
- m13-20020a170902f64d00b00172d0048b2dmr1876435plg.14.1660972781179; 
- Fri, 19 Aug 2022 22:19:41 -0700 (PDT)
+ bh=NDk5uDzmyZQmpEDy6CAJhPQ/D2di48CWnqJg/6Y0lW4=;
+ b=3kYtzQrnqpyQSeiYqt2dkhjbm5Vn0ZusjWKKycSd/hCgairqQZq2/yDE6Trsw88yFt
+ 17SUSHdwF+pOqnJ5atR/LdMjdCNDS2R8Vk9ukEGUEkYqFy4EgL7H+ZfQPpZZ8nK1fZX+
+ yE+7T18kfJ5PruElb8pcbEvqAOHEzXAZRl/KWB3HZEql8+qgp18lu/6+1n0IW7By06uK
+ fXBS1eblxoDZc6wG2OvaszOIz4VqSwM6/qc0tOsLi7+zMdTdAUWlFEQy6MlYwYatxuxx
+ riLi2BLWkNAXYsxKP1XSw+vELN2qNgLBBG3YfC5MzO2LzjDs9sMn3Nhex20DrRREvSGB
+ T/Ug==
+X-Gm-Message-State: ACgBeo2JlQa/gEr3BpCQKkR//8ibMHAygsEa0udmyn/YcUKnse3ysIca
+ VghoCPcOFACnHm9CkAEjfA8J/w==
+X-Received: by 2002:a17:903:1c7:b0:171:3ba4:9bb8 with SMTP id
+ e7-20020a17090301c700b001713ba49bb8mr10503961plh.105.1660972907308; 
+ Fri, 19 Aug 2022 22:21:47 -0700 (PDT)
 Received: from ?IPV6:2602:47:d49d:ec01:b651:a70f:2852:70f5?
  ([2602:47:d49d:ec01:b651:a70f:2852:70f5])
  by smtp.gmail.com with ESMTPSA id
- v15-20020a17090a6b0f00b001fac90ead43sm4043660pjj.29.2022.08.19.22.19.39
+ b191-20020a621bc8000000b0052d2b55be32sm4425693pfb.171.2022.08.19.22.21.46
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 19 Aug 2022 22:19:40 -0700 (PDT)
-Message-ID: <eb492ba7-017a-178c-ea9e-1f089d40c421@linaro.org>
-Date: Fri, 19 Aug 2022 22:19:36 -0700
+ Fri, 19 Aug 2022 22:21:46 -0700 (PDT)
+Message-ID: <5b2694b7-a1bf-504a-5af6-8ac95d34d5ee@linaro.org>
+Date: Fri, 19 Aug 2022 22:21:44 -0700
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
  Thunderbird/91.11.0
-Subject: Re: [PATCH 4/6] target/arm: Implement ID_DFR1
+Subject: Re: [PATCH 5/6] target/arm: Advertise FEAT_ETS for '-cpu max'
 Content-Language: en-US
 To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
  qemu-devel@nongnu.org
 References: <20220819110052.2942289-1-peter.maydell@linaro.org>
- <20220819110052.2942289-5-peter.maydell@linaro.org>
+ <20220819110052.2942289-6-peter.maydell@linaro.org>
 From: Richard Henderson <richard.henderson@linaro.org>
-In-Reply-To: <20220819110052.2942289-5-peter.maydell@linaro.org>
+In-Reply-To: <20220819110052.2942289-6-peter.maydell@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::62c;
- envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x62c.google.com
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::102a;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x102a.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -126,21 +127,29 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: uLWR1qVNEXmK
+X-TUID: kXMLPK93JScV
 
 On 8/19/22 04:00, Peter Maydell wrote:
-> In Armv8.6, a new AArch32 ID register ID_DFR1 is defined; implement
-> it. We don't have any CPUs with features that they need to advertise
-> here yet, but plumbing in the ID register gives it the right name
-> when debugging and will help in future when we do add a CPU that
-> has non-zero ID_DFR1 fields.
+> The architectural feature FEAT_ETS (Enhanced Translation
+> Synchronization) is a set of tightened guarantees about memory
+> ordering involving translation table walks:
 > 
-> Signed-off-by: Peter Maydell<peter.maydell@linaro.org>
-> ---
->   target/arm/cpu.h    | 1 +
->   target/arm/helper.c | 4 ++--
->   target/arm/kvm64.c  | 2 ++
->   3 files changed, 5 insertions(+), 2 deletions(-)
+>   * if memory access RW1 is ordered-before memory access RW2 then it
+>     is also ordered-before any translation table walk generated by RW2
+>     that generates a translation fault, address size fault or access
+>     fault
+> 
+>   * TLB maintenance on non-exec-permission translations is guaranteed
+>     complete after a DSB (ie it does not need the context
+>     synchronization event that you have to have if you don’t have
+>     FEAT_ETS)
+> 
+> For QEMU’s implementation we don’t reorder translation table walk
+> accesses, and we guarantee to finish the TLB maintenance as soon as
+> the TLB op is done (the tlb_flush functions will complete at the end
+> of the TLB, and TLB ops always end the TB because they’re sysreg
+
+First TLB on this line should be TB.
 
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 

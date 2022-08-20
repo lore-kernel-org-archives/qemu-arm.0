@@ -1,110 +1,112 @@
-Received: by 2002:a17:906:3b11:0:0:0:0 with SMTP id g17csp62719ejf;
-        Fri, 19 Aug 2022 22:22:45 -0700 (PDT)
-X-Google-Smtp-Source: AA6agR4cAR+hQo6zfHU4QICqFv39paXPWRqTGQIGhQNKji2YVYaB7Tk9WDzNE23mXY9Yr+l2KPOx
-X-Received: by 2002:ac8:5d8d:0:b0:344:a747:ac00 with SMTP id d13-20020ac85d8d000000b00344a747ac00mr3434348qtx.205.1660972965057;
-        Fri, 19 Aug 2022 22:22:45 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1660972965; cv=none;
+Received: by 2002:a17:906:9c0a:0:0:0:0 with SMTP id ff10csp60331ejc;
+        Sat, 20 Aug 2022 10:33:54 -0700 (PDT)
+X-Google-Smtp-Source: AA6agR7Ymo8e8VP7gkeHu3HvKosbFo4KQ20V5Chhi7+TzAra54Nw175wMNk12bBLbbms98Uy1LhZ
+X-Received: by 2002:a05:622a:2c2:b0:343:645f:1601 with SMTP id a2-20020a05622a02c200b00343645f1601mr10405585qtx.349.1661016834400;
+        Sat, 20 Aug 2022 10:33:54 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1661016834; cv=none;
         d=google.com; s=arc-20160816;
-        b=rl951Qbl5VdoO8tSn01awkUGdaCs1Lwo7Ugl9hWek/kZWDXkk775mAdJ5dKtWjo6xn
-         0dICur0d5RUnf7GVysCuRg+Pxe7/XJcDzTMlaWtCl9AGmkTOGbfZzUZ94JEpD/j0HJBv
-         UuQpiyDeWW2tt4C+o8Jq/j3By9myQjgInktETrGr8t6GrqI/HZti1ECNU11ik3/99qK0
-         SXJK7xn+zJRlXhjpsLZJvvBOIqT+p3RVbK0dtJr67b0F1PhPGMuPwAC/+l0Fq8G0mCPj
-         LvQDYxpyXxm2MvNfqz6+MEZnUSzUvU+BiQTU3jQ3/wJ2tQB6AFoDD1twOogSuu6ohT4h
-         weSQ==
+        b=LSOQlAH1+WY8ssX/oSGqt+QG7sCig3693RDUMTvBtKg/rvt0dN4uXAn4/hfs8E74Jl
+         o5DX/QNldwsmBCK4+4lsfSke1GDUHmczBMfDEdbdRfv3boYTX2v4/PcVzs0l4EyHT60g
+         fcIE6CFauIzAi4tZRAglXey46C9+rQQvDMezNj0izQom+a3/FzWjWXN0vjZOC4bTKGTg
+         7HCyux35bkTdaXY2BZStdTln0HhJK7SvVzhHazWqUAVy0D8WmZSTQqdkamlS7zeLYnPA
+         DtApcdXG10xT3uhCfyPuli1Fc0HoMsd0KPDgEMRHoMCo6o+AKMDw/jiBYMKwPah0nlit
+         /SEg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :in-reply-to:from:references:to:content-language:subject:user-agent
          :mime-version:date:message-id:dkim-signature;
-        bh=XlZgOSQ4NES66fut4fiHJ48r4KbfdGGMFc466qIdkkw=;
-        b=V6ep58lTLBgLIrdB9bQhX7KPr0jZt2dF9p+wY89nJFpHPXb3leT0ydO3h38YCfEens
-         Hz01hb49ZdpHDAmZ69f//RDbfYtnhQuH3doJ+5iyA7SMjueTrYKZTJ3eiUevXZ4hqOYO
-         ZEob56eg9LoeJqvW2RefQrbXyyW1VJweJqqXXjp73VK7rv2Ju0I3ABXBnESFfF2fXAM0
-         ZnkAden1bmLTXHeG/O+MTdBmK1zpuLFcuoyp/TnTdupOcSXLb30s6xg6KPWPuMwMk0NO
-         jBW2jh6NA1ahDrWSLeDSd5JN9/avbB85K+9u3KsKdgpcWL49GAeY/eyILsuApm/wAdin
-         e7jw==
+        bh=kmvdbYYamAsV1AMc7z8OVkGEKo9ut99qosO5veM/fi0=;
+        b=PQU9S0X75PiP/IEad0QrJKr21PaN4T2siiYJZzKTFTDqSS3yl2FQP4zLGs0l6PSBjo
+         HI8P9Ss+JHLh08jG6CvxWvj+BSR73JITZECoWR9KRCvWMMaDrxBQpRysi3IVmgLMEGcp
+         rR1lPvGDh+4YmhcCy88JE/CNkHREknEjGqdnRSiSayoEAkmGKagiLG+oebfyA+XZ4am4
+         xWwBlU4jets2c4z3kyO1lrc7ZUCXyBElUJssWcb6uYm5QDORTSJsq21LDD2OxHd+53wy
+         38lFU5P/1/D5BcrilRKdTfmfYMq4eB+fFFU7ZuDynBfjoDxV5YrNTE2Yej16Euc7xU9G
+         k/Ww==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=OHMeD9ci;
+       dkim=pass header.i=@linaro.org header.s=google header.b=saXwsJ3P;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id ga14-20020a05622a590e00b00344661535acsi2632080qtb.352.2022.08.19.22.22.44
+        by mx.google.com with ESMTPS id cm20-20020a05622a251400b00344569472fbsi3058836qtb.7.2022.08.20.10.33.54
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 19 Aug 2022 22:22:45 -0700 (PDT)
+        Sat, 20 Aug 2022 10:33:54 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=OHMeD9ci;
+       dkim=pass header.i=@linaro.org header.s=google header.b=saXwsJ3P;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:40716 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:60714 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1oPGwW-0006P6-JT
-	for alex.bennee@linaro.org; Sat, 20 Aug 2022 01:22:44 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:54988)
+	id 1oPSM5-0007XP-Uz
+	for alex.bennee@linaro.org; Sat, 20 Aug 2022 13:33:53 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:56064)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1oPGw7-0006Nc-8J
- for qemu-arm@nongnu.org; Sat, 20 Aug 2022 01:22:20 -0400
-Received: from mail-pg1-x52f.google.com ([2607:f8b0:4864:20::52f]:36445)
+ id 1oPSLv-0007X0-Cw
+ for qemu-arm@nongnu.org; Sat, 20 Aug 2022 13:33:43 -0400
+Received: from mail-pj1-x1033.google.com ([2607:f8b0:4864:20::1033]:45937)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1oPGw5-0004QV-Su
- for qemu-arm@nongnu.org; Sat, 20 Aug 2022 01:22:18 -0400
-Received: by mail-pg1-x52f.google.com with SMTP id s206so5191786pgs.3
- for <qemu-arm@nongnu.org>; Fri, 19 Aug 2022 22:22:17 -0700 (PDT)
+ id 1oPSLt-0003hI-SI
+ for qemu-arm@nongnu.org; Sat, 20 Aug 2022 13:33:43 -0400
+Received: by mail-pj1-x1033.google.com with SMTP id
+ x63-20020a17090a6c4500b001fabbf8debfso7615112pjj.4
+ for <qemu-arm@nongnu.org>; Sat, 20 Aug 2022 10:33:41 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=content-transfer-encoding:in-reply-to:from:references:to
  :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc; bh=XlZgOSQ4NES66fut4fiHJ48r4KbfdGGMFc466qIdkkw=;
- b=OHMeD9ciras5hDTvtgrUFdp2AMKqVQAwBjUoAYT/U9AQVBRmVpm4vxTewNzUZUmG7X
- 9RNJUnftITYr+M2QRatp6I/a78/7CQ9XUJltuM/hSZgSmLHwiNF4cTZwGXtHSH4Gu1vw
- k7kBH0KTR5g/eqAYHad6f3pI5sBhJZ7bciPSPKGBnUaBVTrP2XEQQ+gfwy+8Tb3fb9uy
- Fejyh4eLM5bbgwmUbSQpR0v6h7+E8XM+yOnpfnEwQRZwu28dGWYiUBvJ00CKyZ9mAY/D
- vS6t5xomGJIWveoNJiUuVCXtpQU09VT7qp+xgxinGixCY2QpWJ3LYMcx82q/jgasqELK
- nQsA==
+ :from:to:cc; bh=kmvdbYYamAsV1AMc7z8OVkGEKo9ut99qosO5veM/fi0=;
+ b=saXwsJ3Pm40FxQa/+97+45lAMiiFLG2hKwkdzdWX9/BMDs/L2ILUrETvXHVCmiG43m
+ or55CldV66mmYcypm50IjAaHL9PKDucIK6zv7QrEjr5A9PaXXIzTl7DPc9h1zqTP4tUP
+ W+SlUN7x9IQPR1hM8wcNcN335oexudSYi/hhUK+w9khEnx8PaX/brjh6G47k5+DvWEdp
+ 7f3Dk57RHg3pie4P5Ncsh/DoMXZiJFIXXQvF8xqAWeYHwNEsp6vQKnWSKxEfXZ+Iv1x0
+ +zhS9rq1oa/+/W38Y/FgTHNZrF7BsPEzyIxLDhWKzGuanr5BJZMj5FzaXF+oAdm2RR1n
+ JU9w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=content-transfer-encoding:in-reply-to:from:references:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc;
- bh=XlZgOSQ4NES66fut4fiHJ48r4KbfdGGMFc466qIdkkw=;
- b=2acofbjjvJCIqSe1MSZxwvUBLFxVhvRsACayylQXtYgCXCPrQzZKuDnbOCT64fsPib
- UQRXw1QntFObJB1i9ECEMyfjFhwhzYlb6Lv+F+UVREA8y6VCChCIxAr98bAjHcf1YB0d
- AelKmwbokenL09Ae5E12UERh+zb1dMNQJY686xgrrNf7/gkvLVQ2IprMwnu4SQqcPfaF
- jKSrzItE13GOfv/dWV5fDF9T5y5kSsiqf0HOlayyJHebiO4l+0aPDr/YZ67YcJge64Cx
- W60VqrwTQAnA38k3cr1CvnV/QChd5bNFwQ5fvq1u8YO1eHuppSmp+P2uDl0hx/F/lKmk
- Qeyw==
-X-Gm-Message-State: ACgBeo2b+hl4Slhuxn88oknydgfYrwp3F5ar1soWZ5WGzryUjc04GPD6
- ACP0RYWId85/opfX8SWy5KgBXA==
-X-Received: by 2002:a63:8ac8:0:b0:429:71e3:4af6 with SMTP id
- y191-20020a638ac8000000b0042971e34af6mr9052151pgd.218.1660972936517; 
- Fri, 19 Aug 2022 22:22:16 -0700 (PDT)
-Received: from ?IPV6:2602:47:d49d:ec01:b651:a70f:2852:70f5?
- ([2602:47:d49d:ec01:b651:a70f:2852:70f5])
+ bh=kmvdbYYamAsV1AMc7z8OVkGEKo9ut99qosO5veM/fi0=;
+ b=EpndMs+4Tfp2drxfGNO02xHKrZuJ7Zng31doovKhE0shuKsIyYGZpwiKQdTiia7gv9
+ tB3nWWAOOnikeiCZ/KQp7fKvWDTXhVjnsb2ZS7MVAzzBR40ShGCMB/4S6D3fySAxdJTU
+ zAiURAZ6fK7BKNIx+IfWt4NGQCBoDNqGtqKRZYj31UAzim6VT9nHWkNuM3QHDaGPOJCs
+ WoIxWBA515GNJFyLS+uos9/hQmGnU5kV4ljHT4jPKeKBfHw/ktQxBoOJTe1wk0gXBaN5
+ vI6LLX74uFhptFrsyVBqXrCyMLIMoVyxAtRVuz5xR/cF74V/whKot/jX6oLYlU7GiI6y
+ 3PvQ==
+X-Gm-Message-State: ACgBeo12upPLCT635qOeAUqroE5WAR6dpnqUQiP5Fm0cqehFdMkskq7G
+ J+huzZ9vcN4JMZAIBSxUB5qfYA==
+X-Received: by 2002:a17:90b:4b46:b0:1fa:f4a7:73d5 with SMTP id
+ mi6-20020a17090b4b4600b001faf4a773d5mr6761523pjb.108.1661016819939; 
+ Sat, 20 Aug 2022 10:33:39 -0700 (PDT)
+Received: from ?IPV6:2602:47:d49d:ec01:142b:b2fd:5c12:7cf3?
+ ([2602:47:d49d:ec01:142b:b2fd:5c12:7cf3])
  by smtp.gmail.com with ESMTPSA id
- z16-20020aa79590000000b0052d8405bcd2sm4322149pfj.163.2022.08.19.22.22.15
+ f16-20020a635550000000b004299489dd2bsm4599925pgm.8.2022.08.20.10.33.39
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 19 Aug 2022 22:22:15 -0700 (PDT)
-Message-ID: <923c77ed-f3e7-38e1-6637-3c1196ec51c4@linaro.org>
-Date: Fri, 19 Aug 2022 22:22:12 -0700
+ Sat, 20 Aug 2022 10:33:39 -0700 (PDT)
+Message-ID: <949fb9c0-8e7f-d0bd-dbfa-e76067b867d8@linaro.org>
+Date: Sat, 20 Aug 2022 10:33:37 -0700
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
  Thunderbird/91.11.0
-Subject: Re: [PATCH 6/6] target/arm: Add missing space in comment
+Subject: Re: [PATCH 08/10] target/arm: Implement FEAT_PMUv3p5 cycle counter
+ disable bits
 Content-Language: en-US
 To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
  qemu-devel@nongnu.org
-References: <20220819110052.2942289-1-peter.maydell@linaro.org>
- <20220819110052.2942289-7-peter.maydell@linaro.org>
+References: <20220811171619.1154755-1-peter.maydell@linaro.org>
+ <20220811171619.1154755-9-peter.maydell@linaro.org>
 From: Richard Henderson <richard.henderson@linaro.org>
-In-Reply-To: <20220819110052.2942289-7-peter.maydell@linaro.org>
+In-Reply-To: <20220811171619.1154755-9-peter.maydell@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::52f;
- envelope-from=richard.henderson@linaro.org; helo=mail-pg1-x52f.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1033;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x1033.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -126,17 +128,30 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 8uxifAucB/20
+X-TUID: dZqjkdgnPfZQ
 
-On 8/19/22 04:00, Peter Maydell wrote:
-> Fix a missing space before a comment terminator.
-> 
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> ---
->   target/arm/cpu_tcg.c | 2 +-
->   1 file changed, 1 insertion(+), 1 deletion(-)
+On 8/11/22 10:16, Peter Maydell wrote:
+> FEAT_PMUv3p5 introduces new bits MDCR_EL2.HCCD and MDCR_EL3.SCCD,
+> which disable the cycle counter from counting at EL2 and EL3.
+> Add the code to support these bits.
 
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+While HCCD is v3p5, it seems MCCD (typo above) is v3p7.
+
+> +    if (counter == 31) {
+> +        /*
+> +         * The cycle counter defaults to running. PMCR.DP says "disable
+> +         * the cycle counter when event counting is prohibited".
+> +         * Some MDCR bits disable the cycle counter specifically.
+> +         */
+> +        prohibited = prohibited && env->cp15.c9_pmcr & PMCRDP;
+> +        if (cpu_isar_feature(any_pmuv3p5, env_archcpu(env))) {
+> +            if (el == 3) {
+> +                prohibited = prohibited || (env->cp15.mdcr_el3 & MDCR_MCCD);
+> +            } else if (el == 2) {
+> +                prohibited = prohibited || (mdcr_el2 & MDCR_HCCD);
+> +            }
+
+But modulo the feature test, the behaviour looks right.
 
 
 r~

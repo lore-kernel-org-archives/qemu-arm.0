@@ -1,103 +1,104 @@
-Received: by 2002:a17:906:9c0a:0:0:0:0 with SMTP id ff10csp1013586ejc;
-        Mon, 22 Aug 2022 09:33:50 -0700 (PDT)
-X-Google-Smtp-Source: AA6agR75lVCrPDMBJ8djkHaSHlF6vf/KBOgyIY760QyW1EWS+M/hRDELxkr2qwp2+53UAahpE2xE
-X-Received: by 2002:a0c:da8e:0:b0:496:cd33:1f08 with SMTP id z14-20020a0cda8e000000b00496cd331f08mr9345144qvj.112.1661186030172;
-        Mon, 22 Aug 2022 09:33:50 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1661186030; cv=none;
+Received: by 2002:a17:906:9c0a:0:0:0:0 with SMTP id ff10csp1016975ejc;
+        Mon, 22 Aug 2022 09:40:57 -0700 (PDT)
+X-Google-Smtp-Source: AA6agR5mOVYvjjykhxDLhGfzeiCktqi4XPYKwO0EUZ91TWJqMHhuDQi0+1ZnGPLKrTBDWCtqhS/x
+X-Received: by 2002:a05:622a:1c7:b0:343:8a4:b7f5 with SMTP id t7-20020a05622a01c700b0034308a4b7f5mr15952794qtw.47.1661186457374;
+        Mon, 22 Aug 2022 09:40:57 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1661186457; cv=none;
         d=google.com; s=arc-20160816;
-        b=W85VSsSfpdkPrA90STUPhfsPENjjDCYyr7gKfAi34io92Rmc1dpPuA7Yl0dqJFmMPb
-         DRPdKfZRopuOeEk7cOnJxnrAzseqFBpFPeYqvogbbdnsPVxNHiOlOXE2RqBL18cctEG5
-         linO+dfwo7s2sL+53FBLnAZpNL6F6guBQpGVqIYYxeJXj0LAmNiTX14GDsJsm5r8kUcf
-         d/guQ/NdfT0nd9qEkcLbN1lnNm7FcYlpDKdHswgv0oqjhgk5un5d5deSImZ3XWgHJZPe
-         puSbObi/rdg7J7pjFU81HLJffTRNb/8yeTToF7mAzpFEz2Vv97O01mRBhHqLbgpkMDFJ
-         WSBw==
+        b=fWBQSDoLtNyDgQBu93a8GHBYTspPOCIUs3m1/xqVoTUKhyA8OpQQaqoTlKbO2rTpUx
+         0XnvZ+nRmk9CzHAjLzmhmiPy4/L7CAG7wgqGmhFKRcgtxmql8iGKXkdbKZVndmsdfg4q
+         bTucd1I0TXR50p5g2fbKH2eGks2aDXzS0xpppPM0/Y30+EwqU6sYbg2rfvjinM88AyYO
+         kv6C356HUD3x8klNehBxuQJnTH2CV5joNZ08ypeuy2c/MpxWL1n7cpQ4ePTvB3uZXFk3
+         Bq7p5Z9Verh7MBagD7zEo5FSYwNgzHN0+yDmR/VHgPvqrhUdlUe70Xc6QqtxyDyO8SmU
+         1IRw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=WBpLIBGMD5lRpOAKw5T58Wru1vUut/0oVVoO4QrpR+0=;
-        b=SJyJ1nCYyckwOnZHPFCm/a4gdtA6OP7o8OAr41c1RKRPrhPcG04dokYP3dk9fEzSfZ
-         gX4nJgUTr2NBE+gHXyprFVKEUZ+JZJfmiUE73QZ5Jo41rs7YpNpmyg4b5FbPw9gCisS4
-         uCPmTzzEDw/LsbFeiwoDInpDA3WSrkR9Zz8YvruFPWwvyWpSuBbaydo3p6UxJFrApbjV
-         CLtAect4bSRa4gDaKLKM/tAYvfEwpY/s0V4Y0njQMaZ0nFsJnru5JwxjV/Xodu4Bfd+4
-         N1LWnxx42IfqL1AbcAfM45nUHWquvGEo6628H+vzFCCoulaU0aXl5klm4FB1gUlRp2KS
-         2qug==
+        bh=b1YKmTdBto+hHkmTMtKDsXucA8L6l9ByKCghI8Y/k9s=;
+        b=HC7eQPKEOkuJ4l0jfhjSex/E1YAtkQIXROyOWpk6S8R/MUOdDGrw/MR6rIYlAITYFG
+         orSIsh+FUehWYm0v5JHGz8D7byencv3v67GQKMle8dewL/1LCHFUl8+Lx4MqnzDx/lCX
+         9z+gBRV7eJ+jKhdPo30FcdGlwirCD9ayKWrWpxh4NdKHqnPeyrOi3tm209Bh/r5f8ETo
+         kr6Z0P3mCRSZ8ZYvKEr42KAz9ceBqXLBjI9d4c2xgNEmMI6WOBCZktwbQ+5Tb6KkaIJi
+         D6x7eAiT8n6SEHjTWXpO38nssvNdhp5ZIDgj3lhuN4vfSEpZ23XCYClll+cADoTSSXJ8
+         bwUg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=lsHjzrm4;
+       dkim=pass header.i=@linaro.org header.s=google header.b=IhVOKYk4;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id fw13-20020a056214238d00b00476f4acd9b8si4798374qvb.296.2022.08.22.09.33.50
+        by mx.google.com with ESMTPS id bt11-20020ac8690b000000b0034367b39705si4636402qtb.366.2022.08.22.09.40.57
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 22 Aug 2022 09:33:50 -0700 (PDT)
+        Mon, 22 Aug 2022 09:40:57 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=lsHjzrm4;
+       dkim=pass header.i=@linaro.org header.s=google header.b=IhVOKYk4;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:51486 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:55802 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1oQAN3-0005Ki-I1
-	for alex.bennee@linaro.org; Mon, 22 Aug 2022 12:33:49 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38754)
+	id 1oQATw-000106-Qc
+	for alex.bennee@linaro.org; Mon, 22 Aug 2022 12:40:56 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33528)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1oQ9Ol-0004gT-EO
- for qemu-devel@nongnu.org; Mon, 22 Aug 2022 11:31:34 -0400
-Received: from mail-pl1-x631.google.com ([2607:f8b0:4864:20::631]:37775)
+ id 1oQ9Lo-0000KL-6y
+ for qemu-devel@nongnu.org; Mon, 22 Aug 2022 11:28:28 -0400
+Received: from mail-pj1-x1035.google.com ([2607:f8b0:4864:20::1035]:55184)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1oQ9Of-0001cQ-MJ
- for qemu-devel@nongnu.org; Mon, 22 Aug 2022 11:31:29 -0400
-Received: by mail-pl1-x631.google.com with SMTP id m2so10259326pls.4
- for <qemu-devel@nongnu.org>; Mon, 22 Aug 2022 08:31:25 -0700 (PDT)
+ id 1oQ9LX-0000jk-K2
+ for qemu-devel@nongnu.org; Mon, 22 Aug 2022 11:28:27 -0400
+Received: by mail-pj1-x1035.google.com with SMTP id bf22so11327735pjb.4
+ for <qemu-devel@nongnu.org>; Mon, 22 Aug 2022 08:28:11 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc;
- bh=WBpLIBGMD5lRpOAKw5T58Wru1vUut/0oVVoO4QrpR+0=;
- b=lsHjzrm4CQW7KopXPYEmQAr4tsCD8crnwd6/W5Phn0c8jrzJG2GYMG4w0iRCXyQnuV
- 0eYs8OXEqzvgvUaNfGS7DEJ6mrH/mOXZxQaWAZq6rVTQ12oZqf4rZkVIG7mcqERwChbn
- vUChgIsiuiHSaqb1z6tl4Deo7nBfW8O4Suzo8I8BL/C+lspSuKd6EtyT+BpHLYvXN3mR
- Om3BTOPowGxIjP72KkdzNJvej7SF4Waybdhv1sctkUBAMLq7UQavxxAap1pzkgIdblbk
- g5a+b8Vg/pYt9FiRbQvcZtSdDBnEsL/NrP+q/y1J7VjGGvQzYo4x6GKiF1Um3hLhjFkl
- JxEA==
+ bh=b1YKmTdBto+hHkmTMtKDsXucA8L6l9ByKCghI8Y/k9s=;
+ b=IhVOKYk4Y+Hw+0a6QIxuejfY7D7alY1/bXIydPEhrliNVEn4+4FiW8Ad9otuFa7QNV
+ 4HpzXaG6CZusyKdHIMtlz0pfUrexULtt1QB4wfjWnMxxoK2L+bbGQ2xCqsvNJ7LLuNfe
+ ds3BWeCxzmjAhdJWPna+H2YbtWsRf4nO+9pZUNiYVqC1CNlvIuIOJgBmG/QTk1cAQT20
+ fhdZ9yP2/L0VIoimrAnqtA2L2kieFjswSzxIMDumeeRe4Y4RaNdauf9MElJUPbXw5+2r
+ WxgXR23qNJ+X47AhmaUvZ6IMSgC/wzV4lkFWejGIH85HRXfe/rSeTRJnTclu+fPFqtfU
+ 6hIg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc;
- bh=WBpLIBGMD5lRpOAKw5T58Wru1vUut/0oVVoO4QrpR+0=;
- b=ehxZeItcyxB1oqmKjpatK327TGn7uNX/GWi+szVC7vS0MGJZqpAjNigdAv8K7oFT8U
- 3WWdsD7LVuKTmdQb1HovNbkn214fhhF8WuJya5M0TzG2B658wo+DKBKjNDTprPK+KI8o
- 41ikk7gQMpKFbegixBT4nzEDr1ywSzssFkJpPYoRKWQjgWB8gEsLZG2R0xc1zS+VWTBB
- Z0q4ghecfT23dW9FrE0fI12YE0AU/k9rnr6m8nmeZfr10IpueczEARLVOUxseDk9lcl/
- 6J72G3thU/9HL5Jkek4Dqu+9K0VA5rDVuiNzrzkUMsy5ccignGyNd7dRX2/KK3b1+EY1
- LYBA==
-X-Gm-Message-State: ACgBeo3x8rbZiwD0gu7EsdlM7D8kfB9qinVlyYliDzfSzPEu0zRNlxBP
- xBTquUxgBcypFvCjgyEHzaC5XYGTNgUHZw==
-X-Received: by 2002:a17:902:c94a:b0:16f:81c1:255a with SMTP id
- i10-20020a170902c94a00b0016f81c1255amr20217323pla.35.1661182284070; 
- Mon, 22 Aug 2022 08:31:24 -0700 (PDT)
+ bh=b1YKmTdBto+hHkmTMtKDsXucA8L6l9ByKCghI8Y/k9s=;
+ b=fEe3LsiXJpMZtPF0KYykYiKfCkbDWTzPcBO1/5/8Pvln4970tU4jHnMFUgYzvMi9Ey
+ qHSotJVtSpBnzMmLTRaxy6AtMwUKOsG03B9HlifKWMxKF/WZyW/TNv/PnimHiYul9bm8
+ AIfOzGDafKflGjIXMxTpqwXg0QwjkpusvDkR2zlpM0GgmnLfcDhV3T926HLa1+jrunDc
+ 2/gApnSbpDo4MkwqXoGtrlPLLeqjQlJZhWjgVGQe9ViOA6o5RL6n1DC+NaEIoZtvubcC
+ N3B37pMAmdVPiewKk58ow0A+fod4gzxnpkDXKgrwP3to17E5iXjAKCRTOXVRIgDtpj8w
+ VSAg==
+X-Gm-Message-State: ACgBeo21+mN2/AiAXqAG8AlbyciCnr8l93S5Ic62Q/qnVePqmCXYG9hQ
+ YQRS6H2udFSSu0qaeGFu7USYu+vMP3yhgg==
+X-Received: by 2002:a17:90a:d585:b0:1f4:f9a5:22a9 with SMTP id
+ v5-20020a17090ad58500b001f4f9a522a9mr29733222pju.49.1661182090817; 
+ Mon, 22 Aug 2022 08:28:10 -0700 (PDT)
 Received: from stoup.. ([71.212.157.236]) by smtp.gmail.com with ESMTPSA id
- i6-20020a17090a3d8600b001f262f6f717sm10353835pjc.3.2022.08.22.08.31.23
+ q7-20020a17090311c700b0016bffc59718sm8665222plh.58.2022.08.22.08.28.08
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 22 Aug 2022 08:31:23 -0700 (PDT)
+ Mon, 22 Aug 2022 08:28:08 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org
-Subject: [PATCH v2 46/66] target/arm: Use probe_access_full for BTI
-Date: Mon, 22 Aug 2022 08:27:21 -0700
-Message-Id: <20220822152741.1617527-47-richard.henderson@linaro.org>
+Subject: [PATCH v2 32/66] target/arm: Remove env argument from
+ combined_attrs_fwb
+Date: Mon, 22 Aug 2022 08:27:07 -0700
+Message-Id: <20220822152741.1617527-33-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20220822152741.1617527-1-richard.henderson@linaro.org>
 References: <20220822152741.1617527-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::631;
- envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x631.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1035;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x1035.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -119,132 +120,38 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: GnVs1UgYowsH
+X-TUID: W9qNnPteFp1E
 
-Add a field to TARGET_PAGE_ENTRY_EXTRA to hold the guarded bit.
-In is_guarded_page, use probe_access_full instead of just guessing
-that the tlb entry is still present.  Also handles the FIXME about
-executing from device memory.
+This value is unused.
 
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/cpu-param.h     |  8 ++++----
- target/arm/cpu.h           | 13 -------------
- target/arm/internals.h     |  1 +
- target/arm/ptw.c           |  7 ++++---
- target/arm/translate-a64.c | 22 ++++++++--------------
- 5 files changed, 17 insertions(+), 34 deletions(-)
+ target/arm/ptw.c | 5 ++---
+ 1 file changed, 2 insertions(+), 3 deletions(-)
 
-diff --git a/target/arm/cpu-param.h b/target/arm/cpu-param.h
-index 118ca0e5c0..689a9645dc 100644
---- a/target/arm/cpu-param.h
-+++ b/target/arm/cpu-param.h
-@@ -32,12 +32,12 @@
- # define TARGET_PAGE_BITS_MIN  10
- 
- /*
-- * Cache the attrs and sharability fields from the page table entry.
-+ * Cache the attrs, sharability, and gp fields from the page table entry.
-  */
- # define TARGET_PAGE_ENTRY_EXTRA  \
--     uint8_t pte_attrs;           \
--     uint8_t shareability;
--
-+    uint8_t pte_attrs;            \
-+    uint8_t shareability;         \
-+    bool guarded;
- #endif
- 
- #define NB_MMU_MODES 8
-diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index 8230a0b141..f48dcadad6 100644
---- a/target/arm/cpu.h
-+++ b/target/arm/cpu.h
-@@ -3376,19 +3376,6 @@ static inline uint64_t *aa64_vfp_qreg(CPUARMState *env, unsigned regno)
- /* Shared between translate-sve.c and sve_helper.c.  */
- extern const uint64_t pred_esz_masks[5];
- 
--/* Helper for the macros below, validating the argument type. */
--static inline MemTxAttrs *typecheck_memtxattrs(MemTxAttrs *x)
--{
--    return x;
--}
--
--/*
-- * Lvalue macros for ARM TLB bits that we must cache in the TCG TLB.
-- * Using these should be a bit more self-documenting than using the
-- * generic target bits directly.
-- */
--#define arm_tlb_bti_gp(x) (typecheck_memtxattrs(x)->target_tlb_bit0)
--
- /*
-  * AArch64 usage of the PAGE_TARGET_* bits for linux-user.
-  * Note that with the Linux kernel, PROT_MTE may not be cleared by mprotect
-diff --git a/target/arm/internals.h b/target/arm/internals.h
-index e914227e55..bab3e89227 100644
---- a/target/arm/internals.h
-+++ b/target/arm/internals.h
-@@ -1067,6 +1067,7 @@ typedef struct ARMCacheAttrs {
-     unsigned int attrs:8;
-     unsigned int shareability:2; /* as in the SH field of the VMSAv8-64 PTEs */
-     bool is_s2_format:1;
-+    bool guarded:1;              /* guarded bit of the v8-64 PTE */
- } ARMCacheAttrs;
- 
- /* Fields that are valid upon success. */
 diff --git a/target/arm/ptw.c b/target/arm/ptw.c
-index dafbf71d00..69c22c039b 100644
+index 680139b478..5c6e5eea88 100644
 --- a/target/arm/ptw.c
 +++ b/target/arm/ptw.c
-@@ -1319,9 +1319,10 @@ static bool get_phys_addr_lpae(CPUARMState *env, uint64_t address,
-          */
-         result->f.attrs.secure = false;
+@@ -2171,8 +2171,7 @@ static uint8_t force_cacheattr_nibble_wb(uint8_t attr)
+  * s1 and s2 for the HCR_EL2.FWB == 1 case, returning the
+  * combined attributes in MAIR_EL1 format.
+  */
+-static uint8_t combined_attrs_fwb(CPUARMState *env,
+-                                  ARMCacheAttrs s1, ARMCacheAttrs s2)
++static uint8_t combined_attrs_fwb(ARMCacheAttrs s1, ARMCacheAttrs s2)
+ {
+     switch (s2.attrs) {
+     case 7:
+@@ -2245,7 +2244,7 @@ static ARMCacheAttrs combine_cacheattrs(CPUARMState *env,
+ 
+     /* Combine memory type and cacheability attributes */
+     if (arm_hcr_el2_eff(env) & HCR_FWB) {
+-        ret.attrs = combined_attrs_fwb(env, s1, s2);
++        ret.attrs = combined_attrs_fwb(s1, s2);
+     } else {
+         ret.attrs = combined_attrs_nofwb(env, s1, s2);
      }
--    /* When in aarch64 mode, and BTI is enabled, remember GP in the IOTLB.  */
--    if (aarch64 && guarded && cpu_isar_feature(aa64_bti, cpu)) {
--        arm_tlb_bti_gp(&result->f.attrs) = true;
-+
-+    /* When in aarch64 mode, and BTI is enabled, remember GP in the TLB.  */
-+    if (aarch64 && cpu_isar_feature(aa64_bti, cpu)) {
-+        result->f.guarded = guarded;
-     }
- 
-     if (mmu_idx == ARMMMUIdx_Stage2 || mmu_idx == ARMMMUIdx_Stage2_S) {
-diff --git a/target/arm/translate-a64.c b/target/arm/translate-a64.c
-index 305044a141..afabd77694 100644
---- a/target/arm/translate-a64.c
-+++ b/target/arm/translate-a64.c
-@@ -14611,22 +14611,16 @@ static bool is_guarded_page(CPUARMState *env, DisasContext *s)
- #ifdef CONFIG_USER_ONLY
-     return page_get_flags(addr) & PAGE_BTI;
- #else
-+    CPUTLBEntryFull *full;
-+    void *host;
-     int mmu_idx = arm_to_core_mmu_idx(s->mmu_idx);
--    unsigned int index = tlb_index(env, mmu_idx, addr);
--    CPUTLBEntry *entry = tlb_entry(env, mmu_idx, addr);
-+    int flags;
- 
--    /*
--     * We test this immediately after reading an insn, which means
--     * that any normal page must be in the TLB.  The only exception
--     * would be for executing from flash or device memory, which
--     * does not retain the TLB entry.
--     *
--     * FIXME: Assume false for those, for now.  We could use
--     * arm_cpu_get_phys_page_attrs_debug to re-read the page
--     * table entry even for that case.
--     */
--    return (tlb_hit(entry->addr_code, addr) &&
--            arm_tlb_bti_gp(&env_tlb(env)->d[mmu_idx].fulltlb[index].attrs));
-+    flags = probe_access_full(env, addr, MMU_INST_FETCH, mmu_idx,
-+                              false, &host, &full, 0);
-+    assert(!(flags & TLB_INVALID_MASK));
-+
-+    return full->guarded;
- #endif
- }
- 
 -- 
 2.34.1
 

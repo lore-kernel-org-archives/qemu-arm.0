@@ -1,105 +1,104 @@
-Received: by 2002:a17:906:9c0a:0:0:0:0 with SMTP id ff10csp1183432ejc;
-        Mon, 22 Aug 2022 16:26:44 -0700 (PDT)
-X-Google-Smtp-Source: AA6agR6HBmfCEjdUo8eMfJv9qMU8jiHnp/gyRTrrLV2HuewKUbMflrQI36rrtbU46nlLuZPLVYx5
-X-Received: by 2002:a05:620a:bcc:b0:6b8:60f0:f419 with SMTP id s12-20020a05620a0bcc00b006b860f0f419mr14440058qki.157.1661210804660;
-        Mon, 22 Aug 2022 16:26:44 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1661210804; cv=none;
+Received: by 2002:a17:906:9c0a:0:0:0:0 with SMTP id ff10csp1183604ejc;
+        Mon, 22 Aug 2022 16:27:17 -0700 (PDT)
+X-Google-Smtp-Source: AA6agR4aMLN9X6fMi+GHvZyOCM3ZeGlFl7w+ih4ZyeEQuJqPJJVg97pFHn45Othi+vrkQo6fr6lU
+X-Received: by 2002:a05:620a:4482:b0:6bb:c315:9597 with SMTP id x2-20020a05620a448200b006bbc3159597mr13331106qkp.423.1661210836844;
+        Mon, 22 Aug 2022 16:27:16 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1661210836; cv=none;
         d=google.com; s=arc-20160816;
-        b=dui0yr1fz+Wz7yo6kQNPHoGaesxCMR0dQX6JDUObSYzoF6Y5xpVYMbN5Ll5OUPD2Ir
-         o3UJ+LeeoAZQcYHE5vu/2IlaPO7Zy/yn3kgIPyyYiP4QjtK6YnHEypBgoXlRlChMmZoI
-         jf6drXyLxCoK356U0qXHfjR62bG0mQ5FYjfodoPVlSJE1GJE/mNvF5Q/uo7NFYGffy26
-         XAZ8FZX4DcBn0t/YlnYjj46RCfvwqtDu3ZRRE7licuZu1pcjFCwXGQCA5wHCpm1mbMAx
-         A3VkM4dArSvCqtsa40mHQRBBl9hcewecr2FKdHsuvW8GpQLA02s8M5V3fi9W2rFKShBQ
-         ahyA==
+        b=C/smgSkN6pl5tg/HQyOT/rpn1bzu7j27eLy5TxH7Otc6oJGv1pimYUxfHFJrfLwXyr
+         8PSBDPIGDKnfAItKH08GqvXWOznj3AakBns09fsLIURpc/vNAI2o5uozVywKalphVGYA
+         ESOHblL8Un++gWtv8KYwvwUYjsIZwN0xeUR0PUqRZQrAUG+QA6fk73tWBB7ujXqDITFI
+         874Z7E9et1xKjPdw6RNAcWNhSlxAHpUFNWrBe2J5OnN1AGzvfUvG8PPHHV4wkc3EFgPF
+         pdGTsG6uaNylPa8bxLaErZ51UWWDaRJkf9x7nKfg5hgs4plcpa5ni7DFcxjj9/vW4YeO
+         Gdkg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=tqkn/JG3p7hh15BhAIIM7TpuZb0gvOSNNm/i6FGCa5k=;
-        b=IP6xj91NxjF/sdujfl+KsuVGi8f/M6I+RCyQTzwbhSE52FHjcYWKIvi3hCM5e+ioQu
-         zItLbGmyvyXEQlrnZv0BQE2y+ZhwjfmpOaN9vyPKJMWF9BLJFVQzY3sundGw/er+efKP
-         lFCRwgNMDH7uBQ3Uk1R66uL+WYMd6yF/YDfVrGs+rRrspQFXxlSGRAOFbbBsMso/ZBFA
-         hg9Spkrx45LGR651Zfa7+sNPc1jVoTnFYP3DcMNWtV2q0NvRet84awJ3j1ZFWt3WYPFe
-         7Yc6vxtQXYdEJa1Lf193q6cZMi/CRwn2OA5lSN0CqOmOXI7WEo7iixpIv3UfNF+Uz+u6
-         VvNw==
+        bh=AjCZW8xJUb6I9643NCyfNU4X/BcXHb1WVao5dY2EkTM=;
+        b=JIgSZM79W3q8AorBZAU3bBAz8i539500Na47DaH/THalTgjo7cDuGaoxE2XYOUAFHG
+         +zl3Sxv8vX05595+8kUpjxfX/DCs4Zq+njopnhs4jPgpXMso5ejebazH4IBu9xuwoz1Q
+         NQ3kVj0jqnjjbRTMxvAVh7ar9s7mudUDA1TLRWwNKI3sa735ZGGUrzC4o3nBwM/kr7D0
+         6EgedRFl1vRtJ5/kDRqa9CgnDduO9uzc/L2BQF9CIoDqsEFl78hPhxvkzb38sJLXrB97
+         Tvuwmx8wzw1WH6xW71uGzNQE63vPGUdwdB5QAp+OCzUNXm42r+kHHD4hiQwXeS/BTxX3
+         0PKQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="V5gjnl/8";
+       dkim=pass header.i=@linaro.org header.s=google header.b="NeYEl/BZ";
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id f4-20020ac86ec4000000b003437a694feasi4760213qtv.91.2022.08.22.16.26.44
+        by mx.google.com with ESMTPS id iu10-20020ad45cca000000b00476b5b4f924si5852612qvb.359.2022.08.22.16.27.16
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 22 Aug 2022 16:26:44 -0700 (PDT)
+        Mon, 22 Aug 2022 16:27:16 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="V5gjnl/8";
+       dkim=pass header.i=@linaro.org header.s=google header.b="NeYEl/BZ";
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:58464 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:60430 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1oQGoe-00007p-2c
-	for alex.bennee@linaro.org; Mon, 22 Aug 2022 19:26:44 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:32866)
+	id 1oQGp9-0001I6-TQ
+	for alex.bennee@linaro.org; Mon, 22 Aug 2022 19:27:16 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:32856)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1oQGlu-0005fB-FV
- for qemu-devel@nongnu.org; Mon, 22 Aug 2022 19:23:54 -0400
-Received: from mail-pg1-x52f.google.com ([2607:f8b0:4864:20::52f]:41915)
+ id 1oQGls-0005e9-2v
+ for qemu-devel@nongnu.org; Mon, 22 Aug 2022 19:23:52 -0400
+Received: from mail-pf1-x42d.google.com ([2607:f8b0:4864:20::42d]:36694)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1oQGlq-0005cP-85
- for qemu-devel@nongnu.org; Mon, 22 Aug 2022 19:23:54 -0400
-Received: by mail-pg1-x52f.google.com with SMTP id 202so10747766pgc.8
- for <qemu-devel@nongnu.org>; Mon, 22 Aug 2022 16:23:49 -0700 (PDT)
+ id 1oQGlp-0005bl-0N
+ for qemu-devel@nongnu.org; Mon, 22 Aug 2022 19:23:51 -0400
+Received: by mail-pf1-x42d.google.com with SMTP id w29so6259763pfj.3
+ for <qemu-devel@nongnu.org>; Mon, 22 Aug 2022 16:23:47 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc;
- bh=tqkn/JG3p7hh15BhAIIM7TpuZb0gvOSNNm/i6FGCa5k=;
- b=V5gjnl/8ZVOuDEL7M+KJmYAgespi/skqzih9b3ZizYHyd6eaYbq9NOcCAiTw75xHj3
- umgDd4dv1RSzrKvpt6SCP2E63FTcoTr8tUGPKeCU1XKeSPGaAYUxYD3VW8KUC5vuhCvd
- sSYqSqeG99MwMS0CWhfWl6bZjcMecgo987qfsj2gAZY5+5yw84HsEtjfgv/0qcgQ21i9
- nXTl515X/RsPqm6Me2ZhcGquaS5OUmL1Vv9OfPx6wS2Sa0Fw2dhw53pBZpcqCSYduweZ
- 6BjD0C49cQsDpAKqGEvIHlGvjI8KSR6HIA2TvWHBwXNMtV4mC1qeyza+QzltDmwZcO5I
- 1SFA==
+ bh=AjCZW8xJUb6I9643NCyfNU4X/BcXHb1WVao5dY2EkTM=;
+ b=NeYEl/BZPxitThJ/V/A04QWeB/F6JR3iWjHGZcYQAHEmIAdBI+BRI65XnR0IRVPE/W
+ wJSH+7dkamnmy9SNJn3CiCRyhyJUNqNgy39Jul7xIokJ/tJ16iNlX215g9spCJogMMYT
+ b769fTGVjJmZDXo/NJdvTyXmrUAbZSu/Dhvk7jjh9eVmg3yr0zywhT0AZcvzciGECKIF
+ 026PvEtomWhweHPjkO0XWOllX0V6/NOQKUyHzt5D1mNooserebnZyL9SbCWTD8bd/WX2
+ RHnhKj+I54sTrDRWeGozlVQKxQdKUgHw1zd5oyE+Uo0m7y2fgqgsrT4O+GDRFzsKG6bb
+ xwNA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc;
- bh=tqkn/JG3p7hh15BhAIIM7TpuZb0gvOSNNm/i6FGCa5k=;
- b=slC6VLsGaiMYLG7TnWsxU+O9LOyd2rBWEQXqwdyoHkmetW/wyAWB0oMi7n7yMyrbl8
- 656sBhrSh/SiPnPXVWB2W2Xe/vO0IwDbr6hSolEtujPui6rBY5BgDMVGCWPwilJ66WDm
- xZifCdY4bPLL41y7bQES3h4i6C5ABqJtCXkQx2dXdPKly/kgMIOfcs1xNwqEyIXWR7uc
- Ujtm6puOQrakkhrBC05tYuWaVEPBd5BtZQEgowl595n9xbl5DROxj14eoouiUaThqRHZ
- lTFFk8/Cv4d91fDmmfiMYQPyIop5mKOdMRX6wkXa3ngpNH6LUBW8FjnF5tX1z+76Ub5J
- sTgg==
-X-Gm-Message-State: ACgBeo3kuj1qWZ05JchCfbF/D8fTJ8TAwvXce4v5nK65TcvhXv31kYqi
- 4ZG3nnA85nsJxYEOwXG+Q4NF0JaCx/CmSQ==
-X-Received: by 2002:a05:6a00:1aca:b0:52f:55f8:c3ec with SMTP id
- f10-20020a056a001aca00b0052f55f8c3ecmr22692315pfv.25.1661210629027; 
- Mon, 22 Aug 2022 16:23:49 -0700 (PDT)
+ bh=AjCZW8xJUb6I9643NCyfNU4X/BcXHb1WVao5dY2EkTM=;
+ b=3kN2MsxVWj2PFHjrs1PnvHtHk8HkfTT8bw0NSN2JnQCEuYt2FZy87p1Mqhyz+/NtWy
+ UnveLBlPLyS3KVmQFtZoRub6lw6HK0tq/6M9WSFtBqImlN8hvjO68Az91fnLI/YNkMBq
+ 8gOmfBKJw8wCLwP9lZFZy3Wjt0X+Cmul4n2Zd202zkb6KSenOi4/dne4a120o4MoIqgM
+ Ql8/mzy7gM5VQDXTbEjk/FZDtMcfZrgyW882yYnRtLvu1vnPvqifpcHLSXw3pHu3dWF1
+ HBRH+kyYjOXkbGd5XbXTVsQxFBLONDfEvgr/kin51vn+BK0yil8uzkwFCZFyjyHCBCMN
+ z5Rg==
+X-Gm-Message-State: ACgBeo33TX8T5jtgMG1/x4MatzW/8Z6z8tp9yx9RVWCuj53CAkFaMhhw
+ QA7+DI9zdMfiaEQcGAx2SyVUDfAWoiQ6ig==
+X-Received: by 2002:a05:6a00:1706:b0:52f:6f75:991b with SMTP id
+ h6-20020a056a00170600b0052f6f75991bmr22666237pfc.34.1661210626508; 
+ Mon, 22 Aug 2022 16:23:46 -0700 (PDT)
 Received: from stoup.. ([2602:47:d49d:ec01:c3f1:b74f:5edd:63af])
  by smtp.gmail.com with ESMTPSA id
- k17-20020aa79731000000b0052d3899f8c2sm3809112pfg.4.2022.08.22.16.23.48
+ k17-20020aa79731000000b0052d3899f8c2sm3809112pfg.4.2022.08.22.16.23.45
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 22 Aug 2022 16:23:48 -0700 (PDT)
+ Mon, 22 Aug 2022 16:23:45 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org
-Subject: [PATCH v3 08/17] accel/tcg: Split log_cpu_exec into inline and slow
- path
-Date: Mon, 22 Aug 2022 16:23:29 -0700
-Message-Id: <20220822232338.1727934-9-richard.henderson@linaro.org>
+Subject: [PATCH v3 06/17] accel/tcg: Introduce tb_pc and tb_pc_log
+Date: Mon, 22 Aug 2022 16:23:27 -0700
+Message-Id: <20220822232338.1727934-7-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20220822232338.1727934-1-richard.henderson@linaro.org>
 References: <20220822232338.1727934-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::52f;
- envelope-from=richard.henderson@linaro.org; helo=mail-pg1-x52f.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::42d;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x42d.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -121,65 +120,481 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 7L9AJEmRjXF6
+X-TUID: amSZ+5z6zAef
+
+The availability of tb->pc will shortly be conditional.
+Introduce accessor functions to minimize ifdefs.
 
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- accel/tcg/cpu-exec.c | 18 ++++++++++++------
- 1 file changed, 12 insertions(+), 6 deletions(-)
+ include/exec/exec-all.h                 | 12 ++++++++++
+ accel/tcg/cpu-exec.c                    | 20 ++++++++---------
+ accel/tcg/translate-all.c               | 29 +++++++++++++------------
+ target/arm/cpu.c                        |  4 ++--
+ target/avr/cpu.c                        |  2 +-
+ target/hexagon/cpu.c                    |  2 +-
+ target/hppa/cpu.c                       |  4 ++--
+ target/i386/tcg/tcg-cpu.c               |  2 +-
+ target/loongarch/cpu.c                  |  2 +-
+ target/microblaze/cpu.c                 |  2 +-
+ target/mips/tcg/exception.c             |  2 +-
+ target/mips/tcg/sysemu/special_helper.c |  2 +-
+ target/openrisc/cpu.c                   |  2 +-
+ target/riscv/cpu.c                      |  4 ++--
+ target/rx/cpu.c                         |  2 +-
+ target/sh4/cpu.c                        |  4 ++--
+ target/sparc/cpu.c                      |  2 +-
+ target/tricore/cpu.c                    |  2 +-
+ tcg/tcg.c                               |  6 ++---
+ 19 files changed, 59 insertions(+), 46 deletions(-)
 
-diff --git a/accel/tcg/cpu-exec.c b/accel/tcg/cpu-exec.c
-index 3fb7ce05f8..4dc0a9ec41 100644
---- a/accel/tcg/cpu-exec.c
-+++ b/accel/tcg/cpu-exec.c
-@@ -283,12 +283,11 @@ static inline TranslationBlock *tb_lookup(CPUState *cpu, target_ulong pc,
-     return tb;
- }
+diff --git a/include/exec/exec-all.h b/include/exec/exec-all.h
+index 4ad166966b..cec3ef1666 100644
+--- a/include/exec/exec-all.h
++++ b/include/exec/exec-all.h
+@@ -533,6 +533,18 @@ struct TranslationBlock {
+     uintptr_t jmp_dest[2];
+ };
  
--static inline void log_cpu_exec(target_ulong pc, CPUState *cpu,
--                                const TranslationBlock *tb)
-+static void log_cpu_exec1(CPUState *cpu, const TranslationBlock *tb)
- {
--    if (unlikely(qemu_loglevel_mask(CPU_LOG_TB_CPU | CPU_LOG_EXEC))
--        && qemu_log_in_addr_range(pc)) {
-+    target_ulong pc = tb_pc_log(tb);
- 
-+    if (qemu_log_in_addr_range(pc)) {
-         qemu_log_mask(CPU_LOG_EXEC,
-                       "Trace %d: %p [" TARGET_FMT_lx
-                       "/" TARGET_FMT_lx "/%08x/%08x] %s\n",
-@@ -315,6 +314,13 @@ static inline void log_cpu_exec(target_ulong pc, CPUState *cpu,
-     }
- }
- 
-+static inline void log_cpu_exec(CPUState *cpu, const TranslationBlock *tb)
++/* Hide the read to avoid ifdefs for TARGET_TB_PCREL. */
++static inline target_ulong tb_pc(const TranslationBlock *tb)
 +{
-+    if (unlikely(qemu_loglevel_mask(CPU_LOG_TB_CPU | CPU_LOG_EXEC))) {
-+        log_cpu_exec1(cpu, tb);
-+    }
++    return tb->pc;
 +}
 +
- static bool check_for_breakpoints(CPUState *cpu, target_ulong pc,
-                                   uint32_t *cflags)
++/* Similarly, but for logs. */
++static inline target_ulong tb_pc_log(const TranslationBlock *tb)
++{
++    return tb->pc;
++}
++
+ /* Hide the qatomic_read to make code a little easier on the eyes */
+ static inline uint32_t tb_cflags(const TranslationBlock *tb)
  {
-@@ -412,7 +418,7 @@ const void *HELPER(lookup_tb_ptr)(CPUArchState *env)
-         return tcg_code_gen_epilogue;
-     }
+diff --git a/accel/tcg/cpu-exec.c b/accel/tcg/cpu-exec.c
+index 3f8e4bbbc8..f146960b7b 100644
+--- a/accel/tcg/cpu-exec.c
++++ b/accel/tcg/cpu-exec.c
+@@ -185,7 +185,7 @@ static bool tb_lookup_cmp(const void *p, const void *d)
+     const TranslationBlock *tb = p;
+     const struct tb_desc *desc = d;
  
--    log_cpu_exec(pc, cpu, tb);
-+    log_cpu_exec(cpu, tb);
- 
-     return tb->tc.ptr;
- }
-@@ -435,7 +441,7 @@ cpu_tb_exec(CPUState *cpu, TranslationBlock *itb, int *tb_exit)
+-    if (tb->pc == desc->pc &&
++    if (tb_pc(tb) == desc->pc &&
+         tb->page_addr[0] == desc->page_addr0 &&
+         tb->cs_base == desc->cs_base &&
+         tb->flags == desc->flags &&
+@@ -413,7 +413,7 @@ cpu_tb_exec(CPUState *cpu, TranslationBlock *itb, int *tb_exit)
      TranslationBlock *last_tb;
      const void *tb_ptr = itb->tc.ptr;
  
--    log_cpu_exec(tb_pc_log(itb), cpu, itb);
-+    log_cpu_exec(cpu, itb);
+-    log_cpu_exec(itb->pc, cpu, itb);
++    log_cpu_exec(tb_pc_log(itb), cpu, itb);
  
      qemu_thread_jit_execute();
      ret = tcg_qemu_tb_exec(env, tb_ptr);
+@@ -437,16 +437,16 @@ cpu_tb_exec(CPUState *cpu, TranslationBlock *itb, int *tb_exit)
+          * of the start of the TB.
+          */
+         CPUClass *cc = CPU_GET_CLASS(cpu);
+-        qemu_log_mask_and_addr(CPU_LOG_EXEC, last_tb->pc,
++        qemu_log_mask_and_addr(CPU_LOG_EXEC, tb_pc_log(last_tb),
+                                "Stopped execution of TB chain before %p ["
+                                TARGET_FMT_lx "] %s\n",
+-                               last_tb->tc.ptr, last_tb->pc,
+-                               lookup_symbol(last_tb->pc));
++                               last_tb->tc.ptr, tb_pc_log(last_tb),
++                               lookup_symbol(tb_pc_log(last_tb)));
+         if (cc->tcg_ops->synchronize_from_tb) {
+             cc->tcg_ops->synchronize_from_tb(cpu, last_tb);
+         } else {
+             assert(cc->set_pc);
+-            cc->set_pc(cpu, last_tb->pc);
++            cc->set_pc(cpu, tb_pc(last_tb));
+         }
+     }
+ 
+@@ -588,11 +588,11 @@ static inline void tb_add_jump(TranslationBlock *tb, int n,
+ 
+     qemu_spin_unlock(&tb_next->jmp_lock);
+ 
+-    qemu_log_mask_and_addr(CPU_LOG_EXEC, tb->pc,
++    qemu_log_mask_and_addr(CPU_LOG_EXEC, tb_pc_log(tb),
+                            "Linking TBs %p [" TARGET_FMT_lx
+                            "] index %d -> %p [" TARGET_FMT_lx "]\n",
+-                           tb->tc.ptr, tb->pc, n,
+-                           tb_next->tc.ptr, tb_next->pc);
++                           tb->tc.ptr, tb_pc_log(tb), n,
++                           tb_next->tc.ptr, tb_pc_log(tb_next));
+     return;
+ 
+  out_unlock_next:
+@@ -842,7 +842,7 @@ static inline void cpu_loop_exec_tb(CPUState *cpu, TranslationBlock *tb,
+ {
+     int32_t insns_left;
+ 
+-    trace_exec_tb(tb, tb->pc);
++    trace_exec_tb(tb, tb_pc_log(tb));
+     tb = cpu_tb_exec(cpu, tb, tb_exit);
+     if (*tb_exit != TB_EXIT_REQUESTED) {
+         *last_tb = tb;
+diff --git a/accel/tcg/translate-all.c b/accel/tcg/translate-all.c
+index c2745f14a6..1248ee3433 100644
+--- a/accel/tcg/translate-all.c
++++ b/accel/tcg/translate-all.c
+@@ -298,7 +298,7 @@ static int encode_search(TranslationBlock *tb, uint8_t *block)
+ 
+         for (j = 0; j < TARGET_INSN_START_WORDS; ++j) {
+             if (i == 0) {
+-                prev = (j == 0 ? tb->pc : 0);
++                prev = (j == 0 ? tb_pc(tb) : 0);
+             } else {
+                 prev = tcg_ctx->gen_insn_data[i - 1][j];
+             }
+@@ -326,7 +326,7 @@ static int encode_search(TranslationBlock *tb, uint8_t *block)
+ static int cpu_restore_state_from_tb(CPUState *cpu, TranslationBlock *tb,
+                                      uintptr_t searched_pc, bool reset_icount)
+ {
+-    target_ulong data[TARGET_INSN_START_WORDS] = { tb->pc };
++    target_ulong data[TARGET_INSN_START_WORDS] = { tb_pc(tb) };
+     uintptr_t host_pc = (uintptr_t)tb->tc.ptr;
+     CPUArchState *env = cpu->env_ptr;
+     const uint8_t *p = tb->tc.ptr + tb->tc.size;
+@@ -884,7 +884,7 @@ static bool tb_cmp(const void *ap, const void *bp)
+     const TranslationBlock *a = ap;
+     const TranslationBlock *b = bp;
+ 
+-    return a->pc == b->pc &&
++    return tb_pc(a) == tb_pc(b) &&
+         a->cs_base == b->cs_base &&
+         a->flags == b->flags &&
+         (tb_cflags(a) & ~CF_INVALID) == (tb_cflags(b) & ~CF_INVALID) &&
+@@ -1012,9 +1012,10 @@ static void do_tb_invalidate_check(void *p, uint32_t hash, void *userp)
+     TranslationBlock *tb = p;
+     target_ulong addr = *(target_ulong *)userp;
+ 
+-    if (!(addr + TARGET_PAGE_SIZE <= tb->pc || addr >= tb->pc + tb->size)) {
++    if (!(addr + TARGET_PAGE_SIZE <= tb_pc(tb) ||
++          addr >= tb_pc(tb) + tb->size)) {
+         printf("ERROR invalidate: address=" TARGET_FMT_lx
+-               " PC=%08lx size=%04x\n", addr, (long)tb->pc, tb->size);
++               " PC=%08lx size=%04x\n", addr, (long)tb_pc(tb), tb->size);
+     }
+ }
+ 
+@@ -1033,11 +1034,11 @@ static void do_tb_page_check(void *p, uint32_t hash, void *userp)
+     TranslationBlock *tb = p;
+     int flags1, flags2;
+ 
+-    flags1 = page_get_flags(tb->pc);
+-    flags2 = page_get_flags(tb->pc + tb->size - 1);
++    flags1 = page_get_flags(tb_pc(tb));
++    flags2 = page_get_flags(tb_pc(tb) + tb->size - 1);
+     if ((flags1 & PAGE_WRITE) || (flags2 & PAGE_WRITE)) {
+         printf("ERROR page flags: PC=%08lx size=%04x f1=%x f2=%x\n",
+-               (long)tb->pc, tb->size, flags1, flags2);
++               (long)tb_pc(tb), tb->size, flags1, flags2);
+     }
+ }
+ 
+@@ -1168,7 +1169,7 @@ static void do_tb_phys_invalidate(TranslationBlock *tb, bool rm_from_page_list)
+ 
+     /* remove the TB from the hash list */
+     phys_pc = tb->page_addr[0];
+-    h = tb_hash_func(phys_pc, tb->pc, tb->flags, orig_cflags,
++    h = tb_hash_func(phys_pc, tb_pc(tb), tb->flags, orig_cflags,
+                      tb->trace_vcpu_dstate);
+     if (!qht_remove(&tb_ctx.htable, tb, h)) {
+         return;
+@@ -1299,7 +1300,7 @@ tb_link_page(TranslationBlock *tb, tb_page_addr_t phys_pc,
+     }
+ 
+     /* add in the hash table */
+-    h = tb_hash_func(phys_pc, tb->pc, tb->flags, tb->cflags,
++    h = tb_hash_func(phys_pc, tb_pc(tb), tb->flags, tb->cflags,
+                      tb->trace_vcpu_dstate);
+     qht_insert(&tb_ctx.htable, tb, h, &existing_tb);
+ 
+@@ -1399,7 +1400,7 @@ TranslationBlock *tb_gen_code(CPUState *cpu,
+     tcg_ctx->cpu = NULL;
+     max_insns = tb->icount;
+ 
+-    trace_translate_block(tb, tb->pc, tb->tc.ptr);
++    trace_translate_block(tb, tb_pc_log(tb), tb->tc.ptr);
+ 
+     /* generate machine code */
+     tb->jmp_reset_offset[0] = TB_JMP_RESET_OFFSET_INVALID;
+@@ -1476,7 +1477,7 @@ TranslationBlock *tb_gen_code(CPUState *cpu,
+ 
+ #ifdef DEBUG_DISAS
+     if (qemu_loglevel_mask(CPU_LOG_TB_OUT_ASM) &&
+-        qemu_log_in_addr_range(tb->pc)) {
++        qemu_log_in_addr_range(tb_pc_log(tb))) {
+         FILE *logfile = qemu_log_trylock();
+         if (logfile) {
+             int code_size, data_size;
+@@ -1916,9 +1917,9 @@ void cpu_io_recompile(CPUState *cpu, uintptr_t retaddr)
+      */
+     cpu->cflags_next_tb = curr_cflags(cpu) | CF_MEMI_ONLY | CF_LAST_IO | n;
+ 
+-    qemu_log_mask_and_addr(CPU_LOG_EXEC, tb->pc,
++    qemu_log_mask_and_addr(CPU_LOG_EXEC, tb_pc_log(tb),
+                            "cpu_io_recompile: rewound execution of TB to "
+-                           TARGET_FMT_lx "\n", tb->pc);
++                           TARGET_FMT_lx "\n", tb_pc_log(tb));
+ 
+     cpu_loop_exit_noexc(cpu);
+ }
+diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+index 7ec3281da9..047bf3f4ab 100644
+--- a/target/arm/cpu.c
++++ b/target/arm/cpu.c
+@@ -72,9 +72,9 @@ void arm_cpu_synchronize_from_tb(CPUState *cs,
+      * never possible for an AArch64 TB to chain to an AArch32 TB.
+      */
+     if (is_a64(env)) {
+-        env->pc = tb->pc;
++        env->pc = tb_pc(tb);
+     } else {
+-        env->regs[15] = tb->pc;
++        env->regs[15] = tb_pc(tb);
+     }
+ }
+ #endif /* CONFIG_TCG */
+diff --git a/target/avr/cpu.c b/target/avr/cpu.c
+index 05b992ff73..6ebef62b4c 100644
+--- a/target/avr/cpu.c
++++ b/target/avr/cpu.c
+@@ -47,7 +47,7 @@ static void avr_cpu_synchronize_from_tb(CPUState *cs,
+     AVRCPU *cpu = AVR_CPU(cs);
+     CPUAVRState *env = &cpu->env;
+ 
+-    env->pc_w = tb->pc / 2; /* internally PC points to words */
++    env->pc_w = tb_pc(tb) / 2; /* internally PC points to words */
+ }
+ 
+ static void avr_cpu_reset(DeviceState *ds)
+diff --git a/target/hexagon/cpu.c b/target/hexagon/cpu.c
+index fa9bd702d6..6289a6e64a 100644
+--- a/target/hexagon/cpu.c
++++ b/target/hexagon/cpu.c
+@@ -256,7 +256,7 @@ static void hexagon_cpu_synchronize_from_tb(CPUState *cs,
+ {
+     HexagonCPU *cpu = HEXAGON_CPU(cs);
+     CPUHexagonState *env = &cpu->env;
+-    env->gpr[HEX_REG_PC] = tb->pc;
++    env->gpr[HEX_REG_PC] = tb_pc(tb);
+ }
+ 
+ static bool hexagon_cpu_has_work(CPUState *cs)
+diff --git a/target/hppa/cpu.c b/target/hppa/cpu.c
+index a6f52caf14..fc9d43f620 100644
+--- a/target/hppa/cpu.c
++++ b/target/hppa/cpu.c
+@@ -42,7 +42,7 @@ static void hppa_cpu_synchronize_from_tb(CPUState *cs,
+     HPPACPU *cpu = HPPA_CPU(cs);
+ 
+ #ifdef CONFIG_USER_ONLY
+-    cpu->env.iaoq_f = tb->pc;
++    cpu->env.iaoq_f = tb_pc(tb);
+     cpu->env.iaoq_b = tb->cs_base;
+ #else
+     /* Recover the IAOQ values from the GVA + PRIV.  */
+@@ -52,7 +52,7 @@ static void hppa_cpu_synchronize_from_tb(CPUState *cs,
+     int32_t diff = cs_base;
+ 
+     cpu->env.iasq_f = iasq_f;
+-    cpu->env.iaoq_f = (tb->pc & ~iasq_f) + priv;
++    cpu->env.iaoq_f = (tb_pc(tb) & ~iasq_f) + priv;
+     if (diff) {
+         cpu->env.iaoq_b = cpu->env.iaoq_f + diff;
+     }
+diff --git a/target/i386/tcg/tcg-cpu.c b/target/i386/tcg/tcg-cpu.c
+index 6fdfdf9598..76989a5a9d 100644
+--- a/target/i386/tcg/tcg-cpu.c
++++ b/target/i386/tcg/tcg-cpu.c
+@@ -51,7 +51,7 @@ static void x86_cpu_synchronize_from_tb(CPUState *cs,
+ {
+     X86CPU *cpu = X86_CPU(cs);
+ 
+-    cpu->env.eip = tb->pc - tb->cs_base;
++    cpu->env.eip = tb_pc(tb) - tb->cs_base;
+ }
+ 
+ #ifndef CONFIG_USER_ONLY
+diff --git a/target/loongarch/cpu.c b/target/loongarch/cpu.c
+index 941e2772bc..262ddfb51c 100644
+--- a/target/loongarch/cpu.c
++++ b/target/loongarch/cpu.c
+@@ -309,7 +309,7 @@ static void loongarch_cpu_synchronize_from_tb(CPUState *cs,
+     LoongArchCPU *cpu = LOONGARCH_CPU(cs);
+     CPULoongArchState *env = &cpu->env;
+ 
+-    env->pc = tb->pc;
++    env->pc = tb_pc(tb);
+ }
+ #endif /* CONFIG_TCG */
+ 
+diff --git a/target/microblaze/cpu.c b/target/microblaze/cpu.c
+index aed200dcff..5a642db285 100644
+--- a/target/microblaze/cpu.c
++++ b/target/microblaze/cpu.c
+@@ -89,7 +89,7 @@ static void mb_cpu_synchronize_from_tb(CPUState *cs,
+ {
+     MicroBlazeCPU *cpu = MICROBLAZE_CPU(cs);
+ 
+-    cpu->env.pc = tb->pc;
++    cpu->env.pc = tb_pc(tb);
+     cpu->env.iflags = tb->flags & IFLAGS_TB_MASK;
+ }
+ 
+diff --git a/target/mips/tcg/exception.c b/target/mips/tcg/exception.c
+index 2bd77a61de..96e61170e6 100644
+--- a/target/mips/tcg/exception.c
++++ b/target/mips/tcg/exception.c
+@@ -82,7 +82,7 @@ void mips_cpu_synchronize_from_tb(CPUState *cs, const TranslationBlock *tb)
+     MIPSCPU *cpu = MIPS_CPU(cs);
+     CPUMIPSState *env = &cpu->env;
+ 
+-    env->active_tc.PC = tb->pc;
++    env->active_tc.PC = tb_pc(tb);
+     env->hflags &= ~MIPS_HFLAG_BMASK;
+     env->hflags |= tb->flags & MIPS_HFLAG_BMASK;
+ }
+diff --git a/target/mips/tcg/sysemu/special_helper.c b/target/mips/tcg/sysemu/special_helper.c
+index f4f8fe8afc..3c5f35c759 100644
+--- a/target/mips/tcg/sysemu/special_helper.c
++++ b/target/mips/tcg/sysemu/special_helper.c
+@@ -94,7 +94,7 @@ bool mips_io_recompile_replay_branch(CPUState *cs, const TranslationBlock *tb)
+     CPUMIPSState *env = &cpu->env;
+ 
+     if ((env->hflags & MIPS_HFLAG_BMASK) != 0
+-        && env->active_tc.PC != tb->pc) {
++        && env->active_tc.PC != tb_pc(tb)) {
+         env->active_tc.PC -= (env->hflags & MIPS_HFLAG_B16 ? 2 : 4);
+         env->hflags &= ~MIPS_HFLAG_BMASK;
+         return true;
+diff --git a/target/openrisc/cpu.c b/target/openrisc/cpu.c
+index 41d1b2a24a..10ea952ff2 100644
+--- a/target/openrisc/cpu.c
++++ b/target/openrisc/cpu.c
+@@ -36,7 +36,7 @@ static void openrisc_cpu_synchronize_from_tb(CPUState *cs,
+ {
+     OpenRISCCPU *cpu = OPENRISC_CPU(cs);
+ 
+-    cpu->env.pc = tb->pc;
++    cpu->env.pc = tb_pc(tb);
+ }
+ 
+ 
+diff --git a/target/riscv/cpu.c b/target/riscv/cpu.c
+index ac6f82ebd0..8cb9428a80 100644
+--- a/target/riscv/cpu.c
++++ b/target/riscv/cpu.c
+@@ -397,9 +397,9 @@ static void riscv_cpu_synchronize_from_tb(CPUState *cs,
+     RISCVMXL xl = FIELD_EX32(tb->flags, TB_FLAGS, XL);
+ 
+     if (xl == MXL_RV32) {
+-        env->pc = (int32_t)tb->pc;
++        env->pc = (int32_t)tb_pc(tb);
+     } else {
+-        env->pc = tb->pc;
++        env->pc = tb_pc(tb);
+     }
+ }
+ 
+diff --git a/target/rx/cpu.c b/target/rx/cpu.c
+index fb30080ac4..f1e0008e04 100644
+--- a/target/rx/cpu.c
++++ b/target/rx/cpu.c
+@@ -37,7 +37,7 @@ static void rx_cpu_synchronize_from_tb(CPUState *cs,
+ {
+     RXCPU *cpu = RX_CPU(cs);
+ 
+-    cpu->env.pc = tb->pc;
++    cpu->env.pc = tb_pc(tb);
+ }
+ 
+ static bool rx_cpu_has_work(CPUState *cs)
+diff --git a/target/sh4/cpu.c b/target/sh4/cpu.c
+index 06b2691dc4..6948c8fa33 100644
+--- a/target/sh4/cpu.c
++++ b/target/sh4/cpu.c
+@@ -39,7 +39,7 @@ static void superh_cpu_synchronize_from_tb(CPUState *cs,
+ {
+     SuperHCPU *cpu = SUPERH_CPU(cs);
+ 
+-    cpu->env.pc = tb->pc;
++    cpu->env.pc = tb_pc(tb);
+     cpu->env.flags = tb->flags & TB_FLAG_ENVFLAGS_MASK;
+ }
+ 
+@@ -51,7 +51,7 @@ static bool superh_io_recompile_replay_branch(CPUState *cs,
+     CPUSH4State *env = &cpu->env;
+ 
+     if ((env->flags & ((DELAY_SLOT | DELAY_SLOT_CONDITIONAL))) != 0
+-        && env->pc != tb->pc) {
++        && env->pc != tb_pc(tb)) {
+         env->pc -= 2;
+         env->flags &= ~(DELAY_SLOT | DELAY_SLOT_CONDITIONAL);
+         return true;
+diff --git a/target/sparc/cpu.c b/target/sparc/cpu.c
+index 55268ed2a1..0471c2fe5a 100644
+--- a/target/sparc/cpu.c
++++ b/target/sparc/cpu.c
+@@ -698,7 +698,7 @@ static void sparc_cpu_synchronize_from_tb(CPUState *cs,
+ {
+     SPARCCPU *cpu = SPARC_CPU(cs);
+ 
+-    cpu->env.pc = tb->pc;
++    cpu->env.pc = tb_pc(tb);
+     cpu->env.npc = tb->cs_base;
+ }
+ 
+diff --git a/target/tricore/cpu.c b/target/tricore/cpu.c
+index b95682b7f0..35f3347add 100644
+--- a/target/tricore/cpu.c
++++ b/target/tricore/cpu.c
+@@ -47,7 +47,7 @@ static void tricore_cpu_synchronize_from_tb(CPUState *cs,
+     TriCoreCPU *cpu = TRICORE_CPU(cs);
+     CPUTriCoreState *env = &cpu->env;
+ 
+-    env->PC = tb->pc;
++    env->PC = tb_pc(tb);
+ }
+ 
+ static void tricore_cpu_reset(DeviceState *dev)
+diff --git a/tcg/tcg.c b/tcg/tcg.c
+index 0f9cfe96f2..11bdb96dd1 100644
+--- a/tcg/tcg.c
++++ b/tcg/tcg.c
+@@ -4218,7 +4218,7 @@ int tcg_gen_code(TCGContext *s, TranslationBlock *tb)
+ 
+ #ifdef DEBUG_DISAS
+     if (unlikely(qemu_loglevel_mask(CPU_LOG_TB_OP)
+-                 && qemu_log_in_addr_range(tb->pc))) {
++                 && qemu_log_in_addr_range(tb_pc_log(tb)))) {
+         FILE *logfile = qemu_log_trylock();
+         if (logfile) {
+             fprintf(logfile, "OP:\n");
+@@ -4265,7 +4265,7 @@ int tcg_gen_code(TCGContext *s, TranslationBlock *tb)
+     if (s->nb_indirects > 0) {
+ #ifdef DEBUG_DISAS
+         if (unlikely(qemu_loglevel_mask(CPU_LOG_TB_OP_IND)
+-                     && qemu_log_in_addr_range(tb->pc))) {
++                     && qemu_log_in_addr_range(tb_pc_log(tb)))) {
+             FILE *logfile = qemu_log_trylock();
+             if (logfile) {
+                 fprintf(logfile, "OP before indirect lowering:\n");
+@@ -4288,7 +4288,7 @@ int tcg_gen_code(TCGContext *s, TranslationBlock *tb)
+ 
+ #ifdef DEBUG_DISAS
+     if (unlikely(qemu_loglevel_mask(CPU_LOG_TB_OP_OPT)
+-                 && qemu_log_in_addr_range(tb->pc))) {
++                 && qemu_log_in_addr_range(tb_pc_log(tb)))) {
+         FILE *logfile = qemu_log_trylock();
+         if (logfile) {
+             fprintf(logfile, "OP after optimization and liveness analysis:\n");
 -- 
 2.34.1
 

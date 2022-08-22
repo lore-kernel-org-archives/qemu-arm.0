@@ -1,240 +1,245 @@
-Received: by 2002:a17:906:9c0a:0:0:0:0 with SMTP id ff10csp169885ejc;
-        Sat, 20 Aug 2022 17:05:35 -0700 (PDT)
-X-Received: by 2002:a65:6854:0:b0:41c:feab:e17c with SMTP id q20-20020a656854000000b0041cfeabe17cmr11713591pgt.256.1661040334876;
-        Sat, 20 Aug 2022 17:05:34 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1661040334; cv=none;
+Received: by 2002:a17:906:9c0a:0:0:0:0 with SMTP id ff10csp908355ejc;
+        Mon, 22 Aug 2022 06:24:37 -0700 (PDT)
+X-Google-Smtp-Source: AA6agR6pRb5A+GS1WfLgOzxJLD0jMNCOiiXroDhqKXp+w4aHl4Iqo8VROEHSvrqUZI96pb6Z4v1q
+X-Received: by 2002:a05:6214:2685:b0:477:1d22:f017 with SMTP id gm5-20020a056214268500b004771d22f017mr15990484qvb.96.1661174677426;
+        Mon, 22 Aug 2022 06:24:37 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1661174677; cv=none;
         d=google.com; s=arc-20160816;
-        b=nBKo8jeuOcNkynPkfAd6fZgNcZAHl4b7kcbW0EqwPOagt6dq7OUFb+69Wv/W2DYKeT
-         5MwIKRUrAGXWxrmXVzPHgFTShRSeK/CFNdhrI9Lt6P8KKt402L4dGxpv10Atf/oImdEm
-         zVnRGjKSOUN5AKIvb8T4e9pF9kZ5i8GVYHArOBhv6d9DFVb6Uh4+q888LdVBqlidFUFU
-         hlDD/4/nWZ0eSqejJqGKb7Xf872mOLGzGtPo9K4Gp2nLD855znWUV0LdHSaLpd9ROguE
-         7c5UIapu5ZmMvo/AidRRMmcPTL+SrhFLzuV09w0joehCw7x+RdX8x+CRVVPrKzG9E7xJ
-         8Dxw==
+        b=K8xq846aeQm3cjG1qvSlNNsXSRwx4v0jRK299tQbyskjJ4UcDv0rEyD2ejJhds3Ged
+         N7Z+CvkI1O0YxdCjich2PoUvA9zs1BZBDZ97xAxKKAGNa1fvfx1P+InSpnfTxWAIpD4K
+         PXeTcL16CYjr85VRY/4D5wVQVY1cmCNVC3y6c2pZFBlsJKwLfeRA8MSW4wQWYxGkzNFt
+         wYoiNrOnQeNwwNqKFE9Pz57aLY6kKC1xLifpXEdfkB16tODrRq9HSNONfOviyZ8gj1nP
+         fVJZfVJlE1zU7m9VhDjOV3qXOZwdUExsf99gvtVghW0IG+elp5XiUhQlSX9tbrWHIeUl
+         czvA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:dkim-signature;
-        bh=fhdD+8huK/AI0ib7AI2ZisCth7sYg+srtwh5O8IUBBo=;
-        b=wrxxSTrFzzWukhUAU0xtA1pSb9S4qBmeQsfGGnnxjUzf+0+OP1XhA9YjVBG0YtNiiB
-         zn7oY+baN1/ZbWUBWBziCZ6lZzh7vWy+33UhJ7eBiA2N48Hg9SR+Fb+rwBMglj+Y6i6C
-         bhV2bdR8eqHQ0D9+IZoA/bewrrL4FOAlkF3IXuYY/vTT04UdVHY7qjqkUwgNc+vsZq8O
-         MAjiu6uEyA1TpUwnzhVcK0d7PvomeOny8i7X6MiBnxSnt5V3ALnhmoh69sfDixvn30wd
-         SaaNH6XF5Hi+Oens93WZHijq7ekV1PVtDGioCMRnknjQXWjI6Msm55xdc+UiVb5ltpaJ
-         FBYQ==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=z3HMTNdAubSdARHZ1TYHyaaRh8yZaKl7eKMF8WGzqZY=;
+        b=Poel7jwTWzDaJOpf/exz0Bot8hvYymTvzkP5zAM30dlij0GHyD1peWH1pQWmzQikd3
+         h4x3Ep+3NTurxK5TzewxCPd/szJNCBDDpy3sVmJa4rX7df49u83mf4zIHbtZIzLzbKUJ
+         sDrIZbZ1YyEsqvgLdeRtz0SattAf3ddJLJnPNsYQ3zfdrtAxt/rR9uJvb5G4LMiBHyi3
+         WE7in//EEZ9JaSjZAsSF1jCoXtyOks/2MPOcU/MD4dfkdMwPTezcfr1NkRgqvCdaLID+
+         Ct30ATr6sjJwCHkofQg+d5fBgT9CcgDChCLr85K16tqjQCrkmOdmyCRDqnoVI8rpNxp+
+         4dQw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=N19b0Z3r;
-       spf=pass (google.com: domain of shinysaana@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=shinysaana@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <shinysaana@gmail.com>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id bi4-20020a170902bf0400b0016d2c16aac2sor3403079plb.166.2022.08.20.17.05.34
-        (Google Transport Security);
-        Sat, 20 Aug 2022 17:05:34 -0700 (PDT)
-Received-SPF: pass (google.com: domain of shinysaana@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+       dkim=pass header.i=@linaro.org header.s=google header.b=MQ9ppO9M;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id iy5-20020a0562140f6500b004957b1a3733si5236259qvb.77.2022.08.22.06.24.37
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Mon, 22 Aug 2022 06:24:37 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=N19b0Z3r;
-       spf=pass (google.com: domain of shinysaana@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=shinysaana@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc;
-        bh=fhdD+8huK/AI0ib7AI2ZisCth7sYg+srtwh5O8IUBBo=;
-        b=N19b0Z3rzJp7pKE+UeV5dtlYPMTNxqPJBKoFaQHI7G0FHXc7RqGiWgsP3N8wM5PGj0
-         o5LexKiGrAlXMv8n0pHUxfYRMK+D/tQhZ4qSUbwNEYV1brncn4hWT3xujBH4mv78rk23
-         bOL/oC5pb1yJwmlKEtbuPfMyEk8zyZYIpV6MprHVnJ4IQZK8GuSQO5a/YQaOXG8ZiCTQ
-         b3m1nYQH7/5VarfsTTRqg7KaUF2PR6ogRkk7cKIoSmO2I3A+8hxzk3jNk66xwPZKv2K+
-         CWJz4Z4z3yyHRPh7/fbp8XqbGSHrRReC+r0xZ8LkkGoQN/4pQHpTROcuIVZVetVE037f
-         TQuA==
+       dkim=pass header.i=@linaro.org header.s=google header.b=MQ9ppO9M;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:52576 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1oQ7Pw-0006iU-SU
+	for alex.bennee@linaro.org; Mon, 22 Aug 2022 09:24:36 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:58698)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1oQ7PT-0005vQ-6Y
+ for qemu-arm@nongnu.org; Mon, 22 Aug 2022 09:24:07 -0400
+Received: from mail-wr1-x42f.google.com ([2a00:1450:4864:20::42f]:37854)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1oQ7PR-0001eI-DF
+ for qemu-arm@nongnu.org; Mon, 22 Aug 2022 09:24:06 -0400
+Received: by mail-wr1-x42f.google.com with SMTP id n7so13207166wrv.4
+ for <qemu-arm@nongnu.org>; Mon, 22 Aug 2022 06:24:04 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc;
+ bh=z3HMTNdAubSdARHZ1TYHyaaRh8yZaKl7eKMF8WGzqZY=;
+ b=MQ9ppO9Ms9TeebGs/EekuZ2lsw2d6OfTduf681AxJpve90Ynzgl4CBdNnrZKe042kH
+ 49aJehOGKUK6/23dbUFkV7ziChCrFISIVCsiOsw4Bcwb889DYGSFl5WmyeDO2ZC6D6Cy
+ yJkPNTFLjn2J2FYgfKhPs/P7zOczgHT9lx9HFqp/cZUjnqIdBovP7zRKo4iJEajH2pp8
+ TP7lNbuZsAIOQzCQmhkSLtza/bOD+W2pFHBlX67DKicbd/fXla0Ltk1XAwGmUTj7MUZQ
+ ItGWV2zxgyeu8hyqfabbaw2AaiDv2Saew8NPHiX2KZPokU8WAmFcdT0qCT7qM0ZfszoZ
+ DwkQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc;
-        bh=fhdD+8huK/AI0ib7AI2ZisCth7sYg+srtwh5O8IUBBo=;
-        b=MPLoq+tLHN2k4yfIEcr65HYzx1Q0O+gDwngPswRI1By3k24YLshNjGM3lTU2IwKqvr
-         zFCtM61EDgUe8ODZV4Iwf7Ysf3gC2jGt4WA345qh+GKvdhC0YQh16ACGDkLz7FOgppWZ
-         oowQMxQim+nSnYXJ3NwTYnVQ+B0sOg6z9xSVukEXUszoS8J2E/MYTIo3Br+C5HinxLbj
-         aIrrH4cbcMuHX7TrNfkSLfUV/Gu7a+W9U3CFPVhH56cFGpmlIRrNmX85pRP4km6GKMMc
-         QLujxHH4hUuv3IigcNM2Rg+Fx72o94VSvQJhRp/kfd0Wo1x+UUHfLbMyfaozrpKTUIs4
-         /7eg==
-X-Gm-Message-State: ACgBeo3VWtQXhxZYwXPPjSNi2sqxf4/ww9SxgR+xGddpM7+VNREiUd7b
-	uoZK83tEJgOaggYFT75/+tzisKchm7owHgkZc+uHHhSp
-X-Google-Smtp-Source: AA6agR5IRhVuTPXdSTDVWGRFpb5GMXO2dk/g8MPHf1lHo79KkW8W9Lndz3KnXXgDoyhw9SYnFRZTtigzk2JUHhvW4kE=
-X-Received: by 2002:a17:902:f54a:b0:16f:16bb:778e with SMTP id
- h10-20020a170902f54a00b0016f16bb778emr13560824plf.37.1661040333759; Sat, 20
- Aug 2022 17:05:33 -0700 (PDT)
-MIME-Version: 1.0
-References: <CAJtCPL0rRU9Q=s6kUFDHjC5uUmx2w=ePYMMaib6vq57g48qk0Q@mail.gmail.com>
- <CAFEAcA81OfC_Z_uQvrSRUKHQf4mmOgbLrHYiwsfzmgH8u8sUqg@mail.gmail.com>
- <CAJtCPL3yNpNkK0Ljzo=QOFX_gLQtGGcqDoomwJ+RH0hq5G=YQA@mail.gmail.com>
- <87r11gbjbv.fsf@linaro.org> <CAFEAcA-6X=ptfDXGWA79-L9kRCQRq6jtci7ODPy0Ct369_EvCA@mail.gmail.com>
-In-Reply-To: <CAFEAcA-6X=ptfDXGWA79-L9kRCQRq6jtci7ODPy0Ct369_EvCA@mail.gmail.com>
-From: Shiny Saana <shinysaana@gmail.com>
-Date: Sun, 21 Aug 2022 02:05:22 +0200
-Message-ID: <CAJtCPL3Hef3d6sDA+pYJ6xChHS7y1J+2Cn9qf1NT0hwaBT8iTg@mail.gmail.com>
-Subject: Re: Teensy 4.1 Implementation
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, qemu-arm@nongnu.org, 
+ d=1e100.net; s=20210112;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc;
+ bh=z3HMTNdAubSdARHZ1TYHyaaRh8yZaKl7eKMF8WGzqZY=;
+ b=QDOwHSbHzF88Xn6kkwss3xvvPqCqcPkawdl/i2MvtItNZODnBGod8l1Z28yiZMQEwQ
+ BICQs31AeoGTaWZJQ36RQsGapX7IxplQ48KCQo0CEV2WSrM0db/nD2/HNJxGKfm2I8qh
+ 2MQvEteoUvZ2sK9iXf8GTO2wZKCjb/V5IREhWVnjYv1yOYfacvpm903oPE8r9qC4MGa5
+ BZn0Ex+V/PjaM1qyQquaiJO1PTiotV5kRbC6JOydo9bHbPa3FB6A2hiMWtHqq5uYhESx
+ zJbMEVhEGk1dN5vAegN6/zoSY9jSRiT6mHVdYWHa95aIWNkSNN3l0jP6aWneW6kFRjNE
+ +B4g==
+X-Gm-Message-State: ACgBeo3QGLs1eK1prW2Llmr/AfUHZksMrl8Sv2bpiybvHFMBAwX/YB2M
+ LEjG5kkJc+rLezNKRP51LqHMr1f+8IltTg==
+X-Received: by 2002:adf:d4c6:0:b0:225:2eeb:fe8e with SMTP id
+ w6-20020adfd4c6000000b002252eebfe8emr10544266wrk.429.1661174643880; 
+ Mon, 22 Aug 2022 06:24:03 -0700 (PDT)
+Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
+ by smtp.gmail.com with ESMTPSA id
+ f12-20020adff98c000000b0021f13097d6csm11527946wrr.16.2022.08.22.06.24.02
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 22 Aug 2022 06:24:03 -0700 (PDT)
+From: Peter Maydell <peter.maydell@linaro.org>
+To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Content-Type: multipart/alternative; boundary="0000000000000d289805e6b517e1"
-X-TUID: 0uZgXpXa49/X
+Cc: Richard Henderson <richard.henderson@linaro.org>
+Subject: [PATCH v2 03/10] target/arm: Don't mishandle count when enabling or
+ disabling PMU counters
+Date: Mon, 22 Aug 2022 14:23:51 +0100
+Message-Id: <20220822132358.3524971-4-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20220822132358.3524971-1-peter.maydell@linaro.org>
+References: <20220822132358.3524971-1-peter.maydell@linaro.org>
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::42f;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x42f.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: lgJUJ2bE2djs
 
---0000000000000d289805e6b517e1
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+The PMU cycle and event counter infrastructure design requires that
+operations on the PMU register fields are wrapped in pmu_op_start()
+and pmu_op_finish() calls (or their more specific pmmcntr and
+pmevcntr equivalents).  This includes any changes to registers which
+affect whether the counter should be enabled or disabled, but we
+forgot to do this.
 
-Hello!
+The effect of this bug is that in sequences like:
+ * disable the cycle counter (PMCCNTR) using the PMCNTEN register
+ * write a value such as 0xfffff000 to the PMCCNTR
+ * restart the counter by writing to PMCNTEN
+the value written to the cycle counter is corrupted, and it starts
+counting from the wrong place. (Essentially, we fail to record that
+the QEMU_CLOCK_VIRTUAL timestamp when the counter should be considered
+to have started counting is the point when PMCNTEN is written to enable
+the counter.)
 
-Thank you all again for your initial guidance.
+Add the necessary bracketing calls, so that updates to the various
+registers which affect whether the PMU is counting are handled
+correctly.
 
-I've been able to write an initial Teensy 4.1 machine, for now with only
-the few important memory regions initialized, and successfully ran some
-hand-written ARM code on it.
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+---
+v1->v2: fixed comment typo
+---
+ target/arm/helper.c | 45 +++++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 45 insertions(+)
 
-I was wondering what your opinions might be for implementing the next step,
-which in my opinion should be bootstrapping a "kernel" in the format the
-board actually expects. This is however the current roadblock I am hitting.
+diff --git a/target/arm/helper.c b/target/arm/helper.c
+index 87c89748954..59e1280a9cd 100644
+--- a/target/arm/helper.c
++++ b/target/arm/helper.c
+@@ -1079,6 +1079,14 @@ static CPAccessResult pmreg_access_ccntr(CPUARMState *env,
+     return pmreg_access(env, ri, isread);
+ }
+ 
++/*
++ * Bits in MDCR_EL2 and MDCR_EL3 which pmu_counter_enabled() looks at.
++ * We use these to decide whether we need to wrap a write to MDCR_EL2
++ * or MDCR_EL3 in pmu_op_start()/pmu_op_finish() calls.
++ */
++#define MDCR_EL2_PMU_ENABLE_BITS (MDCR_HPME | MDCR_HPMD | MDCR_HPMN)
++#define MDCR_EL3_PMU_ENABLE_BITS (MDCR_SPME)
++
+ /* Returns true if the counter (pass 31 for PMCCNTR) should count events using
+  * the current EL, security state, and register configuration.
+  */
+@@ -1432,15 +1440,19 @@ static uint64_t pmccfiltr_read_a32(CPUARMState *env, const ARMCPRegInfo *ri)
+ static void pmcntenset_write(CPUARMState *env, const ARMCPRegInfo *ri,
+                             uint64_t value)
+ {
++    pmu_op_start(env);
+     value &= pmu_counter_mask(env);
+     env->cp15.c9_pmcnten |= value;
++    pmu_op_finish(env);
+ }
+ 
+ static void pmcntenclr_write(CPUARMState *env, const ARMCPRegInfo *ri,
+                              uint64_t value)
+ {
++    pmu_op_start(env);
+     value &= pmu_counter_mask(env);
+     env->cp15.c9_pmcnten &= ~value;
++    pmu_op_finish(env);
+ }
+ 
+ static void pmovsr_write(CPUARMState *env, const ARMCPRegInfo *ri,
+@@ -4681,7 +4693,39 @@ static void sctlr_write(CPUARMState *env, const ARMCPRegInfo *ri,
+ static void sdcr_write(CPUARMState *env, const ARMCPRegInfo *ri,
+                        uint64_t value)
+ {
++    /*
++     * Some MDCR_EL3 bits affect whether PMU counters are running:
++     * if we are trying to change any of those then we must
++     * bracket this update with PMU start/finish calls.
++     */
++    bool pmu_op = (env->cp15.mdcr_el3 ^ value) & MDCR_EL3_PMU_ENABLE_BITS;
++
++    if (pmu_op) {
++        pmu_op_start(env);
++    }
+     env->cp15.mdcr_el3 = value & SDCR_VALID_MASK;
++    if (pmu_op) {
++        pmu_op_finish(env);
++    }
++}
++
++static void mdcr_el2_write(CPUARMState *env, const ARMCPRegInfo *ri,
++                           uint64_t value)
++{
++    /*
++     * Some MDCR_EL2 bits affect whether PMU counters are running:
++     * if we are trying to change any of those then we must
++     * bracket this update with PMU start/finish calls.
++     */
++    bool pmu_op = (env->cp15.mdcr_el2 ^ value) & MDCR_EL2_PMU_ENABLE_BITS;
++
++    if (pmu_op) {
++        pmu_op_start(env);
++    }
++    env->cp15.mdcr_el2 = value;
++    if (pmu_op) {
++        pmu_op_finish(env);
++    }
+ }
+ 
+ static const ARMCPRegInfo v8_cp_reginfo[] = {
+@@ -7669,6 +7713,7 @@ void register_cp_regs_for_features(ARMCPU *cpu)
+         ARMCPRegInfo mdcr_el2 = {
+             .name = "MDCR_EL2", .state = ARM_CP_STATE_BOTH,
+             .opc0 = 3, .opc1 = 4, .crn = 1, .crm = 1, .opc2 = 1,
++            .writefn = mdcr_el2_write,
+             .access = PL2_RW, .resetvalue = pmu_num_counters(env),
+             .fieldoffset = offsetof(CPUARMState, cp15.mdcr_el2),
+         };
+-- 
+2.25.1
 
-The documentation ( https://www.pjrc.com/teensy/IMXRT1060RM_rev3.pdf ), in
-section 9.7.1, gives some informations on how, in the actual Teensy board,
-the ROM, executed at boot, initialize the board peripherals, and also reads
-from a data structure included in the Flash memory (the user-provided
-program) where the CPU should jump to after the ROM has done its work
-(somewhere in that same Flash memory, usually).
-
-I was able to successfully dump the ROM of the real board and confirm this
-behavior. Given that the current plan is not to emulate every peripherals,
-I am of the opinion that writing a very simple ROM that merely reads this
-Flash provided data structure and jumps to the provided address sounds like
-a good starting point, so that I can keep iterating on writing more and
-more complex code through the provided Teensy toolchain, and implementing
-needed peripherals.
-
-As such, I have several questions:
-
-1/ To replicate this behaviour, is this considered the correct approach by
-the current QEMU maintainers?
-
-2/ If so, I have not been able to find any function that would be able to
-load data into a memory region "statically". Does one exist? Is there an
-alternative to this process?
-
-3/ Regarding loading the "kernel" of the board, as part of the init
-process, I am calling the usual "armv7m_load_kernel" function with its
-usual parameters. However, it seems to load it as the very start of the
-address space, which is not where the flash memory is, and so is not where
-the kernel should be loaded. I wasn't able to find a workaround. Is there
-something I'm missing?
-
-Sorry to bother you with so many questions.
-Thanks again,
-Saana
-
-Le mar. 16 ao=C3=BBt 2022 =C3=A0 12:06, Peter Maydell <peter.maydell@linaro=
-.org> a
-=C3=A9crit :
-
-> On Tue, 16 Aug 2022 at 10:59, Alex Benn=C3=A9e <alex.bennee@linaro.org> w=
-rote:
-> > Shiny Saana <shinysaana@gmail.com> writes:
-> > > I personally don't need any of the GPIO interfaces, but if needed
-> > > by someone else, that could be a good second step to
-> > > work on once that part of the board is implemented.
-> >
-> > Handling GPIOs in QEMU is fine (we have things like the qdev_init_gpio_=
-*
-> > functions to handle them). The problem is usually what to do with the
-> > actual general purpose pins which aren't wired to something we emulate
-> > in the board. Some boards expose their values via QMP properties but I
-> > suspect whats really needed is a generic mechanism for exposing GPIO to
-> > external scripts rather than have every board define it's own thing.
->
-> Yes. However one key thing for trying to get a new board model
-> in is not to get tangled up in trying to improve/extend
-> the core QEMU facilities for something. That's much harder
-> than "my board model supports GPIO output lines to the same
-> extent as the other existing board models" :-)
->
-> thanks
-> -- PMM
->
-
---0000000000000d289805e6b517e1
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"auto">Hello!</div><div dir=3D"auto"><br></div><div dir=3D"auto"=
->Thank you all again for your initial guidance.</div><div dir=3D"auto"><br>=
-</div><div dir=3D"auto">I&#39;ve been able to write an initial Teensy 4.1 m=
-achine, for now with only the few important memory regions initialized, and=
- successfully ran some hand-written ARM code on it.=C2=A0</div><div dir=3D"=
-auto"><br></div><div dir=3D"auto">I was wondering what your opinions might =
-be for implementing the next step, which in my opinion should be bootstrapp=
-ing a &quot;kernel&quot; in the format the board actually expects. This is =
-however the current roadblock I am hitting.</div><div dir=3D"auto"><br></di=
-v><div dir=3D"auto">The documentation ( <a href=3D"https://www.pjrc.com/tee=
-nsy/IMXRT1060RM_rev3.pdf">https://www.pjrc.com/teensy/IMXRT1060RM_rev3.pdf<=
-/a> ), in section 9.7.1, gives some informations on how, in the actual Teen=
-sy board, the ROM, executed at boot, initialize the board peripherals, and =
-also reads from a data structure included in the Flash memory (the user-pro=
-vided program) where the CPU should jump to after the ROM has done its work=
- (somewhere in that same Flash memory, usually).</div><div dir=3D"auto"><br=
-></div><div dir=3D"auto">I was able to successfully dump the ROM of the rea=
-l board and confirm this behavior. Given that the current plan is not to em=
-ulate every peripherals, I am of the opinion that writing a very simple ROM=
- that merely reads this Flash provided data structure and jumps to the prov=
-ided address sounds like a good starting point, so that I can keep iteratin=
-g on writing more and more complex code through the provided Teensy toolcha=
-in, and implementing needed peripherals.</div><div dir=3D"auto"><br></div><=
-div dir=3D"auto">As such, I have several questions:</div><div dir=3D"auto">=
-<br></div><div dir=3D"auto">1/ To replicate this behaviour, is this conside=
-red the correct approach by the current QEMU maintainers?</div><div dir=3D"=
-auto"><br></div><div dir=3D"auto">2/ If so, I have not been able to find an=
-y function that would be able to load data into a memory region &quot;stati=
-cally&quot;. Does one exist? Is there an alternative to this process?</div>=
-<div dir=3D"auto"><br></div><div dir=3D"auto">3/ Regarding loading the &quo=
-t;kernel&quot; of the board, as part of the init process, I am calling the =
-usual &quot;armv7m_load_kernel&quot; function with its usual parameters. Ho=
-wever, it seems to load it as the very start of the address space, which is=
- not where the flash memory is, and so is not where the kernel should be lo=
-aded. I wasn&#39;t able to find a workaround. Is there something I&#39;m mi=
-ssing?</div><div dir=3D"auto"><br></div><div dir=3D"auto">Sorry to bother y=
-ou with so many questions.</div><div dir=3D"auto">Thanks again,</div><div d=
-ir=3D"auto">Saana</div><div dir=3D"auto"><br></div><div dir=3D"auto">Le=C2=
-=A0mar. 16 ao=C3=BBt 2022 =C3=A0 12:06, Peter Maydell &lt;<a href=3D"mailto=
-:peter.maydell@linaro.org">peter.maydell@linaro.org</a>&gt; a =C3=A9crit=C2=
-=A0:</div><div><div class=3D"gmail_quote"><blockquote class=3D"gmail_quote"=
- style=3D"margin:0px 0px 0px 0.8ex;border-left-width:1px;border-left-style:=
-solid;padding-left:1ex;border-left-color:rgb(204,204,204)">On Tue, 16 Aug 2=
-022 at 10:59, Alex Benn=C3=A9e &lt;<a href=3D"mailto:alex.bennee@linaro.org=
-" target=3D"_blank">alex.bennee@linaro.org</a>&gt; wrote:<br>
-&gt; Shiny Saana &lt;<a href=3D"mailto:shinysaana@gmail.com" target=3D"_bla=
-nk">shinysaana@gmail.com</a>&gt; writes:<br>
-&gt; &gt; I personally don&#39;t need any of the GPIO interfaces, but if ne=
-eded<br>
-&gt; &gt; by someone else, that could be a good second step to<br>
-&gt; &gt; work on once that part of the board is implemented.<br>
-&gt;<br>
-&gt; Handling GPIOs in QEMU is fine (we have things like the qdev_init_gpio=
-_*<br>
-&gt; functions to handle them). The problem is usually what to do with the<=
-br>
-&gt; actual general purpose pins which aren&#39;t wired to something we emu=
-late<br>
-&gt; in the board. Some boards expose their values via QMP properties but I=
-<br>
-&gt; suspect whats really needed is a generic mechanism for exposing GPIO t=
-o<br>
-&gt; external scripts rather than have every board define it&#39;s own thin=
-g.<br>
-<br>
-Yes. However one key thing for trying to get a new board model<br>
-in is not to get tangled up in trying to improve/extend<br>
-the core QEMU facilities for something. That&#39;s much harder<br>
-than &quot;my board model supports GPIO output lines to the same<br>
-extent as the other existing board models&quot; :-)<br>
-<br>
-thanks<br>
--- PMM<br>
-</blockquote></div></div>
-
---0000000000000d289805e6b517e1--

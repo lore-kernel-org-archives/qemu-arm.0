@@ -1,111 +1,112 @@
-Received: by 2002:a17:906:9c0a:0:0:0:0 with SMTP id ff10csp990455ejc;
-        Mon, 22 Aug 2022 08:49:50 -0700 (PDT)
-X-Google-Smtp-Source: AA6agR4/QvCkACFBqeX3YdBWkx43XGUSQ24j6EaDPTmjx6MiTGfm8tMGi7Xu7hH5WoFBf3HO5cip
-X-Received: by 2002:ac8:5d49:0:b0:344:7275:dd61 with SMTP id g9-20020ac85d49000000b003447275dd61mr15387865qtx.48.1661183390295;
-        Mon, 22 Aug 2022 08:49:50 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1661183390; cv=none;
+Received: by 2002:a17:906:9c0a:0:0:0:0 with SMTP id ff10csp992114ejc;
+        Mon, 22 Aug 2022 08:53:16 -0700 (PDT)
+X-Google-Smtp-Source: AA6agR7Moh2FDp7+tP2HCchz3pFyytsnSxWsa6P7vHa5df1IrtA2eGfH6wMrcL8gACJAG8RfX5ub
+X-Received: by 2002:a05:6214:2a83:b0:496:e059:9f1d with SMTP id jr3-20020a0562142a8300b00496e0599f1dmr4733996qvb.40.1661183596370;
+        Mon, 22 Aug 2022 08:53:16 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1661183596; cv=none;
         d=google.com; s=arc-20160816;
-        b=vTPS8FnhnppOQKvh1tgAUTiy48pxcB8C2vP84AnBRSqITjmXkWcQLwMT9Mfx0QZ0VP
-         xJqLRLyRtKmCVmKVkexAfJonUr0nqD6vKphOmGp5KdFwjtKDg4uDBds8PA5P0zVvvWtl
-         80iVFdZOy/XMtv8K1ZvMvbtdlJzIE9/XvLRAXV/xxLORz0huVEWhX6fO4jg3RreywDeU
-         snBcH+RrHmBpmGe/fn8UMekZBSnu0G40DVvaTAiMWuetB3I+IO/lcSpa8XTs4HHEyH7x
-         n+VcVHDA+2zsGnj1t+FqsBOieRZrGkr674vkoIAkSPtWC4ecWs4cQnad4eymVSBx+rZS
-         chkA==
+        b=dJb4AuMtU7Ou6PzLj0sRORP4b6lxeXlVc3Tp3oQ0NNJLqSmG2lpGjwElNIG4sgTWds
+         CadK3Q6gQsW5pnc17xc7YMuDfG6zjCl4q7Kc62kpdTXBMUEp0OEL5gixep98QNMTD9SX
+         sdetA8XYOtJmDrJtXnjgt/El/RsEsFfX6Azzfdv0Ugh/qZFB/9PTZwm3FucMDneH7d/4
+         7vUy67hN+cjcgAxTeDZQA5HRUq0S8fVNLNhQ14qy1wXLxgONFyt6OcDLHkeII34U7kZy
+         322tfAkDJ7hCQHEtmfrUI56gSdUISlBUDcPWQRD1VJk8fHsjopB7+nGnXd4ihwCvruZd
+         rd+Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=svQnwizGhYqj2KNlPoUGzrRVUcGJh31LTdC8nQ9RVe4=;
-        b=zdKOLCYEs/WKW4VlphSMeDPjQ1Z4m6OR4MMzlgNGemBVlMIqle7BmuA7fKSFlmy76v
-         LqbXycqLLvwt5xVkQFppOd0+UhYBmqViaxSjQ6P2d3r+GGHF44dSN9WetTisaPnE4iPU
-         emIsbUydmyydm8aCOGiiEXZKprCiBjqCXrWRgO+O3M1h2U+2eC7FU00JcqGa0/rskk5X
-         rEPe7pSYlZqUAkR9oFhHH1pP7ALd5To13eHumAVEcwQmDiAvxaZZmYZuLnlq+Ao0GUEJ
-         kCSK13BxGyBxsn4zcUBmp/nr39ty+QdwEfZvQWm6E1EIFCWEVSr+QVD9V8YKwRYfUfhh
-         31wQ==
+        bh=KQgnmJmdBnU/p9031agTMRXsX9duSik3VaZXmB+O4Tc=;
+        b=dyJAUf5ZPx9B+U2YFDrUbGqJwl5caZG5yuaqjWehv5bZoBkQpBVcpT4/VwlakiUbC3
+         q0dallJDqbYu6M3Lb6rac6ZOi0RYUCic3paHU1GXnURInKxFZR9DQQqRH84Fxlq1Xcl8
+         Zk6G1j/JKP6SudjuFrLPEBPZe9OtUVs/DOPidQeKWqh9zayBmPHu2TzPs/j2MxEEes+H
+         oa6m8WgkaazPqBnZ7IEG2s1WY63p/SlypVSP3ZZ52EWS261dYt4ZBZDuwxPdzR0MzaOt
+         lU2C9anqQMXyaCjcyLrh4glkwrlce2zKD4Ss2QGBK6UCUJpGqH24PWFnFkxQA+ayiiyG
+         lraw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=XKvCZgKP;
+       dkim=pass header.i=@linaro.org header.s=google header.b=tKaCPwZ1;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s15-20020a0562140caf00b004774476d0e6si5304198qvs.161.2022.08.22.08.49.50
+        by mx.google.com with ESMTPS id j7-20020a05621419c700b00496ed5ebecasi675137qvc.187.2022.08.22.08.53.16
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 22 Aug 2022 08:49:50 -0700 (PDT)
+        Mon, 22 Aug 2022 08:53:16 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=XKvCZgKP;
+       dkim=pass header.i=@linaro.org header.s=google header.b=tKaCPwZ1;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:50744 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:34862 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1oQ9gO-00036M-O8
-	for alex.bennee@linaro.org; Mon, 22 Aug 2022 11:49:44 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:55012)
+	id 1oQ9jn-0008MT-Pt
+	for alex.bennee@linaro.org; Mon, 22 Aug 2022 11:53:15 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33310)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1oQ9Lf-0008LP-Ct
- for qemu-devel@nongnu.org; Mon, 22 Aug 2022 11:28:19 -0400
-Received: from mail-pg1-x535.google.com ([2607:f8b0:4864:20::535]:47063)
+ id 1oQ9LL-0007SH-9j
+ for qemu-devel@nongnu.org; Mon, 22 Aug 2022 11:27:59 -0400
+Received: from mail-pj1-x1033.google.com ([2607:f8b0:4864:20::1033]:47007)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1oQ9LS-0000ob-En
- for qemu-devel@nongnu.org; Mon, 22 Aug 2022 11:28:19 -0400
-Received: by mail-pg1-x535.google.com with SMTP id d71so9663424pgc.13
- for <qemu-devel@nongnu.org>; Mon, 22 Aug 2022 08:28:05 -0700 (PDT)
+ id 1oQ9LF-0000hK-Lu
+ for qemu-devel@nongnu.org; Mon, 22 Aug 2022 11:27:58 -0400
+Received: by mail-pj1-x1033.google.com with SMTP id
+ o14-20020a17090a0a0e00b001fabfd3369cso11648260pjo.5
+ for <qemu-devel@nongnu.org>; Mon, 22 Aug 2022 08:27:51 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc;
- bh=svQnwizGhYqj2KNlPoUGzrRVUcGJh31LTdC8nQ9RVe4=;
- b=XKvCZgKPcgXsJqp/w45cTSa1IbW2yo0eSliLIDiIa6A8Wk1SXDcAKJNmdsJaZwlmc4
- AODVVhjd9eD1rp5TuE7utuygIneemHvsdAWsIgmuTKbwUXf0cSg5GMo6Dc61ZO/i8Hs1
- 59OzDSFSt+q1gdrwYPgphrqUaN/ehTfOwCYSnxHMx+wcYKCsoUy91A1RBvWBo7swEAeP
- BHlGvPWeiPVXHhoqvyXcrHy+DA5Lmvctk29RQoNDFtYLtn7Mq9BwvErbRLlpoEx6vnTU
- kH2Wnvnr1F7lcyW6rM6v92AEy6DY6rgy9yGboo5fFoyMO+nEKnoNRewZTRk7sJHaGIw5
- Qn8g==
+ bh=KQgnmJmdBnU/p9031agTMRXsX9duSik3VaZXmB+O4Tc=;
+ b=tKaCPwZ169NkHNwnExeSmdk9iFrMlcgTKfMpwM7GdtmWLRDxaNY9jHcIlNFlCf8Uin
+ Y+Q4dUNU5m2qX9zS4BtUR2VjWCdSjH6eFg6AmOvLsxHr+3s+SmYUVAbR+HyII/Ndqg2I
+ Xqyo8FQTsKv9tD1KztN7pTwjeBIcSNEXu7zcTwagrnIcwGLoVzCSKx4J2c3BuVQeG78Q
+ Jm8srFWCAQ3DI04k7BtCyDBp+Z2t5AMqDPKX4ZVlnfhBlDpY4H33hGKvuyAe7l0s8cTP
+ WhKWXXMqXc+sK9MHWjxmknUqSH0Q3dD2Jyt2JdEtmYsw/KbO1eAV39r5a5X5KK+JhWu8
+ Jd/g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc;
- bh=svQnwizGhYqj2KNlPoUGzrRVUcGJh31LTdC8nQ9RVe4=;
- b=Sauij/hlezKhrB2HeoN0bGhpJe8h+6BFMrcuvOcCilvrTMeS9kIno093nNnYyDKjnF
- 8DIb56XPpWBkRaiPv8qiOwfN7SOnLti8nCGNCS+4y0oElL+qVRQcanhan8bgBorSfU1t
- BEqxWtcO+T5Fo/4P2uV4A1S9Sj8CnQ/MuQqz2UwaLtPY46AWtDOQzspDxSFcowaVOm1j
- Qlg/Id9nDidd7725obqpycwafyfRc+zVYi9cs3wGDgWTngXsPJKCQ9J3BHSRY3q4gWgk
- Vp5/rBBSPv4V4fI+dShZNQ/NKtg1Zk4cKcchsGPV1gtDLEpkZzPwZWLfLkxv/hPlVDce
- TPbQ==
-X-Gm-Message-State: ACgBeo19+OdJIjG0Kon/LoQqbbNlgoe62ecL6RyNIamm4sxmukXjPePd
- Af829oeitpT0taWwbhGtBDFQPlBgHceWxA==
-X-Received: by 2002:a65:64c6:0:b0:42a:a392:5340 with SMTP id
- t6-20020a6564c6000000b0042aa3925340mr5501022pgv.588.1661182085109; 
- Mon, 22 Aug 2022 08:28:05 -0700 (PDT)
+ bh=KQgnmJmdBnU/p9031agTMRXsX9duSik3VaZXmB+O4Tc=;
+ b=bQCWtQmMOd3QbnCrC+qacx/30aCJC9aVcyq6iQ3JcqnqrvApg6OcZTfJfZKRIVD/5Y
+ TYgIAxAzi6/V3wl8zzKRmDMHBy+1b/JXdBTznhHlIjcqyWCsqNtbmysAGL4s5Ajsaq3c
+ MFBCIWXbzOBuIOqcXzMAj0y1AFG1TBXwCraPQ1wmG3qNafJ2Y94VHVnvGPSD7R89Of7O
+ WqU5qBc66/wkgD/0TObo2nv5aJp1zr8ZI9KPrGp/sNExzL3MX5IAtEkb1FjyzSn6McrN
+ IwoUlVPp6XIjapKkDWnuf9T2lX/uOXVIT7dJFoPyL7GCmCvxFqMgCOwKJNIcQTNN8Buu
+ y+kw==
+X-Gm-Message-State: ACgBeo2SO9VS6tHXR9DXC2xbhUt2EjpfQFBXKrs9BY84ASECTTVc8Ocx
+ 1ZVJBMip3hPrJ8EITpU8aE5Z7Kh2beizwQ==
+X-Received: by 2002:a17:903:40c9:b0:172:e8aa:96ef with SMTP id
+ t9-20020a17090340c900b00172e8aa96efmr6154212pld.59.1661182070709; 
+ Mon, 22 Aug 2022 08:27:50 -0700 (PDT)
 Received: from stoup.. ([71.212.157.236]) by smtp.gmail.com with ESMTPSA id
- q7-20020a17090311c700b0016bffc59718sm8665222plh.58.2022.08.22.08.28.04
+ q7-20020a17090311c700b0016bffc59718sm8665222plh.58.2022.08.22.08.27.50
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 22 Aug 2022 08:28:04 -0700 (PDT)
+ Mon, 22 Aug 2022 08:27:50 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org
-Subject: [PATCH v2 28/66] target/arm: Drop secure check for HCR.TGE vs
- SCTLR_EL1.M
-Date: Mon, 22 Aug 2022 08:27:03 -0700
-Message-Id: <20220822152741.1617527-29-richard.henderson@linaro.org>
+Subject: [PATCH v2 10/66] target/arm: Remove is_subpage argument to
+ pmsav8_mpu_lookup
+Date: Mon, 22 Aug 2022 08:26:45 -0700
+Message-Id: <20220822152741.1617527-11-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20220822152741.1617527-1-richard.henderson@linaro.org>
 References: <20220822152741.1617527-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::535;
- envelope-from=richard.henderson@linaro.org; helo=mail-pg1-x535.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1033;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x1033.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -120,31 +121,113 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: U9466LHhSatL
+X-TUID: IyNsmzMMmspF
 
-The effect of TGE does not only apply to non-secure state,
-now that Secure EL2 exists.
+This can be made redundant with result->page_size, by moving the basic
+set of page_size from get_phys_addr_pmsav8.  We still need to overwrite
+page_size when v8m_security_lookup signals a subpage.
 
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/ptw.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ target/arm/internals.h |  4 ++--
+ target/arm/m_helper.c  |  3 +--
+ target/arm/ptw.c       | 18 +++++++++---------
+ 3 files changed, 12 insertions(+), 13 deletions(-)
 
+diff --git a/target/arm/internals.h b/target/arm/internals.h
+index 6786e08a78..fa8553a17e 100644
+--- a/target/arm/internals.h
++++ b/target/arm/internals.h
+@@ -1152,8 +1152,8 @@ bool get_phys_addr(CPUARMState *env, target_ulong address,
+ 
+ bool pmsav8_mpu_lookup(CPUARMState *env, uint32_t address,
+                        MMUAccessType access_type, ARMMMUIdx mmu_idx,
+-                       GetPhysAddrResult *result, bool *is_subpage,
+-                       ARMMMUFaultInfo *fi, uint32_t *mregion);
++                       GetPhysAddrResult *result, ARMMMUFaultInfo *fi,
++                       uint32_t *mregion);
+ 
+ void arm_log_exception(CPUState *cs);
+ 
+diff --git a/target/arm/m_helper.c b/target/arm/m_helper.c
+index 69d4a63fa6..01263990dc 100644
+--- a/target/arm/m_helper.c
++++ b/target/arm/m_helper.c
+@@ -2806,11 +2806,10 @@ uint32_t HELPER(v7m_tt)(CPUARMState *env, uint32_t addr, uint32_t op)
+     if (arm_current_el(env) != 0 || alt) {
+         GetPhysAddrResult res = {};
+         ARMMMUFaultInfo fi = {};
+-        bool is_subpage;
+ 
+         /* We can ignore the return value as prot is always set */
+         pmsav8_mpu_lookup(env, addr, MMU_DATA_LOAD, mmu_idx,
+-                          &res, &is_subpage, &fi, &mregion);
++                          &res, &fi, &mregion);
+         if (mregion == -1) {
+             mrvalid = false;
+             mregion = 0;
 diff --git a/target/arm/ptw.c b/target/arm/ptw.c
-index ae9552f46f..7c0a4316a3 100644
+index 48c9363159..ec66ba6777 100644
 --- a/target/arm/ptw.c
 +++ b/target/arm/ptw.c
-@@ -157,8 +157,8 @@ static bool regime_translation_disabled(CPUARMState *env, ARMMMUIdx mmu_idx,
-     case ARMMMUIdx_E10_0:
-     case ARMMMUIdx_E10_1:
-     case ARMMMUIdx_E10_1_PAN:
--        /* TGE means that NS EL0/1 act as if SCTLR_EL1.M is zero */
--        if (!is_secure && (hcr_el2 & HCR_TGE)) {
-+        /* TGE means that EL0/1 act as if SCTLR_EL1.M is zero */
-+        if (hcr_el2 & HCR_TGE) {
-             return true;
-         }
-         break;
+@@ -1701,8 +1701,8 @@ static bool get_phys_addr_pmsav7(CPUARMState *env, uint32_t address,
+ 
+ bool pmsav8_mpu_lookup(CPUARMState *env, uint32_t address,
+                        MMUAccessType access_type, ARMMMUIdx mmu_idx,
+-                       GetPhysAddrResult *result, bool *is_subpage,
+-                       ARMMMUFaultInfo *fi, uint32_t *mregion)
++                       GetPhysAddrResult *result, ARMMMUFaultInfo *fi,
++                       uint32_t *mregion)
+ {
+     /*
+      * Perform a PMSAv8 MPU lookup (without also doing the SAU check
+@@ -1722,7 +1722,7 @@ bool pmsav8_mpu_lookup(CPUARMState *env, uint32_t address,
+     uint32_t addr_page_base = address & TARGET_PAGE_MASK;
+     uint32_t addr_page_limit = addr_page_base + (TARGET_PAGE_SIZE - 1);
+ 
+-    *is_subpage = false;
++    result->page_size = TARGET_PAGE_SIZE;
+     result->phys = address;
+     result->prot = 0;
+     if (mregion) {
+@@ -1774,13 +1774,13 @@ bool pmsav8_mpu_lookup(CPUARMState *env, uint32_t address,
+                     ranges_overlap(base, limit - base + 1,
+                                    addr_page_base,
+                                    TARGET_PAGE_SIZE)) {
+-                    *is_subpage = true;
++                    result->page_size = 1;
+                 }
+                 continue;
+             }
+ 
+             if (base > addr_page_base || limit < addr_page_limit) {
+-                *is_subpage = true;
++                result->page_size = 1;
+             }
+ 
+             if (matchregion != -1) {
+@@ -1972,7 +1972,6 @@ static bool get_phys_addr_pmsav8(CPUARMState *env, uint32_t address,
+     uint32_t secure = regime_is_secure(env, mmu_idx);
+     V8M_SAttributes sattrs = {};
+     bool ret;
+-    bool mpu_is_subpage;
+ 
+     if (arm_feature(env, ARM_FEATURE_M_SECURITY)) {
+         v8m_security_lookup(env, address, access_type, mmu_idx, &sattrs);
+@@ -2035,9 +2034,10 @@ static bool get_phys_addr_pmsav8(CPUARMState *env, uint32_t address,
+     }
+ 
+     ret = pmsav8_mpu_lookup(env, address, access_type, mmu_idx,
+-                            result, &mpu_is_subpage, fi, NULL);
+-    result->page_size =
+-        sattrs.subpage || mpu_is_subpage ? 1 : TARGET_PAGE_SIZE;
++                            result, fi, NULL);
++    if (sattrs.subpage) {
++        result->page_size = 1;
++    }
+     return ret;
+ }
+ 
 -- 
 2.34.1
 

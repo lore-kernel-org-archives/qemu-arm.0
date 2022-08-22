@@ -1,235 +1,178 @@
-Received: by 2002:a17:906:9c0a:0:0:0:0 with SMTP id ff10csp979451ejc;
-        Mon, 22 Aug 2022 08:27:51 -0700 (PDT)
-X-Received: by 2002:a63:9042:0:b0:41c:cdd4:ae66 with SMTP id a63-20020a639042000000b0041ccdd4ae66mr17207220pge.47.1661182070662;
-        Mon, 22 Aug 2022 08:27:50 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1661182070; cv=none;
+Received: by 2002:a17:906:9c0a:0:0:0:0 with SMTP id ff10csp979458ejc;
+        Mon, 22 Aug 2022 08:27:52 -0700 (PDT)
+X-Received: by 2002:a17:90b:4d12:b0:1f5:59e1:994f with SMTP id mw18-20020a17090b4d1200b001f559e1994fmr23306642pjb.217.1661182072011;
+        Mon, 22 Aug 2022 08:27:52 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1661182072; cv=none;
         d=google.com; s=arc-20160816;
-        b=poh0opGux4Um6UGq8WQ6C5eO8OboRMaUT3kHiSztg1sS65g7FzHvqv4BatbZBjNRJz
-         rRmrDAIw1eVnVNgKLJd6jUxdY95eVwPekE+qd8NjwqTRHe0DLkLh1iTMzaTq+sFCMPwO
-         Y9qSsunflduxWQ/jo04+Slp0lOaFhUt5kAyPULNfQWJUOlAGYcbZsoHQ9MUgRYqY22AJ
-         YPIjjc7sARBqoTLOk+ocF4XPYhJEE/TCV2lySq9YO0BZWEl+3mL/QbnuvbXqWinrS+MK
-         nEWQdR2Gx5lGbl2658IVOI2aygtwBTvoAXtn9AXQJF5smBLD6ujWcpKqYlS4dYQpY5wX
-         joAg==
+        b=eN2lsRyUGcyeML0qnIkDQIRhK9YnSGNu6Emsdv9Gmu6fk9hkX4EMhaJGuqNzk2XiLf
+         w4oNMh8I4hvh3duWH0JX8uHd2RRWtmL0z51+iZO8vZMKj1Cje7V4fsJJa1tJPSF2/3gK
+         cVC/FZ5g/Qtr5UhaGksJiuaJA1ceyj5oT2fUDnalaMfbnEfbHFJbog5Lo176f3iQKzrR
+         W+fgyGqv+yiFB0DYX0U4ZUYDT0+fuYwLbRs3M6efPMHkCRAYs213mz1396goyz1th/NB
+         tOdqHwaZ5SbcjI/6UmTLPqx3oc2GMknuHF8DlRBDOyyywaXhYFV+Nd5GnpTkEpced55U
+         PlbQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=5p0MI+QCkoFG04riom6naP42FW0W2gy0tzxTYjzHV/c=;
-        b=eFhV64AI4a6F72ZqkffyeDiv8ToUc7Telak+licAobyj9EO7Z3LyxoCwXMyGjH1WSp
-         gwxTQzFMyj5un4yhTVkjRrgThHya44JCJozOJYE/ShIdQrYyQ0MVRoleAI7i/fsmyO7d
-         poyXo54zM6SsqokoT126nr0p1iOvP4Nbaw1WQvbjEPNLB6QMCr22bVra4jSbLzA+6ym+
-         temld07CNfj1oOH4EQVCUT1M+j2bGZ5BqweOWG/kQZJeNbPTsnY8eHyMC1VmJpWYi/jO
-         JJtxTPb/2MVINGM7qusWeFZLevO+SYgH67NZRSVx9Tb860KmhbT6/eqc4lEFk6C7wPyW
-         fv7Q==
+        bh=BWRDtrDD+OIowc2u5C+0Bs/iEHTC4XxgclrlkjL6OHk=;
+        b=owm6RCzZ1zwrlm/S2cwAONnKsfHTtudqpi9itpJDMt6nemzKE7Ds2o1xoq6YxmV0te
+         FI05IR8SAZe9Oc7k5jsbiZ6XDKlNyYLGRLY48VXKEWe76GTggr4MW7beDMvbIrCJOeiE
+         GiyaYiQN8qGvLdBToBLs16ywG9CIaObe9M4GhJmGcuvfMk3xJlu8HXbTaOykbKIUiCGD
+         7dcCW3LBiXG92yKyiuqZT5hjk2dN148+uwdcTlM7qTOcBKXWVzjk4LU485kUGNedWXqs
+         enNFQzFSBYbGpdW27atg5RMASGDHN866U+2yZKzyx7JrOfQDN4cwBbRJrEMJ5LwwpJI/
+         9wlA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=r5edGVQj;
+       dkim=pass header.i=@linaro.org header.s=google header.b=jF9Ny+Dv;
        spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <richard.henderson@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id q5-20020a056a00088500b00535c5d51cacsor6142095pfj.100.2022.08.22.08.27.50
+        by mx.google.com with SMTPS id e3-20020a62ee03000000b0052e2f85e029sor6203535pfi.13.2022.08.22.08.27.51
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Mon, 22 Aug 2022 08:27:50 -0700 (PDT)
+        Mon, 22 Aug 2022 08:27:51 -0700 (PDT)
 Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=r5edGVQj;
+       dkim=pass header.i=@linaro.org header.s=google header.b=jF9Ny+Dv;
        spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc;
-        bh=5p0MI+QCkoFG04riom6naP42FW0W2gy0tzxTYjzHV/c=;
-        b=r5edGVQjY40NoJaDLT8Yc07Zu9ctQ9tvVRzx8/i6vgECJPWwm7hqG5890on8mIzK43
-         A6VdOE6NDTA9SYhQBJn8s4H2//9mkHstOqqgHPwhgGQ+ybiO5zkBsyN5UddACS2VFHV6
-         zmhryJdlLxNP7wq2yHzZMlDiDYXuJCELQ1fg9iLNf8uY7XlSCHpBWc7gX6inTH6sAXOs
-         W2WTnRhOecCSdGsSSHFNEL/V1792RZotAzYQw7gPrCSuUx+xo1GdKZjwpGroa8d9WTtI
-         0uPDQHGHVf4gxMjX0u7/ZQ1N0pbr9o/Bws96GtsFwL52dCYibel/NM5AlYp02FoEAZeB
-         ZHng==
+        bh=BWRDtrDD+OIowc2u5C+0Bs/iEHTC4XxgclrlkjL6OHk=;
+        b=jF9Ny+Dv2/w2nmx73YWnpF9y56k4nLUDp2Uk4qUriUvfuCBwIoM4Kd/42lz9L9lD+h
+         3LBcLwHAkjpMIvwtr6wKWD0HhLs3/euYYzGLsrFoSDAwLOxTAf6yqcQqmG1ybap+QjZV
+         1xgcHyKmb6lVWA8kdanMJtOL167Vmj527HZHdHcyeHV5seXYwj2Y9zMBNleoEaTm6/2s
+         Z5l2H6bKDL0xUw1Ke3Cohop9YEzV7MM/iY5j/szKE0uydgx+EP06rib+D6PQpLq34P7z
+         Vx0qP0M8Nno0NkICr199m4WHv0R6uFW+yBcLzw/pi72t4cJJWAfK57pM9I/0o1Rlbthr
+         Q2Vg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc;
-        bh=5p0MI+QCkoFG04riom6naP42FW0W2gy0tzxTYjzHV/c=;
-        b=7B/uk5QBHTKUrYW7Lj7a30ipxTQad1Om4HeWCkQcnz1kTcUI0iG0eWp+N5iwmV39u4
-         GZXUeB4TDxT7nb/0tdo5+XZqN5jAZnzzkA+VM7WGH83A3Gb++Ov4om08nGWh2dPj22CC
-         GM3+AsbbTcyd8e5a9FYQOqsRbTXB1y9sAQ0/QtTWcWla5CjsxrgeUK1HasrL89GN/J7d
-         verns9YjGI9Or6ODAxdG+ghBV6ttt98Ip3vJefsL6B7E8XJDds7bz2IKNN4umloZqeT4
-         6GRqmlz6WTUMahJizQyubpJFAAC7nIb9fMHmObq5V2MyTd4TgtTxZv37oKX98mr3tJGl
-         lpdQ==
-X-Gm-Message-State: ACgBeo2MdBA5jotH+z4msZtwbS64Y29O0g5Jtp+/gDwPauYEHalr8VLF
-	CaHwGkhPgw8F711j3yXCEYkWq0Nq
-X-Google-Smtp-Source: AA6agR7r/umPuuqRNtV6z4OLIlcmY8NGIjxdOXccHiiajIAuPDQXQEmO0JrlRguqQcpUbOFBSBavvQ==
-X-Received: by 2002:a05:6a00:24c2:b0:52e:7181:a8a0 with SMTP id d2-20020a056a0024c200b0052e7181a8a0mr21310747pfv.57.1661182070170;
-        Mon, 22 Aug 2022 08:27:50 -0700 (PDT)
+        bh=BWRDtrDD+OIowc2u5C+0Bs/iEHTC4XxgclrlkjL6OHk=;
+        b=x93kNW2RREaUBbvyfRfp78BwOeULUTK7J93etk6idBRK5W1icR4aREzDTzzRHg8OLZ
+         inSEyvj/isG3ZY1UXrHZ2sAL7P5is3zuIPq7Hgy6Hej+/LvBy+lXVqeKkaFee4xoQ8Mw
+         oXVXfro2Jk79D3zTAsSdb1E1KElaoV0lleglB8m9iCv+zNvLj83ZYh8yObo4bnMQUfYw
+         YVs3WwKWOpO1IBwYn5m9N9udnrlnzfsCBfeBfAllfSUSC3aE8UFjPIRwyr8d9r7WDvl9
+         5mHXLZUVR9uleDOyEJfzYy/+9H5ne2z/T1rJsIu5G+5o0TmY+Z+T6qLeAvA4WDOlenFZ
+         v5ZA==
+X-Gm-Message-State: ACgBeo3i+WaK+ev3Mttb7v5xBfAtYNGEr3aDr33eK9GcOQ2O037kOmiv
+	D3Uj+j23uSGEJXQKapcFlGm0wlRM
+X-Google-Smtp-Source: AA6agR7cgq5AMCgaWo46LQbmWgkt9XFNMFkSvZQ4qmBDp7VMc1pu0DlKpP+ujAeqgr/idEK56gh4jQ==
+X-Received: by 2002:a05:6a00:98a:b0:536:4469:12e6 with SMTP id u10-20020a056a00098a00b00536446912e6mr12705545pfg.9.1661182071497;
+        Mon, 22 Aug 2022 08:27:51 -0700 (PDT)
 Return-Path: <richard.henderson@linaro.org>
 Received: from stoup.. ([71.212.157.236])
-        by smtp.gmail.com with ESMTPSA id q7-20020a17090311c700b0016bffc59718sm8665222plh.58.2022.08.22.08.27.49
+        by smtp.gmail.com with ESMTPSA id q7-20020a17090311c700b0016bffc59718sm8665222plh.58.2022.08.22.08.27.50
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 22 Aug 2022 08:27:49 -0700 (PDT)
+        Mon, 22 Aug 2022 08:27:51 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-Subject: [PATCH v2 09/66] target/arm: Use GetPhysAddrResult in pmsav8_mpu_lookup
-Date: Mon, 22 Aug 2022 08:26:44 -0700
-Message-Id: <20220822152741.1617527-10-richard.henderson@linaro.org>
+Subject: [PATCH v2 11/66] target/arm: Add is_secure parameter to v8m_security_lookup
+Date: Mon, 22 Aug 2022 08:26:46 -0700
+Message-Id: <20220822152741.1617527-12-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20220822152741.1617527-1-richard.henderson@linaro.org>
 References: <20220822152741.1617527-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: 3wtnN26f11XV
+X-TUID: Wl4gbX2/b1ef
+
+Remove the use of regime_is_secure from v8m_security_lookup,
+passing the new parameter to the lookup instead.
 
 Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/internals.h | 11 +++++------
- target/arm/m_helper.c  | 16 +++++++---------
- target/arm/ptw.c       | 20 +++++++++-----------
- 3 files changed, 21 insertions(+), 26 deletions(-)
+ target/arm/internals.h | 2 +-
+ target/arm/m_helper.c  | 9 ++++++---
+ target/arm/ptw.c       | 9 +++++----
+ 3 files changed, 12 insertions(+), 8 deletions(-)
 
 diff --git a/target/arm/internals.h b/target/arm/internals.h
-index 293e27b996..6786e08a78 100644
+index fa8553a17e..7f3b5bb406 100644
 --- a/target/arm/internals.h
 +++ b/target/arm/internals.h
-@@ -1125,12 +1125,6 @@ void v8m_security_lookup(CPUARMState *env, uint32_t address,
-                          MMUAccessType access_type, ARMMMUIdx mmu_idx,
-                          V8M_SAttributes *sattrs);
+@@ -1123,7 +1123,7 @@ typedef struct V8M_SAttributes {
  
--bool pmsav8_mpu_lookup(CPUARMState *env, uint32_t address,
--                       MMUAccessType access_type, ARMMMUIdx mmu_idx,
--                       hwaddr *phys_ptr, MemTxAttrs *txattrs,
--                       int *prot, bool *is_subpage,
--                       ARMMMUFaultInfo *fi, uint32_t *mregion);
--
+ void v8m_security_lookup(CPUARMState *env, uint32_t address,
+                          MMUAccessType access_type, ARMMMUIdx mmu_idx,
+-                         V8M_SAttributes *sattrs);
++                         bool secure, V8M_SAttributes *sattrs);
+ 
  /* Cacheability and shareability attributes for a memory access */
  typedef struct ARMCacheAttrs {
-     /*
-@@ -1156,6 +1150,11 @@ bool get_phys_addr(CPUARMState *env, target_ulong address,
-                    GetPhysAddrResult *result, ARMMMUFaultInfo *fi)
-     __attribute__((nonnull));
- 
-+bool pmsav8_mpu_lookup(CPUARMState *env, uint32_t address,
-+                       MMUAccessType access_type, ARMMMUIdx mmu_idx,
-+                       GetPhysAddrResult *result, bool *is_subpage,
-+                       ARMMMUFaultInfo *fi, uint32_t *mregion);
-+
- void arm_log_exception(CPUState *cs);
- 
- #endif /* !CONFIG_USER_ONLY */
 diff --git a/target/arm/m_helper.c b/target/arm/m_helper.c
-index 84c6796b8d..69d4a63fa6 100644
+index 01263990dc..45fbf19559 100644
 --- a/target/arm/m_helper.c
 +++ b/target/arm/m_helper.c
-@@ -2770,15 +2770,10 @@ uint32_t HELPER(v7m_tt)(CPUARMState *env, uint32_t addr, uint32_t op)
-     V8M_SAttributes sattrs = {};
-     uint32_t tt_resp;
-     bool r, rw, nsr, nsrw, mrvalid;
--    int prot;
--    ARMMMUFaultInfo fi = {};
--    MemTxAttrs attrs = {};
--    hwaddr phys_addr;
-     ARMMMUIdx mmu_idx;
-     uint32_t mregion;
-     bool targetpriv;
-     bool targetsec = env->v7m.secure;
--    bool is_subpage;
+@@ -689,7 +689,8 @@ static bool arm_v7m_load_vector(ARMCPU *cpu, int exc, bool targets_secure,
+     if (arm_feature(env, ARM_FEATURE_M_SECURITY)) {
+         V8M_SAttributes sattrs = {};
  
-     /*
-      * Work out what the security state and privilege level we're
-@@ -2809,18 +2804,21 @@ uint32_t HELPER(v7m_tt)(CPUARMState *env, uint32_t addr, uint32_t op)
-      * inspecting the other MPU state.
-      */
-     if (arm_current_el(env) != 0 || alt) {
-+        GetPhysAddrResult res = {};
-+        ARMMMUFaultInfo fi = {};
-+        bool is_subpage;
-+
-         /* We can ignore the return value as prot is always set */
-         pmsav8_mpu_lookup(env, addr, MMU_DATA_LOAD, mmu_idx,
--                          &phys_addr, &attrs, &prot, &is_subpage,
--                          &fi, &mregion);
-+                          &res, &is_subpage, &fi, &mregion);
-         if (mregion == -1) {
-             mrvalid = false;
-             mregion = 0;
-         } else {
-             mrvalid = true;
-         }
--        r = prot & PAGE_READ;
--        rw = prot & PAGE_WRITE;
-+        r = res.prot & PAGE_READ;
-+        rw = res.prot & PAGE_WRITE;
+-        v8m_security_lookup(env, addr, MMU_DATA_LOAD, mmu_idx, &sattrs);
++        v8m_security_lookup(env, addr, MMU_DATA_LOAD, mmu_idx,
++                            targets_secure, &sattrs);
+         if (sattrs.ns) {
+             attrs.secure = false;
+         } else if (!targets_secure) {
+@@ -2002,7 +2003,8 @@ static bool v7m_read_half_insn(ARMCPU *cpu, ARMMMUIdx mmu_idx,
+     ARMMMUFaultInfo fi = {};
+     MemTxResult txres;
+ 
+-    v8m_security_lookup(env, addr, MMU_INST_FETCH, mmu_idx, &sattrs);
++    v8m_security_lookup(env, addr, MMU_INST_FETCH, mmu_idx,
++                        regime_is_secure(env, mmu_idx), &sattrs);
+     if (!sattrs.nsc || sattrs.ns) {
+         /*
+          * This must be the second half of the insn, and it straddles a
+@@ -2826,7 +2828,8 @@ uint32_t HELPER(v7m_tt)(CPUARMState *env, uint32_t addr, uint32_t op)
+     }
+ 
+     if (env->v7m.secure) {
+-        v8m_security_lookup(env, addr, MMU_DATA_LOAD, mmu_idx, &sattrs);
++        v8m_security_lookup(env, addr, MMU_DATA_LOAD, mmu_idx,
++                            targetsec, &sattrs);
+         nsr = sattrs.ns && r;
+         nsrw = sattrs.ns && rw;
      } else {
-         r = false;
-         rw = false;
 diff --git a/target/arm/ptw.c b/target/arm/ptw.c
-index 225405de3b..48c9363159 100644
+index ec66ba6777..bbfb80f4dd 100644
 --- a/target/arm/ptw.c
 +++ b/target/arm/ptw.c
-@@ -1701,8 +1701,7 @@ static bool get_phys_addr_pmsav7(CPUARMState *env, uint32_t address,
- 
- bool pmsav8_mpu_lookup(CPUARMState *env, uint32_t address,
-                        MMUAccessType access_type, ARMMMUIdx mmu_idx,
--                       hwaddr *phys_ptr, MemTxAttrs *txattrs,
--                       int *prot, bool *is_subpage,
-+                       GetPhysAddrResult *result, bool *is_subpage,
-                        ARMMMUFaultInfo *fi, uint32_t *mregion)
- {
-     /*
-@@ -1724,8 +1723,8 @@ bool pmsav8_mpu_lookup(CPUARMState *env, uint32_t address,
-     uint32_t addr_page_limit = addr_page_base + (TARGET_PAGE_SIZE - 1);
- 
-     *is_subpage = false;
--    *phys_ptr = address;
--    *prot = 0;
-+    result->phys = address;
-+    result->prot = 0;
-     if (mregion) {
-         *mregion = -1;
-     }
-@@ -1807,7 +1806,7 @@ bool pmsav8_mpu_lookup(CPUARMState *env, uint32_t address,
- 
-     if (matchregion == -1) {
-         /* hit using the background region */
--        get_phys_addr_pmsav7_default(env, mmu_idx, address, prot);
-+        get_phys_addr_pmsav7_default(env, mmu_idx, address, &result->prot);
-     } else {
-         uint32_t ap = extract32(env->pmsav8.rbar[secure][matchregion], 1, 2);
-         uint32_t xn = extract32(env->pmsav8.rbar[secure][matchregion], 0, 1);
-@@ -1822,9 +1821,9 @@ bool pmsav8_mpu_lookup(CPUARMState *env, uint32_t address,
-             xn = 1;
-         }
- 
--        *prot = simple_ap_to_rw_prot(env, mmu_idx, ap);
--        if (*prot && !xn && !(pxn && !is_user)) {
--            *prot |= PAGE_EXEC;
-+        result->prot = simple_ap_to_rw_prot(env, mmu_idx, ap);
-+        if (result->prot && !xn && !(pxn && !is_user)) {
-+            result->prot |= PAGE_EXEC;
-         }
-         /*
-          * We don't need to look the attribute up in the MAIR0/MAIR1
-@@ -1837,7 +1836,7 @@ bool pmsav8_mpu_lookup(CPUARMState *env, uint32_t address,
- 
-     fi->type = ARMFault_Permission;
-     fi->level = 1;
--    return !(*prot & (1 << access_type));
-+    return !(result->prot & (1 << access_type));
+@@ -1856,8 +1856,8 @@ static bool v8m_is_sau_exempt(CPUARMState *env,
  }
  
- static bool v8m_is_sau_exempt(CPUARMState *env,
-@@ -2036,8 +2035,7 @@ static bool get_phys_addr_pmsav8(CPUARMState *env, uint32_t address,
+ void v8m_security_lookup(CPUARMState *env, uint32_t address,
+-                                MMUAccessType access_type, ARMMMUIdx mmu_idx,
+-                                V8M_SAttributes *sattrs)
++                         MMUAccessType access_type, ARMMMUIdx mmu_idx,
++                         bool is_secure, V8M_SAttributes *sattrs)
+ {
+     /*
+      * Look up the security attributes for this address. Compare the
+@@ -1885,7 +1885,7 @@ void v8m_security_lookup(CPUARMState *env, uint32_t address,
      }
  
-     ret = pmsav8_mpu_lookup(env, address, access_type, mmu_idx,
--                            &result->phys, &result->attrs, &result->prot,
--                            &mpu_is_subpage, fi, NULL);
-+                            result, &mpu_is_subpage, fi, NULL);
-     result->page_size =
-         sattrs.subpage || mpu_is_subpage ? 1 : TARGET_PAGE_SIZE;
-     return ret;
+     if (idau_exempt || v8m_is_sau_exempt(env, address, access_type)) {
+-        sattrs->ns = !regime_is_secure(env, mmu_idx);
++        sattrs->ns = !is_secure;
+         return;
+     }
+ 
+@@ -1974,7 +1974,8 @@ static bool get_phys_addr_pmsav8(CPUARMState *env, uint32_t address,
+     bool ret;
+ 
+     if (arm_feature(env, ARM_FEATURE_M_SECURITY)) {
+-        v8m_security_lookup(env, address, access_type, mmu_idx, &sattrs);
++        v8m_security_lookup(env, address, access_type, mmu_idx,
++                            secure, &sattrs);
+         if (access_type == MMU_INST_FETCH) {
+             /*
+              * Instruction fetches always use the MMU bank and the
 -- 
 2.34.1

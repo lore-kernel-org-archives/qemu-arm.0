@@ -1,263 +1,642 @@
-Received: by 2002:a17:906:9c0a:0:0:0:0 with SMTP id ff10csp979657ejc;
-        Mon, 22 Aug 2022 08:28:16 -0700 (PDT)
-X-Google-Smtp-Source: AA6agR4krpub9iwmkK4rENKVtkSTrVr8MrYYxrU0bH6BnQJtGKxOFnu8MJZydhwNt+riTZKh608l
-X-Received: by 2002:a05:620a:468e:b0:6bb:1974:ef78 with SMTP id bq14-20020a05620a468e00b006bb1974ef78mr12734676qkb.87.1661182096564;
-        Mon, 22 Aug 2022 08:28:16 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1661182096; cv=none;
+Received: by 2002:a17:906:9c0a:0:0:0:0 with SMTP id ff10csp1001178ejc;
+        Mon, 22 Aug 2022 09:09:15 -0700 (PDT)
+X-Google-Smtp-Source: AA6agR5oSOCKyNUTmL8TZ7pMc1aF61ed7JK3qnwg1vPRgtqEn4Ee8Cjj0zfzLMdTfpSbnsdHsXR8
+X-Received: by 2002:a05:622a:14cc:b0:344:6b01:1149 with SMTP id u12-20020a05622a14cc00b003446b011149mr16050730qtx.477.1661184555271;
+        Mon, 22 Aug 2022 09:09:15 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1661184555; cv=none;
         d=google.com; s=arc-20160816;
-        b=HRRcn6LZMAn2wXBvgbp2EmRha0KWkp21bqmm3ijdgbwVnqzGNE+gmSVxjL/Hv2byD7
-         1fLKbMGX7h8Lf0o0TW/psEQYnMLNSlB3TLd/FyT8+CStxl3E4X3hrigM0GIJdgY7LfC6
-         FEMpSBOy8rBsCItFwy6zOR1Q0l1uuBauy2RxUUN4TDO0TVdv8rWqJ+vLPQ6J+L51+wgg
-         6VEtT+C/RQ+R8eOvMqu+vcTDxRPnpV/eWudopaW4l5bULwC2XqY5DdUH0JCe5svaCMst
-         zwrtnol84ne78V/h6ORcVidVMPreEgV6a9qJ+5Wj7FH7fivn1mMVcg8R904BHR1ukbub
-         cKHw==
+        b=nK4RiQJqo14QhCas9iRjTZFGvUNrQ1elApkWq0pCnfXw+z13zZJLNyy3CvZcYWLQlk
+         VOCs+tVeXkLv1xijy1sLNp63HDzkegWVUzzhgk1OdtO0jj3Ea1oFwNdw+H5SNMHwULQq
+         VE3K7mjUoZ0/1Ncvf0d/RHVQM9Nog507CEouHoPg5cmwvUknycwD5eSr5e6D9zkZhQ0A
+         47QNfFtVJ+x0j/bMpO0Ots8WaxmduWvz+DmjvUwr1eTnjN1KXidmbxjZd0cEf+la1kDM
+         75LLXyxWyis9y8MKCdwpnI2M1v0KRTjoUzVUufQgItGPAUATijyhv4OBsqptUdJYAIJJ
+         WUXQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
-        bh=vL62SPLHXf4JeQ7NMLR/S0ogrmKS1uKF6rjwPnQFrmE=;
-        b=Gqwvj01UT+swyJqxP2MaRkBaA6NL7eco8uU6OyYDKcFFUChjIoL2XERFnDKm+Fzh0K
-         epQ45mO1VhwTXiciORhyV3IhwYYzwURt1UEONSv+HgpTm2lLR8JJqIwzQNMnfMps8nqg
-         VyIwJGR/VWHsHa3SDXwUZ0hTqh+0JKVrsY+RQGkWULWBfaF/0N0Q9dN1GhCiQOOnQU9K
-         JJetR/ctuKx/N2/4zp2yOaXbhUPIzRW53BGLjN7bpIfZSjbKxAkXho7gDOHINZlge9Lf
-         DN74qqSmDGNWNT34/q1eI5tbewEUvbaDxmYkZewYFUeKoS/4rixSYiI2sRcte/uJm4IJ
-         MydA==
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=BMQjmMzkfoITuX+dec8fIu4zsxlYEyz8CB84Zxjp9Y0=;
+        b=oCgy55bmLnE9+4f6HybT/mTEFYXTqsBDSGkwlHi62Yh6i0VSva2BkhgJ6mIOUO/Qd9
+         PGSc7vHhItJgRVZlyEOX+TzwYL0/GqMtepRcJySw6GWmNk1PoBRBE3a4Mlvwhtj6lffC
+         eeXbFfWWeUPNTlJ1yY4sJnctp353ZgTB40cuSN1SxZ00TdfRWLxhLHnMRa/2FHv9lYtk
+         70mzByzMdT5HKJaImefAAPVW7SFxDS+lx9rSXv73TNDmg6+YXK5Jo3eCPoRRiydP+tEc
+         y3lp/WnZUhpilMAZPRpG2gRRX2UBsvdYurOosIoQDCPmzn7F85EUAFxmhHJTRC8435nS
+         s/IQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Z8L0vWje;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=kX8wujSD;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id u5-20020ad45aa5000000b0046e741042b3si4936877qvg.196.2022.08.22.08.28.16
+        by mx.google.com with ESMTPS id h3-20020a376c03000000b006b5e8231b9asi4367778qkc.410.2022.08.22.09.09.15
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 22 Aug 2022 08:28:16 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 22 Aug 2022 09:09:15 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Z8L0vWje;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=kX8wujSD;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:46468 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:38730 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1oQ9Lb-00072I-Ut
-	for alex.bennee@linaro.org; Mon, 22 Aug 2022 11:28:15 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:48554)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1oQ9zG-0005IT-L8
+	for alex.bennee@linaro.org; Mon, 22 Aug 2022 12:09:14 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:60770)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1oQ9L9-0006y1-Du
- for qemu-arm@nongnu.org; Mon, 22 Aug 2022 11:27:47 -0400
-Received: from mail-pj1-x102b.google.com ([2607:f8b0:4864:20::102b]:52177)
+ id 1oQ9Lw-0000gk-Qh
+ for qemu-devel@nongnu.org; Mon, 22 Aug 2022 11:28:36 -0400
+Received: from mail-pj1-x102e.google.com ([2607:f8b0:4864:20::102e]:44770)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1oQ9L6-0000dd-9L
- for qemu-arm@nongnu.org; Mon, 22 Aug 2022 11:27:46 -0400
-Received: by mail-pj1-x102b.google.com with SMTP id e19so10136847pju.1
- for <qemu-arm@nongnu.org>; Mon, 22 Aug 2022 08:27:43 -0700 (PDT)
+ id 1oQ9Lc-0000jl-R0
+ for qemu-devel@nongnu.org; Mon, 22 Aug 2022 11:28:36 -0400
+Received: by mail-pj1-x102e.google.com with SMTP id
+ r15-20020a17090a1bcf00b001fabf42a11cso11650897pjr.3
+ for <qemu-devel@nongnu.org>; Mon, 22 Aug 2022 08:28:16 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:from:to:cc;
- bh=vL62SPLHXf4JeQ7NMLR/S0ogrmKS1uKF6rjwPnQFrmE=;
- b=Z8L0vWje0pvw2QVYdeqCO5TodlW5F5gnUtKHiHXYV3zGO4q1onAngx3cZAnRGqhEit
- R80lApKWu7p1LSgyfFEr5e1CZgsfKZIDSTL/4cIqOCwYaLjW/pEWpXPygirwYYfpeweS
- u+JzIuWVrDR885j1s0HjCV9HAULLdJDfBz+Kpze1w6Nh5ZNXp4ph4qbKXUqYQY3MkrpD
- uOCDPDCEPZ4hysF5YlyiGT1qekK0CPQcEifgv5S2UR4XVtG4FFff3QAv+vtVkv5xQ1JW
- D2WEGiggsqYIhBUmvVJ8BKJdCHGNve0oRyJp4QcBfbO1h0d9VMLo/Y8kGwMzVU1lrR7d
- sFpQ==
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc;
+ bh=BMQjmMzkfoITuX+dec8fIu4zsxlYEyz8CB84Zxjp9Y0=;
+ b=kX8wujSDTJ9d6uaWC3JEZDcjN69k8mKQUsPmSQuGTvRTr1qS8Ip1/KjzVCJAqryTd4
+ wQN6pvXweRe5EcDlhugg32z5ih18MSOY0yqz57ki3CVTLqjFQPKj3OgVTUI61NOCqfY7
+ YvgQtZc2KpLBk0CaUJHwxKHSta5tBmeHNvddEPgG2++bXnXzGFix8duhxH8+2LeYO9iM
+ /lnKiy4v49NWGgfmzRiAy2wqiFT7Vr0JDzWqdz58bSZGku2HTzHG/u2heGF/8mKTDJ27
+ zWVhJpDBpCULzwH3H6SqBPBbDyNZkwiPK60o4lyh5Q8QKOt7PlNXSP/8wCugtPCF36nI
+ jrQw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:x-gm-message-state:from:to:cc;
- bh=vL62SPLHXf4JeQ7NMLR/S0ogrmKS1uKF6rjwPnQFrmE=;
- b=bm0LD02px8WN+BrqNUz9fK6il8E/JFmDq2lFy9eVQ56tUvmv4fTZ6COUi7B32ZYeFr
- qEwyjjsnUij1sG66nNiCjbmUMmVCDgtrJ1l+KaQXhCzC9FT/HxxJP66Lbh/TP+JNv9CF
- CZDk0Cb1+adczHoaG/7G9vx7mbR5JGmEvTDpXgphW/n4lJVAAqQmY3gNw61wh/hE6wdN
- iT6PKng072FscFGqwr49BClopXfZ/G5CENhiM7HWIy50VUoQ+lbBz16JG52QzNf+DDgc
- L3yF+A7fKvy1sOE2b7OYSHi/NvDwAcwTgS9NebT+sMpjH7GjuIWHbwfuQHr9AxAOo62A
- USew==
-X-Gm-Message-State: ACgBeo0Ff2tfQrHR1fTBMJTHberR0nV30nDScJf2bdw9cn2qHF1+OQpf
- i4OuEKUxtKoXYpHAsTFZWgXsMw==
-X-Received: by 2002:a17:902:e5c6:b0:16e:f3b6:ddb5 with SMTP id
- u6-20020a170902e5c600b0016ef3b6ddb5mr20646139plf.122.1661182062420; 
- Mon, 22 Aug 2022 08:27:42 -0700 (PDT)
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc;
+ bh=BMQjmMzkfoITuX+dec8fIu4zsxlYEyz8CB84Zxjp9Y0=;
+ b=gqIYAzXmynIIdUpIGVyR/4paOaKHzwUaHCag9IOAArV2iU4rEmgCR9WG2OtNRkUo/q
+ WfCRQa3SvN7uXuvoe2urBY6w6PwW3IsU2iHshPepxW08OsPvjnYqANdz5X/2618LIsCZ
+ mGMtL3Nb4G73RoOBVh4jmOnsu6UHiseX9o3xEZxIFRnRcwX++rzi4FgpaesQsW7NmnJp
+ z4gxRxdzXM1ybcUoZThRHMjOO8BuasvuDWuQqujux7+nQdnk3YjkKNIrX6oOIVwidS8s
+ DibfbtLUhQM7Ien2DEw4UQ1fgxjSNqZsENpyEhDhTCb70Uz8xWKo8hKwyoCg2kClGxyE
+ y4Cg==
+X-Gm-Message-State: ACgBeo0Z9bTwM6nKMaKDN9MivrvZoEOdy0d7NkZg3IytZbxjbseJZOxc
+ Iqw1eadQqF5a0YY0NyYu/g+7a0HqkeyfDQ==
+X-Received: by 2002:a17:90a:e7d0:b0:1fb:370c:d46d with SMTP id
+ kb16-20020a17090ae7d000b001fb370cd46dmr4727786pjb.33.1661182095812; 
+ Mon, 22 Aug 2022 08:28:15 -0700 (PDT)
 Received: from stoup.. ([71.212.157.236]) by smtp.gmail.com with ESMTPSA id
- q7-20020a17090311c700b0016bffc59718sm8665222plh.58.2022.08.22.08.27.41
+ q7-20020a17090311c700b0016bffc59718sm8665222plh.58.2022.08.22.08.28.15
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 22 Aug 2022 08:27:41 -0700 (PDT)
+ Mon, 22 Aug 2022 08:28:15 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org
-Subject: [PATCH v2 00/66] target/arm: Implement FEAT_HAFDBS
-Date: Mon, 22 Aug 2022 08:26:35 -0700
-Message-Id: <20220822152741.1617527-1-richard.henderson@linaro.org>
+Subject: [PATCH v2 37/66] accel/tcg: Rename CPUIOTLBEntry to CPUTLBEntryFull
+Date: Mon, 22 Aug 2022 08:27:12 -0700
+Message-Id: <20220822152741.1617527-38-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20220822152741.1617527-1-richard.henderson@linaro.org>
+References: <20220822152741.1617527-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::102b;
- envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x102b.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::102e;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x102e.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ef2NLCJT00TS
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: KpG1BCO7bMCi
 
-This is a major reorg to arm page table walking.  While the result
-here is "merely" Hardware-assited Access Flag and Dirty Bit Setting
-(HAFDBS), the ultimate goal is the Realm Management Extension (RME).
-RME "recommends" that HAFDBS be implemented (I_CSLWZ).
+This structure will shortly contain more than just
+data for accessing MMIO.  Rename the 'addr' member
+to 'xlat_section' to more clearly indicate its purpose.
 
-For HAFDBS, being able to find a host pointer for the ram that
-backs a given page table entry is required in order to perform the
-atomic update to that PTE.  The easiest way to find a host pointer
-is to use the existing softtlb mechanism.  Thus all of the page
-table walkers have been adjusted to take an mmu_idx that corresponds
-to the regime in which the page table is stored.  In some cases,
-this is a new "physical" mmu_idx that has a permanent 1-1 mapping.
+Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+---
+ include/exec/cpu-defs.h    |  22 ++++----
+ accel/tcg/cputlb.c         | 102 +++++++++++++++++++------------------
+ target/arm/mte_helper.c    |  14 ++---
+ target/arm/sve_helper.c    |   4 +-
+ target/arm/translate-a64.c |   2 +-
+ 5 files changed, 73 insertions(+), 71 deletions(-)
 
-For RME, "physical" addresses also have page permissions, coming
-from the Root realm Granule Protection Table, which can be thought
-of as a third stage page table lookup.  So eventually the new
-Secure and Nonsecure physical mmu indexes will joined by
-Realm and Root physical mmu indexes, and all of them will take
-the new Granule Page Table into account.
-
-Previously, we had A-profile allocate separate mmu_idx for secure
-vs non-secure.  I've done away with that.  Now, I flush all mmu_idx
-when SCR_EL3.NS is changed.  I did not see how we could reasonably
-add 8 more mmu_idx for Realm.  Moreover, I had a look through ARM
-Trusted Firmware, at the code paths used to change between Secure
-and Nonsecure.  We wind up flushing all of these mmu_idx anyway while
-swapping the EL1+EL2 cpregs, so there is no gain at all in attempting
-to keep them live at the same time within qemu.
-
-Major changes for v2:
-  * Sort as much pure arm cleanup to the front.  Most, but
-    not all, of the first 20 have been reviewed.
-
-  * The accel/tcg changes are completely different.  I have renamed the
-    IOTLB, because it's no longer IO specific.  I've dropped the
-    PageEntryExtra struct, and standardized on the renamed CPUTLBEntryFull
-    struct, which now includes the phys_addr, page protection, and log2
-    page size; the target-specific fields are included via macro.
-    The whole CPUTLBEntryFull struct is passed to the new tlb_set_page_full,
-    simplifying usage; the struct is returned by the new probe_access_full.
-
-    I've been working on an x86_64 conversion to CPUTLBEntryFull as well,
-    both to figure out what another target needs, and to fix
-    https://gitlab.com/qemu-project/qemu/-/issues/279
-
-
-r~
-
-
-Richard Henderson (66):
-  target/arm: Create GetPhysAddrResult
-  target/arm: Fix ipa_secure in get_phys_addr
-  target/arm: Use GetPhysAddrResult in get_phys_addr_lpae
-  target/arm: Use GetPhysAddrResult in get_phys_addr_v6
-  target/arm: Use GetPhysAddrResult in get_phys_addr_v5
-  target/arm: Use GetPhysAddrResult in get_phys_addr_pmsav5
-  target/arm: Use GetPhysAddrResult in get_phys_addr_pmsav7
-  target/arm: Use GetPhysAddrResult in get_phys_addr_pmsav8
-  target/arm: Use GetPhysAddrResult in pmsav8_mpu_lookup
-  target/arm: Remove is_subpage argument to pmsav8_mpu_lookup
-  target/arm: Add is_secure parameter to v8m_security_lookup
-  target/arm: Add secure parameter to pmsav8_mpu_lookup
-  target/arm: Add is_secure parameter to get_phys_addr_v5
-  target/arm: Add is_secure parameter to get_phys_addr_v6
-  target/arm: Add secure parameter to get_phys_addr_pmsav8
-  target/arm: Add is_secure parameter to pmsav7_use_background_region
-  target/arm: Add is_secure parameter to get_phys_addr_lpae
-  target/arm: Add secure parameter to get_phys_addr_pmsav7
-  target/arm: Add is_secure parameter to regime_translation_disabled
-  target/arm: Add is_secure parameter to get_phys_addr_pmsav5
-  target/arm: Split out get_phys_addr_with_secure
-  target/arm: Add is_secure parameter to v7m_read_half_insn
-  target/arm: Add TBFLAG_M32.SECURE
-  target/arm: Merge regime_is_secure into get_phys_addr
-  target/arm: Add is_secure parameter to do_ats_write
-  target/arm: Fold secure and non-secure a-profile mmu indexes
-  target/arm: Reorg regime_translation_disabled
-  target/arm: Drop secure check for HCR.TGE vs SCTLR_EL1.M
-  target/arm: Introduce arm_hcr_el2_eff_secstate
-  target/arm: Hoist read of *is_secure in S1_ptw_translate
-  target/arm: Fix S2 disabled check in S1_ptw_translate
-  target/arm: Remove env argument from combined_attrs_fwb
-  target/arm: Pass HCR to attribute subroutines.
-  target/arm: Fix ATS12NSO* from S PL1
-  target/arm: Split out get_phys_addr_disabled
-  target/arm: Reorg get_phys_addr_disabled
-  accel/tcg: Rename CPUIOTLBEntry to CPUTLBEntryFull
-  accel/tcg: Drop addr member from SavedIOTLB
-  accel/tcg: Suppress auto-invalidate in probe_access_internal
-  accel/tcg: Introduce probe_access_full
-  accel/tcg: Introduce tlb_set_page_full
-  target/arm: Use tlb_set_page_full
-  include/exec: Introduce TARGET_PAGE_ENTRY_EXTRA
-  target/arm: Enable TARGET_PAGE_ENTRY_EXTRA
-  target/arm: Use probe_access_full for MTE
-  target/arm: Use probe_access_full for BTI
-  include/exec: Remove target_tlb_bitN from MemTxAttrs
-  target/arm: Add ARMMMUIdx_Phys_{S,NS}
-  target/arm: Move ARMMMUIdx_Stage2 to a real tlb mmu_idx
-  target/arm: Use softmmu tlbs for page table walking
-  target/arm: Hoist check for disabled stage2 translation.
-  target/arm: Split out get_phys_addr_twostage
-  target/arm: Use bool consistently for get_phys_addr subroutines
-  target/arm: Only use ARMMMUIdx_Stage1* for two-stage translation
-  target/arm: Add ptw_idx argument to S1_ptw_translate
-  target/arm: Add isar predicates for FEAT_HAFDBS
-  target/arm: Extract HA and HD in aa64_va_parameters
-  target/arm: Split out S1TranslateResult type
-  target/arm: Move be test for regime into S1TranslateResult
-  target/arm: Move S1_ptw_translate outside arm_ld[lq]_ptw
-  target/arm: Add ARMFault_UnsuppAtomicUpdate
-  target/arm: Remove loop from get_phys_addr_lpae
-  target/arm: Fix fault reporting in get_phys_addr_lpae
-  target/arm: Don't shift attrs in get_phys_addr_lpae
-  target/arm: Consider GP an attribute in get_phys_addr_lpae
-  target/arm: Implement FEAT_HAFDBS
-
- docs/system/arm/emulation.rst  |    1 +
- include/exec/cpu-defs.h        |   45 +-
- include/exec/exec-all.h        |   33 +
- include/exec/memattrs.h        |   10 -
- include/hw/core/cpu.h          |    1 -
- target/arm/cpu-param.h         |   10 +-
- target/arm/cpu.h               |  138 ++--
- target/arm/internals.h         |  109 +--
- target/arm/sve_ldst_internal.h |    1 +
- accel/tcg/cputlb.c             |  214 ++---
- target/arm/cpu64.c             |    1 +
- target/arm/helper.c            |  213 +++--
- target/arm/m_helper.c          |   83 +-
- target/arm/mte_helper.c        |   63 +-
- target/arm/ptw.c               | 1343 +++++++++++++++++++-------------
- target/arm/sve_helper.c        |   54 +-
- target/arm/tlb_helper.c        |   39 +-
- target/arm/translate-a64.c     |   30 +-
- target/arm/translate.c         |    9 +-
- target/s390x/tcg/mem_helper.c  |    4 -
- 20 files changed, 1287 insertions(+), 1114 deletions(-)
-
+diff --git a/include/exec/cpu-defs.h b/include/exec/cpu-defs.h
+index ba3cd32a1e..f70f54d850 100644
+--- a/include/exec/cpu-defs.h
++++ b/include/exec/cpu-defs.h
+@@ -108,6 +108,7 @@ typedef uint64_t target_ulong;
+ #  endif
+ # endif
+ 
++/* Minimalized TLB entry for use by TCG fast path. */
+ typedef struct CPUTLBEntry {
+     /* bit TARGET_LONG_BITS to TARGET_PAGE_BITS : virtual address
+        bit TARGET_PAGE_BITS-1..4  : Nonzero for accesses that should not
+@@ -131,14 +132,14 @@ typedef struct CPUTLBEntry {
+ 
+ QEMU_BUILD_BUG_ON(sizeof(CPUTLBEntry) != (1 << CPU_TLB_ENTRY_BITS));
+ 
+-/* The IOTLB is not accessed directly inline by generated TCG code,
+- * so the CPUIOTLBEntry layout is not as critical as that of the
+- * CPUTLBEntry. (This is also why we don't want to combine the two
+- * structs into one.)
++/*
++ * The full TLB entry, which is not accessed by generated TCG code,
++ * so the layout is not as critical as that of CPUTLBEntry. This is
++ * also why we don't want to combine the two structs.
+  */
+-typedef struct CPUIOTLBEntry {
++typedef struct CPUTLBEntryFull {
+     /*
+-     * @addr contains:
++     * @xlat_section contains:
+      *  - in the lower TARGET_PAGE_BITS, a physical section number
+      *  - with the lower TARGET_PAGE_BITS masked off, an offset which
+      *    must be added to the virtual address to obtain:
+@@ -146,9 +147,9 @@ typedef struct CPUIOTLBEntry {
+      *       number is PHYS_SECTION_NOTDIRTY or PHYS_SECTION_ROM)
+      *     + the offset within the target MemoryRegion (otherwise)
+      */
+-    hwaddr addr;
++    hwaddr xlat_section;
+     MemTxAttrs attrs;
+-} CPUIOTLBEntry;
++} CPUTLBEntryFull;
+ 
+ /*
+  * Data elements that are per MMU mode, minus the bits accessed by
+@@ -172,9 +173,8 @@ typedef struct CPUTLBDesc {
+     size_t vindex;
+     /* The tlb victim table, in two parts.  */
+     CPUTLBEntry vtable[CPU_VTLB_SIZE];
+-    CPUIOTLBEntry viotlb[CPU_VTLB_SIZE];
+-    /* The iotlb.  */
+-    CPUIOTLBEntry *iotlb;
++    CPUTLBEntryFull vfulltlb[CPU_VTLB_SIZE];
++    CPUTLBEntryFull *fulltlb;
+ } CPUTLBDesc;
+ 
+ /*
+diff --git a/accel/tcg/cputlb.c b/accel/tcg/cputlb.c
+index a46f3a654d..a37275bf8e 100644
+--- a/accel/tcg/cputlb.c
++++ b/accel/tcg/cputlb.c
+@@ -200,13 +200,13 @@ static void tlb_mmu_resize_locked(CPUTLBDesc *desc, CPUTLBDescFast *fast,
+     }
+ 
+     g_free(fast->table);
+-    g_free(desc->iotlb);
++    g_free(desc->fulltlb);
+ 
+     tlb_window_reset(desc, now, 0);
+     /* desc->n_used_entries is cleared by the caller */
+     fast->mask = (new_size - 1) << CPU_TLB_ENTRY_BITS;
+     fast->table = g_try_new(CPUTLBEntry, new_size);
+-    desc->iotlb = g_try_new(CPUIOTLBEntry, new_size);
++    desc->fulltlb = g_try_new(CPUTLBEntryFull, new_size);
+ 
+     /*
+      * If the allocations fail, try smaller sizes. We just freed some
+@@ -215,7 +215,7 @@ static void tlb_mmu_resize_locked(CPUTLBDesc *desc, CPUTLBDescFast *fast,
+      * allocations to fail though, so we progressively reduce the allocation
+      * size, aborting if we cannot even allocate the smallest TLB we support.
+      */
+-    while (fast->table == NULL || desc->iotlb == NULL) {
++    while (fast->table == NULL || desc->fulltlb == NULL) {
+         if (new_size == (1 << CPU_TLB_DYN_MIN_BITS)) {
+             error_report("%s: %s", __func__, strerror(errno));
+             abort();
+@@ -224,9 +224,9 @@ static void tlb_mmu_resize_locked(CPUTLBDesc *desc, CPUTLBDescFast *fast,
+         fast->mask = (new_size - 1) << CPU_TLB_ENTRY_BITS;
+ 
+         g_free(fast->table);
+-        g_free(desc->iotlb);
++        g_free(desc->fulltlb);
+         fast->table = g_try_new(CPUTLBEntry, new_size);
+-        desc->iotlb = g_try_new(CPUIOTLBEntry, new_size);
++        desc->fulltlb = g_try_new(CPUTLBEntryFull, new_size);
+     }
+ }
+ 
+@@ -258,7 +258,7 @@ static void tlb_mmu_init(CPUTLBDesc *desc, CPUTLBDescFast *fast, int64_t now)
+     desc->n_used_entries = 0;
+     fast->mask = (n_entries - 1) << CPU_TLB_ENTRY_BITS;
+     fast->table = g_new(CPUTLBEntry, n_entries);
+-    desc->iotlb = g_new(CPUIOTLBEntry, n_entries);
++    desc->fulltlb = g_new(CPUTLBEntryFull, n_entries);
+     tlb_mmu_flush_locked(desc, fast);
+ }
+ 
+@@ -299,7 +299,7 @@ void tlb_destroy(CPUState *cpu)
+         CPUTLBDescFast *fast = &env_tlb(env)->f[i];
+ 
+         g_free(fast->table);
+-        g_free(desc->iotlb);
++        g_free(desc->fulltlb);
+     }
+ }
+ 
+@@ -1219,7 +1219,7 @@ void tlb_set_page_with_attrs(CPUState *cpu, target_ulong vaddr,
+ 
+         /* Evict the old entry into the victim tlb.  */
+         copy_tlb_helper_locked(tv, te);
+-        desc->viotlb[vidx] = desc->iotlb[index];
++        desc->vfulltlb[vidx] = desc->fulltlb[index];
+         tlb_n_used_entries_dec(env, mmu_idx);
+     }
+ 
+@@ -1236,8 +1236,8 @@ void tlb_set_page_with_attrs(CPUState *cpu, target_ulong vaddr,
+      * subtract here is that of the page base, and not the same as the
+      * vaddr we add back in io_readx()/io_writex()/get_page_addr_code().
+      */
+-    desc->iotlb[index].addr = iotlb - vaddr_page;
+-    desc->iotlb[index].attrs = attrs;
++    desc->fulltlb[index].xlat_section = iotlb - vaddr_page;
++    desc->fulltlb[index].attrs = attrs;
+ 
+     /* Now calculate the new entry */
+     tn.addend = addend - vaddr_page;
+@@ -1341,7 +1341,7 @@ static inline void cpu_transaction_failed(CPUState *cpu, hwaddr physaddr,
+     }
+ }
+ 
+-static uint64_t io_readx(CPUArchState *env, CPUIOTLBEntry *iotlbentry,
++static uint64_t io_readx(CPUArchState *env, CPUTLBEntryFull *full,
+                          int mmu_idx, target_ulong addr, uintptr_t retaddr,
+                          MMUAccessType access_type, MemOp op)
+ {
+@@ -1353,9 +1353,9 @@ static uint64_t io_readx(CPUArchState *env, CPUIOTLBEntry *iotlbentry,
+     bool locked = false;
+     MemTxResult r;
+ 
+-    section = iotlb_to_section(cpu, iotlbentry->addr, iotlbentry->attrs);
++    section = iotlb_to_section(cpu, full->xlat_section, full->attrs);
+     mr = section->mr;
+-    mr_offset = (iotlbentry->addr & TARGET_PAGE_MASK) + addr;
++    mr_offset = (full->xlat_section & TARGET_PAGE_MASK) + addr;
+     cpu->mem_io_pc = retaddr;
+     if (!cpu->can_do_io) {
+         cpu_io_recompile(cpu, retaddr);
+@@ -1365,14 +1365,14 @@ static uint64_t io_readx(CPUArchState *env, CPUIOTLBEntry *iotlbentry,
+         qemu_mutex_lock_iothread();
+         locked = true;
+     }
+-    r = memory_region_dispatch_read(mr, mr_offset, &val, op, iotlbentry->attrs);
++    r = memory_region_dispatch_read(mr, mr_offset, &val, op, full->attrs);
+     if (r != MEMTX_OK) {
+         hwaddr physaddr = mr_offset +
+             section->offset_within_address_space -
+             section->offset_within_region;
+ 
+         cpu_transaction_failed(cpu, physaddr, addr, memop_size(op), access_type,
+-                               mmu_idx, iotlbentry->attrs, r, retaddr);
++                               mmu_idx, full->attrs, r, retaddr);
+     }
+     if (locked) {
+         qemu_mutex_unlock_iothread();
+@@ -1382,8 +1382,8 @@ static uint64_t io_readx(CPUArchState *env, CPUIOTLBEntry *iotlbentry,
+ }
+ 
+ /*
+- * Save a potentially trashed IOTLB entry for later lookup by plugin.
+- * This is read by tlb_plugin_lookup if the iotlb entry doesn't match
++ * Save a potentially trashed CPUTLBEntryFull for later lookup by plugin.
++ * This is read by tlb_plugin_lookup if the fulltlb entry doesn't match
+  * because of the side effect of io_writex changing memory layout.
+  */
+ static void save_iotlb_data(CPUState *cs, hwaddr addr,
+@@ -1397,7 +1397,7 @@ static void save_iotlb_data(CPUState *cs, hwaddr addr,
+ #endif
+ }
+ 
+-static void io_writex(CPUArchState *env, CPUIOTLBEntry *iotlbentry,
++static void io_writex(CPUArchState *env, CPUTLBEntryFull *full,
+                       int mmu_idx, uint64_t val, target_ulong addr,
+                       uintptr_t retaddr, MemOp op)
+ {
+@@ -1408,9 +1408,9 @@ static void io_writex(CPUArchState *env, CPUIOTLBEntry *iotlbentry,
+     bool locked = false;
+     MemTxResult r;
+ 
+-    section = iotlb_to_section(cpu, iotlbentry->addr, iotlbentry->attrs);
++    section = iotlb_to_section(cpu, full->xlat_section, full->attrs);
+     mr = section->mr;
+-    mr_offset = (iotlbentry->addr & TARGET_PAGE_MASK) + addr;
++    mr_offset = (full->xlat_section & TARGET_PAGE_MASK) + addr;
+     if (!cpu->can_do_io) {
+         cpu_io_recompile(cpu, retaddr);
+     }
+@@ -1420,20 +1420,20 @@ static void io_writex(CPUArchState *env, CPUIOTLBEntry *iotlbentry,
+      * The memory_region_dispatch may trigger a flush/resize
+      * so for plugins we save the iotlb_data just in case.
+      */
+-    save_iotlb_data(cpu, iotlbentry->addr, section, mr_offset);
++    save_iotlb_data(cpu, full->xlat_section, section, mr_offset);
+ 
+     if (!qemu_mutex_iothread_locked()) {
+         qemu_mutex_lock_iothread();
+         locked = true;
+     }
+-    r = memory_region_dispatch_write(mr, mr_offset, val, op, iotlbentry->attrs);
++    r = memory_region_dispatch_write(mr, mr_offset, val, op, full->attrs);
+     if (r != MEMTX_OK) {
+         hwaddr physaddr = mr_offset +
+             section->offset_within_address_space -
+             section->offset_within_region;
+ 
+         cpu_transaction_failed(cpu, physaddr, addr, memop_size(op),
+-                               MMU_DATA_STORE, mmu_idx, iotlbentry->attrs, r,
++                               MMU_DATA_STORE, mmu_idx, full->attrs, r,
+                                retaddr);
+     }
+     if (locked) {
+@@ -1480,9 +1480,10 @@ static bool victim_tlb_hit(CPUArchState *env, size_t mmu_idx, size_t index,
+             copy_tlb_helper_locked(vtlb, &tmptlb);
+             qemu_spin_unlock(&env_tlb(env)->c.lock);
+ 
+-            CPUIOTLBEntry tmpio, *io = &env_tlb(env)->d[mmu_idx].iotlb[index];
+-            CPUIOTLBEntry *vio = &env_tlb(env)->d[mmu_idx].viotlb[vidx];
+-            tmpio = *io; *io = *vio; *vio = tmpio;
++            CPUTLBEntryFull *f1 = &env_tlb(env)->d[mmu_idx].fulltlb[index];
++            CPUTLBEntryFull *f2 = &env_tlb(env)->d[mmu_idx].vfulltlb[vidx];
++            CPUTLBEntryFull tmpf;
++            tmpf = *f1; *f1 = *f2; *f2 = tmpf;
+             return true;
+         }
+     }
+@@ -1550,9 +1551,9 @@ tb_page_addr_t get_page_addr_code(CPUArchState *env, target_ulong addr)
+ }
+ 
+ static void notdirty_write(CPUState *cpu, vaddr mem_vaddr, unsigned size,
+-                           CPUIOTLBEntry *iotlbentry, uintptr_t retaddr)
++                           CPUTLBEntryFull *full, uintptr_t retaddr)
+ {
+-    ram_addr_t ram_addr = mem_vaddr + iotlbentry->addr;
++    ram_addr_t ram_addr = mem_vaddr + full->xlat_section;
+ 
+     trace_memory_notdirty_write_access(mem_vaddr, ram_addr, size);
+ 
+@@ -1645,9 +1646,9 @@ int probe_access_flags(CPUArchState *env, target_ulong addr,
+     /* Handle clean RAM pages.  */
+     if (unlikely(flags & TLB_NOTDIRTY)) {
+         uintptr_t index = tlb_index(env, mmu_idx, addr);
+-        CPUIOTLBEntry *iotlbentry = &env_tlb(env)->d[mmu_idx].iotlb[index];
++        CPUTLBEntryFull *full = &env_tlb(env)->d[mmu_idx].fulltlb[index];
+ 
+-        notdirty_write(env_cpu(env), addr, 1, iotlbentry, retaddr);
++        notdirty_write(env_cpu(env), addr, 1, full, retaddr);
+         flags &= ~TLB_NOTDIRTY;
+     }
+ 
+@@ -1672,19 +1673,19 @@ void *probe_access(CPUArchState *env, target_ulong addr, int size,
+ 
+     if (unlikely(flags & (TLB_NOTDIRTY | TLB_WATCHPOINT))) {
+         uintptr_t index = tlb_index(env, mmu_idx, addr);
+-        CPUIOTLBEntry *iotlbentry = &env_tlb(env)->d[mmu_idx].iotlb[index];
++        CPUTLBEntryFull *full = &env_tlb(env)->d[mmu_idx].fulltlb[index];
+ 
+         /* Handle watchpoints.  */
+         if (flags & TLB_WATCHPOINT) {
+             int wp_access = (access_type == MMU_DATA_STORE
+                              ? BP_MEM_WRITE : BP_MEM_READ);
+             cpu_check_watchpoint(env_cpu(env), addr, size,
+-                                 iotlbentry->attrs, wp_access, retaddr);
++                                 full->attrs, wp_access, retaddr);
+         }
+ 
+         /* Handle clean RAM pages.  */
+         if (flags & TLB_NOTDIRTY) {
+-            notdirty_write(env_cpu(env), addr, 1, iotlbentry, retaddr);
++            notdirty_write(env_cpu(env), addr, 1, full, retaddr);
+         }
+     }
+ 
+@@ -1715,7 +1716,7 @@ void *tlb_vaddr_to_host(CPUArchState *env, abi_ptr addr,
+  * should have just filled the TLB. The one corner case is io_writex
+  * which can cause TLB flushes and potential resizing of the TLBs
+  * losing the information we need. In those cases we need to recover
+- * data from a copy of the iotlbentry. As long as this always occurs
++ * data from a copy of the CPUTLBEntryFull. As long as this always occurs
+  * from the same thread (which a mem callback will be) this is safe.
+  */
+ 
+@@ -1730,11 +1731,12 @@ bool tlb_plugin_lookup(CPUState *cpu, target_ulong addr, int mmu_idx,
+     if (likely(tlb_hit(tlb_addr, addr))) {
+         /* We must have an iotlb entry for MMIO */
+         if (tlb_addr & TLB_MMIO) {
+-            CPUIOTLBEntry *iotlbentry;
+-            iotlbentry = &env_tlb(env)->d[mmu_idx].iotlb[index];
++            CPUTLBEntryFull *full;
++            full = &env_tlb(env)->d[mmu_idx].fulltlb[index];
+             data->is_io = true;
+-            data->v.io.section = iotlb_to_section(cpu, iotlbentry->addr, iotlbentry->attrs);
+-            data->v.io.offset = (iotlbentry->addr & TARGET_PAGE_MASK) + addr;
++            data->v.io.section =
++                iotlb_to_section(cpu, full->xlat_section, full->attrs);
++            data->v.io.offset = (full->xlat_section & TARGET_PAGE_MASK) + addr;
+         } else {
+             data->is_io = false;
+             data->v.ram.hostaddr = (void *)((uintptr_t)addr + tlbe->addend);
+@@ -1842,7 +1844,7 @@ static void *atomic_mmu_lookup(CPUArchState *env, target_ulong addr,
+ 
+     if (unlikely(tlb_addr & TLB_NOTDIRTY)) {
+         notdirty_write(env_cpu(env), addr, size,
+-                       &env_tlb(env)->d[mmu_idx].iotlb[index], retaddr);
++                       &env_tlb(env)->d[mmu_idx].fulltlb[index], retaddr);
+     }
+ 
+     return hostaddr;
+@@ -1950,7 +1952,7 @@ load_helper(CPUArchState *env, target_ulong addr, MemOpIdx oi,
+ 
+     /* Handle anything that isn't just a straight memory access.  */
+     if (unlikely(tlb_addr & ~TARGET_PAGE_MASK)) {
+-        CPUIOTLBEntry *iotlbentry;
++        CPUTLBEntryFull *full;
+         bool need_swap;
+ 
+         /* For anything that is unaligned, recurse through full_load.  */
+@@ -1958,20 +1960,20 @@ load_helper(CPUArchState *env, target_ulong addr, MemOpIdx oi,
+             goto do_unaligned_access;
+         }
+ 
+-        iotlbentry = &env_tlb(env)->d[mmu_idx].iotlb[index];
++        full = &env_tlb(env)->d[mmu_idx].fulltlb[index];
+ 
+         /* Handle watchpoints.  */
+         if (unlikely(tlb_addr & TLB_WATCHPOINT)) {
+             /* On watchpoint hit, this will longjmp out.  */
+             cpu_check_watchpoint(env_cpu(env), addr, size,
+-                                 iotlbentry->attrs, BP_MEM_READ, retaddr);
++                                 full->attrs, BP_MEM_READ, retaddr);
+         }
+ 
+         need_swap = size > 1 && (tlb_addr & TLB_BSWAP);
+ 
+         /* Handle I/O access.  */
+         if (likely(tlb_addr & TLB_MMIO)) {
+-            return io_readx(env, iotlbentry, mmu_idx, addr, retaddr,
++            return io_readx(env, full, mmu_idx, addr, retaddr,
+                             access_type, op ^ (need_swap * MO_BSWAP));
+         }
+ 
+@@ -2286,12 +2288,12 @@ store_helper_unaligned(CPUArchState *env, target_ulong addr, uint64_t val,
+      */
+     if (unlikely(tlb_addr & TLB_WATCHPOINT)) {
+         cpu_check_watchpoint(env_cpu(env), addr, size - size2,
+-                             env_tlb(env)->d[mmu_idx].iotlb[index].attrs,
++                             env_tlb(env)->d[mmu_idx].fulltlb[index].attrs,
+                              BP_MEM_WRITE, retaddr);
+     }
+     if (unlikely(tlb_addr2 & TLB_WATCHPOINT)) {
+         cpu_check_watchpoint(env_cpu(env), page2, size2,
+-                             env_tlb(env)->d[mmu_idx].iotlb[index2].attrs,
++                             env_tlb(env)->d[mmu_idx].fulltlb[index2].attrs,
+                              BP_MEM_WRITE, retaddr);
+     }
+ 
+@@ -2355,7 +2357,7 @@ store_helper(CPUArchState *env, target_ulong addr, uint64_t val,
+ 
+     /* Handle anything that isn't just a straight memory access.  */
+     if (unlikely(tlb_addr & ~TARGET_PAGE_MASK)) {
+-        CPUIOTLBEntry *iotlbentry;
++        CPUTLBEntryFull *full;
+         bool need_swap;
+ 
+         /* For anything that is unaligned, recurse through byte stores.  */
+@@ -2363,20 +2365,20 @@ store_helper(CPUArchState *env, target_ulong addr, uint64_t val,
+             goto do_unaligned_access;
+         }
+ 
+-        iotlbentry = &env_tlb(env)->d[mmu_idx].iotlb[index];
++        full = &env_tlb(env)->d[mmu_idx].fulltlb[index];
+ 
+         /* Handle watchpoints.  */
+         if (unlikely(tlb_addr & TLB_WATCHPOINT)) {
+             /* On watchpoint hit, this will longjmp out.  */
+             cpu_check_watchpoint(env_cpu(env), addr, size,
+-                                 iotlbentry->attrs, BP_MEM_WRITE, retaddr);
++                                 full->attrs, BP_MEM_WRITE, retaddr);
+         }
+ 
+         need_swap = size > 1 && (tlb_addr & TLB_BSWAP);
+ 
+         /* Handle I/O access.  */
+         if (tlb_addr & TLB_MMIO) {
+-            io_writex(env, iotlbentry, mmu_idx, val, addr, retaddr,
++            io_writex(env, full, mmu_idx, val, addr, retaddr,
+                       op ^ (need_swap * MO_BSWAP));
+             return;
+         }
+@@ -2388,7 +2390,7 @@ store_helper(CPUArchState *env, target_ulong addr, uint64_t val,
+ 
+         /* Handle clean RAM pages.  */
+         if (tlb_addr & TLB_NOTDIRTY) {
+-            notdirty_write(env_cpu(env), addr, size, iotlbentry, retaddr);
++            notdirty_write(env_cpu(env), addr, size, full, retaddr);
+         }
+ 
+         haddr = (void *)((uintptr_t)addr + entry->addend);
+diff --git a/target/arm/mte_helper.c b/target/arm/mte_helper.c
+index d11a8c70d0..fdd23ab3f8 100644
+--- a/target/arm/mte_helper.c
++++ b/target/arm/mte_helper.c
+@@ -106,7 +106,7 @@ static uint8_t *allocation_tag_mem(CPUARMState *env, int ptr_mmu_idx,
+     return tags + index;
+ #else
+     uintptr_t index;
+-    CPUIOTLBEntry *iotlbentry;
++    CPUTLBEntryFull *full;
+     int in_page, flags;
+     ram_addr_t ptr_ra;
+     hwaddr ptr_paddr, tag_paddr, xlat;
+@@ -129,7 +129,7 @@ static uint8_t *allocation_tag_mem(CPUARMState *env, int ptr_mmu_idx,
+     assert(!(flags & TLB_INVALID_MASK));
+ 
+     /*
+-     * Find the iotlbentry for ptr.  This *must* be present in the TLB
++     * Find the CPUTLBEntryFull for ptr.  This *must* be present in the TLB
+      * because we just found the mapping.
+      * TODO: Perhaps there should be a cputlb helper that returns a
+      * matching tlb entry + iotlb entry.
+@@ -144,10 +144,10 @@ static uint8_t *allocation_tag_mem(CPUARMState *env, int ptr_mmu_idx,
+         g_assert(tlb_hit(comparator, ptr));
+     }
+ # endif
+-    iotlbentry = &env_tlb(env)->d[ptr_mmu_idx].iotlb[index];
++    full = &env_tlb(env)->d[ptr_mmu_idx].fulltlb[index];
+ 
+     /* If the virtual page MemAttr != Tagged, access unchecked. */
+-    if (!arm_tlb_mte_tagged(&iotlbentry->attrs)) {
++    if (!arm_tlb_mte_tagged(&full->attrs)) {
+         return NULL;
+     }
+ 
+@@ -181,7 +181,7 @@ static uint8_t *allocation_tag_mem(CPUARMState *env, int ptr_mmu_idx,
+         int wp = ptr_access == MMU_DATA_LOAD ? BP_MEM_READ : BP_MEM_WRITE;
+         assert(ra != 0);
+         cpu_check_watchpoint(env_cpu(env), ptr, ptr_size,
+-                             iotlbentry->attrs, wp, ra);
++                             full->attrs, wp, ra);
+     }
+ 
+     /*
+@@ -202,11 +202,11 @@ static uint8_t *allocation_tag_mem(CPUARMState *env, int ptr_mmu_idx,
+     tag_paddr = ptr_paddr >> (LOG2_TAG_GRANULE + 1);
+ 
+     /* Look up the address in tag space. */
+-    tag_asi = iotlbentry->attrs.secure ? ARMASIdx_TagS : ARMASIdx_TagNS;
++    tag_asi = full->attrs.secure ? ARMASIdx_TagS : ARMASIdx_TagNS;
+     tag_as = cpu_get_address_space(env_cpu(env), tag_asi);
+     mr = address_space_translate(tag_as, tag_paddr, &xlat, NULL,
+                                  tag_access == MMU_DATA_STORE,
+-                                 iotlbentry->attrs);
++                                 full->attrs);
+ 
+     /*
+      * Note that @mr will never be NULL.  If there is nothing in the address
+diff --git a/target/arm/sve_helper.c b/target/arm/sve_helper.c
+index d6f7ef94fe..9cae8fd352 100644
+--- a/target/arm/sve_helper.c
++++ b/target/arm/sve_helper.c
+@@ -5384,8 +5384,8 @@ bool sve_probe_page(SVEHostPage *info, bool nofault, CPUARMState *env,
+         g_assert(tlb_hit(comparator, addr));
+ # endif
+ 
+-        CPUIOTLBEntry *iotlbentry = &env_tlb(env)->d[mmu_idx].iotlb[index];
+-        info->attrs = iotlbentry->attrs;
++        CPUTLBEntryFull *full = &env_tlb(env)->d[mmu_idx].fulltlb[index];
++        info->attrs = full->attrs;
+     }
+ #endif
+ 
+diff --git a/target/arm/translate-a64.c b/target/arm/translate-a64.c
+index 1b593ada36..305044a141 100644
+--- a/target/arm/translate-a64.c
++++ b/target/arm/translate-a64.c
+@@ -14626,7 +14626,7 @@ static bool is_guarded_page(CPUARMState *env, DisasContext *s)
+      * table entry even for that case.
+      */
+     return (tlb_hit(entry->addr_code, addr) &&
+-            arm_tlb_bti_gp(&env_tlb(env)->d[mmu_idx].iotlb[index].attrs));
++            arm_tlb_bti_gp(&env_tlb(env)->d[mmu_idx].fulltlb[index].attrs));
+ #endif
+ }
+ 
 -- 
 2.34.1
 

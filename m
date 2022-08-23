@@ -1,284 +1,129 @@
-Received: by 2002:a05:7108:4017:0:0:0:0 with SMTP id a23csp2836694gdh;
-        Tue, 23 Aug 2022 08:59:37 -0700 (PDT)
-X-Received: by 2002:a17:90b:2243:b0:1f7:3011:117e with SMTP id hk3-20020a17090b224300b001f73011117emr3916613pjb.3.1661270377378;
-        Tue, 23 Aug 2022 08:59:37 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1661270377; cv=none;
+Received: by 2002:a17:906:9c0a:0:0:0:0 with SMTP id ff10csp1530672ejc;
+        Tue, 23 Aug 2022 07:22:07 -0700 (PDT)
+X-Received: by 2002:a05:6902:1103:b0:695:6fe2:5957 with SMTP id o3-20020a056902110300b006956fe25957mr16652841ybu.293.1661264527323;
+        Tue, 23 Aug 2022 07:22:07 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1661264527; cv=none;
         d=google.com; s=arc-20160816;
-        b=okhzJyfe7FQXYy9ad/9xZbQH3YLxpxb4TDRVSrzBwQwZKH3Eb7D81oCGj57DYh0xeT
-         VHmrOfj9VuvXsT1PHxRnPtIiliAGIkE0gJdXAIHJClqBjJ3u0xoLyAklpEijHN2p4II1
-         3WekTySXvOsMQcAbWpk4+caMtWU3rl8HIOYn4l4r1ySOoBwZYhdrhY9vDO2SQHkvs6g7
-         Yv1Vtcr4MAHx9TQgNZQ/fyPiR+G9MUOSHxnc8+8fjCrzwhUyLDaqPSPXRrg0B7lbuMod
-         9SPGyg3By1m6pPEeNxMf8o9zMV/ZaC8+VuGO1e6ar+4Nwwe3xeQKAJoJNC1ILe3DHfUs
-         mWQQ==
+        b=vgy3iiDMsXy6XfnKH9n42X89d6EoemBwfSqPxW6z5k7UNguRg5S4GtC7vtE6oBSo5d
+         YFk34YcJ3x19ec//LPBExlqK8XQ3r8HE/ZIN/mik5ilG9pYHkd6Q3Lnydcex+PQ+kMJ8
+         okO77kRinXHKFweXUAsa8ZlF+apqVmlkKKYRZ+nI0iaDRZtupEE9xk+cD6fEctCAmFtE
+         UBbLBw+9YuVK6vCOVZMkOxQPumXIL6g9YHqqAr17PcCAVkn6i17g9A980OYi0DfTJaGB
+         iV8pqGXqzl0CDq3oXCjUedKBIQ0WQnXkV2VD76DW4FQ3fi7T7aTeKNjY1Hm8C0eHgBdP
+         H1XA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:dkim-signature;
-        bh=5/9WAujOPk7f1FmFcvt7ZwBRX/iUYvZP+iuh9bDPgn0=;
-        b=uCSqa8IjszmcZ9zgE0SwX3vSkry2PBxxO9itwTRfhEO60v8caGvgfF2+49Y0c7QR7X
-         8awmlLTO9N+CJ0pK6dyk6dZ9BUxN291N/OD+Fu9PJaM1RlEP01i98s3fkCv4RWTrT5fn
-         dYdPLC+M5j3wOEY3ZVs9aNl7vB8K3pl2bAD2X9iPC0WNg1r8+qRQuWI82be/npEGBNpk
-         7Mvl1tbLZ0zqzNY0jVpUiK37L/jgieVuUrvuAWvZJ72mUhBLJGn5fsOvxBGRJo8Vyesb
-         6FjyxMi+auZdXjo54p/psY8mdvn5UEhsP24B50jh2v9hQoEuHx+D8pNhavTHGIcwh/ZB
-         aELA==
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=6sCcO+czUNvV2xfGnZUi8UpVs6Iz+lx4c4qyPpFqObQ=;
+        b=0KumhCbXNUq2rgXf2pMI4i7mymSSVjkZBAY4i0YUmzaOzpgBkmyaGvif9KvoOg1fmQ
+         J1RkrPoZNRoy9qNw+P6GiH6QtmE0ldHJCCkLoIBoP5Zx8+x6sPEeRvMuX+mAklYmABiM
+         olmjyGTpWhCHXIZZrq4iPf/5gfYHJcKtFk0bD0evM3poIsRTmIGpuofzva34YrQJq034
+         qag7bHihQys4Ot2v+hQBWvWbdRL5PkQ8Oi4KeTCQbadEUWoOIkSTj/U7ATFptiyhA1F7
+         cnvlZloJHhksnIytIvZmT0203y5SM/CBnLWb/ulpps3IXp9yPs3rKj8r3S2B8I8MXKn5
+         nqDg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=XUA1vWKg;
-       spf=pass (google.com: domain of shinysaana@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=shinysaana@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <shinysaana@gmail.com>
+       dkim=pass header.i=@linaro.org header.s=google header.b=t7UTDgxN;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <peter.maydell@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id h63-20020a625342000000b00536a01a1ea6sor3241672pfb.30.2022.08.23.08.59.37
+        by mx.google.com with SMTPS id l9-20020a25b309000000b0067182aae26dsor6725935ybj.107.2022.08.23.07.22.07
+        for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Tue, 23 Aug 2022 08:59:37 -0700 (PDT)
-Received-SPF: pass (google.com: domain of shinysaana@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        Tue, 23 Aug 2022 07:22:07 -0700 (PDT)
+Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=XUA1vWKg;
-       spf=pass (google.com: domain of shinysaana@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=shinysaana@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dkim=pass header.i=@linaro.org header.s=google header.b=t7UTDgxN;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc;
-        bh=5/9WAujOPk7f1FmFcvt7ZwBRX/iUYvZP+iuh9bDPgn0=;
-        b=XUA1vWKge2nWKNmo2TPQrHCDk8bIGsYNedqH/DhhtmdEOdMGvVYAqZkaWB5HpS0+sN
-         VRsbGZiRPZfP19hf/un9hD/Y4BdA6ebEzqNwHg2sJP24mAgS+9la5HHk0BCtLswazL0Z
-         O9PLb4b2eUeRHIScG4rEC0jwPrOriVq+xuB2Ybj8Cg40KrjMTSsrCmum2YjwNvh7ua3H
-         oh2R9MChDda+F3LPIDFaR2OXTCecaaBjsxriMhnlb5CSf8ZL1iq6Bq6N9qjJuSQCvuEL
-         qxHpW1g+Nq1XF+YW54+U5K8ml1EuOwZe+kZ36vKA+zYh1etoz3w1zFgxUbsDLX6dwGaV
-         eiIA==
+        d=linaro.org; s=google;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc;
+        bh=6sCcO+czUNvV2xfGnZUi8UpVs6Iz+lx4c4qyPpFqObQ=;
+        b=t7UTDgxN8O/OEkRS61iSK4CzSp2Nmp9KWcF1BX/vAT96Vn+vaBI5RLv6jdm0qFzj1o
+         uDRApy9UCfrPoGPvHJmp632LQshdVuDPFr1mgKJIRbqLarGajnuEeEnTczI23H6gSdXu
+         a286AdhxDlRZHj3IYU7U7svYjRfmtE7zRFsDlUZOQ5EGfM8ePb13XKxdcI1SudRuBcLb
+         Xd7+O4mQiNdoIY8ZLq9LleEopR1UFUY8XKfFRnDKpzElqH2jnx1yGNQmQSRxgpN2pFaY
+         SlAOua9sZX4fqJLtkDb6bIYwWsVYNjCUFGF56/NtfcZ9Cs76Kv8M5hOPhfq04VY9G4ny
+         kFDw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc;
-        bh=5/9WAujOPk7f1FmFcvt7ZwBRX/iUYvZP+iuh9bDPgn0=;
-        b=ro40VBlFyBoxiiLN+X4IYJeMPEJF7SeFEAFXqIHMQ7hOSciCaHfMR61bDRTCGr3MIo
-         IxquIwXstH1tM/yc2FXQ4raVIy7cNJHP6Xc0NbQXkyzb7XpAU1WET61mN2rphxwrVKK7
-         MVeKKXc8cbKZluT1GG7KV/Mqm4DYcN5/gVWRjV+QWrnAHMSuURbRgbMu47alUh1wUNb2
-         oNLwmGMh1gL1+bTjlW90PKRAMQu6crGKg751VAyG6TOlEuhqKMpt4HXnaZrvkUab7EfH
-         8Z2DjJOhec1mKrlU2sTjnvlmlXUAEr4lDieX4TteWHyq/h89b4izbA1Y7BoD1V3L8W0Z
-         G0EA==
-X-Gm-Message-State: ACgBeo0+Ucvt4PjNAUsm8VzpmA8MWL1iztedlAGbeqXOahdFU3foBBPF
-	l81u1dJLU9yJ5vIzZpdj2/Xxoa0/2CHQulBy8QBv7IjYIs8=
-X-Google-Smtp-Source: AA6agR5SBtkkaKxbl2nWuFxpU3embhbrF3nShIA40t484h+msMpJk5AqrG9HIQHYl37r0irQTzIpacLeE93EWUJpO9A=
-X-Received: by 2002:a62:e304:0:b0:536:bdec:5800 with SMTP id
- g4-20020a62e304000000b00536bdec5800mr8072648pfh.49.1661270376619; Tue, 23 Aug
- 2022 08:59:36 -0700 (PDT)
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc;
+        bh=6sCcO+czUNvV2xfGnZUi8UpVs6Iz+lx4c4qyPpFqObQ=;
+        b=TMX3YUsWPdIGZCtzXGrNx9JnIfyLv0E+A77La2uHq24epIfCoRiNsEvY4nsj2sYjqI
+         K/PGXwVlggp4fbqU/eyIKB994CuE3cuJuPixVfXeZagSaseWNt1zk1YuoXR/mmUvefK6
+         RYxJ16ZW5UoAyeA7pZeoPPVfS0V049s1aNmDVC7PGyma6egsJox3AjSlzmtUO+0uy/Ad
+         nRs7CR4XlVQilEfYENDScs+ZQNrcaVyfmmdH7Rhua7Y1zL4wA7lIbxzKUB+EcS6nU9mo
+         iiNctkHgkQRY3luiNotnyFsSbyKZpxQaxLl+OFs8fVSRIihu3KezYPgxRlivNyL8YVQX
+         Xw/w==
+X-Gm-Message-State: ACgBeo0aH4Gh6BJ10VjEZKzqdgtdKkaIdFlFGIvYPMuqmW5axf6qdTJ/
+	/1qA0kN9KH5wXLSJu6jFtVACAckg+hROEHcc8B0EjoRI843eTjXU
+X-Google-Smtp-Source: AA6agR6nD/ZKX9J7BRIbyTchQ4AndifGoCKelVFFEx/2e/6wOwkus4aDFeDZG9mAYktmmMKyBT+3y5r03nqYFwXwK6U=
+X-Received: by 2002:a25:4288:0:b0:692:8c1e:2e7e with SMTP id
+ p130-20020a254288000000b006928c1e2e7emr25264033yba.479.1661264526931; Tue, 23
+ Aug 2022 07:22:06 -0700 (PDT)
 MIME-Version: 1.0
 References: <CAJtCPL0rRU9Q=s6kUFDHjC5uUmx2w=ePYMMaib6vq57g48qk0Q@mail.gmail.com>
  <CAFEAcA81OfC_Z_uQvrSRUKHQf4mmOgbLrHYiwsfzmgH8u8sUqg@mail.gmail.com>
  <CAJtCPL3yNpNkK0Ljzo=QOFX_gLQtGGcqDoomwJ+RH0hq5G=YQA@mail.gmail.com>
  <87r11gbjbv.fsf@linaro.org> <CAFEAcA-6X=ptfDXGWA79-L9kRCQRq6jtci7ODPy0Ct369_EvCA@mail.gmail.com>
  <CAJtCPL3Hef3d6sDA+pYJ6xChHS7y1J+2Cn9qf1NT0hwaBT8iTg@mail.gmail.com>
- <CAFEAcA8TmrMo+MOhOutUuwE=GOEFYUGxgRA2_XGZ2iunMTAe5w@mail.gmail.com>
- <CAJtCPL10GL8JL2qb-sZTpmPaHTy7fOoEDb194ZL1NSvXpqGaUQ@mail.gmail.com> <CAFEAcA8ozX22==9T33gxS9Ks31fzMgKH9-Eic03gMsg86iTYmA@mail.gmail.com>
-In-Reply-To: <CAFEAcA8ozX22==9T33gxS9Ks31fzMgKH9-Eic03gMsg86iTYmA@mail.gmail.com>
-From: Shiny Saana <shinysaana@gmail.com>
-Date: Tue, 23 Aug 2022 17:59:25 +0200
-Message-ID: <CAJtCPL1k5z_QrhMcX_6HYdLY7Tc+3_O3rDUaEqweBpK6-xKAKA@mail.gmail.com>
+ <CAFEAcA8TmrMo+MOhOutUuwE=GOEFYUGxgRA2_XGZ2iunMTAe5w@mail.gmail.com> <CAJtCPL10GL8JL2qb-sZTpmPaHTy7fOoEDb194ZL1NSvXpqGaUQ@mail.gmail.com>
+In-Reply-To: <CAJtCPL10GL8JL2qb-sZTpmPaHTy7fOoEDb194ZL1NSvXpqGaUQ@mail.gmail.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 23 Aug 2022 15:21:25 +0100
+Message-ID: <CAFEAcA8ozX22==9T33gxS9Ks31fzMgKH9-Eic03gMsg86iTYmA@mail.gmail.com>
 Subject: Re: Teensy 4.1 Implementation
-To: Peter Maydell <peter.maydell@linaro.org>
+To: Shiny Saana <shinysaana@gmail.com>
 Cc: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, qemu-arm@nongnu.org, 
 	qemu-devel@nongnu.org
-Content-Type: multipart/alternative; boundary="000000000000aca46005e6eaa66a"
-X-TUID: sLAi+Zi7ANnn
-
---000000000000aca46005e6eaa66a
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
+X-TUID: TxtlxhOFlmxA
 
-> Your board code should be setting the init-nsvtor property on
-> the armv7m object to 0x00200000, if it isn't already.
+On Tue, 23 Aug 2022 at 15:00, Shiny Saana <shinysaana@gmail.com> wrote:
+> From experimentation and dissasembly on the ROM, (located in 0x0020_0000)=
+, the very first int (converted to BE) is "0x2020_1000" , which is located =
+to "OCRAM2", also referred as "ROM RAM" by the documentation, and the next =
+int is "0x0020_2091", which both points inside the ROM itself , and which w=
+hen forcibly disassembled in Ghidra does look like a function.
+> So I'm pretty confident the initial vector base address is 0x0020_0000.
 
-I'm going to add that property right away!
+Right. In fact, rereading the datasheet, I see that I overlooked
+that the IOMUXC_GPR_GPR16 reset value is actually specified. Bits
+[31:7] of that are the CM7_INIT_VTOR, which is to say that they're
+bits [31:7] of the initial vector table address. And they're set
+so that is 0x0020_0000.
 
-> Yes, this would be in line with the way we use -kernel on other
-> M-profile board models.
+Your board code should be setting the init-nsvtor property on
+the armv7m object to 0x00200000, if it isn't already.
 
-Got it! Thank you for correcting my understanding!
+> Regarding the "kernel loading" issue, I believe that I was initially
+> mistaken. From other examples online, I believed that it was the way
+> to load the Teensy image. But thinking and discussing it with another
+> ARM dev, wouldn't the ROM itself actually be considered the kernel?
 
-> I'll have a think about which one of those I prefer, and maybe
-> write a patch...
+Yes, this would be in line with the way we use -kernel on other
+M-profile board models.
 
-I do think it would be better with such a solution, yes.
-I personally think querying init-nsvtor would reduce complexity and "make
-sense".
-Or perhaps both?
-Something as simple as adding a function taking a functing the base load
-address as a parameter, and another that queries init-nsvtor and call it
-with that value? Everyone would happy :p
+> Knowing that, if the call to  armv7m_load_kernel() is mandatory,
+> maybe it would make sense to load the ROM in C code via this
+> function, with the compiled ROM addresses from 0x0000_0000 to
+> 0x001F_FFFF being padded with 0.
 
-I will go with the "padded 0 bytes" plan for now, so that I can move on
-with the rest of the implementation, but please do ping me if you do end up
-upstreaming such a patch!
-As always, thanks again!
+That's one way to do it. I think it would be better to adjust
+armv7m_load_kernel() so that it loaded the file to a board-specific
+ROM base, which would avoid the need for the weird zero-padding.
+Two options:
+ * we could make armv7m_load_kernel() take a base address as well as
+   a size for the region it loads the "kernel" to
+ * we could have armv7m_load_kernel() be clever enough to query
+   the CPU to find out what the VTOR value is and load the
+   "kernel" there
 
-Saana
+I'll have a think about which one of those I prefer, and maybe
+write a patch...
 
-Le mar. 23 ao=C3=BBt 2022 =C3=A0 16:22, Peter Maydell <peter.maydell@linaro=
-.org> a
-=C3=A9crit :
-
-> On Tue, 23 Aug 2022 at 15:00, Shiny Saana <shinysaana@gmail.com> wrote:
-> > From experimentation and dissasembly on the ROM, (located in
-> 0x0020_0000), the very first int (converted to BE) is "0x2020_1000" , whi=
-ch
-> is located to "OCRAM2", also referred as "ROM RAM" by the documentation,
-> and the next int is "0x0020_2091", which both points inside the ROM itsel=
-f
-> , and which when forcibly disassembled in Ghidra does look like a functio=
-n.
-> > So I'm pretty confident the initial vector base address is 0x0020_0000.
->
-> Right. In fact, rereading the datasheet, I see that I overlooked
-> that the IOMUXC_GPR_GPR16 reset value is actually specified. Bits
-> [31:7] of that are the CM7_INIT_VTOR, which is to say that they're
-> bits [31:7] of the initial vector table address. And they're set
-> so that is 0x0020_0000.
->
-> Your board code should be setting the init-nsvtor property on
-> the armv7m object to 0x00200000, if it isn't already.
->
-> > Regarding the "kernel loading" issue, I believe that I was initially
-> > mistaken. From other examples online, I believed that it was the way
-> > to load the Teensy image. But thinking and discussing it with another
-> > ARM dev, wouldn't the ROM itself actually be considered the kernel?
->
-> Yes, this would be in line with the way we use -kernel on other
-> M-profile board models.
->
-> > Knowing that, if the call to  armv7m_load_kernel() is mandatory,
-> > maybe it would make sense to load the ROM in C code via this
-> > function, with the compiled ROM addresses from 0x0000_0000 to
-> > 0x001F_FFFF being padded with 0.
->
-> That's one way to do it. I think it would be better to adjust
-> armv7m_load_kernel() so that it loaded the file to a board-specific
-> ROM base, which would avoid the need for the weird zero-padding.
-> Two options:
->  * we could make armv7m_load_kernel() take a base address as well as
->    a size for the region it loads the "kernel" to
->  * we could have armv7m_load_kernel() be clever enough to query
->    the CPU to find out what the VTOR value is and load the
->    "kernel" there
->
-> I'll have a think about which one of those I prefer, and maybe
-> write a patch...
->
-> thanks
-> -- PMM
->
-
---000000000000aca46005e6eaa66a
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"auto"><span style=3D"border-color:rgb(0,0,0) rgb(0,0,0) rgb(0,0=
-,0) rgb(204,204,204);color:rgb(0,0,0)">&gt; Your board code should be setti=
-ng the init-nsvtor property on</span><br style=3D"font-family:-apple-system=
-,HelveticaNeue"><span style=3D"border-color:rgb(0,0,0) rgb(0,0,0) rgb(0,0,0=
-) rgb(204,204,204);color:rgb(0,0,0)">&gt; the armv7m object to 0x00200000, =
-if it isn&#39;t already.</span><br></div><div dir=3D"auto"><br></div><div d=
-ir=3D"auto">I&#39;m going to add that property right away!</div><div dir=3D=
-"auto"><br></div><div dir=3D"auto"><span style=3D"border-color:rgb(0,0,0) r=
-gb(0,0,0) rgb(0,0,0) rgb(204,204,204);color:rgb(0,0,0)">&gt; Yes, this woul=
-d be in line with the way we use -kernel on other</span><br style=3D"font-f=
-amily:-apple-system,HelveticaNeue"><span style=3D"border-color:rgb(0,0,0) r=
-gb(0,0,0) rgb(0,0,0) rgb(204,204,204);color:rgb(0,0,0)">&gt; M-profile boar=
-d models.</span><br></div><div dir=3D"auto"><span style=3D"border-color:rgb=
-(0,0,0) rgb(0,0,0) rgb(0,0,0) rgb(204,204,204);color:rgb(0,0,0)"><br></span=
-></div><div dir=3D"auto">Got it! Thank you for correcting my understanding!=
-</div><div dir=3D"auto"><br></div><div dir=3D"auto"><span style=3D"border-c=
-olor:rgb(0,0,0) rgb(0,0,0) rgb(0,0,0) rgb(204,204,204);color:rgb(0,0,0)">&g=
-t; I&#39;ll have a think about which one of those I prefer, and maybe</span=
-><br style=3D"font-family:-apple-system,HelveticaNeue"><span style=3D"borde=
-r-color:rgb(0,0,0) rgb(0,0,0) rgb(0,0,0) rgb(204,204,204);color:rgb(0,0,0)"=
->&gt; write a patch...</span><br></div><div dir=3D"auto"><span style=3D"bor=
-der-color:rgb(0,0,0) rgb(0,0,0) rgb(0,0,0) rgb(204,204,204);color:rgb(0,0,0=
-)"><br></span></div><div dir=3D"auto"><span style=3D"border-color:rgb(0,0,0=
-) rgb(0,0,0) rgb(0,0,0) rgb(204,204,204);color:rgb(0,0,0)">I do think it wo=
-uld be better with such a solution, yes.</span></div><div dir=3D"auto"><spa=
-n style=3D"border-color:rgb(0,0,0) rgb(0,0,0) rgb(0,0,0) rgb(204,204,204);c=
-olor:rgb(0,0,0)">I personally think querying init-nsvtor would reduce compl=
-exity and &quot;make sense&quot;.</span></div><div dir=3D"auto"><span style=
-=3D"border-color:rgb(0,0,0) rgb(0,0,0) rgb(0,0,0) rgb(204,204,204);color:rg=
-b(0,0,0)">Or perhaps both?</span></div><div dir=3D"auto"><span style=3D"bor=
-der-color:rgb(0,0,0) rgb(0,0,0) rgb(0,0,0) rgb(204,204,204);color:rgb(0,0,0=
-)">Something as simple as adding a function taking a functing the base load=
- address as a parameter, and another that queries init-nsvtor and call it w=
-ith that value? Everyone would happy :p</span></div><div dir=3D"auto"><span=
- style=3D"border-color:rgb(0,0,0) rgb(0,0,0) rgb(0,0,0) rgb(204,204,204);co=
-lor:rgb(0,0,0)"><br></span></div><div dir=3D"auto"><span style=3D"border-co=
-lor:rgb(0,0,0) rgb(0,0,0) rgb(0,0,0) rgb(204,204,204);color:rgb(0,0,0)">I w=
-ill go with the &quot;padded 0 bytes&quot; plan for now, so that I can move=
- on with the rest of the implementation, but please do ping me if you do en=
-d up upstreaming such a patch!=C2=A0</span></div><div dir=3D"auto"><span st=
-yle=3D"border-color:rgb(0,0,0) rgb(0,0,0) rgb(0,0,0) rgb(204,204,204);color=
-:rgb(0,0,0)">As always, thanks again!</span></div><div dir=3D"auto"><span s=
-tyle=3D"border-color:rgb(0,0,0) rgb(0,0,0) rgb(0,0,0) rgb(204,204,204);colo=
-r:rgb(0,0,0)"><br></span></div><div dir=3D"auto"><span style=3D"border-colo=
-r:rgb(0,0,0) rgb(0,0,0) rgb(0,0,0) rgb(204,204,204);color:rgb(0,0,0)">Saana=
-</span></div><div><br><div class=3D"gmail_quote"><div dir=3D"ltr" class=3D"=
-gmail_attr">Le=C2=A0mar. 23 ao=C3=BBt 2022 =C3=A0 16:22, Peter Maydell &lt;=
-<a href=3D"mailto:peter.maydell@linaro.org">peter.maydell@linaro.org</a>&gt=
-; a =C3=A9crit=C2=A0:<br></div><blockquote class=3D"gmail_quote" style=3D"m=
-argin:0px 0px 0px 0.8ex;border-left-width:1px;border-left-style:solid;paddi=
-ng-left:1ex;border-left-color:rgb(204,204,204)">On Tue, 23 Aug 2022 at 15:0=
-0, Shiny Saana &lt;<a href=3D"mailto:shinysaana@gmail.com" target=3D"_blank=
-">shinysaana@gmail.com</a>&gt; wrote:<br>
-&gt; From experimentation and dissasembly on the ROM, (located in 0x0020_00=
-00), the very first int (converted to BE) is &quot;0x2020_1000&quot; , whic=
-h is located to &quot;OCRAM2&quot;, also referred as &quot;ROM RAM&quot; by=
- the documentation, and the next int is &quot;0x0020_2091&quot;, which both=
- points inside the ROM itself , and which when forcibly disassembled in Ghi=
-dra does look like a function.<br>
-&gt; So I&#39;m pretty confident the initial vector base address is 0x0020_=
-0000.<br>
-<br>
-Right. In fact, rereading the datasheet, I see that I overlooked<br>
-that the IOMUXC_GPR_GPR16 reset value is actually specified. Bits<br>
-[31:7] of that are the CM7_INIT_VTOR, which is to say that they&#39;re<br>
-bits [31:7] of the initial vector table address. And they&#39;re set<br>
-so that is 0x0020_0000.<br>
-<br><span style=3D"border-color:rgb(0,0,0) rgb(0,0,0) rgb(0,0,0) rgb(204,20=
-4,204);color:rgb(0,0,0)">Your board code should be setting the init-nsvtor =
-property on</span><br style=3D"font-family:-apple-system,HelveticaNeue"><sp=
-an style=3D"border-color:rgb(0,0,0) rgb(0,0,0) rgb(0,0,0) rgb(204,204,204);=
-color:rgb(0,0,0)">the armv7m object to 0x00200000, if it isn&#39;t already.=
-</span><br>
-<br>
-&gt; Regarding the &quot;kernel loading&quot; issue, I believe that I was i=
-nitially<br>
-&gt; mistaken. From other examples online, I believed that it was the way<b=
-r>
-&gt; to load the Teensy image. But thinking and discussing it with another<=
-br>
-&gt; ARM dev, wouldn&#39;t the ROM itself actually be considered the kernel=
-?<br>
-<br>
-Yes, this would be in line with the way we use -kernel on other<br>
-M-profile board models.<br>
-<br>
-&gt; Knowing that, if the call to=C2=A0 armv7m_load_kernel() is mandatory,<=
-br>
-&gt; maybe it would make sense to load the ROM in C code via this<br>
-&gt; function, with the compiled ROM addresses from 0x0000_0000 to<br>
-&gt; 0x001F_FFFF being padded with 0.<br>
-<br>
-That&#39;s one way to do it. I think it would be better to adjust<br>
-armv7m_load_kernel() so that it loaded the file to a board-specific<br>
-ROM base, which would avoid the need for the weird zero-padding.<br>
-Two options:<br>
-=C2=A0* we could make armv7m_load_kernel() take a base address as well as<b=
-r>
-=C2=A0 =C2=A0a size for the region it loads the &quot;kernel&quot; to<br>
-=C2=A0* we could have armv7m_load_kernel() be clever enough to query<br>
-=C2=A0 =C2=A0the CPU to find out what the VTOR value is and load the<br>
-=C2=A0 =C2=A0&quot;kernel&quot; there<br>
-<br>
-I&#39;ll have a think about which one of those I prefer, and maybe<br>
-write a patch...<br>
-<br>
-thanks<br>
--- PMM<br>
-</blockquote></div></div>
-
---000000000000aca46005e6eaa66a--
+thanks
+-- PMM

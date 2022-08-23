@@ -1,252 +1,170 @@
-Received: by 2002:a17:906:9c0a:0:0:0:0 with SMTP id ff10csp1379673ejc;
-        Tue, 23 Aug 2022 02:24:32 -0700 (PDT)
-X-Google-Smtp-Source: AA6agR4ij14q8Wg+iBGNad8POvnp9DdAAXFDgPzS/rpmojFpc2r9AKNxBZZkr9gpMuFD6BilaxDH
-X-Received: by 2002:ac8:7d50:0:b0:344:64af:d709 with SMTP id h16-20020ac87d50000000b0034464afd709mr18331054qtb.639.1661246672160;
-        Tue, 23 Aug 2022 02:24:32 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1661246672; cv=none;
+Received: by 2002:a05:7108:4017:0:0:0:0 with SMTP id a23csp2693337gdh;
+        Tue, 23 Aug 2022 06:09:54 -0700 (PDT)
+X-Received: by 2002:a81:7702:0:b0:328:297a:fdcb with SMTP id s2-20020a817702000000b00328297afdcbmr25428342ywc.335.1661260193397;
+        Tue, 23 Aug 2022 06:09:53 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1661260193; cv=none;
         d=google.com; s=arc-20160816;
-        b=GRpmLHLNpwE8I/yN4eLzcb+qq9ubsZ7J+RxQt+xuXFmDWE20wr5254gBo+lRSuif6Z
-         XC06Ko7SegGXajRtSWIlS7psw81/on7PwybjhFYv4TSFZ4HldP4ZMJK3AH/MRBDi1r+W
-         /xVkIHc8V1CSzFl2Se228rQn2zMXahWo9rzX5jm9je/jSza92h25NfJuMBFM0kqdAJog
-         nywGIZblMNg1QXFfPHBRVxyPbSoaIWZ6nbBDuJ57t5viGX3enLjStyXsdQd4WT37pOMV
-         UWqCE0b0fhO526MHEQmWjQ8z9FK/7/VjW7siMihlTlpsrxPcl+Lper5dqr66CVXtbK4f
-         5glQ==
+        b=0VhvWDYG9OFu9KI7EYxZmhQ+XBp9xNg07x0V+GeaNNhJNU4vqatzxdO3Ied4+KSmbc
+         iEm6O5LJJeY79yJGi/CqzbbmISUCvaS9wqAh9KKD+vl9tw+lArhS6WKXZ05O4eVD8AgX
+         bx6iiDgi8roS3lcOeiskB+DKXPc9U1vDRZfpSela8jHgnqAoPPU169eUMZrTtjZpVzJG
+         1/irdYtPaWvMBKjTNCET7FGCjWd9pAQ5mQOauaijAlqGOiePK4E79b7U63v4B1jCLHWi
+         FXYtHnMnWJAzsV+dBk2qbVKWWLkf2kkKls3fnvAq3aAPzdNFdxwFIrn5dOhUAZy16gOJ
+         Jowg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :feedback-id:dkim-signature:dkim-signature;
-        bh=otmssfj9N3teg30fD6nrCS81JGFsoJlMNlwMt1B2sFY=;
-        b=i3K1olV0B6WIVtIUSRa9ax8U3K2ECfZpcP2dA43Ane4w60PEjqJF8pGRy3mKJTmCuz
-         Ra+oCH2rTnAbC4q9h6q3hMVZeQP7zt9eBChq6clJAdDPpo+k23OtHqtVsFrMiIwx0rFd
-         mvPHCKQIayRrUNRElHMbjRHBv1zE0YLg4ZydQZ4zOGSHrMCRdB/eTPMsOyyhbH3DFHVg
-         hX5RgBKnXkbGsCfExKO6ZIOFBT3tSv3ngCMuyiojZybKed7I213ZJw5ng1VCP81vTmJw
-         EM5Mj/qgMiVIQIZd2TDPQDHtN0WY3MARcbhcXoAfvH28NhVT4Szg0korOfnZI5OnlsCF
-         5P/w==
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature;
+        bh=l6D4OkRsSxRrpdxS778PHcilllcgsWp5HtxIEzGoemY=;
+        b=swQqxiik2szWoyPgaj5wlzQbEIxbXTaQwkvtaibP2w8J8TVV+4BqidFS1qVnFUFvsX
+         AdTMOITAawmbJhmL74O+sQ25CrIGisiSFispMikADxHZDqTJzixqYgaF4Jhfd3w0oKkd
+         WA/oOZrGiopGA2Nf0RXwGW91bPtmGl1Zwh5LMOsciNdggGx5aOzUAa5wH5AefFHSzsYk
+         pLqhtREnptQPqLPfPj99L0k7keqS4TI0DjhdhxlIjUoBKdKrNsQr/rYpE3+5fTI24aTJ
+         wx/Lv0YpuztZJVAkyttduG1WUpSL32vmOW35Oe1QWUr7eXcKbNIDq/BokJyV/1xzT2Fy
+         hwAg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@irrelevant.dk header.s=fm3 header.b=bRx3zjnv;
-       dkim=fail header.i=@messagingengine.com header.s=fm1 header.b=sK5+II0X;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id y26-20020a37f61a000000b006b563ad49b3si5310731qkj.275.2022.08.23.02.24.32
+       dkim=pass header.i=@linaro.org header.s=google header.b=L9NZJvY7;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <peter.maydell@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id i17-20020a25be91000000b00683e1ce371esor6730272ybk.17.2022.08.23.06.09.51
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 23 Aug 2022 02:24:32 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Tue, 23 Aug 2022 06:09:53 -0700 (PDT)
+Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@irrelevant.dk header.s=fm3 header.b=bRx3zjnv;
-       dkim=fail header.i=@messagingengine.com header.s=fm1 header.b=sK5+II0X;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:46442 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1oQQ99-0008QL-M1
-	for alex.bennee@linaro.org; Tue, 23 Aug 2022 05:24:31 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:43420)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <its@irrelevant.dk>)
- id 1oQQ8t-0008NT-Pf; Tue, 23 Aug 2022 05:24:16 -0400
-Received: from out5-smtp.messagingengine.com ([66.111.4.29]:57755)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <its@irrelevant.dk>)
- id 1oQQ8g-00054b-Kj; Tue, 23 Aug 2022 05:24:14 -0400
-Received: from compute5.internal (compute5.nyi.internal [10.202.2.45])
- by mailout.nyi.internal (Postfix) with ESMTP id 7D2295C017C;
- Tue, 23 Aug 2022 05:23:59 -0400 (EDT)
-Received: from mailfrontend1 ([10.202.2.162])
- by compute5.internal (MEProxy); Tue, 23 Aug 2022 05:23:59 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=irrelevant.dk;
- h=cc:cc:content-type:date:date:from:from:in-reply-to
- :in-reply-to:message-id:mime-version:references:reply-to:sender
- :subject:subject:to:to; s=fm3; t=1661246639; x=1661333039; bh=ot
- mssfj9N3teg30fD6nrCS81JGFsoJlMNlwMt1B2sFY=; b=bRx3zjnv1J6pSgdkhn
- pcny+NxlyqWerdHxkm6IOrqDich5H0CE7gcRH5DzTd5QpUVeU/MNmZ4VcHHEaJaN
- iSUGlLQdpp15nndSCnnwazarJGlF3NGGpwrs3EAmVkiyZguS9u2AhhKR4gKgJT4g
- BO2a6Fy4Oe90srPADj/BxArDQZGPgKjSzfHFe4nQ7s4bo1sSEPNchyfoTQxFgy3M
- kSt22HTE3yFNBaDekpv9bdm1ebRYgI0sCSGlaXPmn6aObN/J+RsTUas7IeCIvKN1
- VJF32s/mEcrX7AGcQWVMsT1SGBrGEATriJpsaLKa+SZaWjSHZL4x/ElrbrsICV+0
- q3TA==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
- messagingengine.com; h=cc:cc:content-type:date:date:feedback-id
- :feedback-id:from:from:in-reply-to:in-reply-to:message-id
- :mime-version:references:reply-to:sender:subject:subject:to:to
- :x-me-proxy:x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=
- fm1; t=1661246639; x=1661333039; bh=otmssfj9N3teg30fD6nrCS81JGFs
- oJlMNlwMt1B2sFY=; b=sK5+II0XjpkNgb0VrgAmdljjsqZ5q8GlGy/vmw4yXA3V
- aRpCHoGjo439VloqJn2kX9kCghsU/gT+w943F9gsWMyURFiRpnkqo1TWWUgChdeZ
- rgf5S0sVac9o8x0/vxQkE13ymZ2OsWYCZ8fR15lbtL8+B+9i2sA55VROaEo0gfWB
- 0knSktAFXNI1KX2pbYth6jbUP413qVRvmo4H6mdU7HLNAE2Ubdh9eNtX6n9ufwrs
- yPG75RdxBz+M5NeA0DL44EZG76tPDkCh888LutQTE9D9It9Q7dAJNn111YUjHGdy
- vpJjKlZh8UFULPIg0lw9Pph8ka/vUWCu3Apntij3eA==
-X-ME-Sender: <xms:rpwEY4C9czOCUvURV7PPpXzXR68mIHQm4dWmhsln0ta7Ta1vEsFmxg>
- <xme:rpwEY6jLft7msMEh9sccLZazUBUa0cZFwQ-cYd93cI01Lp6_Szw3JE2AJXpmV8-EU
- tOYRNbs3mQQ6oQHqCA>
-X-ME-Received: <xmr:rpwEY7n-NQ1aEwSi_SqEc2tYfHuKGOqb1XsYQhmyPrAGyRFtDgl6wwXfuvCKyo9pCPZgbsZ_HwwvuMTk6w>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvfedrvdeiledgudefucetufdoteggodetrfdotf
- fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
- uceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmne
- cujfgurhepfffhvfevuffkfhggtggujgesghdtreertddtjeenucfhrhhomhepmfhlrghu
- shculfgvnhhsvghnuceoihhtshesihhrrhgvlhgvvhgrnhhtrdgukheqnecuggftrfgrth
- htvghrnhepffduvdfhheejudfgieejueeileegveduvdelhfekhffgteetffdtvdekveei
- leefnecuffhomhgrihhnpehkvghrnhgvlhdrohhrghenucevlhhushhtvghrufhiiigvpe
- dtnecurfgrrhgrmhepmhgrihhlfhhrohhmpehithhssehirhhrvghlvghvrghnthdrughk
-X-ME-Proxy: <xmx:rpwEY-wWR6hHF72eHpBXm94iesjnJNEkkzQxMmlvJhwuw36214xlNQ>
- <xmx:rpwEY9SOsIoRtWi8Ip5w-M3q3dt-e1T_xJk5XUMva1FJr4Da5D_02g>
- <xmx:rpwEY5bk1bFsA594rUsL0512_0Brrs4RFKRRZ0RWyliamMzUKjF9_Q>
- <xmx:r5wEY4EHNsqajsf03V4xT6vRAwMyd5MO9zNtZLlHBgJkWKNbFmBebw>
-Feedback-ID: idc91472f:Fastmail
-Received: by mail.messagingengine.com (Postfix) with ESMTPA; Tue,
- 23 Aug 2022 05:23:57 -0400 (EDT)
-Date: Tue, 23 Aug 2022 11:23:55 +0200
-From: Klaus Jensen <its@irrelevant.dk>
-To: Peter Delevoryas <peter@pjd.dev>
-Cc: patrick@stwcx.xyz, clg@kaod.org, peter.maydell@linaro.org,
- andrew@aj.id.au, joel@jms.id.au, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org, dz4list@gmail.com
-Subject: Re: [PATCH 1/1] hw/i2c/aspeed: Fix old reg slave receive
-Message-ID: <YwScq4fD+gBIN+3Q@apples>
-References: <20220820225712.713209-1-peter@pjd.dev>
- <20220820225712.713209-2-peter@pjd.dev>
+       dkim=pass header.i=@linaro.org header.s=google header.b=L9NZJvY7;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc;
+        bh=l6D4OkRsSxRrpdxS778PHcilllcgsWp5HtxIEzGoemY=;
+        b=L9NZJvY7kMoaAbOA5oTpmdFYAU6SKs95nq+5Q5j6TkmWUm8firZdonlzNDma42u68f
+         AdNMbiy4PTmwehlLFuD5icqdB8TG5koDBJqcEULisNE8HwK74N6jmMKttTWByTKCZ+BN
+         qY3qUxQPobZlFtfd7JxRTPwG9DRJcNcMsLg7ALjg7b2wmKee1/3Qm/tmcSNBSFkOec4w
+         TneH5UeeUoKQofvHLNVfGlrND+W/9CqDLDjz+cXZHyAroSb4w3C931l3IZOJLjTAM+rJ
+         +i+v0K+XFpIcJtupdiuVB+jf1xn2Gbtrb4y/8QzcPzJeVP/8Synq5Z3p67V9/G+7BiqR
+         qW+w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc;
+        bh=l6D4OkRsSxRrpdxS778PHcilllcgsWp5HtxIEzGoemY=;
+        b=6CjBHDJEkZGpHuz+29ksoM3wlKdgCEAO8nLJP3svyMVDpGfUDBPxOXH2OqBIZxT72e
+         lZqWIx01786QQGhjqvGSkCbUeLafOgLk3uKEwmjivK1dcH3Hj1G4NcsclvHpzLYUaSfF
+         hEL8I8eybZeGdWKwM2HtZXz8fvUYXqRPxFc26whdYiSRi5RjgdW5LsDkbDnXi7zcN3yE
+         x0A6CVeL6WQRktmlW41gejV2ATfYK2WsUYreRBPm49z/KufytSAmK0Ra5Id1HjZSyixI
+         CdGwnYRD50PbV+wBlaV5TCRrsZHqnD3GKn03QeUjHcfVxlY0eeSuTzjPGMtt05FbTg5o
+         bklw==
+X-Gm-Message-State: ACgBeo1LCLUMQivTEDkrNPNZcKTdvcuP5WrbpyPa1kyQ8lONiSF50b0o
+	IoBb32iYu07l/XeNbgbx4opuHdPtfOGRyMRxL5oGVFvj
+X-Google-Smtp-Source: AA6agR4wf1NBp4Fo6j5Vk3mJFoXAjbgojAnt3+xDe+2riUwFpwtzJ1obLLhK2jaJHbC+xIvHeM7f07V01GLjXmAUeF0=
+X-Received: by 2002:a05:6902:10c3:b0:695:e4a3:ea8f with SMTP id
+ w3-20020a05690210c300b00695e4a3ea8fmr4848244ybu.288.1661260191530; Tue, 23
+ Aug 2022 06:09:51 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
- protocol="application/pgp-signature"; boundary="6f5kc02gty7ajWhr"
-Content-Disposition: inline
-In-Reply-To: <20220820225712.713209-2-peter@pjd.dev>
-Received-SPF: pass client-ip=66.111.4.29; envelope-from=its@irrelevant.dk;
- helo=out5-smtp.messagingengine.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
-X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 8tEVnK2N2wTQ
+References: <CAJtCPL0rRU9Q=s6kUFDHjC5uUmx2w=ePYMMaib6vq57g48qk0Q@mail.gmail.com>
+ <CAFEAcA81OfC_Z_uQvrSRUKHQf4mmOgbLrHYiwsfzmgH8u8sUqg@mail.gmail.com>
+ <CAJtCPL3yNpNkK0Ljzo=QOFX_gLQtGGcqDoomwJ+RH0hq5G=YQA@mail.gmail.com>
+ <87r11gbjbv.fsf@linaro.org> <CAFEAcA-6X=ptfDXGWA79-L9kRCQRq6jtci7ODPy0Ct369_EvCA@mail.gmail.com>
+ <CAJtCPL3Hef3d6sDA+pYJ6xChHS7y1J+2Cn9qf1NT0hwaBT8iTg@mail.gmail.com>
+In-Reply-To: <CAJtCPL3Hef3d6sDA+pYJ6xChHS7y1J+2Cn9qf1NT0hwaBT8iTg@mail.gmail.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 23 Aug 2022 14:09:09 +0100
+Message-ID: <CAFEAcA8TmrMo+MOhOutUuwE=GOEFYUGxgRA2_XGZ2iunMTAe5w@mail.gmail.com>
+Subject: Re: Teensy 4.1 Implementation
+To: Shiny Saana <shinysaana@gmail.com>
+Cc: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, qemu-arm@nongnu.org, 
+	qemu-devel@nongnu.org
+Content-Type: text/plain; charset="UTF-8"
+X-TUID: SkzEhUo+wk53
 
+On Sun, 21 Aug 2022 at 01:05, Shiny Saana <shinysaana@gmail.com> wrote:
+> I've been able to write an initial Teensy 4.1 machine, for now with
+> only the few important memory regions initialized, and successfully
+> ran some hand-written ARM code on it.
 
---6f5kc02gty7ajWhr
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Great, that's good progress!
 
-On Aug 20 15:57, Peter Delevoryas wrote:
-> I think when Klaus ported his slave mode changes from the original patch
-> series to the rewritten I2C module, he changed the behavior of the first
-> byte that is received by the slave device.
->=20
-> What's supposed to happen is that the AspeedI2CBus's slave device's
-> i2c_event callback should run, and if the event is "send_async", then it
-> should populate the byte buffer with the 8-bit I2C address that is being
-> sent to. Since we only support "send_async", the lowest bit should
-> always be 0 (indicating that the master is requesting to send data).
->=20
-> This is the code Klaus had previously, for reference. [1]
->=20
->     switch (event) {
->     case I2C_START_SEND:
->         bus->buf =3D bus->dev_addr << 1;
->=20
->         bus->buf &=3D I2CD_BYTE_BUF_RX_MASK;
->         bus->buf <<=3D I2CD_BYTE_BUF_RX_SHIFT;
->=20
->         bus->intr_status |=3D (I2CD_INTR_SLAVE_ADDR_RX_MATCH | I2CD_INTR_=
-RX_DONE);
->         aspeed_i2c_set_state(bus, I2CD_STXD);
->=20
->         break;
->=20
-> [1]: https://lore.kernel.org/qemu-devel/20220331165737.1073520-4-its@irre=
-levant.dk/
->=20
-> Signed-off-by: Peter Delevoryas <peter@pjd.dev>
-> Fixes: a8d48f59cd021b25 ("hw/i2c/aspeed: add slave device in old register=
- mode")
-> ---
->  hw/i2c/aspeed_i2c.c         | 8 +++++---
->  include/hw/i2c/aspeed_i2c.h | 1 +
->  2 files changed, 6 insertions(+), 3 deletions(-)
->=20
-> diff --git a/hw/i2c/aspeed_i2c.c b/hw/i2c/aspeed_i2c.c
-> index 42c6d69b82..c166fd20fa 100644
-> --- a/hw/i2c/aspeed_i2c.c
-> +++ b/hw/i2c/aspeed_i2c.c
-> @@ -1131,7 +1131,9 @@ static int aspeed_i2c_bus_slave_event(I2CSlave *sla=
-ve, enum i2c_event event)
->      AspeedI2CBus *bus =3D ASPEED_I2C_BUS(qbus->parent);
->      uint32_t reg_intr_sts =3D aspeed_i2c_bus_intr_sts_offset(bus);
->      uint32_t reg_byte_buf =3D aspeed_i2c_bus_byte_buf_offset(bus);
-> -    uint32_t value;
-> +    uint32_t reg_dev_addr =3D aspeed_i2c_bus_dev_addr_offset(bus);
-> +    uint32_t dev_addr =3D SHARED_ARRAY_FIELD_EX32(bus->regs, reg_dev_add=
-r,
-> +                                                SLAVE_DEV_ADDR1);
-> =20
->      if (aspeed_i2c_is_new_mode(bus->controller)) {
->          return aspeed_i2c_bus_new_slave_event(bus, event);
-> @@ -1139,8 +1141,8 @@ static int aspeed_i2c_bus_slave_event(I2CSlave *sla=
-ve, enum i2c_event event)
-> =20
->      switch (event) {
->      case I2C_START_SEND_ASYNC:
-> -        value =3D SHARED_ARRAY_FIELD_EX32(bus->regs, reg_byte_buf, TX_BU=
-F);
-> -        SHARED_ARRAY_FIELD_DP32(bus->regs, reg_byte_buf, RX_BUF, value <=
-< 1);
-> +        /* Bit[0] =3D=3D 0 indicates "send". */
-> +        SHARED_ARRAY_FIELD_DP32(bus->regs, reg_byte_buf, RX_BUF, dev_add=
-r << 1);
-> =20
->          ARRAY_FIELD_DP32(bus->regs, I2CD_INTR_STS, SLAVE_ADDR_RX_MATCH, =
-1);
->          SHARED_ARRAY_FIELD_DP32(bus->regs, reg_intr_sts, RX_DONE, 1);
-> diff --git a/include/hw/i2c/aspeed_i2c.h b/include/hw/i2c/aspeed_i2c.h
-> index 300a89b343..adc904d6c1 100644
-> --- a/include/hw/i2c/aspeed_i2c.h
-> +++ b/include/hw/i2c/aspeed_i2c.h
-> @@ -130,6 +130,7 @@ REG32(I2CD_CMD, 0x14) /* I2CD Command/Status */
->      SHARED_FIELD(M_TX_CMD, 1, 1)
->      SHARED_FIELD(M_START_CMD, 0, 1)
->  REG32(I2CD_DEV_ADDR, 0x18) /* Slave Device Address */
-> +    SHARED_FIELD(SLAVE_DEV_ADDR1, 0, 7)
->  REG32(I2CD_POOL_CTRL, 0x1C) /* Pool Buffer Control */
->      SHARED_FIELD(RX_COUNT, 24, 5)
->      SHARED_FIELD(RX_SIZE, 16, 5)
-> --=20
-> 2.37.1
->=20
+> The documentation ( https://www.pjrc.com/teensy/IMXRT1060RM_rev3.pdf ),
+> in section 9.7.1, gives some informations on how, in the actual
+> Teensy board, the ROM, executed at boot, initialize the board
+> peripherals, and also reads from a data structure included in the
+> Flash memory (the user-provided program) where the CPU should jump
+> to after the ROM has done its work (somewhere in that same Flash memory,
+> usually).
+>
+> I was able to successfully dump the ROM of the real board and
+> confirm this behavior. Given that the current plan is not to
+> emulate every peripherals, I am of the opinion that writing a very
+> simple ROM that merely reads this Flash provided data structure and
+> jumps to the provided address sounds like a good starting point, so
+> that I can keep iterating on writing more and more complex code
+> through the provided Teensy toolchain, and implementing needed
+> peripherals.
+>
+> As such, I have several questions:
+>
+> 1/ To replicate this behaviour, is this considered the correct
+> approach by the current QEMU maintainers?
 
-Nice catch Peter! I'm not sure how I messed that up like that.
+Yes, I think this is probably a reasonable way to go.
 
-Reviewed-by: Klaus Jensen <k.jensen@samsung.com>
+> 2/ If so, I have not been able to find any function that would be
+> able to load data into a memory region "statically". Does one
+> exist? Is there an alternative to this process?
 
---6f5kc02gty7ajWhr
-Content-Type: application/pgp-signature; name="signature.asc"
+Depends exactly what you want to do. If you want "let the user
+load data to an arbitrary address", then the "generic loader"
+is usually helpful:
+https://www.qemu.org/docs/master/system/generic-loader.html
 
------BEGIN PGP SIGNATURE-----
+If you mean "C code within QEMU loads data to a specific place",
+rom_add_blob_fixed_as() is probably what you want. This is how
+hw/arm/boot.c loads both user-provided data files and the
+hand-coded mini-bootloader into the guest.
 
-iQEzBAEBCAAdFiEEUigzqnXi3OaiR2bATeGvMW1PDekFAmMEnKkACgkQTeGvMW1P
-DelJXAf/QBkRA+aluk7Cs9Rh60eAFgnWLjslOV1ydyIMLwkumiX0ZJ0mX3k8+cpD
-G+jQ7/EVwgDuoiusi/fUKGVMKhfcxUY8TTh1udoCuNKgcpfA0U3gTGDOT3+pGVEz
-Ryxyu9cPEnNyNHoB04WA0H5v/Y6fC10hhT96RzWLtkdhb7eX1ottNNlC94mh+NX6
-9RLRKADkJROMd5pO9OtcgjIP2uEmZoryCyODpN8BtA17nQkguXeYr9PoXVyoqWqY
-UQUOgCobHLDUMxZU95Cij25QTpLMJgEEkpnKbp3Ur5VJFf1PL/C0WnjVa7lOp4Ga
-DZj6Wx6ttNimVj5+jm0wcDuJrn2Fsw==
-=BVdZ
------END PGP SIGNATURE-----
+> 3/ Regarding loading the "kernel" of the board, as part of the
+> init process, I am calling the usual "armv7m_load_kernel" function
+> with its usual parameters. However, it seems to load it as the
+> very start of the address space, which is not where the flash
+> memory is, and so is not where the kernel should be loaded. I
+> wasn't able to find a workaround. Is there something I'm missing?
 
---6f5kc02gty7ajWhr--
+The behaviour of armv7m_load_kernel() depends on what kind
+of file you pass to -kernel. If you pass -kernel an ELF file,
+then it will get loaded to the addresses as specified by
+the ELF file, so you can use that to put data anywhere you like.
+If you pass it a raw binary file then, yeah, at the moment
+that gets loaded to address 0. There's no real reason for this
+limitation -- it's mainly because when that code was written
+we supported very few M-profile boards, and all of them booted
+from address 0. (That is, the board doesn't set either the
+init-svtor or init-nsvtor properties on the armv7m object to
+anything other than 0.) We could change how this works, but
+the difficulty is that the desire for "Just Do What I Mean"
+behaviour for a specific board tends to conflict with the
+desire for all boards to behave in a consistent manner.
+In particular, at the moment passing a binary file to -kernel
+means "I want this to be loaded so that it has the
+CPU vector table in it and execution starts from reset as
+the architecture says it should"; it can't both mean that
+consistently across M-profile boards and also mean "on the
+teeny board, be an image file intended to boot via the ROM
+loader".
+
+Loading the teeny images via the generic loader rather than
+via -kernel would be one way to sidestep this issue...
+
+Do you know what the hardware sets the initial vector
+base address to? (that is, where the ROM itself puts its
+reset/interrupt vector table). I couldn't find anything in
+the datasheet that said that.
+
+(By the way, calling armv7m_load_kernel() is mandatory even if
+you don't care about loading an image, because it's the function
+that arranges that the CPU gets reset correctly.)
+
+thanks
+-- PMM

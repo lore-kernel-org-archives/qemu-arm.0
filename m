@@ -1,419 +1,284 @@
-Received: by 2002:a17:906:9c0a:0:0:0:0 with SMTP id ff10csp1515138ejc;
-        Tue, 23 Aug 2022 07:00:29 -0700 (PDT)
-X-Received: by 2002:a17:902:82c5:b0:172:bb8f:a584 with SMTP id u5-20020a17090282c500b00172bb8fa584mr22973452plz.49.1661263229206;
-        Tue, 23 Aug 2022 07:00:29 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1661263229; cv=none;
+Received: by 2002:a05:7108:4017:0:0:0:0 with SMTP id a23csp2836694gdh;
+        Tue, 23 Aug 2022 08:59:37 -0700 (PDT)
+X-Received: by 2002:a17:90b:2243:b0:1f7:3011:117e with SMTP id hk3-20020a17090b224300b001f73011117emr3916613pjb.3.1661270377378;
+        Tue, 23 Aug 2022 08:59:37 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1661270377; cv=none;
         d=google.com; s=arc-20160816;
-        b=l9rFiIHEDRY6InjOBBj7l2ycskPxW2gIgmfBfRLW5+YoNy108CVYa5vi5JnpR72goD
-         ZoLYoq/bsTR/fT2CuJwWv3kLwqqviKEzpzh3Olm9egIi3vWq2OMMAjr3II698D5WbVRL
-         ZD6DVxa6Ec1l/uAMoehjNLoYzQMkszgWifZLdkX+BHPJgM4Nl0hfIKoiY8B0075PUdwO
-         HgbWd4CB3jIeITZ2uWDo3k2lLWNt8NwILhgePiRilHDNf2Kap3rJ9H1KxZZhVERbiS5A
-         7LT56zO0p7E4wx4R5qg0W0stMldti9UdwE+m4bHsyAYguspAG3JfJf0a+fktkhV0eCUl
-         aRaw==
+        b=okhzJyfe7FQXYy9ad/9xZbQH3YLxpxb4TDRVSrzBwQwZKH3Eb7D81oCGj57DYh0xeT
+         VHmrOfj9VuvXsT1PHxRnPtIiliAGIkE0gJdXAIHJClqBjJ3u0xoLyAklpEijHN2p4II1
+         3WekTySXvOsMQcAbWpk4+caMtWU3rl8HIOYn4l4r1ySOoBwZYhdrhY9vDO2SQHkvs6g7
+         Yv1Vtcr4MAHx9TQgNZQ/fyPiR+G9MUOSHxnc8+8fjCrzwhUyLDaqPSPXRrg0B7lbuMod
+         9SPGyg3By1m6pPEeNxMf8o9zMV/ZaC8+VuGO1e6ar+4Nwwe3xeQKAJoJNC1ILe3DHfUs
+         mWQQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=cc:to:subject:message-id:date:from:in-reply-to:references
          :mime-version:dkim-signature;
-        bh=95+vQjXaWuB9M1TelnR6G8ijKl+BtlaNTQ/naNhzWwc=;
-        b=gDyMyt6Llgi1OWX5VjEScFdaI1GFi7s7INh3Nf6YfOIZh2JLr+owLJuW4/HYRUthTA
-         XojMarlonu9g8vKJbVqrMCO/M6NwLPDq8szwt1AzVCfmkZlVjMhoSFStwiaiiuDUgj6O
-         LlWyoSDA6Dmb/SzJB4p6PfeZoMReznM3eWZNwaoILOjO/MoFsliTS+UJUtrBedT7C3o/
-         v4oiRGDvqWZSiV6LkjeXgLp8sk2X/LncC4swSbBiW8fzbmzPL3FNIXpFbzfszIjmhK2+
-         6euljVsAy4zQzgWwipeYAl/ER7ql8FNgcO+YtJlq9RU4/jQS1BNIae3XhR6UztkNh8RE
-         Y2rQ==
+        bh=5/9WAujOPk7f1FmFcvt7ZwBRX/iUYvZP+iuh9bDPgn0=;
+        b=uCSqa8IjszmcZ9zgE0SwX3vSkry2PBxxO9itwTRfhEO60v8caGvgfF2+49Y0c7QR7X
+         8awmlLTO9N+CJ0pK6dyk6dZ9BUxN291N/OD+Fu9PJaM1RlEP01i98s3fkCv4RWTrT5fn
+         dYdPLC+M5j3wOEY3ZVs9aNl7vB8K3pl2bAD2X9iPC0WNg1r8+qRQuWI82be/npEGBNpk
+         7Mvl1tbLZ0zqzNY0jVpUiK37L/jgieVuUrvuAWvZJ72mUhBLJGn5fsOvxBGRJo8Vyesb
+         6FjyxMi+auZdXjo54p/psY8mdvn5UEhsP24B50jh2v9hQoEuHx+D8pNhavTHGIcwh/ZB
+         aELA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=ndiZ3qO3;
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=XUA1vWKg;
        spf=pass (google.com: domain of shinysaana@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=shinysaana@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <shinysaana@gmail.com>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id h63-20020a625342000000b00536a01a1ea6sor3094115pfb.30.2022.08.23.07.00.28
+        by mx.google.com with SMTPS id h63-20020a625342000000b00536a01a1ea6sor3241672pfb.30.2022.08.23.08.59.37
         (Google Transport Security);
-        Tue, 23 Aug 2022 07:00:29 -0700 (PDT)
+        Tue, 23 Aug 2022 08:59:37 -0700 (PDT)
 Received-SPF: pass (google.com: domain of shinysaana@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=ndiZ3qO3;
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=XUA1vWKg;
        spf=pass (google.com: domain of shinysaana@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=shinysaana@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20210112;
         h=cc:to:subject:message-id:date:from:in-reply-to:references
          :mime-version:from:to:cc;
-        bh=95+vQjXaWuB9M1TelnR6G8ijKl+BtlaNTQ/naNhzWwc=;
-        b=ndiZ3qO32YE3zMdTyxtsCiwH4EChEFnZIj3dzYKqI/+FG2gtU/iHpK0vfpHbIQ9hjJ
-         pMM8pbuRYT037hknqEdyA6cFPPbfS841+orxfHKevL5AWgHsOT1SD76IWsis2ZEmo5oq
-         3/Jxfr7jK7QfQ3Q8A0ig5bSXQ0axDXJuP7tQMgrXcnVoHYjE55SpT6i4+tbOv/NmOzmG
-         MOetNew7RqYkmN96qVUNoZJoIY63oNmdMQ1emC5n1n/rUJVWOk5UgTlSgxt5eykdwXB6
-         Hb+dLqMNf2Ya+ySHByU3GFL9m5IIH0yZ5TwtziUH0+xyq2JxJ+iQbuXxD0x28LtWZz/P
-         hSPA==
+        bh=5/9WAujOPk7f1FmFcvt7ZwBRX/iUYvZP+iuh9bDPgn0=;
+        b=XUA1vWKge2nWKNmo2TPQrHCDk8bIGsYNedqH/DhhtmdEOdMGvVYAqZkaWB5HpS0+sN
+         VRsbGZiRPZfP19hf/un9hD/Y4BdA6ebEzqNwHg2sJP24mAgS+9la5HHk0BCtLswazL0Z
+         O9PLb4b2eUeRHIScG4rEC0jwPrOriVq+xuB2Ybj8Cg40KrjMTSsrCmum2YjwNvh7ua3H
+         oh2R9MChDda+F3LPIDFaR2OXTCecaaBjsxriMhnlb5CSf8ZL1iq6Bq6N9qjJuSQCvuEL
+         qxHpW1g+Nq1XF+YW54+U5K8ml1EuOwZe+kZ36vKA+zYh1etoz3w1zFgxUbsDLX6dwGaV
+         eiIA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=cc:to:subject:message-id:date:from:in-reply-to:references
          :mime-version:x-gm-message-state:from:to:cc;
-        bh=95+vQjXaWuB9M1TelnR6G8ijKl+BtlaNTQ/naNhzWwc=;
-        b=fvZ5KFIFUHOPfCiqzX5iywSs3lVVBR/yZZ+YdbFyuA3YTUjmZ4Vl6SxSvl2CQqd9XE
-         IveNHG0tukx9K1q8WcrVs31QNfRYhXQ0gpy+QeIwJV/7kQ8UppPnuCdI/SRb3gmyBwbF
-         1cTymByHW0U3erlXZf+HUQYnb4MIKuI97RKGF3/UuNdsvEl0odMXaper2v3/do/wuUAW
-         sq42BLhz9r1S1KoBbhrA9ZKK/vPG8YcmcJrsLaRelbHaptFwb4ti8vDXNSRvorunycuQ
-         zV8EoJ5pYFydCnTZaQIWu8Nt0kzWQZ8srfOt9wiA55B63rkprBcc6ouIqyPzi9o8H+Z8
-         iJ5g==
-X-Gm-Message-State: ACgBeo2sTQPk0OfgG0Uwb5+6eRC11RGs/u3GQCuofO4B/canTpq10S8b
-	Y0/ZiBDFBvDDArlqP9ZobrfpFXc0fhrIYR4r7iK/Yy+6
-X-Google-Smtp-Source: AA6agR7j5Cd5n8ont2dMj3BXIhKOvpoLqWvEYNnho7JNMc1qlo6+WTISTLBxrqIbfUV7wCM6DtTubzBci1zN4OwZ81o=
-X-Received: by 2002:a05:6a00:1907:b0:534:f2ef:e8fe with SMTP id
- y7-20020a056a00190700b00534f2efe8femr25311263pfi.65.1661263228130; Tue, 23
- Aug 2022 07:00:28 -0700 (PDT)
+        bh=5/9WAujOPk7f1FmFcvt7ZwBRX/iUYvZP+iuh9bDPgn0=;
+        b=ro40VBlFyBoxiiLN+X4IYJeMPEJF7SeFEAFXqIHMQ7hOSciCaHfMR61bDRTCGr3MIo
+         IxquIwXstH1tM/yc2FXQ4raVIy7cNJHP6Xc0NbQXkyzb7XpAU1WET61mN2rphxwrVKK7
+         MVeKKXc8cbKZluT1GG7KV/Mqm4DYcN5/gVWRjV+QWrnAHMSuURbRgbMu47alUh1wUNb2
+         oNLwmGMh1gL1+bTjlW90PKRAMQu6crGKg751VAyG6TOlEuhqKMpt4HXnaZrvkUab7EfH
+         8Z2DjJOhec1mKrlU2sTjnvlmlXUAEr4lDieX4TteWHyq/h89b4izbA1Y7BoD1V3L8W0Z
+         G0EA==
+X-Gm-Message-State: ACgBeo0+Ucvt4PjNAUsm8VzpmA8MWL1iztedlAGbeqXOahdFU3foBBPF
+	l81u1dJLU9yJ5vIzZpdj2/Xxoa0/2CHQulBy8QBv7IjYIs8=
+X-Google-Smtp-Source: AA6agR5SBtkkaKxbl2nWuFxpU3embhbrF3nShIA40t484h+msMpJk5AqrG9HIQHYl37r0irQTzIpacLeE93EWUJpO9A=
+X-Received: by 2002:a62:e304:0:b0:536:bdec:5800 with SMTP id
+ g4-20020a62e304000000b00536bdec5800mr8072648pfh.49.1661270376619; Tue, 23 Aug
+ 2022 08:59:36 -0700 (PDT)
 MIME-Version: 1.0
 References: <CAJtCPL0rRU9Q=s6kUFDHjC5uUmx2w=ePYMMaib6vq57g48qk0Q@mail.gmail.com>
  <CAFEAcA81OfC_Z_uQvrSRUKHQf4mmOgbLrHYiwsfzmgH8u8sUqg@mail.gmail.com>
  <CAJtCPL3yNpNkK0Ljzo=QOFX_gLQtGGcqDoomwJ+RH0hq5G=YQA@mail.gmail.com>
  <87r11gbjbv.fsf@linaro.org> <CAFEAcA-6X=ptfDXGWA79-L9kRCQRq6jtci7ODPy0Ct369_EvCA@mail.gmail.com>
- <CAJtCPL3Hef3d6sDA+pYJ6xChHS7y1J+2Cn9qf1NT0hwaBT8iTg@mail.gmail.com> <CAFEAcA8TmrMo+MOhOutUuwE=GOEFYUGxgRA2_XGZ2iunMTAe5w@mail.gmail.com>
-In-Reply-To: <CAFEAcA8TmrMo+MOhOutUuwE=GOEFYUGxgRA2_XGZ2iunMTAe5w@mail.gmail.com>
+ <CAJtCPL3Hef3d6sDA+pYJ6xChHS7y1J+2Cn9qf1NT0hwaBT8iTg@mail.gmail.com>
+ <CAFEAcA8TmrMo+MOhOutUuwE=GOEFYUGxgRA2_XGZ2iunMTAe5w@mail.gmail.com>
+ <CAJtCPL10GL8JL2qb-sZTpmPaHTy7fOoEDb194ZL1NSvXpqGaUQ@mail.gmail.com> <CAFEAcA8ozX22==9T33gxS9Ks31fzMgKH9-Eic03gMsg86iTYmA@mail.gmail.com>
+In-Reply-To: <CAFEAcA8ozX22==9T33gxS9Ks31fzMgKH9-Eic03gMsg86iTYmA@mail.gmail.com>
 From: Shiny Saana <shinysaana@gmail.com>
-Date: Tue, 23 Aug 2022 16:00:17 +0200
-Message-ID: <CAJtCPL10GL8JL2qb-sZTpmPaHTy7fOoEDb194ZL1NSvXpqGaUQ@mail.gmail.com>
+Date: Tue, 23 Aug 2022 17:59:25 +0200
+Message-ID: <CAJtCPL1k5z_QrhMcX_6HYdLY7Tc+3_O3rDUaEqweBpK6-xKAKA@mail.gmail.com>
 Subject: Re: Teensy 4.1 Implementation
 To: Peter Maydell <peter.maydell@linaro.org>
 Cc: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, qemu-arm@nongnu.org, 
 	qemu-devel@nongnu.org
-Content-Type: multipart/alternative; boundary="00000000000097584605e6e8fc11"
-X-TUID: TBKh5hImZ6L4
+Content-Type: multipart/alternative; boundary="000000000000aca46005e6eaa66a"
+X-TUID: sLAi+Zi7ANnn
 
---00000000000097584605e6e8fc11
+--000000000000aca46005e6eaa66a
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 
-Thank you again for your time!
+> Your board code should be setting the init-nsvtor property on
+> the armv7m object to 0x00200000, if it isn't already.
 
-I didn't know at all about the generic loader!! It feels to me that it will
-definitely be very useful in loading the Teensy image.
+I'm going to add that property right away!
 
-(To give more background: the Teensy-Arduinon toolchain first compiles an
-.elf and then convert that to an Intex hex file. We can retrieve that .elf
-in /tmp after compilation, but if all you have is an ihex (which is the
-case for my use-case), then you're out of luck.)
+> Yes, this would be in line with the way we use -kernel on other
+> M-profile board models.
 
-To answer your question:
+Got it! Thank you for correcting my understanding!
 
-> Do you know what the hardware sets the initial vector
-> base address to? (that is, where the ROM itself puts its
-> reset/interrupt vector table). I couldn't find anything in
-> the datasheet that said that.
+> I'll have a think about which one of those I prefer, and maybe
+> write a patch...
 
-From experimentation and dissasembly on the ROM, (located in 0x0020_0000),
-the very first int (converted to BE) is "0x2020_1000" , which is located to
-"OCRAM2", also referred as "ROM RAM" by the documentation, and the next int
-is "0x0020_2091", which both points inside the ROM itself , and which when
-forcibly disassembled in Ghidra does look like a function.
-So I'm pretty confident the initial vector base address is 0x0020_0000.
+I do think it would be better with such a solution, yes.
+I personally think querying init-nsvtor would reduce complexity and "make
+sense".
+Or perhaps both?
+Something as simple as adding a function taking a functing the base load
+address as a parameter, and another that queries init-nsvtor and call it
+with that value? Everyone would happy :p
 
-Regarding the "kernel loading" issue, I believe that I was initially
-mistaken. From other examples online, I believed that it was the way to
-load the Teensy image. But thinking and discussing it with another ARM dev,
-wouldn't the ROM itself actually be considered the kernel?
-
-The teensy ihex image (converted to raw binary) could then be loaded via
-the generic loader (and then, document that behavior in QEMU, and for user
-convenience, in my own program using QEMU, I could merely provide a script
-that handles the arguments for them).
-
-Knowing that, if the call to  armv7m_load_kernel() is mandatory, maybe it
-would make sense to load the ROM in C code via this function, with the
-compiled ROM addresses from 0x0000_0000 to 0x001F_FFFF being padded with 0.
-I'm *absolutely not sure* if this is a good idea, but that's the one I got
-from the understanding that I have.
-
-As always, thank you again for the help (and for using some of your time to
-go through the documentation yourself, I genuinely appreciate the help a
-great lot.)
+I will go with the "padded 0 bytes" plan for now, so that I can move on
+with the rest of the implementation, but please do ping me if you do end up
+upstreaming such a patch!
+As always, thanks again!
 
 Saana
 
-Le mar. 23 ao=C3=BBt 2022 =C3=A0 15:09, Peter Maydell <peter.maydell@linaro=
+Le mar. 23 ao=C3=BBt 2022 =C3=A0 16:22, Peter Maydell <peter.maydell@linaro=
 .org> a
 =C3=A9crit :
 
-> On Sun, 21 Aug 2022 at 01:05, Shiny Saana <shinysaana@gmail.com> wrote:
-> > I've been able to write an initial Teensy 4.1 machine, for now with
-> > only the few important memory regions initialized, and successfully
-> > ran some hand-written ARM code on it.
+> On Tue, 23 Aug 2022 at 15:00, Shiny Saana <shinysaana@gmail.com> wrote:
+> > From experimentation and dissasembly on the ROM, (located in
+> 0x0020_0000), the very first int (converted to BE) is "0x2020_1000" , whi=
+ch
+> is located to "OCRAM2", also referred as "ROM RAM" by the documentation,
+> and the next int is "0x0020_2091", which both points inside the ROM itsel=
+f
+> , and which when forcibly disassembled in Ghidra does look like a functio=
+n.
+> > So I'm pretty confident the initial vector base address is 0x0020_0000.
 >
-> Great, that's good progress!
+> Right. In fact, rereading the datasheet, I see that I overlooked
+> that the IOMUXC_GPR_GPR16 reset value is actually specified. Bits
+> [31:7] of that are the CM7_INIT_VTOR, which is to say that they're
+> bits [31:7] of the initial vector table address. And they're set
+> so that is 0x0020_0000.
 >
-> > The documentation ( https://www.pjrc.com/teensy/IMXRT1060RM_rev3.pdf ),
-> > in section 9.7.1, gives some informations on how, in the actual
-> > Teensy board, the ROM, executed at boot, initialize the board
-> > peripherals, and also reads from a data structure included in the
-> > Flash memory (the user-provided program) where the CPU should jump
-> > to after the ROM has done its work (somewhere in that same Flash memory=
-,
-> > usually).
-> >
-> > I was able to successfully dump the ROM of the real board and
-> > confirm this behavior. Given that the current plan is not to
-> > emulate every peripherals, I am of the opinion that writing a very
-> > simple ROM that merely reads this Flash provided data structure and
-> > jumps to the provided address sounds like a good starting point, so
-> > that I can keep iterating on writing more and more complex code
-> > through the provided Teensy toolchain, and implementing needed
-> > peripherals.
-> >
-> > As such, I have several questions:
-> >
-> > 1/ To replicate this behaviour, is this considered the correct
-> > approach by the current QEMU maintainers?
+> Your board code should be setting the init-nsvtor property on
+> the armv7m object to 0x00200000, if it isn't already.
 >
-> Yes, I think this is probably a reasonable way to go.
+> > Regarding the "kernel loading" issue, I believe that I was initially
+> > mistaken. From other examples online, I believed that it was the way
+> > to load the Teensy image. But thinking and discussing it with another
+> > ARM dev, wouldn't the ROM itself actually be considered the kernel?
 >
-> > 2/ If so, I have not been able to find any function that would be
-> > able to load data into a memory region "statically". Does one
-> > exist? Is there an alternative to this process?
+> Yes, this would be in line with the way we use -kernel on other
+> M-profile board models.
 >
-> Depends exactly what you want to do. If you want "let the user
-> load data to an arbitrary address", then the "generic loader"
-> is usually helpful:
-> https://www.qemu.org/docs/master/system/generic-loader.html
+> > Knowing that, if the call to  armv7m_load_kernel() is mandatory,
+> > maybe it would make sense to load the ROM in C code via this
+> > function, with the compiled ROM addresses from 0x0000_0000 to
+> > 0x001F_FFFF being padded with 0.
 >
-> If you mean "C code within QEMU loads data to a specific place",
-> rom_add_blob_fixed_as() is probably what you want. This is how
-> hw/arm/boot.c loads both user-provided data files and the
-> hand-coded mini-bootloader into the guest.
+> That's one way to do it. I think it would be better to adjust
+> armv7m_load_kernel() so that it loaded the file to a board-specific
+> ROM base, which would avoid the need for the weird zero-padding.
+> Two options:
+>  * we could make armv7m_load_kernel() take a base address as well as
+>    a size for the region it loads the "kernel" to
+>  * we could have armv7m_load_kernel() be clever enough to query
+>    the CPU to find out what the VTOR value is and load the
+>    "kernel" there
 >
-> > 3/ Regarding loading the "kernel" of the board, as part of the
-> > init process, I am calling the usual "armv7m_load_kernel" function
-> > with its usual parameters. However, it seems to load it as the
-> > very start of the address space, which is not where the flash
-> > memory is, and so is not where the kernel should be loaded. I
-> > wasn't able to find a workaround. Is there something I'm missing?
->
-> The behaviour of armv7m_load_kernel() depends on what kind
-> of file you pass to -kernel. If you pass -kernel an ELF file,
-> then it will get loaded to the addresses as specified by
-> the ELF file, so you can use that to put data anywhere you like.
-> If you pass it a raw binary file then, yeah, at the moment
-> that gets loaded to address 0. There's no real reason for this
-> limitation -- it's mainly because when that code was written
-> we supported very few M-profile boards, and all of them booted
-> from address 0. (That is, the board doesn't set either the
-> init-svtor or init-nsvtor properties on the armv7m object to
-> anything other than 0.) We could change how this works, but
-> the difficulty is that the desire for "Just Do What I Mean"
-> behaviour for a specific board tends to conflict with the
-> desire for all boards to behave in a consistent manner.
-> In particular, at the moment passing a binary file to -kernel
-> means "I want this to be loaded so that it has the
-> CPU vector table in it and execution starts from reset as
-> the architecture says it should"; it can't both mean that
-> consistently across M-profile boards and also mean "on the
-> teeny board, be an image file intended to boot via the ROM
-> loader".
->
-> Loading the teeny images via the generic loader rather than
-> via -kernel would be one way to sidestep this issue...
->
->
->
-> (By the way, calling armv7m_load_kernel() is mandatory even if
-> you don't care about loading an image, because it's the function
-> that arranges that the CPU gets reset correctly.)
+> I'll have a think about which one of those I prefer, and maybe
+> write a patch...
 >
 > thanks
 > -- PMM
 >
 
---00000000000097584605e6e8fc11
+--000000000000aca46005e6eaa66a
 Content-Type: text/html; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 
-<div dir=3D"auto">Thank you again for your time!</div><div dir=3D"auto"><br=
-></div><div dir=3D"auto">I didn&#39;t know at all about the generic loader!=
-! It feels to me that it will definitely be very useful in loading the Teen=
-sy image.</div><div dir=3D"auto"><br></div><div dir=3D"auto">(To give more =
-background: the Teensy-Arduinon toolchain first compiles an .elf and then c=
-onvert that to an Intex hex file. We can retrieve that .elf in /tmp after c=
-ompilation, but if all you have is an ihex (which is the case for my use-ca=
-se), then you&#39;re out of luck.)</div><div dir=3D"auto"><br></div><div di=
-r=3D"auto">To answer your question:</div><div dir=3D"auto"><br></div><div s=
-tyle=3D"background-color:rgba(0,0,0,0)!important;border-color:rgb(255,255,2=
-55)!important;color:rgb(255,255,255)!important" dir=3D"auto"><span style=3D=
-"border-color:rgb(0,0,0) rgb(0,0,0) rgb(0,0,0) rgb(204,204,204);color:rgb(0=
-,0,0)">&gt; Do you know what the hardware sets the initial vector</span><sp=
-an style=3D"border-color:rgb(255,255,255) rgb(255,255,255) rgb(255,255,255)=
- rgb(74,77,80)!important;color:rgb(255,255,255)!important;background-color:=
-rgba(0,0,0,0)!important"><font face=3D"-apple-system, HelveticaNeue" style=
-=3D"color:rgb(0,0,0)">=C2=A0</font></span></div><div style=3D"background-co=
-lor:rgba(0,0,0,0);border-color:rgb(255,255,255)" dir=3D"auto"><span style=
-=3D"border-color:rgb(0,0,0) rgb(0,0,0) rgb(0,0,0) rgb(204,204,204);color:rg=
-b(0,0,0)">&gt; base address to? (that is, where the ROM itself puts its</sp=
-an><br style=3D"font-family:-apple-system,HelveticaNeue"><span style=3D"bor=
+<div dir=3D"auto"><span style=3D"border-color:rgb(0,0,0) rgb(0,0,0) rgb(0,0=
+,0) rgb(204,204,204);color:rgb(0,0,0)">&gt; Your board code should be setti=
+ng the init-nsvtor property on</span><br style=3D"font-family:-apple-system=
+,HelveticaNeue"><span style=3D"border-color:rgb(0,0,0) rgb(0,0,0) rgb(0,0,0=
+) rgb(204,204,204);color:rgb(0,0,0)">&gt; the armv7m object to 0x00200000, =
+if it isn&#39;t already.</span><br></div><div dir=3D"auto"><br></div><div d=
+ir=3D"auto">I&#39;m going to add that property right away!</div><div dir=3D=
+"auto"><br></div><div dir=3D"auto"><span style=3D"border-color:rgb(0,0,0) r=
+gb(0,0,0) rgb(0,0,0) rgb(204,204,204);color:rgb(0,0,0)">&gt; Yes, this woul=
+d be in line with the way we use -kernel on other</span><br style=3D"font-f=
+amily:-apple-system,HelveticaNeue"><span style=3D"border-color:rgb(0,0,0) r=
+gb(0,0,0) rgb(0,0,0) rgb(204,204,204);color:rgb(0,0,0)">&gt; M-profile boar=
+d models.</span><br></div><div dir=3D"auto"><span style=3D"border-color:rgb=
+(0,0,0) rgb(0,0,0) rgb(0,0,0) rgb(204,204,204);color:rgb(0,0,0)"><br></span=
+></div><div dir=3D"auto">Got it! Thank you for correcting my understanding!=
+</div><div dir=3D"auto"><br></div><div dir=3D"auto"><span style=3D"border-c=
+olor:rgb(0,0,0) rgb(0,0,0) rgb(0,0,0) rgb(204,204,204);color:rgb(0,0,0)">&g=
+t; I&#39;ll have a think about which one of those I prefer, and maybe</span=
+><br style=3D"font-family:-apple-system,HelveticaNeue"><span style=3D"borde=
+r-color:rgb(0,0,0) rgb(0,0,0) rgb(0,0,0) rgb(204,204,204);color:rgb(0,0,0)"=
+>&gt; write a patch...</span><br></div><div dir=3D"auto"><span style=3D"bor=
 der-color:rgb(0,0,0) rgb(0,0,0) rgb(0,0,0) rgb(204,204,204);color:rgb(0,0,0=
-)">&gt; reset/interrupt vector table). I couldn&#39;t find anything in</spa=
-n><br style=3D"font-family:-apple-system,HelveticaNeue"><span style=3D"bord=
-er-color:rgb(0,0,0) rgb(0,0,0) rgb(0,0,0) rgb(204,204,204);color:rgb(0,0,0)=
-">&gt; the datasheet that said that.</span><br></div><div style=3D"backgrou=
-nd-color:rgba(0,0,0,0);border-color:rgb(255,255,255)" dir=3D"auto"><span st=
+)"><br></span></div><div dir=3D"auto"><span style=3D"border-color:rgb(0,0,0=
+) rgb(0,0,0) rgb(0,0,0) rgb(204,204,204);color:rgb(0,0,0)">I do think it wo=
+uld be better with such a solution, yes.</span></div><div dir=3D"auto"><spa=
+n style=3D"border-color:rgb(0,0,0) rgb(0,0,0) rgb(0,0,0) rgb(204,204,204);c=
+olor:rgb(0,0,0)">I personally think querying init-nsvtor would reduce compl=
+exity and &quot;make sense&quot;.</span></div><div dir=3D"auto"><span style=
+=3D"border-color:rgb(0,0,0) rgb(0,0,0) rgb(0,0,0) rgb(204,204,204);color:rg=
+b(0,0,0)">Or perhaps both?</span></div><div dir=3D"auto"><span style=3D"bor=
+der-color:rgb(0,0,0) rgb(0,0,0) rgb(0,0,0) rgb(204,204,204);color:rgb(0,0,0=
+)">Something as simple as adding a function taking a functing the base load=
+ address as a parameter, and another that queries init-nsvtor and call it w=
+ith that value? Everyone would happy :p</span></div><div dir=3D"auto"><span=
+ style=3D"border-color:rgb(0,0,0) rgb(0,0,0) rgb(0,0,0) rgb(204,204,204);co=
+lor:rgb(0,0,0)"><br></span></div><div dir=3D"auto"><span style=3D"border-co=
+lor:rgb(0,0,0) rgb(0,0,0) rgb(0,0,0) rgb(204,204,204);color:rgb(0,0,0)">I w=
+ill go with the &quot;padded 0 bytes&quot; plan for now, so that I can move=
+ on with the rest of the implementation, but please do ping me if you do en=
+d up upstreaming such a patch!=C2=A0</span></div><div dir=3D"auto"><span st=
 yle=3D"border-color:rgb(0,0,0) rgb(0,0,0) rgb(0,0,0) rgb(204,204,204);color=
-:rgb(0,0,0)"><br></span></div><div style=3D"background-color:rgba(0,0,0,0);=
-border-color:rgb(255,255,255)" dir=3D"auto"><span style=3D"border-color:rgb=
-(0,0,0) rgb(0,0,0) rgb(0,0,0) rgb(204,204,204);color:rgb(0,0,0)">From exper=
-imentation and dissasembly on the ROM, (located in 0x0020_0000), the very f=
-irst int (converted to BE) is &quot;0x2020_1000&quot; , which is located to=
- &quot;OCRAM2&quot;, also referred as &quot;ROM RAM&quot; by the documentat=
-ion, and the next int is &quot;0x0020_2091&quot;, which both points inside =
-the ROM itself , and which when forcibly disassembled in Ghidra does look l=
-ike a function.</span></div><div style=3D"background-color:rgba(0,0,0,0)!im=
-portant;border-color:rgb(32,33,36)!important;color:rgb(255,255,255)!importa=
-nt" dir=3D"auto"><font style=3D"border-color:rgb(0,0,0) rgb(0,0,0) rgb(0,0,=
-0) rgb(204,204,204);color:rgb(0,0,0)">So I&#39;m pretty confident the initi=
-al vector base address is 0x0020_0000.</font></div><div style=3D"background=
--color:rgba(0,0,0,0);border-color:rgb(32,33,36)" dir=3D"auto"><font style=
-=3D"border-color:rgb(0,0,0) rgb(0,0,0) rgb(0,0,0) rgb(204,204,204);color:rg=
-b(0,0,0)"><br></font></div><div style=3D"background-color:rgba(0,0,0,0);bor=
-der-color:rgb(32,33,36)" dir=3D"auto"><font style=3D"border-color:rgb(0,0,0=
-) rgb(0,0,0) rgb(0,0,0) rgb(204,204,204);color:rgb(0,0,0)">Regarding the &q=
-uot;kernel loading&quot; issue, I believe that I was initially mistaken. Fr=
-om other examples online, I believed that it was the way to load the Teensy=
- image. But thinking and discussing it with another ARM dev, wouldn&#39;t t=
-he ROM itself actually be considered the kernel?=C2=A0</font></div><div sty=
-le=3D"background-color:rgba(0,0,0,0);border-color:rgb(32,33,36)" dir=3D"aut=
-o"><font style=3D"border-color:rgb(0,0,0) rgb(0,0,0) rgb(0,0,0) rgb(204,204=
-,204);color:rgb(0,0,0)"><br></font></div><div style=3D"background-color:rgb=
-a(0,0,0,0);border-color:rgb(32,33,36)" dir=3D"auto"><font style=3D"border-c=
-olor:rgb(0,0,0) rgb(0,0,0) rgb(0,0,0) rgb(204,204,204);color:rgb(0,0,0)">Th=
-e teensy ihex image (converted to raw binary) could then be loaded via the =
-generic loader (and then, document that behavior in QEMU, and for user conv=
-enience, in my own program using QEMU, I could merely provide a script that=
- handles the arguments for them).</font></div><div style=3D"background-colo=
-r:rgba(0,0,0,0);border-color:rgb(32,33,36)" dir=3D"auto"><font style=3D"bor=
-der-color:rgb(0,0,0) rgb(0,0,0) rgb(0,0,0) rgb(204,204,204);color:rgb(0,0,0=
-)"><br></font></div><div style=3D"background-color:rgba(0,0,0,0)!important;=
-border-color:rgb(222,223,227)!important;color:rgb(255,255,255)!important" d=
-ir=3D"auto"><font style=3D"border-color:rgb(0,0,0) rgb(0,0,0) rgb(0,0,0) rg=
-b(204,204,204);color:rgb(0,0,0)">Knowing that, if the call to=C2=A0</font><=
-span style=3D"color:rgb(0,0,0)">=C2=A0</span><span style=3D"color:rgb(0,0,0=
-)">armv7m_load_kernel() is mandatory, maybe it would make sense to load the=
- ROM in C code via this function, with the compiled ROM addresses from 0x00=
-00_0000 to 0x001F_FFFF being padded with 0.</span></div><div style=3D"backg=
-round-color:rgba(0,0,0,0);border-color:rgb(222,223,227)" dir=3D"auto"><span=
- style=3D"color:rgb(0,0,0)">I&#39;m *absolutely not sure* if this is a good=
- idea, but that&#39;s the one I got from the understanding that I have.=C2=
-=A0</span></div><div style=3D"background-color:rgba(0,0,0,0);border-color:r=
-gb(222,223,227)" dir=3D"auto"><span style=3D"color:rgb(0,0,0)"><br></span><=
-/div><div style=3D"background-color:rgba(0,0,0,0);border-color:rgb(222,223,=
-227)" dir=3D"auto"><span style=3D"color:rgb(0,0,0)">As always, thank you ag=
-ain for the help (and for using some of your time to go through the documen=
-tation yourself, I genuinely appreciate the help a great lot.)</span></div>=
-<div style=3D"background-color:rgba(0,0,0,0);border-color:rgb(222,223,227)"=
- dir=3D"auto"><span style=3D"color:rgb(0,0,0)"><br></span></div><div style=
-=3D"background-color:rgba(0,0,0,0);border-color:rgb(222,223,227)" dir=3D"au=
-to"><span style=3D"color:rgb(0,0,0)">Saana</span></div><div><br><div class=
-=3D"gmail_quote"><div dir=3D"ltr" class=3D"gmail_attr">Le=C2=A0mar. 23 ao=
-=C3=BBt 2022 =C3=A0 15:09, Peter Maydell &lt;<a href=3D"mailto:peter.maydel=
-l@linaro.org">peter.maydell@linaro.org</a>&gt; a =C3=A9crit=C2=A0:<br></div=
-><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border=
--left-width:1px;border-left-style:solid;padding-left:1ex;border-left-color:=
-rgb(204,204,204)" dir=3D"auto">On Sun, 21 Aug 2022 at 01:05, Shiny Saana &l=
-t;<a href=3D"mailto:shinysaana@gmail.com" target=3D"_blank">shinysaana@gmai=
-l.com</a>&gt; wrote:<br>
-&gt; I&#39;ve been able to write an initial Teensy 4.1 machine, for now wit=
-h<br>
-&gt; only the few important memory regions initialized, and successfully<br=
->
-&gt; ran some hand-written ARM code on it.<br>
+:rgb(0,0,0)">As always, thanks again!</span></div><div dir=3D"auto"><span s=
+tyle=3D"border-color:rgb(0,0,0) rgb(0,0,0) rgb(0,0,0) rgb(204,204,204);colo=
+r:rgb(0,0,0)"><br></span></div><div dir=3D"auto"><span style=3D"border-colo=
+r:rgb(0,0,0) rgb(0,0,0) rgb(0,0,0) rgb(204,204,204);color:rgb(0,0,0)">Saana=
+</span></div><div><br><div class=3D"gmail_quote"><div dir=3D"ltr" class=3D"=
+gmail_attr">Le=C2=A0mar. 23 ao=C3=BBt 2022 =C3=A0 16:22, Peter Maydell &lt;=
+<a href=3D"mailto:peter.maydell@linaro.org">peter.maydell@linaro.org</a>&gt=
+; a =C3=A9crit=C2=A0:<br></div><blockquote class=3D"gmail_quote" style=3D"m=
+argin:0px 0px 0px 0.8ex;border-left-width:1px;border-left-style:solid;paddi=
+ng-left:1ex;border-left-color:rgb(204,204,204)">On Tue, 23 Aug 2022 at 15:0=
+0, Shiny Saana &lt;<a href=3D"mailto:shinysaana@gmail.com" target=3D"_blank=
+">shinysaana@gmail.com</a>&gt; wrote:<br>
+&gt; From experimentation and dissasembly on the ROM, (located in 0x0020_00=
+00), the very first int (converted to BE) is &quot;0x2020_1000&quot; , whic=
+h is located to &quot;OCRAM2&quot;, also referred as &quot;ROM RAM&quot; by=
+ the documentation, and the next int is &quot;0x0020_2091&quot;, which both=
+ points inside the ROM itself , and which when forcibly disassembled in Ghi=
+dra does look like a function.<br>
+&gt; So I&#39;m pretty confident the initial vector base address is 0x0020_=
+0000.<br>
 <br>
-Great, that&#39;s good progress!<br>
+Right. In fact, rereading the datasheet, I see that I overlooked<br>
+that the IOMUXC_GPR_GPR16 reset value is actually specified. Bits<br>
+[31:7] of that are the CM7_INIT_VTOR, which is to say that they&#39;re<br>
+bits [31:7] of the initial vector table address. And they&#39;re set<br>
+so that is 0x0020_0000.<br>
+<br><span style=3D"border-color:rgb(0,0,0) rgb(0,0,0) rgb(0,0,0) rgb(204,20=
+4,204);color:rgb(0,0,0)">Your board code should be setting the init-nsvtor =
+property on</span><br style=3D"font-family:-apple-system,HelveticaNeue"><sp=
+an style=3D"border-color:rgb(0,0,0) rgb(0,0,0) rgb(0,0,0) rgb(204,204,204);=
+color:rgb(0,0,0)">the armv7m object to 0x00200000, if it isn&#39;t already.=
+</span><br>
 <br>
-&gt; The documentation ( <a href=3D"https://www.pjrc.com/teensy/IMXRT1060RM=
-_rev3.pdf" rel=3D"noreferrer" target=3D"_blank">https://www.pjrc.com/teensy=
-/IMXRT1060RM_rev3.pdf</a> ),<br>
-&gt; in section 9.7.1, gives some informations on how, in the actual<br>
-&gt; Teensy board, the ROM, executed at boot, initialize the board<br>
-&gt; peripherals, and also reads from a data structure included in the<br>
-&gt; Flash memory (the user-provided program) where the CPU should jump<br>
-&gt; to after the ROM has done its work (somewhere in that same Flash memor=
-y,<br>
-&gt; usually).<br>
-&gt;<br>
-&gt; I was able to successfully dump the ROM of the real board and<br>
-&gt; confirm this behavior. Given that the current plan is not to<br>
-&gt; emulate every peripherals, I am of the opinion that writing a very<br>
-&gt; simple ROM that merely reads this Flash provided data structure and<br=
->
-&gt; jumps to the provided address sounds like a good starting point, so<br=
->
-&gt; that I can keep iterating on writing more and more complex code<br>
-&gt; through the provided Teensy toolchain, and implementing needed<br>
-&gt; peripherals.<br>
-&gt;<br>
-&gt; As such, I have several questions:<br>
-&gt;<br>
-&gt; 1/ To replicate this behaviour, is this considered the correct<br>
-&gt; approach by the current QEMU maintainers?<br>
-<br>
-Yes, I think this is probably a reasonable way to go.<br>
-<br>
-&gt; 2/ If so, I have not been able to find any function that would be<br>
-&gt; able to load data into a memory region &quot;statically&quot;. Does on=
-e<br>
-&gt; exist? Is there an alternative to this process?<br>
-<br>
-Depends exactly what you want to do. If you want &quot;let the user<br>
-load data to an arbitrary address&quot;, then the &quot;generic loader&quot=
-;<br>
-is usually helpful:<br>
-<a href=3D"https://www.qemu.org/docs/master/system/generic-loader.html" rel=
-=3D"noreferrer" target=3D"_blank">https://www.qemu.org/docs/master/system/g=
-eneric-loader.html</a><br>
-<br>
-If you mean &quot;C code within QEMU loads data to a specific place&quot;,<=
+&gt; Regarding the &quot;kernel loading&quot; issue, I believe that I was i=
+nitially<br>
+&gt; mistaken. From other examples online, I believed that it was the way<b=
+r>
+&gt; to load the Teensy image. But thinking and discussing it with another<=
 br>
-rom_add_blob_fixed_as() is probably what you want. This is how<br>
-hw/arm/boot.c loads both user-provided data files and the<br>
-hand-coded mini-bootloader into the guest.<br>
+&gt; ARM dev, wouldn&#39;t the ROM itself actually be considered the kernel=
+?<br>
 <br>
-&gt; 3/ Regarding loading the &quot;kernel&quot; of the board, as part of t=
-he<br>
-&gt; init process, I am calling the usual &quot;armv7m_load_kernel&quot; fu=
-nction<br>
-&gt; with its usual parameters. However, it seems to load it as the<br>
-&gt; very start of the address space, which is not where the flash<br>
-&gt; memory is, and so is not where the kernel should be loaded. I<br>
-&gt; wasn&#39;t able to find a workaround. Is there something I&#39;m missi=
-ng?<br>
+Yes, this would be in line with the way we use -kernel on other<br>
+M-profile board models.<br>
 <br>
-The behaviour of armv7m_load_kernel() depends on what kind<br>
-of file you pass to -kernel. If you pass -kernel an ELF file,<br>
-then it will get loaded to the addresses as specified by<br>
-the ELF file, so you can use that to put data anywhere you like.<br>
-If you pass it a raw binary file then, yeah, at the moment<br>
-that gets loaded to address 0. There&#39;s no real reason for this<br>
-limitation -- it&#39;s mainly because when that code was written<br>
-we supported very few M-profile boards, and all of them booted<br>
-from address 0. (That is, the board doesn&#39;t set either the<br>
-init-svtor or init-nsvtor properties on the armv7m object to<br>
-anything other than 0.) We could change how this works, but<br>
-the difficulty is that the desire for &quot;Just Do What I Mean&quot;<br>
-behaviour for a specific board tends to conflict with the<br>
-desire for all boards to behave in a consistent manner.<br>
-In particular, at the moment passing a binary file to -kernel<br>
-means &quot;I want this to be loaded so that it has the<br>
-CPU vector table in it and execution starts from reset as<br>
-the architecture says it should&quot;; it can&#39;t both mean that<br>
-consistently across M-profile boards and also mean &quot;on the<br>
-teeny board, be an image file intended to boot via the ROM<br>
-loader&quot;.<br>
+&gt; Knowing that, if the call to=C2=A0 armv7m_load_kernel() is mandatory,<=
+br>
+&gt; maybe it would make sense to load the ROM in C code via this<br>
+&gt; function, with the compiled ROM addresses from 0x0000_0000 to<br>
+&gt; 0x001F_FFFF being padded with 0.<br>
 <br>
-Loading the teeny images via the generic loader rather than<br>
-via -kernel would be one way to sidestep this issue...<br>
-<br><br>
+That&#39;s one way to do it. I think it would be better to adjust<br>
+armv7m_load_kernel() so that it loaded the file to a board-specific<br>
+ROM base, which would avoid the need for the weird zero-padding.<br>
+Two options:<br>
+=C2=A0* we could make armv7m_load_kernel() take a base address as well as<b=
+r>
+=C2=A0 =C2=A0a size for the region it loads the &quot;kernel&quot; to<br>
+=C2=A0* we could have armv7m_load_kernel() be clever enough to query<br>
+=C2=A0 =C2=A0the CPU to find out what the VTOR value is and load the<br>
+=C2=A0 =C2=A0&quot;kernel&quot; there<br>
 <br>
-(By the way, calling armv7m_load_kernel() is mandatory even if<br>
-you don&#39;t care about loading an image, because it&#39;s the function<br=
->
-that arranges that the CPU gets reset correctly.)<br>
+I&#39;ll have a think about which one of those I prefer, and maybe<br>
+write a patch...<br>
 <br>
 thanks<br>
 -- PMM<br>
 </blockquote></div></div>
 
---00000000000097584605e6e8fc11--
+--000000000000aca46005e6eaa66a--

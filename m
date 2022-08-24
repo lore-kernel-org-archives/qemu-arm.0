@@ -1,94 +1,94 @@
-Received: by 2002:a17:906:9c0a:0:0:0:0 with SMTP id ff10csp2326784ejc;
-        Wed, 24 Aug 2022 12:42:16 -0700 (PDT)
-X-Google-Smtp-Source: AA6agR6PV95G+b/vx27OD64hfSDk6CjFOu67PjgeLNBqS6xj+YGWAYPzyWJcMPo/2HK7tJlm36UF
-X-Received: by 2002:a05:622a:18a3:b0:343:5a0b:4884 with SMTP id v35-20020a05622a18a300b003435a0b4884mr823088qtc.396.1661370135755;
-        Wed, 24 Aug 2022 12:42:15 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1661370135; cv=none;
+Received: by 2002:a17:906:9c0a:0:0:0:0 with SMTP id ff10csp2328374ejc;
+        Wed, 24 Aug 2022 12:46:15 -0700 (PDT)
+X-Google-Smtp-Source: AA6agR79Nq9TjF6Ac5WjOI11hroAc3UqF/0cenbtai4dNq5BNEAlgEQmUFSgE2KoUfMso7/JxvSe
+X-Received: by 2002:ac8:7d4c:0:b0:344:8bfe:22cf with SMTP id h12-20020ac87d4c000000b003448bfe22cfmr791844qtb.580.1661370374916;
+        Wed, 24 Aug 2022 12:46:14 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1661370374; cv=none;
         d=google.com; s=arc-20160816;
-        b=xbsHpIOMafs9gj+H+UahSYvpRou9ERRFh9kuaYoyin/dPtaaLdsBMMzzwMQhRTJSg1
-         e/1O6bwze+sEV3eFma3Ru+1DM9O6tMxIOHLkc0fp4tF+kswoXaRAE19j5b/y9eu199fT
-         GV+r3EmKho/cXFGsNEMc5pl3+x5R6zp3CGy/Gm4nJMNoFVihQE0gGw15rS0rsOU/B9yQ
-         cxFOiTCk6izpf0X1PKwk6HH2ZUjs6Y7Xvcg0WNck5Mu7GZwSgAgpf1VP/3UXDC7lBc6t
-         llUqKqapaJrvEmHDingTbdMxLtSFvsbiTUrfRWRdUrDwK3MqrHSJdVWN7XbUB5IVUdb7
-         M3CA==
+        b=KMDGPR2WXSuYtdbCNVChiR+Nd1u1EUO6TUtUWriFZ2Lyb7yyG+F+P/nndostZoFe2g
+         qLPgZkAg7ISCIixtYZuIaxr9EKJvzKfTLd3Ite3MahayrtgpvgzOAmJmsDVg6Yd+LIVr
+         OCMapGHB8n1qk/7ZbqsSQOSQ/a/DIK53hAZ+d5PhaPp99DX6keNIME1KxbIeyvvBWVVT
+         V8xU7LMK1qFaungCwpLO3K5Do6g4pdtZ+BjL14IlvOMN7ikxuCGLUrN54Z08vioVCibx
+         eJtRmzt+A+FEviqHw+MhcCen10IBXLt22k7jiKob3OfbPbOZHjPG8C1X59pB2bzFvVcE
+         Bb4Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
          :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=2twwo6cjgLTfhoY+vSQysuT7wCW6t7DDp9CdcmsPlSo=;
-        b=EFedawDqSWSR3skU50em70NIEVpjb3S9YNEvWbaqGb8+YnpZT1gNEoBju8U8znVxRb
-         LiDpdC1NXtXobkEQjpMUSVm04V59nqjsX3chUo8RJfw8HNIqFam6z5nWXmMT1AHLZPCo
-         AaJwTRR3WmTzyrMgbewvwMlWah52ZcKC2/tMod7t4ryYbp19IGFOQCqV4BNqACGaL8JG
-         GNzLVul0PG8PwuuMyQpGj0iWYVJ9UfWF1/Ke4BbJIs7FYKSXQc3Mfm5U5hzYq6MgJy0Z
-         2azrSToM2ZL/XO3Yz1XTe3+Fms3Ci5zDQZbfKkzH+JYbxHRoqnb+uALTC4xfHUnKydOi
-         JUVg==
+        bh=B82TO1hTveMJiaR0bcz6clQVHDfpyBNs0EFwsMsV0Ck=;
+        b=zQGwzPlZaLu+2Bt3gcw1VMUAhxbXgDDbHM0SI7EwXFJChzKtsKHH1RDUtNfpHYTfr7
+         r3QPHRe2lNm/66gA0zgq/UaJmqW0UmIJK9Y5i12OKgfSWGyB1lqvsRt61FTcOhLI4UFZ
+         WvjjCdDITeH2VDgUTvv5gqgsMrpMBoFaE0qEzpBF+APjOtS2jJ6iSguUVAGqVPPh3rTf
+         VjR8HxKggH1BieA5CgeNFAIAkgZsgRVQGELX9xgbiELL9Ku1ossCuIlfCxZfORLRE4bb
+         rTprvKIa9a47uWKWzfmsPkH0jCI9AuO2kFJY3d3nN10ajpLNxdstOl8bn1VncqvAcOG5
+         7zuw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=MqTaidW4;
+       dkim=pass header.i=@linaro.org header.s=google header.b=MTeV6rON;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id gh11-20020a05621429cb00b0047356ab5ce6si8147050qvb.544.2022.08.24.12.42.15
+        by mx.google.com with ESMTPS id gv2-20020a056214262200b00496cddbd3bcsi6252565qvb.373.2022.08.24.12.46.14
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 24 Aug 2022 12:42:15 -0700 (PDT)
+        Wed, 24 Aug 2022 12:46:14 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=MqTaidW4;
+       dkim=pass header.i=@linaro.org header.s=google header.b=MTeV6rON;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:42040 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:54192 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1oQwGV-0001Hu-97
-	for alex.bennee@linaro.org; Wed, 24 Aug 2022 15:42:15 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:54324)
+	id 1oQwKM-0003Gw-F2
+	for alex.bennee@linaro.org; Wed, 24 Aug 2022 15:46:14 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:45298)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1oQwFg-0001Gv-UL
- for qemu-arm@nongnu.org; Wed, 24 Aug 2022 15:41:24 -0400
-Received: from mail-yw1-x112a.google.com ([2607:f8b0:4864:20::112a]:37376)
+ id 1oQwJx-0003GC-74
+ for qemu-arm@nongnu.org; Wed, 24 Aug 2022 15:45:49 -0400
+Received: from mail-yw1-x112a.google.com ([2607:f8b0:4864:20::112a]:44671)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1oQwFP-0007b6-7K
- for qemu-arm@nongnu.org; Wed, 24 Aug 2022 15:41:21 -0400
+ id 1oQwJv-0008QT-Pr
+ for qemu-arm@nongnu.org; Wed, 24 Aug 2022 15:45:48 -0400
 Received: by mail-yw1-x112a.google.com with SMTP id
- 00721157ae682-33db4e5ab43so5708187b3.4
- for <qemu-arm@nongnu.org>; Wed, 24 Aug 2022 12:41:05 -0700 (PDT)
+ 00721157ae682-33387bf0c4aso487214547b3.11
+ for <qemu-arm@nongnu.org>; Wed, 24 Aug 2022 12:45:47 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:from:to:cc;
- bh=2twwo6cjgLTfhoY+vSQysuT7wCW6t7DDp9CdcmsPlSo=;
- b=MqTaidW40oaE66WFNJD6evaj7s5t1xReBX0cf1JiDQwuJRV9KwrssTqy91J32f864A
- SZTDyNADnj/0pbVFEOOtg3DE4W3POKS+d/xnhGhoiUqvjL169gkqaalESgv5oyhGMjs9
- TDCt6QoVsZ3GBcODjbZOrISjqi6uRO5/RoViemArJHoz2gWp8eSA/xLZ1hieD05oVTEV
- xgJqQNuffwGJYfew4Eb1wlPEH1nHaJY8Jh9Q83f8h70TbysxiPI/2V56QBWt2e6t9tBp
- BrhCOc0n/VWoq3C3uQY+gcJ/tGLkAp8ebr7+Uux3Oq4WU1sBwyij/fL34L+8Jtula+Yn
- Agjw==
+ bh=B82TO1hTveMJiaR0bcz6clQVHDfpyBNs0EFwsMsV0Ck=;
+ b=MTeV6rONS3Mzk4p1uKlZifokkkuB+wKgNahEKLIaYaTfiZmQWJuVstRa4cW5ituhy6
+ u1gxuAvgOSH/6F5AoTmBG4Qe8Jpv1JzVRvH0+UJRJaXAGWyNQ958ICSHDBqe2yFVyvw5
+ 6P+0UNJsDZecsYa34SEXkdRklUZwMQjfOEXvFg867d9/txjpLHUumUCufIp0V0R6cwsO
+ 7FuEijs2eZiYX/d506ie2T8Q2FzzFrWvCm6o7HPQOHhoKVpwwTefkQuzKVskGE2nlFV8
+ dMAWmgu4ww8HeLkZQgxT188aavrK16XVVpPWlpXTxQvz06LR4uejEJZh7WK0c7Ao7uxw
+ AVdg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:x-gm-message-state:from:to:cc;
- bh=2twwo6cjgLTfhoY+vSQysuT7wCW6t7DDp9CdcmsPlSo=;
- b=UDiaChgIQisfnaLBtCGZsmWhuk4Kp+A1QPZnQqVjzHN1+h3zUjKy9XYRQV9RFCf3t8
- 6A+mstnxuuelZAaIcPS2NzQTuQWxXAZpXk3EmI6QhEPxoEbCTR4kWXPq97TqMpeYaBSl
- ahbzXfBEPk3u+69KEFNaRGfMsRBknMZzxNgzuA2BycKyzjQiRfppWZjD1kqP2W69PYA5
- TCukQQ6pgMbZoaJILzz9xPXvyX62YQQoUyIyCrj8TJuOojInLKDx5eTW36YjzmDT6IYg
- BXlhp5HPchcwePvmafHn+PO+LaJWg95ONUBqaY5vos1pSsNbH3yuI6T0FGOfQ6ZEVmc0
- dxbw==
-X-Gm-Message-State: ACgBeo1XAZW49SzN2nAYysgDOLPpf9euFP+1Vn1bxPvarvX1F9ErFxvW
- EPUAa4gBvILs8pHcWoHiqvTxsUgq8MLb3j/zU8kcEQ==
-X-Received: by 2002:a0d:fd05:0:b0:329:3836:53ac with SMTP id
- n5-20020a0dfd05000000b00329383653acmr767872ywf.455.1661370063684; Wed, 24 Aug
- 2022 12:41:03 -0700 (PDT)
+ bh=B82TO1hTveMJiaR0bcz6clQVHDfpyBNs0EFwsMsV0Ck=;
+ b=0Y2AgEZsNbEsnGO8z3LY6jiiRbChXYx0r/Zd1dgBbRKWq7xNLxXVi/ftFKDlmQG/NH
+ VM6vS4WN72Y4XEPPoYs4HHdcrbu0ZmDwcTPyfDMKBoeuXZeMwyF44wPRYXsEGfUDDhkm
+ eMt3KjSKakruNAJnhtKOuFV/1EHfPD7TzWISlRzgbGFV3hoLrP9/Vr33vb/aN5h+Z6xA
+ 3yARW+i6nXlma2f1Qeooq0QeOWwk4YMOr0EF6WL000s16FVi1VtGGUyvruxJdVvyhpjz
+ SlSsVxlp/HDYJKkrxYsWP2+Q6z2iL+Mho+DK2oOMINAP/oeswKNPIuyKj7tXvRT8VOMn
+ 98/w==
+X-Gm-Message-State: ACgBeo2Oo4XO/dWj7JQ7IibsBhOUqBBzT7h1hDGmJqqGSBPZNHBbHknh
+ 9T2rw+idnE8gMI98sSMcx2ElSSflT0rjBePohzQUQw==
+X-Received: by 2002:a81:5a56:0:b0:33b:52a8:c360 with SMTP id
+ o83-20020a815a56000000b0033b52a8c360mr740384ywb.329.1661370346904; Wed, 24
+ Aug 2022 12:45:46 -0700 (PDT)
 MIME-Version: 1.0
 References: <20220824155113.286730-1-jean-philippe@linaro.org>
- <20220824155113.286730-6-jean-philippe@linaro.org>
-In-Reply-To: <20220824155113.286730-6-jean-philippe@linaro.org>
+ <20220824155113.286730-10-jean-philippe@linaro.org>
+In-Reply-To: <20220824155113.286730-10-jean-philippe@linaro.org>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Wed, 24 Aug 2022 20:40:21 +0100
-Message-ID: <CAFEAcA8jCLX8kyZHV4JW+QmKUeH2hL3Rq+q4gsvM1LXioBozYw@mail.gmail.com>
-Subject: Re: [PATCH 05/10] hw/arm/virt: Fix devicetree warning about the timer
+Date: Wed, 24 Aug 2022 20:45:05 +0100
+Message-ID: <CAFEAcA96dPtH2tAotFCdkR1CzZHU6bAnNyUXqKUrNh++5Ecd+Q@mail.gmail.com>
+Subject: Re: [PATCH 09/10] hw/arm/virt: Fix devicetree warnings about the SMMU
  node
 To: Jean-Philippe Brucker <jean-philippe@linaro.org>
 Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, robh+dt@kernel.org, 
@@ -100,9 +100,9 @@ X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
- T_SCC_BODY_TEXT_LINE=-0.01,
- T_SPF_TEMPERROR=0.01 autolearn=ham autolearn_force=no
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -117,43 +117,28 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: hiuOyuXsh+m7
+X-TUID: BMY786LINmjN
 
 On Wed, 24 Aug 2022 at 16:51, Jean-Philippe Brucker
 <jean-philippe@linaro.org> wrote:
 >
-> The compatible property of the Arm timer should contain either
-> "arm,armv7-timer" or "arm,armv8-timer", not both.
+> dt-validate reports three issues in the SMMU device-tree node:
 >
->   timer: compatible: 'oneOf' conditional failed, one must be fixed:
->         ['arm,armv8-timer', 'arm,armv7-timer'] is too long
->   From schema: linux/Documentation/devicetree/bindings/timer/arm,arch_timer.yaml
+>   smmuv3@9050000: $nodename:0: 'smmuv3@9050000' does not match '^iommu@[0-9a-f]*'
+>   smmuv3@9050000: interrupt-names: 'oneOf' conditional failed, one must be fixed:
+>         ['eventq', 'priq', 'cmdq-sync', 'gerror'] is too long
+>         'combined' was expected
+>         'gerror' was expected
+>         'gerror' is not one of ['cmdq-sync', 'priq']
+>   smmuv3@9050000: 'clock-names', 'clocks' do not match any of the regexes: 'pinctrl-[0-9]+'
+>   From schema: linux/Documentation/devicetree/bindings/iommu/arm,smmu-v3.yaml
 >
-> Signed-off-by: Jean-Philippe Brucker <jean-philippe@linaro.org>
-> ---
->  hw/arm/virt.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
->
-> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-> index ca5d213895..5935f32a44 100644
-> --- a/hw/arm/virt.c
-> +++ b/hw/arm/virt.c
-> @@ -344,7 +344,7 @@ static void fdt_add_timer_nodes(const VirtMachineState *vms)
->
->      armcpu = ARM_CPU(qemu_get_cpu(0));
->      if (arm_feature(&armcpu->env, ARM_FEATURE_V8)) {
-> -        const char compat[] = "arm,armv8-timer\0arm,armv7-timer";
-> +        const char compat[] = "arm,armv8-timer";
->          qemu_fdt_setprop(ms->fdt, "/timer", "compatible",
->                           compat, sizeof(compat));
->      } else {
+> Fix them by:
+> * changing the node name
+> * reordering the IRQs
+> * removing the clock properties which are not expected for the SMMU node
 
-Are we really sure there are no existing guests out there that are
-looking for this device under "armv7-timer" ?
-
-This used to be valid DT before Linux kernel commit 4d2bb3e65035954,
-which changed from "should at least contain one of" to requiring
-exactly one-of, and that was only in 2018.
+Why does dt-validate insist on a fixed interrupt order here?
 
 thanks
 -- PMM

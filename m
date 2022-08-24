@@ -1,108 +1,106 @@
-Received: by 2002:a17:906:9c0a:0:0:0:0 with SMTP id ff10csp2040346ejc;
-        Wed, 24 Aug 2022 03:36:06 -0700 (PDT)
-X-Google-Smtp-Source: AA6agR4pcLIpNZOBuTD3zyCcINB4HSfYeCiUOcfXYCoEywQC/SalSaXy1a5jTfvJqGgxbQkC08Fv
-X-Received: by 2002:a05:620a:1404:b0:6ba:c2c2:5eca with SMTP id d4-20020a05620a140400b006bac2c25ecamr18930154qkj.220.1661337366747;
-        Wed, 24 Aug 2022 03:36:06 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1661337366; cv=none;
+Received: by 2002:a17:906:9c0a:0:0:0:0 with SMTP id ff10csp2047208ejc;
+        Wed, 24 Aug 2022 03:47:02 -0700 (PDT)
+X-Google-Smtp-Source: AA6agR4EFoQJxQAcjkHyqcJQ59y9nIvAPEaktIEKzRS/BNwFqyvIl6lsl4XlL/CCcwwBDEA08PRa
+X-Received: by 2002:a05:620a:d8c:b0:6a7:91a4:2669 with SMTP id q12-20020a05620a0d8c00b006a791a42669mr19226250qkl.269.1661338022284;
+        Wed, 24 Aug 2022 03:47:02 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1661338022; cv=none;
         d=google.com; s=arc-20160816;
-        b=YkmZSIyU7jlngyCr0sIbRo3amokDluafsAVvu7KpAOz34gMnLW8gXfJJQKvaJF3gO/
-         XBiLZe2L85waYFWwmEmxS7PQHHx0qjTT8kEoizA1Me21iiitRYaf8V4IVOfro39XvxVw
-         n1Dbj81T+TwC2xoxJc+Z4xKjigd0WCKKVeKEzIHHW3ijTyHW9YxvYFCWJGNUGPS5MK9T
-         0tvbSIzCvJLMtQf+ZSkL7ypgcgasiTbaPmLWS7WOUSOILCxzDdDkdd5lV9MtJ8vldmgA
-         y+9IcSbIeTaBwWbazYlNaqpdY7HGxKY64U1W6vRfvAK9pmUYbe6NLvJU7MYjxsVTdTmM
-         4rEA==
+        b=tu/rhKCfHxadkmCpDbpSkrV5hKKEfaNDni0YGh26/YJ2Fzl2oi7OCCPIG9YB4RWTCZ
+         zspVFpT4fxxe39j7b+dv9QSCmpXvF6X+LmdGCzVAuXOQ4VKDlQRuny1y+Y1KTFa0JC4h
+         Awbc3lkBzFL83TZpR0uCIboBcvX1bm+veSFye5AwA+/LiCckUktRUEyFS+ILnhJHR8AK
+         paaOLWHfCqKenO867AuAcw/QZ/HbpI2VXNTxF3+WMFLD2aSRUmSMU6XJ5g+Cl4hIDpKr
+         bWm4duEpKvEsPSHqindEPMEfMMpGyFqxV5zSajQJSaLywj/IOSGgh65JPUOSDAmq5P0h
+         xKbg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=MHfTEu/249wVV9m0rBn3cA/BnwhFgurm/PYKRUtzg+o=;
-        b=MY6uIpH0LMBzxW7WmwC6xLQt0+xW1zNyZkSEQtyYL7VGDZAE/ee2th3fVKir+AThuC
-         7GxdDFR57NM6ChVAPufJ91zrpY4niePU/lHsUoJmHtQJzK+MlwvJBgt14XyFv0UXxzGV
-         nlJyituxZLqoG6nO3Cta7aGVsXV8bg0fEIaUJvYukYOJZ9C5Hf5+M8MaTxe1nWk/re1d
-         2SfiHclwUerASnD8BfxZjCc09++2DnOwYGgXk08OwRanBnDTUFnvoaNjG0r92yFHnuob
-         7EVskvVsym4ieaCCniYYiJFsuGM0ZWh2g2Wg/XLT/RrXS2ubiPMNUXSDp9rRKRPThUyA
-         Hw3g==
+        bh=absMu0MsCcS+D8Q8iKeaSzi8XuqAyekaCuc9H9DLYbc=;
+        b=mreIORi+6BCuadozaGM2iD93+1XrVHgjQ+2Hkceb0N/MZwfZbFmXY1JxIXBH75z1cB
+         o2RkVG6rYIWhqGffRLjb5gKU9dAlsOfPwBCGpZY0GhnItT7D5fWfHZhubXJw6kVkGTUf
+         9VSOj1qxho4edaWCxHGb73VxO13doIc3q7/E1XignvZl2GvmwVKAorw+aUOCn4usFCQU
+         T8thkPP1OCwtl69xVV+mvkWxSoOIawekmjLo2wphgAqGO7YjhBV2f2rWeiJeNsfroCvA
+         yZfeeuONAMW5t8n1SQmAdltA5Fqqtz4jM9tyckP3ziwH6lQyq5sQrCGFkh1OoILNQWqX
+         GqpA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20210112 header.b=ZZK1hRnY;
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=NDv6cXqY;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id q1-20020ac84501000000b00342fe62c9d8si7101421qtn.363.2022.08.24.03.36.06
+        by mx.google.com with ESMTPS id t199-20020a3746d0000000b006b90742f6a5si7249545qka.345.2022.08.24.03.47.02
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 24 Aug 2022 03:36:06 -0700 (PDT)
+        Wed, 24 Aug 2022 03:47:02 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20210112 header.b=ZZK1hRnY;
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=NDv6cXqY;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:49214 helo=lists1p.gnu.org)
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:32796 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1oQnjv-0004de-Hx
-	for alex.bennee@linaro.org; Wed, 24 Aug 2022 06:36:03 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:59096)
+	id 1oQnuX-0001f7-P9
+	for alex.bennee@linaro.org; Wed, 24 Aug 2022 06:47:01 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:59098)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <bmeng.cn@gmail.com>)
- id 1oQmv4-0004TI-3j; Wed, 24 Aug 2022 05:43:30 -0400
-Received: from mail-pj1-x1030.google.com ([2607:f8b0:4864:20::1030]:42734)
+ id 1oQmv6-0004UF-RC; Wed, 24 Aug 2022 05:43:34 -0400
+Received: from mail-pj1-x1035.google.com ([2607:f8b0:4864:20::1035]:42739)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <bmeng.cn@gmail.com>)
- id 1oQmv1-0001ol-7O; Wed, 24 Aug 2022 05:43:28 -0400
-Received: by mail-pj1-x1030.google.com with SMTP id
- s3-20020a17090a2f0300b001facfc6fdbcso957368pjd.1; 
- Wed, 24 Aug 2022 02:43:26 -0700 (PDT)
+ id 1oQmv5-0001qE-6Z; Wed, 24 Aug 2022 05:43:32 -0400
+Received: by mail-pj1-x1035.google.com with SMTP id
+ s3-20020a17090a2f0300b001facfc6fdbcso957475pjd.1; 
+ Wed, 24 Aug 2022 02:43:30 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc;
- bh=MHfTEu/249wVV9m0rBn3cA/BnwhFgurm/PYKRUtzg+o=;
- b=ZZK1hRnYE1UDVwGvYkKI2LanoP3FgMW+1eLQGcXLgaAknQhWlHpDk1G1aG0/uf8LMu
- y54chOAX4JZPoMJ3LzQc2GDdCS4qknDTBFAFMSiR+O5GaI3Rt2CBMB3GyydJ23FOgjWz
- oArmj5LDEvjSzwQQsGVDz1N1NLCsOGGgkl9dm+G00CCJMGy76vZG6hiwkiLwWSYUJs2i
- +qa4ykgb0OWlUWRb+7t3W7KE+OoR2lEmYaE9n9G8AHIoC8SzzX3TDyNAgufQ5lMRcxX9
- Tv3RrNlb0wwFgN39PpH6SKXvzC7f0ZJWrHTbP5Bm5NIqJ8mlJMy3xWsRQkQmsNZFg3pr
- J7jA==
+ bh=absMu0MsCcS+D8Q8iKeaSzi8XuqAyekaCuc9H9DLYbc=;
+ b=NDv6cXqYoVIT6UlJFchvJvI+7vc9VAWbvNd8EzFyl0Xyy9JSejdoTtHowjqeyY5WN/
+ 1SjWn/ZzooHtZMTLk2ehGXnsRGzjFJ9iCQnlZjpLjLHsUBc4Q7EPJ8ADRtBSpIfAhg8l
+ D5gfwgybFUY3yOy6LSUSSwp6gcG9DPlBEIFnSQRmhKB0GXQ+edUtrSbFoIYelcp9aPtN
+ 4ji2U4v+N3tcYObSlcRmJTPdEMCceVHQbOvD2s+rNDGN1+gBWln4jwOS24pkmv/RURMf
+ Ax6TSvJmbDivLCmMM0G1bUVpFLM2EOKffasyDtVcFH4JSqv6KSRiPcEKECN65oi8mTe9
+ Oksg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc;
- bh=MHfTEu/249wVV9m0rBn3cA/BnwhFgurm/PYKRUtzg+o=;
- b=L2lHWrGPrUuH5BG5wTYcq7ERwjtXdI/yQQEidqZ4kvnJC2Yh5kRd4bYDwF0NqAWD0K
- KXX/MV3aym/zs5LpLCHaV96FWMbAPptlm+msDdmRqDiAOF0O/45314mofcudkqjSAyA+
- O7hvs+3Zv6l8qad/1jgCyTL4WW7HrX7/SQ1V2XTWF7TrRzej2kUVK0V0cbOfLo1KZE0y
- IBtmjBQ4DTIV5a/4OaFOq6sa8dk5Q38L8ZDSTfc1l0ta5DM1VcVgZGEQrrbWnJYWrJfc
- HeKYUuiHWO0UtpUkT2HIvEWbdcj7ba108CYjprYw7uaSAmDkQSkAOjuLsi8q+OlGk+Rj
- BoUg==
-X-Gm-Message-State: ACgBeo2ResUmzdux2zf1bsh7VqC1m7JxoNRq8vl/1pc2WqW/UUIOLQT8
- y9Yv8xrAzGm2l7r0wFCtz21becNF7Rg=
-X-Received: by 2002:a17:90a:e543:b0:1fa:d591:12c4 with SMTP id
- ei3-20020a17090ae54300b001fad59112c4mr7302607pjb.91.1661334205265; 
- Wed, 24 Aug 2022 02:43:25 -0700 (PDT)
+ bh=absMu0MsCcS+D8Q8iKeaSzi8XuqAyekaCuc9H9DLYbc=;
+ b=EM5Qe0V6Akki9ilSurkQJ/a3S+rpowIoF6rqkt0PvstLfWEcVEZbt4A7TwlG5aahm6
+ 0vXBrw6BgORxIpR71hHVgmH49KzpWKRyXAqS8Yd/QHOBsnh6ZYO0A+oFQPaQxu1ZEJYd
+ 7cAwL4Rr4vr4IdOYW9kTPayct1ZMK+E3KVrLe1a36xsvGXXg7jznIvE7qScxq9T5z3sN
+ wsI/8Fo+7uj/1cQxTc4jOqnJU/andLLS4i5lAaPKEA8y76eolUi733LBRtswcP1yG5Lb
+ KtjH4WFdJ2+k6TTJz3dGbZ49TluGxCwueioB0WtQfycgO51Hv5/WzJdRSt2SQ/isNANu
+ d5SA==
+X-Gm-Message-State: ACgBeo2qrqdWwsnN62wcZ8okwj2SSrUycgklcwtvFDuAf7laqhx2VYUn
+ 4xL8uxxbU+5ZQmzkcODvDvrJjWyWTW8=
+X-Received: by 2002:a17:90a:6b0d:b0:1fa:c6fe:db6 with SMTP id
+ v13-20020a17090a6b0d00b001fac6fe0db6mr7432037pjj.99.1661334208035; 
+ Wed, 24 Aug 2022 02:43:28 -0700 (PDT)
 Received: from ubuntu.. (144.168.56.201.16clouds.com. [144.168.56.201])
  by smtp.gmail.com with ESMTPSA id
- b14-20020a170903228e00b001728eb339e2sm12165972plh.286.2022.08.24.02.43.22
+ b14-20020a170903228e00b001728eb339e2sm12165972plh.286.2022.08.24.02.43.25
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 24 Aug 2022 02:43:24 -0700 (PDT)
+ Wed, 24 Aug 2022 02:43:27 -0700 (PDT)
 From: Bin Meng <bmeng.cn@gmail.com>
 To: qemu-devel@nongnu.org
-Cc: Bin Meng <bin.meng@windriver.com>,
- Havard Skinnemoen <hskinnemoen@google.com>,
+Cc: Bin Meng <bin.meng@windriver.com>, Joel Stanley <joel@jms.id.au>,
  Laurent Vivier <lvivier@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
- Thomas Huth <thuth@redhat.com>, Tyrone Ting <kfting@nuvoton.com>,
+ Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
  qemu-arm@nongnu.org
-Subject: [PATCH 43/51] tests/qtest: npcm7xx_emc-test: Skip running test_{tx,
- rx} on win32
-Date: Wed, 24 Aug 2022 17:40:21 +0800
-Message-Id: <20220824094029.1634519-44-bmeng.cn@gmail.com>
+Subject: [PATCH 44/51] tests/qtest: microbit-test: Fix socket access for win32
+Date: Wed, 24 Aug 2022 17:40:22 +0800
+Message-Id: <20220824094029.1634519-45-bmeng.cn@gmail.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20220824094029.1634519-1-bmeng.cn@gmail.com>
 References: <20220824094029.1634519-1-bmeng.cn@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1030;
- envelope-from=bmeng.cn@gmail.com; helo=mail-pj1-x1030.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1035;
+ envelope-from=bmeng.cn@gmail.com; helo=mail-pj1-x1035.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -124,82 +122,65 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: FwAgIQjGKzPq
+X-TUID: Hb0PDLpWLnKL
 
 From: Bin Meng <bin.meng@windriver.com>
 
-The test cases 'test_{tx,rx}' call socketpair() which does not exist
-on win32. Exclude them.
+Sockets on Windows do not use *nix-style file descriptors, so
+write()/read()/close() do not work on Windows.
+
+Switch over to use send()/recv()/closesocket() which work with
+sockets on all platforms.
 
 Signed-off-by: Bin Meng <bin.meng@windriver.com>
 ---
 
- tests/qtest/npcm7xx_emc-test.c | 8 ++++++++
- 1 file changed, 8 insertions(+)
+ tests/qtest/microbit-test.c | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
 
-diff --git a/tests/qtest/npcm7xx_emc-test.c b/tests/qtest/npcm7xx_emc-test.c
-index a353fef0ca..c373d24e1e 100644
---- a/tests/qtest/npcm7xx_emc-test.c
-+++ b/tests/qtest/npcm7xx_emc-test.c
-@@ -209,6 +209,7 @@ static int emc_module_index(const EMCModule *mod)
-     return diff;
- }
- 
-+#ifndef _WIN32
- static void packet_test_clear(void *sockets)
+diff --git a/tests/qtest/microbit-test.c b/tests/qtest/microbit-test.c
+index b71daae9a9..4bc267020b 100644
+--- a/tests/qtest/microbit-test.c
++++ b/tests/qtest/microbit-test.c
+@@ -51,7 +51,7 @@ static void uart_rw_to_rxd(QTestState *qts, int sock_fd, const char *in,
  {
-     int *test_sockets = sockets;
-@@ -243,6 +244,7 @@ static int *packet_test_init(int module_num, GString *cmd_line)
-     g_test_queue_destroy(packet_test_clear, test_sockets);
-     return test_sockets;
- }
-+#endif /* _WIN32 */
+     int i, in_len = strlen(in);
  
- static uint32_t emc_read(QTestState *qts, const EMCModule *mod,
-                          NPCM7xxPWMRegister regno)
-@@ -250,6 +252,7 @@ static uint32_t emc_read(QTestState *qts, const EMCModule *mod,
-     return qtest_readl(qts, mod->base_addr + regno * sizeof(uint32_t));
- }
+-    g_assert_true(write(sock_fd, in, in_len) == in_len);
++    g_assert_true(send(sock_fd, in, in_len, 0) == in_len);
+     for (i = 0; i < in_len; i++) {
+         g_assert_true(uart_wait_for_event(qts, NRF51_UART_BASE +
+                                                A_UART_RXDRDY));
+@@ -77,7 +77,7 @@ static void test_nrf51_uart(void)
+     char s[10];
+     QTestState *qts = qtest_init_with_serial("-M microbit", &sock_fd);
  
-+#ifndef _WIN32
- static void emc_write(QTestState *qts, const EMCModule *mod,
-                       NPCM7xxPWMRegister regno, uint32_t value)
- {
-@@ -339,6 +342,7 @@ static bool emc_soft_reset(QTestState *qts, const EMCModule *mod)
-     g_message("%s: Timeout expired", __func__);
-     return false;
- }
-+#endif /* _WIN32 */
+-    g_assert_true(write(sock_fd, "c", 1) == 1);
++    g_assert_true(send(sock_fd, "c", 1, 0) == 1);
+     g_assert_cmphex(qtest_readl(qts, NRF51_UART_BASE + A_UART_RXD), ==, 0x00);
  
- /* Check emc registers are reset to default value. */
- static void test_init(gconstpointer test_data)
-@@ -387,6 +391,7 @@ static void test_init(gconstpointer test_data)
-     qtest_quit(qts);
- }
+     qtest_writel(qts, NRF51_UART_BASE + A_UART_ENABLE, 0x04);
+@@ -97,17 +97,17 @@ static void test_nrf51_uart(void)
  
-+#ifndef _WIN32
- static bool emc_wait_irq(QTestState *qts, const EMCModule *mod, int step,
-                          bool is_tx)
- {
-@@ -843,6 +848,7 @@ static void test_rx(gconstpointer test_data)
+     qtest_writel(qts, NRF51_UART_BASE + A_UART_STARTTX, 0x01);
+     uart_w_to_txd(qts, "d");
+-    g_assert_true(read(sock_fd, s, 10) == 1);
++    g_assert_true(recv(sock_fd, s, 10, 0) == 1);
+     g_assert_cmphex(s[0], ==, 'd');
+ 
+     qtest_writel(qts, NRF51_UART_BASE + A_UART_SUSPEND, 0x01);
+     qtest_writel(qts, NRF51_UART_BASE + A_UART_TXD, 'h');
+     qtest_writel(qts, NRF51_UART_BASE + A_UART_STARTTX, 0x01);
+     uart_w_to_txd(qts, "world");
+-    g_assert_true(read(sock_fd, s, 10) == 5);
++    g_assert_true(recv(sock_fd, s, 10, 0) == 5);
+     g_assert_true(memcmp(s, "world", 5) == 0);
+ 
+-    close(sock_fd);
++    closesocket(sock_fd);
  
      qtest_quit(qts);
  }
-+#endif /* _WIN32 */
- 
- static void emc_add_test(const char *name, const TestData* td,
-                          GTestDataFunc fn)
-@@ -865,8 +871,10 @@ int main(int argc, char **argv)
-         td->module = &emc_module_list[i];
- 
-         add_test(init, td);
-+#ifndef _WIN32
-         add_test(tx, td);
-         add_test(rx, td);
-+#endif
-     }
- 
-     return g_test_run();
 -- 
 2.34.1
 

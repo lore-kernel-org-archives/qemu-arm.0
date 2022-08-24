@@ -1,222 +1,315 @@
-Received: by 2002:a17:906:9c0a:0:0:0:0 with SMTP id ff10csp1974354ejc;
-        Wed, 24 Aug 2022 01:07:33 -0700 (PDT)
-X-Google-Smtp-Source: AA6agR6xPF/2rLJaoxihJLwdLc9VlTbS+mPj/dj3TCZHbcF8Y1QeV02oLXd0r5sxhQmPUkDE+G8D
-X-Received: by 2002:a37:755:0:b0:6ba:fcb7:1949 with SMTP id 82-20020a370755000000b006bafcb71949mr18588612qkh.590.1661328453065;
-        Wed, 24 Aug 2022 01:07:33 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1661328453; cv=none;
+Received: by 2002:a17:906:9c0a:0:0:0:0 with SMTP id ff10csp2013829ejc;
+        Wed, 24 Aug 2022 02:40:43 -0700 (PDT)
+X-Received: by 2002:aa7:88c6:0:b0:537:9d6:2c76 with SMTP id k6-20020aa788c6000000b0053709d62c76mr5652333pff.41.1661334043602;
+        Wed, 24 Aug 2022 02:40:43 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1661334043; cv=none;
         d=google.com; s=arc-20160816;
-        b=Lrrv5kBWWWgGY0Adc8hT8czmPnhO4iSSlW39tUGLCvIr822X0VS/MP7xgO7JiayE1e
-         l3hRaIqQZNRwnpmC0aK18o9Uchats2bE3QACt0GX/Fa9TByggQQzWXAXj3vEHu46dEXP
-         sysNl/OdiFvAk+Fh7CN19kmJwKJnyRZ4p0vA2lmaA5JHXjWnxdv6R83/NkhiVfR9cj4y
-         mHjCEK686De+VYG/DoXdVgrHAPrQGhwdWmjSbNuVsV55rAhOLG65C+dfrBC+3KrUefCe
-         rS/eReJjxZlTkpOvIJARSK761eIAzPOV2+D43QA6mqG0xb64ln2O8COhOWkseo342WX1
-         Tv4A==
+        b=qjVeXmUIj8bbzqsRq33CDh6AaAIT4vz5AwSqzCd/8RCiJmDAETu5p+Blivp80D00ld
+         HbAOW0LgcNuTQpboqWuQ8GdEFtnyTrbNNSXmXA+KBuwCC0o15IQGe3T8VmbK/8qa4lcR
+         wjBvrbpufm2SRDPIuc3aHUMyjPFMI7gTwdJAxmitMndbNAh0j9gQ6rU9kFFFGOcwsywb
+         rzcJTPQkYA2Tnu6kMXkW+rTn3qeL2UqRoB2mxwBqSIarH27VBVGAwZVBtO9B2jALZlBu
+         yp+fzKkhTvza/drbZMLrSzyinVoSO+7kQqiY/Qu9UKEkAtzv/ZSX2I/3bM9WkvxET60j
+         gG/Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:content-language:in-reply-to:from
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=agflgaflTBOwGFb0gjJzF7s1UfuruAV9dLoW+MoUvow=;
-        b=i4bIw4z/aIq86y2w3nWKGQlD2fX+xXG4XJdrw4i/94ri0M4vsWZzgCn6d/JQdoVGZs
-         BEda3H9jGK9UE36V7jKlXR2jRmQMGqEPDPRCEcA4SiE9wr6k41LZGoBggGoOnpD1n9Vc
-         UZjR+4upYUWOegTEBOurIA+uUUPhLF9uEtFIDSA70zXpM4x6Y49RCK0Y4if8+zW1f9tI
-         j3BUjgUdcYQyn+v/7bOA4VD9cK/qHH+PQfFWKbHv7QLOE3JLPOoXflzM63KNuWkMwjhA
-         RnBSRwcmYsDqO13drwKzUPgA6uLGcWRFsBgTiF1J0THf4tnv0Se+7FqUTrfAa/8okJ6P
-         liqg==
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:dkim-signature;
+        bh=xZ1STzqzVyE8e3GIXlbfpcBakVQpvSLsxTiPOgOYGl8=;
+        b=PRMQBQAEer26pPXf2GSJ5N2ULgU62u0edLzhuRwNx8Oy5Im7hfonUEZh6GNMilpx2d
+         QtkXXhp1XqdBmtUICTaZ+jtmEjvgbFcXYTRiDCCqNTGbkSXnN/e72y3Pr8d1mhfS2x5i
+         XJYuIJUc5Ggue/qd9dTw775IoIrb+cVRTCBX6iLeJqj4qjQtLTzvw469FGvGM0lavtiv
+         /j3nUM7368/YV5/Zlm02F5fwiiEniO13V+j4Jty982+LIIvxnO5W+d09rK2MvL5hg1r0
+         8/YyEHYmj4HrvcPJ/T0tBXwQLt0J2JQUkI2FP+DnCIh7vy4BwDWb535KyC37iffitT/N
+         2Q2A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=hIvB00HG;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id de12-20020a05620a370c00b006bbb8c42abcsi7194159qkb.352.2022.08.24.01.07.32
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 24 Aug 2022 01:07:33 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=dOnfuZKd;
+       spf=pass (google.com: domain of bmeng.cn@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=bmeng.cn@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <bmeng.cn@gmail.com>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id x22-20020a656ab6000000b0040c74303958sor7593701pgu.57.2022.08.24.02.40.43
+        (Google Transport Security);
+        Wed, 24 Aug 2022 02:40:43 -0700 (PDT)
+Received-SPF: pass (google.com: domain of bmeng.cn@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=hIvB00HG;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:32992 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1oQlQC-0000Gl-Cm
-	for alex.bennee@linaro.org; Wed, 24 Aug 2022 04:07:32 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46242)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1oQlPV-0000FH-NR
- for qemu-arm@nongnu.org; Wed, 24 Aug 2022 04:06:49 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:55799)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1oQlPR-0003qi-Rl
- for qemu-arm@nongnu.org; Wed, 24 Aug 2022 04:06:47 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1661328404;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=agflgaflTBOwGFb0gjJzF7s1UfuruAV9dLoW+MoUvow=;
- b=hIvB00HGcNjmpKkUVC6P03MFKLHDB9OVW86e3OGB7CctwjURkMf3mBOgZcu4DASQwGp3r4
- h70PyPA4gSic237wDokbk50jU74JUZtQerKxQuh6jlIwgDKHl6miTy/F7PyMwmNSY6nAtb
- KkehFNh6pAroO8XFDlR+8HcsroTAOk8=
-Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
- [209.85.221.71]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_128_GCM_SHA256) id
- us-mta-390-z7ufQfLZNIqN08P1qEdWJg-1; Wed, 24 Aug 2022 04:06:41 -0400
-X-MC-Unique: z7ufQfLZNIqN08P1qEdWJg-1
-Received: by mail-wr1-f71.google.com with SMTP id
- r8-20020adfbb08000000b00225239ce4deso2589032wrg.1
- for <qemu-arm@nongnu.org>; Wed, 24 Aug 2022 01:06:41 -0700 (PDT)
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=dOnfuZKd;
+       spf=pass (google.com: domain of bmeng.cn@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=bmeng.cn@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc;
+        bh=xZ1STzqzVyE8e3GIXlbfpcBakVQpvSLsxTiPOgOYGl8=;
+        b=dOnfuZKd0SF0sM88hkaUfu1QlqRUzSpfJb0Tb7pHqcBuKqiws3QLYaV0WybqYNa7uN
+         UJDBunX1m7NsDQMaxg0eq+qPSPj3a8i/fq1rYZmXxjrK4xeMU3XMzYpTVDlVE29ziS/C
+         nJIKXpkHMrIOvLuO7F7fl26L9FWae2YfPPwA00UFCYqy+q3LxyNsAT/UCu8nZxPWHwHL
+         TrtnN6Fxslss3QUg5t8KoLda8xI0fWhX5K/9NhENQAl1p6AReGvBtSct+PLMqP/Z2Oe3
+         iVbHHzDcs7TXFwStUD4B5ffLWLSdFCi4BZWj3eZIiVPidm7y7X6a2EOz4wmfhdg8MRFY
+         OTyw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:reply-to:user-agent:mime-version:date
- :message-id:x-gm-message-state:from:to:cc;
- bh=agflgaflTBOwGFb0gjJzF7s1UfuruAV9dLoW+MoUvow=;
- b=VsmEuTLPNxdRtg28FylvcWnBX+UIU0jkqD2OhoEF1DiDPypQcHptwlUGM2/ASNmltG
- ct+oInGC73q0nSV7FCiZYoVYkCqa/YaHKyGwdM7wKPG2mIV0EGczixGW9SQLTnkd5BUk
- 66smiWZxeCvpib7mmPNNd+S8PVCv6Xgw8cjWW7fTDH9HQ78M+5+E7FuL7wpVPVwjThg5
- Vns7WF3mnfFQCIN1d/AVu7W/bTUXAlA1QOICWA0l3dLRL+xbZggt6bXhZkyquCzp13lC
- ifbTPXDN+69S1nXl29NMhm3XE9s7x7te8em2giGbqYdrssdB5mIA6AUO1/3j2yZLtCVz
- /pGg==
-X-Gm-Message-State: ACgBeo24r1hdtX9NyVewiOeOt5Ov/3XK3rjsnCZe9cT8wgSEZnQt5MYv
- b33Tqd9c2gcsS8CUhNh2C6q2I7Y7noLJQVDI49HM0Un8qGNufJdza9GrXyn15pgo3p4KCjfLV0m
- bb6hgqw0S4hj0
-X-Received: by 2002:a5d:48c5:0:b0:225:2f99:430d with SMTP id
- p5-20020a5d48c5000000b002252f99430dmr16482613wrs.358.1661328400401; 
- Wed, 24 Aug 2022 01:06:40 -0700 (PDT)
-X-Received: by 2002:a5d:48c5:0:b0:225:2f99:430d with SMTP id
- p5-20020a5d48c5000000b002252f99430dmr16482593wrs.358.1661328400149; 
- Wed, 24 Aug 2022 01:06:40 -0700 (PDT)
-Received: from ?IPV6:2a01:e0a:59e:9d80:527b:9dff:feef:3874?
- ([2a01:e0a:59e:9d80:527b:9dff:feef:3874])
- by smtp.gmail.com with ESMTPSA id
- l28-20020a056000023c00b00225213fd4a9sm16175683wrz.33.2022.08.24.01.06.39
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 24 Aug 2022 01:06:39 -0700 (PDT)
-Message-ID: <67f44b09-7c9a-fd83-d222-f505a91ca99e@redhat.com>
-Date: Wed, 24 Aug 2022 10:06:38 +0200
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc;
+        bh=xZ1STzqzVyE8e3GIXlbfpcBakVQpvSLsxTiPOgOYGl8=;
+        b=GSJ2P8iCopfGWmzw/q+1p/g8yAm6WNDv0sBrsOAwM0wR+fXovf5Hkq+ChpE74KvswF
+         wHdg3IFr/nyxJZf7+VvB1ybLee5dIRw3waq54rbIf2NS7l9h/QoC52fHL8EhnMDpGfLu
+         QtVkU2HH3RlnbF3JlrRnZSfXFzNL2sBtiyVWOc+KB4ebq6MPTGqsqDVDmOD/Hxd3jhKM
+         vve4rH1K8shM0PlO1/j64dEXppPJzcZG1n3mSNMs+SX8QbKKLJ99alKLE9207T8ZiKK0
+         kbhzD+0TmAM5iTysBFRuB08vvMXsPAxyUF+tc6lDeNoA1Ob1V0AMC3q7OLnVs3cHkJLM
+         zkuw==
+X-Gm-Message-State: ACgBeo1S63lVYU0urjA6MSGqNAmPKXLAyuoUJCi2mbI+xBeEhd/+FBYE
+	NKhnMDwIgL8BGLR+h7Tph+A=
+X-Google-Smtp-Source: AA6agR6pq0HSjFj7TegvFFgYLOCtAp7I3Vh3ZOT9H0f/NXGeKEA8bkSuZpufqQHzRM2AdiKY6jy4PA==
+X-Received: by 2002:a63:90c8:0:b0:41d:f6f6:49cc with SMTP id a191-20020a6390c8000000b0041df6f649ccmr19463239pge.223.1661334043135;
+        Wed, 24 Aug 2022 02:40:43 -0700 (PDT)
+Return-Path: <bmeng.cn@gmail.com>
+Received: from ubuntu.. (144.168.56.201.16clouds.com. [144.168.56.201])
+        by smtp.gmail.com with ESMTPSA id b14-20020a170903228e00b001728eb339e2sm12165972plh.286.2022.08.24.02.40.31
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 24 Aug 2022 02:40:42 -0700 (PDT)
+From: Bin Meng <bmeng.cn@gmail.com>
+To: qemu-devel@nongnu.org
+Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	Alexander Bulekov <alxndr@bu.edu>,
+	Andrew Jeffery <andrew@aj.id.au>,
+	Ani Sinha <ani@anisinha.ca>,
+	Bandan Das <bsd@redhat.com>,
+	Beraldo Leal <bleal@redhat.com>,
+	Christian Schoenebeck <qemu_oss@crudebyte.com>,
+	Coiby Xu <Coiby.Xu@gmail.com>,
+	=?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
+	Daniel Henrique Barboza <danielhb413@gmail.com>,
+	=?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
+	Darren Kenny <darren.kenny@oracle.com>,
+	David Gibson <david@gibson.dropbear.id.au>,
+	"Dr. David Alan Gilbert" <dgilbert@redhat.com>,
+	Eduardo Habkost <eduardo@habkost.net>,
+	Emanuele Giuseppe Esposito <eesposit@redhat.com>,
+	Fam Zheng <fam@euphon.net>,
+	Gerd Hoffmann <kraxel@redhat.com>,
+	Greg Kurz <groug@kaod.org>,
+	Hanna Reitz <hreitz@redhat.com>,
+	Havard Skinnemoen <hskinnemoen@google.com>,
+	Igor Mammedov <imammedo@redhat.com>,
+	Jason Wang <jasowang@redhat.com>,
+	Joel Stanley <joel@jms.id.au>,
+	John Snow <jsnow@redhat.com>,
+	Juan Quintela <quintela@redhat.com>,
+	Kevin Wolf <kwolf@redhat.com>,
+	Konstantin Kostiuk <kkostiuk@redhat.com>,
+	Laurent Vivier <lvivier@redhat.com>,
+	=?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
+	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+	Markus Armbruster <armbru@redhat.com>,
+	Michael Roth <michael.roth@amd.com>,
+	"Michael S. Tsirkin" <mst@redhat.com>,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+	Qiuhao Li <Qiuhao.Li@outlook.com>,
+	Richard Henderson <richard.henderson@linaro.org>,
+	Stefan Berger <stefanb@linux.vnet.ibm.com>,
+	Stefan Hajnoczi <stefanha@redhat.com>,
+	Thomas Huth <thuth@redhat.com>,
+	Tyrone Ting <kfting@nuvoton.com>,
+	Vladimir Sementsov-Ogievskiy <vsementsov@virtuozzo.com>,
+	Wainer dos Santos Moschetta <wainersm@redhat.com>,
+	Willian Rampazzo <willianr@redhat.com>,
+	Yanan Wang <wangyanan55@huawei.com>,
+	qemu-arm@nongnu.org,
+	qemu-block@nongnu.org,
+	qemu-ppc@nongnu.org
+Subject: [PATCH 00/51] tests/qtest: Enable running qtest on Windows
+Date: Wed, 24 Aug 2022 17:39:38 +0800
+Message-Id: <20220824094029.1634519-1-bmeng.cn@gmail.com>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.11.0
-Subject: Re: [PATCH v2 0/4] hw/arm/virt: Improve address assignment for high
- memory regions
-To: Gavin Shan <gshan@redhat.com>, qemu-arm@nongnu.org
-Cc: qemu-devel@nongnu.org, maz@kernel.org, cohuck@redhat.com,
- zhenyzha@redhat.com, peter.maydell@linaro.org, richard.henderson@linaro.org,
- shan.gavin@gmail.com
-References: <20220815062958.100366-1-gshan@redhat.com>
- <8f219b9f-d5ee-aa9d-519e-e3a7623c2c63@redhat.com>
-From: Eric Auger <eric.auger@redhat.com>
-In-Reply-To: <8f219b9f-d5ee-aa9d-519e-e3a7623c2c63@redhat.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124;
- envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: eric.auger@redhat.com
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: j4jEbOZGjPJB
+X-TUID: 3JP2ghel1fPT
 
-Hi Gavin,
+In prepartion to adding virtio-9p support on Windows, this series
+enables running qtest on Windows, so that we can run the virtio-9p
+tests on Windows to make sure it does not break accidently.
 
-On 8/24/22 05:29, Gavin Shan wrote:
-> Hi Marc,
->
-> On 8/15/22 4:29 PM, Gavin Shan wrote:
->> There are three high memory regions, which are VIRT_HIGH_REDIST2,
->> VIRT_HIGH_PCIE_ECAM and VIRT_HIGH_PCIE_MMIO. Their base addresses
->> are floating on highest RAM address. However, they can be disabled
->> in several cases.
->>      (1) One specific high memory region is disabled by developer by
->>      toggling vms->highmem_{redists, ecam, mmio}.
->>      (2) VIRT_HIGH_PCIE_ECAM region is disabled on machine, which is
->>      'virt-2.12' or ealier than it.
->>      (3) VIRT_HIGH_PCIE_ECAM region is disabled when firmware is loaded
->>      on 32-bits system.
->>      (4) One specific high memory region is disabled when it breaks the
->>      PA space limit.
->>      The current implementation of virt_set_memmap() isn't comprehensive
->> because the space for one specific high memory region is always
->> reserved from the PA space for case (1), (2) and (3). In the code,
->> 'base' and 'vms->highest_gpa' are always increased for those three
->> cases. It's unnecessary since the assigned space of the disabled
->> high memory region won't be used afterwards.
->>
->> The series intends to improve the address assignment for these
->> high memory regions:
->>
->> PATCH[1] and PATCH[2] are cleanup and preparatory works.
->> PATCH[3] improves address assignment for these high memory regions
->> PATCH[4] moves the address assignment logic into standalone helper
->>
->> History
->> =======
->> v1: https://lists.nongnu.org/archive/html/qemu-arm/2022-08/msg00013.html
->>
->> Changelog
->> =========
->> v2:
->>    * Split the patches for easier review                        (Gavin)
->>    * Improved changelog                                         (Marc)
->>    * Use 'bool fits' in virt_set_high_memmap()                  (Eric)
->>
-You did not really convince me about migration compat wrt the high MMIO
-region. Aren't the PCI BARs saved/restored meaning the device driver is
-expecting to find data at the same GPA. But what if your high MMIO
-region was relocated in the dest QEMU with a possibly smaller VM IPA?
-Don't you have MMIO regions now allocated outside of the dest MMIO
-region? How does the PCI host bridge route accesses to those regions?
-What do I miss?
+Patch 1-22 updates various components (mostly test cases) so that
+they can build on Windows with the same functionality.
 
-Thanks
+Patch 23 supports the qtest accelerator for Windows.
 
-Eric
->
-> Could you help to review when you have free cycles? It's just a kindly
-> ping :)
->
-> Thanks,
-> Gavin
->
->>
->> Gavin Shan (4):
->>    hw/arm/virt: Rename variable size to region_size in virt_set_memmap()
->>    hw/arm/virt: Introduce variable region_base in virt_set_memmap()
->>    hw/arm/virt: Improve address assignment for high memory regions
->>    virt/hw/virt: Add virt_set_high_memmap() helper
->>
->>   hw/arm/virt.c | 84 ++++++++++++++++++++++++++++++---------------------
->>   1 file changed, 50 insertions(+), 34 deletions(-)
->>
->
+Patch 31 updates the libqtest core for Windows.
 
+Patch 32-47 are the fixes of qtest errors exposed when running on Windows.
+
+Patch 49 fixes the instability of running qtests on Windows.
+
+Patch 50 updates the CI to run qtests on Windows.
+
+Patch 51 documents best practices of writing portable test cases as
+we learned during the enablement of running qtest on Windows.
+
+Based-on: <20220802075200.907360-1-bmeng.cn@gmail.com>
+
+
+Bin Meng (41):
+  tests/qtest: Use g_setenv()
+  tests/qtest: Use g_mkdtemp()
+  block: Unify the get_tmp_filename() implementation
+  semihosting/arm-compat-semi: Avoid using hardcoded /tmp
+  tcg: Avoid using hardcoded /tmp
+  util/qemu-sockets: Use g_get_tmp_dir() to get the directory for
+    temporary files
+  tests: Avoid using hardcoded /tmp in test cases
+  block/vvfat: Unify the mkdir() call
+  fsdev/virtfs-proxy-helper: Use g_mkdir_with_parents()
+  hw/usb: dev-mtp: Use g_mkdir_with_parents()
+  qga/commands-posix-ssh: Use g_mkdir_with_parents()
+  tests: Use g_mkdir_with_parents()
+  tests/qtest: migration-test: Handle link() for win32
+  backends/tpm: Exclude headers and macros that don't exist on win32
+  tests/qtest: Adapt {m48t59,rtc}-test cases for win32
+  tests/qtest: Build e1000e-test for posix only
+  tests/qtest: Build virtio-net-test for posix only
+  tests/qtest: Build cases that use memory-backend-file for posix only
+  tests/qtest: Build test-filter-{mirror,redirector} cases for posix
+    only
+  tests/qtest: i440fx-test: Skip running request_{bios,pflash} for win32
+  tests/qtest: migration-test: Skip running test_migrate_fd_proto on
+    win32
+  tests/qtest: qmp-test: Skip running test_qmp_oob for win32
+  tests/qtest: libqtest: Exclude the *_fds APIs for win32
+  tests/qtest: libqtest: Install signal handler via signal()
+  tests: Skip iotests and qtest when '--without-default-devices'
+  tests/qtest: Support libqtest to build and run on Windows
+  tests/qtest: Fix ERROR_SHARING_VIOLATION for win32
+  tests/qtest: {ahci,ide}-test: Use relative path for temporary files
+  tests/qtest: bios-tables-test: Adapt the case for win32
+  tests/qtest: device-plug-test: Reverse the usage of double/single
+    quotes
+  tests/qtest: machine-none-test: Use double quotes to pass the cpu
+    option
+  tests/qtest: migration-test: Disable IO redirection for win32
+  tests/qtest: npcm7xx_emc-test: Skip running test_{tx,rx} on win32
+  tests/qtest: microbit-test: Fix socket access for win32
+  tests/qtest: prom-env-test: Use double quotes to pass the prom-env
+    option
+  tests/qtest: libqtest: Replace the call to close a socket with
+    closesocket()
+  tests/qtest: libqtest: Correct the timeout unit of blocking receive
+    calls for win32
+  io/channel-watch: Drop a superfluous '#ifdef WIN32'
+  io/channel-watch: Fix socket watch on Windows
+  .gitlab-ci.d/windows.yml: Increase the timeout to the runner limit
+  docs/devel: testing: Document writing portable test cases
+
+Xuzhou Cheng (10):
+  accel/qtest: Support qtest accelerator for Windows
+  tests/qtest: libqos: Drop inclusion of <sys/wait.h>
+  tests/qtest: libqos: Rename malloc.h to libqos-malloc.h
+  tests/qtest: libqtest: Move global_qtest definition back to libqtest.c
+  tests/qtest: Use send/recv for socket communication
+  tests/qtest: {ahci,ide}-test: Open file in binary mode
+  tests/qtest: virtio-net-failover: Disable migration tests for win32
+  chardev/char-file: Add FILE_SHARE_WRITE when openning the file for
+    win32
+  tests/qtest: migration-test: Kill "to" after migration is canceled
+  hw/ppc: spapr: Use qemu_vfree() to free spapr->htab
+
+ docs/devel/testing.rst                        |  30 ++++
+ backends/tpm/tpm_ioctl.h                      |   4 +
+ include/hw/core/cpu.h                         |   1 +
+ tests/qtest/fuzz/generic_fuzz_configs.h       |   8 +-
+ tests/qtest/libqos/generic-pcihost.h          |   2 +-
+ .../libqos/{malloc.h => libqos-malloc.h}      |   0
+ tests/qtest/libqos/libqos.h                   |   2 +-
+ tests/qtest/libqos/malloc-pc.h                |   2 +-
+ tests/qtest/libqos/malloc-spapr.h             |   2 +-
+ tests/qtest/libqos/pci-pc.h                   |   2 +-
+ tests/qtest/libqos/pci-spapr.h                |   2 +-
+ tests/qtest/libqos/qgraph.h                   |   2 +-
+ tests/qtest/libqos/qos_external.h             |   2 +-
+ tests/qtest/libqos/rtas.h                     |   2 +-
+ tests/qtest/libqos/virtio.h                   |   2 +-
+ tests/qtest/libqtest-single.h                 |   2 +-
+ tests/qtest/libqtest.h                        |   8 +
+ tests/qtest/migration-helpers.h               |   2 +
+ accel/dummy-cpus.c                            |  14 +-
+ block.c                                       |  16 +-
+ block/vvfat.c                                 |   8 +-
+ chardev/char-file.c                           |   4 +-
+ fsdev/virtfs-proxy-helper.c                   |   2 +-
+ hw/ppc/spapr.c                                |   2 +-
+ hw/usb/dev-mtp.c                              |   2 +-
+ io/channel-watch.c                            |   6 -
+ qga/commands-posix-ssh.c                      |   2 +-
+ semihosting/arm-compat-semi.c                 |   3 +-
+ softmmu/cpus.c                                |   9 +-
+ tcg/tcg.c                                     |   4 +-
+ tests/migration/stress.c                      |   2 +-
+ tests/qtest/ahci-test.c                       |  44 ++++-
+ tests/qtest/aspeed_smc-test.c                 |   4 +-
+ tests/qtest/bios-tables-test.c                |  22 ++-
+ tests/qtest/boot-serial-test.c                |  21 ++-
+ tests/qtest/cdrom-test.c                      |   2 +-
+ tests/qtest/cxl-test.c                        |  19 +-
+ tests/qtest/device-plug-test.c                |   2 +-
+ tests/qtest/e1000e-test.c                     |   2 +-
+ tests/qtest/fdc-test.c                        |   4 +-
+ tests/qtest/fuzz/generic_fuzz.c               |   8 +-
+ tests/qtest/fuzz/qos_fuzz.c                   |   2 +-
+ tests/qtest/fuzz/virtio_blk_fuzz.c            |   2 +-
+ tests/qtest/hd-geo-test.c                     |   8 +-
+ tests/qtest/i440fx-test.c                     |   6 +
+ tests/qtest/ide-test.c                        |  26 ++-
+ tests/qtest/ivshmem-test.c                    |   4 +-
+ tests/qtest/libqmp.c                          |   4 +-
+ .../libqos/aarch64-xlnx-zcu102-machine.c      |   2 +-
+ tests/qtest/libqos/arm-imx25-pdk-machine.c    |   2 +-
+ tests/qtest/libqos/arm-n800-machine.c         |   2 +-
+ tests/qtest/libqos/arm-raspi2-machine.c       |   2 +-
+ tests/qtest/libqos/arm-sabrelite-machine.c    |   2 +-
+ tests/qtest/libqos/arm-smdkc210-machine.c     |   2 +-
+ tests/qtest/libqos/arm-virt-machine.c         |   2 +-
+ .../qtest/libqos/arm-xilinx-zynq-a9-machine.c |   2 +-
+ tests/qtest/libqos/e1000e.c                   |   2 +-
+ .../libqos/{malloc.c => libqos-malloc.c}      |   2 +-
+ tests/qtest/libqos/libqos.c                   |   2 -
+ tests/qtest/libqos/qos_external.c             |   2 +-
+ tests/qtest/libqos/virtio-9p.c                |   4 +-
+ tests/qtest/libqos/virtio-mmio.c              |   2 +-
+ tests/qtest/libqos/virtio-pci.c               |   2 +-
+ tests/qtest/libqtest.c                        | 164 +++++++++++++++---
+ tests/qtest/m48t59-test.c                     |   2 +-
+ tests/qtest/machine-none-test.c               |   2 +-
+ tests/qtest/microbit-test.c                   |  10 +-
+ tests/qtest/migration-helpers.c               |   2 +
+ tests/qtest/migration-test.c                  |  69 +++++---
+ tests/qtest/npcm7xx_emc-test.c                |   8 +
+ tests/qtest/pflash-cfi02-test.c               |   7 +-
+ tests/qtest/prom-env-test.c                   |   4 +-
+ tests/qtest/qmp-test.c                        |  14 +-
+ tests/qtest/qos-test.c                        |   2 +-
+ tests/qtest/rtc-test.c                        |   2 +-
+ tests/qtest/vhost-user-blk-test.c             |   3 +-
+ tests/qtest/vhost-user-test.c                 |   7 +-
+ tests/qtest/virtio-blk-test.c                 |   2 +-
+ tests/qtest/virtio-net-failover.c             |   9 +-
+ tests/qtest/virtio-net-test.c                 |   6 -
+ tests/qtest/virtio-scsi-test.c                |   3 +-
+ tests/unit/test-crypto-tlscredsx509.c         |   4 +-
+ tests/unit/test-crypto-tlssession.c           |   6 +-
+ tests/unit/test-image-locking.c               |   6 +-
+ tests/unit/test-io-channel-tls.c              |   6 +-
+ tests/unit/test-qga.c                         |   4 +-
+ tests/vhost-user-bridge.c                     |   3 +-
+ util/qemu-sockets.c                           |   5 +-
+ .gitlab-ci.d/windows.yml                      |   4 +-
+ accel/meson.build                             |   1 +
+ accel/qtest/meson.build                       |   1 +
+ tests/qemu-iotests/meson.build                |   5 +
+ tests/qtest/libqos/meson.build                |   2 +-
+ tests/qtest/meson.build                       |  46 +++--
+ 94 files changed, 549 insertions(+), 221 deletions(-)
+ rename tests/qtest/libqos/{malloc.h => libqos-malloc.h} (100%)
+ rename tests/qtest/libqos/{malloc.c => libqos-malloc.c} (99%)
+
+-- 
+2.34.1

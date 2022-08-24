@@ -1,101 +1,101 @@
-Received: by 2002:a05:7108:4017:0:0:0:0 with SMTP id a23csp3885403gdh;
-        Wed, 24 Aug 2022 12:51:31 -0700 (PDT)
-X-Google-Smtp-Source: AA6agR6wTlx1dJtdNECIXjn55KCBfwkuGHe9So5IsqaWYD6sN5JWc3Et063llspgL/XbAIikNs7Q
-X-Received: by 2002:a05:620a:a95:b0:6ba:cf41:94fc with SMTP id v21-20020a05620a0a9500b006bacf4194fcmr662759qkg.671.1661370691720;
-        Wed, 24 Aug 2022 12:51:31 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1661370691; cv=none;
+Received: by 2002:a05:7108:4017:0:0:0:0 with SMTP id a23csp3885792gdh;
+        Wed, 24 Aug 2022 12:52:12 -0700 (PDT)
+X-Google-Smtp-Source: AA6agR7zJC+E+1uB610QwXwLWO7Cn0iVFWsYLdJeK/hdSJnsg7VDkKKVPaUPdM6ony3rDMfTBYJp
+X-Received: by 2002:a05:620a:1908:b0:6bc:4fc3:6a3b with SMTP id bj8-20020a05620a190800b006bc4fc36a3bmr668242qkb.633.1661370732405;
+        Wed, 24 Aug 2022 12:52:12 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1661370732; cv=none;
         d=google.com; s=arc-20160816;
-        b=r4nOOesarP4E4fMj0HN8Fdo63eiE0sF83sgodeUNUpUzwCnP92kukhFqxruoo/49f4
-         J4uN7dfrtImvLYYrcdzg3+hwgcgVtzqsZxVWZ6YEqee+5lM/KRzf2hp4X1kWE+KOV2wU
-         p0iHgf5BXEtzL30+soH1zB59p7/qjkvqNalz0jQUxLGnj0o7bG7cwEVxLoTsyhdVxbx0
-         omSAXVVdf1ivmMOvdNuNI4R6DyGVIqmNAnPBfAwDpOj59EeG+eTwUtZD7yBSBLyaOOfV
-         /VAk055iYjFWXYQWzRn4Sy/GLMUmCnAlOFK0xQHZZ8OonoJkaoVPgCzVoKKsH14zjL8n
-         goiQ==
+        b=opEurnC2MgyBp7PGsEOoEPiB+d4zItgthKovWhVv1llZYw3fsejJ6qOdDqbDQQa8M+
+         f16pTNaImeDP0AH60qi/T5VB9CY88NXVkifTM1Dd1CZOTbu9Cj6s3pD5z3R9ANUWB2D3
+         Eh6qo1K3sf6FlXZappa0qIjersJgSHx3AFqlwu/lwLIvMjc8R4SHqAUh+x6XkbJrYyaK
+         b8jJzTGHzCD0cUnDGkYIa199eMbrz8/q9/PDYYRA+/0LnhWGCsEbEzrGWMm0mqwTadc7
+         n+3VVRGVXeS1lAoUcjYm1a+qCZlmRhZhz0D52h1vpjdAIPptdYQ7QZXSlnOWn13SfjzV
+         rMMA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
          :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=frS57omZcQBWNsTqgKADA7Rlnp01wL2uTLt64NMkP60=;
-        b=0osggbLRRZo2Y/W+m3TtQhQXCDUNG6NOxu+CEE+lD+KrzViBOgJKvWY83cXAr8Nh6A
-         0B7H0swAEe4GeDmoj5ktz44PqWN/oOui39H29brT0LjqpW0f6iZ+NedwC69zlCgYZp8e
-         e5uA7pjRatSWq0OYHRzJHi3lthCq/U0gvxP2zMkz6IBBkTIq08sGihxmJGVSM15efol5
-         A+nRYDPmIWF/V5GvMUn6rVGlc38glmIiSGfOfzKkNRe7IxfFNOUjXBXZTptovPUIYfEr
-         5ye95oPKJNJ41mDCVb8DxXQcKCUozNylnsPBbDNAnI9kK2ivUa6YcPOSpvaMxtB+WuQ7
-         0h6Q==
+        bh=nNCyu14NpOf2lBSi6vrSm4gSsJKhALhPi0MXBNs/ELo=;
+        b=oGDva/HqBN/fqhmfO6DCxROAWmOF1JmD3xxFWFysdzpa3+zhYzujGQviW46duz9Msb
+         V3eSl+x7Ao4NKaDux23GwlxgMQKGHgLdPpDEUnxgZ3kRQpww5eBaJs7G5L+sV7F9Sihi
+         I383984n4bgSi506AcCsJUFUoFWZBK+fKlC88O/u5m6azboWDZF8ZOXw2OXkdyIBY9/n
+         FBjDCGN2ScfYPA8nsAIKjILbJj1xa7kkSn8mQe9PUdO0EbzJ8bVJA3O0++40wd8VWZeY
+         PmaOtPwZgsFVp4VLMRGJpwDUSLpsdS93uOs9i3r0NL6yTrOR0oF0OcYJal01pFie2FHl
+         7I2A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="i/sAfHIv";
+       dkim=pass header.i=@linaro.org header.s=google header.b=hlNcTlTo;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a8-20020aed2788000000b00344569c15acsi8978081qtd.172.2022.08.24.12.51.07
+        by mx.google.com with ESMTPS id u5-20020a05620a084500b006b94136f3a7si7664413qku.356.2022.08.24.12.52.12
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 24 Aug 2022 12:51:31 -0700 (PDT)
+        Wed, 24 Aug 2022 12:52:12 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="i/sAfHIv";
+       dkim=pass header.i=@linaro.org header.s=google header.b=hlNcTlTo;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:44576 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:32962 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1oQwP5-00077k-Bx
-	for alex.bennee@linaro.org; Wed, 24 Aug 2022 15:51:07 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:39526)
+	id 1oQwQ8-0000RC-1x
+	for alex.bennee@linaro.org; Wed, 24 Aug 2022 15:52:12 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:59660)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1oQwND-0005aZ-5M
- for qemu-arm@nongnu.org; Wed, 24 Aug 2022 15:49:12 -0400
-Received: from mail-yw1-x1136.google.com ([2607:f8b0:4864:20::1136]:45974)
+ id 1oQwPy-0000PQ-TK
+ for qemu-arm@nongnu.org; Wed, 24 Aug 2022 15:52:02 -0400
+Received: from mail-yw1-x1135.google.com ([2607:f8b0:4864:20::1135]:43889)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1oQwNB-0000Qr-O2
- for qemu-arm@nongnu.org; Wed, 24 Aug 2022 15:49:10 -0400
-Received: by mail-yw1-x1136.google.com with SMTP id
- 00721157ae682-33dac4c9cbcso39110937b3.12
- for <qemu-arm@nongnu.org>; Wed, 24 Aug 2022 12:49:09 -0700 (PDT)
+ id 1oQwPx-0000w7-DT
+ for qemu-arm@nongnu.org; Wed, 24 Aug 2022 15:52:02 -0400
+Received: by mail-yw1-x1135.google.com with SMTP id
+ 00721157ae682-333a4a5d495so487548917b3.10
+ for <qemu-arm@nongnu.org>; Wed, 24 Aug 2022 12:52:01 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:from:to:cc;
- bh=frS57omZcQBWNsTqgKADA7Rlnp01wL2uTLt64NMkP60=;
- b=i/sAfHIvb2psd3OCXX7uB3e+X71GMqJ7MZeHTbxPMyvxYtRBXUuMGduMbKr2wDxkYV
- Brm4qLJ67Gi/PnoVyWqP4W5NqjCJGzaTWzJmvDzMz7rHb5NpdrQRefQak2M5sJGnO6xp
- gJibjdA3NXOQBkrdV2RrWYQmTdVZ1z4ZLAAu2By8vje9zubDMoF0WXLXz3iL5rH2SzyJ
- C8w2k/0fy+OKMRr37XF1i32S0G7Rw6Luf3C7ZN6DvFWw3QtURfgfGIu0De959mReO59t
- 79+X9/fumifKxGFtqsDpxW1PJ70qqSC95G426FeDszlhtDAZXnOPYhEctWPWD6nKQERf
- UBEA==
+ bh=nNCyu14NpOf2lBSi6vrSm4gSsJKhALhPi0MXBNs/ELo=;
+ b=hlNcTlToAmkhKfWnPy4eqtij7Tbx0jaIgWb9ZbI70kQJWMUHwBAYXZ/87qaGbOHqou
+ EC2S4NSqee6XWq5QL3/MnHc7X8zuES6XBrjbEgjxrwnB06Z9kVWwbpeArcUce2BGeQS/
+ nZpS/38MP2IhbgfF2EhNFS2hbJ9DRHrRlmduPmcrfsG8IngIR1UVcOODzrk0Ki/lqj0h
+ kD4/X20f7ZFdoSg9t0mJzNzKJkt6qmOXbInjWCPabhQw7dU83iv3iCkjGlorFc5cZiWv
+ qCtPN3gMHsY7g/50DWTwHsyfhMLE0IydttrHeY6vyV9QErLi6r6TBnvjVUyy05ozTw5V
+ X4cA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:x-gm-message-state:from:to:cc;
- bh=frS57omZcQBWNsTqgKADA7Rlnp01wL2uTLt64NMkP60=;
- b=j0DfReoZNsb1Xcp4z8ZrXx1I8KyzlZQZ1iDGLkMOnIe7ggtpvnPXmkk9BmFTap7syb
- CU+F6wWnESN8hNibjsT1d+9S05IJaZwmn6WbEguWV3mku0KovHIeLIZxqJ1AJVxjR24f
- 8e+QGlfnwkW7kVRSK/24REDURqZcME+7EZ1jO1JS34GvI9fyHZpvcPJ/KU1bFER44ID/
- Fr6PGc1ouJ8UVS5Y65KAELtjrecoml7QR/bT+e9F5I+qsg/cZdHjigHL3LOq5ZWiEgD6
- Nlz9HJL9PtRw07RlbWUUXzF8EH1EiS77inhPlTJgmah2cdJ7vkVCtgr74OSiC+tZd4bi
- oygQ==
-X-Gm-Message-State: ACgBeo0QXbXfaOjPX/2QxVhTdGP2ZB5F27Ivcc/C0UVD4Az/HQaD6MwS
- 9EsIXrnGOzbn2ekaWKfxqBs3G8JKOue4MuhFVat6PA==
-X-Received: by 2002:a5b:7c6:0:b0:670:6ba6:d046 with SMTP id
- t6-20020a5b07c6000000b006706ba6d046mr709482ybq.140.1661370548772; Wed, 24 Aug
- 2022 12:49:08 -0700 (PDT)
+ bh=nNCyu14NpOf2lBSi6vrSm4gSsJKhALhPi0MXBNs/ELo=;
+ b=em5HQR8uo/STbDDsk1UQnshgHV+90U4iHfh/5CnQtFUWrwSQwWLNluuHiENJ7fM2Q7
+ tSwrBF3fWAfwJWt0BKUbrxz5Db1mWjxXsBGZAB7BU2RB+2P1ScdDxwj/VY1yCZGhLM3G
+ +f2WrAG1yKukbZ4zNDaoYVb156x90otnHOK7RaYcScnQ5rEEkwpW1gJXdQ8Hqc9Vz7x4
+ gIoKMJ8nY5QGXAuhbRRjp0HM+pVxrg8Tv6FmObVZBjnBwcZg6GF5Tv407tDE10Z0UqEd
+ +wLh8EIFJWtK1MCetLhvm9mkfNFY7czfGI8rR4hbFekyb/lFlv8TVD3lg4ZbMY5MWsfQ
+ aOvA==
+X-Gm-Message-State: ACgBeo3A3YTvJJExmV7x7IjR3a/QQrLfRi1CkQqkJmXO6iEFk96z9cf3
+ /oR1cqn3uyyU2DL7ueU6tLHzgQY3E6LAtT5/+90FNw==
+X-Received: by 2002:a5b:711:0:b0:696:dab:3efa with SMTP id
+ g17-20020a5b0711000000b006960dab3efamr740755ybq.193.1661370720376; 
+ Wed, 24 Aug 2022 12:52:00 -0700 (PDT)
 MIME-Version: 1.0
 References: <20220824155113.286730-1-jean-philippe@linaro.org>
- <20220824155113.286730-9-jean-philippe@linaro.org>
-In-Reply-To: <20220824155113.286730-9-jean-philippe@linaro.org>
+ <20220824155113.286730-11-jean-philippe@linaro.org>
+In-Reply-To: <20220824155113.286730-11-jean-philippe@linaro.org>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Wed, 24 Aug 2022 20:48:26 +0100
-Message-ID: <CAFEAcA-8wCHuj6tZN0VB1boaOy50TtwpyUMziFgk2G4++Ay16A@mail.gmail.com>
-Subject: Re: [PATCH 08/10] hw/arm/virt: Fix devicetree warnings about the GPIO
- node
+Date: Wed, 24 Aug 2022 20:51:18 +0100
+Message-ID: <CAFEAcA-Kv16weckhxM-mQrwiPZa5JMY4YkXcD5UfCzDKr4xGtQ@mail.gmail.com>
+Subject: Re: [PATCH 10/10] hw/arm/virt: Fix devicetree warnings about the
+ virtio-iommu node
 To: Jean-Philippe Brucker <jean-philippe@linaro.org>
 Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, robh+dt@kernel.org, 
  eauger@redhat.com
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1136;
- envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x1136.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1135;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x1135.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -117,21 +117,39 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: G+mSCvjDZAkG
+X-TUID: e7ciCKWgJEaW
 
 On Wed, 24 Aug 2022 at 16:51, Jean-Philippe Brucker
 <jean-philippe@linaro.org> wrote:
 >
-> The GPIO devicetree node is missing "interrupt-controller" and
-> "#interrupt-cells" properties:
+> dt-validate and dtc throw a few warnings when parsing the virtio-iommu
+> node:
 >
->   pl061@9030000: 'interrupt-controller' is a required property
->   From schema: linux/Documentation/devicetree/bindings/gpio/pl061-gpio.yaml
->   pl061@9030000: '#interrupt-cells' is a required property
->   From schema: linux/Documentation/devicetree/bindings/gpio/pl061-gpio.yaml
+>   pcie@10000000: virtio_iommu@16:compatible: ['virtio,pci-iommu'] does not contain items matching the given schema
+>   pcie@10000000: Unevaluated properties are not allowed (... 'virtio_iommu@16' were unexpected)
+>   From schema: linux/Documentation/devicetree/bindings/pci/host-generic-pci.yaml
+>   pcie@10000000: virtio_iommu@16:compatible: ['virtio,pci-iommu'] does not contain items matching the given schema
+>   From schema: dtschema/schemas/pci/pci-bus.yaml
+>
+>   Warning (pci_device_reg): /pcie@10000000/virtio_iommu@16: PCI unit address format error, expected "2,0"
+>
+> The compatible property for a PCI child node should follow the rules
+> from "PCI Bus Binding to: IEEE Std 1275-1994". It should contain the
+> Vendor ID and Device ID (or class code).
+>
+> The unit-name should be "device,function".
+>
+> Signed-off-by: Jean-Philippe Brucker <jean-philippe@linaro.org>
+> ---
+> Note that this doesn't follow
+> linux/Documentation/devicetree/bindings/virtio/iommu.txt, I'll update
+> that document when converting it to yaml, hopefully this Linux cycle.
+> The "virtio,pci-iommu" compatible string is not actually used by any
+> driver and only QEMU implements it, so we can get rid of it.
 
-Why? This is a GPIO controller, not an interrupt controller.
-It seems wrong to be advertising in the dtb that it is.
+I'm not sure you can just change the compat string like that,
+unless you can guarantee that nobody anywhere has ever
+looked for it in a dtb. Also, "virtio,pci-iommu" is much
+clearer than "pci1af4,1057"...
 
-thanks
 -- PMM

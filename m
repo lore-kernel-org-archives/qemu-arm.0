@@ -1,158 +1,325 @@
-Received: by 2002:a17:906:1c87:0:0:0:0 with SMTP id g7csp184961ejh;
-        Thu, 25 Aug 2022 05:33:41 -0700 (PDT)
-X-Google-Smtp-Source: AA6agR7VzRo9BilAxqYGLJkboQb4L9I/Ovj2RA4CFa9xCIXGlvpdOYWX00I5tOZ+339wwbPOdQo6
-X-Received: by 2002:a05:622a:303:b0:343:6eb2:31fe with SMTP id q3-20020a05622a030300b003436eb231femr3314734qtw.439.1661430821565;
-        Thu, 25 Aug 2022 05:33:41 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1661430821; cv=none;
+Received: by 2002:a17:906:1c87:0:0:0:0 with SMTP id g7csp327762ejh;
+        Thu, 25 Aug 2022 09:42:15 -0700 (PDT)
+X-Google-Smtp-Source: AA6agR5iN8vIE/5NuHQaPJlT2WFKzM6C9vxpEpGakSuS8GrYnTszW7fhxUQnDAAxQ3IT6wXtoHT5
+X-Received: by 2002:a05:6214:29e7:b0:496:f2e5:2284 with SMTP id jv7-20020a05621429e700b00496f2e52284mr4433857qvb.71.1661445735647;
+        Thu, 25 Aug 2022 09:42:15 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1661445735; cv=none;
         d=google.com; s=arc-20160816;
-        b=J/g3nLLN0TcYHmIb7bAsVqR2KvKIh5e27Eg4qZROVKDVTYljC8WSj26mQ35W9hAeq9
-         QoCKG0xA/VGEqArn4auyuXTCFDZUqrz0eEKmKbqtxRBqCNLKgOkXoJ9LIQu3XkGCpiTF
-         iCZpmiux0tT8ATsuw4jjaG1NtPA20LHhTtcqmVleTJ1gizK0AdBBQHJUHcDdS9y+GBZ+
-         CuY5vripitxL0M+sKh8EVkagvzqSkgoq8xaTLQC5r5gH2U0/2hGcLiGT+/UemxjDYx4n
-         PDHwXWJNR0wa/fypv3sNgrSAnMqDSzkPnH5PfXXMLMPrBEUka7TCPtMB6T6mhSyF0aqv
-         D5RQ==
+        b=n0ixq9ArlmtVuwT+76ycq4rhlquUqaVKi/Mrg1XEzjuISiXUKAXpus3kPpnR+6+Xoy
+         wQ8g3HszggT2D/XdhqK++ZWTYCTvZaOBVefI7GRmDJlba1r/gmcLG37k5NTrc4nYdDhe
+         Zxa1vFOLA52OTljhCX09mZAaOhM1K/B2RNGKUOVdSSD++1CsHKrD5cZyZU2sVovV8QGu
+         B0lm6sHYpILfN+BtHCiBSNJg5vj4cbfi/eC/MnuUVEHZ2Ffdtgc1fMN38p1LW+OsJaWU
+         GdNDwV007siZXBrd2gG3ig3WKr52PZ2MBAGWLlyXnek5zUbLzi2jVqlort1zxXqHpRZ8
+         zT6w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:from:references:cc:to:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=8oeZDoKCwjgjhl9XzMI9S7TuPQlWS06JYNQwc+Bwjsg=;
-        b=NEyog3QA6R/4NN3GD2P8oaDaBRv/547BXt7RNXP+dPePm6jDcy9at4U2spX++NYLYN
-         AiVFhp1e2FmNBSPBntLYI6hkXPgUDWHL3/bj8mOYv5gXXFO747ErmjTP6386wwn5Kw7x
-         xxtcYL9YbshJ+Zg+F3wlAyhTnqYgG4mndjBNQiE6ODEwgPH5LibWpXmzStGdb/xVQMFm
-         cdkImw49jtCG+IZXG0CokutjT6qp9Wj0uaXblibE2YgcKUbuh96O45MVHX3MTsNHlW+c
-         F3bDkRiKUB6oF8qwW7H5X7N4Wb074QDi/0uihVZjuN5ck9ryHk67/8Ae49mTEUT9RPLe
-         pSwA==
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=b8CKJQ6KrwwP5Bb1S9rRR890oGlJn0CWNl675sLgaiI=;
+        b=fj/WMXoqIedM8vtezM1LpifB6xoRV5QGVgjbfWfXxy7cSwXS5YFwJJW023kyXVl4BE
+         adCIXFtoyn4SAOME/mSp+/V+dw9GictVzgTEjWpWQNpWtK3a5pTbQ5+G8j5vbKY5bsqY
+         WqoDS/3yZI145eEoKK1WVkS6FEm9HCcD5J8b7XjVm0CpP5iCEqsFpzdHGOYOdXrYL5wZ
+         dWqN4cHG4w7V/R75432Oc3zcMAKcemJs3hlcqaKtLaAvAYk4UUT892Sdl5jHIupCOm7c
+         VmOtSv9LSL6Vz/G4Z084VG7+vsFcv0lZFrLqn1h6kuwVVN0aKf3kt/rkvaaUChnvrrSi
+         x/8g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=MP5+EhgF;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@google.com header.s=20210112 header.b="Ykrn8/tM";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id g9-20020a05620a40c900b006b9adfbdf28si7812158qko.592.2022.08.25.05.33.41
+        by mx.google.com with ESMTPS id gw13-20020a0562140f0d00b00496d6293172si7133917qvb.503.2022.08.25.09.42.15
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 25 Aug 2022 05:33:41 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 25 Aug 2022 09:42:15 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=MP5+EhgF;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:42792 helo=lists1p.gnu.org)
+       dkim=pass header.i=@google.com header.s=20210112 header.b="Ykrn8/tM";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
+Received: from localhost ([::1]:48116 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1oRC3J-00080f-0X
-	for alex.bennee@linaro.org; Thu, 25 Aug 2022 08:33:41 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:50048)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1oRFvr-00042n-4y
+	for alex.bennee@linaro.org; Thu, 25 Aug 2022 12:42:15 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:48672)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1oRC27-0007t3-Ly
- for qemu-arm@nongnu.org; Thu, 25 Aug 2022 08:32:27 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:38276)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1oRC24-0006w1-VK
- for qemu-arm@nongnu.org; Thu, 25 Aug 2022 08:32:27 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1661430742;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=8oeZDoKCwjgjhl9XzMI9S7TuPQlWS06JYNQwc+Bwjsg=;
- b=MP5+EhgF05tDsfn5JIs00+BxHTgnPWCXCcyX9ZjQZJxrc8K6gezhD4VJLR2MQ49q15qv2U
- hbYEdB9jMilBuFfqTC9kUsOQo0lxwSeT8La86D/1eFe0d7yJHQvIlrSE0YuuMknjPq9H3U
- thCdbTJV3//S6VPOU/HzI0ztIfkQ9II=
-Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
- [209.85.128.72]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_128_GCM_SHA256) id
- us-mta-458-G0iV19ZGNYqeetS9ySnQ3Q-1; Thu, 25 Aug 2022 08:32:21 -0400
-X-MC-Unique: G0iV19ZGNYqeetS9ySnQ3Q-1
-Received: by mail-wm1-f72.google.com with SMTP id
- c66-20020a1c3545000000b003a5f6dd6a25so2417542wma.1
- for <qemu-arm@nongnu.org>; Thu, 25 Aug 2022 05:32:21 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <wuhaotsh@google.com>)
+ id 1oRFuV-0003J3-EC
+ for qemu-devel@nongnu.org; Thu, 25 Aug 2022 12:40:51 -0400
+Received: from mail-qt1-x836.google.com ([2607:f8b0:4864:20::836]:43636)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <wuhaotsh@google.com>)
+ id 1oRFuT-00016o-G9
+ for qemu-devel@nongnu.org; Thu, 25 Aug 2022 12:40:51 -0400
+Received: by mail-qt1-x836.google.com with SMTP id a4so15651574qto.10
+ for <qemu-devel@nongnu.org>; Thu, 25 Aug 2022 09:40:48 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20210112;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc;
+ bh=b8CKJQ6KrwwP5Bb1S9rRR890oGlJn0CWNl675sLgaiI=;
+ b=Ykrn8/tMkA41J8nHS06Yc4WNc5EHvVfPG3Le6zqTUtNtrPpFZM2+kQbxfL9GO756qN
+ bHn5Qcxb36B+DsojnSw7NlDahUmtxd6IX6rl6e0HfhQjRuCqd2WjBLBixT9mchKSh9EG
+ 69uN3IZOXL1ZNRc0aGhut8NK0e57mIQwz79bX1MAqIQX/XvmxQBqUic8H2PVqrBtYinV
+ wYN0LHUefUj/KVkOXtOmUTrl3yqhqkA2L0UVX2PDS6rkNT5sd/tHdxe7hV4aDVVqLLcR
+ o5kVWgGF3Vbw6I/BlJbqJGwwnPk1NDfAyBluV4+2JgBDnq5h9hE4GRspq1RjUWed7QIQ
+ N06g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc;
- bh=8oeZDoKCwjgjhl9XzMI9S7TuPQlWS06JYNQwc+Bwjsg=;
- b=JZ6NNXwFHnSdlejv+7LLv7RjBzRuGPjrrV3Dpoqztgj0XEcBvnHX4D2wR8fOVvDFSe
- jqxbfH2FNL9BbvNiASwOnZqNqKSHsNDxtLuhiLaKnQRCNl/QAAzqIMUp1oMZq0bfBMCf
- ZBewdnk44SByf8Hq34/JDpsx/boU1ZrfLpjwv6oQSIwFIewzPMmczwKIGCO+Orto3GRQ
- f0TNZ5ZANq8HJa+NkkWZfI04r6+0wX9z6OOIYWNFxxViOm7Rs627XwALM//Wk/sdC5Uz
- IXmNC5a7RvzRf18jQewZKBf4/p1J/7jLUx8Mu581lKQs1YJgWrRmFjKcP6wbcN1UB1KB
- sxFg==
-X-Gm-Message-State: ACgBeo2VtTM0S2QjagIXoYRo+XAGSJM3VVd+9G0ddd9tDHI2JPANK84L
- WJV0/yu9zwoizHV7EyRByEKhB4Dzo7CaexX7HLNburzlUIOG1/fnN/nfgCG2Q9tWldxs2yQz7fn
- wGtzCn3F8bXj9
-X-Received: by 2002:a5d:4571:0:b0:225:6191:779d with SMTP id
- a17-20020a5d4571000000b002256191779dmr2164281wrc.325.1661430740404; 
- Thu, 25 Aug 2022 05:32:20 -0700 (PDT)
-X-Received: by 2002:a5d:4571:0:b0:225:6191:779d with SMTP id
- a17-20020a5d4571000000b002256191779dmr2164266wrc.325.1661430740194; 
- Thu, 25 Aug 2022 05:32:20 -0700 (PDT)
-Received: from [192.168.0.5] (ip-109-43-177-177.web.vodafone.de.
- [109.43.177.177]) by smtp.gmail.com with ESMTPSA id
- p18-20020adfce12000000b002253f18d87fsm16244342wrn.96.2022.08.25.05.32.19
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 25 Aug 2022 05:32:19 -0700 (PDT)
-Message-ID: <3efbdce4-fa39-43fa-8158-a0404338edd4@redhat.com>
-Date: Thu, 25 Aug 2022 14:32:18 +0200
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc;
+ bh=b8CKJQ6KrwwP5Bb1S9rRR890oGlJn0CWNl675sLgaiI=;
+ b=Fgg1HOkaBXST0ZCM8XbO/XKTi6G7zasfgdW1GYYUvuQB5RIJyPDeLXFTYz1T2p7H8C
+ Ny1rbn/bEHt8SHAxzm3BX6MHzIF3C+2AcmiAkyADP042/eyboTxd6BnjNdhe2vAi3UwQ
+ KFfM0BX/Fudan8wycvu8kTpYDq3dJ+yStY2vz7G5PSC8nOqVhukdOEruAnPr/hDS2cbh
+ O+vxUcA68/keJYYqSkghGPMWK3OcEe68692LJ27dfjFCkXxSqpl/b1NKT4ieFQHgQH4p
+ 9xNFwCpDrGDEme7EIUkZuD7xT31zGKgJdfUwTmxp2T2fK2wmnpp5Vpij/yCkwzf+hrsz
+ aONw==
+X-Gm-Message-State: ACgBeo0/nKtTgEm3Mu2RMk7nbg7TRX2UfZF3BO67JJ/P74MLfTdQXcZs
+ 4gKfDtkE4xflquNgX9s0DZ+1xIOBUaQA4pmlkOFViw==
+X-Received: by 2002:ac8:5c8d:0:b0:344:568c:efc4 with SMTP id
+ r13-20020ac85c8d000000b00344568cefc4mr4422811qta.557.1661445647796; Thu, 25
+ Aug 2022 09:40:47 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.12.0
-Subject: Re: [PATCH 43/51] tests/qtest: npcm7xx_emc-test: Skip running
- test_{tx,rx} on win32
-To: Bin Meng <bmeng.cn@gmail.com>, qemu-devel@nongnu.org
-Cc: Bin Meng <bin.meng@windriver.com>,
- Havard Skinnemoen <hskinnemoen@google.com>,
- Laurent Vivier <lvivier@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
- Tyrone Ting <kfting@nuvoton.com>, qemu-arm@nongnu.org
 References: <20220824094029.1634519-1-bmeng.cn@gmail.com>
  <20220824094029.1634519-44-bmeng.cn@gmail.com>
-From: Thomas Huth <thuth@redhat.com>
 In-Reply-To: <20220824094029.1634519-44-bmeng.cn@gmail.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=thuth@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+From: Hao Wu <wuhaotsh@google.com>
+Date: Thu, 25 Aug 2022 09:40:37 -0700
+Message-ID: <CAGcCb13Lj3_GtNJy=vH6vAjpOvCch4tHy3yAJG921n-uTAvDkQ@mail.gmail.com>
+Subject: Re: [PATCH 43/51] tests/qtest: npcm7xx_emc-test: Skip running
+ test_{tx, rx} on win32
+To: Bin Meng <bmeng.cn@gmail.com>
+Cc: QEMU Developers <qemu-devel@nongnu.org>, Bin Meng <bin.meng@windriver.com>,
+ Havard Skinnemoen <hskinnemoen@google.com>, Laurent Vivier <lvivier@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, Thomas Huth <thuth@redhat.com>,
+ Tyrone Ting <kfting@nuvoton.com>, qemu-arm <qemu-arm@nongnu.org>
+Content-Type: multipart/alternative; boundary="000000000000a71c4705e71375ec"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::836;
+ envelope-from=wuhaotsh@google.com; helo=mail-qt1-x836.google.com
+X-Spam_score_int: -175
+X-Spam_score: -17.6
+X-Spam_bar: -----------------
+X-Spam_report: (-17.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+ ENV_AND_HDR_SPF_MATCH=-0.5, HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01,
+ USER_IN_DEF_DKIM_WL=-7.5,
+ USER_IN_DEF_SPF_WL=-7.5 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: NaQEml9Zk6Jt
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: RAv1YxGVsI6F
 
-On 24/08/2022 11.40, Bin Meng wrote:
+--000000000000a71c4705e71375ec
+Content-Type: text/plain; charset="UTF-8"
+
+On Wed, Aug 24, 2022 at 3:35 AM Bin Meng <bmeng.cn@gmail.com> wrote:
+
 > From: Bin Meng <bin.meng@windriver.com>
-> 
+>
 > The test cases 'test_{tx,rx}' call socketpair() which does not exist
 > on win32. Exclude them.
-> 
+>
 > Signed-off-by: Bin Meng <bin.meng@windriver.com>
+>
+Reviewed-by: Hao Wu <wuhaotsh@google.com>
+
 > ---
-> 
->   tests/qtest/npcm7xx_emc-test.c | 8 ++++++++
->   1 file changed, 8 insertions(+)
+>
+>  tests/qtest/npcm7xx_emc-test.c | 8 ++++++++
+>  1 file changed, 8 insertions(+)
+>
+> diff --git a/tests/qtest/npcm7xx_emc-test.c
+> b/tests/qtest/npcm7xx_emc-test.c
+> index a353fef0ca..c373d24e1e 100644
+> --- a/tests/qtest/npcm7xx_emc-test.c
+> +++ b/tests/qtest/npcm7xx_emc-test.c
+> @@ -209,6 +209,7 @@ static int emc_module_index(const EMCModule *mod)
+>      return diff;
+>  }
+>
+> +#ifndef _WIN32
+>  static void packet_test_clear(void *sockets)
+>  {
+>      int *test_sockets = sockets;
+> @@ -243,6 +244,7 @@ static int *packet_test_init(int module_num, GString
+> *cmd_line)
+>      g_test_queue_destroy(packet_test_clear, test_sockets);
+>      return test_sockets;
+>  }
+> +#endif /* _WIN32 */
+>
+>  static uint32_t emc_read(QTestState *qts, const EMCModule *mod,
+>                           NPCM7xxPWMRegister regno)
+> @@ -250,6 +252,7 @@ static uint32_t emc_read(QTestState *qts, const
+> EMCModule *mod,
+>      return qtest_readl(qts, mod->base_addr + regno * sizeof(uint32_t));
+>  }
+>
+> +#ifndef _WIN32
+>  static void emc_write(QTestState *qts, const EMCModule *mod,
+>                        NPCM7xxPWMRegister regno, uint32_t value)
+>  {
+> @@ -339,6 +342,7 @@ static bool emc_soft_reset(QTestState *qts, const
+> EMCModule *mod)
+>      g_message("%s: Timeout expired", __func__);
+>      return false;
+>  }
+> +#endif /* _WIN32 */
+>
+>  /* Check emc registers are reset to default value. */
+>  static void test_init(gconstpointer test_data)
+> @@ -387,6 +391,7 @@ static void test_init(gconstpointer test_data)
+>      qtest_quit(qts);
+>  }
+>
+> +#ifndef _WIN32
+>  static bool emc_wait_irq(QTestState *qts, const EMCModule *mod, int step,
+>                           bool is_tx)
+>  {
+> @@ -843,6 +848,7 @@ static void test_rx(gconstpointer test_data)
+>
+>      qtest_quit(qts);
+>  }
+> +#endif /* _WIN32 */
+>
+>  static void emc_add_test(const char *name, const TestData* td,
+>                           GTestDataFunc fn)
+> @@ -865,8 +871,10 @@ int main(int argc, char **argv)
+>          td->module = &emc_module_list[i];
+>
+>          add_test(init, td);
+> +#ifndef _WIN32
+>          add_test(tx, td);
+>          add_test(rx, td);
+> +#endif
+>      }
+>
+>      return g_test_run();
+> --
+> 2.34.1
+>
+>
+>
 
-Reviewed-by: Thomas Huth <thuth@redhat.com>
+--000000000000a71c4705e71375ec
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
+<div dir=3D"ltr"><div dir=3D"ltr"><br></div><br><div class=3D"gmail_quote">=
+<div dir=3D"ltr" class=3D"gmail_attr">On Wed, Aug 24, 2022 at 3:35 AM Bin M=
+eng &lt;<a href=3D"mailto:bmeng.cn@gmail.com">bmeng.cn@gmail.com</a>&gt; wr=
+ote:<br></div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px=
+ 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex">From: Bin M=
+eng &lt;<a href=3D"mailto:bin.meng@windriver.com" target=3D"_blank">bin.men=
+g@windriver.com</a>&gt;<br>
+<br>
+The test cases &#39;test_{tx,rx}&#39; call socketpair() which does not exis=
+t<br>
+on win32. Exclude them.<br>
+<br>
+Signed-off-by: Bin Meng &lt;<a href=3D"mailto:bin.meng@windriver.com" targe=
+t=3D"_blank">bin.meng@windriver.com</a>&gt;<br></blockquote><div>Reviewed-b=
+y: Hao Wu &lt;<a href=3D"mailto:wuhaotsh@google.com">wuhaotsh@google.com</a=
+>&gt;=C2=A0</div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px =
+0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex">
+---<br>
+<br>
+=C2=A0tests/qtest/npcm7xx_emc-test.c | 8 ++++++++<br>
+=C2=A01 file changed, 8 insertions(+)<br>
+<br>
+diff --git a/tests/qtest/npcm7xx_emc-test.c b/tests/qtest/npcm7xx_emc-test.=
+c<br>
+index a353fef0ca..c373d24e1e 100644<br>
+--- a/tests/qtest/npcm7xx_emc-test.c<br>
++++ b/tests/qtest/npcm7xx_emc-test.c<br>
+@@ -209,6 +209,7 @@ static int emc_module_index(const EMCModule *mod)<br>
+=C2=A0 =C2=A0 =C2=A0return diff;<br>
+=C2=A0}<br>
+<br>
++#ifndef _WIN32<br>
+=C2=A0static void packet_test_clear(void *sockets)<br>
+=C2=A0{<br>
+=C2=A0 =C2=A0 =C2=A0int *test_sockets =3D sockets;<br>
+@@ -243,6 +244,7 @@ static int *packet_test_init(int module_num, GString *c=
+md_line)<br>
+=C2=A0 =C2=A0 =C2=A0g_test_queue_destroy(packet_test_clear, test_sockets);<=
+br>
+=C2=A0 =C2=A0 =C2=A0return test_sockets;<br>
+=C2=A0}<br>
++#endif /* _WIN32 */<br>
+<br>
+=C2=A0static uint32_t emc_read(QTestState *qts, const EMCModule *mod,<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 NPCM7xxPWMRegister regno)<br>
+@@ -250,6 +252,7 @@ static uint32_t emc_read(QTestState *qts, const EMCModu=
+le *mod,<br>
+=C2=A0 =C2=A0 =C2=A0return qtest_readl(qts, mod-&gt;base_addr + regno * siz=
+eof(uint32_t));<br>
+=C2=A0}<br>
+<br>
++#ifndef _WIN32<br>
+=C2=A0static void emc_write(QTestState *qts, const EMCModule *mod,<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0NPCM7xxPWMRegister regno, uint32_t value)<br>
+=C2=A0{<br>
+@@ -339,6 +342,7 @@ static bool emc_soft_reset(QTestState *qts, const EMCMo=
+dule *mod)<br>
+=C2=A0 =C2=A0 =C2=A0g_message(&quot;%s: Timeout expired&quot;, __func__);<b=
+r>
+=C2=A0 =C2=A0 =C2=A0return false;<br>
+=C2=A0}<br>
++#endif /* _WIN32 */<br>
+<br>
+=C2=A0/* Check emc registers are reset to default value. */<br>
+=C2=A0static void test_init(gconstpointer test_data)<br>
+@@ -387,6 +391,7 @@ static void test_init(gconstpointer test_data)<br>
+=C2=A0 =C2=A0 =C2=A0qtest_quit(qts);<br>
+=C2=A0}<br>
+<br>
++#ifndef _WIN32<br>
+=C2=A0static bool emc_wait_irq(QTestState *qts, const EMCModule *mod, int s=
+tep,<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 bool is_tx)<br>
+=C2=A0{<br>
+@@ -843,6 +848,7 @@ static void test_rx(gconstpointer test_data)<br>
+<br>
+=C2=A0 =C2=A0 =C2=A0qtest_quit(qts);<br>
+=C2=A0}<br>
++#endif /* _WIN32 */<br>
+<br>
+=C2=A0static void emc_add_test(const char *name, const TestData* td,<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 GTestDataFunc fn)<br>
+@@ -865,8 +871,10 @@ int main(int argc, char **argv)<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0td-&gt;module =3D &amp;emc_module_list[i]=
+;<br>
+<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0add_test(init, td);<br>
++#ifndef _WIN32<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0add_test(tx, td);<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0add_test(rx, td);<br>
++#endif<br>
+=C2=A0 =C2=A0 =C2=A0}<br>
+<br>
+=C2=A0 =C2=A0 =C2=A0return g_test_run();<br>
+-- <br>
+2.34.1<br>
+<br>
+<br>
+</blockquote></div></div>
+
+--000000000000a71c4705e71375ec--

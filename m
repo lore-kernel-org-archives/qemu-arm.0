@@ -1,121 +1,128 @@
-Received: by 2002:a17:906:1c87:0:0:0:0 with SMTP id g7csp483161ejh;
-        Thu, 25 Aug 2022 15:58:37 -0700 (PDT)
-X-Google-Smtp-Source: AA6agR5rUHT+Pwb9FnrRsr2USBn4+orFKaWMmAHLE0Jhbhk2OYY2JY+BWs3x8c2UzEdZnFfd994Q
-X-Received: by 2002:a05:622a:305:b0:343:5601:d5c4 with SMTP id q5-20020a05622a030500b003435601d5c4mr5703219qtw.130.1661468317083;
-        Thu, 25 Aug 2022 15:58:37 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1661468317; cv=none;
+Received: by 2002:a17:906:1c87:0:0:0:0 with SMTP id g7csp490825ejh;
+        Thu, 25 Aug 2022 16:15:51 -0700 (PDT)
+X-Google-Smtp-Source: AA6agR7MFT0alOVa2RnzXdlFtR0pPjixaIv+4vmxFGew943NppbSOD00VKNIpO4zd4h72rECeyhx
+X-Received: by 2002:a05:620a:2605:b0:6ba:a981:50ae with SMTP id z5-20020a05620a260500b006baa98150aemr4847574qko.115.1661469350883;
+        Thu, 25 Aug 2022 16:15:50 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1661469350; cv=none;
         d=google.com; s=arc-20160816;
-        b=0bMy03j9Nui1ZG9tANAGsvB+v005R8ZtMw91ptw/dDQxJVacE24XhBlKOlOOOACCnS
-         LLThf3/Mav2JuKaitcc2rRCGwZidWvmyukNByQYkhkLPhuzFnnZwpIq+3jnlfowKTGK8
-         CKgTNSzi7XF8IJW2dDEvACGkD1IVfgo1p4P0nEy+9KrgI9nEKjGnKWsBUw6tlix4ouPe
-         MWyy1gpCA4F1pAB0XgRGt5iOkt1Ifyf/XZlCAVnUMzjPfefg+3E0rRA8HvH2V7NQdSXO
-         6Af52HBb0zbCc/QTzD2+4x60sDmSIgE0BdAvJftmNcbSLAw/SG3LDPXz20dVT2Msx6Qc
-         xqsw==
+        b=un3rgpYuQ+7S24/0bKneCl/+gJVTN0jupZH7PrtcVjBZwRmwFb4XpbTBQ1ahrD8ygn
+         RcUlx5VHL5zd7fJkEQaWaMVy50oQLmOUh3KPD2OLMp0kJtCIBqWuRUaHHM1ts/ZHNd/B
+         MgXgFvXXB0c1csHD/CqUESKzG8oydoyNFaFVJStXRFHsU2Y4FZTLPxrsOhmOGbkkWmUj
+         9E+qTl4Gt0DMskvRXKUnIshtV82N9DN8ee1a6YVUGywuGnwgZK7cWh51+cE3jHjab673
+         kR0sz3lfQDCu3gci46kCbahIdparCCmSzhpyOloQaYCyA7/notRjnmWWa86nfQz9vef9
+         xxXg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-disposition
-         :mime-version:message-id:subject:cc:from:date:feedback-id
+         :list-unsubscribe:list-id:precedence:in-reply-to
+         :content-transfer-encoding:content-disposition:mime-version
+         :references:message-id:subject:cc:to:from:date:feedback-id
          :dkim-signature:dkim-signature;
-        bh=3YKa6D43m7ChNqM3M8VdySwzz3X/67PrlLEg7d9AIlQ=;
-        b=nto9jYneYcwbTxpYQ5zDpy8AtXpr5lubW7dW5EcZ+tEhCkme9/HxxDu5dhV3R5FZMW
-         1iMqyyBJ0nAwf9LQteeu0+IHdeZQrDFv7PRbrBRsAuHX0gACDl+QzdiS2HxCHItqMtef
-         dZoMck2L90AHgZG9MMJN5UGk1OtDh/PTw60ch88gSqNiEPstwImkPUZU40MBAIZOP0OB
-         IUegtPzv0f4bpH1JuxAPjWzZzBgk8UeXaKhU9LOD87ptw/MqZ9rSocHnYBCjOKTBseHW
-         VZOxGy8IrWzfWN/iVmPVNmL3nKDUtR9AC5eGr2oSI8AylGfnilfBDZvZIZzfaGZitVZe
-         Abpg==
+        bh=NUIPg9ogfNOGhJkL2DfidK4zHCf8p39tlCHpNVNvSQw=;
+        b=oltGB4OK3Gr83cKaN7gSn6Das29OkEzrWO2Kmjna5ofO2iKw3RSLihdnr4ma92W7md
+         7nP+hgZpxP7BwNllCeBFC6UQ8C3/0inZYdRpwOvT6A+VdgRiWfDznqzDndRi8Rdx/QOg
+         hFyMScs35/xtlFOZbeOwAqB+2dpsThPhnqhzEQ0QGkrfsweKWqK4NetrQ2Qk7kOIoZSM
+         toGFS2P04YTCPWxgnUK+/h7lbRa5BmK4TJD+REXmKK1eplxnjT2iMQhUqDQ57qMXppiZ
+         U0z/B17bm/9/7rPdtK6flq4nB20EUFfRw5dbRzOg1wg+5kMXCRr0h7YcMeDiZlmDkbU3
+         XgvA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@pjd.dev header.s=fm2 header.b=nTVRJ6+a;
-       dkim=fail header.i=@messagingengine.com header.s=fm1 header.b=yLQ6jCZn;
+       dkim=fail header.i=@pjd.dev header.s=fm2 header.b="Fa/+2sy3";
+       dkim=fail header.i=@messagingengine.com header.s=fm1 header.b="qeC21/5L";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id fw7-20020a056214238700b00473fc05df91si167768qvb.298.2022.08.25.15.58.36
+        by mx.google.com with ESMTPS id ge15-20020a05621427cf00b00477662b0c8asi191797qvb.242.2022.08.25.16.15.50
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 25 Aug 2022 15:58:37 -0700 (PDT)
+        Thu, 25 Aug 2022 16:15:50 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@pjd.dev header.s=fm2 header.b=nTVRJ6+a;
-       dkim=fail header.i=@messagingengine.com header.s=fm1 header.b=yLQ6jCZn;
+       dkim=fail header.i=@pjd.dev header.s=fm2 header.b="Fa/+2sy3";
+       dkim=fail header.i=@messagingengine.com header.s=fm1 header.b="qeC21/5L";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:53966 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:33314 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1oRLo4-0008Pf-KD
-	for alex.bennee@linaro.org; Thu, 25 Aug 2022 18:58:36 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:35704)
+	id 1oRM4k-0001F8-Dx
+	for alex.bennee@linaro.org; Thu, 25 Aug 2022 19:15:50 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:60506)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter@pjd.dev>)
- id 1oRLV8-0002zU-Mi; Thu, 25 Aug 2022 18:39:03 -0400
-Received: from wout2-smtp.messagingengine.com ([64.147.123.25]:60491)
+ id 1oRM4V-0001Ee-Ag; Thu, 25 Aug 2022 19:15:35 -0400
+Received: from wout2-smtp.messagingengine.com ([64.147.123.25]:50893)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter@pjd.dev>)
- id 1oRLV6-00065i-Pw; Thu, 25 Aug 2022 18:39:02 -0400
-Received: from compute5.internal (compute5.nyi.internal [10.202.2.45])
- by mailout.west.internal (Postfix) with ESMTP id 877CA32009DF;
- Thu, 25 Aug 2022 18:38:56 -0400 (EDT)
-Received: from mailfrontend1 ([10.202.2.162])
- by compute5.internal (MEProxy); Thu, 25 Aug 2022 18:38:57 -0400
+ id 1oRM4S-0004Cg-GK; Thu, 25 Aug 2022 19:15:34 -0400
+Received: from compute2.internal (compute2.nyi.internal [10.202.2.46])
+ by mailout.west.internal (Postfix) with ESMTP id 2E1693200A38;
+ Thu, 25 Aug 2022 19:15:29 -0400 (EDT)
+Received: from mailfrontend2 ([10.202.2.163])
+ by compute2.internal (MEProxy); Thu, 25 Aug 2022 19:15:29 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=pjd.dev; h=cc:cc
- :content-type:date:date:from:from:in-reply-to:message-id
- :mime-version:reply-to:sender:subject:subject:to; s=fm2; t=
- 1661467136; x=1661553536; bh=3YKa6D43m7ChNqM3M8VdySwzz3X/67PrlLE
- g7d9AIlQ=; b=nTVRJ6+aCVvRv1XBOd+KhQR0kTf1xHzP77mqxdodig3ke2DGB5X
- q8AJ3IE7eJY4Uul2OqtKqI0g+gukrF85ucDTmu7vYBGQ6d25aDqGo1LVkPw716yO
- qQ7EVEgBQ1v9jkdQav6doG+HYrplRQonmMb1XYh8o4v+v9DowUuQh3uHFHVUTquB
- gIy/ycuwp7F+zTsadBGJYydfj7mS74z9Jcs/gut0KIMft4qzx48vqNienjbfGX5k
- 6l7p58lUMgm4wJDazBK5oVnDzG9zWk/JWvZhB33GqELgFXU7sA3RJvsnNX1PP/4/
- uT1lKQdbjhGtoPU7DcsbkJ7NU0vZ0CNWj2w==
+ :content-transfer-encoding:content-type:date:date:from:from
+ :in-reply-to:in-reply-to:message-id:mime-version:references
+ :reply-to:sender:subject:subject:to:to; s=fm2; t=1661469328; x=
+ 1661555728; bh=NUIPg9ogfNOGhJkL2DfidK4zHCf8p39tlCHpNVNvSQw=; b=F
+ a/+2sy3du2OURoGXlvujaBlP7qMiyCEa8MhLlT+P+yqPt8slSKHK4NAOKtWzWBww
+ 2l9y5t7ibu2YcKZ/5jMQyCArS4c3mHTQh31uYPHOpiydt6n0usfWZHhS89x0Unm9
+ ULgfwAqOoTjt5XTcwiWx4+KdAohPaZMQh2tw170N/XGi/KuR8DOAHqcJ22lzDMDO
+ d8ludwCkwNibr8AqoQXSm5ZMQmh+3iiX5CTmeFh38VjMeqIBJTRTCra1ck8ybpRL
+ 27Eh2c9Z2mJp6wu004SJjRnFs2Fq8s50umlYypg6qiBe/lWv2LPYu2Kv3H4Z0GM9
+ pGqKjSB7WTesDk+aeYntg==
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
- messagingengine.com; h=cc:cc:content-type:date:date:feedback-id
- :feedback-id:from:from:in-reply-to:message-id:mime-version
- :reply-to:sender:subject:subject:to:x-me-proxy:x-me-proxy
- :x-me-sender:x-me-sender:x-sasl-enc; s=fm1; t=1661467136; x=
- 1661553536; bh=3YKa6D43m7ChNqM3M8VdySwzz3X/67PrlLEg7d9AIlQ=; b=y
- LQ6jCZnfnadnzb39dVpZK94NsfP8KPBMMwckR1EfwAgvGkez3oLlMTz6ZPTWF88X
- o5Jz/fzpUg+rTX84xqZUzjbM2GhqBfRRmdWcbonn4vmj9n/ISIOPIFPeTITwaeou
- OFIceNB7mG3qQWyS4PAsK2iFu2VAq5J2a3r99l0ULo9PlmgJLPgOexZDd9d1SzAX
- VYrCjEh3bTtqWprs7EZv0bKrRSWQcaVQS5O73DANDiZ17+TYUYvTC3NHVtr+sAMd
- l0PEkX+Uly+CFl+cfv4ydMJ07FoEDmANoBq6agn/2zKaXGlI4uyDkVC/tYuoqgao
- M0jAJITV81j9cz8/iHhGA==
-X-ME-Sender: <xms:__kHY_336hY9dzqFpl0Cg5KEpk0Ej5jiitws9RxkBmhpjrmb304EDA>
- <xme:__kHY-EACygxAxOPNbOBgm2OolmO2IMdqsH2Ta9hb0d00JQGDKGTvRFql_kKE0JHy
- TfUZEi9qhknP8BUN2Q>
-X-ME-Received: <xmr:__kHY_7dRdQkY_f8sIqDIPlgzIuEGlFjGI4EcJc6qwkUmsnUUSur19s9t6Z-2vra-Cpvt9aw5Eb4>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvfedrvdejgedgudefucetufdoteggodetrfdotf
+ messagingengine.com; h=cc:cc:content-transfer-encoding
+ :content-type:date:date:feedback-id:feedback-id:from:from
+ :in-reply-to:in-reply-to:message-id:mime-version:references
+ :reply-to:sender:subject:subject:to:to:x-me-proxy:x-me-proxy
+ :x-me-sender:x-me-sender:x-sasl-enc; s=fm1; t=1661469328; x=
+ 1661555728; bh=NUIPg9ogfNOGhJkL2DfidK4zHCf8p39tlCHpNVNvSQw=; b=q
+ eC21/5Low+FRXxRUAAmADfo8dWCZBqSdi9DxpLw55CGYUb47qcgIRWZ+1MuOMrqX
+ qmA2aklTf1TZjj5z8AoAblRWQAaufHDFroDhK77J52dUF96X/7wkBiV+dJKqs/UN
+ aWfhVdMKExTMQu/j9ot+528gAeBaDTVe6wWecfOVKxiP0AWRvTbxjLuQ9uPyUlC7
+ 9zajVXejomv3jqo69wuTeoZNFwPCcEfkVsOyQGcaDIpMvumb8aUaQEdp2osuxgLN
+ U31ycIDbOGp+a4GPDcC3IMEMstc4Okj9uNpnScLXpkV4SXH/OV39w+X6pI7vH6hO
+ VeSkNQmVnva2tzf/HUHMA==
+X-ME-Sender: <xms:kAIIY9cyJs2_N8i_B1aKepivxnx_uH8ZQAzl8i0_HTBYFmjRrkXgBg>
+ <xme:kAIIY7PrGkOlnqlTI_42i8TPXb7mjp8HmG8Hzj08dVgMoW8d70-3djVVoH-0f0s6-
+ O4luIHK1kMxpeAuDwI>
+X-ME-Received: <xmr:kAIIY2iFnTwMTpIHmUD3K7XFNMFxc_PB4B1NYf8Nqz9j0ywYbF1RW61rJ8szT2XjbScZzB71J4Td>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvfedrvdejgedgvddtucetufdoteggodetrfdotf
  fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
- uceurghilhhouhhtmecufedttdenuchmihhsshhinhhgucfvqfcufhhivghlugculdeftd
- dmnecujfgurhepfffhvefukfggtggusehttdertddttddvnecuhfhrohhmpefrvghtvghr
- ucffvghlvghvohhrhigrshcuoehpvghtvghrsehpjhgurdguvghvqeenucggtffrrghtth
- gvrhhnpeduvdfggeegtdffjeffteekjeduhfeugfejvdduieehiedvfffhjeeifefhffeg
- heenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhgrihhlfhhrohhmpehpvg
- htvghrsehpjhgurdguvghv
-X-ME-Proxy: <xmx:__kHY00lPVYYBoeIIAb3x_alchxXk9VthBOR3pSoi6iPRR42ZAN5qQ>
- <xmx:__kHYyHUywzvRjOAViS7zCCkfhytbGXmyz42q91KExZ_K1-KXs0zIQ>
- <xmx:__kHY1-UsUAzuJiOFdUDq0_jkKDi6jP7h_x_nHQA3MjdoG9y4CaysQ>
- <xmx:APoHY_MkcioRcIPPGFT0QOOlT1kWq-T8RiCTnBN-zc0uwH5-6JEA9A>
+ uceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmne
+ cujfgurhepfffhvfevuffkfhggtggugfgjsehtkeertddttddunecuhfhrohhmpefrvght
+ vghrucffvghlvghvohhrhigrshcuoehpvghtvghrsehpjhgurdguvghvqeenucggtffrrg
+ htthgvrhhnpefhgeffvedufeevteegkeetieejhffhudeujedvgedvheffheejveethffh
+ ffefueenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhgrihhlfhhrohhmpe
+ hpvghtvghrsehpjhgurdguvghv
+X-ME-Proxy: <xmx:kAIIY2-psMWo5CXuMM-rLlRrWZLdVgWs_B53z-WVTU3yEvrm6Uamgw>
+ <xmx:kAIIY5uiCZU_IBIoXAJHZlemQIjnv853IFfqWMq09D9Uy1JRM7BzLw>
+ <xmx:kAIIY1Ea_O7TUyLpsWdzlms1wU0wl5z1VJ4HvNPP65dqif6BF6apww>
+ <xmx:kAIIY3UPWrKPRs_m_CiK8nJP8zJPOsMEQTfgOPbAky36qPiaKZ8Zzg>
 Feedback-ID: i9e814621:Fastmail
 Received: by mail.messagingengine.com (Postfix) with ESMTPA; Thu,
- 25 Aug 2022 18:38:54 -0400 (EDT)
-Date: Thu, 25 Aug 2022 15:38:53 -0700
+ 25 Aug 2022 19:15:27 -0400 (EDT)
+Date: Thu, 25 Aug 2022 16:15:26 -0700
 From: Peter Delevoryas <peter@pjd.dev>
+To: Samuel Thibault <samuel.thibault@gnu.org>
 Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, clg@kaod.org,
- samuel.thibault@ens-lyon.org, garnermic@fb.com, patrick@stwcx.xyz,
- zhdaniel@fb.com
-Subject: slirp: Can I get IPv6-only DHCP working?
-Message-ID: <Ywf5/cIDTV8OQ/0d@pdel-fedora-MJ0HJWH9>
+ garnermic@fb.com, patrick@stwcx.xyz, zhdaniel@fb.com
+Subject: Re: slirp: Can I get IPv6-only DHCP working?
+Message-ID: <YwgCjqC90KhDKUnr@pdel-fedora-MJ0HJWH9>
+References: <Ywf5/cIDTV8OQ/0d@pdel-fedora-MJ0HJWH9>
+ <20220825225610.oio5h5bflp4gmaph@begin>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset=iso-8859-1
 Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <20220825225610.oio5h5bflp4gmaph@begin>
 Received-SPF: pass client-ip=64.147.123.25; envelope-from=peter@pjd.dev;
  helo=wout2-smtp.messagingengine.com
-X-Spam_score_int: -17
-X-Spam_score: -1.8
-X-Spam_bar: -
-X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, MISSING_HEADERS=1.021,
+X-Spam_score_int: -27
+X-Spam_score: -2.8
+X-Spam_bar: --
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -130,15 +137,62 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: DSl0RlS9331W
+X-TUID: KVEMaXwaDfto
 
-I'm having a hard time figuring this out from looking at the code and the
-user-level help options.
+On Fri, Aug 26, 2022 at 12:56:10AM +0200, Samuel Thibault wrote:
+> Hello,
+> 
+> Peter Delevoryas, le jeu. 25 août 2022 15:38:53 -0700, a ecrit:
+> > It seems like there's support for an IPv6 dns proxy, and there's literally a
+> > file called "dhcpv6.c" in slirp, but it has a comment saying it only supports
+> > whatever is necessary for TFTP network boot I guess.
+> 
+> For which DNS support is welcome :)
+> 
+> > Maybe there's no support then?
+> 
+> It seems there is:
+> 
+>     if (ri.want_dns) {
+>         *resp++ = OPTION_DNS_SERVERS >> 8; /* option-code high byte */
+>         *resp++ = OPTION_DNS_SERVERS; /* option-code low byte */
+>         *resp++ = 0; /* option-len high byte */
+>         *resp++ = 16; /* option-len low byte */
+>         memcpy(resp, &slirp->vnameserver_addr6, 16);
+>         resp += 16;
+>     }
 
-It seems like there's support for an IPv6 dns proxy, and there's literally a
-file called "dhcpv6.c" in slirp, but it has a comment saying it only supports
-whatever is necessary for TFTP network boot I guess. Maybe there's no support
-then? I'm interested in adding it, if that's the case.
+Well, that's great, but actually I just care about whether slirp supports DHCPv6
+address requests. Sorry if I didn't explain that properly.
 
-Thanks,
+My goal is to run:
+
+    qemu-system-arm -machine fby35-bmc -nographic -mtdblock image-bmc \
+        -net nic,model=ftgmac100,netdev=nic \
+        -netdev user,id=nic,hostfwd=::2222-:22
+
+And then see that the BMC received an IPv6 address assignment.
+
+But, slirp currently just supports IP address assignment through BOOTP?  I
+didn't realize that until looking a little closer at the code. But, since the
+DHCPv6 hook "dhcpv6_input" is already there, maybe I can just get something
+going through there? I suppose I might need some IPv6 NDP packets to work too,
+to ssh through a hostfwd port.
+
+    root@bmc-oob:~# ifconfig eth0
+    eth0      Link encap:Ethernet  HWaddr FA:CE:B0:02:20:22
+              inet addr:10.0.2.15  Bcast:10.0.2.255  Mask:255.255.255.0
+              inet6 addr: fec0::f8ce:b0ff:fe02:2022/64 Scope:Site
+              inet6 addr: fe80::f8ce:b0ff:fe02:2022/64 Scope:Link
+              UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+              RX packets:107 errors:0 dropped:0 overruns:0 frame:0
+              TX packets:136 errors:0 dropped:0 overruns:0 carrier:0
+              collisions:0 txqueuelen:1000
+              RX bytes:13316 (13.0 KiB)  TX bytes:10022 (9.7 KiB)
+              Interrupt:33
+
+Anyways, I'll do some more investigation on my own, thanks!
 Peter
+
+> 
+> Samuel

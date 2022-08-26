@@ -1,108 +1,113 @@
-Received: by 2002:a17:906:1c87:0:0:0:0 with SMTP id g7csp245721ejh;
-        Fri, 26 Aug 2022 05:22:04 -0700 (PDT)
-X-Google-Smtp-Source: AA6agR4nCaDlVwHo/n41J/aRMBduqhSr94vSciyL3BkGFOpfHJwvGUkmacgkxLnsoa8Gq88fETSC
-X-Received: by 2002:a05:6214:1cc5:b0:498:5d76:69f with SMTP id g5-20020a0562141cc500b004985d76069fmr2508282qvd.33.1661516524355;
-        Fri, 26 Aug 2022 05:22:04 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1661516524; cv=none;
+Received: by 2002:a05:7108:414f:0:0:0:0 with SMTP id l15csp416071gdo;
+        Fri, 26 Aug 2022 07:13:11 -0700 (PDT)
+X-Google-Smtp-Source: AA6agR5jz7iGhOearh3NFRjcxnyNCfYw5GQlRsYFaER4EadGGzT+STcL/vdlH+p5ZAKLHcy4XkRz
+X-Received: by 2002:a05:620a:468d:b0:6bb:5cd6:680e with SMTP id bq13-20020a05620a468d00b006bb5cd6680emr6748235qkb.29.1661523191823;
+        Fri, 26 Aug 2022 07:13:11 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1661523191; cv=none;
         d=google.com; s=arc-20160816;
-        b=Y0JAp8Ux8sP24W0V6HE2cCsZOTj43d7Ew6kIOzFqMvVbZrnaWOMBPzg9RDHv71dGzI
-         5MTg43MJDkhYiOQwBMEfcZzhLTM1Gyidj4rTSck41d2pq6LIF5bYKH+195XhtPR8g1+1
-         b9NFMmpd/k0+B1rUyVKkZ0343VqHUiXgOpWN9aNFcx1ZNqvUnjHcWwZF9jgKmz/mKN+9
-         u8M4o/+iKPAo+QaWlK+q2aCor5fPKvVE1noeUda0P7ldF1OwHw60uKipcbkhQyvZxqi0
-         Of7tmjdo2MqjNwiJO+yy39jZX6pu02vctu101TTiZT4ZY6/KH3AIBh49fM4ysKyaDqYe
-         cK+g==
+        b=pHxaX97cPoDGl/EC5ESnySxpIH4OR4Sh5kWWIh7rWQoLu4klNAZ4iin6Vlj4GqzLn9
+         MkAlYwiljo+FsATJCcfpd4qanNcRgdq3BJPQGBYPfje+w5PHDrLg4A/aPd06l30wGJvM
+         09tDp6SRQ1wz4/OeiusG+DFyyRDorjaVvWGFz3yqw5yWaKj4wepMQzo37uAoFx+2RUr/
+         uLxPT7P1WIqOCtI0bGsDmBU/0ZlqU65L8d8JQB85BQ+w19ICur8RsAQWhpjk+X705j0F
+         hS9z5Z0AblJ/9a3cW/kNL+cbLcAUe7q4BHAGT7G9aLi5lUO1bn3GH+cP5jy/IhOToSF2
+         11CQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:date:message-id
-         :references:cc:to:from:subject:dkim-signature;
-        bh=M4R9F/GEqfy6kkhRYsnSo7lHU5iSdqaXa54V02cS7LY=;
-        b=FS0PBU62C+df4sai/p5nlBJxNk2zVvRtHY6w21DgmBX8RIB7pt4SLqFixltnQwz+wx
-         IfbJSep6MZLrFeewCNfEi18rkGrB9KyU3eRyhzYqD0XlHAA7fDCYq+hGbzPti5y2I+NB
-         j0cLp+ur+ym0Us07kN6A88hnk41R0kIn6HFpYTLvrirIS+vU9zLOk1p1RXr7VJWbNF4q
-         8SfIE7q7KYDcuDGMJvjZ5zViDtsx+/gy9jdVRvnI9prvKUi3RNFgzMGZixWCY3WH5hPz
-         0NBLRijVyvkxfDo+VuvNHGwyXotxupKvhxdOoGQw85g6YWvA/s6a7dWvOuWVh9o2JL9F
-         MwTw==
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=7nsBpd6U2T94rIp6E9694uNRx1OUw5ceVkhMbv8n9sQ=;
+        b=SM9teNuYZjrFoQC9fcqRhz0lwXcB/x+znrV5rZatGTT+00hIP33xJCtprYmtV2/yZb
+         hsnSL0eTtlYOEqbCkPffusUNUlHw0tsyuJ9J2vyO8hn6jvTj7AMI83Zq3dVcrEfl7Cy+
+         pj+Tlb+onPkgIgFU4m+P+XrQ/5yTVYAuPlsog8hA525wmMwt9uH6lVycmVIoC9XOWrHh
+         kv2s6gGQXstQFbtdrgjYdALCld6IP9RoMRYEMSv8IGZJBX3rqZlIPKfb2he3HOFy2p7i
+         alH14XXfZAHAmcrHPc8PqfcFo6GnY0IRagNAFgkv5wQ4eEEq0edDnlnSFjsFyc4IyVeh
+         qGGQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Xcon7IIS;
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=dHu8iCKs;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 1-20020ad45ba1000000b004970c8f4cc4si968289qvq.86.2022.08.26.05.22.04
+        by mx.google.com with ESMTPS id 15-20020a0562140d0f00b00496b529849dsi1017648qvh.357.2022.08.26.07.13.11
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 26 Aug 2022 05:22:04 -0700 (PDT)
+        Fri, 26 Aug 2022 07:13:11 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Xcon7IIS;
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=dHu8iCKs;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:43592 helo=lists1p.gnu.org)
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:34938 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1oRYLb-0003ro-Pi
-	for alex.bennee@linaro.org; Fri, 26 Aug 2022 08:22:03 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:48104)
+	id 1oRa59-0008OC-Di
+	for alex.bennee@linaro.org; Fri, 26 Aug 2022 10:13:11 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:57176)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <lersek@redhat.com>) id 1oRY6z-0008MR-3q
- for qemu-arm@nongnu.org; Fri, 26 Aug 2022 08:06:57 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:35702)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <lersek@redhat.com>) id 1oRY6v-0006j8-Jb
- for qemu-arm@nongnu.org; Fri, 26 Aug 2022 08:06:55 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1661515611;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=M4R9F/GEqfy6kkhRYsnSo7lHU5iSdqaXa54V02cS7LY=;
- b=Xcon7IISezO9ZI3bmgGvbxtvC6E9FkS05cSc0UjHqndjqvVSjssOhdSs+HZeRThlu2n9lQ
- QH3DfejGwGBgNvwCrZAWe71clnMGAnmQJhl3YpweDGLtUL8pQtk0H+6noLnUGJOaPDn2hG
- AzboBQD0pVxi6wdB1PonmWrM2TgRa3Q=
-Received: from mimecast-mx02.redhat.com (mx3-rdu2.redhat.com
- [66.187.233.73]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-483-QshPuzc3MEWAn45IonYF4g-1; Fri, 26 Aug 2022 08:06:48 -0400
-X-MC-Unique: QshPuzc3MEWAn45IonYF4g-1
-Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.rdu2.redhat.com
- [10.11.54.8])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 385C33C0F38C;
- Fri, 26 Aug 2022 12:06:48 +0000 (UTC)
-Received: from lacos-laptop-7.usersys.redhat.com (unknown [10.39.192.58])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id B8FFBC15BBA;
- Fri, 26 Aug 2022 12:06:46 +0000 (UTC)
-Subject: Re: [PATCH] fw_cfg: Don't set callback_opaque NULL in
- fw_cfg_modify_bytes_read()
-From: Laszlo Ersek <lersek@redhat.com>
-To: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>,
- qemu-devel@nongnu.org, qemu-arm@nongnu.org
-Cc: imammedo@redhat.com, peter.maydell@linaro.org, linuxarm@huawei.com,
- chenxiang66@hisilicon.com,
- "Ard Biesheuvel (kernel.org address)" <ardb@kernel.org>,
- Gerd Hoffmann <kraxel@redhat.com>
-References: <20220825161842.841-1-shameerali.kolothum.thodi@huawei.com>
- <43c62060-7a5d-25cf-91a3-1c391d3a58f9@redhat.com>
-Message-ID: <ab43b53b-546a-4056-0e91-31691f716109@redhat.com>
-Date: Fri, 26 Aug 2022 14:06:45 +0200
+ (Exim 4.90_1) (envelope-from <danielhb413@gmail.com>)
+ id 1oRa43-0007Xl-5A; Fri, 26 Aug 2022 10:12:03 -0400
+Received: from mail-oi1-x235.google.com ([2607:f8b0:4864:20::235]:34527)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <danielhb413@gmail.com>)
+ id 1oRa41-0003ot-I0; Fri, 26 Aug 2022 10:12:02 -0400
+Received: by mail-oi1-x235.google.com with SMTP id r10so2137821oie.1;
+ Fri, 26 Aug 2022 07:12:00 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc;
+ bh=7nsBpd6U2T94rIp6E9694uNRx1OUw5ceVkhMbv8n9sQ=;
+ b=dHu8iCKsKPB1tufnPw6xfyTL2kEBCGfGhu3tJziTp3HoUR7yAWchSuqbUwotSIisWs
+ NCF/NUNgVCcEYBd+/sYghKYzdxOTHwcUsj7sCwuCVMbj0FCxZVEHMZ16/pDVLPPhSWIA
+ 6mbGZkbE7i15GQulFK0w84gEFXYL1YqM0tl38nkZLmtNnQoeZKTue35n3RugJ2lfwPYf
+ 5iYlINiA0drmTa2IngkPo7ZIoB7anQpBDwIa0iV7/AI5RJ2lRRaZuRoD7RwrB6GfEyTk
+ BC7ohDXI1SciwS888L+KFrGGX+RV24DqQVEA49/k0yGtGIyHd0Aw61PIo4F0U0XfYS7j
+ Q68w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc;
+ bh=7nsBpd6U2T94rIp6E9694uNRx1OUw5ceVkhMbv8n9sQ=;
+ b=LgFXJ4QougSPSFfv1DmOlIBzzqJ8fP7I/QtLvocYvhwyvsTt8W7B3bhiR3kzS3DDdv
+ WKTuw/vdUFUDXr/yg6xF1Dwnl5ge0VmCQmU110kwlfsY5WbfDuUbIEPfLZU5j5ilBTa4
+ Pfvv+axFfcVUEHHCPu7zmX65HTmLkj2hgPi4HqUoL+iF0uTLy5rSFYzTY5qqqVHBdPfl
+ IEnhfWX+1sv7V7uw9KsgqoSCcus/Gh1oIk2t1gN8E3VsSIkVS/SOUIDF5+l96BCI8W5K
+ niNrTpK22PCrs9AV7e8MeKAtXytOpI6XOtsXq5kE/Y5U75f3EWRUqKh5AZp3WO7WoFeq
+ wBWw==
+X-Gm-Message-State: ACgBeo3TZhrJ/u6Q0wuW/PCvMEssrG8vGNDzvgztlm53XFFmyETkM6lP
+ A5pNO+30sURxitOdAkJmx7Pi4cfwpqs=
+X-Received: by 2002:a54:4598:0:b0:344:e71e:3a13 with SMTP id
+ z24-20020a544598000000b00344e71e3a13mr1760681oib.239.1661523119049; 
+ Fri, 26 Aug 2022 07:11:59 -0700 (PDT)
+Received: from balboa.COMFAST ([177.189.45.98])
+ by smtp.gmail.com with ESMTPSA id
+ z12-20020a056808064c00b00344aa3f17d9sm1087736oih.10.2022.08.26.07.11.56
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 26 Aug 2022 07:11:58 -0700 (PDT)
+From: Daniel Henrique Barboza <danielhb413@gmail.com>
+To: qemu-devel@nongnu.org
+Cc: qemu-ppc@nongnu.org, clg@kaod.org, david@gibson.dropbear.id.au,
+ alistair.francis@wdc.com, Daniel Henrique Barboza <danielhb413@gmail.com>,
+ Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org
+Subject: [PATCH for-7.2 v4 01/21] hw/arm: do not free machine->fdt in
+ arm_load_dtb()
+Date: Fri, 26 Aug 2022 11:11:30 -0300
+Message-Id: <20220826141150.7201-2-danielhb413@gmail.com>
+X-Mailer: git-send-email 2.37.2
+In-Reply-To: <20220826141150.7201-1-danielhb413@gmail.com>
+References: <20220826141150.7201-1-danielhb413@gmail.com>
 MIME-Version: 1.0
-In-Reply-To: <43c62060-7a5d-25cf-91a3-1c391d3a58f9@redhat.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 2.85 on 10.11.54.8
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=lersek@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
-X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+Received-SPF: pass client-ip=2607:f8b0:4864:20::235;
+ envelope-from=danielhb413@gmail.com; helo=mail-oi1-x235.google.com
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -117,80 +122,52 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 66lzDwK4yi7K
+X-TUID: F6NIcaqRjOUh
 
-+Ard +Gerd, one pointer at the bottom
+At this moment, arm_load_dtb() can free machine->fdt when
+binfo->dtb_filename is NULL. If there's no 'dtb_filename', 'fdt' will be
+retrieved by binfo->get_dtb(). If get_dtb() returns machine->fdt, as is
+the case of machvirt_dtb() from hw/arm/virt.c, fdt now has a pointer to
+machine->fdt. And, in that case, the existing g_free(fdt) at the end of
+arm_load_dtb() will make machine->fdt point to an invalid memory region.
 
-On 08/26/22 13:59, Laszlo Ersek wrote:
-> On 08/25/22 18:18, Shameer Kolothum wrote:
->> Hi
->>
->> On arm/virt platform, Chen Xiang reported a Guest crash while
->> attempting the below steps,
->>
->> 1. Launch the Guest with nvdimm=on
->> 2. Hot-add a NVDIMM dev
->> 3. Reboot
->> 4. Guest boots fine.
->> 5. Reboot again.
->> 6. Guest boot fails.
->>
->> QEMU_EFI reports the below error:
->> ProcessCmdAddPointer: invalid pointer value in "etc/acpi/tables"
->> OnRootBridgesConnected: InstallAcpiTables: Protocol Error
->>
->> Debugging shows that on first reboot(after hot-adding NVDIMM),
->> Qemu updates the etc/table-loader len,
->>
->> qemu_ram_resize()
->>   fw_cfg_modify_file()
->>      fw_cfg_modify_bytes_read()
->>
->> And in fw_cfg_modify_bytes_read() we set the "callback_opaque" for
->> the "key" entry to NULL. Because of this, on the second reboot,
->> virt_acpi_build_update() is called with a NULL "build_state" and
->> returns without updating the ACPI tables. This seems to be 
->> upsetting the firmware.
->>
->> To fix this, don't change the callback_opaque in fw_cfg_modify_bytes_read().
->>
->> Reported-by: chenxiang <chenxiang66@hisilicon.com>
->> Signed-off-by: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
->> ---
->> I am still not very convinced this is the root cause of the issue.
->> Though it looks like setting callback_opaque to NULL while updating
->> the file size is wrong, what puzzles me is that on the second reboot
->> we don't have any ACPI table size changes and ideally firmware should
->> see the updated tables from the first reboot itself.
->>
->> Please take a look and let me know.
->>
->> Thanks,
->> Shameer
->>
->> ---
->>  hw/nvram/fw_cfg.c | 1 -
->>  1 file changed, 1 deletion(-)
->>
->> diff --git a/hw/nvram/fw_cfg.c b/hw/nvram/fw_cfg.c
->> index d605f3f45a..dfe8404c01 100644
->> --- a/hw/nvram/fw_cfg.c
->> +++ b/hw/nvram/fw_cfg.c
->> @@ -728,7 +728,6 @@ static void *fw_cfg_modify_bytes_read(FWCfgState *s, uint16_t key,
->>      ptr = s->entries[arch][key].data;
->>      s->entries[arch][key].data = data;
->>      s->entries[arch][key].len = len;
->> -    s->entries[arch][key].callback_opaque = NULL;
->>      s->entries[arch][key].allow_write = false;
->>  
->>      return ptr;
->>
-> 
-> I vaguely recall seeing the same issue report years ago (also in
-> relation to hot-adding NVDIMM). However, I have no capacity to
-> participate in the discussion. Making this remark just for clarity.
+This is not an issue right now because there's no code that access
+machine->fdt after arm_load_dtb(), but we're going to add a couple do
+FDT HMP commands that will rely on machine->fdt being valid.
 
-The earlier report I've had in mind was from Shameer as well:
+Instead of freeing 'fdt' at the end of arm_load_dtb(), assign it to
+machine->fdt. This will allow the FDT of ARM machines that relies on
+arm_load_dtb() to be accessed later on.
 
-http://mid.mail-archive.com/5FC3163CFD30C246ABAA99954A238FA83F3FB328@lhreml524-mbs.china.huawei.com
+Since all ARM machines allocates the FDT only once, we don't need to
+worry about leaking the existing FDT during a machine reset (which is
+something that other machines have to look after, e.g. the ppc64 pSeries
+machine).
+
+Cc: Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-arm@nongnu.org
+Signed-off-by: Daniel Henrique Barboza <danielhb413@gmail.com>
+---
+ hw/arm/boot.c | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/hw/arm/boot.c b/hw/arm/boot.c
+index ada2717f76..669a978157 100644
+--- a/hw/arm/boot.c
++++ b/hw/arm/boot.c
+@@ -684,7 +684,11 @@ int arm_load_dtb(hwaddr addr, const struct arm_boot_info *binfo,
+      */
+     rom_add_blob_fixed_as("dtb", fdt, size, addr, as);
+ 
+-    g_free(fdt);
++    /*
++     * Update the ms->fdt pointer to enable support for
++     * 'dumpdtb' and 'info fdt' QMP/HMP commands.
++     */
++    ms->fdt = fdt;
+ 
+     return size;
+ 
+-- 
+2.37.2
 

@@ -1,218 +1,147 @@
-Received: by 2002:a17:906:1c87:0:0:0:0 with SMTP id g7csp918613ejh;
-        Sat, 27 Aug 2022 11:07:16 -0700 (PDT)
-X-Google-Smtp-Source: AA6agR7vgliRqqNAQz+c7qWIi0Zli/xZGGu1zzv7VXSHoJxtaoTS/pi3bidXUW9hYcAPNJqubozF
-X-Received: by 2002:a05:6402:350e:b0:448:4918:af81 with SMTP id b14-20020a056402350e00b004484918af81mr848321edd.384.1661623636059;
-        Sat, 27 Aug 2022 11:07:16 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1661623636; cv=none;
+Received: by 2002:a17:906:1c87:0:0:0:0 with SMTP id g7csp1605327ejh;
+        Mon, 29 Aug 2022 01:11:06 -0700 (PDT)
+X-Google-Smtp-Source: AA6agR5bnS7g0FYf8MHER4yWzExIIWi2g1gfHzUrWhuxHibUw7G1u9dKax1OZH69MD83gdiGjjnN
+X-Received: by 2002:ac8:6b05:0:b0:343:6173:f513 with SMTP id w5-20020ac86b05000000b003436173f513mr4496193qts.681.1661760666632;
+        Mon, 29 Aug 2022 01:11:06 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1661760666; cv=none;
         d=google.com; s=arc-20160816;
-        b=DC1m2CzmghLouHrPGG8RswROzxTur529ppFzyHm520mIwu/jUuo2XNkZxvXSwJCRNJ
-         7Velj5SYXW+Jtgq+L3M2f0k5NM0xEf5Kv8f0UAMbVwJDJMEWkGM8zEg6sNP1uYFR8J52
-         qThX+hIklOQX25p/abEyRoRqqdfhUFHKKktY6IdhRlb21QQxtLuq3fmrNP1ofJE0m1NA
-         eoQBckO95b4AAd34uEd3z1q8xDu4bwNIQSWaRG/KAkeFQmE+n4Wk/Zk7B7yop4s7d9/E
-         MfMx3OjTg5MCYjb3s2c28Iogo8mh7I1yc+CPcyI8d88efCiINlm6NFYqZ7LeBN/ikBJ+
-         uGlg==
+        b=XEqtVFIScVpZ8bFtpewyMoc07qIbL2KlaS1w6/vSmTw4d6njaFA47SNF3MI7EcF9ga
+         1naF/jqhg/acnC4q8mRXcYb61+mgeJFE6i6kZuT9CHWdTxgAEmS/69kwNqOsGGTWZ7yR
+         mxY+X9+/vJqlreIqgfrXohGRuFAZ0I3S475R3ZNa5K/He1dW+Ap3iGLNMKYQy6O2jl+X
+         zlB4+uo1hEubdncdnojW6bWtgFm9M34Vac89Im+P6jJ3xfwSG156B8E9/wG+1SwyWvXo
+         F7jzIuy5hLTDeJngAQmg9A/Vxcdb1HQ737AZ+GA0RkVjFE39JWgIIebh5gQ+TQT6heIE
+         6NMA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:dkim-signature;
-        bh=pRUphrUOT5ThydUemlvF42u27K3oW2orOW3AGjBkre0=;
-        b=rcMNcdvFN9hZ8BrW8Zwruf+aZxPr2hB06V0wdhiq8Q95JsNQsKmJEFpjFlJV1Om81+
-         VjzaCkl7zLUvJUOYygOmq5xohHenfYI03io0WE7oD8KyPitt+n5uCyoet/dQ9XVTYVLO
-         dr8fenQ8sY1ky46djIMCZr3BwQxulUK65cWFT65jjjm8pdLf/vvNHVEmlVwAs4Ho6wpR
-         xGq/cXRDqAqnJ/ma68mqHsODwErCILz2GrqDxvviU1K0XHwyD4bzcF+NpFicxeY3XuhZ
-         UhjipDaTqru4uAFBMjOna+PfRad7Ht+WSuR25hDnN1elKcWcNrCmbwyyvuDxqFnk5oZ/
-         KfIQ==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
+        bh=pBBTjB/SbwHMGw6GqAFQviyP++kri93EN3+YcY22TVA=;
+        b=gpgsZdVyIkva8RhVt05yKiKmYGS1azsguqkhmxTmuPmkI5YsGJJ+HtZtcwmuG6as6Y
+         eVlL/Jik2/M/+hRRlhggB9N1ywer1KQatvRQAT2VTJU0JrnN0sp9uvKpIo65peOQ9XmU
+         MhtvMwWOyi5wRYGaLlJx6B/IZ2D0FC8qkh1DxQzTXBUKh2MPL1AF8tYoO+pZsFvvNuKw
+         EO7GQLUy6DEFWkQijI438Kmsh4uDi0b9LRL9P8Z3OjCpuSNQ/KtOG/QAnkyQ1EQx+zjs
+         tKNFGevSw1/pVvHpYVCzR91lb3UGXBvbsL8AoYc3kkNooT/Yws70A7KJ+q14MHQw+eZG
+         nHvg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@fvhovell.nl header.s=soverin header.b=z+WMcLny;
-       spf=pass (google.com: domain of frederik@fvhovell.nl designates 185.233.34.146 as permitted sender) smtp.mailfrom=frederik@fvhovell.nl
-Return-Path: <frederik@fvhovell.nl>
-Received: from outbound.soverin.net (outbound.soverin.net. [185.233.34.146])
-        by mx.google.com with ESMTPS id p1-20020a1709060dc100b0073d671012c7si2898905eji.486.2022.08.27.11.07.15
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="NpYMd/ul";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id kl19-20020a056214519300b00476977baa3bsi3426644qvb.431.2022.08.29.01.11.06
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 27 Aug 2022 11:07:15 -0700 (PDT)
-Received-SPF: pass (google.com: domain of frederik@fvhovell.nl designates 185.233.34.146 as permitted sender) client-ip=185.233.34.146;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Mon, 29 Aug 2022 01:11:06 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@fvhovell.nl header.s=soverin header.b=z+WMcLny;
-       spf=pass (google.com: domain of frederik@fvhovell.nl designates 185.233.34.146 as permitted sender) smtp.mailfrom=frederik@fvhovell.nl
-Received: from smtp.freedom.nl (c04smtp-lb01.int.sover.in [10.10.4.74])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	by outbound.soverin.net (Postfix) with ESMTPS id 4MFPmg54x7zK5;
-	Sat, 27 Aug 2022 18:07:15 +0000 (UTC)
-Received: from smtp.freedom.nl (smtp.freedom.nl [10.10.4.108]) by freedom.nl
-DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple; d=fvhovell.nl;
-	s=soverin; t=1661623634;
-	bh=RXPaBlKKV4KA1lt3oCcUQ/B2ERn90P4TrBJa/8wFD9E=;
-	h=From:To:Cc:Subject:Date:From;
-	b=z+WMcLnyyD9xcr3C9+TNNJcCIUwNQCLFMVU4qt0upEPqd9aD8LdvXBQztXOqW04WR
-	 v5mxCYZj20QfGddG4rnqKg/4PcouInAQcGMz4UIlaEosSfXVQ6cu5hpsxelLdmUK5Z
-	 UugGNLPuGXRHcUqjWYM/4KYnOxPMsNoHbCZyrps6K7HnF2ssLSDC7bTJjs9zl9KprK
-	 DaIcZpdSWlAJNWudrcNC9MvUeXpV8EFUC+MwFnvDsAClZMkX6SCvfloZXzUsJQEa38
-	 cimh0/TySQcSWJZVuUX/pw7HzV7s7VWmAS1MdFxUpgQMqL2t/j67QhCqJTHRP67O7C
-	 bKewn+TOrY2ag==
-From: =?UTF-8?q?Frederik=20van=20H=C3=B6vell?= <frederik@fvhovell.nl>
-To: qemu-devel@nongnu.org,
-	qemu-arm@nongnu.org
-Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Michael Bishop <cleverca22@gmail.com>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
-	=?UTF-8?q?Frederik=20van=20H=C3=B6vell?= <frederik@fvhovell.nl>
-Subject: [PATCH v2] hw/arm: fix the position of vcram for raspi
-Date: Sat, 27 Aug 2022 20:07:02 +0200
-Message-Id: <20220827180702.39462-1-frederik@fvhovell.nl>
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="NpYMd/ul";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:36616 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1oSZrO-0002mx-5d
+	for alex.bennee@linaro.org; Mon, 29 Aug 2022 04:11:06 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:47476)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1oSZqF-0002mV-Oo
+ for qemu-arm@nongnu.org; Mon, 29 Aug 2022 04:09:56 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:30041)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1oSZqC-00030A-7L
+ for qemu-arm@nongnu.org; Mon, 29 Aug 2022 04:09:53 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1661760591;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=pBBTjB/SbwHMGw6GqAFQviyP++kri93EN3+YcY22TVA=;
+ b=NpYMd/ulYZ4InvUn4s6N2ZgqtgnK47SBlhpVamu35bXXhYQWaxsokR5KWpgUnjelc3TS4J
+ CEOtIlyVVVGTj1qTc3GAnUMd5pTQ6paWvq+R5Kle07SwtWKhpD0uQRSaT/F5nFtfYiDibd
+ k0xNLKlv91akMlf6u16DMnaUWXL5X0M=
+Received: from mimecast-mx02.redhat.com (mx3-rdu2.redhat.com
+ [66.187.233.73]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-401-GXNnq5E4MgCLLTtOdU36Ow-1; Mon, 29 Aug 2022 04:09:46 -0400
+X-MC-Unique: GXNnq5E4MgCLLTtOdU36Ow-1
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.1])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 8CC943C01E08;
+ Mon, 29 Aug 2022 08:09:45 +0000 (UTC)
+Received: from thuth.com (unknown [10.39.192.176])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id E8EA340CF8E4;
+ Mon, 29 Aug 2022 08:09:42 +0000 (UTC)
+From: Thomas Huth <thuth@redhat.com>
+To: qemu-devel@nongnu.org, Cleber Rosa <crosa@redhat.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+ Wainer dos Santos Moschetta <wainersm@redhat.com>,
+ Beraldo Leal <bleal@redhat.com>
+Cc: qemu-arm@nongnu.org, Alistair Francis <alistair@alistair23.me>,
+ "Edgar E . Iglesias" <edgar.iglesias@gmail.com>,
+ Peter Maydell <peter.maydell@linaro.org>
+Subject: [PATCH for-7.2] tests/avocado/boot_linux_console: Fix the
+ test_aarch64_xlnx_versal_virt test
+Date: Mon, 29 Aug 2022 10:09:40 +0200
+Message-Id: <20220829080940.110831-1-thuth@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: Y0qiPMsi07cD
+X-Scanned-By: MIMEDefang 2.84 on 10.11.54.1
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=thuth@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -27
+X-Spam_score: -2.8
+X-Spam_bar: --
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: aYSz/qog+47I
 
-From: Alex Bennée <alex.bennee@linaro.org>
+The assets that this test tries to download have been removed from the
+server. Update to a newer version to get it working again.
 
-The previous calculation fell over when I tried to create a 8gb Pi 4
-because the values were only 32 bit. However the quirk of the Pi
-hardware is the vcram can only appear in the first 1gb of address
-space. This also limits where the initial kernel and DTB can be
-loaded (notice the DTS for the 8gb Pi4 still only uses 32 bit sizes).
-Fix this cleaning up setup_boot to directly use vcram_base and
-documenting what is going on.
-
-NB: the aliases are confusing.
-
-Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-Cc: Michael Bishop <cleverca22@gmail.com>
-Cc: Philippe Mathieu-Daudé <f4bug@amsat.org>
-Message-Id: <20211001174243.128157-1-alex.bennee@linaro.org>
-Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-Signed-off-by: Frederik van Hövell <frederik@fvhovell.nl>
+Signed-off-by: Thomas Huth <thuth@redhat.com>
 ---
- hw/arm/bcm2835_peripherals.c | 14 +++++++++++---
- hw/arm/bcm2836.c             |  2 ++
- hw/arm/raspi.c               | 19 ++++++++++++-------
- 3 files changed, 25 insertions(+), 10 deletions(-)
+ tests/avocado/boot_linux_console.py | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
-diff --git a/hw/arm/bcm2835_peripherals.c b/hw/arm/bcm2835_peripherals.c
-index 3c2a4160cd..1ef7f7f372 100644
---- a/hw/arm/bcm2835_peripherals.c
-+++ b/hw/arm/bcm2835_peripherals.c
-@@ -12,6 +12,7 @@
- #include "qemu/osdep.h"
- #include "qapi/error.h"
- #include "qemu/module.h"
-+#include "qemu/units.h"
- #include "hw/arm/bcm2835_peripherals.h"
- #include "hw/misc/bcm2835_mbox_defs.h"
- #include "hw/arm/raspi_platform.h"
-@@ -81,6 +82,7 @@ static void bcm2835_peripherals_init(Object *obj)
-     /* Framebuffer */
-     object_initialize_child(obj, "fb", &s->fb, TYPE_BCM2835_FB);
-     object_property_add_alias(obj, "vcram-size", OBJECT(&s->fb), "vcram-size");
-+    object_property_add_alias(obj, "vcram-base", OBJECT(&s->fb), "vcram-base");
+diff --git a/tests/avocado/boot_linux_console.py b/tests/avocado/boot_linux_console.py
+index 6b1533c17c..f26e036ab5 100644
+--- a/tests/avocado/boot_linux_console.py
++++ b/tests/avocado/boot_linux_console.py
+@@ -335,13 +335,13 @@ def test_aarch64_xlnx_versal_virt(self):
+         """
+         images_url = ('http://ports.ubuntu.com/ubuntu-ports/dists/'
+                       'bionic-updates/main/installer-arm64/'
+-                      '20101020ubuntu543.15/images/')
++                      '20101020ubuntu543.19/images/')
+         kernel_url = images_url + 'netboot/ubuntu-installer/arm64/linux'
+-        kernel_hash = '5bfc54cf7ed8157d93f6e5b0241e727b6dc22c50'
++        kernel_hash = 'e167757620640eb26de0972f578741924abb3a82'
+         kernel_path = self.fetch_asset(kernel_url, asset_hash=kernel_hash)
  
-     object_property_add_const_link(OBJECT(&s->fb), "dma-mr",
-                                    OBJECT(&s->gpu_bus_mr));
-@@ -150,7 +152,7 @@ static void bcm2835_peripherals_realize(DeviceState *dev, Error **errp)
-     Object *obj;
-     MemoryRegion *ram;
-     Error *err = NULL;
--    uint64_t ram_size, vcram_size;
-+    uint64_t ram_size, vcram_size, vcram_base;
-     int n;
+         initrd_url = images_url + 'netboot/ubuntu-installer/arm64/initrd.gz'
+-        initrd_hash = 'd385d3e88d53e2004c5d43cbe668b458a094f772'
++        initrd_hash = 'cab5cb3fcefca8408aa5aae57f24574bfce8bdb9'
+         initrd_path = self.fetch_asset(initrd_url, asset_hash=initrd_hash)
  
-     obj = object_property_get_link(OBJECT(dev), "ram", &error_abort);
-@@ -247,15 +249,21 @@ static void bcm2835_peripherals_realize(DeviceState *dev, Error **errp)
-         qdev_get_gpio_in_named(DEVICE(&s->ic), BCM2835_IC_ARM_IRQ,
-                                INTERRUPT_ARM_MAILBOX));
- 
--    /* Framebuffer */
-+    /*
-+     * The framebuffer has to live in the first 1gb of addressable
-+     * space which is fine for older Pi's with less than 1gb of RAM
-+     * but we need to take care not to put it too high otherwise
-+     */
-     vcram_size = object_property_get_uint(OBJECT(s), "vcram-size", &err);
-     if (err) {
-         error_propagate(errp, err);
-         return;
-     }
- 
-+    vcram_base = MIN(ram_size, 1 * GiB) - vcram_size;
-+
-     if (!object_property_set_uint(OBJECT(&s->fb), "vcram-base",
--                                  ram_size - vcram_size, errp)) {
-+                                  vcram_base, errp)) {
-         return;
-     }
- 
-diff --git a/hw/arm/bcm2836.c b/hw/arm/bcm2836.c
-index 24354338ca..255ba8265a 100644
---- a/hw/arm/bcm2836.c
-+++ b/hw/arm/bcm2836.c
-@@ -62,6 +62,8 @@ static void bcm2836_init(Object *obj)
-                               "board-rev");
-     object_property_add_alias(obj, "vcram-size", OBJECT(&s->peripherals),
-                               "vcram-size");
-+    object_property_add_alias(obj, "vcram-base", OBJECT(&s->peripherals),
-+                              "vcram-base");
- }
- 
- static bool bcm283x_common_realize(DeviceState *dev, Error **errp)
-diff --git a/hw/arm/raspi.c b/hw/arm/raspi.c
-index 92d068d1f9..3992e371a1 100644
---- a/hw/arm/raspi.c
-+++ b/hw/arm/raspi.c
-@@ -196,14 +196,19 @@ static void reset_secondary(ARMCPU *cpu, const struct arm_boot_info *info)
-     cpu_set_pc(cs, info->smp_loader_start);
- }
- 
-+/*
-+ * NB: ram_limit isn't the same as ram_size - it indicates the portion
-+ * of RAM that boot components can live in (up to the first 1gb - the
-+ * vcram_size, aka vcram_base)
-+ */
- static void setup_boot(MachineState *machine, RaspiProcessorId processor_id,
--                       size_t ram_size)
-+                       size_t ram_limit)
- {
-     RaspiMachineState *s = RASPI_MACHINE(machine);
-     int r;
- 
-     s->binfo.board_id = MACH_TYPE_BCM2708;
--    s->binfo.ram_size = ram_size;
-+    s->binfo.ram_size = ram_limit;
- 
-     if (processor_id <= PROCESSOR_ID_BCM2836) {
-         /*
-@@ -238,7 +243,7 @@ static void setup_boot(MachineState *machine, RaspiProcessorId processor_id,
-                              ? FIRMWARE_ADDR_2 : FIRMWARE_ADDR_3;
-         /* load the firmware image (typically kernel.img) */
-         r = load_image_targphys(machine->firmware, firmware_addr,
--                                ram_size - firmware_addr);
-+                                ram_limit - firmware_addr);
-         if (r < 0) {
-             error_report("Failed to load firmware from %s", machine->firmware);
-             exit(1);
-@@ -257,7 +262,7 @@ static void raspi_machine_init(MachineState *machine)
-     RaspiMachineState *s = RASPI_MACHINE(machine);
-     uint32_t board_rev = mc->board_rev;
-     uint64_t ram_size = board_ram_size(board_rev);
--    uint32_t vcram_size;
-+    uint32_t vcram_base;
-     DriveInfo *di;
-     BlockBackend *blk;
-     BusState *bus;
-@@ -294,10 +299,10 @@ static void raspi_machine_init(MachineState *machine)
-     qdev_prop_set_drive_err(carddev, "drive", blk, &error_fatal);
-     qdev_realize_and_unref(carddev, bus, &error_fatal);
- 
--    vcram_size = object_property_get_uint(OBJECT(&s->soc), "vcram-size",
-+    vcram_base = object_property_get_uint(OBJECT(&s->soc), "vcram-base",
-                                           &error_abort);
--    setup_boot(machine, board_processor_id(mc->board_rev),
--               machine->ram_size - vcram_size);
-+
-+    setup_boot(machine, board_processor_id(mc->board_rev), vcram_base);
- }
- 
- static void raspi_machine_class_common_init(MachineClass *mc,
+         self.vm.set_console()
 -- 
-2.37.2
+2.31.1
+

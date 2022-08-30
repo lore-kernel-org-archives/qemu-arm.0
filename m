@@ -1,135 +1,84 @@
-Received: by 2002:a17:906:1c87:0:0:0:0 with SMTP id g7csp2504575ejh;
-        Tue, 30 Aug 2022 11:09:18 -0700 (PDT)
-X-Google-Smtp-Source: AA6agR4OnEoEaPhKwUby8f3r0lxKmrgT4twkurrvvPIGjtAbmgnfVUx3Oq5egJ+pjK8nj31YmCUW
-X-Received: by 2002:a05:620a:955:b0:6be:74ee:c66c with SMTP id w21-20020a05620a095500b006be74eec66cmr10952976qkw.511.1661882958164;
-        Tue, 30 Aug 2022 11:09:18 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1661882958; cv=none;
+Received: by 2002:a17:906:1c87:0:0:0:0 with SMTP id g7csp2549350ejh;
+        Tue, 30 Aug 2022 12:49:07 -0700 (PDT)
+X-Google-Smtp-Source: AA6agR7he2c/0/QhqL13Srxfrp/QOlxzhpvaZAmu/r7KeIvb3u0V/ynLzPktxnSRs0bq4o6XkC4w
+X-Received: by 2002:a37:b702:0:b0:6b8:d9ec:3196 with SMTP id h2-20020a37b702000000b006b8d9ec3196mr13104771qkf.660.1661888947180;
+        Tue, 30 Aug 2022 12:49:07 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1661888947; cv=none;
         d=google.com; s=arc-20160816;
-        b=xTpOut6Git4CqsG+UK3RE9psStAUdI2jDGSshHBGojbyiG6gpCaLHgzws0ygTOLjLv
-         wFIX+V71iDhsL69+UT2UxdeW2x0OAGcKEeFMbdtHvdWBUq+ZZJvHLuqKBgvV1jEIV3FS
-         4BsKxo9ke6VtiZrwTC7828NjPblp/YH949yzdh9JTGEMcnau4Sgl1fuvPMUe8BqFFsKQ
-         eM1D4jlFdUREvwBTN7H0kiUnj8Iv9aAR/Z8594Xd/il1jbLuprcd79+ci/lGRSeI8G6/
-         FhA8bRpRsFEPCC2firJGzqrkAGIx4WfUf4iAIOM1Ndo4xRw4EJNdDTKwnP9eXUXky9sy
-         tM6w==
+        b=ZA+lNMuWXO2JYmIInegNXOcgYwjBlExjKHqHOehrVbTeo8vzhRhozocQVf6RUdHS8V
+         wUs7Sb+2tgLihHNbTMNH0vJnMX0leGuCfXjJKf7aYkD/ODphgW9hDU96DZJttArBOqLr
+         NWU9bUuB+PTtdmxq0X7Lxjos0GC2Lo0IP8JcuzCRxx+hzXLo/c9t4RS/WL5gQeEV82ac
+         MLAdvzOoy5c7ETJN5QPZEiAEBarNGtpLGPnAeOD3Y/47naBIvYS+Mzdp0W1exFv3W01M
+         PhG61jNewq1xAMzJ3p9AFfbd86pRnd5Ok6zsh72gIfZ5+vp3jxaVQl36Ifig02xUyXsc
+         Gtug==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:organization:references:in-reply-to:message-id:subject
-         :cc:to:from:date:dkim-signature;
-        bh=QQQH5ELV9lfJk1pm5p+2zXE9V/M6oFJYxtdVlp7QE84=;
-        b=Ol2azTRXZrBZau3C3dsWD59Lokl9UlEvnyAmaF8SFsrwJFYYD7qhnUm9fx4JcBatYZ
-         Y+K2QTfjypXrNzLoGxEUDKmNb9iyQY43TNQcN0rIQPylWFskJBmDR1gm9XwYlD13IaIW
-         mXZ5O9CUGTc6Ip5jnCFJdJKwFJS9ZDg6NXvSeuFE5zLHGUjuX5bMGs1wRV3JtKfztdzC
-         RpFgy7ga9LLaIazBpgdtjPCk7xWMpEZbyuwjt7jkHJabAM5FbmNIpmfAzdLsk9lFBBTP
-         A62Fh+wTkoaFpCtt9FUSO98JyzlyQ5N9mZRju9KsUhKkewhXH5L8DKeLbk8srq1oKuG8
-         uUnA==
+         :list-unsubscribe:list-id:precedence:in-reply-to
+         :content-transfer-encoding:content-disposition:mime-version
+         :references:message-id:subject:cc:to:from:date;
+        bh=wD9rRNGapD6UEfRf7dBf724CU2C2Ts5pzxsYIxkj5QM=;
+        b=cbdd1ck2s4OAmYkr4PMNdhczQtGbJaBRTXibTz4ZVfx5PtPGjbs3d3aSJs6SAa8E0a
+         j4S2tl3lLl7ni82Wn3RTNnWPHx/Z+CCDx1ZmVRzMYR6f3OFhhBjmyEgZ0a2Hc78GFvpW
+         nF3ulbDdY6Ek/3MqminuKktXCOGUsELHEZszgd7ikyzJAbwAI72DoLYunTaIV4gbn/NF
+         u32XOS07/FScmH/Qxz1SiFvHTmJFVRVlMCe5/6gORnxDiZNJ1h+60AthXukj00gm50UX
+         IKAlhMnEKBoSMrcdvPUhoGsxxVh3IV0dGTi7NGporj/WFy8dgQDunbrfU+MYYSQkBFnm
+         ci9w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=cyyTX6QC;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id j2-20020ac85f82000000b0031f4f8c3b28si7102238qta.517.2022.08.30.11.09.18
+        by mx.google.com with ESMTPS id d11-20020a05621421cb00b00498f3146c75si6612022qvh.359.2022.08.30.12.49.07
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 30 Aug 2022 11:09:18 -0700 (PDT)
+        Tue, 30 Aug 2022 12:49:07 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=cyyTX6QC;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:52876 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:52430 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1oT5fp-0007gT-If
-	for alex.bennee@linaro.org; Tue, 30 Aug 2022 14:09:17 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33816)
+	id 1oT7EQ-00058G-K8
+	for alex.bennee@linaro.org; Tue, 30 Aug 2022 15:49:06 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:43780)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alex.williamson@redhat.com>)
- id 1oT5YN-0004Bw-T7
- for qemu-devel@nongnu.org; Tue, 30 Aug 2022 14:01:35 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:37830)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alex.williamson@redhat.com>)
- id 1oT5YM-0005Xy-5L
- for qemu-devel@nongnu.org; Tue, 30 Aug 2022 14:01:35 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1661882493;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=QQQH5ELV9lfJk1pm5p+2zXE9V/M6oFJYxtdVlp7QE84=;
- b=cyyTX6QC3cJMosYE+KIybsOPGcflAUDTpVSlhE7J8l+y87/RBKf3b/0449PFKpylog2fp8
- LDay6356bIYlPGl++o+RxlJzs5tutLJkx47p+tNnqwihm0c9WPwZ0Bhp1Na9s1tzHDm+0j
- Uy8Psot3n+CfVHXTAciAWgsTMmmP80w=
-Received: from mail-io1-f71.google.com (mail-io1-f71.google.com
- [209.85.166.71]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_128_GCM_SHA256) id
- us-mta-45-zQ0If9jGNYu7soZN7CmVZw-1; Tue, 30 Aug 2022 14:00:17 -0400
-X-MC-Unique: zQ0If9jGNYu7soZN7CmVZw-1
-Received: by mail-io1-f71.google.com with SMTP id
- q10-20020a0566022f0a00b00688d703717bso7090116iow.9
- for <qemu-devel@nongnu.org>; Tue, 30 Aug 2022 11:00:17 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=content-transfer-encoding:mime-version:organization:references
- :in-reply-to:message-id:subject:cc:to:from:date:x-gm-message-state
- :from:to:cc;
- bh=QQQH5ELV9lfJk1pm5p+2zXE9V/M6oFJYxtdVlp7QE84=;
- b=e34u4AfpNR2V0VInZ9sMxxNpXd0g8mPtrp2Xu3pn6nz10JSDbxD1hHL+0itBlqhnKP
- 4k3nON3KXOatJW5APEt5KX+o4cuZIwIFMFMjQ2xO6L/4SGhXUAGYT4F+Xgab4U5440CX
- btcIu8UqP1p2pqacPjLctwmPiAMtQSADnd2qKgzMbiUxrMd4UFpq2YEegnQynVtH+TiB
- 46l9vgIkxvNSeh7oWUPoJfIbcr9eTcXfPBsvzQIJtQ9GzMR/lZytuQ4T7UX+5CHIrK5S
- UTyki/t0+Y3NtC9DdObk2GLDfWMKYe0l+H7swzqhkKl4jWMH8b5iQy2YKqGOoxh/nZ8a
- rgxw==
-X-Gm-Message-State: ACgBeo2b7OWwHaR6Oa7LNSZUhRGd3dUa7PS+t1h5sodmQ+f9KRK598nn
- vPXen4056k92MtllQQJDcSgh1BygeY87Ks+iZuDMxgeowbn8izp894hWuXr5jObkN+oSdgqK0bb
- TMCNoFcnwGE6rvas=
-X-Received: by 2002:a92:6903:0:b0:2e5:8f47:22e0 with SMTP id
- e3-20020a926903000000b002e58f4722e0mr13024954ilc.97.1661882416773; 
- Tue, 30 Aug 2022 11:00:16 -0700 (PDT)
-X-Received: by 2002:a92:6903:0:b0:2e5:8f47:22e0 with SMTP id
- e3-20020a926903000000b002e58f4722e0mr13024945ilc.97.1661882416554; 
- Tue, 30 Aug 2022 11:00:16 -0700 (PDT)
-Received: from redhat.com ([38.15.36.239]) by smtp.gmail.com with ESMTPSA id
- y9-20020a056638228900b00344c3de5ec7sm5691940jas.150.2022.08.30.11.00.15
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 30 Aug 2022 11:00:16 -0700 (PDT)
-Date: Tue, 30 Aug 2022 12:00:14 -0600
-From: Alex Williamson <alex.williamson@redhat.com>
-To: Markus Armbruster <armbru@redhat.com>
-Cc: =?UTF-8?B?5bCP55Sw5Zac6Zm95b2m?= <akihiko.odaki@daynix.com>,
- qemu-devel@nongnu.org, qemu-block@nongnu.org, qemu-arm@nongnu.org, "Michael
- S. Tsirkin" <mst@redhat.com>, Marcel Apfelbaum
- <marcel.apfelbaum@gmail.com>, Gerd Hoffmann <kraxel@redhat.com>, Paolo
- Bonzini <pbonzini@redhat.com>, Richard Henderson
- <richard.henderson@linaro.org>, Eduardo Habkost <eduardo@habkost.net>, John
- Snow <jsnow@redhat.com>, Dmitry Fleytman <dmitry.fleytman@gmail.com>, Jason
- Wang <jasowang@redhat.com>, Stefan Weil <sw@weilnetz.de>, Keith Busch
- <kbusch@kernel.org>, Klaus Jensen <its@irrelevant.dk>, Peter Maydell
- <peter.maydell@linaro.org>, Andrey Smirnov <andrew.smirnov@gmail.com>, Paul
- Burton <paulburton@kernel.org>, Aleksandar Rikalo
- <aleksandar.rikalo@syrmia.com>
-Subject: Re: [PATCH] pci: Abort if pci_add_capability fails
-Message-ID: <20220830120014.55f55b24.alex.williamson@redhat.com>
-In-Reply-To: <874jxuhshs.fsf@pond.sub.org>
-References: <20220829084417.144739-1-akihiko.odaki@daynix.com>
- <874jxuhshs.fsf@pond.sub.org>
-Organization: Red Hat
+ (Exim 4.90_1) (envelope-from <lk@c--e.de>)
+ id 1oT7BP-0002ye-QM; Tue, 30 Aug 2022 15:46:00 -0400
+Received: from cae.in-ulm.de ([217.10.14.231]:58988)
+ by eggs.gnu.org with esmtp (Exim 4.90_1) (envelope-from <lk@c--e.de>)
+ id 1oT7BK-0007SU-NV; Tue, 30 Aug 2022 15:45:59 -0400
+Received: by cae.in-ulm.de (Postfix, from userid 1000)
+ id AF27A140306; Tue, 30 Aug 2022 21:45:37 +0200 (CEST)
+Date: Tue, 30 Aug 2022 21:45:37 +0200
+From: "Christian A. Ehrhardt" <lk@c--e.de>
+To: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>
+Cc: Laszlo Ersek <lersek@redhat.com>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+ "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
+ "imammedo@redhat.com" <imammedo@redhat.com>,
+ "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
+ Linuxarm <linuxarm@huawei.com>,
+ "chenxiang (M)" <chenxiang66@hisilicon.com>,
+ "Ard Biesheuvel (kernel.org address)" <ardb@kernel.org>,
+ Gerd Hoffmann <kraxel@redhat.com>
+Subject: Re: [PATCH] fw_cfg: Don't set callback_opaque NULL in
+ fw_cfg_modify_bytes_read()
+Message-ID: <Yw5o4U/Vqdb+pp9E@cae.in-ulm.de>
+References: <20220825161842.841-1-shameerali.kolothum.thodi@huawei.com>
+ <43c62060-7a5d-25cf-91a3-1c391d3a58f9@redhat.com>
+ <ab43b53b-546a-4056-0e91-31691f716109@redhat.com>
+ <ab49a753129e48bd96cb44d876ddf1cf@huawei.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.129.124;
- envelope-from=alex.williamson@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
-X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <ab49a753129e48bd96cb44d876ddf1cf@huawei.com>
+Received-SPF: none client-ip=217.10.14.231; envelope-from=lk@c--e.de;
+ helo=cae.in-ulm.de
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
+ SPF_NONE=0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -144,59 +93,171 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: xiKfjd3nvPvI
+X-TUID: 3IMsUhXSwdge
 
-On Tue, 30 Aug 2022 13:37:35 +0200
-Markus Armbruster <armbru@redhat.com> wrote:
->        if (!offset) {
->            offset = pci_find_space(pdev, size);
->            /* out of PCI config space is programming error */
->            assert(offset);
->        } else {
->            /* Verify that capabilities don't overlap.  Note: device assignment
->             * depends on this check to verify that the device is not broken.
->             * Should never trigger for emulated devices, but it's helpful
->             * for debugging these. */
+
+Hi,
+
+Shameer: Thanks for bringing this to my attention.
+
+Some comments inline.
+
+On Tue, Aug 30, 2022 at 06:43:56AM +0000, Shameerali Kolothum Thodi wrote:
 > 
-> The comment makes me suspect that device assignment of a broken device
-> could trigger the error.  It goes back to
 > 
-> commit c9abe111209abca1b910e35c6ca9888aced5f183
-> Author: Jan Kiszka <jan.kiszka@siemens.com>
-> Date:   Wed Aug 24 14:29:30 2011 +0200
+> > -----Original Message-----
+> > From: Shameerali Kolothum Thodi
+> > Sent: 26 August 2022 13:15
+> > To: 'Laszlo Ersek' <lersek@redhat.com>; qemu-devel@nongnu.org;
+> > qemu-arm@nongnu.org
+> > Cc: imammedo@redhat.com; peter.maydell@linaro.org; Linuxarm
+> > <linuxarm@huawei.com>; chenxiang (M) <chenxiang66@hisilicon.com>; Ard
+> > Biesheuvel (kernel.org address) <ardb@kernel.org>; Gerd Hoffmann
+> > <kraxel@redhat.com>
+> > Subject: RE: [PATCH] fw_cfg: Don't set callback_opaque NULL in
+> > fw_cfg_modify_bytes_read()
+> > 
+> > 
+> > 
+> > > -----Original Message-----
+> > > From: Laszlo Ersek [mailto:lersek@redhat.com]
+> > > Sent: 26 August 2022 13:07
+> > > To: Shameerali Kolothum Thodi
+> > <shameerali.kolothum.thodi@huawei.com>;
+> > > qemu-devel@nongnu.org; qemu-arm@nongnu.org
+> > > Cc: imammedo@redhat.com; peter.maydell@linaro.org; Linuxarm
+> > > <linuxarm@huawei.com>; chenxiang (M) <chenxiang66@hisilicon.com>;
+> > Ard
+> > > Biesheuvel (kernel.org address) <ardb@kernel.org>; Gerd Hoffmann
+> > > <kraxel@redhat.com>
+> > > Subject: Re: [PATCH] fw_cfg: Don't set callback_opaque NULL in
+> > > fw_cfg_modify_bytes_read()
+> > >
+> > > +Ard +Gerd, one pointer at the bottom
+> > >
+> > > On 08/26/22 13:59, Laszlo Ersek wrote:
+> > > > On 08/25/22 18:18, Shameer Kolothum wrote:
+> > > >> Hi
+> > > >>
+> > > >> On arm/virt platform, Chen Xiang reported a Guest crash while
+> > > >> attempting the below steps,
+> > > >>
+> > > >> 1. Launch the Guest with nvdimm=on
+> > > >> 2. Hot-add a NVDIMM dev
+> > > >> 3. Reboot
+> > > >> 4. Guest boots fine.
+> > > >> 5. Reboot again.
+> > > >> 6. Guest boot fails.
+> > > >>
+> > > >> QEMU_EFI reports the below error:
+> > > >> ProcessCmdAddPointer: invalid pointer value in "etc/acpi/tables"
+> > > >> OnRootBridgesConnected: InstallAcpiTables: Protocol Error
+> > > >>
+> > > >> Debugging shows that on first reboot(after hot-adding NVDIMM),
+> > > >> Qemu updates the etc/table-loader len,
+> > > >>
+> > > >> qemu_ram_resize()
+> > > >>   fw_cfg_modify_file()
+> > > >>      fw_cfg_modify_bytes_read()
+> > > >>
+> > > >> And in fw_cfg_modify_bytes_read() we set the "callback_opaque" for
+> > > >> the "key" entry to NULL. Because of this, on the second reboot,
+> > > >> virt_acpi_build_update() is called with a NULL "build_state" and
+> > > >> returns without updating the ACPI tables. This seems to be
+> > > >> upsetting the firmware.
+> > > >>
+> > > >> To fix this, don't change the callback_opaque in
+> > > fw_cfg_modify_bytes_read().
+> > > >>
+> > > >> Reported-by: chenxiang <chenxiang66@hisilicon.com>
+> > > >> Signed-off-by: Shameer Kolothum
+> > > <shameerali.kolothum.thodi@huawei.com>
+> > > >> ---
+> > > >> I am still not very convinced this is the root cause of the issue.
+> > > >> Though it looks like setting callback_opaque to NULL while updating
+> > > >> the file size is wrong, what puzzles me is that on the second reboot
+> > > >> we don't have any ACPI table size changes and ideally firmware should
+> > > >> see the updated tables from the first reboot itself.
+> > > >>
+> > > >> Please take a look and let me know.
+> > > >>
+> > > >> Thanks,
+> > > >> Shameer
+> > > >>
+> > > >> ---
+> > > >>  hw/nvram/fw_cfg.c | 1 -
+> > > >>  1 file changed, 1 deletion(-)
+> > > >>
+> > > >> diff --git a/hw/nvram/fw_cfg.c b/hw/nvram/fw_cfg.c
+> > > >> index d605f3f45a..dfe8404c01 100644
+> > > >> --- a/hw/nvram/fw_cfg.c
+> > > >> +++ b/hw/nvram/fw_cfg.c
+> > > >> @@ -728,7 +728,6 @@ static void
+> > > *fw_cfg_modify_bytes_read(FWCfgState *s, uint16_t key,
+> > > >>      ptr = s->entries[arch][key].data;
+> > > >>      s->entries[arch][key].data = data;
+> > > >>      s->entries[arch][key].len = len;
+> > > >> -    s->entries[arch][key].callback_opaque = NULL;
+> > > >>      s->entries[arch][key].allow_write = false;
+> > > >>
+> > > >>      return ptr;
+> > > >>
+
+
+The code as it stands clears callback_opaque (the data pointer
+of the callbacks) while leaving the actual callbacks in place.
+I think it is obvious that this cannot be correct.
+
+IMHO the change to allow_write is wrong for similar reasons but
+I don't think that this matters in practice.
+
+If this path is hit for the table-loader file the ACPI tables in the
+guest will be corrupt.
+
+
+> > > > I vaguely recall seeing the same issue report years ago (also in
+> > > > relation to hot-adding NVDIMM). However, I have no capacity to
+> > > > participate in the discussion. Making this remark just for clarity.
+> > >
+> > > The earlier report I've had in mind was from Shameer as well:
+> > >
+> > >
+> > http://mid.mail-archive.com/5FC3163CFD30C246ABAA99954A238FA83F3F
+> > > B328@lhreml524-mbs.china.huawei.com
+> > 
+> > Right. That was a slightly different issue though. It was basically ACPI table
+> > size not
+> > getting updated on the first reboot of Guest after we hot-add NVDIMM dev.
+> > The error
+> > from firmware was different in that case,
+> > 
+> > ProcessCmdAddChecksum: invalid checksum range in "etc/acpi/tables"
+> > OnRootBridgesConnected: InstallAcpiTables: Protocol Error
+> > 
+> > And it was fixed with this series here,
+> > https://patchwork.kernel.org/project/qemu-devel/cover/20200403101827.3
+> > 0664-1-shameerali.kolothum.thodi@huawei.com/
+> > 
+> > The current issue only happens on the second reboot of the Guest as
+> > described in
+> > the steps above.
+> > 
 > 
->     pci: Error on PCI capability collisions
->     
->     Nothing good can happen when we overlap capabilities. This may happen
->     when plugging in assigned devices or when devices models contain bugs.
->     Detect the overlap and report it.
->     
->     Based on qemu-kvm commit by Alex Williamson.
->     
->     Signed-off-by: Jan Kiszka <jan.kiszka@siemens.com>
->     Acked-by: Don Dutile <ddutile@redhat.com>
->     Signed-off-by: Michael S. Tsirkin <mst@redhat.com>
+> [+Christian]
 > 
-> If this is still correct, then your patch is a regression: QEMU is no
-> longer able to gracefully handle assignment of a broken device.  Does
-> this matter?  Alex, maybe?
+> I just found that a similar issue was reported here sometime back on Q35/Windows
+> setup,
+> https://patchew.org/QEMU/YldFMTbFLUcdFIfa@cae.in-ulm.de/
+> 
+> But there are no further discussions on that thread.
 
-Ok, that was a long time ago.  I have some vague memories of hitting
-something like this with a Broadcom NIC, but a google search for the
-error string doesn't turn up anything recently.  So there's a fair
-chance this wouldn't break anyone initially.
+I convinced myself that this cannot happen upstream as the number of
+entries in the table-loader is always small. However, it does happen
+for us and the suggested patch fixes the issue for us.
 
-Even back when the above patch was proposed, there were some
-suggestions to turn the error path into an abort, which I pushed back
-on since clearly enumerating capabilities of a device can occur due to
-a hot-plug and we don't necessarily have control of the device being
-added.  This is only more true with the possibility of soft-devices out
-of tree, through things like vfio-user.
+Given that Shameer independantly came to the same conclusion
+the patch should by considered for inclusion.
 
-Personally I think the right approach is to support an error path such
-that we can abort when triggered by a cold-plug device, while simply
-rejecting a broken hot-plug device, but that seems to be the minority
-opinion among QEMU developers afaict.  Thanks,
+    thanks   Christian
 
-Alex
 

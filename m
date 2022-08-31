@@ -1,220 +1,240 @@
-Received: by 2002:a17:906:1c87:0:0:0:0 with SMTP id g7csp215168ejh;
-        Wed, 31 Aug 2022 01:21:00 -0700 (PDT)
-X-Google-Smtp-Source: AA6agR4sMKOGBVy1mJ+0LaYqGXraoU2+ECSg0qN6QygP9LaBW63xxCyiIqzOCb4ewJG49cYSHey/
-X-Received: by 2002:ac8:7e96:0:b0:344:9587:b572 with SMTP id w22-20020ac87e96000000b003449587b572mr17995042qtj.266.1661934060692;
-        Wed, 31 Aug 2022 01:21:00 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1661934060; cv=none;
+Received: by 2002:a17:906:1c87:0:0:0:0 with SMTP id g7csp330953ejh;
+        Wed, 31 Aug 2022 05:34:54 -0700 (PDT)
+X-Google-Smtp-Source: AA6agR5tbv+rv+JDZWpO6UgYdaNMPnbJl4/Z2Ry20V60xFsgYgyrmJqi0CXKNTAE6EXbyZS6QJO5
+X-Received: by 2002:a05:6214:246b:b0:497:28b7:d411 with SMTP id im11-20020a056214246b00b0049728b7d411mr18976484qvb.128.1661949294474;
+        Wed, 31 Aug 2022 05:34:54 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1661949294; cv=none;
         d=google.com; s=arc-20160816;
-        b=JIjyc1++aDzrc2S4ALpWxpgmiV0feDbQTLGsu1zmVj//UNGE6UGvCGMtY2a0f1DXoP
-         baMP5m5ar0pJR5pFApnZ6CnwpIcFu15MNTvsrO6Rtp+QVlFgDn94uQWu87/97nRxNJbM
-         rnWx9Tl7TBvApRPtdJARbX0RHxAbUZFsHCppEf/wIYULoIyvdAcgBEDCqyfZ3D4629Vb
-         VMZXqVJqJKerhjIXQ0ovAkKAp9eJ3N0/6whIxj8t33WjjEYL+TkLfDe9PWCYKwyU6Uuv
-         +gni6/NZ47lliw45vE5R3LAvVYnmy7g56fo8EWsiMVilCB9O1yKkERSpzSVdWv+i/6mY
-         sdZg==
+        b=BYCMGE7fK7UX4B50dB8Gx2tlr8THsapStlNcX9ydmEBLV+brMoa/7V6kGaBSBUqqKm
+         LFddlED7esiW2V2XIAXKd1x0QZYE/nt9N/QnToHgFCTGs0i0Z0bsJcHSPNHWOm5zZh5f
+         88W18bhQbZEqAPQCR9F/cWv4CfH8RS6YSnY/gOXiKCRZhKRf9q1+cyI912xwWg5w+Uft
+         TL/oHe2fqDvMpksTRZmikvc4YOaWKYCuQUmnmxqIfwNkL4nvVWKKVdwJhLnVqPmTmPia
+         2OT+S8Z8h7/tOBle6bQ/PRUmDAO0iKoqcL+Ups+o54QwgPj3BqgED3Hqq0lnqxnDrTub
+         gECA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version:user-agent
-         :message-id:in-reply-to:date:references:subject:cc:to:from
-         :dkim-signature;
-        bh=B1ApHMyNcR8l6cmhGppzVS345Vzpi8LgO32+LHSG7c0=;
-        b=BgTyXYagU4O9egPRWO1BBzI3j7xT5PScWTq9BS9tA8zUxUiLHERni5t4PNg/Fgkk0k
-         +ZL0QrvxDkH8Wg6jfyc0mFmr6W9b+XQm8pGg1k1/mO/5z/PnesmlW8OptSecUgLzIP1I
-         y7D6sLAJbG4Ulc74Jtp2CB6d+7tipWYQhWip2e3NQQ/got9P8PiQBqp93AZJ4lJGuMeY
-         i2ym/juk8oo/j1Hv/2oEI5xGNMq4/NUx2moJJOYYeeOtbQYqBt7xZCF6LHWxm4XGC9VF
-         yO3sZsE95WG9dnD5BZcInICYQU5IkQ1RjtC2a0YgHa2HrMJl76oHkZnxd6GEtCgP5LIW
-         D1bw==
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=db5u7MoT2yxtd2eUKLd+WvQKmr7O5WLjxDzUPMuD/Nk=;
+        b=vecRnDHLfz9af3HdQocoaQv1Ne7wvY/wWim10HeD6FO6r/kYYUhCbp23PmPddKf8Yo
+         69/EytoCgHO+4KS3Ms3ms74oNY3uM+EM7p88p+AUoBdNpMnsRP2r23fvwvZAFzqqG3dT
+         YJY3ixLERfmfOl9Ny7nNcjXvJWGakq8uVJ/2bvu/wpgJqHWDoh4UEnGjcYKV/PrK8RZM
+         G0XqrYZV4fTDbflvHKBaJXVjnR98mNyUbFigRvKJF2YXThltaygwvTFqHxDbHzfcnCGO
+         NpfPRrsunBjdt0m9rjMl5ew3mhpEECOnrqSCdXEV8yrya1GNJ99EEXk4+LHIfb6QLB28
+         bqJQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=TugcjYt7;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@daynix-com.20210112.gappssmtp.com header.s=20210112 header.b=vADEi+ZZ;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id p5-20020ad45f45000000b0049914a84d05si2123142qvg.194.2022.08.31.01.21.00
+        by mx.google.com with ESMTPS id w8-20020a05620a444800b006bae2594a0bsi7681941qkp.297.2022.08.31.05.34.54
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 31 Aug 2022 01:21:00 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 31 Aug 2022 05:34:54 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=TugcjYt7;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:59414 helo=lists1p.gnu.org)
+       dkim=pass header.i=@daynix-com.20210112.gappssmtp.com header.s=20210112 header.b=vADEi+ZZ;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:40414 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1oTIy4-0002HC-5h
-	for alex.bennee@linaro.org; Wed, 31 Aug 2022 04:21:00 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:58970)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1oTMvl-0002am-UE
+	for alex.bennee@linaro.org; Wed, 31 Aug 2022 08:34:53 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:35686)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1oTIvr-0000l5-G3
- for qemu-devel@nongnu.org; Wed, 31 Aug 2022 04:18:43 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:52675)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1oTIvo-00046k-0M
- for qemu-devel@nongnu.org; Wed, 31 Aug 2022 04:18:41 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1661933911;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=B1ApHMyNcR8l6cmhGppzVS345Vzpi8LgO32+LHSG7c0=;
- b=TugcjYt71GxiBIqvZx4zqKcYSb1q4Op/3vgJSlBC0+T78T1a4hTlp9mSK1Nma84cyt/D+B
- 0b3ZXFq/+7Wkd9EDIa7CYffDJ01Bzq3qTqRPqPW8PRJN6vaYTbIkrvt9UmJwKaUBi2ZrPC
- nqtY/EqSUxD3BZhYgKrPQ90Rprxx1AU=
-Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
- [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-591-hGSD1Co3PAK_-6tYgZpbdA-1; Wed, 31 Aug 2022 04:18:26 -0400
-X-MC-Unique: hGSD1Co3PAK_-6tYgZpbdA-1
-Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.rdu2.redhat.com
- [10.11.54.7])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 1451E8039B5;
- Wed, 31 Aug 2022 08:18:26 +0000 (UTC)
-Received: from blackfin.pond.sub.org (unknown [10.39.193.166])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 1A7B11415117;
- Wed, 31 Aug 2022 08:18:24 +0000 (UTC)
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
- id A0B6721E6900; Wed, 31 Aug 2022 10:18:22 +0200 (CEST)
-From: Markus Armbruster <armbru@redhat.com>
-To: Alex Williamson <alex.williamson@redhat.com>
-Cc: Markus Armbruster <armbru@redhat.com>,  =?utf-8?B?5bCP55Sw5Zac6Zm95b2m?=
- <akihiko.odaki@daynix.com>,  qemu-devel@nongnu.org,
- qemu-block@nongnu.org,  qemu-arm@nongnu.org,  "Michael S. Tsirkin"
- <mst@redhat.com>,  Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,  Gerd
- Hoffmann <kraxel@redhat.com>,  Paolo Bonzini <pbonzini@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>,  Eduardo Habkost
- <eduardo@habkost.net>,  John Snow <jsnow@redhat.com>,  Dmitry Fleytman
- <dmitry.fleytman@gmail.com>,  Jason Wang <jasowang@redhat.com>,  Stefan
- Weil <sw@weilnetz.de>,  Keith Busch <kbusch@kernel.org>,  Klaus Jensen
- <its@irrelevant.dk>,  Peter Maydell <peter.maydell@linaro.org>,  Andrey
- Smirnov <andrew.smirnov@gmail.com>,  Paul Burton <paulburton@kernel.org>,
- Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>
-Subject: Re: [PATCH] pci: Abort if pci_add_capability fails
+ (Exim 4.90_1) (envelope-from <akihiko.odaki@daynix.com>)
+ id 1oTMu0-0001Mi-TH
+ for qemu-arm@nongnu.org; Wed, 31 Aug 2022 08:33:10 -0400
+Received: from mail-io1-xd30.google.com ([2607:f8b0:4864:20::d30]:46642)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <akihiko.odaki@daynix.com>)
+ id 1oTMty-00061Q-BN
+ for qemu-arm@nongnu.org; Wed, 31 Aug 2022 08:33:04 -0400
+Received: by mail-io1-xd30.google.com with SMTP id h78so11717014iof.13
+ for <qemu-arm@nongnu.org>; Wed, 31 Aug 2022 05:33:01 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=daynix-com.20210112.gappssmtp.com; s=20210112;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc;
+ bh=db5u7MoT2yxtd2eUKLd+WvQKmr7O5WLjxDzUPMuD/Nk=;
+ b=vADEi+ZZkvfKqfbPbSVU4euCdC8CRb9f8H0GQY/gh7G6/LY4EH6N5LjtMl+lHkL5r4
+ c8U1U2+yeObt8XX3M2wD8VQ69+RwTlPSvGYpmkBDLetkp1SSUQDJWWTwNUxtRnkPCyle
+ SSDc0S5frEIatkdlLMvAnb5E7g+Yad5+sk4MKK4Oy8ATRXaft239Bb9ujHilfh1Mi+Fs
+ +LqFVT4bMjkxoinNqeuYn1a0yT9YORswqVvwfAY+HEEIF6XOE4etDE94LBOdRHJJTJO0
+ 8dfNcgLmo0WFv6AynzXRK0BXuwvm+886iJXUQ/RbcrthRqIfZ8AyMXADwZBPF3PiwzNk
+ ukbg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc;
+ bh=db5u7MoT2yxtd2eUKLd+WvQKmr7O5WLjxDzUPMuD/Nk=;
+ b=N1HvTYI2INnSSL18RssKlJuT1kCd0ycYNv7za76QcZlZKNV98L8xyOqoO05dgLCm7h
+ 5pf3T42CJOV2AABVnvDXEBb/dBth4Zr0443sv3ZxANzg5al3lny6kBz5SbUjNzRUJck9
+ cYHq/y9rpjM+3irMDb9mtKkCeeL7lC47VfVxjYbXYVWiNdJ3otLbPwsMSVmBaqY6AR0l
+ /YejWJFFk5Ju3E7Y3kfPigx6ERUY2u1mfmp0lBn+uxM30RC8vwfYWf8eWR/DM6rmguID
+ iCjXSUB+C6XsJ1bYBhEH+l3hs1NR9100PNuh/Rokghx2slvlEOwGESrsLJti6+740U/i
+ ofjA==
+X-Gm-Message-State: ACgBeo1ojH6ApgYSb2Nx4ug+dJg9CUZeAeVQ1dpIDdsZGdoNesHGFlTK
+ fk0wdqr3qFt5Tjf1HgbrGSdpA505xmgIo98yPi5bQg==
+X-Received: by 2002:a05:6602:2751:b0:68a:af60:c9d2 with SMTP id
+ b17-20020a056602275100b0068aaf60c9d2mr12597435ioe.91.1661949181030; Wed, 31
+ Aug 2022 05:33:01 -0700 (PDT)
+MIME-Version: 1.0
 References: <20220829084417.144739-1-akihiko.odaki@daynix.com>
  <874jxuhshs.fsf@pond.sub.org>
  <20220830120014.55f55b24.alex.williamson@redhat.com>
-Date: Wed, 31 Aug 2022 10:18:22 +0200
-In-Reply-To: <20220830120014.55f55b24.alex.williamson@redhat.com> (Alex
- Williamson's message of "Tue, 30 Aug 2022 12:00:14 -0600")
-Message-ID: <87y1v4ddwx.fsf@pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/27.2 (gnu/linux)
-MIME-Version: 1.0
-Content-Type: text/plain
-X-Scanned-By: MIMEDefang 2.85 on 10.11.54.7
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=armbru@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
-X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+ <87y1v4ddwx.fsf@pond.sub.org>
+In-Reply-To: <87y1v4ddwx.fsf@pond.sub.org>
+From: Akihiko Odaki <akihiko.odaki@daynix.com>
+Date: Wed, 31 Aug 2022 21:32:50 +0900
+Message-ID: <CAE=JJXfU=kT6-pchk1iQrqv3__mwNbWomhaKH5uOT4PdPh84cA@mail.gmail.com>
+Subject: Re: [PATCH] pci: Abort if pci_add_capability fails
+To: Markus Armbruster <armbru@redhat.com>
+Cc: Alex Williamson <alex.williamson@redhat.com>, qemu-devel@nongnu.org, 
+ qemu-block@nongnu.org, qemu-arm@nongnu.org, 
+ "Michael S. Tsirkin" <mst@redhat.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, 
+ Gerd Hoffmann <kraxel@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>, 
+ Richard Henderson <richard.henderson@linaro.org>,
+ Eduardo Habkost <eduardo@habkost.net>, 
+ John Snow <jsnow@redhat.com>, Dmitry Fleytman <dmitry.fleytman@gmail.com>, 
+ Jason Wang <jasowang@redhat.com>, Stefan Weil <sw@weilnetz.de>,
+ Keith Busch <kbusch@kernel.org>, 
+ Klaus Jensen <its@irrelevant.dk>, Peter Maydell <peter.maydell@linaro.org>, 
+ Andrey Smirnov <andrew.smirnov@gmail.com>, Paul Burton <paulburton@kernel.org>,
+ Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: none client-ip=2607:f8b0:4864:20::d30;
+ envelope-from=akihiko.odaki@daynix.com; helo=mail-io1-xd30.google.com
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_NONE=0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 2bX0yk52j40S
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: aSfEw1BTSu4r
 
-Alex Williamson <alex.williamson@redhat.com> writes:
-
-> On Tue, 30 Aug 2022 13:37:35 +0200
-> Markus Armbruster <armbru@redhat.com> wrote:
->>        if (!offset) {
->>            offset = pci_find_space(pdev, size);
->>            /* out of PCI config space is programming error */
->>            assert(offset);
->>        } else {
->>            /* Verify that capabilities don't overlap.  Note: device assignment
->>             * depends on this check to verify that the device is not broken.
->>             * Should never trigger for emulated devices, but it's helpful
->>             * for debugging these. */
->> 
->> The comment makes me suspect that device assignment of a broken device
->> could trigger the error.  It goes back to
->> 
->> commit c9abe111209abca1b910e35c6ca9888aced5f183
->> Author: Jan Kiszka <jan.kiszka@siemens.com>
->> Date:   Wed Aug 24 14:29:30 2011 +0200
->> 
->>     pci: Error on PCI capability collisions
->>     
->>     Nothing good can happen when we overlap capabilities. This may happen
->>     when plugging in assigned devices or when devices models contain bugs.
->>     Detect the overlap and report it.
->>     
->>     Based on qemu-kvm commit by Alex Williamson.
->>     
->>     Signed-off-by: Jan Kiszka <jan.kiszka@siemens.com>
->>     Acked-by: Don Dutile <ddutile@redhat.com>
->>     Signed-off-by: Michael S. Tsirkin <mst@redhat.com>
->> 
->> If this is still correct, then your patch is a regression: QEMU is no
->> longer able to gracefully handle assignment of a broken device.  Does
->> this matter?  Alex, maybe?
+On Wed, Aug 31, 2022 at 5:18 PM Markus Armbruster <armbru@redhat.com> wrote:
 >
-> Ok, that was a long time ago.  I have some vague memories of hitting
+> Alex Williamson <alex.williamson@redhat.com> writes:
+>
+> > On Tue, 30 Aug 2022 13:37:35 +0200
+> > Markus Armbruster <armbru@redhat.com> wrote:
+> >>        if (!offset) {
+> >>            offset = pci_find_space(pdev, size);
+> >>            /* out of PCI config space is programming error */
+> >>            assert(offset);
+> >>        } else {
+> >>            /* Verify that capabilities don't overlap.  Note: device assignment
+> >>             * depends on this check to verify that the device is not broken.
+> >>             * Should never trigger for emulated devices, but it's helpful
+> >>             * for debugging these. */
+> >>
+> >> The comment makes me suspect that device assignment of a broken device
+> >> could trigger the error.  It goes back to
+> >>
+> >> commit c9abe111209abca1b910e35c6ca9888aced5f183
+> >> Author: Jan Kiszka <jan.kiszka@siemens.com>
+> >> Date:   Wed Aug 24 14:29:30 2011 +0200
+> >>
+> >>     pci: Error on PCI capability collisions
+> >>
+> >>     Nothing good can happen when we overlap capabilities. This may happen
+> >>     when plugging in assigned devices or when devices models contain bugs.
+> >>     Detect the overlap and report it.
+> >>
+> >>     Based on qemu-kvm commit by Alex Williamson.
+> >>
+> >>     Signed-off-by: Jan Kiszka <jan.kiszka@siemens.com>
+> >>     Acked-by: Don Dutile <ddutile@redhat.com>
+> >>     Signed-off-by: Michael S. Tsirkin <mst@redhat.com>
+> >>
+> >> If this is still correct, then your patch is a regression: QEMU is no
+> >> longer able to gracefully handle assignment of a broken device.  Does
+> >> this matter?  Alex, maybe?
+> >
+> > Ok, that was a long time ago.  I have some vague memories of hitting
+>
+> Indeed!
+>
+> > something like this with a Broadcom NIC, but a google search for the
+> > error string doesn't turn up anything recently.  So there's a fair
+> > chance this wouldn't break anyone initially.
+>
+> I like your careful phrasing.
+>
+> > Even back when the above patch was proposed, there were some
+> > suggestions to turn the error path into an abort, which I pushed back
+> > on since clearly enumerating capabilities of a device can occur due to
+> > a hot-plug and we don't necessarily have control of the device being
+> > added.  This is only more true with the possibility of soft-devices out
+> > of tree, through things like vfio-user.
+>
+> Valid point.
+>
+> When an compiled-in device model asks for overlapping PCI capabilities,
+> it's a programming error.
+>
+> When an assigned device (be it physical or virtual) has overlapping PCI
+> capabilities, it's bad input.
+>
+> Abort on programming error is okay.  Abort on bad input isn't.
+>
+> I think callers of the former sort should pass &error_abort to
+> pci_add_capability(), and callers of the latter sort should handle the
+> error.
 
-Indeed!
+Looking at vfio's implementation, it seems it makes its own effort to
+make capabilities not overlap. Taking account of that, I have sent a
+new version titled "[PATCH v2] pci: Assert that capabilities never
+overlap", which has an updated message and removes the comment in
+pci_add_capability().
 
-> something like this with a Broadcom NIC, but a google search for the
-> error string doesn't turn up anything recently.  So there's a fair
-> chance this wouldn't break anyone initially.
+>
+> > Personally I think the right approach is to support an error path such
+> > that we can abort when triggered by a cold-plug device, while simply
+> > rejecting a broken hot-plug device, but that seems to be the minority
+> > opinion among QEMU developers afaict.  Thanks,
+>
+> I'm in the "aborting on programming errors is okay" camp.
+>
+> Recovery from certain programming errors is possible.  However,
+> different programming errors can manifest themselves the same way, and
+> not all need permit safe recovery.
+>
+> Say we detect overlapping PCI capabilities when hot-plugging a virtual
+> device model.
+>
+> If this is because the programmer passed an incorrect literal offset, we
+> can recover safely by failing the hot plug.
+>
+> But perhaps the offset comes from a table, and some other bug scribbled
+> over it.  Continuing the process is *unsafe*, and may increase the
+> damage and/or obstruct the root cause.
+>
+> The former kind of bug is unlikely to survive even cursory testing.
+>
 
-I like your careful phrasing.
+Whatever kind of programming error it is, it is dangerous to attempt
+to recover from it using an error handling code path untested for a
+long period. I think it is better to have some common code to recover
+from assertion failures. For example, we may have some option to print
+"oops" just like Linux does when an assertion fails and let the user
+handle it. That is quite out of scope of this change though.
 
-> Even back when the above patch was proposed, there were some
-> suggestions to turn the error path into an abort, which I pushed back
-> on since clearly enumerating capabilities of a device can occur due to
-> a hot-plug and we don't necessarily have control of the device being
-> added.  This is only more true with the possibility of soft-devices out
-> of tree, through things like vfio-user.
-
-Valid point.
-
-When an compiled-in device model asks for overlapping PCI capabilities,
-it's a programming error.
-
-When an assigned device (be it physical or virtual) has overlapping PCI
-capabilities, it's bad input.
-
-Abort on programming error is okay.  Abort on bad input isn't.
-
-I think callers of the former sort should pass &error_abort to
-pci_add_capability(), and callers of the latter sort should handle the
-error.
-
-> Personally I think the right approach is to support an error path such
-> that we can abort when triggered by a cold-plug device, while simply
-> rejecting a broken hot-plug device, but that seems to be the minority
-> opinion among QEMU developers afaict.  Thanks,
-
-I'm in the "aborting on programming errors is okay" camp.
-
-Recovery from certain programming errors is possible.  However,
-different programming errors can manifest themselves the same way, and
-not all need permit safe recovery.
-
-Say we detect overlapping PCI capabilities when hot-plugging a virtual
-device model.
-
-If this is because the programmer passed an incorrect literal offset, we
-can recover safely by failing the hot plug.
-
-But perhaps the offset comes from a table, and some other bug scribbled
-over it.  Continuing the process is *unsafe*, and may increase the
-damage and/or obstruct the root cause.
-
-The former kind of bug is unlikely to survive even cursory testing.
-
+Regards,
+Akihiko Odaki

@@ -1,118 +1,103 @@
-Received: by 2002:a17:906:1c87:0:0:0:0 with SMTP id g7csp330953ejh;
-        Wed, 31 Aug 2022 05:34:54 -0700 (PDT)
-X-Google-Smtp-Source: AA6agR5tbv+rv+JDZWpO6UgYdaNMPnbJl4/Z2Ry20V60xFsgYgyrmJqi0CXKNTAE6EXbyZS6QJO5
-X-Received: by 2002:a05:6214:246b:b0:497:28b7:d411 with SMTP id im11-20020a056214246b00b0049728b7d411mr18976484qvb.128.1661949294474;
-        Wed, 31 Aug 2022 05:34:54 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1661949294; cv=none;
+Received: by 2002:a17:906:1c87:0:0:0:0 with SMTP id g7csp453483ejh;
+        Wed, 31 Aug 2022 09:13:46 -0700 (PDT)
+X-Google-Smtp-Source: AA6agR7yzStRPrDCeMsCds+oPRuQz6McHlZN3nhabf/qkMIYXaRtREZzHl2I9VA89v0+GpXxyd1s
+X-Received: by 2002:ac8:5d88:0:b0:344:8185:d28a with SMTP id d8-20020ac85d88000000b003448185d28amr19933504qtx.259.1661962425908;
+        Wed, 31 Aug 2022 09:13:45 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1661962425; cv=none;
         d=google.com; s=arc-20160816;
-        b=BYCMGE7fK7UX4B50dB8Gx2tlr8THsapStlNcX9ydmEBLV+brMoa/7V6kGaBSBUqqKm
-         LFddlED7esiW2V2XIAXKd1x0QZYE/nt9N/QnToHgFCTGs0i0Z0bsJcHSPNHWOm5zZh5f
-         88W18bhQbZEqAPQCR9F/cWv4CfH8RS6YSnY/gOXiKCRZhKRf9q1+cyI912xwWg5w+Uft
-         TL/oHe2fqDvMpksTRZmikvc4YOaWKYCuQUmnmxqIfwNkL4nvVWKKVdwJhLnVqPmTmPia
-         2OT+S8Z8h7/tOBle6bQ/PRUmDAO0iKoqcL+Ups+o54QwgPj3BqgED3Hqq0lnqxnDrTub
-         gECA==
+        b=F1p44W/aM+T3CITOeQurN4p3rkudU4qsFn5x4bxzmBTlUf+RhZJdLF4uaKbdOxV3QE
+         wIYJ2/VaV0I/HKO46fBIWZ+5iYr6auhPvD10QAPr9aOVha8Evu7A76v32Ymb7dQ8xhIg
+         ohIbyFJln1mJd8TbpSP3C5RTKYBP5EDu2xNKLeWarDkJaitMeRj+os32NwBTo4wzt0pU
+         8xrhFcrbwuWH7w0Kb51JYSzSVenzEeYnDdJ6QS2UwGUdx2wfSrF2SKESAKrNg2BZ5auP
+         msSDk4z31XbNvJg7Wai1OTshmW9c2sYMYYQLlQ1NxGK2YFwRHo4eHdHSkkdA2tqEMOm7
+         yejg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=db5u7MoT2yxtd2eUKLd+WvQKmr7O5WLjxDzUPMuD/Nk=;
-        b=vecRnDHLfz9af3HdQocoaQv1Ne7wvY/wWim10HeD6FO6r/kYYUhCbp23PmPddKf8Yo
-         69/EytoCgHO+4KS3Ms3ms74oNY3uM+EM7p88p+AUoBdNpMnsRP2r23fvwvZAFzqqG3dT
-         YJY3ixLERfmfOl9Ny7nNcjXvJWGakq8uVJ/2bvu/wpgJqHWDoh4UEnGjcYKV/PrK8RZM
-         G0XqrYZV4fTDbflvHKBaJXVjnR98mNyUbFigRvKJF2YXThltaygwvTFqHxDbHzfcnCGO
-         NpfPRrsunBjdt0m9rjMl5ew3mhpEECOnrqSCdXEV8yrya1GNJ99EEXk4+LHIfb6QLB28
-         bqJQ==
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :mime-version:dkim-signature;
+        bh=R1e6KnCFR1rzIeOLowBHM76WhuWR9uQco3Dt74BpyMA=;
+        b=jzLp4NgLm+1FMdCkvC9Kse1C1OnZC8+CqzA9RoaGXxLjMVJ1vWdbgvyBHu1I61wfPx
+         a6VgGXsBTCIukd6ppmbnKIzm71RiHbaOZ1++aPAlhzm+fFAUBapB7sEaIWOn3SjmKrev
+         j9aGWlGZ7XgSarYJXAFg9NpDsuLEOm1RHHPI0+krBgfw87rszkfG/fl+AZoqfS+9BZym
+         yXmWQMIfZqN3jed826tni36k0guBQVPmHE+NHG04nFoABob+ZbE834Bq5yVlRJBMQhe6
+         a0B3r6odUtQLLeZVR6oo236WQowBsFv+SR9Ydoc2tK+UUJzg1Zrf95lgRVqoAUkpVfKG
+         7GBw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@daynix-com.20210112.gappssmtp.com header.s=20210112 header.b=vADEi+ZZ;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=kelHxYjD;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id w8-20020a05620a444800b006bae2594a0bsi7681941qkp.297.2022.08.31.05.34.54
+        by mx.google.com with ESMTPS id q12-20020a05620a0d8c00b006b62b7811e6si8937027qkl.716.2022.08.31.09.13.45
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 31 Aug 2022 05:34:54 -0700 (PDT)
+        Wed, 31 Aug 2022 09:13:45 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@daynix-com.20210112.gappssmtp.com header.s=20210112 header.b=vADEi+ZZ;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:40414 helo=lists1p.gnu.org)
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=kelHxYjD;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:55656 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1oTMvl-0002am-UE
-	for alex.bennee@linaro.org; Wed, 31 Aug 2022 08:34:53 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:35686)
+	id 1oTQLZ-0002vl-Ec
+	for alex.bennee@linaro.org; Wed, 31 Aug 2022 12:13:45 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:40428)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <akihiko.odaki@daynix.com>)
- id 1oTMu0-0001Mi-TH
- for qemu-arm@nongnu.org; Wed, 31 Aug 2022 08:33:10 -0400
-Received: from mail-io1-xd30.google.com ([2607:f8b0:4864:20::d30]:46642)
+ (Exim 4.90_1) (envelope-from <k.manaouil@gmail.com>)
+ id 1oTPyz-0006Xz-9d
+ for qemu-arm@nongnu.org; Wed, 31 Aug 2022 11:50:25 -0400
+Received: from mail-ot1-x332.google.com ([2607:f8b0:4864:20::332]:46030)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <akihiko.odaki@daynix.com>)
- id 1oTMty-00061Q-BN
- for qemu-arm@nongnu.org; Wed, 31 Aug 2022 08:33:04 -0400
-Received: by mail-io1-xd30.google.com with SMTP id h78so11717014iof.13
- for <qemu-arm@nongnu.org>; Wed, 31 Aug 2022 05:33:01 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=daynix-com.20210112.gappssmtp.com; s=20210112;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc;
- bh=db5u7MoT2yxtd2eUKLd+WvQKmr7O5WLjxDzUPMuD/Nk=;
- b=vADEi+ZZkvfKqfbPbSVU4euCdC8CRb9f8H0GQY/gh7G6/LY4EH6N5LjtMl+lHkL5r4
- c8U1U2+yeObt8XX3M2wD8VQ69+RwTlPSvGYpmkBDLetkp1SSUQDJWWTwNUxtRnkPCyle
- SSDc0S5frEIatkdlLMvAnb5E7g+Yad5+sk4MKK4Oy8ATRXaft239Bb9ujHilfh1Mi+Fs
- +LqFVT4bMjkxoinNqeuYn1a0yT9YORswqVvwfAY+HEEIF6XOE4etDE94LBOdRHJJTJO0
- 8dfNcgLmo0WFv6AynzXRK0BXuwvm+886iJXUQ/RbcrthRqIfZ8AyMXADwZBPF3PiwzNk
- ukbg==
+ (Exim 4.90_1) (envelope-from <k.manaouil@gmail.com>)
+ id 1oTPyk-0003oQ-6R
+ for qemu-arm@nongnu.org; Wed, 31 Aug 2022 11:50:23 -0400
+Received: by mail-ot1-x332.google.com with SMTP id
+ l5-20020a05683004a500b0063707ff8244so10516704otd.12
+ for <qemu-arm@nongnu.org>; Wed, 31 Aug 2022 08:50:09 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=to:subject:message-id:date:from:mime-version:from:to:cc;
+ bh=R1e6KnCFR1rzIeOLowBHM76WhuWR9uQco3Dt74BpyMA=;
+ b=kelHxYjDaHWSzPk+l801rd7O5JsJ1DCTb3OFih1ExmYqhmMM3mB/1oHqdhaTY5iChF
+ g8pZGsNAsit8LrxeI6La3c4XD9EmuAz0VhRU3wfuJLh+cdv84vsc1MNJJO2JN4M0XbO4
+ /SjsdkyEIII+rM2Vb8NR5UjP5azlsFuca/vSPWET0nCda4H5osKC0XvepNB93OpwQ2aA
+ UxpN37GIz3/jYFRsUixGP+l59DTf55pGiUsonh/GmW2G7D8CSZGBQjcWVpB1N9aNi/Vc
+ XttYuSfGH76Qx/7FNcvnExhfJt4T0lZsefxj0gZTadcyfBjNU/OyRddK1xceE5Uppnes
+ SSkw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc;
- bh=db5u7MoT2yxtd2eUKLd+WvQKmr7O5WLjxDzUPMuD/Nk=;
- b=N1HvTYI2INnSSL18RssKlJuT1kCd0ycYNv7za76QcZlZKNV98L8xyOqoO05dgLCm7h
- 5pf3T42CJOV2AABVnvDXEBb/dBth4Zr0443sv3ZxANzg5al3lny6kBz5SbUjNzRUJck9
- cYHq/y9rpjM+3irMDb9mtKkCeeL7lC47VfVxjYbXYVWiNdJ3otLbPwsMSVmBaqY6AR0l
- /YejWJFFk5Ju3E7Y3kfPigx6ERUY2u1mfmp0lBn+uxM30RC8vwfYWf8eWR/DM6rmguID
- iCjXSUB+C6XsJ1bYBhEH+l3hs1NR9100PNuh/Rokghx2slvlEOwGESrsLJti6+740U/i
- ofjA==
-X-Gm-Message-State: ACgBeo1ojH6ApgYSb2Nx4ug+dJg9CUZeAeVQ1dpIDdsZGdoNesHGFlTK
- fk0wdqr3qFt5Tjf1HgbrGSdpA505xmgIo98yPi5bQg==
-X-Received: by 2002:a05:6602:2751:b0:68a:af60:c9d2 with SMTP id
- b17-20020a056602275100b0068aaf60c9d2mr12597435ioe.91.1661949181030; Wed, 31
- Aug 2022 05:33:01 -0700 (PDT)
+ h=to:subject:message-id:date:from:mime-version:x-gm-message-state
+ :from:to:cc;
+ bh=R1e6KnCFR1rzIeOLowBHM76WhuWR9uQco3Dt74BpyMA=;
+ b=ehZG+2WAAhqXWaNVAPOpKedcyYYWR8rDJpuZGLRB0kdAnB2dYCSmmcYY1JCFrZW41C
+ /LbzcJjQHObgbyOdxl8WIbpa0MEPKUMUqMOKGlVY0BkIaAL2DUi4DJpmSlYh9UttYCz7
+ yDx0ElohWeVCa6wvUbi9lbwa+Zt0y9cI6zDN7mGZNa+D3jeL1xzC4xjfo3Y0jzTxoxD5
+ FA5hwQDssyaza3z2Mft8v1E11fWtlu2gEih3ouTs1I1H3GxfXndX6HhCm4r18MDULnKX
+ CsYggz+xaW9kKF6Cwel0tV472HTL24+LznK2UK6mbzP8XJKP8PAswjOazG6y6kWmAgob
+ DeMw==
+X-Gm-Message-State: ACgBeo3Lh1QvM/e7HxyEuM+sSfzxag9yHPkcirVhRCsSSyjHU/o3Ys/6
+ jyhg+LWwkbZv7Y7Vn6+Nfu8PHsQJHTUhwNHrzgpliTaaMEY=
+X-Received: by 2002:a9d:134:0:b0:637:2db8:b211 with SMTP id
+ 49-20020a9d0134000000b006372db8b211mr10457393otu.106.1661961008423; Wed, 31
+ Aug 2022 08:50:08 -0700 (PDT)
 MIME-Version: 1.0
-References: <20220829084417.144739-1-akihiko.odaki@daynix.com>
- <874jxuhshs.fsf@pond.sub.org>
- <20220830120014.55f55b24.alex.williamson@redhat.com>
- <87y1v4ddwx.fsf@pond.sub.org>
-In-Reply-To: <87y1v4ddwx.fsf@pond.sub.org>
-From: Akihiko Odaki <akihiko.odaki@daynix.com>
-Date: Wed, 31 Aug 2022 21:32:50 +0900
-Message-ID: <CAE=JJXfU=kT6-pchk1iQrqv3__mwNbWomhaKH5uOT4PdPh84cA@mail.gmail.com>
-Subject: Re: [PATCH] pci: Abort if pci_add_capability fails
-To: Markus Armbruster <armbru@redhat.com>
-Cc: Alex Williamson <alex.williamson@redhat.com>, qemu-devel@nongnu.org, 
- qemu-block@nongnu.org, qemu-arm@nongnu.org, 
- "Michael S. Tsirkin" <mst@redhat.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, 
- Gerd Hoffmann <kraxel@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>, 
- Richard Henderson <richard.henderson@linaro.org>,
- Eduardo Habkost <eduardo@habkost.net>, 
- John Snow <jsnow@redhat.com>, Dmitry Fleytman <dmitry.fleytman@gmail.com>, 
- Jason Wang <jasowang@redhat.com>, Stefan Weil <sw@weilnetz.de>,
- Keith Busch <kbusch@kernel.org>, 
- Klaus Jensen <its@irrelevant.dk>, Peter Maydell <peter.maydell@linaro.org>, 
- Andrey Smirnov <andrew.smirnov@gmail.com>, Paul Burton <paulburton@kernel.org>,
- Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: none client-ip=2607:f8b0:4864:20::d30;
- envelope-from=akihiko.odaki@daynix.com; helo=mail-io1-xd30.google.com
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_NONE=0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+From: Karim Manaouil <k.manaouil@gmail.com>
+Date: Wed, 31 Aug 2022 16:49:58 +0100
+Message-ID: <CADsNLn3cZmZkSzmX6wiaujgpuBO3w+7s+QoUxTCZ3X4n1OEzkg@mail.gmail.com>
+Subject: Can qemu-system-aarch64 boot a Linux kernel with 16K PAGE_SIZE?
+To: qemu-arm@nongnu.org
+Content-Type: multipart/alternative; boundary="00000000000089a7d605e78b733c"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::332;
+ envelope-from=k.manaouil@gmail.com; helo=mail-ot1-x332.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
+X-Mailman-Approved-At: Wed, 31 Aug 2022 11:56:20 -0400
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -126,115 +111,61 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: aSfEw1BTSu4r
+X-TUID: Rv7ShQHWrw0y
 
-On Wed, Aug 31, 2022 at 5:18 PM Markus Armbruster <armbru@redhat.com> wrote:
->
-> Alex Williamson <alex.williamson@redhat.com> writes:
->
-> > On Tue, 30 Aug 2022 13:37:35 +0200
-> > Markus Armbruster <armbru@redhat.com> wrote:
-> >>        if (!offset) {
-> >>            offset = pci_find_space(pdev, size);
-> >>            /* out of PCI config space is programming error */
-> >>            assert(offset);
-> >>        } else {
-> >>            /* Verify that capabilities don't overlap.  Note: device assignment
-> >>             * depends on this check to verify that the device is not broken.
-> >>             * Should never trigger for emulated devices, but it's helpful
-> >>             * for debugging these. */
-> >>
-> >> The comment makes me suspect that device assignment of a broken device
-> >> could trigger the error.  It goes back to
-> >>
-> >> commit c9abe111209abca1b910e35c6ca9888aced5f183
-> >> Author: Jan Kiszka <jan.kiszka@siemens.com>
-> >> Date:   Wed Aug 24 14:29:30 2011 +0200
-> >>
-> >>     pci: Error on PCI capability collisions
-> >>
-> >>     Nothing good can happen when we overlap capabilities. This may happen
-> >>     when plugging in assigned devices or when devices models contain bugs.
-> >>     Detect the overlap and report it.
-> >>
-> >>     Based on qemu-kvm commit by Alex Williamson.
-> >>
-> >>     Signed-off-by: Jan Kiszka <jan.kiszka@siemens.com>
-> >>     Acked-by: Don Dutile <ddutile@redhat.com>
-> >>     Signed-off-by: Michael S. Tsirkin <mst@redhat.com>
-> >>
-> >> If this is still correct, then your patch is a regression: QEMU is no
-> >> longer able to gracefully handle assignment of a broken device.  Does
-> >> this matter?  Alex, maybe?
-> >
-> > Ok, that was a long time ago.  I have some vague memories of hitting
->
-> Indeed!
->
-> > something like this with a Broadcom NIC, but a google search for the
-> > error string doesn't turn up anything recently.  So there's a fair
-> > chance this wouldn't break anyone initially.
->
-> I like your careful phrasing.
->
-> > Even back when the above patch was proposed, there were some
-> > suggestions to turn the error path into an abort, which I pushed back
-> > on since clearly enumerating capabilities of a device can occur due to
-> > a hot-plug and we don't necessarily have control of the device being
-> > added.  This is only more true with the possibility of soft-devices out
-> > of tree, through things like vfio-user.
->
-> Valid point.
->
-> When an compiled-in device model asks for overlapping PCI capabilities,
-> it's a programming error.
->
-> When an assigned device (be it physical or virtual) has overlapping PCI
-> capabilities, it's bad input.
->
-> Abort on programming error is okay.  Abort on bad input isn't.
->
-> I think callers of the former sort should pass &error_abort to
-> pci_add_capability(), and callers of the latter sort should handle the
-> error.
+--00000000000089a7d605e78b733c
+Content-Type: text/plain; charset="UTF-8"
 
-Looking at vfio's implementation, it seems it makes its own effort to
-make capabilities not overlap. Taking account of that, I have sent a
-new version titled "[PATCH v2] pci: Assert that capabilities never
-overlap", which has an updated message and removes the comment in
-pci_add_capability().
+Hi,
 
->
-> > Personally I think the right approach is to support an error path such
-> > that we can abort when triggered by a cold-plug device, while simply
-> > rejecting a broken hot-plug device, but that seems to be the minority
-> > opinion among QEMU developers afaict.  Thanks,
->
-> I'm in the "aborting on programming errors is okay" camp.
->
-> Recovery from certain programming errors is possible.  However,
-> different programming errors can manifest themselves the same way, and
-> not all need permit safe recovery.
->
-> Say we detect overlapping PCI capabilities when hot-plugging a virtual
-> device model.
->
-> If this is because the programmer passed an incorrect literal offset, we
-> can recover safely by failing the hot plug.
->
-> But perhaps the offset comes from a table, and some other bug scribbled
-> over it.  Continuing the process is *unsafe*, and may increase the
-> damage and/or obstruct the root cause.
->
-> The former kind of bug is unlikely to survive even cursory testing.
->
+I compiled Linux v6-rc3 for aarch64 using 16K pages
+(CONFIG_ARM64_64K_PAGES=y)
+but it doesn't seem to boot with qemu-system-aarch64 (no logs appear.
+However,
+it boots fine with 4K and 64K pages).
 
-Whatever kind of programming error it is, it is dangerous to attempt
-to recover from it using an error handling code path untested for a
-long period. I think it is better to have some common code to recover
-from assertion failures. For example, we may have some option to print
-"oops" just like Linux does when an assertion fails and let the user
-handle it. That is quite out of scope of this change though.
+I use the following command:
 
-Regards,
-Akihiko Odaki
+qemu-system-aarch64 \
+       -machine virt \
+       -cpu cortex-a72 \
+       -smp 4 \
+       -m 2G \
+       -kernel $ARM_KERNEL \
+       -append "root=/dev/vda rw console=ttyAMA0 earlyprintk=serial" \
+       -hda $DISK_IMG
+       -nographic
+
+Then just a blank screen.
+
+Thus, the question is, can qemu-system-aarch64 boot a Linux kernel compiled
+with 16K pages?
+
+Host: Debian 10 (Buster)
+Host kernel: Linux v5.16.0
+Qemu version: QEMU emulator version 3.1.0
+
+Cheers
+Karim
+
+--00000000000089a7d605e78b733c
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr">Hi,<br><br>I compiled Linux v6-rc3 for aarch64 using 16K p=
+ages (CONFIG_ARM64_64K_PAGES=3Dy)<br>but it doesn&#39;t seem to boot with q=
+emu-system-aarch64 (no logs appear. However,<br>it boots fine with 4K and 6=
+4K pages).<br><br>I use the following command:<br><div><br></div><div>qemu-=
+system-aarch64 \<br></div>=C2=A0 =C2=A0 =C2=A0=C2=A0 -machine virt \<br>=C2=
+=A0 =C2=A0 =C2=A0 =C2=A0-cpu cortex-a72 \<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0-sm=
+p 4 \<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0-m 2G \<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0-=
+kernel $ARM_KERNEL \<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0-append &quot;root=3D/de=
+v/vda rw console=3DttyAMA0 earlyprintk=3Dserial&quot; \<br>=C2=A0 =C2=A0 =
+=C2=A0 =C2=A0-hda $DISK_IMG<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0-nographic<br><di=
+v><br></div><div>Then just a blank screen.<br></div><div><br></div>Thus, th=
+e question is, can qemu-system-aarch64 boot a Linux kernel compiled with 16=
+K pages?<br><br>Host: Debian 10 (Buster)<br>Host kernel: Linux v5.16.0<br><=
+div>Qemu version: QEMU emulator version 3.1.0</div><div><br></div><div>Chee=
+rs</div><div>Karim<br></div></div>
+
+--00000000000089a7d605e78b733c--

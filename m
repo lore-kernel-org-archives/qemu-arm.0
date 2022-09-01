@@ -1,108 +1,115 @@
-Received: by 2002:a17:906:1c87:0:0:0:0 with SMTP id g7csp291155ejh;
-        Thu, 1 Sep 2022 05:15:47 -0700 (PDT)
-X-Google-Smtp-Source: AA6agR4mByaouE/9uFqlJKGHy42KvjOe42bH4Q+NKUorcu3nEpHVvWCwuxaMMih0aq3x1dzj7+gW
-X-Received: by 2002:a05:622a:174f:b0:344:5e57:9686 with SMTP id l15-20020a05622a174f00b003445e579686mr23356308qtk.548.1662034547054;
-        Thu, 01 Sep 2022 05:15:47 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1662034547; cv=none;
+Received: by 2002:a17:906:1c87:0:0:0:0 with SMTP id g7csp385220ejh;
+        Thu, 1 Sep 2022 07:54:35 -0700 (PDT)
+X-Google-Smtp-Source: AA6agR4PLOxXcsJwdxy8wOD4oQFSMWx6HLOBqnBBREGXKqHZehSkb/GbG/BLY1SdRULS3ZX7GBgz
+X-Received: by 2002:a05:622a:198c:b0:342:fd20:239c with SMTP id u12-20020a05622a198c00b00342fd20239cmr24174998qtc.358.1662044075422;
+        Thu, 01 Sep 2022 07:54:35 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1662044075; cv=none;
         d=google.com; s=arc-20160816;
-        b=OPWNgWhgpzjkSI7ERj+xx7ALEcLehyXWxj/8rbxkTMGoync3J2htmzic5Z/qx2Ttv3
-         ipO2lufFfkYF8hVuheo1Ed1QKJYA4b8pYy1ook7ulCNzFxlr4kcHm0l+xTj2Oan6sNs7
-         j5DWxJ+Ew5VcYWe5CZAbeEI3Fg9RMtuwMVHMaFQRgv8CXjKQDAMO6TwbZXW4Nu2qMRSn
-         4wlIXGuaUQd/aBG5k0I5FsH/s1iWhpWUmFKgP2SZvJQzIcMEUKtFX4X0fZmkvi0x3OvN
-         WWhghLN7YT3o+D6efH2A0wrAT3RiXnBJPV0pBvbnEZWeLu9xqLrPlTq3HVR+9r9RRMhd
-         jBGw==
+        b=ozZbUbNOhdeOlffvHBlXap49Pg70+aRP+KNlZbZBmLVphX4NZpjwrDPX+KmXHtbXkj
+         xWn96W118pO71eTjMGS6A2oNhdX/vQudE+nBteiD6RTqEmNsrnrxOcSPbN2GIpZs7zeN
+         eADTA9THfqGXR+XAuoPqZMQ02aFiwwoaVQfI9pvb4V2/WDNot9BIdAYsetK9vQn1MtP2
+         J3jbHLhlahKPVZSU7qhslMGx/q/J3Wspu2gUwvdXVQoWnnQm4t46VhxPUJk6NmfWP2Y4
+         giJNnjJPSFfpG0gFo0ag6XPLOMPBxbk1V4cqJpUx9n6NYVQaFqAur0hbpNDIDOmLmAcL
+         e6yA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=g/aIzI+GnRYsT9J3xhVYtxUQAaj8WEFfhS3yV7LCLU4=;
-        b=HxH6BVhCfvLr2b9lF2YuUlj4mLTW13pNLrudKFde5W3Wm0cvsw2mjdnXmrjgf6Cl35
-         IMsvttCkAbz7FQloMT8G1ZFjf+Khtc2s/LqX2OdF/Hb53QPtjdins0zN5pcdiTmAhDzu
-         AYWX09wSrcBkR7rJ3IDK8mUG4TglPNvAh+9F+0gQdMi4pBhVlJxCc79+VkibsNjqjGv2
-         kkqzctBRr+YtwJBe3d8Ztjswal8P3XxjH+zabXmpeV+xqTxjFmUDQPM5fzpz/CCMQ3wM
-         AFcoHYE6mnx0gvd8Qb69JO9i74o0rs8sD0fv5j6xgf4UvHMDX1QdzyoqrqyUK/9S5Dgg
-         1smw==
+         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
+         :dkim-signature;
+        bh=nu7sumbqAfqzuOt6q1DBECNPK61XEbxkKFUKshcSeI8=;
+        b=xrDabVfm6jP5zZba2c9dw0WDogcL7PmBPXi2FWalvOgscYfJg0NZ8lQ7L1EbeqTE5y
+         0wTsxNRwwW6D/TxruTleexOr0WTUxYvFOeWcJgqBPV6Uu6NmPqHUuDzJMPxs8Ut+jv0R
+         pPwRsXVY+GhmJo/qaqKTSQuiISh4CC2NWp+nEmlqviO0GESKZik2g/6UGob5oCTZvUe0
+         ULPjc8YpjqjkDC8Y4OpiC5Q8KHLkRCQc5K8hye2R5bKtYQz6rno+bXYsb3jiCBqam8cn
+         /KiZADODLOP4EaKhMxZFlOMVpxtBFkhCLOUQzZP13Kv0FWmIV0jcEBWhNIDeuWh6V7sr
+         raEA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=JLkgcKuf;
+       dkim=pass header.i=@linaro.org header.s=google header.b=r6E0dofJ;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id fg7-20020a05622a580700b00344f395617dsi9659672qtb.242.2022.09.01.05.15.46
+        by mx.google.com with ESMTPS id v22-20020a05620a441600b006b98ff83cd2si9834334qkp.718.2022.09.01.07.54.35
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 01 Sep 2022 05:15:47 -0700 (PDT)
+        Thu, 01 Sep 2022 07:54:35 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=JLkgcKuf;
+       dkim=pass header.i=@linaro.org header.s=google header.b=r6E0dofJ;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:45542 helo=lists1p.gnu.org)
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:40410 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1oTj6o-00028w-Ge
-	for alex.bennee@linaro.org; Thu, 01 Sep 2022 08:15:46 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:59020)
+	id 1oTlaU-0001bP-Td
+	for alex.bennee@linaro.org; Thu, 01 Sep 2022 10:54:34 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:35648)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <marcandre.lureau@gmail.com>)
- id 1oTico-0007Xo-65; Thu, 01 Sep 2022 07:44:51 -0400
-Received: from mail-lj1-x22d.google.com ([2a00:1450:4864:20::22d]:39529)
+ (Exim 4.90_1) (envelope-from <jean-philippe@linaro.org>)
+ id 1oTlZs-0001NQ-NR
+ for qemu-arm@nongnu.org; Thu, 01 Sep 2022 10:53:56 -0400
+Received: from mail-wr1-x42d.google.com ([2a00:1450:4864:20::42d]:42586)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <marcandre.lureau@gmail.com>)
- id 1oTicl-0000XZ-Bn; Thu, 01 Sep 2022 07:44:45 -0400
-Received: by mail-lj1-x22d.google.com with SMTP id bn9so17576980ljb.6;
- Thu, 01 Sep 2022 04:44:41 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date;
- bh=g/aIzI+GnRYsT9J3xhVYtxUQAaj8WEFfhS3yV7LCLU4=;
- b=JLkgcKufyI5t6GropYGPN47qd3ed50TkEp3+uw+ilc89HR3FmrSWTRbH0jWfYQIdA7
- tj1Pk16ecfuxqHPgTeaMdmMimbvFUmUVHvobt0tP0lN3xoIs5uKonvnJYo/c/hKXaOtJ
- EiuYx97DHmn1GVkJ7LaoitwzmQvw2qw99289hbkfrGq40etmEJO7W8tp+hTUR3WdYrA8
- K1OEVYzJ++APWa2LJwoGztLl7rJrls/12a/zOCOV7AUeRra4mczIHEv32cSwkEUmySh/
- 8+loqGF1NUGqYliq0NeNR9a9kHv3V99PnQJ9SHkDF8eYDL68bLR7LgPN6xWetlejl0dh
- Y54g==
+ (Exim 4.90_1) (envelope-from <jean-philippe@linaro.org>)
+ id 1oTlZp-00028L-4i
+ for qemu-arm@nongnu.org; Thu, 01 Sep 2022 10:53:55 -0400
+Received: by mail-wr1-x42d.google.com with SMTP id m16so22682382wru.9
+ for <qemu-arm@nongnu.org>; Thu, 01 Sep 2022 07:53:51 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=in-reply-to:content-disposition:mime-version:references:message-id
+ :subject:cc:to:from:date:from:to:cc;
+ bh=nu7sumbqAfqzuOt6q1DBECNPK61XEbxkKFUKshcSeI8=;
+ b=r6E0dofJyWlq2h9wKfSnN16jIZVYzRapWfgBy1QQStBI2+fogDzjbxdyWA4m9Ikpzv
+ weNQc9Y10j4cilndm0X6HnUAnYK0Hsg2qwlcNveWvT4H5QOClorbPr/1aINS+oiYv8Ut
+ I5gAFKjKtnMx4h4OQA9Xu0LCXMR/5RF2dgz7PVTkHg0ko++XHu5oRIfryQ8Sf6CkITlK
+ yLP/488GnNn4wdf9+aNU9n3ynzMwMp3EwHx0YSaxoz9V3sIyCavXihlT74HZVAuWGDi5
+ 6EFKZhhZGOGEDHyq+vaukYBS4XbZtdPng2eqqxceZyirShJ0yYDDOHugsrF8AdXN8R5c
+ 5pzw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date;
- bh=g/aIzI+GnRYsT9J3xhVYtxUQAaj8WEFfhS3yV7LCLU4=;
- b=45afum4wzu9fgShh7SC2CQ+9fxc/v+2FzeXzEZ42FHfyA5yTAq/s7tfE7BbuR3st0z
- H5BuliSvwGqL4mKkYxU/gXWT6O/uTGVTeoVDktZpzvqv5ogQ1M/eE6+3KTbq3YyVdulL
- cF4c86QBFb0dx/aONoHMPHhqBiQaEqHV4Yk9pcaajFTrmzCW+/7CBDhdHwYNPRUrKi9E
- Ywj8UykzBEPwCB0JsyEMk1WtfpQmmi6PRT0ruaAjaR/03toi8zxbXdg9UaSSKLCcLo+7
- IPl4LUgRy/9rECh/DZUiPrsyQRhrcZTk1SHCr0ErDaNV58RKTh31RmZhS0LkHg8HWoId
- WuCA==
-X-Gm-Message-State: ACgBeo3HMFcHcZ/LO9ILZ3/x0LDvpRiBdh0ld5pWfcR1n5G4CCg3hdRG
- zIETla7vWvpmj2iwRmggRZuYu8I9xqa2UKE1+jk=
-X-Received: by 2002:a2e:596:0:b0:264:1a1e:469b with SMTP id
- 144-20020a2e0596000000b002641a1e469bmr5847560ljf.463.1662032679673; Thu, 01
- Sep 2022 04:44:39 -0700 (PDT)
+ h=in-reply-to:content-disposition:mime-version:references:message-id
+ :subject:cc:to:from:date:x-gm-message-state:from:to:cc;
+ bh=nu7sumbqAfqzuOt6q1DBECNPK61XEbxkKFUKshcSeI8=;
+ b=OQiDb8AZs0bwKl5uf3JB5TnivBo9lAKRhzwo3FZs22Z7Ft/6QHmUvm+ZFf09R1kjX3
+ QJuyENzJ5CBJRK6CvWMclDZ5ulV+fWMRyet9BRB1smOu/LrGEXakAq4SyQPNvO9ox/UX
+ sZaFCnHoowz2h32wjRXiZDDQAaFx6pkZUkMXDhFzA5vGOzZuiFZZn9ZLO9bsYud6VGSh
+ 8WpGAQznQ4wHOwdpYOCr7BN6PHqzj1akctkG1RsQsDoniYMl8DNXA9H34/+ceSPaiVxq
+ dj7a2dZ3x5LPy50iNUE+96Z6r9z5d5kjhA8efyS2elgqr991PyvdXq9eSqblWiIbGP5b
+ MmqA==
+X-Gm-Message-State: ACgBeo07ErWyXQVFk9OW1rqvUJ0NY9TQUYi4svr0tA0SCfBdOC6SgocQ
+ L3q0tTaHL9uzymvmMX+RbdL+Jw==
+X-Received: by 2002:a05:6000:78b:b0:226:d10f:1c3 with SMTP id
+ bu11-20020a056000078b00b00226d10f01c3mr14054806wrb.149.1662044029795; 
+ Thu, 01 Sep 2022 07:53:49 -0700 (PDT)
+Received: from myrica (cpc92880-cmbg19-2-0-cust679.5-4.cable.virginm.net.
+ [82.27.106.168]) by smtp.gmail.com with ESMTPSA id
+ i16-20020adffc10000000b002253af82fa7sm18032231wrr.9.2022.09.01.07.53.48
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 01 Sep 2022 07:53:49 -0700 (PDT)
+Date: Thu, 1 Sep 2022 15:53:46 +0100
+From: Jean-Philippe Brucker <jean-philippe@linaro.org>
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, robh+dt@kernel.org,
+ eauger@redhat.com
+Subject: Re: [PATCH 02/10] hw/arm/boot: Fix devicetree warning about the PSCI
+ node
+Message-ID: <YxDHev0qezcjSvxE@myrica>
+References: <20220824155113.286730-1-jean-philippe@linaro.org>
+ <20220824155113.286730-3-jean-philippe@linaro.org>
+ <CAFEAcA_dXgmFeZnrimenE0yMnupM0pWuj5s96vk-sBDmtvZQxw@mail.gmail.com>
 MIME-Version: 1.0
-References: <20220824094029.1634519-1-bmeng.cn@gmail.com>
- <20220824094029.1634519-45-bmeng.cn@gmail.com>
-In-Reply-To: <20220824094029.1634519-45-bmeng.cn@gmail.com>
-From: =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@gmail.com>
-Date: Thu, 1 Sep 2022 15:44:28 +0400
-Message-ID: <CAJ+F1CLD0P+neLMxD1hZuVkpR0TafNCY0y+rVrTsQvC=XNFhTQ@mail.gmail.com>
-Subject: Re: [PATCH 44/51] tests/qtest: microbit-test: Fix socket access for
- win32
-To: Bin Meng <bmeng.cn@gmail.com>
-Cc: qemu-devel@nongnu.org, Bin Meng <bin.meng@windriver.com>, 
- Joel Stanley <joel@jms.id.au>, Laurent Vivier <lvivier@redhat.com>,
- Paolo Bonzini <pbonzini@redhat.com>, 
- Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
- qemu-arm@nongnu.org
-Content-Type: multipart/alternative; boundary="0000000000007a23d505e79c23d5"
-Received-SPF: pass client-ip=2a00:1450:4864:20::22d;
- envelope-from=marcandre.lureau@gmail.com; helo=mail-lj1-x22d.google.com
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <CAFEAcA_dXgmFeZnrimenE0yMnupM0pWuj5s96vk-sBDmtvZQxw@mail.gmail.com>
+Received-SPF: pass client-ip=2a00:1450:4864:20::42d;
+ envelope-from=jean-philippe@linaro.org; helo=mail-wr1-x42d.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -117,181 +124,52 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: XCqxAVg3+98R
+X-TUID: CZnkcu+7HkgA
 
---0000000000007a23d505e79c23d5
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+On Wed, Aug 24, 2022 at 08:33:54PM +0100, Peter Maydell wrote:
+> On Wed, 24 Aug 2022 at 16:51, Jean-Philippe Brucker
+> <jean-philippe@linaro.org> wrote:
+> >
+> > dt-validate warns that an implementation compatible with arm,psci-1.0
+> > shouldn't have arm,psci in their compatible string.
+> >
+> >   psci: compatible: 'oneOf' conditional failed, one must be fixed:
+> >         ['arm,psci-1.0', 'arm,psci-0.2', 'arm,psci'] is too long
+> >   From schema: linux/Documentation/devicetree/bindings/arm/psci.yaml
+> >
+> > Signed-off-by: Jean-Philippe Brucker <jean-philippe@linaro.org>
+> > ---
+> >  hw/arm/boot.c | 2 +-
+> >  1 file changed, 1 insertion(+), 1 deletion(-)
+> >
+> > diff --git a/hw/arm/boot.c b/hw/arm/boot.c
+> > index ada2717f76..527918227e 100644
+> > --- a/hw/arm/boot.c
+> > +++ b/hw/arm/boot.c
+> > @@ -493,7 +493,7 @@ static void fdt_add_psci_node(void *fdt)
+> >              const char comp[] = "arm,psci-0.2\0arm,psci";
+> >              qemu_fdt_setprop(fdt, "/psci", "compatible", comp, sizeof(comp));
+> >          } else {
+> > -            const char comp[] = "arm,psci-1.0\0arm,psci-0.2\0arm,psci";
+> > +            const char comp[] = "arm,psci-1.0\0arm,psci-0.2";
+> >              qemu_fdt_setprop(fdt, "/psci", "compatible", comp, sizeof(comp));
+> >          }
+> 
+> This doesn't look right.
+> Documentation/devicetree/bindings/arm/psci.yaml says
+> "arm,psci-1.0" means "complies to PSCI 1.0",
+> "arm,psci-0.2" means "complies to PSCI 0.2",
+> and "arm,psci" means "complies to pre-0.2 PSCI"
+> 
+> If you want to drop "arm,psci" then you should be arguing why
+> we're not compliant with pre-0.2 PSCI. Maybe we aren't and we
+> shouldn't be advertising it, but you need more rationale than
+> "dt-validate complained".
 
-On Wed, Aug 24, 2022 at 3:27 PM Bin Meng <bmeng.cn@gmail.com> wrote:
+Yes I agree, and that's my mistake. Rob already relaxed the bindings
+https://lore.kernel.org/all/20220803201639.2552581-1-robh@kernel.org/
+but that's queued for v6.1 and I was validating against mainline.
+I'll drop the patch
 
-> From: Bin Meng <bin.meng@windriver.com>
->
-> Sockets on Windows do not use *nix-style file descriptors, so
-> write()/read()/close() do not work on Windows.
->
-> Switch over to use send()/recv()/closesocket() which work with
-> sockets on all platforms.
->
-> Signed-off-by: Bin Meng <bin.meng@windriver.com>
->
-
-Reviewed-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
-
-
-> ---
->
->  tests/qtest/microbit-test.c | 10 +++++-----
->  1 file changed, 5 insertions(+), 5 deletions(-)
->
-> diff --git a/tests/qtest/microbit-test.c b/tests/qtest/microbit-test.c
-> index b71daae9a9..4bc267020b 100644
-> --- a/tests/qtest/microbit-test.c
-> +++ b/tests/qtest/microbit-test.c
-> @@ -51,7 +51,7 @@ static void uart_rw_to_rxd(QTestState *qts, int sock_fd=
-,
-> const char *in,
->  {
->      int i, in_len =3D strlen(in);
->
-> -    g_assert_true(write(sock_fd, in, in_len) =3D=3D in_len);
-> +    g_assert_true(send(sock_fd, in, in_len, 0) =3D=3D in_len);
->      for (i =3D 0; i < in_len; i++) {
->          g_assert_true(uart_wait_for_event(qts, NRF51_UART_BASE +
->                                                 A_UART_RXDRDY));
-> @@ -77,7 +77,7 @@ static void test_nrf51_uart(void)
->      char s[10];
->      QTestState *qts =3D qtest_init_with_serial("-M microbit", &sock_fd);
->
-> -    g_assert_true(write(sock_fd, "c", 1) =3D=3D 1);
-> +    g_assert_true(send(sock_fd, "c", 1, 0) =3D=3D 1);
->      g_assert_cmphex(qtest_readl(qts, NRF51_UART_BASE + A_UART_RXD), =3D=
-=3D,
-> 0x00);
->
->      qtest_writel(qts, NRF51_UART_BASE + A_UART_ENABLE, 0x04);
-> @@ -97,17 +97,17 @@ static void test_nrf51_uart(void)
->
->      qtest_writel(qts, NRF51_UART_BASE + A_UART_STARTTX, 0x01);
->      uart_w_to_txd(qts, "d");
-> -    g_assert_true(read(sock_fd, s, 10) =3D=3D 1);
-> +    g_assert_true(recv(sock_fd, s, 10, 0) =3D=3D 1);
->      g_assert_cmphex(s[0], =3D=3D, 'd');
->
->      qtest_writel(qts, NRF51_UART_BASE + A_UART_SUSPEND, 0x01);
->      qtest_writel(qts, NRF51_UART_BASE + A_UART_TXD, 'h');
->      qtest_writel(qts, NRF51_UART_BASE + A_UART_STARTTX, 0x01);
->      uart_w_to_txd(qts, "world");
-> -    g_assert_true(read(sock_fd, s, 10) =3D=3D 5);
-> +    g_assert_true(recv(sock_fd, s, 10, 0) =3D=3D 5);
->      g_assert_true(memcmp(s, "world", 5) =3D=3D 0);
->
-> -    close(sock_fd);
-> +    closesocket(sock_fd);
->
->      qtest_quit(qts);
->  }
-> --
-> 2.34.1
->
->
->
-
---=20
-Marc-Andr=C3=A9 Lureau
-
---0000000000007a23d505e79c23d5
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr"><div dir=3D"ltr"><br></div><br><div class=3D"gmail_quote">=
-<div dir=3D"ltr" class=3D"gmail_attr">On Wed, Aug 24, 2022 at 3:27 PM Bin M=
-eng &lt;<a href=3D"mailto:bmeng.cn@gmail.com">bmeng.cn@gmail.com</a>&gt; wr=
-ote:<br></div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px=
- 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex">From: Bin M=
-eng &lt;<a href=3D"mailto:bin.meng@windriver.com" target=3D"_blank">bin.men=
-g@windriver.com</a>&gt;<br>
-<br>
-Sockets on Windows do not use *nix-style file descriptors, so<br>
-write()/read()/close() do not work on Windows.<br>
-<br>
-Switch over to use send()/recv()/closesocket() which work with<br>
-sockets on all platforms.<br>
-<br>
-Signed-off-by: Bin Meng &lt;<a href=3D"mailto:bin.meng@windriver.com" targe=
-t=3D"_blank">bin.meng@windriver.com</a>&gt;<br></blockquote><div><br></div>=
-<div>Reviewed-by: Marc-Andr=C3=A9 Lureau &lt;<a href=3D"mailto:marcandre.lu=
-reau@redhat.com">marcandre.lureau@redhat.com</a>&gt;</div><div>=C2=A0<br></=
-div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;bor=
-der-left:1px solid rgb(204,204,204);padding-left:1ex">
----<br>
-<br>
-=C2=A0tests/qtest/microbit-test.c | 10 +++++-----<br>
-=C2=A01 file changed, 5 insertions(+), 5 deletions(-)<br>
-<br>
-diff --git a/tests/qtest/microbit-test.c b/tests/qtest/microbit-test.c<br>
-index b71daae9a9..4bc267020b 100644<br>
---- a/tests/qtest/microbit-test.c<br>
-+++ b/tests/qtest/microbit-test.c<br>
-@@ -51,7 +51,7 @@ static void uart_rw_to_rxd(QTestState *qts, int sock_fd, =
-const char *in,<br>
-=C2=A0{<br>
-=C2=A0 =C2=A0 =C2=A0int i, in_len =3D strlen(in);<br>
-<br>
--=C2=A0 =C2=A0 g_assert_true(write(sock_fd, in, in_len) =3D=3D in_len);<br>
-+=C2=A0 =C2=A0 g_assert_true(send(sock_fd, in, in_len, 0) =3D=3D in_len);<b=
-r>
-=C2=A0 =C2=A0 =C2=A0for (i =3D 0; i &lt; in_len; i++) {<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0g_assert_true(uart_wait_for_event(qts, NR=
-F51_UART_BASE +<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 =C2=A0 =C2=A0 A_UART_RXDRDY));<br>
-@@ -77,7 +77,7 @@ static void test_nrf51_uart(void)<br>
-=C2=A0 =C2=A0 =C2=A0char s[10];<br>
-=C2=A0 =C2=A0 =C2=A0QTestState *qts =3D qtest_init_with_serial(&quot;-M mic=
-robit&quot;, &amp;sock_fd);<br>
-<br>
--=C2=A0 =C2=A0 g_assert_true(write(sock_fd, &quot;c&quot;, 1) =3D=3D 1);<br=
->
-+=C2=A0 =C2=A0 g_assert_true(send(sock_fd, &quot;c&quot;, 1, 0) =3D=3D 1);<=
-br>
-=C2=A0 =C2=A0 =C2=A0g_assert_cmphex(qtest_readl(qts, NRF51_UART_BASE + A_UA=
-RT_RXD), =3D=3D, 0x00);<br>
-<br>
-=C2=A0 =C2=A0 =C2=A0qtest_writel(qts, NRF51_UART_BASE + A_UART_ENABLE, 0x04=
-);<br>
-@@ -97,17 +97,17 @@ static void test_nrf51_uart(void)<br>
-<br>
-=C2=A0 =C2=A0 =C2=A0qtest_writel(qts, NRF51_UART_BASE + A_UART_STARTTX, 0x0=
-1);<br>
-=C2=A0 =C2=A0 =C2=A0uart_w_to_txd(qts, &quot;d&quot;);<br>
--=C2=A0 =C2=A0 g_assert_true(read(sock_fd, s, 10) =3D=3D 1);<br>
-+=C2=A0 =C2=A0 g_assert_true(recv(sock_fd, s, 10, 0) =3D=3D 1);<br>
-=C2=A0 =C2=A0 =C2=A0g_assert_cmphex(s[0], =3D=3D, &#39;d&#39;);<br>
-<br>
-=C2=A0 =C2=A0 =C2=A0qtest_writel(qts, NRF51_UART_BASE + A_UART_SUSPEND, 0x0=
-1);<br>
-=C2=A0 =C2=A0 =C2=A0qtest_writel(qts, NRF51_UART_BASE + A_UART_TXD, &#39;h&=
-#39;);<br>
-=C2=A0 =C2=A0 =C2=A0qtest_writel(qts, NRF51_UART_BASE + A_UART_STARTTX, 0x0=
-1);<br>
-=C2=A0 =C2=A0 =C2=A0uart_w_to_txd(qts, &quot;world&quot;);<br>
--=C2=A0 =C2=A0 g_assert_true(read(sock_fd, s, 10) =3D=3D 5);<br>
-+=C2=A0 =C2=A0 g_assert_true(recv(sock_fd, s, 10, 0) =3D=3D 5);<br>
-=C2=A0 =C2=A0 =C2=A0g_assert_true(memcmp(s, &quot;world&quot;, 5) =3D=3D 0)=
-;<br>
-<br>
--=C2=A0 =C2=A0 close(sock_fd);<br>
-+=C2=A0 =C2=A0 closesocket(sock_fd);<br>
-<br>
-=C2=A0 =C2=A0 =C2=A0qtest_quit(qts);<br>
-=C2=A0}<br>
--- <br>
-2.34.1<br>
-<br>
-<br>
-</blockquote></div><br clear=3D"all"><br>-- <br><div dir=3D"ltr" class=3D"g=
-mail_signature">Marc-Andr=C3=A9 Lureau<br></div></div>
-
---0000000000007a23d505e79c23d5--
+Thanks,
+Jean

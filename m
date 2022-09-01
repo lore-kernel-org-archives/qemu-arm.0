@@ -1,108 +1,108 @@
-Received: by 2002:a17:906:1c87:0:0:0:0 with SMTP id g7csp389378ejh;
-        Thu, 1 Sep 2022 08:01:54 -0700 (PDT)
-X-Google-Smtp-Source: AA6agR4zcLc2pv38hKiPnCiIL/aqAvkmdFFp8ak08Ju8w07t9jCqLJFPPCmWK9wwMgr5MDsrLHeh
-X-Received: by 2002:a05:620a:4489:b0:6bb:8e2b:a51f with SMTP id x9-20020a05620a448900b006bb8e2ba51fmr19051949qkp.217.1662044513804;
-        Thu, 01 Sep 2022 08:01:53 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1662044513; cv=none;
+Received: by 2002:a17:906:1c87:0:0:0:0 with SMTP id g7csp392127ejh;
+        Thu, 1 Sep 2022 08:05:05 -0700 (PDT)
+X-Google-Smtp-Source: AA6agR4qD7A5v8PT6tvFv6z+Igdlerv8+bky25gD+Z4vkfMYq5az1aqDv8GhgtlX1koIJrIDLnRt
+X-Received: by 2002:a25:38ca:0:b0:696:69ea:d2d9 with SMTP id f193-20020a2538ca000000b0069669ead2d9mr19734884yba.370.1662044704859;
+        Thu, 01 Sep 2022 08:05:04 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1662044704; cv=none;
         d=google.com; s=arc-20160816;
-        b=oXh6NOyKv08TZdtgg5b09QtqYq8nQ5+CnyuuWbnWZZ8bor6JHQHUFqgeDk/YZdi7qO
-         wIQzX6DucO3Emux1bBbSgdnQ3WVjeK2ogcG6qzxbwHcavt5MtE7ARhLZwOe95eG3oO5g
-         4xkhat7ZXXvkXjS1YvmI7QsOE2cMrn6XXRYNcKX40r0T2+IJIWDrZcyeCrUQjPu5S+2d
-         /AqI+cZYMfCRwQkZRRb1Jq/GeSGzjJKYTzV8hJrAlfWS/EPK+I0D8x85uppUYxu9cXBC
-         J4dkZUpbEhgI98kWnhpvGN4oeOyxJz+aDCxMDTRoFbgvCAfNEqbcfPGkR8CU5wOvjdWw
-         8iag==
+        b=G/743DHleh4pTkCFJoI3Ydx8Gb3ZoAoJ5qyk1wtsA7KZj0ZQ/lQdT6kVnS1OUnM2rQ
+         9nwE7jtGn42j4ocmHjaFADvlcDdJUNXUGMCiBg7t5FJVGlJmfWgamEmXCW0xQtLmaQ1U
+         XOfO3pB3boRl+B1ss0GG0R1DxCdwSgQGFxSQiH3+x4xOOao2bxNREh+D8Otr7hQvZfID
+         R41a5aAV9tHg5/9F4TEcJWvu2i5WUWoraFlTJ6uEQe8NNvULPjv1tSSzkw27HYWtTfC4
+         GYsjRMNVRYIOIXLi8s16peeTTkADJkMbY668WP1jfF17+LqylWZXJx2t10i45ke3xXRQ
+         7WSw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
          :mime-version:references:message-id:subject:cc:to:from:date
          :dkim-signature;
-        bh=OgCHwfXoVgRL+SmzB8hEajq34UrKRayOSy2P3ivNm28=;
-        b=C2b5Tmq5VJbUsWde4ssYHMfhlfddr0Rn2nJO/ZcbPmg0d3dH3AeuGHTBbUecxex69Q
-         SInxMWwf3F2cPgV4xW8BDa08OXSw/AZ8k8fd1PeQtYUiMY1Hx+yZYlu73nxdj/YPctgi
-         uzBqwlsqmOz5Uu7nJ9Eph3sqfGTwAk/nu7xKTVXfurBR7E4RQbUBLxg/muhfnrCXZ8DV
-         w6gat0fklaOSqvCATs0bYyycDheWNS3Z6XhXJzLdDRq2eTnhoU52CORsKU0feXwYcj0x
-         cxEnRsXLShbQ98fWbtV4ejkL9rFFFsxca17lA3FGonzmofkUfMnZCceUE/BQUTZmDvBw
-         VXRg==
+        bh=YF+Mg3isX0cmFE8kubGGohFjw0/ZIrD04XqOFqTxa8s=;
+        b=yORThYXXKe6JRm/6MfU8D9cvG7bOA5CmQ3PkjWGcTZgibRd9xsrtb8M8dl6uxMHphB
+         h58NsYjsW17U/CEmU+uy3LS03WGBZqV8QlgtYI7T/lAna06RV7HmACuCKQvXJvJ/jcvG
+         xJZhG7mFYNRRtyCmRvCHPOk+YQlu+CXwH03nWtT4LCd6CXNf0SxAghP3ogRI2d//h3bA
+         9gH49+XWbrZQBRTxSB5D/x0qf54PuLrPayzN0tR63O9Ynsg242zVNIcZri7xcYPSovPp
+         uP9Fw42jE/qEw+apMh9nTY7fQ4pugBAOha/W3CvQcd+ANnkUvg1Tzb/CzuRhZoM5oscV
+         aSCw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=aiEvYoIw;
+       dkim=pass header.i=@linaro.org header.s=google header.b=Kxap+hbk;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id w17-20020a05620a0e9100b006b94021cf04si8235365qkm.366.2022.09.01.08.01.53
+        by mx.google.com with ESMTPS id s9-20020a252d49000000b006959f221826si8472012ybe.99.2022.09.01.08.05.04
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 01 Sep 2022 08:01:53 -0700 (PDT)
+        Thu, 01 Sep 2022 08:05:04 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=aiEvYoIw;
+       dkim=pass header.i=@linaro.org header.s=google header.b=Kxap+hbk;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:52598 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:46874 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1oTlhZ-0005hi-9O
-	for alex.bennee@linaro.org; Thu, 01 Sep 2022 11:01:53 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:54476)
+	id 1oTlke-00008j-2Y
+	for alex.bennee@linaro.org; Thu, 01 Sep 2022 11:05:04 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:47796)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jean-philippe@linaro.org>)
- id 1oTlh9-0005fN-7C
- for qemu-arm@nongnu.org; Thu, 01 Sep 2022 11:01:27 -0400
-Received: from mail-wr1-x434.google.com ([2a00:1450:4864:20::434]:37702)
+ id 1oTljr-00004z-UI
+ for qemu-arm@nongnu.org; Thu, 01 Sep 2022 11:04:24 -0400
+Received: from mail-wr1-x42a.google.com ([2a00:1450:4864:20::42a]:39509)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <jean-philippe@linaro.org>)
- id 1oTlh5-0003bn-16
- for qemu-arm@nongnu.org; Thu, 01 Sep 2022 11:01:26 -0400
-Received: by mail-wr1-x434.google.com with SMTP id n17so22737365wrm.4
- for <qemu-arm@nongnu.org>; Thu, 01 Sep 2022 08:01:22 -0700 (PDT)
+ id 1oTljl-0004H4-E5
+ for qemu-arm@nongnu.org; Thu, 01 Sep 2022 11:04:15 -0400
+Received: by mail-wr1-x42a.google.com with SMTP id az27so22762022wrb.6
+ for <qemu-arm@nongnu.org>; Thu, 01 Sep 2022 08:04:08 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=in-reply-to:content-disposition:mime-version:references:message-id
  :subject:cc:to:from:date:from:to:cc;
- bh=OgCHwfXoVgRL+SmzB8hEajq34UrKRayOSy2P3ivNm28=;
- b=aiEvYoIwReHj3+E7PHR2ZBqGYv5fmz6674WH8keK5PsfRAJvzAcmJlCcfX2JwXJaJ/
- M4f5nn8Hnya0008c2HhhwJX+0xv6FodsqNq93pwRdA9oYpGgJ3lJhCXQySgBmEn2kzv1
- /glYFrovjjAXG/K6dbLYgGMZvaYMlG71hPe+RKJf9RLzky5BhE+pTRy4+riSglhFim8b
- GvUsQBPF2jj06IHKt1rpaX3zza0dq6anDmMochz213k0Uccf0KEcXL4snZfuaukIWLc/
- r4UohYE3vjHhsWXUKFx3zjcA1yniStTYilgjnbjtJZPLjDlO4fiTPl8mX9hJvBarNRYt
- pnHQ==
+ bh=YF+Mg3isX0cmFE8kubGGohFjw0/ZIrD04XqOFqTxa8s=;
+ b=Kxap+hbkbIlFtRWGhlMx8DKVsrvcBF21AXSumILvJKtFpcsaf/uf2KoPEvsrEqwBTj
+ FPtXZ/w3NCFNaE5RNMtnQ9bPzigF64DijwIlYjZEXCl2qX464wObFQLXrk78ecV8YiIR
+ mnt7YKK0Tsasu8W3+NBiEEJSQXPu65Q+y+LoHNjLYENucGAmv/27X7Kexlns2gTg3w2I
+ 9+F3C3DwJUO6PUqIIfbSxyBRronX1ngddSHUxQ+jSmJSCknH8M3UP2b8mlcl7MVFdi/w
+ eZzRYPxxpfGJmnoBrKDnPfp9H3saPLEZoiIRvGAiWc938StgT4WdoWQWqpy+qxdnGyOl
+ 69xQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=in-reply-to:content-disposition:mime-version:references:message-id
  :subject:cc:to:from:date:x-gm-message-state:from:to:cc;
- bh=OgCHwfXoVgRL+SmzB8hEajq34UrKRayOSy2P3ivNm28=;
- b=NHFrfyZ5HsZfnNYlmzySzII58PBMcFDcKxXG33t8A5fxYHSkLoAnNw96dJ4nh/BPL1
- nJ7H8/7VncEIWsT8Sp7ZxFCX3YBmgnmBGeFGISTAqkacO3n5wCx8LQn+20ejYmW6Vto7
- Tykb1Wd8LgKytPaYS2QH7nnzarKanZ9XyM2wyg+NXSeuOY3y7y4SNHvCtwGY2TCLIZ60
- wr4b7i/uXMutO4rQFcMdjgclLlGd74jRj/cpIIdBerwyzJ9H/kE5CxMrS16hfNbsyzpP
- MHpFyXLofb/ftt50PCsumuUG56L9311l0zd1RO3Zy9Kn4JyiS8Z0qOQS3DHzqbiW4E/X
- 146A==
-X-Gm-Message-State: ACgBeo0hKcbZlbpacB/oA1u0SQKhC68DAQKPtIreoo7JavEMpn6K1a+K
- t2S0B4sZKYhAHTuZSqbwU2Awiw==
-X-Received: by 2002:adf:e74d:0:b0:226:d514:8c29 with SMTP id
- c13-20020adfe74d000000b00226d5148c29mr12930651wrn.664.1662044481355; 
- Thu, 01 Sep 2022 08:01:21 -0700 (PDT)
+ bh=YF+Mg3isX0cmFE8kubGGohFjw0/ZIrD04XqOFqTxa8s=;
+ b=0MbR5j5OFNKelBJHV2IWBeqmnwF/IiF3lV4fykg5ByAhNwN2BiuvP4Oz4DJLLjwFMP
+ uRsi1+G061fQb/TreYIIsBKDgwSLCfNv5shjyC7hOUtBVYbkcZbkr9C2QYsrxZfQ1d0c
+ KBLQYWyxbgPkYcIKuviUUoqXQA0XJN4KfCfrZd9mI57djBzBILJGKAZHdRYxexu0/rhz
+ o11nAxs8zvoVOuTfvVm5NPBitVjgDAfeKVX/B27abHTIXPCEdKIEnb3GBkS/bOpJ7Gml
+ ZPPu9NWensUh7JrzLxUgfqqEZKU/Fi9f5ulHekOCGUVkppVuoUIxwRmRRWbR2ozhfbKE
+ vNxQ==
+X-Gm-Message-State: ACgBeo1EM0Dw9xjoZ7VUqwsM1WnZtM49ZlX3au6AtJpVFhIAiMCxueAu
+ k7iLCeVpvmV+FghChPioF6A5GA==
+X-Received: by 2002:a05:6000:78b:b0:226:d10f:1c3 with SMTP id
+ bu11-20020a056000078b00b00226d10f01c3mr14081897wrb.149.1662044647830; 
+ Thu, 01 Sep 2022 08:04:07 -0700 (PDT)
 Received: from myrica (cpc92880-cmbg19-2-0-cust679.5-4.cable.virginm.net.
  [82.27.106.168]) by smtp.gmail.com with ESMTPSA id
- z7-20020a05600c0a0700b003a5c1e916c8sm14148840wmp.1.2022.09.01.08.01.20
+ az19-20020a05600c601300b003a342933727sm6075783wmb.3.2022.09.01.08.04.07
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 01 Sep 2022 08:01:21 -0700 (PDT)
-Date: Thu, 1 Sep 2022 16:01:18 +0100
+ Thu, 01 Sep 2022 08:04:07 -0700 (PDT)
+Date: Thu, 1 Sep 2022 16:04:04 +0100
 From: Jean-Philippe Brucker <jean-philippe@linaro.org>
 To: Peter Maydell <peter.maydell@linaro.org>
 Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, robh+dt@kernel.org,
  eauger@redhat.com
-Subject: Re: [PATCH 09/10] hw/arm/virt: Fix devicetree warnings about the
- SMMU node
-Message-ID: <YxDJPlKkCjxxRC2q@myrica>
+Subject: Re: [PATCH 10/10] hw/arm/virt: Fix devicetree warnings about the
+ virtio-iommu node
+Message-ID: <YxDJ5FE4zXSQW10p@myrica>
 References: <20220824155113.286730-1-jean-philippe@linaro.org>
- <20220824155113.286730-10-jean-philippe@linaro.org>
- <CAFEAcA96dPtH2tAotFCdkR1CzZHU6bAnNyUXqKUrNh++5Ecd+Q@mail.gmail.com>
+ <20220824155113.286730-11-jean-philippe@linaro.org>
+ <CAFEAcA-Kv16weckhxM-mQrwiPZa5JMY4YkXcD5UfCzDKr4xGtQ@mail.gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <CAFEAcA96dPtH2tAotFCdkR1CzZHU6bAnNyUXqKUrNh++5Ecd+Q@mail.gmail.com>
-Received-SPF: pass client-ip=2a00:1450:4864:20::434;
- envelope-from=jean-philippe@linaro.org; helo=mail-wr1-x434.google.com
+In-Reply-To: <CAFEAcA-Kv16weckhxM-mQrwiPZa5JMY4YkXcD5UfCzDKr4xGtQ@mail.gmail.com>
+Received-SPF: pass client-ip=2a00:1450:4864:20::42a;
+ envelope-from=jean-philippe@linaro.org; helo=mail-wr1-x42a.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -124,33 +124,46 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: mAc48C9X/PSw
+X-TUID: 2Uj66tYh/DcW
 
-On Wed, Aug 24, 2022 at 08:45:05PM +0100, Peter Maydell wrote:
+On Wed, Aug 24, 2022 at 08:51:18PM +0100, Peter Maydell wrote:
 > On Wed, 24 Aug 2022 at 16:51, Jean-Philippe Brucker
 > <jean-philippe@linaro.org> wrote:
 > >
-> > dt-validate reports three issues in the SMMU device-tree node:
+> > dt-validate and dtc throw a few warnings when parsing the virtio-iommu
+> > node:
 > >
-> >   smmuv3@9050000: $nodename:0: 'smmuv3@9050000' does not match '^iommu@[0-9a-f]*'
-> >   smmuv3@9050000: interrupt-names: 'oneOf' conditional failed, one must be fixed:
-> >         ['eventq', 'priq', 'cmdq-sync', 'gerror'] is too long
-> >         'combined' was expected
-> >         'gerror' was expected
-> >         'gerror' is not one of ['cmdq-sync', 'priq']
-> >   smmuv3@9050000: 'clock-names', 'clocks' do not match any of the regexes: 'pinctrl-[0-9]+'
-> >   From schema: linux/Documentation/devicetree/bindings/iommu/arm,smmu-v3.yaml
+> >   pcie@10000000: virtio_iommu@16:compatible: ['virtio,pci-iommu'] does not contain items matching the given schema
+> >   pcie@10000000: Unevaluated properties are not allowed (... 'virtio_iommu@16' were unexpected)
+> >   From schema: linux/Documentation/devicetree/bindings/pci/host-generic-pci.yaml
+> >   pcie@10000000: virtio_iommu@16:compatible: ['virtio,pci-iommu'] does not contain items matching the given schema
+> >   From schema: dtschema/schemas/pci/pci-bus.yaml
 > >
-> > Fix them by:
-> > * changing the node name
-> > * reordering the IRQs
-> > * removing the clock properties which are not expected for the SMMU node
+> >   Warning (pci_device_reg): /pcie@10000000/virtio_iommu@16: PCI unit address format error, expected "2,0"
+> >
+> > The compatible property for a PCI child node should follow the rules
+> > from "PCI Bus Binding to: IEEE Std 1275-1994". It should contain the
+> > Vendor ID and Device ID (or class code).
+> >
+> > The unit-name should be "device,function".
+> >
+> > Signed-off-by: Jean-Philippe Brucker <jean-philippe@linaro.org>
+> > ---
+> > Note that this doesn't follow
+> > linux/Documentation/devicetree/bindings/virtio/iommu.txt, I'll update
+> > that document when converting it to yaml, hopefully this Linux cycle.
+> > The "virtio,pci-iommu" compatible string is not actually used by any
+> > driver and only QEMU implements it, so we can get rid of it.
 > 
-> Why does dt-validate insist on a fixed interrupt order here?
+> I'm not sure you can just change the compat string like that,
+> unless you can guarantee that nobody anywhere has ever
+> looked for it in a dtb. Also, "virtio,pci-iommu" is much
+> clearer than "pci1af4,1057"...
 
-I think the binding can be relaxed, since the driver must always look at
-interrupt-names and can't assume a specific order (given that all except
-gerror are now optional).
+I'm pretty sure nobody ever looked for it, but can't guarantee it. And yes
+the PCI notation is hideous but that's what the standard requires. So I
+think changing this to 'compatible = "virtio,pci-iommu", "pci1af4,1057"'
+would be better.
 
 Thanks,
 Jean

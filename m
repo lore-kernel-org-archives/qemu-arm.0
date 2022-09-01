@@ -1,119 +1,108 @@
-Received: by 2002:a17:906:1c87:0:0:0:0 with SMTP id g7csp2316852ejh;
-        Tue, 30 Aug 2022 05:31:01 -0700 (PDT)
-X-Google-Smtp-Source: AA6agR6hLSWsaXG/KhzpjrhAy4WhaYSiL15UAis6/gfLCCHVNn4cf+8+gkqVBQbxKIVEHuMtb5yg
-X-Received: by 2002:a05:622a:100d:b0:344:6577:db0 with SMTP id d13-20020a05622a100d00b0034465770db0mr14011220qte.17.1661862661787;
-        Tue, 30 Aug 2022 05:31:01 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1661862661; cv=none;
+Received: by 2002:a17:906:1c87:0:0:0:0 with SMTP id g7csp291155ejh;
+        Thu, 1 Sep 2022 05:15:47 -0700 (PDT)
+X-Google-Smtp-Source: AA6agR4mByaouE/9uFqlJKGHy42KvjOe42bH4Q+NKUorcu3nEpHVvWCwuxaMMih0aq3x1dzj7+gW
+X-Received: by 2002:a05:622a:174f:b0:344:5e57:9686 with SMTP id l15-20020a05622a174f00b003445e579686mr23356308qtk.548.1662034547054;
+        Thu, 01 Sep 2022 05:15:47 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1662034547; cv=none;
         d=google.com; s=arc-20160816;
-        b=bnsrVhlXgNGJa0IwVlyCxlWJZvMThSI0bx4StxJ2/vz3cm4akqI9oyYq5dt1m7qVuL
-         +yluj43+HGu2V0yW+6N1Pg2wGuN0Xv4qDJtlygjSo6wnvn3Qnlw4d6zJXLlA4qDmg5LV
-         MCa/tuiZGx+B9ag66EqKKT7LbF7a0e4M/ru7FPC87iIdUKbsfhtXHQu1tcX4HrWZUIPK
-         qiM1hg1abwHoayecpbZbhdjO7x3H4pByHve+rbHHsLVqQeOEB4Q0tIKnFemvyK04XsdY
-         SulEZ+jfMsmtw3HMR/q+YeocILpXF1Nz1tmpSNrhcLoErTgasMCKejyzzaOMh5fgIQL7
-         L4SA==
+        b=OPWNgWhgpzjkSI7ERj+xx7ALEcLehyXWxj/8rbxkTMGoync3J2htmzic5Z/qx2Ttv3
+         ipO2lufFfkYF8hVuheo1Ed1QKJYA4b8pYy1ook7ulCNzFxlr4kcHm0l+xTj2Oan6sNs7
+         j5DWxJ+Ew5VcYWe5CZAbeEI3Fg9RMtuwMVHMaFQRgv8CXjKQDAMO6TwbZXW4Nu2qMRSn
+         4wlIXGuaUQd/aBG5k0I5FsH/s1iWhpWUmFKgP2SZvJQzIcMEUKtFX4X0fZmkvi0x3OvN
+         WWhghLN7YT3o+D6efH2A0wrAT3RiXnBJPV0pBvbnEZWeLu9xqLrPlTq3HVR+9r9RRMhd
+         jBGw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=from:reply-to:sender:errors-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:in-reply-to:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=xnvS/CYfuTz1/ilpxt5qGgQ0++4Q2pQvCLjkghcnA6Q=;
-        b=E0iN9LnTfDHmHkKFZkz0VwV2oesmXrmp++eu16Y+Xid77LyB8YmPzLcG98Gh3mAvkA
-         Dn+NDLpk9oXaBWI1PB7+NHd1IWcz73OrWgoHUDdXgTieWrHm7pwL3CTlNo/8Ce0fVJLE
-         mRC6L7c2HZeYxg5tbkAT3ttKW8agC6AZXA4F1oVZm7VeerLRJzZGk9trOTW9CbcCggKo
-         GqMR+pEKUOA5NfBwIAyOgVYr+fcg6JA03J+W1SGALkIqKWTnii1Dl+NbipSFlcyNq6pO
-         tuXzwK0cPWC37KuigJKJaO1rAoIwaKG1W2Znjgm77G0iu3p5H15gCJUb/Q61m9BCxnuT
-         Eq1Q==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=g/aIzI+GnRYsT9J3xhVYtxUQAaj8WEFfhS3yV7LCLU4=;
+        b=HxH6BVhCfvLr2b9lF2YuUlj4mLTW13pNLrudKFde5W3Wm0cvsw2mjdnXmrjgf6Cl35
+         IMsvttCkAbz7FQloMT8G1ZFjf+Khtc2s/LqX2OdF/Hb53QPtjdins0zN5pcdiTmAhDzu
+         AYWX09wSrcBkR7rJ3IDK8mUG4TglPNvAh+9F+0gQdMi4pBhVlJxCc79+VkibsNjqjGv2
+         kkqzctBRr+YtwJBe3d8Ztjswal8P3XxjH+zabXmpeV+xqTxjFmUDQPM5fzpz/CCMQ3wM
+         AFcoHYE6mnx0gvd8Qb69JO9i74o0rs8sD0fv5j6xgf4UvHMDX1QdzyoqrqyUK/9S5Dgg
+         1smw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20210112 header.b=JI8Rkx6f;
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=JLkgcKuf;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e21-20020ac84915000000b003430651483bsi5092141qtq.289.2022.08.30.05.31.01
+        by mx.google.com with ESMTPS id fg7-20020a05622a580700b00344f395617dsi9659672qtb.242.2022.09.01.05.15.46
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 30 Aug 2022 05:31:01 -0700 (PDT)
+        Thu, 01 Sep 2022 05:15:47 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20210112 header.b=JI8Rkx6f;
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=JLkgcKuf;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
-Received: from localhost ([::1]:57480 helo=lists1p.gnu.org)
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:45542 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1oT0OT-00042L-6R
-	for alex.bennee@linaro.org; Tue, 30 Aug 2022 08:31:01 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:58020)
+	id 1oTj6o-00028w-Ge
+	for alex.bennee@linaro.org; Thu, 01 Sep 2022 08:15:46 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:59020)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1oT0N9-0003ym-BY; Tue, 30 Aug 2022 08:29:39 -0400
-Received: from mail-pg1-x536.google.com ([2607:f8b0:4864:20::536]:41730)
+ (Exim 4.90_1) (envelope-from <marcandre.lureau@gmail.com>)
+ id 1oTico-0007Xo-65; Thu, 01 Sep 2022 07:44:51 -0400
+Received: from mail-lj1-x22d.google.com ([2a00:1450:4864:20::22d]:39529)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1oT0N7-0002D9-8i; Tue, 30 Aug 2022 08:29:38 -0400
-Received: by mail-pg1-x536.google.com with SMTP id 202so10530567pgc.8;
- Tue, 30 Aug 2022 05:29:36 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <marcandre.lureau@gmail.com>)
+ id 1oTicl-0000XZ-Bn; Thu, 01 Sep 2022 07:44:45 -0400
+Received: by mail-lj1-x22d.google.com with SMTP id bn9so17576980ljb.6;
+ Thu, 01 Sep 2022 04:44:41 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :sender:from:to:cc;
- bh=xnvS/CYfuTz1/ilpxt5qGgQ0++4Q2pQvCLjkghcnA6Q=;
- b=JI8Rkx6fcj1PkCxKlBnF3UNgcpWzSBbscXnBpsGtFo6q5xDLnw0raZ+fp4ZRXVhzRr
- Tg/VUy9bEljJ+Tqxlm4CBvBvJ0gaFdzCoRahgoscZm+u6ws+EWobpISq8k0CzEAe6vrj
- ROfvOiwbBB2XA9va79zJ/R4NzmUgUOuBfOwOV0uPiwPqmtYEN4Nk6Mvc251F6iCFQrFX
- qBx3ZEmKRoyM6pj2b3EDj0E8+Wt+CcFnUWJCtKzQVxtp67gAGPgx2P9PSkQex11pMHQk
- glxgdi1LRs1clTuIWc3NmUjgQpEtVg1h7oBzMd+RExPI6QuBSvBFt8DI3zszyPftzpG0
- +xbQ==
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date;
+ bh=g/aIzI+GnRYsT9J3xhVYtxUQAaj8WEFfhS3yV7LCLU4=;
+ b=JLkgcKufyI5t6GropYGPN47qd3ed50TkEp3+uw+ilc89HR3FmrSWTRbH0jWfYQIdA7
+ tj1Pk16ecfuxqHPgTeaMdmMimbvFUmUVHvobt0tP0lN3xoIs5uKonvnJYo/c/hKXaOtJ
+ EiuYx97DHmn1GVkJ7LaoitwzmQvw2qw99289hbkfrGq40etmEJO7W8tp+hTUR3WdYrA8
+ K1OEVYzJ++APWa2LJwoGztLl7rJrls/12a/zOCOV7AUeRra4mczIHEv32cSwkEUmySh/
+ 8+loqGF1NUGqYliq0NeNR9a9kHv3V99PnQJ9SHkDF8eYDL68bLR7LgPN6xWetlejl0dh
+ Y54g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :sender:x-gm-message-state:from:to:cc;
- bh=xnvS/CYfuTz1/ilpxt5qGgQ0++4Q2pQvCLjkghcnA6Q=;
- b=tVFrosVTH3Tb5G5m/yHRfio+sPMbzHcDlUhlBA55djk0Iv4jA9aeBQ//8vtIxfkqOH
- zyZDpefZ42pI67fNRypF22IfTepfJ7rrRIVVvTYdD120p9D3JYFdUPuvJyaWj4TMDoxW
- hA/mXlLTI7UDKRM9DxrKQWe3shjLgTgQl8PhRrxFknNHIw5miJy0BJxCW1/WCoy3YIkx
- 7SiYubPfq8TZ/Jw1EQontdaZRgsRVSjxYAc7eGt+9AGPGhmavQnH5WjvJvWfsJwhrC5K
- jRtVoKadeI5yMclNlfPbh59Q4VI8gDaZYTdFrgc/gTZN4rJD7l+0sg07T/mlgm9DQNIm
- P9nQ==
-X-Gm-Message-State: ACgBeo0dvzZubBTOAE57mW2iN8vaLKSXLRX56hYZQtZnphIh2c+hydan
- VFe7Cp+1zwSOxOmvOcm3VZ4=
-X-Received: by 2002:a62:1d86:0:b0:52d:9df0:2151 with SMTP id
- d128-20020a621d86000000b0052d9df02151mr20836611pfd.33.1661862575591; 
- Tue, 30 Aug 2022 05:29:35 -0700 (PDT)
-Received: from [192.168.1.115] ([185.126.107.38])
- by smtp.gmail.com with ESMTPSA id
- n18-20020a170902d2d200b00174dccaf31esm3932928plc.122.2022.08.30.05.29.33
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 30 Aug 2022 05:29:35 -0700 (PDT)
-Message-ID: <315989e7-a295-fa73-c686-066a2090aca8@amsat.org>
-Date: Tue, 30 Aug 2022 14:29:30 +0200
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date;
+ bh=g/aIzI+GnRYsT9J3xhVYtxUQAaj8WEFfhS3yV7LCLU4=;
+ b=45afum4wzu9fgShh7SC2CQ+9fxc/v+2FzeXzEZ42FHfyA5yTAq/s7tfE7BbuR3st0z
+ H5BuliSvwGqL4mKkYxU/gXWT6O/uTGVTeoVDktZpzvqv5ogQ1M/eE6+3KTbq3YyVdulL
+ cF4c86QBFb0dx/aONoHMPHhqBiQaEqHV4Yk9pcaajFTrmzCW+/7CBDhdHwYNPRUrKi9E
+ Ywj8UykzBEPwCB0JsyEMk1WtfpQmmi6PRT0ruaAjaR/03toi8zxbXdg9UaSSKLCcLo+7
+ IPl4LUgRy/9rECh/DZUiPrsyQRhrcZTk1SHCr0ErDaNV58RKTh31RmZhS0LkHg8HWoId
+ WuCA==
+X-Gm-Message-State: ACgBeo3HMFcHcZ/LO9ILZ3/x0LDvpRiBdh0ld5pWfcR1n5G4CCg3hdRG
+ zIETla7vWvpmj2iwRmggRZuYu8I9xqa2UKE1+jk=
+X-Received: by 2002:a2e:596:0:b0:264:1a1e:469b with SMTP id
+ 144-20020a2e0596000000b002641a1e469bmr5847560ljf.463.1662032679673; Thu, 01
+ Sep 2022 04:44:39 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:91.0)
- Gecko/20100101 Thunderbird/91.13.0
-Subject: Re: [PATCH 2/2] target/arm: Make boards pass base address to
- armv7m_load_kernel()
-Content-Language: en-US
-To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
-Cc: Shiny Saana <shinysaana@gmail.com>,
- Alistair Francis <alistair@alistair23.me>
-References: <20220823160417.3858216-1-peter.maydell@linaro.org>
- <20220823160417.3858216-3-peter.maydell@linaro.org>
-In-Reply-To: <20220823160417.3858216-3-peter.maydell@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::536;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-pg1-x536.google.com
-X-Spam_score_int: -14
-X-Spam_score: -1.5
-X-Spam_bar: -
-X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.25,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.25, NICE_REPLY_A=-0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
+References: <20220824094029.1634519-1-bmeng.cn@gmail.com>
+ <20220824094029.1634519-45-bmeng.cn@gmail.com>
+In-Reply-To: <20220824094029.1634519-45-bmeng.cn@gmail.com>
+From: =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@gmail.com>
+Date: Thu, 1 Sep 2022 15:44:28 +0400
+Message-ID: <CAJ+F1CLD0P+neLMxD1hZuVkpR0TafNCY0y+rVrTsQvC=XNFhTQ@mail.gmail.com>
+Subject: Re: [PATCH 44/51] tests/qtest: microbit-test: Fix socket access for
+ win32
+To: Bin Meng <bmeng.cn@gmail.com>
+Cc: qemu-devel@nongnu.org, Bin Meng <bin.meng@windriver.com>, 
+ Joel Stanley <joel@jms.id.au>, Laurent Vivier <lvivier@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, 
+ Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
+ qemu-arm@nongnu.org
+Content-Type: multipart/alternative; boundary="0000000000007a23d505e79c23d5"
+Received-SPF: pass client-ip=2a00:1450:4864:20::22d;
+ envelope-from=marcandre.lureau@gmail.com; helo=mail-lj1-x22d.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -128,223 +117,181 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Reply-to:  =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-From:  =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= via <qemu-arm@nongnu.org>
-X-TUID: 15ZJ4OOFhGzX
+X-TUID: XCqxAVg3+98R
 
-On 23/8/22 18:04, Peter Maydell wrote:
-> Currently armv7m_load_kernel() takes the size of the block of memory
-> where it should load the initial guest image, but assumes that it
-> should always load it at address 0.  This happens to be true of all
-> our M-profile boards at the moment, but it isn't guaranteed to always
-> be so: M-profile CPUs can be configured (via init-svtor and
-> init-nsvtor, which match equivalent hardware configuration signals)
-> to have the initial vector table at any address, not just zero.  (For
-> instance the Teeny board has the boot ROM at address 0x0200_0000.)
-> 
-> Add a base address argument to armv7m_load_kernel(), so that
-> callers now pass in both base address and size. All the current
-> callers pass 0, so this is not a behaviour change.
-> 
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+--0000000000007a23d505e79c23d5
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+On Wed, Aug 24, 2022 at 3:27 PM Bin Meng <bmeng.cn@gmail.com> wrote:
+
+> From: Bin Meng <bin.meng@windriver.com>
+>
+> Sockets on Windows do not use *nix-style file descriptors, so
+> write()/read()/close() do not work on Windows.
+>
+> Switch over to use send()/recv()/closesocket() which work with
+> sockets on all platforms.
+>
+> Signed-off-by: Bin Meng <bin.meng@windriver.com>
+>
+
+Reviewed-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
+
 
 > ---
-> I thought about having armv7m_load_kernel() be "clever" and ask the
-> CPU what init-svtor/init-nsvtor were set to, but that seems like it
-> might have unanticipated consequences.  "Just pass the base address"
-> is simpler and is how A-profile does it (though for A-profile it's
-> the loader_start field in struct arm_boot_info rather than an
-> extra argument).
-> ---
->   include/hw/arm/boot.h     | 5 ++++-
->   hw/arm/armv7m.c           | 5 +++--
->   hw/arm/aspeed.c           | 1 +
->   hw/arm/microbit.c         | 2 +-
->   hw/arm/mps2-tz.c          | 2 +-
->   hw/arm/mps2.c             | 2 +-
->   hw/arm/msf2-som.c         | 2 +-
->   hw/arm/musca.c            | 3 ++-
->   hw/arm/netduino2.c        | 2 +-
->   hw/arm/netduinoplus2.c    | 2 +-
->   hw/arm/stellaris.c        | 2 +-
->   hw/arm/stm32vldiscovery.c | 2 +-
->   12 files changed, 18 insertions(+), 12 deletions(-)
-> 
-> diff --git a/include/hw/arm/boot.h b/include/hw/arm/boot.h
-> index c7ebae156ec..f18cc3064ff 100644
-> --- a/include/hw/arm/boot.h
-> +++ b/include/hw/arm/boot.h
-> @@ -25,13 +25,16 @@ typedef enum {
->    * armv7m_load_kernel:
->    * @cpu: CPU
->    * @kernel_filename: file to load
-> + * @mem_base: base address to load image at (should be where the
-> + *            CPU expects to find its vector table on reset)
->    * @mem_size: mem_size: maximum image size to load
->    *
->    * Load the guest image for an ARMv7M system. This must be called by
->    * any ARMv7M board. (This is necessary to ensure that the CPU resets
->    * correctly on system reset, as well as for kernel loading.)
->    */
-> -void armv7m_load_kernel(ARMCPU *cpu, const char *kernel_filename, int mem_size);
-> +void armv7m_load_kernel(ARMCPU *cpu, const char *kernel_filename,
-> +                        hwaddr mem_base, int mem_size);
->   
->   /* arm_boot.c */
->   struct arm_boot_info {
-> diff --git a/hw/arm/armv7m.c b/hw/arm/armv7m.c
-> index fa4c2c735da..50a9507c0bd 100644
-> --- a/hw/arm/armv7m.c
-> +++ b/hw/arm/armv7m.c
-> @@ -568,7 +568,8 @@ static void armv7m_reset(void *opaque)
->       cpu_reset(CPU(cpu));
->   }
->   
-> -void armv7m_load_kernel(ARMCPU *cpu, const char *kernel_filename, int mem_size)
-> +void armv7m_load_kernel(ARMCPU *cpu, const char *kernel_filename,
-> +                        hwaddr mem_base, int mem_size)
->   {
->       ssize_t image_size;
->       uint64_t entry;
-> @@ -588,7 +589,7 @@ void armv7m_load_kernel(ARMCPU *cpu, const char *kernel_filename, int mem_size)
->                                    &entry, NULL, NULL,
->                                    NULL, 0, EM_ARM, 1, 0, as);
->           if (image_size < 0) {
-> -            image_size = load_image_targphys_as(kernel_filename, 0,
-> +            image_size = load_image_targphys_as(kernel_filename, mem_base,
->                                                   mem_size, as);
->           }
->           if (image_size < 0) {
-> diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
-> index b3bbe06f8fa..bc3ecdb6199 100644
-> --- a/hw/arm/aspeed.c
-> +++ b/hw/arm/aspeed.c
-> @@ -1430,6 +1430,7 @@ static void aspeed_minibmc_machine_init(MachineState *machine)
->   
->       armv7m_load_kernel(ARM_CPU(first_cpu),
->                          machine->kernel_filename,
-> +                       0,
->                          AST1030_INTERNAL_FLASH_SIZE);
->   }
->   
-> diff --git a/hw/arm/microbit.c b/hw/arm/microbit.c
-> index e9494334ce7..50df3620882 100644
-> --- a/hw/arm/microbit.c
-> +++ b/hw/arm/microbit.c
-> @@ -57,7 +57,7 @@ static void microbit_init(MachineState *machine)
->                                           mr, -1);
->   
->       armv7m_load_kernel(ARM_CPU(first_cpu), machine->kernel_filename,
-> -                       s->nrf51.flash_size);
-> +                       0, s->nrf51.flash_size);
->   }
->   
->   static void microbit_machine_class_init(ObjectClass *oc, void *data)
-> diff --git a/hw/arm/mps2-tz.c b/hw/arm/mps2-tz.c
-> index 4017392bf5a..394192b9b20 100644
-> --- a/hw/arm/mps2-tz.c
-> +++ b/hw/arm/mps2-tz.c
-> @@ -1197,7 +1197,7 @@ static void mps2tz_common_init(MachineState *machine)
->       }
->   
->       armv7m_load_kernel(ARM_CPU(first_cpu), machine->kernel_filename,
-> -                       boot_ram_size(mms));
-> +                       0, boot_ram_size(mms));
->   }
->   
->   static void mps2_tz_idau_check(IDAUInterface *ii, uint32_t address,
-> diff --git a/hw/arm/mps2.c b/hw/arm/mps2.c
-> index bb76fa68890..a86a994dbac 100644
-> --- a/hw/arm/mps2.c
-> +++ b/hw/arm/mps2.c
-> @@ -450,7 +450,7 @@ static void mps2_common_init(MachineState *machine)
->                                     mmc->fpga_type == FPGA_AN511 ? 47 : 13));
->   
->       armv7m_load_kernel(ARM_CPU(first_cpu), machine->kernel_filename,
-> -                       0x400000);
-> +                       0, 0x400000);
->   }
->   
->   static void mps2_class_init(ObjectClass *oc, void *data)
-> diff --git a/hw/arm/msf2-som.c b/hw/arm/msf2-som.c
-> index d9f881690e0..a6df473ec90 100644
-> --- a/hw/arm/msf2-som.c
-> +++ b/hw/arm/msf2-som.c
-> @@ -98,7 +98,7 @@ static void emcraft_sf2_s2s010_init(MachineState *machine)
->       sysbus_connect_irq(SYS_BUS_DEVICE(&soc->spi[0]), 1, cs_line);
->   
->       armv7m_load_kernel(ARM_CPU(first_cpu), machine->kernel_filename,
-> -                       soc->envm_size);
-> +                       0, soc->envm_size);
->   }
->   
->   static void emcraft_sf2_machine_init(MachineClass *mc)
-> diff --git a/hw/arm/musca.c b/hw/arm/musca.c
-> index 7a83f7dda7d..6eeee57c9dd 100644
-> --- a/hw/arm/musca.c
-> +++ b/hw/arm/musca.c
-> @@ -597,7 +597,8 @@ static void musca_init(MachineState *machine)
->                                                        "cfg_sec_resp", 0));
->       }
->   
-> -    armv7m_load_kernel(ARM_CPU(first_cpu), machine->kernel_filename, 0x2000000);
-> +    armv7m_load_kernel(ARM_CPU(first_cpu), machine->kernel_filename,
-> +                       0, 0x2000000);
->   }
->   
->   static void musca_class_init(ObjectClass *oc, void *data)
-> diff --git a/hw/arm/netduino2.c b/hw/arm/netduino2.c
-> index 3365da11bf7..83753d53a3f 100644
-> --- a/hw/arm/netduino2.c
-> +++ b/hw/arm/netduino2.c
-> @@ -49,7 +49,7 @@ static void netduino2_init(MachineState *machine)
->       sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), &error_fatal);
->   
->       armv7m_load_kernel(ARM_CPU(first_cpu), machine->kernel_filename,
-> -                       FLASH_SIZE);
-> +                       0, FLASH_SIZE);
->   }
->   
->   static void netduino2_machine_init(MachineClass *mc)
-> diff --git a/hw/arm/netduinoplus2.c b/hw/arm/netduinoplus2.c
-> index 76cea8e4891..515c0816054 100644
-> --- a/hw/arm/netduinoplus2.c
-> +++ b/hw/arm/netduinoplus2.c
-> @@ -50,7 +50,7 @@ static void netduinoplus2_init(MachineState *machine)
->   
->       armv7m_load_kernel(ARM_CPU(first_cpu),
->                          machine->kernel_filename,
-> -                       FLASH_SIZE);
-> +                       0, FLASH_SIZE);
->   }
->   
->   static void netduinoplus2_machine_init(MachineClass *mc)
-> diff --git a/hw/arm/stellaris.c b/hw/arm/stellaris.c
-> index 12c673c9172..a9e96c37f89 100644
-> --- a/hw/arm/stellaris.c
-> +++ b/hw/arm/stellaris.c
-> @@ -1302,7 +1302,7 @@ static void stellaris_init(MachineState *ms, stellaris_board_info *board)
->       create_unimplemented_device("hibernation", 0x400fc000, 0x1000);
->       create_unimplemented_device("flash-control", 0x400fd000, 0x1000);
->   
-> -    armv7m_load_kernel(ARM_CPU(first_cpu), ms->kernel_filename, flash_size);
-> +    armv7m_load_kernel(ARM_CPU(first_cpu), ms->kernel_filename, 0, flash_size);
->   }
->   
->   /* FIXME: Figure out how to generate these from stellaris_boards.  */
-> diff --git a/hw/arm/stm32vldiscovery.c b/hw/arm/stm32vldiscovery.c
-> index 04036da3ee0..67675e952fc 100644
-> --- a/hw/arm/stm32vldiscovery.c
-> +++ b/hw/arm/stm32vldiscovery.c
-> @@ -53,7 +53,7 @@ static void stm32vldiscovery_init(MachineState *machine)
->   
->       armv7m_load_kernel(ARM_CPU(first_cpu),
->                          machine->kernel_filename,
-> -                       FLASH_SIZE);
-> +                       0, FLASH_SIZE);
->   }
->   
->   static void stm32vldiscovery_machine_init(MachineClass *mc)
+>
+>  tests/qtest/microbit-test.c | 10 +++++-----
+>  1 file changed, 5 insertions(+), 5 deletions(-)
+>
+> diff --git a/tests/qtest/microbit-test.c b/tests/qtest/microbit-test.c
+> index b71daae9a9..4bc267020b 100644
+> --- a/tests/qtest/microbit-test.c
+> +++ b/tests/qtest/microbit-test.c
+> @@ -51,7 +51,7 @@ static void uart_rw_to_rxd(QTestState *qts, int sock_fd=
+,
+> const char *in,
+>  {
+>      int i, in_len =3D strlen(in);
+>
+> -    g_assert_true(write(sock_fd, in, in_len) =3D=3D in_len);
+> +    g_assert_true(send(sock_fd, in, in_len, 0) =3D=3D in_len);
+>      for (i =3D 0; i < in_len; i++) {
+>          g_assert_true(uart_wait_for_event(qts, NRF51_UART_BASE +
+>                                                 A_UART_RXDRDY));
+> @@ -77,7 +77,7 @@ static void test_nrf51_uart(void)
+>      char s[10];
+>      QTestState *qts =3D qtest_init_with_serial("-M microbit", &sock_fd);
+>
+> -    g_assert_true(write(sock_fd, "c", 1) =3D=3D 1);
+> +    g_assert_true(send(sock_fd, "c", 1, 0) =3D=3D 1);
+>      g_assert_cmphex(qtest_readl(qts, NRF51_UART_BASE + A_UART_RXD), =3D=
+=3D,
+> 0x00);
+>
+>      qtest_writel(qts, NRF51_UART_BASE + A_UART_ENABLE, 0x04);
+> @@ -97,17 +97,17 @@ static void test_nrf51_uart(void)
+>
+>      qtest_writel(qts, NRF51_UART_BASE + A_UART_STARTTX, 0x01);
+>      uart_w_to_txd(qts, "d");
+> -    g_assert_true(read(sock_fd, s, 10) =3D=3D 1);
+> +    g_assert_true(recv(sock_fd, s, 10, 0) =3D=3D 1);
+>      g_assert_cmphex(s[0], =3D=3D, 'd');
+>
+>      qtest_writel(qts, NRF51_UART_BASE + A_UART_SUSPEND, 0x01);
+>      qtest_writel(qts, NRF51_UART_BASE + A_UART_TXD, 'h');
+>      qtest_writel(qts, NRF51_UART_BASE + A_UART_STARTTX, 0x01);
+>      uart_w_to_txd(qts, "world");
+> -    g_assert_true(read(sock_fd, s, 10) =3D=3D 5);
+> +    g_assert_true(recv(sock_fd, s, 10, 0) =3D=3D 5);
+>      g_assert_true(memcmp(s, "world", 5) =3D=3D 0);
+>
+> -    close(sock_fd);
+> +    closesocket(sock_fd);
+>
+>      qtest_quit(qts);
+>  }
+> --
+> 2.34.1
+>
+>
+>
 
+--=20
+Marc-Andr=C3=A9 Lureau
+
+--0000000000007a23d505e79c23d5
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><div dir=3D"ltr"><br></div><br><div class=3D"gmail_quote">=
+<div dir=3D"ltr" class=3D"gmail_attr">On Wed, Aug 24, 2022 at 3:27 PM Bin M=
+eng &lt;<a href=3D"mailto:bmeng.cn@gmail.com">bmeng.cn@gmail.com</a>&gt; wr=
+ote:<br></div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px=
+ 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex">From: Bin M=
+eng &lt;<a href=3D"mailto:bin.meng@windriver.com" target=3D"_blank">bin.men=
+g@windriver.com</a>&gt;<br>
+<br>
+Sockets on Windows do not use *nix-style file descriptors, so<br>
+write()/read()/close() do not work on Windows.<br>
+<br>
+Switch over to use send()/recv()/closesocket() which work with<br>
+sockets on all platforms.<br>
+<br>
+Signed-off-by: Bin Meng &lt;<a href=3D"mailto:bin.meng@windriver.com" targe=
+t=3D"_blank">bin.meng@windriver.com</a>&gt;<br></blockquote><div><br></div>=
+<div>Reviewed-by: Marc-Andr=C3=A9 Lureau &lt;<a href=3D"mailto:marcandre.lu=
+reau@redhat.com">marcandre.lureau@redhat.com</a>&gt;</div><div>=C2=A0<br></=
+div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;bor=
+der-left:1px solid rgb(204,204,204);padding-left:1ex">
+---<br>
+<br>
+=C2=A0tests/qtest/microbit-test.c | 10 +++++-----<br>
+=C2=A01 file changed, 5 insertions(+), 5 deletions(-)<br>
+<br>
+diff --git a/tests/qtest/microbit-test.c b/tests/qtest/microbit-test.c<br>
+index b71daae9a9..4bc267020b 100644<br>
+--- a/tests/qtest/microbit-test.c<br>
++++ b/tests/qtest/microbit-test.c<br>
+@@ -51,7 +51,7 @@ static void uart_rw_to_rxd(QTestState *qts, int sock_fd, =
+const char *in,<br>
+=C2=A0{<br>
+=C2=A0 =C2=A0 =C2=A0int i, in_len =3D strlen(in);<br>
+<br>
+-=C2=A0 =C2=A0 g_assert_true(write(sock_fd, in, in_len) =3D=3D in_len);<br>
++=C2=A0 =C2=A0 g_assert_true(send(sock_fd, in, in_len, 0) =3D=3D in_len);<b=
+r>
+=C2=A0 =C2=A0 =C2=A0for (i =3D 0; i &lt; in_len; i++) {<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0g_assert_true(uart_wait_for_event(qts, NR=
+F51_UART_BASE +<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 A_UART_RXDRDY));<br>
+@@ -77,7 +77,7 @@ static void test_nrf51_uart(void)<br>
+=C2=A0 =C2=A0 =C2=A0char s[10];<br>
+=C2=A0 =C2=A0 =C2=A0QTestState *qts =3D qtest_init_with_serial(&quot;-M mic=
+robit&quot;, &amp;sock_fd);<br>
+<br>
+-=C2=A0 =C2=A0 g_assert_true(write(sock_fd, &quot;c&quot;, 1) =3D=3D 1);<br=
+>
++=C2=A0 =C2=A0 g_assert_true(send(sock_fd, &quot;c&quot;, 1, 0) =3D=3D 1);<=
+br>
+=C2=A0 =C2=A0 =C2=A0g_assert_cmphex(qtest_readl(qts, NRF51_UART_BASE + A_UA=
+RT_RXD), =3D=3D, 0x00);<br>
+<br>
+=C2=A0 =C2=A0 =C2=A0qtest_writel(qts, NRF51_UART_BASE + A_UART_ENABLE, 0x04=
+);<br>
+@@ -97,17 +97,17 @@ static void test_nrf51_uart(void)<br>
+<br>
+=C2=A0 =C2=A0 =C2=A0qtest_writel(qts, NRF51_UART_BASE + A_UART_STARTTX, 0x0=
+1);<br>
+=C2=A0 =C2=A0 =C2=A0uart_w_to_txd(qts, &quot;d&quot;);<br>
+-=C2=A0 =C2=A0 g_assert_true(read(sock_fd, s, 10) =3D=3D 1);<br>
++=C2=A0 =C2=A0 g_assert_true(recv(sock_fd, s, 10, 0) =3D=3D 1);<br>
+=C2=A0 =C2=A0 =C2=A0g_assert_cmphex(s[0], =3D=3D, &#39;d&#39;);<br>
+<br>
+=C2=A0 =C2=A0 =C2=A0qtest_writel(qts, NRF51_UART_BASE + A_UART_SUSPEND, 0x0=
+1);<br>
+=C2=A0 =C2=A0 =C2=A0qtest_writel(qts, NRF51_UART_BASE + A_UART_TXD, &#39;h&=
+#39;);<br>
+=C2=A0 =C2=A0 =C2=A0qtest_writel(qts, NRF51_UART_BASE + A_UART_STARTTX, 0x0=
+1);<br>
+=C2=A0 =C2=A0 =C2=A0uart_w_to_txd(qts, &quot;world&quot;);<br>
+-=C2=A0 =C2=A0 g_assert_true(read(sock_fd, s, 10) =3D=3D 5);<br>
++=C2=A0 =C2=A0 g_assert_true(recv(sock_fd, s, 10, 0) =3D=3D 5);<br>
+=C2=A0 =C2=A0 =C2=A0g_assert_true(memcmp(s, &quot;world&quot;, 5) =3D=3D 0)=
+;<br>
+<br>
+-=C2=A0 =C2=A0 close(sock_fd);<br>
++=C2=A0 =C2=A0 closesocket(sock_fd);<br>
+<br>
+=C2=A0 =C2=A0 =C2=A0qtest_quit(qts);<br>
+=C2=A0}<br>
+-- <br>
+2.34.1<br>
+<br>
+<br>
+</blockquote></div><br clear=3D"all"><br>-- <br><div dir=3D"ltr" class=3D"g=
+mail_signature">Marc-Andr=C3=A9 Lureau<br></div></div>
+
+--0000000000007a23d505e79c23d5--

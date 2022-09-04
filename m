@@ -1,112 +1,103 @@
-Received: by 2002:a17:906:1c87:0:0:0:0 with SMTP id g7csp1606815ejh;
-        Sat, 3 Sep 2022 12:35:27 -0700 (PDT)
-X-Google-Smtp-Source: AA6agR6Srffbb1uUFCdiK3ootYrKntVQN4gbFhf0VH9/UPuOhPfYH9nLL631Wf012gJppBl7xH2p
-X-Received: by 2002:ac8:5f12:0:b0:343:6510:ed6f with SMTP id x18-20020ac85f12000000b003436510ed6fmr33537119qta.342.1662233727087;
-        Sat, 03 Sep 2022 12:35:27 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1662233727; cv=none;
+Received: by 2002:a17:906:1c87:0:0:0:0 with SMTP id g7csp1991251ejh;
+        Sun, 4 Sep 2022 11:22:09 -0700 (PDT)
+X-Google-Smtp-Source: AA6agR6qhguOpqKhwF0dgQrx29hKV4Qoqm+HpbYJY6OM8sg7dCB+lLR8lphqnuqzx/X6opjECCXr
+X-Received: by 2002:ac8:5e54:0:b0:344:59a9:865b with SMTP id i20-20020ac85e54000000b0034459a9865bmr36843142qtx.107.1662315728925;
+        Sun, 04 Sep 2022 11:22:08 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1662315728; cv=none;
         d=google.com; s=arc-20160816;
-        b=O8K6vjHQImnJizrty+RaELpGdfogfTqHYrjL+Yve/QOVCv5HGIJFJiNTdf89XijQPq
-         z7kNjT7ACuJHh7LtmYwzSPiwdHUVuwqzdIttzrveqkRvuFor1iQU3umpkrQJ8IYk4Ilf
-         Y5r3HhmXeizmQ4RvwNaJMH4Wlu+LVAXABkPhX2muf4DbntXZfTpmjb+YDb8W8MrSn0Od
-         ZBd03Cu+AL6E7FkX1bKsZ5qEfhkj/8Ho5YpiqEImchnPregTuVxi5CrHjb2qgsRvIFlH
-         atZteCRzX9y9wKrXjZhb2RTz2mldQ1/JEfFjG0DHkmOzCs2/j0O2Q7z111jisppKPy0n
-         TDew==
+        b=ekfBAXMcDOjeKQ1Z6G+ILisDStX0B16U5yuLXPfUpf3aq+g1d2fdbiJAtvrf5enOkJ
+         iGZ63Bv9IswFkpPr2/v/qJBp4qIPR5faYuWTHxgAyGdEMbOwy8lK6fi2+r96gl8YFgHV
+         B40e6hem8581PK8Pw42BIBRyHqCJ7feulzJNfLHM00qud9IZB1oZiyQxMSYbQcZDY7X2
+         EW8u2PB5CTBAx6+/CpfcFDmGfe6QIdFmtTjBBglC9cFweVsHvMuuuujEpgboZvqJXPAK
+         6QBBQq5aFl7wvQa0Cvg9HOoSgJ/Ck88BgCnitFFkDqUhX1HzA8HluWcp4CDhyeLfElAJ
+         i3pw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=HovcpPksbyRH4MetLfjOHLX26QOG2cA8NngwzZBGLTg=;
-        b=IIc8/dCuVyEy+8Cw75acm8rtIwfwcC2WMHBvjaPS+SqttoTrzE+mWfBVVJskPg2juG
-         5gvRXejhk+6zxYyzzT8r9USyPIo6drLysUiQrhffLu5EGlGUqx0x4f04jnNO7eHba1HX
-         LMfMqDFT55byO5S5HlDmaxvHwD+gIUFogAhOftGLtqf2BiPsW12MQmEe7uyhyDWXGYu+
-         tf1X515D23usbsq5577w4cDo0BS8n6iLIg+3Kk8gSfDw2DFH+auiReDsNbA84vip8+nL
-         G28QZmexTN9qc2x1HvY99NE+OMZPb0S3BzpSLaxW3lGzTqqIiZcssO9oAuIXC19w11fZ
-         dIKQ==
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=g3Ys1vqCZKhs9PhWoP2A+7O+kDt8sVZUNlfvVykaMac=;
+        b=c7+Pd8cA0VSKmGafUfzsp+KH9sTUdIUAJtQqpY/pJUSLsIrjwySJ1h5gsV390ivk+q
+         rSpMLxdSgJF+X76e4Wwzz+xpJF5bI8ijqyfhJhrbNxRCNrPuapl4PFhbTT6EtjrOHT7k
+         YcUAZ3VIzdzPNknjtOAzy/wpY7Lwz1SoXTCsELz9/4w9eDdA1CGlqMl/IHyogMzMOpd0
+         lscRakXHxgEA7uABrKLWuQiUw5mY4h0bydIOlQJLJe259U0vLpiSRyzgPqw2O4l7hc3l
+         6uH/LVRLVmVIeaLe0JXC/Ykh2i1sQslY5r+xUz+dIIudOy5V0Z36rfxmhpPjxGqnjhtv
+         E3Jw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=kWJbqmdT;
+       dkim=pass header.i=@linaro.org header.s=google header.b=FHzTVcsH;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id u66-20020a379245000000b006bb075ddc49si2752358qkd.424.2022.09.03.12.35.26
+        by mx.google.com with ESMTPS id s3-20020a05620a0bc300b006bc0137c12bsi4942867qki.329.2022.09.04.11.22.08
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 03 Sep 2022 12:35:27 -0700 (PDT)
+        Sun, 04 Sep 2022 11:22:08 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=kWJbqmdT;
+       dkim=pass header.i=@linaro.org header.s=google header.b=FHzTVcsH;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:37030 helo=lists1p.gnu.org)
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:44430 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1oUYvO-0006oM-IX
-	for alex.bennee@linaro.org; Sat, 03 Sep 2022 15:35:26 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53602)
+	id 1oUuG0-0004Jw-Fh
+	for alex.bennee@linaro.org; Sun, 04 Sep 2022 14:22:08 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38078)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <danielhb413@gmail.com>)
- id 1oUYuX-0006Ia-2e; Sat, 03 Sep 2022 15:34:33 -0400
-Received: from mail-oo1-xc31.google.com ([2607:f8b0:4864:20::c31]:44638)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1oUuFh-0004Jn-RU
+ for qemu-arm@nongnu.org; Sun, 04 Sep 2022 14:21:50 -0400
+Received: from mail-yw1-x112b.google.com ([2607:f8b0:4864:20::112b]:34656)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <danielhb413@gmail.com>)
- id 1oUYuV-0005L8-Hb; Sat, 03 Sep 2022 15:34:32 -0400
-Received: by mail-oo1-xc31.google.com with SMTP id
- q6-20020a4aa886000000b0044b06d0c453so909839oom.11; 
- Sat, 03 Sep 2022 12:34:30 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date;
- bh=HovcpPksbyRH4MetLfjOHLX26QOG2cA8NngwzZBGLTg=;
- b=kWJbqmdTeAman2sZ9rgUvk25oAgs3vC7PsQ1ZRS6wZvy5NvBFreEwiLUJC3rtkugFl
- pd9+RURO12Zm72ZXgxNy84+G3uCvtIjVzQPXekkZEcugRtUc8+5yrs9K4DydeChLgvqN
- KVSo0YIB7UWVCebj51z6ZdQqS+Hpzdmq802RfBzGarDp19Y1tjjEgVJtZP3ywd2zxhRS
- S0JzlF5CVEYOpdKcqAXayBLAELdOekBhEXYyZ1C/WS2BT0lCB1VW0/I9wG6D9xjgKRRx
- Uw+bW0Q7P76pnIeTIUI7MdsjTyc1xpoVtyJ2C3/LrvOwDy1nP2K0RE1DAArpPHlo8BDR
- AZuw==
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1oUuFg-0003J8-3x
+ for qemu-arm@nongnu.org; Sun, 04 Sep 2022 14:21:49 -0400
+Received: by mail-yw1-x112b.google.com with SMTP id
+ 00721157ae682-3452214cec6so12024327b3.1
+ for <qemu-arm@nongnu.org>; Sun, 04 Sep 2022 11:21:46 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date;
+ bh=g3Ys1vqCZKhs9PhWoP2A+7O+kDt8sVZUNlfvVykaMac=;
+ b=FHzTVcsHHhTyQz3OlWL6v8l9vy0TDHAhxrzdF2/kvDbwiERukYKGnZNvw/+vVzQHOK
+ UrgGbvxp12dm2zXEPoK9cBKCB9/rzw7UaDhEggMTyrduyYASrOiE6fvRiknejmD9IKMl
+ Q8+3WfSp1iQluF8c9vFtSGC7igGILZzAsRo4qMJJq28KLCLBEyMIf8SbN2hidmWuDQ1H
+ d3CbaNclK6H+eDsVMsYJG/R4pczwLY5vtqJoidJ1rHwkfBrx8GIaN5kAJy6n9CC7F2Px
+ h1ENEFMxw14DByvfVHdxb1GZBxZaZO9bMi3l4uz9Yr1vnN29f4P4vzih74QOLHUvQr4Q
+ HL6A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date;
- bh=HovcpPksbyRH4MetLfjOHLX26QOG2cA8NngwzZBGLTg=;
- b=IRZ4VlrqpRZSTbIj3zp4y+cjtm8sIoSUwzsAlcnRdQLrbrEyVzBhCRnHKqAG08Fg8y
- zWxJc2ZYsfCXJ92J77yjOY/VeAQokH3zcvPj+IsGt94vdPq8gZcH0Krk4Wde+dzG9x93
- yGxbzvgev5amfMAfLjAaQ0yBQPgYUHnwl8bA7IT7HZV+2xIEN7aPW3x3/46ZpPNdC1Ow
- 9MDK3mDo2msxjVBmM5x6SmFzfG9zFJLRyUsSAzkfyNF1dg6VgZSCaz0bslmwkbedCbKj
- DWBRbTUbt/8DGf6uLjU84YaoQ8c0kc1edpFBkUXYTRDXSi6Xm+0m2/jlEeG+a0oSiOt1
- L8JQ==
-X-Gm-Message-State: ACgBeo2hpCmZKbEsp8HWVwtWyDhSCTwoFRyEAMLWSmcz4tPucseq5uON
- XgmhtCF7dcCLLWUruT/qmqm1MjL562SfOg==
-X-Received: by 2002:a4a:1787:0:b0:44d:f068:d0e2 with SMTP id
- 129-20020a4a1787000000b0044df068d0e2mr11928560ooe.27.1662233669512; 
- Sat, 03 Sep 2022 12:34:29 -0700 (PDT)
-Received: from balboa.COMFAST (200-207-147-180.dsl.telesp.net.br.
- [200.207.147.180]) by smtp.gmail.com with ESMTPSA id
- m2-20020a4aab82000000b00425806a20f5sm1843906oon.3.2022.09.03.12.34.26
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 03 Sep 2022 12:34:29 -0700 (PDT)
-From: Daniel Henrique Barboza <danielhb413@gmail.com>
-To: qemu-devel@nongnu.org
-Cc: qemu-ppc@nongnu.org, clg@kaod.org, david@gibson.dropbear.id.au,
- alistair.francis@wdc.com, Daniel Henrique Barboza <danielhb413@gmail.com>,
- Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org
-Subject: [PATCH v5 01/14] hw/arm: do not free machine->fdt in arm_load_dtb()
-Date: Sat,  3 Sep 2022 16:34:07 -0300
-Message-Id: <20220903193420.115986-2-danielhb413@gmail.com>
-X-Mailer: git-send-email 2.37.2
-In-Reply-To: <20220903193420.115986-1-danielhb413@gmail.com>
-References: <20220903193420.115986-1-danielhb413@gmail.com>
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date;
+ bh=g3Ys1vqCZKhs9PhWoP2A+7O+kDt8sVZUNlfvVykaMac=;
+ b=tqEW6ikWHkWyDedhlGYuRnkK5cDrjKH4SkfOkYOCdSvhwPlKbBftNELU5OxmVXns9k
+ JMD03CnysSChiWrAr03LI1ngAmfrQt6TvD6Xnz4c4Zj+UsqHly4PV8D2XFbkvSs/7aCP
+ HSPcfz6MzfrptdjQd4lDKW3ZGdgMh/4q80Q65/DH9GLpsp+vKErQPHnFuHfI4LudSmwm
+ yWBjH2xcKHmmONMoHtt9Ivgy8RUbs2t/4c0jlxwQdeo6Y8qij+svox0qeXqwIK96mtF9
+ HNDy+eysTK8Q6DdsD/Avh0+ShkMpPmGA1SCo/wwFEEhXWqARWau2ScGGKJ2sUxh/olKY
+ b6Yg==
+X-Gm-Message-State: ACgBeo0eg/k3kMF3UuibyK5EKjmLKyoxDbFNbcCT6vD82BziJyBijAQO
+ zqez1Qb60vN6VG+v0qBNNFgVX/EpZKmEqKCCPwJK1g==
+X-Received: by 2002:a81:5a56:0:b0:33b:52a8:c360 with SMTP id
+ o83-20020a815a56000000b0033b52a8c360mr34064583ywb.329.1662315705959; Sun, 04
+ Sep 2022 11:21:45 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::c31;
- envelope-from=danielhb413@gmail.com; helo=mail-oo1-xc31.google.com
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+References: <CADsNLn3cZmZkSzmX6wiaujgpuBO3w+7s+QoUxTCZ3X4n1OEzkg@mail.gmail.com>
+In-Reply-To: <CADsNLn3cZmZkSzmX6wiaujgpuBO3w+7s+QoUxTCZ3X4n1OEzkg@mail.gmail.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Sun, 4 Sep 2022 19:21:35 +0100
+Message-ID: <CAFEAcA9c9kWRc8TtPzgJSaZHQHxkzRWKzLhDzFE1Dc5ecNJTrg@mail.gmail.com>
+Subject: Re: Can qemu-system-aarch64 boot a Linux kernel with 16K PAGE_SIZE?
+To: Karim Manaouil <k.manaouil@gmail.com>
+Cc: qemu-arm@nongnu.org
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::112b;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x112b.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
@@ -123,49 +114,43 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: W4uuw6A5wbY7
+X-TUID: m04ACHGkriwk
 
-At this moment, arm_load_dtb() can free machine->fdt when
-binfo->dtb_filename is NULL. If there's no 'dtb_filename', 'fdt' will be
-retrieved by binfo->get_dtb(). If get_dtb() returns machine->fdt, as is
-the case of machvirt_dtb() from hw/arm/virt.c, fdt now has a pointer to
-machine->fdt. And, in that case, the existing g_free(fdt) at the end of
-arm_load_dtb() will make machine->fdt point to an invalid memory region.
+On Wed, 31 Aug 2022 at 17:13, Karim Manaouil <k.manaouil@gmail.com> wrote:
+> I compiled Linux v6-rc3 for aarch64 using 16K pages (CONFIG_ARM64_64K_PAGES=y)
+> but it doesn't seem to boot with qemu-system-aarch64 (no logs appear. However,
+> it boots fine with 4K and 64K pages).
+>
+> I use the following command:
+>
+> qemu-system-aarch64 \
+>        -machine virt \
+>        -cpu cortex-a72 \
+>        -smp 4 \
+>        -m 2G \
+>        -kernel $ARM_KERNEL \
+>        -append "root=/dev/vda rw console=ttyAMA0 earlyprintk=serial" \
+>        -hda $DISK_IMG
+>        -nographic
+>
+> Then just a blank screen.
+>
+> Thus, the question is, can qemu-system-aarch64 boot a Linux kernel compiled with 16K pages?
 
-This is not an issue right now because there's no code that access
-machine->fdt after arm_load_dtb(), but we're going to add a QMP/HMP
-FDT command that will rely on machine->fdt being valid.
+That depends which CPU you ask QEMU to emulate. A real hardware
+Cortex-A72 does not support 16K pages, so the one QEMU emulates
+does not implement them either. You might try the 'max' CPU
+type, which enables support for all features that QEMU has
+emulation support for, including all the architecturally
+supported page sizes.
 
-Instead of freeing 'fdt' at the end of arm_load_dtb(), assign it to
-machine->fdt. This will allow the FDT of ARM machines that relies on
-arm_load_dtb() to be accessed later on.
+NB:
 
-Since all ARM machines allocates the FDT only once, we don't need to
-worry about leaking the existing FDT during a machine reset (which is
-something that other machines have to look after, e.g. the ppc64 pSeries
-machine).
+> Qemu version: QEMU emulator version 3.1.0
 
-Cc: Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-arm@nongnu.org
-Signed-off-by: Daniel Henrique Barboza <danielhb413@gmail.com>
----
- hw/arm/boot.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+This is a very old version of QEMU. I can't remember when
+we added 16K page support, you might well also need to use
+a newer QEMU.
 
-diff --git a/hw/arm/boot.c b/hw/arm/boot.c
-index ada2717f76..60bbfba37f 100644
---- a/hw/arm/boot.c
-+++ b/hw/arm/boot.c
-@@ -684,7 +684,8 @@ int arm_load_dtb(hwaddr addr, const struct arm_boot_info *binfo,
-      */
-     rom_add_blob_fixed_as("dtb", fdt, size, addr, as);
- 
--    g_free(fdt);
-+    /* Set ms->fdt for 'dumpdtb' QMP/HMP command */
-+    ms->fdt = fdt;
- 
-     return size;
- 
--- 
-2.37.2
-
+thanks
+-- PMM

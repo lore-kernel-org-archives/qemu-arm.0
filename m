@@ -1,117 +1,114 @@
-Received: by 2002:a17:906:1c87:0:0:0:0 with SMTP id g7csp1776124ejh;
-        Sun, 4 Sep 2022 00:07:42 -0700 (PDT)
-X-Google-Smtp-Source: AA6agR4eYLjZbfbicqGtQGkTUKIsJDcbX17FEuFUqw43KWVcwJO3oboBPof802zbR4b/Clxm7Kmj
-X-Received: by 2002:a37:6545:0:b0:6c7:bf49:be5d with SMTP id z66-20020a376545000000b006c7bf49be5dmr116978qkb.561.1662275261882;
-        Sun, 04 Sep 2022 00:07:41 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1662275261; cv=none;
+Received: by 2002:a05:7108:414f:0:0:0:0 with SMTP id l15csp2914594gdo;
+        Sun, 4 Sep 2022 16:35:51 -0700 (PDT)
+X-Google-Smtp-Source: AA6agR6QvEaIL3JuJkc0tqVvSildnGv7oxbGACEYePLE0r94pVVUcgg46Jye+JKYzYrK04In/vHK
+X-Received: by 2002:ac8:5bc9:0:b0:343:7c69:4a0e with SMTP id b9-20020ac85bc9000000b003437c694a0emr37461881qtb.487.1662334551248;
+        Sun, 04 Sep 2022 16:35:51 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1662334551; cv=none;
         d=google.com; s=arc-20160816;
-        b=L1RvKklOuNSQhPgAM0L5I0VA0Tp0T0qiti438B7hz9jfja/j2R6iIY/IP0qpwLwZLV
-         J5Yh2n+TCNAnCkswtcbjbjbHkOgUU/4HqiZwK0lq+qERRHa9UfnotGsMMBhLXrV7BVi7
-         2F3zqYsylxfOcf07CgDG7pphDXq94Iy/xbly4yFo5b76NfG0H2MC2CdE8LE1Mk8TwQBe
-         2m6azGJ0B12XvnBggXstdUpb8PDT8Dj2rSu0MJdoPumjt7jScacGNmOtxkhvk/j0VMzl
-         Zr4LFo/gNtqSDGnrzbys8hYMspioU35DMyu+X9bjRNxbwNHlv1f+sUGexJuwWgDtyylU
-         Ybbg==
+        b=MVwOOpylFJvdtF8F8CjsmY1zuBwuABDTHSN0YQyhhmBi54I9vNJfOF+4HxWqYQPsTj
+         R1faqhvKtjstxI7mYE3406CYh6eXTp/oqgw+9RqM/IB7BCBY+TFn1xMJYFyzqC4sLBFi
+         TH2DkrSgX3kUojlybNJZCq5UZcya2BFuo3fY81dXaGPSuc6htsHftRgBXE5lS8fYThnC
+         fvJAa70U9q0175/BkQqCjX9snGWIagq6oeKC/cNCuXx3TiVHp1s9XdhZkB8bMaR9AdxT
+         uXEBOR7WxCBVHqLuA3W1wiv91LNiJMhCCesJ24J/VPXlsejITtkNNXQb3mm6egf4oh6I
+         T7Eg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=nsoOUpeuKR8xibgN81BhG1OqCu8Z/QahqIosnLSxSj0=;
-        b=Dion/piPT1mV382bkPoKz7e8iLW1IfGs5GbST5px+r3R5VlFjvR/GsP/Fg33n0OGf7
-         lmzpRtiStP4COgWLxhvx6bykGrpB40o1FbPtmuNMpMng36APWtj8GdRYYvM1b6d5c++O
-         gXcqQVQiiAfVXiazZOHxFq1GZNrucSLD4O7iv3b9Clwa41+Frosf+KE6qG8QdHtQvxw0
-         UvH9AozncizxFU3ohZuuwaUmlEKzCdk/+JLRtNI1oqoo6uDEkC+20wYuFzRpu6y0G4OC
-         jT5Gf1fqq0XURddWn7RsVrV1qJoap5tbfZnPXR7B+saO1Qw4IrPtl7tIdqdbSizievZI
-         uAqQ==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=HovcpPksbyRH4MetLfjOHLX26QOG2cA8NngwzZBGLTg=;
+        b=m0ifA5bAq7uiKr/8+b3rugnX9cRfKoLjN6duM4DIe1bMUwXtygxUUAjWJLqAQo1iMc
+         CbtiEi+Zd9pigJvQIWWX9ALryefIioNsvlIAbMZ3n24SZeEV3CCp7Dz+GmYvMn9aijNa
+         kKbYcvG6wzTJMpEVKs3D4rl3/G4tU+NZJ8JjRrKxuu8mJWNVsxV8EpFd2XBfy5KEY7+e
+         CXLWi70ImVby5HZYDTBCayE57vmRyy9yJhEci4BFYI9sZXJyGXiMio6TSX5XCvIe8cdu
+         qwnp+stKwl/CPGvHYT2xPW8YzcCTjPK5Ur/oZsy6osxeVWcWmKSdeMT+lx4/sT3VI87k
+         s0kg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@daynix-com.20210112.gappssmtp.com header.s=20210112 header.b=ZF6FBEf1;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b="e/qJ2ngI";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id k13-20020a05620a414d00b006bb4eb9510dsi4580874qko.302.2022.09.04.00.07.41
+        by mx.google.com with ESMTPS id dm51-20020a05620a1d7300b006b25d607c65si5082786qkb.697.2022.09.04.16.35.51
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 04 Sep 2022 00:07:41 -0700 (PDT)
+        Sun, 04 Sep 2022 16:35:51 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@daynix-com.20210112.gappssmtp.com header.s=20210112 header.b=ZF6FBEf1;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:35242 helo=lists1p.gnu.org)
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b="e/qJ2ngI";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:35282 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1oUjjJ-0004B6-08
-	for alex.bennee@linaro.org; Sun, 04 Sep 2022 03:07:41 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:39472)
+	id 1oUz9a-0006kN-Rj
+	for alex.bennee@linaro.org; Sun, 04 Sep 2022 19:35:50 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:48328)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <akihiko.odaki@daynix.com>)
- id 1oUjio-0004Ap-Hv
- for qemu-arm@nongnu.org; Sun, 04 Sep 2022 03:07:10 -0400
-Received: from mail-io1-xd32.google.com ([2607:f8b0:4864:20::d32]:41836)
+ (Exim 4.90_1) (envelope-from <danielhb413@gmail.com>)
+ id 1oUz8u-0006hS-DQ; Sun, 04 Sep 2022 19:35:08 -0400
+Received: from mail-ot1-x32e.google.com ([2607:f8b0:4864:20::32e]:44679)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <akihiko.odaki@daynix.com>)
- id 1oUjim-0000YL-Nr
- for qemu-arm@nongnu.org; Sun, 04 Sep 2022 03:07:10 -0400
-Received: by mail-io1-xd32.google.com with SMTP id p187so4814107iod.8
- for <qemu-arm@nongnu.org>; Sun, 04 Sep 2022 00:07:07 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=daynix-com.20210112.gappssmtp.com; s=20210112;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date;
- bh=nsoOUpeuKR8xibgN81BhG1OqCu8Z/QahqIosnLSxSj0=;
- b=ZF6FBEf1aQ2RH7DLplWpaEfk4Z6BfqWtHXtlInLh9e/P9km9QAxrqLFcn7KHi1zlQ6
- 8ApA1L6gmjOEeU0c6/ZyKMMzCQeZU/Rz5IEU6rHzUXlHZ0XRgj2ADq3fsNII10BV8dJY
- uD7X2O9rmwad6dHjgQmDHEjZtQk7pc5+u58pfIPUEYNIryedcROKv3IySwHmjN6qMhDr
- 9/jOIpH1VVCccaQWXX6IuotHF35qEUbu838xYlVlWRDoxyGJz3ZvRaxoimo2I3tW9iZU
- 4EvEilRvs5f0trc40tSbCoq6UIkzIiyrYjSP9+8FIUTtJb/BIplX/GvtcIVCbyThE86B
- g9Cw==
+ (Exim 4.90_1) (envelope-from <danielhb413@gmail.com>)
+ id 1oUz8s-0004wz-Mb; Sun, 04 Sep 2022 19:35:08 -0400
+Received: by mail-ot1-x32e.google.com with SMTP id
+ t11-20020a05683014cb00b0063734a2a786so5187260otq.11; 
+ Sun, 04 Sep 2022 16:35:05 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date;
+ bh=HovcpPksbyRH4MetLfjOHLX26QOG2cA8NngwzZBGLTg=;
+ b=e/qJ2ngIxltIyrc7/PR0+LvflU1ys+K3+bSDKWpo5L6Xj2NaOIQQz92UVq6PVTnFQD
+ J+Dz2QwJzBu+4gZY9PirQTTo1vBn+fkH8qaZNcSgPXXl8mrnuk0tNjt9IgbBqpPfdOn0
+ uiBXIJfQSCD8RYbd28niJhCa6ho+47H+eD58A50u4guZbX4hjcim0EzdCSyfc8OrGsJY
+ VBntBOfhdlTNJWx7DCUQiu3xS/Xn7FzV+Qn5QYCsWXorFK1MOLrxeDVjmhrCHl5aoCW5
+ gC6uCq0f1CS6PDmXH3qHAFDD4L3wdA51HxtedmL3fwtA9Qr4LMt6rS/8CI1NS7lLkLBi
+ Wyng==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date;
- bh=nsoOUpeuKR8xibgN81BhG1OqCu8Z/QahqIosnLSxSj0=;
- b=dfpbtLXEO3JwagQ6zSgvX0jDya3M1OinYq2CaP0ypks/7Nbmj+LyQsQbwqyWg6Hwtg
- Ubx9N4bmnM9jVY77LcaUXJYoB/O+Lc5xjPZeEOX9XJ2gYTeQ13vMlb2a91XKLmuhtfyT
- mImYjKLHi0t1eRDHQpw9FwgYaGrqfeHCxHFABbYF14X6ji4cTknmKjdg8RXE/C/S0t9t
- KvauwRn23YU79bs+h3q9FCq+aJqYE55qxSW1vrEt6BqAhaccPNP4rUshHWl/x1t9Azkx
- mTTMIgeYF9DIabHAOFptUo+E0n163SiLoWJFcvqGQ3jJ8MkT4QMbBE9Jd+8LmSSlMyhK
- eYag==
-X-Gm-Message-State: ACgBeo1O/pP6jySPcXm6rxbx52W69miWsnBG+y9upXKdY1xVSwxqI8CT
- 49XzYHbGgHlkVx2ZKePEKCVOT0oIbayl9gLgI+ZCxQ==
-X-Received: by 2002:a6b:105:0:b0:688:2b66:1ed6 with SMTP id
- 5-20020a6b0105000000b006882b661ed6mr21057192iob.165.1662275226221; Sun, 04
- Sep 2022 00:07:06 -0700 (PDT)
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+ :subject:date;
+ bh=HovcpPksbyRH4MetLfjOHLX26QOG2cA8NngwzZBGLTg=;
+ b=RUcQ80l7mLaqSEPir8ZhWyiGjz/RhR0kG33DW8uRtSUi6qfpxMmk5rMgxYk64UUfk8
+ rQvqSdr0VYDbIkz5N0EW9T63u/COLTyjKr0mdKqE9ChtclmCca6bBQU/YatYWx7jFx7F
+ ewoKSgQOnige89ukW51CLFtSx2QoXfj5KEcN2ZN0VsS/PwHxVJpOhPUy+6+feLJBUWtZ
+ DAc8pFUTSisIcNLj2u94WfX6JO+5+XJz3u0Otq92frFnFO9DlOcinkVgP5yLyU6S87nY
+ jllMK2lnWuUS9RyT9BGlV7+qVAVFb2YRD233oeyb6LBLexqWRV2llu36zgWQTtI4vwaS
+ Kylg==
+X-Gm-Message-State: ACgBeo36pSUqi04kLu6Rs9wu3hi2GmLbeNUp0JfwRDBkS/bcvGKTc/Zk
+ 64jeEmondcOR5ZuDlMNbeMeiQbHm36aOpA==
+X-Received: by 2002:a05:6830:3914:b0:638:f80c:e964 with SMTP id
+ br20-20020a056830391400b00638f80ce964mr18348282otb.220.1662334504590; 
+ Sun, 04 Sep 2022 16:35:04 -0700 (PDT)
+Received: from balboa.ibmuc.com (200-207-147-180.dsl.telesp.net.br.
+ [200.207.147.180]) by smtp.gmail.com with ESMTPSA id
+ o7-20020a4a9587000000b0044b4acd27c5sm2549793ooi.17.2022.09.04.16.35.02
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sun, 04 Sep 2022 16:35:04 -0700 (PDT)
+From: Daniel Henrique Barboza <danielhb413@gmail.com>
+To: qemu-devel@nongnu.org
+Cc: qemu-ppc@nongnu.org, clg@kaod.org,
+ Daniel Henrique Barboza <danielhb413@gmail.com>,
+ Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org
+Subject: [PATCH v6 01/14] hw/arm: do not free machine->fdt in arm_load_dtb()
+Date: Sun,  4 Sep 2022 20:34:43 -0300
+Message-Id: <20220904233456.209027-2-danielhb413@gmail.com>
+X-Mailer: git-send-email 2.37.2
+In-Reply-To: <20220904233456.209027-1-danielhb413@gmail.com>
+References: <20220904233456.209027-1-danielhb413@gmail.com>
 MIME-Version: 1.0
-References: <20220831013236.32937-1-akihiko.odaki@daynix.com>
- <87tu5qulay.fsf@pond.sub.org>
-In-Reply-To: <87tu5qulay.fsf@pond.sub.org>
-From: Akihiko Odaki <akihiko.odaki@daynix.com>
-Date: Sun, 4 Sep 2022 16:06:55 +0900
-Message-ID: <CAE=JJXdg=Miisek8WeqQ12NqL8obzmuyzD0mbv1SfiJTyVBLuw@mail.gmail.com>
-Subject: Re: [PATCH v2] pci: Assert that capabilities never overlap
-To: Markus Armbruster <armbru@redhat.com>
-Cc: qemu-devel@nongnu.org, qemu-block@nongnu.org, qemu-arm@nongnu.org, 
- Alex Williamson <alex.williamson@redhat.com>,
- "Michael S. Tsirkin" <mst@redhat.com>, 
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Gerd Hoffmann <kraxel@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>, 
- Eduardo Habkost <eduardo@habkost.net>, John Snow <jsnow@redhat.com>, 
- Dmitry Fleytman <dmitry.fleytman@gmail.com>, Jason Wang <jasowang@redhat.com>, 
- Stefan Weil <sw@weilnetz.de>, Keith Busch <kbusch@kernel.org>,
- Klaus Jensen <its@irrelevant.dk>, 
- Peter Maydell <peter.maydell@linaro.org>,
- Andrey Smirnov <andrew.smirnov@gmail.com>, 
- Paul Burton <paulburton@kernel.org>,
- Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: none client-ip=2607:f8b0:4864:20::d32;
- envelope-from=akihiko.odaki@daynix.com; helo=mail-io1-xd32.google.com
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::32e;
+ envelope-from=danielhb413@gmail.com; helo=mail-ot1-x32e.google.com
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
 X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_NONE=0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -126,44 +123,49 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: rji/nHrXh+T3
+X-TUID: 0AaHhH3wNQ7Q
 
-On Fri, Sep 2, 2022 at 7:23 PM Markus Armbruster <armbru@redhat.com> wrote:
->
-> Akihiko Odaki <akihiko.odaki@daynix.com> writes:
->
-> > pci_add_capability appears most PCI devices. Its error handling required
-> > lots of code, and led to inconsistent behaviors such as:
-> > - passing error_abort
-> > - passing error_fatal
-> > - asserting the returned value
-> > - propagating the error to the caller
-> > - skipping the rest of the function
-> > - just ignoring
-> >
-> > The code generating errors in pci_add_capability had a comment which
-> > says:
-> >> Verify that capabilities don't overlap.  Note: device assignment
-> >> depends on this check to verify that the device is not broken.
-> >> Should never trigger for emulated devices, but it's helpful for
-> >> debugging these.
-> >
-> > Indeed vfio has some code that passes capability offsets and sizes from
-> > a physical device, but it explicitly pays attention so that the
-> > capabilities never overlap.
->
-> I can't see that at a glance.  Can you give me a clue?
->
-> >                             Therefore, we can always assert that
-> > capabilities never overlap when pci_add_capability is called, resolving
-> > these inconsistencies.
-> >
-> > Signed-off-by: Akihiko Odaki <akihiko.odaki@daynix.com>
->
+At this moment, arm_load_dtb() can free machine->fdt when
+binfo->dtb_filename is NULL. If there's no 'dtb_filename', 'fdt' will be
+retrieved by binfo->get_dtb(). If get_dtb() returns machine->fdt, as is
+the case of machvirt_dtb() from hw/arm/virt.c, fdt now has a pointer to
+machine->fdt. And, in that case, the existing g_free(fdt) at the end of
+arm_load_dtb() will make machine->fdt point to an invalid memory region.
 
-Looking at vfio_add_std_cap(), and vfio_add_ext_cap() it seems that
-they are clipping the size of capabilities so that they do not
-overlap, if I read it correctly.
+This is not an issue right now because there's no code that access
+machine->fdt after arm_load_dtb(), but we're going to add a QMP/HMP
+FDT command that will rely on machine->fdt being valid.
 
-Regards,
-Akihiko Odaki
+Instead of freeing 'fdt' at the end of arm_load_dtb(), assign it to
+machine->fdt. This will allow the FDT of ARM machines that relies on
+arm_load_dtb() to be accessed later on.
+
+Since all ARM machines allocates the FDT only once, we don't need to
+worry about leaking the existing FDT during a machine reset (which is
+something that other machines have to look after, e.g. the ppc64 pSeries
+machine).
+
+Cc: Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-arm@nongnu.org
+Signed-off-by: Daniel Henrique Barboza <danielhb413@gmail.com>
+---
+ hw/arm/boot.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/hw/arm/boot.c b/hw/arm/boot.c
+index ada2717f76..60bbfba37f 100644
+--- a/hw/arm/boot.c
++++ b/hw/arm/boot.c
+@@ -684,7 +684,8 @@ int arm_load_dtb(hwaddr addr, const struct arm_boot_info *binfo,
+      */
+     rom_add_blob_fixed_as("dtb", fdt, size, addr, as);
+ 
+-    g_free(fdt);
++    /* Set ms->fdt for 'dumpdtb' QMP/HMP command */
++    ms->fdt = fdt;
+ 
+     return size;
+ 
+-- 
+2.37.2
+

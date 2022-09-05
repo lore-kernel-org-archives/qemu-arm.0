@@ -1,91 +1,91 @@
-Received: by 2002:a17:906:1c87:0:0:0:0 with SMTP id g7csp2840392ejh;
-        Tue, 6 Sep 2022 02:41:04 -0700 (PDT)
-X-Google-Smtp-Source: AA6agR4UzBuAe3ogyZGsm44VALAEpCSPiY2NPEZLEhhxp24amK+eawvjhSQIe01KBbjM7kHZ10CU
-X-Received: by 2002:a05:6214:2685:b0:477:1d22:f017 with SMTP id gm5-20020a056214268500b004771d22f017mr45118685qvb.96.1662457264392;
-        Tue, 06 Sep 2022 02:41:04 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1662457264; cv=none;
+Received: by 2002:a17:906:1c87:0:0:0:0 with SMTP id g7csp2536434ejh;
+        Mon, 5 Sep 2022 11:37:48 -0700 (PDT)
+X-Google-Smtp-Source: AA6agR5hZRqYAGX/uKyu+RarNP9LrtSE3jKOMf3shjN9XYEMhUyut8a4rsavbr9FsD09ZyiByyjG
+X-Received: by 2002:a0c:b309:0:b0:496:6277:953e with SMTP id s9-20020a0cb309000000b004966277953emr42007221qve.77.1662403067858;
+        Mon, 05 Sep 2022 11:37:47 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1662403067; cv=none;
         d=google.com; s=arc-20160816;
-        b=FJ0CUxPUt9bLrBrz9+19fycBWYmCMoimoMk1wUFSc4o7pSHCYDdNJ9FHk/9jGPNprr
-         7t9E6GOiOk1g9Dm3fN2hLVylovfgw2fvmfl6j4FhoIVXSa0h2//G7PWn5rG2ycd76O+o
-         ud/a92yZfuzB53O1d+tcnHNrSeb+caIoEum5lsKtEmyzOkThQaI14UJCv4Y/P+bH5F7c
-         IawU0OF54ESkY6YC69cmOOkply272hQ2RYGjyF1n+wq3Epgt6jqL0xuhPX25kmdfVxzd
-         YdlIF4qofD3VAsDmBmR/5+fMdCzLHnwuvS9JWeWWCI5ekpgqJ4LQ4hP0uMJl6MM+uKM7
-         gazA==
+        b=MfIXcOGMI4zJgtrAI3H2aODeNQXESji6QVq7Whxmg8q+Xn4A81M663mfq/vyljj7iJ
+         YYYFmXMVARSr9h7FF5UTZTaH5jflyljk82SOu/N+cArIn4Qvth5gBM616N1wnGHR5Vw6
+         3gWu3h0+KBCCRkjjQPu54YOxiLAxxLU6B4A4HrbDz7u0ulZtq40Td5z+jfAVbkbngh95
+         Ul665k9SoPdTmoSV7T3bmQyKwoFYoZzy+6owOM55x+8IDMHlxjfVMyKLqfiYRsUHJQMV
+         ozWi8E2CAawDA/CORfp0nL83WUVRURL1YukY3Yj7N+Sv3fs2stCNsbGngfmRdeDf2wi1
+         YEWA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=CoMxwZHX/9EiivuuUW2OqImZQGfFO3k09FmvjtT1xzs=;
-        b=O+7DwUPtn7OMWE8zTShyT1m1xpxkVi3VFiOuA76joJcDvVz3KToEfVtTkE1tfxtyqG
-         AYxqHdnG/L4jJIXnNsg8bHtus3w5jjL4DVslgWXZoIGQNdHdiriUiDEtumW9BgCnEs+M
-         fS4CXPtEpqJNKKuLvKMqat++ZR3MLz6XHoC36nI/snEIoLgJe6A8keLlkBZ31rploW4B
-         vr+2iO9+UDeeNX8ma/JJjTZsju6//Qez+ZLdIb7CxeyKJUyzE0YxIY63Hplm+XbKEiE7
-         hxagYeVEpKbs5jw9r8WWirpWUQR6QCVZV/hMVl5Zjxxzde0JSPuLsNhB9nn6JMTMj4PM
-         5qew==
+        bh=/Hfi1dqn7aBKUskyIzQv2SXHLLV50tRsQ66eiL+Qum8=;
+        b=eg8jPi0BpGw8OqYMoTNq/JVfA2Pu70Y8s7yc7i0hDJzkojOtxqvx1aG7pld2RX1ILn
+         WC9Exe4jONn3cxjnNbdOy55sn/F4/FW87LglEVHFEDUiuqkx5yppCE1xn242rRQHcgjD
+         os1cdTCLvYvzHmgHHJ91JQ0wwei9HWgdoa57NwnBKVrQ1nLgZTrQy4Tw6/qBDSQORvXC
+         M198f9TDoE6+JkWZEWtAaSVObx1AGaS7xv912AFzzGgArn9I11FNo1xn0F66MuAbPkq1
+         j6VTVFaGg01m8aVg2sKW4q5/kSleDI7paAypTurBJeAlwMpNMyqc9J1G6NRBMG1VjC7u
+         rkGg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@ventanamicro.com header.s=google header.b=NiaOW0wc;
+       dkim=pass header.i=@ventanamicro.com header.s=google header.b=CSv3wy3K;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x12-20020a05620a258c00b006b6757a11f8si7105203qko.406.2022.09.06.02.41.04
+        by mx.google.com with ESMTPS id hr11-20020a05621423cb00b00476e02decffsi5821906qvb.68.2022.09.05.11.37.47
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 06 Sep 2022 02:41:04 -0700 (PDT)
+        Mon, 05 Sep 2022 11:37:47 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@ventanamicro.com header.s=google header.b=NiaOW0wc;
+       dkim=pass header.i=@ventanamicro.com header.s=google header.b=CSv3wy3K;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:36722 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:40464 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1oVV4p-0007Xa-Rq
-	for alex.bennee@linaro.org; Tue, 06 Sep 2022 05:41:03 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:42554)
+	id 1oVGyh-0000SU-DI
+	for alex.bennee@linaro.org; Mon, 05 Sep 2022 14:37:47 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:42426)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <sunilvl@ventanamicro.com>)
- id 1oVUTb-0001Vs-2f
- for qemu-devel@nongnu.org; Tue, 06 Sep 2022 05:02:37 -0400
-Received: from mail-pf1-x42e.google.com ([2607:f8b0:4864:20::42e]:36366)
+ id 1oVGkp-0002L5-H5
+ for qemu-devel@nongnu.org; Mon, 05 Sep 2022 14:23:27 -0400
+Received: from mail-pf1-x42c.google.com ([2607:f8b0:4864:20::42c]:44907)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <sunilvl@ventanamicro.com>)
- id 1oVUTY-00018C-8o
- for qemu-devel@nongnu.org; Tue, 06 Sep 2022 05:02:33 -0400
-Received: by mail-pf1-x42e.google.com with SMTP id y136so5758956pfb.3
- for <qemu-devel@nongnu.org>; Tue, 06 Sep 2022 02:02:31 -0700 (PDT)
+ id 1oVGkj-00028o-OQ
+ for qemu-devel@nongnu.org; Mon, 05 Sep 2022 14:23:27 -0400
+Received: by mail-pf1-x42c.google.com with SMTP id q15so9195017pfn.11
+ for <qemu-devel@nongnu.org>; Mon, 05 Sep 2022 11:23:21 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=ventanamicro.com; s=google;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date;
- bh=CoMxwZHX/9EiivuuUW2OqImZQGfFO3k09FmvjtT1xzs=;
- b=NiaOW0wcjo0JUHHed3Tk80983yohLnoYzkymnzugUoj2+OSxu5AsbzImE/VnXhOoYX
- 0KymhsCMsphW4+MHKRY2gL8tkDQBOZS1K4ELcJdbgeZvBsTkeucYoocQOQbTw2owYutZ
- paBNeyxfglOxGO9UHiKlZziYiNR32YDHUCqlFuurQlGncixw4yWmwVdc3T8Jx4agPz8K
- zbAqwOiZpM5N1VsMGnJmwFWkPF/mcVCVw+YPDGTewKERtAmvf6Os/o3ouPMc3U+JDyym
- Rlz1sx15MNu92IyjZlXeeZQAex3q6WBX0YyB/qJosQFYVxuOdSWUyOt7zBv2Czw7qdQT
- uQ9w==
+ bh=/Hfi1dqn7aBKUskyIzQv2SXHLLV50tRsQ66eiL+Qum8=;
+ b=CSv3wy3KLWo6GFb8e25uWFTqD4WhCvkZ09VWoN8sF0xFwdeujLhmtmCfLr86cNUEGC
+ tM3UpWzHrqlIFcbRxMWHcITdva6jwDEePvf/iHkQ9GTCWMH+Xq6mpyPRZWyZkUN5mAir
+ tfjATx7V/YY1EKNrmOZAlOdLNNrd9Vzt07wFge7dlSwInsILbvFQvwQaAbEAOqLMManB
+ AkxjDy6eeU3ofFZ4ahsMd6uxTdU8RPvwcUVEz9itHbVjCeXDC1TT2tLu78SrqnwP3qjj
+ vpe9N/BwLCU7uC/U0xody4f9sP+Sr6eaQivGdJ/L0iRYvlYniggj4r0pHwOcEeUxu8Z2
+ PMYw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date;
- bh=CoMxwZHX/9EiivuuUW2OqImZQGfFO3k09FmvjtT1xzs=;
- b=KclKO5gO0n/ztqFpWFWkd3ipYAX7lNERHCucSM5kGuZ8nfF1o7wxTl08LB9xnCQNQl
- OGHnCcaz5r54yTMdmxg7XSXX/TTIiWT6g4rJkJi6ZKGVOr6tKPRrVBDvxYUTI+Xd8MSK
- g76MHrPyuvhQizRPM+dkpmm2Qhu/YfCcEaP8x5fVpP1geGOHlCDaXN2zAjQNkDElkcU8
- 8+ZMkPJqDM9Gmh9ldEPIfZ5CnoRdT1Q4GXlXfH3nUZBene//B7gjQVupTEQhc0pM8Dt0
- PM3b74gYoLrBI/3NP7pw0D3Cfj3S+nVbIRKW3U0YDRXF67TYriC3y0kofXIaRKT/yP+i
- co3A==
-X-Gm-Message-State: ACgBeo3rm0zte7KaD/UJFerkK4EFG2+hCgnejpDy5VwDezfNJjlFc+4o
- 2vw8R6wup0KAZmIbyY9u+L61cA==
-X-Received: by 2002:aa7:8551:0:b0:538:22ec:d965 with SMTP id
- y17-20020aa78551000000b0053822ecd965mr44387964pfn.16.1662454950920; 
- Tue, 06 Sep 2022 02:02:30 -0700 (PDT)
+ bh=/Hfi1dqn7aBKUskyIzQv2SXHLLV50tRsQ66eiL+Qum8=;
+ b=vl3l4b6h9UPKiqJw99fSx5GMg3jUnnCsRI3WH6yJktJl8pPOu8M/0qSJT1/8aLYVti
+ 6sSzhyvjLJFLir9JVY3a/yXFGop2cl2OUaTVQ64xgOcYQd53hNWkHqaVUIelSLuzngK+
+ 4c5+rzAaxxMX6TRN7dT8ZzAqpY6AIMz7KPpfWT6QBblFwo9WuIxwLQZEZsRDNf9EgrLe
+ Ks39He/AhkixeHfntc6g68TgoDW4bL5HtmQffE1gxFYT2QFLeaG7mDitdRFhoRr7b5xs
+ bqmufNqQlHsy82i7OXrqIWxi1G83SuJsvl8kPWUqM5ELUZ+clWa4iLVbRHI+OtufRdWy
+ lAmQ==
+X-Gm-Message-State: ACgBeo2n6oA3vbS4CsMZ/jvBaHDnMZxNKQ5vv/Femb2oVPV4DCdTxt44
+ lQ7K/W+rvT4vb4xcmxOBE41kVA==
+X-Received: by 2002:a63:4b62:0:b0:421:8c8b:163c with SMTP id
+ k34-20020a634b62000000b004218c8b163cmr41032332pgl.182.1662402200491; 
+ Mon, 05 Sep 2022 11:23:20 -0700 (PDT)
 Received: from localhost.localdomain ([49.206.11.92])
  by smtp.gmail.com with ESMTPSA id
- t2-20020a17090a2f8200b001fabcd994c1sm11987315pjd.9.2022.09.06.02.02.27
+ z7-20020aa79587000000b005321340753fsm8046724pfj.103.2022.09.05.11.23.16
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 06 Sep 2022 02:02:30 -0700 (PDT)
+ Mon, 05 Sep 2022 11:23:20 -0700 (PDT)
 From: Sunil V L <sunilvl@ventanamicro.com>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org,
@@ -99,17 +99,17 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  Atish Kumar Patra <atishp@rivosinc.com>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
  Sunil V L <sunilvl@ventanamicro.com>
-Subject: [PATCH V4 1/3] hw/arm,
- loongarch: Move load_image_to_fw_cfg() to common location
-Date: Tue,  6 Sep 2022 14:32:17 +0530
-Message-Id: <20220906090219.412517-2-sunilvl@ventanamicro.com>
+Subject: [PATCH V2 3/3] hw/riscv: virt: Enable booting S-mode firmware from
+ pflash
+Date: Mon,  5 Sep 2022 23:52:38 +0530
+Message-Id: <20220905182238.374545-4-sunilvl@ventanamicro.com>
 X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20220906090219.412517-1-sunilvl@ventanamicro.com>
-References: <20220906090219.412517-1-sunilvl@ventanamicro.com>
+In-Reply-To: <20220905182238.374545-1-sunilvl@ventanamicro.com>
+References: <20220905182238.374545-1-sunilvl@ventanamicro.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::42e;
- envelope-from=sunilvl@ventanamicro.com; helo=mail-pf1-x42e.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::42c;
+ envelope-from=sunilvl@ventanamicro.com; helo=mail-pf1-x42c.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -131,205 +131,105 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ES0u/k8PuBKE
+X-TUID: TnT/iwux9RNK
 
-load_image_to_fw_cfg() is duplicated by both arm and loongarch. The same
-function will be required by riscv too. So, it's time to refactor and
-move this function to a common path.
+To boot S-mode firmware payload like EDK2 from persistent
+flash storage, qemu needs to pass the flash address as the
+next_addr in fw_dynamic_info to the opensbi.
+
+When both -kernel and -pflash options are provided in command line,
+the kernel (and initrd if -initrd) will be copied to fw_cfg table.
+The S-mode FW will load the kernel/initrd from fw_cfg table.
+
+If only pflash is given but not -kernel, then it is the job of
+of the S-mode firmware to locate and load the kernel.
+
+In either case, update the kernel_entry with the flash address
+so that the opensbi can jump to the entry point of the S-mode
+firmware.
 
 Signed-off-by: Sunil V L <sunilvl@ventanamicro.com>
-Reviewed-by: Andrew Jones <ajones@ventanamicro.com>
 ---
- hw/arm/boot.c             | 49 ---------------------------------------
- hw/loongarch/virt.c       | 33 --------------------------
- hw/nvram/fw_cfg.c         | 32 +++++++++++++++++++++++++
- include/hw/nvram/fw_cfg.h | 21 +++++++++++++++++
- 4 files changed, 53 insertions(+), 82 deletions(-)
+ hw/riscv/boot.c         | 28 ++++++++++++++++++++++++++++
+ hw/riscv/virt.c         | 17 ++++++++++++++++-
+ include/hw/riscv/boot.h |  1 +
+ 3 files changed, 45 insertions(+), 1 deletion(-)
 
-diff --git a/hw/arm/boot.c b/hw/arm/boot.c
-index ada2717f76..704f368d9c 100644
---- a/hw/arm/boot.c
-+++ b/hw/arm/boot.c
-@@ -818,55 +818,6 @@ static void do_cpu_reset(void *opaque)
+diff --git a/hw/riscv/boot.c b/hw/riscv/boot.c
+index 1ae7596873..39436b8d56 100644
+--- a/hw/riscv/boot.c
++++ b/hw/riscv/boot.c
+@@ -338,3 +338,31 @@ void riscv_setup_direct_kernel(hwaddr kernel_addr, hwaddr fdt_addr)
+         riscv_cpu->env.fdt_addr = fdt_addr;
      }
  }
- 
--/**
-- * load_image_to_fw_cfg() - Load an image file into an fw_cfg entry identified
-- *                          by key.
-- * @fw_cfg:         The firmware config instance to store the data in.
-- * @size_key:       The firmware config key to store the size of the loaded
-- *                  data under, with fw_cfg_add_i32().
-- * @data_key:       The firmware config key to store the loaded data under,
-- *                  with fw_cfg_add_bytes().
-- * @image_name:     The name of the image file to load. If it is NULL, the
-- *                  function returns without doing anything.
-- * @try_decompress: Whether the image should be decompressed (gunzipped) before
-- *                  adding it to fw_cfg. If decompression fails, the image is
-- *                  loaded as-is.
-- *
-- * In case of failure, the function prints an error message to stderr and the
-- * process exits with status 1.
-- */
--static void load_image_to_fw_cfg(FWCfgState *fw_cfg, uint16_t size_key,
--                                 uint16_t data_key, const char *image_name,
--                                 bool try_decompress)
--{
--    size_t size = -1;
--    uint8_t *data;
--
--    if (image_name == NULL) {
--        return;
--    }
--
--    if (try_decompress) {
--        size = load_image_gzipped_buffer(image_name,
--                                         LOAD_IMAGE_MAX_GUNZIP_BYTES, &data);
--    }
--
--    if (size == (size_t)-1) {
--        gchar *contents;
--        gsize length;
--
--        if (!g_file_get_contents(image_name, &contents, &length, NULL)) {
--            error_report("failed to load \"%s\"", image_name);
--            exit(1);
--        }
--        size = length;
--        data = (uint8_t *)contents;
--    }
--
--    fw_cfg_add_i32(fw_cfg, size_key, size);
--    fw_cfg_add_bytes(fw_cfg, data_key, data, size);
--}
--
- static int do_arm_linux_init(Object *obj, void *opaque)
- {
-     if (object_dynamic_cast(obj, TYPE_ARM_LINUX_BOOT_IF)) {
-diff --git a/hw/loongarch/virt.c b/hw/loongarch/virt.c
-index 5cc0b05538..eee2c193c0 100644
---- a/hw/loongarch/virt.c
-+++ b/hw/loongarch/virt.c
-@@ -542,39 +542,6 @@ static void reset_load_elf(void *opaque)
-     }
- }
- 
--/* Load an image file into an fw_cfg entry identified by key. */
--static void load_image_to_fw_cfg(FWCfgState *fw_cfg, uint16_t size_key,
--                                 uint16_t data_key, const char *image_name,
--                                 bool try_decompress)
--{
--    size_t size = -1;
--    uint8_t *data;
--
--    if (image_name == NULL) {
--        return;
--    }
--
--    if (try_decompress) {
--        size = load_image_gzipped_buffer(image_name,
--                                         LOAD_IMAGE_MAX_GUNZIP_BYTES, &data);
--    }
--
--    if (size == (size_t)-1) {
--        gchar *contents;
--        gsize length;
--
--        if (!g_file_get_contents(image_name, &contents, &length, NULL)) {
--            error_report("failed to load \"%s\"", image_name);
--            exit(1);
--        }
--        size = length;
--        data = (uint8_t *)contents;
--    }
--
--    fw_cfg_add_i32(fw_cfg, size_key, size);
--    fw_cfg_add_bytes(fw_cfg, data_key, data, size);
--}
--
- static void fw_cfg_add_kernel_info(FWCfgState *fw_cfg)
- {
-     /*
-diff --git a/hw/nvram/fw_cfg.c b/hw/nvram/fw_cfg.c
-index d605f3f45a..371a45dfe2 100644
---- a/hw/nvram/fw_cfg.c
-+++ b/hw/nvram/fw_cfg.c
-@@ -41,6 +41,7 @@
- #include "qapi/error.h"
- #include "hw/acpi/aml-build.h"
- #include "hw/pci/pci_bus.h"
-+#include "hw/loader.h"
- 
- #define FW_CFG_FILE_SLOTS_DFLT 0x20
- 
-@@ -1221,6 +1222,37 @@ FWCfgState *fw_cfg_find(void)
-     return FW_CFG(object_resolve_path_type("", TYPE_FW_CFG, NULL));
- }
- 
-+void load_image_to_fw_cfg(FWCfgState *fw_cfg, uint16_t size_key,
-+                          uint16_t data_key, const char *image_name,
-+                          bool try_decompress)
++
++void riscv_setup_firmware_boot(MachineState *machine)
 +{
-+    size_t size = -1;
-+    uint8_t *data;
++    if (machine->kernel_filename) {
++        FWCfgState *fw_cfg;
++        fw_cfg = fw_cfg_find();
 +
-+    if (image_name == NULL) {
-+        return;
-+    }
-+
-+    if (try_decompress) {
-+        size = load_image_gzipped_buffer(image_name,
-+                                         LOAD_IMAGE_MAX_GUNZIP_BYTES, &data);
-+    }
-+
-+    if (size == (size_t)-1) {
-+        gchar *contents;
-+        gsize length;
-+
-+        if (!g_file_get_contents(image_name, &contents, &length, NULL)) {
-+            error_report("failed to load \"%s\"", image_name);
-+            exit(1);
++        assert(fw_cfg);
++        /*
++         * Expose the kernel, the command line, and the initrd in fw_cfg.
++         * We don't process them here at all, it's all left to the
++         * firmware.
++         */
++        load_image_to_fw_cfg(fw_cfg,
++                             FW_CFG_KERNEL_SIZE, FW_CFG_KERNEL_DATA,
++                             machine->kernel_filename,
++                             true);
++        load_image_to_fw_cfg(fw_cfg,
++                             FW_CFG_INITRD_SIZE, FW_CFG_INITRD_DATA,
++                             machine->initrd_filename, false);
++        if (machine->kernel_cmdline) {
++            fw_cfg_add_i32(fw_cfg, FW_CFG_CMDLINE_SIZE,
++                           strlen(machine->kernel_cmdline) + 1);
++            fw_cfg_add_string(fw_cfg, FW_CFG_CMDLINE_DATA,
++                              machine->kernel_cmdline);
 +        }
-+        size = length;
-+        data = (uint8_t *)contents;
 +    }
-+
-+    fw_cfg_add_i32(fw_cfg, size_key, size);
-+    fw_cfg_add_bytes(fw_cfg, data_key, data, size);
 +}
+diff --git a/hw/riscv/virt.c b/hw/riscv/virt.c
+index b6bbf03f61..b985df9b16 100644
+--- a/hw/riscv/virt.c
++++ b/hw/riscv/virt.c
+@@ -1258,7 +1258,22 @@ static void virt_machine_done(Notifier *notifier, void *data)
+     s->fw_cfg = create_fw_cfg(machine);
+     rom_set_fw(s->fw_cfg);
  
- static void fw_cfg_class_init(ObjectClass *klass, void *data)
- {
-diff --git a/include/hw/nvram/fw_cfg.h b/include/hw/nvram/fw_cfg.h
-index 0e7a8bc7af..c1f81a5f13 100644
---- a/include/hw/nvram/fw_cfg.h
-+++ b/include/hw/nvram/fw_cfg.h
-@@ -342,4 +342,25 @@ bool fw_cfg_dma_enabled(void *opaque);
-  */
- const char *fw_cfg_arch_key_name(uint16_t key);
+-    if (machine->kernel_filename) {
++    if (drive_get(IF_PFLASH, 0, 1)) {
++        /*
++         * S-mode FW like EDk2 will be kept in second plash (unit 1). When
++         * both -kernel and -pflash options are provided in command line,
++         * the kernel, initrd will be copied to fw_cfg table and opensbi
++         * will jump to flash address which is the entry point of S-mode FW.
++         * It is the job of the S-mode FW to load the kernel/initrd and launch.
++         *
++         * If only pflash is given but not -kernel, then it is the job of
++         * of the S-mode firmware to locate and load the kernel.
++         * In either case, the next_addr for opensbi will be the flash address.
++         */
++        riscv_setup_firmware_boot(machine);
++        kernel_entry = virt_memmap[VIRT_FLASH].base +
++                         virt_memmap[VIRT_FLASH].size / 2;
++    } else if (machine->kernel_filename) {
+         kernel_start_addr = riscv_calc_kernel_start_addr(&s->soc[0],
+                                                          firmware_end_addr);
  
-+/**
-+ * load_image_to_fw_cfg() - Load an image file into an fw_cfg entry identified
-+ *                          by key.
-+ * @fw_cfg:         The firmware config instance to store the data in.
-+ * @size_key:       The firmware config key to store the size of the loaded
-+ *                  data under, with fw_cfg_add_i32().
-+ * @data_key:       The firmware config key to store the loaded data under,
-+ *                  with fw_cfg_add_bytes().
-+ * @image_name:     The name of the image file to load. If it is NULL, the
-+ *                  function returns without doing anything.
-+ * @try_decompress: Whether the image should be decompressed (gunzipped) before
-+ *                  adding it to fw_cfg. If decompression fails, the image is
-+ *                  loaded as-is.
-+ *
-+ * In case of failure, the function prints an error message to stderr and the
-+ * process exits with status 1.
-+ */
-+void load_image_to_fw_cfg(FWCfgState *fw_cfg, uint16_t size_key,
-+                          uint16_t data_key, const char *image_name,
-+                          bool try_decompress);
-+
- #endif
+diff --git a/include/hw/riscv/boot.h b/include/hw/riscv/boot.h
+index a36f7618f5..93e5f8760d 100644
+--- a/include/hw/riscv/boot.h
++++ b/include/hw/riscv/boot.h
+@@ -57,5 +57,6 @@ void riscv_rom_copy_firmware_info(MachineState *machine, hwaddr rom_base,
+                                   uint32_t reset_vec_size,
+                                   uint64_t kernel_entry);
+ void riscv_setup_direct_kernel(hwaddr kernel_addr, hwaddr fdt_addr);
++void riscv_setup_firmware_boot(MachineState *machine);
+ 
+ #endif /* RISCV_BOOT_H */
 -- 
 2.25.1
 

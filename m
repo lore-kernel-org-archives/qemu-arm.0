@@ -1,115 +1,108 @@
-Received: by 2002:a17:906:1c87:0:0:0:0 with SMTP id g7csp2536434ejh;
-        Mon, 5 Sep 2022 11:37:48 -0700 (PDT)
-X-Google-Smtp-Source: AA6agR5hZRqYAGX/uKyu+RarNP9LrtSE3jKOMf3shjN9XYEMhUyut8a4rsavbr9FsD09ZyiByyjG
-X-Received: by 2002:a0c:b309:0:b0:496:6277:953e with SMTP id s9-20020a0cb309000000b004966277953emr42007221qve.77.1662403067858;
-        Mon, 05 Sep 2022 11:37:47 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1662403067; cv=none;
+Received: by 2002:a17:906:1c87:0:0:0:0 with SMTP id g7csp2574389ejh;
+        Mon, 5 Sep 2022 13:25:20 -0700 (PDT)
+X-Google-Smtp-Source: AA6agR4zRc+M07gACyZb/TOxu+UKn/7PRVFJ8LzTrTY5/mjStGtqp5U0NBu7lPJjIvblWzA3UkOo
+X-Received: by 2002:a05:6214:c82:b0:496:d33e:7ac4 with SMTP id r2-20020a0562140c8200b00496d33e7ac4mr42363057qvr.32.1662409520207;
+        Mon, 05 Sep 2022 13:25:20 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1662409520; cv=none;
         d=google.com; s=arc-20160816;
-        b=MfIXcOGMI4zJgtrAI3H2aODeNQXESji6QVq7Whxmg8q+Xn4A81M663mfq/vyljj7iJ
-         YYYFmXMVARSr9h7FF5UTZTaH5jflyljk82SOu/N+cArIn4Qvth5gBM616N1wnGHR5Vw6
-         3gWu3h0+KBCCRkjjQPu54YOxiLAxxLU6B4A4HrbDz7u0ulZtq40Td5z+jfAVbkbngh95
-         Ul665k9SoPdTmoSV7T3bmQyKwoFYoZzy+6owOM55x+8IDMHlxjfVMyKLqfiYRsUHJQMV
-         ozWi8E2CAawDA/CORfp0nL83WUVRURL1YukY3Yj7N+Sv3fs2stCNsbGngfmRdeDf2wi1
-         YEWA==
+        b=QfkWUh2lQNnfa2+OoTdpSD2GV5NzQwdXfMrEeZbpb0+XUZqIidnGqj9xATOY9pQ3UK
+         41RJcrv2Kl1I1mfEU6AsK0zl0Z/jnvrOsgxPimkKF6iIBg4HZOYBkaIwMchMVLjufuLb
+         DNwtnkvccjzdQafGmzwxxMwDXpFF0xvGZ3N+HwcZ5+GxpbejiGes0iVxq8xtU8Pte6i1
+         nJJesL/yAyGzo252233DjgwU1d8fHp9TF5YNZCJo8r/mEyDsQdeFieFH0nXy5xQGb9K2
+         rsH3AYyzBN31LNU2jQH4gqUaOP3f1f31dUjaVzFE1fPPTPS9dun+ICRKBQKJNBxeWWKS
+         WP1w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=/Hfi1dqn7aBKUskyIzQv2SXHLLV50tRsQ66eiL+Qum8=;
-        b=eg8jPi0BpGw8OqYMoTNq/JVfA2Pu70Y8s7yc7i0hDJzkojOtxqvx1aG7pld2RX1ILn
-         WC9Exe4jONn3cxjnNbdOy55sn/F4/FW87LglEVHFEDUiuqkx5yppCE1xn242rRQHcgjD
-         os1cdTCLvYvzHmgHHJ91JQ0wwei9HWgdoa57NwnBKVrQ1nLgZTrQy4Tw6/qBDSQORvXC
-         M198f9TDoE6+JkWZEWtAaSVObx1AGaS7xv912AFzzGgArn9I11FNo1xn0F66MuAbPkq1
-         j6VTVFaGg01m8aVg2sKW4q5/kSleDI7paAypTurBJeAlwMpNMyqc9J1G6NRBMG1VjC7u
-         rkGg==
+        bh=ID+SnhpEZx/BDqyhmU8JXjs9pMlZndn9aHrSLTIAUAA=;
+        b=y/lYXVHR6N6nuGfDebeLoQXbZ+t+8kt2gGqDjdzccrPOCXMQPvp31+oBWXfoDE/ggp
+         rP720pguBhiBlkaHwopmqXVfKld+AJGpzjkFhr8Vci0/nfPWKWn4BpXqIzHV4mGNu5cI
+         Pu6o0jQEFINfZjpYBXBF4cUmoiJPq17vYZBZ86KvXr2gRhTWvxz+mMOYR9FC+wajCI60
+         SaLK1J57KR+z4UC+Rbo5xPmp4aSUKh0ibKUeJXu6BInjnsvPGlPxErSxGN2D/Eat3X5g
+         C6yL5teiKiEJgPPrwlfNH/W0ATwf7OHN50e0D3ZPS64O0gCsbHw+quev7xMnW/TBKKSQ
+         1k+A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@ventanamicro.com header.s=google header.b=CSv3wy3K;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@linaro.org header.s=google header.b=Oa78ED8J;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id hr11-20020a05621423cb00b00476e02decffsi5821906qvb.68.2022.09.05.11.37.47
+        by mx.google.com with ESMTPS id g17-20020ac842d1000000b00339256a97a4si5962085qtm.768.2022.09.05.13.25.20
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 05 Sep 2022 11:37:47 -0700 (PDT)
+        Mon, 05 Sep 2022 13:25:20 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@ventanamicro.com header.s=google header.b=CSv3wy3K;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:40464 helo=lists1p.gnu.org)
+       dkim=pass header.i=@linaro.org header.s=google header.b=Oa78ED8J;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:57318 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1oVGyh-0000SU-DI
-	for alex.bennee@linaro.org; Mon, 05 Sep 2022 14:37:47 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:42426)
+	id 1oVIek-0001TB-Nv
+	for alex.bennee@linaro.org; Mon, 05 Sep 2022 16:25:18 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37828)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <sunilvl@ventanamicro.com>)
- id 1oVGkp-0002L5-H5
- for qemu-devel@nongnu.org; Mon, 05 Sep 2022 14:23:27 -0400
-Received: from mail-pf1-x42c.google.com ([2607:f8b0:4864:20::42c]:44907)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1oVIch-00079h-Nw
+ for qemu-devel@nongnu.org; Mon, 05 Sep 2022 16:23:11 -0400
+Received: from mail-wr1-x42e.google.com ([2a00:1450:4864:20::42e]:33627)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <sunilvl@ventanamicro.com>)
- id 1oVGkj-00028o-OQ
- for qemu-devel@nongnu.org; Mon, 05 Sep 2022 14:23:27 -0400
-Received: by mail-pf1-x42c.google.com with SMTP id q15so9195017pfn.11
- for <qemu-devel@nongnu.org>; Mon, 05 Sep 2022 11:23:21 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=ventanamicro.com; s=google;
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1oVIcc-0004Xc-NK
+ for qemu-devel@nongnu.org; Mon, 05 Sep 2022 16:23:11 -0400
+Received: by mail-wr1-x42e.google.com with SMTP id k9so12668124wri.0
+ for <qemu-devel@nongnu.org>; Mon, 05 Sep 2022 13:23:06 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date;
- bh=/Hfi1dqn7aBKUskyIzQv2SXHLLV50tRsQ66eiL+Qum8=;
- b=CSv3wy3KLWo6GFb8e25uWFTqD4WhCvkZ09VWoN8sF0xFwdeujLhmtmCfLr86cNUEGC
- tM3UpWzHrqlIFcbRxMWHcITdva6jwDEePvf/iHkQ9GTCWMH+Xq6mpyPRZWyZkUN5mAir
- tfjATx7V/YY1EKNrmOZAlOdLNNrd9Vzt07wFge7dlSwInsILbvFQvwQaAbEAOqLMManB
- AkxjDy6eeU3ofFZ4ahsMd6uxTdU8RPvwcUVEz9itHbVjCeXDC1TT2tLu78SrqnwP3qjj
- vpe9N/BwLCU7uC/U0xody4f9sP+Sr6eaQivGdJ/L0iRYvlYniggj4r0pHwOcEeUxu8Z2
- PMYw==
+ bh=ID+SnhpEZx/BDqyhmU8JXjs9pMlZndn9aHrSLTIAUAA=;
+ b=Oa78ED8JInHiSEiQGo4S4fRljhXgCC2CEjhG9gAkzV8h8fDk7VBjzhbIsW9nq/8aTv
+ F3bURBIb/xjLv5i8e/K8TSmBzoNZnDD7IE9kf7ChzxGN7wL6wm4EDXZEAZvHvjzDgmPs
+ VbaDrYA0rPF2VEhir0jMYN1Lv/udwnhXB1K3WFzDNrdKtLSgO2Vyex6DuSMwOiaBkayN
+ bKfJDdYx+3L8l242XHvyU0OEjKMRuJr06a1fALqnXcoHHa45TejuR7qvwa08uL/J5NZF
+ zadMS4Vn7aeTImXERz4Rfo/IU238f6U1gBTomrFZgERj8qSuFWq4DwAH0ofw877qwCSR
+ AQmQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date;
- bh=/Hfi1dqn7aBKUskyIzQv2SXHLLV50tRsQ66eiL+Qum8=;
- b=vl3l4b6h9UPKiqJw99fSx5GMg3jUnnCsRI3WH6yJktJl8pPOu8M/0qSJT1/8aLYVti
- 6sSzhyvjLJFLir9JVY3a/yXFGop2cl2OUaTVQ64xgOcYQd53hNWkHqaVUIelSLuzngK+
- 4c5+rzAaxxMX6TRN7dT8ZzAqpY6AIMz7KPpfWT6QBblFwo9WuIxwLQZEZsRDNf9EgrLe
- Ks39He/AhkixeHfntc6g68TgoDW4bL5HtmQffE1gxFYT2QFLeaG7mDitdRFhoRr7b5xs
- bqmufNqQlHsy82i7OXrqIWxi1G83SuJsvl8kPWUqM5ELUZ+clWa4iLVbRHI+OtufRdWy
- lAmQ==
-X-Gm-Message-State: ACgBeo2n6oA3vbS4CsMZ/jvBaHDnMZxNKQ5vv/Femb2oVPV4DCdTxt44
- lQ7K/W+rvT4vb4xcmxOBE41kVA==
-X-Received: by 2002:a63:4b62:0:b0:421:8c8b:163c with SMTP id
- k34-20020a634b62000000b004218c8b163cmr41032332pgl.182.1662402200491; 
- Mon, 05 Sep 2022 11:23:20 -0700 (PDT)
-Received: from localhost.localdomain ([49.206.11.92])
+ bh=ID+SnhpEZx/BDqyhmU8JXjs9pMlZndn9aHrSLTIAUAA=;
+ b=dPa/t7w2tm02JO+jV5wgmzpPKi8pmWbFg/gMt04ioK9BkybwEafLOQJRLEhUbL4ba9
+ 2ruJHcRV0Ot6r5NS5ftI9QWZE1VruYTZeHL16+yOzUqVdv+4TzTARoNc05gM6i5omufd
+ T/HaB31eZegKwuIPW2+pjyGnSSTgXI52ujFEkTA1nXpPFhe5fkjKfHPo1VJ3Mj4zRBLt
+ UcEiYjRBo+RuGp6LV0PEd8BXvY999+n/avx+xxKZmjMuDArtEOw1VlG1AdB86th3nD63
+ QCdx2bh1nekTIcTaqLt13bW0aQILYcdAU9wZUMng7bMK1ZzPF5QWPcAAC72aMJ8D4+vr
+ cOOg==
+X-Gm-Message-State: ACgBeo2WhwXB8JsZpDSHqWN1S+yDX8Q8cy6SZp49pfBxX2xujaaNxSrK
+ k+PwUgpQLLnNxHU3EvcK1pSAYs4kIzpI0FD4
+X-Received: by 2002:a5d:6248:0:b0:222:cd3b:94c8 with SMTP id
+ m8-20020a5d6248000000b00222cd3b94c8mr25862129wrv.97.1662409385452; 
+ Mon, 05 Sep 2022 13:23:05 -0700 (PDT)
+Received: from localhost.localdomain
+ ([2a02:8084:a5c0:5a80:d0ad:82b5:d7a4:c0a9])
  by smtp.gmail.com with ESMTPSA id
- z7-20020aa79587000000b005321340753fsm8046724pfj.103.2022.09.05.11.23.16
+ m14-20020a5d56ce000000b00226d238be98sm9472404wrw.82.2022.09.05.13.23.04
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 05 Sep 2022 11:23:20 -0700 (PDT)
-From: Sunil V L <sunilvl@ventanamicro.com>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org,
-	qemu-riscv@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Xiaojuan Yang <yangxiaojuan@loongson.cn>, Song Gao <gaosong@loongson.cn>,
- Gerd Hoffmann <kraxel@redhat.com>, Palmer Dabbelt <palmer@dabbelt.com>,
- Alistair Francis <alistair.francis@wdc.com>,
- Bin Meng <bin.meng@windriver.com>, Andrew Jones <ajones@ventanamicro.com>,
- Anup Patel <apatel@ventanamicro.com>,
- Atish Kumar Patra <atishp@rivosinc.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
- Sunil V L <sunilvl@ventanamicro.com>
-Subject: [PATCH V2 3/3] hw/riscv: virt: Enable booting S-mode firmware from
- pflash
-Date: Mon,  5 Sep 2022 23:52:38 +0530
-Message-Id: <20220905182238.374545-4-sunilvl@ventanamicro.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20220905182238.374545-1-sunilvl@ventanamicro.com>
-References: <20220905182238.374545-1-sunilvl@ventanamicro.com>
+ Mon, 05 Sep 2022 13:23:04 -0700 (PDT)
+From: Richard Henderson <richard.henderson@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: f4bug@amsat.org, qemu-arm@nongnu.org, pbonzini@redhat.com,
+ David Hildenbrand <david@redhat.com>
+Subject: [PATCH v3 3/6] accel/tcg: Suppress auto-invalidate in
+ probe_access_internal
+Date: Mon,  5 Sep 2022 21:22:56 +0100
+Message-Id: <20220905202259.189852-4-richard.henderson@linaro.org>
+X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20220905202259.189852-1-richard.henderson@linaro.org>
+References: <20220905202259.189852-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::42c;
- envelope-from=sunilvl@ventanamicro.com; helo=mail-pf1-x42c.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::42e;
+ envelope-from=richard.henderson@linaro.org; helo=mail-wr1-x42e.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -131,105 +124,70 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: TnT/iwux9RNK
+X-TUID: Pfhe2s72uuEC
 
-To boot S-mode firmware payload like EDK2 from persistent
-flash storage, qemu needs to pass the flash address as the
-next_addr in fw_dynamic_info to the opensbi.
+When PAGE_WRITE_INV is set when calling tlb_set_page,
+we immediately set TLB_INVALID_MASK in order to force
+tlb_fill to be called on the next lookup.  Here in
+probe_access_internal, we have just called tlb_fill
+and eliminated true misses, thus the lookup must be valid.
 
-When both -kernel and -pflash options are provided in command line,
-the kernel (and initrd if -initrd) will be copied to fw_cfg table.
-The S-mode FW will load the kernel/initrd from fw_cfg table.
+This allows us to remove a warning comment from s390x.
+There doesn't seem to be a reason to change the code though.
 
-If only pflash is given but not -kernel, then it is the job of
-of the S-mode firmware to locate and load the kernel.
-
-In either case, update the kernel_entry with the flash address
-so that the opensbi can jump to the entry point of the S-mode
-firmware.
-
-Signed-off-by: Sunil V L <sunilvl@ventanamicro.com>
+Cc: David Hildenbrand <david@redhat.com>
+Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- hw/riscv/boot.c         | 28 ++++++++++++++++++++++++++++
- hw/riscv/virt.c         | 17 ++++++++++++++++-
- include/hw/riscv/boot.h |  1 +
- 3 files changed, 45 insertions(+), 1 deletion(-)
+ accel/tcg/cputlb.c            | 10 +++++++++-
+ target/s390x/tcg/mem_helper.c |  4 ----
+ 2 files changed, 9 insertions(+), 5 deletions(-)
 
-diff --git a/hw/riscv/boot.c b/hw/riscv/boot.c
-index 1ae7596873..39436b8d56 100644
---- a/hw/riscv/boot.c
-+++ b/hw/riscv/boot.c
-@@ -338,3 +338,31 @@ void riscv_setup_direct_kernel(hwaddr kernel_addr, hwaddr fdt_addr)
-         riscv_cpu->env.fdt_addr = fdt_addr;
+diff --git a/accel/tcg/cputlb.c b/accel/tcg/cputlb.c
+index 03395e725d..91f2b53142 100644
+--- a/accel/tcg/cputlb.c
++++ b/accel/tcg/cputlb.c
+@@ -1535,6 +1535,7 @@ static int probe_access_internal(CPUArchState *env, target_ulong addr,
      }
- }
+     tlb_addr = tlb_read_ofs(entry, elt_ofs);
+ 
++    flags = TLB_FLAGS_MASK;
+     page_addr = addr & TARGET_PAGE_MASK;
+     if (!tlb_hit_page(tlb_addr, page_addr)) {
+         if (!victim_tlb_hit(env, mmu_idx, index, elt_ofs, page_addr)) {
+@@ -1550,10 +1551,17 @@ static int probe_access_internal(CPUArchState *env, target_ulong addr,
+ 
+             /* TLB resize via tlb_fill may have moved the entry.  */
+             entry = tlb_entry(env, mmu_idx, addr);
 +
-+void riscv_setup_firmware_boot(MachineState *machine)
-+{
-+    if (machine->kernel_filename) {
-+        FWCfgState *fw_cfg;
-+        fw_cfg = fw_cfg_find();
-+
-+        assert(fw_cfg);
-+        /*
-+         * Expose the kernel, the command line, and the initrd in fw_cfg.
-+         * We don't process them here at all, it's all left to the
-+         * firmware.
-+         */
-+        load_image_to_fw_cfg(fw_cfg,
-+                             FW_CFG_KERNEL_SIZE, FW_CFG_KERNEL_DATA,
-+                             machine->kernel_filename,
-+                             true);
-+        load_image_to_fw_cfg(fw_cfg,
-+                             FW_CFG_INITRD_SIZE, FW_CFG_INITRD_DATA,
-+                             machine->initrd_filename, false);
-+        if (machine->kernel_cmdline) {
-+            fw_cfg_add_i32(fw_cfg, FW_CFG_CMDLINE_SIZE,
-+                           strlen(machine->kernel_cmdline) + 1);
-+            fw_cfg_add_string(fw_cfg, FW_CFG_CMDLINE_DATA,
-+                              machine->kernel_cmdline);
-+        }
-+    }
-+}
-diff --git a/hw/riscv/virt.c b/hw/riscv/virt.c
-index b6bbf03f61..b985df9b16 100644
---- a/hw/riscv/virt.c
-+++ b/hw/riscv/virt.c
-@@ -1258,7 +1258,22 @@ static void virt_machine_done(Notifier *notifier, void *data)
-     s->fw_cfg = create_fw_cfg(machine);
-     rom_set_fw(s->fw_cfg);
++            /*
++             * With PAGE_WRITE_INV, we set TLB_INVALID_MASK immediately,
++             * to force the next access through tlb_fill.  We've just
++             * called tlb_fill, so we know that this entry *is* valid.
++             */
++            flags &= ~TLB_INVALID_MASK;
+         }
+         tlb_addr = tlb_read_ofs(entry, elt_ofs);
+     }
+-    flags = tlb_addr & TLB_FLAGS_MASK;
++    flags &= tlb_addr;
  
--    if (machine->kernel_filename) {
-+    if (drive_get(IF_PFLASH, 0, 1)) {
-+        /*
-+         * S-mode FW like EDk2 will be kept in second plash (unit 1). When
-+         * both -kernel and -pflash options are provided in command line,
-+         * the kernel, initrd will be copied to fw_cfg table and opensbi
-+         * will jump to flash address which is the entry point of S-mode FW.
-+         * It is the job of the S-mode FW to load the kernel/initrd and launch.
-+         *
-+         * If only pflash is given but not -kernel, then it is the job of
-+         * of the S-mode firmware to locate and load the kernel.
-+         * In either case, the next_addr for opensbi will be the flash address.
-+         */
-+        riscv_setup_firmware_boot(machine);
-+        kernel_entry = virt_memmap[VIRT_FLASH].base +
-+                         virt_memmap[VIRT_FLASH].size / 2;
-+    } else if (machine->kernel_filename) {
-         kernel_start_addr = riscv_calc_kernel_start_addr(&s->soc[0],
-                                                          firmware_end_addr);
+     /* Fold all "mmio-like" bits into TLB_MMIO.  This is not RAM.  */
+     if (unlikely(flags & ~(TLB_WATCHPOINT | TLB_NOTDIRTY))) {
+diff --git a/target/s390x/tcg/mem_helper.c b/target/s390x/tcg/mem_helper.c
+index fc52aa128b..3758b9e688 100644
+--- a/target/s390x/tcg/mem_helper.c
++++ b/target/s390x/tcg/mem_helper.c
+@@ -148,10 +148,6 @@ static int s390_probe_access(CPUArchState *env, target_ulong addr, int size,
+ #else
+     int flags;
  
-diff --git a/include/hw/riscv/boot.h b/include/hw/riscv/boot.h
-index a36f7618f5..93e5f8760d 100644
---- a/include/hw/riscv/boot.h
-+++ b/include/hw/riscv/boot.h
-@@ -57,5 +57,6 @@ void riscv_rom_copy_firmware_info(MachineState *machine, hwaddr rom_base,
-                                   uint32_t reset_vec_size,
-                                   uint64_t kernel_entry);
- void riscv_setup_direct_kernel(hwaddr kernel_addr, hwaddr fdt_addr);
-+void riscv_setup_firmware_boot(MachineState *machine);
- 
- #endif /* RISCV_BOOT_H */
+-    /*
+-     * For !CONFIG_USER_ONLY, we cannot rely on TLB_INVALID_MASK or haddr==NULL
+-     * to detect if there was an exception during tlb_fill().
+-     */
+     env->tlb_fill_exc = 0;
+     flags = probe_access_flags(env, addr, access_type, mmu_idx, nonfault, phost,
+                                ra);
 -- 
-2.25.1
+2.34.1
 

@@ -1,120 +1,113 @@
-Received: by 2002:a17:906:1c87:0:0:0:0 with SMTP id g7csp2965174ejh;
-        Tue, 6 Sep 2022 06:48:14 -0700 (PDT)
-X-Google-Smtp-Source: AA6agR5bwE/6YDQ3nie4rvTliD1jk658K32ZgQ0gY450/UOoMX+LPuzdXTh/08yYIpJ5iKvPQlKd
-X-Received: by 2002:ac8:5d86:0:b0:343:5ac5:a739 with SMTP id d6-20020ac85d86000000b003435ac5a739mr42676099qtx.533.1662472093860;
-        Tue, 06 Sep 2022 06:48:13 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1662472093; cv=none;
+Received: by 2002:a17:906:1c87:0:0:0:0 with SMTP id g7csp2853508ejh;
+        Tue, 6 Sep 2022 03:11:16 -0700 (PDT)
+X-Google-Smtp-Source: AA6agR7x80m9DEMhLWnP0nW+5rY49R29njGE8AsLVnN8a0f9ZVZgm79bPL22cX316+1KDHWXjILK
+X-Received: by 2002:a05:620a:1993:b0:6bb:7564:a31f with SMTP id bm19-20020a05620a199300b006bb7564a31fmr34120087qkb.201.1662459076207;
+        Tue, 06 Sep 2022 03:11:16 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1662459076; cv=none;
         d=google.com; s=arc-20160816;
-        b=BkZapMjrZbG4s2MkTcj4IE+YPyxjdmzQH8dgovNtkFpCbAJlnKfD6Qa8nFE38T+HkO
-         ksOGq+7vNA7ZIji+GpMJNK6M047fXe7BTsG5fQVjEXtXD6zcd98Pfrpa5xeEaGOf2/4h
-         bMx10RfnfLFp3Q2iGz2W21Th/0PRJQW87GfDRI9zv8FPhpqRfWQyXXXN+fA3z9OII2KR
-         RXAAjtFFpjl7G0b8JxNYIuoLiiApsBjc/JN/CRb039cssiR5xzY5tg61p0EWNzAYuu8j
-         czClUd/+rX7KS2VmIi81RaZ6Bb+/bcOM6QyJENnG6V8OjO8VYFTPaZWhj/zEvVHDO9h7
-         fJFg==
+        b=LZjwfdHxLYIRHy19rq0oTYYU7KJRIERlNsxB2hjPBsrHldliObPZj7cMZsEqI6djin
+         EkvUl+4XxKI9EBBdY5N+rMU7mwKbwffZIVHGLoJDGvhWRA/7rkQpJgpohrc5OI6B+FMK
+         8FAUepob1kIfTVR26FIzJJqdcP5OaQPNkE6+EMaxqPvSXY/SoDF9RbXoJlayG6HS9j1O
+         4EiohvZNJqF0qBy12zVe7CvKDKvkEQuYWP6OEMsusOaSZoiGNJvMFMeR2xQBSv3ivKh8
+         lq4sphHIocd/hHteO/BP/q7dA3I7XsvKStbCn6sv6YrpdiADDPq1JTyW9nWcFQn9Vr3U
+         fbHw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :dkim-signature;
-        bh=mOaRI71FQfWA04xw1hixx4MODTWCMqP/3VREdkQGoTQ=;
-        b=OnZ/oo7qu3XkpxBOPJmq3ukj7+YliBGhW1cOObLOzGDRsMAvuuXEJWvXnLETFkoxv8
-         Q69Wo8SRbfI4amDYbNhfVXFxUMkkrHW2OAAjwNRdBrOUZtdlDMqv0Y4mQsUr7rBppSol
-         oX7pM8JxhkqqWSjFcXnPQq6VJNXERuvfYpjK5e/mSSD4vM5yODFwINmQMgsB5jA35GIA
-         AeNxL43IiGYy5FfMMQigLNoQEkdcEkV6NkKDXLkxQvEmwKoPJLs8cIwQfPXlXcXQ+2Ru
-         AJRdMiyfgHFpzxFRKxV+m2GS4OExVCn03K6HBvIM8+ie8Qqs3tEjJfCp2oxT9X1KafVO
-         AYDw==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=zqM+tLT0c4kdL2N5oQ0iibAj5/0Y8nElXOz+WlKsfPg=;
+        b=pDhz7UAyEyHHCYfsRzeoSE+XQaNJsy0Y2xmk/J00njSHhCsjIPJqnNMTVsabttPSiC
+         h8QwoKGC1xtZ6oPG71LHA5uw3j2bd+FSBv3R4zPJtovRvUM1KkAjBzUAvPXAdi85R9hV
+         5Latei6+A1ewomvWVRH9uu35X97gWwbYLd2DNqUrKroyMJ1iZSuvVXB89Pivab5NOwBJ
+         CRS5yb9SQ7BzbPnPwY5tqYZKSMetGArQ0yIatKD5xkC9lqiH02AXbJFLJRM/Ocn/UqmK
+         /aVAXuM7YtbvsGu5xI5ZfjqForl910pwM6InPpWoOzx1t9OyV/JUOqR2Cq9omOZKERNp
+         L0bQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@ventanamicro.com header.s=google header.b="obTj/T8n";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@linaro.org header.s=google header.b=eVBQLKgE;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id h22-20020a05620a245600b006bbf5598bb9si8517679qkn.353.2022.09.06.06.48.13
+        by mx.google.com with ESMTPS id bi2-20020a05620a318200b006bba95d2306si7643735qkb.25.2022.09.06.03.11.16
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 06 Sep 2022 06:48:13 -0700 (PDT)
+        Tue, 06 Sep 2022 03:11:16 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@ventanamicro.com header.s=google header.b="obTj/T8n";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:50276 helo=lists1p.gnu.org)
+       dkim=pass header.i=@linaro.org header.s=google header.b=eVBQLKgE;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:39190 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1oVYw1-0002Ow-AV
-	for alex.bennee@linaro.org; Tue, 06 Sep 2022 09:48:13 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49842)
+	id 1oVVY3-0000pH-Mj
+	for alex.bennee@linaro.org; Tue, 06 Sep 2022 06:11:15 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:45298)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <sunilvl@ventanamicro.com>)
- id 1oVXkV-0006ur-8D
- for qemu-devel@nongnu.org; Tue, 06 Sep 2022 08:32:15 -0400
-Received: from mail-pj1-x102a.google.com ([2607:f8b0:4864:20::102a]:35749)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1oVVSi-00044n-PE
+ for qemu-devel@nongnu.org; Tue, 06 Sep 2022 06:05:45 -0400
+Received: from mail-wr1-x435.google.com ([2a00:1450:4864:20::435]:39818)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <sunilvl@ventanamicro.com>)
- id 1oVXkS-00066J-Fx
- for qemu-devel@nongnu.org; Tue, 06 Sep 2022 08:32:14 -0400
-Received: by mail-pj1-x102a.google.com with SMTP id
- m10-20020a17090a730a00b001fa986fd8eeso14832073pjk.0
- for <qemu-devel@nongnu.org>; Tue, 06 Sep 2022 05:32:11 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=ventanamicro.com; s=google;
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:to:from:date:from:to:cc:subject:date;
- bh=mOaRI71FQfWA04xw1hixx4MODTWCMqP/3VREdkQGoTQ=;
- b=obTj/T8nL2vtJfjjzCT6VXoOERiCp+1ugivm4/FUM4PhsjKVXRe38OSQBV4jERCsBp
- ugGLkBxK943bn9kGeNzx3oTQIjewFzShMkdiDYel004C5o33G0Wk5ljqrPcmpxC/TjWi
- 4c1znbedjNRguLE3cq1e8rCD/KMM/CV2bH5Vn44p1FjB5vMcM8w3XUbDO/u4DGCNdyBq
- LdUEv5ladW0YDSch3pSNsyxgUOkFa15BUwL6W/CYoDRKtjbpBNYEReavZbajRqAZvYvT
- 97OtcOMpZsRxLOOtRTszyQK1D2bK2nQ2hh/sQZnp5Zq5boIlUXC5JREl7qJC2QDRgASE
- vgXA==
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1oVVSf-00034h-1C
+ for qemu-devel@nongnu.org; Tue, 06 Sep 2022 06:05:44 -0400
+Received: by mail-wr1-x435.google.com with SMTP id az27so14645079wrb.6
+ for <qemu-devel@nongnu.org>; Tue, 06 Sep 2022 03:05:40 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date;
+ bh=zqM+tLT0c4kdL2N5oQ0iibAj5/0Y8nElXOz+WlKsfPg=;
+ b=eVBQLKgEeMHXly4tBYNXHjjpRDjs6M+GyKx7+Fk+TvR8sXcxZiw2jXI33OMuyPexBx
+ bYAWl601XRxFJZFh4SIhrcERSSz+GKFFuWuZMVaRpIm6ql9Q/fdTXK1+d1cIsV4Y5M/7
+ TtC5VyO9gt+wGfrW5oeNxhUL13PZ1KcQBKC1AYAIWZI1whn6nCEstkCkYdjqo2Cre/ML
+ Eho3zOeGu0PsWp8AmRixCTDT5M915Heb0R5ZQxzevPjMtrEcLsSNtCAk6yJjGiJPjz2L
+ rbItpBFHdHXHasxDAXqmYGQI6xnP8S158a4jUcQM0vqdR7GBQbHSIVoCVQYXDmTTP4KN
+ Wx3Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date;
- bh=mOaRI71FQfWA04xw1hixx4MODTWCMqP/3VREdkQGoTQ=;
- b=OrEnQsdyr/K0vZK7Kvf92GJraZ/G9Nq3AN8zcUZ3iy8ngunE2ekoIFPf3xe3vDf3HZ
- C7MsYeYd6tPX/6DvQ21KpHrZkKoh/QGo+hT5EwZI98plXhnaN1ZXE0piQJ8vk13V7Y/1
- t79Fv2H9ml9aJTOFNW42KookL3Rko24731GG85gwr1+ZhG1ZKmOZoUCW6KmQE7wy56G0
- 4oQWXWEAGFrH9neIlMC+TIUi70jAh45Pxm0H+WrrQyPSMl24QFwCOodjywLCWFSl0N2W
- qvDXBeyZ8O8+/GhLVELenivL++eJrOFNvwAN/NWA7GLf3JJgsumLlos9737Frl3yoNMM
- I8Yw==
-X-Gm-Message-State: ACgBeo15LUub/3YnvNOeuSHpPBXP0zrpDGoQAOK/CjQLnypriyuNWvaU
- JiJhhU3xYiXpBwqHloQEKbPQFw==
-X-Received: by 2002:a17:90a:9409:b0:200:52d9:660d with SMTP id
- r9-20020a17090a940900b0020052d9660dmr11901049pjo.62.1662467531040; 
- Tue, 06 Sep 2022 05:32:11 -0700 (PDT)
-Received: from sunil-laptop ([49.206.11.92]) by smtp.gmail.com with ESMTPSA id
- v13-20020a17090a00cd00b001fa80cde150sm12368806pjd.20.2022.09.06.05.32.03
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+ :subject:date;
+ bh=zqM+tLT0c4kdL2N5oQ0iibAj5/0Y8nElXOz+WlKsfPg=;
+ b=gKF7vBQOhhlBW/1kL6fOxPvXbKLI9N49lnX4U9cKAR6D/3bnaLumR8FBgPxmNBUfDu
+ 05BQp2HAmq/dC+dORM+dsuDNoI4h5rRVgpCXoRJ1BmQBFETNJpv/adRwoUb6lC6ktVLw
+ jkKeHk06/4PwsyojS05SWqX7D1v49+Nw2rTl2VjkazDM80HAPup7NqoaWx0R43v3/AX4
+ Z7tyx/6Q2jZw+vCdiuzo1RnhafAoz66STXuowNpNEYvrXvFHogAew2VbE4ui6x/hBE4Z
+ vCQpwQbslPjyNLCCXuNsib29ugN6PscGzzq670SJLeeYbQowP2LQUikbeS4m9GmzqYs6
+ 8w1w==
+X-Gm-Message-State: ACgBeo0il9CPpMPiC2Jxx/hwAC+6C5UGsvCotrnXoRKQjGezubHxA3jW
+ /9rdwMrP7Dh0BuP1ewCmuxWxrTRYMLeivNtY
+X-Received: by 2002:a5d:6d89:0:b0:228:da8b:2537 with SMTP id
+ l9-20020a5d6d89000000b00228da8b2537mr1022612wrs.585.1662458739131; 
+ Tue, 06 Sep 2022 03:05:39 -0700 (PDT)
+Received: from localhost.localdomain
+ ([2a02:8084:a5c0:5a80:ba98:3a71:8524:e0b1])
+ by smtp.gmail.com with ESMTPSA id
+ d15-20020a5d6dcf000000b00225307f43fbsm12271081wrz.44.2022.09.06.03.05.38
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 06 Sep 2022 05:32:10 -0700 (PDT)
-Date: Tue, 6 Sep 2022 18:02:00 +0530
-From: Sunil V L <sunilvl@ventanamicro.com>
-To: Gerd Hoffmann <kraxel@redhat.com>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, qemu-riscv@nongnu.org,
- Peter Maydell <peter.maydell@linaro.org>,
- Xiaojuan Yang <yangxiaojuan@loongson.cn>,
- Song Gao <gaosong@loongson.cn>, Palmer Dabbelt <palmer@dabbelt.com>,
- Alistair Francis <alistair.francis@wdc.com>,
- Bin Meng <bin.meng@windriver.com>, Andrew Jones <ajones@ventanamicro.com>,
- Anup Patel <apatel@ventanamicro.com>,
- Atish Kumar Patra <atishp@rivosinc.com>,
- Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-Subject: Re: [PATCH V4 0/3] hw/riscv: virt: Enable booting S-mode firmware
- from pflash
-Message-ID: <20220906123200.GA237800@sunil-laptop>
-References: <20220906090219.412517-1-sunilvl@ventanamicro.com>
- <20220906104128.zlwzvbbswlzyplkc@sirius.home.kraxel.org>
+ Tue, 06 Sep 2022 03:05:38 -0700 (PDT)
+From: Richard Henderson <richard.henderson@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org
+Subject: [PATCH v4 7/9] target/arm: Introduce gen_pc_plus_diff for aarch64
+Date: Tue,  6 Sep 2022 11:05:26 +0100
+Message-Id: <20220906100528.343244-8-richard.henderson@linaro.org>
+X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20220906100528.343244-1-richard.henderson@linaro.org>
+References: <20220906100528.343244-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20220906104128.zlwzvbbswlzyplkc@sirius.home.kraxel.org>
-Received-SPF: pass client-ip=2607:f8b0:4864:20::102a;
- envelope-from=sunilvl@ventanamicro.com; helo=mail-pj1-x102a.google.com
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::435;
+ envelope-from=richard.henderson@linaro.org; helo=mail-wr1-x435.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -129,40 +122,122 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: BGyQk7XWKcvi
+X-TUID: fz6jF0kIaMxW
 
-Hi Gerd,
+In preparation for TARGET_TB_PCREL, reduce reliance on absolute values.
 
-On Tue, Sep 06, 2022 at 12:41:28PM +0200, Gerd Hoffmann wrote:
->   Hi,
-> 
-> > 3)Make the EDK2 image size to match with what qemu flash expects
-> > truncate -s 32M Build/RiscVVirt/DEBUG_GCC5/FV/RISCV_VIRT.fd
-> 
-> Hmm, we have that kind of padding on arm too (64M for code and 64M for
-> vars) and only a fraction of the space is actually used, which isn't
-> exactly ideal.  So not sure it is a good plan to repeat that on riscv.
+Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+---
+ target/arm/translate-a64.c | 41 +++++++++++++++++++++++++++-----------
+ 1 file changed, 29 insertions(+), 12 deletions(-)
 
-Yeah.. but it looks like limitation from qemu flash emulation. Do you mean
-this limitation exists for arm in general on real flash also?
+diff --git a/target/arm/translate-a64.c b/target/arm/translate-a64.c
+index 9bb744fad3..7dd9b29dbf 100644
+--- a/target/arm/translate-a64.c
++++ b/target/arm/translate-a64.c
+@@ -148,9 +148,14 @@ static void reset_btype(DisasContext *s)
+     }
+ }
+ 
++static void gen_pc_plus_diff(DisasContext *s, TCGv_i64 dest, int diff)
++{
++    tcg_gen_movi_i64(dest, s->pc_curr + diff);
++}
++
+ void gen_a64_update_pc(DisasContext *s, int diff)
+ {
+-    tcg_gen_movi_i64(cpu_pc, s->pc_curr + diff);
++    gen_pc_plus_diff(s, cpu_pc, diff);
+ }
+ 
+ /*
+@@ -1368,7 +1373,7 @@ static void disas_uncond_b_imm(DisasContext *s, uint32_t insn)
+ 
+     if (insn & (1U << 31)) {
+         /* BL Branch with link */
+-        tcg_gen_movi_i64(cpu_reg(s, 30), s->base.pc_next);
++        gen_pc_plus_diff(s, cpu_reg(s, 30), curr_insn_len(s));
+     }
+ 
+     /* B Branch / BL Branch with link */
+@@ -2319,11 +2324,17 @@ static void disas_uncond_b_reg(DisasContext *s, uint32_t insn)
+         default:
+             goto do_unallocated;
+         }
+-        gen_a64_set_pc(s, dst);
+         /* BLR also needs to load return address */
+         if (opc == 1) {
+-            tcg_gen_movi_i64(cpu_reg(s, 30), s->base.pc_next);
++            TCGv_i64 lr = cpu_reg(s, 30);
++            if (dst == lr) {
++                TCGv_i64 tmp = new_tmp_a64(s);
++                tcg_gen_mov_i64(tmp, dst);
++                dst = tmp;
++            }
++            gen_pc_plus_diff(s, lr, curr_insn_len(s));
+         }
++        gen_a64_set_pc(s, dst);
+         break;
+ 
+     case 8: /* BRAA */
+@@ -2346,11 +2357,17 @@ static void disas_uncond_b_reg(DisasContext *s, uint32_t insn)
+         } else {
+             dst = cpu_reg(s, rn);
+         }
+-        gen_a64_set_pc(s, dst);
+         /* BLRAA also needs to load return address */
+         if (opc == 9) {
+-            tcg_gen_movi_i64(cpu_reg(s, 30), s->base.pc_next);
++            TCGv_i64 lr = cpu_reg(s, 30);
++            if (dst == lr) {
++                TCGv_i64 tmp = new_tmp_a64(s);
++                tcg_gen_mov_i64(tmp, dst);
++                dst = tmp;
++            }
++            gen_pc_plus_diff(s, lr, curr_insn_len(s));
+         }
++        gen_a64_set_pc(s, dst);
+         break;
+ 
+     case 4: /* ERET */
+@@ -2918,7 +2935,8 @@ static void disas_ld_lit(DisasContext *s, uint32_t insn)
+ 
+     tcg_rt = cpu_reg(s, rt);
+ 
+-    clean_addr = tcg_constant_i64(s->pc_curr + imm);
++    clean_addr = new_tmp_a64(s);
++    gen_pc_plus_diff(s, clean_addr, imm);
+     if (is_vector) {
+         do_fp_ld(s, rt, clean_addr, size);
+     } else {
+@@ -4262,23 +4280,22 @@ static void disas_ldst(DisasContext *s, uint32_t insn)
+ static void disas_pc_rel_adr(DisasContext *s, uint32_t insn)
+ {
+     unsigned int page, rd;
+-    uint64_t base;
+-    uint64_t offset;
++    int64_t offset;
+ 
+     page = extract32(insn, 31, 1);
+     /* SignExtend(immhi:immlo) -> offset */
+     offset = sextract64(insn, 5, 19);
+     offset = offset << 2 | extract32(insn, 29, 2);
+     rd = extract32(insn, 0, 5);
+-    base = s->pc_curr;
+ 
+     if (page) {
+         /* ADRP (page based) */
+-        base &= ~0xfff;
+         offset <<= 12;
++        /* The page offset is ok for TARGET_TB_PCREL. */
++        offset -= s->pc_curr & 0xfff;
+     }
+ 
+-    tcg_gen_movi_i64(cpu_reg(s, rd), base + offset);
++    gen_pc_plus_diff(s, cpu_reg(s, rd), offset);
+ }
+ 
+ /*
+-- 
+2.34.1
 
-> 
-> Also: Do you have support for persistent efi variables?  If that is the
-> case then it makes sense to have separate pflash devices for code and
-> variable store.  First because you can map the code part read-only then,
-> and second because decoupling code + vars to separate files allows easy
-> firmware code updates without loosing the variable store.
-
-Yes, we have persistent variables in my WIP branch. We can easily make it
-to create variables as separate file in EDK2. But we will need to
-enhance qemu virt machine to create more than 2 flash since the first
-one is currently reserved for machine mode firmware. This is a
-good input to enhance it in future.
-
-Thanks!
-Sunil
-
-> 
-> take care,
->   Gerd
-> 

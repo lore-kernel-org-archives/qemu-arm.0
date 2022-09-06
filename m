@@ -1,116 +1,113 @@
-Received: by 2002:a17:906:1c87:0:0:0:0 with SMTP id g7csp2726716ejh;
-        Mon, 5 Sep 2022 21:33:02 -0700 (PDT)
-X-Google-Smtp-Source: AA6agR5XwJAAVJNJpCLLRnAcKM7QKSYP8g0tws1Vvgyo/FIyJiBgTQJehH1kDrI+MakbjiR7QdWo
-X-Received: by 2002:a05:6214:23cf:b0:495:9b34:c6f7 with SMTP id hr15-20020a05621423cf00b004959b34c6f7mr42308143qvb.27.1662438781950;
-        Mon, 05 Sep 2022 21:33:01 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1662438781; cv=none;
+Received: by 2002:a17:906:1c87:0:0:0:0 with SMTP id g7csp2780754ejh;
+        Tue, 6 Sep 2022 00:20:45 -0700 (PDT)
+X-Google-Smtp-Source: AA6agR5idan3v8qPTuG6Mxo5IgfL1R5TLOztRvf83VtrKQI2ku+K1LleJiRHSUDFcO+NLsbruv5R
+X-Received: by 2002:a0c:aa0c:0:b0:477:49b7:2ad with SMTP id d12-20020a0caa0c000000b0047749b702admr42805139qvb.48.1662448845043;
+        Tue, 06 Sep 2022 00:20:45 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1662448845; cv=none;
         d=google.com; s=arc-20160816;
-        b=FTcI6LGj+pk5LUGzGCCxvRNjTumiUzZWD1IhiW1RhPe2FfbQGShSKbg4vKnhC9kQIM
-         JEAvDSvRjJSglOrW7XbHkyTJvMVU2Nk0z4CpChJvaWPUqMoOgiDmuR1yPQeB8l34oiCs
-         5VOdfSxYi6xGPeNX9xejTjz0EW7pBKSxwBCDDuCRoIs8K1krFYNUvWphBr9DIUqXA8JD
-         cU4zi19Nc3fWE0wjUi7a3svaehWKOocN6VGXsdpmx846297KAVNF+JHgO8z/V1hwUN0D
-         ot+2458S+oHUEzvMRyvzTiOXLBtSg1/2OjYQLddLWws5fDakzZXvlCbAkJSeVul6jkos
-         qD0A==
+        b=KVzYdxlxjZCNXDbRt9O2eBPQeH297KL1rLKAD20ALquNwDltoc88ET2/VkucbwJdTt
+         S5xRwt5OXBbApGJ5e7jvJ97sikFOu3kjVyk3AVsjYbw1l7E7Dq3iX+UoPW3N89ESOsGB
+         qfXgclrNNzPOhJ323ue63UUosV94fBeyMLWsYXdWYyAUWBAkvqSPDfXj2Ge70PJntBXX
+         uF0cmKhH/guEpNM+yvptVC0FwdpJ83xM1ap9HM/KWCndTxRJdMG5EnGGE7IWLN3vQNfC
+         kH3M5fzS0mXMQMjwoihlhQwUd/UG0f3zKe89feqZS/0290UbPxJH3tLRWq8tJs2WzjxH
+         Osxg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=K9wefkWGERlorpQlskTuOFMvFh9QknFkKJmCeKsqGFs=;
-        b=en5gLKVJJhz005t16im7yXN+94Gc60W4dowNLLhQ/madXTU0mxiMVMTR0TJdoD2MHs
-         DUGHVs2ppmSLYssoKNnaVOEuWP5ftX9BiZmpn8O8bc3zIpzrNvDuCIuLCMZuU85/o+0Q
-         Q0gTkLAf3tgCtitTMCrTYyvWiZsiYgaavNgAmUkBwx5IzlqbTtMGpYDAn6RFojk/YXYW
-         AOUY+lElx083q4bvsLG6Djr9p6ceM7/Mb3nhP408xiYIOePr8JJZL9K8R5XvmX4KL2/v
-         /WKvSi8Kvj31YTyU8pVy/Dr5Yp6aNfGVoXW8eu9KSgzLllnbm00/B3MCfJn5RWfG3GVh
-         O3rA==
+         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
+         :dkim-signature;
+        bh=uU5yxb2ZcfvP1uB8VXcw5BlORKFuwNRzwiM9VJJMGZc=;
+        b=c/vdnoAi8eQhOqNCemsOPzM+qwiGkIRKJ0xoBLo/pmPoUlogbOsP2Zxu/3zO1nRLwp
+         GgjVKLXVHuoLpE1UxMNMAqR22bX5HQxcT9J1KMy6G520yJM1JOpQ9Wb49rSpeqx+iNGK
+         fR8ZlRvdOuBFx/ftiA1S+QUE9qKVUnAuvBPkxaSDtPSHU9DDIJrUPYM96V+d0F3hrKaN
+         /6yOoMkZUqZVF8CQvLlT5C5PuBTNEFvjZdZg3unEjF3KzLJH0TBW7pdP3OQ3ae9s6Rbk
+         YfBjmJuROo8cffpIV2TAoFpbPe8UfYMAgKBWWfqXbbsjN78vALlq6EkdAhYzaliLoTpu
+         ppjw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@ventanamicro.com header.s=google header.b=HTLujvj5;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@ventanamicro.com header.s=google header.b="R7d/sPCc";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e11-20020ac8670b000000b003437b9be468si5967431qtp.735.2022.09.05.21.33.01
+        by mx.google.com with ESMTPS id e17-20020a05622a111100b003446c6e015bsi8040685qty.407.2022.09.06.00.20.44
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 05 Sep 2022 21:33:01 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 06 Sep 2022 00:20:45 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@ventanamicro.com header.s=google header.b=HTLujvj5;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:38122 helo=lists1p.gnu.org)
+       dkim=pass header.i=@ventanamicro.com header.s=google header.b="R7d/sPCc";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:34566 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1oVQGj-0006mq-Df
-	for alex.bennee@linaro.org; Tue, 06 Sep 2022 00:33:01 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:47556)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1oVSt0-0004Bt-VE
+	for alex.bennee@linaro.org; Tue, 06 Sep 2022 03:20:43 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:49824)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <sunilvl@ventanamicro.com>)
- id 1oVQ98-0007UI-Fb
- for qemu-devel@nongnu.org; Tue, 06 Sep 2022 00:25:10 -0400
-Received: from mail-pj1-x1035.google.com ([2607:f8b0:4864:20::1035]:36453)
+ (Exim 4.90_1) (envelope-from <ajones@ventanamicro.com>)
+ id 1oVSsV-0004AZ-UE
+ for qemu-arm@nongnu.org; Tue, 06 Sep 2022 03:20:13 -0400
+Received: from mail-ed1-x531.google.com ([2a00:1450:4864:20::531]:35735)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <sunilvl@ventanamicro.com>)
- id 1oVQ96-00073Z-RY
- for qemu-devel@nongnu.org; Tue, 06 Sep 2022 00:25:10 -0400
-Received: by mail-pj1-x1035.google.com with SMTP id
- s14-20020a17090a6e4e00b0020057c70943so4478756pjm.1
- for <qemu-devel@nongnu.org>; Mon, 05 Sep 2022 21:25:08 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <ajones@ventanamicro.com>)
+ id 1oVSsS-0000uP-7y
+ for qemu-arm@nongnu.org; Tue, 06 Sep 2022 03:20:10 -0400
+Received: by mail-ed1-x531.google.com with SMTP id 29so8848872edv.2
+ for <qemu-arm@nongnu.org>; Tue, 06 Sep 2022 00:20:02 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=ventanamicro.com; s=google;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date;
- bh=K9wefkWGERlorpQlskTuOFMvFh9QknFkKJmCeKsqGFs=;
- b=HTLujvj53ViJ3NOAzY9LZKAptUnvqErsi9Tg9fpG/Sf8I7Oe3Paf365q4iZmno2acR
- xEqG4ba3lI/oneW3OvbTj7EOSpWOgz1iS7T7GGl/wc+cClH6gy4rOVgVVMUhT3Dssrp1
- w8XMfCxsDwtDsdHoy5v2qKWn3sbltaSQkJvN8Q/zm0KXBjlckpjGYaNvgxffBwZjHHCD
- PBEsAXaqJuABCQQGAbGr/f3bFV/0ZdPaJ9iMEf+aSTjm3fsLJcBV/4n6n3QrFZ/2IOdM
- E7J/CPJaPx6d7LGhmTuPOn3MGw3uhtJ0+MlThgYoMHy3scdhWPsGdITAmFntkg6nl1qN
- uiRg==
+ h=in-reply-to:content-disposition:mime-version:references:message-id
+ :subject:cc:to:from:date:from:to:cc:subject:date;
+ bh=uU5yxb2ZcfvP1uB8VXcw5BlORKFuwNRzwiM9VJJMGZc=;
+ b=R7d/sPCcQRs6fMPyVQjKRKqxOVTtNzH1sH0RHEr9VEwmKDGlSrVnGKxcYkHXR+dF1z
+ KosAUHQw+CpmYqupmfPyjxz4qr3ANXXh0x2HRAs5b3oKwe5jAplpPLiw6UtCETfTeuiE
+ wW53Q42mk5r3R5RzLdOkvtCoyc3EiLoDc490nRzIF5KdVJ7qyKykhbcSOu73VMvXviwz
+ cd3s8u8uQ/q7Llmq7MQ2q1SkhWy31RRRuXvLVxlEQ6SAApkjnlcwn/8tWDyDPJC+sxn9
+ lO6wqD9syCNGJsl3kXO7cahYMPK7sxzAaDqwDhcRHQRg65c+R/baG4uJ5w6dneLbuqPy
+ R+NA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date;
- bh=K9wefkWGERlorpQlskTuOFMvFh9QknFkKJmCeKsqGFs=;
- b=IJg+5UyDSg5zcEU6Pd5eJtaNP1/psVSJqYMkw262ye0k1BLskC8ypQoye2lawZtuq9
- GU7qw76BTlxntQhNLTbhOJajtjYlzPDHRP/f28/LDMYuVmxICcTMaCjRvHdJ+INaxSIf
- +xYCqgPPkjlPNKYPmagDU9nZxKPLIsPuV8nxSGqYVjhTEVxN2ysSwJ2cyjgrFldgtr30
- OpwgHBke/VPMPbK1NMnK1WBPticabMkSDWpvqNZl/o2uVYi1ygNaXBSP+ZhtYvsktTLx
- 4EhJW4RHr2f1utafBpRMPS8Hz80k2+rXkQuRLRspYz+n0nkAe3gHWZw6chve0imwV41o
- SbgQ==
-X-Gm-Message-State: ACgBeo3HZ1mss6xrjiaGdc5dRxHg/M0nK5MaGdyZwx4DuWSzR1HPZreH
- 1dPAjZ6H8WLyMj8IwNc8PtVUww==
-X-Received: by 2002:a17:902:edd5:b0:174:a6e6:51f4 with SMTP id
- q21-20020a170902edd500b00174a6e651f4mr42534339plk.82.1662438307603; 
- Mon, 05 Sep 2022 21:25:07 -0700 (PDT)
-Received: from localhost.localdomain ([49.206.11.92])
+ h=in-reply-to:content-disposition:mime-version:references:message-id
+ :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date;
+ bh=uU5yxb2ZcfvP1uB8VXcw5BlORKFuwNRzwiM9VJJMGZc=;
+ b=lerOc2AF1T+HU6BHSXRodKeMAFePECr0x6Jc5fRLy9se2Bn7JXjMYK16OtopYS9BRE
+ 6ZCVR7S7HrYIfIoMPc2XDHjnPEhmzyW+pwhFmuL3NnZljf2k0bmboM7MPxj1axLjON+y
+ hwBtbnpLpFcrzwdBTHTzxSWXi1d3AIJCidhdzj1olKeS6PUzp/6ljSvZCCUxS88/k3Mf
+ BYcjmShhWCjHll3fhFH9QlhF1xOTIgu1Fr6bIVDne2hfle/kgfOlp/GVEXTXlrDtFpeS
+ XUyhZkskQNux1RwF4Eed9B+gv52KyUX79mlmtY/8Rx5WF1+OBOOkrLPitWmo2JLVGtZ8
+ QNWw==
+X-Gm-Message-State: ACgBeo2utKs+5yoD28Gss4L6EwY9yjhZ67fECwCBCs7ZbEcKMPQHB0/J
+ xeamZB0nkYrdw/xQfapuyXjpFA==
+X-Received: by 2002:a05:6402:3506:b0:43e:954b:bc8a with SMTP id
+ b6-20020a056402350600b0043e954bbc8amr47369697edd.266.1662448800925; 
+ Tue, 06 Sep 2022 00:20:00 -0700 (PDT)
+Received: from localhost (cst2-173-61.cust.vodafone.cz. [31.30.173.61])
  by smtp.gmail.com with ESMTPSA id
- g10-20020aa796aa000000b00537f029c94bsm8724967pfk.183.2022.09.05.21.25.03
+ t13-20020a1709066bcd00b0073d5a8a2bfcsm6077560ejs.221.2022.09.06.00.19.59
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 05 Sep 2022 21:25:07 -0700 (PDT)
-From: Sunil V L <sunilvl@ventanamicro.com>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org,
-	qemu-riscv@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Xiaojuan Yang <yangxiaojuan@loongson.cn>, Song Gao <gaosong@loongson.cn>,
- Gerd Hoffmann <kraxel@redhat.com>, Palmer Dabbelt <palmer@dabbelt.com>,
+ Tue, 06 Sep 2022 00:20:00 -0700 (PDT)
+Date: Tue, 6 Sep 2022 09:19:58 +0200
+From: Andrew Jones <ajones@ventanamicro.com>
+To: Sunil V L <sunilvl@ventanamicro.com>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, qemu-riscv@nongnu.org,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Xiaojuan Yang <yangxiaojuan@loongson.cn>,
+ Song Gao <gaosong@loongson.cn>, Gerd Hoffmann <kraxel@redhat.com>,
+ Palmer Dabbelt <palmer@dabbelt.com>,
  Alistair Francis <alistair.francis@wdc.com>,
- Bin Meng <bin.meng@windriver.com>, Andrew Jones <ajones@ventanamicro.com>,
- Anup Patel <apatel@ventanamicro.com>,
+ Bin Meng <bin.meng@windriver.com>, Anup Patel <apatel@ventanamicro.com>,
  Atish Kumar Patra <atishp@rivosinc.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
- Sunil V L <sunilvl@ventanamicro.com>
-Subject: [PATCH V3 2/3] hw/riscv: virt: Move create_fw_cfg() prior to loading
- kernel
-Date: Tue,  6 Sep 2022 09:54:50 +0530
-Message-Id: <20220906042451.379611-3-sunilvl@ventanamicro.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20220906042451.379611-1-sunilvl@ventanamicro.com>
+ Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+Subject: Re: [PATCH V3 3/3] hw/riscv: virt: Enable booting S-mode firmware
+ from pflash
+Message-ID: <20220906071958.fiwqbwnkofk4kqye@kamzik>
 References: <20220906042451.379611-1-sunilvl@ventanamicro.com>
+ <20220906042451.379611-4-sunilvl@ventanamicro.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1035;
- envelope-from=sunilvl@ventanamicro.com; helo=mail-pj1-x1035.google.com
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20220906042451.379611-4-sunilvl@ventanamicro.com>
+Received-SPF: pass client-ip=2a00:1450:4864:20::531;
+ envelope-from=ajones@ventanamicro.com; helo=mail-ed1-x531.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -119,61 +116,140 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: CaJlldFLATLD
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: GJGRO1u8IUfx
 
-To enable both -kernel and -pflash options, the fw_cfg needs to be
-created prior to loading the kernel.
+On Tue, Sep 06, 2022 at 09:54:51AM +0530, Sunil V L wrote:
+> To boot S-mode firmware payload like EDK2 from persistent
+> flash storage, qemu needs to pass the flash address as the
+> next_addr in fw_dynamic_info to the opensbi.
+> 
+> When both -kernel and -pflash options are provided in command line,
+> the kernel (and initrd if -initrd) will be copied to fw_cfg table.
+> The S-mode FW will load the kernel/initrd from fw_cfg table.
+> 
+> If only pflash is given but not -kernel, then it is the job of
+> of the S-mode firmware to locate and load the kernel.
+> 
+> In either case, update the kernel_entry with the flash address
+> so that the opensbi can jump to the entry point of the S-mode
+> firmware.
+> 
+> Signed-off-by: Sunil V L <sunilvl@ventanamicro.com>
+> ---
+>  hw/riscv/boot.c         | 28 ++++++++++++++++++++++++++++
+>  hw/riscv/virt.c         | 17 ++++++++++++++++-
+>  include/hw/riscv/boot.h |  1 +
+>  3 files changed, 45 insertions(+), 1 deletion(-)
+> 
+> diff --git a/hw/riscv/boot.c b/hw/riscv/boot.c
+> index 1ae7596873..39436b8d56 100644
+> --- a/hw/riscv/boot.c
+> +++ b/hw/riscv/boot.c
+> @@ -338,3 +338,31 @@ void riscv_setup_direct_kernel(hwaddr kernel_addr, hwaddr fdt_addr)
+>          riscv_cpu->env.fdt_addr = fdt_addr;
+>      }
+>  }
+> +
+> +void riscv_setup_firmware_boot(MachineState *machine)
+> +{
+> +    if (machine->kernel_filename) {
+> +        FWCfgState *fw_cfg;
+> +        fw_cfg = fw_cfg_find();
+> +
+> +        assert(fw_cfg);
+> +        /*
+> +         * Expose the kernel, the command line, and the initrd in fw_cfg.
+> +         * We don't process them here at all, it's all left to the
+> +         * firmware.
+> +         */
+> +        load_image_to_fw_cfg(fw_cfg,
+> +                             FW_CFG_KERNEL_SIZE, FW_CFG_KERNEL_DATA,
+> +                             machine->kernel_filename,
+> +                             true);
+> +        load_image_to_fw_cfg(fw_cfg,
+> +                             FW_CFG_INITRD_SIZE, FW_CFG_INITRD_DATA,
+> +                             machine->initrd_filename, false);
 
-Signed-off-by: Sunil V L <sunilvl@ventanamicro.com>
----
- hw/riscv/virt.c | 14 +++++++-------
- 1 file changed, 7 insertions(+), 7 deletions(-)
+blank line
 
-diff --git a/hw/riscv/virt.c b/hw/riscv/virt.c
-index ff8c0df5cd..b6bbf03f61 100644
---- a/hw/riscv/virt.c
-+++ b/hw/riscv/virt.c
-@@ -1251,6 +1251,13 @@ static void virt_machine_done(Notifier *notifier, void *data)
-                                     RISCV64_BIOS_BIN, start_addr, NULL);
-     }
- 
-+    /*
-+     * Init fw_cfg.  Must be done before riscv_load_fdt, otherwise the device
-+     * tree cannot be altered and we get FDT_ERR_NOSPACE.
-+     */
-+    s->fw_cfg = create_fw_cfg(machine);
-+    rom_set_fw(s->fw_cfg);
-+
-     if (machine->kernel_filename) {
-         kernel_start_addr = riscv_calc_kernel_start_addr(&s->soc[0],
-                                                          firmware_end_addr);
-@@ -1284,13 +1291,6 @@ static void virt_machine_done(Notifier *notifier, void *data)
-         start_addr = virt_memmap[VIRT_FLASH].base;
-     }
- 
--    /*
--     * Init fw_cfg.  Must be done before riscv_load_fdt, otherwise the device
--     * tree cannot be altered and we get FDT_ERR_NOSPACE.
--     */
--    s->fw_cfg = create_fw_cfg(machine);
--    rom_set_fw(s->fw_cfg);
--
-     /* Compute the fdt load address in dram */
-     fdt_load_addr = riscv_load_fdt(memmap[VIRT_DRAM].base,
-                                    machine->ram_size, machine->fdt);
--- 
-2.25.1
+> +        if (machine->kernel_cmdline) {
+> +            fw_cfg_add_i32(fw_cfg, FW_CFG_CMDLINE_SIZE,
+> +                           strlen(machine->kernel_cmdline) + 1);
+> +            fw_cfg_add_string(fw_cfg, FW_CFG_CMDLINE_DATA,
+> +                              machine->kernel_cmdline);
+> +        }
+> +    }
+> +}
+> diff --git a/hw/riscv/virt.c b/hw/riscv/virt.c
+> index b6bbf03f61..b985df9b16 100644
+> --- a/hw/riscv/virt.c
+> +++ b/hw/riscv/virt.c
+> @@ -1258,7 +1258,22 @@ static void virt_machine_done(Notifier *notifier, void *data)
+>      s->fw_cfg = create_fw_cfg(machine);
+>      rom_set_fw(s->fw_cfg);
+>  
+> -    if (machine->kernel_filename) {
+> +    if (drive_get(IF_PFLASH, 0, 1)) {
+> +        /*
+> +         * S-mode FW like EDk2 will be kept in second plash (unit 1). When
 
+edk2 or EDK2
+
+> +         * both -kernel and -pflash options are provided in command line,
+                                                              ^ the
+> +         * the kernel, initrd will be copied to fw_cfg table and opensbi
+                        ^                         ^ the
+                        ^ replace, with ' and'
+                       
+> +         * will jump to flash address which is the entry point of S-mode FW.
+                          ^ the
+> +         * It is the job of the S-mode FW to load the kernel/initrd and launch.
+> +         *
+> +         * If only pflash is given but not -kernel, then it is the job of
+> +         * of the S-mode firmware to locate and load the kernel.
+> +         * In either case, the next_addr for opensbi will be the flash address.
+> +         */
+> +        riscv_setup_firmware_boot(machine);
+> +        kernel_entry = virt_memmap[VIRT_FLASH].base +
+> +                         virt_memmap[VIRT_FLASH].size / 2;
+                          ^
+                          Please line up the lower virt_memmap[] with the upper
+
+> +    } else if (machine->kernel_filename) {
+>          kernel_start_addr = riscv_calc_kernel_start_addr(&s->soc[0],
+>                                                           firmware_end_addr);
+>  
+> diff --git a/include/hw/riscv/boot.h b/include/hw/riscv/boot.h
+> index a36f7618f5..93e5f8760d 100644
+> --- a/include/hw/riscv/boot.h
+> +++ b/include/hw/riscv/boot.h
+> @@ -57,5 +57,6 @@ void riscv_rom_copy_firmware_info(MachineState *machine, hwaddr rom_base,
+>                                    uint32_t reset_vec_size,
+>                                    uint64_t kernel_entry);
+>  void riscv_setup_direct_kernel(hwaddr kernel_addr, hwaddr fdt_addr);
+> +void riscv_setup_firmware_boot(MachineState *machine);
+>  
+>  #endif /* RISCV_BOOT_H */
+> -- 
+> 2.25.1
+> 
+
+Besides the whitespace and comment edits
+
+Reviewed-by: Andrew Jones <ajones@ventanamicro.com>
+
+Thanks,
+drew

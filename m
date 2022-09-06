@@ -1,108 +1,109 @@
-Received: by 2002:a17:906:1c87:0:0:0:0 with SMTP id g7csp2961153ejh;
-        Tue, 6 Sep 2022 06:40:59 -0700 (PDT)
-X-Google-Smtp-Source: AA6agR5ljj+kP++vgWZRi3iTLlWxiHAd0gkNZPmy8wbRFt6aX7XHpmv1Ti5Z+oEjVf3oXZ5/JEWH
-X-Received: by 2002:a05:620a:454e:b0:6c0:95f4:f218 with SMTP id u14-20020a05620a454e00b006c095f4f218mr17543765qkp.294.1662471659623;
-        Tue, 06 Sep 2022 06:40:59 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1662471659; cv=none;
+Received: by 2002:a17:906:1c87:0:0:0:0 with SMTP id g7csp2966831ejh;
+        Tue, 6 Sep 2022 06:51:23 -0700 (PDT)
+X-Google-Smtp-Source: AA6agR75DBn0YWltRPN6G2s/n2aUjviH6bQ3Bb0fnWlnDgqzyj4dukDJ+VqLJLfFlJBp2cSvh0sr
+X-Received: by 2002:ac8:5b44:0:b0:344:f78e:7bca with SMTP id n4-20020ac85b44000000b00344f78e7bcamr43831000qtw.330.1662472283463;
+        Tue, 06 Sep 2022 06:51:23 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1662472283; cv=none;
         d=google.com; s=arc-20160816;
-        b=opinnRgHqIou2UFUTv0WVS74yU3XZ0uPEzOmGs271oXpM01bNygb8HJjRxnxLH4O+3
-         tkbh49jEydxALCRvmZGlNRuGgv6L5L2iVRTcEW+H1vCzasJ+jOPLn1n/7xVeSiFmfnFV
-         gGUBGiVtqf3qv5uv5vUE/VFfdmOX+PCRMTNQiq2QuToXNVXYbBgbHYvNnYKvyf37evcE
-         2xKAndqDLarmVl6t3LVpq2nZgyTwhpaCDyVycMCTtlTqNAdEiOR8rCFyunxWrd5kXT3D
-         Bsl2JYcGoqeN0KgVIevM9t+c7HVVa4C2MzFD7jz3oV47T/L9T2QUvB2RKy8OPYMSvcwm
-         e3VA==
+        b=RGmxybeF/mfawrFWrdCjlw9Z9NCn5kodJvWCRznVtcd76Hku1sF8MnNtR7aSW8/PW8
+         v4TP0H1zu7PYhVQEhizmRzLh2MX5PBrIuIqcAPo+++KENJUWoI0lmPHplMb18Jub7qig
+         aobmS1frW+l19HkghhcKNzbVXesj5BtnfcTnfz7TlCdeUwt41XiSH9LltJVLixElykZO
+         ywyy4ERtYkWb2ofm7tw5kw9VBreIQ39sOotfJKkthyAzaSihNI2xXFS5GF7dzjRXv/KA
+         M1+XL9Px/Xef3OCfWg7NNepPxvXmX+o9Y+GriCq6N/BdCK+pN10RpECirkwWPRVP4SmR
+         XazA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=from:reply-to:sender:errors-to:list-subscribe:list-help:list-post
          :list-archive:list-unsubscribe:list-id:precedence
          :content-transfer-encoding:in-reply-to:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :dkim-signature;
-        bh=Du78C/8R63Et8ZTM5nXd1HOCFuCXFHuFqxSmP1L5S/M=;
-        b=w+8kdmLYrp9Q6HT6KsA6sXpjOR4KmJsnxq09tcT5IfHq/X4pgYxP+/a7L08sNT82Nv
-         F+afvyHP7At9f/+py5YWEplrclCQ80jUgV2hh/6lDw1NHV32uBWuSG0Hpg3x6cs67Txg
-         8Yh6RKHT6Cnu2C6SSde84/ebyuBnZlTBOJPEfn92k72Bhd4+3j70uqzCIWnTP+vYyK+F
-         Ek64VQRcowS4XPgZGOtzGx6c3BT4q/g50EYLeglDS+mY9OPeM2wr3zky81jy+djGhDY5
-         lY1d4fkfrXOArliWrwJTfOGqVaSSMhpv+2afKJktgdfz2DE6nHXdEHXdEAMZvwgi/aY/
-         /ALw==
+        bh=b6X1QwJQRPHERLpQBxv4F9BZdmbdVKn+EpJeCbmb0vU=;
+        b=WQmaclU4RNsv/3xipOg5SBZcLS94eGqBXhwsylqh2P/op3qMLo8QwEcs13fk2OaTky
+         5nEb+SKSRWsLZA3SxwzVIPzRd35/lHwxaHFlqpadD/VbyQ9kFtrAtp58tSv/aep+DfHC
+         FgHwNnUv7Z0EUA8VZdDpFKWegcX6rXCBYq3ZEySiJqAnVe/zp82O2NdZGo8pji35kMQE
+         LcSlG/liAZcoBcyRE8+BYbkkA2SLbtYSXOL3KAcMoF2Ceokl9N8wnUAZOIGKUTt7KxRd
+         S3Ez4zAEo2u6PyNO6wXS5HqAGdCt5HTCn/U3pKvlnJUCjR7XwFuZStgzZkmP11S4QzTv
+         zBig==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20210112 header.b=D0Zm3pdy;
+       dkim=fail header.i=@gmail.com header.s=20210112 header.b="eUFQ/PdD";
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id bl4-20020a05622a244400b00342f8f41b5csi8157881qtb.612.2022.09.06.06.40.59
+        by mx.google.com with ESMTPS id g23-20020a37e217000000b006bb89828f48si6171807qki.524.2022.09.06.06.51.23
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 06 Sep 2022 06:40:59 -0700 (PDT)
+        Tue, 06 Sep 2022 06:51:23 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20210112 header.b=D0Zm3pdy;
+       dkim=fail header.i=@gmail.com header.s=20210112 header.b="eUFQ/PdD";
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
-Received: from localhost ([::1]:59676 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:41702 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1oVYp1-0002Gf-55
-	for alex.bennee@linaro.org; Tue, 06 Sep 2022 09:40:59 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:52752)
+	id 1oVYz4-0005bl-VX
+	for alex.bennee@linaro.org; Tue, 06 Sep 2022 09:51:23 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53178)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1oVYDq-0006t8-Uh; Tue, 06 Sep 2022 09:02:34 -0400
-Received: from mail-pf1-x42c.google.com ([2607:f8b0:4864:20::42c]:42903)
+ id 1oVY5O-0005yS-2U; Tue, 06 Sep 2022 08:53:50 -0400
+Received: from mail-pf1-x432.google.com ([2607:f8b0:4864:20::432]:39869)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1oVYDo-0003lL-OY; Tue, 06 Sep 2022 09:02:34 -0400
-Received: by mail-pf1-x42c.google.com with SMTP id 14so2542016pfu.9;
- Tue, 06 Sep 2022 06:02:31 -0700 (PDT)
+ id 1oVY5M-0001Xb-Fz; Tue, 06 Sep 2022 08:53:49 -0400
+Received: by mail-pf1-x432.google.com with SMTP id o126so2278396pfb.6;
+ Tue, 06 Sep 2022 05:53:47 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :sender:from:to:cc:subject:date;
- bh=Du78C/8R63Et8ZTM5nXd1HOCFuCXFHuFqxSmP1L5S/M=;
- b=D0Zm3pdyXf9awhb4beMt/A/9lX2Mc0RQFn2I6Vp2c79kzorxeq0NCTi/GBHCE1JqEV
- OMWSmLJubKLAQE2QRII/n37jDBOkmpJHhj82E/kZZNBh+VYux5ZQkALUZLFLv9Luf1/d
- 1DPrwkjLgjxsEd6gAM3T/55jdsl9305GTT4ZEhZKUjEzZvQ2U+75YdT/SvLGnRS70yEZ
- XYxeWrZ1rv9pwHoQbL3b7kvGDuuQxj9/689s1RCy/RxqXtHf6z3/1sZDR9UzgcguTwN6
- sLBeNwY67AVJ5w/tk1owXtHFi+4gA2KPVAmYp1kgWBQ5P2Dm2OpJmpFMqn4yigf/XBwl
- WACQ==
+ bh=b6X1QwJQRPHERLpQBxv4F9BZdmbdVKn+EpJeCbmb0vU=;
+ b=eUFQ/PdDyVyLstVdYRJR5Agx+OLV6QTgUT/MsPuomLrP6TIpPswpHTjfU40waheBsz
+ R4/hGDvOMgQv2ZoqR+uirfVcaSMc1p69l2RnztAMUOajTvQGLr4xwoh4ed72QsYs66kR
+ 9iMy/wotSTKoyEw3OBu6mPXI6H+CFpuIu8gdi9zyLd83aIu8ietc1BxOLJVUDugW3b5M
+ d4VdjmRabrfaWJXM1uHk5e/YobVYPqmM99lWLHrxE6/STY6Jj70PWyu6ocj2ieXk0AHr
+ lRDD/BrBnQ9/zHb7b3w65U7t2qtGHGqAQsGBhvdLmCJthpZ9NQfXaF5dPSIxgyjgdqrQ
+ Ppow==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :sender:x-gm-message-state:from:to:cc:subject:date;
- bh=Du78C/8R63Et8ZTM5nXd1HOCFuCXFHuFqxSmP1L5S/M=;
- b=pV0YOmnOqrNUjFzU7iERvX0oascF2K0TA49pzQylEqpSyF3wqTkMK0ZzsvBza/NoEU
- tyVa7W1l7T8uMW0UVL8lJoaTAx54QQHLQo9tfkIj2mAlm/lCbiHn1yYq1kGcBCOATpHo
- xH3Xhd97s+d5/1DpPS8slCO/4XbKkOs/nW4HD2PyxVFLxcejZEJfqdcAu6MSha6FmWrc
- zDY2K4jJzlN3wJIgAO5MHr6n+0wwVx1xWlzQ54c1vHmkMc+0KndMDNdbpCIB4fEa+Zuv
- b3/F1sfpbbiPKZvei5VbERJcRdiJkWpbo3rQ/9arj2UCqxz+ZiIs/KgiU6leezXGj3HR
- KHxQ==
-X-Gm-Message-State: ACgBeo1d6uvnkLJrUtsgPm3XfCfkOQkJuu3O6WR/Eukt3QNr/JGnrr0g
- jCi0BURRNulCre6MGU2NTc0=
-X-Received: by 2002:a63:d1b:0:b0:42b:828b:f14a with SMTP id
- c27-20020a630d1b000000b0042b828bf14amr44396365pgl.235.1662469350760; 
- Tue, 06 Sep 2022 06:02:30 -0700 (PDT)
+ bh=b6X1QwJQRPHERLpQBxv4F9BZdmbdVKn+EpJeCbmb0vU=;
+ b=3ORvwQF7w9P3xikkRJ0qDLvu06NSJSPhgg1m/auINbkrFQOGqUM5s1JMxHh7UdglNH
+ plfaNkb4mRj+LYnKm0nbSRf/MOTWm5wMJ+EqgYLdKTKNjOVwloxrUthg0pXgfZ2i9Ncq
+ f/9YpnQyKpscEVQpU+6Sw/liE+CALhQ4ux0PdaSOpvFbgwG3+J/xCeeTZ7rNihHWiyDT
+ MS7a8Qm9G2tgC80wBQ2J+5OFOBQL3DBYk72K4qH9FX3dT6okbhy21k9SbtvvC/Pf7YoS
+ 2BbsnsN/Zgb3e92CBOUhVcKYRcV1CyxxIV+F0sdyNtmtNUSkAdxS8VWaGEREx75SQSHt
+ DMEw==
+X-Gm-Message-State: ACgBeo2Ngs2oS1c87ZiSmejUpB4pjfhNLgW9vOcJ5CUk1ps/8LCme83p
+ 47Y3/M4LpIDaU6DQzG0cmjE=
+X-Received: by 2002:a65:538e:0:b0:434:aa53:2244 with SMTP id
+ x14-20020a65538e000000b00434aa532244mr2472106pgq.343.1662468826087; 
+ Tue, 06 Sep 2022 05:53:46 -0700 (PDT)
 Received: from [192.168.1.115] ([185.126.107.38])
  by smtp.gmail.com with ESMTPSA id
- 63-20020a620542000000b005386162bc2asm10389174pff.92.2022.09.06.06.02.28
+ j6-20020a170903024600b0016c78f9f024sm9886313plh.104.2022.09.06.05.53.44
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 06 Sep 2022 06:02:30 -0700 (PDT)
-Message-ID: <180feb3a-46bd-561c-8213-2aae399bb18e@amsat.org>
-Date: Tue, 6 Sep 2022 15:02:25 +0200
+ Tue, 06 Sep 2022 05:53:45 -0700 (PDT)
+Message-ID: <e877708d-9370-4b77-bddd-f929ee34bddd@amsat.org>
+Date: Tue, 6 Sep 2022 14:53:42 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:91.0)
  Gecko/20100101 Thunderbird/91.13.0
-Subject: Re: [PATCH v4 8/9] target/arm: Introduce gen_pc_plus_diff for aarch32
+Subject: Re: [PATCH v4 5/9] target/arm: Change gen_exception_internal to work
+ on displacements
 Content-Language: en-US
 To: Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org
 References: <20220906100528.343244-1-richard.henderson@linaro.org>
- <20220906100528.343244-9-richard.henderson@linaro.org>
-In-Reply-To: <20220906100528.343244-9-richard.henderson@linaro.org>
+ <20220906100528.343244-6-richard.henderson@linaro.org>
+In-Reply-To: <20220906100528.343244-6-richard.henderson@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::42c;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-pf1-x42c.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::432;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-pf1-x432.google.com
 X-Spam_score_int: -32
 X-Spam_score: -3.3
 X-Spam_bar: ---
@@ -127,14 +128,15 @@ Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Reply-to:  =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
 From:  =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= via <qemu-devel@nongnu.org>
-X-TUID: 6UXNxRZviv1k
+X-TUID: Yu6IvdUwMCqu
 
 On 6/9/22 12:05, Richard Henderson wrote:
 > In preparation for TARGET_TB_PCREL, reduce reliance on absolute values.
 > 
 > Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 > ---
->   target/arm/translate.c | 29 ++++++++++++++++++-----------
->   1 file changed, 18 insertions(+), 11 deletions(-)
+>   target/arm/translate-a64.c |  6 +++---
+>   target/arm/translate.c     | 10 +++++-----
+>   2 files changed, 8 insertions(+), 8 deletions(-)
 
 Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>

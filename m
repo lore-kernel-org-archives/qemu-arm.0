@@ -1,208 +1,152 @@
-Received: by 2002:a17:906:1c87:0:0:0:0 with SMTP id g7csp2970046ejh;
-        Tue, 6 Sep 2022 06:57:41 -0700 (PDT)
-X-Google-Smtp-Source: AA6agR5Xc/IsvNKZeJXqTUmBWJ8BS/wsbUN72B+JS6isBwp3NLsVdpQJJ9hkEhwINY0FduCtoJkA
-X-Received: by 2002:a05:620a:198e:b0:6bb:7651:fc7 with SMTP id bm14-20020a05620a198e00b006bb76510fc7mr35058762qkb.376.1662472661766;
-        Tue, 06 Sep 2022 06:57:41 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1662472661; cv=none;
+Received: by 2002:a17:906:1c87:0:0:0:0 with SMTP id g7csp3064458ejh;
+        Tue, 6 Sep 2022 09:32:00 -0700 (PDT)
+X-Google-Smtp-Source: AA6agR5oF67rKXgAk4VFcV0DYBEGU6vq4KBVX6YvV5QWAY6LPeqjWgCsAWaHtpcwLY1Z5iNqZvay
+X-Received: by 2002:a05:620a:40d3:b0:6bb:6d0e:1b8d with SMTP id g19-20020a05620a40d300b006bb6d0e1b8dmr38517607qko.708.1662481919938;
+        Tue, 06 Sep 2022 09:31:59 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1662481919; cv=none;
         d=google.com; s=arc-20160816;
-        b=Fndt5MdATDauwaosntDM2eJw+AKSsT46VQGRfIH70Hw5qq6PWawB7T9hwi3E8t/RGS
-         AQB7CpUzmUXLWl3C6qFJMC4Hv9LWpZrDa+nTJVDE04iRvYi4zuoDN7ffE9ks37KMBpL/
-         u6iipeEBOB0ERfn11MfLDWaQlkYymTrO8WOMxu3qdywTjucLQGAV25/w7yfbgHpBkifC
-         shv3htmgzvn5K930RqXZyMfitZ1Ye+nD4g6JFQvE8/qxoGmE/g5Tuvm+M7zvQwoZpJFL
-         d5ErzM+ruhz/IEGwlDIWDDzjxHV4aJf9hVq9z6y1Kvcr4/FJc1TsJ1e8WUS6XN9Dh2J9
-         uTxQ==
+        b=lyHmmqopIbwDFv846k9A04NtIJ0p4byZMdY6vh9GNaNDirCiApcVmUyFCt7STHPe9g
+         Dcq7fG/3j4sKADbXwFnql4mDKuQHumufkhrYBSPtXDMPInY2i3QRuIw345BepydVBuym
+         JyclXCeV9127DQP8AE4UciVFEJcg9CvgxgY9YKHgMaIxUAuPCSXqr9bwIN29W1jcN4nB
+         nCp9hc5q7sD9BIjxlt+Pc211Tw0hpWtXhLI4APY+R16SdQeIoOqtnl7yqbrQmpiJY3LN
+         DA1QzFr9UO1Qgbk1pFedGfAq3VzzT+hbdhmAYrq5VWoLPTJ0aR6R4pZdClfnrtznB/Bl
+         mVGg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=from:reply-to:sender:errors-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:in-reply-to:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=/UPj5ZUAmK0lgUPCIE0D7bFsjXDQOqLmIMDoos0kklc=;
-        b=XEoDa4SwsRzn8wVICrXI2VxvaZzLeZuR5gzJwQo3zlBax1SUSQERDlPcc+Fe+wNP1/
-         Qsv78KCXJCzJXnt/osQm4Y1zG782ymzo3i6uBKmbdxhrcseO0MiK8V4VC1zpxXEtqFY7
-         aF/NabZO0lUx/rEeWdIJTkJ+vIuT0XLHgPSD2kZbe2mrXVA8KnBGicCIRkq+20yZsdzN
-         m2hSUWXlPOMlHdx4zaZSfwaKkC9SJQvIEG7U42hDfsvt3TSUGpGEZF53X6rTu1Od65Xm
-         /7JXxHxQifgL5e/KWjRBUTJP848DqBaY28N26XWGHyR902GoijETcpxbbpzQPnTd1AnY
-         Jmvg==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:cc:to:from:subject:message-id
+         :mime-version:date:dkim-signature;
+        bh=6MMXGy+7e2v2igEmsRuU7vnBISkediRNB4t43cObNys=;
+        b=n80KSQROuDJ30+31iACqwc2oHOuGqJNTdUD9tLtLXverLgXD54g85WFHl1KNrPogKE
+         fwxvLqX1MDja2UpT7VqicfCcrrCnH0Aakc6ULjFh5XItXTvp4MfR16qPv6RR6+oekOx2
+         4bXJsKm+ChGcTURXcn+Y9rgBukfehGmSbtwfTeyybFTWWx1hlt0p4RfReIdaxtUjSw5s
+         OuKBa7iUzxDO+YZkuwIkVlNvYsPvqb+WzDGHPMvWBOoOOCn3ViiKZ4TgQuQ8bXJhF+yi
+         AOWD1aX2JLe9Sz4LzXqwM75YWGZkWdH0cHKBokfarJRuLwtQcEVagVkc/+ibSQmv7LjE
+         kx4w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20210112 header.b=qm72ScYU;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@google.com header.s=20210112 header.b=sPFHxNqW;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id c10-20020ac853ca000000b0034303b74996si6438310qtq.308.2022.09.06.06.57.41
+        by mx.google.com with ESMTPS id x15-20020ac87a8f000000b0034305847932si6407906qtr.103.2022.09.06.09.31.59
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 06 Sep 2022 06:57:41 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 06 Sep 2022 09:31:59 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20210112 header.b=qm72ScYU;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
-Received: from localhost ([::1]:43864 helo=lists1p.gnu.org)
+       dkim=pass header.i=@google.com header.s=20210112 header.b=sPFHxNqW;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
+Received: from localhost ([::1]:40894 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1oVZ5B-0001Hi-7K
-	for alex.bennee@linaro.org; Tue, 06 Sep 2022 09:57:41 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53340)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1oVbUV-0000gw-Fp
+	for alex.bennee@linaro.org; Tue, 06 Sep 2022 12:31:59 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:50370)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1oVY43-0004Mf-Jk; Tue, 06 Sep 2022 08:52:28 -0400
-Received: from mail-pj1-x102c.google.com ([2607:f8b0:4864:20::102c]:43890)
+ (Exim 4.90_1) (envelope-from
+ <37nUXYwcKCFcK3CIJG35DD5A3.1DBF3BJ-zGBCDC5CJ.DG5@flex--venture.bounces.google.com>)
+ id 1oVbUH-0000gY-Li
+ for qemu-arm@nongnu.org; Tue, 06 Sep 2022 12:31:45 -0400
+Received: from mail-yw1-x1149.google.com ([2607:f8b0:4864:20::1149]:37862)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1oVY3y-0001NX-AW; Tue, 06 Sep 2022 08:52:25 -0400
-Received: by mail-pj1-x102c.google.com with SMTP id
- z9-20020a17090a468900b001ffff693b27so9868464pjf.2; 
- Tue, 06 Sep 2022 05:52:21 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :sender:from:to:cc:subject:date;
- bh=/UPj5ZUAmK0lgUPCIE0D7bFsjXDQOqLmIMDoos0kklc=;
- b=qm72ScYULvncSeZWUiFyc7839I0T/p5VELjMkjAIvgnTHgGTskrfCmA6RcEj+JU7Pc
- LTvw1kqB+ppLzFYPtlmz3LcDgvgsyBkTi1B0sVP4ygPINJ3trt46GDUheEe0cUw7jXIE
- tkVKsmJWsbRp01/y5Y2HARxmVBtuMLP/PCVwK2ORAZhN6XfvGBZun+TL0ncsrYNXq0V0
- 6OLI+871U8WwrqjFmzSfmX92nTyXhXQSqwUiwKVf6ARyc+4h9RO8MJXJMKttKrORz1dG
- ClvihIMgut2aj/nskyZZxvYw8lmEZIDqfDdV19S0WTzxwAgu0QSsik10Eoed64AMJkrN
- cLZg==
+ (Exim 4.90_1) (envelope-from
+ <37nUXYwcKCFcK3CIJG35DD5A3.1DBF3BJ-zGBCDC5CJ.DG5@flex--venture.bounces.google.com>)
+ id 1oVbUG-0000BK-31
+ for qemu-arm@nongnu.org; Tue, 06 Sep 2022 12:31:45 -0400
+Received: by mail-yw1-x1149.google.com with SMTP id
+ 00721157ae682-33dc888dc62so93585597b3.4
+ for <qemu-arm@nongnu.org>; Tue, 06 Sep 2022 09:31:43 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20210112;
+ h=cc:to:from:subject:message-id:mime-version:date:from:to:cc:subject
+ :date; bh=6MMXGy+7e2v2igEmsRuU7vnBISkediRNB4t43cObNys=;
+ b=sPFHxNqW32NSssCY1FJBr/NnQkkSPl4PAzNlRuLBvOwr8Dr76vKloQThfIVEX3+g0d
+ FPdJTAIioIkQoUYfkTpKUMqUCnnTmHXh4JQHmLWeEg0BIcE2c9dYFi8He7laNvDU7lbv
+ KrQvCP0N/9r0jHGzv7a07LxrXqvPuQL9S5BQTTWruY8170CHqnG1dXUxCq5Fz3ml/+ej
+ Jin2v+wIALrNOiM/rGgt3wuKXzaqLSQFhWrMsGmpWGDN+JAUC0XsMnlt4pUBRTNGcAOW
+ fmL+6ia+HLiVqfRDFfM5FjQfNaDlNz8kcyQIk/yrJ/t6lhBYjIrj8fvpAPYLzBYIHQef
+ t58w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :sender:x-gm-message-state:from:to:cc:subject:date;
- bh=/UPj5ZUAmK0lgUPCIE0D7bFsjXDQOqLmIMDoos0kklc=;
- b=1UFnI2WcpF6Lxhkn2J7wCYyaXXtFOEJfum6x3eDsG4gXOlfKN21lCiskfxGNiDt6BR
- sOs1OfghoFsVI5pOJ/9FN4gYHDPsbNkx79YeOT75mQ+5bFMQzQk7eILQnV9Vazj7MESj
- W0+BGk+NuTaHPAqSBHUZSU9Uq9iCeCLFEMkRU1qKU8IH6gNScdcooEBbHYAtWAn0YZmT
- 9uu2BqjQahkNt14Tp7c+RBb24lJdwyCYz8AOUyc8SobgDwMd6dRst4vyNiCuhfvGcTs3
- CxwCmMYN6CaRGXK8ATcC2+h+xkN+Li+p/M8+zVW/6pyueHok5E1MSS7cG06kJXzuEwSz
- DjWA==
-X-Gm-Message-State: ACgBeo02VdXCUqxG9A2wBPJEOLH2NWP82Q2tFQ8u+L3ZEzUDxCn8xWyw
- cc84L39X/u5qeDT5KxizomI=
-X-Received: by 2002:a17:903:234e:b0:174:d56d:3f0d with SMTP id
- c14-20020a170903234e00b00174d56d3f0dmr40529391plh.47.1662468739919; 
- Tue, 06 Sep 2022 05:52:19 -0700 (PDT)
-Received: from [192.168.1.115] ([185.126.107.38])
- by smtp.gmail.com with ESMTPSA id
- 202-20020a6216d3000000b0053e2ffa9652sm1544302pfw.88.2022.09.06.05.52.18
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 06 Sep 2022 05:52:19 -0700 (PDT)
-Message-ID: <f8c471d1-7f4c-e491-d7fa-1df73aedc20b@amsat.org>
-Date: Tue, 6 Sep 2022 14:52:15 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:91.0)
- Gecko/20100101 Thunderbird/91.13.0
-Subject: Re: [PATCH v4 2/9] target/arm: Change gen_goto_tb to work on
- displacements
-Content-Language: en-US
-To: Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org
-References: <20220906100528.343244-1-richard.henderson@linaro.org>
- <20220906100528.343244-3-richard.henderson@linaro.org>
-In-Reply-To: <20220906100528.343244-3-richard.henderson@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::102c;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-pj1-x102c.google.com
-X-Spam_score_int: -32
-X-Spam_score: -3.3
-X-Spam_bar: ---
-X-Spam_report: (-3.3 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.25,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.25, NICE_REPLY_A=-1.752,
+ h=cc:to:from:subject:message-id:mime-version:date:x-gm-message-state
+ :from:to:cc:subject:date;
+ bh=6MMXGy+7e2v2igEmsRuU7vnBISkediRNB4t43cObNys=;
+ b=MObl6mDr+p49x64gvOXV7YUNkoLyPYjAbJhzmdsTf6mG8I2GA5JstYkhYbHko7psqp
+ 9eixmx/O6mqdbmUyefiLAsI286ZjJLp3zyzxmvWzdE2lMTZqt6j9vJZaKKON6/962IKf
+ 6NT1Z1XTjg4/Xu6IaR/BON+FBG0DmKP85JAY4cl9+vRemOc3MeRUmrb68KQ6F4dtRbZU
+ N3oFFb3I+LRB6hpgCNbDfkOuxXD0OpvltPmFxgx80P3O/bnnZGanQgvgVVulg1qY6kf9
+ llH82UJj7Uxb5p2DVhYcL425uTsBPxpBU+HKfr+5UcWEdY7DrqlGr+mS0l+Fm/8/9JI6
+ KbZw==
+X-Gm-Message-State: ACgBeo2VnUHdrpfr64y9fWYlvgwbMQ/1ybPzB9f4fbraBhoe89F+J9oI
+ 8Wg3qMjq1XjHYDnomaB2UPxwBBzFJksb
+X-Received: from venture.svl.corp.google.com
+ ([2620:15c:2a3:201:ab71:9b48:417a:4d3b])
+ (user=venture job=sendgmr) by 2002:a25:4253:0:b0:6a8:f31d:d28d with SMTP id
+ p80-20020a254253000000b006a8f31dd28dmr10263515yba.38.1662481902535; Tue, 06
+ Sep 2022 09:31:42 -0700 (PDT)
+Date: Tue,  6 Sep 2022 09:31:38 -0700
+Mime-Version: 1.0
+X-Mailer: git-send-email 2.37.2.789.g6183377224-goog
+Message-ID: <20220906163138.2831353-1-venture@google.com>
+Subject: [PATCH] tests/qtest: npcm7xx-emc-test: Skip checking MAC
+From: Patrick Venture <venture@google.com>
+To: thuth@redhat.com, lvivier@redhat.com
+Cc: hskinnemoen@google.com, kfting@nuvoton.com, qemu-arm@nongnu.org, 
+ qemu-devel@nongnu.org, Patrick Venture <venture@google.com>,
+ Hao Wu <wuhaotsh@google.com>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1149;
+ envelope-from=37nUXYwcKCFcK3CIJG35DD5A3.1DBF3BJ-zGBCDC5CJ.DG5@flex--venture.bounces.google.com;
+ helo=mail-yw1-x1149.google.com
+X-Spam_score_int: -95
+X-Spam_score: -9.6
+X-Spam_bar: ---------
+X-Spam_report: (-9.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01,
+ USER_IN_DEF_DKIM_WL=-7.5 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Reply-to:  =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-From:  =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= via <qemu-devel@nongnu.org>
-X-TUID: HIKN/ltrTcl+
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: g+bq49gE2Q7M
 
-Hi Richard,
+The register tests walks all the registers to verify they are initially
+0 when appropriate.  However, if the MAC address is set in the register
+  space, this should not be checked against 0.
 
-On 6/9/22 12:05, Richard Henderson wrote:
-> In preparation for TARGET_TB_PCREL, reduce reliance on absolute values.
-> 
-> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
-> ---
->   target/arm/translate-a64.c | 40 ++++++++++++++++++++------------------
->   target/arm/translate.c     | 10 ++++++----
->   2 files changed, 27 insertions(+), 23 deletions(-)
-> 
-> diff --git a/target/arm/translate-a64.c b/target/arm/translate-a64.c
-> index b7787e7786..f7a13bddea 100644
-> --- a/target/arm/translate-a64.c
-> +++ b/target/arm/translate-a64.c
-> @@ -378,8 +378,10 @@ static inline bool use_goto_tb(DisasContext *s, uint64_t dest)
->       return translator_use_goto_tb(&s->base, dest);
->   }
->   
-> -static inline void gen_goto_tb(DisasContext *s, int n, uint64_t dest)
-> +static void gen_goto_tb(DisasContext *s, int n, int diff)
->   {
-> +    uint64_t dest = s->pc_curr + diff;
-> +
->       if (use_goto_tb(s, dest)) {
->           tcg_gen_goto_tb(n);
->           gen_a64_set_pc_im(dest);
-> @@ -1362,7 +1364,7 @@ static inline AArch64DecodeFn *lookup_disas_fn(const AArch64DecodeTable *table,
->    */
->   static void disas_uncond_b_imm(DisasContext *s, uint32_t insn)
->   {
-> -    uint64_t addr = s->pc_curr + sextract32(insn, 0, 26) * 4;
-> +    int diff = sextract32(insn, 0, 26) * 4;
->   
->       if (insn & (1U << 31)) {
->           /* BL Branch with link */
-> @@ -1371,7 +1373,7 @@ static void disas_uncond_b_imm(DisasContext *s, uint32_t insn)
->   
->       /* B Branch / BL Branch with link */
->       reset_btype(s);
-> -    gen_goto_tb(s, 0, addr);
-> +    gen_goto_tb(s, 0, diff);
->   }
->   
->   /* Compare and branch (immediate)
-> @@ -1383,14 +1385,14 @@ static void disas_uncond_b_imm(DisasContext *s, uint32_t insn)
->   static void disas_comp_b_imm(DisasContext *s, uint32_t insn)
->   {
->       unsigned int sf, op, rt;
-> -    uint64_t addr;
-> +    int diff;
->       TCGLabel *label_match;
->       TCGv_i64 tcg_cmp;
->   
->       sf = extract32(insn, 31, 1);
->       op = extract32(insn, 24, 1); /* 0: CBZ; 1: CBNZ */
->       rt = extract32(insn, 0, 5);
-> -    addr = s->pc_curr + sextract32(insn, 5, 19) * 4;
-> +    diff = sextract32(insn, 5, 19) * 4;
->   
->       tcg_cmp = read_cpu_reg(s, rt, sf);
->       label_match = gen_new_label();
-> @@ -1399,9 +1401,9 @@ static void disas_comp_b_imm(DisasContext *s, uint32_t insn)
->       tcg_gen_brcondi_i64(op ? TCG_COND_NE : TCG_COND_EQ,
->                           tcg_cmp, 0, label_match);
->   
-> -    gen_goto_tb(s, 0, s->base.pc_next);
-> +    gen_goto_tb(s, 0, 4);
+Reviewed-by: Hao Wu <wuhaotsh@google.com>
+Change-Id: I02426e39bdab33ceedd42c49d233e8680d4ec058
+Signed-off-by: Patrick Venture <venture@google.com>
+---
+ tests/qtest/npcm7xx_emc-test.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
-Why not use curr_insn_len() here?
+diff --git a/tests/qtest/npcm7xx_emc-test.c b/tests/qtest/npcm7xx_emc-test.c
+index 7c435ac915..207d8515b7 100644
+--- a/tests/qtest/npcm7xx_emc-test.c
++++ b/tests/qtest/npcm7xx_emc-test.c
+@@ -378,7 +378,8 @@ static void test_init(gconstpointer test_data)
+ 
+ #undef CHECK_REG
+ 
+-    for (i = 0; i < NUM_CAMML_REGS; ++i) {
++    /* Skip over the MAC address registers, which is BASE+0 */
++    for (i = 1; i < NUM_CAMML_REGS; ++i) {
+         g_assert_cmpuint(emc_read(qts, mod, REG_CAMM_BASE + i * 2), ==,
+                          0);
+         g_assert_cmpuint(emc_read(qts, mod, REG_CAML_BASE + i * 2), ==,
+-- 
+2.37.2.789.g6183377224-goog
 
->       gen_set_label(label_match);
-> -    gen_goto_tb(s, 1, addr);
-> +    gen_goto_tb(s, 1, diff);
->   }

@@ -1,116 +1,111 @@
-Received: by 2002:a17:906:1c87:0:0:0:0 with SMTP id g7csp2596698ejh;
-        Mon, 5 Sep 2022 14:28:40 -0700 (PDT)
-X-Google-Smtp-Source: AA6agR56Dtl6cFkk6rSF8VbTyBImy7UrIP4eD0xgy0opH4J526YPgt7TG10JPRLVtv6JhPkZpjvi
-X-Received: by 2002:a05:620a:278d:b0:6bb:1435:c0bd with SMTP id g13-20020a05620a278d00b006bb1435c0bdmr33928017qkp.291.1662413320050;
-        Mon, 05 Sep 2022 14:28:40 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1662413320; cv=none;
+Received: by 2002:a17:906:1c87:0:0:0:0 with SMTP id g7csp2694688ejh;
+        Mon, 5 Sep 2022 19:40:45 -0700 (PDT)
+X-Google-Smtp-Source: AA6agR7Q8LhZAru+IWVbN8trq87kBUiQgiRjvaBxRx9cni/EDClT33VDgePNvmId+/rOPAblaTsR
+X-Received: by 2002:ac8:5c8f:0:b0:344:7194:f49d with SMTP id r15-20020ac85c8f000000b003447194f49dmr42225682qta.355.1662432045499;
+        Mon, 05 Sep 2022 19:40:45 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1662432045; cv=none;
         d=google.com; s=arc-20160816;
-        b=rcNYECzhtSU9ZQPeaQlAoKstxULc6STOoR7L8Evwj7cEL9ipMXLwvhc63QemFY91fX
-         bmP1RHQRc+fGchDF/Nw9Rkr6HSqGhPc8CNtm44+r6KYr+HCTmbS01UeVLqwPMWxe1Xos
-         yXfUWls46v0xpvUiUHZjDwtP2YHuRV2Ymq4ThODLQwBdf7EwUzhqeXqQd5XPmPKfNqA7
-         00bIvDPCNRGFfcuKt6pGgL2pjOpFLfoCaZsU505DhUa9os7kaXpnjsaF/aS4n07ZVo+m
-         AwgzQsMqtMIDRsOs9MBRnzrOK2BCU4yFftMK1prYRk1n4bz+rMN3GpU4xQ9LC1wLybZU
-         qOkA==
+        b=OEOD3fe0pZoG9bxt+gREaW1UnOUuAONO+hDiioe9qq8tiZIszM7VexoOqceZBQQ//f
+         /N1/Km1+Hr4eFZQgJzXyNKsKgqmCHnd8SUBGKjiqrDy+LErKwM1N5e6z8kgzBi+A0mf0
+         9VK7dMAZ103LOA1PEujfr0VMlMHK1k+zAi3b8quwAV6DBHADR6m/w/2gkV8d84b1dcHB
+         lXrehPozfTeaWVACjd3L9BW1fBZoX83Qnojhfla1f5R62gxGZ9nAoEKcC/o2ZE3I1NNf
+         0HPz7djsSBk3i4zmQCZco4bDnaKe6Lpk1wsLZCGfFK+WjIz6ozOMeVjl/efNSHlcx841
+         gmpA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=from:reply-to:sender:errors-to:list-subscribe:list-help:list-post
+        h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
          :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:in-reply-to:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:cc:to:subject
          :dkim-signature;
-        bh=yxHBD12f3GtFHZRjo8/0W4JjePn+0NrFYdK4NL0M0VA=;
-        b=Xhr423p8+kcczNS46RyHr/aTWlcrvXuReQhFXwVeqhPjrcKfMEX8ey7fOASmH9bt3R
-         cTvc/pl7SG9V7uLbHTXTIDTjguQhO7LxY2PylQaEUzAZvhFQUEv/nHLs8abrXu0F7lvh
-         pC72KvWGrk42vBuvYWGwhW2KsqWf7fZps84prIETH5HcPYNaLAZNRHuaCTeAfbTCcS26
-         vtnfwc11x9EqXTLwTWtxx5wAB3XjXA8M/3Dp/8rae7jZKrQ/AMzT1zsuzjk9CMCt+pJS
-         jmFncZxfwnmqGLQHsbkIx54yUVXHRKPESKmrjJ9p94EF/a4Ju4/SvV6wNTxrmKajw5o3
-         D6Tw==
+        bh=nF93GbjaIuUbnUX7ORU1UP25YtmkaOPvLk398vrAK5E=;
+        b=haU6hr0Zqn3ySbUVlpCKBGyfn5OUyXYGrFyMPS11b9fKW7KGtwZ1G7+9ZZGJdR4/t3
+         sz8FfSIlGSVdHbNEzdOx8Sj2J2R2vArAYH1eE01/vpvD4/Z6NJAIlg9t9TOWCErdD5mN
+         US0gt3S1Qt8uDgi+xBAodM+nbedfrhaDFJqWK76VV1enmtAsJ872tE1Io56JTvxULwpu
+         4oma/JuhkY9jvSbVeSMTfN+OVkAPmXTLuwmnoWVKEcYgLGB36M3LmBWR1QPEcv7bmhHj
+         5EKUzThYW9aMB2CQ6weO1CNnBIkNodqMXF9SUwuXKlBoa3sSJTmJVTSvibbaf/9e3q4k
+         eDow==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20210112 header.b=Yb5Wap3k;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=MCgTRsUh;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id q21-20020ac84115000000b003449cf821d5si6877352qtl.223.2022.09.05.14.28.39
+        by mx.google.com with ESMTPS id t39-20020a05622a182700b003434e030d7dsi7633051qtc.32.2022.09.05.19.40.45
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 05 Sep 2022 14:28:40 -0700 (PDT)
+        Mon, 05 Sep 2022 19:40:45 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20210112 header.b=Yb5Wap3k;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=MCgTRsUh;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
-Received: from localhost ([::1]:58702 helo=lists1p.gnu.org)
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:45450 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1oVJe3-0000EP-K1
-	for alex.bennee@linaro.org; Mon, 05 Sep 2022 17:28:39 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:40074)
+	id 1oVOW4-0004r5-S9
+	for alex.bennee@linaro.org; Mon, 05 Sep 2022 22:40:44 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:34154)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1oVJde-0000Cm-Ah; Mon, 05 Sep 2022 17:28:14 -0400
-Received: from mail-pg1-x534.google.com ([2607:f8b0:4864:20::534]:38911)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1oVJdc-0005Jo-Jk; Mon, 05 Sep 2022 17:28:14 -0400
-Received: by mail-pg1-x534.google.com with SMTP id t70so3108949pgc.5;
- Mon, 05 Sep 2022 14:28:11 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :sender:from:to:cc:subject:date;
- bh=yxHBD12f3GtFHZRjo8/0W4JjePn+0NrFYdK4NL0M0VA=;
- b=Yb5Wap3kk2hRzpDpfJHiRyLs9AWsLByBI7fQuEmG2eKXL8okbScJ35rRLPrUNpbzFt
- nzZRv+7oBWHQb0S6WaorOPaMGVUIblcQHHk4/HyGPN6lfzdFQC3ZbUPZd40fPy16J2tH
- nPCnlSpHP7mkUwwmCHo7tQrA0SrLo1jXK2Nx3QOvqqU8Ow4uXI8V2FbojaG7DdVIX4M8
- wnmVdaK7ffGeWSAUEAMuEM376Z8JslYYAdTNqn9rk78bE+LbRy9zz/mOqX7l606LGI+x
- h6Yz897520uqzwEjUqmf2NqV5G/tRHau5xd+nmwBEasdSfzJjHytiM/xHola3XdtvMAC
- 8Aiw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :sender:x-gm-message-state:from:to:cc:subject:date;
- bh=yxHBD12f3GtFHZRjo8/0W4JjePn+0NrFYdK4NL0M0VA=;
- b=U3rnIq+q1LOEgYdy9oaJKN60aZ7Z9UE2mKxCoDxoxf0bwnZ7yzGtKtBdCiKlT6YrqK
- GaU9pljW29nHMKgRpcrwvMqtqq/Vd60InIvRidyHRbtKz0zdKuwzBTBs2YZbJEnLbUO+
- Ws5y41Et2u3ykP22ydgoOQmddPu5KPyKlky3R7YX44ubK4RZbDCcyVVw/h4lKTYPDW7N
- pY3gFjQFmhk0BNyXAwFzFFDg4yin+5et5t3MfOaDxE4eUCvSVULtpyeyxxHGx4Y8IuKC
- 3eAZQpNIrTwy9IIY9nqXh1IltBN8ab8b0dXt9MfH/ICjjpH4hB0k9vPJIG59y4LMQZ1b
- zGlA==
-X-Gm-Message-State: ACgBeo03bLYWvNbe8O/lghKgFV4iQY+O9ZX/cKI5QD+KxhC7j59fPEW4
- qRUbj/YVvNfokLewu8K8/v8=
-X-Received: by 2002:a05:6a00:9a5:b0:538:73c:bf8f with SMTP id
- u37-20020a056a0009a500b00538073cbf8fmr44638725pfg.9.1662413290859; 
- Mon, 05 Sep 2022 14:28:10 -0700 (PDT)
-Received: from [192.168.1.115] ([185.126.107.38])
- by smtp.gmail.com with ESMTPSA id
- f7-20020a625107000000b0053ab9c189e2sm8295018pfb.2.2022.09.05.14.28.09
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 05 Sep 2022 14:28:10 -0700 (PDT)
-Message-ID: <80ce327e-4381-743d-fd63-3b04006e4228@amsat.org>
-Date: Mon, 5 Sep 2022 23:28:06 +0200
+ (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1oVOVZ-0004qk-2j
+ for qemu-arm@nongnu.org; Mon, 05 Sep 2022 22:40:13 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:23956)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1oVOVU-0007WB-U4
+ for qemu-arm@nongnu.org; Mon, 05 Sep 2022 22:40:11 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1662432007;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=nF93GbjaIuUbnUX7ORU1UP25YtmkaOPvLk398vrAK5E=;
+ b=MCgTRsUhW0fLRPr37dX1w1g7tGfGG8d1RWg1G/mhtJk7hBWAG1oFV12Uc7BxWpX/6TofOy
+ VGiehCexFC+BaBHIdP0+s0M4jCobijtBD00jQ7pD1LghJYGxPi8qXJCmc3TKCFsjHRgcVI
+ aQOg4YQfmUgdC7CjSuwOx6pVr0Y2NnU=
+Received: from mimecast-mx02.redhat.com (mx3-rdu2.redhat.com
+ [66.187.233.73]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-512-6VDYHsBuPCyA3nlKrvhX0g-1; Mon, 05 Sep 2022 22:40:06 -0400
+X-MC-Unique: 6VDYHsBuPCyA3nlKrvhX0g-1
+Received: from smtp.corp.redhat.com (int-mx09.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.9])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id AFBF03804509;
+ Tue,  6 Sep 2022 02:40:05 +0000 (UTC)
+Received: from [10.64.54.16] (vpn2-54-16.bne.redhat.com [10.64.54.16])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 01238492C3B;
+ Tue,  6 Sep 2022 02:40:01 +0000 (UTC)
+Subject: Re: [PATCH v2 0/4] hw/arm/virt: Improve address assignment for high
+ memory regions
+To: eric.auger@redhat.com, qemu-arm@nongnu.org
+Cc: qemu-devel@nongnu.org, maz@kernel.org, cohuck@redhat.com,
+ zhenyzha@redhat.com, peter.maydell@linaro.org, richard.henderson@linaro.org,
+ shan.gavin@gmail.com
+References: <20220815062958.100366-1-gshan@redhat.com>
+ <8f219b9f-d5ee-aa9d-519e-e3a7623c2c63@redhat.com>
+ <67f44b09-7c9a-fd83-d222-f505a91ca99e@redhat.com>
+From: Gavin Shan <gshan@redhat.com>
+Message-ID: <679401b5-abb3-fb2b-38d4-017fd40d0fbf@redhat.com>
+Date: Tue, 6 Sep 2022 12:39:58 +1000
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.2.0
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:91.0)
- Gecko/20100101 Thunderbird/91.13.0
-Subject: Re: [PATCH v3 6/6] include/exec: Introduce TARGET_PAGE_ENTRY_EXTRA
+In-Reply-To: <67f44b09-7c9a-fd83-d222-f505a91ca99e@redhat.com>
+Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Language: en-US
-To: Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, pbonzini@redhat.com
-References: <20220905202259.189852-1-richard.henderson@linaro.org>
- <20220905202259.189852-7-richard.henderson@linaro.org>
-In-Reply-To: <20220905202259.189852-7-richard.henderson@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::534;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-pg1-x534.google.com
-X-Spam_score_int: -31
-X-Spam_score: -3.2
+X-Scanned-By: MIMEDefang 2.85 on 10.11.54.9
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=gshan@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -37
+X-Spam_score: -3.8
 X-Spam_bar: ---
-X-Spam_report: (-3.2 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.25,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.25, NICE_REPLY_A=-1.716,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_report: (-3.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ NICE_REPLY_A=-1.716, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -123,53 +118,189 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: Gavin Shan <gshan@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Reply-to:  =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-From:  =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= via <qemu-arm@nongnu.org>
-X-TUID: iaPgbHCuyvAm
+X-TUID: UKwBbkee4R5+
 
-On 5/9/22 22:22, Richard Henderson wrote:
-> Allow the target to cache items from the guest page tables.
+Hi Eric,
+
+On 8/24/22 6:06 PM, Eric Auger wrote:
+> On 8/24/22 05:29, Gavin Shan wrote:
+>> On 8/15/22 4:29 PM, Gavin Shan wrote:
+>>> There are three high memory regions, which are VIRT_HIGH_REDIST2,
+>>> VIRT_HIGH_PCIE_ECAM and VIRT_HIGH_PCIE_MMIO. Their base addresses
+>>> are floating on highest RAM address. However, they can be disabled
+>>> in several cases.
+>>>       (1) One specific high memory region is disabled by developer by
+>>>       toggling vms->highmem_{redists, ecam, mmio}.
+>>>       (2) VIRT_HIGH_PCIE_ECAM region is disabled on machine, which is
+>>>       'virt-2.12' or ealier than it.
+>>>       (3) VIRT_HIGH_PCIE_ECAM region is disabled when firmware is loaded
+>>>       on 32-bits system.
+>>>       (4) One specific high memory region is disabled when it breaks the
+>>>       PA space limit.
+>>>       The current implementation of virt_set_memmap() isn't comprehensive
+>>> because the space for one specific high memory region is always
+>>> reserved from the PA space for case (1), (2) and (3). In the code,
+>>> 'base' and 'vms->highest_gpa' are always increased for those three
+>>> cases. It's unnecessary since the assigned space of the disabled
+>>> high memory region won't be used afterwards.
+>>>
+>>> The series intends to improve the address assignment for these
+>>> high memory regions:
+>>>
+>>> PATCH[1] and PATCH[2] are cleanup and preparatory works.
+>>> PATCH[3] improves address assignment for these high memory regions
+>>> PATCH[4] moves the address assignment logic into standalone helper
+>>>
+>>> History
+>>> =======
+>>> v1: https://lists.nongnu.org/archive/html/qemu-arm/2022-08/msg00013.html
+>>>
+>>> Changelog
+>>> =========
+>>> v2:
+>>>     * Split the patches for easier review                        (Gavin)
+>>>     * Improved changelog                                         (Marc)
+>>>     * Use 'bool fits' in virt_set_high_memmap()                  (Eric)
+>>>
+> You did not really convince me about migration compat wrt the high MMIO
+> region. Aren't the PCI BARs saved/restored meaning the device driver is
+> expecting to find data at the same GPA. But what if your high MMIO
+> region was relocated in the dest QEMU with a possibly smaller VM IPA?
+> Don't you have MMIO regions now allocated outside of the dest MMIO
+> region? How does the PCI host bridge route accesses to those regions?
+> What do I miss?
 > 
-> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
-> ---
->   include/exec/cpu-defs.h | 9 +++++++++
->   1 file changed, 9 insertions(+)
-> 
-> diff --git a/include/exec/cpu-defs.h b/include/exec/cpu-defs.h
-> index 5e12cc1854..67239b4e5e 100644
-> --- a/include/exec/cpu-defs.h
-> +++ b/include/exec/cpu-defs.h
-> @@ -163,6 +163,15 @@ typedef struct CPUTLBEntryFull {
->   
->       /* @lg_page_size contains the log2 of the page size. */
->       uint8_t lg_page_size;
-> +
-> +    /*
-> +     * Allow target-specific additions to this structure.
-> +     * This may be used to cache items from the guest cpu
-> +     * page tables for later use by the implementation.
-> +     */
-> +#ifdef TARGET_PAGE_ENTRY_EXTRA
-> +    TARGET_PAGE_ENTRY_EXTRA
-> +#endif
->   } CPUTLBEntryFull;
 
-Alternatively declare a per-target structure in cpu-param.h
-and here:
+[...]
 
-typedef struct CPUTLBEntryTarget CPUTLBEntryTarget;
+Sorry for the delay because I was offline last week. I was intending
+to explain the migration on virtio-net device and spent some time to
+go through the code. I found it's still complicated for an example
+because PCI and virtio device models are involved. So lets still use
+e1000e.c as an example here.
 
-#ifndef TARGET_HAS_PAGE_ENTRY_EXTRA_STRUCT
-struct CPUTLBEntryTarget { }
-#endif
+There are lots of registers residing in MMIO region, including MSIx
+table. The MSIx table is backed by PCIDevice::msix_table, which is
+a buffer. The access to MSIx table is read from or write to the buffer.
+The corresponding handler is hw/msix.c::msix_table_mmio_ops. msix_init()
+is called by e1000e.c to setup the MSIx table, which is associated with
+memory BAR#3. As the registers in MSIx table is totally emulated by
+QEMU, the BAR's base address isn't a concern.
+
+   struct PCIDevice {
+      :
+      uint8_t *msix_table;
+      :
+      MemoryRegion msix_table_mmio;
+      :
+   };
+
+   /* @table_bar is registered as memory BAR#3 in e1000e_pci_realize() */
+   int msix_init(struct PCIDevice *dev, unsigned short nentries,
+                 MemoryRegion *table_bar, uint8_t table_bar_nr,
+                 unsigned table_offset, MemoryRegion *pba_bar,
+                 uint8_t pba_bar_nr, unsigned pba_offset, uint8_t cap_pos,
+                 Error **errp)
+   {
+        :
+     memory_region_init_io(&dev->msix_table_mmio, OBJECT(dev), &msix_table_mmio_ops, dev,
+                           "msix-table", table_size);
+     memory_region_add_subregion(table_bar, table_offset, &dev->msix_table_mmio);
+        :
+   }
+
+As we concerned, the BAR's base addresses for MSIx tables are different on source
+and destination VMs. It's still not a problem because the registers in MSIx table
+are migrated, saved on source VM and restored on destination VM one by one. It's
+to say, not the whole buffer (PCIDevice::msix_table) is saved and restored at once.
+Further more, the unique ID string, instead the corresponding BAR's base address,
+is used to identify the MSIx table. For this particular case, the ID string is
+something like "e1000e_dev_id/pci-0000:05:00.0/msix state". With this ID string
+is received on the destination VM, the object and PCI device is located and the
+forth-coming data is saved to PCIDevice::msix_table.
+
+   static const VMStateDescription e1000e_vmstate = {
+     .name = "e1000e",
+     .version_id = 1,
+     .minimum_version_id = 1,
+     .pre_save = e1000e_pre_save,
+     .post_load = e1000e_post_load,
+     .fields = (VMStateField[]) {
+         VMSTATE_PCI_DEVICE(parent_obj, E1000EState),
+         VMSTATE_MSIX(parent_obj, E1000EState),
+         :
+     }
+   };
+
+   #define VMSTATE_MSIX_TEST(_field, _state, _test) {                 \
+     .name         = (stringify(_field)),                             \
+     .size         = sizeof(PCIDevice),                               \
+     .vmsd         = &vmstate_msix,                                   \
+     .flags        = VMS_STRUCT,                                      \
+     .offset       = vmstate_offset_value(_state, _field, PCIDevice), \
+     .field_exists = (_test)                                          \
+   }
+
+   #define VMSTATE_MSIX(_f, _s)                                       \
+       VMSTATE_MSIX_TEST(_f, _s, NULL)
 
 
-typedef struct CPUTLBEntryFull {
-   ...
-   CPUTLBEntryTarget target_extra;
-} CPUTLBEntryFull;
+   /* On source VM, PCIDevice::msix_table is transferred to destination VM */
+   void msix_save(PCIDevice *dev, QEMUFile *f)
+   {
+     :
+     qemu_put_buffer(f, dev->msix_table, n * PCI_MSIX_ENTRY_SIZE);
+     qemu_put_buffer(f, dev->msix_pba, DIV_ROUND_UP(n, 8));
+   }
 
-Meanwhile:
-Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+   /* On destination VM, the received data is write to PCIDevice::msix_table */
+   void msix_load(PCIDevice *dev, QEMUFile *f)
+   {
+     :
+     qemu_get_buffer(f, dev->msix_table, n * PCI_MSIX_ENTRY_SIZE);
+     qemu_get_buffer(f, dev->msix_pba, DIV_ROUND_UP(n, 8));
+     :
+   }
+
+   static int put_msix_state(QEMUFile *f, void *pv, size_t size,
+                             const VMStateField *field, JSONWriter *vmdesc)
+   {
+     msix_save(pv, f);
+
+     return 0;
+   }
+
+   static int get_msix_state(QEMUFile *f, void *pv, size_t size,
+                             const VMStateField *field)
+   {
+     msix_load(pv, f);
+     return 0;
+   }
+
+   static VMStateInfo vmstate_info_msix = {
+     .name = "msix state",
+     .get  = get_msix_state,
+     .put  = put_msix_state,
+   };
+
+   const VMStateDescription vmstate_msix = {
+     .name = "msix",
+     .fields = (VMStateField[]) {
+         {
+             .name         = "msix",
+             .version_id   = 0,
+             .field_exists = NULL,
+             .size         = 0,   /* ouch */
+             .info         = &vmstate_info_msix,
+             .flags        = VMS_SINGLE,
+             .offset       = 0,
+         },
+     }
+  };
+
+Thanks,
+Gavin
+

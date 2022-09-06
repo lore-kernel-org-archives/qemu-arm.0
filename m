@@ -1,108 +1,109 @@
-Received: by 2002:a17:906:1c87:0:0:0:0 with SMTP id g7csp3171793ejh;
-        Tue, 6 Sep 2022 13:18:24 -0700 (PDT)
-X-Received: by 2002:a17:903:2406:b0:174:f1c8:76bc with SMTP id e6-20020a170903240600b00174f1c876bcmr197826plo.168.1662495504361;
-        Tue, 06 Sep 2022 13:18:24 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1662495504; cv=none;
+Received: by 2002:a17:906:1c87:0:0:0:0 with SMTP id g7csp3182325ejh;
+        Tue, 6 Sep 2022 13:45:23 -0700 (PDT)
+X-Google-Smtp-Source: AA6agR5yVzBArF8rmyJ5Gd57ctOXBoOhTzaaQozjdF69N713Vdep2u1PysgrswgnOmP2pkg9udHT
+X-Received: by 2002:a05:622a:178b:b0:344:55f0:192f with SMTP id s11-20020a05622a178b00b0034455f0192fmr335911qtk.673.1662497123094;
+        Tue, 06 Sep 2022 13:45:23 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1662497123; cv=none;
         d=google.com; s=arc-20160816;
-        b=KHqz9DkKmxmO3NAZEPSPNkRbcxYtTi1VD4k03zd1LgrSc9TJTYyPFadnbNjo/UFj4L
-         QACKr3t7TVduoVO9qcvYC1ULyN6KT4XKrUy1X2vZyY+7hAhSvqRWqVlUg4NjUKokQodS
-         5Beb5AcoW9TNo5e5rAj04v1SWaGTg70hP70rFNx6YvHbrSYcMImg5I++b85RcRLWW7IX
-         uR8PcHc7XpM20n34EnwVcMqdAXPJqWU9SDEdmTR935W2U93gEgW+PZvVKqb9rLyHpj5W
-         We/qXpw8+CR1CrKkEHo1z3hYNtjEBFLocBMJbvbwqH6TDg3i45FsOWrX7gxCH38gax6J
-         UIlw==
+        b=HwpdF9MIydyx3mWfqUXZa0OhuJ4Xlfa7Tp78VLk8GMhyCdnroNbtjyIX1VpHKZxlZ1
+         czRrkb7HUhIfO7pvRRoUOhXlNGcrS4JKC3p5n2s1ehrdpSy94m8Gz+DxlhZLhS9ewjse
+         fffU+MJwKOSVSTk8L3KZYJ2+n/tMuRLwddAPKLZwCPjE3Rjuu9G7GBmxplJUIo9rwqjT
+         YyiC1G3r4fPQOP3FWknZHd4/E0y7ZYKtz+9DyJg3Ke9sfsyc5c7aW+iRgpk0yZhFy61t
+         9DvPj2orr0U53BTXRX2meZxc1rupVgMEm92LmPES7tKA0jAdUZO2pNa4/2Q10eufz56d
+         QxXw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=/YxiTg2Y6r3+thsfbPvWqS+5O+fxjOgLKEFsE1+gNSI=;
-        b=vGdUrTXmFBEakRdeH5SpYvm1fQZHVi/S/mJyG3SudmwYIowaYDOUPIVVHZaJc67NQx
-         yHf5XjbPY9dxKeOYXCvRNui52s20P8VcS9n3KM5WNFMalNhpfMhIdhVZ26QjWXBlXEt2
-         98EqLdrS1HE9K+cuBufn/g8vnjGvet35dpZblIQyMan1Ow1TfF/hbIv62NH8mmDygsv3
-         yy7l5eSUqskFH1H2PpxmL25Kl6pfHl4gtbHqJzotIUhP/s9BZptS3k3mJVuG9yw3PyEh
-         RB3SyCgZ6tGc09IgHj2EPy4IjIIkj4THB759NXGxgZZMDGQsYD/Y7zA6GAJfUwErDdMm
-         Ub5w==
+        h=content-transfer-encoding:subject:cc:to:from:date:references
+         :in-reply-to:message-id:mime-version:user-agent:feedback-id
+         :dkim-signature:dkim-signature;
+        bh=u8PqlsTGRRNhe8EU7QHSPpRYK1LxejqlRIXFdMaPpxs=;
+        b=i3MY8HQ5ZziR71DqKUzQ+QJD12l5ycEuubjvImS8ZSzo2sMEfZmU+oyZuVybtfRq1f
+         i9cYmbK1e/vwAwL26sUHUFyQDcAUfiechc3RNQt9xfJHo2yFgoaMHIxWROB7t9Xt90ot
+         grBZaVFJs+svzXr36vvOMl0C40WZ5y/q48pdHnF8esSw3FOrmoydzuZgkLCTtqB07X0a
+         KVUdTa8FkzTxO0WddsMHY1jnRI9LCoSmQZac/4gRsqk6e4i/uv7BA3GZutt911C3IHkK
+         MRgQGinjNre6fRjiJLOvAqGesWTFxmB4gAGMel4uT/UUBLV6ob5ndnY2LkXNuT+g3mZR
+         m+mw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=uL+fQgVE;
-       spf=pass (google.com: domain of anders.roxell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=anders.roxell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <anders.roxell@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id e24-20020a63db18000000b00429f4f47d57sor6385840pgg.63.2022.09.06.13.18.24
-        for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Tue, 06 Sep 2022 13:18:24 -0700 (PDT)
-Received-SPF: pass (google.com: domain of anders.roxell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+       dkim=pass header.i=@arndb.de header.s=fm1 header.b=faa6qsM7;
+       dkim=pass header.i=@messagingengine.com header.s=fm2 header.b=DaDtKzE1;
+       spf=pass (google.com: domain of arnd@arndb.de designates 66.111.4.229 as permitted sender) smtp.mailfrom=arnd@arndb.de
+Return-Path: <arnd@arndb.de>
+Received: from new3-smtp.messagingengine.com (new3-smtp.messagingengine.com. [66.111.4.229])
+        by mx.google.com with ESMTPS id u1-20020a05620a0c4100b006c9cc858824si1566973qki.338.2022.09.06.13.45.22
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 06 Sep 2022 13:45:22 -0700 (PDT)
+Received-SPF: pass (google.com: domain of arnd@arndb.de designates 66.111.4.229 as permitted sender) client-ip=66.111.4.229;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=uL+fQgVE;
-       spf=pass (google.com: domain of anders.roxell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=anders.roxell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date;
-        bh=/YxiTg2Y6r3+thsfbPvWqS+5O+fxjOgLKEFsE1+gNSI=;
-        b=uL+fQgVEDu4MRlQ0u8cbG281G+tvyc/X8iPKz7EGN421EBcTZbTf5dWXejAfWZEAYN
-         1U3F6Sbj/RIp/P7LKzxfX+WV+aieO23eg1alUEeENM2xoOgCX+FsUuq84eBow49MWeFr
-         ccA95NTnBRQ06/Kle+y8LReNsC610ZQvGVOj1MjH2Vt3c7zzMT9D81uj5sHL0PE1COwI
-         1x+RS5p6UefNDdJuHl+3sirXM2guRLHTAYuyRtxPXhfZFd4s9pmLBtTgtl1RdhUttmPp
-         8nkKxCu++QsPZQEi5vUrIiY2cjrk2v8kHpRbVgg8/WXc8d09eBrqAP50cKdwCuMbInsA
-         9hqQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date;
-        bh=/YxiTg2Y6r3+thsfbPvWqS+5O+fxjOgLKEFsE1+gNSI=;
-        b=2g7YTuGvKCJLF48OU3LnPu14Ue0+BYdgff5oWZNdN87LfEjrHpBYT1kYd6Ktc9RPa1
-         qWGFXf8far2F6pGjB7h8Bwn3WGbI5nzvCiOQuXlBYr/8qjnqolqRnfshuaR5u+yyDEZv
-         Z+EfXdCTyKQDSgvQ73GGmWZ3fSCftgXyMfvLrJdxtrCi8AoxSwjzeNRki05Cwiaa7rsd
-         qIOGCAMMHBBldtW5FxuJoaBcUpKC/gY8YzaPzlt2ADkao4B7QYsRNaYWYjwinsHGkhMH
-         PXqAbaYGZ8uz74HhcVQk1A7oR8/za3BlImjlVAP3kIPF/3OALRQNh9Dmu9WC5VNZOwnV
-         Ci/g==
-X-Gm-Message-State: ACgBeo1C++jTQMta3rl2Q8omr3RspnNBIn4s7uyhyYqqobpz6m3EBTtk
-	bDdyCE8RaY9XbPFmplMUBtwfBNGCU3Ll76XhkIXq126bcIXOeQni
-X-Google-Smtp-Source: AA6agR6fMAF7Zguaa+BET1ao/WK9IgTzwkxBBX/Jo8KhPB9FsxFqblriqgvezh5xaBHHYmhVAKh5Zbuh5jUi9FnyRF8=
-X-Received: by 2002:a63:e516:0:b0:434:9462:69cd with SMTP id
- r22-20020a63e516000000b00434946269cdmr268765pgh.503.1662495503821; Tue, 06
- Sep 2022 13:18:23 -0700 (PDT)
-MIME-Version: 1.0
-References: <20220906172257.2776521-1-alex.bennee@linaro.org>
+       dkim=pass header.i=@arndb.de header.s=fm1 header.b=faa6qsM7;
+       dkim=pass header.i=@messagingengine.com header.s=fm2 header.b=DaDtKzE1;
+       spf=pass (google.com: domain of arnd@arndb.de designates 66.111.4.229 as permitted sender) smtp.mailfrom=arnd@arndb.de
+Received: from compute3.internal (compute3.nyi.internal [10.202.2.43])
+	by mailnew.nyi.internal (Postfix) with ESMTP id B089A58055A;
+	Tue,  6 Sep 2022 16:45:22 -0400 (EDT)
+Received: from imap51 ([10.202.2.101])
+  by compute3.internal (MEProxy); Tue, 06 Sep 2022 16:45:22 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=arndb.de; h=cc
+	:cc:content-transfer-encoding:content-type:date:date:from:from
+	:in-reply-to:in-reply-to:message-id:mime-version:references
+	:reply-to:sender:subject:subject:to:to; s=fm1; t=1662497122; x=
+	1662500722; bh=u8PqlsTGRRNhe8EU7QHSPpRYK1LxejqlRIXFdMaPpxs=; b=f
+	aa6qsM7J5koeNq9oc8EmcPK54+LY93/nnBx5RNLy1CRQ3PLMEDLR6m0mqikAJA3O
+	O3/kQpcWFK7gC+WcpNUsRmW2cRIxk7tLbxLA52GdAGr6LvalZvyLwdG+RR+3fUJH
+	xq9rh/mXU5GffnSRSGd0TWDgH5EZjI05g6ZQPiTPHNDf6gqowpWiVLujFbstYlK/
+	c0zEI3SgPF899LCdeHWxBaW1Y04L71Jdz2+UmSmwDrEP11m5cttm/FtdNi/i3ff4
+	4ZYop/y/kKUhvZ1Q532HbyIvbuqY+zyoURPa9gzCtntaYYDyDuWFVp/ksuvZrQzj
+	u3wvOEa3sSsh0fBPpgEDQ==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+	messagingengine.com; h=cc:cc:content-transfer-encoding
+	:content-type:date:date:feedback-id:feedback-id:from:from
+	:in-reply-to:in-reply-to:message-id:mime-version:references
+	:reply-to:sender:subject:subject:to:to:x-me-proxy:x-me-proxy
+	:x-me-sender:x-me-sender:x-sasl-enc; s=fm2; t=1662497122; x=
+	1662500722; bh=u8PqlsTGRRNhe8EU7QHSPpRYK1LxejqlRIXFdMaPpxs=; b=D
+	aDtKzE17UfrF6dgZcEoeJ+Hhjc8nyUK6xyLt5vIkjTat5c9oxYpRIrdSCByk9VC5
+	w6AKWlz1+8ap8lL6FGRl59ocTzFT9vE/Y+dGQjbNaU0xQFqclVxi00dNw0A7mVvG
+	QSIznq0p1/VPlr/SDabVrenzvXcas3zkLzjKoDmtke/zX4A5a2qz9Q1k4tOKVzqW
+	xDhqL7secVigiYANPu+OTLcSKuoMAZuNKA0myn7fa/v+cCXsIriw4U/VjvUN4WQV
+	3aOiEuRc+wSWBUqnhm73I/xyn5aIADADKLAFsxitmDfvrkf0m03G6T2n8S1QOxzj
+	qkuN2oTwJC3F13pIUHxPg==
+X-ME-Sender: <xms:YrEXY4rZNnBloMcp9N_XbqGwDIrH63ayoW-whR--72zJdmynyRLn5Q>
+    <xme:YrEXY-q3-o1icWTQnHDqDlpfwGX9OfSporvpbi5j-IhRz5ByJLLPW5KPQ70nr4_5M
+    DuJlqBf8xRFquebadA>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvfedrvdelkedgudehgecutefuodetggdotefrod
+    ftvfcurfhrohhfihhlvgemucfhrghsthforghilhdpqfgfvfdpuffrtefokffrpgfnqfgh
+    necuuegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmd
+    enucfjughrpefofgggkfgjfhffhffvvefutgfgsehtqhertderreejnecuhfhrohhmpedf
+    tehrnhguuceuvghrghhmrghnnhdfuceorghrnhgusegrrhhnuggsrdguvgeqnecuggftrf
+    grthhtvghrnhepgeefjeehvdelvdffieejieejiedvvdfhleeivdelveehjeelteegudek
+    tdfgjeevnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmrghilhhfrhhomh
+    eprghrnhgusegrrhhnuggsrdguvg
+X-ME-Proxy: <xmx:YrEXY9PiFCTZkvv17d_3lLv1reIMkggUKcoCicpakgFb1jXRt_dVXA>
+    <xmx:YrEXY_6RFXqDgD0b6BCLxkMjDIFdxlFtZvlytXkH6GgfonQGh24u6g>
+    <xmx:YrEXY34hxXLeWPUX0jsJgBl_N_44iRhyEkCZ942IkewdOq95APa33w>
+    <xmx:YrEXY5nf_0PUvtG4AJMoaY6I37y_UH1x3DXsWrXOryoov0nkiLL1EA>
+Feedback-ID: i56a14606:Fastmail
+Received: by mailuser.nyi.internal (Postfix, from userid 501)
+	id 632A1B60083; Tue,  6 Sep 2022 16:45:22 -0400 (EDT)
+X-Mailer: MessagingEngine.com Webmail Interface
+User-Agent: Cyrus-JMAP/3.7.0-alpha0-927-gf4c98c8499-fm-20220826.002-gf4c98c84
+Mime-Version: 1.0
+Message-Id: <49a0474b-96b6-4366-a6a2-f59ad0b5a0bf@www.fastmail.com>
 In-Reply-To: <20220906172257.2776521-1-alex.bennee@linaro.org>
-From: Anders Roxell <anders.roxell@linaro.org>
-Date: Tue, 6 Sep 2022 22:18:12 +0200
-Message-ID: <CADYN=9LQe1793vWY8agasHSLazFVkMkLPOLOApxDBdXpYtOGfw@mail.gmail.com>
+References: <20220906172257.2776521-1-alex.bennee@linaro.org>
+Date: Tue, 06 Sep 2022 22:45:02 +0200
+From: "Arnd Bergmann" <arnd@arndb.de>
+To: =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
+ qemu-devel@nongnu.org
+Cc: "Arnd Bergmann" <arnd@linaro.org>,
+ "Anders Roxell" <anders.roxell@linaro.org>,
+ "Peter Maydell" <peter.maydell@linaro.org>,
+ "open list:ARM TCG CPUs" <qemu-arm@nongnu.org>
 Subject: Re: [RFC PATCH] target/arm: update the cortex-a15 MIDR to latest rev
-To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
-Cc: qemu-devel@nongnu.org, Arnd Bergmann <arnd@linaro.org>, 
-	Peter Maydell <peter.maydell@linaro.org>, "open list:ARM TCG CPUs" <qemu-arm@nongnu.org>
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain;charset=utf-8
 Content-Transfer-Encoding: quoted-printable
-X-TUID: cMkNXW1cFJTo
+X-TUID: nTscFmmll8je
 
-On Tue, 6 Sept 2022 at 19:23, Alex Benn=C3=A9e <alex.bennee@linaro.org> wro=
-te:
+On Tue, Sep 6, 2022, at 7:22 PM, Alex Benn=C3=A9e wrote:
 >
-> QEMU doesn't model micro-architectural details which includes most
-> chip errata. The ARM_ERRATA_798181 work around in the Linux
-> kernel (see erratum_a15_798181_init) currently detects QEMU's
-> cortex-a15 as broken and triggers additional expensive TLB flushes as
-> a result.
->
-> Change the MIDR to report what the latest silicon would (r4p0) as well
-> as setting the IMPDEF revidr bit to indicate these flushes are not
-> needed. This cuts about 5s from my Debian kernel boot with the latest
-> 6.0rc1 kernel (29s->24s).
->
-> Signed-off-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
-> Cc: Arnd Bergmann <arnd@linaro.org>
-> Cc: Anders Roxell <anders.roxell@linaro.org>
-
-Tested-by: Anders Roxell <anders.roxell@linaro.org>
-
-> ---
->  target/arm/cpu_tcg.c | 4 +++-
->  1 file changed, 3 insertions(+), 1 deletion(-)
->
-> diff --git a/target/arm/cpu_tcg.c b/target/arm/cpu_tcg.c
 > index 3099b38e32..59d5278868 100644
 > --- a/target/arm/cpu_tcg.c
 > +++ b/target/arm/cpu_tcg.c
@@ -117,6 +118,17 @@ Tested-by: Anders Roxell <anders.roxell@linaro.org>
 >      cpu->reset_fpsid =3D 0x410430f0;
 >      cpu->isar.mvfr0 =3D 0x10110222;
 >      cpu->isar.mvfr1 =3D 0x11111111;
-> --
-> 2.34.1
->
+
+This will work correctly with Linux, but after I checked the
+Cortex-A15 MPCore r2/r3/r4 Software Developers Errata Notice again,
+I think that setting revidr here is not fully correct:
+
+With an r3p3 CPU, bit 9 of revidr (0x200) indicates that no
+workaround is necessary, but with r4p0 and higher, this bit
+is marked as reserved and both the Documentation and the
+Linux source code assume the hardware works correctly.
+
+So I think this should either be 0x413fc0f3/0x200
+or 0x414fc0f0/0.
+
+     Arnd

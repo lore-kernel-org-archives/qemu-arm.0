@@ -1,111 +1,113 @@
-Received: by 2002:a17:906:1c87:0:0:0:0 with SMTP id g7csp2839694ejh;
-        Tue, 6 Sep 2022 02:39:13 -0700 (PDT)
-X-Google-Smtp-Source: AA6agR4ElHBngzJkkvFr7SAEBfliLt9m2LDK/ov6qyqhit1XoP8ug1JWrgbeOXNBJ2b9t5ooF5fd
-X-Received: by 2002:a05:620a:124c:b0:6bb:b897:b077 with SMTP id a12-20020a05620a124c00b006bbb897b077mr34535308qkl.388.1662457153643;
-        Tue, 06 Sep 2022 02:39:13 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1662457153; cv=none;
+Received: by 2002:a17:906:1c87:0:0:0:0 with SMTP id g7csp2965174ejh;
+        Tue, 6 Sep 2022 06:48:14 -0700 (PDT)
+X-Google-Smtp-Source: AA6agR5bwE/6YDQ3nie4rvTliD1jk658K32ZgQ0gY450/UOoMX+LPuzdXTh/08yYIpJ5iKvPQlKd
+X-Received: by 2002:ac8:5d86:0:b0:343:5ac5:a739 with SMTP id d6-20020ac85d86000000b003435ac5a739mr42676099qtx.533.1662472093860;
+        Tue, 06 Sep 2022 06:48:13 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1662472093; cv=none;
         d=google.com; s=arc-20160816;
-        b=Ke1SCJP6qzuzSdDWU2ey6m2DWTOdHb/CEJgwUOiRfzkGvUSuyUAvKzo+OwbYERzqJC
-         eKIOlPp/DhmoJXP0Agv2RssaYtD3WzTQ/a4o0jrptBJkfLIgx5cbiaP25L+wI2nr8o5r
-         jJ3xNAModdTXH5Of4902k1GnVmNrw2uoirkheUSva4g/wQaSlsG6okmRrnm65YAhsnNd
-         2QimpPd69miWlMD/cr9cES7hAqcGFYfhINal8uY8NcG+pcawKQ01hMOe/6o11VcLGfJJ
-         JPIVrvOlTTRrEIYQnq5LA0DrhfvpUATKBbybGiKXdljHe+sSeOdQ8CZmEs/3RbVPtP7X
-         cQaQ==
+        b=BkZapMjrZbG4s2MkTcj4IE+YPyxjdmzQH8dgovNtkFpCbAJlnKfD6Qa8nFE38T+HkO
+         ksOGq+7vNA7ZIji+GpMJNK6M047fXe7BTsG5fQVjEXtXD6zcd98Pfrpa5xeEaGOf2/4h
+         bMx10RfnfLFp3Q2iGz2W21Th/0PRJQW87GfDRI9zv8FPhpqRfWQyXXXN+fA3z9OII2KR
+         RXAAjtFFpjl7G0b8JxNYIuoLiiApsBjc/JN/CRb039cssiR5xzY5tg61p0EWNzAYuu8j
+         czClUd/+rX7KS2VmIi81RaZ6Bb+/bcOM6QyJENnG6V8OjO8VYFTPaZWhj/zEvVHDO9h7
+         fJFg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
-        bh=jDJ3xeqr1CKa788xhUrlzCt/huwL/qB60RhDoRSMn5U=;
-        b=ySsWRULeHO0hCAXhDI7SE0tWTNiFYOEnQdnfyJBggCVS5YnG5LhOt7EsjLEdWfQPXE
-         Y/JwxiV+A4fdd4SiX7UHhaZYv92JWIbaw6clzo535lgz7uusI6W6C9/ngSHi6zmYmwDX
-         bgf61EruiqyObHsG+OPYZeUpG08/AIA5SetK676cduYgpvtO7YlGV/4xM+jI33STMO12
-         q4ZykgZh+Bj1wCYlAlPmb/Z0j22cGfQYmUVk1iMQKbgepWgwMBqAfsRO3W7RlS6oUKAv
-         JudYCUSBfPxCAXj3CM9+1LF5zTR1TbpBNYPk1TWadYlkZPr73EX74uBLU+EmC3ObOgCC
-         MHLA==
+         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
+         :dkim-signature;
+        bh=mOaRI71FQfWA04xw1hixx4MODTWCMqP/3VREdkQGoTQ=;
+        b=OnZ/oo7qu3XkpxBOPJmq3ukj7+YliBGhW1cOObLOzGDRsMAvuuXEJWvXnLETFkoxv8
+         Q69Wo8SRbfI4amDYbNhfVXFxUMkkrHW2OAAjwNRdBrOUZtdlDMqv0Y4mQsUr7rBppSol
+         oX7pM8JxhkqqWSjFcXnPQq6VJNXERuvfYpjK5e/mSSD4vM5yODFwINmQMgsB5jA35GIA
+         AeNxL43IiGYy5FfMMQigLNoQEkdcEkV6NkKDXLkxQvEmwKoPJLs8cIwQfPXlXcXQ+2Ru
+         AJRdMiyfgHFpzxFRKxV+m2GS4OExVCn03K6HBvIM8+ie8Qqs3tEjJfCp2oxT9X1KafVO
+         AYDw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@ventanamicro.com header.s=google header.b="fJY0/oOT";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@ventanamicro.com header.s=google header.b="obTj/T8n";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id cj16-20020a05622a259000b003436a8b7fc2si7127246qtb.709.2022.09.06.02.39.13
+        by mx.google.com with ESMTPS id h22-20020a05620a245600b006bbf5598bb9si8517679qkn.353.2022.09.06.06.48.13
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 06 Sep 2022 02:39:13 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 06 Sep 2022 06:48:13 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@ventanamicro.com header.s=google header.b="fJY0/oOT";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:45848 helo=lists1p.gnu.org)
+       dkim=pass header.i=@ventanamicro.com header.s=google header.b="obTj/T8n";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:50276 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1oVV33-0005eq-3w
-	for alex.bennee@linaro.org; Tue, 06 Sep 2022 05:39:13 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:42552)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1oVYw1-0002Ow-AV
+	for alex.bennee@linaro.org; Tue, 06 Sep 2022 09:48:13 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:49842)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <sunilvl@ventanamicro.com>)
- id 1oVUTX-0001V5-UP
- for qemu-arm@nongnu.org; Tue, 06 Sep 2022 05:02:31 -0400
-Received: from mail-pf1-x42b.google.com ([2607:f8b0:4864:20::42b]:33418)
+ id 1oVXkV-0006ur-8D
+ for qemu-devel@nongnu.org; Tue, 06 Sep 2022 08:32:15 -0400
+Received: from mail-pj1-x102a.google.com ([2607:f8b0:4864:20::102a]:35749)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <sunilvl@ventanamicro.com>)
- id 1oVUTV-00017z-Sm
- for qemu-arm@nongnu.org; Tue, 06 Sep 2022 05:02:31 -0400
-Received: by mail-pf1-x42b.google.com with SMTP id 65so469961pfx.0
- for <qemu-arm@nongnu.org>; Tue, 06 Sep 2022 02:02:28 -0700 (PDT)
+ id 1oVXkS-00066J-Fx
+ for qemu-devel@nongnu.org; Tue, 06 Sep 2022 08:32:14 -0400
+Received: by mail-pj1-x102a.google.com with SMTP id
+ m10-20020a17090a730a00b001fa986fd8eeso14832073pjk.0
+ for <qemu-devel@nongnu.org>; Tue, 06 Sep 2022 05:32:11 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=ventanamicro.com; s=google;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:from:to:cc:subject:date;
- bh=jDJ3xeqr1CKa788xhUrlzCt/huwL/qB60RhDoRSMn5U=;
- b=fJY0/oOTJpJ+R8ZD2uzJ/XHi04QmOOwTDnZCqbi11QAX3wAY9z6WiQdWJvVvU+ABYm
- +iWlLou+7PjCFfLBYPKyarbo1QxMW5t3AVg880SbK73+6DCsYbTdwcbuDsfmus4Srvg2
- eboHkg4/Ew/tU6rNukP1yq6Qoyy3O41uQ6+3dc5B5vGqOdLB7XNsWwkyn+WnyzxQ2wqQ
- K2sX/L0nu2sPoZ0h9n3gmVjoY8UCdtp3SM1Wdn+3vRmoPqi44W57lTSnwfk3N/pnot7G
- EDuVoP+x976hj8JTA3TDpgCSNAcQR2UUkaFUi1wv9dfU80rCXNIS5XqU6WOQmlXxsrKo
- qG4A==
+ h=in-reply-to:content-disposition:mime-version:references:message-id
+ :subject:cc:to:from:date:from:to:cc:subject:date;
+ bh=mOaRI71FQfWA04xw1hixx4MODTWCMqP/3VREdkQGoTQ=;
+ b=obTj/T8nL2vtJfjjzCT6VXoOERiCp+1ugivm4/FUM4PhsjKVXRe38OSQBV4jERCsBp
+ ugGLkBxK943bn9kGeNzx3oTQIjewFzShMkdiDYel004C5o33G0Wk5ljqrPcmpxC/TjWi
+ 4c1znbedjNRguLE3cq1e8rCD/KMM/CV2bH5Vn44p1FjB5vMcM8w3XUbDO/u4DGCNdyBq
+ LdUEv5ladW0YDSch3pSNsyxgUOkFa15BUwL6W/CYoDRKtjbpBNYEReavZbajRqAZvYvT
+ 97OtcOMpZsRxLOOtRTszyQK1D2bK2nQ2hh/sQZnp5Zq5boIlUXC5JREl7qJC2QDRgASE
+ vgXA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:x-gm-message-state:from:to:cc:subject:date;
- bh=jDJ3xeqr1CKa788xhUrlzCt/huwL/qB60RhDoRSMn5U=;
- b=O1qJZAJZyydMERA0HfLN+RS1jMx1KM0MkWfmC86kUXrkpNDOnCs0PBT9LJmkfHOerk
- s3K5MOkm7a5RGc1Je5oqsQXKmBsscbA4OwoA7M9xGj/X8AU+HLlhubaIuSjmePKcrmHh
- i4ZYuCpjDOjpXDhQgZvfNUSGKLimI+Vs1tWRbep0KVsjJF5FWL+S6DPq4VSIKS5x58VK
- ROiVWZAiNTIvl9Cg7mxfdkFUGbAp6tONbvFBWfczPODyYfDzSJNlZFVKT6Jl9G9TMC2T
- RmRldGRWXWtASy6sxDT0VXt6rPOj8uYzgFhTpEnZuCyAq7p/7BB3tddQvaJoAseRyQuk
- jbNA==
-X-Gm-Message-State: ACgBeo3upk31wQKtxY6h8P8z7bOtBwqM1m3wVQymihno1xKKGAYHRFYY
- AwY2YJuQ75vT8qwvd/aRrj5bSHIM90m28Q==
-X-Received: by 2002:a05:6a00:2181:b0:51b:560b:dd30 with SMTP id
- h1-20020a056a00218100b0051b560bdd30mr54702438pfi.44.1662454946918; 
- Tue, 06 Sep 2022 02:02:26 -0700 (PDT)
-Received: from localhost.localdomain ([49.206.11.92])
- by smtp.gmail.com with ESMTPSA id
- t2-20020a17090a2f8200b001fabcd994c1sm11987315pjd.9.2022.09.06.02.02.22
+ h=in-reply-to:content-disposition:mime-version:references:message-id
+ :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date;
+ bh=mOaRI71FQfWA04xw1hixx4MODTWCMqP/3VREdkQGoTQ=;
+ b=OrEnQsdyr/K0vZK7Kvf92GJraZ/G9Nq3AN8zcUZ3iy8ngunE2ekoIFPf3xe3vDf3HZ
+ C7MsYeYd6tPX/6DvQ21KpHrZkKoh/QGo+hT5EwZI98plXhnaN1ZXE0piQJ8vk13V7Y/1
+ t79Fv2H9ml9aJTOFNW42KookL3Rko24731GG85gwr1+ZhG1ZKmOZoUCW6KmQE7wy56G0
+ 4oQWXWEAGFrH9neIlMC+TIUi70jAh45Pxm0H+WrrQyPSMl24QFwCOodjywLCWFSl0N2W
+ qvDXBeyZ8O8+/GhLVELenivL++eJrOFNvwAN/NWA7GLf3JJgsumLlos9737Frl3yoNMM
+ I8Yw==
+X-Gm-Message-State: ACgBeo15LUub/3YnvNOeuSHpPBXP0zrpDGoQAOK/CjQLnypriyuNWvaU
+ JiJhhU3xYiXpBwqHloQEKbPQFw==
+X-Received: by 2002:a17:90a:9409:b0:200:52d9:660d with SMTP id
+ r9-20020a17090a940900b0020052d9660dmr11901049pjo.62.1662467531040; 
+ Tue, 06 Sep 2022 05:32:11 -0700 (PDT)
+Received: from sunil-laptop ([49.206.11.92]) by smtp.gmail.com with ESMTPSA id
+ v13-20020a17090a00cd00b001fa80cde150sm12368806pjd.20.2022.09.06.05.32.03
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 06 Sep 2022 02:02:26 -0700 (PDT)
+ Tue, 06 Sep 2022 05:32:10 -0700 (PDT)
+Date: Tue, 6 Sep 2022 18:02:00 +0530
 From: Sunil V L <sunilvl@ventanamicro.com>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org,
-	qemu-riscv@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Xiaojuan Yang <yangxiaojuan@loongson.cn>, Song Gao <gaosong@loongson.cn>,
- Gerd Hoffmann <kraxel@redhat.com>, Palmer Dabbelt <palmer@dabbelt.com>,
+To: Gerd Hoffmann <kraxel@redhat.com>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, qemu-riscv@nongnu.org,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Xiaojuan Yang <yangxiaojuan@loongson.cn>,
+ Song Gao <gaosong@loongson.cn>, Palmer Dabbelt <palmer@dabbelt.com>,
  Alistair Francis <alistair.francis@wdc.com>,
  Bin Meng <bin.meng@windriver.com>, Andrew Jones <ajones@ventanamicro.com>,
  Anup Patel <apatel@ventanamicro.com>,
  Atish Kumar Patra <atishp@rivosinc.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
- Sunil V L <sunilvl@ventanamicro.com>
-Subject: [PATCH V4 0/3] hw/riscv: virt: Enable booting S-mode firmware from
- pflash
-Date: Tue,  6 Sep 2022 14:32:16 +0530
-Message-Id: <20220906090219.412517-1-sunilvl@ventanamicro.com>
-X-Mailer: git-send-email 2.25.1
+ Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+Subject: Re: [PATCH V4 0/3] hw/riscv: virt: Enable booting S-mode firmware
+ from pflash
+Message-ID: <20220906123200.GA237800@sunil-laptop>
+References: <20220906090219.412517-1-sunilvl@ventanamicro.com>
+ <20220906104128.zlwzvbbswlzyplkc@sirius.home.kraxel.org>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::42b;
- envelope-from=sunilvl@ventanamicro.com; helo=mail-pf1-x42b.google.com
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20220906104128.zlwzvbbswlzyplkc@sirius.home.kraxel.org>
+Received-SPF: pass client-ip=2607:f8b0:4864:20::102a;
+ envelope-from=sunilvl@ventanamicro.com; helo=mail-pj1-x102a.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -114,94 +116,53 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: /cC4xOHAvuGy
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: BGyQk7XWKcvi
 
-This series adds the support to boot S-mode FW like EDK2 from the flash. The
-S-mode firmware should be kept in pflash unit 1.
+Hi Gerd,
 
-When -kernel (and -initrd) option is also provided along with the flash,
-the kernel (and initrd) will be loaded into fw_cfg table and opensbi will
-branch to the flash address which will be the entry point of the S-mode
-firmware. The S-mode FW then loads and launches the kernel.
+On Tue, Sep 06, 2022 at 12:41:28PM +0200, Gerd Hoffmann wrote:
+>   Hi,
+> 
+> > 3)Make the EDK2 image size to match with what qemu flash expects
+> > truncate -s 32M Build/RiscVVirt/DEBUG_GCC5/FV/RISCV_VIRT.fd
+> 
+> Hmm, we have that kind of padding on arm too (64M for code and 64M for
+> vars) and only a fraction of the space is actually used, which isn't
+> exactly ideal.  So not sure it is a good plan to repeat that on riscv.
 
-When only -pflash option is provided in the command line, the kernel
-will be located and loaded in the usual way by the S-mode firmware.
+Yeah.. but it looks like limitation from qemu flash emulation. Do you mean
+this limitation exists for arm in general on real flash also?
 
-These patches are available in below branch.
-https://github.com/vlsunil/qemu/tree/pflash_v2
+> 
+> Also: Do you have support for persistent efi variables?  If that is the
+> case then it makes sense to have separate pflash devices for code and
+> variable store.  First because you can map the code part read-only then,
+> and second because decoupling code + vars to separate files allows easy
+> firmware code updates without loosing the variable store.
 
-The first two patches in this series are refactor patches.
+Yes, we have persistent variables in my WIP branch. We can easily make it
+to create variables as separate file in EDK2. But we will need to
+enhance qemu virt machine to create more than 2 flash since the first
+one is currently reserved for machine mode firmware. This is a
+good input to enhance it in future.
 
-These changes are tested with a WIP EDK2 port for virt machine. Below
-are the instructions to build and test this feature.
+Thanks!
+Sunil
 
-1) Get EDK2 sources from below branches.
-https://github.com/vlsunil/edk2/tree/virt_refactor_smode_v1
-https://github.com/vlsunil/edk2-platforms/tree/virt_refactor_smode_v1
-
-2) Build EDK2 for RISC-V
-	export WORKSPACE=`pwd`
-        export GCC5_RISCV64_PREFIX=riscv64-linux-gnu-
-        export PACKAGES_PATH=$WORKSPACE/edk2:$WORKSPACE/edk2-platforms
-        export EDK_TOOLS_PATH=$WORKSPACE/edk2/BaseTools
-        source edk2/edksetup.sh
-        make -C edk2/BaseTools clean
-        make -C edk2/BaseTools
-        make -C edk2/BaseTools/Source/C
-        source edk2/edksetup.sh BaseTools
-        build -a RISCV64  -p Platform/Qemu/RiscVVirt/RiscVVirt.dsc -t GCC5
-
-3)Make the EDK2 image size to match with what qemu flash expects
-truncate -s 32M Build/RiscVVirt/DEBUG_GCC5/FV/RISCV_VIRT.fd
-
-4) Run
-a) Boot to EFI shell (no -kernel / -initrd option)
-qemu-system-riscv64  -nographic   -drive file=Build/RiscVVirt/DEBUG_GCC5/FV/RISCV_VIRT.fd,if=pflash,format=raw,unit=1  -machine virt -M 2G
-
-b) With -kernel, -initrd and -pflash
-qemu-system-riscv64  -nographic   -drive file=Build/RiscVVirt/DEBUG_GCC5/FV/RISCV_VIRT.fd,if=pflash,format=raw,unit=1  -machine virt -M 2G -kernel arch/riscv/boot/Image.gz -initrd rootfs.cpio 
-
-
-Changes since V3:
-	1) White space and comment edits
-	2) Added RB tag
-
-Changes since V2:
-	1) Moved the doc comment to .h file
-
-Changes since V1:
-	1) Modified code to support the use case when both -kernel and -pflash are configured.
-	2) Refactor patches added to help (1) above.
-	3) Cover letter added with test instructions.
-
-
-Sunil V L (3):
-  hw/arm,loongarch: Move load_image_to_fw_cfg() to common location
-  hw/riscv: virt: Move create_fw_cfg() prior to loading kernel
-  hw/riscv: virt: Enable booting S-mode firmware from pflash
-
- hw/arm/boot.c             | 49 ---------------------------------------
- hw/loongarch/virt.c       | 33 --------------------------
- hw/nvram/fw_cfg.c         | 32 +++++++++++++++++++++++++
- hw/riscv/boot.c           | 29 +++++++++++++++++++++++
- hw/riscv/virt.c           | 32 ++++++++++++++++++-------
- include/hw/nvram/fw_cfg.h | 21 +++++++++++++++++
- include/hw/riscv/boot.h   |  1 +
- 7 files changed, 107 insertions(+), 90 deletions(-)
-
--- 
-2.25.1
-
+> 
+> take care,
+>   Gerd
+> 

@@ -1,106 +1,120 @@
-Received: by 2002:a17:906:1c87:0:0:0:0 with SMTP id g7csp3389003ejh;
-        Wed, 7 Sep 2022 00:11:11 -0700 (PDT)
-X-Google-Smtp-Source: AA6agR6xj7u2TuCetbHpC3PVIYTu16BHh8Lg8nVgwS3lwg+FuIIdYtJ9JHn7iQFb5H2AO08rhQNY
-X-Received: by 2002:ae9:e30f:0:b0:6bb:868:c7d8 with SMTP id v15-20020ae9e30f000000b006bb0868c7d8mr1718591qkf.25.1662534670928;
-        Wed, 07 Sep 2022 00:11:10 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1662534670; cv=none;
+Received: by 2002:a17:906:1c87:0:0:0:0 with SMTP id g7csp3444093ejh;
+        Wed, 7 Sep 2022 02:30:52 -0700 (PDT)
+X-Google-Smtp-Source: AA6agR6W4j4KdOEa0QijEE4LyP5QZMPPFT0TDv2Ec+FSoRBFe1vGAl73skWBVKQwrOQo+kPBVH51
+X-Received: by 2002:a05:6214:2625:b0:4a6:ca62:ed1d with SMTP id gv5-20020a056214262500b004a6ca62ed1dmr2159660qvb.126.1662543052622;
+        Wed, 07 Sep 2022 02:30:52 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1662543052; cv=none;
         d=google.com; s=arc-20160816;
-        b=YQN4yvfSD4wV4iAflEmIevCOmk8pIMkfe3QZO4ZrD3TngrPAmWfIG3Dffu513EVuwa
-         2yFJABkK984+484y59Rv/N7hoRBu6nWRr90/LAv4veQwcnkbFmFvvkDK/XaGRH9eDBnP
-         1BK8i+7+Sx7xtXBTrNfeKynCSRJ4mUYZ0cBFR6nDD6xlnUBauHx6FL49G4q8ZNkC37Zi
-         6URwQ9tphhGPHE2Pup18+NnLV2r+fWOXSVA6xbkra/RnA6yfsx1VuA3sWEJZenKesK5d
-         nL/N4+gA2583ydeuNipAe3urDxYviTncZlXPK5WLyZFmL7ts5WRLKplP05Wu0jPurlGg
-         gDyQ==
+        b=EkBpKqhL28dUfCje8bo81liCibcho6OvwUgDGxCPKiIdUqGuV/5uC6d8WWAclwLE/9
+         TqV1bTIaCT9NkO73o4aekOesZFyKem1FiLDo6HdOPX0xzUVEUP9WxWEZnnwb2f8y69c4
+         RsY3FghwftsJPbYoud+smtJE9WMebcg6vnC483andZCUMo0cysS86e+cmfmLkfGMKK1O
+         QQcvGSHYgn2P7X2+YXTbpW+Ingw+yHaDfFuE8tAfaLN8+vX+jaJz63+jfaaVEc0mfkgc
+         5Mg/q0EJi5a8b3u68BPWqbBYJHi5YEaign82fzGwWftywPld2LpgRcpsIsA2/j3Vtu1B
+         tg6Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :dkim-signature;
-        bh=ye84sSO4TJJGNbJlw+HOZp0V+DuC21ZtM5EaaO1Apb0=;
-        b=Yjri0OaGCIWsq/wrNliT3SSdTLbpQarYV/pHEdNS8kl+RfX9JbkdOPDcnXyk7Z0QOx
-         XoNugTZhralHg6oWI9sm9VTy6MCXuM9W7P9vTEkz/CrAKPyS1cL5vVGPG9kOITrch27R
-         NdlsbMcvRbPMxiHf4BL2oMFE9mbY0+W5crfbEplJg9YEzodB3ZQKmR6JsHXGajtyLGju
-         em+0nWd4iRZplAyxFurn7CRfhS8pQ6kZG825Dyw4C/jfJvOQFwuouen3wqxBX8NBP6oW
-         OLoF3S2stOgrVIbTh2U9TONBbSVYgvLWYxioPOFzSuucTrL87cTnhtPgk/T1bjQWoZPO
-         c1Cw==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:subject:cc:to:from
+         :date:dkim-signature;
+        bh=RrdgRzO+9vuuDVrxe9Vg3KClkEjhrgjJV8KIscv2ido=;
+        b=BT/xyJMXEHkYeLB+GKF2/OLpeFjCINaL/X+VQbtjpGJvZkjx+y79Q4F+1C2LV8r3gv
+         inhIf/ZaHxlVN3C/AYKdHODHeALQOVHz+Vg4Tj7Q9BacgOrcK9gIuKE7yJcQRbea6aV0
+         IDXpAn4OuNEAWzc5qLVvVBDrXKu5jebtKT/43ts7rMV+vqLlGRyRS/4DiWnC8ajg+tAh
+         T3Dcs3Wm/kuayIGuyXWT9MvEkFV6Y7J/vc+DzrdzE+2khEsNYJUZlCne0JUbXA9kXU//
+         7HpJ5BXkydzeWJDOab7gxfrbLBeOx1sRR0XCai62kaEBGcM7ejKMruNo3pcZo4OUovXN
+         LsHQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=cm3Q0sL+;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=L5Dcj8Qe;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id l3-20020ae9f003000000b006bc65379d9fsi7363156qkg.144.2022.09.07.00.11.10
+        by mx.google.com with ESMTPS id j10-20020a05622a038a00b0031f0126d2f4si10009901qtx.4.2022.09.07.02.30.52
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 07 Sep 2022 00:11:10 -0700 (PDT)
+        Wed, 07 Sep 2022 02:30:52 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=cm3Q0sL+;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=L5Dcj8Qe;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:40708 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:55384 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1oVpDK-0002vk-FZ
-	for alex.bennee@linaro.org; Wed, 07 Sep 2022 03:11:10 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:60562)
+	id 1oVrOS-000389-Oe
+	for alex.bennee@linaro.org; Wed, 07 Sep 2022 05:30:50 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:42900)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1oVpCx-0002tB-Vb
- for qemu-arm@nongnu.org; Wed, 07 Sep 2022 03:10:47 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:55326)
+ (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
+ id 1oVqnN-0006Ux-TB
+ for qemu-arm@nongnu.org; Wed, 07 Sep 2022 04:52:30 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:23609)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1oVpCw-00050f-AX
- for qemu-arm@nongnu.org; Wed, 07 Sep 2022 03:10:47 -0400
+ (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
+ id 1oVqnK-0003Sj-FF
+ for qemu-arm@nongnu.org; Wed, 07 Sep 2022 04:52:28 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1662534645;
+ s=mimecast20190719; t=1662540744;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=ye84sSO4TJJGNbJlw+HOZp0V+DuC21ZtM5EaaO1Apb0=;
- b=cm3Q0sL+N3FZUkVYrO0kI8qmrj05ihTv5oolV2qcwQk8C6GSALSUIdfzuiC/8YsPpGXLI7
- ZuXmQz+Ka7sXJLRoimEwr+TIqOQbfIsMAMC/KPXMnYTZBkuZddP3NsIbocMQZedyuFeKDR
- X8eCvpOLRX0HDomndva8jkL5OEKFAjA=
-Received: from mimecast-mx02.redhat.com (mx3-rdu2.redhat.com
- [66.187.233.73]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-554-x_8PSx0POoqBkZY72XfdGA-1; Wed, 07 Sep 2022 03:10:40 -0400
-X-MC-Unique: x_8PSx0POoqBkZY72XfdGA-1
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.rdu2.redhat.com
- [10.11.54.3])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 6EC202999B4E;
- Wed,  7 Sep 2022 07:10:39 +0000 (UTC)
-Received: from sirius.home.kraxel.org (unknown [10.39.195.70])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 9DA7F1121314;
- Wed,  7 Sep 2022 07:10:38 +0000 (UTC)
-Received: by sirius.home.kraxel.org (Postfix, from userid 1000)
- id 2FA23180039B; Wed,  7 Sep 2022 09:10:37 +0200 (CEST)
-Date: Wed, 7 Sep 2022 09:10:37 +0200
-From: Gerd Hoffmann <kraxel@redhat.com>
-To: Sunil V L <sunilvl@ventanamicro.com>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, qemu-riscv@nongnu.org,
- Peter Maydell <peter.maydell@linaro.org>,
- Xiaojuan Yang <yangxiaojuan@loongson.cn>,
- Song Gao <gaosong@loongson.cn>, Palmer Dabbelt <palmer@dabbelt.com>,
- Alistair Francis <alistair.francis@wdc.com>,
- Bin Meng <bin.meng@windriver.com>, Andrew Jones <ajones@ventanamicro.com>,
- Anup Patel <apatel@ventanamicro.com>,
- Atish Kumar Patra <atishp@rivosinc.com>,
- Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
- Pawel Polawski <ppolawsk@redhat.com>
-Subject: Re: [PATCH V4 0/3] hw/riscv: virt: Enable booting S-mode firmware
- from pflash
-Message-ID: <20220907071037.tnnewqhi5v2xmiln@sirius.home.kraxel.org>
-References: <20220906090219.412517-1-sunilvl@ventanamicro.com>
- <20220906104128.zlwzvbbswlzyplkc@sirius.home.kraxel.org>
- <20220906123200.GA237800@sunil-laptop>
+ bh=RrdgRzO+9vuuDVrxe9Vg3KClkEjhrgjJV8KIscv2ido=;
+ b=L5Dcj8QeLwnUODmf2LLdEumiKQBRd6KYn/7+GjjcaYRJZ3Hn4uC4ZAIGePfQMV9oMuBt5V
+ g0mZ7ix9DKweIQEGLwSTnaIfCAqOc1iyFjeQd5PH5XGh7umMwIcuy+09Zp3Bn9zRhhzpVt
+ WyM261YuU5IWwmnlof6XhQiMKh3T860=
+Received: from mail-ej1-f69.google.com (mail-ej1-f69.google.com
+ [209.85.218.69]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_128_GCM_SHA256) id
+ us-mta-605-jLb8CCD8OqqjU4KfhC82TA-1; Wed, 07 Sep 2022 04:52:23 -0400
+X-MC-Unique: jLb8CCD8OqqjU4KfhC82TA-1
+Received: by mail-ej1-f69.google.com with SMTP id
+ xc12-20020a170907074c00b007416699ea14so4572445ejb.19
+ for <qemu-arm@nongnu.org>; Wed, 07 Sep 2022 01:52:23 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
+ :subject:date;
+ bh=RrdgRzO+9vuuDVrxe9Vg3KClkEjhrgjJV8KIscv2ido=;
+ b=oALuIuYzU2ki0K2Cc6EdJaci9Qr1/iQFhmf6ZTccqGpC+hML48S82VD3bPJjCqfkcI
+ ilCEqmOE0FZeyo952IhAZN9I1jLVjJCYjT4wUzuzJKWZTlHDZBNifECZ0F3mZjeDjBcm
+ 2Ge9oroY09hugrMNRuFeFhLUJRB2vjappSLhRgert3EVqBFJqGs9w7i5oA4oEHwP8mDe
+ xC7TzP3ygBKM12DeSC1Czmiz7v80MpP5sHjmVESpA58praIZX5O3FyZDmDnavHwNrMlU
+ Oy1G7CJFmNX6qtLjp0sajY2bxgAY6aX2CJqA73jPJ7/yYrtsvi6g3pJy5jjiStndnhwj
+ 7/lw==
+X-Gm-Message-State: ACgBeo1eBgQB8FuWvjOw9+HL/q6ChCvZCalbVJe8fiV0IklAcjxS3Xp3
+ UyET8fQC5ecdFRddxXIO4wTInnFnK3HL7cT/0Mm02gvl0kq/uWNdoxls4cI9QOVZGg+7KJtEuTS
+ eFoMX5U3tb29y
+X-Received: by 2002:a05:6402:190d:b0:447:ed22:4d0d with SMTP id
+ e13-20020a056402190d00b00447ed224d0dmr2253200edz.309.1662540742577; 
+ Wed, 07 Sep 2022 01:52:22 -0700 (PDT)
+X-Received: by 2002:a05:6402:190d:b0:447:ed22:4d0d with SMTP id
+ e13-20020a056402190d00b00447ed224d0dmr2253180edz.309.1662540742305; 
+ Wed, 07 Sep 2022 01:52:22 -0700 (PDT)
+Received: from localhost (nat-pool-brq-t.redhat.com. [213.175.37.10])
+ by smtp.gmail.com with ESMTPSA id
+ bf18-20020a0564021a5200b0044e9a3690e0sm5077099edb.9.2022.09.07.01.52.21
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 07 Sep 2022 01:52:21 -0700 (PDT)
+Date: Wed, 7 Sep 2022 10:52:20 +0200
+From: Igor Mammedov <imammedo@redhat.com>
+To: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
+Cc: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>,
+ <peter.maydell@linaro.org>, <lersek@redhat.com>, <linuxarm@huawei.com>,
+ <chenxiang66@hisilicon.com>, kraxel@redhat.com
+Subject: Re: [PATCH] fw_cfg: Don't set callback_opaque NULL in
+ fw_cfg_modify_bytes_read()
+Message-ID: <20220907105220.3f54efb3@redhat.com>
+In-Reply-To: <20220825161842.841-1-shameerali.kolothum.thodi@huawei.com>
+References: <20220825161842.841-1-shameerali.kolothum.thodi@huawei.com>
+X-Mailer: Claws Mail 4.1.0 (GTK 3.24.34; x86_64-redhat-linux-gnu)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20220906123200.GA237800@sunil-laptop>
-X-Scanned-By: MIMEDefang 2.78 on 10.11.54.3
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=kraxel@redhat.com;
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=imammedo@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -27
 X-Spam_score: -2.8
@@ -123,52 +137,81 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: PWtmnwcyzd46
+X-TUID: aJmmkuYfxXUE
 
-On Tue, Sep 06, 2022 at 06:02:00PM +0530, Sunil V L wrote:
-> Hi Gerd,
-> 
-> On Tue, Sep 06, 2022 at 12:41:28PM +0200, Gerd Hoffmann wrote:
-> >   Hi,
-> > 
-> > > 3)Make the EDK2 image size to match with what qemu flash expects
-> > > truncate -s 32M Build/RiscVVirt/DEBUG_GCC5/FV/RISCV_VIRT.fd
-> > 
-> > Hmm, we have that kind of padding on arm too (64M for code and 64M for
-> > vars) and only a fraction of the space is actually used, which isn't
-> > exactly ideal.  So not sure it is a good plan to repeat that on riscv.
-> 
-> Yeah.. but it looks like limitation from qemu flash emulation. Do you mean
-> this limitation exists for arm in general on real flash also?
+On Thu, 25 Aug 2022 17:18:42 +0100
+Shameer Kolothum <shameerali.kolothum.thodi@huawei.com> wrote:
 
-Well, at least on x86 flash devices can have odd sizes.  I don't think
-the qemu pflash emulation dictates anything here.
+> Hi
+>=20
+> On arm/virt platform, Chen Xiang reported a Guest crash while
+> attempting the below steps,
+>=20
+> 1. Launch the Guest with nvdimm=3Don
+> 2. Hot-add a NVDIMM dev
+> 3. Reboot
+> 4. Guest boots fine.
+> 5. Reboot again.
+> 6. Guest boot fails.
+>=20
+> QEMU_EFI reports the below error:
+> ProcessCmdAddPointer: invalid pointer value in "etc/acpi/tables"
+> OnRootBridgesConnected: InstallAcpiTables: Protocol Error
+>=20
+> Debugging shows that on first reboot(after hot-adding NVDIMM),
+> Qemu updates the etc/table-loader len,
+>=20
+> qemu_ram_resize()
+> =C2=A0 fw_cfg_modify_file()
+> =C2=A0 =C2=A0 =C2=A0fw_cfg_modify_bytes_read()
+>=20
+> And in fw_cfg_modify_bytes_read() we set the "callback_opaque" for
+> the "key" entry to NULL. Because=C2=A0of this, on the second reboot,
+> virt_acpi_build_update() is called with a NULL "build_state" and
+> returns without updating the ACPI tables. This seems to be=20
+> upsetting the firmware.
+>=20
+> To fix this, don't change the callback_opaque in fw_cfg_modify_bytes_read=
+().
 
-I think the underlying problem we actually have in qemu is that the
-flash size indirectly dictates the memory layout.  We pack the flash
-devices next to each other, on x86 downwards from 4G, on arm upwards
-from zero, not sure what risc-v is dong here.
+Fixes: bdbb5b1706d165 ("fw_cfg: add fw_cfg_machine_reset function")
+Acked-by: Igor Mammedov <imammedo@redhat.com>
 
-edk2 arm code expects the variable store being mapped at 64m.  So
-QEMU_EFI.fd (which is actually 2M in size) gets padded to 64m, which
-has the desired effect that the next flash device (the varstore) is
-mapped at 64m.  But also has the side effect that we map 62m of zeros
-into the guest address space ...
+CCing Gerd to have a second set of eyes on it
 
-The vars file is padded to 64m for consistency with the code.  Not
-padding the vars file should have no bad side effects I think, except
-for live migration where the flash size change might cause
-compatibility problems.
+> Reported-by: chenxiang <chenxiang66@hisilicon.com>
+> Signed-off-by: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
+> ---
+> I am still not very convinced this is the root cause of the issue.
+> Though it looks like setting callback_opaque to NULL while updating
+> the file size is wrong, what puzzles me is that on the second reboot
+> we don't have any ACPI table size changes and ideally firmware should
+> see the updated tables from the first reboot itself.
+>=20
+> Please take a look and let me know.
+>=20
+> Thanks,
+> Shameer
+>=20
+> ---
+>  hw/nvram/fw_cfg.c | 1 -
+>  1 file changed, 1 deletion(-)
+>=20
+> diff --git a/hw/nvram/fw_cfg.c b/hw/nvram/fw_cfg.c
+> index d605f3f45a..dfe8404c01 100644
+> --- a/hw/nvram/fw_cfg.c
+> +++ b/hw/nvram/fw_cfg.c
+> @@ -728,7 +728,6 @@ static void *fw_cfg_modify_bytes_read(FWCfgState *s, =
+uint16_t key,
+>      ptr =3D s->entries[arch][key].data;
+>      s->entries[arch][key].data =3D data;
+>      s->entries[arch][key].len =3D len;
+> -    s->entries[arch][key].callback_opaque =3D NULL;
 
-Not padding the code file needs some alternative way to specify the
-memory layout, to make sure the vars flash continues to be mapped at
-64m even when the code flash is smaller.  Cc'ed Pawel who investigates
-that right now.
+>      s->entries[arch][key].allow_write =3D false;
 
-One possible option is to just hard-code the flash memory layout per
-machine type or per architecture.  Another option would be to add
-some way to configure that on the command line.
+As Christian have mentioned, this also looks bogus.
+perhaps another patch to fix that as well.
 
-take care,
-  Gerd
+>      return ptr;
 

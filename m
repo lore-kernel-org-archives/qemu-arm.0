@@ -1,90 +1,90 @@
-Received: by 2002:a17:906:1c87:0:0:0:0 with SMTP id g7csp230247ejh;
-        Thu, 8 Sep 2022 03:28:34 -0700 (PDT)
-X-Google-Smtp-Source: AA6agR75irW/uhug+rRVT/baOF8/R+h9mOiAoUC49fW0KyoFM2jsFR2ArBNYxbL8JLx7Q37Y52Xj
-X-Received: by 2002:ac8:5710:0:b0:343:5fa9:b707 with SMTP id 16-20020ac85710000000b003435fa9b707mr6897250qtw.192.1662632914568;
-        Thu, 08 Sep 2022 03:28:34 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1662632914; cv=none;
+Received: by 2002:a17:906:1c87:0:0:0:0 with SMTP id g7csp237402ejh;
+        Thu, 8 Sep 2022 03:45:27 -0700 (PDT)
+X-Google-Smtp-Source: AA6agR6vVEQgGjES6wVnAtF5HqlMw1X2PBuytrzfvjw386XpfYJ+DydEsR9CtdkBdWkGszLrAQeT
+X-Received: by 2002:ac8:57c7:0:b0:344:55d9:dcd7 with SMTP id w7-20020ac857c7000000b0034455d9dcd7mr7302516qta.162.1662633927601;
+        Thu, 08 Sep 2022 03:45:27 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1662633927; cv=none;
         d=google.com; s=arc-20160816;
-        b=v/VX34hNMaho5xeBC93FBbeXfI+F7D4DPFlsfMAgkwJW1u9dImKFIr4GDjJMA93Pw9
-         VHB3ETOZOq+dOz3BNUvyv3JB49tIIgC1sAwdkTkXR8GUEnMK7szTx3dKwANKHCTngHJe
-         5l5RV/GCX1ClyQgmh8jmjEGmZfxto3jcuTrTKSjCINAqOlQHG1yoLwyA9ZggfyImToj8
-         A/TgvC9pAzt69mqR4tRfQTrTapuu5GCs2hlGxinD3CRlrGOmeWRqTSxjxjOsQP1YCUZB
-         WL4Q4mg1VQCHEQF+ABgRT3jzQ3lGG4ffm9piVcQIIjHxDlfR+0c4b8ky3T5aTKwPdXJq
-         Bhig==
+        b=LNRs9n+Sua5kagHGtLY5tvpqQVdIFV7s9MaAyWL9aS4R+5gUMCnmfz5NVZrRrREoIS
+         FHzHoQG/+LIfur4GOWP+87RBi6SvWozZNYtfMFrYZQvEtlPPu80VBHmyMG1s/pvu5ZPX
+         SOWUapZJEsRy8ix71+Ogz2K8O8aXi2vdA4th2q+L+IyCGmR5lvB6CYwZ5we2ZfkcAL59
+         Cdog+Rfes2YDeruYwVpxRaBiVUFvqtR2p22NtHTSe6Mc8v0awI+dhGVNOIUtVGnYbnuL
+         tt7Sj1KdlaPpVzCo4/IThmv4PPp4z0q4gj3ZI2VX3gML5/GrXFBO8HTuqlMgR8gYnB7v
+         9ECw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
          :mime-version:references:message-id:subject:cc:to:from:date
          :dkim-signature;
-        bh=Sbg1DxqdC5ouknAXHnYuqv1U0ABwaFQ0dmKuJ5LjuAY=;
-        b=UVUr0w+nhZRgpdibDhjVb0xZ0JqXID9L/8r+moXgIFRIQd0HUhirfMIgGMhtoya9Wj
-         CMVfpWolajDsIz7qnHMcYmopnvATiOSyI6npepOB+B/QVKMTdJo0GKkaIM1Iw3KD4SjS
-         AZCNU4R21x8FWrUWH0+Jovh/SX09r/RTm3gIdaz/k0NRYWtyX8YkW3ekgTrYbPDrINtO
-         UH87+8T1v02vIlpHmdI0LcY8ksqzIPG30Vzq/vvEJLu1+femJMnT8RVE1lqCgAF0kiJQ
-         FALG1pRQca+3yQqzo+sU5XNRc8rgLaatHCh7go7RAuIxM3O0b2TXrSWz0KI7T6a+Toal
-         jI3g==
+        bh=adJDRS6AMKloAvz10NEIG932vsL+jMGhzDfJoNsC4Z0=;
+        b=D7xR5PR6asKNHbndHJU9RrU0y7MV++K4vGmQIZbE9d4G7lzATKQVz4ueUPkM4XOsLm
+         C0NlxZ3ndyBVHC2RbmTtDkXkGI3yrAbnctijLPleyKgOkMMOn09lD/O416QqD6HugySM
+         trMNoXFoTlofKs2LhKNgvwNKvxfE9wDqR3yGqUP1KCSH+rcon/WXe6KJNiDoOV62FFaO
+         t8anxMixwBCv5XbUwZ4F+7vI4NT8JCqUYDsX7WS0KSZlWR+9sbo7kWMmWKF0uXg9f1Ng
+         wr7JL9R4FTNDj9bljVTpQpfOPieZvTV3tB7yyu/gBKHqPBTNSY9TjasfkdDzTLrm4T40
+         ixHQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@ventanamicro.com header.s=google header.b=Knix+SyI;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@ventanamicro.com header.s=google header.b=QuT3bmA4;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 1-20020a05621420c100b004a909c4b69fsi6049096qve.368.2022.09.08.03.28.34
+        by mx.google.com with ESMTPS id o2-20020a37be02000000b006bb286a68d5si8957667qkf.111.2022.09.08.03.45.27
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 08 Sep 2022 03:28:34 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 08 Sep 2022 03:45:27 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@ventanamicro.com header.s=google header.b=Knix+SyI;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:60394 helo=lists1p.gnu.org)
+       dkim=pass header.i=@ventanamicro.com header.s=google header.b=QuT3bmA4;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:47920 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1oWElu-0002wO-2m
-	for alex.bennee@linaro.org; Thu, 08 Sep 2022 06:28:34 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:42260)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1oWF2F-0001ek-23
+	for alex.bennee@linaro.org; Thu, 08 Sep 2022 06:45:27 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:32820)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <sunilvl@ventanamicro.com>)
- id 1oWEj9-0008Sg-GS
- for qemu-devel@nongnu.org; Thu, 08 Sep 2022 06:25:44 -0400
-Received: from mail-pg1-x536.google.com ([2607:f8b0:4864:20::536]:40449)
+ id 1oWF1L-0000dO-8b
+ for qemu-arm@nongnu.org; Thu, 08 Sep 2022 06:44:31 -0400
+Received: from mail-pg1-x52a.google.com ([2607:f8b0:4864:20::52a]:36464)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <sunilvl@ventanamicro.com>)
- id 1oWEj6-0002Qn-LD
- for qemu-devel@nongnu.org; Thu, 08 Sep 2022 06:25:43 -0400
-Received: by mail-pg1-x536.google.com with SMTP id r17so3854097pgr.7
- for <qemu-devel@nongnu.org>; Thu, 08 Sep 2022 03:25:37 -0700 (PDT)
+ id 1oWF17-0005X2-PP
+ for qemu-arm@nongnu.org; Thu, 08 Sep 2022 06:44:30 -0400
+Received: by mail-pg1-x52a.google.com with SMTP id s206so16346374pgs.3
+ for <qemu-arm@nongnu.org>; Thu, 08 Sep 2022 03:44:17 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=ventanamicro.com; s=google;
  h=in-reply-to:content-disposition:mime-version:references:message-id
  :subject:cc:to:from:date:from:to:cc:subject:date;
- bh=Sbg1DxqdC5ouknAXHnYuqv1U0ABwaFQ0dmKuJ5LjuAY=;
- b=Knix+SyIxVOQ3dO0znMOAd5fl4jkGAu+I04zwwNMctcWUklZbIvfG98jz2Y0PMvRS/
- n7jYAX2g8wLiZlMP1jZvkdIvtTBSoGkVJeKWyQvBsJPlb699Yhot7cR8U7CESx6sstXk
- ToibvcMYghvamjzPhZ2O5hE7PUQ+8C12JqLSmTDx5ZwDebFZloVs+cmuoJEcuiDQaPgz
- 7wasQOwCd7Dx+uXJ5D6l8JeV4jmCuEIQ5ujE65l1kaG1o6Qqxp3n/NThvukh/VMx8fnf
- b88yExytGRovRl4Ny1iMPJFc29QDERrbeQpOijRCiSThcc5Hku2xwEijQBMiSh4sZ6v0
- TOcA==
+ bh=adJDRS6AMKloAvz10NEIG932vsL+jMGhzDfJoNsC4Z0=;
+ b=QuT3bmA4RvBeRsXhpSFAtGahPp0e7LiEjC5lxn3cWRNZj5ht83rZOix3GjxQw6whq1
+ 28YZug29Rd++JklEPc4Hhs/PAtEc+BCZRJhyrEUUWyirOV/fctwav28TGzf/VuuU0eKJ
+ aOnZMXnUb30TlyHC9uOSs2YTFO7SogBIhqP3LubTtpaJNxeQ2wyBBjGfM+kcLMnhMwGd
+ jcP88KRe8RxgHld2vbxpHzIp19B+bABVrrb9dWcZv1588W76K3ceaHYNlPfBELxj9qQf
+ mjerGvtZPOP4DvkXUgC6WyA0gr6hat0Le2Snz8/Wk85SaQ3xcCk2qoTYZfFzwU/KPbSk
+ NXKQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=in-reply-to:content-disposition:mime-version:references:message-id
  :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date;
- bh=Sbg1DxqdC5ouknAXHnYuqv1U0ABwaFQ0dmKuJ5LjuAY=;
- b=3QwSG7sX7oRU6noemyDLKQfy+z5afHmYtkQt0967VTZwyeEgQiLSFkjfatMNStpwDc
- eYLEdUV+NtRnv6juWjlgo6n9qzVtCqc9y0+T+tmo/vpzOCrmCEjZNbDMVTqTsor1pkR3
- rZ0/OPtGY2RbEVea1UbVYmd/lepURaAiY3krrX2i/vcX4Okj/GSuKVs/H25T2xVkEV2h
- A7Ywbk0KbWGW8A9fRUd6O+h1VMN1aJhRZCWM8k02w76Lnp/d3yX44mJwH4jatiYRGSXy
- +A9Z0F0IFtDDir+oj3Ts2CTDLCTve7K2v8FdSQ/cfdngRusNQ7GkTJ8A1VhU2XPjBIR2
- vvuw==
-X-Gm-Message-State: ACgBeo1JyqVT/pKdWipLpKXtQ2qpSJMGEv05Bo813rI1nREwisTH6JHj
- ixgxJQWC8YJdPWgB5C1eelnr/w==
-X-Received: by 2002:a63:2fc7:0:b0:42c:3683:7e50 with SMTP id
- v190-20020a632fc7000000b0042c36837e50mr7457403pgv.534.1662632736087; 
- Thu, 08 Sep 2022 03:25:36 -0700 (PDT)
+ bh=adJDRS6AMKloAvz10NEIG932vsL+jMGhzDfJoNsC4Z0=;
+ b=EW6LKkC7byfuh/k4sKZ17PaRrwfmmP8aY2WXOCxX1uUVoVUIYsgQ9SQQ+tCWaW6bdx
+ 7+9CdovHTiKg8olROWf/w9aQad3pa/KxbdREp0k/zQVn4ZBrrRpEiU+pWgH7LHLQoRVD
+ 5NchXnl5d+N5tjbwAqF5GKtNTsScar9xNXWWxwxx8k5eWqmvIiqBs8hzeGFv6gVVpobm
+ FBwUViopEwa236z788zkKW9Z1R7JSvT1YHnK83i4zcysejYNpWBurMFbFqC6iVYnE81B
+ eOXq94PTI/caWJno/xT2Boup9gkdZw0pzYlthqK1dCA1+ztIWYXCb3bZ7OvrB+xUZyHL
+ V4GQ==
+X-Gm-Message-State: ACgBeo2zpebFejRYYxSHUkWHXW16bmRGp9V7eB10dsv2egO0Ej82zvf3
+ ch5Jxu9qVgi1+o9f60FPIBaFyA==
+X-Received: by 2002:a63:1c2:0:b0:430:710d:4c85 with SMTP id
+ 185-20020a6301c2000000b00430710d4c85mr7316475pgb.12.1662633855385; 
+ Thu, 08 Sep 2022 03:44:15 -0700 (PDT)
 Received: from sunil-laptop ([49.206.11.92]) by smtp.gmail.com with ESMTPSA id
- b1-20020a170902d50100b00177fb862a87sm245683plg.20.2022.09.08.03.25.30
+ 17-20020a631751000000b00434e00227a7sm3585314pgx.4.2022.09.08.03.44.09
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 08 Sep 2022 03:25:35 -0700 (PDT)
-Date: Thu, 8 Sep 2022 15:55:27 +0530
+ Thu, 08 Sep 2022 03:44:15 -0700 (PDT)
+Date: Thu, 8 Sep 2022 16:14:06 +0530
 From: Sunil V L <sunilvl@ventanamicro.com>
 To: Gerd Hoffmann <kraxel@redhat.com>
 Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, qemu-riscv@nongnu.org,
@@ -99,108 +99,47 @@ Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, qemu-riscv@nongnu.org,
  Heinrich Schuchardt <heinrich.schuchardt@canonical.com>,
  Pawel Polawski <ppolawsk@redhat.com>
 Subject: Re: [PATCH V4 0/3] hw/riscv: virt: Enable booting S-mode firmware
- from pflashy
-Message-ID: <20220908102527.GB88864@sunil-laptop>
+ from pflash
+Message-ID: <20220908104406.GA103508@sunil-laptop>
 References: <20220906090219.412517-1-sunilvl@ventanamicro.com>
  <20220906104128.zlwzvbbswlzyplkc@sirius.home.kraxel.org>
  <20220906123200.GA237800@sunil-laptop>
  <20220907071037.tnnewqhi5v2xmiln@sirius.home.kraxel.org>
+ <20220908102527.GB88864@sunil-laptop>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20220907071037.tnnewqhi5v2xmiln@sirius.home.kraxel.org>
-Received-SPF: pass client-ip=2607:f8b0:4864:20::536;
- envelope-from=sunilvl@ventanamicro.com; helo=mail-pg1-x536.google.com
+In-Reply-To: <20220908102527.GB88864@sunil-laptop>
+Received-SPF: pass client-ip=2607:f8b0:4864:20::52a;
+ envelope-from=sunilvl@ventanamicro.com; helo=mail-pg1-x52a.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01,
+ T_SPF_HELO_TEMPERROR=0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: tu5WcWXHXe4c
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: iAXV7Au4t4Iu
 
-On Wed, Sep 07, 2022 at 09:10:37AM +0200, Gerd Hoffmann wrote:
-> On Tue, Sep 06, 2022 at 06:02:00PM +0530, Sunil V L wrote:
-> > Hi Gerd,
-> > 
-> > On Tue, Sep 06, 2022 at 12:41:28PM +0200, Gerd Hoffmann wrote:
-> > >   Hi,
-> > > 
-> > > > 3)Make the EDK2 image size to match with what qemu flash expects
-> > > > truncate -s 32M Build/RiscVVirt/DEBUG_GCC5/FV/RISCV_VIRT.fd
-> > > 
-> > > Hmm, we have that kind of padding on arm too (64M for code and 64M for
-> > > vars) and only a fraction of the space is actually used, which isn't
-> > > exactly ideal.  So not sure it is a good plan to repeat that on riscv.
-> > 
-> > Yeah.. but it looks like limitation from qemu flash emulation. Do you mean
-> > this limitation exists for arm in general on real flash also?
-> 
-> Well, at least on x86 flash devices can have odd sizes.  I don't think
-> the qemu pflash emulation dictates anything here.
-> 
-> I think the underlying problem we actually have in qemu is that the
-> flash size indirectly dictates the memory layout.  We pack the flash
-> devices next to each other, on x86 downwards from 4G, on arm upwards
-> from zero, not sure what risc-v is dong here.
-> 
-> edk2 arm code expects the variable store being mapped at 64m.  So
-> QEMU_EFI.fd (which is actually 2M in size) gets padded to 64m, which
-> has the desired effect that the next flash device (the varstore) is
-> mapped at 64m.  But also has the side effect that we map 62m of zeros
-> into the guest address space ...
-> 
-> The vars file is padded to 64m for consistency with the code.  Not
-> padding the vars file should have no bad side effects I think, except
-> for live migration where the flash size change might cause
-> compatibility problems.
-> 
-> Not padding the code file needs some alternative way to specify the
-> memory layout, to make sure the vars flash continues to be mapped at
-> 64m even when the code flash is smaller.  Cc'ed Pawel who investigates
-> that right now.
-> 
-> One possible option is to just hard-code the flash memory layout per
-> machine type or per architecture.  Another option would be to add
-> some way to configure that on the command line.
+> Same thing can be adopted to arm also since both seem to follow the same
+> logic. But I think that will be a separate patch than this series. I
+> will run that as a separate RFC patch. Is that fine?
 
-Thanks Gerd. One question: Is it possible to have separate code + vars
-even when there is TF-A? My understanding is, TF-A will take one drive
-and will be hidden from the non-secure word. So, there is only one flash
-left for edk2. Is that correct?
+Just to be clear, I meant RISC-V fix as separate RFC patch. Not the ARM.
 
-In RISC-V, I think we have the this situation always since M-mode is
-mandatory. The first flash is always reserved for secure fw. So, we will
-have to increase the number of flash supported to 3 to support edk2 use
-case.
-
-I have a fix RISC-V which resolves truncate issue leveraging logic from
-x86. It also creates 2 flash drives within non-secure space.
-EDK2 also needs to be modified to work with smaller code flash. But
-because the patch takes care of the actual size, it allows to have
-bigger code and smaller var images.
-Same thing can be adopted to arm also since both seem to follow the same
-logic. But I think that will be a separate patch than this series. I
-will run that as a separate RFC patch. Is that fine?
-
-Thanks!
+Thanks
 Sunil
-> 
-> take care,
->   Gerd
-> 

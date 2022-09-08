@@ -1,120 +1,90 @@
-Received: by 2002:a17:906:1c87:0:0:0:0 with SMTP id g7csp271399ejh;
-        Thu, 8 Sep 2022 05:00:26 -0700 (PDT)
-X-Google-Smtp-Source: AA6agR42NZLHNzLuV8nttOkScezqllAeVVWfbR77AqgqVHjvH2+xSgUKv4/Fs0RNZW1oDZy/b8ox
-X-Received: by 2002:a05:620a:2956:b0:6bc:5144:1260 with SMTP id n22-20020a05620a295600b006bc51441260mr6049285qkp.181.1662638426710;
-        Thu, 08 Sep 2022 05:00:26 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1662638426; cv=none;
+Received: by 2002:a17:906:1c87:0:0:0:0 with SMTP id g7csp419802ejh;
+        Thu, 8 Sep 2022 09:16:07 -0700 (PDT)
+X-Google-Smtp-Source: AA6agR4b57QEbao8IF+HN1x6RZe20BsNswjtbgmPqT4WWcku/T18nKXUEVyShVUgudKIyNRkQ5oU
+X-Received: by 2002:a05:620a:2618:b0:6bc:6de2:2d71 with SMTP id z24-20020a05620a261800b006bc6de22d71mr7188406qko.85.1662653767135;
+        Thu, 08 Sep 2022 09:16:07 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1662653767; cv=none;
         d=google.com; s=arc-20160816;
-        b=ZBoXwmfdXY/Z5N2s40nZHsg2TlWTr4ROm9dgw+0K8y7QC5IcR7ikeAjrQp7eq2sH2r
-         DyQtxwPVCPzjSnfDgV4r+4IGWyYMDPhRPOQXh49MIAlV4+w+dT1m73O9GReRm1h1jAhp
-         kUDYSgyHpIN4SxRRuFlvHRXUQCKM98iRegfLhrngOe/NcMWskCyOLN/bXYayu7D1QqIJ
-         bb4409Vm4gePeeGmsgRTHJmUtlMmIdHQGJm9UtZaRJh90AC4Cn9+ujBE5ZwUpEBbBSz4
-         3yZ7b25lAVVuZry7wjGSx7ogdBXhT5XSinYQNndU/n3AfaccIfbwMxaq7JXV2aixwb6P
-         v2uQ==
+        b=Jo3aP108wP1r7XrInBe87dAzfNqaslm2pojAmzedWvkjXD9yjHM12syPb5fCq21my1
+         msjJuX++EftdtX3DDnRjKUV9md4OEe4HgRfhM8QQ7rZihLpl7tk7xzAroK7ej8YUeWQ3
+         zLYRqbpD6N5bOrsdUu1Ue6S4iQ2CfrJfkQw9NXw5NUlQEADV8RttuIBOHH9Oftoehk0F
+         XXbWR37pMampR/a7eUcL2QQbQbeijExbRfMkiI9B1prCiSvPFE6HbLjWGmA2nehnY0mH
+         woALcPcClBorbijPrw62krxXt1sR529ugel1YjwYVq7Iy69WD+lOL1T+eHfQlIK7157D
+         pg0Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:cc:to:content-language:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=Q4sLTEu/0ca8zDCXn0C919xAK1y9Jdxcu6L7R3XfDo8=;
-        b=JgNUOznE9Ku8BSlzn1pnflLk1QjMv0TOEzp52tdkUDUybKPRGLSgJ+sO0nkRbOnfI6
-         A1QjSSZdMFNrEbTNggrRFXe2YZBRhN9KfTehliqSRZykuiTY0spkQG5i+4Q46W7bJTwl
-         hXU7eQ4dIfoY0E8YAFWN3H7BSFjSwIJ9Y8k8X3iY15auuzxy3cuZ/rCZvzUFqeC7TMa8
-         IL1DXJA9w+wrfKG/ZW7HUBhyYlkkS8WF+RUm3TudGI8DJLaVOepJFIVTSy0waGJ3P/0y
-         rflurkrZgCM1d31IaW5W6z+RWnkPrBJOKqSEQH/EGG1Sb63Rmbiv3wlbCzy5xsRRGPBa
-         fuqg==
+        h=from:reply-to:sender:errors-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence
+         :content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to;
+        bh=rYivBCd425ckUTxymH2fOULLCz+ZVDlcjGwjqv6ag5I=;
+        b=W2Z7WDdSkuDgB36gcIIv9MUbmgdKbkNK7NC4lx5clYSXTjR9hflY3GpCqbEIlPdPTa
+         lHug0ZR2lGFG99sh7jMICkP80kGS+rYjPaXEcbyp/t4E/9jzi1dbgrSBhWDs58UbHZ42
+         1Qf4ykMl/TIm+w14PXZ+BaiEm8bNcLJ7iln9XFzeVTonmipsmsaOYlCqCySzQhdC8b0E
+         TjjRQNbhxRfsbpv0TdiwdBsnHHFt7+b4yLihqkGf3BQ7zPyb1c4ssVDuUSKnzoxuz9nO
+         UORemVKe5JIvomHAtFdiH7ZEjX9neR/9hpEh8+fLk1p7vHsbsVTdDZPA002DxfA/Y9Ey
+         7csQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=kJUKqUDa;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x4-20020a379504000000b006b8d35bb0a6si10000783qkd.506.2022.09.08.05.00.26
+        by mx.google.com with ESMTPS id bb4-20020a05622a1b0400b0034456956abdsi11172270qtb.292.2022.09.08.09.16.06
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 08 Sep 2022 05:00:26 -0700 (PDT)
+        Thu, 08 Sep 2022 09:16:07 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=kJUKqUDa;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:52984 helo=lists1p.gnu.org)
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+Received: from localhost ([::1]:37780 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1oWGCm-0004oR-Ui
-	for alex.bennee@linaro.org; Thu, 08 Sep 2022 08:00:25 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:54686)
+	id 1oWKCE-0000NN-Ji
+	for alex.bennee@linaro.org; Thu, 08 Sep 2022 12:16:06 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:59432)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1oWGBw-0004nv-Go
- for qemu-arm@nongnu.org; Thu, 08 Sep 2022 07:59:33 -0400
-Received: from mail-wr1-x430.google.com ([2a00:1450:4864:20::430]:39667)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1oWGBv-000226-0p
- for qemu-arm@nongnu.org; Thu, 08 Sep 2022 07:59:32 -0400
-Received: by mail-wr1-x430.google.com with SMTP id n12so1745283wru.6
- for <qemu-arm@nongnu.org>; Thu, 08 Sep 2022 04:59:30 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date;
- bh=Q4sLTEu/0ca8zDCXn0C919xAK1y9Jdxcu6L7R3XfDo8=;
- b=kJUKqUDavxUD6VDqkXbvPwR23DslIsjgr1rCdr8Vq2CEqUkR4gwRI3dhnLcN/bNz+o
- p4oSlkhRps2VHwGBDoFUi0TcU5mWRR2wENKyJTYYK+JbrZMhKTt6bb0PVyCXB/nwm9QB
- mQeTyzx4AekZBFDlecEH1OfX+JOpvlx9K1HmNUxHwy0tB4wcsSNf1YHNhnVZT+rnK02B
- rRD5LXxdvBBvEIBXB0H3ctbvMVe+h+Sl+xIy69CTWvAelOR8pvd95QqYg73UW/zGJOlX
- dtmDioN48WlWDO+23NxlYoT0wSGSSXCAKpkh75OnKNw/abPSRCW+pPBtiopGBz+dZvRB
- JvTw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date;
- bh=Q4sLTEu/0ca8zDCXn0C919xAK1y9Jdxcu6L7R3XfDo8=;
- b=jIbZKcepmOuVNSuR/+4e0379XZzxKa7qjIVS6SQ0+m42g4WIcw+I7WHRb3eBFxrS0a
- p2r+5GW8K9tnec5KaMKKJoOA6uf3Fabp+xdJSAlklzW5ZdAbl1zf8C+MJZtpfJJc5nS/
- kyQadYg0FHgol+eRDp9Dr4bqRnj3tNdzk2xV+ILveTcmykHyw2fg8LDCaMd6+pIDWgaA
- YAZ57c0Mv7AZH2ilRj5hlaxzkoX9P2ncsmGm0Buj/05SlTSRWX8U4gipMqcJt81dR85N
- emoE4M3coAwgdcdbI7+RzL9EnlCtegO3+04yo+nczwXCO39O8nzOGJWug1N9vYKclo2V
- 66KA==
-X-Gm-Message-State: ACgBeo2t32fwfcjIDcZ1YakFB6UvvYG45tvEz3GKldb3ITb8UyG05/pz
- D0YY9IL7o7PjRl3b/kocV0dZDg==
-X-Received: by 2002:a5d:64ed:0:b0:225:11d4:76d1 with SMTP id
- g13-20020a5d64ed000000b0022511d476d1mr4820987wri.579.1662638369339; 
- Thu, 08 Sep 2022 04:59:29 -0700 (PDT)
-Received: from [192.168.1.87] ([109.78.97.14])
- by smtp.gmail.com with ESMTPSA id
- m123-20020a1ca381000000b003a83fda1dc5sm2555864wme.44.2022.09.08.04.59.26
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 08 Sep 2022 04:59:28 -0700 (PDT)
-Message-ID: <f96fc511-de91-5fd6-644f-6a4f9575850b@linaro.org>
-Date: Thu, 8 Sep 2022 12:59:19 +0100
+ (Exim 4.90_1) (envelope-from <shameerali.kolothum.thodi@huawei.com>)
+ id 1oWK1o-0001yv-LZ; Thu, 08 Sep 2022 12:05:21 -0400
+Received: from frasgout.his.huawei.com ([185.176.79.56]:2694)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <shameerali.kolothum.thodi@huawei.com>)
+ id 1oWK1j-0004ig-Pq; Thu, 08 Sep 2022 12:05:18 -0400
+Received: from fraeml744-chm.china.huawei.com (unknown [172.18.147.226])
+ by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4MNkPH01KWz688pj;
+ Fri,  9 Sep 2022 00:00:51 +0800 (CST)
+Received: from lhrpeml500005.china.huawei.com (7.191.163.240) by
+ fraeml744-chm.china.huawei.com (10.206.15.225) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2375.31; Thu, 8 Sep 2022 18:04:58 +0200
+Received: from A2006125610.china.huawei.com (10.48.154.32) by
+ lhrpeml500005.china.huawei.com (7.191.163.240) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2375.31; Thu, 8 Sep 2022 17:04:53 +0100
+To: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>
+CC: <imammedo@redhat.com>, <peter.maydell@linaro.org>, <lersek@redhat.com>,
+ <linuxarm@huawei.com>, <chenxiang66@hisilicon.com>, <lk@c--e.de>,
+ <kraxel@redhat.com>
+Subject: [PATCH v2] fw_cfg: Don't set callback_opaque NULL in
+ fw_cfg_modify_bytes_read()
+Date: Thu, 8 Sep 2022 17:03:54 +0100
+Message-ID: <20220908160354.2023-1-shameerali.kolothum.thodi@huawei.com>
+X-Mailer: git-send-email 2.12.0.windows.1
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.11.0
-Subject: Re: [PATCH v4 2/9] target/arm: Change gen_goto_tb to work on
- displacements
-Content-Language: en-US
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
- qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org
-References: <20220906100528.343244-1-richard.henderson@linaro.org>
- <20220906100528.343244-3-richard.henderson@linaro.org>
- <f8c471d1-7f4c-e491-d7fa-1df73aedc20b@amsat.org>
-From: Richard Henderson <richard.henderson@linaro.org>
-In-Reply-To: <f8c471d1-7f4c-e491-d7fa-1df73aedc20b@amsat.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::430;
- envelope-from=richard.henderson@linaro.org; helo=mail-wr1-x430.google.com
-X-Spam_score_int: -52
-X-Spam_score: -5.3
-X-Spam_bar: -----
-X-Spam_report: (-5.3 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-3.142,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Originating-IP: [10.48.154.32]
+X-ClientProxiedBy: dggems705-chm.china.huawei.com (10.3.19.182) To
+ lhrpeml500005.china.huawei.com (7.191.163.240)
+X-CFilter-Loop: Reflected
+Received-SPF: pass client-ip=185.176.79.56;
+ envelope-from=shameerali.kolothum.thodi@huawei.com;
+ helo=frasgout.his.huawei.com
+X-Spam_score_int: -11
+X-Spam_score: -1.2
+X-Spam_bar: -
+X-Spam_report: (-1.2 / 5.0 requ) AC_FROM_MANY_DOTS=2.999, BAYES_00=-1.9,
+ RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -129,18 +99,66 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 88l0SWDUMD3m
+Reply-to:  Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
+From:  Shameer Kolothum via <qemu-arm@nongnu.org>
+X-TUID: 9iNqSdrRE/Pd
 
-On 9/6/22 13:52, Philippe Mathieu-Daudé wrote:
->> @@ -1399,9 +1401,9 @@ static void disas_comp_b_imm(DisasContext *s, uint32_t insn)
->>       tcg_gen_brcondi_i64(op ? TCG_COND_NE : TCG_COND_EQ,
->>                           tcg_cmp, 0, label_match);
->> -    gen_goto_tb(s, 0, s->base.pc_next);
->> +    gen_goto_tb(s, 0, 4);
-> 
-> Why not use curr_insn_len() here?
+On arm/virt platform, Chen Xiang reported a Guest crash while
+attempting the below steps,
 
-I guess I could, but it's always 4 for aarch64.
+1. Launch the Guest with nvdimm=on
+2. Hot-add a NVDIMM dev
+3. Reboot
+4. Guest boots fine.
+5. Reboot again.
+6. Guest boot fails.
 
+QEMU_EFI reports the below error:
+ProcessCmdAddPointer: invalid pointer value in "etc/acpi/tables"
+OnRootBridgesConnected: InstallAcpiTables: Protocol Error
 
-r~
+Debugging shows that on first reboot(after hot adding NVDIMM),
+Qemu updates the etc/table-loader len,
+
+qemu_ram_resize()
+  fw_cfg_modify_file()
+     fw_cfg_modify_bytes_read()
+
+And in fw_cfg_modify_bytes_read() we set the "callback_opaque" for
+the key entry to NULL. Because of this, on the second reboot,
+virt_acpi_build_update() is called with a NULL "build_state" and
+returns without updating the ACPI tables. This seems to be
+upsetting the firmware.
+
+To fix this, don't change the callback_opaque in fw_cfg_modify_bytes_read().
+
+Fixes: bdbb5b1706d165 ("fw_cfg: add fw_cfg_machine_reset function")
+Reported-by: chenxiang <chenxiang66@hisilicon.com>
+Acked-by: Igor Mammedov <imammedo@redhat.com>
+Acked-by: Gerd Hoffmann <kraxel@redhat.com>
+Signed-off-by: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
+---
+v1 --> v2
+  -Added Fixes tag as pointed out by Igor
+  -Added Ack-by tags
+v1:
+ https://lore.kernel.org/all/20220825161842.841-1-shameerali.kolothum.thodi@huawei.com/
+---
+ hw/nvram/fw_cfg.c | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/hw/nvram/fw_cfg.c b/hw/nvram/fw_cfg.c
+index d605f3f45a..dfe8404c01 100644
+--- a/hw/nvram/fw_cfg.c
++++ b/hw/nvram/fw_cfg.c
+@@ -728,7 +728,6 @@ static void *fw_cfg_modify_bytes_read(FWCfgState *s, uint16_t key,
+     ptr = s->entries[arch][key].data;
+     s->entries[arch][key].data = data;
+     s->entries[arch][key].len = len;
+-    s->entries[arch][key].callback_opaque = NULL;
+     s->entries[arch][key].allow_write = false;
+ 
+     return ptr;
+-- 
+2.17.1
+

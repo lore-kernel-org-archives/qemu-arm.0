@@ -1,184 +1,229 @@
-Received: by 2002:a17:906:b088:0:0:0:0 with SMTP id x8csp564195ejy;
-        Tue, 13 Sep 2022 11:22:24 -0700 (PDT)
-X-Google-Smtp-Source: AA6agR5Q+aO2cMUYVD1t/JbmpyAcRgBvJUF/BtzsvxqNPn6hdtBYEkICyPoSBgJz/7DZ3DYRybGI
-X-Received: by 2002:a05:622a:206:b0:344:a554:e555 with SMTP id b6-20020a05622a020600b00344a554e555mr29815466qtx.187.1663093344770;
-        Tue, 13 Sep 2022 11:22:24 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1663093344; cv=none;
+Received: by 2002:a17:906:b088:0:0:0:0 with SMTP id x8csp565398ejy;
+        Tue, 13 Sep 2022 11:25:04 -0700 (PDT)
+X-Google-Smtp-Source: AA6agR4B/jYA+V72UQ0hBYZ8KTUmgmaUIyDGgTiqnXVfjHa2NMM9tru19WGYFlG3eOms7t5L1ij/
+X-Received: by 2002:a05:622a:1002:b0:35b:baaf:24bb with SMTP id d2-20020a05622a100200b0035bbaaf24bbmr7099868qte.85.1663093504571;
+        Tue, 13 Sep 2022 11:25:04 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1663093504; cv=none;
         d=google.com; s=arc-20160816;
-        b=vFEampQFC9XteqOMrmYqcO+0y772S0CyVZOsITDSjm0aV50Egu8mOldwHdpALXsTjW
-         3EbdMkBbgKK0BHjKVzdIJoGvOzzsFoRkbDoVS0NAOf7eQGjYtAFrHs4RWWklkhBPDoZ/
-         eRDVeKvd+0UAsFG+mPz/0/U7o5hy+dMneTBIKGYIK9ExujteI1LAlzmeVdUC6+BDYGus
-         uwCt2w71eajMYnJjfBsuGSZ7LHwdWcwKHo01kN/JSW9OUETpJfcTNqfxUv6kT4LXNvmV
-         MvkpWUWqwWuHyK+UvWwKBAcKmrcILuf+Bkg4hXcWgSmqUDRYJHvz2ww5l0/94gD1MJGt
-         IOcQ==
+        b=eZHrTJ5YD2byqUpdh9LC5pxoMTblkVFLYwGPQhtvRC1WvsRNjstE5r0x+TamMk/921
+         qBTeGn/K2Mk1eoKCG0Ow1MRmbuy3wonh2UoWwZ++xw/ppws7DZxyur4uuI8+SzCTrQnO
+         w6f6j6YEAEA5lMQnWB+JC5tFuwwy+IHtmtH7KqHI7XhhlC1ThL/MlqBl8VrWBbuTNej1
+         hU1hXnL9HK076SQvH8CPeBzNqh1peL0dWrcJV3Ldpk2R5efiR+Xx+MOLJBE9w6XuvkT5
+         MwEIpkS6FY86VuOlKXBIw9BNx3ketlyfZi6/MB5WUUsBfaP1MSuoEt2x2wGcyx04ivak
+         psvA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=73X7tjK24eyeMwRo5SkXom90dYm0sSUaWjd90OYmkp4=;
-        b=Cpc89Wf3zghGshtFIpty5JSP5Pjk9whQygjxUvs85H30afvrlDfphFIHHBRhfahHp5
-         WhNztV4bWb0QPb8uWpLGLmQPgtAUvSTWEldMBh/pgOlD8KaO9SbNvxUx/+DmHsxh5EK8
-         JL3Z7wX4hT6kzRlruOaO3n0i01NQ/r6IocglOTAGuq3q/m0uZGwQo1gEdiIAF2RLcNms
-         2fcN35t9OvobOzdL4I6dyvJgzIqfN9GJzk0U2FRjKBLQigag3aLcpowf5w7IN2gTBHzt
-         nnq2qIgqILl4oKflOyVSwioqPiPkvB8vePCPoyueNSHkUFTKUmCew1TVNjmB/8Gqebu/
-         PODw==
+         :list-unsubscribe:list-id:precedence:cc:to:from:subject:message-id
+         :mime-version:date:dkim-signature;
+        bh=CfSWvIPhukRlqR1oyosRZ+jgV+Jbam3Axvbe2ylEOsY=;
+        b=S3ixEUS156WPzp/989OXNF7oJ+aLaFDKCJez70L8lRb5/7Nujg2YMBIB9WMDrV/Rbr
+         3zqZ9DI9gAufDkI1DOB3Bf1y2ouAOxRcykHbbYnJnqLglS6f5J3hP5ntv82xTnkv6GPy
+         LSUtWMqhRtW8PgcuUebzjXbmnO6Lvg5vOp2vpXWqfD2sHIJ+E+Y0ciV5Kix+ne9PpyO3
+         mENsNGC2toc4WRdDD85P+UVNQRge0H38HNDhHpPDWr36nJ7Amrv3gK8tjqTnjGSjDui6
+         37hd4oJ4D276P6md2DPdrZIaZpKSE2zULIqDH2u0qhLqdYO3N5C3MXcAqtmyAH7z26NL
+         vgDA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@google.com header.s=20210112 header.b="Qu/O/4Kr";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@google.com header.s=20210112 header.b=i1NOY1kc;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id m14-20020a05620a290e00b006ce622e6cb8si13894qkp.724.2022.09.13.11.22.24
+        by mx.google.com with ESMTPS id eo13-20020ad4594d000000b004ac7f3dce3csi16043qvb.580.2022.09.13.11.25.04
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 13 Sep 2022 11:22:24 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 13 Sep 2022 11:25:04 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@google.com header.s=20210112 header.b="Qu/O/4Kr";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@google.com header.s=20210112 header.b=i1NOY1kc;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
-Received: from localhost ([::1]:54168 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:41196 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1oYAYC-0004fs-9X
-	for alex.bennee@linaro.org; Tue, 13 Sep 2022 14:22:24 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:41502)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1oYAak-0007ki-Fr
+	for alex.bennee@linaro.org; Tue, 13 Sep 2022 14:25:04 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:52332)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <titusr@google.com>) id 1oYAXT-0004eB-Np
- for qemu-arm@nongnu.org; Tue, 13 Sep 2022 14:21:39 -0400
-Received: from mail-pf1-x435.google.com ([2607:f8b0:4864:20::435]:35738)
+ (Exim 4.90_1) (envelope-from
+ <3QsogYwYKCnkqfqrpodlldib.Zljnbjr-absbiklkdkr.lod@flex--titusr.bounces.google.com>)
+ id 1oYAXn-0004jB-4z
+ for qemu-devel@nongnu.org; Tue, 13 Sep 2022 14:21:59 -0400
+Received: from mail-vs1-xe49.google.com ([2607:f8b0:4864:20::e49]:55128)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <titusr@google.com>) id 1oYAXQ-0007Nn-8C
- for qemu-arm@nongnu.org; Tue, 13 Sep 2022 14:21:38 -0400
-Received: by mail-pf1-x435.google.com with SMTP id e5so12553360pfl.2
- for <qemu-arm@nongnu.org>; Tue, 13 Sep 2022 11:21:35 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from
+ <3QsogYwYKCnkqfqrpodlldib.Zljnbjr-absbiklkdkr.lod@flex--titusr.bounces.google.com>)
+ id 1oYAXk-0007Ot-JI
+ for qemu-devel@nongnu.org; Tue, 13 Sep 2022 14:21:58 -0400
+Received: by mail-vs1-xe49.google.com with SMTP id
+ 129-20020a670387000000b00390232a1bfcso1308611vsd.21
+ for <qemu-devel@nongnu.org>; Tue, 13 Sep 2022 11:21:54 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20210112;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date;
- bh=73X7tjK24eyeMwRo5SkXom90dYm0sSUaWjd90OYmkp4=;
- b=Qu/O/4Kr8m6ElbRpxlxnefVOk/lX2UhgY0DLxyzrY9Bv/ghlq8l+ZPjczTCRIBt5bm
- ZzJkHyKIgR5ilKgSgDV4Jdh8yKmj2Q1tNtOgd5rN2nBzeg9h3bCFjOuj081YUHg5Zfsl
- nTyT9QYIyTl3XbdyFTigmganhtMbhY4mV0IpDCWNusuB9T1kQPlHbKW35XYdqJV+ISLD
- DS1UD4vBHITC8QHq0ZJ2bljgy+eTzoDurWmyX/N4Ej5USqkWBE/o5KFb1NH/U5eWD3fs
- YedpQmBmCNcEnTmfJSU09emmO3rIOv0qranI0OjTkIh3ZXrWklCAVjof2imhBO0O1P1R
- lLog==
+ h=cc:to:from:subject:message-id:mime-version:date:from:to:cc:subject
+ :date; bh=CfSWvIPhukRlqR1oyosRZ+jgV+Jbam3Axvbe2ylEOsY=;
+ b=i1NOY1kckfVq9BZYXJ2D8iJ/JExirWHNHPgF7PU4s8w9AfnuvdVWTx/85FVp0bJfpa
+ jWeShWW2WcYBpxzQidhx7gndJkunn7banLi2VK+B9OXxvXvpylxZ4aB15MG+WEbc2Fof
+ nrjAycUzRSYtaAGEfTebOvPbhiFFeqcvJ6fQ1jtiZFqRXkXpOVdCb4isY0OF76sVaQ1P
+ tytrcWXD6kzwPjW9OXTEShqmfqaJyEBE7fTbEDfnpHZcUVn/jLRwlDMV4w4HWKx9lj9E
+ O91F3LGEr+AwOEVlQ0FgHcDkpffWio1F2i1gSuzXsuLAMzFm66ZDeASK3q5AGvGdbg8K
+ d1Yw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date;
- bh=73X7tjK24eyeMwRo5SkXom90dYm0sSUaWjd90OYmkp4=;
- b=ScSvW5SBh1GOnbjUet+sk+cj9PJIlr1RIX6fy8DKsrrtNETDkQtoGNaZUvIVTxyRNe
- 6PmFrQ8xw8B/4Ney5xktkhgjNMKYSCaBBFqrUoaBSTEYaaA6gPWnz+8wEUkJXASTMtcb
- QZQ2b6Mx6GAaaHdKPWvUU6FBx3kDmzQSjV219YXJi9ox1/SxRjuwTm6NbSCSNXCY7OSV
- 5iD00+3qDFywdYsnFmJAS9HG3VqFSAYxSF0lTVxJj/whG7gx62atA/n3Mr57a8XGAvln
- s8F1PibjiCYzbVbsns3epQ6JdE0743ypdzsQ6HO7zkkS/5RnegQ+xmT9p1WztL8wVhLA
- 9GOQ==
-X-Gm-Message-State: ACgBeo1LwL6ZgRogcSiwxyju12cz23C2sVdvbcEfOcSFFrQlz9CT4xGx
- f//KZl0WFZ3/aroZl+LIJCWiOQ7yzzeyyMuHA80mOQ==
-X-Received: by 2002:a63:e055:0:b0:438:cd8e:f263 with SMTP id
- n21-20020a63e055000000b00438cd8ef263mr13539787pgj.378.1663093293725; Tue, 13
- Sep 2022 11:21:33 -0700 (PDT)
-MIME-Version: 1.0
-References: <20220906220552.1243998-1-titusr@google.com>
- <YxuZ95ppk9lZ/23g@pdel-fedora-MJ0HJWH9>
-In-Reply-To: <YxuZ95ppk9lZ/23g@pdel-fedora-MJ0HJWH9>
+ h=cc:to:from:subject:message-id:mime-version:date:x-gm-message-state
+ :from:to:cc:subject:date;
+ bh=CfSWvIPhukRlqR1oyosRZ+jgV+Jbam3Axvbe2ylEOsY=;
+ b=Xu/nEUqfBiRCCbfJjdFcq3VFsBaHYiUG1xyWuSmV9sa1zU5XHad0N56q5pJSsP0+o9
+ eNW5RMLhhereyfMfarzWaE4qCl9ZzZyxGaKJlDEE0yrdaj3VpmTgSJKrVknko2QVJXqK
+ q0I++0l7xZfvNfvl8wvlYlP9xBCkguLA3Vv7hm0LDwoRMQxq5T3YsSi0Rb9Ene53N0Wg
+ ZpejyhsZhoXA2IXwz8or+9+/62M3bLKdyNcfAzOwF5j8BmHqAaySo2JIvOpCgy19fg//
+ 9yrESrzszErBIJsQIqyv/YYhpQFpRhZjH6V+226Aq93av99clnRcZClO5yois2fARmdH
+ sWrA==
+X-Gm-Message-State: ACgBeo1JZRyLxR2Ux1nTzS4li5gN64Lj3P3mWmiuCqhJSbBDr1N15okj
+ EfHpJ7qVe86E6Rra2QqdGlv5iRHcizpNcChMHwjazVQ6Vr5wJ+aA1QYo7vwHfJhm6RlssvsbUhH
+ ycGGGKPImi32zZ0JFFCfFwo46EFzaj37cSDk7X5nwkTc3VUBFfvhrA9yt6RCh
+X-Received: from titusr.c.googlers.com ([fda3:e722:ac3:cc00:14:4d90:c0a8:22b8])
+ (user=titusr job=sendgmr) by 2002:a1f:27c5:0:b0:39e:a10c:8134 with SMTP id
+ n188-20020a1f27c5000000b0039ea10c8134mr10612826vkn.29.1663093314174; Tue, 13
+ Sep 2022 11:21:54 -0700 (PDT)
+Date: Tue, 13 Sep 2022 18:21:46 +0000
+Mime-Version: 1.0
+X-Mailer: git-send-email 2.37.3.968.ga6b4b080e4-goog
+Message-ID: <20220913182149.1468366-1-titusr@google.com>
+Subject: [RFC PATCH v2 0/3] Initial PECI bus support
 From: Titus Rwantare <titusr@google.com>
-Date: Tue, 13 Sep 2022 11:20:57 -0700
-Message-ID: <CAMvPwGqjfRrvx7uv0PNQK14VMbjf1wEK_w2LaELL02f91srWBA@mail.gmail.com>
-Subject: Re: [RFC PATCH 0/3] Initial PECI bus support
-To: Peter Delevoryas <peter@pjd.dev>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, patrick@stwcx.xyz, 
- iwona.winiarska@intel.com, tmaimon77@gmail.com, quic_jaehyoo@quicinc.com
+To: qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org, peter@pjd.dev, patrick@stwcx.xyz, 
+ iwona.winiarska@intel.com, tmaimon77@gmail.com, quic_jaehyoo@quicinc.com, 
+ Titus Rwantare <titusr@google.com>
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::435;
- envelope-from=titusr@google.com; helo=mail-pf1-x435.google.com
-X-Spam_score_int: -175
-X-Spam_score: -17.6
-X-Spam_bar: -----------------
-X-Spam_report: (-17.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
+Received-SPF: pass client-ip=2607:f8b0:4864:20::e49;
+ envelope-from=3QsogYwYKCnkqfqrpodlldib.Zljnbjr-absbiklkdkr.lod@flex--titusr.bounces.google.com;
+ helo=mail-vs1-xe49.google.com
+X-Spam_score_int: -95
+X-Spam_score: -9.6
+X-Spam_bar: ---------
+X-Spam_report: (-9.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- ENV_AND_HDR_SPF_MATCH=-0.5, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01, USER_IN_DEF_DKIM_WL=-7.5,
- USER_IN_DEF_SPF_WL=-7.5 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01,
+ USER_IN_DEF_DKIM_WL=-7.5 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: xDK6wR12nvDu
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 0JF3azgfTtxr
 
-On Fri, 9 Sept 2022 at 12:54, Peter Delevoryas <peter@pjd.dev> wrote:
->
-> On Tue, Sep 06, 2022 at 10:05:49PM +0000, Titus Rwantare wrote:
-...
-> >
-> > This is something that can also be extended as other parameters arise that need
-> > to differ between platforms. So far you can have have different CPUs, DIMM counts,
-> > DIMM temperatures here. These fields can also be adjusted at runtime through qmp.
->
-> That looks good to me, seems like the standard way to do it in QEMU.
->
-> >
-> > A lot of the registers are hard coded, see hw/peci/peci-client.c. I'd like to
-> > gauge interest in what potential users would like to be adjustable at runtime.
-> > I've not written QEMU models that read config files at runtime, something I'd
-> > appreciate guidance on.
->
-> This part I don't totally understand. I also barely know anything about
-> PECI.
->
-> Is the register location for things different between CPU generations?
+The Platform Environment Control Interface (PECI), is a way for Intel
+processors to communicate with management controllers.
 
-Some things seem to move between generations and others don't move, someone at
-Intel would know better than I do.
+This series of patches simulate some PECI subsystem functionality. This
+work is currently used against Nuvoton 7xx BMC, but it can easily be
+extended to support Aspeed BMCs. Most of the functionality is derived
+from PECI support in openbmc. See https://github.com/openbmc/libpeci
 
+The main consumer of this work is openbmc, so functionality not
+exercised by the openbmc/libpeci is unlikely to be present here.
 
+peci-core.c is an attempt to split out functionality defined by the
+spec. Anything that is not expected to change between BMC vendors.
 
-> If so (and I expect it probably is), why is there only a configuration
-> for Sapphire Rapids, and not for the other ones?
->
-> Is that because of PECI protocol changes between generations?
+The following commands have some support:
+    Ping()
+    GetDIB()
+    GetTemp()
+    ~RdPkgConfig()
+    ~RdEndPtConfig()
 
-I haven't dug into the other machines because of internal demand, but
-I've found that
-with newer generations, more features get used in addition to existing
-ones. It's
-possible these features existed on older machines.
+To be implemented:
+    RdIAMSR()
+    RdPCIConfig()
+    RdPCIConfigLocal()
 
+Currently, in the board file during bmc_init() one may specify defaults
+as follows:
 
+static void my_machine_peci_init(NPCM7xxState *soc)
+{
+    PECIBus *peci_bus = npcm7xx_peci_get_bus(soc);
+    DeviceState *dev;
 
-> In which case, maybe there needs to be a notion of PECI version
-> somewhere?
->
-> Also, I don't understand why it would be adjustable at runtime, do we
-> change register locations during execution?
->
-> I would expect it to be part of the board definition.
->
-> You could provide a bunch of sample configs for the CPU's that you're
-> testing for, and the board configuration could just select the sample
-> config it is using (corresponding to the CPU model).
->
-> That's the model I would imagine, but I might be missing some important
-> context here.
+    /* per socket properties - both sockets are identical in this case */
+    PECIClientProperties peci_props = {
+        .cpu_family = FAM6_SAPPHIRE_RAPIDS_X,
+        .cpus = 56,
+        .dimms = 16
+    };
 
-I think it would be nice to have additional registers at runtime, at
-the time of writing,
-I don't know how much of the internal workings of Sapphire Rapids
-Intel is willing to
-share publicly. If users are free to separately define registers, I
-don't then get to
-worry about this. e.g. I'd like to simulate errors from the memory controllers.
+    /* socket 0 - with example setting a few of the cpu and dimm temperatures in millidegrees */
+    dev = DEVICE(peci_add_client(peci_bus, 0x30, &peci_props));
+    object_property_set_uint(OBJECT(dev), "cpu_temp[0]", 30000, &error_abort);
+    object_property_set_uint(OBJECT(dev), "cpu_temp[2]", 35000, &error_abort);
+    object_property_set_uint(OBJECT(dev), "dimm_temp[1]", 40000, &error_abort);
+    object_property_set_uint(OBJECT(dev), "dimm_temp[8]", 36000, &error_abort);
 
+    /* socket 1 */
+    dev = DEVICE(peci_add_client(peci_bus, 0x31, &peci_props));
+    object_property_set_uint(OBJECT(dev), "cpu_temp[9]", 50000, &error_abort);
+    object_property_set_uint(OBJECT(dev), "dimm_temp[0]", 31000, &error_abort);
+    object_property_set_uint(OBJECT(dev), "dimm_temp[14]", 36000, &error_abort);
+    ...
+}
 
+This is something that can also be extended as other parameters arise that need
+to differ between platforms. So far you can have have different CPUs, DIMM counts,
+DIMM temperatures here. These fields can also be adjusted at runtime through qmp.
 
-Titus
+A lot of the registers are hard coded, see hw/peci/peci-client.c. I'd like to
+gauge interest in what potential users would like to be adjustable at runtime.
+I've not written QEMU models that read config files at runtime, something I'd
+appreciate guidance on.
+
+Thanks all
+
+Changes in v2:
+- rename EndPt to EndPoint
+
+Titus Rwantare (3):
+  hw/peci: add initial support for PECI
+  hw/peci: add PECI support for NPCM7xx BMCs
+  hw/peci: add support for EndPointConfig reads
+
+ MAINTAINERS                    |   8 +
+ hw/Kconfig                     |   1 +
+ hw/arm/Kconfig                 |   1 +
+ hw/arm/npcm7xx.c               |   9 +
+ hw/meson.build                 |   1 +
+ hw/peci/Kconfig                |   2 +
+ hw/peci/meson.build            |   2 +
+ hw/peci/npcm7xx_peci.c         | 204 +++++++++++++++++++++++
+ hw/peci/peci-client.c          | 293 +++++++++++++++++++++++++++++++++
+ hw/peci/peci-core.c            | 222 +++++++++++++++++++++++++
+ hw/peci/trace-events           |  10 ++
+ hw/peci/trace.h                |   1 +
+ include/hw/arm/npcm7xx.h       |   2 +
+ include/hw/peci/npcm7xx_peci.h |  37 +++++
+ include/hw/peci/peci.h         | 217 ++++++++++++++++++++++++
+ meson.build                    |   1 +
+ 16 files changed, 1011 insertions(+)
+ create mode 100644 hw/peci/Kconfig
+ create mode 100644 hw/peci/meson.build
+ create mode 100644 hw/peci/npcm7xx_peci.c
+ create mode 100644 hw/peci/peci-client.c
+ create mode 100644 hw/peci/peci-core.c
+ create mode 100644 hw/peci/trace-events
+ create mode 100644 hw/peci/trace.h
+ create mode 100644 include/hw/peci/npcm7xx_peci.h
+ create mode 100644 include/hw/peci/peci.h
+
+-- 
+2.37.3.968.ga6b4b080e4-goog
+

@@ -1,150 +1,522 @@
-Received: by 2002:a17:906:b088:0:0:0:0 with SMTP id x8csp566495ejy;
-        Tue, 13 Sep 2022 11:27:28 -0700 (PDT)
-X-Google-Smtp-Source: AA6agR5txdNGzJh90ry7mhB5jarOuiZguDKzB/wJNWLQbuwu1f6E5/fk6zBVm0Wd35b3PCb41LM0
-X-Received: by 2002:ae9:ed92:0:b0:6cd:ed2c:8062 with SMTP id c140-20020ae9ed92000000b006cded2c8062mr13672548qkg.82.1663093648037;
-        Tue, 13 Sep 2022 11:27:28 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1663093648; cv=none;
+Received: by 2002:a17:906:b088:0:0:0:0 with SMTP id x8csp566771ejy;
+        Tue, 13 Sep 2022 11:28:05 -0700 (PDT)
+X-Google-Smtp-Source: AA6agR6vHsMjgxdcBS67gNqTM6RSXDvhrpB+7r0j3OC0lNZLeN1xtX8u4vTiBMSwVgoyZEmG8ZFN
+X-Received: by 2002:a05:620a:1709:b0:6ce:7e:7d6a with SMTP id az9-20020a05620a170900b006ce007e7d6amr11484209qkb.539.1663093685010;
+        Tue, 13 Sep 2022 11:28:05 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1663093685; cv=none;
         d=google.com; s=arc-20160816;
-        b=zyHuyVNpmc1sQLOuvJz2WYXtdjLolNlK+/UhVqoUlZQsq+QG3cOflsjpvyRdiShhjR
-         y/pNyBZiTZswXe5T4RUcl8OslqyV6OVL48oT9riJ9QUFp0vxF8LUwgXJzx+XD/i3jenD
-         cD2zQ4JhYb69lpQ2HWhO0zVY/RNzKYlBZPOG06X9rVrKFbqx1cwO2K7myW4CiBXUqP8q
-         L//Plv4rWmVZxkzpu/ptnnWX25rlgx0D8kd3bjLLgDRAAYuJ2hhgmkC+WpMs9V+7Ua1b
-         KpVGyL2aSX4vZGEion4bMqU8ypTG+/HF6AMmO5MxtN8TsoZQ6apB16L82efLLuUfpToE
-         eupw==
+        b=lUCGMczBtLLJFyp1fvgUkqq0GnniEiMKTwfQDUGk+JOpiI3c+iNUMt+e50fftmahCb
+         gWpsvz8gXKWhPcnVKGUAETE/oda0YdoNH1bc6CBBgoGi4c1xQFeQF3p5FCLYQhWdLv82
+         FUZbHeJo3Xu2MNBNssIlI+mCAVcBzbtQs0wat84jOmqLilsh5iUOUE2pj8B5j3lu1/ta
+         wzrcc3opwaEDRcl5TGiqn6WiUj3yDjUb81f2ECetOGzU0JFy75vmS2yD7iuIB/OBk7HK
+         UXc96TOF1o5ABL33p3XjHbWQD49TlsoLKSyuSUpNlg/kXsChSckF7KdxsOy76gKQwt8l
+         iJAg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=ayjT9dw78q88OYNN96jAT9vn58OKA52hOvroyDlXUQQ=;
-        b=ooBPpGomqrgBKvfTfffgkWxuhS/LIVaTasevbRqjTiNq/LcYb5hJPLFyoPFiAt6rGt
-         HvxQX1a1JqHnZqa3Sg1IUwW4PvyMkRqNZD7WqM+lEv5eZL8W9aqP4+5Xx4gdmc2gUNW0
-         yAQFjq2qJWFoJ2Pb0h3JENP00fcbUaCUrjYls4Bj62tX5O6v1eMUqRac2gPQINLvIrQp
-         JRZZrE1Wrw6yGwsqluW6k9h/AhuKoCm4+kXAVzRvT0OeSFlTCEWHArGJCidqDPUdkw3l
-         fIu9Xi6eeBAUZEKI4Dqd8/bOSW4mRrz0Q15B7+1VjAnuGnq1SZFOSrGDzQXAzBMOSTJ7
-         Xozw==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
+         :from:subject:message-id:references:mime-version:in-reply-to:date
+         :dkim-signature;
+        bh=pnhWxVR/xY4XsPEGoWd329/vj+1S6UKT5DuPmMcBGPQ=;
+        b=MXYsRDeit6XhSzYhb+GT0/uM+wZA2sNXU8ko9pRp5oHo2nl8Qa/QEAvuMrJgVZySsR
+         ujD21Z9lG9QkACp/bR0i2eUHNsqnrIt09j64ROSTJTN3AJiEprbI93dsLUA7Ec0Mr7sX
+         yNNVEiKHwNYu8FTo8fvdbiOnzE/gAozFGgcovy8Bh7HJZHoZnr/LqkoZ6lbuXYpxBhC8
+         NpJra2r0cMwm7y442YsOBOo17SLG+KEPULdTCqpYC745Isw4t4r1dI3J1P8wG7N/OPL3
+         Z9ORfBrIVPyF37nRqiIoCAuexS8BFNmEG/VhmBPga7sGgoUM8rgtNxLFeWACkXz28OwG
+         d28w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@google.com header.s=20210112 header.b=G3KD3NXs;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@google.com header.s=20210112 header.b=NjuEbyCn;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 13-20020a0562140dcd00b00496d7c31815si24169qvt.515.2022.09.13.11.27.27
+        by mx.google.com with ESMTPS id f5-20020a05620a408500b006bba7415065si25768qko.679.2022.09.13.11.28.04
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 13 Sep 2022 11:27:28 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 13 Sep 2022 11:28:05 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@google.com header.s=20210112 header.b=G3KD3NXs;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@google.com header.s=20210112 header.b=NjuEbyCn;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
-Received: from localhost ([::1]:34430 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:37156 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1oYAd3-0001aS-VY
-	for alex.bennee@linaro.org; Tue, 13 Sep 2022 14:27:26 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:52328)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1oYAdg-0003uF-Ft
+	for alex.bennee@linaro.org; Tue, 13 Sep 2022 14:28:04 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:52334)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <titusr@google.com>) id 1oYAXj-0004iG-So
- for qemu-devel@nongnu.org; Tue, 13 Sep 2022 14:21:57 -0400
-Received: from mail-pg1-x530.google.com ([2607:f8b0:4864:20::530]:42660)
+ (Exim 4.90_1) (envelope-from
+ <3RMogYwYKCHsshstrqfnnfkd.bnlpdlt-Zqlmnmfmt.nqf@flex--titusr.bounces.google.com>)
+ id 1oYAXp-0004l2-8d
+ for qemu-arm@nongnu.org; Tue, 13 Sep 2022 14:22:03 -0400
+Received: from mail-yb1-xb4a.google.com ([2607:f8b0:4864:20::b4a]:56887)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <titusr@google.com>) id 1oYAXh-0007Ok-IA
- for qemu-devel@nongnu.org; Tue, 13 Sep 2022 14:21:55 -0400
-Received: by mail-pg1-x530.google.com with SMTP id q63so12083752pga.9
- for <qemu-devel@nongnu.org>; Tue, 13 Sep 2022 11:21:53 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from
+ <3RMogYwYKCHsshstrqfnnfkd.bnlpdlt-Zqlmnmfmt.nqf@flex--titusr.bounces.google.com>)
+ id 1oYAXl-0007PJ-Tp
+ for qemu-arm@nongnu.org; Tue, 13 Sep 2022 14:21:59 -0400
+Received: by mail-yb1-xb4a.google.com with SMTP id
+ d8-20020a25bc48000000b00680651cf051so10848134ybk.23
+ for <qemu-arm@nongnu.org>; Tue, 13 Sep 2022 11:21:56 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20210112;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date;
- bh=ayjT9dw78q88OYNN96jAT9vn58OKA52hOvroyDlXUQQ=;
- b=G3KD3NXsw7RZpqeqo70EH5CEIulsA9IlIQXoeO+Cbl7t1IcInDrhR6mjPZnvZO0i2J
- s6aRTIc02cQmIuhiKhV5Nf3iok0w8J2TKUtQ33PaTUDTU/tbzBNlMib76xDEcuI/7K8N
- B/r5UjuugbVDFeAYJRlpkAFD5G9qeapip+1r4Bfn1oSQTXWmfvnduFEhI5l/phcCxOav
- LYXxcor7JQGX0jX6IAOQ3KZ11NMOZ1biLxInXV2O+Y+Z60xbgpmQW594Djf8X8wJZsoK
- u0E8u37AYoLleS9z6WMb3CvB6FGrsH7fN0hdeNHKaWU+n28X7OJsFlta05dpMhmlq1PR
- zVcQ==
+ h=content-transfer-encoding:cc:to:from:subject:message-id:references
+ :mime-version:in-reply-to:date:from:to:cc:subject:date;
+ bh=pnhWxVR/xY4XsPEGoWd329/vj+1S6UKT5DuPmMcBGPQ=;
+ b=NjuEbyCnxSMCnPXghVxIB7b/iC1rY61HdteGC6xQvwM3DCYjFskAVWqx/zUuGUlQgm
+ 2bDc/WlZL7ugqP72I17P7YYInPfGSLe5khwYXBM4bsmo9WHQy74hAcJCRpn/6FFEH3zT
+ z5wAZ7Gqpj5FS+8bn6CRF/3ZFYFBUvq5xxPVgv4+ZEuxqNUM2NYs2KkTqAA8ZDcVy/8f
+ 5HWwrlmXzCbjzry4iJDjGOG16AL9ob5c1/hvz0CvXrRhoo8xnklx9hJOwSUmnI3vXvfA
+ /ee+E6blG26XJHy+Dcpf9ddxxPtb/P7QGaB7F68DNQ5qecAEKvTPFYOqTojzRJaK7Jgo
+ M8MA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date;
- bh=ayjT9dw78q88OYNN96jAT9vn58OKA52hOvroyDlXUQQ=;
- b=Fc5NK6gX9si1dJ/9i0sGf5q/Q82FtSrRRuoW/Iht31fpmyhvS5AHjPggwbfRpftj1H
- WKWs0EK+WKzo++ZCBjf3GHToUMULUc0ZlIRAkC2U281tgApp3geg1JHp+D7cQsz1Bu7p
- /17coxC5Yrt1D/BoU0WNkWd/x5Qyho3bCoSurg+PBeTaUdhuYpJqEBdkZ65cwQTURDhB
- Y/1NHDXjS1lqmMgS4QltCHj1D17V0qUFw6/vnyef/RALY5gV55AbgkMCZJuQZqtz9jAX
- 9QcDOUDAcji0fV6mP+C3it4x+4b/Zhr1xy+gjXa1dEHJgIhq6dXSI9DTSCLliovTMU0s
- wvDw==
-X-Gm-Message-State: ACgBeo39znV6iaiaW3uy65coHpkewe2EroyN+p6e9NfpnTOCoBsdD+cG
- y/RWgmzHm1u2jDNZH2SNfigKCC4e2dELr8ZbweT/EA==
-X-Received: by 2002:a63:7f0c:0:b0:434:5711:7cb6 with SMTP id
- a12-20020a637f0c000000b0043457117cb6mr29114128pgd.8.1663093312058; Tue, 13
- Sep 2022 11:21:52 -0700 (PDT)
-MIME-Version: 1.0
-References: <20220906220552.1243998-1-titusr@google.com>
- <20220906220552.1243998-2-titusr@google.com>
- <Yxua+pZUn5lSSekN@pdel-fedora-MJ0HJWH9>
-In-Reply-To: <Yxua+pZUn5lSSekN@pdel-fedora-MJ0HJWH9>
+ h=content-transfer-encoding:cc:to:from:subject:message-id:references
+ :mime-version:in-reply-to:date:x-gm-message-state:from:to:cc:subject
+ :date;
+ bh=pnhWxVR/xY4XsPEGoWd329/vj+1S6UKT5DuPmMcBGPQ=;
+ b=Ten+WfAVq8cuvttZtZzngSs8oG46IStZu9TsvM6a06PTHUwaKWN5mEieyvRe1P+ds5
+ Py55/W5qhz73wavRKvQIOnNQZzPjQz3iksGue9nx0a0gpyK1B87iHsosRlMK7b3nR5wo
+ M2GIc2kY5XO3zjgZ4kIg6qXYuOOmuPAXQJsCyPuZ3mvr3phqQQntpSX4FT6rcJEZ/5ID
+ uymw5baoHSP4sKH5NOFeNrPeJ8cvl7j7MoayfDbjL8VefcCMekMFiXHLVHgdAs83bcK6
+ PyBMO83g0oHC7LG/Uh/YnHCoODhBGnS4smC0S8coBrecU+/nQ9563NYkOwGw03B4ErAL
+ prBw==
+X-Gm-Message-State: ACgBeo1dbZOL8tcQrD9Qs6eZ1uVNlvkIi75B/KNX/N0BCLEhbrh1yxE/
+ 12mxdTG46UP0cbb+YIUV2epE/1lrrvI=
+X-Received: from titusr.c.googlers.com ([fda3:e722:ac3:cc00:14:4d90:c0a8:22b8])
+ (user=titusr job=sendgmr) by 2002:a05:6902:1102:b0:6af:d093:7f2d with SMTP id
+ o2-20020a056902110200b006afd0937f2dmr2427180ybu.642.1663093316245; Tue, 13
+ Sep 2022 11:21:56 -0700 (PDT)
+Date: Tue, 13 Sep 2022 18:21:48 +0000
+In-Reply-To: <20220913182149.1468366-1-titusr@google.com>
+Mime-Version: 1.0
+References: <20220913182149.1468366-1-titusr@google.com>
+X-Mailer: git-send-email 2.37.3.968.ga6b4b080e4-goog
+Message-ID: <20220913182149.1468366-3-titusr@google.com>
+Subject: [RFC PATCH v2 2/3] hw/peci: add PECI support for NPCM7xx BMCs
 From: Titus Rwantare <titusr@google.com>
-Date: Tue, 13 Sep 2022 11:21:16 -0700
-Message-ID: <CAMvPwGprWzOn+YgpOrTTJT67C4JLBewbknbmPn-E5pzFUmTKNw@mail.gmail.com>
-Subject: Re: [RFC PATCH 1/3] hw/peci: add initial support for PECI
-To: Peter Delevoryas <peter@pjd.dev>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, patrick@stwcx.xyz, 
+To: qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org, peter@pjd.dev, patrick@stwcx.xyz, 
  iwona.winiarska@intel.com, tmaimon77@gmail.com, quic_jaehyoo@quicinc.com, 
- Hao Wu <wuhaotsh@google.com>, Patrick Venture <venture@google.com>
+ Titus Rwantare <titusr@google.com>, Patrick Venture <venture@google.com>
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::530;
- envelope-from=titusr@google.com; helo=mail-pg1-x530.google.com
-X-Spam_score_int: -175
-X-Spam_score: -17.6
-X-Spam_bar: -----------------
-X-Spam_report: (-17.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b4a;
+ envelope-from=3RMogYwYKCHsshstrqfnnfkd.bnlpdlt-Zqlmnmfmt.nqf@flex--titusr.bounces.google.com;
+ helo=mail-yb1-xb4a.google.com
+X-Spam_score_int: -95
+X-Spam_score: -9.6
+X-Spam_bar: ---------
+X-Spam_report: (-9.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- ENV_AND_HDR_SPF_MATCH=-0.5, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01, USER_IN_DEF_DKIM_WL=-7.5,
- USER_IN_DEF_SPF_WL=-7.5 autolearn=unavailable autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01,
+ USER_IN_DEF_DKIM_WL=-7.5 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 4/Y30K59a8N6
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: R9fYAsCluWRG
 
-On Fri, 9 Sept 2022 at 12:58, Peter Delevoryas <peter@pjd.dev> wrote:
+This allows BMC firmware for npcm7xx BMCs to talk to a PECI client
+in qemu.
 
-> > +/*
-> > + * PECI Client device
-> > + * Copyright 2021 Google LLC
-> > + *
-> > + * SPDX-License-Identifier: GPL-2.0-or-later
->
-> Not sure, but I think the SPDX license identifier is supposed to be in
-> the first line? Maybe not though. I would have expected:
->
+Signed-off-by: Titus Rwantare <titusr@google.com>
+Reviewed-by: Patrick Venture <venture@google.com>
+Reviewed-by: Peter Delevoryas <peter@pjd.dev>
+---
+ MAINTAINERS                    |   1 +
+ hw/arm/Kconfig                 |   1 +
+ hw/arm/npcm7xx.c               |   9 ++
+ hw/peci/meson.build            |   1 +
+ hw/peci/npcm7xx_peci.c         | 204 +++++++++++++++++++++++++++++++++
+ hw/peci/trace-events           |   5 +
+ include/hw/arm/npcm7xx.h       |   2 +
+ include/hw/peci/npcm7xx_peci.h |  37 ++++++
+ 8 files changed, 260 insertions(+)
+ create mode 100644 hw/peci/npcm7xx_peci.c
+ create mode 100644 include/hw/peci/npcm7xx_peci.h
 
-That's a Linux thing as far as I can tell. QEMU has it in the top comment.
+diff --git a/MAINTAINERS b/MAINTAINERS
+index 14ab29679d..f11a31cf57 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -3218,6 +3218,7 @@ S: Maintained
+ F: hw/peci/peci-core.c
+ F: hw/peci/peci-client.c
+ F: include/hw/peci/peci.h
++F: hw/peci/npcm7xx_peci.c
+=20
+ Firmware schema specifications
+ M: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
+index 15fa79afd3..cb38c6c88f 100644
+--- a/hw/arm/Kconfig
++++ b/hw/arm/Kconfig
+@@ -408,6 +408,7 @@ config NPCM7XX
+     select SSI
+     select UNIMP
+     select PCA954X
++    select PECI
+=20
+ config FSL_IMX25
+     bool
+diff --git a/hw/arm/npcm7xx.c b/hw/arm/npcm7xx.c
+index d85cc02765..d408dd7eb4 100644
+--- a/hw/arm/npcm7xx.c
++++ b/hw/arm/npcm7xx.c
+@@ -45,6 +45,7 @@
+ #define NPCM7XX_CLK_BA          (0xf0801000)
+ #define NPCM7XX_MC_BA           (0xf0824000)
+ #define NPCM7XX_RNG_BA          (0xf000b000)
++#define NPCM7XX_PECI_BA         (0xf0100000)
+=20
+ /* USB Host modules */
+ #define NPCM7XX_EHCI_BA         (0xf0806000)
+@@ -83,6 +84,7 @@ enum NPCM7xxInterrupt {
+     NPCM7XX_UART1_IRQ,
+     NPCM7XX_UART2_IRQ,
+     NPCM7XX_UART3_IRQ,
++    NPCM7XX_PECI_IRQ            =3D 6,
+     NPCM7XX_EMC1RX_IRQ          =3D 15,
+     NPCM7XX_EMC1TX_IRQ,
+     NPCM7XX_MMC_IRQ             =3D 26,
+@@ -445,6 +447,7 @@ static void npcm7xx_init(Object *obj)
+     }
+=20
+     object_initialize_child(obj, "mmc", &s->mmc, TYPE_NPCM7XX_SDHCI);
++    object_initialize_child(obj, "peci", &s->peci, TYPE_NPCM7XX_PECI);
+ }
+=20
+ static void npcm7xx_realize(DeviceState *dev, Error **errp)
+@@ -715,6 +718,12 @@ static void npcm7xx_realize(DeviceState *dev, Error **=
+errp)
+     sysbus_connect_irq(SYS_BUS_DEVICE(&s->mmc), 0,
+             npcm7xx_irq(s, NPCM7XX_MMC_IRQ));
+=20
++     /* PECI */
++    sysbus_realize(SYS_BUS_DEVICE(&s->peci), &error_abort);
++    sysbus_mmio_map(SYS_BUS_DEVICE(&s->peci), 0, NPCM7XX_PECI_BA);
++    sysbus_connect_irq(SYS_BUS_DEVICE(&s->peci), 0,
++                       npcm7xx_irq(s, NPCM7XX_PECI_IRQ));
++
+     create_unimplemented_device("npcm7xx.shm",          0xc0001000,   4 * =
+KiB);
+     create_unimplemented_device("npcm7xx.vdmx",         0xe0800000,   4 * =
+KiB);
+     create_unimplemented_device("npcm7xx.pcierc",       0xe1000000,  64 * =
+KiB);
+diff --git a/hw/peci/meson.build b/hw/peci/meson.build
+index 01cfa95abe..ee033eb915 100644
+--- a/hw/peci/meson.build
++++ b/hw/peci/meson.build
+@@ -1 +1,2 @@
+ softmmu_ss.add(when: 'CONFIG_PECI', if_true: files('peci-core.c', 'peci-cl=
+ient.c'))
++softmmu_ss.add(when: 'CONFIG_NPCM7XX', if_true: files('npcm7xx_peci.c'))
+diff --git a/hw/peci/npcm7xx_peci.c b/hw/peci/npcm7xx_peci.c
+new file mode 100644
+index 0000000000..17a2642898
+--- /dev/null
++++ b/hw/peci/npcm7xx_peci.c
+@@ -0,0 +1,204 @@
++/*
++ * Nuvoton NPCM7xx PECI Module
++ *
++ * Copyright 2021 Google LLC
++ *
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ */
++
++#include "qemu/osdep.h"
++#include "hw/peci/npcm7xx_peci.h"
++#include "qemu/bitops.h"
++#include "qemu/log.h"
++#include "qemu/units.h"
++#include "trace.h"
++
++#define PECI_CTL_STS            0
++#define     PECI_CTL_STS_DONE_EN      BIT(6)
++#define     PECI_CTL_STS_ABRT_ERR     BIT(4)
++#define     PECI_CTL_STS_CRC_ERR      BIT(3)
++#define     PECI_CTL_STS_DONE         BIT(1)
++#define     PECI_CTL_STS_START_BUSY   BIT(0)
++#define PECI_RD_LENGTH          0x4
++#define PECI_ADDR               0x8
++#define PECI_CMD                0xC
++#define PECI_CTL2               0x10
++#define PECI_WR_LENGTH          0x1C
++#define PECI_PDDR               0x2C
++#define PECI_DAT_INOUT(reg)    (0x100 + (reg) * 4)
++
++static uint64_t npcm7xx_peci_read(void *opaque, hwaddr offset, unsigned si=
+ze)
++{
++    NPCM7xxPECIState *ps =3D NPCM7XX_PECI(opaque);
++    uint8_t ret =3D 0;
++
++    if (!ps->bus->num_clients) {
++        qemu_log_mask(LOG_GUEST_ERROR, "%s: no peci clients added to board=
+\n",
++                      __func__);
++        return 0;
++    }
++
++    qemu_irq_lower(ps->irq);
++
++    switch (offset) {
++    case PECI_CTL_STS:
++        ret =3D ps->status;
++        break;
++
++    case PECI_RD_LENGTH:
++        ret =3D ps->pcmd.rd_length;
++        break;
++
++    case PECI_ADDR:
++        ret =3D ps->pcmd.addr;
++        break;
++
++    case PECI_CMD:
++        ret =3D ps->pcmd.cmd;
++        break;
++
++    case PECI_CTL2:
++        ret =3D ps->ctl2;
++        break;
++
++    case PECI_WR_LENGTH:
++        ret =3D ps->pcmd.wr_length;
++        break;
++
++    case PECI_PDDR:
++        qemu_log_mask(LOG_UNIMP, "%s: PECI PDDR is unimplemented.\n", __fu=
+nc__);
++        ret =3D ps->pddr;  /* undoc register */
++        break;
++
++    case PECI_DAT_INOUT(0) ... PECI_DAT_INOUT(63):
++        ret =3D ps->pcmd.tx[(offset - PECI_DAT_INOUT(0)) / 4];
++        break;
++
++    default:
++        qemu_log_mask(LOG_GUEST_ERROR, "%s: unknown register 0x%lx\n",
++                      __func__, offset);
++        ret =3D 0xff;
++        break;
++    }
++    trace_npcm7xx_peci_read(offset, ret);
++    return ret;
++}
++
++static void npcm7xx_peci_write(void *opaque, hwaddr offset, uint64_t input=
+,
++                               unsigned size)
++{
++    NPCM7xxPECIState *ps =3D NPCM7XX_PECI(opaque);
++    uint8_t data =3D input & 0xff;
++
++    trace_npcm7xx_peci_write(offset, input);
++
++    /* ignore writes if the bus has not been populated */
++    if (!ps->bus->num_clients) {
++        qemu_log_mask(LOG_GUEST_ERROR, "%s: no peci clients added to board=
+\n",
++                      __func__);
++        return;
++    }
++
++    switch (offset) {
++    case PECI_CTL_STS:
++        ps->status =3D data;
++        /* STS_START busy is set by the bmc when the request is written */
++        if (data & PECI_CTL_STS_START_BUSY) {
++            if (!peci_handle_cmd(ps->bus, &(ps->pcmd))) {
++                ps->status |=3D PECI_CTL_STS_ABRT_ERR;
++            }
++            ps->status |=3D PECI_CTL_STS_DONE;
++            ps->status &=3D ~PECI_CTL_STS_START_BUSY;
++            qemu_irq_raise(ps->irq);
++        }
++        break;
++
++    case PECI_RD_LENGTH:
++        ps->pcmd.rd_length =3D data;
++        break;
++
++    case PECI_ADDR:
++        ps->pcmd.addr =3D data;
++        break;
++
++    case PECI_CMD:
++        ps->pcmd.cmd =3D data;
++        break;
++
++    case PECI_CTL2:
++        ps->ctl2 =3D data;
++        break;
++
++    case PECI_WR_LENGTH:
++        ps->pcmd.wr_length =3D data;
++        break;
++
++    case PECI_PDDR:
++        ps->pddr =3D data;
++        break;
++
++    case PECI_DAT_INOUT(0) ... PECI_DAT_INOUT(63):
++        ps->pcmd.rx[(offset - PECI_DAT_INOUT(0)) / 4] =3D data;
++        break;
++
++    default:
++        qemu_log_mask(LOG_GUEST_ERROR,
++                      "%s: to unknown register 0x%lx : 0x%lx\n",
++                      __func__, offset, input);
++        return;
++    }
++
++}
++
++static void npcm7xx_peci_reset(Object *obj, ResetType type)
++{
++    NPCM7xxPECIState *ps =3D NPCM7XX_PECI(obj);
++
++    ps->status =3D PECI_CTL_STS_DONE_EN;
++}
++
++static const MemoryRegionOps npcm7xx_peci_ops =3D {
++    .read =3D npcm7xx_peci_read,
++    .write =3D npcm7xx_peci_write,
++    .endianness =3D DEVICE_NATIVE_ENDIAN,
++    .valid =3D {
++        .min_access_size =3D 1,
++        .min_access_size =3D 1,
++        .unaligned =3D false,
++    },
++};
++
++static void npcm7xx_peci_realize(DeviceState *dev, Error **errp)
++{
++    NPCM7xxPECIState *ps =3D NPCM7XX_PECI(dev);
++    SysBusDevice *sbd =3D &ps->parent;
++
++    memory_region_init_io(&ps->iomem, OBJECT(ps), &npcm7xx_peci_ops, ps,
++                          TYPE_NPCM7XX_PECI, 4 * KiB);
++
++    sysbus_init_mmio(sbd, &ps->iomem);
++    sysbus_init_irq(sbd, &ps->irq);
++
++    ps->bus =3D peci_bus_create(DEVICE(ps));
++}
++
++static void npcm7xx_peci_class_init(ObjectClass *klass, void *data)
++{
++    ResettableClass *rc =3D RESETTABLE_CLASS(klass);
++    DeviceClass *dc =3D DEVICE_CLASS(klass);
++
++    dc->desc =3D "NPCM7xx PECI Module";
++    dc->realize =3D npcm7xx_peci_realize;
++    rc->phases.enter =3D npcm7xx_peci_reset;
++}
++
++static const TypeInfo npcm7xx_peci_types[] =3D {
++    {
++        .name =3D TYPE_NPCM7XX_PECI,
++        .parent =3D TYPE_SYS_BUS_DEVICE,
++        .instance_size =3D sizeof(NPCM7xxPECIState),
++        .class_init =3D npcm7xx_peci_class_init,
++    },
++};
++
++DEFINE_TYPES(npcm7xx_peci_types)
+diff --git a/hw/peci/trace-events b/hw/peci/trace-events
+index f90c998dd9..a895b21f7b 100644
+--- a/hw/peci/trace-events
++++ b/hw/peci/trace-events
+@@ -3,3 +3,8 @@
+ # peci-core.c
+ peci_handle_cmd(const char* s, uint8_t addr) "%s @ 0x%02" PRIx8
+ peci_rd_pkg_cfg(const char* s) "%s"
++
++# npcm7xx_peci.c
++npcm7xx_peci_cmd(uint64_t cmd) "cmd: 0x%04" PRIx64
++npcm7xx_peci_read(uint64_t offset, uint64_t value) "offset: 0x%04" PRIx64 =
+" value: 0x%08" PRIx64
++npcm7xx_peci_write(uint64_t offset, uint64_t value) "offset: 0x%04" PRIx64=
+ " value: 0x%08" PRIx64
+diff --git a/include/hw/arm/npcm7xx.h b/include/hw/arm/npcm7xx.h
+index ce593235d9..9e7cf8b774 100644
+--- a/include/hw/arm/npcm7xx.h
++++ b/include/hw/arm/npcm7xx.h
+@@ -30,6 +30,7 @@
+ #include "hw/misc/npcm7xx_rng.h"
+ #include "hw/net/npcm7xx_emc.h"
+ #include "hw/nvram/npcm7xx_otp.h"
++#include "hw/peci/npcm7xx_peci.h"
+ #include "hw/timer/npcm7xx_timer.h"
+ #include "hw/ssi/npcm7xx_fiu.h"
+ #include "hw/usb/hcd-ehci.h"
+@@ -105,6 +106,7 @@ typedef struct NPCM7xxState {
+     NPCM7xxFIUState     fiu[2];
+     NPCM7xxEMCState     emc[2];
+     NPCM7xxSDHCIState   mmc;
++    NPCM7xxPECIState    peci;
+ } NPCM7xxState;
+=20
+ #define TYPE_NPCM7XX    "npcm7xx"
+diff --git a/include/hw/peci/npcm7xx_peci.h b/include/hw/peci/npcm7xx_peci.=
+h
+new file mode 100644
+index 0000000000..421f445041
+--- /dev/null
++++ b/include/hw/peci/npcm7xx_peci.h
+@@ -0,0 +1,37 @@
++/*
++ * Nuvoton NPCM7xx PECI Module
++ *
++ * Copyright 2021 Google LLC
++ *
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ */
++
++#ifndef NPCM7XX_PECI_H
++#define NPCM7XX_PECI_H
++
++#include "exec/memory.h"
++#include "hw/irq.h"
++#include "hw/peci/peci.h"
++#include "hw/sysbus.h"
++
++typedef struct NPCM7xxPECIState {
++    SysBusDevice parent;
++
++    MemoryRegion iomem;
++
++    PECIBus      *bus;
++    qemu_irq      irq;
++
++    PECICmd       pcmd;
++
++    /* Registers */
++    uint8_t       status;
++    uint8_t       ctl2;
++    uint8_t       pddr;
++} NPCM7xxPECIState;
++
++#define TYPE_NPCM7XX_PECI "npcm7xx-peci"
++#define NPCM7XX_PECI(obj)                                               \
++    OBJECT_CHECK(NPCM7xxPECIState, (obj), TYPE_NPCM7XX_PECI)
++
++#endif /* NPCM7XX_PECI_H */
+--=20
+2.37.3.968.ga6b4b080e4-goog
 
->
-> I'm curious if we really need the CPU family here, or if we could just
-> base everything off the PECI version.
->
-> The PECI specification doesn't mention the CPU family, does it? Or maybe
-> it does.
->
-
-I needed the family info anyway for RdPkgConfig() CPU ID, and thought it
-would be more readable to specify that in the board file than the PECI version.
-We tend to add new machines to QEMU by copying the config of an existing
-machine, I think this way makes it more obvious that this is a field
-that is changing.
-
-
-Titus

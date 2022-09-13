@@ -1,160 +1,182 @@
-Received: by 2002:a17:906:b088:0:0:0:0 with SMTP id x8csp567557ejy;
-        Tue, 13 Sep 2022 11:30:02 -0700 (PDT)
-X-Google-Smtp-Source: AA6agR7A47ckWYeiACRj/me1Ie1RDVIB03tqIPd2tWnibdc2OR6BdKp40RVAvnIvQiSPB50scU9d
-X-Received: by 2002:ac8:5ad4:0:b0:344:5e40:7824 with SMTP id d20-20020ac85ad4000000b003445e407824mr29783951qtd.482.1663093802233;
-        Tue, 13 Sep 2022 11:30:02 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1663093802; cv=none;
+Received: by 2002:a17:906:b088:0:0:0:0 with SMTP id x8csp576848ejy;
+        Tue, 13 Sep 2022 11:51:54 -0700 (PDT)
+X-Google-Smtp-Source: AA6agR6f/FLKi2hAifuX/Brv/lTULAs18kdctbA+ijlP+m9kxEE++93AOM95RQDJJHM2B7TLRMzS
+X-Received: by 2002:a37:e319:0:b0:6cd:f643:b6d6 with SMTP id y25-20020a37e319000000b006cdf643b6d6mr11952857qki.616.1663095114642;
+        Tue, 13 Sep 2022 11:51:54 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1663095114; cv=none;
         d=google.com; s=arc-20160816;
-        b=hdeooSndU4vLagvQsYaRg8k6QnXa7xE9AW6wGk5K0+1Zqn5/12zawpQzVXG9RBA2Bm
-         nKzaf9fx6H/HZyNnp4qeDnX+5z8mwYA3+DjnRCsdwS3V3AXwdYbqJeTJV3SyXcvuscCw
-         AJ31riZ9ucs3aqeYUEs41pehjxTeuthl6clTxJL2J54E/dAALkGhY3TB6TIRTBR6E88c
-         m6W61E+5aIRgre0HFgTQusHxctSX06m93WYOW58JA1SNmXlvthe2vJd3wYPZYHcbCkp3
-         kjrcDVWEQEmfe6/QcBTn+CSvK25brMgEHB1cH5iLKk8/2TzXirDQ7JojfffGS8vf8xVt
-         4LBg==
+        b=hVOCKsHkeASzvJI6ILd10uiWDVZpPlxFPuTdA1yuor3gTA+OPEn1jXpZnccCM3jbyu
+         nJM/78LE40MtaZ/EMjIO92BRHEhuzx5fJBdUOiVYhrgIzQAW3NIL7Qbgc5sbeG1GVJwP
+         Lk1rqKJnVobCMTGRxM+F9si8y1F2RMvtUbqTLr/N7XhR8K+CnBUlXDDcZDoWSz00a6pC
+         RFitLZK0yfd/0WroCHeLlPMeqhyGEvK/4P5gv3+li+6PY3LEvSOWKXmdfYb97OWHS9aj
+         LF5BH8qeIDXxONGVSJWUlzoTtMbcyGsaQgXFzmPsB8WDFab1ZVw5simgzflt97bQk1aC
+         TblQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=vdpSw8+PtHpAQyo8pl0/USlNugYQ2VLasY9z9HCOvjo=;
-        b=H/qYAnBKUfyhyd3QDWXbYXDZsG8/gPXb8cpTGcic1qhB7I56cF0i1qd5tYUw3va0r0
-         baz1xVzPRCjroMhxIWGV85oy7YmR4+EydzsPQ8b4/WY7PwcHMvS6rOm6+6azWyX6iKC2
-         ZYJ/N3kvi3Qb6xFBUWCSXfWC66lG70K7h5LAMrzcQKHnijiYREb/9s96NZEiWeU7l63Q
-         6E1WfB2wGE92Xwyc49mFlGXN8HjoCurWpCALhKMC5lec5vxp2chBJrSeVk+vnvd885rW
-         +A3wTU6nWbUR1TLLVHfExMkCmFHGvoGARJ6Pe5ab+NIb0PTk4F/0ntKIxYUBWyVvH+zS
-         cQDQ==
+         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
+         :feedback-id:dkim-signature:dkim-signature;
+        bh=Ij1NKmqwhxrnnwOJ4huIH9TJpdlC3yPMMvBL5UmA2vY=;
+        b=GuBiYvZMBZRAyVSILkkR1sKgVRttZLJgVfzLFYYmc/QpvBzSVXyy1R3OmUc8iisF4L
+         CRfSEJDoRXws4g4ilrxQIiJHFDM/d0UeObSUxSjoF8ib9gOb+5o1i0qNeo9KB8/bmeO3
+         ymh4DNa7BW/D5z2Lqjoz/L1Dr1+PP+9CnfRu92k5LGng3g9ebHbQIwnKEwGqEc/hQ+Mc
+         iRga64Ife3Yy8D/J4Y/AUOFETlyhhid7MIkNiBKkf3U6YVr6A6VVWPO1kgRvutDi9704
+         bXdUmCfLlKQOyrlNJMQz6Ic4Fm2GEtDzJU6i6yupGrLdCt9LcNCr9lizm9xtajgYmJFt
+         CT1w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@google.com header.s=20210112 header.b=kQIsUU9j;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@pjd.dev header.s=fm3 header.b="g1Pp/NmO";
+       dkim=fail header.i=@messagingengine.com header.s=fm2 header.b="R/aV6p2C";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d5-20020ac85445000000b00343d051f5f1si16322qtq.640.2022.09.13.11.30.02
+        by mx.google.com with ESMTPS id a20-20020ac84354000000b0035ba6588fcfsi74564qtn.416.2022.09.13.11.51.54
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 13 Sep 2022 11:30:02 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 13 Sep 2022 11:51:54 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@google.com header.s=20210112 header.b=kQIsUU9j;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
-Received: from localhost ([::1]:45140 helo=lists1p.gnu.org)
+       dkim=fail header.i=@pjd.dev header.s=fm3 header.b="g1Pp/NmO";
+       dkim=fail header.i=@messagingengine.com header.s=fm2 header.b="R/aV6p2C";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:42254 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1oYAfZ-0005S2-0O
-	for alex.bennee@linaro.org; Tue, 13 Sep 2022 14:30:01 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:52348)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1oYB0k-0002zI-5F
+	for alex.bennee@linaro.org; Tue, 13 Sep 2022 14:51:54 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:43778)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <titusr@google.com>) id 1oYAXt-0004nL-EY
- for qemu-devel@nongnu.org; Tue, 13 Sep 2022 14:22:07 -0400
-Received: from mail-pg1-x530.google.com ([2607:f8b0:4864:20::530]:42660)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <titusr@google.com>) id 1oYAXp-0007Ok-Gn
- for qemu-devel@nongnu.org; Tue, 13 Sep 2022 14:22:04 -0400
-Received: by mail-pg1-x530.google.com with SMTP id q63so12084004pga.9
- for <qemu-devel@nongnu.org>; Tue, 13 Sep 2022 11:22:00 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20210112;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date;
- bh=vdpSw8+PtHpAQyo8pl0/USlNugYQ2VLasY9z9HCOvjo=;
- b=kQIsUU9jdFbHJdY4+dFIg1J5NaeSmsrNc3dT7UNte8cLw8PZXX3Wexn9l+PF3SRixE
- w8U1KHb27yFiUP0Sl6Drj8bM2N91whpbLRgkR/bT5MWliSW1bLt78UHgAV/DyX6cDhxx
- /MxLiI17GVQHgZUWLNZCX77RQmt50n4wr+5N9Zw9EnzLFMFJPxoWL4s6BurXUK2E5idt
- W/IZC8qLybrOxjskY/BhuR02BEr2fIg8xO9dnOrrJtS9SXJPHzcNMew3Wemj6iIWXzB3
- NhJZXZ9KuEjxDcHkkoxtJsrellxKqbsXKiiIDiUkU/evigsDPRyppL0nWTMYoShBEji9
- K8KQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date;
- bh=vdpSw8+PtHpAQyo8pl0/USlNugYQ2VLasY9z9HCOvjo=;
- b=13neDXbOYrJm71oaqS3GUPWoCDRzdHQ1GIcmDxFdpk7mr6cVNJD6lhdWyfXgU8x5DI
- C3N6vbZXy/mnF/ZaX9B++H22kPNOf310EtnXMKs11Sf+4gwsrmgEyVMxUp0KrcMnxxeo
- MKonX4mXW1T2FHwXJotmvDV02+gdpRP1RO6MCgw66m2NHfep+AebZpnCMqkku8wO/YJn
- hJs3hdqbDopnVJIHI39xtAEgvWKHPxnpzq9j4IBTdA4MZVQS7ixfYJAI8YGM1b/IfcqF
- uGNvuzaJ4Bwqx1nC7oWCl28/u+nhQRQHpXr/u4dgLM6tY9AW9Wtoeq7yggYpxcCGJkq6
- qjHQ==
-X-Gm-Message-State: ACgBeo0LZVvsJe4V49N68hzd8eg62R/gp1thjWooA2kv4uPDDPjcE8gs
- U9g2pqUPfHqecmf6eMqcG3UPseGj6F+K/DBt/Q+cBA==
-X-Received: by 2002:a63:a26:0:b0:434:abac:148c with SMTP id
- 38-20020a630a26000000b00434abac148cmr28191671pgk.524.1663093320346; Tue, 13
- Sep 2022 11:22:00 -0700 (PDT)
-MIME-Version: 1.0
+ (Exim 4.90_1) (envelope-from <peter@pjd.dev>)
+ id 1oYAeF-0005U1-PA; Tue, 13 Sep 2022 14:28:39 -0400
+Received: from wout2-smtp.messagingengine.com ([64.147.123.25]:37517)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <peter@pjd.dev>)
+ id 1oYAeE-0000BG-3d; Tue, 13 Sep 2022 14:28:39 -0400
+Received: from compute5.internal (compute5.nyi.internal [10.202.2.45])
+ by mailout.west.internal (Postfix) with ESMTP id D61BA3200902;
+ Tue, 13 Sep 2022 14:28:34 -0400 (EDT)
+Received: from mailfrontend2 ([10.202.2.163])
+ by compute5.internal (MEProxy); Tue, 13 Sep 2022 14:28:35 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=pjd.dev; h=cc:cc
+ :content-type:date:date:from:from:in-reply-to:in-reply-to
+ :message-id:mime-version:references:reply-to:sender:subject
+ :subject:to:to; s=fm3; t=1663093714; x=1663180114; bh=Ij1NKmqwhx
+ rnnwOJ4huIH9TJpdlC3yPMMvBL5UmA2vY=; b=g1Pp/NmOEaZZBFPBs7FE9CtGsT
+ nPfhxj8Ris1ygu0JWtq67rSZ935T49pUmWSQP/kPeZfJsCwfPIXNasIBKGkS2MuQ
+ dMlJOu5jvm3SIQQBYONCcL/XZIKtWYVMKSpyTdlWr4LaGRxQFiAOqXZ2LV2c5f0N
+ btau4efULWGD0WQRah6Tcff8eGYFCZObks3mHkgn/S3X3zi7AJwL7N5+Z4lIVEFy
+ +YS3AMyHxfFddd19EW+1paeA3xexYa1YMZFtDWMKAyt6P7rq/3EM9MT0rpwlrL4+
+ cMU0FQ+gWiV0sLMWSwkEHdSQjhXEhZowv2bswLwCEh3C6NnHclLdkMszXhnw==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+ messagingengine.com; h=cc:cc:content-type:date:date:feedback-id
+ :feedback-id:from:from:in-reply-to:in-reply-to:message-id
+ :mime-version:references:reply-to:sender:subject:subject:to:to
+ :x-me-proxy:x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=
+ fm2; t=1663093714; x=1663180114; bh=Ij1NKmqwhxrnnwOJ4huIH9TJpdlC
+ 3yPMMvBL5UmA2vY=; b=R/aV6p2CbFumJID1ue7knH6JPuF1HzVHbksUQeiVB8Zp
+ A1XBVWwPnkbRT3r0TV4VrR1ocpbAxTx57bjYj1D8YepGbzJkTeJ3t20mhzZbSjDU
+ DDyHWdGWFzpxLYFcZcNum9qv4swgzDOCRhM+mWFqW3sR4bORcvlF7OzJS2an0XRi
+ 6x6wmaS0v0K0QuJbKlcrH0V/2tGbH8d3Ky3z+z1Rh2fj06FGTvivNyhJ5DJ9Zba1
+ 1C4OelvuR0JhTKlf6AIWYdg7XMg181DE3GobViMhdxmTFUAV1ElImbZqIJirHpdk
+ JpT3rHUujtxl3UlfpLm/Yqo6m/IiI8IVwmkI6QzF5Q==
+X-ME-Sender: <xms:0csgY9a7wSMjQMVT7Sg1nXKHSrDesoxBwUC4QtbDrvnRJulXh6eZvg>
+ <xme:0csgY0ZafU34mmzdh0rllI9ebgXags1N-SniUnrkqFmo54KNWJKCMGtjT9Hv3KXnr
+ XTJJgItDakUGs_h_Zw>
+X-ME-Received: <xmr:0csgY_-rYoEEHoMzLqjxkcda5gCJp0ewtjdVEjpTsYCt_G3lGYr-LHJTIkLCFi64xIfmN2r8hz2g>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvfedrfedugedguddvjecutefuodetggdotefrod
+ ftvfcurfhrohhfihhlvgemucfhrghsthforghilhdpqfgfvfdpuffrtefokffrpgfnqfgh
+ necuuegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmd
+ enucfjughrpeffhffvvefukfhfgggtuggjsehttdertddttddvnecuhfhrohhmpefrvght
+ vghrucffvghlvghvohhrhigrshcuoehpvghtvghrsehpjhgurdguvghvqeenucggtffrrg
+ htthgvrhhnpeduteeihfffleeuveekgedugfeffeehtdeguefffffhleehgfduueejjeek
+ feeukeenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhgrihhlfhhrohhmpe
+ hpvghtvghrsehpjhgurdguvghv
+X-ME-Proxy: <xmx:0csgY7rBgbNUfOA452Om5ExWB911LY6ehn2bPxOjljfh2Fh-89WSyQ>
+ <xmx:0csgY4pcCCJXsvoAn3Twn-5BTeegmLmgAgHOQ3DdNDuwPYBQD2sWGQ>
+ <xmx:0csgYxT_0XxKYlDYW9ccTMPURcNiMA6cXGvCzBxK4JKbmtq2Ou_SGw>
+ <xmx:0ssgYwICqsGj76oKUbMP3je7gNGOdpoYNtlMLCV9E7R0Om-dnGhqcQ>
+Feedback-ID: i9e814621:Fastmail
+Received: by mail.messagingengine.com (Postfix) with ESMTPA; Tue,
+ 13 Sep 2022 14:28:32 -0400 (EDT)
+Date: Tue, 13 Sep 2022 11:28:31 -0700
+From: Peter Delevoryas <peter@pjd.dev>
+To: Titus Rwantare <titusr@google.com>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, patrick@stwcx.xyz,
+ iwona.winiarska@intel.com, tmaimon77@gmail.com,
+ quic_jaehyoo@quicinc.com, Hao Wu <wuhaotsh@google.com>,
+ Patrick Venture <venture@google.com>
+Subject: Re: [RFC PATCH 1/3] hw/peci: add initial support for PECI
+Message-ID: <YyDLz9neyhuA9XoP@pdel-fedora-MJ0HJWH9>
 References: <20220906220552.1243998-1-titusr@google.com>
- <20220906220552.1243998-4-titusr@google.com>
- <YxuYehCwKw/CmWhN@pdel-fedora-MJ0HJWH9>
-In-Reply-To: <YxuYehCwKw/CmWhN@pdel-fedora-MJ0HJWH9>
-From: Titus Rwantare <titusr@google.com>
-Date: Tue, 13 Sep 2022 11:21:23 -0700
-Message-ID: <CAMvPwGoB9jm_mF0bkFBXmHKH2oxbw3N7Z_QgNqs7F=Bktmnu1w@mail.gmail.com>
-Subject: Re: [RFC PATCH 3/3] hw/peci: add support for EndPointConfig reads
-To: Peter Delevoryas <peter@pjd.dev>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, patrick@stwcx.xyz, 
- iwona.winiarska@intel.com, tmaimon77@gmail.com, quic_jaehyoo@quicinc.com, 
- Hao Wu <wuhaotsh@google.com>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::530;
- envelope-from=titusr@google.com; helo=mail-pg1-x530.google.com
-X-Spam_score_int: -175
-X-Spam_score: -17.6
-X-Spam_bar: -----------------
-X-Spam_report: (-17.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- ENV_AND_HDR_SPF_MATCH=-0.5, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01, USER_IN_DEF_DKIM_WL=-7.5,
- USER_IN_DEF_SPF_WL=-7.5 autolearn=ham autolearn_force=no
+ <20220906220552.1243998-2-titusr@google.com>
+ <Yxua+pZUn5lSSekN@pdel-fedora-MJ0HJWH9>
+ <CAMvPwGprWzOn+YgpOrTTJT67C4JLBewbknbmPn-E5pzFUmTKNw@mail.gmail.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <CAMvPwGprWzOn+YgpOrTTJT67C4JLBewbknbmPn-E5pzFUmTKNw@mail.gmail.com>
+Received-SPF: pass client-ip=64.147.123.25; envelope-from=peter@pjd.dev;
+ helo=wout2-smtp.messagingengine.com
+X-Spam_score_int: -27
+X-Spam_score: -2.8
+X-Spam_bar: --
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: dbhfo+3JQoLs
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: BS7DCGvhHTAg
 
-On Fri, 9 Sept 2022 at 12:48, Peter Delevoryas <peter@pjd.dev> wrote:
->
-> On Tue, Sep 06, 2022 at 10:05:52PM +0000, Titus Rwantare wrote:
-> > Signed-off-by: Titus Rwantare <titusr@google.com>
-> > Reviewed-by: Hao Wu <wuhaotsh@google.com>
-> > ---
-...
-> > +++ b/include/hw/peci/peci.h
-> > @@ -112,6 +112,26 @@ typedef struct PECITempTarget {
-> >      uint8_t tjmax;
-> >  } PECITempTarget;
+On Tue, Sep 13, 2022 at 11:21:16AM -0700, Titus Rwantare wrote:
+> On Fri, 9 Sept 2022 at 12:58, Peter Delevoryas <peter@pjd.dev> wrote:
+> 
+> > > +/*
+> > > + * PECI Client device
+> > > + * Copyright 2021 Google LLC
+> > > + *
+> > > + * SPDX-License-Identifier: GPL-2.0-or-later
 > >
-> > +typedef enum PECIEndPtType {
-> > +    LOCAL_PCI_CFG = 3,
-> > +    PCI_CFG,
-> > +    MMIO_BDF,
-> > +} PECIEndPtType;
-> > +
-> > +typedef struct __attribute__ ((__packed__)) {
-> > +    PECIEndPtType msg_type;
-> > +    uint8_t addr_type;
-> > +    uint8_t bus;
-> > +    uint8_t dev;
-> > +    uint8_t func;
-> > +    uint16_t reg;
-> > +} PECIEndPtHeader;
-> > +
-> > +typedef struct {
-> > +    PECIEndPtHeader hdr;
-> > +    uint32_t data;
-> > +} PECIEndPtConfig;
->
-> I noticed the summary is "hw/peci: add support for EndPointConfig reads"
-> but type definitions here use "EndPt", maybe they should be
-> "PECIEndPoint*"? I don't think extending to Point is too long.
+> > Not sure, but I think the SPDX license identifier is supposed to be in
+> > the first line? Maybe not though. I would have expected:
+> >
+> 
+> That's a Linux thing as far as I can tell. QEMU has it in the top comment.
 
-Fair, fixed in v2.
+Oh ok, nevermind then.
 
+> 
+> >
+> > I'm curious if we really need the CPU family here, or if we could just
+> > base everything off the PECI version.
+> >
+> > The PECI specification doesn't mention the CPU family, does it? Or maybe
+> > it does.
+> >
+> 
+> I needed the family info anyway for RdPkgConfig() CPU ID, and thought it
+> would be more readable to specify that in the board file than the PECI version.
+> We tend to add new machines to QEMU by copying the config of an existing
+> machine, I think this way makes it more obvious that this is a field
+> that is changing.
 
-Titus
+Yeah, I think you're right. And looking at the PECI spec, they refer to
+families directly when describing new features, so this seems
+appropriate.
+
+Reviewed-by: Peter Delevoryas <peter@pjd.dev>
+
+> 
+> 
+> Titus

@@ -1,107 +1,114 @@
-Received: by 2002:a05:7108:5790:0:0:0:0 with SMTP id cd16csp5189731gdb;
-        Wed, 14 Sep 2022 05:42:53 -0700 (PDT)
-X-Google-Smtp-Source: AA6agR5TE9ChGvLmrijxAO45jfwZ83mAQhS4hGxB/CdgchsQ4VmVXZ60van7F7SNozavFt0wtR79
-X-Received: by 2002:ad4:5aea:0:b0:4ac:905a:549a with SMTP id c10-20020ad45aea000000b004ac905a549amr20474510qvh.1.1663159373147;
-        Wed, 14 Sep 2022 05:42:53 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1663159373; cv=none;
+Received: by 2002:a05:7108:5790:0:0:0:0 with SMTP id cd16csp5195847gdb;
+        Wed, 14 Sep 2022 05:51:58 -0700 (PDT)
+X-Google-Smtp-Source: AA6agR7xBxnI1xkKd86dr9HnGX3E2uvee7y0mml76QIKzFGBptpebpMLoZ7iXro9baHOdZdLDyFY
+X-Received: by 2002:a0c:a98e:0:b0:4ac:929d:216f with SMTP id a14-20020a0ca98e000000b004ac929d216fmr20113148qvb.16.1663159917907;
+        Wed, 14 Sep 2022 05:51:57 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1663159917; cv=none;
         d=google.com; s=arc-20160816;
-        b=eAu22Qk+/UlpZccHaT1s1W3zeeUK06XDbtQEcRu1L1LKzhWUvEHjAX3ZGpfPHWQKMt
-         Vl/qaTSZtu5XwOpeJJR1ZpvozcUZKO7yyGjyikRNjZjeDIXyL+naQZWUM4bbUdYaCXYD
-         SbkT+6xzuLv4MWEdYFHcUPOt44yPjmanfb3ISzOi3YSdBUMwA7RsroqrHAgfxeZskJI+
-         9WAqLAEJMGxmxBJjNfOlIDgIkZG+qnqDP7opMj+PhL98lKLrCTrYqSAV1j7y9NaQMOZU
-         DdfYPQb+VQodwJRpyGS1VeH2Myxuowrqh5lTtcbqwc83TDAH5FVC1tAK6Si+B14N8546
-         1TTQ==
+        b=isVo+vNyifI4A7X+HfNbNEqIBl/YGheB0B43xcQ486xnEEQuzCs7iJ0gIyS8g7uf+c
+         TypinLVCn9NrYcA5byZu7kkrye88X23IfVWxh+5UWRFCdlbu/1m4U6Y3trzgBYsDEYKG
+         Tr0XGy3vFRDF0vDlezGmOz945kf8XdJuil72Wgr9uZQ8pJkb9ASdOFQ++U41H+rpDTOV
+         Pb7LKjJ02JswcYo8A/kHggazGw496LB0XYtjP48id/27Fm3LZ0lgY1CcMYRoebb9jPd3
+         K5GRpvJSCf7Y2XLmC5qhjCPw9ZZ/m/KOzDqeGm5mfA/MeRr0pkFmmo7l2TEo4dvKriR+
+         TPSw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
-        bh=Zs0jk/JvFwnbKE+lfj5whsCWpH9I9SNQHFUNr6TNfl8=;
-        b=VxXnNFjda9zJddNCBZLAZGxmcXn/VeBDmUNLkRvhqOt/Jn18WNizZy+vBw9XKeUUMm
-         GPN8KlMduifxxiBqSfTmMZT6fPtMf8AZNdm4SUHPiz1X1Ap7hCQ6uZWfgYMguGmxkqH6
-         CCWz48bPiOI9T3k+bCyj96uYetwq1tw2lvmTUBAShJDe1iFCGx9VB3HApLeiRHYmgnB2
-         tUZpq3xZtZzqLz4FJtnA7MFTnSX6S7fqgdy4EpBusKSsfETUdLY49jEVXbBgKVNvzz77
-         CeGBZPV60QSC0hhTLN0EbtwmLMYxdTIt6GEvlsXpOH2/LoDz0aCLK0bsBH/sF30Ygh+G
-         2/1Q==
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=AlAPq4gQnCX4cukLBBAtOayjAhl59e9c8PEunG7TS7I=;
+        b=C/O0P8oPGtCmPKODoHajU1cwj/V8dILESds6nGvwnBk5irb1OrJHkSKDWZr67NEHqz
+         8u2ugJXDd8UgIoSvUjcmRjUWZ+JoB/37plib75f+dT0ZxSo8brnDud2TFNcUjXTICCCU
+         a3WVVgRkacd5hrd7aMh6K/N8CdU2Tdycqhg3ZRZOCzes7rJ2js9CZ3B/elGzJg1lA3if
+         GlJpHXBQRK1YJdS7EnS3xyz/6SHlM4DgiKbgjNlIizMJQ1TgywGKsi3Ozdm54kRJJeUe
+         FH/ilw5qlD+ocW4VyWCmrjOF9P9FDCxqrmD1i0FOOmDb6Ra2+/em71CUNco4Uig5Z9Cg
+         k4Bw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=RJP3AHIn;
+       dkim=pass header.i=@linaro.org header.s=google header.b=cAkEyuCK;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id ke26-20020a056214301a00b004acc3656bb8si1063082qvb.563.2022.09.14.05.42.53
+        by mx.google.com with ESMTPS id gu11-20020a056214260b00b004aaaad81dffsi1234835qvb.199.2022.09.14.05.51.57
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 14 Sep 2022 05:42:53 -0700 (PDT)
+        Wed, 14 Sep 2022 05:51:57 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=RJP3AHIn;
+       dkim=pass header.i=@linaro.org header.s=google header.b=cAkEyuCK;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:35348 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:41092 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1oYRj9-0008Ca-NP
-	for alex.bennee@linaro.org; Wed, 14 Sep 2022 08:42:51 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:35928)
+	id 1oYRrx-0007Zn-Eo
+	for alex.bennee@linaro.org; Wed, 14 Sep 2022 08:51:57 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:39738)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1oYQwR-0008UF-C6
- for qemu-devel@nongnu.org; Wed, 14 Sep 2022 07:52:32 -0400
-Received: from mail-wr1-x42d.google.com ([2a00:1450:4864:20::42d]:34778)
+ id 1oYQwa-0000Sd-9A
+ for qemu-devel@nongnu.org; Wed, 14 Sep 2022 07:52:40 -0400
+Received: from mail-wm1-x335.google.com ([2a00:1450:4864:20::335]:36469)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1oYQwH-0008Us-Ag
- for qemu-devel@nongnu.org; Wed, 14 Sep 2022 07:52:31 -0400
-Received: by mail-wr1-x42d.google.com with SMTP id bo13so8783144wrb.1
- for <qemu-devel@nongnu.org>; Wed, 14 Sep 2022 04:52:20 -0700 (PDT)
+ id 1oYQwQ-00005F-Nl
+ for qemu-devel@nongnu.org; Wed, 14 Sep 2022 07:52:39 -0400
+Received: by mail-wm1-x335.google.com with SMTP id
+ i203-20020a1c3bd4000000b003b3df9a5ecbso10595748wma.1
+ for <qemu-devel@nongnu.org>; Wed, 14 Sep 2022 04:52:30 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:from:to:cc:subject:date;
- bh=Zs0jk/JvFwnbKE+lfj5whsCWpH9I9SNQHFUNr6TNfl8=;
- b=RJP3AHInzLmoZ3g5TUk+4Dk+p51zG49upQyRUlhBONqw+kMdjD6Meg45pnvi3mImrs
- wf9JhFj4TR5D+sw62ziksE15hP/hPOIgfLl/hz1jT0a6NqD1HxVoLHIZwtlJrKDyjZDo
- RrYCKaMIppYK7Tv3D7/n5HEdsm77fpPYagiWHXwer7TUC27oyUTUy/kQCahcWEzqZo5m
- knssq8jH6IpUT5x0/4PlBioh6zcTCZeFKyOS7yu0XubVKdPXL5UrpLdV5kkAGRB6SxXc
- 8YNpnzpk+VCa2CciBCpPZIpuf6TGIYSbTHCt5K4E0xnKZaA+cPuNrLaeifqpuc55pgrV
- k1bw==
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date;
+ bh=AlAPq4gQnCX4cukLBBAtOayjAhl59e9c8PEunG7TS7I=;
+ b=cAkEyuCKtrrB6UvKOgmmbrpqoivME1Z9agda2lF//90TkFnG4+rrDFPWdv3m3cpU+N
+ a/5s67DQMBqKb+PuihGyzACTmIkxEhYSSx6BVJFXxRQhXDHLYIRqdKZiTCYMjcHwb1ZZ
+ TBWWvDLiV4jafZUIq5Jw+ML31LyMIKwNZ5akvcsRVbpi3GFIm4+MQK5LSeGSRqee/bWg
+ yH3YTmsRPI6ybMXk1cImxFEEy4mJFhEqd7GMEzcKozgac5TAqHl/y/St+jtaqUE1xsMh
+ lCNYRRV4Zj4SmjZodmQkiIvaGxrCxWpBlyZhxYmX1QCgxJY9Jn0/UxJw1SMh3UvsQI5j
+ x/CA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:x-gm-message-state:from:to:cc:subject:date;
- bh=Zs0jk/JvFwnbKE+lfj5whsCWpH9I9SNQHFUNr6TNfl8=;
- b=WMHzBb/QcXVXxZwzievSd1hy6duy3HULZkqMS4+LKyF4E4OO+lKsAsm5YFDdXiZBaa
- rl3uHnGbN0QxZB13qdjreZNiAxEjJSW3nXUPU8+goFdRQoROordZpoymwjezGM19jqRm
- 7+90pmr+eCpKovc/pj1wqFBG91jdi2oA0k6UYBLCYOUq6NuIzQFeOSLpMiaSPQ3QCr0r
- vre4i4Ghr1/EbWnVOHm9gdN5QBBtJeNKhgP9Gj3wcE3Qnn5IolPZqTvEk9PkkAhvPgZe
- qXVDMaN0unQUIiEgGst5/jZ/yzDxgtmX66AkXlDXJNBrZ3whf/FZQF9gIiksJS+f5l6z
- qO6Q==
-X-Gm-Message-State: ACgBeo18itd0r09OBZgKyeAARCzX/hkkybsJ9jzQTT1CNrzIugAbsyv3
- PyPOoOBfOWzaEzSc5xvG50Kdluf4Vk8EtGnO
-X-Received: by 2002:a5d:64e8:0:b0:22a:bbb0:fa with SMTP id
- g8-20020a5d64e8000000b0022abbb000famr5926128wri.372.1663156338816; 
- Wed, 14 Sep 2022 04:52:18 -0700 (PDT)
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+ :subject:date;
+ bh=AlAPq4gQnCX4cukLBBAtOayjAhl59e9c8PEunG7TS7I=;
+ b=E1kQ+8pk1+ur0dlA/pUpX7KwFMrwaXgowNy6L7MB0oQNCiixHEGcfmWsccBe7EGAON
+ KpoWnlfA4h4/ZB7C/ad4n4IHaZyMSF+QhGn2WPzhTmADubsNFgJZXs4RfgyoFUUCrZBF
+ ElMBBpkZAcXl1VTrBrCDj7/6YrxxO48Y13RB9LSFajG74cuqRkTXlWapaBk6UlmHNT/o
+ 7HQRBpvywU0SHZ23lJmwzOcbQ21XI/uCwlxvy0Qi+jHKtO44noO9K64+AFnegwpwNloi
+ gpC98eO+PoGM8IPUktnozyXXC8GyK7LYDrnoVBiClMmOPQsscwEc2bGUItf1+LcI8/va
+ 6laA==
+X-Gm-Message-State: ACgBeo2hY31ZKsY6gnilb7qB1RQ0+MeV6p/PAS65zmDObUOS8TH3teks
+ 7r2eg0SWJOuslcgOpQagHXtIORAotnVA9SLG
+X-Received: by 2002:a7b:c2a9:0:b0:3a6:2400:722c with SMTP id
+ c9-20020a7bc2a9000000b003a62400722cmr2778737wmk.108.1663156349363; 
+ Wed, 14 Sep 2022 04:52:29 -0700 (PDT)
 Received: from stoup.. ([89.101.193.70]) by smtp.gmail.com with ESMTPSA id
- t9-20020a5d6909000000b0022a3a887ceasm13712970wru.49.2022.09.14.04.52.17
+ t9-20020a5d6909000000b0022a3a887ceasm13712970wru.49.2022.09.14.04.52.28
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 14 Sep 2022 04:52:18 -0700 (PDT)
+ Wed, 14 Sep 2022 04:52:28 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org
-Subject: [PULL 00/20] target-arm.next patch queue
-Date: Wed, 14 Sep 2022 12:51:56 +0100
-Message-Id: <20220914115217.117532-1-richard.henderson@linaro.org>
+Cc: qemu-arm@nongnu.org,
+	Peter Maydell <peter.maydell@linaro.org>
+Subject: [PULL 11/20] target/arm: Don't mishandle count when enabling or
+ disabling PMU counters
+Date: Wed, 14 Sep 2022 12:52:08 +0100
+Message-Id: <20220914115217.117532-13-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20220914115217.117532-1-richard.henderson@linaro.org>
+References: <20220914115217.117532-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42d;
- envelope-from=richard.henderson@linaro.org; helo=mail-wr1-x42d.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::335;
+ envelope-from=richard.henderson@linaro.org; helo=mail-wm1-x335.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -116,82 +123,126 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: bclRH1LmyOgR
+X-TUID: 8KuA//Z7CEgK
 
-A collection of arm-related patches that I collected while
-Peter was on holiday.  There are some still outstanding that
-I didn't feel comfortable collecting, such as cortex-r52.
+From: Peter Maydell <peter.maydell@linaro.org>
 
+The PMU cycle and event counter infrastructure design requires that
+operations on the PMU register fields are wrapped in pmu_op_start()
+and pmu_op_finish() calls (or their more specific pmmcntr and
+pmevcntr equivalents).  This includes any changes to registers which
+affect whether the counter should be enabled or disabled, but we
+forgot to do this.
 
-r~
+The effect of this bug is that in sequences like:
+ * disable the cycle counter (PMCCNTR) using the PMCNTEN register
+ * write a value such as 0xfffff000 to the PMCCNTR
+ * restart the counter by writing to PMCNTEN
+the value written to the cycle counter is corrupted, and it starts
+counting from the wrong place. (Essentially, we fail to record that
+the QEMU_CLOCK_VIRTUAL timestamp when the counter should be considered
+to have started counting is the point when PMCNTEN is written to enable
+the counter.)
 
+Add the necessary bracketing calls, so that updates to the various
+registers which affect whether the PMU is counting are handled
+correctly.
 
-The following changes since commit 79dfa177ae348bb5ab5f97c0915359b13d6186e2:
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Message-Id: <20220822132358.3524971-4-peter.maydell@linaro.org>
+Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+---
+ target/arm/helper.c | 45 +++++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 45 insertions(+)
 
-  Merge tag 'pull-qapi-2022-09-07' of git://repo.or.cz/qemu/armbru into staging (2022-09-07 13:13:30 -0400)
+diff --git a/target/arm/helper.c b/target/arm/helper.c
+index e4824e01b8..a348c7407d 100644
+--- a/target/arm/helper.c
++++ b/target/arm/helper.c
+@@ -1079,6 +1079,14 @@ static CPAccessResult pmreg_access_ccntr(CPUARMState *env,
+     return pmreg_access(env, ri, isread);
+ }
+ 
++/*
++ * Bits in MDCR_EL2 and MDCR_EL3 which pmu_counter_enabled() looks at.
++ * We use these to decide whether we need to wrap a write to MDCR_EL2
++ * or MDCR_EL3 in pmu_op_start()/pmu_op_finish() calls.
++ */
++#define MDCR_EL2_PMU_ENABLE_BITS (MDCR_HPME | MDCR_HPMD | MDCR_HPMN)
++#define MDCR_EL3_PMU_ENABLE_BITS (MDCR_SPME)
++
+ /* Returns true if the counter (pass 31 for PMCCNTR) should count events using
+  * the current EL, security state, and register configuration.
+  */
+@@ -1432,15 +1440,19 @@ static uint64_t pmccfiltr_read_a32(CPUARMState *env, const ARMCPRegInfo *ri)
+ static void pmcntenset_write(CPUARMState *env, const ARMCPRegInfo *ri,
+                             uint64_t value)
+ {
++    pmu_op_start(env);
+     value &= pmu_counter_mask(env);
+     env->cp15.c9_pmcnten |= value;
++    pmu_op_finish(env);
+ }
+ 
+ static void pmcntenclr_write(CPUARMState *env, const ARMCPRegInfo *ri,
+                              uint64_t value)
+ {
++    pmu_op_start(env);
+     value &= pmu_counter_mask(env);
+     env->cp15.c9_pmcnten &= ~value;
++    pmu_op_finish(env);
+ }
+ 
+ static void pmovsr_write(CPUARMState *env, const ARMCPRegInfo *ri,
+@@ -4681,7 +4693,39 @@ static void sctlr_write(CPUARMState *env, const ARMCPRegInfo *ri,
+ static void sdcr_write(CPUARMState *env, const ARMCPRegInfo *ri,
+                        uint64_t value)
+ {
++    /*
++     * Some MDCR_EL3 bits affect whether PMU counters are running:
++     * if we are trying to change any of those then we must
++     * bracket this update with PMU start/finish calls.
++     */
++    bool pmu_op = (env->cp15.mdcr_el3 ^ value) & MDCR_EL3_PMU_ENABLE_BITS;
++
++    if (pmu_op) {
++        pmu_op_start(env);
++    }
+     env->cp15.mdcr_el3 = value & SDCR_VALID_MASK;
++    if (pmu_op) {
++        pmu_op_finish(env);
++    }
++}
++
++static void mdcr_el2_write(CPUARMState *env, const ARMCPRegInfo *ri,
++                           uint64_t value)
++{
++    /*
++     * Some MDCR_EL2 bits affect whether PMU counters are running:
++     * if we are trying to change any of those then we must
++     * bracket this update with PMU start/finish calls.
++     */
++    bool pmu_op = (env->cp15.mdcr_el2 ^ value) & MDCR_EL2_PMU_ENABLE_BITS;
++
++    if (pmu_op) {
++        pmu_op_start(env);
++    }
++    env->cp15.mdcr_el2 = value;
++    if (pmu_op) {
++        pmu_op_finish(env);
++    }
+ }
+ 
+ static const ARMCPRegInfo v8_cp_reginfo[] = {
+@@ -7724,6 +7768,7 @@ void register_cp_regs_for_features(ARMCPU *cpu)
+         ARMCPRegInfo mdcr_el2 = {
+             .name = "MDCR_EL2", .state = ARM_CP_STATE_BOTH,
+             .opc0 = 3, .opc1 = 4, .crn = 1, .crm = 1, .opc2 = 1,
++            .writefn = mdcr_el2_write,
+             .access = PL2_RW, .resetvalue = pmu_num_counters(env),
+             .fieldoffset = offsetof(CPUARMState, cp15.mdcr_el2),
+         };
+-- 
+2.34.1
 
-are available in the Git repository at:
-
-  https://gitlab.com/rth7680/qemu.git tags/pull-arm-20220914
-
-for you to fetch changes up to 761c532ab1ebe9d345c9afe4fb9c2c4b26c58582:
-
-  target/arm: Make boards pass base address to armv7m_load_kernel() (2022-09-14 11:19:40 +0100)
-
-----------------------------------------------------------------
-Add cortex-a35.
-Fix bcm2835 framebuffer for rpi firmware.
-Add FEAT_ETS.
-Add FEAT_PMUv3p5.
-Cleanups to armv7m_load_kernel.
-
-----------------------------------------------------------------
-Enrik Berkhan (1):
-      hw/arm/bcm2835_property: Add support for RPI_FIRMWARE_FRAMEBUFFER_GET_NUM_DISPLAYS
-
-Hao Wu (1):
-      target/arm: Add cortex-a35
-
-Peter Maydell (18):
-      target/arm: Make cpregs 0, c0, c{3-15}, {0-7} correctly RAZ in v8
-      target/arm: Sort KVM reads of AArch32 ID registers into encoding order
-      target/arm: Implement ID_MMFR5
-      target/arm: Implement ID_DFR1
-      target/arm: Advertise FEAT_ETS for '-cpu max'
-      target/arm: Add missing space in comment
-      target/arm: Don't corrupt high half of PMOVSR when cycle counter overflows
-      target/arm: Correct value returned by pmu_counter_mask()
-      target/arm: Don't mishandle count when enabling or disabling PMU counters
-      target/arm: Ignore PMCR.D when PMCR.LC is set
-      target/arm: Honour MDCR_EL2.HPMD in Secure EL2
-      target/arm: Detect overflow when calculating next PMU interrupt
-      target/arm: Rename pmu_8_n feature test functions
-      target/arm: Implement FEAT_PMUv3p5 cycle counter disable bits
-      target/arm: Support 64-bit event counters for FEAT_PMUv3p5
-      target/arm: Report FEAT_PMUv3p5 for TCG '-cpu max'
-      target/arm: Remove useless TARGET_BIG_ENDIAN check in armv7m_load_kernel()
-      target/arm: Make boards pass base address to armv7m_load_kernel()
-
- docs/system/arm/emulation.rst |   2 +
- docs/system/arm/virt.rst      |   1 +
- include/hw/arm/boot.h         |   5 +-
- target/arm/cpu.h              |  39 ++++--
- target/arm/internals.h        |   5 +-
- hw/arm/armv7m.c               |  14 +--
- hw/arm/aspeed.c               |   1 +
- hw/arm/microbit.c             |   2 +-
- hw/arm/mps2-tz.c              |   2 +-
- hw/arm/mps2.c                 |   2 +-
- hw/arm/msf2-som.c             |   2 +-
- hw/arm/musca.c                |   3 +-
- hw/arm/netduino2.c            |   2 +-
- hw/arm/netduinoplus2.c        |   2 +-
- hw/arm/stellaris.c            |   2 +-
- hw/arm/stm32vldiscovery.c     |   2 +-
- hw/arm/virt.c                 |   1 +
- hw/misc/bcm2835_property.c    |   4 +
- target/arm/cpu64.c            |  83 ++++++++++++-
- target/arm/cpu_tcg.c          |   8 +-
- target/arm/helper.c           | 267 ++++++++++++++++++++++++++++++++++--------
- target/arm/kvm64.c            |   8 +-
- 22 files changed, 374 insertions(+), 83 deletions(-)

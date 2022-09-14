@@ -1,248 +1,161 @@
-Received: by 2002:a05:7108:5790:0:0:0:0 with SMTP id cd16csp5195847gdb;
-        Wed, 14 Sep 2022 05:51:58 -0700 (PDT)
-X-Google-Smtp-Source: AA6agR7xBxnI1xkKd86dr9HnGX3E2uvee7y0mml76QIKzFGBptpebpMLoZ7iXro9baHOdZdLDyFY
-X-Received: by 2002:a0c:a98e:0:b0:4ac:929d:216f with SMTP id a14-20020a0ca98e000000b004ac929d216fmr20113148qvb.16.1663159917907;
-        Wed, 14 Sep 2022 05:51:57 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1663159917; cv=none;
-        d=google.com; s=arc-20160816;
-        b=isVo+vNyifI4A7X+HfNbNEqIBl/YGheB0B43xcQ486xnEEQuzCs7iJ0gIyS8g7uf+c
-         TypinLVCn9NrYcA5byZu7kkrye88X23IfVWxh+5UWRFCdlbu/1m4U6Y3trzgBYsDEYKG
-         Tr0XGy3vFRDF0vDlezGmOz945kf8XdJuil72Wgr9uZQ8pJkb9ASdOFQ++U41H+rpDTOV
-         Pb7LKjJ02JswcYo8A/kHggazGw496LB0XYtjP48id/27Fm3LZ0lgY1CcMYRoebb9jPd3
-         K5GRpvJSCf7Y2XLmC5qhjCPw9ZZ/m/KOzDqeGm5mfA/MeRr0pkFmmo7l2TEo4dvKriR+
-         TPSw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=AlAPq4gQnCX4cukLBBAtOayjAhl59e9c8PEunG7TS7I=;
-        b=C/O0P8oPGtCmPKODoHajU1cwj/V8dILESds6nGvwnBk5irb1OrJHkSKDWZr67NEHqz
-         8u2ugJXDd8UgIoSvUjcmRjUWZ+JoB/37plib75f+dT0ZxSo8brnDud2TFNcUjXTICCCU
-         a3WVVgRkacd5hrd7aMh6K/N8CdU2Tdycqhg3ZRZOCzes7rJ2js9CZ3B/elGzJg1lA3if
-         GlJpHXBQRK1YJdS7EnS3xyz/6SHlM4DgiKbgjNlIizMJQ1TgywGKsi3Ozdm54kRJJeUe
-         FH/ilw5qlD+ocW4VyWCmrjOF9P9FDCxqrmD1i0FOOmDb6Ra2+/em71CUNco4Uig5Z9Cg
-         k4Bw==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=cAkEyuCK;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id gu11-20020a056214260b00b004aaaad81dffsi1234835qvb.199.2022.09.14.05.51.57
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 14 Sep 2022 05:51:57 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=cAkEyuCK;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:41092 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1oYRrx-0007Zn-Eo
-	for alex.bennee@linaro.org; Wed, 14 Sep 2022 08:51:57 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:39738)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1oYQwa-0000Sd-9A
- for qemu-devel@nongnu.org; Wed, 14 Sep 2022 07:52:40 -0400
-Received: from mail-wm1-x335.google.com ([2a00:1450:4864:20::335]:36469)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1oYQwQ-00005F-Nl
- for qemu-devel@nongnu.org; Wed, 14 Sep 2022 07:52:39 -0400
-Received: by mail-wm1-x335.google.com with SMTP id
- i203-20020a1c3bd4000000b003b3df9a5ecbso10595748wma.1
- for <qemu-devel@nongnu.org>; Wed, 14 Sep 2022 04:52:30 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date;
- bh=AlAPq4gQnCX4cukLBBAtOayjAhl59e9c8PEunG7TS7I=;
- b=cAkEyuCKtrrB6UvKOgmmbrpqoivME1Z9agda2lF//90TkFnG4+rrDFPWdv3m3cpU+N
- a/5s67DQMBqKb+PuihGyzACTmIkxEhYSSx6BVJFXxRQhXDHLYIRqdKZiTCYMjcHwb1ZZ
- TBWWvDLiV4jafZUIq5Jw+ML31LyMIKwNZ5akvcsRVbpi3GFIm4+MQK5LSeGSRqee/bWg
- yH3YTmsRPI6ybMXk1cImxFEEy4mJFhEqd7GMEzcKozgac5TAqHl/y/St+jtaqUE1xsMh
- lCNYRRV4Zj4SmjZodmQkiIvaGxrCxWpBlyZhxYmX1QCgxJY9Jn0/UxJw1SMh3UvsQI5j
- x/CA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date;
- bh=AlAPq4gQnCX4cukLBBAtOayjAhl59e9c8PEunG7TS7I=;
- b=E1kQ+8pk1+ur0dlA/pUpX7KwFMrwaXgowNy6L7MB0oQNCiixHEGcfmWsccBe7EGAON
- KpoWnlfA4h4/ZB7C/ad4n4IHaZyMSF+QhGn2WPzhTmADubsNFgJZXs4RfgyoFUUCrZBF
- ElMBBpkZAcXl1VTrBrCDj7/6YrxxO48Y13RB9LSFajG74cuqRkTXlWapaBk6UlmHNT/o
- 7HQRBpvywU0SHZ23lJmwzOcbQ21XI/uCwlxvy0Qi+jHKtO44noO9K64+AFnegwpwNloi
- gpC98eO+PoGM8IPUktnozyXXC8GyK7LYDrnoVBiClMmOPQsscwEc2bGUItf1+LcI8/va
- 6laA==
-X-Gm-Message-State: ACgBeo2hY31ZKsY6gnilb7qB1RQ0+MeV6p/PAS65zmDObUOS8TH3teks
- 7r2eg0SWJOuslcgOpQagHXtIORAotnVA9SLG
-X-Received: by 2002:a7b:c2a9:0:b0:3a6:2400:722c with SMTP id
- c9-20020a7bc2a9000000b003a62400722cmr2778737wmk.108.1663156349363; 
- Wed, 14 Sep 2022 04:52:29 -0700 (PDT)
-Received: from stoup.. ([89.101.193.70]) by smtp.gmail.com with ESMTPSA id
- t9-20020a5d6909000000b0022a3a887ceasm13712970wru.49.2022.09.14.04.52.28
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 14 Sep 2022 04:52:28 -0700 (PDT)
-From: Richard Henderson <richard.henderson@linaro.org>
+Return-Path: <alex.bennee@linaro.org>
+Received: from zen.linaroharston ([185.81.254.11])
+        by smtp.gmail.com with ESMTPSA id g5-20020a5d4885000000b00228de58ae2bsm13869284wrq.12.2022.09.14.09.09.55
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 14 Sep 2022 09:09:55 -0700 (PDT)
+Received: from zen.lan (localhost [127.0.0.1])
+	by zen.linaroharston (Postfix) with ESMTP id 3FBDA1FFB8;
+	Wed, 14 Sep 2022 17:09:55 +0100 (BST)
+From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org,
-	Peter Maydell <peter.maydell@linaro.org>
-Subject: [PULL 11/20] target/arm: Don't mishandle count when enabling or
- disabling PMU counters
-Date: Wed, 14 Sep 2022 12:52:08 +0100
-Message-Id: <20220914115217.117532-13-richard.henderson@linaro.org>
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	Richard Henderson <richard.henderson@linaro.org>,
+	Paolo Bonzini <pbonzini@redhat.com>
+Subject: [RFC PATCH  1/4] hw: encode accessing CPU index in MemTxAttrs
+Date: Wed, 14 Sep 2022 17:09:52 +0100
+Message-Id: <20220914160955.812151-2-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20220914115217.117532-1-richard.henderson@linaro.org>
-References: <20220914115217.117532-1-richard.henderson@linaro.org>
+In-Reply-To: <20220914160955.812151-1-alex.bennee@linaro.org>
+References: <20220914160955.812151-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::335;
- envelope-from=richard.henderson@linaro.org; helo=mail-wm1-x335.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 8KuA//Z7CEgK
+X-TUID: xzKFt2TrjdhW
 
-From: Peter Maydell <peter.maydell@linaro.org>
+We currently have hacks across the hw/ to reference current_cpu to
+work out what the current accessing CPU is. This breaks in some cases
+including using gdbstub to access HW state. As we have MemTxAttrs to
+describe details about the access lets extend it to mention if this is
+a CPU access and which one it is.
 
-The PMU cycle and event counter infrastructure design requires that
-operations on the PMU register fields are wrapped in pmu_op_start()
-and pmu_op_finish() calls (or their more specific pmmcntr and
-pmevcntr equivalents).  This includes any changes to registers which
-affect whether the counter should be enabled or disabled, but we
-forgot to do this.
+There are a number of places we need to fix up including:
 
-The effect of this bug is that in sequences like:
- * disable the cycle counter (PMCCNTR) using the PMCNTEN register
- * write a value such as 0xfffff000 to the PMCCNTR
- * restart the counter by writing to PMCNTEN
-the value written to the cycle counter is corrupted, and it starts
-counting from the wrong place. (Essentially, we fail to record that
-the QEMU_CLOCK_VIRTUAL timestamp when the counter should be considered
-to have started counting is the point when PMCNTEN is written to enable
-the counter.)
+  CPU helpers directly calling address_space_*() fns
+  models in hw/ fishing the data out of current_cpu
 
-Add the necessary bracketing calls, so that updates to the various
-registers which affect whether the PMU is counting are handled
-correctly.
+I'll start addressing some of these in following patches.
 
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-Message-Id: <20220822132358.3524971-4-peter.maydell@linaro.org>
-Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- target/arm/helper.c | 45 +++++++++++++++++++++++++++++++++++++++++++++
- 1 file changed, 45 insertions(+)
+ include/exec/memattrs.h |  4 +++-
+ accel/tcg/cputlb.c      | 22 ++++++++++++++++------
+ hw/core/cpu-sysemu.c    | 17 +++++++++++++----
+ 3 files changed, 32 insertions(+), 11 deletions(-)
 
-diff --git a/target/arm/helper.c b/target/arm/helper.c
-index e4824e01b8..a348c7407d 100644
---- a/target/arm/helper.c
-+++ b/target/arm/helper.c
-@@ -1079,6 +1079,14 @@ static CPAccessResult pmreg_access_ccntr(CPUARMState *env,
-     return pmreg_access(env, ri, isread);
- }
+diff --git a/include/exec/memattrs.h b/include/exec/memattrs.h
+index 9fb98bc1ef..3bccd5d291 100644
+--- a/include/exec/memattrs.h
++++ b/include/exec/memattrs.h
+@@ -43,7 +43,9 @@ typedef struct MemTxAttrs {
+      * (see MEMTX_ACCESS_ERROR).
+      */
+     unsigned int memory:1;
+-    /* Requester ID (for MSI for example) */
++    /* Requester is CPU (or as CPU, e.g. debug) */
++    unsigned int requester_cpu:1;
++    /* Requester ID (for MSI for example) or cpu_index */
+     unsigned int requester_id:16;
+     /* Invert endianness for this page */
+     unsigned int byte_swap:1;
+diff --git a/accel/tcg/cputlb.c b/accel/tcg/cputlb.c
+index 8fad2d9b83..68dc7dc646 100644
+--- a/accel/tcg/cputlb.c
++++ b/accel/tcg/cputlb.c
+@@ -1340,8 +1340,13 @@ static uint64_t io_readx(CPUArchState *env, CPUIOTLBEntry *iotlbentry,
+     uint64_t val;
+     bool locked = false;
+     MemTxResult r;
++    MemTxAttrs attrs = iotlbentry->attrs;
  
-+/*
-+ * Bits in MDCR_EL2 and MDCR_EL3 which pmu_counter_enabled() looks at.
-+ * We use these to decide whether we need to wrap a write to MDCR_EL2
-+ * or MDCR_EL3 in pmu_op_start()/pmu_op_finish() calls.
-+ */
-+#define MDCR_EL2_PMU_ENABLE_BITS (MDCR_HPME | MDCR_HPMD | MDCR_HPMN)
-+#define MDCR_EL3_PMU_ENABLE_BITS (MDCR_SPME)
+-    section = iotlb_to_section(cpu, iotlbentry->addr, iotlbentry->attrs);
++    /* encode the accessing CPU */
++    attrs.requester_cpu = 1;
++    attrs.requester_id = cpu->cpu_index;
 +
- /* Returns true if the counter (pass 31 for PMCCNTR) should count events using
-  * the current EL, security state, and register configuration.
-  */
-@@ -1432,15 +1440,19 @@ static uint64_t pmccfiltr_read_a32(CPUARMState *env, const ARMCPRegInfo *ri)
- static void pmcntenset_write(CPUARMState *env, const ARMCPRegInfo *ri,
-                             uint64_t value)
++    section = iotlb_to_section(cpu, iotlbentry->addr, attrs);
+     mr = section->mr;
+     mr_offset = (iotlbentry->addr & TARGET_PAGE_MASK) + addr;
+     cpu->mem_io_pc = retaddr;
+@@ -1353,14 +1358,14 @@ static uint64_t io_readx(CPUArchState *env, CPUIOTLBEntry *iotlbentry,
+         qemu_mutex_lock_iothread();
+         locked = true;
+     }
+-    r = memory_region_dispatch_read(mr, mr_offset, &val, op, iotlbentry->attrs);
++    r = memory_region_dispatch_read(mr, mr_offset, &val, op, attrs);
+     if (r != MEMTX_OK) {
+         hwaddr physaddr = mr_offset +
+             section->offset_within_address_space -
+             section->offset_within_region;
+ 
+         cpu_transaction_failed(cpu, physaddr, addr, memop_size(op), access_type,
+-                               mmu_idx, iotlbentry->attrs, r, retaddr);
++                               mmu_idx, attrs, r, retaddr);
+     }
+     if (locked) {
+         qemu_mutex_unlock_iothread();
+@@ -1395,8 +1400,13 @@ static void io_writex(CPUArchState *env, CPUIOTLBEntry *iotlbentry,
+     MemoryRegion *mr;
+     bool locked = false;
+     MemTxResult r;
++    MemTxAttrs attrs = iotlbentry->attrs;
++
++    /* encode the accessing CPU */
++    attrs.requester_cpu = 1;
++    attrs.requester_id = cpu->cpu_index;
+ 
+-    section = iotlb_to_section(cpu, iotlbentry->addr, iotlbentry->attrs);
++    section = iotlb_to_section(cpu, iotlbentry->addr, attrs);
+     mr = section->mr;
+     mr_offset = (iotlbentry->addr & TARGET_PAGE_MASK) + addr;
+     if (!cpu->can_do_io) {
+@@ -1414,14 +1424,14 @@ static void io_writex(CPUArchState *env, CPUIOTLBEntry *iotlbentry,
+         qemu_mutex_lock_iothread();
+         locked = true;
+     }
+-    r = memory_region_dispatch_write(mr, mr_offset, val, op, iotlbentry->attrs);
++    r = memory_region_dispatch_write(mr, mr_offset, val, op, attrs);
+     if (r != MEMTX_OK) {
+         hwaddr physaddr = mr_offset +
+             section->offset_within_address_space -
+             section->offset_within_region;
+ 
+         cpu_transaction_failed(cpu, physaddr, addr, memop_size(op),
+-                               MMU_DATA_STORE, mmu_idx, iotlbentry->attrs, r,
++                               MMU_DATA_STORE, mmu_idx, attrs, r,
+                                retaddr);
+     }
+     if (locked) {
+diff --git a/hw/core/cpu-sysemu.c b/hw/core/cpu-sysemu.c
+index 00253f8929..bd7ae983ed 100644
+--- a/hw/core/cpu-sysemu.c
++++ b/hw/core/cpu-sysemu.c
+@@ -51,13 +51,22 @@ hwaddr cpu_get_phys_page_attrs_debug(CPUState *cpu, vaddr addr,
+                                      MemTxAttrs *attrs)
  {
-+    pmu_op_start(env);
-     value &= pmu_counter_mask(env);
-     env->cp15.c9_pmcnten |= value;
-+    pmu_op_finish(env);
+     CPUClass *cc = CPU_GET_CLASS(cpu);
++    MemTxAttrs local = { };
++    hwaddr res;
+ 
+     if (cc->sysemu_ops->get_phys_page_attrs_debug) {
+-        return cc->sysemu_ops->get_phys_page_attrs_debug(cpu, addr, attrs);
++        res = cc->sysemu_ops->get_phys_page_attrs_debug(cpu, addr, &local);
++    } else {
++        /* Fallback for CPUs which don't implement the _attrs_ hook */
++        local = MEMTXATTRS_UNSPECIFIED;
++        res = cc->sysemu_ops->get_phys_page_debug(cpu, addr);
+     }
+-    /* Fallback for CPUs which don't implement the _attrs_ hook */
+-    *attrs = MEMTXATTRS_UNSPECIFIED;
+-    return cc->sysemu_ops->get_phys_page_debug(cpu, addr);
++
++    /* debug access is treated as though it came from the CPU */
++    local.requester_cpu = 1;
++    local.requester_id = cpu->cpu_index;
++    *attrs = local;
++    return res;
  }
  
- static void pmcntenclr_write(CPUARMState *env, const ARMCPRegInfo *ri,
-                              uint64_t value)
- {
-+    pmu_op_start(env);
-     value &= pmu_counter_mask(env);
-     env->cp15.c9_pmcnten &= ~value;
-+    pmu_op_finish(env);
- }
- 
- static void pmovsr_write(CPUARMState *env, const ARMCPRegInfo *ri,
-@@ -4681,7 +4693,39 @@ static void sctlr_write(CPUARMState *env, const ARMCPRegInfo *ri,
- static void sdcr_write(CPUARMState *env, const ARMCPRegInfo *ri,
-                        uint64_t value)
- {
-+    /*
-+     * Some MDCR_EL3 bits affect whether PMU counters are running:
-+     * if we are trying to change any of those then we must
-+     * bracket this update with PMU start/finish calls.
-+     */
-+    bool pmu_op = (env->cp15.mdcr_el3 ^ value) & MDCR_EL3_PMU_ENABLE_BITS;
-+
-+    if (pmu_op) {
-+        pmu_op_start(env);
-+    }
-     env->cp15.mdcr_el3 = value & SDCR_VALID_MASK;
-+    if (pmu_op) {
-+        pmu_op_finish(env);
-+    }
-+}
-+
-+static void mdcr_el2_write(CPUARMState *env, const ARMCPRegInfo *ri,
-+                           uint64_t value)
-+{
-+    /*
-+     * Some MDCR_EL2 bits affect whether PMU counters are running:
-+     * if we are trying to change any of those then we must
-+     * bracket this update with PMU start/finish calls.
-+     */
-+    bool pmu_op = (env->cp15.mdcr_el2 ^ value) & MDCR_EL2_PMU_ENABLE_BITS;
-+
-+    if (pmu_op) {
-+        pmu_op_start(env);
-+    }
-+    env->cp15.mdcr_el2 = value;
-+    if (pmu_op) {
-+        pmu_op_finish(env);
-+    }
- }
- 
- static const ARMCPRegInfo v8_cp_reginfo[] = {
-@@ -7724,6 +7768,7 @@ void register_cp_regs_for_features(ARMCPU *cpu)
-         ARMCPRegInfo mdcr_el2 = {
-             .name = "MDCR_EL2", .state = ARM_CP_STATE_BOTH,
-             .opc0 = 3, .opc1 = 4, .crn = 1, .crm = 1, .opc2 = 1,
-+            .writefn = mdcr_el2_write,
-             .access = PL2_RW, .resetvalue = pmu_num_counters(env),
-             .fieldoffset = offsetof(CPUARMState, cp15.mdcr_el2),
-         };
+ hwaddr cpu_get_phys_page_debug(CPUState *cpu, vaddr addr)
 -- 
 2.34.1
-

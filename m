@@ -1,340 +1,167 @@
-Received: by 2002:a05:7108:5790:0:0:0:0 with SMTP id cd16csp5216582gdb;
-        Wed, 14 Sep 2022 06:15:08 -0700 (PDT)
-X-Google-Smtp-Source: AA6agR54SUCem1ugUZOBmVPZPSRqkACx5qY3Azm04+dJJTmTkHKV0pPxQmj0sXQ6Gd0imjfB9Q4L
-X-Received: by 2002:ad4:5ecd:0:b0:4a6:cf3a:2462 with SMTP id jm13-20020ad45ecd000000b004a6cf3a2462mr32154782qvb.67.1663161308457;
-        Wed, 14 Sep 2022 06:15:08 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1663161308; cv=none;
+Received: by 2002:a05:7108:5790:0:0:0:0 with SMTP id cd16csp5232702gdb;
+        Wed, 14 Sep 2022 06:32:21 -0700 (PDT)
+X-Google-Smtp-Source: AA6agR62vALbNIqCflWwH1UnmSGJEcwar/B2oHSlamtwZfpo9JvPqJ4v9pjFHyMQoS3S0+bRLeXG
+X-Received: by 2002:a0c:8d09:0:b0:4ac:6f1b:3a13 with SMTP id r9-20020a0c8d09000000b004ac6f1b3a13mr28933318qvb.98.1663162341585;
+        Wed, 14 Sep 2022 06:32:21 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1663162341; cv=none;
         d=google.com; s=arc-20160816;
-        b=eMm7tD72oUZ9n6C4pr55XgXFctmVzejExBnWwRr/JzDJQMjR12iDSEQ/KU3vX3WpUf
-         w4g4uT2xj1TYOBy9HTUS0wyb3/7TpDKMZaCAUKN7SfsRTCS7FS9uazzZsoS/rT9h/zHU
-         bh0WgekCCfgU0i6JL9kEBgX/p1TTI2Yov7AsFTayxyWzBGhnZdX60GyDjw0N87L/AQcT
-         HklWGjmmZmTtSVmzwk1Q8jXSyUTw4JIyQo+pzpLTczA0JGo7PE90dTFLEbJrAzy+khRw
-         68GY/3QJ9bBapMcUDuEyEMxWOP83AIUHIJ+UMexB5CpgE3qvEUSlZJ2Qw6skomf0n1Uh
-         ZeuQ==
+        b=ELc1zs6D93uB5JbM0ksoXol2/aaxohPfqCVQ9+2l594kvoLN5sdtiSvctJPJDKAfWm
+         HDPCK5wBOjONZE4EtX1Gli7DWkPbFvEdwqgi/q7ySGehU1gXuqdUM3vGqNcQ+61BYY0n
+         hMUZdVRYMPuaCoFN1iLI4bWx8gJlFyzBPlXoNDlB9l0HQPFQa4K8oabUqTr4PWrBmRWn
+         yopPyl4I87lSxjVXoG6qQJL64CxKAmYxZhtU6cQ2h70KQPJ/Jz2doeZ4mOVbf27WoZ0S
+         sRGlx70a0hG8y54aSkxG/fJozP5D/wzciLtEuEboXnhg+wv17zfUY9LUjY5I+aHMI7LF
+         ai3A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=Wl2zuZCkpWsrqwmY/y35zPau0OJUQvZb8wKw4Kz7SNs=;
-        b=yZDJMkFPphKdG6JD+1x/BzH6Jb1GDZoPS4/IfNxLuq3k8VVN/crHNH9aIxrLgLxyUx
-         tg5a0xsoQm53yabeSc+0/V76wcEXFUcotdK2DcGT2+JCBINQRdJoWcR6xWBaSv5OGV5P
-         7DvhtPwWf9uilxG5QR8MMsCsOgEPYZPH6yYMxHBGFxxgQMlMXK7rMcnV9VEOwIwrf0x2
-         a/6/qxueTvZLXFWjavtBp1iogQW54XS2/7VHom+ScOQUo9qVlq4GMDhNxhMXiVakopzF
-         S7jTsgcXsECF8mt02Nhog3U9sTiIv5mTC9fd04mz8oAB6CG30E/RBVvYulD//UlE3Si0
-         zR5w==
+         :in-reply-to:from:references:cc:to:content-language:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=rg93hBoskKTQAHD3JtfZ7XMCAPpp5sGQYiEt9+ZELqE=;
+        b=UXNKBTcNCcYROwkkXXiH1WxR9QJOMLnJ1+S44hpkAD3+6Dflz6IbJozorgSmNltNLl
+         wIfLVnFKUPk5VyFvAOWuqNHMykco1QuN1CO+RxlwVps4u2nYxo81KlGdyFZhoNl+P+SH
+         Ajr39QJoWk7WxPs6I95+tk2zg7UoYUu9mTwms3vYd/GWL654Nx1wivSWLUlGITKa6jjm
+         o+2kvL9szI8/1lyhDXMYilXzvI+TzLAUmovkl6IRxBlBROOMdSu9QIalp1EaMWe15CPW
+         fgZxQZAMr8wW4cyaOClH/1rbRFHwJzO74gI+UxUNdvzFlQejd/TyNUJMNu1Bv6PILV4s
+         DHAQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="n/HYBfJi";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=tsWaz6Bl;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id h2-20020a05620a400200b006b6117c06b7si1418054qko.41.2022.09.14.06.15.08
+        by mx.google.com with ESMTPS id r2-20020a056214212200b004991ccb0d81si1425558qvc.270.2022.09.14.06.32.21
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 14 Sep 2022 06:15:08 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 14 Sep 2022 06:32:21 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="n/HYBfJi";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=tsWaz6Bl;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:44062 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:46798 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1oYSEN-0007Yl-Vq
-	for alex.bennee@linaro.org; Wed, 14 Sep 2022 09:15:08 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:41176)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1oYSV3-0001l5-5L
+	for alex.bennee@linaro.org; Wed, 14 Sep 2022 09:32:21 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:51162)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1oYQwk-0000ks-Pn
- for qemu-arm@nongnu.org; Wed, 14 Sep 2022 07:52:54 -0400
-Received: from mail-wr1-x432.google.com ([2a00:1450:4864:20::432]:39463)
+ id 1oYSB6-0003IK-VZ
+ for qemu-devel@nongnu.org; Wed, 14 Sep 2022 09:11:45 -0400
+Received: from mail-wr1-x42a.google.com ([2a00:1450:4864:20::42a]:43807)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1oYQwZ-00009A-Px
- for qemu-arm@nongnu.org; Wed, 14 Sep 2022 07:52:49 -0400
-Received: by mail-wr1-x432.google.com with SMTP id cc5so15459349wrb.6
- for <qemu-arm@nongnu.org>; Wed, 14 Sep 2022 04:52:39 -0700 (PDT)
+ id 1oYSB1-00072b-FR
+ for qemu-devel@nongnu.org; Wed, 14 Sep 2022 09:11:44 -0400
+Received: by mail-wr1-x42a.google.com with SMTP id t7so25593826wrm.10
+ for <qemu-devel@nongnu.org>; Wed, 14 Sep 2022 06:11:39 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date;
- bh=Wl2zuZCkpWsrqwmY/y35zPau0OJUQvZb8wKw4Kz7SNs=;
- b=n/HYBfJi39anBz+NUXM8lEebVSQL+cy+3AGGZ1df+a4f94suh8SgMUvGAQcUFvfGLY
- MDiP0/YN5IRYe6VZyW17ERqZtcIGIJdnq+/y0Ym6YElLG8uTCeCtHBKpL7Rq+QGrp2Ut
- 6UYdT2A9HyOVjhMhkO8npDulMcTI527Wb/sg3kiWTKrkbTNRhfycoBNHGeojZsNhXgmV
- c+FkJp28+0DhfCisEjX4Qu04UvOYeUm50tDceKfxejd2Y2O1P6ibKpVRk2D2YAPcbwza
- ApYe9ttyvj0jPPxfmkKAbs0ShtU3G22QNJoZmOldCeLMaLW2ShDWP4Ow2O1cOBmlMaUk
- CSyQ==
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date;
+ bh=rg93hBoskKTQAHD3JtfZ7XMCAPpp5sGQYiEt9+ZELqE=;
+ b=tsWaz6BlVbW2zXAvMGqOAFV9+BsUIrpT1ipTCN5jfMSj4tnbCZnveTjjsK9UDx0/Jb
+ xXqBg6hqjUap+gIzxeiKazxe0U5gBzwsWeBjVSpnHwnchmT5eBaE1d5KbRhY+Y6tDgTu
+ EnjS54xWdW39HLgwAzHC1Vlk+14UybrI//ltp2fASxafbc/H0l08LyueMV/OlHEOEnwx
+ SYGtAy9bgD6cGgH6issjQoL1BqcjfYRWOvJFx4fERdJdRxtF+imY6UkMW0Elf7f0Y7oK
+ Gaju7Pi0WwJNl4YKy9rHOIe7vP+6SXByNtd2TjGwOcN/Dot14435rlffHrvCTNc5ttwI
+ 34Ug==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date;
- bh=Wl2zuZCkpWsrqwmY/y35zPau0OJUQvZb8wKw4Kz7SNs=;
- b=VtCN54VaPe/qv6+rkVtNvNGQyceV2vj632afK0Apem5ZtMGNH2DxNnlwp0xwa4JPtO
- o5Vsz3h23D7b/3b+bFbSkuFd6vME/Medtq90FcCsnAIMLako/rinjrauUIin5XHc495d
- bVRPh2gO7yACIIELxEjCjYrmFTW58nwMVPDKgG3BZ0hu9mYcW7KOFBG9Ed1N5h0HdWLo
- 03k217RxewzdkDySzbKc0QrshD4R0QWt1wyib3rjqnIrZApm+pWJfPhop5KJM5SjIoIl
- 3Ub4ejGoMynKqRrNvi7WysqPe9KQ7rjpy3iPOUS1WHgkpYUm7Mr2t7jVgHmiTM07rzzS
- mUUg==
-X-Gm-Message-State: ACgBeo3FBPwzu7RUMsJYTNc3AxcDZnbFM5aHyAZ/0v1QA8fhCiwJbJqT
- bznL3vILDhRRi8e3wsiyyAtOkVb/+TPDUvbO
-X-Received: by 2002:a05:6000:681:b0:22a:3007:df45 with SMTP id
- bo1-20020a056000068100b0022a3007df45mr17042884wrb.149.1663156358105; 
- Wed, 14 Sep 2022 04:52:38 -0700 (PDT)
-Received: from stoup.. ([89.101.193.70]) by smtp.gmail.com with ESMTPSA id
- t9-20020a5d6909000000b0022a3a887ceasm13712970wru.49.2022.09.14.04.52.37
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 14 Sep 2022 04:52:37 -0700 (PDT)
-From: Richard Henderson <richard.henderson@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-Subject: [PULL 20/20] target/arm: Make boards pass base address to
- armv7m_load_kernel()
-Date: Wed, 14 Sep 2022 12:52:17 +0100
-Message-Id: <20220914115217.117532-22-richard.henderson@linaro.org>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20220914115217.117532-1-richard.henderson@linaro.org>
-References: <20220914115217.117532-1-richard.henderson@linaro.org>
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date;
+ bh=rg93hBoskKTQAHD3JtfZ7XMCAPpp5sGQYiEt9+ZELqE=;
+ b=n4ZZd1Sr9kCcc34pSr8BHE8nMZ2zzU7uPPGpO59oVscyUxv9P5YjQAyl5KIDwlbl6q
+ 4IIBztrzU8QWVObXZgb3t8NRfKl1w5rkT0rFmlqTlrFIBO4ha4BXR7yDLqp7T2TcTnNV
+ r558fXcLCViXhY8JlsLVtcp9XtHX7BvRRtZs/L5+CjqL9ZXxQ7MOQt6adyTSBsfVbTSC
+ kAxvFMthEeySRs45Jt1Ziu45LEsDJ43uJi9yu+/Gu9P+24BRqsDSqPhgKbq7sE5G/+1x
+ fnBrQouXvq0M+SIICVjeaz+S3tiJs9OVY5M2HjS4/PYQ6f8Srtvt3GWfYE9kJfZ6kZ0g
+ jxTg==
+X-Gm-Message-State: ACgBeo2Xl1kyvgamOLmcL5ZVx8+5lFaB628VqAPv+6ys0DoDgHEipV9Z
+ mvC18Z9A5tii5BobEp1J/+tgEA==
+X-Received: by 2002:a5d:45c6:0:b0:228:8bda:f345 with SMTP id
+ b6-20020a5d45c6000000b002288bdaf345mr21581138wrs.584.1663161097543; 
+ Wed, 14 Sep 2022 06:11:37 -0700 (PDT)
+Received: from [10.119.17.153] ([89.101.193.70])
+ by smtp.gmail.com with ESMTPSA id
+ k3-20020adff5c3000000b00228cd9f6349sm13503911wrp.106.2022.09.14.06.11.36
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 14 Sep 2022 06:11:36 -0700 (PDT)
+Message-ID: <dbcca868-afee-2457-33ed-4d0274945c2b@linaro.org>
+Date: Wed, 14 Sep 2022 14:11:34 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.11.0
+Subject: Re: [PATCH] target/arm: Fix alignment for VLD4.32
+Content-Language: en-US
+To: =?UTF-8?Q?Cl=c3=a9ment_Chigot?= <chigot@adacore.com>, qemu-arm@nongnu.org
+Cc: qemu-devel@nongnu.org, peter.maydell@linaro.org
+References: <20220914105058.2787404-1-chigot@adacore.com>
+From: Richard Henderson <richard.henderson@linaro.org>
+In-Reply-To: <20220914105058.2787404-1-chigot@adacore.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::432;
- envelope-from=richard.henderson@linaro.org; helo=mail-wr1-x432.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+Received-SPF: pass client-ip=2a00:1450:4864:20::42a;
+ envelope-from=richard.henderson@linaro.org; helo=mail-wr1-x42a.google.com
+X-Spam_score_int: -36
+X-Spam_score: -3.7
+X-Spam_bar: ---
+X-Spam_report: (-3.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-1.583,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Uhz1lpfNw+h3
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 7dSVyCypm66N
 
-From: Peter Maydell <peter.maydell@linaro.org>
+On 9/14/22 11:50, Clément Chigot wrote:
+> When requested, the alignment for VLD4.32 is 8 and not 16.
+> 
+> See ARM documentation about VLD4 encoding:
+>      ebytes = 1 << UInt(size);
+>      if size == '10' then
+>          alignment = if a == '0' then 1 else 8;
+>      else
+>          alignment = if a == '0' then 1 else 4*ebytes;
+> 
+> Signed-off-by: Clément Chigot <chigot@adacore.com>
 
-Currently armv7m_load_kernel() takes the size of the block of memory
-where it should load the initial guest image, but assumes that it
-should always load it at address 0.  This happens to be true of all
-our M-profile boards at the moment, but it isn't guaranteed to always
-be so: M-profile CPUs can be configured (via init-svtor and
-init-nsvtor, which match equivalent hardware configuration signals)
-to have the initial vector table at any address, not just zero.  (For
-instance the Teeny board has the boot ROM at address 0x0200_0000.)
-
-Add a base address argument to armv7m_load_kernel(), so that
-callers now pass in both base address and size. All the current
-callers pass 0, so this is not a behaviour change.
-
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-Message-Id: <20220823160417.3858216-3-peter.maydell@linaro.org>
-Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
----
- include/hw/arm/boot.h     | 5 ++++-
- hw/arm/armv7m.c           | 5 +++--
- hw/arm/aspeed.c           | 1 +
- hw/arm/microbit.c         | 2 +-
- hw/arm/mps2-tz.c          | 2 +-
- hw/arm/mps2.c             | 2 +-
- hw/arm/msf2-som.c         | 2 +-
- hw/arm/musca.c            | 3 ++-
- hw/arm/netduino2.c        | 2 +-
- hw/arm/netduinoplus2.c    | 2 +-
- hw/arm/stellaris.c        | 2 +-
- hw/arm/stm32vldiscovery.c | 2 +-
- 12 files changed, 18 insertions(+), 12 deletions(-)
 
-diff --git a/include/hw/arm/boot.h b/include/hw/arm/boot.h
-index c7ebae156e..f18cc3064f 100644
---- a/include/hw/arm/boot.h
-+++ b/include/hw/arm/boot.h
-@@ -25,13 +25,16 @@ typedef enum {
-  * armv7m_load_kernel:
-  * @cpu: CPU
-  * @kernel_filename: file to load
-+ * @mem_base: base address to load image at (should be where the
-+ *            CPU expects to find its vector table on reset)
-  * @mem_size: mem_size: maximum image size to load
-  *
-  * Load the guest image for an ARMv7M system. This must be called by
-  * any ARMv7M board. (This is necessary to ensure that the CPU resets
-  * correctly on system reset, as well as for kernel loading.)
-  */
--void armv7m_load_kernel(ARMCPU *cpu, const char *kernel_filename, int mem_size);
-+void armv7m_load_kernel(ARMCPU *cpu, const char *kernel_filename,
-+                        hwaddr mem_base, int mem_size);
- 
- /* arm_boot.c */
- struct arm_boot_info {
-diff --git a/hw/arm/armv7m.c b/hw/arm/armv7m.c
-index fa4c2c735d..50a9507c0b 100644
---- a/hw/arm/armv7m.c
-+++ b/hw/arm/armv7m.c
-@@ -568,7 +568,8 @@ static void armv7m_reset(void *opaque)
-     cpu_reset(CPU(cpu));
- }
- 
--void armv7m_load_kernel(ARMCPU *cpu, const char *kernel_filename, int mem_size)
-+void armv7m_load_kernel(ARMCPU *cpu, const char *kernel_filename,
-+                        hwaddr mem_base, int mem_size)
- {
-     ssize_t image_size;
-     uint64_t entry;
-@@ -588,7 +589,7 @@ void armv7m_load_kernel(ARMCPU *cpu, const char *kernel_filename, int mem_size)
-                                  &entry, NULL, NULL,
-                                  NULL, 0, EM_ARM, 1, 0, as);
-         if (image_size < 0) {
--            image_size = load_image_targphys_as(kernel_filename, 0,
-+            image_size = load_image_targphys_as(kernel_filename, mem_base,
-                                                 mem_size, as);
-         }
-         if (image_size < 0) {
-diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
-index b3bbe06f8f..bc3ecdb619 100644
---- a/hw/arm/aspeed.c
-+++ b/hw/arm/aspeed.c
-@@ -1430,6 +1430,7 @@ static void aspeed_minibmc_machine_init(MachineState *machine)
- 
-     armv7m_load_kernel(ARM_CPU(first_cpu),
-                        machine->kernel_filename,
-+                       0,
-                        AST1030_INTERNAL_FLASH_SIZE);
- }
- 
-diff --git a/hw/arm/microbit.c b/hw/arm/microbit.c
-index e9494334ce..50df362088 100644
---- a/hw/arm/microbit.c
-+++ b/hw/arm/microbit.c
-@@ -57,7 +57,7 @@ static void microbit_init(MachineState *machine)
-                                         mr, -1);
- 
-     armv7m_load_kernel(ARM_CPU(first_cpu), machine->kernel_filename,
--                       s->nrf51.flash_size);
-+                       0, s->nrf51.flash_size);
- }
- 
- static void microbit_machine_class_init(ObjectClass *oc, void *data)
-diff --git a/hw/arm/mps2-tz.c b/hw/arm/mps2-tz.c
-index 4017392bf5..394192b9b2 100644
---- a/hw/arm/mps2-tz.c
-+++ b/hw/arm/mps2-tz.c
-@@ -1197,7 +1197,7 @@ static void mps2tz_common_init(MachineState *machine)
-     }
- 
-     armv7m_load_kernel(ARM_CPU(first_cpu), machine->kernel_filename,
--                       boot_ram_size(mms));
-+                       0, boot_ram_size(mms));
- }
- 
- static void mps2_tz_idau_check(IDAUInterface *ii, uint32_t address,
-diff --git a/hw/arm/mps2.c b/hw/arm/mps2.c
-index bb76fa6889..a86a994dba 100644
---- a/hw/arm/mps2.c
-+++ b/hw/arm/mps2.c
-@@ -450,7 +450,7 @@ static void mps2_common_init(MachineState *machine)
-                                   mmc->fpga_type == FPGA_AN511 ? 47 : 13));
- 
-     armv7m_load_kernel(ARM_CPU(first_cpu), machine->kernel_filename,
--                       0x400000);
-+                       0, 0x400000);
- }
- 
- static void mps2_class_init(ObjectClass *oc, void *data)
-diff --git a/hw/arm/msf2-som.c b/hw/arm/msf2-som.c
-index d9f881690e..a6df473ec9 100644
---- a/hw/arm/msf2-som.c
-+++ b/hw/arm/msf2-som.c
-@@ -98,7 +98,7 @@ static void emcraft_sf2_s2s010_init(MachineState *machine)
-     sysbus_connect_irq(SYS_BUS_DEVICE(&soc->spi[0]), 1, cs_line);
- 
-     armv7m_load_kernel(ARM_CPU(first_cpu), machine->kernel_filename,
--                       soc->envm_size);
-+                       0, soc->envm_size);
- }
- 
- static void emcraft_sf2_machine_init(MachineClass *mc)
-diff --git a/hw/arm/musca.c b/hw/arm/musca.c
-index 7a83f7dda7..6eeee57c9d 100644
---- a/hw/arm/musca.c
-+++ b/hw/arm/musca.c
-@@ -597,7 +597,8 @@ static void musca_init(MachineState *machine)
-                                                      "cfg_sec_resp", 0));
-     }
- 
--    armv7m_load_kernel(ARM_CPU(first_cpu), machine->kernel_filename, 0x2000000);
-+    armv7m_load_kernel(ARM_CPU(first_cpu), machine->kernel_filename,
-+                       0, 0x2000000);
- }
- 
- static void musca_class_init(ObjectClass *oc, void *data)
-diff --git a/hw/arm/netduino2.c b/hw/arm/netduino2.c
-index 3365da11bf..83753d53a3 100644
---- a/hw/arm/netduino2.c
-+++ b/hw/arm/netduino2.c
-@@ -49,7 +49,7 @@ static void netduino2_init(MachineState *machine)
-     sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), &error_fatal);
- 
-     armv7m_load_kernel(ARM_CPU(first_cpu), machine->kernel_filename,
--                       FLASH_SIZE);
-+                       0, FLASH_SIZE);
- }
- 
- static void netduino2_machine_init(MachineClass *mc)
-diff --git a/hw/arm/netduinoplus2.c b/hw/arm/netduinoplus2.c
-index 76cea8e489..515c081605 100644
---- a/hw/arm/netduinoplus2.c
-+++ b/hw/arm/netduinoplus2.c
-@@ -50,7 +50,7 @@ static void netduinoplus2_init(MachineState *machine)
- 
-     armv7m_load_kernel(ARM_CPU(first_cpu),
-                        machine->kernel_filename,
--                       FLASH_SIZE);
-+                       0, FLASH_SIZE);
- }
- 
- static void netduinoplus2_machine_init(MachineClass *mc)
-diff --git a/hw/arm/stellaris.c b/hw/arm/stellaris.c
-index 12c673c917..a9e96c37f8 100644
---- a/hw/arm/stellaris.c
-+++ b/hw/arm/stellaris.c
-@@ -1302,7 +1302,7 @@ static void stellaris_init(MachineState *ms, stellaris_board_info *board)
-     create_unimplemented_device("hibernation", 0x400fc000, 0x1000);
-     create_unimplemented_device("flash-control", 0x400fd000, 0x1000);
- 
--    armv7m_load_kernel(ARM_CPU(first_cpu), ms->kernel_filename, flash_size);
-+    armv7m_load_kernel(ARM_CPU(first_cpu), ms->kernel_filename, 0, flash_size);
- }
- 
- /* FIXME: Figure out how to generate these from stellaris_boards.  */
-diff --git a/hw/arm/stm32vldiscovery.c b/hw/arm/stm32vldiscovery.c
-index 04036da3ee..67675e952f 100644
---- a/hw/arm/stm32vldiscovery.c
-+++ b/hw/arm/stm32vldiscovery.c
-@@ -53,7 +53,7 @@ static void stm32vldiscovery_init(MachineState *machine)
- 
-     armv7m_load_kernel(ARM_CPU(first_cpu),
-                        machine->kernel_filename,
--                       FLASH_SIZE);
-+                       0, FLASH_SIZE);
- }
- 
- static void stm32vldiscovery_machine_init(MachineClass *mc)
--- 
-2.34.1
+r~
+
+> ---
+>   target/arm/translate-neon.c | 6 +++++-
+>   1 file changed, 5 insertions(+), 1 deletion(-)
+> 
+> diff --git a/target/arm/translate-neon.c b/target/arm/translate-neon.c
+> index 321c17e2c7..4016339d46 100644
+> --- a/target/arm/translate-neon.c
+> +++ b/target/arm/translate-neon.c
+> @@ -584,7 +584,11 @@ static bool trans_VLD_all_lanes(DisasContext *s, arg_VLD_all_lanes *a)
+>           case 3:
+>               return false;
+>           case 4:
+> -            align = pow2_align(size + 2);
+> +            if (size == 2) {
+> +                align = pow2_align(3);
+> +            } else {
+> +                align = pow2_align(size + 2);
+> +            }
+>               break;
+>           default:
+>               g_assert_not_reached();
 

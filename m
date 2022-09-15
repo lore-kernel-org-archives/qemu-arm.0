@@ -1,39 +1,39 @@
-Received: by 2002:a17:906:b088:0:0:0:0 with SMTP id x8csp213427ejy;
-        Thu, 15 Sep 2022 01:16:10 -0700 (PDT)
-X-Received: by 2002:a6b:cd0c:0:b0:68b:35ce:333a with SMTP id d12-20020a6bcd0c000000b0068b35ce333amr17727556iog.193.1663229770775;
-        Thu, 15 Sep 2022 01:16:10 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1663229770; cv=none;
+Received: by 2002:a17:906:b088:0:0:0:0 with SMTP id x8csp213460ejy;
+        Thu, 15 Sep 2022 01:16:16 -0700 (PDT)
+X-Received: by 2002:a6b:6f0d:0:b0:6a1:1ee9:2d4c with SMTP id k13-20020a6b6f0d000000b006a11ee92d4cmr8557013ioc.206.1663229776000;
+        Thu, 15 Sep 2022 01:16:16 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1663229775; cv=none;
         d=google.com; s=arc-20160816;
-        b=B5hOMwzrinrECss9GKq/GSU9ulwVPaZU75r+w0QZ697dV6uEDsyD8EKXVeRc4+ovKg
-         iNvyHxUrDHnAFVj7cg9gvtJFGpgVULzPMGb6t3TxvcHH8q64YNscaTJen8VfeK+PFV33
-         NQg2wF9FbMXxETX6uylMvVBpc7AxsxvJgdEEXCr1XuHwjQ7ey0UgdoLWru5phTXsWOrE
-         97W03TreAc5e9QMydY2bf/59qWXINB7SCY902K8dnXgKhHM9HorxWg3qBP/UWMnEmWFF
-         v9J0uaDwKnMLQM+RP9XMtNkVm/Awdgntdf+5/KUlMNuF1Ah4GDaFuBS7U0kuiwwwODMP
-         ftnA==
+        b=SgCtq5UY1Pm2U6+493Co/ODf/gP/JxF4De94pGNYjXTH1drau4pUX9fofo2NlVBqX/
+         90T5E+56eil8Xqsrtap5QevH1iICSFlirevj7toFqBFO/+t7nWzBAH1FGz3JAJkBpitz
+         aW5bOmDx1e3ehumqhE0vNh9IaCok8p2ffDiTqb7MITe6Zj07vHvMvtfaUOs+GPl+s9lG
+         7fk/h1zcCGfvoxisbKuqH1Dyizg8mIT5kE5zVSY/r2qASh6Ql3o/WKBEFAipKDWHLwA+
+         VUiSRLsppOTmlF+bTCxxMLoWeUO5zs25C1KreCi9lmk2ymhsbG6+x3C4fieEa1b7pooU
+         0EBA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :dkim-signature;
-        bh=et4yR2vZNnpuyu+Y+VxJoidQ9mI5mEVRdeAglxprfiM=;
-        b=S5a/7b5R0m0VfRdcmHmtlW6kKyPqjJdqCMYMjxxKSrJ3ShS5ZC14HsorU9DEnX3nX3
-         7Ct8N3BZtaDNMCtq8t1tlGid8SEy8TMXIKE6Tzqm6/mDMQ8rknDVjDRpGm7I1/HOnm4j
-         a1MnCoqUaGEvNEIlAHwjTroFgJ/IugVexgKgq+cqIxMD7Y4R2xy1nAIONqxIleMfmeCm
-         9Wfalo4gWEeTq5e2QiBMlwFF/Dn5Uw1R6sScT3dEOI2FhdbCI5t14EqG2snMhaO9Z0AD
-         IL6YEQbX7MV2lTqaIu4UqcfjD8z8LST7ItQ2ep108W7a1CURJAfpMQ+iqVse3KQBdE9p
-         0Pzw==
+        bh=tKKlnH5HP/sD3yLbjv2y4G50e4xRU+1fe4XOCijvhGc=;
+        b=HXNvTq6SZDEwxahb1EnkE521BEjrTAe9GH78Hj/1+zJ96lxBe3rJYFtu7lBGocmuHR
+         HkKkrVLzS5vvNPN6h98oE5Nz9Me8YICxBczZHJ4KPeHapxzhTsNKSIy2zPO9FXu7IP83
+         JhBrtHelpy1SMnMIoSKtEjlLnJ58MG10vDYll43oDpIg+Cxf5An9cJRlR4HAXbRLzgPB
+         XdekrwG3dVMh1xCrQrrNijFuQpytAVAemLT93qIil2ZG1aPEHTMQF7Tmep9RM+cy98A5
+         4FV7Fk/Bo+kH6+O961bo+fz5/8/B7vZtMsITcc9szQBS39cGO7Wc7iB9LZ1sjoKhdMuf
+         OcGA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Xk9Aj5GS;
+       dkim=pass header.i=@linaro.org header.s=google header.b=UzU2gF7I;
        spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <richard.henderson@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id k24-20020a026618000000b0035a58d1db95sor514956jac.41.2022.09.15.01.16.10
+        by mx.google.com with SMTPS id u24-20020a022e58000000b0035a33d274besor504916jae.38.2022.09.15.01.16.15
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Thu, 15 Sep 2022 01:16:10 -0700 (PDT)
+        Thu, 15 Sep 2022 01:16:15 -0700 (PDT)
 Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Xk9Aj5GS;
+       dkim=pass header.i=@linaro.org header.s=google header.b=UzU2gF7I;
        spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
@@ -41,84 +41,92 @@ DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date;
-        bh=et4yR2vZNnpuyu+Y+VxJoidQ9mI5mEVRdeAglxprfiM=;
-        b=Xk9Aj5GSSHIAP9NBREZJdHwz7KUA8S3zYS4i7wuU4ym6blCi7BzBQMkzQ+oWdK3VJe
-         EmPvViaxB7jNJO4SwUfE6KE+jjiAQxj4FaxZ9tXO4S1FGmUepPg2+CMVPPNxKnIWPSq6
-         FOregoSD6xvBIxhG6wKcURjsMWAE4kWr35biouSFwCUQRPurGLqmMvPUcEuroo58LHsn
-         bKye0qnY17WXBdZIIBCBHIQ0SxCVDglcEI7AcbsvpY/TaV8wMrAxQYcgaYHNDxE2aFaF
-         bmFTIGDTh8KIQv1VZFuzi5+OMcO2sOwC24EfJRlPmlQs+Ur+Zm/vUeCAFDbkj9vyALxj
-         XrXw==
+        bh=tKKlnH5HP/sD3yLbjv2y4G50e4xRU+1fe4XOCijvhGc=;
+        b=UzU2gF7IZLNlVrTwio4LVvIrhFJJvVDANO4BfLkgtlMaBlRJjVnTJWSre/L1QCSE1N
+         FZl5tKfoKGdgqlhKw5SkTgOr/NB7Fh13O3tRr+xIpkYeKfBQSrNRRXKFYobtyfEVDeIp
+         NskBxdcaozXhayKBAz06PfmBURilVDw6XLDCgXQbdkFp8x8f8nBLak1RtmpdXYPrtMT4
+         xwXfLtCJD6rd2dxN9/s93vUckvK0gabSQocRgA7Fc8FeW+f7+vy71qZlskFYZkyZ0MVd
+         qyRqfuledbdSk9lOPzExVWiT1xOLa0RGJEyl3HaeivC7DYNag1MDo5STF6JaDnw+Pd3W
+         wZVA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date;
-        bh=et4yR2vZNnpuyu+Y+VxJoidQ9mI5mEVRdeAglxprfiM=;
-        b=zTTSTdTuGAPnbREApxgOeb4/vwkY4btrg+p49MILLeLG4oZ4dtyPeJBNvFErhjU5U8
-         wCbBbWZ1euHJ6wXQCNL3WJx5HqPX+JbHjpRoz+gQCNTIxMl48+Ajg8aFxFfDmlsGDxFi
-         1K8MgctNgF+D1jZs9KlQo9e3SSpvHSo8mbRBj3FO5ondrRYUZ7IYA5rWYGW7AwIeMuWc
-         7jh2iHk8HEW+NhHp1F+mok3kxBtlc1QtlRRge53w7MpJgpVghkY+cjfXBk+F7tMns7ps
-         Gf0jgYpREFZN1xaA/b9+KZKqIXP8XOVuqHQkRUfI6iwGWxU13awsNECmBT7oZWXY2128
-         KCsw==
-X-Gm-Message-State: ACgBeo3xei1IXW8g4gZK1LOfH/WKbJPKV/UupOPRxeNamt7EofPfq86k
-	GabbwYAshrfaiFD0MBNuvrcs3KQ2qzv685Uk7Nk=
-X-Google-Smtp-Source: AA6agR5A4np2AhL3jI+J8X1NSSUMOV3qoYQsWUN8PAztLOB2yYqtNLS5pRU50hl+Czugx91L4IR/MQ==
-X-Received: by 2002:a02:620c:0:b0:343:5e87:1bae with SMTP id d12-20020a02620c000000b003435e871baemr21010772jac.100.1663229770275;
-        Thu, 15 Sep 2022 01:16:10 -0700 (PDT)
+        bh=tKKlnH5HP/sD3yLbjv2y4G50e4xRU+1fe4XOCijvhGc=;
+        b=Grgt5dkt2JEp0sjiVIkxZL61gMg2pdHlBmyVw1SbqSEs0piqx4SaZ4/uJVcwsxHRYp
+         DUg0rDeaDB7XGO486pciLiw9ZNzamZOjbqBmgWia+SxlMEdX2RbeF177T4szuJeN0PPk
+         DtcGIsHFUf/7TwYxTb6Bx+88bbx/vzTsC6/vKHrHN38bBAyq6lRBCWQsBDkmn/qaIzxa
+         iboL9yGK0fVEEeYrrZzB7E+yJlaStznwQhDr32e2oNyT/HZvfv+O4vgo25eBeebIOLeN
+         XUM6pf/Oh+IfRm6+3WUdEddvlz9Qq/mqra6qJs2uNJasY4ughbKwm2IINicr/j6fLNSh
+         40Nw==
+X-Gm-Message-State: ACgBeo1QZiIR32GocIQsVsmNPie+SRabummmj+zqpj8RtWTAGvbOIfXL
+	fFUaWcDGIvyndgq6yJaSeowBQqkDr1zK7Gzcw0E=
+X-Google-Smtp-Source: AA6agR7vR+FWHBQKKQpyvIu7Mfw522rxWUnOLNsmlx509fs4LL6BI76XV0ZwLU8fBqk3V+1cTiwPWA==
+X-Received: by 2002:a02:6386:0:b0:349:d0b1:bb7 with SMTP id j128-20020a026386000000b00349d0b10bb7mr21108183jac.172.1663229775653;
+        Thu, 15 Sep 2022 01:16:15 -0700 (PDT)
 Return-Path: <richard.henderson@linaro.org>
 Received: from ?IPV6:2605:ef80:80c3:3064:7ddf:d6a7:e3e2:a0bf? ([2605:ef80:80c3:3064:7ddf:d6a7:e3e2:a0bf])
-        by smtp.gmail.com with ESMTPSA id t70-20020a025449000000b00349fb9b1abesm813036jaa.106.2022.09.15.01.16.07
+        by smtp.gmail.com with ESMTPSA id q16-20020a056e02079000b002eb75fb01dbsm7695827ils.28.2022.09.15.01.16.13
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 15 Sep 2022 01:16:09 -0700 (PDT)
-Message-ID: <c6d2e06f-75b8-0ba2-5e0d-51603873e40c@linaro.org>
-Date: Thu, 15 Sep 2022 09:08:22 +0100
+        Thu, 15 Sep 2022 01:16:15 -0700 (PDT)
+Message-ID: <ab834948-3bd9-8e42-f13d-de0a3c573cf1@linaro.org>
+Date: Thu, 15 Sep 2022 09:16:03 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
  Thunderbird/91.11.0
-Subject: Re: [RFC PATCH 2/4] qtest: make read/write operation appear to be
- from CPU
+Subject: Re: [RFC PATCH 3/4] hw/intc/gic: use MxTxAttrs to divine accessing
+ CPU
 Content-Language: en-US
 To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
  qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, Thomas Huth <thuth@redhat.com>,
- Laurent Vivier <lvivier@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>
+Cc: qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>
 References: <20220914160955.812151-1-alex.bennee@linaro.org>
- <20220914160955.812151-3-alex.bennee@linaro.org>
+ <20220914160955.812151-4-alex.bennee@linaro.org>
 From: Richard Henderson <richard.henderson@linaro.org>
-In-Reply-To: <20220914160955.812151-3-alex.bennee@linaro.org>
+In-Reply-To: <20220914160955.812151-4-alex.bennee@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-TUID: 3jJyE65bekyk
+X-TUID: b16O0I7GP/JL
 
 On 9/14/22 17:09, Alex Bennée wrote:
-> The point of qtest is to simulate how running code might interact with
-> the system. However because it's not a real system we have places in
-> the code which especially handle check qtest_enabled() before
-> referencing current_cpu. Now we can encode these details in the
-> MemTxAttrs lets do that so we can start removing them.
+> Now that MxTxAttrs encodes a CPU we should use that to figure it out.
+> This solves edge cases like accessing via gdbstub or qtest.
 > 
 > Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+> Resolves: https://gitlab.com/qemu-project/qemu/-/issues/124
 > ---
->   softmmu/qtest.c | 31 +++++++++++++++++++------------
->   1 file changed, 19 insertions(+), 12 deletions(-)
+>   hw/intc/arm_gic.c | 39 ++++++++++++++++++++++-----------------
+>   1 file changed, 22 insertions(+), 17 deletions(-)
 > 
-> diff --git a/softmmu/qtest.c b/softmmu/qtest.c
-> index f8acef2628..c086bd34b7 100644
-> --- a/softmmu/qtest.c
-> +++ b/softmmu/qtest.c
-> @@ -362,6 +362,13 @@ static void qtest_clock_warp(int64_t dest)
->       qemu_clock_notify(QEMU_CLOCK_VIRTUAL);
->   }
+> diff --git a/hw/intc/arm_gic.c b/hw/intc/arm_gic.c
+> index 492b2421ab..7feedac735 100644
+> --- a/hw/intc/arm_gic.c
+> +++ b/hw/intc/arm_gic.c
+> @@ -56,17 +56,22 @@ static const uint8_t gic_id_gicv2[] = {
+>       0x04, 0x00, 0x00, 0x00, 0x90, 0xb4, 0x2b, 0x00, 0x0d, 0xf0, 0x05, 0xb1
+>   };
 >   
-> +/*
-> + * QTest memory accesses are treated as though they come from the
-> + * first (non-existent) CPU. We need to expose this via MemTxAttrs for
-> + * those bits of HW which care which core is accessing them.
-> + */
-> +#define MEMTXATTRS_QTEST ((MemTxAttrs) { .requester_cpu = 1 })
+> -static inline int gic_get_current_cpu(GICState *s)
+> +static inline int gic_get_current_cpu(GICState *s, MemTxAttrs attrs)
+>   {
+> -    if (!qtest_enabled() && s->num_cpu > 1) {
+> -        return current_cpu->cpu_index;
+> -    }
+> -    return 0;
+> +    /*
+> +     * Something other than a CPU accessing the GIC would be a bug as
+> +     * would a CPU index higher than the GICState expects to be
+> +     * handling
+> +     */
+> +    g_assert(attrs.requester_cpu == 1);
 
-Maybe clearer as { .requester_cpu = true, .requester_id = 0 }?
-Otherwise it kinda looks like we're setting the second cpu (index 1).
+Better without "== 1" -- this field ought to be boolean.
+
+> +    g_assert(attrs.requester_id < s->num_cpu);
+
+Do we still need the qtest_enabled test to short circuit the num_cpu test within the 
+assert?  I guess if tests aren't failing then perhaps we don't...
 
 Otherwise,
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>

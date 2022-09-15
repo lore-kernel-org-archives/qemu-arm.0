@@ -1,87 +1,353 @@
-Return-Path: <alex.bennee@linaro.org>
-Received: from zen.linaroharston ([185.81.254.11])
-        by smtp.gmail.com with ESMTPSA id b17-20020adfee91000000b0022ac12fff29sm4911415wro.65.2022.09.14.09.09.55
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 14 Sep 2022 09:09:56 -0700 (PDT)
-Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 769FE1FFBC;
-	Wed, 14 Sep 2022 17:09:55 +0100 (BST)
-From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Peter Maydell <peter.maydell@linaro.org>
-Subject: [RFC PATCH  4/4] hw/timer: convert mptimer access to attrs to derive cpu index
-Date: Wed, 14 Sep 2022 17:09:55 +0100
-Message-Id: <20220914160955.812151-5-alex.bennee@linaro.org>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20220914160955.812151-1-alex.bennee@linaro.org>
-References: <20220914160955.812151-1-alex.bennee@linaro.org>
+Received: by 2002:a17:906:b088:0:0:0:0 with SMTP id x8csp310844ejy;
+        Thu, 15 Sep 2022 05:02:19 -0700 (PDT)
+X-Google-Smtp-Source: AMsMyM62kHhfAYwwbqDkPYTW22UL/SsAj1UnCyOPVOWBpIdhQXOGWRzgqrLAFPg0vCcpOH3hForA
+X-Received: by 2002:a05:6122:c89:b0:3a2:e49a:47da with SMTP id ba9-20020a0561220c8900b003a2e49a47damr587120vkb.41.1663243338883;
+        Thu, 15 Sep 2022 05:02:18 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1663243338; cv=none;
+        d=google.com; s=arc-20160816;
+        b=NE+hUI9gDXlu90aNVUvH/1JzW2bEwjS9jqPdAd2HX+oCaEXht8aBRYl0p36Gr5ZqIv
+         c9efPZ9UC1nPfRTyF1Pxnf1VQCg2c1d6FLfsSTUMJTRlt3PYhmGf6zJhuDt1RRBPGGKL
+         2j27I13Ss4csG6esstwCrqBgFZRA6MH0/RCT3kulm1a5LunLONsN9t2uJTSloy/SLd5E
+         Vu4vquJGYDklJ/qMqh4QA0ATCZCk4Djf3bDa0xdo/3+4eFcIh/t+KKJRkCjaoMNOTQ2b
+         v5i2i2i5wsfB79UdJV2b4jiXDNum4PWpw5/4UmxaRl2oFctDHX6yeeC/b7YixIRYTCyB
+         06yQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
+         :dkim-signature;
+        bh=tuVbvaRL4RZvmvYaSg1XTHPOCgJwHdMgZf3EjACZqVQ=;
+        b=u45aIykl2do9rQef1VwGhrAtBeKaOkGATjHPmd1Ap/tf2NgD9dh8v1HZU8YuLGSrrX
+         e2EFmCvKLMlFI7wh0Ieg7nYK4rtHjXcL8MvNfnED6TV+NExyVME4/ViFAH2VkBX/urf+
+         qGh8Eef4Oc7O4k7/OmWZuwZyzLreRCOg8JsscWlhcTQHnjJZmOQOCvCA68+ufOUv9hqI
+         ggp3AS/jlHgrUpmsX+KFnXD/IlviKljmebclM1oFhT0dHwAJqb818VmWYMW1Nmr0wzHA
+         V5KzknUCRP2FDbRd/nuO0HjZubfh2Fi75uxTYj8lwwGZFW6t0u8kbsGmJaarHYezRobs
+         gz1Q==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@ventanamicro.com header.s=google header.b=ki5zkL8I;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id p5-20020a67a605000000b00398a47909c3si496835vse.279.2022.09.15.05.02.18
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 15 Sep 2022 05:02:18 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@ventanamicro.com header.s=google header.b=ki5zkL8I;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:58458 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1oYnZS-0006NN-4F
+	for alex.bennee@linaro.org; Thu, 15 Sep 2022 08:02:18 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:50666)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <sunilvl@ventanamicro.com>)
+ id 1oYnX0-0006ME-MP
+ for qemu-arm@nongnu.org; Thu, 15 Sep 2022 07:59:48 -0400
+Received: from mail-pl1-x62f.google.com ([2607:f8b0:4864:20::62f]:44878)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <sunilvl@ventanamicro.com>)
+ id 1oYnWx-0004dd-Ql
+ for qemu-arm@nongnu.org; Thu, 15 Sep 2022 07:59:46 -0400
+Received: by mail-pl1-x62f.google.com with SMTP id k21so7570725pls.11
+ for <qemu-arm@nongnu.org>; Thu, 15 Sep 2022 04:59:40 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=ventanamicro.com; s=google;
+ h=in-reply-to:content-disposition:mime-version:references:message-id
+ :subject:cc:to:from:date:from:to:cc:subject:date;
+ bh=tuVbvaRL4RZvmvYaSg1XTHPOCgJwHdMgZf3EjACZqVQ=;
+ b=ki5zkL8IE7bKNoveDsUcbdKQ1A0q3/j4yujGC6To9afjEsShkadXQ++wWXoJ5cymcJ
+ ce5kyKAzMKEXqwuFSCjW+AzDObTvZaV9jXSEw6MlxLdE0eX7rE33AJ19KSLsLQyyLjsn
+ 271OQ01a06u3gI6pujrIlNTUaV7hxrB1dr3974S8Lza+Io/x/OgLuoydYIz0l2WLD+rb
+ UI983kG83kaHO3LAQrGGuMJokSPDaxy5s2ASO6hL/k8f9T16c5bIW9im0qtwnPbdKSM+
+ SCsvc96UIuNX8HqPTFQUDK3FXG7XCoUMUKud04lPCYR1d18PrlvQ2eLvNit6WUlWF81A
+ u+gA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=in-reply-to:content-disposition:mime-version:references:message-id
+ :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date;
+ bh=tuVbvaRL4RZvmvYaSg1XTHPOCgJwHdMgZf3EjACZqVQ=;
+ b=6c6zKGsYUfGPYeIzNKiYHNBiADeW10KI6hP++wfHDmla2x9p4vlxDSXN6WMhldmGEZ
+ RFV1EcrveF8tCSZzO3/FbsaErIQ6GG2qin7jql1dmf7fnJiJUt1v5lnv2BX3bl05wZr4
+ 679sEza0QmQgUBtXrTZS37bUSwijlBHzK2gg9DIOub5pwCw7agRXdwCUM/uVcXy+ns/X
+ o2Jr5kIml+WKyM++JNNn5L4XqEOK8IQXdwpWCx6S3JJSScfsHnMhouOqFId8AjvRqh5Y
+ WIZZBUa5Ocr4RLDQcFqFtXkAGI+PFjT2BStlm9TgUgoVxxnnXarH8idB25oLZ7rHDx5K
+ mUKg==
+X-Gm-Message-State: ACrzQf0ldJWS7Wz+gSARs1EmQZVsy3Xs+4r84NS+CUooEWCn4jH/cdeQ
+ AA0YSDdDWDv2FNOKmkZQy6bQUQ==
+X-Received: by 2002:a17:90b:4a12:b0:203:3482:d39e with SMTP id
+ kk18-20020a17090b4a1200b002033482d39emr2996801pjb.145.1663243179636; 
+ Thu, 15 Sep 2022 04:59:39 -0700 (PDT)
+Received: from sunil-laptop ([49.206.11.215]) by smtp.gmail.com with ESMTPSA id
+ w63-20020a623042000000b00528a097aeffsm12004778pfw.118.2022.09.15.04.59.35
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 15 Sep 2022 04:59:39 -0700 (PDT)
+Date: Thu, 15 Sep 2022 17:29:32 +0530
+From: Sunil V L <sunilvl@ventanamicro.com>
+To: Alistair Francis <alistair23@gmail.com>
+Cc: qemu-arm <qemu-arm@nongnu.org>,
+ "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
+ "open list:RISC-V" <qemu-riscv@nongnu.org>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Xiaojuan Yang <yangxiaojuan@loongson.cn>,
+ Song Gao <gaosong@loongson.cn>, Gerd Hoffmann <kraxel@redhat.com>,
+ Palmer Dabbelt <palmer@dabbelt.com>,
+ Alistair Francis <alistair.francis@wdc.com>,
+ Bin Meng <bin.meng@windriver.com>, Andrew Jones <ajones@ventanamicro.com>,
+ Anup Patel <apatel@ventanamicro.com>,
+ Atish Kumar Patra <atishp@rivosinc.com>,
+ Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+Subject: Re: [PATCH V4 1/3] hw/arm, loongarch: Move load_image_to_fw_cfg() to
+ common location
+Message-ID: <YyMTpMuQ0UP9Mqaz@sunil-laptop>
+References: <20220906090219.412517-1-sunilvl@ventanamicro.com>
+ <20220906090219.412517-2-sunilvl@ventanamicro.com>
+ <CAKmqyKOZSaE9CYGmYSKOEnkQkGDUkchut+i2mQjcZLSVx-qWag@mail.gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-TUID: rv8/XNIEg0WE
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <CAKmqyKOZSaE9CYGmYSKOEnkQkGDUkchut+i2mQjcZLSVx-qWag@mail.gmail.com>
+Received-SPF: pass client-ip=2607:f8b0:4864:20::62f;
+ envelope-from=sunilvl@ventanamicro.com; helo=mail-pl1-x62f.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: ZMq9nlk2Kgnq
 
-This removes the hacks to deal with empty current_cpu.
+Hi,
 
-Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
----
- hw/timer/arm_mptimer.c | 25 ++++++++++++++-----------
- 1 file changed, 14 insertions(+), 11 deletions(-)
+Could maintainers of hw/arm and hw/loongarch to take a look at this? I
+have addressed Peter's earlier comment.
 
-diff --git a/hw/timer/arm_mptimer.c b/hw/timer/arm_mptimer.c
-index cdfca3000b..a7fe6ddc0d 100644
---- a/hw/timer/arm_mptimer.c
-+++ b/hw/timer/arm_mptimer.c
-@@ -41,9 +41,10 @@
-  * which is used in both the ARM11MPCore and Cortex-A9MP.
-  */
- 
--static inline int get_current_cpu(ARMMPTimerState *s)
-+static inline int get_current_cpu(ARMMPTimerState *s, MemTxAttrs attrs)
- {
--    int cpu_id = current_cpu ? current_cpu->cpu_index : 0;
-+    int cpu_id = attrs.requester_id;
-+    g_assert(attrs.requester_cpu == 1);
- 
-     if (cpu_id >= s->num_cpu) {
-         hw_error("arm_mptimer: num-cpu %d but this cpu is %d!\n",
-@@ -178,25 +179,27 @@ static void timerblock_write(void *opaque, hwaddr addr,
- /* Wrapper functions to implement the "read timer/watchdog for
-  * the current CPU" memory regions.
-  */
--static uint64_t arm_thistimer_read(void *opaque, hwaddr addr,
--                                   unsigned size)
-+static MemTxResult arm_thistimer_read(void *opaque, hwaddr addr, uint64_t *data,
-+                                      unsigned size, MemTxAttrs attrs)
- {
-     ARMMPTimerState *s = (ARMMPTimerState *)opaque;
--    int id = get_current_cpu(s);
--    return timerblock_read(&s->timerblock[id], addr, size);
-+    int id = get_current_cpu(s, attrs);
-+    *data = timerblock_read(&s->timerblock[id], addr, size);
-+    return MEMTX_OK;
- }
- 
--static void arm_thistimer_write(void *opaque, hwaddr addr,
--                                uint64_t value, unsigned size)
-+static MemTxResult arm_thistimer_write(void *opaque, hwaddr addr,
-+                                uint64_t value, unsigned size, MemTxAttrs attrs)
- {
-     ARMMPTimerState *s = (ARMMPTimerState *)opaque;
--    int id = get_current_cpu(s);
-+    int id = get_current_cpu(s, attrs);
-     timerblock_write(&s->timerblock[id], addr, value, size);
-+    return MEMTX_OK;
- }
- 
- static const MemoryRegionOps arm_thistimer_ops = {
--    .read = arm_thistimer_read,
--    .write = arm_thistimer_write,
-+    .read_with_attrs = arm_thistimer_read,
-+    .write_with_attrs = arm_thistimer_write,
-     .valid = {
-         .min_access_size = 4,
-         .max_access_size = 4,
--- 
-2.34.1
+Thanks
+Sunil
+
+On Thu, Sep 08, 2022 at 11:17:52AM +0200, Alistair Francis wrote:
+> On Tue, Sep 6, 2022 at 11:38 AM Sunil V L <sunilvl@ventanamicro.com> wrote:
+> >
+> > load_image_to_fw_cfg() is duplicated by both arm and loongarch. The same
+> > function will be required by riscv too. So, it's time to refactor and
+> > move this function to a common path.
+> >
+> > Signed-off-by: Sunil V L <sunilvl@ventanamicro.com>
+> > Reviewed-by: Andrew Jones <ajones@ventanamicro.com>
+> 
+> Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
+> 
+> Alistair
+> 
+> > ---
+> >  hw/arm/boot.c             | 49 ---------------------------------------
+> >  hw/loongarch/virt.c       | 33 --------------------------
+> >  hw/nvram/fw_cfg.c         | 32 +++++++++++++++++++++++++
+> >  include/hw/nvram/fw_cfg.h | 21 +++++++++++++++++
+> >  4 files changed, 53 insertions(+), 82 deletions(-)
+> >
+> > diff --git a/hw/arm/boot.c b/hw/arm/boot.c
+> > index ada2717f76..704f368d9c 100644
+> > --- a/hw/arm/boot.c
+> > +++ b/hw/arm/boot.c
+> > @@ -818,55 +818,6 @@ static void do_cpu_reset(void *opaque)
+> >      }
+> >  }
+> >
+> > -/**
+> > - * load_image_to_fw_cfg() - Load an image file into an fw_cfg entry identified
+> > - *                          by key.
+> > - * @fw_cfg:         The firmware config instance to store the data in.
+> > - * @size_key:       The firmware config key to store the size of the loaded
+> > - *                  data under, with fw_cfg_add_i32().
+> > - * @data_key:       The firmware config key to store the loaded data under,
+> > - *                  with fw_cfg_add_bytes().
+> > - * @image_name:     The name of the image file to load. If it is NULL, the
+> > - *                  function returns without doing anything.
+> > - * @try_decompress: Whether the image should be decompressed (gunzipped) before
+> > - *                  adding it to fw_cfg. If decompression fails, the image is
+> > - *                  loaded as-is.
+> > - *
+> > - * In case of failure, the function prints an error message to stderr and the
+> > - * process exits with status 1.
+> > - */
+> > -static void load_image_to_fw_cfg(FWCfgState *fw_cfg, uint16_t size_key,
+> > -                                 uint16_t data_key, const char *image_name,
+> > -                                 bool try_decompress)
+> > -{
+> > -    size_t size = -1;
+> > -    uint8_t *data;
+> > -
+> > -    if (image_name == NULL) {
+> > -        return;
+> > -    }
+> > -
+> > -    if (try_decompress) {
+> > -        size = load_image_gzipped_buffer(image_name,
+> > -                                         LOAD_IMAGE_MAX_GUNZIP_BYTES, &data);
+> > -    }
+> > -
+> > -    if (size == (size_t)-1) {
+> > -        gchar *contents;
+> > -        gsize length;
+> > -
+> > -        if (!g_file_get_contents(image_name, &contents, &length, NULL)) {
+> > -            error_report("failed to load \"%s\"", image_name);
+> > -            exit(1);
+> > -        }
+> > -        size = length;
+> > -        data = (uint8_t *)contents;
+> > -    }
+> > -
+> > -    fw_cfg_add_i32(fw_cfg, size_key, size);
+> > -    fw_cfg_add_bytes(fw_cfg, data_key, data, size);
+> > -}
+> > -
+> >  static int do_arm_linux_init(Object *obj, void *opaque)
+> >  {
+> >      if (object_dynamic_cast(obj, TYPE_ARM_LINUX_BOOT_IF)) {
+> > diff --git a/hw/loongarch/virt.c b/hw/loongarch/virt.c
+> > index 5cc0b05538..eee2c193c0 100644
+> > --- a/hw/loongarch/virt.c
+> > +++ b/hw/loongarch/virt.c
+> > @@ -542,39 +542,6 @@ static void reset_load_elf(void *opaque)
+> >      }
+> >  }
+> >
+> > -/* Load an image file into an fw_cfg entry identified by key. */
+> > -static void load_image_to_fw_cfg(FWCfgState *fw_cfg, uint16_t size_key,
+> > -                                 uint16_t data_key, const char *image_name,
+> > -                                 bool try_decompress)
+> > -{
+> > -    size_t size = -1;
+> > -    uint8_t *data;
+> > -
+> > -    if (image_name == NULL) {
+> > -        return;
+> > -    }
+> > -
+> > -    if (try_decompress) {
+> > -        size = load_image_gzipped_buffer(image_name,
+> > -                                         LOAD_IMAGE_MAX_GUNZIP_BYTES, &data);
+> > -    }
+> > -
+> > -    if (size == (size_t)-1) {
+> > -        gchar *contents;
+> > -        gsize length;
+> > -
+> > -        if (!g_file_get_contents(image_name, &contents, &length, NULL)) {
+> > -            error_report("failed to load \"%s\"", image_name);
+> > -            exit(1);
+> > -        }
+> > -        size = length;
+> > -        data = (uint8_t *)contents;
+> > -    }
+> > -
+> > -    fw_cfg_add_i32(fw_cfg, size_key, size);
+> > -    fw_cfg_add_bytes(fw_cfg, data_key, data, size);
+> > -}
+> > -
+> >  static void fw_cfg_add_kernel_info(FWCfgState *fw_cfg)
+> >  {
+> >      /*
+> > diff --git a/hw/nvram/fw_cfg.c b/hw/nvram/fw_cfg.c
+> > index d605f3f45a..371a45dfe2 100644
+> > --- a/hw/nvram/fw_cfg.c
+> > +++ b/hw/nvram/fw_cfg.c
+> > @@ -41,6 +41,7 @@
+> >  #include "qapi/error.h"
+> >  #include "hw/acpi/aml-build.h"
+> >  #include "hw/pci/pci_bus.h"
+> > +#include "hw/loader.h"
+> >
+> >  #define FW_CFG_FILE_SLOTS_DFLT 0x20
+> >
+> > @@ -1221,6 +1222,37 @@ FWCfgState *fw_cfg_find(void)
+> >      return FW_CFG(object_resolve_path_type("", TYPE_FW_CFG, NULL));
+> >  }
+> >
+> > +void load_image_to_fw_cfg(FWCfgState *fw_cfg, uint16_t size_key,
+> > +                          uint16_t data_key, const char *image_name,
+> > +                          bool try_decompress)
+> > +{
+> > +    size_t size = -1;
+> > +    uint8_t *data;
+> > +
+> > +    if (image_name == NULL) {
+> > +        return;
+> > +    }
+> > +
+> > +    if (try_decompress) {
+> > +        size = load_image_gzipped_buffer(image_name,
+> > +                                         LOAD_IMAGE_MAX_GUNZIP_BYTES, &data);
+> > +    }
+> > +
+> > +    if (size == (size_t)-1) {
+> > +        gchar *contents;
+> > +        gsize length;
+> > +
+> > +        if (!g_file_get_contents(image_name, &contents, &length, NULL)) {
+> > +            error_report("failed to load \"%s\"", image_name);
+> > +            exit(1);
+> > +        }
+> > +        size = length;
+> > +        data = (uint8_t *)contents;
+> > +    }
+> > +
+> > +    fw_cfg_add_i32(fw_cfg, size_key, size);
+> > +    fw_cfg_add_bytes(fw_cfg, data_key, data, size);
+> > +}
+> >
+> >  static void fw_cfg_class_init(ObjectClass *klass, void *data)
+> >  {
+> > diff --git a/include/hw/nvram/fw_cfg.h b/include/hw/nvram/fw_cfg.h
+> > index 0e7a8bc7af..c1f81a5f13 100644
+> > --- a/include/hw/nvram/fw_cfg.h
+> > +++ b/include/hw/nvram/fw_cfg.h
+> > @@ -342,4 +342,25 @@ bool fw_cfg_dma_enabled(void *opaque);
+> >   */
+> >  const char *fw_cfg_arch_key_name(uint16_t key);
+> >
+> > +/**
+> > + * load_image_to_fw_cfg() - Load an image file into an fw_cfg entry identified
+> > + *                          by key.
+> > + * @fw_cfg:         The firmware config instance to store the data in.
+> > + * @size_key:       The firmware config key to store the size of the loaded
+> > + *                  data under, with fw_cfg_add_i32().
+> > + * @data_key:       The firmware config key to store the loaded data under,
+> > + *                  with fw_cfg_add_bytes().
+> > + * @image_name:     The name of the image file to load. If it is NULL, the
+> > + *                  function returns without doing anything.
+> > + * @try_decompress: Whether the image should be decompressed (gunzipped) before
+> > + *                  adding it to fw_cfg. If decompression fails, the image is
+> > + *                  loaded as-is.
+> > + *
+> > + * In case of failure, the function prints an error message to stderr and the
+> > + * process exits with status 1.
+> > + */
+> > +void load_image_to_fw_cfg(FWCfgState *fw_cfg, uint16_t size_key,
+> > +                          uint16_t data_key, const char *image_name,
+> > +                          bool try_decompress);
+> > +
+> >  #endif
+> > --
+> > 2.25.1
+> >
+> >

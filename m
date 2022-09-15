@@ -1,159 +1,116 @@
-Return-Path: <alex.bennee@linaro.org>
-Received: from zen.linaroharston ([185.81.254.11])
-        by smtp.gmail.com with ESMTPSA id l10-20020adfe58a000000b0022863395912sm13314406wrm.53.2022.09.14.09.09.55
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 14 Sep 2022 09:09:56 -0700 (PDT)
-Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 6AEBB1FFBB;
-	Wed, 14 Sep 2022 17:09:55 +0100 (BST)
-From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Peter Maydell <peter.maydell@linaro.org>
-Subject: [RFC PATCH  3/4] hw/intc/gic: use MxTxAttrs to divine accessing CPU
-Date: Wed, 14 Sep 2022 17:09:54 +0100
-Message-Id: <20220914160955.812151-4-alex.bennee@linaro.org>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20220914160955.812151-1-alex.bennee@linaro.org>
-References: <20220914160955.812151-1-alex.bennee@linaro.org>
+Received: by 2002:a17:906:b088:0:0:0:0 with SMTP id x8csp209745ejy;
+        Thu, 15 Sep 2022 01:07:35 -0700 (PDT)
+X-Received: by 2002:a05:6e02:ec4:b0:2f3:9528:4303 with SMTP id i4-20020a056e020ec400b002f395284303mr11858664ilk.158.1663229254947;
+        Thu, 15 Sep 2022 01:07:34 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1663229254; cv=none;
+        d=google.com; s=arc-20160816;
+        b=IsDqzqZlOx0gmixj4HVUlG1b2edW74u5EFG+pSkP5X4DvU8iWgupYo1RKQjNGS10ud
+         /EVTtrMc6X4AnGTGGTnngRGJT6noHEYyF5fAKhYZ9DnWGDCuvWS6UWVrhoWeGIkLJzqO
+         9cwDMPktEA91/6kAdPn1OD3tr+wdO++Z7Nzw0YFSS73T1rEjHidVvV0KENZuRLIW3nf6
+         vChhDPKSYnW3tsx7kzXoUd4lcP2qz4LeuDuuTQ8EG4AXK/n0ux0KR+e4r3AjSBX1kJEM
+         mq0H994QpRFkGG2Q2F/Tue2SIxgsxPnSjI3RoUrZ/rtQHabsAWPxzvbuqvGVjt1sMiyw
+         xLuQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=e59Kdp7IusKVdXAHcR1y5J4qLxewCCFQwsbIuJRuj3Q=;
+        b=a2LoSwz3qAGiSVzwXXNkkpBjhqUNIvm/Xu5UTxdS4+XxKcaGnChqJ+GY/krzCEmJZm
+         uP7iMNQbv+bTW8d4JFO+wXnRIc7alymUN1Tfqyvx+rkJr7sNPJAs/xVYmaCgUu7V8Sj3
+         f9pe1FSzmsrfdMfhf/GKV7DUX6TRziLYqb5ZUf8kR3KmeNQvVWRv+o29xQ1K5tIGOcYs
+         QNXpEHtC2ATQf0VHp48yHq1Q9yGXEQ4pKWYETPhdYGiN5ehizpDwmeK19mFOL80C4tId
+         yhdPoJmZ1P6xSH84UFvY0qGKwW4Xb9ylHH7OWTSPD7YIwKOcbneQagxkcV9lwRGHTFe8
+         R1NA==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=OKuNvwdL;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <richard.henderson@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id z3-20020a92cb83000000b002f1b043b91bsor4492389ilo.80.2022.09.15.01.07.34
+        for <alex.bennee@linaro.org>
+        (Google Transport Security);
+        Thu, 15 Sep 2022 01:07:34 -0700 (PDT)
+Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=OKuNvwdL;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date;
+        bh=e59Kdp7IusKVdXAHcR1y5J4qLxewCCFQwsbIuJRuj3Q=;
+        b=OKuNvwdL0CCzLpxWWXGZwOz801RHT7VOZEUeuzIf6p4os7SswwuEP9IHGJbMgotQ8+
+         r95SutEY9/jsZDXQDjTsGNgaDJFgb3qs3zQUQ9TK/X5qR08DaVJP0oOqDrbo82MnUTOm
+         tHdBmhbPj9IppybYmbeClDmMcyamoStMjrxOiPnC5ALbvON0bmH9np+qD5+0I8xzxIlt
+         2RRsfnue1plsZj9S6Vt9hoBogFlZ1jBDMP5sM1QIdDDUfICt7Iu/cSI5jxHHjRZzjCn+
+         LElkR2/NtFOV+lQjfqjThOjhv7dz0SZMJSfk7EZFBadgeMc38a0xwx5C8z7UnZYNCXBG
+         MTTw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date;
+        bh=e59Kdp7IusKVdXAHcR1y5J4qLxewCCFQwsbIuJRuj3Q=;
+        b=GvGOLZA3SD5XH4OBOwrww2O6x8s22HnsvGhvs21P2pnFi7rqGnrXh0gN0fVLoYRWHL
+         Ow/MgBPo7G3spTQzy7SjCfI/t6ifBuNbSohsWkKO6LHhpz4NkNWxJGtonEXDXmrj8C/T
+         QgXVF1lx489rZXZgTeKbtYc9abFf33kIcsNZM1N55xPIiUqFKUu3lE59xAXlo/jQlxux
+         ThXDI01j0ibfLxeHnulufp7NNhEhtUMP3WmdERW8iGAaxvHlZ2CFFYZN+cyXFYeaqMlu
+         nzhA0PbMFV2NmcFd2AHADiHYUdSFWf3x0EIGxXsC2Iq+YMs4Ed7G3uAalcSaVRYZTEk+
+         h0lQ==
+X-Gm-Message-State: ACgBeo0F2828lDR1ia265eOQIlO/UiwDMv1Ig4vG0dJufj3J2LGTyn9+
+	WpWFnAdx6bey0fI4WdGlj1Yxpa0AaXD8P04DA04=
+X-Google-Smtp-Source: AA6agR6dkm6FtFyFjDJXJ/C8H7ai6wj7SzjQkege+yqCeydV5TVaDf4mruM/SLw+SClz4qXXR8U7dg==
+X-Received: by 2002:a05:6e02:1524:b0:2ec:71c6:7b85 with SMTP id i4-20020a056e02152400b002ec71c67b85mr17168929ilu.237.1663229254383;
+        Thu, 15 Sep 2022 01:07:34 -0700 (PDT)
+Return-Path: <richard.henderson@linaro.org>
+Received: from [192.168.85.227] ([172.102.14.25])
+        by smtp.gmail.com with ESMTPSA id a18-20020a029992000000b0034c0b4c13c2sm817595jal.23.2022.09.15.01.07.32
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 15 Sep 2022 01:07:33 -0700 (PDT)
+Message-ID: <f7de79e4-a0f4-c212-6960-afa0a82bc80a@linaro.org>
+Date: Thu, 15 Sep 2022 09:05:13 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.11.0
+Subject: Re: [RFC PATCH 1/4] hw: encode accessing CPU index in MemTxAttrs
+Content-Language: en-US
+To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
+ qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>
+References: <20220914160955.812151-1-alex.bennee@linaro.org>
+ <20220914160955.812151-2-alex.bennee@linaro.org>
+From: Richard Henderson <richard.henderson@linaro.org>
+In-Reply-To: <20220914160955.812151-2-alex.bennee@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-TUID: +cuGAThlQ0Ac
+X-TUID: Ia5HNzO54Ye+
 
-Now that MxTxAttrs encodes a CPU we should use that to figure it out.
-This solves edge cases like accessing via gdbstub or qtest.
+On 9/14/22 17:09, Alex Bennée wrote:
+> @@ -1340,8 +1340,13 @@ static uint64_t io_readx(CPUArchState *env, CPUIOTLBEntry *iotlbentry,
+>       uint64_t val;
+>       bool locked = false;
+>       MemTxResult r;
+> +    MemTxAttrs attrs = iotlbentry->attrs;
+>   
+> -    section = iotlb_to_section(cpu, iotlbentry->addr, iotlbentry->attrs);
+> +    /* encode the accessing CPU */
+> +    attrs.requester_cpu = 1;
+> +    attrs.requester_id = cpu->cpu_index;
+> +
+> +    section = iotlb_to_section(cpu, iotlbentry->addr, attrs);
+>       mr = section->mr;
+>       mr_offset = (iotlbentry->addr & TARGET_PAGE_MASK) + addr;
+>       cpu->mem_io_pc = retaddr;
 
-Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-Resolves: https://gitlab.com/qemu-project/qemu/-/issues/124
----
- hw/intc/arm_gic.c | 39 ++++++++++++++++++++++-----------------
- 1 file changed, 22 insertions(+), 17 deletions(-)
+At first I was going to suggest that this be done in tlb_set_page_with_attrs, so that it 
+could be done once and not duplicate code across read/write.
 
-diff --git a/hw/intc/arm_gic.c b/hw/intc/arm_gic.c
-index 492b2421ab..7feedac735 100644
---- a/hw/intc/arm_gic.c
-+++ b/hw/intc/arm_gic.c
-@@ -56,17 +56,22 @@ static const uint8_t gic_id_gicv2[] = {
-     0x04, 0x00, 0x00, 0x00, 0x90, 0xb4, 0x2b, 0x00, 0x0d, 0xf0, 0x05, 0xb1
- };
- 
--static inline int gic_get_current_cpu(GICState *s)
-+static inline int gic_get_current_cpu(GICState *s, MemTxAttrs attrs)
- {
--    if (!qtest_enabled() && s->num_cpu > 1) {
--        return current_cpu->cpu_index;
--    }
--    return 0;
-+    /*
-+     * Something other than a CPU accessing the GIC would be a bug as
-+     * would a CPU index higher than the GICState expects to be
-+     * handling
-+     */
-+    g_assert(attrs.requester_cpu == 1);
-+    g_assert(attrs.requester_id < s->num_cpu);
-+
-+    return attrs.requester_id;
- }
- 
--static inline int gic_get_current_vcpu(GICState *s)
-+static inline int gic_get_current_vcpu(GICState *s, MemTxAttrs attrs)
- {
--    return gic_get_current_cpu(s) + GIC_NCPU;
-+    return gic_get_current_cpu(s, attrs) + GIC_NCPU;
- }
- 
- /* Return true if this GIC config has interrupt groups, which is
-@@ -951,7 +956,7 @@ static uint32_t gic_dist_readb(void *opaque, hwaddr offset, MemTxAttrs attrs)
-     int cm;
-     int mask;
- 
--    cpu = gic_get_current_cpu(s);
-+    cpu = gic_get_current_cpu(s, attrs);
-     cm = 1 << cpu;
-     if (offset < 0x100) {
-         if (offset == 0) {      /* GICD_CTLR */
-@@ -1182,7 +1187,7 @@ static void gic_dist_writeb(void *opaque, hwaddr offset,
-     int i;
-     int cpu;
- 
--    cpu = gic_get_current_cpu(s);
-+    cpu = gic_get_current_cpu(s, attrs);
-     if (offset < 0x100) {
-         if (offset == 0) {
-             if (s->security_extn && !attrs.secure) {
-@@ -1476,7 +1481,7 @@ static void gic_dist_writel(void *opaque, hwaddr offset,
-         int mask;
-         int target_cpu;
- 
--        cpu = gic_get_current_cpu(s);
-+        cpu = gic_get_current_cpu(s, attrs);
-         irq = value & 0xf;
-         switch ((value >> 24) & 3) {
-         case 0:
-@@ -1780,7 +1785,7 @@ static MemTxResult gic_thiscpu_read(void *opaque, hwaddr addr, uint64_t *data,
-                                     unsigned size, MemTxAttrs attrs)
- {
-     GICState *s = (GICState *)opaque;
--    return gic_cpu_read(s, gic_get_current_cpu(s), addr, data, attrs);
-+    return gic_cpu_read(s, gic_get_current_cpu(s, attrs), addr, data, attrs);
- }
- 
- static MemTxResult gic_thiscpu_write(void *opaque, hwaddr addr,
-@@ -1788,7 +1793,7 @@ static MemTxResult gic_thiscpu_write(void *opaque, hwaddr addr,
-                                      MemTxAttrs attrs)
- {
-     GICState *s = (GICState *)opaque;
--    return gic_cpu_write(s, gic_get_current_cpu(s), addr, value, attrs);
-+    return gic_cpu_write(s, gic_get_current_cpu(s, attrs), addr, value, attrs);
- }
- 
- /* Wrappers to read/write the GIC CPU interface for a specific CPU.
-@@ -1818,7 +1823,7 @@ static MemTxResult gic_thisvcpu_read(void *opaque, hwaddr addr, uint64_t *data,
- {
-     GICState *s = (GICState *)opaque;
- 
--    return gic_cpu_read(s, gic_get_current_vcpu(s), addr, data, attrs);
-+    return gic_cpu_read(s, gic_get_current_vcpu(s, attrs), addr, data, attrs);
- }
- 
- static MemTxResult gic_thisvcpu_write(void *opaque, hwaddr addr,
-@@ -1827,7 +1832,7 @@ static MemTxResult gic_thisvcpu_write(void *opaque, hwaddr addr,
- {
-     GICState *s = (GICState *)opaque;
- 
--    return gic_cpu_write(s, gic_get_current_vcpu(s), addr, value, attrs);
-+    return gic_cpu_write(s, gic_get_current_vcpu(s, attrs), addr, value, attrs);
- }
- 
- static uint32_t gic_compute_eisr(GICState *s, int cpu, int lr_start)
-@@ -1860,7 +1865,7 @@ static uint32_t gic_compute_elrsr(GICState *s, int cpu, int lr_start)
- 
- static void gic_vmcr_write(GICState *s, uint32_t value, MemTxAttrs attrs)
- {
--    int vcpu = gic_get_current_vcpu(s);
-+    int vcpu = gic_get_current_vcpu(s, attrs);
-     uint32_t ctlr;
-     uint32_t abpr;
-     uint32_t bpr;
-@@ -1995,7 +2000,7 @@ static MemTxResult gic_thiscpu_hyp_read(void *opaque, hwaddr addr, uint64_t *dat
- {
-     GICState *s = (GICState *)opaque;
- 
--    return gic_hyp_read(s, gic_get_current_cpu(s), addr, data, attrs);
-+    return gic_hyp_read(s, gic_get_current_cpu(s, attrs), addr, data, attrs);
- }
- 
- static MemTxResult gic_thiscpu_hyp_write(void *opaque, hwaddr addr,
-@@ -2004,7 +2009,7 @@ static MemTxResult gic_thiscpu_hyp_write(void *opaque, hwaddr addr,
- {
-     GICState *s = (GICState *)opaque;
- 
--    return gic_hyp_write(s, gic_get_current_cpu(s), addr, value, attrs);
-+    return gic_hyp_write(s, gic_get_current_cpu(s, attrs), addr, value, attrs);
- }
- 
- static MemTxResult gic_do_hyp_read(void *opaque, hwaddr addr, uint64_t *data,
--- 
-2.34.1
+But then I got to thinking how this ought to interact with MEMTXATTRS_UNSPECIFIED, and now 
+I think that we simply have to leave this to the cpu's tlb_fill routine, where it fills in 
+(or doesn't) all of the other transaction attributes.
+
+
+r~

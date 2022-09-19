@@ -1,174 +1,279 @@
-Received: by 2002:a17:906:b088:0:0:0:0 with SMTP id x8csp1121997ejy;
-        Mon, 19 Sep 2022 05:48:58 -0700 (PDT)
-X-Google-Smtp-Source: AMsMyM5AZD0HN5CqeXYt3Rd8/BGgdUkRVrlMoI6bJC+itSLbcI9f5XxY24QyFflmBWVwcmsFQWxs
-X-Received: by 2002:ac8:5fc5:0:b0:35c:e881:6c96 with SMTP id k5-20020ac85fc5000000b0035ce8816c96mr4301462qta.466.1663591738388;
-        Mon, 19 Sep 2022 05:48:58 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1663591738; cv=none;
+Received: by 2002:a17:906:b088:0:0:0:0 with SMTP id x8csp1185213ejy;
+        Mon, 19 Sep 2022 07:30:16 -0700 (PDT)
+X-Google-Smtp-Source: AMsMyM6u5od72p6oMCLmgUv9eqtX3fuW3E5U3LvwaW+wzOFzBGSerfJb+zubuhUXYfHdSD43ZShx
+X-Received: by 2002:a05:6214:3006:b0:499:1f87:dac9 with SMTP id ke6-20020a056214300600b004991f87dac9mr14881425qvb.0.1663597816254;
+        Mon, 19 Sep 2022 07:30:16 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1663597816; cv=none;
         d=google.com; s=arc-20160816;
-        b=oZHlQhepcNLbP/3qXFmCZsQqkZFtSmIeDjyKWW8yS5ZZVz4ubZmSIJSo0oLN5BzlRr
-         z2CbuHAVaX8+quHN+TXMzlvSMArL3AcbW21Hh9A/BofIx5XAB9hlg6AiI0I8NrODA2la
-         QL/ITxz8S/+Ht0yg/GC7+0B40ep9vva/rMn9+vu+2SpYTmixdg7v236lSbOqSX6VMdkU
-         l+4i07+qX/Xr0uQTv4ArpXxIf8og4fNpFN0KbmWZu0t3W/C82gpMJDHmtvrViQ+uqwDa
-         mNZA3619itcZZVQdVZWyCIXAXOPeSceIUhE0ImuU5uPOWuEz3TCZCiBw9ve37Y9Bzryz
-         +SQQ==
+        b=Yv8gNLBj3SBlo1KsXGn6lh15Xf7wMq0Q7id+gmCUHWXTt4u7Dk57YJPvLW3sl3H13S
+         v39kaXoxYGjSNU+3XJElDcrKaefyqAHYPR1Dm9cNdgl43+rf4KKD8/AvUimiPCIXr48B
+         tVFz3xNj+nXZLEZDXAwSVcRdoDV7PrqVrNoQXGvB/OrEhycjoMES5RaSpC8ww9LWHrVe
+         KCA/73H5bnDvU/DKLPZ2AezkgVDmP3bW3yRBJQJhb52fb3dZ6f+8a51Yk5URn9Vda6bD
+         5/GdYimbphpXdKmOSQWsmEzVopv4HGz9JnamYhPEpAyZATC2GpNt5y0O9JZCuLb0pyYV
+         ghnA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:cc:to:content-language:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=1oF5ARrecMtl5bfkwvkwnfdfKckouF8gCHnHbzzDS8k=;
-        b=DahxcUQC93Sv/S8rpdlzxaGpTfVNyfonJ9C3yPvfzKcbUHBlfUbTkgrU1/HfWQhHr9
-         gaQCoQYg5pbe0t9ZrcZwprurix7sI10iyU2nLodp5zRJIpmZzkJYDyKCLdXaiY6sEroI
-         f3JuvxTV33FP1IZT2ucFyOOCU9upOp0OJLt13EgtaSreRnt6GdZI1LH6yKxQ0UVJ1AOX
-         xlX/VR/U7BUEZRE9hMUxdxPOilgXDsiPsMm9+/oE4OQP/HfRuqhs0qwMC+07V1lSfOjo
-         7spt79I0DqJUVDPJpvaNn7X6USqBszDuedOgektVvHUm2NxJRJ+TwjFqK09hzX7IelTc
-         jNIQ==
+        h=sender:errors-to:content-transfer-encoding:list-subscribe:list-help
+         :list-post:list-archive:list-unsubscribe:list-id:precedence:cc
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject;
+        bh=NdyTlvwYtwZ9jE0Udh5s1tZVtKTHg7d0T8p22GwgBmU=;
+        b=Ocy5k8+KoeJLfuOQTDKa9Sa/QMPGOvLAlbZa07R1xvKIjmGRKQM8/nLjVTtGyOCqXd
+         roopE6YN8lKu1C1VtNT3mKE8l4L+UrzWuJg4A/HtCN+plQVJmIZAhrevsSvNqFzKUGRO
+         h/Pr0UD4hq3UTl0/S9j+bU3A1+ILSyFwpAM9QnDtLuh0W4daNtfYaOPkzWyrmg7VJLSl
+         knxAQNgDf34dbnIoHpiUmp8W9bFt2FBjYhwzyrKsCNcFKFCUsjm3A6u5BvAfyqcu9vFK
+         hjCeVSoWYfZBPlDuwheIc2aRU71+b6AO1JG6kKOtPPZBxBVxdpmjpE1J1ghdvzfztuME
+         fWPg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=FudBKENu;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 187-20020a3703c4000000b006bb60ea8085si7791897qkd.523.2022.09.19.05.48.58
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 19 Sep 2022 05:48:58 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu;
+       dmarc=fail (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
+Return-Path: <kvmarm-bounces@lists.cs.columbia.edu>
+Received: from mm01.cs.columbia.edu (mm01.cs.columbia.edu. [128.59.11.253])
+        by mx.google.com with ESMTP id bt11-20020ac8690b000000b0035ccd12f394si6215619qtb.70.2022.09.19.07.30.15;
+        Mon, 19 Sep 2022 07:30:16 -0700 (PDT)
+Received-SPF: pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) client-ip=128.59.11.253;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=FudBKENu;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:54074 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1oaGCn-0008TP-SA
-	for alex.bennee@linaro.org; Mon, 19 Sep 2022 08:48:57 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:60934)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1oaG8k-0006to-D4
- for qemu-devel@nongnu.org; Mon, 19 Sep 2022 08:44:47 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:54898)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1oaG8g-0007wN-Mc
- for qemu-devel@nongnu.org; Mon, 19 Sep 2022 08:44:44 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1663591481;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=1oF5ARrecMtl5bfkwvkwnfdfKckouF8gCHnHbzzDS8k=;
- b=FudBKENu7g20S8WAgpYy3u0yeUVBde5/ghpd4FteMa/rT3DH9+/y6Q9lkhIKdRZrFNok0n
- ilaqIeOfm7p1p2zmtVPuZ5jhd/d644mCH3wkLdGtQxjGqclcSo9dOh4Bc42wwNUEQLxhfG
- gvyGd4nZAv2RAOp/b1hBvXctXQK41h0=
-Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
- [209.85.221.71]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_128_GCM_SHA256) id
- us-mta-126-8JV5h6laO--R6l3o5X15zQ-1; Mon, 19 Sep 2022 08:44:40 -0400
-X-MC-Unique: 8JV5h6laO--R6l3o5X15zQ-1
-Received: by mail-wr1-f71.google.com with SMTP id
- e18-20020adfa452000000b00228a420c389so6512089wra.16
- for <qemu-devel@nongnu.org>; Mon, 19 Sep 2022 05:44:39 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date;
- bh=1oF5ARrecMtl5bfkwvkwnfdfKckouF8gCHnHbzzDS8k=;
- b=pghsY8nL9Olgc4zeHCLT3s6d5syt34c2Q7Bp01MzOHMrEeJTNXn/wjcgwkS8qQEHvx
- e2jgPLk16ECKQrZywJQqNAtHFZvvWpLAuMvy2KCIEoIlHOR165X36yE9lyDUSjZrq1sP
- j6AiBHq10xI8L+plUqI3Umr3zpwlrOh5dayCh9swn/+mD9pl9pqWJwrRMtnyuYYbIKrL
- /J2BxKT0e/vFPMrbIkyOOSlAWHf0JTg0S/Aecnp1di5kwd3iBdXMBg9ErKR3Jjq/qrtD
- AIq3si6a3GF33UdtuZa0dfnmrlYLCLuDmSQj1a7Kir9ztuP9iB4wtS20N8Au0P6QTeSL
- TShQ==
-X-Gm-Message-State: ACrzQf0Dispzyvh6bkywB6Q4Gn3G/gHp4KzzBaeezUxjTgcnsrEgexlF
- Qm+1gYRph/8u95c/L4nW6i/DKEfY7RJjRvKh1M1kqprvhsdDWrHWOVPIRHaV2FM7PRnWkKdvPFM
- Sw5ra8wO1QqzGL60=
-X-Received: by 2002:a5d:6dad:0:b0:22a:ec41:309c with SMTP id
- u13-20020a5d6dad000000b0022aec41309cmr6412453wrs.127.1663591478922; 
- Mon, 19 Sep 2022 05:44:38 -0700 (PDT)
-X-Received: by 2002:a5d:6dad:0:b0:22a:ec41:309c with SMTP id
- u13-20020a5d6dad000000b0022aec41309cmr6412428wrs.127.1663591478553; 
- Mon, 19 Sep 2022 05:44:38 -0700 (PDT)
-Received: from [192.168.0.5] (ip-109-43-177-127.web.vodafone.de.
- [109.43.177.127]) by smtp.gmail.com with ESMTPSA id
- l16-20020a05600c1d1000b003a601a1c2f7sm14786996wms.19.2022.09.19.05.44.37
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 19 Sep 2022 05:44:38 -0700 (PDT)
-Message-ID: <98b23697-00ec-2952-31c1-258419bd5440@redhat.com>
-Date: Mon, 19 Sep 2022 14:44:36 +0200
+       spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu;
+       dmarc=fail (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
+Received: from localhost (localhost [127.0.0.1])
+	by mm01.cs.columbia.edu (Postfix) with ESMTP id 4603D4B71F;
+	Mon, 19 Sep 2022 10:30:15 -0400 (EDT)
+X-Virus-Scanned: at lists.cs.columbia.edu
+X-Spam-Flag: NO
+X-Spam-Score: -1.899
+X-Spam-Level: 
+X-Spam-Status: No, score=-1.899 required=6.1 tests=[BAYES_00=-1.9,
+	URIBL_BLOCKED=0.001] autolearn=unavailable
+Received: from mm01.cs.columbia.edu ([127.0.0.1])
+	by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id ZxmHMhVAm0eC; Mon, 19 Sep 2022 10:30:13 -0400 (EDT)
+Received: from mm01.cs.columbia.edu (localhost [127.0.0.1])
+	by mm01.cs.columbia.edu (Postfix) with ESMTP id AD4324B647;
+	Mon, 19 Sep 2022 10:30:13 -0400 (EDT)
+Received: from localhost (localhost [127.0.0.1])
+ by mm01.cs.columbia.edu (Postfix) with ESMTP id 693BE4B63F
+ for <kvmarm@lists.cs.columbia.edu>; Mon, 19 Sep 2022 10:30:12 -0400 (EDT)
+X-Virus-Scanned: at lists.cs.columbia.edu
+Received: from mm01.cs.columbia.edu ([127.0.0.1])
+ by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 6Ld0Mc1DwlbD for <kvmarm@lists.cs.columbia.edu>;
+ Mon, 19 Sep 2022 10:30:10 -0400 (EDT)
+Received: from szxga02-in.huawei.com (szxga02-in.huawei.com [45.249.212.188])
+ by mm01.cs.columbia.edu (Postfix) with ESMTPS id 988C94B601
+ for <kvmarm@lists.cs.columbia.edu>; Mon, 19 Sep 2022 10:30:09 -0400 (EDT)
+Received: from dggemv703-chm.china.huawei.com (unknown [172.30.72.57])
+ by szxga02-in.huawei.com (SkyGuard) with ESMTP id 4MWRm40twvzMn0m;
+ Mon, 19 Sep 2022 22:25:24 +0800 (CST)
+Received: from kwepemm600007.china.huawei.com (7.193.23.208) by
+ dggemv703-chm.china.huawei.com (10.3.19.46) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2375.31; Mon, 19 Sep 2022 22:30:04 +0800
+Received: from [10.174.185.179] (10.174.185.179) by
+ kwepemm600007.china.huawei.com (7.193.23.208) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2375.31; Mon, 19 Sep 2022 22:30:03 +0800
+Subject: Re: [kvm-unit-tests PATCH v4 07/12] arm: pmu: Basic event counter
+ Tests
+To: Eric Auger <eric.auger@redhat.com>
+References: <20200403071326.29932-1-eric.auger@redhat.com>
+ <20200403071326.29932-8-eric.auger@redhat.com>
+From: Zenghui Yu <yuzenghui@huawei.com>
+Message-ID: <8fa32eeb-f629-6c27-3b5f-a9a81656a679@huawei.com>
+Date: Mon, 19 Sep 2022 22:30:01 +0800
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:68.0) Gecko/20100101
+ Thunderbird/68.9.0
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.12.0
-Subject: Re: [PATCH] tests/qtest: npcm7xx-emc-test: Skip checking MAC
+In-Reply-To: <20200403071326.29932-8-eric.auger@redhat.com>
 Content-Language: en-US
-To: Patrick Venture <venture@google.com>, lvivier@redhat.com
-Cc: hskinnemoen@google.com, kfting@nuvoton.com, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org, Hao Wu <wuhaotsh@google.com>
-References: <20220906163138.2831353-1-venture@google.com>
-From: Thomas Huth <thuth@redhat.com>
-In-Reply-To: <20220906163138.2831353-1-venture@google.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=thuth@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -37
-X-Spam_score: -3.8
-X-Spam_bar: ---
-X-Spam_report: (-3.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.952, RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.29
+X-Originating-IP: [10.174.185.179]
+X-ClientProxiedBy: dggems705-chm.china.huawei.com (10.3.19.182) To
+ kwepemm600007.china.huawei.com (7.193.23.208)
+X-CFilter-Loop: Reflected
+Cc: kvm@vger.kernel.org, maz@kernel.org, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org, andre.przywara@arm.com, andrew.murray@arm.com,
+ kvmarm@lists.cs.columbia.edu, eric.auger.pro@gmail.com
+X-BeenThere: kvmarm@lists.cs.columbia.edu
+X-Mailman-Version: 2.1.14
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: J6vP4/jO5RgY
+List-Id: Where KVM/ARM decisions are made <kvmarm.lists.cs.columbia.edu>
+List-Unsubscribe: <https://lists.cs.columbia.edu/mailman/options/kvmarm>,
+ <mailto:kvmarm-request@lists.cs.columbia.edu?subject=unsubscribe>
+List-Archive: <https://lists.cs.columbia.edu/pipermail/kvmarm>
+List-Post: <mailto:kvmarm@lists.cs.columbia.edu>
+List-Help: <mailto:kvmarm-request@lists.cs.columbia.edu?subject=help>
+List-Subscribe: <https://lists.cs.columbia.edu/mailman/listinfo/kvmarm>,
+ <mailto:kvmarm-request@lists.cs.columbia.edu?subject=subscribe>
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Errors-To: kvmarm-bounces@lists.cs.columbia.edu
+Sender: kvmarm-bounces@lists.cs.columbia.edu
+X-TUID: i6aTNoK8y3Ts
 
-On 06/09/2022 18.31, Patrick Venture wrote:
-> The register tests walks all the registers to verify they are initially
-> 0 when appropriate.  However, if the MAC address is set in the register
->    space, this should not be checked against 0.
+Hi Eric,
+
+A few comments when looking through the PMU test code (2 years after
+the series was merged).
+
+On 2020/4/3 15:13, Eric Auger wrote:
+> Adds the following tests:
+> - event-counter-config: test event counter configuration
+> - basic-event-count:
+>   - programs counters #0 and #1 to count 2 required events
+>   (resp. CPU_CYCLES and INST_RETIRED). Counter #0 is preset
+>   to a value close enough to the 32b
+>   overflow limit so that we check the overflow bit is set
+>   after the execution of the asm loop.
+> - mem-access: counts MEM_ACCESS event on counters #0 and #1
+>   with and without 32-bit overflow.
 > 
-> Reviewed-by: Hao Wu <wuhaotsh@google.com>
-> Change-Id: I02426e39bdab33ceedd42c49d233e8680d4ec058
+> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+> Reviewed-by: Andre Przywara <andre.przywara@arm.com>
 
-What's that change-id good for?
+[...]
 
-> Signed-off-by: Patrick Venture <venture@google.com>
-> ---
->   tests/qtest/npcm7xx_emc-test.c | 3 ++-
->   1 file changed, 2 insertions(+), 1 deletion(-)
-> 
-> diff --git a/tests/qtest/npcm7xx_emc-test.c b/tests/qtest/npcm7xx_emc-test.c
-> index 7c435ac915..207d8515b7 100644
-> --- a/tests/qtest/npcm7xx_emc-test.c
-> +++ b/tests/qtest/npcm7xx_emc-test.c
-> @@ -378,7 +378,8 @@ static void test_init(gconstpointer test_data)
->   
->   #undef CHECK_REG
->   
-> -    for (i = 0; i < NUM_CAMML_REGS; ++i) {
-> +    /* Skip over the MAC address registers, which is BASE+0 */
-> +    for (i = 1; i < NUM_CAMML_REGS; ++i) {
->           g_assert_cmpuint(emc_read(qts, mod, REG_CAMM_BASE + i * 2), ==,
->                            0);
->           g_assert_cmpuint(emc_read(qts, mod, REG_CAML_BASE + i * 2), ==,
+> diff --git a/arm/pmu.c b/arm/pmu.c
+> index 8c49e50..45dccf7 100644
+> --- a/arm/pmu.c
+> +++ b/arm/pmu.c
+> @@ -38,6 +43,7 @@
+>  #define SW_INCR			0x0
+>  #define INST_RETIRED		0x8
+>  #define CPU_CYCLES		0x11
+> +#define MEM_ACCESS		0x13
+>  #define INST_PREC		0x1B
 
-Basically ack, but one question: Where should that non-zero MAC address come 
-from / when did you hit a problem here? If QEMU is started without any mac 
-settings at all (like it is done here), the register never contains a 
-non-zero value, does it?
+The spec spells event 0x001B as INST_SPEC.
 
-  Thomas
+>  #define STALL_FRONTEND		0x23
+>  #define STALL_BACKEND		0x24
 
+[...]
+
+> @@ -175,6 +188,11 @@ static inline void precise_instrs_loop(int loop, uint32_t pmcr)
+>  }
+>  
+>  #define PMCEID1_EL0 sys_reg(3, 3, 9, 12, 7)
+> +#define PMCNTENSET_EL0 sys_reg(3, 3, 9, 12, 1)
+> +#define PMCNTENCLR_EL0 sys_reg(3, 3, 9, 12, 2)
+> +
+> +#define PMEVTYPER_EXCLUDE_EL1 BIT(31)
+
+Unused macro.
+
+> +#define PMEVTYPER_EXCLUDE_EL0 BIT(30)
+>  
+>  static bool is_event_supported(uint32_t n, bool warn)
+>  {
+> @@ -228,6 +246,224 @@ static void test_event_introspection(void)
+>  	report(required_events, "Check required events are implemented");
+>  }
+>  
+> +/*
+> + * Extra instructions inserted by the compiler would be difficult to compensate
+> + * for, so hand assemble everything between, and including, the PMCR accesses
+> + * to start and stop counting. isb instructions are inserted to make sure
+> + * pmccntr read after this function returns the exact instructions executed
+> + * in the controlled block. Loads @loop times the data at @address into x9.
+> + */
+> +static void mem_access_loop(void *addr, int loop, uint32_t pmcr)
+> +{
+> +asm volatile(
+> +	"       msr     pmcr_el0, %[pmcr]\n"
+> +	"       isb\n"
+> +	"       mov     x10, %[loop]\n"
+> +	"1:     sub     x10, x10, #1\n"
+> +	"       ldr	x9, [%[addr]]\n"
+> +	"       cmp     x10, #0x0\n"
+> +	"       b.gt    1b\n"
+> +	"       msr     pmcr_el0, xzr\n"
+> +	"       isb\n"
+> +	:
+> +	: [addr] "r" (addr), [pmcr] "r" (pmcr), [loop] "r" (loop)
+> +	: "x9", "x10", "cc");
+> +}
+> +
+> +static void pmu_reset(void)
+> +{
+> +	/* reset all counters, counting disabled at PMCR level*/
+> +	set_pmcr(pmu.pmcr_ro | PMU_PMCR_LC | PMU_PMCR_C | PMU_PMCR_P);
+> +	/* Disable all counters */
+> +	write_sysreg_s(ALL_SET, PMCNTENCLR_EL0);
+> +	/* clear overflow reg */
+> +	write_sysreg(ALL_SET, pmovsclr_el0);
+> +	/* disable overflow interrupts on all counters */
+> +	write_sysreg(ALL_SET, pmintenclr_el1);
+> +	isb();
+> +}
+> +
+> +static void test_event_counter_config(void)
+> +{
+> +	int i;
+> +
+> +	if (!pmu.nb_implemented_counters) {
+> +		report_skip("No event counter, skip ...");
+> +		return;
+> +	}
+> +
+> +	pmu_reset();
+> +
+> +	/*
+> +	 * Test setting through PMESELR/PMXEVTYPER and PMEVTYPERn read,
+
+s/PMESELR/PMSELR/ ?
+
+> +	 * select counter 0
+> +	 */
+> +	write_sysreg(1, PMSELR_EL0);
+> +	/* program this counter to count unsupported event */
+> +	write_sysreg(0xEA, PMXEVTYPER_EL0);
+> +	write_sysreg(0xdeadbeef, PMXEVCNTR_EL0);
+> +	report((read_regn_el0(pmevtyper, 1) & 0xFFF) == 0xEA,
+> +		"PMESELR/PMXEVTYPER/PMEVTYPERn");
+
+Ditto
+
+> +	report((read_regn_el0(pmevcntr, 1) == 0xdeadbeef),
+> +		"PMESELR/PMXEVCNTR/PMEVCNTRn");
+
+Ditto
+
+> +
+> +	/* try to configure an unsupported event within the range [0x0, 0x3F] */
+> +	for (i = 0; i <= 0x3F; i++) {
+> +		if (!is_event_supported(i, false))
+> +			break;
+> +	}
+> +	if (i > 0x3F) {
+> +		report_skip("pmevtyper: all events within [0x0, 0x3F] are supported");
+> +		return;
+> +	}
+> +
+> +	/* select counter 0 */
+> +	write_sysreg(0, PMSELR_EL0);
+> +	/* program this counter to count unsupported event */
+
+We get the unsupported event number *i* but don't program it into
+PMXEVTYPER_EL0 (or PMEVTYPER0_EL0). Is it intentional?
+
+> +	write_sysreg(i, PMXEVCNTR_EL0);
+> +	/* read the counter value */
+> +	read_sysreg(PMXEVCNTR_EL0);
+> +	report(read_sysreg(PMXEVCNTR_EL0) == i,
+> +		"read of a counter programmed with unsupported event");
+> +
+> +}
+
+[...]
+
+> +
+> +static void test_mem_access(void)
+> +{
+> +	void *addr = malloc(PAGE_SIZE);
+
+*addr* isn't freed at the end of test_mem_access(). The same in
+test_chain_promotion() and test_overflow_interrupt().
+
+Zenghui
+_______________________________________________
+kvmarm mailing list
+kvmarm@lists.cs.columbia.edu
+https://lists.cs.columbia.edu/mailman/listinfo/kvmarm

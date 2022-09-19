@@ -1,360 +1,250 @@
-Received: by 2002:a17:906:b088:0:0:0:0 with SMTP id x8csp1288307ejy;
-        Mon, 19 Sep 2022 10:34:44 -0700 (PDT)
-X-Google-Smtp-Source: AMsMyM5+i1Cv7S/EDHNjvoSv8f1ZBWuGLk1HGlt9M9CavtCk9z7r1cJ7yS8KUN8cUEwjuV7Kor6n
-X-Received: by 2002:a05:622a:1394:b0:344:648b:575a with SMTP id o20-20020a05622a139400b00344648b575amr15524051qtk.607.1663608884573;
-        Mon, 19 Sep 2022 10:34:44 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1663608884; cv=none;
+Received: by 2002:a17:906:b088:0:0:0:0 with SMTP id x8csp1422899ejy;
+        Mon, 19 Sep 2022 15:38:04 -0700 (PDT)
+X-Google-Smtp-Source: AMsMyM5e8+6n/Zxg0ShtCTYD7g34oL5iAXaSNdsZToazvjOhMPDxNi693BEai4Z3bI9urbQHftA9
+X-Received: by 2002:a05:622a:155:b0:35c:f59e:3d03 with SMTP id v21-20020a05622a015500b0035cf59e3d03mr2195978qtw.174.1663627084728;
+        Mon, 19 Sep 2022 15:38:04 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1663627084; cv=none;
         d=google.com; s=arc-20160816;
-        b=C7v3Qc6BlUEkxwqfqp73dx7gZfOkisW4bzIb97RKcwnC1pGM5sAgSzZPeEJbon39p/
-         m/W3kOQHLrX/TGhfazRQ9u42aheQkbZxuQNfxK3pqkl5U3f0kVgtuBR2mg2hM1CI++NG
-         643YGJEDgtQMyN+uws/lUz7CUjh6LyXU3DV0cNazAKOA2rcmS6H/CgrhNn8uDj1HFlDM
-         r0ry47c8+scw/jCslLE6J6BEzEzTQCtSxItbCXxobxnwd/KRoN3UkX9bKjNjn1d5G03Z
-         PWWNNnIpPEGiT2h27d2vqph5jIusozuwc7E/rXgEerJzfvO8zK6bn8O8kbqGAsT6/EH+
-         86/A==
+        b=N6j6taNwStEb6iMp2yGZrDdiRPsGVtKGogDFb+PAG/3pJcTcOBTAIVfI7dO8gCEahJ
+         u5rB4vMo5hN9HPHT0WTEa7W6BGGM3lUGSxHWNHxekYBcHMjg/KFQR/bvIBU4hSkaNJ46
+         DTsfbBt5xizdRrcoUsChdEriAI2/iUEVzDRA+wuxZUAp/IG1rU53WsT74ByUG6x01Uni
+         ASy1QBBG0jYBrBEVp9bQIxgIgTYDqmdqRPK6KRWSdJKVZlQ+N9y3FAxiiS7q9GXrPaHg
+         hL0edUCv7Hc7Mc2B3SG0MNgSGj2Xjd4YQTSjUpE1Q9V6bthxwd/0KKA6VcxU5XYDSI2g
+         du5Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=n8+XgzHYrArgCn4U9y3QEq0TqqXR5edeovdfx2xO/z0=;
-        b=pM+sXnln8wmiZby7QkW3Qu13OlRuJ7CFlo2pR9n/RHXfB7VTyt4SJuJBUodsrRi9+g
-         SfSEaZRVSzXHlsQ25KoNTEYOOPP845ue7BftHnqkt6sUEkuYBaKo8vPtk6nTQkjfv3co
-         KumCG2wJ5f3+IJsJPguWFZtA+U08P09AIdFSr4Em8wB5pp9sWeHPkHBGcPUB7DvcXnq7
-         MeIWFxPVJbv6dDndSfut9rp/PNfWshRuL6nAtHiDFdxt0yf9TXcfHQRcFLPbpPVZgOZH
-         /W8sU66wYSzZ7N6rxZToTS046mGAYIGmyo8XnFP144XvQwTIofyHNDW8jkJBbmuImVNZ
-         l51A==
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=+IjiRBw4RHnLFEPq634fYMzMwaglPiw8vd3gcYXLVqU=;
+        b=wploCUThDqnRXfxiHfpTydB8aC14WTCyox21wu6cwcB5Tnnvb5Ztrm37PCl2AqQ8D+
+         5B0Zoh/8MtYpCMoFo85HFh4eda3QiybuqHcqqHpzNJCCqhfQJAavKq3jtRGV2nXnPC/R
+         jOsITSKFejYKO//Juz1SUiJsqKPuTHq5THqHWt44Frt4AjGcfHPT/IR8c5sZXmw960W0
+         O9T5SLSzA6umEcEjHlLvvXXlKBfmF+uQ1VSQQFAsAayogYbhLj8/zZ1m6C7NdY3+XeSj
+         UrOl+b5tnbHAR1r2BAzAdayYa+GrsDfGE8Yeg112qOJpyJ2KTIPSPfC9smRdIKTsBM/C
+         RYWg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@bytedance-com.20210112.gappssmtp.com header.s=20210112 header.b="axR/v0kN";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=bytedance.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@google.com header.s=20210112 header.b=DbcRLdXa;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id k2-20020a05620a414200b006cec78780fdsi7075415qko.380.2022.09.19.10.34.44
+        by mx.google.com with ESMTPS id bp8-20020a05620a458800b006cdf31cb4b5si11489640qkb.103.2022.09.19.15.38.04
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 19 Sep 2022 10:34:44 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 19 Sep 2022 15:38:04 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@bytedance-com.20210112.gappssmtp.com header.s=20210112 header.b="axR/v0kN";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=bytedance.com
-Received: from localhost ([::1]:60194 helo=lists1p.gnu.org)
+       dkim=pass header.i=@google.com header.s=20210112 header.b=DbcRLdXa;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
+Received: from localhost ([::1]:45142 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1oaKfK-00016v-IZ
-	for alex.bennee@linaro.org; Mon, 19 Sep 2022 13:34:44 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34290)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1oaPOu-0006bo-7h
+	for alex.bennee@linaro.org; Mon, 19 Sep 2022 18:38:04 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:59958)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <zhangjian.3032@bytedance.com>)
- id 1oaKT4-00065C-Ig
- for qemu-devel@nongnu.org; Mon, 19 Sep 2022 13:22:02 -0400
-Received: from mail-pf1-x431.google.com ([2607:f8b0:4864:20::431]:43631)
+ (Exim 4.90_1) (envelope-from <venture@google.com>)
+ id 1oaPOi-0006ai-UL
+ for qemu-arm@nongnu.org; Mon, 19 Sep 2022 18:37:52 -0400
+Received: from mail-vs1-xe30.google.com ([2607:f8b0:4864:20::e30]:46026)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <zhangjian.3032@bytedance.com>)
- id 1oaKSw-0000Qt-Rj
- for qemu-devel@nongnu.org; Mon, 19 Sep 2022 13:22:02 -0400
-Received: by mail-pf1-x431.google.com with SMTP id d82so233328pfd.10
- for <qemu-devel@nongnu.org>; Mon, 19 Sep 2022 10:21:54 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=bytedance-com.20210112.gappssmtp.com; s=20210112;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date;
- bh=n8+XgzHYrArgCn4U9y3QEq0TqqXR5edeovdfx2xO/z0=;
- b=axR/v0kNVxD6fIrlxoHyGs86ELdse0K5NR9DOjXFGmw5XimYuv4bovaEGYAJUtYA0h
- 1JGAl0rc8UXC+qSOIsJVK7xj1A7vUeJrEj6/MYiSyh9O1p71aULZM5R3nS6PXYSaVyc4
- d/mA9arcSuibuQ/8cMMKdcv7oRQTMpTsWL8SeTiHpWGcur3H65/HLOpfLoLcMtIpfKFT
- UDJMoYvHZaeV9ay6OLU83pF5aY2A2QyM2mgysBJaQGahsw9gpRq+1yVCakc8Z6ESMHh/
- u4DU0NCFoZGK/GXoaiNDJzT1XlrdZRxWRnSrOCOK2eoCS5KXP7Mng9UEs4FODWVQKsks
- ccJw==
+ (Exim 4.90_1) (envelope-from <venture@google.com>)
+ id 1oaPOh-0004Ld-4h
+ for qemu-arm@nongnu.org; Mon, 19 Sep 2022 18:37:52 -0400
+Received: by mail-vs1-xe30.google.com with SMTP id m66so1114698vsm.12
+ for <qemu-arm@nongnu.org>; Mon, 19 Sep 2022 15:37:49 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20210112;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date;
+ bh=+IjiRBw4RHnLFEPq634fYMzMwaglPiw8vd3gcYXLVqU=;
+ b=DbcRLdXaN6J3AnHEt8KekatdRVaGlro7EfZRAgjE4Sf+JQUKqOBe2x29ZusDEEz1FB
+ lKBuOkS2RWZtnroDkGr0rHm+nJUmWAPxWVIh0G3oGSYV5Qf3/IgVqG2Z+5+Z9tDHeLaj
+ dxDjIT7347A1Y54zMTWfDxod0SJu/eahxVmc8JBwyMcKAV12eM0UaNCSk30V2pvnRENR
+ sxEP9uexyoBraBHwmY9Klth2og5xIBIVjgpk+IaTs0XeXvrpKQTHATgyzHhakYN0Jvr+
+ juS31fudmB1nHImn9UUIfNIQcVPdAsU1es3TLbcZ39ooR7mmlAu4csuICRHVUMa7/PPs
+ Fceg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date;
- bh=n8+XgzHYrArgCn4U9y3QEq0TqqXR5edeovdfx2xO/z0=;
- b=EWAjDAeAWS2ZLli8YCF+6WxBhfZjfi8KhI5bsqmmCPEq5GREv56IREprDj9EsSdY0L
- UATe5yBJ/kd2Jf4peYHx0GN97CxcSJJgPmgN8jsB0pcF/hoZR+2JYXviwRXMnvaHmimk
- IAcryYwDo8kedFuqt8hZwomt3so7iCh7xr/aEISOCgy1zqXF4OR1fmYAg7xmkRYmoZW3
- FcKgTzUpPzYnFeHpXLuyrxkMVA9HJie1c+5vhJCavycEgoE/6cQlYWsScKp6x3CKaWze
- JxKvBJ8IMCxN5KOzupTl/LXrAgYkWuPOacvamNQccku2dfxGz5z479A1yDpfWN/oPqh4
- mA1Q==
-X-Gm-Message-State: ACrzQf0nAhxqYXrzFDf7Cq+gXkapPtADqPFXRw3JT4ezPARBXlxGED+j
- O1dI99Ds1hG+UlNFtH+m1Ps2ew==
-X-Received: by 2002:a05:6a00:1a8d:b0:547:c564:1614 with SMTP id
- e13-20020a056a001a8d00b00547c5641614mr19244038pfv.71.1663608113591; 
- Mon, 19 Sep 2022 10:21:53 -0700 (PDT)
-Received: from localhost ([49.7.199.102]) by smtp.gmail.com with ESMTPSA id
- q6-20020aa79826000000b0053e99f2bf16sm20580236pfl.78.2022.09.19.10.21.52
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 19 Sep 2022 10:21:53 -0700 (PDT)
-From: Jian Zhang <zhangjian.3032@bytedance.com>
-To: peter.maydell@linaro.org, clg@kaod.org, andrew@aj.id.au, joel@jms.id.au,
- qemu-devel@nongnu.org, qemu-arm@nongnu.org
-Cc: yulei.sh@bytedance.com, tangyiwei.2022@bytedance.com,
- chentingting.2150@bytedance.com, yuhao.17@bytedance.com,
- wangxiaohua.1217@bytedance.com, xiening.xll@bytedance.com,
- Jian Zhang <zhangjian.3032@bytedance.com>
-Subject: [PATCH 2/3]  hw/misc/host_power: Add a simple host power device
-Date: Tue, 20 Sep 2022 01:21:11 +0800
-Message-Id: <20220919172112.2706026-3-zhangjian.3032@bytedance.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20220919172112.2706026-1-zhangjian.3032@bytedance.com>
-References: <20220919172112.2706026-1-zhangjian.3032@bytedance.com>
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date;
+ bh=+IjiRBw4RHnLFEPq634fYMzMwaglPiw8vd3gcYXLVqU=;
+ b=35fn9NfYc6oKf9CrRt0HSOdXmGK4NSvRnEdzC9t/4uo3pWq5tSJgrcykqXwSxQQ8tk
+ cSbJccdHxj/ndrjvNb/wKL/2JcSHZweDVxNDwMQXQi2Iu1astB0enICHmVuvO9LWYInG
+ WWm2yP+hlJUL+TkxQR7pgvyuWom1OhWJNU9Lo8RyKsO4zuQRC90Da2M1GeG5hkCqafJU
+ h0SPUvbAkEYHiQbdId2JlzQqMNmxTy2mdf6OVreJ2qr1Z3nxXhXzIC2fYosKQwyXUp+J
+ riZoxc8APQMXbYrHP8+qamodwb3wghdpwHJTTUS7mS1foF+vU2O+ori4n3of9I1u9wtV
+ Mjyw==
+X-Gm-Message-State: ACrzQf3peHmMgj7MHhl0Aw382U7XxrpocP8HOQqWi1tJ+k1zlvWZibi/
+ IBHR/uIBYRqL5o26G9s7Vf4qA3ugrj4f+yI9LPgMvQ==
+X-Received: by 2002:a05:6102:3309:b0:39a:e5eb:8508 with SMTP id
+ v9-20020a056102330900b0039ae5eb8508mr3874703vsc.65.1663627069309; Mon, 19 Sep
+ 2022 15:37:49 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::431;
- envelope-from=zhangjian.3032@bytedance.com; helo=mail-pf1-x431.google.com
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+References: <20220906163138.2831353-1-venture@google.com>
+ <98b23697-00ec-2952-31c1-258419bd5440@redhat.com>
+In-Reply-To: <98b23697-00ec-2952-31c1-258419bd5440@redhat.com>
+From: Patrick Venture <venture@google.com>
+Date: Mon, 19 Sep 2022 15:37:37 -0700
+Message-ID: <CAO=notzNRHaJvqnBx34qN0ovvwiwXNPRt73VnWqxyYhvnZMXnA@mail.gmail.com>
+Subject: Re: [PATCH] tests/qtest: npcm7xx-emc-test: Skip checking MAC
+To: Thomas Huth <thuth@redhat.com>
+Cc: Laurent Vivier <lvivier@redhat.com>,
+ Havard Skinnemoen <hskinnemoen@google.com>, 
+ CS20 KFTing <kfting@nuvoton.com>, qemu-arm <qemu-arm@nongnu.org>, 
+ QEMU Developers <qemu-devel@nongnu.org>, Hao Wu <wuhaotsh@google.com>
+Content-Type: multipart/alternative; boundary="000000000000821dde05e90f5c24"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::e30;
+ envelope-from=venture@google.com; helo=mail-vs1-xe30.google.com
+X-Spam_score_int: -175
+X-Spam_score: -17.6
+X-Spam_bar: -----------------
+X-Spam_report: (-17.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ ENV_AND_HDR_SPF_MATCH=-0.5, HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001, USER_IN_DEF_DKIM_WL=-7.5,
+ USER_IN_DEF_SPF_WL=-7.5 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Mon, 19 Sep 2022 13:29:46 -0400
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: CVcgyGN0PkXY
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: zeyRJHH7vjcR
 
-This Host Power device privide a simple power control logic for a host,
-like use a bmc to control the power of a host.
+--000000000000821dde05e90f5c24
+Content-Type: text/plain; charset="UTF-8"
 
-This device has 2 gpio, one is input named "button", another gpio is
-output named "power-good", when button have a falling edge, invert the
-"power-good" gpio.
+On Mon, Sep 19, 2022 at 5:44 AM Thomas Huth <thuth@redhat.com> wrote:
 
-Signed-off-by: Jian Zhang <zhangjian.3032@bytedance.com>
----
- MAINTAINERS                  |   2 +
- hw/arm/Kconfig               |   1 +
- hw/misc/Kconfig              |   3 +
- hw/misc/host_power.c         | 105 +++++++++++++++++++++++++++++++++++
- hw/misc/meson.build          |   1 +
- include/hw/misc/host_power.h |  41 ++++++++++++++
- 6 files changed, 153 insertions(+)
- create mode 100644 hw/misc/host_power.c
- create mode 100644 include/hw/misc/host_power.h
+> On 06/09/2022 18.31, Patrick Venture wrote:
+> > The register tests walks all the registers to verify they are initially
+> > 0 when appropriate.  However, if the MAC address is set in the register
+> >    space, this should not be checked against 0.
+> >
+> > Reviewed-by: Hao Wu <wuhaotsh@google.com>
+> > Change-Id: I02426e39bdab33ceedd42c49d233e8680d4ec058
+>
+> What's that change-id good for?
+>
 
-diff --git a/MAINTAINERS b/MAINTAINERS
-index 472fbf4f42..5a27a78985 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -1068,6 +1068,8 @@ F: tests/qtest/*aspeed*
- F: hw/arm/fby35.c
- F: hw/misc/fby35_sb_cpld.c
- F: hw/misc/intel_me.c
-+F: include/hw/misc/host_power.h
-+F: hw/misc/host_power.c
- 
- NRF51
- M: Joel Stanley <joel@jms.id.au>
-diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
-index 23330cca52..f6fa364ab7 100644
---- a/hw/arm/Kconfig
-+++ b/hw/arm/Kconfig
-@@ -455,6 +455,7 @@ config ASPEED_SOC
-     select EMC141X
-     select UNIMP
-     select LED
-+    select HOST_POWER
-     select PMBUS
-     select MAX31785
- 
-diff --git a/hw/misc/Kconfig b/hw/misc/Kconfig
-index d0e691990a..e0b168ec1d 100644
---- a/hw/misc/Kconfig
-+++ b/hw/misc/Kconfig
-@@ -147,6 +147,9 @@ config UNIMP
- config LED
-     bool
- 
-+config HOST_POWER
-+    bool
-+
- config MAC_VIA
-     bool
-     select MOS6522
-diff --git a/hw/misc/host_power.c b/hw/misc/host_power.c
-new file mode 100644
-index 0000000000..18d2573d5e
---- /dev/null
-+++ b/hw/misc/host_power.c
-@@ -0,0 +1,105 @@
-+/*
-+ * QEMU single Host Power device
-+ *
-+ * Copyright (C) 2022 Jian Zhang <zhangjian.3032@bytedance.com>
-+ *
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ */
-+#include "qemu/osdep.h"
-+#include "qapi/error.h"
-+#include "migration/vmstate.h"
-+#include "hw/qdev-properties.h"
-+#include "hw/irq.h"
-+#include "hw/misc/host_power.h"
-+#include "trace.h"
-+
-+static void power_control(HostPowerState *s, bool on)
-+{
-+    if (on) {
-+        qemu_set_irq(s->power_good, 1);
-+    } else {
-+        qemu_set_irq(s->power_good, 0);
-+    }
-+    s->power_status = on;
-+}
-+
-+static void power_button_handler(void *opaque, int line, int new_state)
-+{
-+    HostPowerState *s = HOST_POWER(opaque);
-+
-+    assert(line == 0);
-+
-+    if (new_state == 0) {
-+        /* falling edge, reverse the power status */
-+        if (s->power_status == 0) {
-+            power_control(s, true);
-+        } else {
-+            power_control(s, false);
-+        }
-+    }
-+}
-+
-+static void host_power_reset(DeviceState *dev)
-+{
-+    HostPowerState *s = HOST_POWER(dev);
-+    s->power_status = false;
-+}
-+
-+static const VMStateDescription vmstate_host_power = {
-+    .name = TYPE_HOST_POWER,
-+    .version_id = 1,
-+    .minimum_version_id = 1,
-+    .fields = (VMStateField[]) {
-+        VMSTATE_END_OF_LIST()
-+    }
-+};
-+
-+static void host_power_realize(DeviceState *dev, Error **errp)
-+{
-+    HostPowerState *s = HOST_POWER(dev);
-+    s->power_status = false;
-+
-+    /* init a power button gpio as input pin */
-+    qdev_init_gpio_in_named(dev, power_button_handler, "power-button", 1);
-+
-+    /* init a power good gpio as output pin */
-+    qdev_init_gpio_out_named(dev, &(s->power_good), "power-good", 1);
-+}
-+
-+static void host_power_class_init(ObjectClass *klass, void *data)
-+{
-+    DeviceClass *dc = DEVICE_CLASS(klass);
-+
-+    dc->desc = "Host Power";
-+    dc->vmsd = &vmstate_host_power;
-+    dc->reset = host_power_reset;
-+    dc->realize = host_power_realize;
-+    set_bit(DEVICE_CATEGORY_DISPLAY, dc->categories);
-+}
-+
-+static const TypeInfo host_power_info = {
-+    .name = TYPE_HOST_POWER,
-+    .parent = TYPE_DEVICE,
-+    .instance_size = sizeof(HostPowerState),
-+    .class_init = host_power_class_init
-+};
-+
-+static void host_power_register_types(void)
-+{
-+    type_register_static(&host_power_info);
-+}
-+
-+type_init(host_power_register_types)
-+
-+HostPowerState *host_power_create_simple(Object *parentobj)
-+{
-+    static const char *name = "host-power";
-+    DeviceState *dev;
-+
-+    dev = qdev_new(TYPE_HOST_POWER);
-+
-+    object_property_add_child(parentobj, name, OBJECT(dev));
-+    qdev_realize_and_unref(dev, NULL, &error_fatal);
-+
-+    return HOST_POWER(dev);
-+}
-diff --git a/hw/misc/meson.build b/hw/misc/meson.build
-index 87d65c16a6..be14c1399a 100644
---- a/hw/misc/meson.build
-+++ b/hw/misc/meson.build
-@@ -9,6 +9,7 @@ softmmu_ss.add(when: 'CONFIG_SGA', if_true: files('sga.c'))
- softmmu_ss.add(when: 'CONFIG_UNIMP', if_true: files('unimp.c'))
- softmmu_ss.add(when: 'CONFIG_EMPTY_SLOT', if_true: files('empty_slot.c'))
- softmmu_ss.add(when: 'CONFIG_LED', if_true: files('led.c'))
-+softmmu_ss.add(when: 'CONFIG_HOST_POWER', if_true: files('host_power.c'))
- softmmu_ss.add(when: 'CONFIG_PVPANIC_COMMON', if_true: files('pvpanic.c'))
- 
- # ARM devices
-diff --git a/include/hw/misc/host_power.h b/include/hw/misc/host_power.h
-new file mode 100644
-index 0000000000..a2d12ded27
---- /dev/null
-+++ b/include/hw/misc/host_power.h
-@@ -0,0 +1,41 @@
-+/*
-+ * QEMU Host Power device
-+ *
-+ * Copyright (C) Jian Zhang <zhangjian.3032@bytedance.com>
-+ *
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ */
-+#ifndef HW_MISC_HOST_POWER_H
-+#define HW_MISC_HOST_POWER_H
-+
-+#include "qom/object.h"
-+#include "hw/qdev-core.h"
-+
-+#define TYPE_HOST_POWER "host-power"
-+
-+struct HostPowerState {
-+    /* Private */
-+    DeviceState parent_obj;
-+    /* Public */
-+
-+    qemu_irq power_button;
-+    qemu_irq power_good;
-+
-+    /* Properties */
-+    bool power_status;
-+    char *description;
-+};
-+typedef struct HostPowerState HostPowerState;
-+DECLARE_INSTANCE_CHECKER(HostPowerState, HOST_POWER, TYPE_HOST_POWER)
-+
-+/**
-+ * host_power_create_simple: Create and realize a  device
-+ * @parentobj: the parent object
-+ *
-+ * Create the device state structure, initialize it, and
-+ * drop the reference to it (the device is realized).
-+ *
-+ */
-+HostPowerState *host_power_create_simple(Object *parentobj);
-+
-+#endif /* HW_MISC_HOST_POWER_H */
--- 
-2.25.1
+Oops, sorry about that.  I can send out a v2 without it, or during
+application someone can nicely trim it? :)
 
+
+>
+> > Signed-off-by: Patrick Venture <venture@google.com>
+> > ---
+> >   tests/qtest/npcm7xx_emc-test.c | 3 ++-
+> >   1 file changed, 2 insertions(+), 1 deletion(-)
+> >
+> > diff --git a/tests/qtest/npcm7xx_emc-test.c
+> b/tests/qtest/npcm7xx_emc-test.c
+> > index 7c435ac915..207d8515b7 100644
+> > --- a/tests/qtest/npcm7xx_emc-test.c
+> > +++ b/tests/qtest/npcm7xx_emc-test.c
+> > @@ -378,7 +378,8 @@ static void test_init(gconstpointer test_data)
+> >
+> >   #undef CHECK_REG
+> >
+> > -    for (i = 0; i < NUM_CAMML_REGS; ++i) {
+> > +    /* Skip over the MAC address registers, which is BASE+0 */
+> > +    for (i = 1; i < NUM_CAMML_REGS; ++i) {
+> >           g_assert_cmpuint(emc_read(qts, mod, REG_CAMM_BASE + i * 2), ==,
+> >                            0);
+> >           g_assert_cmpuint(emc_read(qts, mod, REG_CAML_BASE + i * 2), ==,
+>
+> Basically ack, but one question: Where should that non-zero MAC address
+> come
+> from / when did you hit a problem here? If QEMU is started without any mac
+> settings at all (like it is done here), the register never contains a
+> non-zero value, does it?
+>
+
+So, there's a bug in the emc device presently where that value isn't set
+when it should be.  I have that bug fixed, but for whatever reason,
+probably not enough caffeine, I didn't bundle the two patches together.
+
+
+>
+>   Thomas
+>
+>
+
+--000000000000821dde05e90f5c24
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><div dir=3D"ltr"><br></div><br><div class=3D"gmail_quote">=
+<div dir=3D"ltr" class=3D"gmail_attr">On Mon, Sep 19, 2022 at 5:44 AM Thoma=
+s Huth &lt;<a href=3D"mailto:thuth@redhat.com">thuth@redhat.com</a>&gt; wro=
+te:<br></div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px =
+0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex">On 06/09/202=
+2 18.31, Patrick Venture wrote:<br>
+&gt; The register tests walks all the registers to verify they are initiall=
+y<br>
+&gt; 0 when appropriate.=C2=A0 However, if the MAC address is set in the re=
+gister<br>
+&gt;=C2=A0 =C2=A0 space, this should not be checked against 0.<br>
+&gt; <br>
+&gt; Reviewed-by: Hao Wu &lt;<a href=3D"mailto:wuhaotsh@google.com" target=
+=3D"_blank">wuhaotsh@google.com</a>&gt;<br>
+&gt; Change-Id: I02426e39bdab33ceedd42c49d233e8680d4ec058<br>
+<br>
+What&#39;s that change-id good for?<br></blockquote><div><br></div><div>Oop=
+s, sorry about that.=C2=A0 I can send out a v2 without it, or during applic=
+ation someone can nicely trim it? :)</div><div>=C2=A0</div><blockquote clas=
+s=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid r=
+gb(204,204,204);padding-left:1ex">
+<br>
+&gt; Signed-off-by: Patrick Venture &lt;<a href=3D"mailto:venture@google.co=
+m" target=3D"_blank">venture@google.com</a>&gt;<br>
+&gt; ---<br>
+&gt;=C2=A0 =C2=A0tests/qtest/npcm7xx_emc-test.c | 3 ++-<br>
+&gt;=C2=A0 =C2=A01 file changed, 2 insertions(+), 1 deletion(-)<br>
+&gt; <br>
+&gt; diff --git a/tests/qtest/npcm7xx_emc-test.c b/tests/qtest/npcm7xx_emc-=
+test.c<br>
+&gt; index 7c435ac915..207d8515b7 100644<br>
+&gt; --- a/tests/qtest/npcm7xx_emc-test.c<br>
+&gt; +++ b/tests/qtest/npcm7xx_emc-test.c<br>
+&gt; @@ -378,7 +378,8 @@ static void test_init(gconstpointer test_data)<br>
+&gt;=C2=A0 =C2=A0<br>
+&gt;=C2=A0 =C2=A0#undef CHECK_REG<br>
+&gt;=C2=A0 =C2=A0<br>
+&gt; -=C2=A0 =C2=A0 for (i =3D 0; i &lt; NUM_CAMML_REGS; ++i) {<br>
+&gt; +=C2=A0 =C2=A0 /* Skip over the MAC address registers, which is BASE+0=
+ */<br>
+&gt; +=C2=A0 =C2=A0 for (i =3D 1; i &lt; NUM_CAMML_REGS; ++i) {<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0g_assert_cmpuint(emc_read(qts,=
+ mod, REG_CAMM_BASE + i * 2), =3D=3D,<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 0);<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0g_assert_cmpuint(emc_read(qts,=
+ mod, REG_CAML_BASE + i * 2), =3D=3D,<br>
+<br>
+Basically ack, but one question: Where should that non-zero MAC address com=
+e <br>
+from / when did you hit a problem here? If QEMU is started without any mac =
+<br>
+settings at all (like it is done here), the register never contains a <br>
+non-zero value, does it?<br></blockquote><div><br></div><div>So, there&#39;=
+s a bug in the emc device presently where that value isn&#39;t set when it =
+should be.=C2=A0 I have that bug fixed, but for whatever reason, probably n=
+ot enough caffeine, I didn&#39;t bundle the two patches together.</div><div=
+>=C2=A0</div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px =
+0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex">
+<br>
+=C2=A0 Thomas<br>
+<br>
+</blockquote></div></div>
+
+--000000000000821dde05e90f5c24--

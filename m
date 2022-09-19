@@ -1,142 +1,181 @@
-Received: by 2002:a17:906:b088:0:0:0:0 with SMTP id x8csp1186173ejy;
-        Mon, 19 Sep 2022 07:31:39 -0700 (PDT)
-X-Google-Smtp-Source: AMsMyM5zUtq17cMeLrhCPs6uqnSwjULGs/E1gykF2hAK2BsR1N+a1BxDZpodjKqLpZbFSS/4XaEG
-X-Received: by 2002:a17:906:846b:b0:77a:6e22:7311 with SMTP id hx11-20020a170906846b00b0077a6e227311mr13255998ejc.524.1663597899825;
-        Mon, 19 Sep 2022 07:31:39 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1663597899; cv=none;
+Received: by 2002:a17:906:b088:0:0:0:0 with SMTP id x8csp1186417ejy;
+        Mon, 19 Sep 2022 07:32:01 -0700 (PDT)
+X-Google-Smtp-Source: AMsMyM5+bRWFL0Fxlrn/348MdkiViUfiF67LIKlarNQA244T1RtMS5wHloHVjLiMB9vnypuNYhuD
+X-Received: by 2002:a05:6214:1cc9:b0:476:73ea:406b with SMTP id g9-20020a0562141cc900b0047673ea406bmr15259675qvd.94.1663597921836;
+        Mon, 19 Sep 2022 07:32:01 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1663597921; cv=none;
         d=google.com; s=arc-20160816;
-        b=MhrLIRg8yW6kXtu9hUpZnynKaKKe7fVzJY+PgfnSQY+kY6/oufNzHobkclDVBFOLLk
-         Ybxy+JBxmSs1zRxOuxrxFOznY9psuoK6lhyWZINekZnxdmfuy0Zz9s2qcv5KWHeY+K4Q
-         nOaYmw7TN3ASDAZiXSeeJHvYJfMZNgNBnGrcEvIv0k3MmFlE8elJ9wWYiMelLIrayxID
-         r0MtBew/1xDsz/GLYvpgT5bVNqy+QXaCWj5kv26AbAjHKR06xujQnZwxDrJQ68fQXnNw
-         Xaabhal+x+GygYhiPqxf9icelngp3DHEOlcIInkLJCGX6qq3tsqKKnvC3HAX0NtPMl/5
-         jREQ==
+        b=b7HN3Td64ddAWypPkWYM85RinPczRPBNp8QVYxEZzKMMTVk4R39vWZv7iU81CI+1cZ
+         7e9vqdV8BOcxJJAIN3bhDz+FcakWSFsocy8bkcy2WU0rTyGZKZzuJ3HXEZrCBL34XpfW
+         0tl1B8HMX65ht0tZnlvazoDTQNgAnxjMvPcsEvZywY0UrW+v0rs1xx5Vi0LDFVEj2/TM
+         1vzwJwrt/C44H+ZfMYTRry8rSbfd7LAbHePmIS8C+3owp3xJpt8FWQVdGpTw+4V6U8ym
+         CMo478ObxBlfOC4/bGVpcOVFtCRd4w1A1E/DZimEZXZ8UlC6zUvsnkO0PiLOVHZOuDwW
+         6lFw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=list-id:precedence:content-transfer-encoding:content-language
-         :in-reply-to:mime-version:user-agent:date:message-id:from:references
-         :cc:to:subject;
-        bh=gHr3GR9WTyhGVw98HNvR4Nzc9Q2Bm8RGBaSqaPH6Hew=;
-        b=W+KEdWHSsDEBtYOpSDImRQfwKioMjyAxJRrd+8/0/G15e2F6jQu/PpA7zcLtrW8g6T
-         IPn3GuWtKqsiOdBFzUwy4VzdSQ5L6FIybdA76RFbjj1t1uSxhCLnOsspxcuh4t0Zioxk
-         ljD+WKz2qcX/Npq0nXsvop5cE/phgT+4w3e0C6HozImNl767R79sxJyfCP2mTXMhM4js
-         Q7gEMYSSzai8lKSEdfVwUCJehfV0+rpBuATTYyA6WBtECruuzVB4zZh3hRzQES0v6CAg
-         S1wBAWck8kN7iVCO/z4IvnRuRiJyyCBlcgHZbxF3sR08VJFPfgT3OyImzZYefGmfKFrM
-         Qj4w==
+        h=sender:errors-to:content-transfer-encoding:list-subscribe:list-help
+         :list-post:list-archive:list-unsubscribe:list-id:precedence:cc
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject;
+        bh=C+XjNkbTlc3AHq3HRtLyGjcYYPsbPgNa4GxBBmX/k3Y=;
+        b=MD4iMAQUgFhZNBdxFmKH+AjL2iL5j0hT3xxfhlvpD36R439F0QUHuynEJaa8OlOVNf
+         vYJOSUiUZ8w+N0fYvrHWCsFv+N3sIfKF8DSvdvYXB+G6IioJ1LTqKIcJYjeraTZtnLdx
+         IGwsZKmur1ZZlpRhl5eTF1aOJtZ8AtFk7/TZbX6C8cvevkCIv2q2Z0KWSKVrm1QkOtcS
+         maC2vsKy26RsS6ITBuAm2XLEUFPdgzDtvwgjHAvoIshGODpz5MqS1xc4t/qc0g93krR7
+         /csOWr6OAkmlxKbFiq9L88N4tOvYaK+zCp1QM9N17ijjl+7zY0RkqjZrwG+Ls1KWl6PW
+         p1kw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
+       spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu;
        dmarc=fail (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
-Return-Path: <kvm-owner@vger.kernel.org>
-Received: from out1.vger.email (out1.vger.email. [2620:137:e000::1:20])
-        by mx.google.com with ESMTP id c5-20020a50f605000000b004511c8d5a0dsi10491241edn.251.2022.09.19.07.31.39;
-        Mon, 19 Sep 2022 07:31:39 -0700 (PDT)
-Received-SPF: pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) client-ip=2620:137:e000::1:20;
+Return-Path: <kvmarm-bounces@lists.cs.columbia.edu>
+Received: from mm01.cs.columbia.edu (mm01.cs.columbia.edu. [128.59.11.253])
+        by mx.google.com with ESMTP id z8-20020a05622a028800b0035bb8ec32d0si10537498qtw.607.2022.09.19.07.32.01;
+        Mon, 19 Sep 2022 07:32:01 -0700 (PDT)
+Received-SPF: pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) client-ip=128.59.11.253;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
+       spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu;
        dmarc=fail (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
-Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S229948AbiISObi (ORCPT <rfc822;daniel.diaz@linaro.org>
-        + 2 others); Mon, 19 Sep 2022 10:31:38 -0400
-Received: from lindbergh.monkeyblade.net ([23.128.96.19]:59314 "EHLO
-        lindbergh.monkeyblade.net" rhost-flags-OK-OK-OK-OK) by vger.kernel.org
-        with ESMTP id S229830AbiISObe (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Mon, 19 Sep 2022 10:31:34 -0400
-Received: from szxga03-in.huawei.com (szxga03-in.huawei.com [45.249.212.189])
-        by lindbergh.monkeyblade.net (Postfix) with ESMTPS id A1F4C2A413
-        for <kvm@vger.kernel.org>; Mon, 19 Sep 2022 07:31:32 -0700 (PDT)
-Received: from dggemv703-chm.china.huawei.com (unknown [172.30.72.55])
-        by szxga03-in.huawei.com (SkyGuard) with ESMTP id 4MWRrf6nWmzHnwW;
-        Mon, 19 Sep 2022 22:29:22 +0800 (CST)
+Received: from localhost (localhost [127.0.0.1])
+	by mm01.cs.columbia.edu (Postfix) with ESMTP id 78ADA4B6EE;
+	Mon, 19 Sep 2022 10:32:01 -0400 (EDT)
+X-Virus-Scanned: at lists.cs.columbia.edu
+X-Spam-Flag: NO
+X-Spam-Score: -1.899
+X-Spam-Level: 
+X-Spam-Status: No, score=-1.899 required=6.1 tests=[BAYES_00=-1.9,
+	URIBL_BLOCKED=0.001] autolearn=unavailable
+Received: from mm01.cs.columbia.edu ([127.0.0.1])
+	by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id l3ZwkFIljdk5; Mon, 19 Sep 2022 10:32:00 -0400 (EDT)
+Received: from mm01.cs.columbia.edu (localhost [127.0.0.1])
+	by mm01.cs.columbia.edu (Postfix) with ESMTP id 18A634B64F;
+	Mon, 19 Sep 2022 10:32:00 -0400 (EDT)
+Received: from localhost (localhost [127.0.0.1])
+ by mm01.cs.columbia.edu (Postfix) with ESMTP id 3BE0C4B601
+ for <kvmarm@lists.cs.columbia.edu>; Mon, 19 Sep 2022 10:31:59 -0400 (EDT)
+X-Virus-Scanned: at lists.cs.columbia.edu
+Received: from mm01.cs.columbia.edu ([127.0.0.1])
+ by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id C3+BbpU+5uCO for <kvmarm@lists.cs.columbia.edu>;
+ Mon, 19 Sep 2022 10:31:57 -0400 (EDT)
+Received: from szxga01-in.huawei.com (szxga01-in.huawei.com [45.249.212.187])
+ by mm01.cs.columbia.edu (Postfix) with ESMTPS id 03A124B125
+ for <kvmarm@lists.cs.columbia.edu>; Mon, 19 Sep 2022 10:31:56 -0400 (EDT)
+Received: from dggemv704-chm.china.huawei.com (unknown [172.30.72.54])
+ by szxga01-in.huawei.com (SkyGuard) with ESMTP id 4MWRpq386lzlW1m;
+ Mon, 19 Sep 2022 22:27:47 +0800 (CST)
 Received: from kwepemm600007.china.huawei.com (7.193.23.208) by
- dggemv703-chm.china.huawei.com (10.3.19.46) with Microsoft SMTP Server
+ dggemv704-chm.china.huawei.com (10.3.19.47) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2375.31; Mon, 19 Sep 2022 22:31:30 +0800
+ 15.1.2375.31; Mon, 19 Sep 2022 22:31:51 +0800
 Received: from [10.174.185.179] (10.174.185.179) by
  kwepemm600007.china.huawei.com (7.193.23.208) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2375.31; Mon, 19 Sep 2022 22:31:29 +0800
-Subject: Re: [kvm-unit-tests PATCH v4 08/12] arm: pmu: Test SW_INCR event
- count
-To:     Eric Auger <eric.auger@redhat.com>
-CC:     <eric.auger.pro@gmail.com>, <maz@kernel.org>,
-        <kvmarm@lists.cs.columbia.edu>, <kvm@vger.kernel.org>,
-        <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>,
-        <andrew.murray@arm.com>, <andre.przywara@arm.com>
+ 15.1.2375.31; Mon, 19 Sep 2022 22:31:50 +0800
+Subject: Re: [kvm-unit-tests PATCH v4 10/12] arm: pmu: test 32-bit <-> 64-bit
+ transitions
+To: Eric Auger <eric.auger@redhat.com>
 References: <20200403071326.29932-1-eric.auger@redhat.com>
- <20200403071326.29932-9-eric.auger@redhat.com>
-From:   Zenghui Yu <yuzenghui@huawei.com>
-Message-ID: <64be8eda-a396-26a1-1a05-d43a3ed53c1d@huawei.com>
-Date:   Mon, 19 Sep 2022 22:31:28 +0800
+ <20200403071326.29932-11-eric.auger@redhat.com>
+From: Zenghui Yu <yuzenghui@huawei.com>
+Message-ID: <cead0930-958d-222d-d5c0-6dfe6f88f52f@huawei.com>
+Date: Mon, 19 Sep 2022 22:31:50 +0800
 User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:68.0) Gecko/20100101
  Thunderbird/68.9.0
 MIME-Version: 1.0
-In-Reply-To: <20200403071326.29932-9-eric.auger@redhat.com>
-Content-Type: text/plain; charset="utf-8"; format=flowed
+In-Reply-To: <20200403071326.29932-11-eric.auger@redhat.com>
 Content-Language: en-US
-Content-Transfer-Encoding: 7bit
 X-Originating-IP: [10.174.185.179]
-X-ClientProxiedBy: dggems706-chm.china.huawei.com (10.3.19.183) To
+X-ClientProxiedBy: dggems703-chm.china.huawei.com (10.3.19.180) To
  kwepemm600007.china.huawei.com (7.193.23.208)
 X-CFilter-Loop: Reflected
-X-Spam-Status: No, score=-5.2 required=5.0 tests=BAYES_00,NICE_REPLY_A,
-        RCVD_IN_DNSWL_MED,SPF_HELO_NONE,SPF_PASS autolearn=ham
-        autolearn_force=no version=3.4.6
-X-Spam-Checker-Version: SpamAssassin 3.4.6 (2021-04-09) on
-        lindbergh.monkeyblade.net
-Precedence: bulk
-List-ID: <kvm.vger.kernel.org>
-X-Mailing-List: kvm@vger.kernel.org
-X-TUID: xo2LmMO17MFp
+Cc: kvm@vger.kernel.org, maz@kernel.org, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org, andre.przywara@arm.com, andrew.murray@arm.com,
+ kvmarm@lists.cs.columbia.edu, eric.auger.pro@gmail.com
+X-BeenThere: kvmarm@lists.cs.columbia.edu
+X-Mailman-Version: 2.1.14
+Precedence: list
+List-Id: Where KVM/ARM decisions are made <kvmarm.lists.cs.columbia.edu>
+List-Unsubscribe: <https://lists.cs.columbia.edu/mailman/options/kvmarm>,
+ <mailto:kvmarm-request@lists.cs.columbia.edu?subject=unsubscribe>
+List-Archive: <https://lists.cs.columbia.edu/pipermail/kvmarm>
+List-Post: <mailto:kvmarm@lists.cs.columbia.edu>
+List-Help: <mailto:kvmarm-request@lists.cs.columbia.edu?subject=help>
+List-Subscribe: <https://lists.cs.columbia.edu/mailman/listinfo/kvmarm>,
+ <mailto:kvmarm-request@lists.cs.columbia.edu?subject=subscribe>
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Errors-To: kvmarm-bounces@lists.cs.columbia.edu
+Sender: kvmarm-bounces@lists.cs.columbia.edu
+X-TUID: hvbi4/uU3Xjg
 
 Hi Eric,
 
 On 2020/4/3 15:13, Eric Auger wrote:
 
-> +static void test_sw_incr(void)
+> +static void test_chain_promotion(void)
 > +{
-> +	uint32_t events[] = {SW_INCR, SW_INCR};
-> +	int i;
-> +
-> +	if (!satisfy_prerequisites(events, ARRAY_SIZE(events)))
-> +		return;
-> +
+
+[...]
+
+> +	/* start as MEM_ACCESS/CPU_CYCLES and move to CHAIN/MEM_ACCESS */
 > +	pmu_reset();
+> +	write_regn_el0(pmevtyper, 0, MEM_ACCESS | PMEVTYPER_EXCLUDE_EL0);
+> +	write_regn_el0(pmevtyper, 1, CPU_CYCLES | PMEVTYPER_EXCLUDE_EL0);
+> +	write_sysreg_s(0x3, PMCNTENSET_EL0);
+> +	write_regn_el0(pmevcntr, 0, PRE_OVERFLOW2);
+> +	isb();
 > +
-> +	write_regn_el0(pmevtyper, 0, SW_INCR | PMEVTYPER_EXCLUDE_EL0);
-> +	write_regn_el0(pmevtyper, 1, SW_INCR | PMEVTYPER_EXCLUDE_EL0);
-> +	/* enable counters #0 and #1 */
+> +	mem_access_loop(addr, 20, pmu.pmcr_ro | PMU_PMCR_E);
+> +	report_info("MEM_ACCESS counter #0 has value 0x%lx",
+> +		    read_regn_el0(pmevcntr, 0));
+> +
+> +	/* 0 becomes CHAINED */
+
+"1 becomes CHAINED"?
+
+> +	write_sysreg_s(0x0, PMCNTENSET_EL0);
+
+Writing 0 into PMCNTENSET_EL0 actually has no effect on the counter
+status. What purpose does this serve?
+
+> +	write_regn_el0(pmevtyper, 1, CHAIN | PMEVTYPER_EXCLUDE_EL0);
+> +	write_sysreg_s(0x3, PMCNTENSET_EL0);
+> +	write_regn_el0(pmevcntr, 1, 0x0);
+> +
+> +	mem_access_loop(addr, 20, pmu.pmcr_ro | PMU_PMCR_E);
+> +	report_info("MEM_ACCESS counter #0 has value 0x%lx",
+> +		    read_regn_el0(pmevcntr, 0));
+> +
+> +	report((read_regn_el0(pmevcntr, 1) == 1) && !read_sysreg(pmovsclr_el0),
+> +		"32b->64b: CHAIN counter incremented and no overflow");
+> +
+> +	report_info("CHAIN counter #1 = 0x%lx, overflow=0x%lx",
+> +		read_regn_el0(pmevcntr, 1), read_sysreg(pmovsclr_el0));
+> +
+> +	/* start as CHAIN/MEM_ACCESS and move to MEM_ACCESS/CPU_CYCLES */
+> +	pmu_reset();
+> +	write_regn_el0(pmevtyper, 0, MEM_ACCESS | PMEVTYPER_EXCLUDE_EL0);
+> +	write_regn_el0(pmevtyper, 1, CHAIN | PMEVTYPER_EXCLUDE_EL0);
+> +	write_regn_el0(pmevcntr, 0, PRE_OVERFLOW2);
 > +	write_sysreg_s(0x3, PMCNTENSET_EL0);
 > +
-> +	write_regn_el0(pmevcntr, 0, PRE_OVERFLOW);
+> +	mem_access_loop(addr, 20, pmu.pmcr_ro | PMU_PMCR_E);
+> +	report_info("counter #0=0x%lx, counter #1=0x%lx",
+> +			read_regn_el0(pmevcntr, 0), read_regn_el0(pmevcntr, 1));
 > +
-> +	for (i = 0; i < 100; i++)
-> +		write_sysreg(0x1, pmswinc_el0);
-> +
-> +	report_info("SW_INCR counter #0 has value %ld", read_regn_el0(pmevcntr, 0));
-> +	report(read_regn_el0(pmevcntr, 0) == PRE_OVERFLOW,
-> +		"PWSYNC does not increment if PMCR.E is unset");
-> +
-> +	pmu_reset();
-> +
-> +	write_regn_el0(pmevcntr, 0, PRE_OVERFLOW);
+> +	write_sysreg_s(0x0, PMCNTENSET_EL0);
+
+Ditto
+
+> +	write_regn_el0(pmevtyper, 1, CPU_CYCLES | PMEVTYPER_EXCLUDE_EL0);
 > +	write_sysreg_s(0x3, PMCNTENSET_EL0);
-> +	set_pmcr(pmu.pmcr_ro | PMU_PMCR_E);
 > +
-> +	for (i = 0; i < 100; i++)
-> +		write_sysreg(0x3, pmswinc_el0);
-> +
-> +	report(read_regn_el0(pmevcntr, 0)  == 84, "counter #1 after + 100 SW_INCR");
-
-"counter #0 after + 100 SW_INCR"
-
-> +	report(read_regn_el0(pmevcntr, 1)  == 100,
-> +		"counter #0 after + 100 SW_INCR");
-
-"counter #1 after + 100 SW_INCR"
-
-> +	report_info("counter values after 100 SW_INCR #0=%ld #1=%ld",
-> +		    read_regn_el0(pmevcntr, 0), read_regn_el0(pmevcntr, 1));
-> +	report(read_sysreg(pmovsclr_el0) == 0x1,
-> +		"overflow reg after 100 SW_INCR");
+> +	mem_access_loop(addr, 20, pmu.pmcr_ro | PMU_PMCR_E);
+> +	report(read_sysreg(pmovsclr_el0) == 1,
+> +		"overflow is expected on counter 0");
+> +	report_info("counter #0=0x%lx, counter #1=0x%lx overflow=0x%lx",
+> +			read_regn_el0(pmevcntr, 0), read_regn_el0(pmevcntr, 1),
+> +			read_sysreg(pmovsclr_el0));
 > +}
 > +
 >  #endif
@@ -144,3 +183,7 @@ On 2020/4/3 15:13, Eric Auger wrote:
 >  /*
 
 Zenghui
+_______________________________________________
+kvmarm mailing list
+kvmarm@lists.cs.columbia.edu
+https://lists.cs.columbia.edu/mailman/listinfo/kvmarm

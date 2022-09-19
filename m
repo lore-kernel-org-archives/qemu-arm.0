@@ -1,91 +1,89 @@
-Received: by 2002:a17:906:b088:0:0:0:0 with SMTP id x8csp1439894ejy;
-        Mon, 19 Sep 2022 16:19:02 -0700 (PDT)
-X-Google-Smtp-Source: AMsMyM7xGzISF0Z3BZ0x72Ju2mGm6GHzYzJyCbIgMOO0gUlbSDqkESkEjmQGOCPvL1fyVmvlYeyq
-X-Received: by 2002:ac8:7d92:0:b0:35c:be77:5e2b with SMTP id c18-20020ac87d92000000b0035cbe775e2bmr16685173qtd.505.1663629542044;
-        Mon, 19 Sep 2022 16:19:02 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1663629542; cv=none;
+Received: by 2002:a17:906:b088:0:0:0:0 with SMTP id x8csp1439997ejy;
+        Mon, 19 Sep 2022 16:19:17 -0700 (PDT)
+X-Google-Smtp-Source: AMsMyM4JT8lTCmXR5tGCDJBPtFYQnA/a4iV5kqCLVloxb4k0EjpLrYbu+FxSWjyGJLw/GhwHl84L
+X-Received: by 2002:a05:622a:174d:b0:35c:bf34:fc7 with SMTP id l13-20020a05622a174d00b0035cbf340fc7mr16813241qtk.13.1663629557758;
+        Mon, 19 Sep 2022 16:19:17 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1663629557; cv=none;
         d=google.com; s=arc-20160816;
-        b=K1y2wVTj9mk/SVf4UdWC5q5wAIgTOBFQ0OOgjQ7rIXmT6XARXbe+wkpO4o/hzgMx7M
-         MIw85Iw1lNIiiQt7l97cq88l/cTSfJmZY0cUb1xNdbAFLNUCdpyghgpWPgOVH8Fl1+/B
-         XG1/LAI+SizvjKWgE7XQiRuF+3O8aKW8JtpAe9NKwfqdEN9WzDfRdBIYdDJKp3/3pGTN
-         82OhhAlfLVJmszorVPjg1w6wZ6ueY+DGPvkOZ1/bIiFU5zTG6tgHwD5nDMDGpbnKvOiw
-         ekomtDxOwMX4xQjB5VPYNjU1h3yVhlg1oPWN3OaEj+kTKytj968BI21ErO9xjSzs/zSi
-         3Iow==
+        b=GzFCITqfbmLsmQaJR3W89tp4cx2KNsy3fQ6h8E6QV3g00ZHJX0ywfiJ71h1Di2SDeU
+         zQygaeRzioYx3YPOd6nzVlEX1uIPgKvM6Eh1qdYAn/nokQU4H2rAR+nW+C5gWHDm5THH
+         FEzuXmVrzEHiM9qQTzxE+GR16hVmcbwaTE16FmYIGi0uRhgVImMXv3hrBWgJqJk9S56p
+         14KRbWYcWgH2gCKuMS/ukCIfsyBV37zPgmand4l3rssYwZ+WjI1lTw1Uaolf3h13tn0D
+         mJIQYeCMHEd8Cq67pUXnT4hdnbcw2MVYeZblHO1+yVkiYugw36pOE+qozdYhrM14lJjm
+         oUGQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=Fjo518UYX1pucjz3VPXRbua9nNVIHRhAk9ua0pzX1XA=;
-        b=ojSKzzqIqUJMRfUbhGN0phWQEVJb4D+1pz9OhSPTm+C86elwiNOvbyRY5++UuTzPco
-         qwp4YBZVvRU1AcqGeT5ZWEh1XQLABmUH8Epfwy4lm8HgLS2FLF4FcoxNd8QtP0+q10Hg
-         g71i+N10wxA96uuou0mC+2XbwD+KcFRMuJvN9kveqbzrRBgxjxoOccGVR6w/ze/WVKaY
-         UUXwtUMK+ZgBjvvZPK9Lox+0pe2+1PkVkXv6Ghsq4HKdi0dLIl51aMbSnXrofpjOc/Cz
-         gHMNVAFlgjtacWfDxQbd3e18Wbrnl7Hkrame3JbcDVz1b/kmpQ3TLXFIs2EW94sr5UvG
-         4E/A==
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
+        bh=/k4I9yFOQcmiC4x/pIxNVj/VFsZVkB/VTnKtzXV6Nqg=;
+        b=KVYgX01qh+Y7tJw3WATrm8EaYbQAGI23vZOwjn4aAjVXHl5wYPtn1nSEFMYO5nlHCR
+         2PrPxM8WjnjoxqpoY4pDFDVP9sJiccVMNYqzA3nKHUbhb+Eb9rAIYaMJRT5y9pDs/m5q
+         SHLCqZBSAjdXIGzIc+C8WQwRXWTj/OdjLYgJdq8GX/lHXmNVBXmn8PzNTTpTeYy5Wzlj
+         5w9FwtWwI4S6YsEhhQ4+XVLvi903LUUvP/4MuH0T33ll0aUn/UD1RdPF+yG9qT9StGhE
+         IKDg4t+33TaVwJn96dMi6zujRPPgXNYMIppnYDf9rot78tvvoBuuCLFzn35IUx4ntYi5
+         e6TA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=lbugUhiX;
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=HeU8zrtY;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id p11-20020a05622a00cb00b0035bb7451ce9si11677233qtw.107.2022.09.19.16.19.01
+        by mx.google.com with ESMTPS id 3-20020a05621420c300b004acc3656bc1si12196993qve.525.2022.09.19.16.19.17
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 19 Sep 2022 16:19:02 -0700 (PDT)
+        Mon, 19 Sep 2022 16:19:17 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=lbugUhiX;
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=HeU8zrtY;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:55058 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:55062 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1oaQ2X-0006lF-Gt
-	for alex.bennee@linaro.org; Mon, 19 Sep 2022 19:19:01 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:43596)
+	id 1oaQ2m-0006ut-OL
+	for alex.bennee@linaro.org; Mon, 19 Sep 2022 19:19:17 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:57890)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1oaQ20-00068P-AR; Mon, 19 Sep 2022 19:18:28 -0400
-Received: from mail-ed1-x535.google.com ([2a00:1450:4864:20::535]:39525)
+ id 1oaQ1v-00065g-3g; Mon, 19 Sep 2022 19:18:23 -0400
+Received: from mail-ej1-x62d.google.com ([2a00:1450:4864:20::62d]:37790)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1oaQ1x-0001oC-RG; Mon, 19 Sep 2022 19:18:27 -0400
-Received: by mail-ed1-x535.google.com with SMTP id f20so1373446edf.6;
- Mon, 19 Sep 2022 16:18:23 -0700 (PDT)
+ id 1oaQ1t-0001np-0x; Mon, 19 Sep 2022 19:18:22 -0400
+Received: by mail-ej1-x62d.google.com with SMTP id a26so2208275ejc.4;
+ Mon, 19 Sep 2022 16:18:18 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date;
- bh=Fjo518UYX1pucjz3VPXRbua9nNVIHRhAk9ua0pzX1XA=;
- b=lbugUhiXpcHvVHxmNQCd7XhVHqDDxchx16Djox3J75B7ePDdncyCGse6eZA2NqPqFh
- hr1ilTebkO5lbr+2+TZ5mEGLS4PtyKRFbfCqqAv12AEVAMkQWO0zrazSj3q2ZqeRKBT/
- NbDJbiJXOnw+DznNgyjbvAx0+B4DavYnJ8efSi50qdYGRhMcVApJ9LYs+43cIJnPnFH9
- p7WTSOkQVMZ/TBIgKfij+g6XFoQIUWCHughrTftkcd/1hY2CNeeMm/CAqplFQVur0kCT
- P6Vi6hDAGyycMZR5ghfx4ycMPoY3eP4zAl+AtKcz4IBZGYhSpX7tdpCvm4nrUNQHxaPV
- fQVA==
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date;
+ bh=/k4I9yFOQcmiC4x/pIxNVj/VFsZVkB/VTnKtzXV6Nqg=;
+ b=HeU8zrtYBI/0x6nYhy30ykBOxV7FJFi9qix+CVX0GQ295jAdVYP99cwpVxn/2LzxCi
+ ZP5HRKIK6CCkoV8ZYaMeoxr7Er2J7tkGFzoZESbBQa3Q/GPx3mVwKz2IoZNjt/UK7KTA
+ +ihVNLs1B8kQsrWVCKS154FLqcTZ7LjxhE5wx61z1x9ykd/cnWa6+EObscXByUSrlnxu
+ 2p8uLD9vwG4GAwVM6hnJqUMiO5KALvwOqjrkAiOSaB7w+Ho12rSGreEd514XIyflj9qP
+ 8m6Uxp0tRrmxmCRjrG0e2Upp6UcGEKsXugZH9piZvYjMOtG1eklpjW88WsouvJFJCC5o
+ ldSw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date;
- bh=Fjo518UYX1pucjz3VPXRbua9nNVIHRhAk9ua0pzX1XA=;
- b=BK7OPXdgUD/4Z00ntWjt9KdoTd56i5RtUsGvqM1w+NBAQBQnAIWJzfRpq2lvpoIaV9
- top029FoSXnAIK4Cg475xPZkzz2f8P5iZq/3nRiO/eH/t2GaOFlryqJow27H9W990Iua
- c9SmXoAjGJFDL0vlSZlhgmJiTzm+jGMAEbNaDx0HZrv9Tmf9LrQnr5PbNeWTfntiCsNR
- P9X2SmAJAS1I7cOn94rSBQCIba2dutuAelrdSpaznF2VU/hNwi8wqzPEZ5PSNowThuz4
- oANzqtg5Dbs+LnULoaXBHYI9oW3hJWgqDABnKTQwGIFsop06r4DA1kYJZatVjJUtKRPI
- 1xfA==
-X-Gm-Message-State: ACrzQf1roh4iF/FxCLVrCqPwUTkCOw8AE+xF94RzgvCgul6Zp6O1w3HL
- H95m+Ze8SqbOS21xpap17/IA7Ms89qI4Ug==
-X-Received: by 2002:a50:fc9a:0:b0:454:6a56:7d27 with SMTP id
- f26-20020a50fc9a000000b004546a567d27mr470765edq.73.1663629502405; 
- Mon, 19 Sep 2022 16:18:22 -0700 (PDT)
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date;
+ bh=/k4I9yFOQcmiC4x/pIxNVj/VFsZVkB/VTnKtzXV6Nqg=;
+ b=aHyzr0YVJYpl3XCfriI5p6ThUtkYqfow7vkyQZo97xLolhsr/Xxnz1YRa7nhCRKtdA
+ cbehJfc9f/TwFTQZvTqakt74/1K9R4PmYoi3ghzEzsvz6TIZpeZSWsZDt+7Wn9lYJPU/
+ K3HsWEvNesK2huzr3xDgdh0hevN8jMxvjLsVx1sryuh7m1P1h8w9RtweUlqHDsqVh8Xn
+ 3aJ8Ir9cN9OvBiUJ9i6i6sXA+/lz4Zo2lgb/XedrnDRXBb070LPntvcBmeSS5koCFNSv
+ KAspod57/3csUhqs0kdauF2eRpLLnNyJpk1Y2Z8Vy4Eu7oH8KqrwtEq0JyGXhy2o/zuE
+ UQaQ==
+X-Gm-Message-State: ACrzQf213X+MyAlbEfU8azFE4VZdsENC+pKrM7lGVETeRafqHCiGqETw
+ B5yMWqUqjWyVKcIZwTUR2bjJOs6jXMdtPQ==
+X-Received: by 2002:a17:907:2c62:b0:77a:e3ce:5ef0 with SMTP id
+ ib2-20020a1709072c6200b0077ae3ce5ef0mr15170276ejc.553.1663629496806; 
+ Mon, 19 Sep 2022 16:18:16 -0700 (PDT)
 Received: from localhost.localdomain
  (dynamic-078-054-077-055.78.54.pool.telefonica.de. [78.54.77.55])
  by smtp.gmail.com with ESMTPSA id
- rn24-20020a170906d93800b00780f6071b5dsm4800926ejb.188.2022.09.19.16.18.16
+ rn24-20020a170906d93800b00780f6071b5dsm4800926ejb.188.2022.09.19.16.18.10
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 19 Sep 2022 16:18:22 -0700 (PDT)
+ Mon, 19 Sep 2022 16:18:16 -0700 (PDT)
 From: Bernhard Beschow <shentey@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: "Michael S. Tsirkin" <mst@redhat.com>, Magnus Damm <magnus.damm@gmail.com>,
@@ -147,16 +145,16 @@ Cc: "Michael S. Tsirkin" <mst@redhat.com>, Magnus Damm <magnus.damm@gmail.com>,
  Laurent Vivier <laurent@vivier.eu>,
  Alistair Francis <alistair@alistair23.me>,
  Jason Herne <jjherne@linux.ibm.com>, Bernhard Beschow <shentey@gmail.com>
-Subject: [PATCH 1/9] hw/riscv/sifive_e: Fix inheritance of SiFiveEState
-Date: Tue, 20 Sep 2022 01:17:12 +0200
-Message-Id: <20220919231720.163121-2-shentey@gmail.com>
+Subject: [PATCH 0/9] Deprecate sysbus_get_default() and get_system_memory()
+ et. al
+Date: Tue, 20 Sep 2022 01:17:11 +0200
+Message-Id: <20220919231720.163121-1-shentey@gmail.com>
 X-Mailer: git-send-email 2.37.3
-In-Reply-To: <20220919231720.163121-1-shentey@gmail.com>
-References: <20220919231720.163121-1-shentey@gmail.com>
+Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::535;
- envelope-from=shentey@gmail.com; helo=mail-ed1-x535.google.com
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::62d;
+ envelope-from=shentey@gmail.com; helo=mail-ej1-x62d.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -178,41 +176,176 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: oTXnzdSkKrhE
+X-TUID: MmuQlGb0Txb4
 
-SiFiveEState inherits from SysBusDevice while it's TypeInfo claims it to
-inherit from TYPE_MACHINE. This is an inconsistency which can cause
-undefined behavior such as memory corruption.
-
-Change SiFiveEState to inherit from MachineState since it is registered
-as a machine.
-
-Signed-off-by: Bernhard Beschow <shentey@gmail.com>
----
- include/hw/riscv/sifive_e.h | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
-
-diff --git a/include/hw/riscv/sifive_e.h b/include/hw/riscv/sifive_e.h
-index 83604da805..d738745925 100644
---- a/include/hw/riscv/sifive_e.h
-+++ b/include/hw/riscv/sifive_e.h
-@@ -22,6 +22,7 @@
- #include "hw/riscv/riscv_hart.h"
- #include "hw/riscv/sifive_cpu.h"
- #include "hw/gpio/sifive_gpio.h"
-+#include "hw/boards.h"
- 
- #define TYPE_RISCV_E_SOC "riscv.sifive.e.soc"
- #define RISCV_E_SOC(obj) \
-@@ -41,7 +42,7 @@ typedef struct SiFiveESoCState {
- 
- typedef struct SiFiveEState {
-     /*< private >*/
--    SysBusDevice parent_obj;
-+    MachineState parent_obj;
- 
-     /*< public >*/
-     SiFiveESoCState soc;
--- 
-2.37.3
-
+In address-spaces.h it can be read that get_system_memory() and=0D
+get_system_io() are temporary interfaces which "should only be used tempora=
+rily=0D
+until a proper bus interface is available". This statement certainly extend=
+s to=0D
+the address_space_memory and address_space_io singletons. This series attem=
+pts=0D
+to stop further proliferation of their use by turning TYPE_SYSTEM_BUS into =
+an=0D
+object-oriented, "proper bus interface" inspired by PCIBus.=0D
+=0D
+While at it, also the main_system_bus singleton is turned into an attribute=
+ of=0D
+MachineState. Together, this resolves five singletons in total, making the=
+=0D
+ownership relations much more obvious which helps comprehension.=0D
+=0D
+The series is structured as follows: Patch 1 fixes a memory corruption issu=
+e=0D
+uncovered by running `make check` on the last but one patch of this series.=
+=0D
+Patches 2 and 3 turn the main_system_bus singleton into an attribute of=0D
+MachineState which provides an alternative to sysbus_get_default(). Patches=
+ 4-7=0D
+resolve the address space singletons and deprecate the legacy=0D
+get_system_memory() et. al functions. Patch 8 attempts to optimize the new=
+=0D
+implementations of these legacy functions.=0D
+=0D
+Testing done:=0D
+* make check (passes without any issues)=0D
+* make check-avocado (no new issues seem to be introduced compared to maste=
+r)=0D
+=0D
+Bernhard Beschow (9):=0D
+  hw/riscv/sifive_e: Fix inheritance of SiFiveEState=0D
+  exec/hwaddr.h: Add missing include=0D
+  hw/core/sysbus: Resolve main_system_bus singleton=0D
+  hw/ppc/spapr: Fix code style problems reported by checkpatch=0D
+  exec/address-spaces: Wrap address space singletons into functions=0D
+  target/loongarch/cpu: Remove unneeded include directive=0D
+  hw/sysbus: Introduce dedicated struct SysBusState for TYPE_SYSTEM_BUS=0D
+  softmmu/physmem: Let SysBusState absorb memory region and address=0D
+    space singletons=0D
+  exec/address-spaces: Inline legacy functions=0D
+=0D
+ accel/hvf/hvf-accel-ops.c            |  2 +-=0D
+ accel/kvm/kvm-all.c                  | 12 +++----=0D
+ hw/alpha/dp264.c                     |  4 +--=0D
+ hw/alpha/typhoon.c                   |  4 +--=0D
+ hw/arm/smmu-common.c                 |  4 +--=0D
+ hw/arm/smmuv3.c                      | 14 ++++----=0D
+ hw/arm/virt.c                        |  2 +-=0D
+ hw/char/goldfish_tty.c               |  4 +--=0D
+ hw/core/bus.c                        |  5 ++-=0D
+ hw/core/loader.c                     |  2 +-=0D
+ hw/core/machine.c                    |  3 ++=0D
+ hw/core/sysbus.c                     | 24 ++++----------=0D
+ hw/dma/pl330.c                       |  2 +-=0D
+ hw/dma/rc4030.c                      |  2 +-=0D
+ hw/dma/xlnx-zynq-devcfg.c            |  4 +--=0D
+ hw/dma/xlnx_dpdma.c                  |  8 ++---=0D
+ hw/hppa/machine.c                    |  4 +--=0D
+ hw/hyperv/hyperv.c                   |  2 +-=0D
+ hw/hyperv/vmbus.c                    |  2 +-=0D
+ hw/i386/amd_iommu.c                  | 18 +++++-----=0D
+ hw/i386/fw_cfg.c                     |  2 +-=0D
+ hw/i386/intel_iommu.c                | 24 +++++++-------=0D
+ hw/i386/microvm.c                    |  4 +--=0D
+ hw/i386/pc.c                         |  2 +-=0D
+ hw/i386/xen/xen-hvm.c                |  4 +--=0D
+ hw/ide/ahci.c                        |  2 +-=0D
+ hw/ide/macio.c                       | 10 +++---=0D
+ hw/intc/apic.c                       |  2 +-=0D
+ hw/intc/openpic_kvm.c                |  2 +-=0D
+ hw/intc/pnv_xive.c                   |  6 ++--=0D
+ hw/intc/pnv_xive2.c                  |  6 ++--=0D
+ hw/intc/riscv_aplic.c                |  2 +-=0D
+ hw/intc/spapr_xive.c                 |  2 +-=0D
+ hw/intc/xive.c                       |  4 +--=0D
+ hw/intc/xive2.c                      |  4 +--=0D
+ hw/mips/jazz.c                       |  4 +--=0D
+ hw/misc/lasi.c                       |  2 +-=0D
+ hw/misc/macio/mac_dbdma.c            |  8 ++---=0D
+ hw/net/ftgmac100.c                   | 16 ++++-----=0D
+ hw/net/i82596.c                      | 24 +++++++-------=0D
+ hw/net/imx_fec.c                     | 22 ++++++-------=0D
+ hw/net/lasi_i82596.c                 |  2 +-=0D
+ hw/net/npcm7xx_emc.c                 | 14 ++++----=0D
+ hw/openrisc/boot.c                   |  2 +-=0D
+ hw/pci-host/dino.c                   |  6 ++--=0D
+ hw/pci-host/pnv_phb3.c               |  6 ++--=0D
+ hw/pci-host/pnv_phb3_msi.c           |  6 ++--=0D
+ hw/pci-host/pnv_phb4.c               | 10 +++---=0D
+ hw/pci/pci.c                         |  2 +-=0D
+ hw/ppc/pnv_psi.c                     |  2 +-=0D
+ hw/ppc/spapr.c                       |  4 +--=0D
+ hw/ppc/spapr_events.c                |  2 +-=0D
+ hw/ppc/spapr_hcall.c                 |  4 +--=0D
+ hw/ppc/spapr_iommu.c                 |  4 +--=0D
+ hw/ppc/spapr_ovec.c                  |  8 ++---=0D
+ hw/ppc/spapr_rtas.c                  |  2 +-=0D
+ hw/remote/iommu.c                    |  2 +-=0D
+ hw/remote/message.c                  |  4 +--=0D
+ hw/remote/proxy-memory-listener.c    |  2 +-=0D
+ hw/riscv/boot.c                      |  6 ++--=0D
+ hw/riscv/sifive_e.c                  |  2 +-=0D
+ hw/riscv/sifive_u.c                  |  2 +-=0D
+ hw/riscv/virt.c                      |  2 +-=0D
+ hw/s390x/css.c                       | 16 ++++-----=0D
+ hw/s390x/ipl.h                       |  2 +-=0D
+ hw/s390x/s390-pci-bus.c              |  4 +--=0D
+ hw/s390x/s390-pci-inst.c             | 10 +++---=0D
+ hw/s390x/s390-skeys.c                |  2 +-=0D
+ hw/s390x/virtio-ccw.c                | 10 +++---=0D
+ hw/sd/sdhci.c                        |  2 +-=0D
+ hw/sh4/r2d.c                         |  4 +--=0D
+ hw/sparc/sun4m.c                     |  2 +-=0D
+ hw/sparc/sun4m_iommu.c               |  4 +--=0D
+ hw/sparc64/sun4u_iommu.c             |  4 +--=0D
+ hw/timer/hpet.c                      |  2 +-=0D
+ hw/usb/hcd-ehci-pci.c                |  2 +-=0D
+ hw/usb/hcd-ehci-sysbus.c             |  2 +-=0D
+ hw/usb/hcd-ohci.c                    |  2 +-=0D
+ hw/usb/hcd-xhci-sysbus.c             |  2 +-=0D
+ hw/vfio/ap.c                         |  2 +-=0D
+ hw/vfio/ccw.c                        |  2 +-=0D
+ hw/vfio/common.c                     |  8 ++---=0D
+ hw/vfio/platform.c                   |  2 +-=0D
+ hw/virtio/vhost-vdpa.c               |  2 +-=0D
+ hw/virtio/vhost.c                    |  2 +-=0D
+ hw/virtio/virtio-bus.c               |  4 +--=0D
+ hw/virtio/virtio-iommu.c             |  6 ++--=0D
+ hw/virtio/virtio-pci.c               |  2 +-=0D
+ hw/xen/xen_pt.c                      |  4 +--=0D
+ include/exec/address-spaces.h        | 49 +++++++++++++++++++++++-----=0D
+ include/exec/hwaddr.h                |  1 +=0D
+ include/hw/boards.h                  |  2 ++=0D
+ include/hw/elf_ops.h                 |  4 +--=0D
+ include/hw/misc/macio/macio.h        |  2 +-=0D
+ include/hw/ppc/spapr.h               |  6 ++--=0D
+ include/hw/ppc/vof.h                 |  4 +--=0D
+ include/hw/riscv/sifive_e.h          |  3 +-=0D
+ include/hw/sysbus.h                  | 14 ++++++--=0D
+ monitor/misc.c                       |  4 +--=0D
+ softmmu/ioport.c                     | 12 +++----=0D
+ softmmu/memory_mapping.c             |  2 +-=0D
+ softmmu/physmem.c                    | 41 ++++++++---------------=0D
+ target/arm/hvf/hvf.c                 |  4 +--=0D
+ target/arm/kvm.c                     |  4 +--=0D
+ target/avr/helper.c                  |  8 ++---=0D
+ target/i386/hax/hax-all.c            |  2 +-=0D
+ target/i386/hax/hax-mem.c            |  2 +-=0D
+ target/i386/hvf/hvf.c                |  2 +-=0D
+ target/i386/hvf/vmx.h                |  2 +-=0D
+ target/i386/hvf/x86_mmu.c            |  6 ++--=0D
+ target/i386/nvmm/nvmm-all.c          |  4 +--=0D
+ target/i386/sev.c                    |  4 +--=0D
+ target/i386/tcg/sysemu/misc_helper.c | 12 +++----=0D
+ target/i386/whpx/whpx-all.c          |  4 +--=0D
+ target/loongarch/cpu.h               |  1 -=0D
+ target/s390x/diag.c                  |  2 +-=0D
+ target/s390x/mmu_helper.c            |  2 +-=0D
+ target/s390x/sigp.c                  |  2 +-=0D
+ target/xtensa/dbg_helper.c           |  2 +-=0D
+ tests/qtest/fuzz/generic_fuzz.c      |  4 +--=0D
+ 120 files changed, 355 insertions(+), 328 deletions(-)=0D
+=0D
+-- =0D
+2.37.3=0D
+=0D

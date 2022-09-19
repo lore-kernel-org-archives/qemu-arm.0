@@ -1,83 +1,83 @@
-Received: by 2002:a17:906:b088:0:0:0:0 with SMTP id x8csp1440215ejy;
-        Mon, 19 Sep 2022 16:19:47 -0700 (PDT)
-X-Google-Smtp-Source: AMsMyM6IqzB8170wetPjfZND/0qG6Jo4+Na6c8Pf9zM7+tNl4O0eDtkIgA0l2a+LFLxEHzPP6z0U
-X-Received: by 2002:a17:907:94d4:b0:77f:d0c9:573f with SMTP id dn20-20020a17090794d400b0077fd0c9573fmr14443321ejc.98.1663629587572;
-        Mon, 19 Sep 2022 16:19:47 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1663629587; cv=none;
+Received: by 2002:a17:906:b088:0:0:0:0 with SMTP id x8csp1440233ejy;
+        Mon, 19 Sep 2022 16:19:51 -0700 (PDT)
+X-Google-Smtp-Source: AMsMyM6ugYEJDcNtlwpO47c140Av3U/vAfFtqoeLxGzd3Z+3dtK3wxpX76+1lKr4PNEM1g4Yx87k
+X-Received: by 2002:a17:907:da9:b0:780:5fe8:f8d7 with SMTP id go41-20020a1709070da900b007805fe8f8d7mr14655468ejc.357.1663629591140;
+        Mon, 19 Sep 2022 16:19:51 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1663629591; cv=none;
         d=google.com; s=arc-20160816;
-        b=O1fIkVfY/mJHFPSEuhddHZOmPMed4ONxdMFTdJr9z+w846g+V6iPQuHRr9HhN78LwK
-         HshQue6xKT3DbSDAWlhr6qBpgTjkiWKDx3Q0zBVuvp47IeVH66ecw/FdqzgrBfL0/o1V
-         fNdjlZN4nYEuyjrq33G2AOs1/OCilWJYppaqBbyNAL9X7HiVhhG3oHjYJn6B4g/Gb+L5
-         24sh9dvrRWKegk3USXovSjvqPQbvB8+7ATrh4gXMxjc+cOnoYhPE6qRy49kXIpKId/Mv
-         fAjsix3tOOjoUofU85736E+IuzXFtMsEGunGtiDvP9/r+FE9vv0M2Hqy8nTwHzYYJh6y
-         Uwiw==
+        b=gjJ54IjlLY2l8ZaUOyopbGg/yVfTW1vDujBIms5f934gJn6OeSGwd5c8wzM3m5yQIA
+         iNPzcqtud5Zvg+6fqYH7vWf5TriBqI5M/3mKh3CRlczkG2Bet1jzNS0CyylDbuMWf5C7
+         kaSNrIw54y1LaGTGwiRJA8I+ICGYyRJu6q4sZlScMxpf10R6Kp215MHl0Pgi3QVbk4eQ
+         xXUzLhMmgDJnuRkSTY3j8TnJBIw4P45UWfiYq8Wi+Orf53RgI9jiGKtA8nJJycTgMeBo
+         8bFEaKkG+nSVrfUGHvUQKxi/pKmR7RHl6MDkUiI0Gosxz1ZJdzS84Fl+OKwnvIDnaHg+
+         W8TA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=list-id:precedence:content-transfer-encoding:mime-version
          :references:in-reply-to:message-id:date:subject:cc:to:from
          :dkim-signature;
-        bh=18L1CetNQZRcWgrF+bLfFklTWcjPuzsdD8LCMjAGf1E=;
-        b=o497GZAiQriRYQHMI0dnCmtEZjGuxKWCkiF4f3U/CDC/VKt2k/NzEQuxZ6gmOrGYXF
-         Vd85cSYR7Q3hTYjxx603BG7EQgepAvom3hCyd6QTdQfQNQ+qMqZ/xEciowy1c6rSRfo7
-         id00xjxKQs4OlJ1Xu6B4hO5X6SS5lr6M9UmxnwAnYqecevTMTzvxl+DKL7VV+DPyQORA
-         4uE1E0mqiRDj52GHio0OghuL09xoZjWc9jGpOtNV36tJyw/GGVgcuLeIxa/DErREbJVq
-         7WTfFV8AZWTluDhc+K1ImsAlAgosHFpYYsc/4DeJ2xmUuCqA78JpmYaBcro9q0EeNMCi
-         JaWQ==
+        bh=CsS8/+NcmmUwF5Nr1L7YiFLpUSnCt26Ro0cbZ1iTpA0=;
+        b=vFz+M+jAz54LcgfkGYxNP99VAe0ww5hEtqdVJMAy9nkXF42MyInzS+lkY7O1o8EoRD
+         oR6eMm0otFVfIc8KySm+dh7Ts7LEOgIxBb47b8GnkHU/BIWK+yuM95l3c/jlHgehZaHx
+         mlei1UHoBfQxuomz9a0x6CcqLJqPazLVQSW25/0h0FwQcB7SHjEJERIehyIPMoQ4V2gh
+         STw0nLcjiyj3e+DouaBK5xw5mvqFpgYH6B2frp5kO0tI/jT8IVDYtRKu8xt4Ks/p9bub
+         4JiXmu1XUJqasX3qW61QGUknecoZu/gZ4Yc7ONSBYDWtgSKnIAbQYaye7emrLqJIb/pj
+         KZtQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=V5XT6ePh;
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=LvQxLOmJ;
        spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <kvm-owner@vger.kernel.org>
 Received: from out1.vger.email (out1.vger.email. [2620:137:e000::1:20])
-        by mx.google.com with ESMTP id hs13-20020a1709073e8d00b0078049ab4bbasi13406517ejc.526.2022.09.19.16.19.47;
-        Mon, 19 Sep 2022 16:19:47 -0700 (PDT)
+        by mx.google.com with ESMTP id hs13-20020a1709073e8d00b0078049ab4bbasi13406517ejc.526.2022.09.19.16.19.51;
+        Mon, 19 Sep 2022 16:19:51 -0700 (PDT)
 Received-SPF: pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) client-ip=2620:137:e000::1:20;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=V5XT6ePh;
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=LvQxLOmJ;
        spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S229822AbiISXTn (ORCPT <rfc822;daniel.diaz@linaro.org>
-        + 2 others); Mon, 19 Sep 2022 19:19:43 -0400
-Received: from lindbergh.monkeyblade.net ([23.128.96.19]:44764 "EHLO
+        id S230000AbiISXTr (ORCPT <rfc822;daniel.diaz@linaro.org>
+        + 2 others); Mon, 19 Sep 2022 19:19:47 -0400
+Received: from lindbergh.monkeyblade.net ([23.128.96.19]:45280 "EHLO
         lindbergh.monkeyblade.net" rhost-flags-OK-OK-OK-OK) by vger.kernel.org
-        with ESMTP id S230322AbiISXTF (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Mon, 19 Sep 2022 19:19:05 -0400
-Received: from mail-ej1-x631.google.com (mail-ej1-x631.google.com [IPv6:2a00:1450:4864:20::631])
-        by lindbergh.monkeyblade.net (Postfix) with ESMTPS id AC8925073B
-        for <kvm@vger.kernel.org>; Mon, 19 Sep 2022 16:19:00 -0700 (PDT)
-Received: by mail-ej1-x631.google.com with SMTP id go34so2242123ejc.2
-        for <kvm@vger.kernel.org>; Mon, 19 Sep 2022 16:19:00 -0700 (PDT)
+        with ESMTP id S229575AbiISXTO (ORCPT <rfc822;kvm@vger.kernel.org>);
+        Mon, 19 Sep 2022 19:19:14 -0400
+Received: from mail-ed1-x529.google.com (mail-ed1-x529.google.com [IPv6:2a00:1450:4864:20::529])
+        by lindbergh.monkeyblade.net (Postfix) with ESMTPS id 70FE95019A
+        for <kvm@vger.kernel.org>; Mon, 19 Sep 2022 16:19:13 -0700 (PDT)
+Received: by mail-ed1-x529.google.com with SMTP id q21so1351622edc.9
+        for <kvm@vger.kernel.org>; Mon, 19 Sep 2022 16:19:13 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20210112;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date;
-        bh=18L1CetNQZRcWgrF+bLfFklTWcjPuzsdD8LCMjAGf1E=;
-        b=V5XT6ePhglxVVnzO7wTKlIaCCViZpN/zYqMG+wnd7lcxvsQ6bFt9WuDSwUs61yQfOq
-         pOOrLokv5qVrEanQf1jerp+JQbj02Jx+4/DTXLbk4VGzNoVT9LMVzK0PC7mepLvnFIDH
-         zNU2Iq8+Tt8hwKBJJHRAekFsH64zOK5KDx2DOj+3xLFeQHbqLBayBI84MwLSLyDfmRzn
-         Bn02SXOCet8dJvaSko0kLZJJa9dUhgUekK1verWyRQXlYweUX2DfajwnVTkn8xSB6xdY
-         xhTzjewc6CjRhf/YtZTPMPm/29EOtiCPc87CrZipbkfmhngf1laAFdu+hBwMKfqzao83
-         81vA==
+        bh=CsS8/+NcmmUwF5Nr1L7YiFLpUSnCt26Ro0cbZ1iTpA0=;
+        b=LvQxLOmJmGVQ6sYu0MsAHfg8Ds6mykcGi7e3toDd9OFsfFEnWXTEkQZsRgcA0qsBVK
+         Ax5qZ/FGRkcXZjgQXjmpXzOndgONzyLEOfYdR+g0wP59Ui6GKvlOYss+hr/WgF94LAQG
+         ax/WwLFBL1+LRyQIy+7lhc0PSm9DLccB1NsqeZVjbmbqGQFnyw6exKqa/w0WN+cCU129
+         HszwSLx/FOWeL2QB5xupKDxKOyewPDDsvvE6piEkWTsl/i3Bmnlz2slYtvmUZUAw6hb3
+         NZGTv/8KL9eBHuB2KB1+1rAmJut32xrcuUgfT1HQYK6PmCKcw+vZEvVx72whU341ZIbN
+         rvxg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date;
-        bh=18L1CetNQZRcWgrF+bLfFklTWcjPuzsdD8LCMjAGf1E=;
-        b=H3Rfh/v564ByjR4YeDXCCEtQbs1uRbmg0G14tiTGMl8Umlxy8zxcbcG/SaC6vBsnGw
-         /fLP7zGA5DUaaj2pEyLZEgnyuOpEZdXgv/iF7a6f7odGxK62r9mtDh8Na155rHKxyvgO
-         N009j4CM0xO/1x16v/btESv1DXE5XuP+unVieRAlAmELtbURO6b/5KvS0PGN/6bA/xRz
-         V76kh1Th+8oJlw3ajbmp3FIAxllpCC1FYhLOie6z/ZrTk/kmZPDmqRZDkV83l9RKXHeY
-         KrsSXRUVzbnp1lRvy+q1lCgjW1CBNmbuhipCMOQ+L9zsoKzzCCehe7OiyQea4djZXDE8
-         v23g==
-X-Gm-Message-State: ACrzQf2jNzJVK1qi95NEtp69Yk3px3+OLNP474Lqi3gcEJ5KR85qW7Se
-        8LyyQ8eMM0bE93TxLQdLVys=
-X-Received: by 2002:a17:907:2e0b:b0:77f:5fd8:8712 with SMTP id ig11-20020a1709072e0b00b0077f5fd88712mr13751388ejc.575.1663629539177;
-        Mon, 19 Sep 2022 16:18:59 -0700 (PDT)
+        bh=CsS8/+NcmmUwF5Nr1L7YiFLpUSnCt26Ro0cbZ1iTpA0=;
+        b=h9iPQz+FG/q72vFI1qLOYe2y2zVUh5zjlu1Nw6nnlNSqzGYwqruSjFrX3phtV5hKY4
+         VtD9GF64Z7ywg1xeFKAfIfOAsWKrw3rnScsP/G8bHNO13k6zPAUPv96FuDey2CsKJaWn
+         cB7HqrbBcqRrXOtPV650rCt6yYb+nDSU49vhgKJ81F0nXtharpSmQzpov5MlVOZCn9eP
+         +gqjZv4XjmCFSkAEHL9RKdnaqwAhLHaSLLzPN6UOkWZ+HYZCcs+y7v+kTk2kD+UKewXp
+         d+gop5cIH41RtH8phnEdJ2FrbWSXvZ5XPENSVNzGLbzHJjGBn+9oR26yt+A2uAjiKS9U
+         FJQg==
+X-Gm-Message-State: ACrzQf2aUUqhDv65PoMIel0OBXYXiDJzLkjrf7CBsD/IgbDtyzHffVEU
+        wcOZG050jz3IquCZzx6WEaY=
+X-Received: by 2002:aa7:da83:0:b0:44e:69ba:81c7 with SMTP id q3-20020aa7da83000000b0044e69ba81c7mr17400003eds.323.1663629551883;
+        Mon, 19 Sep 2022 16:19:11 -0700 (PDT)
 Received: from localhost.localdomain (dynamic-078-054-077-055.78.54.pool.telefonica.de. [78.54.77.55])
-        by smtp.gmail.com with ESMTPSA id rn24-20020a170906d93800b00780f6071b5dsm4800926ejb.188.2022.09.19.16.18.53
+        by smtp.gmail.com with ESMTPSA id rn24-20020a170906d93800b00780f6071b5dsm4800926ejb.188.2022.09.19.16.19.05
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 19 Sep 2022 16:18:58 -0700 (PDT)
+        Mon, 19 Sep 2022 16:19:11 -0700 (PDT)
 From:   Bernhard Beschow <shentey@gmail.com>
 To:     qemu-devel@nongnu.org
 Cc:     "Michael S. Tsirkin" <mst@redhat.com>,
@@ -157,9 +157,9 @@ Cc:     "Michael S. Tsirkin" <mst@redhat.com>,
         Alistair Francis <alistair@alistair23.me>,
         Jason Herne <jjherne@linux.ibm.com>,
         Bernhard Beschow <shentey@gmail.com>
-Subject: [PATCH 7/9] hw/sysbus: Introduce dedicated struct SysBusState for TYPE_SYSTEM_BUS
-Date:   Tue, 20 Sep 2022 01:17:18 +0200
-Message-Id: <20220919231720.163121-8-shentey@gmail.com>
+Subject: [PATCH 9/9] exec/address-spaces: Inline legacy functions
+Date:   Tue, 20 Sep 2022 01:17:20 +0200
+Message-Id: <20220919231720.163121-10-shentey@gmail.com>
 X-Mailer: git-send-email 2.37.3
 In-Reply-To: <20220919231720.163121-1-shentey@gmail.com>
 References: <20220919231720.163121-1-shentey@gmail.com>
@@ -174,94 +174,115 @@ X-Spam-Checker-Version: SpamAssassin 3.4.6 (2021-04-09) on
 Precedence: bulk
 List-ID: <kvm.vger.kernel.org>
 X-Mailing-List: kvm@vger.kernel.org
-X-TUID: ELbih1pH9/HU
+X-TUID: XRJ4sjCmBBtM
 
-With this out of the way, in the next step, SysBusState gains attributes
-for its memory and address recouces.
+The functions just access a global pointer and perform some pointer
+arithmetic on top. Allow the compiler to see through this by inlining.
 
 Signed-off-by: Bernhard Beschow <shentey@gmail.com>
 ---
- hw/core/sysbus.c              | 4 ++--
- include/hw/boards.h           | 3 ++-
- include/hw/misc/macio/macio.h | 2 +-
- include/hw/sysbus.h           | 8 ++++++--
- 4 files changed, 11 insertions(+), 6 deletions(-)
+ include/exec/address-spaces.h | 30 ++++++++++++++++++++++++++----
+ softmmu/physmem.c             | 28 ----------------------------
+ 2 files changed, 26 insertions(+), 32 deletions(-)
 
-diff --git a/hw/core/sysbus.c b/hw/core/sysbus.c
-index 16a9b4d7a0..1100f3ad6c 100644
---- a/hw/core/sysbus.c
-+++ b/hw/core/sysbus.c
-@@ -84,7 +84,7 @@ static void system_bus_class_init(ObjectClass *klass, void *data)
- static const TypeInfo system_bus_info = {
-     .name = TYPE_SYSTEM_BUS,
-     .parent = TYPE_BUS,
--    .instance_size = sizeof(BusState),
-+    .instance_size = sizeof(SysBusState),
-     .class_init = system_bus_class_init,
- };
+diff --git a/include/exec/address-spaces.h b/include/exec/address-spaces.h
+index b31bd8dcf0..182af27cad 100644
+--- a/include/exec/address-spaces.h
++++ b/include/exec/address-spaces.h
+@@ -23,29 +23,51 @@
  
-@@ -343,7 +343,7 @@ BusState *sysbus_get_default(void)
-         return NULL;
-     }
+ #ifndef CONFIG_USER_ONLY
  
--    return &current_machine->main_system_bus;
-+    return &current_machine->main_system_bus.parent_obj;
++#include "hw/boards.h"
++
+ /**
+  * Get the root memory region.  This is a legacy function, provided for
+  * compatibility. Prefer using SysBusState::system_memory directly.
+  */
+-MemoryRegion *get_system_memory(void);
++inline MemoryRegion *get_system_memory(void)
++{
++    assert(current_machine);
++
++    return &current_machine->main_system_bus.system_memory;
++}
+ 
+ /**
+  * Get the root I/O port region.  This is a legacy function, provided for
+  * compatibility. Prefer using SysBusState::system_io directly.
+  */
+-MemoryRegion *get_system_io(void);
++inline MemoryRegion *get_system_io(void)
++{
++    assert(current_machine);
++
++    return &current_machine->main_system_bus.system_io;
++}
+ 
+ /**
+  * Get the root memory address space.  This is a legacy function, provided for
+  * compatibility. Prefer using SysBusState::address_space_memory directly.
+  */
+-AddressSpace *get_address_space_memory(void);
++inline AddressSpace *get_address_space_memory(void)
++{
++    assert(current_machine);
++
++    return &current_machine->main_system_bus.address_space_memory;
++}
+ 
+ /**
+  * Get the root I/O port address space.  This is a legacy function, provided
+  * for compatibility. Prefer using SysBusState::address_space_io directly.
+  */
+-AddressSpace *get_address_space_io(void);
++inline AddressSpace *get_address_space_io(void)
++{
++    assert(current_machine);
++
++    return &current_machine->main_system_bus.address_space_io;
++}
+ 
+ #endif
+ 
+diff --git a/softmmu/physmem.c b/softmmu/physmem.c
+index 07e9a9171c..dce088f55c 100644
+--- a/softmmu/physmem.c
++++ b/softmmu/physmem.c
+@@ -2674,34 +2674,6 @@ static void memory_map_init(SysBusState *sysbus)
+     address_space_init(&sysbus->address_space_io, system_io, "I/O");
  }
  
- static void sysbus_register_types(void)
-diff --git a/include/hw/boards.h b/include/hw/boards.h
-index 7af940102d..63a4f990ea 100644
---- a/include/hw/boards.h
-+++ b/include/hw/boards.h
-@@ -11,6 +11,7 @@
- #include "qemu/module.h"
- #include "qom/object.h"
- #include "hw/core/cpu.h"
-+#include "hw/sysbus.h"
- 
- #define TYPE_MACHINE_SUFFIX "-machine"
- 
-@@ -346,7 +347,7 @@ struct MachineState {
-      */
-     MemoryRegion *ram;
-     DeviceMemoryState *device_memory;
--    BusState main_system_bus;
-+    SysBusState main_system_bus;
- 
-     ram_addr_t ram_size;
-     ram_addr_t maxram_size;
-diff --git a/include/hw/misc/macio/macio.h b/include/hw/misc/macio/macio.h
-index 6c05f3bfd2..0944be587f 100644
---- a/include/hw/misc/macio/macio.h
-+++ b/include/hw/misc/macio/macio.h
-@@ -44,7 +44,7 @@ OBJECT_DECLARE_SIMPLE_TYPE(MacIOBusState, MACIO_BUS)
- 
- struct MacIOBusState {
-     /*< private >*/
--    BusState parent_obj;
-+    SysBusState parent_obj;
- };
- 
- /* MacIO IDE */
-diff --git a/include/hw/sysbus.h b/include/hw/sysbus.h
-index 3564b7b6a2..5bb3b88501 100644
---- a/include/hw/sysbus.h
-+++ b/include/hw/sysbus.h
-@@ -11,9 +11,13 @@
- #define QDEV_MAX_PIO 32
- 
- #define TYPE_SYSTEM_BUS "System"
--DECLARE_INSTANCE_CHECKER(BusState, SYSTEM_BUS,
--                         TYPE_SYSTEM_BUS)
-+OBJECT_DECLARE_SIMPLE_TYPE(SysBusState, SYSTEM_BUS)
- 
-+struct SysBusState {
-+    /*< private >*/
-+    BusState parent_obj;
-+    /*< public >*/
-+};
- 
- #define TYPE_SYS_BUS_DEVICE "sys-bus-device"
- OBJECT_DECLARE_TYPE(SysBusDevice, SysBusDeviceClass,
+-MemoryRegion *get_system_memory(void)
+-{
+-    assert(current_machine);
+-
+-    return &current_machine->main_system_bus.system_memory;
+-}
+-
+-MemoryRegion *get_system_io(void)
+-{
+-    assert(current_machine);
+-
+-    return &current_machine->main_system_bus.system_io;
+-}
+-
+-AddressSpace *get_address_space_memory(void)
+-{
+-    assert(current_machine);
+-
+-    return &current_machine->main_system_bus.address_space_memory;
+-}
+-
+-AddressSpace *get_address_space_io(void)
+-{
+-    assert(current_machine);
+-
+-    return &current_machine->main_system_bus.address_space_io;
+-}
+-
+ static void invalidate_and_set_dirty(MemoryRegion *mr, hwaddr addr,
+                                      hwaddr length)
+ {
 -- 
 2.37.3

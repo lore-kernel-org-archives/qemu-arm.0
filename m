@@ -1,114 +1,117 @@
-Received: by 2002:a17:906:b088:0:0:0:0 with SMTP id x8csp2041619ejy;
-        Tue, 20 Sep 2022 14:18:50 -0700 (PDT)
-X-Google-Smtp-Source: AMsMyM4By+MzVhd3WAxhG08+p4pvmOSNnTUG1Go16IbC4B9Sma9WWQrmf1bg4o9tduwDG94oD59w
-X-Received: by 2002:a05:6214:769:b0:4ac:a40a:a5d7 with SMTP id f9-20020a056214076900b004aca40aa5d7mr20790110qvz.39.1663708730562;
-        Tue, 20 Sep 2022 14:18:50 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1663708730; cv=none;
+Received: by 2002:a17:906:b088:0:0:0:0 with SMTP id x8csp2041974ejy;
+        Tue, 20 Sep 2022 14:19:31 -0700 (PDT)
+X-Google-Smtp-Source: AMsMyM7Jl3Ly/LSzkkl9BMTJANaXPmPg2tn3GV/BNS8scDp6xlAvcmmp+MLzN/wMD/hv63aW/bve
+X-Received: by 2002:a05:620a:2699:b0:6cf:3ee4:5657 with SMTP id c25-20020a05620a269900b006cf3ee45657mr3019720qkp.475.1663708771058;
+        Tue, 20 Sep 2022 14:19:31 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1663708771; cv=none;
         d=google.com; s=arc-20160816;
-        b=ewVdV/NSrLVrXr99+RHYW0S+qmyufSEyj5NnPtMx8JuDfLhxBemPTxtC5DCI/ySSXp
-         ctnqRhBhxmECAJRITmuIlkQt4Kd8WKQg0GWHw1sSKSzhDLVda/ZHyGZ/VpuGPAXGeUgj
-         UkFwFnCNW111eDF13aZYjIPD2ErrIs6ED7q2POfL+DByTtBe/ZCg585ThbpViRBSTaa6
-         iyHPamYHsGwMm+D99uJBKPYEOa0CWFRn2/KG2Iz0rSaN7zaa17pCPm+TR1cEu7f3sh/9
-         hlzwOLgYwz1LzqNH2YzHdfMU8k9jvvJOusG6fQBqUEiK0FnhOqNDkhJsH2ewBrtDgRL+
-         gSUQ==
+        b=RbMBPa8tTpsfbHFU7RQ03P7mtYpIEn+2+dtocWD+2UHCdWslK+NmC78nwTBAxNqqBM
+         xKfNen6SR0cpVOaBCa4+c3HJlMrC4c2LR3uG2huWDa7kXl6jgfeugPx7Z83k0/HCdHJs
+         fk1kePkN6o4Z7nVZg0WHFnykTuGZXby+861LKUb14cXOX4YcjM8se/YjylpoXS+bSjYU
+         2i5UJFd7ioxZCiEaHEXJN9sa7jMLTEpshAL+Q/yGXdvhavIuBa3M74I2LdmMrJMKgdec
+         FcLj9yNKtjboCpUAvftrroHq/HafdEj/oX7UJtnwY1zRw2QJEeBkcQRg8g/YmgLR4osT
+         sSiA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
          :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:dkim-signature;
-        bh=sKCdbPqoVW2GG4TICbgESjGduy1RL3n9W6alo80hVWc=;
-        b=Wx2Pd7QH/GjhrP0Ir6rDj6L6NOk+w0Zgbrr+vrN97GWm1QqV86303AmyYfHTFWS6nZ
-         Ga/lz3w1rrBmPXMQPnff1wIYVxBpzBWUAegaXWvtEROLCcNbqgMjBBrNcrOVLWFmFZ36
-         e3JDzkzWSj6rq4iIO4lkAiwhcfV/MEz++ZR0JMTJEreK6qS/ka650hD7SSHdscy8stE/
-         dyggtMvdZeBotSADaNRSepPjJjFO/PEaqU2A0JZgc2YGXz+Zd3KLrq2gZWhu25OP8ONy
-         rewlzA8nyRrtZFdc7IWI8nd8jzeAvmsPL8jZEsFcQPBC5nEV1icKhCMFQjeGGwkGF1e2
-         ySrw==
+         :content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:dkim-signature;
+        bh=yt9CMl/7J8ldFIktUc92eWuVYdzToZFecJEcs4JXWRU=;
+        b=eQCVEG5pVXq96D9U2PAc/3DSxouEKuAyfkaK/PQw8DAg6vXKfPBEtwTuabRLp8+8Ln
+         Augr9G1clAnlsYz0xV1p5Vh83XkT+8siMmI7cJw0V3lCM/X+hcRos3dcnBkto1K7eGeM
+         9V5FD/FQUe9OSg161F/xhWub68c2e7A/oZBXYYA2uPA41/r2dx4WI7gBdTuY/TruR/xA
+         GLa5HQ/2plyqo47zqD1T3UiiMNpH4BYRHLD1tEqnknbvF5ddRVPPheJoCF0h4z3D+wEZ
+         561BflLZ0wqYpy8GdNt569SukxUCciPuMZxPZCXuEiA8w59TLy06o0GqVUC5xH9qhbZt
+         YtEA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@oracle.com header.s=corp-2022-7-12 header.b=xJwoXAYf;
+       dkim=pass header.i=@oracle.com header.s=corp-2022-7-12 header.b=EOP6T7C1;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=oracle.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id g28-20020a05620a109c00b006be59d6b6f2si476962qkk.458.2022.09.20.14.18.50
+        by mx.google.com with ESMTPS id k22-20020a05620a415600b006ce7c162cbcsi534575qko.510.2022.09.20.14.19.30
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 20 Sep 2022 14:18:50 -0700 (PDT)
+        Tue, 20 Sep 2022 14:19:31 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@oracle.com header.s=corp-2022-7-12 header.b=xJwoXAYf;
+       dkim=pass header.i=@oracle.com header.s=corp-2022-7-12 header.b=EOP6T7C1;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=oracle.com
-Received: from localhost ([::1]:42416 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:48848 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1oakdl-0006x1-20
-	for alex.bennee@linaro.org; Tue, 20 Sep 2022 17:18:50 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44572)
+	id 1oakeQ-0008GK-Gf
+	for alex.bennee@linaro.org; Tue, 20 Sep 2022 17:19:30 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38908)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <miguel.luis@oracle.com>)
- id 1oag1X-0004gJ-Rs; Tue, 20 Sep 2022 12:23:04 -0400
-Received: from mx0b-00069f02.pphosted.com ([205.220.177.32]:21290)
+ id 1oag1o-0004kL-Gm; Tue, 20 Sep 2022 12:23:25 -0400
+Received: from mx0a-00069f02.pphosted.com ([205.220.165.32]:43558)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <miguel.luis@oracle.com>)
- id 1oag1T-0000EC-KH; Tue, 20 Sep 2022 12:23:03 -0400
-Received: from pps.filterd (m0246631.ppops.net [127.0.0.1])
- by mx0b-00069f02.pphosted.com (8.17.1.5/8.17.1.5) with ESMTP id 28KGJNh1018151;
- Tue, 20 Sep 2022 16:22:54 GMT
+ id 1oag1m-0000Le-3Y; Tue, 20 Sep 2022 12:23:19 -0400
+Received: from pps.filterd (m0246627.ppops.net [127.0.0.1])
+ by mx0b-00069f02.pphosted.com (8.17.1.5/8.17.1.5) with ESMTP id 28KGJB1C028574;
+ Tue, 20 Sep 2022 16:23:13 GMT
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
  h=from : to : cc :
- subject : date : message-id : reply-to : mime-version :
- content-transfer-encoding; s=corp-2022-7-12;
- bh=sKCdbPqoVW2GG4TICbgESjGduy1RL3n9W6alo80hVWc=;
- b=xJwoXAYfGWUIVX/8iGfoQPlYpWLacbe0ZCPANakkvwPFI3jfX0lWslGnqNImtXJJOD15
- viKABbR3li5dSQY2svOdvI258/FkziYiudyKfXpGr3YUsSVlfEk3iFhbv3QYp+t7dtmw
- ZUB2LjJIv6zXe3RLKN0l4u+DFpWQXeXhmbZBcnJAWKSw1HHN7Wk7QlJ2d/MWPbADjV5f
- D3lFK6YHpaVZqLIz5s7KeVvZDQsKrxr48pxg695gBmI/ZXKReSLr5OPYM6QV5BbLtV/E
- mCZZ3utEdGX1WGbLoMxadZS1D8EBeedFina8BR5auDDyVYyZm0o3CHwsvugHrjHagZ9A GA== 
+ subject : date : message-id : in-reply-to : references : reply-to :
+ mime-version : content-transfer-encoding; s=corp-2022-7-12;
+ bh=yt9CMl/7J8ldFIktUc92eWuVYdzToZFecJEcs4JXWRU=;
+ b=EOP6T7C19pYoBIOxy1mHtaucd9hFUZPsQ1L2j3joeSY6LIDN0h6DRwZ6dj8kP/ABOq3Z
+ zsD7vJKc69H+HM5gGNK4DVvULM3Tttn6ClH6107QGFk7gmmHxHQizv0LsvNQ8v4FqXst
+ kPX81SvnmFwOFx/CdzSXJzihjpf+OHOFP23uega9r7Fey5Xyoskxl/lRZAKgSBVEBRYn
+ N5MYI/OpyLORnSyeaZRPu4H+0jw5958X3kZW4TJkiFsAN3NFF+OdxUeKhdsWSycIahwQ
+ wdTuEPvMW3Tq6tAXmhYUKGMDlRmTtgUfdsERvEjecyHv2+UvgbTJguDp6kPPnoUBrOY2 2w== 
 Received: from iadpaimrmta02.imrmtpd1.prodappiadaev1.oraclevcn.com
  (iadpaimrmta02.appoci.oracle.com [147.154.18.20])
- by mx0b-00069f02.pphosted.com (PPS) with ESMTPS id 3jn69kqjd9-1
+ by mx0b-00069f02.pphosted.com (PPS) with ESMTPS id 3jn68rfg9t-1
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Tue, 20 Sep 2022 16:22:54 +0000
+ Tue, 20 Sep 2022 16:23:12 +0000
 Received: from pps.filterd
  (iadpaimrmta02.imrmtpd1.prodappiadaev1.oraclevcn.com [127.0.0.1])
  by iadpaimrmta02.imrmtpd1.prodappiadaev1.oraclevcn.com (8.17.1.5/8.17.1.5)
- with ESMTP id 28KGBffB027918; Tue, 20 Sep 2022 16:22:53 GMT
+ with ESMTP id 28KFgIx5027899; Tue, 20 Sep 2022 16:23:11 GMT
 Received: from pps.reinject (localhost [127.0.0.1])
  by iadpaimrmta02.imrmtpd1.prodappiadaev1.oraclevcn.com (PPS) with ESMTPS id
- 3jp3cng7nt-1
+ 3jp3cng80j-1
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Tue, 20 Sep 2022 16:22:53 +0000
+ Tue, 20 Sep 2022 16:23:11 +0000
 Received: from iadpaimrmta02.imrmtpd1.prodappiadaev1.oraclevcn.com
  (iadpaimrmta02.imrmtpd1.prodappiadaev1.oraclevcn.com [127.0.0.1])
- by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 28KGMqUt016251;
- Tue, 20 Sep 2022 16:22:52 GMT
+ by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 28KGMqUx016251;
+ Tue, 20 Sep 2022 16:23:10 GMT
 Received: from mlluis-mac.uk.oracle.com (dhcp-10-175-195-182.vpn.oracle.com
  [10.175.195.182])
  by iadpaimrmta02.imrmtpd1.prodappiadaev1.oraclevcn.com (PPS) with ESMTP id
- 3jp3cng7mf-1; Tue, 20 Sep 2022 16:22:52 +0000
+ 3jp3cng7mf-3; Tue, 20 Sep 2022 16:23:10 +0000
 From: Miguel Luis <miguel.luis@oracle.com>
 To: qemu-devel@nongnu.org, qemu-arm@nongnu.org
 Cc: mst@redhat.com, imammedo@redhat.com, ani@anisinha.ca,
  shannon.zhaosl@gmail.com, peter.maydell@linaro.org,
  Miguel Luis <miguel.luis@oracle.com>
-Subject: [PATCH 0/3] fix for two ACPI GTDT physical addresses
-Date: Tue, 20 Sep 2022 16:21:34 +0000
-Message-Id: <20220920162137.75239-1-miguel.luis@oracle.com>
+Subject: [PATCH 2/3] acpi: arm/virt: build_gtdt: fix invalid 64-bit physical
+ addresses
+Date: Tue, 20 Sep 2022 16:21:36 +0000
+Message-Id: <20220920162137.75239-3-miguel.luis@oracle.com>
 X-Mailer: git-send-email 2.36.0
+In-Reply-To: <20220920162137.75239-1-miguel.luis@oracle.com>
+References: <20220920162137.75239-1-miguel.luis@oracle.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.205,Aquarius:18.0.895,Hydra:6.0.528,FMLib:17.11.122.1
  definitions=2022-09-20_06,2022-09-20_02,2022-06-22_01
 X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=0
- mlxlogscore=754
+ mlxlogscore=844
  spamscore=0 adultscore=0 mlxscore=0 malwarescore=0 bulkscore=0
  phishscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2209130000 definitions=main-2209200096
-X-Proofpoint-ORIG-GUID: rJJTH8BMPTFeWu_JWqsO7q9g7dLVXDp8
-X-Proofpoint-GUID: rJJTH8BMPTFeWu_JWqsO7q9g7dLVXDp8
-Received-SPF: pass client-ip=205.220.177.32;
- envelope-from=miguel.luis@oracle.com; helo=mx0b-00069f02.pphosted.com
+ engine=8.12.0-2209130000 definitions=main-2209200097
+X-Proofpoint-GUID: LRDOa_EdeChg5UI9K9Ysc56S8e4_xK8G
+X-Proofpoint-ORIG-GUID: LRDOa_EdeChg5UI9K9Ysc56S8e4_xK8G
+Received-SPF: pass client-ip=205.220.165.32;
+ envelope-from=miguel.luis@oracle.com; helo=mx0a-00069f02.pphosted.com
 X-Spam_score_int: -27
 X-Spam_score: -2.8
 X-Spam_bar: --
@@ -131,26 +134,42 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
 Reply-To: miguel.luis@oracle.com
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: nAdagUbYcYbt
+X-TUID: qIOXrleohH7n
 
-The ACPI GTDT table contains two invalid 64-bit physical addresses according to
-the ACPI spec. 6.5 [1]. Those are the Counter Control Base physical address and
-the Counter Read Base physical address. Those fields of the GTDT table should be
+Per the ACPI 6.5 specification, on the GTDT Table Structure, the Counter Control
+Block Address and Counter Read Block Address fields of the GTDT table should be
 set to 0xFFFFFFFFFFFFFFFF if not provided, rather than 0x0.
 
-[1]: https://uefi.org/specs/ACPI/6.5/05_ACPI_Software_Programming_Model.html#gtdt-table-structure
+Fixes: 41041e57085 ("acpi: arm/virt: build_gtdt: use acpi_table_begin()/acpi_table_end() instead of build_header()")
 
-Miguel Luis (3):
-  tests/acpi: virt: allow acpi GTDT changes
-  acpi: arm/virt: build_gtdt: fix invalid 64-bit physical addresses
-  tests/acpi: virt: update ACPI GTDT binaries
+Signed-off-by: Miguel Luis <miguel.luis@oracle.com>
+---
+ hw/arm/virt-acpi-build.c | 5 ++---
+ 1 file changed, 2 insertions(+), 3 deletions(-)
 
- hw/arm/virt-acpi-build.c          |   5 ++---
- tests/data/acpi/virt/GTDT         | Bin 96 -> 96 bytes
- tests/data/acpi/virt/GTDT.memhp   | Bin 96 -> 96 bytes
- tests/data/acpi/virt/GTDT.numamem | Bin 96 -> 96 bytes
- 4 files changed, 2 insertions(+), 3 deletions(-)
-
+diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+index 9b3aee01bf..13c6e3e468 100644
+--- a/hw/arm/virt-acpi-build.c
++++ b/hw/arm/virt-acpi-build.c
+@@ -592,8 +592,7 @@ build_gtdt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+     acpi_table_begin(&table, table_data);
+ 
+     /* CntControlBase Physical Address */
+-    /* FIXME: invalid value, should be 0xFFFFFFFFFFFFFFFF if not impl. ? */
+-    build_append_int_noprefix(table_data, 0, 8);
++    build_append_int_noprefix(table_data, 0xFFFFFFFFFFFFFFFF, 8);
+     build_append_int_noprefix(table_data, 0, 4); /* Reserved */
+     /*
+      * FIXME: clarify comment:
+@@ -618,7 +617,7 @@ build_gtdt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+     /* Non-Secure EL2 timer Flags */
+     build_append_int_noprefix(table_data, irqflags, 4);
+     /* CntReadBase Physical address */
+-    build_append_int_noprefix(table_data, 0, 8);
++    build_append_int_noprefix(table_data, 0xFFFFFFFFFFFFFFFF, 8);
+     /* Platform Timer Count */
+     build_append_int_noprefix(table_data, 0, 4);
+     /* Platform Timer Offset */
 -- 
 2.36.0
 

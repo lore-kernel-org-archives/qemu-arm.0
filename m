@@ -1,179 +1,319 @@
-Received: by 2002:a17:906:b088:0:0:0:0 with SMTP id x8csp1601329ejy;
-        Tue, 20 Sep 2022 00:07:51 -0700 (PDT)
-X-Google-Smtp-Source: AMsMyM6B9rkm9/rq5AK9HqLf3jBAoT5dvhjyuGbzhqJyF+OuwGVp6wHEySOE+hjZIbokE/SNPM7E
-X-Received: by 2002:a05:622a:18a3:b0:35b:af14:401e with SMTP id v35-20020a05622a18a300b0035baf14401emr17686579qtc.200.1663657671423;
-        Tue, 20 Sep 2022 00:07:51 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1663657671; cv=none;
+Received: by 2002:a17:906:b088:0:0:0:0 with SMTP id x8csp1643369ejy;
+        Tue, 20 Sep 2022 01:51:46 -0700 (PDT)
+X-Google-Smtp-Source: AMsMyM7PeoJKhcHd1yRb9d/UuyLJDu8/x/wT1oQleMYBBekhkcX9AkJRjn5uEsd3PH7aJFIWrO2E
+X-Received: by 2002:a81:67c2:0:b0:349:ee79:1ae2 with SMTP id b185-20020a8167c2000000b00349ee791ae2mr18896362ywc.164.1663663905969;
+        Tue, 20 Sep 2022 01:51:45 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1663663905; cv=none;
         d=google.com; s=arc-20160816;
-        b=xfnhvc6SIM2AAha1tGLqUNpcoAao1WW7cRTJwMNS7JZMbWhc1WXPY5QUltgoOO5S3W
-         WLLM6Q1r71TTY4FRG1faVMaPZvM/DmMMipWadUtebpQVRNC2AezR8Ktl23dqkDzey2Am
-         VDUW8E+t/gwaboST939KrPPgO7SP3qeTqi7SeSlx/k1Af5ynf/T2EB8UyXC3bVB+E+d9
-         rA11pDsp3mtcDT7nMzzGO4csfwEN5uqxjPBCSPTcGzIOWqx2cciyaqG0hTT+F+Dti3Al
-         XeR3zSOZK7mWCZ13BdhNECwBOC8EIUsrPy/4OdGE+vcCVKmndVmVQy4AtVrqRmR0bPPU
-         lJSQ==
+        b=LdaTbWtp0ae1t46Fgw/W9Nwkmzknaqed+bufP7EpPWyWBIPlVpeXsRq+R075h/qlr+
+         fwtvV7bH7imNL7vmS+krugP1GZtL8jJmg+h1IFa/VpFPOYa1nfB3q3DLBNaTln8hDqLs
+         5OAE7Gi+rl+ZtxyE+tWaIFYHFdmusxnPAc/tEtAlf4A9bulLbCAlF6Xt9h+2JQb6obxJ
+         6jxmgaXCfpd5sUZjn0wfgb+HhbH1MaqD74f7I4Tq4rdcdsU3lpEHEVpecsDpMbMwIMpE
+         wIpn/Y2+BSKLtrfQOHvnl8ne85bYed9TlfRBF41dmmxwsguEiqwuqM12A3j/vBHdOxjP
+         ddKw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:cc:to:content-language:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=SGwX909Gb+syIQD2vf4rn9A/9C8ljwxBynEmiGkdZe0=;
-        b=SPZE3viKPQUx6kyBomPp6NdUK6fKvD/ENveqZE1iOV/pDRZjrBbvW01ZqG6sRy0/l1
-         Ir6TlgplZbkcm8NrVfONkqkNGywXaY7Ssu3Ts6am0GV+6zcmgy/CB+y+X9a0jNSP+GL0
-         v9Dv20A5UJbTorFtdBbbhtE2WlUTI7pi8MMW4b54/4h7Y7edkp8rfCJ1VRnlVn5vT1oW
-         EZeY1po/KUU290ynvTabOvN2n1wMP6xVICGWHpPA1hIW9PxB/pTOU+fR8KxPm1L9rezi
-         WkeWt9veQyhjS2qp2P/TUWrtdP7YwewF1BAmA+vGEPYR1Yk7bpcipjX9ENNeQaLxPV6o
-         6vsQ==
+        h=mime-version:references:message-id:in-reply-to:subject:cc:to:from
+         :date:sender:precedence:errors-to:list-subscribe:list-help:list-post
+         :list-unsubscribe:list-id;
+        bh=RDM5vgKUDyK4FTTTq9jev6alK+Ab77LbokE/DyNx6tk=;
+        b=KVx5C1Y8Q3VftFWtMYAUQgyl9D0PVI7Yh0nBNSXSH20gxsJUERbSObGvz8mL4q9U9y
+         g4143AwLfgh08/cgibnfs5h9nHBapoKSNalifFL5jenW3nUdbYG+YYFTzsFwjXLgqWp/
+         bEWNkb/2jKGc8e1D/cNAmYwJJpautFnPDYLgfKMFI0s7oqsLe+9ny+bj9kh5vR5cJyqK
+         4jZQA8J2FPW9olAS+CkNoGdD+Zru9oh5ZhCIHE5mPQEROqQAIxYKd+9DYyeNY4ncQdaA
+         Ikg5kfGhASn3dvcis29++rUlOBe3Hq0aRO2vvpRrdYD/5EkAgFCQa5Ct4cjg6GCRt8+c
+         aKdA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=LPUsmY4+;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id i126-20020a375484000000b006bae5b577cbsi318156qkb.259.2022.09.20.00.07.51
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 20 Sep 2022 00:07:51 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       spf=pass (google.com: domain of xen-devel-bounces@lists.xenproject.org designates 192.237.175.120 as permitted sender) smtp.mailfrom=xen-devel-bounces@lists.xenproject.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=eik.bme.hu
+Return-Path: <xen-devel-bounces@lists.xenproject.org>
+Received: from lists.xenproject.org (lists.xenproject.org. [192.237.175.120])
+        by mx.google.com with ESMTPS id d4-20020a811d04000000b003417aecf747si533383ywd.187.2022.09.20.01.51.45
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 20 Sep 2022 01:51:45 -0700 (PDT)
+Received-SPF: pass (google.com: domain of xen-devel-bounces@lists.xenproject.org designates 192.237.175.120 as permitted sender) client-ip=192.237.175.120;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=LPUsmY4+;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:41190 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1oaXME-0003K2-35
-	for alex.bennee@linaro.org; Tue, 20 Sep 2022 03:07:50 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:56764)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1oaXF9-0001Hz-2e
- for qemu-devel@nongnu.org; Tue, 20 Sep 2022 03:00:31 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:42236)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1oaXF6-0003NX-5g
- for qemu-devel@nongnu.org; Tue, 20 Sep 2022 03:00:29 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1663657226;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=SGwX909Gb+syIQD2vf4rn9A/9C8ljwxBynEmiGkdZe0=;
- b=LPUsmY4+K8ddr9Ktqr4Gqmj6kg8fLFEfxbzuWMcgBwVnQLb/DIlNYMgezyK9ZnQTaBhRCD
- x4Av8Z+MQiQR2PXxhh+EWXofvjaoTP00/L3SQLPbny385gyaykE2HgALUR7Sh47dvdMpkI
- cz6/AwPdlLxaBE+3wK9j1AotLjX049o=
-Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
- [209.85.221.71]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_128_GCM_SHA256) id
- us-mta-407-s2SnLZOONMKQg3YEq3TYnw-1; Tue, 20 Sep 2022 03:00:24 -0400
-X-MC-Unique: s2SnLZOONMKQg3YEq3TYnw-1
-Received: by mail-wr1-f71.google.com with SMTP id
- d30-20020adfa41e000000b00228c0e80c49so746732wra.21
- for <qemu-devel@nongnu.org>; Tue, 20 Sep 2022 00:00:23 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date;
- bh=SGwX909Gb+syIQD2vf4rn9A/9C8ljwxBynEmiGkdZe0=;
- b=ffhrjvx4GcJipKzFI0UzxtUguFZ/mcKcmxlGbtkylYhMNv5eXhyRAo25zPLWnZ+DGO
- sHdX45bsJolU0kLL4/jV5JEIV+YBU8Yw3v6OyJiHVtUD8no2cEfDdsKDE/JMWxTj5ztM
- gms7Rhy0Oi7hIMMqFrG+syqsRt0S5apAY2ZhvvqKEL88nnh9xJussydA80yNnVOcqlQV
- bBUVk4JSCOMAs4RsJdi4PVwFbaPzLtrBuSo0EXowc4uQMeeGMHzoE+eSOwZDIdd2YHH+
- u6ROjmbogn0ZMym/LsRkqDBBAG5PixogbhXXTwrgpdl+uLNp5l1RG8PGbgcZfZVQ/qso
- Z10Q==
-X-Gm-Message-State: ACrzQf2qr41q3iarmUNSv6gaK3c9IKnLlLp3sHtMExm9C/nsWHFf7FwC
- rAHMp6O9ztqz6JsrHHgIm/GOVJ3CH7DNlFwK7khm194seg6b2gDhKS5tJu5BOA1A+tjKR8fCPP8
- c8T1TDKXNhCY0E9A=
-X-Received: by 2002:a05:600c:3595:b0:3b4:8378:98d2 with SMTP id
- p21-20020a05600c359500b003b4837898d2mr1260535wmq.64.1663657223042; 
- Tue, 20 Sep 2022 00:00:23 -0700 (PDT)
-X-Received: by 2002:a05:600c:3595:b0:3b4:8378:98d2 with SMTP id
- p21-20020a05600c359500b003b4837898d2mr1260511wmq.64.1663657222846; 
- Tue, 20 Sep 2022 00:00:22 -0700 (PDT)
-Received: from [192.168.0.5] (ip-109-43-177-8.web.vodafone.de. [109.43.177.8])
- by smtp.gmail.com with ESMTPSA id
- o17-20020a05600c511100b003b4935f04a4sm1581955wms.5.2022.09.20.00.00.21
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 20 Sep 2022 00:00:22 -0700 (PDT)
-Message-ID: <eccfd9bd-2900-f437-778c-74a8052fc045@redhat.com>
-Date: Tue, 20 Sep 2022 09:00:20 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.13.0
-Subject: Re: [PATCH] tests/qtest: npcm7xx-emc-test: Skip checking MAC
-Content-Language: en-US
-To: Patrick Venture <venture@google.com>
-Cc: Laurent Vivier <lvivier@redhat.com>,
- Havard Skinnemoen <hskinnemoen@google.com>, CS20 KFTing
- <kfting@nuvoton.com>, qemu-arm <qemu-arm@nongnu.org>,
- QEMU Developers <qemu-devel@nongnu.org>, Hao Wu <wuhaotsh@google.com>
-References: <20220906163138.2831353-1-venture@google.com>
- <98b23697-00ec-2952-31c1-258419bd5440@redhat.com>
- <CAO=notzNRHaJvqnBx34qN0ovvwiwXNPRt73VnWqxyYhvnZMXnA@mail.gmail.com>
-From: Thomas Huth <thuth@redhat.com>
-In-Reply-To: <CAO=notzNRHaJvqnBx34qN0ovvwiwXNPRt73VnWqxyYhvnZMXnA@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=thuth@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -37
-X-Spam_score: -3.8
-X-Spam_bar: ---
-X-Spam_report: (-3.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.952, RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.29
+       spf=pass (google.com: domain of xen-devel-bounces@lists.xenproject.org designates 192.237.175.120 as permitted sender) smtp.mailfrom=xen-devel-bounces@lists.xenproject.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=eik.bme.hu
+Received: from list by lists.xenproject.org with outflank-mailman.409226.652182 (Exim 4.92)
+	(envelope-from <xen-devel-bounces@lists.xenproject.org>)
+	id 1oaYxD-0008KT-8U; Tue, 20 Sep 2022 08:50:07 +0000
+X-Outflank-Mailman: Message body and most headers restored to incoming version
+Received: by outflank-mailman (output) from mailman id 409226.652182; Tue, 20 Sep 2022 08:50:07 +0000
+Received: from localhost ([127.0.0.1] helo=lists.xenproject.org)
+	by lists.xenproject.org with esmtp (Exim 4.92)
+	(envelope-from <xen-devel-bounces@lists.xenproject.org>)
+	id 1oaYxD-0008KM-4r; Tue, 20 Sep 2022 08:50:07 +0000
+Received: by outflank-mailman (input) for mailman id 409226;
+ Tue, 20 Sep 2022 08:50:06 +0000
+Received: from se1-gles-sth1-in.inumbo.com ([159.253.27.254]
+ helo=se1-gles-sth1.inumbo.com)
+ by lists.xenproject.org with esmtp (Exim 4.92) (envelope-from
+ <SRS0=uw30=ZX=eik.bme.hu=balaton@srs-se1.protection.inumbo.net>)
+ id 1oaYxC-0008BU-DI
+ for xen-devel@lists.xenproject.org; Tue, 20 Sep 2022 08:50:06 +0000
+Received: from zero.eik.bme.hu (zero.eik.bme.hu [152.66.115.2])
+ by se1-gles-sth1.inumbo.com (Halon) with ESMTPS
+ id 377ef738-38c1-11ed-9647-05401a9f4f97;
+ Tue, 20 Sep 2022 10:50:04 +0200 (CEST)
+Received: from zero.eik.bme.hu (blah.eik.bme.hu [152.66.115.182])
+ by localhost (Postfix) with SMTP id 39177746335;
+ Tue, 20 Sep 2022 10:50:02 +0200 (CEST)
+Received: by zero.eik.bme.hu (Postfix, from userid 432)
+ id E0C2A74632C; Tue, 20 Sep 2022 10:50:01 +0200 (CEST)
+Received: from localhost (localhost [127.0.0.1])
+ by zero.eik.bme.hu (Postfix) with ESMTP id DBD6474632B;
+ Tue, 20 Sep 2022 10:50:01 +0200 (CEST)
+X-BeenThere: xen-devel@lists.xenproject.org
+List-Id: Xen developer discussion <xen-devel.lists.xenproject.org>
+List-Unsubscribe: <https://lists.xenproject.org/mailman/options/xen-devel>,
+ <mailto:xen-devel-request@lists.xenproject.org?subject=unsubscribe>
+List-Post: <mailto:xen-devel@lists.xenproject.org>
+List-Help: <mailto:xen-devel-request@lists.xenproject.org?subject=help>
+List-Subscribe: <https://lists.xenproject.org/mailman/listinfo/xen-devel>,
+ <mailto:xen-devel-request@lists.xenproject.org?subject=subscribe>
+Errors-To: xen-devel-bounces@lists.xenproject.org
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: z1CxxSCA2zD4
+Sender: "Xen-devel" <xen-devel-bounces@lists.xenproject.org>
+X-Inumbo-ID: 377ef738-38c1-11ed-9647-05401a9f4f97
+Date: Tue, 20 Sep 2022 10:50:01 +0200 (CEST)
+From: BALATON Zoltan <balaton@eik.bme.hu>
+To: =?ISO-8859-15?Q?Philippe_Mathieu-Daud=E9?= <f4bug@amsat.org>
+cc: Bernhard Beschow <shentey@gmail.com>, qemu-devel@nongnu.org, 
+    "Michael S. Tsirkin" <mst@redhat.com>, Magnus Damm <magnus.damm@gmail.com>, 
+    Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>, 
+    Bandan Das <bsd@redhat.com>, Matthew Rosato <mjrosato@linux.ibm.com>, 
+    Daniel Henrique Barboza <danielhb413@gmail.com>, 
+    Sergio Lopez <slp@redhat.com>, Alexey Kardashevskiy <aik@ozlabs.ru>, 
+    Xiaojuan Yang <yangxiaojuan@loongson.cn>, 
+    Cameron Esfahani <dirty@apple.com>, Michael Rolnik <mrolnik@gmail.com>, 
+    Song Gao <gaosong@loongson.cn>, Jagannathan Raman <jag.raman@oracle.com>, 
+    Greg Kurz <groug@kaod.org>, Kamil Rytarowski <kamil@netbsd.org>, 
+    Peter Xu <peterx@redhat.com>, Joel Stanley <joel@jms.id.au>, 
+    Alistair Francis <Alistair.Francis@wdc.com>, 
+    "Dr. David Alan Gilbert" <dgilbert@redhat.com>, 
+    Paolo Bonzini <pbonzini@redhat.com>, haxm-team@intel.com, 
+    Roman Bolshakov <r.bolshakov@yadro.com>, 
+    Markus Armbruster <armbru@redhat.com>, Eric Auger <eric.auger@redhat.com>, 
+    David Gibson <david@gibson.dropbear.id.au>, 
+    =?ISO-8859-15?Q?Daniel_P=2E_Berrang=E9?= <berrange@redhat.com>, 
+    Christian Borntraeger <borntraeger@linux.ibm.com>, 
+    =?ISO-8859-15?Q?C=E9dric_Le_Goater?= <clg@kaod.org>, 
+    Stefan Hajnoczi <stefanha@redhat.com>, qemu-block@nongnu.org, 
+    Eduardo Habkost <eduardo@habkost.net>, 
+    =?ISO-8859-15?Q?Herv=E9_Poussineau?= <hpoussin@reactos.org>, 
+    qemu-ppc@nongnu.org, Cornelia Huck <cohuck@redhat.com>, 
+    Palmer Dabbelt <palmer@dabbelt.com>, Helge Deller <deller@gmx.de>, 
+    Stefano Stabellini <sstabellini@kernel.org>, qemu-riscv@nongnu.org, 
+    Stafford Horne <shorne@gmail.com>, Paul Durrant <paul@xen.org>, 
+    Havard Skinnemoen <hskinnemoen@google.com>, 
+    Elena Ufimtseva <elena.ufimtseva@oracle.com>, 
+    Alexander Graf <agraf@csgraf.de>, Thomas Huth <thuth@redhat.com>, 
+    Alex Williamson <alex.williamson@redhat.com>, 
+    Wenchao Wang <wenchao.wang@intel.com>, 
+    Tony Krowiak <akrowiak@linux.ibm.com>, 
+    Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, qemu-s390x@nongnu.org, 
+    =?ISO-8859-15?Q?Marc-Andr=E9_Lureau?= <marcandre.lureau@redhat.com>, 
+    Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, 
+    Eric Farman <farman@linux.ibm.com>, Reinoud Zandijk <reinoud@netbsd.org>, 
+    Alexander Bulekov <alxndr@bu.edu>, Yanan Wang <wangyanan55@huawei.com>, 
+    "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, 
+    Gerd Hoffmann <kraxel@redhat.com>, Tyrone Ting <kfting@nuvoton.com>, 
+    xen-devel@lists.xenproject.org, 
+    Yoshinori Sato <ysato@users.sourceforge.jp>, John Snow <jsnow@redhat.com>, 
+    Richard Henderson <richard.henderson@linaro.org>, 
+    Darren Kenny <darren.kenny@oracle.com>, kvm@vger.kernel.org, 
+    Qiuhao Li <Qiuhao.Li@outlook.com>, 
+    John G Johnson <john.g.johnson@oracle.com>, 
+    Bin Meng <bin.meng@windriver.com>, 
+    Sunil Muthuswamy <sunilmut@microsoft.com>, 
+    Max Filippov <jcmvbkbc@gmail.com>, qemu-arm@nongnu.org, 
+    Marcelo Tosatti <mtosatti@redhat.com>, 
+    Peter Maydell <peter.maydell@linaro.org>, 
+    Anthony Perard <anthony.perard@citrix.com>, 
+    Andrew Jeffery <andrew@aj.id.au>, Artyom Tarasenko <atar4qemu@gmail.com>, 
+    Halil Pasic <pasic@linux.ibm.com>, 
+    "Maciej S. Szmigiero" <maciej.szmigiero@oracle.com>, 
+    Jason Wang <jasowang@redhat.com>, David Hildenbrand <david@redhat.com>, 
+    Laurent Vivier <laurent@vivier.eu>, 
+    Alistair Francis <alistair@alistair23.me>, 
+    Jason Herne <jjherne@linux.ibm.com>
+Subject: Re: [PATCH 8/9] softmmu/physmem: Let SysBusState absorb memory region
+ and address space singletons
+In-Reply-To: <be558812-199c-0909-d2e1-d2dd6be54dec@amsat.org>
+Message-ID: <fcb592e-a346-2ae-47e9-8af4b9f5ba3@eik.bme.hu>
+References: <20220919231720.163121-1-shentey@gmail.com> <20220919231720.163121-9-shentey@gmail.com> <be558812-199c-0909-d2e1-d2dd6be54dec@amsat.org>
+MIME-Version: 1.0
+Content-Type: multipart/mixed; boundary="3866299591-1142243070-1663663801=:43449"
+X-Spam-Checker-Version: Sophos PMX: 6.4.8.2820816, Antispam-Engine: 2.7.2.2107409, Antispam-Data: 2022.9.20.84220, AntiVirus-Engine: 5.93.0, AntiVirus-Data: 2022.9.15.5930000
+X-Spam-Flag: NO
+X-Spam-Probability: 9%
+X-Spam-Level: 
+X-Spam-Status: No, score=9% required=50%
+X-TUID: HVUOhIENVMPr
 
-On 20/09/2022 00.37, Patrick Venture wrote:
-> 
-> 
-> On Mon, Sep 19, 2022 at 5:44 AM Thomas Huth <thuth@redhat.com 
-> <mailto:thuth@redhat.com>> wrote:
-> 
->     On 06/09/2022 18.31, Patrick Venture wrote:
->      > The register tests walks all the registers to verify they are initially
->      > 0 when appropriate.  However, if the MAC address is set in the register
->      >    space, this should not be checked against 0.
->      >
->      > Reviewed-by: Hao Wu <wuhaotsh@google.com <mailto:wuhaotsh@google.com>>
->      > Change-Id: I02426e39bdab33ceedd42c49d233e8680d4ec058
-> 
->     What's that change-id good for?
-> 
-> 
-> Oops, sorry about that.  I can send out a v2 without it, or during 
-> application someone can nicely trim it? :)
+  This message is in MIME format.  The first part should be readable text,
+  while the remaining parts are likely unreadable without MIME-aware tools.
 
-I can take the patch through my qtest branch - I'll drop the line there.
-
->     Basically ack, but one question: Where should that non-zero MAC address
->     come
->     from / when did you hit a problem here? If QEMU is started without any mac
->     settings at all (like it is done here), the register never contains a
->     non-zero value, does it?
-> 
-> 
-> So, there's a bug in the emc device presently where that value isn't set 
-> when it should be.  I have that bug fixed, but for whatever reason, probably 
-> not enough caffeine, I didn't bundle the two patches together.
-
-OK, makes sense now, thanks for the explanation!
-
-  Thomas
+--3866299591-1142243070-1663663801=:43449
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8BIT
 
 
+
+On Tue, 20 Sep 2022, Philippe Mathieu-Daudé via wrote:
+
+> On 20/9/22 01:17, Bernhard Beschow wrote:
+>> These singletons are actually properties of the system bus but so far it
+>> hasn't been modelled that way. Fix this to make this relationship very
+>> obvious.
+>> 
+>> The idea of the patch is to restrain futher proliferation of the use of
+>> get_system_memory() and get_system_io() which are "temprary interfaces"
+>
+> "further", "temporary"
+>
+>> "until a proper bus interface is available". This should now be the
+>> case.
+>> 
+>> Note that the new attributes are values rather than a pointers. This
+>> trades pointer dereferences for pointer arithmetic. The idea is to
+>> reduce cache misses - a rule of thumb says that every pointer
+>> dereference causes a cache miss while arithmetic is basically free.
+>> 
+>> Signed-off-by: Bernhard Beschow <shentey@gmail.com>
+>> ---
+>>   include/exec/address-spaces.h | 19 ++++++++++++---
+>>   include/hw/sysbus.h           |  6 +++++
+>>   softmmu/physmem.c             | 46 ++++++++++++++++++-----------------
+>>   3 files changed, 45 insertions(+), 26 deletions(-)
+>> 
+>> diff --git a/include/exec/address-spaces.h b/include/exec/address-spaces.h
+>> index d5c8cbd718..b31bd8dcf0 100644
+>> --- a/include/exec/address-spaces.h
+>> +++ b/include/exec/address-spaces.h
+>> @@ -23,17 +23,28 @@
+>>     #ifndef CONFIG_USER_ONLY
+>>   -/* Get the root memory region.  This interface should only be used 
+>> temporarily
+>> - * until a proper bus interface is available.
+>> +/**
+>> + * Get the root memory region.  This is a legacy function, provided for
+>> + * compatibility. Prefer using SysBusState::system_memory directly.
+>>    */
+>>   MemoryRegion *get_system_memory(void);
+>
+>> diff --git a/include/hw/sysbus.h b/include/hw/sysbus.h
+>> index 5bb3b88501..516e9091dc 100644
+>> --- a/include/hw/sysbus.h
+>> +++ b/include/hw/sysbus.h
+>> @@ -17,6 +17,12 @@ struct SysBusState {
+>>       /*< private >*/
+>>       BusState parent_obj;
+>>       /*< public >*/
+>> +
+>> +    MemoryRegion system_memory;
+>> +    MemoryRegion system_io;
+>> +
+>> +    AddressSpace address_space_io;
+>> +    AddressSpace address_space_memory;
+>
+> Alternatively (renaming doc accordingly):
+>
+>       struct {
+>           MemoryRegion mr;
+>           AddressSpace as;
+>       } io, memory;
+
+Do we really need that? Isn't mr just the same as as.root so it would be 
+enough to store as only? Or is caching mr and not going through as to get 
+it saves time in accessing these? Now we'll go through SysBusState anyway 
+instead of accessing globals so is there a performance impact?
+
+Regards,
+BALATON Zoltan
+
+>>   };
+>>     #define TYPE_SYS_BUS_DEVICE "sys-bus-device"
+>> diff --git a/softmmu/physmem.c b/softmmu/physmem.c
+>> index 0ac920d446..07e9a9171c 100644
+>> --- a/softmmu/physmem.c
+>> +++ b/softmmu/physmem.c
+>> @@ -86,12 +86,6 @@
+>>    */
+>>   RAMList ram_list = { .blocks = QLIST_HEAD_INITIALIZER(ram_list.blocks) };
+>>   -static MemoryRegion *system_memory;
+>> -static MemoryRegion *system_io;
+>> -
+>> -static AddressSpace address_space_io;
+>> -static AddressSpace address_space_memory;
+>> -
+>>   static MemoryRegion io_mem_unassigned;
+>>     typedef struct PhysPageEntry PhysPageEntry;
+>> @@ -146,7 +140,7 @@ typedef struct subpage_t {
+>>   #define PHYS_SECTION_UNASSIGNED 0
+>>     static void io_mem_init(void);
+>> -static void memory_map_init(void);
+>> +static void memory_map_init(SysBusState *sysbus);
+>>   static void tcg_log_global_after_sync(MemoryListener *listener);
+>>   static void tcg_commit(MemoryListener *listener);
+>>   @@ -2667,37 +2661,45 @@ static void tcg_commit(MemoryListener *listener)
+>>       tlb_flush(cpuas->cpu);
+>>   }
+>>   -static void memory_map_init(void)
+>> +static void memory_map_init(SysBusState *sysbus)
+>>   {
+>
+> No need to pass a singleton by argument.
+>
+>       assert(current_machine);
+>
+> You can use get_system_memory() and get_system_io() in place :)
+>
+> LGTM otherwise, great!
+>
+>> -    system_memory = g_malloc(sizeof(*system_memory));
+>> +    MemoryRegion *system_memory = &sysbus->system_memory;
+>> +    MemoryRegion *system_io = &sysbus->system_io;
+>>         memory_region_init(system_memory, NULL, "system", UINT64_MAX);
+>> -    address_space_init(&address_space_memory, system_memory, "memory");
+>> +    address_space_init(&sysbus->address_space_memory, system_memory, 
+>> "memory");
+>>   -    system_io = g_malloc(sizeof(*system_io));
+>>       memory_region_init_io(system_io, NULL, &unassigned_io_ops, NULL, 
+>> "io",
+>>                             65536);
+>> -    address_space_init(&address_space_io, system_io, "I/O");
+>> +    address_space_init(&sysbus->address_space_io, system_io, "I/O");
+>>   }
+>>     MemoryRegion *get_system_memory(void)
+>>   {
+>> -    return system_memory;
+>> +    assert(current_machine);
+>> +
+>> +    return &current_machine->main_system_bus.system_memory;
+>>   }
+>>     MemoryRegion *get_system_io(void)
+>>   {
+>> -    return system_io;
+>> +    assert(current_machine);
+>> +
+>> +    return &current_machine->main_system_bus.system_io;
+>>   }
+>>     AddressSpace *get_address_space_memory(void)
+>>   {
+>> -    return &address_space_memory;
+>> +    assert(current_machine);
+>> +
+>> +    return &current_machine->main_system_bus.address_space_memory;
+>>   }
+>>     AddressSpace *get_address_space_io(void)
+>>   {
+>> -    return &address_space_io;
+>> +    assert(current_machine);
+>> +
+>> +    return &current_machine->main_system_bus.address_space_io;
+>>   }
+>
+>
+>
+--3866299591-1142243070-1663663801=:43449--

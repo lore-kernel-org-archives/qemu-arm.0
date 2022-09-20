@@ -1,105 +1,93 @@
-Received: by 2002:a17:906:b088:0:0:0:0 with SMTP id x8csp1837930ejy;
-        Tue, 20 Sep 2022 07:52:57 -0700 (PDT)
-X-Received: by 2002:a17:906:cc0e:b0:77c:d77:576d with SMTP id ml14-20020a170906cc0e00b0077c0d77576dmr17174905ejb.658.1663685576946;
-        Tue, 20 Sep 2022 07:52:56 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1663685576; cv=none;
+Received: by 2002:a17:906:b088:0:0:0:0 with SMTP id x8csp1854023ejy;
+        Tue, 20 Sep 2022 08:15:47 -0700 (PDT)
+X-Received: by 2002:a05:6402:d05:b0:425:b5c8:faeb with SMTP id eb5-20020a0564020d0500b00425b5c8faebmr20052406edb.273.1663686947137;
+        Tue, 20 Sep 2022 08:15:47 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1663686947; cv=none;
         d=google.com; s=arc-20160816;
-        b=EevRT3+vYSYXsyTA2Y5G04vK+xteMrAZQ7Kh76XqNypoRxd06MoLSP1VkGVhdA6odG
-         QVgNLhmwhfze2EBYnxCMiIbVnMd922KsOiEj9YEuIyXgAzZWHyh5V843Em/5JUI/cOmt
-         tBq2g6cUzlPW9Bm3aW/DEAcn4pVEs+3uwnNOfnKP69gkzwejun/DFw+D25+Ez1Obm9TK
-         WMh2yIO5Ebdhswq705n4N61kkyD4o/Q+TzWcrmzl6RkatGPR5QnKvfmLn+19JVirdSFY
-         UNHxCkrW3ea66kqf+wTFPNpARnbvHVeraNSVhA0QvJEnBgNtJ9pS90p9JxAwfFUWNhnS
-         dVTQ==
+        b=UyytKWJ77E18VoGHZIw4vcqOaE8rKarl2C1r3D1Fnh3UxaGKkCwgRTmCdS7KG7Aspa
+         99ADZsaK7ADTgfYlAFV1OqNuc8C17qZFbP2zezjZbH+//oPNMPWOsvxy+gSEnM7KYWYe
+         mLPHqcT7oaiu26gfg1u86XNyjN7E9ZI8E117t3+ppGik/d9w2rvOf17KWY0Ps3lo+o7S
+         hdOn33GJEgo48SIbgaKHFowz+hBnKq3GFbBOCPAaJ+Z9om1e+0NmJHEn6NfqkAnQI7HG
+         euivqXPhg3s1tKXP+FPvXODFLuvWQE5xeOpSnm0o+WzY51r9AXmaoUl7iJm1DIA2xO8y
+         3oAw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:dkim-signature;
-        bh=6k+UR6vpkzUD5ujSlALjelL/Gh07HL86g44Qa+1GFR8=;
-        b=Joe4FynkuiXi/XNgkwAK6TB94n2SUjQmgeyOF6k3OAP9pZvhhJNT+/EhPK6s2FpwN0
-         cUEui6Qi2LfxwG/D8CXGQVzC1h477sJNXu663WMcU6pynJmOECY7n+XL0ffr4+CHms3/
-         C/r26ZpNDeiHjb9u0Nt9YvEaOw8hex//nvFoyvn0M99v55snj7pijh0HujsvV/r4J8wN
-         cO4LOWTSCF/kT5Ue8XwenLGIWKikDtOhK9d7+NfWYOtRR2JIgC79ofTvm8Wi3M0TsUDs
-         G+gZ6kLqLsXKlErCQljWSkiRV89Dy8GYGW2JzCqwfxTcmKP4ODnd+phNCLXCbmNha7xj
-         DIQQ==
+        bh=KkaEiZ02EouUlGaMhxNtZcD46s5sk3AH0Nj2KAp+eNs=;
+        b=RFeYBzs2N9JN60DqaaJPYtDvedOZe4t/GVl0bI6WWuzDiq5atWpllZHD2W//aNQV/J
+         Y4swCeznUWSiZlghP8+TGxNLF7tBmSCgEpJ8m3qiFXXMLWTb/yN+Kg6qnqm03QmZ2quw
+         /aMDEOQGhhGVRwMxmv1TTJ2Q49wIl5x1CDvrKEHdJMzaQIwhb9ecXqIckktSDKWF5T+4
+         8XPIuAWvkhdyAfpMAfRZkmCi//w9lFyswzs1ySjWuKPbcn8wcI2VonKEdmVirTy+cnQH
+         2N/qW6CdQiCRB3QrPRz1JpwsSvT2FWb9M3nQ51AM3X7PGvjPUXDxau7gtaL6SotxaIaT
+         9w0A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Ti+xALDu;
+       dkim=pass header.i=@linaro.org header.s=google header.b=jqpZGJtm;
        spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <peter.maydell@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id j5-20020a508a85000000b00447a14226c1sor182655edj.61.2022.09.20.07.52.56
+        by mx.google.com with SMTPS id p15-20020a170906784f00b00781132aefc9sor906446ejm.94.2022.09.20.08.15.47
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Tue, 20 Sep 2022 07:52:56 -0700 (PDT)
+        Tue, 20 Sep 2022 08:15:47 -0700 (PDT)
 Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Ti+xALDu;
+       dkim=pass header.i=@linaro.org header.s=google header.b=jqpZGJtm;
        spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:from:to:cc:subject:date;
-        bh=6k+UR6vpkzUD5ujSlALjelL/Gh07HL86g44Qa+1GFR8=;
-        b=Ti+xALDulbbpFKnWzsjqyRsDzYGFwRuVR6yfDwvem/v2KFH6plhgUkdklcXzHGOVSX
-         3cw9GN4ptoC7ARLuSTeHfS1+WqIT/PnueeT5GxQ/xmrmiBMYZNrwQSQyCYuGxpIOs9p1
-         q6XP4Jhm7FSB7/SkThkdyk3cLUD+oMzr1x/q6H0y+GdhI6BM1mK2oi6KvPHr1MlEXpPZ
-         wfmFz18HT/BG6inNLqaFXqntOmq7hHzaV1Jp1GQxY9+OGA0A0Sp514UqN5D6v8JypNsP
-         xn7AuvRCgC7IKVfRY9m5v+XYe776mAXKwimve6kP40z+RYAF297KU7lOx9JG0ELA60np
-         VASA==
+        bh=KkaEiZ02EouUlGaMhxNtZcD46s5sk3AH0Nj2KAp+eNs=;
+        b=jqpZGJtmZcagf6mJvd3lSNasvS2kyNZRjPFptXqjgCYzx0Z6LCzxw6VYTEInaKfNcY
+         MFq4or75HbVT4PWgcfTtce6BDiCFmGIvZ+5nDfHuIPIVedee+oiVHR5v2K67ooKajWII
+         I/lX+RwS/CTXyJ/ycR0S930RdigteHlL4ArDvhAjcW/oeviXhAXvf2eDMpUU5dwVI3sz
+         lOHl122G07R9Lpoj2nc4E1iWeooqadPNnbBAIvCTpdAxfL42o6VYZK2o16W7xFHgA32z
+         cbn5MJTqkSgwdvyR9BPtuYWXYBmMSrX0bRmd3KJUJiniIfpM/KiA0Qw6YlV4HoQfQhxd
+         9CYQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
          :subject:date;
-        bh=6k+UR6vpkzUD5ujSlALjelL/Gh07HL86g44Qa+1GFR8=;
-        b=y6kat+TZRN6PAkMP404qzlX7k5NUBxFnOF1vqAJZjdyU5UT7ajg9TlyoHIEeGT2XYs
-         nWd8mN/yPT0oUrPAKS9CH/On66r6tI9EEdvCUlICtzJ8hjmVblXzWXJPqDpgTzqfJJ0c
-         MsbzKZQFbDF51FNg5TXDfpwVTQlfie5VHnz+jFP4/WDRrYlZ5CjsR8FFznioy5rDDTm1
-         I+aFhM2p/XIo9P1ngdBrQopxkR1l9yaqSvLq1bOygPRNc7iac1JcYRM5cAnXBHuFPd9n
-         z+8qmJxVNxNDLSOHrASH1E3VgpAo1P1ztEkhP62llQVL1bO5tHZJ+RQupMQbACS8jyz1
-         NVzQ==
-X-Gm-Message-State: ACrzQf3LFfk3gCHmRpsTBVzdXR4S+kDHsYKdfAY8Txt+q/M0SkMtvkLl
-	fK2Om2CaA8MYFYWDsSc+ZrkmaFVQH4+d3Wdg5N25DOc3tNdy+g==
-X-Google-Smtp-Source: AMsMyM7YiRpp8URugRWj9R60nHGAIIuozuwQD+387epoyalbRQbnblzcJI2YJXaXOMS7Ngkox26kqvhLn9Kkoi+ogjM=
-X-Received: by 2002:a05:6402:35c5:b0:450:4b7d:9c49 with SMTP id
- z5-20020a05640235c500b004504b7d9c49mr20812656edc.149.1663685576726; Tue, 20
- Sep 2022 07:52:56 -0700 (PDT)
+        bh=KkaEiZ02EouUlGaMhxNtZcD46s5sk3AH0Nj2KAp+eNs=;
+        b=2nU+crraAYyIS3MtV35oRo+qUkPLvSd4tlzQilKqBee7hLRqddf7RG5RFhN+i6zbau
+         9MoJHnJWBFmcKWFwym5MXs1U+Sbx84FUFQJ4qO5RjM0neKnfON0YBp0cnTSVagK3rJSV
+         6tFIwU4KgyF2Z3TwAjbhon1FkWXyTpPVespmi8VvJvbVtXp55h75aRk8w+TQK88oYJy8
+         7ZfaeJ1lLAr8aji1AxDo5oLCOj/HEip/nok0nXjlQ4nNH9ewQ2JKZcjI21ceUpdkUomc
+         y8QSH1658ffmKIAhEBHyNoqDzpoU5FU/b8NgRsf6TVPlOx+EJ6qkH/xoHp4su0LDpBu0
+         1Qtw==
+X-Gm-Message-State: ACrzQf3XmFdByi4PcnKmqnvbdGjMoioXA0CwnnFYvkeeVeGZoZt12+Bi
+	TNHlFFbH33PAY4NZpdDmgPSC8EEBSZlqPu3Ic7v5c76R
+X-Google-Smtp-Source: AMsMyM70R5QG+nctBXeLp/H9QHRQ+JmwGikJbU2Oe65sLIy2FRZVy1nvcCOhwuv4lcuRvOzaRNAwq8f00PqnsjkQ3KA=
+X-Received: by 2002:a17:907:86a5:b0:780:156d:e842 with SMTP id
+ qa37-20020a17090786a500b00780156de842mr17131369ejc.555.1663686946832; Tue, 20
+ Sep 2022 08:15:46 -0700 (PDT)
 MIME-Version: 1.0
-References: <20220822152741.1617527-1-richard.henderson@linaro.org> <20220822152741.1617527-18-richard.henderson@linaro.org>
-In-Reply-To: <20220822152741.1617527-18-richard.henderson@linaro.org>
+References: <20220822152741.1617527-1-richard.henderson@linaro.org> <20220822152741.1617527-19-richard.henderson@linaro.org>
+In-Reply-To: <20220822152741.1617527-19-richard.henderson@linaro.org>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 20 Sep 2022 15:52:45 +0100
-Message-ID: <CAFEAcA-wQk1af=VWxBFmDSSmicn_qjcy88M5wns-SL8LqWXHUw@mail.gmail.com>
-Subject: Re: [PATCH v2 17/66] target/arm: Add is_secure parameter to get_phys_addr_lpae
+Date: Tue, 20 Sep 2022 16:15:34 +0100
+Message-ID: <CAFEAcA8+rX2tspDcXHpQ5d7en3ykYfde2B5X=vaKxRwzrgxsnw@mail.gmail.com>
+Subject: Re: [PATCH v2 18/66] target/arm: Add secure parameter to get_phys_addr_pmsav7
 To: Richard Henderson <richard.henderson@linaro.org>
 Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, 
 	=?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-X-TUID: mN0LPh39jSRy
+X-TUID: tgiloD/aSGrf
 
-On Mon, 22 Aug 2022 at 17:33, Richard Henderson
+On Mon, 22 Aug 2022 at 16:58, Richard Henderson
 <richard.henderson@linaro.org> wrote:
 >
-> Remove the use of regime_is_secure from get_phys_addr_lpae,
+> Remove the use of regime_is_secure from get_phys_addr_pmsav7,
 > using the new parameter instead.
 >
 > Reviewed-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
 > Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 
-
-> @@ -2334,7 +2334,7 @@ bool get_phys_addr(CPUARMState *env, target_ulong a=
-ddress,
->              memset(result, 0, sizeof(*result));
->
->              ret =3D get_phys_addr_lpae(env, ipa, access_type, s2_mmu_idx=
-,
-> -                                     is_el0, result, fi);
-> +                                     ipa_secure, is_el0, result, fi);
->              fi->s2addr =3D ipa;
-
-Depending on how we change patch 2, this may want to be looking at
-something other than ipa_secure.
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
 thanks
 -- PMM

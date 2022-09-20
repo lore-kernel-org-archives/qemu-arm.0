@@ -1,125 +1,115 @@
-Received: by 2002:a17:906:b088:0:0:0:0 with SMTP id x8csp2043599ejy;
-        Tue, 20 Sep 2022 14:23:10 -0700 (PDT)
-X-Google-Smtp-Source: AMsMyM5JxYJNhyMb+Iu//WxE5bLDmo8XkAzbykT05LrGNd0XVi0uT/RkJ2CAo1OhPowwNYshBcAX
-X-Received: by 2002:a05:620a:c50:b0:6be:9b62:6e9d with SMTP id u16-20020a05620a0c5000b006be9b626e9dmr17964346qki.67.1663708989998;
-        Tue, 20 Sep 2022 14:23:09 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1663708989; cv=none;
+Received: by 2002:a17:906:b088:0:0:0:0 with SMTP id x8csp2075051ejy;
+        Tue, 20 Sep 2022 15:41:49 -0700 (PDT)
+X-Google-Smtp-Source: AMsMyM4Is+qg9G7l6g0i0RDL1ajNo0Tsu9vUJaVMWiTcCQ3yb/x/SVsSOoQ9eUsPAM3DQOe4CBJg
+X-Received: by 2002:a05:6214:29e1:b0:4ad:5852:987 with SMTP id jv1-20020a05621429e100b004ad58520987mr5283730qvb.103.1663713709547;
+        Tue, 20 Sep 2022 15:41:49 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1663713709; cv=none;
         d=google.com; s=arc-20160816;
-        b=0YC1bBqnQ/KnsX9CJnIytY/ed1Go6bholu5ItaKsUuKOg1S+LYFVdE/Mq1zqHV++jC
-         3dz9ZG5jJCHQox+HXPAu+Yy7HRvSQZ9mn+//GnZYjMChvyAOw+j4ytmBEdX3DzZrCHNx
-         2pP4NbKkX3jNk4TITLJhTzjbDUw7NScj6I77/AMTod8arPHrBXHqwe+ZIFT8YIPNT5Zx
-         Kv4I42gnRAR2czUNpoMyz5+XjOrKIa7f6nxcpQm/qfGZtXucOhHt825aZxf1kvEkcKqu
-         Pjb03No3ebDb5uFUOf5oYT4Fm8xzx+qF5S4MG3aI0aztQlcj46/w5K3Eaw3T+vHoCmgm
-         uTCQ==
+        b=UDLZ1UANpjXsDA5+PtrRkxoG8fvu/kNOl7LEAR27A1/784Yma7YZGJywkuI7cpC66L
+         47fmIhgQQThKKXKXy86F84DaiFHa63MDiPDxbZidAeEwGBsXvnznfMnJCpYpR8ro2kMZ
+         mjZCigPZYbCj5uxT9hjk2+GEflY0PjKUp3ZRbDem2NKChtKzrcm5D7Qc+rd/GCkFHBJO
+         eofTU6EuGuFUUb+zEMvOHyB3C9h4nCQ2FoVHGkUXwgPiQdA4nPmVflR7YyRubHJM7DyA
+         AnT0mOrabXdJE5cv/i5jX/1B4cTvDxqnQ8cu4vndbmK1O0k6f3kKndtKLtEbJiO0U44p
+         +gWw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=QWIsJi1HQq2Hh0hKyNFjS67GbB0SqS7YxSBRZqhqqy8=;
-        b=shITgYpKPf/6gUlLDV9s93AC3h373xFqoOm8cSkV5QSFpi4mLh2M7vO4j2gV1UyrML
-         OeumsSPy1H6xS/SC4+APVzUv2TJzJc1QqmUWJ/QdPIScvftORs0LqF4saPIFiKH8wVdd
-         qRcqkRuKxeAD+auwhWmTev9BdGP7XKHcueMH8Ooyr5uIyvxs/fj29Z1WabPL2dNAjOkN
-         rjjONUvXyXyTPcPvJG9Aa6KqmgJupZkq94Dyl1Cy2T/BA6xYOErffdKTCj1bYoiQsTSU
-         cSBC0fl8P/a7hN68DpTLQybANycy7IgkAfqRQIs2OcUy+DzKHU/gsSzANOjtN1gPmNCL
-         IjzA==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=qlTkrqVb2aMkLpsUHrMoW58Kky3kHTKxI6M8gj2V1zA=;
+        b=zet1I97LXERaUVICs+uxvU/WNjZm5w/7ggvxIUdAU7X9DqNP8tQj2I0KopGIKW6m8H
+         L8ru32TrKTUq6SOrE36JaxCAJicQEUXxCRAi9bUFPys2YN0b60NGw5b1tRXm8ToVK2Uq
+         QJjx253aDyJDf1kW/QlCy6CoM64fgZ+mT/8wAi6OG0oxssK/kXGC1o3N+XoF45u98dxQ
+         Uuizm9CX9U49Vhlm1x9694V9kVlbd4YzXa78EZ9SXucsfk4BW9aeId3PU6IY/BO5ky5X
+         XFzEMH6TYHEO/h541FL1CYAMK1qA6SYlX2yDXPontzsvV9lZ571vMk+Y8g0m//w7ubUf
+         dx1w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@oracle.com header.s=corp-2022-7-12 header.b=BadKcqR3;
+       dkim=pass header.i=@bytedance-com.20210112.gappssmtp.com header.s=20210112 header.b=LBX0XO9y;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=oracle.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=bytedance.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id y13-20020a05622a120d00b0035cd0a4e096si498147qtx.361.2022.09.20.14.23.09
+        by mx.google.com with ESMTPS id o1-20020ac841c1000000b00357173148b8si450327qtm.478.2022.09.20.15.41.49
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 20 Sep 2022 14:23:09 -0700 (PDT)
+        Tue, 20 Sep 2022 15:41:49 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@oracle.com header.s=corp-2022-7-12 header.b=BadKcqR3;
+       dkim=pass header.i=@bytedance-com.20210112.gappssmtp.com header.s=20210112 header.b=LBX0XO9y;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=oracle.com
-Received: from localhost ([::1]:48500 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=bytedance.com
+Received: from localhost ([::1]:48316 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1oakhv-00069T-RT
-	for alex.bennee@linaro.org; Tue, 20 Sep 2022 17:23:09 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:48672)
+	id 1oalw5-0005UR-25
+	for alex.bennee@linaro.org; Tue, 20 Sep 2022 18:41:49 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:56698)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <miguel.luis@oracle.com>)
- id 1oag1h-0004kE-3z; Tue, 20 Sep 2022 12:23:25 -0400
-Received: from mx0b-00069f02.pphosted.com ([205.220.177.32]:52642)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <miguel.luis@oracle.com>)
- id 1oag1e-0000Gh-Co; Tue, 20 Sep 2022 12:23:12 -0400
-Received: from pps.filterd (m0246632.ppops.net [127.0.0.1])
- by mx0b-00069f02.pphosted.com (8.17.1.5/8.17.1.5) with ESMTP id 28KGJPQq003286;
- Tue, 20 Sep 2022 16:23:07 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
- h=from : to : cc :
- subject : date : message-id : in-reply-to : references : reply-to :
- mime-version : content-transfer-encoding; s=corp-2022-7-12;
- bh=QWIsJi1HQq2Hh0hKyNFjS67GbB0SqS7YxSBRZqhqqy8=;
- b=BadKcqR3Jy0KeC7r8Pk+lJUDLtl8hv2MFeKj0sV34c58V1I+b1GwFrasoeWU6kztsLTZ
- w+jgO9sbodae5V9azBa9KestPS3WP6d1NH9XIYkjon986qp57Gk8XzpYLmSQHCvpTYM6
- zxjtpEYLNiRpjhMZeB+R+XIcVydUZpm26V/E+htK3mrgEDoydU2c84EMQVz4KYi2Q1uJ
- k6s/GsImJ9ceRUptBDTQbeE+FVspShjyDKXbMDP1soV6+XHETIoJ7hc7tf50a1mvXszE
- BwC8xpP02KWKf7Ho4I1AhjCLDnP7p9IxHAWgGv0myprkqLseMeGM2QlrXs7iwUxkWHOz LA== 
-Received: from iadpaimrmta02.imrmtpd1.prodappiadaev1.oraclevcn.com
- (iadpaimrmta02.appoci.oracle.com [147.154.18.20])
- by mx0b-00069f02.pphosted.com (PPS) with ESMTPS id 3jn68m7j3n-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Tue, 20 Sep 2022 16:23:06 +0000
-Received: from pps.filterd
- (iadpaimrmta02.imrmtpd1.prodappiadaev1.oraclevcn.com [127.0.0.1])
- by iadpaimrmta02.imrmtpd1.prodappiadaev1.oraclevcn.com (8.17.1.5/8.17.1.5)
- with ESMTP id 28KGCKwx027876; Tue, 20 Sep 2022 16:23:06 GMT
-Received: from pps.reinject (localhost [127.0.0.1])
- by iadpaimrmta02.imrmtpd1.prodappiadaev1.oraclevcn.com (PPS) with ESMTPS id
- 3jp3cng7wk-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Tue, 20 Sep 2022 16:23:06 +0000
-Received: from iadpaimrmta02.imrmtpd1.prodappiadaev1.oraclevcn.com
- (iadpaimrmta02.imrmtpd1.prodappiadaev1.oraclevcn.com [127.0.0.1])
- by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 28KGMqUv016251;
- Tue, 20 Sep 2022 16:23:05 GMT
-Received: from mlluis-mac.uk.oracle.com (dhcp-10-175-195-182.vpn.oracle.com
- [10.175.195.182])
- by iadpaimrmta02.imrmtpd1.prodappiadaev1.oraclevcn.com (PPS) with ESMTP id
- 3jp3cng7mf-2; Tue, 20 Sep 2022 16:23:05 +0000
-From: Miguel Luis <miguel.luis@oracle.com>
-To: qemu-devel@nongnu.org, qemu-arm@nongnu.org
-Cc: mst@redhat.com, imammedo@redhat.com, ani@anisinha.ca,
- shannon.zhaosl@gmail.com, peter.maydell@linaro.org,
- Miguel Luis <miguel.luis@oracle.com>
-Subject: [PATCH 1/3] tests/acpi: virt: allow acpi GTDT changes
-Date: Tue, 20 Sep 2022 16:21:35 +0000
-Message-Id: <20220920162137.75239-2-miguel.luis@oracle.com>
-X-Mailer: git-send-email 2.36.0
-In-Reply-To: <20220920162137.75239-1-miguel.luis@oracle.com>
-References: <20220920162137.75239-1-miguel.luis@oracle.com>
+ (Exim 4.90_1) (envelope-from <zhangjian.3032@bytedance.com>)
+ id 1oaiGY-0004RT-3t
+ for qemu-arm@nongnu.org; Tue, 20 Sep 2022 14:46:51 -0400
+Received: from mail-pj1-x1035.google.com ([2607:f8b0:4864:20::1035]:52136)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <zhangjian.3032@bytedance.com>)
+ id 1oaiGU-0007Qs-Dt
+ for qemu-arm@nongnu.org; Tue, 20 Sep 2022 14:46:41 -0400
+Received: by mail-pj1-x1035.google.com with SMTP id rt12so1559504pjb.1
+ for <qemu-arm@nongnu.org>; Tue, 20 Sep 2022 11:46:37 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=bytedance-com.20210112.gappssmtp.com; s=20210112;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date;
+ bh=qlTkrqVb2aMkLpsUHrMoW58Kky3kHTKxI6M8gj2V1zA=;
+ b=LBX0XO9yQRjLND9QEAKvEB6zfPznF3dsCCHx05wtFKbOHtyRAGkUoHkJ39fzvKD6kk
+ 9sVfDrfFDqNou/tLpdBJC3QUilSBtr0FQbYbiTbqrHLXuCa9J2+YdrTjn57PWyxJJEJT
+ hGcy8qTMQhysnCc8MEdu49uLbR96Meuwa7VjA6qqPHrx5QNlcFSEMFZbLsEykXdqTHiu
+ Lw1/qawKpNjjaLljYJ56RK171qgdvFhwfr3MPNCZE0Aeclh95TVv0Y1+DcfILr9BuH6N
+ cfmszz7PiD+sbSlwJazt/ObeKpAmmsRrsft68cT57/eGGpD6ZtyRelgtDiaeorY3rI/j
+ UnSw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+ :subject:date;
+ bh=qlTkrqVb2aMkLpsUHrMoW58Kky3kHTKxI6M8gj2V1zA=;
+ b=mnWsTuHfFNPA/ztG0Yhfu+JYkXpMpouOfc5Maur5/uu3X2vlGTB+B1ak//+faH50+m
+ oV4JSMXWshPojG27i4Ft35bqGcTUyiTKUytk793pt1mt6AuJQ7ZeCiv8ngRFV9VY7Rva
+ Rei6LtcGTRkRsPqAQq7o3/AcF+H7MeX3sw1QfUvBvz6NRTzEYPt/oiF91OrdSZXjf7jz
+ QtrrWhEgYyZdn5cow3R3aT4IevF9cWEv445gqqXOWBsfqr+JZVPPqGuM3gvvisFSvvfG
+ aR8Yza9x8c3HamZr1RzaSt9SnFjAvk8zZVmSTe7px82USHjILrsjnu+yeKYY7iUUqxe8
+ 9v3w==
+X-Gm-Message-State: ACrzQf2maLvdQpfQrKXTc5eCFDf7oM3DYJ4wHB4UXqdmsZGbFqRdB9Xb
+ c+t7Mn0+Knj83GoQaPEg8aLxhw==
+X-Received: by 2002:a17:902:e5cd:b0:176:ad01:ab47 with SMTP id
+ u13-20020a170902e5cd00b00176ad01ab47mr958363plf.133.1663699596882; 
+ Tue, 20 Sep 2022 11:46:36 -0700 (PDT)
+Received: from localhost ([49.7.199.230]) by smtp.gmail.com with ESMTPSA id
+ x2-20020a17090a1f8200b0020379616053sm203667pja.57.2022.09.20.11.46.35
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 20 Sep 2022 11:46:36 -0700 (PDT)
+From: Jian Zhang <zhangjian.3032@bytedance.com>
+To: f4bug@amsat.org, peter.maydell@linaro.org, clg@kaod.org, andrew@aj.id.au,
+ joel@jms.id.au, qemu-devel@nongnu.org, qemu-arm@nongnu.org
+Cc: yulei.sh@bytedance.com, tangyiwei.2022@bytedance.com,
+ chentingting.2150@bytedance.com, yuhao.17@bytedance.com,
+ wangxiaohua.1217@bytedance.com, xiening.xll@bytedance.com
+Subject: [PATCH v2 2/3] hw/gpio/aspeed_gpio: Add gpios in/out init
+Date: Wed, 21 Sep 2022 02:46:18 +0800
+Message-Id: <20220920184619.3370115-3-zhangjian.3032@bytedance.com>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20220920184619.3370115-1-zhangjian.3032@bytedance.com>
+References: <20220920184619.3370115-1-zhangjian.3032@bytedance.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.205,Aquarius:18.0.895,Hydra:6.0.528,FMLib:17.11.122.1
- definitions=2022-09-20_06,2022-09-20_02,2022-06-22_01
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=0
- mlxlogscore=999
- spamscore=0 adultscore=0 mlxscore=0 malwarescore=0 bulkscore=0
- phishscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2209130000 definitions=main-2209200097
-X-Proofpoint-ORIG-GUID: JdJ4Dtc2vrFLC9xfCwLNLv6ssCbtZamq
-X-Proofpoint-GUID: JdJ4Dtc2vrFLC9xfCwLNLv6ssCbtZamq
-Received-SPF: pass client-ip=205.220.177.32;
- envelope-from=miguel.luis@oracle.com; helo=mx0b-00069f02.pphosted.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
-X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1035;
+ envelope-from=zhangjian.3032@bytedance.com; helo=mail-pj1-x1035.google.com
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Tue, 20 Sep 2022 13:58:04 -0400
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -131,27 +121,70 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: miguel.luis@oracle.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: kwuVOKmh5ll8
+X-TUID: rrbVqG9Vo73b
 
-Step 3 from bios-tables-test.c documented procedure.
+Add gpios in/out init for aspeed gpio to add the ability to connect
+to other gpio devices.
 
-Signed-off-by: Miguel Luis <miguel.luis@oracle.com>
+Based the qdev-core.h comments, If you want to connect a GPIO to other
+devices, you need to call qdev_init_gpio_in() or qdev_init_gpio_out().
+
+```
+For input gpios:
+ *
+ * Outbound GPIO lines can be connected to any qemu_irq, but the common
+ * case is connecting them to another device's inbound GPIO line, using
+ * the qemu_irq returned by qdev_get_gpio_in() or qdev_get_gpio_in_named().
+
+For output gpios:
+ * This function is intended to be used by board code or SoC "container"
+ * device models to wire up the GPIO lines; usually the return value
+ * will be passed to qdev_connect_gpio_out() or a similar function to
+ * connect another device's output GPIO line to this input.
+```
+
+Signed-off-by: Jian Zhang <zhangjian.3032@bytedance.com>
 ---
- tests/qtest/bios-tables-test-allowed-diff.h | 3 +++
- 1 file changed, 3 insertions(+)
+ hw/gpio/aspeed_gpio.c | 17 +++++++++++++++++
+ 1 file changed, 17 insertions(+)
 
-diff --git a/tests/qtest/bios-tables-test-allowed-diff.h b/tests/qtest/bios-tables-test-allowed-diff.h
-index dfb8523c8b..957bd1b4f6 100644
---- a/tests/qtest/bios-tables-test-allowed-diff.h
-+++ b/tests/qtest/bios-tables-test-allowed-diff.h
-@@ -1 +1,4 @@
- /* List of comma-separated changed AML files to ignore */
-+"tests/data/acpi/virt/GTDT",
-+"tests/data/acpi/virt/GTDT.memhp",
-+"tests/data/acpi/virt/GTDT.numamem",
+diff --git a/hw/gpio/aspeed_gpio.c b/hw/gpio/aspeed_gpio.c
+index 1e267dd482..51f5f1c386 100644
+--- a/hw/gpio/aspeed_gpio.c
++++ b/hw/gpio/aspeed_gpio.c
+@@ -1013,6 +1013,17 @@ static void aspeed_gpio_reset(DeviceState *dev)
+     memset(s->sets, 0, sizeof(s->sets));
+ }
+ 
++static void aspeed_gpio_set(void *opaque, int line, int new_state)
++{
++    AspeedGPIOState *s = ASPEED_GPIO(opaque);
++    uint32_t set_idx, pin;
++
++    set_idx = line / ASPEED_GPIOS_PER_SET;
++    pin = line % ASPEED_GPIOS_PER_SET;
++
++    aspeed_gpio_set_pin_level(s, set_idx, pin, new_state);
++}
++
+ static void aspeed_gpio_realize(DeviceState *dev, Error **errp)
+ {
+     AspeedGPIOState *s = ASPEED_GPIO(dev);
+@@ -1037,6 +1048,12 @@ static void aspeed_gpio_realize(DeviceState *dev, Error **errp)
+     memory_region_init_io(&s->iomem, OBJECT(s), &aspeed_gpio_ops, s,
+             TYPE_ASPEED_GPIO, 0x800);
+ 
++    /* TODO: Maybe could in named, not anonymous is better */
++    qdev_init_gpio_out(dev, &s->gpios[0][0],
++                       ASPEED_GPIO_MAX_NR_SETS * ASPEED_GPIOS_PER_SET);
++    qdev_init_gpio_in(dev, aspeed_gpio_set,
++                      ASPEED_GPIO_MAX_NR_SETS * ASPEED_GPIOS_PER_SET);
++
+     sysbus_init_mmio(sbd, &s->iomem);
+ }
+ 
 -- 
-2.36.0
+2.25.1
 

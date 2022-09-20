@@ -1,98 +1,99 @@
-Received: by 2002:a05:7108:5790:0:0:0:0 with SMTP id cd16csp2677523gdb;
-        Tue, 20 Sep 2022 10:58:17 -0700 (PDT)
-X-Google-Smtp-Source: AMsMyM5ysV3/n/PjzwmTqIpHjhnRzv7bgiBH03we45qyPefWd0v3OHh8z76l2E1bHnvQAa8mfHbb
-X-Received: by 2002:a37:f514:0:b0:6be:730a:ac1a with SMTP id l20-20020a37f514000000b006be730aac1amr17750239qkk.10.1663696697676;
-        Tue, 20 Sep 2022 10:58:17 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1663696697; cv=none;
+Received: by 2002:a17:906:b088:0:0:0:0 with SMTP id x8csp1971559ejy;
+        Tue, 20 Sep 2022 11:39:20 -0700 (PDT)
+X-Google-Smtp-Source: AMsMyM7o+9BKglsDbysVoIr53Yb65KDRu9/Umot51eU2Y+nCRhSrKKTqK3AptfiUzhg1/mxzv8sZ
+X-Received: by 2002:a05:620a:f8e:b0:6cc:1c3a:4f5d with SMTP id b14-20020a05620a0f8e00b006cc1c3a4f5dmr17162378qkn.425.1663699160586;
+        Tue, 20 Sep 2022 11:39:20 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1663699160; cv=none;
         d=google.com; s=arc-20160816;
-        b=KyY2NOJIdOnagb4sDLBQTGqMTsX3II3vMrJlyRQivk6WQvgX4kaeE26uZYmnbyQlJj
-         5zKJce89AReokwWM6AJZYONsLUyXEmYXwo8roNCuji0vbXtADavvFEzzKw2QTNBAK3KY
-         4Ih/XDGGDyOJxJwJEHfHSC4wo2AV4CjX1f4lzSxoDrIzTAFxekSIvQoatGGBcaQDxUzY
-         tPricuWgA/Hh+ODNRBry10KXKM4LLkoVcNJh7Ac8hr42u2AQKkVoiKjo00Kx4LHCY2E/
-         OhtjS9O/CwmFfwX4GrU4PJZlMfDj20Lzh60v285vHE7MOPE4DCjw5MV6L3oG7IFLTI9h
-         eeLw==
+        b=oOZbsnLEMbKvoFAvo6ybH2SX/ixBoUBu3uCa2gL1Ee97cEI24JU3iPqFk2HJoZq++r
+         NGZA4TTq8lqJCFReHPyPjO+rw8RZ6YlnlGeW5vVNPlTheACt9wrC5bvnHcGvwTmhfTRF
+         e05Qti/3200ZdJbUDT/tTwCclb6wRXd33pH4+2DTALO9TmlziRKLQu2x2JsoNFgD/IrD
+         AUbmqQult7OixFEucVHIbTi4jbFWMKKNBUYzoYKS4Nune4rBVrqJ9fzp4yxhpu8GtOao
+         slsKEP/qB5PtE9uX1UNqHPSPxOI6Jt1mAqKN/jRdlV0fFA+KCUWzEshNx8fl4HWsRY7O
+         OxDA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
          :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=uJ6GqANodchxzgq1Ioq9TVrY8Pc8w2djL0pTGHGjK/8=;
-        b=SFRuhTNNzSTL5Vw+yNLs4gzxuRJLzxCPGT7+KJ0mVv07fdlThv3CPgW8CvT+eYSTfN
-         BqLQsSZI/mecGOD3tF9fLhfCsQ3kGopJmUSFrhQcJluFFi3YthWX4TYx6bhMpl9zW+Q5
-         TtaYk3koD4MD8fZ0HWZWryuXoqBwTjFp0nAxUlRF9QPle1HGSpxXIU2yROm6LRUpVoVu
-         cd1ctFiNvffYuGKR/BDxUUlN2bDVA/+DmTW+6+RqrzJVCvd3oTxxfI4gQ8mMNoRePqKC
-         9IqlO9FitPnxOvTnlGgmrF4H/RzuxyEran/GzpU1oRv9b7WAoEnpbaEPPNd82twGCkL9
-         9CmQ==
+        bh=1yl6NsWkEltT7mArFV4fkbae+190nteVaakYq1lciRA=;
+        b=AKwHNo1EorA6wwrAHV2/cK0JsKsdYrkaip4FgD8c+8P5ELU6sSj8CKECk0csLBCNa+
+         broMbK2OwHLuuXfvB2IvtN/Mgma2HTOzvjzKiwSrLthl4f9+fAHYioCzu8eyaEvt4hID
+         a/CZFDIQbBmzJRmHLwtYjsc1uG8x6IK91KavTgSi0McU5sFNE3KC6NhGIWUabdSEG28/
+         R3UWc0qif0F8/ATtynUFhMKat1/UolHjLo1lM+JPHO/CLz7+KHLu1d+gdNNxJPYkfVup
+         b3MFYr3NcN2npqOp4JgYh83JKH3xreJCcbokZSiieUTxJJ9jQ0Pd6kK9YaAjzd5nc4Jg
+         x0wA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=TA1XUanV;
+       dkim=pass header.i=@linaro.org header.s=google header.b=JVgTjo3v;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id p14-20020a05622a048e00b00344f0cfffb2si150558qtx.589.2022.09.20.10.58.17
+        by mx.google.com with ESMTPS id bl38-20020a05620a1aa600b006bc5e44e829si353060qkb.269.2022.09.20.11.39.20
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 20 Sep 2022 10:58:17 -0700 (PDT)
+        Tue, 20 Sep 2022 11:39:20 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=TA1XUanV;
+       dkim=pass header.i=@linaro.org header.s=google header.b=JVgTjo3v;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:55394 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:55258 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1oahVh-0002bu-7R
-	for alex.bennee@linaro.org; Tue, 20 Sep 2022 13:58:17 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:36892)
+	id 1oai9P-0004HT-W0
+	for alex.bennee@linaro.org; Tue, 20 Sep 2022 14:39:20 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:52842)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1oae8D-0001iJ-PX
- for qemu-devel@nongnu.org; Tue, 20 Sep 2022 10:21:56 -0400
-Received: from mail-ej1-x62a.google.com ([2a00:1450:4864:20::62a]:36801)
+ id 1oaeLz-0004Hn-HL
+ for qemu-devel@nongnu.org; Tue, 20 Sep 2022 10:36:06 -0400
+Received: from mail-ed1-x52c.google.com ([2a00:1450:4864:20::52c]:34601)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1oae8A-0004um-5P
- for qemu-devel@nongnu.org; Tue, 20 Sep 2022 10:21:47 -0400
-Received: by mail-ej1-x62a.google.com with SMTP id 13so6588668ejn.3
- for <qemu-devel@nongnu.org>; Tue, 20 Sep 2022 07:21:45 -0700 (PDT)
+ id 1oaeLu-0007Rf-Pz
+ for qemu-devel@nongnu.org; Tue, 20 Sep 2022 10:36:01 -0400
+Received: by mail-ed1-x52c.google.com with SMTP id z2so4181244edi.1
+ for <qemu-devel@nongnu.org>; Tue, 20 Sep 2022 07:35:58 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:from:to:cc:subject:date;
- bh=uJ6GqANodchxzgq1Ioq9TVrY8Pc8w2djL0pTGHGjK/8=;
- b=TA1XUanV/9efdf0lg88BX+LntpOrZESbygzF/8tGHlntlrCgaQQgpkvE4XLuNrGxja
- jf2MfCJAa9Xra8SfP54TASsWSDM/ulhve8EW0Mdeeq1TfxP4XEeUCYT/B28PzFHJ3g7R
- 2/KvFmPQZky/bGdW6NEpEMrxjhliNBcKpp2140KKybfTUEbVta7R3Bez2lAoEhECS+vY
- 2gJnN3murbpWvdz4Ky1b6SdGAEZO72KTde3f28ZiETCee/Peeixu35u7hU479TeMDhRc
- H1VwoxhIfKownAHB1RqrbUrw1parrxFTNFnwlooQ8eIoW5jwbSoleS0qB77pUZWdtrdC
- KjNA==
+ bh=1yl6NsWkEltT7mArFV4fkbae+190nteVaakYq1lciRA=;
+ b=JVgTjo3vLiRTpsx8xDm4tWuHq6wCkfs1K71/M2nBp3Ve+1OeUU/CnSiH4sPuX/IBGN
+ 1APaO7mh7L7lFW2QPJDCvlhghs401hxoMk9UWU0qp+QUnpkp36tefLgJI1LG5L9xY6HZ
+ VeaW71pK7TKJDk7u2Huf1rb9+KnnOR7xlWkdRse5TOQmBQadeVGuWQ6IbVfeRBVejw3q
+ x/LUrWeLoOAgOLJNQLpV0fbo2bY0/wZzRr5qXL6v+AGmd3pWj0+pf7o1A8YBGXHI3QBP
+ G0Qz8DkO9PyUP9rW7BfIpIfGvT40CslcyfG7GY9SMQUwZYUkmDQee/Dtt6j0mM//9wep
+ dEbA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:x-gm-message-state:from:to:cc:subject:date;
- bh=uJ6GqANodchxzgq1Ioq9TVrY8Pc8w2djL0pTGHGjK/8=;
- b=6jAqPFn522EUxPTzLD7ZXljSdtwMDB7/Shmn/Wh2JsgD7YyWLKtXOsTmZCvyciVuG/
- o5cy7kcNthhI0JH+s0bJ5mN7O+GBOBU/9T9q4d9EI8Bxb/mhfQdb5viorrzwJJUPT4Z/
- Q/RGLCm6p5WFqPOTJ2D4MjOlVS3l1ikTUqFMGlImD6MJdwWTS98TrJUPJP8qbkVmFxzl
- pvbma+jNmXEHaTzhFONcrqx7gv7kKFtOhQzYB9587HxRw4eY5iZkMYpP8b1LAK9CF6Be
- Ee26SLtZaaVMYXaBfoXgqGykR2exJd192m0oD5xLeBjjT3i/k6M+MIdu88VQfo1LZAj+
- kjMQ==
-X-Gm-Message-State: ACrzQf1/gEya2/4YBx6YzcZRtsCkAAuQSoQkFXB6SnsXnXvSnVfu5mK9
- hd3WBfnNuUR2KEI3Fsc86ugx/k9yf1Zg4Q8+D7XwEg==
-X-Received: by 2002:a17:906:9c83:b0:779:c14c:55e4 with SMTP id
- fj3-20020a1709069c8300b00779c14c55e4mr16621592ejc.619.1663683704409; Tue, 20
- Sep 2022 07:21:44 -0700 (PDT)
+ bh=1yl6NsWkEltT7mArFV4fkbae+190nteVaakYq1lciRA=;
+ b=tn4pweRmuY2sAIcgFBXQE6vHtaVRyUJ7iq88UkPztwgDaitAXSbPGm3543oioO2KoH
+ p3dvRk9xph21fshCq2FeoB+3hwWk+jdKNYh96JsBTQZz3wpiNv5MJzNC/E7DU1Hbpny9
+ tlOB3v0kbir0cBe7aSZbcRR0RocThyx5K1JmBxciwwuxOXNaxxOXcyMvPixoEqgc70qK
+ FdUNZwFg1SqlRw0ilVdrzC3fT3o1DgDQdGPuLunyMeSpue+iowZXeiQGTyJkY6omthl4
+ 6+fr1wbhepJVoiWZwBqaHFaEX92KY5wE9IdrrTxRxfJIK+ltNRPkDdonEZHsxwhmEjGd
+ aIyA==
+X-Gm-Message-State: ACrzQf3u7S6V/0ebD+ZBCh5/2ZLH5inYgEqyjVblm9z1b+dnbAu/uu6L
+ icS3OcCdvTslklvwifO7D/Tdwz3OlLq4z/3htcbIcg==
+X-Received: by 2002:a05:6402:516f:b0:44e:9151:d54b with SMTP id
+ d15-20020a056402516f00b0044e9151d54bmr20287414ede.241.1663684556933; Tue, 20
+ Sep 2022 07:35:56 -0700 (PDT)
 MIME-Version: 1.0
 References: <20220822152741.1617527-1-richard.henderson@linaro.org>
- <20220822152741.1617527-3-richard.henderson@linaro.org>
-In-Reply-To: <20220822152741.1617527-3-richard.henderson@linaro.org>
+ <20220822152741.1617527-11-richard.henderson@linaro.org>
+In-Reply-To: <20220822152741.1617527-11-richard.henderson@linaro.org>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 20 Sep 2022 15:21:32 +0100
-Message-ID: <CAFEAcA-o7ZQ+W+mdroH8KhoDW-Gr-3khp30ehgXCktrbXEw0xA@mail.gmail.com>
-Subject: Re: [PATCH v2 02/66] target/arm: Fix ipa_secure in get_phys_addr
+Date: Tue, 20 Sep 2022 15:35:45 +0100
+Message-ID: <CAFEAcA9qjaFfByWGO_oh4GKtJGYG-OFx-3_9ypQNmBRBJxvSTQ@mail.gmail.com>
+Subject: Re: [PATCH v2 10/66] target/arm: Remove is_subpage argument to
+ pmsav8_mpu_lookup
 To: Richard Henderson <richard.henderson@linaro.org>
 Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::62a;
- envelope-from=peter.maydell@linaro.org; helo=mail-ej1-x62a.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::52c;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x52c.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -114,97 +115,34 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: V/4YQH6fwErp
+X-TUID: nRBokxnMJizZ
 
-On Mon, 22 Aug 2022 at 16:28, Richard Henderson
+On Mon, 22 Aug 2022 at 16:54, Richard Henderson
 <richard.henderson@linaro.org> wrote:
 >
-> The starting security state comes with the translation regime,
-> not the current state of arm_is_secure_below_el3().
->
-> More use of the local variable, ipa_secure, which does not need
-> to be written back to result->attrs.secure -- we compute that
-> value later, after the S2 walk is complete.
+> This can be made redundant with result->page_size, by moving the basic
+> set of page_size from get_phys_addr_pmsav8.  We still need to overwrite
+> page_size when v8m_security_lookup signals a subpage.
 >
 > Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
-> ---
->  target/arm/ptw.c | 22 ++++++++++------------
->  1 file changed, 10 insertions(+), 12 deletions(-)
+
+> @@ -1722,7 +1722,7 @@ bool pmsav8_mpu_lookup(CPUARMState *env, uint32_t address,
+>      uint32_t addr_page_base = address & TARGET_PAGE_MASK;
+>      uint32_t addr_page_limit = addr_page_base + (TARGET_PAGE_SIZE - 1);
 >
-> diff --git a/target/arm/ptw.c b/target/arm/ptw.c
-> index 8db2abac01..478ff74550 100644
-> --- a/target/arm/ptw.c
-> +++ b/target/arm/ptw.c
-> @@ -2308,6 +2308,7 @@ bool get_phys_addr(CPUARMState *env, target_ulong address,
->                     GetPhysAddrResult *result, ARMMMUFaultInfo *fi)
->  {
->      ARMMMUIdx s1_mmu_idx = stage_1_mmu_idx(mmu_idx);
-> +    bool is_secure = regime_is_secure(env, mmu_idx);
->
->      if (mmu_idx != s1_mmu_idx) {
->          /*
-> @@ -2332,19 +2333,16 @@ bool get_phys_addr(CPUARMState *env, target_ulong address,
->              }
->
->              ipa = result->phys;
-> -            ipa_secure = result->attrs.secure;
-> -            if (arm_is_secure_below_el3(env)) {
-> -                if (ipa_secure) {
-> -                    result->attrs.secure = !(env->cp15.vstcr_el2 & VSTCR_SW);
-> -                } else {
-> -                    result->attrs.secure = !(env->cp15.vtcr_el2 & VTCR_NSW);
-> -                }
-> +            if (is_secure) {
-> +                /* Select TCR based on the NS bit from the S1 walk. */
-> +                ipa_secure = !(result->attrs.secure
-> +                               ? env->cp15.vstcr_el2 & VSTCR_SW
-> +                               : env->cp15.vtcr_el2 & VTCR_NSW);
->              } else {
-> -                assert(!ipa_secure);
-> +                ipa_secure = false;
->              }
+> -    *is_subpage = false;
+> +    result->page_size = TARGET_PAGE_SIZE;
+>      result->phys = address;
+>      result->prot = 0;
+>      if (mregion) {
 
-This is mixing two things up:
+There's a comment just above this that needs updating:
 
-(1) is the IPA from a first stage translation Secure or Non-secure ?
-   -- this is what ipa_secure is in the current code
-(2) should the s2 translation table walk be Secure or Non-secure ?
-   -- this is determined by either VSTCR_EL2.SW or .NSW, depending on
-      what ipa_secure is
+     * We set is_subpage to true if the region hit doesn't cover the
+     * entire TARGET_PAGE the address is within.
 
-This change ends up setting ipa_secure to the answer to q2. If we
-want to use it for "is the s2 tt walk secure?" we should give it a
-different name, eg s2walk_secure.
-
-We also seem to have lost the assertion that if this is a non-secure
-translation regime then we shouldn't have ended up claiming that the
-first-stage IPA was Secure.
-
-I agree we don't really want to silently borrow result->attrs.secure
-for the place we keep the answer to q2.
-
->
-> -            s2_mmu_idx = (result->attrs.secure
-> -                          ? ARMMMUIdx_Stage2_S : ARMMMUIdx_Stage2);
-> +            s2_mmu_idx = (ipa_secure ? ARMMMUIdx_Stage2_S : ARMMMUIdx_Stage2);
->              is_el0 = mmu_idx == ARMMMUIdx_E10_0 || mmu_idx == ARMMMUIdx_SE10_0;
->
->              /*
-> @@ -2388,7 +2386,7 @@ bool get_phys_addr(CPUARMState *env, target_ulong address,
->                                                      result->cacheattrs);
->
->              /* Check if IPA translates to secure or non-secure PA space. */
-> -            if (arm_is_secure_below_el3(env)) {
-> +            if (is_secure) {
->                  if (ipa_secure) {
->                      result->attrs.secure =
->                          !(env->cp15.vstcr_el2 & (VSTCR_SA | VSTCR_SW));
-
-In particular, looking at the pseudocode for AArch64.SS2OutputPASpace()
-I think this code is correctly looking at ipa_secure and the change
-above to what that variable is holding means it will now be wrong.
-(That is, ipa_secure == true in the old code corresponds to pseudocode's
-ipaspace == PAS_Secure.)
+Otherwise
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
 thanks
 -- PMM

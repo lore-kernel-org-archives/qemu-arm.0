@@ -1,144 +1,188 @@
-Received: by 2002:a17:906:b088:0:0:0:0 with SMTP id x8csp1713146ejy;
-        Tue, 20 Sep 2022 04:25:44 -0700 (PDT)
-X-Google-Smtp-Source: AMsMyM5SYXUJ/VGJslpqPGNCAUelPBS55OEkcrhqW28I49EBSRhX/XLfqbiPyVBOf3yrRssHteje
-X-Received: by 2002:a05:620a:2495:b0:6ce:bbe6:5bb4 with SMTP id i21-20020a05620a249500b006cebbe65bb4mr16293028qkn.674.1663673144655;
-        Tue, 20 Sep 2022 04:25:44 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1663673144; cv=none;
+Received: by 2002:a17:906:b088:0:0:0:0 with SMTP id x8csp1720407ejy;
+        Tue, 20 Sep 2022 04:39:38 -0700 (PDT)
+X-Google-Smtp-Source: AMsMyM42lXFSXnl0OsMY63czZ7dEbumeCrnZfYKnTIR3kq5EvZ3Pouy7ZiotPLK7atAyEbrieecI
+X-Received: by 2002:a81:6e8b:0:b0:349:fe6d:8175 with SMTP id j133-20020a816e8b000000b00349fe6d8175mr18156285ywc.425.1663673978797;
+        Tue, 20 Sep 2022 04:39:38 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1663673978; cv=none;
         d=google.com; s=arc-20160816;
-        b=He2D3HcK4MaIL+K1inPIMKdyoisqKvc3U6gARka37UkbR6fUOMde70ORDwyHFobxgL
-         ofjJ0Rcn7gdBxzNQtqeQczs+NaAwgTcPu6F5Te6dUJiwTPejeAC0QoWR1OK3enhwSkxS
-         ewSy7Wp2iMWKaWrcm6S00+Jh6tjNqycY2BR/DH2tjrPU3QlTtuyId5M3zV8tzcQ8kFC1
-         DNONPav8uzfG8Mx4yvvzENtYu50NJ6tFSEWXlAezvyuIjTe8Oz5Sy0xrMjmTY8Uwk1gy
-         Ss/zYllmn4Nqzisu1VgKRs7bY5AcNYHO9m5fMHI5NPmu7khprJrkXxpBzt+wcYyd0e7k
-         JV9Q==
+        b=Cr3HEe7WPQrMOQpDLCAL+cdneG0MeaFAgWQQMza2BJXx+a5O0EtOiWuDp4FqBPJwKP
+         6MkJwRvX2CmseGbeMNYUpHJ0lc1U2p45Lxacl64/I2HVjQsHxc7UtcAvjGqI2wNP0BL9
+         Ydb/jP5QHUeJLsKnsM+i72XkXbjzdQGXIHcXpTs7hIpAjKBKj+NNFAPdKsPjJG6yyoWC
+         8A7UvDcrgD0Y0/tLEbhS7Yp5Fhvkw98bMwNKB6xJZlr9g+unomBamY7Y/wf+w+TJ+bmi
+         zZRUJgTOkmjpwjmli+uWiunnlTCkmqFGQs319jtlG2pFSJCcccvXSmpZaTPM9owReD6j
+         z8GA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=FARkd/geawKARyNW89YvFnsckZMn64TWLKArTQ/0GCM=;
-        b=hJymSCOqGdFeo5RKnuEYHJL3natw8uYyQ2/NyedVpu4RuPAtUEPSsQn7V0l+VXEulS
-         pVF5VvUFl/MTx/yVRepmPgckpRuUziKo28U3lI2mukFRdyseut90KP1MPcGdOGVxIdkR
-         hOZ0U1oV+3ZHsNX8ljmEJOF03vroJaaLv+ZDIBdzcJaO6MMxQDimlZwycQv+oYwO5LOs
-         sUV0EsuSXYAnjaarPapG+EjQGFsmvShYYMrR3RyEedxMPTgyP/U0tcyTqtnOgOHh953G
-         rQZVkMFOspI7aZgzbZJ+ZyL+L2LmxsBTTAamlU4fuaOO4ADID2aIWQI9YhDIP/dyKSf5
-         V0vQ==
+        h=mime-version:user-agent:message-id:in-reply-to:date:references
+         :subject:cc:to:from:dkim-signature:sender:precedence:errors-to
+         :list-subscribe:list-help:list-post:list-unsubscribe:list-id;
+        bh=Q9Kiy75k/GjyNcX5/jFVpAejSl+0Eo6vMfAUPlGa7+Q=;
+        b=F+y/bAgpVYzm4lSA/7QANh9ACOQ1KynAvmYIK/3sbz6hR4VquzsNRbvgbYZDRZDf3a
+         TNycGxoi7Jybm06fzhRG+h3P5t8rsdhiJmB0+8HjUZZfg9KagALmf076rzOCaMHuk3tJ
+         LzdL5CRdLYj8T9DVSSYXjrwCVfJNJd9OY8Ek0cFFn40WyxJwukUz8ZPy8NQhhA8TC1Tq
+         1UIV5kWxLXz0XXAt7CizMfxxnKh3Wv6NAiaERlvrqQ18uCzIFqFrqg/Yt6tgEuX2QJHY
+         8bXxXAfC4TmJ0VsuElK0WycbUFbWwb6Uw2nwq6C+H18IqMbmREWzM1sg7wPe2ZR6tlxV
+         qBWg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=V8O3VmR7;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id gg12-20020a056214252c00b004a52ecab76asi767420qvb.241.2022.09.20.04.25.44
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 20 Sep 2022 04:25:44 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=OYGbM+Ox;
+       spf=pass (google.com: domain of xen-devel-bounces@lists.xenproject.org designates 192.237.175.120 as permitted sender) smtp.mailfrom=xen-devel-bounces@lists.xenproject.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <xen-devel-bounces@lists.xenproject.org>
+Received: from lists.xenproject.org (lists.xenproject.org. [192.237.175.120])
+        by mx.google.com with ESMTPS id 125-20020a250c83000000b006ae34117224si806864ybm.103.2022.09.20.04.39.38
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 20 Sep 2022 04:39:38 -0700 (PDT)
+Received-SPF: pass (google.com: domain of xen-devel-bounces@lists.xenproject.org designates 192.237.175.120 as permitted sender) client-ip=192.237.175.120;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=V8O3VmR7;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:46658 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1oabNo-0004ye-6q
-	for alex.bennee@linaro.org; Tue, 20 Sep 2022 07:25:44 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:58218)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1oaaQq-0004R3-Vj
- for qemu-arm@nongnu.org; Tue, 20 Sep 2022 06:24:53 -0400
-Received: from mail-ed1-x52f.google.com ([2a00:1450:4864:20::52f]:36366)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1oaaQm-0002wm-3i
- for qemu-arm@nongnu.org; Tue, 20 Sep 2022 06:24:48 -0400
-Received: by mail-ed1-x52f.google.com with SMTP id e18so3155545edj.3
- for <qemu-arm@nongnu.org>; Tue, 20 Sep 2022 03:24:42 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date;
- bh=FARkd/geawKARyNW89YvFnsckZMn64TWLKArTQ/0GCM=;
- b=V8O3VmR7E52X/RPoNtb4WSt0h4CfNLsy07pyp9b34uzqymSv/Fnxv266TlOP5+mKo5
- sTalPLrhFz9x0Hiz0AFI5X32YSt48Zj5Ngc0LRcyGgD2+QWmYnBHmz4iW91awRFi6FCt
- VTuZLR0UO+WopDvfLMkgx9fuwq1VpivNR1PbT3QDL4BIgAcqYLHS01df1eF/NpIKEkC2
- 3qtWDzO4VrgXstj75ozuRt8lntFnCsTqPnkXaN5Q4WMVXuTlcs3czU3mQWudHJ4H8STF
- doPAvd2W7iZMIH/X3R9jWWVoS94QOL7zz1SE6AOln+LsQO+dEjt0UeAMXXoDOAFRNkMV
- aNvg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
- :subject:date;
- bh=FARkd/geawKARyNW89YvFnsckZMn64TWLKArTQ/0GCM=;
- b=28Qxrm80OciATVDzBUDTbclt4qPLKz+QcP9H8rKRW1U5uNboib17gL022o4ZBs3b4A
- N/bXdIziDT+BDscTdppNMWgrNCgsMcsXm0aAxPtSog/g19z3ChrhDtbzFQSqFIphw0ac
- o39p12CoQClCtKhqTsZ8xKeClbLA6cObQtDnG30VR7EuEfM9fbsRF4r2ypNbqaY4upN+
- Uer72/X2d5rBrg/MHVtLSsSk+QbOLzTFVEc4H2aLH/NX4PQ/u9InKN0WXFw27lFiCsN7
- OdlNQyx1r9RU+UZSd9wcjgy9OESul5AwNOUOo8JIEYnTOjs0yWCvNhffd0qlRuxX9w0O
- fUJg==
-X-Gm-Message-State: ACrzQf2ai478CM8AbqCyqgG2geourGmV0Ekc1T80qsfLBF38ueS5RKYW
- iOIzTZ/VE6TxkbDsVZohbmIOBR+YlgfPnZhRQp+LsQ==
-X-Received: by 2002:a05:6402:35c5:b0:450:4b7d:9c49 with SMTP id
- z5-20020a05640235c500b004504b7d9c49mr19729004edc.149.1663669481248; Tue, 20
- Sep 2022 03:24:41 -0700 (PDT)
-MIME-Version: 1.0
-References: <20220914105058.2787404-1-chigot@adacore.com>
- <dbcca868-afee-2457-33ed-4d0274945c2b@linaro.org>
-In-Reply-To: <dbcca868-afee-2457-33ed-4d0274945c2b@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 20 Sep 2022 11:24:29 +0100
-Message-ID: <CAFEAcA-v30uCqKJT5mNCW72GJnxNVS6oUY0atfmbPR=nj_hC8Q@mail.gmail.com>
-Subject: Re: [PATCH] target/arm: Fix alignment for VLD4.32
-To: Richard Henderson <richard.henderson@linaro.org>
-Cc: =?UTF-8?Q?Cl=C3=A9ment_Chigot?= <chigot@adacore.com>, qemu-arm@nongnu.org, 
- qemu-devel@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::52f;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x52f.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- T_SPF_TEMPERROR=0.01 autolearn=unavailable autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=OYGbM+Ox;
+       spf=pass (google.com: domain of xen-devel-bounces@lists.xenproject.org designates 192.237.175.120 as permitted sender) smtp.mailfrom=xen-devel-bounces@lists.xenproject.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from list by lists.xenproject.org with outflank-mailman.409338.652336 (Exim 4.92)
+	(envelope-from <xen-devel-bounces@lists.xenproject.org>)
+	id 1oabYo-0006gx-Al; Tue, 20 Sep 2022 11:37:06 +0000
+X-Outflank-Mailman: Message body and most headers restored to incoming version
+Received: by outflank-mailman (output) from mailman id 409338.652336; Tue, 20 Sep 2022 11:37:06 +0000
+Received: from localhost ([127.0.0.1] helo=lists.xenproject.org)
+	by lists.xenproject.org with esmtp (Exim 4.92)
+	(envelope-from <xen-devel-bounces@lists.xenproject.org>)
+	id 1oabYo-0006gq-7h; Tue, 20 Sep 2022 11:37:06 +0000
+Received: by outflank-mailman (input) for mailman id 409338;
+ Tue, 20 Sep 2022 11:37:05 +0000
+Received: from se1-gles-flk1-in.inumbo.com ([94.247.172.50]
+ helo=se1-gles-flk1.inumbo.com)
+ by lists.xenproject.org with esmtp (Exim 4.92)
+ (envelope-from <SRS0=nmTP=ZX=redhat.com=armbru@srs-se1.protection.inumbo.net>)
+ id 1oabYn-0006gk-7D
+ for xen-devel@lists.xenproject.org; Tue, 20 Sep 2022 11:37:05 +0000
+Received: from us-smtp-delivery-124.mimecast.com
+ (us-smtp-delivery-124.mimecast.com [170.10.129.124])
+ by se1-gles-flk1.inumbo.com (Halon) with ESMTPS
+ id 8a4d1169-38d8-11ed-bad8-01ff208a15ba;
+ Tue, 20 Sep 2022 13:37:01 +0200 (CEST)
+Received: from mimecast-mx02.redhat.com (mx3-rdu2.redhat.com
+ [66.187.233.73]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-49-nyyOMpweMKOJOc5LnI28Bw-1; Tue, 20 Sep 2022 07:36:52 -0400
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.3])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 1C1DF3810D23;
+ Tue, 20 Sep 2022 11:36:50 +0000 (UTC)
+Received: from blackfin.pond.sub.org (unknown [10.39.192.163])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id EF591112131E;
+ Tue, 20 Sep 2022 11:36:48 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+ id A0E0D21E6900; Tue, 20 Sep 2022 13:36:47 +0200 (CEST)
+X-BeenThere: xen-devel@lists.xenproject.org
+List-Id: Xen developer discussion <xen-devel.lists.xenproject.org>
+List-Unsubscribe: <https://lists.xenproject.org/mailman/options/xen-devel>,
+ <mailto:xen-devel-request@lists.xenproject.org?subject=unsubscribe>
+List-Post: <mailto:xen-devel@lists.xenproject.org>
+List-Help: <mailto:xen-devel-request@lists.xenproject.org?subject=help>
+List-Subscribe: <https://lists.xenproject.org/mailman/listinfo/xen-devel>,
+ <mailto:xen-devel-request@lists.xenproject.org?subject=subscribe>
+Errors-To: xen-devel-bounces@lists.xenproject.org
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: nNSY7WsZI0Rn
+Sender: "Xen-devel" <xen-devel-bounces@lists.xenproject.org>
+X-Inumbo-ID: 8a4d1169-38d8-11ed-bad8-01ff208a15ba
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1663673820;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=Q9Kiy75k/GjyNcX5/jFVpAejSl+0Eo6vMfAUPlGa7+Q=;
+	b=OYGbM+OxxxL6pY1TjKJz4gTVCrAaoOCVNRNh2pV3j1iBck0WQc+65xLk//npdeZjAVhr2H
+	PZBizRXG16HzwhhLutLXWClNsaKaea862Q3JqHN/2AFETCnk81sG0QpTkb31ChHLTZdkWa
+	Mkm3JOJ/NrQImSb2E9IBzN0OE6QxMxQ=
+X-MC-Unique: nyyOMpweMKOJOc5LnI28Bw-1
+From: Markus Armbruster <armbru@redhat.com>
+To: Alistair Francis <alistair23@gmail.com>, Bin Meng
+ <bin.meng@windriver.com>, Palmer Dabbelt <palmer@dabbelt.com>
+Cc: Bernhard Beschow <shentey@gmail.com>,  "qemu-devel@nongnu.org
+ Developers" <qemu-devel@nongnu.org>,  "Michael S. Tsirkin"
+ <mst@redhat.com>,  Magnus Damm <magnus.damm@gmail.com>,  Aleksandar Rikalo
+ <aleksandar.rikalo@syrmia.com>,  Bandan Das <bsd@redhat.com>,  Matthew
+ Rosato <mjrosato@linux.ibm.com>,  Daniel Henrique Barboza
+ <danielhb413@gmail.com>,  Sergio Lopez <slp@redhat.com>,  Alexey
+ Kardashevskiy <aik@ozlabs.ru>,  Xiaojuan Yang <yangxiaojuan@loongson.cn>,
+  Cameron Esfahani <dirty@apple.com>,  Michael Rolnik <mrolnik@gmail.com>,
+  Song Gao <gaosong@loongson.cn>,  Jagannathan Raman
+ <jag.raman@oracle.com>,  Greg Kurz <groug@kaod.org>,  Kamil Rytarowski
+ <kamil@netbsd.org>,  Peter Xu <peterx@redhat.com>,  Joel Stanley
+ <joel@jms.id.au>,  Alistair Francis <Alistair.Francis@wdc.com>,  "Dr.
+ David Alan Gilbert" <dgilbert@redhat.com>,  Paolo Bonzini
+ <pbonzini@redhat.com>,  haxm-team@intel.com,  Roman Bolshakov
+ <r.bolshakov@yadro.com>,  Markus Armbruster <armbru@redhat.com>,  Eric
+ Auger <eric.auger@redhat.com>,  David Gibson
+ <david@gibson.dropbear.id.au>,  Daniel P. =?utf-8?Q?Berrang=C3=A9?=
+ <berrange@redhat.com>,
+  Christian Borntraeger <borntraeger@linux.ibm.com>,  =?utf-8?Q?C=C3=A9dri?=
+ =?utf-8?Q?c?= Le Goater
+ <clg@kaod.org>,  Stefan Hajnoczi <stefanha@redhat.com>,  Qemu-block
+ <qemu-block@nongnu.org>,  Eduardo Habkost <eduardo@habkost.net>,
+  =?utf-8?Q?Herv=C3=A9?=
+ Poussineau <hpoussin@reactos.org>,  "open list:New World"
+ <qemu-ppc@nongnu.org>,  Cornelia Huck <cohuck@redhat.com>,  Helge Deller
+ <deller@gmx.de>,  Stefano Stabellini <sstabellini@kernel.org>,  Philippe
+ =?utf-8?Q?Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,  "open list:RISC-V"
+ <qemu-riscv@nongnu.org>,  Stafford Horne <shorne@gmail.com>,  Paul Durrant
+ <paul@xen.org>,  Havard Skinnemoen <hskinnemoen@google.com>,  Elena
+ Ufimtseva <elena.ufimtseva@oracle.com>,  Alexander Graf <agraf@csgraf.de>,
+  Thomas Huth <thuth@redhat.com>,  Alex Williamson
+ <alex.williamson@redhat.com>,  Wenchao Wang <wenchao.wang@intel.com>,
+  Tony Krowiak <akrowiak@linux.ibm.com>,  Marcel Apfelbaum
+ <marcel.apfelbaum@gmail.com>,  qemu-s390x <qemu-s390x@nongnu.org>,
+  =?utf-8?Q?Marc-Andr=C3=A9?= Lureau <marcandre.lureau@redhat.com>,  Mark
+ Cave-Ayland
+ <mark.cave-ayland@ilande.co.uk>,  Eric Farman <farman@linux.ibm.com>,
+  Reinoud Zandijk <reinoud@netbsd.org>,  Alexander Bulekov <alxndr@bu.edu>,
+  Yanan Wang <wangyanan55@huawei.com>,  "Edgar E. Iglesias"
+ <edgar.iglesias@gmail.com>,  Gerd Hoffmann <kraxel@redhat.com>,  Tyrone
+ Ting <kfting@nuvoton.com>,  "open list:X86"
+ <xen-devel@lists.xenproject.org>,  Yoshinori Sato
+ <ysato@users.sourceforge.jp>,  John Snow <jsnow@redhat.com>,  Richard
+ Henderson <richard.henderson@linaro.org>,  Darren Kenny
+ <darren.kenny@oracle.com>,  "open list:Overall" <kvm@vger.kernel.org>,
+  Qiuhao Li <Qiuhao.Li@outlook.com>,  John G Johnson
+ <john.g.johnson@oracle.com>,  Sunil Muthuswamy <sunilmut@microsoft.com>,
+  Max Filippov <jcmvbkbc@gmail.com>,  qemu-arm <qemu-arm@nongnu.org>,
+  Marcelo Tosatti <mtosatti@redhat.com>,  Peter Maydell
+ <peter.maydell@linaro.org>,  Anthony Perard <anthony.perard@citrix.com>,
+  Andrew Jeffery <andrew@aj.id.au>,  Artyom Tarasenko
+ <atar4qemu@gmail.com>,  Halil Pasic <pasic@linux.ibm.com>,  "Maciej S.
+ Szmigiero" <maciej.szmigiero@oracle.com>,  Jason Wang
+ <jasowang@redhat.com>,  David Hildenbrand <david@redhat.com>,  Laurent
+ Vivier <laurent@vivier.eu>,  Alistair Francis <alistair@alistair23.me>,
+  Jason Herne <jjherne@linux.ibm.com>
+Subject: Re: [PATCH 1/9] hw/riscv/sifive_e: Fix inheritance of SiFiveEState
+References: <20220919231720.163121-1-shentey@gmail.com>
+	<20220919231720.163121-2-shentey@gmail.com>
+	<CAKmqyKN+V2R8PkED67tB8+pCZs9369ViiL8OZ9XhO3SdUCk5=Q@mail.gmail.com>
+Date: Tue, 20 Sep 2022 13:36:47 +0200
+In-Reply-To: <CAKmqyKN+V2R8PkED67tB8+pCZs9369ViiL8OZ9XhO3SdUCk5=Q@mail.gmail.com>
+	(Alistair Francis's message of "Tue, 20 Sep 2022 09:31:10 +1000")
+Message-ID: <87edw6xoog.fsf@pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/27.2 (gnu/linux)
+MIME-Version: 1.0
+Content-Type: text/plain
+X-Scanned-By: MIMEDefang 3.1 on 10.11.54.3
+X-TUID: 7iN8mrj4fT7l
 
-On Wed, 14 Sept 2022 at 14:11, Richard Henderson
-<richard.henderson@linaro.org> wrote:
+Alistair Francis <alistair23@gmail.com> writes:
+
+> On Tue, Sep 20, 2022 at 9:18 AM Bernhard Beschow <shentey@gmail.com> wrote:
+>>
+>> SiFiveEState inherits from SysBusDevice while it's TypeInfo claims it to
+>> inherit from TYPE_MACHINE. This is an inconsistency which can cause
+>> undefined behavior such as memory corruption.
+>>
+>> Change SiFiveEState to inherit from MachineState since it is registered
+>> as a machine.
+>>
+>> Signed-off-by: Bernhard Beschow <shentey@gmail.com>
 >
-> On 9/14/22 11:50, Cl=C3=A9ment Chigot wrote:
-> > When requested, the alignment for VLD4.32 is 8 and not 16.
-> >
-> > See ARM documentation about VLD4 encoding:
-> >      ebytes =3D 1 << UInt(size);
-> >      if size =3D=3D '10' then
-> >          alignment =3D if a =3D=3D '0' then 1 else 8;
-> >      else
-> >          alignment =3D if a =3D=3D '0' then 1 else 4*ebytes;
-> >
-> > Signed-off-by: Cl=C3=A9ment Chigot <chigot@adacore.com>
->
-> Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+> Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
 
+To the SiFive maintainers: since this is a bug fix, let's merge it right
+away.
 
-
-Applied to target-arm.next, thanks.
-
--- PMM

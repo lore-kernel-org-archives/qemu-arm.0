@@ -1,194 +1,132 @@
-Received: by 2002:a17:906:b088:0:0:0:0 with SMTP id x8csp1980761ejy;
-        Tue, 20 Sep 2022 12:01:22 -0700 (PDT)
-X-Google-Smtp-Source: AMsMyM6Dt28p6QjbJ8aG5nJae7ICmkYKZ9AU8oYgJCH+iw14XkXLfGnIg62LTXPbnIT1sFJ3RGVJ
-X-Received: by 2002:a05:622a:15cc:b0:35c:f4ce:bdc8 with SMTP id d12-20020a05622a15cc00b0035cf4cebdc8mr6545497qty.383.1663700481809;
-        Tue, 20 Sep 2022 12:01:21 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1663700481; cv=none;
+Received: by 2002:a17:906:b088:0:0:0:0 with SMTP id x8csp1986326ejy;
+        Tue, 20 Sep 2022 12:11:37 -0700 (PDT)
+X-Google-Smtp-Source: AMsMyM7uHZRXvZgGoE8ndJerMiD/R528uq5F+KHBeZdAIT7ROsSf7zu6Ptzt4lnyGi0r7DQ9Az6j
+X-Received: by 2002:ac8:7d51:0:b0:35c:e38e:3bb with SMTP id h17-20020ac87d51000000b0035ce38e03bbmr11360755qtb.279.1663701097286;
+        Tue, 20 Sep 2022 12:11:37 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1663701097; cv=none;
         d=google.com; s=arc-20160816;
-        b=LR0dRBV+sqBoRKdgLv8K1YJr5netW6Kauiu+liWTz5Ab1h6Stn25sWSTIytzl0T9Zi
-         16cGDVtLNDQAMcmneLsotvNmcUQY01AOqYfxt0JOwIwWfbt89xSCkWohldGR6Bzzu/eY
-         zV9jVz/SP4z2WpsV8S9s/CfxzigskHoHRa96B8YeLWWjFXo7eWJ7keGwgnvA6XHRDI/y
-         ijMyJhq5brnIkM8n6v40PGTQZpWE1a6vitXNeAx9lrszK81I3MWycwMH/63KVEu1azWS
-         bXGJBJ+S0FYTanKfwEJgrenl1Z9pUNX3zY9c3Clsn1qSCSFFTDIfEBddb9c8tAfvvbdJ
-         vQgQ==
+        b=U5nzaaJ2nNlk8CvHccYy+x47uT1fc9CCpE7UxmtRknTtAHHi8J+2iQ2+c5KhaM7zZ9
+         Y38Z8I1t1E7Sbfi5Yvp2hE5DHvKIH0jZ82aBWhwduUWH+85uVSChO8dyTTuSDEZ/TYez
+         Rz1WYEM0nLKescwuuUALI5qdpzVMG+NLPJjBFOOIFF2ZiyTLfBZ657XFGc8g8/CqhcBi
+         TbBxZDIF092zGlnvyrbPIIAkbVJlucgE3njLzvsHNoLjFGXOcSFLkd+esM3HMKzP6G7M
+         DTNQ7CmZ7ibfCAs74FtvA7ERZm4s/mVYqY/kfdFKDl53mPEjaVPX9S8wUTKuCIJGIzkk
+         gMww==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=yc11HwSM7YgO+gEFfU6wqmQndk/XclUvErpmHtS057w=;
-        b=aGTh1snslESw+6vHGpCJgqm7J+MqQaxnNwNdu0iNsnPvGUvYXVPvPRV+uxmvxQgXtT
-         dCp9fgLCvRs8jRvgMOfvwOKAEaP3lp1LOTVWt11hukGEEMYnqptYtCsz5P5lWwBiE1zh
-         WuNCE+nJtCsAnuxNJ7qa8mIlFFFXQWyP7KYiJR5bjZ9Yfix0b8NdG46YbxKYYmjEbcBL
-         uyfA7sCvnqkE61utogEegqKjYzNj2zwpQI9VmWqV3GWE6CEoAdJg7SnKLyW/dmSV2Hj2
-         yv8bph9US546e2Ppb+h2hYyqbaS6TxAbOrGrmr/rCJhd7zIQn7n9jpTrFzXTk5PmQE/7
-         pq7A==
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=MJBsb8QhoaE9TusmHiHCUH+D0wwbWqK/jI/pi/xZ7ks=;
+        b=XecCwS4m/ongx92iK6IwCHjZkTEMi3ugoQMzgXkX0G78VfvTBTyMcZijXDW1AzMcpw
+         ni2gs1/01UUcYe9du1liE+jvOLiI+iKhdHW8Z3aO2+XUxANSx5PMFwOMKjvMbtenVtYA
+         1Hj507fH87i0Yi8TZ36pPIDGE6M0Q8MGKtQykEMPqIuz5SkYid90XESPZD+QmGh4dGtq
+         e4ALPZP5nX7nrVsfdZAjWCw9l99nvtsIlB4KMiE3X6xEoC5j7NWbkG05d0Z6Z//qX4t2
+         hZ00F5NI/bOrTT2FQLTKe6UFTIIejOvYOAwspli5uVWc4LDxDkXiz0/NbdsgvWV+AUku
+         uhEw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@bytedance-com.20210112.gappssmtp.com header.s=20210112 header.b="mbq/Ow4o";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=bytedance.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@linaro.org header.s=google header.b=t3aOM5Wx;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x30-20020a05620a0b5e00b006bbbef7d484si339171qkg.626.2022.09.20.12.01.21
+        by mx.google.com with ESMTPS id x1-20020a05620a448100b006bb0a475ecbsi393977qkp.733.2022.09.20.12.11.37
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 20 Sep 2022 12:01:21 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 20 Sep 2022 12:11:37 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@bytedance-com.20210112.gappssmtp.com header.s=20210112 header.b="mbq/Ow4o";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=bytedance.com
-Received: from localhost ([::1]:41950 helo=lists1p.gnu.org)
+       dkim=pass header.i=@linaro.org header.s=google header.b=t3aOM5Wx;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:44762 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1oaiUj-0006I0-8q
-	for alex.bennee@linaro.org; Tue, 20 Sep 2022 15:01:21 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:39436)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1oaiee-0004cK-JM
+	for alex.bennee@linaro.org; Tue, 20 Sep 2022 15:11:36 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38452)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <zhangjian.3032@bytedance.com>)
- id 1oaf0A-0005Iu-MR
- for qemu-arm@nongnu.org; Tue, 20 Sep 2022 11:17:35 -0400
-Received: from mail-lf1-x132.google.com ([2a00:1450:4864:20::132]:35332)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1oaf6h-0000I3-HY
+ for qemu-devel@nongnu.org; Tue, 20 Sep 2022 11:24:20 -0400
+Received: from mail-ed1-x535.google.com ([2a00:1450:4864:20::535]:33438)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <zhangjian.3032@bytedance.com>)
- id 1oaf04-0006ah-Bw
- for qemu-arm@nongnu.org; Tue, 20 Sep 2022 11:17:30 -0400
-Received: by mail-lf1-x132.google.com with SMTP id z25so4377649lfr.2
- for <qemu-arm@nongnu.org>; Tue, 20 Sep 2022 08:17:27 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=bytedance-com.20210112.gappssmtp.com; s=20210112;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date;
- bh=yc11HwSM7YgO+gEFfU6wqmQndk/XclUvErpmHtS057w=;
- b=mbq/Ow4oe5dAZTOCkOAr/TvhGVuVkbGD6vMEx2KCWnU0XmjE8+bHRftfTFmmJC+USE
- amBovffcSnpLBKWXlhVBtLS1lSmqMQl0cM7J2G3afo8sW4jV3KMzf27LtPxvyp/3375U
- egxUS7fyRgesjFLqCLE2ZqJIXJ/jNM5Y1vgkI3znn2XbuBpHWs9ypHrjpEeS0TdGOp6e
- OOy2HIh2d+sr40FMSSb8i1hiJdP3in8ZHbxdQ4kXTTG3bD/+d9gD7p3zGxB+b3m2dFNY
- WdD2hkjhRSn/nJUVEzLuPfSctxq25Sdp9K7SWtslHM7cPdBRJn/KdgjS1F1ZUKoGExSX
- l36Q==
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1oaf6e-0007Zn-30
+ for qemu-devel@nongnu.org; Tue, 20 Sep 2022 11:24:19 -0400
+Received: by mail-ed1-x535.google.com with SMTP id b35so4455781edf.0
+ for <qemu-devel@nongnu.org>; Tue, 20 Sep 2022 08:24:15 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date;
+ bh=MJBsb8QhoaE9TusmHiHCUH+D0wwbWqK/jI/pi/xZ7ks=;
+ b=t3aOM5WxXo0AmQ/7aus1AM+SBtMrZmkg4CMnupN61RWdYmQOJhaE5skEBWbNWOePBW
+ 9ijeLnMQcaTjHHv/el8iXc4N70J3qB/1fratYlra0xO1KasK6I75wxBYelnwsuPylJKa
+ pU09AwDxFuZBUlt89CH7t65KEUZCF0lO3y8ct20WQtLDHzqmVx+xTUky10LXyzZ5Dtd5
+ f/CinTbvH419KcsaESS2Cgg6z/q6dceEpGKLjbzdJN5wYa2x1jFLtfoAnaZriOQw+c4c
+ THbSHPhD5IzIQofp3gulhBzNyqe517NHdDbB9yi1/+Y/bfiNE1tWCk2nFOUFECMiXZs+
+ ZvOg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
- :subject:date;
- bh=yc11HwSM7YgO+gEFfU6wqmQndk/XclUvErpmHtS057w=;
- b=J97nFF1Q97d07dehwXTl6DpTPmfekTGfn/FxuFvjTF4atkq1NLaGeDO0OucVrgOH6x
- XAIyS871VOWNx48aNL56vSvC8Nbx+IUCGiBTFykEkIe2PCoglu5A5c4ZAq/wL3ITcBI+
- IvPBdsat2L4xvWBwFIu+2W9h8D1VZjX+TJutxoS98LtOJQgEAdJV0pDoXyHisC3td0lv
- bbb9UsQKebBudjkq9Ry4yzn2jmg+7YcXsHXiou3OnDWmZyeZUJdOsO784gu0IV6SOar5
- EY4ctYHeKjk0FQT4EC2czAylRH+0Zd9tz2GY330oewpQGroUIxekdArgLV8T8qx6FfL8
- Dc8w==
-X-Gm-Message-State: ACrzQf21O1YIp/qCY6b26LDz5+pW9p0SGebAkNXSNz4D7L8NQSYFNnnf
- t+hzgw3DUSHfQDF4fTCNsjgP1fNy2fKaXVQOukAKzw==
-X-Received: by 2002:a19:5505:0:b0:497:ad71:39f4 with SMTP id
- n5-20020a195505000000b00497ad7139f4mr8267818lfe.226.1663687045982; Tue, 20
- Sep 2022 08:17:25 -0700 (PDT)
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date;
+ bh=MJBsb8QhoaE9TusmHiHCUH+D0wwbWqK/jI/pi/xZ7ks=;
+ b=4e5mp4tAf8x209/8Sj9TkMXuRL96i6bfstVYglzftY5DRKVgMnAJXCiOBpVOPogngZ
+ OrKlRdNpb/x/Q5QBll0uwbk/sB6ZG07NzFBuOJ47PrPN4I2VVJ+vULm+BSE4T//9MV1u
+ vQiZJDjIlPJOWHSil60uXB0+8jaeja/moQnKEMZ7VVDhmvDrvl8T76ikCKJr2hlsijFG
+ H/Ft37CzmhoPbXSD9ZO3PZI5+ar2zEY5GUEVinvMInYj3t2xuFpFqYUJvRo6eyH6w2Li
+ x1StPL0kLZWjc2b2uJNwnMrQjOGaHWc2onOW0e2eQ4dq0fGaiNbs65vtR9YF3jVE3piu
+ bx3g==
+X-Gm-Message-State: ACrzQf1AbHQyDKLGjGzgUgbqU+Sx5ecoaAK3nD3YfdrUBrYCNHiA2xRn
+ aV6mE4EkajPfMJ9m7f0/Xnxu+YOPE7d8d1xLA0tZPQ==
+X-Received: by 2002:aa7:c610:0:b0:44e:9a0f:753a with SMTP id
+ h16-20020aa7c610000000b0044e9a0f753amr20285289edq.140.1663687454374; Tue, 20
+ Sep 2022 08:24:14 -0700 (PDT)
 MIME-Version: 1.0
-References: <20220919172112.2706026-1-zhangjian.3032@bytedance.com>
- <8aa93a4f-beef-a0a6-8bac-3b69ba25de7e@amsat.org>
-In-Reply-To: <8aa93a4f-beef-a0a6-8bac-3b69ba25de7e@amsat.org>
-From: Zhang Jian <zhangjian.3032@bytedance.com>
-Date: Tue, 20 Sep 2022 23:17:14 +0800
-Message-ID: <CA+J-oUt96e0kNwDsee8YgmRkKSzPb==aD=VHU0My9a=CV-8RuQ@mail.gmail.com>
-Subject: Re: [Phishing Risk] [External] Re: [PATCH 0/3] Add a host power device
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
-Cc: peter.maydell@linaro.org, clg@kaod.org, andrew@aj.id.au, joel@jms.id.au, 
- qemu-devel@nongnu.org, qemu-arm@nongnu.org, yulei.sh@bytedance.com, 
- tangyiwei.2022@bytedance.com, chentingting.2150@bytedance.com, 
- yuhao.17@bytedance.com, wangxiaohua.1217@bytedance.com, 
- xiening.xll@bytedance.com
+References: <20220822152741.1617527-1-richard.henderson@linaro.org>
+ <20220822152741.1617527-24-richard.henderson@linaro.org>
+In-Reply-To: <20220822152741.1617527-24-richard.henderson@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 20 Sep 2022 16:24:02 +0100
+Message-ID: <CAFEAcA-Os6BPfnHsDo3VpN73jAskQbPDy6KaSg=kBBU=Fy8UkQ@mail.gmail.com>
+Subject: Re: [PATCH v2 23/66] target/arm: Add TBFLAG_M32.SECURE
+To: Richard Henderson <richard.henderson@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
 Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::132;
- envelope-from=zhangjian.3032@bytedance.com; helo=mail-lf1-x132.google.com
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Received-SPF: pass client-ip=2a00:1450:4864:20::535;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x535.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 1f2+L2JAzpVZ
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: LffFhlqPeEni
 
-Hi Philippe,
+On Mon, 22 Aug 2022 at 17:10, Richard Henderson
+<richard.henderson@linaro.org> wrote:
+>
+> Remove the use of regime_is_secure from arm_tr_init_disas_context.
+> Instead, provide the value of v8m_secure directly from tb_flags.
+> Rather than use regime_is_secure, use the env->v7m.secure directly,
+> as per arm_mmu_idx_el.
+>
+> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 
-Thanks for your reply.
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
-On Tue, Sep 20, 2022 at 7:09 AM Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.or=
-g> wrote:
->
-> Hi Jian,
->
-> On 19/9/22 19:21, Jian Zhang wrote:
-> > This patchset adds a host power device and added it into the g220a
-> > mahcine. The BMC have a important is to control the power of the host,
-> > usually it is nessary in a hardware platform.
-> >
-> > The BMC(soc) usually had a output pin to control the power of the host,
-> > and a input pin to get the power status of the host.
-> >
-> > The host power device is a generic device to simulate the host power,
-> > accept the power control command from the BMC and report the power
-> > status.
-> >
-> > Test on the g220a machine, the host power control command can be simply
-> > work.
-> >
-> > Jian Zhang (3):
-> >    hw/gpio/aspeed_gpio: Add gpios in/out init
-> >    hw/misc/host_power: Add a simple host power device
-> >    hw/arm/aspeed: g220a: Add host-power device
->
-> "power-good" is just a TYPE_LED object, but it doesn't seem you are
-> really interested in using it.
->
-yeah, i'd like to just send an irq when the `switch` status changed.
-
-> My understanding of your "power-button" is a latching switch.
->
-yeah, this really like a latching switch.
-
-> This could be indeed useful. I'd name this model TYPE_LATCHING_SWITCH
-> and put it in hw/misc/latching-switch.c (since it is external to a
-> SoC). It has one input and one output. Naming them is not particularly
-> useful IMHO.
-ok, it's make sense, using input and output directly.
-> The triggering edge should be a property (it might have
-> a default, positive/negative), and the switch state must to be in
-> vmstate for the object to be migratable.
-Ok, i got it.
->
-> ("power-good"/"power-button" is what this particular board choose to
-> use the latch switch input/output for).
->
-> Do you mind renaming your series accordingly ("latching switch"),
-> and adding the vmstate?
->
-Ok, the name latching switch makes more sense and is more generic.
-
-> Also I'd reorder your series as 2,1,3:
-> - introduce the new device
-> - prepare aspeed_gpio
-> - wire aspeed_g220a
->
-okay~
-> Regards,
->
-> Phil.
-
-Thanks for your reply.
-
-Thanks, Jian.
+thanks
+-- PMM

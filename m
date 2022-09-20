@@ -1,99 +1,99 @@
-Received: by 2002:a17:906:b088:0:0:0:0 with SMTP id x8csp1793823ejy;
-        Tue, 20 Sep 2022 06:44:18 -0700 (PDT)
-X-Google-Smtp-Source: AMsMyM4v5n/388yFG5OoQBrR3jX9KVSZ+h5XOzU8lnbJp+fzz9Cf6wyQmv3cc0dPPnVH+Q8Br9gm
-X-Received: by 2002:a05:6214:f6a:b0:4a7:fe99:a39f with SMTP id iy10-20020a0562140f6a00b004a7fe99a39fmr19246752qvb.26.1663681458383;
-        Tue, 20 Sep 2022 06:44:18 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1663681458; cv=none;
+Received: by 2002:a17:906:b088:0:0:0:0 with SMTP id x8csp1794457ejy;
+        Tue, 20 Sep 2022 06:45:33 -0700 (PDT)
+X-Google-Smtp-Source: AMsMyM7esS5e5DlxQLbLEV7PyWHf6pMD5Qmzj8+s4mlnPddjGfMAob8AtoaGpz/1x80Gg2XeS6H1
+X-Received: by 2002:a05:622a:1a85:b0:35b:bb1e:efd3 with SMTP id s5-20020a05622a1a8500b0035bbb1eefd3mr19528625qtc.80.1663681533396;
+        Tue, 20 Sep 2022 06:45:33 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1663681533; cv=none;
         d=google.com; s=arc-20160816;
-        b=Qd6LIwVj9+mnvGCnE1LY4DfJPkPqSuCSxwKbBDEXOi8OaLXt2uH7eCFI618lF+ECoC
-         zKPIRL0HdkKIPg0OZ1qCpw6lgFv7AfICgvCeXlIIgWIccu98Qw8RT6UdG3NjWs13hghX
-         qQhn/uaYRlVGol6O4GIS9+0nl8Yry3JRb4B64xPzm21edWyOUYoESr8N7+6aK1NiS08V
-         UhV8N4r3p2g7MIK89LUh2HU+/BLH3XgKsgv5dmohU55XP+eW1kGMILALODVfS45RuNbe
-         +H+LsOLTaIIX15nrxlc5euwp5Sb3Nk5gtv3rWg0rRwJUHqkFzZ2XutWASnUz7gtFaojU
-         IobA==
+        b=zpekDFauwBNQXo5O4QM8JksvpCZpeaw7Lj3QVChV6wkgnnQg4FPlvyWk1arZlboxRG
+         ASJ6quG6bKaRbbjzGau5/ZoaPlRbx91+oXx1NOTO8dfrY42w6Lb4M03KELQihlURECK1
+         IU3IrdxIfuNJc/+WgEOBdDlDm8+1jnuDjFU95LHf9LqH1nFtc74aEvzmsvf1EVgk0BKi
+         eNKj46agKsoEy2TDDvmKOeOjhMA2IzusodfYDkxu+HzUNcCOTn6fN1Bh7HX0p7JfNPha
+         LPjIqH3+kiOJUwlyDySJXxGmD3VRyD103QDoxEw+KkqJaKxyVlZv+tVcinBwA51va944
+         RjTQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
          :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=5mr4Y5RdId+omuTpYV9/bPWYx6x+e2AED17JsG4+Txg=;
-        b=YGDRZZxBzjO61BYnRlNCUHw2ky2RKdUHh9H0LiHTwNIjvclaj8bgOPyPR4JsIYTAXr
-         PxP6+r32PoE4lNT/mcsadtjohBkPfgPNXSfngiw7W7YU69v66wf35ixQYNcZLOJWjZmI
-         mZ9ev9nM8UE5E5y3xasxLXCxcSnK+hP3/15GD+ji8BepzTObyZwKdeFglONlPJZxzjho
-         VDOZNilAcveco/ux6ZPmfCvKU+xMO9ekTazhDZqkkdFtjUuv8cEM0olyI9KNrmzjD57y
-         HaBwG2GZioYth8Bigy0pdL0W4QekSq2WfubiseJ6jozbA7Bq5ZrNQb3H7guQWnOVhkBv
-         4knw==
+        bh=QPDBZf0pG/kBpT781+bWXQnCkAArbOj+qVN3kuZn98Y=;
+        b=0MqaxyfxieZ8I0M9OLBs8D4UGKB7xpGT/vPnVK32PbaD0dLPscOo28LaxTlt+YMHxo
+         KCZVL/ZOlR91QbJ8JCSb8pNVZKebnuarc25ldMxN9c1RzaNUaDDkqRZ8ZRkHaatdqSWF
+         upNePjq1KBIveR5ceOniFCSXpLLSbTx+3uBfN0Cbqw4gdoNR0pM8e+tKi6CcWzJhdNNn
+         9+C4zRSjNHApQxWM2GoSITmjMgW5r84SRtdL7Cj3zN0usuionTgp7IpfF/8B5O4i8Is2
+         544kbPMVJqSQmksP09l1QQ7gOM0xI7xRIrXcB+Jurwf7raejQbr5vr/jdv9s+cBCfGMU
+         +Y5Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Xho2FtAb;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b="d9ZuzEK/";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id m9-20020a05620a290900b006cdece7e4e3si226246qkp.457.2022.09.20.06.44.18
+        by mx.google.com with ESMTPS id t4-20020a0562140c6400b004aab0393609si877646qvj.268.2022.09.20.06.45.33
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 20 Sep 2022 06:44:18 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 20 Sep 2022 06:45:33 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Xho2FtAb;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b="d9ZuzEK/";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:60076 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:56340 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1oadXt-0003sa-T3
-	for alex.bennee@linaro.org; Tue, 20 Sep 2022 09:44:17 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:48828)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1oadZ6-0005VD-Qq
+	for alex.bennee@linaro.org; Tue, 20 Sep 2022 09:45:32 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:54566)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1oaajJ-00017T-R5
- for qemu-arm@nongnu.org; Tue, 20 Sep 2022 06:43:55 -0400
-Received: from mail-ej1-x62a.google.com ([2a00:1450:4864:20::62a]:35472)
+ id 1oaayF-0003Aa-GO
+ for qemu-devel@nongnu.org; Tue, 20 Sep 2022 06:59:19 -0400
+Received: from mail-ej1-x62f.google.com ([2a00:1450:4864:20::62f]:36736)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1oaajI-0006vN-4X
- for qemu-arm@nongnu.org; Tue, 20 Sep 2022 06:43:53 -0400
-Received: by mail-ej1-x62a.google.com with SMTP id go34so5156746ejc.2
- for <qemu-arm@nongnu.org>; Tue, 20 Sep 2022 03:43:51 -0700 (PDT)
+ id 1oaayD-0001a4-Hs
+ for qemu-devel@nongnu.org; Tue, 20 Sep 2022 06:59:19 -0400
+Received: by mail-ej1-x62f.google.com with SMTP id 13so5232793ejn.3
+ for <qemu-devel@nongnu.org>; Tue, 20 Sep 2022 03:59:17 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:from:to:cc:subject:date;
- bh=5mr4Y5RdId+omuTpYV9/bPWYx6x+e2AED17JsG4+Txg=;
- b=Xho2FtAbi5CM7MYsV5lo3JQXMQFN2hyEv+L2P0klhQbQWoRFX7yvbO4RlKGLuARTGg
- RgzSG+zc2WZxl32iGma3UQXinKdHFwEnWnv2aBMPh/R5PsCz4urj6KRh/2oCUdAiyuhu
- WQ+8SVO1GH0IQJtHeLm2LVK8mgy/bFYhjKeUydvs1fvhNj9i+miZzhguZxhx4DdXWTtj
- FXrz1jSiRJ8Gt9wU8999DUiQdaK0Chhr85I/fW7VELn0KN9j27duug2LCoEJHfTYk8wJ
- +nTgi8QTM0NpOLhilWLatGGElDRA7krBciZ9gyrMQBvsVJ1yWmekgFV2otOuAsW17j/R
- ViFg==
+ bh=QPDBZf0pG/kBpT781+bWXQnCkAArbOj+qVN3kuZn98Y=;
+ b=d9ZuzEK/87Fwb4Vn9J/j115bbm3UdPPWYp44GShi8fRyhzTGi39RQ0al9RiSGyyO0N
+ ISNfZWG/gcvuuD4T3B99fNAB3XUS6TqB/6VojI4hDhoBoIylwo+pdVc1YPgheKr+A4zc
+ YtMGZVEWqkGZh0pBnJvlYvftf3kMdsrsh2BApXPjK3cgWz5HqMmBD5YwWnhj4pJIW4aA
+ j2QAbI1BMLq9NJQSu+qRl7aDqlCNooPoldNv30RZCy511xHUOoijVoaWdW+sC+uT3ldn
+ u7FpPE37MDt9flqh9ENy+oAiny/83BkC0ytcQAXVUoQe2FYkuVrNHzeG1UlcolPbkFxO
+ hVqQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:x-gm-message-state:from:to:cc:subject:date;
- bh=5mr4Y5RdId+omuTpYV9/bPWYx6x+e2AED17JsG4+Txg=;
- b=egm3KYd9wCBQ2ZTnCyWb9XV3Tq6PLHwfpyzLy6G640yL49U/Q/pM0occkBYd3zCuc1
- 7ieTmT/zUtsgorEA4aMskYGSvXl3pNsp4ShWehZVVNuwIABm/+tajpzICLndB/1F2dC8
- X/ojoEkXxslX6d/pELG6Z5MXqx/KonXH0E9MsKxqohc7QE/58Siuc18vz4u1coSo9bC3
- yeP4sv1yEyG6W0aL6matbL2plg6YqLvgpx9gWVSoXt2iihhbgOqjuVZe8RnQgjS0bZ5E
- j5OSt8MO0z9RbnitQApVWooK4ks6I70T0apA0iHJowxbKk7WMQlT9Qw3/mMpU/iOgj7G
- GIXA==
-X-Gm-Message-State: ACrzQf1LQExb+poiLiX18MWF0b0aiFaceA20GrfLmgwEFf9TGgVJNaKo
- 5QNDxWDZJrI/M9ssTRPxFmWB7jOVm1Z8JXzHipMOAw==
-X-Received: by 2002:a17:907:2bd5:b0:76f:591c:466b with SMTP id
- gv21-20020a1709072bd500b0076f591c466bmr15672770ejc.504.1663670630722; Tue, 20
- Sep 2022 03:43:50 -0700 (PDT)
+ bh=QPDBZf0pG/kBpT781+bWXQnCkAArbOj+qVN3kuZn98Y=;
+ b=CiyRNRo+j2w9spuQyedl6PKimW8yXbH3pQN1dg77QnTs71V0RGl/1aejXnOlTEv23a
+ jLp1tvzUrjPIvtOhiCcz9c2zDMMB3oqAcJ9O3ogY164um0YnmZ/K1QIhcnCuwJw8lTJQ
+ NmfvZpijEtjiU/OVqn2AKUimc3azfUGGShOsL3y4NElyszc3r2qs23C9ysorLhPLkXa/
+ mzXvDmd7WdRgBYV28lsMEjwqRAmzzNjYjMaEU/amLXpYCVEjE1jIM1hBaJIhlqC+613q
+ Z+72UNaN9r9pTQAJs4GKQRu6sOaGYb2XvrplO8+EvcdU7nvmOTaOg7LZlaqBag3raq52
+ Vjaw==
+X-Gm-Message-State: ACrzQf0wyaKqv+5PpK2J+9aRMKBMsgt7SXwX4kANDG0YCQBua7Zd1Wy3
+ 6siZdYan2iihxfG4wEhD/1Zj8195CHV+q7uwgfPBCQ==
+X-Received: by 2002:a17:906:8a6b:b0:780:ab37:b63 with SMTP id
+ hy11-20020a1709068a6b00b00780ab370b63mr14430333ejc.365.1663671555418; Tue, 20
+ Sep 2022 03:59:15 -0700 (PDT)
 MIME-Version: 1.0
 References: <20220905202259.189852-1-richard.henderson@linaro.org>
- <20220905202259.189852-3-richard.henderson@linaro.org>
-In-Reply-To: <20220905202259.189852-3-richard.henderson@linaro.org>
+ <20220905202259.189852-6-richard.henderson@linaro.org>
+In-Reply-To: <20220905202259.189852-6-richard.henderson@linaro.org>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 20 Sep 2022 11:43:39 +0100
-Message-ID: <CAFEAcA_mNbBujzBQFvs4WLkGCnmzjWJq37NRn3e+7qN8470NcA@mail.gmail.com>
-Subject: Re: [PATCH v3 2/6] accel/tcg: Drop addr member from SavedIOTLB
+Date: Tue, 20 Sep 2022 11:59:03 +0100
+Message-ID: <CAFEAcA-cRTKR2G+U3y=oh3p5v2kfLeA2CTc4tTza5G7LoMfJng@mail.gmail.com>
+Subject: Re: [PATCH v3 5/6] accel/tcg: Introduce tlb_set_page_full
 To: Richard Henderson <richard.henderson@linaro.org>
 Cc: qemu-devel@nongnu.org, f4bug@amsat.org, qemu-arm@nongnu.org, 
  pbonzini@redhat.com
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::62a;
- envelope-from=peter.maydell@linaro.org; helo=mail-ej1-x62a.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::62f;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ej1-x62f.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -102,29 +102,143 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: tolf9fNEa/Hl
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: VMj6oZ302u8a
 
-On Mon, 5 Sept 2022 at 21:27, Richard Henderson
+On Mon, 5 Sept 2022 at 21:29, Richard Henderson
 <richard.henderson@linaro.org> wrote:
 >
-> This field is only written, not read; remove it.
+> Now that we have collected all of the page data into
+> CPUTLBEntryFull, provide an interface to record that
+> all in one go, instead of using 4 arguments.  This interface
+> allows CPUTLBEntryFull to be extended without having to
+> change the number of arguments.
 >
 > Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 > ---
+>  include/exec/cpu-defs.h | 14 ++++++++++
+>  include/exec/exec-all.h | 22 +++++++++++++++
+>  accel/tcg/cputlb.c      | 62 ++++++++++++++++++++++++++++-------------
+>  3 files changed, 78 insertions(+), 20 deletions(-)
+>
+> diff --git a/include/exec/cpu-defs.h b/include/exec/cpu-defs.h
+> index f70f54d850..5e12cc1854 100644
+> --- a/include/exec/cpu-defs.h
+> +++ b/include/exec/cpu-defs.h
+> @@ -148,7 +148,21 @@ typedef struct CPUTLBEntryFull {
+>       *     + the offset within the target MemoryRegion (otherwise)
+>       */
+>      hwaddr xlat_section;
+> +
+> +    /*
+> +     * @phys_addr contains the physical address in the address space
+> +     * given by cpu_asidx_from_attrs(cpu, @attrs).
+> +     */
+> +    hwaddr phys_addr;
+> +
+> +    /* @attrs contains the memory transaction attributes for the page. */
+>      MemTxAttrs attrs;
+> +
+> +    /* @prot contains the complete protections for the page. */
+> +    uint8_t prot;
+> +
+> +    /* @lg_page_size contains the log2 of the page size. */
+> +    uint8_t lg_page_size;
+>  } CPUTLBEntryFull;
+>
+>  /*
+> diff --git a/include/exec/exec-all.h b/include/exec/exec-all.h
+> index 758cf6bcc7..1a30c857f4 100644
+> --- a/include/exec/exec-all.h
+> +++ b/include/exec/exec-all.h
+> @@ -257,6 +257,28 @@ void tlb_flush_range_by_mmuidx_all_cpus_synced(CPUState *cpu,
+>                                                 uint16_t idxmap,
+>                                                 unsigned bits);
+>
+> +/**
+> + * tlb_set_page_full:
+> + * @cpu: CPU context
+> + * @mmu_idx: mmu index of the tlb to modify
+> + * @vaddr: virtual address of the entry to add
+> + * @full: the details of the tlb entry
+> + *
+> + * Add an entry to @cpu tlb index @mmu_idx.  All of the fields of
+> + * @full must be filled, except for xlat_section, and constitute
+> + * the complete description of the translated page.
+> + *
+> + * This is generally called by the target tlb_fill function after
+> + * having performed a successful page table walk to find the physical
+> + * address and attributes for the translation.
+> + *
+> + * At most one entry for a given virtual address is permitted. Only a
+> + * single TARGET_PAGE_SIZE region is mapped; @full->ld_page_size is only
 
+typo: lg_page_size
+
+> + * used by tlb_flush_page.
+> + */
+> +void tlb_set_page_full(CPUState *cpu, int mmu_idx, target_ulong vaddr,
+> +                       CPUTLBEntryFull *full);
+> +
+>  /**
+>   * tlb_set_page_with_attrs:
+>   * @cpu: CPU to add this TLB entry for
+
+> @@ -1272,15 +1275,34 @@ void tlb_set_page_with_attrs(CPUState *cpu, target_ulong vaddr,
+>      qemu_spin_unlock(&tlb->c.lock);
+>  }
+>
+> -/* Add a new TLB entry, but without specifying the memory
+> - * transaction attributes to be used.
+> - */
+> +void tlb_set_page_with_attrs(CPUState *cpu, target_ulong vaddr,
+> +                             hwaddr paddr, MemTxAttrs attrs, int prot,
+> +                             int mmu_idx, target_ulong size)
+> +{
+> +    CPUTLBEntryFull full = {
+> +        .phys_addr = paddr,
+> +        .attrs = attrs,
+> +        .prot = prot,
+> +        .lg_page_size = ctz64(size)
+> +    };
+> +
+> +    assert(is_power_of_2(size));
+> +    tlb_set_page_full(cpu, mmu_idx, vaddr, &full);
+> +}
+> +
+>  void tlb_set_page(CPUState *cpu, target_ulong vaddr,
+>                    hwaddr paddr, int prot,
+>                    int mmu_idx, target_ulong size)
+>  {
+> -    tlb_set_page_with_attrs(cpu, vaddr, paddr, MEMTXATTRS_UNSPECIFIED,
+> -                            prot, mmu_idx, size);
+> +    CPUTLBEntryFull full = {
+> +        .phys_addr = paddr,
+> +        .attrs = MEMTXATTRS_UNSPECIFIED,
+> +        .prot = prot,
+> +        .lg_page_size = ctz64(size)
+> +    };
+> +
+> +    assert(is_power_of_2(size));
+> +    tlb_set_page_full(cpu, mmu_idx, vaddr, &full);
+>  }
+
+Why not just leave tlb_set_page() the way it was? Writing
+it out results in this code duplication...
+
+Otherwise
 Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
 thanks

@@ -1,359 +1,179 @@
-Received: by 2002:a17:906:b088:0:0:0:0 with SMTP id x8csp1569130ejy;
-        Mon, 19 Sep 2022 22:36:20 -0700 (PDT)
-X-Google-Smtp-Source: AMsMyM5dVXt8Scd5dCaSB6iXGsfq/CjaBC1HTtsDwScaghcCPXZyxbemYLwQH4idOO5hbML720bl
-X-Received: by 2002:a05:6402:1f06:b0:447:f6a0:2f71 with SMTP id b6-20020a0564021f0600b00447f6a02f71mr18270254edb.243.1663652180297;
-        Mon, 19 Sep 2022 22:36:20 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1663652180; cv=none;
+Received: by 2002:a17:906:b088:0:0:0:0 with SMTP id x8csp1601329ejy;
+        Tue, 20 Sep 2022 00:07:51 -0700 (PDT)
+X-Google-Smtp-Source: AMsMyM6B9rkm9/rq5AK9HqLf3jBAoT5dvhjyuGbzhqJyF+OuwGVp6wHEySOE+hjZIbokE/SNPM7E
+X-Received: by 2002:a05:622a:18a3:b0:35b:af14:401e with SMTP id v35-20020a05622a18a300b0035baf14401emr17686579qtc.200.1663657671423;
+        Tue, 20 Sep 2022 00:07:51 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1663657671; cv=none;
         d=google.com; s=arc-20160816;
-        b=fsOgXlqXLpbhV/wW7/YVwnOf+43RxupSqAn0rFLMdtSkNbxlxydFRqCWClq1Z06G8D
-         JbVwRN8raPTxkuufOGBpKq58NYUOH6qYqCEcAsl9mb5ofPSFb8ftMktQnOz4nwiCErVl
-         edAIp3WuvgdVN0m1mF8mmsGkY4DbveWrlSDwNrUBLlQrZzgoE4adl3LZIktabvNIibgr
-         I7hOW7+SWKGmxRB1+qHUpnUeQgynct9iTqVwJ5t+Mmo/zE9BXZF7CrXTzPrvFQm8Y+hx
-         vjnDiHzeOKy6qhD4WoTx46IhKltfi/119G4TxFy0653IdTLi7l7PARAv8FPsoFpPKBvF
-         Bftg==
+        b=xfnhvc6SIM2AAha1tGLqUNpcoAao1WW7cRTJwMNS7JZMbWhc1WXPY5QUltgoOO5S3W
+         WLLM6Q1r71TTY4FRG1faVMaPZvM/DmMMipWadUtebpQVRNC2AezR8Ktl23dqkDzey2Am
+         VDUW8E+t/gwaboST939KrPPgO7SP3qeTqi7SeSlx/k1Af5ynf/T2EB8UyXC3bVB+E+d9
+         rA11pDsp3mtcDT7nMzzGO4csfwEN5uqxjPBCSPTcGzIOWqx2cciyaqG0hTT+F+Dti3Al
+         XeR3zSOZK7mWCZ13BdhNECwBOC8EIUsrPy/4OdGE+vcCVKmndVmVQy4AtVrqRmR0bPPU
+         lJSQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=list-id:precedence:content-transfer-encoding:in-reply-to:from
-         :references:cc:to:content-language:subject:user-agent:mime-version
-         :date:message-id:sender:dkim-signature;
-        bh=IZ5Zv4/7hTO/6wXmRF3z+PXEnTdcge7XTl0lYv1HpKI=;
-        b=u1a311mm+UKtw0JXcpT9b5FjUwN7jeG27C6uU9vGjyoM3+B5YOxANARCZHQiRhBi0e
-         wnuRjftPesd++mSOqzam1xx3jRlNTvkVw4/dy28zNJtl+kcOozkcQ6fo1BgToRARwpWi
-         S2lYhiYHjBK17AQp7+l2wbdy2LopkqNz5/N3MGv/NVWXDnCBEhUmS3KVM9zM1F+SHRvu
-         sIMy9gDtVDQOWUztbFabCg1qe/k2BM1rAOtm57uBFxcRl9qUW3UaRBhc/H6cCaU5M44Q
-         juCqHqKvm9pVPt7p4ebv5QkbD5BQK9LYMFJSV9nS1X1YsBlMeHuuH3TGIUXZT5QuEyr3
-         Mfeg==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:references:cc:to:content-language:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=SGwX909Gb+syIQD2vf4rn9A/9C8ljwxBynEmiGkdZe0=;
+        b=SPZE3viKPQUx6kyBomPp6NdUK6fKvD/ENveqZE1iOV/pDRZjrBbvW01ZqG6sRy0/l1
+         Ir6TlgplZbkcm8NrVfONkqkNGywXaY7Ssu3Ts6am0GV+6zcmgy/CB+y+X9a0jNSP+GL0
+         v9Dv20A5UJbTorFtdBbbhtE2WlUTI7pi8MMW4b54/4h7Y7edkp8rfCJ1VRnlVn5vT1oW
+         EZeY1po/KUU290ynvTabOvN2n1wMP6xVICGWHpPA1hIW9PxB/pTOU+fR8KxPm1L9rezi
+         WkeWt9veQyhjS2qp2P/TUWrtdP7YwewF1BAmA+vGEPYR1Yk7bpcipjX9ENNeQaLxPV6o
+         6vsQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=b0lsnmuC;
-       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
-       dmarc=fail (p=QUARANTINE sp=QUARANTINE dis=QUARANTINE) header.from=amsat.org
-Return-Path: <kvm-owner@vger.kernel.org>
-Received: from out1.vger.email (out1.vger.email. [2620:137:e000::1:20])
-        by mx.google.com with ESMTP id qk43-20020a1709077fab00b0077c3308aea9si439790ejc.707.2022.09.19.22.36.20;
-        Mon, 19 Sep 2022 22:36:20 -0700 (PDT)
-Received-SPF: pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) client-ip=2620:137:e000::1:20;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=LPUsmY4+;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id i126-20020a375484000000b006bae5b577cbsi318156qkb.259.2022.09.20.00.07.51
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 20 Sep 2022 00:07:51 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=b0lsnmuC;
-       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
-       dmarc=fail (p=QUARANTINE sp=QUARANTINE dis=QUARANTINE) header.from=amsat.org
-Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S229885AbiITFgS (ORCPT <rfc822;daniel.diaz@linaro.org>
-        + 2 others); Tue, 20 Sep 2022 01:36:18 -0400
-Received: from lindbergh.monkeyblade.net ([23.128.96.19]:59448 "EHLO
-        lindbergh.monkeyblade.net" rhost-flags-OK-OK-OK-OK) by vger.kernel.org
-        with ESMTP id S229684AbiITFgQ (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Tue, 20 Sep 2022 01:36:16 -0400
-Received: from mail-wr1-x434.google.com (mail-wr1-x434.google.com [IPv6:2a00:1450:4864:20::434])
-        by lindbergh.monkeyblade.net (Postfix) with ESMTPS id 8E5EE52087
-        for <kvm@vger.kernel.org>; Mon, 19 Sep 2022 22:36:14 -0700 (PDT)
-Received: by mail-wr1-x434.google.com with SMTP id e16so2423006wrx.7
-        for <kvm@vger.kernel.org>; Mon, 19 Sep 2022 22:36:14 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :sender:from:to:cc:subject:date;
-        bh=IZ5Zv4/7hTO/6wXmRF3z+PXEnTdcge7XTl0lYv1HpKI=;
-        b=b0lsnmuCPz8cDwBFaPfL1ExlL6hZoGBvsAo90EdbWfbIty8yoFPD3+pM+wCc6r61jh
-         02HNF8QWjamjJ/5XkxHcwZWxllIZeCL3Ej0ajT59Sui+41jMg10A8+RqC1gMCPSMNtsr
-         Ynq/WHREdM5adnH2c34ZUcVa02IKeDn0yv7w2JXYtOXYSOzmC9i4UAlhnWs8IdBRdaKj
-         +EoC2mIXhoHnXN/nP7wSPWSC/fSlPbfxoLGWA4NiqceL28aaTcdr66NmRjIBw+kyTQ0O
-         3ODJqwU5La/Ozm1eqms4cfz6/VM9dp4JBRM4j1m070bia2cnFcYGHu8fJFoQ3iRtxQbn
-         S8QA==
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=LPUsmY4+;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:41190 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1oaXME-0003K2-35
+	for alex.bennee@linaro.org; Tue, 20 Sep 2022 03:07:50 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:56764)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1oaXF9-0001Hz-2e
+ for qemu-devel@nongnu.org; Tue, 20 Sep 2022 03:00:31 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:42236)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1oaXF6-0003NX-5g
+ for qemu-devel@nongnu.org; Tue, 20 Sep 2022 03:00:29 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1663657226;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=SGwX909Gb+syIQD2vf4rn9A/9C8ljwxBynEmiGkdZe0=;
+ b=LPUsmY4+K8ddr9Ktqr4Gqmj6kg8fLFEfxbzuWMcgBwVnQLb/DIlNYMgezyK9ZnQTaBhRCD
+ x4Av8Z+MQiQR2PXxhh+EWXofvjaoTP00/L3SQLPbny385gyaykE2HgALUR7Sh47dvdMpkI
+ cz6/AwPdlLxaBE+3wK9j1AotLjX049o=
+Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
+ [209.85.221.71]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_128_GCM_SHA256) id
+ us-mta-407-s2SnLZOONMKQg3YEq3TYnw-1; Tue, 20 Sep 2022 03:00:24 -0400
+X-MC-Unique: s2SnLZOONMKQg3YEq3TYnw-1
+Received: by mail-wr1-f71.google.com with SMTP id
+ d30-20020adfa41e000000b00228c0e80c49so746732wra.21
+ for <qemu-devel@nongnu.org>; Tue, 20 Sep 2022 00:00:23 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :sender:x-gm-message-state:from:to:cc:subject:date;
-        bh=IZ5Zv4/7hTO/6wXmRF3z+PXEnTdcge7XTl0lYv1HpKI=;
-        b=wdEmDWHO+HdEVXPLpCnhlHjThU7ADuejYRubbB9NFz87S+c3hwmfHQzfH+PtmbfG+Q
-         CC0Q/HgF8M2pU7su3LlSCq2A59nzqH+nA9hZp5LrduBodwR8zc6NukNT7hkODXM49QTW
-         +4RrxnsvDE6zaGcKoeW3HUwyfBCAqI8heHzgeJGnXqRHaoURrbY/UlHqi75LF5IOqejZ
-         sUZGEw6XeOHPNkXCDFNcW5AoJAFmS5xtdmY1I4Oplgs8I4sKFZ8Slxrkn2UE4A+g3emA
-         frtEp849Rka8kBfSV06WWTXy76zyx1fpRRuCK3CE7/t0MklBmJ1iPVgajwgrDQmG9M5e
-         t7gw==
-X-Gm-Message-State: ACrzQf2h+mlOxtftjdXWgJh00J9s14QdFNE/dmtu9qYuOlrPcHBDz6Ya
-        ULBC7hL0MLHUYh+cu1IPnWk=
-X-Received: by 2002:a5d:69ca:0:b0:228:dd17:9534 with SMTP id s10-20020a5d69ca000000b00228dd179534mr13398301wrw.652.1663652172930;
-        Mon, 19 Sep 2022 22:36:12 -0700 (PDT)
-Received: from [192.168.1.115] ([185.126.107.38])
-        by smtp.gmail.com with ESMTPSA id u16-20020a05600c035000b003b492753826sm804412wmd.43.2022.09.19.22.36.08
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 19 Sep 2022 22:36:12 -0700 (PDT)
-Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= 
-        <philippe.mathieu.daude@gmail.com>
-Message-ID: <38bd4756-dacd-9862-3999-60d609d52f46@amsat.org>
-Date:   Tue, 20 Sep 2022 07:36:07 +0200
+ d=1e100.net; s=20210112;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date;
+ bh=SGwX909Gb+syIQD2vf4rn9A/9C8ljwxBynEmiGkdZe0=;
+ b=ffhrjvx4GcJipKzFI0UzxtUguFZ/mcKcmxlGbtkylYhMNv5eXhyRAo25zPLWnZ+DGO
+ sHdX45bsJolU0kLL4/jV5JEIV+YBU8Yw3v6OyJiHVtUD8no2cEfDdsKDE/JMWxTj5ztM
+ gms7Rhy0Oi7hIMMqFrG+syqsRt0S5apAY2ZhvvqKEL88nnh9xJussydA80yNnVOcqlQV
+ bBUVk4JSCOMAs4RsJdi4PVwFbaPzLtrBuSo0EXowc4uQMeeGMHzoE+eSOwZDIdd2YHH+
+ u6ROjmbogn0ZMym/LsRkqDBBAG5PixogbhXXTwrgpdl+uLNp5l1RG8PGbgcZfZVQ/qso
+ Z10Q==
+X-Gm-Message-State: ACrzQf2qr41q3iarmUNSv6gaK3c9IKnLlLp3sHtMExm9C/nsWHFf7FwC
+ rAHMp6O9ztqz6JsrHHgIm/GOVJ3CH7DNlFwK7khm194seg6b2gDhKS5tJu5BOA1A+tjKR8fCPP8
+ c8T1TDKXNhCY0E9A=
+X-Received: by 2002:a05:600c:3595:b0:3b4:8378:98d2 with SMTP id
+ p21-20020a05600c359500b003b4837898d2mr1260535wmq.64.1663657223042; 
+ Tue, 20 Sep 2022 00:00:23 -0700 (PDT)
+X-Received: by 2002:a05:600c:3595:b0:3b4:8378:98d2 with SMTP id
+ p21-20020a05600c359500b003b4837898d2mr1260511wmq.64.1663657222846; 
+ Tue, 20 Sep 2022 00:00:22 -0700 (PDT)
+Received: from [192.168.0.5] (ip-109-43-177-8.web.vodafone.de. [109.43.177.8])
+ by smtp.gmail.com with ESMTPSA id
+ o17-20020a05600c511100b003b4935f04a4sm1581955wms.5.2022.09.20.00.00.21
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 20 Sep 2022 00:00:22 -0700 (PDT)
+Message-ID: <eccfd9bd-2900-f437-778c-74a8052fc045@redhat.com>
+Date: Tue, 20 Sep 2022 09:00:20 +0200
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:91.0)
- Gecko/20100101 Thunderbird/91.13.0
-Subject: Re: [PATCH 5/9] exec/address-spaces: Wrap address space singletons
- into functions
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.13.0
+Subject: Re: [PATCH] tests/qtest: npcm7xx-emc-test: Skip checking MAC
 Content-Language: en-US
-To:     Bernhard Beschow <shentey@gmail.com>, qemu-devel@nongnu.org
-Cc:     "Michael S. Tsirkin" <mst@redhat.com>,
-        Magnus Damm <magnus.damm@gmail.com>,
-        Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
-        Bandan Das <bsd@redhat.com>,
-        Matthew Rosato <mjrosato@linux.ibm.com>,
-        Daniel Henrique Barboza <danielhb413@gmail.com>,
-        Sergio Lopez <slp@redhat.com>,
-        Alexey Kardashevskiy <aik@ozlabs.ru>,
-        Xiaojuan Yang <yangxiaojuan@loongson.cn>,
-        Cameron Esfahani <dirty@apple.com>,
-        Michael Rolnik <mrolnik@gmail.com>,
-        Song Gao <gaosong@loongson.cn>,
-        Jagannathan Raman <jag.raman@oracle.com>,
-        Greg Kurz <groug@kaod.org>,
-        Kamil Rytarowski <kamil@netbsd.org>,
-        Peter Xu <peterx@redhat.com>, Joel Stanley <joel@jms.id.au>,
-        Alistair Francis <Alistair.Francis@wdc.com>,
-        "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
-        Paolo Bonzini <pbonzini@redhat.com>, haxm-team@intel.com,
-        Roman Bolshakov <r.bolshakov@yadro.com>,
-        Markus Armbruster <armbru@redhat.com>,
-        Eric Auger <eric.auger@redhat.com>,
-        David Gibson <david@gibson.dropbear.id.au>,
-        =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?= <berrange@redhat.com>,
-        Christian Borntraeger <borntraeger@linux.ibm.com>,
-        =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>,
-        Stefan Hajnoczi <stefanha@redhat.com>, qemu-block@nongnu.org,
-        Eduardo Habkost <eduardo@habkost.net>,
-        =?UTF-8?Q?Herv=c3=a9_Poussineau?= <hpoussin@reactos.org>,
-        qemu-ppc@nongnu.org, Cornelia Huck <cohuck@redhat.com>,
-        Palmer Dabbelt <palmer@dabbelt.com>,
-        Helge Deller <deller@gmx.de>,
-        Stefano Stabellini <sstabellini@kernel.org>,
-        qemu-riscv@nongnu.org, Stafford Horne <shorne@gmail.com>,
-        Paul Durrant <paul@xen.org>,
-        Havard Skinnemoen <hskinnemoen@google.com>,
-        Elena Ufimtseva <elena.ufimtseva@oracle.com>,
-        Alexander Graf <agraf@csgraf.de>,
-        Thomas Huth <thuth@redhat.com>,
-        Alex Williamson <alex.williamson@redhat.com>,
-        Wenchao Wang <wenchao.wang@intel.com>,
-        Tony Krowiak <akrowiak@linux.ibm.com>,
-        Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
-        qemu-s390x@nongnu.org,
-        =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>,
-        Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
-        Eric Farman <farman@linux.ibm.com>,
-        Reinoud Zandijk <reinoud@netbsd.org>,
-        Alexander Bulekov <alxndr@bu.edu>,
-        Yanan Wang <wangyanan55@huawei.com>,
-        "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
-        Gerd Hoffmann <kraxel@redhat.com>,
-        Tyrone Ting <kfting@nuvoton.com>,
-        xen-devel@lists.xenproject.org,
-        Yoshinori Sato <ysato@users.sourceforge.jp>,
-        John Snow <jsnow@redhat.com>,
-        Richard Henderson <richard.henderson@linaro.org>,
-        Darren Kenny <darren.kenny@oracle.com>, kvm@vger.kernel.org,
-        Qiuhao Li <Qiuhao.Li@outlook.com>,
-        John G Johnson <john.g.johnson@oracle.com>,
-        Bin Meng <bin.meng@windriver.com>,
-        Sunil Muthuswamy <sunilmut@microsoft.com>,
-        Max Filippov <jcmvbkbc@gmail.com>, qemu-arm@nongnu.org,
-        Marcelo Tosatti <mtosatti@redhat.com>,
-        Peter Maydell <peter.maydell@linaro.org>,
-        Anthony Perard <anthony.perard@citrix.com>,
-        Andrew Jeffery <andrew@aj.id.au>,
-        Artyom Tarasenko <atar4qemu@gmail.com>,
-        Halil Pasic <pasic@linux.ibm.com>,
-        "Maciej S. Szmigiero" <maciej.szmigiero@oracle.com>,
-        Jason Wang <jasowang@redhat.com>,
-        David Hildenbrand <david@redhat.com>,
-        Laurent Vivier <laurent@vivier.eu>,
-        Alistair Francis <alistair@alistair23.me>,
-        Jason Herne <jjherne@linux.ibm.com>
-References: <20220919231720.163121-1-shentey@gmail.com>
- <20220919231720.163121-6-shentey@gmail.com>
-From:   =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-In-Reply-To: <20220919231720.163121-6-shentey@gmail.com>
+To: Patrick Venture <venture@google.com>
+Cc: Laurent Vivier <lvivier@redhat.com>,
+ Havard Skinnemoen <hskinnemoen@google.com>, CS20 KFTing
+ <kfting@nuvoton.com>, qemu-arm <qemu-arm@nongnu.org>,
+ QEMU Developers <qemu-devel@nongnu.org>, Hao Wu <wuhaotsh@google.com>
+References: <20220906163138.2831353-1-venture@google.com>
+ <98b23697-00ec-2952-31c1-258419bd5440@redhat.com>
+ <CAO=notzNRHaJvqnBx34qN0ovvwiwXNPRt73VnWqxyYhvnZMXnA@mail.gmail.com>
+From: Thomas Huth <thuth@redhat.com>
+In-Reply-To: <CAO=notzNRHaJvqnBx34qN0ovvwiwXNPRt73VnWqxyYhvnZMXnA@mail.gmail.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-Spam-Status: No, score=-2.5 required=5.0 tests=BAYES_00,DKIM_SIGNED,
-        DKIM_VALID,DKIM_VALID_EF,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
-        HEADER_FROM_DIFFERENT_DOMAINS,NICE_REPLY_A,RCVD_IN_DNSWL_NONE,
-        SPF_HELO_NONE,SPF_PASS autolearn=ham autolearn_force=no version=3.4.6
-X-Spam-Checker-Version: SpamAssassin 3.4.6 (2021-04-09) on
-        lindbergh.monkeyblade.net
-Precedence: bulk
-List-ID: <kvm.vger.kernel.org>
-X-Mailing-List: kvm@vger.kernel.org
-X-TUID: /Es33BYW9AQ2
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=thuth@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -37
+X-Spam_score: -3.8
+X-Spam_bar: ---
+X-Spam_report: (-3.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ NICE_REPLY_A=-0.952, RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: z1CxxSCA2zD4
 
-On 20/9/22 01:17, Bernhard Beschow wrote:
-> In the next steps, these singletons will be resolved by turning them
-> into attributes of the system bus. The system bus is already accessible
-> via the global current_machine variable which will be made use of later
-> in the wrapper functions.
+On 20/09/2022 00.37, Patrick Venture wrote:
 > 
-> All changes have been performed with search-and-replace:
-> * s/&address_space_memory/get_address_space_memory()/
-> * s/&address_space_io/get_address_space_io()/
-> The only exceptions were exec/address-spaces.h and softmmu/physmem.c
-> which have been manually changed.
 > 
-> Signed-off-by: Bernhard Beschow <shentey@gmail.com>
-> ---
->   accel/hvf/hvf-accel-ops.c            |  2 +-
->   accel/kvm/kvm-all.c                  | 12 ++++++------
->   hw/alpha/dp264.c                     |  4 ++--
->   hw/alpha/typhoon.c                   |  4 ++--
->   hw/arm/smmu-common.c                 |  4 ++--
->   hw/arm/smmuv3.c                      | 14 +++++++-------
->   hw/arm/virt.c                        |  2 +-
->   hw/char/goldfish_tty.c               |  4 ++--
->   hw/core/loader.c                     |  2 +-
->   hw/dma/pl330.c                       |  2 +-
->   hw/dma/rc4030.c                      |  2 +-
->   hw/dma/xlnx-zynq-devcfg.c            |  4 ++--
->   hw/dma/xlnx_dpdma.c                  |  8 ++++----
->   hw/hppa/machine.c                    |  4 ++--
->   hw/hyperv/hyperv.c                   |  2 +-
->   hw/hyperv/vmbus.c                    |  2 +-
->   hw/i386/amd_iommu.c                  | 18 +++++++++---------
->   hw/i386/fw_cfg.c                     |  2 +-
->   hw/i386/intel_iommu.c                | 24 ++++++++++++------------
->   hw/i386/microvm.c                    |  4 ++--
->   hw/i386/pc.c                         |  2 +-
->   hw/i386/xen/xen-hvm.c                |  4 ++--
->   hw/ide/ahci.c                        |  2 +-
->   hw/ide/macio.c                       | 10 +++++-----
->   hw/intc/apic.c                       |  2 +-
->   hw/intc/openpic_kvm.c                |  2 +-
->   hw/intc/pnv_xive.c                   |  6 +++---
->   hw/intc/pnv_xive2.c                  |  6 +++---
->   hw/intc/riscv_aplic.c                |  2 +-
->   hw/intc/spapr_xive.c                 |  2 +-
->   hw/intc/xive.c                       |  4 ++--
->   hw/intc/xive2.c                      |  4 ++--
->   hw/mips/jazz.c                       |  4 ++--
->   hw/misc/lasi.c                       |  2 +-
->   hw/misc/macio/mac_dbdma.c            |  8 ++++----
->   hw/net/ftgmac100.c                   | 16 ++++++++--------
->   hw/net/i82596.c                      | 24 ++++++++++++------------
->   hw/net/imx_fec.c                     | 22 +++++++++++-----------
->   hw/net/lasi_i82596.c                 |  2 +-
->   hw/net/npcm7xx_emc.c                 | 14 +++++++-------
->   hw/openrisc/boot.c                   |  2 +-
->   hw/pci-host/dino.c                   |  6 +++---
->   hw/pci-host/pnv_phb3.c               |  6 +++---
->   hw/pci-host/pnv_phb3_msi.c           |  6 +++---
->   hw/pci-host/pnv_phb4.c               | 10 +++++-----
->   hw/pci/pci.c                         |  2 +-
->   hw/ppc/pnv_psi.c                     |  2 +-
->   hw/ppc/spapr.c                       |  4 ++--
->   hw/ppc/spapr_events.c                |  2 +-
->   hw/ppc/spapr_hcall.c                 |  4 ++--
->   hw/ppc/spapr_iommu.c                 |  4 ++--
->   hw/ppc/spapr_ovec.c                  |  8 ++++----
->   hw/ppc/spapr_rtas.c                  |  2 +-
->   hw/remote/iommu.c                    |  2 +-
->   hw/remote/message.c                  |  4 ++--
->   hw/remote/proxy-memory-listener.c    |  2 +-
->   hw/riscv/boot.c                      |  6 +++---
->   hw/riscv/sifive_e.c                  |  2 +-
->   hw/riscv/sifive_u.c                  |  2 +-
->   hw/riscv/virt.c                      |  2 +-
->   hw/s390x/css.c                       | 16 ++++++++--------
->   hw/s390x/ipl.h                       |  2 +-
->   hw/s390x/s390-pci-bus.c              |  4 ++--
->   hw/s390x/s390-pci-inst.c             | 10 +++++-----
->   hw/s390x/s390-skeys.c                |  2 +-
->   hw/s390x/virtio-ccw.c                | 10 +++++-----
->   hw/sd/sdhci.c                        |  2 +-
->   hw/sh4/r2d.c                         |  4 ++--
->   hw/sparc/sun4m.c                     |  2 +-
->   hw/sparc/sun4m_iommu.c               |  4 ++--
->   hw/sparc64/sun4u_iommu.c             |  4 ++--
->   hw/timer/hpet.c                      |  2 +-
->   hw/usb/hcd-ehci-pci.c                |  2 +-
->   hw/usb/hcd-ehci-sysbus.c             |  2 +-
->   hw/usb/hcd-ohci.c                    |  2 +-
->   hw/usb/hcd-xhci-sysbus.c             |  2 +-
->   hw/vfio/ap.c                         |  2 +-
->   hw/vfio/ccw.c                        |  2 +-
->   hw/vfio/common.c                     |  8 ++++----
->   hw/vfio/platform.c                   |  2 +-
->   hw/virtio/vhost-vdpa.c               |  2 +-
->   hw/virtio/vhost.c                    |  2 +-
->   hw/virtio/virtio-bus.c               |  4 ++--
->   hw/virtio/virtio-iommu.c             |  6 +++---
->   hw/virtio/virtio-pci.c               |  2 +-
->   hw/xen/xen_pt.c                      |  4 ++--
->   include/exec/address-spaces.h        |  4 ++--
->   include/hw/elf_ops.h                 |  4 ++--
->   include/hw/ppc/spapr.h               |  5 +++--
->   include/hw/ppc/vof.h                 |  4 ++--
->   monitor/misc.c                       |  4 ++--
->   softmmu/ioport.c                     | 12 ++++++------
->   softmmu/memory_mapping.c             |  2 +-
->   softmmu/physmem.c                    | 17 ++++++++++++++---
->   target/arm/hvf/hvf.c                 |  4 ++--
->   target/arm/kvm.c                     |  4 ++--
->   target/avr/helper.c                  |  8 ++++----
->   target/i386/hax/hax-all.c            |  2 +-
->   target/i386/hax/hax-mem.c            |  2 +-
->   target/i386/hvf/hvf.c                |  2 +-
->   target/i386/hvf/vmx.h                |  2 +-
->   target/i386/hvf/x86_mmu.c            |  6 +++---
->   target/i386/nvmm/nvmm-all.c          |  4 ++--
->   target/i386/sev.c                    |  4 ++--
->   target/i386/tcg/sysemu/misc_helper.c | 12 ++++++------
->   target/i386/whpx/whpx-all.c          |  4 ++--
->   target/s390x/diag.c                  |  2 +-
->   target/s390x/mmu_helper.c            |  2 +-
->   target/s390x/sigp.c                  |  2 +-
->   target/xtensa/dbg_helper.c           |  2 +-
->   tests/qtest/fuzz/generic_fuzz.c      |  4 ++--
->   111 files changed, 285 insertions(+), 273 deletions(-)
+> On Mon, Sep 19, 2022 at 5:44 AM Thomas Huth <thuth@redhat.com 
+> <mailto:thuth@redhat.com>> wrote:
+> 
+>     On 06/09/2022 18.31, Patrick Venture wrote:
+>      > The register tests walks all the registers to verify they are initially
+>      > 0 when appropriate.  However, if the MAC address is set in the register
+>      >    space, this should not be checked against 0.
+>      >
+>      > Reviewed-by: Hao Wu <wuhaotsh@google.com <mailto:wuhaotsh@google.com>>
+>      > Change-Id: I02426e39bdab33ceedd42c49d233e8680d4ec058
+> 
+>     What's that change-id good for?
+> 
+> 
+> Oops, sorry about that.  I can send out a v2 without it, or during 
+> application someone can nicely trim it? :)
 
-Please consider using scripts/git.orderfile for tree-wide refactors,
-it helps reviewers.
+I can take the patch through my qtest branch - I'll drop the line there.
 
-> diff --git a/include/exec/address-spaces.h b/include/exec/address-spaces.h
-> index db8bfa9a92..d5c8cbd718 100644
-> --- a/include/exec/address-spaces.h
-> +++ b/include/exec/address-spaces.h
-> @@ -33,8 +33,8 @@ MemoryRegion *get_system_memory(void);
->    */
->   MemoryRegion *get_system_io(void);
->   
-> -extern AddressSpace address_space_memory;
-> -extern AddressSpace address_space_io;
-> +AddressSpace *get_address_space_memory(void);
-> +AddressSpace *get_address_space_io(void);
->   
->   #endif
+>     Basically ack, but one question: Where should that non-zero MAC address
+>     come
+>     from / when did you hit a problem here? If QEMU is started without any mac
+>     settings at all (like it is done here), the register never contains a
+>     non-zero value, does it?
+> 
+> 
+> So, there's a bug in the emc device presently where that value isn't set 
+> when it should be.  I have that bug fixed, but for whatever reason, probably 
+> not enough caffeine, I didn't bundle the two patches together.
 
-> diff --git a/softmmu/physmem.c b/softmmu/physmem.c
-> index 56e03e07b5..0ac920d446 100644
-> --- a/softmmu/physmem.c
-> +++ b/softmmu/physmem.c
-> @@ -89,8 +89,8 @@ RAMList ram_list = { .blocks = QLIST_HEAD_INITIALIZER(ram_list.blocks) };
->   static MemoryRegion *system_memory;
->   static MemoryRegion *system_io;
->   
-> -AddressSpace address_space_io;
-> -AddressSpace address_space_memory;
-> +static AddressSpace address_space_io;
-> +static AddressSpace address_space_memory;
->   
->   static MemoryRegion io_mem_unassigned;
->   
-> @@ -2690,6 +2690,16 @@ MemoryRegion *get_system_io(void)
->       return system_io;
->   }
->   
-> +AddressSpace *get_address_space_memory(void)
-> +{
-> +    return &address_space_memory;
-> +}
-> +
-> +AddressSpace *get_address_space_io(void)
-> +{
-> +    return &address_space_io;
-> +}
+OK, makes sense now, thanks for the explanation!
 
-Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+  Thomas
+
+

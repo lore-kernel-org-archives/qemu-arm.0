@@ -1,98 +1,98 @@
-Received: by 2002:a17:906:b088:0:0:0:0 with SMTP id x8csp1999416ejy;
-        Tue, 20 Sep 2022 12:43:30 -0700 (PDT)
-X-Google-Smtp-Source: AMsMyM7okNnye+D/2IRBG4iOuH41xRgnFwilO4tPha6eh3Rs3pMgOi2Q58591VK7ruaClR6MybB1
-X-Received: by 2002:a05:620a:2699:b0:6cf:3ee4:5657 with SMTP id c25-20020a05620a269900b006cf3ee45657mr2737255qkp.475.1663703010476;
-        Tue, 20 Sep 2022 12:43:30 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1663703010; cv=none;
+Received: by 2002:a17:906:b088:0:0:0:0 with SMTP id x8csp2027676ejy;
+        Tue, 20 Sep 2022 13:49:59 -0700 (PDT)
+X-Google-Smtp-Source: AMsMyM7953Z2tBWfR0RAVhNP/G7GdF3GUs1nnPVQVsg2Vc9UaN79Mdeigs9jgCID5H+AYdnzwdcO
+X-Received: by 2002:a05:620a:25d4:b0:6bb:f596:97d0 with SMTP id y20-20020a05620a25d400b006bbf59697d0mr18033576qko.411.1663706998924;
+        Tue, 20 Sep 2022 13:49:58 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1663706998; cv=none;
         d=google.com; s=arc-20160816;
-        b=vImTk8FlHq3rldJLo2+bzj4I9YepOgz8srF94IK8B/4x4uwslvmuS0FFhDCeUJBRFq
-         f3Uibc743SSIWcUr7TraweqxawBxamwhg5S7kg8XN77LseXDWQBh4oUoxmQtnlaXA+mV
-         mR/nA1nYS91rGWnoN4Iv8vqDQTI7imw7C4wVmlNfoHMC0nR6xWofM7yYwFbRv9BvB38i
-         zQ6wbU4v1DFxepNbUqcnTNCfek/+zwtEUO9UonsA+0H8IfzkQ+AIFFrtQk8zAl7pV0La
-         96GxCxZIdhQjfMSO8RYEUI3Bc2N8uzzqvcYyIfYc2m6PO7spyBpIagO5u+DS9K8J6RCE
-         mNxw==
+        b=ri+di8HUBscaRtb1yYU4rfC4ZzTkOyTFN+1n0PRcGmiYEydaLonQZh8s5+cUFAJkKQ
+         Zc7ZNZvgYeqK+8TVkb3t/uynDASHkdDrA2SwU6YnWuyZa+HhozzUzAsyc+RIzoH/Mxgt
+         AaB5nOFHqOCUScZbhtRx5qVEDkAavgVtGhIIja+9uHAAV1aJ37WWMGhsHwiixP8DtBD+
+         Ial5n5tYAtD52tNGzRLED7qsO+MPj9TS5+KMCytHj+GiDaeSMhawsHf5YZDH0c6Axjif
+         apjIdBjAgDA6X/L/IRCiRHDdrpRiMCeERytx/zyNN3KwPZ4cb6BxgNBPYrEKN1+K95hN
+         Xc3A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
          :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=ra+vsHoo1jj3Tu2LtRfk6afnJmxLxo7Ks/T3LYx6qvE=;
-        b=qUeO/RYil5AYzpFJtT7Fam5K8sKbHYp2v6Zf7UfsxJio3TKd1EH5yyBC2lgXiXySFC
-         dlkjrF3xOhh0ZNMl68xPAdYa9eQB8niI0NQdI+NdTWIv5h1hVZeACbFTFlGVv6iHFVI6
-         eY9/OEyUZOgtT1kfudsw8eAL+qvd9+h4T3vu+rIBEBxcJTX7LQ/wbuYM3tRHRUbVBjLb
-         ahBVwBssNsQMjoWldqly9pwh19mYklEyUk6gkyHBMvdI9t9TD2VhHCelSBXf1w+T+6Tm
-         FGrM2FX6LJAiR13HcT6Jnqn65UEtdnB+Cv8YHeBoh/INj/XNhZh4fVMFUrFlfWx6eReg
-         I9pA==
+        bh=5lUHutovwYwYSb4tFgPAdhsfX+qZcwHYtDiahs/qvAI=;
+        b=ZX4hw9fUDCw+1ll2aUFEXVwRrmJ7fi5w26Bry5Zj9sVXsL7sddG/v4U9ivX5tG/Xti
+         TRnUOw7hXYbxSStZZ5ep+fbOhOxy9jKIexvPIS7CasaltkfxxvymNI4ZnovuznGLkGTr
+         iOpF/DcJ8J5QINVghmQd9enf0ZxCGX2qiCSN5urwxmyANa/WIP0f1e4cljM9WY8IERaD
+         /4gra6wBwR6QEv6mmrkvSlrNty/n18nZg0DsnghEGqe077WMI3IVQRRrjx5qQ8vETUwf
+         OFrZRcS3kL+KLddFEIGmQetBgIEo0aiU/x7CGvoFR5S+viOMKwK0bwnY0K0y+DmUKFw6
+         kHyA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=F5bgmJzb;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=t2YgrFb4;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id u17-20020a05620a0c5100b006bb41b438fbsi544920qki.110.2022.09.20.12.43.30
+        by mx.google.com with ESMTPS id y22-20020a05620a0e1600b006bbb1bce643si397990qkm.681.2022.09.20.13.49.58
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 20 Sep 2022 12:43:30 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 20 Sep 2022 13:49:58 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=F5bgmJzb;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=t2YgrFb4;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:60258 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:59278 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1oaj9W-0000GL-0X
-	for alex.bennee@linaro.org; Tue, 20 Sep 2022 15:43:30 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49272)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1oakBq-0001nF-CN
+	for alex.bennee@linaro.org; Tue, 20 Sep 2022 16:49:58 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38896)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1oaf2m-00073C-5o
- for qemu-devel@nongnu.org; Tue, 20 Sep 2022 11:20:16 -0400
-Received: from mail-ej1-x633.google.com ([2a00:1450:4864:20::633]:42549)
+ id 1oag0K-0004Iq-3k
+ for qemu-arm@nongnu.org; Tue, 20 Sep 2022 12:21:48 -0400
+Received: from mail-ed1-x52a.google.com ([2a00:1450:4864:20::52a]:44701)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1oaf2g-000721-MD
- for qemu-devel@nongnu.org; Tue, 20 Sep 2022 11:20:12 -0400
-Received: by mail-ej1-x633.google.com with SMTP id sb3so6959819ejb.9
- for <qemu-devel@nongnu.org>; Tue, 20 Sep 2022 08:20:10 -0700 (PDT)
+ id 1oag0I-00008M-Li
+ for qemu-arm@nongnu.org; Tue, 20 Sep 2022 12:21:47 -0400
+Received: by mail-ed1-x52a.google.com with SMTP id x94so4576519ede.11
+ for <qemu-arm@nongnu.org>; Tue, 20 Sep 2022 09:21:46 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:from:to:cc:subject:date;
- bh=ra+vsHoo1jj3Tu2LtRfk6afnJmxLxo7Ks/T3LYx6qvE=;
- b=F5bgmJzb4W1ysnoWU7v/9auJuje2PWi23x27hd+pR8iGk279aN0qtfCL3rfvRQuSlu
- SiFw8yL5JLK5bVnxNc31Hr/BRF3rjn8DRnG5v6rqTQQF31DdiKgW0hybNBNwdcKn56FV
- 5tHbccTN20Fnra+FFiETzL6kzrZwAIfNdGfNaxoLxFx94qVonG5TOJ0RpsnQH8RSc29P
- 8rOuiQE7gHeAfbvR+Bn2xD1J7raLPeyrfYMavm4o5b+PpgS39qdMYSlZuynn48Gb6BOb
- G7svm2U60FTDBtWJfMM0R8MWEAhRT8rMlbiKGqTJ7d+6A2n5WOIaBpqaytv3EmAHbguP
- zMEA==
+ bh=5lUHutovwYwYSb4tFgPAdhsfX+qZcwHYtDiahs/qvAI=;
+ b=t2YgrFb4EBlba1TVfrCQU3f8fJUs7YpW6rxQWTDndN3jL2EHKgrLuLNmkGd8z+cmrO
+ TtiBtcMDTElJfNEb7fRz1jRrR/T+pkow+9daCMHfrLtJA83+4nOQbpAR9Gfxa0Oq6Jb3
+ RMv15iSSdwzQznizXdVPRHTcCZ9Z/QvrBmW7rNDbnpnsi+nB60+9BqTrnP+bpFRqx+H5
+ NheiICGSD6oOLenqivgMQRnUvuDaWtFX/SeRepMqQvFwF18BIUsW3OhWkd98+e9HFXlV
+ YhlygcAwDoeQPZYxfZ/RcqAIihcVQ8WxW/amEHuPIZn18oQ5y5bQ+5OkdOc2PxjvAT3D
+ 1xEw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:x-gm-message-state:from:to:cc:subject:date;
- bh=ra+vsHoo1jj3Tu2LtRfk6afnJmxLxo7Ks/T3LYx6qvE=;
- b=VVa7JIfeNRnLj6ixAsdWoX20fVkJQ6enTPEIkegp60WdHI2E77AYJCpu/E0pDH/rj4
- yJuormFvH79tbIArvYNxdYf6I8OSuoHhlZht1EJLktCA5oJ/ADf4eG6lNrwKmUFYuRKW
- sgreCzxyJEJ9OupKYLZRqjgMTlfV2RmSSn0f0KLddxumFD/iP8fpKI9RoYuy/B66nHJ5
- lFEeP3ABFEXWy4ob1Lep67Icp2om4QYX/ncuUmzbeh3Z/zaTW+rhlc6JC1ujjwA21te+
- BM6m2j1V8JkPNRyv7THkZ3r02Uten5yp9cQgbTkO8X7jMEGCsnC1/w+vaKNCdhGH0Dx9
- mrBg==
-X-Gm-Message-State: ACrzQf3B0wlemWcNXvTZKHTduMuYxHCq7hVC+jol/z77CH05r62IBc1z
- vx2eJU/UtkJyiKV7KzyASjOTYRTQU6kFB5f8ttxFTw==
-X-Received: by 2002:a17:907:86a5:b0:780:156d:e842 with SMTP id
- qa37-20020a17090786a500b00780156de842mr17148045ejc.555.1663687209060; Tue, 20
- Sep 2022 08:20:09 -0700 (PDT)
+ bh=5lUHutovwYwYSb4tFgPAdhsfX+qZcwHYtDiahs/qvAI=;
+ b=7hc884MfKMJCxeea18LzWnr6QQI28E02P/Ok9hBCOTTWN9YFdw5DGpCail04YuZTA5
+ /hQTMBZj3l27hUEAFDY12tILMwhEUJ/gaHqHGjNk090YKU04JjeiAWrK0nV27O6bPtqL
+ u333KCAkqer8P9d8vYlc26hov9SBnaEgK/MyxkK1qMFANIElt1qFaEF7uJWvZTj2HqLt
+ 6g/8WOpAdTjdFKslaR9n+BHJS17soAz+M+PJfDHVtR1wsHEwy78j1dAXYKDgV90KzKwK
+ QnrU7BLqmfarqP7jl8cq91zheC4sXZKaT5h/9q8AdwY/eizDMFzhQ8oo8xUd2PgsXLSg
+ VG1Q==
+X-Gm-Message-State: ACrzQf3EhtJWniHM7MWTbezPmSKxJfGzZL+oMrL9/LFvfKGMYwlhaLug
+ nH9/OlzrWJD7bbdxb9TO/lEqxgocbxpzxapEuBhF+g==
+X-Received: by 2002:a05:6402:2787:b0:451:d655:9269 with SMTP id
+ b7-20020a056402278700b00451d6559269mr20879248ede.375.1663690904620; Tue, 20
+ Sep 2022 09:21:44 -0700 (PDT)
 MIME-Version: 1.0
 References: <20220822152741.1617527-1-richard.henderson@linaro.org>
- <20220822152741.1617527-22-richard.henderson@linaro.org>
-In-Reply-To: <20220822152741.1617527-22-richard.henderson@linaro.org>
+ <20220822152741.1617527-37-richard.henderson@linaro.org>
+In-Reply-To: <20220822152741.1617527-37-richard.henderson@linaro.org>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 20 Sep 2022 16:19:56 +0100
-Message-ID: <CAFEAcA84FRmmRJrEV20Lto6JYfKf0DKAO06k9UmOxHT+t6BmZQ@mail.gmail.com>
-Subject: Re: [PATCH v2 21/66] target/arm: Split out get_phys_addr_with_secure
+Date: Tue, 20 Sep 2022 17:21:33 +0100
+Message-ID: <CAFEAcA9u1yYeDFxWUwvQUHgpEkMWqR3NhqHsuv_8J0obMjS9Rg@mail.gmail.com>
+Subject: Re: [PATCH v2 36/66] target/arm: Reorg get_phys_addr_disabled
 To: Richard Henderson <richard.henderson@linaro.org>
 Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::633;
- envelope-from=peter.maydell@linaro.org; helo=mail-ej1-x633.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::52a;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x52a.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -101,56 +101,44 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: iWWgUOkelrR2
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: EWuxmwVt8MzE
 
-On Mon, 22 Aug 2022 at 16:44, Richard Henderson
+On Mon, 22 Aug 2022 at 16:59, Richard Henderson
 <richard.henderson@linaro.org> wrote:
 >
-> Retain the existing get_phys_addr interface using
-> the security state derived from mmu_idx.
+> Use a switch.  Do not apply memattr or shareability for Stage2
+> translations. Make sure to apply HCR_{DC,DCT} only to Regime_EL10,
+> per the pseudocode in AArch64.S1DisabledOutput.
 >
 > Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
-> diff --git a/target/arm/ptw.c b/target/arm/ptw.c
-> index c338e2324a..c132d0cada 100644
-> --- a/target/arm/ptw.c
-> +++ b/target/arm/ptw.c
-> @@ -2282,12 +2282,12 @@ static ARMCacheAttrs combine_cacheattrs(CPUARMState *env,
->   * @result: set on translation success.
->   * @fi: set to fault info if the translation fails
->   */
+> ---
 
-This doc comment needs updating to add the new parameter.
 
-> -bool get_phys_addr(CPUARMState *env, target_ulong address,
-> -                   MMUAccessType access_type, ARMMMUIdx mmu_idx,
-> -                   GetPhysAddrResult *result, ARMMMUFaultInfo *fi)
-> +bool get_phys_addr_with_secure(CPUARMState *env, target_ulong address,
-> +                               MMUAccessType access_type, ARMMMUIdx mmu_idx,
-> +                               bool is_secure, GetPhysAddrResult *result,
-> +                               ARMMMUFaultInfo *fi)
->  {
->      ARMMMUIdx s1_mmu_idx = stage_1_mmu_idx(mmu_idx);
-> -    bool is_secure = regime_is_secure(env, mmu_idx);
->
->      if (mmu_idx != s1_mmu_idx) {
->          /*
+> +    check_range:
 
-Otherwise
-
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+I'm not super keen on this goto label lurking in the switch
+statement -- I would rather we keep the "how do we decide the
+memattr and shareability" logic separate from the
+"which mmu_idxes do we need to do the range check on" logic.
+The simple
+if (mmu_idx != ARMMMUIdx_Stage2 && mmu_idx != ARMMMUIdx_Stage2_S) {
+    range check logic;
+}
+that we had before seems clearer to me than this use of gotos
+and fall-throughs.
 
 thanks
 -- PMM

@@ -1,245 +1,222 @@
-Received: by 2002:a17:906:b088:0:0:0:0 with SMTP id x8csp1794457ejy;
-        Tue, 20 Sep 2022 06:45:33 -0700 (PDT)
-X-Google-Smtp-Source: AMsMyM7esS5e5DlxQLbLEV7PyWHf6pMD5Qmzj8+s4mlnPddjGfMAob8AtoaGpz/1x80Gg2XeS6H1
-X-Received: by 2002:a05:622a:1a85:b0:35b:bb1e:efd3 with SMTP id s5-20020a05622a1a8500b0035bbb1eefd3mr19528625qtc.80.1663681533396;
-        Tue, 20 Sep 2022 06:45:33 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1663681533; cv=none;
+Received: by 2002:a17:906:b088:0:0:0:0 with SMTP id x8csp1803479ejy;
+        Tue, 20 Sep 2022 07:01:20 -0700 (PDT)
+X-Google-Smtp-Source: AMsMyM57NMfbGyRc1mOfIW2OkSd4znp3ysc71scueGu62tssREmZyNLQhsNSC8yAby0V9120Vcaa
+X-Received: by 2002:a05:6402:1cc1:b0:453:1517:94e4 with SMTP id ds1-20020a0564021cc100b00453151794e4mr20088483edb.399.1663682480463;
+        Tue, 20 Sep 2022 07:01:20 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1663682480; cv=none;
         d=google.com; s=arc-20160816;
-        b=zpekDFauwBNQXo5O4QM8JksvpCZpeaw7Lj3QVChV6wkgnnQg4FPlvyWk1arZlboxRG
-         ASJ6quG6bKaRbbjzGau5/ZoaPlRbx91+oXx1NOTO8dfrY42w6Lb4M03KELQihlURECK1
-         IU3IrdxIfuNJc/+WgEOBdDlDm8+1jnuDjFU95LHf9LqH1nFtc74aEvzmsvf1EVgk0BKi
-         eNKj46agKsoEy2TDDvmKOeOjhMA2IzusodfYDkxu+HzUNcCOTn6fN1Bh7HX0p7JfNPha
-         LPjIqH3+kiOJUwlyDySJXxGmD3VRyD103QDoxEw+KkqJaKxyVlZv+tVcinBwA51va944
-         RjTQ==
+        b=eApVrjpk1PMhBg6UF6P4sTbtB6hzIknuNQZnPC8z3PQTsm6xBQ6xiQxlPL4PLIhbpp
+         UQ6O4HEx3eo/VX7OIWnG3XmGXjl0RkxfREnGAAO/vcfDBsemUfrkdp1Tqw0POZn7tenP
+         WkYed4UDr6pLz/S0FA1SW9Q3AYPWl+tvYYxS0PPXX3Z3WxzemqI4+lfgEvmdq1nvmF6L
+         7GVsrOyTDl8DeWqjGdfM7foxAmYWh4Gv+B0gS4wVDCjYZa5wHlZ02tOFzop1CTG6Hav6
+         HQc2Ae6nZYnxQnRL97LE9dxTmF6TY+cWRwjPsnyOJWpB1r2HNbdokW4PFtYVKgmGqn2N
+         mDHw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=QPDBZf0pG/kBpT781+bWXQnCkAArbOj+qVN3kuZn98Y=;
-        b=0MqaxyfxieZ8I0M9OLBs8D4UGKB7xpGT/vPnVK32PbaD0dLPscOo28LaxTlt+YMHxo
-         KCZVL/ZOlR91QbJ8JCSb8pNVZKebnuarc25ldMxN9c1RzaNUaDDkqRZ8ZRkHaatdqSWF
-         upNePjq1KBIveR5ceOniFCSXpLLSbTx+3uBfN0Cbqw4gdoNR0pM8e+tKi6CcWzJhdNNn
-         9+C4zRSjNHApQxWM2GoSITmjMgW5r84SRtdL7Cj3zN0usuionTgp7IpfF/8B5O4i8Is2
-         544kbPMVJqSQmksP09l1QQ7gOM0xI7xRIrXcB+Jurwf7raejQbr5vr/jdv9s+cBCfGMU
-         +Y5Q==
+        h=list-id:precedence:content-transfer-encoding:in-reply-to:from
+         :content-language:references:cc:to:subject:user-agent:mime-version
+         :date:message-id:dkim-signature;
+        bh=obx72+8lj9qm2WhrMMX0CKsbEGig5oqUktdJe59wJ8c=;
+        b=GNwy7XegQxqnyvUXXTEWVB7OhZ82J6cnXjPOlu+uCrUOI4rGdm8QLH8NdgpQeb8TET
+         kPwdnjPLYkKEnxf1HuxYbd3yFrTNnIVrHu8VJTx5/Wd5JZxemfn9DbBoZZSmf+ZWs/89
+         WqBjWlcM0mEy+7Rly6+oSclwaQIqzahL14AxxeEYGmU82AsPWbDBL3u/crzDmmVYuDrw
+         yfafDaUVv//iG9Vg05ujaQ+eDqbvs03tnf8kQ13C4/5/wf5i1z8Dh4HEaygFaeGRt+k6
+         JT2LKPA22/QZckBDKXwtPoBbH5t//ZwvLj6oQcZhc/PNkhKwqzaJDta9Qd99go0KZbjE
+         9X1A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="d9ZuzEK/";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t4-20020a0562140c6400b004aab0393609si877646qvj.268.2022.09.20.06.45.33
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 20 Sep 2022 06:45:33 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=EYGsqsWf;
+       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <kvm-owner@vger.kernel.org>
+Received: from out1.vger.email (out1.vger.email. [2620:137:e000::1:20])
+        by mx.google.com with ESMTP id hc6-20020a170907168600b00780a882d31fsi1365957ejc.486.2022.09.20.07.01.20;
+        Tue, 20 Sep 2022 07:01:20 -0700 (PDT)
+Received-SPF: pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) client-ip=2620:137:e000::1:20;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="d9ZuzEK/";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:56340 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1oadZ6-0005VD-Qq
-	for alex.bennee@linaro.org; Tue, 20 Sep 2022 09:45:32 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:54566)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1oaayF-0003Aa-GO
- for qemu-devel@nongnu.org; Tue, 20 Sep 2022 06:59:19 -0400
-Received: from mail-ej1-x62f.google.com ([2a00:1450:4864:20::62f]:36736)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1oaayD-0001a4-Hs
- for qemu-devel@nongnu.org; Tue, 20 Sep 2022 06:59:19 -0400
-Received: by mail-ej1-x62f.google.com with SMTP id 13so5232793ejn.3
- for <qemu-devel@nongnu.org>; Tue, 20 Sep 2022 03:59:17 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date;
- bh=QPDBZf0pG/kBpT781+bWXQnCkAArbOj+qVN3kuZn98Y=;
- b=d9ZuzEK/87Fwb4Vn9J/j115bbm3UdPPWYp44GShi8fRyhzTGi39RQ0al9RiSGyyO0N
- ISNfZWG/gcvuuD4T3B99fNAB3XUS6TqB/6VojI4hDhoBoIylwo+pdVc1YPgheKr+A4zc
- YtMGZVEWqkGZh0pBnJvlYvftf3kMdsrsh2BApXPjK3cgWz5HqMmBD5YwWnhj4pJIW4aA
- j2QAbI1BMLq9NJQSu+qRl7aDqlCNooPoldNv30RZCy511xHUOoijVoaWdW+sC+uT3ldn
- u7FpPE37MDt9flqh9ENy+oAiny/83BkC0ytcQAXVUoQe2FYkuVrNHzeG1UlcolPbkFxO
- hVqQ==
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=EYGsqsWf;
+       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
+        id S231172AbiITOBS (ORCPT <rfc822;daniel.diaz@linaro.org>
+        + 2 others); Tue, 20 Sep 2022 10:01:18 -0400
+Received: from lindbergh.monkeyblade.net ([23.128.96.19]:59960 "EHLO
+        lindbergh.monkeyblade.net" rhost-flags-OK-OK-OK-OK) by vger.kernel.org
+        with ESMTP id S230517AbiITOBP (ORCPT <rfc822;kvm@vger.kernel.org>);
+        Tue, 20 Sep 2022 10:01:15 -0400
+Received: from mail-ot1-x32c.google.com (mail-ot1-x32c.google.com [IPv6:2607:f8b0:4864:20::32c])
+        by lindbergh.monkeyblade.net (Postfix) with ESMTPS id D8DDF3684E
+        for <kvm@vger.kernel.org>; Tue, 20 Sep 2022 07:01:12 -0700 (PDT)
+Received: by mail-ot1-x32c.google.com with SMTP id u6-20020a056830118600b006595e8f9f3fso1796061otq.1
+        for <kvm@vger.kernel.org>; Tue, 20 Sep 2022 07:01:12 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date;
+        bh=obx72+8lj9qm2WhrMMX0CKsbEGig5oqUktdJe59wJ8c=;
+        b=EYGsqsWfnaYLIUhNnwR+W3+HQV7e1PVwf2K+QWqXr8T8ik7uhUchYwfaPRXzwOSNdj
+         Y/VehUxaTawGdfoqwV5K3tSuvfrPWqckFhn+PXkxZYghBOhI2+TO0xbTzdFFrdhpyh2x
+         veDoWSvsPDca3I578Fy9amlMqEZxQtbHz3JbXHWjMiu5OfyH5uyFImUWMMUvuKamIuTS
+         YG8Kte9lSMN+Y8mrfYFVvuA43odoGtzEhiO8+jo4NP0P6X2/MTgvqMcLEzX/vDtgsO9b
+         Gwc7jwC79qXCaM1/HPNBUkVZGrFZS5xRrwr2Ne3iu0RW7Y6naElU5JeR1p5TlLLhSvzD
+         4tyQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date;
- bh=QPDBZf0pG/kBpT781+bWXQnCkAArbOj+qVN3kuZn98Y=;
- b=CiyRNRo+j2w9spuQyedl6PKimW8yXbH3pQN1dg77QnTs71V0RGl/1aejXnOlTEv23a
- jLp1tvzUrjPIvtOhiCcz9c2zDMMB3oqAcJ9O3ogY164um0YnmZ/K1QIhcnCuwJw8lTJQ
- NmfvZpijEtjiU/OVqn2AKUimc3azfUGGShOsL3y4NElyszc3r2qs23C9ysorLhPLkXa/
- mzXvDmd7WdRgBYV28lsMEjwqRAmzzNjYjMaEU/amLXpYCVEjE1jIM1hBaJIhlqC+613q
- Z+72UNaN9r9pTQAJs4GKQRu6sOaGYb2XvrplO8+EvcdU7nvmOTaOg7LZlaqBag3raq52
- Vjaw==
-X-Gm-Message-State: ACrzQf0wyaKqv+5PpK2J+9aRMKBMsgt7SXwX4kANDG0YCQBua7Zd1Wy3
- 6siZdYan2iihxfG4wEhD/1Zj8195CHV+q7uwgfPBCQ==
-X-Received: by 2002:a17:906:8a6b:b0:780:ab37:b63 with SMTP id
- hy11-20020a1709068a6b00b00780ab370b63mr14430333ejc.365.1663671555418; Tue, 20
- Sep 2022 03:59:15 -0700 (PDT)
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date;
+        bh=obx72+8lj9qm2WhrMMX0CKsbEGig5oqUktdJe59wJ8c=;
+        b=ZFz+2qEyyzBcZaoAB2l14eYpa2FPBVB+V+TAGbxxl9Pwyw6JR02Qca293sMqd3ooLT
+         qEfVMF1ijSBKgTywsJUQpNI6+I8Qz1OZZ+5m8LLF+atGQho7RmPL/59uFuZlAmhAZmvx
+         UN2oxepHsdiJMXztUgkSNljoYVZY6tozg0rEBB82fo7h5/3M4/JsYP+dFFT+ochHnuCv
+         7tI+6DCZrxijdc7+feo+TpexRNVFDEHCEahEKi8t+Lo2Y0jfTMviRCFhl/Hrx0hvbs4x
+         W3U7KeatjDjieZ3NGRLMvJcadKbRJ0+ds7ENe4xHuJTYZuUlaOXcHCPT8AU6KryUvyCG
+         i1Gg==
+X-Gm-Message-State: ACrzQf3mhCdbpi0aUqUY8TNi0kuPytNCB+A4Gly/YPMHinc8JlssZ2Tb
+        aRPN5Anz++D7pRUc70gBEfA=
+X-Received: by 2002:a05:6830:18d8:b0:655:1f50:715f with SMTP id v24-20020a05683018d800b006551f50715fmr10392167ote.97.1663682472036;
+        Tue, 20 Sep 2022 07:01:12 -0700 (PDT)
+Received: from [192.168.10.102] ([191.193.2.69])
+        by smtp.gmail.com with ESMTPSA id y22-20020a056830071600b0065892f42157sm821295ots.75.2022.09.20.07.00.52
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 20 Sep 2022 07:01:10 -0700 (PDT)
+Message-ID: <8906f236-dbfc-7d51-a87d-2c02e8c506b2@gmail.com>
+Date:   Tue, 20 Sep 2022 11:00:50 -0300
 MIME-Version: 1.0
-References: <20220905202259.189852-1-richard.henderson@linaro.org>
- <20220905202259.189852-6-richard.henderson@linaro.org>
-In-Reply-To: <20220905202259.189852-6-richard.henderson@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 20 Sep 2022 11:59:03 +0100
-Message-ID: <CAFEAcA-cRTKR2G+U3y=oh3p5v2kfLeA2CTc4tTza5G7LoMfJng@mail.gmail.com>
-Subject: Re: [PATCH v3 5/6] accel/tcg: Introduce tlb_set_page_full
-To: Richard Henderson <richard.henderson@linaro.org>
-Cc: qemu-devel@nongnu.org, f4bug@amsat.org, qemu-arm@nongnu.org, 
- pbonzini@redhat.com
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::62f;
- envelope-from=peter.maydell@linaro.org; helo=mail-ej1-x62f.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: VMj6oZ302u8a
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.2.1
+Subject: Re: [PATCH 4/9] hw/ppc/spapr: Fix code style problems reported by
+ checkpatch
+To:     Bernhard Beschow <shentey@gmail.com>, qemu-devel@nongnu.org
+Cc:     "Michael S. Tsirkin" <mst@redhat.com>,
+        Magnus Damm <magnus.damm@gmail.com>,
+        Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
+        Bandan Das <bsd@redhat.com>,
+        Matthew Rosato <mjrosato@linux.ibm.com>,
+        Sergio Lopez <slp@redhat.com>,
+        Alexey Kardashevskiy <aik@ozlabs.ru>,
+        Xiaojuan Yang <yangxiaojuan@loongson.cn>,
+        Cameron Esfahani <dirty@apple.com>,
+        Michael Rolnik <mrolnik@gmail.com>,
+        Song Gao <gaosong@loongson.cn>,
+        Jagannathan Raman <jag.raman@oracle.com>,
+        Greg Kurz <groug@kaod.org>,
+        Kamil Rytarowski <kamil@netbsd.org>,
+        Peter Xu <peterx@redhat.com>, Joel Stanley <joel@jms.id.au>,
+        Alistair Francis <Alistair.Francis@wdc.com>,
+        "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
+        Paolo Bonzini <pbonzini@redhat.com>, haxm-team@intel.com,
+        Roman Bolshakov <r.bolshakov@yadro.com>,
+        Markus Armbruster <armbru@redhat.com>,
+        Eric Auger <eric.auger@redhat.com>,
+        David Gibson <david@gibson.dropbear.id.au>,
+        =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?= <berrange@redhat.com>,
+        Christian Borntraeger <borntraeger@linux.ibm.com>,
+        =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>,
+        Stefan Hajnoczi <stefanha@redhat.com>, qemu-block@nongnu.org,
+        Eduardo Habkost <eduardo@habkost.net>,
+        =?UTF-8?Q?Herv=c3=a9_Poussineau?= <hpoussin@reactos.org>,
+        qemu-ppc@nongnu.org, Cornelia Huck <cohuck@redhat.com>,
+        Palmer Dabbelt <palmer@dabbelt.com>,
+        Helge Deller <deller@gmx.de>,
+        Stefano Stabellini <sstabellini@kernel.org>,
+        =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
+        qemu-riscv@nongnu.org, Stafford Horne <shorne@gmail.com>,
+        Paul Durrant <paul@xen.org>,
+        Havard Skinnemoen <hskinnemoen@google.com>,
+        Elena Ufimtseva <elena.ufimtseva@oracle.com>,
+        Alexander Graf <agraf@csgraf.de>,
+        Thomas Huth <thuth@redhat.com>,
+        Alex Williamson <alex.williamson@redhat.com>,
+        Wenchao Wang <wenchao.wang@intel.com>,
+        Tony Krowiak <akrowiak@linux.ibm.com>,
+        Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+        qemu-s390x@nongnu.org,
+        =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>,
+        Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+        Eric Farman <farman@linux.ibm.com>,
+        Reinoud Zandijk <reinoud@netbsd.org>,
+        Alexander Bulekov <alxndr@bu.edu>,
+        Yanan Wang <wangyanan55@huawei.com>,
+        "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+        Gerd Hoffmann <kraxel@redhat.com>,
+        Tyrone Ting <kfting@nuvoton.com>,
+        xen-devel@lists.xenproject.org,
+        Yoshinori Sato <ysato@users.sourceforge.jp>,
+        John Snow <jsnow@redhat.com>,
+        Richard Henderson <richard.henderson@linaro.org>,
+        Darren Kenny <darren.kenny@oracle.com>, kvm@vger.kernel.org,
+        Qiuhao Li <Qiuhao.Li@outlook.com>,
+        John G Johnson <john.g.johnson@oracle.com>,
+        Bin Meng <bin.meng@windriver.com>,
+        Sunil Muthuswamy <sunilmut@microsoft.com>,
+        Max Filippov <jcmvbkbc@gmail.com>, qemu-arm@nongnu.org,
+        Marcelo Tosatti <mtosatti@redhat.com>,
+        Peter Maydell <peter.maydell@linaro.org>,
+        Anthony Perard <anthony.perard@citrix.com>,
+        Andrew Jeffery <andrew@aj.id.au>,
+        Artyom Tarasenko <atar4qemu@gmail.com>,
+        Halil Pasic <pasic@linux.ibm.com>,
+        "Maciej S. Szmigiero" <maciej.szmigiero@oracle.com>,
+        Jason Wang <jasowang@redhat.com>,
+        David Hildenbrand <david@redhat.com>,
+        Laurent Vivier <laurent@vivier.eu>,
+        Alistair Francis <alistair@alistair23.me>,
+        Jason Herne <jjherne@linux.ibm.com>
+References: <20220919231720.163121-1-shentey@gmail.com>
+ <20220919231720.163121-5-shentey@gmail.com>
+Content-Language: en-US
+From:   Daniel Henrique Barboza <danielhb413@gmail.com>
+In-Reply-To: <20220919231720.163121-5-shentey@gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+X-Spam-Status: No, score=-4.0 required=5.0 tests=BAYES_00,DKIM_SIGNED,
+        DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,FREEMAIL_ENVFROM_END_DIGIT,
+        FREEMAIL_FROM,NICE_REPLY_A,RCVD_IN_DNSWL_NONE,SPF_HELO_NONE,SPF_PASS
+        autolearn=ham autolearn_force=no version=3.4.6
+X-Spam-Checker-Version: SpamAssassin 3.4.6 (2021-04-09) on
+        lindbergh.monkeyblade.net
+Precedence: bulk
+List-ID: <kvm.vger.kernel.org>
+X-Mailing-List: kvm@vger.kernel.org
+X-TUID: NBfX6gB2Hk/0
 
-On Mon, 5 Sept 2022 at 21:29, Richard Henderson
-<richard.henderson@linaro.org> wrote:
->
-> Now that we have collected all of the page data into
-> CPUTLBEntryFull, provide an interface to record that
-> all in one go, instead of using 4 arguments.  This interface
-> allows CPUTLBEntryFull to be extended without having to
-> change the number of arguments.
->
-> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+
+On 9/19/22 20:17, Bernhard Beschow wrote:
+> Signed-off-by: Bernhard Beschow <shentey@gmail.com>
 > ---
->  include/exec/cpu-defs.h | 14 ++++++++++
->  include/exec/exec-all.h | 22 +++++++++++++++
->  accel/tcg/cputlb.c      | 62 ++++++++++++++++++++++++++++-------------
->  3 files changed, 78 insertions(+), 20 deletions(-)
->
-> diff --git a/include/exec/cpu-defs.h b/include/exec/cpu-defs.h
-> index f70f54d850..5e12cc1854 100644
-> --- a/include/exec/cpu-defs.h
-> +++ b/include/exec/cpu-defs.h
-> @@ -148,7 +148,21 @@ typedef struct CPUTLBEntryFull {
->       *     + the offset within the target MemoryRegion (otherwise)
->       */
->      hwaddr xlat_section;
-> +
-> +    /*
-> +     * @phys_addr contains the physical address in the address space
-> +     * given by cpu_asidx_from_attrs(cpu, @attrs).
-> +     */
-> +    hwaddr phys_addr;
-> +
-> +    /* @attrs contains the memory transaction attributes for the page. */
->      MemTxAttrs attrs;
-> +
-> +    /* @prot contains the complete protections for the page. */
-> +    uint8_t prot;
-> +
-> +    /* @lg_page_size contains the log2 of the page size. */
-> +    uint8_t lg_page_size;
->  } CPUTLBEntryFull;
->
->  /*
-> diff --git a/include/exec/exec-all.h b/include/exec/exec-all.h
-> index 758cf6bcc7..1a30c857f4 100644
-> --- a/include/exec/exec-all.h
-> +++ b/include/exec/exec-all.h
-> @@ -257,6 +257,28 @@ void tlb_flush_range_by_mmuidx_all_cpus_synced(CPUState *cpu,
->                                                 uint16_t idxmap,
->                                                 unsigned bits);
->
-> +/**
-> + * tlb_set_page_full:
-> + * @cpu: CPU context
-> + * @mmu_idx: mmu index of the tlb to modify
-> + * @vaddr: virtual address of the entry to add
-> + * @full: the details of the tlb entry
-> + *
-> + * Add an entry to @cpu tlb index @mmu_idx.  All of the fields of
-> + * @full must be filled, except for xlat_section, and constitute
-> + * the complete description of the translated page.
-> + *
-> + * This is generally called by the target tlb_fill function after
-> + * having performed a successful page table walk to find the physical
-> + * address and attributes for the translation.
-> + *
-> + * At most one entry for a given virtual address is permitted. Only a
-> + * single TARGET_PAGE_SIZE region is mapped; @full->ld_page_size is only
 
-typo: lg_page_size
+Reviewed-by: Daniel Henrique Barboza <danielhb413@gmail.com>
 
-> + * used by tlb_flush_page.
-> + */
-> +void tlb_set_page_full(CPUState *cpu, int mmu_idx, target_ulong vaddr,
-> +                       CPUTLBEntryFull *full);
-> +
->  /**
->   * tlb_set_page_with_attrs:
->   * @cpu: CPU to add this TLB entry for
 
-> @@ -1272,15 +1275,34 @@ void tlb_set_page_with_attrs(CPUState *cpu, target_ulong vaddr,
->      qemu_spin_unlock(&tlb->c.lock);
->  }
->
-> -/* Add a new TLB entry, but without specifying the memory
-> - * transaction attributes to be used.
-> - */
-> +void tlb_set_page_with_attrs(CPUState *cpu, target_ulong vaddr,
-> +                             hwaddr paddr, MemTxAttrs attrs, int prot,
-> +                             int mmu_idx, target_ulong size)
-> +{
-> +    CPUTLBEntryFull full = {
-> +        .phys_addr = paddr,
-> +        .attrs = attrs,
-> +        .prot = prot,
-> +        .lg_page_size = ctz64(size)
-> +    };
-> +
-> +    assert(is_power_of_2(size));
-> +    tlb_set_page_full(cpu, mmu_idx, vaddr, &full);
-> +}
-> +
->  void tlb_set_page(CPUState *cpu, target_ulong vaddr,
->                    hwaddr paddr, int prot,
->                    int mmu_idx, target_ulong size)
->  {
-> -    tlb_set_page_with_attrs(cpu, vaddr, paddr, MEMTXATTRS_UNSPECIFIED,
-> -                            prot, mmu_idx, size);
-> +    CPUTLBEntryFull full = {
-> +        .phys_addr = paddr,
-> +        .attrs = MEMTXATTRS_UNSPECIFIED,
-> +        .prot = prot,
-> +        .lg_page_size = ctz64(size)
-> +    };
-> +
-> +    assert(is_power_of_2(size));
-> +    tlb_set_page_full(cpu, mmu_idx, vaddr, &full);
->  }
+And I've queued it in gitlab.com/danielhb/qemu/tree/ppc-next since it's not
+tied with the rest of the series. Thanks,
 
-Why not just leave tlb_set_page() the way it was? Writing
-it out results in this code duplication...
 
-Otherwise
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+Daniel
 
-thanks
--- PMM
+>   include/hw/ppc/spapr.h | 5 +++--
+>   1 file changed, 3 insertions(+), 2 deletions(-)
+> 
+> diff --git a/include/hw/ppc/spapr.h b/include/hw/ppc/spapr.h
+> index 530d739b1d..04a95669ab 100644
+> --- a/include/hw/ppc/spapr.h
+> +++ b/include/hw/ppc/spapr.h
+> @@ -848,7 +848,8 @@ static inline uint64_t ppc64_phys_to_real(uint64_t addr)
+>   
+>   static inline uint32_t rtas_ld(target_ulong phys, int n)
+>   {
+> -    return ldl_be_phys(&address_space_memory, ppc64_phys_to_real(phys + 4*n));
+> +    return ldl_be_phys(&address_space_memory,
+> +                       ppc64_phys_to_real(phys + 4 * n));
+>   }
+>   
+>   static inline uint64_t rtas_ldq(target_ulong phys, int n)
+> @@ -858,7 +859,7 @@ static inline uint64_t rtas_ldq(target_ulong phys, int n)
+>   
+>   static inline void rtas_st(target_ulong phys, int n, uint32_t val)
+>   {
+> -    stl_be_phys(&address_space_memory, ppc64_phys_to_real(phys + 4*n), val);
+> +    stl_be_phys(&address_space_memory, ppc64_phys_to_real(phys + 4 * n), val);
+>   }
+>   
+>   typedef void (*spapr_rtas_fn)(PowerPCCPU *cpu, SpaprMachineState *sm,

@@ -1,88 +1,91 @@
-Received: by 2002:a17:906:b088:0:0:0:0 with SMTP id x8csp2091095ejy;
-        Tue, 20 Sep 2022 16:20:27 -0700 (PDT)
-X-Google-Smtp-Source: AMsMyM7EVlk10r1LLlG8V2s/cyEY8YmQB4edKWZKvHkcS5arU+sO2+DtBcR+zn5mfTq4PfYhBSbp
-X-Received: by 2002:a17:906:9bd3:b0:76f:8cce:7a61 with SMTP id de19-20020a1709069bd300b0076f8cce7a61mr18568949ejc.345.1663716027850;
-        Tue, 20 Sep 2022 16:20:27 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1663716027; cv=none;
+Received: by 2002:a17:906:b088:0:0:0:0 with SMTP id x8csp2092540ejy;
+        Tue, 20 Sep 2022 16:24:04 -0700 (PDT)
+X-Google-Smtp-Source: AMsMyM460VPm1G3My3fjslK/eMnwUvI3EnNTscUY+rwfrP6oEDbUZ8Ek9LYc63PCMEq7zQT/28Rh
+X-Received: by 2002:a50:cc07:0:b0:453:4427:a918 with SMTP id m7-20020a50cc07000000b004534427a918mr21429006edi.121.1663716244376;
+        Tue, 20 Sep 2022 16:24:04 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1663716244; cv=none;
         d=google.com; s=arc-20160816;
-        b=ZQRwT+SIK1fmFYJD9jVCI6B8qh+1jRSiKAkqWMRoaCTek1GvlLZVnK+e9kap5hmWKL
-         NtRlNPxTK+r2id0TIIJJ6AlHG3LC2eHeM8gQiCneL3tQA/JRVtX2F1SolwDdS4mEW+1g
-         afCUsDxB2QeKwOggm6QtlxobH3stzudjnRI3JEgsF7AKcqhNyuZbYTpd5vghI2v4UoKj
-         ZDx381mLHXD1PiGKk+Og7zfZfgKkZoNfLfSA4zdIY95MIUdGQjgc0rwChH/Rp8KtwzPz
-         aAcrRD+cvLbXR2TV9tEXNQfkseo5gLFM6ghSTLDTHM8tzRCqltOxOtNkxo1sufU7GW6X
-         TOsQ==
+        b=v2gsX6y3oR0HUg2H8jdVyQR9nV+r6hXROF7U02yCYmb4npyuSjZE6/FrVUptVZCoz4
+         MYwLqCis7XY/RqrbAd/V3lZv+kILGdz+gY8QW/aujlM9PJUdjTdpmGsxWOsc/gLerYV9
+         W/GNclCtL1VcxHXs/f6mki7RFUHS/haULZjneWyqaBXw6sQrIoEq9UsKRpy6x9TNHl86
+         CN2GJNkIkcJ8k5Wbpd35PHTTQ6ipjh8FnY89kUDkwdIcGNk4D3jL/rZtiKuGAv4ffRUY
+         HQEUGtS3qQT1JA7dYOwgRTu/1kvy/VhXOQVMHgOB77Mk5H0Il0YBO0zbSeEu2EphzRye
+         vppA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=list-id:precedence:content-transfer-encoding:mime-version
          :message-id:references:in-reply-to:subject:cc:to:from:date
          :dkim-signature;
-        bh=GtMxYIRvAVAlD5MIJW3CMU+hdQDh/A1FNoJWhhLH0qE=;
-        b=TfZWitCdJMCBj4IF5LOo6QzHI3VYqvgRrrpqzos4mv5R0IK9ekhjyYAHShdBOHtdFh
-         fhPuY7voruwaZkiwPGjvtQUbZvJR/xrxI0D2mNWZSuelZLSJ2jiqPCR4sS7DEnnN4z55
-         goMD7jxpDS2S0notPCQ6n+npRrAad39fNNmjWsc3SBsHOttUfpcMdhZEXuI72FedG1Am
-         jvsALyfFfd7L81w/2f8k+e3zF1HISZW2JUh038v1fE2FzXaO+OV1+bYOVlWt3zj0FlUP
-         traxYpEcdqdXzEUnNxPka1JyS/MJgS1O0WSXp4E/K4HEE1Gf/Zu25zPjzqxg6fBXlber
-         oVrA==
+        bh=qKZPVG5iME12/xaovZM6A6+qsWvmHnon3GYaJNYHOS8=;
+        b=O8w6ABHVevQWNjF0lkVzOsjkLojpvhPsC0BhOApuOvalKdcNW8CpPQ+aUezjXagGRG
+         cKIezx9PxyJtJnX+TiRuPBMU1Lc0r2hYdMGJfR/YD/ELtteUaB1ov7vHQifx090Xd07V
+         V02adeCHOGr5BYpyZ3oprbCKL5rSm/ldPNGJDCdvQZPWbYVcW2pHCZTP+42smXREhBXv
+         JMLI1eZTdgx8PZaCbLJKnpOzuN9I3MYPBawh80hT4t4AR3y9b1KbvhHDi7KOxRrzLdCJ
+         PLBHSfqAVBZozsP80dQdYZ5ebABzd/3anf2ab2X7yMzoMyHPN1WTJkDuQO9vuzJlLwDm
+         yNHg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=pm+buGeF;
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=fCK9HNlT;
        spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <kvm-owner@vger.kernel.org>
 Received: from out1.vger.email (out1.vger.email. [2620:137:e000::1:20])
-        by mx.google.com with ESMTP id y22-20020a056402359600b0044e849a6448si1202086edc.494.2022.09.20.16.20.27;
-        Tue, 20 Sep 2022 16:20:27 -0700 (PDT)
+        by mx.google.com with ESMTP id y22-20020a056402359600b0044e849a6448si1202086edc.494.2022.09.20.16.24.04;
+        Tue, 20 Sep 2022 16:24:04 -0700 (PDT)
 Received-SPF: pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) client-ip=2620:137:e000::1:20;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=pm+buGeF;
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=fCK9HNlT;
        spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S230447AbiITXUZ (ORCPT <rfc822;daniel.diaz@linaro.org>
-        + 2 others); Tue, 20 Sep 2022 19:20:25 -0400
-Received: from lindbergh.monkeyblade.net ([23.128.96.19]:35318 "EHLO
+        id S230112AbiITXYD (ORCPT <rfc822;daniel.diaz@linaro.org>
+        + 2 others); Tue, 20 Sep 2022 19:24:03 -0400
+Received: from lindbergh.monkeyblade.net ([23.128.96.19]:37010 "EHLO
         lindbergh.monkeyblade.net" rhost-flags-OK-OK-OK-OK) by vger.kernel.org
-        with ESMTP id S230025AbiITXUW (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Tue, 20 Sep 2022 19:20:22 -0400
+        with ESMTP id S230025AbiITXYB (ORCPT <rfc822;kvm@vger.kernel.org>);
+        Tue, 20 Sep 2022 19:24:01 -0400
 Received: from mail-ej1-x629.google.com (mail-ej1-x629.google.com [IPv6:2a00:1450:4864:20::629])
-        by lindbergh.monkeyblade.net (Postfix) with ESMTPS id B38E86F57B
-        for <kvm@vger.kernel.org>; Tue, 20 Sep 2022 16:20:20 -0700 (PDT)
-Received: by mail-ej1-x629.google.com with SMTP id y3so9860445ejc.1
-        for <kvm@vger.kernel.org>; Tue, 20 Sep 2022 16:20:20 -0700 (PDT)
+        by lindbergh.monkeyblade.net (Postfix) with ESMTPS id 68E1C753A8
+        for <kvm@vger.kernel.org>; Tue, 20 Sep 2022 16:24:00 -0700 (PDT)
+Received: by mail-ej1-x629.google.com with SMTP id a26so9848120ejc.4
+        for <kvm@vger.kernel.org>; Tue, 20 Sep 2022 16:24:00 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20210112;
         h=content-transfer-encoding:mime-version:message-id:references
          :in-reply-to:subject:cc:to:from:date:from:to:cc:subject:date;
-        bh=GtMxYIRvAVAlD5MIJW3CMU+hdQDh/A1FNoJWhhLH0qE=;
-        b=pm+buGeFehD8BASPCqH113rGynSJwN6wxPzkq6dds4CXX+4p5I3dBJkJJS01RL+Tai
-         jXH2C6g6rtblZqjB1SsUvwxyKHQi8PI5uw0Y+ftr+xqd8CxhaxojBqt0sbvWrNQ3QgwT
-         HPi85aRbWX3nCZ/mx03/0M4ol+mefKDFl/abg2tUrRmQyeLI6HGQ8OT1RcyuobJttOxN
-         tv9FNW7Rw6H99aA2h0obQ/oBQ2ZcBAUOcOrWNRg7zTAeetnuaOg44KKGVxIGps1+/op4
-         BKH/r6CYUtGxJTGZtHM13rOeRwpoBPxI5vWiYm45neZhCA9By3jialVV75S3lBm/f6Ct
-         DOpg==
+        bh=qKZPVG5iME12/xaovZM6A6+qsWvmHnon3GYaJNYHOS8=;
+        b=fCK9HNlTrRewEDKb1ki/vTFY3BFU4vzCnR5/5SporYyj2K3I0iIme7NT7sFxvxSWk3
+         umbS7mgSQHCv4vemkhsUb7I8ViXwtdzvdECA7Hg1aPJOJHkBgajnUvnzOd15ofRxvKPW
+         2NmhmYzO4jI0zH5j583BH2fYOyCqRhQagr8KEfGrHxwOvw9vpW0RHacBcO/xfLZqnbG9
+         JGQYdHCVFxtkFHNb5If1sypH5E1lsaKJVmD0Bts992LCNZLkqOhf1P9RqHOcsUAWXlWu
+         d4YWu7xGj+i6DW0je9gZb13SoS+moDDgWL9JmB1tDOJPynLYKJKZy8VNJloyV8FGfrcV
+         cuNg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=content-transfer-encoding:mime-version:message-id:references
          :in-reply-to:subject:cc:to:from:date:x-gm-message-state:from:to:cc
          :subject:date;
-        bh=GtMxYIRvAVAlD5MIJW3CMU+hdQDh/A1FNoJWhhLH0qE=;
-        b=Enz4Gr0p+TujhN20508Vh+6AuKpSdnn9CmIT2/78A5Cgmm0AZDRFo/DpbxxJ9LIfHc
-         /8OmngRHDYPvJELQv9YpH180w1Qtes6iH83cWcZZXmE+62xpEsQFYTwIQeYMTuedTDPs
-         Nq+YDc9zOUdVaMjkeAEPScRmYMwigwzvrDMcuvKGRMn8UPcbh0TbcHIDH2LLERL65qet
-         /7tKLwGHq/l3jYbQlGfV+iBkwASud99sBUlOsyyuJnZD+nlwg0lxoa94Fh2ZKqnbJ0Ys
-         sWFtl+ymxy/BrxD6VglVG6pC/q0meqHnRa/0PRhKHnSRghpI+XDNmjsOimRjH9Z1X6/D
-         nyMA==
-X-Gm-Message-State: ACrzQf1gmauK41A+6XChs5odncjaIjbrqcwFQE6MirDQ5arb3WieQm3+
-        WCXJ0SJy/9Uo0iQnd6foWxY=
-X-Received: by 2002:a17:907:1690:b0:77c:37be:2345 with SMTP id hc16-20020a170907169000b0077c37be2345mr18459194ejc.359.1663716019170;
-        Tue, 20 Sep 2022 16:20:19 -0700 (PDT)
+        bh=qKZPVG5iME12/xaovZM6A6+qsWvmHnon3GYaJNYHOS8=;
+        b=zmzGAJY2DDWrMMVBdbBfK7r7EjUzsOAjBcjMhWGxt3JnVVEYFHqQe+k3UB2BqBypaY
+         8W6pG+YpuJtsOOCMqbTyb49Rmva0LUnI4eg2KllNO1XAZj8kvKQjZ1VEGdPprXfJDVpD
+         T4kDfnzENMpOEjVbV8yfUcI1Hs60Nsifw2nZR25T3/VtdflYJ8QgPWlwYJAz0epJRlSR
+         yv44t6yOS3yMsPrdJkRY0+gARaGDVx8/quLrx7g8EgInzGSXMpeiUrE5+NXUYxymnsty
+         o3NU7YdCXdF3ssfa7g0JokUKpCRJhwbXYkL5XzhrqLCQF411ZC8RssBVETKNs1X15PvF
+         CAEg==
+X-Gm-Message-State: ACrzQf3vktzwRpXZUp2ioR1pjR8hdJumVctooTtyNFEhNniRtPHpbGuE
+        KjKBAm8s3pMyCMIVgh4ltRs=
+X-Received: by 2002:a17:906:eec9:b0:73d:c369:690f with SMTP id wu9-20020a170906eec900b0073dc369690fmr19058158ejb.767.1663716238901;
+        Tue, 20 Sep 2022 16:23:58 -0700 (PDT)
 Received: from [127.0.0.1] (dynamic-078-054-006-055.78.54.pool.telefonica.de. [78.54.6.55])
-        by smtp.gmail.com with ESMTPSA id er12-20020a056402448c00b0044ee91129f9sm629755edb.70.2022.09.20.16.20.18
+        by smtp.gmail.com with ESMTPSA id j22-20020a508a96000000b0044ed7a75c33sm689265edj.6.2022.09.20.16.23.58
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 20 Sep 2022 16:20:18 -0700 (PDT)
-Date:   Tue, 20 Sep 2022 23:20:11 +0000
+        Tue, 20 Sep 2022 16:23:58 -0700 (PDT)
+Date:   Tue, 20 Sep 2022 23:23:52 +0000
 From:   Bernhard Beschow <shentey@gmail.com>
-To:     BALATON Zoltan <balaton@eik.bme.hu>,
-        =?ISO-8859-1?Q?Philippe_Mathieu-Daud=E9?= <f4bug@amsat.org>
-CC:     qemu-devel@nongnu.org, "Michael S. Tsirkin" <mst@redhat.com>,
+To:     Markus Armbruster <armbru@redhat.com>,
+        Alistair Francis <alistair23@gmail.com>,
+        Bin Meng <bin.meng@windriver.com>,
+        Palmer Dabbelt <palmer@dabbelt.com>
+CC:     "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
+        "Michael S. Tsirkin" <mst@redhat.com>,
         Magnus Damm <magnus.damm@gmail.com>,
         Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
         Bandan Das <bsd@redhat.com>,
@@ -102,21 +105,22 @@ CC:     qemu-devel@nongnu.org, "Michael S. Tsirkin" <mst@redhat.com>,
         "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
         Paolo Bonzini <pbonzini@redhat.com>, haxm-team@intel.com,
         Roman Bolshakov <r.bolshakov@yadro.com>,
-        Markus Armbruster <armbru@redhat.com>,
         Eric Auger <eric.auger@redhat.com>,
         David Gibson <david@gibson.dropbear.id.au>,
         =?ISO-8859-1?Q?Daniel_P=2E_Berrang=E9?= <berrange@redhat.com>,
         Christian Borntraeger <borntraeger@linux.ibm.com>,
         =?ISO-8859-1?Q?C=E9dric_Le_Goater?= <clg@kaod.org>,
-        Stefan Hajnoczi <stefanha@redhat.com>, qemu-block@nongnu.org,
+        Stefan Hajnoczi <stefanha@redhat.com>,
+        Qemu-block <qemu-block@nongnu.org>,
         Eduardo Habkost <eduardo@habkost.net>,
         =?ISO-8859-1?Q?Herv=E9_Poussineau?= <hpoussin@reactos.org>,
-        qemu-ppc@nongnu.org, Cornelia Huck <cohuck@redhat.com>,
-        Palmer Dabbelt <palmer@dabbelt.com>,
+        "open list:New World" <qemu-ppc@nongnu.org>,
+        Cornelia Huck <cohuck@redhat.com>,
         Helge Deller <deller@gmx.de>,
         Stefano Stabellini <sstabellini@kernel.org>,
-        qemu-riscv@nongnu.org, Stafford Horne <shorne@gmail.com>,
-        Paul Durrant <paul@xen.org>,
+        =?ISO-8859-1?Q?Philippe_Mathieu-Daud=E9?= <f4bug@amsat.org>,
+        "open list:RISC-V" <qemu-riscv@nongnu.org>,
+        Stafford Horne <shorne@gmail.com>, Paul Durrant <paul@xen.org>,
         Havard Skinnemoen <hskinnemoen@google.com>,
         Elena Ufimtseva <elena.ufimtseva@oracle.com>,
         Alexander Graf <agraf@csgraf.de>,
@@ -125,7 +129,7 @@ CC:     qemu-devel@nongnu.org, "Michael S. Tsirkin" <mst@redhat.com>,
         Wenchao Wang <wenchao.wang@intel.com>,
         Tony Krowiak <akrowiak@linux.ibm.com>,
         Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
-        qemu-s390x@nongnu.org,
+        qemu-s390x <qemu-s390x@nongnu.org>,
         =?ISO-8859-1?Q?Marc-Andr=E9_Lureau?= <marcandre.lureau@redhat.com>,
         Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
         Eric Farman <farman@linux.ibm.com>,
@@ -135,16 +139,17 @@ CC:     qemu-devel@nongnu.org, "Michael S. Tsirkin" <mst@redhat.com>,
         "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
         Gerd Hoffmann <kraxel@redhat.com>,
         Tyrone Ting <kfting@nuvoton.com>,
-        xen-devel@lists.xenproject.org,
+        "open list:X86" <xen-devel@lists.xenproject.org>,
         Yoshinori Sato <ysato@users.sourceforge.jp>,
         John Snow <jsnow@redhat.com>,
         Richard Henderson <richard.henderson@linaro.org>,
-        Darren Kenny <darren.kenny@oracle.com>, kvm@vger.kernel.org,
+        Darren Kenny <darren.kenny@oracle.com>,
+        "open list:Overall" <kvm@vger.kernel.org>,
         Qiuhao Li <Qiuhao.Li@outlook.com>,
         John G Johnson <john.g.johnson@oracle.com>,
-        Bin Meng <bin.meng@windriver.com>,
         Sunil Muthuswamy <sunilmut@microsoft.com>,
-        Max Filippov <jcmvbkbc@gmail.com>, qemu-arm@nongnu.org,
+        Max Filippov <jcmvbkbc@gmail.com>,
+        qemu-arm <qemu-arm@nongnu.org>,
         Marcelo Tosatti <mtosatti@redhat.com>,
         Peter Maydell <peter.maydell@linaro.org>,
         Anthony Perard <anthony.perard@citrix.com>,
@@ -157,10 +162,10 @@ CC:     qemu-devel@nongnu.org, "Michael S. Tsirkin" <mst@redhat.com>,
         Laurent Vivier <laurent@vivier.eu>,
         Alistair Francis <alistair@alistair23.me>,
         Jason Herne <jjherne@linux.ibm.com>
-Subject: Re: [PATCH 9/9] exec/address-spaces: Inline legacy functions
-In-Reply-To: <7411d60-2bc0-f927-752-56184958c790@eik.bme.hu>
-References: <20220919231720.163121-1-shentey@gmail.com> <20220919231720.163121-10-shentey@gmail.com> <e1ef18a0-6a85-e536-1fbd-9f8794dc0217@amsat.org> <7411d60-2bc0-f927-752-56184958c790@eik.bme.hu>
-Message-ID: <AFC88EBD-9403-4D4D-A5D0-C458A7262B3B@gmail.com>
+Subject: Re: [PATCH 1/9] hw/riscv/sifive_e: Fix inheritance of SiFiveEState
+In-Reply-To: <87edw6xoog.fsf@pond.sub.org>
+References: <20220919231720.163121-1-shentey@gmail.com> <20220919231720.163121-2-shentey@gmail.com> <CAKmqyKN+V2R8PkED67tB8+pCZs9369ViiL8OZ9XhO3SdUCk5=Q@mail.gmail.com> <87edw6xoog.fsf@pond.sub.org>
+Message-ID: <0BBD7391-7B2D-44E7-9396-D1747784B9DA@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain;
  charset=utf-8
@@ -174,151 +179,34 @@ X-Spam-Checker-Version: SpamAssassin 3.4.6 (2021-04-09) on
 Precedence: bulk
 List-ID: <kvm.vger.kernel.org>
 X-Mailing-List: kvm@vger.kernel.org
-X-TUID: yJHI63n5kOq1
+X-TUID: 6WG8TNe0Tn2e
 
-Am 20=2E September 2022 09:02:41 UTC schrieb BALATON Zoltan <balaton@eik=2E=
-bme=2Ehu>:
+Am 20=2E September 2022 11:36:47 UTC schrieb Markus Armbruster <armbru@redh=
+at=2Ecom>:
+>Alistair Francis <alistair23@gmail=2Ecom> writes:
 >
->
->On Tue, 20 Sep 2022, Philippe Mathieu-Daud=C3=A9 via wrote:
->
->> On 20/9/22 01:17, Bernhard Beschow wrote:
->>> The functions just access a global pointer and perform some pointer
->>> arithmetic on top=2E Allow the compiler to see through this by inlinin=
-g=2E
->>=20
->> I thought about this while reviewing the previous patch, =2E=2E=2E
->>=20
+>> On Tue, Sep 20, 2022 at 9:18 AM Bernhard Beschow <shentey@gmail=2Ecom> =
+wrote:
+>>>
+>>> SiFiveEState inherits from SysBusDevice while it's TypeInfo claims it =
+to
+>>> inherit from TYPE_MACHINE=2E This is an inconsistency which can cause
+>>> undefined behavior such as memory corruption=2E
+>>>
+>>> Change SiFiveEState to inherit from MachineState since it is registere=
+d
+>>> as a machine=2E
+>>>
 >>> Signed-off-by: Bernhard Beschow <shentey@gmail=2Ecom>
->>> ---
->>>   include/exec/address-spaces=2Eh | 30 ++++++++++++++++++++++++++----
->>>   softmmu/physmem=2Ec             | 28 ----------------------------
->>>   2 files changed, 26 insertions(+), 32 deletions(-)
->>>=20
->>> diff --git a/include/exec/address-spaces=2Eh b/include/exec/address-sp=
-aces=2Eh
->>> index b31bd8dcf0=2E=2E182af27cad 100644
->>> --- a/include/exec/address-spaces=2Eh
->>> +++ b/include/exec/address-spaces=2Eh
->>> @@ -23,29 +23,51 @@
->>>     #ifndef CONFIG_USER_ONLY
->>>   +#include "hw/boards=2Eh"
->>=20
->> =2E=2E=2E but I'm not a fan of including this header here=2E It is rest=
-ricted to system emulation, but still=2E=2E=2E Let see what the others thin=
-k=2E
+>>
+>> Reviewed-by: Alistair Francis <alistair=2Efrancis@wdc=2Ecom>
 >
->Had the same thought first if this would break user emulation but I don't=
- know how that works (and this include is withing !CONFIG_USER_ONLY)=2E I'v=
-e checked in configure now and it seems that softmmu is enabled/disabled wi=
-th system, which reminded me to a previous conversation where I've suggeste=
-d renaming softmmu to sysemu as that better shows what it's really used for=
- and maybe the real softmmu part should be split from it but I don't rememb=
-er the details=2E If it still works with --enable-user --disable-system the=
-n maybe it's OK and only confusing because of misnaming sysemu as softmmu=
-=2E
+>To the SiFive maintainers: since this is a bug fix, let's merge it right
+>away=2E
 
-I've compiled all architectures w/o any --{enable,disable}-{user,system} f=
-lags and I had compile errors only when putting the include outside the gua=
-rd=2E So this in particular doesn't seem to be a problem=2E
+I could repost this particular patch with the three new tags (incl=2E Fixe=
+s) if desired=2E
 
 Best regards,
 Bernhard
 >
->Reagrds,
->BALATON Zoltan
->
->>>   /**
->>>    * Get the root memory region=2E  This is a legacy function, provide=
-d for
->>>    * compatibility=2E Prefer using SysBusState::system_memory directly=
-=2E
->>>    */
->>> -MemoryRegion *get_system_memory(void);
->>> +inline MemoryRegion *get_system_memory(void)
->>> +{
->>> +    assert(current_machine);
->>> +
->>> +    return &current_machine->main_system_bus=2Esystem_memory;
->>> +}
->>>     /**
->>>    * Get the root I/O port region=2E  This is a legacy function, provi=
-ded for
->>>    * compatibility=2E Prefer using SysBusState::system_io directly=2E
->>>    */
->>> -MemoryRegion *get_system_io(void);
->>> +inline MemoryRegion *get_system_io(void)
->>> +{
->>> +    assert(current_machine);
->>> +
->>> +    return &current_machine->main_system_bus=2Esystem_io;
->>> +}
->>>     /**
->>>    * Get the root memory address space=2E  This is a legacy function, =
-provided for
->>>    * compatibility=2E Prefer using SysBusState::address_space_memory d=
-irectly=2E
->>>    */
->>> -AddressSpace *get_address_space_memory(void);
->>> +inline AddressSpace *get_address_space_memory(void)
->>> +{
->>> +    assert(current_machine);
->>> +
->>> +    return &current_machine->main_system_bus=2Eaddress_space_memory;
->>> +}
->>>     /**
->>>    * Get the root I/O port address space=2E  This is a legacy function=
-, provided
->>>    * for compatibility=2E Prefer using SysBusState::address_space_io d=
-irectly=2E
->>>    */
->>> -AddressSpace *get_address_space_io(void);
->>> +inline AddressSpace *get_address_space_io(void)
->>> +{
->>> +    assert(current_machine);
->>> +
->>> +    return &current_machine->main_system_bus=2Eaddress_space_io;
->>> +}
->>>     #endif
->>>   diff --git a/softmmu/physmem=2Ec b/softmmu/physmem=2Ec
->>> index 07e9a9171c=2E=2Edce088f55c 100644
->>> --- a/softmmu/physmem=2Ec
->>> +++ b/softmmu/physmem=2Ec
->>> @@ -2674,34 +2674,6 @@ static void memory_map_init(SysBusState *sysbus=
-)
->>>       address_space_init(&sysbus->address_space_io, system_io, "I/O");
->>>   }
->>>   -MemoryRegion *get_system_memory(void)
->>> -{
->>> -    assert(current_machine);
->>> -
->>> -    return &current_machine->main_system_bus=2Esystem_memory;
->>> -}
->>> -
->>> -MemoryRegion *get_system_io(void)
->>> -{
->>> -    assert(current_machine);
->>> -
->>> -    return &current_machine->main_system_bus=2Esystem_io;
->>> -}
->>> -
->>> -AddressSpace *get_address_space_memory(void)
->>> -{
->>> -    assert(current_machine);
->>> -
->>> -    return &current_machine->main_system_bus=2Eaddress_space_memory;
->>> -}
->>> -
->>> -AddressSpace *get_address_space_io(void)
->>> -{
->>> -    assert(current_machine);
->>> -
->>> -    return &current_machine->main_system_bus=2Eaddress_space_io;
->>> -}
->>> -
->>>   static void invalidate_and_set_dirty(MemoryRegion *mr, hwaddr addr,
->>>                                        hwaddr length)
->>>   {
->>=20
->>=20
->>=20

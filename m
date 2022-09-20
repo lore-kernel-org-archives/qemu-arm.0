@@ -1,92 +1,93 @@
-Received: by 2002:a17:906:b088:0:0:0:0 with SMTP id x8csp1554737ejy;
-        Mon, 19 Sep 2022 21:53:05 -0700 (PDT)
-X-Google-Smtp-Source: AMsMyM4SiNfwAxuBxdpfwxX1h+6g7lIHoZ2gUDtLhMWErAXByqgT7DNVpFnELwJA8tk9ghevJlhb
-X-Received: by 2002:a17:902:e850:b0:178:64f:a57d with SMTP id t16-20020a170902e85000b00178064fa57dmr3251737plg.110.1663649585735;
-        Mon, 19 Sep 2022 21:53:05 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1663649585; cv=none;
+Received: by 2002:a17:906:b088:0:0:0:0 with SMTP id x8csp1556040ejy;
+        Mon, 19 Sep 2022 21:57:43 -0700 (PDT)
+X-Google-Smtp-Source: AMsMyM7+s8jdLo81OmSHQOtn1xMG8Qr4Qy/x1x914xw7Ge5X/s9oK06qyLfXVrW1VDpdsJ9k1akq
+X-Received: by 2002:a17:90b:164d:b0:202:69b3:1002 with SMTP id il13-20020a17090b164d00b0020269b31002mr1842602pjb.86.1663649863293;
+        Mon, 19 Sep 2022 21:57:43 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1663649863; cv=none;
         d=google.com; s=arc-20160816;
-        b=RRPG64PFy3R6VW9H3BM4EehP3ILxsHcqGLjd4NTBZcizpeHRy2XWGX1k4qxLcRW8uK
-         NLdKqFdhrZzV2BFsUd89bOiLInSbiHe7nzLWdl3XOniWq1ndsWbrqxtuFGkfwumX8SBC
-         cPzkXwftjzsSFZf/9Amf2s6tF0reo990BDZ26XrbUKxiZCgf+a54fsYAzCkDU076lB8X
-         aXJ1LvDTtbnpDtELOunYy5XgVPmELYEjxcE5t4osyHmm41FPUj32xVunWKdVyNJUAhxY
-         o0wdikPGOhlyqvE41SX3aCKx6HzYQzKbsnDmpZP4YiR8bTC2N0hA6Ni1uRVC5rxVcx2I
-         +91A==
+        b=nJFud0oRua3B0x8jubKW+iAsl65WUG+GLy3zNoQiUKZS5Z00t6jOMkKW6YlV/9eUz8
+         QvanC6fNOcqSH8UMq6Ux3w0YOhyZav86GYWypbHCdt6fgB+KmkOpLiGLGxzVKI02oeq4
+         3bosHzU0a4YsfG4DqyCnUT+NU+CCZAeXf+MSMWmajVvQP4/daD2BJ9h23WUmUO47INea
+         7YC+GryHUuQsB7pBlspc6IA0Si/xXMNHij96GIsEK7lgWoHC3OieXTr+7UTnpJzB91ns
+         EQ7tS3G0VHcCsvFCq4bf8L7ZkrVneAeUsCS5bZ9OnkfU+/Yq9TdJqL3BQ4h02QjRtj5r
+         sWSQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=list-id:precedence:content-transfer-encoding:in-reply-to:from
          :references:cc:to:content-language:subject:user-agent:mime-version
          :date:message-id:sender:dkim-signature;
-        bh=yXWBrA+VdOJ2eLhZR3jbWLCq6szWmV0B8FUoTOgqB0Y=;
-        b=Y0S/4Vi0wuSUxAh9oU7E5xS9DGIn5hPRx8rA8PMD0xF5a+8VT8vdFtqYya+CdZfSMu
-         I4VIlxDRVG4OlqY1HYhcmupDh9/MagnwaWfOeDR/SIJVlfb0lONIa6yparq5jf3oLHZx
-         HoqtK6cLh5YW5cUR97L360gXVclWxRBMsn9LOb59d6ltVqXS7pYamU4mTKMDWS+e3K1D
-         pXANSwICC2uV2yFfXwSISQO2CD5a8d4HCb3BS3oB+5Nmn1kFb/zQexE+K2KxO79Bewlj
-         CTDMO5eC4c33AkFZR/Zpcxl+rVKNzfbPn5HZQBoOtWqWBiLFOiBKW/WSBgyxSfVfSYOU
-         0P1g==
+        bh=sf+yjXUZ2IXukhH5UaeERJtNyhl+QRIlnvPlc0mykq8=;
+        b=Ywtluo2oCMRYFHicN+9AA+vE/UdOGGYCemSpwsbghIHKsNcYX0osXCjlSkKNvNf0L0
+         US1+v87pl6bBUzc45l+hUyk+aoXYGu10Nm209IOPxQN/6djhy6AuFhcyj8j6GyZc5RXI
+         nZ9ZksFyPitxLbeOD1HPww9q+qHTco12/a4yoG6YGq1bCD1u+4iZIwxP2GxrIgmqSPuQ
+         T02/NNxl8hcsajQmsv1bHidbLCKcacFkOZA2KQIT5aLSQs7JJCRXxT6JwWqlO1WRiLUp
+         irVcmXAx5Eg48NtrHz91bFH5Vi2cNHRpbRQ/ZwFEpRoYvTdtwoX+bC4XUk/Zi3UlR+7R
+         PRIw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=aJV1CFqM;
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=INBRXUtT;
        spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
        dmarc=fail (p=QUARANTINE sp=QUARANTINE dis=QUARANTINE) header.from=amsat.org
 Return-Path: <kvm-owner@vger.kernel.org>
 Received: from out1.vger.email (out1.vger.email. [2620:137:e000::1:20])
-        by mx.google.com with ESMTP id f92-20020a17090a706500b001fda8ffe3ddsi11864756pjk.142.2022.09.19.21.53.05;
-        Mon, 19 Sep 2022 21:53:05 -0700 (PDT)
+        by mx.google.com with ESMTP id u9-20020a170902e5c900b001786f5de8f2si667294plf.95.2022.09.19.21.57.43;
+        Mon, 19 Sep 2022 21:57:43 -0700 (PDT)
 Received-SPF: pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) client-ip=2620:137:e000::1:20;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=aJV1CFqM;
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=INBRXUtT;
        spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
        dmarc=fail (p=QUARANTINE sp=QUARANTINE dis=QUARANTINE) header.from=amsat.org
 Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S229596AbiITExE (ORCPT <rfc822;daniel.diaz@linaro.org>
-        + 2 others); Tue, 20 Sep 2022 00:53:04 -0400
-Received: from lindbergh.monkeyblade.net ([23.128.96.19]:35390 "EHLO
+        id S229832AbiITE5m (ORCPT <rfc822;daniel.diaz@linaro.org>
+        + 2 others); Tue, 20 Sep 2022 00:57:42 -0400
+Received: from lindbergh.monkeyblade.net ([23.128.96.19]:39938 "EHLO
         lindbergh.monkeyblade.net" rhost-flags-OK-OK-OK-OK) by vger.kernel.org
-        with ESMTP id S229437AbiITExB (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Tue, 20 Sep 2022 00:53:01 -0400
-Received: from mail-wr1-x42e.google.com (mail-wr1-x42e.google.com [IPv6:2a00:1450:4864:20::42e])
-        by lindbergh.monkeyblade.net (Postfix) with ESMTPS id 5727D3719F
-        for <kvm@vger.kernel.org>; Mon, 19 Sep 2022 21:52:59 -0700 (PDT)
-Received: by mail-wr1-x42e.google.com with SMTP id n10so2264156wrw.12
-        for <kvm@vger.kernel.org>; Mon, 19 Sep 2022 21:52:59 -0700 (PDT)
+        with ESMTP id S229557AbiITE5k (ORCPT <rfc822;kvm@vger.kernel.org>);
+        Tue, 20 Sep 2022 00:57:40 -0400
+Received: from mail-wr1-x42a.google.com (mail-wr1-x42a.google.com [IPv6:2a00:1450:4864:20::42a])
+        by lindbergh.monkeyblade.net (Postfix) with ESMTPS id 4E6D058DDC
+        for <kvm@vger.kernel.org>; Mon, 19 Sep 2022 21:57:38 -0700 (PDT)
+Received: by mail-wr1-x42a.google.com with SMTP id n10so2274337wrw.12
+        for <kvm@vger.kernel.org>; Mon, 19 Sep 2022 21:57:38 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20210112;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :sender:from:to:cc:subject:date;
-        bh=yXWBrA+VdOJ2eLhZR3jbWLCq6szWmV0B8FUoTOgqB0Y=;
-        b=aJV1CFqMLGvYtz55pBXOVpWmVSQoYNCnNBeTgMiTAsRFuzH5R6W2APpLLxvjT8WmD4
-         +Aq7iwdNNrStFOY9aOqRysX4Fi1hb2Ai05q9KoqfdPoBoG8CctBSGiXnl5/iVsdJ+gtv
-         G1xO0rGV43OaEcuEgmtP7LmuG+YfSqRa24lK6FNEcUouwvSx2/shKBcNCI2GLEjS+cs3
-         iopHzNjcN5/YTwRaIMxWArxIjRTpTenXmoMfOgDIkxoUoUYf8tucr0luciR3FCLpBLPl
-         nYQ3yr3DJaimwbslpab29lcOYdhw+Pw4taR5Nq2MUO+stSchiopNm0u210j4zdGi4ZvP
-         JV+A==
+        bh=sf+yjXUZ2IXukhH5UaeERJtNyhl+QRIlnvPlc0mykq8=;
+        b=INBRXUtTn4f77El/2/P3WXjwa3VcUTxtrP1wFIDUvyAEGQuR4JdU8p5dXhkW+WOyoi
+         aoucRXOyi92aAnFe7bOLEAZibHBlkHtvFejKVFbXmRBMjzPIh0QtKo5E1ehhEN3by8eV
+         17JDnHMtDeKFLvdX8LOcEdcAGUaBlxldWLzJeEDB059E3k0gVClrPR8sLUj64MYCBXPW
+         U4IWEn9NgUDZaS84v7Xcnwa8N50RXPQuuOzX7HKjzYTF1wFu0KvbUzVHydFrkNBQIdcj
+         7SYes6exvX/5Vh89DdneU4padIai8aVEZ3yvM9L6bEsaMF8cH4VwUMhR2Fe4nYLK5lrT
+         f3Kw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :sender:x-gm-message-state:from:to:cc:subject:date;
-        bh=yXWBrA+VdOJ2eLhZR3jbWLCq6szWmV0B8FUoTOgqB0Y=;
-        b=O2SFlevuAndZ1p6gbncuVLZeSe62in4CtI8OCfxV8auyb8jnU9vYRoOulqUCAGh5DX
-         dzsKspKvciFYzA6h6L5xzd/rJN8WIm7RrQN6vk4TjUq78Hrglco5hJvrYalQJJxEBD0q
-         SdyB47n8u++//3WwkWObKlFA2Z543L/63E3KQCus8GEtItkPhP3w7Y8StNuINKj5Rtjl
-         Gt0fDVJU/JXzzm+U1LU5BSJA9EbFRluTeSIgX3QEkSB+PRs3zMi6UlpP5Bz1uQfnO9+9
-         Q19RPMJkAhIYvaYDot9WxZKr+TESjLgetKf7zBIS/lcPuAYR4UajYtoigp1rtFE7hokF
-         IN1w==
-X-Gm-Message-State: ACrzQf1SGeumu8uISBBuiZeefDPJMs4FcF4F9BY4I1xLxpryFRa4adzR
-        fHk8Q0kAxFThsjZFg+wCq34=
-X-Received: by 2002:a5d:4284:0:b0:22a:291e:fa8f with SMTP id k4-20020a5d4284000000b0022a291efa8fmr12816362wrq.553.1663649577762;
-        Mon, 19 Sep 2022 21:52:57 -0700 (PDT)
+        bh=sf+yjXUZ2IXukhH5UaeERJtNyhl+QRIlnvPlc0mykq8=;
+        b=bYzFwbSxfAJVMgylgKKldOc4OdGOFPbFNlrb8LgthoIhbcsI7CJwbPrveFqKIM6BeE
+         qXwB34AWDve8H3/wnlCI3g7CmASBGkMh0XAlRI9ovOSkuCwBD+UCTKAuL4a3AAvopFtD
+         H2hE+QXlj6wVfpdnGKcwVr3sJOFbu6NIDWZVfdnK7ay/3Tyo4oHGTrmOJ+09j7zDfJ3n
+         4JUsKeM+nadLpQ3a2DZNaaAEj8SWWZYHevE9iLJ0hyxpUj7rD4du2FGWP1skckGL977U
+         DmYPEccWUTNsuUleLdDRMxnB8Ahy4wMYpYE8OpR+6MrFXQCNLd6G+sMTTc9ZJ9PcBiUy
+         SEeA==
+X-Gm-Message-State: ACrzQf3P/cb7zFLJglbwgJKJsOC7jo1oJNLqVLGYYzZ3OfIdPTjMG9Wz
+        S1bVnfwXy7Nq6hhYxl/8MSU=
+X-Received: by 2002:a5d:4d4e:0:b0:22a:e7fe:e3bd with SMTP id a14-20020a5d4d4e000000b0022ae7fee3bdmr9244091wru.311.1663649856601;
+        Mon, 19 Sep 2022 21:57:36 -0700 (PDT)
 Received: from [192.168.1.115] ([185.126.107.38])
-        by smtp.gmail.com with ESMTPSA id a1-20020a05600c348100b003b477532e66sm1328087wmq.2.2022.09.19.21.52.52
+        by smtp.gmail.com with ESMTPSA id c3-20020a05600c0a4300b003b47ff307e1sm749536wmq.31.2022.09.19.21.57.31
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 19 Sep 2022 21:52:56 -0700 (PDT)
+        Mon, 19 Sep 2022 21:57:36 -0700 (PDT)
 Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= 
         <philippe.mathieu.daude@gmail.com>
-Message-ID: <6af33d73-1e34-304d-998f-a46c8c05f4bb@amsat.org>
-Date:   Tue, 20 Sep 2022 06:52:51 +0200
+Message-ID: <07db3f3a-90d9-c0db-df26-de7a667620be@amsat.org>
+Date:   Tue, 20 Sep 2022 06:57:30 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:91.0)
  Gecko/20100101 Thunderbird/91.13.0
-Subject: Re: [PATCH 3/9] hw/core/sysbus: Resolve main_system_bus singleton
+Subject: Re: [PATCH 6/9] target/loongarch/cpu: Remove unneeded include
+ directive
 Content-Language: en-US
 To:     Bernhard Beschow <shentey@gmail.com>, qemu-devel@nongnu.org
 Cc:     "Michael S. Tsirkin" <mst@redhat.com>,
@@ -165,11 +166,11 @@ Cc:     "Michael S. Tsirkin" <mst@redhat.com>,
         Alistair Francis <alistair@alistair23.me>,
         Jason Herne <jjherne@linux.ibm.com>
 References: <20220919231720.163121-1-shentey@gmail.com>
- <20220919231720.163121-4-shentey@gmail.com>
+ <20220919231720.163121-7-shentey@gmail.com>
 From:   =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-In-Reply-To: <20220919231720.163121-4-shentey@gmail.com>
+In-Reply-To: <20220919231720.163121-7-shentey@gmail.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 X-Spam-Status: No, score=-2.5 required=5.0 tests=BAYES_00,DKIM_SIGNED,
         DKIM_VALID,DKIM_VALID_EF,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
         HEADER_FROM_DIFFERENT_DOMAINS,NICE_REPLY_A,RCVD_IN_DNSWL_NONE,
@@ -179,51 +180,31 @@ X-Spam-Checker-Version: SpamAssassin 3.4.6 (2021-04-09) on
 Precedence: bulk
 List-ID: <kvm.vger.kernel.org>
 X-Mailing-List: kvm@vger.kernel.org
-X-TUID: xdzwvPdCBFTA
+X-TUID: GmoGFssOhDzi
 
 On 20/9/22 01:17, Bernhard Beschow wrote:
-> In QEMU, a machine and the main_system_bus always go togehter. Usually
-> the bus is part of the machine which suggsts to host it there.
-
-"together", "suggests"
-
-> Since tere is already a current_machine singleton, all code that
-> accesses the main_system_bus can be changed (behind the scenes) to go
-> through current_machine. This resolves a singleton. Futhermore, by
-
-"Furthermore"
-
-> reifying it in code, the every-machine-has-exactly-one-main-system-bus
-> relationship becomes very obvious.
-> 
-> Note that the main_system_bus attribute is a value rather than a
-> pointer. This trades pointer dereferences for pointer arithmetic. The
-> idea is to reduce cache misses - a rule of thumb says that
-> every pointer dereference causes a cache miss while arithmetic is
-> basically free.
+> The cpu is used in both user and system emulation context while sysbus.h
+> is system-only. Remove it since it's not needed anyway. Furthermore, it
+> would cause a compile error in the next commit.
 > 
 > Signed-off-by: Bernhard Beschow <shentey@gmail.com>
 > ---
->   hw/core/bus.c       |  5 ++++-
->   hw/core/machine.c   |  3 +++
->   hw/core/sysbus.c    | 22 +++++-----------------
->   include/hw/boards.h |  1 +
->   4 files changed, 13 insertions(+), 18 deletions(-)
-
-> diff --git a/include/hw/boards.h b/include/hw/boards.h
-> index 311ed17e18..7af940102d 100644
-> --- a/include/hw/boards.h
-> +++ b/include/hw/boards.h
-
-Likely missing the BusState declaration:
-
-   #include "hw/qdev-core.h"
-
-> @@ -346,6 +346,7 @@ struct MachineState {
->        */
->       MemoryRegion *ram;
->       DeviceMemoryState *device_memory;
-> +    BusState main_system_bus;
+>   target/loongarch/cpu.h | 1 -
+>   1 file changed, 1 deletion(-)
+> 
+> diff --git a/target/loongarch/cpu.h b/target/loongarch/cpu.h
+> index dce999aaac..c9ed2cb3e7 100644
+> --- a/target/loongarch/cpu.h
+> +++ b/target/loongarch/cpu.h
+> @@ -13,7 +13,6 @@
+>   #include "hw/registerfields.h"
+>   #include "qemu/timer.h"
+>   #include "exec/memory.h"
+> -#include "hw/sysbus.h"
 >   
->       ram_addr_t ram_size;
->       ram_addr_t maxram_size;
+>   #define IOCSRF_TEMP             0
+>   #define IOCSRF_NODECNT          1
+
+Renaming the subject as 'target: Remove unneeded "hw/sysbus.h" include 
+directive' and fixing target/ppc/kvm.c:
+Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>

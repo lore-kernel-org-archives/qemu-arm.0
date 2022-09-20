@@ -1,114 +1,114 @@
-Received: by 2002:a17:906:b088:0:0:0:0 with SMTP id x8csp2075051ejy;
-        Tue, 20 Sep 2022 15:41:49 -0700 (PDT)
-X-Google-Smtp-Source: AMsMyM4Is+qg9G7l6g0i0RDL1ajNo0Tsu9vUJaVMWiTcCQ3yb/x/SVsSOoQ9eUsPAM3DQOe4CBJg
-X-Received: by 2002:a05:6214:29e1:b0:4ad:5852:987 with SMTP id jv1-20020a05621429e100b004ad58520987mr5283730qvb.103.1663713709547;
-        Tue, 20 Sep 2022 15:41:49 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1663713709; cv=none;
+Received: by 2002:a17:906:b088:0:0:0:0 with SMTP id x8csp2076007ejy;
+        Tue, 20 Sep 2022 15:44:14 -0700 (PDT)
+X-Google-Smtp-Source: AMsMyM7FiNifhlq0WMVQVZ1Mx0wdoYcAXIoeKwWQxSERJHmJYRpBEFX78c+eesuCYtjRehVw+EtX
+X-Received: by 2002:a05:620a:4f2:b0:6cf:2175:e7d2 with SMTP id b18-20020a05620a04f200b006cf2175e7d2mr6522807qkh.401.1663713853906;
+        Tue, 20 Sep 2022 15:44:13 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1663713853; cv=none;
         d=google.com; s=arc-20160816;
-        b=UDLZ1UANpjXsDA5+PtrRkxoG8fvu/kNOl7LEAR27A1/784Yma7YZGJywkuI7cpC66L
-         47fmIhgQQThKKXKXy86F84DaiFHa63MDiPDxbZidAeEwGBsXvnznfMnJCpYpR8ro2kMZ
-         mjZCigPZYbCj5uxT9hjk2+GEflY0PjKUp3ZRbDem2NKChtKzrcm5D7Qc+rd/GCkFHBJO
-         eofTU6EuGuFUUb+zEMvOHyB3C9h4nCQ2FoVHGkUXwgPiQdA4nPmVflR7YyRubHJM7DyA
-         AnT0mOrabXdJE5cv/i5jX/1B4cTvDxqnQ8cu4vndbmK1O0k6f3kKndtKLtEbJiO0U44p
-         +gWw==
+        b=AyhEB2+FANiz/OXM1kDlFjJJyHGJSb6pStnWLNLL1h3gjBhL6S+lLqBVVJ+iDw9u6T
+         VGJqknf9RHiY0Yz0DZqe9rk1Qfp5KQbEwtwe2GDP0d3DVYt3JZkK/KydUXBiwAm7c5fE
+         BKlMpmfe8TOPAnuO4sFRZ3yE7CqC/JaLtJtEh0iCOWxgY6zxAHKUKqKbSso8c51+gH2i
+         lRlPFSmbuQzCvX6+dYCv34cekppTzhjarLwEBnCdACgtC905Dgli5vDNFVqhZ9z1SjQs
+         t0IjXGjgCME0NXsEJGolZWGSn5hzUL5TUDTi7GG4X1quCZHO529Kf+1llv2mjJarMBN7
+         JbDg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=qlTkrqVb2aMkLpsUHrMoW58Kky3kHTKxI6M8gj2V1zA=;
-        b=zet1I97LXERaUVICs+uxvU/WNjZm5w/7ggvxIUdAU7X9DqNP8tQj2I0KopGIKW6m8H
-         L8ru32TrKTUq6SOrE36JaxCAJicQEUXxCRAi9bUFPys2YN0b60NGw5b1tRXm8ToVK2Uq
-         QJjx253aDyJDf1kW/QlCy6CoM64fgZ+mT/8wAi6OG0oxssK/kXGC1o3N+XoF45u98dxQ
-         Uuizm9CX9U49Vhlm1x9694V9kVlbd4YzXa78EZ9SXucsfk4BW9aeId3PU6IY/BO5ky5X
-         XFzEMH6TYHEO/h541FL1CYAMK1qA6SYlX2yDXPontzsvV9lZ571vMk+Y8g0m//w7ubUf
-         dx1w==
+        bh=3k7De6dda7HtE0VoeJmLCIiYC0o1UACU10YlAWqrISw=;
+        b=IxbPVjnOx8mx3sHe8/EFUFmdeg6BVqezws0bGboBSeWNeo/iFENJJ5fh4JYZnY29rF
+         ZPXRHdFkXt2cWYJnOzwlQE+dHlAHC1jhDpGafQ4fSaHt77Nv9qNtHMqXE92AbqrKNAtE
+         m3KNJDvxiV7Qrvtw6973KfkXDbq2resR75qpAMitv+nkSiYLk0xTmEeHme4uC08ICwT0
+         a4Z46n4mjxkaHu0p6jCaBT6+TOXRRHfNPjRDTY7526P7jTFDuJos+Yo3clquUUjqKSME
+         uzKEP41/V24adg8+82+fZKpQw68EH8LW3+tZ+MYx2bykYSzhVOmZG19M5B8XI4NMZVRJ
+         h2ig==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@bytedance-com.20210112.gappssmtp.com header.s=20210112 header.b=LBX0XO9y;
+       dkim=pass header.i=@bytedance-com.20210112.gappssmtp.com header.s=20210112 header.b=uysbs+EU;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=bytedance.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id o1-20020ac841c1000000b00357173148b8si450327qtm.478.2022.09.20.15.41.49
+        by mx.google.com with ESMTPS id b10-20020ac8540a000000b0034478988b45si507266qtq.1.2022.09.20.15.44.13
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 20 Sep 2022 15:41:49 -0700 (PDT)
+        Tue, 20 Sep 2022 15:44:13 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@bytedance-com.20210112.gappssmtp.com header.s=20210112 header.b=LBX0XO9y;
+       dkim=pass header.i=@bytedance-com.20210112.gappssmtp.com header.s=20210112 header.b=uysbs+EU;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=bytedance.com
-Received: from localhost ([::1]:48316 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:36924 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1oalw5-0005UR-25
-	for alex.bennee@linaro.org; Tue, 20 Sep 2022 18:41:49 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:56698)
+	id 1oalyP-0003Pu-E2
+	for alex.bennee@linaro.org; Tue, 20 Sep 2022 18:44:13 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:58826)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <zhangjian.3032@bytedance.com>)
- id 1oaiGY-0004RT-3t
+ id 1oaiGe-0004Rv-FP
  for qemu-arm@nongnu.org; Tue, 20 Sep 2022 14:46:51 -0400
-Received: from mail-pj1-x1035.google.com ([2607:f8b0:4864:20::1035]:52136)
+Received: from mail-pg1-x52e.google.com ([2607:f8b0:4864:20::52e]:42556)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <zhangjian.3032@bytedance.com>)
- id 1oaiGU-0007Qs-Dt
- for qemu-arm@nongnu.org; Tue, 20 Sep 2022 14:46:41 -0400
-Received: by mail-pj1-x1035.google.com with SMTP id rt12so1559504pjb.1
- for <qemu-arm@nongnu.org>; Tue, 20 Sep 2022 11:46:37 -0700 (PDT)
+ id 1oaiGZ-0007S2-Vt
+ for qemu-arm@nongnu.org; Tue, 20 Sep 2022 14:46:47 -0400
+Received: by mail-pg1-x52e.google.com with SMTP id t190so3551577pgd.9
+ for <qemu-arm@nongnu.org>; Tue, 20 Sep 2022 11:46:43 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=bytedance-com.20210112.gappssmtp.com; s=20210112;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date;
- bh=qlTkrqVb2aMkLpsUHrMoW58Kky3kHTKxI6M8gj2V1zA=;
- b=LBX0XO9yQRjLND9QEAKvEB6zfPznF3dsCCHx05wtFKbOHtyRAGkUoHkJ39fzvKD6kk
- 9sVfDrfFDqNou/tLpdBJC3QUilSBtr0FQbYbiTbqrHLXuCa9J2+YdrTjn57PWyxJJEJT
- hGcy8qTMQhysnCc8MEdu49uLbR96Meuwa7VjA6qqPHrx5QNlcFSEMFZbLsEykXdqTHiu
- Lw1/qawKpNjjaLljYJ56RK171qgdvFhwfr3MPNCZE0Aeclh95TVv0Y1+DcfILr9BuH6N
- cfmszz7PiD+sbSlwJazt/ObeKpAmmsRrsft68cT57/eGGpD6ZtyRelgtDiaeorY3rI/j
- UnSw==
+ bh=3k7De6dda7HtE0VoeJmLCIiYC0o1UACU10YlAWqrISw=;
+ b=uysbs+EUwH5Rc9qwEQ7m40LbRGRcauWexufWDZqaffyGfLYBIi8zSyFKka7GcmyM4B
+ 8gvQVnsc9t9IdIjnVHW4Wyjj73QdojRw88HYvfY3qPdka7b8gGeQQd/X6dgZcpbtOkq/
+ 8RFO4o/rFeev2ghfuQ9yk0E81FvTa84E/WuCUCIKNBs8KqNwVpF3i4eU9wz5eXmA7arX
+ s64JeodAFk7oSv5Ae+8vyiPCO7ZZJlBzOn+DBCBGnLP5f3jYWaJqx+ZQRlctYftEl/yk
+ ce16MY3ocBJHxFoy1r/dDgv8IBVcXP/WX5wePI/TseKBkFh0imlwE9rDrc4lTv8MnLDC
+ AGyQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date;
- bh=qlTkrqVb2aMkLpsUHrMoW58Kky3kHTKxI6M8gj2V1zA=;
- b=mnWsTuHfFNPA/ztG0Yhfu+JYkXpMpouOfc5Maur5/uu3X2vlGTB+B1ak//+faH50+m
- oV4JSMXWshPojG27i4Ft35bqGcTUyiTKUytk793pt1mt6AuJQ7ZeCiv8ngRFV9VY7Rva
- Rei6LtcGTRkRsPqAQq7o3/AcF+H7MeX3sw1QfUvBvz6NRTzEYPt/oiF91OrdSZXjf7jz
- QtrrWhEgYyZdn5cow3R3aT4IevF9cWEv445gqqXOWBsfqr+JZVPPqGuM3gvvisFSvvfG
- aR8Yza9x8c3HamZr1RzaSt9SnFjAvk8zZVmSTe7px82USHjILrsjnu+yeKYY7iUUqxe8
- 9v3w==
-X-Gm-Message-State: ACrzQf2maLvdQpfQrKXTc5eCFDf7oM3DYJ4wHB4UXqdmsZGbFqRdB9Xb
- c+t7Mn0+Knj83GoQaPEg8aLxhw==
-X-Received: by 2002:a17:902:e5cd:b0:176:ad01:ab47 with SMTP id
- u13-20020a170902e5cd00b00176ad01ab47mr958363plf.133.1663699596882; 
- Tue, 20 Sep 2022 11:46:36 -0700 (PDT)
-Received: from localhost ([49.7.199.230]) by smtp.gmail.com with ESMTPSA id
- x2-20020a17090a1f8200b0020379616053sm203667pja.57.2022.09.20.11.46.35
+ bh=3k7De6dda7HtE0VoeJmLCIiYC0o1UACU10YlAWqrISw=;
+ b=ouxdLzWWrWxUbVttib2rJh4mI9k5H5qgku1LoJZIIdP3SukXq0tnf2FsmjIC34VhjD
+ X9gFPjJmnY/bUmEtfP5hgSAx5kD4ZEMKXpZBgH6wKdLx1ksNVT6sT9nBf3misC6B0MRu
+ DKBjxRekRwoTdKUx4iY07GZDVfgne7pKXfa8k67+7GmAldD46sEg1DbYcPEldCZhqrDb
+ xil8pn4yzhXP3CxTEWQeOZMVRf00t1R+w7qb/0Mp3PPuKO4+RIHcUeBmvZIz56EWY47y
+ D6/GxKbbH+h/xi1sUAjrWL4gO4AaRvl828XgL84Qqih8gm+a/DvDa4ZWfCqQsStW9jg5
+ JRxQ==
+X-Gm-Message-State: ACrzQf3BqXA9uEPIYHIxIerhZxQhIrw8mNlY86whHZI25QOESdqvR4N5
+ KkoN3l4rky21yXHH/rKhj9+NsQ==
+X-Received: by 2002:a05:6a00:15c9:b0:541:1767:4ce2 with SMTP id
+ o9-20020a056a0015c900b0054117674ce2mr24202493pfu.30.1663699602291; 
+ Tue, 20 Sep 2022 11:46:42 -0700 (PDT)
+Received: from localhost ([49.7.199.220]) by smtp.gmail.com with ESMTPSA id
+ y16-20020a626410000000b00545f5046372sm206927pfb.208.2022.09.20.11.46.41
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 20 Sep 2022 11:46:36 -0700 (PDT)
+ Tue, 20 Sep 2022 11:46:41 -0700 (PDT)
 From: Jian Zhang <zhangjian.3032@bytedance.com>
 To: f4bug@amsat.org, peter.maydell@linaro.org, clg@kaod.org, andrew@aj.id.au,
  joel@jms.id.au, qemu-devel@nongnu.org, qemu-arm@nongnu.org
 Cc: yulei.sh@bytedance.com, tangyiwei.2022@bytedance.com,
  chentingting.2150@bytedance.com, yuhao.17@bytedance.com,
  wangxiaohua.1217@bytedance.com, xiening.xll@bytedance.com
-Subject: [PATCH v2 2/3] hw/gpio/aspeed_gpio: Add gpios in/out init
-Date: Wed, 21 Sep 2022 02:46:18 +0800
-Message-Id: <20220920184619.3370115-3-zhangjian.3032@bytedance.com>
+Subject: [PATCH v2 3/3] hw/arm/aspeed: g220a: Add a latching switch device
+Date: Wed, 21 Sep 2022 02:46:19 +0800
+Message-Id: <20220920184619.3370115-4-zhangjian.3032@bytedance.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20220920184619.3370115-1-zhangjian.3032@bytedance.com>
 References: <20220920184619.3370115-1-zhangjian.3032@bytedance.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1035;
- envelope-from=zhangjian.3032@bytedance.com; helo=mail-pj1-x1035.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::52e;
+ envelope-from=zhangjian.3032@bytedance.com; helo=mail-pg1-x52e.google.com
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
 X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -123,68 +123,88 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: rrbVqG9Vo73b
+X-TUID: eeli36hNIJH6
 
-Add gpios in/out init for aspeed gpio to add the ability to connect
-to other gpio devices.
+Add a latching switch device connect between g220a BMC machind(soc
+gpio) as host-power.
 
-Based the qdev-core.h comments, If you want to connect a GPIO to other
-devices, you need to call qdev_init_gpio_in() or qdev_init_gpio_out().
+The latching switch device default state is off and trigger edge is
+falling edge.
 
-```
-For input gpios:
- *
- * Outbound GPIO lines can be connected to any qemu_irq, but the common
- * case is connecting them to another device's inbound GPIO line, using
- * the qemu_irq returned by qdev_get_gpio_in() or qdev_get_gpio_in_named().
+Tested:
+In qemu, use g220a image
 
-For output gpios:
- * This function is intended to be used by board code or SoC "container"
- * device models to wire up the GPIO lines; usually the return value
- * will be passed to qdev_connect_gpio_out() or a similar function to
- * connect another device's output GPIO line to this input.
-```
+~# ipmitool power status
+Chassis Power is off
+
+~# ipmitool power on
+Chassis Power Control: Up/On
+
+~# ipmitool power status
+Chassis Power is on
+
+~# ipmitool power off
+Chassis Power Control: Down/Off
+
+~# ipmitool power status
+Chassis Power is off
 
 Signed-off-by: Jian Zhang <zhangjian.3032@bytedance.com>
 ---
- hw/gpio/aspeed_gpio.c | 17 +++++++++++++++++
- 1 file changed, 17 insertions(+)
+ hw/arm/Kconfig  |  1 +
+ hw/arm/aspeed.c | 20 ++++++++++++++++++++
+ 2 files changed, 21 insertions(+)
 
-diff --git a/hw/gpio/aspeed_gpio.c b/hw/gpio/aspeed_gpio.c
-index 1e267dd482..51f5f1c386 100644
---- a/hw/gpio/aspeed_gpio.c
-+++ b/hw/gpio/aspeed_gpio.c
-@@ -1013,6 +1013,17 @@ static void aspeed_gpio_reset(DeviceState *dev)
-     memset(s->sets, 0, sizeof(s->sets));
+diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
+index 15fa79afd3..f2455db5a0 100644
+--- a/hw/arm/Kconfig
++++ b/hw/arm/Kconfig
+@@ -457,6 +457,7 @@ config ASPEED_SOC
+     select LED
+     select PMBUS
+     select MAX31785
++    select LATCHING_SWITCH
+ 
+ config MPS2
+     bool
+diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
+index bc3ecdb619..070de3aeff 100644
+--- a/hw/arm/aspeed.c
++++ b/hw/arm/aspeed.c
+@@ -27,6 +27,7 @@
+ #include "qemu/units.h"
+ #include "hw/qdev-clock.h"
+ #include "sysemu/sysemu.h"
++#include "hw/misc/latching_switch.h"
+ 
+ static struct arm_boot_info aspeed_board_binfo = {
+     .board_id = -1, /* device-tree-only board */
+@@ -666,6 +667,25 @@ static void g220a_bmc_i2c_init(AspeedMachineState *bmc)
+     };
+     smbus_eeprom_init_one(aspeed_i2c_get_bus(&soc->i2c, 4), 0x57,
+                           eeprom_buf);
++
++    /* Add a host-power device */
++    LatchingSwitchState *power =
++        latching_switch_create_simple(OBJECT(bmc),
++                                      false, TRIGGER_EDGE_FALLING);
++
++    /*
++     * connect the input to soc(out, power button)
++     * the power button in g220a is 215
++     */
++    qdev_connect_gpio_out(DEVICE(&bmc->soc.gpio), 215,
++                          qdev_get_gpio_in(DEVICE(power), 0));
++
++    /*
++     * connect the output to soc(in, power good signal)
++     * the power good in g220a is 209
++     */
++    qdev_connect_gpio_out(DEVICE(power), 0,
++                          qdev_get_gpio_in(DEVICE(&bmc->soc.gpio), 209));
  }
  
-+static void aspeed_gpio_set(void *opaque, int line, int new_state)
-+{
-+    AspeedGPIOState *s = ASPEED_GPIO(opaque);
-+    uint32_t set_idx, pin;
-+
-+    set_idx = line / ASPEED_GPIOS_PER_SET;
-+    pin = line % ASPEED_GPIOS_PER_SET;
-+
-+    aspeed_gpio_set_pin_level(s, set_idx, pin, new_state);
-+}
-+
- static void aspeed_gpio_realize(DeviceState *dev, Error **errp)
- {
-     AspeedGPIOState *s = ASPEED_GPIO(dev);
-@@ -1037,6 +1048,12 @@ static void aspeed_gpio_realize(DeviceState *dev, Error **errp)
-     memory_region_init_io(&s->iomem, OBJECT(s), &aspeed_gpio_ops, s,
-             TYPE_ASPEED_GPIO, 0x800);
- 
-+    /* TODO: Maybe could in named, not anonymous is better */
-+    qdev_init_gpio_out(dev, &s->gpios[0][0],
-+                       ASPEED_GPIO_MAX_NR_SETS * ASPEED_GPIOS_PER_SET);
-+    qdev_init_gpio_in(dev, aspeed_gpio_set,
-+                      ASPEED_GPIO_MAX_NR_SETS * ASPEED_GPIOS_PER_SET);
-+
-     sysbus_init_mmio(sbd, &s->iomem);
- }
- 
+ static void aspeed_eeprom_init(I2CBus *bus, uint8_t addr, uint32_t rsize)
 -- 
 2.25.1
 

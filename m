@@ -1,86 +1,87 @@
-Received: by 2002:a17:906:b088:0:0:0:0 with SMTP id x8csp2078625ejy;
-        Tue, 20 Sep 2022 15:51:02 -0700 (PDT)
-X-Google-Smtp-Source: AMsMyM69x5ZPfmdlnliHGEviQS+QY3IVVrbHPEoJPJQLKYl9V63mEyOPnj+qSXwF8bsQpWXRkJwJ
-X-Received: by 2002:a17:907:62a1:b0:781:b320:90c0 with SMTP id nd33-20020a17090762a100b00781b32090c0mr4869095ejc.255.1663714262481;
-        Tue, 20 Sep 2022 15:51:02 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1663714262; cv=none;
+Received: by 2002:a17:906:b088:0:0:0:0 with SMTP id x8csp2081588ejy;
+        Tue, 20 Sep 2022 15:59:58 -0700 (PDT)
+X-Google-Smtp-Source: AMsMyM4Oe7iJR1P9Ym12tvrJ+hzyVLEGQLySMaBzw/WUqEs2Z5z6Wk6PhjW928Q6Csy3gxbzpQ4e
+X-Received: by 2002:a17:90a:a09:b0:202:ab93:2afb with SMTP id o9-20020a17090a0a0900b00202ab932afbmr6161236pjo.60.1663714797898;
+        Tue, 20 Sep 2022 15:59:57 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1663714797; cv=none;
         d=google.com; s=arc-20160816;
-        b=aZq3H3iC3Zm6EleQ0G2sWQP2zQlOE1gQ/TBUgJMq3j25BoGsm5hj4EBCRx2p+oL3lH
-         QT/LLBJZE2siqMmaM8lKpN4Fc0Y58g2TkEf5UdpOTUUc3Oq9tG5mIs03cxChpxTr/qFK
-         QQjx1BlQ3B6dyonHcrbDoQVa7bXEkSUtTEMU9yMrq4xE0I8aWn9PJS+KNYHNMaTaYv8t
-         HBw/AGu9bAw0dwKFiXqE6LdKsHtCYzqqFjyPTZn132hhZI0Go5usXtoKFCuTXifNO3id
-         NPqr4uE2M44WxYIULzfdAXPDVrYF1aw6DI5DnWWhJWyiENeVOc0ATEgWjWxGPs1k7DA0
-         pAuw==
+        b=ThXE6vHPPcQZ8RKgb6lZTeRHlFmQg2S9pJmJHkTWUZuU8pzrbelzoUAi27G4OAfkgA
+         6mRoY5sJfEuJnivCoM7ERS8y3JlgMDxJWRqxNVme1lJN0ESfCgU423bterv7gzItV6g8
+         fI52hTSaul82RVvjpP85MBxPld0N0acjbpyOKjBNbD+mgw4N6YbxbkQrhBU50irAydp4
+         IQFmDjJjsPVkpks60WeuAeMZnGpDHbdMYG3JaRKcHJQ9rzosCV0LGrLcJoyM5UAmUb3k
+         iqzaWJY/UUeHTAatOZ0oSweqnGKwGWvDSe8m7yZslQyEHUB1pUxikRjALMikVH72BRP8
+         dDSw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=list-id:precedence:content-transfer-encoding:mime-version
          :message-id:references:in-reply-to:subject:cc:to:from:date
          :dkim-signature;
-        bh=QvFwsZxA6MHmqPpgPr1kmpEeALNsZz3EkiO3t151YWs=;
-        b=q8MAxF74KDSRM3iZ3XmQRb7yhLCU4sqLfQjzLRqVurSrEKXaWFqlNU84RtrTdjf4Xl
-         pb5zTR/H36jeQE1OXxdHdyCKcR82xwhFOkM9uCW32I6FRW6W6Xl5/5rehnlBVgHInOTd
-         jz6rYVkYCz1YdQyQnNpQTkfqJYpTGFoEvhYd4GuigNIu+UcGm9gwYvNb93+KPyzHvjwr
-         R72DC+K35r8HwsvPpMOcyPPxW5VCCnJWhjktGMXGVruEkV47YZTW039E3h6IOtlcwOpF
-         Gf4U2QAR2ErKay9s3xj54wZR8fEO4cEURuo/eImAwzM3ThGW7kfrKWEohJsJyCuEXulT
-         NaLw==
+        bh=5zGDMClH44o9kBaZpfqB55k2zUqfrg9XV0PUDaOzJJI=;
+        b=gUO8s3xJng+mFMy18PgsJMvHWZGOB8XLhoNSFpcG+j089/OdsnKuoOn2/BUe+HtCEQ
+         MQAjUxfcrdKJqz8tS9VKKpRR7gXOSBqqIFlCSLn7KCI0ClGgY/X58UbxjSQvmw7g+INQ
+         4I37hWV+WkgaM7sd6gVYpddiEKILzCAC/DqCxabr9rtfDUshj0ZDdRoa3AlPSkkoSx+O
+         SV9ce4GFKMSklRh4ZfAEMdSTOCsO9M6oQ/RcT1H95uF/3rt4mSQCPf9cAmqY5hbud9im
+         7JXRBuitIKTGSB1b2CXJVe4/GkCA4doZ1HamyvwqU08+mevK5O4bB7vV63mnYBuB5hBF
+         4svQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=ibNCByyu;
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=fLhdMY9o;
        spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <kvm-owner@vger.kernel.org>
 Received: from out1.vger.email (out1.vger.email. [2620:137:e000::1:20])
-        by mx.google.com with ESMTP id h11-20020a056402280b00b00450f9a404aasi1207963ede.31.2022.09.20.15.51.02;
-        Tue, 20 Sep 2022 15:51:02 -0700 (PDT)
+        by mx.google.com with ESMTP id f9-20020a63f109000000b00429d2838aa5si1006043pgi.635.2022.09.20.15.59.57;
+        Tue, 20 Sep 2022 15:59:57 -0700 (PDT)
 Received-SPF: pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) client-ip=2620:137:e000::1:20;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=ibNCByyu;
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=fLhdMY9o;
        spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S229993AbiITWvA (ORCPT <rfc822;daniel.diaz@linaro.org>
-        + 2 others); Tue, 20 Sep 2022 18:51:00 -0400
-Received: from lindbergh.monkeyblade.net ([23.128.96.19]:35020 "EHLO
+        id S229993AbiITW74 (ORCPT <rfc822;daniel.diaz@linaro.org>
+        + 2 others); Tue, 20 Sep 2022 18:59:56 -0400
+Received: from lindbergh.monkeyblade.net ([23.128.96.19]:44474 "EHLO
         lindbergh.monkeyblade.net" rhost-flags-OK-OK-OK-OK) by vger.kernel.org
-        with ESMTP id S229529AbiITWu6 (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Tue, 20 Sep 2022 18:50:58 -0400
-Received: from mail-ed1-x52e.google.com (mail-ed1-x52e.google.com [IPv6:2a00:1450:4864:20::52e])
-        by lindbergh.monkeyblade.net (Postfix) with ESMTPS id D075471700
-        for <kvm@vger.kernel.org>; Tue, 20 Sep 2022 15:50:57 -0700 (PDT)
-Received: by mail-ed1-x52e.google.com with SMTP id b35so6126254edf.0
-        for <kvm@vger.kernel.org>; Tue, 20 Sep 2022 15:50:57 -0700 (PDT)
+        with ESMTP id S229881AbiITW7y (ORCPT <rfc822;kvm@vger.kernel.org>);
+        Tue, 20 Sep 2022 18:59:54 -0400
+Received: from mail-ej1-x62e.google.com (mail-ej1-x62e.google.com [IPv6:2a00:1450:4864:20::62e])
+        by lindbergh.monkeyblade.net (Postfix) with ESMTPS id DEDBD13D56
+        for <kvm@vger.kernel.org>; Tue, 20 Sep 2022 15:59:52 -0700 (PDT)
+Received: by mail-ej1-x62e.google.com with SMTP id l14so9707370eja.7
+        for <kvm@vger.kernel.org>; Tue, 20 Sep 2022 15:59:52 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20210112;
         h=content-transfer-encoding:mime-version:message-id:references
          :in-reply-to:subject:cc:to:from:date:from:to:cc:subject:date;
-        bh=QvFwsZxA6MHmqPpgPr1kmpEeALNsZz3EkiO3t151YWs=;
-        b=ibNCByyuTGhFGP39XO+xweQozEi3tAqcBRhZ/WOmAMtm/9JZXAqTHeKDVMR3haUUku
-         bX/KG2i8BLKYyZZ5r9zS7NpGgT5D6bwJNH/6EaOJaQxYpBu64mBI46gWkHJPUonkqqL5
-         uEs9gpr+y/TWGp+xV48d0PI7qu18qvMXd4eqt6zEm9WuFkfVSx7rwO4U1MQF3yaSFsY/
-         5Jo9YA+0CW00j9RSccq2/MAvvNkxPNwQERMk4xSHlaFAE0ymgCLA5CQSoPJv8sXQ2J8b
-         J45/4/j74hFU0Hj4c7mQT5wxM/yWl5q+XEBIfdHitK28VSjZ22xsRBuBV8AWfo2iUnYv
-         RJfQ==
+        bh=5zGDMClH44o9kBaZpfqB55k2zUqfrg9XV0PUDaOzJJI=;
+        b=fLhdMY9oJXsreiLcZGR2iqMruYR+8+TCZiJyOzjDIshhi2bT8T6q+tOne1hiOdyqXO
+         VTm+mfBfnxXUp/6y/e1nSyP1Dn84N9RSnK9nSVgTSpuwcpk871Gfn+3pte5bQrIhLcRl
+         eGbrMzV5MZcAqPSa7RkI/rIP+ODd6Bso+zAhveSvEjr2iX7tCpsYpQOzGMxKRuBrqoWv
+         +RHUpwX3uIOzr495dtL2pNiP6gCRKUw0kDX34CF8YVOy2VTong7eOTkVA+a7yHmD1cBV
+         qeJNxDhMGv21t0c0x7Yap8LkRSR3ZyVHRzCNFWE0M/lla9o40AxvSWMHge7zOl/LWLNS
+         ENnw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=content-transfer-encoding:mime-version:message-id:references
          :in-reply-to:subject:cc:to:from:date:x-gm-message-state:from:to:cc
          :subject:date;
-        bh=QvFwsZxA6MHmqPpgPr1kmpEeALNsZz3EkiO3t151YWs=;
-        b=iWrRQOn2dTS8OwtHCZV2HVa6zDYzrQrFJzAaGNKrQ+EB8gwJXKfakKRJviLZ0a1M1K
-         Iw7POC8E69j508I7lUo8ausQNhz2C6w1ZwCRibzdADVVZFlc1dBNO+SMCIxFhW2u+5yy
-         jM4nUqftC06EN26u4HFcmdwMOaJG8A4dy7kezc187W+YWgPfkgBXhMnuv9mL3URWGo9C
-         tIbb7/O1AspvhghtUzArqlPBd+ojChuag1RRolThuPjeTyBxLpHJFcWrjuwrMUDdzm3h
-         P2Mg+8NT8qriRok9u2o5xp1g9hOHqWoiWS1PLQJ3BezDsvr2WyPRYPHNtMpNUXpIxX15
-         Wnug==
-X-Gm-Message-State: ACrzQf1vqSuK/T76DiRxGCR64g5HLBwDxSJKAeDKfriU8GorOCIzYN9v
-        eC//iCePUUdDU6m5ytM0ZG4=
-X-Received: by 2002:a05:6402:1e8c:b0:44f:f70:e75e with SMTP id f12-20020a0564021e8c00b0044f0f70e75emr21468748edf.405.1663714256321;
-        Tue, 20 Sep 2022 15:50:56 -0700 (PDT)
+        bh=5zGDMClH44o9kBaZpfqB55k2zUqfrg9XV0PUDaOzJJI=;
+        b=g+TXiLec2Il913rt18D3uSPZOmSW1MlZWROzBgL23hVUwYyMVUYWTzMI2qHHfhjML8
+         qLMoB1eZ8JUv6cKCLM2F3ORVexCl6hELgz0MHB3Ro5/5bk4Lx8yfj/SxoqluDyf995on
+         vbgcrU/OMMSVZ1tuJI5qIcFpDgIQ9rJNmDnxqhDMbEFaZ8vZCdLA1nSxlawL/0ZiEkE+
+         PPj5Op9NwQ5/cyMyqSk2P2WY2LNRwtvrY4ReowCYqwAVoTC/HvUYbzfac+zRnXzxn+4d
+         0z1Mzig6PcR5bArwKh2MNIxcjT8HFa3MpcAH4jQAFLePGpDyAlKcbDnZ/Ak7x2nEQCrm
+         /4BQ==
+X-Gm-Message-State: ACrzQf0ZAx9josxBOAvIoA1ayTHiBWpv4TBHse4kjX+XyG70roZJSC4I
+        9aM9T26Vk9cEiVpJoOTpudg=
+X-Received: by 2002:a17:906:8a53:b0:781:6ee9:db96 with SMTP id gx19-20020a1709068a5300b007816ee9db96mr7656219ejc.301.1663714791350;
+        Tue, 20 Sep 2022 15:59:51 -0700 (PDT)
 Received: from [127.0.0.1] (dynamic-078-054-006-055.78.54.pool.telefonica.de. [78.54.6.55])
-        by smtp.gmail.com with ESMTPSA id w19-20020a170906185300b00781dbdb2917sm419441eje.208.2022.09.20.15.50.55
+        by smtp.gmail.com with ESMTPSA id kw9-20020a170907770900b00781d411a63csm466007ejc.151.2022.09.20.15.59.50
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 20 Sep 2022 15:50:55 -0700 (PDT)
-Date:   Tue, 20 Sep 2022 22:50:48 +0000
+        Tue, 20 Sep 2022 15:59:50 -0700 (PDT)
+Date:   Tue, 20 Sep 2022 22:59:42 +0000
 From:   Bernhard Beschow <shentey@gmail.com>
-To:     Peter Maydell <peter.maydell@linaro.org>
+To:     Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+        Peter Maydell <peter.maydell@linaro.org>
 CC:     qemu-devel@nongnu.org, "Michael S. Tsirkin" <mst@redhat.com>,
         Magnus Damm <magnus.damm@gmail.com>,
         Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
@@ -127,7 +128,6 @@ CC:     qemu-devel@nongnu.org, "Michael S. Tsirkin" <mst@redhat.com>,
         Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
         qemu-s390x@nongnu.org,
         =?ISO-8859-1?Q?Marc-Andr=E9_Lureau?= <marcandre.lureau@redhat.com>,
-        Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
         Eric Farman <farman@linux.ibm.com>,
         Reinoud Zandijk <reinoud@netbsd.org>,
         Alexander Bulekov <alxndr@bu.edu>,
@@ -157,9 +157,9 @@ CC:     qemu-devel@nongnu.org, "Michael S. Tsirkin" <mst@redhat.com>,
         Alistair Francis <alistair@alistair23.me>,
         Jason Herne <jjherne@linux.ibm.com>
 Subject: =?US-ASCII?Q?Re=3A_=5BPATCH_0/9=5D_Deprecate_sysbus=5Fget=5Fd?= =?US-ASCII?Q?efault=28=29_and_get=5Fsystem=5Fmemory=28=29_et=2E_al?=
-In-Reply-To: <CAFEAcA8GjXFO4WK=KybgSc8rMfqecwD9EXS0kZMKtqogNf1Tsg@mail.gmail.com>
-References: <20220919231720.163121-1-shentey@gmail.com> <CAFEAcA8GjXFO4WK=KybgSc8rMfqecwD9EXS0kZMKtqogNf1Tsg@mail.gmail.com>
-Message-ID: <AD2F1750-F579-4F3B-A9FD-F2ADDF29D9E8@gmail.com>
+In-Reply-To: <49325e7d-5020-23f7-4bce-c53d8d988c95@ilande.co.uk>
+References: <20220919231720.163121-1-shentey@gmail.com> <CAFEAcA8GjXFO4WK=KybgSc8rMfqecwD9EXS0kZMKtqogNf1Tsg@mail.gmail.com> <49325e7d-5020-23f7-4bce-c53d8d988c95@ilande.co.uk>
+Message-ID: <7DBD5114-15B2-42A7-AB97-35DBF9DDA825@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain;
  charset=utf-8
@@ -173,86 +173,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.6 (2021-04-09) on
 Precedence: bulk
 List-ID: <kvm.vger.kernel.org>
 X-Mailing-List: kvm@vger.kernel.org
-X-TUID: 5Dq5J4IZ3BaI
+X-TUID: Syg0XypKBgES
 
-Am 20=2E September 2022 09:55:37 UTC schrieb Peter Maydell <peter=2Emaydell=
-@linaro=2Eorg>:
->On Tue, 20 Sept 2022 at 00:18, Bernhard Beschow <shentey@gmail=2Ecom> wro=
-te:
->>
->> In address-spaces=2Eh it can be read that get_system_memory() and
->> get_system_io() are temporary interfaces which "should only be used tem=
-porarily
->> until a proper bus interface is available"=2E This statement certainly =
-extends to
->> the address_space_memory and address_space_io singletons=2E
+Am 20=2E September 2022 15:36:26 UTC schrieb Mark Cave-Ayland <mark=2Ecave-=
+ayland@ilande=2Eco=2Euk>:
+>On 20/09/2022 10:55, Peter Maydell wrote:
 >
->This is a long standing "we never really completed a cleanup"=2E=2E=2E
+>> On Tue, 20 Sept 2022 at 00:18, Bernhard Beschow <shentey@gmail=2Ecom> w=
+rote:
+>>>=20
+>>> In address-spaces=2Eh it can be read that get_system_memory() and
+>>> get_system_io() are temporary interfaces which "should only be used te=
+mporarily
+>>> until a proper bus interface is available"=2E This statement certainly=
+ extends to
+>>> the address_space_memory and address_space_io singletons=2E
+>>=20
+>> This is a long standing "we never really completed a cleanup"=2E=2E=2E
+>>=20
+>>> This series attempts
+>>> to stop further proliferation of their use by turning TYPE_SYSTEM_BUS =
+into an
+>>> object-oriented, "proper bus interface" inspired by PCIBus=2E
+>>>=20
+>>> While at it, also the main_system_bus singleton is turned into an attr=
+ibute of
+>>> MachineState=2E Together, this resolves five singletons in total, maki=
+ng the
+>>> ownership relations much more obvious which helps comprehension=2E
+>>=20
+>> =2E=2E=2Ebut I don't think this is the direction we want to go=2E
+>> Overall the reason that the "system memory" and "system IO"
+>> singletons are weird is that in theory they should not be necessary
+>> at all -- board code should create devices and map them into an
+>> entirely arbitrary MemoryRegion or set of MemoryRegions corresponding
+>> to address space(s) for the CPU and for DMA-capable devices=2E But we
+>> keep them around because
+>>   (a) there is a ton of legacy code that assumes there's only one
+>>       address space in the system and this is it
+>>   (b) when modelling the kind of board where there really is only
+>>       one address space, having the 'system memory' global makes
+>>       the APIs for creating and connecting devices a lot simpler
+>>=20
+>> Retaining the whole-system singleton but shoving it into MachineState
+>> doesn't really change much, IMHO=2E
+>>=20
+>> More generally, sysbus is rather weird because it isn't really a
+>> bus=2E Every device in the system of TYPE_SYS_BUS_DEVICE is "on"
+>> the unique TYPE_SYSTEM_BUS bus, but that doesn't mean they're
+>> all in the same address space or that in real hardware they'd
+>> all be on the same bus=2E sysbus has essentially degraded into a
+>> hack for having devices get reset=2E I really really need to make
+>> some time to have another look at reset handling=2E If we get that
+>> right then I think it's probably possible to collapse the few
+>> things TYPE_SYS_BUS_DEVICE does that TYPE_DEVICE does not down
+>> into TYPE_DEVICE and get rid of sysbus altogether=2E=2E=2E
 >
->> This series attempts
->> to stop further proliferation of their use by turning TYPE_SYSTEM_BUS i=
-nto an
->> object-oriented, "proper bus interface" inspired by PCIBus=2E
->>
->> While at it, also the main_system_bus singleton is turned into an attri=
-bute of
->> MachineState=2E Together, this resolves five singletons in total, makin=
-g the
->> ownership relations much more obvious which helps comprehension=2E
+>Following on from one of the discussion points from Alex's KVM Forum BoF =
+session: I think longer term what we need to aim for is for QEMU machines t=
+o define their own address spaces, and then bind those address spaces conta=
+ining memory-mapped devices to one or more CPUs=2E
+
+Isn't that more or less impossible with singletons?
+
 >
->=2E=2E=2Ebut I don't think this is the direction we want to go=2E
->Overall the reason that the "system memory" and "system IO"
->singletons are weird is that in theory they should not be necessary
->at all -- board code should create devices and map them into an
->entirely arbitrary MemoryRegion or set of MemoryRegions corresponding
->to address space(s) for the CPU and for DMA-capable devices=2E
+>Once this in place, as Peter notes above it just remains to solve the res=
+et problem and then it becomes possible to eliminate sysbus altogether as e=
+verything else can already be managed by qdev/QOM=2E
 
-My intention was to allow exactly that: By turning sytem memory and system=
- IO into non-singletons, one could have many of them, thus allowing boards =
-to create arbitrary mappings of memory and IO=2E Since QEMU currently assum=
-es one set (memory and IO) of addresses, I for now instantiated the SysBus =
-once in the machine class to preserve behavior=2E
+Also see my reply to Peter=2E
 
->But we
->keep them around because
-> (a) there is a ton of legacy code that assumes there's only one
->     address space in the system and this is it
-> (b) when modelling the kind of board where there really is only
->     one address space, having the 'system memory' global makes
->     the APIs for creating and connecting devices a lot simpler
-
-Indeed, the APIs may look simpler=2E The issue I see here though is that d=
-evices may make assumptions about these globals which makes the code hard t=
-o change in the long run=2E If devices are given their dependencies by the =
-framework, they must make less assumptions, putting the framework into cont=
-rol=2E This makes the code more homogenious and therefore easier to change=
-=2E
-
->Retaining the whole-system singleton but shoving it into MachineState
->doesn't really change much, IMHO=2E
->
->More generally, sysbus is rather weird because it isn't really a
->bus=2E Every device in the system of TYPE_SYS_BUS_DEVICE is "on"
->the unique TYPE_SYSTEM_BUS bus, but that doesn't mean they're
->all in the same address space or that in real hardware they'd
->all be on the same bus=2E
-
-Again, having multiple SysBuses may solve that issue=2E
-
->sysbus has essentially degraded into a
->hack for having devices get reset=2E I really really need to make
->some time to have another look at reset handling=2E If we get that
->right then I think it's probably possible to collapse the few
->things TYPE_SYS_BUS_DEVICE does that TYPE_DEVICE does not down
->into TYPE_DEVICE and get rid of sysbus altogether=2E=2E=2E
-
-There are many SysBusDevices which directly access the globals I intended =
-to deprecate=2E If those devices could be changed to use the SysBus equival=
-ents instead, this would put the boards in control of memory mappings=2E
-
-Best regards,
+Thanks,
 Bernhard
-
 >
->thanks
->-- PMM
+>
+>ATB,
+>
+>Mark=2E

@@ -1,196 +1,239 @@
-Received: by 2002:a17:906:b088:0:0:0:0 with SMTP id x8csp2203740ejy;
-        Tue, 20 Sep 2022 21:57:08 -0700 (PDT)
-X-Google-Smtp-Source: AMsMyM7Ve16V1oXHqqvx9k3ZuFRjsHE4+7Co5fFfU2gmVvZEaivD9i21uFp05J/si2kdPAWUE/hV
-X-Received: by 2002:a25:ae07:0:b0:6ae:cb56:aa55 with SMTP id a7-20020a25ae07000000b006aecb56aa55mr23649918ybj.257.1663736228146;
-        Tue, 20 Sep 2022 21:57:08 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1663736228; cv=none;
+Received: by 2002:a17:906:b088:0:0:0:0 with SMTP id x8csp2322855ejy;
+        Wed, 21 Sep 2022 02:49:16 -0700 (PDT)
+X-Google-Smtp-Source: AMsMyM4umpGMFCxfU4V7zH1DLh8oRYWvI0BiFvWHtcvJ2UEMFozMGXNMpMyS05jDNNlIxKVut/r5
+X-Received: by 2002:a0c:8081:0:b0:496:7822:c55a with SMTP id 1-20020a0c8081000000b004967822c55amr22778185qvb.87.1663753756525;
+        Wed, 21 Sep 2022 02:49:16 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1663753756; cv=none;
         d=google.com; s=arc-20160816;
-        b=Uka9ZywAg8X2UqU509fYsZhWSe/3SwpLvwSzn7ZoK5Sek2pups6yLOLpG6+iQO3TjC
-         +yqG1VeR+Ha7Rl+//a+bPTdCV7AB5z6J/BXhzo09HnR12eIpYE0wCtmuz2T4s5MOGVy5
-         zsYTc6BsD7kAJxB3g69pyxAlmgZRXgiAhQ+RdlIrhfIC+++q34QEuTY+oy1tM9TRGOMd
-         ihTsFj0Xw5WqWQZImeSNPB9dM2FSxpt91HwGL12Salmvr1TX181dMcUvKZ2M/vgZDX3S
-         LC0p1Evev3gSgg/HKqovOVUp5x+HlGsEgVorFAFlmF3DU0R1rkkMop5S5J913jVJXkL4
-         6tNA==
+        b=0MicoRGMn5dni/s4cyLb+ci5abGcT9gnZEjlSW3Ni8h6+VNNJzPghY7KnNoy+EzWCf
+         eGGlPGlLrN45+UqycMTAsWsBcDgxpLCUGRvOQmFH3z0J5OPtKKlJbiDX9hiTIBWc4UhE
+         2eH/yRX1H18Md9ddBdZiRRV+MZuEqoLgvxbb3jwW8j/4kZ3rMNgmfrRD5YvNP+jMXL8s
+         xJHT2d1se4KWPjy2PSmQqpKU4KG9/FjmSKCoB5BQKvKm3Elk9M/EnJEzbHJdpzKk3GqN
+         no+ietg2szeiIxIxVb/W12M6FrNes3IdcVgQd0keAihpalFc24qiyeWytC22oOx2ij1R
+         Ai1w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:user-agent:message-id:in-reply-to:date:references
-         :subject:cc:to:from:dkim-signature:sender:precedence:errors-to
-         :list-subscribe:list-help:list-post:list-unsubscribe:list-id;
-        bh=d0ewimBIuzA4pcXzNcXQGF6URaG5NO+EI7K2JWsTSM0=;
-        b=JN2KVCqx4Jqkb/nvn68uQYUOJhpYgRJUaGgQgi8SNPgcSR6uXHHs5pxYv37qokoRpd
-         AhxTt2TNCxSl13yKKUnWvh70h9VQrumgOwk1yCTKNBQxLHVKRRk3HT934NBjfvUKRGjM
-         dWRRR1/YyThN5zXUGU22wQszjhlj/cf+ezTHYtWJyqD+QpexBrRspEZgPxUVy2aNl9dR
-         ReHRyDMw3CAa1wpdbR7wfaSMy9zeWbYSgDTO0H+EwKEu71bx1R8mCo3ibOesygKdb4Le
-         UILtFVL5+8EfRrzDgXLio04rI5ztaEpXk6OLTD2WmSNayCOsWRhdZTrUuZFw1mfAN2c0
-         R2gQ==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=zW5HyKzeuivew/B/xuG63OBJVZKZHySm5uewagUHgYw=;
+        b=CgMQVwyz3Vqrjp5TFyq/CM/ptDf6toRWSHGdjubA3Navksi1kmFpzlQH9uNbglp50k
+         6e5Z0gijEI10fSF7eKhjZjsZep4xAJomI9XExy7qjCjHKXVYDP1qbydSeVNosjRbzZit
+         zdJg1I5Av1qFQB45OYOuNIbxMmVAQz9Ky9j1yeQFM8yJak4HmJwV38pWatVKDC3dXGtJ
+         gc9vE8H29tcuCHJl6RExa3Onvezi5Ws91cA2Q1ja1wRv1A8oQCu5ACgpyulVYWtEr+LI
+         yEucwvJLK9dfCUTmBkdv0FB7X5byKxI+JORdY6zwmWkYbBgpNTX7ZnfYBeJ2gJbVfLBP
+         Corw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=BvmOz6rL;
-       spf=pass (google.com: domain of xen-devel-bounces@lists.xenproject.org designates 192.237.175.120 as permitted sender) smtp.mailfrom=xen-devel-bounces@lists.xenproject.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <xen-devel-bounces@lists.xenproject.org>
-Received: from lists.xenproject.org (lists.xenproject.org. [192.237.175.120])
-        by mx.google.com with ESMTPS id x7-20020a818707000000b003456e10dfebsi1406667ywf.387.2022.09.20.21.57.07
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 20 Sep 2022 21:57:08 -0700 (PDT)
-Received-SPF: pass (google.com: domain of xen-devel-bounces@lists.xenproject.org designates 192.237.175.120 as permitted sender) client-ip=192.237.175.120;
+       dkim=pass header.i=@linaro.org header.s=google header.b=W0gXS6y2;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id s4-20020a05620a254400b006cf1710f278si1185161qko.33.2022.09.21.02.49.16
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Wed, 21 Sep 2022 02:49:16 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=BvmOz6rL;
-       spf=pass (google.com: domain of xen-devel-bounces@lists.xenproject.org designates 192.237.175.120 as permitted sender) smtp.mailfrom=xen-devel-bounces@lists.xenproject.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from list by lists.xenproject.org with outflank-mailman.409654.652663 (Exim 4.92)
-	(envelope-from <xen-devel-bounces@lists.xenproject.org>)
-	id 1oarlT-0006gD-AU; Wed, 21 Sep 2022 04:55:15 +0000
-X-Outflank-Mailman: Message body and most headers restored to incoming version
-Received: by outflank-mailman (output) from mailman id 409654.652663; Wed, 21 Sep 2022 04:55:15 +0000
-Received: from localhost ([127.0.0.1] helo=lists.xenproject.org)
-	by lists.xenproject.org with esmtp (Exim 4.92)
-	(envelope-from <xen-devel-bounces@lists.xenproject.org>)
-	id 1oarlT-0006g6-7A; Wed, 21 Sep 2022 04:55:15 +0000
-Received: by outflank-mailman (input) for mailman id 409654;
- Wed, 21 Sep 2022 04:55:14 +0000
-Received: from se1-gles-flk1-in.inumbo.com ([94.247.172.50]
- helo=se1-gles-flk1.inumbo.com)
- by lists.xenproject.org with esmtp (Exim 4.92)
- (envelope-from <SRS0=YFKF=ZY=redhat.com=armbru@srs-se1.protection.inumbo.net>)
- id 1oarlS-0006g0-87
- for xen-devel@lists.xenproject.org; Wed, 21 Sep 2022 04:55:14 +0000
-Received: from us-smtp-delivery-124.mimecast.com
- (us-smtp-delivery-124.mimecast.com [170.10.133.124])
- by se1-gles-flk1.inumbo.com (Halon) with ESMTPS
- id 9325cb2e-3969-11ed-bad8-01ff208a15ba;
- Wed, 21 Sep 2022 06:55:13 +0200 (CEST)
-Received: from mimecast-mx02.redhat.com (mx3-rdu2.redhat.com
- [66.187.233.73]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-262-JDdO1-4NNtms04LwtNgKXw-1; Wed, 21 Sep 2022 00:55:07 -0400
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.rdu2.redhat.com
- [10.11.54.4])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 67BF02999B47;
- Wed, 21 Sep 2022 04:55:05 +0000 (UTC)
-Received: from blackfin.pond.sub.org (unknown [10.39.192.163])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id EFABE2024CC8;
- Wed, 21 Sep 2022 04:55:03 +0000 (UTC)
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
- id C2B8221E6900; Wed, 21 Sep 2022 06:55:02 +0200 (CEST)
-X-BeenThere: xen-devel@lists.xenproject.org
-List-Id: Xen developer discussion <xen-devel.lists.xenproject.org>
-List-Unsubscribe: <https://lists.xenproject.org/mailman/options/xen-devel>,
- <mailto:xen-devel-request@lists.xenproject.org?subject=unsubscribe>
-List-Post: <mailto:xen-devel@lists.xenproject.org>
-List-Help: <mailto:xen-devel-request@lists.xenproject.org?subject=help>
-List-Subscribe: <https://lists.xenproject.org/mailman/listinfo/xen-devel>,
- <mailto:xen-devel-request@lists.xenproject.org?subject=subscribe>
-Errors-To: xen-devel-bounces@lists.xenproject.org
-Precedence: list
-Sender: "Xen-devel" <xen-devel-bounces@lists.xenproject.org>
-X-Inumbo-ID: 9325cb2e-3969-11ed-bad8-01ff208a15ba
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1663736111;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references;
-	bh=d0ewimBIuzA4pcXzNcXQGF6URaG5NO+EI7K2JWsTSM0=;
-	b=BvmOz6rLkGiZWGUSJW3b2OY790xekYjtpHk9Y0+xJPAoG44NDocZBpxlJ+c7vVdNcF3+ki
-	7YQ/ylqOYuHdIqLUv1gjQCtgoQh8+gXVH/wzpbc/pZxASKHdvEKUPNHKNuHGbfv7/mn6M5
-	jU9BfET7q23RZSXJ2QRDijRktZCxkdw=
-X-MC-Unique: JDdO1-4NNtms04LwtNgKXw-1
-From: Markus Armbruster <armbru@redhat.com>
-To: Bernhard Beschow <shentey@gmail.com>
-Cc: Alistair Francis <alistair23@gmail.com>,  Bin Meng
- <bin.meng@windriver.com>,  Palmer Dabbelt <palmer@dabbelt.com>,
-  "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,  "Michael S.
- Tsirkin" <mst@redhat.com>,  Magnus Damm <magnus.damm@gmail.com>,
-  Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,  Bandan Das
- <bsd@redhat.com>,  Matthew Rosato <mjrosato@linux.ibm.com>,  Daniel
- Henrique Barboza <danielhb413@gmail.com>,  Sergio Lopez <slp@redhat.com>,
-  Alexey Kardashevskiy <aik@ozlabs.ru>,  Xiaojuan Yang
- <yangxiaojuan@loongson.cn>,  Cameron Esfahani <dirty@apple.com>,  Michael
- Rolnik <mrolnik@gmail.com>,  Song Gao <gaosong@loongson.cn>,  Jagannathan
- Raman <jag.raman@oracle.com>,  Greg Kurz <groug@kaod.org>,  Kamil
- Rytarowski <kamil@netbsd.org>,  Peter Xu <peterx@redhat.com>,  Joel
- Stanley <joel@jms.id.au>,  Alistair Francis <Alistair.Francis@wdc.com>,
-  "Dr. David Alan Gilbert" <dgilbert@redhat.com>,  Paolo Bonzini
- <pbonzini@redhat.com>,  haxm-team@intel.com,  Roman Bolshakov
- <r.bolshakov@yadro.com>,  Eric Auger <eric.auger@redhat.com>,  David
- Gibson <david@gibson.dropbear.id.au>,  Daniel P. =?utf-8?Q?Berrang=C3=A9?=
- <berrange@redhat.com>,  Christian Borntraeger <borntraeger@linux.ibm.com>,
-  =?utf-8?Q?C=C3=A9dric?= Le Goater <clg@kaod.org>,  Stefan Hajnoczi
- <stefanha@redhat.com>,
-  Qemu-block <qemu-block@nongnu.org>,  Eduardo Habkost
- <eduardo@habkost.net>,  =?utf-8?Q?Herv=C3=A9?= Poussineau
- <hpoussin@reactos.org>,  "open
- list:New World" <qemu-ppc@nongnu.org>,  Cornelia Huck <cohuck@redhat.com>,
-  Helge Deller <deller@gmx.de>,  Stefano Stabellini
- <sstabellini@kernel.org>,  Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?=
- <f4bug@amsat.org>,
-  "open list:RISC-V" <qemu-riscv@nongnu.org>,  Stafford Horne
- <shorne@gmail.com>,  Paul Durrant <paul@xen.org>,  Havard Skinnemoen
- <hskinnemoen@google.com>,  Elena Ufimtseva <elena.ufimtseva@oracle.com>,
-  Alexander Graf <agraf@csgraf.de>,  Thomas Huth <thuth@redhat.com>,  Alex
- Williamson <alex.williamson@redhat.com>,  Wenchao Wang
- <wenchao.wang@intel.com>,  Tony Krowiak <akrowiak@linux.ibm.com>,  Marcel
- Apfelbaum <marcel.apfelbaum@gmail.com>,  qemu-s390x
- <qemu-s390x@nongnu.org>,  =?utf-8?Q?Marc-Andr=C3=A9?= Lureau
- <marcandre.lureau@redhat.com>,
-  Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,  Eric Farman
- <farman@linux.ibm.com>,  Reinoud Zandijk <reinoud@netbsd.org>,  Alexander
- Bulekov <alxndr@bu.edu>,  Yanan Wang <wangyanan55@huawei.com>,  "Edgar E.
- Iglesias" <edgar.iglesias@gmail.com>,  Gerd Hoffmann <kraxel@redhat.com>,
-  Tyrone Ting <kfting@nuvoton.com>,  "open list:X86"
- <xen-devel@lists.xenproject.org>,  Yoshinori Sato
- <ysato@users.sourceforge.jp>,  John Snow <jsnow@redhat.com>,  Richard
- Henderson <richard.henderson@linaro.org>,  Darren Kenny
- <darren.kenny@oracle.com>,  "open list:Overall" <kvm@vger.kernel.org>,
-  Qiuhao Li <Qiuhao.Li@outlook.com>,  John G Johnson
- <john.g.johnson@oracle.com>,  Sunil Muthuswamy <sunilmut@microsoft.com>,
-  Max Filippov <jcmvbkbc@gmail.com>,  qemu-arm <qemu-arm@nongnu.org>,
-  Marcelo Tosatti <mtosatti@redhat.com>,  Peter Maydell
- <peter.maydell@linaro.org>,  Anthony Perard <anthony.perard@citrix.com>,
-  Andrew Jeffery <andrew@aj.id.au>,  Artyom Tarasenko
- <atar4qemu@gmail.com>,  Halil Pasic <pasic@linux.ibm.com>,  "Maciej S.
- Szmigiero" <maciej.szmigiero@oracle.com>,  Jason Wang
- <jasowang@redhat.com>,  David Hildenbrand <david@redhat.com>,  Laurent
- Vivier <laurent@vivier.eu>,  Alistair Francis <alistair@alistair23.me>,
-  Jason Herne <jjherne@linux.ibm.com>
-Subject: Re: [PATCH 1/9] hw/riscv/sifive_e: Fix inheritance of SiFiveEState
-References: <20220919231720.163121-1-shentey@gmail.com>
-	<20220919231720.163121-2-shentey@gmail.com>
-	<CAKmqyKN+V2R8PkED67tB8+pCZs9369ViiL8OZ9XhO3SdUCk5=Q@mail.gmail.com>
-	<87edw6xoog.fsf@pond.sub.org>
-	<0BBD7391-7B2D-44E7-9396-D1747784B9DA@gmail.com>
-Date: Wed, 21 Sep 2022 06:55:02 +0200
-In-Reply-To: <0BBD7391-7B2D-44E7-9396-D1747784B9DA@gmail.com> (Bernhard
-	Beschow's message of "Tue, 20 Sep 2022 23:23:52 +0000")
-Message-ID: <87a66tgwd5.fsf@pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/27.2 (gnu/linux)
+       dkim=pass header.i=@linaro.org header.s=google header.b=W0gXS6y2;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:43324 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1oawM0-000122-0V
+	for alex.bennee@linaro.org; Wed, 21 Sep 2022 05:49:16 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:58130)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1oawL5-0000z8-Uz
+ for qemu-arm@nongnu.org; Wed, 21 Sep 2022 05:48:25 -0400
+Received: from mail-ej1-x630.google.com ([2a00:1450:4864:20::630]:46992)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1oawKz-0003SM-Ti
+ for qemu-arm@nongnu.org; Wed, 21 Sep 2022 05:48:16 -0400
+Received: by mail-ej1-x630.google.com with SMTP id bj12so12242241ejb.13
+ for <qemu-arm@nongnu.org>; Wed, 21 Sep 2022 02:48:10 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:from:to:cc:subject:date;
+ bh=zW5HyKzeuivew/B/xuG63OBJVZKZHySm5uewagUHgYw=;
+ b=W0gXS6y2bMRF3jyfGKbHAJ3obFmZsrPdd8F24LXKd+lkBoXU71tcZ/8Rd6CBiOG5Gt
+ /llLewMKLhpE1fQNCYWyNUKAbaSFN2uQB2l18sr/X93nrdV3mtGgAIGRp/6TgVSMzN2Y
+ /w1fEeXGFjYnXxT23gFPn8XnRZH5aeFDoxQz9+VomJlB3nS5DQBO+52ijYrE6giLDSG/
+ 2KCpT4rp+gLvUOj6dxkghXRdjweFaTc4KxK/v/ZnZUMuCbBq69W0kFT14iOV1Wlsqup3
+ dNnSUoA2MHtiNM8+w3c7h0S8ulkEzZsQykPZzRe2GSS6+09iGKn6Gbsk3SsmOBhLic69
+ qeyw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+ :subject:date;
+ bh=zW5HyKzeuivew/B/xuG63OBJVZKZHySm5uewagUHgYw=;
+ b=N7kBS9mJOICMGiTwjkRUamm4IuX2m1xjSzg4KN/dyFpYNVz0sdcStjob0DHqOFM/ER
+ Wjc1DqqvcQNICAnEAuN5pive6IfNZy3SpS0pYHvpOj2tTiYmNSenD5w1XqMEW6Ejelq/
+ vM2mTIPBAflZwmul6dABRec6uuShXWIW8yWnYMhVofJGvIi4qr1MqP+Tn0hk0d8ov+aF
+ UEadqM0OkaTdouyflybZyocLU77BfaLl1t+6SkczW3aSknXdvk/UbOQcp7n8hVRiGAcw
+ KtUpeMXk93iSaOtnxvFrBdQpZDk8F10+lQ3zsjRV8aCtMTJl/vmgE0u7mFDc5QndVWNe
+ 67UA==
+X-Gm-Message-State: ACrzQf1f6ehXE/bG2rm7UGfox1dfsfGGQpOxPpY0PG8Lzn4cQYbTv5Ff
+ EC9ZfGuqJNC4HVjSGFakYRyS9pXbs603rWb3erCffQ==
+X-Received: by 2002:a17:907:2bd5:b0:76f:591c:466b with SMTP id
+ gv21-20020a1709072bd500b0076f591c466bmr19468493ejc.504.1663753689736; Wed, 21
+ Sep 2022 02:48:09 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Scanned-By: MIMEDefang 3.1 on 10.11.54.4
-X-TUID: hCdBZTTxqmrn
+References: <20220919231720.163121-1-shentey@gmail.com>
+ <CAFEAcA8GjXFO4WK=KybgSc8rMfqecwD9EXS0kZMKtqogNf1Tsg@mail.gmail.com>
+ <AD2F1750-F579-4F3B-A9FD-F2ADDF29D9E8@gmail.com>
+In-Reply-To: <AD2F1750-F579-4F3B-A9FD-F2ADDF29D9E8@gmail.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Wed, 21 Sep 2022 10:47:58 +0100
+Message-ID: <CAFEAcA9wHy8GNH_yWkZycdZZ4KxzDdTA=YP6zmHGsRC1gk=CUw@mail.gmail.com>
+Subject: Re: [PATCH 0/9] Deprecate sysbus_get_default() and
+ get_system_memory() et. al
+To: Bernhard Beschow <shentey@gmail.com>
+Cc: qemu-devel@nongnu.org, "Michael S. Tsirkin" <mst@redhat.com>, 
+ Magnus Damm <magnus.damm@gmail.com>,
+ Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>, 
+ Bandan Das <bsd@redhat.com>, Matthew Rosato <mjrosato@linux.ibm.com>, 
+ Daniel Henrique Barboza <danielhb413@gmail.com>, Sergio Lopez <slp@redhat.com>,
+ Alexey Kardashevskiy <aik@ozlabs.ru>, Xiaojuan Yang <yangxiaojuan@loongson.cn>,
+ Cameron Esfahani <dirty@apple.com>, Michael Rolnik <mrolnik@gmail.com>,
+ Song Gao <gaosong@loongson.cn>, 
+ Jagannathan Raman <jag.raman@oracle.com>, Greg Kurz <groug@kaod.org>, 
+ Kamil Rytarowski <kamil@netbsd.org>, Peter Xu <peterx@redhat.com>,
+ Joel Stanley <joel@jms.id.au>, 
+ Alistair Francis <Alistair.Francis@wdc.com>,
+ "Dr. David Alan Gilbert" <dgilbert@redhat.com>, 
+ Paolo Bonzini <pbonzini@redhat.com>, haxm-team@intel.com, 
+ Roman Bolshakov <r.bolshakov@yadro.com>, Markus Armbruster <armbru@redhat.com>,
+ Eric Auger <eric.auger@redhat.com>, David Gibson <david@gibson.dropbear.id.au>,
+ =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>, 
+ Christian Borntraeger <borntraeger@linux.ibm.com>,
+ =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>, 
+ Stefan Hajnoczi <stefanha@redhat.com>, qemu-block@nongnu.org, 
+ Eduardo Habkost <eduardo@habkost.net>,
+ =?UTF-8?Q?Herv=C3=A9_Poussineau?= <hpoussin@reactos.org>, 
+ qemu-ppc@nongnu.org, Cornelia Huck <cohuck@redhat.com>, 
+ Palmer Dabbelt <palmer@dabbelt.com>, Helge Deller <deller@gmx.de>, 
+ Stefano Stabellini <sstabellini@kernel.org>,
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>, 
+ qemu-riscv@nongnu.org, Stafford Horne <shorne@gmail.com>,
+ Paul Durrant <paul@xen.org>, Havard Skinnemoen <hskinnemoen@google.com>,
+ Elena Ufimtseva <elena.ufimtseva@oracle.com>, 
+ Alexander Graf <agraf@csgraf.de>, Thomas Huth <thuth@redhat.com>, 
+ Alex Williamson <alex.williamson@redhat.com>,
+ Wenchao Wang <wenchao.wang@intel.com>, 
+ Tony Krowiak <akrowiak@linux.ibm.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, qemu-s390x@nongnu.org,
+ =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>, 
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ Eric Farman <farman@linux.ibm.com>, 
+ Reinoud Zandijk <reinoud@netbsd.org>, Alexander Bulekov <alxndr@bu.edu>,
+ Yanan Wang <wangyanan55@huawei.com>, 
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ Gerd Hoffmann <kraxel@redhat.com>, 
+ Tyrone Ting <kfting@nuvoton.com>, xen-devel@lists.xenproject.org, 
+ Yoshinori Sato <ysato@users.sourceforge.jp>, John Snow <jsnow@redhat.com>, 
+ Richard Henderson <richard.henderson@linaro.org>,
+ Darren Kenny <darren.kenny@oracle.com>, 
+ kvm@vger.kernel.org, Qiuhao Li <Qiuhao.Li@outlook.com>, 
+ John G Johnson <john.g.johnson@oracle.com>, Bin Meng <bin.meng@windriver.com>, 
+ Sunil Muthuswamy <sunilmut@microsoft.com>, Max Filippov <jcmvbkbc@gmail.com>,
+ qemu-arm@nongnu.org, Marcelo Tosatti <mtosatti@redhat.com>,
+ Anthony Perard <anthony.perard@citrix.com>, 
+ Andrew Jeffery <andrew@aj.id.au>, Artyom Tarasenko <atar4qemu@gmail.com>,
+ Halil Pasic <pasic@linux.ibm.com>, 
+ "Maciej S. Szmigiero" <maciej.szmigiero@oracle.com>,
+ Jason Wang <jasowang@redhat.com>, 
+ David Hildenbrand <david@redhat.com>, Laurent Vivier <laurent@vivier.eu>, 
+ Alistair Francis <alistair@alistair23.me>, Jason Herne <jjherne@linux.ibm.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::630;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ej1-x630.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: FW+C3+iWNtt+
 
-Bernhard Beschow <shentey@gmail.com> writes:
-
-> Am 20. September 2022 11:36:47 UTC schrieb Markus Armbruster <armbru@redhat.com>:
->>Alistair Francis <alistair23@gmail.com> writes:
->>
->>> On Tue, Sep 20, 2022 at 9:18 AM Bernhard Beschow <shentey@gmail.com> wrote:
->>>>
->>>> SiFiveEState inherits from SysBusDevice while it's TypeInfo claims it to
->>>> inherit from TYPE_MACHINE. This is an inconsistency which can cause
->>>> undefined behavior such as memory corruption.
->>>>
->>>> Change SiFiveEState to inherit from MachineState since it is registered
->>>> as a machine.
->>>>
->>>> Signed-off-by: Bernhard Beschow <shentey@gmail.com>
->>>
->>> Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
->>
->>To the SiFive maintainers: since this is a bug fix, let's merge it right
->>away.
+On Tue, 20 Sept 2022 at 23:50, Bernhard Beschow <shentey@gmail.com> wrote:
 >
-> I could repost this particular patch with the three new tags (incl. Fixes) if desired.
+> Am 20. September 2022 09:55:37 UTC schrieb Peter Maydell <peter.maydell@l=
+inaro.org>:
+> >On Tue, 20 Sept 2022 at 00:18, Bernhard Beschow <shentey@gmail.com> wrot=
+e:
+> >>
+> >> In address-spaces.h it can be read that get_system_memory() and
+> >> get_system_io() are temporary interfaces which "should only be used te=
+mporarily
+> >> until a proper bus interface is available". This statement certainly e=
+xtends to
+> >> the address_space_memory and address_space_io singletons.
+> >
+> >This is a long standing "we never really completed a cleanup"...
+> >
+> >> This series attempts
+> >> to stop further proliferation of their use by turning TYPE_SYSTEM_BUS =
+into an
+> >> object-oriented, "proper bus interface" inspired by PCIBus.
+> >>
+> >> While at it, also the main_system_bus singleton is turned into an attr=
+ibute of
+> >> MachineState. Together, this resolves five singletons in total, making=
+ the
+> >> ownership relations much more obvious which helps comprehension.
+> >
+> >...but I don't think this is the direction we want to go.
+> >Overall the reason that the "system memory" and "system IO"
+> >singletons are weird is that in theory they should not be necessary
+> >at all -- board code should create devices and map them into an
+> >entirely arbitrary MemoryRegion or set of MemoryRegions corresponding
+> >to address space(s) for the CPU and for DMA-capable devices.
+>
+> My intention was to allow exactly that: By turning sytem memory and syste=
+m IO into non-singletons, one could have many of them, thus allowing boards=
+ to create arbitrary mappings of memory and IO. Since QEMU currently assume=
+s one set (memory and IO) of addresses, I for now instantiated the SysBus o=
+nce in the machine class to preserve behavior.
 
-Can't hurt, and could help the maintainers.
+You can already create arbitrary mappings of memory and IO
+(look at the virt board for an example). The existence of the
+legacy singleton system-memory and system-io doesn't prevent that,
+and stuffing the singletons into the MachineState doesn't do
+anything to change the code that is relying on the singletons.
 
+> >Retaining the whole-system singleton but shoving it into MachineState
+> >doesn't really change much, IMHO.
+> >
+> >More generally, sysbus is rather weird because it isn't really a
+> >bus. Every device in the system of TYPE_SYS_BUS_DEVICE is "on"
+> >the unique TYPE_SYSTEM_BUS bus, but that doesn't mean they're
+> >all in the same address space or that in real hardware they'd
+> >all be on the same bus.
+>
+> Again, having multiple SysBuses may solve that issue.
+
+We definitely don't want multiple sysbuses.
+
+thanks
+-- PMM

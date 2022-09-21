@@ -1,89 +1,89 @@
-Received: by 2002:a17:906:b088:0:0:0:0 with SMTP id x8csp2757670ejy;
-        Wed, 21 Sep 2022 16:18:54 -0700 (PDT)
-X-Google-Smtp-Source: AMsMyM7obHT1RyTAJGwi8MWLQhWXEsbP6VqtL1GsXRS1QurdzwBCLnG0Su7aaPXFAS/Xwjs1YVv3
-X-Received: by 2002:a05:622a:4cd:b0:35d:11d6:2b01 with SMTP id q13-20020a05622a04cd00b0035d11d62b01mr694190qtx.261.1663802334573;
-        Wed, 21 Sep 2022 16:18:54 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1663802334; cv=none;
+Received: by 2002:a17:906:b088:0:0:0:0 with SMTP id x8csp2757687ejy;
+        Wed, 21 Sep 2022 16:18:56 -0700 (PDT)
+X-Google-Smtp-Source: AMsMyM4sSUETEP6cKuejk/W4u1vmHn1d+TAacUhE3/gZAgRdow/4FAEwbWSAXXZDMKTuTCGiXwhN
+X-Received: by 2002:a05:622a:2c8:b0:35c:ed46:bcb1 with SMTP id a8-20020a05622a02c800b0035ced46bcb1mr648244qtx.551.1663802335972;
+        Wed, 21 Sep 2022 16:18:55 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1663802335; cv=none;
         d=google.com; s=arc-20160816;
-        b=Y0yLE/lKIoD9XrNEqhKFYRWeDKiLEMTmxOwHnm4akzhTWiOFHTDvc2uolpaC0Kmeo0
-         fpQMpwY/DZheve15oL9/HC3Ls5QUVPVc32afHjbPtBgikMFOctTOBzz3Wbzrd/9jtwEO
-         /dOGvQcdd0ECNxk2Vl88o/5/k1M4ep8RUbgG9ueOFCxuozQoXQjpUs0fcZwErY2P3DNr
-         7eBjh6g8CXZfY4ooaIr75mGzw7QE19wos6S2IJkXNcaDD5tGmkENoTntk0fxGnJebfOm
-         I1TCcPLK76ScxSZf+xg/mDWhTZnQ+b/ThwlzNkDqlGC9zN1zz2RYHzf3bQ1n25OSz/qK
-         l2FQ==
+        b=DhiO0fhJotDCf7Jzp+VN6rT+itfHbiAMPx9fFswOUvQCXgwVgCgi/oconFMDElaj7g
+         wFhrTo4ZCUMlaLwOOzMKHqp6H6eZGSGHXX+6IPbH1V7zPDRh495AGEOeuVS2GCFz3N8G
+         76629bqktlaODLN4mBh9rLiuZSBZjbWq1VPKRxLAM0EzIlHSBKaAI003OWwfNr9ynCmZ
+         y1NyuyFC3/RQbxoz/my2QJTcV+zff2+4HtFvL8bx2ekBaWo+VAXBz1FQiRCjuGiyGF0o
+         iWteui8nVpAzA8qLbvGNfpY1i/U4ARWhDD+YRsQ20dr6MyveZ8BPYh/+F2UMNhyIZ6Cy
+         FLZg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=Sv6gjcFNmp354tzRnNVqsmaz0Eb5IUn+dcydFYKMH/o=;
-        b=Uk5JZ2Nq8VTDm+ED1K/g7GXXG0WgVRkvHitoE/mfGZMNg7zFP4VK2dsE/5ZfNbzoUO
-         E+u/YtBBuBBu87PsXixjoD/2F3DszY9VHIoy9YWbgUPXhG+qZoGb1dDeyn+7h+FsuzgX
-         ScyBbJsi0fsuP9IkWlbYzuw3EzufU3Ti7qnvdxISYBoqJh/9RQAGTTmqsJ3s63ev/lQN
-         bYs+sDQZS5FtiTCgAe5v/TJNc5TNzzOrrSYBI40OzbUR28qHW0RGC2dQnLwZ7BiV2F/n
-         690C9LQXqjkxeFacL435+i72TRdeOteehdmYKVnbK8PcJwnZrgabHtwnI2dVB08y1X6U
-         YoeA==
+        bh=hirCa3HlIueBb970knAeJhyoOGSf8eDwAi/bmUCUvNo=;
+        b=nFoUI7niUAIVClSYUs1TFnhsnp3z35PwK//DV7IzflIK1qfKaC8Qr7osq1iyJTe6q3
+         fx2c5f8CqJzT4Mk0D2OabyBUnm4IWOv+PxDelJgmJGw5xQP6rSY315iI8S8wOnbOUhXg
+         Acgu6ig6s1szo1/L6i3RPmKr/LCrvsmol6yVXdl/dhNuuCIkurqgyugqm3WQvtbvuTMY
+         Y4Cs1oq+FpInGH1UCmXFb4DFQMXlz/Fl11ct+qzGJzVluYoQh1he2ICMhehG3EAsbEwF
+         EwK6Z+aPGMutVFy7dlm6Iwjjp4avCkZGLIwg5nfHRqiLLrNyyb9t3Egjw8+b420xJdpo
+         txIQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=OiUR7kNI;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=MUXDeqbn;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id b6-20020a379906000000b006cf1918c2desi2333609qke.301.2022.09.21.16.18.54
+        by mx.google.com with ESMTPS id do33-20020a05620a2b2100b006cf4f81c104si1503999qkb.192.2022.09.21.16.18.55
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 21 Sep 2022 16:18:54 -0700 (PDT)
+        Wed, 21 Sep 2022 16:18:55 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=OiUR7kNI;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=MUXDeqbn;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:48466 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:38328 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ob8zW-0003X6-2b
-	for alex.bennee@linaro.org; Wed, 21 Sep 2022 19:18:54 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:54490)
+	id 1ob8zX-0003fd-Bu
+	for alex.bennee@linaro.org; Wed, 21 Sep 2022 19:18:55 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:40878)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1ob8v4-000065-KX
- for qemu-devel@nongnu.org; Wed, 21 Sep 2022 19:14:18 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:23758)
+ (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1ob8uw-0008Qu-VT
+ for qemu-devel@nongnu.org; Wed, 21 Sep 2022 19:14:11 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:21870)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1ob8v3-0001sr-25
- for qemu-devel@nongnu.org; Wed, 21 Sep 2022 19:14:18 -0400
+ (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1ob8uu-0001rd-EV
+ for qemu-devel@nongnu.org; Wed, 21 Sep 2022 19:14:10 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1663802056;
+ s=mimecast20190719; t=1663802047;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=Sv6gjcFNmp354tzRnNVqsmaz0Eb5IUn+dcydFYKMH/o=;
- b=OiUR7kNIdlOMOoKtkfmbL/YW3lhP10/qUz4x8BkYjZjklLjtDd6ajTBYjNn143dTkYKW1B
- nVcY6k84s9WY2ubD+4gOIGwzj5YnH9zq24SHgKl5rUFow+cM/wD7PrToLc+rNcAAgmWxS1
- t9Kg6XFQk4ug23Yaw3BGSCChCm+XFo4=
-Received: from mimecast-mx02.redhat.com (mx3-rdu2.redhat.com
- [66.187.233.73]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=hirCa3HlIueBb970knAeJhyoOGSf8eDwAi/bmUCUvNo=;
+ b=MUXDeqbnEiAa5dFg3M8sr+nDWYToPaBDcda0gy42WalJ5Rbs71sQo3Jgfm/1GXlTTSPTP+
+ ycv3+fmBs2/67jg+AX4LrtnLjUIL/tTucwgiriuWRQdGHR6o03r8W6jzpthCYQGWARQDK1
+ uLuX/FzO4BoddzLiN+W5Z5GY7aCCVVU=
+Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
+ [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-580-t76h502BNOOuknaDTC2yZg-1; Wed, 21 Sep 2022 19:14:13 -0400
-X-MC-Unique: t76h502BNOOuknaDTC2yZg-1
+ us-mta-148-YAvDvmRPNIuTf2eV6lQOJA-1; Wed, 21 Sep 2022 19:14:04 -0400
+X-MC-Unique: YAvDvmRPNIuTf2eV6lQOJA-1
 Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.rdu2.redhat.com
  [10.11.54.6])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id CD9DE3C0D197;
- Wed, 21 Sep 2022 23:14:12 +0000 (UTC)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 0628C862FDC;
+ Wed, 21 Sep 2022 23:14:04 +0000 (UTC)
 Received: from gshan.redhat.com (vpn2-54-126.bne.redhat.com [10.64.54.126])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 392982166B26;
- Wed, 21 Sep 2022 23:14:08 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 9A7EB2166B26;
+ Wed, 21 Sep 2022 23:14:00 +0000 (UTC)
 From: Gavin Shan <gshan@redhat.com>
 To: qemu-arm@nongnu.org
 Cc: qemu-devel@nongnu.org, maz@kernel.org, eric.auger@redhat.com,
  cohuck@redhat.com, zhenyzha@redhat.com, richard.henderson@linaro.org,
  peter.maydell@linaro.org, shan.gavin@gmail.com
-Subject: [PATCH v3 4/5] hw/arm/virt: Improve high memory region address
- assignment
-Date: Thu, 22 Sep 2022 07:13:48 +0800
-Message-Id: <20220921231349.274049-5-gshan@redhat.com>
+Subject: [PATCH v3 2/5] hw/arm/virt: Rename variable size to region_size in
+ virt_set_high_memmap()
+Date: Thu, 22 Sep 2022 07:13:46 +0800
+Message-Id: <20220921231349.274049-3-gshan@redhat.com>
 In-Reply-To: <20220921231349.274049-1-gshan@redhat.com>
 References: <20220921231349.274049-1-gshan@redhat.com>
 MIME-Version: 1.0
@@ -113,108 +113,61 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: mq3OmAfzXoj9
+X-TUID: aXZ76aDbEgqz
 
-There are three high memory regions, which are VIRT_HIGH_REDIST2,
-VIRT_HIGH_PCIE_ECAM and VIRT_HIGH_PCIE_MMIO. Their base addresses
-are floating on highest RAM address. However, they can be disabled
-in several cases.
+This renames variable 'size' to 'region_size' in virt_set_high_memmap().
+Its counterpart ('region_base') will be introduced in next patch.
 
-(1) One specific high memory region is disabled by developer by
-    toggling vms->highmem_{redists, ecam, mmio}.
-
-(2) VIRT_HIGH_PCIE_ECAM region is disabled on machine, which is
-    'virt-2.12' or ealier than it.
-
-(3) VIRT_HIGH_PCIE_ECAM region is disabled when firmware is loaded
-    on 32-bits system.
-
-(4) One specific high memory region is disabled when it breaks the
-    PA space limit.
-
-The current implementation of virt_set_memmap() isn't comprehensive
-because the space for one specific high memory region is always
-reserved from the PA space for case (1), (2) and (3). In the code,
-'base' and 'vms->highest_gpa' are always increased for those three
-cases. It's unnecessary since the assigned space of the disabled
-high memory region won't be used afterwards.
-
-This improves the address assignment for those three high memory
-region by skipping the address assignment for one specific high
-memory region if it has been disabled in case (1), (2) and (3).
+No functional change intended.
 
 Signed-off-by: Gavin Shan <gshan@redhat.com>
 ---
- hw/arm/virt.c | 44 ++++++++++++++++++++++++++------------------
- 1 file changed, 26 insertions(+), 18 deletions(-)
+ hw/arm/virt.c | 15 ++++++++-------
+ 1 file changed, 8 insertions(+), 7 deletions(-)
 
 diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index b0b679d1f4..b702f8f2b5 100644
+index 4dab528b82..187b3ee0e2 100644
 --- a/hw/arm/virt.c
 +++ b/hw/arm/virt.c
-@@ -1693,15 +1693,31 @@ static void virt_set_high_memmap(VirtMachineState *vms,
+@@ -1692,15 +1692,16 @@ static uint64_t virt_cpu_mp_affinity(VirtMachineState *vms, int idx)
+ static void virt_set_high_memmap(VirtMachineState *vms,
                                   hwaddr base, int pa_bits)
  {
-     hwaddr region_base, region_size;
--    bool fits;
-+    bool *region_enabled, fits;
++    hwaddr region_size;
++    bool fits;
      int i;
  
      for (i = VIRT_LOWMEMMAP_LAST; i < ARRAY_SIZE(extended_memmap); i++) {
-         region_base = ROUND_UP(base, extended_memmap[i].size);
-         region_size = extended_memmap[i].size;
+-        hwaddr size = extended_memmap[i].size;
+-        bool fits;
++        region_size = extended_memmap[i].size;
  
--        vms->memmap[i].base = region_base;
--        vms->memmap[i].size = region_size;
-+        switch (i) {
-+        case VIRT_HIGH_GIC_REDIST2:
-+            region_enabled = &vms->highmem_redists;
-+            break;
-+        case VIRT_HIGH_PCIE_ECAM:
-+            region_enabled = &vms->highmem_ecam;
-+            break;
-+        case VIRT_HIGH_PCIE_MMIO:
-+            region_enabled = &vms->highmem_mmio;
-+            break;
-+        default:
-+            region_enabled = NULL;
-+        }
-+
-+        /* Skip unknown region */
-+        if (!region_enabled) {
-+            continue;
-+        }
+-        base = ROUND_UP(base, size);
++        base = ROUND_UP(base, region_size);
+         vms->memmap[i].base = base;
+-        vms->memmap[i].size = size;
++        vms->memmap[i].size = region_size;
  
          /*
           * Check each device to see if they fit in the PA space,
-@@ -1710,23 +1726,15 @@ static void virt_set_high_memmap(VirtMachineState *vms,
+@@ -1708,9 +1709,9 @@ static void virt_set_high_memmap(VirtMachineState *vms,
+          *
           * For each device that doesn't fit, disable it.
           */
-         fits = (region_base + region_size) <= BIT_ULL(pa_bits);
--        if (fits) {
--            vms->highest_gpa = region_base + region_size - 1;
--        }
-+        if (*region_enabled && fits) {
-+            vms->memmap[i].base = region_base;
-+            vms->memmap[i].size = region_size;
- 
--        switch (i) {
--        case VIRT_HIGH_GIC_REDIST2:
--            vms->highmem_redists &= fits;
--            break;
--        case VIRT_HIGH_PCIE_ECAM:
--            vms->highmem_ecam &= fits;
--            break;
--        case VIRT_HIGH_PCIE_MMIO:
--            vms->highmem_mmio &= fits;
--            break;
-+            vms->highest_gpa = region_base + region_size - 1;
-+            base = region_base + region_size;
-+        } else {
-+            *region_enabled = false;
+-        fits = (base + size) <= BIT_ULL(pa_bits);
++        fits = (base + region_size) <= BIT_ULL(pa_bits);
+         if (fits) {
+-            vms->highest_gpa = base + size - 1;
++            vms->highest_gpa = base + region_size - 1;
          }
--
--        base = region_base + region_size;
+ 
+         switch (i) {
+@@ -1725,7 +1726,7 @@ static void virt_set_high_memmap(VirtMachineState *vms,
+             break;
+         }
+ 
+-        base += size;
++        base += region_size;
      }
  }
  

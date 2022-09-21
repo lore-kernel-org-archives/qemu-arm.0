@@ -1,168 +1,196 @@
-Received: by 2002:a17:906:b088:0:0:0:0 with SMTP id x8csp2183300ejy;
-        Tue, 20 Sep 2022 20:49:17 -0700 (PDT)
-X-Google-Smtp-Source: AMsMyM65IRHWEdp4oyabuhr3lGZpdH8GFyxru4EsGHmZ9HOYd8g7J5L5OD5iVir1tK4NdxkqFwfR
-X-Received: by 2002:a05:6214:da7:b0:4aa:a2ea:2483 with SMTP id h7-20020a0562140da700b004aaa2ea2483mr21576494qvh.8.1663732157489;
-        Tue, 20 Sep 2022 20:49:17 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1663732157; cv=none;
+Received: by 2002:a17:906:b088:0:0:0:0 with SMTP id x8csp2203740ejy;
+        Tue, 20 Sep 2022 21:57:08 -0700 (PDT)
+X-Google-Smtp-Source: AMsMyM7Ve16V1oXHqqvx9k3ZuFRjsHE4+7Co5fFfU2gmVvZEaivD9i21uFp05J/si2kdPAWUE/hV
+X-Received: by 2002:a25:ae07:0:b0:6ae:cb56:aa55 with SMTP id a7-20020a25ae07000000b006aecb56aa55mr23649918ybj.257.1663736228146;
+        Tue, 20 Sep 2022 21:57:08 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1663736228; cv=none;
         d=google.com; s=arc-20160816;
-        b=e2AHhyC1QNg8+VCX+jB+Y6LCH5isxMBmpygFKClvGT/I+pi8QHtapU26rRxUHUg57i
-         yahok9TYhpf5hSzd6QhPfG4FLbf/gqsZOzPGzZDfM491QBbsG8QhX4qbdaqRSLVehs3j
-         BIhFcpR3zmbuqhBjOfWAii1lFinlYpHJOi4I+7md0HU+txT4m7MfNSLRoqQwD6YykkpM
-         tG9isIK8xjxMwx/bc0rJXB/3wtujn/iRxenZmPgj6wMbaVCj5GDZ8r7KO3kVaVFyVBb6
-         52nW6aA5nzVIybgMbmLs6Lc/4+VAf+5GTge/VHFbq3zGNALCPEHUYn9RXsXa2//yM59J
-         9nTg==
+        b=Uka9ZywAg8X2UqU509fYsZhWSe/3SwpLvwSzn7ZoK5Sek2pups6yLOLpG6+iQO3TjC
+         +yqG1VeR+Ha7Rl+//a+bPTdCV7AB5z6J/BXhzo09HnR12eIpYE0wCtmuz2T4s5MOGVy5
+         zsYTc6BsD7kAJxB3g69pyxAlmgZRXgiAhQ+RdlIrhfIC+++q34QEuTY+oy1tM9TRGOMd
+         ihTsFj0Xw5WqWQZImeSNPB9dM2FSxpt91HwGL12Salmvr1TX181dMcUvKZ2M/vgZDX3S
+         LC0p1Evev3gSgg/HKqovOVUp5x+HlGsEgVorFAFlmF3DU0R1rkkMop5S5J913jVJXkL4
+         6tNA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version:references
-         :message-id:in-reply-to:subject:cc:to:date:from:dkim-signature;
-        bh=jnHuIl8/YV0NnqiWIQrPxHg951D+z8Vy+MbuOzpTNEc=;
-        b=UQaosRUFewZ7TzMVkYGtab0K0C6rlCrX7Sp9GJd//W1ZlKRrV4t0+afcVas1zC/uRx
-         q8azsDnrcd6E0v+ZwmCv+/Og27c1uSisC1bxkoBaMAM1eJcLQu8CvAVi7ReJov9SKdaI
-         kc4fd6GHs/fBkkOxs30xlUcrsO0AzLMV+MR6HWoBYOlb/KGC58i6cd8bZ6wVxezQf799
-         dg+tYOovKakM8DYzbliLwOG1QhNR/8SEGSYJ09xLgXSikF9C13ZNWGY68/CImKpf6/tJ
-         komwyZRRdLLuEkd5QLJ8HCyeeeUBSs22VCiaRghubEcY/gUq5K4Oeu5lkvyBMrCKICkB
-         BF9A==
+        h=mime-version:user-agent:message-id:in-reply-to:date:references
+         :subject:cc:to:from:dkim-signature:sender:precedence:errors-to
+         :list-subscribe:list-help:list-post:list-unsubscribe:list-id;
+        bh=d0ewimBIuzA4pcXzNcXQGF6URaG5NO+EI7K2JWsTSM0=;
+        b=JN2KVCqx4Jqkb/nvn68uQYUOJhpYgRJUaGgQgi8SNPgcSR6uXHHs5pxYv37qokoRpd
+         AhxTt2TNCxSl13yKKUnWvh70h9VQrumgOwk1yCTKNBQxLHVKRRk3HT934NBjfvUKRGjM
+         dWRRR1/YyThN5zXUGU22wQszjhlj/cf+ezTHYtWJyqD+QpexBrRspEZgPxUVy2aNl9dR
+         ReHRyDMw3CAa1wpdbR7wfaSMy9zeWbYSgDTO0H+EwKEu71bx1R8mCo3ibOesygKdb4Le
+         UILtFVL5+8EfRrzDgXLio04rI5ztaEpXk6OLTD2WmSNayCOsWRhdZTrUuZFw1mfAN2c0
+         R2gQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@anisinha-ca.20210112.gappssmtp.com header.s=20210112 header.b=N4xM4tt4;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 1-20020a0562140d6100b004972c488b2dsi902871qvs.529.2022.09.20.20.49.17
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 20 Sep 2022 20:49:17 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=BvmOz6rL;
+       spf=pass (google.com: domain of xen-devel-bounces@lists.xenproject.org designates 192.237.175.120 as permitted sender) smtp.mailfrom=xen-devel-bounces@lists.xenproject.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <xen-devel-bounces@lists.xenproject.org>
+Received: from lists.xenproject.org (lists.xenproject.org. [192.237.175.120])
+        by mx.google.com with ESMTPS id x7-20020a818707000000b003456e10dfebsi1406667ywf.387.2022.09.20.21.57.07
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 20 Sep 2022 21:57:08 -0700 (PDT)
+Received-SPF: pass (google.com: domain of xen-devel-bounces@lists.xenproject.org designates 192.237.175.120 as permitted sender) client-ip=192.237.175.120;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@anisinha-ca.20210112.gappssmtp.com header.s=20210112 header.b=N4xM4tt4;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:60640 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1oaqjc-0000E6-K4
-	for alex.bennee@linaro.org; Tue, 20 Sep 2022 23:49:16 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:50060)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ani@anisinha.ca>) id 1oaqjB-0000Dv-Qe
- for qemu-arm@nongnu.org; Tue, 20 Sep 2022 23:48:49 -0400
-Received: from mail-pf1-x434.google.com ([2607:f8b0:4864:20::434]:42625)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <ani@anisinha.ca>) id 1oaqjA-00056C-AE
- for qemu-arm@nongnu.org; Tue, 20 Sep 2022 23:48:49 -0400
-Received: by mail-pf1-x434.google.com with SMTP id b23so4633755pfp.9
- for <qemu-arm@nongnu.org>; Tue, 20 Sep 2022 20:48:47 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=anisinha-ca.20210112.gappssmtp.com; s=20210112;
- h=mime-version:references:message-id:in-reply-to:subject:cc:to:date
- :from:from:to:cc:subject:date;
- bh=jnHuIl8/YV0NnqiWIQrPxHg951D+z8Vy+MbuOzpTNEc=;
- b=N4xM4tt47EtW72g5kbFQwUmkiwuUIw0WxEj8ZOhv5vCA6rJ9nsW/J20iv4rWLA26JN
- 7VaxLRwWv81/OXlLuSXzr39yuFUnL/cnsdycflEpXsi3W3994NFyg94Xam5qnqVRYi9o
- +i57vrDBYOxOu70YYFO/KxpxJeFroKbqLEAJfqxKJhWe59qMUhavlyN7nGmp+V8R43HB
- P1pQmbVUK7UzAZbD4ZA6rrR9gKYsyPF/YhuD4FUyOx8CYhVwNL6Am/yXzYrAQvs8GiB6
- FKQACrq0wJv184DXZI3RLpfTpkpwtuPqEZW4rxWzowAmAQIjtpwJsL4g7vS3Xe462QVK
- esDA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=mime-version:references:message-id:in-reply-to:subject:cc:to:date
- :from:x-gm-message-state:from:to:cc:subject:date;
- bh=jnHuIl8/YV0NnqiWIQrPxHg951D+z8Vy+MbuOzpTNEc=;
- b=SAOzKRMiQdnqTg1DNylkHFoy3U9FmbNyPzj9gp7xVqBlNi2mGN4fVhK1USon7FdkDe
- ksRkA/Xo5ykUmsImyoB7M9xtjlt1jz1lmbqlW+OPtKWHDXPNZDH+54UM+n+aJvUoivRc
- 4ojZW4YyoB5HpNZyb1eits3BEQLUjiG2BActgTWnR0isa/5yE+RpqWki3V+rh7zrkzCn
- msipNnCVIm7BcNTgki7PxjRvMBRgj03Z2Kdj2jYvjLyPgWdeN+Osr86wZmeZRWAjXbpf
- vR8Wk74slzxL/OrJ8Dl0HEPv455CyO+DRlbwn0qn0O/9nthNowWe4/BAXlTOewD5BJs/
- k15w==
-X-Gm-Message-State: ACrzQf0JWDPgWhZZJcZsaT6fJ6+J7leJkLGeKGlB0eIgQ729W1JAehHt
- qPizpd/BClyinHfZjk7CLZBcRg==
-X-Received: by 2002:a05:6a00:1a0e:b0:547:1cf9:40e8 with SMTP id
- g14-20020a056a001a0e00b005471cf940e8mr26901648pfv.82.1663732126572; 
- Tue, 20 Sep 2022 20:48:46 -0700 (PDT)
-Received: from anisinha-lenovo ([203.163.244.51])
- by smtp.googlemail.com with ESMTPSA id
- 13-20020a17090a0ccd00b001fabcd994c1sm748286pjt.9.2022.09.20.20.48.43
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 20 Sep 2022 20:48:46 -0700 (PDT)
-From: Ani Sinha <ani@anisinha.ca>
-X-Google-Original-From: Ani Sinha <anisinha@anisinha.ca>
-Date: Wed, 21 Sep 2022 09:18:40 +0530 (IST)
-To: Miguel Luis <miguel.luis@oracle.com>
-cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, mst@redhat.com, 
- imammedo@redhat.com, ani@anisinha.ca, shannon.zhaosl@gmail.com, 
- peter.maydell@linaro.org
-Subject: Re: [PATCH 2/3] acpi: arm/virt: build_gtdt: fix invalid 64-bit
- physical addresses
-In-Reply-To: <20220920162137.75239-3-miguel.luis@oracle.com>
-Message-ID: <975ce98f-265-1db5-4bb1-2d1ec3113ca@anisinha.ca>
-References: <20220920162137.75239-1-miguel.luis@oracle.com>
- <20220920162137.75239-3-miguel.luis@oracle.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Received-SPF: none client-ip=2607:f8b0:4864:20::434;
- envelope-from=ani@anisinha.ca; helo=mail-pf1-x434.google.com
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_NONE=0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=BvmOz6rL;
+       spf=pass (google.com: domain of xen-devel-bounces@lists.xenproject.org designates 192.237.175.120 as permitted sender) smtp.mailfrom=xen-devel-bounces@lists.xenproject.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from list by lists.xenproject.org with outflank-mailman.409654.652663 (Exim 4.92)
+	(envelope-from <xen-devel-bounces@lists.xenproject.org>)
+	id 1oarlT-0006gD-AU; Wed, 21 Sep 2022 04:55:15 +0000
+X-Outflank-Mailman: Message body and most headers restored to incoming version
+Received: by outflank-mailman (output) from mailman id 409654.652663; Wed, 21 Sep 2022 04:55:15 +0000
+Received: from localhost ([127.0.0.1] helo=lists.xenproject.org)
+	by lists.xenproject.org with esmtp (Exim 4.92)
+	(envelope-from <xen-devel-bounces@lists.xenproject.org>)
+	id 1oarlT-0006g6-7A; Wed, 21 Sep 2022 04:55:15 +0000
+Received: by outflank-mailman (input) for mailman id 409654;
+ Wed, 21 Sep 2022 04:55:14 +0000
+Received: from se1-gles-flk1-in.inumbo.com ([94.247.172.50]
+ helo=se1-gles-flk1.inumbo.com)
+ by lists.xenproject.org with esmtp (Exim 4.92)
+ (envelope-from <SRS0=YFKF=ZY=redhat.com=armbru@srs-se1.protection.inumbo.net>)
+ id 1oarlS-0006g0-87
+ for xen-devel@lists.xenproject.org; Wed, 21 Sep 2022 04:55:14 +0000
+Received: from us-smtp-delivery-124.mimecast.com
+ (us-smtp-delivery-124.mimecast.com [170.10.133.124])
+ by se1-gles-flk1.inumbo.com (Halon) with ESMTPS
+ id 9325cb2e-3969-11ed-bad8-01ff208a15ba;
+ Wed, 21 Sep 2022 06:55:13 +0200 (CEST)
+Received: from mimecast-mx02.redhat.com (mx3-rdu2.redhat.com
+ [66.187.233.73]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-262-JDdO1-4NNtms04LwtNgKXw-1; Wed, 21 Sep 2022 00:55:07 -0400
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.4])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 67BF02999B47;
+ Wed, 21 Sep 2022 04:55:05 +0000 (UTC)
+Received: from blackfin.pond.sub.org (unknown [10.39.192.163])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id EFABE2024CC8;
+ Wed, 21 Sep 2022 04:55:03 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+ id C2B8221E6900; Wed, 21 Sep 2022 06:55:02 +0200 (CEST)
+X-BeenThere: xen-devel@lists.xenproject.org
+List-Id: Xen developer discussion <xen-devel.lists.xenproject.org>
+List-Unsubscribe: <https://lists.xenproject.org/mailman/options/xen-devel>,
+ <mailto:xen-devel-request@lists.xenproject.org?subject=unsubscribe>
+List-Post: <mailto:xen-devel@lists.xenproject.org>
+List-Help: <mailto:xen-devel-request@lists.xenproject.org?subject=help>
+List-Subscribe: <https://lists.xenproject.org/mailman/listinfo/xen-devel>,
+ <mailto:xen-devel-request@lists.xenproject.org?subject=subscribe>
+Errors-To: xen-devel-bounces@lists.xenproject.org
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 1BSjaFNjRkG/
+Sender: "Xen-devel" <xen-devel-bounces@lists.xenproject.org>
+X-Inumbo-ID: 9325cb2e-3969-11ed-bad8-01ff208a15ba
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1663736111;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=d0ewimBIuzA4pcXzNcXQGF6URaG5NO+EI7K2JWsTSM0=;
+	b=BvmOz6rLkGiZWGUSJW3b2OY790xekYjtpHk9Y0+xJPAoG44NDocZBpxlJ+c7vVdNcF3+ki
+	7YQ/ylqOYuHdIqLUv1gjQCtgoQh8+gXVH/wzpbc/pZxASKHdvEKUPNHKNuHGbfv7/mn6M5
+	jU9BfET7q23RZSXJ2QRDijRktZCxkdw=
+X-MC-Unique: JDdO1-4NNtms04LwtNgKXw-1
+From: Markus Armbruster <armbru@redhat.com>
+To: Bernhard Beschow <shentey@gmail.com>
+Cc: Alistair Francis <alistair23@gmail.com>,  Bin Meng
+ <bin.meng@windriver.com>,  Palmer Dabbelt <palmer@dabbelt.com>,
+  "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,  "Michael S.
+ Tsirkin" <mst@redhat.com>,  Magnus Damm <magnus.damm@gmail.com>,
+  Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,  Bandan Das
+ <bsd@redhat.com>,  Matthew Rosato <mjrosato@linux.ibm.com>,  Daniel
+ Henrique Barboza <danielhb413@gmail.com>,  Sergio Lopez <slp@redhat.com>,
+  Alexey Kardashevskiy <aik@ozlabs.ru>,  Xiaojuan Yang
+ <yangxiaojuan@loongson.cn>,  Cameron Esfahani <dirty@apple.com>,  Michael
+ Rolnik <mrolnik@gmail.com>,  Song Gao <gaosong@loongson.cn>,  Jagannathan
+ Raman <jag.raman@oracle.com>,  Greg Kurz <groug@kaod.org>,  Kamil
+ Rytarowski <kamil@netbsd.org>,  Peter Xu <peterx@redhat.com>,  Joel
+ Stanley <joel@jms.id.au>,  Alistair Francis <Alistair.Francis@wdc.com>,
+  "Dr. David Alan Gilbert" <dgilbert@redhat.com>,  Paolo Bonzini
+ <pbonzini@redhat.com>,  haxm-team@intel.com,  Roman Bolshakov
+ <r.bolshakov@yadro.com>,  Eric Auger <eric.auger@redhat.com>,  David
+ Gibson <david@gibson.dropbear.id.au>,  Daniel P. =?utf-8?Q?Berrang=C3=A9?=
+ <berrange@redhat.com>,  Christian Borntraeger <borntraeger@linux.ibm.com>,
+  =?utf-8?Q?C=C3=A9dric?= Le Goater <clg@kaod.org>,  Stefan Hajnoczi
+ <stefanha@redhat.com>,
+  Qemu-block <qemu-block@nongnu.org>,  Eduardo Habkost
+ <eduardo@habkost.net>,  =?utf-8?Q?Herv=C3=A9?= Poussineau
+ <hpoussin@reactos.org>,  "open
+ list:New World" <qemu-ppc@nongnu.org>,  Cornelia Huck <cohuck@redhat.com>,
+  Helge Deller <deller@gmx.de>,  Stefano Stabellini
+ <sstabellini@kernel.org>,  Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?=
+ <f4bug@amsat.org>,
+  "open list:RISC-V" <qemu-riscv@nongnu.org>,  Stafford Horne
+ <shorne@gmail.com>,  Paul Durrant <paul@xen.org>,  Havard Skinnemoen
+ <hskinnemoen@google.com>,  Elena Ufimtseva <elena.ufimtseva@oracle.com>,
+  Alexander Graf <agraf@csgraf.de>,  Thomas Huth <thuth@redhat.com>,  Alex
+ Williamson <alex.williamson@redhat.com>,  Wenchao Wang
+ <wenchao.wang@intel.com>,  Tony Krowiak <akrowiak@linux.ibm.com>,  Marcel
+ Apfelbaum <marcel.apfelbaum@gmail.com>,  qemu-s390x
+ <qemu-s390x@nongnu.org>,  =?utf-8?Q?Marc-Andr=C3=A9?= Lureau
+ <marcandre.lureau@redhat.com>,
+  Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,  Eric Farman
+ <farman@linux.ibm.com>,  Reinoud Zandijk <reinoud@netbsd.org>,  Alexander
+ Bulekov <alxndr@bu.edu>,  Yanan Wang <wangyanan55@huawei.com>,  "Edgar E.
+ Iglesias" <edgar.iglesias@gmail.com>,  Gerd Hoffmann <kraxel@redhat.com>,
+  Tyrone Ting <kfting@nuvoton.com>,  "open list:X86"
+ <xen-devel@lists.xenproject.org>,  Yoshinori Sato
+ <ysato@users.sourceforge.jp>,  John Snow <jsnow@redhat.com>,  Richard
+ Henderson <richard.henderson@linaro.org>,  Darren Kenny
+ <darren.kenny@oracle.com>,  "open list:Overall" <kvm@vger.kernel.org>,
+  Qiuhao Li <Qiuhao.Li@outlook.com>,  John G Johnson
+ <john.g.johnson@oracle.com>,  Sunil Muthuswamy <sunilmut@microsoft.com>,
+  Max Filippov <jcmvbkbc@gmail.com>,  qemu-arm <qemu-arm@nongnu.org>,
+  Marcelo Tosatti <mtosatti@redhat.com>,  Peter Maydell
+ <peter.maydell@linaro.org>,  Anthony Perard <anthony.perard@citrix.com>,
+  Andrew Jeffery <andrew@aj.id.au>,  Artyom Tarasenko
+ <atar4qemu@gmail.com>,  Halil Pasic <pasic@linux.ibm.com>,  "Maciej S.
+ Szmigiero" <maciej.szmigiero@oracle.com>,  Jason Wang
+ <jasowang@redhat.com>,  David Hildenbrand <david@redhat.com>,  Laurent
+ Vivier <laurent@vivier.eu>,  Alistair Francis <alistair@alistair23.me>,
+  Jason Herne <jjherne@linux.ibm.com>
+Subject: Re: [PATCH 1/9] hw/riscv/sifive_e: Fix inheritance of SiFiveEState
+References: <20220919231720.163121-1-shentey@gmail.com>
+	<20220919231720.163121-2-shentey@gmail.com>
+	<CAKmqyKN+V2R8PkED67tB8+pCZs9369ViiL8OZ9XhO3SdUCk5=Q@mail.gmail.com>
+	<87edw6xoog.fsf@pond.sub.org>
+	<0BBD7391-7B2D-44E7-9396-D1747784B9DA@gmail.com>
+Date: Wed, 21 Sep 2022 06:55:02 +0200
+In-Reply-To: <0BBD7391-7B2D-44E7-9396-D1747784B9DA@gmail.com> (Bernhard
+	Beschow's message of "Tue, 20 Sep 2022 23:23:52 +0000")
+Message-ID: <87a66tgwd5.fsf@pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/27.2 (gnu/linux)
+MIME-Version: 1.0
+Content-Type: text/plain
+X-Scanned-By: MIMEDefang 3.1 on 10.11.54.4
+X-TUID: hCdBZTTxqmrn
 
+Bernhard Beschow <shentey@gmail.com> writes:
 
+> Am 20. September 2022 11:36:47 UTC schrieb Markus Armbruster <armbru@redhat.com>:
+>>Alistair Francis <alistair23@gmail.com> writes:
+>>
+>>> On Tue, Sep 20, 2022 at 9:18 AM Bernhard Beschow <shentey@gmail.com> wrote:
+>>>>
+>>>> SiFiveEState inherits from SysBusDevice while it's TypeInfo claims it to
+>>>> inherit from TYPE_MACHINE. This is an inconsistency which can cause
+>>>> undefined behavior such as memory corruption.
+>>>>
+>>>> Change SiFiveEState to inherit from MachineState since it is registered
+>>>> as a machine.
+>>>>
+>>>> Signed-off-by: Bernhard Beschow <shentey@gmail.com>
+>>>
+>>> Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
+>>
+>>To the SiFive maintainers: since this is a bug fix, let's merge it right
+>>away.
+>
+> I could repost this particular patch with the three new tags (incl. Fixes) if desired.
 
-On Tue, 20 Sep 2022, Miguel Luis wrote:
+Can't hurt, and could help the maintainers.
 
-> Per the ACPI 6.5 specification, on the GTDT Table Structure, the Counter Control
-> Block Address and Counter Read Block Address fields of the GTDT table should be
-> set to 0xFFFFFFFFFFFFFFFF if not provided, rather than 0x0.
->
-> Fixes: 41041e57085 ("acpi: arm/virt: build_gtdt: use acpi_table_begin()/acpi_table_end() instead of build_header()")
->
-> Signed-off-by: Miguel Luis <miguel.luis@oracle.com>
-
-Reviewed-by: Ani Sinha <ani@anisinha.ca>
-
-> ---
->  hw/arm/virt-acpi-build.c | 5 ++---
->  1 file changed, 2 insertions(+), 3 deletions(-)
->
-> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
-> index 9b3aee01bf..13c6e3e468 100644
-> --- a/hw/arm/virt-acpi-build.c
-> +++ b/hw/arm/virt-acpi-build.c
-> @@ -592,8 +592,7 @@ build_gtdt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
->      acpi_table_begin(&table, table_data);
->
->      /* CntControlBase Physical Address */
-> -    /* FIXME: invalid value, should be 0xFFFFFFFFFFFFFFFF if not impl. ? */
-> -    build_append_int_noprefix(table_data, 0, 8);
-> +    build_append_int_noprefix(table_data, 0xFFFFFFFFFFFFFFFF, 8);
->      build_append_int_noprefix(table_data, 0, 4); /* Reserved */
->      /*
->       * FIXME: clarify comment:
-> @@ -618,7 +617,7 @@ build_gtdt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
->      /* Non-Secure EL2 timer Flags */
->      build_append_int_noprefix(table_data, irqflags, 4);
->      /* CntReadBase Physical address */
-> -    build_append_int_noprefix(table_data, 0, 8);
-> +    build_append_int_noprefix(table_data, 0xFFFFFFFFFFFFFFFF, 8);
->      /* Platform Timer Count */
->      build_append_int_noprefix(table_data, 0, 4);
->      /* Platform Timer Offset */
-> --
-> 2.36.0
->
->

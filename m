@@ -1,87 +1,91 @@
-Received: by 2002:a17:906:b088:0:0:0:0 with SMTP id x8csp2755633ejy;
-        Wed, 21 Sep 2022 16:14:33 -0700 (PDT)
-X-Google-Smtp-Source: AMsMyM7TWltsOP7mDlZ6QU9d+yLXluO4jeUmnFOw1p0vUiuJ2OQbxzmqoDcen/R7hiBjVENtQ4MS
-X-Received: by 2002:ac8:5e14:0:b0:35c:bab9:173e with SMTP id h20-20020ac85e14000000b0035cbab9173emr672943qtx.222.1663802073331;
-        Wed, 21 Sep 2022 16:14:33 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1663802073; cv=none;
+Received: by 2002:a17:906:b088:0:0:0:0 with SMTP id x8csp2755662ejy;
+        Wed, 21 Sep 2022 16:14:37 -0700 (PDT)
+X-Google-Smtp-Source: AMsMyM5ZrzZrZj/PgaMSA7pI6TKTEDKVl9OEl684s3RfEPuWlwzWICzhf8mY6r+CctO2jHqSRi1j
+X-Received: by 2002:a05:622a:20b:b0:35c:f6d6:9169 with SMTP id b11-20020a05622a020b00b0035cf6d69169mr626210qtx.669.1663802077474;
+        Wed, 21 Sep 2022 16:14:37 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1663802077; cv=none;
         d=google.com; s=arc-20160816;
-        b=NmYyCGej4r2FMILWVqq5Oy1CLmOsxlNoK+Gib3ZYIEDJaoHz8uZjUyeNzbmL6AXsRn
-         2xPy3Wu2bx8mEvlDibmzScPyK04nKSt5E0D+grjMp0nw5z02BBqmBSBeaGmimTsMB8HM
-         uIz3o7ZnbfT2JiEGSg5AjkHja++A/l/zkgYwwduhunRDedrIo8DlqUyDC+c0lORisss2
-         wYkeJVHKHPLJmIM68MWp/wey/L3eh731U40JBm+FikGGa+9b9+1A7gzi4zSfUGA9NBR6
-         /+hJRyNQzxl5xmiecpvspaikTGWZ8sC71u8wmDwnNsN4EkgOw0bV6oXJpb69J6P1HvSC
-         4Eyg==
+        b=TXPk3Ce/Xc3bYQQ8g9FUWT3b1RSMcY3GCkmvsuZlk3TFUkUeuIdLuQUAqY6KMQfI+W
+         9JcUQFOy1m7XkXqS4L9SVNjCNYOlvwJ0CGLH6pTUOY2yQUR3SMxunxkCpuXIKliyUHvB
+         TubAQdvLeHwPtD7/y0QT974aqhtV+10Gm6lsSxj+TUDowsoEDTOlD8op60DWBKlODnlU
+         7baj9GbzH7iAywm5wZ/SZAbRNNFwp2mJS2h956FOnlyidR8v50hnOUiaJxd+lR9nDhBf
+         eJ+M+NYYx4m2Jty3MV8xouLQ/mlNav6Z9flg5TBdiuiOrKPPxcojeR/G7lLFsKHGB74k
+         93uQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
-        bh=cDj/bCcZJ3kvOGEZHuBAu+/jvYP/iDltadLCS0HVfUQ=;
-        b=fPa/8ZHvlXpBdrZdfOpAH8igkTgKIer8SfJ7rtqpIQL9yOqHmrTBCj+AK1nzalnz5y
-         XVsxZ6WHXoYNjRGx1XZoYyJBcyryCQq/Z1r2/e2pswJTPrU8HmuIUdROwLNZ3XTQH+Mt
-         pbQuehr2Kr0Fs0mTmjD5aI9iGwdhgKDUq+Q/x+hsnQFAYOxOJNUwwMa30Lq/UeUq2k3r
-         1UQ1Vy5RhGTmHvaoXvL4zvtm+9Gw3fwkvDiSD47TrMtKaG5GUkgj1p1IHiJJ0mu+EXR3
-         P5GQm2z8UW1EYVeYyGhfeeDy5xEiYnmaqSGyhLBFqMrBVVnwGzy2ahH1IwiGuYZ9yZb0
-         sUGg==
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=INGyMUpdKLNzLwyHhM65ggS6sfucai9ZgAxo7nEnfY8=;
+        b=Zb+LjKzSH3tZdnw3JLaijiS5Kpk3nT0SF+p9xPg3FC448mR4Y9HIeVrvSEmDHlnBrH
+         cTxfXCUWDnnw7yOBsKWg9+b5OUM97HykQFM192fFTiFSWKFYJepF4f5oTmCN0tMhOPjU
+         dtQqTg5wsKq1vVif237AUxJFKv2ygrsOpm9Pn+6lPAbKdCVSprGE4Z65y/VN7PSTG5sQ
+         1QrDPSA4G2hjP6pfDFwDSbIV1k1PkQAuPHCoGe5vou8LUlOZUlnUyYkdCgoBOQKiXsy3
+         m0wd++IYMRXtRDyve+fBeydxDKLBZYPpuWx86ZWrL9dEXFjEpfaIueMwTeqRVS1e2AFQ
+         gEpA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=SoNCio20;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=IQxMxraF;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id f8-20020a056214076800b004ad62693cb5si2369550qvz.211.2022.09.21.16.14.33
+        by mx.google.com with ESMTPS id s7-20020ac85287000000b0035cf7c58951si1895507qtn.725.2022.09.21.16.14.37
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 21 Sep 2022 16:14:33 -0700 (PDT)
+        Wed, 21 Sep 2022 16:14:37 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=SoNCio20;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=IQxMxraF;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:45190 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:43818 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ob8vI-0008LR-RB
-	for alex.bennee@linaro.org; Wed, 21 Sep 2022 19:14:32 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33762)
+	id 1ob8vN-00006h-0K
+	for alex.bennee@linaro.org; Wed, 21 Sep 2022 19:14:37 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:40882)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1ob8us-0008KW-8Y
- for qemu-arm@nongnu.org; Wed, 21 Sep 2022 19:14:06 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:49021)
+ (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1ob8v1-0008VJ-Fi
+ for qemu-arm@nongnu.org; Wed, 21 Sep 2022 19:14:16 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:49386)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1ob8uo-0001qg-G6
- for qemu-arm@nongnu.org; Wed, 21 Sep 2022 19:14:04 -0400
+ (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1ob8uz-0001sM-Tu
+ for qemu-arm@nongnu.org; Wed, 21 Sep 2022 19:14:15 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1663802040;
+ s=mimecast20190719; t=1663802052;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding;
- bh=cDj/bCcZJ3kvOGEZHuBAu+/jvYP/iDltadLCS0HVfUQ=;
- b=SoNCio20+8iaKsEz+nIu4g1BTEPUKuq/ZiSvHMd+zAebE/FuWlQW1LnuOflcZEuhkYk8Rd
- TlsqlJ6ackpjB+VKAhyF5TlWtgFHyPOtgUR5nTLWNv0qX9p/YjMT3UO6/RY13wXOpB1/Cx
- UxsViAt0fA3cQ8anHuU4Nj/LgT6bRy8=
-Received: from mimecast-mx02.redhat.com (mx3-rdu2.redhat.com
- [66.187.233.73]) by relay.mimecast.com with ESMTP with STARTTLS
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=INGyMUpdKLNzLwyHhM65ggS6sfucai9ZgAxo7nEnfY8=;
+ b=IQxMxraF4S3LDB4OmdmvkBJjaNyc9xCVXaz/RQ1r2PBhdXgwZf/l2H9UgvhTKZGopERlxy
+ Unnwlt5zwxvky1HlmhX6uzA6eZEl66CW7Nk7H+t+ER9smrTQjGEfL1VJimzgWWNbo2gHVu
+ mdVNnsr4VDyJLcNfMyn3d+ay9VBDVF4=
+Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
+ [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-172-viREKygmMB6J2lTsZQ2T0Q-1; Wed, 21 Sep 2022 19:13:56 -0400
-X-MC-Unique: viREKygmMB6J2lTsZQ2T0Q-1
+ us-mta-380-QzSwp7BYOh6Jvl0RUz2O9g-1; Wed, 21 Sep 2022 19:14:09 -0400
+X-MC-Unique: QzSwp7BYOh6Jvl0RUz2O9g-1
 Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.rdu2.redhat.com
  [10.11.54.6])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 0AE7A1C0BC68;
- Wed, 21 Sep 2022 23:13:56 +0000 (UTC)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 9B6EC101A528;
+ Wed, 21 Sep 2022 23:14:08 +0000 (UTC)
 Received: from gshan.redhat.com (vpn2-54-126.bne.redhat.com [10.64.54.126])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 6BF552166B26;
- Wed, 21 Sep 2022 23:13:52 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 98B6F2166B29;
+ Wed, 21 Sep 2022 23:14:04 +0000 (UTC)
 From: Gavin Shan <gshan@redhat.com>
 To: qemu-arm@nongnu.org
 Cc: qemu-devel@nongnu.org, maz@kernel.org, eric.auger@redhat.com,
  cohuck@redhat.com, zhenyzha@redhat.com, richard.henderson@linaro.org,
  peter.maydell@linaro.org, shan.gavin@gmail.com
-Subject: [PATCH v3 0/5] hw/arm/virt: Improve address assignment for high
- memory regions
-Date: Thu, 22 Sep 2022 07:13:44 +0800
-Message-Id: <20220921231349.274049-1-gshan@redhat.com>
+Subject: [PATCH v3 3/5] hw/arm/virt: Introduce variable region_base in
+ virt_set_high_memmap()
+Date: Thu, 22 Sep 2022 07:13:47 +0800
+Message-Id: <20220921231349.274049-4-gshan@redhat.com>
+In-Reply-To: <20220921231349.274049-1-gshan@redhat.com>
+References: <20220921231349.274049-1-gshan@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
@@ -109,67 +113,63 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: /1S3S8vipH+p
+X-TUID: X0Tw91B0hdpA
 
-There are three high memory regions, which are VIRT_HIGH_REDIST2,
-VIRT_HIGH_PCIE_ECAM and VIRT_HIGH_PCIE_MMIO. Their base addresses
-are floating on highest RAM address. However, they can be disabled
-in several cases.
+This introduces variable 'region_base' for the base address of the
+specific high memory region. It's the preparatory work to optimize
+high memory region address assignment.
 
-(1) One specific high memory region is disabled by developer by
-    toggling vms->highmem_{redists, ecam, mmio}.
+No functional change intended.
 
-(2) VIRT_HIGH_PCIE_ECAM region is disabled on machine, which is
-    'virt-2.12' or ealier than it.
+Signed-off-by: Gavin Shan <gshan@redhat.com>
+---
+ hw/arm/virt.c | 12 ++++++------
+ 1 file changed, 6 insertions(+), 6 deletions(-)
 
-(3) VIRT_HIGH_PCIE_ECAM region is disabled when firmware is loaded
-    on 32-bits system.
-
-(4) One specific high memory region is disabled when it breaks the
-    PA space limit.
-
-The current implementation of virt_set_memmap() isn't comprehensive
-because the space for one specific high memory region is always
-reserved from the PA space for case (1), (2) and (3). In the code,
-'base' and 'vms->highest_gpa' are always increased for those three
-cases. It's unnecessary since the assigned space of the disabled
-high memory region won't be used afterwards.
-
-The series intends to improve the address assignment for these
-high memory regions.
-
-PATCH[1-3] preparatory work for the improvment
-PATCH[4]   improve high memory region address assignment
-PATCH[5]   adds 'highmem-compact' to enable or disable the optimization
-
-History
-=======
-v2: https://lore.kernel.org/all/20220815062958.100366-1-gshan@redhat.com/T/
-v1: https://lists.nongnu.org/archive/html/qemu-arm/2022-08/msg00013.html
-
-Changelog
-==========
-v3:
-  * Reorder the patches                                        (Gavin)
-  * Add 'highmem-compact' property for backwards compatibility (Eric)
-v2:
-  * Split the patches for easier review                        (Gavin)
-  * Improved changelog                                         (Marc)
-  * Use 'bool fits' in virt_set_high_memmap()                  (Eric)
-
-Gavin Shan (5):
-  hw/arm/virt: Introduce virt_set_high_memmap() helper
-  hw/arm/virt: Rename variable size to region_size in
-    virt_set_high_memmap()
-  hw/arm/virt: Introduce variable region_base in virt_set_high_memmap()
-  hw/arm/virt: Improve high memory region address assignment
-  hw/arm/virt: Add 'highmem-compact' property
-
- docs/system/arm/virt.rst |   4 ++
- hw/arm/virt.c            | 116 ++++++++++++++++++++++++++++-----------
- include/hw/arm/virt.h    |   2 +
- 3 files changed, 89 insertions(+), 33 deletions(-)
-
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index 187b3ee0e2..b0b679d1f4 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -1692,15 +1692,15 @@ static uint64_t virt_cpu_mp_affinity(VirtMachineState *vms, int idx)
+ static void virt_set_high_memmap(VirtMachineState *vms,
+                                  hwaddr base, int pa_bits)
+ {
+-    hwaddr region_size;
++    hwaddr region_base, region_size;
+     bool fits;
+     int i;
+ 
+     for (i = VIRT_LOWMEMMAP_LAST; i < ARRAY_SIZE(extended_memmap); i++) {
++        region_base = ROUND_UP(base, extended_memmap[i].size);
+         region_size = extended_memmap[i].size;
+ 
+-        base = ROUND_UP(base, region_size);
+-        vms->memmap[i].base = base;
++        vms->memmap[i].base = region_base;
+         vms->memmap[i].size = region_size;
+ 
+         /*
+@@ -1709,9 +1709,9 @@ static void virt_set_high_memmap(VirtMachineState *vms,
+          *
+          * For each device that doesn't fit, disable it.
+          */
+-        fits = (base + region_size) <= BIT_ULL(pa_bits);
++        fits = (region_base + region_size) <= BIT_ULL(pa_bits);
+         if (fits) {
+-            vms->highest_gpa = base + region_size - 1;
++            vms->highest_gpa = region_base + region_size - 1;
+         }
+ 
+         switch (i) {
+@@ -1726,7 +1726,7 @@ static void virt_set_high_memmap(VirtMachineState *vms,
+             break;
+         }
+ 
+-        base += region_size;
++        base = region_base + region_size;
+     }
+ }
+ 
 -- 
 2.23.0
 

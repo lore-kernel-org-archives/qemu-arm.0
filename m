@@ -1,97 +1,104 @@
-Received: by 2002:a17:906:b088:0:0:0:0 with SMTP id x8csp199284ejy;
-        Thu, 22 Sep 2022 04:00:42 -0700 (PDT)
-X-Google-Smtp-Source: AMsMyM4ZGAUsEmQkst+LQcdtvyggEUPWqYSUTlm5ozr8xPY6fWvUaYC4TOHEd1RWufdnAOmZSTyJ
-X-Received: by 2002:a05:6214:23cf:b0:495:9b34:c6f7 with SMTP id hr15-20020a05621423cf00b004959b34c6f7mr1945960qvb.27.1663844442134;
-        Thu, 22 Sep 2022 04:00:42 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1663844442; cv=none;
+Received: by 2002:a17:906:b088:0:0:0:0 with SMTP id x8csp228665ejy;
+        Thu, 22 Sep 2022 04:57:16 -0700 (PDT)
+X-Google-Smtp-Source: AMsMyM7WqkyisrIOT7CnpFmuE6qNZKcCAnlxJBHtqEK3G8NKjOQxEcNEyPwqr6Hc5XSX3yPA+tEn
+X-Received: by 2002:ac8:5fc5:0:b0:35c:e881:6c96 with SMTP id k5-20020ac85fc5000000b0035ce8816c96mr2449158qta.466.1663847835809;
+        Thu, 22 Sep 2022 04:57:15 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1663847835; cv=none;
         d=google.com; s=arc-20160816;
-        b=qfqOjNfFVSsKHsH8EdcGloUDmOsqQT4f9+ogA54q9wKIi+qnuDkCZ54taUSlJYqmS6
-         5cBGErmOv6lY1s74kANlLq7Jtd6LtmZ6labEW5806lwKNECq+PPfbNaJSqEt/+iheGrN
-         3vpkKb48odC3npnNaDOdp9An+ov74aGX0ThFVC4DSXKURmdCJSsHT32DYUqPfR0yNOqP
-         bpW0ajxLrhVju7M+Nsdq4ndNTb5AlvMiwzW+q7QAJBEuqI7P8Lj4e9gcxPACFSs+g1Kc
-         rZIjJYZfyWaFTxXxN3Lf2m8POP4RKr2G64Xdnq0kej3YPzBC25xBxu0nJjnH0QzmYahx
-         DJTA==
+        b=rKCpYVKeBix/do8FIJYaVIC+onpes/eQKuut1SfLuvtGSVNAp9LgPeo5cQVMlcQN0C
+         Vpw6rCeO9r5Zv8qAnSu7ffI0MdNTNzgEgXkO58WuvyNvs3RD8lB9wcE8VuqccIgWDOMM
+         ZpU71jEjRo5gkTgaw58KMj6+IHclP1LtOzdxPXkwUrek1HrKKrO94TegClXH32SP/15a
+         Xzw+86BL2uFn1IFJS3A63/XJfQNg6kGe3LmyH4le8oyclXayRurKro78TSEPJdOFdGVo
+         iP/Q+Hlsgcmat3sXhwfzrmNpseIyN+qCZoM9kmmF4snik9zUIYw/LntY8ZcCBqX+jTcm
+         xpeQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
          :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=mKRN0hGhkKh2+EDicXlCcAoC/2R+bdIfPZsc4k4IaNQ=;
-        b=bawUCOMAiUyMHl2C21Nf8U4hjiSIt0BJ8vC2B648Rbl+b3ZX//pYRfTngzmsfg2r1O
-         63THn5WWY9ZmcqwZwCmP8Lno/0ZezkKQ4KfHj+UkfeVnL0t0p5SPRyHU1NOfdkknxoG0
-         UKWSqtF++nRo8Yo//Rnu7SKHX3cHieo8bNnKXsmUCdvAwe7l5zEUeUCkdNMPHn0xtmE+
-         0BB9NE0ftNm7pcdRxphHnPAoiICMiR2T/cX6ttaXeFFdqKMf5gYnMgQ3OhxUwiGD0TvL
-         rn+j+JqFEfdNrTj6doT733aHM29FmRV1YLVjyZFXDL0Zz0SbuZ5dJWDxGoJPh/pacN6Y
-         w/DA==
+        bh=DBxu8oBCazvdB2SbjQpjzcq6y/5GSsJwjR9oyLAsvp0=;
+        b=Y+Lf/kUMmPkcscuBsL0CW8WNgUhbLySYjje/mNIDWr4PhBWqWQ5iwWjkrv1xwhgAd+
+         8DqoiOwU0Ba+4mB+dENX8WGYkBmgdYluy1hPZILge+HngLlWzLSy8mKL199CasrzLzos
+         sfxJcuPdUN0ZWud9UEeq0Ks1EzsEt9MbBBGObV4dmpvLwvATkVvaP0BzZCLEc1MEKH+F
+         ATlHYTyCT+/KTdP5POc5WNjPxmJkGZbsNTecXkLLpkeb5XrsuhPPkeK0UKGwXyaLI0M8
+         SsK5KSgNaZ/DmipkIcjui5Yk5ef0x2PSsqVI1J41/nT1dvH0/puV2H7x8/B4zzoq4eHD
+         8C5A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=xGgyVkzD;
+       dkim=pass header.i=@linaro.org header.s=google header.b=YmZ7hGCm;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d1-20020a05620a204100b006b5988d1ecdsi2924681qka.289.2022.09.22.04.00.41
+        by mx.google.com with ESMTPS id a15-20020ac8610f000000b0035d08c1da3bsi2916381qtm.461.2022.09.22.04.57.15
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 22 Sep 2022 04:00:42 -0700 (PDT)
+        Thu, 22 Sep 2022 04:57:15 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=xGgyVkzD;
+       dkim=pass header.i=@linaro.org header.s=google header.b=YmZ7hGCm;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:57874 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:41418 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1obJwf-0000hC-Gt
-	for alex.bennee@linaro.org; Thu, 22 Sep 2022 07:00:41 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:52406)
+	id 1obKpO-0002yP-Qs
+	for alex.bennee@linaro.org; Thu, 22 Sep 2022 07:57:15 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38264)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1obJsg-0006RE-41
- for qemu-devel@nongnu.org; Thu, 22 Sep 2022 06:56:35 -0400
-Received: from mail-ej1-x62a.google.com ([2a00:1450:4864:20::62a]:39742)
+ id 1obK5e-0008BX-9f
+ for qemu-devel@nongnu.org; Thu, 22 Sep 2022 07:10:07 -0400
+Received: from mail-ej1-x634.google.com ([2a00:1450:4864:20::634]:37492)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1obJsd-0005ak-JH
- for qemu-devel@nongnu.org; Thu, 22 Sep 2022 06:56:33 -0400
-Received: by mail-ej1-x62a.google.com with SMTP id z13so946007ejp.6
- for <qemu-devel@nongnu.org>; Thu, 22 Sep 2022 03:56:31 -0700 (PDT)
+ id 1obK5W-0006cX-Sq
+ for qemu-devel@nongnu.org; Thu, 22 Sep 2022 07:09:52 -0400
+Received: by mail-ej1-x634.google.com with SMTP id a26so20244499ejc.4
+ for <qemu-devel@nongnu.org>; Thu, 22 Sep 2022 04:09:46 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:from:to:cc:subject:date;
- bh=mKRN0hGhkKh2+EDicXlCcAoC/2R+bdIfPZsc4k4IaNQ=;
- b=xGgyVkzDafjjsJ3iOj7C7BqNwTlxmwz4pmRbha7+6bcOuJjdMisIVtZiPm1LQmnTAK
- +/iZM4IEFBJt6HC+VylS1o0MA5dC1rmE9MZfFw7MnLC3QxX8r/AVmMPZWHghEweK3aQt
- +Okr1Mf9nISQ0S/aEx0PXULczjIofGgUQDDHBXmPCVaCHxjFRviueHM0kQvW1OPTEOj3
- DcDY13ErsWGmM8BRkn1+mpPlK2ALsrgWayVc0qF4Lnou5774jl/ST5CHZmmnVVLzDbsp
- FiPJ2l9zBxeQIm0MONyuObz/YQKXGGbf7xbfLz7gJRlGU+64e6G3mN2SheUa9PiPb/+Q
- OIDA==
+ bh=DBxu8oBCazvdB2SbjQpjzcq6y/5GSsJwjR9oyLAsvp0=;
+ b=YmZ7hGCm6qyWfHGM8guRCCMCiz7RUUL94N+1XE3WjJzFhpF9JmnjxH+tpzAR5YqQQa
+ KHTWfKd89jrJRpRGUK76HRUsESRNTpxUEOwhGLM/PER9ozfAj8zyQZvoT48FCxcVeOqV
+ r/xEm4PCtvBVGTUxDKYpRZftQ2xqik+BHaqVdFjUsqDPFwmzX/FnoAsENOt5KO4t43OV
+ YC+H8dgbA/BnUkZOLzTa+eKs1ReLGQMLc3NiYxH81EGX3QORnhV6pN2SjHDxOke2fkzG
+ LSgLEbAL2ipPuj5AFQflIu6kKLbaJzo4ykzGk+2vlI9tIb4xO2jHVM4n7amHsl/7tx0A
+ 7zkA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:x-gm-message-state:from:to:cc:subject:date;
- bh=mKRN0hGhkKh2+EDicXlCcAoC/2R+bdIfPZsc4k4IaNQ=;
- b=mXtRKNv5SMbxjQLxYra7kLHabKX8T1j6LayLbB4KsfWA42akQMm24fm+tuoPcp95/S
- VPRIAHGV8+ukNhaEjMGdu+tWdxzU11Ipesb3yGomdXaCKpIorhZQC/CfAs7Ol0xafI70
- 0yefRMFWfhIWKDFpyLIolMRV9tMsTfEWhZZrKN7b9odyP9R+HjEH+X1xGSK280nxAcFz
- ux3oco4myR1gVYif4P6xm9uSzRDAoprP0/sq+HdBOVDjfET1T4mSAvJklrT16k2D2OVu
- f4OxSNpBN1N1DKw+z6/JPDe7Qnbdd9IXflIITr0UQfPm7Mvc7u/+TH3SQOC3hC8MgnFe
- l73g==
-X-Gm-Message-State: ACrzQf3BwHrCsppYbDVlkfCcYe0St67nUKALHQTHZURZb3rH4mB/D48d
- ui5Jd0jfjgm1eAaYoarCBlt8OWrDmFdD8w6WsGWChg==
-X-Received: by 2002:a17:907:2bd5:b0:76f:591c:466b with SMTP id
- gv21-20020a1709072bd500b0076f591c466bmr2175928ejc.504.1663844189857; Thu, 22
- Sep 2022 03:56:29 -0700 (PDT)
+ bh=DBxu8oBCazvdB2SbjQpjzcq6y/5GSsJwjR9oyLAsvp0=;
+ b=6IhY70y+RO0XBuorxUA4ywAan/fFeoNHyB5dXBJxjnrmAu6FYbdD44egrrTJDBHn5F
+ +YtPR7Bp6xvAj/Kq2447hwUXQBzRhwlcMisXFjwmK031Tg82KCC/jGG2p7evPnrHwhh5
+ Q7JSBBC1NL70U72kidgcj6GLLm766y1LEEp2IpGo0a5QdkxOdPN0y5I/l1BQI0gM9JYO
+ RLNwn9K9TLpXYI9/5zAlMZLHlg7F4Gswt5MN0EdvObcmdXXe2SECsDdruRJmYjtn6o7w
+ 81lJinVJkUFfH80jSWAmcH/0Yph8UNVlTMs/KwEytxPd2IsM2VZkyKoARHpY1GKYkP5l
+ GtCw==
+X-Gm-Message-State: ACrzQf3fX2P2HRA3VxyaEUcWA51zHmZbOC9nAO7bn2JORoh+GPfDwWvZ
+ j3Pf8ujdsOoPYerAOlPNXi66MzWzyQpvRvuUPVIkyg==
+X-Received: by 2002:a17:906:db05:b0:741:5730:270e with SMTP id
+ xj5-20020a170906db0500b007415730270emr2222292ejb.609.1663844985713; Thu, 22
+ Sep 2022 04:09:45 -0700 (PDT)
 MIME-Version: 1.0
-References: <20220822152741.1617527-1-richard.henderson@linaro.org>
-In-Reply-To: <20220822152741.1617527-1-richard.henderson@linaro.org>
+References: <20220816094957.31700-1-zhukeqian1@huawei.com>
+ <20220824170433.7ba675ca@redhat.com>
+ <CAFEAcA8jdjkZc24FqXBbw+LBJZ5HiCygqY3Y0S2TtmRzdx1P-A@mail.gmail.com>
+ <20220921152218.7b55dc76@redhat.com>
+In-Reply-To: <20220921152218.7b55dc76@redhat.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 22 Sep 2022 11:56:18 +0100
-Message-ID: <CAFEAcA83JeFLs+=mW2npa_5QLsJ_fzMxS2fD4=qHUhMJwYbJKg@mail.gmail.com>
-Subject: Re: [PATCH v2 00/66] target/arm: Implement FEAT_HAFDBS
-To: Richard Henderson <richard.henderson@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
+Date: Thu, 22 Sep 2022 12:09:34 +0100
+Message-ID: <CAFEAcA_jgrcrhJjxuBRUR0w2Z6-4kaPJHD=3oqUGWePnhSX5GQ@mail.gmail.com>
+Subject: Re: [PATCH v2] hw/acpi: Add ospm_status hook implementation for
+ acpi-ged
+To: Igor Mammedov <imammedo@redhat.com>
+Cc: Keqian Zhu <zhukeqian1@huawei.com>, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org, 
+ qemu-trivial@nongnu.org, Eric Auger <eric.auger@redhat.com>, 
+ Peter Xu <peterx@redhat.com>, wanghaibin.wang@huawei.com
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::62a;
- envelope-from=peter.maydell@linaro.org; helo=mail-ej1-x62a.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::634;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ej1-x634.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -113,64 +120,46 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: zVPerInHd2IQ
+X-TUID: KfDZ0VugkuVp
 
-On Mon, 22 Aug 2022 at 16:28, Richard Henderson
-<richard.henderson@linaro.org> wrote:
+On Wed, 21 Sept 2022 at 14:22, Igor Mammedov <imammedo@redhat.com> wrote:
 >
-> This is a major reorg to arm page table walking.  While the result
-> here is "merely" Hardware-assited Access Flag and Dirty Bit Setting
-> (HAFDBS), the ultimate goal is the Realm Management Extension (RME).
-> RME "recommends" that HAFDBS be implemented (I_CSLWZ).
+> On Tue, 20 Sep 2022 14:15:36 +0100
+> Peter Maydell <peter.maydell@linaro.org> wrote:
 >
-> For HAFDBS, being able to find a host pointer for the ram that
-> backs a given page table entry is required in order to perform the
-> atomic update to that PTE.  The easiest way to find a host pointer
-> is to use the existing softtlb mechanism.  Thus all of the page
-> table walkers have been adjusted to take an mmu_idx that corresponds
-> to the regime in which the page table is stored.  In some cases,
-> this is a new "physical" mmu_idx that has a permanent 1-1 mapping.
+> > On Wed, 24 Aug 2022 at 16:04, Igor Mammedov <imammedo@redhat.com> wrote:
+> > >
+> > > On Tue, 16 Aug 2022 17:49:57 +0800
+> > > Keqian Zhu <zhukeqian1@huawei.com> wrote:
+> > >
+> > > > Setup an ARM virtual machine of machine virt and execute qmp "query-acpi-ospm-status"
+> > > > causes segmentation fault with following dumpstack:
+> > > >  #1  0x0000aaaaab64235c in qmp_query_acpi_ospm_status (errp=errp@entry=0xfffffffff030) at ../monitor/qmp-cmds.c:312
+> > > >  #2  0x0000aaaaabfc4e20 in qmp_marshal_query_acpi_ospm_status (args=<optimized out>, ret=0xffffea4ffe90, errp=0xffffea4ffe88) at qapi/qapi-commands-acpi.c:63
+> > > >  #3  0x0000aaaaabff8ba0 in do_qmp_dispatch_bh (opaque=0xffffea4ffe98) at ../qapi/qmp-dispatch.c:128
+> > > >  #4  0x0000aaaaac02e594 in aio_bh_call (bh=0xffffe0004d80) at ../util/async.c:150
+> > > >  #5  aio_bh_poll (ctx=ctx@entry=0xaaaaad0f6040) at ../util/async.c:178
+> > > >  #6  0x0000aaaaac00bd40 in aio_dispatch (ctx=ctx@entry=0xaaaaad0f6040) at ../util/aio-posix.c:421
+> > > >  #7  0x0000aaaaac02e010 in aio_ctx_dispatch (source=0xaaaaad0f6040, callback=<optimized out>, user_data=<optimized out>) at ../util/async.c:320
+> > > >  #8  0x0000fffff76f6884 in g_main_context_dispatch () at /usr/lib64/libglib-2.0.so.0
+> > > >  #9  0x0000aaaaac0452d4 in glib_pollfds_poll () at ../util/main-loop.c:297
+> > > >  #10 os_host_main_loop_wait (timeout=0) at ../util/main-loop.c:320
+> > > >  #11 main_loop_wait (nonblocking=nonblocking@entry=0) at ../util/main-loop.c:596
+> > > >  #12 0x0000aaaaab5c9e50 in qemu_main_loop () at ../softmmu/runstate.c:734
+> > > >  #13 0x0000aaaaab185370 in qemu_main (argc=argc@entry=47, argv=argv@entry=0xfffffffff518, envp=envp@entry=0x0) at ../softmmu/main.c:38
+> > > >  #14 0x0000aaaaab16f99c in main (argc=47, argv=0xfffffffff518) at ../softmmu/main.c:47
+> > > >
+> > > > Fixes: ebb62075021a ("hw/acpi: Add ACPI Generic Event Device Support")
+> > > > Signed-off-by: Keqian Zhu <zhukeqian1@huawei.com>
+> > >
+> > > Reviewed-by: Igor Mammedov <imammedo@redhat.com>
+> >
+> > I notice this doesn't seem to have gone in yet -- whose tree is it
+> > going to go via?
 >
-> For RME, "physical" addresses also have page permissions, coming
-> from the Root realm Granule Protection Table, which can be thought
-> of as a third stage page table lookup.  So eventually the new
-> Secure and Nonsecure physical mmu indexes will joined by
-> Realm and Root physical mmu indexes, and all of them will take
-> the new Granule Page Table into account.
->
-> Previously, we had A-profile allocate separate mmu_idx for secure
-> vs non-secure.  I've done away with that.  Now, I flush all mmu_idx
-> when SCR_EL3.NS is changed.  I did not see how we could reasonably
-> add 8 more mmu_idx for Realm.  Moreover, I had a look through ARM
-> Trusted Firmware, at the code paths used to change between Secure
-> and Nonsecure.  We wind up flushing all of these mmu_idx anyway while
-> swapping the EL1+EL2 cpregs, so there is no gain at all in attempting
-> to keep them live at the same time within qemu.
+> I'd guess ARM tree (due to almost sole user virt-arm).
+> (there are toy users like microvm and new loongarch)
 
-Hi; I'm going to take patches 1, 3-16, 18 and 20 into
-target-arm.next:
+OK; applied to target-arm.next, thanks.
 
->   target/arm: Create GetPhysAddrResult
->   target/arm: Use GetPhysAddrResult in get_phys_addr_lpae
->   target/arm: Use GetPhysAddrResult in get_phys_addr_v6
->   target/arm: Use GetPhysAddrResult in get_phys_addr_v5
->   target/arm: Use GetPhysAddrResult in get_phys_addr_pmsav5
->   target/arm: Use GetPhysAddrResult in get_phys_addr_pmsav7
->   target/arm: Use GetPhysAddrResult in get_phys_addr_pmsav8
->   target/arm: Use GetPhysAddrResult in pmsav8_mpu_lookup
->   target/arm: Remove is_subpage argument to pmsav8_mpu_lookup
->   target/arm: Add is_secure parameter to v8m_security_lookup
->   target/arm: Add secure parameter to pmsav8_mpu_lookup
->   target/arm: Add is_secure parameter to get_phys_addr_v5
->   target/arm: Add is_secure parameter to get_phys_addr_v6
->   target/arm: Add secure parameter to get_phys_addr_pmsav8
->   target/arm: Add is_secure parameter to pmsav7_use_background_region
->   target/arm: Add secure parameter to get_phys_addr_pmsav7
->   target/arm: Add is_secure parameter to get_phys_addr_pmsav5
-
-I haven't looked at the second half of the patchset yet -- I'll
-come back to this after having worked through the rest of my
-to-review queue.
-
-thanks
 -- PMM

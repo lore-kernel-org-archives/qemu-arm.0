@@ -1,223 +1,176 @@
-Received: by 2002:a17:906:b088:0:0:0:0 with SMTP id x8csp113247ejy;
-        Thu, 22 Sep 2022 00:55:12 -0700 (PDT)
-X-Google-Smtp-Source: AMsMyM5milWMoNC7ORUQLJPasW5vqCQmNzIKE+RXmTrXqpUZcWj/BFxOt7/TppQmIN1GF54CgjMY
-X-Received: by 2002:a05:6a00:1a4c:b0:53a:c347:a764 with SMTP id h12-20020a056a001a4c00b0053ac347a764mr2238978pfv.61.1663833311896;
-        Thu, 22 Sep 2022 00:55:11 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1663833311; cv=none;
+Received: by 2002:a17:906:b088:0:0:0:0 with SMTP id x8csp199284ejy;
+        Thu, 22 Sep 2022 04:00:42 -0700 (PDT)
+X-Google-Smtp-Source: AMsMyM4ZGAUsEmQkst+LQcdtvyggEUPWqYSUTlm5ozr8xPY6fWvUaYC4TOHEd1RWufdnAOmZSTyJ
+X-Received: by 2002:a05:6214:23cf:b0:495:9b34:c6f7 with SMTP id hr15-20020a05621423cf00b004959b34c6f7mr1945960qvb.27.1663844442134;
+        Thu, 22 Sep 2022 04:00:42 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1663844442; cv=none;
         d=google.com; s=arc-20160816;
-        b=KoY7YT84ckJzMPxmWbqH/BjYsegj6r6llftwk7g7+/jIkEmxlF31E+B6JTVz5esAr2
-         4wJPL3OxQ9IHpXM3VQQGSFKv4OGzD44rDXOpIxz4yJ4O8sgnqkNTv2XEeHzKpC+Eygxa
-         DX3b5ze8qqCrrjUabIZDWzPuHe7ssvLL4lY4NICHcu9NSs26yTV+2/eZyiyI4cOv0EVT
-         28auOj0ei/cfwUW2+M2qsfJSfXtX3gGt7HfCN58huVoU2yy/VFcHzSGVQgPW4E3ehijo
-         twZ0s/cXdERSQY5T1DboToabs8rZ/HWRxPU6/4l8b0Yq4GTSWaK3r3+FhUciJPj3w3aG
-         vLwQ==
+        b=qfqOjNfFVSsKHsH8EdcGloUDmOsqQT4f9+ogA54q9wKIi+qnuDkCZ54taUSlJYqmS6
+         5cBGErmOv6lY1s74kANlLq7Jtd6LtmZ6labEW5806lwKNECq+PPfbNaJSqEt/+iheGrN
+         3vpkKb48odC3npnNaDOdp9An+ov74aGX0ThFVC4DSXKURmdCJSsHT32DYUqPfR0yNOqP
+         bpW0ajxLrhVju7M+Nsdq4ndNTb5AlvMiwzW+q7QAJBEuqI7P8Lj4e9gcxPACFSs+g1Kc
+         rZIjJYZfyWaFTxXxN3Lf2m8POP4RKr2G64Xdnq0kej3YPzBC25xBxu0nJjnH0QzmYahx
+         DJTA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=list-id:precedence:content-transfer-encoding:mime-version
-         :message-id:references:in-reply-to:subject:cc:to:from:date
-         :dkim-signature;
-        bh=XAn7c1pwQ/FfM7vHKOqOcGKKPoVtNy6cXXuDPbbsEMg=;
-        b=JYYLxf26aLlaCqthpwQMTSHBqP7Zy+koOxrf6h0QOhW7Sbknp8VTiqMqh+DizWxxLF
-         43VQTzaivv6DpDggr8P9oc2GPet/tZKLed4euhjpG4RR7d1Pnt3DEU3XIytEp9Y876tX
-         l5HI6MWw7/4JeutXq1IwspbRIhuaL9xb14cqKI4H9Kc9OvImAO+ypbovBKAWlYZtc+Cs
-         dFM4+Px7KRDr4OBd2mcQIlmHI7AHiG/xD0v6bReNl0qUHkEBFTLpOZpKgtMABzZemUKT
-         DYNCtVivcoU/v3O8NLd5M7FyezcYHOTbIU98cm8XUsy+Ns4ehw8TKK5Ne00nbTmh3Hgy
-         YYbA==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=mKRN0hGhkKh2+EDicXlCcAoC/2R+bdIfPZsc4k4IaNQ=;
+        b=bawUCOMAiUyMHl2C21Nf8U4hjiSIt0BJ8vC2B648Rbl+b3ZX//pYRfTngzmsfg2r1O
+         63THn5WWY9ZmcqwZwCmP8Lno/0ZezkKQ4KfHj+UkfeVnL0t0p5SPRyHU1NOfdkknxoG0
+         UKWSqtF++nRo8Yo//Rnu7SKHX3cHieo8bNnKXsmUCdvAwe7l5zEUeUCkdNMPHn0xtmE+
+         0BB9NE0ftNm7pcdRxphHnPAoiICMiR2T/cX6ttaXeFFdqKMf5gYnMgQ3OhxUwiGD0TvL
+         rn+j+JqFEfdNrTj6doT733aHM29FmRV1YLVjyZFXDL0Zz0SbuZ5dJWDxGoJPh/pacN6Y
+         w/DA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=KdwbP3Bc;
-       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <kvm-owner@vger.kernel.org>
-Received: from out1.vger.email (out1.vger.email. [2620:137:e000::1:20])
-        by mx.google.com with ESMTP id b26-20020a63715a000000b0042a020bd06bsi6821975pgn.781.2022.09.22.00.55.11;
-        Thu, 22 Sep 2022 00:55:11 -0700 (PDT)
-Received-SPF: pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) client-ip=2620:137:e000::1:20;
+       dkim=pass header.i=@linaro.org header.s=google header.b=xGgyVkzD;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id d1-20020a05620a204100b006b5988d1ecdsi2924681qka.289.2022.09.22.04.00.41
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 22 Sep 2022 04:00:42 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=KdwbP3Bc;
-       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S230020AbiIVHzK (ORCPT <rfc822;daniel.diaz@linaro.org>
-        + 2 others); Thu, 22 Sep 2022 03:55:10 -0400
-Received: from lindbergh.monkeyblade.net ([23.128.96.19]:56732 "EHLO
-        lindbergh.monkeyblade.net" rhost-flags-OK-OK-OK-OK) by vger.kernel.org
-        with ESMTP id S230018AbiIVHzI (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Thu, 22 Sep 2022 03:55:08 -0400
-Received: from mail-ej1-x62d.google.com (mail-ej1-x62d.google.com [IPv6:2a00:1450:4864:20::62d])
-        by lindbergh.monkeyblade.net (Postfix) with ESMTPS id 5451B6C77B
-        for <kvm@vger.kernel.org>; Thu, 22 Sep 2022 00:55:07 -0700 (PDT)
-Received: by mail-ej1-x62d.google.com with SMTP id hy2so15464726ejc.8
-        for <kvm@vger.kernel.org>; Thu, 22 Sep 2022 00:55:07 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=content-transfer-encoding:mime-version:message-id:references
-         :in-reply-to:subject:cc:to:from:date:from:to:cc:subject:date;
-        bh=XAn7c1pwQ/FfM7vHKOqOcGKKPoVtNy6cXXuDPbbsEMg=;
-        b=KdwbP3Bc87qLjlpjsnO2AH1hFtCVaiTGJp44vkAjCHEyi2BVqdUN8ix+ddbhHaPK1r
-         EqWJ5pPbZsCjVFS9e+dTsVJ0Foj6V+KoT4fRyJlz7QqnJ/8hVqxrc1Ho7ZLeIspC87hS
-         EwLwWL/B0irPWwT9KoGor+fge4WF8zkBMONJ36LmRsHQ1cCTfxd9d0oVkt47Fb8ho6Yq
-         vGRDgumcb7zLXHHzBCfP5aDStxiv4J7vmNbl/fZPXSp3qCOfLbaEdK0wuuYY9KcWK55E
-         P9+VDLqy0HdpS4ndwVtZP2lM2k+QoDCxBOx6WyXF/QkqHcfEpOC7COF2TxEu7OhFiih6
-         yxPw==
+       dkim=pass header.i=@linaro.org header.s=google header.b=xGgyVkzD;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:57874 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1obJwf-0000hC-Gt
+	for alex.bennee@linaro.org; Thu, 22 Sep 2022 07:00:41 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:52406)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1obJsg-0006RE-41
+ for qemu-devel@nongnu.org; Thu, 22 Sep 2022 06:56:35 -0400
+Received: from mail-ej1-x62a.google.com ([2a00:1450:4864:20::62a]:39742)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1obJsd-0005ak-JH
+ for qemu-devel@nongnu.org; Thu, 22 Sep 2022 06:56:33 -0400
+Received: by mail-ej1-x62a.google.com with SMTP id z13so946007ejp.6
+ for <qemu-devel@nongnu.org>; Thu, 22 Sep 2022 03:56:31 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date;
+ bh=mKRN0hGhkKh2+EDicXlCcAoC/2R+bdIfPZsc4k4IaNQ=;
+ b=xGgyVkzDafjjsJ3iOj7C7BqNwTlxmwz4pmRbha7+6bcOuJjdMisIVtZiPm1LQmnTAK
+ +/iZM4IEFBJt6HC+VylS1o0MA5dC1rmE9MZfFw7MnLC3QxX8r/AVmMPZWHghEweK3aQt
+ +Okr1Mf9nISQ0S/aEx0PXULczjIofGgUQDDHBXmPCVaCHxjFRviueHM0kQvW1OPTEOj3
+ DcDY13ErsWGmM8BRkn1+mpPlK2ALsrgWayVc0qF4Lnou5774jl/ST5CHZmmnVVLzDbsp
+ FiPJ2l9zBxeQIm0MONyuObz/YQKXGGbf7xbfLz7gJRlGU+64e6G3mN2SheUa9PiPb/+Q
+ OIDA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:mime-version:message-id:references
-         :in-reply-to:subject:cc:to:from:date:x-gm-message-state:from:to:cc
-         :subject:date;
-        bh=XAn7c1pwQ/FfM7vHKOqOcGKKPoVtNy6cXXuDPbbsEMg=;
-        b=Da3AucoDrt3m9bnF4XTNlJM+uK4nQTI6+z8xNu/1iPJlAIP9wa4/J8EZgm1Em9Yv+V
-         ziYMNeoJ9/aVRhZws2eYRby9C6KuugduQMltcv5RULWas0dNk8ZEI/Kcp19xsf/iqn2z
-         LjNuj3r9z1MUi7/wIkQbkCvLBQjZ9CqOmpVFL67rrlvVbl3HNNNlxiBk4vpXnx8wrqb+
-         GNV6gtzxopmQP63+fOwSqUNOOQ2LUA9ctadH691cg/FY7IZbl+mwp9TRtwoVMZfFXEcA
-         C8VG2F6TFqIQdggniw3VWTag9bPKt5o/x9lfBa4NTzvdaibn3N/loSFWiCO1HoZl7b04
-         sDXQ==
-X-Gm-Message-State: ACrzQf2d8wARr1RmpNUhno+TF3VrEjRAYXuGOCOEPWteNGVptkAWq+ce
-        mvXkexPiKbLNB1tUZW4DvXE=
-X-Received: by 2002:a17:906:9b93:b0:780:3b58:93e1 with SMTP id dd19-20020a1709069b9300b007803b5893e1mr1620475ejc.698.1663833305755;
-        Thu, 22 Sep 2022 00:55:05 -0700 (PDT)
-Received: from [127.0.0.1] (dynamic-077-191-214-084.77.191.pool.telefonica.de. [77.191.214.84])
-        by smtp.gmail.com with ESMTPSA id u17-20020a056402065100b0045081dc93dfsm3166610edx.78.2022.09.22.00.55.04
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 22 Sep 2022 00:55:05 -0700 (PDT)
-Date:   Thu, 22 Sep 2022 07:55:01 +0000
-From:   B <shentey@gmail.com>
-To:     Markus Armbruster <armbru@redhat.com>
-CC:     Alistair Francis <alistair23@gmail.com>,
-        Bin Meng <bin.meng@windriver.com>,
-        Palmer Dabbelt <palmer@dabbelt.com>,
-        "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
-        "Michael S. Tsirkin" <mst@redhat.com>,
-        Magnus Damm <magnus.damm@gmail.com>,
-        Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
-        Bandan Das <bsd@redhat.com>,
-        Matthew Rosato <mjrosato@linux.ibm.com>,
-        Daniel Henrique Barboza <danielhb413@gmail.com>,
-        Sergio Lopez <slp@redhat.com>,
-        Alexey Kardashevskiy <aik@ozlabs.ru>,
-        Xiaojuan Yang <yangxiaojuan@loongson.cn>,
-        Cameron Esfahani <dirty@apple.com>,
-        Michael Rolnik <mrolnik@gmail.com>,
-        Song Gao <gaosong@loongson.cn>,
-        Jagannathan Raman <jag.raman@oracle.com>,
-        Greg Kurz <groug@kaod.org>,
-        Kamil Rytarowski <kamil@netbsd.org>,
-        Peter Xu <peterx@redhat.com>, Joel Stanley <joel@jms.id.au>,
-        Alistair Francis <Alistair.Francis@wdc.com>,
-        "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
-        Paolo Bonzini <pbonzini@redhat.com>, haxm-team@intel.com,
-        Roman Bolshakov <r.bolshakov@yadro.com>,
-        Eric Auger <eric.auger@redhat.com>,
-        David Gibson <david@gibson.dropbear.id.au>,
-        =?ISO-8859-1?Q?Daniel_P=2E_Berrang=E9?= <berrange@redhat.com>,
-        Christian Borntraeger <borntraeger@linux.ibm.com>,
-        =?ISO-8859-1?Q?C=E9dric_Le_Goater?= <clg@kaod.org>,
-        Stefan Hajnoczi <stefanha@redhat.com>,
-        Qemu-block <qemu-block@nongnu.org>,
-        Eduardo Habkost <eduardo@habkost.net>,
-        =?ISO-8859-1?Q?Herv=E9_Poussineau?= <hpoussin@reactos.org>,
-        "open list:New World" <qemu-ppc@nongnu.org>,
-        Cornelia Huck <cohuck@redhat.com>,
-        Helge Deller <deller@gmx.de>,
-        Stefano Stabellini <sstabellini@kernel.org>,
-        =?ISO-8859-1?Q?Philippe_Mathieu-Daud=E9?= <f4bug@amsat.org>,
-        "open list:RISC-V" <qemu-riscv@nongnu.org>,
-        Stafford Horne <shorne@gmail.com>, Paul Durrant <paul@xen.org>,
-        Havard Skinnemoen <hskinnemoen@google.com>,
-        Elena Ufimtseva <elena.ufimtseva@oracle.com>,
-        Alexander Graf <agraf@csgraf.de>,
-        Thomas Huth <thuth@redhat.com>,
-        Alex Williamson <alex.williamson@redhat.com>,
-        Wenchao Wang <wenchao.wang@intel.com>,
-        Tony Krowiak <akrowiak@linux.ibm.com>,
-        Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
-        qemu-s390x <qemu-s390x@nongnu.org>,
-        =?ISO-8859-1?Q?Marc-Andr=E9_Lureau?= <marcandre.lureau@redhat.com>,
-        Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
-        Eric Farman <farman@linux.ibm.com>,
-        Reinoud Zandijk <reinoud@netbsd.org>,
-        Alexander Bulekov <alxndr@bu.edu>,
-        Yanan Wang <wangyanan55@huawei.com>,
-        "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
-        Gerd Hoffmann <kraxel@redhat.com>,
-        Tyrone Ting <kfting@nuvoton.com>,
-        "open list:X86" <xen-devel@lists.xenproject.org>,
-        Yoshinori Sato <ysato@users.sourceforge.jp>,
-        John Snow <jsnow@redhat.com>,
-        Richard Henderson <richard.henderson@linaro.org>,
-        Darren Kenny <darren.kenny@oracle.com>,
-        "open list:Overall" <kvm@vger.kernel.org>,
-        Qiuhao Li <Qiuhao.Li@outlook.com>,
-        John G Johnson <john.g.johnson@oracle.com>,
-        Sunil Muthuswamy <sunilmut@microsoft.com>,
-        Max Filippov <jcmvbkbc@gmail.com>,
-        qemu-arm <qemu-arm@nongnu.org>,
-        Marcelo Tosatti <mtosatti@redhat.com>,
-        Peter Maydell <peter.maydell@linaro.org>,
-        Anthony Perard <anthony.perard@citrix.com>,
-        Andrew Jeffery <andrew@aj.id.au>,
-        Artyom Tarasenko <atar4qemu@gmail.com>,
-        Halil Pasic <pasic@linux.ibm.com>,
-        "Maciej S. Szmigiero" <maciej.szmigiero@oracle.com>,
-        Jason Wang <jasowang@redhat.com>,
-        David Hildenbrand <david@redhat.com>,
-        Laurent Vivier <laurent@vivier.eu>,
-        Alistair Francis <alistair@alistair23.me>,
-        Jason Herne <jjherne@linux.ibm.com>
-Subject: Re: [PATCH 1/9] hw/riscv/sifive_e: Fix inheritance of SiFiveEState
-In-Reply-To: <87a66tgwd5.fsf@pond.sub.org>
-References: <20220919231720.163121-1-shentey@gmail.com> <20220919231720.163121-2-shentey@gmail.com> <CAKmqyKN+V2R8PkED67tB8+pCZs9369ViiL8OZ9XhO3SdUCk5=Q@mail.gmail.com> <87edw6xoog.fsf@pond.sub.org> <0BBD7391-7B2D-44E7-9396-D1747784B9DA@gmail.com> <87a66tgwd5.fsf@pond.sub.org>
-Message-ID: <58A6CCCB-7426-41A2-9D3A-0683FBC51F47@gmail.com>
+ d=1e100.net; s=20210112;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date;
+ bh=mKRN0hGhkKh2+EDicXlCcAoC/2R+bdIfPZsc4k4IaNQ=;
+ b=mXtRKNv5SMbxjQLxYra7kLHabKX8T1j6LayLbB4KsfWA42akQMm24fm+tuoPcp95/S
+ VPRIAHGV8+ukNhaEjMGdu+tWdxzU11Ipesb3yGomdXaCKpIorhZQC/CfAs7Ol0xafI70
+ 0yefRMFWfhIWKDFpyLIolMRV9tMsTfEWhZZrKN7b9odyP9R+HjEH+X1xGSK280nxAcFz
+ ux3oco4myR1gVYif4P6xm9uSzRDAoprP0/sq+HdBOVDjfET1T4mSAvJklrT16k2D2OVu
+ f4OxSNpBN1N1DKw+z6/JPDe7Qnbdd9IXflIITr0UQfPm7Mvc7u/+TH3SQOC3hC8MgnFe
+ l73g==
+X-Gm-Message-State: ACrzQf3BwHrCsppYbDVlkfCcYe0St67nUKALHQTHZURZb3rH4mB/D48d
+ ui5Jd0jfjgm1eAaYoarCBlt8OWrDmFdD8w6WsGWChg==
+X-Received: by 2002:a17:907:2bd5:b0:76f:591c:466b with SMTP id
+ gv21-20020a1709072bd500b0076f591c466bmr2175928ejc.504.1663844189857; Thu, 22
+ Sep 2022 03:56:29 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain;
- charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-Spam-Status: No, score=-2.1 required=5.0 tests=BAYES_00,DKIM_SIGNED,
-        DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,FREEMAIL_FROM,
-        RCVD_IN_DNSWL_NONE,SPF_HELO_NONE,SPF_PASS autolearn=ham
-        autolearn_force=no version=3.4.6
-X-Spam-Checker-Version: SpamAssassin 3.4.6 (2021-04-09) on
-        lindbergh.monkeyblade.net
-Precedence: bulk
-List-ID: <kvm.vger.kernel.org>
-X-Mailing-List: kvm@vger.kernel.org
-X-TUID: 72DjA8clwVLv
+References: <20220822152741.1617527-1-richard.henderson@linaro.org>
+In-Reply-To: <20220822152741.1617527-1-richard.henderson@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 22 Sep 2022 11:56:18 +0100
+Message-ID: <CAFEAcA83JeFLs+=mW2npa_5QLsJ_fzMxS2fD4=qHUhMJwYbJKg@mail.gmail.com>
+Subject: Re: [PATCH v2 00/66] target/arm: Implement FEAT_HAFDBS
+To: Richard Henderson <richard.henderson@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::62a;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ej1-x62a.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: zVPerInHd2IQ
 
-
-
-Am 21=2E September 2022 04:55:02 UTC schrieb Markus Armbruster <armbru@red=
-hat=2Ecom>:
->Bernhard Beschow <shentey@gmail=2Ecom> writes:
+On Mon, 22 Aug 2022 at 16:28, Richard Henderson
+<richard.henderson@linaro.org> wrote:
 >
->> Am 20=2E September 2022 11:36:47 UTC schrieb Markus Armbruster <armbru@=
-redhat=2Ecom>:
->>>Alistair Francis <alistair23@gmail=2Ecom> writes:
->>>
->>>> On Tue, Sep 20, 2022 at 9:18 AM Bernhard Beschow <shentey@gmail=2Ecom=
-> wrote:
->>>>>
->>>>> SiFiveEState inherits from SysBusDevice while it's TypeInfo claims i=
-t to
->>>>> inherit from TYPE_MACHINE=2E This is an inconsistency which can caus=
-e
->>>>> undefined behavior such as memory corruption=2E
->>>>>
->>>>> Change SiFiveEState to inherit from MachineState since it is registe=
-red
->>>>> as a machine=2E
->>>>>
->>>>> Signed-off-by: Bernhard Beschow <shentey@gmail=2Ecom>
->>>>
->>>> Reviewed-by: Alistair Francis <alistair=2Efrancis@wdc=2Ecom>
->>>
->>>To the SiFive maintainers: since this is a bug fix, let's merge it righ=
-t
->>>away=2E
->>
->> I could repost this particular patch with the three new tags (incl=2E F=
-ixes) if desired=2E
+> This is a major reorg to arm page table walking.  While the result
+> here is "merely" Hardware-assited Access Flag and Dirty Bit Setting
+> (HAFDBS), the ultimate goal is the Realm Management Extension (RME).
+> RME "recommends" that HAFDBS be implemented (I_CSLWZ).
 >
->Can't hurt, and could help the maintainers=2E
+> For HAFDBS, being able to find a host pointer for the ram that
+> backs a given page table entry is required in order to perform the
+> atomic update to that PTE.  The easiest way to find a host pointer
+> is to use the existing softtlb mechanism.  Thus all of the page
+> table walkers have been adjusted to take an mmu_idx that corresponds
+> to the regime in which the page table is stored.  In some cases,
+> this is a new "physical" mmu_idx that has a permanent 1-1 mapping.
+>
+> For RME, "physical" addresses also have page permissions, coming
+> from the Root realm Granule Protection Table, which can be thought
+> of as a third stage page table lookup.  So eventually the new
+> Secure and Nonsecure physical mmu indexes will joined by
+> Realm and Root physical mmu indexes, and all of them will take
+> the new Granule Page Table into account.
+>
+> Previously, we had A-profile allocate separate mmu_idx for secure
+> vs non-secure.  I've done away with that.  Now, I flush all mmu_idx
+> when SCR_EL3.NS is changed.  I did not see how we could reasonably
+> add 8 more mmu_idx for Realm.  Moreover, I had a look through ARM
+> Trusted Firmware, at the code paths used to change between Secure
+> and Nonsecure.  We wind up flushing all of these mmu_idx anyway while
+> swapping the EL1+EL2 cpregs, so there is no gain at all in attempting
+> to keep them live at the same time within qemu.
 
-[X] Done=2E
+Hi; I'm going to take patches 1, 3-16, 18 and 20 into
+target-arm.next:
 
-Best regards,
-Bernhard
+>   target/arm: Create GetPhysAddrResult
+>   target/arm: Use GetPhysAddrResult in get_phys_addr_lpae
+>   target/arm: Use GetPhysAddrResult in get_phys_addr_v6
+>   target/arm: Use GetPhysAddrResult in get_phys_addr_v5
+>   target/arm: Use GetPhysAddrResult in get_phys_addr_pmsav5
+>   target/arm: Use GetPhysAddrResult in get_phys_addr_pmsav7
+>   target/arm: Use GetPhysAddrResult in get_phys_addr_pmsav8
+>   target/arm: Use GetPhysAddrResult in pmsav8_mpu_lookup
+>   target/arm: Remove is_subpage argument to pmsav8_mpu_lookup
+>   target/arm: Add is_secure parameter to v8m_security_lookup
+>   target/arm: Add secure parameter to pmsav8_mpu_lookup
+>   target/arm: Add is_secure parameter to get_phys_addr_v5
+>   target/arm: Add is_secure parameter to get_phys_addr_v6
+>   target/arm: Add secure parameter to get_phys_addr_pmsav8
+>   target/arm: Add is_secure parameter to pmsav7_use_background_region
+>   target/arm: Add secure parameter to get_phys_addr_pmsav7
+>   target/arm: Add is_secure parameter to get_phys_addr_pmsav5
+
+I haven't looked at the second half of the patchset yet -- I'll
+come back to this after having worked through the rest of my
+to-review queue.
+
+thanks
+-- PMM

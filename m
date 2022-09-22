@@ -1,119 +1,99 @@
-Received: by 2002:a17:906:b088:0:0:0:0 with SMTP id x8csp230531ejy;
-        Thu, 22 Sep 2022 05:00:49 -0700 (PDT)
-X-Google-Smtp-Source: AMsMyM58wiuu9KZ8+kU8Eos6fcjEsSposY+V7G1eiMWk9rJj7Ocsxf0Y6dNYNnmpmFET776kfvbq
-X-Received: by 2002:a05:622a:15cd:b0:35c:c425:bcd7 with SMTP id d13-20020a05622a15cd00b0035cc425bcd7mr2375231qty.156.1663848049493;
-        Thu, 22 Sep 2022 05:00:49 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1663848049; cv=none;
+Received: by 2002:a17:906:b088:0:0:0:0 with SMTP id x8csp269105ejy;
+        Thu, 22 Sep 2022 06:02:34 -0700 (PDT)
+X-Google-Smtp-Source: AMsMyM6LSh3d6hRadb29RdUpWBM7Jn8wEGZ3m4qEAbA8OqX6mwhEM0XaZdinV1o1nJxOFZH/Nhgo
+X-Received: by 2002:a37:de14:0:b0:6bc:3cc0:cfe6 with SMTP id h20-20020a37de14000000b006bc3cc0cfe6mr1989810qkj.118.1663851753584;
+        Thu, 22 Sep 2022 06:02:33 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1663851753; cv=none;
         d=google.com; s=arc-20160816;
-        b=qTQ+DohJ7nCNI2qHDMxYpnIFxyMo+BVt4QTJDOUq+tTLhXchWcLNgt6DfaHzNOvdo3
-         nG3eJ9jrsw5koYEW5RoYuAmUAraLulgsf/NGVp9QYSBMMODxzQoSh8FGT+oaDLS5EnNj
-         vlMgF10011WNGy8u+jThSy/toMvZ6x8v3sRl6+v1y2k2WaWwEgdWJYkUQ7Ky2cPDEbHN
-         TbyRaJarBHGIXTizLOyjtIJvT6TN8qvCvxs+kxZO1V4hlnoC4E32Hn/fwnlmxgIzQBsW
-         XUiBxDLbLPBrbz3v2Iy77ovlGLBnbeNHseMYuCtVyAcDEk2gYfhx86cHmpHujDDo3RI6
-         4QZg==
+        b=qCUvQkv+I9mXrAsLr/xhuBxJ6hLfUcMi2Na+vm3JgQ5hFJMDq58w/e3cf3Ahy2bo8R
+         Roht2Im3pt4qwYqNwfN3jgp8kNZMlO1mBaEmqBor+Jda9w3epfH1xJdLs3hPwMmuhzPn
+         mzJqxV3XRXkTWq520f+jEqoUtDOOT9cB1Jl2U569GAXV/332gnGa74TjL8lwzPddr/MZ
+         0wc4QcDmhtCUDpbV2pJwO9MGEeNHQDi6zGN3qXV2UTXpQOZHeo6rsdlaQr3+vBzCGk3H
+         kwARzdIA3EpscU2+dj/hvlOMHW+4AYD0JGlqCwfV9TSI3S+8RrofTD5NOjtnInWfBokN
+         33eg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:in-reply-to
-         :content-transfer-encoding:content-disposition:mime-version
-         :references:message-id:subject:cc:to:from:date:dkim-signature;
-        bh=fo1pguXh35GJwhNNLgr8GCOVMf6DDqTSk5GZgvqY2vc=;
-        b=w6OikM6PPvCpXpx7YbpDDJibBJImbj7V/p3AC7wU0glBGygb4Lc0s0zHJZxn3Wmd1l
-         LEZLTv+3QMEbPcf4DZoPyi5XsSzqjUXNpWYmKEMgXsVU1Xgmd4YB2bUx9pW+BpAF1fqZ
-         acvZfRGuDZqjVa5w5mVuZ1FBjyKWQ0YxUygdTgsuVh9nQ7XSHL+1NdfvE0fwnmKm3M84
-         6hxZ5Nnv7Bx7m2ovjnxcvIneiGIDDK1B5KgFME6bjtFV8LuZ19W5ZKgjFEIQyI7fWSJN
-         Q4h0QvLkvJIh71yMSCGoriOagDL+2FKZyKZew5j0P0smJdG57c6IL5TspdczSlv73+0z
-         92sA==
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=0q9R07i5Sf4SavsDCISXjgvDiaafwv+KXh2/V0r/Qi4=;
+        b=TRbK+jRaSPnUGRbEiQw6iNhiv5Q+xd21d69Y+88xWHlDcUinUaknndhPHSaCU6tuMJ
+         HRKD7gQiy0Nsl/hZ3hd2uqqHR/UdDJg+n7mwjSU6jTHZ+f0/+/xTVhFToreworIyBlDe
+         elkA3gguQPk4fJ58wb0ci7ZgiZ6CyqW/uiEhricL43fU/yy7MPC3U5Rw/x8bD4ZrlIKc
+         VhkfFOonS1/YaKLMUlfICkNpWXcWiL7YBh3HfI/kBFhlwr708Ivjj2FvLMr+GQ9hyyH7
+         HzYGB+Dok3qZ2A/wWpEIIdPd8nmGXxFK7vmmCqYR9iFLRseIVAbMaTLLbUR0005rhCbO
+         3YlQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@ventanamicro.com header.s=google header.b=b+lpv+RJ;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@linaro.org header.s=google header.b=TZCZRhaJ;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id bk34-20020a05620a1a2200b006ce1c482c6dsi3052854qkb.758.2022.09.22.05.00.49
+        by mx.google.com with ESMTPS id bt5-20020ac86905000000b00342fb840c7bsi3125000qtb.99.2022.09.22.06.02.33
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 22 Sep 2022 05:00:49 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 22 Sep 2022 06:02:33 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@ventanamicro.com header.s=google header.b=b+lpv+RJ;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:56382 helo=lists1p.gnu.org)
+       dkim=pass header.i=@linaro.org header.s=google header.b=TZCZRhaJ;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:41962 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1obKsq-0006xk-TU
-	for alex.bennee@linaro.org; Thu, 22 Sep 2022 08:00:48 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44330)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1obLqb-0004Wj-1C
+	for alex.bennee@linaro.org; Thu, 22 Sep 2022 09:02:33 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38702)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <sunilvl@ventanamicro.com>)
- id 1obKOK-0004sl-S8
- for qemu-arm@nongnu.org; Thu, 22 Sep 2022 07:29:16 -0400
-Received: from mail-pg1-x531.google.com ([2607:f8b0:4864:20::531]:42979)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1obLRF-0003yA-IX
+ for qemu-devel@nongnu.org; Thu, 22 Sep 2022 08:36:24 -0400
+Received: from mail-ej1-x629.google.com ([2a00:1450:4864:20::629]:45917)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <sunilvl@ventanamicro.com>)
- id 1obKOH-0005ro-AB
- for qemu-arm@nongnu.org; Thu, 22 Sep 2022 07:29:15 -0400
-Received: by mail-pg1-x531.google.com with SMTP id t190so8831347pgd.9
- for <qemu-arm@nongnu.org>; Thu, 22 Sep 2022 04:29:12 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=ventanamicro.com; s=google;
- h=in-reply-to:content-transfer-encoding:content-disposition
- :mime-version:references:message-id:subject:cc:to:from:date:from:to
- :cc:subject:date;
- bh=fo1pguXh35GJwhNNLgr8GCOVMf6DDqTSk5GZgvqY2vc=;
- b=b+lpv+RJFA2TNM1Oen1FGhdlyeRW3Be8+C1Mw0KR6DmzfXoVUyHWPcBwYmQhlNZ+ys
- ZQCp5HbsN4Tg5wu97qvSVdXWmPnJEa0vAW8yoWedbkr3W8pB7H73DMvB4MP+mKQKLGfV
- hI0AEC2ATJJPRmIC8voa3Uh4As2XwCsetjY7GAUZQe5TI+sl0pocTWxRJn+Zaujt3dEI
- wyWAPavI8HJTEo5L/wXQeMLr/iDvXwSINraRBpHkuNy/ISU8GLUawxd2MaxJC3Y4tMaG
- xUqrTMyE3/5/ktGPjfmyxJ3Vjz32qJlMhxv/32eQcKOzufMxDbqykr59nHqEKoUhMhQM
- nr1Q==
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1obLRB-000601-Ax
+ for qemu-devel@nongnu.org; Thu, 22 Sep 2022 08:36:21 -0400
+Received: by mail-ej1-x629.google.com with SMTP id dv25so20616980ejb.12
+ for <qemu-devel@nongnu.org>; Thu, 22 Sep 2022 05:35:21 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date;
+ bh=0q9R07i5Sf4SavsDCISXjgvDiaafwv+KXh2/V0r/Qi4=;
+ b=TZCZRhaJCdKJSfGq8K2G/GgQoX1ITX0BMrfal5a7EfzuTdPkT0krxPqg90SYWk5DtX
+ Jz2Fvo5blFnSNPJNJYJGl3dCJ48j5vzTbllPLeGEwuv1lYXFskj2Pk7DQfcfWDkw6COw
+ 21KQh8j8RAoq1wIagfTuAuZYD0LVoU6g1vO5UJIU04ND0F2aozi04AiyTvnoNSbu8WNj
+ R7MeFCVLYJfdvjWu4mZVps4GxCR/YRs63J7ZHGmSmfQJ/Gqc+X5MqViJ3uf/mE71j4Tr
+ 7/iQYcbnTzxznyU8EUY53XvwUGagwKFiwIuG+DHMneu5lvt/LDlMVh66k6ryU5DI6OtN
+ fWNA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=in-reply-to:content-transfer-encoding:content-disposition
- :mime-version:references:message-id:subject:cc:to:from:date
- :x-gm-message-state:from:to:cc:subject:date;
- bh=fo1pguXh35GJwhNNLgr8GCOVMf6DDqTSk5GZgvqY2vc=;
- b=qsHaWQ3Sv8zbAWnDxXt7/laq/pP7oEyFw2sdL6ccMS7Pmetqi/XpsvctNLhPml62Op
- 1R9WmYwFZ9BTRyAaPDfYrcnMeZDUNfSBc6zxe9XVOP9jK3MC38i9qmpCdSKzPYaizFhK
- IwVBUgfmqvo6YBqNjTr2Ej8SP8H5NlHO6ADGVtYGi4ireTyG9qo9HOpid3515S/mxGpE
- zXftMbwUxovNOJ7s0mwbHHCGVvKRvta4UqcW6vti3ax4eVlrEnUyfa76SWWtiW6h1B1g
- kFs+PHiPqmZCH8TMDLKQxybIjX2n3rjp6ZjzWnKK0Y6TfeEJDg9TaxN+m5MbevZoXP1s
- E0gA==
-X-Gm-Message-State: ACrzQf2D/K2RzSBECVReHqqLJfrEGQ5armTU+zctjwtLnknEHIwwsR0P
- 5KGLzDuU3EFPI/zZ5Yvr4rHHPA==
-X-Received: by 2002:a63:88c8:0:b0:439:494d:fd10 with SMTP id
- l191-20020a6388c8000000b00439494dfd10mr2596274pgd.201.1663846143666; 
- Thu, 22 Sep 2022 04:29:03 -0700 (PDT)
-Received: from sunil-laptop ([49.206.11.215]) by smtp.gmail.com with ESMTPSA id
- k18-20020aa79732000000b00545832dd969sm4213443pfg.145.2022.09.22.04.28.58
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 22 Sep 2022 04:29:03 -0700 (PDT)
-Date: Thu, 22 Sep 2022 16:58:54 +0530
-From: Sunil V L <sunilvl@ventanamicro.com>
-To: gaosong <gaosong@loongson.cn>, Peter Maydell <peter.maydell@linaro.org>
-Cc: Alistair Francis <alistair23@gmail.com>, qemu-arm <qemu-arm@nongnu.org>,
- "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
- "open list:RISC-V" <qemu-riscv@nongnu.org>,
- Xiaojuan Yang <yangxiaojuan@loongson.cn>,
- Gerd Hoffmann <kraxel@redhat.com>, Palmer Dabbelt <palmer@dabbelt.com>,
- Alistair Francis <alistair.francis@wdc.com>,
- Bin Meng <bin.meng@windriver.com>, Andrew Jones <ajones@ventanamicro.com>,
- Anup Patel <apatel@ventanamicro.com>,
- Atish Kumar Patra <atishp@rivosinc.com>,
- Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-Subject: Re: [PATCH V4 1/3] hw/arm, loongarch: Move load_image_to_fw_cfg() to
- common location
-Message-ID: <YyxG9qmImWgcT0tI@sunil-laptop>
-References: <20220906090219.412517-1-sunilvl@ventanamicro.com>
- <20220906090219.412517-2-sunilvl@ventanamicro.com>
- <CAKmqyKOZSaE9CYGmYSKOEnkQkGDUkchut+i2mQjcZLSVx-qWag@mail.gmail.com>
- <YyMTpMuQ0UP9Mqaz@sunil-laptop>
- <2ecd4eff-d0a4-a140-5dd5-b4de89040189@loongson.cn>
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date;
+ bh=0q9R07i5Sf4SavsDCISXjgvDiaafwv+KXh2/V0r/Qi4=;
+ b=mGTw7vNLKH3Em9Ppev58eXqAiQ4RvHlM8qqjz4tvZ0pmDQmK3qvHgeO69UzN17cxwH
+ YB9uiaBuwQgj/mdC5JmXpaiLPpboXd/lpJk33oTT9PLH1GQGkJFmztREdHrhFU8tvg5b
+ HCYRyfNaHWAW+JdBWIl6xiNx/8zxeGIRCwAm+x6eN9SoUf/AOhQUNKG8KZixOEJTazve
+ rQIm1Kdyuk0nN274BbK5ziqD0eBQFxsA6W4bCuc5HvViNnuv/mxkDEo/BYo/bHJZ9k+o
+ 1Ueh4buT6YNcfAb40SQYdg1t+ZjV7gEsCoVXhZSXZUw5E3ppUwJXZJ5+NoHX1Zx62AX2
+ YU/w==
+X-Gm-Message-State: ACrzQf3DTlXZoJQ50gqndRtSf/OB316RvurRTahYRc5n8hEl+GKMq+uP
+ dKaBTxQd4ZaaS/bvXngcyTkoBcPtIfglKXmG+nBIbg==
+X-Received: by 2002:a17:907:2bd5:b0:76f:591c:466b with SMTP id
+ gv21-20020a1709072bd500b0076f591c466bmr2531275ejc.504.1663850120272; Thu, 22
+ Sep 2022 05:35:20 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <2ecd4eff-d0a4-a140-5dd5-b4de89040189@loongson.cn>
-Received-SPF: pass client-ip=2607:f8b0:4864:20::531;
- envelope-from=sunilvl@ventanamicro.com; helo=mail-pg1-x531.google.com
+References: <20220921234646.949273-1-venture@google.com>
+In-Reply-To: <20220921234646.949273-1-venture@google.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 22 Sep 2022 13:35:09 +0100
+Message-ID: <CAFEAcA8f+JA4WKMwGFNxg7tRxTwL=RzDLgdJLrP8Dw_jB4XoRA@mail.gmail.com>
+Subject: Re: [PATCH] hw/net: npcm7xx_emc: set MAC in register space
+To: Patrick Venture <venture@google.com>
+Cc: hskinnemoen@google.com, kfting@nuvoton.com, qemu-arm@nongnu.org, 
+ qemu-devel@nongnu.org, Hao Wu <wuhaotsh@google.com>, 
+ Jason Wang <jasowang@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::629;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ej1-x629.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -122,52 +102,66 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: mLiKfIIBZELW
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: ZZh3PNsfLaN+
 
-On Thu, Sep 15, 2022 at 08:56:01PM +0800, gaosong wrote:
-> 
-> 在 2022/9/15 下午7:59, Sunil V L 写道:
-> > Hi,
-> > 
-> > Could maintainers of hw/arm and hw/loongarch to take a look at this? I
-> > have addressed Peter's earlier comment.
-> > 
-> > Thanks
-> > Sunil
-> > 
-> > On Thu, Sep 08, 2022 at 11:17:52AM +0200, Alistair Francis wrote:
-> > > On Tue, Sep 6, 2022 at 11:38 AM Sunil V L <sunilvl@ventanamicro.com> wrote:
-> > > > load_image_to_fw_cfg() is duplicated by both arm and loongarch. The same
-> > > > function will be required by riscv too. So, it's time to refactor and
-> > > > move this function to a common path.
-> > > > 
-> > > > Signed-off-by: Sunil V L <sunilvl@ventanamicro.com>
-> > > > Reviewed-by: Andrew Jones <ajones@ventanamicro.com>
-> > > Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
-> > > 
-> > > Alistair
-> Reviewed-by: Song Gao <gaosong@loongson.cn>
-> 
-> Thanks
-> Song Gao
-Thanks Song Gao.
+On Thu, 22 Sept 2022 at 00:47, Patrick Venture <venture@google.com> wrote:
+>
+> The MAC address set from Qemu wasn't being saved into the register space.
+>
+> Reviewed-by: Hao Wu <wuhaotsh@google.com>
+> Signed-off-by: Patrick Venture <venture@google.com>
 
-Hi Peter,
+> @@ -112,6 +115,18 @@ static void emc_reset(NPCM7xxEMCState *emc)
+>
+>      emc->tx_active = false;
+>      emc->rx_active = false;
+> +
+> +    /* Set the MAC address in the register space. */
+> +    uint32_t value = (emc->conf.macaddr.a[0] << 24) |
+> +        (emc->conf.macaddr.a[1] << 16) |
+> +        (emc->conf.macaddr.a[2] << 8) |
+> +        emc->conf.macaddr.a[3];
+> +    npcm7xx_emc_write(emc, REG_CAMM_BASE * sizeof(uint32_t), value,
+> +                      sizeof(uint32_t));
+> +
+> +    value = (emc->conf.macaddr.a[4] << 24) | (emc->conf.macaddr.a[5] << 16);
+> +    npcm7xx_emc_write(emc, REG_CAML_BASE * sizeof(uint32_t), value,
+> +                      sizeof(uint32_t));
 
-Could you please provide RB or ACK if things are fine with this patch?
+If I understand correctly, the issue here is that emc->regs[REG_CAMM_BASE]
+and emc->regs[REG_CAML_BASE] aren't being reset correctly. If so,
+I think the better approach is to simply reset them here, without
+going through the register-write function, the same way we already
+do for the handful of other registers which have non-zero reset values.
+That's the way other devices seem to do it.
 
-Thanks
-Sunil
+A question to which I don't know the answer: if the guest writes to
+the device to change the MAC address, should that persist across
+reset, or should reset revert the device to the original MAC address
+as specified by the user on the command line or whatever ? At the
+moment you have the former behaviour (and end up storing the MAC
+address in two places as a result -- it would be neater to either
+keep it in only one place, or else have emc->regs[] be the current
+programmed MAC address and emc->conf.macaddr the value to reset to).
+
+I'm not sure we're consistent between device models about that,
+eg the e1000 seems to reset to the initial MAC addr, but the
+imx_fec keeps the guest-set value over resets. Jason, is there
+a recommended "right way" to handle guest-programmable MAC addresses
+over device reset ?
+
+thanks
+-- PMM

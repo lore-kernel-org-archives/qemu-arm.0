@@ -1,105 +1,112 @@
-Received: by 2002:a17:906:b088:0:0:0:0 with SMTP id x8csp360289ejy;
-        Thu, 22 Sep 2022 08:18:15 -0700 (PDT)
-X-Google-Smtp-Source: AMsMyM6I1nxy05awYlasmnktmnOaZTfeYfZePpBRZ/ayM9e1LsO0q4uOdd1qTyuwKmM+89vQHN+F
-X-Received: by 2002:a05:620a:2901:b0:6ce:179c:d875 with SMTP id m1-20020a05620a290100b006ce179cd875mr2605811qkp.484.1663859895245;
-        Thu, 22 Sep 2022 08:18:15 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1663859895; cv=none;
+Received: by 2002:a17:906:b088:0:0:0:0 with SMTP id x8csp431791ejy;
+        Thu, 22 Sep 2022 10:10:30 -0700 (PDT)
+X-Google-Smtp-Source: AMsMyM4yJlfdL+1qvDEKgojW5d6VtDi8LtoJFMPfAdbFv840l39yDxvWRPygugSeALNXO04OA98a
+X-Received: by 2002:ac8:5fca:0:b0:35c:d2a:3d8a with SMTP id k10-20020ac85fca000000b0035c0d2a3d8amr3844838qta.460.1663866630337;
+        Thu, 22 Sep 2022 10:10:30 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1663866630; cv=none;
         d=google.com; s=arc-20160816;
-        b=up8/gNwX/t5Nl1+o2KA5pI5y3jZ2dQgn8OloEQvzUCDTvME05jBBK5CdJp+7W4zkgd
-         weG981eTRKueOxV1sBM6JEPqwDhzR6/jdkIkzpxQBug/OY2HAQQeL5CdM9Ay5kGNLTL4
-         BRaXHT8JreOxCRiXHMFrqkN4New2aXrgDoCu6WEH3g8gzdy+4jq6o65ajcJyvouzywyW
-         gkWNsm9V7DkTo2iJ1GNOhT04gg9tySgAPcEtTl10IJQuK7wjNrlljubQZ6jDFaMV5WYA
-         oGc+NZnVXpeIEDaL6fUAej0wrGYFoJ7xU08OJGcXp3Y0Lhg8xhiYi8eVvT5vvZ4fLlJm
-         Z32g==
+        b=HPF/3hdi6n928aXNqL+pe8CGLdNkMKYbYS2GbaPpzsTPcqtcVv4MIxFpyv4TSlGoTv
+         wxEmn1wmrUMlGNKAbiKCs3N9i9r/cXXamOhkkHSFw8MlYLhFGrEQ7iwqfWTh/ClfSeRQ
+         CERueBP9pOeTiCb2f23B/ztPrqvn7dce6Kj8+wQ+4G/gqNsz7LZ6am8oTClLGAbifpZ+
+         x40VsFNn/5wCPUzEa1lBE664HyrGQAlhH7jNgkuIXTYSFRbPPTDGBZyPFGf/w5zOlvwb
+         xIioylimn0iLGM4DxrLZ4xY3k3QFXbSBXipZjczePacHqREx9WzBMHVwaKBmfnv0BdPN
+         oT8g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=S725K98OzQFCUMlv+k7k4O0y+oy8C1IfAcPjFjp9wr0=;
-        b=prdP9qDWtpd+rEbSa3Kkdswy5DXDfKVsqI/K0waMwoIm1rLrCaKkmx91GV56+VlnLI
-         6GML0T4UlPbfkDu0e4tEUacMYSDOm1IszF7aMZQQJa3HLuQt+DdqyhGoXOSdN1y1HXUN
-         XYLDegxq0L9LJ8jKzVDAG5B6VUI5+yfHK4nppG3piUOO2uhRaVz/AnYIuN8jK7Er/jkQ
-         E6SQ3ASziMw3r8/ESji4/QFIn4pVk40S9KrvqgEWlG18vXsCKMknYlVBfeN7jyJYHy3c
-         QePuRVK+8I3YirsNBburhiXd5sI5j/fyYuatujmQjODa5mFLHcVzVnO5OIo56iN6vM4r
-         fehw==
+         :list-unsubscribe:list-id:precedence:message-id:content-disposition
+         :content-transfer-encoding:mime-version:in-reply-to:references:cc
+         :user-agent:date:subject:to:from:dkim-signature;
+        bh=ytavGIk2vUrDag3f1RUiXx3JEyloTlyJk99yARd8hXU=;
+        b=i6fPZo6z4aXjzqD2JJvikOK9FZ4WALMYWG1OrOm+4ZQLydWKr6JzOlyQFWHSoDDTBA
+         m0sPtzZjZzoz3VlQnS6edJYhsFTCdprgNLYU7FBfqx0YKGvlXY3Z9ZKEjRTJ5R0YnAgc
+         BhKQJAs2pn+oJSAbxI+F4oDG7+NWN3hOy9pHepOyoP6F40IF3o6VE4m3sPqRzP4fCFyH
+         xCJfYWJeK+TGDi/IFNSk1O9C8Gegs3eWSNDAatACfVOmOYqiCvlgv1ZPn0E9HK9IlB4C
+         GE6BnuxDVzILCkOWfBJ4e16oObCplKsXdgfvbhL7iQMjnLMUQy8FIpWZ9U0jOq140hZF
+         ysVA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=CBAcxAgb;
+       dkim=pass header.i=@cmp.felk.cvut.cz header.s=felkmail header.b=qUgPQJxB;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=cmp.felk.cvut.cz
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 21-20020ac856f5000000b00342fcd102fbsi3004957qtu.166.2022.09.22.08.18.15
+        by mx.google.com with ESMTPS id l16-20020a05622a175000b0031ed3da91d1si3477204qtk.443.2022.09.22.10.10.30
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 22 Sep 2022 08:18:15 -0700 (PDT)
+        Thu, 22 Sep 2022 10:10:30 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=CBAcxAgb;
+       dkim=pass header.i=@cmp.felk.cvut.cz header.s=felkmail header.b=qUgPQJxB;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:37820 helo=lists1p.gnu.org)
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=cmp.felk.cvut.cz
+Received: from localhost ([::1]:57524 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1obNxt-00067D-VL
-	for alex.bennee@linaro.org; Thu, 22 Sep 2022 11:18:14 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46282)
+	id 1obPiW-00046z-E0
+	for alex.bennee@linaro.org; Thu, 22 Sep 2022 13:10:29 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:50840)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1obMs3-00052M-Np
- for qemu-devel@nongnu.org; Thu, 22 Sep 2022 10:08:08 -0400
-Received: from mail-ed1-x52c.google.com ([2a00:1450:4864:20::52c]:38905)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1obMs2-0000uN-2s
- for qemu-devel@nongnu.org; Thu, 22 Sep 2022 10:08:07 -0400
-Received: by mail-ed1-x52c.google.com with SMTP id e17so13779555edc.5
- for <qemu-devel@nongnu.org>; Thu, 22 Sep 2022 07:08:05 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date;
- bh=S725K98OzQFCUMlv+k7k4O0y+oy8C1IfAcPjFjp9wr0=;
- b=CBAcxAgbLqzmV1JDFIXgNuqZBwBsledWUh243lN9dXq7qyZe6I6KdGMcQWrWJ86Dqn
- y6ZNsyazxHEWoKMmo1jhcmxW/i85lJsaZT+Fg+5j7Fr911dfLJHPZTsqzBvSkUZLbT1X
- +jBY0pfrJZ+GMIFAA0nkgesDoE78S/E7kAXQ09lfsvp7Ttgq91n+XRZt1K/ebzJ+VKEp
- o8fbRhJqffTSakrG0d+V7PMaxWnzqTYC7h2Q3X5em45KFSouOv/wv3IaPjsovk97LSWG
- 6kNjfR5xPwJmLxRTHtPJHMnLEWJKcdi5g3VdGVPBApCoie3UJcpIkVbRhj1dh7xDFrGv
- 7QhQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date;
- bh=S725K98OzQFCUMlv+k7k4O0y+oy8C1IfAcPjFjp9wr0=;
- b=aVN6A6onqLi/f257eKhJhglUB8/Gg4PTcS5erkLySkqqXCSkgb3F5q/w0JdV4Mmc8d
- sLeys9uf8K5he9SqedRkbW/qd9U1Qvjym41W4JTuXDHKp9q28WB32FZkG4dyYJrX83gM
- UwLfv6/hKoVji+IdqsfHGM1uyNtepypeC/k8JRTqX3CgjGB250BBycHYZAmolUhE01te
- UTw4wPnyUV+69+21cQ7IOM3FgplcU2T9jRzqRrQGAh3+StDdujszYG16l68VUmW8BrGJ
- 63Vxx6NUVzRNcYj4jTvgZmu72nrzrRAk+TTqC4NUF/oPDYNAPnhOeoAudHv6dMtcv8jj
- 0C/Q==
-X-Gm-Message-State: ACrzQf08GLMiTytWGg5nNSzaNhE2usWbhMpza40nhjmUwCJYHGVhoDOe
- CnnGXkTO6ZqAZILOaNzg8iiZPjwllKLqRpU+kk/01g==
-X-Received: by 2002:a05:6402:516f:b0:44e:9151:d54b with SMTP id
- d15-20020a056402516f00b0044e9151d54bmr3538791ede.241.1663855684051; Thu, 22
- Sep 2022 07:08:04 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <pisa@cmp.felk.cvut.cz>)
+ id 1obP3r-00037t-Up; Thu, 22 Sep 2022 12:28:28 -0400
+Received: from mailgw.felk.cvut.cz ([147.32.82.15]:60726)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <pisa@cmp.felk.cvut.cz>)
+ id 1obP3W-00076T-Ij; Thu, 22 Sep 2022 12:28:10 -0400
+Received: from mailgw.felk.cvut.cz (localhost.localdomain [127.0.0.1])
+ by mailgw.felk.cvut.cz (Proxmox) with ESMTP id 218A630B295D;
+ Thu, 22 Sep 2022 18:27:25 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+ cmp.felk.cvut.cz; h=cc:cc:content-transfer-encoding:content-type
+ :content-type:date:from:from:in-reply-to:message-id:mime-version
+ :references:reply-to:subject:subject:to:to; s=felkmail; bh=ytavG
+ Ik2vUrDag3f1RUiXx3JEyloTlyJk99yARd8hXU=; b=qUgPQJxBI9wgFGAxtmTew
+ 8yS0uJaHY4wRjEGYgrFeLGMW2B2S/GjNuSX2vBo1eAkluQkcj6vGwZPrhD5ac8IU
+ EwRFcl5vHIDwoEB7Km28X18CzQx1VslNcK2rL4wJdelcXTOaaBcmvY6jeg7Xmb56
+ 0hCP04v5jwwxeaEhPWPkrgS3qmnseuyeNzwmiq9FFFmVBG5a2/d2H8wZyBM5T23t
+ ZUDzC+v2SWnYtEnLXtlzvmrPj6SR9uE9QqaYf7qbp4vlzzV7lPPwyx2zPiV3Swdd
+ 8xou46VAEGWbzxRgrUDNS6KGRz+4La9HEZnqqeBB9O9f81OHEj7C/Cqz11KVg5gB
+ A==
+Received: from cmp.felk.cvut.cz (haar.felk.cvut.cz [147.32.84.19])
+ by mailgw.felk.cvut.cz (Proxmox) with ESMTPS id B5EB730AE005;
+ Thu, 22 Sep 2022 18:27:21 +0200 (CEST)
+Received: from haar.felk.cvut.cz (localhost [127.0.0.1])
+ by cmp.felk.cvut.cz (8.14.0/8.12.3/SuSE Linux 0.6) with ESMTP id
+ 28MGRLg9011775; Thu, 22 Sep 2022 18:27:21 +0200
+Received: (from pisa@localhost)
+ by haar.felk.cvut.cz (8.14.0/8.13.7/Submit) id 28MGRLnw011774;
+ Thu, 22 Sep 2022 18:27:21 +0200
+X-Authentication-Warning: haar.felk.cvut.cz: pisa set sender to
+ pisa@cmp.felk.cvut.cz using -f
+From: Pavel Pisa <pisa@cmp.felk.cvut.cz>
+To: Peter Maydell <peter.maydell@linaro.org>
+Subject: Re: [QEMU][PATCH 2/5] hw/net/can: Introduce Xilinx Versal CANFD
+ controller
+Date: Thu, 22 Sep 2022 18:27:09 +0200
+User-Agent: KMail/1.9.10
+Cc: Vikram Garhwal <vikram.garhwal@amd.com>, qemu-devel@nongnu.org,
+ edgar.iglesias@amd.com, francisco.iglesias@amd.com,
+ Vikram Garhwal <fnu.vikram@xilinx.com>, Jason Wang <jasowang@redhat.com>,
+ Alistair Francis <alistair@alistair23.me>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ "open list:Xilinx ZynqMP and..." <qemu-arm@nongnu.org>
+References: <20220910061252.2614-1-vikram.garhwal@amd.com>
+ <20220910061252.2614-2-vikram.garhwal@amd.com>
+ <CAFEAcA9=O6yPo9RdFWgq6eJZ=7vX4bQFuaoV6y+JCoM-=+TSTg@mail.gmail.com>
+In-Reply-To: <CAFEAcA9=O6yPo9RdFWgq6eJZ=7vX4bQFuaoV6y+JCoM-=+TSTg@mail.gmail.com>
+X-KMail-QuotePrefix: > 
 MIME-Version: 1.0
-References: <20220906100528.343244-1-richard.henderson@linaro.org>
- <20220906100528.343244-10-richard.henderson@linaro.org>
-In-Reply-To: <20220906100528.343244-10-richard.henderson@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 22 Sep 2022 15:07:53 +0100
-Message-ID: <CAFEAcA-jUebgHHpShKWaR48ctfYBfpFgAkGPbxbp=13gNR=U8g@mail.gmail.com>
-Subject: Re: [PATCH v4 9/9] target/arm: Enable TARGET_TB_PCREL
-To: Richard Henderson <richard.henderson@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::52c;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x52c.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+Content-Type: Text/Plain;
+  charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+Message-Id: <202209221827.09886.pisa@cmp.felk.cvut.cz>
+Received-SPF: none client-ip=147.32.82.15; envelope-from=pisa@cmp.felk.cvut.cz;
+ helo=mailgw.felk.cvut.cz
+X-Spam_score_int: -38
+X-Spam_score: -3.9
+X-Spam_bar: ---
+X-Spam_report: (-3.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, NICE_REPLY_A=-1.893, SPF_HELO_NONE=0.001,
+ SPF_NONE=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -114,79 +121,61 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: /JnMhVlSVG8F
+X-TUID: 23J7eIzgG3vg
 
-On Tue, 6 Sept 2022 at 11:31, Richard Henderson
-<richard.henderson@linaro.org> wrote:
+Hello Peter,
+
+thanks for the review and Vikram for his work, I do not know
+much about Xilinx emulation nor Xilixn CAN controllers so I cannot
+comment much on this part.
+
+On Thursday 22 of September 2022 16:46:48 Peter Maydell wrote:
+> On Sat, 10 Sept 2022 at 07:13, Vikram Garhwal <vikram.garhwal@amd.com> > > To create virtual CAN on the host machine, please check the QEMU CAN
+> > docs: https://github.com/qemu/qemu/blob/master/docs/can.txt
 >
-> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
-> ---
->  target/arm/cpu-param.h     |  2 ++
->  target/arm/translate.h     |  6 ++++
->  target/arm/cpu.c           | 23 +++++++-------
->  target/arm/translate-a64.c | 37 ++++++++++++++++++-----
->  target/arm/translate.c     | 62 ++++++++++++++++++++++++++++++--------
->  5 files changed, 100 insertions(+), 30 deletions(-)
->
-> diff --git a/target/arm/cpu-param.h b/target/arm/cpu-param.h
-> index 68ffb12427..ef62371d8f 100644
-> --- a/target/arm/cpu-param.h
-> +++ b/target/arm/cpu-param.h
-> @@ -34,4 +34,6 @@
->
->  #define NB_MMU_MODES 15
->
-> +#define TARGET_TB_PCREL 1
-> +
->  #endif
-> diff --git a/target/arm/translate.h b/target/arm/translate.h
-> index d42059aa1d..7717ea3f45 100644
-> --- a/target/arm/translate.h
-> +++ b/target/arm/translate.h
-> @@ -12,6 +12,12 @@ typedef struct DisasContext {
->
->      /* The address of the current instruction being translated. */
->      target_ulong pc_curr;
-> +    /*
-> +     * For TARGET_TB_PCREL, the value relative to pc_curr against which
-> +     * offsets must be computed for cpu_pc.  -1 if unknown due to jump.
-> +     */
+> That link is a 404. You could just give the relative path to the
+> docs in the repo, which is docs/system/devices/can.rst
 
-I'm not really sure what this comment is trying to tell me. Could
-you expand it a bit ?
+The actual generated documentation is located at
 
-> +    target_ulong pc_save;
-> +    target_ulong pc_cond_save;
->      target_ulong page_start;
->      uint32_t insn;
->      /* Nonzero if this instruction has been conditionally skipped.  */
-> diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-> index 047bf3f4ab..f5e74b6c3b 100644
-> --- a/target/arm/cpu.c
-> +++ b/target/arm/cpu.c
-> @@ -64,17 +64,18 @@ static void arm_cpu_set_pc(CPUState *cs, vaddr value)
->  void arm_cpu_synchronize_from_tb(CPUState *cs,
->                                   const TranslationBlock *tb)
->  {
-> -    ARMCPU *cpu = ARM_CPU(cs);
-> -    CPUARMState *env = &cpu->env;
-> -
-> -    /*
-> -     * It's OK to look at env for the current mode here, because it's
-> -     * never possible for an AArch64 TB to chain to an AArch32 TB.
-> -     */
-> -    if (is_a64(env)) {
-> -        env->pc = tb_pc(tb);
-> -    } else {
-> -        env->regs[15] = tb_pc(tb);
-> +    /* The program counter is always up to date with TARGET_TB_PCREL. */
+  https://www.qemu.org/docs/master/system/devices/can.html
 
-Is it?
+I think that that URL is stable for some time... Could it
+be used directly in source to provide path to formated version?
 
-Is there some documentation in one of the other patchsets about
-how TARGET_TB_PCREL works in general and what targets need to do to
-support it?
+> For the machine specifics, you should include (either in the patch 4
+> where you add this to the xlnx-versal-virt board, or in a separate patch
+> if it seems too big) updates to docs/system/arm/xlnx-versal-virt.rst
+> which document the new functionality, including, if it's useful to users,
+> some documentation of how to use it.
 
+Some short example how to use emulation even with Xilinx Zynq and Ultra Scale
+would be nice if added into the document. If the document length expands
+too much, then probably division into individual documents per controllers
+would be nice.
 
-thanks
--- PMM
+By the way, CAN in Automation publishes our overview article about our CAN
+activities including some short netion of QEMU integration
+
+  https://can-newsletter.org/uploads/media/raw/a9abe317ae034be55d99fee4410ad70e.pdf   
+
+I hope I wind some time for CAN in QEMU, RTEMS and Linux ongoing projects,
+but I need to finish some promissed project for ESA the first.
+
+Best wishes,
+
+                Pavel
+-- 
+                Pavel Pisa
+    phone:      +420 603531357
+    e-mail:     pisa@cmp.felk.cvut.cz
+    Department of Control Engineering FEE CVUT
+    Karlovo namesti 13, 121 35, Prague 2
+    university: http://control.fel.cvut.cz/
+    personal:   http://cmp.felk.cvut.cz/~pisa
+    projects:   https://www.openhub.net/accounts/ppisa
+    CAN related:http://canbus.pages.fel.cvut.cz/
+    RISC-V education: https://comparch.edu.cvut.cz/
+    Open Technologies Research Education and Exchange Services
+    https://gitlab.fel.cvut.cz/otrees/org/-/wikis/home
+

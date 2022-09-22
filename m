@@ -1,143 +1,94 @@
-Received: by 2002:a17:906:b088:0:0:0:0 with SMTP id x8csp343467ejy;
-        Thu, 22 Sep 2022 07:56:13 -0700 (PDT)
-X-Google-Smtp-Source: AMsMyM6OFhUtNm8bh638LkWERNFGKKcDzruFsjPbK/IH83cbQYEhtRYYXzYE6efB8yMXoAQrc/Kw
-X-Received: by 2002:a05:620a:2702:b0:6ce:40d8:dd3c with SMTP id b2-20020a05620a270200b006ce40d8dd3cmr2375739qkp.277.1663858573037;
-        Thu, 22 Sep 2022 07:56:13 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1663858573; cv=none;
-        d=google.com; s=arc-20160816;
-        b=ijNVDB5Kg3MAu+D0SB+rgT8lxj+5i16G65Ce+AcBe0f/Mdh7k02vqAM1pXffp3OzSp
-         Z1HxTyiFTFqJEIordkTkcWJO9H/4o+EbOH+CzsFFXQF3n7tJsakTS5KRUd4l6czzxKHR
-         1W5plP/bfkRoQRXDfp3XCNuufL8x3R1SVgy/U7WRK2DcYqMXEAoV7dQQshvaCjNVs30n
-         MeETtSTlZGTZ3A+Rx1PtdUUoKTyxL74LoV9OTplOnHNEBXaW50tgYTUaBfAU9we3jlC0
-         9XkWheqjJPv6vZAMiZD3N/68Fv8/orvqo8oRedBrhH6G/U6zLrvbQbQofnGDYmzyDZf/
-         AOCA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=ZhvFjHz/+hATgwn6t9ulwtztyb1uIglXxu13conz6zI=;
-        b=FgWvcC6pAC8CCcLc01OyDa5ryBYInHneq04aNJ28w08HRI1NF712XBPGTwbrkaHIf+
-         2R8pYAZUv3tsbnaz6NmRs7BW6A6Ts+BWmc3VGR+yqbkX0DfyDjVpuAr5ZKk6sHqWUmnO
-         OCnuD5btmFYWG99vDc8xXuVvf+7v0/XQkXcQv2EV3uLDV1dvcZDDIlUIYgk6Wvg+CfgU
-         OPg0XUy5if9WExjBHQq466XaVmhYZFA0Fvs/uGKYyvULWSr0JgdfmbiZxcrTcpGmTkPi
-         wfOOhtKlqNPDP3TOU1uMUzOKg1qUdzqMS0WtDoI/LiIeRAwN+S5H7PdA8vObzQDHCok2
-         7lVg==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=bHCKSJyx;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id c21-20020ac81115000000b0035cdd756233si3006098qtj.39.2022.09.22.07.56.12
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 22 Sep 2022 07:56:13 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=bHCKSJyx;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:56178 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1obNca-0006bG-HS
-	for alex.bennee@linaro.org; Thu, 22 Sep 2022 10:56:12 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:50656)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1obMoZ-0001yE-Gg
- for qemu-arm@nongnu.org; Thu, 22 Sep 2022 10:04:31 -0400
-Received: from mail-ej1-x632.google.com ([2a00:1450:4864:20::632]:37502)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1obMoW-0005fB-T6
- for qemu-arm@nongnu.org; Thu, 22 Sep 2022 10:04:31 -0400
-Received: by mail-ej1-x632.google.com with SMTP id a26so21335279ejc.4
- for <qemu-arm@nongnu.org>; Thu, 22 Sep 2022 07:04:27 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date;
- bh=ZhvFjHz/+hATgwn6t9ulwtztyb1uIglXxu13conz6zI=;
- b=bHCKSJyxC5iHYVZOKvIux22U11TYGFKP3yZst3xiAv3dPkYwNvQ0Y1FBrT+Fbt4Ez9
- uhW/9iQeW4u6PGdYhW5/zjYELDT9SNetZE4NXY95nK2Gkbn+aT5RDqkofM8r0+NJz6XV
- RynjqHr1WxC6++zZV9Xm7W4i1yncfKZM0nZCifm+DEOGOAd8pp5psXMAHNav05bW1YvD
- QxAAB+Q5sf/u02VDJkY1SmjJmsMwC/zu6yGocjmVDS8HVlFlTKCctkZ2mGZzVoKEzzl7
- JwB1EurcP19EKoAeE5wybUZXSdwjTVXf7aXwKACD0pHMysPPTEdYH+zAF+qtxrtTrWan
- p2nw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date;
- bh=ZhvFjHz/+hATgwn6t9ulwtztyb1uIglXxu13conz6zI=;
- b=Afv2cbpEX7RKlo9w8276FtSZCA9ohNZAQW8lfzqyE/oEPvkC+6CQJUTQDZ7QpfjXT+
- TX/lZkq7cLUkLDL8+/a03iG2E1LkYNN0u6XKi4Va+h1gGm+HET/4oCnET72N+nOksQFR
- yVqGDwoXc8xXGHpAyNXxJY77HmKgqkRlL+TIylrULD4MjC2TxqxKMvAkBmU/11OPF7yg
- X8X8KAh7ZXwiq+Cs9o/mu5dAyhE6Yqin73Do7FqVUPBOaTlq/1ZOGCFjR2qkwMRNmg5q
- gC4LqV9RjMCgHw+j/W1VdSUcTqZhpfn4YsM6k9c02YC5GFHHlvhV2FMCYv0kIPqnLaVZ
- HzTQ==
-X-Gm-Message-State: ACrzQf3/TpSaRSfb7v8zohO1MovHbwuEKNYpjna9dIrg0R2WjBafouTS
- CBKPNgiG0kwoBrdo5E44OZc4j6Ba6nNGWCii5K1ebg==
-X-Received: by 2002:a17:906:8a6b:b0:780:ab37:b63 with SMTP id
- hy11-20020a1709068a6b00b00780ab370b63mr2894855ejc.365.1663855465112; Thu, 22
- Sep 2022 07:04:25 -0700 (PDT)
+Return-Path: <alex.bennee@linaro.org>
+Received: from zen.linaroharston ([185.81.254.11])
+        by smtp.gmail.com with ESMTPSA id r7-20020a5d52c7000000b0022acb7195aesm5424479wrv.33.2022.09.22.07.58.33
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 22 Sep 2022 07:58:35 -0700 (PDT)
+Received: from zen.lan (localhost [127.0.0.1])
+	by zen.linaroharston (Postfix) with ESMTP id B2B761FFBC;
+	Thu, 22 Sep 2022 15:58:32 +0100 (BST)
+From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: f4bug@amsat.org,
+	mads@ynddal.dk,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	qemu-arm@nongnu.org (open list:ARM cores)
+Subject: [PATCH  v1 4/9] hw/timer: convert mptimer access to attrs to derive cpu index
+Date: Thu, 22 Sep 2022 15:58:27 +0100
+Message-Id: <20220922145832.1934429-5-alex.bennee@linaro.org>
+X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20220922145832.1934429-1-alex.bennee@linaro.org>
+References: <20220922145832.1934429-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
-References: <20220906100528.343244-1-richard.henderson@linaro.org>
- <20220906100528.343244-4-richard.henderson@linaro.org>
-In-Reply-To: <20220906100528.343244-4-richard.henderson@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 22 Sep 2022 15:04:14 +0100
-Message-ID: <CAFEAcA_6+jsQfCvTxxUdmdcisMBSsvzKy_g5pdLq0DZ54VtFSg@mail.gmail.com>
-Subject: Re: [PATCH v4 3/9] target/arm: Change gen_*set_pc_im to gen_*update_pc
-To: Richard Henderson <richard.henderson@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::632;
- envelope-from=peter.maydell@linaro.org; helo=mail-ej1-x632.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: IjQUWnDTtvgj
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-TUID: mnyQ+V2cky5S
 
-On Tue, 6 Sept 2022 at 11:13, Richard Henderson
-<richard.henderson@linaro.org> wrote:
->
-> In preparation for TARGET_TB_PCREL, reduce reliance on
-> absolute values by passing in pc difference.
->
-> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
-> ---
+This removes the hacks to deal with empty current_cpu.
 
+Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 
+---
+v2
+  - update for new fields
+  - bool asserts
+---
+ hw/timer/arm_mptimer.c | 25 ++++++++++++++-----------
+ 1 file changed, 14 insertions(+), 11 deletions(-)
 
-> @@ -263,14 +263,14 @@ static inline int curr_insn_len(DisasContext *s)
->
->  #ifdef TARGET_AARCH64
->  void a64_translate_init(void);
-> -void gen_a64_set_pc_im(uint64_t val);
-> +void gen_a64_update_pc(DisasContext *s, int diff);
-
-AArch64 addresses are 64-bit, so there's no guarantee the diff
-between two of them will fit in an int... We pass pc values around
-as uint64_t, so I think we should pass diffs around in int64_t.
-
-
-thanks
--- PMM
+diff --git a/hw/timer/arm_mptimer.c b/hw/timer/arm_mptimer.c
+index cdfca3000b..b48536f6a3 100644
+--- a/hw/timer/arm_mptimer.c
++++ b/hw/timer/arm_mptimer.c
+@@ -41,9 +41,10 @@
+  * which is used in both the ARM11MPCore and Cortex-A9MP.
+  */
+ 
+-static inline int get_current_cpu(ARMMPTimerState *s)
++static inline int get_current_cpu(ARMMPTimerState *s, MemTxAttrs attrs)
+ {
+-    int cpu_id = current_cpu ? current_cpu->cpu_index : 0;
++    int cpu_id = attrs.cpu_index;
++    g_assert(attrs.requester_is_cpu);
+ 
+     if (cpu_id >= s->num_cpu) {
+         hw_error("arm_mptimer: num-cpu %d but this cpu is %d!\n",
+@@ -178,25 +179,27 @@ static void timerblock_write(void *opaque, hwaddr addr,
+ /* Wrapper functions to implement the "read timer/watchdog for
+  * the current CPU" memory regions.
+  */
+-static uint64_t arm_thistimer_read(void *opaque, hwaddr addr,
+-                                   unsigned size)
++static MemTxResult arm_thistimer_read(void *opaque, hwaddr addr, uint64_t *data,
++                                      unsigned size, MemTxAttrs attrs)
+ {
+     ARMMPTimerState *s = (ARMMPTimerState *)opaque;
+-    int id = get_current_cpu(s);
+-    return timerblock_read(&s->timerblock[id], addr, size);
++    int id = get_current_cpu(s, attrs);
++    *data = timerblock_read(&s->timerblock[id], addr, size);
++    return MEMTX_OK;
+ }
+ 
+-static void arm_thistimer_write(void *opaque, hwaddr addr,
+-                                uint64_t value, unsigned size)
++static MemTxResult arm_thistimer_write(void *opaque, hwaddr addr,
++                                uint64_t value, unsigned size, MemTxAttrs attrs)
+ {
+     ARMMPTimerState *s = (ARMMPTimerState *)opaque;
+-    int id = get_current_cpu(s);
++    int id = get_current_cpu(s, attrs);
+     timerblock_write(&s->timerblock[id], addr, value, size);
++    return MEMTX_OK;
+ }
+ 
+ static const MemoryRegionOps arm_thistimer_ops = {
+-    .read = arm_thistimer_read,
+-    .write = arm_thistimer_write,
++    .read_with_attrs = arm_thistimer_read,
++    .write_with_attrs = arm_thistimer_write,
+     .valid = {
+         .min_access_size = 4,
+         .max_access_size = 4,
+-- 
+2.34.1

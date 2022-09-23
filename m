@@ -1,111 +1,112 @@
-Received: by 2002:a17:906:b088:0:0:0:0 with SMTP id x8csp60621ejy;
-        Thu, 22 Sep 2022 20:21:41 -0700 (PDT)
-X-Google-Smtp-Source: AMsMyM4sd0GZpN7bAz4NyvIFjU2NLACqPYpzqXOFnOFHdHQYGwsO4bh+A5Jdn3vPTqWnUlFk5o7v
-X-Received: by 2002:ad4:5dea:0:b0:4ac:6ffc:74b2 with SMTP id jn10-20020ad45dea000000b004ac6ffc74b2mr5180502qvb.78.1663903301484;
-        Thu, 22 Sep 2022 20:21:41 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1663903301; cv=none;
+Received: by 2002:a17:906:b088:0:0:0:0 with SMTP id x8csp86758ejy;
+        Thu, 22 Sep 2022 21:44:07 -0700 (PDT)
+X-Google-Smtp-Source: AMsMyM4EIUNFJruMSWhOfU7qcmTGSjtxpTQVancRwxEjBPp8pJbkp6jDUdO6wZpMSxPjlzn7sgr2
+X-Received: by 2002:ac8:7f49:0:b0:35c:d64a:eee5 with SMTP id g9-20020ac87f49000000b0035cd64aeee5mr5549427qtk.127.1663908247731;
+        Thu, 22 Sep 2022 21:44:07 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1663908247; cv=none;
         d=google.com; s=arc-20160816;
-        b=ctapHzas+Vfr8YxsPDU72GvRJRpS/cCfKE/jB3HAk3zy8sJzFpG2lGP/1ywTVeX0pX
-         NT82+aOhP454xHH5zDojkhPfXPZmnZ2bmZztxQdSizN6Q9+5dxSGxVocLY1W7O4DsJD8
-         JUs0ZFUsP2ch/QaYq9q1NwlXNhvEKjhtveFI899qVitq1rSN5uDpZHW70CJNCB4SwoOQ
-         T9aMhzE3hZHYIbGbnbWuRuTH3tHBw3P5DM97a+AbflBrt814v818Gp01yh6Zo1R/Ao3W
-         BjedfU8jfvAdJQ1GXF3sMKdol9EJbbCjhfqpCq5jdezNyueiJChL9+SGdlaxjFNWcNXl
-         PyQA==
+        b=awLld22BiuLIP1vIWHwUEgjqw33uL7oh2268mfQwty05KaKKQyK7vp7UMAx42cRmS3
+         DQXc+DSEpCBlGeu7eMF2GhwGAP5bsfxcQ+VubCoDOuYz5BABI1GTYnugnImVUPuziRn5
+         Ejr7WB3/snb9e2s3vUo/hhpD/WThITD2j/QjWbXe65fLuyjZAa0dpOq2XHIoRCC5m8Ia
+         MKsf4TxV1Dzz9qJwjsT0q40u6yjg14dM6I4KjOPOk5ZLID9u9mEgMP2dZJ+K6bbT811C
+         YFYd4H9XT/ghElGjahyhv0Kci3mhf2iv7N7M322hMCpbNVfwrLcB6Uz5IUScE4Gzw+65
+         gCkg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=HgIhB4q+iJPd3lVnQeerTwKuW/WfLvgfDCRy1cN2wrk=;
-        b=td+n+LLhUDSofqjEtnaDu0u7cOXjNktC5XmHG/gevk9uP3AJA3GHOwpIDu+ni+2YJP
-         Lw7/PkJA/Pdg/qp7r4waK4bFEIwFIfjVRdRXs2IyjqGxkVKmWW9fepFq6q4O9YJ3TZrG
-         TveB/YMTk6/am97ZVrL14JG9NUuAuzkdY12fZ39kTiDz1Pv3ai2Z6q44kgEzjdszsqLI
-         OqcEotvan6P94N8v9Ka++O8/AeGYgYBL8UyFe+yUesIFqapLOoo2JoUsYnmWm3J2EWOh
-         OmtcC8VktNJDdV/huXhz7cDcmEkI2RETb2BfJSrm13hNcgkuH8dUc2OQino39rUl8f7a
-         RjCA==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:user-agent:message-id:in-reply-to:date:references
+         :subject:cc:to:from:dkim-signature;
+        bh=hjBPZHB+8Q9xyk3XyJF5XGNw7d47JLDQaBlLSN6RD0k=;
+        b=OZelMuhpMO0nOTPOaaVJHGcRJo73O5395nO9moe2KxcsOolA8JHLRXYQOqX7A/O9Xm
+         ik/3FXgUP0Bx7ZZcFA1KIdCKhP/TzV+sPsaL5Nel+aHhfqdBkXzbynz5yLyETJuO5Lae
+         bhPMDL8Ys0V+lQT7yjG+Mid6O331FElbhDa4FsF0nHULIhjQFwkCr01CmWWAYUe4eytj
+         yAKerEHf//tEffFaupnF8ym96dAWSRSlc6Kr/oPSdn4ILCFCC5WElOYS2h+12ggBx+EA
+         gY4P7zeRSco7lnNqvHhLE7+aaPU/VL4QBuc01Fai3YSeUTHgnYcnJqeRIZ54vyuoKeSL
+         2Apw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=dGwd+wWL;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=cBVjCiJZ;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id cj14-20020a05622a258e00b0034454ddc313si4206535qtb.620.2022.09.22.20.21.41
+        by mx.google.com with ESMTPS id gd9-20020a05622a5c0900b0035d0d99edf1si3154728qtb.115.2022.09.22.21.44.07
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 22 Sep 2022 20:21:41 -0700 (PDT)
+        Thu, 22 Sep 2022 21:44:07 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=dGwd+wWL;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=cBVjCiJZ;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:42506 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:58088 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1obZG1-0000tD-1U
-	for alex.bennee@linaro.org; Thu, 22 Sep 2022 23:21:41 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:57286)
+	id 1obaXn-0002tX-7y
+	for alex.bennee@linaro.org; Fri, 23 Sep 2022 00:44:07 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:54716)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jasowang@redhat.com>)
- id 1obZFm-0000qy-Qq
- for qemu-arm@nongnu.org; Thu, 22 Sep 2022 23:21:26 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:34016)
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1obaXO-0002tA-3b
+ for qemu-arm@nongnu.org; Fri, 23 Sep 2022 00:43:42 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:55160)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jasowang@redhat.com>)
- id 1obZFj-0007bA-4P
- for qemu-arm@nongnu.org; Thu, 22 Sep 2022 23:21:25 -0400
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1obaXK-0007Jr-Pp
+ for qemu-arm@nongnu.org; Fri, 23 Sep 2022 00:43:40 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1663903280;
+ s=mimecast20190719; t=1663908217;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=HgIhB4q+iJPd3lVnQeerTwKuW/WfLvgfDCRy1cN2wrk=;
- b=dGwd+wWL8FQt3hjKiJ+uMbGgGEPom+tFwHdk2kRJHXTSlcIwSls6uz2JgZ88oxs9EbeZ6t
- VBJB86xnOijzCEB+y0KmwC0niaZY2AoDzZ143Jk+6pWJA7hUHJoOI7yjBrYzIh6HR8YkFc
- nkhC2eJgJ2UHqIjiH12f3J4aQ6RAV5I=
-Received: from mail-ot1-f70.google.com (mail-ot1-f70.google.com
- [209.85.210.70]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_128_GCM_SHA256) id
- us-mta-612-bZiVMhHzMG-p_dqjQ4XBJg-1; Thu, 22 Sep 2022 23:21:19 -0400
-X-MC-Unique: bZiVMhHzMG-p_dqjQ4XBJg-1
-Received: by mail-ot1-f70.google.com with SMTP id
- e15-20020a9d018f000000b00655da3509a6so5435093ote.20
- for <qemu-arm@nongnu.org>; Thu, 22 Sep 2022 20:21:19 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date;
- bh=HgIhB4q+iJPd3lVnQeerTwKuW/WfLvgfDCRy1cN2wrk=;
- b=LLomuJffXQbH9fajgNlhJ6i78+voFPx8xefhm0XMtQ+gNSDQqvwmwqnETkzKqpIxd1
- S+6X7bUtc0ab4OdzBZBb68YEBEhxK7DnmOgvKRy12DSyk0yXZY2lDzmQQ/20dm+cqISa
- QfZWpx9yPRcwKcEhfc37SLACuHBRmoZ2aKpn6+BvNOlNRyF06B27YUQ8kLKbzvm34K2z
- hbX6wtCKzvIdtKha7ndJ6ujApkEj1Fi4JWmmCTW73n5R736dvBWgGO8x2TNbY0i0SzFz
- db7T7rJqHp8Y4MVrZgvf6nCavl3ikCoBFbZO/hSTCrqQc9A/InV2XMWCp82qopDhurwL
- TtpQ==
-X-Gm-Message-State: ACrzQf2KfyvDe5xmgzYTFnymXrxmkk16offsblZJsKx6O9/zlZNgbm8s
- baeKLiySaQR9vsTLBWY5jTDhMwGNCAZGKOM3nRWIr6FzGOWB1RYihXQXwPJcOXOVHx7WF0tLrjS
- 4jy5YlPfddxhiDpy435aRO+mAJvk6
-X-Received: by 2002:a05:6830:1550:b0:659:68f7:492b with SMTP id
- l16-20020a056830155000b0065968f7492bmr3092687otp.237.1663903279113; 
- Thu, 22 Sep 2022 20:21:19 -0700 (PDT)
-X-Received: by 2002:a05:6830:1550:b0:659:68f7:492b with SMTP id
- l16-20020a056830155000b0065968f7492bmr3092677otp.237.1663903278867; Thu, 22
- Sep 2022 20:21:18 -0700 (PDT)
+ bh=hjBPZHB+8Q9xyk3XyJF5XGNw7d47JLDQaBlLSN6RD0k=;
+ b=cBVjCiJZPmQydWaOQ/NfsrmahCgwudHC0kfwMvA8+qwZ65zKkG+lgGyyfXf+6AuLe9mQCF
+ JZ9OxgWbTU0IJ+9a0ikytoz4/Du9ay6i0fd6mITFcWOgX7aVDmUW+gYfGPl/B0l8C2bunq
+ MszxcUAssnoSte1KSV1JG+tk6c8mpHQ=
+Received: from mimecast-mx02.redhat.com (mx3-rdu2.redhat.com
+ [66.187.233.73]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-424-3y5Bu6GvNBy7LVgfAhzWnQ-1; Fri, 23 Sep 2022 00:43:34 -0400
+X-MC-Unique: 3y5Bu6GvNBy7LVgfAhzWnQ-1
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.6])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 679871C05132;
+ Fri, 23 Sep 2022 04:43:33 +0000 (UTC)
+Received: from blackfin.pond.sub.org (unknown [10.39.192.163])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 9659A2166B26;
+ Fri, 23 Sep 2022 04:43:32 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+ id F169321E6900; Fri, 23 Sep 2022 06:43:30 +0200 (CEST)
+From: Markus Armbruster <armbru@redhat.com>
+To: =?utf-8?Q?Marc-Andr=C3=A9?= Lureau <marcandre.lureau@gmail.com>
+Cc: Bin Meng <bmeng.cn@gmail.com>,  qemu-devel@nongnu.org,  Bin Meng
+ <bin.meng@windriver.com>,  Alexander Bulekov <alxndr@bu.edu>,  Andrew
+ Jeffery <andrew@aj.id.au>,  Bandan Das <bsd@redhat.com>,  Coiby Xu
+ <Coiby.Xu@gmail.com>,  =?utf-8?Q?C=C3=A9dric?= Le Goater <clg@kaod.org>,
+ Darren Kenny <darren.kenny@oracle.com>,  "Dr. David Alan Gilbert"
+ <dgilbert@redhat.com>,  Fam Zheng <fam@euphon.net>,  Joel Stanley
+ <joel@jms.id.au>,  John Snow <jsnow@redhat.com>,  Juan Quintela
+ <quintela@redhat.com>,  Konstantin Kostiuk <kkostiuk@redhat.com>,  Laurent
+ Vivier <lvivier@redhat.com>,  Michael Roth <michael.roth@amd.com>,  Paolo
+ Bonzini <pbonzini@redhat.com>,  Peter Maydell <peter.maydell@linaro.org>,
+ Qiuhao Li <Qiuhao.Li@outlook.com>,  Stefan Hajnoczi
+ <stefanha@redhat.com>,  Thomas Huth <thuth@redhat.com>,
+ qemu-arm@nongnu.org,  qemu-block@nongnu.org
+Subject: Re: [PATCH v2 07/39] tests: Avoid using hardcoded /tmp in test cases
+References: <20220920103159.1865256-1-bmeng.cn@gmail.com>
+ <20220920103159.1865256-8-bmeng.cn@gmail.com>
+ <CAJ+F1CKUOd=fLO9f_vVGOajcgi9+XSrbNjPUX+H5hhrxGMCU2g@mail.gmail.com>
+Date: Fri, 23 Sep 2022 06:43:30 +0200
+In-Reply-To: <CAJ+F1CKUOd=fLO9f_vVGOajcgi9+XSrbNjPUX+H5hhrxGMCU2g@mail.gmail.com>
+ (=?utf-8?Q?=22Marc-Andr=C3=A9?= Lureau"'s message of "Thu, 22 Sep 2022
+ 21:46:44 +0200")
+Message-ID: <87mtaqhf9p.fsf@pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/27.2 (gnu/linux)
 MIME-Version: 1.0
-References: <20220921234646.949273-1-venture@google.com>
- <CAFEAcA8f+JA4WKMwGFNxg7tRxTwL=RzDLgdJLrP8Dw_jB4XoRA@mail.gmail.com>
-In-Reply-To: <CAFEAcA8f+JA4WKMwGFNxg7tRxTwL=RzDLgdJLrP8Dw_jB4XoRA@mail.gmail.com>
-From: Jason Wang <jasowang@redhat.com>
-Date: Fri, 23 Sep 2022 11:21:08 +0800
-Message-ID: <CACGkMEvMtAjGQVzwUgjD20Hb=Za8KmRanmp-FWrUQD8xS+7Pkw@mail.gmail.com>
-Subject: Re: [PATCH] hw/net: npcm7xx_emc: set MAC in register space
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: Patrick Venture <venture@google.com>, hskinnemoen@google.com,
- kfting@nuvoton.com, 
- qemu-arm@nongnu.org, qemu-devel <qemu-devel@nongnu.org>,
- Hao Wu <wuhaotsh@google.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=jasowang@redhat.com;
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-Scanned-By: MIMEDefang 3.1 on 10.11.54.6
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=armbru@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -27
 X-Spam_score: -2.8
@@ -113,7 +114,7 @@ X-Spam_bar: --
 X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -128,74 +129,94 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: c4XJGi3sVgAZ
+X-TUID: a7NLwdlxHgy2
 
-On Thu, Sep 22, 2022 at 8:35 PM Peter Maydell <peter.maydell@linaro.org> wrote:
->
-> On Thu, 22 Sept 2022 at 00:47, Patrick Venture <venture@google.com> wrote:
-> >
-> > The MAC address set from Qemu wasn't being saved into the register space.
-> >
-> > Reviewed-by: Hao Wu <wuhaotsh@google.com>
-> > Signed-off-by: Patrick Venture <venture@google.com>
->
-> > @@ -112,6 +115,18 @@ static void emc_reset(NPCM7xxEMCState *emc)
-> >
-> >      emc->tx_active = false;
-> >      emc->rx_active = false;
-> > +
-> > +    /* Set the MAC address in the register space. */
-> > +    uint32_t value = (emc->conf.macaddr.a[0] << 24) |
-> > +        (emc->conf.macaddr.a[1] << 16) |
-> > +        (emc->conf.macaddr.a[2] << 8) |
-> > +        emc->conf.macaddr.a[3];
-> > +    npcm7xx_emc_write(emc, REG_CAMM_BASE * sizeof(uint32_t), value,
-> > +                      sizeof(uint32_t));
-> > +
-> > +    value = (emc->conf.macaddr.a[4] << 24) | (emc->conf.macaddr.a[5] << 16);
-> > +    npcm7xx_emc_write(emc, REG_CAML_BASE * sizeof(uint32_t), value,
-> > +                      sizeof(uint32_t));
->
-> If I understand correctly, the issue here is that emc->regs[REG_CAMM_BASE]
-> and emc->regs[REG_CAML_BASE] aren't being reset correctly. If so,
-> I think the better approach is to simply reset them here, without
-> going through the register-write function, the same way we already
-> do for the handful of other registers which have non-zero reset values.
-> That's the way other devices seem to do it.
->
-> A question to which I don't know the answer: if the guest writes to
-> the device to change the MAC address, should that persist across
-> reset, or should reset revert the device to the original MAC address
-> as specified by the user on the command line or whatever ? At the
-> moment you have the former behaviour (and end up storing the MAC
-> address in two places as a result -- it would be neater to either
-> keep it in only one place, or else have emc->regs[] be the current
-> programmed MAC address and emc->conf.macaddr the value to reset to).
->
-> I'm not sure we're consistent between device models about that,
-> eg the e1000 seems to reset to the initial MAC addr, but the
-> imx_fec keeps the guest-set value over resets. Jason, is there
-> a recommended "right way" to handle guest-programmable MAC addresses
-> over device reset ?
+Marc-Andr=C3=A9 Lureau <marcandre.lureau@gmail.com> writes:
 
-I think it depends on the NIC.
-
-E1000 has a EEPROM interface for providing the MAC address for the
-ethernet controller before it can be accessed by the driver during
-reset. For modern Intel NICs like E810, it has similar semantics but
-using NVM instead of EEPROM. So the current e1000 behaviour seems to
-be correct (treat the initiali MAC as the one stored in the EEPROM).
-
-I guess most NIC should behave the same as having a persistent storage
-for MAC for the controller during reset, but I'm not sure this is the
-case for imx_fec.
-
-(Anyhow, if we change the behaviour we need keep migration compatibility)
-
-Thanks
-
+> Hi
 >
-> thanks
-> -- PMM
+> On Tue, Sep 20, 2022 at 2:47 PM Bin Meng <bmeng.cn@gmail.com> wrote:
 >
+>> From: Bin Meng <bin.meng@windriver.com>
+>>
+>> Lots of test cases were written to use hardcoded /tmp directory for
+>> temporary files. To avoid this, we update them to use g_dir_make_tmp()
+>> or g_file_open_tmp() when appropriate.
+>>
+>> Signed-off-by: Bin Meng <bin.meng@windriver.com>
+>> ---
+>>
+>> Changes in v2:
+>> - Use g_dir_make_tmp(), g_file_open_tmp() when appropriate
+>>
+>>  tests/qtest/fuzz/generic_fuzz_configs.h |  4 ++--
+>>  tests/qtest/ahci-test.c                 | 19 +++++++++++--------
+>>  tests/qtest/aspeed_smc-test.c           |  5 ++---
+>>  tests/qtest/boot-serial-test.c          |  9 +++++----
+>>  tests/qtest/cxl-test.c                  | 15 ++++++---------
+>>  tests/qtest/fdc-test.c                  |  5 +++--
+>>  tests/qtest/fuzz/virtio_blk_fuzz.c      |  4 ++--
+>>  tests/qtest/hd-geo-test.c               | 24 +++++++++++-------------
+>>  tests/qtest/ide-test.c                  | 10 ++++++----
+>>  tests/qtest/libqtest.c                  | 12 ++++++++----
+>>  tests/qtest/migration-test.c            |  7 ++++---
+>>  tests/qtest/pflash-cfi02-test.c         |  8 +++++---
+>>  tests/qtest/qmp-test.c                  |  6 ++++--
+>>  tests/qtest/vhost-user-blk-test.c       |  3 ++-
+>>  tests/qtest/vhost-user-test.c           |  8 ++++----
+>>  tests/qtest/virtio-blk-test.c           |  4 ++--
+>>  tests/qtest/virtio-scsi-test.c          |  4 ++--
+>>  tests/unit/test-image-locking.c         |  8 ++++----
+>>  tests/unit/test-qga.c                   |  2 +-
+>>  tests/vhost-user-bridge.c               |  3 +--
+>>  20 files changed, 85 insertions(+), 75 deletions(-)
+>>
+>> diff --git a/tests/qtest/fuzz/generic_fuzz_configs.h
+>> b/tests/qtest/fuzz/generic_fuzz_configs.h
+>> index 0775e6702b..a825b78c14 100644
+>> --- a/tests/qtest/fuzz/generic_fuzz_configs.h
+>> +++ b/tests/qtest/fuzz/generic_fuzz_configs.h
+>> @@ -20,8 +20,8 @@ typedef struct generic_fuzz_config {
+>>  } generic_fuzz_config;
+>>
+>>  static inline gchar *generic_fuzzer_virtio_9p_args(void){
+>> -    char tmpdir[] =3D "/tmp/qemu-fuzz.XXXXXX";
+>> -    g_assert_nonnull(g_mkdtemp(tmpdir));
+>> +    g_autofree char *tmpdir =3D g_dir_make_tmp("qemu-fuzz.XXXXXX", NULL=
+);
+>> +    g_assert_nonnull(tmpdir);
+>>
+>>      return g_strdup_printf("-machine q35 -nodefaults "
+>>      "-device virtio-9p,fsdev=3Dhshare,mount_tag=3Dhshare "
+>> diff --git a/tests/qtest/ahci-test.c b/tests/qtest/ahci-test.c
+>> index f1e510b0ac..00524f14c6 100644
+>> --- a/tests/qtest/ahci-test.c
+>> +++ b/tests/qtest/ahci-test.c
+>> @@ -44,9 +44,9 @@
+>>  #define TEST_IMAGE_SIZE_MB_SMALL 64
+>>
+>>  /*** Globals ***/
+>> -static char tmp_path[] =3D "/tmp/qtest.XXXXXX";
+>> -static char debug_path[] =3D "/tmp/qtest-blkdebug.XXXXXX";
+>> -static char mig_socket[] =3D "/tmp/qtest-migration.XXXXXX";
+>> +static char *tmp_path;
+>> +static char *debug_path;
+>> +static char *mig_socket;
+>>  static bool ahci_pedantic;
+>>  static const char *imgfmt;
+>>  static unsigned test_image_size_mb;
+>> @@ -1437,10 +1437,10 @@ static void test_ncq_simple(void)
+>>
+>>  static int prepare_iso(size_t size, unsigned char **buf, char **name)
+>>  {
+>> -    char cdrom_path[] =3D "/tmp/qtest.iso.XXXXXX";
+>> +    g_autofree char *cdrom_path;
+>>
+>
+> Whenever introducing g_auto* usage, please make sure to initialize the
+> variable to NULL or a correct value.
+
+Potential food for checkpatch.pl.
+
+[...]
 

@@ -1,118 +1,114 @@
-Received: by 2002:a17:906:b088:0:0:0:0 with SMTP id x8csp184804ejy;
-        Fri, 23 Sep 2022 01:59:24 -0700 (PDT)
-X-Google-Smtp-Source: AMsMyM4IURZWygt1kfRLafHl86Z6hPGQzxK7bqNGsdqkoXydiDKc2dC4fVaE5KWOKyRYA6YPImiq
-X-Received: by 2002:a05:620a:1254:b0:6cd:4e36:481d with SMTP id a20-20020a05620a125400b006cd4e36481dmr4753619qkl.661.1663923564019;
-        Fri, 23 Sep 2022 01:59:24 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1663923564; cv=none;
+Received: by 2002:a17:906:b088:0:0:0:0 with SMTP id x8csp186491ejy;
+        Fri, 23 Sep 2022 02:02:09 -0700 (PDT)
+X-Google-Smtp-Source: AMsMyM77XpgJX0QNW/jDPs7wttOAeic6t5wr2Y96kFBOILKQQbbex62k8oHLELfQmRgVTI4F5lyC
+X-Received: by 2002:a50:cc07:0:b0:453:4427:a918 with SMTP id m7-20020a50cc07000000b004534427a918mr7473636edi.121.1663923729202;
+        Fri, 23 Sep 2022 02:02:09 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1663923729; cv=none;
         d=google.com; s=arc-20160816;
-        b=Q6jB1STedZQdEYgihINe2GiwddNpw13f3pZhAML9YyUqdRX6/dXoM3cB96sVnyHw6E
-         CgYSnGL6oqhByuU9kfX5NGVfH1lKQNiWCTVAkXYI4KZ9aYXK78rf8f0/Jlfqp2xP+/H5
-         0YaYtwg4PIUWkCFLAy/Mn/MY2osw5AmIClQ4NwYKCfxDJmeUSxhE60HBlp8fmZ4/97ZD
-         feaJlkHQZwZIr9Wn3lHhFWh24GduEAFcCPhJgwW3DDKGOytS6v0NKmg5nMxy0Iit8Ki9
-         w6mVKVZHeKaBK3OaWxLjkLR0/pM+kO7zdzPGka3sXgnPQnW/UHsd6OiHpXk5+HLJQtP5
-         ceFA==
+        b=t5QMfimSmF+8p33cZuNeht60/M3QTzXEZIBwlKovy64wBS4IUiVxY9RbPiyAlw4Q/a
+         C8mz/d39x/OVvxSyjeCbrb+8bSLGBk3rarkCCM1q8PZpCYrePQZUmZ0JM6Xlxo2GlH3K
+         lK6+QseL1s/gh3nvPrTHpKo+HPmPeLzmzop2nyjuyL/iyoyVHO6751//LEGhQiRi49Ez
+         TnIX53eh6QFj8wffKeO//QkCjySSsFTMNUgcNgM4HeMiFWYwKysXjCVy/d9MFdCS8Oy+
+         itL0cC7Ud4JKxXPPDnaYj8pZ6rofdIYDLwMnHeYq+Av4mq8dy1ztjxWVHozAyyvfEDgx
+         21zQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=from:reply-to:sender:errors-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence:mime-version
-         :content-transfer-encoding:content-language:accept-language
-         :message-id:date:thread-index:thread-topic:subject:cc:to;
-        bh=ehHzURrTPmXNyvonnfwxhkHLRLQD+EWE7JEb54D9ZwU=;
-        b=tJWaBqqKIAHs1ht3y5c7nhVE+ojDGqdIuX/f0w4H7vq2RJNGO3HM+tNrXADrPBdtwV
-         1alOl8045dpU4tlVEicRn7FFLf6W52SjqoDatsUDhzfahtF72X3SO7Zf2SR42TTbqEL+
-         wwpNhdT2kKfwJUqvP7TrM5hOXsspel9oKOHHo7lNffDS23vMngE9cRa0hn30WjaQw/qj
-         woUi/28prEetwy76T1XeR1ojLPVeVKTJzXeUbCvygTEnz0q3+rGkEFwZyMcZfz5F8KC/
-         hLI43qNurVk1t2P8czlolnW1RjqpNVOSQ8CCc0tNEUjWMB/pXYV1vD7CyiPlRGPcHQvD
-         /cDg==
+        h=content-transfer-encoding:content-language:in-reply-to:from
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=Mtg7wIJVP3tDp/hmYXraAcpbKfaq+ogDJgtY9EHsnE4=;
+        b=YE0BttsYSs2LKDmpNW/lIIJnUq4WajuRlG7YABzLC6rTrgecOuedycZAyaa/zsT7Fm
+         TKYEfoJ0k4Z02m+qCU12zSyawTRqfAw4tBiB4PFVoIYmY9PO4DoXlo6ML4MvOmL0+ZVN
+         4QIlwWuLDBDKy+t6ddusav7X0ec4jFCHORQAh04IT34lx84kGfMLlDqh0BmvETEuRbUn
+         52Ne5avMchG/qoULM/gQPovPKzxmYRipEMtYWIw/9MX1peak0hmmD4XHNVJi54vMvXY+
+         Rpfu0NYmU0qXB9XJTQsNSpryjD1P8Qp3BjdDSQXIsas6YZKpMVgwFualWk1G90C9uJKW
+         Q5sw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id cg3-20020a05622a408300b003445ee73e18si3881706qtb.685.2022.09.23.01.59.23
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=SMKGD+DG;
+       spf=pass (google.com: domain of thuth@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <thuth@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
+        by mx.google.com with ESMTPS id w8-20020a17090649c800b0073305fd2278si6308205ejv.864.2022.09.23.02.02.08
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 23 Sep 2022 01:59:24 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Fri, 23 Sep 2022 02:02:09 -0700 (PDT)
+Received-SPF: pass (google.com: domain of thuth@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
-Received: from localhost ([::1]:42382 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1obeWn-0005Yn-KM
-	for alex.bennee@linaro.org; Fri, 23 Sep 2022 04:59:21 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:48924)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <zhukeqian1@huawei.com>)
- id 1obeWI-0005WB-Sz; Fri, 23 Sep 2022 04:58:51 -0400
-Received: from szxga01-in.huawei.com ([45.249.212.187]:3954)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <zhukeqian1@huawei.com>)
- id 1obeWG-0001sM-5g; Fri, 23 Sep 2022 04:58:50 -0400
-Received: from dggpeml500020.china.huawei.com (unknown [172.30.72.54])
- by szxga01-in.huawei.com (SkyGuard) with ESMTP id 4MYmFt2C8dzpTsc;
- Fri, 23 Sep 2022 16:55:46 +0800 (CST)
-Received: from dggpeml100021.china.huawei.com (7.185.36.148) by
- dggpeml500020.china.huawei.com (7.185.36.88) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2375.31; Fri, 23 Sep 2022 16:58:37 +0800
-Received: from kwepemm600016.china.huawei.com (7.193.23.20) by
- dggpeml100021.china.huawei.com (7.185.36.148) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2375.31; Fri, 23 Sep 2022 16:58:36 +0800
-Received: from kwepemm600016.china.huawei.com ([7.193.23.20]) by
- kwepemm600016.china.huawei.com ([7.193.23.20]) with mapi id 15.01.2375.031;
- Fri, 23 Sep 2022 16:58:36 +0800
-To: Peter Maydell <peter.maydell@linaro.org>, Igor Mammedov
- <imammedo@redhat.com>
-CC: "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, "qemu-arm@nongnu.org"
- <qemu-arm@nongnu.org>, "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>,
- Eric Auger <eric.auger@redhat.com>, Peter Xu <peterx@redhat.com>, "Wanghaibin
- (D)" <wanghaibin.wang@huawei.com>
-Subject: Re: [PATCH v2] hw/acpi: Add ospm_status hook implementation for
- acpi-ged
-Thread-Topic: [PATCH v2] hw/acpi: Add ospm_status hook implementation for
- acpi-ged
-Thread-Index: AdjPKnJtqSBn4jhsHkm9jn/UrlgR8g==
-Date: Fri, 23 Sep 2022 08:58:36 +0000
-Message-ID: <521edea5d2894a50874463ba812b0169@huawei.com>
-Accept-Language: zh-CN, en-US
-Content-Language: zh-CN
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-originating-ip: [10.174.187.224]
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=SMKGD+DG;
+       spf=pass (google.com: domain of thuth@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1663923728;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=Mtg7wIJVP3tDp/hmYXraAcpbKfaq+ogDJgtY9EHsnE4=;
+	b=SMKGD+DGO3I1Ke2Ey9VHPvHPyUZIm7G9nfllF+7xgwI1yNZs97WQ4PCwez8D+rTSCfuyfS
+	q3JzFbefWiq7uZ4JHRKpMU69xYhG3mfJq523EedmKEr/m/H+HwPdMS+OJWBHGLDMPUYvPX
+	+POUKeWYIUNEDbQSzPF19oAE3MsEMWI=
+Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
+ [209.85.128.69]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_128_GCM_SHA256) id
+ us-mta-140-84CmehnTNEKFPvt5rwMZ9Q-1; Fri, 23 Sep 2022 05:02:07 -0400
+X-MC-Unique: 84CmehnTNEKFPvt5rwMZ9Q-1
+Received: by mail-wm1-f69.google.com with SMTP id b5-20020a05600c4e0500b003b499f99aceso2431957wmq.1
+        for <alex.bennee@linaro.org>; Fri, 23 Sep 2022 02:02:06 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date;
+        bh=Mtg7wIJVP3tDp/hmYXraAcpbKfaq+ogDJgtY9EHsnE4=;
+        b=RblOsb6/Fwqv7DDXACTFkgf4UBYvKNG5QQtw28w9n4lQLuOPmTbB1VC4oQJNF3XOzw
+         LOvNRqAy0h8KE8NEf2xRqtltbdxcXdGijhzorNJVXx2jZGTo8PffprSA6EjUgS/TskBs
+         hlakeolbm1DG1LKpBSkMbkjwVyVm7vhHZlVUcH7UtIb64gBBUheAoGxumfEjzTU327B2
+         LLry8fHS46rm8fljn8TENXWeJ6IfofxfGyDW6uyO1cJeAOH/M7LkF92j/9z/IJyVBsV5
+         GkLvp+WZPoqyI+J5zth8OpBZ2g3QmpZ3ta8coBO79mwWobeY9DfMAlJnocuTemoUM2Zh
+         /wSw==
+X-Gm-Message-State: ACrzQf0ckn3P5JiJyjJIMQd+wWczEeQwfrBNwZ8ZxZY4vtjtrWsaQnt1
+	jSX2PBXjweT4CtAWYE6LL3u3kEBVS1MJWTXFercT4Rb6bKKQneCtWsGw+THl0p3YhoYAJeTDUyv
+	L98Oco90Eep8JVrBj
+X-Received: by 2002:a05:600c:2181:b0:3b4:74e4:16f8 with SMTP id e1-20020a05600c218100b003b474e416f8mr4911275wme.174.1663923726008;
+        Fri, 23 Sep 2022 02:02:06 -0700 (PDT)
+X-Received: by 2002:a05:600c:2181:b0:3b4:74e4:16f8 with SMTP id e1-20020a05600c218100b003b474e416f8mr4911262wme.174.1663923725840;
+        Fri, 23 Sep 2022 02:02:05 -0700 (PDT)
+Return-Path: <thuth@redhat.com>
+Received: from [192.168.0.5] (ip-109-43-179-37.web.vodafone.de. [109.43.179.37])
+        by smtp.gmail.com with ESMTPSA id z10-20020adfec8a000000b0022afe4fb459sm6888963wrn.51.2022.09.23.02.02.04
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Fri, 23 Sep 2022 02:02:05 -0700 (PDT)
+Message-ID: <4c0cbccf-0c1c-3ce3-04dd-534b11d9b62f@redhat.com>
+Date: Fri, 23 Sep 2022 11:02:03 +0200
 MIME-Version: 1.0
-X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.187;
- envelope-from=zhukeqian1@huawei.com; helo=szxga01-in.huawei.com
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Reply-to:  zhukeqian <zhukeqian1@huawei.com>
-From:  zhukeqian via <qemu-arm@nongnu.org>
-X-TUID: 1c0M/BMgT4Ss
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.13.0
+Subject: Re: [PATCH 1/6] tests/avocado/machine_aspeed.py: Fix typos on
+ buildroot
+To: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Joel Stanley <joel@jms.id.au>, Andrew Jeffery <andrew@aj.id.au>,
+ =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>
+References: <20220923084803.498337-1-clg@kaod.org>
+ <20220923084803.498337-2-clg@kaod.org>
+From: Thomas Huth <thuth@redhat.com>
+In-Reply-To: <20220923084803.498337-2-clg@kaod.org>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-TUID: v2fgi4PrAPVI
 
-Pj4gPiBJIG5vdGljZSB0aGlzIGRvZXNuJ3Qgc2VlbSB0byBoYXZlIGdvbmUgaW4geWV0IC0tIHdo
-b3NlIHRyZWUgaXMgaXQgDQo+PiA+IGdvaW5nIHRvIGdvIHZpYT8NCj4+DQo+PiBJJ2QgZ3Vlc3Mg
-QVJNIHRyZWUgKGR1ZSB0byBhbG1vc3Qgc29sZSB1c2VyIHZpcnQtYXJtKS4NCj4+ICh0aGVyZSBh
-cmUgdG95IHVzZXJzIGxpa2UgbWljcm92bSBhbmQgbmV3IGxvb25nYXJjaCkNCj4NCj5PSzsgYXBw
-bGllZCB0byB0YXJnZXQtYXJtLm5leHQsIHRoYW5rcy4NCg0KVGhhbmtzLCBQZXRlci4NCg0KS2Vx
-aWFuLg0K
+On 23/09/2022 10.47, Cédric Le Goater wrote:
+> Replace 'buidroot' and 'builroot' by 'buildroot'.
+> 
+> Fixes: f7bc7da0724f ("test/avocado/machine_aspeed.py: Add tests using buildroot images")
+> Signed-off-by: Cédric Le Goater <clg@kaod.org>
+> ---
+>   tests/avocado/machine_aspeed.py | 16 ++++++++--------
+>   1 file changed, 8 insertions(+), 8 deletions(-)
+
+Reviewed-by: Thomas Huth <thuth@redhat.com>

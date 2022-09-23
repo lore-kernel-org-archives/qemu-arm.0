@@ -1,45 +1,45 @@
-Received: by 2002:a17:906:b088:0:0:0:0 with SMTP id x8csp180229ejy;
-        Fri, 23 Sep 2022 01:48:15 -0700 (PDT)
-X-Google-Smtp-Source: AMsMyM7PmGF/oktGgdjK6E8SVRsH86puGlqHhf+TqoQ+PVXamNMLUEbaj2+AUScuSDKMFw1daerK
-X-Received: by 2002:a17:902:ec82:b0:178:1062:3031 with SMTP id x2-20020a170902ec8200b0017810623031mr7400767plg.89.1663922895079;
-        Fri, 23 Sep 2022 01:48:15 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1663922895; cv=none;
+Received: by 2002:a17:906:b088:0:0:0:0 with SMTP id x8csp180241ejy;
+        Fri, 23 Sep 2022 01:48:17 -0700 (PDT)
+X-Google-Smtp-Source: AMsMyM6gctEVdK9vNfIPSNKuMBfO2zUft2gG/rKNmJI7zJYqb9CjqmrkJEamDz8l3yCRKuH8JyP8
+X-Received: by 2002:a17:902:e891:b0:178:7b6:92db with SMTP id w17-20020a170902e89100b0017807b692dbmr7543724plg.160.1663922896870;
+        Fri, 23 Sep 2022 01:48:16 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1663922896; cv=none;
         d=google.com; s=arc-20160816;
-        b=EPjnfZs1jU4I10zQfZeKyHVpczbNs9+UUwDHRbDFuM8xJGSvwTBlqlaHlJaoBWqA6c
-         wxFwU3QOHkGVuSl/lm7xUjCy/G1++R8kEp++ITkD5c7gXRdbQd0C7drJqr4XhvBJeXm9
-         ryo50G4y5V19viLWt1QBtYTAadI2jZjcbxjdX9W4W9wp5L4G4bxpxnAPBCRoOBrh8R1Z
-         BKgRBN5EWDDJ81IkKYciIgHko6t4D3iQiu/nvNePmyewVnxjKdTe2f9bQT5Yj5dRHfdH
-         VF6Eipbpp6HCPaWhDKUaXCCntCbCtcp8Vgf9ttv1FA+3FzOIVR5GPs4KfwfVNJdBz05s
-         FTmw==
+        b=auJm0sjF0BiYXWvm4nwxIwAGtamRtJGA50cs2bFvB3ADtqDZRXFMlpXUEMv5W/NkbJ
+         oHQ8pxd8m4ERs+/8fpsRYUH5qdStEI/5/I3k78Q2lL4kSh8aBEhK7ZcfEefZ1uZvXAHd
+         rC6TRa5tFnG8cPjU+CY5OHJAwHvzfvSBCTWaiLFK4+eUwwihPEcGAHXPmfGYdwyATa/m
+         hpTGxAVxohLd9YNn6e/nLcTLNKGLcstc/trQlAi9FjymmQJ1kTlq4dF1TZ98c/g2exkb
+         Uyoph/gyVCYwa3r8+obbROjkEasowS8p5u/lhvoc9GlmOaNzfYnyHiLhSdH2auX/WSUc
+         79tw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from;
-        bh=1jVUuQIK3TwKbgGCJwwRItkEZ7miZX1GCBgoAfw9wiw=;
-        b=0l1qi6WvLdCeCdFuhLjczlEXyqSxDpBj3ug1XvoM7jzus3T7pdA8Ao8dxz2aY3Nhe6
-         j8huoK7SRCLD6OXqDuejK12ZnsbsQSaGP5tVWwuZZWUrPFL66Cz3+YV+1Gz50yJOQ1xE
-         aM0cSJdYr7YUgL3Dtzbo2iPmiGdTv7GeqYaFk9TstiWF/myOudOyLvEmCS2ocDczw+pg
-         yBvGKzk6OFpRkZKHSPCKFKs03V/7IJoiDzlTmlxmVCiXv4VphFPjwR0T5shGigYX5f9v
-         NQEqT02JwcDHegGi5j3V6panjkXtUbt+GPo6KD/z/40eKbusKXWkECabSPfBIgJsbT3/
-         yKAA==
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from;
+        bh=CJjUZCAMepMl6eNrRqNAqzJa8XJ7qeC4HG+kPSeoFZI=;
+        b=RNQuL3ApROdg1mJXyByQMrKeH93c25daMIG4S9o2qKlefdSqF1ji2aiQNjVJSWOUas
+         PLxlVagCOWskNL+JfgqqcYBak9j2B1u7B6rZKNqWtJ7PzJQZwIjSMrz82z/KYaqFg6rH
+         U2R54XFgRO9fWSjyoi8vdy1naR8f4XGbO6uOQ6cKm0uIb3Y2iE8ymxtO9Svz3Q6Be2mj
+         lDRFuaulXleWe8/QmZJwVhONXMuYNI0cmSvTYtWVJz59TG2UBmk726Aqj/VCCRip9Ehw
+         uP5ohySzMYVYuOfvd5PEs5493vAsrcOH1iRNGxiIG8/6ngjd5DeUkYO9ihGo0iZplYHg
+         XVYw==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of srs0=gbdq=z2=kaod.org=clg@ozlabs.org designates 2404:9400:2221:ea00::3 as permitted sender) smtp.mailfrom="SRS0=gbDQ=Z2=kaod.org=clg@ozlabs.org"
 Return-Path: <SRS0=gbDQ=Z2=kaod.org=clg@ozlabs.org>
 Received: from gandalf.ozlabs.org (mail.ozlabs.org. [2404:9400:2221:ea00::3])
-        by mx.google.com with ESMTPS id b29-20020a63715d000000b00438d11be245si9109638pgn.429.2022.09.23.01.48.14
+        by mx.google.com with ESMTPS id x8-20020a63b348000000b0042b57ff2893si8528995pgt.195.2022.09.23.01.48.16
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 23 Sep 2022 01:48:15 -0700 (PDT)
+        Fri, 23 Sep 2022 01:48:16 -0700 (PDT)
 Received-SPF: pass (google.com: domain of srs0=gbdq=z2=kaod.org=clg@ozlabs.org designates 2404:9400:2221:ea00::3 as permitted sender) client-ip=2404:9400:2221:ea00::3;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of srs0=gbdq=z2=kaod.org=clg@ozlabs.org designates 2404:9400:2221:ea00::3 as permitted sender) smtp.mailfrom="SRS0=gbDQ=Z2=kaod.org=clg@ozlabs.org"
 Received: from gandalf.ozlabs.org (gandalf.ozlabs.org [150.107.74.76])
-	by gandalf.ozlabs.org (Postfix) with ESMTP id 4MYm575q84z4xGQ;
-	Fri, 23 Sep 2022 18:48:11 +1000 (AEST)
+	by gandalf.ozlabs.org (Postfix) with ESMTP id 4MYm5B6BZGz4x1L;
+	Fri, 23 Sep 2022 18:48:14 +1000 (AEST)
 Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
-	by mail.ozlabs.org (Postfix) with ESMTPSA id 4MYm543SyDz4x1L;
-	Fri, 23 Sep 2022 18:48:08 +1000 (AEST)
+	by mail.ozlabs.org (Postfix) with ESMTPSA id 4MYm582Kdgz4xGR;
+	Fri, 23 Sep 2022 18:48:12 +1000 (AEST)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
@@ -49,83 +49,90 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
 	Andrew Jeffery <andrew@aj.id.au>,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
 	=?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
-Subject: [PATCH 0/6] aspeed: avocado test boosts
-Date: Fri, 23 Sep 2022 10:47:57 +0200
-Message-Id: <20220923084803.498337-1-clg@kaod.org>
+Subject: [PATCH 1/6] tests/avocado/machine_aspeed.py: Fix typos on buildroot
+Date: Fri, 23 Sep 2022 10:47:58 +0200
+Message-Id: <20220923084803.498337-2-clg@kaod.org>
 X-Mailer: git-send-email 2.37.3
+In-Reply-To: <20220923084803.498337-1-clg@kaod.org>
+References: <20220923084803.498337-1-clg@kaod.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: 7NGWz9gUloV2
+X-TUID: zYwL10mNrziA
 
-Hello,
+Replace 'buidroot' and 'builroot' by 'buildroot'.
 
-Alex's patchset [1] showed that by avoiding the class cast checkers in
-hot code paths, performance is greatly improved. See results below.
-
-This is a partial resend of [1] plus an extra caching a reference on
-the AspeedSMC class, which adds an extra 10% boost.
-
-Thanks ,
-
-C.
-
-[1] http://patchwork.ozlabs.org/project/qemu-devel/list/?series=313458
-
-
-On a ThinkPad T480 i7-8650U, 
-
-Before :
-
-$ build/tests/venv/bin/avocado --show=app run build/tests/avocado/machine_aspeed.py
-    ...
-   (1/7) AST1030Machine.test_ast1030_zephyros: PASS (0.21 s)
-   (2/7) AST2x00Machine.test_arm_ast2400_palmetto_openbmc_v2_9_0: PASS (23.51 s)
-   (3/7) AST2x00Machine.test_arm_ast2500_romulus_openbmc_v2_9_0: PASS (39.59 s)
-   (4/7) AST2x00Machine.test_arm_ast2500_evb_buildroot: PASS (23.74 s)
-   (5/7) AST2x00Machine.test_arm_ast2600_evb_buildroot: PASS (34.44 s)
-   (6/7) AST2x00MachineSDK.test_arm_ast2500_evb_sdk: PASS (91.13 s)
-   (7/7) AST2x00MachineSDK.test_arm_ast2600_evb_sdk: PASS (112.27 s)
-  RESULTS    : PASS 7 | ERROR 0 | FAIL 0 | SKIP 0 | WARN 0 | INTERRUPT 0 | CANCEL 0
-  JOB TIME   : 325.72 s
-
-After :
-
-  $ build/tests/venv/bin/avocado --show=app run build/tests/avocado/machine_aspeed.py
-    ...
-   (1/7) AST1030Machine.test_ast1030_zephyros: PASS (0.22 s)
-   (2/7) AST2x00Machine.test_arm_ast2400_palmetto_openbmc_v2_9_0: PASS (12.44 s)
-   (3/7) AST2x00Machine.test_arm_ast2500_romulus_openbmc_v2_9_0: PASS (13.98 s)
-   (4/7) AST2x00Machine.test_arm_ast2500_evb_buildroot: PASS (11.74 s)
-   (5/7) AST2x00Machine.test_arm_ast2600_evb_buildroot: PASS (15.90 s)
-   (6/7) AST2x00MachineSDK.test_arm_ast2500_evb_sdk: PASS (66.75 s)
-   (7/7) AST2x00MachineSDK.test_arm_ast2600_evb_sdk: PASS (82.34 s)
-  RESULTS    : PASS 7 | ERROR 0 | FAIL 0 | SKIP 0 | WARN 0 | INTERRUPT 0 | CANCEL 0
-  JOB TIME   : 204.33 s
-  
-  
-
-
-Alex Bennée (4):
-  cpu: cache CPUClass in CPUState for hot code paths
-  hw/core/cpu-sysemu: used cached class in cpu_asidx_from_attrs
-  cputlb: used cached CPUClass in our hot-paths
-  ssi: cache SSIPeripheralClass to avoid GET_CLASS()
-
-Cédric Le Goater (2):
-  tests/avocado/machine_aspeed.py: Fix typos on buildroot
-  aspeed/smc: Cache AspeedSMCClass
-
- include/hw/core/cpu.h           |  9 +++++++++
- include/hw/ssi/aspeed_smc.h     |  2 ++
- include/hw/ssi/ssi.h            |  3 +++
- accel/tcg/cputlb.c              | 15 ++++++---------
- cpu.c                           |  9 ++++-----
- hw/core/cpu-sysemu.c            |  5 ++---
- hw/ssi/aspeed_smc.c             |  9 ++++-----
- hw/ssi/ssi.c                    | 18 ++++++++----------
+Fixes: f7bc7da0724f ("test/avocado/machine_aspeed.py: Add tests using buildroot images")
+Signed-off-by: Cédric Le Goater <clg@kaod.org>
+---
  tests/avocado/machine_aspeed.py | 16 ++++++++--------
- 9 files changed, 46 insertions(+), 40 deletions(-)
+ 1 file changed, 8 insertions(+), 8 deletions(-)
 
+diff --git a/tests/avocado/machine_aspeed.py b/tests/avocado/machine_aspeed.py
+index 0f64eb636c28..c703be99a6f7 100644
+--- a/tests/avocado/machine_aspeed.py
++++ b/tests/avocado/machine_aspeed.py
+@@ -92,7 +92,7 @@ def test_arm_ast2500_romulus_openbmc_v2_9_0(self):
+ 
+         self.do_test_arm_aspeed(image_path)
+ 
+-    def do_test_arm_aspeed_buidroot_start(self, image, cpu_id):
++    def do_test_arm_aspeed_buildroot_start(self, image, cpu_id):
+         self.vm.set_console()
+         self.vm.add_args('-drive', 'file=' + image + ',if=mtd,format=raw',
+                          '-net', 'nic', '-net', 'user')
+@@ -109,11 +109,11 @@ def do_test_arm_aspeed_buidroot_start(self, image, cpu_id):
+         exec_command(self, 'root')
+         time.sleep(0.1)
+ 
+-    def do_test_arm_aspeed_buidroot_poweroff(self):
++    def do_test_arm_aspeed_buildroot_poweroff(self):
+         exec_command_and_wait_for_pattern(self, 'poweroff',
+                                           'reboot: System halted');
+ 
+-    def test_arm_ast2500_evb_builroot(self):
++    def test_arm_ast2500_evb_buildroot(self):
+         """
+         :avocado: tags=arch:arm
+         :avocado: tags=machine:ast2500-evb
+@@ -127,7 +127,7 @@ def test_arm_ast2500_evb_builroot(self):
+ 
+         self.vm.add_args('-device',
+                          'tmp105,bus=aspeed.i2c.bus.3,address=0x4d,id=tmp-test');
+-        self.do_test_arm_aspeed_buidroot_start(image_path, '0x0')
++        self.do_test_arm_aspeed_buildroot_start(image_path, '0x0')
+ 
+         exec_command_and_wait_for_pattern(self,
+              'echo lm75 0x4d > /sys/class/i2c-dev/i2c-3/device/new_device',
+@@ -139,9 +139,9 @@ def test_arm_ast2500_evb_builroot(self):
+         exec_command_and_wait_for_pattern(self,
+                              'cat /sys/class/hwmon/hwmon1/temp1_input', '18000')
+ 
+-        self.do_test_arm_aspeed_buidroot_poweroff()
++        self.do_test_arm_aspeed_buildroot_poweroff()
+ 
+-    def test_arm_ast2600_evb_builroot(self):
++    def test_arm_ast2600_evb_buildroot(self):
+         """
+         :avocado: tags=arch:arm
+         :avocado: tags=machine:ast2600-evb
+@@ -157,7 +157,7 @@ def test_arm_ast2600_evb_builroot(self):
+                          'tmp105,bus=aspeed.i2c.bus.3,address=0x4d,id=tmp-test');
+         self.vm.add_args('-device',
+                          'ds1338,bus=aspeed.i2c.bus.3,address=0x32');
+-        self.do_test_arm_aspeed_buidroot_start(image_path, '0xf00')
++        self.do_test_arm_aspeed_buildroot_start(image_path, '0xf00')
+ 
+         exec_command_and_wait_for_pattern(self,
+              'echo lm75 0x4d > /sys/class/i2c-dev/i2c-3/device/new_device',
+@@ -175,7 +175,7 @@ def test_arm_ast2600_evb_builroot(self):
+         year = time.strftime("%Y")
+         exec_command_and_wait_for_pattern(self, 'hwclock -f /dev/rtc1', year);
+ 
+-        self.do_test_arm_aspeed_buidroot_poweroff()
++        self.do_test_arm_aspeed_buildroot_poweroff()
+ 
+ 
+ class AST2x00MachineSDK(QemuSystemTest):
 -- 
 2.37.3

@@ -1,142 +1,118 @@
-Received: by 2002:a17:906:b088:0:0:0:0 with SMTP id x8csp180371ejy;
-        Fri, 23 Sep 2022 01:48:32 -0700 (PDT)
-X-Google-Smtp-Source: AMsMyM6j/HXTrZKBWFvUBeiwPdtRpTrpFigqtmB2QGPRgL9cdTpIrKeONuyGPyekvkS+VKbMzBYg
-X-Received: by 2002:a17:90b:4b88:b0:202:e381:e643 with SMTP id lr8-20020a17090b4b8800b00202e381e643mr19681989pjb.148.1663922912104;
-        Fri, 23 Sep 2022 01:48:32 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1663922912; cv=none;
+Received: by 2002:a17:906:b088:0:0:0:0 with SMTP id x8csp184804ejy;
+        Fri, 23 Sep 2022 01:59:24 -0700 (PDT)
+X-Google-Smtp-Source: AMsMyM4IURZWygt1kfRLafHl86Z6hPGQzxK7bqNGsdqkoXydiDKc2dC4fVaE5KWOKyRYA6YPImiq
+X-Received: by 2002:a05:620a:1254:b0:6cd:4e36:481d with SMTP id a20-20020a05620a125400b006cd4e36481dmr4753619qkl.661.1663923564019;
+        Fri, 23 Sep 2022 01:59:24 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1663923564; cv=none;
         d=google.com; s=arc-20160816;
-        b=mbewILF68gzVBaBIN91M5IBLUbSvSUPhCeXvlqusSQGXfyLv5Eg3KXoN3HxqVzviaQ
-         zqqsVaOXL/YXD4BHh1+pR+E1FET4LIcgsPIcldNxgp9Xh/FjNT0Zc7aeWq0uAHbHyeYu
-         2am70MdSN4pusyxlK/nXsR9nYbrbKYlHY7yX+CYtlr+o9kf/ZiumcLK8EwujbC9cvDVC
-         yD9bloQwV2o0x9SwhqC/tTlzQUifOCZalPj6ZwJJkcnKOQ/pUHzEZr7wgHhwUpwAizGD
-         eKBeYM1nLEAJLBjZfOCi3ukCO8tMRbN+FllcUDcU2dNwx5OzQFhKzGR5BqMlSR/znKx0
-         5ThQ==
+        b=Q6jB1STedZQdEYgihINe2GiwddNpw13f3pZhAML9YyUqdRX6/dXoM3cB96sVnyHw6E
+         CgYSnGL6oqhByuU9kfX5NGVfH1lKQNiWCTVAkXYI4KZ9aYXK78rf8f0/Jlfqp2xP+/H5
+         0YaYtwg4PIUWkCFLAy/Mn/MY2osw5AmIClQ4NwYKCfxDJmeUSxhE60HBlp8fmZ4/97ZD
+         feaJlkHQZwZIr9Wn3lHhFWh24GduEAFcCPhJgwW3DDKGOytS6v0NKmg5nMxy0Iit8Ki9
+         w6mVKVZHeKaBK3OaWxLjkLR0/pM+kO7zdzPGka3sXgnPQnW/UHsd6OiHpXk5+HLJQtP5
+         ceFA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from;
-        bh=TQWn8mrtVFjJENhXAorL/DqvuvlarHTGGpamHd5hass=;
-        b=aL1WXPZlVut6ijkdAmXV9DS4xhFgeyUDY6HA+efih7u6WyDEmSLd/vcb/Ju0G5Vm6Q
-         qV96pJEBHkQU9QlqmJhGEOj39BPsPSxeNK1q/DR+d9WDQHbHMCOKeyDzbLxqyT1W7ulp
-         uF/skJ0KmFlciN1cEry65QqjNeOpZBiwcG1pt6wW5J+ojKcc15ighYd9CPDOVhIWbNOT
-         D//ag2dsJwmaclTBHmP+mP5+bcexmffLVIE0xzqd2TO38eJ1GlcAQby1Zzk5V3nvJrxj
-         4+LX9y/77o6smhRF5v+PwYl0CgLOt/c8VMfdLi8+c57xStenbB97L5ZrBXz4nCHGbU+n
-         QHAQ==
+        h=from:reply-to:sender:errors-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence:mime-version
+         :content-transfer-encoding:content-language:accept-language
+         :message-id:date:thread-index:thread-topic:subject:cc:to;
+        bh=ehHzURrTPmXNyvonnfwxhkHLRLQD+EWE7JEb54D9ZwU=;
+        b=tJWaBqqKIAHs1ht3y5c7nhVE+ojDGqdIuX/f0w4H7vq2RJNGO3HM+tNrXADrPBdtwV
+         1alOl8045dpU4tlVEicRn7FFLf6W52SjqoDatsUDhzfahtF72X3SO7Zf2SR42TTbqEL+
+         wwpNhdT2kKfwJUqvP7TrM5hOXsspel9oKOHHo7lNffDS23vMngE9cRa0hn30WjaQw/qj
+         woUi/28prEetwy76T1XeR1ojLPVeVKTJzXeUbCvygTEnz0q3+rGkEFwZyMcZfz5F8KC/
+         hLI43qNurVk1t2P8czlolnW1RjqpNVOSQ8CCc0tNEUjWMB/pXYV1vD7CyiPlRGPcHQvD
+         /cDg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of srs0=gbdq=z2=kaod.org=clg@ozlabs.org designates 2404:9400:2221:ea00::3 as permitted sender) smtp.mailfrom="SRS0=gbDQ=Z2=kaod.org=clg@ozlabs.org"
-Return-Path: <SRS0=gbDQ=Z2=kaod.org=clg@ozlabs.org>
-Received: from gandalf.ozlabs.org (mail.ozlabs.org. [2404:9400:2221:ea00::3])
-        by mx.google.com with ESMTPS id h11-20020a056a00170b00b00539d5b84ef9si7750000pfc.177.2022.09.23.01.48.31
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 23 Sep 2022 01:48:32 -0700 (PDT)
-Received-SPF: pass (google.com: domain of srs0=gbdq=z2=kaod.org=clg@ozlabs.org designates 2404:9400:2221:ea00::3 as permitted sender) client-ip=2404:9400:2221:ea00::3;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id cg3-20020a05622a408300b003445ee73e18si3881706qtb.685.2022.09.23.01.59.23
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Fri, 23 Sep 2022 01:59:24 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of srs0=gbdq=z2=kaod.org=clg@ozlabs.org designates 2404:9400:2221:ea00::3 as permitted sender) smtp.mailfrom="SRS0=gbDQ=Z2=kaod.org=clg@ozlabs.org"
-Received: from gandalf.ozlabs.org (mail.ozlabs.org [IPv6:2404:9400:2221:ea00::3])
-	by gandalf.ozlabs.org (Postfix) with ESMTP id 4MYm5V0lfpz4xGk;
-	Fri, 23 Sep 2022 18:48:30 +1000 (AEST)
-Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	by mail.ozlabs.org (Postfix) with ESMTPSA id 4MYm5R41mMz4x3w;
-	Fri, 23 Sep 2022 18:48:27 +1000 (AEST)
-From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>,
-	Richard Henderson <richard.henderson@linaro.org>,
-	Joel Stanley <joel@jms.id.au>,
-	Andrew Jeffery <andrew@aj.id.au>,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	=?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
-Subject: [PATCH 6/6] aspeed/smc: Cache AspeedSMCClass
-Date: Fri, 23 Sep 2022 10:48:03 +0200
-Message-Id: <20220923084803.498337-7-clg@kaod.org>
-X-Mailer: git-send-email 2.37.3
-In-Reply-To: <20220923084803.498337-1-clg@kaod.org>
-References: <20220923084803.498337-1-clg@kaod.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+Received: from localhost ([::1]:42382 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1obeWn-0005Yn-KM
+	for alex.bennee@linaro.org; Fri, 23 Sep 2022 04:59:21 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:48924)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <zhukeqian1@huawei.com>)
+ id 1obeWI-0005WB-Sz; Fri, 23 Sep 2022 04:58:51 -0400
+Received: from szxga01-in.huawei.com ([45.249.212.187]:3954)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <zhukeqian1@huawei.com>)
+ id 1obeWG-0001sM-5g; Fri, 23 Sep 2022 04:58:50 -0400
+Received: from dggpeml500020.china.huawei.com (unknown [172.30.72.54])
+ by szxga01-in.huawei.com (SkyGuard) with ESMTP id 4MYmFt2C8dzpTsc;
+ Fri, 23 Sep 2022 16:55:46 +0800 (CST)
+Received: from dggpeml100021.china.huawei.com (7.185.36.148) by
+ dggpeml500020.china.huawei.com (7.185.36.88) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2375.31; Fri, 23 Sep 2022 16:58:37 +0800
+Received: from kwepemm600016.china.huawei.com (7.193.23.20) by
+ dggpeml100021.china.huawei.com (7.185.36.148) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2375.31; Fri, 23 Sep 2022 16:58:36 +0800
+Received: from kwepemm600016.china.huawei.com ([7.193.23.20]) by
+ kwepemm600016.china.huawei.com ([7.193.23.20]) with mapi id 15.01.2375.031;
+ Fri, 23 Sep 2022 16:58:36 +0800
+To: Peter Maydell <peter.maydell@linaro.org>, Igor Mammedov
+ <imammedo@redhat.com>
+CC: "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, "qemu-arm@nongnu.org"
+ <qemu-arm@nongnu.org>, "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>,
+ Eric Auger <eric.auger@redhat.com>, Peter Xu <peterx@redhat.com>, "Wanghaibin
+ (D)" <wanghaibin.wang@huawei.com>
+Subject: Re: [PATCH v2] hw/acpi: Add ospm_status hook implementation for
+ acpi-ged
+Thread-Topic: [PATCH v2] hw/acpi: Add ospm_status hook implementation for
+ acpi-ged
+Thread-Index: AdjPKnJtqSBn4jhsHkm9jn/UrlgR8g==
+Date: Fri, 23 Sep 2022 08:58:36 +0000
+Message-ID: <521edea5d2894a50874463ba812b0169@huawei.com>
+Accept-Language: zh-CN, en-US
+Content-Language: zh-CN
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-originating-ip: [10.174.187.224]
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-TUID: XS17gSzWoUgU
+X-CFilter-Loop: Reflected
+Received-SPF: pass client-ip=45.249.212.187;
+ envelope-from=zhukeqian1@huawei.com; helo=szxga01-in.huawei.com
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Reply-to:  zhukeqian <zhukeqian1@huawei.com>
+From:  zhukeqian via <qemu-arm@nongnu.org>
+X-TUID: 1c0M/BMgT4Ss
 
-Store a reference on the AspeedSMC class under the flash object and
-use it when accessing the flash contents. Avoiding the class cast
-checkers in these hot paths improves performance by 10% when running
-the aspeed avocado tests.
-
-Signed-off-by: Cédric Le Goater <clg@kaod.org>
----
- include/hw/ssi/aspeed_smc.h | 2 ++
- hw/ssi/aspeed_smc.c         | 9 ++++-----
- 2 files changed, 6 insertions(+), 5 deletions(-)
-
-diff --git a/include/hw/ssi/aspeed_smc.h b/include/hw/ssi/aspeed_smc.h
-index 2d5f8f3d8f68..8e1dda556b91 100644
---- a/include/hw/ssi/aspeed_smc.h
-+++ b/include/hw/ssi/aspeed_smc.h
-@@ -30,6 +30,7 @@
- #include "qom/object.h"
- 
- struct AspeedSMCState;
-+struct AspeedSMCClass;
- 
- #define TYPE_ASPEED_SMC_FLASH "aspeed.smc.flash"
- OBJECT_DECLARE_SIMPLE_TYPE(AspeedSMCFlash, ASPEED_SMC_FLASH)
-@@ -37,6 +38,7 @@ struct AspeedSMCFlash {
-     SysBusDevice parent_obj;
- 
-     struct AspeedSMCState *controller;
-+    struct AspeedSMCClass *asc;
-     uint8_t cs;
- 
-     MemoryRegion mmio;
-diff --git a/hw/ssi/aspeed_smc.c b/hw/ssi/aspeed_smc.c
-index faed7e0cbe17..22df4be528a7 100644
---- a/hw/ssi/aspeed_smc.c
-+++ b/hw/ssi/aspeed_smc.c
-@@ -388,7 +388,7 @@ static inline int aspeed_smc_flash_cmd(const AspeedSMCFlash *fl)
- static inline int aspeed_smc_flash_addr_width(const AspeedSMCFlash *fl)
- {
-     const AspeedSMCState *s = fl->controller;
--    AspeedSMCClass *asc = ASPEED_SMC_GET_CLASS(s);
-+    AspeedSMCClass *asc = fl->asc;
- 
-     if (asc->addr_width) {
-         return asc->addr_width(s);
-@@ -420,7 +420,7 @@ static uint32_t aspeed_smc_check_segment_addr(const AspeedSMCFlash *fl,
-                                               uint32_t addr)
- {
-     const AspeedSMCState *s = fl->controller;
--    AspeedSMCClass *asc = ASPEED_SMC_GET_CLASS(s);
-+    AspeedSMCClass *asc = fl->asc;
-     AspeedSegments seg;
- 
-     asc->reg_to_segment(s, s->regs[R_SEG_ADDR0 + fl->cs], &seg);
-@@ -1234,7 +1234,6 @@ static const TypeInfo aspeed_smc_info = {
- static void aspeed_smc_flash_realize(DeviceState *dev, Error **errp)
- {
-     AspeedSMCFlash *s = ASPEED_SMC_FLASH(dev);
--    AspeedSMCClass *asc;
-     g_autofree char *name = g_strdup_printf(TYPE_ASPEED_SMC_FLASH ".%d", s->cs);
- 
-     if (!s->controller) {
-@@ -1242,14 +1241,14 @@ static void aspeed_smc_flash_realize(DeviceState *dev, Error **errp)
-         return;
-     }
- 
--    asc = ASPEED_SMC_GET_CLASS(s->controller);
-+    s->asc = ASPEED_SMC_GET_CLASS(s->controller);
- 
-     /*
-      * Use the default segment value to size the memory region. This
-      * can be changed by FW at runtime.
-      */
-     memory_region_init_io(&s->mmio, OBJECT(s), &aspeed_smc_flash_ops,
--                          s, name, asc->segments[s->cs].size);
-+                          s, name, s->asc->segments[s->cs].size);
-     sysbus_init_mmio(SYS_BUS_DEVICE(dev), &s->mmio);
- }
- 
--- 
-2.37.3
+Pj4gPiBJIG5vdGljZSB0aGlzIGRvZXNuJ3Qgc2VlbSB0byBoYXZlIGdvbmUgaW4geWV0IC0tIHdo
+b3NlIHRyZWUgaXMgaXQgDQo+PiA+IGdvaW5nIHRvIGdvIHZpYT8NCj4+DQo+PiBJJ2QgZ3Vlc3Mg
+QVJNIHRyZWUgKGR1ZSB0byBhbG1vc3Qgc29sZSB1c2VyIHZpcnQtYXJtKS4NCj4+ICh0aGVyZSBh
+cmUgdG95IHVzZXJzIGxpa2UgbWljcm92bSBhbmQgbmV3IGxvb25nYXJjaCkNCj4NCj5PSzsgYXBw
+bGllZCB0byB0YXJnZXQtYXJtLm5leHQsIHRoYW5rcy4NCg0KVGhhbmtzLCBQZXRlci4NCg0KS2Vx
+aWFuLg0K

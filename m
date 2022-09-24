@@ -1,110 +1,110 @@
-Received: by 2002:a17:906:b088:0:0:0:0 with SMTP id x8csp663836ejy;
-        Fri, 23 Sep 2022 16:42:49 -0700 (PDT)
-X-Google-Smtp-Source: AMsMyM6uYMGWhsJz8wz2CPMaa+q4vj+NatNLrwdAONAAEacuWRjPmOpvquFHcJ0P0GydQwoo4QQm
-X-Received: by 2002:a0c:b295:0:b0:496:b91a:f5f4 with SMTP id r21-20020a0cb295000000b00496b91af5f4mr9166580qve.20.1663976569278;
-        Fri, 23 Sep 2022 16:42:49 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1663976569; cv=none;
+Received: by 2002:a17:906:b088:0:0:0:0 with SMTP id x8csp855081ejy;
+        Sat, 24 Sep 2022 02:11:20 -0700 (PDT)
+X-Google-Smtp-Source: AMsMyM6mpJ+/cHCDrIT8akeH2XxYIKMP4QkaDdB28HoKkfwsuvwAdhrLkh0YJWTtmuYT4u1F/zgx
+X-Received: by 2002:a05:622a:50:b0:35c:ee8c:c643 with SMTP id y16-20020a05622a005000b0035cee8cc643mr10452530qtw.315.1664010680182;
+        Sat, 24 Sep 2022 02:11:20 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1664010680; cv=none;
         d=google.com; s=arc-20160816;
-        b=Y+qHwlKemI34jbOil5xwNnSYSHM0gzbjkNsLrR3K/FVtLyX2CvG4EIydeKLw6IvYop
-         4iC/IzNKL5EqGvKN1WLZm4d5pbQI+u6JHupfG9sD2Ijz8JVqKvxWyqa89QqTbnKFXizn
-         DdBAjPhOWUOfDMpnyoNffzNZ9iLMdtZ5BCnboRo1pY7gtrCQ0vQJB9Llel+4hq6dlNdd
-         gxyRn/B/iSe1C5NQveRm77709kuBniTObJIqsom3HNF/UjBQeYmlfuqYp0wlBVvoZw8Q
-         KH/jwedyY8RI/XtWpuVevuJ07rdtPBczBuUDmWeNTO8Zj0os5Ms7ifl39IQBb/qrrhoB
-         +L/A==
+        b=iaG1e0YKsbaB86RwLVsr4ld6YK0hucFrUda/KVy3VWTXBo5qW9BfOCTnC2MX9LvAuv
+         3ij8FKEH19WRhwMFloZaZaypFpcqd0EIlvBwjxTiJBXJZo8nLwgoalgHJ5/MO1CFGqls
+         TdiR1yDpGVfMWuKKvWL6sbU5AE0m3dj2Bo+E0Kg5lUuLoFRSss2YrYsYjQVb2Do9R/Dp
+         VU9Er29P+G8qBFKa9aWZm3tecAhpoiyH2Rc1hGATEvgHZmrP2BFtcvt1+Typ7SZuBZDJ
+         i4JHo7kNE+vZQ8kaLiRhv1l69iWQX5VSrzueYeqg1v4mdhJSbwfQUzeGApht6jopwfDS
+         M1Xg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
          :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=jn4KdjsCboXNykDe0uR9Yd7ixztgUOADRPuP7Ji2sqw=;
-        b=0wrFypfur8ZQFZM5sb8JXBHy6T1TXn6ISO+s5BZ1+O3YkAxb9Xl5dZHEi+hkL2Wy2t
-         V0rPrVfGp7BWX2imD+f5+SfzDCgJ13jbUfSn6mvnngKt0+KXAdqFoMJMz7y67P5o2GJ0
-         +7sGoyIO9pdRbt9FJvfO5XnOf6kRy/5WnuPLNpKir++vcZZiNMEWPG8iW89lGhN00Ae8
-         JhLleTBK8GyqOryO2mLvGNiQVJyn3JRA+gyUorxoco2+w97tv5OV36Y2MaGUTJG5RzYp
-         2fJpB76QORz3EV5Ia9Lt7II07HaeOqzDThXEb268KRCMTUiXcMu46XuYtA+TPHZce2eY
-         jrkA==
+        bh=Yq2diIusuO1Sjn6Er52SaSUiU3/pPgt/CwGzIP3Y3zY=;
+        b=pI/RU8FdnkjaybZRxjNeeJA/W3S4FWxQmmvm8IwyEhj9vj/S5Lp3vlhb05NeZZFUJf
+         xF4qR6i2pVCLZUKypwsCRgH/BeORTMko9VqJiHo+k6t+liomHorsKhUJ6gP3mT8FGhVr
+         jLlB0rNQDAc3WvUtOYInIEymll7wkJc13X9OSIWnz3/X9e8yaEMrs3QwoQQxOzSuaXBO
+         pAV4zSOXuTK9Inh7yu+s4sIF+KSkwXw4RdNqbU8T1Q3+DP7bHZSqFgG0j2WqYFzyYNiS
+         D3w9IXvS2yTq9O2LXrlQCDc5dbyMr9N/EGpLvob+8g2++3VRfDJOYE+mIHi5T1AiDyvi
+         bWoA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@google.com header.s=20210112 header.b=WRmTJTLc;
+       dkim=pass header.i=@linaro.org header.s=google header.b=hh+9WHL9;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id f16-20020a05622a1a1000b0033ffe99eac3si2589073qtb.528.2022.09.23.16.42.48
+        by mx.google.com with ESMTPS id cb21-20020a05622a1f9500b0035d24e527a5si1788961qtb.775.2022.09.24.02.11.19
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 23 Sep 2022 16:42:49 -0700 (PDT)
+        Sat, 24 Sep 2022 02:11:20 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@google.com header.s=20210112 header.b=WRmTJTLc;
+       dkim=pass header.i=@linaro.org header.s=google header.b=hh+9WHL9;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
-Received: from localhost ([::1]:44976 helo=lists1p.gnu.org)
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:52308 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1obsJk-0007Fd-Ka
-	for alex.bennee@linaro.org; Fri, 23 Sep 2022 19:42:48 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:60520)
+	id 1oc1Bv-0008EB-Im
+	for alex.bennee@linaro.org; Sat, 24 Sep 2022 05:11:19 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:48356)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <venture@google.com>)
- id 1obsJV-0007FK-1o
- for qemu-arm@nongnu.org; Fri, 23 Sep 2022 19:42:33 -0400
-Received: from mail-vs1-xe36.google.com ([2607:f8b0:4864:20::e36]:33707)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1oc1BV-0008Dw-2h
+ for qemu-arm@nongnu.org; Sat, 24 Sep 2022 05:10:53 -0400
+Received: from mail-ed1-x532.google.com ([2a00:1450:4864:20::532]:40896)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <venture@google.com>)
- id 1obsJT-0003N7-1V
- for qemu-arm@nongnu.org; Fri, 23 Sep 2022 19:42:32 -0400
-Received: by mail-vs1-xe36.google.com with SMTP id a129so1506361vsc.0
- for <qemu-arm@nongnu.org>; Fri, 23 Sep 2022 16:42:30 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20210112;
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1oc1BS-0005uM-PY
+ for qemu-arm@nongnu.org; Sat, 24 Sep 2022 05:10:52 -0400
+Received: by mail-ed1-x532.google.com with SMTP id v2so2112593edc.7
+ for <qemu-arm@nongnu.org>; Sat, 24 Sep 2022 02:10:47 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:from:to:cc:subject:date;
- bh=jn4KdjsCboXNykDe0uR9Yd7ixztgUOADRPuP7Ji2sqw=;
- b=WRmTJTLcWrpeOtMZ7nTuh0lqifgG1KSWdZKBUr48/p2MaTvWxU9RBKNGDFBwaAKiIC
- IvsPJnlw2cK3A6kDqBAWbOGwd9Bo76SjRNRW5OQfVgTPH2A4UpAxV21fs9+jWAXB64mW
- wsH2/RydoauG7AvYv6f7foZaO9hHxe45841vUQd+gLY20cqK+/zFvNfN7SkoJDl/whN+
- LHPAVuoYbwIn4QckBrLIe3SO/cfjgF481FPYDpzG6WsFMbbutq36THUVhgkH8Nz2Uiby
- Ta86h2R/eZHqPF0+5MHKmQ8Vtc+mJb7cJD2DVOeXKebRO3t0sqyICFfZrDZsQiEimEw/
- rEmw==
+ bh=Yq2diIusuO1Sjn6Er52SaSUiU3/pPgt/CwGzIP3Y3zY=;
+ b=hh+9WHL9qZxT/6IynQEUfmi7bDD4oG+vABunBbAUrv542Ok20erkAVZ1PvW6T07RHz
+ uAzminIXPiTD48ihJaVTjGFXetDhlX54Jsgr8oVaPdjzAPIf1lbUzZsPvwnpT40Zz2qx
+ vs30NsGUP17gVLOHt+JpZYSCUXxm37JWqVCH755DeBtLvEbLeGWU7FCTEWApnXDXcab0
+ AKt8vjF7nThr+w8u9Xj9UuoXfOopXfyqonOqZH4fu66uCw2+0qi/89kzVtDOmjMv8/Au
+ g37aX03T7Lh7rpItUaGUjjib1Ws9IXYcEqAxH8ajckMBQfJjJeRWin2/VGslE+duoQW4
+ yIWg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:x-gm-message-state:from:to:cc:subject:date;
- bh=jn4KdjsCboXNykDe0uR9Yd7ixztgUOADRPuP7Ji2sqw=;
- b=DNL+R5uBUEgk1mXvlib32FGuMIG3+/NOZPe+5ZDvwC+iQ0rHhAIFwCENQMS0jtmiDq
- VocnZP2dcfrpHSo3aRRP+kcJwD9WvZyG7TAotySCDlE+gaGXUrMhJ+EuD2ynYBjL0ZK0
- B95Lysst4NhVDuiB78Otn8H/JzefphyEyrsbCgmhSqVbviuyQJf86+L2P6r5sz1LS7bJ
- 65VvFm/081JaSq+h8W5yH+EArRS7P5cPADzDv59re/QfUu1s5yZ9qPuCD86FfH8q/+GY
- JPmDXPwfN9Ml5JynbC0D4pyX9/q9b3IoSiWIugKz4GsYGr0QtH3hVHNgoah71IH4AGou
- DDfQ==
-X-Gm-Message-State: ACrzQf0o44bzysPgHDroMtxlen9DUFNJDFWF37zFANUdfSOh+g264gsO
- +r8wt+u4mxv4YLAD0R1FA3NxG1MDKsWLaEzfZ2Pg+A==
-X-Received: by 2002:a67:e281:0:b0:398:8b:12df with SMTP id
- g1-20020a67e281000000b00398008b12dfmr4875605vsf.66.1663976549293; 
- Fri, 23 Sep 2022 16:42:29 -0700 (PDT)
+ bh=Yq2diIusuO1Sjn6Er52SaSUiU3/pPgt/CwGzIP3Y3zY=;
+ b=UWKccpif0QruvbrpNZG57sTse31eKZO3ivBfMDVs99WOdZAErJxf6S+I2KtvoHIqdL
+ z6Zj2HxBzq9QI+UwNsjFHxRjgqJjk50wMWkYknm2Z66cfDgTzl4IN8Bh3mfx/y+ql+Cl
+ PYi1cf40K7AAGJ8rBt1QFm2Iht5T6aHESf9c+tMsq1dDRqyv2w0vFTaoy9LS+0dsXS+G
+ ho9PYIbAhsc0Wt30qfXHlUk4cVy1sCDOdTL6n1lY8M75Lavisnuf+pwctQueGLYnyqyz
+ 1KEU7Qv9hwbHOp2Sjx5mPm3jUIMXbsZePS17jflIfDHFzQF0PhZosy+bJqz7osLFK+iP
+ zMTw==
+X-Gm-Message-State: ACrzQf257Xg/WDyeuAFyt7S98kq1I7X9tU0jMsCqNZEuvm6lRp9J7Wi6
+ ETW7ZL0PL+CzgjVzPVhlHARyBc6AZ0reedWxkXCMJA==
+X-Received: by 2002:a05:6402:1d86:b0:457:e84:f0e with SMTP id
+ dk6-20020a0564021d8600b004570e840f0emr436343edb.241.1664010646563; Sat, 24
+ Sep 2022 02:10:46 -0700 (PDT)
 MIME-Version: 1.0
 References: <20220921234646.949273-1-venture@google.com>
  <CAFEAcA8f+JA4WKMwGFNxg7tRxTwL=RzDLgdJLrP8Dw_jB4XoRA@mail.gmail.com>
  <CACGkMEvMtAjGQVzwUgjD20Hb=Za8KmRanmp-FWrUQD8xS+7Pkw@mail.gmail.com>
-In-Reply-To: <CACGkMEvMtAjGQVzwUgjD20Hb=Za8KmRanmp-FWrUQD8xS+7Pkw@mail.gmail.com>
-From: Patrick Venture <venture@google.com>
-Date: Fri, 23 Sep 2022 16:42:18 -0700
-Message-ID: <CAO=notwnOKMd=n2qQC=iFX-cofeKP=ZUKX2VNXobMgXO64Y+sw@mail.gmail.com>
+ <CAO=notwnOKMd=n2qQC=iFX-cofeKP=ZUKX2VNXobMgXO64Y+sw@mail.gmail.com>
+In-Reply-To: <CAO=notwnOKMd=n2qQC=iFX-cofeKP=ZUKX2VNXobMgXO64Y+sw@mail.gmail.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Sat, 24 Sep 2022 10:10:35 +0100
+Message-ID: <CAFEAcA97oHsQdk2fSq=umiUv8nNue0xCLtboRR2yPt_Gxh_zEg@mail.gmail.com>
 Subject: Re: [PATCH] hw/net: npcm7xx_emc: set MAC in register space
-To: Jason Wang <jasowang@redhat.com>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
+To: Patrick Venture <venture@google.com>
+Cc: Jason Wang <jasowang@redhat.com>,
  Havard Skinnemoen <hskinnemoen@google.com>, 
  CS20 KFTing <kfting@nuvoton.com>, qemu-arm <qemu-arm@nongnu.org>, 
  qemu-devel <qemu-devel@nongnu.org>, Hao Wu <wuhaotsh@google.com>
-Content-Type: multipart/alternative; boundary="00000000000022f74d05e960bb63"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::e36;
- envelope-from=venture@google.com; helo=mail-vs1-xe36.google.com
-X-Spam_score_int: -175
-X-Spam_score: -17.6
-X-Spam_bar: -----------------
-X-Spam_report: (-17.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- ENV_AND_HDR_SPF_MATCH=-0.5, HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001, USER_IN_DEF_DKIM_WL=-7.5,
- USER_IN_DEF_SPF_WL=-7.5 autolearn=ham autolearn_force=no
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::532;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x532.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -119,205 +119,48 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Z25/XAg/NDUd
+X-TUID: nAtTBbqg1w7q
 
---00000000000022f74d05e960bb63
-Content-Type: text/plain; charset="UTF-8"
+On Sat, 24 Sept 2022 at 00:42, Patrick Venture <venture@google.com> wrote:
+> On Thu, Sep 22, 2022 at 8:21 PM Jason Wang <jasowang@redhat.com> wrote:
+>>
+>> On Thu, Sep 22, 2022 at 8:35 PM Peter Maydell <peter.maydell@linaro.org> wrote:
+>> > A question to which I don't know the answer: if the guest writes to
+>> > the device to change the MAC address, should that persist across
+>> > reset, or should reset revert the device to the original MAC address
+>> > as specified by the user on the command line or whatever ? At the
+>> > moment you have the former behaviour (and end up storing the MAC
+>> > address in two places as a result -- it would be neater to either
+>> > keep it in only one place, or else have emc->regs[] be the current
+>> > programmed MAC address and emc->conf.macaddr the value to reset to).
+>> >
+>> > I'm not sure we're consistent between device models about that,
+>> > eg the e1000 seems to reset to the initial MAC addr, but the
+>> > imx_fec keeps the guest-set value over resets. Jason, is there
+>> > a recommended "right way" to handle guest-programmable MAC addresses
+>> > over device reset ?
+>>
+>> I think it depends on the NIC.
+>>
+>> E1000 has a EEPROM interface for providing the MAC address for the
+>> ethernet controller before it can be accessed by the driver during
+>> reset. For modern Intel NICs like E810, it has similar semantics but
+>> using NVM instead of EEPROM. So the current e1000 behaviour seems to
+>> be correct (treat the initiali MAC as the one stored in the EEPROM).
+>>
+>> I guess most NIC should behave the same as having a persistent storage
+>> for MAC for the controller during reset, but I'm not sure this is the
+>> case for imx_fec.
 
-On Thu, Sep 22, 2022 at 8:21 PM Jason Wang <jasowang@redhat.com> wrote:
+> So the first time the NIC is realized, it should take the value from
+> the command line.  Then later if the guest OS updates it, it should
+> always on reset use that provided value?
 
-> On Thu, Sep 22, 2022 at 8:35 PM Peter Maydell <peter.maydell@linaro.org>
-> wrote:
-> >
-> > On Thu, 22 Sept 2022 at 00:47, Patrick Venture <venture@google.com>
-> wrote:
-> > >
-> > > The MAC address set from Qemu wasn't being saved into the register
-> space.
-> > >
-> > > Reviewed-by: Hao Wu <wuhaotsh@google.com>
-> > > Signed-off-by: Patrick Venture <venture@google.com>
-> >
-> > > @@ -112,6 +115,18 @@ static void emc_reset(NPCM7xxEMCState *emc)
-> > >
-> > >      emc->tx_active = false;
-> > >      emc->rx_active = false;
-> > > +
-> > > +    /* Set the MAC address in the register space. */
-> > > +    uint32_t value = (emc->conf.macaddr.a[0] << 24) |
-> > > +        (emc->conf.macaddr.a[1] << 16) |
-> > > +        (emc->conf.macaddr.a[2] << 8) |
-> > > +        emc->conf.macaddr.a[3];
-> > > +    npcm7xx_emc_write(emc, REG_CAMM_BASE * sizeof(uint32_t), value,
-> > > +                      sizeof(uint32_t));
-> > > +
-> > > +    value = (emc->conf.macaddr.a[4] << 24) | (emc->conf.macaddr.a[5]
-> << 16);
-> > > +    npcm7xx_emc_write(emc, REG_CAML_BASE * sizeof(uint32_t), value,
-> > > +                      sizeof(uint32_t));
-> >
-> > If I understand correctly, the issue here is that
-> emc->regs[REG_CAMM_BASE]
-> > and emc->regs[REG_CAML_BASE] aren't being reset correctly. If so,
-> > I think the better approach is to simply reset them here, without
-> > going through the register-write function, the same way we already
-> > do for the handful of other registers which have non-zero reset values.
-> > That's the way other devices seem to do it.
-> >
-> > A question to which I don't know the answer: if the guest writes to
-> > the device to change the MAC address, should that persist across
-> > reset, or should reset revert the device to the original MAC address
-> > as specified by the user on the command line or whatever ? At the
-> > moment you have the former behaviour (and end up storing the MAC
-> > address in two places as a result -- it would be neater to either
-> > keep it in only one place, or else have emc->regs[] be the current
-> > programmed MAC address and emc->conf.macaddr the value to reset to).
-> >
-> > I'm not sure we're consistent between device models about that,
-> > eg the e1000 seems to reset to the initial MAC addr, but the
-> > imx_fec keeps the guest-set value over resets. Jason, is there
-> > a recommended "right way" to handle guest-programmable MAC addresses
-> > over device reset ?
->
-> I think it depends on the NIC.
->
-> E1000 has a EEPROM interface for providing the MAC address for the
-> ethernet controller before it can be accessed by the driver during
-> reset. For modern Intel NICs like E810, it has similar semantics but
-> using NVM instead of EEPROM. So the current e1000 behaviour seems to
-> be correct (treat the initiali MAC as the one stored in the EEPROM).
->
-> I guess most NIC should behave the same as having a persistent storage
-> for MAC for the controller during reset, but I'm not sure this is the
-> case for imx_fec.
->
+I think what Jason is suggesting is that that should depend on what
+the real hardware does. On a physical board, if the guest sets the
+MAC address, and then you power-cycle the hardware, does the MAC
+that it set still persist after powercycle ? Does the guest writing
+to these MAC registers correspond to writing to an EEPROM ?
 
-So the first time the NIC is realized, it should take the value from the
-command line.  Then later if the guest OS updates it, it should always on
-reset use that provided value?
-
-
->
-> (Anyhow, if we change the behaviour we need keep migration compatibility)
->
-> Thanks
->
-> >
-> > thanks
-> > -- PMM
-> >
->
->
-
---00000000000022f74d05e960bb63
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr"><div dir=3D"ltr"><br></div><br><div class=3D"gmail_quote">=
-<div dir=3D"ltr" class=3D"gmail_attr">On Thu, Sep 22, 2022 at 8:21 PM Jason=
- Wang &lt;<a href=3D"mailto:jasowang@redhat.com">jasowang@redhat.com</a>&gt=
-; wrote:<br></div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px=
- 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex">On Thu,=
- Sep 22, 2022 at 8:35 PM Peter Maydell &lt;<a href=3D"mailto:peter.maydell@=
-linaro.org" target=3D"_blank">peter.maydell@linaro.org</a>&gt; wrote:<br>
-&gt;<br>
-&gt; On Thu, 22 Sept 2022 at 00:47, Patrick Venture &lt;<a href=3D"mailto:v=
-enture@google.com" target=3D"_blank">venture@google.com</a>&gt; wrote:<br>
-&gt; &gt;<br>
-&gt; &gt; The MAC address set from Qemu wasn&#39;t being saved into the reg=
-ister space.<br>
-&gt; &gt;<br>
-&gt; &gt; Reviewed-by: Hao Wu &lt;<a href=3D"mailto:wuhaotsh@google.com" ta=
-rget=3D"_blank">wuhaotsh@google.com</a>&gt;<br>
-&gt; &gt; Signed-off-by: Patrick Venture &lt;<a href=3D"mailto:venture@goog=
-le.com" target=3D"_blank">venture@google.com</a>&gt;<br>
-&gt;<br>
-&gt; &gt; @@ -112,6 +115,18 @@ static void emc_reset(NPCM7xxEMCState *emc)<=
-br>
-&gt; &gt;<br>
-&gt; &gt;=C2=A0 =C2=A0 =C2=A0 emc-&gt;tx_active =3D false;<br>
-&gt; &gt;=C2=A0 =C2=A0 =C2=A0 emc-&gt;rx_active =3D false;<br>
-&gt; &gt; +<br>
-&gt; &gt; +=C2=A0 =C2=A0 /* Set the MAC address in the register space. */<b=
-r>
-&gt; &gt; +=C2=A0 =C2=A0 uint32_t value =3D (emc-&gt;conf.macaddr.a[0] &lt;=
-&lt; 24) |<br>
-&gt; &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 (emc-&gt;conf.macaddr.a[1] &lt;&lt; =
-16) |<br>
-&gt; &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 (emc-&gt;conf.macaddr.a[2] &lt;&lt; =
-8) |<br>
-&gt; &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 emc-&gt;conf.macaddr.a[3];<br>
-&gt; &gt; +=C2=A0 =C2=A0 npcm7xx_emc_write(emc, REG_CAMM_BASE * sizeof(uint=
-32_t), value,<br>
-&gt; &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 =C2=A0 sizeof(uint32_t));<br>
-&gt; &gt; +<br>
-&gt; &gt; +=C2=A0 =C2=A0 value =3D (emc-&gt;conf.macaddr.a[4] &lt;&lt; 24) =
-| (emc-&gt;conf.macaddr.a[5] &lt;&lt; 16);<br>
-&gt; &gt; +=C2=A0 =C2=A0 npcm7xx_emc_write(emc, REG_CAML_BASE * sizeof(uint=
-32_t), value,<br>
-&gt; &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 =C2=A0 sizeof(uint32_t));<br>
-&gt;<br>
-&gt; If I understand correctly, the issue here is that emc-&gt;regs[REG_CAM=
-M_BASE]<br>
-&gt; and emc-&gt;regs[REG_CAML_BASE] aren&#39;t being reset correctly. If s=
-o,<br>
-&gt; I think the better approach is to simply reset them here, without<br>
-&gt; going through the register-write function, the same way we already<br>
-&gt; do for the handful of other registers which have non-zero reset values=
-.<br>
-&gt; That&#39;s the way other devices seem to do it.<br>
-&gt;<br>
-&gt; A question to which I don&#39;t know the answer: if the guest writes t=
-o<br>
-&gt; the device to change the MAC address, should that persist across<br>
-&gt; reset, or should reset revert the device to the original MAC address<b=
-r>
-&gt; as specified by the user on the command line or whatever ? At the<br>
-&gt; moment you have the former behaviour (and end up storing the MAC<br>
-&gt; address in two places as a result -- it would be neater to either<br>
-&gt; keep it in only one place, or else have emc-&gt;regs[] be the current<=
-br>
-&gt; programmed MAC address and emc-&gt;conf.macaddr the value to reset to)=
-.<br>
-&gt;<br>
-&gt; I&#39;m not sure we&#39;re consistent between device models about that=
-,<br>
-&gt; eg the e1000 seems to reset to the initial MAC addr, but the<br>
-&gt; imx_fec keeps the guest-set value over resets. Jason, is there<br>
-&gt; a recommended &quot;right way&quot; to handle guest-programmable MAC a=
-ddresses<br>
-&gt; over device reset ?<br>
-<br>
-I think it depends on the NIC.<br>
-<br>
-E1000 has a EEPROM interface for providing the MAC address for the<br>
-ethernet controller before it can be accessed by the driver during<br>
-reset. For modern Intel NICs like E810, it has similar semantics but<br>
-using NVM instead of EEPROM. So the current e1000 behaviour seems to<br>
-be correct (treat the initiali MAC as the one stored in the EEPROM).<br>
-<br>
-I guess most NIC should behave the same as having a persistent storage<br>
-for MAC for the controller during reset, but I&#39;m not sure this is the<b=
-r>
-case for imx_fec.<br></blockquote><div><br></div><div>So the first time the=
- NIC is realized, it should take the value from the command line.=C2=A0 The=
-n later if the guest OS updates it, it should always on reset use that prov=
-ided value?</div><div>=C2=A0</div><blockquote class=3D"gmail_quote" style=
-=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding=
--left:1ex">
-<br>
-(Anyhow, if we change the behaviour we need keep migration compatibility)<b=
-r>
-<br>
-Thanks<br>
-<br>
-&gt;<br>
-&gt; thanks<br>
-&gt; -- PMM<br>
-&gt;<br>
-<br>
-</blockquote></div></div>
-
---00000000000022f74d05e960bb63--
+thanks
+-- PMM

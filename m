@@ -1,110 +1,109 @@
-Received: by 2002:a17:906:b088:0:0:0:0 with SMTP id x8csp1409400ejy;
-        Sun, 25 Sep 2022 04:39:28 -0700 (PDT)
-X-Google-Smtp-Source: AMsMyM5iLZJqqnPfKVEC6Q62Zo71sMROnzbjxGSEcihWpVIptl4INxt/nGSp6SbqVun6jgmztc3C
-X-Received: by 2002:a05:6214:5289:b0:4ac:c9f9:909c with SMTP id kj9-20020a056214528900b004acc9f9909cmr13361336qvb.34.1664105967923;
-        Sun, 25 Sep 2022 04:39:27 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1664105967; cv=none;
+Received: by 2002:a17:906:b088:0:0:0:0 with SMTP id x8csp1425217ejy;
+        Sun, 25 Sep 2022 05:17:20 -0700 (PDT)
+X-Google-Smtp-Source: AMsMyM5l+M+79CRU1Zx2SOP8Prn9VzpPDLVDjjHxFl9kD7rJqCZjNT21FmSNgs7+HABJWWEKCDj0
+X-Received: by 2002:ac8:7e84:0:b0:35b:a902:57c3 with SMTP id w4-20020ac87e84000000b0035ba90257c3mr14105757qtj.37.1664108239885;
+        Sun, 25 Sep 2022 05:17:19 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1664108239; cv=none;
         d=google.com; s=arc-20160816;
-        b=wf6Jzp3ghO6jTlDAgtZURCIxsS2Y6xUNWL+zb3KUDGyGwxOdyLU3sqoPGgpvDet/sd
-         qj2YlNIU8OHYuXhevdMyezLzLxMiSgMmAKyTTWZQyRXF9SEky86kFs8zXxRsCFS3Ezyw
-         HjU9CUHCoPnfOHZD5Hl27SFBh8LAzHjbFvZU/nRvswFLocDLEr37OEr+ii9QyHn4wSY8
-         AeHti375J501R9TCWzQ3SV8b5fpfTLaoi8ZBGjdy84pZiVQlRhRo4i1f+XIhyb0qg0mk
-         KSBtAzOi1rV67x5FrBomt21McmHZ4R0OdmbIzUi7QoowLJcqaD2CmCG8wXcu20z6zOTI
-         Gc6g==
+        b=acSezMCAvjDiKzUeLXGSymdbe6yyV8nu96amqk4bKnwfBZhwid/Gi7vMcB2ifMKsGr
+         K0GP+i1BD12QYqWLi4PBr+7/1CeDqYbNjwdtqOVNE1hP6WedcVpLzeey0RiFQLIPqvkl
+         zjUBzIzcWFZpu7b6Pqp7m8GL2f3geDSZLFtAb8IxvSzyOONCMYHBIyBvZL/UmC/4lP2h
+         H0t2ILSoRLoK10RSsdgxVumE6M33cUVMPuuFI7csBN0QogjHyahYOFcQg3xdOrM9YeVU
+         HSYXF28R7g8fg8nvZBReUcG4bF8SFI3sTAvmB9YZ1T5EEpf7NanyhAew/KZVxrL6dxJW
+         0YGQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=6rt1OwHx0poTtFu+/xYq6h3N3Rvq3r0ijnGYMxiWCtU=;
-        b=SArzcRxNxSPmc7MHSfASt5vEYWOrRd4CCzlS1TnTegDKP1bqVrEfgxsxGvnjNSkON/
-         zfo9MSkYcx0moz06juyLkcg0MdEyfBzOFV+Yawo7NtEeIIFe0pIWyM8noDOci0EeAj61
-         f1KR+BKslVrHIlhzyX9ZlqhzC+4GsmlPe+b90PXUjXask9tcx/roCJLVpbk2HBDFRU0Y
-         moTmNCcw3pr1TRUK5H/iWGLYwyynrx0C9asZ9k8yKEJWgsb+Wn8dfGWSKGDLzgudRmuO
-         +94imfDa85x3jjW3m1Tj3/SJNNjtnXW5KUqgQpw5zP59F6sqGBghehlkchpL9VHXO0QN
-         OeFA==
+        bh=cdOM1RV7vfdzIOgDlIpgFRBOhfRCBARffZGNXtbDMOw=;
+        b=v+zkQBQeaEanndWvuT27WYlRv9AQ85D4SaGaTcNkQXH2dDy51d8rNx2RTzkm9yBZ+c
+         uov1HJTgqHD5+YuFpKSu9mEV3vF4ePKbaDmjjLs3wBOcnvLAC+TvagCdDZloyaCU8ruV
+         sGrMREwFHBzszKKEldlZZU4w/vtIkIz5f5gmCe66jA5uaqA8aAKi7W3A+158JFdpKMBx
+         D8WWr9oGvOqlV/Ik3tYs60uHU79fwZii0FLrSIBVGcNU1Jsg37pfow12x7czVBOMkfPB
+         GZ77xdabTC44VLyBpt3j1Az+AfVXVFfCLVC6b4oPvl+ISl8/i4s0+v2avFEL7tRK9VkS
+         j4lA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=icbzfD3o;
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=ckQm1fbA;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id u8-20020ad45aa8000000b004acd9d2d642si7463387qvg.542.2022.09.25.04.39.27
+        by mx.google.com with ESMTPS id cj5-20020a05622a258500b0035ba28be958si7478807qtb.377.2022.09.25.05.17.19
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 25 Sep 2022 04:39:27 -0700 (PDT)
+        Sun, 25 Sep 2022 05:17:19 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=icbzfD3o;
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=ckQm1fbA;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:46540 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:47328 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ocPyp-0000ol-FN
-	for alex.bennee@linaro.org; Sun, 25 Sep 2022 07:39:27 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:42628)
+	id 1ocQZS-0004gj-DC
+	for alex.bennee@linaro.org; Sun, 25 Sep 2022 08:17:19 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:56622)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <bmeng.cn@gmail.com>)
- id 1ocPqf-0002dH-DL; Sun, 25 Sep 2022 07:31:01 -0400
-Received: from mail-pj1-x102a.google.com ([2607:f8b0:4864:20::102a]:50756)
+ id 1ocPsE-0003Ph-6J; Sun, 25 Sep 2022 07:32:38 -0400
+Received: from mail-pg1-x52d.google.com ([2607:f8b0:4864:20::52d]:45704)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <bmeng.cn@gmail.com>)
- id 1ocPqd-0006J2-SJ; Sun, 25 Sep 2022 07:31:01 -0400
-Received: by mail-pj1-x102a.google.com with SMTP id fv3so3992199pjb.0;
- Sun, 25 Sep 2022 04:30:59 -0700 (PDT)
+ id 1ocPsC-0006SV-Iz; Sun, 25 Sep 2022 07:32:37 -0400
+Received: by mail-pg1-x52d.google.com with SMTP id r62so390384pgr.12;
+ Sun, 25 Sep 2022 04:32:35 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date;
- bh=6rt1OwHx0poTtFu+/xYq6h3N3Rvq3r0ijnGYMxiWCtU=;
- b=icbzfD3or1/jGBFdIDKRm+a1PbJu/AAD9twNGAwhoJ1qRT3990fek5NtyuxVm+desi
- hZTFSsziyBitkl8ka0GEjfgWtqZLPubIfxOwBYpIMS4KGJtLn0yUl4O0tXY5fodlOSod
- x4NgAm9Mghm9c/qNqbdDO6m3zhMPtCNf/eRsPZRe3kXge8L7Exp2o89XBwnA5T9gvKca
- qWP0J/ZCwOkbrrwN7p/vD97eBk8pJf6b8SY4CD1AX0nTWaqGx/QU38eSDv5V1c75qLuR
- d89VqBwNiFcpTCJ7SCy3uvFIw/LgfsydasaHuhBs2GMaUAlUZ04OH//1fZzewjB+rPYN
- tEyQ==
+ bh=cdOM1RV7vfdzIOgDlIpgFRBOhfRCBARffZGNXtbDMOw=;
+ b=ckQm1fbAl9t6B4cGBfQxqm7V7vseIckI5swjAOXzsBs5s2ph+lRuq6Yk6bxqFM/8nl
+ MeX9A0d8aMxtMyWQWjez1bup8rizgea+bBdYMvZA8xcPrK/EVLFAq56e69ZJ+CvRz6Ta
+ uaZmHeKf5NZa0Mdjkpdc/iWIkTEdLPZTCVlK5xX9RMQmpCHJII+4ngNn2NFN82VVL5zp
+ QevNsje6x9Rhhx8woqENCMndCI0WpWWKIjcghKO6xgdXSuEQiOnmoHjsEqGf6nTXP1j6
+ 6NQ7XjH3b8hmXNnfU4vOPipGbvbYG4IZaVkTUl3d9FRgxs5BH1uMhBR2p4VuFcSOYNV6
+ Cbzg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date;
- bh=6rt1OwHx0poTtFu+/xYq6h3N3Rvq3r0ijnGYMxiWCtU=;
- b=Yzbp9Ee/wiuMsA2eSJIFO/tSgZbp4KrG8wHSgDxlch7rWuxZrwj1IARCKwITzwPWXP
- QaTaOe3/utR3koUUC+F7rUbjlQ/z63jDRvijs3dPPVkG2Rx4vsMude+DiReQc5iwVjHX
- yIhanIGJOLYjD0uxVgtE6CR40xqteFumnGEJ2qqkAm3l3VehHXxOi13sjzT63v26q7xp
- xZ8NROo1wPlptbldlMryg5PY49S8WOJz9fdeAez7g5hc1C8q75tzQcTkuV/XubK3t1pT
- mlpDy5V51d5jp5G/FpQ5RgFVvu21JvWEamTHAkK6nqBUM6qLDfUB/ZxP0bT+/3U/yKFi
- xBrw==
-X-Gm-Message-State: ACrzQf2SlTEPMEEQkeaL1NfayxyGeIGvQeS3eMGZTCBAOTGG0rrNaCWA
- Zzo5Umuhsod9tC8PBp3Q17y1/anqeGk=
-X-Received: by 2002:a17:90b:1b4c:b0:202:c1a3:25ce with SMTP id
- nv12-20020a17090b1b4c00b00202c1a325cemr31787763pjb.232.1664105458206; 
- Sun, 25 Sep 2022 04:30:58 -0700 (PDT)
+ bh=cdOM1RV7vfdzIOgDlIpgFRBOhfRCBARffZGNXtbDMOw=;
+ b=haUwKDLqAD+Sa0JbXHBovarSdK87o7kjCvQK49Fq0R0uOH6Ldi9WfHXj/iRtrqJqTD
+ ymfCItcNGMeV5k5sL+Cn3ao3z7vEeoLb1Obu3Xl7niwEkMjZ9jLQTU7F2wL5hpTvgYon
+ QR+mlXk/ZciloPNPYt3pVvtMc3BxoMSeE0mg5GU1BbcvA5kyRvHKAyvBd6grYPuuRPpE
+ LUNcQH5AUewaaJE64Gk7nhDn/PmamC/Olk/W3sR2SM1DSW4E5vhxb70GHAv/rm4DlSQz
+ FdcnFeFB9ZEjqR68Wz5fdKsGjM7EGgcqpsYm8XOftCAcWfSmV1kxcDUexBSDHbrj3LZZ
+ M1Eg==
+X-Gm-Message-State: ACrzQf27LuULOV6w430v1YrLnDXGPvJ1Iw/5q+8b2sVN/GF7MJBGjWB1
+ MNAKHYmgMCzrkYO5OkLAxciZYu+Oi3w=
+X-Received: by 2002:a63:31d6:0:b0:43a:1129:e485 with SMTP id
+ x205-20020a6331d6000000b0043a1129e485mr15393067pgx.177.1664105555146; 
+ Sun, 25 Sep 2022 04:32:35 -0700 (PDT)
 Received: from ubuntu.. (144.168.56.201.16clouds.com. [144.168.56.201])
  by smtp.gmail.com with ESMTPSA id
- z4-20020a1709027e8400b00176c6738d13sm9187760pla.169.2022.09.25.04.30.55
+ z4-20020a1709027e8400b00176c6738d13sm9187760pla.169.2022.09.25.04.32.32
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 25 Sep 2022 04:30:58 -0700 (PDT)
+ Sun, 25 Sep 2022 04:32:34 -0700 (PDT)
 From: Bin Meng <bmeng.cn@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
- Bin Meng <bin.meng@windriver.com>, Andrew Jeffery <andrew@aj.id.au>,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
- Joel Stanley <joel@jms.id.au>, Laurent Vivier <lvivier@redhat.com>,
- Paolo Bonzini <pbonzini@redhat.com>,
+ Bin Meng <bin.meng@windriver.com>, Joel Stanley <joel@jms.id.au>,
+ Laurent Vivier <lvivier@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
  Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
  qemu-arm@nongnu.org
-Subject: [PATCH v3 06/54] tests/qtest: aspeed_smc-test: Avoid using hardcoded
- /tmp
-Date: Sun, 25 Sep 2022 19:29:44 +0800
-Message-Id: <20220925113032.1949844-7-bmeng.cn@gmail.com>
+Subject: [PATCH v3 44/54] tests/qtest: microbit-test: Fix socket access for
+ win32
+Date: Sun, 25 Sep 2022 19:30:22 +0800
+Message-Id: <20220925113032.1949844-45-bmeng.cn@gmail.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20220925113032.1949844-1-bmeng.cn@gmail.com>
 References: <20220925113032.1949844-1-bmeng.cn@gmail.com>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::102a;
- envelope-from=bmeng.cn@gmail.com; helo=mail-pj1-x102a.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::52d;
+ envelope-from=bmeng.cn@gmail.com; helo=mail-pg1-x52d.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -126,46 +125,68 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: m8gA0Z0E58q6
+X-TUID: BGiJNx/d2J5k
 
 From: Bin Meng <bin.meng@windriver.com>
 
-This case was written to use hardcoded /tmp directory for temporary
-files. Update to use g_file_open_tmp() for a portable implementation.
+Sockets on Windows do not use *nix-style file descriptors, so
+write()/read()/close() do not work on Windows.
+
+Switch over to use send()/recv()/closesocket() which work with
+sockets on all platforms.
 
 Signed-off-by: Bin Meng <bin.meng@windriver.com>
+Reviewed-by: Marc-André Lureau <marcandre.lureau@redhat.com>
 ---
 
-Changes in v3:
-- Split to a separate patch
-- Ensure g_autofree variable is initialized
+(no changes since v1)
 
- tests/qtest/aspeed_smc-test.c | 5 ++---
- 1 file changed, 2 insertions(+), 3 deletions(-)
+ tests/qtest/microbit-test.c | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
 
-diff --git a/tests/qtest/aspeed_smc-test.c b/tests/qtest/aspeed_smc-test.c
-index 05ce941566..c713a3700b 100644
---- a/tests/qtest/aspeed_smc-test.c
-+++ b/tests/qtest/aspeed_smc-test.c
-@@ -608,16 +608,15 @@ static void test_write_block_protect_bottom_bit(void)
-     flash_reset();
- }
- 
--static char tmp_path[] = "/tmp/qtest.m25p80.XXXXXX";
--
- int main(int argc, char **argv)
+diff --git a/tests/qtest/microbit-test.c b/tests/qtest/microbit-test.c
+index b71daae9a9..4bc267020b 100644
+--- a/tests/qtest/microbit-test.c
++++ b/tests/qtest/microbit-test.c
+@@ -51,7 +51,7 @@ static void uart_rw_to_rxd(QTestState *qts, int sock_fd, const char *in,
  {
-+    g_autofree char *tmp_path = NULL;
-     int ret;
-     int fd;
+     int i, in_len = strlen(in);
  
-     g_test_init(&argc, &argv, NULL);
+-    g_assert_true(write(sock_fd, in, in_len) == in_len);
++    g_assert_true(send(sock_fd, in, in_len, 0) == in_len);
+     for (i = 0; i < in_len; i++) {
+         g_assert_true(uart_wait_for_event(qts, NRF51_UART_BASE +
+                                                A_UART_RXDRDY));
+@@ -77,7 +77,7 @@ static void test_nrf51_uart(void)
+     char s[10];
+     QTestState *qts = qtest_init_with_serial("-M microbit", &sock_fd);
  
--    fd = mkstemp(tmp_path);
-+    fd = g_file_open_tmp("qtest.m25p80.XXXXXX", &tmp_path, NULL);
-     g_assert(fd >= 0);
-     ret = ftruncate(fd, FLASH_SIZE);
-     g_assert(ret == 0);
+-    g_assert_true(write(sock_fd, "c", 1) == 1);
++    g_assert_true(send(sock_fd, "c", 1, 0) == 1);
+     g_assert_cmphex(qtest_readl(qts, NRF51_UART_BASE + A_UART_RXD), ==, 0x00);
+ 
+     qtest_writel(qts, NRF51_UART_BASE + A_UART_ENABLE, 0x04);
+@@ -97,17 +97,17 @@ static void test_nrf51_uart(void)
+ 
+     qtest_writel(qts, NRF51_UART_BASE + A_UART_STARTTX, 0x01);
+     uart_w_to_txd(qts, "d");
+-    g_assert_true(read(sock_fd, s, 10) == 1);
++    g_assert_true(recv(sock_fd, s, 10, 0) == 1);
+     g_assert_cmphex(s[0], ==, 'd');
+ 
+     qtest_writel(qts, NRF51_UART_BASE + A_UART_SUSPEND, 0x01);
+     qtest_writel(qts, NRF51_UART_BASE + A_UART_TXD, 'h');
+     qtest_writel(qts, NRF51_UART_BASE + A_UART_STARTTX, 0x01);
+     uart_w_to_txd(qts, "world");
+-    g_assert_true(read(sock_fd, s, 10) == 5);
++    g_assert_true(recv(sock_fd, s, 10, 0) == 5);
+     g_assert_true(memcmp(s, "world", 5) == 0);
+ 
+-    close(sock_fd);
++    closesocket(sock_fd);
+ 
+     qtest_quit(qts);
+ }
 -- 
 2.34.1
 

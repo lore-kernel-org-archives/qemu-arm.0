@@ -1,158 +1,132 @@
-Received: by 2002:a17:906:b088:0:0:0:0 with SMTP id x8csp1530613ejy;
-        Sun, 25 Sep 2022 09:21:51 -0700 (PDT)
-X-Google-Smtp-Source: AMsMyM6oPijxuFPxPCSj1BBiTTN2ZzzfqEYihWbjRH16RTexQJGCCB01mO28zzay/mKi6rUcAFoj
-X-Received: by 2002:a05:620a:4310:b0:6ac:f9df:178d with SMTP id u16-20020a05620a431000b006acf9df178dmr12181513qko.773.1664122911341;
-        Sun, 25 Sep 2022 09:21:51 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1664122911; cv=none;
+Received: by 2002:a8a:1193:0:0:0:0:0 with SMTP id m19csp2076761ocs;
+        Mon, 26 Sep 2022 03:56:38 -0700 (PDT)
+X-Google-Smtp-Source: AMsMyM491qBzHRxEGbiuyuSXLm9QM7EWiKFTotezOCCTSWTGN2L/JtVFK39ig6jcDRmdmgT3sCbe
+X-Received: by 2002:a05:622a:1052:b0:35c:b8e9:a8f9 with SMTP id f18-20020a05622a105200b0035cb8e9a8f9mr17348583qte.274.1664189798445;
+        Mon, 26 Sep 2022 03:56:38 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1664189798; cv=none;
         d=google.com; s=arc-20160816;
-        b=ehrQqch+XkBnZ5nyCrBPSj/Awqn+MlTScMv0CDbhPIhi3ofsWbb1oTl0VzIV8InY5N
-         TgbcvVHnB+SuA9JVco3gWPYt0/d+kFoVfpUxwwytYd7216lit4uReDjJmYoaj1bI4Vhe
-         Nk02ojO9M4/0X8ZTnstw6uuiQ/hxn7Urz76X0NOB4EP8brn33CtSbsWx0u0qP0Zmg3jI
-         NoxBQLhWrPGOY1GxtpsDGLzlrH5Ch6xMx8mK90vWjYOshToe3gFbiQ6to3NCLE6YQHd8
-         GS1aEfUrp9ykM9LH/5bI5Gf/GM/nBvvPaub4AbETV5ny/diPTQpGbZlFdZYBrn0XKeME
-         N11A==
+        b=DxDYL3qhBeuKCPYFSFsDc06WmcidcsSWxL6h7ExkgaPLjCsWLGWGbTFjH3V6WwLdaS
+         sZX+j3lfYmwJRNAH7xicBezCqVBw4i8Z5DNlnFgtidSC91VorVQ5B2K7W9khiBunEmHn
+         /rQlVntP6cMRXJBbWVJEGLw9IEVVg3+R74Cya5HZZmjybmEY/KQpRXa0bdAefl0KjuO1
+         YaZzk1L7mdA5JXqWmovlLkNV4MaD+ueDVG8RWH3RR3hqphhKjttHW1ER+miV9FCVyaFO
+         5BLibZHs2/j9I+qeW8aJadBhdFwCjXgLNe7uTrf0Zn/l0l8eTx0puQ0clFDpI8LhPFh1
+         vHKQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:content-language:references:cc:to:subject
-         :user-agent:mime-version:date:message-id;
-        bh=XfzijjvuzL2ahfsW00utValVSF+Wpr74LB7yw2XdSAQ=;
-        b=kVpYxbxrDiHDubqDWvitCOFnWXtlb/fL5U09voQjNgG5IZQmUNTxlBMYTBRThlBftk
-         I0/4gf2uXiEDbzmHEdoHUK8k1I/wNm8+YNNz8+1zZgqeyRIRwFHI8H7R83gIDSXV2AgM
-         d6QhIvtik0tYn0rugxpzTO/GObd6ar4mbrHjxHFWu+Wa0LprpJPWoLD2jV7NGxwPuQRw
-         dxCxlrQJTAqwbfzpOQe9iXPBo3V+PYhZpEM6qwQLcmTCxComnNq0y6JIgGFMt3SABLUw
-         av2zwBj4N6Rvbc7Aaqpko7MyuDkbJEPU+UqIgZmta/MTJVrLIhEd6q8OmjaNc/l7YOve
-         91TQ==
+        h=to:references:message-id:content-transfer-encoding:cc:date
+         :in-reply-to:from:subject:mime-version:dkim-signature;
+        bh=17k/b9gqNcIBWr3feuuHpvs4c3ERPyupeebOSl9sZfs=;
+        b=dWj8d+8JKbYoz4bk/hIkPfsTa1hF/OqFJDpWKyO1Kv20g6lZMdtrhrRhlbydNU4LLh
+         s5BwfI+kTc9G5z32aQoE06CmHI4kLOmOMURYRzGibrGNbHW4tEFqf75ILCNO5t9QcGG8
+         YajxtcKkvPbrvG8L56VuHukmyxa31Fwk9Bct35AmJ//uRzQSGEfhqP7ULAUKcJmymJWY
+         ez1EKt6kdihY3dDpUGpCzcrMeLlTvxvR4PWvtsSEDJAqhOhHF9Lj40E3V+rC7UbSYMFd
+         cavi7FWsDK5Aehm3wej3Gl5RvmpYUD1UCMWsEXOVBU6dI9OC4AGlIEXFZBrMPHvDA4FD
+         F2XA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x12-20020a05620a448c00b006bbb3edd637si8332071qkp.30.2022.09.25.09.21.51
+       dkim=pass header.i=@ynddal.dk header.s=sig1 header.b="L//+SPWv";
+       spf=pass (google.com: domain of mads@ynddal.dk designates 17.58.6.56 as permitted sender) smtp.mailfrom=mads@ynddal.dk
+Return-Path: <mads@ynddal.dk>
+Received: from pv50p00im-ztdg10021801.me.com (pv50p00im-ztdg10021801.me.com. [17.58.6.56])
+        by mx.google.com with ESMTPS id j17-20020a05620a147100b006cdccba6fccsi6821651qkl.674.2022.09.26.03.56.38
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 25 Sep 2022 09:21:51 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 26 Sep 2022 03:56:38 -0700 (PDT)
+Received-SPF: pass (google.com: domain of mads@ynddal.dk designates 17.58.6.56 as permitted sender) client-ip=17.58.6.56;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:44316 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ocUO6-0004Rv-QL
-	for alex.bennee@linaro.org; Sun, 25 Sep 2022 12:21:50 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37488)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1ocUNQ-0004P0-9h
- for qemu-arm@nongnu.org; Sun, 25 Sep 2022 12:21:10 -0400
-Received: from smtpout3.mo529.mail-out.ovh.net ([46.105.54.81]:51071)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1ocUNL-0006CW-Cc
- for qemu-arm@nongnu.org; Sun, 25 Sep 2022 12:21:07 -0400
-Received: from mxplan5.mail.ovh.net (unknown [10.108.1.114])
- by mo529.mail-out.ovh.net (Postfix) with ESMTPS id 0D69312BE0160;
- Sun, 25 Sep 2022 18:20:51 +0200 (CEST)
-Received: from kaod.org (37.59.142.97) by DAG4EX2.mxp5.local (172.16.2.32)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.12; Sun, 25 Sep
- 2022 18:20:50 +0200
-Authentication-Results: garm.ovh; auth=pass
- (GARM-97G0029cf5d7cb-dd61-4561-8765-c1aa0b1aba99,
- F2BAAC272AACDAE9383B0CB74E4F720F3B7CB042) smtp.auth=clg@kaod.org
-X-OVh-ClientIp: 82.64.250.170
-Message-ID: <5ebb56ed-d570-e69e-7406-f7f1d6218d05@kaod.org>
-Date: Sun, 25 Sep 2022 18:20:49 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.3.0
-Subject: Re: [PATCH v3 06/54] tests/qtest: aspeed_smc-test: Avoid using
- hardcoded /tmp
-To: Bin Meng <bmeng.cn@gmail.com>, <qemu-devel@nongnu.org>
-CC: =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>, Bin Meng
- <bin.meng@windriver.com>, Andrew Jeffery <andrew@aj.id.au>, Joel Stanley
- <joel@jms.id.au>, Laurent Vivier <lvivier@redhat.com>, Paolo Bonzini
- <pbonzini@redhat.com>, Peter Maydell <peter.maydell@linaro.org>, Thomas Huth
- <thuth@redhat.com>, <qemu-arm@nongnu.org>
-References: <20220925113032.1949844-1-bmeng.cn@gmail.com>
- <20220925113032.1949844-7-bmeng.cn@gmail.com>
-Content-Language: en-US
-From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
-In-Reply-To: <20220925113032.1949844-7-bmeng.cn@gmail.com>
-Content-Type: text/plain; charset="UTF-8"; format=flowed
-Content-Transfer-Encoding: 8bit
-X-Originating-IP: [37.59.142.97]
-X-ClientProxiedBy: DAG3EX1.mxp5.local (172.16.2.21) To DAG4EX2.mxp5.local
- (172.16.2.32)
-X-Ovh-Tracer-GUID: 16583110-3dfb-4a6d-b8e7-c997661aa31d
-X-Ovh-Tracer-Id: 9214927790472334325
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvfedrfeegtddguddtvdcutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemucehtddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpefkffggfgfuvfevfhfhjggtgfhisehtkeertddtfeejnecuhfhrohhmpeevrogurhhitggpnfgvpgfiohgrthgvrhcuoegtlhhgsehkrghougdrohhrgheqnecuggftrfgrthhtvghrnhepkeetjedtleekjedvveffudfhteetleeifeegfeffuefghfefkeehffeufeeludejnecukfhppedtrddtrddtrddtpdefjedrheelrddugedvrdeljeenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhhouggvpehsmhhtphhouhhtpdhhvghlohepmhigphhlrghnhedrmhgrihhlrdhovhhhrdhnvghtpdhinhgvtheptddrtddrtddrtddpmhgrihhlfhhrohhmpegtlhhgsehkrghougdrohhrghdpnhgspghrtghpthhtohepuddprhgtphhtthhopehqvghmuhdqrghrmhesnhhonhhgnhhurdhorhhgpdfovfetjfhoshhtpehmohehvdel
-Received-SPF: pass client-ip=46.105.54.81; envelope-from=clg@kaod.org;
- helo=smtpout3.mo529.mail-out.ovh.net
-X-Spam_score_int: -56
-X-Spam_score: -5.7
-X-Spam_bar: -----
-X-Spam_report: (-5.7 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-3.766,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 6ttRzXn2ui/Y
+       dkim=pass header.i=@ynddal.dk header.s=sig1 header.b="L//+SPWv";
+       spf=pass (google.com: domain of mads@ynddal.dk designates 17.58.6.56 as permitted sender) smtp.mailfrom=mads@ynddal.dk
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ynddal.dk; s=sig1;
+	t=1664189797; bh=17k/b9gqNcIBWr3feuuHpvs4c3ERPyupeebOSl9sZfs=;
+	h=Content-Type:Mime-Version:Subject:From:Date:Message-Id:To;
+	b=L//+SPWv+tSAj8ABhN67SpzXi4V8LwKhIRyIchKyA1Pst4/5NKy+GR1dhRQwBhJBE
+	 a0kXzpN5k0/0quTMDbtoElvZju3NmmCQlJyPLwMn6shckQ057aY+pBDb3uD+y8R8rJ
+	 bIhzDGxv+UIQWGkG4VvpaRx33N5rgMMuR4XoJXW4NmDYFZ/acnzk3bs3i0+kV9D5HQ
+	 HnNfEYQc4gw5BuqdyZ39r0q3PiyVnXSyoQuCj8JsGevzH28+ZNl1nowuMQiGB+lzoc
+	 8K86GEcBVs5fccwsZX6unXaMLhpQuf7UIpYgfhUec2rwHKSBcQozZQesyguFErRfi7
+	 WM4nKTVXag1iA==
+Received: from smtpclient.apple (pv50p00im-dlb-asmtp-mailmevip.me.com [17.56.9.10])
+	by pv50p00im-ztdg10021801.me.com (Postfix) with ESMTPSA id 647B41604EB;
+	Mon, 26 Sep 2022 10:56:34 +0000 (UTC)
+Content-Type: text/plain;
+	charset=utf-8
+Mime-Version: 1.0 (Mac OS X Mail 16.0 \(3696.120.41.1.1\))
+Subject: Re: [PATCH  v1 3/9] hw/intc/gic: use MxTxAttrs to divine accessing
+ CPU
+From: mads@ynddal.dk
+In-Reply-To: <20220922145832.1934429-4-alex.bennee@linaro.org>
+Date: Mon, 26 Sep 2022 12:56:32 +0200
+Cc: qemu-devel@nongnu.org,
+ f4bug@amsat.org,
+ Peter Maydell <peter.maydell@linaro.org>,
+ "open list:ARM cores" <qemu-arm@nongnu.org>
+Content-Transfer-Encoding: quoted-printable
+Message-Id: <85155F4E-0FFF-4DE6-A336-3F9C5B561CDC@ynddal.dk>
+References: <20220922145832.1934429-1-alex.bennee@linaro.org>
+ <20220922145832.1934429-4-alex.bennee@linaro.org>
+To: =?utf-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
+X-Mailer: Apple Mail (2.3696.120.41.1.1)
+X-Proofpoint-GUID: r5XPi0IoRuEJOqQnVv5E0zl3ShYtLZ8x
+X-Proofpoint-ORIG-GUID: r5XPi0IoRuEJOqQnVv5E0zl3ShYtLZ8x
+X-Proofpoint-Virus-Version: =?UTF-8?Q?vendor=3Dfsecure_engine=3D1.1.170-22c6f66c430a71ce266a39bfe25bc?=
+ =?UTF-8?Q?2903e8d5c8f:6.0.517,18.0.883,17.11.64.514.0000000_definitions?=
+ =?UTF-8?Q?=3D2022-06-21=5F08:2022-06-21=5F01,2022-06-21=5F08,2022-02-23?=
+ =?UTF-8?Q?=5F01_signatures=3D0?=
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 spamscore=0 mlxlogscore=999
+ clxscore=1030 malwarescore=0 mlxscore=0 phishscore=0 adultscore=0
+ bulkscore=0 suspectscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2206140000 definitions=main-2209260069
+X-TUID: +fDGQfi/GsVf
 
-On 9/25/22 13:29, Bin Meng wrote:
-> From: Bin Meng <bin.meng@windriver.com>
-> 
-> This case was written to use hardcoded /tmp directory for temporary
-> files. Update to use g_file_open_tmp() for a portable implementation.
-> 
-> Signed-off-by: Bin Meng <bin.meng@windriver.com>
 
-Reviewed-by: Cédric Le Goater <clg@kaod.org>
 
-Thanks,
-
-C.
-
+> On 22 Sep 2022, at 16.58, Alex Benn=C3=A9e <alex.bennee@linaro.org> =
+wrote:
+>=20
+> Now that MxTxAttrs encodes a CPU we should use that to figure it out.
+> This solves edge cases like accessing via gdbstub or qtest.
+>=20
+> Signed-off-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
+> Resolves: https://gitlab.com/qemu-project/qemu/-/issues/124
+>=20
 > ---
-> 
-> Changes in v3:
-> - Split to a separate patch
-> - Ensure g_autofree variable is initialized
-> 
->   tests/qtest/aspeed_smc-test.c | 5 ++---
->   1 file changed, 2 insertions(+), 3 deletions(-)
-> 
-> diff --git a/tests/qtest/aspeed_smc-test.c b/tests/qtest/aspeed_smc-test.c
-> index 05ce941566..c713a3700b 100644
-> --- a/tests/qtest/aspeed_smc-test.c
-> +++ b/tests/qtest/aspeed_smc-test.c
-> @@ -608,16 +608,15 @@ static void test_write_block_protect_bottom_bit(void)
->       flash_reset();
->   }
->   
-> -static char tmp_path[] = "/tmp/qtest.m25p80.XXXXXX";
-> -
->   int main(int argc, char **argv)
->   {
-> +    g_autofree char *tmp_path = NULL;
->       int ret;
->       int fd;
->   
->       g_test_init(&argc, &argv, NULL);
->   
-> -    fd = mkstemp(tmp_path);
-> +    fd = g_file_open_tmp("qtest.m25p80.XXXXXX", &tmp_path, NULL);
->       g_assert(fd >= 0);
->       ret = ftruncate(fd, FLASH_SIZE);
->       g_assert(ret == 0);
+> v2
+>  - update for new field
+>  - bool asserts
+> ---
+> hw/intc/arm_gic.c | 39 ++++++++++++++++++++++-----------------
+> 1 file changed, 22 insertions(+), 17 deletions(-)
+>=20
+> diff --git a/hw/intc/arm_gic.c b/hw/intc/arm_gic.c
+> index 492b2421ab..b58d3c4a95 100644
+> --- a/hw/intc/arm_gic.c
+> +++ b/hw/intc/arm_gic.c
+> @@ -56,17 +56,22 @@ static const uint8_t gic_id_gicv2[] =3D {
+>     0x04, 0x00, 0x00, 0x00, 0x90, 0xb4, 0x2b, 0x00, 0x0d, 0xf0, 0x05, =
+0xb1
+> };
+>=20
+> -static inline int gic_get_current_cpu(GICState *s)
+> +static inline int gic_get_current_cpu(GICState *s, MemTxAttrs attrs)
+> {
+> -    if (!qtest_enabled() && s->num_cpu > 1) {
+> -        return current_cpu->cpu_index;
+> -    }
+> -    return 0;
+> +    /*
+> +     * Something other than a CPU accessing the GIC would be a bug as
+> +     * would a CPU index higher than the GICState expects to be
+> +     * handling
+> +     */
+> +    g_assert(attrs.requester_is_cpu);
+> +    g_assert(attrs.cpu_index < s->num_cpu);
+> +
+> +    return attrs.requester_id;
+> }
 
+The asserts here abort on macOS, with HVF accelerator:
+
+ERROR:../hw/intc/arm_gic.c:66:gic_get_current_cpu: assertion failed: =
+(attrs.requester_is_cpu)
+Bail out! ERROR:../hw/intc/arm_gic.c:66:gic_get_current_cpu: assertion =
+failed: (attrs.requester_is_cpu)
+
+If I revert the changes inside this function, it seemingly works again.=

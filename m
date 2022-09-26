@@ -1,110 +1,84 @@
-Received: by 2002:a17:906:b088:0:0:0:0 with SMTP id x8csp855081ejy;
-        Sat, 24 Sep 2022 02:11:20 -0700 (PDT)
-X-Google-Smtp-Source: AMsMyM6mpJ+/cHCDrIT8akeH2XxYIKMP4QkaDdB28HoKkfwsuvwAdhrLkh0YJWTtmuYT4u1F/zgx
-X-Received: by 2002:a05:622a:50:b0:35c:ee8c:c643 with SMTP id y16-20020a05622a005000b0035cee8cc643mr10452530qtw.315.1664010680182;
-        Sat, 24 Sep 2022 02:11:20 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1664010680; cv=none;
+Received: by 2002:a8a:1193:0:0:0:0:0 with SMTP id m19csp1962462ocs;
+        Sun, 25 Sep 2022 23:27:23 -0700 (PDT)
+X-Google-Smtp-Source: AMsMyM7tUrfUbPw1FREEwDG/feyzIvDkrqHDJCYjxtQv2AwYSQaBzzSkGW8U8CLEI5OT+5nityNy
+X-Received: by 2002:a05:620a:4918:b0:6ce:3c8:4ef6 with SMTP id ed24-20020a05620a491800b006ce03c84ef6mr13202222qkb.634.1664173643019;
+        Sun, 25 Sep 2022 23:27:23 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1664173643; cv=none;
         d=google.com; s=arc-20160816;
-        b=iaG1e0YKsbaB86RwLVsr4ld6YK0hucFrUda/KVy3VWTXBo5qW9BfOCTnC2MX9LvAuv
-         3ij8FKEH19WRhwMFloZaZaypFpcqd0EIlvBwjxTiJBXJZo8nLwgoalgHJ5/MO1CFGqls
-         TdiR1yDpGVfMWuKKvWL6sbU5AE0m3dj2Bo+E0Kg5lUuLoFRSss2YrYsYjQVb2Do9R/Dp
-         VU9Er29P+G8qBFKa9aWZm3tecAhpoiyH2Rc1hGATEvgHZmrP2BFtcvt1+Typ7SZuBZDJ
-         i4JHo7kNE+vZQ8kaLiRhv1l69iWQX5VSrzueYeqg1v4mdhJSbwfQUzeGApht6jopwfDS
-         M1Xg==
+        b=Mc6w2kPnbi3RW4je3ePFrbpr2MCNO+S7sDkFE6y7PpBOq+Uj1LZMANlrALFEMczj5K
+         xwjzPlb2qdm3F4IMX3e9JvR+sSUj6d8sONVPOCU+Qo6UKccrtO5KvNk79dwec7yvvap/
+         hr9qEEY1C6to3v+YoML6vpmUOcfJeuk+Y7GMTdIW8jRo6AfQcW+mAZazoUZ1Xnd6C4F7
+         XqNIZYK2qJdw/ozP1kG7dIfZvKOoRv/EBGPIxKpK9JEeQEyAYvfHLc+sYUATxj3Aiyf/
+         N9oMfgQFbH3eWW/ApMwZeXZeysZ+41PIUGHXHzxYdTaGt/8E6TzAh9ciLzEdF/nPp2Xi
+         pngw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=Yq2diIusuO1Sjn6Er52SaSUiU3/pPgt/CwGzIP3Y3zY=;
-        b=pI/RU8FdnkjaybZRxjNeeJA/W3S4FWxQmmvm8IwyEhj9vj/S5Lp3vlhb05NeZZFUJf
-         xF4qR6i2pVCLZUKypwsCRgH/BeORTMko9VqJiHo+k6t+liomHorsKhUJ6gP3mT8FGhVr
-         jLlB0rNQDAc3WvUtOYInIEymll7wkJc13X9OSIWnz3/X9e8yaEMrs3QwoQQxOzSuaXBO
-         pAV4zSOXuTK9Inh7yu+s4sIF+KSkwXw4RdNqbU8T1Q3+DP7bHZSqFgG0j2WqYFzyYNiS
-         D3w9IXvS2yTq9O2LXrlQCDc5dbyMr9N/EGpLvob+8g2++3VRfDJOYE+mIHi5T1AiDyvi
-         bWoA==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:cc:to:from;
+        bh=1KcTPoVUdTXjsHONPECba7ZSg5BKwFl65JGkGYrHUpU=;
+        b=xxyAq9fakwIxL9K8hD8Ow4wn3i9S108NxTO1YaIpbu8WvZHYOPsB4Kb2bz6HWxQy6z
+         JI49ep7Nhmv100B8dEM4amGMjsnqWyWqBcDO84oQSzpBW27knBRLZmY1FF7LIPTaGAUe
+         PgHFSl7+C8hJCRW206wF6WPaXvy0O3G5+aHOTlhtAoSxUTcprgdSM1ZkWdivGanxYqMg
+         brvNy5oJhxDkPWuPKOQ4acyuuONchszFpLFBJ/ocC67lqGthnHQVp0S5eetyLdz3Iwtq
+         A0TB6npFKw4X+JKceUKhMO1eV65jtqM7ShmeGpNGIS0dNkOZCC+gdX4DVo9IZY8vBNif
+         ELOA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=hh+9WHL9;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id cb21-20020a05622a1f9500b0035d24e527a5si1788961qtb.775.2022.09.24.02.11.19
+        by mx.google.com with ESMTPS id br7-20020a05620a460700b006cea3a71a4dsi8717997qkb.274.2022.09.25.23.27.22
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 24 Sep 2022 02:11:20 -0700 (PDT)
+        Sun, 25 Sep 2022 23:27:23 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=hh+9WHL9;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:52308 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:42676 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1oc1Bv-0008EB-Im
-	for alex.bennee@linaro.org; Sat, 24 Sep 2022 05:11:19 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:48356)
+	id 1ochaM-0004Bu-IW
+	for alex.bennee@linaro.org; Mon, 26 Sep 2022 02:27:22 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:45044)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1oc1BV-0008Dw-2h
- for qemu-arm@nongnu.org; Sat, 24 Sep 2022 05:10:53 -0400
-Received: from mail-ed1-x532.google.com ([2a00:1450:4864:20::532]:40896)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1oc1BS-0005uM-PY
- for qemu-arm@nongnu.org; Sat, 24 Sep 2022 05:10:52 -0400
-Received: by mail-ed1-x532.google.com with SMTP id v2so2112593edc.7
- for <qemu-arm@nongnu.org>; Sat, 24 Sep 2022 02:10:47 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date;
- bh=Yq2diIusuO1Sjn6Er52SaSUiU3/pPgt/CwGzIP3Y3zY=;
- b=hh+9WHL9qZxT/6IynQEUfmi7bDD4oG+vABunBbAUrv542Ok20erkAVZ1PvW6T07RHz
- uAzminIXPiTD48ihJaVTjGFXetDhlX54Jsgr8oVaPdjzAPIf1lbUzZsPvwnpT40Zz2qx
- vs30NsGUP17gVLOHt+JpZYSCUXxm37JWqVCH755DeBtLvEbLeGWU7FCTEWApnXDXcab0
- AKt8vjF7nThr+w8u9Xj9UuoXfOopXfyqonOqZH4fu66uCw2+0qi/89kzVtDOmjMv8/Au
- g37aX03T7Lh7rpItUaGUjjib1Ws9IXYcEqAxH8ajckMBQfJjJeRWin2/VGslE+duoQW4
- yIWg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date;
- bh=Yq2diIusuO1Sjn6Er52SaSUiU3/pPgt/CwGzIP3Y3zY=;
- b=UWKccpif0QruvbrpNZG57sTse31eKZO3ivBfMDVs99WOdZAErJxf6S+I2KtvoHIqdL
- z6Zj2HxBzq9QI+UwNsjFHxRjgqJjk50wMWkYknm2Z66cfDgTzl4IN8Bh3mfx/y+ql+Cl
- PYi1cf40K7AAGJ8rBt1QFm2Iht5T6aHESf9c+tMsq1dDRqyv2w0vFTaoy9LS+0dsXS+G
- ho9PYIbAhsc0Wt30qfXHlUk4cVy1sCDOdTL6n1lY8M75Lavisnuf+pwctQueGLYnyqyz
- 1KEU7Qv9hwbHOp2Sjx5mPm3jUIMXbsZePS17jflIfDHFzQF0PhZosy+bJqz7osLFK+iP
- zMTw==
-X-Gm-Message-State: ACrzQf257Xg/WDyeuAFyt7S98kq1I7X9tU0jMsCqNZEuvm6lRp9J7Wi6
- ETW7ZL0PL+CzgjVzPVhlHARyBc6AZ0reedWxkXCMJA==
-X-Received: by 2002:a05:6402:1d86:b0:457:e84:f0e with SMTP id
- dk6-20020a0564021d8600b004570e840f0emr436343edb.241.1664010646563; Sat, 24
- Sep 2022 02:10:46 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <SRS0=8Ijc=Z5=kaod.org=clg@ozlabs.org>)
+ id 1ochZV-0004Ax-SQ; Mon, 26 Sep 2022 02:26:30 -0400
+Received: from mail.ozlabs.org ([2404:9400:2221:ea00::3]:56293
+ helo=gandalf.ozlabs.org)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <SRS0=8Ijc=Z5=kaod.org=clg@ozlabs.org>)
+ id 1ochZT-000614-91; Mon, 26 Sep 2022 02:26:29 -0400
+Received: from gandalf.ozlabs.org (mail.ozlabs.org
+ [IPv6:2404:9400:2221:ea00::3])
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4MbXp00Y9sz4xFt;
+ Mon, 26 Sep 2022 16:26:16 +1000 (AEST)
+Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4MbXnx0MDfz4x1K;
+ Mon, 26 Sep 2022 16:26:12 +1000 (AEST)
+From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Joel Stanley <joel@jms.id.au>, Andrew Jeffery <andrew@aj.id.au>,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
+Subject: [RFC PATCH] ast2600: Fix CPU features
+Date: Mon, 26 Sep 2022 08:26:08 +0200
+Message-Id: <20220926062608.3930789-1-clg@kaod.org>
+X-Mailer: git-send-email 2.37.3
 MIME-Version: 1.0
-References: <20220921234646.949273-1-venture@google.com>
- <CAFEAcA8f+JA4WKMwGFNxg7tRxTwL=RzDLgdJLrP8Dw_jB4XoRA@mail.gmail.com>
- <CACGkMEvMtAjGQVzwUgjD20Hb=Za8KmRanmp-FWrUQD8xS+7Pkw@mail.gmail.com>
- <CAO=notwnOKMd=n2qQC=iFX-cofeKP=ZUKX2VNXobMgXO64Y+sw@mail.gmail.com>
-In-Reply-To: <CAO=notwnOKMd=n2qQC=iFX-cofeKP=ZUKX2VNXobMgXO64Y+sw@mail.gmail.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Sat, 24 Sep 2022 10:10:35 +0100
-Message-ID: <CAFEAcA97oHsQdk2fSq=umiUv8nNue0xCLtboRR2yPt_Gxh_zEg@mail.gmail.com>
-Subject: Re: [PATCH] hw/net: npcm7xx_emc: set MAC in register space
-To: Patrick Venture <venture@google.com>
-Cc: Jason Wang <jasowang@redhat.com>,
- Havard Skinnemoen <hskinnemoen@google.com>, 
- CS20 KFTing <kfting@nuvoton.com>, qemu-arm <qemu-arm@nongnu.org>, 
- qemu-devel <qemu-devel@nongnu.org>, Hao Wu <wuhaotsh@google.com>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::532;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x532.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2404:9400:2221:ea00::3;
+ envelope-from=SRS0=8Ijc=Z5=kaod.org=clg@ozlabs.org; helo=gandalf.ozlabs.org
+X-Spam_score_int: -39
+X-Spam_score: -4.0
+X-Spam_bar: ----
+X-Spam_report: (-4.0 / 5.0 requ) BAYES_00=-1.9,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.249, RCVD_IN_DNSWL_MED=-2.3,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -119,48 +93,70 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: nAtTBbqg1w7q
+X-TUID: UMX897dLIf+I
 
-On Sat, 24 Sept 2022 at 00:42, Patrick Venture <venture@google.com> wrote:
-> On Thu, Sep 22, 2022 at 8:21 PM Jason Wang <jasowang@redhat.com> wrote:
->>
->> On Thu, Sep 22, 2022 at 8:35 PM Peter Maydell <peter.maydell@linaro.org> wrote:
->> > A question to which I don't know the answer: if the guest writes to
->> > the device to change the MAC address, should that persist across
->> > reset, or should reset revert the device to the original MAC address
->> > as specified by the user on the command line or whatever ? At the
->> > moment you have the former behaviour (and end up storing the MAC
->> > address in two places as a result -- it would be neater to either
->> > keep it in only one place, or else have emc->regs[] be the current
->> > programmed MAC address and emc->conf.macaddr the value to reset to).
->> >
->> > I'm not sure we're consistent between device models about that,
->> > eg the e1000 seems to reset to the initial MAC addr, but the
->> > imx_fec keeps the guest-set value over resets. Jason, is there
->> > a recommended "right way" to handle guest-programmable MAC addresses
->> > over device reset ?
->>
->> I think it depends on the NIC.
->>
->> E1000 has a EEPROM interface for providing the MAC address for the
->> ethernet controller before it can be accessed by the driver during
->> reset. For modern Intel NICs like E810, it has similar semantics but
->> using NVM instead of EEPROM. So the current e1000 behaviour seems to
->> be correct (treat the initiali MAC as the one stored in the EEPROM).
->>
->> I guess most NIC should behave the same as having a persistent storage
->> for MAC for the controller during reset, but I'm not sure this is the
->> case for imx_fec.
+Currently, the CPU features exposed to the AST2600 QEMU machines are :
 
-> So the first time the NIC is realized, it should take the value from
-> the command line.  Then later if the guest OS updates it, it should
-> always on reset use that provided value?
+  half thumb fastmult vfp edsp neon vfpv3 tls vfpv4 idiva idivt
+  vfpd32 lpae evtstrm
 
-I think what Jason is suggesting is that that should depend on what
-the real hardware does. On a physical board, if the guest sets the
-MAC address, and then you power-cycle the hardware, does the MAC
-that it set still persist after powercycle ? Does the guest writing
-to these MAC registers correspond to writing to an EEPROM ?
+But, the features of the Cortex A7 CPU on the Aspeed AST2600 A3 SoC
+are :
 
-thanks
--- PMM
+  half thumb fastmult vfp edsp vfpv3 vfpv3d16 tls vfpv4 idiva idivt
+  lpae evtstrm
+
+The vfpv3d16 feature bit is common to both vfpv3 and vfpv4, and for
+this SoC, QEMU should advertise a VFPv4 unit with 16 double-precision
+registers, and not 32 registers.
+
+Drop neon support and hack the default mvfr0 register value of the
+cortex A7 to advertise 16 registers.
+
+How can that be done cleanly ? Should we :
+
+ * introduce a new A7 CPU with its own _initfn routine ?
+ * introduce a new CPU property to set the number of "Advanced SIMD
+   and floating-point" registers in arm_cpu_realizefn() ?
+
+This problem was raised by a buildroot rootfs compiled with vfpv4.
+Boot went fine under QEMU but on real HW, user space binaries had
+issues with output. Compiling buildroot with vfpv4d16 fixed it and
+I didn't dig further. Nevertheless, it would be nice to catch such
+issues with QEMU.
+
+Signed-off-by: Cédric Le Goater <clg@kaod.org>
+---
+ hw/arm/aspeed_ast2600.c | 2 ++
+ target/arm/cpu_tcg.c    | 2 +-
+ 2 files changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/hw/arm/aspeed_ast2600.c b/hw/arm/aspeed_ast2600.c
+index dcdc9bc54456..af987fd418ec 100644
+--- a/hw/arm/aspeed_ast2600.c
++++ b/hw/arm/aspeed_ast2600.c
+@@ -330,6 +330,8 @@ static void aspeed_soc_ast2600_realize(DeviceState *dev, Error **errp)
+ 
+         object_property_set_int(OBJECT(&s->cpu[i]), "cntfrq", 1125000000,
+                                 &error_abort);
++        object_property_set_bool(OBJECT(&s->cpu[i]), "neon", false,
++                                &error_abort);
+         object_property_set_link(OBJECT(&s->cpu[i]), "memory",
+                                  OBJECT(s->memory), &error_abort);
+ 
+diff --git a/target/arm/cpu_tcg.c b/target/arm/cpu_tcg.c
+index 98b5ba216041..b3f93783a061 100644
+--- a/target/arm/cpu_tcg.c
++++ b/target/arm/cpu_tcg.c
+@@ -545,7 +545,7 @@ static void cortex_a7_initfn(Object *obj)
+     cpu->kvm_target = QEMU_KVM_ARM_TARGET_CORTEX_A7;
+     cpu->midr = 0x410fc075;
+     cpu->reset_fpsid = 0x41023075;
+-    cpu->isar.mvfr0 = 0x10110222;
++    cpu->isar.mvfr0 = 0x10110221; /* SIMDREG == 0x1 -> 16 registers */
+     cpu->isar.mvfr1 = 0x11111111;
+     cpu->ctr = 0x84448003;
+     cpu->reset_sctlr = 0x00c50078;
+-- 
+2.37.3
+

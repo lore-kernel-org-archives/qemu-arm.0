@@ -1,100 +1,83 @@
-Received: by 2002:a8a:1193:0:0:0:0:0 with SMTP id m19csp2253568ocs;
-        Mon, 26 Sep 2022 08:31:00 -0700 (PDT)
-X-Received: by 2002:a05:6402:370a:b0:456:d006:6948 with SMTP id ek10-20020a056402370a00b00456d0066948mr16638116edb.90.1664206260681;
-        Mon, 26 Sep 2022 08:31:00 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1664206260; cv=none;
-        d=google.com; s=arc-20160816;
-        b=cw/C+u9569/3+A8t4hH0g8AEw2EQgtAyQhqQHySbcouWdkQDpf5qTk/SvrcRbGaIEE
-         thJ9K4oIKK9Bz8Dv10hCIAgqWw+XfsSsI2z3DSuVlem7lSyOm9KrCXY0KWrZf2ZE2+oj
-         1A+KSAdygVE0d+NH+BOlXD4nnqOcZtDtEZxdEudXMPfSKmrLNvbWT83XOge9yI2EpuKI
-         VyN8PVNba5Wes0idN+UNrcLvwDIsN6T7BVlUWI7JMoKIna12Yx/7z2WclRGJaAqF7VKx
-         b6oxjpEAWymj7zNwrtYD6TkWe/WQOociMoAkNCDdD1ylQZNhlsuLtw2Xy94IgdTcPE+4
-         e9jA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=i1w+NHuQMhjljZjgndrbvMVA/Y+/4lKXcc//Vrj9AcU=;
-        b=uL1PGIcuxZKRgqJJuLQTCDJmyCmFKvQGCjshRmfFN7TQBkP30FqUNZHecLFVSvDTGE
-         eyBO6S/THgksCEnVUJKIUrCirquOe2HH3Izh8QvrOpZYU0IAGhhu3XpbX7BhkmA84pA4
-         cmrQ9K3xAg0B7yvtP1C+z65PIW4GOCcprJMqV9aHzVVLs4wImu7vrFEuzlz1Vap7VtoU
-         QDIVFQSnSzGbTEAHhXOwPvAQC5Hx4qG1z8At3a6QVISH+lnp3Lih65UdMQAq/bu6aeSb
-         e/DO4uDrOdRMM03gBWTgZ+FqtJAsCau2UKrREYlwz3RLlSa+P2Jenf2zjzg+jXopta/M
-         nGpg==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=evAOoLqx;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <peter.maydell@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id v15-20020a50c40f000000b0044ecac7be0asor8435780edf.27.2022.09.26.08.31.00
-        for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Mon, 26 Sep 2022 08:31:00 -0700 (PDT)
-Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=evAOoLqx;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date;
-        bh=i1w+NHuQMhjljZjgndrbvMVA/Y+/4lKXcc//Vrj9AcU=;
-        b=evAOoLqxDHUyK8vBDOt65xJhE65aIo5TZekdWhRuq8gFzsi3krxQnUCzpMlXVCWXXe
-         hlDo3RVNDBzliaofuwZb93fwFQXZ0m9IYafKaS/LuRzfqd/TUddyIsi80RFCVbucSQQs
-         PloweiewpKaBxgd3OipUSynr3G9rSJKmVN59WgBhkQxxY1uSsSlmhuzHPek0LSJehOzA
-         Z410hxgaGBvHhIUPpsYUVVeDcMyV4A0CW1IcuvrFztrThuo5InUPmY3EFnG8oGjOOaxv
-         riPJxhPvcSDT2pfqdUl9WM2J1Zo0Nf4xJEtR+OliLllDUjYaMbISVGDAgeftgegppNTp
-         Z8hA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date;
-        bh=i1w+NHuQMhjljZjgndrbvMVA/Y+/4lKXcc//Vrj9AcU=;
-        b=uEm0ahgpst5x2WAm4tztXVUAeFhijbzTp/ChHIA2woVzq8JbN6VVy4ger/7r4AXvVa
-         8bspedit2gClVVYs5KGP76zs30XUgtfzS8X3i4I97uQERZgLZt0WixjfIEUv3TFqbAJm
-         Czp5Rr2gju4ZofGQTWd6y/t6fXAkhuxeYY2VHeylJEyUL20P4RSQH0mQPv9HDiCpyKRN
-         NGzaxXv02fgbn6lz/oY8DfGvoJ9hxRq1CpYmwnzXXN4DXkCLD9eFyeBdIkW1GRI1s0EH
-         ecw7QIoE4mF16MF3HRR3lmRcjHY6BUX4BB5jOTkP85Th2AD4kVj4Fu1GylD3AmaetfVZ
-         NyCQ==
-X-Gm-Message-State: ACrzQf1Mu+0bAs4U1tZMJlAs4g1w4JvCHhRJxRQaFY9BUF7diJAKslC/
-	OfEUF5sNNsJedTwDwyDJLKMlPoqrpd2R8TaQ/a80KkKFco41+g==
-X-Google-Smtp-Source: AMsMyM6zr0hi5quIaxXHxVo7TLMAeH2Yq0Iwplm2f7iGpNq0bxzqBeaDhFn20t1fe1uriOj8m1vht1F9pGzcXWcMsBs=
-X-Received: by 2002:a05:6402:350b:b0:452:2b68:90db with SMTP id
- b11-20020a056402350b00b004522b6890dbmr23150939edd.255.1664206260225; Mon, 26
- Sep 2022 08:31:00 -0700 (PDT)
-MIME-Version: 1.0
+Return-Path: <alex.bennee@linaro.org>
+Received: from zen.linaroharston ([185.81.254.11])
+        by smtp.gmail.com with ESMTPSA id bj1-20020a0560001e0100b0022b0214cfa6sm17840508wrb.45.2022.09.26.08.42.44
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 26 Sep 2022 08:42:45 -0700 (PDT)
+Received: from zen (localhost [127.0.0.1])
+	by zen.linaroharston (Postfix) with ESMTP id 617BE1FFB7;
+	Mon, 26 Sep 2022 16:42:44 +0100 (BST)
 References: <20220926133904.3297263-1-alex.bennee@linaro.org>
- <20220926133904.3297263-2-alex.bennee@linaro.org> <CAFEAcA_QS8ODmQqHY=rFEMom_PoGL3eTdaLUyki4_0D5jFKaQw@mail.gmail.com>
- <87h70u40ql.fsf@linaro.org>
-In-Reply-To: <87h70u40ql.fsf@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 26 Sep 2022 16:30:48 +0100
-Message-ID: <CAFEAcA9NeO2MZpybhA8voH-3o5k9Cqa4EOg-0nk91gzQ9JJrPQ@mail.gmail.com>
-Subject: Re: [PATCH v2 01/11] hw: encode accessing CPU index in MemTxAttrs
-To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
-Cc: qemu-devel@nongnu.org, f4bug@amsat.org, mads@ynddal.dk, 
-	qemu-arm@nongnu.org, "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
-Content-Type: text/plain; charset="UTF-8"
+ <20220926133904.3297263-6-alex.bennee@linaro.org>
+ <CAFEAcA_u8TQW5EoX5bBZGKhhaS6PYaYZGyqMrhB1Tsa6eTXCyQ@mail.gmail.com>
+ <87leq641id.fsf@linaro.org>
+ <CAFEAcA8D_SzU35DB-RvaegYkwkJHD0Y3stx7P=Jh=QC6LOqDZA@mail.gmail.com>
+User-agent: mu4e 1.9.0; emacs 28.2.50
+From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-devel@nongnu.org, f4bug@amsat.org, mads@ynddal.dk,
+ qemu-arm@nongnu.org, Richard Henderson <richard.henderson@linaro.org>
+Subject: Re: [PATCH v2 05/11] hw/intc/gic: use MxTxAttrs to divine accessing
+ CPU
+Date: Mon, 26 Sep 2022 16:41:55 +0100
+In-reply-to: <CAFEAcA8D_SzU35DB-RvaegYkwkJHD0Y3stx7P=Jh=QC6LOqDZA@mail.gmail.com>
+Message-ID: <874jwu3zwr.fsf@linaro.org>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: quoted-printable
-X-TUID: s18OV2vFrHs0
+X-TUID: SWO4YJJbLY2g
 
-On Mon, 26 Sept 2022 at 16:24, Alex Benn=C3=A9e <alex.bennee@linaro.org> wr=
-ote:
->
->
-> Peter Maydell <peter.maydell@linaro.org> writes:
-> > I still don't see anything in this patchset that updates
-> > the code which currently assumes requester_id to be a PCI
-> > index to check that it hasn't been handed a MemTxAttrs
-> > that uses requester_id as a CPU number.
->
-> OK I'll update so all the existing cases setting requester_id also set
-> the type to MEMTXATTRS_MSI.
 
-The problem is not the places that set requester_id (you can
-arrange for the default to be MSI for back-compat if you don't
-want to explicitly set it), but the places that *read* it.
+Peter Maydell <peter.maydell@linaro.org> writes:
 
--- PMM
+> On Mon, 26 Sept 2022 at 16:08, Alex Benn=C3=A9e <alex.bennee@linaro.org> =
+wrote:
+>> Peter Maydell <peter.maydell@linaro.org> writes:
+>> > On Mon, 26 Sept 2022 at 14:39, Alex Benn=C3=A9e <alex.bennee@linaro.or=
+g> wrote:
+>> >> -static inline int gic_get_current_cpu(GICState *s)
+>> >> +static inline int gic_get_current_cpu(GICState *s, MemTxAttrs attrs)
+>> >>  {
+>> >> -    if (!qtest_enabled() && s->num_cpu > 1) {
+>> >> -        return current_cpu->cpu_index;
+>> >> -    }
+>> >> -    return 0;
+>> >> +    /*
+>> >> +     * Something other than a CPU accessing the GIC would be a bug as
+>> >> +     * would a CPU index higher than the GICState expects to be
+>> >> +     * handling
+>> >> +     */
+>> >> +    g_assert(attrs.requester_type =3D=3D MEMTXATTRS_CPU);
+>> >> +    g_assert(attrs.requester_id < s->num_cpu);
+>> >
+>> > Would it be a QEMU bug, or a guest code bug ? If it's possible
+>> > for the guest to mis-program a DMA controller to do a read that
+>> > goes through this function, we shouldn't assert. (Whether that
+>> > can happen will depend on how the board/SoC code puts together
+>> > the MemoryRegion hierarchy, I think.)
+>>
+>> Most likely a QEMU bug - how would a DMA master even access the GIC?
+>
+> If it's mapped into the system address space, the same way
+> as it does any memory access. For instance on the virt board
+> we just map the distributor MemoryRegion straight into the
+> system address space, and any DMA master can talk to it.
+> This is of course not how the hardware really works (where
+> the GIC is part of the CPU itself), but, as noted in previous
+> threads, up-ending the MemoryRegion handling in order to be
+> able to put the GIC only in the address space(s) that the CPU
+> sees would be a lot of work, which is why we didn't try to
+> solve the "how do you figure out which CPU is writing to the
+> GIC" problem that way.
+
+So hw_error?
+
+I don't think there is a way we can safely continue unless we just want
+to fallback to "it was vCPU 0 what did it".
+
+>
+> thanks
+> -- PMM
+
+
+--=20
+Alex Benn=C3=A9e

@@ -1,133 +1,143 @@
-Received: by 2002:a8a:1193:0:0:0:0:0 with SMTP id m19csp2216527ocs;
-        Mon, 26 Sep 2022 07:34:28 -0700 (PDT)
-X-Received: by 2002:a17:907:8a04:b0:782:5277:2bac with SMTP id sc4-20020a1709078a0400b0078252772bacmr18418830ejc.128.1664202867903;
-        Mon, 26 Sep 2022 07:34:27 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1664202867; cv=none;
+Received: by 2002:a8a:1193:0:0:0:0:0 with SMTP id m19csp2227242ocs;
+        Mon, 26 Sep 2022 07:52:59 -0700 (PDT)
+X-Google-Smtp-Source: AMsMyM7v3xO1OAVnvBA8iMJoy0JlBYll4KvqVZEqLj+2Ikgb6WcMqV5oDWzDZ8Vrr75pSyttHBha
+X-Received: by 2002:a05:6214:f24:b0:4ac:a9fd:8b42 with SMTP id iw4-20020a0562140f2400b004aca9fd8b42mr17500465qvb.22.1664203979591;
+        Mon, 26 Sep 2022 07:52:59 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1664203979; cv=none;
         d=google.com; s=arc-20160816;
-        b=ToI9GgNO/X/DmiJ+U/Z42I3vae2OpWqUeg0z85mz5XsL5HEjgO2a6wO6/zrDYWgjve
-         S2wJKmUWW9kSA57UbfDvCfZ28rvCZ1iPzAyiN1gYiOVlGz/K5uL3co1XutBrxVXkQLTb
-         R4h7se53PQ4UnE8UYvqDOKKkjBUSA1dGvklI3qzANHuCWFWqtnqsEVrU/2SFwcVXKNoM
-         0zjksDalU3el0TcxbtLFOTlv800/vJ0ovoo80Y/XhQWuXtASPvYwuESK074wRSkDpeKb
-         3d797Io8WHSAs6mcc/JZDXPJlHLUExJvH43yyy/6M+r4tL0AhPXa9dD7sGNmp0h2wngx
-         KnXQ==
+        b=Q9/XrTuLYE4uilWcOjaYulPAiHsJM9VjErMJ3ZauwCO33JM4g9d85YMQs1HMZJLxsn
+         RJMNFPDbLDwJqblvV+6LxUaRjdXMeLwyV+2rAq9KhKHtJhJIKM0od5osCADxFN071Omw
+         UDh3j7MoUjPvYPA+/0Oifc7+EXJB/RszQDahEx89wnebgXhidf6iiwnmNqZq4F+rOgFN
+         /3wm//aapytpA33H6DxcLD74bIm1ouvot+EAQMFqFnLpK4DdJX7Cyhua+1ByCRrajJi1
+         unqWZ96al1EecKOXqGUv8jkMqi+q5dSe8cB2dNNHRMXc4q5TwadceSAKDIPv2VCxtKVX
+         7HvA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=Wx1S3Igs58VzDESNamzMgnXVPNzPs5LzlY97a7v4iaU=;
-        b=Z0T4Q6l5uBqYyUZfESi/ZSC9BYJ+BkTodr+1/fnwMZbIODQehB01qk97Gn97tpXmke
-         tMUmduzL9Mq6eTzIE1a2+r7S3Tq6+CC7uv+g6zkm2lt899v26G3k8bbulDrA5BT/XYJ0
-         66GfRsbYFUSdHfjS5kyAr5aoOF1reVkxzPI0pyGKPrQ83ptGkB7i776aEG9LaZ5x5R7n
-         Z6WQa95CgKGPHbxTgrtTcGRoRv4P07gdy82CPP1yEiME8zOH24GcabubGFYfCErWDGCd
-         LUijfA3PkxWNSy8A4ynde5dcCZMsMGaMMhnIQpRYBC+Zx/exhb1Z1Fa0jrszEv7lBbWL
-         C6Jg==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:mime-version:user-agent
+         :references:in-reply-to:subject:cc:to:from:message-id:date
+         :dkim-signature;
+        bh=dkXObHnlpzcLSDLYoO2V25IlWOlVkX1acPpr/ZNipcg=;
+        b=le/0WhkOkFv+j7UvAIcM6raoGK3fUAkx7zaYguvOI8qOM9nvdAcUrBb9OVVElbNXFi
+         oLMSOuNYDCP0pmbrXZwug8MMvAizCUoScw7ja6+XoajdeGDYQ8X6IPvGNJ3oD+1Rf6YM
+         qhSuPMbJxvz29dD7lbgxVGdH7RJTK1m4Wfy4TLNtW3mKcG2su3RzFoLBvkL785ullW/o
+         ghPAu/S5anMp32NZUcXsXSpcpBn6+ATVLE46xX8B21ZCMxL5pUzfL61pC9JDBcKPGVbo
+         b7Bxt/pSf6VJ552gEzll43AwlTIYvl7Hz0W9EJe6bQR+er24ralxHYP8v8TX9F5Xy8iI
+         7+5A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=cNudQFDB;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <peter.maydell@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id g23-20020a170906521700b00783a85af831sor1051639ejm.118.2022.09.26.07.34.27
+       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=GYGep8A4;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=kernel.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id x24-20020ac87018000000b0035bacccfe27si8461703qtm.195.2022.09.26.07.52.59
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Mon, 26 Sep 2022 07:34:27 -0700 (PDT)
-Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Mon, 26 Sep 2022 07:52:59 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=cNudQFDB;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date;
-        bh=Wx1S3Igs58VzDESNamzMgnXVPNzPs5LzlY97a7v4iaU=;
-        b=cNudQFDBeHyKYeum50rnmY+j28kDvHVU8oIJO4mOFuRckrTig5g7NNSJ3qfwt5035a
-         15UPaUSkfdCQE0mgg7Z87psK6W25hKJbr9521TjSTm7mQ02+fb4Q5wZCIxKezT9muvve
-         OxefeHCEI8NuDnYSF2B19uHq242vzwiJMIB6FOlCXLbyiNtbexk3D947MSGA7p43AAoe
-         x+hV6E42itXFAcBp+s4IrPDSZ3Sxz+MPnnNmZNmiHUTcq7RE8rm8qxPBKgxo/vGFJRlj
-         geojtOPRLqpa2HCNrnD/8oHilQAk6I23z16DmE09C3GSL0C77H5hL0kbH9rPm0YT1DH3
-         /ZpQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date;
-        bh=Wx1S3Igs58VzDESNamzMgnXVPNzPs5LzlY97a7v4iaU=;
-        b=QvZyJ1P43v5SFdhJpwO5hm7bhpr0i5Y4EG3XKwC+lIgDwoYgMaiSTSFgiQZ7RdxDhK
-         d6Yb/C1weOCHqlClfgjW6MgYMqnIgkksAb/PICKYceN6lr21HdiQyq5Mj3qsUZHstLHZ
-         nJ82JoIyON5JqH8tqmMDbA/muQwo73EW7ZEBD8mF+H3FcvgvszRzkV9eabW9N+/0ZTU8
-         V61/OuoviGHRSZ9ikOkXfKhbXmFlLH4Lkr2JL4V4HJD/NccEiDdFb3KOGviMH1bHLrwY
-         hzsxhgY9Jo+aG81DpUnpk6r7WBbMPaOKUBR2foPjYnL2HrrXiYL82IRqXAP4VTRCRK3j
-         LFXg==
-X-Gm-Message-State: ACrzQf3pkD5R9ksYnUAvvWvVLFwnUloHILPS+Ziz3tkKtFGRjWM4QDfd
-	y1msHO58sKuhe36m0iHPKPhwgM33Mzx2T31RoDikTjURhMsJJw==
-X-Google-Smtp-Source: AMsMyM7JBsaLr4cL7H0UZiQk5j20JuRrBKzsbkQLqY4PC8A3wPGhoyPc4zdgaUgnVXslRLpH5U5UfgtLsPXWrGA+3oY=
-X-Received: by 2002:a17:907:728e:b0:782:8e91:64c8 with SMTP id
- dt14-20020a170907728e00b007828e9164c8mr15471198ejc.36.1664202867490; Mon, 26
- Sep 2022 07:34:27 -0700 (PDT)
-MIME-Version: 1.0
-References: <20220926133904.3297263-1-alex.bennee@linaro.org> <20220926133904.3297263-2-alex.bennee@linaro.org>
-In-Reply-To: <20220926133904.3297263-2-alex.bennee@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 26 Sep 2022 15:34:16 +0100
-Message-ID: <CAFEAcA_QS8ODmQqHY=rFEMom_PoGL3eTdaLUyki4_0D5jFKaQw@mail.gmail.com>
-Subject: Re: [PATCH v2 01/11] hw: encode accessing CPU index in MemTxAttrs
-To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
-Cc: qemu-devel@nongnu.org, f4bug@amsat.org, mads@ynddal.dk, 
-	qemu-arm@nongnu.org, "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-TUID: lqf8FW2oqjfP
+       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=GYGep8A4;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=kernel.org
+Received: from localhost ([::1]:48312 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1ocpTf-0003FL-59
+	for alex.bennee@linaro.org; Mon, 26 Sep 2022 10:52:59 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:42878)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <maz@kernel.org>)
+ id 1ocp4D-0006lK-IG; Mon, 26 Sep 2022 10:26:42 -0400
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1]:37900)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <maz@kernel.org>)
+ id 1ocp45-0004Tj-UW; Mon, 26 Sep 2022 10:26:36 -0400
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by dfw.source.kernel.org (Postfix) with ESMTPS id E90C160DEB;
+ Mon, 26 Sep 2022 14:26:30 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5914DC433D6;
+ Mon, 26 Sep 2022 14:26:30 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1664202390;
+ bh=B9zfStorShcd/6Lj/Y7HIYoIbu5lEeFdrAyxIzwDCDk=;
+ h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+ b=GYGep8A4NMRw6VEpyuEuDEMrtrOJOwzTfmhCIfjIy/yGWQglozsDRuvHLZqt5DHju
+ t4CNhqmX5zEyeUfoy+5xB5OInGWVOvHUa5ik7DrcFK+6zFjncDz49kxtimJgH4mFFu
+ Qn2esz0jJqT8imIascorPy2kbmmz+qqD7pjlUh0q3e03rYs/WlLhpUpYGgkFs/+GEj
+ 52fzxddwl06Iy8nQItijAmppi/juuaYpt8dDmP22P2D8GCjyHzNzk+dJ0TU25XXT8p
+ uxkVvUBhZ8wTNayGRNYJmcPvxekG6i1pqDbOpluk4fPZsvPI1b6dd7mlB3pNjIXlnL
+ 0jfk7xvGJwXZw==
+Received: from sofa.misterjones.org ([185.219.108.64]
+ helo=goblin-girl.misterjones.org)
+ by disco-boy.misterjones.org with esmtpsa (TLS1.3) tls
+ TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.95)
+ (envelope-from <maz@kernel.org>) id 1ocp40-00CiR7-Bg;
+ Mon, 26 Sep 2022 15:26:28 +0100
+Date: Mon, 26 Sep 2022 10:26:28 -0400
+Message-ID: <861qry8b57.wl-maz@kernel.org>
+From: Marc Zyngier <maz@kernel.org>
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org,
+ Vitaly Chikunov <vt@altlinux.org>, Paolo Bonzini <pbonzini@redhat.com>
+Subject: Re: [PATCH] target/arm/kvm: Retry KVM_CREATE_VM call if it fails EINTR
+In-Reply-To: <20220926133644.1345269-1-peter.maydell@linaro.org>
+References: <20220926133644.1345269-1-peter.maydell@linaro.org>
+User-Agent: Wanderlust/2.15.9 (Almost Unreal) SEMI-EPG/1.14.7 (Harue)
+ FLIM-LB/1.14.9 (=?UTF-8?B?R29qxY0=?=) APEL-LB/10.8 EasyPG/1.0.0 Emacs/27.1
+ (aarch64-unknown-linux-gnu) MULE/6.0 (HANACHIRUSATO)
+MIME-Version: 1.0 (generated by SEMI-EPG 1.14.7 - "Harue")
+Content-Type: text/plain; charset=US-ASCII
+X-SA-Exim-Connect-IP: 185.219.108.64
+X-SA-Exim-Rcpt-To: peter.maydell@linaro.org, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org, vt@altlinux.org, pbonzini@redhat.com
+X-SA-Exim-Mail-From: maz@kernel.org
+X-SA-Exim-Scanned: No (on disco-boy.misterjones.org);
+ SAEximRunCond expanded to false
+Received-SPF: pass client-ip=2604:1380:4641:c500::1;
+ envelope-from=maz@kernel.org; helo=dfw.source.kernel.org
+X-Spam_score_int: -71
+X-Spam_score: -7.2
+X-Spam_bar: -------
+X-Spam_report: (-7.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.082,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_HI=-5, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: pYxi+CZ+JNsg
 
-On Mon, 26 Sept 2022 at 15:13, Alex Benn=C3=A9e <alex.bennee@linaro.org> wr=
-ote:
->
-> We currently have hacks across the hw/ to reference current_cpu to
-> work out what the current accessing CPU is. This breaks in some cases
-> including using gdbstub to access HW state. As we have MemTxAttrs to
-> describe details about the access lets extend it to mention if this is
-> a CPU access and which one it is.
->
-> There are a number of places we need to fix up including:
->
->   CPU helpers directly calling address_space_*() fns
->   models in hw/ fishing the data out of current_cpu
->   hypervisors offloading device emulation to QEMU
->
-> I'll start addressing some of these in following patches.
->
-> Signed-off-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
->
-> ---
-> v2
->   - use separate field cpu_index
->   - bool for requester_is_cpu
-> v3
->   - switch to enum MemTxRequesterType
->   - move helper #define to patch
->   - revert to overloading requester_id
->   - mention hypervisors in commit message
->   - drop cputlb tweaks, they will move to target specific code
+On Mon, 26 Sep 2022 09:36:44 -0400,
+Peter Maydell <peter.maydell@linaro.org> wrote:
+> 
+> Occasionally the KVM_CREATE_VM ioctl can return EINTR, even though
+> there is no pending signal to be taken. In commit 94ccff13382055
+> we added a retry-on-EINTR loop to the KVM_CREATE_VM call in the
+> generic KVM code. Adopt the same approach for the use of the
+> ioctl in the Arm-specific KVM code (where we use it to create a
+> scratch VM for probing for various things).
+> 
+> For more information, see the mailing list thread:
+> https://lore.kernel.org/qemu-devel/8735e0s1zw.wl-maz@kernel.org/
+> 
+> Reported-by: Vitaly Chikunov <vt@altlinux.org>
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 
-I still don't see anything in this patchset that updates
-the code which currently assumes requester_id to be a PCI
-index to check that it hasn't been handed a MemTxAttrs
-that uses requester_id as a CPU number.
+Acked-by: Marc Zyngier <maz@kernel.org>
 
-I also still need to go and look up how hardware does this,
-so please don't queue this patchset yet. In particular, we
-should think about whether we want this to be:
- * a CPU number, but only set opt-in by some target archs
- * a CPU number, valid for all target archs
- * a unique-within-the-machine identifier of the transaction
-   master (i.e. which can be set by DMA controllers, etc,
-   not just CPUs)
+	M.
 
-I would also like some input from Edgar since I know Xilinx
-have some more extensive out-of-tree uses of requester_id.
-We aren't obligated to not break out-of-tree code, but that
-seems like a bunch of experience and knowledge about how
-real hardware works that would be useful for informing
-how we design this.
-
-thanks
--- PMM
+-- 
+Without deviation from the norm, progress is not possible.

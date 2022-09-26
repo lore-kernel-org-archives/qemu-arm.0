@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([185.81.254.11])
-        by smtp.gmail.com with ESMTPSA id h6-20020a05600c2ca600b003b4c40378casm11773005wmc.39.2022.09.26.06.39.05
+        by smtp.gmail.com with ESMTPSA id fc17-20020a05600c525100b003b435c41103sm12046538wmb.0.2022.09.26.06.39.06
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 26 Sep 2022 06:39:07 -0700 (PDT)
+        Mon, 26 Sep 2022 06:39:08 -0700 (PDT)
 Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 16B9E1FFBC;
+	by zen.linaroharston (Postfix) with ESMTP id 46AC61FFBE;
 	Mon, 26 Sep 2022 14:39:05 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -12,138 +12,85 @@ Cc: f4bug@amsat.org,
 	mads@ynddal.dk,
 	qemu-arm@nongnu.org,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Thomas Huth <thuth@redhat.com>,
-	Laurent Vivier <lvivier@redhat.com>,
-	Paolo Bonzini <pbonzini@redhat.com>
-Subject: [PATCH  v2 04/11] qtest: make read/write operation appear to be from CPU
-Date: Mon, 26 Sep 2022 14:38:57 +0100
-Message-Id: <20220926133904.3297263-5-alex.bennee@linaro.org>
+	Richard Henderson <richard.henderson@linaro.org>,
+	Peter Maydell <peter.maydell@linaro.org>
+Subject: [PATCH  v2 06/11] hw/timer: convert mptimer access to attrs to derive cpu index
+Date: Mon, 26 Sep 2022 14:38:59 +0100
+Message-Id: <20220926133904.3297263-7-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20220926133904.3297263-1-alex.bennee@linaro.org>
 References: <20220926133904.3297263-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: gaePCnk9I1WW
+X-TUID: +6E/JnrSxXgI
 
-The point of qtest is to simulate how running code might interact with
-the system. However because it's not a real system we have places in
-the code which especially handle check qtest_enabled() before
-referencing current_cpu. Now we can encode these details in the
-MemTxAttrs lets do that so we can start removing them.
+This removes the hacks to deal with empty current_cpu.
 
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 
 ---
 v2
-  - use a common macro instead of specific MEMTXATTRS_QTEST
-v3
-  - macro moved to earlier
+  - update for new fields
+  - bool asserts
 ---
- softmmu/qtest.c | 26 +++++++++++++-------------
- 1 file changed, 13 insertions(+), 13 deletions(-)
+ hw/timer/arm_mptimer.c | 25 ++++++++++++++-----------
+ 1 file changed, 14 insertions(+), 11 deletions(-)
 
-diff --git a/softmmu/qtest.c b/softmmu/qtest.c
-index f8acef2628..3aa2218b95 100644
---- a/softmmu/qtest.c
-+++ b/softmmu/qtest.c
-@@ -520,22 +520,22 @@ static void qtest_process_command(CharBackend *chr, gchar **words)
+diff --git a/hw/timer/arm_mptimer.c b/hw/timer/arm_mptimer.c
+index cdfca3000b..813ba3b7e8 100644
+--- a/hw/timer/arm_mptimer.c
++++ b/hw/timer/arm_mptimer.c
+@@ -41,9 +41,10 @@
+  * which is used in both the ARM11MPCore and Cortex-A9MP.
+  */
  
-         if (words[0][5] == 'b') {
-             uint8_t data = value;
--            address_space_write(first_cpu->as, addr, MEMTXATTRS_UNSPECIFIED,
-+            address_space_write(first_cpu->as, addr, MEMTXATTRS_CPU(first_cpu->cpu_index),
-                                 &data, 1);
-         } else if (words[0][5] == 'w') {
-             uint16_t data = value;
-             tswap16s(&data);
--            address_space_write(first_cpu->as, addr, MEMTXATTRS_UNSPECIFIED,
-+            address_space_write(first_cpu->as, addr, MEMTXATTRS_CPU(first_cpu->cpu_index),
-                                 &data, 2);
-         } else if (words[0][5] == 'l') {
-             uint32_t data = value;
-             tswap32s(&data);
--            address_space_write(first_cpu->as, addr, MEMTXATTRS_UNSPECIFIED,
-+            address_space_write(first_cpu->as, addr, MEMTXATTRS_CPU(first_cpu->cpu_index),
-                                 &data, 4);
-         } else if (words[0][5] == 'q') {
-             uint64_t data = value;
-             tswap64s(&data);
--            address_space_write(first_cpu->as, addr, MEMTXATTRS_UNSPECIFIED,
-+            address_space_write(first_cpu->as, addr, MEMTXATTRS_CPU(first_cpu->cpu_index),
-                                 &data, 8);
-         }
-         qtest_send_prefix(chr);
-@@ -554,21 +554,21 @@ static void qtest_process_command(CharBackend *chr, gchar **words)
+-static inline int get_current_cpu(ARMMPTimerState *s)
++static inline int get_current_cpu(ARMMPTimerState *s, MemTxAttrs attrs)
+ {
+-    int cpu_id = current_cpu ? current_cpu->cpu_index : 0;
++    int cpu_id = attrs.requester_id;
++    g_assert(attrs.requester_type == MEMTXATTRS_CPU);
  
-         if (words[0][4] == 'b') {
-             uint8_t data;
--            address_space_read(first_cpu->as, addr, MEMTXATTRS_UNSPECIFIED,
-+            address_space_read(first_cpu->as, addr, MEMTXATTRS_CPU(first_cpu->cpu_index),
-                                &data, 1);
-             value = data;
-         } else if (words[0][4] == 'w') {
-             uint16_t data;
--            address_space_read(first_cpu->as, addr, MEMTXATTRS_UNSPECIFIED,
-+            address_space_read(first_cpu->as, addr, MEMTXATTRS_CPU(first_cpu->cpu_index),
-                                &data, 2);
-             value = tswap16(data);
-         } else if (words[0][4] == 'l') {
-             uint32_t data;
--            address_space_read(first_cpu->as, addr, MEMTXATTRS_UNSPECIFIED,
-+            address_space_read(first_cpu->as, addr, MEMTXATTRS_CPU(first_cpu->cpu_index),
-                                &data, 4);
-             value = tswap32(data);
-         } else if (words[0][4] == 'q') {
--            address_space_read(first_cpu->as, addr, MEMTXATTRS_UNSPECIFIED,
-+            address_space_read(first_cpu->as, addr, MEMTXATTRS_CPU(first_cpu->cpu_index),
-                                &value, 8);
-             tswap64s(&value);
-         }
-@@ -589,7 +589,7 @@ static void qtest_process_command(CharBackend *chr, gchar **words)
-         g_assert(len);
+     if (cpu_id >= s->num_cpu) {
+         hw_error("arm_mptimer: num-cpu %d but this cpu is %d!\n",
+@@ -178,25 +179,27 @@ static void timerblock_write(void *opaque, hwaddr addr,
+ /* Wrapper functions to implement the "read timer/watchdog for
+  * the current CPU" memory regions.
+  */
+-static uint64_t arm_thistimer_read(void *opaque, hwaddr addr,
+-                                   unsigned size)
++static MemTxResult arm_thistimer_read(void *opaque, hwaddr addr, uint64_t *data,
++                                      unsigned size, MemTxAttrs attrs)
+ {
+     ARMMPTimerState *s = (ARMMPTimerState *)opaque;
+-    int id = get_current_cpu(s);
+-    return timerblock_read(&s->timerblock[id], addr, size);
++    int id = get_current_cpu(s, attrs);
++    *data = timerblock_read(&s->timerblock[id], addr, size);
++    return MEMTX_OK;
+ }
  
-         data = g_malloc(len);
--        address_space_read(first_cpu->as, addr, MEMTXATTRS_UNSPECIFIED, data,
-+        address_space_read(first_cpu->as, addr, MEMTXATTRS_CPU(first_cpu->cpu_index), data,
-                            len);
+-static void arm_thistimer_write(void *opaque, hwaddr addr,
+-                                uint64_t value, unsigned size)
++static MemTxResult arm_thistimer_write(void *opaque, hwaddr addr,
++                                uint64_t value, unsigned size, MemTxAttrs attrs)
+ {
+     ARMMPTimerState *s = (ARMMPTimerState *)opaque;
+-    int id = get_current_cpu(s);
++    int id = get_current_cpu(s, attrs);
+     timerblock_write(&s->timerblock[id], addr, value, size);
++    return MEMTX_OK;
+ }
  
-         enc = g_malloc(2 * len + 1);
-@@ -615,7 +615,7 @@ static void qtest_process_command(CharBackend *chr, gchar **words)
-         g_assert(ret == 0);
- 
-         data = g_malloc(len);
--        address_space_read(first_cpu->as, addr, MEMTXATTRS_UNSPECIFIED, data,
-+        address_space_read(first_cpu->as, addr, MEMTXATTRS_CPU(first_cpu->cpu_index), data,
-                            len);
-         b64_data = g_base64_encode(data, len);
-         qtest_send_prefix(chr);
-@@ -650,7 +650,7 @@ static void qtest_process_command(CharBackend *chr, gchar **words)
-                 data[i] = 0;
-             }
-         }
--        address_space_write(first_cpu->as, addr, MEMTXATTRS_UNSPECIFIED, data,
-+        address_space_write(first_cpu->as, addr, MEMTXATTRS_CPU(first_cpu->cpu_index), data,
-                             len);
-         g_free(data);
- 
-@@ -673,7 +673,7 @@ static void qtest_process_command(CharBackend *chr, gchar **words)
-         if (len) {
-             data = g_malloc(len);
-             memset(data, pattern, len);
--            address_space_write(first_cpu->as, addr, MEMTXATTRS_UNSPECIFIED,
-+            address_space_write(first_cpu->as, addr, MEMTXATTRS_CPU(first_cpu->cpu_index),
-                                 data, len);
-             g_free(data);
-         }
-@@ -707,7 +707,7 @@ static void qtest_process_command(CharBackend *chr, gchar **words)
-             out_len = MIN(out_len, len);
-         }
- 
--        address_space_write(first_cpu->as, addr, MEMTXATTRS_UNSPECIFIED, data,
-+        address_space_write(first_cpu->as, addr, MEMTXATTRS_CPU(first_cpu->cpu_index), data,
-                             len);
- 
-         qtest_send_prefix(chr);
+ static const MemoryRegionOps arm_thistimer_ops = {
+-    .read = arm_thistimer_read,
+-    .write = arm_thistimer_write,
++    .read_with_attrs = arm_thistimer_read,
++    .write_with_attrs = arm_thistimer_write,
+     .valid = {
+         .min_access_size = 4,
+         .max_access_size = 4,
 -- 
 2.34.1

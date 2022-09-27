@@ -1,62 +1,55 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([185.81.254.11])
-        by smtp.gmail.com with ESMTPSA id p2-20020adfce02000000b00226dba960b4sm1983711wrn.3.2022.09.27.07.15.06
+        by smtp.gmail.com with ESMTPSA id d16-20020adff850000000b0022ae59d472esm1853489wrq.112.2022.09.27.07.15.05
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Tue, 27 Sep 2022 07:15:06 -0700 (PDT)
 Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 9F8E71FFBB;
+	by zen.linaroharston (Postfix) with ESMTP id 775281FFBA;
 	Tue, 27 Sep 2022 15:15:05 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Alexander Graf <agraf@csgraf.de>,
-	Mads Ynddal <mads@ynddal.dk>,
 	Peter Maydell <peter.maydell@linaro.org>
-Subject: [PATCH  v3 03/15] target/arm: ensure HVF traps set appropriate MemTxAttrs
-Date: Tue, 27 Sep 2022 15:14:52 +0100
-Message-Id: <20220927141504.3886314-4-alex.bennee@linaro.org>
+Subject: [PATCH  v3 02/15] target/arm: ensure TCG IO accesses set appropriate MemTxAttrs
+Date: Tue, 27 Sep 2022 15:14:51 +0100
+Message-Id: <20220927141504.3886314-3-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20220927141504.3886314-1-alex.bennee@linaro.org>
 References: <20220927141504.3886314-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: OqL/aOgaZKeL
+X-TUID: Cs1SXg51HeJk
 
-As most HVF devices are done purely in software we need to make sure
-we properly encode the source CPU in MemTxAttrs. This will allow the
-device emulations to use those attributes rather than relying on
-current_cpu (although current_cpu will still be correct in this case).
+Both arm_cpu_tlb_fill (for normal IO) and
+arm_cpu_get_phys_page_attrs_debug (for debug access) come through
+get_phys_addr which is setting the other memory attributes for the
+transaction. As these are all by definition CPU accesses we can also
+set the requested_type/index as appropriate.
 
-Acked-by: Alexander Graf <agraf@csgraf.de>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-Cc: Mads Ynddal <mads@ynddal.dk>
 
 ---
-v2
-  - update MEMTXATTRS macro
+v3
+  - reword commit summary
 ---
- target/arm/hvf/hvf.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ target/arm/ptw.c | 3 +++
+ 1 file changed, 3 insertions(+)
 
-diff --git a/target/arm/hvf/hvf.c b/target/arm/hvf/hvf.c
-index 060aa0ccf4..d81fbbb2df 100644
---- a/target/arm/hvf/hvf.c
-+++ b/target/arm/hvf/hvf.c
-@@ -1233,11 +1233,11 @@ int hvf_vcpu_exec(CPUState *cpu)
-             val = hvf_get_reg(cpu, srt);
-             address_space_write(&address_space_memory,
-                                 hvf_exit->exception.physical_address,
--                                MEMTXATTRS_UNSPECIFIED, &val, len);
-+                                MEMTXATTRS_CPU(cpu), &val, len);
-         } else {
-             address_space_read(&address_space_memory,
-                                hvf_exit->exception.physical_address,
--                               MEMTXATTRS_UNSPECIFIED, &val, len);
-+                               MEMTXATTRS_CPU(cpu), &val, len);
-             hvf_set_reg(cpu, srt, val);
-         }
+diff --git a/target/arm/ptw.c b/target/arm/ptw.c
+index 2ddfc028ab..4b0dc9bd14 100644
+--- a/target/arm/ptw.c
++++ b/target/arm/ptw.c
+@@ -2289,6 +2289,9 @@ bool get_phys_addr(CPUARMState *env, target_ulong address,
+     ARMMMUIdx s1_mmu_idx = stage_1_mmu_idx(mmu_idx);
+     bool is_secure = regime_is_secure(env, mmu_idx);
  
++    attrs->requester_type = MEMTXATTRS_CPU;
++    attrs->requester_id = env_cpu(env)->cpu_index;
++
+     if (mmu_idx != s1_mmu_idx) {
+         /*
+          * Call ourselves recursively to do the stage 1 and then stage 2
 -- 
 2.34.1

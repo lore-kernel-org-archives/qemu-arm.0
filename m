@@ -1,326 +1,176 @@
-Received: by 2002:a8a:1193:0:0:0:0:0 with SMTP id m19csp472186ocs;
-        Tue, 27 Sep 2022 04:06:44 -0700 (PDT)
-X-Received: by 2002:a05:6a00:3492:b0:540:b30d:8396 with SMTP id cp18-20020a056a00349200b00540b30d8396mr28798790pfb.81.1664276804604;
-        Tue, 27 Sep 2022 04:06:44 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1664276804; cv=none;
+Received: by 2002:a8a:1193:0:0:0:0:0 with SMTP id m19csp484627ocs;
+        Tue, 27 Sep 2022 04:27:13 -0700 (PDT)
+X-Google-Smtp-Source: AMsMyM63CGMmDrLquht+42i3DDYN3HSTSFNGFWbUjQFNdUDss1ho+2WsboSxhjAajmvvreNnwW/6
+X-Received: by 2002:ac8:7f83:0:b0:35c:e80d:603a with SMTP id z3-20020ac87f83000000b0035ce80d603amr21782889qtj.526.1664278032959;
+        Tue, 27 Sep 2022 04:27:12 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1664278032; cv=none;
         d=google.com; s=arc-20160816;
-        b=KWgXj7TtVZKZfGpE7lwcXz7zshzRS05nbDRY7QujYA9rlvX3iBB6priKha2vvmZz4H
-         csUpj3PF1vnR/s7mBJpdd4wVq7l2KnMYngw6w5wbbmeo19m2sHhzU/VETvNnLLZPa6ZM
-         RWd7tzafwEKkyUqvT1BWzohhUTaBzpsP21OOQVJyI0DWS4m529/Ei/HJlxQ/FOF2irwu
-         Ic9Q/Bwi/U8sfVbzAfGUdH7mI5AZEADhb09ehtwTITA/m6WCtqaInsK1S+878DzvZujM
-         JugJzEBNXFK1eSdqpkqRPoZuL91/IAQ+tZ+uPauesGBuTqnQjMiOZuHnAEmqUDLQVPXm
-         79dw==
+        b=G5sUcc3qtOoLxDWM6KxajdtQiK9u2ZtIxnV3+1ynx13uRupvvwQE3VpH3Kna4W6Cl3
+         ZyLAjsRxm+mRWi7+R4G+l9ULC3Atg+vRRlSZRTjTRg8FjuwWBdy3An0HbbKTjgiXLtRg
+         Dbiv2Rou9iFIGGjcrb3eXm1tvy5Nqff2ymUdY0WYHTBMkT/BRA9rOjTFJHd9D8a92HTD
+         mL6U9BZj74fKbPYzY3+0okzSM7kyjApU8NlvcmQPGGvmUnj4wGTaA7QB3Mo3gcQ2tO9Q
+         DnaOfWoHw8JZ89XhIjZpZeXa7xDvgmZ7AmW5Go/ETdFNSEtWln9ZRBFSidcGZWoYldLT
+         jNPw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:dkim-signature;
-        bh=4VqkvBcmyJ1SDADHumwlbH8XpmBtUgxcNWus4EgsnaE=;
-        b=jQQrWKRZh6U3mTolj1ndpv2jsWvIbq135RnNXavWmx/q91VC88jr4CQQdxEZMAmwTs
-         9alEqe52j5Bn8Z5P+wRuI1M8FPy7JESQb4hD5UAYXOiS96Zw5fo9vsuLH1KBzouqyvrp
-         vFISQV5zRabomMUeFIIyRLvFvC0yFBtN/gi96bk3fN+UDJ6wmNzi6li/zjBtgZsVgcI6
-         Tow/gmc1JQbU8MYHd+90p9d4Ko6vFMh6AmWAKpLICsZeOSWQbmgiixwE1MIHzv41gMmy
-         jgk2nr4YG8ZkFAFnOo5U0qL4j/0PjmwY92uGXDUhugsPK0lnKQd1cGYyHtKL53CfTl11
-         cwhg==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=IOk5o82HlzTaRF4tA+m1XabKpzTdOlWa4a9Iku2Z2e8=;
+        b=PIIc+PKzf/X3KIynLE/V8UEDnlyk8QSDNWAkGd4ZgGYtgvKDrBiJPwrQ6jwa6v+D5D
+         MINXQ67dXKDg49oWlkdu0ayc6TGyoPCq/E44wG9pY0of0UW/ePzd/GVW1qOSSEkb+3VP
+         IDWdEYD7t7ohwOSQddeulOE97/O7slmh9gs8FSLbRpMmYTAsaJ1ZjPqZM17Y5GBLz8yj
+         5HjZEThwNZcn2C8onqxLZfjRdPS4MT5vb6/zNSTogJTzXV7QJBjs5Qh0r/rh4eoPwLDC
+         BB+FeNvDDeVZHQpDzNo4CZ4uOdDBj2HTHqAgf0BLtw4aoGpfZ7/0VJQ0aasYs9hjTdMX
+         Opuw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=Dy8ko2gR;
-       spf=pass (google.com: domain of bmeng.cn@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=bmeng.cn@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=MarMC6WZ;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <bmeng.cn@gmail.com>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id h2-20020a170902704200b0016c433f7c0fsor643354plt.160.2022.09.27.04.06.44
-        (Google Transport Security);
-        Tue, 27 Sep 2022 04:06:44 -0700 (PDT)
-Received-SPF: pass (google.com: domain of bmeng.cn@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id d22-20020a05620a167600b006ce9a5fb037si526472qko.300.2022.09.27.04.27.12
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 27 Sep 2022 04:27:12 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=Dy8ko2gR;
-       spf=pass (google.com: domain of bmeng.cn@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=bmeng.cn@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=MarMC6WZ;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date;
-        bh=4VqkvBcmyJ1SDADHumwlbH8XpmBtUgxcNWus4EgsnaE=;
-        b=Dy8ko2gRmXX/twTFi8cm1AmXNwN18wtLJAJBq74Iu4WWUgsRFhlM9du+gW9U5z4jJv
-         zXUwJCIm7tkWThuTn5HVE2BUz7Iq/uiVUK5SQaQGiXjOaV7AXE40Ws0ay3AtURVpdV9c
-         +gMr7tzeDTWLyij04I6R/drHzBcKiqbq4g0g8OVV3Fd18NF3D1DruLIR0vSUf3repOTj
-         2z0uYHbtSqdwCFpVMHqUqtmW7j2yYTDFVP85h/FpFgeeruDxOsLifjOVZF9LTfNrwNaG
-         m4/6HXgVjqqkbUnCfWZt1qkWcFAHeZ93zGfEUkGbubR90DLjeBBUFnrtwvFKpMLI4g8V
-         Ydqw==
+Received: from localhost ([::1]:43768 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1od8k4-0006cO-DT
+	for alex.bennee@linaro.org; Tue, 27 Sep 2022 07:27:12 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:51438)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <bmeng.cn@gmail.com>)
+ id 1od8Qb-0002On-BQ; Tue, 27 Sep 2022 07:07:05 -0400
+Received: from mail-pl1-x62a.google.com ([2607:f8b0:4864:20::62a]:44623)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <bmeng.cn@gmail.com>)
+ id 1od8QW-0004mO-EL; Tue, 27 Sep 2022 07:07:04 -0400
+Received: by mail-pl1-x62a.google.com with SMTP id w10so8742403pll.11;
+ Tue, 27 Sep 2022 04:06:59 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date;
+ bh=IOk5o82HlzTaRF4tA+m1XabKpzTdOlWa4a9Iku2Z2e8=;
+ b=MarMC6WZTRnjGKtbJ+/SgdtdUhwaMAwWiTa6NCxabjkl6RGOLmqz5rSM00xZQD0/Ok
+ qHEEqXGbPwUKH+74taZOLJWfAw/kHTfYSMRasvPJXeaSGHA/o0S8TyadDwX4tNb5Laij
+ VR17l6AZ9OrO6OQHDv5VJs6z72NfEm/iWRqevmk7Cjhhr/lGmwQU1VqgqXrozhHYDsB6
+ qbG3flK8ExigClWP/oFWIfI5bTbM2GKKyp8qZ9S8qLLbnDvO0/9iwKg0F6HcU0Lx+eTe
+ EhrfqEdzLydEvqHQaPlakyszoDF9V9rHUdRezw4xWT+7TyuRGVDZaPVcqqKA0VM8JcKE
+ Q4wQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date;
-        bh=4VqkvBcmyJ1SDADHumwlbH8XpmBtUgxcNWus4EgsnaE=;
-        b=LIy9Xcsk5rWsce8Eab4YK+1AKlU8iffdxj66n3WWMeaDIfgAqYYQexAFMmDCb2S8/t
-         KJW9auhZciT4UJ/vwX5Stt5ammeZRCqTYfBZepdZQfnVX2g+1T1CJE58VakVmxa4ORrF
-         oukZsRCzt9j73PmM+Kz8BnH+6hvxn54SVgZmmpaH2BYdWlfiUXspUoD0TEqsC2YjujvF
-         aMj+zSNW6q/JWY2TKbDtHAlOl2R1r7YdxhDBUWDBSVLx/iibmqadt0E5MYNG91CsPcYX
-         vU1IUoOao/ZDDGHyx7nEOVQpQETJz0D5v5qRLy8HIqNK52u80MwU4/0fjvf04CES2Qnm
-         OqkA==
-X-Gm-Message-State: ACrzQf0tdflRY9knwMRuMBQ65cf+cJ7i67Mj9uOE6pwNP0i8LoBjdju5
-	NUfibl27Fap8uBzIeshHu2I=
-X-Google-Smtp-Source: AMsMyM50wdfkzZCJp2bwuvJabxQQSL7wNpCOUgLIaRvbkQFU9SeIcQywVaquPdnSOCgL68ImN24uhg==
-X-Received: by 2002:a17:902:76c7:b0:178:ab0a:19af with SMTP id j7-20020a17090276c700b00178ab0a19afmr26449696plt.164.1664276804096;
-        Tue, 27 Sep 2022 04:06:44 -0700 (PDT)
-Return-Path: <bmeng.cn@gmail.com>
+ d=1e100.net; s=20210112;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+ :subject:date;
+ bh=IOk5o82HlzTaRF4tA+m1XabKpzTdOlWa4a9Iku2Z2e8=;
+ b=Os1i7gepuAYcOXwY332hRx3iP0di7ccpXPLEu9is7Ond4Bd3VCWPsCF+l+mvuJEpgp
+ hsPIMi7fehCJA6Zy5n6q9pUaZnDSUH5LkAJRwaFPZ8IF7V0uSCwI3ZLaM9KS5Z0mnwb7
+ fT0N53S7CsHXZ6ke+i1I6RkoHWQPAfIImkeM4fKRceH7KXlDuwxEd5c4CuMG+vuoX8JA
+ R3uJMW/2gBu9qdNq0veW78+6SKgjwII3+Y1IrybBLyjM1Ejz5hclF2hlIsCm+neCtbKY
+ 9DhQ3nGhT/KQvrgt70ssQEdosX8BsbjxQWcKZynQHgrS1avOmRDtDc7Yn0MstqpuErDh
+ we2w==
+X-Gm-Message-State: ACrzQf0XW5AhJuSDj7WcUzewYqtaHwpkzJ9M3FCXSWBCrS0xJajaBKBR
+ iuQl5eAfTbE/apt3aYqxkz9Q69akXaY=
+X-Received: by 2002:a17:90b:4d8e:b0:200:73b4:4da2 with SMTP id
+ oj14-20020a17090b4d8e00b0020073b44da2mr4068276pjb.197.1664276819344; 
+ Tue, 27 Sep 2022 04:06:59 -0700 (PDT)
 Received: from ubuntu.. (144.168.56.201.16clouds.com. [144.168.56.201])
-        by smtp.gmail.com with ESMTPSA id i7-20020a626d07000000b00540f2323f67sm1453601pfc.95.2022.09.27.04.06.34
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 27 Sep 2022 04:06:43 -0700 (PDT)
+ by smtp.gmail.com with ESMTPSA id
+ i7-20020a626d07000000b00540f2323f67sm1453601pfc.95.2022.09.27.04.06.56
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 27 Sep 2022 04:06:59 -0700 (PDT)
 From: Bin Meng <bmeng.cn@gmail.com>
 To: qemu-devel@nongnu.org,
 	Thomas Huth <thuth@redhat.com>
 Cc: =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Alexander Bulekov <alxndr@bu.edu>,
-	Andrew Jeffery <andrew@aj.id.au>,
-	Ani Sinha <ani@anisinha.ca>,
-	Bandan Das <bsd@redhat.com>,
-	Beraldo Leal <bleal@redhat.com>,
-	Bin Meng <bin.meng@windriver.com>,
-	Christian Schoenebeck <qemu_oss@crudebyte.com>,
-	Coiby Xu <Coiby.Xu@gmail.com>,
-	=?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
-	=?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
-	Darren Kenny <darren.kenny@oracle.com>,
-	"Dr. David Alan Gilbert" <dgilbert@redhat.com>,
-	Eduardo Habkost <eduardo@habkost.net>,
-	Fam Zheng <fam@euphon.net>,
-	Gerd Hoffmann <kraxel@redhat.com>,
-	Greg Kurz <groug@kaod.org>,
-	Hanna Reitz <hreitz@redhat.com>,
-	Igor Mammedov <imammedo@redhat.com>,
-	Jason Wang <jasowang@redhat.com>,
-	Joel Stanley <joel@jms.id.au>,
-	John Snow <jsnow@redhat.com>,
-	Juan Quintela <quintela@redhat.com>,
-	Kevin Wolf <kwolf@redhat.com>,
-	Konstantin Kostiuk <kkostiuk@redhat.com>,
-	Laurent Vivier <lvivier@redhat.com>,
-	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
-	Markus Armbruster <armbru@redhat.com>,
-	Michael Roth <michael.roth@amd.com>,
-	"Michael S. Tsirkin" <mst@redhat.com>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
-	Qiuhao Li <Qiuhao.Li@outlook.com>,
-	Richard Henderson <richard.henderson@linaro.org>,
-	Stefan Hajnoczi <stefanha@redhat.com>,
-	Wainer dos Santos Moschetta <wainersm@redhat.com>,
-	Willian Rampazzo <willianr@redhat.com>,
-	Yanan Wang <wangyanan55@huawei.com>,
-	qemu-arm@nongnu.org,
-	qemu-block@nongnu.org
-Subject: [PATCH v4 00/54] tests/qtest: Enable running qtest on Windows
-Date: Tue, 27 Sep 2022 19:05:38 +0800
-Message-Id: <20220927110632.1973965-1-bmeng.cn@gmail.com>
+ Bin Meng <bin.meng@windriver.com>,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
+ Andrew Jeffery <andrew@aj.id.au>, Joel Stanley <joel@jms.id.au>,
+ Laurent Vivier <lvivier@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org
+Subject: [PATCH v4 06/54] tests/qtest: aspeed_smc-test: Avoid using hardcoded
+ /tmp
+Date: Tue, 27 Sep 2022 19:05:44 +0800
+Message-Id: <20220927110632.1973965-7-bmeng.cn@gmail.com>
 X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20220927110632.1973965-1-bmeng.cn@gmail.com>
+References: <20220927110632.1973965-1-bmeng.cn@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: 82KqGysbo+mq
+Received-SPF: pass client-ip=2607:f8b0:4864:20::62a;
+ envelope-from=bmeng.cn@gmail.com; helo=mail-pl1-x62a.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: /RxRd1KN1TWR
 
-In preparation to adding virtio-9p support on Windows, this series
-enables running qtest on Windows, so that we can run the virtio-9p
-tests on Windows to make sure it does not break accidently.
+From: Bin Meng <bin.meng@windriver.com>
 
-Changes in v4:
-- Do not use g_autofree and g_steal_pointer
-- Update the error reporting by using the GError "error" argument
-  of g_dir_make_tmp()
-- Remove the const from tmpfs declaration
-- Replace the whole block with a g_assert_no_error()
-- Replace the error reporting with g_assert_no_error()
-- Update error reporting
-- Move the new text section after the "QTest" section instead
-- Use plural in both cases: "on POSIX hosts as well as Windows hosts"
-- Use "The following list shows some best practices"
-- Fix typo of delimiter
-- New patch: "tests/qtest: boot-serial-test: Close the serial file before starting QEMU"
-- Drop patch: "chardev/char-file: Add FILE_SHARE_WRITE when openning the file for win32"
+This case was written to use hardcoded /tmp directory for temporary
+files. Update to use g_file_open_tmp() for a portable implementation.
+
+Signed-off-by: Bin Meng <bin.meng@windriver.com>
+Reviewed-by: Cédric Le Goater <clg@kaod.org>
+Reviewed-by: Thomas Huth <thuth@redhat.com>
+---
+
+(no changes since v3)
 
 Changes in v3:
-- Remove unnecessary "error = NULL" statements
 - Split to a separate patch
 - Ensure g_autofree variable is initialized
-- Split to a separate patch
-- Ensure g_autofree variable is initialized
-- Split to a separate patch
-- Ensure g_autofree variable is initialized
-- Split to a separate patch
-- Ensure g_autofree variable is initialized
-- Split to a separate patch
-- Split to a separate patch
-- Split to a separate patch
-- Split to a separate patch
-- Ensure g_autofree variable is initialized
-- Use g_steal_pointer() in create_test_img()
-- Split to a separate patch
-- Split to a separate patch
-- Split to a separate patch
-- Split to a separate patch
-- Split to a separate patch
-- Split to a separate patch
-- Ensure g_autofree variable is initialized
-- Split to a separate patch
-- Split to a separate patch
-- Ensure g_autofree variable is initialized
-- Split to a separate patch
-- Ensure g_autofree variable is initialized
-- Split to a separate patch
-- Ensure g_autofree variable is initialized
-- Split to a separate patch
-- Split to a separate patch
-- Add a usleep(1) in the busy wait loop
-- Drop the host test
-- Drop patch: "tests: Change to use g_mkdir()"
-- Drop patch: "block: Unify the get_tmp_filename() implementation",
-  and send it as a separate patch
 
-Changes in v2:
-- new patch: "tests/qtest: i440fx-test: Rewrite create_blob_file() to be portable"
-- Use g_autofree to declare the variable
-- Change to use g_mkdir()
-- Change to use g_mkdir()
-- Change to use g_mkdir()
-- Change to skip only part of the virtio-net-test cases that require
-  socketpair() intead of disabling all of them
-- Introduce a new variable qtests_filter and add that to the
-  qtests_ARCH variables
-- Add a comment in the code to explain why test_qmp_oob test case
-  is skipped on win32
-- Replace signal by the semaphore on posix too
-- Use __declspec(selectany) for the common weak symbol on Windows
-- Introduce qemu_send_full() and use it
-- Move the enabling of building qtests on Windows to a separate
-  patch to keep bisectablity
-- Call socket_init() unconditionally
-- Add a missing CloseHandle() call
-- Drop ahci-test.c changes that are no longer needed
-- Change the place that sets IO redirection in the command line
-- Change to a busy wait after migration is canceled
-- new patch: "io/channel-watch: Drop the unnecessary cast"
-- Change the timeout limit to 90 minutes
-- new patch: Display meson test logs in the Windows CI
-- new patch: "tests/qtest: Enable qtest build on Windows"
-- Minor wording changes
-- Drop patches that were already applied in the mainline
-- Drop patch: "qga/commands-posix-ssh: Use g_mkdir_with_parents()"
-- Drop patch: "tests: Skip iotests and qtest when '--without-default-devices'"
-- Drop patch: "tests/qtest: Fix ERROR_SHARING_VIOLATION for win32"
+ tests/qtest/aspeed_smc-test.c | 5 ++---
+ 1 file changed, 2 insertions(+), 3 deletions(-)
 
-Bin Meng (48):
-  tests/qtest: i440fx-test: Rewrite create_blob_file() to be portable
-  semihosting/arm-compat-semi: Avoid using hardcoded /tmp
-  tcg: Avoid using hardcoded /tmp
-  util/qemu-sockets: Use g_get_tmp_dir() to get the directory for
-    temporary files
-  tests/qtest: ahci-test: Avoid using hardcoded /tmp
-  tests/qtest: aspeed_smc-test: Avoid using hardcoded /tmp
-  tests/qtest: boot-serial-test: Avoid using hardcoded /tmp
-  tests/qtest: cxl-test: Avoid using hardcoded /tmp
-  tests/qtest: fdc-test: Avoid using hardcoded /tmp
-  tests/qtest: generic_fuzz: Avoid using hardcoded /tmp
-  tests/qtest: virtio_blk_fuzz: Avoid using hardcoded /tmp
-  tests/qtest: hd-geo-test: Avoid using hardcoded /tmp
-  tests/qtest: ide-test: Avoid using hardcoded /tmp
-  tests/qtest: migration-test: Avoid using hardcoded /tmp
-  tests/qtest: pflash-cfi02-test: Avoid using hardcoded /tmp
-  tests/qtest: qmp-test: Avoid using hardcoded /tmp
-  tests/qtest: vhost-user-blk-test: Avoid using hardcoded /tmp
-  tests/qtest: vhost-user-test: Avoid using hardcoded /tmp
-  tests/qtest: virtio-blk-test: Avoid using hardcoded /tmp
-  tests/qtest: virtio-scsi-test: Avoid using hardcoded /tmp
-  tests/qtest: libqtest: Avoid using hardcoded /tmp
-  tests/unit: test-image-locking: Avoid using hardcoded /tmp
-  tests/unit: test-qga: Avoid using hardcoded /tmp
-  tests: vhost-user-bridge: Avoid using hardcoded /tmp
-  block/vvfat: Unify the mkdir() call
-  fsdev/virtfs-proxy-helper: Use g_mkdir()
-  hw/usb: dev-mtp: Use g_mkdir()
-  tests/qtest: Skip running virtio-net-test cases that require
-    socketpair() for win32
-  tests/qtest: Build test-filter-{mirror,redirector} cases for posix
-    only
-  tests/qtest: qmp-test: Skip running test_qmp_oob for win32
-  tests/qtest: libqtest: Exclude the *_fds APIs for win32
-  tests/qtest: libqtest: Install signal handler via signal()
-  tests/qtest: Support libqtest to build and run on Windows
-  tests/qtest: {ahci,ide}-test: Use relative path for temporary files
-    for win32
-  tests/qtest: bios-tables-test: Adapt the case for win32
-  tests/qtest: boot-serial-test: Close the serial file before starting
-    QEMU
-  tests/qtest: microbit-test: Fix socket access for win32
-  tests/qtest: migration-test: Disable IO redirection for win32
-  tests/qtest: libqtest: Replace the call to close a socket with
-    closesocket()
-  tests/qtest: libqtest: Correct the timeout unit of blocking receive
-    calls for win32
-  io/channel-watch: Drop a superfluous '#ifdef WIN32'
-  io/channel-watch: Drop the unnecessary cast
-  io/channel-watch: Fix socket watch on Windows
-  tests/qtest: migration-test: Skip running some TLS cases for win32
-  .gitlab-ci.d/windows.yml: Increase the timeout to 90 minutes
-  .gitlab-ci.d/windows.yml: Display meson test logs
-  tests/qtest: Enable qtest build on Windows
-  docs/devel: testing: Document writing portable test cases
-
-Xuzhou Cheng (6):
-  accel/qtest: Implement a portable qtest accelerator
-  tests/qtest: libqtest: Adapt global_qtest declaration for win32
-  tests/qtest: Use send/recv for socket communication
-  tests/qtest: ide-test: Open file in binary mode
-  tests/qtest: migration-test: Make sure QEMU process "to" exited after
-    migration is canceled
-  tests/qtest: virtio-net-failover: Disable migration tests for win32
-
- docs/devel/testing.rst                  |  30 +++++
- include/hw/core/cpu.h                   |   1 +
- include/qemu/sockets.h                  |   2 +
- tests/qtest/fuzz/generic_fuzz_configs.h |   4 +-
- tests/qtest/libqtest-single.h           |   4 +
- tests/qtest/libqtest.h                  |   8 ++
- accel/dummy-cpus.c                      |  15 +--
- block/vvfat.c                           |   9 +-
- fsdev/virtfs-proxy-helper.c             |   3 +-
- hw/usb/dev-mtp.c                        |   4 +-
- io/channel-watch.c                      |  12 +-
- semihosting/arm-compat-semi.c           |   3 +-
- softmmu/cpus.c                          |  10 +-
- tcg/tcg.c                               |   3 +-
- tests/qtest/ahci-test.c                 |  36 ++++--
- tests/qtest/aspeed_smc-test.c           |   5 +-
- tests/qtest/bios-tables-test.c          |  12 +-
- tests/qtest/boot-serial-test.c          |  11 +-
- tests/qtest/cxl-test.c                  |  15 +--
- tests/qtest/fdc-test.c                  |   5 +-
- tests/qtest/fuzz/virtio_blk_fuzz.c      |   4 +-
- tests/qtest/hd-geo-test.c               |  24 ++--
- tests/qtest/i440fx-test.c               |  54 +++-----
- tests/qtest/ide-test.c                  |  30 ++++-
- tests/qtest/libqmp.c                    |   5 +-
- tests/qtest/libqtest.c                  | 157 ++++++++++++++++++++----
- tests/qtest/microbit-test.c             |  10 +-
- tests/qtest/migration-test.c            |  38 +++++-
- tests/qtest/pflash-cfi02-test.c         |  15 ++-
- tests/qtest/qmp-test.c                  |  17 ++-
- tests/qtest/vhost-user-blk-test.c       |   3 +-
- tests/qtest/vhost-user-test.c           |  10 +-
- tests/qtest/virtio-blk-test.c           |   4 +-
- tests/qtest/virtio-net-failover.c       |   9 +-
- tests/qtest/virtio-net-test.c           |  13 +-
- tests/qtest/virtio-scsi-test.c          |   4 +-
- tests/unit/test-image-locking.c         |   8 +-
- tests/unit/test-qga.c                   |   2 +-
- tests/vhost-user-bridge.c               |   3 +-
- util/osdep.c                            |  33 +++++
- util/qemu-sockets.c                     |   5 +-
- .gitlab-ci.d/windows.yml                |   8 +-
- accel/meson.build                       |   1 +
- accel/qtest/meson.build                 |   1 +
- tests/qtest/meson.build                 |  42 +++----
- 45 files changed, 452 insertions(+), 240 deletions(-)
-
+diff --git a/tests/qtest/aspeed_smc-test.c b/tests/qtest/aspeed_smc-test.c
+index 05ce941566..c713a3700b 100644
+--- a/tests/qtest/aspeed_smc-test.c
++++ b/tests/qtest/aspeed_smc-test.c
+@@ -608,16 +608,15 @@ static void test_write_block_protect_bottom_bit(void)
+     flash_reset();
+ }
+ 
+-static char tmp_path[] = "/tmp/qtest.m25p80.XXXXXX";
+-
+ int main(int argc, char **argv)
+ {
++    g_autofree char *tmp_path = NULL;
+     int ret;
+     int fd;
+ 
+     g_test_init(&argc, &argv, NULL);
+ 
+-    fd = mkstemp(tmp_path);
++    fd = g_file_open_tmp("qtest.m25p80.XXXXXX", &tmp_path, NULL);
+     g_assert(fd >= 0);
+     ret = ftruncate(fd, FLASH_SIZE);
+     g_assert(ret == 0);
 -- 
 2.34.1
+

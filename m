@@ -1,114 +1,113 @@
-Received: by 2002:a8a:1193:0:0:0:0:0 with SMTP id m19csp447997ocs;
-        Tue, 27 Sep 2022 03:20:04 -0700 (PDT)
-X-Google-Smtp-Source: AMsMyM61mO2nf5DEqj4GN2+uhofMfcLkfsR1lSWGa0ROVAdqc/tLh8J/ZhIapGew1NMvpTFn+vhX
-X-Received: by 2002:a05:6214:2b0c:b0:4ac:c376:97f with SMTP id jx12-20020a0562142b0c00b004acc376097fmr20470750qvb.45.1664274003913;
-        Tue, 27 Sep 2022 03:20:03 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1664274003; cv=none;
+Received: by 2002:a8a:1193:0:0:0:0:0 with SMTP id m19csp449865ocs;
+        Tue, 27 Sep 2022 03:23:56 -0700 (PDT)
+X-Google-Smtp-Source: AMsMyM5mxZfSwXqzxwDmoc2LJhnjw1IZzy2BW7nU73PyIcoS3xDckIrdcq7lHI/hw/4YZRksdrBR
+X-Received: by 2002:a05:620a:85a:b0:6ce:157f:9266 with SMTP id u26-20020a05620a085a00b006ce157f9266mr16640805qku.769.1664274236685;
+        Tue, 27 Sep 2022 03:23:56 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1664274236; cv=none;
         d=google.com; s=arc-20160816;
-        b=zfKtnRaUgX0VTq6B4xw5DM6Q9I/xoA6tPsg7CI7dbXvV4Xnr2pslYlYnvQ2dctncRq
-         qIAV9hjSWDT62mRMfJR2EFhxO/y+OV9ihm1Boovbmabwy9JeJ4RX3Dvdookb3uphxB1R
-         8efsmE6nmbf3v3HHpfcaUtrghBGESqupeAWqj+AbjlPD3TnJCc4ccG/ZyJ+QBeeayW8h
-         6B5g8/gQ/UmmtvyEzshdocIN6IrEEkcWYeJkx4WT4g1ij9inBG3AJqzybqIB99XOrOaT
-         xxjqPDLGMmcyLgmrWIQ47nuFvQWHgjaDQsdmZJY38ZOLiYgAoocLc2+4lCbA4oOI+SCo
-         +r7Q==
+        b=nTIYSOFCedrOr8/SN4PS1bi9O4AsK7+knWuD8fB26QhPsIpBAgh5Gb+NxP1IPkQNvE
+         tXy6MDlPmARdSBSDXGoOh3Ge5/5YI0JowsM2Ph9zPPzoDJdgDk2Sp5v2GFRAoB0eyw13
+         nvSBb4psY4yAAOL2w9477ubwDPc1DVLArtC1bZUQN4cKkNrJ7kgRd/x6OFpq4dLZFAF7
+         FciLju3YgA8fYJY8+Psym2xYfa+7PD9A6ciW1RcXOt5KP+HxY1Iy4aVMfVoJdzGtinxe
+         EO/aKcMxxxg5uWfbIySAeyb0TgQ90PX+PJWm2cJf31xQzalv7eeV27peigxx5iEjS6P2
+         UfJw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=8lc9+EAsDsNcRbit+l0khQ7LVOAu2tt4CiBZ5zrclyM=;
-        b=UUWxaSMJJBYEcoR2kQj54Foesw/S+dwAej3U3TVr73sGJvJH+7fXmrDFl8j/DDA/Zx
-         0mBXKMUSqj5NfVWnDWxtDQYaBTZl5iA+MEkE16grNKxnqXE5IQ0lq4PC+Tu32RU3E9KP
-         7+wJX2eIeXZh+Zj51fT3hCpfDqJOyUfcac8/cJl63AtQzb5/80Ju2o3tLEJo8ip4Hyev
-         fQHiybdsKh5dDoN6jKWpnHLQQShevDim+6q5kT05V+wogYlgBoy1M3zKnZR+C6SOBSzW
-         08VPz15+UoRxz2DHLZTmt++BVc++Y/VEQl+wI4hIhaca8fQNCMPjPaR1gXTYWQHXGyeS
-         sFqw==
+        bh=GLFHpYK2uYHTqgCRso0xwWMXytcOMYQaJsHAn18FQd4=;
+        b=Vphlpdu+DsXH5UyetiNSostEPZ+hqNYbUy+us2cJOY/lX1RWfX9z0+PHXpflrhd1QM
+         wuQaLBD340GgBImAKpaRJLgehvOPDtlx69eNHTDBUP+UWZ1GM1NULMpA4fFoOhXy2Eyp
+         ks6PXSq5KRlLdyj854myZuOhE9D4/U9O1qu+wvrC8nlDmZksCjmEps/TaOsuiu/AuOwW
+         y9qkdW6IckNJcuMrTxWFc1HbsNJK7bX8r57T+erUGul6H6k6MPyx/3ICOtAZx5EK0Awu
+         pQa0LdT8sIToNoaKl8yEDo8KEBTslsx2abtQgN/0MRg2nKKvaCrK+jtW4Ex452v2dcgr
+         ejFg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Tbjugk8K;
+       dkim=pass header.i=@linaro.org header.s=google header.b=OncPQMB6;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id kf10-20020a056214524a00b004a85378abb9si560170qvb.425.2022.09.27.03.20.03
+        by mx.google.com with ESMTPS id j9-20020a05621419c900b004ad1a00d340si751013qvc.106.2022.09.27.03.23.56
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 27 Sep 2022 03:20:03 -0700 (PDT)
+        Tue, 27 Sep 2022 03:23:56 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Tbjugk8K;
+       dkim=pass header.i=@linaro.org header.s=google header.b=OncPQMB6;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:58902 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:49142 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1od7h2-0002jI-IV
-	for alex.bennee@linaro.org; Tue, 27 Sep 2022 06:20:00 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38616)
+	id 1od7kq-00075N-44
+	for alex.bennee@linaro.org; Tue, 27 Sep 2022 06:23:56 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:40118)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jean-philippe@linaro.org>)
- id 1od7a9-0000u6-S9
- for qemu-devel@nongnu.org; Tue, 27 Sep 2022 06:12:53 -0400
-Received: from mail-wm1-x332.google.com ([2a00:1450:4864:20::332]:55245)
+ id 1od7aI-0001HZ-Id
+ for qemu-devel@nongnu.org; Tue, 27 Sep 2022 06:13:02 -0400
+Received: from mail-wr1-x436.google.com ([2a00:1450:4864:20::436]:41777)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <jean-philippe@linaro.org>)
- id 1od7a7-0002WR-Oi
- for qemu-devel@nongnu.org; Tue, 27 Sep 2022 06:12:53 -0400
-Received: by mail-wm1-x332.google.com with SMTP id iv17so6196423wmb.4
- for <qemu-devel@nongnu.org>; Tue, 27 Sep 2022 03:12:51 -0700 (PDT)
+ id 1od7a4-0002U8-Qz
+ for qemu-devel@nongnu.org; Tue, 27 Sep 2022 06:13:01 -0400
+Received: by mail-wr1-x436.google.com with SMTP id t14so14196426wrx.8
+ for <qemu-devel@nongnu.org>; Tue, 27 Sep 2022 03:12:48 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date;
- bh=8lc9+EAsDsNcRbit+l0khQ7LVOAu2tt4CiBZ5zrclyM=;
- b=Tbjugk8KSpIctutBfMXYi8TFdBbmuK4d0Wy0OQ32PaIag0RYgzNWHrZoH2YKlDCe0k
- A08ImKt/m5jtrFWg30h303n3mp93Z+MwAmxDc2OLK2HMiqizCe3seiIfYLwyj6KiAVfM
- a0CfJPLKlMjI63277JLybveeLAn5DcSEPLz0kzO1rihLe7c4Bm+PC1f6e9eLaw9rTp0F
- Tuc/4dK3xnYy4UZmPzi2p6hK1mBkeh0AcBma7Emnbh7zOhi434s3A22kbIfAkTLOe35b
- VzVNplNsfPe685ou5fecAyY/BwA13lJ2yjR3jh6shfQSLspDe8xGm7eTMsjt+vBBKYaJ
- 7ilA==
+ bh=GLFHpYK2uYHTqgCRso0xwWMXytcOMYQaJsHAn18FQd4=;
+ b=OncPQMB6JLaNtutPOIjDeYSrTZWMRK2iGPsHrUJccw92MsoSYCgtgU2ZzDcqkryLn1
+ LimZXN/bYy+9uSRacYYrw+2H8KsW3gPZ79mjHS0rf6Wl5QRgDNQmDTkSppOnFERAeR1a
+ cFDUsfmvBbxon9i+hxlVFuaK30aNo3ZpvrDZq8IcNSq1jobQA4K6g1pxN49iLZOijGf3
+ 5ijiC5jqBXMdZP9DnPl5ylFxB0Z9Sk5qF40MTzekgySmi6JRETJGvbGouyTeDILf6IRY
+ aNCsKoPc99KgMtGpA10MoOfmeTJilNY7C1i7viwEPCvdAW64zQilpusxpcjfewdwBLVv
+ c+Bw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date;
- bh=8lc9+EAsDsNcRbit+l0khQ7LVOAu2tt4CiBZ5zrclyM=;
- b=Vhvb0V3hEahgmxyFEYZCd8Uu4KZwEOoTaMEXRFWZN2y85e+06fk5zY8hjSSmpJTXUj
- 6n0uRK8bZES1ri3/Raf8b43SuQkrSwQObfj1bRwZX9kLGrXX8pz85LWbgPczOoD+FWf7
- R5aSC769ZeOQ2fVkSj9X1TzgQwP/4T26LUckJwqmeo52pclHCE8ZSvqbtikHpfpvxv46
- mBY7T5G3ypF7FlLXqLvIKN6XS32CTA6TS6S5l+hz/zs67+/Xgi7SCFZ/FCbFcfd+Hckg
- YApo2QkTwynZ3RQ/bF0oU5pgmVfgLPPS/rjLXylrMMlneaX4sEljN3+BSwRcqyMpxRr2
- SUsA==
-X-Gm-Message-State: ACrzQf0G511pkcQlx6fHNV7sjSm3VnzCiQpkzLo1AuID0+Mp/hQceqok
- 6Ug5yztAwh1zrwbi1iCNtJBefw==
-X-Received: by 2002:a05:600c:4f8e:b0:3b4:ab30:9af4 with SMTP id
- n14-20020a05600c4f8e00b003b4ab309af4mr2040707wmq.84.1664273570348; 
- Tue, 27 Sep 2022 03:12:50 -0700 (PDT)
+ bh=GLFHpYK2uYHTqgCRso0xwWMXytcOMYQaJsHAn18FQd4=;
+ b=zT9a0AKYw9sVxGcupNXU1Uw65wr1p6Bkbu4w1HhZfoJWBY1XNyHK+1o2a1ykBx1gkF
+ fQPTF0dduxV2VSawLKgCI1ElZfQgXXW6Jb5IPiEjDDCRv6Fdh2X2OebeCJwIclhbB7vH
+ XCr71JstptP/DwuhLkcQcDOsUjRSSVXGYIQv8djd8mimrOqXx2EkBoK7GmKLhvh/PD+5
+ SASiFVr61DVOlKEzFq4XOi10QjidQ2eMDRO/zyhyaMbSkH5jv06ezpjvSMN+/s9vWjKw
+ HqqdN9fq9R1zHgJE+MQLVtPLT0HpV87pccLNhHJiqj3b3t+ZN+wH8bfpzQMx08iSsIXH
+ foBA==
+X-Gm-Message-State: ACrzQf2PA7Vpv4srU6OyGgQ49sT0B7og2apIjQngxlGEpJrNO7F0U+eG
+ 27JU8XfyhCLKT9qWYvIQ2ricVw==
+X-Received: by 2002:a5d:4bc3:0:b0:22a:4b7a:6f60 with SMTP id
+ l3-20020a5d4bc3000000b0022a4b7a6f60mr16082160wrt.549.1664273566760; 
+ Tue, 27 Sep 2022 03:12:46 -0700 (PDT)
 Received: from localhost.localdomain
  (cpc92880-cmbg19-2-0-cust679.5-4.cable.virginm.net. [82.27.106.168])
  by smtp.gmail.com with ESMTPSA id
- w6-20020adfd4c6000000b00223b8168b15sm1398387wrk.66.2022.09.27.03.12.49
+ w6-20020adfd4c6000000b00223b8168b15sm1398387wrk.66.2022.09.27.03.12.46
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 27 Sep 2022 03:12:50 -0700 (PDT)
+ Tue, 27 Sep 2022 03:12:46 -0700 (PDT)
 From: Jean-Philippe Brucker <jean-philippe@linaro.org>
 To: peter.maydell@linaro.org
 Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, robh+dt@kernel.org,
  Jean-Philippe Brucker <jean-philippe@linaro.org>
-Subject: [PATCH v2 6/8] hw/arm/virt: Fix devicetree warning about the SMMU node
-Date: Tue, 27 Sep 2022 11:03:47 +0100
-Message-Id: <20220927100347.176606-7-jean-philippe@linaro.org>
+Subject: [PATCH v2 1/8] hw/arm/virt: Fix devicetree warning about the root node
+Date: Tue, 27 Sep 2022 11:03:42 +0100
+Message-Id: <20220927100347.176606-2-jean-philippe@linaro.org>
 X-Mailer: git-send-email 2.37.3
 In-Reply-To: <20220927100347.176606-1-jean-philippe@linaro.org>
 References: <20220927100347.176606-1-jean-philippe@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::332;
- envelope-from=jean-philippe@linaro.org; helo=mail-wm1-x332.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::436;
+ envelope-from=jean-philippe@linaro.org; helo=mail-wr1-x436.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -123,32 +122,37 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: vu9JyeyKqrRV
+X-TUID: bqZRhAbErUF9
 
-The SMMUv3 node isn't expected to have clock properties. Fix the
-corresponding dt-validate warning:
+The devicetree specification requires a 'model' property in the root
+node. Fix the corresponding dt-validate warning:
 
-  smmuv3@9050000: 'clock-names', 'clocks' do not match any of the regexes: 'pinctrl-[0-9]+'
-  From schema: linux/Documentation/devicetree/bindings/iommu/arm,smmu-v3.yaml
+  /: 'model' is a required property
+  From schema: dtschema/schemas/root-node.yaml
+
+Use the same name for model as for compatible. The specification
+recommends that 'compatible' follows the format 'manufacturer,model' and
+'model' follows the format 'manufacturer,model-number'. Since our
+'compatible' doesn't observe this, 'model' doesn't really need to
+either.
 
 Signed-off-by: Jean-Philippe Brucker <jean-philippe@linaro.org>
 ---
- hw/arm/virt.c | 2 --
- 1 file changed, 2 deletions(-)
+ hw/arm/virt.c | 1 +
+ 1 file changed, 1 insertion(+)
 
 diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index 10ce66c722..2de16f6324 100644
+index 1a6480fd2a..83ab1a37fb 100644
 --- a/hw/arm/virt.c
 +++ b/hw/arm/virt.c
-@@ -1362,8 +1362,6 @@ static void create_smmu(const VirtMachineState *vms,
-     qemu_fdt_setprop(ms->fdt, node, "interrupt-names", irq_names,
-                      sizeof(irq_names));
+@@ -252,6 +252,7 @@ static void create_fdt(VirtMachineState *vms)
+     qemu_fdt_setprop_string(fdt, "/", "compatible", "linux,dummy-virt");
+     qemu_fdt_setprop_cell(fdt, "/", "#address-cells", 0x2);
+     qemu_fdt_setprop_cell(fdt, "/", "#size-cells", 0x2);
++    qemu_fdt_setprop_string(fdt, "/", "model", "linux,dummy-virt");
  
--    qemu_fdt_setprop_cell(ms->fdt, node, "clocks", vms->clock_phandle);
--    qemu_fdt_setprop_string(ms->fdt, node, "clock-names", "apb_pclk");
-     qemu_fdt_setprop(ms->fdt, node, "dma-coherent", NULL, 0);
- 
-     qemu_fdt_setprop_cell(ms->fdt, node, "#iommu-cells", 1);
+     /* /chosen must exist for load_dtb to fill in necessary properties later */
+     qemu_fdt_add_subnode(fdt, "/chosen");
 -- 
 2.37.3
 

@@ -1,127 +1,110 @@
-Received: by 2002:a8a:1193:0:0:0:0:0 with SMTP id m19csp685279ocs;
-        Tue, 27 Sep 2022 09:24:50 -0700 (PDT)
-X-Google-Smtp-Source: AMsMyM4sFQ3zvn3+YCEGq3cB07M5/SEBoU69n2YzMMoFUZrhSRoK6rs6T4MGiy1j0ZAmIJukHZoc
-X-Received: by 2002:ac8:5e07:0:b0:35c:e7fd:1e94 with SMTP id h7-20020ac85e07000000b0035ce7fd1e94mr23459936qtx.384.1664295890736;
-        Tue, 27 Sep 2022 09:24:50 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1664295890; cv=none;
+Received: by 2002:a8a:1193:0:0:0:0:0 with SMTP id m19csp711639ocs;
+        Tue, 27 Sep 2022 10:06:12 -0700 (PDT)
+X-Google-Smtp-Source: AMsMyM5k/H7NxSZU4YVdcLPpZR2K0Oxu8tYj9CsNjIlu90JQ8edMq6xt/3oN29KWedjGMPzOWatK
+X-Received: by 2002:a05:620a:b8d:b0:6ce:1be3:fee7 with SMTP id k13-20020a05620a0b8d00b006ce1be3fee7mr18888791qkh.725.1664298372596;
+        Tue, 27 Sep 2022 10:06:12 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1664298372; cv=none;
         d=google.com; s=arc-20160816;
-        b=hyCZjcU5KLkslNT2Qd7mPTla3+SbdCyzuBEvpITfaRPunK74JIzOl6OyVdafaVTQCg
-         GUobA/KnJZc8L/AQ2v8l60XlvoZkDU7mrFTXuhwozaiCaSWxC7VNuiKamD2xHGj5Um02
-         RibUSwuyJxtxl/HIwulFm5FepvnTjVGOhVJcNcgUWaaimii2kIComIdwcPjINmV69+8H
-         1qiCwFqphv1L4ibPfha82bTrlDjNeTr39yTv7jAFa+hPoJsjlIydpdAy5rzuLUtXpA3q
-         /46Vkowpn8uQNyeAO2H89oHrbrG3DTjlZMvNQtTfP8jjdHVzoNDN9Jw2DsqvZ+/5t/2+
-         kFkw==
+        b=Wat/2l0BMProfNMLfi5FFuvjYv5W3S+s2W2al2rz/+bQI4aBEGqfwt4Zrkvqpuluif
+         DsQQoLI2Fj0OJuzeUuL9G7eB1GA8BIebUfEtGoiB+/0GW1M95z22WK0FcELYcVDOX4nf
+         mBQYZ7jnyzEP/2HCe5zH7TeGjTM2T6XgW3Jz4fpFakassJfKASxcHtQhkEax1dOfc1F1
+         XbSU9LsXErrCedYoqp2qe64P7qtuMGPi9dYtEFW07IKlHJVbYJWgQdm0skLmtHm9dMKk
+         yVuSCFbUTkubY78PA6fV8ENe4smSslO9yGV/lS7kLXNszjUNOs8JXUmNdxaIN61SInaz
+         sRCA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:cc:to:content-language:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=Zbffyhg+549eqrF9+cFfl/7xv3PfCL4Z56gS3trm1Vs=;
-        b=zIUjzZ122IHpc6pPep7GXEzeskhhBnEIJL3lp4cdY44K1/xr6Hb39JgKeJ6E/NI/bg
-         aI+7FGnoypKkQ0YVoTrXxTxFpIsMzAbB3cS0witD22Z6Fpe2cFXeo2p21DJcr30pjpvP
-         AtVBwcr0VLGec+ZWVwIJncEtsk53YUj9ms9tajJIK6+Fs4keJu4DsJkv+oW+aaWCK/Ns
-         v5RVR0LQxeAMFxlI2OJ53VwfcQKj5FCHhnF826SoIl6HuLGL78dzPbBTUSJVTsOxplQf
-         QLbgBQo/Er5JSFFWjmsx/HUI5ePZbLAGqkOgZdGzyAg2zXDMscAz5/uDryp05HJzeLrh
-         v6Ew==
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
+        bh=p6WvLY1DdFqAItBhNcJerG2iDkIGFsH5MoIdSxHl50U=;
+        b=FnMHSwvcrxYuwW+mixi4cfwdeXKmaiPCG+zIQhib73QDRqx3VAVzob5S43YesEHznQ
+         6leGq8mOPGHA7Yl/GuqAZ4gDdskMujGCbqcraZYhPq2/cX6UJSVdiVxWHO/VfJ94H34K
+         CBAPjnW20iY60H2lp29uw032deOBInvwOotRNX12pn1Y+p1loBhwk4Y9iDgBsVt2u6GQ
+         QWJROc+r1j4GM22yXsfpkam0E49RrgRElWOOUjY5lzMkqo4q19ojBT1+1wmL0L6PaFfh
+         Y7qeZlJq/H8p/LBQG3S2DF8AQAjlYVuHqYKbekpOA/91E66vyrVEwIr4qfGPVRzmaxiV
+         lEqg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=iQYNRnZZ;
+       dkim=pass header.i=@linaro.org header.s=google header.b=MZdQ5iYZ;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id k4-20020ac84784000000b0035cc46251efsi1023796qtq.740.2022.09.27.09.24.50
+        by mx.google.com with ESMTPS id b20-20020ac86794000000b0035cf4d4e123si1200204qtp.116.2022.09.27.10.06.12
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 27 Sep 2022 09:24:50 -0700 (PDT)
+        Tue, 27 Sep 2022 10:06:12 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=iQYNRnZZ;
+       dkim=pass header.i=@linaro.org header.s=google header.b=MZdQ5iYZ;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:49500 helo=lists1p.gnu.org)
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:44690 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1odDO6-0000ik-BK
-	for alex.bennee@linaro.org; Tue, 27 Sep 2022 12:24:50 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:51782)
+	id 1odE28-0007yA-6Z
+	for alex.bennee@linaro.org; Tue, 27 Sep 2022 13:06:12 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55132)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eauger@redhat.com>) id 1odBqx-0001V9-4J
- for qemu-devel@nongnu.org; Tue, 27 Sep 2022 10:46:31 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:46257)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eauger@redhat.com>) id 1odBgJ-000155-7r
- for qemu-devel@nongnu.org; Tue, 27 Sep 2022 10:35:32 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1664289330;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=Zbffyhg+549eqrF9+cFfl/7xv3PfCL4Z56gS3trm1Vs=;
- b=iQYNRnZZnaTI5Axwhmh8p32MZOSH5lR/wmiItI9vQ345+xzMEJrd+T2FN+6VAXixwqoLGV
- ecgKX246DG+AmcvNt+lK3VYZFTEK5F+nQvm2C9K2htC87Bnh3krL0arbQYU9z8Yux7lVZO
- HyqJyIVAuc0dspL4pjt6UEby8eUwYz8=
-Received: from mail-ed1-f72.google.com (mail-ed1-f72.google.com
- [209.85.208.72]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_128_GCM_SHA256) id
- us-mta-330-hvqpFpiDPSqxFeWqKYihhQ-1; Tue, 27 Sep 2022 10:35:28 -0400
-X-MC-Unique: hvqpFpiDPSqxFeWqKYihhQ-1
-Received: by mail-ed1-f72.google.com with SMTP id
- w17-20020a056402269100b0045249bc17a9so7903855edd.9
- for <qemu-devel@nongnu.org>; Tue, 27 Sep 2022 07:35:28 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1odDlu-000729-LM
+ for qemu-devel@nongnu.org; Tue, 27 Sep 2022 12:49:27 -0400
+Received: from mail-wm1-x32a.google.com ([2a00:1450:4864:20::32a]:36739)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1odDls-0002LY-DQ
+ for qemu-devel@nongnu.org; Tue, 27 Sep 2022 12:49:25 -0400
+Received: by mail-wm1-x32a.google.com with SMTP id
+ i203-20020a1c3bd4000000b003b3df9a5ecbso9822418wma.1
+ for <qemu-devel@nongnu.org>; Tue, 27 Sep 2022 09:49:23 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date;
+ bh=p6WvLY1DdFqAItBhNcJerG2iDkIGFsH5MoIdSxHl50U=;
+ b=MZdQ5iYZPnnxIcAYcHyfJL7BKoFiF8+QeKWomrVf0fFi6wXKYcHf+mJ/Tf6upv8V3q
+ lPUtlyGegauuWCmdUQWIVCjd0Z/sgKTZPbeSRPMKeotn2WlxZv3jVTsUkU4IAnU8IGUz
+ ynsZEf4Dyzef8UIugqZwDDtenB/yUEhs+/rCeT5llMByJohEHjIykHX0RYo/NW6v6e/y
+ h0pFxLXRHkqlWBtCiscKkH7Y10mLR3n0wXaVDDjaUVIKkW8nfKldsJPjyBGMhG+0WxOo
+ TNdnoRjdrT3wK4TU1CJNxMcfniIt8gqWpWvO0WjI+Gu+4CAe8wjdVxVUWXMSL7UbZQjp
+ pjMQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date;
- bh=Zbffyhg+549eqrF9+cFfl/7xv3PfCL4Z56gS3trm1Vs=;
- b=jrcNYD1CVTNH7PhhCOYBwK7Z0OyXQcihCkllPuSPudefF1HD+6V2p0W6VQLLil9nP1
- Re7yQVERufUs2K0badxw8WOYNxme6uoPpYq5tcehGMHA3WKmjZQBjgtE8UWE6oSErbDn
- uK1i9i17mfXW1OV3bWdPRrohFnPjN+DoYgDXWbpO0UVRW1T+gsWNyiY9zcESzBvQfRfH
- +n+eyvJnmgTc3xwWoexjh0nrbLSBNgLPViowT2eGlyvvJDubDBpnSkd6Zr6kTDl0Q9es
- r2IH0/1Eh5VPWSd92qbevP1k6S6HNGvrtoY5dWa5yZBIIoKBX11SKW/YBtbnpISLwme/
- s9jg==
-X-Gm-Message-State: ACrzQf0Cca+A68d11Rnv0IYLv4FBztg8nSSnyJKsv6U77mFy/FIL4SXt
- aOKtjjB1jADaQSmNIGqsaqGJA2N6Srlq2rrl+8tYoT/M1V6cJ/o62F28eAoUPha3yg7cQGyKeZq
- cZkA3k38+TEqP258=
-X-Received: by 2002:a50:aa99:0:b0:457:c7b4:6699 with SMTP id
- q25-20020a50aa99000000b00457c7b46699mr1984978edc.115.1664289327486; 
- Tue, 27 Sep 2022 07:35:27 -0700 (PDT)
-X-Received: by 2002:a50:aa99:0:b0:457:c7b4:6699 with SMTP id
- q25-20020a50aa99000000b00457c7b46699mr1984949edc.115.1664289327133; 
- Tue, 27 Sep 2022 07:35:27 -0700 (PDT)
-Received: from ?IPV6:2a01:e0a:59e:9d80:527b:9dff:feef:3874?
- ([2a01:e0a:59e:9d80:527b:9dff:feef:3874])
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date;
+ bh=p6WvLY1DdFqAItBhNcJerG2iDkIGFsH5MoIdSxHl50U=;
+ b=lvZVwJsw3AacQiJ/pvJPQHkFJa1mAjBAOrjh1o9+JRX5cYIn5TlO4vljcyoVVWwH6m
+ fWd7tI4l0cLoKnaMNdm4q32g/tZoC/Eu87xgzKsQzT4xYZvzjc85QxyyfqYEAAkTu6cz
+ grqDaiP+Ya0u1dcAm6v0Eb6N83ISL72attJE/KkeAoyiRi3bWeeP5vSdapqG9Gw6rDWs
+ C6vOCkGhAoZAqgha/PhCVd9N89z+yRn9HRos3byZZcpSIrad4tFSYJ+Qat64apzNM6IA
+ cOpd2av0pbHwe172B7ogV4vuy6i/gw2A+l1uo4+dgc2prWxxQ+mFaBXKK+BShpIhnKqL
+ VP5g==
+X-Gm-Message-State: ACrzQf3+QMlAAzxPo7ww9FXaSiDo/+kyUIZvigzu2Ku9IVQpt1TB7Ati
+ kKt0CQUo+4GIDZykYFe8h0K5qg==
+X-Received: by 2002:a05:600c:348e:b0:3b4:a9f1:c240 with SMTP id
+ a14-20020a05600c348e00b003b4a9f1c240mr3477564wmq.192.1664297362796; 
+ Tue, 27 Sep 2022 09:49:22 -0700 (PDT)
+Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
  by smtp.gmail.com with ESMTPSA id
- a16-20020a50c310000000b00452e7ae2214sm1402417edb.42.2022.09.27.07.35.25
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 27 Sep 2022 07:35:26 -0700 (PDT)
-Message-ID: <5641321a-4bec-2ca9-bb14-d5ed883a9ded@redhat.com>
-Date: Tue, 27 Sep 2022 16:35:25 +0200
+ b13-20020a5d40cd000000b00226f39d1a3esm2257118wrq.73.2022.09.27.09.49.21
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 27 Sep 2022 09:49:22 -0700 (PDT)
+From: Peter Maydell <peter.maydell@linaro.org>
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Cc: Vitaly Chikunov <vt@altlinux.org>, Marc Zyngier <maz@kernel.org>,
+ Paolo Bonzini <pbonzini@redhat.com>, Eric Auger <eric.auger@redhat.com>
+Subject: [PATCH v2] target/arm/kvm: Retry KVM_CREATE_VM call if it fails EINTR
+Date: Tue, 27 Sep 2022 17:49:20 +0100
+Message-Id: <20220927164920.1502219-1-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.11.0
-Subject: Re: [PATCH v2 7/8] hw/arm/virt: Fix devicetree warnings about the
- virtio-iommu node
-Content-Language: en-US
-To: Peter Maydell <peter.maydell@linaro.org>,
- Jean-Philippe Brucker <jean-philippe@linaro.org>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, robh+dt@kernel.org
-References: <20220927100347.176606-1-jean-philippe@linaro.org>
- <20220927100347.176606-8-jean-philippe@linaro.org>
- <CAFEAcA8_mLVgvorF12qBMAW5NoZT2mXAzjfavCbDtcZjzcprow@mail.gmail.com>
-From: Eric Auger <eauger@redhat.com>
-In-Reply-To: <CAFEAcA8_mLVgvorF12qBMAW5NoZT2mXAzjfavCbDtcZjzcprow@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=eauger@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -44
-X-Spam_score: -4.5
-X-Spam_bar: ----
-X-Spam_report: (-4.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.082,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-2.319, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::32a;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x32a.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
@@ -137,71 +120,48 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: G0WEMO+xusRv
+X-TUID: VcW/ePC40iwv
 
-Hi,
+Occasionally the KVM_CREATE_VM ioctl can return EINTR, even though
+there is no pending signal to be taken. In commit 94ccff13382055
+we added a retry-on-EINTR loop to the KVM_CREATE_VM call in the
+generic KVM code. Adopt the same approach for the use of the
+ioctl in the Arm-specific KVM code (where we use it to create a
+scratch VM for probing for various things).
 
-On 9/27/22 13:46, Peter Maydell wrote:
-> On Tue, 27 Sept 2022 at 11:12, Jean-Philippe Brucker
-> <jean-philippe@linaro.org> wrote:
->>
->> The "PCI Bus Binding to: IEEE Std 1275-1994" defines the compatible
->> string for a PCIe bus or endpoint as "pci<vendorid>,<deviceid>" or
->> similar. Since the initial binding for PCI virtio-iommu didn't follow
->> this rule, it was modified to accept both strings and ensure backward
->> compatibility. Also, the unit-name for the node should be
->> "device,function".
->>
->> Fix corresponding dt-validate and dtc warnings:
->>
->>   pcie@10000000: virtio_iommu@16:compatible: ['virtio,pci-iommu'] does not contain items matching the given schema
->>   pcie@10000000: Unevaluated properties are not allowed (... 'virtio_iommu@16' were unexpected)
->>   From schema: linux/Documentation/devicetree/bindings/pci/host-generic-pci.yaml
->>   virtio_iommu@16: compatible: 'oneOf' conditional failed, one must be fixed:
->>         ['virtio,pci-iommu'] is too short
->>         'pci1af4,1057' was expected
->>   From schema: dtschema/schemas/pci/pci-bus.yaml
->>
->>   Warning (pci_device_reg): /pcie@10000000/virtio_iommu@16: PCI unit address format error, expected "2,0"
->>
->> Signed-off-by: Jean-Philippe Brucker <jean-philippe@linaro.org>
->> ---
->>  hw/arm/virt.c | 5 +++--
->>  1 file changed, 3 insertions(+), 2 deletions(-)
->>
->> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
->> index 2de16f6324..5e16d54bbb 100644
->> --- a/hw/arm/virt.c
->> +++ b/hw/arm/virt.c
->> @@ -1372,14 +1372,15 @@ static void create_smmu(const VirtMachineState *vms,
->>
->>  static void create_virtio_iommu_dt_bindings(VirtMachineState *vms)
->>  {
->> -    const char compat[] = "virtio,pci-iommu";
->> +    const char compat[] = "virtio,pci-iommu\0pci1af4,1057";
->>      uint16_t bdf = vms->virtio_iommu_bdf;
-> 
-> PCI_DEVICE_ID_VIRTIO_IOMMU is listed in include/hw/pci/pci.h
-> as 0x1014, so where does 1057 come from? (This is a hex value,
-> right?)
-the virtio spec states:
-The PCI Device ID is calculated by adding 0x1040 to the Virtio Device ID
-(this IOMMU device ID is 0d23 = 0x17 for the virtio-iommu device, also
-found in include/uapi/linux/virtio_ids.h) so 0x1057 above looks correct
+For more information, see the mailing list thread:
+https://lore.kernel.org/qemu-devel/8735e0s1zw.wl-maz@kernel.org/
 
-note that in docs/specs/pci-ids.txt there are a bunch of other device
-ids not documented (virtio-mem, pmem)
+Reported-by: Vitaly Chikunov <vt@altlinux.org>
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
+The view in the thread seems to be that this is a kernel bug (because
+in QEMU's case there shouldn't be a signal to be delivered at this
+point because of our signal handling strategy); so I've adopted the
+same "just retry-on-EINTR for this specific ioctl" approach that
+commit 94ccff13 did, rather than, for instance, something wider like
+"make kvm_ioctl() and friends always retry on EINTR".
 
-What I don't get anymore is the device id in qemu include/hw/pci/pci.h
+v2: correctly check for -1 and errno is EINTR...
+---
+ target/arm/kvm.c | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
 
-Thanks
-
-Eric
-> 
-> docs/specs/pci-ids.txt doesn't list either 1014 or 1057, so
-> I guess we forgot to update that...
-> 
-> thanks
-> -- PMM
-> 
+diff --git a/target/arm/kvm.c b/target/arm/kvm.c
+index e5c1bd50d29..356199c9e25 100644
+--- a/target/arm/kvm.c
++++ b/target/arm/kvm.c
+@@ -79,7 +79,9 @@ bool kvm_arm_create_scratch_host_vcpu(const uint32_t *cpus_to_try,
+     if (max_vm_pa_size < 0) {
+         max_vm_pa_size = 0;
+     }
+-    vmfd = ioctl(kvmfd, KVM_CREATE_VM, max_vm_pa_size);
++    do {
++        vmfd = ioctl(kvmfd, KVM_CREATE_VM, max_vm_pa_size);
++    } while (vmfd == -1 && errno == -EINTR);
+     if (vmfd < 0) {
+         goto err;
+     }
+-- 
+2.25.1
 

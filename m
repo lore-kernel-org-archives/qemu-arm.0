@@ -1,115 +1,111 @@
-Received: by 2002:a8a:1193:0:0:0:0:0 with SMTP id m19csp445709ocs;
+Received: by 2002:a8a:1193:0:0:0:0:0 with SMTP id m19csp445707ocs;
         Tue, 27 Sep 2022 03:15:04 -0700 (PDT)
-X-Google-Smtp-Source: AMsMyM4wUBfOBxnxqkppci3R6smC0SpMLUl3XfIqFQAgx0v4y9z9mpkwnSYDZ+K7aWf66LB833+s
-X-Received: by 2002:a05:620a:4152:b0:6ce:a298:4c55 with SMTP id k18-20020a05620a415200b006cea2984c55mr17564285qko.54.1664273704255;
-        Tue, 27 Sep 2022 03:15:04 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1664273704; cv=none;
+X-Google-Smtp-Source: AMsMyM58plajqVwg2Pz+8k8rxOP4QprAx2gO7mR4kN2qf1Rg6IbIntOcP4Gl8grrC5LieYDiGAKe
+X-Received: by 2002:ac8:5f0a:0:b0:35a:6fa8:23c4 with SMTP id x10-20020ac85f0a000000b0035a6fa823c4mr21511194qta.312.1664273703914;
+        Tue, 27 Sep 2022 03:15:03 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1664273703; cv=none;
         d=google.com; s=arc-20160816;
-        b=MyKdr5aUmkI400ONUbH/lJJ48iymyJ5V26VlWdSncLYQHGan9IMUusTN30xSGxQiJ6
-         gNFzW+evSEltBretXciolKB1vM2fN97qpr/VDfFDIf80CMFQ3jkkX8QXgzUgP8LOIE56
-         3gfxcxx02Wk3cm2hIfRod8zHSJRO/dVgV9ghG+eW0w/fDQgh6VlouTuZcakucSkd53hr
-         a7eVCjPKK/VV8sQEfHITonXffSW6F9pzeeuRNFqYjx81emW0B1UJCljAVx14eCJpK9RR
-         TzWTYcigfqq0VMFU/QTpY7XhqUUgFryKSqFWlTiYDu7wW4WaPF2YfpqA/1WwGnXHPhMf
-         A7XQ==
+        b=uCS/BI2Ap5BzMByteAPuck+o+ypLegps/QMtKWJYAaU/DiDggPj+tQpXf3h2DujSb/
+         iX3BScfD0P2YqYQxbsslZasv0oPhr3tg9aiBsY/bEIdVOOqzGkTUyZO/BdhVnu53s+Od
+         y0l5WBkV7UE3GKP31x8+CV09sVEZdb3/wK0GmcI9JmJ3RfvXkt3beEsVQMy5Zbs2Ssx2
+         0nA706ql4uW/wOrS572Trzm27tDCpkHhvOUMPbVJXbagMBV+vmsceARd9O8jpvlemL7h
+         +S2NZc/3tEPBzxkSoN2TaXrK6r65mphiwnwsd/VxV8jc2Jcpk6/NLefAElBPrUUu/q+z
+         l6Vw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=gCpSGaH9k9PWhr0Z9u8fR2+dVNRNKa0vVi8uRr2Kuvg=;
-        b=wxv43XV6XYU0WJgSkLwgEvjuYuDJH+Sg6ZprvAwIBGtb9NpNxsDiyAcC0hor9il7Qx
-         pQZjJ1UA/EAE6TaSvijipV7dOb8LXuw79essBGFC3bhbu0KNNg6qD6MTCV9rmCqRndXl
-         G6Ay1YbKyTSm7TfTnt6y6JksQ0T7Wl8ov2bUKWFwWlMLGJQAH3f+cht1/3M6oJaavDB5
-         gyulX7bAbUgm7rNrZ2kpMeBZwRbr7m8nE1QhyeX957/vCir7hZXPdXQmLdVpUfdpX/1m
-         Af0FLLU/gG8BT/dgcnHkEAbr0Kr8UkIQcQLOZLbAW1I40oudYqD6I+qX+eZl1IL5144c
-         y8GQ==
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
+        bh=FZVURgbUnRRhotNrDUDDUBNjYAeyYxTRL1IZC5Y1/m0=;
+        b=MSFSXK2t83I5wCJppMlK0bM7Obsr0TsNe4EuFR+yKIc3Tz5xN7IP1hgnYfKZUF5TvT
+         /ax+9r1Lafnf//SAGrstZanot4mbeVK+ptgDqINAk+yShhnMonEZnoEMe9eL1dueBCXS
+         DI4L5HW0hHVhk59O9+H5i0rGIpGi21UnoprMooD24Rb+lXa4pHm67kAknriLrgXTOXMu
+         edCbZ5vJtUEexazxaziQEPio+5AervvBzFDthBCVFzJCnQjpgnNfetFfky3x7RuG0lTz
+         OIoTehoFNdFktAE5c1EH0lhniLzjrdSXtCerh/VsFLVF6h9qjNfYYriNY2mCvmgpL8yh
+         MrKA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Psu97blz;
+       dkim=pass header.i=@linaro.org header.s=google header.b=DEq+p1Gy;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id i26-20020ac860da000000b0034456ccc16fsi468167qtm.262.2022.09.27.03.15.04
+        by mx.google.com with ESMTPS id q11-20020ad45cab000000b004ad55fa84c1si619881qvh.440.2022.09.27.03.15.03
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 27 Sep 2022 03:15:04 -0700 (PDT)
+        Tue, 27 Sep 2022 03:15:03 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Psu97blz;
+       dkim=pass header.i=@linaro.org header.s=google header.b=DEq+p1Gy;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:60826 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:60824 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1od7cF-0004dH-QZ
-	for alex.bennee@linaro.org; Tue, 27 Sep 2022 06:15:03 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:40110)
+	id 1od7cE-0004b6-GC
+	for alex.bennee@linaro.org; Tue, 27 Sep 2022 06:15:02 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38598)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jean-philippe@linaro.org>)
- id 1od7aB-0000wC-R9
- for qemu-devel@nongnu.org; Tue, 27 Sep 2022 06:12:55 -0400
-Received: from mail-wr1-x429.google.com ([2a00:1450:4864:20::429]:40583)
+ id 1od7a6-0000rp-Fd
+ for qemu-devel@nongnu.org; Tue, 27 Sep 2022 06:12:51 -0400
+Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e]:35470)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <jean-philippe@linaro.org>)
- id 1od7a8-0002Wi-JZ
- for qemu-devel@nongnu.org; Tue, 27 Sep 2022 06:12:55 -0400
-Received: by mail-wr1-x429.google.com with SMTP id x18so14203881wrm.7
- for <qemu-devel@nongnu.org>; Tue, 27 Sep 2022 03:12:52 -0700 (PDT)
+ id 1od7a4-0002TF-7D
+ for qemu-devel@nongnu.org; Tue, 27 Sep 2022 06:12:50 -0400
+Received: by mail-wm1-x32e.google.com with SMTP id
+ r10-20020a1c440a000000b003b494ffc00bso988745wma.0
+ for <qemu-devel@nongnu.org>; Tue, 27 Sep 2022 03:12:47 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date;
- bh=gCpSGaH9k9PWhr0Z9u8fR2+dVNRNKa0vVi8uRr2Kuvg=;
- b=Psu97blzdsnye9goX9eqqYWBeEpeId+OBpZCTlEAIV73WaOzcKpUHfrXZ4rZEoFyE2
- EWlWHVNrR8fQAK75vFldmJlYYhkP8OnLvJNSShB2YfLelX0MHjcxe5SXF+whVEjnmbUG
- bRzlFh9TB7lZvlE5jsotXr0+K2IbUW8oj533VcqPPQeLKdcANaBj5uWRNwZG34JfQsui
- ikLcJzKBcgw34gAfgqiwMiHrSlcusOjqiZ1UIvnQ98W/zJ8pg1uEr8kub5hMk29YuPtb
- tXQk+KxNTOvaYBEJw4ilE1BY6vYOW6EjP/YzgWAMJXIGz8KMmQiSw/FOCvlMbjC4u3Wc
- lOFQ==
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date;
+ bh=FZVURgbUnRRhotNrDUDDUBNjYAeyYxTRL1IZC5Y1/m0=;
+ b=DEq+p1GyBNjWroAIyKqiE5Hw8iNuJqx01h3lFf6+8NvzEMJ9wKzUj4FtaHrBHumtjR
+ Szj25vT3ecIlZgYfG+831FLeYSStdbjV1hZymL9EENKy+X913xgBI9TQEcAKb7f37L9l
+ PLpafXNeeTu7I4YN1MG+oYC8iRmElRfggpKLNwCB3w9PzGIRaPyCCTfxUxXhR+J6C4N7
+ WcnuTGWtD1dh9sivjbt9f/C0sqONu2inD5oU3/eWOcXps+wK9p0duwG4M992o7nIKusE
+ qnHFnpd1Xt55HXjkIcs+gyEuJJCV00x6Etr5HKWG5J4UEYrnu4DxlqGYL20UT+AhxcqQ
+ X2eQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date;
- bh=gCpSGaH9k9PWhr0Z9u8fR2+dVNRNKa0vVi8uRr2Kuvg=;
- b=mjfODUJ1pymaAhvl7IXCVJ5kjMmk3PvGPpZXpNwhQaSdhAPG+6bi+4M3pjacsbz9AJ
- 5zjC0vf0wC40GLy2yRWzgJSvtE3Efq+95JsDCJI8Kqs0pYU5SfQzP6W7AP3VpqD0vL8z
- QPSi27ogYtmoFskOdecp0EUPZ4vBOXxsxeFsagq5gL7M2zfftjmr35gDVq7WwWQetmzg
- V5FDBFsGqWr+clKaFG/6pVxnDt3D81d893Y+djFI9GmyFYy5ZQOw+HzsNluNJNNwbj1l
- ruKS23ixERRptn9SgjqfupqqqYKxdAbrVA8NkhrN6sta/RdjH2b0ZyL0oXVJs94SMjc4
- C7BQ==
-X-Gm-Message-State: ACrzQf3JTQfo7F2pbYuJp94VntGAZjkcUT+S5/EkafDFaRu4QllsxFzJ
- g7Ro6uXFkFPKCrNLFXd7HFNEug==
-X-Received: by 2002:a05:6000:15c5:b0:22a:49c2:4c58 with SMTP id
- y5-20020a05600015c500b0022a49c24c58mr15991749wry.362.1664273571139; 
- Tue, 27 Sep 2022 03:12:51 -0700 (PDT)
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date;
+ bh=FZVURgbUnRRhotNrDUDDUBNjYAeyYxTRL1IZC5Y1/m0=;
+ b=x8YCeFQM8A4Zx6qRJA3Q0iM8lwpT/s39dfCrwfUiYujon8zccGJKW46hFmflVcYCTG
+ pByt9Fw9ormelc2JtfX9lHjD8RboqyQxokOfxgNGFuNuxmd5DNVhj+aGPlVQ6m/6Iv/b
+ YrnnxE2jw94TX8XkjWUcnZ+8zolg0a0/vKQeXvd9FFmY2J9wMMv0dOOmSenOZNGBTLLV
+ xNQx8zX2MJEE+kq3kVDNqJhj9A61pd5fUwhRrkVfPOtqadIi3egyXQBlPh36hZPwERIW
+ rVx+OJZ5PYTlFB/tlUrIMhdfXG1fqxpqaocyKsEHiQIb6d1C/P4oNlUgyNRfV88k47nI
+ sEJg==
+X-Gm-Message-State: ACrzQf2/O0rqkPeNsD/L8JtmzjqPF6FV2QosXTtsCuNMMQtBF7I6Sn2J
+ 3bJgEra3rpXs/TbR6ngrSEflFw==
+X-Received: by 2002:a05:600c:2241:b0:3b4:88aa:dcba with SMTP id
+ a1-20020a05600c224100b003b488aadcbamr2008622wmm.203.1664273565993; 
+ Tue, 27 Sep 2022 03:12:45 -0700 (PDT)
 Received: from localhost.localdomain
  (cpc92880-cmbg19-2-0-cust679.5-4.cable.virginm.net. [82.27.106.168])
  by smtp.gmail.com with ESMTPSA id
- w6-20020adfd4c6000000b00223b8168b15sm1398387wrk.66.2022.09.27.03.12.50
+ w6-20020adfd4c6000000b00223b8168b15sm1398387wrk.66.2022.09.27.03.12.44
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 27 Sep 2022 03:12:50 -0700 (PDT)
+ Tue, 27 Sep 2022 03:12:45 -0700 (PDT)
 From: Jean-Philippe Brucker <jean-philippe@linaro.org>
 To: peter.maydell@linaro.org
 Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, robh+dt@kernel.org,
  Jean-Philippe Brucker <jean-philippe@linaro.org>
-Subject: [PATCH v2 7/8] hw/arm/virt: Fix devicetree warnings about the
- virtio-iommu node
-Date: Tue, 27 Sep 2022 11:03:48 +0100
-Message-Id: <20220927100347.176606-8-jean-philippe@linaro.org>
+Subject: [PATCH v2 0/8] hw/arm/virt: Fix dt-schema warnings
+Date: Tue, 27 Sep 2022 11:03:41 +0100
+Message-Id: <20220927100347.176606-1-jean-philippe@linaro.org>
 X-Mailer: git-send-email 2.37.3
-In-Reply-To: <20220927100347.176606-1-jean-philippe@linaro.org>
-References: <20220927100347.176606-1-jean-philippe@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::429;
- envelope-from=jean-philippe@linaro.org; helo=mail-wr1-x429.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32e;
+ envelope-from=jean-philippe@linaro.org; helo=mail-wm1-x32e.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -124,54 +120,41 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: grOlR7OThMtT
+X-TUID: jewF7agtUAQ5
 
-The "PCI Bus Binding to: IEEE Std 1275-1994" defines the compatible
-string for a PCIe bus or endpoint as "pci<vendorid>,<deviceid>" or
-similar. Since the initial binding for PCI virtio-iommu didn't follow
-this rule, it was modified to accept both strings and ensure backward
-compatibility. Also, the unit-name for the node should be
-"device,function".
+Fix some warnings thrown by dt-validate for the aarch64 virt devicetree.
 
-Fix corresponding dt-validate and dtc warnings:
+Since v1 [1]:
+* Submitted more DT bindings changes where appropriate [2]. All of them
+  applied for Linux v6.1 so I dropped the related QEMU changes.
+* Grouped all node name changes into patch 8
+* Improved commit messages
 
-  pcie@10000000: virtio_iommu@16:compatible: ['virtio,pci-iommu'] does not contain items matching the given schema
-  pcie@10000000: Unevaluated properties are not allowed (... 'virtio_iommu@16' were unexpected)
-  From schema: linux/Documentation/devicetree/bindings/pci/host-generic-pci.yaml
-  virtio_iommu@16: compatible: 'oneOf' conditional failed, one must be fixed:
-        ['virtio,pci-iommu'] is too short
-        'pci1af4,1057' was expected
-  From schema: dtschema/schemas/pci/pci-bus.yaml
+I'm testing by running various virt machine configurations with -M
+dumpdtb=qemu.dtb, then running dt-validate [3] and dtc:
 
-  Warning (pci_device_reg): /pcie@10000000/virtio_iommu@16: PCI unit address format error, expected "2,0"
+  dt-validate -s linux/Documentation/devicetree/bindings/ qemu.dtb
+  dtc -O dts qemu.dtb -o qemu.dts
 
-Signed-off-by: Jean-Philippe Brucker <jean-philippe@linaro.org>
----
- hw/arm/virt.c | 5 +++--
- 1 file changed, 3 insertions(+), 2 deletions(-)
+[1] https://lore.kernel.org/all/20220824155113.286730-1-jean-philippe@linaro.org/
+[2] SMMU interrupt order https://lore.kernel.org/all/20220916133145.1910549-1-jean-philippe@linaro.org/
+    arch-timer compatible https://lore.kernel.org/all/20220922161149.371565-1-jean-philippe@linaro.org/
+    virtio-iommu https://lore.kernel.org/all/20220923074435.420531-1-jean-philippe@linaro.org/
+[3] https://github.com/devicetree-org/dt-schema
 
-diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index 2de16f6324..5e16d54bbb 100644
---- a/hw/arm/virt.c
-+++ b/hw/arm/virt.c
-@@ -1372,14 +1372,15 @@ static void create_smmu(const VirtMachineState *vms,
- 
- static void create_virtio_iommu_dt_bindings(VirtMachineState *vms)
- {
--    const char compat[] = "virtio,pci-iommu";
-+    const char compat[] = "virtio,pci-iommu\0pci1af4,1057";
-     uint16_t bdf = vms->virtio_iommu_bdf;
-     MachineState *ms = MACHINE(vms);
-     char *node;
- 
-     vms->iommu_phandle = qemu_fdt_alloc_phandle(ms->fdt);
- 
--    node = g_strdup_printf("%s/virtio_iommu@%d", vms->pciehb_nodename, bdf);
-+    node = g_strdup_printf("%s/virtio_iommu@%x,%x", vms->pciehb_nodename,
-+                           PCI_SLOT(bdf), PCI_FUNC(bdf));
-     qemu_fdt_add_subnode(ms->fdt, node);
-     qemu_fdt_setprop(ms->fdt, node, "compatible", compat, sizeof(compat));
-     qemu_fdt_setprop_sized_cells(ms->fdt, node, "reg",
+Jean-Philippe Brucker (8):
+  hw/arm/virt: Fix devicetree warning about the root node
+  hw/arm/virt: Fix devicetree warning about the GIC node
+  hw/arm/virt: Use "msi-map" devicetree property for PCI
+  hw/arm/virt: Fix devicetree warning about the gpio-key node
+  hw/arm/virt: Fix devicetree warnings about the GPIO node
+  hw/arm/virt: Fix devicetree warning about the SMMU node
+  hw/arm/virt: Fix devicetree warnings about the virtio-iommu node
+  hw/arm/virt: Fix devicetree warnings about node names
+
+ hw/arm/virt.c | 39 +++++++++++++++++++++------------------
+ 1 file changed, 21 insertions(+), 18 deletions(-)
+
 -- 
 2.37.3
 

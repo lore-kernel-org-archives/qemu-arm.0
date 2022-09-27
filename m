@@ -1,175 +1,175 @@
-Received: by 2002:a8a:1193:0:0:0:0:0 with SMTP id m19csp598412ocs;
-        Tue, 27 Sep 2022 07:19:59 -0700 (PDT)
-X-Google-Smtp-Source: AMsMyM4dl1s0A9hEqK+L+gr3a9qW9PphtzExn4qVmik3rwujJMtt5UVQqpAD6i1XA97xTmmswHqh
-X-Received: by 2002:a05:620a:2996:b0:6ce:c07b:7cd with SMTP id r22-20020a05620a299600b006cec07b07cdmr18486597qkp.495.1664288399353;
-        Tue, 27 Sep 2022 07:19:59 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1664288399; cv=none;
+Received: by 2002:a8a:1193:0:0:0:0:0 with SMTP id m19csp679290ocs;
+        Tue, 27 Sep 2022 09:15:22 -0700 (PDT)
+X-Google-Smtp-Source: AMsMyM5Jw81u1h0fEQ3kX/Edv2NnLXrCdCa5ir+nnXtJ3bsNIAePd6cD2i0izEzjRk+qMO7Zctsy
+X-Received: by 2002:a05:622a:7:b0:35d:186:bf97 with SMTP id x7-20020a05622a000700b0035d0186bf97mr23280341qtw.160.1664295322071;
+        Tue, 27 Sep 2022 09:15:22 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1664295322; cv=none;
         d=google.com; s=arc-20160816;
-        b=oIj3jW0FyRjZ06KSySLzeLeXvNBxNOoIrJcjaQN6plgZkDM/gX8OCoEwj51FPuby2K
-         HSxG64CSyrQBNWNalHYHxtpDpRIoCtCqjmTFqggdx2SsoxnY1b4l3PTc850600tvAQsc
-         jkVyVmWJmjhnaMfBNE+SCtE7gzPSebDnqXLsBaxExGfFO+BqBBvR925JndO1rqRtLzEc
-         ChB3WhVA9WoHULK5rhcFSy3eqiCcHFRu8DyVMiDduM4RGMCllpd/Zb0dUGxplFGqKSEM
-         NuC75ENlnH3eL9aUwoVF7t981PyZ1NRWWqcpzsLTh3oMQiT1j9n3Cxn/+DlHpkYUjUoK
-         /B+Q==
+        b=XpoRlKDHyDrLA0oXOhfcYQJglmu92WOAxX/z3+MzUa/xiiQNxE5Fjh/BvQ92LaSzup
+         ZTvK8o3W/7p0x7DHXgJNk2qRPTYQlPjtF6A3aZ4BP531ywrqv5iTs54w48SRDhCoK8LA
+         E+ScSUcP3OFRd9WyaFuX7fDWEvcJT3iSD8Z7S12pNl0SZxcmyPa1vtoNImVLWP8KGGi9
+         SwumikV96Ga25OQtVWPFapwsEbRmA8g+fSwkNqn1LTDSTqCafSy4ZaFnFQdo4I3DwgW8
+         1DRnOIFnSSJQIsjcnUzyOc/ZNVgkfYV7Law3ZpmZHkpcPaNs10J9PWft1IcM+QxpvnJX
+         r3TQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:cc:to:content-language:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=eig4h6XvaBCCNnnThtNKOtsC59Q/xOgaZws4eVtAdZM=;
-        b=HeSGF/1n6VgSCKeoXaym4bEfbxR4wWhaKa8YF5Zp/eh+v9ZQF4yLDDj3jyoDc9vPcF
-         UbXahm3YFkLaJdZBOzn0FYR7/n1CarAVsx1ldNPJPz/Umv5ZF/kmFkUYQr3ClEg4mLzg
-         XmhSNTSj3ld/aCJJLqA0KI9aK4OaJJF2OuYLpxneljcC7psQou0AHSr2iN7EYjhW4LKI
-         E7xUb7oe0c1SAuLB/tmC/2+GsgzlKG5ZujgjCT6zHW0L1zf7ABVGSQeda3IVu3kX4ICm
-         LUsU9bc/Wl0mNS3Yb2AsmCoewIbXAjOJ11QQYFSgbNGyPvy2FVbHRuwFP5EZlXNb9MGr
-         ZKAA==
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
+        bh=AYXNAR/40rFqzW2vG8sAKK8tE30s5Xu8rSZ73wgd/NM=;
+        b=C6ySgNFffBvW0xXSrLQM7XfSEoAziylHQYmuWaRVYmqMWlTQQ4qAo7nYk5pnCRL4HD
+         OfpFKaVfRe36648+MzFXRRc7HkpCjwtBOQfPVnJxT6/rPC0uzHT4U2lcIeFXlBhMQRpF
+         kIwfQ/fedzi91Szgi9lfUixQIKXZyTFuVqrcs3Sbh7lvQyLlD5zRwSD8pbgnc/vs4WYs
+         XU4xrbGFNK6afh5+TMuqLqLVE70GcBKCiPedUVdfSVKuRUsXFJ5XDzcwO/Hyqg2IlqHk
+         UvdTFcyR4ZIr8XXzbyK0X/rjcTFruHAz6tYFgok9leUVaOYuktZYA8KEAoQ8gs9tdU2X
+         ZrWA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=JI1JYbkJ;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@zx2c4.com header.s=20210105 header.b=PbQ6ZR6O;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=zx2c4.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id de32-20020a05620a372000b006cf74c1933dsi902414qkb.528.2022.09.27.07.19.59
+        by mx.google.com with ESMTPS id bb3-20020a05622a1b0300b0035d4dfe8efdsi1041814qtb.54.2022.09.27.09.15.21
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 27 Sep 2022 07:19:59 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 27 Sep 2022 09:15:22 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=JI1JYbkJ;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:58466 helo=lists1p.gnu.org)
+       dkim=pass header.i=@zx2c4.com header.s=20210105 header.b=PbQ6ZR6O;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=zx2c4.com
+Received: from localhost ([::1]:54100 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1odBRG-0000sR-Rk
-	for alex.bennee@linaro.org; Tue, 27 Sep 2022 10:19:58 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:35252)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1odDEu-0005CM-Fx
+	for alex.bennee@linaro.org; Tue, 27 Sep 2022 12:15:20 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:51926)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eauger@redhat.com>) id 1odA0b-0001m1-3p
- for qemu-devel@nongnu.org; Tue, 27 Sep 2022 08:48:24 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:23511)
+ (Exim 4.90_1)
+ (envelope-from <SRS0=O2ZR=Z6=zx2c4.com=Jason@kernel.org>)
+ id 1odD7s-0002s0-U2; Tue, 27 Sep 2022 12:08:06 -0400
+Received: from ams.source.kernel.org ([145.40.68.75]:58202)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eauger@redhat.com>) id 1odA0Y-0007FJ-SF
- for qemu-devel@nongnu.org; Tue, 27 Sep 2022 08:48:20 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1664282898;
+ (Exim 4.90_1)
+ (envelope-from <SRS0=O2ZR=Z6=zx2c4.com=Jason@kernel.org>)
+ id 1odD7p-000312-Up; Tue, 27 Sep 2022 12:08:04 -0400
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by ams.source.kernel.org (Postfix) with ESMTPS id 836CFB819D6;
+ Tue, 27 Sep 2022 16:07:49 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 63F6BC43470;
+ Tue, 27 Sep 2022 16:07:47 +0000 (UTC)
+Authentication-Results: smtp.kernel.org;
+ dkim=pass (1024-bit key) header.d=zx2c4.com header.i=@zx2c4.com
+ header.b="PbQ6ZR6O"
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=zx2c4.com; s=20210105; 
+ t=1664294865;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=eig4h6XvaBCCNnnThtNKOtsC59Q/xOgaZws4eVtAdZM=;
- b=JI1JYbkJgooT+XP+OLKJeCCcjNaPPGMS7cgwlejw3+hrM9I9vioTSQbX7L+b7o7rBgLX1f
- tlOlJEkX3YO+Qe8b28YTIY60nxn02mdAMlvUTEYPlzv916C7X/PZp6dQH7kohX+0v1q0OE
- knJj0kwoL10WMSzTQz/I3kyVof0k7AU=
-Received: from mail-ej1-f72.google.com (mail-ej1-f72.google.com
- [209.85.218.72]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_128_GCM_SHA256) id
- us-mta-86-nC11kJZLP86F6CqRpn6NFA-1; Tue, 27 Sep 2022 08:48:16 -0400
-X-MC-Unique: nC11kJZLP86F6CqRpn6NFA-1
-Received: by mail-ej1-f72.google.com with SMTP id
- i11-20020a1709064fcb00b00783415e70c2so2794152ejw.6
- for <qemu-devel@nongnu.org>; Tue, 27 Sep 2022 05:48:16 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date;
- bh=eig4h6XvaBCCNnnThtNKOtsC59Q/xOgaZws4eVtAdZM=;
- b=M0GbFyuS0ProTJO7uPqMu2lYJiWO8n+z3uYGPgBJn17Z5DIJNvtGcFJ/Is2H4u0ufZ
- +fMy5C4hcFwh5gUJ7pNpwBAgnZdGajJ45pdCgskmPawXEqZZs7GjYGO3tj9iN7O9Ljmv
- kPrGN3WFrMpeIHduN2lI4U6bxAh2up5Ejy/ixuNdQfFAz5PAXxar79LzfvkPM/1NNHyI
- MmNjdtN66ARZtmWtgle1Ht+9zBK+CBdMg6u/lcWDNy2MA6HqQ/SQyrFilx6gaRxDAGi2
- BOxPIabcwdVWRJTL7YGKdkP/a83/RnimWXpeTjDc7lzbd9jmEZ9WnIXaAdJZtTfp3/Be
- D/uw==
-X-Gm-Message-State: ACrzQf0XVjmHXY0FAjveL3mLlRC7nYxo4UN6UWXFnSBtQN+slwW/6DLP
- RfGaLh+9NZqceSvfTFBnY5YbFd0qCwBkYZH5u+V2snDtIHQRDRIPva4P0bEs6PnYVY04gsGGUmh
- crKhbCy6IlLMcYxE=
-X-Received: by 2002:a17:907:5ce:b0:730:bae0:deb with SMTP id
- wg14-20020a17090705ce00b00730bae00debmr23226469ejb.181.1664282895796; 
- Tue, 27 Sep 2022 05:48:15 -0700 (PDT)
-X-Received: by 2002:a17:907:5ce:b0:730:bae0:deb with SMTP id
- wg14-20020a17090705ce00b00730bae00debmr23226460ejb.181.1664282895612; 
- Tue, 27 Sep 2022 05:48:15 -0700 (PDT)
-Received: from ?IPV6:2a01:e0a:59e:9d80:527b:9dff:feef:3874?
- ([2a01:e0a:59e:9d80:527b:9dff:feef:3874])
- by smtp.gmail.com with ESMTPSA id
- 12-20020a170906318c00b0073dcdf9b0bcsm784350ejy.17.2022.09.27.05.48.14
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 27 Sep 2022 05:48:15 -0700 (PDT)
-Message-ID: <3229b3da-116a-f0fa-95eb-042825a95e98@redhat.com>
-Date: Tue, 27 Sep 2022 14:48:13 +0200
+ to:to:cc:cc:mime-version:mime-version:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=AYXNAR/40rFqzW2vG8sAKK8tE30s5Xu8rSZ73wgd/NM=;
+ b=PbQ6ZR6OOtkJdY5I04dKvl2ylvMYLb6x7dSj2Op4mFPUnTLm0o7pm50PEJTkNOcNffBS47
+ O4IHQBVszU70FJ3bEWM+oLtZQyeCoW3p2osmK1sDh4m7glFMjHcrq//Jgt3XY1+PdA1Cjo
+ P8vIdnDPx/OdQen1B/9WfzUlGCVOfMQ=
+Received: by mail.zx2c4.com (ZX2C4 Mail Server) with ESMTPSA id 2a1565b1
+ (TLSv1.3:TLS_AES_256_GCM_SHA384:256:NO); 
+ Tue, 27 Sep 2022 16:07:45 +0000 (UTC)
+From: "Jason A. Donenfeld" <Jason@zx2c4.com>
+To: qemu-devel@nongnu.org,
+	peter.maydell@linaro.org,
+	qemu-arm@nongnu.org
+Cc: "Jason A. Donenfeld" <Jason@zx2c4.com>
+Subject: [PATCH] arm: re-randomize rng-seed on reboot
+Date: Tue, 27 Sep 2022 18:07:42 +0200
+Message-Id: <20220927160742.1773167-1-Jason@zx2c4.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.11.0
-Subject: Re: [PATCH v2 1/8] hw/arm/virt: Fix devicetree warning about the root
- node
-Content-Language: en-US
-To: Jean-Philippe Brucker <jean-philippe@linaro.org>, peter.maydell@linaro.org
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, robh+dt@kernel.org
-References: <20220927100347.176606-1-jean-philippe@linaro.org>
- <20220927100347.176606-2-jean-philippe@linaro.org>
-From: Eric Auger <eauger@redhat.com>
-In-Reply-To: <20220927100347.176606-2-jean-philippe@linaro.org>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=eauger@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -44
-X-Spam_score: -4.5
-X-Spam_bar: ----
-X-Spam_report: (-4.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.082,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-2.319, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=145.40.68.75;
+ envelope-from=SRS0=O2ZR=Z6=zx2c4.com=Jason@kernel.org;
+ helo=ams.source.kernel.org
+X-Spam_score_int: -67
+X-Spam_score: -6.8
+X-Spam_bar: ------
+X-Spam_report: (-6.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, HEADER_FROM_DIFFERENT_DOMAINS=0.25,
+ RCVD_IN_DNSWL_HI=-5, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: aKvF0m5E5bz0
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: dsTI87uNQ5oA
 
-Hi jean,
+When the system reboots, the rng-seed that the FDT has should be
+re-randomized, so that the new boot gets a new seed. Since the FDT is in
+the ROM region at this point, we add a hook right after the ROM has been
+added, so that we have a pointer to that copy of the FDT. When the
+reboot happens, we then look for RNG seeds and replace their contents
+with new random data.
 
-On 9/27/22 12:03, Jean-Philippe Brucker wrote:
-> The devicetree specification requires a 'model' property in the root
-> node. Fix the corresponding dt-validate warning:
-> 
->   /: 'model' is a required property
->   From schema: dtschema/schemas/root-node.yaml
-> 
-> Use the same name for model as for compatible. The specification
-> recommends that 'compatible' follows the format 'manufacturer,model' and
-> 'model' follows the format 'manufacturer,model-number'. Since our> 'compatible' doesn't observe this, 'model' doesn't really need to
-> either.
-> 
-> Signed-off-by: Jean-Philippe Brucker <jean-philippe@linaro.org>
-Reviewed-by: Eric Auger <eric.auger@redhat.com>
+Cc: Peter Maydell <peter.maydell@linaro.org>
+Signed-off-by: Jason A. Donenfeld <Jason@zx2c4.com>
+---
+ hw/arm/boot.c | 22 ++++++++++++++++++++++
+ 1 file changed, 22 insertions(+)
 
-Eric
-
-> ---
->  hw/arm/virt.c | 1 +
->  1 file changed, 1 insertion(+)
-> 
-> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-> index 1a6480fd2a..83ab1a37fb 100644
-> --- a/hw/arm/virt.c
-> +++ b/hw/arm/virt.c
-> @@ -252,6 +252,7 @@ static void create_fdt(VirtMachineState *vms)
->      qemu_fdt_setprop_string(fdt, "/", "compatible", "linux,dummy-virt");
->      qemu_fdt_setprop_cell(fdt, "/", "#address-cells", 0x2);
->      qemu_fdt_setprop_cell(fdt, "/", "#size-cells", 0x2);
-> +    qemu_fdt_setprop_string(fdt, "/", "model", "linux,dummy-virt");
->  
->      /* /chosen must exist for load_dtb to fill in necessary properties later */
->      qemu_fdt_add_subnode(fdt, "/chosen");
+diff --git a/hw/arm/boot.c b/hw/arm/boot.c
+index ada2717f76..2836db4abb 100644
+--- a/hw/arm/boot.c
++++ b/hw/arm/boot.c
+@@ -25,6 +25,7 @@
+ #include "qemu/config-file.h"
+ #include "qemu/option.h"
+ #include "qemu/units.h"
++#include "qemu/guest-random.h"
+ 
+ /* Kernel boot protocol is specified in the kernel docs
+  * Documentation/arm/Booting and Documentation/arm64/booting.txt
+@@ -529,6 +530,26 @@ static void fdt_add_psci_node(void *fdt)
+     qemu_fdt_setprop_cell(fdt, "/psci", "migrate", migrate_fn);
+ }
+ 
++static void rerandomize_fdt_seeds(void *fdt)
++{
++    int noffset, poffset, len;
++    const char *name;
++    uint8_t *data;
++
++    for (noffset = fdt_next_node(fdt, 0, NULL);
++         noffset >= 0;
++         noffset = fdt_next_node(fdt, noffset, NULL)) {
++        for (poffset = fdt_first_property_offset(fdt, noffset);
++             poffset >= 0;
++             poffset = fdt_next_property_offset(fdt, poffset)) {
++            data = (uint8_t *)fdt_getprop_by_offset(fdt, poffset, &name, &len);
++            if (!data || strcmp(name, "rng-seed"))
++                continue;
++            qemu_guest_getrandom_nofail(data, len);
++        }
++    }
++}
++
+ int arm_load_dtb(hwaddr addr, const struct arm_boot_info *binfo,
+                  hwaddr addr_limit, AddressSpace *as, MachineState *ms)
+ {
+@@ -683,6 +704,7 @@ int arm_load_dtb(hwaddr addr, const struct arm_boot_info *binfo,
+      * the DTB is copied again upon reset, even if addr points into RAM.
+      */
+     rom_add_blob_fixed_as("dtb", fdt, size, addr, as);
++    qemu_register_reset(rerandomize_fdt_seeds, rom_ptr_for_as(as, addr, size));
+ 
+     g_free(fdt);
+ 
+-- 
+2.37.3
 

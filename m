@@ -1,90 +1,109 @@
-Received: by 2002:a8a:1193:0:0:0:0:0 with SMTP id m19csp18620ocs;
-        Tue, 27 Sep 2022 21:39:40 -0700 (PDT)
-X-Google-Smtp-Source: AMsMyM5tCKDX8kGAPotWEMLYRmBTcW5JcvU6FcmTuot8F5ilXsm8qKmigaWHVe7sRLTmWhlFnGDR
-X-Received: by 2002:ad4:5761:0:b0:4ad:7271:d2d5 with SMTP id r1-20020ad45761000000b004ad7271d2d5mr14688304qvx.112.1664339980387;
-        Tue, 27 Sep 2022 21:39:40 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1664339980; cv=none;
+Received: by 2002:a8a:1193:0:0:0:0:0 with SMTP id m19csp102263ocs;
+        Wed, 28 Sep 2022 00:58:12 -0700 (PDT)
+X-Google-Smtp-Source: AMsMyM5WpmBmTLiHgLTS+76wyamo2rC1WVPGfKjmCW+Oklfs/maTkyMK5P0F4C1/Yk44/MLnj39c
+X-Received: by 2002:a05:620a:3724:b0:6ce:1a37:ef29 with SMTP id de36-20020a05620a372400b006ce1a37ef29mr21169802qkb.754.1664351892642;
+        Wed, 28 Sep 2022 00:58:12 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1664351892; cv=none;
         d=google.com; s=arc-20160816;
-        b=nCTXDymNzlMG6J8emek8JxfiuwUJRC4N0BXm6FQTAdiPHTaTop9dA32JbyPPB4cUj8
-         XTiLFuvd6pNGczCRd2HIs+gqnQMeVNtfgPBV4rRg5X/LV1cPiNdn3WPX6mGFhhHMdbAr
-         rWBP/45EtRT03LBBIIAWjOS1R9dl2hMoto/ttHNTvZWaJaCxPRLz6tSkHcVqSvd1d42T
-         +iPwExc/WxiwBuXmoV+xRDbNUlYRqzzeL02pk2Uq6413p6hJd5vaoN2V4cUrInGxOIdr
-         lsMUMX1dDuiv5Z1wrx36vN85gqtpfLp7qBCt5cSY5Tv92d/VeIkv0NALlkr7PQO7QzZE
-         5qfg==
+        b=UqGoYpQqp61g6ZnCcbXJnzxzF/38W3D7T+uYocaKay1Nbe69SmwrCyW/IgEH/yXXsK
+         iHmsUfzuV7jOptdJOZatSbcTGkne4nCecDLxNwhqcauR8ZCBckvRoi4vZiCTwpzh89nx
+         TPnFCHmnOVlpkh+Lc1cbOs5yRet4vZo1IbIkvyRzFVGTy/e1pvW7UZDgozq103XygYv6
+         FP9JqU67MMbtlp8MQVRtfOXFCG1VC3TWXcJrPOqJBWmK/WfDPVvTTbB7KcCOFDLpitd+
+         WhXH8sgS1v9as7MwOADhCfClp3DarZlEmnZgg2yTkdYrtjGS2SbL6FgCll1bjDr1IOlw
+         tLeQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=from:reply-to:sender:errors-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:references:cc:to:subject;
-        bh=Hi4zdrXjisvCrr6bkJBuhuLdHKMmfShRYzx7B0WVFBc=;
-        b=De+Xy3va9okkT9aq4l9G4zy1FiRkcXGMfWb/EUpHV1Vtr7UEMGehgt59m6y99SDAAi
-         kGR5Ae21rc/OUfWN+4xpsPzIJZoWu+CBrixiJrA0cxhVfm9vkW5xd8rAHukN5Ag4suX3
-         f/JMaSytZg1pdicddU8qblxo/7erzF1HzGZEWXfN+P0bfhlqHHq8Q22DCPzP0VCTqvk4
-         M+ZMrPjPy8tXaBHq9sYGZssJ4CVPpBr8gViF4UQqzzWbcCtHdpz+lP9WeMdI//0jhEMR
-         fCvVQPF8s6hEdd+1xaa+ebIGaKF1V65nPJD2BxO9Iantdb1ddG3YakKOqeYB5jSAxbd9
-         ZxjA==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:mime-version:user-agent
+         :references:in-reply-to:subject:cc:to:from:message-id:date
+         :dkim-signature;
+        bh=9+4E33R9C3lVIjpaySUwB2mXDU6FMQrsTLYCaH3x8HE=;
+        b=qDjWQmcPEZwIwVh+powE2p8nwoeDKsaJqO2XXdghGde/IdJMCXrr0sX+6RAbFPRdDE
+         OmGrc3glcxC3el4yAZ0KgSMUXfkEEfKxzG4/VKrsk5AyxfJtOSDj7B4yq4cs3oy0Z506
+         ExUdUmBz60DchVfmM6rhijZSN1oTK7DFs22W7EHCgMbtEHBnwSNDVZeMQp35Rd7hgZFu
+         mnbeKbfWWBBpu2hVxvin9ycXbsz6vk+dU4KumGArcQzGtDWvk+rnZWHNf7OPWivqxKby
+         IR926g83K5R/iZMjAu2fpJBk44OL9Hkh1qlSZmZ6z4D8TPidqr5OVW+27FMBO1BZOSFW
+         fCXQ==
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=OgjmWVkz;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=kernel.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x23-20020ac84a17000000b0035cb86ab5f2si1935500qtq.731.2022.09.27.21.39.40
+        by mx.google.com with ESMTPS id jz13-20020a0562140e6d00b004ac8c423fc3si2311737qvb.209.2022.09.28.00.58.12
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 27 Sep 2022 21:39:40 -0700 (PDT)
+        Wed, 28 Sep 2022 00:58:12 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
+       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=OgjmWVkz;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
-Received: from localhost ([::1]:48538 helo=lists1p.gnu.org)
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=kernel.org
+Received: from localhost ([::1]:34942 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1odOrE-0005ay-01
-	for alex.bennee@linaro.org; Wed, 28 Sep 2022 00:39:40 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:48074)
+	id 1odRxM-0006OI-5q
+	for alex.bennee@linaro.org; Wed, 28 Sep 2022 03:58:12 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:49832)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <yuzenghui@huawei.com>)
- id 1odOn3-0008Rj-A4; Wed, 28 Sep 2022 00:35:21 -0400
-Received: from szxga02-in.huawei.com ([45.249.212.188]:6092)
+ (Exim 4.90_1) (envelope-from <maz@kernel.org>)
+ id 1odQxT-00044i-3L; Wed, 28 Sep 2022 02:54:16 -0400
+Received: from ams.source.kernel.org ([145.40.68.75]:42054)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <yuzenghui@huawei.com>)
- id 1odOmx-0000ni-3d; Wed, 28 Sep 2022 00:35:17 -0400
-Received: from dggemv703-chm.china.huawei.com (unknown [172.30.72.57])
- by szxga02-in.huawei.com (SkyGuard) with ESMTP id 4Mck734fhBzHtcw;
- Wed, 28 Sep 2022 12:30:07 +0800 (CST)
-Received: from kwepemm600007.china.huawei.com (7.193.23.208) by
- dggemv703-chm.china.huawei.com (10.3.19.46) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2375.31; Wed, 28 Sep 2022 12:34:55 +0800
-Received: from [10.174.185.179] (10.174.185.179) by
- kwepemm600007.china.huawei.com (7.193.23.208) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2375.31; Wed, 28 Sep 2022 12:34:54 +0800
+ (Exim 4.90_1) (envelope-from <maz@kernel.org>)
+ id 1odQxQ-0004hD-0X; Wed, 28 Sep 2022 02:54:13 -0400
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by ams.source.kernel.org (Postfix) with ESMTPS id 39FF5B81F0F;
+ Wed, 28 Sep 2022 06:54:06 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id EBCB3C433C1;
+ Wed, 28 Sep 2022 06:54:04 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1664348045;
+ bh=NIE8VRMBt435+iQrD4JTTQgkTE6qkoY3u9UInHa0qlo=;
+ h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+ b=OgjmWVkzLg5kepV3JyH3KD7MiSr6pmB2//yknPDDEZFFz7WEFg7JWXScNBaMGeWCF
+ KVZsBe/xWdGJ4tR+1iBlJoHrRAfhff9CTebtShhfnmkKI+FIcDZWdQwgRi0dnM+RDN
+ Y6MwYf+NCmjzBWGB13GtQElFdgmkdFwpDyGgYWR0SaDUJz8jDfUG3CqKq68aZL5KHc
+ t5H8R+dZS9ACORiBIp9PKx8rfqEOjvj6l9p8qzqUX41rkDsXCNh2OSjnzXLTA63v1T
+ jWQv4MQn2mgbtt2KQJWd88SmpuOywdNTLUrGqiS98yJis7jhITjrWG5pWa3og5lpcR
+ mi5wEg93s759w==
+Received: from sofa.misterjones.org ([185.219.108.64]
+ helo=wait-a-minute.misterjones.org)
+ by disco-boy.misterjones.org with esmtpsa (TLS1.3) tls
+ TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.95)
+ (envelope-from <maz@kernel.org>) id 1odQxG-00DBVq-Kw;
+ Wed, 28 Sep 2022 07:54:02 +0100
+Date: Wed, 28 Sep 2022 07:52:58 +0100
+Message-ID: <874jwshtx1.wl-maz@kernel.org>
+From: Marc Zyngier <maz@kernel.org>
+To: Zenghui Yu <yuzenghui@huawei.com>,
+ Richard Henderson <richard.henderson@linaro.org>
+Cc: <qemu-devel@nongnu.org>,
+	<qemu-arm@nongnu.org>
 Subject: Re: [PATCH] target/arm: Use the max page size in a 2-stage ptw
-To: Richard Henderson <richard.henderson@linaro.org>, Marc Zyngier
- <maz@kernel.org>
-CC: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>
+In-Reply-To: <06d21135-7114-a848-1a49-d0aec16597a8@huawei.com>
 References: <20220913135643.55728-1-richard.henderson@linaro.org>
-Message-ID: <06d21135-7114-a848-1a49-d0aec16597a8@huawei.com>
-Date: Wed, 28 Sep 2022 12:34:53 +0800
-User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:68.0) Gecko/20100101
- Thunderbird/68.9.0
-MIME-Version: 1.0
-In-Reply-To: <20220913135643.55728-1-richard.henderson@linaro.org>
-Content-Type: text/plain; charset="utf-8"; format=flowed
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.174.185.179]
-X-ClientProxiedBy: dggems702-chm.china.huawei.com (10.3.19.179) To
- kwepemm600007.china.huawei.com (7.193.23.208)
-X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.188; envelope-from=yuzenghui@huawei.com;
- helo=szxga02-in.huawei.com
-X-Spam_score_int: -64
-X-Spam_score: -6.5
-X-Spam_bar: ------
-X-Spam_report: (-6.5 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-2.319,
- RCVD_IN_DNSWL_MED=-2.3, SPF_HELO_NONE=0.001,
+ <06d21135-7114-a848-1a49-d0aec16597a8@huawei.com>
+User-Agent: Wanderlust/2.15.9 (Almost Unreal) SEMI-EPG/1.14.7 (Harue)
+ FLIM-LB/1.14.9 (=?UTF-8?B?R29qxY0=?=) APEL-LB/10.8 EasyPG/1.0.0 Emacs/27.1
+ (x86_64-pc-linux-gnu) MULE/6.0 (HANACHIRUSATO)
+MIME-Version: 1.0 (generated by SEMI-EPG 1.14.7 - "Harue")
+Content-Type: text/plain; charset=US-ASCII
+X-SA-Exim-Connect-IP: 185.219.108.64
+X-SA-Exim-Rcpt-To: yuzenghui@huawei.com, richard.henderson@linaro.org,
+ qemu-devel@nongnu.org, qemu-arm@nongnu.org
+X-SA-Exim-Mail-From: maz@kernel.org
+X-SA-Exim-Scanned: No (on disco-boy.misterjones.org);
+ SAEximRunCond expanded to false
+Received-SPF: pass client-ip=145.40.68.75; envelope-from=maz@kernel.org;
+ helo=ams.source.kernel.org
+X-Spam_score_int: -71
+X-Spam_score: -7.2
+X-Spam_bar: -------
+X-Spam_report: (-7.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.082,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_HI=-5, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -100,75 +119,49 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Reply-to:  Zenghui Yu <yuzenghui@huawei.com>
-From:  Zenghui Yu via <qemu-arm@nongnu.org>
-X-TUID: un+ycz8lsfxB
+X-TUID: b/PrzsGdRb3R
 
-[ Fix Marc's email address ]
+On Wed, 28 Sep 2022 05:34:53 +0100,
+Zenghui Yu <yuzenghui@huawei.com> wrote:
+> 
+> [ Fix Marc's email address ]
 
-On 2022/9/13 21:56, Richard Henderson wrote:
-> We had only been reporting the stage2 page size.  This causes
-> problems if stage1 is using a larger page size (16k, 2M, etc),
-> but stage2 is using a smaller page size, because cputlb does
-> not set large_page_{addr,mask} properly.
+Ah, many thanks Zenghui! I was wondering whether my discussion with
+Richard had any result. As it turns out, it had an almost immediate
+result!
+
 > 
-> Fix by using the max of the two page sizes.
-> 
-> Reported-by: Marc Zyngier <marc.zyngier@arm.com>
-> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
-> ---
-> 
-> Hi Mark, I think this will fix the issue that you mentioned on Monday.
-> It certainly appears to fit the bill vs the described symptoms.
-> 
-> This is based on my ptw.c rewrite, full tree at
-> 
->     https://gitlab.com/rth7680/qemu/-/tree/tgt-arm-rme
-> 
-> Based-on: 20220822152741.1617527-1-richard.henderson@linaro.org
-> ("[PATCH v2 00/66] target/arm: Implement FEAT_HAFDBS")
-> 
-> 
-> r~
-> 
-> ---
->  target/arm/ptw.c | 11 ++++++++++-
->  1 file changed, 10 insertions(+), 1 deletion(-)
-> 
-> diff --git a/target/arm/ptw.c b/target/arm/ptw.c
-> index c81c51f60c..510939fc89 100644
-> --- a/target/arm/ptw.c
-> +++ b/target/arm/ptw.c
-> @@ -2509,7 +2509,7 @@ static bool get_phys_addr_twostage(CPUARMState *env, target_ulong address,
->                                     ARMMMUFaultInfo *fi)
->  {
->      hwaddr ipa;
-> -    int s1_prot;
-> +    int s1_prot, s1_lgpgsz;
->      bool ret;
->      bool ipa_secure;
->      ARMCacheAttrs cacheattrs1;
-> @@ -2550,6 +2550,7 @@ static bool get_phys_addr_twostage(CPUARMState *env, target_ulong address,
->       * prot and cacheattrs later.
->       */
->      s1_prot = result->f.prot;
-> +    s1_lgpgsz = result->f.lg_page_size;
->      cacheattrs1 = result->cacheattrs;
->      memset(result, 0, sizeof(*result));
->  
-> @@ -2565,6 +2566,14 @@ static bool get_phys_addr_twostage(CPUARMState *env, target_ulong address,
->          return ret;
->      }
->  
-> +    /*
-> +     * Use the maximum of the S1 & S2 page size, so that invalidation
-> +     * of pages > TARGET_PAGE_SIZE works correctly.
-> +     */
-> +    if (result->f.lg_page_size < s1_lgpgsz) {
-> +        result->f.lg_page_size = s1_lgpgsz;
-> +    }
-> +
->      /* Combine the S1 and S2 cache attributes. */
->      hcr = arm_hcr_el2_eff_secstate(env, is_secure);
->      if (hcr & HCR_DC) {
-> 
+> On 2022/9/13 21:56, Richard Henderson wrote:
+> > We had only been reporting the stage2 page size.  This causes
+> > problems if stage1 is using a larger page size (16k, 2M, etc),
+> > but stage2 is using a smaller page size, because cputlb does
+> > not set large_page_{addr,mask} properly.
+> > 
+> > Fix by using the max of the two page sizes.
+> > 
+> > Reported-by: Marc Zyngier <marc.zyngier@arm.com>
+
+This is no longer a thing (and hasn't been for over 3 years!  ;-).
+maz@kernel.org is the canonical address.
+
+> > Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+> > ---
+> > 
+> > Hi Mark, I think this will fix the issue that you mentioned on Monday.
+> > It certainly appears to fit the bill vs the described symptoms.
+> > 
+> > This is based on my ptw.c rewrite, full tree at
+> > 
+> >     https://gitlab.com/rth7680/qemu/-/tree/tgt-arm-rme
+> > 
+> > Based-on: 20220822152741.1617527-1-richard.henderson@linaro.org
+> > ("[PATCH v2 00/66] target/arm: Implement FEAT_HAFDBS")
+
+Thanks Richard. I'll try and give it a spin shortly.
+
+Cheers,
+
+	M.
+
+-- 
+Without deviation from the norm, progress is not possible.

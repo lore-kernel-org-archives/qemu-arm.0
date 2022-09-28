@@ -1,158 +1,173 @@
-Received: by 2002:a8a:1193:0:0:0:0:0 with SMTP id m19csp297306ocs;
-        Wed, 28 Sep 2022 06:40:30 -0700 (PDT)
-X-Google-Smtp-Source: AMsMyM5+YpWmDt2UjAvoj+7g/Ve+w8VdIIwCWIY8vmm+nN/t4gjg19uBzOAKG/2PlD/EmfjY9675
-X-Received: by 2002:a05:622a:20a:b0:35c:f6db:722f with SMTP id b10-20020a05622a020a00b0035cf6db722fmr27600434qtx.389.1664372429834;
-        Wed, 28 Sep 2022 06:40:29 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1664372429; cv=none;
+Received: by 2002:a8a:1193:0:0:0:0:0 with SMTP id m19csp370663ocs;
+        Wed, 28 Sep 2022 08:25:03 -0700 (PDT)
+X-Google-Smtp-Source: AMsMyM6Qj3UfCgAe4yaabdbGuxef1VJj21CHSuX6XBs1dlxeKQkh4rzA7IIK0UlctlixcfnhbJiV
+X-Received: by 2002:a05:6214:5288:b0:4ad:7535:9b9b with SMTP id kj8-20020a056214528800b004ad75359b9bmr26428448qvb.89.1664378703179;
+        Wed, 28 Sep 2022 08:25:03 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1664378703; cv=none;
         d=google.com; s=arc-20160816;
-        b=km8aDkUM2pBxOL+zKAZcnkRVU3Gl0KuLlzFpHKDIPKUKK44BuQ4nl7wE7/v6SfkePB
-         mdlGa7ptJbgE0N16HfXFyypw2I2nUKSSlDWpNn8dkU8jxP5jcPQ7O0688Wai2hJ8wF3r
-         rMPW8ZjfkvVUJRc+ndWAVPbrLIXm2t2M/vh7wovATnU40mn1iyliPwSz1EQ3V2H81CSE
-         y3Zbk7t3A48WN+TVwnnQs5FJ473kbDIT9ziyoP73OhPrsIdKMb83NnzVglFZiw6aGKsz
-         fVgQAFrV/CuELhuWi7Ql4ml7Sw6aYWSiw8+6bvRXYCeKEJ5ntUC4758ZAnZkm3PMteUg
-         r5kQ==
+        b=v3ShoskZZfXMgPjhsbgwNMkw3dGkquREYB4ev2qtjPfoK2/Tt1apVtJdoTmu7WR1nT
+         Pu5q2Z8ylS7j1jQ8RxnBKsN1h1KypBUuqdWlZFR/O4Rjr8tGnjVa96Avhs6XLU62caBE
+         aF51XGtK3j50JQ5tPfLr4YJm5lFqoy7+qo4PRZcYXIbX5bu8RhnT70tyjXZaO2unt4Pl
+         Uo/adyBF1rObElkrVyt0a669l0QXnLEYH2a2yqMvqZh2TZBqmLGAEdwnntNzx7OPEnZ7
+         /s+9D9KL/sFIb3Kb3i/wjfEu7+K87RgfLhSbL14ybe8+C4tjou6CCykrCQ3kSn1H9h6V
+         IjzQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:cc:to:content-language:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=JBv4OJZaUU3HWheQvz90LN7h5LlrfeugSxtPjqjuFfI=;
-        b=q5FJSRp5g4jh1pWlXlGwqMO/xEvhgPCPw6wYevaTQPSMStfkgL6nLxc1gU7Ju2IxpX
-         2bXjIYt74JlnlBu2BwKcYaNnXwHBK8jz62sqkyaGqbqcJ+f/AYw5wCeODgSPpN0eo8Va
-         jcWjFsigomxHBNxj0X0eIjXEsqS1pDRE/0wwq+8lLK/OJILYjlhxA/twu6FLTSCkewpe
-         yiMIxhfr6lq1zOqnNJqxPFnRDx3hfInRq7vqeoFUSs01dX9jjirX3892bjEW9//lYZhk
-         Tvn97hIzyxu9Yj96Z/4TPX2FAA6HaPYL3c2xZTQzTc6SyMMk3F+DwkcLwgjfPhuX/dEe
-         yvcA==
+        h=content-transfer-encoding:content-language:in-reply-to:references
+         :cc:to:from:subject:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=cd3LLtqKmeXgJ6NDuTnMU4cbeK3FOtpKOnxb9+fp7FI=;
+        b=LA0gtfDxR+a86WgzTiO6q+99kbE4yqz6qOKfPsLIQl6SNAam6qrwmAyTP4EKnId7zt
+         kWk9G7JEhZp2TYXROXeacSJagGMkMnEwJy94Vdha7bf+LialnkSTw65OWaosvKtee/Or
+         Orhq3jgSDEnnvLVEKnRy6JfXj9U5pS+giHNhlD1qxeFrd6CdzSpvgb6DHWAhbaCEl+KX
+         MhGOaVGC70XiVFszGTkCdORjLNJe2cCZDVth6rw0rNPtHpZxHRin9MBY6BxyISkB5866
+         sxvCBBk021iWtsaxoJofHhV+r0KIPEXzSzvKB/OHsQ9qforwOE+0TaSVIUewEY/2pokS
+         w/Xw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=hk4PgO2R;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t10-20020ad45bca000000b0049b72516f20si2544531qvt.277.2022.09.28.06.40.29
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=IObR9nQV;
+       spf=pass (google.com: domain of thuth@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <thuth@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
+        by mx.google.com with ESMTPS id h12-20020ac8548c000000b0033ffe99eac3si2628652qtq.528.2022.09.28.08.25.03
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 28 Sep 2022 06:40:29 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 28 Sep 2022 08:25:03 -0700 (PDT)
+Received-SPF: pass (google.com: domain of thuth@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=hk4PgO2R;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:59838 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1odXIb-00062S-CH
-	for alex.bennee@linaro.org; Wed, 28 Sep 2022 09:40:29 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37076)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1odVuJ-0003zt-Ax
- for qemu-arm@nongnu.org; Wed, 28 Sep 2022 08:11:27 -0400
-Received: from mail-pl1-x630.google.com ([2607:f8b0:4864:20::630]:45805)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1odVuH-0003I3-38
- for qemu-arm@nongnu.org; Wed, 28 Sep 2022 08:11:18 -0400
-Received: by mail-pl1-x630.google.com with SMTP id w20so11574364ply.12
- for <qemu-arm@nongnu.org>; Wed, 28 Sep 2022 05:11:16 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date;
- bh=JBv4OJZaUU3HWheQvz90LN7h5LlrfeugSxtPjqjuFfI=;
- b=hk4PgO2R8P14Cfe/4dR+2ZZ0eBmhQSXLElk0gLZIK3pl5Twq/V53Pp3mlKtko2rlkV
- 1fNVoaTKNMcEOo397Mq2a6D8K/LYy/H+snA+Q/Y4qxkJrg57IyQlpK2MKSSMkhXhKLsQ
- Bi33fDfvE2fYy1I6PkUeYP70fBhKqK2gHp72gV6Z2gvQpyBY1l4MAHT2YKMbmCtEcj6M
- gqMNo7I2gy9x3zTYBwbQlr2fqRtjYUNEpINtV1LQjqRqjQ/zqYJ8pohdzGBkPYBOaObZ
- TAT7h14OItFNZMr4i7C+V540W9Zbs6OPNwU55j5LCqJFaHOCJ/7k/wgcTnKBPXNW+P90
- LmmA==
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=IObR9nQV;
+       spf=pass (google.com: domain of thuth@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1664378702;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=cd3LLtqKmeXgJ6NDuTnMU4cbeK3FOtpKOnxb9+fp7FI=;
+	b=IObR9nQVIvC0B+TnmPOiJgz8lLiLniNpwp6fdOjQidMMTnyrggWQBSt10HDWqelGhKq0ta
+	0JJHSUTzbNnbMIVT8rewCfXxxN4YVkLGPQg7EXNQF/ibV99YlHFkJip06lWvn/hVVNqnh4
+	wLiCF886ejIu1G4rBM+7m66xlePUlJ4=
+Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
+ [209.85.221.69]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_128_GCM_SHA256) id
+ us-mta-81-Yhxj4cPNPGS9Wp0qXtarCg-1; Wed, 28 Sep 2022 11:25:01 -0400
+X-MC-Unique: Yhxj4cPNPGS9Wp0qXtarCg-1
+Received: by mail-wr1-f69.google.com with SMTP id e28-20020adfa45c000000b0022cc7d071b4so634960wra.23
+        for <alex.bennee@linaro.org>; Wed, 28 Sep 2022 08:25:01 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date;
- bh=JBv4OJZaUU3HWheQvz90LN7h5LlrfeugSxtPjqjuFfI=;
- b=bUSRdE80VEYgQUUBweAVYfAB9oIvRZcprNFPcybXec25bn6Yduszow3SD0rZIJ19RA
- K/DVCAYQ4xu6VmI1w9NDh0aU+9I2yuqZhv1dxkRT9bpb0yOiG+LzAml2Jq5ANkpMXkxr
- urtwKCXdiSipBHySCN5kHJVF8T/3F8en7rKIS9v0E6GmCu9iFOCc/ftD4hvLrJWSXALD
- Cjb15AjsrNmRPLratPw29cQGgGG9dyZOCw9c2EEX7faG13b5zdGd9317d8F8I+my+UOs
- rezI+pcUzvXVf1UxktBrOYXzMYBzL8hhWbGFD6p2X6oKdHl1n+LPBuw0VBisavW/BCdd
- urZg==
-X-Gm-Message-State: ACrzQf1fBnYtkqwVpVDkJ7Rvz3F1f4Fs0ISqfcUqxjIp7ESMOOeaGW0Y
- 58IP19+CiopOyq1sPzn8mV6R8Q==
-X-Received: by 2002:a17:90b:4acd:b0:202:e381:e650 with SMTP id
- mh13-20020a17090b4acd00b00202e381e650mr10426934pjb.204.1664367075279; 
- Wed, 28 Sep 2022 05:11:15 -0700 (PDT)
-Received: from ?IPV6:2602:47:d49d:ec01:986f:cb56:6709:4057?
- ([2602:47:d49d:ec01:986f:cb56:6709:4057])
- by smtp.gmail.com with ESMTPSA id
- d4-20020a170902654400b0017691eb7e17sm3531737pln.239.2022.09.28.05.11.13
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 28 Sep 2022 05:11:14 -0700 (PDT)
-Message-ID: <e4c42def-a1a0-25cb-c3bb-7ace33e1a9ff@linaro.org>
-Date: Wed, 28 Sep 2022 05:11:12 -0700
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:in-reply-to:references:cc:to:from
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date;
+        bh=cd3LLtqKmeXgJ6NDuTnMU4cbeK3FOtpKOnxb9+fp7FI=;
+        b=3vWFCZvajywQPZK2DjKqrjlKbMgYDl1qm2zTYXMjXkhFCmEokKoygm1Dc3cwCIVMAI
+         gvHJAbM7aRmVcPP4Ne5m+COnm3G8jVVx8CEmxWERdyvEb8e7gCfxdoH/LzAT1C1JTVzi
+         1uCuMjYS/rZIVwUprvKDZW0KwXtfixahkJvvmK+JM15ZwNegbOTMOfdhmw7FhT1Epa1h
+         OlGLTWlzeIV9Nxl+xjiyb9/PtrIb3zfsWcDkCd/jb6tgO3M2NIGKE/JwB/WJlWBTALd/
+         OQWgDDcAwKcJuajx+GTv41GHNX3wYZBE+NJkHjyf94HX5HE/yTCRz1Tax4muryuCY21O
+         dGpw==
+X-Gm-Message-State: ACrzQf3m95smV4gZhytQEVfZmTwLcwiWSrOlFIwgrH5KK1zTqwR0gEZs
+	SwA/Bn1gpt5tDiKjPwadTM/XSIvo+4oMLm1Q8m3cl1vikE8F2nKBcbAJPRmJGlRMc9cN7O7YzzP
+	7DAJV40yBPoH4BRRR
+X-Received: by 2002:a5d:4f0d:0:b0:22c:c7c1:aa07 with SMTP id c13-20020a5d4f0d000000b0022cc7c1aa07mr2893514wru.401.1664378700601;
+        Wed, 28 Sep 2022 08:25:00 -0700 (PDT)
+X-Received: by 2002:a5d:4f0d:0:b0:22c:c7c1:aa07 with SMTP id c13-20020a5d4f0d000000b0022cc7c1aa07mr2893497wru.401.1664378700379;
+        Wed, 28 Sep 2022 08:25:00 -0700 (PDT)
+Return-Path: <thuth@redhat.com>
+Received: from [192.168.0.5] (ip-109-43-176-89.web.vodafone.de. [109.43.176.89])
+        by smtp.gmail.com with ESMTPSA id e12-20020adffc4c000000b0022ad393ba3csm4336552wrs.107.2022.09.28.08.24.57
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 28 Sep 2022 08:24:59 -0700 (PDT)
+Message-ID: <4cb2dea7-6c3d-4b4c-647d-979889bddc9c@redhat.com>
+Date: Wed, 28 Sep 2022 17:24:56 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.11.0
-Subject: Re: [PATCH 1/3] target/arm: Mark registers which call pmu_op_start()
- as ARM_CP_IO
+ Thunderbird/91.13.0
+Subject: Re: [PATCH v4 00/54] tests/qtest: Enable running qtest on Windows
+From: Thomas Huth <thuth@redhat.com>
+To: Bin Meng <bmeng.cn@gmail.com>, qemu-devel@nongnu.org, qemu-arm@nongnu.org
+Cc: =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>,
+ =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
+ Alexander Bulekov <alxndr@bu.edu>, Andrew Jeffery <andrew@aj.id.au>,
+ Ani Sinha <ani@anisinha.ca>, Bandan Das <bsd@redhat.com>,
+ Beraldo Leal <bleal@redhat.com>, Bin Meng <bin.meng@windriver.com>,
+ Christian Schoenebeck <qemu_oss@crudebyte.com>, Coiby Xu
+ <Coiby.Xu@gmail.com>, =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>,
+ =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?= <berrange@redhat.com>,
+ Darren Kenny <darren.kenny@oracle.com>,
+ "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
+ Eduardo Habkost <eduardo@habkost.net>, Fam Zheng <fam@euphon.net>,
+ Gerd Hoffmann <kraxel@redhat.com>, Greg Kurz <groug@kaod.org>,
+ Hanna Reitz <hreitz@redhat.com>, Igor Mammedov <imammedo@redhat.com>,
+ Jason Wang <jasowang@redhat.com>, Joel Stanley <joel@jms.id.au>,
+ John Snow <jsnow@redhat.com>, Juan Quintela <quintela@redhat.com>,
+ Kevin Wolf <kwolf@redhat.com>, Konstantin Kostiuk <kkostiuk@redhat.com>,
+ Laurent Vivier <lvivier@redhat.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Markus Armbruster <armbru@redhat.com>, Michael Roth <michael.roth@amd.com>,
+ "Michael S. Tsirkin" <mst@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
+ Qiuhao Li <Qiuhao.Li@outlook.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Stefan Hajnoczi <stefanha@redhat.com>,
+ Wainer dos Santos Moschetta <wainersm@redhat.com>,
+ Yanan Wang <wangyanan55@huawei.com>
+References: <20220927110632.1973965-1-bmeng.cn@gmail.com>
+ <23ed00ab-d774-81bb-5cf1-5cd077480720@redhat.com>
+In-Reply-To: <23ed00ab-d774-81bb-5cf1-5cd077480720@redhat.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
 Content-Language: en-US
-To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
-Cc: Thomas Huth <thuth@redhat.com>
-References: <20220923123412.1214041-1-peter.maydell@linaro.org>
- <20220923123412.1214041-2-peter.maydell@linaro.org>
-From: Richard Henderson <richard.henderson@linaro.org>
-In-Reply-To: <20220923123412.1214041-2-peter.maydell@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::630;
- envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x630.google.com
-X-Spam_score_int: -43
-X-Spam_score: -4.4
-X-Spam_bar: ----
-X-Spam_report: (-4.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-2.319,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: nKaT9D2IETgQ
+Content-Transfer-Encoding: 8bit
+X-TUID: 3T2NPnCTj4Kz
 
-On 9/23/22 05:34, Peter Maydell wrote:
-> In commit 01765386a888 we made some system register write functions
-> call pmu_op_start()/pmu_op_finish(). This means that they now touch
-> timers, so for icount to work these registers must have the ARM_CP_IO
-> flag set.
+On 28/09/2022 12.31, Thomas Huth wrote:
+> On 27/09/2022 13.05, Bin Meng wrote:
+>> In preparation to adding virtio-9p support on Windows, this series
+>> enables running qtest on Windows, so that we can run the virtio-9p
+>> tests on Windows to make sure it does not break accidently.
 > 
-> This fixes a bug where when icount is enabled a guest that touches
-> MDCR_EL3, MDCR_EL2, PMCNTENSET_EL0 or PMCNTENCLR_EL0 would cause
-> QEMU to print an error message and exit, for example:
+> Thanks for your patches - I've picked many of them for my pull request that 
+> I sent out earlier today, so you don't have to carry them along anymore once 
+> the PR got merged.
 > 
-> [    2.495971] TCP: Hash tables configured (established 1024 bind 1024)
-> [    2.496213] UDP hash table entries: 256 (order: 1, 8192 bytes)
-> [    2.496386] UDP-Lite hash table entries: 256 (order: 1, 8192 bytes)
-> [    2.496917] NET: Registered protocol family 1
-> qemu-system-aarch64: Bad icount read
+> For the patches that are not directly related to tests/ ... could you maybe 
+> ask the corresponding maintainers to pick those up? I'm not sure whether 
+> they should go through my testing branch, too...
 > 
-> Reported-by: Thomas Huth<thuth@redhat.com>
-> Signed-off-by: Peter Maydell<peter.maydell@linaro.org>
-> ---
->   target/arm/helper.c | 12 ++++++------
->   1 file changed, 6 insertions(+), 6 deletions(-)
+> Anyway, there seems to be one more issue: The migration test sometimes seems 
+> to be failing on aarch64 with all your patches applied:
+> 
+> 87/470 qemu:qtest+qtest-aarch64 / qtest-aarch64/migration-test             
+> ERROR          261.71s   killed by signal 6 SIGABRT
+>  >>> MALLOC_PERTURB_=171 QTEST_QEMU_BINARY=./qemu-system-aarch64 
+> QTEST_QEMU_IMG=./qemu-img 
+> G_TEST_DBUS_DAEMON=/home/thuth/devel/qemu/tests/dbus-vmstate-daemon.sh 
+> QTEST_QEMU_STORAGE_DAEMON_BINARY=./storage-daemon/qemu-storage-daemon 
+> /home/thuth/tmp/qemu-build/tests/qtest/migration-test --tap -k
+> ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――
+> stderr:
+> **
+> ERROR:../../devel/qemu/tests/qtest/migration-helpers.c:205:wait_for_migration_status: 
+> assertion failed: (g_test_timer_elapsed() < MIGRATION_STATUS_WAIT_TIMEOUT)
+> ../../devel/qemu/tests/qtest/libqtest.c:201: kill_qemu() tried to terminate 
+> QEMU process but encountered exit status 1 (expected 0)
+> 
+> (test program exited with status code -6)
+> ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――
+> 
+> Not sure whether it's really related to your patches or whether it's 
+> something else that has been merged recently, I'm having problems to 
+> reproduce it reliably, but it's definitely something we should keep an eye 
+> on...
 
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Seems like somebody also ran into this issue with a vanilla QEMU:
 
-r~
+  https://gitlab.com/qemu-project/qemu/-/issues/1230
+
+So it's not related to your patch series.
+
+  Thomas
+

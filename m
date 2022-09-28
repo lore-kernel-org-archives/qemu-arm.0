@@ -1,175 +1,144 @@
-Received: by 2002:a8a:1193:0:0:0:0:0 with SMTP id m19csp374462ocs;
-        Wed, 28 Sep 2022 08:31:03 -0700 (PDT)
-X-Google-Smtp-Source: AMsMyM4zGQ5NqvE1kqATNnmnRn+JSoZsKn6P3FT9RZh3CbBRwZruKBdilQyL/MlmHlX4x5PEvw75
-X-Received: by 2002:a05:620a:1a25:b0:6ce:17ae:fa9d with SMTP id bk37-20020a05620a1a2500b006ce17aefa9dmr20924164qkb.680.1664379063681;
-        Wed, 28 Sep 2022 08:31:03 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1664379063; cv=none;
+Received: by 2002:a8a:1193:0:0:0:0:0 with SMTP id m19csp421343ocs;
+        Wed, 28 Sep 2022 09:42:15 -0700 (PDT)
+X-Received: by 2002:a17:903:11cc:b0:178:aec1:18c3 with SMTP id q12-20020a17090311cc00b00178aec118c3mr652272plh.91.1664383335150;
+        Wed, 28 Sep 2022 09:42:15 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1664383335; cv=none;
         d=google.com; s=arc-20160816;
-        b=gcy/a1R/KmlAYOX8CPyY/j+sY0O/DCvwLhHn/mnb7V+LPJqmLqAx0caAVA72bVs9vp
-         yZtv9DJhqyiQh15PsWVHP6lPCj7RINhtRUN9nc9X/ugMjhb7GV6Y2TdvKVGObR5zq5VJ
-         Q/Dpi4i5L11T2dyXubgZRpX4ImYKQLu8CUHwxSfkONfKB6avebeEqvmibtzvz+Q1qT3x
-         m0DIZ1bCTMQQLCBHVfInocbc6ul1oCa1pJGsmuH2IB2GWXorlCwu1uM7+UB4RC4BR3Lz
-         P2qNs4povma0YdUnyeo9GGuIduTQMciXMkRw08P8hLQkQTsJHn5/WaOjQ2336j77YYzA
-         G5tg==
+        b=x/XdRtwTIMocbCl9bQTwe+fZdVmZg31iBRi3NjF6PpadCprLmOQ07EzBj8td0XS19T
+         opp6q0YwtD2z3Kd/a7zYelaYMg4farSZGtwSVH4GAmMiDeK3bXQW7GSvww0GXgO0kgI/
+         7lGm3c1BTz5ffMo0c+jlREHenmnVTYPGhfkrRp61euzMH6d6TyWh1J6Mhm/PwJiVC6zO
+         +ExXKNvLIVNkS5j7A8avR4ATzv+bf6YB437GlKsnzan8ijOjrQN/nWq758gbZnObIxDH
+         eD8YFAUoYU9ZlZxLoOpdikMzmk0N18UKbWDiqPutGC6YViPJknRp6rfQF0hz8pL2WoCC
+         ikJA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:in-reply-to:content-transfer-encoding
-         :content-disposition:mime-version:references:reply-to:message-id
-         :subject:cc:to:from:date:dkim-signature;
-        bh=pkKlJGkQoCpm+3CPCA4+XR4A8rC+/6N5P4McUxbJ5VU=;
-        b=DCtV1ZN5xtPQ9DtQRkckA6XD1xKbzF5/luCV9lq/r7m4Cm+VgcIgzPslL1ze1rH26B
-         nMNtt8RIMH6pqsYXvyQAaHdQkiL0WfxPMfSkmkzWLy6Mam39wIPPGsuzLk1cpdxxXzFI
-         P59Tgu+gW5u/hpG4tBTsahn01dPsqNA1gKl8f4XA6gHh7qVxlP4P84TGYgy/tVUp7PFA
-         8touGdAdo6HBcD3wggVVdSpO0VRtBpTMzZjhrjTjuAEF4kYUchuB/JgFYFk+zoEfdzdF
-         J8DIGsHelE5oyarux+rIgTlq9Y2xcvD+3btVFsriHordj0US3etYzAmu5/MFKlRzTzUV
-         kSzg==
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=cxA/M8MpQOXnt1A+UOhleSOKD9SXff2wRWBRadO1iPc=;
+        b=GSACegEXbufpQMnC/RrSH7zbcgE2XzLS7vmnwxR/DcPV947fcwM/z6fl9+UQUskuSR
+         St6BhN4dK9C38QXurlPRBCuIAm7yHY5eFzWvSEUocjnYabSZMX5/xpOOaUPfy6nX8qWb
+         5W+gqdx4E84tGN2icimeFO0qcGv188EuGI4Vz2fCQlUBD8HwZcjll19WFXhEI2MQwQeF
+         ZMSv6IGaMY9OeXVYeovL7oG6BEFkAKKOHLyVQXNVsA8kZfG452QTtPfa/sEv+l1n2l3m
+         0m9WfsHSTagSpwa9h23C8Wt8trCIFppSqnAEa8txIZMOqzBY6WkKF+HvYue14RgGYgZk
+         vjEg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=YTmBQIO4;
-       spf=pass (google.com: domain of berrange@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=berrange@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <berrange@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
-        by mx.google.com with ESMTPS id 19-20020ac85713000000b0034302879293si3433359qtw.151.2022.09.28.08.31.03
+       dkim=pass header.i=@linaro.org header.s=google header.b=KGuowKAW;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <richard.henderson@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id b8-20020a170903228800b0017890fb8cfasor2456224plh.179.2022.09.28.09.42.15
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 28 Sep 2022 08:31:03 -0700 (PDT)
-Received-SPF: pass (google.com: domain of berrange@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
+        (Google Transport Security);
+        Wed, 28 Sep 2022 09:42:15 -0700 (PDT)
+Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=YTmBQIO4;
-       spf=pass (google.com: domain of berrange@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=berrange@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1664379063;
-	h=from:from:reply-to:reply-to:subject:subject:date:date:
-	 message-id:message-id:to:to:cc:cc:mime-version:mime-version:
-	 content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=pkKlJGkQoCpm+3CPCA4+XR4A8rC+/6N5P4McUxbJ5VU=;
-	b=YTmBQIO42tr4Of6/KsAOy1aqGTcKF3nUAyJcYGktlQy5u5ZIkjD7zePjVlNAxwrd1UeHK/
-	gfAwnM705Krdj9uwbFzRWdDmH1WO+6mvWeuqEZO7SUM+R9VXNu93Et3RJf5Jyb6jFZJ/5R
-	JjAt0fsA45WnbCe97TX3G1ZDAvwm4sU=
-Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
- [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-627-EEPs4vkTOEKWPvLcX90weg-1; Wed, 28 Sep 2022 11:30:57 -0400
-X-MC-Unique: EEPs4vkTOEKWPvLcX90weg-1
-Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.rdu2.redhat.com [10.11.54.8])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mimecast-mx02.redhat.com (Postfix) with ESMTPS id B906B882827;
-	Wed, 28 Sep 2022 15:30:55 +0000 (UTC)
-Received: from redhat.com (unknown [10.33.36.68])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 146D9C15BA4;
-	Wed, 28 Sep 2022 15:30:47 +0000 (UTC)
-Date: Wed, 28 Sep 2022 16:30:45 +0100
-From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-To: Thomas Huth <thuth@redhat.com>
-Cc: Bin Meng <bmeng.cn@gmail.com>, qemu-devel@nongnu.org,
-	qemu-arm@nongnu.org,
-	=?utf-8?Q?Marc-Andr=C3=A9?= Lureau <marcandre.lureau@redhat.com>,
-	Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Alexander Bulekov <alxndr@bu.edu>, Andrew Jeffery <andrew@aj.id.au>,
-	Ani Sinha <ani@anisinha.ca>, Bandan Das <bsd@redhat.com>,
-	Beraldo Leal <bleal@redhat.com>, Bin Meng <bin.meng@windriver.com>,
-	Christian Schoenebeck <qemu_oss@crudebyte.com>,
-	Coiby Xu <Coiby.Xu@gmail.com>,
-	=?utf-8?Q?C=C3=A9dric?= Le Goater <clg@kaod.org>,
-	Darren Kenny <darren.kenny@oracle.com>,
-	"Dr. David Alan Gilbert" <dgilbert@redhat.com>,
-	Eduardo Habkost <eduardo@habkost.net>, Fam Zheng <fam@euphon.net>,
-	Gerd Hoffmann <kraxel@redhat.com>, Greg Kurz <groug@kaod.org>,
-	Hanna Reitz <hreitz@redhat.com>,
-	Igor Mammedov <imammedo@redhat.com>,
-	Jason Wang <jasowang@redhat.com>, Joel Stanley <joel@jms.id.au>,
-	John Snow <jsnow@redhat.com>, Juan Quintela <quintela@redhat.com>,
-	Kevin Wolf <kwolf@redhat.com>,
-	Konstantin Kostiuk <kkostiuk@redhat.com>,
-	Laurent Vivier <lvivier@redhat.com>,
-	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
-	Markus Armbruster <armbru@redhat.com>,
-	Michael Roth <michael.roth@amd.com>,
-	"Michael S. Tsirkin" <mst@redhat.com>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
-	Qiuhao Li <Qiuhao.Li@outlook.com>,
-	Richard Henderson <richard.henderson@linaro.org>,
-	Stefan Hajnoczi <stefanha@redhat.com>,
-	Wainer dos Santos Moschetta <wainersm@redhat.com>,
-	Yanan Wang <wangyanan55@huawei.com>
-Subject: Re: [PATCH v4 00/54] tests/qtest: Enable running qtest on Windows
-Message-ID: <YzRopeuYNDFBI7AO@redhat.com>
-Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-References: <20220927110632.1973965-1-bmeng.cn@gmail.com>
- <23ed00ab-d774-81bb-5cf1-5cd077480720@redhat.com>
- <4cb2dea7-6c3d-4b4c-647d-979889bddc9c@redhat.com>
+       dkim=pass header.i=@linaro.org header.s=google header.b=KGuowKAW;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date;
+        bh=cxA/M8MpQOXnt1A+UOhleSOKD9SXff2wRWBRadO1iPc=;
+        b=KGuowKAWES7OXef7SnGXL1qYeTYidQi6lXNApUf07Y3s6zD/cAUxpPoZHj7sM/I3/U
+         11vZ6HP0ikpiyMbYGwowVIgaNPbnpqqsxXtALT0xKlktNM6ePVBSWjKKo+h5HOl54ok8
+         OpL12/alGkOvfNB1yYo7XD+hGX/CM8VXkrzCn2JUu1BenR1Ip5SRw3SNczFD4BrbsztY
+         cKP2XDRnvPJW01Dbr+7aGiqtScSP/CFce6un4ZsPxVfCVXb0oIbU7N+h7/9LjJz1IWW9
+         HCIelUMBBmxXHsBt8gZeJBrP51mW6jUs4KJUNyqRswkPzUoscKarbOvUxISzIxEFSodI
+         C35A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date;
+        bh=cxA/M8MpQOXnt1A+UOhleSOKD9SXff2wRWBRadO1iPc=;
+        b=as3L2QRvn3u5mozkS/mGWBAUPcAeUc8Yam59dRj68a3O+qt/brfquX2ZlBSWtHEDob
+         iDpU+h5/30Sf6z11kF/s1NiPPDzOUlmLSXfawMZlMdp5i8wZ8R+s+lP8jJ13D/XmV4hN
+         UqNQMqoeiH/KKwvZHe0+boUBAbwNN2bY+Y2D8P2R2Toaezk2JPjkseV0EQ9jxn3uLoYU
+         CqlhZZRvk6ND4/7AOqmQh3jDg/POJ/Bo2ChD/7EzD0ZDPyB0i+Lv8gQalTjBhxj5HQr0
+         otFwvLU9ZcyUHQmi7kAhogOUtgemmhnuf03t8SzYJVGIKng5P36SZMdeSSCpIRUh+zS3
+         LATw==
+X-Gm-Message-State: ACrzQf1gY+9O8DgQGOiIkMFV7SynAD8RAOax7953W/S3j3+rxR7JvWYV
+	GKTepQiNfP1MbsY4xVGIm4r7YevtpNXscL1B
+X-Google-Smtp-Source: AMsMyM5KTEr+kMPFQYGdC0VWP8O4iT3bXRb5qs9o79sBwM34a9a4929JlRL+WKyEp6MilQtWzMG5pA==
+X-Received: by 2002:a17:902:e945:b0:179:ce23:dd4d with SMTP id b5-20020a170902e94500b00179ce23dd4dmr693429pll.68.1664383334779;
+        Wed, 28 Sep 2022 09:42:14 -0700 (PDT)
+Return-Path: <richard.henderson@linaro.org>
+Received: from ?IPV6:2602:47:d49d:ec01:986f:cb56:6709:4057? ([2602:47:d49d:ec01:986f:cb56:6709:4057])
+        by smtp.gmail.com with ESMTPSA id f4-20020a170902ce8400b00178b06fea7asm4054541plg.148.2022.09.28.09.42.13
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 28 Sep 2022 09:42:14 -0700 (PDT)
+Message-ID: <769e0e8a-7787-b02b-9e26-87eca955666b@linaro.org>
+Date: Wed, 28 Sep 2022 09:42:12 -0700
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.11.0
+Subject: Re: [PATCH v3 01/15] hw: encode accessing CPU index in MemTxAttrs
+Content-Language: en-US
+To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
+ qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org, "Michael S. Tsirkin" <mst@redhat.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, Eduardo Habkost <eduardo@habkost.net>,
+ Peter Xu <peterx@redhat.com>, Jason Wang <jasowang@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>
+References: <20220927141504.3886314-1-alex.bennee@linaro.org>
+ <20220927141504.3886314-2-alex.bennee@linaro.org>
+From: Richard Henderson <richard.henderson@linaro.org>
+In-Reply-To: <20220927141504.3886314-2-alex.bennee@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <4cb2dea7-6c3d-4b4c-647d-979889bddc9c@redhat.com>
-User-Agent: Mutt/2.2.6 (2022-06-05)
-X-Scanned-By: MIMEDefang 3.1 on 10.11.54.8
-X-TUID: Zl6NaaXITF0r
+X-TUID: gAP7vIPTFQft
 
-On Wed, Sep 28, 2022 at 05:24:56PM +0200, Thomas Huth wrote:
-> On 28/09/2022 12.31, Thomas Huth wrote:
-> > On 27/09/2022 13.05, Bin Meng wrote:
-> > > In preparation to adding virtio-9p support on Windows, this series
-> > > enables running qtest on Windows, so that we can run the virtio-9p
-> > > tests on Windows to make sure it does not break accidently.
-> > 
-> > Thanks for your patches - I've picked many of them for my pull request
-> > that I sent out earlier today, so you don't have to carry them along
-> > anymore once the PR got merged.
-> > 
-> > For the patches that are not directly related to tests/ ... could you
-> > maybe ask the corresponding maintainers to pick those up? I'm not sure
-> > whether they should go through my testing branch, too...
-> > 
-> > Anyway, there seems to be one more issue: The migration test sometimes
-> > seems to be failing on aarch64 with all your patches applied:
-> > 
-> > 87/470 qemu:qtest+qtest-aarch64 / qtest-aarch64/migration-test
-> > ERROR          261.71s   killed by signal 6 SIGABRT
-> >  >>> MALLOC_PERTURB_=171 QTEST_QEMU_BINARY=./qemu-system-aarch64
-> > QTEST_QEMU_IMG=./qemu-img
-> > G_TEST_DBUS_DAEMON=/home/thuth/devel/qemu/tests/dbus-vmstate-daemon.sh
-> > QTEST_QEMU_STORAGE_DAEMON_BINARY=./storage-daemon/qemu-storage-daemon
-> > /home/thuth/tmp/qemu-build/tests/qtest/migration-test --tap -k
-> > ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――
-> > stderr:
-> > **
-> > ERROR:../../devel/qemu/tests/qtest/migration-helpers.c:205:wait_for_migration_status:
-> > assertion failed: (g_test_timer_elapsed() <
-> > MIGRATION_STATUS_WAIT_TIMEOUT)
-> > ../../devel/qemu/tests/qtest/libqtest.c:201: kill_qemu() tried to
-> > terminate QEMU process but encountered exit status 1 (expected 0)
-> > 
-> > (test program exited with status code -6)
-> > ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――
-> > 
-> > Not sure whether it's really related to your patches or whether it's
-> > something else that has been merged recently, I'm having problems to
-> > reproduce it reliably, but it's definitely something we should keep an
-> > eye on...
-> 
-> Seems like somebody also ran into this issue with a vanilla QEMU:
-> 
->  https://gitlab.com/qemu-project/qemu/-/issues/1230
-> 
-> So it's not related to your patch series.
+On 9/27/22 07:14, Alex Bennée wrote:
+> +/*
+> + * Every memory transaction comes from a specific place which defines
+> + * how requester_id should be handled. For CPU's the requester_id is
+> + * the global cpu_index which needs further processing if you need to
+> + * work out which socket or complex it comes from. UNSPECIFIED is the
+> + * default for otherwise undefined MemTxAttrs. PCI indicates the
+> + * requester_id is a PCI id. MACHINE indicates a machine specific
+> + * encoding which needs further processing to decode into its
+> + * constituent parts.
+> + */
+> +typedef enum MemTxRequesterType {
+> +    MTRT_CPU = 0,
+> +    MTRT_UNSPECIFIED,
+> +    MTRT_PCI,
+> +    MTRT_MACHINE
+> +} MemTxRequesterType;
 
-This status timeout was something we merged in last cycle. We've
-long had wierd hangs in the migration tests and this timeout change
-was an attempt to turn the test suite hangs into explicit failures
-for greater visibility. I guess this is working as intended, but
-we're not really closer to understanding what the root problem is
-we're hitting.
 
-With regards,
-Daniel
--- 
-|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
-|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
-|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|
+I wonder if UNSPECIFIED should be zero, or even ILLEGAL, attempting to catch MemTxAttrs 
+foo = { }, which is now ill-formed as it doesn't initialize .requester_id to match CPU.
+
+Perhaps a preceeding patch, should introduce
+
+#define MEMTXATTRS_CPU(cpu)  ((MemTxAttrs){ })
+
+and modify all uses of "= { }", at least under target/.
+
+> --- a/hw/misc/tz-msc.c
+> +++ b/hw/misc/tz-msc.c
+> @@ -137,11 +137,11 @@ static MemTxResult tz_msc_read(void *opaque, hwaddr addr, uint64_t *pdata,
+>           return MEMTX_OK;
+>       case MSCAllowSecure:
+>           attrs.secure = 1;
+> -        attrs.unspecified = 0;
+> +        attrs.requester_type = MTRT_CPU;
+>           break;
+>       case MSCAllowNonSecure:
+>           attrs.secure = 0;
+> -        attrs.unspecified = 0;
+> +        attrs.requester_type = MTRT_CPU;
+>           break;
+
+This is surely incomplete.  You can't just set "cpu" without saying where it's from.
+
+Since this device is only used by the ARMSSE machine, I would hope that attrs.unspecified 
+should never be set before the patch, and thus MTRT_CPU should be set afterward.
+
+
+r~

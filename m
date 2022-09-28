@@ -1,175 +1,164 @@
-Received: by 2002:a8a:1193:0:0:0:0:0 with SMTP id m19csp679290ocs;
-        Tue, 27 Sep 2022 09:15:22 -0700 (PDT)
-X-Google-Smtp-Source: AMsMyM5Jw81u1h0fEQ3kX/Edv2NnLXrCdCa5ir+nnXtJ3bsNIAePd6cD2i0izEzjRk+qMO7Zctsy
-X-Received: by 2002:a05:622a:7:b0:35d:186:bf97 with SMTP id x7-20020a05622a000700b0035d0186bf97mr23280341qtw.160.1664295322071;
-        Tue, 27 Sep 2022 09:15:22 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1664295322; cv=none;
+Received: by 2002:a8a:1193:0:0:0:0:0 with SMTP id m19csp179863ocs;
+        Wed, 28 Sep 2022 03:31:54 -0700 (PDT)
+X-Google-Smtp-Source: AMsMyM7PySGicR9o9teSqFntMFiwhrjWawskoVryfTM7BqQm8P4tLceAzky0Apf+Qcw62tqmN3vC
+X-Received: by 2002:a05:6214:21a9:b0:4aa:b0e6:c6f5 with SMTP id t9-20020a05621421a900b004aab0e6c6f5mr25176327qvc.19.1664361114311;
+        Wed, 28 Sep 2022 03:31:54 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1664361114; cv=none;
         d=google.com; s=arc-20160816;
-        b=XpoRlKDHyDrLA0oXOhfcYQJglmu92WOAxX/z3+MzUa/xiiQNxE5Fjh/BvQ92LaSzup
-         ZTvK8o3W/7p0x7DHXgJNk2qRPTYQlPjtF6A3aZ4BP531ywrqv5iTs54w48SRDhCoK8LA
-         E+ScSUcP3OFRd9WyaFuX7fDWEvcJT3iSD8Z7S12pNl0SZxcmyPa1vtoNImVLWP8KGGi9
-         SwumikV96Ga25OQtVWPFapwsEbRmA8g+fSwkNqn1LTDSTqCafSy4ZaFnFQdo4I3DwgW8
-         1DRnOIFnSSJQIsjcnUzyOc/ZNVgkfYV7Law3ZpmZHkpcPaNs10J9PWft1IcM+QxpvnJX
-         r3TQ==
+        b=cIGeF3d5CRe4e6JlG9JMRVSRpitY4uZXiIahpD4bYI4v/unHd0vwe4VzJfnSbHs/Ny
+         0r7bTFyZtjYasY2GwKRPV1GGcwT7jBxDfQhVVpFVMSZPtj7Kuj2zAW+G/7LZqHCwuzNa
+         6Xr/2SMFv2mCxSCDxvPnvnANcNcSAjEMdT96NvCWsC9h15RbrN3FVOtplr+daQu5l0As
+         646n1TwVrdbIlajEEGPDJ8VBsrSpkbNHJX1nmQxaiVmNoNHaiWFImcCnA+Z0jvH+suv2
+         RC9vSXOgtz9pFZm/tmXkq6/anereZw+THuQ7pGZXEhnaVKfSvNPkFOn0XpgfM3zfq5Ci
+         WOgg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
-        bh=AYXNAR/40rFqzW2vG8sAKK8tE30s5Xu8rSZ73wgd/NM=;
-        b=C6ySgNFffBvW0xXSrLQM7XfSEoAziylHQYmuWaRVYmqMWlTQQ4qAo7nYk5pnCRL4HD
-         OfpFKaVfRe36648+MzFXRRc7HkpCjwtBOQfPVnJxT6/rPC0uzHT4U2lcIeFXlBhMQRpF
-         kIwfQ/fedzi91Szgi9lfUixQIKXZyTFuVqrcs3Sbh7lvQyLlD5zRwSD8pbgnc/vs4WYs
-         XU4xrbGFNK6afh5+TMuqLqLVE70GcBKCiPedUVdfSVKuRUsXFJ5XDzcwO/Hyqg2IlqHk
-         UvdTFcyR4ZIr8XXzbyK0X/rjcTFruHAz6tYFgok9leUVaOYuktZYA8KEAoQ8gs9tdU2X
-         ZrWA==
+        h=content-transfer-encoding:content-language:in-reply-to:subject:from
+         :references:cc:to:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=r072hw4nq7j220SZv7l4j1oheSWPZXuwuBycfvaaNz0=;
+        b=zObG1bHkcYHciad+B6qeUpYLwlKQLJYCDdVjigShI5ygLHrci2yTa7+0/QMf2DfJIq
+         LAQ1MMLcN3O3qT0xYlRE0hsW2MVUuxYxa2CzwEcn4wIgM5hQnuCj5QX5GupNS56EOYeo
+         zrDrWvlfVeSgc+gabasaHese39iBVGM7/7uXIhhj/1F72Z+NbO0J50EgrmNV7ZuYMTJK
+         /pQX5Mp95zZ31bBmkt3uD09/C0zfRmlrVj6tzbyqWt1kO3NSl09EawSEP+sB0Nf9JthT
+         j6vNuSgEzzVDQSDtrEbOHzgAM6ZzWy7R1tP+ZwJo3m1V8emrcvBAzjrbrc0LH9PvojM8
+         PupA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@zx2c4.com header.s=20210105 header.b=PbQ6ZR6O;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=zx2c4.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id bb3-20020a05622a1b0300b0035d4dfe8efdsi1041814qtb.54.2022.09.27.09.15.21
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=YHgr2EWF;
+       spf=pass (google.com: domain of thuth@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <thuth@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
+        by mx.google.com with ESMTPS id c9-20020ac80549000000b0035bb73fa23esi2369486qth.363.2022.09.28.03.31.54
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 27 Sep 2022 09:15:22 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 28 Sep 2022 03:31:54 -0700 (PDT)
+Received-SPF: pass (google.com: domain of thuth@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@zx2c4.com header.s=20210105 header.b=PbQ6ZR6O;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=zx2c4.com
-Received: from localhost ([::1]:54100 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1odDEu-0005CM-Fx
-	for alex.bennee@linaro.org; Tue, 27 Sep 2022 12:15:20 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:51926)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1)
- (envelope-from <SRS0=O2ZR=Z6=zx2c4.com=Jason@kernel.org>)
- id 1odD7s-0002s0-U2; Tue, 27 Sep 2022 12:08:06 -0400
-Received: from ams.source.kernel.org ([145.40.68.75]:58202)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1)
- (envelope-from <SRS0=O2ZR=Z6=zx2c4.com=Jason@kernel.org>)
- id 1odD7p-000312-Up; Tue, 27 Sep 2022 12:08:04 -0400
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by ams.source.kernel.org (Postfix) with ESMTPS id 836CFB819D6;
- Tue, 27 Sep 2022 16:07:49 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 63F6BC43470;
- Tue, 27 Sep 2022 16:07:47 +0000 (UTC)
-Authentication-Results: smtp.kernel.org;
- dkim=pass (1024-bit key) header.d=zx2c4.com header.i=@zx2c4.com
- header.b="PbQ6ZR6O"
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=zx2c4.com; s=20210105; 
- t=1664294865;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:
- content-transfer-encoding:content-transfer-encoding;
- bh=AYXNAR/40rFqzW2vG8sAKK8tE30s5Xu8rSZ73wgd/NM=;
- b=PbQ6ZR6OOtkJdY5I04dKvl2ylvMYLb6x7dSj2Op4mFPUnTLm0o7pm50PEJTkNOcNffBS47
- O4IHQBVszU70FJ3bEWM+oLtZQyeCoW3p2osmK1sDh4m7glFMjHcrq//Jgt3XY1+PdA1Cjo
- P8vIdnDPx/OdQen1B/9WfzUlGCVOfMQ=
-Received: by mail.zx2c4.com (ZX2C4 Mail Server) with ESMTPSA id 2a1565b1
- (TLSv1.3:TLS_AES_256_GCM_SHA384:256:NO); 
- Tue, 27 Sep 2022 16:07:45 +0000 (UTC)
-From: "Jason A. Donenfeld" <Jason@zx2c4.com>
-To: qemu-devel@nongnu.org,
-	peter.maydell@linaro.org,
-	qemu-arm@nongnu.org
-Cc: "Jason A. Donenfeld" <Jason@zx2c4.com>
-Subject: [PATCH] arm: re-randomize rng-seed on reboot
-Date: Tue, 27 Sep 2022 18:07:42 +0200
-Message-Id: <20220927160742.1773167-1-Jason@zx2c4.com>
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=YHgr2EWF;
+       spf=pass (google.com: domain of thuth@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1664361114;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=r072hw4nq7j220SZv7l4j1oheSWPZXuwuBycfvaaNz0=;
+	b=YHgr2EWFAqMirBiwJJ/2BdQ1Dy9QMaQd9bSheFkg0ADVmk3Bdt9zICYvCJZtJBfgvE0N9Z
+	mh57IqpgdGkVdifZI8wlrWq6d1k+/1hcp8iMW2TdVtmLI3UU+tTbyFOKtH0Fz9q01oxbRt
+	W8s1T4u9+VWsKNjwUtYoNRhMWFFaLu0=
+Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
+ [209.85.221.71]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_128_GCM_SHA256) id
+ us-mta-361-JXL9doQHO5Ke5CTw-ef0yA-1; Wed, 28 Sep 2022 06:31:50 -0400
+X-MC-Unique: JXL9doQHO5Ke5CTw-ef0yA-1
+Received: by mail-wr1-f71.google.com with SMTP id r22-20020adfa156000000b0022cc3018fbaso967867wrr.2
+        for <alex.bennee@linaro.org>; Wed, 28 Sep 2022 03:31:50 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:in-reply-to:subject:from:references:cc:to
+         :content-language:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date;
+        bh=r072hw4nq7j220SZv7l4j1oheSWPZXuwuBycfvaaNz0=;
+        b=GnhQDcsRRVFzkpuCKVc8IsQX/aF4gXJL6VK65sK1PskfJJ6g/2WP3AY5wKw3z/4O1G
+         YjmJSViK2gl+OR71+1yd1QmJCe9g5MHKMPveV/1ZY/3mcUAazbDqfz+Uow4XVsphoWbP
+         kC1AyWWSyPBhqfHnPqboiE/qwOx2Ow6KET+VMcXgED60l2LZpGlyWe0FxAr7xgc+gMGi
+         93F7prCMqASMGPb5ZKka7CP4tCR1SuSZdz4JXYzgJjZ+CnjdZKLW9P7WJLhPtuXh0VAQ
+         GLsUwSvs4TzZKUe3XjryTSuscGxKxAW/oPvIr+ajm5oYCVEEqeqmgYXwjBMmgZxld8q+
+         trJQ==
+X-Gm-Message-State: ACrzQf3TAZyMHFjF2BrVrDrqdMhFIkw9QVvtGvu/tviB+eMuoXhGJhZK
+	1JiP/2mmhRgC8eqkT5HCTuSw7N+10ADUxEJ5nJiMQRRCtE8fUwXjOubMMgfXuBTPqpEGzTlDXXM
+	KfxkZYOlgwoVlAaR/
+X-Received: by 2002:a05:600c:4f45:b0:3b4:9c9a:7077 with SMTP id m5-20020a05600c4f4500b003b49c9a7077mr6399712wmq.109.1664361109807;
+        Wed, 28 Sep 2022 03:31:49 -0700 (PDT)
+X-Received: by 2002:a05:600c:4f45:b0:3b4:9c9a:7077 with SMTP id m5-20020a05600c4f4500b003b49c9a7077mr6399679wmq.109.1664361109578;
+        Wed, 28 Sep 2022 03:31:49 -0700 (PDT)
+Return-Path: <thuth@redhat.com>
+Received: from [192.168.0.5] (ip-109-43-176-89.web.vodafone.de. [109.43.176.89])
+        by smtp.gmail.com with ESMTPSA id q17-20020adff511000000b002253fd19a6asm4955356wro.18.2022.09.28.03.31.46
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 28 Sep 2022 03:31:48 -0700 (PDT)
+Message-ID: <23ed00ab-d774-81bb-5cf1-5cd077480720@redhat.com>
+Date: Wed, 28 Sep 2022 12:31:45 +0200
 MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.13.0
+To: Bin Meng <bmeng.cn@gmail.com>, qemu-devel@nongnu.org
+Cc: =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>,
+ =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
+ Alexander Bulekov <alxndr@bu.edu>, Andrew Jeffery <andrew@aj.id.au>,
+ Ani Sinha <ani@anisinha.ca>, Bandan Das <bsd@redhat.com>,
+ Beraldo Leal <bleal@redhat.com>, Bin Meng <bin.meng@windriver.com>,
+ Christian Schoenebeck <qemu_oss@crudebyte.com>, Coiby Xu
+ <Coiby.Xu@gmail.com>, =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>,
+ =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?= <berrange@redhat.com>,
+ Darren Kenny <darren.kenny@oracle.com>,
+ "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
+ Eduardo Habkost <eduardo@habkost.net>, Fam Zheng <fam@euphon.net>,
+ Gerd Hoffmann <kraxel@redhat.com>, Greg Kurz <groug@kaod.org>,
+ Hanna Reitz <hreitz@redhat.com>, Igor Mammedov <imammedo@redhat.com>,
+ Jason Wang <jasowang@redhat.com>, Joel Stanley <joel@jms.id.au>,
+ John Snow <jsnow@redhat.com>, Juan Quintela <quintela@redhat.com>,
+ Kevin Wolf <kwolf@redhat.com>, Konstantin Kostiuk <kkostiuk@redhat.com>,
+ Laurent Vivier <lvivier@redhat.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Markus Armbruster <armbru@redhat.com>, Michael Roth <michael.roth@amd.com>,
+ "Michael S. Tsirkin" <mst@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
+ Qiuhao Li <Qiuhao.Li@outlook.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Stefan Hajnoczi <stefanha@redhat.com>,
+ Wainer dos Santos Moschetta <wainersm@redhat.com>,
+ Willian Rampazzo <willianr@redhat.com>, Yanan Wang <wangyanan55@huawei.com>,
+ qemu-arm@nongnu.org, qemu-block@nongnu.org
+References: <20220927110632.1973965-1-bmeng.cn@gmail.com>
+From: Thomas Huth <thuth@redhat.com>
+Subject: Re: [PATCH v4 00/54] tests/qtest: Enable running qtest on Windows
+In-Reply-To: <20220927110632.1973965-1-bmeng.cn@gmail.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=145.40.68.75;
- envelope-from=SRS0=O2ZR=Z6=zx2c4.com=Jason@kernel.org;
- helo=ams.source.kernel.org
-X-Spam_score_int: -67
-X-Spam_score: -6.8
-X-Spam_bar: ------
-X-Spam_report: (-6.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, HEADER_FROM_DIFFERENT_DOMAINS=0.25,
- RCVD_IN_DNSWL_HI=-5, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: dsTI87uNQ5oA
+X-TUID: kpl8WEmOhW4O
 
-When the system reboots, the rng-seed that the FDT has should be
-re-randomized, so that the new boot gets a new seed. Since the FDT is in
-the ROM region at this point, we add a hook right after the ROM has been
-added, so that we have a pointer to that copy of the FDT. When the
-reboot happens, we then look for RNG seeds and replace their contents
-with new random data.
+On 27/09/2022 13.05, Bin Meng wrote:
+> In preparation to adding virtio-9p support on Windows, this series
+> enables running qtest on Windows, so that we can run the virtio-9p
+> tests on Windows to make sure it does not break accidently.
 
-Cc: Peter Maydell <peter.maydell@linaro.org>
-Signed-off-by: Jason A. Donenfeld <Jason@zx2c4.com>
----
- hw/arm/boot.c | 22 ++++++++++++++++++++++
- 1 file changed, 22 insertions(+)
+Thanks for your patches - I've picked many of them for my pull request that 
+I sent out earlier today, so you don't have to carry them along anymore once 
+the PR got merged.
 
-diff --git a/hw/arm/boot.c b/hw/arm/boot.c
-index ada2717f76..2836db4abb 100644
---- a/hw/arm/boot.c
-+++ b/hw/arm/boot.c
-@@ -25,6 +25,7 @@
- #include "qemu/config-file.h"
- #include "qemu/option.h"
- #include "qemu/units.h"
-+#include "qemu/guest-random.h"
- 
- /* Kernel boot protocol is specified in the kernel docs
-  * Documentation/arm/Booting and Documentation/arm64/booting.txt
-@@ -529,6 +530,26 @@ static void fdt_add_psci_node(void *fdt)
-     qemu_fdt_setprop_cell(fdt, "/psci", "migrate", migrate_fn);
- }
- 
-+static void rerandomize_fdt_seeds(void *fdt)
-+{
-+    int noffset, poffset, len;
-+    const char *name;
-+    uint8_t *data;
-+
-+    for (noffset = fdt_next_node(fdt, 0, NULL);
-+         noffset >= 0;
-+         noffset = fdt_next_node(fdt, noffset, NULL)) {
-+        for (poffset = fdt_first_property_offset(fdt, noffset);
-+             poffset >= 0;
-+             poffset = fdt_next_property_offset(fdt, poffset)) {
-+            data = (uint8_t *)fdt_getprop_by_offset(fdt, poffset, &name, &len);
-+            if (!data || strcmp(name, "rng-seed"))
-+                continue;
-+            qemu_guest_getrandom_nofail(data, len);
-+        }
-+    }
-+}
-+
- int arm_load_dtb(hwaddr addr, const struct arm_boot_info *binfo,
-                  hwaddr addr_limit, AddressSpace *as, MachineState *ms)
- {
-@@ -683,6 +704,7 @@ int arm_load_dtb(hwaddr addr, const struct arm_boot_info *binfo,
-      * the DTB is copied again upon reset, even if addr points into RAM.
-      */
-     rom_add_blob_fixed_as("dtb", fdt, size, addr, as);
-+    qemu_register_reset(rerandomize_fdt_seeds, rom_ptr_for_as(as, addr, size));
- 
-     g_free(fdt);
- 
--- 
-2.37.3
+For the patches that are not directly related to tests/ ... could you maybe 
+ask the corresponding maintainers to pick those up? I'm not sure whether 
+they should go through my testing branch, too...
 
+Anyway, there seems to be one more issue: The migration test sometimes seems 
+to be failing on aarch64 with all your patches applied:
+
+87/470 qemu:qtest+qtest-aarch64 / qtest-aarch64/migration-test 
+             ERROR          261.71s   killed by signal 6 SIGABRT
+ >>> MALLOC_PERTURB_=171 QTEST_QEMU_BINARY=./qemu-system-aarch64 
+QTEST_QEMU_IMG=./qemu-img 
+G_TEST_DBUS_DAEMON=/home/thuth/devel/qemu/tests/dbus-vmstate-daemon.sh 
+QTEST_QEMU_STORAGE_DAEMON_BINARY=./storage-daemon/qemu-storage-daemon 
+/home/thuth/tmp/qemu-build/tests/qtest/migration-test --tap -k
+―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――
+stderr:
+**
+ERROR:../../devel/qemu/tests/qtest/migration-helpers.c:205:wait_for_migration_status: 
+assertion failed: (g_test_timer_elapsed() < MIGRATION_STATUS_WAIT_TIMEOUT)
+../../devel/qemu/tests/qtest/libqtest.c:201: kill_qemu() tried to terminate 
+QEMU process but encountered exit status 1 (expected 0)
+
+(test program exited with status code -6)
+―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――
+
+Not sure whether it's really related to your patches or whether it's 
+something else that has been merged recently, I'm having problems to 
+reproduce it reliably, but it's definitely something we should keep an eye on...
+
+  Thomas

@@ -1,104 +1,98 @@
-Received: by 2002:a8a:1193:0:0:0:0:0 with SMTP id m19csp1184023ocs;
-        Thu, 29 Sep 2022 10:38:03 -0700 (PDT)
-X-Google-Smtp-Source: AMsMyM6R0KxezctwuwnHI0ERI1/Yb5X1JZBi4347oo78WZUfFjTRYCYj/6LSrGA6LA6DPo3pS9cg
-X-Received: by 2002:ac8:5b06:0:b0:35c:e066:b967 with SMTP id m6-20020ac85b06000000b0035ce066b967mr3431053qtw.233.1664473083489;
-        Thu, 29 Sep 2022 10:38:03 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1664473083; cv=none;
+Received: by 2002:a8a:1193:0:0:0:0:0 with SMTP id m19csp1287870ocs;
+        Thu, 29 Sep 2022 13:57:50 -0700 (PDT)
+X-Google-Smtp-Source: AMsMyM5btG8nwz4tLt4YUFKweGvwN77+7B1IlPAGqSJXAeGP+5GosWM5nirO7GXkW6O+IRW0Gj5m
+X-Received: by 2002:a0c:e354:0:b0:4af:94f1:524c with SMTP id a20-20020a0ce354000000b004af94f1524cmr4150545qvm.71.1664485070249;
+        Thu, 29 Sep 2022 13:57:50 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1664485070; cv=none;
         d=google.com; s=arc-20160816;
-        b=i5hkzW/OpXzKEcktIN063F7cUUxfRPsIYvT3mo2PEcp92atRq2SijdcoWJkQmRyizf
-         RPuFFSYyrF76nDh5xID3CYMgLhbtpo6WzTe1IP4XRIACHfLH7BloZAaDYKmxzNpWzQOS
-         Og/3Xkn959tT6SSnMpF6FyhGPApkSScdqXieZQF3yiIIuofQ4rSLx0NP+mfPhlpq4DQf
-         T2FJeBKPjzNEEItsg80u667rk4VvK1HhH4JiCGd0EmMXzhoLTs4EeV7qo/+zdK9vAToq
-         K92nid9hcQC/eOB5q6SD+cd86DPAzPxI+7iPrME7dJxk8k7Pyp0RHNvpXuAzJ9sQ0Z/w
-         Hm4w==
+        b=lCqAXhQOY3spyHzxMT/1y5HpAXTNWwhOUG+TytAZHk0Z00x0QZEyU50MeetPwtUdVX
+         YXME+BDpMd7OSANORYWOxUeAkU/BvSLly/w+Hif3CvxSJpi1ty4uGKAQoxXi3/7LapK2
+         co6ej1RanQhMdS4jjx6zczOE0HhMtEBLryOMxq8y0lys/kWlsBpayOiGO7CQP0JAwJL1
+         k4AOuRYDkRjNEs0jis7Tz03irDAW0KSPDURBxCWRr19yGFyll7l/Q2cG6kL6KJ4fPwUX
+         nJcapjBPYqC1lMmW8+Y4CTyKw5RIymvcTEcwP8uzkVgIsDbWsU1CjgXKPWpxdWdNCANK
+         lI6Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=cqQBTOYNa/mf3P3HSzg6fb00V0GJS8bk5eliMmLjCBU=;
-        b=KURYKCfIYnI+IZPhTHkM04pR3h2u0VPWX2Tr2apXV0Y78GyCyaW9o3BOlq47N9Jgi4
-         eX6b+aYIeceNqf8R93COTSqmrss7Qr33WAHAjDvlPJddtKB/IG/mGx6F4W7pXnhSZ20v
-         OgsRXjr70rReCzTX2A7o7wOOYVCkhUrBJZTqjlohVfLeUtVtgOjn7GotSJaYjFNZmYO+
-         kdAlR2iXFMJ8tjpta0OII5Cz6Ic6/r3V7h0RZeMHsorCVw0UxHm+VXfdur3fQdbMb4wJ
-         m29vfvQxspbLYSXxoc6VtEl8GanmdDA3NKfbsMTnCuCZxSua9ikgV5NWmLM40Xl6Fwnt
-         vFIA==
+        h=from:reply-to:sender:errors-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence:in-reply-to
+         :content-disposition:mime-version:references:message-id:subject:to
+         :date:dkim-signature;
+        bh=3nuy2M7kTTu1J6pk2mDaPDD4tI7TpqU1voN2QcbJJXs=;
+        b=lQwNe/m+Fbkq4H5RsZ8G1L+2Rt73C3Q6wt7A0Y2l+QqdD/W//UNp06nlXJvwJkPrPr
+         PrlXPFrxWLv6bcvM/vaWNjk92gIBi6e2JxDIL63stgkj31UIo7lV4eKrn+mA9oVGsL/X
+         /qTWrIRRihbVrWBoa5CE2JYHwE7AFj9tzkehWWvrH93MfF6FD2OYZ0YPEUu9DQqLyS45
+         e2A/CdB0Wyv59YKqsWddlKnA1YRKLeltLUS9UMeLp49Ib5LRU1OYHcZv9iGFEjCfJEZC
+         wJoO3Ones7jYH3/aLVMSFqiFXJXuO6iT2m1XCIcq6BxQy9Nx6MUH9NXkWI/tSqCxaV8d
+         M6TA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=ybP3VqQF;
+       dkim=neutral (body hash did not verify) header.i=@zx2c4.com header.s=20210105 header.b=TF1MRtd+;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s12-20020a05620a080c00b006ce4019cee5si1292323qks.496.2022.09.29.10.38.03
+        by mx.google.com with ESMTPS id fv13-20020a056214240d00b00496e945f3b0si136003qvb.305.2022.09.29.13.57.50
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 29 Sep 2022 10:38:03 -0700 (PDT)
+        Thu, 29 Sep 2022 13:57:50 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=ybP3VqQF;
+       dkim=neutral (body hash did not verify) header.i=@zx2c4.com header.s=20210105 header.b=TF1MRtd+;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:50492 helo=lists1p.gnu.org)
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+Received: from localhost ([::1]:37926 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1odxU3-00046Z-0n
-	for alex.bennee@linaro.org; Thu, 29 Sep 2022 13:38:03 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34790)
+	id 1oe0bN-00080a-Rj
+	for alex.bennee@linaro.org; Thu, 29 Sep 2022 16:57:49 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37226)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1odwn9-0003n5-BT
- for qemu-arm@nongnu.org; Thu, 29 Sep 2022 12:53:44 -0400
-Received: from mail-ej1-x633.google.com ([2a00:1450:4864:20::633]:42659)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1odwn6-0006xV-SM
- for qemu-arm@nongnu.org; Thu, 29 Sep 2022 12:53:42 -0400
-Received: by mail-ej1-x633.google.com with SMTP id sb3so4021439ejb.9
- for <qemu-arm@nongnu.org>; Thu, 29 Sep 2022 09:53:40 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date;
- bh=cqQBTOYNa/mf3P3HSzg6fb00V0GJS8bk5eliMmLjCBU=;
- b=ybP3VqQFrFP+rEMHM8p7SkNTbgQpKc9hO3jekPy9SgAb+T3NbsIhOQXSn8Nk7mIOhC
- jjql4f/80b8RuppxAx0CSNibKVrRpKvjowjQisSh+ZL7/FDDsGvkN0ip45t9WgdaWMXl
- kuJRtw7geK4DE7UffUJYtB3oGjwblB1SaQubsa8dFR1dURGv0G8iWKU1oKdltMLZsW3L
- g/7cReLz1+4wOYsYqFo9+HG/ONZuhOn871Rw511yC/aOXqsSTXOJR4pWhnCFr7YG2+2x
- /YP5IR2JHxu2OMHrwoFWshCCWthe8kHPeFyXwmf6x/tVG8gvpfuZRtIC+po7zv5ew1o2
- aG5g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date;
- bh=cqQBTOYNa/mf3P3HSzg6fb00V0GJS8bk5eliMmLjCBU=;
- b=YGrfFLFw29przoxJaai9wSvpcP7ozJYqGcXOgYaxf+uzbHh4n61QYVdjq74nPJORho
- q7VqFDPlydMFdMHAQFz8T6MtdnBRDBPBetlTbRUKzi00suuq9759XaLNz9piXGkiM1RX
- Gad+IXTK2QWBnTFwA0LPh0fK54inc2iwpzbVykkP5ux7XmC72R1jKMLJex41TqBJ+kUM
- MTksvYmgaAQhaIGroGxltq4nqey22VOFfoPCXYOnFX1JPxPjEpH2gi6Cf5BtW0yFlk+G
- 4VjDpzxoxJDTB5q6i8BZeCZN94AmLTNB7A8yuSAZJxnWF+dxDLgOF/nYtsoyZ+irTepU
- d89w==
-X-Gm-Message-State: ACrzQf0zfxkjMLx/QD5PSW9Qsd2Lptcsgz1cpCgMVBuBEY/l5MiErss1
- SKtxEE1JFnAEkfItK0m4GfV1poEwCjyFRAvAP7vEjLRfIVg=
-X-Received: by 2002:a17:906:9c83:b0:779:c14c:55e4 with SMTP id
- fj3-20020a1709069c8300b00779c14c55e4mr3323068ejc.619.1664470419015; Thu, 29
- Sep 2022 09:53:39 -0700 (PDT)
+ (Exim 4.90_1)
+ (envelope-from <SRS0=kpRN=2A=zx2c4.com=Jason@kernel.org>)
+ id 1oe0b5-00080N-LZ; Thu, 29 Sep 2022 16:57:31 -0400
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1]:44476)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1)
+ (envelope-from <SRS0=kpRN=2A=zx2c4.com=Jason@kernel.org>)
+ id 1oe0b3-0005Aa-LJ; Thu, 29 Sep 2022 16:57:31 -0400
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by dfw.source.kernel.org (Postfix) with ESMTPS id BE6DE614DB;
+ Thu, 29 Sep 2022 20:57:27 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id A1EFEC433C1;
+ Thu, 29 Sep 2022 20:57:26 +0000 (UTC)
+Authentication-Results: smtp.kernel.org;
+ dkim=fail reason="signature verification failed" (1024-bit key)
+ header.d=zx2c4.com header.i=@zx2c4.com header.b="TF1MRtd+"
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=zx2c4.com; s=20210105; 
+ t=1664485045;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=QZq0c/MN1dTHZqJYvQQeKzJCy+jRUMqF9RLa0Ov6gus=;
+ b=TF1MRtd+RFfo5ntOjuLA9GgKoIIx6iWKrcuKcWaUpxaIbsw3ErzLpCIPIelgVH+tebscrY
+ Dq0bOj/LRvubY10DD+2FAqVBDtWbfBGICvbAtexxmsV5ILJ2qgWorHhkdDSam5iK43k+18
+ ipKxyTUvZ/mksc2yoy/DLUjSRtP6Tu0=
+Received: by mail.zx2c4.com (ZX2C4 Mail Server) with ESMTPSA id 974f9b60
+ (TLSv1.3:TLS_AES_256_GCM_SHA384:256:NO); 
+ Thu, 29 Sep 2022 20:57:24 +0000 (UTC)
+Date: Thu, 29 Sep 2022 22:57:22 +0200
+To: qemu-devel@nongnu.org, peter.maydell@linaro.org, qemu-arm@nongnu.org
+Subject: Re: [PATCH] arm: re-randomize rng-seed on reboot
+Message-ID: <YzYGsjlGBwh4Hi78@zx2c4.com>
+References: <20220927160742.1773167-1-Jason@zx2c4.com>
 MIME-Version: 1.0
-References: <20220927100347.176606-1-jean-philippe@linaro.org>
-In-Reply-To: <20220927100347.176606-1-jean-philippe@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 29 Sep 2022 17:53:28 +0100
-Message-ID: <CAFEAcA-X=rm6xB9kp7u7UPudTZQEUGskwSaUD8y+tKGx9QRsiw@mail.gmail.com>
-Subject: Re: [PATCH v2 0/8] hw/arm/virt: Fix dt-schema warnings
-To: Jean-Philippe Brucker <jean-philippe@linaro.org>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, robh+dt@kernel.org
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::633;
- envelope-from=peter.maydell@linaro.org; helo=mail-ej1-x633.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+In-Reply-To: <20220927160742.1773167-1-Jason@zx2c4.com>
+Received-SPF: pass client-ip=2604:1380:4641:c500::1;
+ envelope-from=SRS0=kpRN=2A=zx2c4.com=Jason@kernel.org;
+ helo=dfw.source.kernel.org
+X-Spam_score_int: -64
+X-Spam_score: -6.5
+X-Spam_bar: ------
+X-Spam_report: (-6.5 / 5.0 requ) BAYES_00=-1.9, DKIM_INVALID=0.1,
+ DKIM_SIGNED=0.1, HEADER_FROM_DIFFERENT_DOMAINS=0.25, RCVD_IN_DNSWL_HI=-5,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -113,42 +107,81 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: eXTPcDbMI94K
+Reply-to:  "Jason A. Donenfeld" <Jason@zx2c4.com>
+From:  "Jason A. Donenfeld" via <qemu-arm@nongnu.org>
+X-TUID: 6YuYs4NidKZn
 
-On Tue, 27 Sept 2022 at 11:12, Jean-Philippe Brucker
-<jean-philippe@linaro.org> wrote:
->
-> Fix some warnings thrown by dt-validate for the aarch64 virt devicetree.
->
-> Since v1 [1]:
-> * Submitted more DT bindings changes where appropriate [2]. All of them
->   applied for Linux v6.1 so I dropped the related QEMU changes.
-> * Grouped all node name changes into patch 8
-> * Improved commit messages
->
-> I'm testing by running various virt machine configurations with -M
-> dumpdtb=qemu.dtb, then running dt-validate [3] and dtc:
->
->   dt-validate -s linux/Documentation/devicetree/bindings/ qemu.dtb
->   dtc -O dts qemu.dtb -o qemu.dts
->
-> [1] https://lore.kernel.org/all/20220824155113.286730-1-jean-philippe@linaro.org/
-> [2] SMMU interrupt order https://lore.kernel.org/all/20220916133145.1910549-1-jean-philippe@linaro.org/
->     arch-timer compatible https://lore.kernel.org/all/20220922161149.371565-1-jean-philippe@linaro.org/
->     virtio-iommu https://lore.kernel.org/all/20220923074435.420531-1-jean-philippe@linaro.org/
-> [3] https://github.com/devicetree-org/dt-schema
->
-> Jean-Philippe Brucker (8):
->   hw/arm/virt: Fix devicetree warning about the root node
->   hw/arm/virt: Fix devicetree warning about the GIC node
->   hw/arm/virt: Use "msi-map" devicetree property for PCI
->   hw/arm/virt: Fix devicetree warning about the gpio-key node
->   hw/arm/virt: Fix devicetree warnings about the GPIO node
->   hw/arm/virt: Fix devicetree warning about the SMMU node
->   hw/arm/virt: Fix devicetree warnings about the virtio-iommu node
->   hw/arm/virt: Fix devicetree warnings about node names
+Hi Peter,
 
-I have applied patches 1, 2, 3, and 6 to target-arm.next.
+On Tue, Sep 27, 2022 at 06:07:42PM +0200, Jason A. Donenfeld wrote:
+> When the system reboots, the rng-seed that the FDT has should be
+> re-randomized, so that the new boot gets a new seed. Since the FDT is in
+> the ROM region at this point, we add a hook right after the ROM has been
+> added, so that we have a pointer to that copy of the FDT. When the
+> reboot happens, we then look for RNG seeds and replace their contents
+> with new random data.
+> 
+> Cc: Peter Maydell <peter.maydell@linaro.org>
+> Signed-off-by: Jason A. Donenfeld <Jason@zx2c4.com>
 
-thanks
--- PMM
+Just FYI, I'm waiting for your feedback on this approach, first, before
+I add a similar thing for other architectures (at which point perhaps
+rerandomize_fdt_seeds will be moved into device_tree.c or something).
+
+Jason
+
+> ---
+>  hw/arm/boot.c | 22 ++++++++++++++++++++++
+>  1 file changed, 22 insertions(+)
+> 
+> diff --git a/hw/arm/boot.c b/hw/arm/boot.c
+> index ada2717f76..2836db4abb 100644
+> --- a/hw/arm/boot.c
+> +++ b/hw/arm/boot.c
+> @@ -25,6 +25,7 @@
+>  #include "qemu/config-file.h"
+>  #include "qemu/option.h"
+>  #include "qemu/units.h"
+> +#include "qemu/guest-random.h"
+>  
+>  /* Kernel boot protocol is specified in the kernel docs
+>   * Documentation/arm/Booting and Documentation/arm64/booting.txt
+> @@ -529,6 +530,26 @@ static void fdt_add_psci_node(void *fdt)
+>      qemu_fdt_setprop_cell(fdt, "/psci", "migrate", migrate_fn);
+>  }
+>  
+> +static void rerandomize_fdt_seeds(void *fdt)
+> +{
+> +    int noffset, poffset, len;
+> +    const char *name;
+> +    uint8_t *data;
+> +
+> +    for (noffset = fdt_next_node(fdt, 0, NULL);
+> +         noffset >= 0;
+> +         noffset = fdt_next_node(fdt, noffset, NULL)) {
+> +        for (poffset = fdt_first_property_offset(fdt, noffset);
+> +             poffset >= 0;
+> +             poffset = fdt_next_property_offset(fdt, poffset)) {
+> +            data = (uint8_t *)fdt_getprop_by_offset(fdt, poffset, &name, &len);
+> +            if (!data || strcmp(name, "rng-seed"))
+> +                continue;
+> +            qemu_guest_getrandom_nofail(data, len);
+> +        }
+> +    }
+> +}
+> +
+>  int arm_load_dtb(hwaddr addr, const struct arm_boot_info *binfo,
+>                   hwaddr addr_limit, AddressSpace *as, MachineState *ms)
+>  {
+> @@ -683,6 +704,7 @@ int arm_load_dtb(hwaddr addr, const struct arm_boot_info *binfo,
+>       * the DTB is copied again upon reset, even if addr points into RAM.
+>       */
+>      rom_add_blob_fixed_as("dtb", fdt, size, addr, as);
+> +    qemu_register_reset(rerandomize_fdt_seeds, rom_ptr_for_as(as, addr, size));
+>  
+>      g_free(fdt);
+>  
+> -- 
+> 2.37.3
+> 
+> 

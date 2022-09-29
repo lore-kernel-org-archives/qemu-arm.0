@@ -1,117 +1,112 @@
-Received: by 2002:a8a:1193:0:0:0:0:0 with SMTP id m19csp922543ocs;
-        Thu, 29 Sep 2022 03:58:14 -0700 (PDT)
-X-Google-Smtp-Source: AMsMyM518LJ2lo33GdDDEqMBAY/VanHMlxPiSMIiEHWudzQS+uTZL//wr0C507jIFvqvi2vSbIqn
-X-Received: by 2002:a37:b885:0:b0:6cf:4bb1:f056 with SMTP id i127-20020a37b885000000b006cf4bb1f056mr1608393qkf.167.1664449094153;
-        Thu, 29 Sep 2022 03:58:14 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1664449094; cv=none;
+Received: by 2002:a8a:1193:0:0:0:0:0 with SMTP id m19csp1120987ocs;
+        Thu, 29 Sep 2022 08:58:24 -0700 (PDT)
+X-Google-Smtp-Source: AMsMyM5RcWEKEevPoTWORZrVf390guedo+zxYgb1hDvgp+hfnG0Sydh17t6Fk9kBh7vj/bNuaADe
+X-Received: by 2002:a05:622a:1114:b0:35b:bb43:a88d with SMTP id e20-20020a05622a111400b0035bbb43a88dmr2918561qty.139.1664467104475;
+        Thu, 29 Sep 2022 08:58:24 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1664467104; cv=none;
         d=google.com; s=arc-20160816;
-        b=HNUnyRBxHBPiXcqMDBji6KqQWuWa4NSCx0L2noI/9gOmN8z2eS6k1Y5JW4BUI7mbIv
-         ETLUDJ6tMNRPTlWn9TRmvWf6o/6IFrRroeFKwfEQti08GCnDCzfMGINc63tb4T3ytMTd
-         g3QFGqsgj/CtyfoNEYz0NuluCvJNWetxKKxQhv3AqV+UmBDyggtsu9Cim5CNwJwCVwd9
-         O3tz3eq4EBRNLoFNIWheQFrOVDpJ9Ig+EgJctnOaphS7zRg8B/qQ9HJ8lWgQCUPWA3YE
-         EckQzABGQp2wIOGUa8ixd2tuTHpwpv31K0KyXsax/JUy9siJ2RVCKlHO2pPmfgURlQGS
-         dc3A==
+        b=t2j3cRLWzVwWwFLOM5XeXd6O5RhxMANGRivPYpUiwXg05fDIl4MX4Cz6L6I5a+v6ye
+         XIW/WnX6xwBTe//grsSCm7XQUxnZi+e7G705NdKIo+7FI2A8RPsN9YER69LZlYay9xQZ
+         PppKQxbYQNYD77Ek25WGJh4kYwZrhj5tuMpXISEWfHBJMz8xKB4A3qpSaLwNAZpbjuZ+
+         yzPpJ2Q9iTiiI0uVXVD5GAuTGjJFFfRc0K0CQ29/tWqxh4Su2fx8fLmqjh75YZuu5V5R
+         vcGcaZUcTPQ7zfGVBgGvM8UsxRQnlIeBDdXu1JK04S7gs4ruNMi/p6FgSOPRKKPv1b1g
+         gwKQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version:user-agent
-         :message-id:in-reply-to:date:references:subject:cc:to:from
-         :dkim-signature;
-        bh=v28foEUMrAROtC9/y0SB2k5VMFBg/xOpiGtaNn5oDrg=;
-        b=hjceLKlRYhiP5/bEHxYU9jOzun+coYvY7utSKJTpbbZ8O1xxxiyAH4g0CPk0dJA24I
-         tCLvybKoB86QMxgojioevN8knJBesxaBsUV78BJB3UI1gc74fOkOHOTW+IZ7Hn8kK1Bd
-         MRXcAToZ7+M2DO4ZPlE0SrfCct5CXTU3AYjUNf3mu2y3Puvgo45laGBHVLmusFqFl3OX
-         SZdO4bjhQbm2tq23skdgFPc4/1fQYB54kABUcuZOIu/mFK5xM3ojJ+oTm8yDp8Xp/1kZ
-         19T0gOLSywOOSiS+qWUmG2d5NI6aw6rQY90ryjqgDSkbsOkifig3KzJNYwYfti7yorSQ
-         NS8Q==
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=1ZX8EvEFOBPZ8Nn8dtI/ON1GrCSiq6zEKTfRiGuMpPQ=;
+        b=aSK9Rnr9Eohnyl9OQJYGIuX2BwF6eoYXdCpWMjOjczwPLwW6f2Q7jIiV1bLIglWNN9
+         qDv28NCHUMjB5DaZ4G6DyLJnTj07zhUbC7SVV3feXIyVbZTkfpiN0GzLIE3U1puOqLwA
+         xkw7KRTpnC02xutjVT1XxlaOhGIQkWfvNVG+fIrOpUCM0WEKOneaN6NbcDvVedft0yEH
+         ER5HgJa7VMsVkM5qFsss5/oUlHRMpYFAZCtods5x5+hvQqCT14L9Zb7nt2LZk/NcZbuu
+         rc/h4nKqJ26jKbTYjLDyzJ+uALHy9yRtzSIQK8+qNqiU2DfvIWgGkqJaeLwE4h2OLxc4
+         KU1w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=gTqZEb3x;
+       dkim=pass header.i=@linaro.org header.s=google header.b=oBLteeba;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id bw22-20020a05622a099600b0035c5787f66bsi1067631qtb.218.2022.09.29.03.58.14
+        by mx.google.com with ESMTPS id iv12-20020ad45cec000000b00496d4a5cdc9si4930385qvb.522.2022.09.29.08.58.24
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 29 Sep 2022 03:58:14 -0700 (PDT)
+        Thu, 29 Sep 2022 08:58:24 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=gTqZEb3x;
+       dkim=pass header.i=@linaro.org header.s=google header.b=oBLteeba;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:52180 helo=lists1p.gnu.org)
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:33854 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1odrF5-0005na-Ob
-	for alex.bennee@linaro.org; Thu, 29 Sep 2022 06:58:13 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:42624)
+	id 1odvvc-00015k-0X
+	for alex.bennee@linaro.org; Thu, 29 Sep 2022 11:58:24 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:47568)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1odrCV-00057T-Bv
- for qemu-arm@nongnu.org; Thu, 29 Sep 2022 06:55:31 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:55916)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1odrCS-0007je-LM
- for qemu-arm@nongnu.org; Thu, 29 Sep 2022 06:55:30 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1664448927;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=v28foEUMrAROtC9/y0SB2k5VMFBg/xOpiGtaNn5oDrg=;
- b=gTqZEb3xwke1EBv4hhnk3Pggf+OWfIOsExRvh802iNiBEtngT182fSqmx9uzNNNt55d7I9
- r3HVvWT9JwUcEoleUbsbRfn96w9CLv1lcfwMOUTPnrgiu582x9Mb0Vls985q/fVPchhT9i
- ++/9Qj48W/bNM8Dqol7stor1nirSu30=
-Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
- [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-391-L7jz6NaYMtepiD1FePAZcQ-1; Thu, 29 Sep 2022 06:55:26 -0400
-X-MC-Unique: L7jz6NaYMtepiD1FePAZcQ-1
-Received: from smtp.corp.redhat.com (int-mx09.intmail.prod.int.rdu2.redhat.com
- [10.11.54.9])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id C6EDD800186;
- Thu, 29 Sep 2022 10:55:25 +0000 (UTC)
-Received: from blackfin.pond.sub.org (unknown [10.39.192.163])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 4A41149BB61;
- Thu, 29 Sep 2022 10:55:25 +0000 (UTC)
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
- id 2BC4621E691D; Thu, 29 Sep 2022 12:55:22 +0200 (CEST)
-From: Markus Armbruster <armbru@redhat.com>
-To: Akihiko Odaki <akihiko.odaki@daynix.com>
-Cc: qemu-devel@nongnu.org,  qemu-block@nongnu.org,  qemu-arm@nongnu.org,
- Alex Williamson <alex.williamson@redhat.com>,  "Michael S. Tsirkin"
- <mst@redhat.com>,  Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,  Gerd
- Hoffmann <kraxel@redhat.com>,  Paolo Bonzini <pbonzini@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>,  Eduardo Habkost
- <eduardo@habkost.net>,  John Snow <jsnow@redhat.com>,  Dmitry Fleytman
- <dmitry.fleytman@gmail.com>,  Jason Wang <jasowang@redhat.com>,  Stefan
- Weil <sw@weilnetz.de>,  Keith Busch <kbusch@kernel.org>,  Klaus Jensen
- <its@irrelevant.dk>,  Peter Maydell <peter.maydell@linaro.org>,  Andrey
- Smirnov <andrew.smirnov@gmail.com>,  Paul Burton <paulburton@kernel.org>,
- Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>
-Subject: Re: [PATCH v2] pci: Assert that capabilities never overlap
-References: <20220831013236.32937-1-akihiko.odaki@daynix.com>
- <87tu5qulay.fsf@pond.sub.org>
- <CAE=JJXdg=Miisek8WeqQ12NqL8obzmuyzD0mbv1SfiJTyVBLuw@mail.gmail.com>
- <875yi2mat1.fsf@pond.sub.org>
- <CAE=JJXcRH-0TuM7WgbM35Nb=Ud94K-LUcdzjoyJDMEuK9o=uFw@mail.gmail.com>
-Date: Thu, 29 Sep 2022 12:55:22 +0200
-In-Reply-To: <CAE=JJXcRH-0TuM7WgbM35Nb=Ud94K-LUcdzjoyJDMEuK9o=uFw@mail.gmail.com>
- (Akihiko Odaki's message of "Mon, 5 Sep 2022 19:11:59 +0900")
-Message-ID: <87mtaitpph.fsf@pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/27.2 (gnu/linux)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1odvsg-0004mV-0A
+ for qemu-arm@nongnu.org; Thu, 29 Sep 2022 11:55:22 -0400
+Received: from mail-ej1-x636.google.com ([2a00:1450:4864:20::636]:43762)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1odvsP-0004Ap-7p
+ for qemu-arm@nongnu.org; Thu, 29 Sep 2022 11:55:21 -0400
+Received: by mail-ej1-x636.google.com with SMTP id lh5so3679550ejb.10
+ for <qemu-arm@nongnu.org>; Thu, 29 Sep 2022 08:54:57 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date;
+ bh=1ZX8EvEFOBPZ8Nn8dtI/ON1GrCSiq6zEKTfRiGuMpPQ=;
+ b=oBLteebaGEh642DLK7mUSkKnfO4NSEIIDfTt2QkNAKzPfywTphEVxxMeEflXOQNUpj
+ +O36JpLejvTsEZeesVkyipAT4677EXMf8qTf/+dUtQ0XGYtmUA3vtTMOA0HvFBo4q5W+
+ pTIp0cTFfdQ6LhxxHkV0lmv/3z2vFekY97ZsT2QcdbIdhvgXZTrr4BYs2aWCq2sljxwu
+ Ig7j3xKvUY+qkUyS2GET9f0mo/gmJiPv9N7HgBg28XmhAoo6gzvd1HuFsOVH9doAURZA
+ mTDsgpWEwrDnPyzgmumE7G0PG3QHJKTCF36gurPl0oMD4v8DTLO3cUiV5hgmsS9Px0fA
+ yO6w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date;
+ bh=1ZX8EvEFOBPZ8Nn8dtI/ON1GrCSiq6zEKTfRiGuMpPQ=;
+ b=J+If/DW0mktCG/w5NFSoHSC3CJeH5OOMpa2oDKUc9zWraO2dszCM7YdiGakjsoSgBe
+ bilMp87uEGC7BTosnOM/HkyFSJimK9DomJ9Q8POqPCLse6zMCakq+3OqmNfSiwZIFsjh
+ k8U9X1740iuv+4gWmsGcBVt+gNzUAdpQdq5VdsDC9bULydEm4YWsTuptmtBMlQ0mZ/uI
+ pOZ3ASJ0rSmF58diXN4FnuWWvUXBp7tVkZX/LretbMqJahmmzs+C7oKtt2417Pf97uoV
+ oMuqQQymSG0/Kjilsvv+jgW5DJRLf9RBLuJAc2gT+p4ezheuwe6xKf3ayGTG2HyR5drJ
+ vL9Q==
+X-Gm-Message-State: ACrzQf24OeqbBKH0nu/MUpkmjsMIaWRIUXDGzJ4DL4fdZYRbwchO8wq9
+ 1x3S82tUVBXDo7fbb5KwN4/nbNCDJs2F7OHAveCcWA==
+X-Received: by 2002:a17:907:728e:b0:782:8e91:64c8 with SMTP id
+ dt14-20020a170907728e00b007828e9164c8mr3420250ejc.36.1664466895915; Thu, 29
+ Sep 2022 08:54:55 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Scanned-By: MIMEDefang 3.1 on 10.11.54.9
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=armbru@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -28
-X-Spam_score: -2.9
+References: <20220921234646.949273-1-venture@google.com>
+ <CAFEAcA8f+JA4WKMwGFNxg7tRxTwL=RzDLgdJLrP8Dw_jB4XoRA@mail.gmail.com>
+ <CACGkMEvMtAjGQVzwUgjD20Hb=Za8KmRanmp-FWrUQD8xS+7Pkw@mail.gmail.com>
+ <CAO=notwnOKMd=n2qQC=iFX-cofeKP=ZUKX2VNXobMgXO64Y+sw@mail.gmail.com>
+ <CAFEAcA97oHsQdk2fSq=umiUv8nNue0xCLtboRR2yPt_Gxh_zEg@mail.gmail.com>
+ <CAO=notwsgvtZBLyWGu+PSnmHTrm6anakwFwoq3oBEJ-8nqPFaQ@mail.gmail.com>
+ <CAO=notzN3E_OA-_jBvXsB8_LGbTXpE=G50RX8APbHHFN6eHE3A@mail.gmail.com>
+In-Reply-To: <CAO=notzN3E_OA-_jBvXsB8_LGbTXpE=G50RX8APbHHFN6eHE3A@mail.gmail.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 29 Sep 2022 16:54:44 +0100
+Message-ID: <CAFEAcA8_WM_-w7HDc+cRvvxZVEdatczsj18D3beN3+MUg7P3cA@mail.gmail.com>
+Subject: Re: [PATCH] hw/net: npcm7xx_emc: set MAC in register space
+To: Patrick Venture <venture@google.com>
+Cc: Jason Wang <jasowang@redhat.com>,
+ Havard Skinnemoen <hskinnemoen@google.com>, 
+ CS20 KFTing <kfting@nuvoton.com>, qemu-arm <qemu-arm@nongnu.org>, 
+ qemu-devel <qemu-devel@nongnu.org>, Hao Wu <wuhaotsh@google.com>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::636;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ej1-x636.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.08,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -126,89 +121,53 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: NOZsBi4bxJB/
+X-TUID: zIQWX96iCPqR
 
-Akihiko Odaki <akihiko.odaki@daynix.com> writes:
+On Thu, 29 Sept 2022 at 16:28, Patrick Venture <venture@google.com> wrote:
+> On Mon, Sep 26, 2022 at 8:45 AM Patrick Venture <venture@google.com> wrote:
+>>> I think what Jason is suggesting is that that should depend on what
+>>> the real hardware does. On a physical board, if the guest sets the
+>>> MAC address, and then you power-cycle the hardware, does the MAC
+>>> that it set still persist after powercycle ? Does the guest writing
+>>> to these MAC registers correspond to writing to an EEPROM ?
+>>
+>>
+>> Thanks, Peter - we've reached out to the vendor off-list to seek out some details, I'll update this with a v2 when I get an answer.
 
-> On Mon, Sep 5, 2022 at 6:26 PM Markus Armbruster <armbru@redhat.com> wrote:
->>
->> Akihiko Odaki <akihiko.odaki@daynix.com> writes:
->>
->> > On Fri, Sep 2, 2022 at 7:23 PM Markus Armbruster <armbru@redhat.com> wrote:
->> >>
->> >> Akihiko Odaki <akihiko.odaki@daynix.com> writes:
->> >>
->> >> > pci_add_capability appears most PCI devices. Its error handling required
->> >> > lots of code, and led to inconsistent behaviors such as:
->> >> > - passing error_abort
->> >> > - passing error_fatal
->> >> > - asserting the returned value
->> >> > - propagating the error to the caller
->> >> > - skipping the rest of the function
->> >> > - just ignoring
->> >> >
->> >> > The code generating errors in pci_add_capability had a comment which
->> >> > says:
->> >> >> Verify that capabilities don't overlap.  Note: device assignment
->> >> >> depends on this check to verify that the device is not broken.
->> >> >> Should never trigger for emulated devices, but it's helpful for
->> >> >> debugging these.
->> >> >
->> >> > Indeed vfio has some code that passes capability offsets and sizes from
->> >> > a physical device, but it explicitly pays attention so that the
->> >> > capabilities never overlap.
->> >>
->> >> I can't see that at a glance.  Can you give me a clue?
->> >>
->> >> >                             Therefore, we can always assert that
->> >> > capabilities never overlap when pci_add_capability is called, resolving
->> >> > these inconsistencies.
->> >> >
->> >> > Signed-off-by: Akihiko Odaki <akihiko.odaki@daynix.com>
->> >>
->> >
->> > Looking at vfio_add_std_cap(), and vfio_add_ext_cap() it seems that
->> > they are clipping the size of capabilities so that they do not
->> > overlap, if I read it correctly.
->>
->> If we want to deal gracefully with buggy physical devices, we need to
->> treat pdev->config[] as untrusted input.
->>
->> As far as I can tell:
->>
->> * vfio_add_capabilities() replicates the physical device's capabilities
->>   (starting at pdev->config[PCI_CAPABILITY_LIST]) in the virtual device.
->>
->> * vfio_add_std_cap() is a helper to add the tail starting at
->>   pdev->config[pos].
->>
->> Could the physical device's capabilities overlap?  If yes, what would
->> happen before and after your series?
->>
->
-> When the capabilities overlap, vfio_std_cap_max_size() and
-> vfio_ext_cap_max_size(), called by vfio_add_std_cap(),
-> vfio_add_ext_cap() should clip the size of capabilities. Comments in
-> vfio_add_std_cap() and vfio_add_ext_cap() say: "Since QEMU doesn't
-> actually handle many of the config accesses, exact size doesn't seem
-> worthwhile."
+> "No, The EMC driver reset the MAC address registers during boot cycle/reset."
 
-Weird :)
+OK, I guess that's clear enough. In a real full-software-stack
+setup is the MAC address setup usually done by a BIOS/firmware,
+or is it done by Linux ?
 
-Back to your patch.  Its core is dumbing down of pci_add_capability() so
-it can't fail anymore.  Instead it aborts on overlapping capabilities.
-Note that it already aborts when running out of PCI config space.
+> So in that case, we should disregard the value the user sets in
+> reset and use the value provided through Qemu.  Or, should we just
+> not allow Qemu to set the MAC address at all?
 
-The remainder of the patch simplifies callers accordingly.  Some callers
-ignore the error before the patch, some abort on error, and some pass it
-on to their callers.  Too much for me to review in detail.  We can talk
-about ways to split it up if that's desired.
+I think that the behaviour for QEMU's model should be that
+on reset we should reset the MAC address registers to the
+user-provided value. That is, if the guest writes to the
+MAC address registers then that does have an effect, but
+only until the next reset.
 
-My one concern is device assignment, which should treat the device's
-capabilities as untrusted input.  If you're right in that such
-capabilities get truncated before they reach pci_add_capability(), then
-your change from failure to abort is okay.
+That gives you reasonably plausible behaviour for both:
+(1) you're emulating some guest that always sets up its
+own MAC address when it starts up (eg if it's done by
+some BIOS-level code that you're running in the guest)
+(2) you're booting a guest kernel directly that expects
+that the firmware/BIOS/whatever has already set up
+a MAC address -- then the MAC address provided by QEMU/the
+user fills that role
 
-I'd like to leave checking your correctness argument to actual PCI
-experts.
+More concretely:
+ * on reset, set the emc->regs[] fields from emc->conf.macaddr
+ * when using the MAC address, always use emc->regs[], never
+   emc->conf.macaddr
+ * to handle the guest writes to the MAC registers, set
+   emc->regs[], but not emc->conf.macaddr
 
+Assuming that doesn't break your existing booting workloads,
+of course :-)
+
+thanks
+-- PMM

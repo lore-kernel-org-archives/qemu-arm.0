@@ -1,185 +1,204 @@
-Received: by 2002:a8a:1193:0:0:0:0:0 with SMTP id m19csp839009ocs;
-        Thu, 29 Sep 2022 01:00:14 -0700 (PDT)
-X-Google-Smtp-Source: AMsMyM5GvIfmQR6Pjmstj1aREAOC1wtaylQwJ8aev3/31tKYO+oSZT2zpEytg8LGKPHioO8P0MVY
-X-Received: by 2002:ac8:5948:0:b0:35c:db03:be9 with SMTP id 8-20020ac85948000000b0035cdb030be9mr1324287qtz.29.1664438414754;
-        Thu, 29 Sep 2022 01:00:14 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1664438414; cv=none;
+Received: by 2002:a8a:1193:0:0:0:0:0 with SMTP id m19csp876894ocs;
+        Thu, 29 Sep 2022 02:27:14 -0700 (PDT)
+X-Google-Smtp-Source: AMsMyM4v4Tg+CmFqIZxfNnaD/j4BOrIcTyHwl6GA2blHGgxOaVyMAS+AbD6oDjFjY4u9S4Yy1Oqx
+X-Received: by 2002:ac8:7f03:0:b0:35c:e89b:f972 with SMTP id f3-20020ac87f03000000b0035ce89bf972mr1512748qtk.679.1664443634538;
+        Thu, 29 Sep 2022 02:27:14 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1664443634; cv=none;
         d=google.com; s=arc-20160816;
-        b=CdOTpxErwH1jc7sOQHQ+9nA+W1Vv82o/xfAGfLP4D8M+AbwTTXNJloDx0HprkvsxEz
-         vf6ujc8UuTcvv/EWgNGh+6VK6e0kqZqXSHkZsyxnNfdbVIySxFwg0HL5RFMPmOR/1Njq
-         9wgJt+biGEyvHCcTRE/97bUliQVqh6a3bzYDgooXLKvQqYEUgw7iNueG8o3EF6TlFgqn
-         LM8QkWd3M+08KCvh5iuox+suzDyKn5E6ul8mOG4sD1ew5Sn+H3Vr4j7cgNql0RQgxiVU
-         6IrXQG62XL2vQnx+fXa5G6F7mYIl82l8sIhMd6kbrE8WF4j9cgNkCtYmcs3g/BQKBPUY
-         SaPg==
+        b=xk6rz0TLJZU3+WoWZaSlqWpFPX6mZtQk/UQ7+Pz0kIj+H6F+FYOJdelNHRRUlaONFf
+         sK3QjayGXBE66/7I6B1dqFZunb2NFV+nPTnwTbnKD8kCNK8NaY+vHHvgzYyjXowh9Y9n
+         cUSB5d9NmRKG/2UX5vv+O40GrVnhmLZcCHXexVkSrWHUiQDRUPrKF474gKMYP/aTZdfa
+         7ndrAS6iHi9R2rBVSY3JGTcPhbIlVrMZ1227td98Rl+IcMDgjKccD/l88U0FjVELCTAg
+         OGAzZzmqvnJSmpHdFiw+Juv+KX4ai3uA79lfQ+2akOAZZ8W2NGDDQ8YdKrtxGYHM7LpF
+         cYyA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:cc:to:content-language:subject
-         :user-agent:mime-version:date:message-id;
-        bh=+Ao3/vkvX8CEVOWBnbNGCV1gsIyhghJDzYSluvUb2Vg=;
-        b=Xt+NQF8JFqR7B98NwM/rHQGZ7ggE2Psak2ALKZePB50OWFkW+SGCh9WSwdtuuOp8i1
-         P2/A+egV119Oor2rLQCshKCDnUml52jAShb5/H/9qchzo9rgk2sEVcYA3lohfycljND2
-         xRlFUtlb6iHUIRFsgtEup805ssiIlp8qqvBxpjOunqBTm/PmFJ//AARrkQj3vlRZFs73
-         inN8+GxB5F7x3ZLhnOxNWqbBPpJYRfRenVIsRgnLJwG/zKi2hCAFes7xM6+07p5FiqXU
-         4r9BlDDq5/ZvwcQMpwVxOeh5Jxl2iK05AC2SaAtNt4JPW90oW1untlKCSv5UIUmzEeo0
-         AsnA==
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=A3Oy43Qdq+TsIWtVdEhsHV1+HzXdLgornpIO4q3Bbb0=;
+        b=stiV1HR/bdu8DHWdaL8rw7N4degTJ5vJRhedkkudhxzvpDkwPv7h8mqbij4sgMXkbR
+         bzsoqwTr0GHnwOR5PzQRPqtz219rv86QT/41RnUGP1XowJvsuB3Prkm+lPvkImy+Le5T
+         635Jx7oqQGTEsf0WjawP7ZiJqXakZ2trDsJ2bxeH2liwcrzWTneICwjavbpE1CvU65PB
+         YMehEa8rm02JYaVrvPeecYc+1vwpSKULeSFPyvlGdOr53QAB/s6RRneDBxv3nPDVLDaK
+         6n9kApfGLhFSZtYMHySsqUTCQLwdyebj/mjuhMMdie9vzBOXwhPkWTQl15whVE+7Sqpw
+         Oj6A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@daynix-com.20210112.gappssmtp.com header.s=20210112 header.b=bZx6yqf2;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a9-20020aed2789000000b0035d0fa97d6fsi932647qtd.20.2022.09.29.01.00.14
+        by mx.google.com with ESMTPS id u125-20020a376083000000b006ce3f38956csi965226qkb.282.2022.09.29.02.27.14
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 29 Sep 2022 01:00:14 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 29 Sep 2022 02:27:14 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:41844 helo=lists1p.gnu.org)
+       dkim=pass header.i=@daynix-com.20210112.gappssmtp.com header.s=20210112 header.b=bZx6yqf2;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:41112 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1odoSs-0002dY-2F
-	for alex.bennee@linaro.org; Thu, 29 Sep 2022 04:00:14 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:47026)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1odpp4-0004YP-2k
+	for alex.bennee@linaro.org; Thu, 29 Sep 2022 05:27:14 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55090)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1odnr3-0000p5-FK
- for qemu-devel@nongnu.org; Thu, 29 Sep 2022 03:21:20 -0400
-Received: from 4.mo548.mail-out.ovh.net ([188.165.42.229]:42991)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1odnqx-0004rw-Eu
- for qemu-devel@nongnu.org; Thu, 29 Sep 2022 03:21:09 -0400
-Received: from mxplan5.mail.ovh.net (unknown [10.109.138.84])
- by mo548.mail-out.ovh.net (Postfix) with ESMTPS id AF9CD23E06;
- Thu, 29 Sep 2022 07:20:57 +0000 (UTC)
-Received: from kaod.org (37.59.142.109) by DAG4EX2.mxp5.local (172.16.2.32)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.12; Thu, 29 Sep
- 2022 09:20:56 +0200
-Authentication-Results: garm.ovh; auth=pass
- (GARM-109S0039f8ef0ba-cf3f-4128-8c13-f790ff5c4d3b,
- 032C0FD8F8F6940E7188F9AF1C5F9DF4FDD15DF6) smtp.auth=clg@kaod.org
-X-OVh-ClientIp: 82.64.250.170
-Message-ID: <f3d289d5-16db-7d68-0ae0-b2003190b06d@kaod.org>
-Date: Thu, 29 Sep 2022 09:20:54 +0200
+ (Exim 4.90_1) (envelope-from <akihiko.odaki@daynix.com>)
+ id 1odpnm-0004WW-PV
+ for qemu-arm@nongnu.org; Thu, 29 Sep 2022 05:25:54 -0400
+Received: from mail-ed1-x52a.google.com ([2a00:1450:4864:20::52a]:37763)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <akihiko.odaki@daynix.com>)
+ id 1odpnk-0000MW-Kd
+ for qemu-arm@nongnu.org; Thu, 29 Sep 2022 05:25:54 -0400
+Received: by mail-ed1-x52a.google.com with SMTP id a41so1149258edf.4
+ for <qemu-arm@nongnu.org>; Thu, 29 Sep 2022 02:25:51 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=daynix-com.20210112.gappssmtp.com; s=20210112;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date;
+ bh=A3Oy43Qdq+TsIWtVdEhsHV1+HzXdLgornpIO4q3Bbb0=;
+ b=bZx6yqf2518J3YzVWR1gTWml4DAkGI6qA9LnSneNXe6/4NFGZnKPXCov2XJVvg8cNT
+ DPLnvJcZ4lSfE32V/0Ylz/LG4cJeMWoW98N3EKWa2vWurLFPaghB3tLltaYJlUNUExxq
+ /bwj1FcKqcoBIx2IVECJZiibWfcLMSS1x4sceB4Enw6LCUVzSpZi6z1f2uapCP24AR7B
+ KPOdmJ8lu1W4fuLjeVWqUKvgxFDbsuvUGSca5Lsg4mME5DNviUAtShekrm1832UYXJHd
+ f1hS2KlhM9FZ4WUFaC6RcFGlrQli9ExJnvraLZgcaKzVk6MoXDocFul6A7SQ/FW2sQC5
+ ffig==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date;
+ bh=A3Oy43Qdq+TsIWtVdEhsHV1+HzXdLgornpIO4q3Bbb0=;
+ b=rqVv6rajf8le5FZeDuXTKH3IOrlAv+wtvbkhCl0oHNQMcA8DEIgcpbgLCoG4SGQDe1
+ ZQ6ByTxPSsd3+VGb65i1B96US9JFhNthfhMarH/w8r5qpVa5zr3jato0xlMtk3C4zE+F
+ 8hPCV5Et8LxVOA9VQn+zVSI6nqsLGRDLN42pIrXuvOuHeGlRmexhomeE1imGR9kf7xqa
+ fP/Su/U12UHKlT2EWZvL4MzEc6oAk79b5NKocd/R+MzU35ErX9Qgjk5iOvLbo6Tx43gw
+ bfd9oG6fpDeUAykGWNF3YIYGFfEwO7Glo/0Igcus7IAvqoe/r4l1rDm6gqsMwYXQcMRz
+ 0ouQ==
+X-Gm-Message-State: ACrzQf3W/N9as0OMCH3WZ9J+8Mvb51u7STsoWLCEJzbQ7+uxBqC/yqlj
+ DLecsA44OpsmcGNo0ri2AhnTtAQFxTyovhd6ZJZxDw==
+X-Received: by 2002:a05:6402:400e:b0:458:29c3:ba34 with SMTP id
+ d14-20020a056402400e00b0045829c3ba34mr1563901eda.294.1664443550596; Thu, 29
+ Sep 2022 02:25:50 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.3.0
-Subject: Re: [PATCH 1/2] target/arm: Disable VFPv4-D32 when NEON is not
- available
-Content-Language: en-US
-To: Joel Stanley <joel@jms.id.au>
-CC: <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>, Peter Maydell
- <peter.maydell@linaro.org>, Richard Henderson <richard.henderson@linaro.org>, 
- Andrew Jeffery <andrew@aj.id.au>
-References: <20220928164719.655586-1-clg@kaod.org>
- <20220928164719.655586-2-clg@kaod.org>
- <CACPK8XeiadO=ACQdpFmvy5cAGe0C_LzC3ZPjPVMs_22bUDTcFg@mail.gmail.com>
-From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
-In-Reply-To: <CACPK8XeiadO=ACQdpFmvy5cAGe0C_LzC3ZPjPVMs_22bUDTcFg@mail.gmail.com>
-Content-Type: text/plain; charset="UTF-8"; format=flowed
-Content-Transfer-Encoding: 8bit
-X-Originating-IP: [37.59.142.109]
-X-ClientProxiedBy: DAG9EX2.mxp5.local (172.16.2.82) To DAG4EX2.mxp5.local
- (172.16.2.32)
-X-Ovh-Tracer-GUID: ef4502d6-0222-4efb-9272-815fb10d767e
-X-Ovh-Tracer-Id: 5141140451861170982
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvfedrfeegledguddulecutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemucehtddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpefkffggfgfuvfevfhfhjggtgfhisehtkeertddtfeejnecuhfhrohhmpeevrogurhhitggpnfgvpgfiohgrthgvrhcuoegtlhhgsehkrghougdrohhrgheqnecuggftrfgrthhtvghrnhepkeetjedtleekjedvveffudfhteetleeifeegfeffuefghfefkeehffeufeeludejnecukfhppedtrddtrddtrddtpdefjedrheelrddugedvrddutdelnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmohguvgepshhmthhpohhuthdphhgvlhhopehmgihplhgrnhehrdhmrghilhdrohhvhhdrnhgvthdpihhnvghtpedtrddtrddtrddtpdhmrghilhhfrhhomheptghlgheskhgrohgurdhorhhgpdhnsggprhgtphhtthhopedupdhrtghpthhtoheprghnughrvgifsegrjhdrihgurdgruhdpoffvtefjohhsthepmhhoheegke
-Received-SPF: pass client-ip=188.165.42.229; envelope-from=clg@kaod.org;
- helo=4.mo548.mail-out.ovh.net
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-2.319,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+References: <20220831013236.32937-1-akihiko.odaki@daynix.com>
+ <87tu5qulay.fsf@pond.sub.org>
+ <CAE=JJXdg=Miisek8WeqQ12NqL8obzmuyzD0mbv1SfiJTyVBLuw@mail.gmail.com>
+ <875yi2mat1.fsf@pond.sub.org>
+ <CAE=JJXcRH-0TuM7WgbM35Nb=Ud94K-LUcdzjoyJDMEuK9o=uFw@mail.gmail.com>
+In-Reply-To: <CAE=JJXcRH-0TuM7WgbM35Nb=Ud94K-LUcdzjoyJDMEuK9o=uFw@mail.gmail.com>
+From: Akihiko Odaki <akihiko.odaki@daynix.com>
+Date: Thu, 29 Sep 2022 18:25:39 +0900
+Message-ID: <CAE=JJXcsPkQyfPY0SAam6uCu3CQze6rOr3kWuo8pk1qiMr_7VA@mail.gmail.com>
+Subject: Re: [PATCH v2] pci: Assert that capabilities never overlap
+To: Markus Armbruster <armbru@redhat.com>
+Cc: qemu-devel@nongnu.org, qemu-block@nongnu.org, qemu-arm@nongnu.org, 
+ Alex Williamson <alex.williamson@redhat.com>,
+ "Michael S. Tsirkin" <mst@redhat.com>, 
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Gerd Hoffmann <kraxel@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>, 
+ Eduardo Habkost <eduardo@habkost.net>, John Snow <jsnow@redhat.com>, 
+ Dmitry Fleytman <dmitry.fleytman@gmail.com>, Jason Wang <jasowang@redhat.com>, 
+ Stefan Weil <sw@weilnetz.de>, Keith Busch <kbusch@kernel.org>,
+ Klaus Jensen <its@irrelevant.dk>, 
+ Peter Maydell <peter.maydell@linaro.org>,
+ Andrey Smirnov <andrew.smirnov@gmail.com>, 
+ Paul Burton <paulburton@kernel.org>,
+ Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: none client-ip=2a00:1450:4864:20::52a;
+ envelope-from=akihiko.odaki@daynix.com; helo=mail-ed1-x52a.google.com
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_NONE=0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: P/XDrmYOm+KL
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: GGhmlUGgDSL+
 
-On 9/29/22 01:00, Joel Stanley wrote:
-> On Wed, 28 Sept 2022 at 16:47, Cédric Le Goater <clg@kaod.org> wrote:
->>
->> As the Cortex A7 MPCore Technical reference says :
->>
->>    "When FPU option is selected without NEON, the FPU is VFPv4-D16 and
->>    uses 16 double-precision registers. When the FPU is implemented with
->>    NEON, the FPU is VFPv4-D32 and uses 32 double-precision registers.
->>    This register bank is shared with NEON."
->>
->> Modify the mvfr0 register value of the cortex A7 to advertise only 16
->> registers when NEON is not available, and not 32 registers.
->>
->> Signed-off-by: Cédric Le Goater <clg@kaod.org>
-> 
-> 
-> 
->> ---
->>   target/arm/cpu.c | 4 ++++
->>   1 file changed, 4 insertions(+)
->>
->> diff --git a/target/arm/cpu.c b/target/arm/cpu.c
->> index 7ec3281da9aa..01dc74c32add 100644
->> --- a/target/arm/cpu.c
->> +++ b/target/arm/cpu.c
->> @@ -1684,6 +1684,10 @@ static void arm_cpu_realizefn(DeviceState *dev, Error **errp)
->>           cpu->isar.id_isar6 = u;
->>
->>           if (!arm_feature(env, ARM_FEATURE_M)) {
-> 
-> Can you explain why the test is put behind the !ARM_FEATURE_M check?
+On Mon, Sep 5, 2022 at 7:11 PM Akihiko Odaki <akihiko.odaki@daynix.com> wrote:
+>
+> On Mon, Sep 5, 2022 at 6:26 PM Markus Armbruster <armbru@redhat.com> wrote:
+> >
+> > Akihiko Odaki <akihiko.odaki@daynix.com> writes:
+> >
+> > > On Fri, Sep 2, 2022 at 7:23 PM Markus Armbruster <armbru@redhat.com> wrote:
+> > >>
+> > >> Akihiko Odaki <akihiko.odaki@daynix.com> writes:
+> > >>
+> > >> > pci_add_capability appears most PCI devices. Its error handling required
+> > >> > lots of code, and led to inconsistent behaviors such as:
+> > >> > - passing error_abort
+> > >> > - passing error_fatal
+> > >> > - asserting the returned value
+> > >> > - propagating the error to the caller
+> > >> > - skipping the rest of the function
+> > >> > - just ignoring
+> > >> >
+> > >> > The code generating errors in pci_add_capability had a comment which
+> > >> > says:
+> > >> >> Verify that capabilities don't overlap.  Note: device assignment
+> > >> >> depends on this check to verify that the device is not broken.
+> > >> >> Should never trigger for emulated devices, but it's helpful for
+> > >> >> debugging these.
+> > >> >
+> > >> > Indeed vfio has some code that passes capability offsets and sizes from
+> > >> > a physical device, but it explicitly pays attention so that the
+> > >> > capabilities never overlap.
+> > >>
+> > >> I can't see that at a glance.  Can you give me a clue?
+> > >>
+> > >> >                             Therefore, we can always assert that
+> > >> > capabilities never overlap when pci_add_capability is called, resolving
+> > >> > these inconsistencies.
+> > >> >
+> > >> > Signed-off-by: Akihiko Odaki <akihiko.odaki@daynix.com>
+> > >>
+> > >
+> > > Looking at vfio_add_std_cap(), and vfio_add_ext_cap() it seems that
+> > > they are clipping the size of capabilities so that they do not
+> > > overlap, if I read it correctly.
+> >
+> > If we want to deal gracefully with buggy physical devices, we need to
+> > treat pdev->config[] as untrusted input.
+> >
+> > As far as I can tell:
+> >
+> > * vfio_add_capabilities() replicates the physical device's capabilities
+> >   (starting at pdev->config[PCI_CAPABILITY_LIST]) in the virtual device.
+> >
+> > * vfio_add_std_cap() is a helper to add the tail starting at
+> >   pdev->config[pos].
+> >
+> > Could the physical device's capabilities overlap?  If yes, what would
+> > happen before and after your series?
+> >
+>
+> When the capabilities overlap, vfio_std_cap_max_size() and
+> vfio_ext_cap_max_size(), called by vfio_add_std_cap(),
+> vfio_add_ext_cap() should clip the size of capabilities. Comments in
+> vfio_add_std_cap() and vfio_add_ext_cap() say: "Since QEMU doesn't
+> actually handle many of the config accesses, exact size doesn't seem
+> worthwhile."
+>
+> Regards,
+> Akihiko Odaki
 
-Do you mean the setting of MVFR0 ?
+Hi, please check the last reply I have sent if you have not yet.
 
-because it was close to the code clearing the SIMD bits (NEON)
-of MVFR1 and it seemed more in sync with the specs :
-
-    "When FPU option is selected without NEON, the FPU is VFPv4-D16 and
-     uses 16 double-precision registers. When the FPU is implemented with
-     NEON, the FPU is VFPv4-D32 and uses 32 double-precision registers.
-     This register bank is shared with NEON."
-
-(That said, M processors don't have NEON, so this part of the code
-should never be reached )
-
-It could be done outside of this test also because SIMDREG = 1 is
-a valid value for M processors and the code path  :
-
-     if (!cpu->has_neon && !cpu->has_vfp) {
-
-will set MVFR0 to 0 later on if needed.
-
-
-M55 seems to be a special case though :
-
-     cpu->isar.mvfr1 = 0x12100211
-
-these are the FPU and MVE bits.
-
-C.
-
-> 
-> Reviewed-by: Joel Stanley <joel@jms.id.au>
-> 
->> +            u = cpu->isar.mvfr0;
->> +            u = FIELD_DP32(u, MVFR0, SIMDREG, 1); /* 16 registers */
->> +            cpu->isar.mvfr0 = u;
->> +
->>               u = cpu->isar.mvfr1;
->>               u = FIELD_DP32(u, MVFR1, SIMDLS, 0);
->>               u = FIELD_DP32(u, MVFR1, SIMDINT, 0);
->> --
->> 2.37.3
->>
-
+Regards,
+Akihiko Odaki

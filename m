@@ -1,312 +1,209 @@
-Received: by 2002:a8a:1193:0:0:0:0:0 with SMTP id m19csp953232ocs;
-        Thu, 29 Sep 2022 04:49:55 -0700 (PDT)
-X-Received: by 2002:a05:600c:a07:b0:3ab:945:77c4 with SMTP id z7-20020a05600c0a0700b003ab094577c4mr10447331wmp.97.1664452195762;
-        Thu, 29 Sep 2022 04:49:55 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1664452195; cv=none;
+Received: by 2002:a8a:1193:0:0:0:0:0 with SMTP id m19csp958550ocs;
+        Thu, 29 Sep 2022 05:00:24 -0700 (PDT)
+X-Google-Smtp-Source: AMsMyM6m8TVQ6sGOefdG/OOg3HvxcNPknUdKRXtpDtmmTBtWTdAnxNzImmBiJhJcfZqA7y8cw3tQ
+X-Received: by 2002:ac8:58cf:0:b0:35c:c69b:4aa1 with SMTP id u15-20020ac858cf000000b0035cc69b4aa1mr1929529qta.355.1664452824009;
+        Thu, 29 Sep 2022 05:00:24 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1664452824; cv=none;
         d=google.com; s=arc-20160816;
-        b=grKpSzjjSxFMJaCUtx5Cy59DXTuQ0wGOq9vJVe9O9ognP9ppvqvdKjX4BfEsSeKa/O
-         GEiDWnIeArBKeReIWzXsvEP2SDQQUXsJCB+ooHrwlrj51sAyo+VCjKt3ZaLrL8UAcBW7
-         ksnwVfFbXX1G8ihRn6LYxtzfy7LmAMFXVgpnhwPvoa0NFriXVcX+DJfmjrsrx9JG7xXU
-         9VjFBXeaWUBy1AxvdDYmcMkHANi/WBvtr+5ClVOMVOhQk55rbllHATWNQ99M/44Xdys2
-         /QgKGBiPw2BnI1wYhq8qCjdP2bhcYGY2VRdi+OaDK9y3/nWXB96mq7lONXUvp+f9OH0l
-         FsLA==
+        b=vUXoZd3orYU17LJOiAeZJDTCeENl/oZMpC4iBEZ2FgjainRl/WUEGr1T4lBnT2Ew22
+         T+V6hd/ZpUiPovBa0/tQaTZHwddjtyV06xQ2AMKBQ6Cp26qZQNJ+sehlCCCW9fCTtNtL
+         Ok+whkCBuE6ieC25KHOFslkQCG4thjA7HKhHH1bG+w4Qf40F+XxdpqF5YyGCbLya2uyH
+         73LcagdmoCWV0EWHi1WpbGwvUueCOC72yvt/+QWXD9J3wFr+Bu1Vy945JWfR5V96lbL3
+         AMYj1LCO7Z0hZtoJuT5iAwSMKHg7WJoWvSoTdQL5J9ptSpk2tIEvzlECPJcH1HbV2hr1
+         uNYg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=OXzdsloRXB8WS1CH8p1FEaeaWBtMOAym3FLJbD2hm9Y=;
-        b=0PisR/9YP18Bakn6OhQ/eUXCmBETiKX4ttFl6q6EYgt8eDOHPdI9ciBmP43SPM0489
-         JTvQ/oewwD238R3GA271ftEtgqmFkYwxRzWxwbuC6EU6FgszwxeSyhKRzzIqDgPj5EIf
-         aVm5oORBN7fgtVXCFTkVmwlKrcwgkCsNj76Wbw3C8uY//go3m3aIx1Mdb6hsh20gQhRI
-         8MF7F41j32n1fY1c86eEMEjKpdlFjrCbzxQd0RR1ZRNiUeyuAMfyaGT7PlZ5zsLw4SCL
-         fSUtkB7xnrSgDL09a4t1fnNB2oz+mqSylb/ndj/VMxjssF2NYxbd7Yhq3Q9AYRxyIE1+
-         5iXg==
+        h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:cc:to:subject
+         :dkim-signature;
+        bh=JJY+4NFs7t1pwwKxiIudV6168j+zy9Sc9KmxI3nJF4A=;
+        b=ws6nKQRv4PnVHj2SbUvapuocQ36OtJrptlYZojSnXS+TPCQaCwvMrLBEoibxPDfaGD
+         o1tn8TTwC6vHfCTTwUQN1vVtdMv8U2kCaeiXJ3swug3brwHZL2Qo7Uayu9xjCrFg7B47
+         o7Yx51nS2T9H03ZOLtUOFWR9HpriR6fkrSSD6K9a2QRKqUOfAI5Ab6NcUp2EsUDwoCYl
+         uQbBikunm+prvw6MJT+H2JA6T7P1+0F8OUybSqjDJBwUv0aMWQC7jwTT70IsErZKkRjV
+         vTHFDW2YR6IahsHxDIwjYFbB7kcmCxyfokIeaf+n/tNbWdJw1RVTIgN8RVmV48/+BA2C
+         9XlQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=gWsYgCyr;
-       spf=pass (google.com: domain of alex.bennee@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=alex.bennee@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <alex.bennee@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id u8-20020a5d6da8000000b002289858c179sor4557753wrs.62.2022.09.29.04.49.55
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=NExBNEde;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id j10-20020ac874ca000000b0035cb8515642si953001qtr.579.2022.09.29.05.00.23
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Thu, 29 Sep 2022 04:49:55 -0700 (PDT)
-Received-SPF: pass (google.com: domain of alex.bennee@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 29 Sep 2022 05:00:24 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=gWsYgCyr;
-       spf=pass (google.com: domain of alex.bennee@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=alex.bennee@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date;
-        bh=OXzdsloRXB8WS1CH8p1FEaeaWBtMOAym3FLJbD2hm9Y=;
-        b=gWsYgCyrKIeyKN5hfhEn0d45X20TbQKAjMSZ7o3Zrs9j72QXpaxDElDnVpYhSseeel
-         NWyelFgRJrOK7nZK2lAoK8Zfh8LodSwBkr49i8nwS7mwjuIGgsE9iQEEe5ysDgq5lVoS
-         9DIxeJztgwrSCqbOSIIVzroc5XzjJLynsPF3g6/BndmDaBrD+5ofHRLQ1ykR3Sqxk+bh
-         pubwadUF8UTvQlVk5FjcD2KqKqvOVDYPYBnC7WrU6w+gJptyftcz0HeWxh3euEmCBlq0
-         JCN5JkVvWBefT90Z2O8v+TMtCNYtIu7LCi5znWIAf4eBmIvMxtrt8DcGuJsAB/KVa7tV
-         FiDQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date;
-        bh=OXzdsloRXB8WS1CH8p1FEaeaWBtMOAym3FLJbD2hm9Y=;
-        b=EHHyzlRSnsNcWohjbFcRPu8dinMYcHY1yWHIXdNYXxAdeyvYatOkeM33vKuOLhekgf
-         8hABKX6x162YIuTSGcE1JDFTNqihklkYiUweWmap8+2otKydrUuyStYQMBZljDfuSjqk
-         0rtFFWuUNX8yUfVebHP7G5uArG/oygDwmhKH3EDhCa9CtX8TvOrGuuqWJC+9aC1a6OGd
-         mjScMy2qxM+manHZahYoRXVmSY6M51N2rutDpLOcTW/RHXpdQi5dZX4iLfQ/YAtWthkJ
-         h1tw0mas/RKGRg9Pk05DHAiLqNFHSLyOVJtYlN0Dft3Dwo/0chyUjcxM92UxnxMX3g0s
-         uGXQ==
-X-Gm-Message-State: ACrzQf0zOprQe4eBuuvbO8/N7IH52v3qEbELGBVSCKQzTYILA5YoSnSi
-	vhSV4sAc4hV6htIGHksprQzaCPRV
-X-Google-Smtp-Source: AMsMyM7h3WF7//7seLVnOiZIy3AeoCRuwu7IhFIUz8lY144P/kaYXEImCobuA5s2MWs9YqLJ9X3G9Q==
-X-Received: by 2002:a05:6000:1ac7:b0:22a:906d:3577 with SMTP id i7-20020a0560001ac700b0022a906d3577mr2026118wry.33.1664452194911;
-        Thu, 29 Sep 2022 04:49:54 -0700 (PDT)
-Return-Path: <alex.bennee@linaro.org>
-Received: from zen.linaroharston ([185.81.254.11])
-        by smtp.gmail.com with ESMTPSA id q10-20020a1cf30a000000b003b47575d304sm4949402wmq.32.2022.09.29.04.49.52
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 29 Sep 2022 04:49:54 -0700 (PDT)
-Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 1499F1FFCD;
-	Thu, 29 Sep 2022 12:42:34 +0100 (BST)
-From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: fam@euphon.net,
-	berrange@redhat.com,
-	f4bug@amsat.org,
-	aurelien@aurel32.net,
-	pbonzini@redhat.com,
-	stefanha@redhat.com,
-	crosa@redhat.com,
-	minyihh@uci.edu,
-	ma.mandourr@gmail.com,
-	Luke.Craig@ll.mit.edu,
-	cota@braap.org,
-	aaron@os.amperecomputing.com,
-	kuhn.chenqun@huawei.com,
-	robhenry@microsoft.com,
-	mahmoudabdalghany@outlook.com,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	Richard Henderson <richard.henderson@linaro.org>,
-	Eduardo Habkost <eduardo@habkost.net>,
-	qemu-arm@nongnu.org (open list:ARM TCG CPUs)
-Subject: [PATCH  v1 24/51] tests/tcg: move compiler tests to Makefiles
-Date: Thu, 29 Sep 2022 12:42:04 +0100
-Message-Id: <20220929114231.583801-25-alex.bennee@linaro.org>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20220929114231.583801-1-alex.bennee@linaro.org>
-References: <20220929114231.583801-1-alex.bennee@linaro.org>
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=NExBNEde;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:49936 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1odsDH-00069f-Hu
+	for alex.bennee@linaro.org; Thu, 29 Sep 2022 08:00:23 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:48328)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1odrc1-0001MF-NY
+ for qemu-devel@nongnu.org; Thu, 29 Sep 2022 07:21:53 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:60056)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1odrbw-0005Xj-1E
+ for qemu-devel@nongnu.org; Thu, 29 Sep 2022 07:21:52 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1664450506;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=JJY+4NFs7t1pwwKxiIudV6168j+zy9Sc9KmxI3nJF4A=;
+ b=NExBNEdeCU91i9FrTN0Eye5bkT/g3SGyGJj6kYHA8N3WPLPKC3+ZUnzTEntPZwmCivAvmf
+ NxRCB3DqxcTAjWYlneshozkTzmGDk6GracdI08yqYXTdHT/gonkaTIRpHZyibcyFeLsJ4i
+ IgmqpGaWfESvfJVucscLXok4FQyzX+U=
+Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
+ [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-582-3u83Xd_TOcaou1gDbXyqyg-1; Thu, 29 Sep 2022 07:21:43 -0400
+X-MC-Unique: 3u83Xd_TOcaou1gDbXyqyg-1
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.4])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 06F5D803D50;
+ Thu, 29 Sep 2022 11:21:43 +0000 (UTC)
+Received: from [10.64.54.143] (vpn2-54-143.bne.redhat.com [10.64.54.143])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 2F2C22084836;
+ Thu, 29 Sep 2022 11:21:38 +0000 (UTC)
+Subject: Re: [PATCH v3 5/5] hw/arm/virt: Add 'highmem-compact' property
+To: Cornelia Huck <cohuck@redhat.com>, eric.auger@redhat.com,
+ qemu-arm@nongnu.org
+Cc: qemu-devel@nongnu.org, maz@kernel.org, zhenyzha@redhat.com,
+ richard.henderson@linaro.org, peter.maydell@linaro.org, shan.gavin@gmail.com
+References: <20220921231349.274049-1-gshan@redhat.com>
+ <20220921231349.274049-6-gshan@redhat.com>
+ <2e8ace49-b900-de7e-2d81-7bb6c081146e@redhat.com>
+ <7656c827-58ce-85c2-87fe-e88206d6f022@redhat.com> <87bkqyeaqw.fsf@redhat.com>
+From: Gavin Shan <gshan@redhat.com>
+Message-ID: <81d12199-16e5-ce03-d146-0905ca8f7f37@redhat.com>
+Date: Thu, 29 Sep 2022 21:21:35 +1000
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.2.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-TUID: F7DcMpkscy3+
+In-Reply-To: <87bkqyeaqw.fsf@redhat.com>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 3.1 on 10.11.54.4
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=gshan@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -62
+X-Spam_score: -6.3
+X-Spam_bar: ------
+X-Spam_report: (-6.3 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.08,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ NICE_REPLY_A=-4.099, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Reply-To: Gavin Shan <gshan@redhat.com>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: QoE/ehk5nNWI
 
-From: Paolo Bonzini <pbonzini@redhat.com>
+Hi Cornelia,
 
-Further decoupling of tests/tcg from the main QEMU Makefile, and making
-the build more similar between the cross compiler case and the vetted
-container images.
+On 9/29/22 8:27 PM, Cornelia Huck wrote:
+> On Thu, Sep 29 2022, Gavin Shan <gshan@redhat.com> wrote:
+>> On 9/28/22 10:22 PM, Eric Auger wrote:
+>>> On 9/22/22 01:13, Gavin Shan wrote:
+>>>> After the improvement to high memory region address assignment is
+>>>> applied, the memory layout is changed. For example, VIRT_HIGH_PCIE_MMIO
+>>> s/the memory layout is changed./the memory layout is changed,
+>>> introducing possible migration breakage.
+>>
+>> Ok, much clearer.
+>>
+>>>> memory region is enabled when the improvement is applied, but it's
+>>>> disabled if the improvement isn't applied.
+>>>>
+>>>>       pa_bits              = 40;
+>>>>       vms->highmem_redists = false;
+>>>>       vms->highmem_ecam    = false;
+>>>>       vms->highmem_mmio    = true;
+>>>>
+>>>>       # qemu-system-aarch64 -accel kvm -cpu host \
+>>>>         -machine virt-7.2 -m 4G,maxmem=511G      \
+>>>>         -monitor stdio
+>>>>
+>>>> In order to keep backwords compatibility, we need to disable the
+>>>> optimization on machines, which is virt-7.1 or ealier than it. It
+>>>> means the optimization is enabled by default from virt-7.2. Besides,
+>>>> 'highmem-compact' property is added so that the optimization can be
+>>> I would rather rename the property into compact-highmem even if the vms
+>>> field is name highmem_compact to align with other highmem fields
+>>
+>> Ok, but I would love to know why. Note that we already have
+>> 'highmem=on|off'. 'highmem_compact=on|off' seems consistent
+>> to me.
+> 
+> FWIW, I initially misread 'highmem_compact' as 'highmem_compat' (and had
+> to re-read because I got confused). At least to me, 'compact_highmem'
+> has less chance of being parsed incorrectly :) (although that is
+> probably a personal thing.)
+> 
 
-Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
-Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
----
- configure                                 | 65 +----------------------
- tests/tcg/Makefile.target                 | 10 +++-
- tests/tcg/aarch64/Makefile.softmmu-target |  5 ++
- tests/tcg/aarch64/Makefile.target         |  9 ++++
- tests/tcg/i386/Makefile.target            |  6 +++
- tests/tcg/ppc64/Makefile.target           |  7 +++
- 6 files changed, 38 insertions(+), 64 deletions(-)
+Ok. 'compact-highmem' is also fine to me. I'm really bad at naming :)
 
-diff --git a/configure b/configure
-index a48a731bf4..ceb1213292 100755
---- a/configure
-+++ b/configure
-@@ -2562,73 +2562,11 @@ for target in $target_list; do
- 
-   probe_target_compiler $target
-   if test $got_cross_cc = yes; then
--      # Test for compiler features for optional tests. We only do this
--      # for cross compilers because ensuring the docker containers based
--      # compilers is a requirememt for adding a new test that needs a
--      # compiler feature.
--
--      echo "BUILD_STATIC=$build_static" >> "$config_target_mak"
-       write_target_makefile >> "$config_target_mak"
--      case $target in
--          aarch64-*)
--              if do_compiler "$target_cc" $target_cflags \
--                             -march=armv8.1-a+sve -o $TMPE $TMPC; then
--                  echo "CROSS_CC_HAS_SVE=y" >> "$config_target_mak"
--              fi
--              if do_compiler "$target_cc" $target_cflags \
--                             -march=armv8.1-a+sve2 -o $TMPE $TMPC; then
--                  echo "CROSS_CC_HAS_SVE2=y" >> "$config_target_mak"
--              fi
--              if do_compiler "$target_cc" $target_cflags \
--                             -march=armv8.3-a -o $TMPE $TMPC; then
--                  echo "CROSS_CC_HAS_ARMV8_3=y" >> "$config_target_mak"
--              fi
--              if do_compiler "$target_cc" $target_cflags \
--                             -mbranch-protection=standard -o $TMPE $TMPC; then
--                  echo "CROSS_CC_HAS_ARMV8_BTI=y" >> "$config_target_mak"
--              fi
--              if do_compiler "$target_cc" $target_cflags \
--                             -march=armv8.5-a+memtag -o $TMPE $TMPC; then
--                  echo "CROSS_CC_HAS_ARMV8_MTE=y" >> "$config_target_mak"
--              fi
--              ;;
--          ppc*)
--              if do_compiler "$target_cc" $target_cflags \
--                             -mpower8-vector -o $TMPE $TMPC; then
--                  echo "CROSS_CC_HAS_POWER8_VECTOR=y" >> "$config_target_mak"
--              fi
--              if do_compiler "$target_cc" $target_cflags \
--                             -mpower10 -o $TMPE $TMPC; then
--                  echo "CROSS_CC_HAS_POWER10=y" >> "$config_target_mak"
--              fi
--              ;;
--          i386-linux-user)
--              if do_compiler "$target_cc" $target_cflags \
--                             -Werror -fno-pie -o $TMPE $TMPC; then
--                  echo "CROSS_CC_HAS_I386_NOPIE=y" >> "$config_target_mak"
--              fi
--              ;;
--      esac
-   elif test -n "$container_image"; then
-+      build_static=y
-       echo "build-tcg-tests-$target: docker-image-$container_image" >> $makefile
--      echo "BUILD_STATIC=y" >> "$config_target_mak"
-       write_container_target_makefile >> "$config_target_mak"
--      case $target in
--          aarch64-*)
--              echo "CROSS_CC_HAS_SVE=y" >> "$config_target_mak"
--              echo "CROSS_CC_HAS_SVE2=y" >> "$config_target_mak"
--              echo "CROSS_CC_HAS_ARMV8_3=y" >> "$config_target_mak"
--              echo "CROSS_CC_HAS_ARMV8_BTI=y" >> "$config_target_mak"
--              echo "CROSS_CC_HAS_ARMV8_MTE=y" >> "$config_target_mak"
--              ;;
--          ppc*)
--              echo "CROSS_CC_HAS_POWER8_VECTOR=y" >> "$config_target_mak"
--              echo "CROSS_CC_HAS_POWER10=y" >> "$config_target_mak"
--              ;;
--          i386-linux-user)
--              echo "CROSS_CC_HAS_I386_NOPIE=y" >> "$config_target_mak"
--              ;;
--      esac
-       got_cross_cc=yes
-   fi
-   if test $got_cross_cc = yes; then
-@@ -2637,6 +2575,7 @@ for target in $target_list; do
-       ln -sf "../config-$target.mak" "tests/tcg/$target/config-target.mak"
-       echo "TARGET=$target" >> "$config_target_mak"
-       echo "QEMU=$PWD/$qemu" >> "$config_target_mak"
-+      echo "BUILD_STATIC=$build_static" >> "$config_target_mak"
-       echo "run-tcg-tests-$target: $qemu\$(EXESUF)" >> $makefile
-       tcg_tests_targets="$tcg_tests_targets $target"
-   fi
-diff --git a/tests/tcg/Makefile.target b/tests/tcg/Makefile.target
-index cd0a2ad873..75257f2b29 100644
---- a/tests/tcg/Makefile.target
-+++ b/tests/tcg/Makefile.target
-@@ -40,10 +40,18 @@ endif
- 
- # for including , in command strings
- COMMA := ,
-+NULL :=
-+SPACE := $(NULL) #
-+TARGET_PREFIX=tests/tcg/$(TARGET):$(SPACE)
- 
- quiet-@ = $(if $(V),,@$(if $1,printf "  %-7s %s\n" "$(strip $1)" "$(strip $2)" && ))
- quiet-command = $(call quiet-@,$2,$3)$1
- 
-+cc-test = $(CC) -Werror $1 -c -o /dev/null -xc /dev/null >/dev/null 2>&1
-+cc-option = if $(call cc-test, $1); then \
-+    echo "$(TARGET_PREFIX)$1 detected" && echo "$(strip $2)=y" >&3; else \
-+    echo "$(TARGET_PREFIX)$1 not detected"; fi
-+
- # $1 = test name, $2 = cmd, $3 = desc
- ifeq ($(filter %-softmmu, $(TARGET)),)
- run-test = $(call quiet-command, timeout --foreground $(TIMEOUT) $2 > $1.out, \
-@@ -190,4 +198,4 @@ clean:
- 	rm -f $(TESTS) *.o $(CLEANFILES)
- 
- distclean:
--	rm -f config-target.mak ../config-$(TARGET).mak
-+	rm -f config-cc.mak config-target.mak ../config-$(TARGET).mak
-diff --git a/tests/tcg/aarch64/Makefile.softmmu-target b/tests/tcg/aarch64/Makefile.softmmu-target
-index 84a9990f8d..a1368905f5 100644
---- a/tests/tcg/aarch64/Makefile.softmmu-target
-+++ b/tests/tcg/aarch64/Makefile.softmmu-target
-@@ -19,6 +19,11 @@ EXTRA_RUNS+=$(MULTIARCH_RUNS)
- CFLAGS+=-nostdlib -ggdb -O0 $(MINILIB_INC)
- LDFLAGS+=-static -nostdlib $(CRT_OBJS) $(MINILIB_OBJS) -lgcc
- 
-+config-cc.mak: Makefile
-+	$(quiet-@)( \
-+	    $(call cc-option,-march=armv8.3-a, CROSS_CC_HAS_ARMV8_3)) 3> config-cc.mak
-+-include config-cc.mak
-+
- # building head blobs
- .PRECIOUS: $(CRT_OBJS)
- 
-diff --git a/tests/tcg/aarch64/Makefile.target b/tests/tcg/aarch64/Makefile.target
-index 9837a809dc..fc8d90ed69 100644
---- a/tests/tcg/aarch64/Makefile.target
-+++ b/tests/tcg/aarch64/Makefile.target
-@@ -17,6 +17,15 @@ run-fcvt: fcvt
- 	$(call run-test,$<,$(QEMU) $<, "$< on $(TARGET_NAME)")
- 	$(call diff-out,$<,$(AARCH64_SRC)/fcvt.ref)
- 
-+config-cc.mak: Makefile
-+	$(quiet-@)( \
-+	    $(call cc-option,-march=armv8.1-a+sve,          CROSS_CC_HAS_SVE); \
-+	    $(call cc-option,-march=armv8.1-a+sve2,         CROSS_CC_HAS_SVE2); \
-+	    $(call cc-option,-march=armv8.3-a,              CROSS_CC_HAS_ARMV8_3); \
-+	    $(call cc-option,-mbranch-protection=standard,  CROSS_CC_HAS_ARMV8_BTI); \
-+	    $(call cc-option,-march=armv8.5-a+memtag,       CROSS_CC_HAS_ARMV8_MTE)) 3> config-cc.mak
-+-include config-cc.mak
-+
- # Pauth Tests
- ifneq ($(CROSS_CC_HAS_ARMV8_3),)
- AARCH64_TESTS += pauth-1 pauth-2 pauth-4 pauth-5
-diff --git a/tests/tcg/i386/Makefile.target b/tests/tcg/i386/Makefile.target
-index 8af066efc5..3273aa8061 100644
---- a/tests/tcg/i386/Makefile.target
-+++ b/tests/tcg/i386/Makefile.target
-@@ -5,6 +5,12 @@ I386_SRC=$(SRC_PATH)/tests/tcg/i386
- # Set search path for all sources
- VPATH 		+= $(I386_SRC)
- 
-+config-cc.mak: Makefile
-+	$(quiet-@)( \
-+          $(call cc-option,-fno-pie, CROSS_CC_HAS_I386_NOPIE)) 3> config-cc.mak
-+
-+-include config-cc.mak
-+
- I386_SRCS=$(notdir $(wildcard $(I386_SRC)/*.c))
- ALL_X86_TESTS=$(I386_SRCS:.c=)
- SKIP_I386_TESTS=test-i386-ssse3 test-avx test-3dnow test-mmx
-diff --git a/tests/tcg/ppc64/Makefile.target b/tests/tcg/ppc64/Makefile.target
-index 7db7a3e2b3..f081f1c683 100644
---- a/tests/tcg/ppc64/Makefile.target
-+++ b/tests/tcg/ppc64/Makefile.target
-@@ -4,6 +4,13 @@
- 
- VPATH += $(SRC_PATH)/tests/tcg/ppc64
- 
-+config-cc.mak: Makefile
-+	$(quiet-@)( \
-+	    $(call cc-option,-mpower8-vector,   CROSS_CC_HAS_POWER8_VECTOR); \
-+	    $(call cc-option,-mpower10,         CROSS_CC_HAS_POWER10)) 3> config-cc.mak
-+
-+-include config-cc.mak
-+
- ifneq ($(CROSS_CC_HAS_POWER8_VECTOR),)
- PPC64_TESTS=bcdsub non_signalling_xscv
- endif
--- 
-2.34.1
+>>
+>>>> explicitly enabled or disabled on all machine types by users.
+>>>>
+>>>> Signed-off-by: Gavin Shan <gshan@redhat.com>
+>>>> ---
+>>>>    docs/system/arm/virt.rst |  4 ++++
+>>>>    hw/arm/virt.c            | 33 +++++++++++++++++++++++++++++++++
+>>>>    include/hw/arm/virt.h    |  2 ++
+>>>>    3 files changed, 39 insertions(+)
+>>>>
+>>>> diff --git a/docs/system/arm/virt.rst b/docs/system/arm/virt.rst
+>>>> index 20442ea2c1..f05ec2253b 100644
+>>>> --- a/docs/system/arm/virt.rst
+>>>> +++ b/docs/system/arm/virt.rst
+>>>> @@ -94,6 +94,10 @@ highmem
+>>>>      address space above 32 bits. The default is ``on`` for machine types
+>>>>      later than ``virt-2.12``.
+>>>>    
+>>>> +highmem-compact
+>>>> +  Set ``on``/``off`` to enable/disable compact space for high memory regions.
+>>>> +  The default is ``on`` for machine types later than ``virt-7.2``
+>>> I think you should document what is compact layout versus legacy one,
+>>> both in the commit msg and maybe as a comment in a code along with the
+>>> comment in hw/arm/virt.c starting with 'Highmem IO Regions: '
+>>
+>> Ok, I will add this into the commit log in v4. I don't think it's necessary
+>> to add duplicate comment in the code. People can check the commit log for
+>> details if needed.
+> 
+> Rather explain it in this file here, maybe? I'd prefer to be able to
+> find out what 'compact' means without digging through the commit log.
+> 
+
+Ok, lets do as Eric suggested. There are existing comments about
+@extended_memmap[] in hw/arm/virt.c. We need to explain the legacy/modern
+laoyout and 'compact-highmem' property there.
+
+Thanks,
+Gavin
+

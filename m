@@ -1,134 +1,145 @@
-Received: by 2002:a8a:1193:0:0:0:0:0 with SMTP id m19csp1082878ocs;
-        Thu, 29 Sep 2022 08:03:01 -0700 (PDT)
-X-Google-Smtp-Source: AMsMyM6FrsEJB9H1883I+UKfr5/RjisMTpe1ZI+i2HqGug0QBBzXBYH8H//IffxCF0fqGYLUwftc
-X-Received: by 2002:a05:620a:25d0:b0:6bb:f597:1a3 with SMTP id y16-20020a05620a25d000b006bbf59701a3mr2496986qko.43.1664463781137;
-        Thu, 29 Sep 2022 08:03:01 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1664463781; cv=none;
+Received: by 2002:a8a:1193:0:0:0:0:0 with SMTP id m19csp1145957ocs;
+        Thu, 29 Sep 2022 09:34:08 -0700 (PDT)
+X-Google-Smtp-Source: AMsMyM6FmLD3E6jLuVeVXHxpjNGV1Ilrl66Slh4hbl0AYF0QH8bJ2TWiaiIspSKikxM7DwXaK4BL
+X-Received: by 2002:ad4:4eac:0:b0:4af:8718:3b55 with SMTP id ed12-20020ad44eac000000b004af87183b55mr3262088qvb.72.1664469248776;
+        Thu, 29 Sep 2022 09:34:08 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1664469248; cv=none;
         d=google.com; s=arc-20160816;
-        b=cUlRxNMHeqXBEG4x07oVpXxotZh/OycUW/LcKwifLn2kYWUj1eg/SDC+bHHUlw0MV3
-         RrJ5S/u0mA1PpTRRDT0vlalEuyFelB9SSOBlERPmTcHmo6UT2zU22tHrncURXsnmZpez
-         pHftRppW2RV4Frzs8RU13Mbb6Z5FD0iMkwezQQ7hvLcF59iNo4O4vQlJYnj7Y8Qy0Smr
-         MEsPlho90h9dW1d+a29eergv0zjm2Y0cGs4li1c5YjsdfH7nGB5/X0tLwxW2y30jF4RF
-         fVWCx1NEDmN6qJkQL7A8vN+F6J0lNwLpigpz9YlJ8RLzWj2MPN5MtaeMZ8AR9MnbeRjD
-         +RUQ==
+        b=RFqV5NmgNYL2KbFGJ5iouYDGtD/8yXZhy5lWzvaZTRGbZ8rfr7QA66Ddoph0pWTvGR
+         Wswzifp6uCcpwWMAznLQhTdNQ3jM4GUolnr9C3/IgqkPbC7b57rM9w778Gxh3wHBeF1F
+         N6qN2uSV33AOvEkjkF0ukp127AlaM/fBGKP8oBV5j4FkEFi1xY0HPUnOFrPn5q+z/0v7
+         gD39ajnffb8cwAEdhj8d+dO57EcxM8BM0VluKWZLj8vq+FHSFIA9gL1728Z7vuXvBpL1
+         xwONIVFMgbgGJoYgvoM3SROmEJ/6x0KA6EQZpQXNsH9zH+iURjYfmqEkw2u5hDhsYFhh
+         DSuA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version:message-id:date
-         :user-agent:references:organization:in-reply-to:subject:cc:to:from
-         :dkim-signature;
-        bh=fWj6jcTa3DeVfQ3FmqR63pwi+8DEn6QHRBAQ7XEy0Q0=;
-        b=shr2pNr0tnopVumpRwxwSMpX61PUxjapwXlEMI6vlNlt6OWQfAJvQPzPXTyvFMEx2C
-         mjeQubg8QPToCAyy3148D5aSY87Z3LtK5EnmAFSon25EypRZGXPxM/KdxmM/IcOi13Rl
-         G5aATYRRjIP2GIfggOOlpO6R/Nv678XBtcPNOodmxUXFlWsIXCNfNg6TfakeHhT643kY
-         s85VH7s7Spf80+x5qhdi7FzF9W2sb+m4gBnxfq7F3BNUWeywCA/tzgxvdpSRIwHlmXvt
-         fa+temn7GY2TBh3G6GG8jam15eImpdldYxIIAbPD8zmuuBtXFrHYP/96e9pjRuH50CaM
-         9Zbw==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:references:cc:to:content-language:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=CF7N2QdSA+nvsY7t8EBBPqYz7jMQ76uSwvDfIMTeGEk=;
+        b=RzRxErZqOz/vRKU4Xn1Lgy+a2n6z6T8jsK673vTJln4bO0WF4XenF5PIyZtwtexVsc
+         D3PYS76fIA24uiIzbuZBnATNRBob+RWeX7nxhWI4NaUgBJwXeoEKLM3POvqHkr6oX59Q
+         /j/eKaX51an6Ce3U4ijv3jWAP2oDtK+scrIoBvMA9yjfDYdtSldXcPvgxmciFoJj/6N0
+         xzDc0b6jq/WJf19+a+g1SGxNrCXmP+ZyhOCnjlAEPqpyG1brnxffHvSgXRfp5H6dV0yj
+         eosPB1MgfaQmAXSGoC0GhQ2i/X6HBbPWBNovRcekaNttosxdMx1SFhVVeam/YwIPLV8D
+         lcCw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=LJ19j42y;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@linaro.org header.s=google header.b=liUPnHKR;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id de37-20020a05620a372500b006cbd8dd869esi1373104qkb.19.2022.09.29.08.03.00
+        by mx.google.com with ESMTPS id y13-20020ac87c8d000000b00344531031d9si1278939qtv.341.2022.09.29.09.34.08
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 29 Sep 2022 08:03:01 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 29 Sep 2022 09:34:08 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=LJ19j42y;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:48870 helo=lists1p.gnu.org)
+       dkim=pass header.i=@linaro.org header.s=google header.b=liUPnHKR;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:60844 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1odv40-0002TJ-20
-	for alex.bennee@linaro.org; Thu, 29 Sep 2022 11:03:00 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:60648)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1odwUC-0005vj-BM
+	for alex.bennee@linaro.org; Thu, 29 Sep 2022 12:34:08 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:50616)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <cohuck@redhat.com>) id 1odtu4-00076w-1Y
- for qemu-arm@nongnu.org; Thu, 29 Sep 2022 09:48:40 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:50397)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <cohuck@redhat.com>) id 1odtu1-0006Uw-89
- for qemu-arm@nongnu.org; Thu, 29 Sep 2022 09:48:38 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1664459316;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=fWj6jcTa3DeVfQ3FmqR63pwi+8DEn6QHRBAQ7XEy0Q0=;
- b=LJ19j42yw8lVLAVO1UxfQSrFFGoTyFQLnlSPSSeI6zK9+PXJDW75+J9qg0grjVYZLRrbN7
- vWTlryLsD5BkrzwmpNiknH3mBv5zUhpVaxd6r2Zj+fxprZKG+sYIMZk/KEUskUpAZHo/Wk
- Qh7bI5gD6Dp3hUWDaN80ZO473f0zyKg=
-Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
- [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-325-xg7dyTu-OAyGw8D2cOoywA-1; Thu, 29 Sep 2022 09:48:32 -0400
-X-MC-Unique: xg7dyTu-OAyGw8D2cOoywA-1
-Received: from smtp.corp.redhat.com (int-mx10.intmail.prod.int.rdu2.redhat.com
- [10.11.54.10])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 67E4C88B7A7;
- Thu, 29 Sep 2022 13:48:31 +0000 (UTC)
-Received: from localhost (unknown [10.39.193.68])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 1BE0B492B05;
- Thu, 29 Sep 2022 13:48:30 +0000 (UTC)
-From: Cornelia Huck <cohuck@redhat.com>
-To: Gavin Shan <gshan@redhat.com>, qemu-arm@nongnu.org
-Cc: qemu-devel@nongnu.org, maz@kernel.org, eric.auger@redhat.com,
- zhenyzha@redhat.com, richard.henderson@linaro.org,
- peter.maydell@linaro.org, shan.gavin@gmail.com
-Subject: Re: [PATCH v3 1/5] hw/arm/virt: Introduce virt_set_high_memmap()
- helper
-In-Reply-To: <20220921231349.274049-2-gshan@redhat.com>
-Organization: Red Hat GmbH
-References: <20220921231349.274049-1-gshan@redhat.com>
- <20220921231349.274049-2-gshan@redhat.com>
-User-Agent: Notmuch/0.37 (https://notmuchmail.org)
-Date: Thu, 29 Sep 2022 15:48:29 +0200
-Message-ID: <878rm2e1g2.fsf@redhat.com>
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1odvMZ-0004qF-M7
+ for qemu-devel@nongnu.org; Thu, 29 Sep 2022 11:22:12 -0400
+Received: from mail-pg1-x531.google.com ([2607:f8b0:4864:20::531]:39709)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1odvMY-00063q-2M
+ for qemu-devel@nongnu.org; Thu, 29 Sep 2022 11:22:11 -0400
+Received: by mail-pg1-x531.google.com with SMTP id b5so1736352pgb.6
+ for <qemu-devel@nongnu.org>; Thu, 29 Sep 2022 08:22:07 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date;
+ bh=CF7N2QdSA+nvsY7t8EBBPqYz7jMQ76uSwvDfIMTeGEk=;
+ b=liUPnHKR9cnuPFrddy1vmnTtHIjNGxKlCZHUDlCIE5sohvrY2sUO7X2Y5akVSdUElE
+ sQXBcu4rVujcdY/4YWie9sFF1/aj21a30YUIICIQ6z2TUHbMrU3eJdazipLQKxX3cVTE
+ gLXT+MxOM7VL2VrxMJqWr99YaewPUB3TtTmgIkadWZDZqGMTkUrt9QJwuPmbh5G3Ygbi
+ /vj8h61hNZZ2RoQBSb0bqG0VtVk+fs7BWFLGbwU85bv7K9Xrn+DxwxwQqU3qs9h6CWEX
+ RgoTH2Q+JXUzfYXjhGraDNsxzTIn6d5z6Y/GBvOMcUbTyFeWuqrXQCNqe5GD2iX02FwY
+ 2tmw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date;
+ bh=CF7N2QdSA+nvsY7t8EBBPqYz7jMQ76uSwvDfIMTeGEk=;
+ b=hmROz1Xkm51ArqzqjgGYqO+JVfUnjtgFP7jABqFtgq+igrBiAhRdSmoRsCTzYJeagd
+ ebUiCoWaqcrLYnDKCRa1Tfz3qAoZCZBPwLyAO5S2vcQD+xIeBJv2AYgSwvPjAPOl5QFa
+ 3ljZO7Bc1Zo9GFiWY8OR5FQNlVSR7jvD7u/SaW86TaySsptkJj1of3pu+qJdUdN3Blmg
+ ImZ+mWX7P60ZukB0iX1YtE8eh5OQS5yMbPYCVIipoVHSXjsUnjYZ/MlzfDpSNeOxhxI0
+ S4lMzu5+oOCT+M27E3LJUNKlmuKC7bv3TWEsOTHQ4zYNMVe0sLybfJnZQ2sxzBJqEq6V
+ 0hUA==
+X-Gm-Message-State: ACrzQf3rO2cT2MwpzPZ0A8C5Z4sA0NPHucrcVgLkhYDm26RxLi9WAwvd
+ aVBjQvi2almO74WkEdVYvZX+6A==
+X-Received: by 2002:a63:3e0e:0:b0:438:63d9:930e with SMTP id
+ l14-20020a633e0e000000b0043863d9930emr3386992pga.17.1664464926267; 
+ Thu, 29 Sep 2022 08:22:06 -0700 (PDT)
+Received: from ?IPV6:2602:47:d49d:ec01:d5c8:ddf6:4bcd:e3c7?
+ ([2602:47:d49d:ec01:d5c8:ddf6:4bcd:e3c7])
+ by smtp.gmail.com with ESMTPSA id
+ b191-20020a621bc8000000b00536aa488062sm6232590pfb.163.2022.09.29.08.22.05
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 29 Sep 2022 08:22:05 -0700 (PDT)
+Message-ID: <12117a96-6b68-3146-3576-261228f15203@linaro.org>
+Date: Thu, 29 Sep 2022 08:22:03 -0700
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Scanned-By: MIMEDefang 3.1 on 10.11.54.10
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=cohuck@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -28
-X-Spam_score: -2.9
-X-Spam_bar: --
-X-Spam_report: (-2.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.08,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.11.0
+Subject: Re: [PATCH 1/2] target/arm: Disable VFPv4-D32 when NEON is not
+ available
+Content-Language: en-US
+To: Peter Maydell <peter.maydell@linaro.org>, =?UTF-8?Q?C=c3=a9dric_Le_Goate?=
+ =?UTF-8?Q?r?= <clg@kaod.org>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, Joel Stanley
+ <joel@jms.id.au>, Andrew Jeffery <andrew@aj.id.au>
+References: <20220928164719.655586-1-clg@kaod.org>
+ <20220928164719.655586-2-clg@kaod.org>
+ <CAFEAcA831iWjFSYt3UrKT0zA1MBfJn5BVSpEbVrOWj3Yw6yn_Q@mail.gmail.com>
+From: Richard Henderson <richard.henderson@linaro.org>
+In-Reply-To: <CAFEAcA831iWjFSYt3UrKT0zA1MBfJn5BVSpEbVrOWj3Yw6yn_Q@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::531;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pg1-x531.google.com
+X-Spam_score_int: -61
+X-Spam_score: -6.2
+X-Spam_bar: ------
+X-Spam_report: (-6.2 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-4.099,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: RZqTFU1K4MBa
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: GTc9ar5+KZy6
 
-On Thu, Sep 22 2022, Gavin Shan <gshan@redhat.com> wrote:
+On 9/29/22 04:44, Peter Maydell wrote:
+> Architecturally, Neon implies that you must have 32 dp registers,
+> but not having Neon does not imply that you must only have 16.
+> In particular, the Cortex-A15 always implements VFPv4-D32
+> whether Neon is enabled or not.
 
-> This introduces virt_set_high_memmap() helper. The logic of high
-> memory region address assignment is moved to the helper. The intention
-> is to make the subsequent optimization for high memory region address
-> assignment easier.
->
-> No functional change intended.
->
-> Signed-off-by: Gavin Shan <gshan@redhat.com>
-> ---
->  hw/arm/virt.c | 74 ++++++++++++++++++++++++++++-----------------------
->  1 file changed, 41 insertions(+), 33 deletions(-)
+A15 requires VFP == NEON in its configuration.
 
-Reviewed-by: Cornelia Huck <cohuck@redhat.com>
 
+r~

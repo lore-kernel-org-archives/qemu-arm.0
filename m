@@ -1,103 +1,114 @@
-Received: by 2002:a8a:1193:0:0:0:0:0 with SMTP id m19csp906971ocs;
-        Thu, 29 Sep 2022 03:28:58 -0700 (PDT)
-X-Google-Smtp-Source: AMsMyM49wf38pOEC9hZvcVV1Y7XAwdCmK4Af7jcHeFJOfHmF72hsZc8je78ftbVr2wBu5B3lwV21
-X-Received: by 2002:a05:620a:248f:b0:6ce:a3c7:abfb with SMTP id i15-20020a05620a248f00b006cea3c7abfbmr1605628qkn.112.1664447337954;
-        Thu, 29 Sep 2022 03:28:57 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1664447337; cv=none;
+Received: by 2002:a8a:1193:0:0:0:0:0 with SMTP id m19csp922543ocs;
+        Thu, 29 Sep 2022 03:58:14 -0700 (PDT)
+X-Google-Smtp-Source: AMsMyM518LJ2lo33GdDDEqMBAY/VanHMlxPiSMIiEHWudzQS+uTZL//wr0C507jIFvqvi2vSbIqn
+X-Received: by 2002:a37:b885:0:b0:6cf:4bb1:f056 with SMTP id i127-20020a37b885000000b006cf4bb1f056mr1608393qkf.167.1664449094153;
+        Thu, 29 Sep 2022 03:58:14 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1664449094; cv=none;
         d=google.com; s=arc-20160816;
-        b=lrGtJncXsdXXnCHfEEB0jioEuTuegOLNZyFW9qFBxhnXZBXrSv87AuP3OLT+nkUWUR
-         TXg1pq5doj+dklnbV/f03dTyRmX6xmEIPnO6VSj65K742sHo+WpHh+T+RIYyGIHf/pof
-         kNrflNHIzhj8jLjxspdGrTwRQqzpWO4tOW3vFO2unoDCbeYIzXEYc/jdJmAeHmyZQiv5
-         rltBl+mYwcTe31xfiO6o5SFHzJnsOzIBzL+shJbqmX3+ano2+4vh0L2BZOXBer6mi1/0
-         oXMeQD7QEPLJjMVrj1o+9jvfO3R6NF0EHpl1q9vy1Hfei9nwYIa0eLamWooF438ozH7C
-         AYXA==
+        b=HNUnyRBxHBPiXcqMDBji6KqQWuWa4NSCx0L2noI/9gOmN8z2eS6k1Y5JW4BUI7mbIv
+         ETLUDJ6tMNRPTlWn9TRmvWf6o/6IFrRroeFKwfEQti08GCnDCzfMGINc63tb4T3ytMTd
+         g3QFGqsgj/CtyfoNEYz0NuluCvJNWetxKKxQhv3AqV+UmBDyggtsu9Cim5CNwJwCVwd9
+         O3tz3eq4EBRNLoFNIWheQFrOVDpJ9Ig+EgJctnOaphS7zRg8B/qQ9HJ8lWgQCUPWA3YE
+         EckQzABGQp2wIOGUa8ixd2tuTHpwpv31K0KyXsax/JUy9siJ2RVCKlHO2pPmfgURlQGS
+         dc3A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version:message-id:date
-         :user-agent:references:organization:in-reply-to:subject:cc:to:from
+         :list-unsubscribe:list-id:precedence:mime-version:user-agent
+         :message-id:in-reply-to:date:references:subject:cc:to:from
          :dkim-signature;
-        bh=S2MTmuut3UpFN8JM4EGneIMhXbXwpb8297pJeuov8nQ=;
-        b=ehkeOjLukNz37pwhrgMgjUEcecouFHWTliI22qdKfXBg2JRd0ImESv3QdtRpnlBCtX
-         Jp1yWxPapnuZXdEDKTbjui/GZQjPra69NxVGDkQAh+qLwpWru7JIiM4Qj+Wleo/o+E3x
-         hO/NxRi2Sx+nKLbZchG3E6EE6rln4+BT5hGOMIEAIBhmg7vgOym5gqgF2YfwZ0ronzy+
-         JE9g24QqfiVbs0Kmv4fshf13Q9fF7vgg0N3RyJfPFRRww7e4Nbagwqbzw0pXUgwUpDsk
-         Dr2qImt/Xm2VeluAKI9EdDQ7VWocjuQ7tQBX1nk2U1vqBs9hmVHc+kO0D9vtjRfRbYgp
-         BvXA==
+        bh=v28foEUMrAROtC9/y0SB2k5VMFBg/xOpiGtaNn5oDrg=;
+        b=hjceLKlRYhiP5/bEHxYU9jOzun+coYvY7utSKJTpbbZ8O1xxxiyAH4g0CPk0dJA24I
+         tCLvybKoB86QMxgojioevN8knJBesxaBsUV78BJB3UI1gc74fOkOHOTW+IZ7Hn8kK1Bd
+         MRXcAToZ7+M2DO4ZPlE0SrfCct5CXTU3AYjUNf3mu2y3Puvgo45laGBHVLmusFqFl3OX
+         SZdO4bjhQbm2tq23skdgFPc4/1fQYB54kABUcuZOIu/mFK5xM3ojJ+oTm8yDp8Xp/1kZ
+         19T0gOLSywOOSiS+qWUmG2d5NI6aw6rQY90ryjqgDSkbsOkifig3KzJNYwYfti7yorSQ
+         NS8Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=dILNhJvR;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=gTqZEb3x;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id q11-20020a05620a0d8b00b006b2543c5866si1294477qkl.18.2022.09.29.03.28.57
+        by mx.google.com with ESMTPS id bw22-20020a05622a099600b0035c5787f66bsi1067631qtb.218.2022.09.29.03.58.14
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 29 Sep 2022 03:28:57 -0700 (PDT)
+        Thu, 29 Sep 2022 03:58:14 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=dILNhJvR;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=gTqZEb3x;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:53884 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:52180 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1odqmn-0001IE-De
-	for alex.bennee@linaro.org; Thu, 29 Sep 2022 06:28:57 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:42556)
+	id 1odrF5-0005na-Ob
+	for alex.bennee@linaro.org; Thu, 29 Sep 2022 06:58:13 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:42624)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <cohuck@redhat.com>) id 1odqlj-0001Gq-CQ
- for qemu-arm@nongnu.org; Thu, 29 Sep 2022 06:27:53 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:25037)
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1odrCV-00057T-Bv
+ for qemu-arm@nongnu.org; Thu, 29 Sep 2022 06:55:31 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:55916)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <cohuck@redhat.com>) id 1odqlg-0002ag-2a
- for qemu-arm@nongnu.org; Thu, 29 Sep 2022 06:27:49 -0400
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1odrCS-0007je-LM
+ for qemu-arm@nongnu.org; Thu, 29 Sep 2022 06:55:30 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1664447264;
+ s=mimecast20190719; t=1664448927;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  in-reply-to:in-reply-to:references:references;
- bh=S2MTmuut3UpFN8JM4EGneIMhXbXwpb8297pJeuov8nQ=;
- b=dILNhJvRVeQogBx1gsdu4nK/Ll5v+NBYocGT4PzRkEGLYLV8ukLvsGyXkPT/SWu5Plg4Ar
- vIFSuowhCm/IWX6zIbFlFYuTP1pbxeoz3V1WxY1zIqVIiomIw627bAxJn/NtowjK43Pq2u
- ZXMHITshDfAANrG+3RgeHBu5VMwUQ40=
+ bh=v28foEUMrAROtC9/y0SB2k5VMFBg/xOpiGtaNn5oDrg=;
+ b=gTqZEb3xwke1EBv4hhnk3Pggf+OWfIOsExRvh802iNiBEtngT182fSqmx9uzNNNt55d7I9
+ r3HVvWT9JwUcEoleUbsbRfn96w9CLv1lcfwMOUTPnrgiu582x9Mb0Vls985q/fVPchhT9i
+ ++/9Qj48W/bNM8Dqol7stor1nirSu30=
 Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
  [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-141-ZID10jGnMYq7njBpvdre5Q-1; Thu, 29 Sep 2022 06:27:40 -0400
-X-MC-Unique: ZID10jGnMYq7njBpvdre5Q-1
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.rdu2.redhat.com
- [10.11.54.5])
+ us-mta-391-L7jz6NaYMtepiD1FePAZcQ-1; Thu, 29 Sep 2022 06:55:26 -0400
+X-MC-Unique: L7jz6NaYMtepiD1FePAZcQ-1
+Received: from smtp.corp.redhat.com (int-mx09.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.9])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id EB3FE88B7A7;
- Thu, 29 Sep 2022 10:27:39 +0000 (UTC)
-Received: from localhost (unknown [10.39.193.68])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 5A64A4EA5F;
- Thu, 29 Sep 2022 10:27:37 +0000 (UTC)
-From: Cornelia Huck <cohuck@redhat.com>
-To: Gavin Shan <gshan@redhat.com>, eric.auger@redhat.com, qemu-arm@nongnu.org
-Cc: qemu-devel@nongnu.org, maz@kernel.org, zhenyzha@redhat.com,
- richard.henderson@linaro.org, peter.maydell@linaro.org,
- shan.gavin@gmail.com
-Subject: Re: [PATCH v3 5/5] hw/arm/virt: Add 'highmem-compact' property
-In-Reply-To: <7656c827-58ce-85c2-87fe-e88206d6f022@redhat.com>
-Organization: Red Hat GmbH
-References: <20220921231349.274049-1-gshan@redhat.com>
- <20220921231349.274049-6-gshan@redhat.com>
- <2e8ace49-b900-de7e-2d81-7bb6c081146e@redhat.com>
- <7656c827-58ce-85c2-87fe-e88206d6f022@redhat.com>
-User-Agent: Notmuch/0.37 (https://notmuchmail.org)
-Date: Thu, 29 Sep 2022 12:27:35 +0200
-Message-ID: <87bkqyeaqw.fsf@redhat.com>
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id C6EDD800186;
+ Thu, 29 Sep 2022 10:55:25 +0000 (UTC)
+Received: from blackfin.pond.sub.org (unknown [10.39.192.163])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 4A41149BB61;
+ Thu, 29 Sep 2022 10:55:25 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+ id 2BC4621E691D; Thu, 29 Sep 2022 12:55:22 +0200 (CEST)
+From: Markus Armbruster <armbru@redhat.com>
+To: Akihiko Odaki <akihiko.odaki@daynix.com>
+Cc: qemu-devel@nongnu.org,  qemu-block@nongnu.org,  qemu-arm@nongnu.org,
+ Alex Williamson <alex.williamson@redhat.com>,  "Michael S. Tsirkin"
+ <mst@redhat.com>,  Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,  Gerd
+ Hoffmann <kraxel@redhat.com>,  Paolo Bonzini <pbonzini@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>,  Eduardo Habkost
+ <eduardo@habkost.net>,  John Snow <jsnow@redhat.com>,  Dmitry Fleytman
+ <dmitry.fleytman@gmail.com>,  Jason Wang <jasowang@redhat.com>,  Stefan
+ Weil <sw@weilnetz.de>,  Keith Busch <kbusch@kernel.org>,  Klaus Jensen
+ <its@irrelevant.dk>,  Peter Maydell <peter.maydell@linaro.org>,  Andrey
+ Smirnov <andrew.smirnov@gmail.com>,  Paul Burton <paulburton@kernel.org>,
+ Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>
+Subject: Re: [PATCH v2] pci: Assert that capabilities never overlap
+References: <20220831013236.32937-1-akihiko.odaki@daynix.com>
+ <87tu5qulay.fsf@pond.sub.org>
+ <CAE=JJXdg=Miisek8WeqQ12NqL8obzmuyzD0mbv1SfiJTyVBLuw@mail.gmail.com>
+ <875yi2mat1.fsf@pond.sub.org>
+ <CAE=JJXcRH-0TuM7WgbM35Nb=Ud94K-LUcdzjoyJDMEuK9o=uFw@mail.gmail.com>
+Date: Thu, 29 Sep 2022 12:55:22 +0200
+In-Reply-To: <CAE=JJXcRH-0TuM7WgbM35Nb=Ud94K-LUcdzjoyJDMEuK9o=uFw@mail.gmail.com>
+ (Akihiko Odaki's message of "Mon, 5 Sep 2022 19:11:59 +0900")
+Message-ID: <87mtaitpph.fsf@pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/27.2 (gnu/linux)
 MIME-Version: 1.0
 Content-Type: text/plain
-X-Scanned-By: MIMEDefang 3.1 on 10.11.54.5
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=cohuck@redhat.com;
+X-Scanned-By: MIMEDefang 3.1 on 10.11.54.9
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=armbru@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -28
 X-Spam_score: -2.9
 X-Spam_bar: --
-X-Spam_report: (-2.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.082,
+X-Spam_report: (-2.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.08,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
@@ -115,78 +126,89 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: MLLiW+u1CnJz
+X-TUID: NOZsBi4bxJB/
 
-On Thu, Sep 29 2022, Gavin Shan <gshan@redhat.com> wrote:
+Akihiko Odaki <akihiko.odaki@daynix.com> writes:
 
-> Hi Eric,
+> On Mon, Sep 5, 2022 at 6:26 PM Markus Armbruster <armbru@redhat.com> wrote:
+>>
+>> Akihiko Odaki <akihiko.odaki@daynix.com> writes:
+>>
+>> > On Fri, Sep 2, 2022 at 7:23 PM Markus Armbruster <armbru@redhat.com> wrote:
+>> >>
+>> >> Akihiko Odaki <akihiko.odaki@daynix.com> writes:
+>> >>
+>> >> > pci_add_capability appears most PCI devices. Its error handling required
+>> >> > lots of code, and led to inconsistent behaviors such as:
+>> >> > - passing error_abort
+>> >> > - passing error_fatal
+>> >> > - asserting the returned value
+>> >> > - propagating the error to the caller
+>> >> > - skipping the rest of the function
+>> >> > - just ignoring
+>> >> >
+>> >> > The code generating errors in pci_add_capability had a comment which
+>> >> > says:
+>> >> >> Verify that capabilities don't overlap.  Note: device assignment
+>> >> >> depends on this check to verify that the device is not broken.
+>> >> >> Should never trigger for emulated devices, but it's helpful for
+>> >> >> debugging these.
+>> >> >
+>> >> > Indeed vfio has some code that passes capability offsets and sizes from
+>> >> > a physical device, but it explicitly pays attention so that the
+>> >> > capabilities never overlap.
+>> >>
+>> >> I can't see that at a glance.  Can you give me a clue?
+>> >>
+>> >> >                             Therefore, we can always assert that
+>> >> > capabilities never overlap when pci_add_capability is called, resolving
+>> >> > these inconsistencies.
+>> >> >
+>> >> > Signed-off-by: Akihiko Odaki <akihiko.odaki@daynix.com>
+>> >>
+>> >
+>> > Looking at vfio_add_std_cap(), and vfio_add_ext_cap() it seems that
+>> > they are clipping the size of capabilities so that they do not
+>> > overlap, if I read it correctly.
+>>
+>> If we want to deal gracefully with buggy physical devices, we need to
+>> treat pdev->config[] as untrusted input.
+>>
+>> As far as I can tell:
+>>
+>> * vfio_add_capabilities() replicates the physical device's capabilities
+>>   (starting at pdev->config[PCI_CAPABILITY_LIST]) in the virtual device.
+>>
+>> * vfio_add_std_cap() is a helper to add the tail starting at
+>>   pdev->config[pos].
+>>
+>> Could the physical device's capabilities overlap?  If yes, what would
+>> happen before and after your series?
+>>
 >
-> On 9/28/22 10:22 PM, Eric Auger wrote:
->> On 9/22/22 01:13, Gavin Shan wrote:
->>> After the improvement to high memory region address assignment is
->>> applied, the memory layout is changed. For example, VIRT_HIGH_PCIE_MMIO
->> s/the memory layout is changed./the memory layout is changed,
->> introducing possible migration breakage.
->
-> Ok, much clearer.
->
->>> memory region is enabled when the improvement is applied, but it's
->>> disabled if the improvement isn't applied.
->>>
->>>      pa_bits              = 40;
->>>      vms->highmem_redists = false;
->>>      vms->highmem_ecam    = false;
->>>      vms->highmem_mmio    = true;
->>>
->>>      # qemu-system-aarch64 -accel kvm -cpu host \
->>>        -machine virt-7.2 -m 4G,maxmem=511G      \
->>>        -monitor stdio
->>>
->>> In order to keep backwords compatibility, we need to disable the
->>> optimization on machines, which is virt-7.1 or ealier than it. It
->>> means the optimization is enabled by default from virt-7.2. Besides,
->>> 'highmem-compact' property is added so that the optimization can be
->> I would rather rename the property into compact-highmem even if the vms
->> field is name highmem_compact to align with other highmem fields
->
-> Ok, but I would love to know why. Note that we already have
-> 'highmem=on|off'. 'highmem_compact=on|off' seems consistent
-> to me.
+> When the capabilities overlap, vfio_std_cap_max_size() and
+> vfio_ext_cap_max_size(), called by vfio_add_std_cap(),
+> vfio_add_ext_cap() should clip the size of capabilities. Comments in
+> vfio_add_std_cap() and vfio_add_ext_cap() say: "Since QEMU doesn't
+> actually handle many of the config accesses, exact size doesn't seem
+> worthwhile."
 
-FWIW, I initially misread 'highmem_compact' as 'highmem_compat' (and had
-to re-read because I got confused). At least to me, 'compact_highmem'
-has less chance of being parsed incorrectly :) (although that is
-probably a personal thing.)
+Weird :)
 
->
->>> explicitly enabled or disabled on all machine types by users.
->>>
->>> Signed-off-by: Gavin Shan <gshan@redhat.com>
->>> ---
->>>   docs/system/arm/virt.rst |  4 ++++
->>>   hw/arm/virt.c            | 33 +++++++++++++++++++++++++++++++++
->>>   include/hw/arm/virt.h    |  2 ++
->>>   3 files changed, 39 insertions(+)
->>>
->>> diff --git a/docs/system/arm/virt.rst b/docs/system/arm/virt.rst
->>> index 20442ea2c1..f05ec2253b 100644
->>> --- a/docs/system/arm/virt.rst
->>> +++ b/docs/system/arm/virt.rst
->>> @@ -94,6 +94,10 @@ highmem
->>>     address space above 32 bits. The default is ``on`` for machine types
->>>     later than ``virt-2.12``.
->>>   
->>> +highmem-compact
->>> +  Set ``on``/``off`` to enable/disable compact space for high memory regions.
->>> +  The default is ``on`` for machine types later than ``virt-7.2``
->> I think you should document what is compact layout versus legacy one,
->> both in the commit msg and maybe as a comment in a code along with the
->> comment in hw/arm/virt.c starting with 'Highmem IO Regions: '
->
-> Ok, I will add this into the commit log in v4. I don't think it's necessary
-> to add duplicate comment in the code. People can check the commit log for
-> details if needed.
+Back to your patch.  Its core is dumbing down of pci_add_capability() so
+it can't fail anymore.  Instead it aborts on overlapping capabilities.
+Note that it already aborts when running out of PCI config space.
 
-Rather explain it in this file here, maybe? I'd prefer to be able to
-find out what 'compact' means without digging through the commit log.
+The remainder of the patch simplifies callers accordingly.  Some callers
+ignore the error before the patch, some abort on error, and some pass it
+on to their callers.  Too much for me to review in detail.  We can talk
+about ways to split it up if that's desired.
+
+My one concern is device assignment, which should treat the device's
+capabilities as untrusted input.  If you're right in that such
+capabilities get truncated before they reach pci_add_capability(), then
+your change from failure to abort is okay.
+
+I'd like to leave checking your correctness argument to actual PCI
+experts.
 

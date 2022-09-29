@@ -1,110 +1,112 @@
-Received: by 2002:a8a:1193:0:0:0:0:0 with SMTP id m19csp958550ocs;
-        Thu, 29 Sep 2022 05:00:24 -0700 (PDT)
-X-Google-Smtp-Source: AMsMyM6m8TVQ6sGOefdG/OOg3HvxcNPknUdKRXtpDtmmTBtWTdAnxNzImmBiJhJcfZqA7y8cw3tQ
-X-Received: by 2002:ac8:58cf:0:b0:35c:c69b:4aa1 with SMTP id u15-20020ac858cf000000b0035cc69b4aa1mr1929529qta.355.1664452824009;
-        Thu, 29 Sep 2022 05:00:24 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1664452824; cv=none;
+Received: by 2002:a8a:1193:0:0:0:0:0 with SMTP id m19csp1023115ocs;
+        Thu, 29 Sep 2022 06:34:23 -0700 (PDT)
+X-Google-Smtp-Source: AMsMyM595cN43ohvwfHvfG+oBb17YX84tLUrqe2DDtiocGKBNwWFnrjdb3zPCfDS35nBYiMXryL5
+X-Received: by 2002:a05:622a:11c9:b0:35c:3a5a:1ca3 with SMTP id n9-20020a05622a11c900b0035c3a5a1ca3mr2393928qtk.476.1664458463033;
+        Thu, 29 Sep 2022 06:34:23 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1664458463; cv=none;
         d=google.com; s=arc-20160816;
-        b=vUXoZd3orYU17LJOiAeZJDTCeENl/oZMpC4iBEZ2FgjainRl/WUEGr1T4lBnT2Ew22
-         T+V6hd/ZpUiPovBa0/tQaTZHwddjtyV06xQ2AMKBQ6Cp26qZQNJ+sehlCCCW9fCTtNtL
-         Ok+whkCBuE6ieC25KHOFslkQCG4thjA7HKhHH1bG+w4Qf40F+XxdpqF5YyGCbLya2uyH
-         73LcagdmoCWV0EWHi1WpbGwvUueCOC72yvt/+QWXD9J3wFr+Bu1Vy945JWfR5V96lbL3
-         AMYj1LCO7Z0hZtoJuT5iAwSMKHg7WJoWvSoTdQL5J9ptSpk2tIEvzlECPJcH1HbV2hr1
-         uNYg==
+        b=ozEOHzT8ND5YTEt6LmwpY9/j8zzVG5/CbPrlW3BChg5Pa/dnI1oeP8AZs10p0HBED5
+         074ha/vOreeLYIhOn1vdst40JZvZIQK8GDKx/kU8hSkOzwvpOpkd/d637zbXV7rcmaoH
+         eJTRqsXKjR2GhmGoHLOlr8vprL9wiyVZLdBPBQrnY4tvMWVO2O6vi+IVBCX+v30f7dCU
+         rK9D1KIGX8qBx2gh7WiamknTi3QPXxwfkw81Cc5fLz5/u5CngWfvX6suRy3gCIWea4sI
+         f1uWv5gzXl2TXKEsGLaPfIg015IHTdLsZBQq1edupsOD+Gpb+bJsXT/ce2fC0l2EGyxm
+         z+1g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:cc:to:subject
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version
          :dkim-signature;
-        bh=JJY+4NFs7t1pwwKxiIudV6168j+zy9Sc9KmxI3nJF4A=;
-        b=ws6nKQRv4PnVHj2SbUvapuocQ36OtJrptlYZojSnXS+TPCQaCwvMrLBEoibxPDfaGD
-         o1tn8TTwC6vHfCTTwUQN1vVtdMv8U2kCaeiXJ3swug3brwHZL2Qo7Uayu9xjCrFg7B47
-         o7Yx51nS2T9H03ZOLtUOFWR9HpriR6fkrSSD6K9a2QRKqUOfAI5Ab6NcUp2EsUDwoCYl
-         uQbBikunm+prvw6MJT+H2JA6T7P1+0F8OUybSqjDJBwUv0aMWQC7jwTT70IsErZKkRjV
-         vTHFDW2YR6IahsHxDIwjYFbB7kcmCxyfokIeaf+n/tNbWdJw1RVTIgN8RVmV48/+BA2C
-         9XlQ==
+        bh=fMBWKQnKlque+yg1iP5gYIddEr5TT78g0MXvgWDdVGI=;
+        b=ZVgfEFFYzXwUdh4mXUnyhOGF3w/R6Qz/HKWN1uioPrUK5/5j5grClvvDB/qrlleqMl
+         rh5e12bdJKWqn/8aXTfgOXXC3llrgGF21BWm96gp6kVt1KnQgvYvcHSIdZx46yDV7h+8
+         gjhgS1ewxpfI5V9FwEfBLhgNwiaLcWBsshqnis5My7muKbAMSny+Xajk43ECSYxweDiq
+         9qLf6xb+tCc2rVX6LsNMfos6MBZf8ZDOF5axvJqhEulqt75kxVh7XdzPtJ5i3VozGebR
+         am2L+uUBF4GLxBpuTCM+c4tXO9WGIkHCwAytTWi4VWjHoxrIU/qS+yYFP1hZ/cULH84X
+         FYxA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=NExBNEde;
+       dkim=pass header.i=@linaro.org header.s=google header.b="DFsOqgn/";
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id j10-20020ac874ca000000b0035cb8515642si953001qtr.579.2022.09.29.05.00.23
+        by mx.google.com with ESMTPS id k2-20020ad45be2000000b00498f8f3b809si4545965qvc.127.2022.09.29.06.34.22
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 29 Sep 2022 05:00:24 -0700 (PDT)
+        Thu, 29 Sep 2022 06:34:23 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=NExBNEde;
+       dkim=pass header.i=@linaro.org header.s=google header.b="DFsOqgn/";
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:49936 helo=lists1p.gnu.org)
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:34774 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1odsDH-00069f-Hu
-	for alex.bennee@linaro.org; Thu, 29 Sep 2022 08:00:23 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:48328)
+	id 1odtgD-0006NH-Gd
+	for alex.bennee@linaro.org; Thu, 29 Sep 2022 09:34:21 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41066)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1odrc1-0001MF-NY
- for qemu-devel@nongnu.org; Thu, 29 Sep 2022 07:21:53 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:60056)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1odrbw-0005Xj-1E
- for qemu-devel@nongnu.org; Thu, 29 Sep 2022 07:21:52 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1664450506;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=JJY+4NFs7t1pwwKxiIudV6168j+zy9Sc9KmxI3nJF4A=;
- b=NExBNEdeCU91i9FrTN0Eye5bkT/g3SGyGJj6kYHA8N3WPLPKC3+ZUnzTEntPZwmCivAvmf
- NxRCB3DqxcTAjWYlneshozkTzmGDk6GracdI08yqYXTdHT/gonkaTIRpHZyibcyFeLsJ4i
- IgmqpGaWfESvfJVucscLXok4FQyzX+U=
-Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
- [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-582-3u83Xd_TOcaou1gDbXyqyg-1; Thu, 29 Sep 2022 07:21:43 -0400
-X-MC-Unique: 3u83Xd_TOcaou1gDbXyqyg-1
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.rdu2.redhat.com
- [10.11.54.4])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 06F5D803D50;
- Thu, 29 Sep 2022 11:21:43 +0000 (UTC)
-Received: from [10.64.54.143] (vpn2-54-143.bne.redhat.com [10.64.54.143])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 2F2C22084836;
- Thu, 29 Sep 2022 11:21:38 +0000 (UTC)
-Subject: Re: [PATCH v3 5/5] hw/arm/virt: Add 'highmem-compact' property
-To: Cornelia Huck <cohuck@redhat.com>, eric.auger@redhat.com,
- qemu-arm@nongnu.org
-Cc: qemu-devel@nongnu.org, maz@kernel.org, zhenyzha@redhat.com,
- richard.henderson@linaro.org, peter.maydell@linaro.org, shan.gavin@gmail.com
-References: <20220921231349.274049-1-gshan@redhat.com>
- <20220921231349.274049-6-gshan@redhat.com>
- <2e8ace49-b900-de7e-2d81-7bb6c081146e@redhat.com>
- <7656c827-58ce-85c2-87fe-e88206d6f022@redhat.com> <87bkqyeaqw.fsf@redhat.com>
-From: Gavin Shan <gshan@redhat.com>
-Message-ID: <81d12199-16e5-ce03-d146-0905ca8f7f37@redhat.com>
-Date: Thu, 29 Sep 2022 21:21:35 +1000
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.2.0
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1ods1t-00084K-4n
+ for qemu-devel@nongnu.org; Thu, 29 Sep 2022 07:48:39 -0400
+Received: from mail-ej1-x633.google.com ([2a00:1450:4864:20::633]:36590)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1ods1p-0002Ej-W8
+ for qemu-devel@nongnu.org; Thu, 29 Sep 2022 07:48:36 -0400
+Received: by mail-ej1-x633.google.com with SMTP id 13so2251202ejn.3
+ for <qemu-devel@nongnu.org>; Thu, 29 Sep 2022 04:48:32 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:from:to:cc:subject:date;
+ bh=fMBWKQnKlque+yg1iP5gYIddEr5TT78g0MXvgWDdVGI=;
+ b=DFsOqgn/nywVLj5TyU8m2EjpzkxwD8kvGHoOQscZMj9zFy5KdF563kSFGCOjYce/H4
+ J1wTXiJRM+A7/xYHT/ZKpXSR1eVRW/JSShJr6kq4g7iMfFkEAbQBbCRKIIuCBO4yssNr
+ tlsvKtamtbhvQVvTF7yT3nDiCNBDUpG8IvGjdfrLBgXN8dGU8ZIzpCBGNjBasEBVpROh
+ r+MuJoX6CEyQV4TV/0AEclQ6wZ05PVXSO4lNYQPMpKVJ6fopxLHQ8CznSj3WmKh7Zpfv
+ nOy7j0Y1V2mpAvJrq4GfQplg+xUTdQRme68q/pQoclctGdm9rTAc7vviDDlaYijY3/Qi
+ dYeg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+ :subject:date;
+ bh=fMBWKQnKlque+yg1iP5gYIddEr5TT78g0MXvgWDdVGI=;
+ b=WNjNMq0BdB3W7BB6pCq7a4IzUxI+UIYxarL/lQIi8TYCSDbrcQaQPqgvb7qws5JuPv
+ Vif7W1s+rsULPQ798nLEzPSxoTv07RVYIlIHUAiI85VNXCXmxJfjLnYJzqTQwzqQxsv3
+ 3yRQf3Y/ZaXv6lcE7X7NFbpc+zEdiby0eZQfEQMv6bWt2hqKNVwznrYsuraZhCNs42AH
+ g2fzbRxPBMqHOl8fjeGSQf/BXMzVxX/5tDvbEWWw+1gYq395SBuKo23Dy3skWAo1fC5g
+ vRo+iK+bb0kSp7cwq7Msl0tya9PmWYPfCy9Nuu2l50R4HPATidFcCFbhwpG4J6TrW+rx
+ ORyA==
+X-Gm-Message-State: ACrzQf1v684tae7LzERfr0GVympJ4AUkNqcXUBWP2JHA5tY8BWr69k2X
+ 4sQX8B2jEMut1FdPWpGAF90BolJVzvLUn5G3Ggu79A==
+X-Received: by 2002:a17:906:730d:b0:782:a4e0:bb54 with SMTP id
+ di13-20020a170906730d00b00782a4e0bb54mr2492516ejc.659.1664452111602; Thu, 29
+ Sep 2022 04:48:31 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <87bkqyeaqw.fsf@redhat.com>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 3.1 on 10.11.54.4
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=gshan@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -62
-X-Spam_score: -6.3
-X-Spam_bar: ------
-X-Spam_report: (-6.3 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.08,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-4.099, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+References: <20220928164719.655586-1-clg@kaod.org>
+ <20220928164719.655586-2-clg@kaod.org>
+ <CACPK8XeiadO=ACQdpFmvy5cAGe0C_LzC3ZPjPVMs_22bUDTcFg@mail.gmail.com>
+ <f3d289d5-16db-7d68-0ae0-b2003190b06d@kaod.org>
+In-Reply-To: <f3d289d5-16db-7d68-0ae0-b2003190b06d@kaod.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 29 Sep 2022 12:48:20 +0100
+Message-ID: <CAFEAcA9RhqzHjUb6OSLxuzyVvUQjsVCVvzN5fEwhi_haOcsgDA@mail.gmail.com>
+Subject: Re: [PATCH 1/2] target/arm: Disable VFPv4-D32 when NEON is not
+ available
+To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
+Cc: Joel Stanley <joel@jms.id.au>, qemu-arm@nongnu.org, qemu-devel@nongnu.org, 
+ Richard Henderson <richard.henderson@linaro.org>,
+ Andrew Jeffery <andrew@aj.id.au>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::633;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ej1-x633.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
@@ -118,92 +120,43 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Reply-To: Gavin Shan <gshan@redhat.com>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: QoE/ehk5nNWI
+X-TUID: znjouuk5Wjya
 
-Hi Cornelia,
+On Thu, 29 Sept 2022 at 08:20, C=C3=A9dric Le Goater <clg@kaod.org> wrote:
+>
+> On 9/29/22 01:00, Joel Stanley wrote:
+> > On Wed, 28 Sept 2022 at 16:47, C=C3=A9dric Le Goater <clg@kaod.org> wro=
+te:
+> >> @@ -1684,6 +1684,10 @@ static void arm_cpu_realizefn(DeviceState *dev,=
+ Error **errp)
+> >>           cpu->isar.id_isar6 =3D u;
+> >>
+> >>           if (!arm_feature(env, ARM_FEATURE_M)) {
+> >
+> > Can you explain why the test is put behind the !ARM_FEATURE_M check?
+>
+> Do you mean the setting of MVFR0 ?
+>
+> because it was close to the code clearing the SIMD bits (NEON)
+> of MVFR1 and it seemed more in sync with the specs :
+>
+>     "When FPU option is selected without NEON, the FPU is VFPv4-D16 and
+>      uses 16 double-precision registers. When the FPU is implemented with
+>      NEON, the FPU is VFPv4-D32 and uses 32 double-precision registers.
+>      This register bank is shared with NEON."
+>
+> (That said, M processors don't have NEON, so this part of the code
+> should never be reached )
 
-On 9/29/22 8:27 PM, Cornelia Huck wrote:
-> On Thu, Sep 29 2022, Gavin Shan <gshan@redhat.com> wrote:
->> On 9/28/22 10:22 PM, Eric Auger wrote:
->>> On 9/22/22 01:13, Gavin Shan wrote:
->>>> After the improvement to high memory region address assignment is
->>>> applied, the memory layout is changed. For example, VIRT_HIGH_PCIE_MMIO
->>> s/the memory layout is changed./the memory layout is changed,
->>> introducing possible migration breakage.
->>
->> Ok, much clearer.
->>
->>>> memory region is enabled when the improvement is applied, but it's
->>>> disabled if the improvement isn't applied.
->>>>
->>>>       pa_bits              = 40;
->>>>       vms->highmem_redists = false;
->>>>       vms->highmem_ecam    = false;
->>>>       vms->highmem_mmio    = true;
->>>>
->>>>       # qemu-system-aarch64 -accel kvm -cpu host \
->>>>         -machine virt-7.2 -m 4G,maxmem=511G      \
->>>>         -monitor stdio
->>>>
->>>> In order to keep backwords compatibility, we need to disable the
->>>> optimization on machines, which is virt-7.1 or ealier than it. It
->>>> means the optimization is enabled by default from virt-7.2. Besides,
->>>> 'highmem-compact' property is added so that the optimization can be
->>> I would rather rename the property into compact-highmem even if the vms
->>> field is name highmem_compact to align with other highmem fields
->>
->> Ok, but I would love to know why. Note that we already have
->> 'highmem=on|off'. 'highmem_compact=on|off' seems consistent
->> to me.
-> 
-> FWIW, I initially misread 'highmem_compact' as 'highmem_compat' (and had
-> to re-read because I got confused). At least to me, 'compact_highmem'
-> has less chance of being parsed incorrectly :) (although that is
-> probably a personal thing.)
-> 
+They don't have Neon, but that means that cpu->has_neon is
+false, so this part of the code *will* be reached. The reason
+this sub-part of the "disable Neon" handling is inside
+a not-M check is because M-profile has a different assignment
+for some of the MVFR1 fields (check the comments in the FIELD
+definitions in cpu.h), and zeroing things out based on the
+A-profile meanings would be wrong.
 
-Ok. 'compact-highmem' is also fine to me. I'm really bad at naming :)
-
->>
->>>> explicitly enabled or disabled on all machine types by users.
->>>>
->>>> Signed-off-by: Gavin Shan <gshan@redhat.com>
->>>> ---
->>>>    docs/system/arm/virt.rst |  4 ++++
->>>>    hw/arm/virt.c            | 33 +++++++++++++++++++++++++++++++++
->>>>    include/hw/arm/virt.h    |  2 ++
->>>>    3 files changed, 39 insertions(+)
->>>>
->>>> diff --git a/docs/system/arm/virt.rst b/docs/system/arm/virt.rst
->>>> index 20442ea2c1..f05ec2253b 100644
->>>> --- a/docs/system/arm/virt.rst
->>>> +++ b/docs/system/arm/virt.rst
->>>> @@ -94,6 +94,10 @@ highmem
->>>>      address space above 32 bits. The default is ``on`` for machine types
->>>>      later than ``virt-2.12``.
->>>>    
->>>> +highmem-compact
->>>> +  Set ``on``/``off`` to enable/disable compact space for high memory regions.
->>>> +  The default is ``on`` for machine types later than ``virt-7.2``
->>> I think you should document what is compact layout versus legacy one,
->>> both in the commit msg and maybe as a comment in a code along with the
->>> comment in hw/arm/virt.c starting with 'Highmem IO Regions: '
->>
->> Ok, I will add this into the commit log in v4. I don't think it's necessary
->> to add duplicate comment in the code. People can check the commit log for
->> details if needed.
-> 
-> Rather explain it in this file here, maybe? I'd prefer to be able to
-> find out what 'compact' means without digging through the commit log.
-> 
-
-Ok, lets do as Eric suggested. There are existing comments about
-@extended_memmap[] in hw/arm/virt.c. We need to explain the legacy/modern
-laoyout and 'compact-highmem' property there.
-
-Thanks,
-Gavin
-
+thanks
+-- PMM

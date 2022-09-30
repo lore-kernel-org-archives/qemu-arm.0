@@ -1,112 +1,112 @@
-Received: by 2002:a8a:1193:0:0:0:0:0 with SMTP id m19csp42793ocs;
-        Fri, 30 Sep 2022 15:10:42 -0700 (PDT)
-X-Google-Smtp-Source: AMsMyM6y1Zl5jnKbmWgX3IzIm9KjuqNCFYKaoB+vYy07wxvzDvax3LePgW0jiUGCDm7yz58C0h7H
-X-Received: by 2002:a05:620a:146d:b0:6cd:f206:ed1e with SMTP id j13-20020a05620a146d00b006cdf206ed1emr7615007qkl.424.1664575841904;
-        Fri, 30 Sep 2022 15:10:41 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1664575841; cv=none;
+Received: by 2002:a8a:1193:0:0:0:0:0 with SMTP id m19csp44636ocs;
+        Fri, 30 Sep 2022 15:15:12 -0700 (PDT)
+X-Google-Smtp-Source: AMsMyM6lyR1GrBRmKcBO/mNbXYv2xtsITSlvX3RBapAN7RIH5KK8OfREnkOR4ajfXCljeW0su/rt
+X-Received: by 2002:ac8:7d8a:0:b0:35c:b85b:9c8a with SMTP id c10-20020ac87d8a000000b0035cb85b9c8amr8779505qtd.628.1664576112090;
+        Fri, 30 Sep 2022 15:15:12 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1664576112; cv=none;
         d=google.com; s=arc-20160816;
-        b=D/dYw504Qbley08b7jAJ5/FN4t58icxRgfL0/lb9rjiuYUXYV/ZZOiV8GigcLFjn7Y
-         bkSmbpbnhIewuc4u3tVWcLIK+38f6NaBjP4WkfcgMXo9pWyo+iyiSwZZ7c58YXfJQkIz
-         FiHa+yrWmimPFOGq9XVQpKyQGmwB5KEj2sh1q2hoc9WNTsczvV81jTkzJi/DQy0OOe6Q
-         2wNdR6FgjRjjid6joGftvT3LHqD7vqiGWf6uR559qJw3Ehmgvabokh6c/WteB5n3QBL1
-         hLlOokGFn9CsIJrk63EzT62+wdkZzvaVCAmv8rAOpzFKM897DkhtBq0XfwRTwheRETy2
-         57Hw==
+        b=xQjaKJA+yvpOy/cvpxta2mg0lImMWL9O1lWWHk88llEOwom7SK+8WP5x5i5Dk0BugZ
+         3zQzy3gd66ScBVJM+MSxagLZLPGMH0MFOSYM1dyqjsN6BF62wfCTzJ7XFCWrJ+atposG
+         DFdt41LqELHZcKrUJioYG7NMn1jNtn9ENzTCWqfTKUaE0mhHAWUf/zV+iGjJVxIdpo8k
+         vL3VF7mCkWy3CbpUySn5Cm00qgRJc6mm+V9BQ3xFzbQcpLJohNq3sRDV0bgYSkQHTSOA
+         OaSYAwF8pQ5YdEaZkRfAEn5j+AHs9dJIh8fqTILPvA16U7H1jYeVAjbHj7EH3d+CdU3Q
+         1pRw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=/CcgGI12plS/lfJEOR9586DslscxVOBysCaDTBeg4l8=;
-        b=LatWJo7pOG1hdtfcJ1QrZTEBletRR4N00bWxntke7DfKF/XdNVKaj1rxwtC6JDztbw
-         QBsG63MghPu3IlLSQRqSxlmCg6QPpdi7d0W4GZ1QpWgswuMo7qibYXkbLk5cLwQWoEDw
-         r6Ygyh/sWBwRMu85DXjAJgFhhaz+Wdg5tGhNtcPrQlUQ/d3GEgacI4rVPtzftgYmUDY1
-         Kt6YQbdzewuiQo4jlXABLrxZt3SDnhwS4zruWCjf6pcW6ANPRQ/9kzppgnDNN4VKouc3
-         AanPa0R8QYzNOmCMIQcyO6Wr9kaMScn8hWC9yWdrbGuXvdbJEcWJqfA2WMjGMK2zMMxN
-         sY1Q==
+        bh=hvGMsQzzrx+sQNIbudB82iz6OLqksguoV+s5DVfw4Xw=;
+        b=Iooo/ojpJ4uFbUnW7mpklVDxCAjtJ3jB9a+ux+LrfijzNd6qOuVlwemn9kei0RB5TA
+         hHO48uWU4SiL+xQ0xxNAErvR9E/L6QBR2uq6M/STjX+HrXtTx3l7xZrCGCKp67yUDzWd
+         EsxRgT/+P0RzRab92QBRsbHd29zcv8ikpci2+1Unb3iBYEJ6XwdD+vBkIQMQaXgtN8go
+         Hq6Cu8bBPNE/aSQ/TI+5ovD3NJruCW6o2j2w2AUoAJ8q/sLpWq/fZJqGJvqi1YWIqvdI
+         5MrNnQus5BbLuMGqE6cXew4ZP0FFSN6caRV9iCAS73AS5kpSck3mM7PfZAtyD6eQCs9A
+         rrsw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=aVmqx8Uc;
+       dkim=pass header.i=@linaro.org header.s=google header.b=eiaoGbG4;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id k4-20020ac84784000000b0031e9fbba5bfsi1474412qtq.668.2022.09.30.15.10.41
+        by mx.google.com with ESMTPS id oj2-20020a056214440200b004ad2a2e1106si1471477qvb.239.2022.09.30.15.15.12
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 30 Sep 2022 15:10:41 -0700 (PDT)
+        Fri, 30 Sep 2022 15:15:12 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=aVmqx8Uc;
+       dkim=pass header.i=@linaro.org header.s=google header.b=eiaoGbG4;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:55266 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:47024 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1oeODR-0004Ot-Cl
-	for alex.bennee@linaro.org; Fri, 30 Sep 2022 18:10:41 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:35190)
+	id 1oeOHn-0001v6-It
+	for alex.bennee@linaro.org; Fri, 30 Sep 2022 18:15:11 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41634)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1oeO6a-00024B-Q8
- for qemu-arm@nongnu.org; Fri, 30 Sep 2022 18:03:36 -0400
-Received: from mail-qk1-x729.google.com ([2607:f8b0:4864:20::729]:34348)
+ id 1oeO6V-0001oa-Sd
+ for qemu-arm@nongnu.org; Fri, 30 Sep 2022 18:03:31 -0400
+Received: from mail-qv1-xf2b.google.com ([2607:f8b0:4864:20::f2b]:39503)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1oeO6X-0002am-U6
- for qemu-arm@nongnu.org; Fri, 30 Sep 2022 18:03:36 -0400
-Received: by mail-qk1-x729.google.com with SMTP id g2so3670238qkk.1
- for <qemu-arm@nongnu.org>; Fri, 30 Sep 2022 15:03:33 -0700 (PDT)
+ id 1oeO6U-0002aA-1H
+ for qemu-arm@nongnu.org; Fri, 30 Sep 2022 18:03:31 -0400
+Received: by mail-qv1-xf2b.google.com with SMTP id z18so3425805qvn.6
+ for <qemu-arm@nongnu.org>; Fri, 30 Sep 2022 15:03:29 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date;
- bh=/CcgGI12plS/lfJEOR9586DslscxVOBysCaDTBeg4l8=;
- b=aVmqx8UcUP0L1WrKPbww8Z+13UZa3SeIlVoWzPe6fktMdLJ1KoO2gx1qRs0Xs2tD3w
- IrW+fFsDDjGO6j8LerAW6MYyQlA1ZUTsLg9FnUONXa2T9HBctXJ5+QkcrvOF/CeFn+Aq
- Dg7vToXF4z4wZd5mcYEuVHx2/iv4pnjs5suV5OxZ8ERX9tTqnWlsy8slsQz93y++klFG
- OWa/bXWIrAn1LxpEpdVK87wp7zeigl3ZbNawKjMIGSnzCBa4O6goXaV4qw9/dblc3LRK
- lK0Sk9LPkrXzIA1NpMqG0mpJlC9JT0RhZufZDZ/56fi4Bt1S3LZCZBKwNIerGNj78FNa
- pycw==
+ bh=hvGMsQzzrx+sQNIbudB82iz6OLqksguoV+s5DVfw4Xw=;
+ b=eiaoGbG450p/2PA7qXJpqyzZs4PMTJa8rAvZ+khC+reyG6yeLvAHLGKxEaXBMXY/tX
+ qliOHqPBH9/IRNB/N2zd8By82qWXe+GoipPCwrtbw5fIi1nUslUkOdyzjIid4MyCfZ3Q
+ LNwlovEr7wCen3Bjvb14wlS0cvQrG3PZbQwr3TFZXB+/7gfcVLnd8ZfE0+m/06J5lirP
+ zRNwvSBvaC1Lf6+qS80V6IwlH2CtKhGPqBmAzDejAQxwj2ZIWYi+QpOgYCOhQbnJJFgW
+ TWMI9fAEHYgfnAdx8VCOLBgFRL5xexpF6gtMnSVP4VkFBmngs9P5BZFhU1gPkggkTkf4
+ wH4A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date;
- bh=/CcgGI12plS/lfJEOR9586DslscxVOBysCaDTBeg4l8=;
- b=p5t52eTfhpS+5FOS9827GtXu0xsJGFvr7Kx/rVXMJeiI96y/qmJ2xPnGbsqEDoMKZY
- dGqYhWMp2407gpBpvqi4HD+KQLhHeSIfLdlI1zDYFa4RyLZgB1LnV7Tgnfh5SHMRKWS9
- u43kgGxCu6EWmE94Kz4RwF4SzhBU9Ins4RJ1FFiLhxxhcjo55h7ikabrxPA3qOHoDdlZ
- zmVGNAv6Ev7xO4qp7DYIBGcL+YJgat5/MpiHk1Rrac/2rh4Tc+sM4Nc8QQjL3AfevrPv
- 8Oku0451l0hsA1jYg9kB8A63oPTdxjcev1F5IOfuivXibxpsv4K4eQisgLbV17rcZIhx
- oD0w==
-X-Gm-Message-State: ACrzQf0FbKp8xaZEjNL/XQ3d+SixAY6qBwYPUiCn4klQ9pzi0F4r7KrT
- 6hKvNkgd18pcRaQbGzo/zevIDg==
-X-Received: by 2002:a05:620a:2809:b0:6bc:5e42:fef9 with SMTP id
- f9-20020a05620a280900b006bc5e42fef9mr7765371qkp.278.1664575412742; 
- Fri, 30 Sep 2022 15:03:32 -0700 (PDT)
+ bh=hvGMsQzzrx+sQNIbudB82iz6OLqksguoV+s5DVfw4Xw=;
+ b=SQKflw87oHC88etOSgIDvcoyMYrg9A1uBoCA/QZmyEswLKGzYOn9vrc2kneykuZLet
+ BfOAVhy+L+TlNUmu2Dh3tQnwm4hx+j028gXiKpebiTptcSWonPtbN6ErlRPtNtQp7WIL
+ eW/YUR6jk8mZp+eyTklAmG8cB+OIkFINPf6FgadB+yaSvtjCtPsXF6OGypIUWLaG/s8X
+ zrUgG3BwgvmOUO/+PmwUIEOUMBlJBOPUsDcuqwoY5HS1SHQW8/gDbKwI5sA3tEpxTFaR
+ Rn+7PVwrimGwcjXkNEE1ATR9FMWR452G22G0zjo5D7aAWr00O3ydPV3bP2vXlF7Pi9JR
+ /y7Q==
+X-Gm-Message-State: ACrzQf3g0HUB12K/V+RKWHtyjpHjv3BX02PHC7KcTRilcyeKRP8j8vRq
+ 6lgKO2uz/6GtgV5wzwKVm48tCw==
+X-Received: by 2002:a05:6214:27c1:b0:473:85c9:3eeb with SMTP id
+ ge1-20020a05621427c100b0047385c93eebmr8830144qvb.53.1664575409138; 
+ Fri, 30 Sep 2022 15:03:29 -0700 (PDT)
 Received: from stoup.. ([2605:ef80:80a1:5a60:d0d7:468b:5667:114b])
  by smtp.gmail.com with ESMTPSA id
- o15-20020a05620a22cf00b006bb78d095c5sm3196055qki.79.2022.09.30.15.03.31
+ o15-20020a05620a22cf00b006bb78d095c5sm3196055qki.79.2022.09.30.15.03.27
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 30 Sep 2022 15:03:32 -0700 (PDT)
+ Fri, 30 Sep 2022 15:03:28 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org
-Subject: [PATCH v5 9/9] target/arm: Enable TARGET_TB_PCREL
-Date: Fri, 30 Sep 2022 15:03:12 -0700
-Message-Id: <20220930220312.135327-10-richard.henderson@linaro.org>
+Subject: [PATCH v5 7/9] target/arm: Introduce gen_pc_plus_diff for aarch64
+Date: Fri, 30 Sep 2022 15:03:10 -0700
+Message-Id: <20220930220312.135327-8-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20220930220312.135327-1-richard.henderson@linaro.org>
 References: <20220930220312.135327-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::729;
- envelope-from=richard.henderson@linaro.org; helo=mail-qk1-x729.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::f2b;
+ envelope-from=richard.henderson@linaro.org; helo=mail-qv1-xf2b.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -121,398 +121,122 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: C69WwTh9WrCO
+X-TUID: V+v75dwjpQNb
+
+In preparation for TARGET_TB_PCREL, reduce reliance on absolute values.
 
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/cpu-param.h     |  1 +
- target/arm/translate.h     | 19 ++++++++++++
- target/arm/cpu.c           | 23 +++++++-------
- target/arm/translate-a64.c | 37 ++++++++++++++++++-----
- target/arm/translate.c     | 62 ++++++++++++++++++++++++++++++--------
- 5 files changed, 112 insertions(+), 30 deletions(-)
+ target/arm/translate-a64.c | 41 +++++++++++++++++++++++++++-----------
+ 1 file changed, 29 insertions(+), 12 deletions(-)
 
-diff --git a/target/arm/cpu-param.h b/target/arm/cpu-param.h
-index 68ffb12427..29c5fc4241 100644
---- a/target/arm/cpu-param.h
-+++ b/target/arm/cpu-param.h
-@@ -30,6 +30,7 @@
-  */
- # define TARGET_PAGE_BITS_VARY
- # define TARGET_PAGE_BITS_MIN  10
-+# define TARGET_TB_PCREL 1
- #endif
- 
- #define NB_MMU_MODES 15
-diff --git a/target/arm/translate.h b/target/arm/translate.h
-index 4aa239e23c..41d14cc067 100644
---- a/target/arm/translate.h
-+++ b/target/arm/translate.h
-@@ -12,6 +12,25 @@ typedef struct DisasContext {
- 
-     /* The address of the current instruction being translated. */
-     target_ulong pc_curr;
-+    /*
-+     * For TARGET_TB_PCREL, the full value of cpu_pc is not known
-+     * (although the page offset is known).  For convenience, the
-+     * translation loop uses the full virtual address that triggered
-+     * the translation is used, from base.pc_start through pc_curr.
-+     * For efficiency, we do not update cpu_pc for every instruction.
-+     * Instead, pc_save has the value of pc_curr at the time of the
-+     * last update to cpu_pc, which allows us to compute the addend
-+     * needed to bring cpu_pc current: pc_curr - pc_save.
-+     * If cpu_pc now contains the destiation of an indirect branch,
-+     * pc_save contains -1 to indicate that relative updates are no
-+     * longer possible.
-+     */
-+    target_ulong pc_save;
-+    /*
-+     * Similarly, pc_cond_save contains the value of pc_save at the
-+     * beginning of an AArch32 conditional instruction.
-+     */
-+    target_ulong pc_cond_save;
-     target_ulong page_start;
-     uint32_t insn;
-     /* Nonzero if this instruction has been conditionally skipped.  */
-diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-index 94ca6f163f..0bc5e9b125 100644
---- a/target/arm/cpu.c
-+++ b/target/arm/cpu.c
-@@ -76,17 +76,18 @@ static vaddr arm_cpu_get_pc(CPUState *cs)
- void arm_cpu_synchronize_from_tb(CPUState *cs,
-                                  const TranslationBlock *tb)
- {
--    ARMCPU *cpu = ARM_CPU(cs);
--    CPUARMState *env = &cpu->env;
--
--    /*
--     * It's OK to look at env for the current mode here, because it's
--     * never possible for an AArch64 TB to chain to an AArch32 TB.
--     */
--    if (is_a64(env)) {
--        env->pc = tb_pc(tb);
--    } else {
--        env->regs[15] = tb_pc(tb);
-+    /* The program counter is always up to date with TARGET_TB_PCREL. */
-+    if (!TARGET_TB_PCREL) {
-+        CPUARMState *env = cs->env_ptr;
-+        /*
-+         * It's OK to look at env for the current mode here, because it's
-+         * never possible for an AArch64 TB to chain to an AArch32 TB.
-+         */
-+        if (is_a64(env)) {
-+            env->pc = tb_pc(tb);
-+        } else {
-+            env->regs[15] = tb_pc(tb);
-+        }
-     }
- }
- #endif /* CONFIG_TCG */
 diff --git a/target/arm/translate-a64.c b/target/arm/translate-a64.c
-index 28a417fb2b..57cfc9f1a9 100644
+index 005fd767fb..28a417fb2b 100644
 --- a/target/arm/translate-a64.c
 +++ b/target/arm/translate-a64.c
-@@ -150,12 +150,18 @@ static void reset_btype(DisasContext *s)
- 
- static void gen_pc_plus_diff(DisasContext *s, TCGv_i64 dest, target_long diff)
- {
--    tcg_gen_movi_i64(dest, s->pc_curr + diff);
-+    assert(s->pc_save != -1);
-+    if (TARGET_TB_PCREL) {
-+        tcg_gen_addi_i64(dest, cpu_pc, (s->pc_curr - s->pc_save) + diff);
-+    } else {
-+        tcg_gen_movi_i64(dest, s->pc_curr + diff);
-+    }
+@@ -148,9 +148,14 @@ static void reset_btype(DisasContext *s)
+     }
  }
  
++static void gen_pc_plus_diff(DisasContext *s, TCGv_i64 dest, target_long diff)
++{
++    tcg_gen_movi_i64(dest, s->pc_curr + diff);
++}
++
  void gen_a64_update_pc(DisasContext *s, target_long diff)
  {
-     gen_pc_plus_diff(s, cpu_pc, diff);
-+    s->pc_save = s->pc_curr + diff;
+-    tcg_gen_movi_i64(cpu_pc, s->pc_curr + diff);
++    gen_pc_plus_diff(s, cpu_pc, diff);
  }
  
  /*
-@@ -209,6 +215,7 @@ static void gen_a64_set_pc(DisasContext *s, TCGv_i64 src)
-      * then loading an address into the PC will clear out any tag.
-      */
-     gen_top_byte_ignore(s, cpu_pc, src, s->tbii);
-+    s->pc_save = -1;
- }
+@@ -1368,7 +1373,7 @@ static void disas_uncond_b_imm(DisasContext *s, uint32_t insn)
  
- /*
-@@ -347,16 +354,22 @@ static void gen_exception_internal(int excp)
+     if (insn & (1U << 31)) {
+         /* BL Branch with link */
+-        tcg_gen_movi_i64(cpu_reg(s, 30), s->base.pc_next);
++        gen_pc_plus_diff(s, cpu_reg(s, 30), curr_insn_len(s));
+     }
  
- static void gen_exception_internal_insn(DisasContext *s, int excp)
- {
-+    target_ulong pc_save = s->pc_save;
-+
-     gen_a64_update_pc(s, 0);
-     gen_exception_internal(excp);
-     s->base.is_jmp = DISAS_NORETURN;
-+    s->pc_save = pc_save;
- }
- 
- static void gen_exception_bkpt_insn(DisasContext *s, uint32_t syndrome)
- {
-+    target_ulong pc_save = s->pc_save;
-+
-     gen_a64_update_pc(s, 0);
-     gen_helper_exception_bkpt_insn(cpu_env, tcg_constant_i32(syndrome));
-     s->base.is_jmp = DISAS_NORETURN;
-+    s->pc_save = pc_save;
- }
- 
- static void gen_step_complete_exception(DisasContext *s)
-@@ -385,11 +398,16 @@ static inline bool use_goto_tb(DisasContext *s, uint64_t dest)
- 
- static void gen_goto_tb(DisasContext *s, int n, int64_t diff)
- {
--    uint64_t dest = s->pc_curr + diff;
-+    target_ulong pc_save = s->pc_save;
- 
--    if (use_goto_tb(s, dest)) {
--        tcg_gen_goto_tb(n);
--        gen_a64_update_pc(s, diff);
-+    if (use_goto_tb(s, s->pc_curr + diff)) {
-+        if (TARGET_TB_PCREL) {
-+            gen_a64_update_pc(s, diff);
-+            tcg_gen_goto_tb(n);
-+        } else {
-+            tcg_gen_goto_tb(n);
-+            gen_a64_update_pc(s, diff);
-+        }
-         tcg_gen_exit_tb(s->base.tb, n);
-         s->base.is_jmp = DISAS_NORETURN;
-     } else {
-@@ -401,6 +419,7 @@ static void gen_goto_tb(DisasContext *s, int n, int64_t diff)
-             s->base.is_jmp = DISAS_NORETURN;
+     /* B Branch / BL Branch with link */
+@@ -2309,11 +2314,17 @@ static void disas_uncond_b_reg(DisasContext *s, uint32_t insn)
+         default:
+             goto do_unallocated;
          }
+-        gen_a64_set_pc(s, dst);
+         /* BLR also needs to load return address */
+         if (opc == 1) {
+-            tcg_gen_movi_i64(cpu_reg(s, 30), s->base.pc_next);
++            TCGv_i64 lr = cpu_reg(s, 30);
++            if (dst == lr) {
++                TCGv_i64 tmp = new_tmp_a64(s);
++                tcg_gen_mov_i64(tmp, dst);
++                dst = tmp;
++            }
++            gen_pc_plus_diff(s, lr, curr_insn_len(s));
+         }
++        gen_a64_set_pc(s, dst);
+         break;
+ 
+     case 8: /* BRAA */
+@@ -2336,11 +2347,17 @@ static void disas_uncond_b_reg(DisasContext *s, uint32_t insn)
+         } else {
+             dst = cpu_reg(s, rn);
+         }
+-        gen_a64_set_pc(s, dst);
+         /* BLRAA also needs to load return address */
+         if (opc == 9) {
+-            tcg_gen_movi_i64(cpu_reg(s, 30), s->base.pc_next);
++            TCGv_i64 lr = cpu_reg(s, 30);
++            if (dst == lr) {
++                TCGv_i64 tmp = new_tmp_a64(s);
++                tcg_gen_mov_i64(tmp, dst);
++                dst = tmp;
++            }
++            gen_pc_plus_diff(s, lr, curr_insn_len(s));
+         }
++        gen_a64_set_pc(s, dst);
+         break;
+ 
+     case 4: /* ERET */
+@@ -2908,7 +2925,8 @@ static void disas_ld_lit(DisasContext *s, uint32_t insn)
+ 
+     tcg_rt = cpu_reg(s, rt);
+ 
+-    clean_addr = tcg_constant_i64(s->pc_curr + imm);
++    clean_addr = new_tmp_a64(s);
++    gen_pc_plus_diff(s, clean_addr, imm);
+     if (is_vector) {
+         do_fp_ld(s, rt, clean_addr, size);
+     } else {
+@@ -4252,23 +4270,22 @@ static void disas_ldst(DisasContext *s, uint32_t insn)
+ static void disas_pc_rel_adr(DisasContext *s, uint32_t insn)
+ {
+     unsigned int page, rd;
+-    uint64_t base;
+-    uint64_t offset;
++    int64_t offset;
+ 
+     page = extract32(insn, 31, 1);
+     /* SignExtend(immhi:immlo) -> offset */
+     offset = sextract64(insn, 5, 19);
+     offset = offset << 2 | extract32(insn, 29, 2);
+     rd = extract32(insn, 0, 5);
+-    base = s->pc_curr;
+ 
+     if (page) {
+         /* ADRP (page based) */
+-        base &= ~0xfff;
+         offset <<= 12;
++        /* The page offset is ok for TARGET_TB_PCREL. */
++        offset -= s->pc_curr & 0xfff;
      }
-+    s->pc_save = pc_save;
- }
  
- static void init_tmp_a64_array(DisasContext *s)
-@@ -14707,7 +14726,7 @@ static void aarch64_tr_init_disas_context(DisasContextBase *dcbase,
- 
-     dc->isar = &arm_cpu->isar;
-     dc->condjmp = 0;
--
-+    dc->pc_save = dc->base.pc_first;
-     dc->aarch64 = true;
-     dc->thumb = false;
-     dc->sctlr_b = 0;
-@@ -14789,8 +14808,12 @@ static void aarch64_tr_tb_start(DisasContextBase *db, CPUState *cpu)
- static void aarch64_tr_insn_start(DisasContextBase *dcbase, CPUState *cpu)
- {
-     DisasContext *dc = container_of(dcbase, DisasContext, base);
-+    target_ulong pc_arg = dc->base.pc_next;
- 
--    tcg_gen_insn_start(dc->base.pc_next, 0, 0);
-+    if (TARGET_TB_PCREL) {
-+        pc_arg &= ~TARGET_PAGE_MASK;
-+    }
-+    tcg_gen_insn_start(pc_arg, 0, 0);
-     dc->insn_start = tcg_last_op();
- }
- 
-diff --git a/target/arm/translate.c b/target/arm/translate.c
-index 050da9e740..b4b82dc4a5 100644
---- a/target/arm/translate.c
-+++ b/target/arm/translate.c
-@@ -164,6 +164,7 @@ void arm_gen_condlabel(DisasContext *s)
-     if (!s->condjmp) {
-         s->condlabel = gen_new_label();
-         s->condjmp = 1;
-+        s->pc_cond_save = s->pc_save;
-     }
- }
- 
-@@ -278,7 +279,12 @@ static target_long jmp_diff(DisasContext *s, target_long diff)
- 
- static void gen_pc_plus_diff(DisasContext *s, TCGv_i32 var, target_long diff)
- {
--    tcg_gen_movi_i32(var, s->pc_curr + diff);
-+    assert(s->pc_save != -1);
-+    if (TARGET_TB_PCREL) {
-+        tcg_gen_addi_i32(var, cpu_R[15], (s->pc_curr - s->pc_save) + diff);
-+    } else {
-+        tcg_gen_movi_i32(var, s->pc_curr + diff);
-+    }
- }
- 
- /* Set a variable to the value of a CPU register.  */
-@@ -321,6 +327,7 @@ void store_reg(DisasContext *s, int reg, TCGv_i32 var)
-          */
-         tcg_gen_andi_i32(var, var, s->thumb ? ~1 : ~3);
-         s->base.is_jmp = DISAS_JUMP;
-+        s->pc_save = -1;
-     } else if (reg == 13 && arm_dc_feature(s, ARM_FEATURE_M)) {
-         /* For M-profile SP bits [1:0] are always zero */
-         tcg_gen_andi_i32(var, var, ~3);
-@@ -786,7 +793,8 @@ void gen_set_condexec(DisasContext *s)
- 
- void gen_update_pc(DisasContext *s, target_long diff)
- {
--    tcg_gen_movi_i32(cpu_R[15], s->pc_curr + diff);
-+    gen_pc_plus_diff(s, cpu_R[15], diff);
-+    s->pc_save = s->pc_curr + diff;
- }
- 
- /* Set PC and Thumb state from var.  var is marked as dead.  */
-@@ -796,6 +804,7 @@ static inline void gen_bx(DisasContext *s, TCGv_i32 var)
-     tcg_gen_andi_i32(cpu_R[15], var, ~1);
-     tcg_gen_andi_i32(var, var, 1);
-     store_cpu_field(var, thumb);
-+    s->pc_save = -1;
+-    tcg_gen_movi_i64(cpu_reg(s, rd), base + offset);
++    gen_pc_plus_diff(s, cpu_reg(s, rd), offset);
  }
  
  /*
-@@ -1118,6 +1127,8 @@ static void gen_exception(int excp, uint32_t syndrome)
- static void gen_exception_insn_el_v(DisasContext *s, target_long pc_diff,
-                                     int excp, uint32_t syn, TCGv_i32 tcg_el)
- {
-+    target_ulong pc_save = s->pc_save;
-+
-     if (s->aarch64) {
-         gen_a64_update_pc(s, pc_diff);
-     } else {
-@@ -1126,6 +1137,7 @@ static void gen_exception_insn_el_v(DisasContext *s, target_long pc_diff,
-     }
-     gen_exception_el_v(excp, syn, tcg_el);
-     s->base.is_jmp = DISAS_NORETURN;
-+    s->pc_save = pc_save;
- }
- 
- void gen_exception_insn_el(DisasContext *s, target_long pc_diff, int excp,
-@@ -1138,6 +1150,8 @@ void gen_exception_insn_el(DisasContext *s, target_long pc_diff, int excp,
- void gen_exception_insn(DisasContext *s, target_long pc_diff,
-                         int excp, uint32_t syn)
- {
-+    target_ulong pc_save = s->pc_save;
-+
-     if (s->aarch64) {
-         gen_a64_update_pc(s, pc_diff);
-     } else {
-@@ -1146,6 +1160,7 @@ void gen_exception_insn(DisasContext *s, target_long pc_diff,
-     }
-     gen_exception(excp, syn);
-     s->base.is_jmp = DISAS_NORETURN;
-+    s->pc_save = pc_save;
- }
- 
- static void gen_exception_bkpt_insn(DisasContext *s, uint32_t syn)
-@@ -2610,11 +2625,14 @@ static void gen_goto_ptr(void)
-  */
- static void gen_goto_tb(DisasContext *s, int n, target_long diff)
- {
--    target_ulong dest = s->pc_curr + diff;
--
--    if (translator_use_goto_tb(&s->base, dest)) {
--        tcg_gen_goto_tb(n);
--        gen_update_pc(s, diff);
-+    if (translator_use_goto_tb(&s->base, s->pc_curr + diff)) {
-+        if (TARGET_TB_PCREL) {
-+            gen_update_pc(s, diff);
-+            tcg_gen_goto_tb(n);
-+        } else {
-+            tcg_gen_goto_tb(n);
-+            gen_update_pc(s, diff);
-+        }
-         tcg_gen_exit_tb(s->base.tb, n);
-     } else {
-         gen_update_pc(s, diff);
-@@ -2626,10 +2644,13 @@ static void gen_goto_tb(DisasContext *s, int n, target_long diff)
- /* Jump, specifying which TB number to use if we gen_goto_tb() */
- static void gen_jmp_tb(DisasContext *s, target_long diff, int tbno)
- {
-+    target_ulong pc_save = s->pc_save;
-+
-     if (unlikely(s->ss_active)) {
-         /* An indirect jump so that we still trigger the debug exception.  */
-         gen_update_pc(s, diff);
-         s->base.is_jmp = DISAS_JUMP;
-+        s->pc_save = pc_save;
-         return;
-     }
-     switch (s->base.is_jmp) {
-@@ -2665,6 +2686,7 @@ static void gen_jmp_tb(DisasContext *s, target_long diff, int tbno)
-          */
-         g_assert_not_reached();
-     }
-+    s->pc_save = pc_save;
- }
- 
- static inline void gen_jmp(DisasContext *s, target_long diff)
-@@ -9326,7 +9348,7 @@ static void arm_tr_init_disas_context(DisasContextBase *dcbase, CPUState *cs)
- 
-     dc->isar = &cpu->isar;
-     dc->condjmp = 0;
--
-+    dc->pc_save = dc->base.pc_first;
-     dc->aarch64 = false;
-     dc->thumb = EX_TBFLAG_AM32(tb_flags, THUMB);
-     dc->be_data = EX_TBFLAG_ANY(tb_flags, BE_DATA) ? MO_BE : MO_LE;
-@@ -9481,13 +9503,17 @@ static void arm_tr_insn_start(DisasContextBase *dcbase, CPUState *cpu)
-      * fields here.
-      */
-     uint32_t condexec_bits;
-+    target_ulong pc_arg = dc->base.pc_next;
- 
-+    if (TARGET_TB_PCREL) {
-+        pc_arg &= ~TARGET_PAGE_MASK;
-+    }
-     if (dc->eci) {
-         condexec_bits = dc->eci << 4;
-     } else {
-         condexec_bits = (dc->condexec_cond << 4) | (dc->condexec_mask >> 1);
-     }
--    tcg_gen_insn_start(dc->base.pc_next, condexec_bits, 0);
-+    tcg_gen_insn_start(pc_arg, condexec_bits, 0);
-     dc->insn_start = tcg_last_op();
- }
- 
-@@ -9530,7 +9556,10 @@ static bool arm_check_ss_active(DisasContext *dc)
- 
- static void arm_post_translate_insn(DisasContext *dc)
- {
--    if (dc->condjmp && !dc->base.is_jmp) {
-+    if (dc->condjmp && dc->base.is_jmp == DISAS_NEXT) {
-+        if (dc->pc_save != dc->pc_cond_save) {
-+            gen_update_pc(dc, dc->pc_cond_save - dc->pc_save);
-+        }
-         gen_set_label(dc->condlabel);
-         dc->condjmp = 0;
-     }
-@@ -9860,6 +9889,7 @@ static void arm_tr_tb_stop(DisasContextBase *dcbase, CPUState *cpu)
- 
-     if (dc->condjmp) {
-         /* "Condition failed" instruction codepath for the branch/trap insn */
-+        dc->pc_save = dc->pc_cond_save;
-         gen_set_label(dc->condlabel);
-         gen_set_condexec(dc);
-         if (unlikely(dc->ss_active)) {
-@@ -9922,11 +9952,19 @@ void restore_state_to_opc(CPUARMState *env, TranslationBlock *tb,
-                           target_ulong *data)
- {
-     if (is_a64(env)) {
--        env->pc = data[0];
-+        if (TARGET_TB_PCREL) {
-+            env->pc = (env->pc & TARGET_PAGE_MASK) | data[0];
-+        } else {
-+            env->pc = data[0];
-+        }
-         env->condexec_bits = 0;
-         env->exception.syndrome = data[2] << ARM_INSN_START_WORD2_SHIFT;
-     } else {
--        env->regs[15] = data[0];
-+        if (TARGET_TB_PCREL) {
-+            env->regs[15] = (env->regs[15] & TARGET_PAGE_MASK) | data[0];
-+        } else {
-+            env->regs[15] = data[0];
-+        }
-         env->condexec_bits = data[1];
-         env->exception.syndrome = data[2] << ARM_INSN_START_WORD2_SHIFT;
-     }
 -- 
 2.34.1
 

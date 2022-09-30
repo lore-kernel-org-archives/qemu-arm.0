@@ -1,77 +1,110 @@
-Received: by 2002:a8a:1193:0:0:0:0:0 with SMTP id m19csp1687533ocs;
-        Fri, 30 Sep 2022 05:28:48 -0700 (PDT)
-X-Google-Smtp-Source: AMsMyM79HvfETj/RokLMYiw0KW7AxQmGhEgQgfmZu3zcyeqE0fEPcFJo3/nnak7QOd+MddA6zPTp
-X-Received: by 2002:ac8:5e52:0:b0:35d:1a18:3cdf with SMTP id i18-20020ac85e52000000b0035d1a183cdfmr6486145qtx.240.1664540928263;
-        Fri, 30 Sep 2022 05:28:48 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1664540928; cv=none;
+Received: by 2002:a8a:1193:0:0:0:0:0 with SMTP id m19csp1689522ocs;
+        Fri, 30 Sep 2022 05:32:14 -0700 (PDT)
+X-Google-Smtp-Source: AMsMyM5Y8tmIbEFjVKOEStD6bGt+f1l5z+LwMD8bHrSis+Y1SYlUoF6ZqevUaxImLLvpISWn8/YW
+X-Received: by 2002:a05:6214:d8a:b0:4af:b727:94df with SMTP id e10-20020a0562140d8a00b004afb72794dfmr3100704qve.122.1664541134352;
+        Fri, 30 Sep 2022 05:32:14 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1664541134; cv=none;
         d=google.com; s=arc-20160816;
-        b=qatX3uVfa8Ldi5h5mDq4WB3Z5dnTp/o/K0Y6R/7dNxxe+aEYB27ubr3QO4VfD8O5Us
-         N0NkCHyOjSkv31tbRSa7nkVRh8SGrc4lHdqh1nAKDyiLpU3PG3CiUZD3YdpQnoP9KIgL
-         NIcviqG133MYLIoLCQhJ2wX7SabqMZeebb4NEv4+niFyP2M8mzw8lkukzt4hcxzCwwT/
-         s2XVJFnnMzxO5bzVXKpOQrgGmPNm/vgRmD+jTFquo17tQOCe6lXyonczrnUQ1Fz38BjG
-         FUicv51SDUUviqlRBWcWX/kC6eq1SJLHMZa9VsvNNk1MMpuE7yb6NZcSJ9JovjKg8FLt
-         u/wA==
+        b=VVPvOE+qRgeO0srtlmycN6n1pL0V5jb+I9kygzTpFQKEPEbQBj6C6rP5NYDnK2WHIc
+         jPYS+fp3OHDeTtWCybTQCx/f/smTT7Bn0ceT/cm/gf8/SPcs/eXNuJZPsXZVKRbjkSa4
+         V5mQmxXq/2eUbEZJpbpAHPSN4QZKDPhb094xWt0Mdmzfe4px7UuG+TiyFoZS6D0SRRu1
+         F8PLK3csfZ51oq0YUlmKcFK4HSD5GnbsehMXaMGYBDDykKnRRoLNtTqledGpZC3EnZ99
+         Bdjn2E+QUGhbThIVtv6jDDnsmviWJbg9HI5PMVJjtvTyh6eRaR66zxPC6vRjmqWbtBMG
+         Wruw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date;
-        bh=c43ua0H+6oqFwbzheATKBEv/dEJ/Pntb6gH7orkFW9s=;
-        b=dEqiNCOSZOrtfgcF00iIaMfVCYRoOqNJnmvYfbciU5+gRt3AJBV+RyDwklC02Ox2Mh
-         K+7BCtZjrDXChRvRTA2a/GvtuLtihNzBYjKDwC+Yz9RWJQXtBJTar+WWpUDNc4UYEPKW
-         L3xxM9P634sDUTwxSVDQQr/Levbtw+kFILgKKKPfPXztgIvTwQm8q+WJYo6+z2MJ8yh1
-         KipcGmzcBfEwRw1jY2FSiklRQ2/RxnOY7c891e6FWj8SWp7B2x7XDn6jQcm8kX/+jyBY
-         fWboZfWKPXtVh9w3OY/WzYwZk+h+hz5c+jYMXUXylUt08rdBy6ok9BvH+EY8p6Pb//+c
-         xJjA==
+         :list-unsubscribe:list-id:precedence:mime-version:user-agent
+         :references:in-reply-to:subject:cc:to:from:message-id:date
+         :dkim-signature;
+        bh=qGVdo1g/GxUjWqjx09CRIGMVs/hXLtUOG98DsfTybxU=;
+        b=D3FdPn9TFxWfnB6MXEjUYlH6y8szqLpFuYXu+uejKLT7lm8HO1boUpIytk13Qu82U1
+         iB7zbd2wUlsrtZMTmIv1/nbCviW/ZRlrnJM/i2nASPRAcjRqyQVbGIPiFFYjw0iUqvro
+         uM4HGzc4QvXjjzR4PDn9VryPTTeqx/xMWfbjqdXnZYM2T6oZmSMgzv3z8pe+sYAqdfzj
+         4LNOJ75CrwOBJwF57iR6tUeNREpj3UAGcehLAHkSuo51K2K/eEBm00FocU7KNvtTByio
+         4fDy0AVqatvzdMyVr0uNDs+SETfR1pfcZYe6t56xdn2coII1Hcg4osfUG/nNqFDXQkPt
+         RUSQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=jK+XtVTG;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=kernel.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d5-20020a05621421c500b0049909a07f9esi1196858qvh.340.2022.09.30.05.28.48
+        by mx.google.com with ESMTPS id ff13-20020a05622a4d8d00b0035ccd12f394si1040204qtb.70.2022.09.30.05.32.13
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 30 Sep 2022 05:28:48 -0700 (PDT)
+        Fri, 30 Sep 2022 05:32:14 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:37214 helo=lists1p.gnu.org)
+       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=jK+XtVTG;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=kernel.org
+Received: from localhost ([::1]:34750 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1oeF8J-0003NV-Sh
-	for alex.bennee@linaro.org; Fri, 30 Sep 2022 08:28:47 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33708)
+	id 1oeFBd-0005PX-DS
+	for alex.bennee@linaro.org; Fri, 30 Sep 2022 08:32:13 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41424)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <vt@altlinux.org>)
- id 1oeF88-0003NG-Tt; Fri, 30 Sep 2022 08:28:37 -0400
-Received: from vmicros1.altlinux.org ([194.107.17.57]:35232)
- by eggs.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <vt@altlinux.org>)
- id 1oeF86-0002V1-Sb; Fri, 30 Sep 2022 08:28:36 -0400
-Received: from imap.altlinux.org (imap.altlinux.org [194.107.17.38])
- by vmicros1.altlinux.org (Postfix) with ESMTP id EADDD72C90B;
- Fri, 30 Sep 2022 15:28:30 +0300 (MSK)
-Received: from altlinux.org (sole.flsd.net [185.75.180.6])
- by imap.altlinux.org (Postfix) with ESMTPSA id DA2D24A472A;
- Fri, 30 Sep 2022 15:28:30 +0300 (MSK)
-Date: Fri, 30 Sep 2022 15:28:30 +0300
-From: Vitaly Chikunov <vt@altlinux.org>
+ (Exim 4.90_1) (envelope-from <maz@kernel.org>)
+ id 1oeFAw-0005Nw-Mg; Fri, 30 Sep 2022 08:31:31 -0400
+Received: from ams.source.kernel.org ([145.40.68.75]:42790)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <maz@kernel.org>)
+ id 1oeFAu-00035r-Bd; Fri, 30 Sep 2022 08:31:30 -0400
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by ams.source.kernel.org (Postfix) with ESMTPS id A4428B8271C;
+ Fri, 30 Sep 2022 12:31:19 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 58949C433C1;
+ Fri, 30 Sep 2022 12:31:18 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1664541078;
+ bh=N4GyIeMxKmEL4Hw5rJ8L7AwCbUmYIOZB1pZfiNoF+uY=;
+ h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+ b=jK+XtVTGitsNsOpzC8RazBAPbsiE0a4oqewvEssLGBgt0aAcj0+wo9gxTBdXqyZCG
+ svd9m3QXOz3WK+81byNQvkhk1L8HzZa7yYnzQWoHJnwr4T8jdSpQGYlkgXw0g9ctzU
+ fD4hUtzoMa/9T0RY56TXGTTSSq35sCkjuybx9lrNoC+w2qcC4mZasO4pU3GYjQ8du9
+ tb1pE1QMoSrVUZeAAQ7/l8tBZNN4zylyW4Uz3FJSefEY+yBOc7igPSyhZjPvnJERlf
+ 89h1PRsjb2ik3sr3SHcWkU/lNygiMD+NY4XNnieMk1/mqKkkV4E0sUU9AwWwYjkNEW
+ 1aCaME29OPFEg==
+Received: from sofa.misterjones.org ([185.219.108.64]
+ helo=goblin-girl.misterjones.org)
+ by disco-boy.misterjones.org with esmtpsa (TLS1.3) tls
+ TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.95)
+ (envelope-from <maz@kernel.org>) id 1oeFAh-00Dlan-Vc;
+ Fri, 30 Sep 2022 13:31:16 +0100
+Date: Fri, 30 Sep 2022 13:31:15 +0100
+Message-ID: <867d1l6o30.wl-maz@kernel.org>
+From: Marc Zyngier <maz@kernel.org>
 To: Peter Maydell <peter.maydell@linaro.org>
 Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org,
- Marc Zyngier <maz@kernel.org>, Eric Auger <eric.auger@redhat.com>,
+ Vitaly Chikunov <vt@altlinux.org>, Eric Auger <eric.auger@redhat.com>,
  Paolo Bonzini <pbonzini@redhat.com>
 Subject: Re: [PATCH v3] target/arm/kvm: Retry KVM_CREATE_VM call if it fails
  EINTR
-Message-ID: <20220930122830.3k32ki7ntqeukay6@altlinux.org>
-References: <20220930113824.1933293-1-peter.maydell@linaro.org>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=koi8-r
-Content-Disposition: inline
 In-Reply-To: <20220930113824.1933293-1-peter.maydell@linaro.org>
-Received-SPF: pass client-ip=194.107.17.57; envelope-from=vt@altlinux.org;
- helo=vmicros1.altlinux.org
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
+References: <20220930113824.1933293-1-peter.maydell@linaro.org>
+User-Agent: Wanderlust/2.15.9 (Almost Unreal) SEMI-EPG/1.14.7 (Harue)
+ FLIM-LB/1.14.9 (=?UTF-8?B?R29qxY0=?=) APEL-LB/10.8 EasyPG/1.0.0 Emacs/27.1
+ (aarch64-unknown-linux-gnu) MULE/6.0 (HANACHIRUSATO)
+MIME-Version: 1.0 (generated by SEMI-EPG 1.14.7 - "Harue")
+Content-Type: text/plain; charset=US-ASCII
+X-SA-Exim-Connect-IP: 185.219.108.64
+X-SA-Exim-Rcpt-To: peter.maydell@linaro.org, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org, vt@altlinux.org, eric.auger@redhat.com,
+ pbonzini@redhat.com
+X-SA-Exim-Mail-From: maz@kernel.org
+X-SA-Exim-Scanned: No (on disco-boy.misterjones.org);
+ SAEximRunCond expanded to false
+Received-SPF: pass client-ip=145.40.68.75; envelope-from=maz@kernel.org;
+ helo=ams.source.kernel.org
+X-Spam_score_int: -71
+X-Spam_score: -7.2
+X-Spam_bar: -------
+X-Spam_report: (-7.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.082,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_HI=-5, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -87,9 +120,11 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ruYPg3YECOxK
+X-TUID: Cqv2QIkRfZfm
 
-On Fri, Sep 30, 2022 at 12:38:24PM +0100, Peter Maydell wrote:
+On Fri, 30 Sep 2022 12:38:24 +0100,
+Peter Maydell <peter.maydell@linaro.org> wrote:
+> 
 > Occasionally the KVM_CREATE_VM ioctl can return EINTR, even though
 > there is no pending signal to be taken. In commit 94ccff13382055
 > we added a retry-on-EINTR loop to the KVM_CREATE_VM call in the
@@ -115,26 +150,10 @@ On Fri, Sep 30, 2022 at 12:38:24PM +0100, Peter Maydell wrote:
 > ---
 >  target/arm/kvm.c | 4 +++-
 >  1 file changed, 3 insertions(+), 1 deletion(-)
-> 
-> diff --git a/target/arm/kvm.c b/target/arm/kvm.c
-> index e5c1bd50d29..1e4de9b42e3 100644
-> --- a/target/arm/kvm.c
-> +++ b/target/arm/kvm.c
-> @@ -79,7 +79,9 @@ bool kvm_arm_create_scratch_host_vcpu(const uint32_t *cpus_to_try,
->      if (max_vm_pa_size < 0) {
->          max_vm_pa_size = 0;
->      }
-> -    vmfd = ioctl(kvmfd, KVM_CREATE_VM, max_vm_pa_size);
-> +    do {
-> +        vmfd = ioctl(kvmfd, KVM_CREATE_VM, max_vm_pa_size);
-> +    } while (vmfd == -1 && errno == EINTR);
 
-Reviewed-by: Vitaly Chikunov <vt@altlinux.org>
+Acked-by: Marc Zyngier <maz@kernel.org>
 
-Thanks,
+	M.
 
->      if (vmfd < 0) {
->          goto err;
->      }
-> -- 
-> 2.25.1
+-- 
+Without deviation from the norm, progress is not possible.

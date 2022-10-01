@@ -1,105 +1,105 @@
-Received: by 2002:a8a:1193:0:0:0:0:0 with SMTP id m19csp467018ocs;
-        Sat, 1 Oct 2022 09:44:52 -0700 (PDT)
-X-Google-Smtp-Source: AMsMyM48jOD0NKk5baMRd4WtILtZNBxXFJaNwAJ8Zu83xVZboLMFwtG3aEbKESfwOPojpJ3gBxC+
-X-Received: by 2002:a05:6214:1cce:b0:4ad:72d5:d2e1 with SMTP id g14-20020a0562141cce00b004ad72d5d2e1mr11272685qvd.43.1664642691881;
-        Sat, 01 Oct 2022 09:44:51 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1664642691; cv=none;
+Received: by 2002:a8a:1193:0:0:0:0:0 with SMTP id m19csp467702ocs;
+        Sat, 1 Oct 2022 09:46:42 -0700 (PDT)
+X-Google-Smtp-Source: AMsMyM7+a8vD2hewBwJRKZsIUz9W7skHp+zdsc4F7ShBq6LZdtHPVa1zrzdlyhP+VGu7f5PY7p7C
+X-Received: by 2002:ad4:5d6c:0:b0:4af:b5e0:63f1 with SMTP id fn12-20020ad45d6c000000b004afb5e063f1mr8796834qvb.35.1664642802285;
+        Sat, 01 Oct 2022 09:46:42 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1664642802; cv=none;
         d=google.com; s=arc-20160816;
-        b=QlPjaVcxqLyruOkwN/M6rBTYD1mv5xHB+y/9EXb3VUM53+bQmQ65KHoXREO0wnYSNK
-         91AOjPzpNzyKrwFTOk+nBP9h75k0cWjnqUkqgl3XA9Tbe1Tud6jxpA4Ai0NRty4QCUGz
-         03pnt+8OyU7+WBL8zFB8NgAsPZA/BrGq8nwoS0KW2YwqICaJx5DgBSmplMgXW+gmwAN0
-         wNV84+07FAsO1MBBPllVYrX7aHHDgv1RwwX5bVdcAQ+CFjrpbyZi4x4u9AsL38QdSc5a
-         GhsDxo5Df2Qb1Giwps/qCl8c/FMHNz+sFqWIZiBirYwhNBGpIjGSbNNIyLr1IDG47W65
-         JHHQ==
+        b=XmkaYdhQ1M0c4bRD1GqqCWkE1xzsfTSX7DJeYDkcCH+KEQvkV7ab7L1LQXLzQEf39U
+         YEboVU+Hc+2VxY8C6R8DAkyZ8c3ykCTCSVE69kOAbJVbvnNSraCOBMnizlMN7W7CX6vA
+         qhGR8e9l4i+cQ5G1NqXwfGKzKps3PLK3O87/yz8jexyAdH0/pAlQPR7bSqt5J92ngZcQ
+         cNWduMxBfRFk3zTuG1BOpDgs2DGsF+H1b+GEjlBDHkZ9klD4wiHGGs8LJDdu0e+mmT5t
+         qUzCySu8mXhThHAQzbJYHOlFuE+b9+Z9OKwXOwpR1OK/k5BgAec2bzBGvjZWVZEn2Nn/
+         /Oig==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=UT7PUowAnf9kIJYhZKLeWwVw/owenw9n/bgkOzzGDTA=;
-        b=fZ9xACVosLTCDaSNbtfwxT3ZP6NRbf1OdwJqmv6ndv3VqOvy8FIIBAfK+/puzPJAW/
-         jSgFJfV+1PuK/9tgphHoPJ3IIVeglNWyjotWoR4193zlCTlB05f66C6B4Jv6Mw2n3VUQ
-         nxFjHjCCei0IHyhz5rTGv/zSt6jtdnVbb0C+ZDsynz2SGM+ZhIDK24QIv5Q0B/t1Ts0t
-         l/4xG21y7ZEKK6kZcfICfwFcorlSWJiExlCbtxkx2rXlpVERNNz5iEMXt+peuB5w/gBs
-         fsOve2f+xw/4VA6i0RxgmYww4oErtwKHZc4pR0rj8rLW0t38SqZrLOtWRXP3s4Q1xD62
-         gc4Q==
+        bh=uo3G0jvzPeglF/SX1GKlp5DbZMlHCpPo+axikVVXW7s=;
+        b=sk2gkUVpejK6Z1cO7ZQNSnLAhSGzuYQgr4jcr8FSkdjGhvPbLgyShCfVbfuYWQ6kkM
+         D+VS2tumMc47uIRHzi3YI2jH/O4xj9qtIbUomCGv5ZMMizx7/q07Ox+H/omU83u3nyqf
+         hjdt6hfyAqIIx/lVYWf9qacKJ8nbwfCtM+zzLwtKxefK4s1x1ijrcFFQHQOB1TFc7zlb
+         ABGR4XIWayXnNq5Ns2CWmatbymS1pBjNLIPr39PWMd3sKhEUtOmqcki9n+mxnTGKWeHh
+         3mBVMRetPmmhEc9rmZv6SKPZ2cCm4gRFPNRby1Zv/kvKRi9Eymfw+Bav6sQrNmADoYph
+         2dnQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Nklxs0WO;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=qoFTjBbC;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id q9-20020ac87349000000b0035cfca47d1esi2539092qtp.207.2022.10.01.09.44.51
+        by mx.google.com with ESMTPS id z125-20020a379783000000b006ce73206109si2495811qkd.712.2022.10.01.09.46.42
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 01 Oct 2022 09:44:51 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Sat, 01 Oct 2022 09:46:42 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Nklxs0WO;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=qoFTjBbC;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:53058 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:36676 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1oefbf-0005MJ-Eb
-	for alex.bennee@linaro.org; Sat, 01 Oct 2022 12:44:51 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:56074)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1oefdR-0006Nh-RV
+	for alex.bennee@linaro.org; Sat, 01 Oct 2022 12:46:41 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:49116)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1oefHn-00078V-Cb
- for qemu-arm@nongnu.org; Sat, 01 Oct 2022 12:24:19 -0400
-Received: from mail-qv1-xf34.google.com ([2607:f8b0:4864:20::f34]:39770)
+ id 1oefIL-0000Wj-CW
+ for qemu-devel@nongnu.org; Sat, 01 Oct 2022 12:24:53 -0400
+Received: from mail-qk1-x736.google.com ([2607:f8b0:4864:20::736]:35599)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1oefHh-0006DC-0d
- for qemu-arm@nongnu.org; Sat, 01 Oct 2022 12:24:19 -0400
-Received: by mail-qv1-xf34.google.com with SMTP id z18so4439543qvn.6
- for <qemu-arm@nongnu.org>; Sat, 01 Oct 2022 09:24:12 -0700 (PDT)
+ id 1oefIJ-0006SC-TL
+ for qemu-devel@nongnu.org; Sat, 01 Oct 2022 12:24:53 -0400
+Received: by mail-qk1-x736.google.com with SMTP id u28so4542752qku.2
+ for <qemu-devel@nongnu.org>; Sat, 01 Oct 2022 09:24:50 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date;
- bh=UT7PUowAnf9kIJYhZKLeWwVw/owenw9n/bgkOzzGDTA=;
- b=Nklxs0WOGJWlWSPNR5idPTXKHFjAL5m8TPVxF4Eyuk4BXfOGQpUWN75sH56leEc4Hw
- h+AHn+b7Rw3EzINSVjD2pJSWsTHPczLvn842Fyw+dI039Hwm8VUYAkWKFcthSBGAerTG
- 9AZO5lJMC3R5NEGh9dgyq0qtrkL8QVkfGq068geT+QJP/SP0hqJ+i2yrBB8g9hYTIIDZ
- Y8hXmR498INEFB/gA9As+a6y1/FQDA0RvadW9kvDZdcz4dMOBWDOi/Y/X68hYAyjy123
- 83XtKQ2J4JZ1gilWXJ8bbiBNFmrjc1FeC8H26ENe4k6gJL5JmErr8wm+P5Q28PtlSwRK
- 6UNQ==
+ bh=uo3G0jvzPeglF/SX1GKlp5DbZMlHCpPo+axikVVXW7s=;
+ b=qoFTjBbC9GjlmIYa974l+7+tbswJ7QCI5slHd3RCcNI7XtqZzXonvsiDtIFiR5Pl+b
+ ktaAm5xnum9PaFWw5mu9U0zV7bKzTuOdS2LfnQxtbGh/Sl7GnWc6JBzYlvO9uipOCPds
+ Hu3O515zeWsKfEn2Yijgv+omBzElzolnrg8GwkvjU+HpxWOxV3vl13riuSS1lHK705aB
+ R16cc0eR4XIGToBLXWBvztmM2tisC7skPU23iuFwyWRrSEEj6DDZ2Ic1c+m55SB4sLbw
+ Z3VH1i9ppf33Ym7j27TgSl0Ws2vTGLyapCnzBDa65t67gL85hBSnfeBCLKZIUl6wvors
+ ukxA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date;
- bh=UT7PUowAnf9kIJYhZKLeWwVw/owenw9n/bgkOzzGDTA=;
- b=H9Qzt4HBDZPRb7itkv3U1agKkNsgkV+KfA24rq3zgiVCWht+Z2g/79swIL2PiuUmeq
- qPU/V2T6ylLTQpS4ahspEVK11twcdbueWc/lViFOqAykflwN4v6Q9JijKFhyeSe3YffE
- W3UrOOVU2Ts+x3mkjqmV0iJpyaAKvjikL21WhX8EmqdJGxb7g0QfSGOjuvmB47O1w/R4
- mHgiSOOk0Jucw7LHZZnSGVKnfRYiNl1D6XeInAFw/dOhPjzHlgvkkdeVQ0C16XIA1E5G
- 0nmQCQ12FAMsZ8h/wAi1F9Tpq4SdpE8YPd6h9kZUZaeu5nbUAg8X3mJadAEpFtSPlQTe
- Gyng==
-X-Gm-Message-State: ACrzQf3zYj0GD88y4ZiRtzr3bQi5KIxqLqLQAKhP9Xjy5qUC2Ve8UG0u
- nCtyT0MbDh2gJQYZTbFP1bNv/6JH2F3OlQ==
-X-Received: by 2002:a05:6214:1d21:b0:4ad:1361:befa with SMTP id
- f1-20020a0562141d2100b004ad1361befamr11050811qvd.111.1664641452096; 
- Sat, 01 Oct 2022 09:24:12 -0700 (PDT)
+ bh=uo3G0jvzPeglF/SX1GKlp5DbZMlHCpPo+axikVVXW7s=;
+ b=4/n8gKK8WxgKGWcLbE+XSZnOkpG6Gd74nT24adYahqB5fj0VZyY2QuEyaxaqny22TG
+ 6+ToaSJwylAdY8YUhR38TyLanVHB7an7xkQ/VP4pdA8bOidWWKBDiFraNtmzZeuFZsL7
+ v4PDrxpp163V9XFLr2c53l2gOvY9/fjHQmHX5o32gkbZAI7YjMMiC+FoMFbYIr5iqdFU
+ 6xUtU8Ws2svL712jfuDA3XPyAEfXN9knV1g2s423uS+T7QvZRsRouDTDgaRz2W2Bj080
+ siPCwr/ibKH/tTHcYrpDaFmfZXSeIqMz45oevlEs5fRIyekUiu9Pxzq1ScS/CdBOp3ss
+ fBYA==
+X-Gm-Message-State: ACrzQf3XCjdK0b+hcMw8mo4Kc1P/VjKgdbWpoH/6iF8DMDjtG6K5Jc8E
+ 3jvc0BOHcreneOOW3UlJ5JljvTmXVuNNyA==
+X-Received: by 2002:a05:620a:271b:b0:6cd:fd1f:7472 with SMTP id
+ b27-20020a05620a271b00b006cdfd1f7472mr9654125qkp.142.1664641490011; 
+ Sat, 01 Oct 2022 09:24:50 -0700 (PDT)
 Received: from stoup.. ([2605:ef80:8084:91a4:f7cb:db31:c505:b931])
  by smtp.gmail.com with ESMTPSA id
- t4-20020a37ea04000000b006d1d8fdea8asm4387445qkj.85.2022.10.01.09.24.09
+ t4-20020a37ea04000000b006d1d8fdea8asm4387445qkj.85.2022.10.01.09.24.48
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 01 Oct 2022 09:24:11 -0700 (PDT)
+ Sat, 01 Oct 2022 09:24:49 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org
-Subject: [PATCH v3 20/42] target/arm: Use tlb_set_page_full
-Date: Sat,  1 Oct 2022 09:22:56 -0700
-Message-Id: <20221001162318.153420-21-richard.henderson@linaro.org>
+Subject: [PATCH v3 36/42] target/arm: Add ARMFault_UnsuppAtomicUpdate
+Date: Sat,  1 Oct 2022 09:23:12 -0700
+Message-Id: <20221001162318.153420-37-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20221001162318.153420-1-richard.henderson@linaro.org>
 References: <20221001162318.153420-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::f34;
- envelope-from=richard.henderson@linaro.org; helo=mail-qv1-xf34.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::736;
+ envelope-from=richard.henderson@linaro.org; helo=mail-qk1-x736.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -108,738 +108,52 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: +uPjP933ZQL3
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: AXFSGDztaKxX
 
-Adjust GetPhysAddrResult to fill in CPUTLBEntryFull,
-so that it may be passed directly to tlb_set_page_full.
-
-The change is large, but mostly mechanical.  The major
-non-mechanical change is page_size -> lg_page_size.
-Most of the time this is obvious, and is related to
-TARGET_PAGE_BITS.
+This fault type is to be used with FEAT_HAFDBS when
+the guest enables hw updates, but places the tables
+in memory where atomic updates are unsupported.
 
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/internals.h  |   5 +-
- target/arm/helper.c     |  12 +--
- target/arm/m_helper.c   |  20 ++---
- target/arm/ptw.c        | 181 ++++++++++++++++++++--------------------
- target/arm/tlb_helper.c |   9 +-
- 5 files changed, 112 insertions(+), 115 deletions(-)
+ target/arm/internals.h | 4 ++++
+ 1 file changed, 4 insertions(+)
 
 diff --git a/target/arm/internals.h b/target/arm/internals.h
-index b509d70851..fd17aee459 100644
+index e95b6b1b8f..4a2b1ec31c 100644
 --- a/target/arm/internals.h
 +++ b/target/arm/internals.h
-@@ -1071,10 +1071,7 @@ typedef struct ARMCacheAttrs {
- 
- /* Fields that are valid upon success. */
- typedef struct GetPhysAddrResult {
--    hwaddr phys;
--    target_ulong page_size;
--    int prot;
--    MemTxAttrs attrs;
-+    CPUTLBEntryFull f;
-     ARMCacheAttrs cacheattrs;
- } GetPhysAddrResult;
- 
-diff --git a/target/arm/helper.c b/target/arm/helper.c
-index 4eec22b1f8..6fe85c6642 100644
---- a/target/arm/helper.c
-+++ b/target/arm/helper.c
-@@ -3320,8 +3320,8 @@ static uint64_t do_ats_write(CPUARMState *env, uint64_t value,
-         /* Create a 64-bit PAR */
-         par64 = (1 << 11); /* LPAE bit always set */
-         if (!ret) {
--            par64 |= res.phys & ~0xfffULL;
--            if (!res.attrs.secure) {
-+            par64 |= res.f.phys_addr & ~0xfffULL;
-+            if (!res.f.attrs.secure) {
-                 par64 |= (1 << 9); /* NS */
-             }
-             par64 |= (uint64_t)res.cacheattrs.attrs << 56; /* ATTR */
-@@ -3345,13 +3345,13 @@ static uint64_t do_ats_write(CPUARMState *env, uint64_t value,
-          */
-         if (!ret) {
-             /* We do not set any attribute bits in the PAR */
--            if (res.page_size == (1 << 24)
-+            if (res.f.lg_page_size == 24
-                 && arm_feature(env, ARM_FEATURE_V7)) {
--                par64 = (res.phys & 0xff000000) | (1 << 1);
-+                par64 = (res.f.phys_addr & 0xff000000) | (1 << 1);
-             } else {
--                par64 = res.phys & 0xfffff000;
-+                par64 = res.f.phys_addr & 0xfffff000;
-             }
--            if (!res.attrs.secure) {
-+            if (!res.f.attrs.secure) {
-                 par64 |= (1 << 9); /* NS */
-             }
-         } else {
-diff --git a/target/arm/m_helper.c b/target/arm/m_helper.c
-index 203ba411f6..355cd4d60a 100644
---- a/target/arm/m_helper.c
-+++ b/target/arm/m_helper.c
-@@ -223,8 +223,8 @@ static bool v7m_stack_write(ARMCPU *cpu, uint32_t addr, uint32_t value,
-         }
-         goto pend_fault;
-     }
--    address_space_stl_le(arm_addressspace(cs, res.attrs), res.phys, value,
--                         res.attrs, &txres);
-+    address_space_stl_le(arm_addressspace(cs, res.f.attrs), res.f.phys_addr,
-+                         value, res.f.attrs, &txres);
-     if (txres != MEMTX_OK) {
-         /* BusFault trying to write the data */
-         if (mode == STACK_LAZYFP) {
-@@ -298,8 +298,8 @@ static bool v7m_stack_read(ARMCPU *cpu, uint32_t *dest, uint32_t addr,
-         goto pend_fault;
-     }
- 
--    value = address_space_ldl(arm_addressspace(cs, res.attrs), res.phys,
--                              res.attrs, &txres);
-+    value = address_space_ldl(arm_addressspace(cs, res.f.attrs),
-+                              res.f.phys_addr, res.f.attrs, &txres);
-     if (txres != MEMTX_OK) {
-         /* BusFault trying to read the data */
-         qemu_log_mask(CPU_LOG_INT, "...BusFault with BFSR.UNSTKERR\n");
-@@ -2022,8 +2022,8 @@ static bool v7m_read_half_insn(ARMCPU *cpu, ARMMMUIdx mmu_idx, bool secure,
-         qemu_log_mask(CPU_LOG_INT, "...really MemManage with CFSR.IACCVIOL\n");
-         return false;
-     }
--    *insn = address_space_lduw_le(arm_addressspace(cs, res.attrs), res.phys,
--                                  res.attrs, &txres);
-+    *insn = address_space_lduw_le(arm_addressspace(cs, res.f.attrs),
-+                                  res.f.phys_addr, res.f.attrs, &txres);
-     if (txres != MEMTX_OK) {
-         env->v7m.cfsr[M_REG_NS] |= R_V7M_CFSR_IBUSERR_MASK;
-         armv7m_nvic_set_pending(env->nvic, ARMV7M_EXCP_BUS, false);
-@@ -2069,8 +2069,8 @@ static bool v7m_read_sg_stack_word(ARMCPU *cpu, ARMMMUIdx mmu_idx,
-         }
-         return false;
-     }
--    value = address_space_ldl(arm_addressspace(cs, res.attrs), res.phys,
--                              res.attrs, &txres);
-+    value = address_space_ldl(arm_addressspace(cs, res.f.attrs),
-+                              res.f.phys_addr, res.f.attrs, &txres);
-     if (txres != MEMTX_OK) {
-         /* BusFault trying to read the data */
-         qemu_log_mask(CPU_LOG_INT,
-@@ -2817,8 +2817,8 @@ uint32_t HELPER(v7m_tt)(CPUARMState *env, uint32_t addr, uint32_t op)
-         } else {
-             mrvalid = true;
-         }
--        r = res.prot & PAGE_READ;
--        rw = res.prot & PAGE_WRITE;
-+        r = res.f.prot & PAGE_READ;
-+        rw = res.f.prot & PAGE_WRITE;
-     } else {
-         r = false;
-         rw = false;
-diff --git a/target/arm/ptw.c b/target/arm/ptw.c
-index 8d27a98a42..1bc194ffa1 100644
---- a/target/arm/ptw.c
-+++ b/target/arm/ptw.c
-@@ -256,7 +256,7 @@ static hwaddr S1_ptw_translate(CPUARMState *env, ARMMMUIdx mmu_idx,
-             assert(!is_secure);
-         }
- 
--        addr = s2.phys;
-+        addr = s2.f.phys_addr;
-     }
-     return addr;
- }
-@@ -476,7 +476,7 @@ static bool get_phys_addr_v5(CPUARMState *env, uint32_t address,
-         /* 1Mb section.  */
-         phys_addr = (desc & 0xfff00000) | (address & 0x000fffff);
-         ap = (desc >> 10) & 3;
--        result->page_size = 1024 * 1024;
-+        result->f.lg_page_size = 20; /* 1MB */
-     } else {
-         /* Lookup l2 entry.  */
-         if (type == 1) {
-@@ -497,12 +497,12 @@ static bool get_phys_addr_v5(CPUARMState *env, uint32_t address,
-         case 1: /* 64k page.  */
-             phys_addr = (desc & 0xffff0000) | (address & 0xffff);
-             ap = (desc >> (4 + ((address >> 13) & 6))) & 3;
--            result->page_size = 0x10000;
-+            result->f.lg_page_size = 16;
-             break;
-         case 2: /* 4k page.  */
-             phys_addr = (desc & 0xfffff000) | (address & 0xfff);
-             ap = (desc >> (4 + ((address >> 9) & 6))) & 3;
--            result->page_size = 0x1000;
-+            result->f.lg_page_size = 12;
-             break;
-         case 3: /* 1k page, or ARMv6/XScale "extended small (4k) page" */
-             if (type == 1) {
-@@ -510,7 +510,7 @@ static bool get_phys_addr_v5(CPUARMState *env, uint32_t address,
-                 if (arm_feature(env, ARM_FEATURE_XSCALE)
-                     || arm_feature(env, ARM_FEATURE_V6)) {
-                     phys_addr = (desc & 0xfffff000) | (address & 0xfff);
--                    result->page_size = 0x1000;
-+                    result->f.lg_page_size = 12;
-                 } else {
-                     /*
-                      * UNPREDICTABLE in ARMv5; we choose to take a
-@@ -521,7 +521,7 @@ static bool get_phys_addr_v5(CPUARMState *env, uint32_t address,
-                 }
-             } else {
-                 phys_addr = (desc & 0xfffffc00) | (address & 0x3ff);
--                result->page_size = 0x400;
-+                result->f.lg_page_size = 10;
-             }
-             ap = (desc >> 4) & 3;
-             break;
-@@ -530,14 +530,14 @@ static bool get_phys_addr_v5(CPUARMState *env, uint32_t address,
-             g_assert_not_reached();
-         }
-     }
--    result->prot = ap_to_rw_prot(env, mmu_idx, ap, domain_prot);
--    result->prot |= result->prot ? PAGE_EXEC : 0;
--    if (!(result->prot & (1 << access_type))) {
-+    result->f.prot = ap_to_rw_prot(env, mmu_idx, ap, domain_prot);
-+    result->f.prot |= result->f.prot ? PAGE_EXEC : 0;
-+    if (!(result->f.prot & (1 << access_type))) {
-         /* Access permission fault.  */
-         fi->type = ARMFault_Permission;
-         goto do_fault;
-     }
--    result->phys = phys_addr;
-+    result->f.phys_addr = phys_addr;
-     return false;
- do_fault:
-     fi->domain = domain;
-@@ -607,11 +607,11 @@ static bool get_phys_addr_v6(CPUARMState *env, uint32_t address,
-             phys_addr = (desc & 0xff000000) | (address & 0x00ffffff);
-             phys_addr |= (uint64_t)extract32(desc, 20, 4) << 32;
-             phys_addr |= (uint64_t)extract32(desc, 5, 4) << 36;
--            result->page_size = 0x1000000;
-+            result->f.lg_page_size = 24;  /* 16MB */
-         } else {
-             /* Section.  */
-             phys_addr = (desc & 0xfff00000) | (address & 0x000fffff);
--            result->page_size = 0x100000;
-+            result->f.lg_page_size = 20;  /* 1MB */
-         }
-         ap = ((desc >> 10) & 3) | ((desc >> 13) & 4);
-         xn = desc & (1 << 4);
-@@ -636,12 +636,12 @@ static bool get_phys_addr_v6(CPUARMState *env, uint32_t address,
-         case 1: /* 64k page.  */
-             phys_addr = (desc & 0xffff0000) | (address & 0xffff);
-             xn = desc & (1 << 15);
--            result->page_size = 0x10000;
-+            result->f.lg_page_size = 16;
-             break;
-         case 2: case 3: /* 4k page.  */
-             phys_addr = (desc & 0xfffff000) | (address & 0xfff);
-             xn = desc & 1;
--            result->page_size = 0x1000;
-+            result->f.lg_page_size = 12;
-             break;
-         default:
-             /* Never happens, but compiler isn't smart enough to tell.  */
-@@ -649,7 +649,7 @@ static bool get_phys_addr_v6(CPUARMState *env, uint32_t address,
-         }
-     }
-     if (domain_prot == 3) {
--        result->prot = PAGE_READ | PAGE_WRITE | PAGE_EXEC;
-+        result->f.prot = PAGE_READ | PAGE_WRITE | PAGE_EXEC;
-     } else {
-         if (pxn && !regime_is_user(env, mmu_idx)) {
-             xn = 1;
-@@ -667,14 +667,14 @@ static bool get_phys_addr_v6(CPUARMState *env, uint32_t address,
-                 fi->type = ARMFault_AccessFlag;
-                 goto do_fault;
-             }
--            result->prot = simple_ap_to_rw_prot(env, mmu_idx, ap >> 1);
-+            result->f.prot = simple_ap_to_rw_prot(env, mmu_idx, ap >> 1);
-         } else {
--            result->prot = ap_to_rw_prot(env, mmu_idx, ap, domain_prot);
-+            result->f.prot = ap_to_rw_prot(env, mmu_idx, ap, domain_prot);
-         }
--        if (result->prot && !xn) {
--            result->prot |= PAGE_EXEC;
-+        if (result->f.prot && !xn) {
-+            result->f.prot |= PAGE_EXEC;
-         }
--        if (!(result->prot & (1 << access_type))) {
-+        if (!(result->f.prot & (1 << access_type))) {
-             /* Access permission fault.  */
-             fi->type = ARMFault_Permission;
-             goto do_fault;
-@@ -685,9 +685,9 @@ static bool get_phys_addr_v6(CPUARMState *env, uint32_t address,
-          * the CPU doesn't support TZ or this is a non-secure translation
-          * regime, because the attribute will already be non-secure.
-          */
--        result->attrs.secure = false;
-+        result->f.attrs.secure = false;
-     }
--    result->phys = phys_addr;
-+    result->f.phys_addr = phys_addr;
-     return false;
- do_fault:
-     fi->domain = domain;
-@@ -1298,16 +1298,16 @@ static bool get_phys_addr_lpae(CPUARMState *env, uint64_t address,
-     if (mmu_idx == ARMMMUIdx_Stage2 || mmu_idx == ARMMMUIdx_Stage2_S) {
-         ns = mmu_idx == ARMMMUIdx_Stage2;
-         xn = extract32(attrs, 11, 2);
--        result->prot = get_S2prot(env, ap, xn, s1_is_el0);
-+        result->f.prot = get_S2prot(env, ap, xn, s1_is_el0);
-     } else {
-         ns = extract32(attrs, 3, 1);
-         xn = extract32(attrs, 12, 1);
-         pxn = extract32(attrs, 11, 1);
--        result->prot = get_S1prot(env, mmu_idx, aarch64, ap, ns, xn, pxn);
-+        result->f.prot = get_S1prot(env, mmu_idx, aarch64, ap, ns, xn, pxn);
-     }
- 
-     fault_type = ARMFault_Permission;
--    if (!(result->prot & (1 << access_type))) {
-+    if (!(result->f.prot & (1 << access_type))) {
-         goto do_fault;
-     }
- 
-@@ -1317,11 +1317,11 @@ static bool get_phys_addr_lpae(CPUARMState *env, uint64_t address,
-          * the CPU doesn't support TZ or this is a non-secure translation
-          * regime, because the attribute will already be non-secure.
-          */
--        result->attrs.secure = false;
-+        result->f.attrs.secure = false;
-     }
-     /* When in aarch64 mode, and BTI is enabled, remember GP in the IOTLB.  */
-     if (aarch64 && guarded && cpu_isar_feature(aa64_bti, cpu)) {
--        arm_tlb_bti_gp(&result->attrs) = true;
-+        arm_tlb_bti_gp(&result->f.attrs) = true;
-     }
- 
-     if (mmu_idx == ARMMMUIdx_Stage2 || mmu_idx == ARMMMUIdx_Stage2_S) {
-@@ -1347,8 +1347,8 @@ static bool get_phys_addr_lpae(CPUARMState *env, uint64_t address,
-         result->cacheattrs.shareability = extract32(attrs, 6, 2);
-     }
- 
--    result->phys = descaddr;
--    result->page_size = page_size;
-+    result->f.phys_addr = descaddr;
-+    result->f.lg_page_size = ctz64(page_size);
-     return false;
- 
- do_fault:
-@@ -1373,12 +1373,12 @@ static bool get_phys_addr_pmsav5(CPUARMState *env, uint32_t address,
- 
-     if (regime_translation_disabled(env, mmu_idx, is_secure)) {
-         /* MPU disabled.  */
--        result->phys = address;
--        result->prot = PAGE_READ | PAGE_WRITE | PAGE_EXEC;
-+        result->f.phys_addr = address;
-+        result->f.prot = PAGE_READ | PAGE_WRITE | PAGE_EXEC;
-         return false;
-     }
- 
--    result->phys = address;
-+    result->f.phys_addr = address;
-     for (n = 7; n >= 0; n--) {
-         base = env->cp15.c6_region[n];
-         if ((base & 1) == 0) {
-@@ -1414,16 +1414,16 @@ static bool get_phys_addr_pmsav5(CPUARMState *env, uint32_t address,
-             fi->level = 1;
-             return true;
-         }
--        result->prot = PAGE_READ | PAGE_WRITE;
-+        result->f.prot = PAGE_READ | PAGE_WRITE;
+@@ -338,6 +338,7 @@ typedef enum ARMFaultType {
+     ARMFault_AsyncExternal,
+     ARMFault_Debug,
+     ARMFault_TLBConflict,
++    ARMFault_UnsuppAtomicUpdate,
+     ARMFault_Lockdown,
+     ARMFault_Exclusive,
+     ARMFault_ICacheMaint,
+@@ -524,6 +525,9 @@ static inline uint32_t arm_fi_to_lfsc(ARMMMUFaultInfo *fi)
+     case ARMFault_TLBConflict:
+         fsc = 0x30;
          break;
-     case 2:
--        result->prot = PAGE_READ;
-+        result->f.prot = PAGE_READ;
-         if (!is_user) {
--            result->prot |= PAGE_WRITE;
-+            result->f.prot |= PAGE_WRITE;
-         }
++    case ARMFault_UnsuppAtomicUpdate:
++        fsc = 0x31;
++        break;
+     case ARMFault_Lockdown:
+         fsc = 0x34;
          break;
-     case 3:
--        result->prot = PAGE_READ | PAGE_WRITE;
-+        result->f.prot = PAGE_READ | PAGE_WRITE;
-         break;
-     case 5:
-         if (is_user) {
-@@ -1431,10 +1431,10 @@ static bool get_phys_addr_pmsav5(CPUARMState *env, uint32_t address,
-             fi->level = 1;
-             return true;
-         }
--        result->prot = PAGE_READ;
-+        result->f.prot = PAGE_READ;
-         break;
-     case 6:
--        result->prot = PAGE_READ;
-+        result->f.prot = PAGE_READ;
-         break;
-     default:
-         /* Bad permission.  */
-@@ -1442,12 +1442,12 @@ static bool get_phys_addr_pmsav5(CPUARMState *env, uint32_t address,
-         fi->level = 1;
-         return true;
-     }
--    result->prot |= PAGE_EXEC;
-+    result->f.prot |= PAGE_EXEC;
-     return false;
- }
- 
- static void get_phys_addr_pmsav7_default(CPUARMState *env, ARMMMUIdx mmu_idx,
--                                         int32_t address, int *prot)
-+                                         int32_t address, uint8_t *prot)
- {
-     if (!arm_feature(env, ARM_FEATURE_M)) {
-         *prot = PAGE_READ | PAGE_WRITE;
-@@ -1531,9 +1531,9 @@ static bool get_phys_addr_pmsav7(CPUARMState *env, uint32_t address,
-     int n;
-     bool is_user = regime_is_user(env, mmu_idx);
- 
--    result->phys = address;
--    result->page_size = TARGET_PAGE_SIZE;
--    result->prot = 0;
-+    result->f.phys_addr = address;
-+    result->f.lg_page_size = TARGET_PAGE_BITS;
-+    result->f.prot = 0;
- 
-     if (regime_translation_disabled(env, mmu_idx, secure) ||
-         m_is_ppb_region(env, address)) {
-@@ -1545,7 +1545,7 @@ static bool get_phys_addr_pmsav7(CPUARMState *env, uint32_t address,
-          * which always does a direct read using address_space_ldl(), rather
-          * than going via this function, so we don't need to check that here.
-          */
--        get_phys_addr_pmsav7_default(env, mmu_idx, address, &result->prot);
-+        get_phys_addr_pmsav7_default(env, mmu_idx, address, &result->f.prot);
-     } else { /* MPU enabled */
-         for (n = (int)cpu->pmsav7_dregion - 1; n >= 0; n--) {
-             /* region search */
-@@ -1587,7 +1587,7 @@ static bool get_phys_addr_pmsav7(CPUARMState *env, uint32_t address,
-                 if (ranges_overlap(base, rmask,
-                                    address & TARGET_PAGE_MASK,
-                                    TARGET_PAGE_SIZE)) {
--                    result->page_size = 1;
-+                    result->f.lg_page_size = 0;
-                 }
-                 continue;
-             }
-@@ -1625,7 +1625,7 @@ static bool get_phys_addr_pmsav7(CPUARMState *env, uint32_t address,
-                 continue;
-             }
-             if (rsize < TARGET_PAGE_BITS) {
--                result->page_size = 1 << rsize;
-+                result->f.lg_page_size = rsize;
-             }
-             break;
-         }
-@@ -1636,7 +1636,8 @@ static bool get_phys_addr_pmsav7(CPUARMState *env, uint32_t address,
-                 fi->type = ARMFault_Background;
-                 return true;
-             }
--            get_phys_addr_pmsav7_default(env, mmu_idx, address, &result->prot);
-+            get_phys_addr_pmsav7_default(env, mmu_idx, address,
-+                                         &result->f.prot);
-         } else { /* a MPU hit! */
-             uint32_t ap = extract32(env->pmsav7.dracr[n], 8, 3);
-             uint32_t xn = extract32(env->pmsav7.dracr[n], 12, 1);
-@@ -1653,16 +1654,16 @@ static bool get_phys_addr_pmsav7(CPUARMState *env, uint32_t address,
-                 case 5:
-                     break; /* no access */
-                 case 3:
--                    result->prot |= PAGE_WRITE;
-+                    result->f.prot |= PAGE_WRITE;
-                     /* fall through */
-                 case 2:
-                 case 6:
--                    result->prot |= PAGE_READ | PAGE_EXEC;
-+                    result->f.prot |= PAGE_READ | PAGE_EXEC;
-                     break;
-                 case 7:
-                     /* for v7M, same as 6; for R profile a reserved value */
-                     if (arm_feature(env, ARM_FEATURE_M)) {
--                        result->prot |= PAGE_READ | PAGE_EXEC;
-+                        result->f.prot |= PAGE_READ | PAGE_EXEC;
-                         break;
-                     }
-                     /* fall through */
-@@ -1678,16 +1679,16 @@ static bool get_phys_addr_pmsav7(CPUARMState *env, uint32_t address,
-                 case 1:
-                 case 2:
-                 case 3:
--                    result->prot |= PAGE_WRITE;
-+                    result->f.prot |= PAGE_WRITE;
-                     /* fall through */
-                 case 5:
-                 case 6:
--                    result->prot |= PAGE_READ | PAGE_EXEC;
-+                    result->f.prot |= PAGE_READ | PAGE_EXEC;
-                     break;
-                 case 7:
-                     /* for v7M, same as 6; for R profile a reserved value */
-                     if (arm_feature(env, ARM_FEATURE_M)) {
--                        result->prot |= PAGE_READ | PAGE_EXEC;
-+                        result->f.prot |= PAGE_READ | PAGE_EXEC;
-                         break;
-                     }
-                     /* fall through */
-@@ -1700,14 +1701,14 @@ static bool get_phys_addr_pmsav7(CPUARMState *env, uint32_t address,
- 
-             /* execute never */
-             if (xn) {
--                result->prot &= ~PAGE_EXEC;
-+                result->f.prot &= ~PAGE_EXEC;
-             }
-         }
-     }
- 
-     fi->type = ARMFault_Permission;
-     fi->level = 1;
--    return !(result->prot & (1 << access_type));
-+    return !(result->f.prot & (1 << access_type));
- }
- 
- bool pmsav8_mpu_lookup(CPUARMState *env, uint32_t address,
-@@ -1733,9 +1734,9 @@ bool pmsav8_mpu_lookup(CPUARMState *env, uint32_t address,
-     uint32_t addr_page_base = address & TARGET_PAGE_MASK;
-     uint32_t addr_page_limit = addr_page_base + (TARGET_PAGE_SIZE - 1);
- 
--    result->page_size = TARGET_PAGE_SIZE;
--    result->phys = address;
--    result->prot = 0;
-+    result->f.lg_page_size = TARGET_PAGE_BITS;
-+    result->f.phys_addr = address;
-+    result->f.prot = 0;
-     if (mregion) {
-         *mregion = -1;
-     }
-@@ -1785,13 +1786,13 @@ bool pmsav8_mpu_lookup(CPUARMState *env, uint32_t address,
-                     ranges_overlap(base, limit - base + 1,
-                                    addr_page_base,
-                                    TARGET_PAGE_SIZE)) {
--                    result->page_size = 1;
-+                    result->f.lg_page_size = 0;
-                 }
-                 continue;
-             }
- 
-             if (base > addr_page_base || limit < addr_page_limit) {
--                result->page_size = 1;
-+                result->f.lg_page_size = 0;
-             }
- 
-             if (matchregion != -1) {
-@@ -1817,7 +1818,7 @@ bool pmsav8_mpu_lookup(CPUARMState *env, uint32_t address,
- 
-     if (matchregion == -1) {
-         /* hit using the background region */
--        get_phys_addr_pmsav7_default(env, mmu_idx, address, &result->prot);
-+        get_phys_addr_pmsav7_default(env, mmu_idx, address, &result->f.prot);
-     } else {
-         uint32_t ap = extract32(env->pmsav8.rbar[secure][matchregion], 1, 2);
-         uint32_t xn = extract32(env->pmsav8.rbar[secure][matchregion], 0, 1);
-@@ -1832,9 +1833,9 @@ bool pmsav8_mpu_lookup(CPUARMState *env, uint32_t address,
-             xn = 1;
-         }
- 
--        result->prot = simple_ap_to_rw_prot(env, mmu_idx, ap);
--        if (result->prot && !xn && !(pxn && !is_user)) {
--            result->prot |= PAGE_EXEC;
-+        result->f.prot = simple_ap_to_rw_prot(env, mmu_idx, ap);
-+        if (result->f.prot && !xn && !(pxn && !is_user)) {
-+            result->f.prot |= PAGE_EXEC;
-         }
-         /*
-          * We don't need to look the attribute up in the MAIR0/MAIR1
-@@ -1847,7 +1848,7 @@ bool pmsav8_mpu_lookup(CPUARMState *env, uint32_t address,
- 
-     fi->type = ARMFault_Permission;
-     fi->level = 1;
--    return !(result->prot & (1 << access_type));
-+    return !(result->f.prot & (1 << access_type));
- }
- 
- static bool v8m_is_sau_exempt(CPUARMState *env,
-@@ -2011,9 +2012,9 @@ static bool get_phys_addr_pmsav8(CPUARMState *env, uint32_t address,
-                 } else {
-                     fi->type = ARMFault_QEMU_SFault;
-                 }
--                result->page_size = sattrs.subpage ? 1 : TARGET_PAGE_SIZE;
--                result->phys = address;
--                result->prot = 0;
-+                result->f.lg_page_size = sattrs.subpage ? 0 : TARGET_PAGE_BITS;
-+                result->f.phys_addr = address;
-+                result->f.prot = 0;
-                 return true;
-             }
-         } else {
-@@ -2023,7 +2024,7 @@ static bool get_phys_addr_pmsav8(CPUARMState *env, uint32_t address,
-              * might downgrade a secure access to nonsecure.
-              */
-             if (sattrs.ns) {
--                result->attrs.secure = false;
-+                result->f.attrs.secure = false;
-             } else if (!secure) {
-                 /*
-                  * NS access to S memory must fault.
-@@ -2036,9 +2037,9 @@ static bool get_phys_addr_pmsav8(CPUARMState *env, uint32_t address,
-                  * for M_FAKE_FSR_SFAULT in arm_v7m_cpu_do_interrupt().
-                  */
-                 fi->type = ARMFault_QEMU_SFault;
--                result->page_size = sattrs.subpage ? 1 : TARGET_PAGE_SIZE;
--                result->phys = address;
--                result->prot = 0;
-+                result->f.lg_page_size = sattrs.subpage ? 0 : TARGET_PAGE_BITS;
-+                result->f.phys_addr = address;
-+                result->f.prot = 0;
-                 return true;
-             }
-         }
-@@ -2047,7 +2048,7 @@ static bool get_phys_addr_pmsav8(CPUARMState *env, uint32_t address,
-     ret = pmsav8_mpu_lookup(env, address, access_type, mmu_idx, secure,
-                             result, fi, NULL);
-     if (sattrs.subpage) {
--        result->page_size = 1;
-+        result->f.lg_page_size = 0;
-     }
-     return ret;
- }
-@@ -2338,9 +2339,9 @@ static bool get_phys_addr_disabled(CPUARMState *env, target_ulong address,
-         result->cacheattrs.is_s2_format = false;
-     }
- 
--    result->phys = address;
--    result->prot = PAGE_READ | PAGE_WRITE | PAGE_EXEC;
--    result->page_size = TARGET_PAGE_SIZE;
-+    result->f.phys_addr = address;
-+    result->f.prot = PAGE_READ | PAGE_WRITE | PAGE_EXEC;
-+    result->f.lg_page_size = TARGET_PAGE_BITS;
-     result->cacheattrs.shareability = shareability;
-     result->cacheattrs.attrs = memattr;
-     return 0;
-@@ -2377,8 +2378,8 @@ bool get_phys_addr_with_secure(CPUARMState *env, target_ulong address,
-                 return ret;
-             }
- 
--            ipa = result->phys;
--            ipa_secure = result->attrs.secure;
-+            ipa = result->f.phys_addr;
-+            ipa_secure = result->f.attrs.secure;
-             if (is_secure) {
-                 /* Select TCR based on the NS bit from the S1 walk. */
-                 s2walk_secure = !(ipa_secure
-@@ -2398,7 +2399,7 @@ bool get_phys_addr_with_secure(CPUARMState *env, target_ulong address,
-              * Save the stage1 results so that we may merge
-              * prot and cacheattrs later.
-              */
--            s1_prot = result->prot;
-+            s1_prot = result->f.prot;
-             cacheattrs1 = result->cacheattrs;
-             memset(result, 0, sizeof(*result));
- 
-@@ -2407,7 +2408,7 @@ bool get_phys_addr_with_secure(CPUARMState *env, target_ulong address,
-             fi->s2addr = ipa;
- 
-             /* Combine the S1 and S2 perms.  */
--            result->prot &= s1_prot;
-+            result->f.prot &= s1_prot;
- 
-             /* If S2 fails, return early.  */
-             if (ret) {
-@@ -2435,10 +2436,10 @@ bool get_phys_addr_with_secure(CPUARMState *env, target_ulong address,
-             /* Check if IPA translates to secure or non-secure PA space. */
-             if (is_secure) {
-                 if (ipa_secure) {
--                    result->attrs.secure =
-+                    result->f.attrs.secure =
-                         !(env->cp15.vstcr_el2 & (VSTCR_SA | VSTCR_SW));
-                 } else {
--                    result->attrs.secure =
-+                    result->f.attrs.secure =
-                         !((env->cp15.vtcr_el2 & (VTCR_NSA | VTCR_NSW))
-                         || (env->cp15.vstcr_el2 & (VSTCR_SA | VSTCR_SW)));
-                 }
-@@ -2457,8 +2458,8 @@ bool get_phys_addr_with_secure(CPUARMState *env, target_ulong address,
-      * cannot upgrade an non-secure translation regime's attributes
-      * to secure.
-      */
--    result->attrs.secure = is_secure;
--    result->attrs.user = regime_is_user(env, mmu_idx);
-+    result->f.attrs.secure = is_secure;
-+    result->f.attrs.user = regime_is_user(env, mmu_idx);
- 
-     /*
-      * Fast Context Switch Extension. This doesn't exist at all in v8.
-@@ -2475,7 +2476,7 @@ bool get_phys_addr_with_secure(CPUARMState *env, target_ulong address,
- 
-     if (arm_feature(env, ARM_FEATURE_PMSA)) {
-         bool ret;
--        result->page_size = TARGET_PAGE_SIZE;
-+        result->f.lg_page_size = TARGET_PAGE_BITS;
- 
-         if (arm_feature(env, ARM_FEATURE_V8)) {
-             /* PMSAv8 */
-@@ -2496,9 +2497,9 @@ bool get_phys_addr_with_secure(CPUARMState *env, target_ulong address,
-                       (access_type == MMU_DATA_STORE ? "writing" : "execute"),
-                       (uint32_t)address, mmu_idx,
-                       ret ? "Miss" : "Hit",
--                      result->prot & PAGE_READ ? 'r' : '-',
--                      result->prot & PAGE_WRITE ? 'w' : '-',
--                      result->prot & PAGE_EXEC ? 'x' : '-');
-+                      result->f.prot & PAGE_READ ? 'r' : '-',
-+                      result->f.prot & PAGE_WRITE ? 'w' : '-',
-+                      result->f.prot & PAGE_EXEC ? 'x' : '-');
- 
-         return ret;
-     }
-@@ -2573,10 +2574,10 @@ hwaddr arm_cpu_get_phys_page_attrs_debug(CPUState *cs, vaddr addr,
-     bool ret;
- 
-     ret = get_phys_addr(env, addr, MMU_DATA_LOAD, mmu_idx, &res, &fi);
--    *attrs = res.attrs;
-+    *attrs = res.f.attrs;
- 
-     if (ret) {
-         return -1;
-     }
--    return res.phys;
-+    return res.f.phys_addr;
- }
-diff --git a/target/arm/tlb_helper.c b/target/arm/tlb_helper.c
-index ad225b1cb2..49601394ec 100644
---- a/target/arm/tlb_helper.c
-+++ b/target/arm/tlb_helper.c
-@@ -227,17 +227,16 @@ bool arm_cpu_tlb_fill(CPUState *cs, vaddr address, int size,
-          * target page size are handled specially, so for those we
-          * pass in the exact addresses.
-          */
--        if (res.page_size >= TARGET_PAGE_SIZE) {
--            res.phys &= TARGET_PAGE_MASK;
-+        if (res.f.lg_page_size >= TARGET_PAGE_BITS) {
-+            res.f.phys_addr &= TARGET_PAGE_MASK;
-             address &= TARGET_PAGE_MASK;
-         }
-         /* Notice and record tagged memory. */
-         if (cpu_isar_feature(aa64_mte, cpu) && res.cacheattrs.attrs == 0xf0) {
--            arm_tlb_mte_tagged(&res.attrs) = true;
-+            arm_tlb_mte_tagged(&res.f.attrs) = true;
-         }
- 
--        tlb_set_page_with_attrs(cs, address, res.phys, res.attrs,
--                                res.prot, mmu_idx, res.page_size);
-+        tlb_set_page_full(cs, mmu_idx, address, &res.f);
-         return true;
-     } else if (probe) {
-         return false;
 -- 
 2.34.1
 

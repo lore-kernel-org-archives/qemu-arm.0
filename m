@@ -1,112 +1,111 @@
-Received: by 2002:a8a:1193:0:0:0:0:0 with SMTP id m19csp466207ocs;
-        Sat, 1 Oct 2022 09:42:35 -0700 (PDT)
-X-Google-Smtp-Source: AMsMyM4FyUIE4mgHnnNydWZph+fUUJ/BOLzJ4nbwMbgn6yRUDnZtpDKUZGP/8NHxzg6G1a2b3tO1
-X-Received: by 2002:a0c:a98f:0:b0:4af:a29b:343f with SMTP id a15-20020a0ca98f000000b004afa29b343fmr11185117qvb.72.1664642555305;
-        Sat, 01 Oct 2022 09:42:35 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1664642555; cv=none;
+Received: by 2002:a8a:1193:0:0:0:0:0 with SMTP id m19csp466312ocs;
+        Sat, 1 Oct 2022 09:42:50 -0700 (PDT)
+X-Google-Smtp-Source: AMsMyM4ok+fXoZhWtkT6W8u0vTWBHniq+DYSJRMKkngjj/hlIYXsxTUqzPfOElQTV1YWw7B28pog
+X-Received: by 2002:a0c:8c4f:0:b0:4ac:94fa:a587 with SMTP id o15-20020a0c8c4f000000b004ac94faa587mr11139067qvb.40.1664642570177;
+        Sat, 01 Oct 2022 09:42:50 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1664642570; cv=none;
         d=google.com; s=arc-20160816;
-        b=sI8Ac7TvctR9FMmp0lzSSpAbPAIgghWV8pVriCA6mfGGQ02aBI4U5/GcpNT9walcTb
-         Xehji3w/q0//tjxDz6VhOEmZOJ5xtfPZhzLZ8T6hF32Xnld9C+bn7xxCRdiDMYoDKyWK
-         tTDvnEl2zQVCe6zYJUxeMRLevCBIptYWI66pmOo1aoG/1IJOfSqDokfCM5t3AhoclOSd
-         ch8ptHbO7tFYgBimEO8xsH5/yfaRVOflkSHqeJruxO9aYkrx2EngrKGXCQagH9ZWzG43
-         tVmqm9fzzFpUeFEvtI0R5VNLmtvVcbwYCNCGiuCsRK4Wx2Djsy0lbMCc4SwjCWteeuqH
-         +psw==
+        b=xm8QhvUAV6MxLTdWwCtoz6VAzl3Ny9789EH3ihEs7Vc94a6e6Cr35xlObfJXXQHQR9
+         gyQbFp4htEIOz779u7YWvaTGis7NJJMROlpwHHTfceVl3kXEMKVsXXQ8Zbw5D9iaiFJ8
+         re0R4/YkIT3CGe/Y4bAm+FP3qxq7CasxTgqEkfKokp4x2YquQSUUWcYWXgDQgK8QNdbX
+         nKT6ibsnY7KE7TwolJfi/rBODL3tZWLX6/MhoFmgpcngGAdWSiazv3dPLF6zGaPonknq
+         5+KugnjqceIt7Pu7j1dFoBF1H1wRZbTXcQwhbusBz/dBZEDsgJ1jlfx7Ctc2+El/QdIM
+         lLEg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=jXnTwa6UKQ364zxEijW2Djrh5kilE9wYQnYihj42TBk=;
-        b=QvGPZnlMID5F5G05+tn+ik628bcjWbPXpMHjeh5KmGCtNn7YHN48lhcQ9LDp+yZjjD
-         kRwQnFYHnicKZKe/A5F3N0rBXUtMJY4TF006Ud171awJYJgPLxwrGQEhLCS/MiPJ9Gnj
-         eWBIhhQwbq88tOka0nJADgL0vQB8gkByVvIzUIvSkgK4UV+PeliVoftt3zD6BwZj2Zna
-         r9RTqVgNAeFZhuzuh0CVVevw5vHLjANrVcMQ30EzCToUBIu7IhDVWKkHg3eCWLAKayf1
-         foifr3U2OHFPMoInU/Lkh8xUT/Tc1Q3a1TWG19ppsdLL+lKh1Wy8hHXl3b8N+z0h4hu9
-         5rkQ==
+        bh=WH93/bK7v3kp/pKnTict/jbomZX/0gxJBlUtQBFUx68=;
+        b=rHKi+rE27vvF1FjsbN3CZ6fUtBFH3C+RxE35i/PWhs3wYRLR6PU2YwrUijFVKMxU+z
+         PZen4l9l2x68qhyqWsAWJ78Vwaz0a8tMm1xXwa4/G5pQU9O5mfrNEzkUQG0QIEf/ZqiX
+         p04S5hQ6+L2b5tfFw/9vL92+B3IJP1LJVLM7qOB19VhMdw9SHGtvkEMbR3lC1UB7GMn8
+         r8yyFmslu6cKRtxBZ+WZ4zNer/X2jDj90NT/KJryFGUcOUP/iPFmu7YVx1eEu7AcVAy0
+         BowItS1ys68vtorQBwae6GAnULJhHz8V1wTIfFfsZZxx5SKmfSc7qgf5h8qLzub01bvc
+         L6QA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=R9TBDEyI;
+       dkim=pass header.i=@linaro.org header.s=google header.b=fw16RTiY;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 4-20020ad45ba4000000b004b185735870si224994qvq.178.2022.10.01.09.42.35
+        by mx.google.com with ESMTPS id m10-20020a05620a290a00b006cf8137d52fsi2685270qkp.436.2022.10.01.09.42.50
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 01 Oct 2022 09:42:35 -0700 (PDT)
+        Sat, 01 Oct 2022 09:42:50 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=R9TBDEyI;
+       dkim=pass header.i=@linaro.org header.s=google header.b=fw16RTiY;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:37878 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:53326 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1oefZS-0002Ec-SN
-	for alex.bennee@linaro.org; Sat, 01 Oct 2022 12:42:34 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:50678)
+	id 1oefZg-00032c-Mc
+	for alex.bennee@linaro.org; Sat, 01 Oct 2022 12:42:49 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:49112)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1oefIB-0008RE-JV
- for qemu-arm@nongnu.org; Sat, 01 Oct 2022 12:24:43 -0400
-Received: from mail-qv1-xf2a.google.com ([2607:f8b0:4864:20::f2a]:46856)
+ id 1oefIJ-0000Qn-Mc
+ for qemu-arm@nongnu.org; Sat, 01 Oct 2022 12:24:51 -0400
+Received: from mail-qk1-x72d.google.com ([2607:f8b0:4864:20::72d]:39621)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1oefIA-0006Hd-1h
- for qemu-arm@nongnu.org; Sat, 01 Oct 2022 12:24:43 -0400
-Received: by mail-qv1-xf2a.google.com with SMTP id j8so4634893qvt.13
- for <qemu-arm@nongnu.org>; Sat, 01 Oct 2022 09:24:41 -0700 (PDT)
+ id 1oefI6-0006PR-62
+ for qemu-arm@nongnu.org; Sat, 01 Oct 2022 12:24:51 -0400
+Received: by mail-qk1-x72d.google.com with SMTP id x18so4534434qkn.6
+ for <qemu-arm@nongnu.org>; Sat, 01 Oct 2022 09:24:37 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date;
- bh=jXnTwa6UKQ364zxEijW2Djrh5kilE9wYQnYihj42TBk=;
- b=R9TBDEyIw/OhkqaRe38OjF+Trcs6rUGsG5b2Y2mo+STfUllsnAnG5KOow3CzVktoXh
- 0/KKjtKKNmHXYNPFHokSv/x4Mz0/Ljk2uV0RTD3c1SUA5xaNDv80C+zDftoLgsKcvch4
- LmVnw18kr4baldr5rwpNG1gTahWIIHrDfZ7mbsirVaatmBHFyhDnbznxXF33v/9wRApl
- TVv2Bn8NKJ2Po7MANgOXN5uyELC802oqkTzegnAyq/FRqtxLBjZ6A0XTVLQNGro+fS8I
- iyy7KHRsERb5DjEb9EuA+xYHf9Xy77RlbQn6yvMUqNzk3PIAlxROuVbnGEj0N8AoO/nV
- k0og==
+ bh=WH93/bK7v3kp/pKnTict/jbomZX/0gxJBlUtQBFUx68=;
+ b=fw16RTiYbXvGuI1+bAZl3XOPQOivuJ28ewOkNsEcxowpjr6zUucmOMbX5wqofcsbcd
+ r4hNNckolDWXfHN5WauEJJmdSaCfaS2qZIGg7eUKnrQgyo28LkBif+OQyDkMmJJdvTl2
+ pDKH0/90Kbq1he4i6nvvhkAvp4PJMz9EHs5ns1X+5HO6uh1v5gRfsmZwi5ixNXLg0hXI
+ +nk4OsU2YiR17yWaBzswPaqU25ypMvH1vXdAP5tuKvz/KJ/5SqT7ST0FAWPFZl0gJ6aR
+ EjM5B59bnFZvWOGK7z7o7C3jBwVda2zWsQqb+yi5H5ZsDqk9Myt8dOGK3Piw9O0Sckcx
+ PLTA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date;
- bh=jXnTwa6UKQ364zxEijW2Djrh5kilE9wYQnYihj42TBk=;
- b=zLcMTe4dkuYZXpWyikmPQs9EWPdVX7L+c/7m4eP3CBy94+qnDV8h6LZWuuFqPMdvVa
- 2mj27q0YyvtviPaP4ahA8tVBDISqjZ9hjQVEic6pPYYIOXsdkjXdC9X4FD46mJtsq5lU
- 33A/QwbpmVyGEXRrT2GGnEpm5960IQcX7cmEFblxQSFcp76T+RyNQwOMoDQemmaoW8vq
- nbpwP+tk4JDMdwOepStLZvaHztUu+qnH64LXZbWlZsCOQgrhhAl3kDEOodidvQCD90Bu
- GuL0v32yQljbrF66UAKlgLF1E8/eIXfkTK7RFHm0SLszpYDsDQ3GGRLimZuSyouV8tXE
- N0oQ==
-X-Gm-Message-State: ACrzQf1Qjj6Y84nErJ9h4xgDX78zLU/zbU9vizAvxTKzvvkjzJQGiF+5
- AKtv63yZTDUtXl56uYrMm2PLVGAtRDHS7Q==
-X-Received: by 2002:a05:6214:4110:b0:4af:b016:5ff8 with SMTP id
- kc16-20020a056214411000b004afb0165ff8mr10169281qvb.118.1664641481366; 
- Sat, 01 Oct 2022 09:24:41 -0700 (PDT)
+ bh=WH93/bK7v3kp/pKnTict/jbomZX/0gxJBlUtQBFUx68=;
+ b=6eTUCCBUIYG0oB3bVnnjf8bOBz4Fuw1xIOt28FFpDcukplaoI+KiG6d53055xaMh2p
+ gfUKLaxaPzDKJTk8ffN3WlwOsWNp9j2TII/O30nRdiAP7AqXTScoBxuM248/OPaexMt7
+ QAfy1IaznB3BGb0+tkAubWB1OoA6CBfn3z/tcUQXqzE+Y95Y9URX9AkT7OsXg6QXMEQw
+ sgR833At3DNw82H99KEY87ba1N8YNAjBgowOWkLBbk1BYm4ezi0gFNU8Z3qvKqg9f2kJ
+ MSxL9NXmaz23Ae9bk96MZdAnuoEJN7iLBQ/K1kjY11V8elCcocsPfAeKfK4/NWLQUsZM
+ 59iA==
+X-Gm-Message-State: ACrzQf2Fq5tl7gtfZJGqHOaoqxvaH7OeAFZ4gUuX0FELgC3+/e6kkOEd
+ wCwNu5BE5hXEUFD2sPYSPwPN8Q==
+X-Received: by 2002:a05:620a:448e:b0:6ce:8dd2:bc46 with SMTP id
+ x14-20020a05620a448e00b006ce8dd2bc46mr9748377qkp.705.1664641477034; 
+ Sat, 01 Oct 2022 09:24:37 -0700 (PDT)
 Received: from stoup.. ([2605:ef80:8084:91a4:f7cb:db31:c505:b931])
  by smtp.gmail.com with ESMTPSA id
- t4-20020a37ea04000000b006d1d8fdea8asm4387445qkj.85.2022.10.01.09.24.39
+ t4-20020a37ea04000000b006d1d8fdea8asm4387445qkj.85.2022.10.01.09.24.33
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 01 Oct 2022 09:24:40 -0700 (PDT)
+ Sat, 01 Oct 2022 09:24:34 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org
-Subject: [PATCH v3 32/42] target/arm: Extract HA and HD in aa64_va_parameters
-Date: Sat,  1 Oct 2022 09:23:08 -0700
-Message-Id: <20221001162318.153420-33-richard.henderson@linaro.org>
+Subject: [PATCH v3 30/42] target/arm: Add ptw_idx argument to S1_ptw_translate
+Date: Sat,  1 Oct 2022 09:23:06 -0700
+Message-Id: <20221001162318.153420-31-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20221001162318.153420-1-richard.henderson@linaro.org>
 References: <20221001162318.153420-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::f2a;
- envelope-from=richard.henderson@linaro.org; helo=mail-qv1-xf2a.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::72d;
+ envelope-from=richard.henderson@linaro.org; helo=mail-qk1-x72d.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -121,65 +120,288 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: kEXfy4M01+5K
+X-TUID: sq+QujWM1g5C
+
+Hoist the computation of the mmu_idx for the ptw up to
+get_phys_addr_with_secure_debug and get_phys_addr_twostage.
+This removes the duplicate check for stage2 disabled
+from the middle of the walk, performing it only once.
+
+Pass ptw_idx through get_phys_addr_{v5,v6,lpae} and arm_{ldl,ldq}_ptw.
 
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/internals.h | 2 ++
- target/arm/helper.c    | 8 +++++++-
- 2 files changed, 9 insertions(+), 1 deletion(-)
+ target/arm/ptw.c | 104 ++++++++++++++++++++++++++++++++---------------
+ 1 file changed, 71 insertions(+), 33 deletions(-)
 
-diff --git a/target/arm/internals.h b/target/arm/internals.h
-index a50189e2e4..e95b6b1b8f 100644
---- a/target/arm/internals.h
-+++ b/target/arm/internals.h
-@@ -1014,6 +1014,8 @@ typedef struct ARMVAParameters {
-     bool using64k   : 1;
-     bool tsz_oob    : 1;  /* tsz has been clamped to legal range */
-     bool ds         : 1;
-+    bool ha         : 1;
-+    bool hd         : 1;
- } ARMVAParameters;
+diff --git a/target/arm/ptw.c b/target/arm/ptw.c
+index 445382ab03..7a77bea2c7 100644
+--- a/target/arm/ptw.c
++++ b/target/arm/ptw.c
+@@ -17,7 +17,8 @@
  
- ARMVAParameters aa64_va_parameters(CPUARMState *env, uint64_t va,
-diff --git a/target/arm/helper.c b/target/arm/helper.c
-index 19a03eb200..70ae3816b9 100644
---- a/target/arm/helper.c
-+++ b/target/arm/helper.c
-@@ -10280,7 +10280,7 @@ ARMVAParameters aa64_va_parameters(CPUARMState *env, uint64_t va,
-                                    ARMMMUIdx mmu_idx, bool data)
+ static bool get_phys_addr_lpae(CPUARMState *env, uint64_t address,
+                                MMUAccessType access_type, ARMMMUIdx mmu_idx,
+-                               bool is_secure, bool s1_is_el0, bool debug,
++                               ARMMMUIdx ptw_idx, bool is_secure,
++                               bool s1_is_el0, bool debug,
+                                GetPhysAddrResult *result, ARMMMUFaultInfo *fi)
+     __attribute__((nonnull));
+ 
+@@ -220,21 +221,16 @@ static bool S2_attrs_are_device(uint64_t hcr, uint8_t attrs)
+ }
+ 
+ /* Translate a S1 pagetable walk through S2 if needed.  */
+-static bool S1_ptw_translate(CPUARMState *env, ARMMMUIdx mmu_idx, hwaddr addr,
++static bool S1_ptw_translate(CPUARMState *env, ARMMMUIdx mmu_idx,
++                             ARMMMUIdx s2_mmu_idx, hwaddr addr,
+                              bool *is_secure_ptr, void **hphys, hwaddr *gphys,
+                              bool debug, ARMMMUFaultInfo *fi)
  {
-     uint64_t tcr = regime_tcr(env, mmu_idx);
--    bool epd, hpd, using16k, using64k, tsz_oob, ds;
-+    bool epd, hpd, using16k, using64k, tsz_oob, ds, ha, hd;
-     int select, tsz, tbi, max_tsz, min_tsz, ps, sh;
-     ARMCPU *cpu = env_archcpu(env);
+     bool is_secure = *is_secure_ptr;
+-    ARMMMUIdx s2_mmu_idx = is_secure ? ARMMMUIdx_Stage2_S : ARMMMUIdx_Stage2;
+-    bool s2_phys = false;
+     uint8_t pte_attrs;
+-    bool pte_secure;
++    bool s2_phys, pte_secure;
  
-@@ -10298,6 +10298,8 @@ ARMVAParameters aa64_va_parameters(CPUARMState *env, uint64_t va,
-         epd = false;
-         sh = extract32(tcr, 12, 2);
-         ps = extract32(tcr, 16, 3);
-+        ha = extract32(tcr, 21, 1) && cpu_isar_feature(aa64_hafs, cpu);
-+        hd = extract32(tcr, 22, 1) && cpu_isar_feature(aa64_hdbs, cpu);
-         ds = extract64(tcr, 32, 1);
-     } else {
+-    if (!arm_mmu_idx_is_stage1_of_2(mmu_idx)
+-        || regime_translation_disabled(env, s2_mmu_idx, is_secure)) {
+-        s2_mmu_idx = is_secure ? ARMMMUIdx_Phys_S : ARMMMUIdx_Phys_NS;
+-        s2_phys = true;
+-    }
++    s2_phys = s2_mmu_idx == ARMMMUIdx_Phys_S || s2_mmu_idx == ARMMMUIdx_Phys_NS;
+ 
+     if (unlikely(debug)) {
          /*
-@@ -10322,6 +10324,8 @@ ARMVAParameters aa64_va_parameters(CPUARMState *env, uint64_t va,
-             hpd = extract64(tcr, 42, 1);
+@@ -247,8 +243,12 @@ static bool S1_ptw_translate(CPUARMState *env, ARMMMUIdx mmu_idx, hwaddr addr,
+             pte_secure = is_secure;
+         } else {
+             GetPhysAddrResult s2 = { };
++            ARMMMUIdx phys_idx = (is_secure ? ARMMMUIdx_Phys_S
++                                  : ARMMMUIdx_Phys_NS);
++
+             if (!get_phys_addr_lpae(env, addr, MMU_DATA_LOAD, s2_mmu_idx,
+-                                    is_secure, false, debug, &s2, fi)) {
++                                    phys_idx, is_secure, false, debug,
++                                    &s2, fi)) {
+                 goto fail;
+             }
+             *gphys = s2.f.phys_addr;
+@@ -310,7 +310,8 @@ static bool S1_ptw_translate(CPUARMState *env, ARMMMUIdx mmu_idx, hwaddr addr,
+ 
+ /* All loads done in the course of a page table walk go through here. */
+ static uint32_t arm_ldl_ptw(CPUARMState *env, hwaddr addr, bool is_secure,
+-                            ARMMMUIdx mmu_idx, bool debug, ARMMMUFaultInfo *fi)
++                            ARMMMUIdx mmu_idx, ARMMMUIdx ptw_idx,
++                            bool debug, ARMMMUFaultInfo *fi)
+ {
+     CPUState *cs = env_cpu(env);
+     void *hphys;
+@@ -318,7 +319,7 @@ static uint32_t arm_ldl_ptw(CPUARMState *env, hwaddr addr, bool is_secure,
+     uint32_t data;
+     bool be;
+ 
+-    if (!S1_ptw_translate(env, mmu_idx, addr, &is_secure,
++    if (!S1_ptw_translate(env, mmu_idx, ptw_idx, addr, &is_secure,
+                           &hphys, &gphys, debug, fi)) {
+         /* Failure. */
+         assert(fi->s1ptw);
+@@ -354,7 +355,8 @@ static uint32_t arm_ldl_ptw(CPUARMState *env, hwaddr addr, bool is_secure,
+ }
+ 
+ static uint64_t arm_ldq_ptw(CPUARMState *env, hwaddr addr, bool is_secure,
+-                            ARMMMUIdx mmu_idx, bool debug, ARMMMUFaultInfo *fi)
++                            ARMMMUIdx mmu_idx, ARMMMUIdx ptw_idx,
++                            bool debug, ARMMMUFaultInfo *fi)
+ {
+     CPUState *cs = env_cpu(env);
+     void *hphys;
+@@ -362,7 +364,7 @@ static uint64_t arm_ldq_ptw(CPUARMState *env, hwaddr addr, bool is_secure,
+     uint64_t data;
+     bool be;
+ 
+-    if (!S1_ptw_translate(env, mmu_idx, addr, &is_secure,
++    if (!S1_ptw_translate(env, mmu_idx, ptw_idx, addr, &is_secure,
+                           &hphys, &gphys, debug, fi)) {
+         /* Failure. */
+         assert(fi->s1ptw);
+@@ -507,7 +509,7 @@ static int simple_ap_to_rw_prot(CPUARMState *env, ARMMMUIdx mmu_idx, int ap)
+ 
+ static bool get_phys_addr_v5(CPUARMState *env, uint32_t address,
+                              MMUAccessType access_type, ARMMMUIdx mmu_idx,
+-                             bool is_secure, bool debug,
++                             ARMMMUIdx ptw_idx, bool is_secure, bool debug,
+                              GetPhysAddrResult *result, ARMMMUFaultInfo *fi)
+ {
+     int level = 1;
+@@ -527,7 +529,7 @@ static bool get_phys_addr_v5(CPUARMState *env, uint32_t address,
+         fi->type = ARMFault_Translation;
+         goto do_fault;
+     }
+-    desc = arm_ldl_ptw(env, table, is_secure, mmu_idx, debug, fi);
++    desc = arm_ldl_ptw(env, table, is_secure, mmu_idx, ptw_idx, debug, fi);
+     if (fi->type != ARMFault_None) {
+         goto do_fault;
+     }
+@@ -565,7 +567,7 @@ static bool get_phys_addr_v5(CPUARMState *env, uint32_t address,
+             /* Fine pagetable.  */
+             table = (desc & 0xfffff000) | ((address >> 8) & 0xffc);
          }
-         ps = extract64(tcr, 32, 3);
-+        ha = extract64(tcr, 39, 1) && cpu_isar_feature(aa64_hafs, cpu);
-+        hd = extract64(tcr, 40, 1) && cpu_isar_feature(aa64_hdbs, cpu);
-         ds = extract64(tcr, 59, 1);
+-        desc = arm_ldl_ptw(env, table, is_secure, mmu_idx, debug, fi);
++        desc = arm_ldl_ptw(env, table, is_secure, mmu_idx, ptw_idx, debug, fi);
+         if (fi->type != ARMFault_None) {
+             goto do_fault;
+         }
+@@ -626,7 +628,7 @@ do_fault:
+ 
+ static bool get_phys_addr_v6(CPUARMState *env, uint32_t address,
+                              MMUAccessType access_type, ARMMMUIdx mmu_idx,
+-                             bool is_secure, bool debug,
++                             ARMMMUIdx ptw_idx, bool is_secure, bool debug,
+                              GetPhysAddrResult *result, ARMMMUFaultInfo *fi)
+ {
+     ARMCPU *cpu = env_archcpu(env);
+@@ -650,7 +652,7 @@ static bool get_phys_addr_v6(CPUARMState *env, uint32_t address,
+         fi->type = ARMFault_Translation;
+         goto do_fault;
+     }
+-    desc = arm_ldl_ptw(env, table, is_secure, mmu_idx, debug, fi);
++    desc = arm_ldl_ptw(env, table, is_secure, mmu_idx, ptw_idx, debug, fi);
+     if (fi->type != ARMFault_None) {
+         goto do_fault;
+     }
+@@ -703,7 +705,7 @@ static bool get_phys_addr_v6(CPUARMState *env, uint32_t address,
+         ns = extract32(desc, 3, 1);
+         /* Lookup l2 entry.  */
+         table = (desc & 0xfffffc00) | ((address >> 10) & 0x3fc);
+-        desc = arm_ldl_ptw(env, table, is_secure, mmu_idx, debug, fi);
++        desc = arm_ldl_ptw(env, table, is_secure, mmu_idx, ptw_idx, debug, fi);
+         if (fi->type != ARMFault_None) {
+             goto do_fault;
+         }
+@@ -1058,7 +1060,8 @@ static bool check_s2_mmu_setup(ARMCPU *cpu, bool is_aa64, int level,
+  */
+ static bool get_phys_addr_lpae(CPUARMState *env, uint64_t address,
+                                MMUAccessType access_type, ARMMMUIdx mmu_idx,
+-                               bool is_secure, bool s1_is_el0, bool debug,
++                               ARMMMUIdx ptw_idx, bool is_secure,
++                               bool s1_is_el0, bool debug,
+                                GetPhysAddrResult *result, ARMMMUFaultInfo *fi)
+ {
+     ARMCPU *cpu = env_archcpu(env);
+@@ -1284,7 +1287,8 @@ static bool get_phys_addr_lpae(CPUARMState *env, uint64_t address,
+         descaddr |= (address >> (stride * (4 - level))) & indexmask;
+         descaddr &= ~7ULL;
+         nstable = extract32(tableattrs, 4, 1);
+-        descriptor = arm_ldq_ptw(env, descaddr, !nstable, mmu_idx, debug, fi);
++        descriptor = arm_ldq_ptw(env, descaddr, !nstable, mmu_idx,
++                                 ptw_idx, debug, fi);
+         if (fi->type != ARMFault_None) {
+             goto do_fault;
+         }
+@@ -2446,7 +2450,7 @@ static bool get_phys_addr_twostage(CPUARMState *env, target_ulong address,
+     int s1_prot;
+     bool ret, ipa_secure, s2walk_secure;
+     ARMCacheAttrs cacheattrs1;
+-    ARMMMUIdx s2_mmu_idx;
++    ARMMMUIdx s2_mmu_idx, s2_ptw_idx;
+     bool is_el0;
+     uint64_t hcr;
+ 
+@@ -2471,7 +2475,13 @@ static bool get_phys_addr_twostage(CPUARMState *env, target_ulong address,
+         s2walk_secure = false;
      }
  
-@@ -10393,6 +10397,8 @@ ARMVAParameters aa64_va_parameters(CPUARMState *env, uint64_t va,
-         .using64k = using64k,
-         .tsz_oob = tsz_oob,
-         .ds = ds,
-+        .ha = ha,
-+        .hd = ha & hd,
-     };
+-    s2_mmu_idx = (s2walk_secure ? ARMMMUIdx_Stage2_S : ARMMMUIdx_Stage2);
++    if (s2walk_secure) {
++        s2_mmu_idx = ARMMMUIdx_Stage2_S;
++        s2_ptw_idx = ARMMMUIdx_Phys_S;
++    } else {
++        s2_mmu_idx = ARMMMUIdx_Stage2;
++        s2_ptw_idx = ARMMMUIdx_Phys_NS;
++    }
+     is_el0 = s1_mmu_idx == ARMMMUIdx_Stage1_E0;
+ 
+     /*
+@@ -2482,7 +2492,7 @@ static bool get_phys_addr_twostage(CPUARMState *env, target_ulong address,
+     cacheattrs1 = result->cacheattrs;
+     memset(result, 0, sizeof(*result));
+ 
+-    ret = get_phys_addr_lpae(env, ipa, access_type, s2_mmu_idx,
++    ret = get_phys_addr_lpae(env, ipa, access_type, s2_mmu_idx, s2_ptw_idx,
+                              s2walk_secure, is_el0, debug, result, fi);
+     fi->s2addr = ipa;
+ 
+@@ -2534,9 +2544,32 @@ static bool get_phys_addr_with_secure_debug(CPUARMState *env,
+                                             GetPhysAddrResult *result,
+                                             ARMMMUFaultInfo *fi)
+ {
+-    ARMMMUIdx s1_mmu_idx = stage_1_mmu_idx(mmu_idx);
++    ARMMMUIdx s1_mmu_idx, ptw_idx;
+ 
+-    if (mmu_idx != s1_mmu_idx) {
++    switch (mmu_idx) {
++    case ARMMMUIdx_Phys_S:
++    case ARMMMUIdx_Phys_NS:
++    do_disabled:
++        /* Checking Phys early avoids special casing later vs regime_el. */
++        return get_phys_addr_disabled(env, address, access_type, mmu_idx,
++                                      is_secure, result, fi);
++
++    case ARMMMUIdx_Stage1_E0:
++    case ARMMMUIdx_Stage1_E1:
++    case ARMMMUIdx_Stage1_E1_PAN:
++        /* First stage lookup uses second stage for ptw. */
++        ptw_idx = is_secure ? ARMMMUIdx_Stage2_S : ARMMMUIdx_Stage2;
++        break;
++
++    case ARMMMUIdx_E10_0:
++        s1_mmu_idx = ARMMMUIdx_Stage1_E0;
++        goto do_twostage;
++    case ARMMMUIdx_E10_1:
++        s1_mmu_idx = ARMMMUIdx_Stage1_E1;
++        goto do_twostage;
++    case ARMMMUIdx_E10_1_PAN:
++        s1_mmu_idx = ARMMMUIdx_Stage1_E1_PAN;
++    do_twostage:
+         /*
+          * Call ourselves recursively to do the stage 1 and then stage 2
+          * translations if mmu_idx is a two-stage regime.
+@@ -2548,6 +2581,12 @@ static bool get_phys_addr_with_secure_debug(CPUARMState *env,
+         }
+         /* For non-EL2 CPUs a stage1+stage2 translation is just stage 1. */
+         mmu_idx = s1_mmu_idx;
++        /* fall through */
++
++    default:
++        /* Single stage and second stage uses physical for ptw. */
++        ptw_idx = is_secure ? ARMMMUIdx_Phys_S : ARMMMUIdx_Phys_NS;
++        break;
+     }
+ 
+     /*
+@@ -2604,18 +2643,17 @@ static bool get_phys_addr_with_secure_debug(CPUARMState *env,
+     /* Definitely a real MMU, not an MPU */
+ 
+     if (regime_translation_disabled(env, mmu_idx, is_secure)) {
+-        return get_phys_addr_disabled(env, address, access_type, mmu_idx,
+-                                      is_secure, result, fi);
++        goto do_disabled;
+     }
+     if (regime_using_lpae_format(env, mmu_idx)) {
+         return get_phys_addr_lpae(env, address, access_type, mmu_idx,
+-                                  is_secure, false, debug, result, fi);
++                                  ptw_idx, is_secure, false, debug, result, fi);
+     } else if (regime_sctlr(env, mmu_idx) & SCTLR_XP) {
+         return get_phys_addr_v6(env, address, access_type, mmu_idx,
+-                                is_secure, debug, result, fi);
++                                ptw_idx, is_secure, debug, result, fi);
+     } else {
+         return get_phys_addr_v5(env, address, access_type, mmu_idx,
+-                                is_secure, debug, result, fi);
++                                ptw_idx, is_secure, debug, result, fi);
+     }
  }
  
 -- 

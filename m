@@ -1,144 +1,264 @@
-Received: by 2002:a8a:1193:0:0:0:0:0 with SMTP id m19csp458974ocs;
-        Sat, 1 Oct 2022 09:23:38 -0700 (PDT)
-X-Received: by 2002:a05:620a:4614:b0:6cc:9eb5:98b0 with SMTP id br20-20020a05620a461400b006cc9eb598b0mr9783779qkb.631.1664641418159;
-        Sat, 01 Oct 2022 09:23:38 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1664641418; cv=none;
+Received: by 2002:a8a:1193:0:0:0:0:0 with SMTP id m19csp460294ocs;
+        Sat, 1 Oct 2022 09:27:08 -0700 (PDT)
+X-Google-Smtp-Source: AMsMyM72Cw1OIOElXmUX5MrzIZzdXS00wguVRnt3byxLDD3zMVEs9kpnKm1nU9MAvML8clbAWVUx
+X-Received: by 2002:a37:a98c:0:b0:6cf:9ca3:b2fd with SMTP id s134-20020a37a98c000000b006cf9ca3b2fdmr9905477qke.118.1664641628479;
+        Sat, 01 Oct 2022 09:27:08 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1664641628; cv=none;
         d=google.com; s=arc-20160816;
-        b=BxbxYIYJU9kSFnlXzfpmGpGxugQuyYsKmP+BnrCFUFIJHTHQjKtguUUnq1IfrgT/MZ
-         5YQgjvKdiqoQLvmybV+VhxvAR3VMypr1F5//lYXCwywYnzCCdlIichG0zvqo5V56KftL
-         /euxMxefwhdRFbHBr3KD42lfAqiqCxIQ87Rf08nSyrzNjFi7pyWL+y4fv8GpfMSOdyKz
-         tUgiSt7egsa8+gn5PvR5lGacc+5PKjXDNzBrSIcrWuZd3R0z3hxVAHN26xYhgF/ZCc0B
-         PB62T+cWCkEpqMz9ISEiyHx3Bwo+elArmJhr5oZF7/3Kk2eEX2oc0+gyCaWwBQZzQO51
-         QFfw==
+        b=rYWbm1VLCy7dqZ04c53eR11NCjGUMAL7VUi6Nkbz7/lWHhRW4hg0rzELgiu2PXmc1q
+         qlkprrWZEqb3EH1ljimfxtvWPqs8Anp3af5p6T1LUZMRRzN6r9iXWz1+kjX4RNzD5D6y
+         ykYG6Df3LIeaRW2Kk0JAniaErb+MFwND7NdBh8ZkYac8JOWMTpVlfgA6k0cDlFhq+tcJ
+         2+jWTnkNFhrnsg5Z4MLK0/mn/pzQh6HGmgsN57cDYmVr4bmdCL7HcLsu3ryuivZ51evw
+         Kz42/wJQZ9Q9vEJ2cRDIZarFOmbnjfwuJTSkVImcJWBEXfmpP506IM3jZcROmOD39Jc0
+         8XSg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=6Tnfc5rXfCku9MasFsfztuydoPYwIjiauClakmhLN0A=;
-        b=HshzSpvR9fmK0LJ6baX37siHF2k29wZnjxIHUGhVVL/jGYuho4KRB1ggyTy3QpFZCR
-         NiwchHNDEE09+ztHXTLNGGVLQuESyYPL5RTxjFntm84YylC5JwD8ncrSQtzGXSl9IGzb
-         aerf6zVeTbL6DMX7KDcR/C3mtsqleol9Hf40MmhjM9uUle/upvI0D2/SDV3JDlb5vEf5
-         VSQHknulvOskwYfX0yE7s0Xgh2dRtR1bNdXBnRDIV8o7fGDoluGU43vjbyzAGGJYJP40
-         gO68pT29T3nTtkp/Sw/eSgsVNuRmK1xph5ULuhiL30yRmNZyvbKqvMgmpfN29W0DUji2
-         Y6lA==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=yMwwAQATpt9Zz9/JT2D65VdUDyPtcQpJeVsrKct0TfU=;
+        b=yn94c+Ks/T1jI6RRk7eqwnAmItyRKD8VsA0dUwgaCdpTd78SP6J6/wMAkNK91Ovhg1
+         yQjU90jBjYsKPwinXxyNMsNi0XxB8ZwXEBS+xQijrXCXrquxDkmNSBwKdEvFet6Nn8Br
+         pYP12qhU1bN0x9T48zAsUYkPdBx+wdINPswI00vKc7iBxrzz/pPmMx30MSBK0/lEahWX
+         lRGEhxyEJLKzyKoxpW6TXsTlfT3sWgBVBR5WGfbBvN74ELhtFL9PZ9EAbxVoSz5e+TfC
+         dx9KbJkjbvzGZd92XDAZ/y7EHoGGrXCT4BMpVk9AHbnwE2fsymeFLF98IwYx3G73vKIL
+         yh2g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=EvjkrmHC;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=yAYBdS8X;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <richard.henderson@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id r20-20020ac867d4000000b0035cbcc014e2sor2760383qtp.68.2022.10.01.09.23.38
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id y184-20020a3796c1000000b006ce7f85a871si2405542qkd.337.2022.10.01.09.27.08
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Sat, 01 Oct 2022 09:23:38 -0700 (PDT)
-Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Sat, 01 Oct 2022 09:27:08 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=EvjkrmHC;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=yAYBdS8X;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date;
-        bh=6Tnfc5rXfCku9MasFsfztuydoPYwIjiauClakmhLN0A=;
-        b=EvjkrmHCJzh9pvhJhXid6iFFNxK7GGiyvCnoXwsWpuW4aUVEsYpMrWxs5WtQBz1C9u
-         Vk98uNPVRXH6i+p97Kq1Mgf98xA2wM5rInMUMp4M1zesAM2H/6bcmzaofMKgMCkhDIGE
-         LMnFxx15UHjyAaHqiCOqVMOxEIQ+CNPDEks1+/4g49F2GYUtNKqo/FFYuwS/U8Lvf3Hm
-         J2G8s9xvHLv2RvnHYou/CxkmCZcfYqpJtiF1q1gRxtXg1CIjdgQyXgxspqXWmMmn0QKi
-         J/EeWoOvsz8wq0Sc0wvCxLdM+i54uZC1wkqMe8mIdhaFc8u+yIl8QFkey4NXNRRqduvn
-         xIVg==
+Received: from localhost ([::1]:41448 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1oefKW-0004cS-1q
+	for alex.bennee@linaro.org; Sat, 01 Oct 2022 12:27:08 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:59202)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1oefH8-0006ZL-G7
+ for qemu-arm@nongnu.org; Sat, 01 Oct 2022 12:23:38 -0400
+Received: from mail-qk1-x730.google.com ([2607:f8b0:4864:20::730]:33412)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1oefH6-0006F9-Oa
+ for qemu-arm@nongnu.org; Sat, 01 Oct 2022 12:23:38 -0400
+Received: by mail-qk1-x730.google.com with SMTP id h28so4556497qka.0
+ for <qemu-arm@nongnu.org>; Sat, 01 Oct 2022 09:23:35 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date;
+ bh=yMwwAQATpt9Zz9/JT2D65VdUDyPtcQpJeVsrKct0TfU=;
+ b=yAYBdS8XMhhzHwF2PrGhZuK/m6ZrpzRybrMdH8EdU53pA9Kb8G+Z5r3SGgiU/BSAKx
+ bR3iUbp/L9yQMXlBv94nCuRv23r46XbdcyNImoVfcSV5w7CG2W1d/0bwY9KEjjQWZ+h6
+ REm9hUOsDnzUQsyatGuUcFV9MAC9TGfg4BLo0ypUcOeq65vIKHgZmc8IBye91FT1azA/
+ VNxHoY70T3RW3fAcrYlkkHUa1FtYLAjzIqoHc8QsefwiHD5XYkRCHRQAr9Z99Ne2gvEp
+ r2T3aXBMItUeb6Wr0q+wjt0k9T2mb3lCVGmIx5n4UrAK8X0JNPyrSGqCeJoq9gE0HXFs
+ ozGg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date;
-        bh=6Tnfc5rXfCku9MasFsfztuydoPYwIjiauClakmhLN0A=;
-        b=rVeQP9UbzJOLwZeprw8S90MLNJMzK0J7jfeVYmMQxGgRPl4ZInq47tzCiIaiDKbcrZ
-         Ve6e7VrEP9FoYz9XsQ3Gaxfud6Ms7Hph1Io2Xxm6nos+La4ZNFArDk6M7bJAGlAt4e1j
-         CXRhYKOwLVeSRPLg8a0lG0qdjUY/pUx4Ig8VzsExT8/vhjoCISt0PXe1BZaLmnTEp8v3
-         sZxGu8hw4Wz2w9AfY3pKGc+e/0uDxyF9QvqQZAfTk4jIrAof0z9IB+2pb096jgawJy1V
-         3Lng49olraIAgb4heRMyfz+l9yec7n+R0FZFsO/4Q7mwDmJFgxJUBs8+pJ1Zzs1zngoR
-         Y3hg==
-X-Gm-Message-State: ACrzQf1OlrdNO573lKMNCezbLP0643NLjYcG+90ShukmVMZstJgR3w5M
-	RAqcXo451DvL15EGkyh8qbbyQpKh
-X-Google-Smtp-Source: AMsMyM61PU8VMEVdykE/halpW/Vjok+sDU1/X3s1JOeI2blWYnTwXe/ZZHBaUA7b/HbrY/qGC6Qq6Q==
-X-Received: by 2002:a05:622a:1c7:b0:35d:4a61:f2c7 with SMTP id t7-20020a05622a01c700b0035d4a61f2c7mr10802438qtw.578.1664641417854;
-        Sat, 01 Oct 2022 09:23:37 -0700 (PDT)
-Return-Path: <richard.henderson@linaro.org>
+ d=1e100.net; s=20210112;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+ :subject:date;
+ bh=yMwwAQATpt9Zz9/JT2D65VdUDyPtcQpJeVsrKct0TfU=;
+ b=yqXr1tsZLoGydxCAhKMqZGkCf80TFytmWrV7znuwJIR0mlPRYFvZR7dnc3blBce2br
+ aAWTnSkJrrY3Cna3DX6Xdk49blbrxT7sGg7WkXkj05/LEea7SrPTsagHZ9nSrtVpfu/F
+ aVZhVKOE3fMynolWvwdsfdqXJVoh4M/a8e74+kueyUp/NxnM6qctdsME2XCcWWXgkR0k
+ FyjIRoFlUPQFo/pqfBOLtr7c0T18Qs0n6wpSYgmq20aVjoNCTh5Emb/z2gqFNjqdyqz/
+ z4qdh6l9l2cOJFUBOwhJANQ01DsbW6MbKaQN0KA0kJkpZPoRgxYnL/X9lu1HUHJiMjeG
+ Qxog==
+X-Gm-Message-State: ACrzQf0eodPa3DbTn7xjh12Gts4OA8nxOqftTa0Lb/SZv163qkuLVMgC
+ D1p2No14TdTMlzIbMKH0x0iwgg==
+X-Received: by 2002:a05:620a:4515:b0:6ce:7335:4e77 with SMTP id
+ t21-20020a05620a451500b006ce73354e77mr9886130qkp.507.1664641415130; 
+ Sat, 01 Oct 2022 09:23:35 -0700 (PDT)
 Received: from stoup.. ([2605:ef80:8084:91a4:f7cb:db31:c505:b931])
-        by smtp.gmail.com with ESMTPSA id t4-20020a37ea04000000b006d1d8fdea8asm4387445qkj.85.2022.10.01.09.23.35
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 01 Oct 2022 09:23:37 -0700 (PDT)
+ by smtp.gmail.com with ESMTPSA id
+ t4-20020a37ea04000000b006d1d8fdea8asm4387445qkj.85.2022.10.01.09.23.33
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sat, 01 Oct 2022 09:23:34 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org,
-	Peter Maydell <peter.maydell@linaro.org>,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-Subject: [PATCH v3 06/42] target/arm: Add is_secure parameter to v7m_read_half_insn
-Date: Sat,  1 Oct 2022 09:22:42 -0700
-Message-Id: <20221001162318.153420-7-richard.henderson@linaro.org>
+	Peter Maydell <peter.maydell@linaro.org>
+Subject: [PATCH v3 05/42] target/arm: Split out get_phys_addr_with_secure
+Date: Sat,  1 Oct 2022 09:22:41 -0700
+Message-Id: <20221001162318.153420-6-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20221001162318.153420-1-richard.henderson@linaro.org>
 References: <20221001162318.153420-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: O7c/6a9r2WlK
+Received-SPF: pass client-ip=2607:f8b0:4864:20::730;
+ envelope-from=richard.henderson@linaro.org; helo=mail-qk1-x730.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: YFItf29JugrQ
 
-Remove the use of regime_is_secure from v7m_read_half_insn, using
-the new parameter instead.
-
-As it happens, both callers pass true, propagated from the argument
-to arm_v7m_mmu_idx_for_secstate which created the mmu_idx argument,
-but that is a detail of v7m_handle_execute_nsc we need not expose
-to the callee.
+Retain the existing get_phys_addr interface using the security
+state derived from mmu_idx.  Move the kerneldoc comments to the
+header file where they belong.
 
 Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
-Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/m_helper.c | 9 ++++-----
- 1 file changed, 4 insertions(+), 5 deletions(-)
+v3: Move the kerneldoc to internals.h
+---
+ target/arm/internals.h | 40 ++++++++++++++++++++++++++++++++++++++
+ target/arm/ptw.c       | 44 ++++++++++++++----------------------------
+ 2 files changed, 55 insertions(+), 29 deletions(-)
 
-diff --git a/target/arm/m_helper.c b/target/arm/m_helper.c
-index 5ee4ee15b3..203ba411f6 100644
---- a/target/arm/m_helper.c
-+++ b/target/arm/m_helper.c
-@@ -1981,7 +1981,7 @@ static bool do_v7m_function_return(ARMCPU *cpu)
-     return true;
+diff --git a/target/arm/internals.h b/target/arm/internals.h
+index 307a596505..3524d11dc5 100644
+--- a/target/arm/internals.h
++++ b/target/arm/internals.h
+@@ -1145,6 +1145,46 @@ typedef struct GetPhysAddrResult {
+     ARMCacheAttrs cacheattrs;
+ } GetPhysAddrResult;
+ 
++/**
++ * get_phys_addr_with_secure: get the physical address for a virtual address
++ * @env: CPUARMState
++ * @address: virtual address to get physical address for
++ * @access_type: 0 for read, 1 for write, 2 for execute
++ * @mmu_idx: MMU index indicating required translation regime
++ * @is_secure: security state for the access
++ * @result: set on translation success.
++ * @fi: set to fault info if the translation fails
++ *
++ * Find the physical address corresponding to the given virtual address,
++ * by doing a translation table walk on MMU based systems or using the
++ * MPU state on MPU based systems.
++ *
++ * Returns false if the translation was successful. Otherwise, phys_ptr, attrs,
++ * prot and page_size may not be filled in, and the populated fsr value provides
++ * information on why the translation aborted, in the format of a
++ * DFSR/IFSR fault register, with the following caveats:
++ *  * we honour the short vs long DFSR format differences.
++ *  * the WnR bit is never set (the caller must do this).
++ *  * for PSMAv5 based systems we don't bother to return a full FSR format
++ *    value.
++ */
++bool get_phys_addr_with_secure(CPUARMState *env, target_ulong address,
++                               MMUAccessType access_type,
++                               ARMMMUIdx mmu_idx, bool is_secure,
++                               GetPhysAddrResult *result, ARMMMUFaultInfo *fi)
++    __attribute__((nonnull));
++
++/**
++ * get_phys_addr: get the physical address for a virtual address
++ * @env: CPUARMState
++ * @address: virtual address to get physical address for
++ * @access_type: 0 for read, 1 for write, 2 for execute
++ * @mmu_idx: MMU index indicating required translation regime
++ * @result: set on translation success.
++ * @fi: set to fault info if the translation fails
++ *
++ * Similarly, but use the security regime of @mmu_idx.
++ */
+ bool get_phys_addr(CPUARMState *env, target_ulong address,
+                    MMUAccessType access_type, ARMMMUIdx mmu_idx,
+                    GetPhysAddrResult *result, ARMMMUFaultInfo *fi)
+diff --git a/target/arm/ptw.c b/target/arm/ptw.c
+index f9b7c316d0..542111f99e 100644
+--- a/target/arm/ptw.c
++++ b/target/arm/ptw.c
+@@ -2260,35 +2260,12 @@ static ARMCacheAttrs combine_cacheattrs(CPUARMState *env,
+     return ret;
  }
  
--static bool v7m_read_half_insn(ARMCPU *cpu, ARMMMUIdx mmu_idx,
-+static bool v7m_read_half_insn(ARMCPU *cpu, ARMMMUIdx mmu_idx, bool secure,
-                                uint32_t addr, uint16_t *insn)
+-/**
+- * get_phys_addr - get the physical address for this virtual address
+- *
+- * Find the physical address corresponding to the given virtual address,
+- * by doing a translation table walk on MMU based systems or using the
+- * MPU state on MPU based systems.
+- *
+- * Returns false if the translation was successful. Otherwise, phys_ptr, attrs,
+- * prot and page_size may not be filled in, and the populated fsr value provides
+- * information on why the translation aborted, in the format of a
+- * DFSR/IFSR fault register, with the following caveats:
+- *  * we honour the short vs long DFSR format differences.
+- *  * the WnR bit is never set (the caller must do this).
+- *  * for PSMAv5 based systems we don't bother to return a full FSR format
+- *    value.
+- *
+- * @env: CPUARMState
+- * @address: virtual address to get physical address for
+- * @access_type: 0 for read, 1 for write, 2 for execute
+- * @mmu_idx: MMU index indicating required translation regime
+- * @result: set on translation success.
+- * @fi: set to fault info if the translation fails
+- */
+-bool get_phys_addr(CPUARMState *env, target_ulong address,
+-                   MMUAccessType access_type, ARMMMUIdx mmu_idx,
+-                   GetPhysAddrResult *result, ARMMMUFaultInfo *fi)
++bool get_phys_addr_with_secure(CPUARMState *env, target_ulong address,
++                               MMUAccessType access_type, ARMMMUIdx mmu_idx,
++                               bool is_secure, GetPhysAddrResult *result,
++                               ARMMMUFaultInfo *fi)
  {
-     /*
-@@ -2003,8 +2003,7 @@ static bool v7m_read_half_insn(ARMCPU *cpu, ARMMMUIdx mmu_idx,
-     ARMMMUFaultInfo fi = {};
-     MemTxResult txres;
+     ARMMMUIdx s1_mmu_idx = stage_1_mmu_idx(mmu_idx);
+-    bool is_secure = regime_is_secure(env, mmu_idx);
  
--    v8m_security_lookup(env, addr, MMU_INST_FETCH, mmu_idx,
--                        regime_is_secure(env, mmu_idx), &sattrs);
-+    v8m_security_lookup(env, addr, MMU_INST_FETCH, mmu_idx, secure, &sattrs);
-     if (!sattrs.nsc || sattrs.ns) {
+     if (mmu_idx != s1_mmu_idx) {
          /*
-          * This must be the second half of the insn, and it straddles a
-@@ -2109,7 +2108,7 @@ static bool v7m_handle_execute_nsc(ARMCPU *cpu)
-     /* We want to do the MPU lookup as secure; work out what mmu_idx that is */
-     mmu_idx = arm_v7m_mmu_idx_for_secstate(env, true);
+@@ -2304,8 +2281,8 @@ bool get_phys_addr(CPUARMState *env, target_ulong address,
+             ARMMMUIdx s2_mmu_idx;
+             bool is_el0;
  
--    if (!v7m_read_half_insn(cpu, mmu_idx, env->regs[15], &insn)) {
-+    if (!v7m_read_half_insn(cpu, mmu_idx, true, env->regs[15], &insn)) {
-         return false;
+-            ret = get_phys_addr(env, address, access_type, s1_mmu_idx,
+-                                result, fi);
++            ret = get_phys_addr_with_secure(env, address, access_type,
++                                            s1_mmu_idx, is_secure, result, fi);
+ 
+             /* If S1 fails or S2 is disabled, return early.  */
+             if (ret || regime_translation_disabled(env, ARMMMUIdx_Stage2,
+@@ -2518,6 +2495,15 @@ bool get_phys_addr(CPUARMState *env, target_ulong address,
      }
+ }
  
-@@ -2125,7 +2124,7 @@ static bool v7m_handle_execute_nsc(ARMCPU *cpu)
-         goto gen_invep;
-     }
- 
--    if (!v7m_read_half_insn(cpu, mmu_idx, env->regs[15] + 2, &insn)) {
-+    if (!v7m_read_half_insn(cpu, mmu_idx, true, env->regs[15] + 2, &insn)) {
-         return false;
-     }
- 
++bool get_phys_addr(CPUARMState *env, target_ulong address,
++                   MMUAccessType access_type, ARMMMUIdx mmu_idx,
++                   GetPhysAddrResult *result, ARMMMUFaultInfo *fi)
++{
++    return get_phys_addr_with_secure(env, address, access_type, mmu_idx,
++                                     regime_is_secure(env, mmu_idx),
++                                     result, fi);
++}
++
+ hwaddr arm_cpu_get_phys_page_attrs_debug(CPUState *cs, vaddr addr,
+                                          MemTxAttrs *attrs)
+ {
 -- 
 2.34.1
+

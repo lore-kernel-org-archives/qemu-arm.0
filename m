@@ -1,156 +1,141 @@
-Received: by 2002:a8a:84:0:0:0:0:0 with SMTP id s4csp428352ocq;
-        Mon, 3 Oct 2022 03:29:33 -0700 (PDT)
-X-Google-Smtp-Source: AMsMyM5Puy7QKRVIhyZuxHExejkuxFKcNc+2ixhWzIIOleA2Idf2JxScVA6knrFXDZwI+eqRUSOc
-X-Received: by 2002:a05:6214:4118:b0:4ac:ae43:4074 with SMTP id kc24-20020a056214411800b004acae434074mr15135289qvb.13.1664792972983;
-        Mon, 03 Oct 2022 03:29:32 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1664792972; cv=none;
+Received: by 2002:a8a:84:0:0:0:0:0 with SMTP id s4csp417461ocq;
+        Mon, 3 Oct 2022 03:08:21 -0700 (PDT)
+X-Received: by 2002:a05:622a:100f:b0:35d:862:7d87 with SMTP id d15-20020a05622a100f00b0035d08627d87mr15217292qte.328.1664791701155;
+        Mon, 03 Oct 2022 03:08:21 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1664791701; cv=none;
         d=google.com; s=arc-20160816;
-        b=I08Lkj/cBck0nz9ACheQs7J+2BlH/RH4Q/EGe0jgHA35Y/X+BbD4HlN4nfth79cd2v
-         fj0nutN5ZhQughegX2b+51KfG2EUypdG8kNAXQ1PeNQC68DS3Lt6YOYp+RBf1G6FdANU
-         FGgwTO1wJnWNFjbMvWaBjIprV+nV4xmRaj/VX+M5sY+QVOhI1i/G0c3RlfQ7mVNb6sLU
-         SsqeAJaGAGduZTi71jrFAhr18S5EC3tgkYzZy1TwoUReR7RKxcA4J3qNjK5Gss+qS3is
-         4JlA0aK+UA7TgJ8r8TuWknp+LeLGV3WMlyJ1m44bu+6HYMzbxB2w+ZkuzZBI3RTo75Hi
-         n64A==
+        b=ZRNmh9vTK8vJEk7knKVIoqor5gr5n29CiI89yxZkEuVB4rAXZui0B1Hv0JsNhINaF9
+         WqT0x0Kqq8cVwWhEGbG+nF5FDoTWAQvgSm3FuxO6Z+4jUTS4AR1cRtR2yAR9J2vdGuNr
+         a42+qH7rYkTEQiniP5hklkWwXqKLhc+KG8h5+KaW25xXWNKuoKJ1EuWIKIcAGQrKB8dn
+         cU6yzAGcbcfFDJvsQHo8FHTB3JZFgGfSkYeYCBiYt+0Mx68pI8RcegQzyytHG5J3N06W
+         U9Ao2X0uFhJR6REo9XBC/oL0/Zg+vtSkmtrPC4RboyM1aJOJSz9iRgKiPUzNDKxfANYw
+         II9Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=iYWPdbX0XJJ/cmLOGry3A7D88+6pMlRTxl6D1mZ+wuM=;
-        b=ubNzsb8f6BPVypJls2z0zKxR25TutQsbWQxo1fT/XF9E30NLxHntnvWd4Ogyh3xL2Z
-         /L7Wl5yUfK8CFdZkekVFBDBxnFcE70DVkuTvJOmoo0kevm66SvTdg65BuD1Q4wyXpuxj
-         xjOw+aMU0GQpAXdXA1e1WFLj9WpkSRpOYyiQrPW+UV7cA4seGq1LY0qQrVZlGVnwuQIt
-         Iv1FoNKUUggLhj5F5ddSm1XqDYbE3Tk/PmXtIASJekyX5kQSNibMNh6Bp4n0+zAdVRxH
-         uCHndTvsMH80Ule/LBGwpiKKirmh7E9hDgqz629hqorMHknIXrcy9gB+F/8Ju/cV8i26
-         Fm5Q==
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=WbQyWeXVv/Uvf3u9MYTUnka9mu0yb8heu+71guWzDVM=;
+        b=Me+DaJXXVmGqFK+Tqn817y3Ovh+YF+xZifnUDzQ/415U3MRW20fGchNLz+g2PD37nl
+         aXEBsjGYffoJIXME9wHmKqmpDUItoCTbaMzzojfrp8ry8kEWCxZiTKpcKL3KzgpD6G7K
+         9tfzP4T30aiBbNIPeGxDnika1Tv0CnB3OQfJ1ovq2GUo4l1jKhTyDvAOd+A+w+ftyGPc
+         BZiTfUYjZ2TGVpw00h6qp+YEoDfUl0i28zWaPFf7SJt+otY/VSXlphkxf3SuU5NTOvTp
+         QnfCzsNKWyEotzctOkYSy3w31T3BCVC0rm117NEWwZcQF0HWnx5YlZlPG2PkhJzJf51s
+         JBUQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Z1JNLswh;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id c27-20020a05620a269b00b006cf03b4c696si4248686qkp.257.2022.10.03.03.29.32
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 03 Oct 2022 03:29:32 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b="Y/0reL9j";
+       spf=pass (google.com: domain of bmeng.cn@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=bmeng.cn@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <bmeng.cn@gmail.com>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id m21-20020a05620a291500b006ce4050d69dsor2043649qkp.78.2022.10.03.03.08.21
+        (Google Transport Security);
+        Mon, 03 Oct 2022 03:08:21 -0700 (PDT)
+Received-SPF: pass (google.com: domain of bmeng.cn@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Z1JNLswh;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:58602 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ofIhY-0004Jt-HM
-	for alex.bennee@linaro.org; Mon, 03 Oct 2022 06:29:32 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:43494)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1ofIgx-0004GM-Kq
- for qemu-arm@nongnu.org; Mon, 03 Oct 2022 06:28:55 -0400
-Received: from mail-ed1-x535.google.com ([2a00:1450:4864:20::535]:36520)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1ofIgv-0001Ly-0g
- for qemu-arm@nongnu.org; Mon, 03 Oct 2022 06:28:54 -0400
-Received: by mail-ed1-x535.google.com with SMTP id e18so13922728edj.3
- for <qemu-arm@nongnu.org>; Mon, 03 Oct 2022 03:28:52 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date;
- bh=iYWPdbX0XJJ/cmLOGry3A7D88+6pMlRTxl6D1mZ+wuM=;
- b=Z1JNLswhngiP6nCTJTZJlsudDnhQRdQ19+1Vq7GVMpnY0LQ+OB/FqO/FfsI02DuYoK
- t1gYzXCoomFKB/v967xGL1K3+dBedT7ZqT+Q7b8EO6afN9iV3LBRiVAbJeaR3rJM4gy9
- BI0bYmq3jmme+Ejg6+vfS9/OJO68u/ZhWF6Knd9pHkNofrPU6HYzHXCojLoeN7knthN5
- A88IApBY2RQleRwKqtBKBBI8G1wMpHmF0n/1oz8qsdo7DBghQXzFL9NV8BzxZ2AOVTxM
- I6je3BJpmC/le22ebHh0GJr5zDEYcFO24tRWUtmJzOpl9dwoRBJIfC9JI3ffaG8i9pS/
- zSbw==
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b="Y/0reL9j";
+       spf=pass (google.com: domain of bmeng.cn@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=bmeng.cn@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date;
+        bh=WbQyWeXVv/Uvf3u9MYTUnka9mu0yb8heu+71guWzDVM=;
+        b=Y/0reL9j6CYsH6JPP4Dpbv17qULyRH8gHqfi9awOROb5xwV9b6lM/B1Ug45R1nuWlM
+         a+KzJoGc5KyCteJxhr9x7/F6YmvzPISj/wOxgshyAz7+m/d+wWO5btDJ9ownEf27cv+N
+         VAAQlPh7p5sb7NC4GSP4066m8vLTafXiCGy1bHlaAuFplCX6VAOl2+XmGwH6O26AUZ2/
+         ulzGRBIKcivnRJNBnujqjAUMlala36olTclDxEth1Vqi4Oq+vhhWNaitzQ+9fSNLWK8I
+         CagRbF6aGt/j2IE5twnCJwX2hPlgm1mB1kQmgqNnn24DhbYDDMp+750f/doLSkOdyVFS
+         hOHA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date;
- bh=iYWPdbX0XJJ/cmLOGry3A7D88+6pMlRTxl6D1mZ+wuM=;
- b=Qd04iyG1O7biBFgMfqO69YOaGj5TkjJFqc+FGM9gLxfUXoyOaqjf8pKwkVn37KOdFK
- Z8gwQnrMrhp8OMc0aCB7ME7klLre7hxeG2mrzJsjJoSMF+gZa+JUWDkFBUOoM7n/RIsm
- cy95ffpkD5gCV9oDyShD+HFfOjcJcB6TwoPeAYrCKjIDzjaU0nw0kPy/OUzy3AqvPGKX
- 0xd9rLjd1CBlV+OXAGdTZAHvSg3XDZpZtsS0Vb19dOAeo8CY7qKi0+mce82G4wmYDEjT
- S+zdz3XXuGDqRih0xPlpLqryV0KQ2/pjOhDbHFbXeAMozLDR3q2uddCzBKhMT2oHZ5ks
- psgQ==
-X-Gm-Message-State: ACrzQf0P4dGTnk98KH8XGOGmhYfvfZ+5Rq0Q4SvZYFK03uohTDdJlyvl
- zD6TQ4GEgId/ucq/pLY7ADb+Vc1/3L3FkHC9sC57NA==
-X-Received: by 2002:a05:6402:2787:b0:451:d655:9269 with SMTP id
- b7-20020a056402278700b00451d6559269mr18152712ede.375.1664792931593; Mon, 03
- Oct 2022 03:28:51 -0700 (PDT)
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date;
+        bh=WbQyWeXVv/Uvf3u9MYTUnka9mu0yb8heu+71guWzDVM=;
+        b=Wknv1r4qjKGJNAfTY3KwGMDnXDcDBM6JSHfxL0Qk47VgjHyVCs6dmox3KHC8H5qQKB
+         JMLFR1e1clLprjgJbZy4TRGOF7Ai2Z6QeZeH9phW07P9uYwB4VrH2mCrbBM07p3uxLIq
+         kdxMEPB/xWDG4hnwHXS4RmhMkp/PeqZT1IzaXjKmf0XSfR+5ig360DTPClm1ZaATpQXF
+         rAkWykZxqS16YvZdb2nMoSwmKJPJvslyYOqdlzsGtCLMTg613jCL/3DmomzYhLs/hpaF
+         5cz+DuK24eirFCQ+RyQYX+p6Hor7bJp7HyK4hbP5v5BfKJQOJLfqCqKcZ9chWhCuE1SB
+         RLhA==
+X-Gm-Message-State: ACrzQf0v1caclNwckOaOmf+4sfsNjrojKHItyNefyg7xSdJFEU4SrSoN
+	ggZUk2E8/z7b6pPF+6wCpC3Z4LXXARoYJdRSm1o=
+X-Google-Smtp-Source: AMsMyM6mOTLiRyFU5XZ8vrjHYhl5rtMjjVhWHSLHv79vy0/Kx60SB1boci2KZ4dLSyQx8yOKZiHcnvYpwWWPCqpSJdI=
+X-Received: by 2002:a05:620a:1b8b:b0:6cf:4dbc:e0a9 with SMTP id
+ dv11-20020a05620a1b8b00b006cf4dbce0a9mr12755498qkb.342.1664791700805; Mon, 03
+ Oct 2022 03:08:20 -0700 (PDT)
 MIME-Version: 1.0
-References: <20220930174853.2233633-1-peter.maydell@linaro.org>
- <20220930174853.2233633-2-peter.maydell@linaro.org>
- <3ebee616-2a99-10b5-0902-d41eccbec1f2@linaro.org>
-In-Reply-To: <3ebee616-2a99-10b5-0902-d41eccbec1f2@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 3 Oct 2022 11:28:40 +0100
-Message-ID: <CAFEAcA9SzEge=PUKJ4gW71gF14NS8aH3JwHwmpVeDXnd18XvFA@mail.gmail.com>
-Subject: Re: [PATCH 1/2] target/arm: Don't allow guest to use unimplemented
- granule sizes
-To: Richard Henderson <richard.henderson@linaro.org>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org
+References: <20220927110632.1973965-1-bmeng.cn@gmail.com> <CAJ+F1CJ3cTdNwZEQ5i+05mgYXXngyRAF6MoX6JFadsp9tKEgmg@mail.gmail.com>
+In-Reply-To: <CAJ+F1CJ3cTdNwZEQ5i+05mgYXXngyRAF6MoX6JFadsp9tKEgmg@mail.gmail.com>
+From: Bin Meng <bmeng.cn@gmail.com>
+Date: Mon, 3 Oct 2022 18:08:09 +0800
+Message-ID: <CAEUhbmXXUcW0jb4VXBHeemjZoHD2fcnzMmfo=rX55BREN2KXHA@mail.gmail.com>
+Subject: Re: [PATCH v4 00/54] tests/qtest: Enable running qtest on Windows
+To: =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@gmail.com>
+Cc: qemu-devel@nongnu.org, Thomas Huth <thuth@redhat.com>, 
+	=?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
+	Alexander Bulekov <alxndr@bu.edu>, Andrew Jeffery <andrew@aj.id.au>, Ani Sinha <ani@anisinha.ca>, 
+	Bandan Das <bsd@redhat.com>, Beraldo Leal <bleal@redhat.com>, Bin Meng <bin.meng@windriver.com>, 
+	Christian Schoenebeck <qemu_oss@crudebyte.com>, Coiby Xu <Coiby.Xu@gmail.com>, 
+	=?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>, 
+	=?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>, 
+	Darren Kenny <darren.kenny@oracle.com>, "Dr. David Alan Gilbert" <dgilbert@redhat.com>, 
+	Eduardo Habkost <eduardo@habkost.net>, Fam Zheng <fam@euphon.net>, Gerd Hoffmann <kraxel@redhat.com>, 
+	Greg Kurz <groug@kaod.org>, Hanna Reitz <hreitz@redhat.com>, Igor Mammedov <imammedo@redhat.com>, 
+	Jason Wang <jasowang@redhat.com>, Joel Stanley <joel@jms.id.au>, John Snow <jsnow@redhat.com>, 
+	Juan Quintela <quintela@redhat.com>, Kevin Wolf <kwolf@redhat.com>, 
+	Konstantin Kostiuk <kkostiuk@redhat.com>, Laurent Vivier <lvivier@redhat.com>, 
+	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, Markus Armbruster <armbru@redhat.com>, 
+	Michael Roth <michael.roth@amd.com>, "Michael S. Tsirkin" <mst@redhat.com>, 
+	Paolo Bonzini <pbonzini@redhat.com>, Peter Maydell <peter.maydell@linaro.org>, 
+	=?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>, 
+	Qiuhao Li <Qiuhao.Li@outlook.com>, Richard Henderson <richard.henderson@linaro.org>, 
+	Stefan Hajnoczi <stefanha@redhat.com>, Wainer dos Santos Moschetta <wainersm@redhat.com>, 
+	Willian Rampazzo <willianr@redhat.com>, Yanan Wang <wangyanan55@huawei.com>, qemu-arm@nongnu.org, 
+	qemu-block@nongnu.org
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::535;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x535.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: EOFdSIQVMYRD
+Content-Transfer-Encoding: quoted-printable
+X-TUID: gOA2+wn8VX/K
 
-On Fri, 30 Sept 2022 at 22:05, Richard Henderson
-<richard.henderson@linaro.org> wrote:
+Hi Marc-Andr=C3=A9,
+
+On Mon, Oct 3, 2022 at 5:26 PM Marc-Andr=C3=A9 Lureau
+<marcandre.lureau@gmail.com> wrote:
 >
-> On 9/30/22 10:48, Peter Maydell wrote:
-> > @@ -10289,20 +10289,113 @@ static int aa64_va_parameter_tcma(uint64_t tcr, ARMMMUIdx mmu_idx)
-> >       }
-> >   }
-> >
-> > +typedef enum GranuleSize {
-> > +    /* Same order as TG0 encoding */
-> > +    Gran4K,
-> > +    Gran64K,
-> > +    Gran16K,
-> > +    GranInvalid,
-> > +} GranuleSize;
+> Hi Bin
 >
-> It might be worth using this in ARMVAParameters. Even if you don't do that now, it would
-> be worth putting this typedef in internals.h.
+> On Tue, Sep 27, 2022 at 3:18 PM Bin Meng <bmeng.cn@gmail.com> wrote:
+>>
+>> In preparation to adding virtio-9p support on Windows, this series
+>> enables running qtest on Windows, so that we can run the virtio-9p
+>> tests on Windows to make sure it does not break accidently.
+>>
+>> Changes in v4:
+>> - Do not use g_autofree and g_steal_pointer
+>> - Update the error reporting by using the GError "error" argument
+>>   of g_dir_make_tmp()
+>> - Remove the const from tmpfs declaration
+>> - Replace the whole block with a g_assert_no_error()
+>> - Replace the error reporting with g_assert_no_error()
+>> - Update error reporting
+>> - Move the new text section after the "QTest" section instead
+>> - Use plural in both cases: "on POSIX hosts as well as Windows hosts"
+>> - Use "The following list shows some best practices"
+>> - Fix typo of delimiter
+>> - New patch: "tests/qtest: boot-serial-test: Close the serial file befor=
+e starting QEMU"
+>> - Drop patch: "chardev/char-file: Add FILE_SHARE_WRITE when openning the=
+ file for win32"
+>>
+>
+> Could you post a v5 rebased on the current master? thanks
+>
 
-I'd assumed you had a reason for using two bools rather than
-an enum in ARMVAParameters, so I left that alone :-) But it would
-make more sense to consistently use GranuleSize. (I guess for
-putting it in internals.h it ought to be named ARMGranSize.)
+Sure, will do.
 
-Putting GranuleSize into ARMVAParameters brings us into the
-area of enums in bitfields, where I'm not sure exactly what
-the standard says or our supported compilers allow as an
-impdef extension.
- GranuleSize gsize : 2;
-seems to work, but is it portable? Or should I just put
- GranuleSize gsize;
-and accept that that means the ARMVAParameters goes from
-4 bytes to 8 bytes in size?
+> (I think most of the remaining patches are simple enough that I could tak=
+e them in a misc PR if they are not picked by subsystem maintainers)
 
-thanks
--- PMM
+Thank you.
+
+Regards,
+Bin

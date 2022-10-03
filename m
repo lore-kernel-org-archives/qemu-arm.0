@@ -1,112 +1,119 @@
-Received: by 2002:a8a:1193:0:0:0:0:0 with SMTP id m19csp469620ocs;
-        Sat, 1 Oct 2022 09:52:27 -0700 (PDT)
-X-Google-Smtp-Source: AMsMyM73m7EtROJcl1gLwSLZIOZGqNY0a/+jBP8PdBrhol+11knURJJoq4EqgernDgjwKbLmKUqS
-X-Received: by 2002:a05:620a:280e:b0:6a6:ee16:8c78 with SMTP id f14-20020a05620a280e00b006a6ee168c78mr9728414qkp.122.1664643146842;
-        Sat, 01 Oct 2022 09:52:26 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1664643146; cv=none;
+Received: by 2002:a8a:84:0:0:0:0:0 with SMTP id s4csp360639ocq;
+        Mon, 3 Oct 2022 01:00:47 -0700 (PDT)
+X-Google-Smtp-Source: AMsMyM5nrEOaEsrF1hdIe8Ma/jDr0U4cXKjRNQG3nmHcajiVQW/X5qTG3y4NlLqsiiTeqoBqWCK6
+X-Received: by 2002:a37:9a97:0:b0:6cd:d7fe:68a0 with SMTP id c145-20020a379a97000000b006cdd7fe68a0mr12698100qke.554.1664784047437;
+        Mon, 03 Oct 2022 01:00:47 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1664784047; cv=none;
         d=google.com; s=arc-20160816;
-        b=LmrSpKDwXQ2xgDn+I8707l+o6TgCMgfZ1Q8UNnTr+Y+RMNOFgqERBQppJ8aBHReZZ9
-         IMron7tKZmikIVn0jUyykEI15MXxVbruDiQ4fzBDJAlYv9rXZLCI+yfB7SeoG5unGJ20
-         ofrgrcZCTLBx+kXsOdJ6UBk4QUPw4xBGj+X/mm46vIy6quWebeHiHLxsjfuE/VqYWaB9
-         0UNYJKyPP2alKllqxYRWQ4eKv9UPfYxcgDxOjTH3f2QGE2tMtVd3Ao9/adv7ZajzJJBE
-         qAqLuxBqzuU/0aOKT6dPs2NT0i2sHo3mWyIthYnI8ue/M7sGtG44o0sYgtq0gbIa3tlq
-         sd1w==
+        b=cE1VpcZ8sv6OlrUnYDbO8XRC7ZWDhu4uxOkSnPyFf8WeDmeHi647i9JQbPNRFKLJsh
+         57GXtMkmUkqGk9+PAt7wXL+4tpwQ6xku3ra6hBBAYSLsx21LkBuPl3uqlNLYx/0y/8em
+         557bWksvkvUSkV2DCbDuqbXi6dU1DjySP8BQNW9T5P1zUIA1xaYQdfFxTTQuf6hHXlfu
+         zmvTdayPcRZzIJ7GpCUShY3RhTxUmAFyxh5S1fZP+GuTYEHioGxO+wtFYGryrCN+ZjkJ
+         EvOJeR8sCuas16IHxv+mfGxyQNV5Hz1HTQmGV0Wxuft2zggM13HDBx2U9uDk6X01l7yX
+         bTHQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=8i+GnsYsjdhfrh1IH3Iu5+k/jBY4+XRApAtU5rIcPD0=;
-        b=nE8uDgZxcN8UlfuV4KrmAy1j0thFxwRFr0wDQFc9AquZGzOctPb9BZ5tfYPdHcHF2d
-         rpd5cl3dlmGS2fKNIuRyKXs+3I3U3wFfeYl894V2DKhGL3XCtLrOC04X0bAfjSLyrX9g
-         SUptioqYM5gJ0Vgx67Ad+MYHjI2tIst3/9O0gxmg0wGItO63SFro9cYq/cQRhl+ICwGo
-         RCn77QfbN6MNGBSRzuCteqjqE5eguO70N4jV0W1pwzqZ8Cb+a+TzZGcUkAcsVsvfnMqR
-         ohhSqr5XojSSFWzxD1tGK9pjaXGjO7YEX0xgQgVl1twvOBn6WOjpbXy5RHn8oAbGqmu9
-         XdTw==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=VPe4oMlG8EWS4JZHkwkWEV8vUW54OWDC0T0tYwYNNXk=;
+        b=vZVErXdyM9+T0L7JyN3DxKFv8Cv6QtHmLI6rZNjDudKtuHTlDbtOReHKdVu7KciawN
+         JT7zufX+qKmA3Mpbn/Inq4KakZ/RUX9KppNeyGQ6ufiimBuCcafLZYcIM5L6YrkMBPUD
+         SACtZh1FRbOcuQnRdhWcgBd8T0ZToFHGiK/qdOXuZ1vj60mtq4nMuLDzVcnE17COKAUW
+         ezTfDbKi+85TcpzpJ5Xf18/fp8QPdyGdltj+wV/TWFlKSQ/ZW0NU7dEbv4SiGdP7HJ3r
+         IayIbrbrUbxTl/XK7zUbB/mDxDHJrUexSVL9KVtgd3LHxDQRRi0t0QjOUscqfDyp7GWb
+         AVGQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=DzP5sOaG;
+       dkim=fail header.i=@ilande.co.uk header.s=20220518 header.b=BmpvqEKR;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=ilande.co.uk
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id kl18-20020a056214519200b004af89a40dd3si2627711qvb.149.2022.10.01.09.52.26
+        by mx.google.com with ESMTPS id x8-20020a05620a258800b006b5d9a81e62si3866663qko.651.2022.10.03.01.00.47
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 01 Oct 2022 09:52:26 -0700 (PDT)
+        Mon, 03 Oct 2022 01:00:47 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=DzP5sOaG;
+       dkim=fail header.i=@ilande.co.uk header.s=20220518 header.b=BmpvqEKR;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:59964 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=ilande.co.uk
+Received: from localhost ([::1]:44458 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1oefj0-0006WA-Bf
-	for alex.bennee@linaro.org; Sat, 01 Oct 2022 12:52:26 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38800)
+	id 1ofGNa-0003gg-VE
+	for alex.bennee@linaro.org; Mon, 03 Oct 2022 04:00:46 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46876)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1oefHz-0007nw-D3
- for qemu-arm@nongnu.org; Sat, 01 Oct 2022 12:24:31 -0400
-Received: from mail-qk1-x732.google.com ([2607:f8b0:4864:20::732]:36646)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1oefHx-0006OK-AV
- for qemu-arm@nongnu.org; Sat, 01 Oct 2022 12:24:31 -0400
-Received: by mail-qk1-x732.google.com with SMTP id i3so4549628qkl.3
- for <qemu-arm@nongnu.org>; Sat, 01 Oct 2022 09:24:28 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date;
- bh=8i+GnsYsjdhfrh1IH3Iu5+k/jBY4+XRApAtU5rIcPD0=;
- b=DzP5sOaGpW29SJyHVNND0VX+xMw1YTyIP8IA9qrSmxSz5MA6tZ2bSbt2FuJRkfDxYA
- JY86KstCIpnUsAg2rR+JAFM43zsnGSqKzoEG2A3cv/hUXg+MjtmLcLWZ+NIvwWTm7svB
- dOgwzY8v6YjjKbSjU9Fs0yyJhOrhZNIApgNbPdI5GUtbQJopiNcqFMyE0sgx22Y1Farc
- 0fhGYALuZoxkYloRThwEsyZk+OAmxDnub0zgtPg4z8fFj0MuSDA6l7nMSIl2HaGctmkS
- 1W+GiJi2SmNkoEYXj0ioI9AEXJZiEyK89SkhPgKwf3E3YWQlyOJT/R1aQ88Zy/Yrw0ox
- 5sHA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date;
- bh=8i+GnsYsjdhfrh1IH3Iu5+k/jBY4+XRApAtU5rIcPD0=;
- b=Tlx3zv1chMpBYokP5eGYJCZtqXI+LFOMDaanPUYjrLN34L7oLX2vnwCVb1d6HCYrO3
- Vhjce5N+VPmL1u2zDIqotDbMbY2jKEx/wkL5vCztqxqOIFZ0Wo12ieEOQWw0wgdnvHZj
- wXk18f+wJgHsCI3NJ75msp+7BWw3FO6mEgieZVyrQ2jimdm+9ekCK5OPOJ2CSbgb62Zh
- I7nj69uEoVRRWvzShAtZTkqDpJPoQwjQ+5bEeKskPuoxTXOfP5XvV0YDU8m8T6WSW7f0
- eC6vSs1oWpX4mk6GHihA0J91LOWT18044QyaJ+RSnvuk6YmY3fKgLRhdymemiJq0bfg7
- aPNA==
-X-Gm-Message-State: ACrzQf1wYdCSfbBNi+XwvQ3jzEbiSaScTr4yu+ZnBDs6YYpXBFXgGOXZ
- q3673ofOXcWQ4MYpcgntzXU/VQ==
-X-Received: by 2002:a05:620a:280d:b0:6cf:ab57:a130 with SMTP id
- f13-20020a05620a280d00b006cfab57a130mr9829664qkp.749.1664641468099; 
- Sat, 01 Oct 2022 09:24:28 -0700 (PDT)
-Received: from stoup.. ([2605:ef80:8084:91a4:f7cb:db31:c505:b931])
- by smtp.gmail.com with ESMTPSA id
- t4-20020a37ea04000000b006d1d8fdea8asm4387445qkj.85.2022.10.01.09.24.25
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 01 Oct 2022 09:24:27 -0700 (PDT)
-From: Richard Henderson <richard.henderson@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org
-Subject: [PATCH v3 27/42] target/arm: Use softmmu tlbs for page table walking
-Date: Sat,  1 Oct 2022 09:23:03 -0700
-Message-Id: <20221001162318.153420-28-richard.henderson@linaro.org>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20221001162318.153420-1-richard.henderson@linaro.org>
-References: <20221001162318.153420-1-richard.henderson@linaro.org>
+ (Exim 4.90_1) (envelope-from <mark.cave-ayland@ilande.co.uk>)
+ id 1ofGMS-0003cu-7m; Mon, 03 Oct 2022 03:59:36 -0400
+Received: from mail.ilande.co.uk ([2001:41c9:1:41f::167]:43226)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <mark.cave-ayland@ilande.co.uk>)
+ id 1ofGMP-0004px-4y; Mon, 03 Oct 2022 03:59:35 -0400
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+ d=ilande.co.uk; s=20220518; h=Subject:Content-Transfer-Encoding:Content-Type:
+ In-Reply-To:From:References:Cc:To:MIME-Version:Date:Message-ID:Sender:
+ Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+ :Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
+ List-Subscribe:List-Post:List-Owner:List-Archive;
+ bh=VPe4oMlG8EWS4JZHkwkWEV8vUW54OWDC0T0tYwYNNXk=; b=BmpvqEKR1NUs8iYHN9kofGlndb
+ n/iBGYmLT3luWDRuLKZiZkw6BNF5vwoz+qwZkSsCkfVTGrsuPLjHx4uvVmHVRtp3O/CKBfwYwCvNk
+ SKy673okqLXBeUdYt+lGUo640S60+F+0TNPGwzqp02XyJmuMQjPjZbQrKE1gHIFth6NgWHwvYOGJB
+ 86ohahrBzFIUDtOqVv4GB2yGJAdSUEX+YO33YrMqBc+Eeu2OnU0xMgH3aAvPb9z26kfMU4h3wOFVE
+ gEg5VIadX1DBy+ka4dm+eZcuFMXyLnAQmyyNYXF2lCfrd8FC0qOJEoDFMo/HE//Eo/aKCBx7ToHDJ
+ +jFQlxRvtmxTg+N/GB/xLHIp9DgdD85hR4//p7bbRgYbnkEvOjhqN2YMD0QuqwG6D9kGVfoVoJAZP
+ pFqXwn/ZGVF5QFIRFqYJOiOGEMNvqNfa1GbycPlS7P3+oxjrBk345xGVnGt6uDe8EpE0DQj9rUN+m
+ dNt4o6rMdp2HeEpFHtiQvnIhCHfrVQNd6ty3EP3uLBuMK5xMJJcwUqi1R+5t1XLRMGHtTVWqd/xkS
+ Q6HdXs3DiLuBQI2573wQl0lDllXBtLLmdsW7IMd3auRexlqivJ8GWnoLNi2+P17f0gZaGNIPJWRgq
+ WvzI2VnMeDfR5Sf9ya6OtuqIg3TW4/axT4SPjfGB0=;
+Received: from [2a00:23c4:8ba7:8700:f0a2:2ba9:489e:6915]
+ by mail.ilande.co.uk with esmtpsa (TLS1.3:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.92) (envelope-from <mark.cave-ayland@ilande.co.uk>)
+ id 1ofGKC-0005Pe-6V; Mon, 03 Oct 2022 08:57:20 +0100
+Message-ID: <d321119a-8329-b074-2734-3e3365ad4b90@ilande.co.uk>
+Date: Mon, 3 Oct 2022 08:58:58 +0100
 MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.13.0
+Content-Language: en-US
+To: Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org
+Cc: peter.maydell@linux.org, alex.bennee@linux.org,
+ Eduardo Habkost <eduardo@habkost.net>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
+ Yanan Wang <wangyanan55@huawei.com>, Michael Rolnik <mrolnik@gmail.com>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ Taylor Simpson <tsimpson@quicinc.com>, Song Gao <gaosong@loongson.cn>,
+ Xiaojuan Yang <yangxiaojuan@loongson.cn>, Laurent Vivier
+ <laurent@vivier.eu>, Jiaxun Yang <jiaxun.yang@flygoat.com>,
+ Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
+ Chris Wulff <crwulff@gmail.com>, Marek Vasut <marex@denx.de>,
+ Stafford Horne <shorne@gmail.com>,
+ Yoshinori Sato <ysato@users.sourceforge.jp>,
+ Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
+ Max Filippov <jcmvbkbc@gmail.com>, qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
+ qemu-riscv@nongnu.org, qemu-s390x@nongnu.org
+References: <20220930212622.108363-1-richard.henderson@linaro.org>
+ <20220930212622.108363-17-richard.henderson@linaro.org>
+From: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
+In-Reply-To: <20220930212622.108363-17-richard.henderson@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::732;
- envelope-from=richard.henderson@linaro.org; helo=mail-qk1-x732.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-SA-Exim-Connect-IP: 2a00:23c4:8ba7:8700:f0a2:2ba9:489e:6915
+X-SA-Exim-Mail-From: mark.cave-ayland@ilande.co.uk
+Subject: Re: [PATCH v6 16/18] hw/core: Add CPUClass.get_pc
+X-SA-Exim-Version: 4.2.1 (built Wed, 08 May 2019 21:11:16 +0000)
+X-SA-Exim-Scanned: Yes (on mail.ilande.co.uk)
+Received-SPF: pass client-ip=2001:41c9:1:41f::167;
+ envelope-from=mark.cave-ayland@ilande.co.uk; helo=mail.ilande.co.uk
+X-Spam_score_int: -31
+X-Spam_score: -3.2
+X-Spam_bar: ---
+X-Spam_report: (-3.2 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-1.086,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -121,368 +128,652 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: NmzJPCPnjxWL
+X-TUID: T5u0HpCoF2/x
 
-So far, limit the change to S1_ptw_translate, arm_ldl_ptw, and
-arm_ldq_ptw.  Use probe_access_full to find the host address,
-and if so use a host load.  If the probe fails, we've got our
-fault info already.  On the off chance that page tables are not
-in RAM, continue to use the address_space_ld* functions.
+On 30/09/2022 22:26, Richard Henderson wrote:
 
-Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
----
- target/arm/cpu.h        |   5 +
- target/arm/ptw.c        | 207 ++++++++++++++++++++++++++--------------
- target/arm/tlb_helper.c |  17 +++-
- 3 files changed, 155 insertions(+), 74 deletions(-)
+> Populate this new method for all targets.  Always match
+> the result that would be given by cpu_get_tb_cpu_state,
+> as we will want these values to correspond in the logs.
+> 
+> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+> ---
+> Cc: Eduardo Habkost <eduardo@habkost.net> (supporter:Machine core)
+> Cc: Marcel Apfelbaum <marcel.apfelbaum@gmail.com> (supporter:Machine core)
+> Cc: "Philippe Mathieu-Daudé" <f4bug@amsat.org> (reviewer:Machine core)
+> Cc: Yanan Wang <wangyanan55@huawei.com> (reviewer:Machine core)
+> Cc: Michael Rolnik <mrolnik@gmail.com> (maintainer:AVR TCG CPUs)
+> Cc: "Edgar E. Iglesias" <edgar.iglesias@gmail.com> (maintainer:CRIS TCG CPUs)
+> Cc: Taylor Simpson <tsimpson@quicinc.com> (supporter:Hexagon TCG CPUs)
+> Cc: Song Gao <gaosong@loongson.cn> (maintainer:LoongArch TCG CPUs)
+> Cc: Xiaojuan Yang <yangxiaojuan@loongson.cn> (maintainer:LoongArch TCG CPUs)
+> Cc: Laurent Vivier <laurent@vivier.eu> (maintainer:M68K TCG CPUs)
+> Cc: Jiaxun Yang <jiaxun.yang@flygoat.com> (reviewer:MIPS TCG CPUs)
+> Cc: Aleksandar Rikalo <aleksandar.rikalo@syrmia.com> (reviewer:MIPS TCG CPUs)
+> Cc: Chris Wulff <crwulff@gmail.com> (maintainer:NiosII TCG CPUs)
+> Cc: Marek Vasut <marex@denx.de> (maintainer:NiosII TCG CPUs)
+> Cc: Stafford Horne <shorne@gmail.com> (odd fixer:OpenRISC TCG CPUs)
+> Cc: Yoshinori Sato <ysato@users.sourceforge.jp> (reviewer:RENESAS RX CPUs)
+> Cc: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk> (maintainer:SPARC TCG CPUs)
+> Cc: Bastian Koppelmann <kbastian@mail.uni-paderborn.de> (maintainer:TriCore TCG CPUs)
+> Cc: Max Filippov <jcmvbkbc@gmail.com> (maintainer:Xtensa TCG CPUs)
+> Cc: qemu-arm@nongnu.org (open list:ARM TCG CPUs)
+> Cc: qemu-ppc@nongnu.org (open list:PowerPC TCG CPUs)
+> Cc: qemu-riscv@nongnu.org (open list:RISC-V TCG CPUs)
+> Cc: qemu-s390x@nongnu.org (open list:S390 TCG CPUs)
+> ---
+>   include/hw/core/cpu.h   |  3 +++
+>   target/alpha/cpu.c      |  9 +++++++++
+>   target/arm/cpu.c        | 13 +++++++++++++
+>   target/avr/cpu.c        |  8 ++++++++
+>   target/cris/cpu.c       |  8 ++++++++
+>   target/hexagon/cpu.c    |  8 ++++++++
+>   target/hppa/cpu.c       |  8 ++++++++
+>   target/i386/cpu.c       |  9 +++++++++
+>   target/loongarch/cpu.c  |  9 +++++++++
+>   target/m68k/cpu.c       |  8 ++++++++
+>   target/microblaze/cpu.c |  8 ++++++++
+>   target/mips/cpu.c       |  8 ++++++++
+>   target/nios2/cpu.c      |  9 +++++++++
+>   target/openrisc/cpu.c   |  8 ++++++++
+>   target/ppc/cpu_init.c   |  8 ++++++++
+>   target/riscv/cpu.c      | 13 +++++++++++++
+>   target/rx/cpu.c         |  8 ++++++++
+>   target/s390x/cpu.c      |  8 ++++++++
+>   target/sh4/cpu.c        |  8 ++++++++
+>   target/sparc/cpu.c      |  8 ++++++++
+>   target/tricore/cpu.c    |  9 +++++++++
+>   target/xtensa/cpu.c     |  8 ++++++++
+>   22 files changed, 186 insertions(+)
+> 
+> diff --git a/include/hw/core/cpu.h b/include/hw/core/cpu.h
+> index 18ca701b44..f9b58773f7 100644
+> --- a/include/hw/core/cpu.h
+> +++ b/include/hw/core/cpu.h
+> @@ -115,6 +115,8 @@ struct SysemuCPUOps;
+>    *       If the target behaviour here is anything other than "set
+>    *       the PC register to the value passed in" then the target must
+>    *       also implement the synchronize_from_tb hook.
+> + * @get_pc: Callback for getting the Program Counter register.
+> + *       As above, with the semantics of the target architecture.
+>    * @gdb_read_register: Callback for letting GDB read a register.
+>    * @gdb_write_register: Callback for letting GDB write a register.
+>    * @gdb_adjust_breakpoint: Callback for adjusting the address of a
+> @@ -151,6 +153,7 @@ struct CPUClass {
+>       void (*dump_state)(CPUState *cpu, FILE *, int flags);
+>       int64_t (*get_arch_id)(CPUState *cpu);
+>       void (*set_pc)(CPUState *cpu, vaddr value);
+> +    vaddr (*get_pc)(CPUState *cpu);
+>       int (*gdb_read_register)(CPUState *cpu, GByteArray *buf, int reg);
+>       int (*gdb_write_register)(CPUState *cpu, uint8_t *buf, int reg);
+>       vaddr (*gdb_adjust_breakpoint)(CPUState *cpu, vaddr addr);
+> diff --git a/target/alpha/cpu.c b/target/alpha/cpu.c
+> index a8990d401b..979a629d59 100644
+> --- a/target/alpha/cpu.c
+> +++ b/target/alpha/cpu.c
+> @@ -33,6 +33,14 @@ static void alpha_cpu_set_pc(CPUState *cs, vaddr value)
+>       cpu->env.pc = value;
+>   }
+>   
+> +static vaddr alpha_cpu_get_pc(CPUState *cs)
+> +{
+> +    AlphaCPU *cpu = ALPHA_CPU(cs);
+> +
+> +    return cpu->env.pc;
+> +}
+> +
+> +
+>   static bool alpha_cpu_has_work(CPUState *cs)
+>   {
+>       /* Here we are checking to see if the CPU should wake up from HALT.
+> @@ -244,6 +252,7 @@ static void alpha_cpu_class_init(ObjectClass *oc, void *data)
+>       cc->has_work = alpha_cpu_has_work;
+>       cc->dump_state = alpha_cpu_dump_state;
+>       cc->set_pc = alpha_cpu_set_pc;
+> +    cc->get_pc = alpha_cpu_get_pc;
+>       cc->gdb_read_register = alpha_cpu_gdb_read_register;
+>       cc->gdb_write_register = alpha_cpu_gdb_write_register;
+>   #ifndef CONFIG_USER_ONLY
+> diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+> index 7ec3281da9..fa67ba6647 100644
+> --- a/target/arm/cpu.c
+> +++ b/target/arm/cpu.c
+> @@ -60,6 +60,18 @@ static void arm_cpu_set_pc(CPUState *cs, vaddr value)
+>       }
+>   }
+>   
+> +static vaddr arm_cpu_get_pc(CPUState *cs)
+> +{
+> +    ARMCPU *cpu = ARM_CPU(cs);
+> +    CPUARMState *env = &cpu->env;
+> +
+> +    if (is_a64(env)) {
+> +        return env->pc;
+> +    } else {
+> +        return env->regs[15];
+> +    }
+> +}
+> +
+>   #ifdef CONFIG_TCG
+>   void arm_cpu_synchronize_from_tb(CPUState *cs,
+>                                    const TranslationBlock *tb)
+> @@ -2172,6 +2184,7 @@ static void arm_cpu_class_init(ObjectClass *oc, void *data)
+>       cc->has_work = arm_cpu_has_work;
+>       cc->dump_state = arm_cpu_dump_state;
+>       cc->set_pc = arm_cpu_set_pc;
+> +    cc->get_pc = arm_cpu_get_pc;
+>       cc->gdb_read_register = arm_cpu_gdb_read_register;
+>       cc->gdb_write_register = arm_cpu_gdb_write_register;
+>   #ifndef CONFIG_USER_ONLY
+> diff --git a/target/avr/cpu.c b/target/avr/cpu.c
+> index 05b992ff73..6900444d03 100644
+> --- a/target/avr/cpu.c
+> +++ b/target/avr/cpu.c
+> @@ -32,6 +32,13 @@ static void avr_cpu_set_pc(CPUState *cs, vaddr value)
+>       cpu->env.pc_w = value / 2; /* internally PC points to words */
+>   }
+>   
+> +static vaddr avr_cpu_get_pc(CPUState *cs)
+> +{
+> +    AVRCPU *cpu = AVR_CPU(cs);
+> +
+> +    return cpu->env.pc_w * 2;
+> +}
+> +
+>   static bool avr_cpu_has_work(CPUState *cs)
+>   {
+>       AVRCPU *cpu = AVR_CPU(cs);
+> @@ -214,6 +221,7 @@ static void avr_cpu_class_init(ObjectClass *oc, void *data)
+>       cc->has_work = avr_cpu_has_work;
+>       cc->dump_state = avr_cpu_dump_state;
+>       cc->set_pc = avr_cpu_set_pc;
+> +    cc->get_pc = avr_cpu_get_pc;
+>       dc->vmsd = &vms_avr_cpu;
+>       cc->sysemu_ops = &avr_sysemu_ops;
+>       cc->disas_set_info = avr_cpu_disas_set_info;
+> diff --git a/target/cris/cpu.c b/target/cris/cpu.c
+> index ed6c781342..22f5c70f39 100644
+> --- a/target/cris/cpu.c
+> +++ b/target/cris/cpu.c
+> @@ -35,6 +35,13 @@ static void cris_cpu_set_pc(CPUState *cs, vaddr value)
+>       cpu->env.pc = value;
+>   }
+>   
+> +static vaddr cris_cpu_get_pc(CPUState *cs)
+> +{
+> +    CRISCPU *cpu = CRIS_CPU(cs);
+> +
+> +    return cpu->env.pc;
+> +}
+> +
+>   static bool cris_cpu_has_work(CPUState *cs)
+>   {
+>       return cs->interrupt_request & (CPU_INTERRUPT_HARD | CPU_INTERRUPT_NMI);
+> @@ -297,6 +304,7 @@ static void cris_cpu_class_init(ObjectClass *oc, void *data)
+>       cc->has_work = cris_cpu_has_work;
+>       cc->dump_state = cris_cpu_dump_state;
+>       cc->set_pc = cris_cpu_set_pc;
+> +    cc->get_pc = cris_cpu_get_pc;
+>       cc->gdb_read_register = cris_cpu_gdb_read_register;
+>       cc->gdb_write_register = cris_cpu_gdb_write_register;
+>   #ifndef CONFIG_USER_ONLY
+> diff --git a/target/hexagon/cpu.c b/target/hexagon/cpu.c
+> index fa9bd702d6..04a497db5e 100644
+> --- a/target/hexagon/cpu.c
+> +++ b/target/hexagon/cpu.c
+> @@ -251,6 +251,13 @@ static void hexagon_cpu_set_pc(CPUState *cs, vaddr value)
+>       env->gpr[HEX_REG_PC] = value;
+>   }
+>   
+> +static vaddr hexagon_cpu_get_pc(CPUState *cs)
+> +{
+> +    HexagonCPU *cpu = HEXAGON_CPU(cs);
+> +    CPUHexagonState *env = &cpu->env;
+> +    return env->gpr[HEX_REG_PC];
+> +}
+> +
+>   static void hexagon_cpu_synchronize_from_tb(CPUState *cs,
+>                                               const TranslationBlock *tb)
+>   {
+> @@ -337,6 +344,7 @@ static void hexagon_cpu_class_init(ObjectClass *c, void *data)
+>       cc->has_work = hexagon_cpu_has_work;
+>       cc->dump_state = hexagon_dump_state;
+>       cc->set_pc = hexagon_cpu_set_pc;
+> +    cc->get_pc = hexagon_cpu_get_pc;
+>       cc->gdb_read_register = hexagon_gdb_read_register;
+>       cc->gdb_write_register = hexagon_gdb_write_register;
+>       cc->gdb_num_core_regs = TOTAL_PER_THREAD_REGS + NUM_VREGS + NUM_QREGS;
+> diff --git a/target/hppa/cpu.c b/target/hppa/cpu.c
+> index a6f52caf14..e25d3db6d5 100644
+> --- a/target/hppa/cpu.c
+> +++ b/target/hppa/cpu.c
+> @@ -36,6 +36,13 @@ static void hppa_cpu_set_pc(CPUState *cs, vaddr value)
+>       cpu->env.iaoq_b = value + 4;
+>   }
+>   
+> +static vaddr hppa_cpu_get_pc(CPUState *cs)
+> +{
+> +    HPPACPU *cpu = HPPA_CPU(cs);
+> +
+> +    return cpu->env.iaoq_f;
+> +}
+> +
+>   static void hppa_cpu_synchronize_from_tb(CPUState *cs,
+>                                            const TranslationBlock *tb)
+>   {
+> @@ -168,6 +175,7 @@ static void hppa_cpu_class_init(ObjectClass *oc, void *data)
+>       cc->has_work = hppa_cpu_has_work;
+>       cc->dump_state = hppa_cpu_dump_state;
+>       cc->set_pc = hppa_cpu_set_pc;
+> +    cc->get_pc = hppa_cpu_get_pc;
+>       cc->gdb_read_register = hppa_cpu_gdb_read_register;
+>       cc->gdb_write_register = hppa_cpu_gdb_write_register;
+>   #ifndef CONFIG_USER_ONLY
+> diff --git a/target/i386/cpu.c b/target/i386/cpu.c
+> index 1db1278a59..ad623d91e4 100644
+> --- a/target/i386/cpu.c
+> +++ b/target/i386/cpu.c
+> @@ -6824,6 +6824,14 @@ static void x86_cpu_set_pc(CPUState *cs, vaddr value)
+>       cpu->env.eip = value;
+>   }
+>   
+> +static vaddr x86_cpu_get_pc(CPUState *cs)
+> +{
+> +    X86CPU *cpu = X86_CPU(cs);
+> +
+> +    /* Match cpu_get_tb_cpu_state. */
+> +    return cpu->env.eip + cpu->env.segs[R_CS].base;
+> +}
+> +
+>   int x86_cpu_pending_interrupt(CPUState *cs, int interrupt_request)
+>   {
+>       X86CPU *cpu = X86_CPU(cs);
+> @@ -7106,6 +7114,7 @@ static void x86_cpu_common_class_init(ObjectClass *oc, void *data)
+>       cc->has_work = x86_cpu_has_work;
+>       cc->dump_state = x86_cpu_dump_state;
+>       cc->set_pc = x86_cpu_set_pc;
+> +    cc->get_pc = x86_cpu_get_pc;
+>       cc->gdb_read_register = x86_cpu_gdb_read_register;
+>       cc->gdb_write_register = x86_cpu_gdb_write_register;
+>       cc->get_arch_id = x86_cpu_get_arch_id;
+> diff --git a/target/loongarch/cpu.c b/target/loongarch/cpu.c
+> index 941e2772bc..20a92ea56c 100644
+> --- a/target/loongarch/cpu.c
+> +++ b/target/loongarch/cpu.c
+> @@ -82,6 +82,14 @@ static void loongarch_cpu_set_pc(CPUState *cs, vaddr value)
+>       env->pc = value;
+>   }
+>   
+> +static vaddr loongarch_cpu_get_pc(CPUState *cs)
+> +{
+> +    LoongArchCPU *cpu = LOONGARCH_CPU(cs);
+> +    CPULoongArchState *env = &cpu->env;
+> +
+> +    return env->pc;
+> +}
+> +
+>   #ifndef CONFIG_USER_ONLY
+>   #include "hw/loongarch/virt.h"
+>   
+> @@ -680,6 +688,7 @@ static void loongarch_cpu_class_init(ObjectClass *c, void *data)
+>       cc->has_work = loongarch_cpu_has_work;
+>       cc->dump_state = loongarch_cpu_dump_state;
+>       cc->set_pc = loongarch_cpu_set_pc;
+> +    cc->get_pc = loongarch_cpu_get_pc;
+>   #ifndef CONFIG_USER_ONLY
+>       dc->vmsd = &vmstate_loongarch_cpu;
+>       cc->sysemu_ops = &loongarch_sysemu_ops;
+> diff --git a/target/m68k/cpu.c b/target/m68k/cpu.c
+> index 25d610db21..1e902e1ef0 100644
+> --- a/target/m68k/cpu.c
+> +++ b/target/m68k/cpu.c
+> @@ -31,6 +31,13 @@ static void m68k_cpu_set_pc(CPUState *cs, vaddr value)
+>       cpu->env.pc = value;
+>   }
+>   
+> +static vaddr m68k_cpu_get_pc(CPUState *cs)
+> +{
+> +    M68kCPU *cpu = M68K_CPU(cs);
+> +
+> +    return cpu->env.pc;
+> +}
+> +
+>   static bool m68k_cpu_has_work(CPUState *cs)
+>   {
+>       return cs->interrupt_request & CPU_INTERRUPT_HARD;
+> @@ -540,6 +547,7 @@ static void m68k_cpu_class_init(ObjectClass *c, void *data)
+>       cc->has_work = m68k_cpu_has_work;
+>       cc->dump_state = m68k_cpu_dump_state;
+>       cc->set_pc = m68k_cpu_set_pc;
+> +    cc->get_pc = m68k_cpu_get_pc;
+>       cc->gdb_read_register = m68k_cpu_gdb_read_register;
+>       cc->gdb_write_register = m68k_cpu_gdb_write_register;
+>   #if defined(CONFIG_SOFTMMU)
+> diff --git a/target/microblaze/cpu.c b/target/microblaze/cpu.c
+> index aed200dcff..73af51769e 100644
+> --- a/target/microblaze/cpu.c
+> +++ b/target/microblaze/cpu.c
+> @@ -84,6 +84,13 @@ static void mb_cpu_set_pc(CPUState *cs, vaddr value)
+>       cpu->env.iflags = 0;
+>   }
+>   
+> +static vaddr mb_cpu_get_pc(CPUState *cs)
+> +{
+> +    MicroBlazeCPU *cpu = MICROBLAZE_CPU(cs);
+> +
+> +    return cpu->env.pc;
+> +}
+> +
+>   static void mb_cpu_synchronize_from_tb(CPUState *cs,
+>                                          const TranslationBlock *tb)
+>   {
+> @@ -391,6 +398,7 @@ static void mb_cpu_class_init(ObjectClass *oc, void *data)
+>   
+>       cc->dump_state = mb_cpu_dump_state;
+>       cc->set_pc = mb_cpu_set_pc;
+> +    cc->get_pc = mb_cpu_get_pc;
+>       cc->gdb_read_register = mb_cpu_gdb_read_register;
+>       cc->gdb_write_register = mb_cpu_gdb_write_register;
+>   
+> diff --git a/target/mips/cpu.c b/target/mips/cpu.c
+> index c15c955367..da58eb8892 100644
+> --- a/target/mips/cpu.c
+> +++ b/target/mips/cpu.c
+> @@ -128,6 +128,13 @@ static void mips_cpu_set_pc(CPUState *cs, vaddr value)
+>       mips_env_set_pc(&cpu->env, value);
+>   }
+>   
+> +static vaddr mips_cpu_get_pc(CPUState *cs)
+> +{
+> +    MIPSCPU *cpu = MIPS_CPU(cs);
+> +
+> +    return cpu->env.active_tc.PC;
+> +}
+> +
+>   static bool mips_cpu_has_work(CPUState *cs)
+>   {
+>       MIPSCPU *cpu = MIPS_CPU(cs);
+> @@ -557,6 +564,7 @@ static void mips_cpu_class_init(ObjectClass *c, void *data)
+>       cc->has_work = mips_cpu_has_work;
+>       cc->dump_state = mips_cpu_dump_state;
+>       cc->set_pc = mips_cpu_set_pc;
+> +    cc->get_pc = mips_cpu_get_pc;
+>       cc->gdb_read_register = mips_cpu_gdb_read_register;
+>       cc->gdb_write_register = mips_cpu_gdb_write_register;
+>   #ifndef CONFIG_USER_ONLY
+> diff --git a/target/nios2/cpu.c b/target/nios2/cpu.c
+> index 19b2409974..2b28429c08 100644
+> --- a/target/nios2/cpu.c
+> +++ b/target/nios2/cpu.c
+> @@ -34,6 +34,14 @@ static void nios2_cpu_set_pc(CPUState *cs, vaddr value)
+>       env->pc = value;
+>   }
+>   
+> +static vaddr nios2_cpu_get_pc(CPUState *cs)
+> +{
+> +    Nios2CPU *cpu = NIOS2_CPU(cs);
+> +    CPUNios2State *env = &cpu->env;
+> +
+> +    return env->pc;
+> +}
+> +
+>   static bool nios2_cpu_has_work(CPUState *cs)
+>   {
+>       return cs->interrupt_request & CPU_INTERRUPT_HARD;
+> @@ -362,6 +370,7 @@ static void nios2_cpu_class_init(ObjectClass *oc, void *data)
+>       cc->has_work = nios2_cpu_has_work;
+>       cc->dump_state = nios2_cpu_dump_state;
+>       cc->set_pc = nios2_cpu_set_pc;
+> +    cc->get_pc = nios2_cpu_get_pc;
+>       cc->disas_set_info = nios2_cpu_disas_set_info;
+>   #ifndef CONFIG_USER_ONLY
+>       cc->sysemu_ops = &nios2_sysemu_ops;
+> diff --git a/target/openrisc/cpu.c b/target/openrisc/cpu.c
+> index cb9f35f408..33cf717210 100644
+> --- a/target/openrisc/cpu.c
+> +++ b/target/openrisc/cpu.c
+> @@ -31,6 +31,13 @@ static void openrisc_cpu_set_pc(CPUState *cs, vaddr value)
+>       cpu->env.dflag = 0;
+>   }
+>   
+> +static vaddr openrisc_cpu_get_pc(CPUState *cs)
+> +{
+> +    OpenRISCCPU *cpu = OPENRISC_CPU(cs);
+> +
+> +    return cpu->env.pc;
+> +}
+> +
+>   static void openrisc_cpu_synchronize_from_tb(CPUState *cs,
+>                                                const TranslationBlock *tb)
+>   {
+> @@ -218,6 +225,7 @@ static void openrisc_cpu_class_init(ObjectClass *oc, void *data)
+>       cc->has_work = openrisc_cpu_has_work;
+>       cc->dump_state = openrisc_cpu_dump_state;
+>       cc->set_pc = openrisc_cpu_set_pc;
+> +    cc->get_pc = openrisc_cpu_get_pc;
+>       cc->gdb_read_register = openrisc_cpu_gdb_read_register;
+>       cc->gdb_write_register = openrisc_cpu_gdb_write_register;
+>   #ifndef CONFIG_USER_ONLY
+> diff --git a/target/ppc/cpu_init.c b/target/ppc/cpu_init.c
+> index 6e080ebda0..763a8431be 100644
+> --- a/target/ppc/cpu_init.c
+> +++ b/target/ppc/cpu_init.c
+> @@ -7214,6 +7214,13 @@ static void ppc_cpu_set_pc(CPUState *cs, vaddr value)
+>       cpu->env.nip = value;
+>   }
+>   
+> +static vaddr ppc_cpu_get_pc(CPUState *cs)
+> +{
+> +    PowerPCCPU *cpu = POWERPC_CPU(cs);
+> +
+> +    return cpu->env.nip;
+> +}
+> +
+>   static bool ppc_cpu_has_work(CPUState *cs)
+>   {
+>       PowerPCCPU *cpu = POWERPC_CPU(cs);
+> @@ -7472,6 +7479,7 @@ static void ppc_cpu_class_init(ObjectClass *oc, void *data)
+>       cc->has_work = ppc_cpu_has_work;
+>       cc->dump_state = ppc_cpu_dump_state;
+>       cc->set_pc = ppc_cpu_set_pc;
+> +    cc->get_pc = ppc_cpu_get_pc;
+>       cc->gdb_read_register = ppc_cpu_gdb_read_register;
+>       cc->gdb_write_register = ppc_cpu_gdb_write_register;
+>   #ifndef CONFIG_USER_ONLY
+> diff --git a/target/riscv/cpu.c b/target/riscv/cpu.c
+> index b29c88b9f0..6ca05c6eaf 100644
+> --- a/target/riscv/cpu.c
+> +++ b/target/riscv/cpu.c
+> @@ -462,6 +462,18 @@ static void riscv_cpu_set_pc(CPUState *cs, vaddr value)
+>       }
+>   }
+>   
+> +static vaddr riscv_cpu_get_pc(CPUState *cs)
+> +{
+> +    RISCVCPU *cpu = RISCV_CPU(cs);
+> +    CPURISCVState *env = &cpu->env;
+> +
+> +    /* Match cpu_get_tb_cpu_state. */
+> +    if (env->xl == MXL_RV32) {
+> +        return env->pc & UINT32_MAX;
+> +    }
+> +    return env->pc;
+> +}
+> +
+>   static void riscv_cpu_synchronize_from_tb(CPUState *cs,
+>                                             const TranslationBlock *tb)
+>   {
+> @@ -1154,6 +1166,7 @@ static void riscv_cpu_class_init(ObjectClass *c, void *data)
+>       cc->has_work = riscv_cpu_has_work;
+>       cc->dump_state = riscv_cpu_dump_state;
+>       cc->set_pc = riscv_cpu_set_pc;
+> +    cc->get_pc = riscv_cpu_get_pc;
+>       cc->gdb_read_register = riscv_cpu_gdb_read_register;
+>       cc->gdb_write_register = riscv_cpu_gdb_write_register;
+>       cc->gdb_num_core_regs = 33;
+> diff --git a/target/rx/cpu.c b/target/rx/cpu.c
+> index fb30080ac4..134b4b6bb6 100644
+> --- a/target/rx/cpu.c
+> +++ b/target/rx/cpu.c
+> @@ -32,6 +32,13 @@ static void rx_cpu_set_pc(CPUState *cs, vaddr value)
+>       cpu->env.pc = value;
+>   }
+>   
+> +static vaddr rx_cpu_get_pc(CPUState *cs)
+> +{
+> +    RXCPU *cpu = RX_CPU(cs);
+> +
+> +    return cpu->env.pc;
+> +}
+> +
+>   static void rx_cpu_synchronize_from_tb(CPUState *cs,
+>                                          const TranslationBlock *tb)
+>   {
+> @@ -208,6 +215,7 @@ static void rx_cpu_class_init(ObjectClass *klass, void *data)
+>       cc->has_work = rx_cpu_has_work;
+>       cc->dump_state = rx_cpu_dump_state;
+>       cc->set_pc = rx_cpu_set_pc;
+> +    cc->get_pc = rx_cpu_get_pc;
+>   
+>   #ifndef CONFIG_USER_ONLY
+>       cc->sysemu_ops = &rx_sysemu_ops;
+> diff --git a/target/s390x/cpu.c b/target/s390x/cpu.c
+> index c31bb2351f..df00040e95 100644
+> --- a/target/s390x/cpu.c
+> +++ b/target/s390x/cpu.c
+> @@ -88,6 +88,13 @@ static void s390_cpu_set_pc(CPUState *cs, vaddr value)
+>       cpu->env.psw.addr = value;
+>   }
+>   
+> +static vaddr s390_cpu_get_pc(CPUState *cs)
+> +{
+> +    S390CPU *cpu = S390_CPU(cs);
+> +
+> +    return cpu->env.psw.addr;
+> +}
+> +
+>   static bool s390_cpu_has_work(CPUState *cs)
+>   {
+>       S390CPU *cpu = S390_CPU(cs);
+> @@ -297,6 +304,7 @@ static void s390_cpu_class_init(ObjectClass *oc, void *data)
+>       cc->has_work = s390_cpu_has_work;
+>       cc->dump_state = s390_cpu_dump_state;
+>       cc->set_pc = s390_cpu_set_pc;
+> +    cc->get_pc = s390_cpu_get_pc;
+>       cc->gdb_read_register = s390_cpu_gdb_read_register;
+>       cc->gdb_write_register = s390_cpu_gdb_write_register;
+>   #ifndef CONFIG_USER_ONLY
+> diff --git a/target/sh4/cpu.c b/target/sh4/cpu.c
+> index 06b2691dc4..4bafbf8596 100644
+> --- a/target/sh4/cpu.c
+> +++ b/target/sh4/cpu.c
+> @@ -34,6 +34,13 @@ static void superh_cpu_set_pc(CPUState *cs, vaddr value)
+>       cpu->env.pc = value;
+>   }
+>   
+> +static vaddr superh_cpu_get_pc(CPUState *cs)
+> +{
+> +    SuperHCPU *cpu = SUPERH_CPU(cs);
+> +
+> +    return cpu->env.pc;
+> +}
+> +
+>   static void superh_cpu_synchronize_from_tb(CPUState *cs,
+>                                              const TranslationBlock *tb)
+>   {
+> @@ -261,6 +268,7 @@ static void superh_cpu_class_init(ObjectClass *oc, void *data)
+>       cc->has_work = superh_cpu_has_work;
+>       cc->dump_state = superh_cpu_dump_state;
+>       cc->set_pc = superh_cpu_set_pc;
+> +    cc->get_pc = superh_cpu_get_pc;
+>       cc->gdb_read_register = superh_cpu_gdb_read_register;
+>       cc->gdb_write_register = superh_cpu_gdb_write_register;
+>   #ifndef CONFIG_USER_ONLY
+> diff --git a/target/sparc/cpu.c b/target/sparc/cpu.c
+> index 55268ed2a1..1b2afb0cb8 100644
+> --- a/target/sparc/cpu.c
+> +++ b/target/sparc/cpu.c
+> @@ -693,6 +693,13 @@ static void sparc_cpu_set_pc(CPUState *cs, vaddr value)
+>       cpu->env.npc = value + 4;
+>   }
+>   
+> +static vaddr sparc_cpu_get_pc(CPUState *cs)
+> +{
+> +    SPARCCPU *cpu = SPARC_CPU(cs);
+> +
+> +    return cpu->env.pc;
+> +}
+> +
+>   static void sparc_cpu_synchronize_from_tb(CPUState *cs,
+>                                             const TranslationBlock *tb)
+>   {
+> @@ -896,6 +903,7 @@ static void sparc_cpu_class_init(ObjectClass *oc, void *data)
+>       cc->memory_rw_debug = sparc_cpu_memory_rw_debug;
+>   #endif
+>       cc->set_pc = sparc_cpu_set_pc;
+> +    cc->get_pc = sparc_cpu_get_pc;
+>       cc->gdb_read_register = sparc_cpu_gdb_read_register;
+>       cc->gdb_write_register = sparc_cpu_gdb_write_register;
+>   #ifndef CONFIG_USER_ONLY
+> diff --git a/target/tricore/cpu.c b/target/tricore/cpu.c
+> index b95682b7f0..91b16bdefc 100644
+> --- a/target/tricore/cpu.c
+> +++ b/target/tricore/cpu.c
+> @@ -41,6 +41,14 @@ static void tricore_cpu_set_pc(CPUState *cs, vaddr value)
+>       env->PC = value & ~(target_ulong)1;
+>   }
+>   
+> +static vaddr tricore_cpu_get_pc(CPUState *cs)
+> +{
+> +    TriCoreCPU *cpu = TRICORE_CPU(cs);
+> +    CPUTriCoreState *env = &cpu->env;
+> +
+> +    return env->PC;
+> +}
+> +
+>   static void tricore_cpu_synchronize_from_tb(CPUState *cs,
+>                                               const TranslationBlock *tb)
+>   {
+> @@ -176,6 +184,7 @@ static void tricore_cpu_class_init(ObjectClass *c, void *data)
+>   
+>       cc->dump_state = tricore_cpu_dump_state;
+>       cc->set_pc = tricore_cpu_set_pc;
+> +    cc->get_pc = tricore_cpu_get_pc;
+>       cc->sysemu_ops = &tricore_sysemu_ops;
+>       cc->tcg_ops = &tricore_tcg_ops;
+>   }
+> diff --git a/target/xtensa/cpu.c b/target/xtensa/cpu.c
+> index fd553fdfb5..cbbe0e84a2 100644
+> --- a/target/xtensa/cpu.c
+> +++ b/target/xtensa/cpu.c
+> @@ -44,6 +44,13 @@ static void xtensa_cpu_set_pc(CPUState *cs, vaddr value)
+>       cpu->env.pc = value;
+>   }
+>   
+> +static vaddr xtensa_cpu_get_pc(CPUState *cs)
+> +{
+> +    XtensaCPU *cpu = XTENSA_CPU(cs);
+> +
+> +    return cpu->env.pc;
+> +}
+> +
+>   static bool xtensa_cpu_has_work(CPUState *cs)
+>   {
+>   #ifndef CONFIG_USER_ONLY
+> @@ -233,6 +240,7 @@ static void xtensa_cpu_class_init(ObjectClass *oc, void *data)
+>       cc->has_work = xtensa_cpu_has_work;
+>       cc->dump_state = xtensa_cpu_dump_state;
+>       cc->set_pc = xtensa_cpu_set_pc;
+> +    cc->get_pc = xtensa_cpu_get_pc;
+>       cc->gdb_read_register = xtensa_cpu_gdb_read_register;
+>       cc->gdb_write_register = xtensa_cpu_gdb_write_register;
+>       cc->gdb_stop_before_watchpoint = true;
 
-diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index 732c0c00ac..7108568685 100644
---- a/target/arm/cpu.h
-+++ b/target/arm/cpu.h
-@@ -225,6 +225,8 @@ typedef struct CPUARMTBFlags {
-     target_ulong flags2;
- } CPUARMTBFlags;
- 
-+typedef struct ARMMMUFaultInfo ARMMMUFaultInfo;
-+
- typedef struct CPUArchState {
-     /* Regs for current mode.  */
-     uint32_t regs[16];
-@@ -715,6 +717,9 @@ typedef struct CPUArchState {
-     struct CPUBreakpoint *cpu_breakpoint[16];
-     struct CPUWatchpoint *cpu_watchpoint[16];
- 
-+    /* Optional fault info across tlb lookup. */
-+    ARMMMUFaultInfo *tlb_fi;
-+
-     /* Fields up to this point are cleared by a CPU reset */
-     struct {} end_reset_fields;
- 
-diff --git a/target/arm/ptw.c b/target/arm/ptw.c
-index 45adb9d5a9..ba496c3421 100644
---- a/target/arm/ptw.c
-+++ b/target/arm/ptw.c
-@@ -9,6 +9,7 @@
- #include "qemu/osdep.h"
- #include "qemu/log.h"
- #include "qemu/range.h"
-+#include "exec/exec-all.h"
- #include "cpu.h"
- #include "internals.h"
- #include "idau.h"
-@@ -191,7 +192,7 @@ static bool regime_translation_disabled(CPUARMState *env, ARMMMUIdx mmu_idx,
-     return (regime_sctlr(env, mmu_idx) & SCTLR_M) == 0;
- }
- 
--static bool ptw_attrs_are_device(uint64_t hcr, ARMCacheAttrs cacheattrs)
-+static bool S2_attrs_are_device(uint64_t hcr, uint8_t attrs)
- {
-     /*
-      * For an S1 page table walk, the stage 1 attributes are always
-@@ -202,41 +203,72 @@ static bool ptw_attrs_are_device(uint64_t hcr, ARMCacheAttrs cacheattrs)
-      * With HCR_EL2.FWB == 1 this is when descriptor bit [4] is 0, ie
-      * when cacheattrs.attrs bit [2] is 0.
-      */
--    assert(cacheattrs.is_s2_format);
-     if (hcr & HCR_FWB) {
--        return (cacheattrs.attrs & 0x4) == 0;
-+        return (attrs & 0x4) == 0;
-     } else {
--        return (cacheattrs.attrs & 0xc) == 0;
-+        return (attrs & 0xc) == 0;
-     }
- }
- 
- /* Translate a S1 pagetable walk through S2 if needed.  */
--static hwaddr S1_ptw_translate(CPUARMState *env, ARMMMUIdx mmu_idx,
--                               hwaddr addr, bool *is_secure_ptr, bool debug,
--                               ARMMMUFaultInfo *fi)
-+static bool S1_ptw_translate(CPUARMState *env, ARMMMUIdx mmu_idx, hwaddr addr,
-+                             bool *is_secure_ptr, void **hphys, hwaddr *gphys,
-+                             bool debug, ARMMMUFaultInfo *fi)
- {
-     bool is_secure = *is_secure_ptr;
-     ARMMMUIdx s2_mmu_idx = is_secure ? ARMMMUIdx_Stage2_S : ARMMMUIdx_Stage2;
-+    bool s2_phys = false;
-+    uint8_t pte_attrs;
-+    bool pte_secure;
- 
--    if (arm_mmu_idx_is_stage1_of_2(mmu_idx) &&
--        !regime_translation_disabled(env, s2_mmu_idx, is_secure)) {
--        GetPhysAddrResult s2 = {};
--        uint64_t hcr;
--        int ret;
-+    if (!arm_mmu_idx_is_stage1_of_2(mmu_idx)
-+        || regime_translation_disabled(env, s2_mmu_idx, is_secure)) {
-+        s2_mmu_idx = is_secure ? ARMMMUIdx_Phys_S : ARMMMUIdx_Phys_NS;
-+        s2_phys = true;
-+    }
- 
--        ret = get_phys_addr_lpae(env, addr, MMU_DATA_LOAD, s2_mmu_idx,
--                                 is_secure, false, debug, &s2, fi);
--        if (ret) {
--            assert(fi->type != ARMFault_None);
--            fi->s2addr = addr;
--            fi->stage2 = true;
--            fi->s1ptw = true;
--            fi->s1ns = !is_secure;
--            return ~0;
-+    if (unlikely(debug)) {
-+        /*
-+         * From gdbstub, do not use softmmu so that we don't modify the
-+         * state of the cpu at all, including softmmu tlb contents.
-+         */
-+        if (s2_phys) {
-+            *gphys = addr;
-+            pte_attrs = 0;
-+            pte_secure = is_secure;
-+        } else {
-+            GetPhysAddrResult s2 = { };
-+            if (!get_phys_addr_lpae(env, addr, MMU_DATA_LOAD, s2_mmu_idx,
-+                                    is_secure, false, debug, &s2, fi)) {
-+                goto fail;
-+            }
-+            *gphys = s2.f.phys_addr;
-+            pte_attrs = s2.cacheattrs.attrs;
-+            pte_secure = s2.f.attrs.secure;
-         }
-+        *hphys = NULL;
-+    } else {
-+        CPUTLBEntryFull *full;
-+        int flags;
- 
--        hcr = arm_hcr_el2_eff_secstate(env, is_secure);
--        if ((hcr & HCR_PTW) && ptw_attrs_are_device(hcr, s2.cacheattrs)) {
-+        env->tlb_fi = fi;
-+        flags = probe_access_full(env, addr, MMU_DATA_LOAD,
-+                                  arm_to_core_mmu_idx(s2_mmu_idx),
-+                                  true, hphys, &full, 0);
-+        env->tlb_fi = NULL;
-+
-+        if (unlikely(flags & TLB_INVALID_MASK)) {
-+            goto fail;
-+        }
-+        *gphys = full->phys_addr;
-+        pte_attrs = full->pte_attrs;
-+        pte_secure = full->attrs.secure;
-+    }
-+
-+    if (!s2_phys) {
-+        uint64_t hcr = arm_hcr_el2_eff_secstate(env, is_secure);
-+
-+        if ((hcr & HCR_PTW) && S2_attrs_are_device(hcr, pte_attrs)) {
-             /*
-              * PTW set and S1 walk touched S2 Device memory:
-              * generate Permission fault.
-@@ -246,24 +278,25 @@ static hwaddr S1_ptw_translate(CPUARMState *env, ARMMMUIdx mmu_idx,
-             fi->stage2 = true;
-             fi->s1ptw = true;
-             fi->s1ns = !is_secure;
--            return ~0;
-+            return false;
-         }
--
--        if (arm_is_secure_below_el3(env)) {
--            /* Check if page table walk is to secure or non-secure PA space. */
--            if (is_secure) {
--                is_secure = !(env->cp15.vstcr_el2 & VSTCR_SW);
--            } else {
--                is_secure = !(env->cp15.vtcr_el2 & VTCR_NSW);
--            }
--            *is_secure_ptr = is_secure;
--        } else {
--            assert(!is_secure);
--        }
--
--        addr = s2.f.phys_addr;
-     }
--    return addr;
-+
-+    if (is_secure) {
-+        /* Check if page table walk is to secure or non-secure PA space. */
-+        *is_secure_ptr = !(pte_secure
-+                           ? env->cp15.vstcr_el2 & VSTCR_SW
-+                           : env->cp15.vtcr_el2 & VTCR_NSW);
-+    }
-+    return true;
-+
-+ fail:
-+    assert(fi->type != ARMFault_None);
-+    fi->s2addr = addr;
-+    fi->stage2 = true;
-+    fi->s1ptw = true;
-+    fi->s1ns = !is_secure;
-+    return false;
- }
- 
- /* All loads done in the course of a page table walk go through here. */
-@@ -271,56 +304,88 @@ static uint32_t arm_ldl_ptw(CPUARMState *env, hwaddr addr, bool is_secure,
-                             ARMMMUIdx mmu_idx, bool debug, ARMMMUFaultInfo *fi)
- {
-     CPUState *cs = env_cpu(env);
--    MemTxAttrs attrs = {};
--    MemTxResult result = MEMTX_OK;
--    AddressSpace *as;
-+    void *hphys;
-+    hwaddr gphys;
-     uint32_t data;
-+    bool be;
- 
--    addr = S1_ptw_translate(env, mmu_idx, addr, &is_secure, debug, fi);
--    attrs.secure = is_secure;
--    as = arm_addressspace(cs, attrs);
--    if (fi->s1ptw) {
-+    if (!S1_ptw_translate(env, mmu_idx, addr, &is_secure,
-+                          &hphys, &gphys, debug, fi)) {
-+        /* Failure. */
-+        assert(fi->s1ptw);
-         return 0;
-     }
--    if (regime_translation_big_endian(env, mmu_idx)) {
--        data = address_space_ldl_be(as, addr, attrs, &result);
-+
-+    be = regime_translation_big_endian(env, mmu_idx);
-+    if (likely(hphys)) {
-+        /* Page tables are in RAM, and we have the host address. */
-+        if (be) {
-+            data = ldl_be_p(hphys);
-+        } else {
-+            data = ldl_le_p(hphys);
-+        }
-     } else {
--        data = address_space_ldl_le(as, addr, attrs, &result);
-+        /* Page tables are in MMIO. */
-+        MemTxAttrs attrs = { .secure = is_secure };
-+        AddressSpace *as = arm_addressspace(cs, attrs);
-+        MemTxResult result = MEMTX_OK;
-+
-+        if (be) {
-+            data = address_space_ldl_be(as, gphys, attrs, &result);
-+        } else {
-+            data = address_space_ldl_le(as, gphys, attrs, &result);
-+        }
-+        if (unlikely(result != MEMTX_OK)) {
-+            fi->type = ARMFault_SyncExternalOnWalk;
-+            fi->ea = arm_extabort_type(result);
-+            return 0;
-+        }
-     }
--    if (result == MEMTX_OK) {
--        return data;
--    }
--    fi->type = ARMFault_SyncExternalOnWalk;
--    fi->ea = arm_extabort_type(result);
--    return 0;
-+    return data;
- }
- 
- static uint64_t arm_ldq_ptw(CPUARMState *env, hwaddr addr, bool is_secure,
-                             ARMMMUIdx mmu_idx, bool debug, ARMMMUFaultInfo *fi)
- {
-     CPUState *cs = env_cpu(env);
--    MemTxAttrs attrs = {};
--    MemTxResult result = MEMTX_OK;
--    AddressSpace *as;
-+    void *hphys;
-+    hwaddr gphys;
-     uint64_t data;
-+    bool be;
- 
--    addr = S1_ptw_translate(env, mmu_idx, addr, &is_secure, debug, fi);
--    attrs.secure = is_secure;
--    as = arm_addressspace(cs, attrs);
--    if (fi->s1ptw) {
-+    if (!S1_ptw_translate(env, mmu_idx, addr, &is_secure,
-+                          &hphys, &gphys, debug, fi)) {
-+        /* Failure. */
-+        assert(fi->s1ptw);
-         return 0;
-     }
--    if (regime_translation_big_endian(env, mmu_idx)) {
--        data = address_space_ldq_be(as, addr, attrs, &result);
-+
-+    be = regime_translation_big_endian(env, mmu_idx);
-+    if (likely(hphys)) {
-+        /* Page tables are in RAM, and we have the host address. */
-+        if (be) {
-+            data = ldq_be_p(hphys);
-+        } else {
-+            data = ldq_le_p(hphys);
-+        }
-     } else {
--        data = address_space_ldq_le(as, addr, attrs, &result);
-+        /* Page tables are in MMIO. */
-+        MemTxAttrs attrs = { .secure = is_secure };
-+        AddressSpace *as = arm_addressspace(cs, attrs);
-+        MemTxResult result = MEMTX_OK;
-+
-+        if (be) {
-+            data = address_space_ldq_be(as, gphys, attrs, &result);
-+        } else {
-+            data = address_space_ldq_le(as, gphys, attrs, &result);
-+        }
-+        if (unlikely(result != MEMTX_OK)) {
-+            fi->type = ARMFault_SyncExternalOnWalk;
-+            fi->ea = arm_extabort_type(result);
-+            return 0;
-+        }
-     }
--    if (result == MEMTX_OK) {
--        return data;
--    }
--    fi->type = ARMFault_SyncExternalOnWalk;
--    fi->ea = arm_extabort_type(result);
--    return 0;
-+    return data;
- }
- 
- static bool get_level1_table_address(CPUARMState *env, ARMMMUIdx mmu_idx,
-diff --git a/target/arm/tlb_helper.c b/target/arm/tlb_helper.c
-index 3462a6ea14..69b0dc69df 100644
---- a/target/arm/tlb_helper.c
-+++ b/target/arm/tlb_helper.c
-@@ -208,10 +208,21 @@ bool arm_cpu_tlb_fill(CPUState *cs, vaddr address, int size,
-                       bool probe, uintptr_t retaddr)
- {
-     ARMCPU *cpu = ARM_CPU(cs);
--    ARMMMUFaultInfo fi = {};
-     GetPhysAddrResult res = {};
-+    ARMMMUFaultInfo local_fi, *fi;
-     int ret;
- 
-+    /*
-+     * Allow S1_ptw_translate to see any fault generated here.
-+     * Since this may recurse, read and clear.
-+     */
-+    fi = cpu->env.tlb_fi;
-+    if (fi) {
-+        cpu->env.tlb_fi = NULL;
-+    } else {
-+        fi = memset(&local_fi, 0, sizeof(local_fi));
-+    }
-+
-     /*
-      * Walk the page table and (if the mapping exists) add the page
-      * to the TLB.  On success, return true.  Otherwise, if probing,
-@@ -220,7 +231,7 @@ bool arm_cpu_tlb_fill(CPUState *cs, vaddr address, int size,
-      */
-     ret = get_phys_addr(&cpu->env, address, access_type,
-                         core_to_arm_mmu_idx(&cpu->env, mmu_idx),
--                        &res, &fi);
-+                        &res, fi);
-     if (likely(!ret)) {
-         /*
-          * Map a single [sub]page. Regions smaller than our declared
-@@ -242,7 +253,7 @@ bool arm_cpu_tlb_fill(CPUState *cs, vaddr address, int size,
-     } else {
-         /* now we have a real cpu fault */
-         cpu_restore_state(cs, retaddr, true);
--        arm_deliver_fault(cpu, address, access_type, mmu_idx, &fi);
-+        arm_deliver_fault(cpu, address, access_type, mmu_idx, fi);
-     }
- }
- #else
--- 
-2.34.1
+For target/sparc:
 
+Reviewed-by: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
+
+
+ATB,
+
+Mark.

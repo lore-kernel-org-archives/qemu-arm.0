@@ -1,105 +1,105 @@
-Received: by 2002:a8a:1930:0:0:0:0:0 with SMTP id be48csp131287ocb;
-        Mon, 3 Oct 2022 09:30:48 -0700 (PDT)
-X-Google-Smtp-Source: AMsMyM4olV5/DJ96n1jm5QUfn8RunpLDC4j8o84Hh6SCQNrSSX3iP37YEyZPn3nYUjhOl3jvo7iN
-X-Received: by 2002:a05:620a:2682:b0:6ce:173b:6b37 with SMTP id c2-20020a05620a268200b006ce173b6b37mr14411409qkp.75.1664814648212;
-        Mon, 03 Oct 2022 09:30:48 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1664814648; cv=none;
+Received: by 2002:a8a:1930:0:0:0:0:0 with SMTP id be48csp132477ocb;
+        Mon, 3 Oct 2022 09:32:14 -0700 (PDT)
+X-Google-Smtp-Source: AMsMyM44M1YSPhntD4+AV8QnRZVmdFlW6gn+2neZuO5ZWXCy+rZljZJBL4Vb3Iru+ute/uCDc7hV
+X-Received: by 2002:a05:622a:307:b0:35d:47f5:c1e1 with SMTP id q7-20020a05622a030700b0035d47f5c1e1mr16452898qtw.206.1664814734154;
+        Mon, 03 Oct 2022 09:32:14 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1664814734; cv=none;
         d=google.com; s=arc-20160816;
-        b=R0JFVoHY4bff5ln7heQ4bKnQC+3sB0nLeHR1z2i7BwUoENhoN/B0L8YSpBXTk/E02s
-         SewtrX8MhOVlWh/RWy0R8xe5OYWGoglKQwHcbibEPiWpD6DxeJBq0NzijkBTcxBAMiIz
-         6xuUmCFo/EIhk84pIKO8y55ZB8akexLeZtTInRCmIawPiSwfp6uX4ZbsKbL77ozNviNg
-         Go1zcuAMsaKVhrtTMbzIW5JPgYAk4NqO9n7RztIG6fbTOLrlM1pUvnuy+ZYpUrLRpqIf
-         7FHyugBc4mb80iWDJf6S/XQycW8FN6pNG3Uj3kfEYJeIewr57lxd1lGc9WJLU8eDue02
-         DZpQ==
+        b=NzSsVAkdN2Snd4KlK10MHAWpBIQsgSXJZMVSYrpkm6kLn4JKUWGmIlUuvNfD+Jdfu0
+         CH/LlujXWJiOhiWPk2js8Z9340rSVntjoBqevHV+W4Y5/369LEodVLnYuaJOk6/xwq9T
+         kMcTcrocbfJx8nsvcatOs3w1PwDt1nBHoSNGoakZCWRdtt/hyjk57uJ0xNV/1qj1rE49
+         dbi6Vm3LSGuqJd5vRFjJ3a3Rx9Cmjd67+We1Kd+9uO2CPJ4qYUtm7pxkqFxh2R/4Hz59
+         p9+a6SvtlKXLfxizt/qNWCB6D/1gJ00FP0rEmg9xfdxyaT3f9zmQZU58Su2jK2wgc/Tw
+         +iSA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=iLS80cjxzj2lzwffuWrbrnxfYmJ63GkptFKtPKF4mf8=;
-        b=y5xoGQzbPRuM44xRaCvccPNk7WvChEYBdj/+WEAmpBjppxYCzzSNCO8VKlX5857Uaf
-         wPpF2498jUKyb3LELvMZLzkGvIf547t8e+Xrra7U1OjBQq2OlaFHyalf/OiSRxpZZDqy
-         XKOosadX129mtT44xvZVNdqBWUKe1yeEbRsCuvwoOzfSpXgc5PQpFZauKrEPXbLnCkLA
-         xfBPpZZMc5XXtDYkNfzSM0nBevMvZa/T2B6FZoVAIZSNBbztXwxZqwWa5iuaRk20fRp+
-         M1KAsc7khfZgrnIPw9AtzaftaUsDlc+jtDREoUGtq/sGY4p4qVhTLJXb0rAAEuowHdTH
-         xjBw==
+        bh=Lbf7DgzaGFcfNvaM2KqWvg7D8B8oETdPLTVE9MwyWyA=;
+        b=QIea74BTfc06ZXZtUCuAIZkpZgcqI8rFWmbIeHEK/ccLftrrmmy4MNUqOuHC2Qm+7x
+         fxx32mF2Br8WpFUQ4Z4EOU9ns28n+S+QN88ngGdSmDZK+ElKn+bVSuLGAtk/V2s8+9GL
+         +aXmJWFMRoIZ7qR7g86zLqdHWNcthtFAcKqdpeuBy34Ektobe+Qgd0dxsdpmIZZu2pmL
+         rFh+UDvqtLXgSObEbhKgMsaLUmNo8p5UnNaJIZ9jJUg+P5rzVRaK/3fUJwjBkYYcFL/g
+         Lup1eZ5KMLIEwWmL5BXrbE4PpGt9Qn6AGH+L+kSQBgGsmqSFQ424vHwM6n54lyMJ7Z55
+         1PKw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=crwwGU25;
+       dkim=pass header.i=@linaro.org header.s=google header.b=Ztonl5fA;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x3-20020a05620a448300b006cebcfbc520si4722243qkp.412.2022.10.03.09.30.48
+        by mx.google.com with ESMTPS id fn13-20020ad45d6d000000b004b170e4267esi140972qvb.110.2022.10.03.09.32.14
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 03 Oct 2022 09:30:48 -0700 (PDT)
+        Mon, 03 Oct 2022 09:32:14 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=crwwGU25;
+       dkim=pass header.i=@linaro.org header.s=google header.b=Ztonl5fA;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:39244 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:46332 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ofOL9-0004EX-JK
-	for alex.bennee@linaro.org; Mon, 03 Oct 2022 12:30:47 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:60444)
+	id 1ofOMX-0005BN-MY
+	for alex.bennee@linaro.org; Mon, 03 Oct 2022 12:32:13 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:60436)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1ofOEA-0007vv-7h
- for qemu-arm@nongnu.org; Mon, 03 Oct 2022 12:23:34 -0400
-Received: from mail-wr1-x42e.google.com ([2a00:1450:4864:20::42e]:33516)
+ id 1ofOE4-0007sR-Ex
+ for qemu-arm@nongnu.org; Mon, 03 Oct 2022 12:23:28 -0400
+Received: from mail-wr1-x42d.google.com ([2a00:1450:4864:20::42d]:46992)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1ofODy-0000Hd-QP
- for qemu-arm@nongnu.org; Mon, 03 Oct 2022 12:23:33 -0400
-Received: by mail-wr1-x42e.google.com with SMTP id a3so5249009wrt.0
- for <qemu-arm@nongnu.org>; Mon, 03 Oct 2022 09:23:21 -0700 (PDT)
+ id 1ofODx-0000Hl-37
+ for qemu-arm@nongnu.org; Mon, 03 Oct 2022 12:23:27 -0400
+Received: by mail-wr1-x42d.google.com with SMTP id bk15so17502396wrb.13
+ for <qemu-arm@nongnu.org>; Mon, 03 Oct 2022 09:23:20 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:to:from:from:to:cc:subject:date;
- bh=iLS80cjxzj2lzwffuWrbrnxfYmJ63GkptFKtPKF4mf8=;
- b=crwwGU25GTQMMOV+aN1uk6LhaFVle8FSx2hJKe1U255cSYxMdSp9qQjJedTzEsQzsL
- YC1nQ+qhLFAyg4adBjjwYP1yUEdJzhmNRvBCaLQULJ6igSW3Tj+1MNkDZ3MTrfqauBSI
- ltPj4NCzw3l0+D2XZ5a+s+ebLVMn0VMClsHdbpomYek+pXhmPvzaGRiu8L+Y6q0RScm+
- l77zH6+Bfj2v85VxX9O6uBPwc5vnGBfinz+U4RCH1oZu/sevClVF+Z4RMKaO33pcL3eM
- HimT8MrrNKDKtoP81QYmRouQMUfOsNgQxGidM3prsNgAKocvJzIVBnjb9cbXXDSBSAea
- Xzcg==
+ bh=Lbf7DgzaGFcfNvaM2KqWvg7D8B8oETdPLTVE9MwyWyA=;
+ b=Ztonl5fAaT/D1XIUjRAGtBLqZtEtQcOO1AcvFUMECHec08QSr81I/6drRHu7Vo04kZ
+ TafWgLq/jo/oVeDQBhbq/+yjvy+neYzsDL1nhY9HshWoQ7H5YifBu/zrFDuVnTrArAyh
+ dqgzyKH5AEu8pzIszOGakyk4M5TXQGU/uYEFw9pKVdD8K6oXAuJBRe94fWIC1cnN7Hzb
+ 5JkCdreKWWSudhFlLBYT3av90wbwunr4PatY3yLslPOJ0sqPH2KU9RnofAAM8yAWwhiK
+ mnWbcaGZMqYVbb8cW/MsYTvGxPr2KptdfHJ8JAoDjDunQs1wT3OobfAZTPvO/UZnp0ie
+ VyMg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:to:from:x-gm-message-state:from:to:cc
  :subject:date;
- bh=iLS80cjxzj2lzwffuWrbrnxfYmJ63GkptFKtPKF4mf8=;
- b=7ynFVAl1Z3H/TvmAJflBt9NpcL+o9sTP9kxmP7djzf2m0URLkd8i7lYg5gyXxJ2+tu
- ZZE6/463GkbZdd1WFE5jX6tyijJwgIEmOYj6ASTLjOUP8jOoLRMtEtb3/gIQKviYPXQb
- jPT6OuO8pwSqsBRj3iwIsDvS4vgutlWVRWvIPk0R+ibk7kooIwWLCVAznKQxMpb/Ih9r
- MGWU3a+CI9DUEjZPCp6VqORVTGSDCaDGXl/JjSecM/t5reuRIFHgDEDuvgS4i9SFcRuI
- OXmgtVi/KPYgv86PiLQIsz2koBrambEkKRJlf97n4s4Q+kbUiDAdjWE3ma7GKecqMkTd
- bWNw==
-X-Gm-Message-State: ACrzQf2wMbuz8usHZNcsyj/570sBY1DPDRrc83w51d98ZQonJrExPwqC
- nsYRMf5ovjNjFLXtbv6oKMCLD5xH3dkzsw==
-X-Received: by 2002:a5d:59a5:0:b0:22e:37ab:ed7d with SMTP id
- p5-20020a5d59a5000000b0022e37abed7dmr4288607wrr.461.1664814199106; 
+ bh=Lbf7DgzaGFcfNvaM2KqWvg7D8B8oETdPLTVE9MwyWyA=;
+ b=73PbN0fkVJteTvgscbMEvUXN4UWJMV6hBZ5RvQOgO/Z9Dx9ZkU9S7wz2aQC/I4X5XY
+ vbPdN1iMMn6qobDmDNGv30qn5CEVn8HAcVzgvK8623iVwQ+ML1qSg8g/96aJXb89uhUE
+ kgVXEPqJ0L9PZIVgem9u66p+2XhIperRqDnAaDC3hH5UYcdG5jZbuelb5POL10uUnF7Z
+ YeG2TcVXXBulk6akIHAeBpARX62bzeK/mVkiscMl+W3TR7D8Rin1m+4wzOE715Q3RUh5
+ Lk5pUQVQITBDbT+Lk7PKjuHChpSMKvk22e+8+nJ9Z64VG8TvdCzmoGOHlHbaXjBzu5YI
+ sYXg==
+X-Gm-Message-State: ACrzQf26weyUeQ0ut6oQ3QIpt+aZKGy98WZUOvqY3G37OGdcZU04937V
+ UU14zxstFV3dJd8x1Aw6DTwlr3WCda2bxA==
+X-Received: by 2002:adf:dbc3:0:b0:22a:d393:bd84 with SMTP id
+ e3-20020adfdbc3000000b0022ad393bd84mr13600563wrj.626.1664814199791; 
  Mon, 03 Oct 2022 09:23:19 -0700 (PDT)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
  by smtp.gmail.com with ESMTPSA id
- o2-20020a5d62c2000000b0022afce9ea93sm9897856wrv.40.2022.10.03.09.23.18
+ o2-20020a5d62c2000000b0022afce9ea93sm9897856wrv.40.2022.10.03.09.23.19
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 03 Oct 2022 09:23:18 -0700 (PDT)
+ Mon, 03 Oct 2022 09:23:19 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH v2 2/3] target/arm: Use ARMGranuleSize in ARMVAParameters
-Date: Mon,  3 Oct 2022 17:23:14 +0100
-Message-Id: <20221003162315.2833797-3-peter.maydell@linaro.org>
+Subject: [PATCH v2 3/3] docs/system/arm/emulation.rst: Report FEAT_GTG support
+Date: Mon,  3 Oct 2022 17:23:15 +0100
+Message-Id: <20221003162315.2833797-4-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20221003162315.2833797-1-peter.maydell@linaro.org>
 References: <20221003162315.2833797-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42e;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x42e.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::42d;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x42d.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -121,191 +121,34 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ckHhIKE278qs
+X-TUID: JGlsqX+ngAU0
 
-Now we have an enum for the granule size, use it in the
-ARMVAParameters struct instead of the using16k/using64k bools.
+FEAT_GTG is a change tho the ID register ID_AA64MMFR0_EL1 so that it
+can report a different set of supported granule (page) sizes for
+stage 1 and stage 2 translation tables.  As of commit c20281b2a5048
+we already report the granule sizes that way for '-cpu max', and now
+we also correctly make attempts to use unimplemented granule sizes
+fail, so we can report the support of the feature in the
+documentation.
 
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- target/arm/internals.h | 23 +++++++++++++++++++++--
- target/arm/helper.c    | 39 ++++++++++++++++++++++++++++-----------
- target/arm/ptw.c       |  8 +-------
- 3 files changed, 50 insertions(+), 20 deletions(-)
+ docs/system/arm/emulation.rst | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/target/arm/internals.h b/target/arm/internals.h
-index 0727c7e4559..95f654db3bc 100644
---- a/target/arm/internals.h
-+++ b/target/arm/internals.h
-@@ -1074,6 +1074,26 @@ typedef enum ARMGranuleSize {
-     GranInvalid,
- } ARMGranuleSize;
- 
-+/**
-+ * arm_granule_bits: Return address size of the granule in bits
-+ *
-+ * Return the address size of the granule in bits. This corresponds
-+ * to the pseudocode TGxGranuleBits().
-+ */
-+static inline int arm_granule_bits(ARMGranuleSize gran)
-+{
-+    switch (gran) {
-+    case Gran64K:
-+        return 16;
-+    case Gran16K:
-+        return 14;
-+    case Gran4K:
-+        return 12;
-+    default:
-+        g_assert_not_reached();
-+    }
-+}
-+
- /*
-  * Parameters of a given virtual address, as extracted from the
-  * translation control register (TCR) for a given regime.
-@@ -1086,10 +1106,9 @@ typedef struct ARMVAParameters {
-     bool tbi        : 1;
-     bool epd        : 1;
-     bool hpd        : 1;
--    bool using16k   : 1;
--    bool using64k   : 1;
-     bool tsz_oob    : 1;  /* tsz has been clamped to legal range */
-     bool ds         : 1;
-+    ARMGranuleSize gran : 2;
- } ARMVAParameters;
- 
- ARMVAParameters aa64_va_parameters(CPUARMState *env, uint64_t va,
-diff --git a/target/arm/helper.c b/target/arm/helper.c
-index 41b8435deac..484a2d54ab8 100644
---- a/target/arm/helper.c
-+++ b/target/arm/helper.c
-@@ -4487,6 +4487,24 @@ typedef struct {
-     uint64_t length;
- } TLBIRange;
- 
-+static ARMGranuleSize tlbi_range_tg_to_gran_size(int tg)
-+{
-+    /*
-+     * Note that the TLBI range TG field encoding differs from both
-+     * TG0 and TG1 encodings.
-+     */
-+    switch (tg) {
-+    case 1:
-+        return Gran4K;
-+    case 2:
-+        return Gran16K;
-+    case 3:
-+        return Gran64K;
-+    default:
-+        return GranInvalid;
-+    }
-+}
-+
- static TLBIRange tlbi_aa64_get_range(CPUARMState *env, ARMMMUIdx mmuidx,
-                                      uint64_t value)
- {
-@@ -4495,17 +4513,19 @@ static TLBIRange tlbi_aa64_get_range(CPUARMState *env, ARMMMUIdx mmuidx,
-     uint64_t select = sextract64(value, 36, 1);
-     ARMVAParameters param = aa64_va_parameters(env, select, mmuidx, true);
-     TLBIRange ret = { };
-+    ARMGranuleSize gran;
- 
-     page_size_granule = extract64(value, 46, 2);
-+    gran = tlbi_range_tg_to_gran_size(page_size_granule);
- 
-     /* The granule encoded in value must match the granule in use. */
--    if (page_size_granule != (param.using64k ? 3 : param.using16k ? 2 : 1)) {
-+    if (gran != param.gran) {
-         qemu_log_mask(LOG_GUEST_ERROR, "Invalid tlbi page size granule %d\n",
-                       page_size_granule);
-         return ret;
-     }
- 
--    page_shift = (page_size_granule - 1) * 2 + 12;
-+    page_shift = arm_granule_bits(gran);
-     num = extract64(value, 39, 5);
-     scale = extract64(value, 44, 2);
-     exponent = (5 * scale) + 1;
-@@ -10377,7 +10397,7 @@ ARMVAParameters aa64_va_parameters(CPUARMState *env, uint64_t va,
-                                    ARMMMUIdx mmu_idx, bool data)
- {
-     uint64_t tcr = regime_tcr(env, mmu_idx);
--    bool epd, hpd, using16k, using64k, tsz_oob, ds;
-+    bool epd, hpd, tsz_oob, ds;
-     int select, tsz, tbi, max_tsz, min_tsz, ps, sh;
-     ARMGranuleSize gran;
-     ARMCPU *cpu = env_archcpu(env);
-@@ -10421,11 +10441,9 @@ ARMVAParameters aa64_va_parameters(CPUARMState *env, uint64_t va,
-     }
- 
-     gran = sanitize_gran_size(cpu, gran, stage2);
--    using64k = gran == Gran64K;
--    using16k = gran == Gran16K;
- 
-     if (cpu_isar_feature(aa64_st, cpu)) {
--        max_tsz = 48 - using64k;
-+        max_tsz = 48 - (gran == Gran64K);
-     } else {
-         max_tsz = 39;
-     }
-@@ -10435,7 +10453,7 @@ ARMVAParameters aa64_va_parameters(CPUARMState *env, uint64_t va,
-      * adjust the effective value of DS, as documented.
-      */
-     min_tsz = 16;
--    if (using64k) {
-+    if (gran == Gran64K) {
-         if (cpu_isar_feature(aa64_lva, cpu)) {
-             min_tsz = 12;
-         }
-@@ -10444,14 +10462,14 @@ ARMVAParameters aa64_va_parameters(CPUARMState *env, uint64_t va,
-         switch (mmu_idx) {
-         case ARMMMUIdx_Stage2:
-         case ARMMMUIdx_Stage2_S:
--            if (using16k) {
-+            if (gran == Gran16K) {
-                 ds = cpu_isar_feature(aa64_tgran16_2_lpa2, cpu);
-             } else {
-                 ds = cpu_isar_feature(aa64_tgran4_2_lpa2, cpu);
-             }
-             break;
-         default:
--            if (using16k) {
-+            if (gran == Gran16K) {
-                 ds = cpu_isar_feature(aa64_tgran16_lpa2, cpu);
-             } else {
-                 ds = cpu_isar_feature(aa64_tgran4_lpa2, cpu);
-@@ -10488,10 +10506,9 @@ ARMVAParameters aa64_va_parameters(CPUARMState *env, uint64_t va,
-         .tbi = tbi,
-         .epd = epd,
-         .hpd = hpd,
--        .using16k = using16k,
--        .using64k = using64k,
-         .tsz_oob = tsz_oob,
-         .ds = ds,
-+        .gran = gran,
-     };
- }
- 
-diff --git a/target/arm/ptw.c b/target/arm/ptw.c
-index 2ddfc028abb..b0a780b38e2 100644
---- a/target/arm/ptw.c
-+++ b/target/arm/ptw.c
-@@ -1048,13 +1048,7 @@ static bool get_phys_addr_lpae(CPUARMState *env, uint64_t address,
-         }
-     }
- 
--    if (param.using64k) {
--        stride = 13;
--    } else if (param.using16k) {
--        stride = 11;
--    } else {
--        stride = 9;
--    }
-+    stride = arm_granule_bits(param.gran) - 3;
- 
-     /*
-      * Note that QEMU ignores shareability and cacheability attributes,
+diff --git a/docs/system/arm/emulation.rst b/docs/system/arm/emulation.rst
+index be7bbffe595..cfb4b0768b0 100644
+--- a/docs/system/arm/emulation.rst
++++ b/docs/system/arm/emulation.rst
+@@ -31,6 +31,7 @@ the following architecture extensions:
+ - FEAT_FRINTTS (Floating-point to integer instructions)
+ - FEAT_FlagM (Flag manipulation instructions v2)
+ - FEAT_FlagM2 (Enhancements to flag manipulation instructions)
++- FEAT_GTG (Guest translation granule size)
+ - FEAT_HCX (Support for the HCRX_EL2 register)
+ - FEAT_HPDS (Hierarchical permission disables)
+ - FEAT_I8MM (AArch64 Int8 matrix multiplication instructions)
 -- 
 2.25.1
 

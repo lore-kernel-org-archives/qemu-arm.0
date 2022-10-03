@@ -1,102 +1,106 @@
-Received: by 2002:a8a:1930:0:0:0:0:0 with SMTP id be48csp127568ocb;
-        Mon, 3 Oct 2022 09:24:59 -0700 (PDT)
-X-Google-Smtp-Source: AMsMyM55UyjVEY6WYzFi3QowvDc4yfi5R/y264c+Do2UzMMhA/UBNgNO/IDSatBvAKHEgUSg0EBu
-X-Received: by 2002:a05:620a:2b44:b0:6ce:20e9:50 with SMTP id dp4-20020a05620a2b4400b006ce20e90050mr14458461qkb.356.1664814299101;
-        Mon, 03 Oct 2022 09:24:59 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1664814299; cv=none;
+Received: by 2002:a8a:1930:0:0:0:0:0 with SMTP id be48csp130484ocb;
+        Mon, 3 Oct 2022 09:29:46 -0700 (PDT)
+X-Google-Smtp-Source: AMsMyM7XkBlsf1yPAUqoev2Zm8gj8O/qdLNykMZLXPiXF1KAybY2WTku6N4Fv2t3MVglSWxnjNxa
+X-Received: by 2002:ac8:5741:0:b0:35b:b52b:ca9e with SMTP id 1-20020ac85741000000b0035bb52bca9emr16468839qtx.653.1664814586090;
+        Mon, 03 Oct 2022 09:29:46 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1664814586; cv=none;
         d=google.com; s=arc-20160816;
-        b=UoUS+PPJI3AIi0NlAcJMlmhM5MrUY29XpZLpdHhchsZ++vtw4nIIv/K1hxCR8KffgE
-         8utyEreBkWqLy+A7ly+R97ykrMUAgmyG51GEEnJP42mDs/qX95o9eDxzjXNMgAN01qgR
-         c38ckyOlQhji47ieaOWCeVdW7X2OBXvHB038lBwAcyoM6bGg7UMO1UYOwQ+gl7PygWf+
-         RPy8iJu97L8GxThfJshC/hRlMuxuBgnr9yp1p0hUpbUxoUXboRKzKCHHnl/aPrcWy/dm
-         nsKU/cZKIG2UhGIc4PePIg7ULdFzMvxw+soIQV7GXKP7pmW5nz1A+SjqwAWWjLZwxuaP
-         Y3bA==
+        b=aVxOCeH7+8kmk7Naon3F9o70gH4uDOxOke8/oZ6qGWVb/5nvY8JZerWRpPkkH+RXKP
+         aceDxLaOg+spottR09sD1D7LLNB29CetIQH8NwBuTLqK0elafKdoE26SvhinZMt0PGDe
+         6sXimc1Er638S+zOKYtj2WgBLefz8tTJLjK+xbnMJb5ibmLGCgpJTxL8/m49jbyXrn6W
+         THYaqlnSr8GPHPIErZGztt31/yxK4uXXGro4j2jROJZRAAijvshOVVxZADx0aqSwOfQr
+         RyNVsVXqjrKtYbgLhZTWC8ssydk5emecncjoASDG9JPDiethh2cjeuCblSh7Z43KdxfV
+         sO8g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:to:from:dkim-signature;
-        bh=lCZHg5x4HGzTZDn3BalI2idxXb7plNTlyEM9gtVZfKw=;
-        b=TjGmYkvKdMSZaxGNbyYEc1/a9d8+6HvVGizbrOcncf+9NbIp3LAgNSHNME0pk0Yav6
-         BGvop7D0DAjg8KIM+E+ri7wf6p/sp18olXINrTPuX9sWUN3dBgS7LNjGFvt48lDZuQ+O
-         I89GZ+L/ixR5iYIKiEpmTJWlP0m588xYGlxo3ZyazFO280qcSGJfcHD5Ocqyl+PSMi8G
-         IsF1Zn9A+xk/zR+0fAAtm74K9VVUB3imVHYWSQIze0AUgSUE3Z+igS/QhZ6zHYtSxgg9
-         XV9giuUxYNAIG/3570cyVFJzRMuO6+Npin9TD7PeYNMgJ7xoO4E79NMcN+2Wqp27bLiX
-         W2lQ==
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from
+         :dkim-signature;
+        bh=jUmre8iVrWqfonZLosPQb1JFiAtPKqPnUADEzLUFRYs=;
+        b=EMdTy821dZwux8/VVgwDeheHxyIfX4ZdDEngP30JsQIiiFecYk/SWHLXSiGCTeCz/v
+         bVPyht9VfNWDkE1SqPU0pi7vyHA/03ttkkiZc2aA71bgAJSs5aGJtsn0c8m0fDSg9VQ2
+         02qlXVeUgcZc3f1+SekLLNjEtJPVyDh+VrLRFGZ5ehGP+VONUTZbu5HvExkqn791SuRA
+         oDhMvZppSiDrnpZCE2NptuH2zyJ/U8R7RaaipDu8bzn7Ld17Loe1NjWhlYZgmz32MLaN
+         vModWBi/M/+J9e58WY5Zo1OcsHqX6x1R0HelBdw0PMGLsPXNSddzVg3E+NvS6zNNnnaQ
+         FQaA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="TubP/lmU";
+       dkim=pass header.i=@linaro.org header.s=google header.b=v12CywUS;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id jt12-20020a05621427ec00b004afa183904fsi123548qvb.163.2022.10.03.09.24.59
+        by mx.google.com with ESMTPS id c138-20020a379a90000000b006be7bc45cabsi3900731qke.101.2022.10.03.09.29.46
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 03 Oct 2022 09:24:59 -0700 (PDT)
+        Mon, 03 Oct 2022 09:29:46 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="TubP/lmU";
+       dkim=pass header.i=@linaro.org header.s=google header.b=v12CywUS;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:47978 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:33486 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ofOFU-0000Zn-H8
-	for alex.bennee@linaro.org; Mon, 03 Oct 2022 12:24:56 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:52342)
+	id 1ofOK9-0003Pb-AE
+	for alex.bennee@linaro.org; Mon, 03 Oct 2022 12:29:45 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:60440)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1ofOE1-0007ra-7l
- for qemu-arm@nongnu.org; Mon, 03 Oct 2022 12:23:26 -0400
-Received: from mail-wm1-x335.google.com ([2a00:1450:4864:20::335]:41492)
+ id 1ofOE7-0007uQ-BC
+ for qemu-arm@nongnu.org; Mon, 03 Oct 2022 12:23:31 -0400
+Received: from mail-wr1-x429.google.com ([2a00:1450:4864:20::429]:43793)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1ofODv-0000GG-02
- for qemu-arm@nongnu.org; Mon, 03 Oct 2022 12:23:24 -0400
-Received: by mail-wm1-x335.google.com with SMTP id
- fn7-20020a05600c688700b003b4fb113b86so6133484wmb.0
- for <qemu-arm@nongnu.org>; Mon, 03 Oct 2022 09:23:18 -0700 (PDT)
+ id 1ofODy-0000HZ-Pf
+ for qemu-arm@nongnu.org; Mon, 03 Oct 2022 12:23:31 -0400
+Received: by mail-wr1-x429.google.com with SMTP id bv17so8572664wrb.10
+ for <qemu-arm@nongnu.org>; Mon, 03 Oct 2022 09:23:21 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=content-transfer-encoding:mime-version:message-id:date:subject:to
- :from:from:to:cc:subject:date;
- bh=lCZHg5x4HGzTZDn3BalI2idxXb7plNTlyEM9gtVZfKw=;
- b=TubP/lmUcxD1ZHcVPJeSi948QQMZK+VtJdHvLaguR8qoDwUXhNd9shXGIaOhyUn7UD
- 8Mj1DbbEu7Ya/IbrXnpey5ZUgMa9opouk50w/dDvRW6Gj6eC1RrJXR7lvoV21dC4mIej
- oCYwdLOMJ3PokgHtbRjVphz0D0ji0KNaJNHR1IT5Ndn03VEJAA6LnGcnaDmIkoz09I0J
- 6kPQZspVp/N9yLi+8IuTaR8+XtMx8nWfoEneJczatHEqQhalVngmg4Ftr8WeZ+8qh2KK
- YINyQOpYD27stKqL38PVA0+qt3Eh+jwuxLm1hncGEvrNmCa16Toy+OI3Wr6ONvbmiRBD
- fB9w==
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:to:from:from:to:cc:subject:date;
+ bh=jUmre8iVrWqfonZLosPQb1JFiAtPKqPnUADEzLUFRYs=;
+ b=v12CywUSi62MZqRi7AoB76rw52nNtur+0YF+s+RcvF+E13IcRfMnx0L/Gjfjy9Kn4l
+ qsZlvqdFLnzfC//unEUoi5BiEJQ54FXb809+JLUN7KqdyxAVEcYuveTda16g+09yG22t
+ ph0HOIxm+un9uhOkvWA6jL1DlxORuDa+yABs0DB7ElmnJLVaXAUv8PSVCHWiedl1uLqz
+ ow0gPH6/uOEKs3s2mcQImywBDG+KrOaAmwLGgAkvXVzPBWojAvDqhjndAEusOU90wqQz
+ PWmJ3+z+yhVCIxSG9rItQVy015qbPGnDKbF3PpNXOuh+KkshSSqXf65918J0AiEs+HwT
+ qHGA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=content-transfer-encoding:mime-version:message-id:date:subject:to
- :from:x-gm-message-state:from:to:cc:subject:date;
- bh=lCZHg5x4HGzTZDn3BalI2idxXb7plNTlyEM9gtVZfKw=;
- b=slFoQu9roqD/WAtd9MFx1Lo3z5tAfsBbk4/ENL7A80mJImTFjxj9kajnV4vV7XsdU+
- 4utE2Y9ohAp12ffkw704WoANSVgrdL+oDQ8lMo/i4EBN3UOEip36LISnNiDnHPXHv5+U
- S1pw9pfebQPuxMvkM2yKIiZ5K71oWOhZhmk7UMxQd2Z/tXamz8Y8cBObJ07wodH8nhvW
- qq2UQozqBRIk1/aieTWCGQOuQC/eqZ9rog1ZKOz01bIDZFVALcpx/3sdzvHSn3EFcQZn
- iuT3K2jSbNP/tUs8xpRuH/QMf91jKhihJ2Kt4UL+f5lUH69lMhDwyKUnyal9kvK2zBb9
- DhjA==
-X-Gm-Message-State: ACrzQf0MqPyw9YGCuyb0YdkLTuaV9JVJd9ZzycEvaLUO994xBjbuiXMs
- C6w8rkm2nrg8qJWcZrLG9FN9GEFB6wbkWw==
-X-Received: by 2002:a05:600c:27d1:b0:3b4:5e9c:23ed with SMTP id
- l17-20020a05600c27d100b003b45e9c23edmr7150650wmb.180.1664814197511; 
- Mon, 03 Oct 2022 09:23:17 -0700 (PDT)
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:to:from:x-gm-message-state:from:to:cc
+ :subject:date;
+ bh=jUmre8iVrWqfonZLosPQb1JFiAtPKqPnUADEzLUFRYs=;
+ b=p9teKZj58xcdP3VmsQrCxuloVVVH4O5DnpubNj9nGNKkVVYBym2Dw2/FjxaXzoFYPy
+ cqO6pEpw9ubXHkx+SsAAp7J+Q7t2tSkhAIkgoYClY2yA3FyR9kq+bTHviAQ/JROEIZTk
+ Ell3+j5u7CyDa+RzJYTf6D2woqAKLXIQTT5hBVSSLMxXHn/WnrXSG3V8CmGf2PjJLZzZ
+ FwsciBnXpGtwJNNQE3+HwoWcMo+ZCMIy67KpyidO30dAgCmAKKv2zlRtJrbMndCbnoiM
+ m4c78whh0bclrGEGMszo+4hllVmuJb66aqaapnsHDTIBKmcs2hqgEmea8xpNJImIFgps
+ JjAQ==
+X-Gm-Message-State: ACrzQf0l81g4tvygtP9baQyaDPDnQYYW38H1sILBjegDfY15tBN5ph33
+ iHtDaMe0QgaSrAbTgofItRqEDPJ1lsryLQ==
+X-Received: by 2002:a5d:598f:0:b0:22a:f74d:ae24 with SMTP id
+ n15-20020a5d598f000000b0022af74dae24mr13568756wri.544.1664814198347; 
+ Mon, 03 Oct 2022 09:23:18 -0700 (PDT)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
  by smtp.gmail.com with ESMTPSA id
- o2-20020a5d62c2000000b0022afce9ea93sm9897856wrv.40.2022.10.03.09.23.16
+ o2-20020a5d62c2000000b0022afce9ea93sm9897856wrv.40.2022.10.03.09.23.17
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 03 Oct 2022 09:23:16 -0700 (PDT)
+ Mon, 03 Oct 2022 09:23:17 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH v2 0/3] target/arm: Enforce implemented granule size limits
-Date: Mon,  3 Oct 2022 17:23:12 +0100
-Message-Id: <20221003162315.2833797-1-peter.maydell@linaro.org>
+Subject: [PATCH v2 1/3] target/arm: Don't allow guest to use unimplemented
+ granule sizes
+Date: Mon,  3 Oct 2022 17:23:13 +0100
+Message-Id: <20221003162315.2833797-2-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20221003162315.2833797-1-peter.maydell@linaro.org>
+References: <20221003162315.2833797-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::335;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x335.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::429;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x429.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -118,7 +122,7 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: JUxGcJJQ0Kas
+X-TUID: Ib0vpFWS2mZQ
 
 Arm CPUs support some subset of the granule (page) sizes 4K, 16K and
 64K.  The guest selects the one it wants using bits in the TCR_ELx
@@ -130,40 +134,229 @@ Currently we don't implement this, and instead let the guest use any
 granule size, even if the CPU ID register fields say it isn't
 present.
 
-Patch 1 in this series makes us enforce this architectural
-requirement (the main effect will be that we stop incorrectly
-implementing 16K granules on most of the non-cpu-max CPUs).
+Make aa64_va_parameters() check against the supported granule size
+and force use of a different one if it is not implemented.
 
-Patch 2 is new in v2, and extends the use of the new ARMGranuleSize
-enum to the ARMVAParameters struct.
+(A subsequent commit will make ARMVAParameters use the new enum
+rather than the current pair of using16k/using64k bools.)
 
-Patch 3 adds FEAT_GTG to the list of supported features, because
-all this feature really is is the definition of the separate
-fields for stage1 and stage2 granule support in ID_AA64MMFR0_EL1,
-and we already updated -cpu max to report its granule support
-that way when we were adding the LPA2 support.
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
+v1->v2: rename enum to ARMGranuleSize, put it in internals.h
+---
+ target/arm/cpu.h       |  33 +++++++++++++
+ target/arm/internals.h |   9 ++++
+ target/arm/helper.c    | 102 +++++++++++++++++++++++++++++++++++++----
+ 3 files changed, 136 insertions(+), 8 deletions(-)
 
-v1->v2 changes:
- * renamed the enum to ARMGranuleSize, moved it to internals.h
- * new patch 2
-
-Patch 2 is the only unreviewed one.
-
-thanks
--- PMM
-
-Peter Maydell (3):
-  target/arm: Don't allow guest to use unimplemented granule sizes
-  target/arm: Use ARMGranuleSize in ARMVAParameters
-  docs/system/arm/emulation.rst: Report FEAT_GTG support
-
- docs/system/arm/emulation.rst |   1 +
- target/arm/cpu.h              |  33 ++++++++
- target/arm/internals.h        |  32 +++++++-
- target/arm/helper.c           | 137 +++++++++++++++++++++++++++++-----
- target/arm/ptw.c              |   8 +-
- 5 files changed, 185 insertions(+), 26 deletions(-)
-
+diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+index 33cdbc0143e..6d39d27378d 100644
+--- a/target/arm/cpu.h
++++ b/target/arm/cpu.h
+@@ -4103,6 +4103,39 @@ static inline bool isar_feature_aa64_tgran16_2_lpa2(const ARMISARegisters *id)
+     return t >= 3 || (t == 0 && isar_feature_aa64_tgran16_lpa2(id));
+ }
+ 
++static inline bool isar_feature_aa64_tgran4(const ARMISARegisters *id)
++{
++    return FIELD_SEX64(id->id_aa64mmfr0, ID_AA64MMFR0, TGRAN4) >= 0;
++}
++
++static inline bool isar_feature_aa64_tgran16(const ARMISARegisters *id)
++{
++    return FIELD_EX64(id->id_aa64mmfr0, ID_AA64MMFR0, TGRAN16) >= 1;
++}
++
++static inline bool isar_feature_aa64_tgran64(const ARMISARegisters *id)
++{
++    return FIELD_SEX64(id->id_aa64mmfr0, ID_AA64MMFR0, TGRAN64) >= 0;
++}
++
++static inline bool isar_feature_aa64_tgran4_2(const ARMISARegisters *id)
++{
++    unsigned t = FIELD_EX64(id->id_aa64mmfr0, ID_AA64MMFR0, TGRAN4_2);
++    return t >= 2 || (t == 0 && isar_feature_aa64_tgran4(id));
++}
++
++static inline bool isar_feature_aa64_tgran16_2(const ARMISARegisters *id)
++{
++    unsigned t = FIELD_EX64(id->id_aa64mmfr0, ID_AA64MMFR0, TGRAN16_2);
++    return t >= 2 || (t == 0 && isar_feature_aa64_tgran16(id));
++}
++
++static inline bool isar_feature_aa64_tgran64_2(const ARMISARegisters *id)
++{
++    unsigned t = FIELD_EX64(id->id_aa64mmfr0, ID_AA64MMFR0, TGRAN64_2);
++    return t >= 2 || (t == 0 && isar_feature_aa64_tgran64(id));
++}
++
+ static inline bool isar_feature_aa64_ccidx(const ARMISARegisters *id)
+ {
+     return FIELD_EX64(id->id_aa64mmfr2, ID_AA64MMFR2, CCIDX) != 0;
+diff --git a/target/arm/internals.h b/target/arm/internals.h
+index 307a5965053..0727c7e4559 100644
+--- a/target/arm/internals.h
++++ b/target/arm/internals.h
+@@ -1065,6 +1065,15 @@ static inline uint32_t aarch64_pstate_valid_mask(const ARMISARegisters *id)
+     return valid;
+ }
+ 
++/* Granule size (i.e. page size) */
++typedef enum ARMGranuleSize {
++    /* Same order as TG0 encoding */
++    Gran4K,
++    Gran64K,
++    Gran16K,
++    GranInvalid,
++} ARMGranuleSize;
++
+ /*
+  * Parameters of a given virtual address, as extracted from the
+  * translation control register (TCR) for a given regime.
+diff --git a/target/arm/helper.c b/target/arm/helper.c
+index b5dac651e75..41b8435deac 100644
+--- a/target/arm/helper.c
++++ b/target/arm/helper.c
+@@ -10289,20 +10289,105 @@ static int aa64_va_parameter_tcma(uint64_t tcr, ARMMMUIdx mmu_idx)
+     }
+ }
+ 
++static ARMGranuleSize tg0_to_gran_size(int tg)
++{
++    switch (tg) {
++    case 0:
++        return Gran4K;
++    case 1:
++        return Gran64K;
++    case 2:
++        return Gran16K;
++    default:
++        return GranInvalid;
++    }
++}
++
++static ARMGranuleSize tg1_to_gran_size(int tg)
++{
++    switch (tg) {
++    case 1:
++        return Gran16K;
++    case 2:
++        return Gran4K;
++    case 3:
++        return Gran64K;
++    default:
++        return GranInvalid;
++    }
++}
++
++static inline bool have4k(ARMCPU *cpu, bool stage2)
++{
++    return stage2 ? cpu_isar_feature(aa64_tgran4_2, cpu)
++        : cpu_isar_feature(aa64_tgran4, cpu);
++}
++
++static inline bool have16k(ARMCPU *cpu, bool stage2)
++{
++    return stage2 ? cpu_isar_feature(aa64_tgran16_2, cpu)
++        : cpu_isar_feature(aa64_tgran16, cpu);
++}
++
++static inline bool have64k(ARMCPU *cpu, bool stage2)
++{
++    return stage2 ? cpu_isar_feature(aa64_tgran64_2, cpu)
++        : cpu_isar_feature(aa64_tgran64, cpu);
++}
++
++static ARMGranuleSize sanitize_gran_size(ARMCPU *cpu, ARMGranuleSize gran,
++                                         bool stage2)
++{
++    switch (gran) {
++    case Gran4K:
++        if (have4k(cpu, stage2)) {
++            return gran;
++        }
++        break;
++    case Gran16K:
++        if (have16k(cpu, stage2)) {
++            return gran;
++        }
++        break;
++    case Gran64K:
++        if (have64k(cpu, stage2)) {
++            return gran;
++        }
++        break;
++    case GranInvalid:
++        break;
++    }
++    /*
++     * If the guest selects a granule size that isn't implemented,
++     * the architecture requires that we behave as if it selected one
++     * that is (with an IMPDEF choice of which one to pick). We choose
++     * to implement the smallest supported granule size.
++     */
++    if (have4k(cpu, stage2)) {
++        return Gran4K;
++    }
++    if (have16k(cpu, stage2)) {
++        return Gran16K;
++    }
++    assert(have64k(cpu, stage2));
++    return Gran64K;
++}
++
+ ARMVAParameters aa64_va_parameters(CPUARMState *env, uint64_t va,
+                                    ARMMMUIdx mmu_idx, bool data)
+ {
+     uint64_t tcr = regime_tcr(env, mmu_idx);
+     bool epd, hpd, using16k, using64k, tsz_oob, ds;
+     int select, tsz, tbi, max_tsz, min_tsz, ps, sh;
++    ARMGranuleSize gran;
+     ARMCPU *cpu = env_archcpu(env);
++    bool stage2 = mmu_idx == ARMMMUIdx_Stage2 || mmu_idx == ARMMMUIdx_Stage2_S;
+ 
+     if (!regime_has_2_ranges(mmu_idx)) {
+         select = 0;
+         tsz = extract32(tcr, 0, 6);
+-        using64k = extract32(tcr, 14, 1);
+-        using16k = extract32(tcr, 15, 1);
+-        if (mmu_idx == ARMMMUIdx_Stage2 || mmu_idx == ARMMMUIdx_Stage2_S) {
++        gran = tg0_to_gran_size(extract32(tcr, 14, 2));
++        if (stage2) {
+             /* VTCR_EL2 */
+             hpd = false;
+         } else {
+@@ -10320,16 +10405,13 @@ ARMVAParameters aa64_va_parameters(CPUARMState *env, uint64_t va,
+         select = extract64(va, 55, 1);
+         if (!select) {
+             tsz = extract32(tcr, 0, 6);
++            gran = tg0_to_gran_size(extract32(tcr, 14, 2));
+             epd = extract32(tcr, 7, 1);
+             sh = extract32(tcr, 12, 2);
+-            using64k = extract32(tcr, 14, 1);
+-            using16k = extract32(tcr, 15, 1);
+             hpd = extract64(tcr, 41, 1);
+         } else {
+-            int tg = extract32(tcr, 30, 2);
+-            using16k = tg == 1;
+-            using64k = tg == 3;
+             tsz = extract32(tcr, 16, 6);
++            gran = tg1_to_gran_size(extract32(tcr, 30, 2));
+             epd = extract32(tcr, 23, 1);
+             sh = extract32(tcr, 28, 2);
+             hpd = extract64(tcr, 42, 1);
+@@ -10338,6 +10420,10 @@ ARMVAParameters aa64_va_parameters(CPUARMState *env, uint64_t va,
+         ds = extract64(tcr, 59, 1);
+     }
+ 
++    gran = sanitize_gran_size(cpu, gran, stage2);
++    using64k = gran == Gran64K;
++    using16k = gran == Gran16K;
++
+     if (cpu_isar_feature(aa64_st, cpu)) {
+         max_tsz = 48 - using64k;
+     } else {
 -- 
 2.25.1
 

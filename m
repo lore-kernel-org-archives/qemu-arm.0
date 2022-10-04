@@ -1,105 +1,120 @@
-Received: by 2002:a8a:1930:0:0:0:0:0 with SMTP id be48csp312353ocb;
-        Tue, 4 Oct 2022 09:46:58 -0700 (PDT)
-X-Google-Smtp-Source: AMsMyM78vhsOPZKH3PHqVYiaSMRseGGcoQD5ckWhvFbAv8fc+U9vh4KE/vdEf+7gEaEm3mIZVDG0
-X-Received: by 2002:a0c:a953:0:b0:4af:a643:dfc with SMTP id z19-20020a0ca953000000b004afa6430dfcmr20930868qva.10.1664902017986;
-        Tue, 04 Oct 2022 09:46:57 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1664902017; cv=none;
+Received: by 2002:a8a:1930:0:0:0:0:0 with SMTP id be48csp406978ocb;
+        Tue, 4 Oct 2022 12:30:40 -0700 (PDT)
+X-Google-Smtp-Source: AMsMyM66dnZBD1r0JgpoJzhoRBb9i3IHo7FV/zgJX8iO9kUSFYwQDlf6yfb53ET9IZWf5DHSMdUa
+X-Received: by 2002:a05:622a:111:b0:35d:51e8:9620 with SMTP id u17-20020a05622a011100b0035d51e89620mr21129739qtw.172.1664911840019;
+        Tue, 04 Oct 2022 12:30:40 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1664911840; cv=none;
         d=google.com; s=arc-20160816;
-        b=kqucEcHgBgsuOvqOLIVvlrIZ1wiTCWkcZFpEiirneTAzTR2D8Estzo31DPUtRbQH/2
-         2Bteq8sSTCxuDvFtJiVawn1BtCUSDZlxwz5+L7VF9XUfVKeOAfUb6oYeIYedPpA9+own
-         alwQw4VUzdm+LqlDNohpLOnIzYyZRwhwEE5QPHPYPmNGObbka8c6ZcSTcDRWaRwD6rXW
-         yfBbBPJSsTtHdtbycIkLCfYUZ0cBaYWqUYwQj/zEGgr2cIcpYVCV5Ind0lG9ReEOy6tI
-         nubHSIOa/QvxNbzjQXWPRzAwy0bgqmceR6PHVtW7RgoNbgYJGRUiYWCkWwu1xtzIjIwe
-         sA5g==
+        b=TkZELZq2kaWZx//og4CXYBTNEX4xdRe6B+Bl9V3fiXBWpWPlfjg6zc6cADIJsS9Bm1
+         P4+T0J6mb60nPo9uf/OV+S44DipHxF7Qx5BARp4T6q/iLPilYS6dP1decavVrEA2sQXV
+         4bl38CrwKrEWdkdC5YUSNuVAINYUtLspdMcn9SOvID41HzjBPXJaXdJlc4ceFZ9zp/02
+         15RqF43nxabN+oEWbOHyoRUTNR7KUOJEIxOahM90xZ61k1JHKBf3X9UQt39yuWW99ouh
+         ZwFprTmxQsTrRWnPmeZaqTPKJRTrEO6SqWyrR8dX7nKgn9FXbBbIz80wb+XBasSo0Vr0
+         t3DA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=MRiL0TWNNlgDyp6OZWDJM/DCsv4yogguusU1h3DM4Zo=;
-        b=MfLgb1x79c4KM5v8OLSI6tjoFez8viovw5SdIPMN13cf9EPp6tMFJuKxXf7WPz9DDL
-         txnoxJAQ5O6z5a3kCw37bgProRsM7c0yR7qZNdqcOVHExWefdg9SimsDaDNp5CFsbAMs
-         thSC6Lr+Vf6S8bkzgkakZDrdA9QwturD/xNF18/1IwAQwxWrj/zhIXysEHa/y+158kqZ
-         NpB3pDU4e9J5bUEhN2LxA7MAh6GXjHp4rk9BEa3LeMfDPWrSLI1EB2wiGzzUKKDwX7lU
-         kJPukwoW4gcW+Xg31r68CqZrEXqVpLLzNmmLmF4VhjjL5q9cbpgckSRRtlVSEP3jU12D
-         nhjQ==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:references:cc:to:content-language:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=Xq7tJDjyBWuxqPkRiIftBFN1V+lWzdrlJvEGaTQPwq0=;
+        b=Su3GXN7xw6SMDjOqiWyCZXu72MITojchEMTFMLy9nZU77X7/8+6JG3AdDSUro1kkwf
+         3E2CS8lQZhXfVFaf2Jol1Sl/5H/Hh7Pdktzgp+0jrZP6Y4oUEY0Y5Fyjx6OZkEBrSWzG
+         74JrDtpbtu2zEvhYdv9YaTZ4t76XDFBSFk4+xoRIX+UWlxfTm4cLpgDRKTkO8wK7gBPW
+         +bPdnVV1xeRTZOLzN8tyQ3Vzt3fkD0dhfKrxrcuAgzD/jSTOtK25PHMHTj0gzIl1nlGo
+         9pOXwk1qbsuT7SvD7zUmIoze+e6XTmPRB6vcMEmoirgQNmjwH0giSZJO8ljAu5w3Z6Kp
+         Lj7A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=XUw0zNmq;
+       dkim=pass header.i=@linaro.org header.s=google header.b=jyoZLG4r;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id bn4-20020a05620a2ac400b006b255747ca6si5066503qkb.662.2022.10.04.09.46.57
+        by mx.google.com with ESMTPS id d5-20020a05620a240500b006cdf9e29f52si2212009qkn.582.2022.10.04.12.30.39
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 04 Oct 2022 09:46:57 -0700 (PDT)
+        Tue, 04 Oct 2022 12:30:40 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=XUw0zNmq;
+       dkim=pass header.i=@linaro.org header.s=google header.b=jyoZLG4r;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:40422 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:34928 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ofl4L-0001aw-Gv
-	for alex.bennee@linaro.org; Tue, 04 Oct 2022 12:46:57 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:50196)
+	id 1ofncl-0007ie-Gs
+	for alex.bennee@linaro.org; Tue, 04 Oct 2022 15:30:39 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:42268)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1ofki1-0006i5-NT
- for qemu-devel@nongnu.org; Tue, 04 Oct 2022 12:23:53 -0400
-Received: from mail-ed1-x529.google.com ([2a00:1450:4864:20::529]:40463)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1ofnZr-0006Ch-DX
+ for qemu-devel@nongnu.org; Tue, 04 Oct 2022 15:27:43 -0400
+Received: from mail-pj1-x102c.google.com ([2607:f8b0:4864:20::102c]:45828)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1ofkhz-0006TM-GD
- for qemu-devel@nongnu.org; Tue, 04 Oct 2022 12:23:53 -0400
-Received: by mail-ed1-x529.google.com with SMTP id x59so9570917ede.7
- for <qemu-devel@nongnu.org>; Tue, 04 Oct 2022 09:23:51 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1ofnZo-00018B-TA
+ for qemu-devel@nongnu.org; Tue, 04 Oct 2022 15:27:39 -0400
+Received: by mail-pj1-x102c.google.com with SMTP id
+ o9-20020a17090a0a0900b0020ad4e758b3so3282043pjo.4
+ for <qemu-devel@nongnu.org>; Tue, 04 Oct 2022 12:27:36 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date;
- bh=MRiL0TWNNlgDyp6OZWDJM/DCsv4yogguusU1h3DM4Zo=;
- b=XUw0zNmqYP4z4ZDdL11bFdXqe6i7n9fNSU43+Jlq5N4RAO7U5sXbSQwbSzuSnNB8zf
- 0//Zno2bQNigsw21dbTFdVpM/sSkBUz6+3r+xwWRcvxeUF2UbUiiGDyB/A4nZRHA3y79
- rtPCYucm2tk2T0UuagOPTGRpcW6VtDfOKH3bQbeB2vmbhuyc1pNxPnqGd6xakkP1mOJh
- 21AunI4waXrd5aa1oGndUkWSJEhulW9XSsBXYKFgeOhQbtYgELx5mz3bFvAcplR3N1xn
- p91jK0r9Jy330wyiB8KEO58XqZKDW/0Q4HoajxyRtcpn7V1G7tV6a8XJx+lBG/riuJ56
- 4Z4Q==
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date;
+ bh=Xq7tJDjyBWuxqPkRiIftBFN1V+lWzdrlJvEGaTQPwq0=;
+ b=jyoZLG4r/GOoWCA49y/B/yoIf/O7lzbvbvmLS+/sQZl8V7XZQDABvoXk5mB+HMjD4x
+ dQQgv9i9KciWCgYLkFlctX5sLe76vBJGP9CreW5Btikt0BdCsAAf2oFwGOKle52uCjk2
+ 1g7mYbD1TYe8vl3YVD1+Bos/b6r4QfWJHClpgz9SADzfMOziilkne1sCy1FauqD/drLD
+ VAsg1JLiWo4OGU/FH9UEmK7P7vH5l6ZgS1QYZJpOS4DZN/77ORMGcAi8gd8Sr7C7liwY
+ 0euWBL/G6e1Wwv1ZW8U6Hd/OTvo3E8NaHvtQNR6BkEq7BPBlYleY3WTOygs23y31vXwm
+ 3sTA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date;
- bh=MRiL0TWNNlgDyp6OZWDJM/DCsv4yogguusU1h3DM4Zo=;
- b=W3f1krLgkJ+jVKMOFFEoqPG5eyESruDuZTaVP9AQF3G4j/PYz71fm0eeHuhkephG2d
- tX5fXDcEtGUFVcHsBkTQTxWpK46YJXJ0m4FA02W3bvXS4Q3zo5hAKUYlfw5WUsJK+Pre
- 4JBH3GFkmmIjzlkiAWvdt0BQb6QpeD3IyFfE7lBMQljImHXVKrJepAjW3R9y6UNfP3gO
- 3wVy8rzwgCTFl+Z2OI5nOZwzTlFdR9ZUY6+U2C6plo/NebekxjLx5+yGbrSkrXPJtMgl
- 8xx+G27RAzevhkEylrn2Lp4crmCZSX2yZt8apTlLMA8YoqoT/VOushx5ULf5eGIl1mc6
- vVKw==
-X-Gm-Message-State: ACrzQf1p9/v0J71IO3XI9IWdvkt92sRSs8rqQRBaNy4wPnmAVbDHVHZ7
- GrmIgBAB31CbYdopCT2+PDDtt8cIDamtPf2q5qMj2g==
-X-Received: by 2002:a05:6402:1686:b0:459:4ddf:8f05 with SMTP id
- a6-20020a056402168600b004594ddf8f05mr4311543edv.375.1664900629495; Tue, 04
- Oct 2022 09:23:49 -0700 (PDT)
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date;
+ bh=Xq7tJDjyBWuxqPkRiIftBFN1V+lWzdrlJvEGaTQPwq0=;
+ b=YrXwxY3MIhlXPvLuRntMFKQh7ajMRt/tzpXv3E1HrxqlZi122ipF2CVLlPldFRfM+B
+ q+icH7EBwlOp2nig2/A0TZQwD/Ky99V0cYF7nEtVl5ZJs6F0ryTM8+OqCsCnTQiqsw4o
+ nXuExmcrgxMsTT4CcfjKyyXy5+TU2Mg88mLsbcGyrpHkZjosmYm0njwlya4I8rfQaewC
+ TP5ruSW6H/VtLLXbOTYCCNIQxum+tuYH0nRkEhyG2YDQJLxYy+f9RBLRRey8DZTWVKTz
+ n37LxEit9r+1cVTPz5Ae0c85AaqnBMe4H1Kn7h5SVRsXXRryVTxJ3w6UTanGlmHCJtWK
+ woSw==
+X-Gm-Message-State: ACrzQf0HltG3WQyshwhaI2NsnCf2CeflCtumxe/eSx6/Y6YcDapzEuoL
+ OJAtV8ymktD7mx/pP4Vh52Ek+g==
+X-Received: by 2002:a17:90b:33c9:b0:200:9ec2:f2eb with SMTP id
+ lk9-20020a17090b33c900b002009ec2f2ebmr1244850pjb.29.1664911655241; 
+ Tue, 04 Oct 2022 12:27:35 -0700 (PDT)
+Received: from ?IPV6:2602:47:d49d:ec01:526e:3326:a84e:e5e3?
+ ([2602:47:d49d:ec01:526e:3326:a84e:e5e3])
+ by smtp.gmail.com with ESMTPSA id
+ p17-20020a17090a429100b00203125b6394sm8312873pjg.40.2022.10.04.12.27.34
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 04 Oct 2022 12:27:34 -0700 (PDT)
+Message-ID: <d1196e9c-c983-0b74-9141-ac10154429cd@linaro.org>
+Date: Tue, 4 Oct 2022 12:27:32 -0700
 MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.11.0
+Subject: Re: [PATCH v5 9/9] target/arm: Enable TARGET_TB_PCREL
+Content-Language: en-US
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
 References: <20220930220312.135327-1-richard.henderson@linaro.org>
  <20220930220312.135327-10-richard.henderson@linaro.org>
-In-Reply-To: <20220930220312.135327-10-richard.henderson@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 4 Oct 2022 17:23:38 +0100
-Message-ID: <CAFEAcA_x9zJQy1_9_ySO+TNnnXnYPC3Uq37AN1jP65SuEMvJZw@mail.gmail.com>
-Subject: Re: [PATCH v5 9/9] target/arm: Enable TARGET_TB_PCREL
-To: Richard Henderson <richard.henderson@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::529;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x529.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ <CAFEAcA_x9zJQy1_9_ySO+TNnnXnYPC3Uq37AN1jP65SuEMvJZw@mail.gmail.com>
+From: Richard Henderson <richard.henderson@linaro.org>
+In-Reply-To: <CAFEAcA_x9zJQy1_9_ySO+TNnnXnYPC3Uq37AN1jP65SuEMvJZw@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::102c;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x102c.google.com
+X-Spam_score_int: -44
+X-Spam_score: -4.5
+X-Spam_bar: ----
+X-Spam_report: (-4.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-2.449,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -114,123 +129,61 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 0y4zJfW8jdEe
+X-TUID: +8co6eZhoZ0k
 
-On Fri, 30 Sept 2022 at 23:10, Richard Henderson
-<richard.henderson@linaro.org> wrote:
->
-> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
-> ---
->  target/arm/cpu-param.h     |  1 +
->  target/arm/translate.h     | 19 ++++++++++++
->  target/arm/cpu.c           | 23 +++++++-------
->  target/arm/translate-a64.c | 37 ++++++++++++++++++-----
->  target/arm/translate.c     | 62 ++++++++++++++++++++++++++++++--------
->  5 files changed, 112 insertions(+), 30 deletions(-)
->
-> diff --git a/target/arm/cpu-param.h b/target/arm/cpu-param.h
-> index 68ffb12427..29c5fc4241 100644
-> --- a/target/arm/cpu-param.h
-> +++ b/target/arm/cpu-param.h
-> @@ -30,6 +30,7 @@
->   */
->  # define TARGET_PAGE_BITS_VARY
->  # define TARGET_PAGE_BITS_MIN  10
-> +# define TARGET_TB_PCREL 1
->  #endif
->
->  #define NB_MMU_MODES 15
-> diff --git a/target/arm/translate.h b/target/arm/translate.h
-> index 4aa239e23c..41d14cc067 100644
-> --- a/target/arm/translate.h
-> +++ b/target/arm/translate.h
-> @@ -12,6 +12,25 @@ typedef struct DisasContext {
->
->      /* The address of the current instruction being translated. */
->      target_ulong pc_curr;
-> +    /*
-> +     * For TARGET_TB_PCREL, the full value of cpu_pc is not known
-> +     * (although the page offset is known).  For convenience, the
-> +     * translation loop uses the full virtual address that triggered
-> +     * the translation is used, from base.pc_start through pc_curr.
+On 10/4/22 09:23, Peter Maydell wrote:
+>>   void arm_cpu_synchronize_from_tb(CPUState *cs,
+>>                                    const TranslationBlock *tb)
+>>   {
+>> -    ARMCPU *cpu = ARM_CPU(cs);
+>> -    CPUARMState *env = &cpu->env;
+>> -
+>> -    /*
+>> -     * It's OK to look at env for the current mode here, because it's
+>> -     * never possible for an AArch64 TB to chain to an AArch32 TB.
+>> -     */
+>> -    if (is_a64(env)) {
+>> -        env->pc = tb_pc(tb);
+>> -    } else {
+>> -        env->regs[15] = tb_pc(tb);
+>> +    /* The program counter is always up to date with TARGET_TB_PCREL. */
+> 
+> I was confused for a bit about this, but it works because
+> although the synchronize_from_tb hook has a name that implies
+> it's comparatively general purpose, in fact we use it only
+> in the special case of "we abandoned execution at the start of
+> this TB without executing any of it".
 
-s/ is used//
+Correct.
 
-> +     * For efficiency, we do not update cpu_pc for every instruction.
-> +     * Instead, pc_save has the value of pc_curr at the time of the
-> +     * last update to cpu_pc, which allows us to compute the addend
-> +     * needed to bring cpu_pc current: pc_curr - pc_save.
-> +     * If cpu_pc now contains the destiation of an indirect branch,
+>> @@ -347,16 +354,22 @@ static void gen_exception_internal(int excp)
+>>
+>>   static void gen_exception_internal_insn(DisasContext *s, int excp)
+>>   {
+>> +    target_ulong pc_save = s->pc_save;
+>> +
+>>       gen_a64_update_pc(s, 0);
+>>       gen_exception_internal(excp);
+>>       s->base.is_jmp = DISAS_NORETURN;
+>> +    s->pc_save = pc_save;
+> 
+> What is trashing s->pc_save that we have to work around like this,
+> here and in the other similar changes ?
 
-"destination"
+gen_a64_update_pc trashes pc_save.
 
-> +     * pc_save contains -1 to indicate that relative updates are no
-> +     * longer possible.
-> +     */
-> +    target_ulong pc_save;
-> +    /*
-> +     * Similarly, pc_cond_save contains the value of pc_save at the
-> +     * beginning of an AArch32 conditional instruction.
-> +     */
-> +    target_ulong pc_cond_save;
->      target_ulong page_start;
->      uint32_t insn;
->      /* Nonzero if this instruction has been conditionally skipped.  */
-> diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-> index 94ca6f163f..0bc5e9b125 100644
-> --- a/target/arm/cpu.c
-> +++ b/target/arm/cpu.c
-> @@ -76,17 +76,18 @@ static vaddr arm_cpu_get_pc(CPUState *cs)
->  void arm_cpu_synchronize_from_tb(CPUState *cs,
->                                   const TranslationBlock *tb)
->  {
-> -    ARMCPU *cpu = ARM_CPU(cs);
-> -    CPUARMState *env = &cpu->env;
-> -
-> -    /*
-> -     * It's OK to look at env for the current mode here, because it's
-> -     * never possible for an AArch64 TB to chain to an AArch32 TB.
-> -     */
-> -    if (is_a64(env)) {
-> -        env->pc = tb_pc(tb);
-> -    } else {
-> -        env->regs[15] = tb_pc(tb);
-> +    /* The program counter is always up to date with TARGET_TB_PCREL. */
+Off of the top of my head, I can't remember what conditionally uses exceptions (single 
+step?).  But the usage pattern that is interesting is
 
-I was confused for a bit about this, but it works because
-although the synchronize_from_tb hook has a name that implies
-it's comparatively general purpose, in fact we use it only
-in the special case of "we abandoned execution at the start of
-this TB without executing any of it".
+     brcond(x, y, L1)
+     update_pc(disp1);
+     exit-or-exception.
+L1:
+     update_pc(disp2);
+     exit-or-exception.
 
-> +    if (!TARGET_TB_PCREL) {
-> +        CPUARMState *env = cs->env_ptr;
-> +        /*
-> +         * It's OK to look at env for the current mode here, because it's
-> +         * never possible for an AArch64 TB to chain to an AArch32 TB.
-> +         */
-> +        if (is_a64(env)) {
-> +            env->pc = tb_pc(tb);
-> +        } else {
-> +            env->regs[15] = tb_pc(tb);
-> +        }
->      }
->  }
->  #endif /* CONFIG_TCG */
+where at L1 we should have the same pc_save value as we did at the brcond.  Saving and 
+restoring around (at least some of) the DISAS_NORETURN points achieves that.
 
-> @@ -347,16 +354,22 @@ static void gen_exception_internal(int excp)
->
->  static void gen_exception_internal_insn(DisasContext *s, int excp)
->  {
-> +    target_ulong pc_save = s->pc_save;
-> +
->      gen_a64_update_pc(s, 0);
->      gen_exception_internal(excp);
->      s->base.is_jmp = DISAS_NORETURN;
-> +    s->pc_save = pc_save;
 
-What is trashing s->pc_save that we have to work around like this,
-here and in the other similar changes ?
-
-thanks
--- PMM
+r~

@@ -1,106 +1,159 @@
-Received: by 2002:a8a:1930:0:0:0:0:0 with SMTP id be48csp75805ocb;
-        Tue, 4 Oct 2022 03:37:32 -0700 (PDT)
-X-Google-Smtp-Source: AMsMyM4ImRxrNb9t+3hvH+7G6GtcrYjuayW3Sxfd2dLC+uWydXVpGcQrJLU6pEJDjUFCR1Ep/+GH
-X-Received: by 2002:a17:906:4fd1:b0:787:434f:d755 with SMTP id i17-20020a1709064fd100b00787434fd755mr18377536ejw.356.1664879852653;
-        Tue, 04 Oct 2022 03:37:32 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1664879852; cv=none;
+Received: by 2002:a8a:1930:0:0:0:0:0 with SMTP id be48csp78023ocb;
+        Tue, 4 Oct 2022 03:41:48 -0700 (PDT)
+X-Google-Smtp-Source: AMsMyM7eXXAl7tQNnhhgyVbzgR0lUV7Z4QO7m7h6GT7+hnDXvIgYNAOgOt305CtmirY8ylDa8lKS
+X-Received: by 2002:ad4:5c62:0:b0:4b1:b643:1f33 with SMTP id i2-20020ad45c62000000b004b1b6431f33mr901775qvh.57.1664880108362;
+        Tue, 04 Oct 2022 03:41:48 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1664880108; cv=none;
         d=google.com; s=arc-20160816;
-        b=A7yD5JK/bqrYzbmGsmLsTW/7GIFe5CT9+5IGf408fEk+po0DfLc8OltXNC8sOqf+un
-         pIJrJrPHm6hH5cyLLiojPCOGaSmUCRc023SVpQ3RJ/j7CKHwsfdGHEs9vRjzorWi8EfJ
-         NnjwKhsVibQWP7p9LuDr+0vCGXlT9tVkFNt/GWQmq5xHq4eU/5YoU0XQEUOd6MdAR+4s
-         L7huDKm4+ocx/wmmRAXkzj9l5b+BNH86bPQEBiimG3TmNoySPwqGVwxIWyzys2/P6duZ
-         fDLf2nkNLLhW+kDIMeVQumNFkZKU5lnLpKEDATgGnZoAopY2oVvXZJ6hHNomTOhfn+KZ
-         ykgA==
+        b=c+yGnQJ+eMZfSkEUTdXLYpzdoN3+bwxbfQmq8CAGtRqZZjfiPxOWrgIZYJ3OK7aM1/
+         sPbrAhRc/uEOPcxINqCHNphB5BvrpkAqE1jl29DuRtnDLNanwtPJ0W901k8OS3yTXYQ3
+         c9CaRjB5hGU2T/GYWw4mvEUHLiTsa7pALY5E6nfplV3MhSAYd+dHjh/Vs6JqA0ZNaW+5
+         2BpJv/rS2VXc1Bib1S6Ozp1Ew9lgB25n3gUQsx+fk21eO74QaVl1KnMejIoGSZ0ti0Pg
+         4pDeqCVfdzvXMfZHvcGP0db6dg0SRw8EWvy+OG9f3kF+dMVZ3rdAtQ2qds4tgaq7IrVC
+         BK3A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=to:references:message-id:content-transfer-encoding:cc:date
-         :in-reply-to:from:subject:mime-version:dkim-signature;
-        bh=QlSvwC0FZZH5RpxI3IuBMhXIoFMoTqI4zfjc2S1+OV0=;
-        b=dr2e2B0PWLcAu5BLkrwDrOX6F3aQ3H2ZRMzchh9SM9EZTNNfIwuYtZemFaxY8p6Kiy
-         GJ9trjLsVKns1xmbN3XO4wsVn5t/nq/p0s5DWuuk2cGetEc9kRisJlv2PypGyNI7nNWC
-         dUgtKXLDU67g3w/DUjPiv8LTbTM6o5map/D2NFrqU3MqvSMKEIlQrgCUFXNe7PlhpgHi
-         Oqh4/RuS0BzcBZ+VFxhdvlG80QfsRd8FYlu+9A8Nb3rzl3vcovftkYpqpO0dUEwldFN/
-         CQshzOId/3hUZGw2lNRA4Vc4/bd0qO9UvFKKEhZZfPN8K9X8dyXWr2U8B9b8D/lWDRip
-         gv+Q==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:mime-version:message-id:date
+         :user-agent:references:organization:in-reply-to:subject:cc:to:from
+         :dkim-signature;
+        bh=1M+NgUM5GZ5+imRVNWwYLnc6H57LmwBusuOnXas8ihg=;
+        b=g22jHB9VKPSMpv2MLVf3rrC5i5yvgL18g+nsHmJ0JR/aCre84fQQOYyxrM41nb6ZDR
+         JmKNdnD73BuEbBLuqXd+ziGXdctXnCxhPkc0fzQPwe7QTSUSFPwYLOxEn3Nfn6AsxThs
+         cllF2VflnvNawNDXDWKMeZR8ThpO7/OZm1gathxGUrOAsVyktzwdyEE/NruDvuYFloQl
+         JAIEA6q7vBr/fnKmi2YPxz/30gbOacSuLhde6hxJOJkOpI1YGjb98EqxDd3LVyOu7OvM
+         BU22r1pVinVKRGtSsOlR/fQnGwrpZCzrlG6teJVYe10OefT7DF2H7bYRMGect8xLzqij
+         pTjQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@ynddal.dk header.s=sig1 header.b=D1V9Yggm;
-       spf=pass (google.com: domain of mads@ynddal.dk designates 17.58.6.56 as permitted sender) smtp.mailfrom=mads@ynddal.dk
-Return-Path: <mads@ynddal.dk>
-Received: from pv50p00im-ztdg10021801.me.com (pv50p00im-ztdg10021801.me.com. [17.58.6.56])
-        by mx.google.com with ESMTPS id hw9-20020a170907a0c900b0078200f94d06si1903549ejc.237.2022.10.04.03.37.32
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=SYpCuDEG;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id q19-20020a05620a0d9300b006cf912df7f0si5011940qkl.74.2022.10.04.03.41.48
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 04 Oct 2022 03:37:32 -0700 (PDT)
-Received-SPF: pass (google.com: domain of mads@ynddal.dk designates 17.58.6.56 as permitted sender) client-ip=17.58.6.56;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 04 Oct 2022 03:41:48 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@ynddal.dk header.s=sig1 header.b=D1V9Yggm;
-       spf=pass (google.com: domain of mads@ynddal.dk designates 17.58.6.56 as permitted sender) smtp.mailfrom=mads@ynddal.dk
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ynddal.dk; s=sig1;
-	t=1664879851; bh=QlSvwC0FZZH5RpxI3IuBMhXIoFMoTqI4zfjc2S1+OV0=;
-	h=Content-Type:Mime-Version:Subject:From:Date:Message-Id:To;
-	b=D1V9Yggm9nh8f1zUmW5Wywq3JAnJ8ONUdGQxndkyTGLn9QxAxSrPWWdugXjlK2l8B
-	 90HAiVl18V0JLftlgnLZd8qF9OYGhEDORi3F+5qFEB9tlqqYbS3m2mbB4Sl+KaOkLr
-	 RgSjQCB4be+knpIQEEUwSGpUpvy3no8h8p0cOOsTyOYcUwqtYZfb1/lO6/yADaBzRF
-	 TTET6sU2X5MABE1ytTHo2YsOh3gFWl9aWQnJnra15FjDjTthZjv6DXzjIR9eYizRZw
-	 7Xt3L00aPTPBHkupyKRhGKc/Fyy0q2PF7IwKglq+4m1NT9/k/iIQ1kB8lWflRmvMAP
-	 ccUpqzyi5gD1Q==
-Received: from smtpclient.apple (pv50p00im-dlb-asmtp-mailmevip.me.com [17.56.9.10])
-	by pv50p00im-ztdg10021801.me.com (Postfix) with ESMTPSA id 26CA01609A3;
-	Tue,  4 Oct 2022 10:37:27 +0000 (UTC)
-Content-Type: text/plain;
-	charset=utf-8
-Mime-Version: 1.0 (Mac OS X Mail 16.0 \(3696.120.41.1.1\))
-Subject: Re: [PATCH  v3 13/15] gdbstub: move breakpoint logic to accel ops
-From: Mads Ynddal <mads@ynddal.dk>
-In-Reply-To: <20220927141504.3886314-14-alex.bennee@linaro.org>
-Date: Tue, 4 Oct 2022 12:25:32 +0200
-Cc: qemu-devel@nongnu.org,
- qemu-arm@nongnu.org,
- Richard Henderson <richard.henderson@linaro.org>,
- Paolo Bonzini <pbonzini@redhat.com>,
- =?utf-8?Q?Philippe_Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
- "open list:Overall KVM CPUs" <kvm@vger.kernel.org>
-Content-Transfer-Encoding: quoted-printable
-Message-Id: <340E64CE-3798-4671-9C51-510E28216E1E@ynddal.dk>
-References: <20220927141504.3886314-1-alex.bennee@linaro.org>
- <20220927141504.3886314-14-alex.bennee@linaro.org>
-To: =?utf-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
-X-Mailer: Apple Mail (2.3696.120.41.1.1)
-X-Proofpoint-GUID: sexTsaKf4iJ8y5gI7xPpZWij0kVGfh8k
-X-Proofpoint-ORIG-GUID: sexTsaKf4iJ8y5gI7xPpZWij0kVGfh8k
-X-Proofpoint-Virus-Version: =?UTF-8?Q?vendor=3Dfsecure_engine=3D1.1.170-22c6f66c430a71ce266a39bfe25bc?=
- =?UTF-8?Q?2903e8d5c8f:6.0.138,18.0.572,17.11.64.514.0000000_definitions?=
- =?UTF-8?Q?=3D2020-02-14=5F11:2020-02-14=5F02,2020-02-14=5F11,2022-02-23?=
- =?UTF-8?Q?=5F01_signatures=3D0?=
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 mlxlogscore=964 bulkscore=0
- clxscore=1030 adultscore=0 mlxscore=0 suspectscore=0 malwarescore=0
- phishscore=0 spamscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2209130000 definitions=main-2210040068
-X-TUID: IGqDgk1lCS2H
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=SYpCuDEG;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:57132 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1offMx-0000Z7-Uu
+	for alex.bennee@linaro.org; Tue, 04 Oct 2022 06:41:47 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:60086)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <cohuck@redhat.com>) id 1offMf-0000WA-Fj
+ for qemu-arm@nongnu.org; Tue, 04 Oct 2022 06:41:30 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:44278)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <cohuck@redhat.com>) id 1offMZ-0002S2-Ex
+ for qemu-arm@nongnu.org; Tue, 04 Oct 2022 06:41:25 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1664880082;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=1M+NgUM5GZ5+imRVNWwYLnc6H57LmwBusuOnXas8ihg=;
+ b=SYpCuDEGL+el3yDrPhQ7m+luR8EKvwq1+yK7genSsbTfC01+YE954iarcLX3YXHdd/sPMk
+ Et9m5/IHoVZpvl+J31DHiIoI6TYgAsPSHqz7eASrtvJkoKrXPUPTzzK0EgU3qrX/to5MkU
+ X99U4kofQh63Kkw/XMopA8K7L86Q7vE=
+Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
+ [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-557-0V2BPLTPOwOKy122kn9yRA-1; Tue, 04 Oct 2022 06:41:18 -0400
+X-MC-Unique: 0V2BPLTPOwOKy122kn9yRA-1
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.4])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 6FDAA857F8F;
+ Tue,  4 Oct 2022 10:41:18 +0000 (UTC)
+Received: from localhost (unknown [10.39.193.73])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 1F9AA2027061;
+ Tue,  4 Oct 2022 10:41:17 +0000 (UTC)
+From: Cornelia Huck <cohuck@redhat.com>
+To: Gavin Shan <gshan@redhat.com>, qemu-arm@nongnu.org
+Cc: qemu-devel@nongnu.org, maz@kernel.org, eric.auger@redhat.com,
+ zhenyzha@redhat.com, richard.henderson@linaro.org,
+ peter.maydell@linaro.org, shan.gavin@gmail.com
+Subject: Re: [PATCH v4 4/6] hw/arm/virt: Introduce
+ virt_get_high_memmap_enabled() helper
+In-Reply-To: <20221004002627.59172-5-gshan@redhat.com>
+Organization: Red Hat GmbH
+References: <20221004002627.59172-1-gshan@redhat.com>
+ <20221004002627.59172-5-gshan@redhat.com>
+User-Agent: Notmuch/0.37 (https://notmuchmail.org)
+Date: Tue, 04 Oct 2022 12:41:16 +0200
+Message-ID: <87edvnooqb.fsf@redhat.com>
+MIME-Version: 1.0
+Content-Type: text/plain
+X-Scanned-By: MIMEDefang 3.1 on 10.11.54.4
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=cohuck@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -27
+X-Spam_score: -2.8
+X-Spam_bar: --
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: Y5eBruXZBHpR
 
+On Tue, Oct 04 2022, Gavin Shan <gshan@redhat.com> wrote:
 
-> As HW virtualization requires specific support to handle breakpoints
-> lets push out special casing out of the core gdbstub code and into
-> AccelOpsClass. This will make it easier to add other accelerator
-> support and reduces some of the stub shenanigans.
->=20
-> Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-> Signed-off-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
-> Cc: Mads Ynddal <mads@ynddal.dk>
+> This introduces virt_get_high_memmap_enabled() helper, which returns
+> the pointer to vms->highmem_{redists, ecam, mmio}. The pointer will
+> be used in the subsequent patches.
+>
+> No functional change intended.
+>
+> Signed-off-by: Gavin Shan <gshan@redhat.com>
 > ---
-> accel/kvm/kvm-cpus.h       |   3 +
-> gdbstub/internals.h        |  16 +++++
-> include/sysemu/accel-ops.h |   6 ++
-> include/sysemu/cpus.h      |   3 +
-> include/sysemu/kvm.h       |   5 --
-> accel/kvm/kvm-accel-ops.c  |   8 +++
-> accel/kvm/kvm-all.c        |  24 +------
-> accel/stubs/kvm-stub.c     |  16 -----
-> accel/tcg/tcg-accel-ops.c  |  92 +++++++++++++++++++++++++++
-> gdbstub/gdbstub.c          | 127 +++----------------------------------
-> gdbstub/softmmu.c          |  42 ++++++++++++
-> gdbstub/user.c             |  62 ++++++++++++++++++
-> softmmu/cpus.c             |   7 ++
-> gdbstub/meson.build        |   8 +++
-> 14 files changed, 259 insertions(+), 160 deletions(-)
+>  hw/arm/virt.c | 30 +++++++++++++++++-------------
+>  1 file changed, 17 insertions(+), 13 deletions(-)
+>
+> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+> index b0b679d1f4..59de7b78b5 100644
+> --- a/hw/arm/virt.c
+> +++ b/hw/arm/virt.c
+> @@ -1689,14 +1689,29 @@ static uint64_t virt_cpu_mp_affinity(VirtMachineState *vms, int idx)
+>      return arm_cpu_mp_affinity(idx, clustersz);
+>  }
+>  
+> +static inline bool *virt_get_high_memmap_enabled(VirtMachineState *vms,
+> +                                                 int index)
+> +{
+> +    bool *enabled_array[] = {
+> +        &vms->highmem_redists,
+> +        &vms->highmem_ecam,
+> +        &vms->highmem_mmio,
+> +    };
+> +
+> +    assert(index - VIRT_LOWMEMMAP_LAST < ARRAY_SIZE(enabled_array));
 
-Reviewed-by: Mads Ynddal <mads@ynddal.dk>=
+I wonder whether we want an assert(ARRAY_SIZE(extended_memmap) ==
+ARRAY_SIZE(enabled_array))? IIUC, we never want those two to get out of
+sync?
+
+> +
+> +    return enabled_array[index - VIRT_LOWMEMMAP_LAST];
+> +}
+> +
+

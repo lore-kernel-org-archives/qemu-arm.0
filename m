@@ -1,109 +1,98 @@
-Received: by 2002:a8a:1930:0:0:0:0:0 with SMTP id be48csp71005ocb;
-        Mon, 3 Oct 2022 07:57:35 -0700 (PDT)
-X-Google-Smtp-Source: AMsMyM5BGF/8KaxbVHRLmiGDSoXJFZ2hOnInIKpYOger9/dsQz7EQorhzcAjnUb4se9uf+CoXz3x
-X-Received: by 2002:ac8:5b06:0:b0:35c:e066:b967 with SMTP id m6-20020ac85b06000000b0035ce066b967mr16250371qtw.233.1664809054843;
-        Mon, 03 Oct 2022 07:57:34 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1664809054; cv=none;
+Received: by 2002:a8a:1930:0:0:0:0:0 with SMTP id be48csp365699ocb;
+        Mon, 3 Oct 2022 17:27:34 -0700 (PDT)
+X-Google-Smtp-Source: AMsMyM7/3BfKUHDEp6vhjwkx0IYLiDwt9uGo7UbIi4XeqoHjeB6pfSpq+lMmctbd5wu3FpXEhwPR
+X-Received: by 2002:ac8:5a52:0:b0:388:5fcb:c003 with SMTP id o18-20020ac85a52000000b003885fcbc003mr134196qta.419.1664843254103;
+        Mon, 03 Oct 2022 17:27:34 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1664843254; cv=none;
         d=google.com; s=arc-20160816;
-        b=ZGQW/ISUAyWYDRLuniGifPa15D+V70DrcIovKBXIvn2JH466N3p5/0dg2wj25yXUiV
-         BIousEScfiVS2pCRItXzUEUf/TGW0MegSEYNj9/zMjHEtn9Y9K1tVIkQm+WiiAurgtIZ
-         wLlYN5ngK0t0b0g9s5yV6Juc+mTj9B/KRVFtXHQQfNlJUr8TGVzBDnexA3v212DbFQHH
-         2vAO4MA9mvXn7uMy7Y8wYvqZrFe/AhBXGyuNl/II2U29kg1UemtHOGUmdc7i+s3RkCHb
-         bK5di8pcqOKAeCVwSmQzQkLgiK4+0G9BYZP3p4GpJi2Ezyj4EZd4O7FEO1QzXxVWrmZd
-         n/kA==
+        b=oWdhhCk95Qh/MUNqr+1gajKWhe5ic84JVwQIwbC8miOYKBPds+u+h84GEG1wOKJpyI
+         ZmGO38hP9GjFMxEPqvGu5HrcngRscCmEfUNMkx9yyNrneaKhn5egB0Zzzbgy+DOOScRU
+         R4YCYUVe/QNXvS4HL6AlGF1iKkxkqXBB/I8PhJE4IxICPeZkIJomKLHlxKY++Uwih+v3
+         O0WcKdTn7DOFZqbGtPf5nHT3rd33Ql1cklunNitE/CkAD5pUaHrCZeRbB8V3Z+xVt1uJ
+         /qz9y8uGCOFZLdQmGp1dkyi396Dg0OMCi6cPUQ1z3hyV7MOCZJow7xafgqoVsS1Jw2pc
+         Nwdw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
-        bh=RV/X+WaJqNZO6nQexO9aMZi9OCWlE8Q3vDFCU19ehgg=;
-        b=l7AmXg/NrGFoWvjggntJ2eRaoTi/jA9l4L1DSdiiha++sJ+17tt9nc0dRwQ01Yprx3
-         aozOmHSS8bRJ6g4mIS6qWOjmpgnHikblHgY8mn0AwPy7r4MDufEv5fg1uldDwnoZkPe+
-         Q2HHyzDCWw4ZEDW+5R7KDPFAGIcVQdAv8oIt3xbd5uXbdSBNDSCVR+/gNgrRHrwcer0O
-         c4BdHJbbo2MAGlaje/i+ZxuEZKi5hac63aamfFP7Lwe1FQBU378R59yPNgqeCcslnL4e
-         fRHOZAN2qNNzjYz3RqO0OXlhcUMYJt3vMgYrkHGzgA+5WdvITlShCOlOgbL93xwEUrgX
-         1zEg==
+        bh=0I/lEiOBQ3COXqfsbRBTyni/ySvMDvCrmKW7u9qW9ZA=;
+        b=aGudkEOxBbcLY3KdFzjwoSdBPY9ADGhiyCnGKOXZ95oi7ajZbeEpBjd5x1iuzUcg0D
+         AdssnAntOG+Ikrgk4Mo7BAchsqHkGfBoGzRK/ewoPLpvV7Hn0bndT+AMyxjCt4r2iF+k
+         KkH7EveGwli78ywMV+dceBVlSCCA/vXybw4WoppVODxpMhqZ7UZ9Ex+a/rz6QyBzK+8J
+         LaXniAnyKhZFHljfOMBo8/w4o8MUNPhPIeLDlup4yQAZ62cz/8ncyAqsu2GczJmLpG4Y
+         05ownxSl34ZeYTddkuhebejo0QdmiXPN6Rm3V+uddoS7OIZvmRMK8vSRvYqIj/U8uC8N
+         PDZQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=YcBNWgCz;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=SHPPf8y4;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id w19-20020a05620a445300b006ce177efcbcsi4450203qkp.413.2022.10.03.07.57.34
+        by mx.google.com with ESMTPS id d25-20020a05620a137900b006cee4fb7506si4218506qkl.167.2022.10.03.17.27.34
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 03 Oct 2022 07:57:34 -0700 (PDT)
+        Mon, 03 Oct 2022 17:27:34 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=YcBNWgCz;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=SHPPf8y4;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:39732 helo=lists1p.gnu.org)
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:41070 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ofMsw-0005Lv-EP
-	for alex.bennee@linaro.org; Mon, 03 Oct 2022 10:57:34 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:54928)
+	id 1ofVmQ-0007pg-DW
+	for alex.bennee@linaro.org; Mon, 03 Oct 2022 20:27:28 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:50014)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jerome.forissier@linaro.org>)
- id 1ofMsc-0005Lf-5n
- for qemu-arm@nongnu.org; Mon, 03 Oct 2022 10:57:14 -0400
-Received: from mail-wr1-x431.google.com ([2a00:1450:4864:20::431]:36631)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <jerome.forissier@linaro.org>)
- id 1ofMsZ-0004rw-S7
- for qemu-arm@nongnu.org; Mon, 03 Oct 2022 10:57:13 -0400
-Received: by mail-wr1-x431.google.com with SMTP id j7so11781725wrr.3
- for <qemu-arm@nongnu.org>; Mon, 03 Oct 2022 07:57:10 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:from:to:cc:subject:date;
- bh=RV/X+WaJqNZO6nQexO9aMZi9OCWlE8Q3vDFCU19ehgg=;
- b=YcBNWgCzGgKluIVRv7kN/epE6GoK2NdrFIZeLZmi5o7vDBwZPVC4G+28FM+UF0Ne5D
- O9+5VywFmi035TNVRZKNGPyVGBdhYbNC9EB0kcrq7B5xEsF4s4XvGjjVk2cFqqkoL92O
- nh+U0eLxcpulGDcFJvkei4i0wnQauuY60cFAnvA8nLU0fTUQsr+xaQVqPpcWadV3ZJzW
- E70FE83xrow75jhRGdT58Wa9cwiU+8bSxdGjGfGR6CbWSQL31msxvCwl5ZwRE9INlIsl
- RDspmAZ7AJWaBEpxVONRr8863nAVOve7am22frKjLPSRxQk8RH3TUfq4fVVKJ4HPfhuQ
- LX3A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:x-gm-message-state:from:to:cc:subject:date;
- bh=RV/X+WaJqNZO6nQexO9aMZi9OCWlE8Q3vDFCU19ehgg=;
- b=fncRRu11hlNnbXdYkX7Y17FRQLjclEgDRD+QWFvoKpjJbyAcWrNIJbf1woMlggQEf4
- eJlAUWJggKDHPPQJPTL4PlyorjgbkamVoB0CLriHp1PfuKy3JCZ5xebjk21KyrUEXcbw
- f3KyJ7ORuGnfK1AAJXvvWt+Kog8yR9wkSu7ee4KyIcR8etvxHcyXFCM+OW6eawA9JQ1K
- 0bK8dLvBh20PHa1SV3NcH04TWGAJGHLDLNZA99GPBqg6N0E6gOWjpF9Zsen0KyJZTuvz
- 0n160rDkfkHbWKsrc2io+DfVB+ZXFUe50c7CAHbzl2kyS+Mk8wSCLVMUSLGRRIgeJUNa
- GfJQ==
-X-Gm-Message-State: ACrzQf2Ljme2GS3XzSUTOivH5csz10L3oY755jG8aAl3kRTTviExVYb/
- zfbHwylZLkLYaUbUkpNETbFS/w==
-X-Received: by 2002:a5d:69c6:0:b0:22c:dbb2:d84 with SMTP id
- s6-20020a5d69c6000000b0022cdbb20d84mr12881189wrw.190.1664809029566; 
- Mon, 03 Oct 2022 07:57:09 -0700 (PDT)
-Received: from jerome-XPS-13-9310.. ([2a01:e0a:3cb:7bb0:5860:99c5:7ff3:cb36])
- by smtp.gmail.com with ESMTPSA id
- z6-20020adfec86000000b0022b1d74dc56sm10040365wrn.79.2022.10.03.07.57.08
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 03 Oct 2022 07:57:09 -0700 (PDT)
-From: Jerome Forissier <jerome.forissier@linaro.org>
-To: Peter Maydell <peter.maydell@linaro.org>,
-	qemu-arm@nongnu.org
-Cc: qemu-devel@nongnu.org, Richard Henderson <richard.henderson@linaro.org>,
- Jerome Forissier <jerome.forissier@linaro.org>, qemu-stable@nongnu.org
-Subject: [PATCH] hw/arm/boot: set CPTR_EL3.ESM and SCR_EL3.EnTP2 when booting
- Linux with EL3
-Date: Mon,  3 Oct 2022 16:56:41 +0200
-Message-Id: <20221003145641.1921467-1-jerome.forissier@linaro.org>
-X-Mailer: git-send-email 2.34.1
+ (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1ofVlj-0007oo-FN
+ for qemu-arm@nongnu.org; Mon, 03 Oct 2022 20:26:43 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:55227)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1ofVlf-0004r5-ER
+ for qemu-arm@nongnu.org; Mon, 03 Oct 2022 20:26:41 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1664843197;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=0I/lEiOBQ3COXqfsbRBTyni/ySvMDvCrmKW7u9qW9ZA=;
+ b=SHPPf8y4beuHGgb5urE2RUIbCcZr8Qx1NamYbLArUVR+A4Twvsa+9+e4zjHaROj8qvUHxl
+ 3XmTg3Js+1+GFdsK3ZlsuWUOj1EVWWTsX8Gd1NNwmbtw3jVLarqIoflCOG389L1W6HTG5z
+ 3V8MG+0FdlHXAqaXuX8NgAbOEAPpsog=
+Received: from mimecast-mx02.redhat.com (mx3-rdu2.redhat.com
+ [66.187.233.73]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-68-opumObTUO9GHnQRQECEEvQ-1; Mon, 03 Oct 2022 20:26:34 -0400
+X-MC-Unique: opumObTUO9GHnQRQECEEvQ-1
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.1])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id F2BA71C05197;
+ Tue,  4 Oct 2022 00:26:33 +0000 (UTC)
+Received: from gshan.redhat.com (vpn2-54-56.bne.redhat.com [10.64.54.56])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 9D84F40C206B;
+ Tue,  4 Oct 2022 00:26:30 +0000 (UTC)
+From: Gavin Shan <gshan@redhat.com>
+To: qemu-arm@nongnu.org
+Cc: qemu-devel@nongnu.org, maz@kernel.org, eric.auger@redhat.com,
+ cohuck@redhat.com, zhenyzha@redhat.com, richard.henderson@linaro.org,
+ peter.maydell@linaro.org, shan.gavin@gmail.com
+Subject: [PATCH v4 0/6] hw/arm/virt: Improve address assignment for high
+ memory regions
+Date: Tue,  4 Oct 2022 08:26:21 +0800
+Message-Id: <20221004002627.59172-1-gshan@redhat.com>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::431;
- envelope-from=jerome.forissier@linaro.org; helo=mail-wr1-x431.google.com
+X-Scanned-By: MIMEDefang 3.1 on 10.11.54.1
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=gshan@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
@@ -120,36 +109,76 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: LFajK2DLF4HZ
+X-TUID: TjIIRE/MK/v/
 
-According to the Linux kernel booting.rst [1], CPTR_EL3.ESM and
-SCR_EL3.EnTP2 must be initialized to 1 when EL3 is present and FEAT_SME
-is advertised. This has to be taken care of when QEMU boots directly
-into the kernel (i.e., "-M virt,secure=on -cpu max -kernel Image").
+There are three high memory regions, which are VIRT_HIGH_REDIST2,
+VIRT_HIGH_PCIE_ECAM and VIRT_HIGH_PCIE_MMIO. Their base addresses
+are floating on highest RAM address. However, they can be disabled
+in several cases.
 
-Cc: qemu-stable@nongnu.org
-Fixes: 78cb9776662a ("target/arm: Enable SME for -cpu max")
-Link: [1] https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/Documentation/arm64/booting.rst?h=v6.0#n321
-Signed-off-by: Jerome Forissier <jerome.forissier@linaro.org>
----
- hw/arm/boot.c | 4 ++++
- 1 file changed, 4 insertions(+)
+(1) One specific high memory region is disabled by developer by
+    toggling vms->highmem_{redists, ecam, mmio}.
 
-diff --git a/hw/arm/boot.c b/hw/arm/boot.c
-index ada2717f76..ee3858b673 100644
---- a/hw/arm/boot.c
-+++ b/hw/arm/boot.c
-@@ -763,6 +763,10 @@ static void do_cpu_reset(void *opaque)
-                     if (cpu_isar_feature(aa64_sve, cpu)) {
-                         env->cp15.cptr_el[3] |= R_CPTR_EL3_EZ_MASK;
-                     }
-+                    if (cpu_isar_feature(aa64_sme, cpu)) {
-+                        env->cp15.cptr_el[3] |= R_CPTR_EL3_ESM_MASK;
-+                        env->cp15.scr_el3 |= SCR_ENTP2;
-+                    }
-                     /* AArch64 kernels never boot in secure mode */
-                     assert(!info->secure_boot);
-                     /* This hook is only supported for AArch32 currently:
+(2) VIRT_HIGH_PCIE_ECAM region is disabled on machine, which is
+    'virt-2.12' or ealier than it.
+
+(3) VIRT_HIGH_PCIE_ECAM region is disabled when firmware is loaded
+    on 32-bits system.
+
+(4) One specific high memory region is disabled when it breaks the
+    PA space limit.
+
+The current implementation of virt_set_memmap() isn't comprehensive
+because the space for one specific high memory region is always
+reserved from the PA space for case (1), (2) and (3). In the code,
+'base' and 'vms->highest_gpa' are always increased for those three
+cases. It's unnecessary since the assigned space of the disabled
+high memory region won't be used afterwards.
+
+The series intends to improve the address assignment for these
+high memory regions.
+
+PATCH[1-4] preparatory work for the improvment
+PATCH[5]   improve high memory region address assignment
+PATCH[6]   adds 'compact-highmem' to enable or disable the optimization
+
+History
+=======
+v3: https://lists.nongnu.org/archive/html/qemu-arm/2022-09/msg00258.html
+v2: https://lore.kernel.org/all/20220815062958.100366-1-gshan@redhat.com/T/
+v1: https://lists.nongnu.org/archive/html/qemu-arm/2022-08/msg00013.html
+
+Changelog
+==========
+v4:
+  * Add virt_get_high_memmap_enabled() helper                  (Eric)
+  * Move 'vms->highmem_compact' and related logic from
+    PATCH[v4 6/6] to PATCH[v4 5/6] to avoid git-bisect
+    breakage                                                   (Eric)
+  * Document the legacy and optimized high memory region
+    layout in commit log and source code                       (Eric)
+v3:
+  * Reorder the patches                                        (Gavin)
+  * Add 'highmem-compact' property for backwards compatibility (Eric)
+v2:
+  * Split the patches for easier review                        (Gavin)
+  * Improved changelog                                         (Marc)
+  * Use 'bool fits' in virt_set_high_memmap()                  (Eric)
+
+Gavin Shan (6):
+  hw/arm/virt: Introduce virt_set_high_memmap() helper
+  hw/arm/virt: Rename variable size to region_size in
+    virt_set_high_memmap()
+  hw/arm/virt: Introduce variable region_base in virt_set_high_memmap()
+  hw/arm/virt: Introduce virt_get_high_memmap_enabled() helper
+  hw/arm/virt: Improve high memory region address
+  hw/arm/virt: Add 'compact-highmem' property
+
+ docs/system/arm/virt.rst |   4 ++
+ hw/arm/virt.c            | 131 +++++++++++++++++++++++++++++----------
+ include/hw/arm/virt.h    |   2 +
+ 3 files changed, 104 insertions(+), 33 deletions(-)
+
 -- 
-2.34.1
+2.23.0
 

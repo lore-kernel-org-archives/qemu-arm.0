@@ -1,104 +1,84 @@
-Received: by 2002:a8a:1930:0:0:0:0:0 with SMTP id be48csp83395ocb;
-        Tue, 4 Oct 2022 03:54:35 -0700 (PDT)
-X-Google-Smtp-Source: AMsMyM6njPjoBdOcDt0mV8lRfDVikkT+Fg3j1q4ok9kx+7h7f9sl/0t1fjUzongqjYNjZPHuyOn3
-X-Received: by 2002:a05:620a:3711:b0:6ce:e7b3:d91b with SMTP id de17-20020a05620a371100b006cee7b3d91bmr15887943qkb.428.1664880874954;
-        Tue, 04 Oct 2022 03:54:34 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1664880874; cv=none;
+Received: by 2002:a8a:1930:0:0:0:0:0 with SMTP id be48csp93100ocb;
+        Tue, 4 Oct 2022 04:11:47 -0700 (PDT)
+X-Google-Smtp-Source: AMsMyM4+MurHl+wkDpVO1TKstKR1baCNypbCKOds2PiI9bWru4SmtwVWgnXSMmFljI3LTJP37iXB
+X-Received: by 2002:a05:620a:2b44:b0:6ce:20e9:50 with SMTP id dp4-20020a05620a2b4400b006ce20e90050mr16598096qkb.356.1664881906931;
+        Tue, 04 Oct 2022 04:11:46 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1664881906; cv=none;
         d=google.com; s=arc-20160816;
-        b=CtLzYVTCttNN05vQz899otUHH4xaIKvsz1OmOhhaDFr5QHsDoyrJoADiyDb+skqdpN
-         UmR4b6M1TlZYjUXZy7ZnzyGX+HixH4KvJTZyZNY8kFfVumQLCfocuqAaMBVk13WdtABW
-         LEKNAIllfWipOEPMvBTnWFp5fgZOYphPQzi7LrM95NDVFa8fWKwsMUQIcrL/a7n3qoje
-         vWmtJnXSqDzic4s9NUKbpKpvKiplf9h4wlVbV9Vjfk/Q99dFyDHOSrVQ9YQuAdSAf0zs
-         HPhnQ74WzVUUYs4mgN9YmT5n6Yp/FI7F2d/vsR+LmMu4Rg8UfiQQRRoJHb3sUBWON3pV
-         AjHA==
+        b=qBTkB9sHbyJblhUUxf6BnwbdXfNpU2WcBY1apPo55iBUnFfV+bXCFsEpMGWYUKrUjR
+         3MEFN+u45cBS1xfqzV7X5GOBaBLvV3wiRJxuIwif5xvNUqU57gsL9Gf9AYu2txiWbXzC
+         JXOLIGzbbnJ5Gr1ZjADNjA/s6UOQMQp98WrRGIIMAILIrCXT+hIcPLF9XQR7mbpddfjd
+         nhlyPoFE2lPNbhWsehoUONikMcHTqW1m8oznoU+8EO+kWSCT/rAyMMpnY4T2un1ZwxIn
+         tUok8b4iIeJwuhjUCG5HluK3epmLVe6fI78O9boBgBMI3Wxvxa3WHRLgm55lHjOglpLR
+         A2tA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version:message-id:date
-         :user-agent:references:organization:in-reply-to:subject:cc:to:from
-         :dkim-signature;
-        bh=MGoewGI2tIAIhQV36B5JUf6B4O/mb6qTfQ9wwL1whKM=;
-        b=ibuEVCz/gZxPFkGFT2S7JC4kEiCjWdiPU+pJBhxBLEUJOBwYx5C5U7LgHpnv0booxt
-         qiQ5UUJVR1JUjYvpxSG77SW0JbXeT4m++CWpjD+mO5f7/SHxm0w635H9hIdh0y29sik3
-         NPVVBw73bNznK5rQjQJfl8XSjL6pM4HrlyUtK6Hhq8Gfzcw3C2IPw+TWOJcNrs331jNA
-         GMsigb5QBTi2fMOzeKMErd2bEXYKe02jgoGBMA+SS53gBj9cry8JuFwtCmKKl2E2ofKA
-         dT64YtbGHca2F/UQ1gdO+G/PsJoXfxxRU+h6xiVtLPnA0lqQihFUGUlce/9iiKNmqmqW
-         nPtg==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:organization:references:in-reply-to:message-id:subject
+         :cc:to:from:date;
+        bh=tT4rLEgV7fzTAFQQo+zqgU0I7ucw3s5T7dQHtUOdSyw=;
+        b=H0r32XkOO2JEkf0Ga8chG3W1GS5mJT3idbsTc6ouBdYCKHZbJNFI8OKMNp0bJKD+3D
+         H6yFKPVVRZxJT1P3iseXHiKkI4UW3bDzdVps+6St5XQBJl9PI4oVWEYykjDhF/9W0WRR
+         8hS4MTNSumjkUUPRyBmzBkBTmV2Tbf+AnmuHC6dNufXio4h7JDT1h8PfOoEpxDYPggRk
+         zbxA2f8ZWv3qTiviwFydV2e+2bhF1YXnxvVz2MOVdkPpQEwuvjp1RXCmmxSeuBbOtK93
+         mSnixr13yTqCWlY9TmUgQwCX2vp+54uhHZPn3bcIx6dMwb4ubC4+/VHKwdCk5lqZSEwc
+         QsQA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=XGANgzcf;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=arm.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id r27-20020ae9d61b000000b006b943f5d0f7si4826775qkk.540.2022.10.04.03.54.34
+        by mx.google.com with ESMTPS id v2-20020ac873c2000000b0035a71ca287bsi325265qtp.18.2022.10.04.04.11.46
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 04 Oct 2022 03:54:34 -0700 (PDT)
+        Tue, 04 Oct 2022 04:11:46 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=XGANgzcf;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:46930 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=arm.com
+Received: from localhost ([::1]:57230 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1offZK-0001Nx-Hr
-	for alex.bennee@linaro.org; Tue, 04 Oct 2022 06:54:34 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:60592)
+	id 1offpy-0005Yl-Fa
+	for alex.bennee@linaro.org; Tue, 04 Oct 2022 07:11:46 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:42184)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <cohuck@redhat.com>) id 1offYl-0001LV-MJ
- for qemu-arm@nongnu.org; Tue, 04 Oct 2022 06:53:59 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:22892)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <cohuck@redhat.com>) id 1offYj-0004pp-60
- for qemu-arm@nongnu.org; Tue, 04 Oct 2022 06:53:58 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1664880835;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=MGoewGI2tIAIhQV36B5JUf6B4O/mb6qTfQ9wwL1whKM=;
- b=XGANgzcfrr8fgcErpm9L+GJ8Qm09CzO1YaP7BJNuX9C7I8Rn5pKxaGuMlh6A5cjrYRwvGV
- kQ9BGKQ0RPu5qVIpVRCopqHEP5iRsi92DYYUWeYPLdHZXBrKmm03ka6Dj8J3aZnFFE+qMn
- vbKNsP5V1hK/W4eSphKsiIYYX5935To=
-Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
- [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-639-k02VsSOgNFu2ICsG6vyfNA-1; Tue, 04 Oct 2022 06:53:52 -0400
-X-MC-Unique: k02VsSOgNFu2ICsG6vyfNA-1
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.rdu2.redhat.com
- [10.11.54.4])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id C06B385A583;
- Tue,  4 Oct 2022 10:53:51 +0000 (UTC)
-Received: from localhost (unknown [10.39.193.73])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 6E5E62027061;
- Tue,  4 Oct 2022 10:53:51 +0000 (UTC)
-From: Cornelia Huck <cohuck@redhat.com>
-To: Gavin Shan <gshan@redhat.com>, qemu-arm@nongnu.org
-Cc: qemu-devel@nongnu.org, maz@kernel.org, eric.auger@redhat.com,
- zhenyzha@redhat.com, richard.henderson@linaro.org,
- peter.maydell@linaro.org, shan.gavin@gmail.com
-Subject: Re: [PATCH v4 5/6] hw/arm/virt: Improve high memory region address
-In-Reply-To: <20221004002627.59172-6-gshan@redhat.com>
-Organization: Red Hat GmbH
-References: <20221004002627.59172-1-gshan@redhat.com>
- <20221004002627.59172-6-gshan@redhat.com>
-User-Agent: Notmuch/0.37 (https://notmuchmail.org)
-Date: Tue, 04 Oct 2022 12:53:48 +0200
-Message-ID: <87bkqroo5f.fsf@redhat.com>
+ (Exim 4.90_1) (envelope-from <andre.przywara@arm.com>)
+ id 1offlw-0002vc-BY; Tue, 04 Oct 2022 07:07:38 -0400
+Received: from foss.arm.com ([217.140.110.172]:50854)
+ by eggs.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <andre.przywara@arm.com>)
+ id 1offlq-0004hF-KL; Tue, 04 Oct 2022 07:07:33 -0400
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
+ by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 02B1011FB;
+ Tue,  4 Oct 2022 04:07:34 -0700 (PDT)
+Received: from donnerap.cambridge.arm.com (usa-sjc-imap-foss1.foss.arm.com
+ [10.121.207.14])
+ by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 5726A3F67D;
+ Tue,  4 Oct 2022 04:07:26 -0700 (PDT)
+Date: Tue, 4 Oct 2022 12:07:22 +0100
+From: Andre Przywara <andre.przywara@arm.com>
+To: Jerome Forissier <jerome.forissier@linaro.org>
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org, Richard Henderson <richard.henderson@linaro.org>,
+ qemu-stable@nongnu.org
+Subject: Re: [PATCH] target/arm: allow setting SCR_EL3.EnTP2 when FEAT_SME
+ is implemented
+Message-ID: <20221004120722.65767188@donnerap.cambridge.arm.com>
+In-Reply-To: <20221004072354.27037-1-jerome.forissier@linaro.org>
+References: <20221004072354.27037-1-jerome.forissier@linaro.org>
+Organization: ARM
+X-Mailer: Claws Mail 3.18.0 (GTK+ 2.24.32; aarch64-unknown-linux-gnu)
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Scanned-By: MIMEDefang 3.1 on 10.11.54.4
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=cohuck@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=217.140.110.172;
+ envelope-from=andre.przywara@arm.com; helo=foss.arm.com
+X-Spam_score_int: -25
+X-Spam_score: -2.6
 X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.6 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_LOW=-0.7,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -113,68 +93,124 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: blGSXdarX08p
+X-TUID: vpLHDjzo7mFJ
 
-On Tue, Oct 04 2022, Gavin Shan <gshan@redhat.com> wrote:
+On Tue,  4 Oct 2022 09:23:54 +0200
+Jerome Forissier <jerome.forissier@linaro.org> wrote:
 
-> There are three high memory regions, which are VIRT_HIGH_REDIST2,
-> VIRT_HIGH_PCIE_ECAM and VIRT_HIGH_PCIE_MMIO. Their base addresses
-> are floating on highest RAM address. However, they can be disabled
-> in several cases.
->
-> (1) One specific high memory region is disabled by developer by
->     toggling vms->highmem_{redists, ecam, mmio}.
->
-> (2) VIRT_HIGH_PCIE_ECAM region is disabled on machine, which is
->     'virt-2.12' or ealier than it.
->
-> (3) VIRT_HIGH_PCIE_ECAM region is disabled when firmware is loaded
->     on 32-bits system.
->
-> (4) One specific high memory region is disabled when it breaks the
->     PA space limit.
->
-> The current implementation of virt_set_memmap() isn't comprehensive
-> because the space for one specific high memory region is always
-> reserved from the PA space for case (1), (2) and (3). In the code,
-> 'base' and 'vms->highest_gpa' are always increased for those three
-> cases. It's unnecessary since the assigned space of the disabled
-> high memory region won't be used afterwards.
->
-> This improves the address assignment for those three high memory
-> region by skipping the address assignment for one specific high
-> memory region if it has been disabled in case (1), (2) and (3).
-> 'vms->high_compact' is false for now, meaning that we don't have
-> any behavior changes until it becomes configurable through property
-> 'compact-highmem' in next patch.
->
-> Signed-off-by: Gavin Shan <gshan@redhat.com>
+Hi,
+
+> Updates write_scr() to allow setting SCR_EL3.EnTP2 when FEAT_SME is
+> implemented. SCR_EL3 being a 64-bit register, valid_mask is changed
+> to uint64_t and the SCR_* constants in target/arm/cpu.h are extended
+> to 64-bit so that masking and bitwise not (~) behave as expected.
+> 
+> This enables booting Linux with Trusted Firmware-A at EL3 with
+> "-M virt,secure=on -cpu max".
+> 
+> Cc: qemu-stable@nongnu.org
+> Fixes: 78cb9776662a ("target/arm: Enable SME for -cpu max")
+> Signed-off-by: Jerome Forissier <jerome.forissier@linaro.org>
+
+Good catch!
+So I can confirm that this fixes the issue, given a TF-A patch to actually
+enable SME (and SVE).
+Checked against the ARM ARM, also verified that the
+defines don't accidentally changed their values.
+
+Reviewed-by: Andre Przywara <andre.przywara@arm.com>
+
 > ---
->  hw/arm/virt.c         | 19 ++++++++++++-------
->  include/hw/arm/virt.h |  1 +
->  2 files changed, 13 insertions(+), 7 deletions(-)
->
-> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-> index 59de7b78b5..4164da49e9 100644
-> --- a/hw/arm/virt.c
-> +++ b/hw/arm/virt.c
-> @@ -1715,9 +1715,6 @@ static void virt_set_high_memmap(VirtMachineState *vms,
->          region_base = ROUND_UP(base, extended_memmap[i].size);
->          region_size = extended_memmap[i].size;
+>  target/arm/cpu.h    | 54 ++++++++++++++++++++++-----------------------
+>  target/arm/helper.c |  5 ++++-
+>  2 files changed, 31 insertions(+), 28 deletions(-)
+> 
+> diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+> index 5168e3d837..d5e9949eb6 100644
+> --- a/target/arm/cpu.h
+> +++ b/target/arm/cpu.h
+> @@ -1653,33 +1653,33 @@ static inline void xpsr_write(CPUARMState *env, uint32_t val, uint32_t mask)
 >  
-> -        vms->memmap[i].base = region_base;
-> -        vms->memmap[i].size = region_size;
-> -
->          /*
->           * Check each device to see if they fit in the PA space,
->           * moving highest_gpa as we go.
-
-Maybe tweak this comment?
-
-"Check each enabled device to see if they fit in the PA space,
-moving highest_gpa as we go. For compatibility, move highest_gpa
-for disabled fitting devices as well, if the compact layout has
-been disabled."
-
-(Or would that be overkill?)
+>  #define HPFAR_NS      (1ULL << 63)
+>  
+> -#define SCR_NS                (1U << 0)
+> -#define SCR_IRQ               (1U << 1)
+> -#define SCR_FIQ               (1U << 2)
+> -#define SCR_EA                (1U << 3)
+> -#define SCR_FW                (1U << 4)
+> -#define SCR_AW                (1U << 5)
+> -#define SCR_NET               (1U << 6)
+> -#define SCR_SMD               (1U << 7)
+> -#define SCR_HCE               (1U << 8)
+> -#define SCR_SIF               (1U << 9)
+> -#define SCR_RW                (1U << 10)
+> -#define SCR_ST                (1U << 11)
+> -#define SCR_TWI               (1U << 12)
+> -#define SCR_TWE               (1U << 13)
+> -#define SCR_TLOR              (1U << 14)
+> -#define SCR_TERR              (1U << 15)
+> -#define SCR_APK               (1U << 16)
+> -#define SCR_API               (1U << 17)
+> -#define SCR_EEL2              (1U << 18)
+> -#define SCR_EASE              (1U << 19)
+> -#define SCR_NMEA              (1U << 20)
+> -#define SCR_FIEN              (1U << 21)
+> -#define SCR_ENSCXT            (1U << 25)
+> -#define SCR_ATA               (1U << 26)
+> -#define SCR_FGTEN             (1U << 27)
+> -#define SCR_ECVEN             (1U << 28)
+> -#define SCR_TWEDEN            (1U << 29)
+> +#define SCR_NS                (1ULL << 0)
+> +#define SCR_IRQ               (1ULL << 1)
+> +#define SCR_FIQ               (1ULL << 2)
+> +#define SCR_EA                (1ULL << 3)
+> +#define SCR_FW                (1ULL << 4)
+> +#define SCR_AW                (1ULL << 5)
+> +#define SCR_NET               (1ULL << 6)
+> +#define SCR_SMD               (1ULL << 7)
+> +#define SCR_HCE               (1ULL << 8)
+> +#define SCR_SIF               (1ULL << 9)
+> +#define SCR_RW                (1ULL << 10)
+> +#define SCR_ST                (1ULL << 11)
+> +#define SCR_TWI               (1ULL << 12)
+> +#define SCR_TWE               (1ULL << 13)
+> +#define SCR_TLOR              (1ULL << 14)
+> +#define SCR_TERR              (1ULL << 15)
+> +#define SCR_APK               (1ULL << 16)
+> +#define SCR_API               (1ULL << 17)
+> +#define SCR_EEL2              (1ULL << 18)
+> +#define SCR_EASE              (1ULL << 19)
+> +#define SCR_NMEA              (1ULL << 20)
+> +#define SCR_FIEN              (1ULL << 21)
+> +#define SCR_ENSCXT            (1ULL << 25)
+> +#define SCR_ATA               (1ULL << 26)
+> +#define SCR_FGTEN             (1ULL << 27)
+> +#define SCR_ECVEN             (1ULL << 28)
+> +#define SCR_TWEDEN            (1ULL << 29)
+>  #define SCR_TWEDEL            MAKE_64BIT_MASK(30, 4)
+>  #define SCR_TME               (1ULL << 34)
+>  #define SCR_AMVOFFEN          (1ULL << 35)
+> diff --git a/target/arm/helper.c b/target/arm/helper.c
+> index d7bc467a2a..5cde8a0425 100644
+> --- a/target/arm/helper.c
+> +++ b/target/arm/helper.c
+> @@ -1669,7 +1669,7 @@ static void vbar_write(CPUARMState *env, const ARMCPRegInfo *ri,
+>  static void scr_write(CPUARMState *env, const ARMCPRegInfo *ri, uint64_t value)
+>  {
+>      /* Begin with base v8.0 state.  */
+> -    uint32_t valid_mask = 0x3fff;
+> +    uint64_t valid_mask = 0x3fff;
+>      ARMCPU *cpu = env_archcpu(env);
+>  
+>      /*
+> @@ -1706,6 +1706,9 @@ static void scr_write(CPUARMState *env, const ARMCPRegInfo *ri, uint64_t value)
+>          if (cpu_isar_feature(aa64_doublefault, cpu)) {
+>              valid_mask |= SCR_EASE | SCR_NMEA;
+>          }
+> +        if (cpu_isar_feature(aa64_sme, cpu)) {
+> +            valid_mask |= SCR_ENTP2;
+> +        }
+>      } else {
+>          valid_mask &= ~(SCR_RW | SCR_ST);
+>          if (cpu_isar_feature(aa32_ras, cpu)) {
 

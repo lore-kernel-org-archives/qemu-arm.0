@@ -1,337 +1,208 @@
-Received: by 2002:a8a:1930:0:0:0:0:0 with SMTP id be48csp529597ocb;
-        Tue, 4 Oct 2022 00:22:50 -0700 (PDT)
-X-Google-Smtp-Source: AMsMyM4LXAKKhxbs7F7Xc2hg8czHtMrooNX3UcDyn8tyFDkXuCDXQMjkmaEO7drvcnEQ56j/U30z
-X-Received: by 2002:a05:6214:29e8:b0:4ad:8cb6:9d39 with SMTP id jv8-20020a05621429e800b004ad8cb69d39mr18525463qvb.20.1664868170755;
-        Tue, 04 Oct 2022 00:22:50 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1664868170; cv=none;
+Received: by 2002:a8a:1930:0:0:0:0:0 with SMTP id be48csp40333ocb;
+        Tue, 4 Oct 2022 02:24:42 -0700 (PDT)
+X-Google-Smtp-Source: AMsMyM60WkiQopkF8a78j9sm0MGc0IH9G1F8u9WqPCbFZVRa743OdA6BwRXiseQfu4aKoBEHyPEV
+X-Received: by 2002:a05:6214:e4e:b0:4ac:b834:f594 with SMTP id o14-20020a0562140e4e00b004acb834f594mr18882180qvc.100.1664875482189;
+        Tue, 04 Oct 2022 02:24:42 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1664875482; cv=none;
         d=google.com; s=arc-20160816;
-        b=YnuiWsmnXYvhIhfzKGvnkvRcfsCgu7eyrYcAyCbCYI/SmXAjGEwHoBmpkOEK5LjMvz
-         AMFUayl5NcNhtvUXngIAA5cwI6lwBh7um4GXuv4pmSCXccEgUsUcElCN1CU9NII/ONFX
-         F4weXnsyDIePekwNxXO7JYfSQCnrktNDAIiEDxgsCVMO+0RYKlrxDzfHe+zkvBkONu12
-         0qZ4hZmzfx1/B9YqT5zzg0y9oK15/hBoJy4gFL62CTbKPww8OqCq5hXlUTCzvJPJ2YDZ
-         iLE8d0Lj0BljE1Q3RJQ4Ut/haAPvBtpZzpMhNfpWwB+eYo5hP8VtZsK84UHDLJOxPOIa
-         VN3Q==
+        b=o5a345Z02AbT76x001SWFc7m3IA/tV6a0LkFlaPb7n2uY2wyvMNcxzkCe5hewGoO5I
+         ODiN/VKbUFrnNXeYni6rJYW0Z2t32pSvlM4j161PNd7+VyRqxy+R5WjrlMdCt75mkZRG
+         1iafCuIorp418IqslxD311sC09juhY7nNGHoqjQr3q82Dbl5ZsZJ8KyIxlQOK7HpK0v+
+         NX2avGKxc04XvCNe+JsHPVy3VxNZXjBHGGYI/0f41BRRuanT/uot0LYWWPrhgLK9DPba
+         MdRaIzpwac6rIfr+oXpLvdHPgFGmoEIfRbgaBqro3RH0+1qwIKOpeBb/EV5Q/TO9IcxM
+         SwlQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=24pPHrnkLb0aWxjIp/iDi3EMMaQCsBgeayHK6js39bA=;
-        b=FyducNlUk+OA32f01uusQXGAJICkAZ/87iwBn1QmDE+jY+KDUdcEAPrJpJwPp4iJz8
-         JV9SnVt+10l/OvgkK3jjD7D++7U5sPY4Mu+YO4v+7316dUI87S/G+CtIOgtD6Xz4Rswx
-         /F3i21x2FK6yD+DuBud1GUXE9BoosnXfA9uZkTToN8WTOo4r1Oeu0J5OzCyMDZrD3QK1
-         7//D5NbqsgTE+pTGj7rYdqoLu8kH877pho42zy7MM30ceWVV5CYtreRGgOWaoJw6PRgP
-         9FkDBROjfbIKTL/5DwksGkCyqfuLj45kadRjvKxX3tkYLRU/dKXve43VyIMpgUZ9pzKj
-         qqhw==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
+        bh=vMgIC3BFTqFjiZBLLZIOIfcn007DVCDGcbA2Ug7rHrY=;
+        b=ZMjLBw/8DPRHDZwsZkLbYyPcZqxMG08rCbPF2ZNaeIJkPB0PyuRNKJL+lE54u+qQc+
+         /IoSdLZukY4kxvvPaJyM22h8h7M12bDYVI5s+8ky5gQfMmTGO7jmyLe/Cp4mfZmrjCZZ
+         WvJwaiJEps6ifsTm+5bVKKhTWACMh+YR9WTlsG+fi5xUSNx4+1K2MmTvZZYMzm318EgI
+         0FbOlm5MCGxrMLTnefuWcnl0VBziSfA9oiZTozSEGg43RID71BCriNuu6r8lRtTElEvb
+         5SKhlw/8YRspu93IKmOoGM9hUTK82KbBtd5ia7IYvU16kU6ZFB8NVbkcv1RD9l9WrDNk
+         MUlw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=c8qbrZAq;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@ventanamicro.com header.s=google header.b=MQPE3evO;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id z67-20020a379746000000b006cbdc71b705si4531414qkd.729.2022.10.04.00.22.50
+        by mx.google.com with ESMTPS id e29-20020ac8415d000000b0035b9b4c4f54si4926730qtm.787.2022.10.04.02.24.42
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 04 Oct 2022 00:22:50 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 04 Oct 2022 02:24:42 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=c8qbrZAq;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:50668 helo=lists1p.gnu.org)
+       dkim=pass header.i=@ventanamicro.com header.s=google header.b=MQPE3evO;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:58052 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ofcGQ-0007o0-6H
-	for alex.bennee@linaro.org; Tue, 04 Oct 2022 03:22:50 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:48566)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1ofeAL-00046y-Or
+	for alex.bennee@linaro.org; Tue, 04 Oct 2022 05:24:41 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33650)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1ofc2K-0008SK-Lu
- for qemu-devel@nongnu.org; Tue, 04 Oct 2022 03:08:17 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:57438)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1ofc2D-0000gg-Gt
- for qemu-devel@nongnu.org; Tue, 04 Oct 2022 03:08:14 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1664867288;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=24pPHrnkLb0aWxjIp/iDi3EMMaQCsBgeayHK6js39bA=;
- b=c8qbrZAqF/bfT2bLqs5GIYGqVs1EJOYXC+WZMDuWDIgaub+SkGQtnY8NnPaFIB2cRXByBe
- 9tm9f6m2qaw91ykrMxcosP+Sj5FFF3BvknoLyyZUACISU+laHcHs5c20B85FI3Gksv8pAn
- Ct/zuFEpMdrS157yVXt5ZsRHfURFq4I=
-Received: from mail-qt1-f198.google.com (mail-qt1-f198.google.com
- [209.85.160.198]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_128_GCM_SHA256) id
- us-mta-68-BCYb5deJNN6zSFwKfmZpRg-1; Tue, 04 Oct 2022 03:08:07 -0400
-X-MC-Unique: BCYb5deJNN6zSFwKfmZpRg-1
-Received: by mail-qt1-f198.google.com with SMTP id
- b13-20020ac87fcd000000b0035cbe5d58afso8692947qtk.9
- for <qemu-devel@nongnu.org>; Tue, 04 Oct 2022 00:08:07 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <sunilvl@ventanamicro.com>)
+ id 1ofe9o-00043C-Eu
+ for qemu-arm@nongnu.org; Tue, 04 Oct 2022 05:24:08 -0400
+Received: from mail-pg1-x535.google.com ([2607:f8b0:4864:20::535]:34364)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <sunilvl@ventanamicro.com>)
+ id 1ofe9i-0004Lu-WB
+ for qemu-arm@nongnu.org; Tue, 04 Oct 2022 05:24:07 -0400
+Received: by mail-pg1-x535.google.com with SMTP id 3so12247996pga.1
+ for <qemu-arm@nongnu.org>; Tue, 04 Oct 2022 02:24:00 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=ventanamicro.com; s=google;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date;
+ bh=vMgIC3BFTqFjiZBLLZIOIfcn007DVCDGcbA2Ug7rHrY=;
+ b=MQPE3evOsO4bN12RuMuvtoAl4qadSc2gFo1iVmqmkUygMmqT0PEh14WsPEd8j9JrQG
+ EzT3QKMWPjaHXIXriKbK+MIkpXOwTcVIG04vPgdVSuEaMnwtSqAOksG0GPVwqR+PD9g+
+ WtE6U0djYsqdpgXlXDNgEENMpS1mYx7ABiUnNrbkfxQx7UNvcGdfjE+uf26bd5X566w+
+ OrnKsTUctfsyyYMUrCJg5BrXwywJ8dXIt8FbrT0T2HWqxkzmTl1mT4/zbzps7NKtrGyA
+ r5g7DGY3iL8GT6pmD8/WSF10j2ZUGS9YU4LVjhck8BJwAlC7Xqp9hjAvWfPerJTcW15R
+ qkCA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:reply-to:user-agent:mime-version:date
- :message-id:x-gm-message-state:from:to:cc:subject:date;
- bh=24pPHrnkLb0aWxjIp/iDi3EMMaQCsBgeayHK6js39bA=;
- b=2+hZhz/854ShNXO0O7HhaeOzpZMACiHyLmMKa1nmawNHir2ePSWCDB5cSegbueJ5K9
- aAlCsK8RKaQEEHAEnlRIlylzqP/D3vffLcpyy8zrqYsj1f3U6z7Lt4BARUcsATaaEHXH
- nxZx/I+6Ys7MdqxSfeloDvuNVxDfYwHwhYynBNcQFYLKy+BqvPEZ9T7TZz6UA1rsd0hL
- iOGLdyyFHrqmJOZbIVHxoaTkVvhIBQ4nNOPqliIlmg2MolJCLg+nexgQxN5UkuflOyqB
- L/O2BofFBGCyLzKOP8yW9FlFZkqBiZn3MkxtMI7sXAY/okxnNMl4tFQaGbbcn6nLIppj
- vhCA==
-X-Gm-Message-State: ACrzQf08LZhsoB0EsOsxaIfSUm2VEaMJWBxeclC5qyR5J0ratHhQAN5c
- 6yp/K3uizO/W2Hb5Nn7gLma/kQhJRbT7s7/OSeyFFIElNPsqX2LNWirUuq7yKycZLJhFYb82tu/
- WCwczOY70fnpsJiU=
-X-Received: by 2002:ac8:5f09:0:b0:35c:dc80:93c1 with SMTP id
- x9-20020ac85f09000000b0035cdc8093c1mr18645710qta.657.1664867287012; 
- Tue, 04 Oct 2022 00:08:07 -0700 (PDT)
-X-Received: by 2002:ac8:5f09:0:b0:35c:dc80:93c1 with SMTP id
- x9-20020ac85f09000000b0035cdc8093c1mr18645693qta.657.1664867286734; 
- Tue, 04 Oct 2022 00:08:06 -0700 (PDT)
-Received: from ?IPV6:2a01:e0a:59e:9d80:527b:9dff:feef:3874?
- ([2a01:e0a:59e:9d80:527b:9dff:feef:3874])
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date;
+ bh=vMgIC3BFTqFjiZBLLZIOIfcn007DVCDGcbA2Ug7rHrY=;
+ b=Nd/sxwt/xAcc56f44uIL/PoQSvTIDvN+DbfVrthTNuAIv7w+Ystt6NqntV2ZHjRKGR
+ 8lj7IveG9l45xGUnNdwTr6i6an4qNBMCG2X528lyXmgXPAXn+W4yh/yl9CEja2KlrDW9
+ 2YAs7628t8d9RGFykQQIa9lD7nJCThT4Z5HkLmNpADZv55ZUmH3g7CzKFOca1G0xYT3A
+ HwXKrdkrRkiRDfsu3FfhNzyVMXeCxJLIIJj6Q8MZ1jlisp7Aw24R/p/NN5ic/ABS0yGC
+ bj2CRKhz84SaLCeKvgvekt5hjsYQZqlbdP8MUOt2RbpGUjbE/5ig/vmVcVb/92K4uWIc
+ fXyQ==
+X-Gm-Message-State: ACrzQf1zs/Etld/RmJv+U0ECtKITgLv3wT/c5RdzzmCF6Jw0rlgzNGyc
+ G7vlZpR19XBl1CGuBwJLzPZFcA==
+X-Received: by 2002:aa7:9e52:0:b0:53e:49b2:1c6e with SMTP id
+ z18-20020aa79e52000000b0053e49b21c6emr26749203pfq.70.1664875439561; 
+ Tue, 04 Oct 2022 02:23:59 -0700 (PDT)
+Received: from localhost.localdomain ([49.206.9.142])
  by smtp.gmail.com with ESMTPSA id
- l5-20020ac80785000000b0035cf31005e2sm11215529qth.73.2022.10.04.00.06.54
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 04 Oct 2022 00:07:22 -0700 (PDT)
-Message-ID: <7223907c-5c2f-4e49-d111-d6f167e15ee2@redhat.com>
-Date: Tue, 4 Oct 2022 09:06:52 +0200
+ s2-20020a17090b070200b001fba4716f11sm2934551pjz.22.2022.10.04.02.23.55
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 04 Oct 2022 02:23:58 -0700 (PDT)
+From: Sunil V L <sunilvl@ventanamicro.com>
+To: Peter Maydell <peter.maydell@linaro.org>,
+ Xiaojuan Yang <yangxiaojuan@loongson.cn>, Song Gao <gaosong@loongson.cn>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+ Gerd Hoffmann <kraxel@redhat.com>, Palmer Dabbelt <palmer@dabbelt.com>,
+ Alistair Francis <alistair.francis@wdc.com>,
+ Bin Meng <bin.meng@windriver.com>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, qemu-riscv@nongnu.org,
+ Sunil V L <sunilvl@ventanamicro.com>
+Subject: [PATCH V5 0/3] hw/riscv: virt: Enable booting S-mode firmware from
+ pflash
+Date: Tue,  4 Oct 2022 14:53:48 +0530
+Message-Id: <20221004092351.18209-1-sunilvl@ventanamicro.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.11.0
-Subject: Re: [PATCH v3 4/5] hw/arm/virt: Improve high memory region address
- assignment
-Content-Language: en-US
-To: Gavin Shan <gshan@redhat.com>, qemu-arm@nongnu.org
-Cc: qemu-devel@nongnu.org, maz@kernel.org, cohuck@redhat.com,
- zhenyzha@redhat.com, richard.henderson@linaro.org, peter.maydell@linaro.org,
- shan.gavin@gmail.com
-References: <20220921231349.274049-1-gshan@redhat.com>
- <20220921231349.274049-5-gshan@redhat.com>
- <6c9a644a-6add-af29-8463-eddb101c1c99@redhat.com>
- <580f5f69-d794-3792-2c99-5cb367a5e8c0@redhat.com>
- <8ff4a537-3050-7c28-4f2d-8e1771e1e3a4@redhat.com>
- <b6447520-7642-503b-1565-37fcfe633d0f@redhat.com>
-From: Eric Auger <eric.auger@redhat.com>
-In-Reply-To: <b6447520-7642-503b-1565-37fcfe633d0f@redhat.com>
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124;
- envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -35
-X-Spam_score: -3.6
-X-Spam_bar: ---
-X-Spam_report: (-3.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-1.467, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Received-SPF: pass client-ip=2607:f8b0:4864:20::535;
+ envelope-from=sunilvl@ventanamicro.com; helo=mail-pg1-x535.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Reply-To: eric.auger@redhat.com
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: KWWfYuPa7AwC
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: D5Q7JmNh8cCC
+
+This series adds the support to boot S-mode FW like EDK2 from the flash. The
+S-mode firmware should be kept in pflash unit 1.
+
+When -kernel (and -initrd) option is also provided along with the flash,
+the kernel (and initrd) will be loaded into fw_cfg table and opensbi will
+branch to the flash address which will be the entry point of the S-mode
+firmware. The S-mode FW then loads and launches the kernel.
+
+When only -pflash option is provided in the command line, the kernel
+will be located and loaded in the usual way by the S-mode firmware.
+
+These patches are available in below branch.
+https://github.com/vlsunil/qemu/tree/pflash_v2
+
+The first two patches in this series are refactor patches.
+
+These changes are tested with a WIP EDK2 port for virt machine. Below
+are the instructions to build and test this feature.
+
+1) Get EDK2 sources from below branches.
+https://github.com/vlsunil/edk2/tree/virt_refactor_smode_v1
+https://github.com/vlsunil/edk2-platforms/tree/virt_refactor_smode_v1
+
+2) Build EDK2 for RISC-V
+	export WORKSPACE=`pwd`
+        export GCC5_RISCV64_PREFIX=riscv64-linux-gnu-
+        export PACKAGES_PATH=$WORKSPACE/edk2:$WORKSPACE/edk2-platforms
+        export EDK_TOOLS_PATH=$WORKSPACE/edk2/BaseTools
+        source edk2/edksetup.sh
+        make -C edk2/BaseTools clean
+        make -C edk2/BaseTools
+        make -C edk2/BaseTools/Source/C
+        source edk2/edksetup.sh BaseTools
+        build -a RISCV64  -p Platform/Qemu/RiscVVirt/RiscVVirt.dsc -t GCC5
+
+3)Make the EDK2 image size to match with what qemu flash expects
+truncate -s 32M Build/RiscVVirt/DEBUG_GCC5/FV/RISCV_VIRT.fd
+
+4) Run
+a) Boot to EFI shell (no -kernel / -initrd option)
+qemu-system-riscv64  -nographic   -drive file=Build/RiscVVirt/DEBUG_GCC5/FV/RISCV_VIRT.fd,if=pflash,format=raw,unit=1  -machine virt -M 2G
+
+b) With -kernel, -initrd and -pflash
+qemu-system-riscv64  -nographic   -drive file=Build/RiscVVirt/DEBUG_GCC5/FV/RISCV_VIRT.fd,if=pflash,format=raw,unit=1  -machine virt -M 2G -kernel arch/riscv/boot/Image.gz -initrd rootfs.cpio 
 
 
+Changes since V4:
+	1) Rebased on riscv-to-apply.next branch
+	2) Added RB tags
+	3) Gerd's feedback on removing the truncate requirement will be addressed as separate
+	   patch in future.
 
-On 10/4/22 00:17, Gavin Shan wrote:
-> Hi Eric,
->
-> On 10/3/22 4:44 PM, Eric Auger wrote:
->> On 9/29/22 01:37, Gavin Shan wrote:
->>> On 9/28/22 10:51 PM, Eric Auger wrote:
->>>> On 9/22/22 01:13, Gavin Shan wrote:
->>>>> There are three high memory regions, which are VIRT_HIGH_REDIST2,
->>>>> VIRT_HIGH_PCIE_ECAM and VIRT_HIGH_PCIE_MMIO. Their base addresses
->>>>> are floating on highest RAM address. However, they can be disabled
->>>>> in several cases.
->>>>>
->>>>> (1) One specific high memory region is disabled by developer by
->>>>>       toggling vms->highmem_{redists, ecam, mmio}.
->>>>>
->>>>> (2) VIRT_HIGH_PCIE_ECAM region is disabled on machine, which is
->>>>>       'virt-2.12' or ealier than it.
->>>>>
->>>>> (3) VIRT_HIGH_PCIE_ECAM region is disabled when firmware is loaded
->>>>>       on 32-bits system.
->>>>>
->>>>> (4) One specific high memory region is disabled when it breaks the
->>>>>       PA space limit.
->>>>>
->>>>> The current implementation of virt_set_memmap() isn't comprehensive
->>>>> because the space for one specific high memory region is always
->>>>> reserved from the PA space for case (1), (2) and (3). In the code,
->>>>> 'base' and 'vms->highest_gpa' are always increased for those three
->>>>> cases. It's unnecessary since the assigned space of the disabled
->>>>> high memory region won't be used afterwards.
->>>>>
->>>>> This improves the address assignment for those three high memory
->>>>> region by skipping the address assignment for one specific high
->>>>> memory region if it has been disabled in case (1), (2) and (3).
->>>>>
->>>>> Signed-off-by: Gavin Shan <gshan@redhat.com>
->>>>> ---
->>>>>    hw/arm/virt.c | 44 ++++++++++++++++++++++++++------------------
->>>>>    1 file changed, 26 insertions(+), 18 deletions(-)
->>>>>
->>>>> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
->>>>> index b0b679d1f4..b702f8f2b5 100644
->>>>> --- a/hw/arm/virt.c
->>>>> +++ b/hw/arm/virt.c
->>>>> @@ -1693,15 +1693,31 @@ static void
->>>>> virt_set_high_memmap(VirtMachineState *vms,
->>>>>                                     hwaddr base, int pa_bits)
->>>>>    {
->>>>>        hwaddr region_base, region_size;
->>>>> -    bool fits;
->>>>> +    bool *region_enabled, fits;
->>>> IDo you really need a pointer? If the region is unknown this is a
->>>> bug in
->>>> virt code.
->>>
->>> The pointer is needed so that we can disable the region by setting
->>> 'false'
->>> to it at later point. Yeah, I think you're correct that 'unknown
->>> region'
->>> is a bug and we need to do assert(region_enabled), or something like
->>> below.
->> Yeah I don't think using a pointer here is useful.
->
-> When the high memory region can't fit into the PA space, it is disabled
-> by toggling the corresponding flag (vms->highmem_{redists, ecam, mmio})
-> to false. It's part of the original implementation, as below. We either
-> need a 'switch ... case' or a pointer. A pointer is more convenient since
-> we need check and possibly update to the value.
->
->        switch (i) {
->         case VIRT_HIGH_GIC_REDIST2:
->             vms->highmem_redists &= fits;
->             break;
->         case VIRT_HIGH_PCIE_ECAM:
->             vms->highmem_ecam &= fits;
->             break;
->         case VIRT_HIGH_PCIE_MMIO:
->             vms->highmem_mmio &= fits;
->             break;
->         }
->
->>>
->>>>>        int i;
->>>>>          for (i = VIRT_LOWMEMMAP_LAST; i <
->>>>> ARRAY_SIZE(extended_memmap); i++) {
->>>>>            region_base = ROUND_UP(base, extended_memmap[i].size);
->>>>>            region_size = extended_memmap[i].size;
->>>>>    -        vms->memmap[i].base = region_base;
->>>>> -        vms->memmap[i].size = region_size;
->>>>> +        switch (i) {
->>>>> +        case VIRT_HIGH_GIC_REDIST2:
->>>>> +            region_enabled = &vms->highmem_redists;
->>>>> +            break;
->>>>> +        case VIRT_HIGH_PCIE_ECAM:
->>>>> +            region_enabled = &vms->highmem_ecam;
->>>>> +            break;
->>>>> +        case VIRT_HIGH_PCIE_MMIO:
->>>>> +            region_enabled = &vms->highmem_mmio;
->>>>> +            break;
->>>> While we are at it I would change the vms fields dealing with those
->>>> highmem regions and turn those fields into an array of bool indexed
->>>> using i - VIRT_LOWMEMMAP_LAST (using a macro or something alike). We
->>>> would not be obliged to have this switch, now duplicated.
->>>
->>> It makes sense to me. How about to have something like below in v4?
->>>
->>> static inline bool *virt_get_high_memmap_enabled(VirtMachineState
->>> *vms, int index)
->>> {
->>>      bool *enabled_array[] = {
->>>            &vms->highmem_redists,
->>>            &vms->highmem_ecam,
->>>            &vms->highmem_mmio,
->>>      };
->>>
->>>      assert(index - VIRT_LOWMEMMAP_LAST < ARRAY_SIZE(enabled_array));
->>>
->>>      return enabled_array[index - VIRT_LOWMEMMAP_LAST];
->>> }
->> I was rather thinking as directly using a vms->highmem_flags[] but your
->> proposal may work as well.
->
-> Ok. I will use my proposed change in next revision.
->
->>>
->>>>> +        default:
->>>>> +            region_enabled = NULL;
->>>>> +        }
->>>>> +
->>>>> +        /* Skip unknown region */
->>>>> +        if (!region_enabled) {
->>>>> +            continue;
->>>>> +        }
->>>>>              /*
->>>>>             * Check each device to see if they fit in the PA space,
->>>>> @@ -1710,23 +1726,15 @@ static void
->>>>> virt_set_high_memmap(VirtMachineState *vms,
->>>>>             * For each device that doesn't fit, disable it.
->>>>>             */
->>>>>            fits = (region_base + region_size) <= BIT_ULL(pa_bits);
->>>>> -        if (fits) {
->>>>> -            vms->highest_gpa = region_base + region_size - 1;
->>>>> -        }
->>>>> +        if (*region_enabled && fits) {
->>>>> +            vms->memmap[i].base = region_base;
->>>>> +            vms->memmap[i].size = region_size;
->>>>>    -        switch (i) {
->>>>> -        case VIRT_HIGH_GIC_REDIST2:
->>>>> -            vms->highmem_redists &= fits;
->>>>> -            break;
->>>>> -        case VIRT_HIGH_PCIE_ECAM:
->>>>> -            vms->highmem_ecam &= fits;
->>>>> -            break;
->>>>> -        case VIRT_HIGH_PCIE_MMIO:
->>>>> -            vms->highmem_mmio &= fits;
->>>>> -            break;
->>>>> +            vms->highest_gpa = region_base + region_size - 1;
->>>>> +            base = region_base + region_size;
->>>>> +        } else {
->>>>> +            *region_enabled = false;
->> what's the purpose to update the region_enabled here? Is it used
->> anywhere?
->>
->> The fact you do not update vms->highmem_* flags may introduce
->> regressions I think as the resulting flag may be used in some places
->> such as:
->> virt_gicv3_redist_region_count().
->>
->
-> 'region_enabled' points to 'vms->highmem_{redist2, ecam, mmio}'. They
-> are same thing.
-Oh OK. Sorry for the noise.
+Changes since V3:
+	1) White space and comment edits
+	2) Added RB tag
 
-Eric
->
->>>>> -
->>>>> -        base = region_base + region_size;
->>>>>        }
->>>>>    }
->>>>>    
->
-> Thanks,
-> Gavin
->
+Changes since V2:
+	1) Moved the doc comment to .h file
+
+Changes since V1:
+	1) Modified code to support the use case when both -kernel and -pflash are configured.
+	2) Refactor patches added to help (1) above.
+	3) Cover letter added with test instructions.
+
+Sunil V L (3):
+  hw/arm,loongarch: Move load_image_to_fw_cfg() to common location
+  hw/riscv: virt: Move create_fw_cfg() prior to loading kernel
+  hw/riscv: virt: Enable booting S-mode firmware from pflash
+
+ hw/arm/boot.c             | 49 ---------------------------------------
+ hw/loongarch/virt.c       | 33 --------------------------
+ hw/nvram/fw_cfg.c         | 32 +++++++++++++++++++++++++
+ hw/riscv/boot.c           | 29 +++++++++++++++++++++++
+ hw/riscv/virt.c           | 32 ++++++++++++++++++-------
+ include/hw/nvram/fw_cfg.h | 21 +++++++++++++++++
+ include/hw/riscv/boot.h   |  1 +
+ 7 files changed, 107 insertions(+), 90 deletions(-)
+
+-- 
+2.25.1
 

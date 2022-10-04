@@ -1,84 +1,109 @@
-Received: by 2002:a8a:1930:0:0:0:0:0 with SMTP id be48csp93100ocb;
-        Tue, 4 Oct 2022 04:11:47 -0700 (PDT)
-X-Google-Smtp-Source: AMsMyM4+MurHl+wkDpVO1TKstKR1baCNypbCKOds2PiI9bWru4SmtwVWgnXSMmFljI3LTJP37iXB
-X-Received: by 2002:a05:620a:2b44:b0:6ce:20e9:50 with SMTP id dp4-20020a05620a2b4400b006ce20e90050mr16598096qkb.356.1664881906931;
-        Tue, 04 Oct 2022 04:11:46 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1664881906; cv=none;
+Received: by 2002:a8a:1930:0:0:0:0:0 with SMTP id be48csp93337ocb;
+        Tue, 4 Oct 2022 04:12:11 -0700 (PDT)
+X-Google-Smtp-Source: AMsMyM4BH6xggnTLllE7k/h6JRH5Q1LqZ6NsFhvIUka4hobedvQCb+MLB2vUv7zHZPA+pC9s8DCa
+X-Received: by 2002:a05:622a:182:b0:35d:49e3:d554 with SMTP id s2-20020a05622a018200b0035d49e3d554mr18843591qtw.142.1664881931264;
+        Tue, 04 Oct 2022 04:12:11 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1664881931; cv=none;
         d=google.com; s=arc-20160816;
-        b=qBTkB9sHbyJblhUUxf6BnwbdXfNpU2WcBY1apPo55iBUnFfV+bXCFsEpMGWYUKrUjR
-         3MEFN+u45cBS1xfqzV7X5GOBaBLvV3wiRJxuIwif5xvNUqU57gsL9Gf9AYu2txiWbXzC
-         JXOLIGzbbnJ5Gr1ZjADNjA/s6UOQMQp98WrRGIIMAILIrCXT+hIcPLF9XQR7mbpddfjd
-         nhlyPoFE2lPNbhWsehoUONikMcHTqW1m8oznoU+8EO+kWSCT/rAyMMpnY4T2un1ZwxIn
-         tUok8b4iIeJwuhjUCG5HluK3epmLVe6fI78O9boBgBMI3Wxvxa3WHRLgm55lHjOglpLR
-         A2tA==
+        b=hi+CcuQa/0RNHbEquQ1cck9/exHJQ5C0p9Q5nLHFw4s90RaHFB29Hrxj+RnHNfU0Ie
+         o2hccmaFkOz35w7cr/jTUdpZhSMJhomapRf2bqoMZMCtkmOz1DqogULD/c1OpzoPKmuw
+         yjuq0ivXQ5SENxPHXSa1tEJFII7pOiiKmXhyc33yFsAp00tlUj98LvvFuKkvCg8vZOnV
+         Sbkkcufer4+eSoLm8AqQ0Zsay9vsvIPNcq9EizDIvI6dLUnNM4hjfK6sMC2zmI/aj4Z8
+         fdewi5sYGIt1eASVRTRDZzDLbtroCHxKMzmgwlnlD2FaK5TcMYX9FiwQJebuzhhlvaR5
+         1Qnw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:organization:references:in-reply-to:message-id:subject
-         :cc:to:from:date;
-        bh=tT4rLEgV7fzTAFQQo+zqgU0I7ucw3s5T7dQHtUOdSyw=;
-        b=H0r32XkOO2JEkf0Ga8chG3W1GS5mJT3idbsTc6ouBdYCKHZbJNFI8OKMNp0bJKD+3D
-         H6yFKPVVRZxJT1P3iseXHiKkI4UW3bDzdVps+6St5XQBJl9PI4oVWEYykjDhF/9W0WRR
-         8hS4MTNSumjkUUPRyBmzBkBTmV2Tbf+AnmuHC6dNufXio4h7JDT1h8PfOoEpxDYPggRk
-         zbxA2f8ZWv3qTiviwFydV2e+2bhF1YXnxvVz2MOVdkPpQEwuvjp1RXCmmxSeuBbOtK93
-         mSnixr13yTqCWlY9TmUgQwCX2vp+54uhHZPn3bcIx6dMwb4ubC4+/VHKwdCk5lqZSEwc
-         QsQA==
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=y1dNLkF45WELiWIFjPtHxjJWvNXrfxGHTC0UH9y6sLw=;
+        b=zztQtZVUrS/93j1EcHq/vR2x+VdeR3g313BMp8ZnRHon/VJKiBgkXIyD3WMGblPJt3
+         NDkdd8zL6mD3yKVPt1b8TMYmWdEQ5VDoUpvWlpsfRdGHNQ7orYjc+ggrv1f9O1XM5g/k
+         zAQ6taBj9H6eDucr45XbUsv7H4Mesydgzj/vEGBEFp8MRVZilt1ckkHO17MJqjoi8mnQ
+         fhq1wnMd7BypF5KzJhAfPSScdNTjZ+iT6a5OFk3s3LzFgZ5HZ1CSQFirsYI3p553h9hl
+         7d8KdamghG1xgTO/0PH1AFtt5wb49LCu3FEACA0GUFP3PU1SzOqGJSoYGvJuKui2nugY
+         dXmQ==
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=ckdXqUC5;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=arm.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v2-20020ac873c2000000b0035a71ca287bsi325265qtp.18.2022.10.04.04.11.46
+        by mx.google.com with ESMTPS id iu10-20020ad45cca000000b004b1b522cf0fsi386764qvb.53.2022.10.04.04.12.11
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 04 Oct 2022 04:11:46 -0700 (PDT)
+        Tue, 04 Oct 2022 04:12:11 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=ckdXqUC5;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=arm.com
-Received: from localhost ([::1]:57230 helo=lists1p.gnu.org)
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:56238 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1offpy-0005Yl-Fa
-	for alex.bennee@linaro.org; Tue, 04 Oct 2022 07:11:46 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:42184)
+	id 1offqM-0005lw-Ri
+	for alex.bennee@linaro.org; Tue, 04 Oct 2022 07:12:10 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:60558)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <andre.przywara@arm.com>)
- id 1offlw-0002vc-BY; Tue, 04 Oct 2022 07:07:38 -0400
-Received: from foss.arm.com ([217.140.110.172]:50854)
- by eggs.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <andre.przywara@arm.com>)
- id 1offlq-0004hF-KL; Tue, 04 Oct 2022 07:07:33 -0400
-Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
- by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 02B1011FB;
- Tue,  4 Oct 2022 04:07:34 -0700 (PDT)
-Received: from donnerap.cambridge.arm.com (usa-sjc-imap-foss1.foss.arm.com
- [10.121.207.14])
- by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 5726A3F67D;
- Tue,  4 Oct 2022 04:07:26 -0700 (PDT)
-Date: Tue, 4 Oct 2022 12:07:22 +0100
-From: Andre Przywara <andre.przywara@arm.com>
-To: Jerome Forissier <jerome.forissier@linaro.org>
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org, Richard Henderson <richard.henderson@linaro.org>,
- qemu-stable@nongnu.org
-Subject: Re: [PATCH] target/arm: allow setting SCR_EL3.EnTP2 when FEAT_SME
- is implemented
-Message-ID: <20221004120722.65767188@donnerap.cambridge.arm.com>
-In-Reply-To: <20221004072354.27037-1-jerome.forissier@linaro.org>
-References: <20221004072354.27037-1-jerome.forissier@linaro.org>
-Organization: ARM
-X-Mailer: Claws Mail 3.18.0 (GTK+ 2.24.32; aarch64-unknown-linux-gnu)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1offkP-00016t-Pb
+ for qemu-arm@nongnu.org; Tue, 04 Oct 2022 07:06:02 -0400
+Received: from mail-wm1-x335.google.com ([2a00:1450:4864:20::335]:36359)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1offkN-0004Fr-2y
+ for qemu-arm@nongnu.org; Tue, 04 Oct 2022 07:06:01 -0400
+Received: by mail-wm1-x335.google.com with SMTP id
+ c3-20020a1c3503000000b003bd21e3dd7aso563660wma.1
+ for <qemu-arm@nongnu.org>; Tue, 04 Oct 2022 04:05:58 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:to
+ :from:from:to:cc:subject:date;
+ bh=y1dNLkF45WELiWIFjPtHxjJWvNXrfxGHTC0UH9y6sLw=;
+ b=ckdXqUC5KVj9UzHNhl3D5YzefL6GtFHalJ6tx+7GJENUgLgUaxL5iQEdQ23N2lTz3V
+ RiRUbrr9Uyf5FHsGIDxW9/KvHgqRk9qr6xXFr3lSTJk1IlC479LBEemfpgrvgB4JUCLf
+ aZBHlkNMdk5cP1X7HfBlYNP7tgIzjn/Gwri4mA35Posclu68bUNyiB+iI9r0IkdlkGPi
+ cOVYb8AacB4aeattqbcVOTgUdMLRe/ocsks8rxkjsYTMNuw6RdABa2ooKzqhHtWQ7sLB
+ oHnBfSjBqivWoArbPA7PMepkT56MVwpSp7b+qq+7aydNcGQHJXgtPmWL0BtKTi7fBtYl
+ klbA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:to
+ :from:x-gm-message-state:from:to:cc:subject:date;
+ bh=y1dNLkF45WELiWIFjPtHxjJWvNXrfxGHTC0UH9y6sLw=;
+ b=A9ztj2i87o/5W916qrTRhuU73Ym1XnmeG0HGJlatvap4gU7XWY/b1pP8etvpr4sfGs
+ SFAUHI86EDbhiZnUSjkwiA7s0nRj/aD24lkwz2JVMuRpAVlOzufZxYiRAxyqb+icUO+v
+ GfwE4CPJnu/fcnMH6nZNWF3WKQn8ewDfVUA3IPOmpOW28WTUyWZ7OqC1KUXrv0B5Bc5N
+ NzfWl+9rfAyP/+BUtq7a5RqRONch1sP9rCO3TSbYxrCxEVxc+KfbVNaD6v/qmZQ9SqcH
+ xCtd8MDBLabq1PNI2l5dK3uKfeALdxoe5An7aBRDP3SdpZt4KQZOzzAAJw1moz9b/Oew
+ l+fQ==
+X-Gm-Message-State: ACrzQf13xqxJSLpXUfM6qgwIvN/8rN9JBOBanaKloUfbvbVixjh34k9Y
+ H8IpFeVBCVyG11yzlYwOVhDhg0Pq+EMX/g==
+X-Received: by 2002:a05:600c:3515:b0:3b4:a0fa:c4e1 with SMTP id
+ h21-20020a05600c351500b003b4a0fac4e1mr9991488wmq.191.1664881556487; 
+ Tue, 04 Oct 2022 04:05:56 -0700 (PDT)
+Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
+ by smtp.gmail.com with ESMTPSA id
+ n20-20020a7bc5d4000000b003b4de550e34sm14047568wmk.40.2022.10.04.04.05.55
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 04 Oct 2022 04:05:56 -0700 (PDT)
+From: Peter Maydell <peter.maydell@linaro.org>
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Subject: [PATCH] target/arm: Implement FEAT_E0PD
+Date: Tue,  4 Oct 2022 12:05:54 +0100
+Message-Id: <20221004110554.3133454-1-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=217.140.110.172;
- envelope-from=andre.przywara@arm.com; helo=foss.arm.com
-X-Spam_score_int: -25
-X-Spam_score: -2.6
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::335;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x335.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.6 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_LOW=-0.7,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -93,124 +118,172 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: vpLHDjzo7mFJ
+X-TUID: 1krpxD4oXBk6
 
-On Tue,  4 Oct 2022 09:23:54 +0200
-Jerome Forissier <jerome.forissier@linaro.org> wrote:
+FEAT_E0PD adds new bits E0PD0 and E0PD1 to TCR_EL1, which allow the
+OS to forbid EL0 access to half of the address space.  Since this is
+an EL0-specific variation on the existing TCR_ELx.{EPD0,EPD1}, we can
+implement it entirely in aa64_va_parameters().
 
-Hi,
+This requires moving the existing regime_is_user() to internals.h
+so that the code in helper.c can get at it.
 
-> Updates write_scr() to allow setting SCR_EL3.EnTP2 when FEAT_SME is
-> implemented. SCR_EL3 being a 64-bit register, valid_mask is changed
-> to uint64_t and the SCR_* constants in target/arm/cpu.h are extended
-> to 64-bit so that masking and bitwise not (~) behave as expected.
-> 
-> This enables booting Linux with Trusted Firmware-A at EL3 with
-> "-M virt,secure=on -cpu max".
-> 
-> Cc: qemu-stable@nongnu.org
-> Fixes: 78cb9776662a ("target/arm: Enable SME for -cpu max")
-> Signed-off-by: Jerome Forissier <jerome.forissier@linaro.org>
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
+Based-on: 20221003162315.2833797-1-peter.maydell@linaro.org
+("[PATCH v2 0/3] target/arm: Enforce implemented granule size limits")
+but only to avoid textual conflicts.
 
-Good catch!
-So I can confirm that this fixes the issue, given a TF-A patch to actually
-enable SME (and SVE).
-Checked against the ARM ARM, also verified that the
-defines don't accidentally changed their values.
+ docs/system/arm/emulation.rst |  1 +
+ target/arm/cpu.h              |  5 +++++
+ target/arm/internals.h        | 22 ++++++++++++++++++++++
+ target/arm/cpu64.c            |  1 +
+ target/arm/helper.c           |  9 +++++++++
+ target/arm/ptw.c              | 22 ----------------------
+ 6 files changed, 38 insertions(+), 22 deletions(-)
 
-Reviewed-by: Andre Przywara <andre.przywara@arm.com>
-
-> ---
->  target/arm/cpu.h    | 54 ++++++++++++++++++++++-----------------------
->  target/arm/helper.c |  5 ++++-
->  2 files changed, 31 insertions(+), 28 deletions(-)
-> 
-> diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-> index 5168e3d837..d5e9949eb6 100644
-> --- a/target/arm/cpu.h
-> +++ b/target/arm/cpu.h
-> @@ -1653,33 +1653,33 @@ static inline void xpsr_write(CPUARMState *env, uint32_t val, uint32_t mask)
->  
->  #define HPFAR_NS      (1ULL << 63)
->  
-> -#define SCR_NS                (1U << 0)
-> -#define SCR_IRQ               (1U << 1)
-> -#define SCR_FIQ               (1U << 2)
-> -#define SCR_EA                (1U << 3)
-> -#define SCR_FW                (1U << 4)
-> -#define SCR_AW                (1U << 5)
-> -#define SCR_NET               (1U << 6)
-> -#define SCR_SMD               (1U << 7)
-> -#define SCR_HCE               (1U << 8)
-> -#define SCR_SIF               (1U << 9)
-> -#define SCR_RW                (1U << 10)
-> -#define SCR_ST                (1U << 11)
-> -#define SCR_TWI               (1U << 12)
-> -#define SCR_TWE               (1U << 13)
-> -#define SCR_TLOR              (1U << 14)
-> -#define SCR_TERR              (1U << 15)
-> -#define SCR_APK               (1U << 16)
-> -#define SCR_API               (1U << 17)
-> -#define SCR_EEL2              (1U << 18)
-> -#define SCR_EASE              (1U << 19)
-> -#define SCR_NMEA              (1U << 20)
-> -#define SCR_FIEN              (1U << 21)
-> -#define SCR_ENSCXT            (1U << 25)
-> -#define SCR_ATA               (1U << 26)
-> -#define SCR_FGTEN             (1U << 27)
-> -#define SCR_ECVEN             (1U << 28)
-> -#define SCR_TWEDEN            (1U << 29)
-> +#define SCR_NS                (1ULL << 0)
-> +#define SCR_IRQ               (1ULL << 1)
-> +#define SCR_FIQ               (1ULL << 2)
-> +#define SCR_EA                (1ULL << 3)
-> +#define SCR_FW                (1ULL << 4)
-> +#define SCR_AW                (1ULL << 5)
-> +#define SCR_NET               (1ULL << 6)
-> +#define SCR_SMD               (1ULL << 7)
-> +#define SCR_HCE               (1ULL << 8)
-> +#define SCR_SIF               (1ULL << 9)
-> +#define SCR_RW                (1ULL << 10)
-> +#define SCR_ST                (1ULL << 11)
-> +#define SCR_TWI               (1ULL << 12)
-> +#define SCR_TWE               (1ULL << 13)
-> +#define SCR_TLOR              (1ULL << 14)
-> +#define SCR_TERR              (1ULL << 15)
-> +#define SCR_APK               (1ULL << 16)
-> +#define SCR_API               (1ULL << 17)
-> +#define SCR_EEL2              (1ULL << 18)
-> +#define SCR_EASE              (1ULL << 19)
-> +#define SCR_NMEA              (1ULL << 20)
-> +#define SCR_FIEN              (1ULL << 21)
-> +#define SCR_ENSCXT            (1ULL << 25)
-> +#define SCR_ATA               (1ULL << 26)
-> +#define SCR_FGTEN             (1ULL << 27)
-> +#define SCR_ECVEN             (1ULL << 28)
-> +#define SCR_TWEDEN            (1ULL << 29)
->  #define SCR_TWEDEL            MAKE_64BIT_MASK(30, 4)
->  #define SCR_TME               (1ULL << 34)
->  #define SCR_AMVOFFEN          (1ULL << 35)
-> diff --git a/target/arm/helper.c b/target/arm/helper.c
-> index d7bc467a2a..5cde8a0425 100644
-> --- a/target/arm/helper.c
-> +++ b/target/arm/helper.c
-> @@ -1669,7 +1669,7 @@ static void vbar_write(CPUARMState *env, const ARMCPRegInfo *ri,
->  static void scr_write(CPUARMState *env, const ARMCPRegInfo *ri, uint64_t value)
->  {
->      /* Begin with base v8.0 state.  */
-> -    uint32_t valid_mask = 0x3fff;
-> +    uint64_t valid_mask = 0x3fff;
->      ARMCPU *cpu = env_archcpu(env);
->  
->      /*
-> @@ -1706,6 +1706,9 @@ static void scr_write(CPUARMState *env, const ARMCPRegInfo *ri, uint64_t value)
->          if (cpu_isar_feature(aa64_doublefault, cpu)) {
->              valid_mask |= SCR_EASE | SCR_NMEA;
->          }
-> +        if (cpu_isar_feature(aa64_sme, cpu)) {
-> +            valid_mask |= SCR_ENTP2;
-> +        }
->      } else {
->          valid_mask &= ~(SCR_RW | SCR_ST);
->          if (cpu_isar_feature(aa32_ras, cpu)) {
+diff --git a/docs/system/arm/emulation.rst b/docs/system/arm/emulation.rst
+index cfb4b0768b0..fd61360a086 100644
+--- a/docs/system/arm/emulation.rst
++++ b/docs/system/arm/emulation.rst
+@@ -24,6 +24,7 @@ the following architecture extensions:
+ - FEAT_Debugv8p4 (Debug changes for v8.4)
+ - FEAT_DotProd (Advanced SIMD dot product instructions)
+ - FEAT_DoubleFault (Double Fault Extension)
++- FEAT_E0PD (Preventing EL0 access to halves of address maps)
+ - FEAT_ETS (Enhanced Translation Synchronization)
+ - FEAT_FCMA (Floating-point complex number instructions)
+ - FEAT_FHM (Floating-point half-precision multiplication instructions)
+diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+index 6d39d27378d..11bcdf396a0 100644
+--- a/target/arm/cpu.h
++++ b/target/arm/cpu.h
+@@ -4146,6 +4146,11 @@ static inline bool isar_feature_aa64_lva(const ARMISARegisters *id)
+     return FIELD_EX64(id->id_aa64mmfr2, ID_AA64MMFR2, VARANGE) != 0;
+ }
+ 
++static inline bool isar_feature_aa64_e0pd(const ARMISARegisters *id)
++{
++    return FIELD_EX64(id->id_aa64mmfr2, ID_AA64MMFR2, E0PD) != 0;
++}
++
+ static inline bool isar_feature_aa64_tts2uxn(const ARMISARegisters *id)
+ {
+     return FIELD_EX64(id->id_aa64mmfr1, ID_AA64MMFR1, XNX) != 0;
+diff --git a/target/arm/internals.h b/target/arm/internals.h
+index 95f654db3bc..d18e8854482 100644
+--- a/target/arm/internals.h
++++ b/target/arm/internals.h
+@@ -771,6 +771,28 @@ static inline uint32_t regime_el(CPUARMState *env, ARMMMUIdx mmu_idx)
+     }
+ }
+ 
++static inline bool regime_is_user(CPUARMState *env, ARMMMUIdx mmu_idx)
++{
++    switch (mmu_idx) {
++    case ARMMMUIdx_SE10_0:
++    case ARMMMUIdx_E20_0:
++    case ARMMMUIdx_SE20_0:
++    case ARMMMUIdx_Stage1_E0:
++    case ARMMMUIdx_Stage1_SE0:
++    case ARMMMUIdx_MUser:
++    case ARMMMUIdx_MSUser:
++    case ARMMMUIdx_MUserNegPri:
++    case ARMMMUIdx_MSUserNegPri:
++        return true;
++    default:
++        return false;
++    case ARMMMUIdx_E10_0:
++    case ARMMMUIdx_E10_1:
++    case ARMMMUIdx_E10_1_PAN:
++        g_assert_not_reached();
++    }
++}
++
+ /* Return the SCTLR value which controls this address translation regime */
+ static inline uint64_t regime_sctlr(CPUARMState *env, ARMMMUIdx mmu_idx)
+ {
+diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
+index e6314e86d20..cbffb7c8e56 100644
+--- a/target/arm/cpu64.c
++++ b/target/arm/cpu64.c
+@@ -1136,6 +1136,7 @@ static void aarch64_max_initfn(Object *obj)
+     t = FIELD_DP64(t, ID_AA64MMFR2, FWB, 1);      /* FEAT_S2FWB */
+     t = FIELD_DP64(t, ID_AA64MMFR2, TTL, 1);      /* FEAT_TTL */
+     t = FIELD_DP64(t, ID_AA64MMFR2, BBM, 2);      /* FEAT_BBM at level 2 */
++    t = FIELD_DP64(t, ID_AA64MMFR2, E0PD, 1);     /* FEAT_E0PD */
+     cpu->isar.id_aa64mmfr2 = t;
+ 
+     t = cpu->isar.id_aa64zfr0;
+diff --git a/target/arm/helper.c b/target/arm/helper.c
+index 484a2d54ab8..626df539f21 100644
+--- a/target/arm/helper.c
++++ b/target/arm/helper.c
+@@ -10418,6 +10418,8 @@ ARMVAParameters aa64_va_parameters(CPUARMState *env, uint64_t va,
+         ps = extract32(tcr, 16, 3);
+         ds = extract64(tcr, 32, 1);
+     } else {
++        bool e0pd;
++
+         /*
+          * Bit 55 is always between the two regions, and is canonical for
+          * determining if address tagging is enabled.
+@@ -10429,15 +10431,22 @@ ARMVAParameters aa64_va_parameters(CPUARMState *env, uint64_t va,
+             epd = extract32(tcr, 7, 1);
+             sh = extract32(tcr, 12, 2);
+             hpd = extract64(tcr, 41, 1);
++            e0pd = extract64(tcr, 55, 1);
+         } else {
+             tsz = extract32(tcr, 16, 6);
+             gran = tg1_to_gran_size(extract32(tcr, 30, 2));
+             epd = extract32(tcr, 23, 1);
+             sh = extract32(tcr, 28, 2);
+             hpd = extract64(tcr, 42, 1);
++            e0pd = extract64(tcr, 56, 1);
+         }
+         ps = extract64(tcr, 32, 3);
+         ds = extract64(tcr, 59, 1);
++
++        if (e0pd && cpu_isar_feature(aa64_e0pd, cpu) &&
++            regime_is_user(env, mmu_idx)) {
++            epd = true;
++        }
+     }
+ 
+     gran = sanitize_gran_size(cpu, gran, stage2);
+diff --git a/target/arm/ptw.c b/target/arm/ptw.c
+index b0a780b38e2..10140bd3b96 100644
+--- a/target/arm/ptw.c
++++ b/target/arm/ptw.c
+@@ -92,28 +92,6 @@ static bool regime_translation_big_endian(CPUARMState *env, ARMMMUIdx mmu_idx)
+     return (regime_sctlr(env, mmu_idx) & SCTLR_EE) != 0;
+ }
+ 
+-static bool regime_is_user(CPUARMState *env, ARMMMUIdx mmu_idx)
+-{
+-    switch (mmu_idx) {
+-    case ARMMMUIdx_SE10_0:
+-    case ARMMMUIdx_E20_0:
+-    case ARMMMUIdx_SE20_0:
+-    case ARMMMUIdx_Stage1_E0:
+-    case ARMMMUIdx_Stage1_SE0:
+-    case ARMMMUIdx_MUser:
+-    case ARMMMUIdx_MSUser:
+-    case ARMMMUIdx_MUserNegPri:
+-    case ARMMMUIdx_MSUserNegPri:
+-        return true;
+-    default:
+-        return false;
+-    case ARMMMUIdx_E10_0:
+-    case ARMMMUIdx_E10_1:
+-    case ARMMMUIdx_E10_1_PAN:
+-        g_assert_not_reached();
+-    }
+-}
+-
+ /* Return the TTBR associated with this translation regime */
+ static uint64_t regime_ttbr(CPUARMState *env, ARMMMUIdx mmu_idx, int ttbrn)
+ {
+-- 
+2.25.1
 

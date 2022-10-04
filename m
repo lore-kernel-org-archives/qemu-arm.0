@@ -1,11 +1,11 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([185.81.254.11])
-        by smtp.gmail.com with ESMTPSA id g11-20020a05600c310b00b003bdb2c7f3d1sm484280wmo.32.2022.10.04.06.19.51
+        by smtp.gmail.com with ESMTPSA id c63-20020a1c3542000000b003a6a3595edasm14802487wma.27.2022.10.04.06.19.54
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 04 Oct 2022 06:19:51 -0700 (PDT)
+        Tue, 04 Oct 2022 06:19:57 -0700 (PDT)
 Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id F141E1FFB7;
-	Tue,  4 Oct 2022 14:01:40 +0100 (BST)
+	by zen.linaroharston (Postfix) with ESMTP id 200C21FFCD;
+	Tue,  4 Oct 2022 14:01:41 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: stefanha@redhat.com,
@@ -13,351 +13,216 @@ Cc: stefanha@redhat.com,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
 	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
 	Peter Maydell <peter.maydell@linaro.org>,
-	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
 	Richard Henderson <richard.henderson@linaro.org>,
 	Eduardo Habkost <eduardo@habkost.net>,
-	David Hildenbrand <david@redhat.com>,
-	qemu-arm@nongnu.org (open list:ARM TCG CPUs),
-	qemu-s390x@nongnu.org (open list:S390 TCG CPUs)
-Subject: [PULL 23/54] tests/tcg: clean up calls to run-test
-Date: Tue,  4 Oct 2022 14:01:07 +0100
-Message-Id: <20221004130138.2299307-24-alex.bennee@linaro.org>
+	qemu-arm@nongnu.org (open list:ARM TCG CPUs)
+Subject: [PULL 24/54] tests/tcg: move compiler tests to Makefiles
+Date: Tue,  4 Oct 2022 14:01:08 +0100
+Message-Id: <20221004130138.2299307-25-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20221004130138.2299307-1-alex.bennee@linaro.org>
 References: <20221004130138.2299307-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: Y6rferA4v08p
+X-TUID: kG/ibh4asR12
 
 From: Paolo Bonzini <pbonzini@redhat.com>
 
-Almost all invocations of run-test have either "$* on $(TARGET_NAME)"
-or "$< on $(TARGET_NAME)" as the last argument.  So provide a default
-test name, while allowing an escape hatch for custom names.
-
-As an additional simplification, remove the need to do shell quoting.
+Further decoupling of tests/tcg from the main QEMU Makefile, and making
+the build more similar between the cross compiler case and the vetted
+container images.
 
 Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-Message-Id: <20220929114231.583801-24-alex.bennee@linaro.org>
+Message-Id: <20220929114231.583801-25-alex.bennee@linaro.org>
 
+diff --git a/configure b/configure
+index a48a731bf4..ceb1213292 100755
+--- a/configure
++++ b/configure
+@@ -2562,73 +2562,11 @@ for target in $target_list; do
+ 
+   probe_target_compiler $target
+   if test $got_cross_cc = yes; then
+-      # Test for compiler features for optional tests. We only do this
+-      # for cross compilers because ensuring the docker containers based
+-      # compilers is a requirememt for adding a new test that needs a
+-      # compiler feature.
+-
+-      echo "BUILD_STATIC=$build_static" >> "$config_target_mak"
+       write_target_makefile >> "$config_target_mak"
+-      case $target in
+-          aarch64-*)
+-              if do_compiler "$target_cc" $target_cflags \
+-                             -march=armv8.1-a+sve -o $TMPE $TMPC; then
+-                  echo "CROSS_CC_HAS_SVE=y" >> "$config_target_mak"
+-              fi
+-              if do_compiler "$target_cc" $target_cflags \
+-                             -march=armv8.1-a+sve2 -o $TMPE $TMPC; then
+-                  echo "CROSS_CC_HAS_SVE2=y" >> "$config_target_mak"
+-              fi
+-              if do_compiler "$target_cc" $target_cflags \
+-                             -march=armv8.3-a -o $TMPE $TMPC; then
+-                  echo "CROSS_CC_HAS_ARMV8_3=y" >> "$config_target_mak"
+-              fi
+-              if do_compiler "$target_cc" $target_cflags \
+-                             -mbranch-protection=standard -o $TMPE $TMPC; then
+-                  echo "CROSS_CC_HAS_ARMV8_BTI=y" >> "$config_target_mak"
+-              fi
+-              if do_compiler "$target_cc" $target_cflags \
+-                             -march=armv8.5-a+memtag -o $TMPE $TMPC; then
+-                  echo "CROSS_CC_HAS_ARMV8_MTE=y" >> "$config_target_mak"
+-              fi
+-              ;;
+-          ppc*)
+-              if do_compiler "$target_cc" $target_cflags \
+-                             -mpower8-vector -o $TMPE $TMPC; then
+-                  echo "CROSS_CC_HAS_POWER8_VECTOR=y" >> "$config_target_mak"
+-              fi
+-              if do_compiler "$target_cc" $target_cflags \
+-                             -mpower10 -o $TMPE $TMPC; then
+-                  echo "CROSS_CC_HAS_POWER10=y" >> "$config_target_mak"
+-              fi
+-              ;;
+-          i386-linux-user)
+-              if do_compiler "$target_cc" $target_cflags \
+-                             -Werror -fno-pie -o $TMPE $TMPC; then
+-                  echo "CROSS_CC_HAS_I386_NOPIE=y" >> "$config_target_mak"
+-              fi
+-              ;;
+-      esac
+   elif test -n "$container_image"; then
++      build_static=y
+       echo "build-tcg-tests-$target: docker-image-$container_image" >> $makefile
+-      echo "BUILD_STATIC=y" >> "$config_target_mak"
+       write_container_target_makefile >> "$config_target_mak"
+-      case $target in
+-          aarch64-*)
+-              echo "CROSS_CC_HAS_SVE=y" >> "$config_target_mak"
+-              echo "CROSS_CC_HAS_SVE2=y" >> "$config_target_mak"
+-              echo "CROSS_CC_HAS_ARMV8_3=y" >> "$config_target_mak"
+-              echo "CROSS_CC_HAS_ARMV8_BTI=y" >> "$config_target_mak"
+-              echo "CROSS_CC_HAS_ARMV8_MTE=y" >> "$config_target_mak"
+-              ;;
+-          ppc*)
+-              echo "CROSS_CC_HAS_POWER8_VECTOR=y" >> "$config_target_mak"
+-              echo "CROSS_CC_HAS_POWER10=y" >> "$config_target_mak"
+-              ;;
+-          i386-linux-user)
+-              echo "CROSS_CC_HAS_I386_NOPIE=y" >> "$config_target_mak"
+-              ;;
+-      esac
+       got_cross_cc=yes
+   fi
+   if test $got_cross_cc = yes; then
+@@ -2637,6 +2575,7 @@ for target in $target_list; do
+       ln -sf "../config-$target.mak" "tests/tcg/$target/config-target.mak"
+       echo "TARGET=$target" >> "$config_target_mak"
+       echo "QEMU=$PWD/$qemu" >> "$config_target_mak"
++      echo "BUILD_STATIC=$build_static" >> "$config_target_mak"
+       echo "run-tcg-tests-$target: $qemu\$(EXESUF)" >> $makefile
+       tcg_tests_targets="$tcg_tests_targets $target"
+   fi
 diff --git a/tests/tcg/Makefile.target b/tests/tcg/Makefile.target
-index c14eca82c2..cd0a2ad873 100644
+index cd0a2ad873..75257f2b29 100644
 --- a/tests/tcg/Makefile.target
 +++ b/tests/tcg/Makefile.target
-@@ -41,14 +41,16 @@ endif
+@@ -40,10 +40,18 @@ endif
+ 
  # for including , in command strings
  COMMA := ,
++NULL :=
++SPACE := $(NULL) #
++TARGET_PREFIX=tests/tcg/$(TARGET):$(SPACE)
  
--quiet-command = $(if $(V),$1,$(if $(2),@printf "  %-7s %s\n" $2 $3 && $1, @$1))
-+quiet-@ = $(if $(V),,@$(if $1,printf "  %-7s %s\n" "$(strip $1)" "$(strip $2)" && ))
-+quiet-command = $(call quiet-@,$2,$3)$1
+ quiet-@ = $(if $(V),,@$(if $1,printf "  %-7s %s\n" "$(strip $1)" "$(strip $2)" && ))
+ quiet-command = $(call quiet-@,$2,$3)$1
  
++cc-test = $(CC) -Werror $1 -c -o /dev/null -xc /dev/null >/dev/null 2>&1
++cc-option = if $(call cc-test, $1); then \
++    echo "$(TARGET_PREFIX)$1 detected" && echo "$(strip $2)=y" >&3; else \
++    echo "$(TARGET_PREFIX)$1 not detected"; fi
++
  # $1 = test name, $2 = cmd, $3 = desc
  ifeq ($(filter %-softmmu, $(TARGET)),)
  run-test = $(call quiet-command, timeout --foreground $(TIMEOUT) $2 > $1.out, \
--	"TEST",$3)
-+	TEST,$(or $3, $*, $<) on $(TARGET_NAME))
- else
--run-test = $(call quiet-command, timeout --foreground $(TIMEOUT) $2,"TEST",$3)
-+run-test = $(call quiet-command, timeout --foreground $(TIMEOUT) $2, \
-+        TEST,$(or $3, $*, $<) on $(TARGET_NAME))
- endif
+@@ -190,4 +198,4 @@ clean:
+ 	rm -f $(TESTS) *.o $(CLEANFILES)
  
- # $1 = test name, $2 = reference
-@@ -56,7 +58,7 @@ endif
- # we know it failed and then force failure at the end.
- diff-out = $(call quiet-command, diff -q $1.out $2 || \
-                                  (diff -u $1.out $2 | head -n 10 && false), \
--                                 "DIFF","$1.out with $2")
-+                                 DIFF,$1.out with $2)
- 
- # $1 = test name, $2 = reason
- skip-test = @printf "  SKIPPED %s on $(TARGET_NAME) because %s\n" $1 $2
-@@ -155,21 +157,19 @@ RUN_TESTS+=$(EXTRA_RUNS)
- 
- ifeq ($(filter %-softmmu, $(TARGET)),)
- run-%: %
--	$(call run-test, $<, $(QEMU) $(QEMU_OPTS) $<, "$< on $(TARGET_NAME)")
-+	$(call run-test, $<, $(QEMU) $(QEMU_OPTS) $<)
- 
- run-plugin-%:
- 	$(call run-test, $@, $(QEMU) $(QEMU_OPTS) \
- 		-plugin $(PLUGIN_LIB)/$(call extract-plugin,$@) \
- 		-d plugin -D $*.pout \
--		 $(call strip-plugin,$<), \
--	"$* on $(TARGET_NAME)")
-+		 $(call strip-plugin,$<))
- else
- run-%: %
- 	$(call run-test, $<, \
- 	  $(QEMU) -monitor none -display none \
- 		  -chardev file$(COMMA)path=$<.out$(COMMA)id=output \
--	   	  $(QEMU_OPTS) $<, \
--	  "$< on $(TARGET_NAME)")
-+		  $(QEMU_OPTS) $<)
- 
- run-plugin-%:
- 	$(call run-test, $@, \
-@@ -177,8 +177,7 @@ run-plugin-%:
- 		  -chardev file$(COMMA)path=$@.out$(COMMA)id=output \
- 	   	  -plugin $(PLUGIN_LIB)/$(call extract-plugin,$@) \
- 	    	  -d plugin -D $*.pout \
--	   	  $(QEMU_OPTS) $(call strip-plugin,$<), \
--	  "$* on $(TARGET_NAME)")
-+		  $(QEMU_OPTS) $(call strip-plugin,$<))
- endif
- 
- gdb-%: %
+ distclean:
+-	rm -f config-target.mak ../config-$(TARGET).mak
++	rm -f config-cc.mak config-target.mak ../config-$(TARGET).mak
 diff --git a/tests/tcg/aarch64/Makefile.softmmu-target b/tests/tcg/aarch64/Makefile.softmmu-target
-index f6fcd4829e..84a9990f8d 100644
+index 84a9990f8d..a1368905f5 100644
 --- a/tests/tcg/aarch64/Makefile.softmmu-target
 +++ b/tests/tcg/aarch64/Makefile.softmmu-target
-@@ -50,8 +50,7 @@ run-memory-record: memory-record memory
- 	  $(QEMU) -monitor none -display none \
- 		  -chardev file$(COMMA)path=$<.out$(COMMA)id=output \
- 		  -icount shift=5$(COMMA)rr=record$(COMMA)rrfile=record.bin \
--	   	  $(QEMU_OPTS) memory, \
--	  "$< on $(TARGET_NAME)")
-+		  $(QEMU_OPTS) memory)
+@@ -19,6 +19,11 @@ EXTRA_RUNS+=$(MULTIARCH_RUNS)
+ CFLAGS+=-nostdlib -ggdb -O0 $(MINILIB_INC)
+ LDFLAGS+=-static -nostdlib $(CRT_OBJS) $(MINILIB_OBJS) -lgcc
  
- .PHONY: memory-replay
- run-memory-replay: memory-replay run-memory-record
-@@ -59,8 +58,7 @@ run-memory-replay: memory-replay run-memory-record
- 	  $(QEMU) -monitor none -display none \
- 		  -chardev file$(COMMA)path=$<.out$(COMMA)id=output \
- 		  -icount shift=5$(COMMA)rr=replay$(COMMA)rrfile=record.bin \
--	   	  $(QEMU_OPTS) memory, \
--	  "$< on $(TARGET_NAME)")
-+		  $(QEMU_OPTS) memory)
- 
- EXTRA_RUNS+=run-memory-replay
++config-cc.mak: Makefile
++	$(quiet-@)( \
++	    $(call cc-option,-march=armv8.3-a, CROSS_CC_HAS_ARMV8_3)) 3> config-cc.mak
++-include config-cc.mak
++
+ # building head blobs
+ .PRECIOUS: $(CRT_OBJS)
  
 diff --git a/tests/tcg/aarch64/Makefile.target b/tests/tcg/aarch64/Makefile.target
-index d6a74d24dc..9837a809dc 100644
+index 9837a809dc..fc8d90ed69 100644
 --- a/tests/tcg/aarch64/Makefile.target
 +++ b/tests/tcg/aarch64/Makefile.target
-@@ -55,7 +55,7 @@ sha1-vector: CFLAGS=-O3
- sha1-vector: sha1.c
- 	$(CC) $(CFLAGS) $(EXTRA_CFLAGS) $< -o $@ $(LDFLAGS)
- run-sha1-vector: sha1-vector run-sha1
--	$(call run-test, $<, $(QEMU) $(QEMU_OPTS) $<, "$< on $(TARGET_NAME)")
-+	$(call run-test, $<, $(QEMU) $(QEMU_OPTS) $<)
- 	$(call diff-out, sha1-vector, sha1.out)
+@@ -17,6 +17,15 @@ run-fcvt: fcvt
+ 	$(call run-test,$<,$(QEMU) $<, "$< on $(TARGET_NAME)")
+ 	$(call diff-out,$<,$(AARCH64_SRC)/fcvt.ref)
  
- TESTS += sha1-vector
-@@ -75,14 +75,14 @@ run-gdbstub-sysregs: sysregs
- 		--gdb $(HAVE_GDB_BIN) \
- 		--qemu $(QEMU) --qargs "$(QEMU_OPTS)" \
- 		--bin $< --test $(AARCH64_SRC)/gdbstub/test-sve.py, \
--	"basic gdbstub SVE support")
-+	basic gdbstub SVE support)
- 
- run-gdbstub-sve-ioctls: sve-ioctls
- 	$(call run-test, $@, $(GDB_SCRIPT) \
- 		--gdb $(HAVE_GDB_BIN) \
- 		--qemu $(QEMU) --qargs "$(QEMU_OPTS)" \
- 		--bin $< --test $(AARCH64_SRC)/gdbstub/test-sve-ioctl.py, \
--	"basic gdbstub SVE ZLEN support")
-+	basic gdbstub SVE ZLEN support)
- 
- EXTRA_RUNS += run-gdbstub-sysregs run-gdbstub-sve-ioctls
- endif
-diff --git a/tests/tcg/arm/Makefile.target b/tests/tcg/arm/Makefile.target
-index 2f815120a5..b3b1504a1c 100644
---- a/tests/tcg/arm/Makefile.target
-+++ b/tests/tcg/arm/Makefile.target
-@@ -26,7 +26,7 @@ ARM_TESTS += fcvt
- fcvt: LDFLAGS+=-lm
- # fcvt: CFLAGS+=-march=armv8.2-a+fp16 -mfpu=neon-fp-armv8
- run-fcvt: fcvt
--	$(call run-test,fcvt,$(QEMU) $<,"$< on $(TARGET_NAME)")
-+	$(call run-test,fcvt,$(QEMU) $<)
- 	$(call diff-out,fcvt,$(ARM_SRC)/fcvt.ref)
- 
- # PC alignment test
-@@ -44,13 +44,12 @@ semihosting-arm: semihosting.c
- 	$(CC) $(CFLAGS) $(EXTRA_CFLAGS) $< -o $@ $(LDFLAGS)
- 
- run-semihosting-arm: semihosting-arm
--	$(call run-test,$<,$(QEMU) $< 2> $<.err, "$< on $(TARGET_NAME)")
-+	$(call run-test,$<,$(QEMU) $< 2> $<.err)
- 
- run-plugin-semihosting-arm-with-%:
- 	$(call run-test, $@, $(QEMU) $(QEMU_OPTS) \
- 		-plugin $(PLUGIN_LIB)/$(call extract-plugin,$@) \
--		 $(call strip-plugin,$<) 2> $<.err, \
--		"$< on $(TARGET_NAME) with $*")
-+		 $(call strip-plugin,$<) 2> $<.err)
- 
- ARM_TESTS += semiconsole-arm
- 
-@@ -75,7 +74,7 @@ sha1-vector: CFLAGS=-O3
- sha1-vector: sha1.c
- 	$(CC) $(CFLAGS) $(EXTRA_CFLAGS) $< -o $@ $(LDFLAGS)
- run-sha1-vector: sha1-vector run-sha1
--	$(call run-test, $<, $(QEMU) $(QEMU_OPTS) $<, "$< on $(TARGET_NAME)")
-+	$(call run-test, $<, $(QEMU) $(QEMU_OPTS) $<)
- 	$(call diff-out, sha1-vector, sha1.out)
- 
- ARM_TESTS += sha1-vector
-diff --git a/tests/tcg/cris/Makefile.target b/tests/tcg/cris/Makefile.target
-index e72d3cbdb2..372287bd03 100644
---- a/tests/tcg/cris/Makefile.target
-+++ b/tests/tcg/cris/Makefile.target
-@@ -56,4 +56,4 @@ SIMG:=cris-axis-linux-gnu-run
- 
- # e.g.: make -f ../../tests/tcg/Makefile run-check_orm-on-sim
- run-%-on-sim:
--	$(call run-test, $<, $(SIMG) $<, "$< on $(TARGET_NAME) with SIM")
-+	$(call run-test, $<, $(SIMG) $<)
-diff --git a/tests/tcg/i386/Makefile.softmmu-target b/tests/tcg/i386/Makefile.softmmu-target
-index 9b9038d0be..ed922d59c8 100644
---- a/tests/tcg/i386/Makefile.softmmu-target
-+++ b/tests/tcg/i386/Makefile.softmmu-target
-@@ -40,8 +40,7 @@ run-plugin-%-with-libinsn.so:
- 		  -chardev file$(COMMA)path=$@.out$(COMMA)id=output \
-                   -plugin ../../plugin/libinsn.so$(COMMA)inline=on \
- 	    	  -d plugin -D $*-with-libinsn.so.pout \
--	   	  $(QEMU_OPTS) $*, \
--		  "$* on $(TARGET_NAME)")
-+		  $(QEMU_OPTS) $*)
- 
- # Running
- QEMU_OPTS+=-device isa-debugcon,chardev=output -device isa-debug-exit,iobase=0xf4,iosize=0x4 -kernel
++config-cc.mak: Makefile
++	$(quiet-@)( \
++	    $(call cc-option,-march=armv8.1-a+sve,          CROSS_CC_HAS_SVE); \
++	    $(call cc-option,-march=armv8.1-a+sve2,         CROSS_CC_HAS_SVE2); \
++	    $(call cc-option,-march=armv8.3-a,              CROSS_CC_HAS_ARMV8_3); \
++	    $(call cc-option,-mbranch-protection=standard,  CROSS_CC_HAS_ARMV8_BTI); \
++	    $(call cc-option,-march=armv8.5-a+memtag,       CROSS_CC_HAS_ARMV8_MTE)) 3> config-cc.mak
++-include config-cc.mak
++
+ # Pauth Tests
+ ifneq ($(CROSS_CC_HAS_ARMV8_3),)
+ AARCH64_TESTS += pauth-1 pauth-2 pauth-4 pauth-5
 diff --git a/tests/tcg/i386/Makefile.target b/tests/tcg/i386/Makefile.target
-index 599f192529..8af066efc5 100644
+index 8af066efc5..3273aa8061 100644
 --- a/tests/tcg/i386/Makefile.target
 +++ b/tests/tcg/i386/Makefile.target
-@@ -53,7 +53,7 @@ test-i386-fprem.ref: test-i386-fprem
+@@ -5,6 +5,12 @@ I386_SRC=$(SRC_PATH)/tests/tcg/i386
+ # Set search path for all sources
+ VPATH 		+= $(I386_SRC)
  
- run-test-i386-fprem: TIMEOUT=60
- run-test-i386-fprem: test-i386-fprem test-i386-fprem.ref
--	$(call run-test,test-i386-fprem, $(QEMU) $<,"$< on $(TARGET_NAME)")
-+	$(call run-test,test-i386-fprem, $(QEMU) $<)
- 	$(call diff-out,test-i386-fprem, test-i386-fprem.ref)
- else
- SKIP_I386_TESTS+=test-i386-fprem
-@@ -63,8 +63,7 @@ endif
- run-plugin-%-with-libinsn.so:
- 	$(call run-test, $@, $(QEMU) $(QEMU_OPTS) \
- 	       -plugin ../../plugin/libinsn.so$(COMMA)inline=on \
--	       -d plugin -D $*-with-libinsn.so.pout $*, \
--		"$* (inline) on $(TARGET_NAME)")
-+	       -d plugin -D $*-with-libinsn.so.pout $*)
++config-cc.mak: Makefile
++	$(quiet-@)( \
++          $(call cc-option,-fno-pie, CROSS_CC_HAS_I386_NOPIE)) 3> config-cc.mak
++
++-include config-cc.mak
++
+ I386_SRCS=$(notdir $(wildcard $(I386_SRC)/*.c))
+ ALL_X86_TESTS=$(I386_SRCS:.c=)
+ SKIP_I386_TESTS=test-i386-ssse3 test-avx test-3dnow test-mmx
+diff --git a/tests/tcg/ppc64/Makefile.target b/tests/tcg/ppc64/Makefile.target
+index 7db7a3e2b3..f081f1c683 100644
+--- a/tests/tcg/ppc64/Makefile.target
++++ b/tests/tcg/ppc64/Makefile.target
+@@ -4,6 +4,13 @@
  
- # Update TESTS
- I386_TESTS:=$(filter-out $(SKIP_I386_TESTS), $(ALL_X86_TESTS))
-diff --git a/tests/tcg/multiarch/Makefile.target b/tests/tcg/multiarch/Makefile.target
-index 6bba523729..78104f9bbb 100644
---- a/tests/tcg/multiarch/Makefile.target
-+++ b/tests/tcg/multiarch/Makefile.target
-@@ -26,7 +26,7 @@ float_%: float_%.c libs/float_helpers.c
- 	$(CC) $(CFLAGS) $(EXTRA_CFLAGS) $< $(MULTIARCH_SRC)/libs/float_helpers.c -o $@ $(LDFLAGS)
+ VPATH += $(SRC_PATH)/tests/tcg/ppc64
  
- run-float_%: float_%
--	$(call run-test,$<, $(QEMU) $(QEMU_OPTS) $<,"$< on $(TARGET_NAME)")
-+	$(call run-test,$<, $(QEMU) $(QEMU_OPTS) $<)
- 	$(call conditional-diff-out,$<,$(SRC_PATH)/tests/tcg/$(TARGET_NAME)/$<.ref)
- 
- 
-@@ -42,13 +42,11 @@ signals: LDFLAGS+=-lrt -lpthread
- 
- # default case (host page size)
- run-test-mmap: test-mmap
--	$(call run-test, test-mmap, $(QEMU) $<, \
--		"$< (default) on $(TARGET_NAME)")
-+	$(call run-test, test-mmap, $(QEMU) $<, $< (default))
- 
- # additional page sizes (defined by each architecture adding to EXTRA_RUNS)
- run-test-mmap-%: test-mmap
--	$(call run-test, test-mmap-$*, $(QEMU) -p $* $<,\
--		"$< ($* byte pages) on $(TARGET_NAME)")
-+	$(call run-test, test-mmap-$*, $(QEMU) -p $* $<, $< ($* byte pages))
- 
- ifneq ($(HAVE_GDB_BIN),)
- GDB_SCRIPT=$(SRC_PATH)/tests/guest-debug/run-test.py
-@@ -58,21 +56,21 @@ run-gdbstub-sha1: sha1
- 		--gdb $(HAVE_GDB_BIN) \
- 		--qemu $(QEMU) --qargs "$(QEMU_OPTS)" \
- 		--bin $< --test $(MULTIARCH_SRC)/gdbstub/sha1.py, \
--	"basic gdbstub support")
-+	basic gdbstub support)
- 
- run-gdbstub-qxfer-auxv-read: sha1
- 	$(call run-test, $@, $(GDB_SCRIPT) \
- 		--gdb $(HAVE_GDB_BIN) \
- 		--qemu $(QEMU) --qargs "$(QEMU_OPTS)" \
- 		--bin $< --test $(MULTIARCH_SRC)/gdbstub/test-qxfer-auxv-read.py, \
--	"basic gdbstub qXfer:auxv:read support")
-+	basic gdbstub qXfer:auxv:read support)
- 
- run-gdbstub-thread-breakpoint: testthread
- 	$(call run-test, $@, $(GDB_SCRIPT) \
- 		--gdb $(HAVE_GDB_BIN) \
- 		--qemu $(QEMU) --qargs "$(QEMU_OPTS)" \
- 		--bin $< --test $(MULTIARCH_SRC)/gdbstub/test-thread-breakpoint.py, \
--	"hitting a breakpoint on non-main thread")
-+	hitting a breakpoint on non-main thread)
- 
- else
- run-gdbstub-%:
-@@ -94,13 +92,13 @@ VPATH += $(MULTIARCH_SRC)/arm-compat-semi
- semihosting: CFLAGS+=-I$(SRC_PATH)/tests/tcg/$(TARGET_NAME)
- 
- run-semihosting: semihosting
--	$(call run-test,$<,$(QEMU) $< 2> $<.err, "$< on $(TARGET_NAME)")
-+	$(call run-test,$<,$(QEMU) $< 2> $<.err)
- 
- run-plugin-semihosting-with-%:
- 	$(call run-test, $@, $(QEMU) $(QEMU_OPTS) \
- 		-plugin $(PLUGIN_LIB)/$(call extract-plugin,$@) \
- 		 $(call strip-plugin,$<) 2> $<.err, \
--		"$< on $(TARGET_NAME) with $*")
-+		$< with $*)
- 
- semiconsole: CFLAGS+=-I$(SRC_PATH)/tests/tcg/$(TARGET_NAME)
- 
-diff --git a/tests/tcg/multiarch/system/Makefile.softmmu-target b/tests/tcg/multiarch/system/Makefile.softmmu-target
-index 625ed792c6..368b64d531 100644
---- a/tests/tcg/multiarch/system/Makefile.softmmu-target
-+++ b/tests/tcg/multiarch/system/Makefile.softmmu-target
-@@ -25,7 +25,7 @@ run-gdbstub-memory: memory
- 		--qargs \
- 		"-monitor none -display none -chardev file$(COMMA)path=$<.out$(COMMA)id=output $(QEMU_OPTS)" \
- 		--bin $< --test $(MULTIARCH_SRC)/gdbstub/memory.py, \
--	"softmmu gdbstub support")
-+	softmmu gdbstub support)
- 
- else
- run-gdbstub-%:
-diff --git a/tests/tcg/s390x/Makefile.target b/tests/tcg/s390x/Makefile.target
-index 5e13a41c3f..c830313e67 100644
---- a/tests/tcg/s390x/Makefile.target
-+++ b/tests/tcg/s390x/Makefile.target
-@@ -41,7 +41,7 @@ run-gdbstub-signals-s390x: signals-s390x
- 		--gdb $(HAVE_GDB_BIN) \
- 		--qemu $(QEMU) --qargs "$(QEMU_OPTS)" \
- 		--bin $< --test $(S390X_SRC)/gdbstub/test-signals-s390x.py, \
--	"mixing signals and debugging on s390x")
-+	mixing signals and debugging)
- 
- EXTRA_RUNS += run-gdbstub-signals-s390x
++config-cc.mak: Makefile
++	$(quiet-@)( \
++	    $(call cc-option,-mpower8-vector,   CROSS_CC_HAS_POWER8_VECTOR); \
++	    $(call cc-option,-mpower10,         CROSS_CC_HAS_POWER10)) 3> config-cc.mak
++
++-include config-cc.mak
++
+ ifneq ($(CROSS_CC_HAS_POWER8_VECTOR),)
+ PPC64_TESTS=bcdsub non_signalling_xscv
  endif
-diff --git a/tests/tcg/x86_64/Makefile.softmmu-target b/tests/tcg/x86_64/Makefile.softmmu-target
-index 2afa3298bf..7207fee94c 100644
---- a/tests/tcg/x86_64/Makefile.softmmu-target
-+++ b/tests/tcg/x86_64/Makefile.softmmu-target
-@@ -40,8 +40,7 @@ run-plugin-%-with-libinsn.so:
- 		  -chardev file$(COMMA)path=$@.out$(COMMA)id=output \
-                   -plugin ../../plugin/libinsn.so$(COMMA)inline=on \
- 	    	  -d plugin -D $*-with-libinsn.so.pout \
--	   	  $(QEMU_OPTS) $*, \
--		  "$* on $(TARGET_NAME)")
-+		  $(QEMU_OPTS) $*)
- 
- # Running
- QEMU_OPTS+=-device isa-debugcon,chardev=output -device isa-debug-exit,iobase=0xf4,iosize=0x4 -kernel
 -- 
 2.34.1

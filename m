@@ -1,107 +1,114 @@
-Received: by 2002:a8a:1930:0:0:0:0:0 with SMTP id be48csp603680ocb;
-        Thu, 6 Oct 2022 09:27:57 -0700 (PDT)
-X-Google-Smtp-Source: AMsMyM49gJFo/pP/qT51LlboZK4cQd9buunw25Ki7ShuRRDCrbuQxj7hctYGGhUbz3vtPIkGLM1w
-X-Received: by 2002:a05:620a:1727:b0:6ce:9bb6:404a with SMTP id az39-20020a05620a172700b006ce9bb6404amr774340qkb.184.1665073677283;
-        Thu, 06 Oct 2022 09:27:57 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1665073677; cv=none;
+Received: by 2002:a8a:1930:0:0:0:0:0 with SMTP id be48csp608489ocb;
+        Thu, 6 Oct 2022 09:34:37 -0700 (PDT)
+X-Google-Smtp-Source: AMsMyM5bhKIPM4XvFPvcfARMNGOiINq16wqQvFHe5Kd902pBPtQoQWEVZiVAzEbpcpY2dMDde0DW
+X-Received: by 2002:a05:620a:2629:b0:6ce:7d2b:5828 with SMTP id z41-20020a05620a262900b006ce7d2b5828mr750998qko.497.1665074077497;
+        Thu, 06 Oct 2022 09:34:37 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1665074077; cv=none;
         d=google.com; s=arc-20160816;
-        b=DyAvpdmq2yg7Tde1hmSbNTsRJS7gWQ7LViNzZp9CZhmBRzytgeOZs913aOuN9H+vHj
-         rMO2WnsoGJ3/sKmj9iGfWKYaHPcfI3/v9X58uaMlnLFr9SHvMEzOd9kqZ5KZwA4DWKkz
-         0CMOiPG1/RTgVDTgPQonjlO50MyxOcYVAv/6l0a6gMd+qPoM81Jsgki69/Dsrspn9H/5
-         1OXbGJgLzkopljexGNbHoYy5W6Ap7TVqX/r2hsj+thUsDcaZZwPO7ToFyWUSsJ2we7d1
-         ZEBpOUWRlNi1R/EpIfEp7JvzMHyukve4GaO23SSHDpVQUurItHP27j314ldIGTZ4cOpw
-         yfgw==
+        b=CuJg3Plec82WNOnZAu/mhPDtJIPK8DCdFneItRbRjrgLzytqWWhRBTp8H7wdi3c6QH
+         jQtCt6wgTfqQMQ4wHxYnoUEAe1Z+dHjCoveGfr3ba478hOiKuvo/EYjS6pOR68zVaodm
+         5YOPYTcVo3Ypkn4yZwMjBiKZqZqcCutA5VF7gpLvd/cAP/b4RDesms2YriJnIxENh4Vq
+         gDQhZzFBmWw5aG/m65ClSZAh7U7ZA5M7ffa784qOZXw93OsCXpKq2rjMR7yzUdmER1Ui
+         q0Ojs2NwT+sd4zvBPenqoAphHq9q/OoOcn55f48t5MvbnLVWD0XpXaQhzRV1gswXJ5q+
+         Z6UA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=pVoW6L5/2Mq3J0jYZnOA2YLWQiFhtZWXuPQ7oQhu+us=;
-        b=oUYp5OUg9cFKu0ueLEYgHLjgajEE4tQJtIHuSbwLhxmHMtpBlch5HUmgiHt/8ivNUj
-         ugo7NHpmJ92WxyxVzwnNKYUxbasQxvtNzPvCaKFSeq5IYmAPVOwAU6T1k7wEwfjiNh5r
-         q7lGe/rvaP67GMtBp0U4TmWLlkn/DOiiANz/9CoecKf81qBqyHcUD5e/wyTDk5SgUZSZ
-         1RpDVhjHj+li4k57xhuVmHEOuxEwZCzRBYDumOtZUQAHfAiO6ZagTO+LeQp1DJUeofph
-         DCe/MWj1yea1x7eSfCILbKB+HIaVCyl7teCshD1vHFH/4v65znV4AP6w04FB8F8ktXnK
-         H2wQ==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=xAq2xlqRdVIbUoDtOLarQdrR1IEKv+tZdV05JKo94l4=;
+        b=zkB+DUQsXahryIT4tMyV7wNEORN+VygjZGKih9PuGHeWt8OkZoz40N1vBndwb2rNg9
+         7Domu68Qq9bakWI0aL8PXi5ftRuQhGEcgaxE0B+6m8LY8+JvUXn/Ly95O3PIcrr9Gq5p
+         OxZNi/dZtw9PH0RIz7VCoYDdR3Cx76gvE9b++vWObzTE8yVFG7xszTO/VePn8nPKo+M5
+         xsGhSlr1B1sI2kICsZ0D6TUnQdXIMqBarTnvyltWiDIWUwciEFFNGYnH4JfsMh6iUO0z
+         jJkk5T6o8tIoLRplkLpx4ihPR3AWGy0JW2VJ9iWf05Bn4bjw4IhntdKNDNR5JzRs4C5C
+         kmVA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=bItGL6jr;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=EJSjyTvn;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t17-20020ac85891000000b00391c9c05a3csi32824qta.87.2022.10.06.09.27.57
+        by mx.google.com with ESMTPS id gf1-20020a056214250100b004aab03935easi4372302qvb.538.2022.10.06.09.34.37
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 06 Oct 2022 09:27:57 -0700 (PDT)
+        Thu, 06 Oct 2022 09:34:37 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=bItGL6jr;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=EJSjyTvn;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:56786 helo=lists1p.gnu.org)
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:59496 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ogTj2-000261-RX
-	for alex.bennee@linaro.org; Thu, 06 Oct 2022 12:27:56 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:41752)
+	id 1ogTpV-0000bF-2F
+	for alex.bennee@linaro.org; Thu, 06 Oct 2022 12:34:37 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:57710)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1ogSiA-0005jK-Se
- for qemu-arm@nongnu.org; Thu, 06 Oct 2022 11:22:58 -0400
-Received: from mail-pl1-x62c.google.com ([2607:f8b0:4864:20::62c]:45568)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1ogSi6-0006cm-On
- for qemu-arm@nongnu.org; Thu, 06 Oct 2022 11:22:58 -0400
-Received: by mail-pl1-x62c.google.com with SMTP id u24so1976138plq.12
- for <qemu-arm@nongnu.org>; Thu, 06 Oct 2022 08:22:52 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=pVoW6L5/2Mq3J0jYZnOA2YLWQiFhtZWXuPQ7oQhu+us=;
- b=bItGL6jrS5Hgyf77V7EPSLTp03+CK0A0fQwesfUX+GcPX6L22VWVXlTDGgvZMOgNb8
- V44lTmGF1bRO4FirC377o3EsYNDviSy8/I679NVP15+4oBp3j2D/Vpm5Pm4BuEgQ3fXX
- hj/ETMrBv/p7RnMlkuUGrTZjZltU9OVTQAnCA+F8i4SRQG+dgZivIY33pwFsSGH0bOUn
- fF4g5prvKnAeOokC4uS7TRda9uCJ5z6qrPaF7aogLdb0AARxnreEXbe8iFXqeN14C/RG
- MFx5UHIcLZh1S310oDtcFiiIRLbMAQxDkw2DCU5MhlWlAep/lj0UInElFSCGeNw9S0u7
- csgg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=pVoW6L5/2Mq3J0jYZnOA2YLWQiFhtZWXuPQ7oQhu+us=;
- b=4iBaD5Y2YPjuymKKjT7eoiBm2o1Q3dO0cu7mG0fjpQ4TxnomG95B9k6Iz541j6lGR9
- BLKXjjJ5iVyAptC0UnHRvLL+nXHNGRAIcj6le7dA/9eRP4NyOBuHJWGGIKfi1XqSoaCz
- oAxigFwQAikbYma2OfmYGDTQGX7yyf5Y82O1O24vzXFBEuZ5883dnWWLwehcOg4hFsgL
- FvdTCHIANc3DGWnw1fAbdLJwFRbgcfit7T7EoLSUSjW8B6aKLlTTqbLd2yAdd3LKQocE
- wdWwLbRohgQ4CAITNR02vvxYaB0dJ0v/d5QEysTjsmcMIoGoc7kLjgVQnRfXZ/XT6icZ
- PbPA==
-X-Gm-Message-State: ACrzQf2Ly+o8REDF0wJyIq1w4+1unVM69FCD40VZxVrYg1nlrpBYZkhz
- GQXnum8/zHCJsQW2oFoJwST0ZyrVT2f40tDF+lqCGA==
-X-Received: by 2002:a17:90b:4b8e:b0:20a:f240:9b23 with SMTP id
- lr14-20020a17090b4b8e00b0020af2409b23mr239314pjb.19.1665069771210; Thu, 06
- Oct 2022 08:22:51 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
+ id 1ogStl-0003XX-EK
+ for qemu-arm@nongnu.org; Thu, 06 Oct 2022 11:34:59 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:25847)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
+ id 1ogSti-0000A8-Ke
+ for qemu-arm@nongnu.org; Thu, 06 Oct 2022 11:34:57 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1665070494;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=xAq2xlqRdVIbUoDtOLarQdrR1IEKv+tZdV05JKo94l4=;
+ b=EJSjyTvnk5mAVAbKOqOiUwIQjubxgyGYc4GM9D6uSg5MEMd9eUDSIBWRy7gdUc+ANnpqmY
+ fuZscYoUYbWG8s3LewzRH5BWuBxCogSRVZfiUt9bzXPyriMpCUyIaELn/UJ2rwTaQyhOhC
+ o3rmomIGD0JzIMoOXNxDn7/rho7jTb0=
+Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
+ [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-531-0Qayu6ugPd-eEXtvMmJMFA-1; Thu, 06 Oct 2022 11:34:49 -0400
+X-MC-Unique: 0Qayu6ugPd-eEXtvMmJMFA-1
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.6])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id A6F66185A7AA;
+ Thu,  6 Oct 2022 15:34:48 +0000 (UTC)
+Received: from localhost (unknown [10.39.208.20])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 2F7C32166B2E;
+ Thu,  6 Oct 2022 15:34:46 +0000 (UTC)
+From: marcandre.lureau@redhat.com
+To: qemu-devel@nongnu.org
+Cc: Richard Henderson <richard.henderson@linaro.org>,
+ =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
+ Bin Meng <bin.meng@windriver.com>,
+ Daniel Henrique Barboza <danielhb413@gmail.com>, qemu-ppc@nongnu.org,
+ qemu-s390x@nongnu.org, Alistair Francis <alistair.francis@wdc.com>,
+ qemu-riscv@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
+ viktor.prutyanov@redhat.com, Greg Kurz <groug@kaod.org>,
+ frankja@linux.ibm.com, David Hildenbrand <david@redhat.com>,
+ Palmer Dabbelt <palmer@dabbelt.com>,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
+ David Gibson <david@gibson.dropbear.id.au>, qemu-arm@nongnu.org,
+ Cornelia Huck <cohuck@redhat.com>, Thomas Huth <thuth@redhat.com>
+Subject: [PULL 03/10] dump: Refactor dump_iterate and introduce
+ dump_filter_memblock_*()
+Date: Thu,  6 Oct 2022 19:34:22 +0400
+Message-Id: <20221006153430.2775580-4-marcandre.lureau@redhat.com>
+In-Reply-To: <20221006153430.2775580-1-marcandre.lureau@redhat.com>
+References: <20221006153430.2775580-1-marcandre.lureau@redhat.com>
 MIME-Version: 1.0
-References: <20221001162318.153420-1-richard.henderson@linaro.org>
- <20221001162318.153420-2-richard.henderson@linaro.org>
- <CAFEAcA_LSd9mPFiDHyofdHVq2kshiL6FjxNG2aSXXc8jkGb3vg@mail.gmail.com>
- <ed6e925a-ea37-5575-bc3c-aee2a887d5bc@linaro.org>
-In-Reply-To: <ed6e925a-ea37-5575-bc3c-aee2a887d5bc@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 6 Oct 2022 16:22:39 +0100
-Message-ID: <CAFEAcA_8Fc5033cRHp9rhgnX4spUsGNPxAdYRNtiE11Beg4w9A@mail.gmail.com>
-Subject: Re: [PATCH v3 01/42] target/arm: Split s2walk_secure from ipa_secure
- in get_phys_addr
-To: Richard Henderson <richard.henderson@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::62c;
- envelope-from=peter.maydell@linaro.org; helo=mail-pl1-x62c.google.com
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-Scanned-By: MIMEDefang 3.1 on 10.11.54.6
+Received-SPF: pass client-ip=170.10.129.124;
+ envelope-from=marcandre.lureau@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
@@ -118,42 +125,130 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 56hZtlaTBUAx
+X-TUID: iepZoT+EjQa7
 
-On Thu, 6 Oct 2022 at 16:10, Richard Henderson
-<richard.henderson@linaro.org> wrote:
->
-> On 10/6/22 07:27, Peter Maydell wrote:
-> > On Sat, 1 Oct 2022 at 17:24, Richard Henderson
-> > <richard.henderson@linaro.org> wrote:
-> >>
-> >> The starting security state comes with the translation regime,
-> >> not the current state of arm_is_secure_below_el3().
-> >>
-> >> Create a new local variable, s2walk_secure, which does not need
-> >> to be written back to result->attrs.secure -- we compute that
-> >> value later, after the S2 walk is complete.
-> >>
-> >> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
-> >> ---
-> >> v3: Do not modify ipa_secure, per review.
-> >> ---
-> >
-> > Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
-> >
-> > I did find myself wondering if we should explicitly set
-> >    result->attrs.secure = false;
-> > in an else-branch of the last "if (is_secure)", though.
-> > At the moment we rely on get_phys_addr_lpae() for the stage2
-> > doing that for us, I think. Having the code here always set
-> > result->attrs.secure before the 'return 0' avoids having to think
-> > about that...
->
-> Yes, we're currently (and predating this patch set) relying on the attrs structure being
-> cleared to start.  But I can certainly add the assignment if you like.
+From: Janosch Frank <frankja@linux.ibm.com>
 
-Yeah, cleared-at-start is fine. But here we're also relying on
-the stage 2 call to get_phys_addr_lpae() not setting it to 1,
-because we pass that the same 'result' pointer, not a fresh one.
+The iteration over the memblocks in dump_iterate() is hard to
+understand so it's about time to clean it up. Instead of manually
+grabbing the next memblock we can use QTAILQ_FOREACH to iterate over
+all memblocks.
 
--- PMM
+Additionally we move the calculation of the offset and length out by
+introducing and using the dump_filter_memblock_*() functions. These
+functions will later be used to cleanup other parts of dump.c.
+
+Signed-off-by: Janosch Frank <frankja@linux.ibm.com>
+Reviewed-by: Janis Schoetterl-Glausch <scgl@linux.ibm.com>
+Reviewed-by: Marc-André Lureau <marcandre.lureau@redhat.com>
+Message-Id: <20220811121111.9878-4-frankja@linux.ibm.com>
+---
+ dump/dump.c | 74 ++++++++++++++++++++++++++++++-----------------------
+ 1 file changed, 42 insertions(+), 32 deletions(-)
+
+diff --git a/dump/dump.c b/dump/dump.c
+index 0ed7cf9c7b..340de5a1e7 100644
+--- a/dump/dump.c
++++ b/dump/dump.c
+@@ -591,31 +591,43 @@ static void dump_begin(DumpState *s, Error **errp)
+     write_elf_notes(s, errp);
+ }
+ 
+-static int get_next_block(DumpState *s, GuestPhysBlock *block)
++static int64_t dump_filtered_memblock_size(GuestPhysBlock *block,
++                                           int64_t filter_area_start,
++                                           int64_t filter_area_length)
+ {
+-    while (1) {
+-        block = QTAILQ_NEXT(block, next);
+-        if (!block) {
+-            /* no more block */
+-            return 1;
+-        }
++    int64_t size, left, right;
+ 
+-        s->start = 0;
+-        s->next_block = block;
+-        if (s->has_filter) {
+-            if (block->target_start >= s->begin + s->length ||
+-                block->target_end <= s->begin) {
+-                /* This block is out of the range */
+-                continue;
+-            }
++    /* No filter, return full size */
++    if (!filter_area_length) {
++        return block->target_end - block->target_start;
++    }
+ 
+-            if (s->begin > block->target_start) {
+-                s->start = s->begin - block->target_start;
+-            }
++    /* calculate the overlapped region. */
++    left = MAX(filter_area_start, block->target_start);
++    right = MIN(filter_area_start + filter_area_length, block->target_end);
++    size = right - left;
++    size = size > 0 ? size : 0;
++
++    return size;
++}
++
++static int64_t dump_filtered_memblock_start(GuestPhysBlock *block,
++                                            int64_t filter_area_start,
++                                            int64_t filter_area_length)
++{
++    if (filter_area_length) {
++        /* return -1 if the block is not within filter area */
++        if (block->target_start >= filter_area_start + filter_area_length ||
++            block->target_end <= filter_area_start) {
++            return -1;
+         }
+ 
+-        return 0;
++        if (filter_area_start > block->target_start) {
++            return filter_area_start - block->target_start;
++        }
+     }
++
++    return 0;
+ }
+ 
+ /* write all memory to vmcore */
+@@ -623,24 +635,22 @@ static void dump_iterate(DumpState *s, Error **errp)
+ {
+     ERRP_GUARD();
+     GuestPhysBlock *block;
+-    int64_t size;
+-
+-    do {
+-        block = s->next_block;
++    int64_t memblock_size, memblock_start;
+ 
+-        size = block->target_end - block->target_start;
+-        if (s->has_filter) {
+-            size -= s->start;
+-            if (s->begin + s->length < block->target_end) {
+-                size -= block->target_end - (s->begin + s->length);
+-            }
++    QTAILQ_FOREACH(block, &s->guest_phys_blocks.head, next) {
++        memblock_start = dump_filtered_memblock_start(block, s->begin, s->length);
++        if (memblock_start == -1) {
++            continue;
+         }
+-        write_memory(s, block, s->start, size, errp);
++
++        memblock_size = dump_filtered_memblock_size(block, s->begin, s->length);
++
++        /* Write the memory to file */
++        write_memory(s, block, memblock_start, memblock_size, errp);
+         if (*errp) {
+             return;
+         }
+-
+-    } while (!get_next_block(s, block));
++    }
+ }
+ 
+ static void create_vmcore(DumpState *s, Error **errp)
+-- 
+2.37.3
+

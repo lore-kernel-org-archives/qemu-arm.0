@@ -1,106 +1,122 @@
-Received: by 2002:a8a:1930:0:0:0:0:0 with SMTP id be48csp637845ocb;
-        Thu, 6 Oct 2022 10:18:07 -0700 (PDT)
-X-Google-Smtp-Source: AMsMyM7CshpOSBLdm9c12u4CVcHWXdRxjCXGDJLx6F7Sv5zDGaLmVhrKXUfbHmPFgKI7TbILv9wT
-X-Received: by 2002:a05:622a:203:b0:35d:51bd:5bb7 with SMTP id b3-20020a05622a020300b0035d51bd5bb7mr1020459qtx.514.1665076687065;
-        Thu, 06 Oct 2022 10:18:07 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1665076687; cv=none;
+Received: by 2002:a8a:1930:0:0:0:0:0 with SMTP id be48csp637898ocb;
+        Thu, 6 Oct 2022 10:18:12 -0700 (PDT)
+X-Google-Smtp-Source: AMsMyM4eb8KM/5oyljE9mXHBbS5ctog+4Mk1MIIC/BB+waR5ezxdVcuMG9IiMDmrIXELx3dOlw6z
+X-Received: by 2002:a05:620a:1b8b:b0:6cf:4dbc:e0a9 with SMTP id dv11-20020a05620a1b8b00b006cf4dbce0a9mr926220qkb.342.1665076692610;
+        Thu, 06 Oct 2022 10:18:12 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1665076692; cv=none;
         d=google.com; s=arc-20160816;
-        b=gHfVEtjmsejIeFZz8CzElkroGMPqLXpjLKZSuPFVTuVwr5S/JrE1ZOIRT67hXZpcZi
-         82wR//ROnYq6Bzdl9VO6CnfgWanioM9QYPWkBpb9OMNyb09hBvHPAsFBXrW9iJf3uEgp
-         /lpnuvKuRblrOpZAbsaCPZbwINs0ThsvM+JlzzSoJMgx1Yo100f3dqrMR/IKtPWTf7AJ
-         FXKzcyRFUrZ+EhOeCMSMHMQygaNbYF6vxaurgc/m9C2AhZKsqKPwgcRlQDS6SsvxC9wp
-         a86hblL4XF6tYUYoM2L7ABmxn5INSxkdqmRTmIBQWtXzHh1FDUm9qk4KD2MtT1GOBnwl
-         keXw==
+        b=mM4asBEDBhlae2Q0Rb4p6SgKmfr4+FHTpH0qtuvAHS2Li63NU5Fin7+1ZUmbKJxtk8
+         CNQFRK475A07RrZy2ca6L9Cc289+eBpEx01mDA73mO1kmAhSPL+wlKQMz7GNgNDCF1KT
+         MRVt7H9udaQjiTONLg82s6bAZXwp4QTvcVKz/S0377pIEB6EI37eRmOj00WvvBCq5s/d
+         ZB8YdpBGmbumvk7+rFWuEWA4fe2mbkClqyuJeap6RaOMUhVUKuh+pT1m5ITS8TMmSP+C
+         Wp8zpmceNVV8WQicmCZrvLVQDJtnCBY+1xgg+qeZb2dQcln7sURMgkUQTbITKAuxTQbU
+         +l2Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=sz0k/lyX15waWgrb3OMxfwnjeC0Z94k3iFysFjz4qUg=;
-        b=l8aTdEJ57wgV32n5YT7kdcUmUwkG3WFU9HCVmPLBnWvssBVocUaWJw0F2Fh5ErsEwN
-         wPsgnSiMaqpRrUzdGvFAYRztmj20AdOCERVUGnkS5czy7chvPNg0kWWtJO2YkC53AQ2k
-         IscxKnMHO5d9xCLqKOgrm7i+rI/V5uhTBpYoUU+UHFyqXjPOmP3Qu19GGznSMTVdzbBs
-         y+NFBjQ6R4+Dv5VQNoLcHrul97A/P/XZQV5pf4lxSy2o9U0JvAWILEiazOArLrC70Yrz
-         mbU6GEVUG/SZWu0rHc+cWTPTCsCjx9xLLBSEsW0RxDozru47cTXbgf7lAtw14jTCHe0L
-         iBvA==
+        h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence
+         :content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:dkim-signature;
+        bh=3KYlp9niCt61OSJPWbphR2HpAFLdUAVFlJ/zEozb2SI=;
+        b=I8bLVZnNrE7dOntjYf0vnLy9fE2k89cbnshcfS+DYKo7xXH6gwtQWQt4F9UshEbcLz
+         EU2P8YEzwI/Z35lrGrhkTRCKiuwdn7Rm97tXyHFXBy1/XbZJ+PzXrxrZ92FgyA/j8fvX
+         VkQAimITiaV8zsITONjLm/iA44qILOa6ir7YlT9lgTJpziHW88wl/784iIpnVXV+3vMX
+         j4WNDZ0qjM+2XwoSMKPwnwKek6zFb131Bf/PSbcLUL35YDxJmfs/KBs1dzjRhtbMCb9d
+         Jl+U2S6LAIt+OZm/dPaBwF6AFDsB1oymXRKu5Z7BcOfEybwu2odiGsWF8vpgjkCnErJe
+         3zTA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=DfC1ozbJ;
+       dkim=pass header.i=@oracle.com header.s=corp-2022-7-12 header.b=nijCasxj;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=oracle.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id m6-20020ae9f206000000b006bb2c9df73esi6983292qkg.355.2022.10.06.10.18.06
+        by mx.google.com with ESMTPS id t2-20020a379102000000b006cfc1e935b9si7568083qkd.185.2022.10.06.10.18.12
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 06 Oct 2022 10:18:07 -0700 (PDT)
+        Thu, 06 Oct 2022 10:18:12 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=DfC1ozbJ;
+       dkim=pass header.i=@oracle.com header.s=corp-2022-7-12 header.b=nijCasxj;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:52488 helo=lists1p.gnu.org)
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=oracle.com
+Received: from localhost ([::1]:52534 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ogUVa-0007ld-Ic
-	for alex.bennee@linaro.org; Thu, 06 Oct 2022 13:18:06 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:58510)
+	id 1ogUVe-00080a-UK
+	for alex.bennee@linaro.org; Thu, 06 Oct 2022 13:18:11 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:40328)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1ogTJk-0006FK-6l
- for qemu-devel@nongnu.org; Thu, 06 Oct 2022 12:01:54 -0400
-Received: from mail-pl1-x631.google.com ([2607:f8b0:4864:20::631]:45793)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1ogTJi-0004W0-1N
- for qemu-devel@nongnu.org; Thu, 06 Oct 2022 12:01:47 -0400
-Received: by mail-pl1-x631.google.com with SMTP id u24so2077710plq.12
- for <qemu-devel@nongnu.org>; Thu, 06 Oct 2022 09:01:43 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=sz0k/lyX15waWgrb3OMxfwnjeC0Z94k3iFysFjz4qUg=;
- b=DfC1ozbJmYA9LDLX2qkxcm5gizEL/jvJoh/n2P+Lq7Pz+23x0YxsltpGWUOBhRpbLe
- gk3XHBEbaUzg06IUc//ncDztODWJB5yilW92U9p92UtnaCKguQb7UOfZT0PqVQBsYa50
- JCmux1I+BYmd4YlTjXs8wTvkDOAzVbQoMlXtkPRaSWBai5SOOxXcsgd+5c7atC/i1QEd
- ZlL0lh3OYtXbjOMi3mJIcaOEeovvtwb4Hgaoa0xTGIbi6wxv0l4JI02Es2Z6FMtXwxxZ
- 01hgB91jDZFqJsWQfnYuOuGEFjCOyMcXJriTHHiO6eT+EnmX4q6GdMn69RcB9A2M6E1F
- Uiog==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=sz0k/lyX15waWgrb3OMxfwnjeC0Z94k3iFysFjz4qUg=;
- b=ZlrMw4YI9CXRaR8q4iNTnPFWrXFuEzekrXi6eAP82cJCbYvCe/dmcGXX/umf/R0m6X
- WuetfqwxHZYrQwykKEpUvrSM8vVjr6ENh11Ir4D5Yt564wRXwoicaEVP/GTD9IT8NUJu
- 87u2bOH5meuaMLdoHwkULmdOOQy2erZIhZltAiZWfRqQszA2aBw+zsNHzJmZCsp5wpNL
- lP9GhMBSU2l8wkdffNTzw3k4f1OyjOpm/0DRAQSGvSgiczf2tysRrgfRo0w/jkYw1iTE
- LSPFne+aRzLhJmMpEyaUep5efMGzA+wEu+su3NiiaT91zpNN2eA6akYkVYs74nrjf35a
- ++rA==
-X-Gm-Message-State: ACrzQf30mjcfc12mGlrB89WJGy/38U5BV1AbipiHBC8c3aP0NhM5HZJB
- +zVQPO6H2cow/WM50H85SHyW2tW+UR7fPu+cqQFEYA==
-X-Received: by 2002:a17:90b:1d11:b0:20a:9b3a:bf10 with SMTP id
- on17-20020a17090b1d1100b0020a9b3abf10mr345351pjb.215.1665072102955; Thu, 06
- Oct 2022 09:01:42 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <miguel.luis@oracle.com>)
+ id 1ogTXB-0007Oq-Bd; Thu, 06 Oct 2022 12:15:42 -0400
+Received: from mx0b-00069f02.pphosted.com ([205.220.177.32]:25894)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <miguel.luis@oracle.com>)
+ id 1ogTX9-0006nZ-6u; Thu, 06 Oct 2022 12:15:40 -0400
+Received: from pps.filterd (m0246632.ppops.net [127.0.0.1])
+ by mx0b-00069f02.pphosted.com (8.17.1.5/8.17.1.5) with ESMTP id 296FhmeR001815;
+ Thu, 6 Oct 2022 16:15:37 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
+ h=from : to : cc :
+ subject : date : message-id : in-reply-to : references : reply-to :
+ mime-version : content-transfer-encoding; s=corp-2022-7-12;
+ bh=3KYlp9niCt61OSJPWbphR2HpAFLdUAVFlJ/zEozb2SI=;
+ b=nijCasxjYJYuUeDsWWq8nCPqTApRh+GX+oGnfFNjy+sE7LRd8I02R+b19n81kR8Lnabw
+ //u98TONYTOV8u/ATXiFNoOmMmeedIUUCxSJOJDvbxI2fsN5EUsxOUR2NFI1gbFOgY1H
+ 2QsEnwKhStPAskHFahWTMlRElcQ9tS1cKMLm0CeKR2aUAjWGeQVP+p8Zk2+MY73I5aKi
+ O/l/1TmD2GbLl6NrztEPp4syed3dI+7JN/Fx2/WDjFgDdPSmoRRovGidPBF1LaKSpTzQ
+ SiknXz6zxCHnEKzJ3S8eY4PBLTDNkyCyQ2D6rb7gHsDkeywSM8GK75YQYbi1uyqZTB/p vg== 
+Received: from phxpaimrmta03.imrmtpd1.prodappphxaev1.oraclevcn.com
+ (phxpaimrmta03.appoci.oracle.com [138.1.37.129])
+ by mx0b-00069f02.pphosted.com (PPS) with ESMTPS id 3jxd5tmn57-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Thu, 06 Oct 2022 16:15:37 +0000
+Received: from pps.filterd
+ (phxpaimrmta03.imrmtpd1.prodappphxaev1.oraclevcn.com [127.0.0.1])
+ by phxpaimrmta03.imrmtpd1.prodappphxaev1.oraclevcn.com (8.17.1.5/8.17.1.5)
+ with ESMTP id 296FAfJo028246; Thu, 6 Oct 2022 16:15:36 GMT
+Received: from pps.reinject (localhost [127.0.0.1])
+ by phxpaimrmta03.imrmtpd1.prodappphxaev1.oraclevcn.com (PPS) with ESMTPS id
+ 3jxc06eqaq-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Thu, 06 Oct 2022 16:15:36 +0000
+Received: from phxpaimrmta03.imrmtpd1.prodappphxaev1.oraclevcn.com
+ (phxpaimrmta03.imrmtpd1.prodappphxaev1.oraclevcn.com [127.0.0.1])
+ by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 296GFLrj001092;
+ Thu, 6 Oct 2022 16:15:35 GMT
+Received: from mlluis-mac.uk.oracle.com (dhcp-10-175-170-234.vpn.oracle.com
+ [10.175.170.234])
+ by phxpaimrmta03.imrmtpd1.prodappphxaev1.oraclevcn.com (PPS) with ESMTP id
+ 3jxc06eq1e-3; Thu, 06 Oct 2022 16:15:35 +0000
+From: Miguel Luis <miguel.luis@oracle.com>
+To: qemu-devel@nongnu.org, qemu-arm@nongnu.org
+Cc: mst@redhat.com, imammedo@redhat.com, ani@anisinha.ca,
+ shannon.zhaosl@gmail.com, peter.maydell@linaro.org, miguel.luis@oracle.com
+Subject: [RFC PATCH 2/4] acpi: fadt: support revision 6.0 of the ACPI
+ specification
+Date: Thu,  6 Oct 2022 16:14:48 +0000
+Message-Id: <20221006161450.69912-3-miguel.luis@oracle.com>
+X-Mailer: git-send-email 2.37.3
+In-Reply-To: <20221006161450.69912-1-miguel.luis@oracle.com>
+References: <20221006161450.69912-1-miguel.luis@oracle.com>
 MIME-Version: 1.0
-References: <20221001162318.153420-1-richard.henderson@linaro.org>
- <20221001162318.153420-30-richard.henderson@linaro.org>
-In-Reply-To: <20221001162318.153420-30-richard.henderson@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 6 Oct 2022 17:01:31 +0100
-Message-ID: <CAFEAcA_UOxOdcxYWbcVFd+DEX-nfQ7gsE6GaTpnjAqR5avsOow@mail.gmail.com>
-Subject: Re: [PATCH v3 29/42] target/arm: Use bool consistently for
- get_phys_addr subroutines
-To: Richard Henderson <richard.henderson@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::631;
- envelope-from=peter.maydell@linaro.org; helo=mail-pl1-x631.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+Content-Transfer-Encoding: 8bit
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.205,Aquarius:18.0.895,Hydra:6.0.528,FMLib:17.11.122.1
+ definitions=2022-10-06_04,2022-10-06_02,2022-06-22_01
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 spamscore=0
+ mlxscore=0 mlxlogscore=999
+ bulkscore=0 malwarescore=0 adultscore=0 phishscore=0 suspectscore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2209130000
+ definitions=main-2210060094
+X-Proofpoint-ORIG-GUID: cpAo_Gu8ZCtUxilNMK1BpbgQtI02VTOp
+X-Proofpoint-GUID: cpAo_Gu8ZCtUxilNMK1BpbgQtI02VTOp
+Received-SPF: pass client-ip=205.220.177.32;
+ envelope-from=miguel.luis@oracle.com; helo=mx0b-00069f02.pphosted.com
+X-Spam_score_int: -27
+X-Spam_score: -2.8
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
@@ -114,20 +130,108 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Reply-To: miguel.luis@oracle.com
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: v0o5TOaI5tqT
+X-TUID: JqdKaQX6gVN3
 
-On Sat, 1 Oct 2022 at 17:41, Richard Henderson
-<richard.henderson@linaro.org> wrote:
->
-> The return type of the functions is already bool, but in a few
-> instances we used an integer type with the return statement.
->
-> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
-> ---
+Update the Fixed ACPI Description Table (FADT) to revision 6.0 of the ACPI
+specification adding the field "Hypervisor Vendor Identity" that was missing.
 
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+This field's description states the following: "64-bit identifier of hypervisor
+vendor. All bytes in this field are considered part of the vendor identity.
+These identifiers are defined independently by the vendors themselves,
+usually following the name of the hypervisor product. Version information
+should NOT be included in this field - this shall simply denote the vendor's
+name or identifier. Version information can be communicated through a
+supplemental vendor-specific hypervisor API. Firmware implementers would
+place zero bytes into this field, denoting that no hypervisor is present in
+the actual firmware."
 
-thanks
--- PMM
+Hereupon, what should a valid identifier of an Hypervisor Vendor ID be and
+where should QEMU provide that information?
+
+On this RFC there's the suggestion of having this information in sync by the
+current acceleration name. This also seems to imply that QEMU, which generates
+the FADT table, and the FADT consumer need to be in sync with the values of this
+field.
+
+Signed-off-by: Miguel Luis <miguel.luis@oracle.com>
+---
+ hw/acpi/aml-build.c      | 14 +++++++++++---
+ hw/arm/virt-acpi-build.c | 10 +++++-----
+ 2 files changed, 16 insertions(+), 8 deletions(-)
+
+diff --git a/hw/acpi/aml-build.c b/hw/acpi/aml-build.c
+index e6bfac95c7..5258c4ac64 100644
+--- a/hw/acpi/aml-build.c
++++ b/hw/acpi/aml-build.c
+@@ -31,6 +31,7 @@
+ #include "hw/pci/pci_bus.h"
+ #include "hw/pci/pci_bridge.h"
+ #include "qemu/cutils.h"
++#include "qemu/accel.h"
+ 
+ static GArray *build_alloc_array(void)
+ {
+@@ -2070,7 +2071,7 @@ void build_pptt(GArray *table_data, BIOSLinker *linker, MachineState *ms,
+     acpi_table_end(linker, &table);
+ }
+ 
+-/* build rev1/rev3/rev5.1 FADT */
++/* build rev1/rev3/rev5.1/rev6.0 FADT */
+ void build_fadt(GArray *tbl, BIOSLinker *linker, const AcpiFadtData *f,
+                 const char *oem_id, const char *oem_table_id)
+ {
+@@ -2193,8 +2194,15 @@ void build_fadt(GArray *tbl, BIOSLinker *linker, const AcpiFadtData *f,
+     /* SLEEP_STATUS_REG */
+     build_append_gas_from_struct(tbl, &f->sleep_sts);
+ 
+-    /* TODO: extra fields need to be added to support revisions above rev5 */
+-    assert(f->rev == 5);
++    if (f->rev <= 5) {
++        goto done;
++    }
++
++    /* Hypervisor Vendor Identity */
++    build_append_padded_str(tbl, current_accel_name(), 8, '\0');
++
++    /* TODO: extra fields need to be added to support revisions above rev6 */
++    assert(f->rev == 6);
+ 
+ done:
+     acpi_table_end(linker, &table);
+diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+index 9b3aee01bf..72bb6f61a5 100644
+--- a/hw/arm/virt-acpi-build.c
++++ b/hw/arm/virt-acpi-build.c
+@@ -809,13 +809,13 @@ build_madt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+ }
+ 
+ /* FADT */
+-static void build_fadt_rev5(GArray *table_data, BIOSLinker *linker,
++static void build_fadt_rev6(GArray *table_data, BIOSLinker *linker,
+                             VirtMachineState *vms, unsigned dsdt_tbl_offset)
+ {
+-    /* ACPI v5.1 */
++    /* ACPI v6.0 */
+     AcpiFadtData fadt = {
+-        .rev = 5,
+-        .minor_ver = 1,
++        .rev = 6,
++        .minor_ver = 0,
+         .flags = 1 << ACPI_FADT_F_HW_REDUCED_ACPI,
+         .xdsdt_tbl_offset = &dsdt_tbl_offset,
+     };
+@@ -945,7 +945,7 @@ void virt_acpi_build(VirtMachineState *vms, AcpiBuildTables *tables)
+ 
+     /* FADT MADT PPTT GTDT MCFG SPCR DBG2 pointed to by RSDT */
+     acpi_add_table(table_offsets, tables_blob);
+-    build_fadt_rev5(tables_blob, tables->linker, vms, dsdt);
++    build_fadt_rev6(tables_blob, tables->linker, vms, dsdt);
+ 
+     acpi_add_table(table_offsets, tables_blob);
+     build_madt(tables_blob, tables->linker, vms);
+-- 
+2.37.3
+

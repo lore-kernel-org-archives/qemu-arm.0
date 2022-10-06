@@ -1,82 +1,82 @@
-Received: by 2002:a8a:1930:0:0:0:0:0 with SMTP id be48csp610818ocb;
-        Thu, 6 Oct 2022 09:38:10 -0700 (PDT)
-X-Google-Smtp-Source: AMsMyM6OfjtaiJkZXIx2G76ChV96kCL0xAtTBm6LI8apx7ATM9dT3ljRuvg3zNuprGJ7srAGo/yt
-X-Received: by 2002:ac8:58d0:0:b0:35c:eb96:5f38 with SMTP id u16-20020ac858d0000000b0035ceb965f38mr892473qta.392.1665074290569;
-        Thu, 06 Oct 2022 09:38:10 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1665074290; cv=none;
+Received: by 2002:a8a:1930:0:0:0:0:0 with SMTP id be48csp634080ocb;
+        Thu, 6 Oct 2022 10:12:33 -0700 (PDT)
+X-Google-Smtp-Source: AMsMyM4WXZO9jmb6gNQ3gKDGZP35N9YvUO14sf0m5h9fhVVo+v6cHCnG6T5uRDOyFGTR3DDLizFP
+X-Received: by 2002:ac8:4e51:0:b0:395:4f2c:63c9 with SMTP id e17-20020ac84e51000000b003954f2c63c9mr416599qtw.617.1665076353588;
+        Thu, 06 Oct 2022 10:12:33 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1665076353; cv=none;
         d=google.com; s=arc-20160816;
-        b=EWD39w6LneEuuMezeyw+ZwP/0LLFiduJ1Fx1HY2TWBzi5DAxWAOb0sb3Af6D75sPOC
-         Xtu9N7ox4eJCyZhQT62a5yeMYdZNEX/NuItxznnA4sv6WxiAWPVyXl7VUoNxLAnIa38v
-         tcdGEe5tBk11gq8uQErnS6TeqQWKy5+rGQJa6x7oTewnbXPYmZGu08X2fQ8ucs8Q6BQy
-         3f+77HMmGhF8h2pvqQ+xs6tfbe7vbBI2rnrFmldzyEIJbQx1fpok3uy4fVPHrvNuK8Hb
-         Ea5B7wG2OSNOgWcdtif+RMhungH73LyUJGd2mGDH/+zOEmzI4688pOQgyQG8gyMjAlX8
-         xEIQ==
+        b=vT9/GQYNO5jrIPtZuborEyX9Dw2RCwrwtV1VezqAf0vxzZXXQPlGWPWOMKftIQ/ocU
+         QJ6oP31CvlwQr8mwRSrVy2lXiKuAFZWWBEL5qlIUYS6RIruH1iTT4okmHNyu8oFAGfDl
+         PW1pCToacRQvhfj8DF0qpiZqXe9YJg4y7O2MLw2xJ0926ZKV/A0TrG0PHfPpPT8qNyJu
+         pOpxFdEJw6hIkkp3cRt9aFT6sSUcGfMDWHrcxA1pBNvFLnRswhOp401DFEZP3/GBPJIl
+         BtnCdDSFAACt7dd2V44dgpYCuU0RmX+VSArIbbuMASFn6IwJ5F2Dnd0ewPXfclrCLFJs
+         tXUQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=hOe6/bXHtInA3YwKjW6+QwwmoXeYh/XCY11FblVu8TQ=;
-        b=06G7xTTuZDJyeyh1DdFDLtbN8pCK+TU3N9SFnvxTeBLDXNCUlBFuMe0YIjFWOYVmDk
-         Zb7ExedMckX3Zhdleg801sX+l7HJ1HR4hg4q2XiO0wEU+DHETdgOpuqMVAFeggy5b8zE
-         NHL8Ls1aCF4xVzngFMDLAKb9mQn8tsqLYpX1LVRcECRF739JE7w7dN4pOSs+HYqEQJCd
-         FsDrSmKCDfDV8FvKHEO1tdcMC46SV/1fCD/wS/tcqad6XhES3kX5ys96kLym4geP1d3Y
-         1ZanDjDxYDtpEr4R9efSLKnrKL4n4sUXttVJCeLjhUQOIPnTfNT7oI7sU4hICq3SzaBG
-         Ty1g==
+        bh=I4h7vyx8d98MGbRX6SH6EZkNtqsv47ZRB8QWMoS6Bts=;
+        b=dBhDGLxgFRP0yQ5dqRXwG3VezcMWU2tlLfSjia7Aukz2H6tU/WpUzs5stb9hT2yvfP
+         qC1UQUwiA8MRNkZj7+Z9M1UQUrgRAds74EFhygvWeXFK359KvYsdbcmOi8jmx9AD+2ny
+         zdFCrKG2rBldwnAZuHNBWWw9tFt0GllTvBuiJjbue+D2ASZ+Hs8kLVLqkUp03TGiMCTu
+         rUsk7T2z4pX9X5jhuW0zGimIiBXkvp7xi1nSuFSCk7BZxzz3XfBALafuTKcJNalA21HW
+         MlxuiCGDMD8S2wWGPPqkXIYMu5/C3tde0HKLu+QgvidxsmgVMLoyJgLhcLKi9XkvcahL
+         BGZg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=eHJAd3fb;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=aVztQq6g;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id g1-20020ac87f41000000b0031ef02f016asi1339362qtk.719.2022.10.06.09.38.10
+        by mx.google.com with ESMTPS id t21-20020ac87615000000b0035cb7edf9e4si77204qtq.302.2022.10.06.10.12.33
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 06 Oct 2022 09:38:10 -0700 (PDT)
+        Thu, 06 Oct 2022 10:12:33 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=eHJAd3fb;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=aVztQq6g;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:43952 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:38738 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ogTss-0005XL-Pz
-	for alex.bennee@linaro.org; Thu, 06 Oct 2022 12:38:08 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:57734)
+	id 1ogUQD-0008Or-5S
+	for alex.bennee@linaro.org; Thu, 06 Oct 2022 13:12:33 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37346)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1ogSts-0003Zi-BH
- for qemu-devel@nongnu.org; Thu, 06 Oct 2022 11:35:06 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:47119)
+ id 1ogSuK-0003nJ-Up
+ for qemu-devel@nongnu.org; Thu, 06 Oct 2022 11:35:33 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:29832)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1ogSto-0000BO-6P
- for qemu-devel@nongnu.org; Thu, 06 Oct 2022 11:35:04 -0400
+ id 1ogSuJ-0000VA-0N
+ for qemu-devel@nongnu.org; Thu, 06 Oct 2022 11:35:32 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1665070499;
+ s=mimecast20190719; t=1665070529;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=hOe6/bXHtInA3YwKjW6+QwwmoXeYh/XCY11FblVu8TQ=;
- b=eHJAd3fbGAeeuKnBWpEq4gNW8YKsDrOHuz7cT0kST/p5MYy881nGTWWSDIMCec4KgNk/ae
- ERfETCCS/oYWnaJRrMYoSa0NWY9EycO7n5JXPYScfsizGsgWqJMdKGQ8MjJI69gaDIhF4y
- HBbtjG/WsiTM/HFUvXUZnaVZ37ZUJMI=
+ bh=I4h7vyx8d98MGbRX6SH6EZkNtqsv47ZRB8QWMoS6Bts=;
+ b=aVztQq6gxGalwxGtt/qYZTBv8yl8HdC1tFfRvaOvZ557bUOJgvDZAP0e2l23ZxE6FXFNjA
+ 9MgAMynjnlul/dFxuJZxqf4vugiRBvrJgIOjiUnyDZqNOJ7Dg6Iag/4yponm4tHt2YIhxY
+ iERtqzC8ZP7sJm5wteUprR5LRYZDlhE=
 Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
  [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-606-5ZQCxANkNLennBI02oULMQ-1; Thu, 06 Oct 2022 11:34:53 -0400
-X-MC-Unique: 5ZQCxANkNLennBI02oULMQ-1
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.rdu2.redhat.com
- [10.11.54.4])
+ us-mta-263-hAGTyLvDOj-3i5KL5O_Swg-1; Thu, 06 Oct 2022 11:35:26 -0400
+X-MC-Unique: hAGTyLvDOj-3i5KL5O_Swg-1
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.6])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 95C1C185A7AA;
- Thu,  6 Oct 2022 15:34:52 +0000 (UTC)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 1529A101E14E;
+ Thu,  6 Oct 2022 15:35:25 +0000 (UTC)
 Received: from localhost (unknown [10.39.208.20])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 7FA22202323C;
- Thu,  6 Oct 2022 15:34:51 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id CE6462166B2E;
+ Thu,  6 Oct 2022 15:35:23 +0000 (UTC)
 From: marcandre.lureau@redhat.com
 To: qemu-devel@nongnu.org
 Cc: Richard Henderson <richard.henderson@linaro.org>,
@@ -91,16 +91,16 @@ Cc: Richard Henderson <richard.henderson@linaro.org>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
  David Gibson <david@gibson.dropbear.id.au>, qemu-arm@nongnu.org,
  Cornelia Huck <cohuck@redhat.com>, Thomas Huth <thuth@redhat.com>
-Subject: [PULL 04/10] dump: Rework get_start_block
-Date: Thu,  6 Oct 2022 19:34:23 +0400
-Message-Id: <20221006153430.2775580-5-marcandre.lureau@redhat.com>
+Subject: [PULL 10/10] dump: fix kdump to work over non-aligned blocks
+Date: Thu,  6 Oct 2022 19:34:29 +0400
+Message-Id: <20221006153430.2775580-11-marcandre.lureau@redhat.com>
 In-Reply-To: <20221006153430.2775580-1-marcandre.lureau@redhat.com>
 References: <20221006153430.2775580-1-marcandre.lureau@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.1 on 10.11.54.4
-Received-SPF: pass client-ip=170.10.133.124;
+X-Scanned-By: MIMEDefang 3.1 on 10.11.54.6
+Received-SPF: pass client-ip=170.10.129.124;
  envelope-from=marcandre.lureau@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
@@ -108,7 +108,8 @@ X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -123,91 +124,162 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Z6BEmN8Zkutq
+X-TUID: LN6V/VcsfC0a
 
-From: Janosch Frank <frankja@linux.ibm.com>
+From: Marc-André Lureau <marcandre.lureau@redhat.com>
 
-get_start_block() returns the start address of the first memory block
-or -1.
+Rewrite get_next_page() to work over non-aligned blocks. When it
+encounters non aligned addresses, it will try to fill a page provided by
+the caller.
 
-With the GuestPhysBlock iterator conversion we don't need to set the
-start address and can therefore remove that code and the "start"
-DumpState struct member. The only functionality left is the validation
-of the start block so it only makes sense to re-name the function to
-validate_start_block()
+This solves a kdump crash with "tpm-crb-cmd" RAM memory region,
+qemu-kvm: ../dump/dump.c:1162: _Bool get_next_page(GuestPhysBlock **,
+uint64_t *, uint8_t **, DumpState *): Assertion `(block->target_start &
+~target_page_mask) == 0' failed.
 
-Signed-off-by: Janosch Frank <frankja@linux.ibm.com>
-Reviewed-by: Marc-André Lureau <marcandre.lureau@redhat.com>
-Reviewed-by: Janis Schoetterl-Glausch <scgl@linux.ibm.com>
-Message-Id: <20220811121111.9878-5-frankja@linux.ibm.com>
+because:
+guest_phys_block_add_section: target_start=00000000fed40080 target_end=00000000fed41000: added (count: 4)
+
+Fixes:
+https://bugzilla.redhat.com/show_bug.cgi?id=2120480
+
+Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
+Acked-by: David Hildenbrand <david@redhat.com>
 ---
- include/sysemu/dump.h |  2 --
- dump/dump.c           | 20 ++++++--------------
- 2 files changed, 6 insertions(+), 16 deletions(-)
+ dump/dump.c | 79 +++++++++++++++++++++++++++++++++++++----------------
+ 1 file changed, 56 insertions(+), 23 deletions(-)
 
-diff --git a/include/sysemu/dump.h b/include/sysemu/dump.h
-index ffc2ea1072..7fce1d4af6 100644
---- a/include/sysemu/dump.h
-+++ b/include/sysemu/dump.h
-@@ -166,8 +166,6 @@ typedef struct DumpState {
-     hwaddr memory_offset;
-     int fd;
- 
--    GuestPhysBlock *next_block;
--    ram_addr_t start;
-     bool has_filter;
-     int64_t begin;
-     int64_t length;
 diff --git a/dump/dump.c b/dump/dump.c
-index 340de5a1e7..e204912a89 100644
+index b55a497c42..236559b03a 100644
 --- a/dump/dump.c
 +++ b/dump/dump.c
-@@ -1500,30 +1500,22 @@ static void create_kdump_vmcore(DumpState *s, Error **errp)
-     }
+@@ -1116,50 +1116,81 @@ static uint64_t dump_pfn_to_paddr(DumpState *s, uint64_t pfn)
  }
  
--static ram_addr_t get_start_block(DumpState *s)
-+static int validate_start_block(DumpState *s)
+ /*
+- * exam every page and return the page frame number and the address of the page.
+- * bufptr can be NULL. note: the blocks here is supposed to reflect guest-phys
+- * blocks, so block->target_start and block->target_end should be interal
+- * multiples of the target page size.
++ * Return the page frame number and the page content in *bufptr. bufptr can be
++ * NULL. If not NULL, *bufptr must contains a target page size of pre-allocated
++ * memory. This is not necessarily the memory returned.
+  */
+ static bool get_next_page(GuestPhysBlock **blockptr, uint64_t *pfnptr,
+                           uint8_t **bufptr, DumpState *s)
  {
-     GuestPhysBlock *block;
+     GuestPhysBlock *block = *blockptr;
+-    hwaddr addr, target_page_mask = ~((hwaddr)s->dump_info.page_size - 1);
+-    uint8_t *buf;
++    uint32_t page_size = s->dump_info.page_size;
++    uint8_t *buf = NULL, *hbuf;
++    hwaddr addr;
  
-     if (!s->has_filter) {
--        s->next_block = QTAILQ_FIRST(&s->guest_phys_blocks.head);
-         return 0;
+     /* block == NULL means the start of the iteration */
+     if (!block) {
+         block = QTAILQ_FIRST(&s->guest_phys_blocks.head);
+         *blockptr = block;
+         addr = block->target_start;
++        *pfnptr = dump_paddr_to_pfn(s, addr);
+     } else {
+-        addr = dump_pfn_to_paddr(s, *pfnptr + 1);
++        *pfnptr += 1;
++        addr = dump_pfn_to_paddr(s, *pfnptr);
      }
+     assert(block != NULL);
  
-     QTAILQ_FOREACH(block, &s->guest_phys_blocks.head, next) {
-+        /* This block is out of the range */
-         if (block->target_start >= s->begin + s->length ||
-             block->target_end <= s->begin) {
--            /* This block is out of the range */
-             continue;
+-    if ((addr >= block->target_start) &&
+-        (addr + s->dump_info.page_size <= block->target_end)) {
+-        buf = block->host_addr + (addr - block->target_start);
+-    } else {
+-        /* the next page is in the next block */
+-        block = QTAILQ_NEXT(block, next);
+-        *blockptr = block;
+-        if (!block) {
+-            return false;
++    while (1) {
++        if (addr >= block->target_start && addr < block->target_end) {
++            size_t n = MIN(block->target_end - addr, page_size - addr % page_size);
++            hbuf = block->host_addr + (addr - block->target_start);
++            if (!buf) {
++                if (n == page_size) {
++                    /* this is a whole target page, go for it */
++                    assert(addr % page_size == 0);
++                    buf = hbuf;
++                    break;
++                } else if (bufptr) {
++                    assert(*bufptr);
++                    buf = *bufptr;
++                    memset(buf, 0, page_size);
++                } else {
++                    return true;
++                }
++            }
++
++            memcpy(buf + addr % page_size, hbuf, n);
++            addr += n;
++            if (addr % page_size == 0) {
++                /* we filled up the page */
++                break;
++            }
++        } else {
++            /* the next page is in the next block */
++            *blockptr = block = QTAILQ_NEXT(block, next);
++            if (!block) {
++                break;
++            }
++
++            addr = block->target_start;
++            /* are we still in the same page? */
++            if (dump_paddr_to_pfn(s, addr) != *pfnptr) {
++                if (buf) {
++                    /* no, but we already filled something earlier, return it */
++                    break;
++                } else {
++                    /* else continue from there */
++                    *pfnptr = dump_paddr_to_pfn(s, addr);
++                }
++            }
          }
--
--        s->next_block = block;
--        if (s->begin > block->target_start) {
--            s->start = s->begin - block->target_start;
--        } else {
--            s->start = 0;
--        }
--        return s->start;
--    }
-+        return 0;
-+   }
+-        addr = block->target_start;
+-        buf = block->host_addr;
+     }
  
-     return -1;
+-    assert((block->target_start & ~target_page_mask) == 0);
+-    assert((block->target_end & ~target_page_mask) == 0);
+-    *pfnptr = dump_paddr_to_pfn(s, addr);
+     if (bufptr) {
+         *bufptr = buf;
+     }
+ 
+-    return true;
++    return buf != NULL;
  }
-@@ -1670,8 +1662,8 @@ static void dump_init(DumpState *s, int fd, bool has_format,
-         goto cleanup;
+ 
+ static void write_dump_bitmap(DumpState *s, Error **errp)
+@@ -1297,6 +1328,7 @@ static void write_dump_pages(DumpState *s, Error **errp)
+     uint8_t *buf;
+     GuestPhysBlock *block_iter = NULL;
+     uint64_t pfn_iter;
++    g_autofree uint8_t *page = NULL;
+ 
+     /* get offset of page_desc and page_data in dump file */
+     offset_desc = s->offset_page;
+@@ -1332,12 +1364,13 @@ static void write_dump_pages(DumpState *s, Error **errp)
      }
  
--    s->start = get_start_block(s);
--    if (s->start == -1) {
-+    /* Is the filter filtering everything? */
-+    if (validate_start_block(s) == -1) {
-         error_setg(errp, QERR_INVALID_PARAMETER, "begin");
-         goto cleanup;
-     }
+     offset_data += s->dump_info.page_size;
++    page = g_malloc(s->dump_info.page_size);
+ 
+     /*
+      * dump memory to vmcore page by page. zero page will all be resided in the
+      * first page of page section
+      */
+-    while (get_next_page(&block_iter, &pfn_iter, &buf, s)) {
++    for (buf = page; get_next_page(&block_iter, &pfn_iter, &buf, s); buf = page) {
+         /* check zero page */
+         if (buffer_is_zero(buf, s->dump_info.page_size)) {
+             ret = write_cache(&page_desc, &pd_zero, sizeof(PageDescriptor),
 -- 
 2.37.3
 

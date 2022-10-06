@@ -1,343 +1,252 @@
-Received: by 2002:a8a:1930:0:0:0:0:0 with SMTP id be48csp656963ocb;
-        Thu, 6 Oct 2022 10:49:41 -0700 (PDT)
-X-Google-Smtp-Source: AMsMyM7HbwI0xj96D1mEbNMWnZ5GZtjJw6h/win2CCHWa+IBv27i8wF8Fzirmi5lz71RVwLku/cM
-X-Received: by 2002:a05:620a:25cc:b0:6c9:ab32:7621 with SMTP id y12-20020a05620a25cc00b006c9ab327621mr968391qko.533.1665078580978;
-        Thu, 06 Oct 2022 10:49:40 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1665078580; cv=none;
+Received: by 2002:a8a:1930:0:0:0:0:0 with SMTP id be48csp680670ocb;
+        Thu, 6 Oct 2022 11:25:12 -0700 (PDT)
+X-Google-Smtp-Source: AMsMyM5A9lnSrU8s998yjuyrtcJhQ8TCpnclBshGVUjqynheoFW2A/soP8emJOtR0qWYL38Njy/q
+X-Received: by 2002:a05:622a:610:b0:394:e3b7:f462 with SMTP id z16-20020a05622a061000b00394e3b7f462mr1290485qta.378.1665080712555;
+        Thu, 06 Oct 2022 11:25:12 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1665080712; cv=none;
         d=google.com; s=arc-20160816;
-        b=rL8Hgwb0gQkBqtbKcgIx1JWNZlpA0+Y9T7igszeY+pGGxEkhnJbOCKkHif9EMB+bDg
-         COVmy2spIIt5CRmjIiG9keIlaQX+MBAiAAi7ljA6qjoVr9LPMo1es4YnRwOUs4FFJO5k
-         lcngFSnGoW5mUSVcsM7C5mQj3l3/rBGonG76nm/5za9H1aYl7jpdExm1DzadsfGTWUcb
-         wrTimFi3NGCqFj7NTn2XVroFq+UHpvbKJTSg4l7eg2mqaKseIUtL8Nnr79rwR0/RUjn5
-         vkyne+CK7Kayne1HWP2W5LM5OleDqQTgHvvL9yh+EgFaRWD8UsB/UMwhtAX9LbbRnh94
-         q1EA==
+        b=l7U7C1gxrCvPK+3KF8+RCILVPltHFlavSdgTv3O67SdT4bUV/MWYNg5jty3DsPTumf
+         sDC/2v9k8STrUiqFnsiG6lX/wowIveptStGYzSodMEfJvPGJ5FDLF6LbU/zpV2jJP3Bf
+         Y7TzAJnL1a1tMEE7YIWEoZaGKWbNCSkherpLnLfkBj+TBwdemOHKbqPAaPuBwQavBkH3
+         +hA2LlE1Ox6EICQwLdF9aUk4BiznPTYXxd0YllA/9vx3afyCGnqnuaaSJMywsMqqkH8u
+         87dGVfBT0+DUA0WDII+GVOkIl+Brbo/UHDQRmOPsz28ahbp9SefbovyYQdkbDMfCGl1y
+         T2Zg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=c85NEeMAhiMZOT22pp35vTykoioDeAbLJB4fqL2JFdg=;
-        b=QuqJhDdv8TdBZ0q2oUVEXhbCAO3Bz16c9+4e6LzQhftr9ca9Khi+RjKqcLHFqiMjMo
-         lVSKvGhZBxCLqt+FRRfz+5dilV8pfhP6mMcg2lepi3YgdvaiRM+wru7cxlHYNUwpQiJT
-         nOiPhlUByfUc/gYAMKAyS7/g6uR1ppcXpINKfDyGZihXntGJ8ZSqWJvygrwZ/RBnQiPG
-         Q4QMicCd3ofe9V+L4l/Jb+MHLahwdlM+YENI1XfH633R2aUIiZWHz357Job7dWnf0KyX
-         LnRhwzk4ilc/Q9FtFrkaPytgHVeboSDissLCRaEFK/LDDlSc7jRN9px+Rtm4U68uwIuG
-         G84A==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=a6ks7FKghLJ/QYC3Tjj12iBjlkjw4UZPqDT9HiqIpVQ=;
+        b=XntiimfX2XmcO+4Nx2VsuZR4Ej2kpb2+yXh4Bw0CoiJukJZGBf1fF6hBebqaQ5RXiX
+         CUVorkdNYHox4vrAfGdi7k0j5DvXsJ1AV+dogucL8eiJkbJXKZMn2/TdS2NvUzzNg7RQ
+         iqWJasDZ6NEa/IC+7gcYXqUSejKLYSpQS5BMbdWk5pahF3B1Rw+s/l+lfTD2inQJPpSq
+         0A/+MZ8BLLw8vodI4u400QiMSBPCUG1V/d4zrKmNzub9mzu2lxxpNnqc+rB4evGTD8rk
+         d7wBOAldqjUaXyKWYOv2e0ox12u8uwIGb1+UUMlL9dus956hnOj+X2deFX+YVF+r3nrY
+         waaw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@oracle.com header.s=corp-2022-7-12 header.b=043Hhjc7;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=oracle.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@google.com header.s=20210112 header.b="q9/mrE8T";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id n81-20020a374054000000b006cf43b6670dsi7098494qka.394.2022.10.06.10.49.40
+        by mx.google.com with ESMTPS id gs6-20020a056214226600b004aaf2d588b9si4202100qvb.99.2022.10.06.11.25.12
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 06 Oct 2022 10:49:40 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 06 Oct 2022 11:25:12 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@oracle.com header.s=corp-2022-7-12 header.b=043Hhjc7;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=oracle.com
-Received: from localhost ([::1]:59360 helo=lists1p.gnu.org)
+       dkim=pass header.i=@google.com header.s=20210112 header.b="q9/mrE8T";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
+Received: from localhost ([::1]:46072 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ogV08-0007uv-IL
-	for alex.bennee@linaro.org; Thu, 06 Oct 2022 13:49:40 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:43178)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1ogVYW-0002B5-5H
+	for alex.bennee@linaro.org; Thu, 06 Oct 2022 14:25:12 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33734)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <miguel.luis@oracle.com>)
- id 1ogTXN-0007UW-0d; Thu, 06 Oct 2022 12:15:53 -0400
-Received: from mx0b-00069f02.pphosted.com ([205.220.177.32]:62948)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <miguel.luis@oracle.com>)
- id 1ogTXL-0006oZ-0w; Thu, 06 Oct 2022 12:15:52 -0400
-Received: from pps.filterd (m0246631.ppops.net [127.0.0.1])
- by mx0b-00069f02.pphosted.com (8.17.1.5/8.17.1.5) with ESMTP id 296FhvjP000936;
- Thu, 6 Oct 2022 16:15:48 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
- h=from : to : cc :
- subject : date : message-id : in-reply-to : references : reply-to :
- mime-version : content-transfer-encoding; s=corp-2022-7-12;
- bh=c85NEeMAhiMZOT22pp35vTykoioDeAbLJB4fqL2JFdg=;
- b=043Hhjc77UgULZwJ6GOJBGHz02gdyHVbEbaV7jzLw6SjiDu+4zrQqO+cm6Tu9rmAeDol
- Vsr31UqpaRLO5u0vRsVvpHH0fnXdMaAbuBl2QV3ISlFTJQwXrmHzrglqaLLRCAIp4Iwg
- n1/HW9gC9mOrv8huvH5Iw1Fa9iEB8W4tX6FpgqGmkczELlbKweA8v2kbPeHEMTal4IvQ
- FhizcxKE6MEGNSFkZy0+1YCB3RwpqK7h9k01Mwv1Bb3jXuIMFxL0E352KO02q2P4SP9n
- yuwpWJwG78P3T31t0j9bn+6gT/sv+d+WbV1obr7YwfNGECgKZj/2kbtDvdn30+cbYr0x 8A== 
-Received: from phxpaimrmta03.imrmtpd1.prodappphxaev1.oraclevcn.com
- (phxpaimrmta03.appoci.oracle.com [138.1.37.129])
- by mx0b-00069f02.pphosted.com (PPS) with ESMTPS id 3jxcb2vsne-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Thu, 06 Oct 2022 16:15:48 +0000
-Received: from pps.filterd
- (phxpaimrmta03.imrmtpd1.prodappphxaev1.oraclevcn.com [127.0.0.1])
- by phxpaimrmta03.imrmtpd1.prodappphxaev1.oraclevcn.com (8.17.1.5/8.17.1.5)
- with ESMTP id 296FEXcf028313; Thu, 6 Oct 2022 16:15:47 GMT
-Received: from pps.reinject (localhost [127.0.0.1])
- by phxpaimrmta03.imrmtpd1.prodappphxaev1.oraclevcn.com (PPS) with ESMTPS id
- 3jxc06eqg5-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Thu, 06 Oct 2022 16:15:47 +0000
-Received: from phxpaimrmta03.imrmtpd1.prodappphxaev1.oraclevcn.com
- (phxpaimrmta03.imrmtpd1.prodappphxaev1.oraclevcn.com [127.0.0.1])
- by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 296GFLrn001092;
- Thu, 6 Oct 2022 16:15:47 GMT
-Received: from mlluis-mac.uk.oracle.com (dhcp-10-175-170-234.vpn.oracle.com
- [10.175.170.234])
- by phxpaimrmta03.imrmtpd1.prodappphxaev1.oraclevcn.com (PPS) with ESMTP id
- 3jxc06eq1e-5; Thu, 06 Oct 2022 16:15:46 +0000
-From: Miguel Luis <miguel.luis@oracle.com>
-To: qemu-devel@nongnu.org, qemu-arm@nongnu.org
-Cc: mst@redhat.com, imammedo@redhat.com, ani@anisinha.ca,
- shannon.zhaosl@gmail.com, peter.maydell@linaro.org, miguel.luis@oracle.com
-Subject: [RFC PATCH 4/4] Step 6 & 7 of the bios-tables-test.c documented
- procedure.
-Date: Thu,  6 Oct 2022 16:14:50 +0000
-Message-Id: <20221006161450.69912-5-miguel.luis@oracle.com>
-X-Mailer: git-send-email 2.37.3
-In-Reply-To: <20221006161450.69912-1-miguel.luis@oracle.com>
-References: <20221006161450.69912-1-miguel.luis@oracle.com>
+ (Exim 4.90_1) (envelope-from <venture@google.com>)
+ id 1ogV8q-0001rc-J2
+ for qemu-devel@nongnu.org; Thu, 06 Oct 2022 13:58:40 -0400
+Received: from mail-ua1-x92b.google.com ([2607:f8b0:4864:20::92b]:34805)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <venture@google.com>)
+ id 1ogV8o-0005yB-Pg
+ for qemu-devel@nongnu.org; Thu, 06 Oct 2022 13:58:40 -0400
+Received: by mail-ua1-x92b.google.com with SMTP id i16so905800uak.1
+ for <qemu-devel@nongnu.org>; Thu, 06 Oct 2022 10:58:38 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20210112;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=a6ks7FKghLJ/QYC3Tjj12iBjlkjw4UZPqDT9HiqIpVQ=;
+ b=q9/mrE8ThEhUsgYRvfRpwEmGqQ20ekC+HR7S6w8iI/sZlVd34BCcqnxPoPo8WNpEkD
+ 6vCTdSi81t8JdTlVZZKGvWKfspdzGbnjA0Sh4dmkHx1AxVfm/XTAywsHSKkzTbHFnPrD
+ shZ2JIOw5Xux4bgSkYeaA46sjy30ZOFO7Vnwyi7izKmOQcogiERwZ8PNIJptHr9tVacz
+ 7eDEhq9n04VZpv0smJL0iFiSUwtJK4nd7/Izm04RqSyiYRaOutA06Nr2LC4z/wmGIU/V
+ gn6foPMTVtjvyXZ/LhyMDisQkh8JvkiqOEEvftN/glWn+D5d1fwqeeQus2v0MVDurHsD
+ RQng==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=a6ks7FKghLJ/QYC3Tjj12iBjlkjw4UZPqDT9HiqIpVQ=;
+ b=rqKCCq5IhHdL23C/JUjrQEWeefifFq+6JbO8U3DH04vdNgXhpuux+zffiSuX+fHSlU
+ 1cZyFGf1VcbHj3hPBrdzmnwk1myPw6iEbbQkueBMPmQQlIMd0WLWprHqeVFdbP2GoeUS
+ VAUkD1Cw8oZPoA1xcJhwlITJ0pWuwfXdcLVVWbv8SOhzBm3bQRv09K5rMZQFCsffVUrI
+ OWwmBph+wvXydf6j378ayI9wqAdt5QWtjIs7cZIaqu6m05gb5opXH5MM+Gd08s3WdUDO
+ fVC8Slndv1BQb0YXnRG8OYTAZc2jLndW1NwqLEC0W7WDmxuaY95iMC5yogVrmse0tyuz
+ l+KQ==
+X-Gm-Message-State: ACrzQf0z1v4JtienOwFq7XLuTMISow12kX1jU1oEAB4ZbRlXdmkR3OhF
+ XfTL16ki53Y1NA5UFwqGbOf0giUHN5DNCz+upUCv/Q==
+X-Received: by 2002:ab0:7509:0:b0:3d6:9dcb:b3db with SMTP id
+ m9-20020ab07509000000b003d69dcbb3dbmr851767uap.9.1665079116839; Thu, 06 Oct
+ 2022 10:58:36 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.205,Aquarius:18.0.895,Hydra:6.0.528,FMLib:17.11.122.1
- definitions=2022-10-06_04,2022-10-06_02,2022-06-22_01
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 spamscore=0
- mlxscore=0 mlxlogscore=886
- bulkscore=0 malwarescore=0 adultscore=0 phishscore=0 suspectscore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2209130000
- definitions=main-2210060094
-X-Proofpoint-GUID: gQKf0mvAnwH_1paHq1p5MFU_Dgo5iYA7
-X-Proofpoint-ORIG-GUID: gQKf0mvAnwH_1paHq1p5MFU_Dgo5iYA7
-Received-SPF: pass client-ip=205.220.177.32;
- envelope-from=miguel.luis@oracle.com; helo=mx0b-00069f02.pphosted.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
-X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
+References: <20220906163138.2831353-1-venture@google.com>
+ <98b23697-00ec-2952-31c1-258419bd5440@redhat.com>
+ <CAO=notzNRHaJvqnBx34qN0ovvwiwXNPRt73VnWqxyYhvnZMXnA@mail.gmail.com>
+ <eccfd9bd-2900-f437-778c-74a8052fc045@redhat.com>
+In-Reply-To: <eccfd9bd-2900-f437-778c-74a8052fc045@redhat.com>
+From: Patrick Venture <venture@google.com>
+Date: Thu, 6 Oct 2022 10:58:26 -0700
+Message-ID: <CAO=notzEJer6rfBxqGrHdzw9S+bHCQ1jcW0WYBdP3G1nuHJ8nQ@mail.gmail.com>
+Subject: Re: [PATCH] tests/qtest: npcm7xx-emc-test: Skip checking MAC
+To: Thomas Huth <thuth@redhat.com>
+Cc: Laurent Vivier <lvivier@redhat.com>,
+ Havard Skinnemoen <hskinnemoen@google.com>, 
+ CS20 KFTing <kfting@nuvoton.com>, qemu-arm <qemu-arm@nongnu.org>, 
+ QEMU Developers <qemu-devel@nongnu.org>, Hao Wu <wuhaotsh@google.com>
+Content-Type: multipart/alternative; boundary="00000000000048a79205ea617118"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::92b;
+ envelope-from=venture@google.com; helo=mail-ua1-x92b.google.com
+X-Spam_score_int: -175
+X-Spam_score: -17.6
+X-Spam_bar: -----------------
+X-Spam_report: (-17.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ ENV_AND_HDR_SPF_MATCH=-0.5, HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001, USER_IN_DEF_DKIM_WL=-7.5,
+ USER_IN_DEF_SPF_WL=-7.5 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Thu, 06 Oct 2022 13:02:16 -0400
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: miguel.luis@oracle.com
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: EKXHmVM/fZTI
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: JfVHkcQWPqMk
 
-Differences between disassembled ASL files for MADT:
+--00000000000048a79205ea617118
+Content-Type: text/plain; charset="UTF-8"
 
-@@ -11,9 +11,9 @@
-  */
+On Tue, Sep 20, 2022 at 12:00 AM Thomas Huth <thuth@redhat.com> wrote:
 
- [000h 0000   4]                    Signature : "APIC"    [Multiple APIC Description Table (MADT)]
--[004h 0004   4]                 Table Length : 000000A8
--[008h 0008   1]                     Revision : 03
--[009h 0009   1]                     Checksum : 50
-+[004h 0004   4]                 Table Length : 000000AC
-+[008h 0008   1]                     Revision : 04
-+[009h 0009   1]                     Checksum : 47
- [00Ah 0010   6]                       Oem ID : "BOCHS "
- [010h 0016   8]                 Oem Table ID : "BXPC    "
- [018h 0024   4]                 Oem Revision : 00000001
-@@ -34,7 +34,7 @@
- [041h 0065   3]                     Reserved : 000000
+> On 20/09/2022 00.37, Patrick Venture wrote:
+> >
+> >
+> > On Mon, Sep 19, 2022 at 5:44 AM Thomas Huth <thuth@redhat.com
+> > <mailto:thuth@redhat.com>> wrote:
+> >
+> >     On 06/09/2022 18.31, Patrick Venture wrote:
+> >      > The register tests walks all the registers to verify they are
+> initially
+> >      > 0 when appropriate.  However, if the MAC address is set in the
+> register
+> >      >    space, this should not be checked against 0.
+> >      >
+> >      > Reviewed-by: Hao Wu <wuhaotsh@google.com <mailto:
+> wuhaotsh@google.com>>
+> >      > Change-Id: I02426e39bdab33ceedd42c49d233e8680d4ec058
+> >
+> >     What's that change-id good for?
+> >
+> >
+> > Oops, sorry about that.  I can send out a v2 without it, or during
+> > application someone can nicely trim it? :)
+>
+> I can take the patch through my qtest branch - I'll drop the line there.
+>
+> >     Basically ack, but one question: Where should that non-zero MAC
+> address
+> >     come
+> >     from / when did you hit a problem here? If QEMU is started without
+> any mac
+> >     settings at all (like it is done here), the register never contains a
+> >     non-zero value, does it?
+> >
+> >
+> > So, there's a bug in the emc device presently where that value isn't set
+> > when it should be.  I have that bug fixed, but for whatever reason,
+> probably
+> > not enough caffeine, I didn't bundle the two patches together.
+>
+> OK, makes sense now, thanks for the explanation!
+>
 
- [044h 0068   1]                Subtable Type : 0B [Generic Interrupt Controller]
--[045h 0069   1]                       Length : 4C
-+[045h 0069   1]                       Length : 50
- [046h 0070   2]                     Reserved : 0000
- [048h 0072   4]         CPU Interface Number : 00000000
- [04Ch 0076   4]                Processor UID : 00000000
-@@ -51,28 +51,29 @@
- [07Ch 0124   4]        Virtual GIC Interrupt : 00000000
- [080h 0128   8]   Redistributor Base Address : 0000000000000000
- [088h 0136   8]                    ARM MPIDR : 0000000000000000
--/**** ACPI subtable terminates early - may be older version (dump table) */
-+[090h 0144   1]             Efficiency Class : 00
-+[091h 0145   3]                     Reserved : 000000
+The follow-on patch was just applied to arm.next, so I wanted to check if
+this was applied to your .next or if you wanted a v2.
 
--[090h 0144   1]                Subtable Type : 0D [Generic MSI Frame]
--[091h 0145   1]                       Length : 18
--[092h 0146   2]                     Reserved : 0000
--[094h 0148   4]                 MSI Frame ID : 00000000
--[098h 0152   8]                 Base Address : 0000000008020000
--[0A0h 0160   4]        Flags (decoded below) : 00000001
-+[094h 0148   1]                Subtable Type : 0D [Generic MSI Frame]
-+[095h 0149   1]                       Length : 18
-+[096h 0150   2]                     Reserved : 0000
-+[098h 0152   4]                 MSI Frame ID : 00000000
-+[09Ch 0156   8]                 Base Address : 0000000008020000
-+[0A4h 0164   4]        Flags (decoded below) : 00000001
-                                   Select SPI : 1
--[0A4h 0164   2]                    SPI Count : 0040
--[0A6h 0166   2]                     SPI Base : 0050
-+[0A8h 0168   2]                    SPI Count : 0040
-+[0AAh 0170   2]                     SPI Base : 0050
 
--Raw Table Data: Length 168 (0xA8)
-+Raw Table Data: Length 172 (0xAC)
+>
+>   Thomas
+>
+>
+>
 
--    0000: 41 50 49 43 A8 00 00 00 03 50 42 4F 43 48 53 20  // APIC.....PBOCHS
-+    0000: 41 50 49 43 AC 00 00 00 04 47 42 4F 43 48 53 20  // APIC.....GBOCHS
-     0010: 42 58 50 43 20 20 20 20 01 00 00 00 42 58 50 43  // BXPC    ....BXPC
-     0020: 01 00 00 00 00 00 00 00 00 00 00 00 0C 18 00 00  // ................
-     0030: 00 00 00 00 00 00 00 08 00 00 00 00 00 00 00 00  // ................
--    0040: 02 00 00 00 0B 4C 00 00 00 00 00 00 00 00 00 00  // .....L..........
-+    0040: 02 00 00 00 0B 50 00 00 00 00 00 00 00 00 00 00  // .....P..........
-     0050: 01 00 00 00 00 00 00 00 17 00 00 00 00 00 00 00  // ................
-     0060: 00 00 00 00 00 00 01 08 00 00 00 00 00 00 04 08  // ................
-     0070: 00 00 00 00 00 00 03 08 00 00 00 00 00 00 00 00  // ................
-     0080: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  // ................
--    0090: 0D 18 00 00 00 00 00 00 00 00 02 08 00 00 00 00  // ................
--    00A0: 01 00 00 00 40 00 50 00                          // ....@.P.
-+    0090: 00 00 00 00 0D 18 00 00 00 00 00 00 00 00 02 08  // ................
-+    00A0: 00 00 00 00 01 00 00 00 40 00 50 00              // ........@.P.
+--00000000000048a79205ea617118
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-Differences between disassembled ASL files for FADT:
+<div dir=3D"ltr"><div dir=3D"ltr"><br></div><br><div class=3D"gmail_quote">=
+<div dir=3D"ltr" class=3D"gmail_attr">On Tue, Sep 20, 2022 at 12:00 AM Thom=
+as Huth &lt;<a href=3D"mailto:thuth@redhat.com">thuth@redhat.com</a>&gt; wr=
+ote:<br></div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px=
+ 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex">On 20/09/20=
+22 00.37, Patrick Venture wrote:<br>
+&gt; <br>
+&gt; <br>
+&gt; On Mon, Sep 19, 2022 at 5:44 AM Thomas Huth &lt;<a href=3D"mailto:thut=
+h@redhat.com" target=3D"_blank">thuth@redhat.com</a> <br>
+&gt; &lt;mailto:<a href=3D"mailto:thuth@redhat.com" target=3D"_blank">thuth=
+@redhat.com</a>&gt;&gt; wrote:<br>
+&gt; <br>
+&gt;=C2=A0 =C2=A0 =C2=A0On 06/09/2022 18.31, Patrick Venture wrote:<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt; The register tests walks all the registers to=
+ verify they are initially<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt; 0 when appropriate.=C2=A0 However, if the MAC=
+ address is set in the register<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0 space, this should not be checke=
+d against 0.<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt;<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt; Reviewed-by: Hao Wu &lt;<a href=3D"mailto:wuh=
+aotsh@google.com" target=3D"_blank">wuhaotsh@google.com</a> &lt;mailto:<a h=
+ref=3D"mailto:wuhaotsh@google.com" target=3D"_blank">wuhaotsh@google.com</a=
+>&gt;&gt;<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt; Change-Id: I02426e39bdab33ceedd42c49d233e8680=
+d4ec058<br>
+&gt; <br>
+&gt;=C2=A0 =C2=A0 =C2=A0What&#39;s that change-id good for?<br>
+&gt; <br>
+&gt; <br>
+&gt; Oops, sorry about that.=C2=A0 I can send out a v2 without it, or durin=
+g <br>
+&gt; application someone can nicely trim it? :)<br>
+<br>
+I can take the patch through my qtest branch - I&#39;ll drop the line there=
+.<br>
+<br>
+&gt;=C2=A0 =C2=A0 =C2=A0Basically ack, but one question: Where should that =
+non-zero MAC address<br>
+&gt;=C2=A0 =C2=A0 =C2=A0come<br>
+&gt;=C2=A0 =C2=A0 =C2=A0from / when did you hit a problem here? If QEMU is =
+started without any mac<br>
+&gt;=C2=A0 =C2=A0 =C2=A0settings at all (like it is done here), the registe=
+r never contains a<br>
+&gt;=C2=A0 =C2=A0 =C2=A0non-zero value, does it?<br>
+&gt; <br>
+&gt; <br>
+&gt; So, there&#39;s a bug in the emc device presently where that value isn=
+&#39;t set <br>
+&gt; when it should be.=C2=A0 I have that bug fixed, but for whatever reaso=
+n, probably <br>
+&gt; not enough caffeine, I didn&#39;t bundle the two patches together.<br>
+<br>
+OK, makes sense now, thanks for the explanation!<br></blockquote><div><br><=
+/div><div>The follow-on patch was just applied to arm.next, so I wanted to =
+check if this was applied to your .next or if you wanted a v2.</div><div>=
+=C2=A0</div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0=
+.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex">
+<br>
+=C2=A0 Thomas<br>
+<br>
+<br>
+</blockquote></div></div>
 
-@@ -11,9 +11,9 @@
-  */
-
- [000h 0000   4]                    Signature : "FACP"    [Fixed ACPI Description Table (FADT)]
--[004h 0004   4]                 Table Length : 0000010C
--[008h 0008   1]                     Revision : 05
--[009h 0009   1]                     Checksum : 55
-+[004h 0004   4]                 Table Length : 00000114
-+[008h 0008   1]                     Revision : 06
-+[009h 0009   1]                     Checksum : 0F
- [00Ah 0010   6]                       Oem ID : "BOCHS "
- [010h 0016   8]                 Oem Table ID : "BXPC    "
- [018h 0024   4]                 Oem Revision : 00000001
-@@ -99,7 +99,7 @@
-                               PSCI Compliant : 1
-                        Must use HVC for PSCI : 1
-
--[083h 0131   1]          FADT Minor Revision : 01
-+[083h 0131   1]          FADT Minor Revision : 00
- [084h 0132   8]                 FACS Address : 0000000000000000
- [08Ch 0140   8]                 DSDT Address : 0000000000000000
- [094h 0148  12]             PM1A Event Block : [Generic Address Structure]
-@@ -173,11 +173,11 @@
- [103h 0259   1]         Encoded Access Width : 00 [Undefined/Legacy]
- [104h 0260   8]                      Address : 0000000000000000
-
--/**** ACPI table terminates in the middle of a data structure! (dump table) */
-+[10Ch 0268   8]                Hypervisor ID : 0000000000676374
-
--Raw Table Data: Length 268 (0x10C)
-+Raw Table Data: Length 276 (0x114)
-
--    0000: 46 41 43 50 0C 01 00 00 05 55 42 4F 43 48 53 20  // FACP.....UBOCHS
-+    0000: 46 41 43 50 14 01 00 00 06 0F 42 4F 43 48 53 20  // FACP......BOCHS
-     0010: 42 58 50 43 20 20 20 20 01 00 00 00 42 58 50 43  // BXPC    ....BXPC
-     0020: 01 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  // ................
-     0030: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  // ................
-@@ -185,7 +185,7 @@ Raw Table Data: Length 268 (0x10C)
-     0050: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  // ................
-     0060: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  // ................
-     0070: 00 00 10 00 00 00 00 00 00 00 00 00 00 00 00 00  // ................
--    0080: 00 03 00 01 00 00 00 00 00 00 00 00 00 00 00 00  // ................
-+    0080: 00 03 00 00 00 00 00 00 00 00 00 00 00 00 00 00  // ................
-     0090: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  // ................
-     00A0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  // ................
-     00B0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  // ................
-@@ -193,4 +193,5 @@ Raw Table Data: Length 268 (0x10C)
-     00D0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  // ................
-     00E0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  // ................
-     00F0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  // ................
--    0100: 00 00 00 00 00 00 00 00 00 00 00 00              // ............
-+    0100: 00 00 00 00 00 00 00 00 00 00 00 00 74 63 67 00  // ............tcg.
-+    0110: 00 00 00 00                                      // ....
-
-Signed-off-by: Miguel Luis <miguel.luis@oracle.com>
----
- tests/data/acpi/virt/APIC                   | Bin 168 -> 172 bytes
- tests/data/acpi/virt/APIC.memhp             | Bin 168 -> 172 bytes
- tests/data/acpi/virt/APIC.numamem           | Bin 168 -> 172 bytes
- tests/data/acpi/virt/FACP                   | Bin 268 -> 276 bytes
- tests/data/acpi/virt/FACP.memhp             | Bin 268 -> 276 bytes
- tests/data/acpi/virt/FACP.numamem           | Bin 268 -> 276 bytes
- tests/qtest/bios-tables-test-allowed-diff.h |   6 ------
- 7 files changed, 6 deletions(-)
-
-diff --git a/tests/data/acpi/virt/APIC b/tests/data/acpi/virt/APIC
-index 023f15f12e74fb9a3a6d3d9dc994541016947d6a..179d274770a23209b949c90a929525e22368568b 100644
-GIT binary patch
-delta 26
-hcmZ3%xQ3C-F~HM#4FdxMi~B?_YsP?yZeA06WB^*d2KE2|
-
-delta 26
-icmZ3(xPp<(F~HM#1p@;EbHGF{Yet`mZeA0oNB{s@&<6Sd
-
-diff --git a/tests/data/acpi/virt/APIC.memhp b/tests/data/acpi/virt/APIC.memhp
-index 023f15f12e74fb9a3a6d3d9dc994541016947d6a..179d274770a23209b949c90a929525e22368568b 100644
-GIT binary patch
-delta 26
-hcmZ3%xQ3C-F~HM#4FdxMi~B?_YsP?yZeA06WB^*d2KE2|
-
-delta 26
-icmZ3(xPp<(F~HM#1p@;EbHGF{Yet`mZeA0oNB{s@&<6Sd
-
-diff --git a/tests/data/acpi/virt/APIC.numamem b/tests/data/acpi/virt/APIC.numamem
-index 023f15f12e74fb9a3a6d3d9dc994541016947d6a..179d274770a23209b949c90a929525e22368568b 100644
-GIT binary patch
-delta 26
-hcmZ3%xQ3C-F~HM#4FdxMi~B?_YsP?yZeA06WB^*d2KE2|
-
-delta 26
-icmZ3(xPp<(F~HM#1p@;EbHGF{Yet`mZeA0oNB{s@&<6Sd
-
-diff --git a/tests/data/acpi/virt/FACP b/tests/data/acpi/virt/FACP
-index 1f764220f8533c427168e80ccf298604826a00b4..bd514078decb368815482e5d1db2faf5371fc48e 100644
-GIT binary patch
-delta 33
-mcmeBSn!?28=I9(C!pOkD#y^p(a^j?_i3a=}CCTXwAOHY?_6Iru
-
-delta 26
-hcmbQj)WgK(=I9*2!^ptE8ak1yl96%Z#OjF#yZ}u&1~C8t
-
-diff --git a/tests/data/acpi/virt/FACP.memhp b/tests/data/acpi/virt/FACP.memhp
-index 1f764220f8533c427168e80ccf298604826a00b4..bd514078decb368815482e5d1db2faf5371fc48e 100644
-GIT binary patch
-delta 33
-mcmeBSn!?28=I9(C!pOkD#y^p(a^j?_i3a=}CCTXwAOHY?_6Iru
-
-delta 26
-hcmbQj)WgK(=I9*2!^ptE8ak1yl96%Z#OjF#yZ}u&1~C8t
-
-diff --git a/tests/data/acpi/virt/FACP.numamem b/tests/data/acpi/virt/FACP.numamem
-index 1f764220f8533c427168e80ccf298604826a00b4..bd514078decb368815482e5d1db2faf5371fc48e 100644
-GIT binary patch
-delta 33
-mcmeBSn!?28=I9(C!pOkD#y^p(a^j?_i3a=}CCTXwAOHY?_6Iru
-
-delta 26
-hcmbQj)WgK(=I9*2!^ptE8ak1yl96%Z#OjF#yZ}u&1~C8t
-
-diff --git a/tests/qtest/bios-tables-test-allowed-diff.h b/tests/qtest/bios-tables-test-allowed-diff.h
-index 8dc50f7a8a..dfb8523c8b 100644
---- a/tests/qtest/bios-tables-test-allowed-diff.h
-+++ b/tests/qtest/bios-tables-test-allowed-diff.h
-@@ -1,7 +1 @@
- /* List of comma-separated changed AML files to ignore */
--"tests/data/acpi/virt/FACP",
--"tests/data/acpi/virt/FACP.numamem",
--"tests/data/acpi/virt/FACP.memhp",
--"tests/data/acpi/virt/APIC",
--"tests/data/acpi/virt/APIC.memhp",
--"tests/data/acpi/virt/APIC.numamem",
--- 
-2.37.3
-
+--00000000000048a79205ea617118--

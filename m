@@ -1,206 +1,164 @@
-Received: by 2002:a8a:1930:0:0:0:0:0 with SMTP id be48csp538491ocb;
-        Thu, 6 Oct 2022 07:57:42 -0700 (PDT)
-X-Google-Smtp-Source: AMsMyM6UqHwbxQMxL6eJYqSeSYGDDiQCUbgCTN9c53nkr0N1avDnFUk0O7/ydlp3ldIMUw9cz4vS
-X-Received: by 2002:a05:622a:1788:b0:35c:bf57:caa7 with SMTP id s8-20020a05622a178800b0035cbf57caa7mr393231qtk.470.1665068262350;
-        Thu, 06 Oct 2022 07:57:42 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1665068262; cv=none;
+Received: by 2002:a8a:1930:0:0:0:0:0 with SMTP id be48csp554164ocb;
+        Thu, 6 Oct 2022 08:16:56 -0700 (PDT)
+X-Google-Smtp-Source: AMsMyM7YgI4DZLriK+Uf8LxkEzKTLV5am0KoKDNc/6MUqlpW1OOlBD9V9FrHzguefnt4p78nJyEr
+X-Received: by 2002:ad4:5f07:0:b0:4b1:87b7:36e3 with SMTP id fo7-20020ad45f07000000b004b187b736e3mr304277qvb.60.1665069416221;
+        Thu, 06 Oct 2022 08:16:56 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1665069416; cv=none;
         d=google.com; s=arc-20160816;
-        b=AynD8I7BNSJNexXiCgGHx/wYYJ191nYZL9FXzHN8hDMDFThR4LCmobUeZMoV+VoZ0l
-         tcTo4FGepAblhmJXzdb9vP/KuWC1PnZ5b8WQja2AXHdyWXCd2EHe30D5LopVsEN4pszj
-         VpsHOwUd9LevXvS4sv3jsbsvaS/hZoK6BV8Y26HniD1wWj7U7f822ic2g8atuIo27PZ5
-         qP/5jpcZfrgxlwHi8v9euxMO3wPUo4vh/eOARSsz2G+5TcemEowgtljxzux0KudQMXOT
-         wAkAfboISvroluhHy0b4BtindqL/AhmMeNaq+3uHm6og58bWhYbwFE8Aj5YKcejn4BsU
-         1iJQ==
+        b=Z7PTY0QpFcUGWQCGO9Lx2Mp+RIx8sCrHs32nkp6WF2QQGf/qp7LUWglmpxsA3fxdIz
+         EI5gKTzbrWaDUGofKOFljJ5qXFHoVcZnTymtG3MH2UgooUSidwbOxeepKukPnKM5KGN3
+         lUQDNfLd5jFEIt5zkWBUP47R45CZU3M9OUgyOCcVMOoZvNOyozRcGjbVXZAXPY49siXB
+         JD9/R50h7lMVGBAJa37RKzEqs07hT1v08VeyfEnpYUiuKfl0ddvZ7IENGfdNWK0x00hB
+         UO7m08/2S+9RTAy9btZmzPDWuflu0ZHWKqEOMp8W1yOTfPkzW/1aypjng1tv1yGofxrc
+         dmyQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=h+tUr/9l1CJj5Pt5bJRVxccYDsGjcFlBvCJJg7EqzJg=;
-        b=enk+cQvj9SB2Po0cEJBGMXzDS9F8uzIqW20fkemDSjDUcdhpiNLrSMrzkqTNrfy0jh
-         4kLyQp+ucNzaPkpXU3SySC6yhmrTbDFWa+iXJPVpwhXs1Ix+sRKEmN2LhmZxWS2LNYRq
-         f6gSSdgXOg3ClYw4ajNnOwQsjMOoulr7fJmivfJGeINb7Fk6ZzaIx1nG3YbHE1s6HnLZ
-         x2Wfxl+Mt6eYarGWJHrUhGUnFOWsEiuEXB5eLqroLfX3z0uASZEuNW0GB+X0odrOzekt
-         IeWLx/ALXIuHqHTXS2BcQZgzBBGRTeJ2d6G2htn3XdkTVo8S4G4OBH8A3haM7HTOvaRe
-         bQuQ==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:references:cc:to:content-language:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=JduTXW6PLGdKWzmUjZZhmO+OtGT4XeVNrt4EO4Tuu9A=;
+        b=D9WJUILdrmBllOPr/MOqDSh8C3ssTgZnpzUvx0LvNHqSwkiC6a4lLz+UbdchvzWOjW
+         +IUpr82hpyTLkRungIGck5/z5ZylE1NiP/A1n0DCHBEC/O+uRSexM5iP/sFoghbz/iX4
+         KYLPDt8uEa0prYOOiXJEz/9dc44lu9Gayelon9I713C3WNuVjT5Aa527urDuwPY1IizV
+         SPozhxuOv79MGGjf/Y15UQ6YNxbT4G1P0jw/HpVpix961rl5g3jNlS9ecU+A/hLo8fvy
+         xF4PFYfaKQqEyGCNVj0R11/BgswFPnb7N8o/IlSWuUqVSgPNMyoGXgFuxs1dP4slXPDd
+         H3yw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=QcK2fjEp;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=gQLbPe5S;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id u10-20020a05620a454a00b006e23da52244si2322991qkp.552.2022.10.06.07.57.42
+        by mx.google.com with ESMTPS id d7-20020a67c107000000b003a6f4339a3bsi293667vsj.375.2022.10.06.08.16.56
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 06 Oct 2022 07:57:42 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 06 Oct 2022 08:16:56 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=QcK2fjEp;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=gQLbPe5S;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:46708 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:38472 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ogSJg-0007SV-Sf
-	for alex.bennee@linaro.org; Thu, 06 Oct 2022 10:57:41 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:57962)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1ogScJ-0008U4-M1
+	for alex.bennee@linaro.org; Thu, 06 Oct 2022 11:16:55 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:54862)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1ogSJU-0007RY-09
- for qemu-arm@nongnu.org; Thu, 06 Oct 2022 10:57:28 -0400
-Received: from mail-pl1-x62b.google.com ([2607:f8b0:4864:20::62b]:36537)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1ogSVu-0001CZ-32
+ for qemu-devel@nongnu.org; Thu, 06 Oct 2022 11:10:23 -0400
+Received: from mail-pg1-x52d.google.com ([2607:f8b0:4864:20::52d]:45819)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1ogSJS-0002K5-67
- for qemu-arm@nongnu.org; Thu, 06 Oct 2022 10:57:27 -0400
-Received: by mail-pl1-x62b.google.com with SMTP id c24so1954016plo.3
- for <qemu-arm@nongnu.org>; Thu, 06 Oct 2022 07:57:25 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1ogSVs-0004Ey-E8
+ for qemu-devel@nongnu.org; Thu, 06 Oct 2022 11:10:17 -0400
+Received: by mail-pg1-x52d.google.com with SMTP id r18so2085464pgr.12
+ for <qemu-devel@nongnu.org>; Thu, 06 Oct 2022 08:10:15 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=h+tUr/9l1CJj5Pt5bJRVxccYDsGjcFlBvCJJg7EqzJg=;
- b=QcK2fjEp5hrd3mGPXgQ4zwna9hDFWxUXWQ2YFsU9XHCEi/c94gz6VUPfO1tgvNGNGj
- CFCvkdVY4xUxg4/h0gvcR3c9D8sFtrK+6u7VmpkKPvtjOP929/LjSsQAynHVIrc7LD5C
- t3QttCji/dzwa2ztdqBWS7wmOjMXaLh6rjNBDsGx1/fNTo89WKTj8hk1exwgV0jozb1Z
- eFLVGWwdYVNUjQhc9N3uJvkxbI3xqQLVvAFqyBYnH5WX3d49Z/SW3Q17pKJWuc0vRxau
- GUFTuwZNAd++lwD7eebTDN6otf0hkDo91FwpOmyGSi8KF/1fdLpdy+kCwUmGT/VyexCn
- /pXQ==
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date;
+ bh=JduTXW6PLGdKWzmUjZZhmO+OtGT4XeVNrt4EO4Tuu9A=;
+ b=gQLbPe5SssuViN30WDK281fiEm+eGyxdiaZysMGDPyf61TpDZH0KtG28nKfHZt331x
+ op37IQtJmZyZxs4ugqJrNmBQDal59CpmC9dgkmLs21MpsAbe007+IypQE6rguEJNecEB
+ U+Pz+JHVeVbRZSrXOU3ksYuRcVCW8yAMRYdKkJ8NOCSvbBz+IYU4uZ3IYI86H9ke12fB
+ KExsHjgpdr71KV4uUwRjhd7UZXo9+VU//OEnH/fUy4OS3nCiRZntU3j9QQ+2h2KFwMTd
+ 6cTkXHyWWg51lQI0h0smEtrBXETTaWKQW9Bq/NDQ1GaE4ycW68mM0qghot6syWnsnL9N
+ gOuw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=h+tUr/9l1CJj5Pt5bJRVxccYDsGjcFlBvCJJg7EqzJg=;
- b=ljSpw4QYR2TMVAnCHKez2KjCLnzvKaRAo5LM6vKFVuSQbReJTWgMuE/lC+vHEgJVpH
- NbbL1V1cbz/OD+HL3qtAzogSJxpoAA1qM0TfZnZ+M36ienu5WlWhmjJQbMZ/9GIShbo3
- kxThQxa0LsA9GmKuBs3jyHydGinN9b5n8K4rgpludqMMjoKTgyWUCU+iBrpOJqnbGjO1
- LTG/bVaIxfIz8UWNXOr07qWcTDR8RXlS/NVxO7ThRNSWApnavecEy2MruRoBFxfRyT9l
- 2nvcGI1i+pmz/qplpkcTGhHrccCGjJml6wOk6wiuqAO9tEQ/mUMz4+FskZ/BR5wpCbu+
- soxA==
-X-Gm-Message-State: ACrzQf1mGzQF+dbbJ36Hy1oCS7QKfg0W/rLlRruKs3AdnuZr1navWqQP
- AZXrBz3LFzbxr/0kpHfmatN7XbzhlVWcc1UTqtTfZUHXd4g=
-X-Received: by 2002:a17:903:4d7:b0:178:8564:f754 with SMTP id
- jm23-20020a17090304d700b001788564f754mr5092882plb.60.1665068244700; Thu, 06
- Oct 2022 07:57:24 -0700 (PDT)
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date;
+ bh=JduTXW6PLGdKWzmUjZZhmO+OtGT4XeVNrt4EO4Tuu9A=;
+ b=cTZk5irVDJZGvm2AOJ1sadZ2BDlB52mi6goO+pRXF8YiwK5J74VgA3TgQcxuNc4pxL
+ AZpSYoIxN0aNstMGUXRg31XHD6QqomSGjNV89YCxP8FUTvW7jcLl5vzdDzi9N4WB87b9
+ uqXy8tiy2gG9a6v9H5rjHcKbx8fH/zI6J0CdD83BJcuJxnfNhVPqF7cbp5s0qxAtYjk3
+ y6VHhRM6WrCOoXp/CrLcF0KhVpPjUh9zUYCroHUaYX+lSAWrRH8wpyLAuo/X+37drDjd
+ 59GCswhG0w7yeUAu4DJgxJYUUr8Q/dz5DN2PbPuDuZJYjgRYOz23n7gUm2n6XQQUwUsZ
+ botQ==
+X-Gm-Message-State: ACrzQf3Oecs5iLjHZu6MqHSWRjkvPRrXSfBo/lqZPSeHqK/unfgqwrAc
+ 4gUb0XrrmQFTEdajLFiWnBj6lw==
+X-Received: by 2002:a05:6a00:1312:b0:536:fefd:e64a with SMTP id
+ j18-20020a056a00131200b00536fefde64amr300148pfu.26.1665069015004; 
+ Thu, 06 Oct 2022 08:10:15 -0700 (PDT)
+Received: from ?IPV6:2602:47:d49d:ec01:bc82:8006:f19e:85e?
+ ([2602:47:d49d:ec01:bc82:8006:f19e:85e])
+ by smtp.gmail.com with ESMTPSA id
+ x25-20020aa79419000000b00561c179e17dsm5279180pfo.76.2022.10.06.08.10.13
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 06 Oct 2022 08:10:14 -0700 (PDT)
+Message-ID: <ed6e925a-ea37-5575-bc3c-aee2a887d5bc@linaro.org>
+Date: Thu, 6 Oct 2022 08:10:12 -0700
 MIME-Version: 1.0
-References: <20221001162318.153420-1-richard.henderson@linaro.org>
- <20221001162318.153420-24-richard.henderson@linaro.org>
-In-Reply-To: <20221001162318.153420-24-richard.henderson@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 6 Oct 2022 15:57:13 +0100
-Message-ID: <CAFEAcA8L7BBHZ0Gfi7fm4pbZvYBd=Shu9bV6M5rQqcU-EU-p6Q@mail.gmail.com>
-Subject: Re: [PATCH v3 23/42] target/arm: Use probe_access_full for BTI
-To: Richard Henderson <richard.henderson@linaro.org>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.11.0
+Subject: Re: [PATCH v3 01/42] target/arm: Split s2walk_secure from ipa_secure
+ in get_phys_addr
+Content-Language: en-US
+To: Peter Maydell <peter.maydell@linaro.org>
 Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::62b;
- envelope-from=peter.maydell@linaro.org; helo=mail-pl1-x62b.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+References: <20221001162318.153420-1-richard.henderson@linaro.org>
+ <20221001162318.153420-2-richard.henderson@linaro.org>
+ <CAFEAcA_LSd9mPFiDHyofdHVq2kshiL6FjxNG2aSXXc8jkGb3vg@mail.gmail.com>
+From: Richard Henderson <richard.henderson@linaro.org>
+In-Reply-To: <CAFEAcA_LSd9mPFiDHyofdHVq2kshiL6FjxNG2aSXXc8jkGb3vg@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::52d;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pg1-x52d.google.com
+X-Spam_score_int: -34
+X-Spam_score: -3.5
+X-Spam_bar: ---
+X-Spam_report: (-3.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-1.435,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: pyD56jmEOV96
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 0swDMyS1UOXZ
 
-On Sat, 1 Oct 2022 at 17:38, Richard Henderson
-<richard.henderson@linaro.org> wrote:
->
-> Add a field to TARGET_PAGE_ENTRY_EXTRA to hold the guarded bit.
-> In is_guarded_page, use probe_access_full instead of just guessing
-> that the tlb entry is still present.  Also handles the FIXME about
-> executing from device memory.
->
-> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
-> ---
->  target/arm/cpu-param.h     |  8 ++++----
->  target/arm/cpu.h           | 13 -------------
->  target/arm/internals.h     |  1 +
->  target/arm/ptw.c           |  7 ++++---
->  target/arm/translate-a64.c | 22 ++++++++--------------
->  5 files changed, 17 insertions(+), 34 deletions(-)
->
-> diff --git a/target/arm/cpu-param.h b/target/arm/cpu-param.h
-> index 118ca0e5c0..689a9645dc 100644
-> --- a/target/arm/cpu-param.h
-> +++ b/target/arm/cpu-param.h
-> @@ -32,12 +32,12 @@
->  # define TARGET_PAGE_BITS_MIN  10
->
->  /*
-> - * Cache the attrs and sharability fields from the page table entry.
-> + * Cache the attrs, sharability, and gp fields from the page table entry.
->   */
->  # define TARGET_PAGE_ENTRY_EXTRA  \
-> -     uint8_t pte_attrs;           \
-> -     uint8_t shareability;
-> -
-> +    uint8_t pte_attrs;            \
-> +    uint8_t shareability;         \
-> +    bool guarded;
+On 10/6/22 07:27, Peter Maydell wrote:
+> On Sat, 1 Oct 2022 at 17:24, Richard Henderson
+> <richard.henderson@linaro.org> wrote:
+>>
+>> The starting security state comes with the translation regime,
+>> not the current state of arm_is_secure_below_el3().
+>>
+>> Create a new local variable, s2walk_secure, which does not need
+>> to be written back to result->attrs.secure -- we compute that
+>> value later, after the S2 walk is complete.
+>>
+>> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+>> ---
+>> v3: Do not modify ipa_secure, per review.
+>> ---
+> 
+> Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+> 
+> I did find myself wondering if we should explicitly set
+>    result->attrs.secure = false;
+> in an else-branch of the last "if (is_secure)", though.
+> At the moment we rely on get_phys_addr_lpae() for the stage2
+> doing that for us, I think. Having the code here always set
+> result->attrs.secure before the 'return 0' avoids having to think
+> about that...
 
-I notice this now brings this very close to just having an ARMCacheAttrs
-struct in it (in fact it's going to be one byte bigger than the ARMCachettrs).
-But it's probably better to keep them separate since we care a lot more
-about keeping the TLB entry small I suppose.
+Yes, we're currently (and predating this patch set) relying on the attrs structure being 
+cleared to start.  But I can certainly add the assignment if you like.
 
-> diff --git a/target/arm/translate-a64.c b/target/arm/translate-a64.c
-> index 5b67375f4e..22802d1d2f 100644
-> --- a/target/arm/translate-a64.c
-> +++ b/target/arm/translate-a64.c
-> @@ -14601,22 +14601,16 @@ static bool is_guarded_page(CPUARMState *env, DisasContext *s)
->  #ifdef CONFIG_USER_ONLY
->      return page_get_flags(addr) & PAGE_BTI;
->  #else
-> +    CPUTLBEntryFull *full;
-> +    void *host;
->      int mmu_idx = arm_to_core_mmu_idx(s->mmu_idx);
-> -    unsigned int index = tlb_index(env, mmu_idx, addr);
-> -    CPUTLBEntry *entry = tlb_entry(env, mmu_idx, addr);
-> +    int flags;
->
-> -    /*
-> -     * We test this immediately after reading an insn, which means
-> -     * that any normal page must be in the TLB.  The only exception
-> -     * would be for executing from flash or device memory, which
-> -     * does not retain the TLB entry.
-> -     *
-> -     * FIXME: Assume false for those, for now.  We could use
-> -     * arm_cpu_get_phys_page_attrs_debug to re-read the page
-> -     * table entry even for that case.
-> -     */
 
-I think we should keep at least some of this comment: the part
-about the reason we can assert that probe_access_full() doesn't
-return TLB_INVALID being that we tested immediately after the
-insn read is still true, right?
-
-> -    return (tlb_hit(entry->addr_code, addr) &&
-> -            arm_tlb_bti_gp(&env_tlb(env)->d[mmu_idx].fulltlb[index].attrs));
-> +    flags = probe_access_full(env, addr, MMU_INST_FETCH, mmu_idx,
-> +                              false, &host, &full, 0);
-> +    assert(!(flags & TLB_INVALID_MASK));
-> +
-> +    return full->guarded;
->  #endif
->  }
-
-Otherwise
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
-
-thanks
--- PMM
+r~

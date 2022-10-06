@@ -1,131 +1,173 @@
-Received: by 2002:a8a:1930:0:0:0:0:0 with SMTP id be48csp641992ocb;
-        Thu, 6 Oct 2022 10:24:54 -0700 (PDT)
-X-Google-Smtp-Source: AMsMyM4SePtGXwK7sjB0zirJ43k84rVTjqI1ZdPTV8E4F71RsK+3JC7dswumnyIdbsDnolP4Wt81
-X-Received: by 2002:a05:6214:2306:b0:473:f77a:85a7 with SMTP id gc6-20020a056214230600b00473f77a85a7mr1096233qvb.106.1665077094109;
-        Thu, 06 Oct 2022 10:24:54 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1665077094; cv=none;
+Received: by 2002:a8a:1930:0:0:0:0:0 with SMTP id be48csp644492ocb;
+        Thu, 6 Oct 2022 10:29:20 -0700 (PDT)
+X-Google-Smtp-Source: AMsMyM5qiwrazyqUg4wBN5SUK+j1yIg6/fjU74Kh0zzQo1yFoK2Dna7uT3gGqhpWiPOFn4hq10lW
+X-Received: by 2002:a05:620a:856:b0:6e2:d96c:56a1 with SMTP id u22-20020a05620a085600b006e2d96c56a1mr895487qku.769.1665077360642;
+        Thu, 06 Oct 2022 10:29:20 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1665077360; cv=none;
         d=google.com; s=arc-20160816;
-        b=1KDGAOqkeG77l1OfVklwMZ0R8o3RQ5xOnQrsllidAk67KBgVVJnStHAFn+HCVrTPQ2
-         ZqBd0zLuZfCKhnKpLgcUtmIh4b/2VK6BRHZkWw7408PtUJJJB5i5yDZqRKGHxs3t88ld
-         r8437fYuleuFeViKLc+nwPODwDvFwhS/AAmFu+4rAmEomUGx2YKSwJm/oGS9ARbR+Jsr
-         BEuxwb2BqQCYCYtCBKyYrKrXwA67cU68RBSNovDLWuTOafQbULue7+c0+EGdYq+EVqiT
-         kPNAjR/x//4M31xLO3sq4tUiXG6g9D+21Tagapdtsl7gbaF2G6fPok7wp5dDJBgtRxen
-         ymkQ==
+        b=oKcxcCFKyS03IuXEX2O4rlpKexotcijJOKLP930vfmM0ERCsAL/Gm1LmAfDxW3czgD
+         6CsBIYBPp/1dyWsNiAAc0hZwlmjujL0+Hj2qDZvYwTgxP18MdhtvgJdfCeeFWS2smlt6
+         UbibsteDalVHEev6wHOixfEJAb/YG17/C0ih1NIVMmU5Hzo3LhpCin+GzhFPDsJ/SpLc
+         0ipa4TSjRJlyf4yejG8fQJAY8l/kHTWYuApKFYRYOnpCmvQL3dneC6AJ1Wtt64zsnL6W
+         IgPCtRj7i3J1yZHWeWHiNWE+QhulkWsubmXGDxYpX7DxY1tSaL/O1e/iWDqAiXt8sjEO
+         mXhA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=zOMpRL+h7F9zGuHIDhDBvr/gm1SKgFYGmEHdgRf9kC0=;
-        b=f3o/GYtY0bZroPCWrsRoElfxvu5Bsa0LOT0Gcm8kn7dEGEQvPjsLk1ZEk1YvpCuz8R
-         rWdmso5/JmsPTUpfligEGOpvKW6xASPAZPqjunDrEv7uy1V+N4jF74TUipBG0BMkm6LF
-         QKmXxZsSyX7W1ZBzyRi/KJivF6Xr4aO81CeIRM41fEkDBywtk2nr42eE+e4iT1j52la8
-         lOHJenFHVm6esO55ijHl8cKWaZhcMo9tjlfRD5lur09lOoPSQKA/UNQyTEfdHFyYBaAZ
-         wJl3u5FiwYJo01ghFuK9N+jRfItp7tVdS3nOtZBwrePtYIkt8VcRA5uvH9my+tdVF7vi
-         sz3A==
+        h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence
+         :content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:dkim-signature;
+        bh=9H81aPdgl1UExUuG98zsEQrT8Z5iFKbGoxiLFepC7Wk=;
+        b=OR5k8VzG1w0uaUYihiCxkXNWKRJpefpSRgwVFOjBlxDoIx0nkmV10eUNlytubxXYi3
+         s/u/5KK+eW9U2DxlIU2XwB5pTFCUE2fE9fn/mC2Iapkpcn8iUTjebEbEA/5s7yIVok+Q
+         rqoqiHFIwVTeFfeFIuySfSTNcRd9WvL85tRLBji1r7Eq5j1U8zb4NH0gmLEicnoytvN/
+         5WfMmpTFdMHdScN2TXgGOJXRxVRFjw+EsvFKX4jqVaojjZfBLeB2SkNTzzyWHXIc0Vc0
+         yCX+TeSCY3ye2bHLQ5e8sC6XT/giSjKWkoociLULP3RKphKR4VCrsKVNGRkSHXCxXsYa
+         +INw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=NgAtzsjx;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@oracle.com header.s=corp-2022-7-12 header.b=MYI0xbzS;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=oracle.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id k9-20020ac81409000000b0039168924644si83921qtj.487.2022.10.06.10.24.54
+        by mx.google.com with ESMTPS id bp41-20020a05620a45a900b006cf7d65b5a0si7365994qkb.535.2022.10.06.10.29.20
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 06 Oct 2022 10:24:54 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 06 Oct 2022 10:29:20 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=NgAtzsjx;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:53404 helo=lists1p.gnu.org)
+       dkim=pass header.i=@oracle.com header.s=corp-2022-7-12 header.b=MYI0xbzS;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=oracle.com
+Received: from localhost ([::1]:41242 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ogUc9-0007vu-Mu
-	for alex.bennee@linaro.org; Thu, 06 Oct 2022 13:24:53 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:51782)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1ogUgS-0005zq-6c
+	for alex.bennee@linaro.org; Thu, 06 Oct 2022 13:29:20 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:40326)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1ogTJ4-0005iz-JP
- for qemu-arm@nongnu.org; Thu, 06 Oct 2022 12:01:08 -0400
-Received: from mail-pg1-x52c.google.com ([2607:f8b0:4864:20::52c]:41791)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1ogTJ2-0004LI-Qb
- for qemu-arm@nongnu.org; Thu, 06 Oct 2022 12:01:06 -0400
-Received: by mail-pg1-x52c.google.com with SMTP id q9so2234935pgq.8
- for <qemu-arm@nongnu.org>; Thu, 06 Oct 2022 09:01:04 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=zOMpRL+h7F9zGuHIDhDBvr/gm1SKgFYGmEHdgRf9kC0=;
- b=NgAtzsjxoqUwOV2fM/EGV3QnHYTZTsEFuWoTazVzpT9XBPMeo0TtklTaJYtOTdE/+H
- 0qUqJIFVLN0hSjBNJVs/rQw9+1UEB/tNcuUKi9RIh88OUc09vNUk8xJnOMuJ27SHElin
- MPyCO41hlRjpfOClP1YuNQ4QsDH28woL5V2AOEj4o8rZitwIbA/K6tkhSO9/4HRj+2gk
- HJRmbdXETxVpMFngtwyxvxyQAMk9N7tnIgqepbsP4vfAP10y2BDgQ6zPBaF11N/rIVmF
- jkjdJCmI6aysHFUIv6IC4LtXiiVj51PQnlhdjP8YVFv/Vkn851kU2BhV8TmrWBp9S27E
- 8cNA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=zOMpRL+h7F9zGuHIDhDBvr/gm1SKgFYGmEHdgRf9kC0=;
- b=g6kBJO2FCeWhWY1bsUOX2ubhvb2rYlBqmGfXu01WP9mPoT9ZWw+FtZZBQwy63Y7gjQ
- uXfhuCLXx4vk940gmTQuFIDSL9KlRMzouk97Xskvs/QNG6caVv0HU7GlNcOooWjCj2dY
- YkigixGLnzmbERAJ9tteizPKnn3NnqGIci4kIMuQk1z+13u2Qq1exjzm8B+eDE/mkj+i
- svlLfBFa1S4NopFNQxlu1Og3XJ9/r/j6TQURrUwj4aJ5YSI6mjLNwnwR6zGoOJvLA+jE
- 9aclENoIPI8UJbYsen9q/zXUzERRM7UKqhLTsEXKyVvcUh78smVEWUi3vSPD5Vv2AFeI
- DypA==
-X-Gm-Message-State: ACrzQf3xJWbbJIqO92rkxtGV25sh0SCryjDnfL6DFOUEc2CuI58RVmN8
- dSJ+l7WUeAGMeXJVXFVSwH/fXwuUNdr/6VIaYvFtfQ==
-X-Received: by 2002:a05:6a00:181f:b0:562:8e02:ec29 with SMTP id
- y31-20020a056a00181f00b005628e02ec29mr567465pfa.3.1665072063037; Thu, 06 Oct
- 2022 09:01:03 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <miguel.luis@oracle.com>)
+ id 1ogTXA-0007OR-JX; Thu, 06 Oct 2022 12:15:40 -0400
+Received: from mx0b-00069f02.pphosted.com ([205.220.177.32]:49094)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <miguel.luis@oracle.com>)
+ id 1ogTX8-0006n2-GG; Thu, 06 Oct 2022 12:15:40 -0400
+Received: from pps.filterd (m0246630.ppops.net [127.0.0.1])
+ by mx0b-00069f02.pphosted.com (8.17.1.5/8.17.1.5) with ESMTP id 296FhkfE009472;
+ Thu, 6 Oct 2022 16:15:23 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
+ h=from : to : cc :
+ subject : date : message-id : reply-to : mime-version :
+ content-transfer-encoding; s=corp-2022-7-12;
+ bh=9H81aPdgl1UExUuG98zsEQrT8Z5iFKbGoxiLFepC7Wk=;
+ b=MYI0xbzSjQpWFK+QJNJmYGc498CSCyWfNvhqO+BLj5z1ZVdzBgmJ2omFZiBJUmegXdcG
+ a/7DDgBFaeERq8cFC3YgVI4iId91ju7TUsak4HTFAajekCxVUwnrfZ9eCvBTNy9Qy6Fy
+ A5YrOxVfZfpFEvsQ4eAon0ShzmooxTGbzOjibCChMJLK0TvVhAPW+PSCq0OeZRR4ndlE
+ ve23cubwYN2w0xFcSiXFNobUEDlvkPmqKik434T0x0sKBiSd1lqWR9HGCRPhrSWswTwJ
+ L6N5UtOORMU3m4ergifjA0ety8rG8H9YH+VKk3dBvVrGcMHBNpYc7bo6TmouN5ZYPF6x DA== 
+Received: from phxpaimrmta03.imrmtpd1.prodappphxaev1.oraclevcn.com
+ (phxpaimrmta03.appoci.oracle.com [138.1.37.129])
+ by mx0b-00069f02.pphosted.com (PPS) with ESMTPS id 3k15up4405-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Thu, 06 Oct 2022 16:15:23 +0000
+Received: from pps.filterd
+ (phxpaimrmta03.imrmtpd1.prodappphxaev1.oraclevcn.com [127.0.0.1])
+ by phxpaimrmta03.imrmtpd1.prodappphxaev1.oraclevcn.com (8.17.1.5/8.17.1.5)
+ with ESMTP id 296FAfJf028246; Thu, 6 Oct 2022 16:15:22 GMT
+Received: from pps.reinject (localhost [127.0.0.1])
+ by phxpaimrmta03.imrmtpd1.prodappphxaev1.oraclevcn.com (PPS) with ESMTPS id
+ 3jxc06eq3p-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Thu, 06 Oct 2022 16:15:22 +0000
+Received: from phxpaimrmta03.imrmtpd1.prodappphxaev1.oraclevcn.com
+ (phxpaimrmta03.imrmtpd1.prodappphxaev1.oraclevcn.com [127.0.0.1])
+ by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 296GFLrf001092;
+ Thu, 6 Oct 2022 16:15:21 GMT
+Received: from mlluis-mac.uk.oracle.com (dhcp-10-175-170-234.vpn.oracle.com
+ [10.175.170.234])
+ by phxpaimrmta03.imrmtpd1.prodappphxaev1.oraclevcn.com (PPS) with ESMTP id
+ 3jxc06eq1e-1; Thu, 06 Oct 2022 16:15:21 +0000
+From: Miguel Luis <miguel.luis@oracle.com>
+To: qemu-devel@nongnu.org, qemu-arm@nongnu.org
+Cc: mst@redhat.com, imammedo@redhat.com, ani@anisinha.ca,
+ shannon.zhaosl@gmail.com, peter.maydell@linaro.org, miguel.luis@oracle.com
+Subject: [RFC PATCH 0/4] ACPI MADT and FADT update according to the ACPI 6.0
+ spec
+Date: Thu,  6 Oct 2022 16:14:46 +0000
+Message-Id: <20221006161450.69912-1-miguel.luis@oracle.com>
+X-Mailer: git-send-email 2.37.3
 MIME-Version: 1.0
-References: <20221001162318.153420-1-richard.henderson@linaro.org>
- <20221001162318.153420-29-richard.henderson@linaro.org>
-In-Reply-To: <20221001162318.153420-29-richard.henderson@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 6 Oct 2022 17:00:51 +0100
-Message-ID: <CAFEAcA88G9GdQK3ZW_MbGW2=1sdHcwqp_sOpbjbG45Cwmgviow@mail.gmail.com>
-Subject: Re: [PATCH v3 28/42] target/arm: Split out get_phys_addr_twostage
-To: Richard Henderson <richard.henderson@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::52c;
- envelope-from=peter.maydell@linaro.org; helo=mail-pg1-x52c.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+Content-Transfer-Encoding: 8bit
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.205,Aquarius:18.0.895,Hydra:6.0.528,FMLib:17.11.122.1
+ definitions=2022-10-06_04,2022-10-06_02,2022-06-22_01
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 spamscore=0
+ mlxscore=0 mlxlogscore=999
+ bulkscore=0 malwarescore=0 adultscore=0 phishscore=0 suspectscore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2209130000
+ definitions=main-2210060094
+X-Proofpoint-GUID: 5kvbw4DjOIRNqxtgox_KKM61-7XBVnxb
+X-Proofpoint-ORIG-GUID: 5kvbw4DjOIRNqxtgox_KKM61-7XBVnxb
+Received-SPF: pass client-ip=205.220.177.32;
+ envelope-from=miguel.luis@oracle.com; helo=mx0b-00069f02.pphosted.com
+X-Spam_score_int: -27
+X-Spam_score: -2.8
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: DJn1luoB0hDd
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Reply-To: miguel.luis@oracle.com
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: jlRXMm7layCo
 
-On Sat, 1 Oct 2022 at 17:39, Richard Henderson
-<richard.henderson@linaro.org> wrote:
->
-> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
-> ---
->  target/arm/ptw.c | 196 +++++++++++++++++++++++++----------------------
->  1 file changed, 106 insertions(+), 90 deletions(-)
+The MADT table structure has been updated in commit 37f33084ed2e 
+("acpi: arm/virt: madt: use build_append_int_noprefix() API to compose MADT table")
+to include the 5.2.12.18 GIC ITS Structure and so table's revision also needs to
+be updated. MADT and the FADT tables from the same spec need to be in sync and in
+this case also the FADT needs to be updated.
 
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+Revision 6.0 of the ACPI FADT table introduces the field "Hypervisor Vendor
+Identity" which is missing and must be included. Patch 2/4 includes a suggestion
+for the value of this field by using the current acceleration name. This would
+provide values like 'KVM' for example when KVM is used.
 
-thanks
--- PMM
+Ref: https://uefi.org/sites/default/files/resources/ACPI_6_0_Errata_A.PDF
+
+Open to discussion, your comments, thoughts and suggestions are very welcome.
+
+Thanks in advance.
+Miguel
+
+Miguel Luis (4):
+  tests/acpi: virt: allow acpi MADT and FADT changes
+  acpi: fadt: support revision 6.0 of the ACPI specification
+  acpi: arm/virt: madt: bump to revision 4 accordingly to ACPI 6.0
+    Errata A
+  Step 6 & 7 of the bios-tables-test.c documented procedure.
+
+ hw/acpi/aml-build.c               |  14 +++++++++++---
+ hw/arm/virt-acpi-build.c          |  26 ++++++++++++--------------
+ tests/data/acpi/virt/APIC         | Bin 168 -> 172 bytes
+ tests/data/acpi/virt/APIC.memhp   | Bin 168 -> 172 bytes
+ tests/data/acpi/virt/APIC.numamem | Bin 168 -> 172 bytes
+ tests/data/acpi/virt/FACP         | Bin 268 -> 276 bytes
+ tests/data/acpi/virt/FACP.memhp   | Bin 268 -> 276 bytes
+ tests/data/acpi/virt/FACP.numamem | Bin 268 -> 276 bytes
+ 8 files changed, 23 insertions(+), 17 deletions(-)
+
+-- 
+2.37.3
+

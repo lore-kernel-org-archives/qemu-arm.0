@@ -1,254 +1,136 @@
-Received: by 2002:a8a:1930:0:0:0:0:0 with SMTP id be48csp608489ocb;
-        Thu, 6 Oct 2022 09:34:37 -0700 (PDT)
-X-Google-Smtp-Source: AMsMyM5bhKIPM4XvFPvcfARMNGOiINq16wqQvFHe5Kd902pBPtQoQWEVZiVAzEbpcpY2dMDde0DW
-X-Received: by 2002:a05:620a:2629:b0:6ce:7d2b:5828 with SMTP id z41-20020a05620a262900b006ce7d2b5828mr750998qko.497.1665074077497;
-        Thu, 06 Oct 2022 09:34:37 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1665074077; cv=none;
+Received: by 2002:a8a:1930:0:0:0:0:0 with SMTP id be48csp609567ocb;
+        Thu, 6 Oct 2022 09:36:13 -0700 (PDT)
+X-Google-Smtp-Source: AMsMyM73CbtI77BcMz/PJzWqSZErp1bvkI5Zb4/LO/+gXBSQsEWwrWVv5c5XvvweE12GaKXDvFDj
+X-Received: by 2002:a05:6214:1d01:b0:4b0:b782:15a6 with SMTP id e1-20020a0562141d0100b004b0b78215a6mr774174qvd.43.1665074173620;
+        Thu, 06 Oct 2022 09:36:13 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1665074173; cv=none;
         d=google.com; s=arc-20160816;
-        b=CuJg3Plec82WNOnZAu/mhPDtJIPK8DCdFneItRbRjrgLzytqWWhRBTp8H7wdi3c6QH
-         jQtCt6wgTfqQMQ4wHxYnoUEAe1Z+dHjCoveGfr3ba478hOiKuvo/EYjS6pOR68zVaodm
-         5YOPYTcVo3Ypkn4yZwMjBiKZqZqcCutA5VF7gpLvd/cAP/b4RDesms2YriJnIxENh4Vq
-         gDQhZzFBmWw5aG/m65ClSZAh7U7ZA5M7ffa784qOZXw93OsCXpKq2rjMR7yzUdmER1Ui
-         q0Ojs2NwT+sd4zvBPenqoAphHq9q/OoOcn55f48t5MvbnLVWD0XpXaQhzRV1gswXJ5q+
-         Z6UA==
+        b=cKOFz7y+7lcO3T+W+kJV5hd/+m4bIziuffh5oxiTC+QWN4KLMPig9lXVhfpPI57+yi
+         I9VXBfmaoS1K4Gg5znc3TdlsLGQWKwX4oUMASu2uV3vvxv6nKeMQWZAPMZ2Sh0akdHGk
+         mMdsIyxnLkOTTbHvoxZpKSxDCw/REUEejnXKAx86eDq99j8uVtGDEmMMPtFfCxZzC683
+         Ut9L86unC1AV5dbWaYlQxlp9UG3qhJA0kLWpq4mnA2NhdLrCt9dsxRIl/2Dz4MaLfYe6
+         FJ7lkKmTHShVvrR2qACx95DoyM1SnbvZWaI01mpZz77CBHdmZUpbgfJB74ztBhIuCD3N
+         RojQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=xAq2xlqRdVIbUoDtOLarQdrR1IEKv+tZdV05JKo94l4=;
-        b=zkB+DUQsXahryIT4tMyV7wNEORN+VygjZGKih9PuGHeWt8OkZoz40N1vBndwb2rNg9
-         7Domu68Qq9bakWI0aL8PXi5ftRuQhGEcgaxE0B+6m8LY8+JvUXn/Ly95O3PIcrr9Gq5p
-         OxZNi/dZtw9PH0RIz7VCoYDdR3Cx76gvE9b++vWObzTE8yVFG7xszTO/VePn8nPKo+M5
-         xsGhSlr1B1sI2kICsZ0D6TUnQdXIMqBarTnvyltWiDIWUwciEFFNGYnH4JfsMh6iUO0z
-         jJkk5T6o8tIoLRplkLpx4ihPR3AWGy0JW2VJ9iWf05Bn4bjw4IhntdKNDNR5JzRs4C5C
-         kmVA==
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=2Db+IieIp+SxzevFp8Y7+Cx1EdI83HTA/ANNUomJSOg=;
+        b=uBM/YVk+braNxVdQyFSe7In59CVhAmQdez9/PHsL4n27ZMwsBw3/UFRGCcBI3yEsDa
+         mNJEf6RTSVJ123CuoOh55Y3Qfvcr3quTnzIrQ5BC1VemHvh++NJuesiNHYMrvlZahHPT
+         dTsTxIgfpQMXAJvI20H19NHIsXigtDbVBV7z7jzespf/1GYG9VOS5hgbhznkGqWvnZux
+         Eq++99zq2LshCOtOpJLs8TQ6kKbaMcIsqE57DxZSnOBZIKjR3aTUfNEeYlHyqFKWYGOm
+         c9tCl4jIgv8+ltjwoCgcvGFlDhBE1WVHW6Zbw4DJPchIcYDXUEnGDCqFC+5gUhTzlaoD
+         EocQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=EJSjyTvn;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@linaro.org header.s=google header.b=pnzuVXYr;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id gf1-20020a056214250100b004aab03935easi4372302qvb.538.2022.10.06.09.34.37
+        by mx.google.com with ESMTPS id n22-20020ac85a16000000b0034454335261si8605qta.466.2022.10.06.09.36.13
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 06 Oct 2022 09:34:37 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 06 Oct 2022 09:36:13 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=EJSjyTvn;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:59496 helo=lists1p.gnu.org)
+       dkim=pass header.i=@linaro.org header.s=google header.b=pnzuVXYr;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:44466 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ogTpV-0000bF-2F
-	for alex.bennee@linaro.org; Thu, 06 Oct 2022 12:34:37 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:57710)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1ogTr2-0002CL-2C
+	for alex.bennee@linaro.org; Thu, 06 Oct 2022 12:36:13 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:50970)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1ogStl-0003XX-EK
- for qemu-arm@nongnu.org; Thu, 06 Oct 2022 11:34:59 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:25847)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1ogSti-0000A8-Ke
- for qemu-arm@nongnu.org; Thu, 06 Oct 2022 11:34:57 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1665070494;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=xAq2xlqRdVIbUoDtOLarQdrR1IEKv+tZdV05JKo94l4=;
- b=EJSjyTvnk5mAVAbKOqOiUwIQjubxgyGYc4GM9D6uSg5MEMd9eUDSIBWRy7gdUc+ANnpqmY
- fuZscYoUYbWG8s3LewzRH5BWuBxCogSRVZfiUt9bzXPyriMpCUyIaELn/UJ2rwTaQyhOhC
- o3rmomIGD0JzIMoOXNxDn7/rho7jTb0=
-Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
- [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-531-0Qayu6ugPd-eEXtvMmJMFA-1; Thu, 06 Oct 2022 11:34:49 -0400
-X-MC-Unique: 0Qayu6ugPd-eEXtvMmJMFA-1
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.rdu2.redhat.com
- [10.11.54.6])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id A6F66185A7AA;
- Thu,  6 Oct 2022 15:34:48 +0000 (UTC)
-Received: from localhost (unknown [10.39.208.20])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 2F7C32166B2E;
- Thu,  6 Oct 2022 15:34:46 +0000 (UTC)
-From: marcandre.lureau@redhat.com
-To: qemu-devel@nongnu.org
-Cc: Richard Henderson <richard.henderson@linaro.org>,
- =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
- Bin Meng <bin.meng@windriver.com>,
- Daniel Henrique Barboza <danielhb413@gmail.com>, qemu-ppc@nongnu.org,
- qemu-s390x@nongnu.org, Alistair Francis <alistair.francis@wdc.com>,
- qemu-riscv@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
- viktor.prutyanov@redhat.com, Greg Kurz <groug@kaod.org>,
- frankja@linux.ibm.com, David Hildenbrand <david@redhat.com>,
- Palmer Dabbelt <palmer@dabbelt.com>,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
- David Gibson <david@gibson.dropbear.id.au>, qemu-arm@nongnu.org,
- Cornelia Huck <cohuck@redhat.com>, Thomas Huth <thuth@redhat.com>
-Subject: [PULL 03/10] dump: Refactor dump_iterate and introduce
- dump_filter_memblock_*()
-Date: Thu,  6 Oct 2022 19:34:22 +0400
-Message-Id: <20221006153430.2775580-4-marcandre.lureau@redhat.com>
-In-Reply-To: <20221006153430.2775580-1-marcandre.lureau@redhat.com>
-References: <20221006153430.2775580-1-marcandre.lureau@redhat.com>
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1ogSp0-0007eI-Gu
+ for qemu-devel@nongnu.org; Thu, 06 Oct 2022 11:30:06 -0400
+Received: from mail-pl1-x62b.google.com ([2607:f8b0:4864:20::62b]:35667)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1ogSor-0007tj-So
+ for qemu-devel@nongnu.org; Thu, 06 Oct 2022 11:30:01 -0400
+Received: by mail-pl1-x62b.google.com with SMTP id h10so2040251plb.2
+ for <qemu-devel@nongnu.org>; Thu, 06 Oct 2022 08:29:53 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=2Db+IieIp+SxzevFp8Y7+Cx1EdI83HTA/ANNUomJSOg=;
+ b=pnzuVXYrGx8jRuFb2p4TIiP5tccHdEhoERPh8K6cyWgVojKuIRhnrTY3YsOJ2bTyjT
+ qzMzeOOvxUWFmMBdSaFxXay5DC0TZmKb+tz3l6fcqn3lfDZLakVE0p8uuSw1lU7rjbmu
+ y4Cjf5A8e/PK6+lHGYcEQMlgUKWrsC17BDyupbGQEHgTlsGWLrnZQnDruMlvxMWjn3f6
+ q33HC4GuNjC0XQaon6tprFGS0zSjPnd6OksAu8eiEjfNLpw3qfz5xvwTjprt7oc4eao5
+ zytU9JC1GeAIRezLdd1dflUQO/UI6aKoPxYU0vgpb0pJAIqVyEzteOAvDVct2mK4jiIL
+ enbQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=2Db+IieIp+SxzevFp8Y7+Cx1EdI83HTA/ANNUomJSOg=;
+ b=VsDA/Aatl2sm0mNA8ofLOr5EjM3KU/i7ZBmAI9AaBzLkBTz5kWuGaRNN0Ps02Hy3yN
+ NxUgdx71upl7ut0OlT1W1oc9t2ajU+TIpc4/eOIJO9Vv3KogPJDYmpBugFAe/g3b7QVN
+ pCBVKDiODaKlYwUQBxNA6T6+NXuY/8KPm7ruc9uomFzswpHNRZb8QcjiL5IbY4iswzbB
+ x3JRr1iI5SHqYS5V9JWIvZAsNrFhxMSDmcrMHkefF9wQ1eTzJ9OEn+dA5YqBFO/+GNlw
+ u5w89T336t/1KRBqS75t0BgMneIMBDK50WCDcnk+vybANTp3pwnqSBT4JuzZlIftxO4F
+ IA/A==
+X-Gm-Message-State: ACrzQf2sU9ekCX3nP6CYpFUTuwJL26iF8PLW3Ac+z80y3XZ++GJNdyYg
+ JMYwB8ludCfEd1q7pyylCAcoFjgiM8kFF2PCLnDQaw==
+X-Received: by 2002:a17:902:7c97:b0:17f:5abf:9450 with SMTP id
+ y23-20020a1709027c9700b0017f5abf9450mr425355pll.19.1665070192351; Thu, 06 Oct
+ 2022 08:29:52 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.1 on 10.11.54.6
-Received-SPF: pass client-ip=170.10.129.124;
- envelope-from=marcandre.lureau@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
+References: <20221001162318.153420-1-richard.henderson@linaro.org>
+ <20221001162318.153420-25-richard.henderson@linaro.org>
+In-Reply-To: <20221001162318.153420-25-richard.henderson@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 6 Oct 2022 16:29:40 +0100
+Message-ID: <CAFEAcA9+Z_f8WmU-MJgs-Yc4Mmfa8X1tR99HmzH1a6v1c1K_cA@mail.gmail.com>
+Subject: Re: [PATCH v3 24/42] target/arm: Add ARMMMUIdx_Phys_{S,NS}
+To: Richard Henderson <richard.henderson@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::62b;
+ envelope-from=peter.maydell@linaro.org; helo=mail-pl1-x62b.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: iepZoT+EjQa7
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: Ywq+RGszOBrL
 
-From: Janosch Frank <frankja@linux.ibm.com>
+On Sat, 1 Oct 2022 at 18:04, Richard Henderson
+<richard.henderson@linaro.org> wrote:
+>
+> Not yet used, but add mmu indexes for 1-1 mapping
+> to physical addresses.
+>
+> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+> ---
+>  target/arm/cpu-param.h |  2 +-
+>  target/arm/cpu.h       |  7 ++++++-
+>  target/arm/ptw.c       | 19 +++++++++++++++++--
+>  3 files changed, 24 insertions(+), 4 deletions(-)
 
-The iteration over the memblocks in dump_iterate() is hard to
-understand so it's about time to clean it up. Instead of manually
-grabbing the next memblock we can use QTAILQ_FOREACH to iterate over
-all memblocks.
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
-Additionally we move the calculation of the offset and length out by
-introducing and using the dump_filter_memblock_*() functions. These
-functions will later be used to cleanup other parts of dump.c.
-
-Signed-off-by: Janosch Frank <frankja@linux.ibm.com>
-Reviewed-by: Janis Schoetterl-Glausch <scgl@linux.ibm.com>
-Reviewed-by: Marc-André Lureau <marcandre.lureau@redhat.com>
-Message-Id: <20220811121111.9878-4-frankja@linux.ibm.com>
----
- dump/dump.c | 74 ++++++++++++++++++++++++++++++-----------------------
- 1 file changed, 42 insertions(+), 32 deletions(-)
-
-diff --git a/dump/dump.c b/dump/dump.c
-index 0ed7cf9c7b..340de5a1e7 100644
---- a/dump/dump.c
-+++ b/dump/dump.c
-@@ -591,31 +591,43 @@ static void dump_begin(DumpState *s, Error **errp)
-     write_elf_notes(s, errp);
- }
- 
--static int get_next_block(DumpState *s, GuestPhysBlock *block)
-+static int64_t dump_filtered_memblock_size(GuestPhysBlock *block,
-+                                           int64_t filter_area_start,
-+                                           int64_t filter_area_length)
- {
--    while (1) {
--        block = QTAILQ_NEXT(block, next);
--        if (!block) {
--            /* no more block */
--            return 1;
--        }
-+    int64_t size, left, right;
- 
--        s->start = 0;
--        s->next_block = block;
--        if (s->has_filter) {
--            if (block->target_start >= s->begin + s->length ||
--                block->target_end <= s->begin) {
--                /* This block is out of the range */
--                continue;
--            }
-+    /* No filter, return full size */
-+    if (!filter_area_length) {
-+        return block->target_end - block->target_start;
-+    }
- 
--            if (s->begin > block->target_start) {
--                s->start = s->begin - block->target_start;
--            }
-+    /* calculate the overlapped region. */
-+    left = MAX(filter_area_start, block->target_start);
-+    right = MIN(filter_area_start + filter_area_length, block->target_end);
-+    size = right - left;
-+    size = size > 0 ? size : 0;
-+
-+    return size;
-+}
-+
-+static int64_t dump_filtered_memblock_start(GuestPhysBlock *block,
-+                                            int64_t filter_area_start,
-+                                            int64_t filter_area_length)
-+{
-+    if (filter_area_length) {
-+        /* return -1 if the block is not within filter area */
-+        if (block->target_start >= filter_area_start + filter_area_length ||
-+            block->target_end <= filter_area_start) {
-+            return -1;
-         }
- 
--        return 0;
-+        if (filter_area_start > block->target_start) {
-+            return filter_area_start - block->target_start;
-+        }
-     }
-+
-+    return 0;
- }
- 
- /* write all memory to vmcore */
-@@ -623,24 +635,22 @@ static void dump_iterate(DumpState *s, Error **errp)
- {
-     ERRP_GUARD();
-     GuestPhysBlock *block;
--    int64_t size;
--
--    do {
--        block = s->next_block;
-+    int64_t memblock_size, memblock_start;
- 
--        size = block->target_end - block->target_start;
--        if (s->has_filter) {
--            size -= s->start;
--            if (s->begin + s->length < block->target_end) {
--                size -= block->target_end - (s->begin + s->length);
--            }
-+    QTAILQ_FOREACH(block, &s->guest_phys_blocks.head, next) {
-+        memblock_start = dump_filtered_memblock_start(block, s->begin, s->length);
-+        if (memblock_start == -1) {
-+            continue;
-         }
--        write_memory(s, block, s->start, size, errp);
-+
-+        memblock_size = dump_filtered_memblock_size(block, s->begin, s->length);
-+
-+        /* Write the memory to file */
-+        write_memory(s, block, memblock_start, memblock_size, errp);
-         if (*errp) {
-             return;
-         }
--
--    } while (!get_next_block(s, block));
-+    }
- }
- 
- static void create_vmcore(DumpState *s, Error **errp)
--- 
-2.37.3
-
+thanks
+-- PMM

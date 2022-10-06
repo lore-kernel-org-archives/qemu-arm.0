@@ -1,99 +1,99 @@
-Received: by 2002:a8a:1930:0:0:0:0:0 with SMTP id be48csp656496ocb;
-        Thu, 6 Oct 2022 10:48:54 -0700 (PDT)
-X-Google-Smtp-Source: AMsMyM5RsuBkFDxZ4G9rMqPDYWkrolGZGlYZ8TvscZZ53zZl8qLqN6DIL8QqxyxXSR5YQO6sBydy
-X-Received: by 2002:a05:622a:301:b0:35d:5201:e0d8 with SMTP id q1-20020a05622a030100b0035d5201e0d8mr1188316qtw.412.1665078534558;
-        Thu, 06 Oct 2022 10:48:54 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1665078534; cv=none;
+Received: by 2002:a8a:1930:0:0:0:0:0 with SMTP id be48csp656963ocb;
+        Thu, 6 Oct 2022 10:49:41 -0700 (PDT)
+X-Google-Smtp-Source: AMsMyM7HbwI0xj96D1mEbNMWnZ5GZtjJw6h/win2CCHWa+IBv27i8wF8Fzirmi5lz71RVwLku/cM
+X-Received: by 2002:a05:620a:25cc:b0:6c9:ab32:7621 with SMTP id y12-20020a05620a25cc00b006c9ab327621mr968391qko.533.1665078580978;
+        Thu, 06 Oct 2022 10:49:40 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1665078580; cv=none;
         d=google.com; s=arc-20160816;
-        b=yqoKEPhf7NO3hRdGzxfvgbaE5Jky09vAL3y9DIdYIma2LBpnq2o0sb7mXrToBdjaXu
-         8IhKRFkWdZybFJoy0o199zo8qr0havniZllof+ycQjxczhVio/id77teOh6IjalIxsuN
-         qLSLy1kEQUsQykCkxd1GzXLv2yHxQlrEzyLAqeUuODH4u3T+kKfJzaq/jn4M/Mr2JPTl
-         sbF6qt3V8pIPzA7JX8SHRlGhyNx+JqSukAKlE+rH0VyOaaVbPrM/qrimsFAZjTjQT6aa
-         lw2UfTn3RToZ+cM8EiQXMttdE0Z3u1kLaXMEonWgyn254tM1BaooyAQ+0DkULwzWCqtp
-         qfEw==
+        b=rL8Hgwb0gQkBqtbKcgIx1JWNZlpA0+Y9T7igszeY+pGGxEkhnJbOCKkHif9EMB+bDg
+         COVmy2spIIt5CRmjIiG9keIlaQX+MBAiAAi7ljA6qjoVr9LPMo1es4YnRwOUs4FFJO5k
+         lcngFSnGoW5mUSVcsM7C5mQj3l3/rBGonG76nm/5za9H1aYl7jpdExm1DzadsfGTWUcb
+         wrTimFi3NGCqFj7NTn2XVroFq+UHpvbKJTSg4l7eg2mqaKseIUtL8Nnr79rwR0/RUjn5
+         vkyne+CK7Kayne1HWP2W5LM5OleDqQTgHvvL9yh+EgFaRWD8UsB/UMwhtAX9LbbRnh94
+         q1EA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
          :list-archive:list-unsubscribe:list-id:precedence
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=wcXtSj6QnCUfjnEUVA7/ZUfBM7sZUw73n7qH36/tm1o=;
-        b=GI6NHt90PF4D1doG+rofqojhgJQvRHbRrHVRcBDgndiA8X0Dt2GHMd6inZ8UuMyUUy
-         aAIAEFVl9Lr4a4akUz2sWMXbW2fEFn0Kve1Jy2OPFSJsLUXEUm2ebpzTC7b6fl2mA8I8
-         9t6uLJf+wYUo/+/3on+H1DyMfRpePyZeOT5nSb+NEx2Oq3zS1ij0+pA2WrGNf+NOwz4b
-         l1oLJ2S0edJNv4NuMLy3W8Ruf5+zCQDmM41Z9wMcambloqhwDmoJdbFy8c9XLwfdh2eG
-         hU3s8DtYHY9jSwyAAiRu14J7THCR/73b5BvpTlTm7QzZFqznTVJjGQVQtRJCGl2kK6h9
-         BXNg==
+        bh=c85NEeMAhiMZOT22pp35vTykoioDeAbLJB4fqL2JFdg=;
+        b=QuqJhDdv8TdBZ0q2oUVEXhbCAO3Bz16c9+4e6LzQhftr9ca9Khi+RjKqcLHFqiMjMo
+         lVSKvGhZBxCLqt+FRRfz+5dilV8pfhP6mMcg2lepi3YgdvaiRM+wru7cxlHYNUwpQiJT
+         nOiPhlUByfUc/gYAMKAyS7/g6uR1ppcXpINKfDyGZihXntGJ8ZSqWJvygrwZ/RBnQiPG
+         Q4QMicCd3ofe9V+L4l/Jb+MHLahwdlM+YENI1XfH633R2aUIiZWHz357Job7dWnf0KyX
+         LnRhwzk4ilc/Q9FtFrkaPytgHVeboSDissLCRaEFK/LDDlSc7jRN9px+Rtm4U68uwIuG
+         G84A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@oracle.com header.s=corp-2022-7-12 header.b=AiNEjbUW;
+       dkim=pass header.i=@oracle.com header.s=corp-2022-7-12 header.b=043Hhjc7;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=oracle.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d17-20020ac85351000000b00388512f6e3csi86381qto.786.2022.10.06.10.48.54
+        by mx.google.com with ESMTPS id n81-20020a374054000000b006cf43b6670dsi7098494qka.394.2022.10.06.10.49.40
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 06 Oct 2022 10:48:54 -0700 (PDT)
+        Thu, 06 Oct 2022 10:49:40 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@oracle.com header.s=corp-2022-7-12 header.b=AiNEjbUW;
+       dkim=pass header.i=@oracle.com header.s=corp-2022-7-12 header.b=043Hhjc7;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=oracle.com
-Received: from localhost ([::1]:57972 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:59360 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ogUzO-00075U-4G
-	for alex.bennee@linaro.org; Thu, 06 Oct 2022 13:48:54 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:43174)
+	id 1ogV08-0007uv-IL
+	for alex.bennee@linaro.org; Thu, 06 Oct 2022 13:49:40 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:43178)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <miguel.luis@oracle.com>)
- id 1ogTXI-0007U8-Kr; Thu, 06 Oct 2022 12:15:49 -0400
-Received: from mx0b-00069f02.pphosted.com ([205.220.177.32]:44310)
+ id 1ogTXN-0007UW-0d; Thu, 06 Oct 2022 12:15:53 -0400
+Received: from mx0b-00069f02.pphosted.com ([205.220.177.32]:62948)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <miguel.luis@oracle.com>)
- id 1ogTXE-0006o7-UV; Thu, 06 Oct 2022 12:15:48 -0400
-Received: from pps.filterd (m0246630.ppops.net [127.0.0.1])
- by mx0b-00069f02.pphosted.com (8.17.1.5/8.17.1.5) with ESMTP id 296FhkfJ009472;
- Thu, 6 Oct 2022 16:15:43 GMT
+ id 1ogTXL-0006oZ-0w; Thu, 06 Oct 2022 12:15:52 -0400
+Received: from pps.filterd (m0246631.ppops.net [127.0.0.1])
+ by mx0b-00069f02.pphosted.com (8.17.1.5/8.17.1.5) with ESMTP id 296FhvjP000936;
+ Thu, 6 Oct 2022 16:15:48 GMT
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
  h=from : to : cc :
  subject : date : message-id : in-reply-to : references : reply-to :
  mime-version : content-transfer-encoding; s=corp-2022-7-12;
- bh=wcXtSj6QnCUfjnEUVA7/ZUfBM7sZUw73n7qH36/tm1o=;
- b=AiNEjbUW+Awm1mOrZvpr+5pOnkjfpqxx8nb65H9nXtDQynM4BPwseDNPrJ5VPPKX/Ovt
- T7qnDD59ot/MPNnhBpf09D6KEP2MVIdq4WzQvDd1vYZsHDxNSHKgcXaK7Vu8eO/YS3z6
- UOh4nkYTTtKkcaZfe1OE8EAvLKKzhJ341riVpHmwkxbQReq+4Ze1nXlu2XQ4iMbN7pHE
- Mw/uZWRFTf2nSxxErv//q35vCSomiOevkV/L+OoDeOrU8UN425FJPWPDKedvjoRz0DAh
- ewWi4pKD2G1wV7EGA5BKjN2vjLGCA9rBOhsHAmnr9rFTsCy7OpbIIA/55xmxMkAt8On7 /Q== 
+ bh=c85NEeMAhiMZOT22pp35vTykoioDeAbLJB4fqL2JFdg=;
+ b=043Hhjc77UgULZwJ6GOJBGHz02gdyHVbEbaV7jzLw6SjiDu+4zrQqO+cm6Tu9rmAeDol
+ Vsr31UqpaRLO5u0vRsVvpHH0fnXdMaAbuBl2QV3ISlFTJQwXrmHzrglqaLLRCAIp4Iwg
+ n1/HW9gC9mOrv8huvH5Iw1Fa9iEB8W4tX6FpgqGmkczELlbKweA8v2kbPeHEMTal4IvQ
+ FhizcxKE6MEGNSFkZy0+1YCB3RwpqK7h9k01Mwv1Bb3jXuIMFxL0E352KO02q2P4SP9n
+ yuwpWJwG78P3T31t0j9bn+6gT/sv+d+WbV1obr7YwfNGECgKZj/2kbtDvdn30+cbYr0x 8A== 
 Received: from phxpaimrmta03.imrmtpd1.prodappphxaev1.oraclevcn.com
  (phxpaimrmta03.appoci.oracle.com [138.1.37.129])
- by mx0b-00069f02.pphosted.com (PPS) with ESMTPS id 3k15up440w-1
+ by mx0b-00069f02.pphosted.com (PPS) with ESMTPS id 3jxcb2vsne-1
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Thu, 06 Oct 2022 16:15:42 +0000
+ Thu, 06 Oct 2022 16:15:48 +0000
 Received: from pps.filterd
  (phxpaimrmta03.imrmtpd1.prodappphxaev1.oraclevcn.com [127.0.0.1])
  by phxpaimrmta03.imrmtpd1.prodappphxaev1.oraclevcn.com (8.17.1.5/8.17.1.5)
- with ESMTP id 296FAq80028265; Thu, 6 Oct 2022 16:15:42 GMT
+ with ESMTP id 296FEXcf028313; Thu, 6 Oct 2022 16:15:47 GMT
 Received: from pps.reinject (localhost [127.0.0.1])
  by phxpaimrmta03.imrmtpd1.prodappphxaev1.oraclevcn.com (PPS) with ESMTPS id
- 3jxc06eqdc-1
+ 3jxc06eqg5-1
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Thu, 06 Oct 2022 16:15:41 +0000
+ Thu, 06 Oct 2022 16:15:47 +0000
 Received: from phxpaimrmta03.imrmtpd1.prodappphxaev1.oraclevcn.com
  (phxpaimrmta03.imrmtpd1.prodappphxaev1.oraclevcn.com [127.0.0.1])
- by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 296GFLrl001092;
- Thu, 6 Oct 2022 16:15:41 GMT
+ by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 296GFLrn001092;
+ Thu, 6 Oct 2022 16:15:47 GMT
 Received: from mlluis-mac.uk.oracle.com (dhcp-10-175-170-234.vpn.oracle.com
  [10.175.170.234])
  by phxpaimrmta03.imrmtpd1.prodappphxaev1.oraclevcn.com (PPS) with ESMTP id
- 3jxc06eq1e-4; Thu, 06 Oct 2022 16:15:41 +0000
+ 3jxc06eq1e-5; Thu, 06 Oct 2022 16:15:46 +0000
 From: Miguel Luis <miguel.luis@oracle.com>
 To: qemu-devel@nongnu.org, qemu-arm@nongnu.org
 Cc: mst@redhat.com, imammedo@redhat.com, ani@anisinha.ca,
  shannon.zhaosl@gmail.com, peter.maydell@linaro.org, miguel.luis@oracle.com
-Subject: [RFC PATCH 3/4] acpi: arm/virt: madt: bump to revision 4 accordingly
- to ACPI 6.0 Errata A
-Date: Thu,  6 Oct 2022 16:14:49 +0000
-Message-Id: <20221006161450.69912-4-miguel.luis@oracle.com>
+Subject: [RFC PATCH 4/4] Step 6 & 7 of the bios-tables-test.c documented
+ procedure.
+Date: Thu,  6 Oct 2022 16:14:50 +0000
+Message-Id: <20221006161450.69912-5-miguel.luis@oracle.com>
 X-Mailer: git-send-email 2.37.3
 In-Reply-To: <20221006161450.69912-1-miguel.luis@oracle.com>
 References: <20221006161450.69912-1-miguel.luis@oracle.com>
@@ -103,12 +103,12 @@ X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.205,Aquarius:18.0.895,Hydra:6.0.528,FMLib:17.11.122.1
  definitions=2022-10-06_04,2022-10-06_02,2022-06-22_01
 X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 spamscore=0
- mlxscore=0 mlxlogscore=999
+ mlxscore=0 mlxlogscore=886
  bulkscore=0 malwarescore=0 adultscore=0 phishscore=0 suspectscore=0
  classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2209130000
  definitions=main-2210060094
-X-Proofpoint-GUID: XrtdF1g_FxSal2xIxq-USBD1vmWi-Q_q
-X-Proofpoint-ORIG-GUID: XrtdF1g_FxSal2xIxq-USBD1vmWi-Q_q
+X-Proofpoint-GUID: gQKf0mvAnwH_1paHq1p5MFU_Dgo5iYA7
+X-Proofpoint-ORIG-GUID: gQKf0mvAnwH_1paHq1p5MFU_Dgo5iYA7
 Received-SPF: pass client-ip=205.220.177.32;
  envelope-from=miguel.luis@oracle.com; helo=mx0b-00069f02.pphosted.com
 X-Spam_score_int: -27
@@ -119,7 +119,7 @@ X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
  RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Thu, 06 Oct 2022 13:02:15 -0400
+X-Mailman-Approved-At: Thu, 06 Oct 2022 13:02:16 -0400
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -134,73 +134,210 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Reply-To: miguel.luis@oracle.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: YAGTWnr4t1Bn
+X-TUID: EKXHmVM/fZTI
 
-MADT has been updated with the GIC Structures from ACPI 6.0 Errata A
-and so MADT revision and GICC Structure must be updated also.
+Differences between disassembled ASL files for MADT:
 
-Fixes: 37f33084ed2e ("acpi: arm/virt: madt: use build_append_int_noprefix() API to compose MADT table")
+@@ -11,9 +11,9 @@
+  */
+
+ [000h 0000   4]                    Signature : "APIC"    [Multiple APIC Description Table (MADT)]
+-[004h 0004   4]                 Table Length : 000000A8
+-[008h 0008   1]                     Revision : 03
+-[009h 0009   1]                     Checksum : 50
++[004h 0004   4]                 Table Length : 000000AC
++[008h 0008   1]                     Revision : 04
++[009h 0009   1]                     Checksum : 47
+ [00Ah 0010   6]                       Oem ID : "BOCHS "
+ [010h 0016   8]                 Oem Table ID : "BXPC    "
+ [018h 0024   4]                 Oem Revision : 00000001
+@@ -34,7 +34,7 @@
+ [041h 0065   3]                     Reserved : 000000
+
+ [044h 0068   1]                Subtable Type : 0B [Generic Interrupt Controller]
+-[045h 0069   1]                       Length : 4C
++[045h 0069   1]                       Length : 50
+ [046h 0070   2]                     Reserved : 0000
+ [048h 0072   4]         CPU Interface Number : 00000000
+ [04Ch 0076   4]                Processor UID : 00000000
+@@ -51,28 +51,29 @@
+ [07Ch 0124   4]        Virtual GIC Interrupt : 00000000
+ [080h 0128   8]   Redistributor Base Address : 0000000000000000
+ [088h 0136   8]                    ARM MPIDR : 0000000000000000
+-/**** ACPI subtable terminates early - may be older version (dump table) */
++[090h 0144   1]             Efficiency Class : 00
++[091h 0145   3]                     Reserved : 000000
+
+-[090h 0144   1]                Subtable Type : 0D [Generic MSI Frame]
+-[091h 0145   1]                       Length : 18
+-[092h 0146   2]                     Reserved : 0000
+-[094h 0148   4]                 MSI Frame ID : 00000000
+-[098h 0152   8]                 Base Address : 0000000008020000
+-[0A0h 0160   4]        Flags (decoded below) : 00000001
++[094h 0148   1]                Subtable Type : 0D [Generic MSI Frame]
++[095h 0149   1]                       Length : 18
++[096h 0150   2]                     Reserved : 0000
++[098h 0152   4]                 MSI Frame ID : 00000000
++[09Ch 0156   8]                 Base Address : 0000000008020000
++[0A4h 0164   4]        Flags (decoded below) : 00000001
+                                   Select SPI : 1
+-[0A4h 0164   2]                    SPI Count : 0040
+-[0A6h 0166   2]                     SPI Base : 0050
++[0A8h 0168   2]                    SPI Count : 0040
++[0AAh 0170   2]                     SPI Base : 0050
+
+-Raw Table Data: Length 168 (0xA8)
++Raw Table Data: Length 172 (0xAC)
+
+-    0000: 41 50 49 43 A8 00 00 00 03 50 42 4F 43 48 53 20  // APIC.....PBOCHS
++    0000: 41 50 49 43 AC 00 00 00 04 47 42 4F 43 48 53 20  // APIC.....GBOCHS
+     0010: 42 58 50 43 20 20 20 20 01 00 00 00 42 58 50 43  // BXPC    ....BXPC
+     0020: 01 00 00 00 00 00 00 00 00 00 00 00 0C 18 00 00  // ................
+     0030: 00 00 00 00 00 00 00 08 00 00 00 00 00 00 00 00  // ................
+-    0040: 02 00 00 00 0B 4C 00 00 00 00 00 00 00 00 00 00  // .....L..........
++    0040: 02 00 00 00 0B 50 00 00 00 00 00 00 00 00 00 00  // .....P..........
+     0050: 01 00 00 00 00 00 00 00 17 00 00 00 00 00 00 00  // ................
+     0060: 00 00 00 00 00 00 01 08 00 00 00 00 00 00 04 08  // ................
+     0070: 00 00 00 00 00 00 03 08 00 00 00 00 00 00 00 00  // ................
+     0080: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  // ................
+-    0090: 0D 18 00 00 00 00 00 00 00 00 02 08 00 00 00 00  // ................
+-    00A0: 01 00 00 00 40 00 50 00                          // ....@.P.
++    0090: 00 00 00 00 0D 18 00 00 00 00 00 00 00 00 02 08  // ................
++    00A0: 00 00 00 00 01 00 00 00 40 00 50 00              // ........@.P.
+
+Differences between disassembled ASL files for FADT:
+
+@@ -11,9 +11,9 @@
+  */
+
+ [000h 0000   4]                    Signature : "FACP"    [Fixed ACPI Description Table (FADT)]
+-[004h 0004   4]                 Table Length : 0000010C
+-[008h 0008   1]                     Revision : 05
+-[009h 0009   1]                     Checksum : 55
++[004h 0004   4]                 Table Length : 00000114
++[008h 0008   1]                     Revision : 06
++[009h 0009   1]                     Checksum : 0F
+ [00Ah 0010   6]                       Oem ID : "BOCHS "
+ [010h 0016   8]                 Oem Table ID : "BXPC    "
+ [018h 0024   4]                 Oem Revision : 00000001
+@@ -99,7 +99,7 @@
+                               PSCI Compliant : 1
+                        Must use HVC for PSCI : 1
+
+-[083h 0131   1]          FADT Minor Revision : 01
++[083h 0131   1]          FADT Minor Revision : 00
+ [084h 0132   8]                 FACS Address : 0000000000000000
+ [08Ch 0140   8]                 DSDT Address : 0000000000000000
+ [094h 0148  12]             PM1A Event Block : [Generic Address Structure]
+@@ -173,11 +173,11 @@
+ [103h 0259   1]         Encoded Access Width : 00 [Undefined/Legacy]
+ [104h 0260   8]                      Address : 0000000000000000
+
+-/**** ACPI table terminates in the middle of a data structure! (dump table) */
++[10Ch 0268   8]                Hypervisor ID : 0000000000676374
+
+-Raw Table Data: Length 268 (0x10C)
++Raw Table Data: Length 276 (0x114)
+
+-    0000: 46 41 43 50 0C 01 00 00 05 55 42 4F 43 48 53 20  // FACP.....UBOCHS
++    0000: 46 41 43 50 14 01 00 00 06 0F 42 4F 43 48 53 20  // FACP......BOCHS
+     0010: 42 58 50 43 20 20 20 20 01 00 00 00 42 58 50 43  // BXPC    ....BXPC
+     0020: 01 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  // ................
+     0030: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  // ................
+@@ -185,7 +185,7 @@ Raw Table Data: Length 268 (0x10C)
+     0050: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  // ................
+     0060: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  // ................
+     0070: 00 00 10 00 00 00 00 00 00 00 00 00 00 00 00 00  // ................
+-    0080: 00 03 00 01 00 00 00 00 00 00 00 00 00 00 00 00  // ................
++    0080: 00 03 00 00 00 00 00 00 00 00 00 00 00 00 00 00  // ................
+     0090: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  // ................
+     00A0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  // ................
+     00B0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  // ................
+@@ -193,4 +193,5 @@ Raw Table Data: Length 268 (0x10C)
+     00D0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  // ................
+     00E0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  // ................
+     00F0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  // ................
+-    0100: 00 00 00 00 00 00 00 00 00 00 00 00              // ............
++    0100: 00 00 00 00 00 00 00 00 00 00 00 00 74 63 67 00  // ............tcg.
++    0110: 00 00 00 00                                      // ....
 
 Signed-off-by: Miguel Luis <miguel.luis@oracle.com>
 ---
- hw/arm/virt-acpi-build.c | 16 +++++++---------
- 1 file changed, 7 insertions(+), 9 deletions(-)
+ tests/data/acpi/virt/APIC                   | Bin 168 -> 172 bytes
+ tests/data/acpi/virt/APIC.memhp             | Bin 168 -> 172 bytes
+ tests/data/acpi/virt/APIC.numamem           | Bin 168 -> 172 bytes
+ tests/data/acpi/virt/FACP                   | Bin 268 -> 276 bytes
+ tests/data/acpi/virt/FACP.memhp             | Bin 268 -> 276 bytes
+ tests/data/acpi/virt/FACP.numamem           | Bin 268 -> 276 bytes
+ tests/qtest/bios-tables-test-allowed-diff.h |   6 ------
+ 7 files changed, 6 deletions(-)
 
-diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
-index 72bb6f61a5..2d21e3cec4 100644
---- a/hw/arm/virt-acpi-build.c
-+++ b/hw/arm/virt-acpi-build.c
-@@ -686,7 +686,7 @@ build_dbg2(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
- };
- 
- /*
-- * ACPI spec, Revision 5.1 Errata A
-+ * ACPI spec, Revision 6.0 Errata A
-  * 5.2.12 Multiple APIC Description Table (MADT)
-  */
- static void build_append_gicr(GArray *table_data, uint64_t base, uint32_t size)
-@@ -705,7 +705,7 @@ build_madt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
-     int i;
-     VirtMachineClass *vmc = VIRT_MACHINE_GET_CLASS(vms);
-     const MemMapEntry *memmap = vms->memmap;
--    AcpiTable table = { .sig = "APIC", .rev = 3, .oem_id = vms->oem_id,
-+    AcpiTable table = { .sig = "APIC", .rev = 4, .oem_id = vms->oem_id,
-                         .oem_table_id = vms->oem_table_id };
- 
-     acpi_table_begin(&table, table_data);
-@@ -740,7 +740,7 @@ build_madt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
- 
-         /* 5.2.12.14 GIC Structure */
-         build_append_int_noprefix(table_data, 0xB, 1);  /* Type */
--        build_append_int_noprefix(table_data, 76, 1);   /* Length */
-+        build_append_int_noprefix(table_data, 80, 1);   /* Length */
-         build_append_int_noprefix(table_data, 0, 2);    /* Reserved */
-         build_append_int_noprefix(table_data, i, 4);    /* GIC ID */
-         build_append_int_noprefix(table_data, i, 4);    /* ACPI Processor UID */
-@@ -760,6 +760,10 @@ build_madt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
-         build_append_int_noprefix(table_data, 0, 8);    /* GICR Base Address*/
-         /* MPIDR */
-         build_append_int_noprefix(table_data, armcpu->mp_affinity, 8);
-+        /* Processor Power Efficiency Class */
-+        build_append_int_noprefix(table_data, 0, 1);
-+        /* Reserved */
-+        build_append_int_noprefix(table_data, 0, 3);
-     }
- 
-     if (vms->gic_version != VIRT_GIC_VERSION_2) {
-@@ -771,12 +775,6 @@ build_madt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
-         }
- 
-         if (its_class_name() && !vmc->no_its) {
--            /*
--             * FIXME: Structure is from Revision 6.0 where 'GIC Structure'
--             * has additional fields on top of implemented 5.1 Errata A,
--             * to make it consistent with v6.0 we need to bump everything
--             * to v6.0
--             */
-             /*
-              * ACPI spec, Revision 6.0 Errata A
-              * (original 6.0 definition has invalid Length)
+diff --git a/tests/data/acpi/virt/APIC b/tests/data/acpi/virt/APIC
+index 023f15f12e74fb9a3a6d3d9dc994541016947d6a..179d274770a23209b949c90a929525e22368568b 100644
+GIT binary patch
+delta 26
+hcmZ3%xQ3C-F~HM#4FdxMi~B?_YsP?yZeA06WB^*d2KE2|
+
+delta 26
+icmZ3(xPp<(F~HM#1p@;EbHGF{Yet`mZeA0oNB{s@&<6Sd
+
+diff --git a/tests/data/acpi/virt/APIC.memhp b/tests/data/acpi/virt/APIC.memhp
+index 023f15f12e74fb9a3a6d3d9dc994541016947d6a..179d274770a23209b949c90a929525e22368568b 100644
+GIT binary patch
+delta 26
+hcmZ3%xQ3C-F~HM#4FdxMi~B?_YsP?yZeA06WB^*d2KE2|
+
+delta 26
+icmZ3(xPp<(F~HM#1p@;EbHGF{Yet`mZeA0oNB{s@&<6Sd
+
+diff --git a/tests/data/acpi/virt/APIC.numamem b/tests/data/acpi/virt/APIC.numamem
+index 023f15f12e74fb9a3a6d3d9dc994541016947d6a..179d274770a23209b949c90a929525e22368568b 100644
+GIT binary patch
+delta 26
+hcmZ3%xQ3C-F~HM#4FdxMi~B?_YsP?yZeA06WB^*d2KE2|
+
+delta 26
+icmZ3(xPp<(F~HM#1p@;EbHGF{Yet`mZeA0oNB{s@&<6Sd
+
+diff --git a/tests/data/acpi/virt/FACP b/tests/data/acpi/virt/FACP
+index 1f764220f8533c427168e80ccf298604826a00b4..bd514078decb368815482e5d1db2faf5371fc48e 100644
+GIT binary patch
+delta 33
+mcmeBSn!?28=I9(C!pOkD#y^p(a^j?_i3a=}CCTXwAOHY?_6Iru
+
+delta 26
+hcmbQj)WgK(=I9*2!^ptE8ak1yl96%Z#OjF#yZ}u&1~C8t
+
+diff --git a/tests/data/acpi/virt/FACP.memhp b/tests/data/acpi/virt/FACP.memhp
+index 1f764220f8533c427168e80ccf298604826a00b4..bd514078decb368815482e5d1db2faf5371fc48e 100644
+GIT binary patch
+delta 33
+mcmeBSn!?28=I9(C!pOkD#y^p(a^j?_i3a=}CCTXwAOHY?_6Iru
+
+delta 26
+hcmbQj)WgK(=I9*2!^ptE8ak1yl96%Z#OjF#yZ}u&1~C8t
+
+diff --git a/tests/data/acpi/virt/FACP.numamem b/tests/data/acpi/virt/FACP.numamem
+index 1f764220f8533c427168e80ccf298604826a00b4..bd514078decb368815482e5d1db2faf5371fc48e 100644
+GIT binary patch
+delta 33
+mcmeBSn!?28=I9(C!pOkD#y^p(a^j?_i3a=}CCTXwAOHY?_6Iru
+
+delta 26
+hcmbQj)WgK(=I9*2!^ptE8ak1yl96%Z#OjF#yZ}u&1~C8t
+
+diff --git a/tests/qtest/bios-tables-test-allowed-diff.h b/tests/qtest/bios-tables-test-allowed-diff.h
+index 8dc50f7a8a..dfb8523c8b 100644
+--- a/tests/qtest/bios-tables-test-allowed-diff.h
++++ b/tests/qtest/bios-tables-test-allowed-diff.h
+@@ -1,7 +1 @@
+ /* List of comma-separated changed AML files to ignore */
+-"tests/data/acpi/virt/FACP",
+-"tests/data/acpi/virt/FACP.numamem",
+-"tests/data/acpi/virt/FACP.memhp",
+-"tests/data/acpi/virt/APIC",
+-"tests/data/acpi/virt/APIC.memhp",
+-"tests/data/acpi/virt/APIC.numamem",
 -- 
 2.37.3
 

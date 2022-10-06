@@ -1,99 +1,99 @@
-Received: by 2002:a8a:1930:0:0:0:0:0 with SMTP id be48csp538393ocb;
-        Thu, 6 Oct 2022 07:57:30 -0700 (PDT)
-X-Google-Smtp-Source: AMsMyM7uECe6dZiaov0Ym+mho0I5ET2AvoFTR+IJ9PzBdAgdZROvaYHi5PAUINb+ngrmCzIVE732
-X-Received: by 2002:a05:620a:17aa:b0:6ce:5fe3:1c35 with SMTP id ay42-20020a05620a17aa00b006ce5fe31c35mr336216qkb.337.1665068250155;
-        Thu, 06 Oct 2022 07:57:30 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1665068250; cv=none;
+Received: by 2002:a8a:1930:0:0:0:0:0 with SMTP id be48csp538491ocb;
+        Thu, 6 Oct 2022 07:57:42 -0700 (PDT)
+X-Google-Smtp-Source: AMsMyM6UqHwbxQMxL6eJYqSeSYGDDiQCUbgCTN9c53nkr0N1avDnFUk0O7/ydlp3ldIMUw9cz4vS
+X-Received: by 2002:a05:622a:1788:b0:35c:bf57:caa7 with SMTP id s8-20020a05622a178800b0035cbf57caa7mr393231qtk.470.1665068262350;
+        Thu, 06 Oct 2022 07:57:42 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1665068262; cv=none;
         d=google.com; s=arc-20160816;
-        b=l31VznVxbkC9aGT7yVX933B7+tFohoDCHp+VIdS1hQZbmyP9Xtw1RvaZ0sQ5mK8PUe
-         6SjOiAKMS/9RausnAnQu/O74bKMhfCR7spqufgPxjsR0yAAXC1tGPw3dgS+S+QfPTWEX
-         xTVI3T1aiHPety4RUtTMsVJ6rkQsW6tMndNP8mv3VygjTf8KcVYlovrX4qkyq78ikiU9
-         7N+9Mtffhcq+66EfSxENHvHiI2gucqSh4seLcdaf5s3+5ib3gUxsE2kUIJ8WE2L4gK4Z
-         J7TOL5/btI/7uz7jseTw73zQQt3zHcIWr6XrQAaQzyRAcJa3ms65RLccp1FTyz1XQ9Wg
-         W2pA==
+        b=AynD8I7BNSJNexXiCgGHx/wYYJ191nYZL9FXzHN8hDMDFThR4LCmobUeZMoV+VoZ0l
+         tcTo4FGepAblhmJXzdb9vP/KuWC1PnZ5b8WQja2AXHdyWXCd2EHe30D5LopVsEN4pszj
+         VpsHOwUd9LevXvS4sv3jsbsvaS/hZoK6BV8Y26HniD1wWj7U7f822ic2g8atuIo27PZ5
+         qP/5jpcZfrgxlwHi8v9euxMO3wPUo4vh/eOARSsz2G+5TcemEowgtljxzux0KudQMXOT
+         wAkAfboISvroluhHy0b4BtindqL/AhmMeNaq+3uHm6og58bWhYbwFE8Aj5YKcejn4BsU
+         1iJQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
          :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=GnmKJsPpq1G3rU8H1DNwod3fmCA+6PhMUWm4sA9zQpo=;
-        b=SkXnGh67y/Bf2Vif96bf0VzRI9nKB91mW0Jc6iMSaY1hqGUcDAuTdi89wFpneg8CLp
-         CdiP0Du3PJDy9ZGW+KhtCsEE3biCQHpggxBbB+w7INu0rlkYHROgxVHW/Pl7CRUtyvEl
-         3ie7JCxaK7FPYMQ8AF96K4FpbPM0t+WBRtWOcDI7ubKOe7GCkoKZ0H0l8hvsT6BdwDhl
-         OeXevy6K052PY9b+FZrlTDV35QNX0PnA127m4OUiho3+q3Hc9iZ9Gqt1KpBMuG7nJwWT
-         lxMyVgXvsT5bmWnmXI4gNjfe2KAwlKOi3Ed0LPdAtzyqLxAJRQ4z+7hR8O0NbcXlQDh/
-         aDpg==
+        bh=h+tUr/9l1CJj5Pt5bJRVxccYDsGjcFlBvCJJg7EqzJg=;
+        b=enk+cQvj9SB2Po0cEJBGMXzDS9F8uzIqW20fkemDSjDUcdhpiNLrSMrzkqTNrfy0jh
+         4kLyQp+ucNzaPkpXU3SySC6yhmrTbDFWa+iXJPVpwhXs1Ix+sRKEmN2LhmZxWS2LNYRq
+         f6gSSdgXOg3ClYw4ajNnOwQsjMOoulr7fJmivfJGeINb7Fk6ZzaIx1nG3YbHE1s6HnLZ
+         x2Wfxl+Mt6eYarGWJHrUhGUnFOWsEiuEXB5eLqroLfX3z0uASZEuNW0GB+X0odrOzekt
+         IeWLx/ALXIuHqHTXS2BcQZgzBBGRTeJ2d6G2htn3XdkTVo8S4G4OBH8A3haM7HTOvaRe
+         bQuQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=djdDndYn;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=QcK2fjEp;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id bs26-20020ac86f1a000000b0038fa253a17asi2486307qtb.546.2022.10.06.07.57.30
+        by mx.google.com with ESMTPS id u10-20020a05620a454a00b006e23da52244si2322991qkp.552.2022.10.06.07.57.42
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 06 Oct 2022 07:57:30 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 06 Oct 2022 07:57:42 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=djdDndYn;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=QcK2fjEp;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:34378 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:46708 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ogSJV-000729-On
-	for alex.bennee@linaro.org; Thu, 06 Oct 2022 10:57:29 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:42516)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1ogSJg-0007SV-Sf
+	for alex.bennee@linaro.org; Thu, 06 Oct 2022 10:57:41 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:57962)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1ogSEf-0001ec-Vv
- for qemu-devel@nongnu.org; Thu, 06 Oct 2022 10:52:31 -0400
-Received: from mail-pl1-x634.google.com ([2607:f8b0:4864:20::634]:35457)
+ id 1ogSJU-0007RY-09
+ for qemu-arm@nongnu.org; Thu, 06 Oct 2022 10:57:28 -0400
+Received: from mail-pl1-x62b.google.com ([2607:f8b0:4864:20::62b]:36537)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1ogSEd-0001Tp-M3
- for qemu-devel@nongnu.org; Thu, 06 Oct 2022 10:52:28 -0400
-Received: by mail-pl1-x634.google.com with SMTP id h10so1943075plb.2
- for <qemu-devel@nongnu.org>; Thu, 06 Oct 2022 07:52:26 -0700 (PDT)
+ id 1ogSJS-0002K5-67
+ for qemu-arm@nongnu.org; Thu, 06 Oct 2022 10:57:27 -0400
+Received: by mail-pl1-x62b.google.com with SMTP id c24so1954016plo.3
+ for <qemu-arm@nongnu.org>; Thu, 06 Oct 2022 07:57:25 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=GnmKJsPpq1G3rU8H1DNwod3fmCA+6PhMUWm4sA9zQpo=;
- b=djdDndYnrYaTdWXsBnBFiezPkGH/JsjI/3WiqwQgA4nZwSJ/NbUpqkmerp4xSMSpeR
- ePymthpdnBWfit9D9iqNw7SS3ARKb/zkpxQLGzqMf6BJoD/pXmokK4YdO+ZawOW90CCM
- tDVIkynahPY3EjIR6sRyDK017tEE1u7nSNa4GwrvgeXyIghsSrQ1Uyr5a4bL+TbgZAE1
- ccGpXgZYpKhlmoH20MR1q9iRc4q4QRqp1r7X9nERvU4DeZdjbarm8+dyEDq+9efQB3fL
- ugrWN3LqVUXvSJs2d7nTvzhPRHtrbyR6XBSDWb9BNk7ZXtlK90/QrIyMGGvJSOTz+sy2
- 09Hw==
+ bh=h+tUr/9l1CJj5Pt5bJRVxccYDsGjcFlBvCJJg7EqzJg=;
+ b=QcK2fjEp5hrd3mGPXgQ4zwna9hDFWxUXWQ2YFsU9XHCEi/c94gz6VUPfO1tgvNGNGj
+ CFCvkdVY4xUxg4/h0gvcR3c9D8sFtrK+6u7VmpkKPvtjOP929/LjSsQAynHVIrc7LD5C
+ t3QttCji/dzwa2ztdqBWS7wmOjMXaLh6rjNBDsGx1/fNTo89WKTj8hk1exwgV0jozb1Z
+ eFLVGWwdYVNUjQhc9N3uJvkxbI3xqQLVvAFqyBYnH5WX3d49Z/SW3Q17pKJWuc0vRxau
+ GUFTuwZNAd++lwD7eebTDN6otf0hkDo91FwpOmyGSi8KF/1fdLpdy+kCwUmGT/VyexCn
+ /pXQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=GnmKJsPpq1G3rU8H1DNwod3fmCA+6PhMUWm4sA9zQpo=;
- b=6qekmajiXT2S6oscD4hCLEi8hpzKElvsZu0NEr3xbQdOBhnPy533vnNLl/9ucKhgEa
- /TMdamCqKgKRq2TclX0oIj5oVWc1K4DnqWJhNyf85asl5wvzJqYkLNndZmgSqUJsjjvR
- 52PD5Az99oehJmc6lBiYNUjgCeh6Wnk3PplZ+eQmxQ3OnNNn6jhbIq7pF9xHAfVMn7WE
- FTpnaietcqC/5gAxaqJCwn1z0E4BjGJkAZwDOUI6Yc3Tc9v9cWMKRkzRywDrC1TPRPWV
- c+YB/ZxeKwk5foxnmgAbe5mN4zVMyP4PnQpNNOqiLRmEoaa2GWDG8Go6fOAxHx38HpeG
- TjhA==
-X-Gm-Message-State: ACrzQf1Q6TCnl8ZAgISOEfaXZgl+8rwv4MV/SP58G3HFoL1BZUCs8/lS
- fExtzHtFjiLOlHLp20kmWBvdpRarRASmEr88gtu0SQ==
-X-Received: by 2002:a17:902:aa8b:b0:178:8f1d:6936 with SMTP id
- d11-20020a170902aa8b00b001788f1d6936mr295203plr.168.1665067945334; Thu, 06
- Oct 2022 07:52:25 -0700 (PDT)
+ bh=h+tUr/9l1CJj5Pt5bJRVxccYDsGjcFlBvCJJg7EqzJg=;
+ b=ljSpw4QYR2TMVAnCHKez2KjCLnzvKaRAo5LM6vKFVuSQbReJTWgMuE/lC+vHEgJVpH
+ NbbL1V1cbz/OD+HL3qtAzogSJxpoAA1qM0TfZnZ+M36ienu5WlWhmjJQbMZ/9GIShbo3
+ kxThQxa0LsA9GmKuBs3jyHydGinN9b5n8K4rgpludqMMjoKTgyWUCU+iBrpOJqnbGjO1
+ LTG/bVaIxfIz8UWNXOr07qWcTDR8RXlS/NVxO7ThRNSWApnavecEy2MruRoBFxfRyT9l
+ 2nvcGI1i+pmz/qplpkcTGhHrccCGjJml6wOk6wiuqAO9tEQ/mUMz4+FskZ/BR5wpCbu+
+ soxA==
+X-Gm-Message-State: ACrzQf1mGzQF+dbbJ36Hy1oCS7QKfg0W/rLlRruKs3AdnuZr1navWqQP
+ AZXrBz3LFzbxr/0kpHfmatN7XbzhlVWcc1UTqtTfZUHXd4g=
+X-Received: by 2002:a17:903:4d7:b0:178:8564:f754 with SMTP id
+ jm23-20020a17090304d700b001788564f754mr5092882plb.60.1665068244700; Thu, 06
+ Oct 2022 07:57:24 -0700 (PDT)
 MIME-Version: 1.0
 References: <20221001162318.153420-1-richard.henderson@linaro.org>
- <20221001162318.153420-23-richard.henderson@linaro.org>
-In-Reply-To: <20221001162318.153420-23-richard.henderson@linaro.org>
+ <20221001162318.153420-24-richard.henderson@linaro.org>
+In-Reply-To: <20221001162318.153420-24-richard.henderson@linaro.org>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 6 Oct 2022 15:52:13 +0100
-Message-ID: <CAFEAcA_KmS3ZLBNx4PBUsmRvh-meEA9gLpxUae=9vmtSANGYOQ@mail.gmail.com>
-Subject: Re: [PATCH v3 22/42] target/arm: Use probe_access_full for MTE
+Date: Thu, 6 Oct 2022 15:57:13 +0100
+Message-ID: <CAFEAcA8L7BBHZ0Gfi7fm4pbZvYBd=Shu9bV6M5rQqcU-EU-p6Q@mail.gmail.com>
+Subject: Re: [PATCH v3 23/42] target/arm: Use probe_access_full for BTI
 To: Richard Henderson <richard.henderson@linaro.org>
 Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::634;
- envelope-from=peter.maydell@linaro.org; helo=mail-pl1-x634.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::62b;
+ envelope-from=peter.maydell@linaro.org; helo=mail-pl1-x62b.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -102,44 +102,102 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 6wUrRoRzq8cx
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: pyD56jmEOV96
 
-On Sat, 1 Oct 2022 at 17:50, Richard Henderson
+On Sat, 1 Oct 2022 at 17:38, Richard Henderson
 <richard.henderson@linaro.org> wrote:
 >
-> The CPUTLBEntryFull structure now stores the original pte attributes, as
-> well as the physical address.  Therefore, we no longer need a separate
-> bit in MemTxAttrs, nor do we need to walk the tree of memory regions.
+> Add a field to TARGET_PAGE_ENTRY_EXTRA to hold the guarded bit.
+> In is_guarded_page, use probe_access_full instead of just guessing
+> that the tlb entry is still present.  Also handles the FIXME about
+> executing from device memory.
 >
 > Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 > ---
-
-> @@ -162,6 +143,13 @@ static uint8_t *allocation_tag_mem(CPUARMState *env, int ptr_mmu_idx,
->          return NULL;
->      }
+>  target/arm/cpu-param.h     |  8 ++++----
+>  target/arm/cpu.h           | 13 -------------
+>  target/arm/internals.h     |  1 +
+>  target/arm/ptw.c           |  7 ++++---
+>  target/arm/translate-a64.c | 22 ++++++++--------------
+>  5 files changed, 17 insertions(+), 34 deletions(-)
 >
-> +    /*
-> +     * Remember these values across the second lookup below,
-> +     * which may invalidate this pointer via tlb resize.
-> +     */
-> +    ptr_paddr = full->phys_addr;
-> +    attrs = full->attrs;
+> diff --git a/target/arm/cpu-param.h b/target/arm/cpu-param.h
+> index 118ca0e5c0..689a9645dc 100644
+> --- a/target/arm/cpu-param.h
+> +++ b/target/arm/cpu-param.h
+> @@ -32,12 +32,12 @@
+>  # define TARGET_PAGE_BITS_MIN  10
+>
+>  /*
+> - * Cache the attrs and sharability fields from the page table entry.
+> + * Cache the attrs, sharability, and gp fields from the page table entry.
+>   */
+>  # define TARGET_PAGE_ENTRY_EXTRA  \
+> -     uint8_t pte_attrs;           \
+> -     uint8_t shareability;
+> -
+> +    uint8_t pte_attrs;            \
+> +    uint8_t shareability;         \
+> +    bool guarded;
 
-Can we set full = NULL here to catch any accidental attempts to use
-the pointer after this point?
+I notice this now brings this very close to just having an ARMCacheAttrs
+struct in it (in fact it's going to be one byte bigger than the ARMCachettrs).
+But it's probably better to keep them separate since we care a lot more
+about keeping the TLB entry small I suppose.
+
+> diff --git a/target/arm/translate-a64.c b/target/arm/translate-a64.c
+> index 5b67375f4e..22802d1d2f 100644
+> --- a/target/arm/translate-a64.c
+> +++ b/target/arm/translate-a64.c
+> @@ -14601,22 +14601,16 @@ static bool is_guarded_page(CPUARMState *env, DisasContext *s)
+>  #ifdef CONFIG_USER_ONLY
+>      return page_get_flags(addr) & PAGE_BTI;
+>  #else
+> +    CPUTLBEntryFull *full;
+> +    void *host;
+>      int mmu_idx = arm_to_core_mmu_idx(s->mmu_idx);
+> -    unsigned int index = tlb_index(env, mmu_idx, addr);
+> -    CPUTLBEntry *entry = tlb_entry(env, mmu_idx, addr);
+> +    int flags;
+>
+> -    /*
+> -     * We test this immediately after reading an insn, which means
+> -     * that any normal page must be in the TLB.  The only exception
+> -     * would be for executing from flash or device memory, which
+> -     * does not retain the TLB entry.
+> -     *
+> -     * FIXME: Assume false for those, for now.  We could use
+> -     * arm_cpu_get_phys_page_attrs_debug to re-read the page
+> -     * table entry even for that case.
+> -     */
+
+I think we should keep at least some of this comment: the part
+about the reason we can assert that probe_access_full() doesn't
+return TLB_INVALID being that we tested immediately after the
+insn read is still true, right?
+
+> -    return (tlb_hit(entry->addr_code, addr) &&
+> -            arm_tlb_bti_gp(&env_tlb(env)->d[mmu_idx].fulltlb[index].attrs));
+> +    flags = probe_access_full(env, addr, MMU_INST_FETCH, mmu_idx,
+> +                              false, &host, &full, 0);
+> +    assert(!(flags & TLB_INVALID_MASK));
+> +
+> +    return full->guarded;
+>  #endif
+>  }
 
 Otherwise
 Reviewed-by: Peter Maydell <peter.maydell@linaro.org>

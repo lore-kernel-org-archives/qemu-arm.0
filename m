@@ -1,129 +1,110 @@
-Received: by 2002:ac9:4144:0:0:0:0:0 with SMTP id u4csp54035ocg;
-        Thu, 6 Oct 2022 15:49:39 -0700 (PDT)
-X-Google-Smtp-Source: AMsMyM7PVYT2xcQsRxM0foI8iytS6rg/32J38YkjUiCi7YOQmJhQ6yZ1a0Lm7uo5OaMzOtZewy0o
-X-Received: by 2002:a05:620a:4807:b0:6cf:55d:e4c3 with SMTP id eb7-20020a05620a480700b006cf055de4c3mr1942246qkb.563.1665096579132;
-        Thu, 06 Oct 2022 15:49:39 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1665096579; cv=none;
+Received: by 2002:ac9:4144:0:0:0:0:0 with SMTP id u4csp181660ocg;
+        Thu, 6 Oct 2022 20:59:58 -0700 (PDT)
+X-Google-Smtp-Source: AMsMyM5OyhNKyIhJ5Z6Jf/TiBRJnw6WCMdGgYBcBt2sLj0lIDg+eVv17+IFjRrs/Vx6STZNAhUrq
+X-Received: by 2002:a05:622a:13c8:b0:38b:959:70c2 with SMTP id p8-20020a05622a13c800b0038b095970c2mr2905509qtk.687.1665115198262;
+        Thu, 06 Oct 2022 20:59:58 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1665115198; cv=none;
         d=google.com; s=arc-20160816;
-        b=RqaEYUMgtx9RibhKjmpcsQF1H1s+y8hoQAJE0Bz+Bb5AWq1F45NmAfQCsm9A7ycYjI
-         TL5wh4sxiQKVccj//yEStofD9MurYq++AW7q1uWDYheoijrDU6k5xqczsMqk2Woew7lo
-         l6yaHwR9Fx0MqC6+7Xya3QBO02BIMJaRx6bGJDcxjYkiN1TXbT7JtaBxvZW8aO9vBNCb
-         LuN5b/oqnUd+ELcRTi5N5BfcX5nWNi/jL99qhErB3ZCXPUxqJQBui0JaJjR45RuVCOjT
-         uylNcBY0luOqZRJHb/nNjAqJFk1yKxA0/zmDaOLv4RGVq0TsVfTj4KPMqLes17CRbjAA
-         OxFQ==
+        b=xMfj9sIhktrc/xoydFg2gEVzj5eT3UzW6XUQ5daW2At3BiUxNAFLfUiLrIhm240zQn
+         aE3ZMzRzdPGTZDa3fsEO94rj94VY8j+iwkVV0iGnC1xRz3gPLeXuW4puGvBXQCNQQQ9J
+         m+8YfzXjdgvwEqrAovwu4aNnpAAeiVjUAalWJJq2AtdogQWWnTU/sBp0MzxGIg9Qjbqj
+         +UVuc+lBNYlgG9qgMDAaG8AyRkd0vPZJM329dRFukJW68Z3Tk2QxJSAcW2SV5YPZ6rAC
+         RIxNu8uIxNdfZB7Yo14kcfA3A40x8klk+mFoMYLhvjaiKiJYb3MSElFKMitlTq5qCj+8
+         k5bQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :feedback-id:dkim-signature:dkim-signature;
-        bh=MNKY3V0usV/S/gkbBD8XI1uqHH6SpnFgSOTC3mCTjAo=;
-        b=H/4USNphkDPew0uimL2LUHKBIq4azZR0hRmU9OQbIXB5QInba2Y3jeQbOlyN8lmUPy
-         qitrskymkgC8LbAwP6IebezE6zceL0iceUp/BPzWz+fOSqDbrW+BWsiTkx2wmagdISAr
-         iF+rXAFEt2R4O/Gykl/dM8WyWU3wH7VmeHUhuXwe4vWo8ADUqkgvrnBZuN/dJdQrVkSB
-         VXCVOvXoECJ8RDcRtmnKuU14BWXXGbfRYXrXgs2QDsx7frbSps4q0xIXsz4S4VI8kyOy
-         H+cfwpSEg2zvtgRuO0YswgpAWY8KA7Jwta/BY/XQcWzlgtb6VAb9APo/mXYWhUVciP8k
-         8UZA==
+         :list-unsubscribe:list-id:precedence:mime-version:references
+         :message-id:in-reply-to:subject:cc:to:date:from:dkim-signature;
+        bh=c317dYnxQFZQWlyGeFVdBMlu7n93374v7nILe6WpLLI=;
+        b=YDoacGoV39tm9MOothRWubaDiKfauVzj0E+/R2DrkdTHKZYno8zeYXqSWutqrl4RbZ
+         PbnyF5q2G2C65HPuWckUd/v7IublPk9DRoOQtgNetzpuCbhB5rm1ZJ0Jx5FPsUcNf/oh
+         /FN9XlCbLHNSFzpnMDdgwJxK7A5QmlyTzS0kd/WtunzSDXbrHB6eVixy5+WY8fob8AD7
+         Y2/fvRo46Zkf8HT1YBzuTauk4tVjdMNRsdblb/zsvze/NZu3d+21JS/3zxsQT/GYp+0i
+         kzqdv3GACQI6n2UrSasbEesD60Pizylu1ybD5tiE6GPbf+fbqZ6G0yfzkbEcv+H5PTFC
+         qcpg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@stwcx.xyz header.s=fm1 header.b=es8kNSqZ;
-       dkim=fail header.i=@messagingengine.com header.s=fm2 header.b=VvhEcUpb;
+       dkim=pass header.i=@anisinha-ca.20210112.gappssmtp.com header.s=20210112 header.b=j24mJ0ft;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id y19-20020a05620a25d300b006cf445d564dsi219059qko.91.2022.10.06.15.49.39
+        by mx.google.com with ESMTPS id z15-20020ac8100f000000b0035bb0e87eb5si663132qti.439.2022.10.06.20.59.58
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 06 Oct 2022 15:49:39 -0700 (PDT)
+        Thu, 06 Oct 2022 20:59:58 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@stwcx.xyz header.s=fm1 header.b=es8kNSqZ;
-       dkim=fail header.i=@messagingengine.com header.s=fm2 header.b=VvhEcUpb;
+       dkim=pass header.i=@anisinha-ca.20210112.gappssmtp.com header.s=20210112 header.b=j24mJ0ft;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:36510 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:48144 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ogZgQ-0005jK-Lr
-	for alex.bennee@linaro.org; Thu, 06 Oct 2022 18:49:38 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44770)
+	id 1ogeWj-0008LP-RR
+	for alex.bennee@linaro.org; Thu, 06 Oct 2022 23:59:57 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:49532)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <patrick@stwcx.xyz>)
- id 1ogZfz-0005hv-ND; Thu, 06 Oct 2022 18:49:11 -0400
-Received: from out1-smtp.messagingengine.com ([66.111.4.25]:33999)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <patrick@stwcx.xyz>)
- id 1ogZfy-0000iR-BD; Thu, 06 Oct 2022 18:49:11 -0400
-Received: from compute4.internal (compute4.nyi.internal [10.202.2.44])
- by mailout.nyi.internal (Postfix) with ESMTP id 401EC5C0144;
- Thu,  6 Oct 2022 18:49:09 -0400 (EDT)
-Received: from mailfrontend1 ([10.202.2.162])
- by compute4.internal (MEProxy); Thu, 06 Oct 2022 18:49:09 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=stwcx.xyz; h=cc
- :cc:content-type:date:date:from:from:in-reply-to:in-reply-to
- :message-id:mime-version:references:reply-to:sender:subject
- :subject:to:to; s=fm1; t=1665096549; x=1665182949; bh=MNKY3V0usV
- /S/gkbBD8XI1uqHH6SpnFgSOTC3mCTjAo=; b=es8kNSqZ0gOCgRBsLWbp+nVuUD
- 1d8PyCmgOlrtBjFjUR5Gm0NuNdAwst1ZE6S1D6dHyDfC9+v0q9XR6tO8mpXr/PAD
- vq3VOIGp5pNMDhPcfc49MiitGWpc5kQB3Q4wO15rdf6zC8Cq+2I3Da7vTygJ8RXc
- /AB1E5mwnd2QvVFoHE4NnOOxIhW9mtvWjcF7ipbwXO8KWNZRJAQO3DhXKaZGfSi/
- MG0+tzRrpMTrCYg3Crg8ia+K/Xj6RcPRF8wFbdWhp1y2x0BM4Il9YI5RPkcJC1CH
- mPh69YoJhZlHAFTGFni6lINlxoNzWGon+kbHn5iKxfBMMBtLKSYzyMxeiPJA==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
- messagingengine.com; h=cc:cc:content-type:date:date:feedback-id
- :feedback-id:from:from:in-reply-to:in-reply-to:message-id
- :mime-version:references:reply-to:sender:subject:subject:to:to
- :x-me-proxy:x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=
- fm2; t=1665096549; x=1665182949; bh=MNKY3V0usV/S/gkbBD8XI1uqHH6S
- pnFgSOTC3mCTjAo=; b=VvhEcUpbuQSIivYncRCbLvlCqJkRwi08hIPPd3DtXu9K
- PiJsuuc9IEeiO7pGxJ6sGxMXihNnXacaeWMbI346r6tMoBRThJfCPA7YAsdYtu4l
- viXk3izjhJm63sZ201//j4VfYPuQDs6JS7joDzEYU7ZCIhuB7Ib+RbUZ8NDz7T3c
- 2W1yFdEVbYuLuLWpJmqnkFmDKGayYc8sH0ckHESnowbdQ94yRjdN3h9kY13OIQG7
- 50u34NKj2nIqMfGUNhd+KVJ6KR3hXVp+Ovtj0h2xk5LTTxN/bGZpkcEKyc1qhRFG
- 9cDkVxw8wZU/GpY9mKGLHTqFcuwpiM9O4aQ/B+/+vQ==
-X-ME-Sender: <xms:ZVs_Y7CskwQnvi3B722aHmo-RpSMxTsE09vsFfJsdHi2VFbV0gIasw>
- <xme:ZVs_YxjDPLq3XS-XisGZFtU_-Wi0HBEFnpw0X_lAQUby-oZwtZXhMbI1a8n5LP7Na
- bVTzwTjaeaXMGtjPrM>
-X-ME-Received: <xmr:ZVs_Y2n5poSS8OapUUnm1LzRx4T6VJFtuempsh_GTOPzpjmIbJgpcjYMPitjekc7rBqJJ4r2a6Fnpoicexskfet8fw7h8AyA>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvfedrfeeiiedgudegucetufdoteggodetrfdotf
- fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
- uceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmne
- gfrhhlucfvnfffucdljedtmdenucfjughrpeffhffvvefukfhfgggtuggjsehgtderredt
- tddunecuhfhrohhmpefrrghtrhhitghkucghihhllhhirghmshcuoehprghtrhhitghkse
- hsthiftgigrdighiiiqeenucggtffrrghtthgvrhhnpedtjeejgfdugefhtedvudfghfej
- feejfefhffeffeelgeduveejleelffefvdffleenucevlhhushhtvghrufhiiigvpedtne
- curfgrrhgrmhepmhgrihhlfhhrohhmpehprghtrhhitghksehsthiftgigrdighiii
-X-ME-Proxy: <xmx:ZVs_Y9zz276HTCBwKsSUWhD9P8cbB57gMRx8KA8XkOIx13AxWoLMDg>
- <xmx:ZVs_YwRB0rMZ7zyM5rspA1uWcMJ8dygqU-eIAw0ypDvTY4Qgi5Suew>
- <xmx:ZVs_YwbjhV8GHaCW_wp4kjwM5GpWPyGJoSdL72-lOiHfpgERxuiB4w>
- <xmx:ZVs_Y5_DhUrM_zsA3RNXcMAf6Z7yDLA1xsRvpzMQWXBkfirmXSWN4Q>
-Feedback-ID: i68a1478a:Fastmail
-Received: by mail.messagingengine.com (Postfix) with ESMTPA; Thu,
- 6 Oct 2022 18:49:08 -0400 (EDT)
-Date: Thu, 6 Oct 2022 17:49:08 -0500
-From: Patrick Williams <patrick@stwcx.xyz>
-To: =?iso-8859-1?Q?C=E9dric?= Le Goater <clg@kaod.org>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, qemu-block@nongnu.org,
- Peter Maydell <peter.maydell@linaro.org>,
- Joel Stanley <joel@jms.id.au>, Andrew Jeffery <andrew@aj.id.au>,
- Alistair Francis <alistair@alistair23.me>,
- Francisco Iglesias <frasse.iglesias@gmail.com>,
- Iris Chen <irischenlj@fb.com>, Michael Walle <michael@walle.cc>
-Subject: Re: [PATCH v3 0/8] m25p80: Add SFDP support
-Message-ID: <Yz9bZGY69fg2Jyuh@heinlein>
-References: <20220722063602.128144-1-clg@kaod.org>
+ (Exim 4.90_1) (envelope-from <ani@anisinha.ca>) id 1ogeWa-0008L9-1n
+ for qemu-arm@nongnu.org; Thu, 06 Oct 2022 23:59:48 -0400
+Received: from mail-pg1-x536.google.com ([2607:f8b0:4864:20::536]:38822)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <ani@anisinha.ca>) id 1ogeWX-0005xM-8U
+ for qemu-arm@nongnu.org; Thu, 06 Oct 2022 23:59:47 -0400
+Received: by mail-pg1-x536.google.com with SMTP id 129so3580247pgc.5
+ for <qemu-arm@nongnu.org>; Thu, 06 Oct 2022 20:59:44 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=anisinha-ca.20210112.gappssmtp.com; s=20210112;
+ h=mime-version:references:message-id:in-reply-to:subject:cc:to:date
+ :from:from:to:cc:subject:date:message-id:reply-to;
+ bh=c317dYnxQFZQWlyGeFVdBMlu7n93374v7nILe6WpLLI=;
+ b=j24mJ0ft8UFm6gDBsVaeLGptmA1Fmme2uIMv5L8C+K5dN8dR3Hk2UlL1tudGLXs4S+
+ hJ4BKn3tFaFAx0TOCHHUtsyFYtylVuXCq6fMn0mE3kCOhU2n6NKTSolBkOWohYtEKSsD
+ hokngT0cOnHcksWT0dOBinjvf9anGUMXMOQJspXTOpxRRjkbPmLO/k7fTh80PSypwg4r
+ Q/zAyGpATeccudQsHLnlPfclifYWFN7BIU3SWp7Ozrqatv46yGjV965gtbqEkbSeVc5A
+ 6oK3XgBvs+DqkqUOC/OGAKt54We4bkeGfmRmoCz4ZqJOdsATPL/75NHnPS0JXGiDPRVt
+ xCwg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=mime-version:references:message-id:in-reply-to:subject:cc:to:date
+ :from:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=c317dYnxQFZQWlyGeFVdBMlu7n93374v7nILe6WpLLI=;
+ b=Xb2xsp/799cwWUHQAYWzTtY0wA6vQrckLAxCaZtlqQTBvCjLPs4O7V+IMPFUJ5l9XQ
+ BvAtkilKEDN5Wyl1a7h4ycxDQUXjjNrbV8xfkZi33eNWeqoNm0mczVy1gChpCM27XOiK
+ tX24isbcihJrOYvngbQq+5qCdojfi4RaDiNLAnjNbsAp2twKklqwuBJdAsvAHNRkU+OT
+ +PbuPMu45aiU2zZlleXDlpV1LobXlevcpIhH8XJIf3HUj5lXQy0tO7ZG8ba+PGep1B7u
+ vANUeNuFnHc3RXbT2/4GQp5+KmP6rO3R5nf230Ntfr06tr+pLysXL3I8W2sk2J8J1790
+ U0Gw==
+X-Gm-Message-State: ACrzQf1Mn4hN7t8t1NUyaxBZicvW6f2MC5FFf19P1Sn+idXv8OA4AFIS
+ 8dr+dDUui8Saw2jw9udDGzvElw==
+X-Received: by 2002:a05:6a00:e8f:b0:536:c98e:8307 with SMTP id
+ bo15-20020a056a000e8f00b00536c98e8307mr3211460pfb.73.1665115183077; 
+ Thu, 06 Oct 2022 20:59:43 -0700 (PDT)
+Received: from anisinha-lenovo ([115.96.124.100])
+ by smtp.googlemail.com with ESMTPSA id
+ e3-20020a056a0000c300b00561dcfa700asm439873pfj.107.2022.10.06.20.59.39
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 06 Oct 2022 20:59:42 -0700 (PDT)
+From: Ani Sinha <ani@anisinha.ca>
+X-Google-Original-From: Ani Sinha <anisinha@anisinha.ca>
+Date: Fri, 7 Oct 2022 09:29:37 +0530 (IST)
+To: Miguel Luis <miguel.luis@oracle.com>
+cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, mst@redhat.com, 
+ imammedo@redhat.com, ani@anisinha.ca, shannon.zhaosl@gmail.com, 
+ peter.maydell@linaro.org
+Subject: Re: [RFC PATCH 3/4] acpi: arm/virt: madt: bump to revision 4
+ accordingly to ACPI 6.0 Errata A
+In-Reply-To: <20221006161450.69912-4-miguel.luis@oracle.com>
+Message-ID: <a63d241c-20ab-ca11-6456-4fa0b9485366@anisinha.ca>
+References: <20221006161450.69912-1-miguel.luis@oracle.com>
+ <20221006161450.69912-4-miguel.luis@oracle.com>
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
- protocol="application/pgp-signature"; boundary="6DeqmZ9NATzA+Htl"
-Content-Disposition: inline
-In-Reply-To: <20220722063602.128144-1-clg@kaod.org>
-Received-SPF: pass client-ip=66.111.4.25; envelope-from=patrick@stwcx.xyz;
- helo=out1-smtp.messagingengine.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
-X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FROM_SUSPICIOUS_NTLD=0.001, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001,
- RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
- T_PDS_OTHER_BAD_TLD=0.01 autolearn=ham autolearn_force=no
+Content-Type: text/plain; charset=US-ASCII
+Received-SPF: none client-ip=2607:f8b0:4864:20::536;
+ envelope-from=ani@anisinha.ca; helo=mail-pg1-x536.google.com
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_NONE=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -138,70 +119,81 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: jm1WOqXy4iD7
+X-TUID: ktKVErPQZbRc
 
 
---6DeqmZ9NATzA+Htl
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
 
-On Fri, Jul 22, 2022 at 08:35:54AM +0200, C=E9dric Le Goater wrote:
->=20
-> C=E9dric Le Goater (8):
->   m25p80: Add basic support for the SFDP command
->   m25p80: Add the n25q256a SFDP table
->   m25p80: Add the mx25l25635e SFPD table
->   m25p80: Add the mx25l25635f SFPD table
->   m25p80: Add the mx66l1g45g SFDP table
->   m25p80: Add the w25q256 SFPD table
->   m25p80: Add the w25q512jv SFPD table
->   arm/aspeed: Replace mx25l25635e chip model
->=20
->  hw/block/m25p80_sfdp.h |  27 ++++
->  hw/arm/aspeed.c        |   6 +-
->  hw/block/m25p80.c      |  49 ++++++-
->  hw/block/m25p80_sfdp.c | 296 +++++++++++++++++++++++++++++++++++++++++
->  MAINTAINERS            |   2 +-
->  hw/block/meson.build   |   1 +
->  hw/block/trace-events  |   1 +
->  7 files changed, 371 insertions(+), 11 deletions(-)
->  create mode 100644 hw/block/m25p80_sfdp.h
->  create mode 100644 hw/block/m25p80_sfdp.c
->=20
-> --=20
-> 2.35.3
->=20
->=20
+On Thu, 6 Oct 2022, Miguel Luis wrote:
 
-It seems that the kernel spi-nor driver maintainers really prefer to use
-SFDP for parsing rather than relying on flags, so this support would be
-really good to get added to QEMU now.  I've tested this patch set and
-added (in reply to patch 8) support for the w25q01jvq chip.
+> MADT has been updated with the GIC Structures from ACPI 6.0 Errata A
+> and so MADT revision and GICC Structure must be updated also.
+>
+> Fixes: 37f33084ed2e ("acpi: arm/virt: madt: use build_append_int_noprefix() API to compose MADT table")
+>
+> Signed-off-by: Miguel Luis <miguel.luis@oracle.com>
 
-Tested-by: Patrick Williams <patrick@stwcx.xyz>
+Reviewed-by: Ani Sinha <ani@anisinha.ca>
 
---=20
-Patrick Williams
-
---6DeqmZ9NATzA+Htl
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAABCAAdFiEEBGD9ii4LE9cNbqJBqwNHzC0AwRkFAmM/W2IACgkQqwNHzC0A
-wRnLaw/+IwaofYagGUXreij3UOLwYRatAOxiB1v4A4jXINqmlFvVQ/E7Gnod0aPP
-VXYCf0O/d2zoR1ATyednznlUpNQ7/zf3SiwMNLNWixXOt511yLkNbcgrez67KL6k
-omvfAhWlTXl/YitYOBWw8cvdBPWeo85laTA8rT9PlWbsW9eFjF6h+IRLqYJFP54U
-mLiZfxkXvNY8DBBaPZ5H59R1j/3YiCW3TvhZsSYSDXDqlZMmMmKNgOohz5GuSTNg
-poEtIp/9Ott0eQ9C2eQnQwnQElUfjxUPvXKsIs5b+CLECGFkL/BvQSImH4opnkKi
-MjMZzapwjy8JlA9CNhv9ihyMYZzIctjYQEaIN9cHLs9488yAH3W4H6bVnsYqQfv0
-l/o+72bPmhTypoVvGPN0ASOXFrp2cv/y0IPi+ovihdL4Y95tRuCZFCJBiaoZGSn/
-1TvOd2h8klDxySNCy+CSpjBnxxX6y42ySHvDWT3qml78uFalQdO852WfJPsA+vUr
-P5b79RJAKhR5Clt+5y7Qcidhp6yU1FW2GVKiAMnVpCqcoOB2HHL/eFMNW0Z1r9X/
-0TL7C9IwLVmn1utya8DOyVlela1512AyuWD/wrGOE2nRHXrEPg7yTIxuMcPfHeEs
-5y4q0n7u+lzSUhWRgFISplUmTbtB8pif8vMYPfO0Y86SfSrzcRM=
-=504E
------END PGP SIGNATURE-----
-
---6DeqmZ9NATzA+Htl--
+> ---
+>  hw/arm/virt-acpi-build.c | 16 +++++++---------
+>  1 file changed, 7 insertions(+), 9 deletions(-)
+>
+> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+> index 72bb6f61a5..2d21e3cec4 100644
+> --- a/hw/arm/virt-acpi-build.c
+> +++ b/hw/arm/virt-acpi-build.c
+> @@ -686,7 +686,7 @@ build_dbg2(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+>  };
+>
+>  /*
+> - * ACPI spec, Revision 5.1 Errata A
+> + * ACPI spec, Revision 6.0 Errata A
+>   * 5.2.12 Multiple APIC Description Table (MADT)
+>   */
+>  static void build_append_gicr(GArray *table_data, uint64_t base, uint32_t size)
+> @@ -705,7 +705,7 @@ build_madt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+>      int i;
+>      VirtMachineClass *vmc = VIRT_MACHINE_GET_CLASS(vms);
+>      const MemMapEntry *memmap = vms->memmap;
+> -    AcpiTable table = { .sig = "APIC", .rev = 3, .oem_id = vms->oem_id,
+> +    AcpiTable table = { .sig = "APIC", .rev = 4, .oem_id = vms->oem_id,
+>                          .oem_table_id = vms->oem_table_id };
+>
+>      acpi_table_begin(&table, table_data);
+> @@ -740,7 +740,7 @@ build_madt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+>
+>          /* 5.2.12.14 GIC Structure */
+>          build_append_int_noprefix(table_data, 0xB, 1);  /* Type */
+> -        build_append_int_noprefix(table_data, 76, 1);   /* Length */
+> +        build_append_int_noprefix(table_data, 80, 1);   /* Length */
+>          build_append_int_noprefix(table_data, 0, 2);    /* Reserved */
+>          build_append_int_noprefix(table_data, i, 4);    /* GIC ID */
+>          build_append_int_noprefix(table_data, i, 4);    /* ACPI Processor UID */
+> @@ -760,6 +760,10 @@ build_madt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+>          build_append_int_noprefix(table_data, 0, 8);    /* GICR Base Address*/
+>          /* MPIDR */
+>          build_append_int_noprefix(table_data, armcpu->mp_affinity, 8);
+> +        /* Processor Power Efficiency Class */
+> +        build_append_int_noprefix(table_data, 0, 1);
+> +        /* Reserved */
+> +        build_append_int_noprefix(table_data, 0, 3);
+>      }
+>
+>      if (vms->gic_version != VIRT_GIC_VERSION_2) {
+> @@ -771,12 +775,6 @@ build_madt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+>          }
+>
+>          if (its_class_name() && !vmc->no_its) {
+> -            /*
+> -             * FIXME: Structure is from Revision 6.0 where 'GIC Structure'
+> -             * has additional fields on top of implemented 5.1 Errata A,
+> -             * to make it consistent with v6.0 we need to bump everything
+> -             * to v6.0
+> -             */
+>              /*
+>               * ACPI spec, Revision 6.0 Errata A
+>               * (original 6.0 definition has invalid Length)
+> --
+> 2.37.3
+>
+>

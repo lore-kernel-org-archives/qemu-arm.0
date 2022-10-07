@@ -1,93 +1,93 @@
-Received: by 2002:ac9:4144:0:0:0:0:0 with SMTP id u4csp535697ocg;
-        Fri, 7 Oct 2022 08:07:00 -0700 (PDT)
-X-Google-Smtp-Source: AMsMyM63WcYn8vg1ziK0SjCBlamukZ0bmZbHNFPTqQutBtrHcyimtKP5AC6Xbtcwx04qwObD0Q6o
-X-Received: by 2002:ab0:7789:0:b0:3be:fd5f:768f with SMTP id x9-20020ab07789000000b003befd5f768fmr3328310uar.109.1665155220133;
-        Fri, 07 Oct 2022 08:07:00 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1665155220; cv=none;
+Received: by 2002:ac9:4144:0:0:0:0:0 with SMTP id u4csp541003ocg;
+        Fri, 7 Oct 2022 08:13:45 -0700 (PDT)
+X-Google-Smtp-Source: AMsMyM7wSyrthWHNqW5z8mfAuph5cVkMtt5qTLlj8NQMwEcXIsTDXLjXWQh8beHtkJ4t6WiX7y7+
+X-Received: by 2002:a37:ac0e:0:b0:6e4:9fd5:bf1e with SMTP id e14-20020a37ac0e000000b006e49fd5bf1emr3995897qkm.84.1665155625290;
+        Fri, 07 Oct 2022 08:13:45 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1665155625; cv=none;
         d=google.com; s=arc-20160816;
-        b=R9jAYhK9NGf8bJPKhk7KSnEEpQIu37cFCzr8b38tn3vypd0p90s0hYSXCCJ1ylsKpg
-         nI/M9rhaW24D5Toisc0hG+FWdExoXO4zQyVUjdH1sRgxbgvZTfE8/dA+7W0h3tjBPgO6
-         YIeLIDMxRJhMhbGB/cthf9/5BkphgfUh+KD2ZAn4szkvjujF9qs3TmXg74GjtgTEiOIZ
-         VTkuFyVKmQVsFikSRdBAuZzdSM5ddBYRw589nXoHhpD7JhLeevJW2NqBzUgtHWE8T+yA
-         Q37Dax2Txju+CJZEenmqTnjdVky+9Xalgt648hiq/4EtI3ybuMggrgHB1xtY7AMTZruA
-         kHMA==
+        b=I3leSKNK429ffMEY95nYsQ6OrgvrT5qp19n707tCiKE0QNScBtuuMZqf/wdhexP6ap
+         FMlLuZi3un315uYtrTBkpLHT/1H44EyEBQGFtkuPRF0AJR9CiYD7WmbUmtZwecHr2Ar8
+         tj+ossfVX2ka7FVvVFVsOImtfX4j11381KR6FIcQqdRQPFGhP8yCz5CxpZ+ZRlkMOTvr
+         hsqZGlaAIGvTbHLhM9TX/fc0wWOSWOUWEGcP17nZRMtJSuemu56uy4Ysjm64DpVYilyT
+         uVwSwRwKLMt5C/NYRw8uBiaVAIu4WoOyim0RwqZtSMSvp3NP+IPhFVMSBKgW/HLaB82l
+         DFkg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:user-agent:in-reply-to
          :content-transfer-encoding:content-disposition:mime-version
          :references:message-id:subject:cc:to:from:date:dkim-signature;
-        bh=+TWImL9CpvbptDfjsOz50GyBvr3H40pFIFjnTh3cRNQ=;
-        b=U97YIVIcZHvtRuW5Gk8DARwHnoz7icJ5mVQsoc9W/DhhsftgsmJ+6pM5KRjTQcKyFr
-         2tsf8O2Nl3cw65RSrokomIX2UGvAqn3/LHqGmRMn7srOHXYtF4o9gtDyb1ah/8t2Phgh
-         VfKkFObR1pJMG1EZ6FZmjlz+jhl61Z6BIj7Nqp9bK0nDKuq77ud3XJjEqntcaIinBfHx
-         Xr35Kz2URA5ijZ5RDpHgiHib1USeCuh0Sh1JaOI1COKNySYExp2Pazg4Uhf12a8tpy+3
-         m/x6zem5htgcCREByaZz7a4Zc2dj4g6K64y517ZZiilsLTQK+Uwmqk/uW7o0yGykgPG0
-         5CdA==
+        bh=zLjZJqgVBLa0R+74x38dqaCOPvajibRWCIf/G8J0xz4=;
+        b=DSFr1hRwNUjwkX8c5J4Lifwk6uwkWnxS9LYIlh8TK87Vg70v89xwQudeILHp2jhjG1
+         dRWsN+yprrsh9+Xbf2D/Hh2IHW0UtH0ubpyQ4aH3DXBoH2mTmVcpnv+RvR06R6V++vQI
+         V4m2sRDWOb+cV27hgGOFvgMtF6G0+08HJ8BJ0d7sTKIp0eSndobXVHjbFvTJg6NqwrUi
+         CmxPZDK4lf0yWzEmue/JX6xWudbiTB8qGhIFsGP+IN3zTcwGF9C8z00eWT/i9YV5ADXc
+         zO7C2ECEMyxSn/3NBeiDWOFwN7Q0SO3cBSyMZlJePUfVrt+CssEX5G85gRWbR17dd17z
+         y2dQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=jVY2Co2E;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=TgcYFyxx;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id z21-20020ab02255000000b003bae82c433bsi400392uan.91.2022.10.07.08.07.00
+        by mx.google.com with ESMTPS id w21-20020a05620a445500b006cdf9845b57si935517qkp.590.2022.10.07.08.13.45
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 07 Oct 2022 08:07:00 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 07 Oct 2022 08:13:45 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=jVY2Co2E;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=TgcYFyxx;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:51790 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:54788 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ogowF-0002Mw-Kr
-	for alex.bennee@linaro.org; Fri, 07 Oct 2022 11:06:59 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46644)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1ogp2m-0000hW-Rf
+	for alex.bennee@linaro.org; Fri, 07 Oct 2022 11:13:44 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:39290)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <frasse.iglesias@gmail.com>)
- id 1ognsv-0000rw-L9; Fri, 07 Oct 2022 09:59:29 -0400
-Received: from mail-lf1-x12e.google.com ([2a00:1450:4864:20::12e]:33493)
+ id 1ognxi-0003VV-NM; Fri, 07 Oct 2022 10:04:29 -0400
+Received: from mail-lj1-x232.google.com ([2a00:1450:4864:20::232]:35546)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <frasse.iglesias@gmail.com>)
- id 1ognst-0000Tg-Sc; Fri, 07 Oct 2022 09:59:29 -0400
-Received: by mail-lf1-x12e.google.com with SMTP id j4so7554258lfk.0;
- Fri, 07 Oct 2022 06:59:26 -0700 (PDT)
+ id 1ognxf-0001Dg-3k; Fri, 07 Oct 2022 10:04:26 -0400
+Received: by mail-lj1-x232.google.com with SMTP id m14so5840202ljg.2;
+ Fri, 07 Oct 2022 07:04:21 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
  h=user-agent:in-reply-to:content-transfer-encoding
  :content-disposition:mime-version:references:message-id:subject:cc
  :to:from:date:from:to:cc:subject:date:message-id:reply-to;
- bh=+TWImL9CpvbptDfjsOz50GyBvr3H40pFIFjnTh3cRNQ=;
- b=jVY2Co2ENLd0DHW9YhWQGFBZe5QynXg1z7YtCXSIq279tIF2s1si5K+6rHYbi1tQrg
- tA4ZQMdx2p5tprGvm8C2IylpAOGM/qIt+7MaWVAPtlxu4Sgb7IJIfqekV0KTQKZtIwv8
- veyF9gLAuJZ6j+j1Zv8+3xu6SC8nSYnl0eSIDBSJEUIeh5QgaRD5Rk/hf+6ywgRxy0+9
- tHE2njuahJaNF62OpkKSq2CLeNtNPW8VhaVHZ2On4hIK6JyVscTm1743bVA7Zo5sCUNY
- ISI/pbWMNsFu0PoDqiVBocQJnUxZFquShOL7NfvJ4s2a+sw3McFRS4BymbUDCB5AMLL2
- NmIw==
+ bh=zLjZJqgVBLa0R+74x38dqaCOPvajibRWCIf/G8J0xz4=;
+ b=TgcYFyxxCVqzc5Z9+O/FTmX0M/LXB4zO1cSBFE6xpps/PEN+yLoGuYeWo6ntwXBdZg
+ wJd+oMTIi33SVof9Da7esTHFPSsalt7He6VjXGnisaWYVoDXtL5sWoLKCRYFH7SIzJRQ
+ oYgcXwRXHknz0KjEFHc3KbxJNsyZxL9eo7pQKl8rNWsjEkTs3HrmlzDpAT/8dEuk66XK
+ GvtbkfgQPyRDgbwaIgbyA1e5XrFYQKi3opn4Z0NGbW1wEAvy1giX+GQeMpXoCZGdqZa3
+ yjw/wZdxCygzc3Gusqg/n3WoBA6napbwe6rqtbsI08EQOgegKjV6TMBd5aOyAv1jIW2t
+ Eeew==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=user-agent:in-reply-to:content-transfer-encoding
  :content-disposition:mime-version:references:message-id:subject:cc
  :to:from:date:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=+TWImL9CpvbptDfjsOz50GyBvr3H40pFIFjnTh3cRNQ=;
- b=rpG4DLZ6kssX49/Ik3eM0lY4O4TzlwNnZanPmPggBTO/u2lqHWOyv4ZCEO1KUqJa7x
- ejE0n9oktp+QSYTMvPREtYQ6YwDKi7Hu8tIdT+zSFfpGqhuk9cH5oaSIZzcAZUQds0/6
- lWMnQAts3PT9yvBoz02s6kWy+8ymoHkJ8um2Lj5GQwd5Qy77I6uYEENWB7zgTp6sm+Sz
- VE0awUXkDDSjwMMsTcNwvjIQeYnYH+gyKQnh3Wnmq7VgThCVGiKhJNdeQizlSpVF+CEB
- PuR1cZVqoA4Oq66X8MO9irCWz0theFZNQmK+26TVbmh0l0PvvbJBOD7aLU/2+5FbPnIr
- CHBA==
-X-Gm-Message-State: ACrzQf3zdFTZwOrqMHGmsPSskB35gp03C4HAzPGe3CqukJbsMrY+TbFJ
- UUuVHFBvxiP8A9Sx2Ggn+X0=
-X-Received: by 2002:a05:6512:b17:b0:4a0:13c:9b3f with SMTP id
- w23-20020a0565120b1700b004a0013c9b3fmr1860420lfu.91.1665151165036; 
- Fri, 07 Oct 2022 06:59:25 -0700 (PDT)
+ bh=zLjZJqgVBLa0R+74x38dqaCOPvajibRWCIf/G8J0xz4=;
+ b=4RMXfjYs2BDK4zWw2YZ0o/j+6Y81WgsVJZ+BU1IEEvQKKNG4NOmbbLrHR2eiGA2XdE
+ pgdr6hlz0zLzqPZvOJuzncgGpLGyNRMZ2HRp9Vcy8P6cVBN2JrAXg7AtRRsVmQUfjbYO
+ NMmr6CnlKSPAG0IayYAGMyImd4IDm+FFr0DT0ePrNmTbsmzT7FP+JoIJtW6uqu/inUbl
+ Yl2Ck1xRZ/gXIlPxcnO5Ml5dUKAdDiy8efMMGLkdbTncfImlxICrc3OS1ccHtb5aCOU/
+ 5s9d3AX2iS17YR6sRd1bzRHu2I7sLAZN9muy+HVzrU6OZYpH7Bkg+gEExSBMWplmYpE9
+ O6bA==
+X-Gm-Message-State: ACrzQf3EPIf41UzEkA0BwO7Gd5hOOZ3LnQBm1vrXqZW6mo/AEuWY+KQo
+ Af9HvrE147Obg4Ao+gkiFp8=
+X-Received: by 2002:a05:651c:3da:b0:26d:fd58:cb3a with SMTP id
+ f26-20020a05651c03da00b0026dfd58cb3amr1796092ljp.454.1665151459765; 
+ Fri, 07 Oct 2022 07:04:19 -0700 (PDT)
 Received: from fralle-msi (31-208-27-151.cust.bredband2.com. [31.208.27.151])
  by smtp.gmail.com with ESMTPSA id
- f7-20020a056512360700b0048af4dc964asm309779lfs.73.2022.10.07.06.59.23
+ h7-20020a2ea487000000b0026bdb7ad643sm276456lji.50.2022.10.07.07.04.18
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 07 Oct 2022 06:59:24 -0700 (PDT)
-Date: Fri, 7 Oct 2022 15:59:22 +0200
+ Fri, 07 Oct 2022 07:04:18 -0700 (PDT)
+Date: Fri, 7 Oct 2022 16:04:16 +0200
 From: Francisco Iglesias <frasse.iglesias@gmail.com>
 To: =?iso-8859-1?Q?C=E9dric?= Le Goater <clg@kaod.org>
 Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, qemu-block@nongnu.org,
@@ -95,18 +95,18 @@ Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, qemu-block@nongnu.org,
  Joel Stanley <joel@jms.id.au>, Andrew Jeffery <andrew@aj.id.au>,
  Alistair Francis <alistair@alistair23.me>,
  Iris Chen <irischenlj@fb.com>, Michael Walle <michael@walle.cc>
-Subject: Re: [PATCH v3 3/8] m25p80: Add the mx25l25635e SFPD table
-Message-ID: <20221007135921.GB20384@fralle-msi>
+Subject: Re: [PATCH v3 8/8] arm/aspeed: Replace mx25l25635e chip model
+Message-ID: <20221007140414.GD20384@fralle-msi>
 References: <20220722063602.128144-1-clg@kaod.org>
- <20220722063602.128144-4-clg@kaod.org>
+ <20220722063602.128144-9-clg@kaod.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=iso-8859-1
 Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <20220722063602.128144-4-clg@kaod.org>
+In-Reply-To: <20220722063602.128144-9-clg@kaod.org>
 User-Agent: Mutt/1.10.1 (2018-07-13)
-Received-SPF: pass client-ip=2a00:1450:4864:20::12e;
- envelope-from=frasse.iglesias@gmail.com; helo=mail-lf1-x12e.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::232;
+ envelope-from=frasse.iglesias@gmail.com; helo=mail-lj1-x232.google.com
 X-Spam_score_int: -1020
 X-Spam_score: -102.1
 X-Spam_bar: ---------------------------------------------------
@@ -116,103 +116,65 @@ X-Spam_report: (-102.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  USER_IN_WELCOMELIST=-0.01,
  USER_IN_WHITELIST=-100 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: EZ/pEB4JnOPN
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: GVURUySK97vW
 
-Hi Cedric,
-
-On [2022 Jul 22] Fri 08:35:57, Cédric Le Goater wrote:
-> The SFDP table is 0x80 bytes long. The mandatory table for basic
-> features is available at byte 0x30 and an extra Macronix specific
-> table is available at 0x60.
-> 
-> 4B opcodes are not supported.
+On [2022 Jul 22] Fri 08:36:02, Cédric Le Goater wrote:
+> A mx25l25635f chip model is generally found on these machines. It's
+> newer and uses 4B opcodes which is better to exercise the support in
+> the Linux kernel.
 > 
 > Signed-off-by: Cédric Le Goater <clg@kaod.org>
-> ---
->  hw/block/m25p80_sfdp.h |  3 +++
->  hw/block/m25p80.c      |  3 ++-
->  hw/block/m25p80_sfdp.c | 26 ++++++++++++++++++++++++++
->  3 files changed, 31 insertions(+), 1 deletion(-)
-> 
-> diff --git a/hw/block/m25p80_sfdp.h b/hw/block/m25p80_sfdp.h
-> index d3a0a778ae84..0c46e669b335 100644
-> --- a/hw/block/m25p80_sfdp.h
-> +++ b/hw/block/m25p80_sfdp.h
-> @@ -17,4 +17,7 @@
->  
->  extern uint8_t m25p80_sfdp_n25q256a(uint32_t addr);
->  
-> +extern uint8_t m25p80_sfdp_mx25l25635e(uint32_t addr);
-
-We could be without 'extern' in above hdr if we like (also the other patches),
-either way:
 
 Reviewed-by: Francisco Iglesias <frasse.iglesias@gmail.com>
 
-> +
-> +
->  #endif
-> diff --git a/hw/block/m25p80.c b/hw/block/m25p80.c
-> index 13e7b28fd2b0..028b026d8ba2 100644
-> --- a/hw/block/m25p80.c
-> +++ b/hw/block/m25p80.c
-> @@ -232,7 +232,8 @@ static const FlashPartInfo known_devices[] = {
->      { INFO("mx25l6405d",  0xc22017,      0,  64 << 10, 128, 0) },
->      { INFO("mx25l12805d", 0xc22018,      0,  64 << 10, 256, 0) },
->      { INFO("mx25l12855e", 0xc22618,      0,  64 << 10, 256, 0) },
-> -    { INFO6("mx25l25635e", 0xc22019,     0xc22019,  64 << 10, 512, 0) },
-> +    { INFO6("mx25l25635e", 0xc22019,     0xc22019,  64 << 10, 512, 0),
-> +      .sfdp_read = m25p80_sfdp_mx25l25635e },
->      { INFO("mx25l25655e", 0xc22619,      0,  64 << 10, 512, 0) },
->      { INFO("mx66l51235f", 0xc2201a,      0,  64 << 10, 1024, ER_4K | ER_32K) },
->      { INFO("mx66u51235f", 0xc2253a,      0,  64 << 10, 1024, ER_4K | ER_32K) },
-> diff --git a/hw/block/m25p80_sfdp.c b/hw/block/m25p80_sfdp.c
-> index 24ec05de79a1..6499c4c39954 100644
-> --- a/hw/block/m25p80_sfdp.c
-> +++ b/hw/block/m25p80_sfdp.c
-> @@ -56,3 +56,29 @@ static const uint8_t sfdp_n25q256a[] = {
->      0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
->  };
->  define_sfdp_read(n25q256a);
-> +
-> +
-> +/*
-> + * Matronix
-> + */
-> +
-> +/* mx25l25635e. No 4B opcodes */
-> +static const uint8_t sfdp_mx25l25635e[] = {
-> +    0x53, 0x46, 0x44, 0x50, 0x00, 0x01, 0x01, 0xff,
-> +    0x00, 0x00, 0x01, 0x09, 0x30, 0x00, 0x00, 0xff,
-> +    0xc2, 0x00, 0x01, 0x04, 0x60, 0x00, 0x00, 0xff,
-> +    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
-> +    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
-> +    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
-> +    0xe5, 0x20, 0xf3, 0xff, 0xff, 0xff, 0xff, 0x0f,
-> +    0x44, 0xeb, 0x08, 0x6b, 0x08, 0x3b, 0x04, 0xbb,
-> +    0xee, 0xff, 0xff, 0xff, 0xff, 0xff, 0x00, 0xff,
-> +    0xff, 0xff, 0x00, 0xff, 0x0c, 0x20, 0x0f, 0x52,
-> +    0x10, 0xd8, 0x00, 0xff, 0xff, 0xff, 0xff, 0xff,
-> +    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
-> +    0x00, 0x36, 0x00, 0x27, 0xf7, 0x4f, 0xff, 0xff,
-> +    0xd9, 0xc8, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
-> +    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
-> +    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
-> +};
-> +define_sfdp_read(mx25l25635e)
+> ---
+>  hw/arm/aspeed.c | 6 +++---
+>  1 file changed, 3 insertions(+), 3 deletions(-)
+> 
+> diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
+> index 1c611284819d..7e95abc55b09 100644
+> --- a/hw/arm/aspeed.c
+> +++ b/hw/arm/aspeed.c
+> @@ -1157,7 +1157,7 @@ static void aspeed_machine_palmetto_class_init(ObjectClass *oc, void *data)
+>      amc->soc_name  = "ast2400-a1";
+>      amc->hw_strap1 = PALMETTO_BMC_HW_STRAP1;
+>      amc->fmc_model = "n25q256a";
+> -    amc->spi_model = "mx25l25635e";
+> +    amc->spi_model = "mx25l25635f";
+>      amc->num_cs    = 1;
+>      amc->i2c_init  = palmetto_bmc_i2c_init;
+>      mc->default_ram_size       = 256 * MiB;
+> @@ -1208,7 +1208,7 @@ static void aspeed_machine_ast2500_evb_class_init(ObjectClass *oc, void *data)
+>      amc->soc_name  = "ast2500-a1";
+>      amc->hw_strap1 = AST2500_EVB_HW_STRAP1;
+>      amc->fmc_model = "mx25l25635e";
+> -    amc->spi_model = "mx25l25635e";
+> +    amc->spi_model = "mx25l25635f";
+>      amc->num_cs    = 1;
+>      amc->i2c_init  = ast2500_evb_i2c_init;
+>      mc->default_ram_size       = 512 * MiB;
+> @@ -1258,7 +1258,7 @@ static void aspeed_machine_witherspoon_class_init(ObjectClass *oc, void *data)
+>      mc->desc       = "OpenPOWER Witherspoon BMC (ARM1176)";
+>      amc->soc_name  = "ast2500-a1";
+>      amc->hw_strap1 = WITHERSPOON_BMC_HW_STRAP1;
+> -    amc->fmc_model = "mx25l25635e";
+> +    amc->fmc_model = "mx25l25635f";
+>      amc->spi_model = "mx66l1g45g";
+>      amc->num_cs    = 2;
+>      amc->i2c_init  = witherspoon_bmc_i2c_init;
 > -- 
 > 2.35.3
 > 

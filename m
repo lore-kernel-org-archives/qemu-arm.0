@@ -1,93 +1,93 @@
-Received: by 2002:ac9:4144:0:0:0:0:0 with SMTP id u4csp564426ocg;
-        Fri, 7 Oct 2022 08:47:37 -0700 (PDT)
-X-Google-Smtp-Source: AMsMyM4Gv4OoR6pd6aY6alawrL06VMq81j0DvbiUPqOlY5DRLCTRsP+8VhStiWYZwSB04yuPagOG
-X-Received: by 2002:a05:6214:27e5:b0:4ac:a637:729 with SMTP id jt5-20020a05621427e500b004aca6370729mr4570801qvb.73.1665157657005;
-        Fri, 07 Oct 2022 08:47:37 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1665157657; cv=none;
+Received: by 2002:ac9:4144:0:0:0:0:0 with SMTP id u4csp565505ocg;
+        Fri, 7 Oct 2022 08:49:33 -0700 (PDT)
+X-Google-Smtp-Source: AMsMyM56L/Ni72t5K3ZpE7q6IqoFiqik+1EGBrRURGuRlYxelVN/T53OMKsxrjYqcpekqT80OXZp
+X-Received: by 2002:ad4:5f0e:0:b0:4b1:cfa1:3c59 with SMTP id fo14-20020ad45f0e000000b004b1cfa13c59mr4710733qvb.130.1665157773633;
+        Fri, 07 Oct 2022 08:49:33 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1665157773; cv=none;
         d=google.com; s=arc-20160816;
-        b=VJXslqtU/3gF7LozueMZabVoPJQ8P6YwrNh2BMadGiEZEzM1/jV6PhDy4Zll1fLFp5
-         um6nbBifsoby3s4OOJmTUuGgNAXWxR/AT5NsHFucZ0UwMAnrfVWht1J1vux/gCnlPSG8
-         UipBE0LNEXTUNeZ9ZfSIuqK3sohuET4HBDZ+Q7L1cLggS1tDHhIBksOp81OM5hMd6Ak+
-         IxFV96fr5TElA8mCQyw6/Dz1DH5cGu4e5Cp0qxCku65/udag8/ME90Zzsz2aeTKQhid9
-         EtQGLJHr1fMHFIPSDohuO7mG2Eofc/o5ZIswZHz8UQdRszxJemzjreTilOzGPlABX0+i
-         fmkQ==
+        b=kGH5EcyR6M5gn3UX9oN7J9waSw52mwWtBOtVOtwt+siRBpyfyaH31c3n+FBusx+B8f
+         Sf7/3CNJ4UGgD2BK6Fmv1iZ4cOP637m3EwGtMRNHpyf2jNBlRkGOZLh+H9oTAza6URy4
+         OnqEuKF0vkC3wHzCOD0+P2Dzf8Y1yuhtQhJyyyv/uQ+fTNbuiF++etiB3OklZq/YGlqz
+         gV+YsEbf3nTK67cEFcaYOdtxJcge5CvTRUU6xPSq61s5TVVpJEsMOgd28QXZTpUgg6Hd
+         nK2zSK1Wayoemp2UJ+I9p7COzpkyquk0CsB657ZcRWqXK61qnBNWzyLWj6m1IRUnCWsi
+         OV5g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:user-agent:in-reply-to
          :content-transfer-encoding:content-disposition:mime-version
          :references:message-id:subject:cc:to:from:date:dkim-signature;
-        bh=I3FsUtEdz8eRgdJEYD+dMXSNHOFwTB9u3Mc+602Wzec=;
-        b=BRD6AXlZScjPD+7uFNxj4F+8BkMixkp4ZBE2rbjpVASvq/u0ag4O6zPLB/N/niYejk
-         68Of5VY7zxj5lrC07/UioS3oxl6juZ5SnsGi1BFysiQLouOZrsU/9T+Zn0hoAgxRoZIe
-         PFoI9AnXoPDRIFoIozjYAf2BglQFRktHsm+gHo1YGoewTnNipcMlPraV72gRbTpjyoF5
-         X5l0MAvp5bN1l99jvIQoeeldk8K5WlY9Axod/kG5f6E0QJjNALHyn7kCxC8jn/2bbbKi
-         QlXFHq+tPvJacf1vXu97JRim0r2pvj0udCPsAHK7CsbL7ahK7D2hsmHY89xLTQWLv8fr
-         UduA==
+        bh=BdHqOg2Gu9jxzhSC1couJYAt5WgalzoWVDJHsPqJhi0=;
+        b=Pjaz61Wcjus4amblDeS1CdUAB/kilWJT37FI09JQKf/ZCO9s9hl29DcvHtIXoaRwgL
+         eIUCZSEfKBBXiC2iA0HsAC+ZaxPdhsFQkfGAUcqaHC5hfKtdavCcmMCLqYvHePZBtDoh
+         T4hzfXlYV+YJIxjfyJPwtOJQgha8NpswQN19t+of00X+rGMSp25JKzfiZwrv2tAmzkNq
+         vhbNWuNagQr+H6ShQI9i+o1UxVeuacBm808hNHN0RATv89hflLx+s1E/zFBnmcu4KNRy
+         hGT+oQ411YhRCFFuHYnooFTwPPwIDx+cxpGSJIuDfHXnbOoyjvSCfzZl21JhlTZiizkY
+         kbBA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=WBZ2gmF0;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=bxhYhABe;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v12-20020ac873cc000000b0035d43b31781si1240825qtp.227.2022.10.07.08.47.36
+        by mx.google.com with ESMTPS id k5-20020ad45be5000000b00499325c3a60si932968qvc.533.2022.10.07.08.49.33
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 07 Oct 2022 08:47:36 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 07 Oct 2022 08:49:33 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=WBZ2gmF0;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=bxhYhABe;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:40506 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:39282 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ogpZY-00031j-D4
-	for alex.bennee@linaro.org; Fri, 07 Oct 2022 11:47:36 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:57128)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1ogpbR-0006kv-7F
+	for alex.bennee@linaro.org; Fri, 07 Oct 2022 11:49:33 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41122)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <frasse.iglesias@gmail.com>)
- id 1ognxB-0003RW-Jm; Fri, 07 Oct 2022 10:03:55 -0400
-Received: from mail-lf1-x130.google.com ([2a00:1450:4864:20::130]:34469)
+ id 1ogp2v-0002Pf-Lu; Fri, 07 Oct 2022 11:13:53 -0400
+Received: from mail-lf1-x134.google.com ([2a00:1450:4864:20::134]:33385)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <frasse.iglesias@gmail.com>)
- id 1ognx6-00018k-Cn; Fri, 07 Oct 2022 10:03:53 -0400
-Received: by mail-lf1-x130.google.com with SMTP id a29so7482510lfo.1;
- Fri, 07 Oct 2022 07:03:46 -0700 (PDT)
+ id 1ogp2t-0004HB-Vk; Fri, 07 Oct 2022 11:13:53 -0400
+Received: by mail-lf1-x134.google.com with SMTP id j4so7863158lfk.0;
+ Fri, 07 Oct 2022 08:13:50 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
  h=user-agent:in-reply-to:content-transfer-encoding
  :content-disposition:mime-version:references:message-id:subject:cc
  :to:from:date:from:to:cc:subject:date:message-id:reply-to;
- bh=I3FsUtEdz8eRgdJEYD+dMXSNHOFwTB9u3Mc+602Wzec=;
- b=WBZ2gmF0rV5QFJTi9WoLHbW/8SKk7fpn4kS9jGuMFcnb2zqfznmUPwNu1zLUSXFdRe
- 4XhDFQhbu2+QkzuLVdG7GIcdgYrzRzj9Y58LooQH61tKRCSR95nWr8/x8xtnH3WhWyju
- WzMjlaVttLI6nXPZ4RwGZK39YDWa8h+jEwIDCtpSBVe0i1q1OBVWwE9Kms3ZY0iEuAcF
- tPHdaE4vn0FaJxSflSHYS4rtNzUr57R2xTPIkLhrJo+q8sFeGpuzaaMOfplfCbOq8m9s
- ER6hU6NSYAvQORJ/NX4EHsxPL6Kg0xlSfz73jz+hobTpHq9SZR5yQeKYWhNwr4T8PNGH
- S40w==
+ bh=BdHqOg2Gu9jxzhSC1couJYAt5WgalzoWVDJHsPqJhi0=;
+ b=bxhYhABeaY/Z2c27V0SvBlsZshUkqpu9E72vmZ5wAbTRi6YbQlJvPzAT/sbh83CWg+
+ DA+xO1t/19IhKj28zs/9DMgqKxJ//8SG0qNB01IsMco9UB3E8oIIKLBvasO716opSAWV
+ LzvQNIiWO5y1BHOajuwk1xLSYsoc4ZlRrYKE8ZqfKX8a23deyxvaKWu0w0NIn1OT8Eth
+ OfLe+S1QGJQ74MUf1PvJy2MwFwC7ZYWacRNqfBEjIEBi5k3GHNM5lgGFbfdTfKLPm4BA
+ z/rGNDG1rH8rhhjKfxKE/smAzJRRfQalci1/jVBasirbQ57jTF6z+Cre94KIrCArx+nK
+ a3Sw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=user-agent:in-reply-to:content-transfer-encoding
  :content-disposition:mime-version:references:message-id:subject:cc
  :to:from:date:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=I3FsUtEdz8eRgdJEYD+dMXSNHOFwTB9u3Mc+602Wzec=;
- b=LFARfR6yvLbAhYhJVqG+100oGVDDet6deojt2inzfOZIp08NUEQzVzMJzG5YFIhC2+
- p7wTf8FnWrcvze2r8PuBwfJS5fYg+bKeG+Rb6gifz2lCX1OA12SOmvo5cxG6snYBsr4C
- jjJulDqJyqwz5XFffj2JTVZafvW6zzjy8r7L0dXqc2VxGHXcESYaiKbW3qHYakX0vpDR
- kOc+KaWs39P0HI3vOCkBPNyDcd0iTT0UP+qEXHK3yTRsiskH6/pmORJ3+eTEd0RH1tSb
- X/fNKDFAFqU8Tct8YDTBcYJICIUf3Ky5S5mBtm5rN/oAhOKJcD2H81FlK3u2FfFiUr4Z
- IV1Q==
-X-Gm-Message-State: ACrzQf3yhiBTjz5PZfzmv4nWwyO4VT9OVP0fo1Y4AsjMUHKeTy3KKwSO
- G50cp/GaAGLRlcDQYzf54osC4GsH8UwCkA==
-X-Received: by 2002:a05:6512:3f08:b0:4a1:af5e:5643 with SMTP id
- y8-20020a0565123f0800b004a1af5e5643mr1954821lfa.86.1665151423846; 
- Fri, 07 Oct 2022 07:03:43 -0700 (PDT)
+ bh=BdHqOg2Gu9jxzhSC1couJYAt5WgalzoWVDJHsPqJhi0=;
+ b=naNEDPMTGHue2qYoJMvnw5DbrW1zxy6QiZSdSPqqimHE1dl21eeuNLY7MaVquQRzUG
+ ieZcYuoUSDiEy+8nKCTqmqdJsfRAKCIl75rVNomjceYjobW/CbZUxQAldoTQGv7trerB
+ TB1qoblAN8aTaRl0PC9BNnkjVX0jss9+DKeYjhMW8+oMVC3MmZSgr42lH1PnZBDcYIP3
+ C7hWsgApjN3pylzCvDe/TW0lAIhrRhulionEWdybHnn8HojnpNHhbnvtlT+UAQAhMpp7
+ 7YE4iHhXJ0OT+Dt8vYmxkPqA6K+C0VIQYf5hlMkjMCVALsy7D7ZrsBbFgiIiVexSXEdI
+ zO+Q==
+X-Gm-Message-State: ACrzQf0eMwi6ye83oW0YVqYDQzFUrTWF13/1w58rFvHsQQAD2bJ8Nt7t
+ 7CXExcF06iwyA3z5KmdbkX8=
+X-Received: by 2002:a05:6512:798:b0:497:aa2b:8b10 with SMTP id
+ x24-20020a056512079800b00497aa2b8b10mr2274819lfr.636.1665155629075; 
+ Fri, 07 Oct 2022 08:13:49 -0700 (PDT)
 Received: from fralle-msi (31-208-27-151.cust.bredband2.com. [31.208.27.151])
  by smtp.gmail.com with ESMTPSA id
- j6-20020a2eb706000000b0026dcf81d804sm277347ljo.31.2022.10.07.07.03.41
+ v18-20020a05651203b200b00494813c689dsm321033lfp.219.2022.10.07.08.13.47
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 07 Oct 2022 07:03:42 -0700 (PDT)
-Date: Fri, 7 Oct 2022 16:03:40 +0200
+ Fri, 07 Oct 2022 08:13:47 -0700 (PDT)
+Date: Fri, 7 Oct 2022 17:13:45 +0200
 From: Francisco Iglesias <frasse.iglesias@gmail.com>
 To: =?iso-8859-1?Q?C=E9dric?= Le Goater <clg@kaod.org>
 Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, qemu-block@nongnu.org,
@@ -95,18 +95,18 @@ Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, qemu-block@nongnu.org,
  Joel Stanley <joel@jms.id.au>, Andrew Jeffery <andrew@aj.id.au>,
  Alistair Francis <alistair@alistair23.me>,
  Iris Chen <irischenlj@fb.com>, Michael Walle <michael@walle.cc>
-Subject: Re: [PATCH v3 2/8] m25p80: Add the n25q256a SFDP table
-Message-ID: <20221007140337.GC20384@fralle-msi>
+Subject: Re: [PATCH v3 6/8] m25p80: Add the w25q256 SFPD table
+Message-ID: <20221007151344.GG20384@fralle-msi>
 References: <20220722063602.128144-1-clg@kaod.org>
- <20220722063602.128144-3-clg@kaod.org>
+ <20220722063602.128144-7-clg@kaod.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=iso-8859-1
 Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <20220722063602.128144-3-clg@kaod.org>
+In-Reply-To: <20220722063602.128144-7-clg@kaod.org>
 User-Agent: Mutt/1.10.1 (2018-07-13)
-Received-SPF: pass client-ip=2a00:1450:4864:20::130;
- envelope-from=frasse.iglesias@gmail.com; helo=mail-lf1-x130.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::134;
+ envelope-from=frasse.iglesias@gmail.com; helo=mail-lf1-x134.google.com
 X-Spam_score_int: -1020
 X-Spam_score: -102.1
 X-Spam_bar: ---------------------------------------------------
@@ -116,123 +116,77 @@ X-Spam_report: (-102.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  USER_IN_WELCOMELIST=-0.01,
  USER_IN_WHITELIST=-100 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: IRbUjM85ArtX
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: u0EQreUmUwS+
 
-On [2022 Jul 22] Fri 08:35:56, Cédric Le Goater wrote:
-> The same values were collected on 4 differents OpenPower systems,
-> palmettos, romulus and tacoma.
-> 
-> The SFDP table size is defined as being 0x100 bytes but it could be
-> bigger. Only the mandatory table for basic features is available at
-> byte 0x30.
+On [2022 Jul 22] Fri 08:36:00, Cédric Le Goater wrote:
+> The SFDP table size is 0x100 bytes long. Only the mandatory table for
+> basic features is available at byte 0x80.
 > 
 > Signed-off-by: Cédric Le Goater <clg@kaod.org>
 > ---
 >  hw/block/m25p80_sfdp.h |  2 ++
->  hw/block/m25p80.c      |  8 +++---
->  hw/block/m25p80_sfdp.c | 58 ++++++++++++++++++++++++++++++++++++++++++
->  hw/block/meson.build   |  1 +
->  4 files changed, 66 insertions(+), 3 deletions(-)
->  create mode 100644 hw/block/m25p80_sfdp.c
+>  hw/block/m25p80.c      |  3 ++-
+>  hw/block/m25p80_sfdp.c | 40 ++++++++++++++++++++++++++++++++++++++++
+>  3 files changed, 44 insertions(+), 1 deletion(-)
 > 
 > diff --git a/hw/block/m25p80_sfdp.h b/hw/block/m25p80_sfdp.h
-> index 230b07ef3308..d3a0a778ae84 100644
+> index 468e3434151b..f60429ab8542 100644
 > --- a/hw/block/m25p80_sfdp.h
 > +++ b/hw/block/m25p80_sfdp.h
-> @@ -15,4 +15,6 @@
->   */
->  #define M25P80_SFDP_MAX_SIZE  (1 << 24)
+> @@ -21,4 +21,6 @@ extern uint8_t m25p80_sfdp_mx25l25635e(uint32_t addr);
+>  extern uint8_t m25p80_sfdp_mx25l25635f(uint32_t addr);
+>  extern uint8_t m25p80_sfdp_mx66l1g45g(uint32_t addr);
 >  
-> +extern uint8_t m25p80_sfdp_n25q256a(uint32_t addr);
+> +extern uint8_t m25p80_sfdp_w25q256(uint32_t addr);
+(optional -extern)
 
-(-extern above if we would like)
-
+Reviewed-by: Francisco Iglesias <frasse.iglesias@gmail.com>
 
 > +
 >  #endif
 > diff --git a/hw/block/m25p80.c b/hw/block/m25p80.c
-> index abdc4c0b0da7..13e7b28fd2b0 100644
+> index 52df24d24751..220dbc8fb327 100644
 > --- a/hw/block/m25p80.c
 > +++ b/hw/block/m25p80.c
-> @@ -247,13 +247,15 @@ static const FlashPartInfo known_devices[] = {
->      { INFO("n25q128a11",  0x20bb18,      0,  64 << 10, 256, ER_4K) },
->      { INFO("n25q128a13",  0x20ba18,      0,  64 << 10, 256, ER_4K) },
->      { INFO("n25q256a11",  0x20bb19,      0,  64 << 10, 512, ER_4K) },
-> -    { INFO("n25q256a13",  0x20ba19,      0,  64 << 10, 512, ER_4K) },
-> +    { INFO("n25q256a13",  0x20ba19,      0,  64 << 10, 512, ER_4K),
-> +      .sfdp_read = m25p80_sfdp_n25q256a },
->      { INFO("n25q512a11",  0x20bb20,      0,  64 << 10, 1024, ER_4K) },
->      { INFO("n25q512a13",  0x20ba20,      0,  64 << 10, 1024, ER_4K) },
->      { INFO("n25q128",     0x20ba18,      0,  64 << 10, 256, 0) },
->      { INFO("n25q256a",    0x20ba19,      0,  64 << 10, 512,
-> -           ER_4K | HAS_SR_BP3_BIT6 | HAS_SR_TB) },
-> -    { INFO("n25q512a",    0x20ba20,      0,  64 << 10, 1024, ER_4K) },
-> +           ER_4K | HAS_SR_BP3_BIT6 | HAS_SR_TB),
-> +      .sfdp_read = m25p80_sfdp_n25q256a },
-> +   { INFO("n25q512a",    0x20ba20,      0,  64 << 10, 1024, ER_4K) },
->      { INFO("n25q512ax3",  0x20ba20,  0x1000,  64 << 10, 1024, ER_4K) },
->      { INFO("mt25ql512ab", 0x20ba20, 0x1044, 64 << 10, 1024, ER_4K | ER_32K) },
->      { INFO_STACKED("mt35xu01g", 0x2c5b1b, 0x104100, 128 << 10, 1024,
+> @@ -345,7 +345,8 @@ static const FlashPartInfo known_devices[] = {
+>      { INFO("w25q64",      0xef4017,      0,  64 << 10, 128, ER_4K) },
+>      { INFO("w25q80",      0xef5014,      0,  64 << 10,  16, ER_4K) },
+>      { INFO("w25q80bl",    0xef4014,      0,  64 << 10,  16, ER_4K) },
+> -    { INFO("w25q256",     0xef4019,      0,  64 << 10, 512, ER_4K) },
+> +    { INFO("w25q256",     0xef4019,      0,  64 << 10, 512, ER_4K),
+> +      .sfdp_read = m25p80_sfdp_w25q256 },
+>      { INFO("w25q512jv",   0xef4020,      0,  64 << 10, 1024, ER_4K) },
+>      { INFO("w25q01jvq",   0xef4021,      0,  64 << 10, 2048, ER_4K) },
+>  };
 > diff --git a/hw/block/m25p80_sfdp.c b/hw/block/m25p80_sfdp.c
-> new file mode 100644
-> index 000000000000..24ec05de79a1
-> --- /dev/null
+> index 38c3ced34d2e..5b011559d43d 100644
+> --- a/hw/block/m25p80_sfdp.c
 > +++ b/hw/block/m25p80_sfdp.c
-> @@ -0,0 +1,58 @@
-> +/*
-> + * M25P80 Serial Flash Discoverable Parameter (SFDP)
-> + *
-> + * Copyright (c) 2020, IBM Corporation.
-> + *
-> + * This code is licensed under the GPL version 2 or later. See the
-> + * COPYING file in the top-level directory.
-> + */
-> +
-> +#include "qemu/osdep.h"
-> +#include "qemu/host-utils.h"
-> +#include "m25p80_sfdp.h"
-> +
-> +#define define_sfdp_read(model)                                       \
-> +    uint8_t m25p80_sfdp_##model(uint32_t addr)                        \
-> +    {                                                                 \
-> +        assert(is_power_of_2(sizeof(sfdp_##model)));                  \
-> +        return sfdp_##model[addr & (sizeof(sfdp_##model) - 1)];       \
-> +    }
+> @@ -218,3 +218,43 @@ static const uint8_t sfdp_mx66l1g45g[] = {
+>      0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
+>  };
+>  define_sfdp_read(mx66l1g45g);
 > +
 > +/*
-> + * Micron
+> + * Windbond
 > + */
-> +static const uint8_t sfdp_n25q256a[] = {
-
-The datasheets I found wasn't completetly as this table but I can't argue
-with the hw read out of 4 flashes.
-
-Reviewed-by: Francisco Iglesias <frasse.iglesias@gmail.com>
-
+> +
+> +static const uint8_t sfdp_w25q256[] = {
 > +    0x53, 0x46, 0x44, 0x50, 0x00, 0x01, 0x00, 0xff,
-> +    0x00, 0x00, 0x01, 0x09, 0x30, 0x00, 0x00, 0xff,
-> +    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
-> +    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
-> +    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
-> +    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
-> +    0xe5, 0x20, 0xfb, 0xff, 0xff, 0xff, 0xff, 0x0f,
-> +    0x29, 0xeb, 0x27, 0x6b, 0x08, 0x3b, 0x27, 0xbb,
-> +    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0x27, 0xbb,
-> +    0xff, 0xff, 0x29, 0xeb, 0x0c, 0x20, 0x10, 0xd8,
-> +    0x00, 0x00, 0x00, 0x00, 0xff, 0xff, 0xff, 0xff,
+> +    0x00, 0x00, 0x01, 0x09, 0x80, 0x00, 0x00, 0xff,
 > +    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
 > +    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
 > +    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
@@ -243,6 +197,15 @@ Reviewed-by: Francisco Iglesias <frasse.iglesias@gmail.com>
 > +    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
 > +    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
 > +    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
+> +    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
+> +    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
+> +    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
+> +    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
+> +    0xe5, 0x20, 0xf3, 0xff, 0xff, 0xff, 0xff, 0x0f,
+> +    0x44, 0xeb, 0x08, 0x6b, 0x08, 0x3b, 0x42, 0xbb,
+> +    0xfe, 0xff, 0xff, 0xff, 0xff, 0xff, 0x00, 0x00,
+> +    0xff, 0xff, 0x21, 0xeb, 0x0c, 0x20, 0x0f, 0x52,
+> +    0x10, 0xd8, 0x00, 0x00, 0xff, 0xff, 0xff, 0xff,
 > +    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
 > +    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
 > +    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
@@ -255,19 +218,7 @@ Reviewed-by: Francisco Iglesias <frasse.iglesias@gmail.com>
 > +    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
 > +    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
 > +};
-> +define_sfdp_read(n25q256a);
-> diff --git a/hw/block/meson.build b/hw/block/meson.build
-> index 2389326112ae..3129ca4c52eb 100644
-> --- a/hw/block/meson.build
-> +++ b/hw/block/meson.build
-> @@ -12,6 +12,7 @@ softmmu_ss.add(when: 'CONFIG_ONENAND', if_true: files('onenand.c'))
->  softmmu_ss.add(when: 'CONFIG_PFLASH_CFI01', if_true: files('pflash_cfi01.c'))
->  softmmu_ss.add(when: 'CONFIG_PFLASH_CFI02', if_true: files('pflash_cfi02.c'))
->  softmmu_ss.add(when: 'CONFIG_SSI_M25P80', if_true: files('m25p80.c'))
-> +softmmu_ss.add(when: 'CONFIG_SSI_M25P80', if_true: files('m25p80_sfdp.c'))
->  softmmu_ss.add(when: 'CONFIG_SWIM', if_true: files('swim.c'))
->  softmmu_ss.add(when: 'CONFIG_XEN', if_true: files('xen-block.c'))
->  softmmu_ss.add(when: 'CONFIG_TC58128', if_true: files('tc58128.c'))
+> +define_sfdp_read(w25q256);
 > -- 
 > 2.35.3
 > 

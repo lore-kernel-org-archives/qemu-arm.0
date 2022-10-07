@@ -1,219 +1,141 @@
-Received: by 2002:ac9:4144:0:0:0:0:0 with SMTP id u4csp607027ocg;
-        Fri, 7 Oct 2022 09:51:28 -0700 (PDT)
-X-Google-Smtp-Source: AMsMyM6zhBgCoZV83YBJZk8/bZULIccBs3LkL8446wJ5RiXfuLDYyDrgJmd1+XrOdTbk5qJY5azz
-X-Received: by 2002:a05:6214:c22:b0:4b1:9949:b4ab with SMTP id a2-20020a0562140c2200b004b19949b4abmr4890580qvd.83.1665161488535;
-        Fri, 07 Oct 2022 09:51:28 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1665161488; cv=none;
+Received: by 2002:ac9:4144:0:0:0:0:0 with SMTP id u4csp607280ocg;
+        Fri, 7 Oct 2022 09:51:54 -0700 (PDT)
+X-Google-Smtp-Source: AMsMyM6Twyd7XJe35i4oOGCO0Wds0Od2yU4uduK3hJwnaNJxubFzN36N0A1lBx+JR/1WawI+mTe6
+X-Received: by 2002:a05:620a:371f:b0:6dd:bf63:565f with SMTP id de31-20020a05620a371f00b006ddbf63565fmr4397136qkb.754.1665161513908;
+        Fri, 07 Oct 2022 09:51:53 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1665161513; cv=none;
         d=google.com; s=arc-20160816;
-        b=wdnejiM1KUsLZi5e9ewMNjutAn+bgSi/nV+Be5Uqv6ygEzGKMUz7+/vs7+g6sFZPTF
-         yOXS+88w+2q0S8SqRq79jgmxHKQ9AsOlOQvgrB1XpCzI63JK6tSbPIgtFhNJ+pG+mkDB
-         iqjVck9lP0IDcwIIwovj7UaY7wpnVm85iUVeP/a7nYNuP7z9C757wrL0e/siwXSK1VGS
-         rRSkWya3R5G0Zmud7ngqVtU7LST59HuicKW8243kqAXvbOb2gM5hmm6LoIr9yuxoMRCM
-         Hg524IBxTw4bcfJmACSlFmV68w7w86PubrJL2oSPqQrTdwLa1bhybVJUqLlFs3KNzNl3
-         gihA==
+        b=z9nm6PMujiV5TImRhQDnnT/Gm8xqJW+afDVLwtbrlMgl3NmzqpU5/vLimzq7WQ0Kb/
+         qP3mIMyZfJDPRbx1C8Blae7E1yjryYDhSdQCtQEVrnmHF+XshU51SvSfpgWSyI1PFYLm
+         jmMBLSofKC5ckB6xXcOJOxUVfx8x8wmiuvx5zwMpszS5AKXKbI+7N4UJMI8q3/wFgqMC
+         FoZJx/GzAb0Ev/TczCJ8aHTFQh8ysMd/shZyZJw4BoBoY3yL5qLRruIjMasZ+LYzbgtB
+         F82XNh8fUxMzt+3i3cnb0oA2S9hYGrrAPqKxCbluBg6K/HIC+xMeu+2TKNs30MN5dhOs
+         9FWg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:cc:to:content-language:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=YjKcAW1hxwlU3hdHTNn8AUZZ4Ce3sTTG7K+u9186FJ0=;
-        b=cmotXQHy/aYoFutoT97NuLAjzTjVXXs/2AeUuXSj0gfuXWfHQjsq4c5aCJWsk+XCGR
-         GlxFEqX0lPDrCATWAx1iiB8bEelVtPzLO6gGNdLQFCP3F0c6d/VUr3Kvr4nHTJnj7PWe
-         iE5PgtG8bOA+x7Bgw/lV2pppgYGm9PBNeCZ0oISZzI/VhRYURqHNieDXegYLlGu+ajjL
-         MwoSfrrqXOQk1A8Y3rVhV6FWFIZDeX1qrgc8wNKD+fMPsfhU8oLf0McJByX3xjdIWWvM
-         44tYsyP05W7dQLf9qBcd1Hn+VhqeAfyfAeiAHQcT+n5cOMslTN6dxtH0e6aPPmrJ7kU+
-         q64Q==
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=WmZ1iLaRWTR5WM0lMJr57R9TNS1Stv8HvXzJ5i2EblI=;
+        b=fY2svtrCaDoIvBZjcxaE+b76mvpYdEA7sfX5R7vC+jPOB3pwXMI1d/J7ARZ1x5lV9f
+         o+vtdbN2FUG2lZaYW9bQGwMS1SoePA3F+7thpX64S9lRsUHdVhLP+/I+5YdOm7X2zUjA
+         Wx5IhXeuWWUAoSjqZhZQjowS6J79ZVoze6R10wT4zlwPrbESOCirVm+sYjkrKricO76/
+         xUG991mntgHyJBxYOl7KE2rAl2ADceUm7tQSUXQUdSlrwziYDVaNwqXVdMEv6LISiBoP
+         y/kxyUiMQ9UazyWcAhzKtJwjT0CDimIjYlNCpSHMGj9xOsLeh+Vv2ERsXr5nOCizVmxs
+         hsGw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=TDNr64k6;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=CICsygMz;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id jo12-20020a056214500c00b00496c3a7de51si1029004qvb.578.2022.10.07.09.51.28
+        by mx.google.com with ESMTPS id fw9-20020a056214238900b004afb3c1bad2si1061223qvb.222.2022.10.07.09.51.53
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 07 Oct 2022 09:51:28 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 07 Oct 2022 09:51:53 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=TDNr64k6;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=CICsygMz;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:50834 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:50020 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ogqZM-0000B6-1I
-	for alex.bennee@linaro.org; Fri, 07 Oct 2022 12:51:28 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49856)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1ogqZl-00019S-GU
+	for alex.bennee@linaro.org; Fri, 07 Oct 2022 12:51:53 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:48386)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1ogqU9-00063Y-4m
- for qemu-devel@nongnu.org; Fri, 07 Oct 2022 12:46:05 -0400
-Received: from mail-pf1-x433.google.com ([2607:f8b0:4864:20::433]:40828)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1ogqYl-000181-7q
+ for qemu-arm@nongnu.org; Fri, 07 Oct 2022 12:50:53 -0400
+Received: from mail-pl1-x630.google.com ([2607:f8b0:4864:20::630]:35630)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1ogqTv-0003Cu-5b
- for qemu-devel@nongnu.org; Fri, 07 Oct 2022 12:46:03 -0400
-Received: by mail-pf1-x433.google.com with SMTP id h13so3943417pfr.7
- for <qemu-devel@nongnu.org>; Fri, 07 Oct 2022 09:45:50 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1ogqYi-0003zB-Cg
+ for qemu-arm@nongnu.org; Fri, 07 Oct 2022 12:50:50 -0400
+Received: by mail-pl1-x630.google.com with SMTP id h10so5064374plb.2
+ for <qemu-arm@nongnu.org>; Fri, 07 Oct 2022 09:50:45 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=YjKcAW1hxwlU3hdHTNn8AUZZ4Ce3sTTG7K+u9186FJ0=;
- b=TDNr64k6m8IZSrIs2bzG5HP0v+p4H6TQUM52dStrQy2jemr7VnHrecG3wqUcUGwdrX
- vC0FV6vhC5478K2EyzB5byoVxEr/7A2YEGi0n7wODpRvEAruVRudDJP0VLeIiOKq3eI0
- o7Oq4Wybo5fWzbT22DxMeu79rEfkiofR7ShmhID0o5AHfz2QM/a5OZr5IVxqWPZOpJqN
- 8RMhvbZSnid7imu5/LQbCQcApoYhD+WN2F/++7ayGzZ/QHVaoZxLyWQQuseccqcv//U7
- WDOwqZe1MBMULFBoLVhdQ8F8vdJUAKfEvQZED5Er6rlp+RAgIQCPnomxfpE5tLYfBn4e
- Kivw==
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=WmZ1iLaRWTR5WM0lMJr57R9TNS1Stv8HvXzJ5i2EblI=;
+ b=CICsygMzgub3EGcE7XFdWJ17zRMTZVEX7qVHIIGWYIQNl8K/Xy7++0pIqiF3JFHSWy
+ uumfC9A1nFnICXNNrVK4ikmhHNWw4sJRl1+xTrjz4oEAIXJ2evxD3iUYQZ9t0NXjlwSK
+ Q4fdKMy5Gj9LEyyCKMYqdOVLOFnrYirLg+/uZuTrUkjT4cOYet1tEoGAb9082QEL6SQ1
+ lvcihu5BrXZ6s2+UNZUaUZh2Kd0F+8KGDIyjDoPE3cKBF63AhDNNVRi5K52graxv+Ta2
+ Hw0Up+YVUuLMT8UoUK2CNfLUCVmODpKigQAmNvFa+u/+Hj3qBmh0Go+oHRPgPOKHGtqS
+ vhgg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=YjKcAW1hxwlU3hdHTNn8AUZZ4Ce3sTTG7K+u9186FJ0=;
- b=pi+/W3MCVQPliKBEX+KUu2s3keVjfw76DJsdpJJpktPYJg2gSFcWzcXu32l5MX+q0f
- RgNl3O7JM1GjAQsPhmFZS+REsAKRprhVOX1D+1U6hgPU1AvsDXsqZ/RKUoD6g6LQ4JPa
- 1ETfsVmKerhTcTA6NvFdJ1q/4YePh4xyErpRRb/KYFuQwAtvYmeOaUN21KUDpSx+RE7R
- 9Z88KJyCN+40H+iJmMjCJ7WuyIbZ1fvHHG3ejTRDvqUHgPRMNm36m3Wtzrrz6Zg6XSIe
- OkIIPcSUB29BgZqo7bMSDbWAtzqZE24V//BRJXHuz5EdgARGtNittljf9+q6IuKhtjIT
- dEhg==
-X-Gm-Message-State: ACrzQf3a8uvqZgfvmCtiBMAudZiGIEYCkMGW6k2WCeWwNGaFXeeqiv4/
- pugHLPfsRgUkIKDvAUbqvxWfI57luIyRTQ==
-X-Received: by 2002:a63:1349:0:b0:44b:2240:b311 with SMTP id
- 9-20020a631349000000b0044b2240b311mr5310292pgt.405.1665161149564; 
- Fri, 07 Oct 2022 09:45:49 -0700 (PDT)
-Received: from ?IPV6:2602:47:d49d:ec01:3b6c:3864:9643:140a?
- ([2602:47:d49d:ec01:3b6c:3864:9643:140a])
- by smtp.gmail.com with ESMTPSA id
- m5-20020a170902db0500b001745662d568sm1742796plx.278.2022.10.07.09.45.48
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 07 Oct 2022 09:45:48 -0700 (PDT)
-Message-ID: <52ec3b12-b9bb-b2a9-52c8-54a7016182c6@linaro.org>
-Date: Fri, 7 Oct 2022 09:45:47 -0700
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=WmZ1iLaRWTR5WM0lMJr57R9TNS1Stv8HvXzJ5i2EblI=;
+ b=AnwfqxvOQg7g6MLg5U8RPW2H6P7jPSHgLLJ1k/wsQLgu7p+3mUI+9URuXFsLqAs6Ih
+ Ajpx888nn65Y85YNCZd8sDklb8ngMufxchStvYw5MciUx+mWRa9OXvpH9B4Z11s8Sxx4
+ E4qp1dXCYD+lu/Pm4bDhpFqd+LRmoOeVE9i8rEVOlBiTGijVETKzvyCLoqu1sagkYX60
+ DZudbsNSXr7UIcqdHggexBushsgcly4MAYqA8g7ghR6gcfKqte+/ChvEdxF5vdTclIsu
+ 3tHDT0Y9IEmLymG0vgBtGRPGgeRwWN3Byx+eqbBzcBYxTeOBbxU0hb+MJ/QgSah4r8BE
+ 7W+A==
+X-Gm-Message-State: ACrzQf3iuDhOhRuPtkISMLW0gr2ePRWLMriO/T+VR1zw4l3yqk+IlKNs
+ r00n1IixNkwigglaHTknY8+tXLxS6mPKts4YYmsjTg==
+X-Received: by 2002:a17:90b:1d04:b0:20b:cb40:4b3 with SMTP id
+ on4-20020a17090b1d0400b0020bcb4004b3mr3085341pjb.215.1665161444789; Fri, 07
+ Oct 2022 09:50:44 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.11.0
-Subject: Re: [PATCH v3 41/42] target/arm: Implement FEAT_HAFDBS
-Content-Language: en-US
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
 References: <20221001162318.153420-1-richard.henderson@linaro.org>
  <20221001162318.153420-42-richard.henderson@linaro.org>
  <CAFEAcA-LhvMYbTTcsC+eAcAeA61e9Kq=zf6fKr5j_4dusuRDiw@mail.gmail.com>
-From: Richard Henderson <richard.henderson@linaro.org>
-In-Reply-To: <CAFEAcA-LhvMYbTTcsC+eAcAeA61e9Kq=zf6fKr5j_4dusuRDiw@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::433;
- envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x433.google.com
-X-Spam_score_int: -47
-X-Spam_score: -4.8
-X-Spam_bar: ----
-X-Spam_report: (-4.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-2.699,
+ <52ec3b12-b9bb-b2a9-52c8-54a7016182c6@linaro.org>
+In-Reply-To: <52ec3b12-b9bb-b2a9-52c8-54a7016182c6@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 7 Oct 2022 17:50:33 +0100
+Message-ID: <CAFEAcA8Qe-Y1HD8ULjDgrcRGbpXruqL=te9NXtTv2OWv2DOBhQ@mail.gmail.com>
+Subject: Re: [PATCH v3 41/42] target/arm: Implement FEAT_HAFDBS
+To: Richard Henderson <richard.henderson@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::630;
+ envelope-from=peter.maydell@linaro.org; helo=mail-pl1-x630.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 1+Mpuia7pGX8
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: zWKobiN+cop+
 
-On 10/7/22 06:47, Peter Maydell wrote:
-> On Sat, 1 Oct 2022 at 18:04, Richard Henderson
-> <richard.henderson@linaro.org> wrote:
->>
->> Perform the atomic update for hardware management of the access flag
->> and the dirty bit.
->>
->> A limitation of the implementation so far is that the page table
->> itself must already be writable, i.e. the dirty bit for the stage2
->> page table must already be set, i.e. we cannot set both dirty bits
->> at the same time.
->>
->> This is allowed because it is CONSTRAINED UNPREDICTABLE whether any
->> atomic update happens at all.  The implementation is allowed to simply
->> fall back on software update at any time.
-> 
-> I can't see where in the Arm ARM this is stated.
-> 
-> In any case, if HA is set you can't simply return ARMFault_AccessFlag
-> without breaking the bit in D5.4.12 which says
-> "When hardware updates of the Access flag are enabled for a stage of
->   translation an address translation instruction that uses that stage
->   of translation will not report that the address will give rise to
->   an Access flag fault in the PAR"
+On Fri, 7 Oct 2022 at 17:45, Richard Henderson
+<richard.henderson@linaro.org> wrote:
+>
+> On 10/7/22 06:47, Peter Maydell wrote:
+> > Are there definitely no code paths where we might try to do
+> > a page table walk with the iothread already locked ?
+>
+> I'll double-check, but another possibility is to simply perform the atomic operation on
+> the low 32-bits, where both AF and DB are located.  Another trick I learned from x86...
 
-I think this may have been loose (or incorrect) reading of what has become R_QSPMS in I_a, 
-via "access generates ... a Permission fault", due to the pte page being read-only, due to 
-the dirty bit being clear.
+Doesn't that cause a problem where we don't detect that some other
+CPU wrote to the high 32 bits of the descriptor ? We're supposed to
+be using those high 32 bits, not the ones we have in hand...
 
-However, having performed the same atomic update conversion for x86, I can see now that I 
-merely need to perform the lookup for s1 ptw with MMU_DATA_STORE rather than MMU_DATA_LOAD 
-in order for the s1 pte page to have its own dirty bit processed and become writable.
+If we do need the iothread lock, we could do it the way that
+io_readx() does, I guess, where we track whether we needed to
+lock it or not.
 
->> +    t = FIELD_DP64(t, ID_AA64MMFR1, HAFDBS, 2);   /* FEAT_HAFDBS */
-> 
-> I think we should split the access flag update and the
-> dirty-bit update into separate commits. It might be useful
-> for bisection purposes later, and it looks like they're pretty
-> cleanly separable. (Though if you look at my last comment in this
-> email, maybe not quite so clean as in the code as you have it here.)
-
-Shouldn't be too hard to split.  I'll try, at least.
-
->> +static uint64_t arm_casq_ptw(CPUARMState *env, uint64_t old_val,
->> +                             uint64_t new_val, const S1TranslateResult *s1,
->> +                             ARMMMUFaultInfo *fi)
->> +{
->> +    uint64_t cur_val;
->> +
->> +    if (unlikely(!s1->hphys)) {
->> +        fi->type = ARMFault_UnsuppAtomicUpdate;
->> +        fi->s1ptw = true;
->> +        return 0;
->> +    }
->> +
->> +#ifndef CONFIG_ATOMIC64
->> +    /*
->> +     * We can't support the atomic operation on the host.  We should be
->> +     * running in round-robin mode though, which means that we would only
->> +     * race with dma i/o.
->> +     */
->> +    qemu_mutex_lock_iothread();
-> 
-> Are there definitely no code paths where we might try to do
-> a page table walk with the iothread already locked ?
-
-I'll double-check, but another possibility is to simply perform the atomic operation on 
-the low 32-bits, where both AF and DB are located.  Another trick I learned from x86...
-
->> +        old_des = descriptor;
->> +        if (mmu_idx == ARMMMUIdx_Stage2 || mmu_idx == ARMMMUIdx_Stage2_S) {
->> +            new_des = descriptor | (1ull << 7);   /* S2AP[1] */
->> +        } else {
->> +            new_des = descriptor & ~(1ull << 7);  /* AP[2] */
->> +        }
-> 
-> If we update the prot bits, we need to also re-calculate the exec bit,
-> I think, because the execute-never stuff depends on whether the page is
-> writeable. Alternatively you can do it the way the pseudocode does and
-> pre-figure-out the final permission bits value (see AArch64.S1ApplyOutputPerms()
-> and AArch64.S2ApplyOutputPerms()) so you only need to calculate the
-> exec bit once.
-
-Good catch.
-
-
-r~
+thanks
+-- PMM

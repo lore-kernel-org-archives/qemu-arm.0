@@ -1,236 +1,206 @@
-Received: by 2002:ac9:4144:0:0:0:0:0 with SMTP id u4csp2096014ocg;
-        Sun, 9 Oct 2022 18:24:55 -0700 (PDT)
-X-Google-Smtp-Source: AMsMyM6ARfquExSwWwy9ZAgkoF1XVHzwFjg7mY49/INoHn6T/VZiwG9608/Ni6s3S8WZwgb/qG2f
-X-Received: by 2002:a05:620a:1fa:b0:6df:1193:c41a with SMTP id x26-20020a05620a01fa00b006df1193c41amr11413591qkn.232.1665365095036;
-        Sun, 09 Oct 2022 18:24:55 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1665365095; cv=none;
+Received: by 2002:ac9:4144:0:0:0:0:0 with SMTP id u4csp2202875ocg;
+        Sun, 9 Oct 2022 23:13:46 -0700 (PDT)
+X-Google-Smtp-Source: AMsMyM5PyzTBwzqUTchU1sFVuGM1i8MdYiHlow3LE12CP1QdoT/8252ojnpz/SiP+ra1sb82cFJ1
+X-Received: by 2002:a05:6214:ac4:b0:4af:b60f:5c7a with SMTP id g4-20020a0562140ac400b004afb60f5c7amr13428388qvi.60.1665382426396;
+        Sun, 09 Oct 2022 23:13:46 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1665382426; cv=none;
         d=google.com; s=arc-20160816;
-        b=KtvCTMb45ERxYDwFh2cob1M7wqkOZtTqYvEcVZHWXaBaA8waKB1J6uCFZlWQsZFStj
-         ATWTkN5Z+RWOEN1TZAIq49dJQMKuq6xIYjAiz8TzjGmu8qTkwiWlCy3Op3mxkQr8/h2m
-         jOKllnr3k2CsNQ9DcDQxTXfQm5cmziZMH9Dvkb6tEruhJnVui1a1Y2OHBVzB6uAjQ2+j
-         q7gcdwMu986i3tuJJgA463Sw4X8vrfmsA9uCG90z6vSH2Wa3wOMYa54ajLuNhW2z5iHI
-         MNn+Gq6b4nAyz47Ln1hirBt19/F+0TQSBo14SBc9AZ8GEN39RZWTJ1Gmo75gdhuGoCPb
-         OCew==
+        b=CQ7U70zjrWooZAgQjO0B44oUHcpXX4TrqaswF5cd3A1LWBBewpW7wEHPbAwl+/m2Rg
+         TiPt/dmoMyKWoQUaUASWce6l9l3Od/I1FsBZhNwEWw3ccgsyo03S39jcLfe5gQGx3k4o
+         y8heuQIMwFM0xftxZrqvyFCbyRHcm1AB4gJ583L8bWN+iZpZoNoluGNvisgxCNM0MIH2
+         8A4cdW16+FPVKXbm2OQiVhdMlmsMY6cCINTE+S1CTTGIUOSfwWC7MhwUyZ3ga+4RdFbo
+         hfGKfvN9o8fzOSBRxzukUUGSLMN3yehiiukY7E0QzEIXecSdXOLsjxRGAT+gKh0dmVev
+         XJXA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=3g5g6jGUkpuTr7ifn4UAprGEQT/8nQOf+1wUo1onaCc=;
-        b=IZ6BdiUsJKlXRQrfgoOHm3Cw+LbrI99ZBeq5UnKcUz8mcGJUfSESzwz2VH3QKe/MXd
-         Jcc32TCQFzP6oT4NXo6LFUs67BpfdKUt4ug36fR0PB4iJNiVO8mDYApNkk2Gs8YRNEy7
-         H1yUHUeG6Y9ado2UyQdMjh4gh9HX1lVYJHIOiHrfE+T7ZmHOOrXr8kLRdXOyPorQ9iDT
-         +OY3JvG5Z72rU0xjk2OZsUoUcXN1fpkgytRf8XHwmMIC/8ikuvfqE4pzqL4ikYI+NPK+
-         8EYxyLFZhyesUnc+JCoVb17xHRq2p5BNsLGHO/+lUtYBe25Cr2pW14RcfOSU7lQi5zJg
-         eTvw==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:references:cc:to:content-language:subject
+         :user-agent:mime-version:date:message-id;
+        bh=/zsC7NKvJ5ByQSX6AZbv+f3IElYRm3xdMV3+J7F1cTs=;
+        b=B3oiDvOUkHzK5OhbtvemVyCXDvn5NNKvg8OLHU0uy35iiwsQh57uZFT4dbZX6B4iN7
+         y+E5aAWeOfVQ0pBQHys6Epr66HaIUuYpNXIE5kzM5I7OsLHNNQYOcfCt9OFACbYYKyq8
+         eu/YjXCiL6b/6N+Js+E0dXrR2p4hg/zgNxKG+GN08SnxG5Afe+gGucDmWUfUvnGLDh/+
+         CYOQYmxA3jEd64OdWT0EPKvSNI55LVwZ0zJwkBQL2T+AQbDwZlfYxOhw0H+dIAiSRWRq
+         fZyDxFUv7TcHli6CapPmVuONKQ511Yzqe0ynmObhlYvizdsf5lhcc+oBAbUBDZpakMv/
+         Bsmw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=gAA6Rh+3;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id q26-20020a05620a0c9a00b006bac6f68acbsi4013405qki.415.2022.10.09.18.24.54
+        by mx.google.com with ESMTPS id f15-20020a05622a114f00b003436a1da196si5056700qty.388.2022.10.09.23.13.46
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 09 Oct 2022 18:24:55 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Sun, 09 Oct 2022 23:13:46 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=gAA6Rh+3;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:58678 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:41754 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ohhXK-0004Q9-Ir
-	for alex.bennee@linaro.org; Sun, 09 Oct 2022 21:24:54 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:41354)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1ohm2r-0000TH-B4
+	for alex.bennee@linaro.org; Mon, 10 Oct 2022 02:13:45 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:34876)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1ohhX9-0004P8-Bn; Sun, 09 Oct 2022 21:24:43 -0400
-Received: from mail-pf1-x431.google.com ([2607:f8b0:4864:20::431]:33697)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1ohhX7-0006yr-HU; Sun, 09 Oct 2022 21:24:43 -0400
-Received: by mail-pf1-x431.google.com with SMTP id w2so9604412pfb.0;
- Sun, 09 Oct 2022 18:24:40 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=3g5g6jGUkpuTr7ifn4UAprGEQT/8nQOf+1wUo1onaCc=;
- b=gAA6Rh+3sjfixQV53ioL3+rJ+a1Y9t0Y+mUv46up/lIXouT+Z1GeT1CKlt9L+aZa6r
- U4BeJR4dpFTAjefBKKLV5k5AUSG9Ar/AeRQOPCIwOjOMYaX8IKfzxAoqoI8xw/J3VkIM
- x1TCQ+a9LmOT7gJftVNXMO5gHOp/TQ0T/HfOGJhzKdgMNIabV26lWOhaPzmEurlnVWmq
- KzhjwQgdj5FKgOPvt4S+VVW66VK1wDcW22wlaJg5UprsFDx20hITmbLZQBlVnEIyHcoS
- TsEnkxsPJuGAnmEd7WHC3K7NQAHRwWXpv0Pbdm38gYklYvidmTGY8AcAyJ0J2hTCUxVA
- oEFw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=3g5g6jGUkpuTr7ifn4UAprGEQT/8nQOf+1wUo1onaCc=;
- b=OF16hyOPDNGtxO+cVnrHphJ9wR2r+UeZHzW//9J6A5ZPsOsAijJ6K07NIqN6N4sFzv
- 6KRlxf+Dzn56qjl58vGd9OzmW3//ieBx0yNZMJWsd4FuC687TJXvuKBWWHxLKBgW6/ph
- WLLA8PxF3OB9h9AYim67+lEH1WgHjIG4U6JUFr/qrmY4CW7I7SonfKlVwyvGyfex3xEX
- 5mXo+Q0ZQZE1a4uO7t4jINxtQEMMn++GPYmLYIrfIJxa9FkN+Hzh8n0OcHUoFqvyP/j8
- PQcp9bqVSr7lm1m0Ar+n7N+kLkco7hLT5ogl0l1rjos1tyGwxRT0MQdQ25nvaDkR6arv
- PVfw==
-X-Gm-Message-State: ACrzQf1qi9zzN8wahn2FIqGlBiYU1SgiUj0O8bemWfNhZGfuZ8x43y95
- zKftdJ/Pi6i5mQhVis0WjJt51b4DUIB265bWIEQ=
-X-Received: by 2002:a63:ce43:0:b0:45b:d6ed:6c2 with SMTP id
- r3-20020a63ce43000000b0045bd6ed06c2mr14491765pgi.406.1665365079358; Sun, 09
- Oct 2022 18:24:39 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1ohlzU-0006da-UO
+ for qemu-devel@nongnu.org; Mon, 10 Oct 2022 02:10:16 -0400
+Received: from 1.mo552.mail-out.ovh.net ([178.32.96.117]:35125)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1ohlzR-0005DQ-TO
+ for qemu-devel@nongnu.org; Mon, 10 Oct 2022 02:10:16 -0400
+Received: from mxplan5.mail.ovh.net (unknown [10.109.138.210])
+ by mo552.mail-out.ovh.net (Postfix) with ESMTPS id 8996125ADE;
+ Mon, 10 Oct 2022 06:09:59 +0000 (UTC)
+Received: from kaod.org (37.59.142.97) by DAG4EX2.mxp5.local (172.16.2.32)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.12; Mon, 10 Oct
+ 2022 08:09:58 +0200
+Authentication-Results: garm.ovh; auth=pass
+ (GARM-97G002e05f19ae-87c1-4320-8bc9-e327885f6622,
+ 8F9D85B4748BB0730094C5680DDBB13DC71FBC21) smtp.auth=clg@kaod.org
+X-OVh-ClientIp: 82.64.250.170
+Message-ID: <443fe2a3-4361-e573-4728-af9a2a43ff2a@kaod.org>
+Date: Mon, 10 Oct 2022 08:09:58 +0200
 MIME-Version: 1.0
-References: <20221004092351.18209-1-sunilvl@ventanamicro.com>
- <20221004092351.18209-4-sunilvl@ventanamicro.com>
-In-Reply-To: <20221004092351.18209-4-sunilvl@ventanamicro.com>
-From: Alistair Francis <alistair23@gmail.com>
-Date: Mon, 10 Oct 2022 11:24:13 +1000
-Message-ID: <CAKmqyKMtqAoo2s_UOdT=WeMHxXxgHBHqP_TFVbFdfSH=_jrarQ@mail.gmail.com>
-Subject: Re: [PATCH V5 3/3] hw/riscv: virt: Enable booting S-mode firmware
- from pflash
-To: Sunil V L <sunilvl@ventanamicro.com>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Xiaojuan Yang <yangxiaojuan@loongson.cn>, Song Gao <gaosong@loongson.cn>,
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>, 
- Gerd Hoffmann <kraxel@redhat.com>, Palmer Dabbelt <palmer@dabbelt.com>, 
- Alistair Francis <alistair.francis@wdc.com>, Bin Meng <bin.meng@windriver.com>,
- qemu-arm@nongnu.org, qemu-devel@nongnu.org, qemu-riscv@nongnu.org, 
- Andrew Jones <ajones@ventanamicro.com>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::431;
- envelope-from=alistair23@gmail.com; helo=mail-pf1-x431.google.com
-X-Spam_score_int: -17
-X-Spam_score: -1.8
-X-Spam_bar: -
-X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.3.1
+Subject: Re: [PATCH v3 3/8] m25p80: Add the mx25l25635e SFPD table
+Content-Language: en-US
+To: Francisco Iglesias <frasse.iglesias@gmail.com>
+CC: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>, <qemu-block@nongnu.org>,
+ Peter Maydell <peter.maydell@linaro.org>, Joel Stanley <joel@jms.id.au>,
+ Andrew Jeffery <andrew@aj.id.au>, Alistair Francis <alistair@alistair23.me>,
+ Iris Chen <irischenlj@fb.com>, Michael Walle <michael@walle.cc>
+References: <20220722063602.128144-1-clg@kaod.org>
+ <20220722063602.128144-4-clg@kaod.org> <20221007135921.GB20384@fralle-msi>
+From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
+In-Reply-To: <20221007135921.GB20384@fralle-msi>
+Content-Type: text/plain; charset="UTF-8"; format=flowed
+Content-Transfer-Encoding: 8bit
+X-Originating-IP: [37.59.142.97]
+X-ClientProxiedBy: DAG1EX1.mxp5.local (172.16.2.1) To DAG4EX2.mxp5.local
+ (172.16.2.32)
+X-Ovh-Tracer-GUID: 189047ad-cc47-4b13-8031-acc3ee5a3a04
+X-Ovh-Tracer-Id: 13202020836137339826
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvfedrfeejvddguddthecutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemucehtddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpefkffggfgfuvfevfhfhjggtgfhisehtkeertddtfeejnecuhfhrohhmpeevrogurhhitggpnfgvpgfiohgrthgvrhcuoegtlhhgsehkrghougdrohhrgheqnecuggftrfgrthhtvghrnhepkeetjedtleekjedvveffudfhteetleeifeegfeffuefghfefkeehffeufeeludejnecukfhppedtrddtrddtrddtpdefjedrheelrddugedvrdeljeenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhhouggvpehsmhhtphhouhhtpdhhvghlohepmhigphhlrghnhedrmhgrihhlrdhovhhhrdhnvghtpdhinhgvtheptddrtddrtddrtddpmhgrihhlfhhrohhmpegtlhhgsehkrghougdrohhrghdpnhgspghrtghpthhtohepuddprhgtphhtthhopehmihgthhgrvghlseifrghllhgvrdgttgdpoffvtefjohhsthepmhhoheehvd
+Received-SPF: pass client-ip=178.32.96.117; envelope-from=clg@kaod.org;
+ helo=1.mo552.mail-out.ovh.net
+X-Spam_score_int: -57
+X-Spam_score: -5.8
+X-Spam_bar: -----
+X-Spam_report: (-5.8 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-3.934,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: IdP5o2WU+W1I
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: RRmVvMpv6mb2
 
-On Tue, Oct 4, 2022 at 7:28 PM Sunil V L <sunilvl@ventanamicro.com> wrote:
->
-> To boot S-mode firmware payload like EDK2 from persistent
-> flash storage, qemu needs to pass the flash address as the
-> next_addr in fw_dynamic_info to the opensbi.
->
-> When both -kernel and -pflash options are provided in command line,
-> the kernel (and initrd if -initrd) will be copied to fw_cfg table.
-> The S-mode FW will load the kernel/initrd from fw_cfg table.
->
-> If only pflash is given but not -kernel, then it is the job of
-> of the S-mode firmware to locate and load the kernel.
->
-> In either case, update the kernel_entry with the flash address
-> so that the opensbi can jump to the entry point of the S-mode
-> firmware.
->
-> Signed-off-by: Sunil V L <sunilvl@ventanamicro.com>
-> Reviewed-by: Andrew Jones <ajones@ventanamicro.com>
+Hello Francisco
 
-Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
+On 10/7/22 15:59, Francisco Iglesias wrote:
+> Hi Cedric,
+> 
+> On [2022 Jul 22] Fri 08:35:57, Cédric Le Goater wrote:
+>> The SFDP table is 0x80 bytes long. The mandatory table for basic
+>> features is available at byte 0x30 and an extra Macronix specific
+>> table is available at 0x60.
+>>
+>> 4B opcodes are not supported.
+>>
+>> Signed-off-by: Cédric Le Goater <clg@kaod.org>
+>> ---
+>>   hw/block/m25p80_sfdp.h |  3 +++
+>>   hw/block/m25p80.c      |  3 ++-
+>>   hw/block/m25p80_sfdp.c | 26 ++++++++++++++++++++++++++
+>>   3 files changed, 31 insertions(+), 1 deletion(-)
+>>
+>> diff --git a/hw/block/m25p80_sfdp.h b/hw/block/m25p80_sfdp.h
+>> index d3a0a778ae84..0c46e669b335 100644
+>> --- a/hw/block/m25p80_sfdp.h
+>> +++ b/hw/block/m25p80_sfdp.h
+>> @@ -17,4 +17,7 @@
+>>   
+>>   extern uint8_t m25p80_sfdp_n25q256a(uint32_t addr);
+>>   
+>> +extern uint8_t m25p80_sfdp_mx25l25635e(uint32_t addr);
+> 
+> We could be without 'extern' in above hdr if we like (also the other patches),
 
-Alistair
+Yes. I dropped all of them in v4.
 
-> ---
->  hw/riscv/boot.c         | 29 +++++++++++++++++++++++++++++
->  hw/riscv/virt.c         | 18 +++++++++++++++++-
->  include/hw/riscv/boot.h |  1 +
->  3 files changed, 47 insertions(+), 1 deletion(-)
->
-> diff --git a/hw/riscv/boot.c b/hw/riscv/boot.c
-> index 1ae7596873..fa8ad27da2 100644
-> --- a/hw/riscv/boot.c
-> +++ b/hw/riscv/boot.c
-> @@ -338,3 +338,32 @@ void riscv_setup_direct_kernel(hwaddr kernel_addr, hwaddr fdt_addr)
->          riscv_cpu->env.fdt_addr = fdt_addr;
->      }
->  }
-> +
-> +void riscv_setup_firmware_boot(MachineState *machine)
-> +{
-> +    if (machine->kernel_filename) {
-> +        FWCfgState *fw_cfg;
-> +        fw_cfg = fw_cfg_find();
-> +
-> +        assert(fw_cfg);
-> +        /*
-> +         * Expose the kernel, the command line, and the initrd in fw_cfg.
-> +         * We don't process them here at all, it's all left to the
-> +         * firmware.
-> +         */
-> +        load_image_to_fw_cfg(fw_cfg,
-> +                             FW_CFG_KERNEL_SIZE, FW_CFG_KERNEL_DATA,
-> +                             machine->kernel_filename,
-> +                             true);
-> +        load_image_to_fw_cfg(fw_cfg,
-> +                             FW_CFG_INITRD_SIZE, FW_CFG_INITRD_DATA,
-> +                             machine->initrd_filename, false);
-> +
-> +        if (machine->kernel_cmdline) {
-> +            fw_cfg_add_i32(fw_cfg, FW_CFG_CMDLINE_SIZE,
-> +                           strlen(machine->kernel_cmdline) + 1);
-> +            fw_cfg_add_string(fw_cfg, FW_CFG_CMDLINE_DATA,
-> +                              machine->kernel_cmdline);
-> +        }
-> +    }
-> +}
-> diff --git a/hw/riscv/virt.c b/hw/riscv/virt.c
-> index de2efccebf..a5bc7353b4 100644
-> --- a/hw/riscv/virt.c
-> +++ b/hw/riscv/virt.c
-> @@ -1274,7 +1274,23 @@ static void virt_machine_done(Notifier *notifier, void *data)
->      s->fw_cfg = create_fw_cfg(machine);
->      rom_set_fw(s->fw_cfg);
->
-> -    if (machine->kernel_filename) {
-> +    if (drive_get(IF_PFLASH, 0, 1)) {
-> +        /*
-> +         * S-mode FW like EDK2 will be kept in second plash (unit 1).
-> +         * When both kernel, initrd and pflash options are provided in the
-> +         * command line, the kernel and initrd will be copied to the fw_cfg
-> +         * table and opensbi will jump to the flash address which is the
-> +         * entry point of S-mode FW. It is the job of the S-mode FW to load
-> +         * the kernel and initrd using fw_cfg table.
-> +         *
-> +         * If only pflash is given but not -kernel, then it is the job of
-> +         * of the S-mode firmware to locate and load the kernel.
-> +         * In either case, the next_addr for opensbi will be the flash address.
-> +         */
-> +        riscv_setup_firmware_boot(machine);
-> +        kernel_entry = virt_memmap[VIRT_FLASH].base +
-> +                       virt_memmap[VIRT_FLASH].size / 2;
-> +    } else if (machine->kernel_filename) {
->          kernel_start_addr = riscv_calc_kernel_start_addr(&s->soc[0],
->                                                           firmware_end_addr);
->
-> diff --git a/include/hw/riscv/boot.h b/include/hw/riscv/boot.h
-> index a36f7618f5..93e5f8760d 100644
-> --- a/include/hw/riscv/boot.h
-> +++ b/include/hw/riscv/boot.h
-> @@ -57,5 +57,6 @@ void riscv_rom_copy_firmware_info(MachineState *machine, hwaddr rom_base,
->                                    uint32_t reset_vec_size,
->                                    uint64_t kernel_entry);
->  void riscv_setup_direct_kernel(hwaddr kernel_addr, hwaddr fdt_addr);
-> +void riscv_setup_firmware_boot(MachineState *machine);
->
->  #endif /* RISCV_BOOT_H */
-> --
-> 2.25.1
->
->
+Thanks,
+
+C.
+
+> either way:
+> 
+> Reviewed-by: Francisco Iglesias <frasse.iglesias@gmail.com>
+> 
+>> +
+>> +
+>>   #endif
+>> diff --git a/hw/block/m25p80.c b/hw/block/m25p80.c
+>> index 13e7b28fd2b0..028b026d8ba2 100644
+>> --- a/hw/block/m25p80.c
+>> +++ b/hw/block/m25p80.c
+>> @@ -232,7 +232,8 @@ static const FlashPartInfo known_devices[] = {
+>>       { INFO("mx25l6405d",  0xc22017,      0,  64 << 10, 128, 0) },
+>>       { INFO("mx25l12805d", 0xc22018,      0,  64 << 10, 256, 0) },
+>>       { INFO("mx25l12855e", 0xc22618,      0,  64 << 10, 256, 0) },
+>> -    { INFO6("mx25l25635e", 0xc22019,     0xc22019,  64 << 10, 512, 0) },
+>> +    { INFO6("mx25l25635e", 0xc22019,     0xc22019,  64 << 10, 512, 0),
+>> +      .sfdp_read = m25p80_sfdp_mx25l25635e },
+>>       { INFO("mx25l25655e", 0xc22619,      0,  64 << 10, 512, 0) },
+>>       { INFO("mx66l51235f", 0xc2201a,      0,  64 << 10, 1024, ER_4K | ER_32K) },
+>>       { INFO("mx66u51235f", 0xc2253a,      0,  64 << 10, 1024, ER_4K | ER_32K) },
+>> diff --git a/hw/block/m25p80_sfdp.c b/hw/block/m25p80_sfdp.c
+>> index 24ec05de79a1..6499c4c39954 100644
+>> --- a/hw/block/m25p80_sfdp.c
+>> +++ b/hw/block/m25p80_sfdp.c
+>> @@ -56,3 +56,29 @@ static const uint8_t sfdp_n25q256a[] = {
+>>       0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
+>>   };
+>>   define_sfdp_read(n25q256a);
+>> +
+>> +
+>> +/*
+>> + * Matronix
+>> + */
+>> +
+>> +/* mx25l25635e. No 4B opcodes */
+>> +static const uint8_t sfdp_mx25l25635e[] = {
+>> +    0x53, 0x46, 0x44, 0x50, 0x00, 0x01, 0x01, 0xff,
+>> +    0x00, 0x00, 0x01, 0x09, 0x30, 0x00, 0x00, 0xff,
+>> +    0xc2, 0x00, 0x01, 0x04, 0x60, 0x00, 0x00, 0xff,
+>> +    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
+>> +    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
+>> +    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
+>> +    0xe5, 0x20, 0xf3, 0xff, 0xff, 0xff, 0xff, 0x0f,
+>> +    0x44, 0xeb, 0x08, 0x6b, 0x08, 0x3b, 0x04, 0xbb,
+>> +    0xee, 0xff, 0xff, 0xff, 0xff, 0xff, 0x00, 0xff,
+>> +    0xff, 0xff, 0x00, 0xff, 0x0c, 0x20, 0x0f, 0x52,
+>> +    0x10, 0xd8, 0x00, 0xff, 0xff, 0xff, 0xff, 0xff,
+>> +    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
+>> +    0x00, 0x36, 0x00, 0x27, 0xf7, 0x4f, 0xff, 0xff,
+>> +    0xd9, 0xc8, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
+>> +    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
+>> +    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
+>> +};
+>> +define_sfdp_read(mx25l25635e)
+>> -- 
+>> 2.35.3
+>>
+

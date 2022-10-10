@@ -1,180 +1,133 @@
-Received: by 2002:ac9:4144:0:0:0:0:0 with SMTP id u4csp2330257ocg;
-        Mon, 10 Oct 2022 03:53:56 -0700 (PDT)
-X-Google-Smtp-Source: AMsMyM5c1iylkpfylJsRVdtLWoaH1ExXovyT1lYJjYA8WlhRZOnCsMgH8/PGkYO6ALvdfrirNMzZ
-X-Received: by 2002:a05:6214:e45:b0:4b1:9a9c:93de with SMTP id o5-20020a0562140e4500b004b19a9c93demr14187130qvc.63.1665399235870;
-        Mon, 10 Oct 2022 03:53:55 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1665399235; cv=none;
+Received: by 2002:ac9:4144:0:0:0:0:0 with SMTP id u4csp2419709ocg;
+        Mon, 10 Oct 2022 06:11:11 -0700 (PDT)
+X-Google-Smtp-Source: AMsMyM6Y75QNl939rFXvKna+LBuux414U4IayUl3rlL3CXcM/ndkBxGBxZOkRoISk0WwoduNt44l
+X-Received: by 2002:a05:6214:1c85:b0:4af:7393:3d91 with SMTP id ib5-20020a0562141c8500b004af73933d91mr14799770qvb.74.1665407460906;
+        Mon, 10 Oct 2022 06:11:00 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1665407460; cv=none;
         d=google.com; s=arc-20160816;
-        b=fogKmGRYke5nfSd6Qin/KbpmWyEn9QrDhcEy+vYztFJmwdHTcShsFGooWBF9tUOBQ6
-         0afwoMMuVpps/+zD09DjrS+ACYgGqbmOzbXYPB+t2IwkzjIGK3lc0724OBYzQcAXECxe
-         DfTkVH1toyCDISijsqm/xp97MPr4SnmY4nbz4bVi7M8VpH8DDg10sN94b5abftdZxk5Q
-         Xdmjc8P17sTE/5KgRGa0bJyrk0BBU5lE2AOLrDOZf8ZKhG6BO7bYwxi7lU8FjdRK0/Ve
-         +vEiD+OmVSSnqDheauJiTicIapR1dsHLvcdBitjLfhg3Cuk8WNc1Jhzi9Sb3WxsW09/0
-         Eq6w==
+        b=OHX2kBBs+H4v5H3JSkfaGSuxAN16LdqtpaPCnxWT9uvLqESP6mGjpRCXYKovoIjDA8
+         bmr4wodki5wLxojfR/wCYtD1jtanWuXEICvrcJBmL06IcwOrITsS2iuiGwNzQkmtFoif
+         TcxbO2T/oD0fg8HczZe01TvekUv7PVpL/IaB0u447j6a2OIOP4jTol2VH3Yb0QnFJCOw
+         SMd0L0SaoXpyrJJxeJcZ3U+qoGadLCMUMJjpOMRUe7xVxlY0myKO+8qX09fAg6KT3G3A
+         14Hf7G5ZMEJeENNk41TqGaU04U64E8GsAAJr+Pt2BcN0m4rNxHAM6cDwPT6XnM6VTuKU
+         69xQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:user-agent:in-reply-to
-         :content-transfer-encoding:content-disposition:mime-version
-         :references:message-id:subject:cc:to:from:date:dkim-signature;
-        bh=06aLaxq3675XzXlY7/PQRcT3VQ1fG48d2IlEq856Mbk=;
-        b=P3RXU+JtXCq7a9T/m/xw2YF6Ew/kJOeENZM7uzjnq/EKqAdaHTm9YUyHqjhajLzcmx
-         e4vYvPgSNvt2FplmLlUMymnSDuDm/wpjZ8nd0pn8zK0u4KwVu0Jo23pFivQyiSaZah1r
-         /+jSwFZDlxMTKTDm2caxXb9mSkb8CgYLd+GAg+W9ACQ0ji/Ru3NtFj3bE+qv11XK8zlY
-         VMPs+zMxckn7Cz0vAEb+a5OW1qYyUuwORpbW4huHQP+CevLqEXme/PqJJzsYseW7Jnhg
-         hGH09qtG4MZ38Y7YONsT/f5mengGDyvYDNfebotpY9eyEVLup746YnJp7qumA2Vh/9dT
-         GwWw==
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=DlGgqI62L7OgfrviOXt1HgTQ4eB9ERsnrnYaUsjCytw=;
+        b=iscaZzNBbVQsaqvS/4ZTfhZZK9Pn7qQ/74wgyiZUjmh1QJYmUoZJW6UJ/b2gUEsU45
+         KrssktSfRKIp5jQQ4g2LMdqXpWg2H1Zwriey5lyjkuSY/SnhifA6hwOhC5p7LJiZ9gDb
+         8wl7EGaGANi78YYsmllD4kG3Ge3JmDYPnulKnh5mhyAIz18yQpqhi2Exx6+22mdHLSp8
+         TZzmjHzIHhhiXi6K9m1gbV7+NcAdEZS8/7mbzO1cmFaWA+HrYsYYRSyFmVlkdE4ckOpQ
+         XFkaaxdAtwppkViaMNBF0+cAHMWSVD9BjzKF8x+fDao3/JLO/HiL03D0m3YHL8a9HcLb
+         KV/g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b="qe/KxdcP";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@linaro.org header.s=google header.b=Rt4+iWvL;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id br41-20020a05620a462900b006ec2a39a419si421390qkb.426.2022.10.10.03.53.55
+        by mx.google.com with ESMTPS id w11-20020a05622a134b00b00392ebc43fe2si5617803qtk.709.2022.10.10.06.11.00
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 10 Oct 2022 03:53:55 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 10 Oct 2022 06:11:00 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b="qe/KxdcP";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:41632 helo=lists1p.gnu.org)
+       dkim=pass header.i=@linaro.org header.s=google header.b=Rt4+iWvL;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:55550 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ohqPz-00009C-Fb
-	for alex.bennee@linaro.org; Mon, 10 Oct 2022 06:53:55 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:54870)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1ohsYe-0005uG-Ey
+	for alex.bennee@linaro.org; Mon, 10 Oct 2022 09:11:00 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:57836)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <frasse.iglesias@gmail.com>)
- id 1ohqNo-0006Y3-V2; Mon, 10 Oct 2022 06:51:40 -0400
-Received: from mail-lj1-x22c.google.com ([2a00:1450:4864:20::22c]:45932)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1ohsXz-0005pp-Ij
+ for qemu-arm@nongnu.org; Mon, 10 Oct 2022 09:10:19 -0400
+Received: from mail-pj1-x1034.google.com ([2607:f8b0:4864:20::1034]:41498)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <frasse.iglesias@gmail.com>)
- id 1ohqNa-0000eT-75; Mon, 10 Oct 2022 06:51:40 -0400
-Received: by mail-lj1-x22c.google.com with SMTP id f9so12760786ljk.12;
- Mon, 10 Oct 2022 03:51:24 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=user-agent:in-reply-to:content-transfer-encoding
- :content-disposition:mime-version:references:message-id:subject:cc
- :to:from:date:from:to:cc:subject:date:message-id:reply-to;
- bh=06aLaxq3675XzXlY7/PQRcT3VQ1fG48d2IlEq856Mbk=;
- b=qe/KxdcPT/CBAi8+eMnaDdVzT++SMOiS6bOFu7loawYT5QgFT0MbZoVcXXw0TaocHl
- M9guESScUq+odfQyrL6jx/3N1VxxV7dRbY2Z0tPBO6pG74p6Oc1+GWtUMoLGJiMXnV2t
- YawQsQUgJYAIX2T181OBjeeJ6qw1NXHocB1V8N91gvJFlhvIyaaNBsgOoBv66lODCAsq
- kR4G86ZB/qaeh8AmDjL60YbFA6ZG49Nz7Ilw1f2FpqccEhd0dG+2UocT/Nv8m/jLC6aU
- fBwTkFvk0bLebVOkl7ZQQiGt6NTr9wvKiT7Weh0yo/H0yDS4IhVJv+EkaqFs6Gr5rICC
- VuoA==
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1ohsXu-0001IY-MI
+ for qemu-arm@nongnu.org; Mon, 10 Oct 2022 09:10:19 -0400
+Received: by mail-pj1-x1034.google.com with SMTP id
+ q10-20020a17090a304a00b0020b1d5f6975so9236015pjl.0
+ for <qemu-arm@nongnu.org>; Mon, 10 Oct 2022 06:10:14 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=DlGgqI62L7OgfrviOXt1HgTQ4eB9ERsnrnYaUsjCytw=;
+ b=Rt4+iWvLOotDa8JuIKnFGdEJFttHZdDoquR5FLvmvLuAezAE5SG8IO7Fe8zvD17iwa
+ 6Tap6mTE1IOwvZig1BlqNpid4B2LM6Zu8J6muTnsN79tfOBWrYkJtYJqEb6PJ9DDeVaI
+ 1Ql35ySn3a0Rot4H1YkKJU7fMI1xnBHHL+CYk/HPKe8VnkSKmh9kEw7sxXj8C7dOsmt2
+ IyGaQcv05WYa88LLIj4ordZFbkQ1LkJsHaZLYZj/IsTv1awwR/mfitueGPNQxNmdJ/2K
+ KMYYmleD14f/iwIbetjQAo35BGZK9hrkUyh84KKzIeR6teNjuD5PExkcPu+AzdaCQ/iC
+ ePMg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=user-agent:in-reply-to:content-transfer-encoding
- :content-disposition:mime-version:references:message-id:subject:cc
- :to:from:date:x-gm-message-state:from:to:cc:subject:date:message-id
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=06aLaxq3675XzXlY7/PQRcT3VQ1fG48d2IlEq856Mbk=;
- b=0RbvaFPrCIQDhtGcKrCwx0QcuelczLPTRNZkHXsHF4rY5BeSQmZkf6gMj5XlIWPc0D
- UR33taPDf1E1FoU/ZpHp3hBayjPLYv6U6XEw9XKDeyLu5vnJ2nXwql6yBQK39n9NRVwJ
- QLGai3w5gVF+DIi6CWBC/YlEcYK666p3qqZFKtNYcL26aZgfxKnrMiox8BRPMiqURcvc
- ev6jJMr1EYnePNH1227lN3hkcWTW+g+6ZjOx5Lwx9ImNQnQiJkI7JM42Iqt77veJfjcA
- f4DVSeAhaTC4ICAMrBuyw01WgEmoA7Lf2yYiTfP4jXMutBtpBhxv41dXvfgG8AKAS30J
- ozfw==
-X-Gm-Message-State: ACrzQf2jHGEqjvusCJCT14/ZRWTx8bIglp5fIEeYDRVgd7z5LRMklgBx
- QUVZpJMZv6PCoixqLKQTkSo=
-X-Received: by 2002:a2e:8552:0:b0:26f:b0c6:f1b with SMTP id
- u18-20020a2e8552000000b0026fb0c60f1bmr420556ljj.165.1665399082540; 
- Mon, 10 Oct 2022 03:51:22 -0700 (PDT)
-Received: from fralle-msi (31-208-27-151.cust.bredband2.com. [31.208.27.151])
- by smtp.gmail.com with ESMTPSA id
- f7-20020a056512360700b004996fbfd75esm1373307lfs.71.2022.10.10.03.51.22
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 10 Oct 2022 03:51:22 -0700 (PDT)
-Date: Mon, 10 Oct 2022 12:51:20 +0200
-From: Francisco Iglesias <frasse.iglesias@gmail.com>
-To: Michael Walle <michael@walle.cc>
-Cc: =?iso-8859-1?Q?C=E9dric?= Le Goater <clg@kaod.org>,
- qemu-devel@nongnu.org, qemu-arm@nongnu.org, qemu-block@nongnu.org,
- Peter Maydell <peter.maydell@linaro.org>,
- Joel Stanley <joel@jms.id.au>, Andrew Jeffery <andrew@aj.id.au>,
- Alistair Francis <alistair@alistair23.me>, Iris Chen <irischenlj@fb.com>
-Subject: Re: [PATCH v3 4/8] m25p80: Add the mx25l25635f SFPD table
-Message-ID: <20221010105120.GA30024@fralle-msi>
-References: <20220722063602.128144-1-clg@kaod.org>
- <20220722063602.128144-5-clg@kaod.org>
- <20221007144431.GE20384@fralle-msi>
- <6726971b-b862-2959-5e7e-c059be2bb07d@kaod.org>
- <d6d2575b520fedb47a5fa7c1031c4ff7@walle.cc>
+ bh=DlGgqI62L7OgfrviOXt1HgTQ4eB9ERsnrnYaUsjCytw=;
+ b=w+7dXTCBgf6HiPx0NbTJpj19odayPY6eH39ynz/76IVqThS9J/+ahZRwfEMtvw0pzz
+ 39MmsArKjZnRj75NXryaH9QbohRyuO5bcD/biq4URLYPpx9j5B0G46a4XyRxspObTg9l
+ zuLdO0oLv6xFpiMPehrJuWzrt/8uN8u4MFtIsUYV6kS21m/fuxW3cA3KxK9Cr5YCeTTY
+ bA8NYoPIdqFa+RtYixjdcm1JNcpGsikAf5G05uJod23apSJJQOmcTz6hY3b/dr5oEHRk
+ BvG46DYcU/JMfbrByCK+rPA2x1n3Z/uVv10BK+x7b5+zNVHZA7G7Q7DsHTHG6Xs8lfvT
+ 3ToQ==
+X-Gm-Message-State: ACrzQf2tWge2tfX6LN0SQExVx93nXiF5R0B2cvTGELyRktQHduLN9K31
+ VTnqn7MNqCKyHfCadPBpeRvIzytOqNWf1L8/1hV8Sw==
+X-Received: by 2002:a17:903:4d7:b0:178:8564:f754 with SMTP id
+ jm23-20020a17090304d700b001788564f754mr18857176plb.60.1665407413061; Mon, 10
+ Oct 2022 06:10:13 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <d6d2575b520fedb47a5fa7c1031c4ff7@walle.cc>
-User-Agent: Mutt/1.10.1 (2018-07-13)
-Received-SPF: pass client-ip=2a00:1450:4864:20::22c;
- envelope-from=frasse.iglesias@gmail.com; helo=mail-lj1-x22c.google.com
-X-Spam_score_int: -1016
-X-Spam_score: -101.7
-X-Spam_bar: ---------------------------------------------------
-X-Spam_report: (-101.7 / 5.0 requ) BAYES_00=-1.9, DKIM_INVALID=0.1,
- DKIM_SIGNED=0.1, FREEMAIL_FROM=0.001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- USER_IN_WELCOMELIST=-0.01,
- USER_IN_WHITELIST=-100 autolearn=no autolearn_force=no
+References: <20221001162318.153420-1-richard.henderson@linaro.org>
+In-Reply-To: <20221001162318.153420-1-richard.henderson@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 10 Oct 2022 14:10:01 +0100
+Message-ID: <CAFEAcA__RTAL=DjbZ7pHR9O2x=MytMhEO-b8WtEue2JsPcordw@mail.gmail.com>
+Subject: Re: [PATCH v3 00/42] target/arm: Implement FEAT_HAFDBS
+To: Richard Henderson <richard.henderson@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1034;
+ envelope-from=peter.maydell@linaro.org; helo=mail-pj1-x1034.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 3LbVc5as/ahx
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: jgPYLATsNEG6
 
-Hi  Cedric,
+On Sat, 1 Oct 2022 at 17:24, Richard Henderson
+<richard.henderson@linaro.org> wrote:
+>
+> This is a major reorg to arm page table walking.  While the result
+> here is "merely" Hardware-assited Access Flag and Dirty Bit Setting
+> (HAFDBS), the ultimate goal is the Realm Management Extension (RME).
+> RME "recommends" that HAFDBS be implemented (I_CSLWZ).
+>
 
-On [2022 Oct 10] Mon 11:58:40, Michael Walle wrote:
-> Am 2022-10-10 08:23, schrieb Cédric Le Goater:
-> > On 10/7/22 16:44, Francisco Iglesias wrote:
-> 
-> > > > --- a/hw/block/m25p80.c
-> > > > +++ b/hw/block/m25p80.c
-> > > > @@ -234,6 +234,8 @@ static const FlashPartInfo known_devices[] = {
-> > > >       { INFO("mx25l12855e", 0xc22618,      0,  64 << 10, 256, 0) },
-> > > >       { INFO6("mx25l25635e", 0xc22019,     0xc22019,  64 << 10,
-> > > > 512, 0),
-> > > >         .sfdp_read = m25p80_sfdp_mx25l25635e },
-> > > > +    { INFO6("mx25l25635f", 0xc22019,     0xc22019,  64 << 10,
-> > > > 512, 0),
+I've taken patches 1-20 plus the extra patch 1.5 into
+target-arm.next (last patch taken "Use tlb_set_page_full").
 
-I think I missed the (ER_4K | ER_32K) flags above (in case we go for a v4 we 
-can add it in). 
-
-> > > 
-> > > I think I'm not seeing the extended id part in the datasheet I've
-> > > found so
-> > > might be that you can switch to just INFO and _ext_id 0 above
-> > 
-> > This was added by commit 6bbe036f32dc ("m25p80: Return the JEDEC ID
-> > twice for
-> > mx25l25635e") to fix a real breakage on HW.
-> 
-> From my experience, the ID has a particular length, at least three bytes
-> and if you read past that length for some (all?) devices the id bytes just
-> get repeated. I.e. the counter in the device will just wrap to offset 0
-> again. If you want to emulate the hardware correctly, you would have to
-> take that into consideration.
-
-If we decide to go with Michael's proposal above you can use '0' on the
-'extended_id' and enable 's->data_read_loop = true' when reading the ID.
-
-Best regards,
-Francisco
-
-> But I don't think it's worth it, OTOH there seems to be some broken
-> software which rely on that (undefined?) behavior.
-> 
-> -michael
-
+thanks
+-- PMM

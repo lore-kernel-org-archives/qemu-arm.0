@@ -1,119 +1,110 @@
-Received: by 2002:ac9:4144:0:0:0:0:0 with SMTP id u4csp638064ocg;
-        Fri, 7 Oct 2022 10:36:27 -0700 (PDT)
-X-Google-Smtp-Source: AMsMyM6oW4Uroq1YolzvfduLW2YdPD4LTgeZVEeJFt6qmWFH0wxngox/i9/DqpDJE0igj6DS6qhV
-X-Received: by 2002:ac8:4e52:0:b0:395:308e:81c9 with SMTP id e18-20020ac84e52000000b00395308e81c9mr4945977qtw.675.1665164187042;
-        Fri, 07 Oct 2022 10:36:27 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1665164187; cv=none;
+Received: by 2002:ac9:4144:0:0:0:0:0 with SMTP id u4csp2096014ocg;
+        Sun, 9 Oct 2022 18:24:55 -0700 (PDT)
+X-Google-Smtp-Source: AMsMyM6ARfquExSwWwy9ZAgkoF1XVHzwFjg7mY49/INoHn6T/VZiwG9608/Ni6s3S8WZwgb/qG2f
+X-Received: by 2002:a05:620a:1fa:b0:6df:1193:c41a with SMTP id x26-20020a05620a01fa00b006df1193c41amr11413591qkn.232.1665365095036;
+        Sun, 09 Oct 2022 18:24:55 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1665365095; cv=none;
         d=google.com; s=arc-20160816;
-        b=FfVjOdfzEypD1LC23nSBi6JexflEloXDRiVe8JIGF3SgWWx0QKOiIKnE2IFF3vyrjv
-         vusEBzBo+W9KOqNKJo7Nb3emDCqCckaKeMJMgKv7nVZS7wiSJvk42nRcI1U9jzOyhs3O
-         QqW/KS4ns69i7dkRJORDVs/bDdcdboLVuwhfoez3NZ53zEb3uWLoP98LQ/2pvgBYyCyD
-         /JTfUVd47ikb3Pp67jWSsfsRkS/Li4X0uj8/0ZsIh+dSELa5qq9CCXGA4obhPnGIUcXK
-         1k21HrGH2/RYIw/ddYZlZKd9MvfmwRrCkQbJ72LgjJGLc0xAafRULnUiEpY5PE7ILIM/
-         Fd8g==
+        b=KtvCTMb45ERxYDwFh2cob1M7wqkOZtTqYvEcVZHWXaBaA8waKB1J6uCFZlWQsZFStj
+         ATWTkN5Z+RWOEN1TZAIq49dJQMKuq6xIYjAiz8TzjGmu8qTkwiWlCy3Op3mxkQr8/h2m
+         jOKllnr3k2CsNQ9DcDQxTXfQm5cmziZMH9Dvkb6tEruhJnVui1a1Y2OHBVzB6uAjQ2+j
+         q7gcdwMu986i3tuJJgA463Sw4X8vrfmsA9uCG90z6vSH2Wa3wOMYa54ajLuNhW2z5iHI
+         MNn+Gq6b4nAyz47Ln1hirBt19/F+0TQSBo14SBc9AZ8GEN39RZWTJ1Gmo75gdhuGoCPb
+         OCew==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:cc:to:content-language:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=UoCZAjL06IF4MTDyYFvN5gdKC5Sn7AX9BG2iOUSrdWg=;
-        b=of5Z4Kr9/4ftZnHlE341QBV+D/G6HYI2NZJtdCEBjGHZAZZvswZ8cRQxjEZeNdKNYn
-         TpGwJDGcYEb29WPD3cwXHolo01e08xJILlrM7im7NJYEPHfQJWUtQw6G3Y4DSNwH2oCX
-         r+6xsw/QagD4w8NvNEqliAVtxzmBYrzdlU5fndc89wdz+RkgKGbESl2PhwNfR05ElFk+
-         sulo1Sesa4cw8DXVDiSn4OYx5m7Vg0sRutSctncqzsagGEbMfISVOgPOmJqd7vkJOXcA
-         nIlV7xQceD6Bm80yh8jANk1XP3pGPqs3TlHwMjz9AQH71KU0RAblPzpubA5WXN/zDPU3
-         hSOw==
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=3g5g6jGUkpuTr7ifn4UAprGEQT/8nQOf+1wUo1onaCc=;
+        b=IZ6BdiUsJKlXRQrfgoOHm3Cw+LbrI99ZBeq5UnKcUz8mcGJUfSESzwz2VH3QKe/MXd
+         Jcc32TCQFzP6oT4NXo6LFUs67BpfdKUt4ug36fR0PB4iJNiVO8mDYApNkk2Gs8YRNEy7
+         H1yUHUeG6Y9ado2UyQdMjh4gh9HX1lVYJHIOiHrfE+T7ZmHOOrXr8kLRdXOyPorQ9iDT
+         +OY3JvG5Z72rU0xjk2OZsUoUcXN1fpkgytRf8XHwmMIC/8ikuvfqE4pzqL4ikYI+NPK+
+         8EYxyLFZhyesUnc+JCoVb17xHRq2p5BNsLGHO/+lUtYBe25Cr2pW14RcfOSU7lQi5zJg
+         eTvw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=wiWAxC4H;
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=gAA6Rh+3;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id k7-20020a05620a07e700b006b94021cf04si993323qkk.366.2022.10.07.10.36.26
+        by mx.google.com with ESMTPS id q26-20020a05620a0c9a00b006bac6f68acbsi4013405qki.415.2022.10.09.18.24.54
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 07 Oct 2022 10:36:27 -0700 (PDT)
+        Sun, 09 Oct 2022 18:24:55 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=wiWAxC4H;
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=gAA6Rh+3;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:34184 helo=lists1p.gnu.org)
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:58678 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ogrGs-0002Qg-J7
-	for alex.bennee@linaro.org; Fri, 07 Oct 2022 13:36:26 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:48588)
+	id 1ohhXK-0004Q9-Ir
+	for alex.bennee@linaro.org; Sun, 09 Oct 2022 21:24:54 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41354)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1ogrFn-0002NJ-NW
- for qemu-arm@nongnu.org; Fri, 07 Oct 2022 13:35:22 -0400
-Received: from mail-il1-x131.google.com ([2607:f8b0:4864:20::131]:45801)
+ (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
+ id 1ohhX9-0004P8-Bn; Sun, 09 Oct 2022 21:24:43 -0400
+Received: from mail-pf1-x431.google.com ([2607:f8b0:4864:20::431]:33697)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1ogrFm-00026x-2e
- for qemu-arm@nongnu.org; Fri, 07 Oct 2022 13:35:19 -0400
-Received: by mail-il1-x131.google.com with SMTP id q18so79083ils.12
- for <qemu-arm@nongnu.org>; Fri, 07 Oct 2022 10:35:17 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=UoCZAjL06IF4MTDyYFvN5gdKC5Sn7AX9BG2iOUSrdWg=;
- b=wiWAxC4HVbivmgAkpjbr3hwp3oSfL5qyp1wYForgXA8neCCLFVMYZRaLh9A/SYJypq
- je+J49avb9AO0GuXe61ws/KwDpxOJAdMol4rL398H1KvhE3UZkJJpztS9D2x1Essgb7X
- rmknVUWh83rZVfzMZyp9EgEUduZnZNDUDSxrjS80CxqK84QJa/u68XZQnl5sDqLpbixh
- mwg1Kj5wvurYhjxuqcrTcTAPWBvASQCg7CksSeOXGkhM1DPZs4UnhBi1Y3qQOxg7BGdA
- S/e/ytZokJCuqzQhTsCgE1wos0krGV3FIs2qqb5aLI9W6RC99Vs6FAwDnefQsrwVqGx0
- /Xbw==
+ (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
+ id 1ohhX7-0006yr-HU; Sun, 09 Oct 2022 21:24:43 -0400
+Received: by mail-pf1-x431.google.com with SMTP id w2so9604412pfb.0;
+ Sun, 09 Oct 2022 18:24:40 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=3g5g6jGUkpuTr7ifn4UAprGEQT/8nQOf+1wUo1onaCc=;
+ b=gAA6Rh+3sjfixQV53ioL3+rJ+a1Y9t0Y+mUv46up/lIXouT+Z1GeT1CKlt9L+aZa6r
+ U4BeJR4dpFTAjefBKKLV5k5AUSG9Ar/AeRQOPCIwOjOMYaX8IKfzxAoqoI8xw/J3VkIM
+ x1TCQ+a9LmOT7gJftVNXMO5gHOp/TQ0T/HfOGJhzKdgMNIabV26lWOhaPzmEurlnVWmq
+ KzhjwQgdj5FKgOPvt4S+VVW66VK1wDcW22wlaJg5UprsFDx20hITmbLZQBlVnEIyHcoS
+ TsEnkxsPJuGAnmEd7WHC3K7NQAHRwWXpv0Pbdm38gYklYvidmTGY8AcAyJ0J2hTCUxVA
+ oEFw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=UoCZAjL06IF4MTDyYFvN5gdKC5Sn7AX9BG2iOUSrdWg=;
- b=BCgBA/A2yfDppeYy4M7NGGmdWtNIh+psScx6a65KGwobhMJV8PzQ9vtXSb5Amwz8IN
- SgMkq4QwoIGgefLA45I3bpPxy7fBMCvL3xHNKb4B8SCIKhyGfw1jZW9+SQ8gCYuXV0P9
- Icfco2ZutsWdeqBj3ah30les7xNaW5c8N9CKBWTJtOi/F7orDPyErY76BrYeooSoh39i
- 1KnAv/eOHcDG9oFbLoRWZIwDXes5GUgxcnjF1vkMLFBYM0J6H5pZ/4uG+lSyftEQ3SGs
- 0cIkjAz4Ono5LydY3h3IXU/JvbMM2lrWBnwnWUJNv4pq805l5VFGji4yhf9oyb/zVK0L
- K97w==
-X-Gm-Message-State: ACrzQf0UaygkU7ECep6/Y/iwU0FZGuqd4zd+SOjamEDmzyRmG6+d97Dg
- RYDknnztFp3un7XF11Azj0lLFgQsH+/N+Q==
-X-Received: by 2002:a65:4508:0:b0:43c:e3c6:d1c2 with SMTP id
- n8-20020a654508000000b0043ce3c6d1c2mr5449035pgq.582.1665164106203; 
- Fri, 07 Oct 2022 10:35:06 -0700 (PDT)
-Received: from ?IPV6:2602:47:d49d:ec01:3b6c:3864:9643:140a?
- ([2602:47:d49d:ec01:3b6c:3864:9643:140a])
- by smtp.gmail.com with ESMTPSA id
- s23-20020a17090a1c1700b001fabcd994c1sm4855679pjs.9.2022.10.07.10.35.04
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 07 Oct 2022 10:35:05 -0700 (PDT)
-Message-ID: <630e438d-1ef5-dc22-c9ad-4576de22b24f@linaro.org>
-Date: Fri, 7 Oct 2022 10:35:03 -0700
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=3g5g6jGUkpuTr7ifn4UAprGEQT/8nQOf+1wUo1onaCc=;
+ b=OF16hyOPDNGtxO+cVnrHphJ9wR2r+UeZHzW//9J6A5ZPsOsAijJ6K07NIqN6N4sFzv
+ 6KRlxf+Dzn56qjl58vGd9OzmW3//ieBx0yNZMJWsd4FuC687TJXvuKBWWHxLKBgW6/ph
+ WLLA8PxF3OB9h9AYim67+lEH1WgHjIG4U6JUFr/qrmY4CW7I7SonfKlVwyvGyfex3xEX
+ 5mXo+Q0ZQZE1a4uO7t4jINxtQEMMn++GPYmLYIrfIJxa9FkN+Hzh8n0OcHUoFqvyP/j8
+ PQcp9bqVSr7lm1m0Ar+n7N+kLkco7hLT5ogl0l1rjos1tyGwxRT0MQdQ25nvaDkR6arv
+ PVfw==
+X-Gm-Message-State: ACrzQf1qi9zzN8wahn2FIqGlBiYU1SgiUj0O8bemWfNhZGfuZ8x43y95
+ zKftdJ/Pi6i5mQhVis0WjJt51b4DUIB265bWIEQ=
+X-Received: by 2002:a63:ce43:0:b0:45b:d6ed:6c2 with SMTP id
+ r3-20020a63ce43000000b0045bd6ed06c2mr14491765pgi.406.1665365079358; Sun, 09
+ Oct 2022 18:24:39 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.11.0
-Subject: Re: [PATCH v3 41/42] target/arm: Implement FEAT_HAFDBS
-Content-Language: en-US
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
-References: <20221001162318.153420-1-richard.henderson@linaro.org>
- <20221001162318.153420-42-richard.henderson@linaro.org>
- <CAFEAcA-LhvMYbTTcsC+eAcAeA61e9Kq=zf6fKr5j_4dusuRDiw@mail.gmail.com>
- <52ec3b12-b9bb-b2a9-52c8-54a7016182c6@linaro.org>
- <CAFEAcA8Qe-Y1HD8ULjDgrcRGbpXruqL=te9NXtTv2OWv2DOBhQ@mail.gmail.com>
-From: Richard Henderson <richard.henderson@linaro.org>
-In-Reply-To: <CAFEAcA8Qe-Y1HD8ULjDgrcRGbpXruqL=te9NXtTv2OWv2DOBhQ@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::131;
- envelope-from=richard.henderson@linaro.org; helo=mail-il1-x131.google.com
-X-Spam_score_int: -47
-X-Spam_score: -4.8
-X-Spam_bar: ----
-X-Spam_report: (-4.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-2.699,
+References: <20221004092351.18209-1-sunilvl@ventanamicro.com>
+ <20221004092351.18209-4-sunilvl@ventanamicro.com>
+In-Reply-To: <20221004092351.18209-4-sunilvl@ventanamicro.com>
+From: Alistair Francis <alistair23@gmail.com>
+Date: Mon, 10 Oct 2022 11:24:13 +1000
+Message-ID: <CAKmqyKMtqAoo2s_UOdT=WeMHxXxgHBHqP_TFVbFdfSH=_jrarQ@mail.gmail.com>
+Subject: Re: [PATCH V5 3/3] hw/riscv: virt: Enable booting S-mode firmware
+ from pflash
+To: Sunil V L <sunilvl@ventanamicro.com>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Xiaojuan Yang <yangxiaojuan@loongson.cn>, Song Gao <gaosong@loongson.cn>,
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>, 
+ Gerd Hoffmann <kraxel@redhat.com>, Palmer Dabbelt <palmer@dabbelt.com>, 
+ Alistair Francis <alistair.francis@wdc.com>, Bin Meng <bin.meng@windriver.com>,
+ qemu-arm@nongnu.org, qemu-devel@nongnu.org, qemu-riscv@nongnu.org, 
+ Andrew Jones <ajones@ventanamicro.com>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::431;
+ envelope-from=alistair23@gmail.com; helo=mail-pf1-x431.google.com
+X-Spam_score_int: -17
+X-Spam_score: -1.8
+X-Spam_bar: -
+X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
@@ -130,30 +121,116 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: M846Hf50yWQQ
+X-TUID: IdP5o2WU+W1I
 
-On 10/7/22 09:50, Peter Maydell wrote:
-> On Fri, 7 Oct 2022 at 17:45, Richard Henderson
-> <richard.henderson@linaro.org> wrote:
->>
->> On 10/7/22 06:47, Peter Maydell wrote:
->>> Are there definitely no code paths where we might try to do
->>> a page table walk with the iothread already locked ?
->>
->> I'll double-check, but another possibility is to simply perform the atomic operation on
->> the low 32-bits, where both AF and DB are located.  Another trick I learned from x86...
-> 
-> Doesn't that cause a problem where we don't detect that some other
-> CPU wrote to the high 32 bits of the descriptor ? We're supposed to
-> be using those high 32 bits, not the ones we have in hand...
+On Tue, Oct 4, 2022 at 7:28 PM Sunil V L <sunilvl@ventanamicro.com> wrote:
+>
+> To boot S-mode firmware payload like EDK2 from persistent
+> flash storage, qemu needs to pass the flash address as the
+> next_addr in fw_dynamic_info to the opensbi.
+>
+> When both -kernel and -pflash options are provided in command line,
+> the kernel (and initrd if -initrd) will be copied to fw_cfg table.
+> The S-mode FW will load the kernel/initrd from fw_cfg table.
+>
+> If only pflash is given but not -kernel, then it is the job of
+> of the S-mode firmware to locate and load the kernel.
+>
+> In either case, update the kernel_entry with the flash address
+> so that the opensbi can jump to the entry point of the S-mode
+> firmware.
+>
+> Signed-off-by: Sunil V L <sunilvl@ventanamicro.com>
+> Reviewed-by: Andrew Jones <ajones@ventanamicro.com>
 
-Hmm, yes.  Which now makes me wonder if the x86 case is in fact buggy...
+Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
 
-> If we do need the iothread lock, we could do it the way that
-> io_readx() does, I guess, where we track whether we needed to
-> lock it or not.
+Alistair
 
-yes.
-
-
-r~
+> ---
+>  hw/riscv/boot.c         | 29 +++++++++++++++++++++++++++++
+>  hw/riscv/virt.c         | 18 +++++++++++++++++-
+>  include/hw/riscv/boot.h |  1 +
+>  3 files changed, 47 insertions(+), 1 deletion(-)
+>
+> diff --git a/hw/riscv/boot.c b/hw/riscv/boot.c
+> index 1ae7596873..fa8ad27da2 100644
+> --- a/hw/riscv/boot.c
+> +++ b/hw/riscv/boot.c
+> @@ -338,3 +338,32 @@ void riscv_setup_direct_kernel(hwaddr kernel_addr, hwaddr fdt_addr)
+>          riscv_cpu->env.fdt_addr = fdt_addr;
+>      }
+>  }
+> +
+> +void riscv_setup_firmware_boot(MachineState *machine)
+> +{
+> +    if (machine->kernel_filename) {
+> +        FWCfgState *fw_cfg;
+> +        fw_cfg = fw_cfg_find();
+> +
+> +        assert(fw_cfg);
+> +        /*
+> +         * Expose the kernel, the command line, and the initrd in fw_cfg.
+> +         * We don't process them here at all, it's all left to the
+> +         * firmware.
+> +         */
+> +        load_image_to_fw_cfg(fw_cfg,
+> +                             FW_CFG_KERNEL_SIZE, FW_CFG_KERNEL_DATA,
+> +                             machine->kernel_filename,
+> +                             true);
+> +        load_image_to_fw_cfg(fw_cfg,
+> +                             FW_CFG_INITRD_SIZE, FW_CFG_INITRD_DATA,
+> +                             machine->initrd_filename, false);
+> +
+> +        if (machine->kernel_cmdline) {
+> +            fw_cfg_add_i32(fw_cfg, FW_CFG_CMDLINE_SIZE,
+> +                           strlen(machine->kernel_cmdline) + 1);
+> +            fw_cfg_add_string(fw_cfg, FW_CFG_CMDLINE_DATA,
+> +                              machine->kernel_cmdline);
+> +        }
+> +    }
+> +}
+> diff --git a/hw/riscv/virt.c b/hw/riscv/virt.c
+> index de2efccebf..a5bc7353b4 100644
+> --- a/hw/riscv/virt.c
+> +++ b/hw/riscv/virt.c
+> @@ -1274,7 +1274,23 @@ static void virt_machine_done(Notifier *notifier, void *data)
+>      s->fw_cfg = create_fw_cfg(machine);
+>      rom_set_fw(s->fw_cfg);
+>
+> -    if (machine->kernel_filename) {
+> +    if (drive_get(IF_PFLASH, 0, 1)) {
+> +        /*
+> +         * S-mode FW like EDK2 will be kept in second plash (unit 1).
+> +         * When both kernel, initrd and pflash options are provided in the
+> +         * command line, the kernel and initrd will be copied to the fw_cfg
+> +         * table and opensbi will jump to the flash address which is the
+> +         * entry point of S-mode FW. It is the job of the S-mode FW to load
+> +         * the kernel and initrd using fw_cfg table.
+> +         *
+> +         * If only pflash is given but not -kernel, then it is the job of
+> +         * of the S-mode firmware to locate and load the kernel.
+> +         * In either case, the next_addr for opensbi will be the flash address.
+> +         */
+> +        riscv_setup_firmware_boot(machine);
+> +        kernel_entry = virt_memmap[VIRT_FLASH].base +
+> +                       virt_memmap[VIRT_FLASH].size / 2;
+> +    } else if (machine->kernel_filename) {
+>          kernel_start_addr = riscv_calc_kernel_start_addr(&s->soc[0],
+>                                                           firmware_end_addr);
+>
+> diff --git a/include/hw/riscv/boot.h b/include/hw/riscv/boot.h
+> index a36f7618f5..93e5f8760d 100644
+> --- a/include/hw/riscv/boot.h
+> +++ b/include/hw/riscv/boot.h
+> @@ -57,5 +57,6 @@ void riscv_rom_copy_firmware_info(MachineState *machine, hwaddr rom_base,
+>                                    uint32_t reset_vec_size,
+>                                    uint64_t kernel_entry);
+>  void riscv_setup_direct_kernel(hwaddr kernel_addr, hwaddr fdt_addr);
+> +void riscv_setup_firmware_boot(MachineState *machine);
+>
+>  #endif /* RISCV_BOOT_H */
+> --
+> 2.25.1
+>
+>

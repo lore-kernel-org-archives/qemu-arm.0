@@ -1,95 +1,105 @@
-Received: by 2002:ac9:4144:0:0:0:0:0 with SMTP id u4csp513874ocg;
-        Fri, 7 Oct 2022 07:36:35 -0700 (PDT)
-X-Google-Smtp-Source: AMsMyM5rjsxyQA3vvY7O5dCVdjk9rwJYX8KnFYvJkTRKVKheffS1IommQpldBsdd9LdaoNDdsl3u
-X-Received: by 2002:a05:622a:304:b0:35d:4825:f812 with SMTP id q4-20020a05622a030400b0035d4825f812mr4456562qtw.467.1665153395113;
-        Fri, 07 Oct 2022 07:36:35 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1665153395; cv=none;
+Received: by 2002:ac9:4144:0:0:0:0:0 with SMTP id u4csp2424373ocg;
+        Mon, 10 Oct 2022 06:17:27 -0700 (PDT)
+X-Google-Smtp-Source: AMsMyM5iMF/8VlXgGLf4H/5+viu3W/NbiBIzWMRfjDPc7122dnte2V2U3HE6xYLC6U/7k2zN8qV8
+X-Received: by 2002:a0c:8ccc:0:b0:4b2:382e:ddaa with SMTP id q12-20020a0c8ccc000000b004b2382eddaamr14569287qvb.33.1665407847131;
+        Mon, 10 Oct 2022 06:17:27 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1665407847; cv=none;
         d=google.com; s=arc-20160816;
-        b=ggNJsAPwFG7+xwfV02L/OsRFL0aJt0MmHQ+J6yTHQXH+ke3nU9lylu1EKtB3amgNw4
-         Jli6k+nyyeIK7W6YbG0fo7d9+/ljhy6V39TGC/LMENjWfDxsmGxOLvItzqqzV8/JtAH1
-         PYl+P04VBZ+To2v1cKO1CTikvgwE4hYNU7so/scuCS4Pr4n/j/xMFjl035NPWaBhMaP8
-         93Jo1EldNHR7O06qe4LlRGtUdNewyTVB1QPlX9qnbDJ3C5Xz3+D2uAfHR0WmpWAYUMUC
-         jrY405jyRfVvBxHKG6WfayPVvCda6RL+HX3HEQnYLWGHQPzWR+USvjd+JohWCRGmP+vo
-         +m6g==
+        b=BQaEn5/qNnU6RtPpTNoRdjDvU0exdsWmQYpkAzma3DsHe5Ccyu46hY+9xMaRv8P3Vx
+         xPM1LDrH3kxXQ7XabAZO4pxKj3GPmSOOX8029l5iZ4VmS98h1LHnojeCReDiXs+DO8cK
+         CdX8SezXQkZQkfS3u3Z9sfNu2gFy7MssEuLT3kF7Pn8i3rV1Z613p4LWve76T8me9Hjy
+         YVU+ewphwZBSZAqVEHBQwZISKWOhuDHV/7i4ZUMUOfz1P8mhXOI6iqQGBeIh4LODhazw
+         vbdqRlxzhcqvI3FLtO+ZMdRH3X+LYiot/PVoLT5Xw3G5qLfBzVkcj/ht754m17sp+SOs
+         vKJw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:cc:to:content-language:subject
-         :user-agent:mime-version:date:message-id;
-        bh=tmEa5HLsjmqv6X4y8o5tDNODJSGGyuldZ0KPzbVNBwE=;
-        b=sqQLDW1MkvfxzXnAtz9IpjoeZE6sw6LgserK1pA8ZsoxsOiMWfzbkAdNEezKGTHhW6
-         P7MdPYdQVI9iW4FQIN+qf8B32xbeg9nHeJW4M1z0/LqVjvdPe94p6LI7z6+ODivDmxB2
-         g9u+hwXvjMZZp8fCHg/3qquFwXixcOfo/Kuno5GL0buhVt7KB3kJr0U6VcW75HfNUksn
-         ADTyUHE263v020qr4KH171/kyqOiVOTQuAL+UeLWJXdUi/WzHJ41ZCOWy1eNZXVybx2x
-         NAGoxqd2UwMTxdcQ5lOI2LhmDwaVpqq+lu7KaOIjW5G3joozedFI7X4zMnHDbVmSk8Sy
-         Dr8Q==
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=lED7wXCFx4Hui3pum8s0vhphelI0KogCeA3QcupwxUY=;
+        b=q66MeKKpu7S9WHMQryjSREFXAc8pctZoK1JJQ/b0Ll+Iz0I4cL49tvYY8k8JQhlc5B
+         X6rw+mtCxAuOFL9EeAwObklIw0tR0tHWtjUZcDle6/ttYzbHtkny9b5QhD89e+F91FEK
+         myaKhnYG7Ud448qvpr1WMfmbjRlvJ6szhMSNjy4j2Up+SUTCzLPB4tqeNuTnlSCwNBmY
+         s1aNoxKg7fOMQxRodC6433L9L9vbGnieNETsYP7nano4HxJmX9fo5/LcR070k3uFohMH
+         mF3TUjlq4FPBhal86jct5KutIVydQMbd666Io+LCi/hShWpW82XskUZNFA5DG0xLTeC5
+         2uhQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@linaro.org header.s=google header.b=pNm8ON3C;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t11-20020a05622a180b00b0038fbcf8b10fsi190671qtc.745.2022.10.07.07.36.35
+        by mx.google.com with ESMTPS id cn3-20020ad44a63000000b004992c5f80besi4247901qvb.12.2022.10.10.06.17.27
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 07 Oct 2022 07:36:35 -0700 (PDT)
+        Mon, 10 Oct 2022 06:17:27 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:38818 helo=lists1p.gnu.org)
+       dkim=pass header.i=@linaro.org header.s=google header.b=pNm8ON3C;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:55604 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ogoSn-0004rA-G0
-	for alex.bennee@linaro.org; Fri, 07 Oct 2022 10:36:34 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:56256)
+	id 1ohses-0001D7-OK
+	for alex.bennee@linaro.org; Mon, 10 Oct 2022 09:17:26 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:34142)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1ognAr-0004yY-9l
- for qemu-arm@nongnu.org; Fri, 07 Oct 2022 09:13:57 -0400
-Received: from 1.mo552.mail-out.ovh.net ([178.32.96.117]:46193)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1ognAm-0001nx-Ux
- for qemu-arm@nongnu.org; Fri, 07 Oct 2022 09:13:54 -0400
-Received: from mxplan5.mail.ovh.net (unknown [10.108.1.114])
- by mo552.mail-out.ovh.net (Postfix) with ESMTPS id B992929A6A;
- Fri,  7 Oct 2022 13:13:48 +0000 (UTC)
-Received: from kaod.org (37.59.142.101) by DAG4EX2.mxp5.local (172.16.2.32)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.12; Fri, 7 Oct
- 2022 15:13:48 +0200
-Authentication-Results: garm.ovh; auth=pass
- (GARM-101G0046e35eb97-5fe7-4fe7-a214-752ce9903440,
- 72EF84A86A0CAB1F8CEB0FBBC9371DA6A893A50B) smtp.auth=clg@kaod.org
-X-OVh-ClientIp: 82.66.77.115
-Message-ID: <97d016d5-802b-41db-0a6e-e1c03dc8dd67@kaod.org>
-Date: Fri, 7 Oct 2022 15:13:42 +0200
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1ohseJ-0001C0-6W
+ for qemu-arm@nongnu.org; Mon, 10 Oct 2022 09:16:52 -0400
+Received: from mail-pl1-x62a.google.com ([2607:f8b0:4864:20::62a]:45048)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1ohseH-0002Zh-AT
+ for qemu-arm@nongnu.org; Mon, 10 Oct 2022 09:16:50 -0400
+Received: by mail-pl1-x62a.google.com with SMTP id x6so10337004pll.11
+ for <qemu-arm@nongnu.org>; Mon, 10 Oct 2022 06:16:48 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=lED7wXCFx4Hui3pum8s0vhphelI0KogCeA3QcupwxUY=;
+ b=pNm8ON3CLlSIyaSqqVqMqAbNFUNsg98TH9l2WJdLvXNLwdave7VbXTjf8BibZJlMmz
+ EUBjw8m7+J6EjnaXWsxq/i09UXnLxYqKH5ZbxVLEgrsfOeiAKE81TOSMlQvYjrmhJpNn
+ CkR+I8ScPTv50WMX/5zQK7Oz8jQ1z4v1Q4VV/O++9GpzeJVvozgDf/JkDw0NJfuVFcDA
+ SgpjAQc3vPhtqZJ3YXi9YcqZnfk3Y1j5/meh63YnF72b3jS3QouRY4jbmaqtQKcV3xLn
+ 2l6gvzmY7x/X5W8NTMkROTUJCP5PHAhtyin40QBO75EJxyHZ87lCScmpTa0cw2QWfpUK
+ 9O0Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=lED7wXCFx4Hui3pum8s0vhphelI0KogCeA3QcupwxUY=;
+ b=WlcwlBHLT+0GNhB7b6zJnQ32KAsZD/SZB0TTwyli/iyAZscbBPEOLH+vBmQtCbRIpH
+ 2/cPrjpcXYa0O51QBsY7G8E6oQEg7KIQheJS3W6ltSHjLTcfZaa8pFed9eKZB4l4ONiX
+ GZTeb6RuFKZP2OnsiYNDYBOyhSXvzCT3Gz9zP6OTG1Jc9/YBW0VNQcEdrLdEkEnraUME
+ 52CwHMVfuzhV+y+56z8szU8CLSpb+xKycAtbKrqagVLHFCyIAc/3pKRsEuIqnee8BUHF
+ LcdcYNpDCxgjj0L3Sht1tPpW/Lr+Ajxzef4AvPu2UQD8D3WPOIb6/Tbggxa5S6A+51qM
+ qxFg==
+X-Gm-Message-State: ACrzQf0dhQ3k/j2xvL0Q/CFFNWfO2KB40g84RO4OpX84H8Pikd3+6ovK
+ 3G1tOoxMju1+WJWuPzh4zcLqjyfKWlzbtUiOCmaO/Q==
+X-Received: by 2002:a17:90a:fe92:b0:20a:daaf:75ea with SMTP id
+ co18-20020a17090afe9200b0020adaaf75eamr30721926pjb.221.1665407807585; Mon, 10
+ Oct 2022 06:16:47 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.3.1
-Subject: Re: [PATCH v2] hw/arm/aspeed: increase Bletchley memory size
-Content-Language: en-US
-To: Patrick Williams <patrick@stwcx.xyz>
-CC: Peter Maydell <peter.maydell@linaro.org>, Andrew Jeffery
- <andrew@aj.id.au>, Joel Stanley <joel@jms.id.au>, "open list:ASPEED BMCs"
- <qemu-arm@nongnu.org>, "open list:All patches CC here"
- <qemu-devel@nongnu.org>
-References: <20221006225232.3558794-1-patrick@stwcx.xyz>
- <20221007110529.3657749-1-patrick@stwcx.xyz>
-From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
-In-Reply-To: <20221007110529.3657749-1-patrick@stwcx.xyz>
-Content-Type: text/plain; charset="UTF-8"; format=flowed
-Content-Transfer-Encoding: 8bit
-X-Originating-IP: [37.59.142.101]
-X-ClientProxiedBy: DAG4EX1.mxp5.local (172.16.2.31) To DAG4EX2.mxp5.local
- (172.16.2.32)
-X-Ovh-Tracer-GUID: 7c8190a8-6fbe-4d01-ae62-d275511db632
-X-Ovh-Tracer-Id: 2741566275865447206
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -77
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvfedrfeeijedgiedvucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnegfrhhlucfvnfffucdlvdefmdenucfjughrpefkffggfgfuvfevfhfhjggtgfhisehtkeertddtfeejnecuhfhrohhmpeevrogurhhitggpnfgvpgfiohgrthgvrhcuoegtlhhgsehkrghougdrohhrgheqnecuggftrfgrthhtvghrnhepkeetjedtleekjedvveffudfhteetleeifeegfeffuefghfefkeehffeufeeludejnecukfhppedtrddtrddtrddtpdefjedrheelrddugedvrddutddunecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmohguvgepshhmthhpohhuthdphhgvlhhopehmgihplhgrnhehrdhmrghilhdrohhvhhdrnhgvthdpihhnvghtpedtrddtrddtrddtpdhmrghilhhfrhhomheptghlgheskhgrohgurdhorhhgpdhnsggprhgtphhtthhopedupdhrtghpthhtohepqhgvmhhuqdguvghvvghlsehnohhnghhnuhdrohhrghdpoffvtefjohhsthepmhhoheehvd
-Received-SPF: pass client-ip=178.32.96.117; envelope-from=clg@kaod.org;
- helo=1.mo552.mail-out.ovh.net
-X-Spam_score_int: -45
-X-Spam_score: -4.6
-X-Spam_bar: ----
-X-Spam_report: (-4.6 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-2.699,
+References: <20221003145641.1921467-1-jerome.forissier@linaro.org>
+In-Reply-To: <20221003145641.1921467-1-jerome.forissier@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 10 Oct 2022 14:16:36 +0100
+Message-ID: <CAFEAcA9bWzD5gKyHGOsz+8KCH1ykgU6sx2soDTVKiTHEa0D7KA@mail.gmail.com>
+Subject: Re: [PATCH] hw/arm/boot: set CPTR_EL3.ESM and SCR_EL3.EnTP2 when
+ booting Linux with EL3
+To: Jerome Forissier <jerome.forissier@linaro.org>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, 
+ Richard Henderson <richard.henderson@linaro.org>, qemu-stable@nongnu.org
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::62a;
+ envelope-from=peter.maydell@linaro.org; helo=mail-pl1-x62a.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
@@ -106,50 +116,48 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: vuF4gIUMOKvw
+X-TUID: EDQZu7lwUFfV
 
-On 10/7/22 13:05, Patrick Williams wrote:
-> For the PVT-class hardware we have increased the memory size of
-> this device to 2 GiB.  Adjust the device model accordingly.
-> 
-> Signed-off-by: Patrick Williams <patrick@stwcx.xyz>
+On Mon, 3 Oct 2022 at 15:57, Jerome Forissier
+<jerome.forissier@linaro.org> wrote:
+>
+> According to the Linux kernel booting.rst [1], CPTR_EL3.ESM and
+> SCR_EL3.EnTP2 must be initialized to 1 when EL3 is present and FEAT_SME
+> is advertised. This has to be taken care of when QEMU boots directly
+> into the kernel (i.e., "-M virt,secure=on -cpu max -kernel Image").
+>
+> Cc: qemu-stable@nongnu.org
+> Fixes: 78cb9776662a ("target/arm: Enable SME for -cpu max")
+> Link: [1] https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/Documentation/arm64/booting.rst?h=v6.0#n321
 
-Reviewed-by: Cédric Le Goater <clg@kaod.org>
+Ooh, that detailed set of control bit requirements is new
+since I last read that doc -- we should probably go through
+and cross-check that we're setting them all correctly.
 
-Thanks,
-
-C.
-
-
+> Signed-off-by: Jerome Forissier <jerome.forissier@linaro.org>
 > ---
->   hw/arm/aspeed.c | 9 ++++++++-
->   1 file changed, 8 insertions(+), 1 deletion(-)
-> 
-> diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
-> index 7d2162c6ed..f8bc6d4a14 100644
-> --- a/hw/arm/aspeed.c
-> +++ b/hw/arm/aspeed.c
-> @@ -1330,6 +1330,13 @@ static void aspeed_machine_fuji_class_init(ObjectClass *oc, void *data)
->           aspeed_soc_num_cpus(amc->soc_name);
->   };
->   
-> +/* On 32-bit hosts, lower RAM to 1G because of the 2047 MB limit */
-> +#if HOST_LONG_BITS == 32
-> +#define BLETCHLEY_BMC_RAM_SIZE (1 * GiB)
-> +#else
-> +#define BLETCHLEY_BMC_RAM_SIZE (2 * GiB)
-> +#endif
-> +
->   static void aspeed_machine_bletchley_class_init(ObjectClass *oc, void *data)
->   {
->       MachineClass *mc = MACHINE_CLASS(oc);
-> @@ -1344,7 +1351,7 @@ static void aspeed_machine_bletchley_class_init(ObjectClass *oc, void *data)
->       amc->num_cs    = 2;
->       amc->macs_mask = ASPEED_MAC2_ON;
->       amc->i2c_init  = bletchley_bmc_i2c_init;
-> -    mc->default_ram_size = 512 * MiB;
-> +    mc->default_ram_size = BLETCHLEY_BMC_RAM_SIZE;
->       mc->default_cpus = mc->min_cpus = mc->max_cpus =
->           aspeed_soc_num_cpus(amc->soc_name);
->   }
+>  hw/arm/boot.c | 4 ++++
+>  1 file changed, 4 insertions(+)
+>
+> diff --git a/hw/arm/boot.c b/hw/arm/boot.c
+> index ada2717f76..ee3858b673 100644
+> --- a/hw/arm/boot.c
+> +++ b/hw/arm/boot.c
+> @@ -763,6 +763,10 @@ static void do_cpu_reset(void *opaque)
+>                      if (cpu_isar_feature(aa64_sve, cpu)) {
+>                          env->cp15.cptr_el[3] |= R_CPTR_EL3_EZ_MASK;
+>                      }
+> +                    if (cpu_isar_feature(aa64_sme, cpu)) {
+> +                        env->cp15.cptr_el[3] |= R_CPTR_EL3_ESM_MASK;
+> +                        env->cp15.scr_el3 |= SCR_ENTP2;
+> +                    }
 
+The doc also says that we (as fake EL3) should be setting
+SMCR_EL3.LEN to the same value for all CPUs. Currently we do
+do that, but it's always the reset value of 0. Richard: does
+that have any odd effects (I have a feeling it clamps the
+VL to the minimum supported value)? Should we be setting
+SMCR_EL3.LEN to the max supported value here ?
+
+thanks
+-- PMM

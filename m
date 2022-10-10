@@ -1,120 +1,111 @@
-Received: by 2002:ac9:4144:0:0:0:0:0 with SMTP id u4csp2465754ocg;
-        Mon, 10 Oct 2022 07:17:09 -0700 (PDT)
-X-Google-Smtp-Source: AMsMyM5huRIRNUHu+lbeju4zsdffMYY4GQ3LFz3ExL45DaBGdjpLcjBrT+KgwIMZSu57JScgPomK
-X-Received: by 2002:a05:620a:3199:b0:6e7:7ac8:5b4 with SMTP id bi25-20020a05620a319900b006e77ac805b4mr12645722qkb.192.1665411429623;
-        Mon, 10 Oct 2022 07:17:09 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1665411429; cv=none;
+Received: by 2002:ac9:4144:0:0:0:0:0 with SMTP id u4csp2472752ocg;
+        Mon, 10 Oct 2022 07:27:15 -0700 (PDT)
+X-Google-Smtp-Source: AMsMyM4H7mE4NtMRhUdzCFCDtJFpcgfWECkkklGnG10uam7zw4n6ndkamDuQdB1IOQKJdjgzhxk6
+X-Received: by 2002:a05:622a:1982:b0:39a:1003:7405 with SMTP id u2-20020a05622a198200b0039a10037405mr4451224qtc.544.1665412035430;
+        Mon, 10 Oct 2022 07:27:15 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1665412035; cv=none;
         d=google.com; s=arc-20160816;
-        b=iaafHHnd8T3XhAbwhp4gIFL0oBn+CMVy2WW2sH9Juy+6+1ruRJ9gEdrrMFxxnTD84m
-         PH/wVGKfu5n+yBwGL/oD3TU9uLn651EW9hy5ttvDy3mjNqEzexDyipBR6ujjz5Jqsht0
-         2HE4gG3hO1pAcxvEyUUfJLWRQDnXnFvUUO4mDZfqwS+r0XolMCfXI8N9TDOnvxj5vsNs
-         aAo/Sz9UO1aaCLMfbgDIp7OoFKvvsmsADBCOiRGEdqazYuZCqq5fdNqh37Ydub+hSDXs
-         xTjdY0ElqwpL3uE9k484OLDGo2YwTYl07GhU5Q0XqYe2vDwZE1NmVZ7g1ANgwWQq7rEw
-         YJCA==
+        b=YcgTo7ocjG4K2hKBUB8Ks290TxhSkRg8uyvqEcsI+uT2o5vMTwEXy16HWqsBVtKo8Z
+         ECpHmqpa5eEmsyy3Qdmq9f2KhLpLRaQJCCB/YqXXWJBObHqmFVcZ5nR0ot9xKgsA0VrX
+         UZFAkFsQ2jM/EEhx4WDEOBJtesur25DNJJH7Z4JH9S50dtA68PNAiztTl2HkA4nqgHlF
+         0CmNM7Bn+BIKwi2F3aCdClDd4VZdaahDmErkCmXrQmod6CQ92YWTnvYnwoDOaGG16hCW
+         2GJ7DB/LCrXwDuRphBja3zTVfJ9G/NgMx6i1M623LcB8AT0Ffqw7a0Km+lyLsfL/4xx/
+         sAxg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:cc:to:content-language:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=czxmvoMLlSY8gbSD1RHgaJaijEbZXHqSoOssM4epKCY=;
-        b=Kp4/aXSnBppu6MvYciiV3/lBUfUgDGWA3G92Cuoa11LE6EkRTtaAIuPCbUAkC5VbQr
-         Lt9MvkahfdaaujwfFWLcipZzRh07D35RNc0OkfivrtRciztRlcs+CyZ1+0BxXPYwcCIS
-         H/Q2fNLtpHJrNqf4X4kcD1OeEv9Z5XAkLU8uwKfrXkHjO6P56rv9SbYgVro6VJmOB/p0
-         CjtMPCIwHeg/2l8sy0r3Nf2Vu/yUAaa6L46GNceVsWeT00HD6mHum+0EgvsHZtA/LwFQ
-         gohgrdtPlmNKgAwhf+EqY8OMvQm+nSo1EGvzGW7DqUKssUznvln/7lO3Wxxf6EmhPD1M
-         TwhQ==
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=35KXoergDZSm9k5YDNkVFyn00KlEBRtkfFZuizY8sBI=;
+        b=ll1nyMqTUjvnpNWV0j2dmJ6DhFhS+LmvFVNM8ItgTN1QHdO4oL4pCzSzCxUJMJRBPL
+         mkcoUiZBGe5w+pn8hn7KebxpRetUqn69F11Vd0/W8ypgNryIOXNCGuoip8F2qNSDUTct
+         1N9uRpZ51NVn2T9LygM2b74hUHA1CSKEV+z0KTlCyxKSVpwOnE9ehlWfAPSCG7mC9rkF
+         vcv2aglH6UIfgAH2wo4v876Xh+gzOLjxdoPd6aobR/QGyQ5Rjiw9B4G6+fQOPLZqRFsa
+         N7OZON7mWtNFFUUnmIs0brdaAX9z7PlYvyoN+84xPA3ihgyj2rJd0mrXfXltrMEnIcds
+         hSeg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=reM7XgIQ;
+       dkim=pass header.i=@linaro.org header.s=google header.b=ZREpsGWW;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id jx7-20020a0562142b0700b004b1c8f75ee8si5241837qvb.567.2022.10.10.07.17.09
+        by mx.google.com with ESMTPS id fq9-20020a056214258900b004b3d5499bfcsi4543173qvb.119.2022.10.10.07.27.15
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 10 Oct 2022 07:17:09 -0700 (PDT)
+        Mon, 10 Oct 2022 07:27:15 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=reM7XgIQ;
+       dkim=pass header.i=@linaro.org header.s=google header.b=ZREpsGWW;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:36212 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:60346 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ohtaf-0001HD-78
-	for alex.bennee@linaro.org; Mon, 10 Oct 2022 10:17:09 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:39284)
+	id 1ohtkQ-000595-U1
+	for alex.bennee@linaro.org; Mon, 10 Oct 2022 10:27:14 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:58194)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1ohtZs-0001Dp-9c
- for qemu-arm@nongnu.org; Mon, 10 Oct 2022 10:16:20 -0400
-Received: from mail-pf1-x430.google.com ([2607:f8b0:4864:20::430]:45871)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1ohthd-0002Gw-MJ
+ for qemu-arm@nongnu.org; Mon, 10 Oct 2022 10:24:21 -0400
+Received: from mail-pl1-x636.google.com ([2607:f8b0:4864:20::636]:44953)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1ohtZq-0003pp-FA
- for qemu-arm@nongnu.org; Mon, 10 Oct 2022 10:16:19 -0400
-Received: by mail-pf1-x430.google.com with SMTP id 67so10850998pfz.12
- for <qemu-arm@nongnu.org>; Mon, 10 Oct 2022 07:16:17 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1ohthb-0004oB-Lg
+ for qemu-arm@nongnu.org; Mon, 10 Oct 2022 10:24:21 -0400
+Received: by mail-pl1-x636.google.com with SMTP id x6so10503886pll.11
+ for <qemu-arm@nongnu.org>; Mon, 10 Oct 2022 07:24:19 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=czxmvoMLlSY8gbSD1RHgaJaijEbZXHqSoOssM4epKCY=;
- b=reM7XgIQ+wQgg7ZlrYllb9/TQnSJeC0MJTNj4X2Eb82ThAycFa6GXzb6+mZTGB6LtT
- 39sFZu5t9MeWQApooUAC06TINXRawuDXbB/1m96KcNvm6S6vyIjEtD3MC4BsJKy/o6Lu
- vy06nioFZRPj1mEvb/0wVeG1PYJQJCImbdR2mmJNb8oCLwH0dqQG2X+ecYXwVmDaFZug
- 0I47t/81n86JrW2yvIxANHos10Bdd2xUzgk7zAVDq5YHXSESjLZut6PjBFo2uQp07pOT
- Z9DElZGO8UhjmNmWXNNBwx8iwIY/nPGMmXOIZWyzwVUsBuP+HA9SXo7rS8vcvddpZGyZ
- IVaw==
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=35KXoergDZSm9k5YDNkVFyn00KlEBRtkfFZuizY8sBI=;
+ b=ZREpsGWW3y6b+6Ft73u2HpOVsxWY5CGp06anHnl/1RazCPt/izkboQYxoBW5qLFuc5
+ fqRf70MQ7okp59CM6FS3oZqRLXfWOv2bPQJNMeu/EQBBj5xUJ+bEbX80sDw+5Bdho6+B
+ JKauhM2XyKcorqeKmQs01xRl/YsQ8S9JL2Ai59YeP5X9wsRak+J9sFBJQvZNJjo00iFR
+ sn0sA4NeWNC+AQSSTDyzG6XvVNrKiLdmPSDhexJSUhumHhq8myEvOnZjVVQMGgUI/yWV
+ F6LcX5wD9nPeHft6BXiF9ODT5GTim8sqZXslEE6yPG60y6TAE4OV7WX5b/YgEZHr8b2h
+ vgow==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=czxmvoMLlSY8gbSD1RHgaJaijEbZXHqSoOssM4epKCY=;
- b=HTIgGDExBRFb9CiXzsnbwGiWWwrS1QTIZuUF31zKsYx38n1pCNmiRlDQUQ577DuwUb
- 8OOEgwGwQyunKhUh5ZQpkPIAQTbok/GHQsJ0G5EW1u958FWbcwF2EOTW7WjVso3To6ev
- 3VqznHG1T2DuA5ee1DAfd70wYD4w4+xEBoXPdtdzIt3UKvGVzX5qq0mpBVlx2nGz5A4B
- WwbYOjocCR9xn9fbmQl9q5vYJo3Jn4SOvAHEnBWhb95tNeU7eQRo8MDir5l1xrAhF53z
- CAuTURpjodAxrGw3CMzfWqg5U4CQyqrOjfo8tSLgff+MgQk/X8j3sDwoNAheD0cuKtCJ
- A4Dw==
-X-Gm-Message-State: ACrzQf2IqHOLh8i3tvGrbQiSrGRdeNQrlHRFFwdnrCq4HTu59cH2ynPs
- E3a27SiaGeGfq4/PpuELxOsTXA==
-X-Received: by 2002:a63:e909:0:b0:438:c9c9:61e3 with SMTP id
- i9-20020a63e909000000b00438c9c961e3mr17027204pgh.194.1665411376856; 
- Mon, 10 Oct 2022 07:16:16 -0700 (PDT)
-Received: from ?IPV6:2602:47:d49d:ec01:5aa4:aba1:1c91:a9b7?
- ([2602:47:d49d:ec01:5aa4:aba1:1c91:a9b7])
- by smtp.gmail.com with ESMTPSA id
- f8-20020a170902684800b0017534ffd491sm303204pln.163.2022.10.10.07.16.15
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 10 Oct 2022 07:16:16 -0700 (PDT)
-Message-ID: <eb00a974-424d-6468-ee91-7cb650cfe0fd@linaro.org>
-Date: Mon, 10 Oct 2022 07:16:14 -0700
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=35KXoergDZSm9k5YDNkVFyn00KlEBRtkfFZuizY8sBI=;
+ b=yqyHg2X29IJNYV9e3gPrcM+dJwRNt5yKXalLo2HxZfgHW4HW8uI10jDvFsn9hdRbU6
+ 7IvMzwT4PmsIsBhJH26FU0V20PQa2mGW+5uJ1hKH1exFMDLA1UPoYiy8ehom08laPPWJ
+ N5ykxeM9gzQbwtOu5z1G9cUUa2HVLZgBDtBhl15drc1v1DISMbRXge565lOYA3cIVRIJ
+ izi3YTDNgm3DfbBuncmHActo1mcknWKweW8g4buTMAG31vtQQIO1fsLygYYcqqsFCC83
+ fooq1S6u8ShdsFL5DMm6V2teiRVHa5lLBJuD5jMzMXxFeGZpDNo6HUKltgdgf+/smlQC
+ WpZA==
+X-Gm-Message-State: ACrzQf3QUTVzel/Y+0eZkIXSJD3S0OTLVq/6ED0kglM3xPvXki1GEGqj
+ thFMAVrDrgadAOvFnCVAtcJ2XdPKQ1uiuDb8qnmdaA==
+X-Received: by 2002:a17:903:4d7:b0:178:8564:f754 with SMTP id
+ jm23-20020a17090304d700b001788564f754mr19188247plb.60.1665411857830; Mon, 10
+ Oct 2022 07:24:17 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.2.2
-Subject: Re: [PATCH] hw/arm/boot: set CPTR_EL3.ESM and SCR_EL3.EnTP2 when
- booting Linux with EL3
-Content-Language: en-US
-To: Peter Maydell <peter.maydell@linaro.org>,
- Jerome Forissier <jerome.forissier@linaro.org>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, qemu-stable@nongnu.org
-References: <20221003145641.1921467-1-jerome.forissier@linaro.org>
- <CAFEAcA9bWzD5gKyHGOsz+8KCH1ykgU6sx2soDTVKiTHEa0D7KA@mail.gmail.com>
-From: Richard Henderson <richard.henderson@linaro.org>
-In-Reply-To: <CAFEAcA9bWzD5gKyHGOsz+8KCH1ykgU6sx2soDTVKiTHEa0D7KA@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::430;
- envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x430.google.com
-X-Spam_score_int: -40
-X-Spam_score: -4.1
-X-Spam_bar: ----
-X-Spam_report: (-4.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-2.007,
+References: <20220920184619.3370115-1-zhangjian.3032@bytedance.com>
+ <20220920184619.3370115-2-zhangjian.3032@bytedance.com>
+In-Reply-To: <20220920184619.3370115-2-zhangjian.3032@bytedance.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 10 Oct 2022 15:24:05 +0100
+Message-ID: <CAFEAcA8Dm8SaCp+0ubRzB3ck+e_89ir2nf1_3idMQ71zevbK3g@mail.gmail.com>
+Subject: Re: [PATCH v2 1/3] hw/misc/latching_switch: Add a simple
+ latching_switch device
+To: Jian Zhang <zhangjian.3032@bytedance.com>
+Cc: f4bug@amsat.org, clg@kaod.org, andrew@aj.id.au, joel@jms.id.au, 
+ qemu-devel@nongnu.org, qemu-arm@nongnu.org, yulei.sh@bytedance.com, 
+ tangyiwei.2022@bytedance.com, chentingting.2150@bytedance.com, 
+ yuhao.17@bytedance.com, wangxiaohua.1217@bytedance.com, 
+ xiening.xll@bytedance.com
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::636;
+ envelope-from=peter.maydell@linaro.org; helo=mail-pl1-x636.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -129,22 +120,278 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: UsDdKT6HJBlq
+X-TUID: b7fC1c2iZG+4
 
-On 10/10/22 06:16, Peter Maydell wrote:
-> The doc also says that we (as fake EL3) should be setting
-> SMCR_EL3.LEN to the same value for all CPUs. Currently we do
-> do that, but it's always the reset value of 0. Richard: does
-> that have any odd effects (I have a feeling it clamps the
-> VL to the minimum supported value)?
+On Tue, 20 Sept 2022 at 19:46, Jian Zhang <zhangjian.3032@bytedance.com> wrote:
+>
+> Implement a simple latching switch device.
+>
+> The latching switch is a switch that can be turned on and off.
+> When the input new state and match the trigger edge, the switch
+> state will be toggled.
+>
+> This device privide 2 properties `state(bool)` and `trigger-edge(string)`,
+> and 2 gpios `input` and `output`.
+>
+> The `state` property is the initial state of the switch, and the `trigger-edge`
+> property is the edge that will trigger the switch state to be toggled,
+> the value can be `rising`, `falling` or `both`.
 
-Yes, it clamps to minimum.
+> +static void toggle_output(LatchingSwitchState *s)
+> +{
+> +    s->state = !(s->state);
+> +    qemu_set_irq(s->output, !!(s->state));
 
-> Should we be setting SMCR_EL3.LEN to the max supported value here?
+s->state is a bool so this !! is unnecessary.
 
-We can set it to 15 universally without consequence.
-It will be clamped to the max supported value elsewhere
-when interpreting the combined EL[123] fields.
+> +}
+> +
+> +static void input_handler(void *opaque, int line, int new_state)
+> +{
+> +    LatchingSwitchState *s = LATCHING_SWITCH(opaque);
+> +
+> +    assert(line == 0);
+> +
+> +    if (s->trigger_edge == TRIGGER_EDGE_FALLING && new_state == 0) {
+> +        toggle_output(s);
 
+This won't have the correct behaviour, because the device
+on the other end of this input line might call
+qemu_set_irq() on it twice in a row with new_state == 0 both times.
+It's only a falling edge if new_state is 0 and the old
+input line state was not 0.
 
-r~
+If you need to detect edges then you need to record the state
+of the input line within LatchingSwitchState.
+
+> +    } else if (s->trigger_edge == TRIGGER_EDGE_RISING && new_state == 1) {
+> +        toggle_output(s);
+> +    } else if (s->trigger_edge == TRIGGER_EDGE_BOTH) {
+> +        toggle_output(s);
+> +    }
+> +}
+> +
+> +static void latching_switch_reset(DeviceState *dev)
+> +{
+> +    LatchingSwitchState *s = LATCHING_SWITCH(dev);
+> +    /* reset to off */
+> +    s->state = false;
+> +    /* reset to falling edge trigger */
+> +    s->trigger_edge = TRIGGER_EDGE_FALLING;
+
+trigger_edge isn't guest-visible runtime modifiable state, it's how
+the device or board configures the latch when it creates it, right?
+Configuration shouldn't be reset, because if the board creates a
+rising-edge switch, it should stay a rising edge switch even if the
+guest power-cycles itself.
+
+(If the QOM property can be changed at runtime things get more
+complex, but in this case it can't be.)
+
+> +}
+> +
+> +static const VMStateDescription vmstate_latching_switch = {
+> +    .name = TYPE_LATCHING_SWITCH,
+> +    .version_id = 1,
+> +    .minimum_version_id = 1,
+> +    .fields = (VMStateField[]) {
+> +        VMSTATE_BOOL(state, LatchingSwitchState),
+> +        VMSTATE_U8(trigger_edge, LatchingSwitchState),
+
+trigger_edge isn't runtime changeable so it doesn't need to be
+saved in the vmstate.
+
+> +        VMSTATE_END_OF_LIST()
+> +    }
+> +};
+> +
+> +static void latching_switch_realize(DeviceState *dev, Error **errp)
+> +{
+> +    LatchingSwitchState *s = LATCHING_SWITCH(dev);
+> +
+> +    /* init a input io */
+> +    qdev_init_gpio_in(dev, input_handler, 1);
+> +
+> +    /* init a output io */
+> +    qdev_init_gpio_out(dev, &(s->output), 1);
+> +}
+> +
+> +static void latching_switch_class_init(ObjectClass *klass, void *data)
+> +{
+> +    DeviceClass *dc = DEVICE_CLASS(klass);
+> +
+> +    dc->desc = "Latching Switch";
+> +    dc->vmsd = &vmstate_latching_switch;
+> +    dc->reset = latching_switch_reset;
+> +    dc->realize = latching_switch_realize;
+> +    set_bit(DEVICE_CATEGORY_DISPLAY, dc->categories);
+
+This is definitely not a display device :-)
+
+> +}
+> +
+> +static void latching_switch_get_state(Object *obj, Visitor *v, const char *name,
+> +                                      void *opaque, Error **errp)
+> +{
+> +    LatchingSwitchState *s = LATCHING_SWITCH(obj);
+> +    bool value = s->state;
+> +
+> +    visit_type_bool(v, name, &value, errp);
+> +}
+> +
+> +static void latching_switch_set_state(Object *obj, Visitor *v, const char *name,
+> +                                      void *opaque, Error **errp)
+
+What's the requirement for being able to set the output state via a
+QOM property ?
+
+> +{
+> +    LatchingSwitchState *s = LATCHING_SWITCH(obj);
+> +    bool value;
+> +    Error *err = NULL;
+> +
+> +    visit_type_bool(v, name, &value, &err);
+> +    if (err) {
+> +        error_propagate(errp, err);
+> +        return;
+> +    }
+> +
+> +    if (value != s->state) {
+> +        toggle_output(s);
+
+This will call qemu_set_irq() on the output, which isn't a valid thing
+to do during board creation or in certain stages of reset.
+
+If you need to handle "the board can create a switch which starts off
+with its output asserted", that can be done, but it's a little more
+complicated (it involves implementing your reset handler as 3-phase-reset).
+
+It looks from patch 3 like your use case in the aspeed board doesn't
+require this, so my suggestion would be simply to not implement it:
+make the switch always start with the output state being 0.
+
+> +    }
+> +}
+> +static void latching_switch_get_trigger_edge(Object *obj, Visitor *v,
+
+Missing newline between the two functions.
+
+> +                                             const char *name, void *opaque,
+> +                                             Error **errp)
+> +{
+> +    LatchingSwitchState *s = LATCHING_SWITCH(obj);
+> +    int value = s->trigger_edge;
+> +    char *p = NULL;
+> +
+> +    if (value == TRIGGER_EDGE_FALLING) {
+> +        p = g_strdup("falling");
+> +        visit_type_str(v, name, &p, errp);
+> +    } else if (value == TRIGGER_EDGE_RISING) {
+> +        p = g_strdup("rising");
+> +        visit_type_str(v, name, &p, errp);
+> +    } else if (value == TRIGGER_EDGE_BOTH) {
+> +        p = g_strdup("both");
+> +        visit_type_str(v, name, &p, errp);
+> +    } else {
+> +        error_setg(errp, "Invalid trigger edge value");
+> +    }
+> +    g_free(p);
+> +}
+> +
+> +static void latching_switch_set_trigger_edge(Object *obj, Visitor *v,
+> +                                             const char *name, void *opaque,
+> +                                             Error **errp)
+> +{
+> +    LatchingSwitchState *s = LATCHING_SWITCH(obj);
+> +    char *value;
+> +    Error *err = NULL;
+> +
+> +    visit_type_str(v, name, &value, &err);
+> +    if (err) {
+> +        error_propagate(errp, err);
+> +        return;
+> +    }
+> +
+> +    if (strcmp(value, "falling") == 0) {
+> +        s->trigger_edge = TRIGGER_EDGE_FALLING;
+> +    } else if (strcmp(value, "rising") == 0) {
+> +        s->trigger_edge = TRIGGER_EDGE_RISING;
+> +    } else if (strcmp(value, "both") == 0) {
+> +        s->trigger_edge = TRIGGER_EDGE_BOTH;
+> +    } else {
+> +        error_setg(errp, "Invalid trigger edge type: %s", value);
+> +    }
+> +}
+> +
+> +static void latching_switch_init(Object *obj)
+> +{
+> +    LatchingSwitchState *s = LATCHING_SWITCH(obj);
+> +
+> +    s->state = false;
+> +    s->trigger_edge = TRIGGER_EDGE_FALLING;
+> +
+> +    object_property_add(obj, "state", "bool",
+> +                        latching_switch_get_state,
+> +                        latching_switch_set_state,
+> +                        NULL, NULL);
+> +    object_property_add(obj, "trigger-edge", "string",
+> +                        latching_switch_get_trigger_edge,
+> +                        latching_switch_set_trigger_edge,
+> +                        NULL, NULL);
+> +}
+> +
+> +static const TypeInfo latching_switch_info = {
+> +    .name = TYPE_LATCHING_SWITCH,
+> +    .parent = TYPE_DEVICE,
+
+Don't implement new devices as direct child types of TYPE_DEVICE.
+At the moment that makes them never get reset. Make it a child
+of TYPE_SYS_BUS_DEVICE instead.
+
+> +    .instance_size = sizeof(LatchingSwitchState),
+> +    .class_init = latching_switch_class_init,
+> +    .instance_init = latching_switch_init,
+> +};
+> +
+> +static void latching_switch_register_types(void)
+> +{
+> +    type_register_static(&latching_switch_info);
+> +}
+> +
+> +type_init(latching_switch_register_types);
+> +
+> +LatchingSwitchState *latching_switch_create_simple(Object *parentobj,
+> +                                                   bool state,
+> +                                                   uint8_t trigger_edge)
+> +{
+> +    static const char *name = "latching-switch";
+> +    DeviceState *dev;
+> +
+> +    dev = qdev_new(TYPE_LATCHING_SWITCH);
+> +
+> +    qdev_prop_set_bit(dev, "state", state);
+> +
+> +    if (trigger_edge == TRIGGER_EDGE_FALLING) {
+> +        qdev_prop_set_string(dev, "trigger-edge", "falling");
+> +    } else if (trigger_edge == TRIGGER_EDGE_RISING) {
+> +        qdev_prop_set_string(dev, "trigger-edge", "rising");
+> +    } else if (trigger_edge == TRIGGER_EDGE_BOTH) {
+> +        qdev_prop_set_string(dev, "trigger-edge", "both");
+> +    } else {
+> +        error_report("Invalid trigger edge value");
+> +        exit(1);
+> +    }
+> +
+> +    object_property_add_child(parentobj, name, OBJECT(dev));
+> +    qdev_realize_and_unref(dev, NULL, &error_fatal);
+
+Current QEMU style doesn't favour providing this sort of
+create-and-configure-the-device wrapper function. Instead just
+create and set the properties on the device in the board code.
+
+> +
+> +    return LATCHING_SWITCH(dev);
+> +}
+
+thanks
+-- PMM

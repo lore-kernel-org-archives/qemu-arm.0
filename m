@@ -1,174 +1,241 @@
-Received: by 2002:ac9:4144:0:0:0:0:0 with SMTP id u4csp2513554ocg;
-        Mon, 10 Oct 2022 08:26:49 -0700 (PDT)
-X-Google-Smtp-Source: AMsMyM6vMSgFpv0rwJ/ymESdQePiSXa6N07M5h75ONAXdgFjf3YVFNKQ0mwDTpxFx3G/2MtZiYUW
-X-Received: by 2002:a0c:ac02:0:b0:4af:a3b1:3167 with SMTP id l2-20020a0cac02000000b004afa3b13167mr14977336qvb.66.1665415609627;
-        Mon, 10 Oct 2022 08:26:49 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1665415609; cv=none;
+Received: by 2002:ac9:4144:0:0:0:0:0 with SMTP id u4csp2551792ocg;
+        Mon, 10 Oct 2022 09:21:32 -0700 (PDT)
+X-Google-Smtp-Source: AMsMyM7i7Q6rmbLEe9fmJ16lVnvGoytm2E/grJA8CLl9/DCNmL4hDyjoSKL65hoxDXSo+K9y5/yo
+X-Received: by 2002:ac8:594b:0:b0:35c:d0b7:e2f9 with SMTP id 11-20020ac8594b000000b0035cd0b7e2f9mr15632617qtz.483.1665418892486;
+        Mon, 10 Oct 2022 09:21:32 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1665418892; cv=none;
         d=google.com; s=arc-20160816;
-        b=f5vYQTS2P2prifxgPsDzhX/rHBZudZ6ZAiXHDfZFQDxKOqeVCm2c724Q/kpAEXx/ED
-         prIAisNoU/A6KHZ/hGYsMXQRGgCqC3be5LJkQj1zlgfmxnOKUXpaqpaeH3kLPEVPL75e
-         gLQUDaGSIfNxItfDtwMoxWnt+DcMJXibxa4M/FUk8icNW3GDlDk1L2UlCjuVyN6rgso/
-         SxiMfq8trSQ14vlHAwhD94k1Sps8gFIOWPdS3FmyL9HJaa66ZgtL9Fqcq76FD2FDbFgL
-         9oUi4lfLCgw6YMuPLmBLCeULIl5Uz7e8hP7uv/5XsEPF5mZfI45UdidSuOEvI0EGyJbs
-         GZbQ==
+        b=X1Q8965+36Yu5jXlQ4IWDH/wTW1d/ivggv/bVXCXBYdtPIGWHLl2ir6Te6+KcZ3S06
+         U7sblo4WmPX4xNhdXMUUYvLjDPEw8A1tUoNGoDhBu4jBBKQDeb7uwa716RVlspQZCjOs
+         Q2UPTggAEeawKd9rtZUCUr+nOz+s2l4/5H8BUJqqrICaO62N8jsU33DnoUpzpWxNUcPR
+         UwS8/brjMPpm0/wIbGwEr+O1OYpmSKMDlp+1OifaLB9AJAwTrib/iIwJ6af2yxZC5kGu
+         JrN7nsJvopo8NDEcpSSLnAq0Qcg1uOXom1cMzUg9rNNS1TeewZsv33vDkvMWeQRX3lPq
+         XheQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:cc:to:content-language:subject
-         :user-agent:mime-version:date:message-id;
-        bh=OasP5bsEkGYFf6Eohlldu4drSmEQqFRz0Y2RQH/HoFA=;
-        b=CtZ+KPs6fh62ZCM6Aqr19BiZBMW/R60dIYIVp0YHAC5lcb7HT4thVwuXkJxbIk4GpC
-         RJjZdZAMmz0S7OP27T6IhiKQOQTgxwQGl8BCgRxhfbLgyGcIbdZgU2ELL0RyKX3APC1w
-         f5p4lcZBWMnIX4Bdvpc7pHt6TGSCQz/9T9jjY3KDs5ayPsrNC1XlvoOk75Xp6ZMs905V
-         5AhkKyZl4iL8VIIlhLINZNwfmA/pjwe6RayCU040xbtp5rI8x0WXe66GeRlSqrssWh3l
-         qgqXwdlS7LRefty5hFQBkuHB4M7mDVuGDgRtR3b0Q2wXK5s9B0h/gPcYDyyGKW7Vjksn
-         I8Tw==
+        h=from:reply-to:sender:errors-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence
+         :content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:subject:cc:to:date;
+        bh=JXdU8wH843Eb6bRU2Ecjy4XHa7ca1i3mC//ODYxLSEg=;
+        b=ZLSi2lDsU9teyT6f2SnW1XjnVt4ue1Pwvh9RNHHT2srjMODH+75/EWuVC+7arKHBUC
+         BpkvDMhp/sKpPbSahPBS8vXM4/POHIa9vkvC4UCYooJS59VoWQYfDA5s1eOWdCXpOR6m
+         /GFyqgwV2Mj0oJ4o3z6htMH/9cSNafxx6VNr1YepLqPmX1ws9sn3jQxqGmv8EsSYRpW/
+         iM8VDNP0K2jjoTzNIrjTWfkidhlZm7oyIts2etwCfIbwW9FhADj6FNW5jS0uMu+SpWqL
+         J56Rhwl3+OQVRYh1tjO9Bs+GwTrjg1ACkGkJXwwZY2xomc83uVAxT//RslxeEcts2/Wq
+         8mHg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id gv11-20020a056214262b00b004af9cebeeedsi5331945qvb.215.2022.10.10.08.26.49
+        by mx.google.com with ESMTPS id ay41-20020a05622a22a900b00397ab6a0413si4160206qtb.30.2022.10.10.09.21.32
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 10 Oct 2022 08:26:49 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 10 Oct 2022 09:21:32 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:55362 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+Received: from localhost ([::1]:34516 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ohug5-0005uD-5B
-	for alex.bennee@linaro.org; Mon, 10 Oct 2022 11:26:49 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:58164)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1ohvX2-0007Kc-1I
+	for alex.bennee@linaro.org; Mon, 10 Oct 2022 12:21:32 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:34978)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>)
- id 1ohuQw-0004Lo-MV; Mon, 10 Oct 2022 11:11:10 -0400
-Received: from smtpout3.mo529.mail-out.ovh.net ([46.105.54.81]:43277)
+ (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
+ id 1ohvWf-0007IG-UZ; Mon, 10 Oct 2022 12:21:11 -0400
+Received: from frasgout.his.huawei.com ([185.176.79.56]:2713)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>)
- id 1ohuQu-0003no-QS; Mon, 10 Oct 2022 11:11:10 -0400
-Received: from mxplan5.mail.ovh.net (unknown [10.109.156.148])
- by mo529.mail-out.ovh.net (Postfix) with ESMTPS id 88A93130FE308;
- Mon, 10 Oct 2022 17:11:02 +0200 (CEST)
-Received: from kaod.org (37.59.142.104) by DAG4EX2.mxp5.local (172.16.2.32)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.12; Mon, 10 Oct
- 2022 17:11:01 +0200
-Authentication-Results: garm.ovh; auth=pass
- (GARM-104R0052322d493-305b-47ac-9133-413b70511c08,
- 8F9D85B4748BB0730094C5680DDBB13DC71FBC21) smtp.auth=clg@kaod.org
-X-OVh-ClientIp: 82.64.250.170
-Message-ID: <2ef00fda-ee4f-38b1-e1b1-f182c1640c7b@kaod.org>
-Date: Mon, 10 Oct 2022 17:11:00 +0200
+ (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
+ id 1ohvWb-00083m-Da; Mon, 10 Oct 2022 12:21:09 -0400
+Received: from fraeml701-chm.china.huawei.com (unknown [172.18.147.200])
+ by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4MmPJz5BkNz67qjY;
+ Tue, 11 Oct 2022 00:20:19 +0800 (CST)
+Received: from lhrpeml500005.china.huawei.com (7.191.163.240) by
+ fraeml701-chm.china.huawei.com (10.206.15.50) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id
+ 15.1.2375.31; Mon, 10 Oct 2022 18:20:58 +0200
+Received: from localhost (10.202.226.42) by lhrpeml500005.china.huawei.com
+ (7.191.163.240) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2375.31; Mon, 10 Oct
+ 2022 17:20:58 +0100
+Date: Mon, 10 Oct 2022 17:20:57 +0100
+To: Jonathan Cameron via <qemu-devel@nongnu.org>
+CC: Dan Williams <dan.j.williams@intel.com>, Bobo WL <lmw.bobo@gmail.com>,
+ <linux-cxl@vger.kernel.org>, <qemu-arm@nongnu.org>
+Subject: Re: [BUG] cxl can not create region
+Message-ID: <20221010172057.00001559@huawei.com>
+In-Reply-To: <20220819094655.000005ed@huawei.com>
+References: <CAGr_yG0UrfJAMWta3EkR1F0JZ4j--sig74p6vKL3K6TZDx9YGA@mail.gmail.com>
+ <62f132aee401b_1b3c294c@dwillia2-xfh.jf.intel.com.notmuch>
+ <CAGr_yG389Bm_NL8CLgo_ZkGd4staocNENbtb-ULVA5vh_ywmcw@mail.gmail.com>
+ <62f27a8e9acb6_1f18b294e2@dwillia2-xfh.jf.intel.com.notmuch>
+ <62f5a2ffe8be0_3ce68294a4@dwillia2-xfh.jf.intel.com.notmuch>
+ <20220817171619.000021ca@huawei.com>
+ <20220818173740.00007f02@huawei.com>
+ <20220819094655.000005ed@huawei.com>
+X-Mailer: Claws Mail 4.0.0 (GTK+ 3.24.29; i686-w64-mingw32)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.3.1
-Subject: Re: [PATCH v3 4/8] m25p80: Add the mx25l25635f SFPD table
-Content-Language: en-US
-To: Francisco Iglesias <frasse.iglesias@gmail.com>, Michael Walle
- <michael@walle.cc>
-CC: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>, <qemu-block@nongnu.org>,
- Peter Maydell <peter.maydell@linaro.org>, Joel Stanley <joel@jms.id.au>,
- Andrew Jeffery <andrew@aj.id.au>, Alistair Francis <alistair@alistair23.me>,
- Iris Chen <irischenlj@fb.com>
-References: <20220722063602.128144-1-clg@kaod.org>
- <20220722063602.128144-5-clg@kaod.org> <20221007144431.GE20384@fralle-msi>
- <6726971b-b862-2959-5e7e-c059be2bb07d@kaod.org>
- <d6d2575b520fedb47a5fa7c1031c4ff7@walle.cc>
- <20221010105120.GA30024@fralle-msi>
-From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
-In-Reply-To: <20221010105120.GA30024@fralle-msi>
-Content-Type: text/plain; charset="UTF-8"; format=flowed
-Content-Transfer-Encoding: 8bit
-X-Originating-IP: [37.59.142.104]
-X-ClientProxiedBy: DAG5EX2.mxp5.local (172.16.2.42) To DAG4EX2.mxp5.local
- (172.16.2.32)
-X-Ovh-Tracer-GUID: 96501a66-d026-4a98-8ead-fbf5b46c8bca
-X-Ovh-Tracer-Id: 3892798931107941298
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvfedrfeejgedgkedtucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhepkfffgggfuffvvehfhfgjtgfgihesthekredttdefjeenucfhrhhomhepveorughrihgtpgfnvggpifhorghtvghruceotghlgheskhgrohgurdhorhhgqeenucggtffrrghtthgvrhhnpeekteejtdelkeejvdevffduhfetteelieefgeefffeugffhfeekheffueefledujeenucfkpheptddrtddrtddrtddpfeejrdehledrudegvddruddtgeenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhhouggvpehsmhhtphhouhhtpdhhvghlohepmhigphhlrghnhedrmhgrihhlrdhovhhhrdhnvghtpdhinhgvtheptddrtddrtddrtddpmhgrihhlfhhrohhmpegtlhhgsehkrghougdrohhrghdpnhgspghrtghpthhtohepuddprhgtphhtthhopehirhhishgthhgvnhhljhesfhgsrdgtohhmpdfovfetjfhoshhtpehmohehvdel
-Received-SPF: pass client-ip=46.105.54.81; envelope-from=clg@kaod.org;
- helo=smtpout3.mo529.mail-out.ovh.net
-X-Spam_score_int: -38
-X-Spam_score: -3.9
-X-Spam_bar: ---
-X-Spam_report: (-3.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-2.007,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Type: text/plain; charset="US-ASCII"
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [10.202.226.42]
+X-ClientProxiedBy: lhrpeml500003.china.huawei.com (7.191.162.67) To
+ lhrpeml500005.china.huawei.com (7.191.163.240)
+X-CFilter-Loop: Reflected
+Received-SPF: pass client-ip=185.176.79.56;
+ envelope-from=jonathan.cameron@huawei.com; helo=frasgout.his.huawei.com
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: hpF2m4hBowJq
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Reply-to:  Jonathan Cameron <Jonathan.Cameron@huawei.com>
+From:  Jonathan Cameron via <qemu-arm@nongnu.org>
+X-TUID: gUKOl9SAr/Rk
 
-On 10/10/22 12:51, Francisco Iglesias wrote:
-> Hi  Cedric,
+On Fri, 19 Aug 2022 09:46:55 +0100
+Jonathan Cameron <Jonathan.Cameron@huawei.com> wrote:
+
+> On Thu, 18 Aug 2022 17:37:40 +0100
+> Jonathan Cameron via <qemu-devel@nongnu.org> wrote:
 > 
-> On [2022 Oct 10] Mon 11:58:40, Michael Walle wrote:
->> Am 2022-10-10 08:23, schrieb Cédric Le Goater:
->>> On 10/7/22 16:44, Francisco Iglesias wrote:
->>
->>>>> --- a/hw/block/m25p80.c
->>>>> +++ b/hw/block/m25p80.c
->>>>> @@ -234,6 +234,8 @@ static const FlashPartInfo known_devices[] = {
->>>>>        { INFO("mx25l12855e", 0xc22618,      0,  64 << 10, 256, 0) },
->>>>>        { INFO6("mx25l25635e", 0xc22019,     0xc22019,  64 << 10,
->>>>> 512, 0),
->>>>>          .sfdp_read = m25p80_sfdp_mx25l25635e },
->>>>> +    { INFO6("mx25l25635f", 0xc22019,     0xc22019,  64 << 10,
->>>>> 512, 0),
+> > On Wed, 17 Aug 2022 17:16:19 +0100
+> > Jonathan Cameron <Jonathan.Cameron@huawei.com> wrote:
+> >   
+> > > On Thu, 11 Aug 2022 17:46:55 -0700
+> > > Dan Williams <dan.j.williams@intel.com> wrote:
+> > >     
+> > > > Dan Williams wrote:      
+> > > > > Bobo WL wrote:        
+> > > > > > Hi Dan,
+> > > > > > 
+> > > > > > Thanks for your reply!
+> > > > > > 
+> > > > > > On Mon, Aug 8, 2022 at 11:58 PM Dan Williams <dan.j.williams@intel.com> wrote:        
+> > > > > > >
+> > > > > > > What is the output of:
+> > > > > > >
+> > > > > > >     cxl list -MDTu -d decoder0.0
+> > > > > > >
+> > > > > > > ...? It might be the case that mem1 cannot be mapped by decoder0.0, or
+> > > > > > > at least not in the specified order, or that validation check is broken.        
+> > > > > > 
+> > > > > > Command "cxl list -MDTu -d decoder0.0" output:        
+> > > > > 
+> > > > > Thanks for this, I think I know the problem, but will try some
+> > > > > experiments with cxl_test first.        
+> > > > 
+> > > > Hmm, so my cxl_test experiment unfortunately passed so I'm not
+> > > > reproducing the failure mode. This is the result of creating x4 region
+> > > > with devices directly attached to a single host-bridge:
+> > > > 
+> > > > # cxl create-region -d decoder3.5 -w 4 -m -g 256 mem{12,10,9,11} -s $((1<<30))
+> > > > {
+> > > >   "region":"region8",
+> > > >   "resource":"0xf1f0000000",
+> > > >   "size":"1024.00 MiB (1073.74 MB)",
+> > > >   "interleave_ways":4,
+> > > >   "interleave_granularity":256,
+> > > >   "decode_state":"commit",
+> > > >   "mappings":[
+> > > >     {
+> > > >       "position":3,
+> > > >       "memdev":"mem11",
+> > > >       "decoder":"decoder21.0"
+> > > >     },
+> > > >     {
+> > > >       "position":2,
+> > > >       "memdev":"mem9",
+> > > >       "decoder":"decoder19.0"
+> > > >     },
+> > > >     {
+> > > >       "position":1,
+> > > >       "memdev":"mem10",
+> > > >       "decoder":"decoder20.0"
+> > > >     },
+> > > >     {
+> > > >       "position":0,
+> > > >       "memdev":"mem12",
+> > > >       "decoder":"decoder22.0"
+> > > >     }
+> > > >   ]
+> > > > }
+> > > > cxl region: cmd_create_region: created 1 region
+> > > >       
+> > > > > Did the commit_store() crash stop reproducing with latest cxl/preview
+> > > > > branch?        
+> > > > 
+> > > > I missed the answer to this question.
+> > > > 
+> > > > All of these changes are now in Linus' tree perhaps give that a try and
+> > > > post the debug log again?      
+> > > 
+> > > Hi Dan,
+> > > 
+> > > I've moved onto looking at this one.
+> > > 1 HB, 2RP (to make it configure the HDM decoder in the QEMU HB, I'll tidy that up
+> > > at some stage), 1 switch, 4 downstream switch ports each with a type 3
+> > > 
+> > > I'm not getting a crash, but can't successfully setup a region.
+> > > Upon adding the final target
+> > > It's failing in check_last_peer() as pos < distance.
+> > > Seems distance is 4 which makes me think it's using the wrong level of the heirarchy for
+> > > some reason or that distance check is wrong.
+> > > Wasn't a good idea to just skip that step though as it goes boom - though
+> > > stack trace is not useful.    
+> > 
+> > Turns out really weird corruption happens if you accidentally back two type3 devices
+> > with the same memory device. Who would have thought it :)
+> > 
+> > That aside ignoring the check_last_peer() failure seems to make everything work for this
+> > topology.  I'm not seeing the crash, so my guess is we fixed it somewhere along the way.
+> > 
+> > Now for the fun one.  I've replicated the crash if we have
+> > 
+> > 1HB 1*RP 1SW, 4SW-DSP, 4Type3
+> > 
+> > Now, I'd expect to see it not 'work' because the QEMU HDM decoder won't be programmed
+> > but the null pointer dereference isn't related to that.
+> > 
+> > The bug is straight forward.  Not all decoders have commit callbacks... Will send out
+> > a possible fix shortly.
+> >   
+> For completeness I'm carrying this hack because I haven't gotten my head
+> around the right fix for check_last_peer() failing on this test topology.
 > 
-> I think I missed the (ER_4K | ER_32K) flags above (in case we go for a v4 we
-> can add it in).
+> diff --git a/drivers/cxl/core/region.c b/drivers/cxl/core/region.c
+> index c49d9a5f1091..275e143bd748 100644
+> --- a/drivers/cxl/core/region.c
+> +++ b/drivers/cxl/core/region.c
+> @@ -978,7 +978,7 @@ static int cxl_port_setup_targets(struct cxl_port *port,
+>                                 rc = check_last_peer(cxled, ep, cxl_rr,
+>                                                      distance);
+>                                 if (rc)
+> -                                       return rc;
+> +                                       //      return rc;
+>                                 goto out_target_set;
+>                         }
+>                 goto add_target;
 
-sure.
+I'm still carrying this hack and still haven't worked out the right fix.
 
->>>>
->>>> I think I'm not seeing the extended id part in the datasheet I've
->>>> found so
->>>> might be that you can switch to just INFO and _ext_id 0 above
->>>
->>> This was added by commit 6bbe036f32dc ("m25p80: Return the JEDEC ID
->>> twice for
->>> mx25l25635e") to fix a real breakage on HW.
->>
->>  From my experience, the ID has a particular length, at least three bytes
->> and if you read past that length for some (all?) devices the id bytes just
->> get repeated. I.e. the counter in the device will just wrap to offset 0
->> again. If you want to emulate the hardware correctly, you would have to
->> take that into consideration.
-> 
-> If we decide to go with Michael's proposal above you can use '0' on the
-> 'extended_id' and enable 's->data_read_loop = true' when reading the ID.
+Suggestions welcome!  If not I'll hopefully get some time on this
+towards the end of the week.
 
-This part :
-
-             for (; i < SPI_NOR_MAX_ID_LEN; i++) {
-                 s->data[i] = 0;
-             }
-
-will fill the remaining JEDEC ID bytes with zeros which is not what we
-want for the mx25l25635e chip.
-
-Thanks,
-C.
-
-> Best regards,
-> Francisco
-> 
->> But I don't think it's worth it, OTOH there seems to be some broken
->> software which rely on that (undefined?) behavior.
->>
->> -michael
-> 
-
+Jonathan

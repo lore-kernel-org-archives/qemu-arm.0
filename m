@@ -1,98 +1,98 @@
-Received: by 2002:a17:906:43c7:b0:78d:9f02:16a1 with SMTP id j7csp2616440ejn;
-        Tue, 11 Oct 2022 11:24:08 -0700 (PDT)
-X-Google-Smtp-Source: AMsMyM5VlFS4FR7Tca7DfngXATTT6UHjJ8JmNw2CjD5Q9d8CInIxAsEBr/r+OQA29cDtsPV+r9cT
-X-Received: by 2002:a05:620a:2552:b0:6ca:bf8f:4d27 with SMTP id s18-20020a05620a255200b006cabf8f4d27mr17372650qko.383.1665512647988;
-        Tue, 11 Oct 2022 11:24:07 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1665512647; cv=none;
+Received: by 2002:a17:906:43c7:b0:78d:9f02:16a1 with SMTP id j7csp2617940ejn;
+        Tue, 11 Oct 2022 11:26:40 -0700 (PDT)
+X-Google-Smtp-Source: AMsMyM4hJswqprH/IXSVif3/R5wQtRPvJjV12K9KzjT071snyqKd/OQvk20c0C1wbCC46CfgaycT
+X-Received: by 2002:ae9:f10b:0:b0:6cf:6a72:2b05 with SMTP id k11-20020ae9f10b000000b006cf6a722b05mr17335201qkg.387.1665512800470;
+        Tue, 11 Oct 2022 11:26:40 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1665512800; cv=none;
         d=google.com; s=arc-20160816;
-        b=jJNDeBUohelXYxM+LUf3Qg6SpQH+JdSSvF1HbIxioHWHkQ3YMLY+vfYEByTRPVj8Ta
-         cXMaTGfSi70xVk7Q/vudHcBhjxy56Ht+YQ0c96evls47NTD/vsC+p0+TPoKBmQ81ya0N
-         39eiDlHwi+mdlHjEUSG4krSpKxjTjxURMQrijlmjohMtHPa+ww+rBE/e1apufz5Rgr1p
-         gwK3g0QpYchB/nK0h1C3e4JYrmyg7ob0YKB2cRBlKVWQ6mF5/Xw0A08ryuvp5t0CmHCf
-         1mtvdVJ8bXeefVLjvE7H7KqbonEdnpH2iQ9PiyZHIOnFmS2pZM8NkUIgSES1nbvsBsVC
-         zoNw==
+        b=Od236J1Bh0i1bguLEK1j3JLEG1OfGyp7xBMGDSXsJDA3T+qUU3usXVOnpSb4GpZQHZ
+         AfsAEUS13S7ngLIITeVpdwEt/pVe0cVE0yYtn6QpxT+JK+k97xctb8Somyc7Q0zBrQYY
+         2NKfpkzYUrF2U2uaAV3y6L9uhklDzLJ7tMMBYfi99rqAa0PI16tcIIjYKR0PQecIbW0e
+         XCPmLMuWmnhg8AEVV7jgCLnk7nkXD9z40dwHglqa4r22scnPpKggzJYkbphs5bTZ0ytn
+         f5AXxZvHfzZP8Ae8SneYwQrCjV0A5JLh2a6ldEV4X6+RTrBkqfJCUriG2JXTx2AK4Bxo
+         zAPw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
          :list-archive:list-unsubscribe:list-id:precedence
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=q4SCAvrzpUZp+tppEb8sYXNtOjtBTKwJQtiP2DYzA0Y=;
-        b=FfVHn7znpcas1EcgOJcFtvBe2RmCeAfA5dICULX5w4TOZE5QAhvZ859nrq8nM1GzlF
-         PMJmh9REhli8/Lg2NDq0Z22el+LXSYaqSvAWMUr9jmKVSz5BUh58tfhD7MmAheUY8rWD
-         u3idF9cuzEdALTK6IZHOlwabCNYHRKPCXqzLBvDLEzjlM+KW0aPlO0g5s+qT/f4SWKp7
-         kGVagNN7pgLS4EfsZZQ2WeGIhg8SwBn1LsCIY7yCaeyMXCiW5Hz5EGvBAfKblPVPJydP
-         oO5BflUkTZ0COnK+CribQdnUcheSWKtMIwo2x6AXaGP8dOh2/yHywfXCWJwQeBzXpM3K
-         WAmg==
+        bh=2kQKhCNTaxp257o1Z8Hr6lSwk+tA2n9Qb3+CjAS3uRc=;
+        b=Z11xVZ6u4U7kWjVZcPnX+dSuYHBz9jDzwDuGHhSEsGYMnPiRrNovW9GfDrUJuWnQcA
+         /holp6WZ2b8RAUhjBTGgmOg2OnEJ04mCNRHOHwvP5BbNLOzpQp8vxYuZeT4AmtM0F8Ng
+         /74U4EPK5QVnLfM/iRct1vqkfb3Cf6DWIHbCtdsbzwFSrt1jrMfsm5L8Y7kqgL0kyuH6
+         TeAmZHVup2Z2VUQOkn+fbqpSBCB+gB9I3HAwbcz/QQswFaTY8xUvs8Zl9yjE26ot1PHf
+         pRx3ff+KrOAMvw4pIPQmLrohN6q0IpYlNgMWu5KL/fG8eH/m64DWsXgY9xRX8nkRSshG
+         0yAA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@oracle.com header.s=corp-2022-7-12 header.b="Uy/4JCL8";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@oracle.com header.s=corp-2022-7-12 header.b=WMAIutT3;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=oracle.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id dx5-20020a05620a608500b006ee8d8e050asi707537qkb.321.2022.10.11.11.24.07
+        by mx.google.com with ESMTPS id gh6-20020a05621429c600b004afa03d2cfesi3771458qvb.159.2022.10.11.11.26.40
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 11 Oct 2022 11:24:07 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 11 Oct 2022 11:26:40 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@oracle.com header.s=corp-2022-7-12 header.b="Uy/4JCL8";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@oracle.com header.s=corp-2022-7-12 header.b=WMAIutT3;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=oracle.com
-Received: from localhost ([::1]:43302 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:51880 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1oiJvD-0000nn-F9
-	for alex.bennee@linaro.org; Tue, 11 Oct 2022 14:24:07 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53276)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1oiJxf-0002qZ-VF
+	for alex.bennee@linaro.org; Tue, 11 Oct 2022 14:26:39 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:34842)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <miguel.luis@oracle.com>)
- id 1oiJpS-0006it-5o; Tue, 11 Oct 2022 14:18:10 -0400
-Received: from mx0a-00069f02.pphosted.com ([205.220.165.32]:64394)
+ id 1oiJpf-0006x3-0n; Tue, 11 Oct 2022 14:18:23 -0400
+Received: from mx0a-00069f02.pphosted.com ([205.220.165.32]:32900)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <miguel.luis@oracle.com>)
- id 1oiJpQ-0003Th-AU; Tue, 11 Oct 2022 14:18:09 -0400
+ id 1oiJpc-0003Uu-PU; Tue, 11 Oct 2022 14:18:22 -0400
 Received: from pps.filterd (m0246629.ppops.net [127.0.0.1])
- by mx0b-00069f02.pphosted.com (8.17.1.5/8.17.1.5) with ESMTP id 29BHTasb012021;
- Tue, 11 Oct 2022 18:18:03 GMT
+ by mx0b-00069f02.pphosted.com (8.17.1.5/8.17.1.5) with ESMTP id 29BHTbkM012066;
+ Tue, 11 Oct 2022 18:18:17 GMT
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
  h=from : to : cc :
  subject : date : message-id : in-reply-to : references : reply-to :
  mime-version : content-transfer-encoding; s=corp-2022-7-12;
- bh=q4SCAvrzpUZp+tppEb8sYXNtOjtBTKwJQtiP2DYzA0Y=;
- b=Uy/4JCL8VQQerl3z0JDdgMzYHqlQlw3pjMDNRPyMLKoin4RolqtZcuAcfoT74YeKoRpH
- Vy1XXZzno5hFZqbA5MsKMeLa3sEkI0PraMS0qHnEK2IJUzS8Xzvk1N/Zxe3UUXiJytls
- ydPFu0DKP6OqmYuLTnIQ5bMQoQeaG53mi/nFEo9vTTgM8/IDPu6BKrx10Q2Nc4z0lOAi
- O5hYfgVUjHpt1dTU1NKO2/zjLQJOFD6AEJFEdJXIry1tNg0uZfw1j6bcXk1AlGHGR7by
- 8aRtsGzqjTDUhv5Y64IR8gyb5qeHwsUDL/LtJm+6dR5vIcANn35arR8MkUFMV07kK0pV Ag== 
+ bh=2kQKhCNTaxp257o1Z8Hr6lSwk+tA2n9Qb3+CjAS3uRc=;
+ b=WMAIutT3dYLu1BsTDkjitv2jVKSfXrC+/UPXz78+kM4Fzb6GbN/KJ3h1irTR+vXh05n9
+ QxPb/KR6oTApzFlvzggg+HA7s4L7bHcibe8THpAEKNPR7kqhh/taZh9EfvQpYXw0yIev
+ 98XpiGJRnhYLC/hMGI+nssYxOOG2Sr2XZQ7DJ7tIru0smQfxgW6RBbtDgD7cBXD1k3Pe
+ LzeTVtgNcS3RY71AYDraCPAM2OGwzp9N0MXSmAWN4ZD6rj66x5yV4rOHa9YQi/jXpNzH
+ Jy3p/N47VQd5JLDNcY00vQiuQPB1xbnwfOp9YlC54FvOBS+ld5Bbczs+swiJVtlT/wRJ gw== 
 Received: from iadpaimrmta01.imrmtpd1.prodappiadaev1.oraclevcn.com
  (iadpaimrmta01.appoci.oracle.com [130.35.100.223])
- by mx0b-00069f02.pphosted.com (PPS) with ESMTPS id 3k3139yhd1-1
+ by mx0b-00069f02.pphosted.com (PPS) with ESMTPS id 3k3139yhdh-1
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Tue, 11 Oct 2022 18:18:03 +0000
+ Tue, 11 Oct 2022 18:18:17 +0000
 Received: from pps.filterd
  (iadpaimrmta01.imrmtpd1.prodappiadaev1.oraclevcn.com [127.0.0.1])
  by iadpaimrmta01.imrmtpd1.prodappiadaev1.oraclevcn.com (8.17.1.5/8.17.1.5)
- with ESMTP id 29BIBr1J027365; Tue, 11 Oct 2022 18:18:01 GMT
+ with ESMTP id 29BG7EZY027354; Tue, 11 Oct 2022 18:18:15 GMT
 Received: from pps.reinject (localhost [127.0.0.1])
  by iadpaimrmta01.imrmtpd1.prodappiadaev1.oraclevcn.com (PPS) with ESMTPS id
- 3k2ynaf4jy-1
+ 3k2ynaf4r5-1
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Tue, 11 Oct 2022 18:18:01 +0000
+ Tue, 11 Oct 2022 18:18:15 +0000
 Received: from iadpaimrmta01.imrmtpd1.prodappiadaev1.oraclevcn.com
  (iadpaimrmta01.imrmtpd1.prodappiadaev1.oraclevcn.com [127.0.0.1])
- by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 29BIEwgq034553;
- Tue, 11 Oct 2022 18:18:01 GMT
+ by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 29BIEwgu034553;
+ Tue, 11 Oct 2022 18:18:15 GMT
 Received: from mlluis-mac.uk.oracle.com (dhcp-10-175-196-28.vpn.oracle.com
  [10.175.196.28])
  by iadpaimrmta01.imrmtpd1.prodappiadaev1.oraclevcn.com (PPS) with ESMTP id
- 3k2ynaf4fc-3; Tue, 11 Oct 2022 18:18:01 +0000
+ 3k2ynaf4fc-5; Tue, 11 Oct 2022 18:18:15 +0000
 From: Miguel Luis <miguel.luis@oracle.com>
 To: qemu-devel@nongnu.org, qemu-arm@nongnu.org
 Cc: mst@redhat.com, imammedo@redhat.com, ani@anisinha.ca,
  shannon.zhaosl@gmail.com, peter.maydell@linaro.org, miguel.luis@oracle.com
-Subject: [PATCH 2/4] acpi: fadt: support revision 6.0 of the ACPI specification
-Date: Tue, 11 Oct 2022 18:17:28 +0000
-Message-Id: <20221011181730.10885-3-miguel.luis@oracle.com>
+Subject: [PATCH 4/4] tests/acpi: virt: update ACPI MADT and FADT binaries
+Date: Tue, 11 Oct 2022 18:17:30 +0000
+Message-Id: <20221011181730.10885-5-miguel.luis@oracle.com>
 X-Mailer: git-send-email 2.37.3
 In-Reply-To: <20221011181730.10885-1-miguel.luis@oracle.com>
 References: <20221011181730.10885-1-miguel.luis@oracle.com>
@@ -105,9 +105,9 @@ X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 mlxlogscore=999
  suspectscore=0
  adultscore=0 mlxscore=0 bulkscore=0 malwarescore=0 phishscore=0
  spamscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2209130000 definitions=main-2210110106
-X-Proofpoint-GUID: edKTIFxyppXS3XYEckxeIhTHkXt2qsA5
-X-Proofpoint-ORIG-GUID: edKTIFxyppXS3XYEckxeIhTHkXt2qsA5
+ engine=8.12.0-2209130000 definitions=main-2210110107
+X-Proofpoint-GUID: ZZrsCZAkx76UMzTveZNHLxmdzNHC77yH
+X-Proofpoint-ORIG-GUID: ZZrsCZAkx76UMzTveZNHLxmdzNHC77yH
 Received-SPF: pass client-ip=205.220.165.32;
  envelope-from=miguel.luis@oracle.com; helo=mx0a-00069f02.pphosted.com
 X-Spam_score_int: -27
@@ -118,104 +118,226 @@ X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
  RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Reply-To: miguel.luis@oracle.com
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: S6VU/pSP1OlY
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: et92vacuxc1D
 
-Update the Fixed ACPI Description Table (FADT) to revision 6.0 of the ACPI
-specification adding the field "Hypervisor Vendor Identity".
+Step 6 & 7 of the bios-tables-test.c documented procedure.
 
-This field's description states the following: "64-bit identifier of hypervisor
-vendor. All bytes in this field are considered part of the vendor identity.
-These identifiers are defined independently by the vendors themselves,
-usually following the name of the hypervisor product. Version information
-should NOT be included in this field - this shall simply denote the vendor's
-name or identifier. Version information can be communicated through a
-supplemental vendor-specific hypervisor API. Firmware implementers would
-place zero bytes into this field, denoting that no hypervisor is present in
-the actual firmware."
+Differences between disassembled ASL files for MADT:
+
+@@ -11,9 +11,9 @@
+  */
+
+ [000h 0000   4]                    Signature : "APIC"    [Multiple APIC Description Table (MADT)]
+-[004h 0004   4]                 Table Length : 000000A8
+-[008h 0008   1]                     Revision : 03
+-[009h 0009   1]                     Checksum : 50
++[004h 0004   4]                 Table Length : 000000AC
++[008h 0008   1]                     Revision : 04
++[009h 0009   1]                     Checksum : 47
+ [00Ah 0010   6]                       Oem ID : "BOCHS "
+ [010h 0016   8]                 Oem Table ID : "BXPC    "
+ [018h 0024   4]                 Oem Revision : 00000001
+@@ -34,7 +34,7 @@
+ [041h 0065   3]                     Reserved : 000000
+
+ [044h 0068   1]                Subtable Type : 0B [Generic Interrupt Controller]
+-[045h 0069   1]                       Length : 4C
++[045h 0069   1]                       Length : 50
+ [046h 0070   2]                     Reserved : 0000
+ [048h 0072   4]         CPU Interface Number : 00000000
+ [04Ch 0076   4]                Processor UID : 00000000
+@@ -51,28 +51,29 @@
+ [07Ch 0124   4]        Virtual GIC Interrupt : 00000000
+ [080h 0128   8]   Redistributor Base Address : 0000000000000000
+ [088h 0136   8]                    ARM MPIDR : 0000000000000000
+-/**** ACPI subtable terminates early - may be older version (dump table) */
++[090h 0144   1]             Efficiency Class : 00
++[091h 0145   3]                     Reserved : 000000
+
+-[090h 0144   1]                Subtable Type : 0D [Generic MSI Frame]
+-[091h 0145   1]                       Length : 18
+-[092h 0146   2]                     Reserved : 0000
+-[094h 0148   4]                 MSI Frame ID : 00000000
+-[098h 0152   8]                 Base Address : 0000000008020000
+-[0A0h 0160   4]        Flags (decoded below) : 00000001
++[094h 0148   1]                Subtable Type : 0D [Generic MSI Frame]
++[095h 0149   1]                       Length : 18
++[096h 0150   2]                     Reserved : 0000
++[098h 0152   4]                 MSI Frame ID : 00000000
++[09Ch 0156   8]                 Base Address : 0000000008020000
++[0A4h 0164   4]        Flags (decoded below) : 00000001
+                                   Select SPI : 1
+-[0A4h 0164   2]                    SPI Count : 0040
+-[0A6h 0166   2]                     SPI Base : 0050
++[0A8h 0168   2]                    SPI Count : 0040
++[0AAh 0170   2]                     SPI Base : 0050
+
+-Raw Table Data: Length 168 (0xA8)
++Raw Table Data: Length 172 (0xAC)
+
+-    0000: 41 50 49 43 A8 00 00 00 03 50 42 4F 43 48 53 20  // APIC.....PBOCHS
++    0000: 41 50 49 43 AC 00 00 00 04 47 42 4F 43 48 53 20  // APIC.....GBOCHS
+     0010: 42 58 50 43 20 20 20 20 01 00 00 00 42 58 50 43  // BXPC    ....BXPC
+     0020: 01 00 00 00 00 00 00 00 00 00 00 00 0C 18 00 00  // ................
+     0030: 00 00 00 00 00 00 00 08 00 00 00 00 00 00 00 00  // ................
+-    0040: 02 00 00 00 0B 4C 00 00 00 00 00 00 00 00 00 00  // .....L..........
++    0040: 02 00 00 00 0B 50 00 00 00 00 00 00 00 00 00 00  // .....P..........
+     0050: 01 00 00 00 00 00 00 00 17 00 00 00 00 00 00 00  // ................
+     0060: 00 00 00 00 00 00 01 08 00 00 00 00 00 00 04 08  // ................
+     0070: 00 00 00 00 00 00 03 08 00 00 00 00 00 00 00 00  // ................
+     0080: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  // ................
+-    0090: 0D 18 00 00 00 00 00 00 00 00 02 08 00 00 00 00  // ................
+-    00A0: 01 00 00 00 40 00 50 00                          // ....@.P.
++    0090: 00 00 00 00 0D 18 00 00 00 00 00 00 00 00 02 08  // ................
++    00A0: 00 00 00 00 01 00 00 00 40 00 50 00              // ........@.P.
+
+Differences between disassembled ASL files for FADT:
+
+@@ -11,9 +11,9 @@
+  */
+
+ [000h 0000   4]                    Signature : "FACP"    [Fixed ACPI Description Table (FADT)]
+-[004h 0004   4]                 Table Length : 0000010C
+-[008h 0008   1]                     Revision : 05
+-[009h 0009   1]                     Checksum : 55
++[004h 0004   4]                 Table Length : 00000114
++[008h 0008   1]                     Revision : 06
++[009h 0009   1]                     Checksum : 15
+ [00Ah 0010   6]                       Oem ID : "BOCHS "
+ [010h 0016   8]                 Oem Table ID : "BXPC    "
+ [018h 0024   4]                 Oem Revision : 00000001
+@@ -99,7 +99,7 @@
+                               PSCI Compliant : 1
+                        Must use HVC for PSCI : 1
+
+-[083h 0131   1]          FADT Minor Revision : 01
++[083h 0131   1]          FADT Minor Revision : 00
+ [084h 0132   8]                 FACS Address : 0000000000000000
+ [08Ch 0140   8]                 DSDT Address : 0000000000000000
+ [094h 0148  12]             PM1A Event Block : [Generic Address Structure]
+@@ -173,11 +173,11 @@
+ [103h 0259   1]         Encoded Access Width : 00 [Undefined/Legacy]
+ [104h 0260   8]                      Address : 0000000000000000
+
+-/**** ACPI table terminates in the middle of a data structure! (dump table) */
++[10Ch 0268   8]                Hypervisor ID : 00000000554D4551
+
+-Raw Table Data: Length 268 (0x10C)
++Raw Table Data: Length 276 (0x114)
+
+-    0000: 46 41 43 50 0C 01 00 00 05 55 42 4F 43 48 53 20  // FACP.....UBOCHS
++    0000: 46 41 43 50 14 01 00 00 06 15 42 4F 43 48 53 20  // FACP......BOCHS
+     0010: 42 58 50 43 20 20 20 20 01 00 00 00 42 58 50 43  // BXPC    ....BXPC
+     0020: 01 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  // ................
+     0030: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  // ................
+@@ -185,7 +185,7 @@ Raw Table Data: Length 268 (0x10C)
+     0050: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  // ................
+     0060: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  // ................
+     0070: 00 00 10 00 00 00 00 00 00 00 00 00 00 00 00 00  // ................
+-    0080: 00 03 00 01 00 00 00 00 00 00 00 00 00 00 00 00  // ................
++    0080: 00 03 00 00 00 00 00 00 00 00 00 00 00 00 00 00  // ................
+     0090: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  // ................
+     00A0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  // ................
+     00B0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  // ................
+@@ -193,4 +193,5 @@ Raw Table Data: Length 268 (0x10C)
+     00D0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  // ................
+     00E0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  // ................
+     00F0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  // ................
+-    0100: 00 00 00 00 00 00 00 00 00 00 00 00              // ............
++    0100: 00 00 00 00 00 00 00 00 00 00 00 00 51 45 4D 55  // ............QEMU
++    0110: 00 00 00 00                                      // ....
 
 Signed-off-by: Miguel Luis <miguel.luis@oracle.com>
-Reviewed-by: Ani Sinha <ani@anisinha.ca>
 ---
- hw/acpi/aml-build.c      | 13 ++++++++++---
- hw/arm/virt-acpi-build.c | 10 +++++-----
- 2 files changed, 15 insertions(+), 8 deletions(-)
+ tests/data/acpi/virt/APIC                   | Bin 168 -> 172 bytes
+ tests/data/acpi/virt/APIC.memhp             | Bin 168 -> 172 bytes
+ tests/data/acpi/virt/APIC.numamem           | Bin 168 -> 172 bytes
+ tests/data/acpi/virt/FACP                   | Bin 268 -> 276 bytes
+ tests/data/acpi/virt/FACP.memhp             | Bin 268 -> 276 bytes
+ tests/data/acpi/virt/FACP.numamem           | Bin 268 -> 276 bytes
+ tests/qtest/bios-tables-test-allowed-diff.h |   6 ------
+ 7 files changed, 6 deletions(-)
 
-diff --git a/hw/acpi/aml-build.c b/hw/acpi/aml-build.c
-index e6bfac95c7..42feb4d4d7 100644
---- a/hw/acpi/aml-build.c
-+++ b/hw/acpi/aml-build.c
-@@ -2070,7 +2070,7 @@ void build_pptt(GArray *table_data, BIOSLinker *linker, MachineState *ms,
-     acpi_table_end(linker, &table);
- }
- 
--/* build rev1/rev3/rev5.1 FADT */
-+/* build rev1/rev3/rev5.1/rev6.0 FADT */
- void build_fadt(GArray *tbl, BIOSLinker *linker, const AcpiFadtData *f,
-                 const char *oem_id, const char *oem_table_id)
- {
-@@ -2193,8 +2193,15 @@ void build_fadt(GArray *tbl, BIOSLinker *linker, const AcpiFadtData *f,
-     /* SLEEP_STATUS_REG */
-     build_append_gas_from_struct(tbl, &f->sleep_sts);
- 
--    /* TODO: extra fields need to be added to support revisions above rev5 */
--    assert(f->rev == 5);
-+    if (f->rev == 5) {
-+        goto done;
-+    }
-+
-+    /* Hypervisor Vendor Identity */
-+    build_append_padded_str(tbl, "QEMU", 8, '\0');
-+
-+    /* TODO: extra fields need to be added to support revisions above rev6 */
-+    assert(f->rev == 6);
- 
- done:
-     acpi_table_end(linker, &table);
-diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
-index 9b3aee01bf..72bb6f61a5 100644
---- a/hw/arm/virt-acpi-build.c
-+++ b/hw/arm/virt-acpi-build.c
-@@ -809,13 +809,13 @@ build_madt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
- }
- 
- /* FADT */
--static void build_fadt_rev5(GArray *table_data, BIOSLinker *linker,
-+static void build_fadt_rev6(GArray *table_data, BIOSLinker *linker,
-                             VirtMachineState *vms, unsigned dsdt_tbl_offset)
- {
--    /* ACPI v5.1 */
-+    /* ACPI v6.0 */
-     AcpiFadtData fadt = {
--        .rev = 5,
--        .minor_ver = 1,
-+        .rev = 6,
-+        .minor_ver = 0,
-         .flags = 1 << ACPI_FADT_F_HW_REDUCED_ACPI,
-         .xdsdt_tbl_offset = &dsdt_tbl_offset,
-     };
-@@ -945,7 +945,7 @@ void virt_acpi_build(VirtMachineState *vms, AcpiBuildTables *tables)
- 
-     /* FADT MADT PPTT GTDT MCFG SPCR DBG2 pointed to by RSDT */
-     acpi_add_table(table_offsets, tables_blob);
--    build_fadt_rev5(tables_blob, tables->linker, vms, dsdt);
-+    build_fadt_rev6(tables_blob, tables->linker, vms, dsdt);
- 
-     acpi_add_table(table_offsets, tables_blob);
-     build_madt(tables_blob, tables->linker, vms);
+diff --git a/tests/data/acpi/virt/APIC b/tests/data/acpi/virt/APIC
+index 023f15f12e74fb9a3a6d3d9dc994541016947d6a..179d274770a23209b949c90a929525e22368568b 100644
+GIT binary patch
+delta 26
+hcmZ3%xQ3C-F~HM#4FdxMi~B?_YsP?yZeA06WB^*d2KE2|
+
+delta 26
+icmZ3(xPp<(F~HM#1p@;EbHGF{Yet`mZeA0oNB{s@&<6Sd
+
+diff --git a/tests/data/acpi/virt/APIC.memhp b/tests/data/acpi/virt/APIC.memhp
+index 023f15f12e74fb9a3a6d3d9dc994541016947d6a..179d274770a23209b949c90a929525e22368568b 100644
+GIT binary patch
+delta 26
+hcmZ3%xQ3C-F~HM#4FdxMi~B?_YsP?yZeA06WB^*d2KE2|
+
+delta 26
+icmZ3(xPp<(F~HM#1p@;EbHGF{Yet`mZeA0oNB{s@&<6Sd
+
+diff --git a/tests/data/acpi/virt/APIC.numamem b/tests/data/acpi/virt/APIC.numamem
+index 023f15f12e74fb9a3a6d3d9dc994541016947d6a..179d274770a23209b949c90a929525e22368568b 100644
+GIT binary patch
+delta 26
+hcmZ3%xQ3C-F~HM#4FdxMi~B?_YsP?yZeA06WB^*d2KE2|
+
+delta 26
+icmZ3(xPp<(F~HM#1p@;EbHGF{Yet`mZeA0oNB{s@&<6Sd
+
+diff --git a/tests/data/acpi/virt/FACP b/tests/data/acpi/virt/FACP
+index 1f764220f8533c427168e80ccf298604826a00b4..ac05c35a69451519bd1152c54d1e741af36390f5 100644
+GIT binary patch
+delta 33
+ncmeBSn!?28=I9(C!pOkDCOVO;a^j?_i3a=}fv&!x3_t(?fr|$^
+
+delta 26
+hcmbQj)WgK(=I9*2!^ptE8ak1yl96%Z#OjF#yZ}u&1~C8t
+
+diff --git a/tests/data/acpi/virt/FACP.memhp b/tests/data/acpi/virt/FACP.memhp
+index 1f764220f8533c427168e80ccf298604826a00b4..ac05c35a69451519bd1152c54d1e741af36390f5 100644
+GIT binary patch
+delta 33
+ncmeBSn!?28=I9(C!pOkDCOVO;a^j?_i3a=}fv&!x3_t(?fr|$^
+
+delta 26
+hcmbQj)WgK(=I9*2!^ptE8ak1yl96%Z#OjF#yZ}u&1~C8t
+
+diff --git a/tests/data/acpi/virt/FACP.numamem b/tests/data/acpi/virt/FACP.numamem
+index 1f764220f8533c427168e80ccf298604826a00b4..ac05c35a69451519bd1152c54d1e741af36390f5 100644
+GIT binary patch
+delta 33
+ncmeBSn!?28=I9(C!pOkDCOVO;a^j?_i3a=}fv&!x3_t(?fr|$^
+
+delta 26
+hcmbQj)WgK(=I9*2!^ptE8ak1yl96%Z#OjF#yZ}u&1~C8t
+
+diff --git a/tests/qtest/bios-tables-test-allowed-diff.h b/tests/qtest/bios-tables-test-allowed-diff.h
+index 8dc50f7a8a..dfb8523c8b 100644
+--- a/tests/qtest/bios-tables-test-allowed-diff.h
++++ b/tests/qtest/bios-tables-test-allowed-diff.h
+@@ -1,7 +1 @@
+ /* List of comma-separated changed AML files to ignore */
+-"tests/data/acpi/virt/FACP",
+-"tests/data/acpi/virt/FACP.numamem",
+-"tests/data/acpi/virt/FACP.memhp",
+-"tests/data/acpi/virt/APIC",
+-"tests/data/acpi/virt/APIC.memhp",
+-"tests/data/acpi/virt/APIC.numamem",
 -- 
 2.37.3
 

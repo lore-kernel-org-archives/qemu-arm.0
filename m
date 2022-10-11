@@ -1,108 +1,113 @@
-Received: by 2002:ac9:4144:0:0:0:0:0 with SMTP id u4csp3249915ocg;
-        Tue, 11 Oct 2022 07:56:27 -0700 (PDT)
-X-Google-Smtp-Source: AMsMyM6j44jW/6uo0mH3a5QoO2rs8VrYKJPfc4quUAb8AlCE72fGctJXnRQHTsYNrWUMG+8yXJH7
-X-Received: by 2002:ac8:5849:0:b0:39a:8e35:1bfa with SMTP id h9-20020ac85849000000b0039a8e351bfamr7513878qth.573.1665500187230;
-        Tue, 11 Oct 2022 07:56:27 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1665500187; cv=none;
+Received: by 2002:ac9:4144:0:0:0:0:0 with SMTP id u4csp3267406ocg;
+        Tue, 11 Oct 2022 08:16:43 -0700 (PDT)
+X-Google-Smtp-Source: AMsMyM4RfqBe18vNh1SQMutARtaOE1Hqgfc+7+kR1ZNIDfZcDoovWQRzfJRew4uhCHe9pbpsjY0M
+X-Received: by 2002:a37:4553:0:b0:6cf:4dbd:b5f6 with SMTP id s80-20020a374553000000b006cf4dbdb5f6mr16879260qka.339.1665501402594;
+        Tue, 11 Oct 2022 08:16:42 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1665501402; cv=none;
         d=google.com; s=arc-20160816;
-        b=vdQERM4D2ZjgcKvoq7eL4tlD+N/I5w7U1NRy3x247AbiR155cub1aaw6KLVhVLOVWg
-         soJSLvJVV7cGAkqS4oq69ovvixOPfEid3I6+Uijmng9aWQEIIsNcQNEiaiYXqllb7agA
-         4VD0Vdgn+iKbgmv3x4eFk4ahzoFAjlZoFASPdQhRyZkBwDcXmO9Thn6cmfQk0H50zJN6
-         ioq42A/O4aIwjPOms6mdaBi8euDTohAcgMz0ZNOYcnwXVvDM62U27gUHqAaJ0dOyguRw
-         Fvp2z3WNLXaCR4Unqe9meNs805EslDJXoj7yn0bf7UHzF+iolYQMYwXwpsFcIdyRGXQ+
-         RTNw==
+        b=Odt5w4aruFGlanddPvb1KS4btuIbL8Oyx0ryvKo4GVVQeJPAOcSd1zrPbO5bW1qz/C
+         fL5EhBf5ZAZOHTmjbCLCdXZxOrV0kN1JDfiDX1Pacb2wbdyYDDjcghyyXfao3nhp8Py7
+         LQNjRmgnDSTzBS7tZloVnnwWekeMHIdtZr0q3Im4cM8F3JzYcbFcdSv2qqIxvQCSWLOV
+         M9E2k9HBT0SkrlLGgmE89s/FjBdDQRZZc3XkTZdDbx71T3IdXd/Gog4tTbAOqy4ni+Iu
+         BTgiJJtN59mF7kenRO2YktBxUJKijzTacyWndAvrEwm3qAKsO72fs8vTaURmnCKzodRd
+         TRjA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
+         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
          :dkim-signature;
-        bh=Lz0/Lo4+fsY5rZHBa89zwNXemdFwSrwJKnayi2yK5Mk=;
-        b=BxZARfbx43QlUMKrF7xTB7TlKr4ZqnPbh5SqB4Qfw1yXz2/S6B7/J5LEPlr1mtvINt
-         XiTr3ukQc8LZJc3GOqVnlWnym11/vuD6WLhuf9fBEK15/XPuMU5xNvrA10ENPwARInkt
-         cTxgn7LfXcPSg8jZFGxj8uhDDNZQDUkttxTm+/Qn6R5uu6f30lf5O4MK4vQ50KhYiv5e
-         hO5A8TpYXm5XIocMhY/xVA4wzmpW+lF+aWWBQalJ7/4O68lhGj4n5WH5ETtx+AgSZ/eU
-         vKy/R0rxSECXvLuctEWwWQ89qVJSM6EIXHkxK0gPoHdQLBTFltn/HXnhA+43IeiuGyOm
-         Y5/w==
+        bh=hHX8szJU5lcx5EEtgywgG95dJJ6buvOr4N4lK8qFRng=;
+        b=WFNlz311LkqcxQCu+WReZR1bhZRwnf4ve0HPLkpME+1YnBQNhmzj6Ycc66QsMp53cY
+         ZOtRy2DgqZK8v6v6POqw6PTdXlvOqPjMuINSckM25EqPUYBv8I632fbQcAT1e899p0Qf
+         QSp6exyUWBoy2lB0X3Eb73GyQxHN71YS6dQ0xwWhRI+t7F4rnYvV9bi/59pi14Bxd6ns
+         8eXM/+ffYwRyvCsbiLXlMSOF2ioVwagT5uG+WrQG1ix4it0ySD/jfmT0UWojqh1COXyd
+         t3RPbKhYIhy12wql9TgZ2tKhD1G0Ge25jJ+eNCmZyR19HU27GzT8O5+65pNe4z40EnHG
+         1tOg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=nyEk9eCp;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=GSzxis2+;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id g11-20020a05620a278b00b006ecfe1d0cb7si3204819qkp.365.2022.10.11.07.56.27
+        by mx.google.com with ESMTPS id t4-20020a37ea04000000b006cf427bc181si6813227qkj.8.2022.10.11.08.16.42
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 11 Oct 2022 07:56:27 -0700 (PDT)
+        Tue, 11 Oct 2022 08:16:42 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=nyEk9eCp;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=GSzxis2+;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:43650 helo=lists1p.gnu.org)
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:57016 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1oiGgE-0006Sa-Hh
-	for alex.bennee@linaro.org; Tue, 11 Oct 2022 10:56:26 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44974)
+	id 1oiGzo-00061f-BZ
+	for alex.bennee@linaro.org; Tue, 11 Oct 2022 11:16:41 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:47512)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1oiGbR-0003iX-Fe
- for qemu-arm@nongnu.org; Tue, 11 Oct 2022 10:51:34 -0400
-Received: from mail-pl1-x62e.google.com ([2607:f8b0:4864:20::62e]:42940)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1oiGbO-0005Yn-Bs
- for qemu-arm@nongnu.org; Tue, 11 Oct 2022 10:51:28 -0400
-Received: by mail-pl1-x62e.google.com with SMTP id c24so13400835pls.9
- for <qemu-arm@nongnu.org>; Tue, 11 Oct 2022 07:51:25 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date
- :message-id:reply-to;
- bh=Lz0/Lo4+fsY5rZHBa89zwNXemdFwSrwJKnayi2yK5Mk=;
- b=nyEk9eCpGLMaZEnz+ORkRq2yGblv8m6Mf1v6spsTNcaskQuz8lb0twZle+7h5aY6zA
- oDvceM46W0rxalLZnB6S0yUpsCibWENCu8HlJ0bDG28wA3A9COIejytRZoBwVxFMy87B
- Os8vXXuAHD3YdqCpJY3Fhk9PTCd8tazCtfOO1O4YVujSKu8ctGx2LH47BZy/vN0LS77M
- GU/9xDvm3gpZFTpQ5WuF/JkilDnOp7LA+yQLq4mdiRapsJIh+1R5aqcv0zsaH7Aq8ehX
- +HFE2n6UvNizzbH6eYGjkMPE7FsJjSqwyY0UZBW8u/jkG+IwCTyUGsD+sUP0zEZGOuxD
- +vKg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=Lz0/Lo4+fsY5rZHBa89zwNXemdFwSrwJKnayi2yK5Mk=;
- b=uQs8onulPL9yFCkBHA5lfMHpNzwXqNyUhQw1w25rzlRLtlKhKEssmpi2lzVUF2eohr
- JXLe9ApqcMIayzaBmzqwka/Fi1yooWHo50BixgrAB55hyfs+iBeN13rm3SHE5ONJNpa/
- kcsYdTvwkTwGJqwfYTw6BB4d3NRxK/i1H7L9QJ+1hRm3vERvt1PnJ14aJ55h45httiDc
- DJPZVzGYVrLbM6w6WF/cOx8bYqoGwZ7D3TMgO9CATzqRBnMVEkUHD1ITmIzg/95+NJIN
- MSuetpNzEhgs/qpieAyX/3xitb0Q9y5epev/Q8JJM7o81WLgW1EIcIlxydiwAim883uN
- +NkQ==
-X-Gm-Message-State: ACrzQf2uF/GmDmr3wojhXDduyqgTXAjujoxtgkN8bcPAvOMez1tf7zj4
- OpEly3vhvpypEKwfQm8OWnaHNmwcSk912aYGhHl/ng==
-X-Received: by 2002:a17:90b:4b8e:b0:20a:f240:9b23 with SMTP id
- lr14-20020a17090b4b8e00b0020af2409b23mr27494480pjb.19.1665499884352; Tue, 11
- Oct 2022 07:51:24 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <stefanha@redhat.com>)
+ id 1oiGw0-00030C-Pa
+ for qemu-arm@nongnu.org; Tue, 11 Oct 2022 11:12:45 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:33132)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <stefanha@redhat.com>)
+ id 1oiGvy-0000Zh-Ju
+ for qemu-arm@nongnu.org; Tue, 11 Oct 2022 11:12:43 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1665501160;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=hHX8szJU5lcx5EEtgywgG95dJJ6buvOr4N4lK8qFRng=;
+ b=GSzxis2+Rbfuc0/qV/IEBQEr3SvBq9qSohKD0V2KXysygLmtEqi6H01Bgb45IwGi/4PvdW
+ ggRo0qoWDqKeTBLjEuHm+6NfQr9N+GopccQ36US/Jxbys4GBfM3BOZcOnwo8/Hz4603xX5
+ eEL1eCn2hxa+DFZCXf6t6J/Xl5Kzs+w=
+Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
+ [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-642-pcPQJl3tMVegkmptjmZ4CQ-1; Tue, 11 Oct 2022 11:12:39 -0400
+X-MC-Unique: pcPQJl3tMVegkmptjmZ4CQ-1
+Received: from smtp.corp.redhat.com (int-mx10.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.10])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id E7867101A528;
+ Tue, 11 Oct 2022 15:12:38 +0000 (UTC)
+Received: from localhost (unknown [10.39.194.119])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 41B7D492B05;
+ Tue, 11 Oct 2022 15:12:37 +0000 (UTC)
+Date: Tue, 11 Oct 2022 11:12:35 -0400
+From: Stefan Hajnoczi <stefanha@redhat.com>
+To: marcandre.lureau@redhat.com
+Cc: qemu-devel@nongnu.org, Richard Henderson <richard.henderson@linaro.org>,
+ =?iso-8859-1?Q?Marc-Andr=E9?= Lureau <marcandre.lureau@redhat.com>,
+ Bin Meng <bin.meng@windriver.com>,
+ Daniel Henrique Barboza <danielhb413@gmail.com>,
+ qemu-ppc@nongnu.org, qemu-s390x@nongnu.org,
+ Alistair Francis <alistair.francis@wdc.com>, qemu-riscv@nongnu.org,
+ Peter Maydell <peter.maydell@linaro.org>,
+ viktor.prutyanov@redhat.com, Greg Kurz <groug@kaod.org>,
+ frankja@linux.ibm.com, David Hildenbrand <david@redhat.com>,
+ Palmer Dabbelt <palmer@dabbelt.com>,
+ =?iso-8859-1?Q?C=E9dric?= Le Goater <clg@kaod.org>,
+ David Gibson <david@gibson.dropbear.id.au>, qemu-arm@nongnu.org,
+ Cornelia Huck <cohuck@redhat.com>, Thomas Huth <thuth@redhat.com>
+Subject: Re: [PULL 00/10] Dump patches
+Message-ID: <Y0WH4+1zi8SmJqtq@fedora>
+References: <20221006153430.2775580-1-marcandre.lureau@redhat.com>
 MIME-Version: 1.0
-References: <20220930220312.135327-1-richard.henderson@linaro.org>
- <20220930220312.135327-9-richard.henderson@linaro.org>
-In-Reply-To: <20220930220312.135327-9-richard.henderson@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 11 Oct 2022 15:51:12 +0100
-Message-ID: <CAFEAcA_0ZbNpZKyWdQWhh80dc+Y2R08UH9RWWzBOVOsDdWPi1g@mail.gmail.com>
-Subject: Re: [PATCH v5 8/9] target/arm: Introduce gen_pc_plus_diff for aarch32
-To: Richard Henderson <richard.henderson@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, 
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::62e;
- envelope-from=peter.maydell@linaro.org; helo=mail-pl1-x62e.google.com
+Content-Type: multipart/signed; micalg=pgp-sha256;
+ protocol="application/pgp-signature"; boundary="BAQDXEqVhTaktHoJ"
+Content-Disposition: inline
+In-Reply-To: <20221006153430.2775580-1-marcandre.lureau@redhat.com>
+X-Scanned-By: MIMEDefang 3.1 on 10.11.54.10
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=stefanha@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
@@ -119,55 +124,31 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: qKuYsfHp5SO2
+X-TUID: 3exn115TWhel
 
-On Fri, 30 Sept 2022 at 23:05, Richard Henderson
-<richard.henderson@linaro.org> wrote:
->
-> In preparation for TARGET_TB_PCREL, reduce reliance on absolute values.
->
-> Reviewed-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
-> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
-> ---
->  target/arm/translate.c | 29 ++++++++++++++++++-----------
->  1 file changed, 18 insertions(+), 11 deletions(-)
->
-> diff --git a/target/arm/translate.c b/target/arm/translate.c
-> index fd35db8c8c..050da9e740 100644
-> --- a/target/arm/translate.c
-> +++ b/target/arm/translate.c
-> @@ -276,11 +276,16 @@ static target_long jmp_diff(DisasContext *s, target=
-_long diff)
->      return diff + (s->thumb ? 4 : 8);
->  }
->
-> +static void gen_pc_plus_diff(DisasContext *s, TCGv_i32 var, target_long =
-diff)
-> +{
-> +    tcg_gen_movi_i32(var, s->pc_curr + diff);
-> +}
-> +
->  /* Set a variable to the value of a CPU register.  */
->  void load_reg_var(DisasContext *s, TCGv_i32 var, int reg)
->  {
->      if (reg =3D=3D 15) {
-> -        tcg_gen_movi_i32(var, read_pc(s));
-> +        gen_pc_plus_diff(s, var, jmp_diff(s, 0));
->      } else {
->          tcg_gen_mov_i32(var, cpu_R[reg]);
->      }
-> @@ -296,7 +301,8 @@ TCGv_i32 add_reg_for_lit(DisasContext *s, int reg, in=
-t ofs)
->      TCGv_i32 tmp =3D tcg_temp_new_i32();
->
->      if (reg =3D=3D 15) {
-> -        tcg_gen_movi_i32(tmp, (read_pc(s) & ~3) + ofs);
-> +        /* This difference computes a page offset so ok for TARGET_TB_PC=
-REL. */
-> +        gen_pc_plus_diff(s, tmp, (read_pc(s) & ~3) - s->pc_curr + ofs);
 
-We could rephrase this one also to not do the "pc_curr - pc_curr" thing,
-the way we did for BLX in patch 6, right ?
+--BAQDXEqVhTaktHoJ
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 
-thanks
--- PMM
+Applied, thanks.
+
+Please update the changelog at https://wiki.qemu.org/ChangeLog/7.2 for any user-visible changes.
+
+--BAQDXEqVhTaktHoJ
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAEBCAAdFiEEhpWov9P5fNqsNXdanKSrs4Grc8gFAmNFh+MACgkQnKSrs4Gr
+c8jGSgf9GgMdODAWykAqQVDjYL02ZPZ1OCJzdqT1xtcY+HQz7v+UtpCL0Q3+14LG
+CDxobk6SgXBUTQCIRcHroJRnG4HYshQNTboLlUjKoiMN3jM7e4NExPyTMKpFKlFI
+PhQnD2fjUEfvTsWE1vdwKwIMsVr6eTes21kW/igOUE+FAbvABCciMjwA6FCqYN3+
+V8hfUfoN2+t2I8Q5gCgEJDoRzjmvD3JIu7DrDHBW7NGGtfSsKeddyZ/xfkBv1E9O
+S5Brz/HpZqm1MO3pIlSFpTgMi/oKC+7r5LVUvFqqP3hKp2LE23+XagiUtxYYVtS1
+3ivn5b/bjEutjhszMd0M6Z3xpIZ9pw==
+=V0Rp
+-----END PGP SIGNATURE-----
+
+--BAQDXEqVhTaktHoJ--
+

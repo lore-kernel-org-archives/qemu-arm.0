@@ -1,107 +1,106 @@
-Received: by 2002:ac9:4144:0:0:0:0:0 with SMTP id u4csp2890649ocg;
-        Mon, 10 Oct 2022 20:38:57 -0700 (PDT)
-X-Google-Smtp-Source: AMsMyM4TAdGgCvWB+7QXzxETnEaykUq4GC4aVB3toB4xg5upEc2itaNPneuMYq2UlOXKZFdMNlQY
-X-Received: by 2002:a05:622a:5149:b0:38d:961c:a568 with SMTP id ew9-20020a05622a514900b0038d961ca568mr17335591qtb.511.1665459537132;
-        Mon, 10 Oct 2022 20:38:57 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1665459537; cv=none;
+Received: by 2002:ac9:4144:0:0:0:0:0 with SMTP id u4csp2891158ocg;
+        Mon, 10 Oct 2022 20:40:13 -0700 (PDT)
+X-Google-Smtp-Source: AMsMyM6dDCgNmBVSavgN8iEZgEgO8CS5r/Sj9O1ZLDVusDb4/HZ1/4zW59qw6hfZYU3GqqMh7Nnk
+X-Received: by 2002:a05:6214:268b:b0:4b4:4912:3e5 with SMTP id gm11-20020a056214268b00b004b4491203e5mr1237021qvb.125.1665459613293;
+        Mon, 10 Oct 2022 20:40:13 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1665459613; cv=none;
         d=google.com; s=arc-20160816;
-        b=tTmgTURK98Tza3U74sYeZnayS4kw6wjaWd85bTMKvMSy4RdVTzjuSfDlbCdh4t+EdC
-         yUt173au4dc5FhIwfofqMSOqRtH+zUVSrkk7CgcQK3X5bHly9w/nY41oDTDANYgmSlV9
-         CA0g9Wvcooy/TdcoxKV6SCVBxzxPMbDlYPdoFeQ928bY+jkFzwh0Vs3R8wI37f2HMN1p
-         MMzg80kDtYXeQzjsOeEbYrTT0HjWuEquEQ2EJxxEl133TrXOYEUXXBu9DYgHyNGe9YuG
-         0olbFh/u0CKIsYk/R5a/zoA4XlJS6IGg6pqcinZAUW/CC94wiqJnT6r+TGH74/KjHDok
-         DlGw==
+        b=fY44SqDzTz/k4p13n2022LTb2Dbjzspogc3nIAn17k7jU/ofMWh9AprUQsQLEekdsz
+         RA5fbe5mVQDFAqNM5D9Azm2MaPxBRKWK/7VeTs7niRXN7H2Z2SdDuoDBNYDlq39rTNts
+         zvnUmr//D6sQqp7AuMegBQG7RqHdMg+mL0rBc04CIUocUW1xWW1f+HYUXnhBlZ56h9ED
+         G/LND5WAZPpOB9HR1ZYyu71UJEGGyVGe0hOy7Sp6RMgEii5oYcLDajQQBSPPSLTdqqc6
+         CVTvXm/6luNx1vK2aBleohWUkKN2AlVcquWWKzsZGNB8ZVkZJCP9Z5aBBQ6IiOJNu6iN
+         pmGQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=JyqDFzcDDxaZLADzD0GCm51gPMwBsgamq3ZkxmoSGeA=;
-        b=b/peHwEAfi8+9aVvG7ID/N3n6SIRkOHGC9NvSutKcf6hfU5R8frrBvQmI/RmoBKrcH
-         bmEuPms8wU6kibfAS/YFuZXUCrXqj895YfJjvN/4KFRu7BVkMHNi1ljp41GJafmZI/S/
-         7aSFrqLGtXNw5Ki1t10A5FlzND98icWfj7AqgRsFSKpApwf3Bv5uo0fFKGbiiMpRlQX/
-         FyvFy1gKxJ8VXn4P5MD6YRKhgugqRf7EX9Jx+ClR/YmtkBod7YtkksL6KOqI04O/hzfZ
-         v/hf8XU36dqQ1R8S7/Lvq2HKvEsmHRcTdVXsJai55xwmTn6GA+3T2mFIX/Fuc8zU4Zr5
-         UdfQ==
+        bh=VLe0nDHpVS96XvP1AbTdyi1WQJxRc5tYeD+d8MqDnjY=;
+        b=PXw92EgnkQS6RAnkzZy/vgtvcCbi+V4S3oIcO5MBnZA6Qchl1MJiPSZhmuLbNYg02u
+         8IV7xoKyabmpXjMBjgHV5yXUMorm8FEMDSIMdY8Nq8ZfyAS/a7bHegPvk8i7RvYmP+cS
+         0687E7ASwPHt0kT+7jZShbHxmageBGQwo5lKwEr2cudAc9L/MdvzCcZLR8SEIjfxT/+w
+         gjy8ILqGkOr2uxOAMlfzF44iCU8dAW/jXFKXjkQXXw6Me4QQu+5Bw5o844WAMGpXIL0+
+         BlQex/OWuIfp0shIvUkg8qW7qoEMrXJm0hNhifJF3H53AbrtHY8HtQJ6pHI0GITgJgbE
+         4u/g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=OE0TB5uL;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=DUdS4FOF;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id q54-20020a05620a2a7600b006ea3c5337efsi5875897qkp.434.2022.10.10.20.38.57
+        by mx.google.com with ESMTPS id q4-20020a056214194400b004b32bd25187si6865883qvk.580.2022.10.10.20.40.13
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 10 Oct 2022 20:38:57 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 10 Oct 2022 20:40:13 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=OE0TB5uL;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=DUdS4FOF;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:52314 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:57024 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1oi66a-0001GG-JE
-	for alex.bennee@linaro.org; Mon, 10 Oct 2022 23:38:56 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49932)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1oi67o-0002RM-QL
+	for alex.bennee@linaro.org; Mon, 10 Oct 2022 23:40:12 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:59864)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1oi5o9-0002hl-1s
- for qemu-arm@nongnu.org; Mon, 10 Oct 2022 23:19:53 -0400
-Received: from mail-pf1-x429.google.com ([2607:f8b0:4864:20::429]:39900)
+ id 1oi5oJ-00038b-S9
+ for qemu-devel@nongnu.org; Mon, 10 Oct 2022 23:20:04 -0400
+Received: from mail-pg1-x531.google.com ([2607:f8b0:4864:20::531]:44875)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1oi5o6-00030P-A7
- for qemu-arm@nongnu.org; Mon, 10 Oct 2022 23:19:52 -0400
-Received: by mail-pf1-x429.google.com with SMTP id d10so12350701pfh.6
- for <qemu-arm@nongnu.org>; Mon, 10 Oct 2022 20:19:49 -0700 (PDT)
+ id 1oi5oI-00033L-6m
+ for qemu-devel@nongnu.org; Mon, 10 Oct 2022 23:20:03 -0400
+Received: by mail-pg1-x531.google.com with SMTP id q1so3434417pgl.11
+ for <qemu-devel@nongnu.org>; Mon, 10 Oct 2022 20:20:01 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=JyqDFzcDDxaZLADzD0GCm51gPMwBsgamq3ZkxmoSGeA=;
- b=OE0TB5uLs6bj9+ksRf+VC0vrhDph/IcghoHXZ+0fe7Bpa37UwGcpOOOh4g+jr16yYr
- 1aUqITTHb0ncwSAlbcFHPewMfS0FR3q84+8AQuuuDHZKH0lUUVDIWNNzXCskWwkhOki4
- ktt0zvqtgY9AXgwCind0tqnv3fwupMOKAXULW+V/5+v8KlHgTT8tWacUcwZgBwmH50Eu
- WukUXpkefB62D5K7X01LjU9CKfKve+LB6iiGEVZOxhfFkaLM/W2Nqmb4JloJjyp4DYm7
- esfZB16nPRfzZxrJ+A+IQ0hs8KSBXEb/LvFLVUQ2yu5Pbz5eBNBguxk/8yisH0+N/TpB
- OuIQ==
+ bh=VLe0nDHpVS96XvP1AbTdyi1WQJxRc5tYeD+d8MqDnjY=;
+ b=DUdS4FOFPcPSBGQ6Zv64sPOYcwWK5FwQ7+X6mwkn3IoJpMuXJmxEnIsa05GAJ6dAXK
+ zN1kGmdiaFSTXOp9ddq5/UF2KBF98s3R1HfznuNZwI7tstoEEaQPZ6EMuKxbF2oQjlVX
+ zdR3++MGdd2xmy0i9Wn7+xPA4sNyIIdd4yZucB0XLMKOMCpzNuE0L4pO5IgeJluWvS0K
+ gkHqwSWWuRfgdyl7kbJoNHw4+e1zbNwg3/IloXwPYgZpcZdSswA6RMQHg6Qwyx0c83tu
+ UgczDbRFfj6VqtgYsxTA/Dfci7weFx4K+iV7QgMS/zvkD8D0OAgg17tXiEVb8vUdJvW2
+ unbw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=JyqDFzcDDxaZLADzD0GCm51gPMwBsgamq3ZkxmoSGeA=;
- b=fnnx+nCZCjI1vK/CTROz7Rk+df8b9MXz2euiLsk8+15tP3zB2TEnVArSN/NsYZUg01
- mnK7HVH7l7MM/+u3W6y9jMD0jMJnWH6iDeGK9p1hS/MxHskxbX4cIaDYQfQz6WFoaL/z
- PZSW30YUJkI1NlAh//2BIRgrrhCHcnKiGm/7Uwy2KigfwGeFZH5XFjwZvB6V8tGCKhxd
- Rs+4G1hJt9PAOW9OfgV9mextt4svNsis6ItjQu95ZmpxgI/JFpz1vuusHCX8p5Z5hcb/
- 4k12M0M0QHX36634zkDeMxvJ9aT6ysvtF7hkmPQJruDPclsYoESQzcNhJLVnVGFxzznO
- Abcw==
-X-Gm-Message-State: ACrzQf0IM9gN5eWzMsdqyIFyQRbbVa3ceBZTpmVoCzueqr17MVzb7Ykj
- g/wB/Eu0MeUBwaQjv0YkDZ4lpA==
-X-Received: by 2002:a05:6a00:134f:b0:563:7aa8:5cea with SMTP id
- k15-20020a056a00134f00b005637aa85ceamr6098400pfu.69.1665458389473; 
- Mon, 10 Oct 2022 20:19:49 -0700 (PDT)
+ bh=VLe0nDHpVS96XvP1AbTdyi1WQJxRc5tYeD+d8MqDnjY=;
+ b=ROhPq0TiIiaJTzcsFp/RjdsUGRIntjLSwVkHWDDoc5b63+kjqonZWFEacLaC0rxs8I
+ hRHbaetVlhKVXTNffbuIH93cnG91121//ZjJlrgqzQJYLVLpQZhW0mCbdAZRs0xwb0Hh
+ EFJVfcDR0tJDFsPU2HFpu/M/YI2rEe1pz+u8Fz3AdEJRhzKltdy4ZkHXIQTWf+JKnjJM
+ 9fjPsheTcfhuamq8mzHOynFqSE1mYlECr9O3HPzORzt0K/bcgc6YPG7n2sWXwPI8IXe1
+ xyH9UmLirPewgqp3yt8L8eM8v98Apiy9Cr5AE0fsXPW+8yY2npOETM2l6vHXOYFZlHKi
+ Ha8Q==
+X-Gm-Message-State: ACrzQf2k6ZA5qTwJrDHfq6o1urCk+GTtvupqdp++ryuGRy+CLmmEukZ7
+ /wfd1+uNbmY9xR4gSZUG03VEO7QiY8AZQA==
+X-Received: by 2002:a65:5801:0:b0:45d:bbd8:e872 with SMTP id
+ g1-20020a655801000000b0045dbbd8e872mr17915832pgr.343.1665458401361; 
+ Mon, 10 Oct 2022 20:20:01 -0700 (PDT)
 Received: from stoup.. ([2602:47:d49d:ec01:5aa4:aba1:1c91:a9b7])
  by smtp.gmail.com with ESMTPSA id
- o74-20020a62cd4d000000b0055f209690c0sm7663567pfg.50.2022.10.10.20.19.47
+ o74-20020a62cd4d000000b0055f209690c0sm7663567pfg.50.2022.10.10.20.19.59
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 10 Oct 2022 20:19:48 -0700 (PDT)
+ Mon, 10 Oct 2022 20:20:00 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org,
-	Peter Maydell <peter.maydell@linaro.org>
-Subject: [PATCH v4 19/24] target/arm: Fix fault reporting in get_phys_addr_lpae
-Date: Mon, 10 Oct 2022 20:19:06 -0700
-Message-Id: <20221011031911.2408754-20-richard.henderson@linaro.org>
+Cc: qemu-arm@nongnu.org
+Subject: [PATCH v4 23/24] target/arm: Implement FEAT_HAFDBS, dirty bit portion
+Date: Mon, 10 Oct 2022 20:19:10 -0700
+Message-Id: <20221011031911.2408754-24-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20221011031911.2408754-1-richard.henderson@linaro.org>
 References: <20221011031911.2408754-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::429;
- envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x429.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::531;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pg1-x531.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -110,154 +109,77 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: R2J4/HD4Ndfr
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: iFhQrh9b3LO/
 
-Always overriding fi->type was incorrect, as we would not properly
-propagate the fault type from S1_ptw_translate, or arm_ldq_ptw.
-Simplify things by providing a new label for a translation fault.
-For other faults, store into fi directly.
+Perform the atomic update for hardware management of the dirty bit.
 
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/ptw.c | 31 +++++++++++++------------------
- 1 file changed, 13 insertions(+), 18 deletions(-)
+ target/arm/cpu64.c |  2 +-
+ target/arm/ptw.c   | 20 ++++++++++++++++++++
+ 2 files changed, 21 insertions(+), 1 deletion(-)
 
+diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
+index fe1369fe96..0732796559 100644
+--- a/target/arm/cpu64.c
++++ b/target/arm/cpu64.c
+@@ -1165,7 +1165,7 @@ static void aarch64_max_initfn(Object *obj)
+     cpu->isar.id_aa64mmfr0 = t;
+ 
+     t = cpu->isar.id_aa64mmfr1;
+-    t = FIELD_DP64(t, ID_AA64MMFR1, HAFDBS, 1);   /* FEAT_HAFDBS, AF only */
++    t = FIELD_DP64(t, ID_AA64MMFR1, HAFDBS, 2);   /* FEAT_HAFDBS */
+     t = FIELD_DP64(t, ID_AA64MMFR1, VMIDBITS, 2); /* FEAT_VMID16 */
+     t = FIELD_DP64(t, ID_AA64MMFR1, VH, 1);       /* FEAT_VHE */
+     t = FIELD_DP64(t, ID_AA64MMFR1, HPDS, 1);     /* FEAT_HPDS */
 diff --git a/target/arm/ptw.c b/target/arm/ptw.c
-index 9b767f8236..acbf09cce8 100644
+index 82b6ab029e..0dbbb7d4d4 100644
 --- a/target/arm/ptw.c
 +++ b/target/arm/ptw.c
-@@ -1065,8 +1065,6 @@ static bool get_phys_addr_lpae(CPUARMState *env, S1Translate *ptw,
-     ARMCPU *cpu = env_archcpu(env);
-     ARMMMUIdx mmu_idx = ptw->in_mmu_idx;
-     bool is_secure = ptw->in_secure;
--    /* Read an LPAE long-descriptor translation table. */
--    ARMFaultType fault_type = ARMFault_Translation;
-     uint32_t level;
-     ARMVAParameters param;
-     uint64_t ttbr;
-@@ -1103,8 +1101,7 @@ static bool get_phys_addr_lpae(CPUARMState *env, S1Translate *ptw,
-          * so our choice is to always raise the fault.
-          */
-         if (param.tsz_oob) {
--            fault_type = ARMFault_Translation;
--            goto do_fault;
-+            goto do_translation_fault;
-         }
+@@ -1484,10 +1484,30 @@ static bool get_phys_addr_lpae(CPUARMState *env, S1Translate *ptw,
+     ap = extract32(attrs, 6, 2);
  
-         addrsize = 64 - 8 * param.tbi;
-@@ -1141,8 +1138,7 @@ static bool get_phys_addr_lpae(CPUARMState *env, S1Translate *ptw,
-                                            addrsize - inputsize);
-         if (-top_bits != param.select) {
-             /* The gap between the two regions is a Translation fault */
--            fault_type = ARMFault_Translation;
--            goto do_fault;
-+            goto do_translation_fault;
-         }
-     }
- 
-@@ -1168,7 +1164,7 @@ static bool get_phys_addr_lpae(CPUARMState *env, S1Translate *ptw,
-          * Translation table walk disabled => Translation fault on TLB miss
-          * Note: This is always 0 on 64-bit EL2 and EL3.
-          */
--        goto do_fault;
-+        goto do_translation_fault;
-     }
- 
-     if (mmu_idx != ARMMMUIdx_Stage2 && mmu_idx != ARMMMUIdx_Stage2_S) {
-@@ -1199,8 +1195,7 @@ static bool get_phys_addr_lpae(CPUARMState *env, S1Translate *ptw,
-         if (param.ds && stride == 9 && sl2) {
-             if (sl0 != 0) {
-                 level = 0;
--                fault_type = ARMFault_Translation;
--                goto do_fault;
-+                goto do_translation_fault;
-             }
-             startlevel = -1;
-         } else if (!aarch64 || stride == 9) {
-@@ -1219,8 +1214,7 @@ static bool get_phys_addr_lpae(CPUARMState *env, S1Translate *ptw,
-         ok = check_s2_mmu_setup(cpu, aarch64, startlevel,
-                                 inputsize, stride, outputsize);
-         if (!ok) {
--            fault_type = ARMFault_Translation;
--            goto do_fault;
-+            goto do_translation_fault;
-         }
-         level = startlevel;
-     }
-@@ -1242,7 +1236,7 @@ static bool get_phys_addr_lpae(CPUARMState *env, S1Translate *ptw,
-         descaddr |= extract64(ttbr, 2, 4) << 48;
-     } else if (descaddr >> outputsize) {
-         level = 0;
--        fault_type = ARMFault_AddressSize;
-+        fi->type = ARMFault_AddressSize;
-         goto do_fault;
-     }
- 
-@@ -1296,7 +1290,7 @@ static bool get_phys_addr_lpae(CPUARMState *env, S1Translate *ptw,
- 
-     if (!(descriptor & 1) || (!(descriptor & 2) && (level == 3))) {
-         /* Invalid, or the Reserved level 3 encoding */
--        goto do_fault;
-+        goto do_translation_fault;
-     }
- 
-     descaddr = descriptor & descaddrmask;
-@@ -1314,7 +1308,7 @@ static bool get_phys_addr_lpae(CPUARMState *env, S1Translate *ptw,
-             descaddr |= extract64(descriptor, 12, 4) << 48;
-         }
-     } else if (descaddr >> outputsize) {
--        fault_type = ARMFault_AddressSize;
-+        fi->type = ARMFault_AddressSize;
-         goto do_fault;
-     }
- 
-@@ -1371,9 +1365,9 @@ static bool get_phys_addr_lpae(CPUARMState *env, S1Translate *ptw,
-      * Here descaddr is the final physical address, and attributes
-      * are all in attrs.
-      */
--    fault_type = ARMFault_AccessFlag;
-     if ((attrs & (1 << 8)) == 0) {
-         /* Access flag */
-+        fi->type = ARMFault_AccessFlag;
-         goto do_fault;
-     }
- 
-@@ -1390,8 +1384,8 @@ static bool get_phys_addr_lpae(CPUARMState *env, S1Translate *ptw,
-         result->f.prot = get_S1prot(env, mmu_idx, aarch64, ap, ns, xn, pxn);
-     }
- 
--    fault_type = ARMFault_Permission;
-     if (!(result->f.prot & (1 << access_type))) {
-+        fi->type = ARMFault_Permission;
-         goto do_fault;
-     }
- 
-@@ -1436,8 +1430,9 @@ static bool get_phys_addr_lpae(CPUARMState *env, S1Translate *ptw,
-     result->f.lg_page_size = ctz64(page_size);
-     return false;
- 
--do_fault:
--    fi->type = fault_type;
-+ do_translation_fault:
-+    fi->type = ARMFault_Translation;
-+ do_fault:
-     fi->level = level;
-     /* Tag the error as S2 for failed S1 PTW at S2 or ordinary S2.  */
-     fi->stage2 = fi->s1ptw || (mmu_idx == ARMMMUIdx_Stage2 ||
+     if (mmu_idx == ARMMMUIdx_Stage2 || mmu_idx == ARMMMUIdx_Stage2_S) {
++        if (param.hd
++            && extract64(attrs, 51, 1)  /* DBM */
++            && access_type == MMU_DATA_STORE) {
++            /*
++             * Pre-emptively set S2AP[1], so that we compute EXEC properly.
++             * C.f. AArch64.S2ApplyOutputPerms, which does the same thing.
++             */
++            ap |= 2;
++            new_descriptor |= 1ull << 7;
++        }
+         ns = mmu_idx == ARMMMUIdx_Stage2;
+         xn = extract64(attrs, 54, 2);
+         result->f.prot = get_S2prot(env, ap, xn, s1_is_el0);
+     } else {
++        if (param.hd
++            && extract64(attrs, 51, 1)  /* DBM */
++            && access_type == MMU_DATA_STORE) {
++            /*
++             * Pre-emptively clear AP[2], so that we compute EXEC properly.
++             * C.f. AArch64.S1ApplyOutputPerms, which does the same thing.
++             */
++            ap &= ~2;
++            new_descriptor &= ~(1ull << 7);
++        }
+         ns = extract32(attrs, 5, 1);
+         xn = extract64(attrs, 54, 1);
+         pxn = extract64(attrs, 53, 1);
 -- 
 2.34.1
 

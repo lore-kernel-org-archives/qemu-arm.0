@@ -1,210 +1,158 @@
-Received: by 2002:a17:906:43c7:b0:78d:9f02:16a1 with SMTP id j7csp2550717ejn;
-        Tue, 11 Oct 2022 09:50:44 -0700 (PDT)
-X-Google-Smtp-Source: AMsMyM4UfEEBOhNOVaIX/znSMDb7hlXvTpPm7JdubNggJaPq79PWdx1D57EKVovZ0GtM8dXLuHoC
-X-Received: by 2002:a05:620a:f0e:b0:6cf:beb5:a28 with SMTP id v14-20020a05620a0f0e00b006cfbeb50a28mr17504237qkl.738.1665507044084;
-        Tue, 11 Oct 2022 09:50:44 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1665507044; cv=none;
+Received: by 2002:a17:906:43c7:b0:78d:9f02:16a1 with SMTP id j7csp2613197ejn;
+        Tue, 11 Oct 2022 11:18:57 -0700 (PDT)
+X-Google-Smtp-Source: AMsMyM7qqU0Rw4VQSJE6N7HXOaKr/AwFCnDrNpSIS8h/3eidTGd2o5k23JMirEwUJoXSvA3VYoeM
+X-Received: by 2002:a05:620a:1986:b0:6ec:fc63:1dce with SMTP id bm6-20020a05620a198600b006ecfc631dcemr8085039qkb.90.1665512337329;
+        Tue, 11 Oct 2022 11:18:57 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1665512337; cv=none;
         d=google.com; s=arc-20160816;
-        b=p6i0DG8iqITo/N1RqmhBG6YDEqty2ZU737sbK3hR6lb23L1Wv23tdL9osXRGPZJ5BP
-         q6cZGEX2mrox1ie+n01xr1EKiclPrd6xP7tQYsCqiYf15PmS+hfC2nPxeTcQ1g1RLvxf
-         rEimqgdE4kWkXRNXE2MHSyhEKhG4rDQbesTacwi4QHwLRTbnMtynoLKokCUB9W5WT9ri
-         vBndooc/ESTTJu07wNxK0T/XUDIBUU1Kafo4XAyPAvWW7tba0D63cg1ILN4Q0+S6rpw+
-         LkY4KtoPD1Yg1Me8J4OWRMlRCHYnYxLWmp6jzQ+2vd8KmCOsSQqLZZb6Xn/S7MwlIo58
-         m77Q==
+        b=dwOe8+u4JqnaubHglTR9UWkUU3O30TLdDXO+VKPjWnNpDcomCBXNSyceHiHrgf9XpD
+         K56Mi0t5LAlmL1eSDFQBzJMZpXMy16zuMOcT2MzmB5znwJNMh9o/+iYzWqt5/o1zN9ti
+         LSTc0wqlPx9TQrn/ABtnEtV4UM86HYMIpjiF5sDVjx5Wt5lmb21BayYWt2Y3vUsu8f7F
+         2ugPIALlbCb7zK451JvcpCYLzIL4YlZccKkmQJGX1EjGHb/f7Pc5TLR1n3Fh/aVeMZ4M
+         4bvExl+BR8+laKPBm8McFPs3L+WYieamVhQXAZnWsGtx5unzQQ0AgaGBkEkqXyVXyBp2
+         wZgg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
          :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=c8PsTf3WUZOpkSD0nQM22s+p53eQm1J9rsvpnT1ys3M=;
-        b=OG+ekHjXEQiGLkEJpz0zgx1leqMdRNKi0sLMVvTK+MLIwXQDaoB0K61pF202hHBTRK
-         LYjepvdgZY8S9eVXwa+/yCDRMIYDyOtNfZ9fLZAUMSPMDKsoH4GfbGEvXxA7PgoAauno
-         hohcYMN7aW2mpKkNgQLsxmnwi7fk3h5wjTqUjzr3yAHAHVMRZHm8Xgs58SquwhxIKI2z
-         e/RmyfhyP/e8WaqjXtlntsXqo2WMK+rnZ1Gc267a3iU6tdgVWa3pf8/5MddKBpWn4b6P
-         0+oVw//kgp7TNB06bLyYz37Q6PMNgT7TXGJ2p5Z0xg1fQ2D9rpKX4wwFcUslQ+rcJBbW
-         6i+A==
+         :content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:dkim-signature;
+        bh=5GHVn7JC7YycS7J8f1l8OLLsQyao+YPeGmO4bOOeT10=;
+        b=LNsPQXCRUrdBp2k1Sm78CYABTBYBbbsFno2HPdosmlEX8E1X31xnsqjBPvc6mVRJ0S
+         ljNtSfTgD3lbl84Hqt3LIdmv2lRJB1e/JjXCJz1w1oYgGb1L85nzcQ03A/L1e4H9mHin
+         0x0iwsOgKMRsVO3wb3XZb694p9ey5uwEJCmIKKzLYtqvmxosEg4hB05JWqAfvHUsT+27
+         OvVdlxCFK4R0bVyzdUuG0eEQxZOSxuk18mUy+H+Vrq44sED01sGt0KbQcBCZU+OU/P/A
+         +HkI0ptfjUNYXWQ8qthCXHiAv0V0WfZtlKI5aKEIb0IX5+w7eqya3uZSgb1r6ifoh+3e
+         d5kw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=S5MqWmho;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@oracle.com header.s=corp-2022-7-12 header.b=bu1cjTkD;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=oracle.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a8-20020a056214062800b004b3f36b1fbbsi4055454qvx.493.2022.10.11.09.50.43
+        by mx.google.com with ESMTPS id kk6-20020a056214508600b004b3d3741f5dsi6262051qvb.331.2022.10.11.11.18.57
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 11 Oct 2022 09:50:44 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 11 Oct 2022 11:18:57 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=S5MqWmho;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:54524 helo=lists1p.gnu.org)
+       dkim=pass header.i=@oracle.com header.s=corp-2022-7-12 header.b=bu1cjTkD;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=oracle.com
+Received: from localhost ([::1]:48944 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1oiISp-0007K2-Ht
-	for alex.bennee@linaro.org; Tue, 11 Oct 2022 12:50:43 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:51228)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1oiJqC-0006cr-HN
+	for alex.bennee@linaro.org; Tue, 11 Oct 2022 14:18:56 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:54694)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1oiIO1-0005uN-TF
- for qemu-devel@nongnu.org; Tue, 11 Oct 2022 12:45:46 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:44467)
+ (Exim 4.90_1) (envelope-from <miguel.luis@oracle.com>)
+ id 1oiJpK-0006bC-Tr; Tue, 11 Oct 2022 14:18:02 -0400
+Received: from mx0b-00069f02.pphosted.com ([205.220.177.32]:5414)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1oiINx-0006Fc-Oz
- for qemu-devel@nongnu.org; Tue, 11 Oct 2022 12:45:43 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1665506738;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=c8PsTf3WUZOpkSD0nQM22s+p53eQm1J9rsvpnT1ys3M=;
- b=S5MqWmhoTkuVpFk9BoEYvqx3fu4uEa4E2cmr6GRHSR26esxTVV/7KWmDjFW5SP1TE7z18B
- O1BabjpMw6lWZyNeIG17SLtcjCWKutuqhv5f5iYGMeY58fy43sa6h9x/0DAa0aCGLNnsxM
- 5SBNt9er6jJpxSZ1LLSN5HfPzZlEKFQ=
-Received: from mail-qk1-f199.google.com (mail-qk1-f199.google.com
- [209.85.222.199]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_128_GCM_SHA256) id
- us-mta-515-q1jVLmPENgaxYnrPCDpGXA-1; Tue, 11 Oct 2022 12:45:37 -0400
-X-MC-Unique: q1jVLmPENgaxYnrPCDpGXA-1
-Received: by mail-qk1-f199.google.com with SMTP id
- x22-20020a05620a259600b006b552a69231so12052065qko.18
- for <qemu-devel@nongnu.org>; Tue, 11 Oct 2022 09:45:37 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:reply-to:user-agent:mime-version:date
- :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=c8PsTf3WUZOpkSD0nQM22s+p53eQm1J9rsvpnT1ys3M=;
- b=Ffhsx0+UbZGp71NEgRVCLQqgHNgb5IPknDHZORdXO9qXWA9MWTaqH/4kEEy8lEiZIf
- QZ4HVZ5DmInGFG7Hll2LIyl5YR7DstiOa5qOGddhssebe1BBAFSQODhJ7yUU4a3m9vZT
- K7kDRBjQ4W2S+Hp4bDpdpWKNDPJwdowsjP5vZBmFBhXR5YKW4ZuO+z2HFkTl+HBnQCSj
- UXQeQVk19M5DwN7AdnuVr0xv8+TLffKpmYKmhkGX8x4mWJeg9yWt/mqyxOgk+12JxTo8
- seEuasF3Xw2m0tgqg8zKf04uqY0ks9sg82MjI54VAKCVMaVtwDtMI53xhnlRWSktlexZ
- DgPg==
-X-Gm-Message-State: ACrzQf2FEkOvMCw9jFAA6A341pF24TD+EcFsdmgIB1OSOsBN2FU1NO5J
- jwk/xe/7gJYMDYxumat/cXQ20STpHAxEYI635gE7xktMy9hImsa7gDxd9YB3U/82XXJRhYUvR5/
- 6zCxkahrPBqsXnJc=
-X-Received: by 2002:a05:622a:196:b0:35d:442b:ab45 with SMTP id
- s22-20020a05622a019600b0035d442bab45mr20096231qtw.565.1665506736719; 
- Tue, 11 Oct 2022 09:45:36 -0700 (PDT)
-X-Received: by 2002:a05:622a:196:b0:35d:442b:ab45 with SMTP id
- s22-20020a05622a019600b0035d442bab45mr20096214qtw.565.1665506736482; 
- Tue, 11 Oct 2022 09:45:36 -0700 (PDT)
-Received: from ?IPV6:2a01:e0a:59e:9d80:527b:9dff:feef:3874?
- ([2a01:e0a:59e:9d80:527b:9dff:feef:3874])
- by smtp.gmail.com with ESMTPSA id
- x4-20020ac86b44000000b003986fc4d9fdsm7301566qts.49.2022.10.11.09.45.34
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 11 Oct 2022 09:45:35 -0700 (PDT)
-Message-ID: <5d804a6b-c55d-8a7b-415b-dadf807152fa@redhat.com>
-Date: Tue, 11 Oct 2022 18:45:32 +0200
+ (Exim 4.90_1) (envelope-from <miguel.luis@oracle.com>)
+ id 1oiJpI-0003TC-GY; Tue, 11 Oct 2022 14:18:02 -0400
+Received: from pps.filterd (m0246630.ppops.net [127.0.0.1])
+ by mx0b-00069f02.pphosted.com (8.17.1.5/8.17.1.5) with ESMTP id 29BHTBab001498;
+ Tue, 11 Oct 2022 18:17:57 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
+ h=from : to : cc :
+ subject : date : message-id : in-reply-to : references : reply-to :
+ mime-version : content-transfer-encoding; s=corp-2022-7-12;
+ bh=5GHVn7JC7YycS7J8f1l8OLLsQyao+YPeGmO4bOOeT10=;
+ b=bu1cjTkDHgO3A+sIi2sinWfM+OY0z4lCw86nzyrXjfGLioS7dRtVza/xdtMB6RrnCTSb
+ ikpwgrk9CR1j/NIM7XmbURVnvYryEbA/0R5Osw0gbjoWqb6N8yJ3WX9uS1r8gsomN23K
+ XWYlfkyGB8LoCrInZwPj9HGxyRaVqRIHRrC6ZnG41LeR5iTgZqEHVUnc8OYtp1YiYZzh
+ 2jQP9R8QvBiSE8B3wG+2KF0vqI8vu8Kx2JLqnk7oKdsrONAOvwAiyLsVwWa4g2yXMZ5I
+ 4WXc7JYeKrMZVmitmWGmEClrBE6bZIZ5OSP/C3pdHO3Rd3LcsgusJ+cJuZRtfi7paEbO JQ== 
+Received: from iadpaimrmta01.imrmtpd1.prodappiadaev1.oraclevcn.com
+ (iadpaimrmta01.appoci.oracle.com [130.35.100.223])
+ by mx0b-00069f02.pphosted.com (PPS) with ESMTPS id 3k2ymcyen9-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Tue, 11 Oct 2022 18:17:57 +0000
+Received: from pps.filterd
+ (iadpaimrmta01.imrmtpd1.prodappiadaev1.oraclevcn.com [127.0.0.1])
+ by iadpaimrmta01.imrmtpd1.prodappiadaev1.oraclevcn.com (8.17.1.5/8.17.1.5)
+ with ESMTP id 29BFWbtu027624; Tue, 11 Oct 2022 18:17:56 GMT
+Received: from pps.reinject (localhost [127.0.0.1])
+ by iadpaimrmta01.imrmtpd1.prodappiadaev1.oraclevcn.com (PPS) with ESMTPS id
+ 3k2ynaf4hj-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Tue, 11 Oct 2022 18:17:56 +0000
+Received: from iadpaimrmta01.imrmtpd1.prodappiadaev1.oraclevcn.com
+ (iadpaimrmta01.imrmtpd1.prodappiadaev1.oraclevcn.com [127.0.0.1])
+ by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 29BIEwgo034553;
+ Tue, 11 Oct 2022 18:17:56 GMT
+Received: from mlluis-mac.uk.oracle.com (dhcp-10-175-196-28.vpn.oracle.com
+ [10.175.196.28])
+ by iadpaimrmta01.imrmtpd1.prodappiadaev1.oraclevcn.com (PPS) with ESMTP id
+ 3k2ynaf4fc-2; Tue, 11 Oct 2022 18:17:56 +0000
+From: Miguel Luis <miguel.luis@oracle.com>
+To: qemu-devel@nongnu.org, qemu-arm@nongnu.org
+Cc: mst@redhat.com, imammedo@redhat.com, ani@anisinha.ca,
+ shannon.zhaosl@gmail.com, peter.maydell@linaro.org, miguel.luis@oracle.com
+Subject: [PATCH 1/4] tests/acpi: virt: allow acpi MADT and FADT changes
+Date: Tue, 11 Oct 2022 18:17:27 +0000
+Message-Id: <20221011181730.10885-2-miguel.luis@oracle.com>
+X-Mailer: git-send-email 2.37.3
+In-Reply-To: <20221011181730.10885-1-miguel.luis@oracle.com>
+References: <20221011181730.10885-1-miguel.luis@oracle.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.11.0
-Subject: Re: [PATCH v4 4/6] hw/arm/virt: Introduce
- virt_get_high_memmap_enabled() helper
-Content-Language: en-US
-To: Gavin Shan <gshan@redhat.com>, Cornelia Huck <cohuck@redhat.com>,
- qemu-arm@nongnu.org
-Cc: qemu-devel@nongnu.org, maz@kernel.org, zhenyzha@redhat.com,
- richard.henderson@linaro.org, peter.maydell@linaro.org, shan.gavin@gmail.com
-References: <20221004002627.59172-1-gshan@redhat.com>
- <20221004002627.59172-5-gshan@redhat.com> <87edvnooqb.fsf@redhat.com>
- <a4bb90c8-3793-23ec-79a6-edf44565c8ff@redhat.com>
-From: Eric Auger <eric.auger@redhat.com>
-In-Reply-To: <a4bb90c8-3793-23ec-79a6-edf44565c8ff@redhat.com>
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.129.124;
- envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -56
-X-Spam_score: -5.7
-X-Spam_bar: -----
-X-Spam_report: (-5.7 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.205,Aquarius:18.0.895,Hydra:6.0.545,FMLib:17.11.122.1
+ definitions=2022-10-11_08,2022-10-11_02,2022-06-22_01
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 mlxlogscore=999
+ suspectscore=0
+ adultscore=0 mlxscore=0 bulkscore=0 malwarescore=0 phishscore=0
+ spamscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2209130000 definitions=main-2210110106
+X-Proofpoint-GUID: fsodX5ora60tBtbIFd5HMJj1Y-4k4B2t
+X-Proofpoint-ORIG-GUID: fsodX5ora60tBtbIFd5HMJj1Y-4k4B2t
+Received-SPF: pass client-ip=205.220.177.32;
+ envelope-from=miguel.luis@oracle.com; helo=mx0b-00069f02.pphosted.com
+X-Spam_score_int: -27
+X-Spam_score: -2.8
+X-Spam_bar: --
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-2.934, RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Reply-To: eric.auger@redhat.com
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: YhZ4EZRp+c8T
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: miguel.luis@oracle.com
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: BKwk06ZuWw7r
 
+Step 3 from bios-tables-test.c documented procedure.
 
+Signed-off-by: Miguel Luis <miguel.luis@oracle.com>
+---
+ tests/qtest/bios-tables-test-allowed-diff.h | 6 ++++++
+ 1 file changed, 6 insertions(+)
 
-On 10/5/22 00:47, Gavin Shan wrote:
-> Hi Connie,
->
-> On 10/4/22 6:41 PM, Cornelia Huck wrote:
->> On Tue, Oct 04 2022, Gavin Shan <gshan@redhat.com> wrote:
->>
->>> This introduces virt_get_high_memmap_enabled() helper, which returns
->>> the pointer to vms->highmem_{redists, ecam, mmio}. The pointer will
->>> be used in the subsequent patches.
->>>
->>> No functional change intended.
->>>
->>> Signed-off-by: Gavin Shan <gshan@redhat.com>
->>> ---
->>>   hw/arm/virt.c | 30 +++++++++++++++++-------------
->>>   1 file changed, 17 insertions(+), 13 deletions(-)
->>>
->>> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
->>> index b0b679d1f4..59de7b78b5 100644
->>> --- a/hw/arm/virt.c
->>> +++ b/hw/arm/virt.c
->>> @@ -1689,14 +1689,29 @@ static uint64_t
->>> virt_cpu_mp_affinity(VirtMachineState *vms, int idx)
->>>       return arm_cpu_mp_affinity(idx, clustersz);
->>>   }
->>>   +static inline bool *virt_get_high_memmap_enabled(VirtMachineState
->>> *vms,
->>> +                                                 int index)
->>> +{
->>> +    bool *enabled_array[] = {
->>> +        &vms->highmem_redists,
->>> +        &vms->highmem_ecam,
->>> +        &vms->highmem_mmio,
->>> +    };
->>> +
->>> +    assert(index - VIRT_LOWMEMMAP_LAST < ARRAY_SIZE(enabled_array));
->>
->> I wonder whether we want an assert(ARRAY_SIZE(extended_memmap) ==
->> ARRAY_SIZE(enabled_array))? IIUC, we never want those two to get out of
->> sync?
->>
->
-> Yeah, It makes sense to ensure both arrays synchronized. I will add
-> the extra check in next respin.
-
-With Connie's suggestion this looks good to me.
-
-Thanks
-
-Eric
->
->>> +
->>> +    return enabled_array[index - VIRT_LOWMEMMAP_LAST];
->>> +}
->>> +
->
-> Thanks,
-> Gavin
->
+diff --git a/tests/qtest/bios-tables-test-allowed-diff.h b/tests/qtest/bios-tables-test-allowed-diff.h
+index dfb8523c8b..8dc50f7a8a 100644
+--- a/tests/qtest/bios-tables-test-allowed-diff.h
++++ b/tests/qtest/bios-tables-test-allowed-diff.h
+@@ -1 +1,7 @@
+ /* List of comma-separated changed AML files to ignore */
++"tests/data/acpi/virt/FACP",
++"tests/data/acpi/virt/FACP.numamem",
++"tests/data/acpi/virt/FACP.memhp",
++"tests/data/acpi/virt/APIC",
++"tests/data/acpi/virt/APIC.memhp",
++"tests/data/acpi/virt/APIC.numamem",
+-- 
+2.37.3
 

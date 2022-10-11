@@ -1,109 +1,111 @@
-Received: by 2002:a17:906:43c7:b0:78d:9f02:16a1 with SMTP id j7csp2764496ejn;
-        Tue, 11 Oct 2022 15:40:43 -0700 (PDT)
-X-Google-Smtp-Source: AMsMyM4rTN+yxzJUGpPCknBFaSVamY7SXy8hjwKMT1CpNkZk1PfNAqaYXrC9l0LcDAuXTT9DBgaD
-X-Received: by 2002:a05:620a:131b:b0:6ec:bce7:99a9 with SMTP id o27-20020a05620a131b00b006ecbce799a9mr8999849qkj.84.1665528043164;
-        Tue, 11 Oct 2022 15:40:43 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1665528043; cv=none;
+Received: by 2002:a17:906:43c7:b0:78d:9f02:16a1 with SMTP id j7csp2778067ejn;
+        Tue, 11 Oct 2022 16:07:40 -0700 (PDT)
+X-Google-Smtp-Source: AMsMyM7Mh5NorS4LOQbOyMl42TinDuqJinAeo9hVBZTSPLw94Y04eFSePX2PAQL56kGANmgy/Fgd
+X-Received: by 2002:a05:622a:5149:b0:38d:961c:a568 with SMTP id ew9-20020a05622a514900b0038d961ca568mr21095835qtb.511.1665529660591;
+        Tue, 11 Oct 2022 16:07:40 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1665529660; cv=none;
         d=google.com; s=arc-20160816;
-        b=rdoCvKwKTuO7USLdl5BfvmnpJYEBoNKjFX/H9aWl5TPyysOlfkF8R4hFNwJ6uaKjlq
-         KRxGBnIeoRqh0oDcowR6oRc5Ah5r8RYoCH79PifURE0u5pJJydUTg0E56JjEDjiDf/wD
-         vza7Vw4lI9t68f8eAQdN3J1IfY2tyFe2/9Es5xtTkamn0Qco7dmi0Sjf+4ygBlDeG8IP
-         kuIMRWCI8Q+rYJyinMm2/GubMg2HkHPFWwXF6C8QZkpO9xhH9q7cnWswBWdSOCPD+eIb
-         RUfYvjFvGPSgWqYikKCb4cnvZEIf+/xr/vE8VGmVapAxHdOzLUz4P2XHmWmgd6KPD1Ld
-         HxYg==
+        b=vp+BS1F5pnLbSLmyZJwjA/vKSJBQ0TwrSDf/dZl2eqZgcNthA9AVSkUOxgy6JfGjk6
+         vC/BqBrIK8t/4snnXRZ8Q01abVQOKRFeFYRY4R+hr6m1NBdDJIFpgv0z7Li6n6ihkQ6J
+         xbSc3LsXe85Cd1LCZTrFX0auMIjIWHNHeIo+gGukR2yGAHfzzbmVc1xhxIDs+hLCwofd
+         NKyH7K9tW83TZ1zfWntAzUFME1ZjkzXEhafArjkW6oIj/xnKiAnojpmNqNjba/Y2ZvyB
+         F8InIiAe5PmELq7iE7h0cds2QqYQlmKQXD3NUsQL4XRw5V0BnClmBPYFRrzzBNQ/2sRp
+         kDgA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=K4rENLlk1pqovVAyYJPfZUVgTvC8JwSjkTBrrydmKnE=;
-        b=PyFlVI3PkmyYQXyCEXlhy+DSQL33NdxxlzPZ4TU/RF/VNlehdxpteftZnPHRq/C+qG
-         34ceD2G5GY6954Q+26VEMJdAl5kn34ctKs6U7oiVvccCaQ6AoFUvErJvnrDdSmLed/Ax
-         hEzklBgThffKkFLcRf4Hbf9fT3LREiKFuxSNkISkwsUtDMYXDHGzMktzoISdh6LuI93u
-         qfgzuXrZcnPXQWun2POrBjn/PEEDBlYeLwm9Y1rsjB5zN2gJFJ/HkYGxaBjQ+nkY7EHj
-         wNc2Sg7Z9rgZfpHdVLMeiimx2H3p6rgwDHy9zwVKgq0GzAOpQm3WqmnZMr2ZG7Rv7k0S
-         ixRw==
+        h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:cc:to:subject
+         :dkim-signature;
+        bh=diqwjVVZzlldCiXSMcGCpovutdly8AtP+B7OZc7bvh0=;
+        b=jjEaZlwE3YxAxYKvL+3wUSd0y2O1tfnxW8nHN/llffvtgAlTi7vj9LKEGhd+QlwP8o
+         6lkyv/Ad5oP9K0eMnkEbKl6ZTHuhsWyx8o0jTujDbk7AG5KhrHo7O7mkzcCw0jbHfk1o
+         Rj8xjfSBwh2uoodAy45Lnl/kMXNl8mAIXFi0uqkK5bFPoFqhuziBemb/szQbFw0JlsNu
+         TD7vupA5rvtwxWZsKc2IBZxdOP4VP1D4DthUhkw3voKn8AJhXSEQwyWrbBY64XPpJpyG
+         NLIzwtLmF4X4FbU2VKu3+I/N9+3m5WKgYfSjDZpJlBmSuSwzpTZLm7Y9LLcqFFvAxXlk
+         fzww==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=qHzWu3r1;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=H7sEF2rP;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id gm14-20020a056214268e00b004ac97d89c6esi8164086qvb.349.2022.10.11.15.40.43
+        by mx.google.com with ESMTPS id jq11-20020ad45fcb000000b004b31dec5686si8327739qvb.46.2022.10.11.16.07.40
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 11 Oct 2022 15:40:43 -0700 (PDT)
+        Tue, 11 Oct 2022 16:07:40 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=qHzWu3r1;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=H7sEF2rP;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:37488 helo=lists1p.gnu.org)
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:56334 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1oiNvV-0000AP-LF
-	for alex.bennee@linaro.org; Tue, 11 Oct 2022 18:40:42 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37726)
+	id 1oiOLb-000864-0h
+	for alex.bennee@linaro.org; Tue, 11 Oct 2022 19:07:39 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:59582)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1oiNvI-00006m-TO; Tue, 11 Oct 2022 18:40:28 -0400
-Received: from mail-pl1-x62d.google.com ([2607:f8b0:4864:20::62d]:35767)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1oiNvG-0001RP-TC; Tue, 11 Oct 2022 18:40:28 -0400
-Received: by mail-pl1-x62d.google.com with SMTP id h10so14581095plb.2;
- Tue, 11 Oct 2022 15:40:25 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=K4rENLlk1pqovVAyYJPfZUVgTvC8JwSjkTBrrydmKnE=;
- b=qHzWu3r1Moo/XGjGg5711k4vNTjd8DbxjtSRwpTQymISetPNLX36eNaJtYKB14fzNl
- ncnZIAgXGgXvCrauV90aeKty+fiiisdMQa+vNjOLRCnbBXhH60vFEAXDFekT2NFvIg0w
- t5fzz/F1ex0wmyci0dQeoso/eOz4T4XkuIMPWioo8DZ+04C5dRBqZt1gb2LMDA8onJRU
- BZ4QoBMm6scF2c8XHxRw8Yy17D7vWR9OQm58fUpQM+Wats1iefy8nx/0/41/w7QdzTEU
- gpnS++uVFRLo5Xmy4wglF1slfxGyY1aG0IOJenddOzZsqgv/oyvSajzTkCkop9Y7LuOX
- KQ3w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=K4rENLlk1pqovVAyYJPfZUVgTvC8JwSjkTBrrydmKnE=;
- b=mTkTx5fI/T0PtNKLMsLD7HsvNp9tegKrF2hLMMjgIhrqHtbTk3o27YMRaj5IJLE3Vl
- 5NLdtbj9aA3fnzApIRMxLu+Y68cQs0aBlvbNSyoibCxAy6/N+wjkAZVrkaCIfjIE8KmM
- nbc9/sPLB5FDD5Gi3TXJ7oSh9p5g71oUUXAgv4OakoFqkt2Fl/++nq3hkTbR2L0DE47n
- ARRPQT7l1VCku2y/iTUPreUuxJjm6viSHnz9JRgk18OpzSf5ce0uXTmXEQiPMzwroWX5
- DhO2yrGkHNQ4UiKZjt22Y+buJJzNf5OaRZiYMguqz3l7EKXl5iGQLFiSHxhOlYE76XJf
- vZfQ==
-X-Gm-Message-State: ACrzQf13ZqH5LUgYfMcL6odkJ+gQY3Y1ezT37EKZBP/UvMCsMJZmBugV
- vFwfnCs0wEGawQ+UFF7ZA5eqVIwd3JWyVQgNAVE=
-X-Received: by 2002:a17:903:32c4:b0:178:5206:b396 with SMTP id
- i4-20020a17090332c400b001785206b396mr26500372plr.99.1665528024654; Tue, 11
- Oct 2022 15:40:24 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1oiOL1-00085Z-Kx
+ for qemu-arm@nongnu.org; Tue, 11 Oct 2022 19:07:03 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:43444)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1oiOKx-00051c-Q2
+ for qemu-arm@nongnu.org; Tue, 11 Oct 2022 19:07:01 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1665529617;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=diqwjVVZzlldCiXSMcGCpovutdly8AtP+B7OZc7bvh0=;
+ b=H7sEF2rP8EvzLN4jljdOWckp6wTJFoRmkU6Gwjn0alyGQtgyhveQxt3sYFGHfiXFbM1cZB
+ ToRKU3E4YdKoAuv+ijgWCESZ92xjiv94YLNeU3HaufzMC8cX2LS6uXUYdykcBYSmQm3pup
+ ioRQwXFjOi/xaJ81k884SsdGahd6RYY=
+Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
+ [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-137-UDtMRY26P-is9JTcsqDI4A-1; Tue, 11 Oct 2022 19:06:56 -0400
+X-MC-Unique: UDtMRY26P-is9JTcsqDI4A-1
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.2])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 7B4AF811E81;
+ Tue, 11 Oct 2022 23:06:55 +0000 (UTC)
+Received: from [10.64.54.52] (vpn2-54-52.bne.redhat.com [10.64.54.52])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 6626C40C6FA0;
+ Tue, 11 Oct 2022 23:06:52 +0000 (UTC)
+Subject: Re: [PATCH v4 4/6] hw/arm/virt: Introduce
+ virt_get_high_memmap_enabled() helper
+To: eric.auger@redhat.com, Cornelia Huck <cohuck@redhat.com>,
+ qemu-arm@nongnu.org
+Cc: qemu-devel@nongnu.org, maz@kernel.org, zhenyzha@redhat.com,
+ richard.henderson@linaro.org, peter.maydell@linaro.org, shan.gavin@gmail.com
+References: <20221004002627.59172-1-gshan@redhat.com>
+ <20221004002627.59172-5-gshan@redhat.com> <87edvnooqb.fsf@redhat.com>
+ <a4bb90c8-3793-23ec-79a6-edf44565c8ff@redhat.com>
+ <5d804a6b-c55d-8a7b-415b-dadf807152fa@redhat.com>
+From: Gavin Shan <gshan@redhat.com>
+Message-ID: <8e50093c-f2ee-f4b2-8caf-08412ceb847d@redhat.com>
+Date: Wed, 12 Oct 2022 07:06:49 +0800
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.2.0
 MIME-Version: 1.0
-References: <20221004092351.18209-1-sunilvl@ventanamicro.com>
-In-Reply-To: <20221004092351.18209-1-sunilvl@ventanamicro.com>
-From: Alistair Francis <alistair23@gmail.com>
-Date: Wed, 12 Oct 2022 08:39:57 +1000
-Message-ID: <CAKmqyKPkaDnKDwpSLZHcCgQxTg8XEiijmtJVz3opPSLoqjNvJQ@mail.gmail.com>
-Subject: Re: [PATCH V5 0/3] hw/riscv: virt: Enable booting S-mode firmware
- from pflash
-To: Sunil V L <sunilvl@ventanamicro.com>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Xiaojuan Yang <yangxiaojuan@loongson.cn>, Song Gao <gaosong@loongson.cn>,
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>, 
- Gerd Hoffmann <kraxel@redhat.com>, Palmer Dabbelt <palmer@dabbelt.com>, 
- Alistair Francis <alistair.francis@wdc.com>, Bin Meng <bin.meng@windriver.com>,
- qemu-arm@nongnu.org, qemu-devel@nongnu.org, qemu-riscv@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::62d;
- envelope-from=alistair23@gmail.com; helo=mail-pl1-x62d.google.com
-X-Spam_score_int: -17
-X-Spam_score: -1.8
-X-Spam_bar: -
-X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+In-Reply-To: <5d804a6b-c55d-8a7b-415b-dadf807152fa@redhat.com>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+X-Scanned-By: MIMEDefang 3.1 on 10.11.54.2
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=gshan@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -49
+X-Spam_score: -5.0
+X-Spam_bar: -----
+X-Spam_report: (-5.0 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ NICE_REPLY_A=-2.934, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -117,98 +119,71 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: Gavin Shan <gshan@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: aP5I+WKQRkqW
+X-TUID: n/YTeNj6VKk4
 
-On Tue, Oct 4, 2022 at 7:25 PM Sunil V L <sunilvl@ventanamicro.com> wrote:
->
-> This series adds the support to boot S-mode FW like EDK2 from the flash. The
-> S-mode firmware should be kept in pflash unit 1.
->
-> When -kernel (and -initrd) option is also provided along with the flash,
-> the kernel (and initrd) will be loaded into fw_cfg table and opensbi will
-> branch to the flash address which will be the entry point of the S-mode
-> firmware. The S-mode FW then loads and launches the kernel.
->
-> When only -pflash option is provided in the command line, the kernel
-> will be located and loaded in the usual way by the S-mode firmware.
->
-> These patches are available in below branch.
-> https://github.com/vlsunil/qemu/tree/pflash_v2
->
-> The first two patches in this series are refactor patches.
->
-> These changes are tested with a WIP EDK2 port for virt machine. Below
-> are the instructions to build and test this feature.
->
-> 1) Get EDK2 sources from below branches.
-> https://github.com/vlsunil/edk2/tree/virt_refactor_smode_v1
-> https://github.com/vlsunil/edk2-platforms/tree/virt_refactor_smode_v1
->
-> 2) Build EDK2 for RISC-V
->         export WORKSPACE=`pwd`
->         export GCC5_RISCV64_PREFIX=riscv64-linux-gnu-
->         export PACKAGES_PATH=$WORKSPACE/edk2:$WORKSPACE/edk2-platforms
->         export EDK_TOOLS_PATH=$WORKSPACE/edk2/BaseTools
->         source edk2/edksetup.sh
->         make -C edk2/BaseTools clean
->         make -C edk2/BaseTools
->         make -C edk2/BaseTools/Source/C
->         source edk2/edksetup.sh BaseTools
->         build -a RISCV64  -p Platform/Qemu/RiscVVirt/RiscVVirt.dsc -t GCC5
->
-> 3)Make the EDK2 image size to match with what qemu flash expects
-> truncate -s 32M Build/RiscVVirt/DEBUG_GCC5/FV/RISCV_VIRT.fd
->
-> 4) Run
-> a) Boot to EFI shell (no -kernel / -initrd option)
-> qemu-system-riscv64  -nographic   -drive file=Build/RiscVVirt/DEBUG_GCC5/FV/RISCV_VIRT.fd,if=pflash,format=raw,unit=1  -machine virt -M 2G
->
-> b) With -kernel, -initrd and -pflash
-> qemu-system-riscv64  -nographic   -drive file=Build/RiscVVirt/DEBUG_GCC5/FV/RISCV_VIRT.fd,if=pflash,format=raw,unit=1  -machine virt -M 2G -kernel arch/riscv/boot/Image.gz -initrd rootfs.cpio
->
->
-> Changes since V4:
->         1) Rebased on riscv-to-apply.next branch
->         2) Added RB tags
->         3) Gerd's feedback on removing the truncate requirement will be addressed as separate
->            patch in future.
->
-> Changes since V3:
->         1) White space and comment edits
->         2) Added RB tag
->
-> Changes since V2:
->         1) Moved the doc comment to .h file
->
-> Changes since V1:
->         1) Modified code to support the use case when both -kernel and -pflash are configured.
->         2) Refactor patches added to help (1) above.
->         3) Cover letter added with test instructions.
->
-> Sunil V L (3):
->   hw/arm,loongarch: Move load_image_to_fw_cfg() to common location
->   hw/riscv: virt: Move create_fw_cfg() prior to loading kernel
->   hw/riscv: virt: Enable booting S-mode firmware from pflash
+On 10/12/22 12:45 AM, Eric Auger wrote:
+> On 10/5/22 00:47, Gavin Shan wrote:
+>> On 10/4/22 6:41 PM, Cornelia Huck wrote:
+>>> On Tue, Oct 04 2022, Gavin Shan <gshan@redhat.com> wrote:
+>>>
+>>>> This introduces virt_get_high_memmap_enabled() helper, which returns
+>>>> the pointer to vms->highmem_{redists, ecam, mmio}. The pointer will
+>>>> be used in the subsequent patches.
+>>>>
+>>>> No functional change intended.
+>>>>
+>>>> Signed-off-by: Gavin Shan <gshan@redhat.com>
+>>>> ---
+>>>>    hw/arm/virt.c | 30 +++++++++++++++++-------------
+>>>>    1 file changed, 17 insertions(+), 13 deletions(-)
+>>>>
+>>>> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+>>>> index b0b679d1f4..59de7b78b5 100644
+>>>> --- a/hw/arm/virt.c
+>>>> +++ b/hw/arm/virt.c
+>>>> @@ -1689,14 +1689,29 @@ static uint64_t
+>>>> virt_cpu_mp_affinity(VirtMachineState *vms, int idx)
+>>>>        return arm_cpu_mp_affinity(idx, clustersz);
+>>>>    }
+>>>>    +static inline bool *virt_get_high_memmap_enabled(VirtMachineState
+>>>> *vms,
+>>>> +                                                 int index)
+>>>> +{
+>>>> +    bool *enabled_array[] = {
+>>>> +        &vms->highmem_redists,
+>>>> +        &vms->highmem_ecam,
+>>>> +        &vms->highmem_mmio,
+>>>> +    };
+>>>> +
+>>>> +    assert(index - VIRT_LOWMEMMAP_LAST < ARRAY_SIZE(enabled_array));
+>>>
+>>> I wonder whether we want an assert(ARRAY_SIZE(extended_memmap) ==
+>>> ARRAY_SIZE(enabled_array))? IIUC, we never want those two to get out of
+>>> sync?
+>>>
+>>
+>> Yeah, It makes sense to ensure both arrays synchronized. I will add
+>> the extra check in next respin.
+> 
+> With Connie's suggestion this looks good to me.
+> 
 
-Thanks!
+What we need is actually like below because the array (extended_memmap)
+starts from VIRT_LOWMEMMAP_LAST instead of zero. I'm adding the extra
+check into v5, which will be posted shortly.
 
-Applied to riscv-to-apply.next
+    assert(ARRAY_SIZE(extended_memmap) - VIRT_LOWMEMMAP_LAST ==
+           ARRAY_SIZE(enabled_array));
 
-Alistair
+>>
+>>>> +
+>>>> +    return enabled_array[index - VIRT_LOWMEMMAP_LAST];
+>>>> +}
+>>>> +
 
->
->  hw/arm/boot.c             | 49 ---------------------------------------
->  hw/loongarch/virt.c       | 33 --------------------------
->  hw/nvram/fw_cfg.c         | 32 +++++++++++++++++++++++++
->  hw/riscv/boot.c           | 29 +++++++++++++++++++++++
->  hw/riscv/virt.c           | 32 ++++++++++++++++++-------
->  include/hw/nvram/fw_cfg.h | 21 +++++++++++++++++
->  include/hw/riscv/boot.h   |  1 +
->  7 files changed, 107 insertions(+), 90 deletions(-)
->
-> --
-> 2.25.1
->
->
+Thanks,
+Gavin
+

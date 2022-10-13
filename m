@@ -1,61 +1,63 @@
-Received: by 2002:a17:906:43c7:b0:78d:9f02:16a1 with SMTP id j7csp685821ejn;
-        Thu, 13 Oct 2022 09:31:29 -0700 (PDT)
-X-Google-Smtp-Source: AMsMyM5i/Geo8jkGSRMtoLDQZ6dU2bILDRxiz8NBvslKu7Dm7Wur6wL81wdT1G9wL9D/B9oLxVm2
-X-Received: by 2002:a05:6214:27e1:b0:4b2:cbc8:8d8c with SMTP id jt1-20020a05621427e100b004b2cbc88d8cmr648047qvb.110.1665678689205;
-        Thu, 13 Oct 2022 09:31:29 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1665678689; cv=none;
+Received: by 2002:a17:906:43c7:b0:78d:9f02:16a1 with SMTP id j7csp690329ejn;
+        Thu, 13 Oct 2022 09:37:36 -0700 (PDT)
+X-Google-Smtp-Source: AMsMyM6Nowa3S4r/RK557QKkhXgxIOKk7d3Y7Win5xpNPsK9RNxaiA+DVsB6/dniA65Inp1sif0f
+X-Received: by 2002:a05:620a:150b:b0:6ee:8d04:f70 with SMTP id i11-20020a05620a150b00b006ee8d040f70mr607129qkk.101.1665679056613;
+        Thu, 13 Oct 2022 09:37:36 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1665679056; cv=none;
         d=google.com; s=arc-20160816;
-        b=fAK+060PK9H2hJCaabVmR+VMhjcRhshlsDr8WVGT+TVg6YMO5xkCSEjTiKacS/tKUF
-         p7n2lxRNLc59hg7LQ7yoEoXzYdRUIdBKIhgj0ISR+TPcnXaCVRkvI/UDG9UWmxS73G2m
-         BUJHxl6iXBufL5dvE+X+PVx+fG0OXKOBZuEJLu08wIgiDv7HknK0Yr7BQf8EKEkWI0Cj
-         qdMiaXVCvl0n74TsMiRyTweCzAuxCqnonC5bpCqnpLLnXEWk36i3CQb5u9SBXyroFakQ
-         dDPRmboKN7IA604FcgjR/pGFgVuIeVw0Oe/lhEMzroPX+tNG4xvsX99+1lKh8ppRebTJ
-         wXfg==
+        b=LoP7cwuwE8skmm0TKiyIpLj1K8GlMmcZa1sZfZwQUa2+k9v2BQzviXH6ElyEYtx/iE
+         rK6dYJqTO6Hh6Pyi1KjrpxxFPAtBVImGUiVzqG9fDR29tnq2n470wP8lu5rzYir1fPL+
+         8LAavuqHzOlIUzQ0WENsXG17tzX02TxRftWkjfSSxAh2we3b3qr1I/Nv3bdTseEogZwz
+         /s7INtIKOCWjND/FGfRF6ealgi7BGK3mQp2XhH5VqpUi2wnoSlIwzNmElxCu9HPmjLs3
+         flnnHGX2TyvHhATL2JeVErpKC1b5KlmfodojPJSjXXA7Fe/H/X09GIH8VQhsBeWiaV7d
+         JDnQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from;
-        bh=DS5s1LBXyhiNYb/fbc4zA7XhiHrhF9jMk0aBEQTfWew=;
-        b=cSmi1wS9U7DsMrw9VNq71P4vbzYrsoSmF3iaF7y/x5JyWlTKcZw06BtOnZcHrpQl0s
-         npOfd5FlLkSoXCZRW/EnOEWn1QapyCWW6X7BZmPQydAi7XNYMg2tOpqyugn5NtC6ZCDH
-         UvwtHlBT1Xt8tCKAvZ9FC5P82YUhQ30yCurWyGnGlvA7fwepPGOGoN6mP12298lGLtZU
-         bY26kVHpZeHdXtU3q89kREU36J8/hxIAxd5iG5qgOUtcvGbeg3ogNXhonmuNgej1gmNH
-         bTGMWWHnkt7tNSw2GagPkuXHLIemKNoBRAKQ5IYKRf9mSQ+q2eV5s6DvcUzioIYdNHyB
-         qLuA==
+        bh=7jTyR9QfxMPCMqOr811dOuw2DTMv00zC+/hsb3ZF26s=;
+        b=iM7g1Bb3nZ5T9/zVUxL4IQTdkJpOtajx4KSb3bFDwPWPHH9d+rTpdSbf2HHMBZzOZb
+         I2h7FkRDeiEbX6olN9otoXe/z3V9SyoM9lHB3cYhCSPUWHpyKYLcHtJRyyZfer/ziIM+
+         Rizz3svt33vdtZu6jWxFyD6dKRfvi/hqW5vfiRwoBQ6BCR0DnO+aoWkNEoyFANU7/Gfh
+         tPomUoAhSMOwdEKzcFT6sD6PBtbnkLXTAERhRWMtwn84rqJMQXA9X3mFK2ye45i2IqGK
+         bz2aTfWxxu0V3qph+p70lfdBBf6EMIfZpvx7g6oLfgZZFaekj4L5wR67tIiTLNtkO4NQ
+         AO5Q==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id h18-20020ac87152000000b0035bb0e87eb5si116318qtp.439.2022.10.13.09.31.28
+        by mx.google.com with ESMTPS id s62-20020a37a941000000b006ee988f8491si51942qke.502.2022.10.13.09.37.36
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 13 Oct 2022 09:31:29 -0700 (PDT)
+        Thu, 13 Oct 2022 09:37:36 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:41570 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:40290 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1oj17I-0005S6-G3
-	for alex.bennee@linaro.org; Thu, 13 Oct 2022 12:31:28 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:58548)
+	id 1oj1DE-00036U-2u
+	for alex.bennee@linaro.org; Thu, 13 Oct 2022 12:37:36 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55924)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=HNeY=2O=kaod.org=clg@ozlabs.org>)
- id 1oj0pV-0000jL-DW; Thu, 13 Oct 2022 12:13:05 -0400
-Received: from gandalf.ozlabs.org ([150.107.74.76]:37301)
+ id 1oj0ph-0000xj-FC; Thu, 13 Oct 2022 12:13:17 -0400
+Received: from mail.ozlabs.org ([2404:9400:2221:ea00::3]:41941
+ helo=gandalf.ozlabs.org)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=HNeY=2O=kaod.org=clg@ozlabs.org>)
- id 1oj0pR-0002du-RJ; Thu, 13 Oct 2022 12:13:05 -0400
-Received: from gandalf.ozlabs.org (gandalf.ozlabs.org [150.107.74.76])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4MpF132669z4xGx;
- Fri, 14 Oct 2022 03:12:55 +1100 (AEDT)
+ id 1oj0pe-0002gf-BV; Thu, 13 Oct 2022 12:13:17 -0400
+Received: from gandalf.ozlabs.org (mail.ozlabs.org
+ [IPv6:2404:9400:2221:ea00::3])
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4MpF1L421Rz4xGy;
+ Fri, 14 Oct 2022 03:13:10 +1100 (AEDT)
 Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
  (No client certificate requested)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4MpF0z6VCtz4xFy;
- Fri, 14 Oct 2022 03:12:51 +1100 (AEDT)
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4MpF1H1rHcz4xDn;
+ Fri, 14 Oct 2022 03:13:07 +1100 (AEDT)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, qemu-block@nongnu.org,
@@ -65,23 +67,23 @@ Cc: qemu-arm@nongnu.org, qemu-block@nongnu.org,
  Francisco Iglesias <frasse.iglesias@gmail.com>,
  Iris Chen <irischenlj@fb.com>, Michael Walle <michael@walle.cc>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
-Subject: [PATCH v4 01/10] m25p80: Add basic support for the SFDP command
-Date: Thu, 13 Oct 2022 18:12:32 +0200
-Message-Id: <20221013161241.2805140-2-clg@kaod.org>
+Subject: [PATCH v4 05/10] m25p80: Add the mx25l25635f SFPD table
+Date: Thu, 13 Oct 2022 18:12:36 +0200
+Message-Id: <20221013161241.2805140-6-clg@kaod.org>
 X-Mailer: git-send-email 2.37.3
 In-Reply-To: <20221013161241.2805140-1-clg@kaod.org>
 References: <20221013161241.2805140-1-clg@kaod.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=150.107.74.76;
+Received-SPF: pass client-ip=2404:9400:2221:ea00::3;
  envelope-from=SRS0=HNeY=2O=kaod.org=clg@ozlabs.org; helo=gandalf.ozlabs.org
-X-Spam_score_int: -16
-X-Spam_score: -1.7
-X-Spam_bar: -
-X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9,
- HEADER_FROM_DIFFERENT_DOMAINS=0.25, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+X-Spam_score_int: -39
+X-Spam_score: -4.0
+X-Spam_bar: ----
+X-Spam_report: (-4.0 / 5.0 requ) BAYES_00=-1.9,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.25, RCVD_IN_DNSWL_MED=-2.3,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -96,163 +98,127 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: pGIiTkEuGr7H
+X-TUID: F4xY7hg24Byk
 
-JEDEC STANDARD JESD216 for Serial Flash Discovery Parameters (SFDP)
-provides a mean to describe the features of a serial flash device
-using a set of internal parameter tables.
+The mx25l25635e and mx25l25635f chips have the same JEDEC id but the
+mx25l25635f has more capabilities reported in the SFDP table. Support
+for 4B opcodes is of interest because it is exploited by the Linux
+kernel.
 
-This is the initial framework for the RDSFDP command giving access to
-a private SFDP area under the flash. This area now needs to be
-populated with the flash device characteristics, using a new
-'sfdp_read' handler under FlashPartInfo.
+The SFDP table size is 0x200 bytes long. The mandatory table for basic
+features is available at byte 0x30 and an extra Macronix specific
+table is available at 0x60.
 
 Reviewed-by: Francisco Iglesias <frasse.iglesias@gmail.com>
-Message-Id: <20220722063602.128144-2-clg@kaod.org>
+Message-Id: <20220722063602.128144-5-clg@kaod.org>
 Signed-off-by: Cédric Le Goater <clg@kaod.org>
 ---
- hw/block/m25p80_sfdp.h | 18 ++++++++++++++++++
- hw/block/m25p80.c      | 27 +++++++++++++++++++++++++++
- MAINTAINERS            |  2 +-
- hw/block/trace-events  |  1 +
- 4 files changed, 47 insertions(+), 1 deletion(-)
- create mode 100644 hw/block/m25p80_sfdp.h
+ hw/block/m25p80_sfdp.h |  1 +
+ hw/block/m25p80.c      |  2 ++
+ hw/block/m25p80_sfdp.c | 68 ++++++++++++++++++++++++++++++++++++++++++
+ 3 files changed, 71 insertions(+)
 
 diff --git a/hw/block/m25p80_sfdp.h b/hw/block/m25p80_sfdp.h
-new file mode 100644
-index 000000000000..230b07ef3308
---- /dev/null
+index ecdb9c7f693f..506817bdc952 100644
+--- a/hw/block/m25p80_sfdp.h
 +++ b/hw/block/m25p80_sfdp.h
-@@ -0,0 +1,18 @@
-+/*
-+ * M25P80 SFDP
-+ *
-+ * Copyright (c) 2020, IBM Corporation.
-+ *
-+ * This code is licensed under the GPL version 2 or later. See the
-+ * COPYING file in the top-level directory.
-+ */
-+
-+#ifndef HW_M25P80_SFDP_H
-+#define HW_M25P80_SFDP_H
-+
-+/*
-+ * SFDP area has a 3 bytes address space.
-+ */
-+#define M25P80_SFDP_MAX_SIZE  (1 << 24)
-+
-+#endif
+@@ -18,6 +18,7 @@
+ uint8_t m25p80_sfdp_n25q256a(uint32_t addr);
+ 
+ uint8_t m25p80_sfdp_mx25l25635e(uint32_t addr);
++uint8_t m25p80_sfdp_mx25l25635f(uint32_t addr);
+ 
+ 
+ #endif
 diff --git a/hw/block/m25p80.c b/hw/block/m25p80.c
-index a8d2519141f7..abdc4c0b0da7 100644
+index 5ddc544e1b83..ffed1d69d5a9 100644
 --- a/hw/block/m25p80.c
 +++ b/hw/block/m25p80.c
-@@ -35,6 +35,7 @@
- #include "qapi/error.h"
- #include "trace.h"
- #include "qom/object.h"
-+#include "m25p80_sfdp.h"
- 
- /* 16 MiB max in 3 byte address mode */
- #define MAX_3BYTES_SIZE 0x1000000
-@@ -72,6 +73,7 @@ typedef struct FlashPartInfo {
-      * This field inform how many die is in the chip.
-      */
-     uint8_t die_cnt;
-+    uint8_t (*sfdp_read)(uint32_t sfdp_addr);
- } FlashPartInfo;
- 
- /* adapted from linux */
-@@ -355,6 +357,7 @@ typedef enum {
-     BULK_ERASE = 0xc7,
-     READ_FSR = 0x70,
-     RDCR = 0x15,
-+    RDSFDP = 0x5a,
- 
-     READ = 0x03,
-     READ4 = 0x13,
-@@ -421,6 +424,7 @@ typedef enum {
-     STATE_COLLECTING_DATA,
-     STATE_COLLECTING_VAR_LEN_DATA,
-     STATE_READING_DATA,
-+    STATE_READING_SFDP,
- } CMDState;
- 
- typedef enum {
-@@ -679,6 +683,8 @@ static inline int get_addr_length(Flash *s)
-     }
- 
-    switch (s->cmd_in_progress) {
-+   case RDSFDP:
-+       return 3;
-    case PP4:
-    case PP4_4:
-    case QPP_4:
-@@ -823,6 +829,11 @@ static void complete_collecting_data(Flash *s)
-                           " by device\n");
-         }
-         break;
+@@ -234,6 +234,8 @@ static const FlashPartInfo known_devices[] = {
+     { INFO("mx25l12855e", 0xc22618,      0,  64 << 10, 256, 0) },
+     { INFO6("mx25l25635e", 0xc22019,     0xc22019,  64 << 10, 512,
+             ER_4K | ER_32K), .sfdp_read = m25p80_sfdp_mx25l25635e },
++    { INFO6("mx25l25635f", 0xc22019,     0xc22019,  64 << 10, 512,
++            ER_4K | ER_32K), .sfdp_read = m25p80_sfdp_mx25l25635f },
+     { INFO("mx25l25655e", 0xc22619,      0,  64 << 10, 512, 0) },
+     { INFO("mx66l51235f", 0xc2201a,      0,  64 << 10, 1024, ER_4K | ER_32K) },
+     { INFO("mx66u51235f", 0xc2253a,      0,  64 << 10, 1024, ER_4K | ER_32K) },
+diff --git a/hw/block/m25p80_sfdp.c b/hw/block/m25p80_sfdp.c
+index 6499c4c39954..70c13aea7c63 100644
+--- a/hw/block/m25p80_sfdp.c
++++ b/hw/block/m25p80_sfdp.c
+@@ -82,3 +82,71 @@ static const uint8_t sfdp_mx25l25635e[] = {
+     0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
+ };
+ define_sfdp_read(mx25l25635e)
 +
-+    case RDSFDP:
-+        s->state = STATE_READING_SFDP;
-+        break;
-+
-     default:
-         break;
-     }
-@@ -1431,6 +1442,16 @@ static void decode_new_cmd(Flash *s, uint32_t value)
-             qemu_log_mask(LOG_GUEST_ERROR, "M25P80: Unknown cmd %x\n", value);
-         }
-         break;
-+    case RDSFDP:
-+        if (s->pi->sfdp_read) {
-+            s->needed_bytes = get_addr_length(s) + 1; /* SFDP addr + dummy */
-+            s->pos = 0;
-+            s->len = 0;
-+            s->state = STATE_COLLECTING_DATA;
-+            break;
-+        }
-+        /* Fallthrough */
-+
-     default:
-         s->pos = 0;
-         s->len = 1;
-@@ -1538,6 +1559,12 @@ static uint32_t m25p80_transfer8(SSIPeripheral *ss, uint32_t tx)
-             }
-         }
-         break;
-+    case STATE_READING_SFDP:
-+        assert(s->pi->sfdp_read);
-+        r = s->pi->sfdp_read(s->cur_addr);
-+        trace_m25p80_read_sfdp(s, s->cur_addr, (uint8_t)r);
-+        s->cur_addr = (s->cur_addr + 1) & (M25P80_SFDP_MAX_SIZE - 1);
-+        break;
- 
-     default:
-     case STATE_IDLE:
-diff --git a/MAINTAINERS b/MAINTAINERS
-index e1530b51a2f3..64508412fc4f 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -1915,7 +1915,7 @@ SSI
- M: Alistair Francis <alistair@alistair23.me>
- S: Maintained
- F: hw/ssi/*
--F: hw/block/m25p80.c
-+F: hw/block/m25p80*
- F: include/hw/ssi/ssi.h
- X: hw/ssi/xilinx_*
- F: tests/qtest/m25p80-test.c
-diff --git a/hw/block/trace-events b/hw/block/trace-events
-index d86b53520cc5..2c45a62bd59c 100644
---- a/hw/block/trace-events
-+++ b/hw/block/trace-events
-@@ -80,5 +80,6 @@ m25p80_page_program(void *s, uint32_t addr, uint8_t tx) "[%p] page program cur_a
- m25p80_transfer(void *s, uint8_t state, uint32_t len, uint8_t needed, uint32_t pos, uint32_t cur_addr, uint8_t t) "[%p] Transfer state 0x%"PRIx8" len 0x%"PRIx32" needed 0x%"PRIx8" pos 0x%"PRIx32" addr 0x%"PRIx32" tx 0x%"PRIx8
- m25p80_read_byte(void *s, uint32_t addr, uint8_t v) "[%p] Read byte 0x%"PRIx32"=0x%"PRIx8
- m25p80_read_data(void *s, uint32_t pos, uint8_t v) "[%p] Read data 0x%"PRIx32"=0x%"PRIx8
-+m25p80_read_sfdp(void *s, uint32_t addr, uint8_t v) "[%p] Read SFDP 0x%"PRIx32"=0x%"PRIx8
- m25p80_binding(void *s) "[%p] Binding to IF_MTD drive"
- m25p80_binding_no_bdrv(void *s) "[%p] No BDRV - binding to RAM"
++static const uint8_t sfdp_mx25l25635f[] = {
++    0x53, 0x46, 0x44, 0x50, 0x00, 0x01, 0x01, 0xff,
++    0x00, 0x00, 0x01, 0x09, 0x30, 0x00, 0x00, 0xff,
++    0xc2, 0x00, 0x01, 0x04, 0x60, 0x00, 0x00, 0xff,
++    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
++    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
++    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
++    0xe5, 0x20, 0xf3, 0xff, 0xff, 0xff, 0xff, 0x0f,
++    0x44, 0xeb, 0x08, 0x6b, 0x08, 0x3b, 0x04, 0xbb,
++    0xfe, 0xff, 0xff, 0xff, 0xff, 0xff, 0x00, 0xff,
++    0xff, 0xff, 0x44, 0xeb, 0x0c, 0x20, 0x0f, 0x52,
++    0x10, 0xd8, 0x00, 0xff, 0xff, 0xff, 0xff, 0xff,
++    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
++    0x00, 0x36, 0x00, 0x27, 0x9d, 0xf9, 0xc0, 0x64,
++    0x85, 0xcb, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
++    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
++    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
++    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
++    0xff, 0xff, 0xff, 0xff, 0xc2, 0xf5, 0x08, 0x0a,
++    0x08, 0x04, 0x03, 0x06, 0x00, 0x00, 0x07, 0x29,
++    0x17, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
++    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
++    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
++    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
++    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
++    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
++    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
++    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
++    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
++    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
++    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
++    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
++    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
++    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
++    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
++    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
++    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
++    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
++    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
++    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
++    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
++    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
++    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
++    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
++    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
++    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
++    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
++    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
++    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
++    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
++    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
++    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
++    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
++    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
++    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
++    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
++    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
++    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
++    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
++    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
++    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
++    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
++    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
++    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
++    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
++};
++define_sfdp_read(mx25l25635f);
 -- 
 2.37.3
 

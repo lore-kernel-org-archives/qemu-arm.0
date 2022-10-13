@@ -1,93 +1,93 @@
-Received: by 2002:a17:906:43c7:b0:78d:9f02:16a1 with SMTP id j7csp886399ejn;
-        Thu, 13 Oct 2022 14:39:22 -0700 (PDT)
-X-Google-Smtp-Source: AMsMyM77V2UIeQcEAjWH7w9zArCY5vEvdCeeQiRLG6GWrZ6+M/lXWnWzCWd37jZrVVOs3S/ILXf3
-X-Received: by 2002:ae9:e895:0:b0:6ee:74f7:d0e6 with SMTP id a143-20020ae9e895000000b006ee74f7d0e6mr1629234qkg.398.1665697162582;
-        Thu, 13 Oct 2022 14:39:22 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1665697162; cv=none;
+Received: by 2002:a17:906:43c7:b0:78d:9f02:16a1 with SMTP id j7csp890849ejn;
+        Thu, 13 Oct 2022 14:49:27 -0700 (PDT)
+X-Google-Smtp-Source: AMsMyM7aSRgVEnZFCJqciRseDx4kbrjzdcxpWbqT/rkQ+O8SlaffyJV46tKuic7KbQzmqGOUWQQH
+X-Received: by 2002:a05:6214:2682:b0:4b4:8c75:2488 with SMTP id gm2-20020a056214268200b004b48c752488mr1933300qvb.88.1665697767269;
+        Thu, 13 Oct 2022 14:49:27 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1665697767; cv=none;
         d=google.com; s=arc-20160816;
-        b=lhT/ARycpBKf7fapJVIlNYFaDDMCpHVC70j8GAR5s8jOhqH5IHPV3Yab6NGk39eS3I
-         RUYuFJarxJq1V2R4W4NL3hD0p07VNDnDa2dW7FH0cAeoW1pAOANo/ahzTy+r6KPNF3eJ
-         vAUxodkP2aQo+OoR80GUYjVJa3hQae5vrBT/V1NAqqnkzMY7DaRxNAcug7TcYmVLaKza
-         YPysHvqMXevdP4lLL3d7W1wDs8z81UspwN9j+RX1yH23QpUVADWB9iCXpnJkRf6zVmrW
-         RLhxGnJebxpWfKQvoSOZ+fguilxgsXLE5I4XC9AGv5i0YdMSwPTBuEhjvsIU96xVTQ10
-         CwfA==
+        b=v6GZGkdR+URjrESmPu2oqBhRwCIVEL4JnExyy9A0HqdNM0rRjx2ShLMfsToOd2aERd
+         /N3P78F3NQj/BhZJhPSuqytQE52VOK7+JI6uobr4aJj8SstXTgwqzhdJsAsrYJ0eucHx
+         b4lXVt4lAfuuJjCvHCTHqCT24+H8GhD3y5/M7H35vZtmrXX7b75a4mqpnzv25+f6+7X1
+         KcygvdYrLcfFLgK2tWqCyeM7XRJAp9qoygWzEOj4W+iNnctqss7nkyXFkC/3E1i3dJgL
+         OmzoLqSvR1Xuv0GwtdhUgooq6DH2/9/UxN2ulNCDQ3V3YT44Ugqi3F+EFuRGZfTr/sw8
+         isEA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
          :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=ZVty32Eta7qbqugjeIYRFIZcE5wSHvhcmMJ40gLvtQQ=;
-        b=sxiv9XiqxLlq9hGpNTh1NBhiBwJauC0p7z5DXpeCKv0gWb4rkWEEWtlEEvHFo7J0Hj
-         yblW2rYRO6We7HMmraFXc7VX8okCWfDM31ywRC9fW4BDxP5ZXVcNDr3OqW6JQn9cEfEx
-         2+NyuNcZ/TjwSKClGzKQdYBhY9doDp1HSjSatsFJoyS5mKeeh+hi1yFg+I7kDTkmvhnw
-         U3kR2UOMgK8AsGTZvT6f45R/unpn9xaTciqpvtW77ifDON+QH5IXeeGAgJz8RcPsYMQS
-         83vtVezKWUk3X1JohmwKA7eHTJjIy7oNDrUE/KU3xSZqbdB15NJSi4ZTDqsqn9UFnsHi
-         Qm3Q==
+        bh=0Hifn9uhounW4EwrkH+RJD8CyAWupXqru1ufLnIlemQ=;
+        b=kpY9Tfyfa9iZEoiaCxf2HuhVBhm7EeofTeekgDcUsbFqZNMU/9rQI4CR3ru5rZdAOy
+         4t9uCPJfv+XHlTPqjRHmMISmUUZgpn/oLRtlL5rHb8LLwDIUNCldldaeTMgv0MW/9GOn
+         xyEjtFcFL+lHA3cJnVXzE5N4q4yLRcAu/1f+ezhQnkmzMj4lMiUTMHPS2Th7HqZb3N1p
+         U9OiKkpwVuinf7uVFbU6vQ1OxIApxLiTNbfACtEp7dtccqvWZSphRtIDJUGc2MAOcOBN
+         dumdUl8qIcV+SaHHrn7fvLb4m/cyD/Y0TiZSOW5m0Bc3in1W70nhW1yecfzijzUu0dmg
+         CIWA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=k20201202 header.b="I47/oIQ+";
+       dkim=pass header.i=@kernel.org header.s=k20201202 header.b="YUtYvGU/";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=kernel.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 14-20020a0562140cce00b004b179766502si576342qvx.566.2022.10.13.14.39.22
+        by mx.google.com with ESMTPS id kd1-20020a056214400100b004b32e828530si574206qvb.433.2022.10.13.14.49.27
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 13 Oct 2022 14:39:22 -0700 (PDT)
+        Thu, 13 Oct 2022 14:49:27 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=k20201202 header.b="I47/oIQ+";
+       dkim=pass header.i=@kernel.org header.s=k20201202 header.b="YUtYvGU/";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=kernel.org
-Received: from localhost ([::1]:56446 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:42760 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1oj5vG-0008IQ-3y
-	for alex.bennee@linaro.org; Thu, 13 Oct 2022 17:39:22 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53528)
+	id 1oj650-0002Uc-Hf
+	for alex.bennee@linaro.org; Thu, 13 Oct 2022 17:49:26 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:60528)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <robh+dt@kernel.org>)
- id 1oj5jj-00052w-H3; Thu, 13 Oct 2022 17:27:27 -0400
-Received: from dfw.source.kernel.org ([139.178.84.217]:57042)
+ id 1oj62s-0002TB-ST; Thu, 13 Oct 2022 17:47:16 -0400
+Received: from dfw.source.kernel.org ([139.178.84.217]:36140)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <robh+dt@kernel.org>)
- id 1oj5jh-0002ad-HW; Thu, 13 Oct 2022 17:27:27 -0400
+ id 1oj62q-0005Bs-0L; Thu, 13 Oct 2022 17:47:14 -0400
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by dfw.source.kernel.org (Postfix) with ESMTPS id 72254617AB;
- Thu, 13 Oct 2022 21:27:17 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id D20F0C433D7;
- Thu, 13 Oct 2022 21:27:16 +0000 (UTC)
+ by dfw.source.kernel.org (Postfix) with ESMTPS id 26E5B61965;
+ Thu, 13 Oct 2022 21:47:10 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 889CEC433C1;
+ Thu, 13 Oct 2022 21:47:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1665696436;
- bh=ZVty32Eta7qbqugjeIYRFIZcE5wSHvhcmMJ40gLvtQQ=;
+ s=k20201202; t=1665697629;
+ bh=y1ZB6H/8lHumiAK1VP7JPxhbQP3COaOC+djHTR8wtvI=;
  h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
- b=I47/oIQ+iarLkwpW4HKwbb6079Tsl3ncfE/nv76YidVOY+oOgJvk2idDgQL59oqNm
- cvNrghBCUduUqf+M/BzbWTWHm4fWqRfi/pv4TQ1l8ZDbLQmaF9xdef1b2H1ka93agS
- vJ+AxT68df+f3Iv/3pPs3tBVxrn/fl007C1o6gLgq2tZryeXRfON5mxC77Z31s6GU2
- d+q1EppaYnyBF/JAuZiQd8DGcKR5r1KzJprwG4NL+OT3gLHFEXGjQvoYO1T0cI/dI4
- 2lB5eCxWQXH579fGagwIjGu4HjdtoZ3BBovRjOh5OLzgrzHVki1bTJ6NrgEjazssQ3
- hcWGkoe3BsQFQ==
-Received: by mail-vk1-f174.google.com with SMTP id b81so1428058vkf.1;
- Thu, 13 Oct 2022 14:27:16 -0700 (PDT)
-X-Gm-Message-State: ACrzQf35ptMDG/jxmiL7IYIK9WXiqv8V6u0mcRa6kGRixWSCe7GcviWL
- 43waVWNluNd2Bol8zFngezeEr6BK2vOMe+QgPw==
-X-Received: by 2002:a1f:3d4c:0:b0:3aa:feb8:3ec6 with SMTP id
- k73-20020a1f3d4c000000b003aafeb83ec6mr1235295vka.26.1665696435808; Thu, 13
- Oct 2022 14:27:15 -0700 (PDT)
+ b=YUtYvGU/W4IkhvExq6SAfJW1WwwsdfHgVVUec4q+bAEkVdO46gLm/YVykef4pL43Q
+ ZSuX7VGJofaEMRQNDbL5jU2UCxCLB6GjQ+0TXTH3WeQOuAKXsQ5H+mzqfxUp80vYMS
+ q3UMvLxlcyuaFW1A3vjuK+uDquDkWAZD3eZ+BkTkGjOsBQ5wx6ZDO2WxkmYZrZywlE
+ 2niUqXMPuja4DuVj71IDc08uYtHUf8+2bceLVJr+5cXaB1oHXdQenm/OTscZf7Y/2P
+ /dbUj6kAfHhd9gJ5nUEDJNKD55DXgzQ+MPYeSO8wjmOev2eKgxbnJQWXB0SStyjsuf
+ osjZdc6BGHifw==
+Received: by mail-vs1-f50.google.com with SMTP id a2so3141481vsc.13;
+ Thu, 13 Oct 2022 14:47:09 -0700 (PDT)
+X-Gm-Message-State: ACrzQf1duzdraXMRxlckH1M7FaDZ3L5FE9O9nkNb5Ul6NnSvxuXu2jsF
+ WImKgpzT3Hjtoy4bfXAMpGUQGhyKv3WEpGXNEg==
+X-Received: by 2002:a67:e19a:0:b0:3a7:6b54:cc63 with SMTP id
+ e26-20020a67e19a000000b003a76b54cc63mr1256614vsl.26.1665697628505; Thu, 13
+ Oct 2022 14:47:08 -0700 (PDT)
 MIME-Version: 1.0
 References: <20220927100347.176606-1-jean-philippe@linaro.org>
- <20220927100347.176606-9-jean-philippe@linaro.org>
- <CAFEAcA8uuzcHS3B3VY=J38gSrZUhnaTDKq1ei0rwtJtoG843bA@mail.gmail.com>
-In-Reply-To: <CAFEAcA8uuzcHS3B3VY=J38gSrZUhnaTDKq1ei0rwtJtoG843bA@mail.gmail.com>
+ <20220927100347.176606-5-jean-philippe@linaro.org>
+ <CAFEAcA-5BDiv6sXJ_kpzCwpu20PJRQzOpS08bAswyJiFMSiT4w@mail.gmail.com>
+In-Reply-To: <CAFEAcA-5BDiv6sXJ_kpzCwpu20PJRQzOpS08bAswyJiFMSiT4w@mail.gmail.com>
 From: Rob Herring <robh+dt@kernel.org>
-Date: Thu, 13 Oct 2022 16:27:06 -0500
-X-Gmail-Original-Message-ID: <CAL_JsqKvXZ6J_H8zhsAkvpAyZvymVbxk1X-3JMV44-9yn7z+1w@mail.gmail.com>
-Message-ID: <CAL_JsqKvXZ6J_H8zhsAkvpAyZvymVbxk1X-3JMV44-9yn7z+1w@mail.gmail.com>
-Subject: Re: [PATCH v2 8/8] hw/arm/virt: Fix devicetree warnings about node
- names
+Date: Thu, 13 Oct 2022 16:46:59 -0500
+X-Gmail-Original-Message-ID: <CAL_Jsq+nw2g4fDr4-G3g2OL_mUkAGvNM0DJjuKqzFUijut1Hsw@mail.gmail.com>
+Message-ID: <CAL_Jsq+nw2g4fDr4-G3g2OL_mUkAGvNM0DJjuKqzFUijut1Hsw@mail.gmail.com>
+Subject: Re: [PATCH v2 4/8] hw/arm/virt: Fix devicetree warning about the
+ gpio-key node
 To: Peter Maydell <peter.maydell@linaro.org>
-Cc: Jean-Philippe Brucker <jean-philippe@linaro.org>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
+Cc: Jean-Philippe Brucker <jean-philippe@linaro.org>, qemu-arm@nongnu.org, 
+ QEMU Developers <qemu-devel@nongnu.org>
 Content-Type: text/plain; charset="UTF-8"
 Received-SPF: pass client-ip=139.178.84.217; envelope-from=robh+dt@kernel.org;
  helo=dfw.source.kernel.org
@@ -99,7 +99,6 @@ X-Spam_report: (-7.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  RCVD_IN_DNSWL_HI=-5, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Thu, 13 Oct 2022 17:38:54 -0400
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -113,34 +112,43 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Q66imeIBxJma
+X-TUID: MM5/Y16eoN6U
 
-On Tue, Sep 27, 2022 at 6:28 AM Peter Maydell <peter.maydell@linaro.org> wrote:
+On Tue, Sep 27, 2022 at 6:56 AM Peter Maydell <peter.maydell@linaro.org> wrote:
 >
 > On Tue, 27 Sept 2022 at 11:12, Jean-Philippe Brucker
 > <jean-philippe@linaro.org> wrote:
+> > The node name of the gpio-key devicetree node should be "key-poweroff":
 > >
-> > The devicetree specification requires that nodes use a generic name
-> > where appropriate. Fix the corresponding dt-validate warnings:
+> >   gpio-keys: 'poweroff' does not match any of the regexes: '^(button|event|key|switch|(button|event|key|switch)-[a-z0-9-]+|[a-z0-9-]+-(button|event|key|switch))$', 'pinctrl-[0-9]+'
+> >   From schema: linux/Documentation/devicetree/bindings/input/gpio-keys.yaml
+> >
+> > Signed-off-by: Jean-Philippe Brucker <jean-philippe@linaro.org>
 >
-> Either:
-> (1) guests are looking for devices in the DT by node name. In that
-> case we can't change the node names without breaking them
+> This restriction only went into the DT documentation in July
+> (kernel commit 5eb5652250).
 
-Using node names is generally wrong unless the node name to use is
-defined and that's the only way to identify them (e.g. /chosen).
+Fair enough.
 
-> Or:
-> (2) guest look for nodes by compatibility, in which case why
-> do we care what the exact format of the node name is?
+> Please don't retrospectively make perfectly valid working DTs
+> non-valid. I don't see any reason to change QEMU here.
+>
+> More generally, the set of things you might want the
+> validator to warn about for a fresh new human-written DTB
+> doesn't necessarily correspond to the set of things you want
+> to enforce for a pre-existing code-generated DTB. For the
+> former it makes much more sense to impose "coding style"
+> and "naming convention" type rules.
 
-The spec[1] has defined standard class node names going back to 2008.
-That covered all the names here except for 'iommu' and those names
-date back to the 1990s. Obviously, there has been no checking of them
-or many things for a long time, but now we can check much more than
-reviews ever could we have a huge technical debt. The main reason on
-care on these is just consistency.
+I too would like to distinguish that, but haven't come up with a way
+to do that in json-schema yet. The way schemas are applied
+independently makes that a challenge. So far it's been low on the
+priority list as any platforms with few enough warnings to get to 0
+haven't been a problem to fix (in a few cases we do end up relaxing
+the schemas).
+
+On the flip side, even existing things eventually get updated for
+coding style or evolving conventions. As long as we don't break ABIs,
+the same should apply to DT.
 
 Rob
-
-[1] https://elinux.org/images/c/cf/Power_ePAPR_APPROVED_v1.1.pdf

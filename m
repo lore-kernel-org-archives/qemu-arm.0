@@ -1,89 +1,111 @@
-Received: by 2002:a17:906:43c7:b0:78d:9f02:16a1 with SMTP id j7csp696345ejn;
-        Thu, 13 Oct 2022 09:46:22 -0700 (PDT)
-X-Google-Smtp-Source: AMsMyM6b8WnhIpg3g31XHTFLy77b5/oEY/c315bOF6UTEHhAaCfjbxCr5awNqBaz1CPwnzg2Oogd
-X-Received: by 2002:a05:620a:27cc:b0:6df:f651:79c9 with SMTP id i12-20020a05620a27cc00b006dff65179c9mr652244qkp.28.1665679582368;
-        Thu, 13 Oct 2022 09:46:22 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1665679582; cv=none;
+Received: by 2002:a17:906:43c7:b0:78d:9f02:16a1 with SMTP id j7csp738743ejn;
+        Thu, 13 Oct 2022 10:42:23 -0700 (PDT)
+X-Google-Smtp-Source: AMsMyM72WR7DDE+L8kQ3kDYr3ghDBlvC/rTEzFOEtUZiFJdJ1dN0GKf+qr3i4hof31aowS90KpwQ
+X-Received: by 2002:a05:620a:2945:b0:6ee:c2d2:a925 with SMTP id n5-20020a05620a294500b006eec2d2a925mr869185qkp.498.1665682943220;
+        Thu, 13 Oct 2022 10:42:23 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1665682943; cv=none;
         d=google.com; s=arc-20160816;
-        b=wNf4r0tbK+NWFwGDalnUop6dtiL00qbLADNNyygh4vbfNaSAXsykQXv2RiFgoYxCHA
-         6kX5WuK8KHGTG2RbU/UmqFBLlLH7hCXB9R7EGJTcYkQn+jvsptUO6tMr4pHCXOcZHNgI
-         RhhsBIcXKHzEp8t1SCYAuKCU8ZC1uBwFsEajX0sExKDgylist45eXg6UBLIj8F7c02CP
-         iutd0ceXuka9+FIajtHBVZL5KlolyY8NSlyA5dwmB6QpWi+N+/2WAg4OpXgWwifQ3N6c
-         BaHxJ9wCWbpkDEPnvshYwQJp1gu7ZlGLbGCbipXuW3bWM0GFY/cudgur/s3zmP2yv4fw
-         kmMQ==
+        b=f93ja39B/9RpicIoJZbkzYlZQOWOUoki3fCiJ8M7oy44j0ieOytuW0/qbf2/+3oRF9
+         IpOgjM11ZpsYoNWYUsUqihvk7IMUs7v98Psk6sJymGUXp1dqj2A/rvvUWYI1ruusKEaU
+         L4RHb+0jg86qmP89Sd0oEEzHlj5RNX9znskXynsG+OqA5PN6PhklzPf/Ml0qdAUc+GVI
+         Gxd2U3v8A/earD9zz+9hHEeHO0iM8JKy8Bqof1Tkbz7hKB7SSq3U/fHM8ltmttsPt9+0
+         RUZhFJUtOeda3TwEyEXHVCrmoSwzGow7h7vAdHGMKorGFlApk4e1VwYMAcT4xc7OxIr0
+         SnoQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from;
-        bh=SdkOVrcF++T+3CwCWEvZ5fjzsA6r2fKBdQ/IBmLxoAw=;
-        b=FyXWZg286ckIq+scR9234k+sfEawqXEvD7Ovh4pZIu+k76Ul9x1nkvq0brdU394Wni
-         nAztJTKYqO/LmZciJtKsTSlq1KuArgQAb7k2tU8vrh4NTgceEZkBTBMmA9fgUrLQcudM
-         XvJl+TRJJUyNJrzDZaRWtnI5zbvsq1iseuBRZodTxpnmGNW+wIJGS18UCYHxXNH825N+
-         b6nfAlZLy8YYXgWOSQ08puN0UYtpjNSJPCT+JXnMGt+2H1YlzMnfNjHTPNB0TxD3FBha
-         pslBJ3pSYvK0eruah08B1JmzWzhZ5KxsusdMDDgca4O3Bma7OFeh9qJFeCDKtl7I5wWk
-         CAgw==
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
+        bh=8FM5XpZ8DTUHfnBF91yhMamKEwGHnIFRRp55KtGJXy0=;
+        b=b1hWRfYEc1fxkmZbF9NnE9YaIh5lgaEBt9eunlK4SqWXM/0/MPAWYpdPa7mYCtOqBR
+         e3yRXzVxQP/i9brURgL9fkX1T9CzDYU0nqzctkJAGnn4BqWQ7/w5bngoVVZPwgceXIEe
+         vTjZiecrLYlu3s4nfYYN9VsCYmUMv/CqmZBWxwBuK1ziCUlxU/Fk54ZP2KU44qXe3naP
+         COH5XW3GXdoeVoac3wsO9V5NRYfK8z4v3kngTItekggErjt3qgpCwwGtLNVX9UBl5uln
+         sb+uEMrw5umPYTfGdBSMbKrplHnB6BJAuzjEd9As1j4W49wLd/vtHX1hnYSJ2pa/LPE/
+         wGQw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@linaro.org header.s=google header.b=hkmDy0nl;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v7-20020a05620a440700b006e5d4e6b669si97005qkp.100.2022.10.13.09.46.22
+        by mx.google.com with ESMTPS id w1-20020ac857c1000000b00343582e11c7si247577qta.603.2022.10.13.10.42.23
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 13 Oct 2022 09:46:22 -0700 (PDT)
+        Thu, 13 Oct 2022 10:42:23 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:45546 helo=lists1p.gnu.org)
+       dkim=pass header.i=@linaro.org header.s=google header.b=hkmDy0nl;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:37022 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1oj1Lh-0003zs-SQ
-	for alex.bennee@linaro.org; Thu, 13 Oct 2022 12:46:21 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:55936)
+	id 1oj2Du-0005bq-O4
+	for alex.bennee@linaro.org; Thu, 13 Oct 2022 13:42:22 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:43652)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <SRS0=HNeY=2O=kaod.org=clg@ozlabs.org>)
- id 1oj0pm-0001DN-UD; Thu, 13 Oct 2022 12:13:22 -0400
-Received: from mail.ozlabs.org ([2404:9400:2221:ea00::3]:41941
- helo=gandalf.ozlabs.org)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <SRS0=HNeY=2O=kaod.org=clg@ozlabs.org>)
- id 1oj0pk-0002gf-LE; Thu, 13 Oct 2022 12:13:22 -0400
-Received: from gandalf.ozlabs.org (mail.ozlabs.org
- [IPv6:2404:9400:2221:ea00::3])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4MpF1V1YJJz4xGw;
- Fri, 14 Oct 2022 03:13:18 +1100 (AEDT)
-Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
- (No client certificate requested)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4MpF1Q6XQtz4xDn;
- Fri, 14 Oct 2022 03:13:14 +1100 (AEDT)
-From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
-To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, qemu-block@nongnu.org,
- Peter Maydell <peter.maydell@linaro.org>, Joel Stanley <joel@jms.id.au>,
- Andrew Jeffery <andrew@aj.id.au>,
- Alistair Francis <alistair@alistair23.me>,
- Francisco Iglesias <frasse.iglesias@gmail.com>,
- Iris Chen <irischenlj@fb.com>, Michael Walle <michael@walle.cc>,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
-Subject: [PATCH v4 07/10] m25p80: Add the w25q256 SFPD table
-Date: Thu, 13 Oct 2022 18:12:38 +0200
-Message-Id: <20221013161241.2805140-8-clg@kaod.org>
-X-Mailer: git-send-email 2.37.3
-In-Reply-To: <20221013161241.2805140-1-clg@kaod.org>
-References: <20221013161241.2805140-1-clg@kaod.org>
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1oj2CO-0005CJ-PW
+ for qemu-arm@nongnu.org; Thu, 13 Oct 2022 13:40:48 -0400
+Received: from mail-wm1-x334.google.com ([2a00:1450:4864:20::334]:52146)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1oj2CM-0000u3-Lx
+ for qemu-arm@nongnu.org; Thu, 13 Oct 2022 13:40:48 -0400
+Received: by mail-wm1-x334.google.com with SMTP id n9so1667662wms.1
+ for <qemu-arm@nongnu.org>; Thu, 13 Oct 2022 10:40:46 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=8FM5XpZ8DTUHfnBF91yhMamKEwGHnIFRRp55KtGJXy0=;
+ b=hkmDy0nluB2ty51U98GJcr4Owod3yzVZHGy/sP0x4yiDZ/caccH1ZEkZP9KVT9POaG
+ TjwMW7oZbfyRgiDFgmIJ0S6wQhNjoG2cQj86yTmBfT3kaZ46D/WiH8vhrRYmNVrWFNaL
+ iiuZ4KNywDJSDlDRM6iVMnhfWm+q91xvFS7E9/v0BQalXN7lY/76LEZF5lbrTYwojDGU
+ 17xj8xwJR9Pkyj2Hx4aCm0xZrTL1jnq7Fkzs7EmLlCm555KJsWAJUPYWvwmnIuBzNXXb
+ gwnNNI2Qd7kX7jZyL2ZZJrryDmGf/yLDeeoybknCEYxu56vit7ItVLeTAVpxUjqwxRtG
+ k1Ow==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=8FM5XpZ8DTUHfnBF91yhMamKEwGHnIFRRp55KtGJXy0=;
+ b=KMQyPkrTiAjgxTD40gEP9LAjhAtFkGoUNopE+L8P9tCnXJDm3Ne3rduV4bpHD4uHBc
+ iPtu7/wH0doZIun5FyOczsiNhyJYnDjJViYhAW1jwIv22ec4AaLMzQQ/e9MGhrgEKdea
+ IJbTSxbjObo0HOkpy9G/cvdo9uVqNiWBkvcQcW97+UVZrGdiGMFxu16c8Oq2WIN1GyVC
+ dmERmOnycRtVsJ2yV2j59AgGJieGBM47ZgtM4nK7m+tb0JrdSma9oNS/Dug+56Zp30dE
+ 14rQfwAW+PYsi0dTdgSWr3TuVPD8GE/H6eKRvFyyzg62gzH/JD8zMiIKeHItMXmbQ3sr
+ LgLw==
+X-Gm-Message-State: ACrzQf1bpG8OXuS9bRErPBGJvJfKrLXI9Af6ha9FlqRqqr1V0fU8BqFE
+ mSNH2eYwUwG/dpSdwxRyEAA0L8ZpHCyrRQ==
+X-Received: by 2002:a05:600c:a09:b0:3b5:2f6b:c7c5 with SMTP id
+ z9-20020a05600c0a0900b003b52f6bc7c5mr665125wmp.141.1665682845096; 
+ Thu, 13 Oct 2022 10:40:45 -0700 (PDT)
+Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
+ by smtp.gmail.com with ESMTPSA id
+ iw6-20020a05600c54c600b003c6c3fb3cf6sm118482wmb.18.2022.10.13.10.40.43
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 13 Oct 2022 10:40:44 -0700 (PDT)
+From: Peter Maydell <peter.maydell@linaro.org>
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Cc: John Snow <jsnow@redhat.com>,
+	qemu-block@nongnu.org
+Subject: [PATCH] hw/ide/microdrive: Use device_cold_reset() for self-resets
+Date: Thu, 13 Oct 2022 18:40:42 +0100
+Message-Id: <20221013174042.1602926-1-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2404:9400:2221:ea00::3;
- envelope-from=SRS0=HNeY=2O=kaod.org=clg@ozlabs.org; helo=gandalf.ozlabs.org
-X-Spam_score_int: -39
-X-Spam_score: -4.0
-X-Spam_bar: ----
-X-Spam_report: (-4.0 / 5.0 requ) BAYES_00=-1.9,
- HEADER_FROM_DIFFERENT_DOMAINS=0.25, RCVD_IN_DNSWL_MED=-2.3,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Received-SPF: pass client-ip=2a00:1450:4864:20::334;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x334.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -98,93 +120,79 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 4hWXKbVTxv4R
+X-TUID: PQauRn+yHNC7
 
-The SFDP table size is 0x100 bytes long. Only the mandatory table for
-basic features is available at byte 0x80.
+Currently the microdrive code uses device_legacy_reset() to reset
+itself, and has its reset method call reset on the IDE bus as the
+last thing it does.  Switch to using device_cold_reset().
 
-Reviewed-by: Francisco Iglesias <frasse.iglesias@gmail.com>
-Message-Id: <20220722063602.128144-7-clg@kaod.org>
-Signed-off-by: Cédric Le Goater <clg@kaod.org>
+The only concrete microdrive device is the TYPE_DSCM1XXXX; it is not
+command-line pluggable, so it is used only by the old pxa2xx Arm
+boards 'akita', 'borzoi', 'spitz', 'terrier' and 'tosa'.
+
+You might think that this would result in the IDE bus being
+reset automatically, but it does not, because the IDEBus type
+does not set the BusClass::reset method. Instead the controller
+must explicitly call ide_bus_reset(). We therefore leave that
+call in md_reset().
+
+Note also that because the PCMCIA card device is a direct subclass of
+TYPE_DEVICE and we don't model the PCMCIA controller-to-card
+interface as a qbus, PCMCIA cards are not on any qbus and so they
+don't get reset when the system is reset.  The reset only happens via
+the dscm1xxxx_attach() and dscm1xxxx_detach() functions during
+machine creation.
+
+Because our aim here is merely to try to get rid of calls to the
+device_legacy_reset() function, we leave these other dubious
+reset-related issues alone.  (They all stem from this code being
+absolutely ancient.)
+
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- hw/block/m25p80_sfdp.h |  2 ++
- hw/block/m25p80.c      |  3 ++-
- hw/block/m25p80_sfdp.c | 40 ++++++++++++++++++++++++++++++++++++++++
- 3 files changed, 44 insertions(+), 1 deletion(-)
+ hw/ide/microdrive.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
 
-diff --git a/hw/block/m25p80_sfdp.h b/hw/block/m25p80_sfdp.h
-index ec829644b047..595be9000daa 100644
---- a/hw/block/m25p80_sfdp.h
-+++ b/hw/block/m25p80_sfdp.h
-@@ -21,4 +21,6 @@ uint8_t m25p80_sfdp_mx25l25635e(uint32_t addr);
- uint8_t m25p80_sfdp_mx25l25635f(uint32_t addr);
- uint8_t m25p80_sfdp_mx66l1g45g(uint32_t addr);
+diff --git a/hw/ide/microdrive.c b/hw/ide/microdrive.c
+index 6df9b4cbbe1..56c5be36551 100644
+--- a/hw/ide/microdrive.c
++++ b/hw/ide/microdrive.c
+@@ -175,7 +175,7 @@ static void md_attr_write(PCMCIACardState *card, uint32_t at, uint8_t value)
+     case 0x00:	/* Configuration Option Register */
+         s->opt = value & 0xcf;
+         if (value & OPT_SRESET) {
+-            device_legacy_reset(DEVICE(s));
++            device_cold_reset(DEVICE(s));
+         }
+         md_interrupt_update(s);
+         break;
+@@ -318,7 +318,7 @@ static void md_common_write(PCMCIACardState *card, uint32_t at, uint16_t value)
+     case 0xe:	/* Device Control */
+         s->ctrl = value;
+         if (value & CTRL_SRST) {
+-            device_legacy_reset(DEVICE(s));
++            device_cold_reset(DEVICE(s));
+         }
+         md_interrupt_update(s);
+         break;
+@@ -543,7 +543,7 @@ static int dscm1xxxx_attach(PCMCIACardState *card)
+     md->attr_base = pcc->cis[0x74] | (pcc->cis[0x76] << 8);
+     md->io_base = 0x0;
  
-+uint8_t m25p80_sfdp_w25q256(uint32_t addr);
-+
- #endif
-diff --git a/hw/block/m25p80.c b/hw/block/m25p80.c
-index 376be327e575..6119c57c8980 100644
---- a/hw/block/m25p80.c
-+++ b/hw/block/m25p80.c
-@@ -345,7 +345,8 @@ static const FlashPartInfo known_devices[] = {
-     { INFO("w25q64",      0xef4017,      0,  64 << 10, 128, ER_4K) },
-     { INFO("w25q80",      0xef5014,      0,  64 << 10,  16, ER_4K) },
-     { INFO("w25q80bl",    0xef4014,      0,  64 << 10,  16, ER_4K) },
--    { INFO("w25q256",     0xef4019,      0,  64 << 10, 512, ER_4K) },
-+    { INFO("w25q256",     0xef4019,      0,  64 << 10, 512, ER_4K),
-+      .sfdp_read = m25p80_sfdp_w25q256 },
-     { INFO("w25q512jv",   0xef4020,      0,  64 << 10, 1024, ER_4K) },
-     { INFO("w25q01jvq",   0xef4021,      0,  64 << 10, 2048, ER_4K) },
- };
-diff --git a/hw/block/m25p80_sfdp.c b/hw/block/m25p80_sfdp.c
-index 38c3ced34d2e..5b011559d43d 100644
---- a/hw/block/m25p80_sfdp.c
-+++ b/hw/block/m25p80_sfdp.c
-@@ -218,3 +218,43 @@ static const uint8_t sfdp_mx66l1g45g[] = {
-     0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
- };
- define_sfdp_read(mx66l1g45g);
-+
-+/*
-+ * Windbond
-+ */
-+
-+static const uint8_t sfdp_w25q256[] = {
-+    0x53, 0x46, 0x44, 0x50, 0x00, 0x01, 0x00, 0xff,
-+    0x00, 0x00, 0x01, 0x09, 0x80, 0x00, 0x00, 0xff,
-+    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
-+    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
-+    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
-+    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
-+    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
-+    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
-+    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
-+    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
-+    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
-+    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
-+    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
-+    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
-+    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
-+    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
-+    0xe5, 0x20, 0xf3, 0xff, 0xff, 0xff, 0xff, 0x0f,
-+    0x44, 0xeb, 0x08, 0x6b, 0x08, 0x3b, 0x42, 0xbb,
-+    0xfe, 0xff, 0xff, 0xff, 0xff, 0xff, 0x00, 0x00,
-+    0xff, 0xff, 0x21, 0xeb, 0x0c, 0x20, 0x0f, 0x52,
-+    0x10, 0xd8, 0x00, 0x00, 0xff, 0xff, 0xff, 0xff,
-+    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
-+    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
-+    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
-+    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
-+    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
-+    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
-+    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
-+    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
-+    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
-+    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
-+    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
-+};
-+define_sfdp_read(w25q256);
+-    device_legacy_reset(DEVICE(md));
++    device_cold_reset(DEVICE(md));
+     md_interrupt_update(md);
+ 
+     return 0;
+@@ -553,7 +553,7 @@ static int dscm1xxxx_detach(PCMCIACardState *card)
+ {
+     MicroDriveState *md = MICRODRIVE(card);
+ 
+-    device_legacy_reset(DEVICE(md));
++    device_cold_reset(DEVICE(md));
+     return 0;
+ }
+ 
 -- 
-2.37.3
+2.25.1
 

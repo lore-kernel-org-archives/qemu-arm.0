@@ -1,177 +1,231 @@
-Received: by 2002:a17:906:43c7:b0:78d:9f02:16a1 with SMTP id j7csp602342ejn;
-        Thu, 13 Oct 2022 07:46:22 -0700 (PDT)
-X-Google-Smtp-Source: AMsMyM566KJ3DDSdgMEpKWKieLtRrtrB3wHwd89NChv58+RYJ6Wp6GokWjsXbl2Fzy+Mh+pBzQ3D
-X-Received: by 2002:a37:b885:0:b0:6cf:4bb1:f056 with SMTP id i127-20020a37b885000000b006cf4bb1f056mr187062qkf.167.1665672382264;
-        Thu, 13 Oct 2022 07:46:22 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1665672382; cv=none;
+Received: by 2002:a17:906:43c7:b0:78d:9f02:16a1 with SMTP id j7csp674564ejn;
+        Thu, 13 Oct 2022 09:15:43 -0700 (PDT)
+X-Google-Smtp-Source: AMsMyM5kw6Q0ToZ2UpKMk9lLBpLkY/ljqetfPvcEQkD8JMxRlAlrVgfuOsxe26UBQ1oQaTUk5Dhz
+X-Received: by 2002:ac8:5c93:0:b0:39c:c88b:4897 with SMTP id r19-20020ac85c93000000b0039cc88b4897mr534728qta.6.1665677743119;
+        Thu, 13 Oct 2022 09:15:43 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1665677743; cv=none;
         d=google.com; s=arc-20160816;
-        b=as/TEGY8bJjE13dcZVIwjvNiov7N8HuZSjY2HM/PniTSeozHwMWlz99XLLMpvO3QAN
-         wIVtMgabfMu4xb6PfmaZfLRAeKaP1+zOs3E1p4m4rw9B3kD3mSN22bJ2tDwD52ntRRZP
-         hPjEr7eCupIaQNHtDBacx62J9XrF4iRU8QSWAgQpJrN41s4sQvKRgjCj3E6Ru992vl36
-         QxxqMTdHGT4o7Cv3Tx0qvttraK0uULzMziyiiPQ6UhAHpi/OdIkMKpIRiV19Miflv56B
-         94ZN3dyRI512WWEhdC7gAfFKwiiStQx8YXqhcWgzovRQTaWM6lefYHksUXy0jrcq5+Vc
-         fAMw==
+        b=Sd4NKmkrM3uppDh0Ds25+7zD4rMsktd3pN0RN6sWl1/llUMKoxGyU3AfuFRWRA/U0Z
+         Coz0cjZvWbm1ZW7+XLruj+eMs6zW/CU57TOZvSQUJRXYfu9o16k/TwKBqQd6EqONdWB2
+         M2+IHfxrKy2hR7rJ040FJ+Agukd+xm2tPwADdH06fG7ECzRcIXhjZv/w41OiO9Xh9VfT
+         CPk43LZvrwZRc5YWXtWZ9suhdSyftmso4ft2lmzootiPNRqbpG37ULWGFiv47d9Hq4vv
+         kr/OsHnpwsKB8sKR9a/L75mxKS1f42REFE8GYcKJjL7TGXcNBWtt2dkaK+SccxnUV7/X
+         dTzg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-disposition:in-reply-to
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :dkim-signature;
-        bh=b8oynY8R8Pm4AyFPWfMTbFzup+Tk6ESkp1QmIAvc0G4=;
-        b=ARp50lndSIzAjFatK2rko4i91S+WrjoLwY5j7FWioQDFPAN/wgxgTYESdE7t2uSrhi
-         lqQ3SB4TT8LPEFclDNwQsUyHLGIYctc4iUqmg9UkZoWfq2cmP8I/NFXb7KOhbbHrylKE
-         3i7dEkKON40gusZ2znJC2bJnrn4whxWDFYsLPmM4gDcXCF0kZeylLnnZRQrYhDf0T+DJ
-         sifIu6TUEQxDBjjfarSxQaW/SxVjmcgQP+RAOa8f6yZgzdwsXC3PpgFZ9IB5SCnyFF0B
-         iixyE8GExRnMFhlVFZDHu7yW0CIvOTWisevb/8P4ES6RUr68Y7ggvUvdnMNQbTaMq6bf
-         xptA==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from;
+        bh=mXfFoneyIzN+spQHxy3pGPO1PM2nQD9yBkWc6ZZo7MQ=;
+        b=mEIdYEBc1UuL5E7wMIU0n47H/K33i2D+vrWdmXEi8OHrK/vl/CSMFm2I1kMtFYF7HS
+         5w9iJWENKUrfvoPI7YxYCgEP9yUzVWNsICHjcNmxEG3NMJT/vbDWsrfTKOuxEFflkUgg
+         l5VCNUj7wG39BI2XqB46cDLnZEcSY+vMTe/Lnvy5Tyc2B+elxYeN1faC+Gbfvm7J+qeA
+         ZXtBToLrKA0VLeoz/1mtZEhIiatFVYuoAlLhzUtxt/MNhHI/LDYZfVCGNfVxbcrSYSaD
+         2xU7XFFo7pNqzz/w+Pi30hA34ns1/ha9cqq+yC8CQxCebV9i9dfSGXdk05X67cHjnM3J
+         PBTw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=FJzRVnUX;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s9-20020ac87589000000b00393a3edfab4si35838qtq.194.2022.10.13.07.46.22
+        by mx.google.com with ESMTPS id q5-20020a37f705000000b006e734b4091dsi41826qkj.374.2022.10.13.09.15.42
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 13 Oct 2022 07:46:22 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 13 Oct 2022 09:15:43 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=FJzRVnUX;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:56916 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:57996 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1oizTZ-0002vr-Qe
-	for alex.bennee@linaro.org; Thu, 13 Oct 2022 10:46:21 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:48196)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1oj0s2-00043G-HQ
+	for alex.bennee@linaro.org; Thu, 13 Oct 2022 12:15:42 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:58546)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1oizSv-0002si-AC
- for qemu-arm@nongnu.org; Thu, 13 Oct 2022 10:45:41 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:41666)
+ (Exim 4.90_1) (envelope-from <SRS0=HNeY=2O=kaod.org=clg@ozlabs.org>)
+ id 1oj0pU-0000iL-3a; Thu, 13 Oct 2022 12:13:04 -0400
+Received: from gandalf.ozlabs.org ([150.107.74.76]:53333)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1oizSs-0004xm-Ms
- for qemu-arm@nongnu.org; Thu, 13 Oct 2022 10:45:39 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1665672337;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=b8oynY8R8Pm4AyFPWfMTbFzup+Tk6ESkp1QmIAvc0G4=;
- b=FJzRVnUXOZWpRRKeNam3G19y4ltuD8Ineowoe0K2GEhC2DaWBXRdElg5d0SvKDEZOqp/oA
- h1+jvGcBipuwjJYjrienDhxqALiY0ZNIB9fR3QxeGUv+MQOZhd72KirYNFIGxTFwaJrbTd
- pN8dHDOOc+6xxWkHGvFn0hhSBMo0lD4=
-Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
- [209.85.221.70]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_128_GCM_SHA256) id
- us-mta-153-3yKB5IlGOPmw_qPlv_wtUQ-1; Thu, 13 Oct 2022 10:45:35 -0400
-X-MC-Unique: 3yKB5IlGOPmw_qPlv_wtUQ-1
-Received: by mail-wr1-f70.google.com with SMTP id
- q28-20020adfab1c000000b0022e0399964dso647914wrc.8
- for <qemu-arm@nongnu.org>; Thu, 13 Oct 2022 07:45:35 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=b8oynY8R8Pm4AyFPWfMTbFzup+Tk6ESkp1QmIAvc0G4=;
- b=N2BNyijwRpmM/PBZfaISAqU/S7C8t5WwSsu7sh/a45f4tHN7IDjYoWkT3OhyPOpIK9
- +Us7vTpzImqDklPtRXMTfUj0j6FpxuoW99T7PVKLOSFDgJJdgvoDNgJCfEIYdZWpp1AB
- qP4hcntVo/0F3NmvzXC4t+KUp+eIoWv8N8mg9XeVzUgxK3DozOArwXbzgH7IrDFwAWY4
- QchcNByGdE7Owv6VSLLH1lCTO8Yc31LrWGIL5iKLQ6E4nYCXSo3piE9dcNvTmRdOTyvY
- 2gF0bMKbH6TqpPhUxZ37eHxE5SxJcCZix+Rf5obFtt6q1oRnclgMGIX80OizU3r1kUK6
- sggw==
-X-Gm-Message-State: ACrzQf1TNPDm+XPkYj2648++YiVxIRI+zA2o1nDSFPgWk78n5YlRZSyT
- ood282pvPfBNMczPKjSEtNvf9DyhlQbH1lsPTRhEC4P2M2yRdfAUVSmgohM91Y8RGunju5AOpZH
- nVE3vHXxXhgzE
-X-Received: by 2002:a05:6000:1562:b0:231:1b02:3dbb with SMTP id
- 2-20020a056000156200b002311b023dbbmr204903wrz.685.1665672334848; 
- Thu, 13 Oct 2022 07:45:34 -0700 (PDT)
-X-Received: by 2002:a05:6000:1562:b0:231:1b02:3dbb with SMTP id
- 2-20020a056000156200b002311b023dbbmr204888wrz.685.1665672334647; 
- Thu, 13 Oct 2022 07:45:34 -0700 (PDT)
-Received: from redhat.com ([2.54.162.123]) by smtp.gmail.com with ESMTPSA id
- bn24-20020a056000061800b0022a297950cesm2274413wrb.23.2022.10.13.07.45.30
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 13 Oct 2022 07:45:34 -0700 (PDT)
-Date: Thu, 13 Oct 2022 10:45:28 -0400
-From: "Michael S. Tsirkin" <mst@redhat.com>
-To: Akihiko Odaki <akihiko.odaki@daynix.com>
-Cc: Markus Armbruster <armbru@redhat.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- qemu-devel@nongnu.org, qemu-block@nongnu.org, qemu-arm@nongnu.org,
- Alex Williamson <alex.williamson@redhat.com>,
- Gerd Hoffmann <kraxel@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- Eduardo Habkost <eduardo@habkost.net>, John Snow <jsnow@redhat.com>,
- Dmitry Fleytman <dmitry.fleytman@gmail.com>,
- Jason Wang <jasowang@redhat.com>, Stefan Weil <sw@weilnetz.de>,
- Keith Busch <kbusch@kernel.org>, Klaus Jensen <its@irrelevant.dk>,
- Peter Maydell <peter.maydell@linaro.org>,
- Andrey Smirnov <andrew.smirnov@gmail.com>,
- Paul Burton <paulburton@kernel.org>,
- Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>
-Subject: Re: [PATCH v2] pci: Assert that capabilities never overlap
-Message-ID: <20221013103756-mutt-send-email-mst@kernel.org>
-References: <20220831013236.32937-1-akihiko.odaki@daynix.com>
- <87tu5qulay.fsf@pond.sub.org>
- <CAE=JJXdg=Miisek8WeqQ12NqL8obzmuyzD0mbv1SfiJTyVBLuw@mail.gmail.com>
- <875yi2mat1.fsf@pond.sub.org>
- <CAE=JJXcRH-0TuM7WgbM35Nb=Ud94K-LUcdzjoyJDMEuK9o=uFw@mail.gmail.com>
- <87mtaitpph.fsf@pond.sub.org>
- <CAE=JJXcbioK4Nod0mSuRY1Mpj8nAYJvgX62cGyG8_MDfVgjyOQ@mail.gmail.com>
+ (Exim 4.90_1) (envelope-from <SRS0=HNeY=2O=kaod.org=clg@ozlabs.org>)
+ id 1oj0pR-0002e9-R2; Thu, 13 Oct 2022 12:13:03 -0400
+Received: from gandalf.ozlabs.org (gandalf.ozlabs.org [150.107.74.76])
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4MpF170qbrz4xGy;
+ Fri, 14 Oct 2022 03:12:59 +1100 (AEDT)
+Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4MpF135psrz4xDn;
+ Fri, 14 Oct 2022 03:12:55 +1100 (AEDT)
+From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
+To: qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org, qemu-block@nongnu.org,
+ Peter Maydell <peter.maydell@linaro.org>, Joel Stanley <joel@jms.id.au>,
+ Andrew Jeffery <andrew@aj.id.au>,
+ Alistair Francis <alistair@alistair23.me>,
+ Francisco Iglesias <frasse.iglesias@gmail.com>,
+ Iris Chen <irischenlj@fb.com>, Michael Walle <michael@walle.cc>,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
+Subject: [PATCH v4 02/10] m25p80: Add the n25q256a SFDP table
+Date: Thu, 13 Oct 2022 18:12:33 +0200
+Message-Id: <20221013161241.2805140-3-clg@kaod.org>
+X-Mailer: git-send-email 2.37.3
+In-Reply-To: <20221013161241.2805140-1-clg@kaod.org>
+References: <20221013161241.2805140-1-clg@kaod.org>
 MIME-Version: 1.0
-In-Reply-To: <CAE=JJXcbioK4Nod0mSuRY1Mpj8nAYJvgX62cGyG8_MDfVgjyOQ@mail.gmail.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=mst@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=150.107.74.76;
+ envelope-from=SRS0=HNeY=2O=kaod.org=clg@ozlabs.org; helo=gandalf.ozlabs.org
+X-Spam_score_int: -16
+X-Spam_score: -1.7
+X-Spam_bar: -
+X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.25, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: qNEASVtiSTHt
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: TsMRxotb2wyg
 
-On Thu, Oct 13, 2022 at 02:39:27PM +0900, Akihiko Odaki wrote:
-> Yes, I'd like to hear your ideas on how it should be split up. The
-> main challenge here is that it changes the signature of a function
-> without changing its name.
+The same values were collected on 4 differents OpenPower systems,
+palmettos, romulus and tacoma.
 
-Lots of ways to do it, e.g.:
+The SFDP table size is defined as being 0x100 bytes but it could be
+bigger. Only the mandatory table for basic features is available at
+byte 0x30.
 
+Reviewed-by: Francisco Iglesias <frasse.iglesias@gmail.com>
+Message-Id: <20220722063602.128144-3-clg@kaod.org>
+Signed-off-by: Cédric Le Goater <clg@kaod.org>
+---
+ hw/block/m25p80_sfdp.h |  2 ++
+ hw/block/m25p80.c      |  8 +++---
+ hw/block/m25p80_sfdp.c | 58 ++++++++++++++++++++++++++++++++++++++++++
+ hw/block/meson.build   |  1 +
+ 4 files changed, 66 insertions(+), 3 deletions(-)
+ create mode 100644 hw/block/m25p80_sfdp.c
 
-1. add a new api with a new name
-2. change code to use new name
-3. drop old api
-4. add new api with old name
-5. change code to use old name
-
-
-or we can stop after 3, it's not too hard to come up
-with a slightly different name.
-
-Since all you are doing here is dropping an argument,
-other hacks may be possible such as making the function
-use variadic arguments temporarily.
-
+diff --git a/hw/block/m25p80_sfdp.h b/hw/block/m25p80_sfdp.h
+index 230b07ef3308..7245412cc18c 100644
+--- a/hw/block/m25p80_sfdp.h
++++ b/hw/block/m25p80_sfdp.h
+@@ -15,4 +15,6 @@
+  */
+ #define M25P80_SFDP_MAX_SIZE  (1 << 24)
+ 
++uint8_t m25p80_sfdp_n25q256a(uint32_t addr);
++
+ #endif
+diff --git a/hw/block/m25p80.c b/hw/block/m25p80.c
+index abdc4c0b0da7..13e7b28fd2b0 100644
+--- a/hw/block/m25p80.c
++++ b/hw/block/m25p80.c
+@@ -247,13 +247,15 @@ static const FlashPartInfo known_devices[] = {
+     { INFO("n25q128a11",  0x20bb18,      0,  64 << 10, 256, ER_4K) },
+     { INFO("n25q128a13",  0x20ba18,      0,  64 << 10, 256, ER_4K) },
+     { INFO("n25q256a11",  0x20bb19,      0,  64 << 10, 512, ER_4K) },
+-    { INFO("n25q256a13",  0x20ba19,      0,  64 << 10, 512, ER_4K) },
++    { INFO("n25q256a13",  0x20ba19,      0,  64 << 10, 512, ER_4K),
++      .sfdp_read = m25p80_sfdp_n25q256a },
+     { INFO("n25q512a11",  0x20bb20,      0,  64 << 10, 1024, ER_4K) },
+     { INFO("n25q512a13",  0x20ba20,      0,  64 << 10, 1024, ER_4K) },
+     { INFO("n25q128",     0x20ba18,      0,  64 << 10, 256, 0) },
+     { INFO("n25q256a",    0x20ba19,      0,  64 << 10, 512,
+-           ER_4K | HAS_SR_BP3_BIT6 | HAS_SR_TB) },
+-    { INFO("n25q512a",    0x20ba20,      0,  64 << 10, 1024, ER_4K) },
++           ER_4K | HAS_SR_BP3_BIT6 | HAS_SR_TB),
++      .sfdp_read = m25p80_sfdp_n25q256a },
++   { INFO("n25q512a",    0x20ba20,      0,  64 << 10, 1024, ER_4K) },
+     { INFO("n25q512ax3",  0x20ba20,  0x1000,  64 << 10, 1024, ER_4K) },
+     { INFO("mt25ql512ab", 0x20ba20, 0x1044, 64 << 10, 1024, ER_4K | ER_32K) },
+     { INFO_STACKED("mt35xu01g", 0x2c5b1b, 0x104100, 128 << 10, 1024,
+diff --git a/hw/block/m25p80_sfdp.c b/hw/block/m25p80_sfdp.c
+new file mode 100644
+index 000000000000..24ec05de79a1
+--- /dev/null
++++ b/hw/block/m25p80_sfdp.c
+@@ -0,0 +1,58 @@
++/*
++ * M25P80 Serial Flash Discoverable Parameter (SFDP)
++ *
++ * Copyright (c) 2020, IBM Corporation.
++ *
++ * This code is licensed under the GPL version 2 or later. See the
++ * COPYING file in the top-level directory.
++ */
++
++#include "qemu/osdep.h"
++#include "qemu/host-utils.h"
++#include "m25p80_sfdp.h"
++
++#define define_sfdp_read(model)                                       \
++    uint8_t m25p80_sfdp_##model(uint32_t addr)                        \
++    {                                                                 \
++        assert(is_power_of_2(sizeof(sfdp_##model)));                  \
++        return sfdp_##model[addr & (sizeof(sfdp_##model) - 1)];       \
++    }
++
++/*
++ * Micron
++ */
++static const uint8_t sfdp_n25q256a[] = {
++    0x53, 0x46, 0x44, 0x50, 0x00, 0x01, 0x00, 0xff,
++    0x00, 0x00, 0x01, 0x09, 0x30, 0x00, 0x00, 0xff,
++    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
++    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
++    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
++    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
++    0xe5, 0x20, 0xfb, 0xff, 0xff, 0xff, 0xff, 0x0f,
++    0x29, 0xeb, 0x27, 0x6b, 0x08, 0x3b, 0x27, 0xbb,
++    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0x27, 0xbb,
++    0xff, 0xff, 0x29, 0xeb, 0x0c, 0x20, 0x10, 0xd8,
++    0x00, 0x00, 0x00, 0x00, 0xff, 0xff, 0xff, 0xff,
++    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
++    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
++    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
++    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
++    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
++    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
++    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
++    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
++    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
++    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
++    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
++    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
++    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
++    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
++    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
++    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
++    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
++    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
++    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
++    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
++    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
++};
++define_sfdp_read(n25q256a);
+diff --git a/hw/block/meson.build b/hw/block/meson.build
+index 2389326112ae..3129ca4c52eb 100644
+--- a/hw/block/meson.build
++++ b/hw/block/meson.build
+@@ -12,6 +12,7 @@ softmmu_ss.add(when: 'CONFIG_ONENAND', if_true: files('onenand.c'))
+ softmmu_ss.add(when: 'CONFIG_PFLASH_CFI01', if_true: files('pflash_cfi01.c'))
+ softmmu_ss.add(when: 'CONFIG_PFLASH_CFI02', if_true: files('pflash_cfi02.c'))
+ softmmu_ss.add(when: 'CONFIG_SSI_M25P80', if_true: files('m25p80.c'))
++softmmu_ss.add(when: 'CONFIG_SSI_M25P80', if_true: files('m25p80_sfdp.c'))
+ softmmu_ss.add(when: 'CONFIG_SWIM', if_true: files('swim.c'))
+ softmmu_ss.add(when: 'CONFIG_XEN', if_true: files('xen-block.c'))
+ softmmu_ss.add(when: 'CONFIG_TC58128', if_true: files('tc58128.c'))
 -- 
-MST
+2.37.3
 

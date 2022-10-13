@@ -1,112 +1,105 @@
-Received: by 2002:a17:906:43c7:b0:78d:9f02:16a1 with SMTP id j7csp738743ejn;
-        Thu, 13 Oct 2022 10:42:23 -0700 (PDT)
-X-Google-Smtp-Source: AMsMyM72WR7DDE+L8kQ3kDYr3ghDBlvC/rTEzFOEtUZiFJdJ1dN0GKf+qr3i4hof31aowS90KpwQ
-X-Received: by 2002:a05:620a:2945:b0:6ee:c2d2:a925 with SMTP id n5-20020a05620a294500b006eec2d2a925mr869185qkp.498.1665682943220;
-        Thu, 13 Oct 2022 10:42:23 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1665682943; cv=none;
+Received: by 2002:a17:906:43c7:b0:78d:9f02:16a1 with SMTP id j7csp886399ejn;
+        Thu, 13 Oct 2022 14:39:22 -0700 (PDT)
+X-Google-Smtp-Source: AMsMyM77V2UIeQcEAjWH7w9zArCY5vEvdCeeQiRLG6GWrZ6+M/lXWnWzCWd37jZrVVOs3S/ILXf3
+X-Received: by 2002:ae9:e895:0:b0:6ee:74f7:d0e6 with SMTP id a143-20020ae9e895000000b006ee74f7d0e6mr1629234qkg.398.1665697162582;
+        Thu, 13 Oct 2022 14:39:22 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1665697162; cv=none;
         d=google.com; s=arc-20160816;
-        b=f93ja39B/9RpicIoJZbkzYlZQOWOUoki3fCiJ8M7oy44j0ieOytuW0/qbf2/+3oRF9
-         IpOgjM11ZpsYoNWYUsUqihvk7IMUs7v98Psk6sJymGUXp1dqj2A/rvvUWYI1ruusKEaU
-         L4RHb+0jg86qmP89Sd0oEEzHlj5RNX9znskXynsG+OqA5PN6PhklzPf/Ml0qdAUc+GVI
-         Gxd2U3v8A/earD9zz+9hHEeHO0iM8JKy8Bqof1Tkbz7hKB7SSq3U/fHM8ltmttsPt9+0
-         RUZhFJUtOeda3TwEyEXHVCrmoSwzGow7h7vAdHGMKorGFlApk4e1VwYMAcT4xc7OxIr0
-         SnoQ==
+        b=lhT/ARycpBKf7fapJVIlNYFaDDMCpHVC70j8GAR5s8jOhqH5IHPV3Yab6NGk39eS3I
+         RUYuFJarxJq1V2R4W4NL3hD0p07VNDnDa2dW7FH0cAeoW1pAOANo/ahzTy+r6KPNF3eJ
+         vAUxodkP2aQo+OoR80GUYjVJa3hQae5vrBT/V1NAqqnkzMY7DaRxNAcug7TcYmVLaKza
+         YPysHvqMXevdP4lLL3d7W1wDs8z81UspwN9j+RX1yH23QpUVADWB9iCXpnJkRf6zVmrW
+         RLhxGnJebxpWfKQvoSOZ+fguilxgsXLE5I4XC9AGv5i0YdMSwPTBuEhjvsIU96xVTQ10
+         CwfA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
-        bh=8FM5XpZ8DTUHfnBF91yhMamKEwGHnIFRRp55KtGJXy0=;
-        b=b1hWRfYEc1fxkmZbF9NnE9YaIh5lgaEBt9eunlK4SqWXM/0/MPAWYpdPa7mYCtOqBR
-         e3yRXzVxQP/i9brURgL9fkX1T9CzDYU0nqzctkJAGnn4BqWQ7/w5bngoVVZPwgceXIEe
-         vTjZiecrLYlu3s4nfYYN9VsCYmUMv/CqmZBWxwBuK1ziCUlxU/Fk54ZP2KU44qXe3naP
-         COH5XW3GXdoeVoac3wsO9V5NRYfK8z4v3kngTItekggErjt3qgpCwwGtLNVX9UBl5uln
-         sb+uEMrw5umPYTfGdBSMbKrplHnB6BJAuzjEd9As1j4W49wLd/vtHX1hnYSJ2pa/LPE/
-         wGQw==
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=ZVty32Eta7qbqugjeIYRFIZcE5wSHvhcmMJ40gLvtQQ=;
+        b=sxiv9XiqxLlq9hGpNTh1NBhiBwJauC0p7z5DXpeCKv0gWb4rkWEEWtlEEvHFo7J0Hj
+         yblW2rYRO6We7HMmraFXc7VX8okCWfDM31ywRC9fW4BDxP5ZXVcNDr3OqW6JQn9cEfEx
+         2+NyuNcZ/TjwSKClGzKQdYBhY9doDp1HSjSatsFJoyS5mKeeh+hi1yFg+I7kDTkmvhnw
+         U3kR2UOMgK8AsGTZvT6f45R/unpn9xaTciqpvtW77ifDON+QH5IXeeGAgJz8RcPsYMQS
+         83vtVezKWUk3X1JohmwKA7eHTJjIy7oNDrUE/KU3xSZqbdB15NJSi4ZTDqsqn9UFnsHi
+         Qm3Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=hkmDy0nl;
+       dkim=pass header.i=@kernel.org header.s=k20201202 header.b="I47/oIQ+";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=kernel.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id w1-20020ac857c1000000b00343582e11c7si247577qta.603.2022.10.13.10.42.23
+        by mx.google.com with ESMTPS id 14-20020a0562140cce00b004b179766502si576342qvx.566.2022.10.13.14.39.22
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 13 Oct 2022 10:42:23 -0700 (PDT)
+        Thu, 13 Oct 2022 14:39:22 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=hkmDy0nl;
+       dkim=pass header.i=@kernel.org header.s=k20201202 header.b="I47/oIQ+";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:37022 helo=lists1p.gnu.org)
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=kernel.org
+Received: from localhost ([::1]:56446 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1oj2Du-0005bq-O4
-	for alex.bennee@linaro.org; Thu, 13 Oct 2022 13:42:22 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:43652)
+	id 1oj5vG-0008IQ-3y
+	for alex.bennee@linaro.org; Thu, 13 Oct 2022 17:39:22 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53528)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1oj2CO-0005CJ-PW
- for qemu-arm@nongnu.org; Thu, 13 Oct 2022 13:40:48 -0400
-Received: from mail-wm1-x334.google.com ([2a00:1450:4864:20::334]:52146)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1oj2CM-0000u3-Lx
- for qemu-arm@nongnu.org; Thu, 13 Oct 2022 13:40:48 -0400
-Received: by mail-wm1-x334.google.com with SMTP id n9so1667662wms.1
- for <qemu-arm@nongnu.org>; Thu, 13 Oct 2022 10:40:46 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:from:to:cc:subject:date:message-id:reply-to;
- bh=8FM5XpZ8DTUHfnBF91yhMamKEwGHnIFRRp55KtGJXy0=;
- b=hkmDy0nluB2ty51U98GJcr4Owod3yzVZHGy/sP0x4yiDZ/caccH1ZEkZP9KVT9POaG
- TjwMW7oZbfyRgiDFgmIJ0S6wQhNjoG2cQj86yTmBfT3kaZ46D/WiH8vhrRYmNVrWFNaL
- iiuZ4KNywDJSDlDRM6iVMnhfWm+q91xvFS7E9/v0BQalXN7lY/76LEZF5lbrTYwojDGU
- 17xj8xwJR9Pkyj2Hx4aCm0xZrTL1jnq7Fkzs7EmLlCm555KJsWAJUPYWvwmnIuBzNXXb
- gwnNNI2Qd7kX7jZyL2ZZJrryDmGf/yLDeeoybknCEYxu56vit7ItVLeTAVpxUjqwxRtG
- k1Ow==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=8FM5XpZ8DTUHfnBF91yhMamKEwGHnIFRRp55KtGJXy0=;
- b=KMQyPkrTiAjgxTD40gEP9LAjhAtFkGoUNopE+L8P9tCnXJDm3Ne3rduV4bpHD4uHBc
- iPtu7/wH0doZIun5FyOczsiNhyJYnDjJViYhAW1jwIv22ec4AaLMzQQ/e9MGhrgEKdea
- IJbTSxbjObo0HOkpy9G/cvdo9uVqNiWBkvcQcW97+UVZrGdiGMFxu16c8Oq2WIN1GyVC
- dmERmOnycRtVsJ2yV2j59AgGJieGBM47ZgtM4nK7m+tb0JrdSma9oNS/Dug+56Zp30dE
- 14rQfwAW+PYsi0dTdgSWr3TuVPD8GE/H6eKRvFyyzg62gzH/JD8zMiIKeHItMXmbQ3sr
- LgLw==
-X-Gm-Message-State: ACrzQf1bpG8OXuS9bRErPBGJvJfKrLXI9Af6ha9FlqRqqr1V0fU8BqFE
- mSNH2eYwUwG/dpSdwxRyEAA0L8ZpHCyrRQ==
-X-Received: by 2002:a05:600c:a09:b0:3b5:2f6b:c7c5 with SMTP id
- z9-20020a05600c0a0900b003b52f6bc7c5mr665125wmp.141.1665682845096; 
- Thu, 13 Oct 2022 10:40:45 -0700 (PDT)
-Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
- by smtp.gmail.com with ESMTPSA id
- iw6-20020a05600c54c600b003c6c3fb3cf6sm118482wmb.18.2022.10.13.10.40.43
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 13 Oct 2022 10:40:44 -0700 (PDT)
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Cc: John Snow <jsnow@redhat.com>,
-	qemu-block@nongnu.org
-Subject: [PATCH] hw/ide/microdrive: Use device_cold_reset() for self-resets
-Date: Thu, 13 Oct 2022 18:40:42 +0100
-Message-Id: <20221013174042.1602926-1-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.25.1
+ (Exim 4.90_1) (envelope-from <robh+dt@kernel.org>)
+ id 1oj5jj-00052w-H3; Thu, 13 Oct 2022 17:27:27 -0400
+Received: from dfw.source.kernel.org ([139.178.84.217]:57042)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <robh+dt@kernel.org>)
+ id 1oj5jh-0002ad-HW; Thu, 13 Oct 2022 17:27:27 -0400
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by dfw.source.kernel.org (Postfix) with ESMTPS id 72254617AB;
+ Thu, 13 Oct 2022 21:27:17 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id D20F0C433D7;
+ Thu, 13 Oct 2022 21:27:16 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1665696436;
+ bh=ZVty32Eta7qbqugjeIYRFIZcE5wSHvhcmMJ40gLvtQQ=;
+ h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+ b=I47/oIQ+iarLkwpW4HKwbb6079Tsl3ncfE/nv76YidVOY+oOgJvk2idDgQL59oqNm
+ cvNrghBCUduUqf+M/BzbWTWHm4fWqRfi/pv4TQ1l8ZDbLQmaF9xdef1b2H1ka93agS
+ vJ+AxT68df+f3Iv/3pPs3tBVxrn/fl007C1o6gLgq2tZryeXRfON5mxC77Z31s6GU2
+ d+q1EppaYnyBF/JAuZiQd8DGcKR5r1KzJprwG4NL+OT3gLHFEXGjQvoYO1T0cI/dI4
+ 2lB5eCxWQXH579fGagwIjGu4HjdtoZ3BBovRjOh5OLzgrzHVki1bTJ6NrgEjazssQ3
+ hcWGkoe3BsQFQ==
+Received: by mail-vk1-f174.google.com with SMTP id b81so1428058vkf.1;
+ Thu, 13 Oct 2022 14:27:16 -0700 (PDT)
+X-Gm-Message-State: ACrzQf35ptMDG/jxmiL7IYIK9WXiqv8V6u0mcRa6kGRixWSCe7GcviWL
+ 43waVWNluNd2Bol8zFngezeEr6BK2vOMe+QgPw==
+X-Received: by 2002:a1f:3d4c:0:b0:3aa:feb8:3ec6 with SMTP id
+ k73-20020a1f3d4c000000b003aafeb83ec6mr1235295vka.26.1665696435808; Thu, 13
+ Oct 2022 14:27:15 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::334;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x334.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+References: <20220927100347.176606-1-jean-philippe@linaro.org>
+ <20220927100347.176606-9-jean-philippe@linaro.org>
+ <CAFEAcA8uuzcHS3B3VY=J38gSrZUhnaTDKq1ei0rwtJtoG843bA@mail.gmail.com>
+In-Reply-To: <CAFEAcA8uuzcHS3B3VY=J38gSrZUhnaTDKq1ei0rwtJtoG843bA@mail.gmail.com>
+From: Rob Herring <robh+dt@kernel.org>
+Date: Thu, 13 Oct 2022 16:27:06 -0500
+X-Gmail-Original-Message-ID: <CAL_JsqKvXZ6J_H8zhsAkvpAyZvymVbxk1X-3JMV44-9yn7z+1w@mail.gmail.com>
+Message-ID: <CAL_JsqKvXZ6J_H8zhsAkvpAyZvymVbxk1X-3JMV44-9yn7z+1w@mail.gmail.com>
+Subject: Re: [PATCH v2 8/8] hw/arm/virt: Fix devicetree warnings about node
+ names
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: Jean-Philippe Brucker <jean-philippe@linaro.org>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=139.178.84.217; envelope-from=robh+dt@kernel.org;
+ helo=dfw.source.kernel.org
+X-Spam_score_int: -70
+X-Spam_score: -7.1
+X-Spam_bar: -------
+X-Spam_report: (-7.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_HI=-5, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
+X-Mailman-Approved-At: Thu, 13 Oct 2022 17:38:54 -0400
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -120,79 +113,34 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: PQauRn+yHNC7
+X-TUID: Q66imeIBxJma
 
-Currently the microdrive code uses device_legacy_reset() to reset
-itself, and has its reset method call reset on the IDE bus as the
-last thing it does.  Switch to using device_cold_reset().
+On Tue, Sep 27, 2022 at 6:28 AM Peter Maydell <peter.maydell@linaro.org> wrote:
+>
+> On Tue, 27 Sept 2022 at 11:12, Jean-Philippe Brucker
+> <jean-philippe@linaro.org> wrote:
+> >
+> > The devicetree specification requires that nodes use a generic name
+> > where appropriate. Fix the corresponding dt-validate warnings:
+>
+> Either:
+> (1) guests are looking for devices in the DT by node name. In that
+> case we can't change the node names without breaking them
 
-The only concrete microdrive device is the TYPE_DSCM1XXXX; it is not
-command-line pluggable, so it is used only by the old pxa2xx Arm
-boards 'akita', 'borzoi', 'spitz', 'terrier' and 'tosa'.
+Using node names is generally wrong unless the node name to use is
+defined and that's the only way to identify them (e.g. /chosen).
 
-You might think that this would result in the IDE bus being
-reset automatically, but it does not, because the IDEBus type
-does not set the BusClass::reset method. Instead the controller
-must explicitly call ide_bus_reset(). We therefore leave that
-call in md_reset().
+> Or:
+> (2) guest look for nodes by compatibility, in which case why
+> do we care what the exact format of the node name is?
 
-Note also that because the PCMCIA card device is a direct subclass of
-TYPE_DEVICE and we don't model the PCMCIA controller-to-card
-interface as a qbus, PCMCIA cards are not on any qbus and so they
-don't get reset when the system is reset.  The reset only happens via
-the dscm1xxxx_attach() and dscm1xxxx_detach() functions during
-machine creation.
+The spec[1] has defined standard class node names going back to 2008.
+That covered all the names here except for 'iommu' and those names
+date back to the 1990s. Obviously, there has been no checking of them
+or many things for a long time, but now we can check much more than
+reviews ever could we have a huge technical debt. The main reason on
+care on these is just consistency.
 
-Because our aim here is merely to try to get rid of calls to the
-device_legacy_reset() function, we leave these other dubious
-reset-related issues alone.  (They all stem from this code being
-absolutely ancient.)
+Rob
 
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
- hw/ide/microdrive.c | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
-
-diff --git a/hw/ide/microdrive.c b/hw/ide/microdrive.c
-index 6df9b4cbbe1..56c5be36551 100644
---- a/hw/ide/microdrive.c
-+++ b/hw/ide/microdrive.c
-@@ -175,7 +175,7 @@ static void md_attr_write(PCMCIACardState *card, uint32_t at, uint8_t value)
-     case 0x00:	/* Configuration Option Register */
-         s->opt = value & 0xcf;
-         if (value & OPT_SRESET) {
--            device_legacy_reset(DEVICE(s));
-+            device_cold_reset(DEVICE(s));
-         }
-         md_interrupt_update(s);
-         break;
-@@ -318,7 +318,7 @@ static void md_common_write(PCMCIACardState *card, uint32_t at, uint16_t value)
-     case 0xe:	/* Device Control */
-         s->ctrl = value;
-         if (value & CTRL_SRST) {
--            device_legacy_reset(DEVICE(s));
-+            device_cold_reset(DEVICE(s));
-         }
-         md_interrupt_update(s);
-         break;
-@@ -543,7 +543,7 @@ static int dscm1xxxx_attach(PCMCIACardState *card)
-     md->attr_base = pcc->cis[0x74] | (pcc->cis[0x76] << 8);
-     md->io_base = 0x0;
- 
--    device_legacy_reset(DEVICE(md));
-+    device_cold_reset(DEVICE(md));
-     md_interrupt_update(md);
- 
-     return 0;
-@@ -553,7 +553,7 @@ static int dscm1xxxx_detach(PCMCIACardState *card)
- {
-     MicroDriveState *md = MICRODRIVE(card);
- 
--    device_legacy_reset(DEVICE(md));
-+    device_cold_reset(DEVICE(md));
-     return 0;
- }
- 
--- 
-2.25.1
-
+[1] https://elinux.org/images/c/cf/Power_ePAPR_APPROVED_v1.1.pdf

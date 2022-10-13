@@ -1,62 +1,62 @@
-Received: by 2002:a17:906:43c7:b0:78d:9f02:16a1 with SMTP id j7csp674800ejn;
-        Thu, 13 Oct 2022 09:16:05 -0700 (PDT)
-X-Google-Smtp-Source: AMsMyM4xICKdQLshhQOV5kZewYuE97YcxvRlI/C7ogpRVSSHNP3ywd5sp1nvQzSTf4Gp9NzMzDpQ
-X-Received: by 2002:ac8:5b87:0:b0:39c:b5a6:193b with SMTP id a7-20020ac85b87000000b0039cb5a6193bmr470545qta.461.1665677765570;
-        Thu, 13 Oct 2022 09:16:05 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1665677765; cv=none;
+Received: by 2002:a17:906:43c7:b0:78d:9f02:16a1 with SMTP id j7csp676690ejn;
+        Thu, 13 Oct 2022 09:18:49 -0700 (PDT)
+X-Google-Smtp-Source: AMsMyM6qo00BgMP5pN/7m8zg0AwJFHRcouOq0IirOS7zPfKPSIsr/UK1K/PunbU8hjf7E4Q9i2GX
+X-Received: by 2002:ad4:5b8d:0:b0:4b4:9b68:c651 with SMTP id 13-20020ad45b8d000000b004b49b68c651mr626983qvp.90.1665677929110;
+        Thu, 13 Oct 2022 09:18:49 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1665677929; cv=none;
         d=google.com; s=arc-20160816;
-        b=FQiCigSDaNx8brIwjpdX8qGvghTjtNI2wdNpKGZ7C3EhjBHpH5LVd3HSNbeKSckxRf
-         g/7e0EHV9o43qeID2BB70CO52PPGOD1TPEzPHreWXsjY7MAt88iXbBaCg/BS8WCq/X23
-         W5p8sYoP3PqoC8oK41eK+cV334zvCcUDk6apNgkCvzvydlM3MpUSO4oSaA41WkleJ9+C
-         7Xx3AKfXr+uJQejma2rDPwjZGfDkXAag58AcxU7Ir9guOwd54PD8nb2gfy1C0jIU1pOf
-         hdkAKTSj+3GOUEr/6t/YYWqOyuG+mRA5+k6yNNmgsxSJz3EdmOJabwkEtiN/xbIfJUPG
-         nQSQ==
+        b=qYyRCtm53eANYUnVXHR85KRvWqPInkrXwBGOQNUqJkNPteFgnvkeqe+SiOmY1Boh1n
+         dKtcgk5rl0Fw4IV92HQBF0S9cwP/kOyN9BxM0CDdGAph+4qtwzZqqLwBenFPyhD0ZAwy
+         I6eNjaziyHXNDcvBNn/Bc8qz0OpgO+qhRPJcD8PHFORRKH8T8ci4NKQ8x8sAWCdt/lsu
+         mjzR5SmoTp/PdFI2dz0PsYT/jKkGbfPDUTHpaJD3NSWmmP93X22rvcvj6Xk748MQ/YOn
+         PWsx0o+6jS1aZNW8PR4cJjcpUkVTicSRHB/ZMoOyWO0lcqXI+rtxWN7UhTYdgbz6dwot
+         lmHA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from;
-        bh=sOShrUiwHtWYk/q1riPCbHiO/7XqSOWqSNIOc826uwc=;
-        b=WuuvbUHcKztHWNISAxkPrk3y+NBc5Pu51iLgFxLqmwf00ecEBveEmJ4nOuZZHQ/Rk4
-         vyp2PCZt9/lB7LxpGuZmkggsYm6v+dpF6lvidkswqf8ieP6IfU7gMHG4/wjMYF2beBIW
-         I25y7469pezWEk88XPsOMMGpnh8ya040Wd+eJP3tCigqvO9roMNvSmJHi23VPbFDao86
-         Z+CNOaiIE9ltqx+ZTv0NJNYidH2det+47ZelqndiG5kjTpeSm8d177IUPhfbBb24r2Tz
-         sVmO/SQUFTiUaPVTNoZ3lL2MH63hOCvFbxCz+j3vW8ajTDo/q8sxUOPAlD1YqFCGC0uv
-         g2bw==
+        bh=xxe9gdYloiTCyitN/8H0IL+8JasPaFjsHc0Kr6XXXSs=;
+        b=uocHr8nxkFDFaWCkH3qGC2P4He47OFYWKRt/qx/ttIiIUmdIqpXeZ1heyDajF+A0I2
+         Gyu0E5/D4aRd73L2Lx/c0AZlGoJxRBeDQ4uw8JsxxTArmxSz2mKzJuKHf35X46rjr3xf
+         GtYzcjgfyyS6btjov2XhX2RMt0KZ7eWvjd1fMjBpHspR+2JU5FT0KY1JMjGYUfs9P2iN
+         UkSA9ngj2jsoEBipUKekJe/EhmHMb/YEMYAM0OVYpLervzAHu02DnppddUuASFrmaNhN
+         wJpd9QrDlgWhBBZ8hbFKMcSGMUaD5zaskKvzBsC9y2rkR+yfmC82M91TqXFllvkQK1fo
+         cXNA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id ib8-20020a0562141c8800b004992a5c6dd4si136985qvb.58.2022.10.13.09.16.05
+        by mx.google.com with ESMTPS id js7-20020a0562142aa700b004b1d28803e3si117883qvb.273.2022.10.13.09.18.48
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 13 Oct 2022 09:16:05 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 13 Oct 2022 09:18:49 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:43530 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:57752 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1oj0sO-0004df-W5
-	for alex.bennee@linaro.org; Thu, 13 Oct 2022 12:16:05 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44000)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1oj0v2-0008GI-Iy
+	for alex.bennee@linaro.org; Thu, 13 Oct 2022 12:18:48 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53464)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=HNeY=2O=kaod.org=clg@ozlabs.org>)
- id 1oj0pX-0000po-VK; Thu, 13 Oct 2022 12:13:07 -0400
-Received: from mail.ozlabs.org ([2404:9400:2221:ea00::3]:36919
- helo=gandalf.ozlabs.org)
+ id 1oj0pv-0001as-Mv; Thu, 13 Oct 2022 12:13:31 -0400
+Received: from gandalf.ozlabs.org ([150.107.74.76]:50351)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=HNeY=2O=kaod.org=clg@ozlabs.org>)
- id 1oj0pW-0002eW-3k; Thu, 13 Oct 2022 12:13:07 -0400
-Received: from gandalf.ozlabs.org (gandalf.ozlabs.org [150.107.74.76])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4MpF1B6chsz4xH2;
- Fri, 14 Oct 2022 03:13:02 +1100 (AEDT)
+ id 1oj0pt-0002js-4l; Thu, 13 Oct 2022 12:13:31 -0400
+Received: from gandalf.ozlabs.org (mail.ozlabs.org
+ [IPv6:2404:9400:2221:ea00::3])
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4MpF1f2hzzz4xH0;
+ Fri, 14 Oct 2022 03:13:26 +1100 (AEDT)
 Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
  (No client certificate requested)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4MpF174Sgzz4xDn;
- Fri, 14 Oct 2022 03:12:59 +1100 (AEDT)
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4MpF1Z3ql9z4xDn;
+ Fri, 14 Oct 2022 03:13:22 +1100 (AEDT)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, qemu-block@nongnu.org,
@@ -65,59 +65,127 @@ Cc: qemu-arm@nongnu.org, qemu-block@nongnu.org,
  Alistair Francis <alistair@alistair23.me>,
  Francisco Iglesias <frasse.iglesias@gmail.com>,
  Iris Chen <irischenlj@fb.com>, Michael Walle <michael@walle.cc>,
+ Patrick Williams <patrick@stwcx.xyz>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
-Subject: [PATCH v4 03/10] m25p80: Add erase size for mx25l25635e
-Date: Thu, 13 Oct 2022 18:12:34 +0200
-Message-Id: <20221013161241.2805140-4-clg@kaod.org>
+Subject: [PATCH v4 09/10] m25p80: Add the w25q01jvq SFPD table
+Date: Thu, 13 Oct 2022 18:12:40 +0200
+Message-Id: <20221013161241.2805140-10-clg@kaod.org>
 X-Mailer: git-send-email 2.37.3
 In-Reply-To: <20221013161241.2805140-1-clg@kaod.org>
 References: <20221013161241.2805140-1-clg@kaod.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2404:9400:2221:ea00::3;
+Received-SPF: pass client-ip=150.107.74.76;
  envelope-from=SRS0=HNeY=2O=kaod.org=clg@ozlabs.org; helo=gandalf.ozlabs.org
-X-Spam_score_int: -39
-X-Spam_score: -4.0
-X-Spam_bar: ----
-X-Spam_report: (-4.0 / 5.0 requ) BAYES_00=-1.9,
- HEADER_FROM_DIFFERENT_DOMAINS=0.25, RCVD_IN_DNSWL_MED=-2.3,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_score_int: -16
+X-Spam_score: -1.7
+X-Spam_bar: -
+X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.25, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 0HUAArJsIwNE
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 3dW/3HNmSd3e
 
+From: Patrick Williams <patrick@stwcx.xyz>
+
+Generated from hardware using the following command and then padding
+with 0xff to fill out a power-of-2:
+    hexdump -v -e '8/1 "0x%02x, " "\n"' sfdp`
+
+Signed-off-by: Patrick Williams <patrick@stwcx.xyz>
+Reviewed-by: Francisco Iglesias <frasse.iglesias@gmail.com>
+[ clg: removed extern ]
+Message-Id: <20221006224424.3556372-1-patrick@stwcx.xyz>
 Signed-off-by: Cédric Le Goater <clg@kaod.org>
 ---
- hw/block/m25p80.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+ hw/block/m25p80_sfdp.h |  2 ++
+ hw/block/m25p80.c      |  3 ++-
+ hw/block/m25p80_sfdp.c | 36 ++++++++++++++++++++++++++++++++++++
+ 3 files changed, 40 insertions(+), 1 deletion(-)
 
+diff --git a/hw/block/m25p80_sfdp.h b/hw/block/m25p80_sfdp.h
+index e50f57e48e43..df7adfb5cec6 100644
+--- a/hw/block/m25p80_sfdp.h
++++ b/hw/block/m25p80_sfdp.h
+@@ -24,4 +24,6 @@ uint8_t m25p80_sfdp_mx66l1g45g(uint32_t addr);
+ uint8_t m25p80_sfdp_w25q256(uint32_t addr);
+ uint8_t m25p80_sfdp_w25q512jv(uint32_t addr);
+ 
++uint8_t m25p80_sfdp_w25q01jvq(uint32_t addr);
++
+ #endif
 diff --git a/hw/block/m25p80.c b/hw/block/m25p80.c
-index 13e7b28fd2b0..637c25d76e37 100644
+index 8353a00a0595..02adc8752736 100644
 --- a/hw/block/m25p80.c
 +++ b/hw/block/m25p80.c
-@@ -232,7 +232,8 @@ static const FlashPartInfo known_devices[] = {
-     { INFO("mx25l6405d",  0xc22017,      0,  64 << 10, 128, 0) },
-     { INFO("mx25l12805d", 0xc22018,      0,  64 << 10, 256, 0) },
-     { INFO("mx25l12855e", 0xc22618,      0,  64 << 10, 256, 0) },
--    { INFO6("mx25l25635e", 0xc22019,     0xc22019,  64 << 10, 512, 0) },
-+    { INFO6("mx25l25635e", 0xc22019,     0xc22019,  64 << 10, 512,
-+            ER_4K | ER_32K) },
-     { INFO("mx25l25655e", 0xc22619,      0,  64 << 10, 512, 0) },
-     { INFO("mx66l51235f", 0xc2201a,      0,  64 << 10, 1024, ER_4K | ER_32K) },
-     { INFO("mx66u51235f", 0xc2253a,      0,  64 << 10, 1024, ER_4K | ER_32K) },
+@@ -349,7 +349,8 @@ static const FlashPartInfo known_devices[] = {
+       .sfdp_read = m25p80_sfdp_w25q256 },
+     { INFO("w25q512jv",   0xef4020,      0,  64 << 10, 1024, ER_4K),
+       .sfdp_read = m25p80_sfdp_w25q512jv },
+-    { INFO("w25q01jvq",   0xef4021,      0,  64 << 10, 2048, ER_4K) },
++    { INFO("w25q01jvq",   0xef4021,      0,  64 << 10, 2048, ER_4K),
++      .sfdp_read = m25p80_sfdp_w25q01jvq },
+ };
+ 
+ typedef enum {
+diff --git a/hw/block/m25p80_sfdp.c b/hw/block/m25p80_sfdp.c
+index dad3d7e64f9f..77615fa29e5b 100644
+--- a/hw/block/m25p80_sfdp.c
++++ b/hw/block/m25p80_sfdp.c
+@@ -294,3 +294,39 @@ static const uint8_t sfdp_w25q512jv[] = {
+     0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
+ };
+ define_sfdp_read(w25q512jv);
++
++static const uint8_t sfdp_w25q01jvq[] = {
++    0x53, 0x46, 0x44, 0x50, 0x06, 0x01, 0x01, 0xff,
++    0x00, 0x06, 0x01, 0x10, 0x80, 0x00, 0x00, 0xff,
++    0x84, 0x00, 0x01, 0x02, 0xd0, 0x00, 0x00, 0xff,
++    0x03, 0x00, 0x01, 0x02, 0xf0, 0x00, 0x00, 0xff,
++    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
++    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
++    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
++    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
++    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
++    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
++    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
++    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
++    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
++    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
++    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
++    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
++    0xe5, 0x20, 0xfb, 0xff, 0xff, 0xff, 0xff, 0x3f,
++    0x44, 0xeb, 0x08, 0x6b, 0x08, 0x3b, 0x42, 0xbb,
++    0xfe, 0xff, 0xff, 0xff, 0xff, 0xff, 0x00, 0x00,
++    0xff, 0xff, 0x40, 0xeb, 0x0c, 0x20, 0x0f, 0x52,
++    0x10, 0xd8, 0x00, 0x00, 0x36, 0x02, 0xa6, 0x00,
++    0x82, 0xea, 0x14, 0xe2, 0xe9, 0x63, 0x76, 0x33,
++    0x7a, 0x75, 0x7a, 0x75, 0xf7, 0xa2, 0xd5, 0x5c,
++    0x19, 0xf7, 0x4d, 0xff, 0xe9, 0x70, 0xf9, 0xa5,
++    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
++    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
++    0xff, 0x0a, 0xf0, 0xff, 0x21, 0xff, 0xdc, 0xff,
++    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
++    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
++    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
++    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
++    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
++};
++define_sfdp_read(w25q01jvq);
 -- 
 2.37.3
 

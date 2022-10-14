@@ -1,110 +1,120 @@
-Received: by 2002:a17:906:43c7:b0:78d:9f02:16a1 with SMTP id j7csp279695ejn;
-        Fri, 14 Oct 2022 04:44:34 -0700 (PDT)
-X-Google-Smtp-Source: AMsMyM6CVId9UoBF3mS/i8njmPU6U/t+qFbH/IO/NrROKG0y/T8bYK5pKqI1ymsQnMl8jApbYz54
-X-Received: by 2002:a05:622a:507:b0:35d:4346:e10 with SMTP id l7-20020a05622a050700b0035d43460e10mr3688365qtx.52.1665747874114;
-        Fri, 14 Oct 2022 04:44:34 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1665747874; cv=none;
+Received: by 2002:a17:906:43c7:b0:78d:9f02:16a1 with SMTP id j7csp401288ejn;
+        Fri, 14 Oct 2022 07:27:13 -0700 (PDT)
+X-Google-Smtp-Source: AMsMyM4rlJFHFeW0OvWAjeN3uFi0KfgCiMe9F4n+9xtYa//XUom4DDudXTzbRX82Le7ZbwiVs87w
+X-Received: by 2002:a05:6214:766:b0:4b3:e83b:6e8a with SMTP id f6-20020a056214076600b004b3e83b6e8amr4242912qvz.53.1665757633544;
+        Fri, 14 Oct 2022 07:27:13 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1665757633; cv=none;
         d=google.com; s=arc-20160816;
-        b=fVoQLCE70g3LxJmddHuxmkghltvXHCCnXRz20ArBw7Loob2O8CKp4eZZe8Bt/fqQD1
-         wsxnf0vVq/RdLl2EQsPvVZh40jc6kE1EMEJNLGW/mAzda86ZwyIRDwKIsSCT3yKqU3db
-         MByOJycbsp6zNd7GmW0vCi5JUozBpG577RFe/ESByaLz0yZ9mPzD6QF6tqQv4e6RtGqP
-         g5VcHEXo7iFITwHln1R6BVOtUZ5MFjMyItD74GKrHFxpJ/NK5JgTfVVnbPq25MAUQ0nD
-         /j+pyEZyf/E7tjG7NPSjv1MmXoz104dK2vlyByhXOcm1d/cEEygl8dvroMuAQNF6Rt82
-         c5vg==
+        b=Tyy7PiKqkwHt4HAyIaw+fYn30OwhNFVtA5pacLFVprgm/y913iEL0dzcHUqleKhrpR
+         4xHsBoOF+jEZvye5DlZhWy7trQ5sYiR5M+oXcYNwiXh0xFyG8F8RWr8ySXJ1pZrVQLUd
+         Xf2cV9y23tJvXBU1pQbgsyN4G0WJghTS6zp9ky1j/KTXoAu5t6nfXZCtfoiMKYhd2THb
+         haNc+xKevyCyXANUrf+oXzG5idKzePIbD5SLqijIlKJBIRHTJXd1TyNsHuVh73MRGzms
+         YeA0x8ESNxs8x4WUxI9iE51Z4w12j2xsuAIrOM6V9EqpZ5ufLaLucv/1KzpXrxNxD+oG
+         Qi9Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=aRG8BR/IjK0Fu7mwIu3t8Q/l3cqVsdtbHs7LyCSzDA8=;
-        b=FrXPSkxESmem26xRbC0JyLrFJcwOxC0NtSiZKmUdFT8HS5nZpRkfn/hzIoQvz8xkll
-         I+lrgoEvgzUZYwLGj+Wi+qV9Yx1hl30TV2nynm2HsfOvSjjTC0lztmyR3i15AXvqWDoy
-         7G/AEnrcxM/pfDUaPaqSrMctb5Tn34gZSdu9odziEcv7KuQre7h+0HW3c+YoJKrRC0bD
-         Z56E8wYvK5D0203phF3kQVEuvJ/rvYa5hRe1DUIgalP8jtlhllzDM76qlCskK80CN+Fs
-         26LwUTRs0cgTtup53zZ5ByKGi+kK3aAHZOdPZqZ4+L7/05LK9kM4JbDr9Flrc1KCuarm
-         lNBQ==
+         :list-unsubscribe:list-id:precedence:user-agent:in-reply-to
+         :content-transfer-encoding:content-disposition:mime-version
+         :references:message-id:subject:cc:to:from:date:dkim-signature;
+        bh=yjgiwJEv+q5nOag4c7W5dfvE1uTTPNMygszZRo8UDug=;
+        b=j8qmQhP/6IOVPEQd4wEuKQFhs3BP7tXdA5Z6Egsz7JUdDh9WLCM/u4THS1TzdYvouz
+         iuWysu5kI4LwrJNfykNEsLAyUU0xPSxG5ICFbyfC/P+k2MTSenm4DnpQfTu1CeFXI7ZO
+         pypRzQJnFnRxQzuYXTJ8DlWIn5iEEk6rbjUU33jxc3iBJLA6aiytiJhq52qXqTtCsucA
+         m7KfkRfHXStzPUP7pMjpzkIzyHyJIsIt6bCf3IhrLeJQhoSoRxG3+A4WwULs57FMiUeV
+         u6lRU3nK4SkHxj0KfVF3ZnTLHLj9OymSsCWKiT9+RrDjvgUl+ITItoco2ZFvkLaDjIUL
+         rMaw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="q71dWE/r";
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=FHTCKZVa;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id cd13-20020a05622a418d00b0039beb0bd210si1394296qtb.371.2022.10.14.04.44.33
+        by mx.google.com with ESMTPS id j6-20020a37c246000000b006eeb3622d8fsi1368238qkm.450.2022.10.14.07.27.13
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 14 Oct 2022 04:44:34 -0700 (PDT)
+        Fri, 14 Oct 2022 07:27:13 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="q71dWE/r";
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=FHTCKZVa;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:35866 helo=lists1p.gnu.org)
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:36382 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ojJ7B-00079Z-Jf
-	for alex.bennee@linaro.org; Fri, 14 Oct 2022 07:44:33 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:56480)
+	id 1ojLeZ-0005M6-VK
+	for alex.bennee@linaro.org; Fri, 14 Oct 2022 10:27:12 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:56296)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1ojJ0u-0004Cb-Q0
- for qemu-devel@nongnu.org; Fri, 14 Oct 2022 07:38:04 -0400
-Received: from mail-pg1-x52a.google.com ([2607:f8b0:4864:20::52a]:46047)
+ (Exim 4.90_1) (envelope-from <frasse.iglesias@gmail.com>)
+ id 1ojLc3-0003dd-Bf; Fri, 14 Oct 2022 10:24:36 -0400
+Received: from mail-lf1-x133.google.com ([2a00:1450:4864:20::133]:33428)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1ojJ0r-0003B9-Um
- for qemu-devel@nongnu.org; Fri, 14 Oct 2022 07:38:04 -0400
-Received: by mail-pg1-x52a.google.com with SMTP id r18so4055135pgr.12
- for <qemu-devel@nongnu.org>; Fri, 14 Oct 2022 04:38:01 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=aRG8BR/IjK0Fu7mwIu3t8Q/l3cqVsdtbHs7LyCSzDA8=;
- b=q71dWE/rBnsBURF2swDUuwLNF04lco66KjL92NR/thC3jNAWKdHIUUaaJWkd0Fxiwc
- dguxJFLUY5K+G3KRv4xWffIC7CjocOyPOo3gQ87AegudSjADEeKMtsu/pnhPe1AAZ0fd
- wSc/Abo5OQ1Srzw76cx98aEapFMZZhzCgPV+pOiI+fhCbq4ik51cy6SvFoCgTuQrqnbU
- Qloewf9ebZb6usSpDgtRwwaue3IH08xs0K0FudGDhtsB7BECjUWvwyX8HSQz3I+7zob5
- YmbN4+Aq67lsh3GHelznHUpdF36umyvm7wFRAGFSStkV949X6iYh11QXrS3tDQ0tosKo
- b7Ag==
+ (Exim 4.90_1) (envelope-from <frasse.iglesias@gmail.com>)
+ id 1ojLby-0007hV-Bz; Fri, 14 Oct 2022 10:24:33 -0400
+Received: by mail-lf1-x133.google.com with SMTP id j4so7522920lfk.0;
+ Fri, 14 Oct 2022 07:24:28 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=user-agent:in-reply-to:content-transfer-encoding
+ :content-disposition:mime-version:references:message-id:subject:cc
+ :to:from:date:from:to:cc:subject:date:message-id:reply-to;
+ bh=yjgiwJEv+q5nOag4c7W5dfvE1uTTPNMygszZRo8UDug=;
+ b=FHTCKZVaVRfF9Na1Y46nJtIuV5SOJy4sWAinaWdE3wub1HLomZWwasuBFeBf03utCQ
+ GFG2QErXcIIdwYOmS4EqqBZxNFia9oESri4uS8aTOF3dbefBJfkA/mQSbZwG47X8p1/4
+ loSlZ/PkjwWvKEXGavgqGlM2cSa8RNrFaNYWdPFiXZ2I5tndkZjyWixtwhOQNOOmJqBx
+ 2TEM7hx/kGmgVFnjg8sOaZ2G4GahjHdv3yWiEHRiKgidthR3+d04HIyYlTEv2kwQbYCP
+ ZtFmefbrgt5zUGuI9I9qaXbr8gOnNwnsCqAAXj8zqx+yItSRLNGfYwA73qIgdYDrD7Ge
+ Z2Rw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ h=user-agent:in-reply-to:content-transfer-encoding
+ :content-disposition:mime-version:references:message-id:subject:cc
+ :to:from:date:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=aRG8BR/IjK0Fu7mwIu3t8Q/l3cqVsdtbHs7LyCSzDA8=;
- b=PONkBED2TpPXTshz6ljeaAFDUVNX7rJFpqozAskK2FDFc26oAYP6Sh1LjPUmjb4yn4
- 1JAYJFckgtHE8mlzeqKui1tOaKcqmkdI6jAc+Xl+Yq9tdBIAPI/lduKx7liUTV6+De2H
- c6ChqkuOOUq7MqeCxjsQxnsyxbfZAFkO0CMH8lYKxC5l9RAGw7EP33vBWC8eQIGYIFLn
- 90nn4pYRUW2wgImi4aH5YEuO3lB90yH0pLe8nGg9PFzdvVmcAZfn4gdOuWW0Sm7uddhl
- 1IzuGj3eBOtnev6+W3XelO4Rtf7u+nIOV8wa8RGWgDNQrgmI/cQi3ihD1jX4wfhv6K4N
- ChYQ==
-X-Gm-Message-State: ACrzQf3OhWyzzPI2s2Aee2lT9yuhufD2ZZDw65fhnvN6+kVcUe85waAI
- 1r/NhR5liqi2kQpwZcTaxq/GhdtNQwE+2cfYqwxcpA==
-X-Received: by 2002:a05:6a00:b54:b0:566:917:e57e with SMTP id
- p20-20020a056a000b5400b005660917e57emr4719755pfo.26.1665747479989; Fri, 14
- Oct 2022 04:37:59 -0700 (PDT)
+ bh=yjgiwJEv+q5nOag4c7W5dfvE1uTTPNMygszZRo8UDug=;
+ b=LuZqy1VOehQuSiIUPNOQYq89des1ZW6AWoIwwlH400LWae2hpL4aqx2XQbrjsEvQXN
+ kScBKps0XEh5orSGBHmRIE7DRsvWKaSqXDEORBpAFBajuMHMJcIXm5E821cX2L4vYtuP
+ YklNxgEiQ2B76UYLj4rdjkcV9XkOWYzmtC1DskINwlRX+sdjXLeFiplRUFvQLBQ/X0SM
+ OI7Ch4/3pHEq/O8WQ6Zv9OvREBWxlZp7jFg2eF/C9ko1qOkOzMzJoB7qGPYZD984zJQ6
+ 76jhbuXIiaQ2yjuQBMixafA0E28chtXq0Z3JNNifuz33W78P5geMzrm3CEEY5GUFYScW
+ iLPw==
+X-Gm-Message-State: ACrzQf0L9Qyh2TTkq/Q8NLICIN+28qBbcShpU7K44NzimUenX0S/b9Gv
+ 4kNp7jPxtdLKgb7y8keY9t4=
+X-Received: by 2002:a05:6512:3e12:b0:48a:a64f:7228 with SMTP id
+ i18-20020a0565123e1200b0048aa64f7228mr2013250lfv.159.1665757467154; 
+ Fri, 14 Oct 2022 07:24:27 -0700 (PDT)
+Received: from fralle-msi (31-208-27-151.cust.bredband2.com. [31.208.27.151])
+ by smtp.gmail.com with ESMTPSA id
+ h17-20020a2ea211000000b0026e90b478c6sm395694ljm.114.2022.10.14.07.24.24
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 14 Oct 2022 07:24:25 -0700 (PDT)
+Date: Fri, 14 Oct 2022 16:24:23 +0200
+From: Francisco Iglesias <frasse.iglesias@gmail.com>
+To: =?iso-8859-1?Q?C=E9dric?= Le Goater <clg@kaod.org>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, qemu-block@nongnu.org,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Joel Stanley <joel@jms.id.au>, Andrew Jeffery <andrew@aj.id.au>,
+ Alistair Francis <alistair@alistair23.me>,
+ Iris Chen <irischenlj@fb.com>, Michael Walle <michael@walle.cc>
+Subject: Re: [PATCH v4 03/10] m25p80: Add erase size for mx25l25635e
+Message-ID: <20221014142422.GA1754@fralle-msi>
+References: <20221013161241.2805140-1-clg@kaod.org>
+ <20221013161241.2805140-4-clg@kaod.org>
 MIME-Version: 1.0
-References: <20220927100347.176606-1-jean-philippe@linaro.org>
- <20220927100347.176606-5-jean-philippe@linaro.org>
- <CAFEAcA-5BDiv6sXJ_kpzCwpu20PJRQzOpS08bAswyJiFMSiT4w@mail.gmail.com>
- <CAL_Jsq+nw2g4fDr4-G3g2OL_mUkAGvNM0DJjuKqzFUijut1Hsw@mail.gmail.com>
-In-Reply-To: <CAL_Jsq+nw2g4fDr4-G3g2OL_mUkAGvNM0DJjuKqzFUijut1Hsw@mail.gmail.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 14 Oct 2022 12:37:48 +0100
-Message-ID: <CAFEAcA9OWDiWh3S=0Co7Z27EtOp-1B9H7FxyQy1T2sFnTyNdqA@mail.gmail.com>
-Subject: Re: [PATCH v2 4/8] hw/arm/virt: Fix devicetree warning about the
- gpio-key node
-To: Rob Herring <robh+dt@kernel.org>
-Cc: Jean-Philippe Brucker <jean-philippe@linaro.org>, qemu-arm@nongnu.org, 
- QEMU Developers <qemu-devel@nongnu.org>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::52a;
- envelope-from=peter.maydell@linaro.org; helo=mail-pg1-x52a.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <20221013161241.2805140-4-clg@kaod.org>
+User-Agent: Mutt/1.10.1 (2018-07-13)
+Received-SPF: pass client-ip=2a00:1450:4864:20::133;
+ envelope-from=frasse.iglesias@gmail.com; helo=mail-lf1-x133.google.com
+X-Spam_score_int: -1020
+X-Spam_score: -102.1
+X-Spam_bar: ---------------------------------------------------
+X-Spam_report: (-102.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ USER_IN_WELCOMELIST=-0.01,
+ USER_IN_WHITELIST=-100 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -119,44 +129,31 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: JL4ibFAFQ3Hp
+X-TUID: ik9ZcUUus/Gk
 
-On Thu, 13 Oct 2022 at 22:47, Rob Herring <robh+dt@kernel.org> wrote:
->
-> On Tue, Sep 27, 2022 at 6:56 AM Peter Maydell <peter.maydell@linaro.org> wrote:
-> > Please don't retrospectively make perfectly valid working DTs
-> > non-valid. I don't see any reason to change QEMU here.
-> >
-> > More generally, the set of things you might want the
-> > validator to warn about for a fresh new human-written DTB
-> > doesn't necessarily correspond to the set of things you want
-> > to enforce for a pre-existing code-generated DTB. For the
-> > former it makes much more sense to impose "coding style"
-> > and "naming convention" type rules.
->
-> I too would like to distinguish that, but haven't come up with a way
-> to do that in json-schema yet. The way schemas are applied
-> independently makes that a challenge. So far it's been low on the
-> priority list as any platforms with few enough warnings to get to 0
-> haven't been a problem to fix (in a few cases we do end up relaxing
-> the schemas).
->
-> On the flip side, even existing things eventually get updated for
-> coding style or evolving conventions. As long as we don't break ABIs,
-> the same should apply to DT.
+On [2022 Oct 13] Thu 18:12:34, Cédric Le Goater wrote:
+> Signed-off-by: Cédric Le Goater <clg@kaod.org>
 
-Yeah, but from QEMU's point of view pretty much the whole DT
-*is* ABI, because we have no idea what the guest will be
-doing with it, whether it is looking for things in the
-"correct" way or if it happens to have hard-coded a node
-name or similar: and the guest could be any of a wide
-variety of operating systems or custom code, and including
-pretty old versions of OSes as well as the latest-and-greatest.
-This is different from Linux's handwritten device trees,
-which only need to work with Linux and only with the associated
-Linux version, at that. So the set of things I'm happy changing
-tends to be more restricted than the set of things it's worth
-cleaning up in the dt sources that ship with the kernel.
+Reviewed-by: Francisco Iglesias <frasse.iglesias@gmail.com>
 
-thanks
--- PMM
+> ---
+>  hw/block/m25p80.c | 3 ++-
+>  1 file changed, 2 insertions(+), 1 deletion(-)
+> 
+> diff --git a/hw/block/m25p80.c b/hw/block/m25p80.c
+> index 13e7b28fd2b0..637c25d76e37 100644
+> --- a/hw/block/m25p80.c
+> +++ b/hw/block/m25p80.c
+> @@ -232,7 +232,8 @@ static const FlashPartInfo known_devices[] = {
+>      { INFO("mx25l6405d",  0xc22017,      0,  64 << 10, 128, 0) },
+>      { INFO("mx25l12805d", 0xc22018,      0,  64 << 10, 256, 0) },
+>      { INFO("mx25l12855e", 0xc22618,      0,  64 << 10, 256, 0) },
+> -    { INFO6("mx25l25635e", 0xc22019,     0xc22019,  64 << 10, 512, 0) },
+> +    { INFO6("mx25l25635e", 0xc22019,     0xc22019,  64 << 10, 512,
+> +            ER_4K | ER_32K) },
+>      { INFO("mx25l25655e", 0xc22619,      0,  64 << 10, 512, 0) },
+>      { INFO("mx66l51235f", 0xc2201a,      0,  64 << 10, 1024, ER_4K | ER_32K) },
+>      { INFO("mx66u51235f", 0xc2253a,      0,  64 << 10, 1024, ER_4K | ER_32K) },
+> -- 
+> 2.37.3
+> 

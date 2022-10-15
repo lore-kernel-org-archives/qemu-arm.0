@@ -1,102 +1,405 @@
-Received: by 2002:a17:906:43c7:b0:78d:9f02:16a1 with SMTP id j7csp561628ejn;
-        Fri, 14 Oct 2022 11:02:41 -0700 (PDT)
-X-Received: by 2002:a05:6a00:987:b0:563:6b50:b2f0 with SMTP id u7-20020a056a00098700b005636b50b2f0mr6672956pfg.9.1665770560921;
-        Fri, 14 Oct 2022 11:02:40 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1665770560; cv=none;
+Received: by 2002:a17:906:43c7:b0:78d:9f02:16a1 with SMTP id j7csp882662ejn;
+        Fri, 14 Oct 2022 22:10:00 -0700 (PDT)
+X-Google-Smtp-Source: AMsMyM79P/VRCu4a5pdc4BGqxtCIaOgvHmfDVXLZ2hJUowC4srbU9NarovIAyrNxuq+8jTgXJxYE
+X-Received: by 2002:a81:44e:0:b0:361:4b7f:be98 with SMTP id 75-20020a81044e000000b003614b7fbe98mr982610ywe.306.1665810600708;
+        Fri, 14 Oct 2022 22:10:00 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1665810600; cv=pass;
         d=google.com; s=arc-20160816;
-        b=x576iXWKvq0U0pDVnnrX9bynP8eTQFmUfS9Sxw1aLQe9UPpT+//6+Y/+stEKTRkbtH
-         c37/6pO2e2HrBx6eDjBPSEYbs3IZ6T+o6qetTPoL/tkBJUOgA03AnSNMxnkbyA3Oy4J4
-         WC/5xOOtE3MKhpLkeHKi7KPBQDW1QNUFljWKU965fzIIZAlZw1A5ohX2oL8vbf4sIYGY
-         H2ICV6tvVMkVvKqpRuDqgH/rDVlTZemWE0CAZwZWpnwLi+yT4Yu3kwt18AyzQkaKR1rp
-         pduyuf0EUETv9Rq6KdKLyPveaftAK//vmWR6AXtJNg6ndkiiCezet2eCkRmeHDuoc1HU
-         J8fA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=O0cHMS0fTrILr6zx0fkG2j8GYVombfqCH0iel4nFKAw=;
-        b=JF3SX7Brp8zDBDF76WGcO1vgjXHFJbQFcQsqjcPQIRvQKkkS8lUENDqUtyyJGZ0/9N
-         hD9fL5GFOT57PIV5l++J3QJEmfpPSk+Q9hbKnViRFV6VqPWGpR1C42lr3yIdicbWn9PC
-         ceZcXt622A/Joxz+8LCmDONqvLqRPYP7dNnKU5G2lEG3oxCgknZl1EE/6If4R7fj4ota
-         NT/xKBQvvgXQxmqss+UVwLySh35SmvQIlyU6OtTI5rACjGx+JGY/js8egDJJGjKkdPEW
-         dxZfAx/pE1XsCG4BtwBld/euYDY++4D4i28gMbgELmQfsx26/eE4RN2/mq/296xZjKCk
-         mr+A==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=OALRlVaN;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <peter.maydell@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id m17-20020a056a00081100b00538116baa57sor1753625pfk.75.2022.10.14.11.02.40
-        for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Fri, 14 Oct 2022 11:02:40 -0700 (PDT)
-Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        b=0bL1lYDIFNCVXYgKUgch6SKCgh8rVe9jySKWP7IIZzrydGBhyIJr7AVOZBcPi278wU
+         6nj7761pj9U0pW2xjrJKkhT95vJ3q09xBiVGq0z4Lz+aa31NDyljJ9zGKAhc9XKJM0uj
+         xswdUrIjkd9frqE2AcObSR7wBJQuytn8Ko9+DZg1t8U93wQ+mmDBjRjIfS4NDyvRnwM3
+         TVEt8GowjhMs/Q5MumZ03IkHtbvgVN2CS7jICP26sT/MmcDugO5RihNwlvJucyi73t7a
+         +9OpBzmx1UzXEApuggqaNuUblIg6Vnj5CUEDtK7TyM7YIBx30wPhfnWaog8bD4jILylk
+         SC1A==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature:sender:precedence:errors-to:list-subscribe
+         :list-help:list-post:list-unsubscribe:list-id;
+        bh=5CEATXZaI6umGGfkvA0WXkPnboEbXOEtyJhSWhppcG4=;
+        b=G5gYdUebpAz1+BujHAEqd+0REAztBPayf7z1d0lmf2C73CNIJHbrytrCPFLRD1kiF5
+         l90uT25qLjGv8x5+nvPoQlNw0ot86Kce6gxGe7OGI2gZFMMOhEs/DWNPtAp5+6JiF2e1
+         gr6LnnpPwJGPBTocy0s0w4jgm0E4iXgM3easzbyDxRKUbDN49gcCeSHMk4NJw7GL5G1F
+         nnaOX//Z4DGYUfT8kXDHGa7qtCL2BCXaIzkrDfY9fL56+lmdIuCqH2M9r1TTKhnWfvls
+         N2ICxwrt+T+7N8rLttmEgScGUGWS6aMbiNrp8lrcYGdClUC+GPVUsE+qIwm8FPnzjNc9
+         5hXQ==
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@amd.com header.s=selector1 header.b=bCLZFLrK;
+       arc=pass (i=1 spf=pass spfdomain=amd.com dmarc=pass fromdomain=amd.com);
+       spf=pass (google.com: domain of xen-devel-bounces@lists.xenproject.org designates 192.237.175.120 as permitted sender) smtp.mailfrom=xen-devel-bounces@lists.xenproject.org;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=amd.com
+Return-Path: <xen-devel-bounces@lists.xenproject.org>
+Received: from lists.xenproject.org (lists.xenproject.org. [192.237.175.120])
+        by mx.google.com with ESMTPS id t8-20020a818308000000b00348ffae6d38si3424565ywf.431.2022.10.14.22.10.00
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 14 Oct 2022 22:10:00 -0700 (PDT)
+Received-SPF: pass (google.com: domain of xen-devel-bounces@lists.xenproject.org designates 192.237.175.120 as permitted sender) client-ip=192.237.175.120;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=OALRlVaN;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=O0cHMS0fTrILr6zx0fkG2j8GYVombfqCH0iel4nFKAw=;
-        b=OALRlVaNowzDEsNzbCvEGa8iQODArpjcQMvT8Dyuk9Ceq4DNy3fBoOoMLbj3otyEM0
-         OkCZtt9QsedOxFhmSZAIh3GXfXAB6Km+9PYMYIYXniBPjOfDt5D6ftHgaHfKeMpRIc5u
-         fmJGk2krO4dCTBGGtsz2jDmaE4cs7Y6lCi9goIC6DYaFdijlKDrZkIcsDdmnXGjgEL1r
-         Jq1At46MdumWagkk0SsWYnKC2MBtgBioidlCvtjt1DWpmNZQg/bzdtTtQJqQ7bWZX/IH
-         YNa144Dih1zW6P/KnNyrSe70eEihAvhvKSOCkkznZSlADnzneG0bf7Ia1iHp0sc+BNSe
-         WdbQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=O0cHMS0fTrILr6zx0fkG2j8GYVombfqCH0iel4nFKAw=;
-        b=dIvBs5of1fmDTnE9UbrrsxWcxM9/jehTuFY9+At4QPyfTBVewWn7t3l4vU36AKiUY4
-         MQOxgH/JxWCSSrC5H4jzfExuiQp/g9e+H6jhHYUSP8p/BhEg7gj+a/C/FBYDzPDZhmK5
-         v2BCQykCs2xC/JVzu2UFk8eozDgDRtgZw5g6kuWM1J+nI9AwLll1z4ca3OPXg7N3gfuy
-         aTpiLN1DeihME94tvTHvXNqlhQKCy7qNYkfvBCgoFfgpJ/7a9mNIJffwiwGu7tO0ErJy
-         FhTiFs6CeCXZekIDJ3bpA/Jbfxu9R3XvtfGpFiHhIkqOsQxjRufIhXZ093I/sgDC6M2R
-         iTyQ==
-X-Gm-Message-State: ACrzQf0BtSzO9RzQWhRgiMpJgiRxAaHZekx50aCVBCHyP7sqXcnkUDVx
-	dg03iIujOAQIC/Qk4WuGP855BjEdUH5iivm2D/F7JkbUayzATA==
-X-Google-Smtp-Source: AMsMyM662yH1yIMGAz7eRuuShS06VDrHfr4h1k2BMzrBxweTo9ONMHjgiiEo9CAEH8BLC833pu8eRhDB/vUgrUeBImM=
-X-Received: by 2002:a63:2212:0:b0:43b:f03d:856a with SMTP id
- i18-20020a632212000000b0043bf03d856amr5580763pgi.192.1665770560461; Fri, 14
- Oct 2022 11:02:40 -0700 (PDT)
+       dkim=pass header.i=@amd.com header.s=selector1 header.b=bCLZFLrK;
+       arc=pass (i=1 spf=pass spfdomain=amd.com dmarc=pass fromdomain=amd.com);
+       spf=pass (google.com: domain of xen-devel-bounces@lists.xenproject.org designates 192.237.175.120 as permitted sender) smtp.mailfrom=xen-devel-bounces@lists.xenproject.org;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=amd.com
+Received: from list by lists.xenproject.org with outflank-mailman.423255.669907 (Exim 4.92)
+	(envelope-from <xen-devel-bounces@lists.xenproject.org>)
+	id 1ojZPm-0000CU-KK; Sat, 15 Oct 2022 05:08:50 +0000
+X-Outflank-Mailman: Message body and most headers restored to incoming version
+Received: by outflank-mailman (output) from mailman id 423255.669907; Sat, 15 Oct 2022 05:08:50 +0000
+Received: from localhost ([127.0.0.1] helo=lists.xenproject.org)
+	by lists.xenproject.org with esmtp (Exim 4.92)
+	(envelope-from <xen-devel-bounces@lists.xenproject.org>)
+	id 1ojZPm-000096-7F; Sat, 15 Oct 2022 05:08:50 +0000
+Received: by outflank-mailman (input) for mailman id 423255;
+ Sat, 15 Oct 2022 05:08:48 +0000
+Received: from se1-gles-sth1-in.inumbo.com ([159.253.27.254]
+ helo=se1-gles-sth1.inumbo.com)
+ by lists.xenproject.org with esmtp (Exim 4.92) (envelope-from
+ <SRS0=Q/I2=2Q=amd.com=vikram.garhwal@srs-se1.protection.inumbo.net>)
+ id 1ojZPj-00070V-SY
+ for xen-devel@lists.xenproject.org; Sat, 15 Oct 2022 05:08:48 +0000
+Received: from NAM10-MW2-obe.outbound.protection.outlook.com
+ (mail-mw2nam10on2067.outbound.protection.outlook.com [40.107.94.67])
+ by se1-gles-sth1.inumbo.com (Halon) with ESMTPS
+ id 709c7ba9-4c47-11ed-91b4-6bf2151ebd3b;
+ Sat, 15 Oct 2022 07:08:44 +0200 (CEST)
+Received: from DM6PR06CA0102.namprd06.prod.outlook.com (2603:10b6:5:336::35)
+ by CY8PR12MB7339.namprd12.prod.outlook.com (2603:10b6:930:51::22) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5723.26; Sat, 15 Oct
+ 2022 05:08:40 +0000
+Received: from DM6NAM11FT042.eop-nam11.prod.protection.outlook.com
+ (2603:10b6:5:336:cafe::48) by DM6PR06CA0102.outlook.office365.com
+ (2603:10b6:5:336::35) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5723.30 via Frontend
+ Transport; Sat, 15 Oct 2022 05:08:39 +0000
+Received: from SATLEXMB03.amd.com (165.204.84.17) by
+ DM6NAM11FT042.mail.protection.outlook.com (10.13.173.165) with Microsoft SMTP
+ Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.20.5723.20 via Frontend Transport; Sat, 15 Oct 2022 05:08:39 +0000
+Received: from SATLEXMB07.amd.com (10.181.41.45) by SATLEXMB03.amd.com
+ (10.181.40.144) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2375.28; Sat, 15 Oct
+ 2022 00:08:38 -0500
+Received: from SATLEXMB04.amd.com (10.181.40.145) by SATLEXMB07.amd.com
+ (10.181.41.45) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2375.28; Fri, 14 Oct
+ 2022 22:08:37 -0700
+Received: from xsjfnuv50.xilinx.com (10.180.168.240) by SATLEXMB04.amd.com
+ (10.181.40.145) with Microsoft SMTP Server id 15.1.2375.28 via Frontend
+ Transport; Sat, 15 Oct 2022 00:08:36 -0500
+X-BeenThere: xen-devel@lists.xenproject.org
+List-Id: Xen developer discussion <xen-devel.lists.xenproject.org>
+List-Unsubscribe: <https://lists.xenproject.org/mailman/options/xen-devel>,
+ <mailto:xen-devel-request@lists.xenproject.org?subject=unsubscribe>
+List-Post: <mailto:xen-devel@lists.xenproject.org>
+List-Help: <mailto:xen-devel-request@lists.xenproject.org?subject=help>
+List-Subscribe: <https://lists.xenproject.org/mailman/listinfo/xen-devel>,
+ <mailto:xen-devel-request@lists.xenproject.org?subject=subscribe>
+Errors-To: xen-devel-bounces@lists.xenproject.org
+Precedence: list
+Sender: "Xen-devel" <xen-devel-bounces@lists.xenproject.org>
+X-Inumbo-ID: 709c7ba9-4c47-11ed-91b4-6bf2151ebd3b
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=COgY6/WsweW7TxMKsZHUiHg1OGNGlRmXQHeJSTYnNbFvok4cpx1WgCOXqV6YqSbOBpGUELAeggzwBEsBcApdU0FO7coInlynqPrUCStNulffkHHWcjWb2ud2sQfaFgQh2k8sX0oqJc/OKcfzbWsgFzAGGxaGzYkAyYhkrvGnwc7ZAobhzlHmC2z131HsVIWSBxTBY0da6m5n+AZv1ZiX+Jpd1cLJIx2A2sDAi3NZortiVihydy9PRDzob0av+brA2NzqJPT0N3I49chaAITUgg8EEPt3yl8a6+xxCQugvHzJSoV5a2kifIroG8I1leAIVDuHSDYS+NtE5ywFsPwbQw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=5CEATXZaI6umGGfkvA0WXkPnboEbXOEtyJhSWhppcG4=;
+ b=OVsgh8g2q9gPeejRSIUUQHg24dY/zvqXUnyKs0d7Pg3rrTQJydB2Q92cT1JVCvttiBJcu/BoWKPVGMq8VGn/SwOiyMfzEO5JtHEeQ0NWdLB+GObzKtHkOcvn6N9J+KOvy2qe/VR2e2d4D5YLSXm3OsfoEgVwolg/ndHQvU5Y5+Nw0w3ANg+UOeVMqO3GlEpiXnt9p8BHWuBp9rpj2G8+abmkzz3OnNbLKpoMP7Sss+w2pKQsyINuRGvzug48ngrJXvx6qwPG12QYYO072vxxdv7oXvi8c2EAQETcZaZrhaMMJxt8zU7gFYCkD/lx1mYv0ofSjxcYekDpN2BziHqZyA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
+ 165.204.84.17) smtp.rcpttodomain=nongnu.org smtp.mailfrom=amd.com; dmarc=pass
+ (p=quarantine sp=quarantine pct=100) action=none header.from=amd.com;
+ dkim=none (message not signed); arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=amd.com; s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=5CEATXZaI6umGGfkvA0WXkPnboEbXOEtyJhSWhppcG4=;
+ b=bCLZFLrKcP3oYsZo2MTCi5uZmCIUe15AaU47ebRt5Fc/ZKuqHf3H6IGjTRHohznUWEl5rgZYXyxnoArsV4P7T/ykXkgP32+OY6aCsLYJDDLnrWlwG0djsJEyTsRnKFWkANqbf6h1+WvurLtnMoqtLHZ3BMBaJXX8qKeTKVoiAuw=
+X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 165.204.84.17)
+ smtp.mailfrom=amd.com; dkim=none (message not signed)
+ header.d=none;dmarc=pass action=none header.from=amd.com;
+Received-SPF: Pass (protection.outlook.com: domain of amd.com designates
+ 165.204.84.17 as permitted sender) receiver=protection.outlook.com;
+ client-ip=165.204.84.17; helo=SATLEXMB03.amd.com; pr=C
+From: Vikram Garhwal <vikram.garhwal@amd.com>
+To: <qemu-devel@nongnu.org>
+CC: <vikram.garhwal@amd.com>, <stefano.stabellini@amd.com>, Peter Maydell
+	<peter.maydell@linaro.org>, Stefano Stabellini <sstabellini@kernel.org>,
+	Anthony Perard <anthony.perard@citrix.com>, Paul Durrant <paul@xen.org>,
+	"open list:ARM TCG CPUs" <qemu-arm@nongnu.org>, "open list:X86 Xen CPUs"
+	<xen-devel@lists.xenproject.org>
+Subject: [PATCH v1 10/12] hw/arm: introduce xenpv machine
+Date: Fri, 14 Oct 2022 22:07:48 -0700
+Message-ID: <20221015050750.4185-11-vikram.garhwal@amd.com>
+X-Mailer: git-send-email 2.17.1
+In-Reply-To: <20221015050750.4185-1-vikram.garhwal@amd.com>
+References: <20221015050750.4185-1-vikram.garhwal@amd.com>
 MIME-Version: 1.0
-References: <20221010153225.506394-1-alex.bennee@linaro.org>
-In-Reply-To: <20221010153225.506394-1-alex.bennee@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 14 Oct 2022 19:02:28 +0100
-Message-ID: <CAFEAcA_CEFLejvFBYhxR+AomKiBziuh=wMWKfnBkuiKQtgQWYA@mail.gmail.com>
-Subject: Re: [PATCH v2] target/arm: update the cortex-a15 MIDR to latest rev
-To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, 
-	Arnd Bergmann <arnd@linaro.org>, Anders Roxell <anders.roxell@linaro.org>, 
-	=?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-TUID: q+SdnT+NFlXu
+Content-Type: text/plain
+X-EOPAttributedMessage: 0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: DM6NAM11FT042:EE_|CY8PR12MB7339:EE_
+X-MS-Office365-Filtering-Correlation-Id: ef28c65d-b6c9-4dd6-c49e-08daae6b5293
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info:
+	Cw6BE2WvYbEM/RcM4ry6VYtOSiys0o/6pDPo2n1BD6oOti2BfWPOkmmdBcc+17s08FbWM+gG2BZA7UVLP3eL7pbto5T495FSKUSRmFirh7jD6aZo0oZRZ7Zjv2qtFL9BS49G1VFL1VTPmYTWQEPR4lVNYk6hyGyYWam/epYx24k6jb6q6wK41Am6x7jKgfvenlLa/FRm4xLJUBBWlecg8yvzTY++pygppBCkhH8a8rnAKoi3R1oUYVbMsAJ/FerldKD+UOWFUaMaK2F7O0v2XedBBP0ufU4jZqMoHjSdF5t1tbDlTpYq/jtC88q5xg55U82bLANadtzcEA1wnp3hozDRP3vuBr9digsSgaPC8lXiF1aUyeBVJNV4SHjy+vdAeu3LtoFMOMMNJkYw+m8kyjNYDqJk7C6YdetPAlrxPECJog1Gcfz/DQVSBaFhs41QbWn++fiiVp3KX1x8gOccYRkpFJix/F6lc2LQQuOe5qCPcZiw4Z9U1KEWkI1r5atKJ0lLsKHnRWcDOKcByT84mdek2Xpa0ac0rsaxkDiwuROUth+Eud6co8r8/s7MSC3XXySqAvbziLbQm0yioVO+3y+tP4NvK29fnuOjP/oLQR5lBapFB2AjgrwgCntSYjZWxMk1h7eT39Jxok/xrlfsuS56Z7hItrHEJ09UABzfMt4lYkvp/DkPO21W6kteoo1fugGC0RviFxdJnJEpkEc4ZsnYKfcobYyOb2bdo5+aDpAui7ktLO5Gf3OptPxkr0rWAm5TRR4MExlrO33XVBP3GNT16wfPtpMaI07Yh2GW2kYDhMTWyJutPHA7DHoSjO8ApvrzUxyCEVTPR7Y8X4r1QQ==
+X-Forefront-Antispam-Report:
+	CIP:165.204.84.17;CTRY:US;LANG:en;SCL:1;SRV:;IPV:CAL;SFV:NSPM;H:SATLEXMB03.amd.com;PTR:InfoDomainNonexistent;CAT:NONE;SFS:(13230022)(4636009)(39860400002)(396003)(346002)(136003)(376002)(451199015)(46966006)(36840700001)(40470700004)(36756003)(40460700003)(40480700001)(2616005)(2906002)(4326008)(82740400003)(86362001)(26005)(8936002)(6916009)(70206006)(1076003)(186003)(54906003)(336012)(8676002)(6666004)(5660300002)(82310400005)(478600001)(356005)(81166007)(44832011)(316002)(966005)(70586007)(36860700001)(426003)(66899015)(47076005)(41300700001)(83380400001)(36900700001);DIR:OUT;SFP:1101;
+X-OriginatorOrg: amd.com
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 15 Oct 2022 05:08:39.5714
+ (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: ef28c65d-b6c9-4dd6-c49e-08daae6b5293
+X-MS-Exchange-CrossTenant-Id: 3dd8961f-e488-4e60-8e11-a82d994e183d
+X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=3dd8961f-e488-4e60-8e11-a82d994e183d;Ip=[165.204.84.17];Helo=[SATLEXMB03.amd.com]
+X-MS-Exchange-CrossTenant-AuthSource:
+	DM6NAM11FT042.eop-nam11.prod.protection.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Anonymous
+X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: CY8PR12MB7339
+X-TUID: Rn7BB0vyEu5a
 
-On Mon, 10 Oct 2022 at 16:32, Alex Benn=C3=A9e <alex.bennee@linaro.org> wro=
-te:
->
-> QEMU doesn't model micro-architectural details which includes most
-> chip errata. The ARM_ERRATA_798181 work around in the Linux
-> kernel (see erratum_a15_798181_init) currently detects QEMU's
-> cortex-a15 as broken and triggers additional expensive TLB flushes as
-> a result.
->
-> Change the MIDR to report what the latest silicon would (r4p0). We
-> explicitly set the IMPDEF revidr bits to 0 because we don't need to
-> set anything other than the silicon revision to indicate these flushes
-> are not needed. This cuts about 5s from my Debian kernel boot with the
-> latest 6.0rc1 kernel (29s->24s).
+Add a new machine xenpv which creates a IOREQ server to register/connect with
+Xen Hypervisor.
 
+Xen IOREQ connection expect the TARGET_PAGE_SIZE to 4096, and the xenpv machine
+on ARM will have no CPU definitions. We need to define TARGET_PAGE_SIZE
+appropriately ourselves.
 
+Optional: When CONFIG_TPM is enabled, it also creates a tpm-tis-device, adds a
+TPM emulator and connects to swtpm running on host machine via chardev socket
+and support TPM functionalities for a guest domain.
 
-Applied to target-arm.next, thanks.
+Extra command line for aarch64 xenpv QEMU to connect to swtpm:
+    -chardev socket,id=chrtpm,path=/tmp/myvtpm2/swtpm-sock \
+    -tpmdev emulator,id=tpm0,chardev=chrtpm \
 
--- PMM
+swtpm implements a TPM software emulator(TPM 1.2 & TPM 2) built on libtpms and
+provides access to TPM functionality over socket, chardev and CUSE interface.
+Github repo: https://github.com/stefanberger/swtpm
+Example for starting swtpm on host machine:
+    mkdir /tmp/vtpm2
+    swtpm socket --tpmstate dir=/tmp/vtpm2 \
+    --ctrl type=unixio,path=/tmp/vtpm2/swtpm-sock &
+
+Signed-off-by: Vikram Garhwal <vikram.garhwal@amd.com>
+Signed-off-by: Stefano Stabellini <stefano.stabellini@amd.com>
+---
+ hw/arm/meson.build            |   2 +
+ hw/arm/xen_arm.c              | 163 ++++++++++++++++++++++++++++++++++
+ include/hw/arm/xen_arch_hvm.h |  12 +++
+ include/hw/xen/arch_hvm.h     |   2 +
+ 4 files changed, 179 insertions(+)
+ create mode 100644 hw/arm/xen_arm.c
+ create mode 100644 include/hw/arm/xen_arch_hvm.h
+
+diff --git a/hw/arm/meson.build b/hw/arm/meson.build
+index 92f9f6e000..0cae024374 100644
+--- a/hw/arm/meson.build
++++ b/hw/arm/meson.build
+@@ -62,5 +62,7 @@ arm_ss.add(when: 'CONFIG_FSL_IMX7', if_true: files('fsl-imx7.c', 'mcimx7d-sabre.
+ arm_ss.add(when: 'CONFIG_ARM_SMMUV3', if_true: files('smmu-common.c', 'smmuv3.c'))
+ arm_ss.add(when: 'CONFIG_FSL_IMX6UL', if_true: files('fsl-imx6ul.c', 'mcimx6ul-evk.c'))
+ arm_ss.add(when: 'CONFIG_NRF51_SOC', if_true: files('nrf51_soc.c'))
++arm_ss.add(when: 'CONFIG_XEN', if_true: files('xen_arm.c'))
++arm_ss.add_all(xen_ss)
+ 
+ hw_arch += {'arm': arm_ss}
+diff --git a/hw/arm/xen_arm.c b/hw/arm/xen_arm.c
+new file mode 100644
+index 0000000000..0b900314cc
+--- /dev/null
++++ b/hw/arm/xen_arm.c
+@@ -0,0 +1,163 @@
++/*
++ * QEMU ARM Xen PV Machine
++ *
++ *
++ * Permission is hereby granted, free of charge, to any person obtaining a copy
++ * of this software and associated documentation files (the "Software"), to deal
++ * in the Software without restriction, including without limitation the rights
++ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
++ * copies of the Software, and to permit persons to whom the Software is
++ * furnished to do so, subject to the following conditions:
++ *
++ * The above copyright notice and this permission notice shall be included in
++ * all copies or substantial portions of the Software.
++ *
++ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
++ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
++ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
++ * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
++ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
++ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
++ * THE SOFTWARE.
++ */
++
++#include "qemu/osdep.h"
++#include "qemu/error-report.h"
++#include "qapi/qapi-commands-migration.h"
++#include "hw/boards.h"
++#include "hw/sysbus.h"
++#include "sysemu/block-backend.h"
++#include "sysemu/tpm_backend.h"
++#include "sysemu/sysemu.h"
++#include "hw/xen/xen-legacy-backend.h"
++#include "hw/xen/xen-hvm-common.h"
++#include "sysemu/tpm.h"
++#include "hw/xen/arch_hvm.h"
++
++#define TYPE_XEN_ARM  MACHINE_TYPE_NAME("xenpv")
++OBJECT_DECLARE_SIMPLE_TYPE(XenArmState, XEN_ARM)
++
++static MemoryListener xen_memory_listener = {
++    .region_add = xen_region_add,
++    .region_del = xen_region_del,
++    .log_start = NULL,
++    .log_stop = NULL,
++    .log_sync = NULL,
++    .log_global_start = NULL,
++    .log_global_stop = NULL,
++    .priority = 10,
++};
++
++struct XenArmState {
++    /*< private >*/
++    MachineState parent;
++
++    XenIOState *state;
++};
++
++void arch_handle_ioreq(XenIOState *state, ioreq_t *req)
++{
++    hw_error("Invalid ioreq type 0x%x\n", req->type);
++
++    return;
++}
++
++void arch_xen_set_memory(XenIOState *state, MemoryRegionSection *section,
++                         bool add)
++{
++}
++
++void xen_hvm_modified_memory(ram_addr_t start, ram_addr_t length)
++{
++}
++
++void qmp_xen_set_global_dirty_log(bool enable, Error **errp)
++{
++}
++
++static int xen_init_ioreq(XenIOState *state, unsigned int max_cpus)
++{
++    xen_dmod = xendevicemodel_open(0, 0);
++    xen_xc = xc_interface_open(0, 0, 0);
++
++    if (xen_xc == NULL) {
++        perror("xen: can't open xen interface\n");
++        return -1;
++    }
++
++    xen_fmem = xenforeignmemory_open(0, 0);
++    if (xen_fmem == NULL) {
++        perror("xen: can't open xen fmem interface\n");
++        xc_interface_close(xen_xc);
++        return -1;
++    }
++
++    xen_register_ioreq(state, max_cpus, xen_memory_listener);
++
++    xenstore_record_dm_state(xenstore, "running");
++
++    return 0;
++}
++
++static void xen_enable_tpm(void)
++{
++/* qemu_find_tpm_be is only available when CONFIG_TPM is enabled. */
++#ifdef CONFIG_TPM
++    Error *errp = NULL;
++    DeviceState *dev;
++    SysBusDevice *busdev;
++
++    TPMBackend *be = qemu_find_tpm_be("tpm0");
++    if (be == NULL) {
++        DPRINTF("Couldn't fine the backend for tpm0\n");
++        return;
++    }
++    dev = qdev_new(TYPE_TPM_TIS_SYSBUS);
++    object_property_set_link(OBJECT(dev), "tpmdev", OBJECT(be), &errp);
++    object_property_set_str(OBJECT(dev), "tpmdev", be->id, &errp);
++    busdev = SYS_BUS_DEVICE(dev);
++    sysbus_realize_and_unref(busdev, &error_fatal);
++    sysbus_mmio_map(busdev, 0, GUEST_TPM_BASE);
++
++    DPRINTF("Connected tpmdev at address 0x%lx\n", GUEST_TPM_BASE);
++#endif
++}
++
++static void xen_arm_init(MachineState *machine)
++{
++    XenArmState *xam = XEN_ARM(machine);
++
++    xam->state =  g_new0(XenIOState, 1);
++
++    if (xen_init_ioreq(xam->state, machine->smp.cpus)) {
++        return;
++    }
++
++    xen_enable_tpm();
++
++    return;
++}
++
++static void xen_arm_machine_class_init(ObjectClass *oc, void *data)
++{
++
++    MachineClass *mc = MACHINE_CLASS(oc);
++    mc->desc = "Xen Para-virtualized PC";
++    mc->init = xen_arm_init;
++    mc->max_cpus = 1;
++    machine_class_allow_dynamic_sysbus_dev(mc, TYPE_TPM_TIS_SYSBUS);
++}
++
++static const TypeInfo xen_arm_machine_type = {
++    .name = TYPE_XEN_ARM,
++    .parent = TYPE_MACHINE,
++    .class_init = xen_arm_machine_class_init,
++    .instance_size = sizeof(XenArmState),
++};
++
++static void xen_arm_machine_register_types(void)
++{
++    type_register_static(&xen_arm_machine_type);
++}
++
++type_init(xen_arm_machine_register_types)
+diff --git a/include/hw/arm/xen_arch_hvm.h b/include/hw/arm/xen_arch_hvm.h
+new file mode 100644
+index 0000000000..f645dfec28
+--- /dev/null
++++ b/include/hw/arm/xen_arch_hvm.h
+@@ -0,0 +1,12 @@
++#ifndef HW_XEN_ARCH_ARM_HVM_H
++#define HW_XEN_ARCH_ARM_HVM_H
++
++#include <xen/hvm/ioreq.h>
++void arch_handle_ioreq(XenIOState *state, ioreq_t *req);
++void arch_xen_set_memory(XenIOState *state,
++                         MemoryRegionSection *section,
++                         bool add);
++
++#undef TARGET_PAGE_SIZE
++#define TARGET_PAGE_SIZE 4096
++#endif
+diff --git a/include/hw/xen/arch_hvm.h b/include/hw/xen/arch_hvm.h
+index 26674648d8..c7c515220d 100644
+--- a/include/hw/xen/arch_hvm.h
++++ b/include/hw/xen/arch_hvm.h
+@@ -1,3 +1,5 @@
+ #if defined(TARGET_I386) || defined(TARGET_X86_64)
+ #include "hw/i386/xen_arch_hvm.h"
++#elif defined(TARGET_ARM) || defined(TARGET_ARM_64)
++#include "hw/arm/xen_arch_hvm.h"
+ #endif
+-- 
+2.17.0
+

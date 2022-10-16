@@ -1,92 +1,92 @@
-Received: by 2002:a17:906:43c7:b0:78d:9f02:16a1 with SMTP id j7csp1714593ejn;
-        Sun, 16 Oct 2022 05:44:16 -0700 (PDT)
-X-Google-Smtp-Source: AMsMyM7hyqLVwbibm4kTEnL4Mxk1rrMelkvHQTeIGKkn/VY/NbjyzbuIgHbnWRQVo7LoAbiB05l2
-X-Received: by 2002:a05:622a:118c:b0:39c:32a5:d285 with SMTP id m12-20020a05622a118c00b0039c32a5d285mr5004733qtk.414.1665924256697;
-        Sun, 16 Oct 2022 05:44:16 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1665924256; cv=none;
+Received: by 2002:a17:906:43c7:b0:78d:9f02:16a1 with SMTP id j7csp1715768ejn;
+        Sun, 16 Oct 2022 05:47:16 -0700 (PDT)
+X-Google-Smtp-Source: AMsMyM6BG1laPlsobcruk5hcoP80+ynZnPVuv7EoAvaPD03dksEnCr/S8VSFPbChVIVbA3DWcAEf
+X-Received: by 2002:ad4:5f0b:0:b0:4b1:7a60:399a with SMTP id fo11-20020ad45f0b000000b004b17a60399amr4974523qvb.101.1665924435911;
+        Sun, 16 Oct 2022 05:47:15 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1665924435; cv=none;
         d=google.com; s=arc-20160816;
-        b=kYj10RXizpZEgtyYzG5gPRPRo4HUWjfKu4EQIHI/5dU1GhUNafZH3zTt1FfZCS5nzw
-         XlxFm7b+mNyv1Vfq8RZLWLUeMDFJzyFJ8FmaoBujEJ6vSsdjy2ZjgqEaGX9csCD7wNHc
-         1IBGUIfELgkOrWn+iy4MEBCqvPPtsX+t4ExL2SAi0StS1vRV2D93XxqnkBY4afFwzRBN
-         Qvk/EQ3I+aU8ziBRYRjq7AtaM7+wVMFL94z/iN+qWQrrqK/8PtjgOPnhTsuVYYyTeDQ6
-         fpBvuyLDPgcy39rEyWZeEBU3hPrGJ2gACgWcclEiO39tKnEhE1w12H3g7hs6NsojwPDH
-         eNjA==
+        b=zJnTqcyWDNSHzqkWgZq8fEt94+Tco4XRIH9KObaKfCnThL+kmXjw6qgnBd7PPsFy9A
+         xkd90M0L4kUPGdivOdnZq6PhGGdJp1oSLDZDnS2gC+xgM7rpTYDp8+naO4ac+6kc5RIB
+         DRast2lmTX5AwhxzMVOP6GcX5XkPG8GZn6BTADJcP23uuml24NXi9SiXc2hLDooa/wFr
+         HBHUJwadbGnXPAC/gqqKpYjw670U3yfs04bb0Ji0Dek5YLmelHhDujsmLFfTtz1lVNJA
+         SsKQQ7gJpc7tElu64VU/Wrh0Ney6nq+xH4nwcKPyvZJSQPvxgZ+sryJMtWbrvooPbjE7
+         qgLw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=FAerEhCP7RhsnqH2wBCVynj2tLp7d7syR4UGAOv+t7Q=;
-        b=J+77FUKaGLOK6HBTQJpZ/+fLoNMicALsb8JMAZqL1w37MpDjKgOFqRz4kdtaSr5ZQI
-         S0GnhJNL9PJEJhUlpm48KitMX+ya84zRI696UsX2NXfzp6mAhR1mrhSfD/2nN6nSf38d
-         8u9zE2rgmsl6ekrDryuOEL/paegaw9Ciw7jnxMvNwt8sEunVVcaf1yLre97+vTm9eCSN
-         xvDVWHUFxI1/25nzHbLuAMu5HxhwmJVfZ1qkhP3G9yBD3LgUG8UrTV+Sy9ENRsqAtxrT
-         2CdigPHOXg9RfTmN4jWkns6fVjGbNDTBJIILHoo2n4r6NNaSKx9SpHqHhTqh/wpySOQD
-         t4PQ==
+        bh=XB8LzA+Xf7kj44ENBLw+h7JO3RpBY2E4p+/JbUGhS6k=;
+        b=l7JiBvldQ5nZfSHLOd+VOKfv7CD8/0LwMoc49V0JmTxBsHbe953Ie50FG+W26Vblr9
+         /hOx50VuTGasyI8XKc9xoE9qrEX95BegvUlFazt1RSwcX4G7hXGJjaaZWDh22Nd+OvkM
+         X3ZE6+LMPuoMovKfNrHI/1TFyY/vTP7W01sd4BxLYTZf0i3xrxNL01I9LnbMDGqj5MR5
+         f5JAhyGKVW1tHZy33QRX/dhRT0FPPzR/cRJtcfxSpt/7S7uGbq/z2UPkjf9mYGrKWpLW
+         E5nQMiQ2dbXTMKd5nFiEHEyhpoatGgS/CF9bexfsN8HOEAltI8Vv2o8TfHhXsyp2EDIW
+         8Xxg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=knMAhHk+;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=GJUOWWEW;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id bb15-20020a05622a1b0f00b0039876d64805si4238005qtb.10.2022.10.16.05.44.16
+        by mx.google.com with ESMTPS id w29-20020ac84d1d000000b0039a53ca0c5fsi3875339qtv.189.2022.10.16.05.47.15
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 16 Oct 2022 05:44:16 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Sun, 16 Oct 2022 05:47:15 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=knMAhHk+;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=GJUOWWEW;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:33078 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:50508 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ok303-0001mx-4x
-	for alex.bennee@linaro.org; Sun, 16 Oct 2022 08:44:16 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38188)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1ok32x-0003r0-DY
+	for alex.bennee@linaro.org; Sun, 16 Oct 2022 08:47:15 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38182)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1ok2l1-0002hv-Gj; Sun, 16 Oct 2022 08:28:45 -0400
-Received: from mail-ej1-x629.google.com ([2a00:1450:4864:20::629]:36368)
+ id 1ok2kv-0002cI-N8; Sun, 16 Oct 2022 08:28:37 -0400
+Received: from mail-ej1-x62b.google.com ([2a00:1450:4864:20::62b]:34644)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1ok2kv-0000SQ-Me; Sun, 16 Oct 2022 08:28:43 -0400
-Received: by mail-ej1-x629.google.com with SMTP id 13so19453302ejn.3;
- Sun, 16 Oct 2022 05:28:36 -0700 (PDT)
+ id 1ok2kt-0000Ol-Fq; Sun, 16 Oct 2022 08:28:37 -0400
+Received: by mail-ej1-x62b.google.com with SMTP id ot12so19485040ejb.1;
+ Sun, 16 Oct 2022 05:28:34 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=FAerEhCP7RhsnqH2wBCVynj2tLp7d7syR4UGAOv+t7Q=;
- b=knMAhHk+MedO+hUOA/0Ar+jPm4CqnS2pB5PB/dQHUjADKgWR3hU5NYihanIaJ+xzNn
- DaRBKorFIdyiM9TOw41i6LHFO36cL9nu4f3UeQI8RTRZx2VmKhW99dKhAvApSlKtsVyC
- o/1zGCkd4PHt4AjXIzRwfP8uYhLaFnV495YQ5zMtDGXiWFyzb2gVVjsUtCrPDj3lK099
- KTr1qPg3nIqV4o4I51RBpbiOsKAEDDOPH+g+XXaWqqpglMbq9pTGfdU7FNuPhJzjsQsH
- Lon9BPPcF85Euu6C9e8s1zVJnMGeX1DC3xfFNHyQ6VJHpzOw221F3cy3y5y1h7hk9p0K
- NE/g==
+ bh=XB8LzA+Xf7kj44ENBLw+h7JO3RpBY2E4p+/JbUGhS6k=;
+ b=GJUOWWEWgZtAzMu3xFPrFJXsvE8CQf9Ncp16SzWt5tdlhwvY/g17F/fvI9g1Qm2fVK
+ tpJlS6jI1ZeVaFOeArLjAT8kXwtl0qG1ifl83PiH10k0NQpm/y+bMDd7fuSMXqCVVmno
+ tnFclTbEZDbWbmwZF5Ch3TeNsMCpuUlgfdTh+FUrNOlzEA7/0KuPhxYWUEmp86fZNA+R
+ gFgyoALxoolpYxdyOstflKTDY0471Dng+RgbTtHPKhy1XldGvVQt4BUQlndyKYk9dNhT
+ z8zFbSZo5XKjZLPcVTKkZ8R+QO9HMdyhPosH7wx8CXCx2NJtkZatbSEP+iypKElPjudK
+ 0cyA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=FAerEhCP7RhsnqH2wBCVynj2tLp7d7syR4UGAOv+t7Q=;
- b=rfHU0IvSWcT9veAhQGQAt1qtUBP6l0Ny5lBGm9UQ3VZVj5wv8ushmEZTkdffxwOmor
- S4PDomdJa0PDT+YfrhzGKE9p9TkYnAUfMi5sPmZ7iEd1moR1HPDr1hpElxv45uRphAPi
- J8HonJhfkgrkmsatPnMFP0pLWUeRk7QclYcrg5H+EucnrdD0nfmG9tnCxJhimK0tQozy
- Tsa3BZdmLQgpPZkm2p5HuOFpvKLkBwFJB4hsFW1b9pqycdSUDUFVgpYOYMWd19xFAPyh
- SL+Hh+rS9zXdcfJ0tENTrRwFDF5X8twdDIFdmno5T4TAt1PPVorvVTBBAuYzTrNeGjCg
- 89yA==
-X-Gm-Message-State: ACrzQf3JwwYYxdW1E8lyjvfyYA4WalSNTCxsQVJ91faB6VtVnctupwze
- Zuf+KzvL+3/ljLYzFJhnYqETf7FJdRQ=
-X-Received: by 2002:a17:906:ef8f:b0:78e:28e7:6c64 with SMTP id
- ze15-20020a170906ef8f00b0078e28e76c64mr5182687ejb.165.1665923314777; 
- Sun, 16 Oct 2022 05:28:34 -0700 (PDT)
+ bh=XB8LzA+Xf7kj44ENBLw+h7JO3RpBY2E4p+/JbUGhS6k=;
+ b=tOlSAwAjcF/W98ZTlsvxBQNLRXyrc8Fe+zXJSC8zEhgPW0bBYgMyH9hlFMBIYBxyvr
+ mZSeKN3ATGALUflCyrxbl3JpdPxFA3osFuWuytV16Sj2WTrd2NDHnA1AHlweB071NyZ4
+ /H5RjvF/+S0KBS+6BvVJlD0cs68voctTUQGQpif2vuBQwx5SuSVHRhoKEq48SHK/q6C8
+ chQWjyp4QXeycBFW+B50DJ4GzA2N25IRpXUHA6N66dUJQ9VoNOgGN4DzfrHac1Sru+HT
+ emU9ivP2jXgK7+SrxK341i0YrldilW30O3xAS+vv+eMUHUpGRjlX1NryUOHpvm5mwhcA
+ eftA==
+X-Gm-Message-State: ACrzQf28LrfJ4OwF4QkWol+dDAShoK6x8I3IZ5rN2/1rhpagySdvkOzw
+ hE41XPpcWjhMWLNqgp16Giibe4dljCM=
+X-Received: by 2002:a17:907:7638:b0:78d:9e03:86a8 with SMTP id
+ jy24-20020a170907763800b0078d9e0386a8mr5047765ejc.6.1665923313342; 
+ Sun, 16 Oct 2022 05:28:33 -0700 (PDT)
 Received: from localhost.localdomain
  (dynamic-089-014-006-139.89.14.pool.telefonica.de. [89.14.6.139])
  by smtp.gmail.com with ESMTPSA id
- k17-20020aa7c391000000b00456cbd8c65bsm5504467edq.6.2022.10.16.05.28.33
+ k17-20020aa7c391000000b00456cbd8c65bsm5504467edq.6.2022.10.16.05.28.31
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 16 Oct 2022 05:28:34 -0700 (PDT)
+ Sun, 16 Oct 2022 05:28:32 -0700 (PDT)
 From: Bernhard Beschow <shentey@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>,
@@ -99,18 +99,17 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  qemu-ppc@nongnu.org, BALATON Zoltan <balaton@eik.bme.hu>,
  Yoshinori Sato <ysato@users.sourceforge.jp>,
  Antony Pavlov <antonynpavlov@gmail.com>, Hanna Reitz <hreitz@redhat.com>,
- Bernhard Beschow <shentey@gmail.com>
-Subject: [PATCH v3 7/9] hw/ppc/e500: Implement pflash handling
-Date: Sun, 16 Oct 2022 14:27:35 +0200
-Message-Id: <20221016122737.93755-8-shentey@gmail.com>
+ Bernhard Beschow <shentey@gmail.com>, Bin Meng <bmeng.cn@gmail.com>
+Subject: [PATCH v3 6/9] hw/sd/sdhci: Rename ESDHC_* defines to USDHC_*
+Date: Sun, 16 Oct 2022 14:27:34 +0200
+Message-Id: <20221016122737.93755-7-shentey@gmail.com>
 X-Mailer: git-send-email 2.38.0
 In-Reply-To: <20221016122737.93755-1-shentey@gmail.com>
 References: <20221016122737.93755-1-shentey@gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::629;
- envelope-from=shentey@gmail.com; helo=mail-ej1-x629.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::62b;
+ envelope-from=shentey@gmail.com; helo=mail-ej1-x62b.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -119,181 +118,166 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: yC92yCwWezmj
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 7XwMOUWuhIdM
 
-Allows e500 boards to have their root file system reside on flash using
-only builtin devices located in the eLBC memory region.
-
-Note that the flash memory area is only created when a -pflash argument is
-given, and that the size is determined by the given file. The idea is to
-put users into control.
+The device model's functions start with "usdhc_", so rename the defines
+accordingly for consistency.
 
 Signed-off-by: Bernhard Beschow <shentey@gmail.com>
+Reviewed-by: Bin Meng <bmeng.cn@gmail.com>
 ---
- docs/system/ppc/ppce500.rst | 16 ++++++++++
- hw/ppc/Kconfig              |  1 +
- hw/ppc/e500.c               | 62 +++++++++++++++++++++++++++++++++++++
- 3 files changed, 79 insertions(+)
+ hw/sd/sdhci.c | 66 +++++++++++++++++++++++++--------------------------
+ 1 file changed, 33 insertions(+), 33 deletions(-)
 
-diff --git a/docs/system/ppc/ppce500.rst b/docs/system/ppc/ppce500.rst
-index ba6bcb7314..99d2c680d6 100644
---- a/docs/system/ppc/ppce500.rst
-+++ b/docs/system/ppc/ppce500.rst
-@@ -165,3 +165,19 @@ if “-device eTSEC” is given to QEMU:
- .. code-block:: bash
+diff --git a/hw/sd/sdhci.c b/hw/sd/sdhci.c
+index 6da5e2c781..306070c872 100644
+--- a/hw/sd/sdhci.c
++++ b/hw/sd/sdhci.c
+@@ -1577,24 +1577,24 @@ static const TypeInfo sdhci_bus_info = {
  
-   -netdev tap,ifname=tap0,script=no,downscript=no,id=net0 -device eTSEC,netdev=net0
-+
-+Root file system on flash drive
-+-------------------------------
-+
-+Rather than using a root file system on ram disk, it is possible to have it on
-+CFI flash. Given an ext2 image whose size must be a power of two, it can be used
-+as follows:
-+
-+.. code-block:: bash
-+
-+  $ qemu-system-ppc{64|32} -M ppce500 -cpu e500mc -smp 4 -m 2G \
-+      -display none -serial stdio \
-+      -kernel vmlinux \
-+      -drive if=pflash,file=/path/to/rootfs.ext2,format=raw \
-+      -append "rootwait root=/dev/mtdblock0"
-+
-diff --git a/hw/ppc/Kconfig b/hw/ppc/Kconfig
-index 791fe78a50..769a1ead1c 100644
---- a/hw/ppc/Kconfig
-+++ b/hw/ppc/Kconfig
-@@ -126,6 +126,7 @@ config E500
-     select ETSEC
-     select GPIO_MPC8XXX
-     select OPENPIC
-+    select PFLASH_CFI01
-     select PLATFORM_BUS
-     select PPCE500_PCI
-     select SERIAL
-diff --git a/hw/ppc/e500.c b/hw/ppc/e500.c
-index 3e950ea3ba..23d2c3451a 100644
---- a/hw/ppc/e500.c
-+++ b/hw/ppc/e500.c
-@@ -23,8 +23,10 @@
- #include "e500-ccsr.h"
- #include "net/net.h"
- #include "qemu/config-file.h"
-+#include "hw/block/flash.h"
- #include "hw/char/serial.h"
- #include "hw/pci/pci.h"
-+#include "sysemu/block-backend-io.h"
- #include "sysemu/sysemu.h"
- #include "sysemu/kvm.h"
- #include "sysemu/reset.h"
-@@ -267,6 +269,31 @@ static void sysbus_device_create_devtree(SysBusDevice *sbdev, void *opaque)
-     }
- }
+ /* --- qdev i.MX eSDHC --- */
  
-+static void create_devtree_flash(SysBusDevice *sbdev,
-+                                 PlatformDevtreeData *data)
-+{
-+    g_autofree char *name = NULL;
-+    uint64_t num_blocks = object_property_get_uint(OBJECT(sbdev),
-+                                                   "num-blocks",
-+                                                   &error_fatal);
-+    uint64_t sector_length = object_property_get_uint(OBJECT(sbdev),
-+                                                      "sector-length",
-+                                                      &error_fatal);
-+    uint64_t bank_width = object_property_get_uint(OBJECT(sbdev),
-+                                                   "width",
-+                                                   &error_fatal);
-+    hwaddr flashbase = 0;
-+    hwaddr flashsize = num_blocks * sector_length;
-+    void *fdt = data->fdt;
-+
-+    name = g_strdup_printf("%s/nor@%" PRIx64, data->node, flashbase);
-+    qemu_fdt_add_subnode(fdt, name);
-+    qemu_fdt_setprop_string(fdt, name, "compatible", "cfi-flash");
-+    qemu_fdt_setprop_sized_cells(fdt, name, "reg",
-+                                 1, flashbase, 1, flashsize);
-+    qemu_fdt_setprop_cell(fdt, name, "bank-width", bank_width);
-+}
-+
- static void platform_bus_create_devtree(PPCE500MachineState *pms,
-                                         void *fdt, const char *mpic)
+-#define ESDHC_MIX_CTRL                  0x48
++#define USDHC_MIX_CTRL                  0x48
+ 
+-#define ESDHC_VENDOR_SPEC               0xc0
+-#define ESDHC_IMX_FRC_SDCLK_ON          (1 << 8)
++#define USDHC_VENDOR_SPEC               0xc0
++#define USDHC_IMX_FRC_SDCLK_ON          (1 << 8)
+ 
+-#define ESDHC_DLL_CTRL                  0x60
++#define USDHC_DLL_CTRL                  0x60
+ 
+-#define ESDHC_TUNING_CTRL               0xcc
+-#define ESDHC_TUNE_CTRL_STATUS          0x68
+-#define ESDHC_WTMK_LVL                  0x44
++#define USDHC_TUNING_CTRL               0xcc
++#define USDHC_TUNE_CTRL_STATUS          0x68
++#define USDHC_WTMK_LVL                  0x44
+ 
+ /* Undocumented register used by guests working around erratum ERR004536 */
+-#define ESDHC_UNDOCUMENTED_REG27        0x6c
++#define USDHC_UNDOCUMENTED_REG27        0x6c
+ 
+-#define ESDHC_CTRL_4BITBUS              (0x1 << 1)
+-#define ESDHC_CTRL_8BITBUS              (0x2 << 1)
++#define USDHC_CTRL_4BITBUS              (0x1 << 1)
++#define USDHC_CTRL_8BITBUS              (0x2 << 1)
+ 
+-#define ESDHC_PRNSTS_SDSTB              (1 << 3)
++#define USDHC_PRNSTS_SDSTB              (1 << 3)
+ 
+ static uint64_t usdhc_read(void *opaque, hwaddr offset, unsigned size)
  {
-@@ -276,6 +303,8 @@ static void platform_bus_create_devtree(PPCE500MachineState *pms,
-     uint64_t addr = pmc->platform_bus_base;
-     uint64_t size = pmc->platform_bus_size;
-     int irq_start = pmc->platform_bus_first_irq;
-+    SysBusDevice *sbdev;
-+    bool ambiguous;
+@@ -1615,11 +1615,11 @@ static uint64_t usdhc_read(void *opaque, hwaddr offset, unsigned size)
+         hostctl1 = SDHC_DMA_TYPE(s->hostctl1) << (8 - 3);
  
-     /* Create a /platform node that we can put all devices into */
+         if (s->hostctl1 & SDHC_CTRL_8BITBUS) {
+-            hostctl1 |= ESDHC_CTRL_8BITBUS;
++            hostctl1 |= USDHC_CTRL_8BITBUS;
+         }
  
-@@ -302,6 +331,13 @@ static void platform_bus_create_devtree(PPCE500MachineState *pms,
-     /* Loop through all dynamic sysbus devices and create nodes for them */
-     foreach_dynamic_sysbus_device(sysbus_device_create_devtree, &data);
+         if (s->hostctl1 & SDHC_CTRL_4BITBUS) {
+-            hostctl1 |= ESDHC_CTRL_4BITBUS;
++            hostctl1 |= USDHC_CTRL_4BITBUS;
+         }
  
-+    sbdev = SYS_BUS_DEVICE(object_resolve_path_type("", TYPE_PFLASH_CFI01,
-+                                                    &ambiguous));
-+    if (sbdev) {
-+        assert(!ambiguous);
-+        create_devtree_flash(sbdev, &data);
-+    }
-+
-     g_free(node);
- }
+         ret  = hostctl1;
+@@ -1630,21 +1630,21 @@ static uint64_t usdhc_read(void *opaque, hwaddr offset, unsigned size)
  
-@@ -856,6 +892,7 @@ void ppce500_init(MachineState *machine)
-     unsigned int pci_irq_nrs[PCI_NUM_PINS] = {1, 2, 3, 4};
-     IrqLines *irqs;
-     DeviceState *dev, *mpicdev;
-+    DriveInfo *dinfo;
-     CPUPPCState *firstenv = NULL;
-     MemoryRegion *ccsr_addr_space;
-     SysBusDevice *s;
-@@ -1024,6 +1061,31 @@ void ppce500_init(MachineState *machine)
-                                 pmc->platform_bus_base,
-                                 &pms->pbus_dev->mmio);
+     case SDHC_PRNSTS:
+         /* Add SDSTB (SD Clock Stable) bit to PRNSTS */
+-        ret = sdhci_read(opaque, offset, size) & ~ESDHC_PRNSTS_SDSTB;
++        ret = sdhci_read(opaque, offset, size) & ~USDHC_PRNSTS_SDSTB;
+         if (s->clkcon & SDHC_CLOCK_INT_STABLE) {
+-            ret |= ESDHC_PRNSTS_SDSTB;
++            ret |= USDHC_PRNSTS_SDSTB;
+         }
+         break;
  
-+    dinfo = drive_get(IF_PFLASH, 0, 0);
-+    if (dinfo) {
-+        BlockBackend *blk = blk_by_legacy_dinfo(dinfo);
-+        BlockDriverState *bs = blk_bs(blk);
-+        uint64_t size = bdrv_getlength(bs);
-+        uint64_t mmio_size = pms->pbus_dev->mmio.size;
-+        PFlashCFI01 *pfl;
-+
-+        if (!is_power_of_2(size)) {
-+            error_report("Size of pflash file must be a power of two.");
-+            exit(1);
-+        }
-+
-+        if (size > mmio_size) {
-+            error_report("Size of pflash file must not be bigger than %" PRIu64
-+                         " bytes.", mmio_size);
-+            exit(1);
-+        }
-+
-+        pfl = pflash_cfi01_register("e500.flash", size, blk, 64 * KiB, 2,
-+                                    0x89, 0x18, 0x0000, 0x0, 1);
-+        memory_region_add_subregion(&pms->pbus_dev->mmio, 0,
-+                                    pflash_cfi01_get_memory(pfl));
-+    }
-+
-     /*
-      * Smart firmware defaults ahead!
-      *
+-    case ESDHC_VENDOR_SPEC:
++    case USDHC_VENDOR_SPEC:
+         ret = s->vendor_spec;
+         break;
+-    case ESDHC_DLL_CTRL:
+-    case ESDHC_TUNE_CTRL_STATUS:
+-    case ESDHC_UNDOCUMENTED_REG27:
+-    case ESDHC_TUNING_CTRL:
+-    case ESDHC_MIX_CTRL:
+-    case ESDHC_WTMK_LVL:
++    case USDHC_DLL_CTRL:
++    case USDHC_TUNE_CTRL_STATUS:
++    case USDHC_UNDOCUMENTED_REG27:
++    case USDHC_TUNING_CTRL:
++    case USDHC_MIX_CTRL:
++    case USDHC_WTMK_LVL:
+         ret = 0;
+         break;
+     }
+@@ -1660,18 +1660,18 @@ usdhc_write(void *opaque, hwaddr offset, uint64_t val, unsigned size)
+     uint32_t value = (uint32_t)val;
+ 
+     switch (offset) {
+-    case ESDHC_DLL_CTRL:
+-    case ESDHC_TUNE_CTRL_STATUS:
+-    case ESDHC_UNDOCUMENTED_REG27:
+-    case ESDHC_TUNING_CTRL:
+-    case ESDHC_WTMK_LVL:
++    case USDHC_DLL_CTRL:
++    case USDHC_TUNE_CTRL_STATUS:
++    case USDHC_UNDOCUMENTED_REG27:
++    case USDHC_TUNING_CTRL:
++    case USDHC_WTMK_LVL:
+         break;
+ 
+-    case ESDHC_VENDOR_SPEC:
++    case USDHC_VENDOR_SPEC:
+         s->vendor_spec = value;
+         switch (s->vendor) {
+         case SDHCI_VENDOR_IMX:
+-            if (value & ESDHC_IMX_FRC_SDCLK_ON) {
++            if (value & USDHC_IMX_FRC_SDCLK_ON) {
+                 s->prnsts &= ~SDHC_IMX_CLOCK_GATE_OFF;
+             } else {
+                 s->prnsts |= SDHC_IMX_CLOCK_GATE_OFF;
+@@ -1740,12 +1740,12 @@ usdhc_write(void *opaque, hwaddr offset, uint64_t val, unsigned size)
+          * Second, split "Data Transfer Width" from bits 2 and 1 in to
+          * bits 5 and 1
+          */
+-        if (value & ESDHC_CTRL_8BITBUS) {
++        if (value & USDHC_CTRL_8BITBUS) {
+             hostctl1 |= SDHC_CTRL_8BITBUS;
+         }
+ 
+-        if (value & ESDHC_CTRL_4BITBUS) {
+-            hostctl1 |= ESDHC_CTRL_4BITBUS;
++        if (value & USDHC_CTRL_4BITBUS) {
++            hostctl1 |= USDHC_CTRL_4BITBUS;
+         }
+ 
+         /*
+@@ -1768,7 +1768,7 @@ usdhc_write(void *opaque, hwaddr offset, uint64_t val, unsigned size)
+         sdhci_write(opaque, offset, value, size);
+         break;
+ 
+-    case ESDHC_MIX_CTRL:
++    case USDHC_MIX_CTRL:
+         /*
+          * So, when SD/MMC stack in Linux tries to write to "Transfer
+          * Mode Register", ESDHC i.MX quirk code will translate it
 -- 
 2.38.0
 

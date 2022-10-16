@@ -1,92 +1,92 @@
-Received: by 2002:a17:906:43c7:b0:78d:9f02:16a1 with SMTP id j7csp1711366ejn;
-        Sun, 16 Oct 2022 05:36:59 -0700 (PDT)
-X-Google-Smtp-Source: AMsMyM5SkTNYLsdfUi5+vgmeYs7q69Jj3SpA2zERmnwRMaVfJ3ieC611b4yJZg1paq4zZ+Uvps0m
-X-Received: by 2002:a05:620a:4414:b0:6ee:76e4:1b6d with SMTP id v20-20020a05620a441400b006ee76e41b6dmr4206941qkp.360.1665923819571;
-        Sun, 16 Oct 2022 05:36:59 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1665923819; cv=none;
+Received: by 2002:a17:906:43c7:b0:78d:9f02:16a1 with SMTP id j7csp1713086ejn;
+        Sun, 16 Oct 2022 05:40:34 -0700 (PDT)
+X-Google-Smtp-Source: AMsMyM7olpxyWv16Y+svTUTDFBdJ7PWTayPgVQ32otAUKFjjh9Yrzfjv7EzNW71SEtXjjlJZxIU7
+X-Received: by 2002:a37:bc01:0:b0:6ed:b53b:21c1 with SMTP id m1-20020a37bc01000000b006edb53b21c1mr4314535qkf.576.1665924034643;
+        Sun, 16 Oct 2022 05:40:34 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1665924034; cv=none;
         d=google.com; s=arc-20160816;
-        b=lqwMjIO/s/aubzmwH+8RHFMKUxkpAvxU/cxugTMIa+fbwRGCKpKs4W1ZIchbuimlkE
-         tpvMy5BkvQwMPeWldYZTsTQP7tL9/Id0aTNFp6KhNiavsK9eAqjfSA2KCqCa9GzklITI
-         qkRrn9Q/3TgDf770MZK6WcJe/4OxRSZQMv01PmZhQ3nAfS2K1V+GzXFwR4jfqfNYZ3mx
-         SUOFARctOVSpxzTNIxwQxk5+6DXRg+GdNqkDi99ePJpjj8iygUz+8CoxEUQ2JC5rPdDB
-         hQS250Csf82MIFVaGygQxvWaLq5Pe047Iy8MUU2WzNRLXORFRlQp8qnyfa8GWUSBgRi3
-         c2IQ==
+        b=seplpmJkAznuYHNH3IBN19rqExhLIhIzOjTq6bMCV2o0D8kbQoPjx0DIMwy/e3g4zA
+         CfBBP0zv4zaljzUpAbS+AgVbJ8HvhISclYjERI+CtVd7WntVE/bGhHlFchRfvL+sQKhv
+         ni5sy0GN2lVhG3SBv8ff0Q5bN06GbVNMcCFaZMV8yY00NzBZeXz8J50EOi582FbppaUO
+         2TcadPn6FkqseYd7Jq6s/wY8cuKI+CJx/Z2w4HLOSV3r3A1Wt8wWGGkpFSu3D6CMFnpp
+         nTWH3FvOdN+4X42eykZ33AXdzqtQ54DcPOJWmczQwezXXRzIyU+azdELIWu4tuHviPi+
+         PZMA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=WtEIJKc0Za2w7LkNpc+XYB5b7FTyMz3UDgQ3c6Pamy8=;
-        b=LiXP+gPCNmwco25l3mhQxe5T5mR3xX0pGDhYGP1dYWKsFoFWfaga7Tneel8eVwkWj5
-         urK636gx77mX4AnLrA+XobPpAIvysN2aPpEZfavU6gZ5zQUK0zo1IxaudjlDBE5VWVYU
-         tf9SBt0G6XSUM1RqLODK3jkfh8ZqWh4cn4/aAsTl4d/vnk8NFnBzJluE/K3dtlttRu65
-         ZOJhrYwUfPp60fVNTUpYF1AsHzUdy+ArCv8wDwi97ionTDFTERt37GQ0muM2+fo+py2P
-         A0ZJMtq9XlQkr5iVNeIxjx7T/mJ651h1FSisjYgh60K95OjQE1nznIcV1SgHbMlQYoYS
-         hgGg==
+        bh=YjMwr8cgXdmnl7qao2/HnRISq2gNWnT6j/SN7k814vg=;
+        b=JFBIUJrLoxJJTMLGsF5C+ivoE0Myk5CKZ3xtOUE5JthiEBk3RUVXwLN8xncblf4Hwe
+         el0d0BXZjgwHqUapYYMkJQ0jc3Mr7FoMzoxCYyy7ZJS1f4wgU3J/9/3ivLJ3/Dn7YHbn
+         Zi5fN1F9zoWWpC9VX7/Q306nDy71wt68zJra115cFZa/fQIqITvJryey9WlHyRelXkaO
+         Pg+Uq5Qng58djRfHj8iBrqo4wXYCAXWR29l+MIITXICIBbLvhQLr42f2J5KQ1AaU0nVw
+         I9fPoo+QOqePonHCVt5SmLPgbIgRQNNlbBoidPnhIKa/Zqi1OYHmBDZpP27dHmvkIOR6
+         jSig==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b="JylHANz/";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=NfJsutzC;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id q11-20020ac8734b000000b0039b1c91fddbsi3913336qtp.166.2022.10.16.05.36.59
+        by mx.google.com with ESMTPS id bp15-20020a05620a458f00b006e25ec9c6b7si4192720qkb.563.2022.10.16.05.40.34
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 16 Oct 2022 05:36:59 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Sun, 16 Oct 2022 05:40:34 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b="JylHANz/";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=NfJsutzC;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:50662 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:57534 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ok2t0-000847-Sq
-	for alex.bennee@linaro.org; Sun, 16 Oct 2022 08:36:58 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38180)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1ok2wU-0004X7-57
+	for alex.bennee@linaro.org; Sun, 16 Oct 2022 08:40:34 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38184)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1ok2ku-0002Xv-6N; Sun, 16 Oct 2022 08:28:36 -0400
-Received: from mail-ej1-x636.google.com ([2a00:1450:4864:20::636]:44762)
+ id 1ok2ky-0002hZ-UB; Sun, 16 Oct 2022 08:28:42 -0400
+Received: from mail-ej1-x62d.google.com ([2a00:1450:4864:20::62d]:34646)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1ok2ks-0000Re-Hy; Sun, 16 Oct 2022 08:28:35 -0400
-Received: by mail-ej1-x636.google.com with SMTP id w18so19390617ejq.11;
- Sun, 16 Oct 2022 05:28:33 -0700 (PDT)
+ id 1ok2kw-0000Ov-FO; Sun, 16 Oct 2022 08:28:40 -0400
+Received: by mail-ej1-x62d.google.com with SMTP id ot12so19485188ejb.1;
+ Sun, 16 Oct 2022 05:28:36 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=WtEIJKc0Za2w7LkNpc+XYB5b7FTyMz3UDgQ3c6Pamy8=;
- b=JylHANz/NxFLncYjM07BEOn7wfjnHJsCvG6Z9+YXTf//6Bcu4sQ8GD0JvkGj1pRzQy
- 3549MQ0vvYXbVQEK8B2dOt3EVW1ctMer5/O2uLeHy+gwhRrOlilD9fV13527U6BPreFM
- 1KWTm3+muUIaP6m91G7wJWz4chfmCEdVgwVhtf4idHwdlbFeTDzcrhQRIl8qPee1TDK8
- jykoNy5ZLHk7YhwMw00vGVvSOx6ZnKJjyG2AhNs1ZCVNioXN2pNyp/dFI2oge9Brasbf
- gE763LCtKJIW+xirjDPNbKw+wt8bt+T/J40W+WG23qjX8QHUMjFjbEMIeMe1e5BHCnLy
- bS6g==
+ bh=YjMwr8cgXdmnl7qao2/HnRISq2gNWnT6j/SN7k814vg=;
+ b=NfJsutzCcawqSgy6sp9sx4BncHauOevGyLJN6PppYmIg/Cy4NJ/uXZL6eRxcdEyafd
+ xa2Q22GhaGyIBL9JN2GsEvv0bzfrxMLDA3PIwNIe758HCOY/t7iscO6hMEvGLtoim9y9
+ L8e71qgTP7oiE4jc/aaZJcVczf4mKp+YVkiXKc7Y2yOmgfig5O1eYv+19WtMKcQmoM7m
+ T35fv6eKMaJHKOL7xQUFJqsNVJV7Xeatw2nF5rTiKi3tW8abt7NLfrfsvE9isNTQVspc
+ KIBMO6t0uPTTxu8c1ukpTPEXZI2Fcvr9O7hMFX8NhiZMMKxf/mfQGl62ITvwf9P4JvB4
+ xG+Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=WtEIJKc0Za2w7LkNpc+XYB5b7FTyMz3UDgQ3c6Pamy8=;
- b=TkhJKa+yoXMZGA5TQsl2ipH/3nqsscJlvKxN8D0mzxc+VWkP5XVY7nxbf4oXzEsLHM
- T8hrOANf7ACsEKFQlf19jrt6udlqUXmHKbFxzayy9+35OimMH5vymGwz4KviJ43ddK97
- ULepFzEsJo76IjNYQoyLFUedt4huDo7Q4J3//LnnnDjK3TfXpe5JCRQD5IhCFSEIr2Cf
- ZzmB6D6wZX0v+O/rdrEGd0o936IFPZXhPPJ2KKuh6O4rSkFHhua6MvKC4/VBSR1kQjBo
- NPwj2A/51k69s13dwOCvCI9VxxLlM05zCjktHfgyVG1923cPxmE/XcG26UQeSn1CmnEF
- UhqA==
-X-Gm-Message-State: ACrzQf29OVSkjGoVYQJ+B6nJFu2yKHcw9ZaQnyugaTtLDf+DfvZYqCo7
- dNXorycD1niR9eRcJfYtrHR+73YOUDc=
-X-Received: by 2002:a17:907:7f0b:b0:78d:c16e:e5fc with SMTP id
- qf11-20020a1709077f0b00b0078dc16ee5fcmr5130415ejc.713.1665923311797; 
- Sun, 16 Oct 2022 05:28:31 -0700 (PDT)
+ bh=YjMwr8cgXdmnl7qao2/HnRISq2gNWnT6j/SN7k814vg=;
+ b=pzbeefMRgzHUH0+RgO/tId4Jov0x7fWvcrTCGU3H25nGajLoVdxLKdEHzoEu6Wu3pE
+ eopHuTTdirEUwj6FI7EjpaItRPyIdnBrAEQ4FjyIC95NUIRUNVJPbkf0Rh6Z4NZIY6NP
+ egW2Kl7DQzJHn+6ruNCUQNi3dPDJFJ8gwMNK3XyvCRyBFwLtvpu5FvDrhWvLiFuAffac
+ yJ88jbhfrDt8quTwAdVSP0KLtHQs08PCU/AKRIRDTV7eWJgmFmXCTvuReTaZtESb3HaI
+ 6c7/Sqq3EULC6JwJCIuXx4lm9zBtTMq6ASLWMVjq6+nxzeqJPEgMdjgbYle/VrgU4miG
+ sMkA==
+X-Gm-Message-State: ACrzQf2AbWAE+VYnw8nJWE/BBIcwSgwNfsGr31aCPokP6p1SWziJgDnl
+ y8bly7HM+YAcONlUafUVXTyJEUSv5BY=
+X-Received: by 2002:a17:907:7e95:b0:78d:e9cf:82c7 with SMTP id
+ qb21-20020a1709077e9500b0078de9cf82c7mr5111302ejc.724.1665923316278; 
+ Sun, 16 Oct 2022 05:28:36 -0700 (PDT)
 Received: from localhost.localdomain
  (dynamic-089-014-006-139.89.14.pool.telefonica.de. [89.14.6.139])
  by smtp.gmail.com with ESMTPSA id
- k17-20020aa7c391000000b00456cbd8c65bsm5504467edq.6.2022.10.16.05.28.30
+ k17-20020aa7c391000000b00456cbd8c65bsm5504467edq.6.2022.10.16.05.28.34
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 16 Oct 2022 05:28:31 -0700 (PDT)
+ Sun, 16 Oct 2022 05:28:35 -0700 (PDT)
 From: Bernhard Beschow <shentey@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>,
@@ -99,18 +99,17 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  qemu-ppc@nongnu.org, BALATON Zoltan <balaton@eik.bme.hu>,
  Yoshinori Sato <ysato@users.sourceforge.jp>,
  Antony Pavlov <antonynpavlov@gmail.com>, Hanna Reitz <hreitz@redhat.com>,
- Bernhard Beschow <shentey@gmail.com>, Bin Meng <bmeng.cn@gmail.com>
-Subject: [PATCH v3 5/9] hw/sd/sdhci-internal: Unexport ESDHC defines
-Date: Sun, 16 Oct 2022 14:27:33 +0200
-Message-Id: <20221016122737.93755-6-shentey@gmail.com>
+ Bernhard Beschow <shentey@gmail.com>
+Subject: [PATCH v3 8/9] hw/sd/sdhci: Implement Freescale eSDHC device model
+Date: Sun, 16 Oct 2022 14:27:36 +0200
+Message-Id: <20221016122737.93755-9-shentey@gmail.com>
 X-Mailer: git-send-email 2.38.0
 In-Reply-To: <20221016122737.93755-1-shentey@gmail.com>
 References: <20221016122737.93755-1-shentey@gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::636;
- envelope-from=shentey@gmail.com; helo=mail-ej1-x636.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::62d;
+ envelope-from=shentey@gmail.com; helo=mail-ej1-x62d.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -119,92 +118,202 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: fnAUTw4LMhqM
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: CI7DiHVUozaT
 
-These defines aren't used outside of sdhci.c, so can be defined there.
+Will allow e500 boards to access SD cards using just their own devices.
 
 Signed-off-by: Bernhard Beschow <shentey@gmail.com>
-Reviewed-by: Bin Meng <bmeng.cn@gmail.com>
-Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- hw/sd/sdhci-internal.h | 20 --------------------
- hw/sd/sdhci.c          | 19 +++++++++++++++++++
- 2 files changed, 19 insertions(+), 20 deletions(-)
+ hw/sd/sdhci.c         | 120 +++++++++++++++++++++++++++++++++++++++++-
+ include/hw/sd/sdhci.h |   3 ++
+ 2 files changed, 122 insertions(+), 1 deletion(-)
 
-diff --git a/hw/sd/sdhci-internal.h b/hw/sd/sdhci-internal.h
-index e8c753d6d1..964570f8e8 100644
---- a/hw/sd/sdhci-internal.h
-+++ b/hw/sd/sdhci-internal.h
-@@ -288,26 +288,6 @@ enum {
- 
- extern const VMStateDescription sdhci_vmstate;
- 
--
--#define ESDHC_MIX_CTRL                  0x48
--
--#define ESDHC_VENDOR_SPEC               0xc0
--#define ESDHC_IMX_FRC_SDCLK_ON          (1 << 8)
--
--#define ESDHC_DLL_CTRL                  0x60
--
--#define ESDHC_TUNING_CTRL               0xcc
--#define ESDHC_TUNE_CTRL_STATUS          0x68
--#define ESDHC_WTMK_LVL                  0x44
--
--/* Undocumented register used by guests working around erratum ERR004536 */
--#define ESDHC_UNDOCUMENTED_REG27        0x6c
--
--#define ESDHC_CTRL_4BITBUS              (0x1 << 1)
--#define ESDHC_CTRL_8BITBUS              (0x2 << 1)
--
--#define ESDHC_PRNSTS_SDSTB              (1 << 3)
--
- /*
-  * Default SD/MMC host controller features information, which will be
-  * presented in CAPABILITIES register of generic SD host controller at reset.
 diff --git a/hw/sd/sdhci.c b/hw/sd/sdhci.c
-index 0e5e988927..6da5e2c781 100644
+index 306070c872..8d8ad9ff24 100644
 --- a/hw/sd/sdhci.c
 +++ b/hw/sd/sdhci.c
-@@ -1577,6 +1577,25 @@ static const TypeInfo sdhci_bus_info = {
+@@ -1369,6 +1369,7 @@ void sdhci_initfn(SDHCIState *s)
+     s->transfer_timer = timer_new_ns(QEMU_CLOCK_VIRTUAL, sdhci_data_transfer, s);
  
+     s->io_ops = &sdhci_mmio_ops;
++    s->io_registers_map_size = SDHC_REGISTERS_MAP_SIZE;
+ }
+ 
+ void sdhci_uninitfn(SDHCIState *s)
+@@ -1392,7 +1393,7 @@ void sdhci_common_realize(SDHCIState *s, Error **errp)
+     s->fifo_buffer = g_malloc0(s->buf_maxsz);
+ 
+     memory_region_init_io(&s->iomem, OBJECT(s), s->io_ops, s, "sdhci",
+-                          SDHC_REGISTERS_MAP_SIZE);
++                          s->io_registers_map_size);
+ }
+ 
+ void sdhci_common_unrealize(SDHCIState *s)
+@@ -1575,6 +1576,122 @@ static const TypeInfo sdhci_bus_info = {
+     .class_init = sdhci_bus_class_init,
+ };
+ 
++/* --- qdev Freescale eSDHC --- */
++
++/* Watermark Level Register */
++#define ESDHC_WML                    0x44
++
++/* Control Register for DMA transfer */
++#define ESDHC_DMA_SYSCTL            0x40c
++
++#define ESDHC_REGISTERS_MAP_SIZE    0x410
++
++static uint64_t esdhci_read(void *opaque, hwaddr offset, unsigned size)
++{
++    uint64_t ret;
++
++    switch (offset) {
++    case SDHC_SYSAD:
++    case SDHC_BLKSIZE:
++    case SDHC_ARGUMENT:
++    case SDHC_TRNMOD:
++    case SDHC_RSPREG0:
++    case SDHC_RSPREG1:
++    case SDHC_RSPREG2:
++    case SDHC_RSPREG3:
++    case SDHC_BDATA:
++    case SDHC_PRNSTS:
++    case SDHC_HOSTCTL:
++    case SDHC_CLKCON:
++    case SDHC_NORINTSTS:
++    case SDHC_NORINTSTSEN:
++    case SDHC_NORINTSIGEN:
++    case SDHC_ACMD12ERRSTS:
++    case SDHC_CAPAB:
++    case SDHC_SLOT_INT_STATUS:
++        ret = sdhci_read(opaque, offset, size);
++        break;
++
++    case ESDHC_WML:
++    case ESDHC_DMA_SYSCTL:
++        ret = 0;
++        qemu_log_mask(LOG_UNIMP, "ESDHC rd @0x%02" HWADDR_PRIx
++                      " not implemented\n", offset);
++        break;
++
++    default:
++        ret = 0;
++        qemu_log_mask(LOG_GUEST_ERROR, "ESDHC rd @0x%02" HWADDR_PRIx
++                      " unknown offset\n", offset);
++        break;
++    }
++
++    return ret;
++}
++
++static void esdhci_write(void *opaque, hwaddr offset, uint64_t val,
++                         unsigned size)
++{
++    switch (offset) {
++    case SDHC_SYSAD:
++    case SDHC_BLKSIZE:
++    case SDHC_ARGUMENT:
++    case SDHC_TRNMOD:
++    case SDHC_BDATA:
++    case SDHC_HOSTCTL:
++    case SDHC_CLKCON:
++    case SDHC_NORINTSTS:
++    case SDHC_NORINTSTSEN:
++    case SDHC_NORINTSIGEN:
++    case SDHC_FEAER:
++        sdhci_write(opaque, offset, val, size);
++        break;
++
++    case ESDHC_WML:
++    case ESDHC_DMA_SYSCTL:
++        qemu_log_mask(LOG_UNIMP, "ESDHC wr @0x%02" HWADDR_PRIx " <- 0x%08lx "
++                      "not implemented\n", offset, val);
++        break;
++
++    default:
++        qemu_log_mask(LOG_GUEST_ERROR, "ESDHC wr @0x%02" HWADDR_PRIx
++                      " <- 0x%08lx unknown offset\n", offset, val);
++        break;
++    }
++}
++
++static const MemoryRegionOps esdhc_mmio_ops = {
++    .read = esdhci_read,
++    .write = esdhci_write,
++    .valid = {
++        .min_access_size = 4,
++        .max_access_size = 4,
++        .unaligned = false
++    },
++    .endianness = DEVICE_BIG_ENDIAN,
++};
++
++static void esdhci_init(Object *obj)
++{
++    DeviceState *dev = DEVICE(obj);
++    SDHCIState *s = SYSBUS_SDHCI(obj);
++
++    s->io_ops = &esdhc_mmio_ops;
++    s->io_registers_map_size = ESDHC_REGISTERS_MAP_SIZE;
++
++    /*
++     * Compatible with:
++     * - SD Host Controller Specification Version 2.0 Part A2
++     */
++    qdev_prop_set_uint8(dev, "sd-spec-version", 2);
++}
++
++static const TypeInfo esdhc_info = {
++    .name = TYPE_FSL_ESDHC,
++    .parent = TYPE_SYSBUS_SDHCI,
++    .instance_init = esdhci_init,
++};
++
  /* --- qdev i.MX eSDHC --- */
  
-+#define ESDHC_MIX_CTRL                  0x48
-+
-+#define ESDHC_VENDOR_SPEC               0xc0
-+#define ESDHC_IMX_FRC_SDCLK_ON          (1 << 8)
-+
-+#define ESDHC_DLL_CTRL                  0x60
-+
-+#define ESDHC_TUNING_CTRL               0xcc
-+#define ESDHC_TUNE_CTRL_STATUS          0x68
-+#define ESDHC_WTMK_LVL                  0x44
-+
-+/* Undocumented register used by guests working around erratum ERR004536 */
-+#define ESDHC_UNDOCUMENTED_REG27        0x6c
-+
-+#define ESDHC_CTRL_4BITBUS              (0x1 << 1)
-+#define ESDHC_CTRL_8BITBUS              (0x2 << 1)
-+
-+#define ESDHC_PRNSTS_SDSTB              (1 << 3)
-+
- static uint64_t usdhc_read(void *opaque, hwaddr offset, unsigned size)
+ #define USDHC_MIX_CTRL                  0x48
+@@ -1907,6 +2024,7 @@ static void sdhci_register_types(void)
  {
-     SDHCIState *s = SYSBUS_SDHCI(opaque);
+     type_register_static(&sdhci_sysbus_info);
+     type_register_static(&sdhci_bus_info);
++    type_register_static(&esdhc_info);
+     type_register_static(&imx_usdhc_info);
+     type_register_static(&sdhci_s3c_info);
+ }
+diff --git a/include/hw/sd/sdhci.h b/include/hw/sd/sdhci.h
+index 01a64c5442..5b32e83eee 100644
+--- a/include/hw/sd/sdhci.h
++++ b/include/hw/sd/sdhci.h
+@@ -45,6 +45,7 @@ struct SDHCIState {
+     AddressSpace *dma_as;
+     MemoryRegion *dma_mr;
+     const MemoryRegionOps *io_ops;
++    uint64_t io_registers_map_size;
+ 
+     QEMUTimer *insert_timer;       /* timer for 'changing' sd card. */
+     QEMUTimer *transfer_timer;
+@@ -122,6 +123,8 @@ DECLARE_INSTANCE_CHECKER(SDHCIState, PCI_SDHCI,
+ DECLARE_INSTANCE_CHECKER(SDHCIState, SYSBUS_SDHCI,
+                          TYPE_SYSBUS_SDHCI)
+ 
++#define TYPE_FSL_ESDHC "fsl-esdhc"
++
+ #define TYPE_IMX_USDHC "imx-usdhc"
+ 
+ #define TYPE_S3C_SDHCI "s3c-sdhci"
 -- 
 2.38.0
 

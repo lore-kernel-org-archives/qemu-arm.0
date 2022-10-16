@@ -1,96 +1,96 @@
-Received: by 2002:a17:906:43c7:b0:78d:9f02:16a1 with SMTP id j7csp1713738ejn;
-        Sun, 16 Oct 2022 05:42:05 -0700 (PDT)
-X-Google-Smtp-Source: AMsMyM6x6d3BQzQgEPfEQ+M9aXnowYf0gUKWI5SlKyDBBHVpKKrSHCE+/QbUk8GOMlsON8LX2MIQ
-X-Received: by 2002:a05:6214:234a:b0:474:2318:3f3b with SMTP id hu10-20020a056214234a00b0047423183f3bmr4674805qvb.10.1665924125058;
-        Sun, 16 Oct 2022 05:42:05 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1665924125; cv=none;
+Received: by 2002:a17:906:43c7:b0:78d:9f02:16a1 with SMTP id j7csp1714562ejn;
+        Sun, 16 Oct 2022 05:44:10 -0700 (PDT)
+X-Google-Smtp-Source: AMsMyM6faz/LBjlFjstHLx/jd+GFRQ7s9Cyjy7MEmPVeAGYzPIb0K4S7/9HU+zClp+1nUmMr2i/+
+X-Received: by 2002:a05:622a:5cc:b0:39c:e0a1:cd00 with SMTP id d12-20020a05622a05cc00b0039ce0a1cd00mr4715821qtb.521.1665924250774;
+        Sun, 16 Oct 2022 05:44:10 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1665924250; cv=none;
         d=google.com; s=arc-20160816;
-        b=YAEXhrLzbjSFUnSVKg+gLW12YmrvwYv331pCjtpgQylIY8+Uxfug+mv17jE5knMy0D
-         CLwd9ul+UPXK50L/pcXkWW+sATMIOeQOSj5302lUc0Y1vVeYVk9uRY5vggt9IhePZoVr
-         dW+DDr/GdIinecVQ4yc0RYgCR0SYZD1hsB/Vdz7r0eTGeXp20FGKhH3zIVkcoQV2IX3M
-         bePpKWJmyoo/ykEuzYlu6xH2FB8lGPsbmIQl4rM89YzE4GpGluDfLuw7DnLg5EWWPCcn
-         brNeoBayFIvObeuXwvWMkvqJxkv/kP8coCrE84KI3vKsKHuxYjAUhp4PAhlxAo2rhlAW
-         jwUg==
+        b=Ut98zapa7zy256uf3jZf6HS1Fa97OwQKe4IDnx0bPgQaw98Fwe5yQCx/KkvpGuIp4t
+         oyTjSCIuBPhVVQFv/Cro2KWbJsjDoCqrXJNHWStoy/97Wpue7xQpnHGN8it1/P8icrKs
+         wgE+cJT89GKZL3Hv46Hdlyk6eTX1ja1SBQ82u0yPgAiLW236ZSbgyNN9NgGERZgKPRbR
+         A72CFv2tXpnseCOogODeoqq8cMKvofZwadNaH87TM8Xb75SjB8bt2F/8w0Q3HYxkPTXu
+         TiyD5yDa4tVUqSN3aPqJu6CoLwm7fL/2jS71vlEeHV4WvyS14rXXuE7yF6CP10XTWmTx
+         9nBg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=cSCL1Ge340MOLsJbNs8WRE5yUKjbTgFBMKoLfI3Ami8=;
-        b=aX00RATRRtR2RXiBg1KZOR4a0/d0keJJ8+CS0FTf9iqV/NK3tosnkbbswu5g814yq2
-         61lBCymz7dpKqWGITCfHT4dbV/dh8PMUKPzZX76p6uTEl1v+IrsI22+lN8Qg6K5Jm7+o
-         Aw7audYlLZWpjWSaMS2b3kbnVjIs5ow5axXEYG6X4f0sL7zAXN5WbTBy+SHfqUd+BVRq
-         2QTCdjlT+YxKgazWVNJbTTPwpdA9UtAjA5h8lJKbaXOAmpbKWRdSMBYmOEM+V+M/wE06
-         Z848UObtwp2sbuUi8flKizcH2ONv6bNWQzMkfzXvSEQYvtqIgh7C67MTk2FInEv1Nv4D
-         qEOw==
+         :mime-version:message-id:references:in-reply-to:subject:cc:to:from
+         :date:dkim-signature;
+        bh=TTEMyvN9eWVq+Pb8fslPxbOTaNV6YI7z6zevaFOi/u4=;
+        b=OAh3alDqCx7RUp8iNxATLIyv6yGEZHYYBTZWRAHW2EiCkz9XomxSSlt6moNUR7Zp9s
+         WFCrDYYUEU7MajvjujMJ2WC+4a/RmQfxpB8BdrIRE6Ma3m48oj9qXiUCWkbFWcCw3xdX
+         sgS8tuZI7sRPl92N5cnnZ550TbYypqsI7zEh8qhYgsfX4Bxztz34J5gWPr/BpQ/+M/3R
+         jq4zfeAiha46MUkYu61S6zg4WLtCRkEZEKjPE3gOsmlyOe1cty2vrKJ8t5UmkS044e5D
+         lGUXzTAzW2CBCeMuDuXg9HbiL4aQlIWvpkcgJ8xfr3mtTqTqZRD2NMO9jz90a1jQbU4v
+         aZqQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=HWrzsp3w;
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b="DHYi/fpW";
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s14-20020a05620a254e00b006e9cecaf021si4596401qko.597.2022.10.16.05.42.04
+        by mx.google.com with ESMTPS id c25-20020a05620a201900b006ee9097ccaesi3612758qka.255.2022.10.16.05.44.10
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 16 Oct 2022 05:42:05 -0700 (PDT)
+        Sun, 16 Oct 2022 05:44:10 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=HWrzsp3w;
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b="DHYi/fpW";
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:36138 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:60530 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ok2xw-0005XF-I1
-	for alex.bennee@linaro.org; Sun, 16 Oct 2022 08:42:04 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:55612)
+	id 1ok2zy-0000Wz-8U
+	for alex.bennee@linaro.org; Sun, 16 Oct 2022 08:44:10 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:58382)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1ok2kt-0002VL-Ev; Sun, 16 Oct 2022 08:28:35 -0400
-Received: from mail-ej1-x631.google.com ([2a00:1450:4864:20::631]:35808)
+ id 1ok2x6-0005tu-UW; Sun, 16 Oct 2022 08:41:13 -0400
+Received: from mail-ej1-x62e.google.com ([2a00:1450:4864:20::62e]:38491)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1ok2kr-0000Qr-DI; Sun, 16 Oct 2022 08:28:35 -0400
-Received: by mail-ej1-x631.google.com with SMTP id k2so19445432ejr.2;
- Sun, 16 Oct 2022 05:28:31 -0700 (PDT)
+ id 1ok2x3-0002Ug-1r; Sun, 16 Oct 2022 08:41:12 -0400
+Received: by mail-ej1-x62e.google.com with SMTP id fy4so19464495ejc.5;
+ Sun, 16 Oct 2022 05:41:07 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ h=content-transfer-encoding:mime-version:message-id:references
+ :in-reply-to:subject:cc:to:from:date:from:to:cc:subject:date
  :message-id:reply-to;
- bh=cSCL1Ge340MOLsJbNs8WRE5yUKjbTgFBMKoLfI3Ami8=;
- b=HWrzsp3wBj2P5rbLGfZPG68FUfQ9ptwqP+IBUJ2oK45cySWrbpAvgSFQ5/CbhtkELi
- j7ZSQK7wEQXx7C9vxSuEjizZnmgdMWHHBE/ylUSaDjQLM1qOGYxR0ScphcZVBs41CWme
- GcSydz0H41i8pPhVvvGIUcTtrwj3JMUKe1KU5iTAu0PiX3WASbbjo2VmNEDC5mAHKaIk
- pff6lQvMgbR05Xg4iP/LoGXLxNzj4DW0VHD+rMIWRyCtDeW53kNQaMOipiWdBfkirJy7
- ckHg6ZtI5HUuRGifD//PzArnydgTAi/tWySS4iCc3rNC4ZOfatIy1rDn+oGEJH9PFhLQ
- SrPg==
+ bh=TTEMyvN9eWVq+Pb8fslPxbOTaNV6YI7z6zevaFOi/u4=;
+ b=DHYi/fpWAUpRtytt7y+JjlmiR2sY0Ik1qupaBgc1lkCJRQLwzUVcHjNDQ0WP9PuKbU
+ zX8ilVgEuKoTsin0ykl9NdPb5hSULfkhuMuYL1s5t3sN8B0yIpfeZAQGHpkA/HU1kBAJ
+ rjq2rXPXjFYvocSADuYKRiqZPkEEqSAlFpH3BllhjRhVUKeM8po+urOKdLzjNGNQuptL
+ I/2++hKaimXsAVMqcXXh7THZYjxMTaVrzjw7DRKyAk3w/fTy3Zs8tG9AZy9BwbTP2iPz
+ 5rff3pOIfpq+2eZlOOk5RY3tfvnSs0E4cDm2Dyr7u96Kei1mDSS1ksfTrk+SpH/I4TuY
+ ARHg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+ h=content-transfer-encoding:mime-version:message-id:references
+ :in-reply-to:subject:cc:to:from:date:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=cSCL1Ge340MOLsJbNs8WRE5yUKjbTgFBMKoLfI3Ami8=;
- b=bXD1j+4fvfDMWY/IlgxU4FyQWizJ3qeJLA/xASi8Zgg+m9esDKDi9Nbk4XeCOH4IO3
- Wqr2ZnfdUw2ODeAYfZ/bw2zi/pqeB7RqvKWemXv2g0K8mBLncqPPqifUAhLOQ+3sgaCz
- pZLjLJ6ErCaTMemMkpwKCZEk18nXizFZFvj18eEx+P0twcceoTUmtvSzWIo32XHD+8l8
- M/tZJgA9CG9O7JSQhN2C05jXK3FWvpCZdsb+9SsN6IcTk7EzSx88dxF6GkhAzh4GYTra
- 8tns7j5RHiIhaq7IVtp5YCp0z9UUexRCYg19mrudyIU1mO5Yq1CuN0D0veGucLQy4ffp
- IPWg==
-X-Gm-Message-State: ACrzQf2Esv1JQxC/Zpy1cV/pLBIqD/RFJi/dd+csI1nCAY2B5NYtkYoU
- clFsUK1RhTWVD1RcVdcTKcY3Sper02U=
-X-Received: by 2002:a17:907:2672:b0:780:8bb5:25a3 with SMTP id
- ci18-20020a170907267200b007808bb525a3mr4968641ejc.281.1665923310314; 
- Sun, 16 Oct 2022 05:28:30 -0700 (PDT)
-Received: from localhost.localdomain
- (dynamic-089-014-006-139.89.14.pool.telefonica.de. [89.14.6.139])
- by smtp.gmail.com with ESMTPSA id
- k17-20020aa7c391000000b00456cbd8c65bsm5504467edq.6.2022.10.16.05.28.28
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 16 Oct 2022 05:28:30 -0700 (PDT)
+ bh=TTEMyvN9eWVq+Pb8fslPxbOTaNV6YI7z6zevaFOi/u4=;
+ b=LTd+6ws6dRh5G3sAj6VBNdVcjhmi+mZe0GNevgzqwECUloUizUhwOWpAevvJN3Ywvj
+ jB+PHizCyYkttk9geVcWGkV0hh9QHJz/L0nqx0qw0iEOA7MhPqoZtjbByfndScN6+kfC
+ XJ6WbGVjgF2x5NvFnUVFO4+njUoIe48vpD11nqA2Lo17xbEUaOaa+XRxWdwN5EIkat69
+ 8Naz2wYuz/osmMXg5S+yRwCJQvx0k8s/8KdZ5eHMNmwZXS8E3jdown5ymUxLJ0VkjIh9
+ tGgBAIn2ieaDvnF2o8BidwvIODgc5HBhOIDKe4s7tn/WVEnfzAdGTL20QD3cQCv3W3kX
+ CwzA==
+X-Gm-Message-State: ACrzQf0KnGlYMD7af++erBxt7COTaRMnjoAE5cJKIN1LYvnCLDMb7P3A
+ edQvp0r+Bk+YgpHzQSPRwaZ+855jlJ0=
+X-Received: by 2002:a17:907:968e:b0:78d:d4c7:b74f with SMTP id
+ hd14-20020a170907968e00b0078dd4c7b74fmr5092414ejc.727.1665924066091; 
+ Sun, 16 Oct 2022 05:41:06 -0700 (PDT)
+Received: from [127.0.0.1] (dynamic-089-014-006-139.89.14.pool.telefonica.de.
+ [89.14.6.139]) by smtp.gmail.com with ESMTPSA id
+ cx25-20020a05640222b900b004482dd03fe8sm5419465edb.91.2022.10.16.05.41.05
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Sun, 16 Oct 2022 05:41:05 -0700 (PDT)
+Date: Sun, 16 Oct 2022 12:41:03 +0000
 From: Bernhard Beschow <shentey@gmail.com>
 To: qemu-devel@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+CC: Peter Maydell <peter.maydell@linaro.org>,
+ =?ISO-8859-1?Q?Philippe_Mathieu-Daud=E9?= <f4bug@amsat.org>,
  qemu-arm@nongnu.org, Alistair Francis <alistair@alistair23.me>,
  Jan Kiszka <jan.kiszka@web.de>, Magnus Damm <magnus.damm@gmail.com>,
  "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
@@ -98,18 +98,18 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  Bin Meng <bin.meng@windriver.com>, Aurelien Jarno <aurelien@aurel32.net>,
  qemu-ppc@nongnu.org, BALATON Zoltan <balaton@eik.bme.hu>,
  Yoshinori Sato <ysato@users.sourceforge.jp>,
- Antony Pavlov <antonynpavlov@gmail.com>, Hanna Reitz <hreitz@redhat.com>,
- Bernhard Beschow <shentey@gmail.com>
-Subject: [PATCH v3 4/9] hw/block/pflash_cfi02: Attach memory region in boards
-Date: Sun, 16 Oct 2022 14:27:32 +0200
-Message-Id: <20221016122737.93755-5-shentey@gmail.com>
-X-Mailer: git-send-email 2.38.0
+ Antony Pavlov <antonynpavlov@gmail.com>, Hanna Reitz <hreitz@redhat.com>
+Subject: =?US-ASCII?Q?Re=3A_=5BPATCH_v3_0/9=5D_ppc/e500=3A_Add_sup?=
+ =?US-ASCII?Q?port_for_two_types_of_flash=2C_cleanup?=
 In-Reply-To: <20221016122737.93755-1-shentey@gmail.com>
 References: <20221016122737.93755-1-shentey@gmail.com>
+Message-ID: <51DDCB57-C505-4F7A-98B8-BE9C7492C23B@gmail.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::631;
- envelope-from=shentey@gmail.com; helo=mail-ej1-x631.google.com
+Content-Type: text/plain;
+ charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::62e;
+ envelope-from=shentey@gmail.com; helo=mail-ej1-x62e.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -131,193 +131,246 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: EsovHM+NIdEk
+X-TUID: Td+TWtmFs/xW
 
-pflash_cfi02_register() had a parameter which was only passed to
-sysbus_mmio_map() but not used otherwise. Pulling out sysbus_mmio_map()
-resolves that parameter and concentrates the memory region setup in
-board code. Furthermore, it allows attaching cfi02 devices relative to
-some parent bus rather than to the global "sysbus".
+Am 16=2E Oktober 2022 12:27:28 UTC schrieb Bernhard Beschow <shentey@gmail=
+=2Ecom>:
+>Cover letter:
+>
+>~~~~~~~~~~~~~
+>
+>
+>
+>This series adds support for -pflash and direct SD card access to the
+>
+>PPC e500 boards=2E The idea is to increase compatibility with "real" firm=
+ware
+>
+>images where only the bare minimum of drivers is compiled in=2E
+>
+>
+>
+>The series is structured as follows:
+>
+>
+>
+>Patches 1-6 perform some general cleanup which paves the way for the rest=
+ of
+>
+>the series=2E
+>
+>
+>
+>Patch 7 adds -pflash handling where memory-mapped flash can be added on
+>
+>user's behalf=2E That is, the flash memory region in the eLBC is only add=
+ed if
+>
+>the -pflash argument is supplied=2E Note that the cfi01 device model beco=
+mes
+>
+>stricter in checking the size of the emulated flash space=2E
+>
+>
+>
+>Patches 8 and 9 add a new device model - the Freescale eSDHC - to the e50=
+0
+>
+>boards which was missing so far=2E
+>
+>
+>
+>User documentation is also added as the new features become available=2E
+=
+>
+>
+>
+>Tesing done:
+>
+>* `qemu-system-ppc -M ppce500 -cpu e500mc -m 256 -kernel uImage -append
+>
+>"console=3DttyS0 rootwait root=3D/dev/mtdblock0 nokaslr" -drive
+>
+>if=3Dpflash,file=3Drootfs=2Eext2,format=3Draw`
+>
+>* `qemu-system-ppc -M ppce500 -cpu e500mc -m 256 -kernel uImage -append
+>
+>"console=3DttyS0 rootwait root=3D/dev/mmcblk0" -device sd-card,drive=3Dmy=
+drive -drive
+>
+>id=3Dmydrive,if=3Dnone,file=3Drootfs=2Eext2,format=3Draw`
+>
+>
+>
+>The load was created using latest Buildroot with `make
+>
+>qemu_ppc_e500mc_defconfig` where the rootfs was configured to be of ext2 =
+type=2E
+>
+>In both cases it was possible to log in and explore the root file system=
+=2E
+>
+>
+>
+>v3:
+>
+>~~~
+>
+>Phil:
+>
+>- Also add power-of-2 fix to pflash_cfi02
+>
+>- Resolve cfi01-specific assertion in e500 code
+>
+>- Resolve unused define in eSDHC device model
+>
+>- Resolve redundant alignment checks in eSDHC device model
+>
+>
+>
+>Bin:
+>
+>- Add dedicated flash chapter to documentation
+>
+>
+>
+>Bernhard:
+>
+>- Use is_power_of_2() instead of ctpop64() for better readability
+>
+>- Only instantiate eSDHC device model in ppce500 (not used in MPC8544DS)
+=
+>
+>- Rebase onto gitlab=2Ecom/danielhb/qemu/tree/ppc-next
+- Move cfi0x memory region setup into board code to avoid cfi01-specific a=
+ssertion there
+- While at it, resolve unreachable code related to cfi01 device creation
+- Reorder patches such that trivial patches come first
 
-While at it, replace sysbus_mmio_map() with non-sysbus equivalents.
+Best regards,
+Bernhard
 
-Signed-off-by: Bernhard Beschow <shentey@gmail.com>
----
- hw/arm/digic_boards.c    | 16 ++++++++++------
- hw/arm/musicpal.c        | 15 +++++++++------
- hw/arm/xilinx_zynq.c     | 12 +++++++-----
- hw/block/pflash_cfi02.c  |  9 ++++++---
- hw/sh4/r2d.c             | 11 +++++++----
- include/hw/block/flash.h |  4 ++--
- 6 files changed, 41 insertions(+), 26 deletions(-)
+>
+>
+>
+>v2:
+>
+>~~~
+>
+>Bin:
+>
+>- Add source for MPC8544DS platform bus' memory map in commit message=2E
+=
+>
+>- Keep "ESDHC" in comment referring to Linux driver=2E
+>
+>- Use "qemu-system-ppc{64|32} in documentation=2E
+>
+>- Use g_autofree in device tree code=2E
+>
+>- Remove unneeded device tree properties=2E
+>
+>- Error out if pflash size doesn't fit into eLBC memory window=2E
+>
+>- Remove unused ESDHC defines=2E
+>
+>- Define macro ESDHC_WML for register offset with magic constant=2E
+>
+>- Fix some whitespace issues when adding eSDHC device to e500=2E
+>
+>
+>
+>Phil:
+>
+>- Fix tense in commit message=2E
+>
+>
+>
+>Bernhard Beschow (9):
+>
+>  hw/block/pflash_cfi0{1,2}: Error out if device length isn't a power of
+=
+>
+>    two
+>
+>  hw/{arm,ppc}: Resolve unreachable code
+>
+>  hw/block/pflash_cfi01: Attach memory region in boards
+>
+>  hw/block/pflash_cfi02: Attach memory region in boards
+>
+>  hw/sd/sdhci-internal: Unexport ESDHC defines
+>
+>  hw/sd/sdhci: Rename ESDHC_* defines to USDHC_*
+>
+>  hw/ppc/e500: Implement pflash handling
+>
+>  hw/sd/sdhci: Implement Freescale eSDHC device model
+>
+>  hw/ppc/e500: Add Freescale eSDHC to e500plat
+>
+>
+>
+> docs/system/ppc/ppce500=2Erst              |  28 ++++
+>
+> hw/arm/collie=2Ec                          |  20 ++-
+>
+> hw/arm/digic_boards=2Ec                    |  16 +-
+>
+> hw/arm/gumstix=2Ec                         |  24 +--
+>
+> hw/arm/mainstone=2Ec                       |  15 +-
+>
+> hw/arm/musicpal=2Ec                        |  15 +-
+>
+> hw/arm/omap_sx1=2Ec                        |  25 ++--
+>
+> hw/arm/versatilepb=2Ec                     |  14 +-
+>
+> hw/arm/xilinx_zynq=2Ec                     |  12 +-
+>
+> hw/arm/z2=2Ec                              |  12 +-
+>
+> hw/block/pflash_cfi01=2Ec                  |  12 +-
+>
+> hw/block/pflash_cfi02=2Ec                  |  14 +-
+>
+> hw/microblaze/petalogix_ml605_mmu=2Ec      |  16 +-
+>
+> hw/microblaze/petalogix_s3adsp1800_mmu=2Ec |  10 +-
+>
+> hw/mips/malta=2Ec                          |   4 +-
+>
+> hw/ppc/Kconfig                           |   2 +
+>
+> hw/ppc/e500=2Ec                            |  97 +++++++++++-
+>
+> hw/ppc/e500=2Eh                            |   1 +
+>
+> hw/ppc/e500plat=2Ec                        |   1 +
+>
+> hw/ppc/sam460ex=2Ec                        |  19 ++-
+>
+> hw/ppc/virtex_ml507=2Ec                    |   5 +-
+>
+> hw/sd/sdhci-internal=2Eh                   |  20 ---
+>
+> hw/sd/sdhci=2Ec                            | 183 ++++++++++++++++++++---=
 
-diff --git a/hw/arm/digic_boards.c b/hw/arm/digic_boards.c
-index 4093af09cb..d3c5426cf9 100644
---- a/hw/arm/digic_boards.c
-+++ b/hw/arm/digic_boards.c
-@@ -116,12 +116,16 @@ static void digic4_add_k8p3215uqb_rom(DigicState *s, hwaddr addr,
- #define FLASH_K8P3215UQB_SIZE (4 * 1024 * 1024)
- #define FLASH_K8P3215UQB_SECTOR_SIZE (64 * 1024)
- 
--    pflash_cfi02_register(addr, "pflash", FLASH_K8P3215UQB_SIZE,
--                          NULL, FLASH_K8P3215UQB_SECTOR_SIZE,
--                          DIGIC4_ROM_MAX_SIZE / FLASH_K8P3215UQB_SIZE,
--                          4,
--                          0x00EC, 0x007E, 0x0003, 0x0001,
--                          0x0555, 0x2aa, 0);
-+    PFlashCFI02 *pfl;
-+
-+    pfl = pflash_cfi02_register("pflash", FLASH_K8P3215UQB_SIZE,
-+                                NULL, FLASH_K8P3215UQB_SECTOR_SIZE,
-+                                DIGIC4_ROM_MAX_SIZE / FLASH_K8P3215UQB_SIZE,
-+                                4,
-+                                0x00EC, 0x007E, 0x0003, 0x0001,
-+                                0x0555, 0x2aa, 0);
-+    memory_region_add_subregion(get_system_memory(), addr,
-+                                pflash_cfi02_get_memory(pfl));
- 
-     digic_load_rom(s, addr, FLASH_K8P3215UQB_SIZE, filename);
- }
-diff --git a/hw/arm/musicpal.c b/hw/arm/musicpal.c
-index b65c020115..efad741f6d 100644
---- a/hw/arm/musicpal.c
-+++ b/hw/arm/musicpal.c
-@@ -1261,6 +1261,7 @@ static void musicpal_init(MachineState *machine)
-     /* Register flash */
-     dinfo = drive_get(IF_PFLASH, 0, 0);
-     if (dinfo) {
-+        PFlashCFI02 *pfl;
-         BlockBackend *blk = blk_by_legacy_dinfo(dinfo);
- 
-         flash_size = blk_getlength(blk);
-@@ -1275,12 +1276,14 @@ static void musicpal_init(MachineState *machine)
-          * 0xFF800000 (if there is 8 MB flash). So remap flash access if the
-          * image is smaller than 32 MB.
-          */
--        pflash_cfi02_register(0x100000000ULL - MP_FLASH_SIZE_MAX,
--                              "musicpal.flash", flash_size,
--                              blk, 0x10000,
--                              MP_FLASH_SIZE_MAX / flash_size,
--                              2, 0x00BF, 0x236D, 0x0000, 0x0000,
--                              0x5555, 0x2AAA, 0);
-+        pfl = pflash_cfi02_register("musicpal.flash", flash_size,
-+                                    blk, 0x10000,
-+                                    MP_FLASH_SIZE_MAX / flash_size,
-+                                    2, 0x00BF, 0x236D, 0x0000, 0x0000,
-+                                    0x5555, 0x2AAA, 0);
-+        memory_region_add_subregion(address_space_mem,
-+                                    0x100000000ULL - MP_FLASH_SIZE_MAX,
-+                                    pflash_cfi02_get_memory(pfl));
-     }
-     sysbus_create_simple(TYPE_MV88W8618_FLASHCFG, MP_FLASHCFG_BASE, NULL);
- 
-diff --git a/hw/arm/xilinx_zynq.c b/hw/arm/xilinx_zynq.c
-index 3190cc0b8d..a2abb1cf31 100644
---- a/hw/arm/xilinx_zynq.c
-+++ b/hw/arm/xilinx_zynq.c
-@@ -182,6 +182,7 @@ static void zynq_init(MachineState *machine)
-     MemoryRegion *ocm_ram = g_new(MemoryRegion, 1);
-     DeviceState *dev, *slcr;
-     SysBusDevice *busdev;
-+    PFlashCFI02 *pfl;
-     qemu_irq pic[64];
-     int n;
- 
-@@ -218,11 +219,12 @@ static void zynq_init(MachineState *machine)
-     DriveInfo *dinfo = drive_get(IF_PFLASH, 0, 0);
- 
-     /* AMD */
--    pflash_cfi02_register(0xe2000000, "zynq.pflash", FLASH_SIZE,
--                          dinfo ? blk_by_legacy_dinfo(dinfo) : NULL,
--                          FLASH_SECTOR_SIZE, 1,
--                          1, 0x0066, 0x0022, 0x0000, 0x0000, 0x0555, 0x2aa,
--                          0);
-+    pfl = pflash_cfi02_register("zynq.pflash", FLASH_SIZE,
-+                                dinfo ? blk_by_legacy_dinfo(dinfo) : NULL,
-+                                FLASH_SECTOR_SIZE, 1, 1, 0x0066, 0x0022, 0x0000,
-+                                0x0000, 0x0555, 0x2aa, 0);
-+    memory_region_add_subregion(address_space_mem, 0xe2000000,
-+                                pflash_cfi02_get_memory(pfl));
- 
-     /* Create the main clock source, and feed slcr with it */
-     zynq_machine->ps_clk = CLOCK(object_new(TYPE_CLOCK));
-diff --git a/hw/block/pflash_cfi02.c b/hw/block/pflash_cfi02.c
-index ff2fe154c1..60039e0d52 100644
---- a/hw/block/pflash_cfi02.c
-+++ b/hw/block/pflash_cfi02.c
-@@ -999,8 +999,7 @@ static void pflash_cfi02_register_types(void)
- 
- type_init(pflash_cfi02_register_types)
- 
--PFlashCFI02 *pflash_cfi02_register(hwaddr base,
--                                   const char *name,
-+PFlashCFI02 *pflash_cfi02_register(const char *name,
-                                    hwaddr size,
-                                    BlockBackend *blk,
-                                    uint32_t sector_len,
-@@ -1031,6 +1030,10 @@ PFlashCFI02 *pflash_cfi02_register(hwaddr base,
-     qdev_prop_set_string(dev, "name", name);
-     sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), &error_fatal);
- 
--    sysbus_mmio_map(SYS_BUS_DEVICE(dev), 0, base);
-     return PFLASH_CFI02(dev);
- }
-+
-+MemoryRegion *pflash_cfi02_get_memory(PFlashCFI02 *fl)
-+{
-+    return sysbus_mmio_get_region(SYS_BUS_DEVICE(fl), 0);
-+}
-diff --git a/hw/sh4/r2d.c b/hw/sh4/r2d.c
-index 39fc4f19d9..0af8f0e137 100644
---- a/hw/sh4/r2d.c
-+++ b/hw/sh4/r2d.c
-@@ -239,6 +239,7 @@ static void r2d_init(MachineState *machine)
-     MemoryRegion *sdram = g_new(MemoryRegion, 1);
-     qemu_irq *irq;
-     DriveInfo *dinfo;
-+    PFlashCFI02 *pfl;
-     int i;
-     DeviceState *dev;
-     SysBusDevice *busdev;
-@@ -302,10 +303,12 @@ static void r2d_init(MachineState *machine)
-      * addressable in words of 16bit.
-      */
-     dinfo = drive_get(IF_PFLASH, 0, 0);
--    pflash_cfi02_register(0x0, "r2d.flash", FLASH_SIZE,
--                          dinfo ? blk_by_legacy_dinfo(dinfo) : NULL,
--                          64 * KiB, 1, 2, 0x0001, 0x227e, 0x2220, 0x2200,
--                          0x555, 0x2aa, 0);
-+    pfl = pflash_cfi02_register("r2d.flash", FLASH_SIZE,
-+                                dinfo ? blk_by_legacy_dinfo(dinfo) : NULL,
-+                                64 * KiB, 1, 2, 0x0001, 0x227e, 0x2220, 0x2200,
-+                                0x555, 0x2aa, 0);
-+    memory_region_add_subregion(get_system_memory(), 0x0,
-+                                pflash_cfi02_get_memory(pfl));
- 
-     /* NIC: rtl8139 on-board, and 2 slots. */
-     for (i = 0; i < nb_nics; i++)
-diff --git a/include/hw/block/flash.h b/include/hw/block/flash.h
-index 5f9ba18de1..52d6bcd56a 100644
---- a/include/hw/block/flash.h
-+++ b/include/hw/block/flash.h
-@@ -30,8 +30,7 @@ void pflash_cfi01_legacy_drive(PFlashCFI01 *dev, DriveInfo *dinfo);
- OBJECT_DECLARE_SIMPLE_TYPE(PFlashCFI02, PFLASH_CFI02)
- 
- 
--PFlashCFI02 *pflash_cfi02_register(hwaddr base,
--                                   const char *name,
-+PFlashCFI02 *pflash_cfi02_register(const char *name,
-                                    hwaddr size,
-                                    BlockBackend *blk,
-                                    uint32_t sector_len,
-@@ -42,6 +41,7 @@ PFlashCFI02 *pflash_cfi02_register(hwaddr base,
-                                    uint16_t unlock_addr0,
-                                    uint16_t unlock_addr1,
-                                    int be);
-+MemoryRegion *pflash_cfi02_get_memory(PFlashCFI02 *fl);
- 
- /* nand.c */
- DeviceState *nand_init(BlockBackend *blk, int manf_id, int chip_id);
--- 
-2.38.0
+>
+> hw/sh4/r2d=2Ec                             |  11 +-
+>
+> include/hw/block/flash=2Eh                 |   7 +-
+>
+> include/hw/sd/sdhci=2Eh                    |   3 +
+>
+> 26 files changed, 433 insertions(+), 153 deletions(-)
+>
+>
+>
+>-- >
+>2=2E38=2E0
+>
+>
+>
 

@@ -1,92 +1,92 @@
-Received: by 2002:a17:906:43c7:b0:78d:9f02:16a1 with SMTP id j7csp1707691ejn;
-        Sun, 16 Oct 2022 05:29:52 -0700 (PDT)
-X-Google-Smtp-Source: AMsMyM5+k8+X9YoIEoavY9IVGuTPo8uBbzuTTfDtZShXJklfmS13unFMgTaRtp/4EBIJAZuDPveK
-X-Received: by 2002:a05:6214:2525:b0:4b1:8bf1:f8fb with SMTP id gg5-20020a056214252500b004b18bf1f8fbmr4919679qvb.106.1665923392352;
-        Sun, 16 Oct 2022 05:29:52 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1665923392; cv=none;
+Received: by 2002:a17:906:43c7:b0:78d:9f02:16a1 with SMTP id j7csp1711366ejn;
+        Sun, 16 Oct 2022 05:36:59 -0700 (PDT)
+X-Google-Smtp-Source: AMsMyM5SkTNYLsdfUi5+vgmeYs7q69Jj3SpA2zERmnwRMaVfJ3ieC611b4yJZg1paq4zZ+Uvps0m
+X-Received: by 2002:a05:620a:4414:b0:6ee:76e4:1b6d with SMTP id v20-20020a05620a441400b006ee76e41b6dmr4206941qkp.360.1665923819571;
+        Sun, 16 Oct 2022 05:36:59 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1665923819; cv=none;
         d=google.com; s=arc-20160816;
-        b=cTIgQmQp5vBVc00k6gAanOggDUkqsDoKpsmDfNRW4kV+7z9FU61cXFdKc0V5CJ+n5J
-         dLJpQt3ysKxeWwkvhqGFpldL8P/KM24yV3tmBoy/hcIEdHiL+vdGy8SWOlZWtJerilQB
-         TcVzf8mJPyCzpp773Gduz7kRFdtna0cKqjGBLrTt8sc9OZP/pZhAr/+IEM9OYDPU4CvD
-         G72upMoJq7miwUJPQyNWRIgOG9TBs1JpagAVN7/EbeAdF7gjqOrBSzCy1PgqE87D120L
-         PrXGma2VxmkUimhR5oC01uAwCHRKLe2zvrabgnYFqNBw8HQYo0UUyvJpqj7y8uz4z1Of
-         9uMg==
+        b=lqwMjIO/s/aubzmwH+8RHFMKUxkpAvxU/cxugTMIa+fbwRGCKpKs4W1ZIchbuimlkE
+         tpvMy5BkvQwMPeWldYZTsTQP7tL9/Id0aTNFp6KhNiavsK9eAqjfSA2KCqCa9GzklITI
+         qkRrn9Q/3TgDf770MZK6WcJe/4OxRSZQMv01PmZhQ3nAfS2K1V+GzXFwR4jfqfNYZ3mx
+         SUOFARctOVSpxzTNIxwQxk5+6DXRg+GdNqkDi99ePJpjj8iygUz+8CoxEUQ2JC5rPdDB
+         hQS250Csf82MIFVaGygQxvWaLq5Pe047Iy8MUU2WzNRLXORFRlQp8qnyfa8GWUSBgRi3
+         c2IQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=fSx/0dBuPJaOvBdHjoRuvrisCjatTW6nbPDpOTMpy00=;
-        b=i65Iqt6lLO5+Ob41nY5PTwiTEaQYXceCFGtXp65xC9FPVd2e6NPjJJIvb5ZWqMeV/V
-         EJ/TUNmJpZ4RQwrasZEkhXwge2rWpqLQxesq/zfif7rrS4QHuO+sp/RMsb1JUdh8d7Qm
-         zdlywdhq+znBMbd8/xOOUKnEw8nen1ak+/Cyezcc/Ju1VstfHsiEcbvT/LdTtg5At7pn
-         8gDyc+GnN/DtH2d5mvM72mgflI1AgDY4GgkfrcsPgTdbdElbtaqUxM7wbteQE5zH/uTs
-         nXe3o/kocnw9HSOQurt2IC56EuXOTjs3tZcsL/ZMsOQzSvAEa6iDJStesyxFSeTrkk3U
-         qKxg==
+        bh=WtEIJKc0Za2w7LkNpc+XYB5b7FTyMz3UDgQ3c6Pamy8=;
+        b=LiXP+gPCNmwco25l3mhQxe5T5mR3xX0pGDhYGP1dYWKsFoFWfaga7Tneel8eVwkWj5
+         urK636gx77mX4AnLrA+XobPpAIvysN2aPpEZfavU6gZ5zQUK0zo1IxaudjlDBE5VWVYU
+         tf9SBt0G6XSUM1RqLODK3jkfh8ZqWh4cn4/aAsTl4d/vnk8NFnBzJluE/K3dtlttRu65
+         ZOJhrYwUfPp60fVNTUpYF1AsHzUdy+ArCv8wDwi97ionTDFTERt37GQ0muM2+fo+py2P
+         A0ZJMtq9XlQkr5iVNeIxjx7T/mJ651h1FSisjYgh60K95OjQE1nznIcV1SgHbMlQYoYS
+         hgGg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=KAj2ju30;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b="JylHANz/";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t10-20020a37ea0a000000b006cf1918c2desi4053870qkj.301.2022.10.16.05.29.52
+        by mx.google.com with ESMTPS id q11-20020ac8734b000000b0039b1c91fddbsi3913336qtp.166.2022.10.16.05.36.59
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 16 Oct 2022 05:29:52 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Sun, 16 Oct 2022 05:36:59 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=KAj2ju30;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b="JylHANz/";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:50798 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:50662 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ok2m5-0003Ni-VB
-	for alex.bennee@linaro.org; Sun, 16 Oct 2022 08:29:51 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:55610)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1ok2t0-000847-Sq
+	for alex.bennee@linaro.org; Sun, 16 Oct 2022 08:36:58 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38180)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1ok2ks-0002TP-Ch; Sun, 16 Oct 2022 08:28:34 -0400
-Received: from mail-ed1-x52c.google.com ([2a00:1450:4864:20::52c]:42524)
+ id 1ok2ku-0002Xv-6N; Sun, 16 Oct 2022 08:28:36 -0400
+Received: from mail-ej1-x636.google.com ([2a00:1450:4864:20::636]:44762)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1ok2kp-0000QV-H2; Sun, 16 Oct 2022 08:28:33 -0400
-Received: by mail-ed1-x52c.google.com with SMTP id u21so12536551edi.9;
- Sun, 16 Oct 2022 05:28:30 -0700 (PDT)
+ id 1ok2ks-0000Re-Hy; Sun, 16 Oct 2022 08:28:35 -0400
+Received: by mail-ej1-x636.google.com with SMTP id w18so19390617ejq.11;
+ Sun, 16 Oct 2022 05:28:33 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=fSx/0dBuPJaOvBdHjoRuvrisCjatTW6nbPDpOTMpy00=;
- b=KAj2ju30TO84aZywwn/xSgIO57lE8/owtt4M+fOteMokW89E7AAyfoMWr1A4rVc4+z
- JLrUuB3ZQ28xZVJ4B/t2+3zzofm5kEhaxNt0dtgJ8CVqxG/Tm3NGkYbSmmssWSeb7uHI
- l0zuzWl3tmdzRtlRm/dQZUJaECkckfxR4d6clXnfAzOhNaB8LEgWIFoulijerQksDSQt
- e0Rs2AuI32LHHs32FLFoIn/btCAXu6wxlXl1oOS//35kvqVtOUpvdv96yEJCy9Eq/v49
- /Z58juVV1brxLNN1me9wlacOpJK/1HAAOx3EwBQEa0Y59lmhMJrcjV097aICwUjIHKnL
- gUgw==
+ bh=WtEIJKc0Za2w7LkNpc+XYB5b7FTyMz3UDgQ3c6Pamy8=;
+ b=JylHANz/NxFLncYjM07BEOn7wfjnHJsCvG6Z9+YXTf//6Bcu4sQ8GD0JvkGj1pRzQy
+ 3549MQ0vvYXbVQEK8B2dOt3EVW1ctMer5/O2uLeHy+gwhRrOlilD9fV13527U6BPreFM
+ 1KWTm3+muUIaP6m91G7wJWz4chfmCEdVgwVhtf4idHwdlbFeTDzcrhQRIl8qPee1TDK8
+ jykoNy5ZLHk7YhwMw00vGVvSOx6ZnKJjyG2AhNs1ZCVNioXN2pNyp/dFI2oge9Brasbf
+ gE763LCtKJIW+xirjDPNbKw+wt8bt+T/J40W+WG23qjX8QHUMjFjbEMIeMe1e5BHCnLy
+ bS6g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=fSx/0dBuPJaOvBdHjoRuvrisCjatTW6nbPDpOTMpy00=;
- b=Bp7Ws9iVOKJ0acICfXo5Zkm00A1VRWQ1gi2LmjyBwuDUdvo+hjKUTSlEssAFTCCp5P
- BEBJ9N5kmxmKAPwyXHV6aoN8LwiZ6rHOOIVq6S7hB7YWkXqHazY5GdysMakmNaLWkhMy
- 9+5XTivtHQGHde5MkiY5oCEFAmJUH7OS+u6N7gIA1ZDptA6YimimmSJvu1tL8rqpKoc9
- +kon+7+YUX/msaLJzx/CdBv0s6wRKk1TDfwfUocn9+hKB2JudgTqpRixlesAiS1wTa9E
- FGl6uU4OL7DdQs/7EYY0wCizJBOjttycM61dnWUlC8u75ofrSUwh1//vki6EdGYkri8t
- Rr8Q==
-X-Gm-Message-State: ACrzQf2Xstn9ytidtsTesftTJqcTPFtyU0LWUFryrgd+Z4hnZvDp9+3Z
- ljv+SZu28UwSnB2CCLZFu6+Q55r1gU0=
-X-Received: by 2002:a05:6402:1911:b0:45c:be41:a879 with SMTP id
- e17-20020a056402191100b0045cbe41a879mr6012384edz.322.1665923308594; 
- Sun, 16 Oct 2022 05:28:28 -0700 (PDT)
+ bh=WtEIJKc0Za2w7LkNpc+XYB5b7FTyMz3UDgQ3c6Pamy8=;
+ b=TkhJKa+yoXMZGA5TQsl2ipH/3nqsscJlvKxN8D0mzxc+VWkP5XVY7nxbf4oXzEsLHM
+ T8hrOANf7ACsEKFQlf19jrt6udlqUXmHKbFxzayy9+35OimMH5vymGwz4KviJ43ddK97
+ ULepFzEsJo76IjNYQoyLFUedt4huDo7Q4J3//LnnnDjK3TfXpe5JCRQD5IhCFSEIr2Cf
+ ZzmB6D6wZX0v+O/rdrEGd0o936IFPZXhPPJ2KKuh6O4rSkFHhua6MvKC4/VBSR1kQjBo
+ NPwj2A/51k69s13dwOCvCI9VxxLlM05zCjktHfgyVG1923cPxmE/XcG26UQeSn1CmnEF
+ UhqA==
+X-Gm-Message-State: ACrzQf29OVSkjGoVYQJ+B6nJFu2yKHcw9ZaQnyugaTtLDf+DfvZYqCo7
+ dNXorycD1niR9eRcJfYtrHR+73YOUDc=
+X-Received: by 2002:a17:907:7f0b:b0:78d:c16e:e5fc with SMTP id
+ qf11-20020a1709077f0b00b0078dc16ee5fcmr5130415ejc.713.1665923311797; 
+ Sun, 16 Oct 2022 05:28:31 -0700 (PDT)
 Received: from localhost.localdomain
  (dynamic-089-014-006-139.89.14.pool.telefonica.de. [89.14.6.139])
  by smtp.gmail.com with ESMTPSA id
- k17-20020aa7c391000000b00456cbd8c65bsm5504467edq.6.2022.10.16.05.28.27
+ k17-20020aa7c391000000b00456cbd8c65bsm5504467edq.6.2022.10.16.05.28.30
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 16 Oct 2022 05:28:28 -0700 (PDT)
+ Sun, 16 Oct 2022 05:28:31 -0700 (PDT)
 From: Bernhard Beschow <shentey@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>,
@@ -99,17 +99,18 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  qemu-ppc@nongnu.org, BALATON Zoltan <balaton@eik.bme.hu>,
  Yoshinori Sato <ysato@users.sourceforge.jp>,
  Antony Pavlov <antonynpavlov@gmail.com>, Hanna Reitz <hreitz@redhat.com>,
- Bernhard Beschow <shentey@gmail.com>
-Subject: [PATCH v3 3/9] hw/block/pflash_cfi01: Attach memory region in boards
-Date: Sun, 16 Oct 2022 14:27:31 +0200
-Message-Id: <20221016122737.93755-4-shentey@gmail.com>
+ Bernhard Beschow <shentey@gmail.com>, Bin Meng <bmeng.cn@gmail.com>
+Subject: [PATCH v3 5/9] hw/sd/sdhci-internal: Unexport ESDHC defines
+Date: Sun, 16 Oct 2022 14:27:33 +0200
+Message-Id: <20221016122737.93755-6-shentey@gmail.com>
 X-Mailer: git-send-email 2.38.0
 In-Reply-To: <20221016122737.93755-1-shentey@gmail.com>
 References: <20221016122737.93755-1-shentey@gmail.com>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::52c;
- envelope-from=shentey@gmail.com; helo=mail-ed1-x52c.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::636;
+ envelope-from=shentey@gmail.com; helo=mail-ej1-x636.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -118,460 +119,92 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: h8mzd2avP7Na
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: fnAUTw4LMhqM
 
-pflash_cfi01_register() had a parameter which was only passed to
-sysbus_mmio_map() but not used otherwise. Pulling out sysbus_mmio_map()
-resolves that parameter and concentrates the memory region setup in
-board code. Furthermore, it allows attaching cfi01 devices relative to
-some parent bus rather than to the global "sysbus".
-
-While at it, replace sysbus_mmio_map() with non-sysbus equivalents.
+These defines aren't used outside of sdhci.c, so can be defined there.
 
 Signed-off-by: Bernhard Beschow <shentey@gmail.com>
+Reviewed-by: Bin Meng <bmeng.cn@gmail.com>
+Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- hw/arm/collie.c                          | 20 +++++++++++++-------
- hw/arm/gumstix.c                         | 18 ++++++++++++------
- hw/arm/mainstone.c                       | 16 ++++++++++------
- hw/arm/omap_sx1.c                        | 19 +++++++++++--------
- hw/arm/versatilepb.c                     | 12 +++++++-----
- hw/arm/z2.c                              |  9 ++++++---
- hw/block/pflash_cfi01.c                  |  4 +---
- hw/microblaze/petalogix_ml605_mmu.c      | 16 ++++++++++------
- hw/microblaze/petalogix_s3adsp1800_mmu.c | 10 ++++++----
- hw/mips/malta.c                          |  4 ++--
- hw/ppc/sam460ex.c                        | 15 +++++++++------
- hw/ppc/virtex_ml507.c                    |  5 ++++-
- include/hw/block/flash.h                 |  3 +--
- 13 files changed, 92 insertions(+), 59 deletions(-)
+ hw/sd/sdhci-internal.h | 20 --------------------
+ hw/sd/sdhci.c          | 19 +++++++++++++++++++
+ 2 files changed, 19 insertions(+), 20 deletions(-)
 
-diff --git a/hw/arm/collie.c b/hw/arm/collie.c
-index 8df31e2793..25fb5f657b 100644
---- a/hw/arm/collie.c
-+++ b/hw/arm/collie.c
-@@ -37,8 +37,10 @@ static struct arm_boot_info collie_binfo = {
- static void collie_init(MachineState *machine)
- {
-     DriveInfo *dinfo;
-+    PFlashCFI01 *pfl;
-     MachineClass *mc = MACHINE_GET_CLASS(machine);
-     CollieMachineState *cms = COLLIE_MACHINE(machine);
-+    MemoryRegion *system_memory = get_system_memory();
+diff --git a/hw/sd/sdhci-internal.h b/hw/sd/sdhci-internal.h
+index e8c753d6d1..964570f8e8 100644
+--- a/hw/sd/sdhci-internal.h
++++ b/hw/sd/sdhci-internal.h
+@@ -288,26 +288,6 @@ enum {
  
-     if (machine->ram_size != mc->default_ram_size) {
-         char *sz = size_to_str(mc->default_ram_size);
-@@ -49,17 +51,21 @@ static void collie_init(MachineState *machine)
+ extern const VMStateDescription sdhci_vmstate;
  
-     cms->sa1110 = sa1110_init(machine->cpu_type);
- 
--    memory_region_add_subregion(get_system_memory(), SA_SDCS0, machine->ram);
-+    memory_region_add_subregion(system_memory, SA_SDCS0, machine->ram);
- 
-     dinfo = drive_get(IF_PFLASH, 0, 0);
--    pflash_cfi01_register(SA_CS0, "collie.fl1", 0x02000000,
--                    dinfo ? blk_by_legacy_dinfo(dinfo) : NULL,
--                    64 * KiB, 4, 0x00, 0x00, 0x00, 0x00, 0);
-+    pfl = pflash_cfi01_register("collie.fl1", 0x02000000,
-+                                dinfo ? blk_by_legacy_dinfo(dinfo) : NULL,
-+                                64 * KiB, 4, 0x00, 0x00, 0x00, 0x00, 0);
-+    memory_region_add_subregion(system_memory, SA_CS0,
-+                                pflash_cfi01_get_memory(pfl));
- 
-     dinfo = drive_get(IF_PFLASH, 0, 1);
--    pflash_cfi01_register(SA_CS1, "collie.fl2", 0x02000000,
--                    dinfo ? blk_by_legacy_dinfo(dinfo) : NULL,
--                    64 * KiB, 4, 0x00, 0x00, 0x00, 0x00, 0);
-+    pfl = pflash_cfi01_register("collie.fl2", 0x02000000,
-+                                dinfo ? blk_by_legacy_dinfo(dinfo) : NULL,
-+                                64 * KiB, 4, 0x00, 0x00, 0x00, 0x00, 0);
-+    memory_region_add_subregion(system_memory, SA_CS1,
-+                                pflash_cfi01_get_memory(pfl));
- 
-     sysbus_create_simple("scoop", 0x40800000, NULL);
- 
-diff --git a/hw/arm/gumstix.c b/hw/arm/gumstix.c
-index 1296628ed9..d6c997ad8e 100644
---- a/hw/arm/gumstix.c
-+++ b/hw/arm/gumstix.c
-@@ -51,6 +51,7 @@ static void connex_init(MachineState *machine)
- {
-     PXA2xxState *cpu;
-     DriveInfo *dinfo;
-+    PFlashCFI01 *pfl;
-     MemoryRegion *address_space_mem = get_system_memory();
- 
-     uint32_t connex_rom = 0x01000000;
-@@ -65,9 +66,11 @@ static void connex_init(MachineState *machine)
-         exit(1);
-     }
- 
--    pflash_cfi01_register(0x00000000, "connext.rom", connex_rom,
--                          dinfo ? blk_by_legacy_dinfo(dinfo) : NULL,
--                          sector_len, 2, 0, 0, 0, 0, 0);
-+    pfl = pflash_cfi01_register("connext.rom", connex_rom,
-+                                dinfo ? blk_by_legacy_dinfo(dinfo) : NULL,
-+                                sector_len, 2, 0, 0, 0, 0, 0);
-+    memory_region_add_subregion(address_space_mem, 0x00000000,
-+                                pflash_cfi01_get_memory(pfl));
- 
-     /* Interrupt line of NIC is connected to GPIO line 36 */
-     smc91c111_init(&nd_table[0], 0x04000300,
-@@ -78,6 +81,7 @@ static void verdex_init(MachineState *machine)
- {
-     PXA2xxState *cpu;
-     DriveInfo *dinfo;
-+    PFlashCFI01 *pfl;
-     MemoryRegion *address_space_mem = get_system_memory();
- 
-     uint32_t verdex_rom = 0x02000000;
-@@ -92,9 +96,11 @@ static void verdex_init(MachineState *machine)
-         exit(1);
-     }
- 
--    pflash_cfi01_register(0x00000000, "verdex.rom", verdex_rom,
--                          dinfo ? blk_by_legacy_dinfo(dinfo) : NULL,
--                          sector_len, 2, 0, 0, 0, 0, 0);
-+    pfl = pflash_cfi01_register("verdex.rom", verdex_rom,
-+                                dinfo ? blk_by_legacy_dinfo(dinfo) : NULL,
-+                                sector_len, 2, 0, 0, 0, 0, 0);
-+    memory_region_add_subregion(address_space_mem, 0x00000000,
-+                                pflash_cfi01_get_memory(pfl));
- 
-     /* Interrupt line of NIC is connected to GPIO line 99 */
-     smc91c111_init(&nd_table[0], 0x04000300,
-diff --git a/hw/arm/mainstone.c b/hw/arm/mainstone.c
-index 40f708f2d3..fbbaa4bf0c 100644
---- a/hw/arm/mainstone.c
-+++ b/hw/arm/mainstone.c
-@@ -116,7 +116,6 @@ static void mainstone_common_init(MemoryRegion *address_space_mem,
-     hwaddr mainstone_flash_base[] = { MST_FLASH_0, MST_FLASH_1 };
-     PXA2xxState *mpu;
-     DeviceState *mst_irq;
--    DriveInfo *dinfo;
-     int i;
-     MemoryRegion *rom = g_new(MemoryRegion, 1);
- 
-@@ -129,12 +128,17 @@ static void mainstone_common_init(MemoryRegion *address_space_mem,
- 
-     /* There are two 32MiB flash devices on the board */
-     for (i = 0; i < 2; i ++) {
-+        DriveInfo *dinfo;
-+        PFlashCFI01 *fl;
-+
-         dinfo = drive_get(IF_PFLASH, 0, i);
--        pflash_cfi01_register(mainstone_flash_base[i],
--                              i ? "mainstone.flash1" : "mainstone.flash0",
--                              MAINSTONE_FLASH,
--                              dinfo ? blk_by_legacy_dinfo(dinfo) : NULL,
--                              sector_len, 4, 0, 0, 0, 0, 0);
-+        fl = pflash_cfi01_register(i ? "mainstone.flash1" : "mainstone.flash0",
-+                                   MAINSTONE_FLASH,
-+                                   dinfo ? blk_by_legacy_dinfo(dinfo) : NULL,
-+                                   sector_len, 4, 0, 0, 0, 0, 0);
-+        memory_region_add_subregion(address_space_mem,
-+                                    mainstone_flash_base[i],
-+                                    pflash_cfi01_get_memory(fl));
-     }
- 
-     mst_irq = sysbus_create_simple("mainstone-fpga", MST_FPGA_PHYS,
-diff --git a/hw/arm/omap_sx1.c b/hw/arm/omap_sx1.c
-index 820652265b..ce06455252 100644
---- a/hw/arm/omap_sx1.c
-+++ b/hw/arm/omap_sx1.c
-@@ -112,6 +112,7 @@ static void sx1_init(MachineState *machine, const int version)
-     static uint32_t cs2val = 0x00001139;
-     static uint32_t cs3val = 0x00001139;
-     DriveInfo *dinfo;
-+    PFlashCFI01 *pfl;
-     int fl_idx;
-     uint32_t flash_size = flash0_size;
- 
-@@ -153,10 +154,11 @@ static void sx1_init(MachineState *machine, const int version)
- 
-     fl_idx = 0;
-     if ((dinfo = drive_get(IF_PFLASH, 0, fl_idx)) != NULL) {
--        pflash_cfi01_register(OMAP_CS0_BASE,
--                              "omap_sx1.flash0-1", flash_size,
--                              blk_by_legacy_dinfo(dinfo),
--                              sector_size, 4, 0, 0, 0, 0, 0);
-+        pfl = pflash_cfi01_register("omap_sx1.flash0-1", flash_size,
-+                                    blk_by_legacy_dinfo(dinfo),
-+                                    sector_size, 4, 0, 0, 0, 0, 0);
-+        memory_region_add_subregion(address_space, OMAP_CS0_BASE,
-+                                    pflash_cfi01_get_memory(pfl));
-         fl_idx++;
-     }
- 
-@@ -172,10 +174,11 @@ static void sx1_init(MachineState *machine, const int version)
-         memory_region_add_subregion(address_space,
-                                 OMAP_CS1_BASE + flash1_size, &cs[1]);
- 
--        pflash_cfi01_register(OMAP_CS1_BASE,
--                              "omap_sx1.flash1-1", flash1_size,
--                              blk_by_legacy_dinfo(dinfo),
--                              sector_size, 4, 0, 0, 0, 0, 0);
-+        pfl = pflash_cfi01_register("omap_sx1.flash1-1", flash1_size,
-+                                    blk_by_legacy_dinfo(dinfo),
-+                                    sector_size, 4, 0, 0, 0, 0, 0);
-+        memory_region_add_subregion(address_space, OMAP_CS1_BASE,
-+                                    pflash_cfi01_get_memory(pfl));
-         fl_idx++;
-     } else {
-         memory_region_init_io(&cs[1], NULL, &static_ops, &cs1val,
-diff --git a/hw/arm/versatilepb.c b/hw/arm/versatilepb.c
-index 43172d72ea..6ab85e304a 100644
---- a/hw/arm/versatilepb.c
-+++ b/hw/arm/versatilepb.c
-@@ -196,6 +196,7 @@ static void versatile_init(MachineState *machine, int board_id)
-     int n;
-     int done_smc = 0;
-     DriveInfo *dinfo;
-+    PFlashCFI01 *pfl;
- 
-     if (machine->ram_size > 0x10000000) {
-         /* Device starting at address 0x10000000,
-@@ -385,11 +386,12 @@ static void versatile_init(MachineState *machine, int board_id)
-     /* 0x34000000 NOR Flash */
- 
-     dinfo = drive_get(IF_PFLASH, 0, 0);
--    pflash_cfi01_register(VERSATILE_FLASH_ADDR, "versatile.flash",
--                          VERSATILE_FLASH_SIZE,
--                          dinfo ? blk_by_legacy_dinfo(dinfo) : NULL,
--                          VERSATILE_FLASH_SECT_SIZE,
--                          4, 0x0089, 0x0018, 0x0000, 0x0, 0);
-+    pfl = pflash_cfi01_register("versatile.flash", VERSATILE_FLASH_SIZE,
-+                                dinfo ? blk_by_legacy_dinfo(dinfo) : NULL,
-+                                VERSATILE_FLASH_SECT_SIZE,
-+                                4, 0x0089, 0x0018, 0x0000, 0x0, 0);
-+    memory_region_add_subregion(sysmem, VERSATILE_FLASH_ADDR,
-+                                pflash_cfi01_get_memory(pfl));
- 
-     versatile_binfo.ram_size = machine->ram_size;
-     versatile_binfo.board_id = board_id;
-diff --git a/hw/arm/z2.c b/hw/arm/z2.c
-index 082ccc557e..79005cd171 100644
---- a/hw/arm/z2.c
-+++ b/hw/arm/z2.c
-@@ -303,6 +303,7 @@ static void z2_init(MachineState *machine)
-     uint32_t sector_len = 0x10000;
-     PXA2xxState *mpu;
-     DriveInfo *dinfo;
-+    PFlashCFI01 *pfl;
-     void *z2_lcd;
-     I2CBus *bus;
-     DeviceState *wm;
-@@ -311,9 +312,11 @@ static void z2_init(MachineState *machine)
-     mpu = pxa270_init(address_space_mem, z2_binfo.ram_size, machine->cpu_type);
- 
-     dinfo = drive_get(IF_PFLASH, 0, 0);
--    pflash_cfi01_register(Z2_FLASH_BASE, "z2.flash0", Z2_FLASH_SIZE,
--                          dinfo ? blk_by_legacy_dinfo(dinfo) : NULL,
--                          sector_len, 4, 0, 0, 0, 0, 0);
-+    pfl = pflash_cfi01_register("z2.flash0", Z2_FLASH_SIZE,
-+                                dinfo ? blk_by_legacy_dinfo(dinfo) : NULL,
-+                                sector_len, 4, 0, 0, 0, 0, 0);
-+    memory_region_add_subregion(address_space_mem, Z2_FLASH_BASE,
-+                                pflash_cfi01_get_memory(pfl));
- 
-     /* setup keypad */
-     pxa27x_register_keypad(mpu->kp, map, 0x100);
-diff --git a/hw/block/pflash_cfi01.c b/hw/block/pflash_cfi01.c
-index 9c235bf66e..25d70dc3c0 100644
---- a/hw/block/pflash_cfi01.c
-+++ b/hw/block/pflash_cfi01.c
-@@ -957,8 +957,7 @@ static void pflash_cfi01_register_types(void)
- 
- type_init(pflash_cfi01_register_types)
- 
--PFlashCFI01 *pflash_cfi01_register(hwaddr base,
--                                   const char *name,
-+PFlashCFI01 *pflash_cfi01_register(const char *name,
-                                    hwaddr size,
-                                    BlockBackend *blk,
-                                    uint32_t sector_len,
-@@ -984,7 +983,6 @@ PFlashCFI01 *pflash_cfi01_register(hwaddr base,
-     qdev_prop_set_string(dev, "name", name);
-     sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), &error_fatal);
- 
--    sysbus_mmio_map(SYS_BUS_DEVICE(dev), 0, base);
-     return PFLASH_CFI01(dev);
- }
- 
-diff --git a/hw/microblaze/petalogix_ml605_mmu.c b/hw/microblaze/petalogix_ml605_mmu.c
-index a24fadddca..14450ad372 100644
---- a/hw/microblaze/petalogix_ml605_mmu.c
-+++ b/hw/microblaze/petalogix_ml605_mmu.c
-@@ -76,6 +76,7 @@ petalogix_ml605_init(MachineState *machine)
-     MicroBlazeCPU *cpu;
-     SysBusDevice *busdev;
-     DriveInfo *dinfo;
-+    PFlashCFI01 *pfl;
-     int i;
-     MemoryRegion *phys_lmb_bram = g_new(MemoryRegion, 1);
-     MemoryRegion *phys_ram = g_new(MemoryRegion, 1);
-@@ -103,12 +104,15 @@ petalogix_ml605_init(MachineState *machine)
-     memory_region_add_subregion(address_space_mem, MEMORY_BASEADDR, phys_ram);
- 
-     dinfo = drive_get(IF_PFLASH, 0, 0);
--    /* 5th parameter 2 means bank-width
--     * 10th paremeter 0 means little-endian */
--    pflash_cfi01_register(FLASH_BASEADDR, "petalogix_ml605.flash", FLASH_SIZE,
--                          dinfo ? blk_by_legacy_dinfo(dinfo) : NULL,
--                          64 * KiB, 2, 0x89, 0x18, 0x0000, 0x0, 0);
 -
-+    /*
-+     * 4th parameter 2 means bank-width
-+     * 9th paremeter 0 means little-endian
-+     */
-+    pfl = pflash_cfi01_register("petalogix_ml605.flash", FLASH_SIZE,
-+                                dinfo ? blk_by_legacy_dinfo(dinfo) : NULL,
-+                                64 * KiB, 2, 0x89, 0x18, 0x0000, 0x0, 0);
-+    memory_region_add_subregion(address_space_mem, FLASH_BASEADDR,
-+                                pflash_cfi01_get_memory(pfl));
+-#define ESDHC_MIX_CTRL                  0x48
+-
+-#define ESDHC_VENDOR_SPEC               0xc0
+-#define ESDHC_IMX_FRC_SDCLK_ON          (1 << 8)
+-
+-#define ESDHC_DLL_CTRL                  0x60
+-
+-#define ESDHC_TUNING_CTRL               0xcc
+-#define ESDHC_TUNE_CTRL_STATUS          0x68
+-#define ESDHC_WTMK_LVL                  0x44
+-
+-/* Undocumented register used by guests working around erratum ERR004536 */
+-#define ESDHC_UNDOCUMENTED_REG27        0x6c
+-
+-#define ESDHC_CTRL_4BITBUS              (0x1 << 1)
+-#define ESDHC_CTRL_8BITBUS              (0x2 << 1)
+-
+-#define ESDHC_PRNSTS_SDSTB              (1 << 3)
+-
+ /*
+  * Default SD/MMC host controller features information, which will be
+  * presented in CAPABILITIES register of generic SD host controller at reset.
+diff --git a/hw/sd/sdhci.c b/hw/sd/sdhci.c
+index 0e5e988927..6da5e2c781 100644
+--- a/hw/sd/sdhci.c
++++ b/hw/sd/sdhci.c
+@@ -1577,6 +1577,25 @@ static const TypeInfo sdhci_bus_info = {
  
-     dev = qdev_new("xlnx.xps-intc");
-     qdev_prop_set_uint32(dev, "kind-of-intr", 1 << TIMER_IRQ);
-diff --git a/hw/microblaze/petalogix_s3adsp1800_mmu.c b/hw/microblaze/petalogix_s3adsp1800_mmu.c
-index 9d959d1ad8..a7eae72e02 100644
---- a/hw/microblaze/petalogix_s3adsp1800_mmu.c
-+++ b/hw/microblaze/petalogix_s3adsp1800_mmu.c
-@@ -62,6 +62,7 @@ petalogix_s3adsp1800_init(MachineState *machine)
-     DeviceState *dev;
-     MicroBlazeCPU *cpu;
-     DriveInfo *dinfo;
-+    PFlashCFI01 *pfl;
-     int i;
-     hwaddr ddr_base = MEMORY_BASEADDR;
-     MemoryRegion *phys_lmb_bram = g_new(MemoryRegion, 1);
-@@ -84,10 +85,11 @@ petalogix_s3adsp1800_init(MachineState *machine)
-     memory_region_add_subregion(sysmem, ddr_base, phys_ram);
+ /* --- qdev i.MX eSDHC --- */
  
-     dinfo = drive_get(IF_PFLASH, 0, 0);
--    pflash_cfi01_register(FLASH_BASEADDR,
--                          "petalogix_s3adsp1800.flash", FLASH_SIZE,
--                          dinfo ? blk_by_legacy_dinfo(dinfo) : NULL,
--                          64 * KiB, 1, 0x89, 0x18, 0x0000, 0x0, 1);
-+    pfl = pflash_cfi01_register("petalogix_s3adsp1800.flash", FLASH_SIZE,
-+                                dinfo ? blk_by_legacy_dinfo(dinfo) : NULL,
-+                                64 * KiB, 1, 0x89, 0x18, 0x0000, 0x0, 1);
-+    memory_region_add_subregion(sysmem, FLASH_BASEADDR,
-+                                pflash_cfi01_get_memory(pfl));
- 
-     dev = qdev_new("xlnx.xps-intc");
-     qdev_prop_set_uint32(dev, "kind-of-intr",
-diff --git a/hw/mips/malta.c b/hw/mips/malta.c
-index 0e932988e0..20407bd998 100644
---- a/hw/mips/malta.c
-+++ b/hw/mips/malta.c
-@@ -1286,12 +1286,12 @@ void mips_malta_init(MachineState *machine)
- 
-     /* Load firmware in flash / BIOS. */
-     dinfo = drive_get(IF_PFLASH, 0, fl_idx);
--    fl = pflash_cfi01_register(FLASH_ADDRESS, "mips_malta.bios",
--                               FLASH_SIZE,
-+    fl = pflash_cfi01_register("mips_malta.bios", FLASH_SIZE,
-                                dinfo ? blk_by_legacy_dinfo(dinfo) : NULL,
-                                65536,
-                                4, 0x0000, 0x0000, 0x0000, 0x0000, be);
-     bios = pflash_cfi01_get_memory(fl);
-+    memory_region_add_subregion(system_memory, FLASH_ADDRESS, bios);
-     fl_idx++;
-     if (kernel_filename) {
-         ram_low_size = MIN(ram_size, 256 * MiB);
-diff --git a/hw/ppc/sam460ex.c b/hw/ppc/sam460ex.c
-index 8089dd015b..6f4f9c7c4a 100644
---- a/hw/ppc/sam460ex.c
-+++ b/hw/ppc/sam460ex.c
-@@ -88,7 +88,7 @@ struct boot_info {
-     uint32_t entry;
- };
- 
--static int sam460ex_load_uboot(void)
-+static int sam460ex_load_uboot(MemoryRegion *address_space_mem)
++#define ESDHC_MIX_CTRL                  0x48
++
++#define ESDHC_VENDOR_SPEC               0xc0
++#define ESDHC_IMX_FRC_SDCLK_ON          (1 << 8)
++
++#define ESDHC_DLL_CTRL                  0x60
++
++#define ESDHC_TUNING_CTRL               0xcc
++#define ESDHC_TUNE_CTRL_STATUS          0x68
++#define ESDHC_WTMK_LVL                  0x44
++
++/* Undocumented register used by guests working around erratum ERR004536 */
++#define ESDHC_UNDOCUMENTED_REG27        0x6c
++
++#define ESDHC_CTRL_4BITBUS              (0x1 << 1)
++#define ESDHC_CTRL_8BITBUS              (0x2 << 1)
++
++#define ESDHC_PRNSTS_SDSTB              (1 << 3)
++
+ static uint64_t usdhc_read(void *opaque, hwaddr offset, unsigned size)
  {
-     /*
-      * This first creates 1MiB of flash memory mapped at the end of
-@@ -109,12 +109,15 @@ static int sam460ex_load_uboot(void)
-      */
- 
-     DriveInfo *dinfo;
-+    PFlashCFI01 *pfl;
- 
-     dinfo = drive_get(IF_PFLASH, 0, 0);
--    pflash_cfi01_register(FLASH_BASE | ((hwaddr)FLASH_BASE_H << 32),
--                          "sam460ex.flash", FLASH_SIZE,
--                          dinfo ? blk_by_legacy_dinfo(dinfo) : NULL,
--                          64 * KiB, 1, 0x89, 0x18, 0x0000, 0x0, 1);
-+    pfl = pflash_cfi01_register("sam460ex.flash", FLASH_SIZE,
-+                                dinfo ? blk_by_legacy_dinfo(dinfo) : NULL,
-+                                64 * KiB, 1, 0x89, 0x18, 0x0000, 0x0, 1);
-+    memory_region_add_subregion(address_space_mem,
-+                                FLASH_BASE | ((hwaddr)FLASH_BASE_H << 32),
-+                                pflash_cfi01_get_memory(pfl));
- 
-     if (!dinfo) {
-         /*error_report("No flash image given with the 'pflash' parameter,"
-@@ -448,7 +451,7 @@ static void sam460ex_init(MachineState *machine)
- 
-     /* Load U-Boot image. */
-     if (!machine->kernel_filename) {
--        success = sam460ex_load_uboot();
-+        success = sam460ex_load_uboot(address_space_mem);
-         if (success < 0) {
-             error_report("could not load firmware");
-             exit(1);
-diff --git a/hw/ppc/virtex_ml507.c b/hw/ppc/virtex_ml507.c
-index 493ea0c19f..c98f1b2ab3 100644
---- a/hw/ppc/virtex_ml507.c
-+++ b/hw/ppc/virtex_ml507.c
-@@ -210,6 +210,7 @@ static void virtex_init(MachineState *machine)
-     CPUPPCState *env;
-     hwaddr ram_base = 0;
-     DriveInfo *dinfo;
-+    PFlashCFI01 *pfl;
-     qemu_irq irq[32], cpu_irq;
-     int kernel_size;
-     int i;
-@@ -229,9 +230,11 @@ static void virtex_init(MachineState *machine)
-     memory_region_add_subregion(address_space_mem, ram_base, machine->ram);
- 
-     dinfo = drive_get(IF_PFLASH, 0, 0);
--    pflash_cfi01_register(PFLASH_BASEADDR, "virtex.flash", FLASH_SIZE,
-+    pfl = pflash_cfi01_register("virtex.flash", FLASH_SIZE,
-                           dinfo ? blk_by_legacy_dinfo(dinfo) : NULL,
-                           64 * KiB, 1, 0x89, 0x18, 0x0000, 0x0, 1);
-+    memory_region_add_subregion(address_space_mem, PFLASH_BASEADDR,
-+                                pflash_cfi01_get_memory(pfl));
- 
-     cpu_irq = qdev_get_gpio_in(DEVICE(cpu), PPC40x_INPUT_INT);
-     dev = qdev_new("xlnx.xps-intc");
-diff --git a/include/hw/block/flash.h b/include/hw/block/flash.h
-index 86d8363bb0..5f9ba18de1 100644
---- a/include/hw/block/flash.h
-+++ b/include/hw/block/flash.h
-@@ -12,8 +12,7 @@
- OBJECT_DECLARE_SIMPLE_TYPE(PFlashCFI01, PFLASH_CFI01)
- 
- 
--PFlashCFI01 *pflash_cfi01_register(hwaddr base,
--                                   const char *name,
-+PFlashCFI01 *pflash_cfi01_register(const char *name,
-                                    hwaddr size,
-                                    BlockBackend *blk,
-                                    uint32_t sector_len,
+     SDHCIState *s = SYSBUS_SDHCI(opaque);
 -- 
 2.38.0
 

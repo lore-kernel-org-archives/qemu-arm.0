@@ -1,114 +1,115 @@
-Received: by 2002:a17:906:43c7:b0:78d:9f02:16a1 with SMTP id j7csp1969315ejn;
-        Sun, 16 Oct 2022 15:11:56 -0700 (PDT)
-X-Google-Smtp-Source: AMsMyM78WQ7kZWZQzriyZFtnV23RAKbdVF7H3phRF8IP/hsvg8bRPJefzGg45ezx/WQYVbt1qXgf
-X-Received: by 2002:ae9:e107:0:b0:6ed:638:930 with SMTP id g7-20020ae9e107000000b006ed06380930mr5629287qkm.211.1665958316194;
-        Sun, 16 Oct 2022 15:11:56 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1665958316; cv=none;
+Received: by 2002:a17:906:43c7:b0:78d:9f02:16a1 with SMTP id j7csp1970498ejn;
+        Sun, 16 Oct 2022 15:15:04 -0700 (PDT)
+X-Google-Smtp-Source: AMsMyM7Ps5ghc6+dIuC1cdjUTguoAPzkLx11keXbWkEeTq1AIhH689NVjBjwUqAKZloXBUAa8h0B
+X-Received: by 2002:ac8:7f84:0:b0:39c:c69f:68d9 with SMTP id z4-20020ac87f84000000b0039cc69f68d9mr6503490qtj.254.1665958504650;
+        Sun, 16 Oct 2022 15:15:04 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1665958504; cv=none;
         d=google.com; s=arc-20160816;
-        b=McRfBkj8t5sw3E6eH9u2gP4WQwxPyYuDeoiAfzlqLYi/wRHXcRB2bvDkvt/Ja4rFAU
-         a+IFc3RUcGJtW2AXZJEO5gZ0qZGV9G+BanbYBYCkFyumluCbRFL1rQaIPd1yBrwakeLM
-         MPr0KEzyj/Wo3FRHCfug71e/khRfB8fADjXjAOeyop3oUMB6AsDHDO9IYDZHBC18zvki
-         J+fhY9GgIASm1fD06TzWO4YgewT50/HM1EyUxjBAr82F4VyPf5Hezq66XzQlD1+qfdce
-         Hfj9R3D4eYoZsWFnzUXICK8rXISZ3QJOkdX0ASIDuIh73oPQdmQo/5+D/TizVYLzPbCa
-         6USA==
+        b=S7TyS8PFuZKEkWcv6ja3JgNA/LpNLetgr4hCHYvJ7FvYwCSu3c3CR8TFmWAij9T3PL
+         kscDwlZGGalJ8SOt5dGfkgNbCRQfK8YsFBZkTxMo8LXLJa6q0z4+6G+63KX/lKczIZcw
+         vFG/JRVks/mdYgchdmiSubdSWB1R0O7nnih8o4N/xeMdMHHux6f/5Cvv2NIgJpWyAmvF
+         LTmREFY4Cg3ZUM9bCt14Hkzyph5QEPU/omnrGgKNfLVaaAyrzc+cSgEeysuOgcNL+OtK
+         K/mZUiYNRnU+Yi+mvX2STh8PttMBbBnfrqr9NHF4jgv5USjVQky7Yi7XqX3uX9lgTxAJ
+         yXsA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=OW7ujGu7vUMxa/AhGP5j8/p+4yGO6PZApuTTGs8ErJc=;
-        b=sgJGpx+zs6hO7+qBE/OpJlQynJkQYY1CqabogI9E6JYB90nbsHngIzUGxviTjcOqbE
-         sAY0yKx6WsY3xVXUE8CYpdsNRtZJngp/hh0cxsAVzzawrqG05gOFfbW7BHQV6/eTFHrS
-         lRpT5Ye/p3VHbUOEuMH7zZXkSNf1pL1xX892DFm8Dr032DDH7fPNIMBOtAHdgHd/rh/X
-         RTkeMGnWBVqnixLkKKmBC/S4wmHUJPFlepBqOScEdmhE7/B6tpu4lkob9xU154n4aiBn
-         vWJYngt3m3Ca5MRlROA/VeLePMFpYp4uEZ+pq5JHgO3O78AAEIS0jWN35ULYyIEVxOp+
-         Qr0A==
+        bh=eirybTGa1WIietzoG766hMinqRXYJPoKdxjJFXnDkP8=;
+        b=lkiWguEpa5SteTRu8KRx2AFLowx9Z8isdsoObqoCxx9CP0x1u4J/mnRJmxhhFbB1HT
+         SLsNWVq3Pp+ah3mXGGzZ9FmDWygxbF7zz4oXgDthyC/wapFWUqrLTXpdNy1/CIwjxFvf
+         UqoWI/00/aUASy2pfZYVGLQcSa/aGYk50KRMALtLejnaW3Wh82BI8ZKpUFwqJSexE0ul
+         OaQ4oZdg+jruyuUGZLVlTh6LpRaFMhHqlC7zWO7vP0PaqrJQioYSjf7TscmRG6mmWK6E
+         Zi/xT1gBUY3KTwxFLuIew4x/CnDYYOxmMzWG5Htmgs74dHXQGJh3TOgcQBkTz7XaVkPB
+         w/cA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=DWWlbicT;
+       dkim=pass header.i=@linaro.org header.s=google header.b=NFDF4Ej0;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id h11-20020a05620a284b00b006eaa4d5345fsi4892607qkp.153.2022.10.16.15.11.55
+        by mx.google.com with ESMTPS id de18-20020a05620a371200b006eeb25a258bsi5084789qkb.564.2022.10.16.15.15.04
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 16 Oct 2022 15:11:56 -0700 (PDT)
+        Sun, 16 Oct 2022 15:15:04 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=DWWlbicT;
+       dkim=pass header.i=@linaro.org header.s=google header.b=NFDF4Ej0;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:52682 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:39110 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1okBrP-00039m-FD
-	for alex.bennee@linaro.org; Sun, 16 Oct 2022 18:11:55 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:42510)
+	id 1okBuR-0001BM-To
+	for alex.bennee@linaro.org; Sun, 16 Oct 2022 18:15:03 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:42518)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1okBqA-00030D-1d
- for qemu-arm@nongnu.org; Sun, 16 Oct 2022 18:10:38 -0400
-Received: from mail-pj1-x1032.google.com ([2607:f8b0:4864:20::1032]:54127)
+ id 1okBqG-0003JI-6l
+ for qemu-arm@nongnu.org; Sun, 16 Oct 2022 18:10:48 -0400
+Received: from mail-pg1-x530.google.com ([2607:f8b0:4864:20::530]:39644)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1okBq7-0007fO-Sb
- for qemu-arm@nongnu.org; Sun, 16 Oct 2022 18:10:37 -0400
-Received: by mail-pj1-x1032.google.com with SMTP id fw14so9425743pjb.3
- for <qemu-arm@nongnu.org>; Sun, 16 Oct 2022 15:10:35 -0700 (PDT)
+ id 1okBqD-0007tw-99
+ for qemu-arm@nongnu.org; Sun, 16 Oct 2022 18:10:43 -0400
+Received: by mail-pg1-x530.google.com with SMTP id b5so8920043pgb.6
+ for <qemu-arm@nongnu.org>; Sun, 16 Oct 2022 15:10:39 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=OW7ujGu7vUMxa/AhGP5j8/p+4yGO6PZApuTTGs8ErJc=;
- b=DWWlbicTbMVUY4M19gXQ9o5PB+Ee82e/rivgLStBijcOu3nU8fR3s77EVG+WpROr4P
- jCdzYrboltVOimwb4kOVrt4nNCkgKfZ82PmKkbm69tEoFn0qDD3nRPOOrCZHJdKlsKBb
- D+mluva24SZG3TYz3fBAFXhOxiBB6sP2CbxAC485JC265sBi1FUWvyZ4v+zXk7HiuFrF
- H5xfC358YtzK57IVEy8ki6Vu9iOHd7c59dwmubuQRUjnvY0gkC1h0aGnBofOam6FQvdB
- D2T60iZypVNmDMa6bimXHJ8Wo5SmNKSBReIFQe9kr8NKmbiqO3nHtGiAvAUzCCEsVa/J
- pBJA==
+ bh=eirybTGa1WIietzoG766hMinqRXYJPoKdxjJFXnDkP8=;
+ b=NFDF4Ej0AEKt0VgZz4sOVQJtMb41bXxGM2LSfjSP5HC7sNjYsB/6KRHg9N5h5a6k5u
+ rNGZdKu1V9bv3r/+rNw48UoHqS0r8mcd8CQQJ4yNRjipfUbipsJaFtE4c9bGxMdmdIgl
+ 9mBowzO/fhl09wzVJ3+almIgzYJqAMzzrIvnfp5QelIwDjp81jJbjcAd7s67bi9h9wVo
+ s5eQ7usJBH0/eKMwzX01jLki1gTcFQkPkcF88DUnYYEdVuxZ7bEx0xZIT96XQ7oHvr4q
+ 9aZBZxowpSSfsLBX8nCMqFSFfT5yUftt+A+CBoJVXK/AfAk37OR1km+mEWey1lz6IsPL
+ cbgQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=OW7ujGu7vUMxa/AhGP5j8/p+4yGO6PZApuTTGs8ErJc=;
- b=0MWap4nB5mLjAmqP1otxKcb0tAxs4ShhBPi9AOnDxeCNbvPSCSO4fbQLefLz+eC7Gm
- eg2VUwRtzA5W7gO0xxnHiJYhkSvC2KOcDJydtFvz9oBQOBk4X6uHM/WwdqyEaNZPWUBX
- KSMrmPc05NYkkXtzwOlWoAIrkB19LyxbWnF+cxv+RCJpjPgpcR2uroP992VYRgKZUVj4
- dVxb8ro1L4ONQxy3N9ktz20AYsb4M1n17u+p2bJiRrwIbLhVxVLJUBlhPyUqxuqnmLnW
- AfAqK10VdZzV0+yqPwD/pGencLB3fbn0wqbM29ZVHnMLcPZNJs0RCFCfMsvGF53QEFzn
- LSZA==
-X-Gm-Message-State: ACrzQf1F5hJ8eD5UKC3k1eM2WNr70Gz4jrFSztMBduECpHIexKPo0Jfg
- GswrLs62J/fvVFiy7r1KW28bc7fF9q+7lGwy
-X-Received: by 2002:a17:902:d48d:b0:185:115c:b16b with SMTP id
- c13-20020a170902d48d00b00185115cb16bmr8912686plg.158.1665958235067; 
- Sun, 16 Oct 2022 15:10:35 -0700 (PDT)
+ bh=eirybTGa1WIietzoG766hMinqRXYJPoKdxjJFXnDkP8=;
+ b=jEsfvA41lPj/sDlMU+NOZCP1r7tfrKA9QdgbAYZtSJk8QbvCHTXunvcwJTaaJgcG+P
+ RLTUVFmIH5rIasISC1obr0VVjabUhXmiVDNBFftkVmhCIsbS3s6R+79647NLTBpQPQy7
+ g07Ze55p5EfHAA03m9/29hGEPvPweG2PgA5e86n/RlQPXrnwOZbcKuXWDdR4m8uKoyDx
+ cezm66/Qn5rRXuApxDdtEJNX/6X0lUzEpv87minTdu3D+E76OlYePieDdweTGQAJdpiS
+ 10Has6Xq0z9oEyiy8sd93JiOgfvBkxI6DncK/GD95GS53TR9lqWoGcY30Gh684mdvn+Q
+ FK4w==
+X-Gm-Message-State: ACrzQf1NuB5Y9BIEQwQdUgjV44P9brCeUHRZIRlQA9MGL3s0fmFwKAD7
+ gquVdS3AqYX3cFjZ/u91xSWivg==
+X-Received: by 2002:a62:8249:0:b0:565:c121:dedd with SMTP id
+ w70-20020a628249000000b00565c121deddmr9253798pfd.40.1665958238663; 
+ Sun, 16 Oct 2022 15:10:38 -0700 (PDT)
 Received: from localhost.localdomain ([149.135.10.35])
  by smtp.gmail.com with ESMTPSA id
- z18-20020aa79592000000b0053e2b61b714sm5454751pfj.114.2022.10.16.15.10.32
+ z18-20020aa79592000000b0053e2b61b714sm5454751pfj.114.2022.10.16.15.10.35
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 16 Oct 2022 15:10:34 -0700 (PDT)
+ Sun, 16 Oct 2022 15:10:38 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org,
-	Peter Maydell <peter.maydell@linaro.org>
-Subject: [PATCH v7 7/9] target/arm: Introduce gen_pc_plus_diff for aarch64
-Date: Mon, 17 Oct 2022 08:09:30 +1000
-Message-Id: <20221016220932.274260-8-richard.henderson@linaro.org>
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+Subject: [PATCH v7 8/9] target/arm: Introduce gen_pc_plus_diff for aarch32
+Date: Mon, 17 Oct 2022 08:09:31 +1000
+Message-Id: <20221016220932.274260-9-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20221016220932.274260-1-richard.henderson@linaro.org>
 References: <20221016220932.274260-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1032;
- envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x1032.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::530;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pg1-x530.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -123,123 +124,140 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 7if0hclY6RAh
+X-TUID: dBAd9OpWI0YU
 
 In preparation for TARGET_TB_PCREL, reduce reliance on absolute values.
 
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/translate-a64.c | 41 +++++++++++++++++++++++++++-----------
- 1 file changed, 29 insertions(+), 12 deletions(-)
+ target/arm/translate.c | 38 +++++++++++++++++++++-----------------
+ 1 file changed, 21 insertions(+), 17 deletions(-)
 
-diff --git a/target/arm/translate-a64.c b/target/arm/translate-a64.c
-index 623f7e2e96..f9f8559c01 100644
---- a/target/arm/translate-a64.c
-+++ b/target/arm/translate-a64.c
-@@ -140,9 +140,14 @@ static void reset_btype(DisasContext *s)
+diff --git a/target/arm/translate.c b/target/arm/translate.c
+index ca128edab7..5f6bd9b5b7 100644
+--- a/target/arm/translate.c
++++ b/target/arm/translate.c
+@@ -260,23 +260,22 @@ static inline int get_a32_user_mem_index(DisasContext *s)
      }
  }
  
-+static void gen_pc_plus_diff(DisasContext *s, TCGv_i64 dest, target_long diff)
+-/* The architectural value of PC.  */
+-static uint32_t read_pc(DisasContext *s)
+-{
+-    return s->pc_curr + (s->thumb ? 4 : 8);
+-}
+-
+ /* The pc_curr difference for an architectural jump. */
+ static target_long jmp_diff(DisasContext *s, target_long diff)
+ {
+     return diff + (s->thumb ? 4 : 8);
+ }
+ 
++static void gen_pc_plus_diff(DisasContext *s, TCGv_i32 var, target_long diff)
 +{
-+    tcg_gen_movi_i64(dest, s->pc_curr + diff);
++    tcg_gen_movi_i32(var, s->pc_curr + diff);
 +}
 +
- void gen_a64_update_pc(DisasContext *s, target_long diff)
+ /* Set a variable to the value of a CPU register.  */
+ void load_reg_var(DisasContext *s, TCGv_i32 var, int reg)
  {
--    tcg_gen_movi_i64(cpu_pc, s->pc_curr + diff);
-+    gen_pc_plus_diff(s, cpu_pc, diff);
- }
- 
- /*
-@@ -1360,7 +1365,7 @@ static void disas_uncond_b_imm(DisasContext *s, uint32_t insn)
- 
-     if (insn & (1U << 31)) {
-         /* BL Branch with link */
--        tcg_gen_movi_i64(cpu_reg(s, 30), s->base.pc_next);
-+        gen_pc_plus_diff(s, cpu_reg(s, 30), curr_insn_len(s));
-     }
- 
-     /* B Branch / BL Branch with link */
-@@ -2301,11 +2306,17 @@ static void disas_uncond_b_reg(DisasContext *s, uint32_t insn)
-         default:
-             goto do_unallocated;
-         }
--        gen_a64_set_pc(s, dst);
-         /* BLR also needs to load return address */
-         if (opc == 1) {
--            tcg_gen_movi_i64(cpu_reg(s, 30), s->base.pc_next);
-+            TCGv_i64 lr = cpu_reg(s, 30);
-+            if (dst == lr) {
-+                TCGv_i64 tmp = new_tmp_a64(s);
-+                tcg_gen_mov_i64(tmp, dst);
-+                dst = tmp;
-+            }
-+            gen_pc_plus_diff(s, lr, curr_insn_len(s));
-         }
-+        gen_a64_set_pc(s, dst);
-         break;
- 
-     case 8: /* BRAA */
-@@ -2328,11 +2339,17 @@ static void disas_uncond_b_reg(DisasContext *s, uint32_t insn)
-         } else {
-             dst = cpu_reg(s, rn);
-         }
--        gen_a64_set_pc(s, dst);
-         /* BLRAA also needs to load return address */
-         if (opc == 9) {
--            tcg_gen_movi_i64(cpu_reg(s, 30), s->base.pc_next);
-+            TCGv_i64 lr = cpu_reg(s, 30);
-+            if (dst == lr) {
-+                TCGv_i64 tmp = new_tmp_a64(s);
-+                tcg_gen_mov_i64(tmp, dst);
-+                dst = tmp;
-+            }
-+            gen_pc_plus_diff(s, lr, curr_insn_len(s));
-         }
-+        gen_a64_set_pc(s, dst);
-         break;
- 
-     case 4: /* ERET */
-@@ -2900,7 +2917,8 @@ static void disas_ld_lit(DisasContext *s, uint32_t insn)
- 
-     tcg_rt = cpu_reg(s, rt);
- 
--    clean_addr = tcg_constant_i64(s->pc_curr + imm);
-+    clean_addr = new_tmp_a64(s);
-+    gen_pc_plus_diff(s, clean_addr, imm);
-     if (is_vector) {
-         do_fp_ld(s, rt, clean_addr, size);
+     if (reg == 15) {
+-        tcg_gen_movi_i32(var, read_pc(s));
++        gen_pc_plus_diff(s, var, jmp_diff(s, 0));
      } else {
-@@ -4244,23 +4262,22 @@ static void disas_ldst(DisasContext *s, uint32_t insn)
- static void disas_pc_rel_adr(DisasContext *s, uint32_t insn)
- {
-     unsigned int page, rd;
--    uint64_t base;
--    uint64_t offset;
-+    int64_t offset;
- 
-     page = extract32(insn, 31, 1);
-     /* SignExtend(immhi:immlo) -> offset */
-     offset = sextract64(insn, 5, 19);
-     offset = offset << 2 | extract32(insn, 29, 2);
-     rd = extract32(insn, 0, 5);
--    base = s->pc_curr;
- 
-     if (page) {
-         /* ADRP (page based) */
--        base &= ~0xfff;
-         offset <<= 12;
-+        /* The page offset is ok for TARGET_TB_PCREL. */
-+        offset -= s->pc_curr & 0xfff;
+         tcg_gen_mov_i32(var, cpu_R[reg]);
      }
+@@ -292,7 +291,11 @@ TCGv_i32 add_reg_for_lit(DisasContext *s, int reg, int ofs)
+     TCGv_i32 tmp = tcg_temp_new_i32();
  
--    tcg_gen_movi_i64(cpu_reg(s, rd), base + offset);
-+    gen_pc_plus_diff(s, cpu_reg(s, rd), offset);
+     if (reg == 15) {
+-        tcg_gen_movi_i32(tmp, (read_pc(s) & ~3) + ofs);
++        /*
++         * This address is computed from an aligned PC:
++         * subtract off the low bits.
++         */
++        gen_pc_plus_diff(s, tmp, jmp_diff(s, ofs - (s->pc_curr & 3)));
+     } else {
+         tcg_gen_addi_i32(tmp, cpu_R[reg], ofs);
+     }
+@@ -1155,7 +1158,7 @@ void unallocated_encoding(DisasContext *s)
+ /* Force a TB lookup after an instruction that changes the CPU state.  */
+ void gen_lookup_tb(DisasContext *s)
+ {
+-    tcg_gen_movi_i32(cpu_R[15], s->base.pc_next);
++    gen_pc_plus_diff(s, cpu_R[15], curr_insn_len(s));
+     s->base.is_jmp = DISAS_EXIT;
  }
  
- /*
+@@ -6479,7 +6482,7 @@ static bool trans_BLX_r(DisasContext *s, arg_BLX_r *a)
+         return false;
+     }
+     tmp = load_reg(s, a->rm);
+-    tcg_gen_movi_i32(cpu_R[14], s->base.pc_next | s->thumb);
++    gen_pc_plus_diff(s, cpu_R[14], curr_insn_len(s) | s->thumb);
+     gen_bx(s, tmp);
+     return true;
+ }
+@@ -8347,7 +8350,7 @@ static bool trans_B_cond_thumb(DisasContext *s, arg_ci *a)
+ 
+ static bool trans_BL(DisasContext *s, arg_i *a)
+ {
+-    tcg_gen_movi_i32(cpu_R[14], s->base.pc_next | s->thumb);
++    gen_pc_plus_diff(s, cpu_R[14], curr_insn_len(s) | s->thumb);
+     gen_jmp(s, jmp_diff(s, a->imm));
+     return true;
+ }
+@@ -8366,7 +8369,7 @@ static bool trans_BLX_i(DisasContext *s, arg_BLX_i *a)
+     if (s->thumb && (a->imm & 2)) {
+         return false;
+     }
+-    tcg_gen_movi_i32(cpu_R[14], s->base.pc_next | s->thumb);
++    gen_pc_plus_diff(s, cpu_R[14], curr_insn_len(s) | s->thumb);
+     store_cpu_field_constant(!s->thumb, thumb);
+     /* This jump is computed from an aligned PC: subtract off the low bits. */
+     gen_jmp(s, jmp_diff(s, a->imm - (s->pc_curr & 3)));
+@@ -8376,7 +8379,7 @@ static bool trans_BLX_i(DisasContext *s, arg_BLX_i *a)
+ static bool trans_BL_BLX_prefix(DisasContext *s, arg_BL_BLX_prefix *a)
+ {
+     assert(!arm_dc_feature(s, ARM_FEATURE_THUMB2));
+-    tcg_gen_movi_i32(cpu_R[14], read_pc(s) + (a->imm << 12));
++    gen_pc_plus_diff(s, cpu_R[14], jmp_diff(s, a->imm << 12));
+     return true;
+ }
+ 
+@@ -8386,7 +8389,7 @@ static bool trans_BL_suffix(DisasContext *s, arg_BL_suffix *a)
+ 
+     assert(!arm_dc_feature(s, ARM_FEATURE_THUMB2));
+     tcg_gen_addi_i32(tmp, cpu_R[14], (a->imm << 1) | 1);
+-    tcg_gen_movi_i32(cpu_R[14], s->base.pc_next | 1);
++    gen_pc_plus_diff(s, cpu_R[14], curr_insn_len(s) | 1);
+     gen_bx(s, tmp);
+     return true;
+ }
+@@ -8402,7 +8405,7 @@ static bool trans_BLX_suffix(DisasContext *s, arg_BLX_suffix *a)
+     tmp = tcg_temp_new_i32();
+     tcg_gen_addi_i32(tmp, cpu_R[14], a->imm << 1);
+     tcg_gen_andi_i32(tmp, tmp, 0xfffffffc);
+-    tcg_gen_movi_i32(cpu_R[14], s->base.pc_next | 1);
++    gen_pc_plus_diff(s, cpu_R[14], curr_insn_len(s) | 1);
+     gen_bx(s, tmp);
+     return true;
+ }
+@@ -8725,10 +8728,11 @@ static bool op_tbranch(DisasContext *s, arg_tbranch *a, bool half)
+     tcg_gen_add_i32(addr, addr, tmp);
+ 
+     gen_aa32_ld_i32(s, tmp, addr, get_mem_index(s), half ? MO_UW : MO_UB);
+-    tcg_temp_free_i32(addr);
+ 
+     tcg_gen_add_i32(tmp, tmp, tmp);
+-    tcg_gen_addi_i32(tmp, tmp, read_pc(s));
++    gen_pc_plus_diff(s, addr, jmp_diff(s, 0));
++    tcg_gen_add_i32(tmp, tmp, addr);
++    tcg_temp_free_i32(addr);
+     store_reg(s, 15, tmp);
+     return true;
+ }
 -- 
 2.34.1
 

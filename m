@@ -1,162 +1,172 @@
-Received: by 2002:a17:906:43c7:b0:78d:9f02:16a1 with SMTP id j7csp2703999ejn;
-        Mon, 17 Oct 2022 15:04:50 -0700 (PDT)
-X-Google-Smtp-Source: AMsMyM6xOZ1kLpL2QI501eMOoAilLefy9fTAwTK2Q6duoUObDMQInfVbDOn1iEw1RHNge0P3flV0
-X-Received: by 2002:ac8:5c45:0:b0:39c:dcea:c552 with SMTP id j5-20020ac85c45000000b0039cdceac552mr10419075qtj.128.1666044290276;
-        Mon, 17 Oct 2022 15:04:50 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1666044290; cv=none;
+Received: by 2002:a17:906:43c7:b0:78d:9f02:16a1 with SMTP id j7csp2709004ejn;
+        Mon, 17 Oct 2022 15:13:19 -0700 (PDT)
+X-Received: by 2002:a6b:7d05:0:b0:68b:7243:63ff with SMTP id c5-20020a6b7d05000000b0068b724363ffmr5851517ioq.191.1666044799111;
+        Mon, 17 Oct 2022 15:13:19 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1666044799; cv=none;
         d=google.com; s=arc-20160816;
-        b=DXDcljiVtYOuqXxB1En1x5nQEjdyg1IcLK4qNbaYz/fvwrePmVWCTLZXx6Tm8veJeM
-         YBRYX0K6Js6rgW845G1PvdmwSyV2/s+rZBV6yUGftSTz7vG3aDOcdCHI1EmfGHCCm3G/
-         tiGL6n/HVnIQoP+RNcaAC8gPxLbjvwRgeD8NrDqnshrEhqmBfgj1Ds/gPCciq6LpmzYj
-         qiiyQbLx8grhnD13GtZ4iV7+jXxnEPZSAqJqV8nhBarujYwtCZPdWc/3KX6NgXmuKaml
-         DdjGj4punr4Hcsgg/+3ucjp6wah7Wt1dgE0TX87XGETpH3RQk6M2w5pTSUIizlMK3FUQ
-         gaLA==
+        b=i296bYKts5QWp1grB1swFGAT9JgZkTAWLFeOHC6+0QMhRnPeuAQaZviAMqlzQSX/XL
+         yUPpy+3xGdSqTJfTUKh26/ULhVTEH/WuoipkY48sjTPBX/2B82YmPtnm1/rz966ky0he
+         36BHgqyeDNgoAP0oXa0yUHn2FoWGxtUQr2D8HacAy/32WYRcGwAMQhvGnRpBS3YV7YxY
+         NDPrw53RBtEn6Ri1QSggq5lHvilhUVmOJRmEJ2njFhl+/x+xdL5WS/P0Bm7J6x1l0TZ3
+         4voN7m8CCRL7D8Ru/CvV04S9JNQLvOmaaNwZvMCj10R/k9AgJBpiEeLEBzdZb6kTAiyn
+         y/bA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:content-language:references:cc:to:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=YSDH4zi0/StRIIVDTOoiOmf50RC9g5KEf1ziWa+XPf4=;
-        b=oGJZQ+0Tz0EtbljUpQITUSsEGDhqW2GfIFf5s4gAAW2pfByaKPvP6O0zr5JG2zvKJy
-         c2ajd2SRIDZ2XmwIbGhnZy3tQGhf4D7T3/iBv3rjmjWO01KIs5CxW1xbYGptcK6jZfsN
-         0REo7BksQ6mQQyHxRnUvxqggQTkaRxW6swEFxYntA2r0Z24o6GhqV9PZFr83TQhxczOr
-         QJxq+ozoqkTRTJ/ZcWE4QqzjKCaPO3QC4GFjV8KX2UsHs/Pu96T5+NeBnyUi19RRTzL2
-         VNt8jnCTa8wXCLsfatQiVdrQjbzelEejXRL227zgzm+WkOvwfgETN3Vm0f8MtiM/POlg
-         e/og==
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature;
+        bh=/gtq3CJ96vvC+n9rfHTr01pVVfhQvNAAqegK1gvN0EA=;
+        b=eK093/x4sxPqFS8UufgocCzahDeo9Id29uGn7vq2SNvohmgiq2N6BBsrN3jgpJ+Jy3
+         uDjSYkYbbFACVA0YxfF5xcSosqER6QSaMuIL+hIeyszTPaYEWEWPqq8aqfTyhROq9sBj
+         izBKgmgCyfjsjUpX8hl/FkwPOdaSeDjOazITGq2s4M9BUWhzkqAbjD5L/XZGIyDwVTXQ
+         hVeh0mLXQoZ1wmOn7+up8vXTViMMb+jnRbYOkbOGguBngKK03roQ62vpkRBHr6+zWFZ0
+         vSk8zn6S83RA46Fg5/CuepIJvT5z511nQ9I7aThGqDsMPXFkV4G816zXRMwclcB1D+EY
+         9ZIQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=MBAJ+fym;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id j14-20020a05620a288e00b006ce401c798esi6768816qkp.709.2022.10.17.15.04.49
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=fZR9iFLt;
+       spf=pass (google.com: domain of paxi.three@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=paxi.three@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <paxi.three@gmail.com>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id a192-20020a0216c9000000b00363df240ea7sor3773933jaa.101.2022.10.17.15.13.18
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 17 Oct 2022 15:04:50 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Mon, 17 Oct 2022 15:13:19 -0700 (PDT)
+Received-SPF: pass (google.com: domain of paxi.three@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=MBAJ+fym;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:54612 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1okYE2-00021U-O5
-	for alex.bennee@linaro.org; Mon, 17 Oct 2022 18:04:46 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37020)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1okYD6-0001zp-Ux
- for qemu-arm@nongnu.org; Mon, 17 Oct 2022 18:03:57 -0400
-Received: from mail-pf1-x432.google.com ([2607:f8b0:4864:20::432]:36368)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1okYCz-0002RZ-Ph
- for qemu-arm@nongnu.org; Mon, 17 Oct 2022 18:03:47 -0400
-Received: by mail-pf1-x432.google.com with SMTP id y1so12346855pfr.3
- for <qemu-arm@nongnu.org>; Mon, 17 Oct 2022 15:03:40 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=YSDH4zi0/StRIIVDTOoiOmf50RC9g5KEf1ziWa+XPf4=;
- b=MBAJ+fym9fihkb1CJfFyQtjhxu3Hb2s7dNnDGD5oDu6oQ+uRcz/Zntava8KpR3PnXo
- ObOM02NCGqJ+Z2hsa0XcrnZw7mI+P2QcqT+AxE0Jv4B4CjooGgkGAwhpe4ttKbx0uiUi
- xolVzTQUgI+jKOCgJnT++CKTZqyMbzn8/KEPWg4wnnuk7Zo89FxrLFA4hVpPESwZNAgZ
- Qy1fDKMTzCYMTY1x3rsouTw3bjfEsvens81xZcEhzOheiH8dgWpqLYndbITf7YKdoCJU
- TOfCZNOASdzXCGxMbugTu1L7DtuKcnDqo6/ryvYnFsL8LlQhgDqwg5jLkEK++8Sd5iTa
- d50g==
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=fZR9iFLt;
+       spf=pass (google.com: domain of paxi.three@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=paxi.three@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=/gtq3CJ96vvC+n9rfHTr01pVVfhQvNAAqegK1gvN0EA=;
+        b=fZR9iFLtLlq1tblXTiBBa0bx9DAqIflLknSV8Lc1sfFU//tacXOZ4/jTEBV9G198L1
+         1Y57J+NZRCudNj2SWCnhcDPV9hX+Ts7xEew9oGKnskx34qPqz7eeia2Ggwr38T78A9lJ
+         fH6pWTEnQR4cmyYf09aSwUU7UiVlUQg03uXi+8f9H3GwIcYWmXchavFOmDOFSOk1hJe/
+         dSeyFlTd0WtuLcAGvtZVk2xMBlxduDSwV8iIj+pA9FGH52+qlykdqqFP8ns90beHwYOX
+         VNIQ6drycZnYUAdpX8w5gBrsxExQP8vQaGFC5oNDofcix0RbZw8bqTJ/D8iC2KdBMcjb
+         mRFQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=YSDH4zi0/StRIIVDTOoiOmf50RC9g5KEf1ziWa+XPf4=;
- b=q9n+mkorpdR2L9zjDDK+x/1QsMr0hI8yEqmCzK/NTeEBcglMskHr37qDIbAib6Zr3C
- nH/IhFgD4lAlyunPnzNLKfs1AKchpO8S3Ndd/hfIkeadDjTPvHRHQtGvg5ESjgEJDcns
- RQLDBC6a6WIfu7bBpO9XfnTRQhl99KA4RgMfJ0KJKDFpCQ9gaixDCxr9xCjXExVxYoUu
- MdY0YRCnkkxYWLwXzCXomcvzhZt6kL63E0O0wJqTg4pKrDRzVaWKnYTRB8UIf6byDnDv
- MKMcxEyfrifmx3P8aXb16hUIg+rubAmskYjybr5LUVnrk3fXRUp6L2CArE5Py6mrivo7
- +XOg==
-X-Gm-Message-State: ACrzQf3I7OwJ3r0R70fKZ/OeSVZTjQ8sWQ12w6hGSU1RctZCZC+JxN6J
- WYinOKZ2nzLgNlbL/MfA5BXcfw==
-X-Received: by 2002:a63:ed0e:0:b0:457:4a30:cb8c with SMTP id
- d14-20020a63ed0e000000b004574a30cb8cmr12169154pgi.161.1666044219628; 
- Mon, 17 Oct 2022 15:03:39 -0700 (PDT)
-Received: from [192.168.1.107] ([149.135.10.35])
- by smtp.gmail.com with ESMTPSA id
- jg4-20020a17090326c400b001753654d9c5sm7093560plb.95.2022.10.17.15.03.36
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 17 Oct 2022 15:03:38 -0700 (PDT)
-Message-ID: <48d0c28c-30d8-56e0-7fb3-c074c2ea72e2@linaro.org>
-Date: Tue, 18 Oct 2022 08:03:10 +1000
+        d=1e100.net; s=20210112;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=/gtq3CJ96vvC+n9rfHTr01pVVfhQvNAAqegK1gvN0EA=;
+        b=AQ/uWfXXFKcf+DrwlJAVMwMAh8KAIELn0W6n/DWxOJ1TvbTUJPYm9jPzl+XDIxJb0B
+         wcF25rYxbYH67Xcu1QReWdrjpW6aOseXiXOtqfCymmeseTuL5x7BBlODIBiO2hBhdQoZ
+         sPyJtwu+mtpKBr98r7xj1vOwngJOLYkHAf39x3k/od09NWLBckEYkmWNLqheeJBVz6Xe
+         fRCwTXdDnkJSg32MDOEjpy2RnpY6qXXiNVDNeggSxkHjzj3DbNm0FK1AlkmoAUC+0+S0
+         lE+FZeSdrzlL1xfa44TyndrnjAU1BSfVTTQXQvTy09ns9rAEa36BOelERNFZvuUDt+HI
+         p3WQ==
+X-Gm-Message-State: ACrzQf0qjSQVFFt01ylImnhM0LbNhGUr8FR7ucCSMc643gh7oalWiDJQ
+	GObuZOMIVurOcIsCBRKKqHU+ptzBam6a7OgTb91zfK3u
+X-Google-Smtp-Source: AMsMyM7cinUnq5vFCOljXpJWhU7VArjKC56KWRQlJRpcc6qimLgA7JPA9Pz1KTjCWdF/lJXmXL+sKwSjkPyq9P6l/5c=
+X-Received: by 2002:a05:6638:14cb:b0:363:ed95:ce4c with SMTP id
+ l11-20020a05663814cb00b00363ed95ce4cmr22115jak.308.1666044798541; Mon, 17 Oct
+ 2022 15:13:18 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.2.2
-Subject: Re: [PATCH v7 9/9] target/arm: Enable TARGET_TB_PCREL
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
-References: <20221016220932.274260-1-richard.henderson@linaro.org>
- <20221016220932.274260-10-richard.henderson@linaro.org>
- <CAFEAcA9i6gXEcQ2F6=Yq70iCx_XiRdHRu0V8pTEurXYDotmA_w@mail.gmail.com>
-Content-Language: en-US
-From: Richard Henderson <richard.henderson@linaro.org>
-In-Reply-To: <CAFEAcA9i6gXEcQ2F6=Yq70iCx_XiRdHRu0V8pTEurXYDotmA_w@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::432;
- envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x432.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 1GxJjfVpD1YO
+References: <CAChpoR45q6huduz7J7jrOrJz3gqHYT+jr1j=QKnfmPbj=wd_pg@mail.gmail.com>
+ <878rlee4yf.fsf@linaro.org>
+In-Reply-To: <878rlee4yf.fsf@linaro.org>
+From: =?UTF-8?B?4K6k4K6+4K6a4K+GIOCvqQ==?= <paxi.three@gmail.com>
+Date: Tue, 18 Oct 2022 03:43:05 +0530
+Message-ID: <CAChpoR4g2cVFoXR-1MZqd8mtk=S4h0usoG5mpPfY9kaFoJ7kHQ@mail.gmail.com>
+Subject: Re: Running server from within qemu
+To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
+Cc: qemu-arm@nongnu.org
+Content-Type: multipart/alternative; boundary="00000000000065a38b05eb424823"
+X-TUID: npHIrJvnqrw2
 
-On 10/17/22 23:48, Peter Maydell wrote:
->> -    if (use_goto_tb(s, dest)) {
->> -        tcg_gen_goto_tb(n);
->> -        gen_a64_update_pc(s, diff);
->> +    if (use_goto_tb(s, s->pc_curr + diff)) {
->> +        if (TARGET_TB_PCREL) {
->> +            gen_a64_update_pc(s, diff);
->> +            tcg_gen_goto_tb(n);
->> +        } else {
->> +            tcg_gen_goto_tb(n);
->> +            gen_a64_update_pc(s, diff);
->> +        }
-> 
-> Why do we need to do these things in the opposite order
-> depending on TARGET_TB_PCREL ? If there's an obscure dependency
-> then it would be worth commenting it, but it would be nicer
-> if the semantics of the functions were such that they didn't
-> need to be called the opposite way round for the two cases...
+--00000000000065a38b05eb424823
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-For !pcrel, we can skip the update to pc in the linked case because the destination knows 
-the full virtual address and can easily store it when needed.  So we skip the update when 
-we can simply to reduce the dynamic instruction count within the TB.
+Thankyou Alex.  I will try this and let you know..
 
-But for pcrel, the destination cannot easily update, i.e. with just addition, the full 
-virtual address without it always being up-to-date on entry.  So that's the rule there.
+On Mon, Oct 17, 2022, 10:57 PM Alex Benn=C3=A9e <alex.bennee@linaro.org> wr=
+ote:
 
-A comment, then?
+>
+> =E0=AE=A4=E0=AE=BE=E0=AE=9A=E0=AF=86 =E0=AF=A9 <paxi.three@gmail.com> wri=
+tes:
+>
+> > Hi,
+> >
+> > I am new to using QEMU.  Is it possible to host a simple http/tcp serve=
+r
+> on a Linux which is running on qemu, without any
+> > accompanying vm (KVM), and hit that http server from the host OS (say
+> Windows)? What options should I choose in army
+> > (command line args) to run any TCP based server from within qemu?
+> >
+> > As of now I use the following to start my OpenWRT Linux on QEMU:
+> > $ qemu-sysyem-arm -M vert-2.9 -kernel openwrt-22.03.1-armvirt-32-zImage
+> -no-reboot -nographic -drive
+> > file=3Dopenwrt-32-rootfs-ext4.img,if=3Dvirtio,format=3Draw -append
+> "root=3D/dev/vda" -m 1G -nic user -nic user
+> >
+>
+> You have two nics in the command line. Anyway using a proper split
+> -netdev/-device specification:
+>
+>   -netdev user,id=3Dunet,hostfwd=3Dtcp::2222-:22 -device
+> virtio-net-pci,netdev=3Dunet
+>
+> which in this case forwards tcp port 2222 on the host to port 22 on the
+> guest. Just don't expect brilliant performance.
+>
+>
+> > Thankyou
+>
+>
+> --
+> Alex Benn=C3=A9e
+>
 
+--00000000000065a38b05eb424823
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
+<div dir=3D"auto"><div>Thankyou Alex.=C2=A0 I will try this and=C2=A0let yo=
+u know..<br><br><div class=3D"gmail_quote"><div dir=3D"ltr" class=3D"gmail_=
+attr">On Mon, Oct 17, 2022, 10:57 PM Alex Benn=C3=A9e &lt;<a href=3D"mailto=
+:alex.bennee@linaro.org">alex.bennee@linaro.org</a>&gt; wrote:<br></div><bl=
+ockquote class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;border-left:1px #=
+ccc solid;padding-left:1ex"><br>
+=E0=AE=A4=E0=AE=BE=E0=AE=9A=E0=AF=86 =E0=AF=A9 &lt;<a href=3D"mailto:paxi.t=
+hree@gmail.com" target=3D"_blank" rel=3D"noreferrer">paxi.three@gmail.com</=
+a>&gt; writes:<br>
+<br>
+&gt; Hi,<br>
+&gt;<br>
+&gt; I am new to using QEMU.=C2=A0 Is it possible to host a simple http/tcp=
+ server on a Linux which is running on qemu, without any<br>
+&gt; accompanying vm (KVM), and hit that http server from the host OS (say =
+Windows)? What options should I choose in army<br>
+&gt; (command line args) to run any TCP based server from within qemu?<br>
+&gt;<br>
+&gt; As of now I use the following to start my OpenWRT Linux on QEMU:<br>
+&gt; $ qemu-sysyem-arm -M vert-2.9 -kernel openwrt-22.03.1-armvirt-32-zImag=
+e -no-reboot -nographic -drive<br>
+&gt; file=3Dopenwrt-32-rootfs-ext4.img,if=3Dvirtio,format=3Draw -append &qu=
+ot;root=3D/dev/vda&quot; -m 1G -nic user -nic user<br>
+&gt;<br>
+<br>
+You have two nics in the command line. Anyway using a proper split<br>
+-netdev/-device specification:<br>
+<br>
+=C2=A0 -netdev user,id=3Dunet,hostfwd=3Dtcp::2222-:22 -device virtio-net-pc=
+i,netdev=3Dunet<br>
+<br>
+which in this case forwards tcp port 2222 on the host to port 22 on the<br>
+guest. Just don&#39;t expect brilliant performance. <br>
+<br>
+<br>
+&gt; Thankyou<br>
+<br>
+<br>
+-- <br>
+Alex Benn=C3=A9e<br>
+</blockquote></div></div></div>
 
-r~
+--00000000000065a38b05eb424823--

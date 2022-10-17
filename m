@@ -1,108 +1,116 @@
-Received: by 2002:a17:906:43c7:b0:78d:9f02:16a1 with SMTP id j7csp2664788ejn;
-        Mon, 17 Oct 2022 13:46:39 -0700 (PDT)
-X-Google-Smtp-Source: AMsMyM6Azk/Jq6BlchyilZntVjQxrOcdyw1ADPWgf1ZvLBBdo+j9uL+/2nSPMedZKoqmNQEHHwNO
-X-Received: by 2002:a05:620a:bcc:b0:6ce:c077:acf3 with SMTP id s12-20020a05620a0bcc00b006cec077acf3mr9112873qki.263.1666039599528;
-        Mon, 17 Oct 2022 13:46:39 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1666039599; cv=none;
+Received: by 2002:a17:906:43c7:b0:78d:9f02:16a1 with SMTP id j7csp2669786ejn;
+        Mon, 17 Oct 2022 13:58:36 -0700 (PDT)
+X-Google-Smtp-Source: AMsMyM7tL8B/FsD5QVah1leS53csURePgUKNgm0FBbGQNgk1X5+QKfgrNgE/LdA91E1OvfIng5eR
+X-Received: by 2002:a05:620a:258b:b0:6c8:c859:bb11 with SMTP id x11-20020a05620a258b00b006c8c859bb11mr9130646qko.119.1666040316165;
+        Mon, 17 Oct 2022 13:58:36 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1666040316; cv=none;
         d=google.com; s=arc-20160816;
-        b=HYi2QA3YJGsVKMH/OkTMblGPRdQaotAEuXzU1f33Qmz3zG319aOSLXk5HH2eHFoOBx
-         labrPsMgMQBqfqil1pdG3GSZuCmM+VaImU7S7/zMkr8mHTsKG7xb+VAGpYw5H1kc02TP
-         0FAKMHpl1XZrDdLV6MSE1pIXpNHjoTd7/6C+rDY15xJjuOQBFnnqZXMqQGK07w8woVu8
-         UK1RnFAAwW+rLrKIsXCnOXZz9Y4AIoA8UGBHt/7JK4FHfe5wZQibQuLXP84eepvEXm+Z
-         E1H3wMt7/edtjpS6lALJSAy26zkMet3pt2Ng9zLpIoWejxeehEwTWhgApaTQzqSCBmZI
-         5khg==
+        b=SnGtiJebU436NrYSFpvYZK3rOASjSg03KZTeeWduiFVixlkf7G5FvV1B7B+NsWDC0F
+         w3wDRcaD7x65EjMZ1bxX+E9TeTHwhbirmrMoDiWmzUhTlml9+4ll+R3w9RdemNn87Kd/
+         dNgIDpkCiRShpRskISpdSbHCrniztU18rJ0iyPww41CTcspR3t1HFbcwUx1a0YJZ0br2
+         0uKc7peVE4k0pmIrBcdWRltLQjImzEIViG0brxDSi0Kpk37x9Nak5Ykoevq6rMDYKuaF
+         cC6qQmrqdfPghZj4B4eN+NYx5OA5/VecvOY+moW3XzSmbFPv62kSy4qsYkyEPNnpNNB0
+         cwcQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :in-reply-to:from:references:cc:to:content-language:subject
          :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=QWiTd51m/v3mDWYBe646nWHgeRjWJOKrhD8Vq6XYif4=;
-        b=BAWMbnb0rhLn0BIY/hv6e/iSxDGW1I6LxJ7fmC0SMETSAHuc5oc24nS5/+5/BKJd9U
-         aphyJfWW2BEouxBpvOC3kfeZH20B7EVITMpLfIgIoI9pVNzPm5AHE2eZn11q9RSUR3Dj
-         9IJHh+RLIgGBGzFslOc0DdfZ0wwY/LztfraeNpxNVklzlqSK7f43oZg0rWqAlu2HIJt8
-         KuFUTJgxIAvrxkNd8sQRMFnZehCmIADg1XKYUoc8jY25p2oFs8P/3W+al2asUC+aQCzn
-         LerCsfF0OgeWt3tl9N99/yNTAH/0jjMuD2TxdZAt+l17jX8ipz03/GV+BSFLH+RDlppz
-         d9cA==
+        bh=5kFD4SzwgAwbAJ6WbWi/JOqiQSZeXvwssDDc9Ce1hlw=;
+        b=JFjqsi2gymJ9Idls5tdrx9ksu88mBttILaDTL57P82ei567ODfJMYK/z5/TLntOVkS
+         t9bfF3ni3WFr1fkoiBcvieo9IL4XYFWS5keIZPfueExnIDbH9zXld4UZ9X+h2/zKpKFx
+         1uog1MuNypSt8RlaEwuswxaEjGdE/h+GSQ7jKPFvXFpHefW6v1vSqc0IMNoR0hsD82EV
+         XhVoV+/g1ZLUtUH4kdwTD9jidU64HJSYKOQTgwED+WmKmpS8PQtp9FtCZLLSB6XeMjWL
+         Y/qWuGnbOBv7BMC7tS7HH4LBUqnlHQe8Kn3eMCTYSt3A0mmAfsM/h8ruSopcs9o5NVf8
+         SrMg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=M+RcBrPP;
+       dkim=pass header.i=@linaro.org header.s=google header.b=Smzy6eZo;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e9-20020ac85989000000b0039ce3dd630esi3884178qte.649.2022.10.17.13.46.39
+        by mx.google.com with ESMTPS id p14-20020ad45f4e000000b00498f7a107c2si6504325qvg.568.2022.10.17.13.58.36
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 17 Oct 2022 13:46:39 -0700 (PDT)
+        Mon, 17 Oct 2022 13:58:36 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=M+RcBrPP;
+       dkim=pass header.i=@linaro.org header.s=google header.b=Smzy6eZo;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:43660 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:37954 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1okX0R-0002ga-1x
-	for alex.bennee@linaro.org; Mon, 17 Oct 2022 16:46:39 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45782)
+	id 1okXBz-0008Of-Mz
+	for alex.bennee@linaro.org; Mon, 17 Oct 2022 16:58:35 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:57152)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1okWxr-0001U0-Q5
- for qemu-devel@nongnu.org; Mon, 17 Oct 2022 16:43:59 -0400
-Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e]:40908)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1okXAg-0007ed-CI
+ for qemu-devel@nongnu.org; Mon, 17 Oct 2022 16:57:14 -0400
+Received: from mail-wr1-x42c.google.com ([2a00:1450:4864:20::42c]:41711)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1okWxq-0006gn-Bv
- for qemu-devel@nongnu.org; Mon, 17 Oct 2022 16:43:59 -0400
-Received: by mail-wm1-x32e.google.com with SMTP id
- v130-20020a1cac88000000b003bcde03bd44so13585265wme.5
- for <qemu-devel@nongnu.org>; Mon, 17 Oct 2022 13:43:57 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1okXAd-0000BD-Sp
+ for qemu-devel@nongnu.org; Mon, 17 Oct 2022 16:57:14 -0400
+Received: by mail-wr1-x42c.google.com with SMTP id bu30so20367484wrb.8
+ for <qemu-devel@nongnu.org>; Mon, 17 Oct 2022 13:57:11 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=QWiTd51m/v3mDWYBe646nWHgeRjWJOKrhD8Vq6XYif4=;
- b=M+RcBrPPGLUTYwmvVXISm0GCcsTxS/V29ul4uGIfj2jmudXFdeAvDsMiJ+a1UrKzHe
- BZ4f3Yxnvs4XRvp/ZluArZDr9zeG77hlb1PNwbFVV+eDVqLX4Lfuhj1rwHAaaugP0vbq
- HGJXlrMbcpAvOuPbuAIgavcwVEpqBzE8aKB25udoPfvVLNL7rsMYouTj1acG/WF2qVDW
- CRi1QS73wKhWJOOJIih5iTUV23y5Yt0Eq6zvObAc5vqgW41TgLz2Ht3ku9dbIyrTB/zq
- n6+/meqwAeB4v5v3nPvXBH80QKyhH3iqR4mokrP1aTZo4Md8+98/9QI8N3BkQUGW0d/q
- czHQ==
+ bh=5kFD4SzwgAwbAJ6WbWi/JOqiQSZeXvwssDDc9Ce1hlw=;
+ b=Smzy6eZoF+L9YSw5VBGsvSUtQyR9Vsrf61feaggQo574sgVA4981/A8rPRtABbRprg
+ alsguEnpWLQasS8GO/7ghPie5nB3nYjOUP/Kp8atWb765SmOsQ0z6StVy9PUsP1VGoyl
+ lsrzaFdIyTD62umOTJu0iaCHp6kfat1xsqNFcgPBDc3tNMmy4xvcJxCp1yE3xLobmLdg
+ OyG82bweUDtdg7TwWjMKcR+HeQA9GE6BbZVSDoMvUyo8lxkaoW5JGWsCSp5xV3cYGgRI
+ hl7+seHZKhPJbXf2tnzlxFIpo716hzUVph6+a5fmSrPckEVod/nXSPsZY2yD8qeJOnsu
+ ArnA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=QWiTd51m/v3mDWYBe646nWHgeRjWJOKrhD8Vq6XYif4=;
- b=XOMBbg1obsv5kxT0Xp+j+j6bwP3hYm7x19CGrGH4bwXVWekh2MoNYDTUeitR8Socl3
- fePuV5CNE63PV3JgAnValvzRHeVaRNTIAKX0todHDYOuV3ePkwGTAi1AMCBkBWQQYtvH
- WLgaonGT2n2B2FtcIFlosKo50813jFj95RleIlxqZiw5HMH5ruh/09AjWnDXvX45tJTo
- N6nr+QxWfmJs+pDNtXM17ZDniAvGd/4KFoHpfQE02N4WtzUaiFbc0zMyhJZXHII7LyyC
- h0AxFG1hxmnjo8Ox5BOtPagB6F512kiEksfCbNlSfJTSKa1rNOWtsFbYPulToFsAnSdP
- F8HQ==
-X-Gm-Message-State: ACrzQf3TGxWgvTc0JkdABcnjC32F3rdj7xXMcOxaR01zkmz7P1H1hbPN
- 06o6LQvk7inuQSSG0pYwyS9zuQ==
-X-Received: by 2002:a05:600c:1546:b0:3c6:be44:d3d2 with SMTP id
- f6-20020a05600c154600b003c6be44d3d2mr8729849wmg.63.1666039436527; 
- Mon, 17 Oct 2022 13:43:56 -0700 (PDT)
+ bh=5kFD4SzwgAwbAJ6WbWi/JOqiQSZeXvwssDDc9Ce1hlw=;
+ b=oIKuFk9xwjj+QIGEWj/xPfcdzL8NWL80UWbNsmhKdoaJ77KNAMk/tfw3mTiRReWGlO
+ Q+a+EihQWKfQN+P53qKTzrlhf+HM7oNxLZ2FbBlKon0X9nM1eiYDv9/M2TzKatSLmksL
+ 6hEeFHiDJ+IwX9kJ6aQGPheY0lGz2zI4DtzlK2stTYhSk/lrj3Sg9duv7yF2eNFBQsdQ
+ jqeaRZAzubo9dsZvAuZNTwmPuOuaEBLIzsLp5Yt8Zb14XvItpvY5I1Uyvu1D9j538LRm
+ y2xdv6q53YSsf4CKs+cKQY4uCpM/xJ5ZXpxYA3ExiMXnpFv58J+PBAy2VlVaSt8VsAhB
+ 85Mw==
+X-Gm-Message-State: ACrzQf0TKrhTF6X70H96PlZee9WX8faB5oPLEQ6XYCg5d+rf5FCYUA9D
+ 706k0D3r+7vgTWvup8Eqvcn6lA==
+X-Received: by 2002:a5d:4f83:0:b0:22e:3ab7:e181 with SMTP id
+ d3-20020a5d4f83000000b0022e3ab7e181mr7081355wru.702.1666040229821; 
+ Mon, 17 Oct 2022 13:57:09 -0700 (PDT)
 Received: from [192.168.1.115] ([185.126.107.38])
  by smtp.gmail.com with ESMTPSA id
- p14-20020a05600c468e00b003c6f3e5ba42sm6449513wmo.46.2022.10.17.13.43.55
+ h19-20020a05600c351300b003b4868eb71bsm17143172wmq.25.2022.10.17.13.57.07
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 17 Oct 2022 13:43:55 -0700 (PDT)
-Message-ID: <d0734271-e6b3-bece-be43-365cdbe5e870@linaro.org>
-Date: Mon, 17 Oct 2022 22:43:54 +0200
+ Mon, 17 Oct 2022 13:57:09 -0700 (PDT)
+Message-ID: <ac4a6fd0-9e60-df0f-533e-a9e102350deb@linaro.org>
+Date: Mon, 17 Oct 2022 22:57:06 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:91.0)
  Gecko/20100101 Thunderbird/91.13.1
-Subject: Re: [PATCH] tcg/aarch64: Remove unused code in tcg_out_op
+Subject: Re: [PATCH v3 2/9] hw/{arm,ppc}: Resolve unreachable code
 Content-Language: en-US
-To: Qi Hu <huqi@loongson.cn>, Richard Henderson <richard.henderson@linaro.org>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, WANG Xuerui <git@xen0n.name>
-References: <20221017020826.990729-1-huqi@loongson.cn>
+To: Bernhard Beschow <shentey@gmail.com>, qemu-devel@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ Alistair Francis <alistair@alistair23.me>, Jan Kiszka <jan.kiszka@web.de>,
+ Magnus Damm <magnus.damm@gmail.com>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, Kevin Wolf
+ <kwolf@redhat.com>, qemu-block@nongnu.org, Bin Meng
+ <bin.meng@windriver.com>, Aurelien Jarno <aurelien@aurel32.net>,
+ qemu-ppc@nongnu.org, BALATON Zoltan <balaton@eik.bme.hu>,
+ Yoshinori Sato <ysato@users.sourceforge.jp>,
+ Antony Pavlov <antonynpavlov@gmail.com>, Hanna Reitz <hreitz@redhat.com>
+References: <20221016122737.93755-1-shentey@gmail.com>
+ <20221016122737.93755-3-shentey@gmail.com>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
-In-Reply-To: <20221017020826.990729-1-huqi@loongson.cn>
+In-Reply-To: <20221016122737.93755-3-shentey@gmail.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32e;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x32e.google.com
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::42c;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x42c.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -124,17 +132,27 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 6tGbiOxWsmpf
+X-TUID: CQXDbQGDPwe+
 
-On 17/10/22 04:08, Qi Hu wrote:
-> AArch64 defines the TCG_TARGET_HAS_direct_jump. So the "else" block is
-> useless in the case of "INDEX_op_goto_tb" in function "tcg_out_op". Add
-> an assertion and delete these codes for clarity.
-> 
-> Suggested-by: WANG Xuerui <git@xen0n.name>
-> Signed-off-by: Qi Hu <huqi@loongson.cn>
+On 16/10/22 14:27, Bernhard Beschow wrote:
+> pflash_cfi01_register() always returns with a non-NULL pointer (otherwise
+> it would crash internally). Therefore, the bodies of the if-statements
+> are unreachable.
+
+This is true, pflash_cfi0X_register() use an hardcoded &error_fatal.
+
+Shouldn't it be better to pass an Error* argument?
+
+ From the pflash API perspective I don't see much value in
+returning a PFlashCFI0X type instead of a simple DeviceState
+(but this is another story...).
+
+> Signed-off-by: Bernhard Beschow <shentey@gmail.com>
 > ---
->   tcg/aarch64/tcg-target.c.inc | 31 ++++++++++++++-----------------
->   1 file changed, 14 insertions(+), 17 deletions(-)
-
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+>   hw/arm/gumstix.c     | 18 ++++++------------
+>   hw/arm/mainstone.c   | 13 +++++--------
+>   hw/arm/omap_sx1.c    | 22 ++++++++--------------
+>   hw/arm/versatilepb.c |  6 ++----
+>   hw/arm/z2.c          |  9 +++------
+>   hw/ppc/sam460ex.c    | 12 ++++--------
+>   6 files changed, 28 insertions(+), 52 deletions(-)

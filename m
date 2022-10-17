@@ -1,151 +1,157 @@
-Received: by 2002:a17:906:43c7:b0:78d:9f02:16a1 with SMTP id j7csp1973693ejn;
-        Sun, 16 Oct 2022 15:24:43 -0700 (PDT)
-X-Google-Smtp-Source: AMsMyM49BxTOoLTSBZ/FCm41BV3by2I5a9MWD2MxQkwjcoFvaIwprGZN1Oh2Gmkheiem18/aG0Tf
-X-Received: by 2002:a0c:f4c9:0:b0:4b1:b290:a4d with SMTP id o9-20020a0cf4c9000000b004b1b2900a4dmr6472449qvm.68.1665959083581;
-        Sun, 16 Oct 2022 15:24:43 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1665959083; cv=none;
+Received: by 2002:a17:906:43c7:b0:78d:9f02:16a1 with SMTP id j7csp2059153ejn;
+        Sun, 16 Oct 2022 19:10:10 -0700 (PDT)
+X-Google-Smtp-Source: AMsMyM4eEhwh5T8DsMETiNRzfXPMCXIwTDgOqwH4chliXK4zcvpOvbTQnnoOMg+CyXLCAB/zGu+M
+X-Received: by 2002:a05:6214:2307:b0:46e:5fbc:3c30 with SMTP id gc7-20020a056214230700b0046e5fbc3c30mr6709171qvb.21.1665972610117;
+        Sun, 16 Oct 2022 19:10:10 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1665972610; cv=none;
         d=google.com; s=arc-20160816;
-        b=S5Ml0UsvuUeGrdoZ+ac10Fan8LqK9WPOSwrdT+Coc031ddX5U+1TXhWq948A7+cALH
-         ZAL+pHvHl8AY/NyGS3ZUNLEKvNdcFbnp1/qJy1zDO8Z/AbD6Oub11hJRZBaXJ1Uo7hnG
-         OLzYiiZsyShn3gsJ3wGvMgsfiXVTHRb/MYY4FbyB/UfkrAwbSquNYYYDgSYFJ0sGHlLs
-         1H/SWTbEnwPy+9M4O74TgUOkDB8WKEDsixVVVEwYlw7Ohgyv6FlNE5MlGtio4pUyrvb8
-         TZIQ0n2h4It4FE5bHBinkZO9cNsIDN3MIgt1lJKevgHwu2mH2mE6HtFcDuCisHPO/uaj
-         78oQ==
+        b=hXFOVflPZa4ljzyJ4EIl7Y6pvoiLvwWEiIpARBeZse5DPBNyMfWw7wPdC5Ijh0YdLk
+         XYOGTqZ60N0QpqWzW7u0sPgFtE8XsL/s5JGNg5NJnbSdxoDzkiFP8D31iCWB11efl0iF
+         RIcWrBqO7Nn1Cmd92/h5eB8b8lxIwKQaXLX9vimWxzSPeahqMPUzaeVlwXmjLxkG9zY/
+         1n2pXlEsECj9Dq2WB4R9VOivo4nO0XhX2Npc/DHsXouQ+9j5neGsyMhSjHjCq7UC6F2F
+         8b0ydn8AfvN6/YYgA9jJ1KPYQaZmCR7TCIVnpbP6U36HxsV/hxWFz/9mZSxvcrbW4IVC
+         wCYg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :mime-version:dkim-signature;
-        bh=yvpxFPaUj+ZXAWVXJQXvOWuj7sn5Js9Ipp78z4V9Grk=;
-        b=CgI9uM5oGpdidgmI1kQQl99D4JQSlih8ROGrZrFdLjU+htrvR5Twx/LMBEI6KcHoEe
-         TAGhvz96dVL3wB1BOp/pqtqauNf6mA4V3dFU52+VwV1uW9SDcOrGrrKVDk4ID6O1kV2z
-         EJwEZcEuWwKIN5OLyruZlOvP4vDxiSiNSsH/sBjMNuUwQ+Cy6tKTZ77wNiVflH4hSgRo
-         nRqVh+cdvgEIDoKYEfFEOz7atcgT1+qWdfxGQtn0tTa7jsV0yPdxM6LOUb7gjqCXd6n3
-         JFfOrFwudhoY//zvEQJIsntVFw+uWBpNeel6bzgjvJQMpVphUhd8GwbS4m26n9NWLaoi
-         kX+w==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:cc:to:from;
+        bh=7Aqm60jjuGMnafGEoS5zpNk8vM5i7zEW2EiDGwzgUD8=;
+        b=XqEwjLTS56TeVgI27EfBAY8jS2ueJItlXau1/SnQ0iKsVWtaYrd85UfgyNhWDhPoOR
+         L3liili5l2dhjGzGBWvwGtaUE+j225TFKy91mTcOXzh4gqhea3DNdkwxqhNR4aGdoIlB
+         ur18oOAhO6lXTc/LqOe9uKHIaFEnxKKrPffznWk7OTiIjMtFqGoW4XHtraC4uadEI2Gt
+         NzzUiE5NY6EiRAvZsv41idFB/JrkI5evKzNMTZEFiXddt6Z7PMKi8PCsD4BGTxhkO5IZ
+         yE2BR7hHoK0+2uNk6WZFr6gf5FzCnHAu4/TxSYffI8SotqEDWyX9Lut0hCXJ7+C2SGab
+         Kpmg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b="YKi/2NIB";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id jq15-20020ad45fcf000000b004aa5e02f027si5129607qvb.155.2022.10.16.15.24.43
+        by mx.google.com with ESMTPS id 1-20020ad45b81000000b004b400eaa7f1si5466108qvp.1.2022.10.16.19.10.09
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 16 Oct 2022 15:24:43 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Sun, 16 Oct 2022 19:10:10 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b="YKi/2NIB";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:41260 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:43714 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1okC3n-000608-0P
-	for alex.bennee@linaro.org; Sun, 16 Oct 2022 18:24:43 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:55520)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1okFZx-0006A5-M9
+	for alex.bennee@linaro.org; Sun, 16 Oct 2022 22:10:09 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:54108)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <paxi.three@gmail.com>)
- id 1okC2y-0005vX-Rz
- for qemu-arm@nongnu.org; Sun, 16 Oct 2022 18:23:53 -0400
-Received: from mail-il1-x129.google.com ([2607:f8b0:4864:20::129]:43688)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <paxi.three@gmail.com>)
- id 1okC2s-0000tn-Nf
- for qemu-arm@nongnu.org; Sun, 16 Oct 2022 18:23:49 -0400
-Received: by mail-il1-x129.google.com with SMTP id q11so5033711ilj.10
- for <qemu-arm@nongnu.org>; Sun, 16 Oct 2022 15:23:46 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=to:subject:message-id:date:from:mime-version:from:to:cc:subject
- :date:message-id:reply-to;
- bh=yvpxFPaUj+ZXAWVXJQXvOWuj7sn5Js9Ipp78z4V9Grk=;
- b=YKi/2NIBT5cLxlENUY6VxOo2+FyfQmrME2jCPNd4yAuCBO6icPMA8ppFqFDACVTX1a
- IcwjOCXwA5fgJ0JvL6HoUa6L76ZEBxzxMWfaCveXnqbZmnXUPLHSFsiFHX/9B1ZXm8Bs
- lFeoKrL2Qrv7w5b3f2E2BLO2mT2cPCcCpFk32idThh7u1zQVxYxEJ+b8xu20/OXN7qT9
- b56oxM2XhMDVDyy3l/Cee/zNvGZ2z6hpWY0I222FgRLUw3jbaCjBfqZyMgjqqfCDuSIF
- aDgLBKFCAPU3BgZqWV3iqdNz9YcAsZxNNzFjBbNJ0oo8PteB134aL0BaYR7V7R5cdS2M
- vLWQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=to:subject:message-id:date:from:mime-version:x-gm-message-state
- :from:to:cc:subject:date:message-id:reply-to;
- bh=yvpxFPaUj+ZXAWVXJQXvOWuj7sn5Js9Ipp78z4V9Grk=;
- b=cCarnSYFFNoGt2IuYWGMtiDYKntljbNnxB4qXLXnbHgki18Qf/xlYoW3qsrc+DEt3b
- tOYEEiO/HN6othbM07zU3oVIzTTEtkUX/yvuiYMoaV2XAZQpkUvmy2IXuVfIfEPOp2PH
- hzgo3rq3SCyXMvWSNMv6u9Sec6r3VZvqq2laBi7aQ14YpvKCXV2bAZC50sxXqL9Fco3y
- YnR6k9inBQ2OPD3vNqlPV/O71oKIVRla3nLCY6yX2Av+bF/+vaVKRk6aWO2BcmkQGDZy
- 9ee8LVvFvnFtF+5goeJ+XkVzr5old/ELgtMDK0R0icRCH53HS5euYFDgMihV3+FLVhHv
- KUxg==
-X-Gm-Message-State: ACrzQf2gH1CqL0wV2HX3iUinwncQfmmDYndOAJaSk9PcoHprZng4Emrv
- kuciuEM0lU1ntXuTZJaRa4uFFiB+eLaLpSnxZpYGVrXw
-X-Received: by 2002:a05:6e02:156a:b0:2fc:4266:f56 with SMTP id
- k10-20020a056e02156a00b002fc42660f56mr3574309ilu.140.1665959024947; Sun, 16
- Oct 2022 15:23:44 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <huqi@loongson.cn>)
+ id 1okFZA-0005IS-Sa; Sun, 16 Oct 2022 22:09:20 -0400
+Received: from mail.loongson.cn ([114.242.206.163]:43932 helo=loongson.cn)
+ by eggs.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <huqi@loongson.cn>)
+ id 1okFZ8-0005zQ-Fw; Sun, 16 Oct 2022 22:09:20 -0400
+Received: from lingfengzhe-ms7c94.loongson.cn (unknown [10.90.50.23])
+ by localhost.localdomain (Coremail) with SMTP id
+ AQAAf8Cx9OFDuUxjnFwwAA--.38243S2; 
+ Mon, 17 Oct 2022 10:09:07 +0800 (CST)
+From: Qi Hu <huqi@loongson.cn>
+To: Richard Henderson <richard.henderson@linaro.org>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, WANG Xuerui <git@xen0n.name>
+Subject: [PATCH] tcg/aarch64: Remove unused code in tcg_out_op
+Date: Mon, 17 Oct 2022 10:08:26 +0800
+Message-Id: <20221017020826.990729-1-huqi@loongson.cn>
+X-Mailer: git-send-email 2.38.0
 MIME-Version: 1.0
-From: =?UTF-8?B?4K6k4K6+4K6a4K+GIOCvqQ==?= <paxi.three@gmail.com>
-Date: Mon, 17 Oct 2022 03:53:33 +0530
-Message-ID: <CAChpoR45q6huduz7J7jrOrJz3gqHYT+jr1j=QKnfmPbj=wd_pg@mail.gmail.com>
-Subject: Running server from within qemu
-To: qemu-arm@nongnu.org
-Content-Type: multipart/alternative; boundary="000000000000e4786b05eb2e4f68"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::129;
- envelope-from=paxi.three@gmail.com; helo=mail-il1-x129.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+Content-Transfer-Encoding: 8bit
+X-CM-TRANSID: AQAAf8Cx9OFDuUxjnFwwAA--.38243S2
+X-Coremail-Antispam: 1UD129KBjvJXoW7Zr1kAFyftw4rJw45XF47urg_yoW8uF1kpr
+ 93Crnxtw43JrWDJrWavF1UC343Aa90kr9rWF4xKw48Xws0v343XrWfKr4ftFWDKFyfur4U
+ Zan0yw1fGF4DAaUanT9S1TB71UUUUUUqnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
+ 9KBjDU0xBIdaVrnRJUUUk0b7Iv0xC_tr1lb4IE77IF4wAFF20E14v26r1j6r4UM7CY07I2
+ 0VC2zVCF04k26cxKx2IYs7xG6rWj6s0DM7CIcVAFz4kK6r1j6r18M28lY4IEw2IIxxk0rw
+ A2F7IY1VAKz4vEj48ve4kI8wA2z4x0Y4vE2Ix0cI8IcVAFwI0_Gr0_Xr1l84ACjcxK6xII
+ jxv20xvEc7CjxVAFwI0_Gr0_Cr1l84ACjcxK6I8E87Iv67AKxVW8Jr0_Cr1UM28EF7xvwV
+ C2z280aVCY1x0267AKxVW8Jr0_Cr1UM2AIxVAIcxkEcVAq07x20xvEncxIr21l5I8CrVAC
+ Y4xI64kE6c02F40Ex7xfMcIj6xIIjxv20xvE14v26r1j6r18McIj6I8E87Iv67AKxVWUJV
+ W8JwAm72CE4IkC6x0Yz7v_Jr0_Gr1lF7xvr2IYc2Ij64vIr41lc2xSY4AK6svPMxAIw28I
+ cxkI7VAKI48JMxC20s026xCaFVCjc4AY6r1j6r4UMI8I3I0E5I8CrVAFwI0_Jr0_Jr4lx2
+ IqxVCjr7xvwVAFwI0_JrI_JrWlx4CE17CEb7AF67AKxVWUAVWUtwCIc40Y0x0EwIxGrwCI
+ 42IY6xIIjxv20xvE14v26r1j6r1xMIIF0xvE2Ix0cI8IcVCY1x0267AKxVWUJVW8JwCI42
+ IY6xAIw20EY4v20xvaj40_Jr0_JF4lIxAIcVC2z280aVAFwI0_Jr0_Gr1lIxAIcVC2z280
+ aVCY1x0267AKxVWUJVW8JbIYCTnIWIevJa73UjIFyTuYvjxUcVWlDUUUU
+X-CM-SenderInfo: pkxtxqxorr0wxvrqhubq/1tbiAQACCWNL9GEEiwAEs8
+Received-SPF: pass client-ip=114.242.206.163; envelope-from=huqi@loongson.cn;
+ helo=loongson.cn
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_PASS=-0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: U9K3oHcgCk3X
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: wAV0e46gqFIH
 
---000000000000e4786b05eb2e4f68
-Content-Type: text/plain; charset="UTF-8"
+AArch64 defines the TCG_TARGET_HAS_direct_jump. So the "else" block is
+useless in the case of "INDEX_op_goto_tb" in function "tcg_out_op". Add
+an assertion and delete these codes for clarity.
 
-Hi,
+Suggested-by: WANG Xuerui <git@xen0n.name>
+Signed-off-by: Qi Hu <huqi@loongson.cn>
+---
+ tcg/aarch64/tcg-target.c.inc | 31 ++++++++++++++-----------------
+ 1 file changed, 14 insertions(+), 17 deletions(-)
 
-I am new to using QEMU.  Is it possible to host a simple http/tcp server on
-a Linux which is running on qemu, without any accompanying vm (KVM), and
-hit that http server from the host OS (say Windows)? What options should I
-choose in army (command line args) to run any TCP based server from within
-qemu?
+diff --git a/tcg/aarch64/tcg-target.c.inc b/tcg/aarch64/tcg-target.c.inc
+index d997f7922a..344b63e20f 100644
+--- a/tcg/aarch64/tcg-target.c.inc
++++ b/tcg/aarch64/tcg-target.c.inc
+@@ -1916,24 +1916,21 @@ static void tcg_out_op(TCGContext *s, TCGOpcode opc,
+         break;
+ 
+     case INDEX_op_goto_tb:
+-        if (s->tb_jmp_insn_offset != NULL) {
+-            /* TCG_TARGET_HAS_direct_jump */
+-            /* Ensure that ADRP+ADD are 8-byte aligned so that an atomic
+-               write can be used to patch the target address. */
+-            if ((uintptr_t)s->code_ptr & 7) {
+-                tcg_out32(s, NOP);
+-            }
+-            s->tb_jmp_insn_offset[a0] = tcg_current_code_size(s);
+-            /* actual branch destination will be patched by
+-               tb_target_set_jmp_target later. */
+-            tcg_out_insn(s, 3406, ADRP, TCG_REG_TMP, 0);
+-            tcg_out_insn(s, 3401, ADDI, TCG_TYPE_I64, TCG_REG_TMP, TCG_REG_TMP, 0);
+-        } else {
+-            /* !TCG_TARGET_HAS_direct_jump */
+-            tcg_debug_assert(s->tb_jmp_target_addr != NULL);
+-            intptr_t offset = tcg_pcrel_diff(s, (s->tb_jmp_target_addr + a0)) >> 2;
+-            tcg_out_insn(s, 3305, LDR, offset, TCG_REG_TMP);
++        tcg_debug_assert(s->tb_jmp_insn_offset != NULL);
++        /*
++         * Ensure that ADRP+ADD are 8-byte aligned so that an atomic
++         * write can be used to patch the target address.
++         */
++        if ((uintptr_t)s->code_ptr & 7) {
++            tcg_out32(s, NOP);
+         }
++        s->tb_jmp_insn_offset[a0] = tcg_current_code_size(s);
++        /*
++         * actual branch destination will be patched by
++         * tb_target_set_jmp_target later
++         */
++        tcg_out_insn(s, 3406, ADRP, TCG_REG_TMP, 0);
++        tcg_out_insn(s, 3401, ADDI, TCG_TYPE_I64, TCG_REG_TMP, TCG_REG_TMP, 0);
+         tcg_out_insn(s, 3207, BR, TCG_REG_TMP);
+         set_jmp_reset_offset(s, a0);
+         break;
+-- 
+2.38.0
 
-As of now I use the following to start my OpenWRT Linux on QEMU:
-$ qemu-sysyem-arm -M vert-2.9 -kernel openwrt-22.03.1-armvirt-32-zImage
--no-reboot -nographic -drive
-file=openwrt-32-rootfs-ext4.img,if=virtio,format=raw -append
-"root=/dev/vda" -m 1G -nic user -nic user
-
-Thankyou
-
---000000000000e4786b05eb2e4f68
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"auto"><div dir=3D"auto">Hi,</div><div dir=3D"auto"><br></div><d=
-iv dir=3D"auto">I am new to using QEMU.=C2=A0 Is it possible to host a simp=
-le http/tcp server on a Linux which is running on qemu, without any accompa=
-nying vm (KVM), and hit that http server from the host OS (say Windows)? Wh=
-at options should I choose in army (command line args) to run any TCP based=
- server from within qemu?</div><div dir=3D"auto"><br></div><div dir=3D"auto=
-">As of now I use the following to start my OpenWRT Linux on QEMU:</div><di=
-v dir=3D"auto">$ qemu-sysyem-arm -M vert-2.9 -kernel openwrt-22.03.1-armvir=
-t-32-zImage -no-reboot -nographic -drive file=3Dopenwrt-32-rootfs-ext4.img,=
-if=3Dvirtio,format=3Draw -append &quot;root=3D/dev/vda&quot; -m 1G -nic use=
-r -nic user</div><div dir=3D"auto"><br></div><div dir=3D"auto">Thankyou</di=
-v></div>
-
---000000000000e4786b05eb2e4f68--

@@ -1,92 +1,92 @@
-Received: by 2002:a05:7022:458e:b0:46:22f1:8c13 with SMTP id cf14csp2140126dlb;
+Received: by 2002:a05:7022:458e:b0:46:22f1:8c13 with SMTP id cf14csp2140127dlb;
         Tue, 18 Oct 2022 14:08:30 -0700 (PDT)
-X-Google-Smtp-Source: AMsMyM6wd1LW/KMmFOJVBfXqiTnhB1AfwDiMtOvPv9KQZ0WHrH40+oCg934UfhzAqGSA95LpS82Y
-X-Received: by 2002:a05:620a:1335:b0:6ee:883a:dcba with SMTP id p21-20020a05620a133500b006ee883adcbamr3230029qkj.449.1666127310040;
+X-Google-Smtp-Source: AMsMyM77r1XWti7ZGJ0Kco2QFFIh4zu4IKz5tvqW6frs8qZWllZT0AISgvP+JHL0c9JnsDhWL136
+X-Received: by 2002:a05:622a:156:b0:39c:8dc:d543 with SMTP id v22-20020a05622a015600b0039c08dcd543mr3731253qtw.458.1666127310198;
         Tue, 18 Oct 2022 14:08:30 -0700 (PDT)
 ARC-Seal: i=1; a=rsa-sha256; t=1666127310; cv=none;
         d=google.com; s=arc-20160816;
-        b=VLullhDxJpRtbQPiafigTHrYPDicthR+URUlOop26Mk47A2oMLCh1wm9jKlgfBLQ7e
-         UenQg4obpI7wlFbufHtONkdc55/HcF4lvaBiVdhGl9MHFd6I64th9wClJKLT7RCKwa+D
-         JYNEvwnRxDW86Phhdzj1Chlro16Tc8/BmmVwwx+ZCWgaI2kJYte21CmswdY36URpzHi7
-         +6CQSMKC0amh48HiJe7rqThJDIqIpEUT6j7Zy2sPlH2AbwEF+ROY4FMwb7W9iKYA7rWJ
-         DoJiAkawQVE+nqYxXVrvfbGNf0w4qPy5pQNNqSqRfXzIjsy+A9MT3Vus8znwuqVwz+4R
-         9WOA==
+        b=SnDttdSzt+nUqdJSJDt7xWA5g5fqeCGvIR/FH8bNAkOwbVucqmAJRHAIuY913uBwBY
+         +xk+yTj5sbQ78ZEf6hEpsM54orFfcWlN8yemsFIHKY1ylCX5EjGmUISwjGt36WgUUrt0
+         Mviaky+SD51aQhljWehonnfE4l36KFkHgt38SgXBMYBh6DFD/GxX6mTa2Lfq2h4AjhOX
+         1rO+5g0ROsWfsgJ68nfikPEhAeA2p9TEqQD9Aef8ax8pgzvzcJj1z+WYSM/QmGIFeE7J
+         8Hcq/wI7FkbM14jE2r3seopLgrfWLZ7oRTd7oAThBkD+yzU0hO9aPNHW58ZV0fe4TkI7
+         0P8A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=WtEIJKc0Za2w7LkNpc+XYB5b7FTyMz3UDgQ3c6Pamy8=;
-        b=i8Wa/dAlgPi+m2HgSu/vLrp1hkMNiwnu9ge5qg/u59h8MNjMbsKCNeCkbNGjf6GAW/
-         auqmoYaLdhP0qNHeDij+fmQZSgB2BLvO8PeVFC7efO0mowhOpb9ErU2zr2HQqL3xbF4s
-         zy4uS/LLlyveu/qwct8YO6YN82Qv+pLAaH76xpIe+hqpPEPK5GfqVRW8aw1vH37lqBIT
-         F+aSbpHlMERxdZBiK6uOWbL+8VawpZjKe2L4Ph861a8+F8Ay5uy7fCblnHdnd2xiZh/k
-         v64E5nkEbaW4betmey86ZdlQaQo5fNAZUXJbQ+TX11dczGddBYhk0a8drQ0Zoq1ULwSR
-         Dctw==
+        bh=1QpJqdrv+0zgCoJ0ppLwX+f2zQkP4a80fpwm1b1P8fI=;
+        b=zI7cnRZDvxMoVm2A43ZNAJoaWmGxkdVvsOo/owjrBzuo4oR/0cQofU2LtAmS+ckRS/
+         UUEmDZ938cq97Pn7atCdJumWZCxjH1LlxpFDi/uWTF3QGZlwJc85u+rkLUtjQM0dKIPM
+         fGihqO8AozJSR0DNibe3K0nlxrOnlP2ouze/Pxpp2wpK+gbc9MWEaJ5lPrCP9VJaC0C3
+         HHsF13jE9tgJWJa3MMUwItbXa9L1Rrp/2BP53Ovez70GQPSX9cxO0rPtDIFTrSOlkLcj
+         2SNwgZAeC49fDcyL6t7EpYKih7BNBmMmhNJNM3DjbiFL4B/V1B6YSLqvImd+AYCUHYjD
+         IpcA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=NhYy8mp2;
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=J5f7WZ8R;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id ci10-20020a05622a260a00b00397bb72949csi7903960qtb.85.2022.10.18.14.08.29
+        by mx.google.com with ESMTPS id b13-20020ac87fcd000000b0039ade112135si8923136qtk.130.2022.10.18.14.08.30
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
         Tue, 18 Oct 2022 14:08:30 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=NhYy8mp2;
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=J5f7WZ8R;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:60862 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:32928 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1oktp6-0002Db-Dp
+	id 1oktp7-0002SH-Gt
 	for alex.bennee@linaro.org; Tue, 18 Oct 2022 17:08:29 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:36196)
+Received: from eggs.gnu.org ([2001:470:142:3::10]:36192)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1oktjX-00022I-SJ; Tue, 18 Oct 2022 17:02:51 -0400
-Received: from mail-ej1-x631.google.com ([2a00:1450:4864:20::631]:40839)
+ id 1oktjV-00022C-W3; Tue, 18 Oct 2022 17:02:51 -0400
+Received: from mail-ej1-x62d.google.com ([2a00:1450:4864:20::62d]:33607)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1oktjV-0003vK-UQ; Tue, 18 Oct 2022 17:02:43 -0400
-Received: by mail-ej1-x631.google.com with SMTP id r17so35332185eja.7;
- Tue, 18 Oct 2022 14:02:39 -0700 (PDT)
+ id 1oktjT-0003uy-5Q; Tue, 18 Oct 2022 17:02:41 -0400
+Received: by mail-ej1-x62d.google.com with SMTP id q9so35422604ejd.0;
+ Tue, 18 Oct 2022 14:02:37 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=WtEIJKc0Za2w7LkNpc+XYB5b7FTyMz3UDgQ3c6Pamy8=;
- b=NhYy8mp2tT3eW2ZRlAWLGCq+XlIrp7c3KKe+HlPmW0aomOaBlQQ4CRliUvhpCuuyq+
- x/Q9tJZ1a+1zdPBUYUSUo5sVm0eN0LEmASqSORB4AeOWIN2EUAKhhPwWsjoaqOGPAqu1
- 4x/vW52K953lnKP9zCI4bn1DrPkNijK0um31XON9t+rFqlcqfnxsKRNFy4xeochRK+Op
- zUwWxeeacaoWsXqbx03b5WzTyQw/HfcTL1RpROMJLHiS05EgbmWHTsDrgXb8u4L4bDaZ
- w8EMns2ppMYS7GXQBpFDW30la+M/ro6TG66pe3d6woBGY5Q62Z8Btn7ParVIA2r9BA2R
- 3zlw==
+ bh=1QpJqdrv+0zgCoJ0ppLwX+f2zQkP4a80fpwm1b1P8fI=;
+ b=J5f7WZ8RvMKI8erSjugJdEJxII0Xblc/CBF64/crRruRvrmo9o96yOGahegmYkKx5g
+ jlo6k/W5b9ZgjCauO7AzlzDGlwoWZNhGxIsboKWvVa1jCP74zrVfCx/rGhGx5Tf6Tcgp
+ t4sGb+1I3w+t7nfjLc9aNa3pRY64a8a+dzKV4cddEsrBB7Woo0aRfHOE00q4PWYbrk+6
+ hQQy8H6bb03+1Ujam6dQjhbNt/Fxe6PwV/1A8akezA7QMdEkFL2flpADSXCbAKWlhpz0
+ N2gYFoP0rNQsyDrFKVbK205MenBwsN6qdgx/0gH6KQHo3UYX1iUAVzPgz/koY9cH2Cjt
+ awYA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=WtEIJKc0Za2w7LkNpc+XYB5b7FTyMz3UDgQ3c6Pamy8=;
- b=nZT9VRRdDDtbtk7jpWUWTL7JsmcGuNpjhSpJr6i9fi7sgM8oNshOCfF61tGyja9+eF
- FHNKO39NiUerwcDQb1kX+cs0iUEkLmBhga+p1l5IhpRg0hvMPvalpFGrHkc4n37AcX4P
- 490XVEpuL7GacikCHQTZrpZl9oEp81cL1tNcm7TDwZxUpg0/Gtbig/ZZPSDd4aRHriR9
- Zk1Btpp2bAjwctes+VcbEgXuBDAhsQkxJZA5luwPUgOrSbP0CT/+GB0F3WLbyUGBZLKH
- ttIg3d3i8W088cJ/UsTQIPvGgNhu5QCSfkSseSJoVAX2IN73N9z8qT2QMJPJmIgCkpFl
- c9ww==
-X-Gm-Message-State: ACrzQf125DFv2CDzYr7O3rFUuLftZgG4VwYAaky+pIOqqws+esUiSOCe
- awAoQ81a0+DStOXGtoquS1QSjl2RvKc=
-X-Received: by 2002:a17:907:270f:b0:78d:728b:ff4 with SMTP id
- w15-20020a170907270f00b0078d728b0ff4mr4060683ejk.501.1666126958159; 
- Tue, 18 Oct 2022 14:02:38 -0700 (PDT)
+ bh=1QpJqdrv+0zgCoJ0ppLwX+f2zQkP4a80fpwm1b1P8fI=;
+ b=vzPB95nQ7TV5igk02PT55Yp75yF/TpVyjETZu5c+0VRG779FGHv7CPGn8uj3diinJ2
+ Tdv/C/fkfmbO8LdxIr7GVPS0sbU/AFmxhzQRLp0gfqj2ChvC5xqGEObrweiz+13OEFtU
+ rxfC2hAbabeoJZMZq4/lrT04iRDUNUimz/YCam3p6dP/Oo0tQxxrNZecLmSUUivmUYwj
+ zYVzxaS5T0XHBDwY//mb4SiG5JRKv7BAu267wB0+2sJWBb+MB8xU4pjA5c2GDzi4a4LB
+ gucqaRX5tCKG7Jm+TetRttZPXTy3/yaHHi9lUq8SzMI33+in1GJ6zAnuMinj32lLKY4H
+ 3LzQ==
+X-Gm-Message-State: ACrzQf0evrjJfgjRUDei3cTihndzYv/BWuziqA63v+CcMLCQrPDeSClY
+ EZqnHHyGtQTVZr+Se3hsG3G+J0dMIJQ=
+X-Received: by 2002:a17:906:9bd8:b0:78d:85f9:36ae with SMTP id
+ de24-20020a1709069bd800b0078d85f936aemr4068908ejc.342.1666126955662; 
+ Tue, 18 Oct 2022 14:02:35 -0700 (PDT)
 Received: from localhost.localdomain
  (dynamic-078-054-012-048.78.54.pool.telefonica.de. [78.54.12.48])
  by smtp.gmail.com with ESMTPSA id
- fe7-20020a056402390700b004587c2b5048sm9407951edb.52.2022.10.18.14.02.37
+ fe7-20020a056402390700b004587c2b5048sm9407951edb.52.2022.10.18.14.02.34
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 18 Oct 2022 14:02:37 -0700 (PDT)
+ Tue, 18 Oct 2022 14:02:35 -0700 (PDT)
 From: Bernhard Beschow <shentey@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
@@ -102,17 +102,18 @@ Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  Magnus Damm <magnus.damm@gmail.com>,
  "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, qemu-block@nongnu.org,
  Bernhard Beschow <shentey@gmail.com>, Bin Meng <bmeng.cn@gmail.com>
-Subject: [PATCH v4 3/7] hw/sd/sdhci-internal: Unexport ESDHC defines
-Date: Tue, 18 Oct 2022 23:01:42 +0200
-Message-Id: <20221018210146.193159-4-shentey@gmail.com>
+Subject: [PATCH v4 1/7] docs/system/ppc/ppce500: Use qemu-system-ppc64 across
+ the board(s)
+Date: Tue, 18 Oct 2022 23:01:40 +0200
+Message-Id: <20221018210146.193159-2-shentey@gmail.com>
 X-Mailer: git-send-email 2.38.0
 In-Reply-To: <20221018210146.193159-1-shentey@gmail.com>
 References: <20221018210146.193159-1-shentey@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::631;
- envelope-from=shentey@gmail.com; helo=mail-ej1-x631.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::62d;
+ envelope-from=shentey@gmail.com; helo=mail-ej1-x62d.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -134,79 +135,48 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: yHPgJYlePQip
+X-TUID: KVfIB1J55y/A
 
-These defines aren't used outside of sdhci.c, so can be defined there.
+The documentation suggests that there is a qemu-system-ppc32 binary
+while the 32 bit version is actually just named qemu-system-ppc. Settle
+on qemu-system-ppc64 which also works for 32 bit machines and causes
+less clutter in the documentation.
 
+Found-by: BALATON Zoltan <balaton@eik.bme.hu>
+Suggested-by: Bin Meng <bmeng.cn@gmail.com>
 Signed-off-by: Bernhard Beschow <shentey@gmail.com>
-Reviewed-by: Bin Meng <bmeng.cn@gmail.com>
-Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- hw/sd/sdhci-internal.h | 20 --------------------
- hw/sd/sdhci.c          | 19 +++++++++++++++++++
- 2 files changed, 19 insertions(+), 20 deletions(-)
+ docs/system/ppc/ppce500.rst | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
 
-diff --git a/hw/sd/sdhci-internal.h b/hw/sd/sdhci-internal.h
-index e8c753d6d1..964570f8e8 100644
---- a/hw/sd/sdhci-internal.h
-+++ b/hw/sd/sdhci-internal.h
-@@ -288,26 +288,6 @@ enum {
+diff --git a/docs/system/ppc/ppce500.rst b/docs/system/ppc/ppce500.rst
+index ba6bcb7314..7b5eb3c4ee 100644
+--- a/docs/system/ppc/ppce500.rst
++++ b/docs/system/ppc/ppce500.rst
+@@ -113,7 +113,7 @@ To boot the 32-bit Linux kernel:
  
- extern const VMStateDescription sdhci_vmstate;
+ .. code-block:: bash
  
--
--#define ESDHC_MIX_CTRL                  0x48
--
--#define ESDHC_VENDOR_SPEC               0xc0
--#define ESDHC_IMX_FRC_SDCLK_ON          (1 << 8)
--
--#define ESDHC_DLL_CTRL                  0x60
--
--#define ESDHC_TUNING_CTRL               0xcc
--#define ESDHC_TUNE_CTRL_STATUS          0x68
--#define ESDHC_WTMK_LVL                  0x44
--
--/* Undocumented register used by guests working around erratum ERR004536 */
--#define ESDHC_UNDOCUMENTED_REG27        0x6c
--
--#define ESDHC_CTRL_4BITBUS              (0x1 << 1)
--#define ESDHC_CTRL_8BITBUS              (0x2 << 1)
--
--#define ESDHC_PRNSTS_SDSTB              (1 << 3)
--
- /*
-  * Default SD/MMC host controller features information, which will be
-  * presented in CAPABILITIES register of generic SD host controller at reset.
-diff --git a/hw/sd/sdhci.c b/hw/sd/sdhci.c
-index 0e5e988927..6da5e2c781 100644
---- a/hw/sd/sdhci.c
-+++ b/hw/sd/sdhci.c
-@@ -1577,6 +1577,25 @@ static const TypeInfo sdhci_bus_info = {
+-  $ qemu-system-ppc{64|32} -M ppce500 -cpu e500mc -smp 4 -m 2G \
++  $ qemu-system-ppc64 -M ppce500 -cpu e500mc -smp 4 -m 2G \
+       -display none -serial stdio \
+       -kernel vmlinux \
+       -initrd /path/to/rootfs.cpio \
+@@ -154,10 +154,10 @@ interface at PCI address 0.1.0, but we can switch that to an e1000 NIC by:
  
- /* --- qdev i.MX eSDHC --- */
+ .. code-block:: bash
  
-+#define ESDHC_MIX_CTRL                  0x48
-+
-+#define ESDHC_VENDOR_SPEC               0xc0
-+#define ESDHC_IMX_FRC_SDCLK_ON          (1 << 8)
-+
-+#define ESDHC_DLL_CTRL                  0x60
-+
-+#define ESDHC_TUNING_CTRL               0xcc
-+#define ESDHC_TUNE_CTRL_STATUS          0x68
-+#define ESDHC_WTMK_LVL                  0x44
-+
-+/* Undocumented register used by guests working around erratum ERR004536 */
-+#define ESDHC_UNDOCUMENTED_REG27        0x6c
-+
-+#define ESDHC_CTRL_4BITBUS              (0x1 << 1)
-+#define ESDHC_CTRL_8BITBUS              (0x2 << 1)
-+
-+#define ESDHC_PRNSTS_SDSTB              (1 << 3)
-+
- static uint64_t usdhc_read(void *opaque, hwaddr offset, unsigned size)
- {
-     SDHCIState *s = SYSBUS_SDHCI(opaque);
+-  $ qemu-system-ppc -M ppce500 -smp 4 -m 2G \
+-                    -display none -serial stdio \
+-                    -bios u-boot \
+-                    -nic tap,ifname=tap0,script=no,downscript=no,model=e1000
++  $ qemu-system-ppc64 -M ppce500 -smp 4 -m 2G \
++                      -display none -serial stdio \
++                      -bios u-boot \
++                      -nic tap,ifname=tap0,script=no,downscript=no,model=e1000
+ 
+ The QEMU ``ppce500`` machine can also dynamically instantiate an eTSEC device
+ if “-device eTSEC” is given to QEMU:
 -- 
 2.38.0
 

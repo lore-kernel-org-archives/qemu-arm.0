@@ -1,150 +1,274 @@
-Received: by 2002:a17:906:43c7:b0:78d:9f02:16a1 with SMTP id j7csp2972435ejn;
-        Tue, 18 Oct 2022 01:25:57 -0700 (PDT)
-X-Google-Smtp-Source: AMsMyM4QW7N2jvBhLwqmj2/2TrDHkmh19OvxBVq3w6iwFPi+3lSPFwgVcpOp8G/aaobsCF/30Y9Q
-X-Received: by 2002:a25:6e54:0:b0:6c2:645e:6d7b with SMTP id j81-20020a256e54000000b006c2645e6d7bmr1437376ybc.124.1666081556912;
-        Tue, 18 Oct 2022 01:25:56 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1666081556; cv=none;
+Received: by 2002:a05:7022:458e:b0:46:22f1:8c13 with SMTP id cf14csp1792000dlb;
+        Tue, 18 Oct 2022 05:32:17 -0700 (PDT)
+X-Google-Smtp-Source: AMsMyM5RISOUVHZROZLKi05mM8y/V94apeu003svyaMic2NtdXao+g9G5FoGC2Q+f+9iB+MmfHN4
+X-Received: by 2002:ac8:5b05:0:b0:399:9b82:77b4 with SMTP id m5-20020ac85b05000000b003999b8277b4mr1793200qtw.681.1666096337387;
+        Tue, 18 Oct 2022 05:32:17 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1666096337; cv=none;
         d=google.com; s=arc-20160816;
-        b=qjT32H0YzW6V1sLDD+F3CHNfIZlZXeKQGnwB642Y1Cp3gAdC6ya3DAhPdZtCiLuq55
-         IOKfd01ivzfBxY4OBz1arwKs7L4F3MlgvkHp1N8iK0GSB6qL4lXjVwRB1G49namXwMCx
-         iMDkGvHyndrCG0jEwoGrhQxm6Eyfqh8VGCMD1fEHJxNdOGT6y6ZOlx8ZNeHu0MuD26Qa
-         dYAgNStYbeC9Yk1nZMfPuxQS6V8LXbBFviL5f++vmnT0Nr6UmlPZMElkXdM4/lJE6uus
-         now5M7C3DHMYfBJ0htGGEtjIUsBaHraUBnaDpB0u9vrYbOHCPvErbhxKa4w4eBRs6v0i
-         5l3A==
+        b=Nj5dDcd7MeNTxz8FWlkaeySsWf84bxPt3hVSY+uSfTWutmplIbSI6TbmIKPuepy6/x
+         7PxOkISbEP75HSeZMrgwJHe6kcWjGNWD2s8Y+wV7oYIc43pITvn88pV/R+o9D53aEmjX
+         G8UfFLQcWU8jZI8Jt5nhXMxvkoNFOK9rSS7Fihjh8/okGhyBNNDCluSVkEFvHfBKWpKM
+         sDfhfVJNTeCkmU42c8HaF4W3m+hlB4Tvi0Ma/aQosAWdvBitKzg7D8Qbl/XBiDfFRM9p
+         Rk8Yae9dktFCndSfC7e6blZfzuWAVYGiAZY/GajB0h09OgbRFErTQg9dkkMlMC4NGmXj
+         UYpQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:in-reply-to:subject:from:references:cc:to
-         :user-agent:mime-version:date:message-id:dkim-signature:sender
-         :precedence:errors-to:list-subscribe:list-help:list-post
-         :list-unsubscribe:list-id;
-        bh=RZV2EaUyuf7LDviRdlZ1zghsWBgRjq3ZsAcy/wHuSkU=;
-        b=0OpzCabU7bFE9/g2nhYVUWWqU0CA7WKKDWpGxPqOUrN0cSfy88cV8iaByiTxsQ0W92
-         eHogIPuEyqUFRZ/35uRsoFcbHXRu+u7iqFQ6d8mM2YaIyHzF+xdk80hwLcRp8NbcTB/b
-         bX22991Ce1TEVUrgk5+QIYInGSM67d3GjWwqlTsdeM2sSfl6buhvjXVxe8+NCasnTZQJ
-         HeOT5teW+aM6s78FV7lgzoF45CgRs6nNEF+bcDVAIOd842W/LdwnHubFl/OkHdFdPo3Y
-         uYdgnQlqU3QA8ZUB/OnFx0qatDQPwOPqzcYLy6+7iLOk8zUNRmzZI7ZZhLJV0VsJBxL9
-         bTTA==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=J2cD92ikt8Cq53rD4A2px2ZZpourOkv6/yVuNUW38UA=;
+        b=BR4/X+mWWFqCl5UAEWiduX6RB1CZZh9b8SVPhTLiAn4OGabjL0C6VJk3D+PvcdJY3Q
+         L9hag6LZGNvMlk84byzl1whEOdsAKb/vk1FzCUUwJ1dmjlMTld72vr6wwbfsB05mb898
+         LvNba8qzkU+i+ALeUGWIwItMHQSa1d7NnopW6Qua4L2YlVhzw30WO09edDtdfXQU7HWN
+         ulA/Bd4Z4NPOsZPYKnCtly6eQDrijYSRfF7uACtVotzCFJkRCphldevNpxgpjBks3E8a
+         ugHDrc88qROS28dJ7RHM4CeRUThgo4OtFI6+/l0RfRqJcu5Libtw3glzcyCk5aZDZ73e
+         A2qg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@xen.org header.s=20200302mail header.b="3Km7LjD/";
-       spf=pass (google.com: domain of xen-devel-bounces@lists.xenproject.org designates 192.237.175.120 as permitted sender) smtp.mailfrom=xen-devel-bounces@lists.xenproject.org
-Return-Path: <xen-devel-bounces@lists.xenproject.org>
-Received: from lists.xenproject.org (lists.xenproject.org. [192.237.175.120])
-        by mx.google.com with ESMTPS id g11-20020a25200b000000b006c0f68b83fbsi8587757ybg.145.2022.10.18.01.25.56
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 18 Oct 2022 01:25:56 -0700 (PDT)
-Received-SPF: pass (google.com: domain of xen-devel-bounces@lists.xenproject.org designates 192.237.175.120 as permitted sender) client-ip=192.237.175.120;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=fBDbeDOv;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id w15-20020a05620a424f00b006e14659036dsi7897207qko.148.2022.10.18.05.32.17
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 18 Oct 2022 05:32:17 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@xen.org header.s=20200302mail header.b="3Km7LjD/";
-       spf=pass (google.com: domain of xen-devel-bounces@lists.xenproject.org designates 192.237.175.120 as permitted sender) smtp.mailfrom=xen-devel-bounces@lists.xenproject.org
-Received: from list by lists.xenproject.org with outflank-mailman.424788.672484 (Exim 4.92)
-	(envelope-from <xen-devel-bounces@lists.xenproject.org>)
-	id 1okhuC-0004dA-Iu; Tue, 18 Oct 2022 08:24:56 +0000
-X-Outflank-Mailman: Message body and most headers restored to incoming version
-Received: by outflank-mailman (output) from mailman id 424788.672484; Tue, 18 Oct 2022 08:24:56 +0000
-Received: from localhost ([127.0.0.1] helo=lists.xenproject.org)
-	by lists.xenproject.org with esmtp (Exim 4.92)
-	(envelope-from <xen-devel-bounces@lists.xenproject.org>)
-	id 1okhuC-0004d3-GB; Tue, 18 Oct 2022 08:24:56 +0000
-Received: by outflank-mailman (input) for mailman id 424788;
- Tue, 18 Oct 2022 08:24:54 +0000
-Received: from mail.xenproject.org ([104.130.215.37])
- by lists.xenproject.org with esmtp (Exim 4.92)
- (envelope-from <julien@xen.org>) id 1okhuA-0004cj-Qn
- for xen-devel@lists.xenproject.org; Tue, 18 Oct 2022 08:24:54 +0000
-Received: from xenbits.xenproject.org ([104.239.192.120])
- by mail.xenproject.org with esmtp (Exim 4.92)
- (envelope-from <julien@xen.org>)
- id 1okhu7-0004Wl-Aa; Tue, 18 Oct 2022 08:24:51 +0000
-Received: from home.octic.net ([81.187.162.82] helo=[10.0.1.102])
- by xenbits.xenproject.org with esmtpsa
- (TLS1.3:ECDHE_RSA_AES_128_GCM_SHA256:128) (Exim 4.92)
- (envelope-from <julien@xen.org>)
- id 1okhu6-0006Sw-SW; Tue, 18 Oct 2022 08:24:51 +0000
-X-BeenThere: xen-devel@lists.xenproject.org
-List-Id: Xen developer discussion <xen-devel.lists.xenproject.org>
-List-Unsubscribe: <https://lists.xenproject.org/mailman/options/xen-devel>,
- <mailto:xen-devel-request@lists.xenproject.org?subject=unsubscribe>
-List-Post: <mailto:xen-devel@lists.xenproject.org>
-List-Help: <mailto:xen-devel-request@lists.xenproject.org?subject=help>
-List-Subscribe: <https://lists.xenproject.org/mailman/listinfo/xen-devel>,
- <mailto:xen-devel-request@lists.xenproject.org?subject=subscribe>
-Errors-To: xen-devel-bounces@lists.xenproject.org
-Precedence: list
-Sender: "Xen-devel" <xen-devel-bounces@lists.xenproject.org>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=xen.org;
-	s=20200302mail; h=Content-Transfer-Encoding:Content-Type:In-Reply-To:Subject:
-	From:References:Cc:To:MIME-Version:Date:Message-ID;
-	bh=RZV2EaUyuf7LDviRdlZ1zghsWBgRjq3ZsAcy/wHuSkU=; b=3Km7LjD/BOVMIq0yts/6nebgii
-	slQfESAWAaNb0YGu5FfAHfeY++Wbav9WaOtjsB/8e8aog/HiWUbLZIbBkDYAAazGc8h9TI032O3fK
-	2SKxbgaEPUgOlmKfCdeWfTU5NplIGHeRUiWa8oXIOliI2OBXvvW/LW48mUWuBQQkTwR0=;
-Message-ID: <460a480e-4e91-8d78-60da-59b9cc98beee@xen.org>
-Date: Tue, 18 Oct 2022 09:24:48 +0100
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=fBDbeDOv;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:41944 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1okllY-0005Oc-Ht
+	for alex.bennee@linaro.org; Tue, 18 Oct 2022 08:32:16 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:43620)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1oklib-0005Gn-Gq
+ for qemu-arm@nongnu.org; Tue, 18 Oct 2022 08:29:13 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:24047)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1okliX-00018V-7j
+ for qemu-arm@nongnu.org; Tue, 18 Oct 2022 08:29:13 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1666096145;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:mime-version:mime-version:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=J2cD92ikt8Cq53rD4A2px2ZZpourOkv6/yVuNUW38UA=;
+ b=fBDbeDOvzlBxtUDNDuWsJuueNoUDIGrTlhIE4ym8G28ZSNNfzXiS9HgsRw2qBMcuPU+rRN
+ Y9mvznZUr/jTaoSNe+/LKCXczjy1ra8hKYaf6QiCInWX341gNdzqKl8zw/A3nKGiVok+0z
+ NZbAWiyuMMfaUuOy5cVFvrWnMePNHpo=
+Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
+ [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-627-LQIsakJTNJSmPgvs3UxmDg-1; Tue, 18 Oct 2022 08:29:01 -0400
+X-MC-Unique: LQIsakJTNJSmPgvs3UxmDg-1
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.1])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 14E10102F03A;
+ Tue, 18 Oct 2022 12:29:01 +0000 (UTC)
+Received: from laptop.redhat.com (unknown [10.39.193.146])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 2F38340C2065;
+ Tue, 18 Oct 2022 12:28:58 +0000 (UTC)
+From: Eric Auger <eric.auger@redhat.com>
+To: eric.auger.pro@gmail.com, eric.auger@redhat.com, mst@redhat.com,
+ peterx@redhat.com, qemu-arm@nongnu.org, qemu-devel@nongnu.org,
+ eperezma@redhat.com, jasowang@redhat.com
+Subject: [PATCH] vhost: Warn if DEVIOTLB_UNMAP is not supported and ats is set
+Date: Tue, 18 Oct 2022 14:28:52 +0200
+Message-Id: <20221018122852.1185395-1-eric.auger@redhat.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
- Gecko/20100101 Thunderbird/102.3.3
-To: Stefano Stabellini <sstabellini@kernel.org>
-Cc: Vikram Garhwal <vikram.garhwal@amd.com>, qemu-devel@nongnu.org,
- stefano.stabellini@amd.com, Peter Maydell <peter.maydell@linaro.org>,
- Anthony Perard <anthony.perard@citrix.com>, Paul Durrant <paul@xen.org>,
- "open list:ARM TCG CPUs" <qemu-arm@nongnu.org>,
- "open list:X86 Xen CPUs" <xen-devel@lists.xenproject.org>
-References: <20221015050750.4185-1-vikram.garhwal@amd.com>
- <20221015050750.4185-11-vikram.garhwal@amd.com>
- <3e504b1b-197d-b77b-16e1-86530eb3d64c@xen.org>
- <alpine.DEB.2.22.394.2210171345450.2351079@ubuntu-linux-20-04-desktop>
-From: Julien Grall <julien@xen.org>
-Subject: Re: [PATCH v1 10/12] hw/arm: introduce xenpv machine
-In-Reply-To: <alpine.DEB.2.22.394.2210171345450.2351079@ubuntu-linux-20-04-desktop>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-TUID: X43frDtyH4tz
+Content-Transfer-Encoding: 8bit
+X-Scanned-By: MIMEDefang 3.1 on 10.11.54.1
+Received-SPF: pass client-ip=170.10.129.124;
+ envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -23
+X-Spam_score: -2.4
+X-Spam_bar: --
+X-Spam_report: (-2.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.256,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 2tSbzY1ZJBRk
 
-Hi Stefano,
+Since b68ba1ca5767 ("memory: Add IOMMU_NOTIFIER_DEVIOTLB_UNMAP
+IOMMUTLBNotificationType"), vhost attempts to register DEVIOTLB_UNMAP
+notifier. This latter is supported by the intel-iommu which supports
+device-iotlb if the corresponding option is set. Then 958ec334bca3
+("vhost: Unbreak SMMU and virtio-iommu on dev-iotlb support") allowed
+silent fallback to the legacy UNMAP notifier if the viommu does not
+support device iotlb.
 
-On 18/10/2022 02:26, Stefano Stabellini wrote:
-> On Sun, 16 Oct 2022, Julien Grall wrote:
->> Hi,
->>
->> There seem to be some missing patches on xen-devel (including the cover
->> letter). Is that expected?
->>
->> On 15/10/2022 06:07, Vikram Garhwal wrote:
->>> Add a new machine xenpv which creates a IOREQ server to register/connect
->>> with
->>> Xen Hypervisor.
->>
->> I don't like the name 'xenpv' because it doesn't convey the fact that some of
->> the HW may be emulated rather than para-virtualized. In fact one may only want
->> to use for emulating devices.
->>
->> Potential name would be 'xen-arm' or re-using 'virt' but with 'accel=xen' to
->> select a Xen layout.
-> 
-> The benefit of 'xenpv' is that it doesn't require any changes to libxl.
+Initially vhost/viommu integration was introduced with intel iommu
+assuming ats=on was set on virtio-pci device and device-iotlb was set
+on the intel iommu. vhost acts as an ATS capable device since it
+implements an IOTLB on kernel side. However translated transactions
+that hit the device IOTLB do not transit through the vIOMMU. So this
+requires a limited ATS support on viommu side.
 
-I am quite surprised. Looking at the code, it seems to work more by 
-chance than it is intentional as the code is gated by 
-libxl__need_xenpv_qemu(). So it would not start if there were no 
-emulated devices.
+However, in theory, if ats=on is set on a pci device, the
+viommu should support ATS for that device to work.
 
-> It is even backward compatible so it could be used with an older version
-> of Xen/libxl.
-We don't really gain much here. IOREQ is a tech preview and anyone that 
-wants to try it should really use the latest Xen.
+But neither SMMUv3 nor virtio-iommu do support ATS and the integration
+with vhost just relies on the fact those vIOMMU send UNMAP notifications
+whenever the guest trigger them.
 
-> Backward compatibility aside, if we come up with a
-> different name then we'll need changes to libxl and to manage those
-> changes. For instance, if we use 'xen-arm' that would mean we would need
-> to handle per-arch QEMU machine names.
+So the situation with respect to ats setting on virtio-pci side and
+ats support on viommu side has become quite confusing, especially on
+ARM. Is ats needed whereas vIOMMUs do not support device IOTLBs.
 
-Right, so the main argument here is for simplicity in libxl
-Looking at how 'xenpv' is built, this is really expected to deal with PV 
-backend rather than emulated device. I do expect some changes as we go 
-along to be able to add emulated device.
+This patch makes sure we get a warning if ats is set on a device
+protected by virtio-iommu or vsmmuv3, reminding that we don't have
+full support of ATS on those vIOMMUs and ats setting on end-point
+is not a requirement.
 
-Furthermore, libxl is not the only toolstack out. So I am not convinced 
-this is a good argument to keep the name the same.
+Signed-off-by: Eric Auger <eric.auger@redhat.com>
+---
+ include/hw/virtio/virtio-bus.h |  3 +++
+ hw/virtio/vhost.c              | 21 ++++++++++++++++++++-
+ hw/virtio/virtio-bus.c         | 14 ++++++++++++++
+ hw/virtio/virtio-pci.c         | 11 +++++++++++
+ 4 files changed, 48 insertions(+), 1 deletion(-)
 
-Cheers,
-
+diff --git a/include/hw/virtio/virtio-bus.h b/include/hw/virtio/virtio-bus.h
+index 7ab8c9dab0..df96cf5b4d 100644
+--- a/include/hw/virtio/virtio-bus.h
++++ b/include/hw/virtio/virtio-bus.h
+@@ -94,6 +94,7 @@ struct VirtioBusClass {
+     bool has_variable_vring_alignment;
+     AddressSpace *(*get_dma_as)(DeviceState *d);
+     bool (*iommu_enabled)(DeviceState *d);
++    bool (*ats_enabled)(DeviceState *d);
+ };
+ 
+ struct VirtioBusState {
+@@ -157,4 +158,6 @@ int virtio_bus_set_host_notifier(VirtioBusState *bus, int n, bool assign);
+ void virtio_bus_cleanup_host_notifier(VirtioBusState *bus, int n);
+ /* Whether the IOMMU is enabled for this device */
+ bool virtio_bus_device_iommu_enabled(VirtIODevice *vdev);
++/* Whether ATS is enabled for this device */
++bool virtio_bus_device_ats_enabled(VirtIODevice *vdev);
+ #endif /* VIRTIO_BUS_H */
+diff --git a/hw/virtio/vhost.c b/hw/virtio/vhost.c
+index 5185c15295..b5ad4262c1 100644
+--- a/hw/virtio/vhost.c
++++ b/hw/virtio/vhost.c
+@@ -324,6 +324,16 @@ static bool vhost_dev_has_iommu(struct vhost_dev *dev)
+     }
+ }
+ 
++static bool vhost_dev_ats_enabled(struct vhost_dev *dev)
++{
++    VirtIODevice *vdev = dev->vdev;
++
++    if (vdev && virtio_bus_device_ats_enabled(vdev)) {
++        return true;
++    }
++    return false;
++}
++
+ static void *vhost_memory_map(struct vhost_dev *dev, hwaddr addr,
+                               hwaddr *plen, bool is_write)
+ {
+@@ -737,6 +747,7 @@ static void vhost_iommu_region_add(MemoryListener *listener,
+     Int128 end;
+     int iommu_idx;
+     IOMMUMemoryRegion *iommu_mr;
++    Error *err = NULL;
+     int ret;
+ 
+     if (!memory_region_is_iommu(section->mr)) {
+@@ -760,8 +771,16 @@ static void vhost_iommu_region_add(MemoryListener *listener,
+     iommu->iommu_offset = section->offset_within_address_space -
+                           section->offset_within_region;
+     iommu->hdev = dev;
+-    ret = memory_region_register_iommu_notifier(section->mr, &iommu->n, NULL);
++    ret = memory_region_register_iommu_notifier(section->mr, &iommu->n, &err);
+     if (ret) {
++        if (vhost_dev_ats_enabled(dev)) {
++            error_reportf_err(err,
++                              "vhost cannot register DEVIOTLB_UNMAP "
++                              "although ATS is enabled, "
++                              "fall back to legacy UNMAP notifier: ");
++        } else {
++            error_free(err);
++        }
+         /*
+          * Some vIOMMUs do not support dev-iotlb yet.  If so, try to use the
+          * UNMAP legacy message
+diff --git a/hw/virtio/virtio-bus.c b/hw/virtio/virtio-bus.c
+index 896feb37a1..6276779b07 100644
+--- a/hw/virtio/virtio-bus.c
++++ b/hw/virtio/virtio-bus.c
+@@ -348,6 +348,20 @@ bool virtio_bus_device_iommu_enabled(VirtIODevice *vdev)
+     return klass->iommu_enabled(qbus->parent);
+ }
+ 
++bool virtio_bus_device_ats_enabled(VirtIODevice *vdev)
++{
++    DeviceState *qdev = DEVICE(vdev);
++    BusState *qbus = BUS(qdev_get_parent_bus(qdev));
++    VirtioBusState *bus = VIRTIO_BUS(qbus);
++    VirtioBusClass *klass = VIRTIO_BUS_GET_CLASS(bus);
++
++    if (!klass->ats_enabled) {
++        return false;
++    }
++
++    return klass->ats_enabled(qbus->parent);
++}
++
+ static void virtio_bus_class_init(ObjectClass *klass, void *data)
+ {
+     BusClass *bus_class = BUS_CLASS(klass);
+diff --git a/hw/virtio/virtio-pci.c b/hw/virtio/virtio-pci.c
+index e7d80242b7..d33a47abbf 100644
+--- a/hw/virtio/virtio-pci.c
++++ b/hw/virtio/virtio-pci.c
+@@ -1141,6 +1141,16 @@ static bool virtio_pci_iommu_enabled(DeviceState *d)
+     return true;
+ }
+ 
++static bool virtio_pci_ats_enabled(DeviceState *d)
++{
++    VirtIOPCIProxy *proxy = VIRTIO_PCI(d);
++
++    if (proxy->flags & VIRTIO_PCI_FLAG_ATS) {
++        return true;
++    }
++    return false;
++}
++
+ static bool virtio_pci_queue_enabled(DeviceState *d, int n)
+ {
+     VirtIOPCIProxy *proxy = VIRTIO_PCI(d);
+@@ -2229,6 +2239,7 @@ static void virtio_pci_bus_class_init(ObjectClass *klass, void *data)
+     k->ioeventfd_assign = virtio_pci_ioeventfd_assign;
+     k->get_dma_as = virtio_pci_get_dma_as;
+     k->iommu_enabled = virtio_pci_iommu_enabled;
++    k->ats_enabled = virtio_pci_ats_enabled;
+     k->queue_enabled = virtio_pci_queue_enabled;
+ }
+ 
 -- 
-Julien Grall
+2.35.3
+

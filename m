@@ -1,134 +1,123 @@
-Received: by 2002:a17:906:43c7:b0:78d:9f02:16a1 with SMTP id j7csp3203143ejn;
-        Tue, 18 Oct 2022 08:10:05 -0700 (PDT)
-X-Google-Smtp-Source: AMsMyM4De89PL8GAbqgNys5XBv972AfFMYaeKIINlM7LiF+jpoqJ0OSALleJp50wjIIPqK4nb8qt
-X-Received: by 2002:a05:620a:448c:b0:6ee:d075:2078 with SMTP id x12-20020a05620a448c00b006eed0752078mr2117459qkp.273.1666105805570;
-        Tue, 18 Oct 2022 08:10:05 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1666105805; cv=none;
+Received: by 2002:a05:7022:458e:b0:46:22f1:8c13 with SMTP id cf14csp2139904dlb;
+        Tue, 18 Oct 2022 14:08:08 -0700 (PDT)
+X-Google-Smtp-Source: AMsMyM5mrqtgHeOTuPgMGRlmCnZoB9pFcCko6C3isI52s1T6hABK3sPLmFkexqzq8l3YrQ+I6HGv
+X-Received: by 2002:a37:9ac4:0:b0:6ee:caa8:fe2f with SMTP id c187-20020a379ac4000000b006eecaa8fe2fmr3330461qke.638.1666127288677;
+        Tue, 18 Oct 2022 14:08:08 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1666127288; cv=none;
         d=google.com; s=arc-20160816;
-        b=EV++mOT93164BSM3RpdPhgRH7Uj5etnS2wSrUmbQQK6Lry2pix7NVWuVnDAiZr+/KO
-         ocJWpXuT4oFyXYtveWQJ0fYecgM73Y4TxCl1CTKMGv8kgpKU6T06e3HcMPdlUbjkAjkF
-         f2TfUAR/7DZLx7O77WebK1ii65VxOmwkll1cvvZdh+J8S/wHofyPTP58azA9B7e60CbZ
-         bMczuPTm1GLLrEdCriXdgASWQNMOwQPgnx4U/z35hwu7yynKSbX2LHInFW3LGb/0eyLN
-         8lYMZfSwUYowWXy9ESl6qxx+J5/hHd/2OmWF9zMs7luFib0jODhdpnhSVNiZR9A/HBgk
-         EvFQ==
+        b=k6X4ULRdbe0frHysQ85ADCRdKL6+gRPVAcJ2trf3gLEQiWaE1Vn00yzpikJ7VTOy+W
+         /JjmLElciUlaXVVJ8rbuHnzzHyKSppMkO15S2KOJoW5iAOv9fW05MseYtHoy9zDBDdSU
+         uRQNNftsOM6kj6Q6eBoUwPELtpcI2wh4VuWVINidTqLLbRHEfi5B6+mDprL5dp9m+IYA
+         T+pjRCNUieWFDusKGnkav2n8ZwdE4qvMZy2EUMgmdq/bThhxm/pqAAnNzpDqpmIjPsv2
+         wwkk22auonxMyPLBrAUV6BtPHgeqgoQ+mueSb5cxBhKMxXeNRk08us0Sf50FoQmBkiJ1
+         6loQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:content-language:in-reply-to:from
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=l4UZAMN+G8w20iLkj6BfVptcgKmN+6B7LWyzcsG4WVY=;
-        b=f2ML3n5eu0/Z5epHajtIxX/fZ1IfTIIFiVYj0bLAyA+TQsF1DguBoBqgy/8DHlMved
-         aANGfO73JdmONdKMWRpJbmfUIxK3x10021UhcrGQkFK6cWVlxN1HYRyrp8LrLx2vmoKZ
-         +jwrOMws1YfneCyMgH2tAsvfEvEMqmCQ+G89CpdpoJ+SJJe+SIPLsVUPz9G6BxMUG8q2
-         eZEFCtvj37ECiJsBAduIUMKwVYc6w2XUutFwUbqPX3utigySwyg9kBoMcHBGKs7nUSuU
-         m5kpgoZOJHgCLgbW2muWUHAsHhaM7NsF3ZNZrMPp8ud2UKNeXf8hegEzR5itDZHXyfCQ
-         hGBg==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=YjMwr8cgXdmnl7qao2/HnRISq2gNWnT6j/SN7k814vg=;
+        b=MgX8R8G2gehN9593wuIcnHwM0qVo39wb5Vp17aX7FDDdhUlZ1+SsT8uwx1r8QQ2ORs
+         DVle3JSOXd41WY/UGURKkdfcLGQY2V7aYTHzrWUDdPACvJ4aRE0G+TgEQCvXfIC1OfHU
+         F1Sf7PIUfoJ4vCENeQ1ovCirtY4KhAC7PFy+vD0TlIV1fBfQBMXZKjDQ2JgeXAt4WmQM
+         ISQFk3zL5YTDqRD8jj5TIGQgc6S0Fx+JOIQJfw7qC+fh1Wok0wozelGFv0zkKTBG5UQ6
+         mO34sjmaos3+EQ0WiK6iT+U7x0QitwW8nOlTXa1I9pSNrR6WU5mZ8bMtrO8oqvOBjqlq
+         WvrA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=U7vVqOQr;
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=fMtcPylN;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id z12-20020ac8430c000000b0035cd90b83cdsi7557627qtm.376.2022.10.18.08.10.04
+        by mx.google.com with ESMTPS id w23-20020a05620a0e9700b006ce7dfdaf38si6996107qkm.551.2022.10.18.14.08.08
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 18 Oct 2022 08:10:05 -0700 (PDT)
+        Tue, 18 Oct 2022 14:08:08 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=U7vVqOQr;
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=fMtcPylN;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:43916 helo=lists1p.gnu.org)
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:41710 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1okoEG-0006Jp-Ev
-	for alex.bennee@linaro.org; Tue, 18 Oct 2022 11:10:04 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38674)
+	id 1oktok-000296-B5
+	for alex.bennee@linaro.org; Tue, 18 Oct 2022 17:08:07 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:56384)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1okoCx-0006I7-Qy
- for qemu-arm@nongnu.org; Tue, 18 Oct 2022 11:08:49 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:20847)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1okoCi-0004oZ-1s
- for qemu-arm@nongnu.org; Tue, 18 Oct 2022 11:08:43 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1666105706;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=l4UZAMN+G8w20iLkj6BfVptcgKmN+6B7LWyzcsG4WVY=;
- b=U7vVqOQreYjrVO1/oADCiwkFj6E8hWTQYgCW60B9W6CzZrpQsYxkJf2DugJZJfcddMmElA
- //Iu3kObvJcTZP7qa65RDpfyAke+8Bho+emaQPkqHoB3Urt8jPVGGgQbeZlA6seVdqkFAv
- P82Ok0pedr3wEPE7qr1LjCZ5jGoxBZc=
-Received: from mail-qt1-f197.google.com (mail-qt1-f197.google.com
- [209.85.160.197]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_128_GCM_SHA256) id
- us-mta-546-yF41-ZaCOPCSTEAD_VOxyw-1; Tue, 18 Oct 2022 11:08:25 -0400
-X-MC-Unique: yF41-ZaCOPCSTEAD_VOxyw-1
-Received: by mail-qt1-f197.google.com with SMTP id
- d12-20020a05622a100c00b0039ce6373d2cso4887029qte.9
- for <qemu-arm@nongnu.org>; Tue, 18 Oct 2022 08:08:25 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
+ id 1oktja-00022T-VK; Tue, 18 Oct 2022 17:02:51 -0400
+Received: from mail-ej1-x62d.google.com ([2a00:1450:4864:20::62d]:33607)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
+ id 1oktjY-0003uy-FH; Tue, 18 Oct 2022 17:02:46 -0400
+Received: by mail-ej1-x62d.google.com with SMTP id q9so35423235ejd.0;
+ Tue, 18 Oct 2022 14:02:43 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=YjMwr8cgXdmnl7qao2/HnRISq2gNWnT6j/SN7k814vg=;
+ b=fMtcPylNO8MerxlHHRX1qLfNhKFWPplcealyXkoUinQQO0pOeO+7cS1aNY+Z+qNd3T
+ J4Wwno1mWfeFhD3Gq6qtmUCOSiYlYJKvl2Oyc9Cm4DKqfID7cNlha55sjYGjQvWNVcl1
+ e569iU8ow+5YQUugjJTxefr6Qyo6Y5qDCPV+zHqw0I4sSKveRXIbE7r8IH++iOP4b9xz
+ v9rpJFxc++tl9rzO+y/431DNEtNR5c4amUR+eiqK894JXJB56stYu5D75JD3JDE5u5d1
+ yjpILnzbzHtc7Oy5H/eeN7L2S1Cw7wvWw/SAV8g7jlINeqKBoPRDda8WKzTXnu0/fJWy
+ O+tQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:reply-to:user-agent:mime-version:date
- :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=l4UZAMN+G8w20iLkj6BfVptcgKmN+6B7LWyzcsG4WVY=;
- b=Jv/u1yavweUboUXjB3S+SOsz+ccOB0RsFXdpcwqbytcUf4qamc9fzY29wTOL2+r3mf
- 3mj6FZ3plYBkXQouKi4WTHTTGTfty1v21lZNwyzoJ827prOgsr0nYe4wJkeCpGxfpxIo
- JNvXJhGZjfeFUYSNMopj/sud5MnScabdQ3xV/ZLMqBQAvj+S8PYFyKq7pQkf8oKazLPh
- esad2UEZIecZgtbemIuyxCpkt+HxkcH0L0HUzpp+edplk6510gjnIsp0SrJnkna2sgMo
- 7oyg8U24tCtSekz27Z2PsETwY9a8fLtRSFBKQPc3Vgx/dxz3j8VYKyFWBHUkI07Tp9cC
- 68aw==
-X-Gm-Message-State: ACrzQf1qxeZUoo95sma6FRXWZ8Q8TGFAUVAjGS5joBPp/FKKRi1Fh+Vs
- AIgm8KiU7fh/DjW0uQ4u83/1PBZxKO8rH6nFME31Ne8w8B1DcCpamM19qk2oajO4qQQ38k04J0S
- cab0oa3t+Z9ko
-X-Received: by 2002:a05:620a:1465:b0:6ee:95e9:d1ec with SMTP id
- j5-20020a05620a146500b006ee95e9d1ecmr2166930qkl.174.1666105704750; 
- Tue, 18 Oct 2022 08:08:24 -0700 (PDT)
-X-Received: by 2002:a05:620a:1465:b0:6ee:95e9:d1ec with SMTP id
- j5-20020a05620a146500b006ee95e9d1ecmr2166904qkl.174.1666105704473; 
- Tue, 18 Oct 2022 08:08:24 -0700 (PDT)
-Received: from ?IPV6:2a01:e0a:59e:9d80:527b:9dff:feef:3874?
- ([2a01:e0a:59e:9d80:527b:9dff:feef:3874])
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=YjMwr8cgXdmnl7qao2/HnRISq2gNWnT6j/SN7k814vg=;
+ b=eZ2MTKGInY+g5KUxEnvt2rLW6smYUPjHhoeKixw6gkpkKepPE1aCDS8qft26JQqXaF
+ I7NiC6lJPc0jvyE7MRfT1kb88xsClV/XwXC7ZGFO0kIhQc/lyDfwrmjp/QDKNaENOZDr
+ cCgJDeO9QmuR/ydwiuPMoEI/ed6YHgNlyIQNazWO+soS06F/V/RDzId8ZstftVQIHRQW
+ 6924mkAe8aKSIbV7Tfqq8a5B0aSf346wKWyuwXX5/zX6kANBsg9dwCfrT+rA8zzcdtPt
+ nyX7Q1W8d1JWs2MLxUyodwxj4VDBFAnKNJWqJcGqUeJxyYKf3Bj23tgpBQgcn754Xv8b
+ 9qvQ==
+X-Gm-Message-State: ACrzQf2WfvKh68sSX420Pfdw0GCJBealDNAMmt5lxZUFnwCd/vYHSrmg
+ RT78NAOOv9QrYWbvz2r6RpIIQ2CUoJA=
+X-Received: by 2002:a17:907:a46:b0:782:1c1c:8141 with SMTP id
+ be6-20020a1709070a4600b007821c1c8141mr3923971ejc.549.1666126962456; 
+ Tue, 18 Oct 2022 14:02:42 -0700 (PDT)
+Received: from localhost.localdomain
+ (dynamic-078-054-012-048.78.54.pool.telefonica.de. [78.54.12.48])
  by smtp.gmail.com with ESMTPSA id
- u21-20020a05620a0c5500b006b5bf5d45casm2684447qki.27.2022.10.18.08.08.21
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 18 Oct 2022 08:08:22 -0700 (PDT)
-Message-ID: <31b87958-3be6-49c2-f0d9-9bcb8ec3bc1c@redhat.com>
-Date: Tue, 18 Oct 2022 17:08:19 +0200
+ fe7-20020a056402390700b004587c2b5048sm9407951edb.52.2022.10.18.14.02.41
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 18 Oct 2022 14:02:41 -0700 (PDT)
+From: Bernhard Beschow <shentey@gmail.com>
+To: qemu-devel@nongnu.org
+Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ qemu-ppc@nongnu.org, Aurelien Jarno <aurelien@aurel32.net>,
+ Yoshinori Sato <ysato@users.sourceforge.jp>,
+ Antony Pavlov <antonynpavlov@gmail.com>,
+ BALATON Zoltan <balaton@eik.bme.hu>,
+ Alistair Francis <alistair@alistair23.me>,
+ Bin Meng <bin.meng@windriver.com>, Kevin Wolf <kwolf@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>, Jan Kiszka <jan.kiszka@web.de>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+ Hanna Reitz <hreitz@redhat.com>, qemu-arm@nongnu.org,
+ Magnus Damm <magnus.damm@gmail.com>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, qemu-block@nongnu.org,
+ Bernhard Beschow <shentey@gmail.com>
+Subject: [PATCH v4 6/7] hw/sd/sdhci: Implement Freescale eSDHC device model
+Date: Tue, 18 Oct 2022 23:01:45 +0200
+Message-Id: <20221018210146.193159-7-shentey@gmail.com>
+X-Mailer: git-send-email 2.38.0
+In-Reply-To: <20221018210146.193159-1-shentey@gmail.com>
+References: <20221018210146.193159-1-shentey@gmail.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.11.0
-Subject: Re: [PATCH] vhost: Warn if DEVIOTLB_UNMAP is not supported and ats is
- set
-To: Peter Xu <peterx@redhat.com>
-Cc: eric.auger.pro@gmail.com, mst@redhat.com, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org, eperezma@redhat.com, jasowang@redhat.com,
- Jean-Philippe Brucker <jean-philippe@linaro.org>
-References: <20221018122852.1185395-1-eric.auger@redhat.com>
- <Y063RZ4SkYcRM+SP@x1n>
-From: Eric Auger <eric.auger@redhat.com>
-In-Reply-To: <Y063RZ4SkYcRM+SP@x1n>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124;
- envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -23
-X-Spam_score: -2.4
+Received-SPF: pass client-ip=2a00:1450:4864:20::62d;
+ envelope-from=shentey@gmail.com; helo=mail-ej1-x62d.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.256,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -142,98 +131,191 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: jZldUnnXB90s
+X-TUID: xUEv9Nb8pidc
 
-Hi Peter,
+Will allow e500 boards to access SD cards using just their own devices.
 
-On 10/18/22 16:25, Peter Xu wrote:
-> Hi, Eric,
->
-> On Tue, Oct 18, 2022 at 02:28:52PM +0200, Eric Auger wrote:
->> Since b68ba1ca5767 ("memory: Add IOMMU_NOTIFIER_DEVIOTLB_UNMAP
->> IOMMUTLBNotificationType"), vhost attempts to register DEVIOTLB_UNMAP
->> notifier. This latter is supported by the intel-iommu which supports
->> device-iotlb if the corresponding option is set. Then 958ec334bca3
->> ("vhost: Unbreak SMMU and virtio-iommu on dev-iotlb support") allowed
->> silent fallback to the legacy UNMAP notifier if the viommu does not
->> support device iotlb.
->>
->> Initially vhost/viommu integration was introduced with intel iommu
->> assuming ats=on was set on virtio-pci device and device-iotlb was set
->> on the intel iommu. vhost acts as an ATS capable device since it
->> implements an IOTLB on kernel side. However translated transactions
->> that hit the device IOTLB do not transit through the vIOMMU. So this
->> requires a limited ATS support on viommu side.
->>
->> However, in theory, if ats=on is set on a pci device, the
->> viommu should support ATS for that device to work.
-> Pure question: what will happen if one ATS supported PCI device got plugged
-> into a system whose physical IOMMU does not support ATS?  Will ATS just be
-> ignored and the device keep working simply without ATS?
-Yes that's my understanding: in that case the ATS capable device would
-work with ats disabled (baremetal case). In the iommu driver you can
-have a look at the pci_enable_ats() call which is guarded by
-info->ats_supported for instance on intel iommu.
+Signed-off-by: Bernhard Beschow <shentey@gmail.com>
+---
+ hw/sd/sdhci.c         | 120 +++++++++++++++++++++++++++++++++++++++++-
+ include/hw/sd/sdhci.h |   3 ++
+ 2 files changed, 122 insertions(+), 1 deletion(-)
 
-Following that reasoning vhost modality should not be enabled without
-ATS support on vIOMMU side. But it is.
-
-In that sense I may rename the ats_enabled helpers with ats_capable? If
-I understand correctly setting ats=on exposes the ATS capability (
-615c4ed205  virtio-pci: address space translation service (ATS) support)
-which is then enabled by the guest driver.
-
-> [1]
->
-> [...]
->
->> @@ -760,8 +771,16 @@ static void vhost_iommu_region_add(MemoryListener *listener,
->>      iommu->iommu_offset = section->offset_within_address_space -
->>                            section->offset_within_region;
->>      iommu->hdev = dev;
->> -    ret = memory_region_register_iommu_notifier(section->mr, &iommu->n, NULL);
->> +    ret = memory_region_register_iommu_notifier(section->mr, &iommu->n, &err);
->>      if (ret) {
->> +        if (vhost_dev_ats_enabled(dev)) {
->> +            error_reportf_err(err,
->> +                              "vhost cannot register DEVIOTLB_UNMAP "
->> +                              "although ATS is enabled, "
->> +                              "fall back to legacy UNMAP notifier: ");
-> We want to use the warning message to either remind the user to (1) add the
-> dev-iotlb=on parameter for vIOMMU, or (2) drop the ats=on on device.  Am I
-> right?
-My focus is to warn the end user there is no support for device-iotlb
-support in virtio-iommu or vsmmuv3 but vhost does not really require
-it.Indeed current users of virtio-iommu/vsmmuv3 seem confused now wrt
-vhost integration and the lack of device-iotlb option on those viommus.
-
-On intel I understand we would like to enforce that ats and dev-iotlb
-are both set or unset. But this is not really addressed in that series.
-Indeed vtd_iommu_notify_flag_changed does not reject any registration of
-IOMMU_NOTIFIER_DEVIOTLB_UNMAP notifier in case it does not support
-device-iotlb. I think it should. The trouble is vhost_iommu_region_add
-is not meant to nicely fail.
->
-> As we've discussed - I remember Jason used to test with/without dev-iotlb
-> on vhost on Intel and dev-iotlb is faster on vt-d guest driver than without
-It would be nice to have a clarification about this. Indeed
-
-[PATCH v3 0/5] memory: Skip assertion in memory_region_unregister_iommu_notifier
-https://lore.kernel.org/all/20201116165506.31315-1-eperezma@redhat.com/
-mostly focussed on removing an assertion although one patch mentionned perf improvements. What does make the perf better (less device iotlb flushes than general iotlb flushes?)
-
-> it.  So that can make sense to me for (1).  I don't know whether it helps
-> for (2) because fundamentally it's the same question as [1] above, and
-> whether that's a legal configuration.
->
-> Thanks,
->
-Adding jean in the loop too
-
-Thanks
-
-Eric
+diff --git a/hw/sd/sdhci.c b/hw/sd/sdhci.c
+index 306070c872..8d8ad9ff24 100644
+--- a/hw/sd/sdhci.c
++++ b/hw/sd/sdhci.c
+@@ -1369,6 +1369,7 @@ void sdhci_initfn(SDHCIState *s)
+     s->transfer_timer = timer_new_ns(QEMU_CLOCK_VIRTUAL, sdhci_data_transfer, s);
+ 
+     s->io_ops = &sdhci_mmio_ops;
++    s->io_registers_map_size = SDHC_REGISTERS_MAP_SIZE;
+ }
+ 
+ void sdhci_uninitfn(SDHCIState *s)
+@@ -1392,7 +1393,7 @@ void sdhci_common_realize(SDHCIState *s, Error **errp)
+     s->fifo_buffer = g_malloc0(s->buf_maxsz);
+ 
+     memory_region_init_io(&s->iomem, OBJECT(s), s->io_ops, s, "sdhci",
+-                          SDHC_REGISTERS_MAP_SIZE);
++                          s->io_registers_map_size);
+ }
+ 
+ void sdhci_common_unrealize(SDHCIState *s)
+@@ -1575,6 +1576,122 @@ static const TypeInfo sdhci_bus_info = {
+     .class_init = sdhci_bus_class_init,
+ };
+ 
++/* --- qdev Freescale eSDHC --- */
++
++/* Watermark Level Register */
++#define ESDHC_WML                    0x44
++
++/* Control Register for DMA transfer */
++#define ESDHC_DMA_SYSCTL            0x40c
++
++#define ESDHC_REGISTERS_MAP_SIZE    0x410
++
++static uint64_t esdhci_read(void *opaque, hwaddr offset, unsigned size)
++{
++    uint64_t ret;
++
++    switch (offset) {
++    case SDHC_SYSAD:
++    case SDHC_BLKSIZE:
++    case SDHC_ARGUMENT:
++    case SDHC_TRNMOD:
++    case SDHC_RSPREG0:
++    case SDHC_RSPREG1:
++    case SDHC_RSPREG2:
++    case SDHC_RSPREG3:
++    case SDHC_BDATA:
++    case SDHC_PRNSTS:
++    case SDHC_HOSTCTL:
++    case SDHC_CLKCON:
++    case SDHC_NORINTSTS:
++    case SDHC_NORINTSTSEN:
++    case SDHC_NORINTSIGEN:
++    case SDHC_ACMD12ERRSTS:
++    case SDHC_CAPAB:
++    case SDHC_SLOT_INT_STATUS:
++        ret = sdhci_read(opaque, offset, size);
++        break;
++
++    case ESDHC_WML:
++    case ESDHC_DMA_SYSCTL:
++        ret = 0;
++        qemu_log_mask(LOG_UNIMP, "ESDHC rd @0x%02" HWADDR_PRIx
++                      " not implemented\n", offset);
++        break;
++
++    default:
++        ret = 0;
++        qemu_log_mask(LOG_GUEST_ERROR, "ESDHC rd @0x%02" HWADDR_PRIx
++                      " unknown offset\n", offset);
++        break;
++    }
++
++    return ret;
++}
++
++static void esdhci_write(void *opaque, hwaddr offset, uint64_t val,
++                         unsigned size)
++{
++    switch (offset) {
++    case SDHC_SYSAD:
++    case SDHC_BLKSIZE:
++    case SDHC_ARGUMENT:
++    case SDHC_TRNMOD:
++    case SDHC_BDATA:
++    case SDHC_HOSTCTL:
++    case SDHC_CLKCON:
++    case SDHC_NORINTSTS:
++    case SDHC_NORINTSTSEN:
++    case SDHC_NORINTSIGEN:
++    case SDHC_FEAER:
++        sdhci_write(opaque, offset, val, size);
++        break;
++
++    case ESDHC_WML:
++    case ESDHC_DMA_SYSCTL:
++        qemu_log_mask(LOG_UNIMP, "ESDHC wr @0x%02" HWADDR_PRIx " <- 0x%08lx "
++                      "not implemented\n", offset, val);
++        break;
++
++    default:
++        qemu_log_mask(LOG_GUEST_ERROR, "ESDHC wr @0x%02" HWADDR_PRIx
++                      " <- 0x%08lx unknown offset\n", offset, val);
++        break;
++    }
++}
++
++static const MemoryRegionOps esdhc_mmio_ops = {
++    .read = esdhci_read,
++    .write = esdhci_write,
++    .valid = {
++        .min_access_size = 4,
++        .max_access_size = 4,
++        .unaligned = false
++    },
++    .endianness = DEVICE_BIG_ENDIAN,
++};
++
++static void esdhci_init(Object *obj)
++{
++    DeviceState *dev = DEVICE(obj);
++    SDHCIState *s = SYSBUS_SDHCI(obj);
++
++    s->io_ops = &esdhc_mmio_ops;
++    s->io_registers_map_size = ESDHC_REGISTERS_MAP_SIZE;
++
++    /*
++     * Compatible with:
++     * - SD Host Controller Specification Version 2.0 Part A2
++     */
++    qdev_prop_set_uint8(dev, "sd-spec-version", 2);
++}
++
++static const TypeInfo esdhc_info = {
++    .name = TYPE_FSL_ESDHC,
++    .parent = TYPE_SYSBUS_SDHCI,
++    .instance_init = esdhci_init,
++};
++
+ /* --- qdev i.MX eSDHC --- */
+ 
+ #define USDHC_MIX_CTRL                  0x48
+@@ -1907,6 +2024,7 @@ static void sdhci_register_types(void)
+ {
+     type_register_static(&sdhci_sysbus_info);
+     type_register_static(&sdhci_bus_info);
++    type_register_static(&esdhc_info);
+     type_register_static(&imx_usdhc_info);
+     type_register_static(&sdhci_s3c_info);
+ }
+diff --git a/include/hw/sd/sdhci.h b/include/hw/sd/sdhci.h
+index 01a64c5442..5b32e83eee 100644
+--- a/include/hw/sd/sdhci.h
++++ b/include/hw/sd/sdhci.h
+@@ -45,6 +45,7 @@ struct SDHCIState {
+     AddressSpace *dma_as;
+     MemoryRegion *dma_mr;
+     const MemoryRegionOps *io_ops;
++    uint64_t io_registers_map_size;
+ 
+     QEMUTimer *insert_timer;       /* timer for 'changing' sd card. */
+     QEMUTimer *transfer_timer;
+@@ -122,6 +123,8 @@ DECLARE_INSTANCE_CHECKER(SDHCIState, PCI_SDHCI,
+ DECLARE_INSTANCE_CHECKER(SDHCIState, SYSBUS_SDHCI,
+                          TYPE_SYSBUS_SDHCI)
+ 
++#define TYPE_FSL_ESDHC "fsl-esdhc"
++
+ #define TYPE_IMX_USDHC "imx-usdhc"
+ 
+ #define TYPE_S3C_SDHCI "s3c-sdhci"
+-- 
+2.38.0
 

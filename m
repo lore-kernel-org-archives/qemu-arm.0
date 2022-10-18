@@ -1,285 +1,251 @@
-Received: by 2002:a05:7022:458e:b0:46:22f1:8c13 with SMTP id cf14csp2144331dlb;
-        Tue, 18 Oct 2022 14:15:53 -0700 (PDT)
-X-Google-Smtp-Source: AMsMyM5VncOf9LyyBtDVDKQZ6a2dOlX4Zg+fbVMHOdYi2vGLJiWdSdeB+z/wn71/ZIlxL7tvY5me
-X-Received: by 2002:a05:622a:387:b0:394:7a0a:9584 with SMTP id j7-20020a05622a038700b003947a0a9584mr3919938qtx.60.1666127742148;
-        Tue, 18 Oct 2022 14:15:42 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1666127742; cv=none;
+Received: by 2002:a17:906:43c7:b0:78d:9f02:16a1 with SMTP id j7csp3443337ejn;
+        Tue, 18 Oct 2022 14:56:51 -0700 (PDT)
+X-Google-Smtp-Source: AMsMyM7FmnMY3FICkn6Nv1VUOvgnDYiAvtDnOPPSc7ZlHLS1RzT1BZzsm/bAk+kk4SV0ZvO61uBu
+X-Received: by 2002:a05:620a:29c6:b0:6ee:cf89:40cb with SMTP id s6-20020a05620a29c600b006eecf8940cbmr3457904qkp.107.1666130211690;
+        Tue, 18 Oct 2022 14:56:51 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1666130211; cv=none;
         d=google.com; s=arc-20160816;
-        b=H0dvNB02j0AhBlDoJ4ZRg2qcXKpByXmkABKPNwMLEjxzX+BLDMNh/kZEHJSnrDmFwe
-         p1lwtZCnYJgmjbNn35jo/7nujVYmhEXOdqLMq5U+ziLjbOmGj+YGsEyzEYRcx8APPT62
-         IqKZUgPgBLuq4NVKrtgW2zRJUBeUwUDyWmJXGvi01AF9DMESkBjnnkUq+0+EdC8iREgr
-         v34Sv72metpxXSV+RdybCMNhQVWezrusXDdGf3O9qOV5/BqBtyPYCt7v23X8RhnR3rIK
-         0pybq4XoPmzJxgGM71nETmBsQycNZSFFdS6WXDzjfSIj3c48VP9mdOI37Quz3o2BEAgi
-         kChw==
+        b=D5oO9/xm0naQw2YTOyJ6/FEJZJzNpRtLRwTqmmxXdHKDXx9JZztVrAqSj0ZyDeuIfE
+         YECroZV5DphRc5ieanhVXXL2y8XFOyTtmze5U6ae9MKjeirt4ac8orweAr83wPrZvj1x
+         4Mf39wZDTNcm3R1mgQd9ypknXLdz9c780mvf4RfxderUR46HHxbyu2GEJz8EqOiLHI1s
+         t0wIptzYwaEXGiI+V0qTG4vw+zH4AllZ6zrLN2qa2Me2wa4nNAqmLV00dJTWk/EoTHEu
+         nd05l5OSxVbOlFMK/S3b/CbbjpFuXVAnLcM5YylleWENHhdMnrS+nVeWVUIOnq8tKIZR
+         q0/A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=XB8LzA+Xf7kj44ENBLw+h7JO3RpBY2E4p+/JbUGhS6k=;
-        b=oUTKLLUtaC0snswQLKOi5GpTTa0L5ab/esS/5eCx8YKjPNmnt3wB8RekNH78IP9+R2
-         +/YfC6E4FULNo9LedBGYeGOkq/c9BNMIv9Q+qPofZycYSk7Kj9DvvRT1Qug8/q1BAuZ4
-         /wM4TnoMowmblJYZoQCyvPr2QqG+cNepY1NQrl9O0CUzSyuI92N/OmA9xEmtNdNHoV0g
-         lakpomRgrBP5NUtJBGeproXshSQ9RRnFOT4JJu5iOEfzbZPRJ8IYMA2xL3JbeOVXgCLc
-         0zP0pw2cKDd7uj08gldylbFauyYGR6v1quvT9EKqgozvhcYbMX0dcio4w3NtkBiJTZVt
-         /d5w==
+         :content-disposition:in-reply-to:mime-version:references:message-id
+         :subject:cc:to:from:date:dkim-signature;
+        bh=mPt3hhXk6zRWQQI98JSSk0AHm4CEiigDL8cwBpmFDjk=;
+        b=kEbr3psJhujWjdCXrBtpxP0MqyQO1OFOWWkMSu0KR1/yeInNcdPeCq/W0x+5AH1C3F
+         oW0MyxtHFJQaVpBt3dOdjwUXgj6696JEOXZbgkDV+qMCLwBs79ch3+RsHZNyxaki+O4i
+         +99986ZT0vqk+9a+IC8qAUUXQeZDGYHWGKClEXEMdbsR5SYb5SyugzAAbt4MQEsJ5moN
+         J7Irrbq01bKCUx5RMOwT87ESZB1fSivnk/rdW/AJIWS8z0EJg2E77djfrF3TstWcRC2T
+         YtpMX9nXZ2maBfMaEwWdWBuZBiKL6fMPMCXEqf+ua+kKKh7sxjtL3mVwbzagT657JmEv
+         sKjQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=KSXtDaz1;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=FFPFHkSJ;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id j29-20020ac8405d000000b003924ce410b4si8070007qtl.447.2022.10.18.14.15.42
+        by mx.google.com with ESMTPS id c24-20020a05620a269800b006e3da9333fdsi8440942qkp.299.2022.10.18.14.56.51
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 18 Oct 2022 14:15:42 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 18 Oct 2022 14:56:51 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=KSXtDaz1;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:44790 helo=lists1p.gnu.org)
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=FFPFHkSJ;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:50876 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1oktw5-0004fu-Gi
-	for alex.bennee@linaro.org; Tue, 18 Oct 2022 17:15:41 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:36198)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1okuZv-0005dS-4r
+	for alex.bennee@linaro.org; Tue, 18 Oct 2022 17:56:51 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:60470)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1oktjZ-00022K-B1; Tue, 18 Oct 2022 17:02:51 -0400
-Received: from mail-ej1-x62e.google.com ([2a00:1450:4864:20::62e]:34324)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1oktjW-0003vo-Jy; Tue, 18 Oct 2022 17:02:44 -0400
-Received: by mail-ej1-x62e.google.com with SMTP id ot12so35445289ejb.1;
- Tue, 18 Oct 2022 14:02:41 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=XB8LzA+Xf7kj44ENBLw+h7JO3RpBY2E4p+/JbUGhS6k=;
- b=KSXtDaz1yKtQ6OhJgvLcHjDewmAO4KqUGF3L+43Aosae9yy86R5BQ4KzlYdw5vOBC5
- S45fjv3Sh2UA4HY6BCCoXfQ5P+T6BvyRLgUoNC/Su5m/kQBJ+dNSOuCjCYsw62KPSLo0
- 15hAjkjavcnuWkL6jCNNuMsn28kuBC88yoImFBJ/7H2a+wgtUsJ87n/euoypV5QniMll
- 3U3dXEU6rG58qtGxZX9WUMY5R52Za6CjiviQZxUT58XoDuCPYZlGbRk5YqLMm5ndJoqy
- ql7zfw8BWP+OE4VKsQGLSWBvDvPYZZVYVLH0ZCATyXjT0aNuBbvdEMxxWc5NAg2DVu1r
- 9izw==
+ (Exim 4.90_1) (envelope-from <peterx@redhat.com>) id 1okuZL-0005Zu-SM
+ for qemu-arm@nongnu.org; Tue, 18 Oct 2022 17:56:16 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:33656)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <peterx@redhat.com>) id 1okuZH-0003Ge-UH
+ for qemu-arm@nongnu.org; Tue, 18 Oct 2022 17:56:14 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1666130171;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=mPt3hhXk6zRWQQI98JSSk0AHm4CEiigDL8cwBpmFDjk=;
+ b=FFPFHkSJx4c8lw0Druv98qBd5OF5FRYGZohzerihQmu+eM47iM6KUzTfk+aU0YxmFY+/IX
+ awLVdKUJ2YE02MWcFr6QccS+mrcEagOyc8hmriDqfJvNmMt47jUw3iW1WZvYRetAFWx5pA
+ Sr7e8Mjy7T90HGs7FO1pgDdiOU5y6pI=
+Received: from mail-qt1-f200.google.com (mail-qt1-f200.google.com
+ [209.85.160.200]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_128_GCM_SHA256) id
+ us-mta-166-IIyC4OIhO6OqQFDnesndcQ-1; Tue, 18 Oct 2022 17:56:10 -0400
+X-MC-Unique: IIyC4OIhO6OqQFDnesndcQ-1
+Received: by mail-qt1-f200.google.com with SMTP id
+ 17-20020ac85711000000b0039ccd4c9a37so11574567qtw.20
+ for <qemu-arm@nongnu.org>; Tue, 18 Oct 2022 14:56:10 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=XB8LzA+Xf7kj44ENBLw+h7JO3RpBY2E4p+/JbUGhS6k=;
- b=gw42FUthNLWi5JTYo9UhELQE2lfhjfC90vJj/Tb7Op7uB3uvIxl08sTYCPOASc6YVM
- UbN/qn8UR3H4Rg7vg7KLGo3zGxX/qijIEHeVJICwU3kYxuzJeuxp5rPCaIiRGkMLeZVS
- rIrse8DWxt52LV6/VL5PU/OVqr7QsAcHqw0PnkB30sVA00v2ylCxnjGRpYa1O8ZqbsTQ
- AsCzfzay25/wjOi4NCMsCOgSEvCMQk7WMStjwnb2gbnBybfvgXIaUFZ4g/AgstU2wdg6
- 7nS9Az1HK3z6l33XblnttcGYiXcAQibXYIzpnbDNAd+kgBLJIOWG86FukMHOeoFMtXZp
- 7crw==
-X-Gm-Message-State: ACrzQf15zaRnoOopELGaHMhLlCQlbjY9RAOMn7SGX1vizf8EFus6eFlb
- RnEHOecxtEIoKL7Vs94H8HrGtMFPtAg=
-X-Received: by 2002:a17:907:6288:b0:78d:ab30:c374 with SMTP id
- nd8-20020a170907628800b0078dab30c374mr4044804ejc.266.1666126959590; 
- Tue, 18 Oct 2022 14:02:39 -0700 (PDT)
-Received: from localhost.localdomain
- (dynamic-078-054-012-048.78.54.pool.telefonica.de. [78.54.12.48])
- by smtp.gmail.com with ESMTPSA id
- fe7-20020a056402390700b004587c2b5048sm9407951edb.52.2022.10.18.14.02.38
+ h=in-reply-to:content-transfer-encoding:content-disposition
+ :mime-version:references:message-id:subject:cc:to:from:date
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=mPt3hhXk6zRWQQI98JSSk0AHm4CEiigDL8cwBpmFDjk=;
+ b=R36GuAfOnPuB3G6eqWXC21+sYF54H7mYOW/74DrnI7p5Ww0g0sQPG3hlPKJQUvXcO8
+ fTZgdR2j3nTnzrSMgw8iku227XwEqvYv9MXz/kqeMu9rnwQKwbxOjetVy2eveKiw2nmP
+ iZeZSJLEbESD9IPp/6OnFAq32tZt0knAo51IwSI9zhd53DFrA+J8X43fhJsi3vOtp1ws
+ os8gFRoaIQgRZzjAxvUOz2q643e2wXS9fg3xadoKshOyWjY05QTPbhli6GQOekKjW1jU
+ HPHNuWUhg7BOUUhxU1dv0JfO5O6jK+Gpd4EhFYajL4Tv2SzBxlrq+QmwdV7aVgBksT2q
+ kcJw==
+X-Gm-Message-State: ACrzQf065TC+QQxcNvbWGQpDmfZhNztoM1aR4MKQdgK0pDJoubqOrvZ6
+ o/BHXTX0IXkK+iAlpEfzAoZfki4HTGS4kVU+TzMO2Lc9hAB2PbR0f2PIAytCLKguOE44Wxiih/3
+ G0P4LH3Sbe8or
+X-Received: by 2002:a05:620a:b87:b0:6ea:d354:49b9 with SMTP id
+ k7-20020a05620a0b8700b006ead35449b9mr3393791qkh.384.1666130168445; 
+ Tue, 18 Oct 2022 14:56:08 -0700 (PDT)
+X-Received: by 2002:a05:620a:b87:b0:6ea:d354:49b9 with SMTP id
+ k7-20020a05620a0b8700b006ead35449b9mr3393777qkh.384.1666130168183; 
+ Tue, 18 Oct 2022 14:56:08 -0700 (PDT)
+Received: from x1n (bras-base-aurron9127w-grc-46-70-31-27-79.dsl.bell.ca.
+ [70.31.27.79]) by smtp.gmail.com with ESMTPSA id
+ bz12-20020a05622a1e8c00b0039a1146e0e1sm2729417qtb.33.2022.10.18.14.56.07
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 18 Oct 2022 14:02:39 -0700 (PDT)
-From: Bernhard Beschow <shentey@gmail.com>
-To: qemu-devel@nongnu.org
-Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- qemu-ppc@nongnu.org, Aurelien Jarno <aurelien@aurel32.net>,
- Yoshinori Sato <ysato@users.sourceforge.jp>,
- Antony Pavlov <antonynpavlov@gmail.com>,
- BALATON Zoltan <balaton@eik.bme.hu>,
- Alistair Francis <alistair@alistair23.me>,
- Bin Meng <bin.meng@windriver.com>, Kevin Wolf <kwolf@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>, Jan Kiszka <jan.kiszka@web.de>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
- Hanna Reitz <hreitz@redhat.com>, qemu-arm@nongnu.org,
- Magnus Damm <magnus.damm@gmail.com>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, qemu-block@nongnu.org,
- Bernhard Beschow <shentey@gmail.com>, Bin Meng <bmeng.cn@gmail.com>
-Subject: [PATCH v4 4/7] hw/sd/sdhci: Rename ESDHC_* defines to USDHC_*
-Date: Tue, 18 Oct 2022 23:01:43 +0200
-Message-Id: <20221018210146.193159-5-shentey@gmail.com>
-X-Mailer: git-send-email 2.38.0
-In-Reply-To: <20221018210146.193159-1-shentey@gmail.com>
-References: <20221018210146.193159-1-shentey@gmail.com>
+ Tue, 18 Oct 2022 14:56:07 -0700 (PDT)
+Date: Tue, 18 Oct 2022 17:56:06 -0400
+From: Peter Xu <peterx@redhat.com>
+To: Eric Auger <eric.auger@redhat.com>
+Cc: eric.auger.pro@gmail.com, mst@redhat.com, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org, eperezma@redhat.com, jasowang@redhat.com,
+ Jean-Philippe Brucker <jean-philippe@linaro.org>
+Subject: Re: [PATCH] vhost: Warn if DEVIOTLB_UNMAP is not supported and ats
+ is set
+Message-ID: <Y08g9iaH5lZnPkte@x1n>
+References: <20221018122852.1185395-1-eric.auger@redhat.com>
+ <Y063RZ4SkYcRM+SP@x1n>
+ <31b87958-3be6-49c2-f0d9-9bcb8ec3bc1c@redhat.com>
 MIME-Version: 1.0
+In-Reply-To: <31b87958-3be6-49c2-f0d9-9bcb8ec3bc1c@redhat.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::62e;
- envelope-from=shentey@gmail.com; helo=mail-ej1-x62e.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=peterx@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -23
+X-Spam_score: -2.4
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.256,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ckQPn6FyBw/h
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: j00YGfgbLQva
 
-The device model's functions start with "usdhc_", so rename the defines
-accordingly for consistency.
+On Tue, Oct 18, 2022 at 05:08:19PM +0200, Eric Auger wrote:
+> Hi Peter,
+> 
+> On 10/18/22 16:25, Peter Xu wrote:
+> > Hi, Eric,
+> >
+> > On Tue, Oct 18, 2022 at 02:28:52PM +0200, Eric Auger wrote:
+> >> Since b68ba1ca5767 ("memory: Add IOMMU_NOTIFIER_DEVIOTLB_UNMAP
+> >> IOMMUTLBNotificationType"), vhost attempts to register DEVIOTLB_UNMAP
+> >> notifier. This latter is supported by the intel-iommu which supports
+> >> device-iotlb if the corresponding option is set. Then 958ec334bca3
+> >> ("vhost: Unbreak SMMU and virtio-iommu on dev-iotlb support") allowed
+> >> silent fallback to the legacy UNMAP notifier if the viommu does not
+> >> support device iotlb.
+> >>
+> >> Initially vhost/viommu integration was introduced with intel iommu
+> >> assuming ats=on was set on virtio-pci device and device-iotlb was set
+> >> on the intel iommu. vhost acts as an ATS capable device since it
+> >> implements an IOTLB on kernel side. However translated transactions
+> >> that hit the device IOTLB do not transit through the vIOMMU. So this
+> >> requires a limited ATS support on viommu side.
+> >>
+> >> However, in theory, if ats=on is set on a pci device, the
+> >> viommu should support ATS for that device to work.
+> > Pure question: what will happen if one ATS supported PCI device got plugged
+> > into a system whose physical IOMMU does not support ATS?  Will ATS just be
+> > ignored and the device keep working simply without ATS?
+> Yes that's my understanding: in that case the ATS capable device would
+> work with ats disabled (baremetal case). In the iommu driver you can
+> have a look at the pci_enable_ats() call which is guarded by
+> info->ats_supported for instance on intel iommu.
+> 
+> Following that reasoning vhost modality should not be enabled without
+> ATS support on vIOMMU side. But it is.
+> 
+> In that sense I may rename the ats_enabled helpers with ats_capable?
 
-Signed-off-by: Bernhard Beschow <shentey@gmail.com>
-Reviewed-by: Bin Meng <bmeng.cn@gmail.com>
----
- hw/sd/sdhci.c | 66 +++++++++++++++++++++++++--------------------------
- 1 file changed, 33 insertions(+), 33 deletions(-)
+Sounds good to me.
 
-diff --git a/hw/sd/sdhci.c b/hw/sd/sdhci.c
-index 6da5e2c781..306070c872 100644
---- a/hw/sd/sdhci.c
-+++ b/hw/sd/sdhci.c
-@@ -1577,24 +1577,24 @@ static const TypeInfo sdhci_bus_info = {
- 
- /* --- qdev i.MX eSDHC --- */
- 
--#define ESDHC_MIX_CTRL                  0x48
-+#define USDHC_MIX_CTRL                  0x48
- 
--#define ESDHC_VENDOR_SPEC               0xc0
--#define ESDHC_IMX_FRC_SDCLK_ON          (1 << 8)
-+#define USDHC_VENDOR_SPEC               0xc0
-+#define USDHC_IMX_FRC_SDCLK_ON          (1 << 8)
- 
--#define ESDHC_DLL_CTRL                  0x60
-+#define USDHC_DLL_CTRL                  0x60
- 
--#define ESDHC_TUNING_CTRL               0xcc
--#define ESDHC_TUNE_CTRL_STATUS          0x68
--#define ESDHC_WTMK_LVL                  0x44
-+#define USDHC_TUNING_CTRL               0xcc
-+#define USDHC_TUNE_CTRL_STATUS          0x68
-+#define USDHC_WTMK_LVL                  0x44
- 
- /* Undocumented register used by guests working around erratum ERR004536 */
--#define ESDHC_UNDOCUMENTED_REG27        0x6c
-+#define USDHC_UNDOCUMENTED_REG27        0x6c
- 
--#define ESDHC_CTRL_4BITBUS              (0x1 << 1)
--#define ESDHC_CTRL_8BITBUS              (0x2 << 1)
-+#define USDHC_CTRL_4BITBUS              (0x1 << 1)
-+#define USDHC_CTRL_8BITBUS              (0x2 << 1)
- 
--#define ESDHC_PRNSTS_SDSTB              (1 << 3)
-+#define USDHC_PRNSTS_SDSTB              (1 << 3)
- 
- static uint64_t usdhc_read(void *opaque, hwaddr offset, unsigned size)
- {
-@@ -1615,11 +1615,11 @@ static uint64_t usdhc_read(void *opaque, hwaddr offset, unsigned size)
-         hostctl1 = SDHC_DMA_TYPE(s->hostctl1) << (8 - 3);
- 
-         if (s->hostctl1 & SDHC_CTRL_8BITBUS) {
--            hostctl1 |= ESDHC_CTRL_8BITBUS;
-+            hostctl1 |= USDHC_CTRL_8BITBUS;
-         }
- 
-         if (s->hostctl1 & SDHC_CTRL_4BITBUS) {
--            hostctl1 |= ESDHC_CTRL_4BITBUS;
-+            hostctl1 |= USDHC_CTRL_4BITBUS;
-         }
- 
-         ret  = hostctl1;
-@@ -1630,21 +1630,21 @@ static uint64_t usdhc_read(void *opaque, hwaddr offset, unsigned size)
- 
-     case SDHC_PRNSTS:
-         /* Add SDSTB (SD Clock Stable) bit to PRNSTS */
--        ret = sdhci_read(opaque, offset, size) & ~ESDHC_PRNSTS_SDSTB;
-+        ret = sdhci_read(opaque, offset, size) & ~USDHC_PRNSTS_SDSTB;
-         if (s->clkcon & SDHC_CLOCK_INT_STABLE) {
--            ret |= ESDHC_PRNSTS_SDSTB;
-+            ret |= USDHC_PRNSTS_SDSTB;
-         }
-         break;
- 
--    case ESDHC_VENDOR_SPEC:
-+    case USDHC_VENDOR_SPEC:
-         ret = s->vendor_spec;
-         break;
--    case ESDHC_DLL_CTRL:
--    case ESDHC_TUNE_CTRL_STATUS:
--    case ESDHC_UNDOCUMENTED_REG27:
--    case ESDHC_TUNING_CTRL:
--    case ESDHC_MIX_CTRL:
--    case ESDHC_WTMK_LVL:
-+    case USDHC_DLL_CTRL:
-+    case USDHC_TUNE_CTRL_STATUS:
-+    case USDHC_UNDOCUMENTED_REG27:
-+    case USDHC_TUNING_CTRL:
-+    case USDHC_MIX_CTRL:
-+    case USDHC_WTMK_LVL:
-         ret = 0;
-         break;
-     }
-@@ -1660,18 +1660,18 @@ usdhc_write(void *opaque, hwaddr offset, uint64_t val, unsigned size)
-     uint32_t value = (uint32_t)val;
- 
-     switch (offset) {
--    case ESDHC_DLL_CTRL:
--    case ESDHC_TUNE_CTRL_STATUS:
--    case ESDHC_UNDOCUMENTED_REG27:
--    case ESDHC_TUNING_CTRL:
--    case ESDHC_WTMK_LVL:
-+    case USDHC_DLL_CTRL:
-+    case USDHC_TUNE_CTRL_STATUS:
-+    case USDHC_UNDOCUMENTED_REG27:
-+    case USDHC_TUNING_CTRL:
-+    case USDHC_WTMK_LVL:
-         break;
- 
--    case ESDHC_VENDOR_SPEC:
-+    case USDHC_VENDOR_SPEC:
-         s->vendor_spec = value;
-         switch (s->vendor) {
-         case SDHCI_VENDOR_IMX:
--            if (value & ESDHC_IMX_FRC_SDCLK_ON) {
-+            if (value & USDHC_IMX_FRC_SDCLK_ON) {
-                 s->prnsts &= ~SDHC_IMX_CLOCK_GATE_OFF;
-             } else {
-                 s->prnsts |= SDHC_IMX_CLOCK_GATE_OFF;
-@@ -1740,12 +1740,12 @@ usdhc_write(void *opaque, hwaddr offset, uint64_t val, unsigned size)
-          * Second, split "Data Transfer Width" from bits 2 and 1 in to
-          * bits 5 and 1
-          */
--        if (value & ESDHC_CTRL_8BITBUS) {
-+        if (value & USDHC_CTRL_8BITBUS) {
-             hostctl1 |= SDHC_CTRL_8BITBUS;
-         }
- 
--        if (value & ESDHC_CTRL_4BITBUS) {
--            hostctl1 |= ESDHC_CTRL_4BITBUS;
-+        if (value & USDHC_CTRL_4BITBUS) {
-+            hostctl1 |= USDHC_CTRL_4BITBUS;
-         }
- 
-         /*
-@@ -1768,7 +1768,7 @@ usdhc_write(void *opaque, hwaddr offset, uint64_t val, unsigned size)
-         sdhci_write(opaque, offset, value, size);
-         break;
- 
--    case ESDHC_MIX_CTRL:
-+    case USDHC_MIX_CTRL:
-         /*
-          * So, when SD/MMC stack in Linux tries to write to "Transfer
-          * Mode Register", ESDHC i.MX quirk code will translate it
+> If I understand correctly setting ats=on exposes the ATS capability (
+> 615c4ed205  virtio-pci: address space translation service (ATS) support)
+> which is then enabled by the guest driver.
+
+I think it won't, as long as vIOMMU doesn't have DT support declared?
+
+> 
+> > [1]
+> >
+> > [...]
+> >
+> >> @@ -760,8 +771,16 @@ static void vhost_iommu_region_add(MemoryListener *listener,
+> >>      iommu->iommu_offset = section->offset_within_address_space -
+> >>                            section->offset_within_region;
+> >>      iommu->hdev = dev;
+> >> -    ret = memory_region_register_iommu_notifier(section->mr, &iommu->n, NULL);
+> >> +    ret = memory_region_register_iommu_notifier(section->mr, &iommu->n, &err);
+> >>      if (ret) {
+> >> +        if (vhost_dev_ats_enabled(dev)) {
+> >> +            error_reportf_err(err,
+> >> +                              "vhost cannot register DEVIOTLB_UNMAP "
+> >> +                              "although ATS is enabled, "
+> >> +                              "fall back to legacy UNMAP notifier: ");
+> > We want to use the warning message to either remind the user to (1) add the
+> > dev-iotlb=on parameter for vIOMMU, or (2) drop the ats=on on device.  Am I
+> > right?
+> My focus is to warn the end user there is no support for device-iotlb
+> support in virtio-iommu or vsmmuv3 but vhost does not really require
+> it.Indeed current users of virtio-iommu/vsmmuv3 seem confused now wrt
+> vhost integration and the lack of device-iotlb option on those viommus.
+> 
+> On intel I understand we would like to enforce that ats and dev-iotlb
+> are both set or unset. But this is not really addressed in that series.
+> Indeed vtd_iommu_notify_flag_changed does not reject any registration of
+> IOMMU_NOTIFIER_DEVIOTLB_UNMAP notifier in case it does not support
+> device-iotlb. I think it should.
+
+Yes I agree, thanks for finding it.  Just posted a patch:
+
+https://lore.kernel.org/r/20221018215407.363986-1-peterx@redhat.com
+
+> The trouble is vhost_iommu_region_add
+> is not meant to nicely fail.
+> >
+> > As we've discussed - I remember Jason used to test with/without dev-iotlb
+> > on vhost on Intel and dev-iotlb is faster on vt-d guest driver than without
+> It would be nice to have a clarification about this. Indeed
+> 
+> [PATCH v3 0/5] memory: Skip assertion in memory_region_unregister_iommu_notifier
+> https://lore.kernel.org/all/20201116165506.31315-1-eperezma@redhat.com/
+> mostly focussed on removing an assertion although one patch mentionned perf improvements. What does make the perf better (less device iotlb flushes than general iotlb flushes?)
+
+I'll leave that to Jason.  Thanks.
+
+> 
+> > it.  So that can make sense to me for (1).  I don't know whether it helps
+> > for (2) because fundamentally it's the same question as [1] above, and
+> > whether that's a legal configuration.
+> >
+> > Thanks,
+> >
+> Adding jean in the loop too
+> 
+> Thanks
+> 
+> Eric
+> 
+
 -- 
-2.38.0
+Peter Xu
 

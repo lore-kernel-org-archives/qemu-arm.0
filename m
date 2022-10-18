@@ -1,98 +1,120 @@
-Received: by 2002:a05:7022:458e:b0:46:22f1:8c13 with SMTP id cf14csp1792000dlb;
-        Tue, 18 Oct 2022 05:32:17 -0700 (PDT)
-X-Google-Smtp-Source: AMsMyM5RISOUVHZROZLKi05mM8y/V94apeu003svyaMic2NtdXao+g9G5FoGC2Q+f+9iB+MmfHN4
-X-Received: by 2002:ac8:5b05:0:b0:399:9b82:77b4 with SMTP id m5-20020ac85b05000000b003999b8277b4mr1793200qtw.681.1666096337387;
-        Tue, 18 Oct 2022 05:32:17 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1666096337; cv=none;
+Received: by 2002:a05:7022:458e:b0:46:22f1:8c13 with SMTP id cf14csp2143842dlb;
+        Tue, 18 Oct 2022 14:15:05 -0700 (PDT)
+X-Google-Smtp-Source: AMsMyM7hl1eJwXI7uHcTRjZOZX+CY29XGpShX+D6wOscQf20sMvOTOIbeGrMnJzrWR93VW4VSkya
+X-Received: by 2002:a05:6214:27ce:b0:4b1:92c9:611c with SMTP id ge14-20020a05621427ce00b004b192c9611cmr3973973qvb.115.1666127705192;
+        Tue, 18 Oct 2022 14:15:05 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1666127705; cv=none;
         d=google.com; s=arc-20160816;
-        b=Nj5dDcd7MeNTxz8FWlkaeySsWf84bxPt3hVSY+uSfTWutmplIbSI6TbmIKPuepy6/x
-         7PxOkISbEP75HSeZMrgwJHe6kcWjGNWD2s8Y+wV7oYIc43pITvn88pV/R+o9D53aEmjX
-         G8UfFLQcWU8jZI8Jt5nhXMxvkoNFOK9rSS7Fihjh8/okGhyBNNDCluSVkEFvHfBKWpKM
-         sDfhfVJNTeCkmU42c8HaF4W3m+hlB4Tvi0Ma/aQosAWdvBitKzg7D8Qbl/XBiDfFRM9p
-         Rk8Yae9dktFCndSfC7e6blZfzuWAVYGiAZY/GajB0h09OgbRFErTQg9dkkMlMC4NGmXj
-         UYpQ==
+        b=mYiSuDcIpUo31YwlaO6ZnJSOHP5hbKjgZxF15S7MuqtzAurL5DZw/RtXFrzzZWi9ZC
+         6kIkPMZhwqrANaslnies4uVUidSNOhwLgTE47SKqQOeG9mfcmLGC/p+5Hki3gpeSGyNf
+         OU7GNLF2/15eQkiWj1JpykbdRIh0UB8F9dWkH3RVhS7uJCF3hEFbonHKdH+3VLZTg8i9
+         ca16gk3gonalkpiZVLCnCucxUbi7tOrgqA+PcCm814C6b0HUlMbBYuyi1IakvNsnhjwX
+         QLGPtCwskP5EoNMKXVWLHreQIA8a97SPZZCQQyKkKTYulFzb4NhV9ZsVCEM2nYTR2cHd
+         IkdQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:to:from:dkim-signature;
-        bh=J2cD92ikt8Cq53rD4A2px2ZZpourOkv6/yVuNUW38UA=;
-        b=BR4/X+mWWFqCl5UAEWiduX6RB1CZZh9b8SVPhTLiAn4OGabjL0C6VJk3D+PvcdJY3Q
-         L9hag6LZGNvMlk84byzl1whEOdsAKb/vk1FzCUUwJ1dmjlMTld72vr6wwbfsB05mb898
-         LvNba8qzkU+i+ALeUGWIwItMHQSa1d7NnopW6Qua4L2YlVhzw30WO09edDtdfXQU7HWN
-         ulA/Bd4Z4NPOsZPYKnCtly6eQDrijYSRfF7uACtVotzCFJkRCphldevNpxgpjBks3E8a
-         ugHDrc88qROS28dJ7RHM4CeRUThgo4OtFI6+/l0RfRqJcu5Libtw3glzcyCk5aZDZ73e
-         A2qg==
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
+        bh=iOmB+xoTEaRaOIdbCKCBrtSMoKomoXO9ygIphsjM/7g=;
+        b=f/gZK3UUCaEKK+HPgcZ4bcBDYjLdk0gRBbrXjfLUMroicDlAhU6rFHC2ipibQEGX6E
+         Km5e7zHDHzcq/giaLbU2MfiYphEOjDcZhRBI6y2fy0+Nnv5La/r9SYqODFiVSSkvAwRi
+         q4k7a6fivWWenOEqUKVOkarzCdwatARD2I14goVFdp5jNxxCHnMLtpZuiPATaGDzxen+
+         zKOYEQoTsjx8M09vNYu1yeHUvuH3qnmjup2A9OkG3V1t/+tAs9j7jEvDaKIyp3dJzxZM
+         YSwai49uBFzFPIfF9t2u+FeipD9kZkiLfPKcIIer0Lq8hPTckAJfvZuduCQdKJ0dSIaA
+         G2Dw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=fBDbeDOv;
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=GBHjcUeh;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id w15-20020a05620a424f00b006e14659036dsi7897207qko.148.2022.10.18.05.32.17
+        by mx.google.com with ESMTPS id j15-20020a05621419cf00b004b31dec5686si8372652qvc.46.2022.10.18.14.15.05
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 18 Oct 2022 05:32:17 -0700 (PDT)
+        Tue, 18 Oct 2022 14:15:05 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=fBDbeDOv;
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=GBHjcUeh;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:41944 helo=lists1p.gnu.org)
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:55308 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1okllY-0005Oc-Ht
-	for alex.bennee@linaro.org; Tue, 18 Oct 2022 08:32:16 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:43620)
+	id 1oktvU-0005rE-Jo
+	for alex.bennee@linaro.org; Tue, 18 Oct 2022 17:15:04 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:36194)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1oklib-0005Gn-Gq
- for qemu-arm@nongnu.org; Tue, 18 Oct 2022 08:29:13 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:24047)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1okliX-00018V-7j
- for qemu-arm@nongnu.org; Tue, 18 Oct 2022 08:29:13 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1666096145;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:mime-version:mime-version:
- content-transfer-encoding:content-transfer-encoding;
- bh=J2cD92ikt8Cq53rD4A2px2ZZpourOkv6/yVuNUW38UA=;
- b=fBDbeDOvzlBxtUDNDuWsJuueNoUDIGrTlhIE4ym8G28ZSNNfzXiS9HgsRw2qBMcuPU+rRN
- Y9mvznZUr/jTaoSNe+/LKCXczjy1ra8hKYaf6QiCInWX341gNdzqKl8zw/A3nKGiVok+0z
- NZbAWiyuMMfaUuOy5cVFvrWnMePNHpo=
-Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
- [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-627-LQIsakJTNJSmPgvs3UxmDg-1; Tue, 18 Oct 2022 08:29:01 -0400
-X-MC-Unique: LQIsakJTNJSmPgvs3UxmDg-1
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.rdu2.redhat.com
- [10.11.54.1])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 14E10102F03A;
- Tue, 18 Oct 2022 12:29:01 +0000 (UTC)
-Received: from laptop.redhat.com (unknown [10.39.193.146])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 2F38340C2065;
- Tue, 18 Oct 2022 12:28:58 +0000 (UTC)
-From: Eric Auger <eric.auger@redhat.com>
-To: eric.auger.pro@gmail.com, eric.auger@redhat.com, mst@redhat.com,
- peterx@redhat.com, qemu-arm@nongnu.org, qemu-devel@nongnu.org,
- eperezma@redhat.com, jasowang@redhat.com
-Subject: [PATCH] vhost: Warn if DEVIOTLB_UNMAP is not supported and ats is set
-Date: Tue, 18 Oct 2022 14:28:52 +0200
-Message-Id: <20221018122852.1185395-1-eric.auger@redhat.com>
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
+ id 1oktjW-00022D-HX; Tue, 18 Oct 2022 17:02:51 -0400
+Received: from mail-ej1-x636.google.com ([2a00:1450:4864:20::636]:39667)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
+ id 1oktjS-0003un-GN; Tue, 18 Oct 2022 17:02:41 -0400
+Received: by mail-ej1-x636.google.com with SMTP id b2so35396219eja.6;
+ Tue, 18 Oct 2022 14:02:35 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=iOmB+xoTEaRaOIdbCKCBrtSMoKomoXO9ygIphsjM/7g=;
+ b=GBHjcUehhWInfIZLMHzCyP1MYWZN2aMfTnwWuY/7IoO1KFpcPqfCAXV9PBuqzVZ4iM
+ BMIv0XMe7otEQOBnCnCaV9KVd5SUlF0vaZAeTV5fBJXmOqOxKFJfHzILTPgc+Jhl20OL
+ Tmd++d1j4YKDF6HuCBScqXes3Pt43mrJyP4YrlL4pT/nvW0hlB2EeiCK0Apu3C7MM4rF
+ qDNxfVjDCuYCxBLHbdYRATYA8FHpeAW8T/ko4pxjaBlxadcNJdYnX/PorA/YHRDMZUyB
+ K2XFa405sbiq1q21tpIcf5YZPpBxp19ZzhbfHIJEFs8yFWLQjeRVphnP4VY/8AKo4rva
+ /kPQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=iOmB+xoTEaRaOIdbCKCBrtSMoKomoXO9ygIphsjM/7g=;
+ b=QUlR8jYXVzb9QyL5MCcSIb53MwG9laBYPBkYROZ2GKqOtuwGdsMNAXoPuvvxAj2zKg
+ abk2oMzWdCNghW2L/RuKmkjttcsoifIrUJaITS8JkIFXjXWGJ3NxYJ2sP0d6ZIVWJdoM
+ NJ6ZMthpQJz1dRTDB4UVt7EAsaDm0wr8MDjfINIaNS7vJ+oqAYuVSQjWm236APDTi9tU
+ lpuNVzQAu/6vUTUxcrDx8U1IRKoKX5IAgmRq4eNBmM5L0QavcImA6M9Lin5N6mM/lHdk
+ zN+JMc5CHjsqgZF5g1E2rNFCHiC/JJ5ZAvrD9FV204h8/PJsMDnpy3S3Oe02znGNXBwo
+ Az1w==
+X-Gm-Message-State: ACrzQf2AYe/hfY3HYMWoNOtgX8R7ssB9cwReOs5mSXv2hbyRzHQa6BAI
+ ufVVNQCuaKZwhC9bz9n49O5LM21xZP0=
+X-Received: by 2002:a17:907:3ea9:b0:78d:fdf0:88fe with SMTP id
+ hs41-20020a1709073ea900b0078dfdf088femr4116844ejc.667.1666126954317; 
+ Tue, 18 Oct 2022 14:02:34 -0700 (PDT)
+Received: from localhost.localdomain
+ (dynamic-078-054-012-048.78.54.pool.telefonica.de. [78.54.12.48])
+ by smtp.gmail.com with ESMTPSA id
+ fe7-20020a056402390700b004587c2b5048sm9407951edb.52.2022.10.18.14.02.32
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 18 Oct 2022 14:02:33 -0700 (PDT)
+From: Bernhard Beschow <shentey@gmail.com>
+To: qemu-devel@nongnu.org
+Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ qemu-ppc@nongnu.org, Aurelien Jarno <aurelien@aurel32.net>,
+ Yoshinori Sato <ysato@users.sourceforge.jp>,
+ Antony Pavlov <antonynpavlov@gmail.com>,
+ BALATON Zoltan <balaton@eik.bme.hu>,
+ Alistair Francis <alistair@alistair23.me>,
+ Bin Meng <bin.meng@windriver.com>, Kevin Wolf <kwolf@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>, Jan Kiszka <jan.kiszka@web.de>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+ Hanna Reitz <hreitz@redhat.com>, qemu-arm@nongnu.org,
+ Magnus Damm <magnus.damm@gmail.com>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, qemu-block@nongnu.org,
+ Bernhard Beschow <shentey@gmail.com>
+Subject: [PATCH v4 0/7] ppc/e500: Add support for two types of flash, cleanup
+Date: Tue, 18 Oct 2022 23:01:39 +0200
+Message-Id: <20221018210146.193159-1-shentey@gmail.com>
+X-Mailer: git-send-email 2.38.0
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.1 on 10.11.54.1
-Received-SPF: pass client-ip=170.10.129.124;
- envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -23
-X-Spam_score: -2.4
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::636;
+ envelope-from=shentey@gmail.com; helo=mail-ej1-x636.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.256,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -108,167 +130,115 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 2tSbzY1ZJBRk
+X-TUID: htyOowA61BaV
 
-Since b68ba1ca5767 ("memory: Add IOMMU_NOTIFIER_DEVIOTLB_UNMAP
-IOMMUTLBNotificationType"), vhost attempts to register DEVIOTLB_UNMAP
-notifier. This latter is supported by the intel-iommu which supports
-device-iotlb if the corresponding option is set. Then 958ec334bca3
-("vhost: Unbreak SMMU and virtio-iommu on dev-iotlb support") allowed
-silent fallback to the legacy UNMAP notifier if the viommu does not
-support device iotlb.
-
-Initially vhost/viommu integration was introduced with intel iommu
-assuming ats=on was set on virtio-pci device and device-iotlb was set
-on the intel iommu. vhost acts as an ATS capable device since it
-implements an IOTLB on kernel side. However translated transactions
-that hit the device IOTLB do not transit through the vIOMMU. So this
-requires a limited ATS support on viommu side.
-
-However, in theory, if ats=on is set on a pci device, the
-viommu should support ATS for that device to work.
-
-But neither SMMUv3 nor virtio-iommu do support ATS and the integration
-with vhost just relies on the fact those vIOMMU send UNMAP notifications
-whenever the guest trigger them.
-
-So the situation with respect to ats setting on virtio-pci side and
-ats support on viommu side has become quite confusing, especially on
-ARM. Is ats needed whereas vIOMMUs do not support device IOTLBs.
-
-This patch makes sure we get a warning if ats is set on a device
-protected by virtio-iommu or vsmmuv3, reminding that we don't have
-full support of ATS on those vIOMMUs and ats setting on end-point
-is not a requirement.
-
-Signed-off-by: Eric Auger <eric.auger@redhat.com>
----
- include/hw/virtio/virtio-bus.h |  3 +++
- hw/virtio/vhost.c              | 21 ++++++++++++++++++++-
- hw/virtio/virtio-bus.c         | 14 ++++++++++++++
- hw/virtio/virtio-pci.c         | 11 +++++++++++
- 4 files changed, 48 insertions(+), 1 deletion(-)
-
-diff --git a/include/hw/virtio/virtio-bus.h b/include/hw/virtio/virtio-bus.h
-index 7ab8c9dab0..df96cf5b4d 100644
---- a/include/hw/virtio/virtio-bus.h
-+++ b/include/hw/virtio/virtio-bus.h
-@@ -94,6 +94,7 @@ struct VirtioBusClass {
-     bool has_variable_vring_alignment;
-     AddressSpace *(*get_dma_as)(DeviceState *d);
-     bool (*iommu_enabled)(DeviceState *d);
-+    bool (*ats_enabled)(DeviceState *d);
- };
- 
- struct VirtioBusState {
-@@ -157,4 +158,6 @@ int virtio_bus_set_host_notifier(VirtioBusState *bus, int n, bool assign);
- void virtio_bus_cleanup_host_notifier(VirtioBusState *bus, int n);
- /* Whether the IOMMU is enabled for this device */
- bool virtio_bus_device_iommu_enabled(VirtIODevice *vdev);
-+/* Whether ATS is enabled for this device */
-+bool virtio_bus_device_ats_enabled(VirtIODevice *vdev);
- #endif /* VIRTIO_BUS_H */
-diff --git a/hw/virtio/vhost.c b/hw/virtio/vhost.c
-index 5185c15295..b5ad4262c1 100644
---- a/hw/virtio/vhost.c
-+++ b/hw/virtio/vhost.c
-@@ -324,6 +324,16 @@ static bool vhost_dev_has_iommu(struct vhost_dev *dev)
-     }
- }
- 
-+static bool vhost_dev_ats_enabled(struct vhost_dev *dev)
-+{
-+    VirtIODevice *vdev = dev->vdev;
-+
-+    if (vdev && virtio_bus_device_ats_enabled(vdev)) {
-+        return true;
-+    }
-+    return false;
-+}
-+
- static void *vhost_memory_map(struct vhost_dev *dev, hwaddr addr,
-                               hwaddr *plen, bool is_write)
- {
-@@ -737,6 +747,7 @@ static void vhost_iommu_region_add(MemoryListener *listener,
-     Int128 end;
-     int iommu_idx;
-     IOMMUMemoryRegion *iommu_mr;
-+    Error *err = NULL;
-     int ret;
- 
-     if (!memory_region_is_iommu(section->mr)) {
-@@ -760,8 +771,16 @@ static void vhost_iommu_region_add(MemoryListener *listener,
-     iommu->iommu_offset = section->offset_within_address_space -
-                           section->offset_within_region;
-     iommu->hdev = dev;
--    ret = memory_region_register_iommu_notifier(section->mr, &iommu->n, NULL);
-+    ret = memory_region_register_iommu_notifier(section->mr, &iommu->n, &err);
-     if (ret) {
-+        if (vhost_dev_ats_enabled(dev)) {
-+            error_reportf_err(err,
-+                              "vhost cannot register DEVIOTLB_UNMAP "
-+                              "although ATS is enabled, "
-+                              "fall back to legacy UNMAP notifier: ");
-+        } else {
-+            error_free(err);
-+        }
-         /*
-          * Some vIOMMUs do not support dev-iotlb yet.  If so, try to use the
-          * UNMAP legacy message
-diff --git a/hw/virtio/virtio-bus.c b/hw/virtio/virtio-bus.c
-index 896feb37a1..6276779b07 100644
---- a/hw/virtio/virtio-bus.c
-+++ b/hw/virtio/virtio-bus.c
-@@ -348,6 +348,20 @@ bool virtio_bus_device_iommu_enabled(VirtIODevice *vdev)
-     return klass->iommu_enabled(qbus->parent);
- }
- 
-+bool virtio_bus_device_ats_enabled(VirtIODevice *vdev)
-+{
-+    DeviceState *qdev = DEVICE(vdev);
-+    BusState *qbus = BUS(qdev_get_parent_bus(qdev));
-+    VirtioBusState *bus = VIRTIO_BUS(qbus);
-+    VirtioBusClass *klass = VIRTIO_BUS_GET_CLASS(bus);
-+
-+    if (!klass->ats_enabled) {
-+        return false;
-+    }
-+
-+    return klass->ats_enabled(qbus->parent);
-+}
-+
- static void virtio_bus_class_init(ObjectClass *klass, void *data)
- {
-     BusClass *bus_class = BUS_CLASS(klass);
-diff --git a/hw/virtio/virtio-pci.c b/hw/virtio/virtio-pci.c
-index e7d80242b7..d33a47abbf 100644
---- a/hw/virtio/virtio-pci.c
-+++ b/hw/virtio/virtio-pci.c
-@@ -1141,6 +1141,16 @@ static bool virtio_pci_iommu_enabled(DeviceState *d)
-     return true;
- }
- 
-+static bool virtio_pci_ats_enabled(DeviceState *d)
-+{
-+    VirtIOPCIProxy *proxy = VIRTIO_PCI(d);
-+
-+    if (proxy->flags & VIRTIO_PCI_FLAG_ATS) {
-+        return true;
-+    }
-+    return false;
-+}
-+
- static bool virtio_pci_queue_enabled(DeviceState *d, int n)
- {
-     VirtIOPCIProxy *proxy = VIRTIO_PCI(d);
-@@ -2229,6 +2239,7 @@ static void virtio_pci_bus_class_init(ObjectClass *klass, void *data)
-     k->ioeventfd_assign = virtio_pci_ioeventfd_assign;
-     k->get_dma_as = virtio_pci_get_dma_as;
-     k->iommu_enabled = virtio_pci_iommu_enabled;
-+    k->ats_enabled = virtio_pci_ats_enabled;
-     k->queue_enabled = virtio_pci_queue_enabled;
- }
- 
--- 
-2.35.3
-
+Cover letter:=0D
+~~~~~~~~~~~~~=0D
+=0D
+This series adds support for -pflash and direct SD card access to the=0D
+PPC e500 boards. The idea is to increase compatibility with "real" firmware=
+=0D
+images where only the bare minimum of drivers is compiled in.=0D
+=0D
+The series is structured as follows:=0D
+=0D
+Patches 1-4 perform some general cleanup which paves the way for the rest o=
+f=0D
+the series.=0D
+=0D
+Patch 5 adds -pflash handling where memory-mapped flash can be added on=0D
+user's behalf. That is, the flash memory region in the eLBC is only added i=
+f=0D
+the -pflash argument is supplied. Note that the cfi01 device model becomes=
+=0D
+stricter in checking the size of the emulated flash space.=0D
+=0D
+Patches 6 and 7 add a new device model - the Freescale eSDHC - to the e500=
+=0D
+boards which was missing so far.=0D
+=0D
+User documentation is also added as the new features become available.=0D
+=0D
+Tesing done:=0D
+* `qemu-system-ppc -M ppce500 -cpu e500mc -m 256 -kernel uImage -append=0D
+"console=3DttyS0 rootwait root=3D/dev/mtdblock0 nokaslr" -drive=0D
+if=3Dpflash,file=3Drootfs.ext2,format=3Draw`=0D
+* `qemu-system-ppc -M ppce500 -cpu e500mc -m 256 -kernel uImage -append=0D
+"console=3DttyS0 rootwait root=3D/dev/mmcblk0" -device sd-card,drive=3Dmydr=
+ive -drive=0D
+id=3Dmydrive,if=3Dnone,file=3Drootfs.ext2,format=3Draw`=0D
+=0D
+The load was created using latest Buildroot with `make=0D
+qemu_ppc_e500mc_defconfig` where the rootfs was configured to be of ext2 ty=
+pe.=0D
+In both cases it was possible to log in and explore the root file system.=0D
+=0D
+v4:=0D
+~~~=0D
+Zoltan:=0D
+- Don't suggest presence of qemu-system-ppc32 in documentation=0D
+=0D
+Bin:=0D
+- New patch: docs/system/ppc/ppce500: Use qemu-system-ppc64 across the boar=
+d(s)=0D
+=0D
+Peter:=0D
+- Inline pflash_cfi01_register() rather than modify it (similar to v2)=0D
+=0D
+v3:=0D
+~~~=0D
+Phil:=0D
+- Also add power-of-2 fix to pflash_cfi02=0D
+- Resolve cfi01-specific assertion in e500 code=0D
+- Resolve unused define in eSDHC device model=0D
+- Resolve redundant alignment checks in eSDHC device model=0D
+=0D
+Bin:=0D
+- Add dedicated flash chapter to documentation=0D
+=0D
+Bernhard:=0D
+- Use is_power_of_2() instead of ctpop64() for better readability=0D
+- Only instantiate eSDHC device model in ppce500 (not used in MPC8544DS)=0D
+- Rebase onto gitlab.com/danielhb/qemu/tree/ppc-next=0D
+=0D
+v2:=0D
+~~~=0D
+Bin:=0D
+- Add source for MPC8544DS platform bus' memory map in commit message.=0D
+- Keep "ESDHC" in comment referring to Linux driver.=0D
+- Use "qemu-system-ppc{64|32} in documentation.=0D
+- Use g_autofree in device tree code.=0D
+- Remove unneeded device tree properties.=0D
+- Error out if pflash size doesn't fit into eLBC memory window.=0D
+- Remove unused ESDHC defines.=0D
+- Define macro ESDHC_WML for register offset with magic constant.=0D
+- Fix some whitespace issues when adding eSDHC device to e500.=0D
+=0D
+Phil:=0D
+- Fix tense in commit message.=0D
+=0D
+Bernhard Beschow (7):=0D
+  docs/system/ppc/ppce500: Use qemu-system-ppc64 across the board(s)=0D
+  hw/block/pflash_cfi0{1,2}: Error out if device length isn't a power of=0D
+    two=0D
+  hw/sd/sdhci-internal: Unexport ESDHC defines=0D
+  hw/sd/sdhci: Rename ESDHC_* defines to USDHC_*=0D
+  hw/ppc/e500: Implement pflash handling=0D
+  hw/sd/sdhci: Implement Freescale eSDHC device model=0D
+  hw/ppc/e500: Add Freescale eSDHC to e500plat=0D
+=0D
+ docs/system/ppc/ppce500.rst |  38 +++++++-=0D
+ hw/block/pflash_cfi01.c     |   8 +-=0D
+ hw/block/pflash_cfi02.c     |   5 +=0D
+ hw/ppc/Kconfig              |   2 +=0D
+ hw/ppc/e500.c               | 114 +++++++++++++++++++++-=0D
+ hw/ppc/e500.h               |   1 +=0D
+ hw/ppc/e500plat.c           |   1 +=0D
+ hw/sd/sdhci-internal.h      |  20 ----=0D
+ hw/sd/sdhci.c               | 183 +++++++++++++++++++++++++++++++-----=0D
+ include/hw/sd/sdhci.h       |   3 +=0D
+ 10 files changed, 324 insertions(+), 51 deletions(-)=0D
+=0D
+-- =0D
+2.38.0=0D
+=0D

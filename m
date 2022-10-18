@@ -1,368 +1,138 @@
-Received: by 2002:a17:906:43c7:b0:78d:9f02:16a1 with SMTP id j7csp2780860ejn;
-        Mon, 17 Oct 2022 17:35:07 -0700 (PDT)
-X-Received: by 2002:a5e:a811:0:b0:6bc:4534:875c with SMTP id c17-20020a5ea811000000b006bc4534875cmr394480ioa.151.1666053307338;
-        Mon, 17 Oct 2022 17:35:07 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1666053307; cv=none;
+Received: by 2002:a17:906:43c7:b0:78d:9f02:16a1 with SMTP id j7csp2804588ejn;
+        Mon, 17 Oct 2022 18:27:31 -0700 (PDT)
+X-Google-Smtp-Source: AMsMyM6uCL+0Le+bxlVD2aTwRcu+jPpOkNTIbf0hBmPgqGAEZiHWsQ/bEqQEJtpKwF+ntjEUwEnh
+X-Received: by 2002:a05:622a:181:b0:39c:bd89:7b9 with SMTP id s1-20020a05622a018100b0039cbd8907b9mr383364qtw.590.1666056451231;
+        Mon, 17 Oct 2022 18:27:31 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1666056451; cv=none;
         d=google.com; s=arc-20160816;
-        b=Ql29GCqSjvKMZ5gTS08whFGcuMU63+HopnhsmqF4nQUO/ctUewcOuX2MSP3wbs8USR
-         3n5d8Qv/7JOXBUO1jy1yLQLel9nvlYvsLLjUd5/g/Mm8SWFhEGQ50g1DfD0mml/VOfHP
-         jL9EWXz+1CIIiN6+uuZjMCAqZFvcK/QyeEI1JfvspESk+TqF2Eh6/OIrGmqmcR3vJ6Ar
-         szo5xb35VX+N0swqkGqQ8dQzk1BogwciTL6hGlDf0cm/UU2c7+FSgdLcR4cpHGF0GZtp
-         nyA85AIOt/uhmSfCqBcGky9Tav02uoJ5WkIFR7Vx8Fn3MWr+dT+m8pbJIKLaKpJznJqz
-         VK8g==
+        b=vRfwom0ZZNTlLKGd5AtigbLblXDVz+fxmlaTf+HKhI2Q6FfAqhTmVolG6Mtg5DNTMA
+         h4h+8HaqW7Dk/mf/I71BVQ3HD6pD50KLtPs6WrlnRdd2kau4kQMvhj6+Dlqb18pIkYqj
+         o8qYGNcCDpjILqnW9bUMIJqUd1E7zQUDNiPNOAHRp1VRj5/SsrSZifu0RERnKhNCOOdT
+         D6/WUNyDuhge6JQ7PPeyiDYWD5eMBnzQ8MW+nO5CMocW0NQA2ABR3VtT4zHxm6kF3eLq
+         zkYAM4kl3HqObJfCxuNFOzEkJHRof418bYgUaSmOWWJRJQiCCpsnFa4Rl0I48O6eQ5Vl
+         fs/g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:dkim-signature;
-        bh=vE6t4MD2VpTczhThceiMSriM1RVeuGlWNewRT1sYejY=;
-        b=RLEUuzj1sOP6PwepOyNC11kX9rJBQBIKsWVd6atOTc0uOIrkW4LITcMR7A7meGocno
-         0oGgIydyD4WLij5nAv2RfD0mvGvLNWzGt11ZX2GElrXAqk/16AabI4DNLAX4OKNr/cw/
-         gMpulZFdLXq3Se2Fgnz95l/iiRgIgXiM8OIl1jl3i49OJoMN5EjWxYXo8QhPQ+iydfKZ
-         JcfB4Qz48Ij44q69HckvdmWGoevnDujaP6ANFk4xPeeb8CXhztadztw39xLt9VlEVCkb
-         QPyVVz8ZSzBAhny6KjyyvIBgGDIA9sjdpkT+W/HPqGIIHwBcOo4HVKIYJAgU1ZxnpB13
-         1aQQ==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:mime-version:user-agent
+         :references:message-id:in-reply-to:subject:cc:to:from:date
+         :dkim-signature;
+        bh=7u/9/476+GZRW42WZ/rLQyoGmRQZgiI0iG1W5rpoubk=;
+        b=A1kB8XNc+rkXjRr8jqc7OImG+MXoL2RnxUJtPKDVPD41AdBTo6A3zUeppvubdwX9yE
+         h2fFl2PmMfW2iNwRU8z0mZK+tX4Bw7yM7/rqjabuMCovcbp6SAGj+vIoYEYYJ/p3e4Ei
+         7USrWbhsGHMpMD94KHer2CYdQRy32QZhGr9Bs+gN50dC3ahxLa4voAQo+UjA4GbC10ty
+         EkcXYJjttzu+XU8uJKBqYl5x7WBTVLM8OZjaPb2i5k+hqB8CvobCOYkpjUETasj9m3AL
+         B87capu+1LUh/AyisVixq+V8iXIncxFzXLxtYiqGsz6V9siaoFV4g4C0K9n2vTJ32E5R
+         hRLw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=Wk1NdQaO;
-       spf=pass (google.com: domain of paxi.three@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=paxi.three@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <paxi.three@gmail.com>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id p7-20020a927407000000b002f8f406781dsor3379775ilc.50.2022.10.17.17.35.07
+       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=fWMyBqND;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=kernel.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id t17-20020a37ea11000000b006e174e104besi6506834qkj.670.2022.10.17.18.27.31
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Mon, 17 Oct 2022 17:35:07 -0700 (PDT)
-Received-SPF: pass (google.com: domain of paxi.three@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Mon, 17 Oct 2022 18:27:31 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=Wk1NdQaO;
-       spf=pass (google.com: domain of paxi.three@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=paxi.three@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=vE6t4MD2VpTczhThceiMSriM1RVeuGlWNewRT1sYejY=;
-        b=Wk1NdQaOSXqfIYjagiZe3rsU4omOe1f0YqdQO53oJ0vYTYqb/fVW6v4u2rPjV3ETCO
-         vUEcunMr8RMua72d/0/82UoyucfKQ0gXWIDdnWGOIu42cC0oQqrKwxIQmZfzL2I/IZOj
-         mBxM8FNk45kP6JU/iMNeWM1O2YDOGA62HLlUvs4jZm8QA5AIcvZYImlHyopAR65Sff2S
-         47brvvVLFq4gKPAV8qPVs1ARkQaaB4cgrU9QaFg+JmvRqaDa82WuMzQDR8wBhVxmXE9T
-         JheOZKQ3fdQEScQnFVN+J1GfzpfFN8sV9RMfqwsMw1pSui358MimH1KMisbPRI0hofkJ
-         CC5Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=vE6t4MD2VpTczhThceiMSriM1RVeuGlWNewRT1sYejY=;
-        b=ckLclEpcCqG19BBSH0md6eaSfBJ93w45qTGbT4xxeyM1JWWfatNSxtwnkBYZ/gVUQf
-         tE3jCbPZpcNuLxn2JpDoe8BMuobZf6loBsiXGJhZCs+0fhb94qT6K5nEFyI9CNlYSuKJ
-         RuWdwLsEXkH8s126sYi7tTvsc/XYVMbD6Qc1KhvvR4aiozjAj708nv5Kgu70kD7MbsdF
-         Bxt44j+Nfmvb7Z394LyBrMq6yrbQjGRARmFZQWqh0wjDKyD5iDoiUHyN5E/mYNdpqcze
-         738YvWYaAUb3HogFuokJFiOLgZMWA5N6k4nAsvxVdeH4HUzMc9a1J89UjEPR2ybH85y1
-         uMdw==
-X-Gm-Message-State: ACrzQf3kpY9+2I1qQbZgzrLmUJfK3tgsaLFp+CHpRCgjo/P9MHEkVKNS
-	zt3D1htMAjPPWSDmjSBNGRDaNRKU3JW1xXnQ9HlEtQ4p
-X-Google-Smtp-Source: AMsMyM4pgWkxK5YfQR967Mtpi1ZUlSSl/YJEgxMzNKGiFEmnZPefSIK+wRwzudPJoUDdmkFd/U1Hr5zzvlXHXVPPe9s=
-X-Received: by 2002:a92:c9cd:0:b0:2f9:8c46:b487 with SMTP id
- k13-20020a92c9cd000000b002f98c46b487mr447860ilq.280.1666053306703; Mon, 17
- Oct 2022 17:35:06 -0700 (PDT)
+       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=fWMyBqND;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=kernel.org
+Received: from localhost ([::1]:59526 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1okbOE-0002Db-Nm
+	for alex.bennee@linaro.org; Mon, 17 Oct 2022 21:27:30 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:54672)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <sstabellini@kernel.org>)
+ id 1okbNd-0002DA-NH; Mon, 17 Oct 2022 21:26:53 -0400
+Received: from dfw.source.kernel.org ([139.178.84.217]:33882)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <sstabellini@kernel.org>)
+ id 1okbNc-0006Ci-0F; Mon, 17 Oct 2022 21:26:53 -0400
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by dfw.source.kernel.org (Postfix) with ESMTPS id 5E180612F4;
+ Tue, 18 Oct 2022 01:26:48 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id BF227C433D6;
+ Tue, 18 Oct 2022 01:26:45 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1666056407;
+ bh=T68CN2SGOaBpQNuMZfn7mBL9Zq41PiKYwHxZzpuuZRQ=;
+ h=Date:From:To:cc:Subject:In-Reply-To:References:From;
+ b=fWMyBqNDPxEMfzKCer3hc8hnYg8Lk9xRepw33WRjRSobJS3ZkNy4j2M+ytM3AHPgO
+ 8nZX2q7JSxnhFwjUi29UzhNw/w0Ezeu5OHNVTajm2KF26i3cvC6kbUBPQWX/FPvITg
+ cPLO+kkx5cQmScEmOd1SbvFJT+YJjYs1eri2HUQaKpnhdjniSUGPOAtGT0EBIlo9E1
+ nMXiMDKfwdXP2NJQNgVLbVPOzba119X1a+s0A1Mwl1T94WMaHJ3Sm06Ca7+2Dv5L7k
+ SN3dVcGoAT8e4MbCyFnz93pRYPWwA2ycmdgh5DuUwQyGmJ4z6w1iybe3J4woIuGQus
+ 1RjqNpjcKcrzw==
+Date: Mon, 17 Oct 2022 18:26:43 -0700 (PDT)
+From: Stefano Stabellini <sstabellini@kernel.org>
+X-X-Sender: sstabellini@ubuntu-linux-20-04-desktop
+To: Julien Grall <julien@xen.org>
+cc: Vikram Garhwal <vikram.garhwal@amd.com>, qemu-devel@nongnu.org, 
+ stefano.stabellini@amd.com, Peter Maydell <peter.maydell@linaro.org>, 
+ Stefano Stabellini <sstabellini@kernel.org>, 
+ Anthony Perard <anthony.perard@citrix.com>, Paul Durrant <paul@xen.org>, 
+ "open list:ARM TCG CPUs" <qemu-arm@nongnu.org>, 
+ "open list:X86 Xen CPUs" <xen-devel@lists.xenproject.org>
+Subject: Re: [PATCH v1 10/12] hw/arm: introduce xenpv machine
+In-Reply-To: <3e504b1b-197d-b77b-16e1-86530eb3d64c@xen.org>
+Message-ID: <alpine.DEB.2.22.394.2210171345450.2351079@ubuntu-linux-20-04-desktop>
+References: <20221015050750.4185-1-vikram.garhwal@amd.com>
+ <20221015050750.4185-11-vikram.garhwal@amd.com>
+ <3e504b1b-197d-b77b-16e1-86530eb3d64c@xen.org>
+User-Agent: Alpine 2.22 (DEB 394 2020-01-19)
 MIME-Version: 1.0
-References: <CAChpoR45q6huduz7J7jrOrJz3gqHYT+jr1j=QKnfmPbj=wd_pg@mail.gmail.com>
- <878rlee4yf.fsf@linaro.org>
-In-Reply-To: <878rlee4yf.fsf@linaro.org>
-From: =?UTF-8?B?4K6k4K6+4K6a4K+GIOCvqQ==?= <paxi.three@gmail.com>
-Date: Tue, 18 Oct 2022 06:04:54 +0530
-Message-ID: <CAChpoR7HyJxQpmg-LhtAmH1k=yOLE-2mGM9=mfJao0e_zqXHRA@mail.gmail.com>
-Subject: Re: Running server from within qemu
-To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
-Cc: qemu-arm@nongnu.org
-Content-Type: multipart/alternative; boundary="00000000000085e28305eb4443c7"
-X-TUID: L1rBNWNhK3YJ
+Content-Type: text/plain; charset=US-ASCII
+Received-SPF: pass client-ip=139.178.84.217;
+ envelope-from=sstabellini@kernel.org; helo=dfw.source.kernel.org
+X-Spam_score_int: -73
+X-Spam_score: -7.4
+X-Spam_bar: -------
+X-Spam_report: (-7.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.255,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_HI=-5, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: OGv+PX00PA8K
 
---00000000000085e28305eb4443c7
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+On Sun, 16 Oct 2022, Julien Grall wrote:
+> Hi,
+> 
+> There seem to be some missing patches on xen-devel (including the cover
+> letter). Is that expected?
+> 
+> On 15/10/2022 06:07, Vikram Garhwal wrote:
+> > Add a new machine xenpv which creates a IOREQ server to register/connect
+> > with
+> > Xen Hypervisor.
+> 
+> I don't like the name 'xenpv' because it doesn't convey the fact that some of
+> the HW may be emulated rather than para-virtualized. In fact one may only want
+> to use for emulating devices.
+> 
+> Potential name would be 'xen-arm' or re-using 'virt' but with 'accel=xen' to
+> select a Xen layout.
 
-Hi Alex,
-
-I tried what you suggested.  I have some observations.
-
-Before going into that that:
-
-The file /etc/config/network within my OpenWRT has:
-
-config interface 'loopback'
-option device 'io'
-option proto 'static'
-option ipaddr '127.0.0.1'
-option netmask '255.0.0.0'
-
-config globals 'globals'
-option url_prefix 'fd0d:5e50:c550::/40'
-
-config device
-option name 'br-lan'
-option type 'bridge'
-list ports 'eth0'
-
-config interface 'lan'
-option device 'br-lan'
-option proto 'static'
-option ipaddr '192.168.0.201'
-option netmask '255.255.255.0'
-option ip6assign '60'
-
-config interface 'wan'
-option device 'eth1'
-option proto 'dhcp'
-
-config interface 'wan6'
-option device 'eth1'
-option proto 'dhcpv6'
-
-Q: Do I need to make any chsnges in the above file and try?
-Note: I actually tried changing the confirmation of 'br-lan' as 'dhcp' and
-removing ipaddr, netmask and ip6assign, but no major change in the overall
-behaviour.
-
-Without applying the change '-netdev.....' suggested by you and with having
-two '-nic user', which you pointed out, when I ran 'ifconfig', I got:
-br-lan   Link encap:Whether......
-              inet address:192.168.0.201 ..
-              :
-eth0        Link encap:Whether......
-                /*no inet addr*/
-                 :
-eth1         Link encap:Whether......
-                 inet addr:10.0.2.15..
-                  :
-lo               Link encap:Local Loopback
-                 inet addr:127.0.0.1..
-                 :
-With this configuration I am able to access host-network & internet from
-within OpenWRT running on QEMU.  But, this is the same configuration where
-I couldn't hit the http server running on port 8000 within OpenWRT from the
-host OS, which is the issue which I mentioned in my first email.  FYI, from
-the host OS, I was trying to hit http://192.168.0.201:8000 . The IP address
-of my host OS is 192.168.0.101
-
-Before trying your suggestion, I just thought of reloading qemu with just a
-single '-nic user' and when I ran 'ifconfig' within OpenWRT, I got the
-following: (see, eth1 is missing)
-
-br-lan   Link encap:Whether......
-              inet address:192.168.0.201 ..
-              :
-eth0        Link encap:Whether......
-                /*no inet addr*/
-                 :
-lo               Link encap:Local Loopback
-                 inet addr:127.0.0.1..
-                 :
-
-And I couldn't hit any of the external servers from within army/OpenWRT and
-hitting http://192.168.0.201:8000 from host OS also failed.
-
-Now, I tried the option you suggested as '-netdev
-user,id=3Dunet,hostfwd=3Dtcp::9000-:8000 -device virtio-net-pci,netdev=3Dun=
-et'
-alone (without any '-nic user's) so that I can try hitting
-http://192.168.0.201:9000 from host OS.  After loading OpenWRT on QEMU, I
-tried 'ifconfig' and I got:
-br-lan   Link encap:Whether......
-              inet address:192.168.0.201 ..
-              :
-eth0        Link encap:Whether......
-                /*no inet addr*/
-                 :
-lo               Link encap:Local Loopback
-                 inet addr:127.0.0.1..
-                 :
-
-Which is very similar to the previous case
-
-Here also, I couldn't hit any of the external servers from within
-army/OpenWRT and hitting http://192.168.0.201:9000 from host OS also
-failed.  Hitting http://192.168.0.101:9000 also failed.
-
-Am I missing anything?
-
-On Mon, Oct 17, 2022, 10:57 PM Alex Benn=C3=A9e <alex.bennee@linaro.org> wr=
-ote:
-
->
-> =E0=AE=A4=E0=AE=BE=E0=AE=9A=E0=AF=86 =E0=AF=A9 <paxi.three@gmail.com> wri=
-tes:
->
-> > Hi,
-> >
-> > I am new to using QEMU.  Is it possible to host a simple http/tcp serve=
-r
-> on a Linux which is running on qemu, without any
-> > accompanying vm (KVM), and hit that http server from the host OS (say
-> Windows)? What options should I choose in army
-> > (command line args) to run any TCP based server from within qemu?
-> >
-> > As of now I use the following to start my OpenWRT Linux on QEMU:
-> > $ qemu-sysyem-arm -M vert-2.9 -kernel openwrt-22.03.1-armvirt-32-zImage
-> -no-reboot -nographic -drive
-> > file=3Dopenwrt-32-rootfs-ext4.img,if=3Dvirtio,format=3Draw -append
-> "root=3D/dev/vda" -m 1G -nic user -nic user
-> >
->
-> You have two nics in the command line. Anyway using a proper split
-> -netdev/-device specification:
->
->   -netdev user,id=3Dunet,hostfwd=3Dtcp::2222-:22 -device
-> virtio-net-pci,netdev=3Dunet
->
-> which in this case forwards tcp port 2222 on the host to port 22 on the
-> guest. Just don't expect brilliant performance.
->
->
-> > Thankyou
->
->
-> --
-> Alex Benn=C3=A9e
->
-
---00000000000085e28305eb4443c7
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"auto"><div dir=3D"auto">Hi Alex,<div dir=3D"auto"><br></div><di=
-v dir=3D"auto">I tried what you suggested.=C2=A0 I have some observations.=
-=C2=A0=C2=A0</div><div dir=3D"auto"><br></div><div dir=3D"auto">Before goin=
-g into that that:</div><div dir=3D"auto">=C2=A0</div><div dir=3D"auto">The =
-file /etc/config/network within my OpenWRT has:</div><div dir=3D"auto"><br>=
-</div><div dir=3D"auto">config interface &#39;loopback&#39;</div><div dir=
-=3D"auto">option device &#39;io&#39;</div><div dir=3D"auto">option proto &#=
-39;static&#39;</div><div dir=3D"auto">option ipaddr &#39;127.0.0.1&#39;</di=
-v><div dir=3D"auto">option netmask &#39;255.0.0.0&#39;</div><div dir=3D"aut=
-o"><br></div><div dir=3D"auto">config globals &#39;globals&#39;</div><div d=
-ir=3D"auto">option url_prefix &#39;fd0d:5e50:c550::/40&#39;</div><div dir=
-=3D"auto"><br></div><div dir=3D"auto">config device</div><div dir=3D"auto">=
-option name &#39;br-lan&#39;</div><div dir=3D"auto">option type &#39;bridge=
-&#39;</div><div dir=3D"auto">list ports &#39;eth0&#39;</div><div dir=3D"aut=
-o"><br></div><div dir=3D"auto"><div dir=3D"auto">config interface &#39;lan&=
-#39;</div><div dir=3D"auto">option device &#39;br-lan&#39;</div><div dir=3D=
-"auto">option proto &#39;static&#39;</div><div dir=3D"auto">option ipaddr &=
-#39;192.168.0.201&#39;</div><div dir=3D"auto">option netmask &#39;255.255.2=
-55.0&#39;</div><div dir=3D"auto">option ip6assign &#39;60&#39;</div><div di=
-r=3D"auto"><br></div><div dir=3D"auto"><div dir=3D"auto">config interface &=
-#39;wan&#39;</div><div dir=3D"auto">option device &#39;eth1&#39;</div><div =
-dir=3D"auto">option proto &#39;dhcp&#39;</div><div dir=3D"auto"><br></div><=
-div dir=3D"auto"><div dir=3D"auto">config interface &#39;wan6&#39;</div><di=
-v dir=3D"auto">option device &#39;eth1&#39;</div><div dir=3D"auto">option p=
-roto &#39;dhcpv6&#39;</div><div dir=3D"auto"><br></div><div dir=3D"auto">Q:=
- Do I need to make any chsnges in the above file and try?=C2=A0=C2=A0</div>=
-<div dir=3D"auto">Note: I actually tried changing the confirmation of &#39;=
-br-lan&#39; as &#39;dhcp&#39; and removing ipaddr, netmask and ip6assign, b=
-ut no major change in the overall behaviour.</div><div dir=3D"auto"><br></d=
-iv><div dir=3D"auto">Without applying the change &#39;-netdev.....&#39; sug=
-gested by you and with having two &#39;-nic user&#39;, which you pointed ou=
-t, when I ran &#39;ifconfig&#39;, I got:</div><div dir=3D"auto">br-lan=C2=
-=A0 =C2=A0Link encap:Whether......</div><div dir=3D"auto">=C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 inet address:192.168.0.201 ..</div><div dir=
-=3D"auto">=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 :</div><div dir=
-=3D"auto">eth0=C2=A0 =C2=A0 =C2=A0 =C2=A0 Link encap:Whether......</div><di=
-v dir=3D"auto">=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 /*no=
- inet addr*/</div><div dir=3D"auto">=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0:</div><div dir=3D"auto">eth1=C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 =C2=A0Link encap:Whether......</div><div dir=3D"auto">=C2=A0 =C2=A0 =
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0inet addr:10.0.2.15..</div>=
-<div dir=3D"auto">=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 :</div><div dir=3D"auto">lo=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
- =C2=A0 =C2=A0Link encap:Local Loopback</div><div dir=3D"auto">=C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0inet addr:127.0.0.1..<b=
-r></div><div dir=3D"auto">=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 =C2=A0:</div><div dir=3D"auto">With this configuration I am able to =
-access host-network &amp; internet from within OpenWRT running on QEMU.=C2=
-=A0 But, this is the same configuration where I couldn&#39;t hit the http s=
-erver running on port 8000 within OpenWRT from the host OS, which is the is=
-sue which I mentioned in my first email.=C2=A0 FYI, from the host OS, I was=
- trying to hit <a href=3D"http://192.168.0.201:8000">http://192.168.0.201:8=
-000</a> . The IP address of my host OS is 192.168.0.101</div><div dir=3D"au=
-to"><br></div><div dir=3D"auto">Before trying your suggestion, I just thoug=
-ht of reloading qemu with just a single &#39;-nic user&#39; and when I ran =
-&#39;ifconfig&#39; within OpenWRT, I got the following: (see, eth1 is missi=
-ng)</div><div dir=3D"auto"><br></div><div dir=3D"auto"><div dir=3D"auto">br=
--lan=C2=A0 =C2=A0Link encap:Whether......</div><div dir=3D"auto">=C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 inet address:192.168.0.201 ..</div><=
-div dir=3D"auto">=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 :</div><d=
-iv dir=3D"auto">eth0=C2=A0 =C2=A0 =C2=A0 =C2=A0 Link encap:Whether......</d=
-iv><div dir=3D"auto">=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 /*no inet addr*/</div><div dir=3D"auto">=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0:</div><div dir=3D"auto">lo=C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0Link encap:Local Loopback</div><div d=
-ir=3D"auto">=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0i=
-net addr:127.0.0.1..<br></div><div dir=3D"auto">=C2=A0 =C2=A0 =C2=A0 =C2=A0=
- =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0:</div></div><div dir=3D"auto"><br></div=
-><div dir=3D"auto">And I couldn&#39;t hit any of the external servers from =
-within army/OpenWRT and hitting <a href=3D"http://192.168.0.201:8000">http:=
-//192.168.0.201:8000</a> from host OS also failed.</div><div dir=3D"auto"><=
-br></div><div dir=3D"auto">Now, I tried the option you suggested as &#39;-n=
-etdev user,id=3Dunet,hostfwd=3Dtcp::9000-:8000 -device virtio-net-pci,netde=
-v=3Dunet&#39; alone (without any &#39;-nic user&#39;s) so that I can try hi=
-tting <a href=3D"http://192.168.0.201:9000">http://192.168.0.201:9000</a> f=
-rom host OS.=C2=A0 After loading OpenWRT on QEMU, I tried &#39;ifconfig&#39=
-; and I got:</div></div></div></div></div><div dir=3D"auto">br-lan=C2=A0 =
-=C2=A0Link encap:Whether......</div><div dir=3D"auto">=C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 inet address:192.168.0.201 ..</div><div dir=3D"=
-auto">=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 :</div><div dir=3D"a=
-uto">eth0=C2=A0 =C2=A0 =C2=A0 =C2=A0 Link encap:Whether......</div><div dir=
-=3D"auto">=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 /*no inet=
- addr*/</div><div dir=3D"auto">=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 =C2=A0 =C2=A0:</div><div dir=3D"auto">lo=C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 =C2=A0 =C2=A0 =C2=A0Link encap:Local Loopback</div><div dir=3D"auto"=
->=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0inet addr:12=
-7.0.0.1..<br></div><div dir=3D"auto">=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0:</div><div dir=3D"auto"><br></div><div dir=3D"auto=
-">Which is very similar to the previous case</div><div dir=3D"auto"><br></d=
-iv><div dir=3D"auto">Here also, I couldn&#39;t hit any of the external serv=
-ers from within army/OpenWRT and hitting <a href=3D"http://192.168.0.201:90=
-00">http://192.168.0.201:9000</a> from host OS also failed.=C2=A0 Hitting <=
-a href=3D"http://192.168.0.101:9000">http://192.168.0.101:9000</a> also fai=
-led.</div><div dir=3D"auto"><br></div><div dir=3D"auto">Am I missing anythi=
-ng?</div><div dir=3D"auto"><br></div><div class=3D"gmail_quote"><div dir=3D=
-"ltr" class=3D"gmail_attr">On Mon, Oct 17, 2022, 10:57 PM Alex Benn=C3=A9e =
-&lt;<a href=3D"mailto:alex.bennee@linaro.org" target=3D"_blank" rel=3D"nore=
-ferrer">alex.bennee@linaro.org</a>&gt; wrote:<br></div><blockquote class=3D=
-"gmail_quote" style=3D"margin:0 0 0 .8ex;border-left:1px #ccc solid;padding=
--left:1ex"><br>
-=E0=AE=A4=E0=AE=BE=E0=AE=9A=E0=AF=86 =E0=AF=A9 &lt;<a href=3D"mailto:paxi.t=
-hree@gmail.com" rel=3D"noreferrer noreferrer" target=3D"_blank">paxi.three@=
-gmail.com</a>&gt; writes:<br>
-<br>
-&gt; Hi,<br>
-&gt;<br>
-&gt; I am new to using QEMU.=C2=A0 Is it possible to host a simple http/tcp=
- server on a Linux which is running on qemu, without any<br>
-&gt; accompanying vm (KVM), and hit that http server from the host OS (say =
-Windows)? What options should I choose in army<br>
-&gt; (command line args) to run any TCP based server from within qemu?<br>
-&gt;<br>
-&gt; As of now I use the following to start my OpenWRT Linux on QEMU:<br>
-&gt; $ qemu-sysyem-arm -M vert-2.9 -kernel openwrt-22.03.1-armvirt-32-zImag=
-e -no-reboot -nographic -drive<br>
-&gt; file=3Dopenwrt-32-rootfs-ext4.img,if=3Dvirtio,format=3Draw -append &qu=
-ot;root=3D/dev/vda&quot; -m 1G -nic user -nic user<br>
-&gt;<br>
-<br>
-You have two nics in the command line. Anyway using a proper split<br>
--netdev/-device specification:<br>
-<br>
-=C2=A0 -netdev user,id=3Dunet,hostfwd=3Dtcp::2222-:22 -device virtio-net-pc=
-i,netdev=3Dunet<br>
-<br>
-which in this case forwards tcp port 2222 on the host to port 22 on the<br>
-guest. Just don&#39;t expect brilliant performance. <br>
-<br>
-<br>
-&gt; Thankyou<br>
-<br>
-<br>
--- <br>
-Alex Benn=C3=A9e<br>
-</blockquote></div></div>
-
---00000000000085e28305eb4443c7--
+The benefit of 'xenpv' is that it doesn't require any changes to libxl.
+It is even backward compatible so it could be used with an older version
+of Xen/libxl. Backward compatibility aside, if we come up with a
+different name then we'll need changes to libxl and to manage those
+changes. For instance, if we use 'xen-arm' that would mean we would need
+to handle per-arch QEMU machine names.

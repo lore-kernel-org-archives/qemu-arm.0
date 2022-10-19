@@ -1,128 +1,132 @@
-Received: by 2002:a17:906:43c7:b0:78d:9f02:16a1 with SMTP id j7csp3443337ejn;
-        Tue, 18 Oct 2022 14:56:51 -0700 (PDT)
-X-Google-Smtp-Source: AMsMyM7FmnMY3FICkn6Nv1VUOvgnDYiAvtDnOPPSc7ZlHLS1RzT1BZzsm/bAk+kk4SV0ZvO61uBu
-X-Received: by 2002:a05:620a:29c6:b0:6ee:cf89:40cb with SMTP id s6-20020a05620a29c600b006eecf8940cbmr3457904qkp.107.1666130211690;
-        Tue, 18 Oct 2022 14:56:51 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1666130211; cv=none;
+Received: by 2002:a05:7022:458e:b0:46:22f1:8c13 with SMTP id cf14csp30331dlb;
+        Tue, 18 Oct 2022 22:43:52 -0700 (PDT)
+X-Google-Smtp-Source: AMsMyM7c+aGl0A+5+AFBwt2KhdisNebfa63IumX9i81R44jWKWcsduXHPFwEz82CKmSta6At63Q5
+X-Received: by 2002:a05:622a:60a:b0:399:69c8:9b50 with SMTP id z10-20020a05622a060a00b0039969c89b50mr5089482qta.534.1666158232469;
+        Tue, 18 Oct 2022 22:43:52 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1666158232; cv=none;
         d=google.com; s=arc-20160816;
-        b=D5oO9/xm0naQw2YTOyJ6/FEJZJzNpRtLRwTqmmxXdHKDXx9JZztVrAqSj0ZyDeuIfE
-         YECroZV5DphRc5ieanhVXXL2y8XFOyTtmze5U6ae9MKjeirt4ac8orweAr83wPrZvj1x
-         4Mf39wZDTNcm3R1mgQd9ypknXLdz9c780mvf4RfxderUR46HHxbyu2GEJz8EqOiLHI1s
-         t0wIptzYwaEXGiI+V0qTG4vw+zH4AllZ6zrLN2qa2Me2wa4nNAqmLV00dJTWk/EoTHEu
-         nd05l5OSxVbOlFMK/S3b/CbbjpFuXVAnLcM5YylleWENHhdMnrS+nVeWVUIOnq8tKIZR
-         q0/A==
+        b=jNDzyahAqWtR1pxJBKfwkuuBsq+C08YkKio/LbXmXeo8HDjj/feK3s9GCfYOg1goMj
+         3RrV01K/aT0azzgS70SuM0a2PsdBReDFCETE00tE3us8a8ykgcNuvzB9XICYVUXnFF4D
+         DscOsqkrbhOYjkRyDMbYct09N02sEh8sw+bHpUPy0TkwaiCjf8AZstKPO2Kx2+LldGqf
+         RcYsSTkazbsNxfg7Aesuhl8axEYPeYYG3q3XNyRdyAD9OPZGMKEGOrPd6CQMC/ZUaHJP
+         i/bg4COFZ2k3TGe+zurdRHp4aPG/QoFSWx/SSaYGvGMXZ3tk+mBgRiBaOBOtgjH/dkXb
+         6cPA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-disposition:in-reply-to:mime-version:references:message-id
-         :subject:cc:to:from:date:dkim-signature;
-        bh=mPt3hhXk6zRWQQI98JSSk0AHm4CEiigDL8cwBpmFDjk=;
-        b=kEbr3psJhujWjdCXrBtpxP0MqyQO1OFOWWkMSu0KR1/yeInNcdPeCq/W0x+5AH1C3F
-         oW0MyxtHFJQaVpBt3dOdjwUXgj6696JEOXZbgkDV+qMCLwBs79ch3+RsHZNyxaki+O4i
-         +99986ZT0vqk+9a+IC8qAUUXQeZDGYHWGKClEXEMdbsR5SYb5SyugzAAbt4MQEsJ5moN
-         J7Irrbq01bKCUx5RMOwT87ESZB1fSivnk/rdW/AJIWS8z0EJg2E77djfrF3TstWcRC2T
-         YtpMX9nXZ2maBfMaEwWdWBuZBiKL6fMPMCXEqf+ua+kKKh7sxjtL3mVwbzagT657JmEv
-         sKjQ==
+         :content-language:in-reply-to:from:references:cc:to:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=TCRh+w+Fc38cughHLHf+2ds3GmrIuwgvaBBhRmcPBa8=;
+        b=vHvL/LeR5s5RPbLu96uWkAEKYhieC1bbT/cmstLjzD74CQowIJYL+Dh+mYS3TkVwxI
+         c5LXmLwAjtd3yN2fJGeiQgQKOryt6fRPmD/+5VCXGuWB2HDYr9pI9ruO2qP5dK/pGd8I
+         3tnV9m0SdT47Owo8Dc88lh4LcnvBasH2wfRAdZRPNHEEJbjO21oJPCgz0hZGiu2ppF3G
+         6HoWsSaQBYn3Opei+Tf4Ili1p+q5+JzWUbAZiH6BJkko6cAYSgbkfI/zxsyuZ4PyPxGb
+         xim/v5KTwSxFKWfB6dKLYl6/hORFZEQfyljtS+lQwSBT+YAVKxqh0P/A5MDu9vqdCfmc
+         m/Jg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=FFPFHkSJ;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=CzTLUqZd;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id c24-20020a05620a269800b006e3da9333fdsi8440942qkp.299.2022.10.18.14.56.51
+        by mx.google.com with ESMTPS id o11-20020ac841cb000000b0039768618b1csi7607486qtm.585.2022.10.18.22.43.52
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 18 Oct 2022 14:56:51 -0700 (PDT)
+        Tue, 18 Oct 2022 22:43:52 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=FFPFHkSJ;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=CzTLUqZd;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:50876 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:49616 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1okuZv-0005dS-4r
-	for alex.bennee@linaro.org; Tue, 18 Oct 2022 17:56:51 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:60470)
+	id 1ol1rp-0000vU-Rj
+	for alex.bennee@linaro.org; Wed, 19 Oct 2022 01:43:49 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:52478)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peterx@redhat.com>) id 1okuZL-0005Zu-SM
- for qemu-arm@nongnu.org; Tue, 18 Oct 2022 17:56:16 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:33656)
+ (Exim 4.90_1) (envelope-from <jasowang@redhat.com>)
+ id 1ol1q9-0000se-7R
+ for qemu-arm@nongnu.org; Wed, 19 Oct 2022 01:42:14 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:49419)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peterx@redhat.com>) id 1okuZH-0003Ge-UH
- for qemu-arm@nongnu.org; Tue, 18 Oct 2022 17:56:14 -0400
+ (Exim 4.90_1) (envelope-from <jasowang@redhat.com>)
+ id 1ol1q5-0001pA-Vl
+ for qemu-arm@nongnu.org; Wed, 19 Oct 2022 01:42:04 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1666130171;
+ s=mimecast20190719; t=1666158110;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=mPt3hhXk6zRWQQI98JSSk0AHm4CEiigDL8cwBpmFDjk=;
- b=FFPFHkSJx4c8lw0Druv98qBd5OF5FRYGZohzerihQmu+eM47iM6KUzTfk+aU0YxmFY+/IX
- awLVdKUJ2YE02MWcFr6QccS+mrcEagOyc8hmriDqfJvNmMt47jUw3iW1WZvYRetAFWx5pA
- Sr7e8Mjy7T90HGs7FO1pgDdiOU5y6pI=
-Received: from mail-qt1-f200.google.com (mail-qt1-f200.google.com
- [209.85.160.200]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=TCRh+w+Fc38cughHLHf+2ds3GmrIuwgvaBBhRmcPBa8=;
+ b=CzTLUqZd/ovMobEwkKkaTWuhPwL2jnHtDf8iNLOBX9vGC5l4u2sAm8b5XkzJX7UwThtxH+
+ 8aE8dDEZ2FhnInHrj9Z6jq7T8xGftQ/73xY58fDFOkojuc2FAuqmQjDo0v5Tk0Aqcdfymk
+ sj4/y0ac0tFzYwEoHQoUTlDgIlHNlY8=
+Received: from mail-pl1-f198.google.com (mail-pl1-f198.google.com
+ [209.85.214.198]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_128_GCM_SHA256) id
- us-mta-166-IIyC4OIhO6OqQFDnesndcQ-1; Tue, 18 Oct 2022 17:56:10 -0400
-X-MC-Unique: IIyC4OIhO6OqQFDnesndcQ-1
-Received: by mail-qt1-f200.google.com with SMTP id
- 17-20020ac85711000000b0039ccd4c9a37so11574567qtw.20
- for <qemu-arm@nongnu.org>; Tue, 18 Oct 2022 14:56:10 -0700 (PDT)
+ us-mta-591-7DoovGh1MO-oo4ph3IJaPA-1; Wed, 19 Oct 2022 01:41:49 -0400
+X-MC-Unique: 7DoovGh1MO-oo4ph3IJaPA-1
+Received: by mail-pl1-f198.google.com with SMTP id
+ m3-20020a170902bb8300b0017f7e7e4385so11260808pls.20
+ for <qemu-arm@nongnu.org>; Tue, 18 Oct 2022 22:41:49 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=in-reply-to:content-transfer-encoding:content-disposition
- :mime-version:references:message-id:subject:cc:to:from:date
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=mPt3hhXk6zRWQQI98JSSk0AHm4CEiigDL8cwBpmFDjk=;
- b=R36GuAfOnPuB3G6eqWXC21+sYF54H7mYOW/74DrnI7p5Ww0g0sQPG3hlPKJQUvXcO8
- fTZgdR2j3nTnzrSMgw8iku227XwEqvYv9MXz/kqeMu9rnwQKwbxOjetVy2eveKiw2nmP
- iZeZSJLEbESD9IPp/6OnFAq32tZt0knAo51IwSI9zhd53DFrA+J8X43fhJsi3vOtp1ws
- os8gFRoaIQgRZzjAxvUOz2q643e2wXS9fg3xadoKshOyWjY05QTPbhli6GQOekKjW1jU
- HPHNuWUhg7BOUUhxU1dv0JfO5O6jK+Gpd4EhFYajL4Tv2SzBxlrq+QmwdV7aVgBksT2q
- kcJw==
-X-Gm-Message-State: ACrzQf065TC+QQxcNvbWGQpDmfZhNztoM1aR4MKQdgK0pDJoubqOrvZ6
- o/BHXTX0IXkK+iAlpEfzAoZfki4HTGS4kVU+TzMO2Lc9hAB2PbR0f2PIAytCLKguOE44Wxiih/3
- G0P4LH3Sbe8or
-X-Received: by 2002:a05:620a:b87:b0:6ea:d354:49b9 with SMTP id
- k7-20020a05620a0b8700b006ead35449b9mr3393791qkh.384.1666130168445; 
- Tue, 18 Oct 2022 14:56:08 -0700 (PDT)
-X-Received: by 2002:a05:620a:b87:b0:6ea:d354:49b9 with SMTP id
- k7-20020a05620a0b8700b006ead35449b9mr3393777qkh.384.1666130168183; 
- Tue, 18 Oct 2022 14:56:08 -0700 (PDT)
-Received: from x1n (bras-base-aurron9127w-grc-46-70-31-27-79.dsl.bell.ca.
- [70.31.27.79]) by smtp.gmail.com with ESMTPSA id
- bz12-20020a05622a1e8c00b0039a1146e0e1sm2729417qtb.33.2022.10.18.14.56.07
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 18 Oct 2022 14:56:07 -0700 (PDT)
-Date: Tue, 18 Oct 2022 17:56:06 -0400
-From: Peter Xu <peterx@redhat.com>
-To: Eric Auger <eric.auger@redhat.com>
-Cc: eric.auger.pro@gmail.com, mst@redhat.com, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org, eperezma@redhat.com, jasowang@redhat.com,
- Jean-Philippe Brucker <jean-philippe@linaro.org>
-Subject: Re: [PATCH] vhost: Warn if DEVIOTLB_UNMAP is not supported and ats
- is set
-Message-ID: <Y08g9iaH5lZnPkte@x1n>
-References: <20221018122852.1185395-1-eric.auger@redhat.com>
- <Y063RZ4SkYcRM+SP@x1n>
- <31b87958-3be6-49c2-f0d9-9bcb8ec3bc1c@redhat.com>
+ bh=TCRh+w+Fc38cughHLHf+2ds3GmrIuwgvaBBhRmcPBa8=;
+ b=JJOTmwy0Y3Q1PCVQerRuyF+lmqlzifjSdnVCjeOs5pX+7R7lxw2ledfZ5/0nZKQbbM
+ FuJJYwCZtX0FdiU3rECo/H88BoromgJGKOj7/mrOxeLxG/0lSlLE5/zMKY8HHVfsPZMu
+ 2EEH2a4Hxuwd7hbgPxb1Yu8esBlkpc+3jioez+Pst9UAddR3Db0FiTnON0QTa1UppbEl
+ QxeRQ+vFPpFjs1YmnsI0psgW8xps2WOy36L8UBS6gIJAM6OyXTv1Fp1nEHgxH0wx/G9F
+ t1ECZyelUhP9vPlOAx9R034UTyCj0o6KbGwnsMfW139mYLyAaA1+ITLdL9y6bMRqrwox
+ VeRw==
+X-Gm-Message-State: ACrzQf0ZWPCpspCCenDfqK3fr+OTWDdI71gn8qBWGEMPPCrFc6UXPy1U
+ M4ozAUpSQZc9/hUx9KG1rykJQtlpqc+G8oTyYGa1AuotYV0zNeesGpB3Pn77HZ4VnRZMvSiMYsd
+ shRQRgNVod2OV
+X-Received: by 2002:a17:90b:2705:b0:20a:b4fa:f624 with SMTP id
+ px5-20020a17090b270500b0020ab4faf624mr7683934pjb.124.1666158108296; 
+ Tue, 18 Oct 2022 22:41:48 -0700 (PDT)
+X-Received: by 2002:a17:90b:2705:b0:20a:b4fa:f624 with SMTP id
+ px5-20020a17090b270500b0020ab4faf624mr7683901pjb.124.1666158107833; 
+ Tue, 18 Oct 2022 22:41:47 -0700 (PDT)
+Received: from [10.72.12.164] ([209.132.188.80])
+ by smtp.gmail.com with ESMTPSA id
+ s3-20020aa78bc3000000b0056323de479bsm10322930pfd.120.2022.10.18.22.41.44
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 18 Oct 2022 22:41:47 -0700 (PDT)
+Message-ID: <938a6a20-35d8-2589-a128-029e1372befd@redhat.com>
+Date: Wed, 19 Oct 2022 13:41:42 +0800
 MIME-Version: 1.0
-In-Reply-To: <31b87958-3be6-49c2-f0d9-9bcb8ec3bc1c@redhat.com>
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:91.0)
+ Gecko/20100101 Thunderbird/91.13.1
+Subject: Re: [PATCH] vhost: Warn if DEVIOTLB_UNMAP is not supported and ats is
+ set
+To: Peter Xu <peterx@redhat.com>, Eric Auger <eric.auger@redhat.com>
+Cc: eric.auger.pro@gmail.com, mst@redhat.com, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org, eperezma@redhat.com,
+ Jean-Philippe Brucker <jean-philippe@linaro.org>
+References: <20221018122852.1185395-1-eric.auger@redhat.com>
+ <Y063RZ4SkYcRM+SP@x1n> <31b87958-3be6-49c2-f0d9-9bcb8ec3bc1c@redhat.com>
+ <Y08g9iaH5lZnPkte@x1n>
+From: Jason Wang <jasowang@redhat.com>
+In-Reply-To: <Y08g9iaH5lZnPkte@x1n>
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=peterx@redhat.com;
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=jasowang@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -23
 X-Spam_score: -2.4
 X-Spam_bar: --
 X-Spam_report: (-2.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.256,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -137,115 +141,130 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: j00YGfgbLQva
+X-TUID: uj7ONTu5jetg
 
-On Tue, Oct 18, 2022 at 05:08:19PM +0200, Eric Auger wrote:
-> Hi Peter,
-> 
-> On 10/18/22 16:25, Peter Xu wrote:
-> > Hi, Eric,
-> >
-> > On Tue, Oct 18, 2022 at 02:28:52PM +0200, Eric Auger wrote:
-> >> Since b68ba1ca5767 ("memory: Add IOMMU_NOTIFIER_DEVIOTLB_UNMAP
-> >> IOMMUTLBNotificationType"), vhost attempts to register DEVIOTLB_UNMAP
-> >> notifier. This latter is supported by the intel-iommu which supports
-> >> device-iotlb if the corresponding option is set. Then 958ec334bca3
-> >> ("vhost: Unbreak SMMU and virtio-iommu on dev-iotlb support") allowed
-> >> silent fallback to the legacy UNMAP notifier if the viommu does not
-> >> support device iotlb.
-> >>
-> >> Initially vhost/viommu integration was introduced with intel iommu
-> >> assuming ats=on was set on virtio-pci device and device-iotlb was set
-> >> on the intel iommu. vhost acts as an ATS capable device since it
-> >> implements an IOTLB on kernel side. However translated transactions
-> >> that hit the device IOTLB do not transit through the vIOMMU. So this
-> >> requires a limited ATS support on viommu side.
-> >>
-> >> However, in theory, if ats=on is set on a pci device, the
-> >> viommu should support ATS for that device to work.
-> > Pure question: what will happen if one ATS supported PCI device got plugged
-> > into a system whose physical IOMMU does not support ATS?  Will ATS just be
-> > ignored and the device keep working simply without ATS?
-> Yes that's my understanding: in that case the ATS capable device would
-> work with ats disabled (baremetal case). In the iommu driver you can
-> have a look at the pci_enable_ats() call which is guarded by
-> info->ats_supported for instance on intel iommu.
-> 
-> Following that reasoning vhost modality should not be enabled without
-> ATS support on vIOMMU side. But it is.
-> 
-> In that sense I may rename the ats_enabled helpers with ats_capable?
 
-Sounds good to me.
+在 2022/10/19 05:56, Peter Xu 写道:
+> On Tue, Oct 18, 2022 at 05:08:19PM +0200, Eric Auger wrote:
+>> Hi Peter,
+>>
+>> On 10/18/22 16:25, Peter Xu wrote:
+>>> Hi, Eric,
+>>>
+>>> On Tue, Oct 18, 2022 at 02:28:52PM +0200, Eric Auger wrote:
+>>>> Since b68ba1ca5767 ("memory: Add IOMMU_NOTIFIER_DEVIOTLB_UNMAP
+>>>> IOMMUTLBNotificationType"), vhost attempts to register DEVIOTLB_UNMAP
+>>>> notifier. This latter is supported by the intel-iommu which supports
+>>>> device-iotlb if the corresponding option is set. Then 958ec334bca3
+>>>> ("vhost: Unbreak SMMU and virtio-iommu on dev-iotlb support") allowed
+>>>> silent fallback to the legacy UNMAP notifier if the viommu does not
+>>>> support device iotlb.
+>>>>
+>>>> Initially vhost/viommu integration was introduced with intel iommu
+>>>> assuming ats=on was set on virtio-pci device and device-iotlb was set
+>>>> on the intel iommu. vhost acts as an ATS capable device since it
+>>>> implements an IOTLB on kernel side. However translated transactions
+>>>> that hit the device IOTLB do not transit through the vIOMMU. So this
+>>>> requires a limited ATS support on viommu side.
+>>>>
+>>>> However, in theory, if ats=on is set on a pci device, the
+>>>> viommu should support ATS for that device to work.
+>>> Pure question: what will happen if one ATS supported PCI device got plugged
+>>> into a system whose physical IOMMU does not support ATS?  Will ATS just be
+>>> ignored and the device keep working simply without ATS?
+>> Yes that's my understanding: in that case the ATS capable device would
+>> work with ats disabled (baremetal case). In the iommu driver you can
+>> have a look at the pci_enable_ats() call which is guarded by
+>> info->ats_supported for instance on intel iommu.
+>>
+>> Following that reasoning vhost modality should not be enabled without
+>> ATS support on vIOMMU side. But it is.
+>>
+>> In that sense I may rename the ats_enabled helpers with ats_capable?
+> Sounds good to me.
+>
+>> If I understand correctly setting ats=on exposes the ATS capability (
+>> 615c4ed205  virtio-pci: address space translation service (ATS) support)
+>> which is then enabled by the guest driver.
+> I think it won't, as long as vIOMMU doesn't have DT support declared?
 
-> If I understand correctly setting ats=on exposes the ATS capability (
-> 615c4ed205  virtio-pci: address space translation service (ATS) support)
-> which is then enabled by the guest driver.
 
-I think it won't, as long as vIOMMU doesn't have DT support declared?
+Yes, it's exposed but not enabled.
 
-> 
-> > [1]
-> >
-> > [...]
-> >
-> >> @@ -760,8 +771,16 @@ static void vhost_iommu_region_add(MemoryListener *listener,
-> >>      iommu->iommu_offset = section->offset_within_address_space -
-> >>                            section->offset_within_region;
-> >>      iommu->hdev = dev;
-> >> -    ret = memory_region_register_iommu_notifier(section->mr, &iommu->n, NULL);
-> >> +    ret = memory_region_register_iommu_notifier(section->mr, &iommu->n, &err);
-> >>      if (ret) {
-> >> +        if (vhost_dev_ats_enabled(dev)) {
-> >> +            error_reportf_err(err,
-> >> +                              "vhost cannot register DEVIOTLB_UNMAP "
-> >> +                              "although ATS is enabled, "
-> >> +                              "fall back to legacy UNMAP notifier: ");
-> > We want to use the warning message to either remind the user to (1) add the
-> > dev-iotlb=on parameter for vIOMMU, or (2) drop the ats=on on device.  Am I
-> > right?
-> My focus is to warn the end user there is no support for device-iotlb
-> support in virtio-iommu or vsmmuv3 but vhost does not really require
-> it.Indeed current users of virtio-iommu/vsmmuv3 seem confused now wrt
-> vhost integration and the lack of device-iotlb option on those viommus.
-> 
-> On intel I understand we would like to enforce that ats and dev-iotlb
-> are both set or unset. But this is not really addressed in that series.
-> Indeed vtd_iommu_notify_flag_changed does not reject any registration of
-> IOMMU_NOTIFIER_DEVIOTLB_UNMAP notifier in case it does not support
-> device-iotlb. I think it should.
 
-Yes I agree, thanks for finding it.  Just posted a patch:
+>
+>>> [1]
+>>>
+>>> [...]
+>>>
+>>>> @@ -760,8 +771,16 @@ static void vhost_iommu_region_add(MemoryListener *listener,
+>>>>       iommu->iommu_offset = section->offset_within_address_space -
+>>>>                             section->offset_within_region;
+>>>>       iommu->hdev = dev;
+>>>> -    ret = memory_region_register_iommu_notifier(section->mr, &iommu->n, NULL);
+>>>> +    ret = memory_region_register_iommu_notifier(section->mr, &iommu->n, &err);
+>>>>       if (ret) {
+>>>> +        if (vhost_dev_ats_enabled(dev)) {
+>>>> +            error_reportf_err(err,
+>>>> +                              "vhost cannot register DEVIOTLB_UNMAP "
+>>>> +                              "although ATS is enabled, "
+>>>> +                              "fall back to legacy UNMAP notifier: ");
+>>> We want to use the warning message to either remind the user to (1) add the
+>>> dev-iotlb=on parameter for vIOMMU, or (2) drop the ats=on on device.  Am I
+>>> right?
+>> My focus is to warn the end user there is no support for device-iotlb
+>> support in virtio-iommu or vsmmuv3 but vhost does not really require
+>> it.Indeed current users of virtio-iommu/vsmmuv3 seem confused now wrt
+>> vhost integration and the lack of device-iotlb option on those viommus.
+>>
+>> On intel I understand we would like to enforce that ats and dev-iotlb
+>> are both set or unset. But this is not really addressed in that series.
+>> Indeed vtd_iommu_notify_flag_changed does not reject any registration of
+>> IOMMU_NOTIFIER_DEVIOTLB_UNMAP notifier in case it does not support
+>> device-iotlb. I think it should.
+> Yes I agree, thanks for finding it.  Just posted a patch:
+>
+> https://lore.kernel.org/r/20221018215407.363986-1-peterx@redhat.com
+>
+>> The trouble is vhost_iommu_region_add
+>> is not meant to nicely fail.
+>>> As we've discussed - I remember Jason used to test with/without dev-iotlb
+>>> on vhost on Intel and dev-iotlb is faster on vt-d guest driver than without
+>> It would be nice to have a clarification about this. Indeed
+>>
+>> [PATCH v3 0/5] memory: Skip assertion in memory_region_unregister_iommu_notifier
+>> https://lore.kernel.org/all/20201116165506.31315-1-eperezma@redhat.com/
+>> mostly focussed on removing an assertion although one patch mentionned perf improvements. What does make the perf better (less device iotlb flushes than general iotlb flushes?)
+> I'll leave that to Jason.  Thanks.
 
-https://lore.kernel.org/r/20221018215407.363986-1-peterx@redhat.com
 
-> The trouble is vhost_iommu_region_add
-> is not meant to nicely fail.
-> >
-> > As we've discussed - I remember Jason used to test with/without dev-iotlb
-> > on vhost on Intel and dev-iotlb is faster on vt-d guest driver than without
-> It would be nice to have a clarification about this. Indeed
-> 
-> [PATCH v3 0/5] memory: Skip assertion in memory_region_unregister_iommu_notifier
-> https://lore.kernel.org/all/20201116165506.31315-1-eperezma@redhat.com/
-> mostly focussed on removing an assertion although one patch mentionned perf improvements. What does make the perf better (less device iotlb flushes than general iotlb flushes?)
+If you mean f7701e2c7983b680790af47117577b285b6a1aed ("intel_iommu: Skip 
+page walking on device iotlb invalidations"), it should help in the case 
+of domian or global invalidation. But it really depends on whether or 
+not guest is using those.
 
-I'll leave that to Jason.  Thanks.
+Regrading to the perf number, it might be tricky since:
 
-> 
-> > it.  So that can make sense to me for (1).  I don't know whether it helps
-> > for (2) because fundamentally it's the same question as [1] above, and
-> > whether that's a legal configuration.
-> >
-> > Thanks,
-> >
-> Adding jean in the loop too
-> 
-> Thanks
-> 
-> Eric
-> 
+1) the invalidation was batched or delayed which should be rare or at 
+least very less frequent
 
--- 
-Peter Xu
+2) meaning with TCP might be impact by a lot of other factors (you can 
+see UDP_STREAM doesn't give ovbious improvement).
+
+Thanks
+
+
+>
+>>> it.  So that can make sense to me for (1).  I don't know whether it helps
+>>> for (2) because fundamentally it's the same question as [1] above, and
+>>> whether that's a legal configuration.
+>>>
+>>> Thanks,
+>>>
+>> Adding jean in the loop too
+>>
+>> Thanks
+>>
+>> Eric
+>>
 

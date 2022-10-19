@@ -1,127 +1,126 @@
-Received: by 2002:a17:906:43c7:b0:78d:9f02:16a1 with SMTP id j7csp619142ejn;
-        Wed, 19 Oct 2022 13:08:22 -0700 (PDT)
-X-Google-Smtp-Source: AMsMyM5q3EV6dil8tQQvdjbloTfzzRvgqpy1pIlYEYnSac/Vm5dwNFVvlOuyVUHSSk7zLqg2Ym20
-X-Received: by 2002:ac8:5e48:0:b0:39c:f24e:166b with SMTP id i8-20020ac85e48000000b0039cf24e166bmr7984222qtx.132.1666210101907;
-        Wed, 19 Oct 2022 13:08:21 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1666210101; cv=none;
+Received: by 2002:a17:906:43c7:b0:78d:9f02:16a1 with SMTP id j7csp625967ejn;
+        Wed, 19 Oct 2022 13:19:19 -0700 (PDT)
+X-Google-Smtp-Source: AMsMyM7md1Z0m2W9sJ9kNLRvPCeNNOXojOQqJOAFmzLclVmWh2alpGYe94G2MD0ZA6qr9Ujfb2KW
+X-Received: by 2002:a05:620a:1709:b0:6ed:4817:1d02 with SMTP id az9-20020a05620a170900b006ed48171d02mr6975093qkb.73.1666210759181;
+        Wed, 19 Oct 2022 13:19:19 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1666210759; cv=none;
         d=google.com; s=arc-20160816;
-        b=zNQX52zaknVm2xqG9NG+C0E6V4nZ22YmdBJvlZksus5nP6BdpabkcQ2bGQSJ2YZCxd
-         a77AKVUnB11y/enoNVbnzWZx7SN6OWqYvKLrBje/+MW1VTqIfT0mc3pA52+YZhcf4JY/
-         uIGL78nOSV9XkPp1kpie2gqOlj369NSn0Wr6f3NrJr76RHMfT0iZf3LjVm09Qt3DExY0
-         iicr2fCZ/CR57bfSKcxHVRZxTKuypfwgQN5Ma6bOV8LiF1OFDDKPTejzJAWChTo69ltD
-         fSfsDHcK1oG7qQqmOAksKr5eeCX12O5hvmJOCGBKayIIv8JhfK2nsdIgVltJ5TDnSxrw
-         PwjQ==
+        b=Ia2xrdZ0kGzXYlemE2P8WG5m8px2cPL7P3UjAOzr/5QG7ioZp3fAbkMePRrnlKqSI8
+         mRk9IXCwuW+BNGfCwgxdgHIDEml7q55RWhlCO28fhlgKmSGaUIR/or19VcX/DxbvGLqj
+         hqxRJlHI6IjpptzAH1S2dQHsVQOiAVU4eg9FKp0gDi5SrQVu0gYDD3IHDyi3jRczR31l
+         sydZswpKS/tTZjrDyEuxNARgBTVz6BTMVB7GfPjZLfgWRNRkcsSdgoRzoQUgc5MvHgYI
+         G/Oyh0DqzaccUVAPZ/VC6vYI476p7GwBTAubec8s41qCQA7Br5w3ruePVhPCq/guy34D
+         543A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
          :list-archive:list-unsubscribe:list-id:precedence
          :content-transfer-encoding:content-language:in-reply-to:from
          :references:cc:to:subject:user-agent:mime-version:date:message-id
          :dkim-signature;
-        bh=9zuhJbAgevZhYQIgB4M0gLNgTtbVMni6J+ZHX+ty1PI=;
-        b=vU06lvCjDJ3Rc1zicppo+FmjQNdPX6hcx0tqEiIdR4x7SgXO6rq669HnOpv7WmveHm
-         odCuMpaQ2d+JoSVNteeZhRo6SYvT9NMKu9Klsn/JgEU5uzCHkuV6/wHa/vtF+CXjUlZT
-         FPKYB9x8uF4UQaFXB+HSp9CtCITin74hyJVkZAjBAm+CnAzC07/G1ABgr4DNoHWx896x
-         QvXACzykK+CpzWfctu8Z+E8tkVam2qQC1C0M0wg+4xcn9k27iFToOXPZXsRju/PTT3X+
-         Nv9SubTw6/7pQEw32oV8L8fNMxLU8pR9aYVakpvhsJE0+TFrhRYEWi/PRDffW+ZbCWQU
-         mrLw==
+        bh=QkyOWE8uZ/FzeM3/viPJ2IB6zRQhk/LK5xmOMXldqIk=;
+        b=Xe6SyK97fpZR8F4/wEmaGvADeiPi1RMdxkWJhOg8CD37EqpEQ16w2AyMkndKUTUGto
+         3DiNqyR/754nM0e2/7q+h/XM5DcYgemP/eOLrKZkLtzae/1Palu3JCMgybJ+r9BGM1xE
+         rr7riwXdEpBHCT31mv08/UODqMesM8ul9g/BSLvd1hBL0VAIcFSBkgB4/NYVGja/fTgg
+         1OhqpM8vleNy/hrjGWX7DkCfQafztw5DhteyqbUa3qTk9bCLRZzBHQKDlvmdFVaFWXBq
+         Rhkdsid7FDAG7VJTsN4EKlYb8GwA7qWiqScU3WjQgTiKwfpIpQwJvdyh8uFdsPr5lxci
+         Z6AQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=d5M0fWiy;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=ekdEekPX;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id cj13-20020a05622a258d00b0035bb52e2a0dsi9862300qtb.11.2022.10.19.13.08.21
+        by mx.google.com with ESMTPS id t2-20020ac865c2000000b0038c8b0b06d4si8930073qto.370.2022.10.19.13.19.19
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 19 Oct 2022 13:08:21 -0700 (PDT)
+        Wed, 19 Oct 2022 13:19:19 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=d5M0fWiy;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=ekdEekPX;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:59298 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:40926 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1olFMT-0008Bw-DM
-	for alex.bennee@linaro.org; Wed, 19 Oct 2022 16:08:21 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:41408)
+	id 1olFX4-0002NQ-Lg
+	for alex.bennee@linaro.org; Wed, 19 Oct 2022 16:19:18 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:34206)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1olFLy-00089r-04
- for qemu-arm@nongnu.org; Wed, 19 Oct 2022 16:07:50 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:43805)
+ id 1olFWE-0002LT-BW
+ for qemu-arm@nongnu.org; Wed, 19 Oct 2022 16:18:29 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:50627)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1olFLu-0008SB-OM
- for qemu-arm@nongnu.org; Wed, 19 Oct 2022 16:07:49 -0400
+ id 1olFWA-0001NM-Is
+ for qemu-arm@nongnu.org; Wed, 19 Oct 2022 16:18:24 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1666210064;
+ s=mimecast20190719; t=1666210701;
  h=from:from:reply-to:reply-to:subject:subject:date:date:
  message-id:message-id:to:to:cc:cc:mime-version:mime-version:
  content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=9zuhJbAgevZhYQIgB4M0gLNgTtbVMni6J+ZHX+ty1PI=;
- b=d5M0fWiycnmpJEJFomkQRjPvEa+ctThC4WLqa5fGXsHwUKtvH35lwqgtvRObXZHKqbDQ1Z
- 1IbuU5w6xxJeAoGVmY1+AViGJY5mjFPdzmK0n9UVlbzjzpFuz9+6l/5jrh5ZOcrcYlUPBo
- wXXlko0Gd9RCifv1lHWGFZVZbEk2MV0=
-Received: from mail-qt1-f197.google.com (mail-qt1-f197.google.com
- [209.85.160.197]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=QkyOWE8uZ/FzeM3/viPJ2IB6zRQhk/LK5xmOMXldqIk=;
+ b=ekdEekPXG6BeEy0egdtNgZfJVCQHlQz5UePhT9flR3fPn8aufG8xczmwwMORgI0sDpvZ24
+ 6LrKkvdsfYoX0vUyyP/W5+6AIFPmXWo0mBWiKeg5O+Q1uv3bHMom6/BKUcNJIXnxjzcY0D
+ 0Ji+UjtxZNXt70RHx1tvYqg6vOiYWow=
+Received: from mail-qt1-f198.google.com (mail-qt1-f198.google.com
+ [209.85.160.198]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_128_GCM_SHA256) id
- us-mta-267-Z-HjyStFN4uaY3OdYeTUHg-1; Wed, 19 Oct 2022 16:07:08 -0400
-X-MC-Unique: Z-HjyStFN4uaY3OdYeTUHg-1
-Received: by mail-qt1-f197.google.com with SMTP id
- fy10-20020a05622a5a0a00b0039cd5097697so12775546qtb.7
- for <qemu-arm@nongnu.org>; Wed, 19 Oct 2022 13:07:07 -0700 (PDT)
+ us-mta-142-8na-FAqEMD6fTeGpcuoY-A-1; Wed, 19 Oct 2022 16:18:20 -0400
+X-MC-Unique: 8na-FAqEMD6fTeGpcuoY-A-1
+Received: by mail-qt1-f198.google.com with SMTP id
+ 17-20020ac85711000000b0039ccd4c9a37so13647579qtw.20
+ for <qemu-arm@nongnu.org>; Wed, 19 Oct 2022 13:18:20 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:reply-to:user-agent:mime-version:date
  :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=9zuhJbAgevZhYQIgB4M0gLNgTtbVMni6J+ZHX+ty1PI=;
- b=1BNfcUL6s1YEfiN8yMphniRz+SZC5jeNPToppITZ/q/0BwxMUsRWgfM7rUKq9twjCA
- kMV7hQdGSanpWEx1rHb+llbvWurIxBDt4XrqmK5mcBcSV1ofReK67FtTSymeLBpICsnl
- C1y5TKN90B0lbHRJX0vsWIGZE7LXYtESSzpl4i2mGakU/y5fnvQIZ68D9tAq6vlZq1Gv
- UocQOM8FU1c4BJlmCrI/SyiH36X79IULnDFmO0xygEpNWu8822xHoBDnY4N8BkFhGWXT
- NqIbfUypuj8BQvDjhZ/LXZIww1qAoMwKGWYfwyNoshRp4rSRPj0mCWpKQ1QnUD5h6ykF
- VR5Q==
-X-Gm-Message-State: ACrzQf1t8DMht5rZJKoGcBRKXcVDUACcYl7QOW/72ehBnKSaphV0avzp
- O728JH2kVoVYEAaRNvu8wBRP0L3k+MWmreMp9Gq40k12E98OVrRwWXmTx27nZtBY2/zSaRnKHI9
- bOBdAO56hJ1j6
-X-Received: by 2002:a05:6214:3017:b0:4b1:bfdc:d4c1 with SMTP id
- ke23-20020a056214301700b004b1bfdcd4c1mr8297323qvb.42.1666210027485; 
- Wed, 19 Oct 2022 13:07:07 -0700 (PDT)
-X-Received: by 2002:a05:6214:3017:b0:4b1:bfdc:d4c1 with SMTP id
- ke23-20020a056214301700b004b1bfdcd4c1mr8297299qvb.42.1666210027190; 
- Wed, 19 Oct 2022 13:07:07 -0700 (PDT)
+ bh=QkyOWE8uZ/FzeM3/viPJ2IB6zRQhk/LK5xmOMXldqIk=;
+ b=RlvmftmWNj9tTZq52uTrfUyc/26Z6K3mogxlbCvLwiwCRV1eciwYYWoc2CVHS48IRZ
+ aIojOjvF+ty+LTKRUyt3RG3EN1fBq03ub8yUGCt5cBJmV1iHPBu3jlojKHQTgiIAcX9P
+ 5I8k6vX9Ep2ggalv3TOnh0VYASvYNMs/aYnm19QfC7Coa1LKsAABOsuNOGRJS+rnlo0J
+ F6Myeye3cnrTIKued3pqXNwyjpRJsz8xdxkrBMbNwfYwXCdIR/W419Q2Xzbj4GXkwJqf
+ mrSDfq5it8b9Xvtg+3R4A0hm34pfK6t+uFWQU9wtB5DEmNLR44/sp7Z52ROL3j+9A2aY
+ CitQ==
+X-Gm-Message-State: ACrzQf16xcSSMxsCRDxRcdLmXXLkGcH4CSdZuJWb7MfBO725T7VqY85M
+ Mq+cR4b/5JMN3PTyo8tukKfZTXi2bGI/WI7n+SwR05+2tGMb0k9YJVkrKAsDBWI/N1f2BcZYdWt
+ B/LWFFg4D6yuL
+X-Received: by 2002:a05:620a:450d:b0:6ee:5242:9f50 with SMTP id
+ t13-20020a05620a450d00b006ee52429f50mr6956727qkp.82.1666210699651; 
+ Wed, 19 Oct 2022 13:18:19 -0700 (PDT)
+X-Received: by 2002:a05:620a:450d:b0:6ee:5242:9f50 with SMTP id
+ t13-20020a05620a450d00b006ee52429f50mr6956708qkp.82.1666210699351; 
+ Wed, 19 Oct 2022 13:18:19 -0700 (PDT)
 Received: from ?IPV6:2a01:e0a:59e:9d80:527b:9dff:feef:3874?
  ([2a01:e0a:59e:9d80:527b:9dff:feef:3874])
  by smtp.gmail.com with ESMTPSA id
- r8-20020a05620a298800b006be8713f742sm5851738qkp.38.2022.10.19.13.07.04
+ oo12-20020a05620a530c00b006eeae49537bsm5422253qkn.98.2022.10.19.13.18.16
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 19 Oct 2022 13:07:06 -0700 (PDT)
-Message-ID: <73b398c9-52d7-88fa-7e84-f9ed082799b0@redhat.com>
-Date: Wed, 19 Oct 2022 22:07:02 +0200
+ Wed, 19 Oct 2022 13:18:18 -0700 (PDT)
+Message-ID: <9a43b31a-63d7-d312-870d-168df1b41921@redhat.com>
+Date: Wed, 19 Oct 2022 22:18:14 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
  Thunderbird/91.11.0
-Subject: Re: [PATCH v5 5/6] hw/arm/virt: Improve high memory region address
- assignment
+Subject: Re: [PATCH v5 6/6] hw/arm/virt: Add 'compact-highmem' property
 To: Gavin Shan <gshan@redhat.com>, qemu-arm@nongnu.org
 Cc: qemu-devel@nongnu.org, maz@kernel.org, cohuck@redhat.com,
  zhenyzha@redhat.com, richard.henderson@linaro.org, peter.maydell@linaro.org,
  shan.gavin@gmail.com
 References: <20221011231832.149839-1-gshan@redhat.com>
- <20221011231832.149839-6-gshan@redhat.com>
+ <20221011231832.149839-7-gshan@redhat.com>
 From: Eric Auger <eric.auger@redhat.com>
-In-Reply-To: <20221011231832.149839-6-gshan@redhat.com>
+In-Reply-To: <20221011231832.149839-7-gshan@redhat.com>
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.129.124;
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=170.10.133.124;
  envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -23
 X-Spam_score: -2.4
@@ -129,7 +128,7 @@ X-Spam_bar: --
 X-Spam_report: (-2.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.256,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -145,166 +144,179 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: AdawX7I1bd4t
+X-TUID: QRO3LRNKv4Ic
 
-Hi Gavin
+Hi Gavin,
 
 On 10/12/22 01:18, Gavin Shan wrote:
-> There are three high memory regions, which are VIRT_HIGH_REDIST2,
-> VIRT_HIGH_PCIE_ECAM and VIRT_HIGH_PCIE_MMIO. Their base addresses
-> are floating on highest RAM address. However, they can be disabled
-> in several cases.
+> After the improvement to high memory region address assignment is
+> applied, the memory layout can be changed, introducing possible
+> migration breakage. For example, VIRT_HIGH_PCIE_MMIO memory region
+> is disabled or enabled when the optimization is applied or not, with
+> the following configuration.
 >
-> (1) One specific high memory region is disabled by developer by
->     toggling vms->highmem_{redists, ecam, mmio}.
-I would replace the above sentence by
-
-One specific high memory region is likely to be disabled by the code by toggling vms->highmem_{redists, ecam, mmio}:
-
+>   pa_bits              = 40;
+>   vms->highmem_redists = false;
+>   vms->highmem_ecam    = false;
+>   vms->highmem_mmio    = true;
 >
-> (2) VIRT_HIGH_PCIE_ECAM region is disabled on machine, which is
->     'virt-2.12' or ealier than it.
+>   # qemu-system-aarch64 -accel kvm -cpu host    \
+>     -machine virt-7.2,compact-highmem={on, off} \
+>     -m 4G,maxmem=511G -monitor stdio
 >
-> (3) VIRT_HIGH_PCIE_ECAM region is disabled when firmware is loaded
->     on 32-bits system.
+>   Region            compact-highmem=off         compact-highmem=on
+>   ----------------------------------------------------------------
+>   RAM               [1GB         512GB]        [1GB         512GB]
+>   HIGH_GIC_REDISTS  [512GB       512GB+64MB]   [disabled]
+>   HIGH_PCIE_ECAM    [512GB+256MB 512GB+512MB]  [disabled]
+>   HIGH_PCIE_MMIO    [disabled]                 [512GB       1TB]
 >
-> (4) One specific high memory region is disabled when it breaks the
->     PA space limit.
->
-> The current implementation of virt_set_memmap() isn't comprehensive
-> because the space for one specific high memory region is always
-> reserved from the PA space for case (1), (2) and (3).
-I would suggest:
-isn't optimized because the high memory region PA range is always
-
-reserved whatever the actual state of the corresponding vms->highmem_
-* flag.
-
->  In the code,
-> 'base' and 'vms->highest_gpa' are always increased for those three
-> cases. It's unnecessary since the assigned space of the disabled
-> high memory region won't be used afterwards.
->
-> This improves the address assignment for those three high memory
-s/This improves/Improve
-> region by skipping the address assignment for one specific high
-> memory region if it has been disabled in case (1), (2) and (3).
-> 'vms->high_compact' is false for now, meaning that we don't have
-s/hight_compat/highmem_compact
-
-You also may justify the introduction of this new field.
-> any behavior changes until it becomes configurable through property
-> 'compact-highmem' in next patch.
+> In order to keep backwords compatibility, we need to disable the
+> optimization on machines, which is virt-7.1 or ealier than it. It
+> means the optimization is enabled by default from virt-7.2. Besides,
+> 'compact-highmem' property is added so that the optimization can be
+> explicitly enabled or disabled on all machine types by users.
 >
 > Signed-off-by: Gavin Shan <gshan@redhat.com>
 > Tested-by: Zhenyu Zhang <zhenyzha@redhat.com>
 > ---
->  hw/arm/virt.c         | 23 +++++++++++++++--------
->  include/hw/arm/virt.h |  1 +
->  2 files changed, 16 insertions(+), 8 deletions(-)
+>  docs/system/arm/virt.rst |  4 ++++
+>  hw/arm/virt.c            | 47 ++++++++++++++++++++++++++++++++++++++++
+>  include/hw/arm/virt.h    |  1 +
+>  3 files changed, 52 insertions(+)
 >
+> diff --git a/docs/system/arm/virt.rst b/docs/system/arm/virt.rst
+> index 20442ea2c1..75bf5a4994 100644
+> --- a/docs/system/arm/virt.rst
+> +++ b/docs/system/arm/virt.rst
+> @@ -94,6 +94,10 @@ highmem
+>    address space above 32 bits. The default is ``on`` for machine types
+>    later than ``virt-2.12``.
+>  
+> +compact-highmem
+> +  Set ``on``/``off`` to enable/disable compact space for high memory regions.
+> +  The default is ``on`` for machine types later than ``virt-7.2``
+> +
+>  gic-version
+>    Specify the version of the Generic Interrupt Controller (GIC) to provide.
+>    Valid values are:
 > diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-> index ee98a8a3b6..c05cfb5314 100644
+> index c05cfb5314..8f1dba0ece 100644
 > --- a/hw/arm/virt.c
 > +++ b/hw/arm/virt.c
-> @@ -1717,22 +1717,29 @@ static void virt_set_high_memmap(VirtMachineState *vms,
->          region_base = ROUND_UP(base, extended_memmap[i].size);
->          region_size = extended_memmap[i].size;
->  
-> -        vms->memmap[i].base = region_base;
-> -        vms->memmap[i].size = region_size;
-> -
->          /*
->           * Check each device to see if they fit in the PA space,
-while we are at it, you can change s/they fit/it fits
-> -         * moving highest_gpa as we go.
-> +         * moving highest_gpa as we go. For compatibility, move
-> +         * highest_gpa for disabled fitting devices as well, if
-> +         * the compact layout has been disabled.
->           *
->           * For each device that doesn't fit, disable it.
->           */
->          fits = (region_base + region_size) <= BIT_ULL(pa_bits);
-> -        if (fits) {
-> +        if (*region_enabled && fits) {
-> +            vms->memmap[i].base = region_base;
-> +            vms->memmap[i].size = region_size;
->              vms->highest_gpa = region_base + region_size - 1;
-> +            base = region_base + region_size;
-> +        } else {
-> +            *region_enabled = false;
-> +            if (!vms->highmem_compact) {
-> +                base = region_base + region_size;
-> +                if (fits) {
-> +                    vms->highest_gpa = region_base + region_size - 1;
-> +                }
-> +            }
->          }
-> -
-> -        *region_enabled &= fits;
-> -        base = region_base + region_size;
->      }
->  }
-This looks quite complicated to me. It is not obvious for instance we
-have the same code as before when highmem_compact is not set. Typically
+> @@ -174,6 +174,27 @@ static const MemMapEntry base_memmap[] = {
+>   * Note the extended_memmap is sized so that it eventually also includes the
+>   * base_memmap entries (VIRT_HIGH_GIC_REDIST2 index is greater than the last
+>   * index of base_memmap).
+> + *
+> + * The addresses assigned to these regions are affected by 'compact-highmem'
+> + * property, which is to enable or disable the compact space in the Highmem
+> + * IO regions. For example, VIRT_HIGH_PCIE_MMIO can be disabled or enabled
+> + * depending on the property in the following scenario.
+To me you shall rather explain here what is the so-called "compact"
+space vs the legacy highmem layout.
 
-vms->memmap[i].base/size are not always set as they were to be and impact on the rest of the code must be double checked.
+If I understand correctly the example rather legitimates the use of a
+compat option showing how the layout can be affected by the option. I
+would put that in the commit msg instead. Also in your example I see
+VIRT_HIGH_GIC_REDISTS is disabled but the code does not disable the
+region excpet if it does not fit within the PA. This does not match your
+example. Also the region is named VIRT_HIGH_GIC_REDIST2.
 
-Could this be rewritten in that way (pseudocode totally untested).
+In v4, Marc also suggested to have individual options for each highmem
+region.
+https://lore.kernel.org/qemu-devel/0f8e6a58-0dde-fb80-6966-7bb32c4df552@redhat.com/
 
+Have you considered that option?
 
-static void fit_highmem_slot(vms, *base, i, pa_bits)
-{
-    region_enabled = virt_get_high_memmap_enabled(vms, i);
-    region_base = ROUND_UP(*base, extended_memmap[i].size);
-    region_size = extended_memmap[i].size;
-    fits = (region_base + region_size) <= BIT_ULL(pa_bits);
-    *region_enabled &= fits;
-    vms->memmap[i].base = region_base;
-    vms->memmap[i].size = region_size;
-
-    /* compact layout only allocates space for the region if this latter
-is enabled & fits*/
-    if (vms->highmem_compact && !region_enabled) {
-        return;
-    }
-
-    /* account for the region and update the base address/highest_gpa if
-needed*/ 
-    *base = region_base + region_size;
-    if (fits) { 
-        vms->highest_gpa = *base - 1;
-    }
-}
-
-static void virt_set_high_memmap(VirtMachineState *vms,
-                                 hwaddr base, int pa_bits)
-{
-    hwaddr region_base, region_size;
-    bool *region_enabled, fits;
-    int i;
-
-    for (i = VIRT_LOWMEMMAP_LAST; i < ARRAY_SIZE(extended_memmap); i++) {
-        /* we do not break in case the region does not fit since
-fit_highmem_slot also updates the enabled status of the region */
-        fit_highmem_slot(vms, &base, i, pa_bits);
-    }
-}
-
->  
-> diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
-> index 6ec479ca2b..709f623741 100644
-> --- a/include/hw/arm/virt.h
-> +++ b/include/hw/arm/virt.h
-> @@ -144,6 +144,7 @@ struct VirtMachineState {
->      PFlashCFI01 *flash[2];
->      bool secure;
->      bool highmem;
-> +    bool highmem_compact;
->      bool highmem_ecam;
->      bool highmem_mmio;
->      bool highmem_redists;
 Thanks
 
 Eric
+> + *
+> + * pa_bits              = 40;
+> + * vms->highmem_redists = false;
+> + * vms->highmem_ecam    = false;
+> + * vms->highmem_mmio    = true;
+> + *
+> + * # qemu-system-aarch64 -accel kvm -cpu host    \
+> + *   -machine virt-7.2,compact-highmem={on, off} \
+> + *   -m 4G,maxmem=511G -monitor stdio
+> + *
+> + * Region            compact-highmem=off        compact-highmem=on
+> + * ----------------------------------------------------------------
+> + * RAM               [1GB         512GB]        [1GB         512GB]
+> + * HIGH_GIC_REDISTS  [512GB       512GB+64MB]   [disabled]
+> + * HIGH_PCIE_ECAM    [512GB+256GB 512GB+512MB]  [disabled]
+> + * HIGH_PCIE_MMIO    [disabled]                 [512GB       1TB]
+>   */
+>  static MemMapEntry extended_memmap[] = {
+>      /* Additional 64 MB redist region (can contain up to 512 redistributors) */
+> @@ -2353,6 +2374,20 @@ static void virt_set_highmem(Object *obj, bool value, Error **errp)
+>      vms->highmem = value;
+>  }
+>  
+> +static bool virt_get_compact_highmem(Object *obj, Error **errp)
+> +{
+> +    VirtMachineState *vms = VIRT_MACHINE(obj);
+> +
+> +    return vms->highmem_compact;
+> +}
+> +
+> +static void virt_set_compact_highmem(Object *obj, bool value, Error **errp)
+> +{
+> +    VirtMachineState *vms = VIRT_MACHINE(obj);
+> +
+> +    vms->highmem_compact = value;
+> +}
+> +
+>  static bool virt_get_its(Object *obj, Error **errp)
+>  {
+>      VirtMachineState *vms = VIRT_MACHINE(obj);
+> @@ -2971,6 +3006,13 @@ static void virt_machine_class_init(ObjectClass *oc, void *data)
+>                                            "Set on/off to enable/disable using "
+>                                            "physical address space above 32 bits");
+>  
+> +    object_class_property_add_bool(oc, "compact-highmem",
+> +                                   virt_get_compact_highmem,
+> +                                   virt_set_compact_highmem);
+> +    object_class_property_set_description(oc, "compact-highmem",
+> +                                          "Set on/off to enable/disable compact "
+> +                                          "space for high memory regions");
+> +
+>      object_class_property_add_str(oc, "gic-version", virt_get_gic_version,
+>                                    virt_set_gic_version);
+>      object_class_property_set_description(oc, "gic-version",
+> @@ -3055,6 +3097,7 @@ static void virt_instance_init(Object *obj)
+>  
+>      /* High memory is enabled by default */
+>      vms->highmem = true;
+> +    vms->highmem_compact = !vmc->no_highmem_compact;
+>      vms->gic_version = VIRT_GIC_VERSION_NOSEL;
+>  
+>      vms->highmem_ecam = !vmc->no_highmem_ecam;
+> @@ -3124,8 +3167,12 @@ DEFINE_VIRT_MACHINE_AS_LATEST(7, 2)
+>  
+>  static void virt_machine_7_1_options(MachineClass *mc)
+>  {
+> +    VirtMachineClass *vmc = VIRT_MACHINE_CLASS(OBJECT_CLASS(mc));
+> +
+>      virt_machine_7_2_options(mc);
+>      compat_props_add(mc->compat_props, hw_compat_7_1, hw_compat_7_1_len);
+> +    /* Compact space for high memory regions was introduced with 7.2 */
+> +    vmc->no_highmem_compact = true;
+>  }
+>  DEFINE_VIRT_MACHINE(7, 1)
+>  
+> diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
+> index 709f623741..c7dd59d7f1 100644
+> --- a/include/hw/arm/virt.h
+> +++ b/include/hw/arm/virt.h
+> @@ -125,6 +125,7 @@ struct VirtMachineClass {
+>      bool no_pmu;
+>      bool claim_edge_triggered_timers;
+>      bool smbios_old_sys_ver;
+> +    bool no_highmem_compact;
+>      bool no_highmem_ecam;
+>      bool no_ged;   /* Machines < 4.2 have no support for ACPI GED device */
+>      bool kvm_no_adjvtime;
 

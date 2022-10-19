@@ -1,120 +1,102 @@
-Received: by 2002:a05:7022:458e:b0:46:22f1:8c13 with SMTP id cf14csp2143842dlb;
-        Tue, 18 Oct 2022 14:15:05 -0700 (PDT)
-X-Google-Smtp-Source: AMsMyM7hl1eJwXI7uHcTRjZOZX+CY29XGpShX+D6wOscQf20sMvOTOIbeGrMnJzrWR93VW4VSkya
-X-Received: by 2002:a05:6214:27ce:b0:4b1:92c9:611c with SMTP id ge14-20020a05621427ce00b004b192c9611cmr3973973qvb.115.1666127705192;
-        Tue, 18 Oct 2022 14:15:05 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1666127705; cv=none;
+Received: by 2002:a17:906:43c7:b0:78d:9f02:16a1 with SMTP id j7csp3507741ejn;
+        Tue, 18 Oct 2022 17:15:54 -0700 (PDT)
+X-Google-Smtp-Source: AMsMyM6q5bVNZQBUX2fBO6pogoZt1zbPpirPJwGIP/k3Pw+VpJSlW39moB/0r1Kmoml41/PMA9xJ
+X-Received: by 2002:a05:620a:f11:b0:6cf:be4e:e953 with SMTP id v17-20020a05620a0f1100b006cfbe4ee953mr3764640qkl.437.1666138554374;
+        Tue, 18 Oct 2022 17:15:54 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1666138554; cv=none;
         d=google.com; s=arc-20160816;
-        b=mYiSuDcIpUo31YwlaO6ZnJSOHP5hbKjgZxF15S7MuqtzAurL5DZw/RtXFrzzZWi9ZC
-         6kIkPMZhwqrANaslnies4uVUidSNOhwLgTE47SKqQOeG9mfcmLGC/p+5Hki3gpeSGyNf
-         OU7GNLF2/15eQkiWj1JpykbdRIh0UB8F9dWkH3RVhS7uJCF3hEFbonHKdH+3VLZTg8i9
-         ca16gk3gonalkpiZVLCnCucxUbi7tOrgqA+PcCm814C6b0HUlMbBYuyi1IakvNsnhjwX
-         QLGPtCwskP5EoNMKXVWLHreQIA8a97SPZZCQQyKkKTYulFzb4NhV9ZsVCEM2nYTR2cHd
-         IkdQ==
+        b=fRJobuxn0sMOfFh88NdsWh+wMBJGte2MXRwCPYC3qEsBCyOAONa05XPbmEVkkbUpfy
+         5Gh52i6d01KzaLZ9tYrV/vetE/2+CVGLVHbJE4yo4d8iHuEtoTlyYVNrzzFpa3uqY9o+
+         Gkyhnj8kpiSRP/aFpYW2gKG6/nfcJMyAKmAC3LkMMvI1g+5IMSbhouWlY+7VFJdeH562
+         JhvA0jPEY29aXiIB63FS4DSqWOE0nECW3bymGvVTMOr4YxuWpywjDINeCK3MRNmlJWoG
+         LOjpKtO1Ddb2C0dqzPgYPFfsnTtd4Nj//hnyTbb6wu/CrNtFSnWhS8MctSgJIS0dJqcZ
+         OAjg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
-        bh=iOmB+xoTEaRaOIdbCKCBrtSMoKomoXO9ygIphsjM/7g=;
-        b=f/gZK3UUCaEKK+HPgcZ4bcBDYjLdk0gRBbrXjfLUMroicDlAhU6rFHC2ipibQEGX6E
-         Km5e7zHDHzcq/giaLbU2MfiYphEOjDcZhRBI6y2fy0+Nnv5La/r9SYqODFiVSSkvAwRi
-         q4k7a6fivWWenOEqUKVOkarzCdwatARD2I14goVFdp5jNxxCHnMLtpZuiPATaGDzxen+
-         zKOYEQoTsjx8M09vNYu1yeHUvuH3qnmjup2A9OkG3V1t/+tAs9j7jEvDaKIyp3dJzxZM
-         YSwai49uBFzFPIfF9t2u+FeipD9kZkiLfPKcIIer0Lq8hPTckAJfvZuduCQdKJ0dSIaA
-         G2Dw==
+         :list-unsubscribe:list-id:precedence:mime-version:user-agent
+         :references:message-id:in-reply-to:subject:cc:to:from:date
+         :dkim-signature;
+        bh=ARf3uXqVt12fLKqg7KRoJGi1xBS/PgeqHNZWKDlh2QQ=;
+        b=tCvb8irP8cWY5QmV7kUn9HKsdvRAejCY2GZ27FkiJcMOIGFgx5Vv4WohFS7n8ZQhq8
+         Ua1/AExvs7Ow8OWY8CWO2qbESC5qX/7zXnJdc7iOD8cq1QfQhBq9qJEl9S2XzMgqd97P
+         5HBBwOd4narDkTk5aHYpooRw9tSzD9YF0rv93pTq9BK9yETIynpR1byHWtpJe/vTT9wl
+         GelIQ5i1zp6mslY4fcQPo8s3+qVXHauDl/PvEvvAMrPRExMlRvsmrfbLV2adwD8MDlFP
+         Se1FkswA7ic8O1CXQIVd+S/fq5iMN9lgaPapxWa+poUr3jUkNH94OnZR/dObWlR6CGPD
+         e83g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=GBHjcUeh;
+       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=Io+QfxDf;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=kernel.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id j15-20020a05621419cf00b004b31dec5686si8372652qvc.46.2022.10.18.14.15.05
+        by mx.google.com with ESMTPS id bm11-20020a05620a198b00b006eb52f0e3b5si8278403qkb.603.2022.10.18.17.15.54
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 18 Oct 2022 14:15:05 -0700 (PDT)
+        Tue, 18 Oct 2022 17:15:54 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=GBHjcUeh;
+       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=Io+QfxDf;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:55308 helo=lists1p.gnu.org)
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=kernel.org
+Received: from localhost ([::1]:46232 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1oktvU-0005rE-Jo
-	for alex.bennee@linaro.org; Tue, 18 Oct 2022 17:15:04 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:36194)
+	id 1okwkS-0005IY-Sp
+	for alex.bennee@linaro.org; Tue, 18 Oct 2022 20:15:52 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33242)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1oktjW-00022D-HX; Tue, 18 Oct 2022 17:02:51 -0400
-Received: from mail-ej1-x636.google.com ([2a00:1450:4864:20::636]:39667)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1oktjS-0003un-GN; Tue, 18 Oct 2022 17:02:41 -0400
-Received: by mail-ej1-x636.google.com with SMTP id b2so35396219eja.6;
- Tue, 18 Oct 2022 14:02:35 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:from:to:cc:subject:date:message-id:reply-to;
- bh=iOmB+xoTEaRaOIdbCKCBrtSMoKomoXO9ygIphsjM/7g=;
- b=GBHjcUehhWInfIZLMHzCyP1MYWZN2aMfTnwWuY/7IoO1KFpcPqfCAXV9PBuqzVZ4iM
- BMIv0XMe7otEQOBnCnCaV9KVd5SUlF0vaZAeTV5fBJXmOqOxKFJfHzILTPgc+Jhl20OL
- Tmd++d1j4YKDF6HuCBScqXes3Pt43mrJyP4YrlL4pT/nvW0hlB2EeiCK0Apu3C7MM4rF
- qDNxfVjDCuYCxBLHbdYRATYA8FHpeAW8T/ko4pxjaBlxadcNJdYnX/PorA/YHRDMZUyB
- K2XFa405sbiq1q21tpIcf5YZPpBxp19ZzhbfHIJEFs8yFWLQjeRVphnP4VY/8AKo4rva
- /kPQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=iOmB+xoTEaRaOIdbCKCBrtSMoKomoXO9ygIphsjM/7g=;
- b=QUlR8jYXVzb9QyL5MCcSIb53MwG9laBYPBkYROZ2GKqOtuwGdsMNAXoPuvvxAj2zKg
- abk2oMzWdCNghW2L/RuKmkjttcsoifIrUJaITS8JkIFXjXWGJ3NxYJ2sP0d6ZIVWJdoM
- NJ6ZMthpQJz1dRTDB4UVt7EAsaDm0wr8MDjfINIaNS7vJ+oqAYuVSQjWm236APDTi9tU
- lpuNVzQAu/6vUTUxcrDx8U1IRKoKX5IAgmRq4eNBmM5L0QavcImA6M9Lin5N6mM/lHdk
- zN+JMc5CHjsqgZF5g1E2rNFCHiC/JJ5ZAvrD9FV204h8/PJsMDnpy3S3Oe02znGNXBwo
- Az1w==
-X-Gm-Message-State: ACrzQf2AYe/hfY3HYMWoNOtgX8R7ssB9cwReOs5mSXv2hbyRzHQa6BAI
- ufVVNQCuaKZwhC9bz9n49O5LM21xZP0=
-X-Received: by 2002:a17:907:3ea9:b0:78d:fdf0:88fe with SMTP id
- hs41-20020a1709073ea900b0078dfdf088femr4116844ejc.667.1666126954317; 
- Tue, 18 Oct 2022 14:02:34 -0700 (PDT)
-Received: from localhost.localdomain
- (dynamic-078-054-012-048.78.54.pool.telefonica.de. [78.54.12.48])
- by smtp.gmail.com with ESMTPSA id
- fe7-20020a056402390700b004587c2b5048sm9407951edb.52.2022.10.18.14.02.32
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 18 Oct 2022 14:02:33 -0700 (PDT)
-From: Bernhard Beschow <shentey@gmail.com>
-To: qemu-devel@nongnu.org
-Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- qemu-ppc@nongnu.org, Aurelien Jarno <aurelien@aurel32.net>,
- Yoshinori Sato <ysato@users.sourceforge.jp>,
- Antony Pavlov <antonynpavlov@gmail.com>,
- BALATON Zoltan <balaton@eik.bme.hu>,
- Alistair Francis <alistair@alistair23.me>,
- Bin Meng <bin.meng@windriver.com>, Kevin Wolf <kwolf@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>, Jan Kiszka <jan.kiszka@web.de>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
- Hanna Reitz <hreitz@redhat.com>, qemu-arm@nongnu.org,
- Magnus Damm <magnus.damm@gmail.com>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, qemu-block@nongnu.org,
- Bernhard Beschow <shentey@gmail.com>
-Subject: [PATCH v4 0/7] ppc/e500: Add support for two types of flash, cleanup
-Date: Tue, 18 Oct 2022 23:01:39 +0200
-Message-Id: <20221018210146.193159-1-shentey@gmail.com>
-X-Mailer: git-send-email 2.38.0
+ (Exim 4.90_1) (envelope-from <sstabellini@kernel.org>)
+ id 1okwk7-0005I8-LO; Tue, 18 Oct 2022 20:15:31 -0400
+Received: from ams.source.kernel.org ([145.40.68.75]:41518)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <sstabellini@kernel.org>)
+ id 1okwk5-0005lJ-HS; Tue, 18 Oct 2022 20:15:31 -0400
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by ams.source.kernel.org (Postfix) with ESMTPS id 84277B821A9;
+ Wed, 19 Oct 2022 00:15:26 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id BE917C433B5;
+ Wed, 19 Oct 2022 00:15:22 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1666138524;
+ bh=6i7KAYuzLBv0qf0M4B6AwUOT+eo1+bQqCOc9SAEYLRs=;
+ h=Date:From:To:cc:Subject:In-Reply-To:References:From;
+ b=Io+QfxDfonOBKqwTUft1nb9xK9O8l5Hdqk61KgxQgIg41zaRWM0IPAiMV2gwUg994
+ HqKLJET0l6EZ5K6PsLUw+Atms/XdlnnUX/WC9ipkvfSn25jsGJ7yXdBJwUYWxSozIA
+ 4v30wsJgiOuYdpPrmKXwDsmwEIRozJxXd6s5Fol8IP4i1HQLuZy5aQ6tZnd3++1BiW
+ 9NLgdq5lagA7sJ3Za2jx8usP+KnuuiBYxMmLlOR33LOxHW+RmSu3FSOQ4q4Vl4SVDe
+ ndTZlJj6fx1tg4CjrLCgJq0+03RQ+T0lQENf+qNMWGOaw0vcA+o0LUj21bW+ShLuVN
+ IkRnjXPNk/5og==
+Date: Tue, 18 Oct 2022 17:15:21 -0700 (PDT)
+From: Stefano Stabellini <sstabellini@kernel.org>
+X-X-Sender: sstabellini@ubuntu-linux-20-04-desktop
+To: Julien Grall <julien@xen.org>
+cc: Stefano Stabellini <sstabellini@kernel.org>, 
+ Vikram Garhwal <vikram.garhwal@amd.com>, qemu-devel@nongnu.org, 
+ stefano.stabellini@amd.com, Peter Maydell <peter.maydell@linaro.org>, 
+ Anthony Perard <anthony.perard@citrix.com>, Paul Durrant <paul@xen.org>, 
+ "open list:ARM TCG CPUs" <qemu-arm@nongnu.org>, 
+ "open list:X86 Xen CPUs" <xen-devel@lists.xenproject.org>
+Subject: Re: [PATCH v1 10/12] hw/arm: introduce xenpv machine
+In-Reply-To: <460a480e-4e91-8d78-60da-59b9cc98beee@xen.org>
+Message-ID: <alpine.DEB.2.22.394.2210181241320.4587@ubuntu-linux-20-04-desktop>
+References: <20221015050750.4185-1-vikram.garhwal@amd.com>
+ <20221015050750.4185-11-vikram.garhwal@amd.com>
+ <3e504b1b-197d-b77b-16e1-86530eb3d64c@xen.org>
+ <alpine.DEB.2.22.394.2210171345450.2351079@ubuntu-linux-20-04-desktop>
+ <460a480e-4e91-8d78-60da-59b9cc98beee@xen.org>
+User-Agent: Alpine 2.22 (DEB 394 2020-01-19)
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::636;
- envelope-from=shentey@gmail.com; helo=mail-ej1-x636.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+Content-Type: text/plain; charset=US-ASCII
+Received-SPF: pass client-ip=145.40.68.75; envelope-from=sstabellini@kernel.org;
+ helo=ams.source.kernel.org
+X-Spam_score_int: -73
+X-Spam_score: -7.4
+X-Spam_bar: -------
+X-Spam_report: (-7.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.256,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_HI=-5, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -130,115 +112,105 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: htyOowA61BaV
+X-TUID: N6oFhZkh9VDu
 
-Cover letter:=0D
-~~~~~~~~~~~~~=0D
-=0D
-This series adds support for -pflash and direct SD card access to the=0D
-PPC e500 boards. The idea is to increase compatibility with "real" firmware=
-=0D
-images where only the bare minimum of drivers is compiled in.=0D
-=0D
-The series is structured as follows:=0D
-=0D
-Patches 1-4 perform some general cleanup which paves the way for the rest o=
-f=0D
-the series.=0D
-=0D
-Patch 5 adds -pflash handling where memory-mapped flash can be added on=0D
-user's behalf. That is, the flash memory region in the eLBC is only added i=
-f=0D
-the -pflash argument is supplied. Note that the cfi01 device model becomes=
-=0D
-stricter in checking the size of the emulated flash space.=0D
-=0D
-Patches 6 and 7 add a new device model - the Freescale eSDHC - to the e500=
-=0D
-boards which was missing so far.=0D
-=0D
-User documentation is also added as the new features become available.=0D
-=0D
-Tesing done:=0D
-* `qemu-system-ppc -M ppce500 -cpu e500mc -m 256 -kernel uImage -append=0D
-"console=3DttyS0 rootwait root=3D/dev/mtdblock0 nokaslr" -drive=0D
-if=3Dpflash,file=3Drootfs.ext2,format=3Draw`=0D
-* `qemu-system-ppc -M ppce500 -cpu e500mc -m 256 -kernel uImage -append=0D
-"console=3DttyS0 rootwait root=3D/dev/mmcblk0" -device sd-card,drive=3Dmydr=
-ive -drive=0D
-id=3Dmydrive,if=3Dnone,file=3Drootfs.ext2,format=3Draw`=0D
-=0D
-The load was created using latest Buildroot with `make=0D
-qemu_ppc_e500mc_defconfig` where the rootfs was configured to be of ext2 ty=
-pe.=0D
-In both cases it was possible to log in and explore the root file system.=0D
-=0D
-v4:=0D
-~~~=0D
-Zoltan:=0D
-- Don't suggest presence of qemu-system-ppc32 in documentation=0D
-=0D
-Bin:=0D
-- New patch: docs/system/ppc/ppce500: Use qemu-system-ppc64 across the boar=
-d(s)=0D
-=0D
-Peter:=0D
-- Inline pflash_cfi01_register() rather than modify it (similar to v2)=0D
-=0D
-v3:=0D
-~~~=0D
-Phil:=0D
-- Also add power-of-2 fix to pflash_cfi02=0D
-- Resolve cfi01-specific assertion in e500 code=0D
-- Resolve unused define in eSDHC device model=0D
-- Resolve redundant alignment checks in eSDHC device model=0D
-=0D
-Bin:=0D
-- Add dedicated flash chapter to documentation=0D
-=0D
-Bernhard:=0D
-- Use is_power_of_2() instead of ctpop64() for better readability=0D
-- Only instantiate eSDHC device model in ppce500 (not used in MPC8544DS)=0D
-- Rebase onto gitlab.com/danielhb/qemu/tree/ppc-next=0D
-=0D
-v2:=0D
-~~~=0D
-Bin:=0D
-- Add source for MPC8544DS platform bus' memory map in commit message.=0D
-- Keep "ESDHC" in comment referring to Linux driver.=0D
-- Use "qemu-system-ppc{64|32} in documentation.=0D
-- Use g_autofree in device tree code.=0D
-- Remove unneeded device tree properties.=0D
-- Error out if pflash size doesn't fit into eLBC memory window.=0D
-- Remove unused ESDHC defines.=0D
-- Define macro ESDHC_WML for register offset with magic constant.=0D
-- Fix some whitespace issues when adding eSDHC device to e500.=0D
-=0D
-Phil:=0D
-- Fix tense in commit message.=0D
-=0D
-Bernhard Beschow (7):=0D
-  docs/system/ppc/ppce500: Use qemu-system-ppc64 across the board(s)=0D
-  hw/block/pflash_cfi0{1,2}: Error out if device length isn't a power of=0D
-    two=0D
-  hw/sd/sdhci-internal: Unexport ESDHC defines=0D
-  hw/sd/sdhci: Rename ESDHC_* defines to USDHC_*=0D
-  hw/ppc/e500: Implement pflash handling=0D
-  hw/sd/sdhci: Implement Freescale eSDHC device model=0D
-  hw/ppc/e500: Add Freescale eSDHC to e500plat=0D
-=0D
- docs/system/ppc/ppce500.rst |  38 +++++++-=0D
- hw/block/pflash_cfi01.c     |   8 +-=0D
- hw/block/pflash_cfi02.c     |   5 +=0D
- hw/ppc/Kconfig              |   2 +=0D
- hw/ppc/e500.c               | 114 +++++++++++++++++++++-=0D
- hw/ppc/e500.h               |   1 +=0D
- hw/ppc/e500plat.c           |   1 +=0D
- hw/sd/sdhci-internal.h      |  20 ----=0D
- hw/sd/sdhci.c               | 183 +++++++++++++++++++++++++++++++-----=0D
- include/hw/sd/sdhci.h       |   3 +=0D
- 10 files changed, 324 insertions(+), 51 deletions(-)=0D
-=0D
--- =0D
-2.38.0=0D
-=0D
+On Tue, 18 Oct 2022, Julien Grall wrote:
+> On 18/10/2022 02:26, Stefano Stabellini wrote:
+> > On Sun, 16 Oct 2022, Julien Grall wrote:
+> > > Hi,
+> > > 
+> > > There seem to be some missing patches on xen-devel (including the cover
+> > > letter). Is that expected?
+> > > 
+> > > On 15/10/2022 06:07, Vikram Garhwal wrote:
+> > > > Add a new machine xenpv which creates a IOREQ server to register/connect
+> > > > with
+> > > > Xen Hypervisor.
+> > > 
+> > > I don't like the name 'xenpv' because it doesn't convey the fact that some
+> > > of
+> > > the HW may be emulated rather than para-virtualized. In fact one may only
+> > > want
+> > > to use for emulating devices.
+> > > 
+> > > Potential name would be 'xen-arm' or re-using 'virt' but with 'accel=xen'
+> > > to
+> > > select a Xen layout.
+> > 
+> > The benefit of 'xenpv' is that it doesn't require any changes to libxl.
+> 
+> I am quite surprised. Looking at the code, it seems to work more by chance
+> than it is intentional as the code is gated by libxl__need_xenpv_qemu(). So it
+> would not start if there were no emulated devices.
+> 
+> > It is even backward compatible so it could be used with an older version
+> > of Xen/libxl.
+> We don't really gain much here. IOREQ is a tech preview and anyone that wants
+> to try it should really use the latest Xen.
+
+I think that's fair.
+
+
+> > Backward compatibility aside, if we come up with a
+> > different name then we'll need changes to libxl and to manage those
+> > changes. For instance, if we use 'xen-arm' that would mean we would need
+> > to handle per-arch QEMU machine names.
+> 
+> Right, so the main argument here is for simplicity in libxl
+
+Yeah
+
+
+> Looking at how 'xenpv' is built, this is really expected to deal with PV
+> backend rather than emulated device. I do expect some changes as we go along
+> to be able to add emulated device.
+> 
+> Furthermore, libxl is not the only toolstack out. So I am not convinced this
+> is a good argument to keep the name the same.
+
+Let's think some more about the naming strategy. From a QEMU point of
+view we could choose any name we like (Vikram please confirm), the issue
+is really on the libxl side.
+
+Today libxl understands two QEMU "machines": xenpv and xenfv
+(pc,accel=xen is the same as xenfv, I'll use xenfv in this email for
+simplicity).
+
+xenpv is for PV guests and only provides PV backends, no emulation. It
+is used on both ARM and x86.
+
+xenfv is only used on x86, and it is for HVM guests, with a full set of
+emulated hardware (PIIX3, etc.).
+
+The purpose of this series is to introduce a QEMU machine that:
+- works on ARM (but could maybe work on other archs as a stretch goal)
+- provides PV backends
+- no emulated devices by default
+- also can emulate selected devices on request
+
+Certainly it is not xenfv or pc,accel=xen because they would with more
+emulation by default. This is more like "xenpvh": an extension to PV
+with also the capability of emulating one device as requested. It is not
+intended to emulate a full PC and doesn't do that by default like xenfv.
+
+If/When x86 PVH gains the ability to use QEMU as IOREQ server, I would
+imagine it would run a QEMU machine similar to this one.
+
+This is also how I would imagine it would get integrated in libxl: as a
+xenpv + individual emulated devices. Not as HVM for ARM. The other QEMU
+command line arguments are inline with the xenpv command line arguments
+rather than xenfv command line arguments. This is why the libxl changes
+are small to zero to make it work today.
+
+So, I think the following options work:
+
+a) call it "xenpv" because it is an extension of the old xenpv machine
+b) call it "xenpvh" because it is PV + few individual emulated devices
+
+If we call it xenpv there are fewer changes in libxl. If we call it
+xenpvh there are more changes in libxl but we can distinguish xenpv from
+xenpvh (I don't see why we need it right now, but I could imagine it
+could turn out useful in the future.)
+
+I would stay away from arch-specific machine names because it will make
+it harder on the libxl side without immediate benefits.

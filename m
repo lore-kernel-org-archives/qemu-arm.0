@@ -1,120 +1,114 @@
-Received: by 2002:a05:7022:458e:b0:46:22f1:8c13 with SMTP id cf14csp424861dlb;
-        Thu, 20 Oct 2022 09:17:56 -0700 (PDT)
-X-Google-Smtp-Source: AMsMyM4hvHbeXWPDTEUNS0gX2V2MJfbc1EcgBKq8FyOdQEjy2hYwc/vHfPNaRJyFHlkfH8WicUZ4
-X-Received: by 2002:a0c:e150:0:b0:4b1:ae36:f0dc with SMTP id c16-20020a0ce150000000b004b1ae36f0dcmr12203814qvl.13.1666282676661;
-        Thu, 20 Oct 2022 09:17:56 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1666282676; cv=none;
+Received: by 2002:a17:906:43c7:b0:78d:9f02:16a1 with SMTP id j7csp644409ejn;
+        Thu, 20 Oct 2022 15:38:54 -0700 (PDT)
+X-Google-Smtp-Source: AMsMyM5sHrMzcb2CHCmef/825q9MFAtAgUf2WNCnbNESnLjRReyNlld8x9orv1KyzJR1lhkFKbUE
+X-Received: by 2002:a05:620a:bc3:b0:6ef:418:de91 with SMTP id s3-20020a05620a0bc300b006ef0418de91mr4019381qki.653.1666305534833;
+        Thu, 20 Oct 2022 15:38:54 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1666305534; cv=none;
         d=google.com; s=arc-20160816;
-        b=yOj1rxD3UUA3uGSwjCaZrUEZbOIQqVqwtJl6aWgAB62tCNoRV6O+QLQw/iDUEGWMSx
-         kP7TNeU2gjU6AbtnQEe94+hgBYFw+rbI9ghouBp3i6uQZT4LWxSUlk7CYjlrmQ9WazjY
-         SZojqO431CVRi/+iPBw6s/EsJMHV9pypL30/GXoEJ+nrrTNo/gYG4a1OqUb7MS/bLCX4
-         D5Yu95riyiVsjaSnwpkUwGC5vChMEFmz2u2iEVquyUgpnaQRV+tiixzKV8htG2pKGBXa
-         TbRhUfgx0IzzWN/13ZqytrOSRWbZEajhGkCeKgvdpdLkMAL7o4MzRLvpPsGAJS9Hd3mM
-         DVCA==
+        b=bpm+EvF5Am5pPfsT/BBWSACHbwMnjz7mUxPgi22SFLwzSc8WClMaQoPrjKFUr6+7v9
+         YPE+YT3NVh9AJourVFraWpqMAYcel6PHxjdqVcR1WCkgKIp24AUqQeWfCfb55KKGXcGE
+         ydk5USJltuky1LxJgVK5zJDgI+Q+BdIe61uccXADhq4MwsvI840lM4EN55FbigYIC/Jn
+         JPaqY5jwkDm5ujhbBXM/SYQFG8SWaIeZfybNOhi1y8X/9uQpRpiwP6+dRSq04EehhSTi
+         NkYYi8AwBBU6ioP9uQmA1MXTNGEV06t7W4eX+OOh9u05VFhpeuM5c79kUMRrDfileRO3
+         Ft3g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=CacqzopRIDrN4tXf/pt3CM8u+XjcFphTFc0D8JIaXFU=;
-        b=IqJj811+AGD94LowWD83C1a47gg2KtLa7uAQ5Zs6DhYk4ossz96M5I+ityNBpO2n0x
-         MfrkhpG02z5bSazUd5MxihKGM3hpA1R/tO07PrB+LAnxhoo8oV3etWfBFjST5DxII46A
-         EDqoCkBAykKEBaS8Jp04rzPPw+VLp1x4EtAUSutrpx3ki2GXavwhfdG2H+jurHrgkaY4
-         czRcSxnF7Z5axDakm0Bk8qkrcQ8KHR3wbnZw5aP/YkyHJLUWpuMvwbDNacnkjCVJYw2A
-         sK7LBG0uUc7RCeQhX5pstcabIhG4XMiaggRv5hv2u3qez06Tsnhp7umCfPX8/kIp9SrD
-         NfeA==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
+        bh=0Uj3TKeNhrdwNRMuPPy9S8hZ09c8NnmiwVQNH1E06JU=;
+        b=Vj2qOnUN6BnKdzJ9SwiGLuoAT1Vd7wEeGLP1SInDkSleWsefWOlWVvtk8s4AGDYa+A
+         lMjbvcRKRs/ggHi3XkKLskm9Yv2B4LaOrph+xdEp7Z4z+u0uKARbRrBaIjgpb0IKFaSO
+         x78iREjLTZn0bhb8BC62nJVp73YhPaWKbNo3qhxELTpKDf6Brna/hMfn3coO12o6P6yW
+         Sykz5lJDFT3nY4fMlIDEcCAhuf5jEp4gIIERrlbMCH+Lypw4lVzkbdRYmd5hRa2XK7Vr
+         23JitgpSeS1rzWfL5hItlhU1RKBsNALp+C2XIPsLJIwCM4sGfjPc18V/2GN69X/ep2lv
+         UVFA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=GfiNExf9;
+       dkim=pass header.i=@linaro.org header.s=google header.b=JhLbK3WN;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id w21-20020ac87e95000000b0039cc8321725si10854365qtj.286.2022.10.20.09.17.56
+        by mx.google.com with ESMTPS id b3-20020ac812c3000000b00397ab5a9b1csi10117470qtj.220.2022.10.20.15.38.54
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 20 Oct 2022 09:17:56 -0700 (PDT)
+        Thu, 20 Oct 2022 15:38:54 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=GfiNExf9;
+       dkim=pass header.i=@linaro.org header.s=google header.b=JhLbK3WN;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:53838 helo=lists.gnu.org)
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1] helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1olYF1-0003FN-Uf
-	for alex.bennee@linaro.org; Thu, 20 Oct 2022 12:17:56 -0400
+	id 1oleBi-00030m-AF
+	for alex.bennee@linaro.org; Thu, 20 Oct 2022 18:38:54 -0400
 Received: from [::1] (helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1olXxC-0005eR-K3
-	for alex.bennee@linaro.org; Thu, 20 Oct 2022 11:59:30 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:57066)
+	id 1ole9c-0006MN-7T
+	for alex.bennee@linaro.org; Thu, 20 Oct 2022 18:36:44 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1olX8H-0004lY-CB
- for qemu-arm@nongnu.org; Thu, 20 Oct 2022 11:06:55 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:20672)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1olX8F-0002HL-Px
- for qemu-arm@nongnu.org; Thu, 20 Oct 2022 11:06:53 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1666278411;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=CacqzopRIDrN4tXf/pt3CM8u+XjcFphTFc0D8JIaXFU=;
- b=GfiNExf99FegetzoWvyd+PDsme0OsRAER3LPch11D0m0yjxUaBdDRSfxa3TSL/ibFjo9kk
- b03eLloRAwreGg4azdBFNE3NXMIc9v7MverA0gug0wZL7mghysq2dkwYq1ci+KYiZO+L2h
- v/D0TelOgFqLzchjoEsYwHt6NWVfY2A=
-Received: from mail-lf1-f72.google.com (mail-lf1-f72.google.com
- [209.85.167.72]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_128_GCM_SHA256) id
- us-mta-411-rwf1W4zLMweNQLSw-4QcNg-1; Thu, 20 Oct 2022 11:06:50 -0400
-X-MC-Unique: rwf1W4zLMweNQLSw-4QcNg-1
-Received: by mail-lf1-f72.google.com with SMTP id
- u2-20020ac25182000000b004a24f3189feso7062458lfi.15
- for <qemu-arm@nongnu.org>; Thu, 20 Oct 2022 08:06:49 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1ole9T-0006Gz-Bo
+ for qemu-arm@nongnu.org; Thu, 20 Oct 2022 18:36:37 -0400
+Received: from mail-pg1-x535.google.com ([2607:f8b0:4864:20::535])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1ole9N-0000y8-Cy
+ for qemu-arm@nongnu.org; Thu, 20 Oct 2022 18:36:35 -0400
+Received: by mail-pg1-x535.google.com with SMTP id q1so845797pgl.11
+ for <qemu-arm@nongnu.org>; Thu, 20 Oct 2022 15:36:27 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=0Uj3TKeNhrdwNRMuPPy9S8hZ09c8NnmiwVQNH1E06JU=;
+ b=JhLbK3WNFoRrJii59yJ6ytA0N0iZjaPu9ZhocGYtvu2HNkUU3+zutBCCY9+xW9vUTV
+ oNLTj7NlOO1j9C3NWK+O3pUSs0A/TOZ0V3sGqnHs9UH4clkbHL+xAD6HFX4XUfzL5Ee5
+ p/k4jjNnPh6tYVxObGyuIZCRKyNPcPH8yLzoCturR/XzdoTrOA0jGdgT2SDq+gYRuJoO
+ Ile7UX21yF4Sk2lP4TcjNFFB2DaHzHlPuxhwKY9JAIPrEZoTgiZYMXk8ekHb/TOYyHWX
+ a6EOOBW2HPmnnLzQpNOdGgYUJrB4Utv2a8GvcS3PDckjqEYppFnRJ8z5VUmE51V21KA1
+ Obew==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=CacqzopRIDrN4tXf/pt3CM8u+XjcFphTFc0D8JIaXFU=;
- b=dM2howEt2d1WHN6FZnSpXMyLB5h3uMzb81Qwx2I6e8raRhHhfbkf33Nqj9SzZyHZMx
- N3KBlBh2pF8BobN0h1/zN5wKzQ9E8Gahn18HE9lqtUkqIONI08r22kCs+UzxW6DTFp6W
- bVW1tk84lvWz6RwjY+VEHnUN3lwV5G4xyKA52khuXtIRQYbVEYKXLHrCftqxH3CEpKyw
- 69xC5fzfIYx0v+exYpVXyiCixJQC+GTQ9BL8JTlOy2+Nx5zFksuafJ2NUC3vEhOFZZeQ
- zJqrpiQx+p9UI6MHAPL7N3FjrfTtE9j1VoyAonaEKE0vWSTdxlZpXOei4u1mXcl7Wcqt
- 9acQ==
-X-Gm-Message-State: ACrzQf3srIvRSPEI0HuQ8xL6Fh+cjhDT3sSxPaP1jIPHSN8+BDGqP+WW
- fr9lkBFzguKhvz4SHODJWJmR9APJeYMDmHZqHTNhOJ4Tq7nEuVLGWE956AXUQyTJbtQCaNrCvX+
- A6DJYTIt2uU43pRJ53hUPo7gNwjbw
-X-Received: by 2002:ac2:5dd5:0:b0:4a2:2960:a855 with SMTP id
- x21-20020ac25dd5000000b004a22960a855mr5055919lfq.399.1666278406809; 
- Thu, 20 Oct 2022 08:06:46 -0700 (PDT)
-X-Received: by 2002:ac2:5dd5:0:b0:4a2:2960:a855 with SMTP id
- x21-20020ac25dd5000000b004a22960a855mr5055895lfq.399.1666278406413; Thu, 20
- Oct 2022 08:06:46 -0700 (PDT)
+ bh=0Uj3TKeNhrdwNRMuPPy9S8hZ09c8NnmiwVQNH1E06JU=;
+ b=1+lLj/QDJqWHZB0NSsgvQfy6/ou5ropBJUs36uJrA5wSnay7uwvcszWefwcg5YJJh1
+ 1E7a+rpOTmOSUUXceTFrnnqrn/5VV1KjySYtznt6GF/b2JuvrEYGKgwYylR3iDcG4vkH
+ EnJgZNsy0f42YVRsDDv6QGVKpMk7IbnUCk52BhVRbSBbgvvM7RIAXDU31WviHa1pQPUl
+ AiL7tyOdL5t/Iyk7gRTc8hTvm49QjbLgcEWeSLRR5ENdIMo/XQDpGIxoYJgfHxeNRVob
+ T8jisne/6Bm6aDUAiIbR8lypiF8aJa7pTJDtJVR0Lric7CRq/daYF7ho+EuKm6SUO3Gj
+ dvew==
+X-Gm-Message-State: ACrzQf0mGfCPBnHaXLKsasQks/nnSjASfitEWQLUKMAr2Iul877/5jMo
+ 2i4hvG59AutTTGX87d2Pr9x5TLHLy4sMzMio
+X-Received: by 2002:a63:1508:0:b0:438:eb90:52d1 with SMTP id
+ v8-20020a631508000000b00438eb9052d1mr13911763pgl.252.1666305385538; 
+ Thu, 20 Oct 2022 15:36:25 -0700 (PDT)
+Received: from localhost.localdomain ([149.135.10.35])
+ by smtp.gmail.com with ESMTPSA id
+ r10-20020aa7988a000000b0054cd16c9f6bsm13753841pfl.200.2022.10.20.15.36.22
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 20 Oct 2022 15:36:24 -0700 (PDT)
+From: Richard Henderson <richard.henderson@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org
+Subject: [PATCH v5 00/14] target/arm: Implement FEAT_HAFDBS
+Date: Fri, 21 Oct 2022 08:35:34 +1000
+Message-Id: <20221020223548.2310496-1-richard.henderson@linaro.org>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-References: <20221020102012.3015662-1-peter.maydell@linaro.org>
-In-Reply-To: <20221020102012.3015662-1-peter.maydell@linaro.org>
-From: John Snow <jsnow@redhat.com>
-Date: Thu, 20 Oct 2022 11:06:34 -0400
-Message-ID: <CAFn=p-bf-o2ajp8DQ6eVJvMBakC2NYqwwiYkdyvCJspXZdsU4g@mail.gmail.com>
-Subject: Re: [PATCH] tests/avocado: raspi2_initrd: Wait for guest shutdown
- message before stopping
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, Thomas Huth <thuth@redhat.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=jsnow@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -23
-X-Spam_score: -2.4
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::535;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pg1-x535.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.251,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ T_SPF_TEMPERROR=0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -129,57 +123,47 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: hJAiYLRcylrg
+X-TUID: w3QGWFxmKacb
 
-On Thu, Oct 20, 2022 at 6:20 AM Peter Maydell <peter.maydell@linaro.org> wrote:
->
-> The avocado test
->  tests/avocado/boot_linux_console.py:BootLinuxConsole.test_arm_raspi2_initrd
-> finishes wiith
->
->     exec_command(self, 'halt')
->     # Wait for VM to shut down gracefully
->     self.vm.wait()
->
-> In theory this should be fine. In practice it runs into two bugs:
->
->  * when the test calls self.vm.wait() Avocado closes the socket
->    connection to the guest serial console immediately, so the
->    avocado logs don't have the last part of the guest output:
->    https://gitlab.com/qemu-project/qemu/-/issues/1265
->  * when the socket is closed, a bug in the QEMU socket chardev
->    means that it loses any data that the guest UART has not
->    yet consumed. This means that the guest doesn't always read
->    the full 'halt' command string, so the test intermittently
->    fails with a timeout:
->    https://gitlab.com/qemu-project/qemu/-/issues/1264
->
-> Work around both of these by waiting for the guest to print the
-> string that means it has completed the shutdown process.  This fixes
-> a very long standing intermittent failure in this test.
->
-> Resolves: https://gitlab.com/qemu-project/qemu/-/issues/636
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> ---
->  tests/avocado/boot_linux_console.py | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
->
-> diff --git a/tests/avocado/boot_linux_console.py b/tests/avocado/boot_linux_console.py
-> index ca9d09b0d7c..eed4b49e6e4 100644
-> --- a/tests/avocado/boot_linux_console.py
-> +++ b/tests/avocado/boot_linux_console.py
-> @@ -489,7 +489,7 @@ def test_arm_raspi2_initrd(self):
->                                                  'BCM2835')
->          exec_command_and_wait_for_pattern(self, 'cat /proc/iomem',
->                                                  '/soc/cprman@7e101000')
-> -        exec_command(self, 'halt')
-> +        exec_command_and_wait_for_pattern(self, 'halt', 'reboot: System halted')
->          # Wait for VM to shut down gracefully
->          self.vm.wait()
+Changes for v5:
+  * Rebase, including 12 patches.
+  * Add regime_is_stage2, which I should have done ages ago.
+  * Reorg attribute extraction/merging vs descriptor modifications.
 
-LGTM!
+Patches lacking review:
+  01-target-arm-Introduce-regime_is_stage2.patch (new)
+  02-target-arm-Add-ptw_idx-to-S1Translate.patch
+  11-target-arm-Tidy-merging-of-attributes-from-descri.patch
+  13-target-arm-Implement-FEAT_HAFDBS-dirty-bit-portio.patch
 
-Already staged, but just for formality's sake:
 
-Reviewed-by: John Snow <jsnow@redhat.com>
+r~
+
+
+Richard Henderson (14):
+  target/arm: Introduce regime_is_stage2
+  target/arm: Add ptw_idx to S1Translate
+  target/arm: Add isar predicates for FEAT_HAFDBS
+  target/arm: Extract HA and HD in aa64_va_parameters
+  target/arm: Move S1_ptw_translate outside arm_ld[lq]_ptw
+  target/arm: Add ARMFault_UnsuppAtomicUpdate
+  target/arm: Remove loop from get_phys_addr_lpae
+  target/arm: Fix fault reporting in get_phys_addr_lpae
+  target/arm: Don't shift attrs in get_phys_addr_lpae
+  target/arm: Consider GP an attribute in get_phys_addr_lpae
+  target/arm: Tidy merging of attributes from descriptor and table
+  target/arm: Implement FEAT_HAFDBS, access flag portion
+  target/arm: Implement FEAT_HAFDBS, dirty bit portion
+  target/arm: Use the max page size in a 2-stage ptw
+
+ docs/system/arm/emulation.rst |   1 +
+ target/arm/cpu.h              |  10 +
+ target/arm/internals.h        |  11 +
+ target/arm/cpu64.c            |   1 +
+ target/arm/helper.c           |  22 +-
+ target/arm/ptw.c              | 505 +++++++++++++++++++++++-----------
+ 6 files changed, 380 insertions(+), 170 deletions(-)
+
+-- 
+2.34.1
 

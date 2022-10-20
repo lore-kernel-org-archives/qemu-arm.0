@@ -1,119 +1,120 @@
-Received: by 2002:a17:906:43c7:b0:78d:9f02:16a1 with SMTP id j7csp646033ejn;
-        Thu, 20 Oct 2022 15:42:36 -0700 (PDT)
-X-Google-Smtp-Source: AMsMyM4tK4S5Nur6AVJTdm1CCcGrGRH4FBJm7Xv5cfrcjQt+GFLJUxa3SMovDFWEW5/JTsrb4C8B
-X-Received: by 2002:ac8:5c96:0:b0:39c:e7eb:55d9 with SMTP id r22-20020ac85c96000000b0039ce7eb55d9mr13734749qta.403.1666305756189;
-        Thu, 20 Oct 2022 15:42:36 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1666305756; cv=none;
+Received: by 2002:a17:906:43c7:b0:78d:9f02:16a1 with SMTP id j7csp646537ejn;
+        Thu, 20 Oct 2022 15:43:36 -0700 (PDT)
+X-Google-Smtp-Source: AMsMyM4Jn2chlUmULtf/vTHfeDoaPh2btDKggwgPk/Ugm4+Km+hv26ZUzvlG5b9SQLssIdRQaLLz
+X-Received: by 2002:a05:6214:e62:b0:4b3:ff39:7aef with SMTP id jz2-20020a0562140e6200b004b3ff397aefmr13908846qvb.31.1666305816245;
+        Thu, 20 Oct 2022 15:43:36 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1666305816; cv=none;
         d=google.com; s=arc-20160816;
-        b=R0/JfiEYrA136zsEga2PjSOB778Tp2QvYQ5xGvKIvsqzFdfJJYlXEG7DsU51IK2f1D
-         7sjPUKs3vfkIppa/KQkehy7BKiJ4Ojb0p2l4RbqCVXFIEn40rm0E/4ZxgByHbS6COIq7
-         WL+PCSf2XGNBJWloGlZvaN0Jgef8IJKSnuogUtzgRwEqRd2ZtTcSWbB3zfk5ZFjprtZb
-         rvn+ZkBJ0QBfj5xiib4tlk3Uk5GJQ6ePiIiOXQ36tRWbxFexG+p2yDbcMigM/ucclQe8
-         UwHPyQwO5O5UpY3kQbPa94paCXLjVWsyV+35qgSZDRcXN95vq8QhjC0qYDPJSK3kkLCR
-         qmVg==
+        b=kxbiOoxFRfnoXNFiMQQ+xNIGRsdXqCY0WlODTQFrEi2w8pOpFaQNsLJDh2Wr5Y2q6M
+         l4BbPZfBBG31Z8kvCxevfZvEoKL1HR773ejSwfw67wYS6bJo3iJwCFtTTv5/SSypuuyI
+         TidOVcPeNo0RsZyWgscH5PoX1pZiF77Xxbl75nSE5ES11S7GGWxBffNftMt6iTPX8auK
+         jEo/xK2/v9ijfbDiz3WEfxgQzpQXxtD0Tbb4g+ofRFWGMRx71cSl2490L4CASdcIFDpU
+         EAVOHGCJ9Y8OS51mq64tumAHfD//L89n6Xffbis2tBjqv7fFEQfxffdM9TAkacpWkq84
+         KvJg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=/GiKSj2DI/fM8k5gjQPIZReGKnYnqJ3VPV7yF0e0HWE=;
-        b=hDqrrEr1Y2WdKF7CTA687ngqI/D2vjis6XcSv4ux0RuskHwiRnJXj6C1AZdfn73+cw
-         esMpHrGlMMVQ6TnoWwYqdfGP2ZFh9rhqyp0oM7hgswCNTxa8ogPmw2fGCOSQLW5191x8
-         pZdwTy7W9LivF0DAIE1f+8Tmj04NydsdZVx3qh//OMFKw6sRSmTkIkgUHowM4OoLc/fE
-         rEFvOl/iJ6b6My/Y2+4/gLdSkSgHsWeykse9jhaMmu3klDSRapGVWqNkXMtE/3T3LiS1
-         fMoLl44AROMc1kUF3gGEA2w58ByDuezCLHfjfwdHfZKDo2NhQG7RcJKe6jbqpKm6PCPT
-         EGvw==
+        bh=sdisIrMnl1TYgX+y3Jca2Lvj3mz6slgwmrdpC7jGGrw=;
+        b=FuHzp64Vw0Un9OAWFgN4HiZto70ka1oFe9VoHZAYPRx0yC93F9u0fp+iiC8438yyEp
+         DcettH3jkixwm8KoVYYoa4taidFyEXW0zi0A9e3cyMGYgXUf6RNauLoyBL4nExnp3R0b
+         yDoGhHX3Am++ZYJR4yrXwhHFczEFfi1uJZWjzptVCTIZdOJtAUMGrb266n8ATb+EBNWy
+         R6iPRJBLCx5zGCTaQM6xDIdOIrHV/gtaKM47DfJaG0N92rYnzAIrZCfN4zACibyAu0JR
+         gSzhk/VX+xVloM/ZpM1rWhY8EGQco2h0VdYx4z0A6PtOu/i4W1PU6qDyCehySVg2iTlD
+         1U+Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=DKK3gWdF;
+       dkim=pass header.i=@linaro.org header.s=google header.b=uZlkEVVZ;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id z20-20020ac875d4000000b003436719dc25si10344070qtq.590.2022.10.20.15.42.36
+        by mx.google.com with ESMTPS id gs3-20020a056214226300b004ad77a0f08asi11814592qvb.379.2022.10.20.15.43.36
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 20 Oct 2022 15:42:36 -0700 (PDT)
+        Thu, 20 Oct 2022 15:43:36 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=DKK3gWdF;
+       dkim=pass header.i=@linaro.org header.s=google header.b=uZlkEVVZ;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1oleFH-0002zU-KG
-	for alex.bennee@linaro.org; Thu, 20 Oct 2022 18:42:35 -0400
+	id 1oleGF-0004fY-Md
+	for alex.bennee@linaro.org; Thu, 20 Oct 2022 18:43:35 -0400
 Received: from [::1] (helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ole9s-0007Bs-Kt
-	for alex.bennee@linaro.org; Thu, 20 Oct 2022 18:37:00 -0400
+	id 1ole9v-0007Lm-8b
+	for alex.bennee@linaro.org; Thu, 20 Oct 2022 18:37:03 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1ole9l-0006op-Bx
- for qemu-devel@nongnu.org; Thu, 20 Oct 2022 18:36:53 -0400
-Received: from mail-pj1-x102d.google.com ([2607:f8b0:4864:20::102d])
+ id 1ole9n-0006ws-Gg
+ for qemu-devel@nongnu.org; Thu, 20 Oct 2022 18:36:55 -0400
+Received: from mail-pj1-x1035.google.com ([2607:f8b0:4864:20::1035])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1ole9j-00012R-CD
- for qemu-devel@nongnu.org; Thu, 20 Oct 2022 18:36:53 -0400
-Received: by mail-pj1-x102d.google.com with SMTP id ez6so767845pjb.1
- for <qemu-devel@nongnu.org>; Thu, 20 Oct 2022 15:36:50 -0700 (PDT)
+ id 1ole9l-0000yZ-Lu
+ for qemu-devel@nongnu.org; Thu, 20 Oct 2022 18:36:55 -0400
+Received: by mail-pj1-x1035.google.com with SMTP id
+ t10-20020a17090a4e4a00b0020af4bcae10so1041132pjl.3
+ for <qemu-devel@nongnu.org>; Thu, 20 Oct 2022 15:36:53 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=/GiKSj2DI/fM8k5gjQPIZReGKnYnqJ3VPV7yF0e0HWE=;
- b=DKK3gWdF+U1NMsoHizqjrnyvKi5MXXBEUCBLJjVOtuIwfMXwLZu1b3MtQdTYjWbqVB
- zGpqu2RutpjjF5jSgJluCsrhVudnM3QBXlQUYPkr51pPcn3fxlF77MCZ/jAdmrlcGTgu
- 6EBKDkSouqW0h6OaRUzVzq2M0IMZbgcfyVnr/yxs6/vZ1u/O22FSTSUqf6xyXGkESQDE
- f8GzAG8oSllQXvMpz6IE+8UIUejXjB9GprymkN26hg8YnL9AS3znYkg5gUmGk+FANDr6
- aX3/iol0e7F8fYFm0VR4qdC9zGsgjcADVifwo+g2EUP9pALvcTJHiJTWq1Hsai/NNeLd
- DvOg==
+ bh=sdisIrMnl1TYgX+y3Jca2Lvj3mz6slgwmrdpC7jGGrw=;
+ b=uZlkEVVZbjtdheSQ0PptYSIW9spXJguEU8StOTfpBUDMoMSSxPycObL8y11FkbmuHL
+ OBnDYXMoHMaGdQwQx6aIOObpJgNfKVyCwQspJjSgTLT45JjDzVFaoajL6cT9TDxaGJr0
+ w89+MlJXuESUvQ4YHFm9NDQ6O/fmmZrcekLLrSa8lmKKLgaLnk52RIrQwRZZ2KwSCZk+
+ 2o/Cly2srTT/HmMFVE0wPJMXKLOx1c6M/zkcthobXmlWEKzphgkjywjzQv9u7RAFM3fz
+ fbErwWH3MO46OyQRyzga+TTDpWFH/4AT+ta5ojjLs28i4xjdXF1+hri16PuM0AmHoM1R
+ em9A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=/GiKSj2DI/fM8k5gjQPIZReGKnYnqJ3VPV7yF0e0HWE=;
- b=bPOk3N3b4ecm/UvKNab/hPXDGIFRvYYO8C3oYmB0WRFFwCBzObAtpjKdmagTbOiWeh
- Vt/lJ4BQ7U+lqGJoLv/iscB0dGu5Sj9uZYUz176M1mRhvZ7Ato2ZLo00WRmG04kXLO+9
- x/pldD03pBM0FRU2Rq4fFMjlADFyUAe5ATrbyoF0rueZ6Ev7FU+yzM80klU2YQ2pogdh
- uRWFVYLoCdyUmdqcmoFqDeKl+jNKv5npywl2rCpMEI+duJMHdUF0SOe6Ixa/J9BfeE7N
- jpXKSqRMTkbSBD3/mSlGNB2HmbqylRbAeYpuoUEI1zUd4vzo7xQ7EcgdHwvoN3aNdVb6
- FOEw==
-X-Gm-Message-State: ACrzQf1QvnMozgJGSpu41zVtUYwVAnpoazgvJO4Q2Y7Ygv0Tdol6Mw2j
- SNLkjbBp8o5W1XMu9o+X8EoBAmiwUphoLxdL
-X-Received: by 2002:a17:902:9f97:b0:184:983f:11c5 with SMTP id
- g23-20020a1709029f9700b00184983f11c5mr16062093plq.89.1666305409460; 
- Thu, 20 Oct 2022 15:36:49 -0700 (PDT)
+ bh=sdisIrMnl1TYgX+y3Jca2Lvj3mz6slgwmrdpC7jGGrw=;
+ b=ssBQQxSLoZUGKHxjEfwF64svXzCiDWJLeZYLKIw71GgNP47U3fT6DLHmFIFvU/pzrK
+ 28Ff5XytOEFWeMOKlaMq/mCy0NKXwoJ6HWpvVOCooKpv2hnpMM569GnNjsJs0fTx1npO
+ 3eMy9pgTNvcJXlvQMgp8bJjTR1qy5oZCXmgALPehQratqUcOOfyeTnGiv+KXSGb04CFK
+ P/nHuinkED18G3WmzdjbRLnfU8M2inhAXPycoRb43ohC8NDaYr29RUA1uST2dXR9xe9s
+ CSifUYG3uJvBjFKkMJ5PusBRmG02LDs7K5OAZREULG3tUPd/0ypO2EcBsEZnvnBNIdtb
+ oQ3Q==
+X-Gm-Message-State: ACrzQf047cQBB7bUYP0kPRKM6JVq2zXhI1lEV3/NKeyT5j91g9/0Nx2r
+ EPGZYRV/7I1uv1so/hrHiPn3tJ+M3GXZEH+A
+X-Received: by 2002:a17:903:32ce:b0:17f:75dd:de88 with SMTP id
+ i14-20020a17090332ce00b0017f75ddde88mr16188405plr.5.1666305412792; 
+ Thu, 20 Oct 2022 15:36:52 -0700 (PDT)
 Received: from localhost.localdomain ([149.135.10.35])
  by smtp.gmail.com with ESMTPSA id
- r10-20020aa7988a000000b0054cd16c9f6bsm13753841pfl.200.2022.10.20.15.36.46
+ r10-20020aa7988a000000b0054cd16c9f6bsm13753841pfl.200.2022.10.20.15.36.49
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 20 Oct 2022 15:36:49 -0700 (PDT)
+ Thu, 20 Oct 2022 15:36:52 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org,
 	Peter Maydell <peter.maydell@linaro.org>
-Subject: [PATCH v5 07/14] target/arm: Remove loop from get_phys_addr_lpae
-Date: Fri, 21 Oct 2022 08:35:41 +1000
-Message-Id: <20221020223548.2310496-8-richard.henderson@linaro.org>
+Subject: [PATCH v5 08/14] target/arm: Fix fault reporting in get_phys_addr_lpae
+Date: Fri, 21 Oct 2022 08:35:42 +1000
+Message-Id: <20221020223548.2310496-9-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20221020223548.2310496-1-richard.henderson@linaro.org>
 References: <20221020223548.2310496-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::102d;
- envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x102d.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1035;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x1035.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -128,236 +129,141 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 3s8nOYZs8FJ0
+X-TUID: az394G67YdU1
 
-The unconditional loop was used both to iterate over levels
-and to control parsing of attributes.  Use an explicit goto
-in both cases.
-
-While this appears less clean for iterating over levels, we
-will need to jump back into the middle of this loop for
-atomic updates, which is even uglier.
+Always overriding fi->type was incorrect, as we would not properly
+propagate the fault type from S1_ptw_translate, or arm_ldq_ptw.
+Simplify things by providing a new label for a translation fault.
+For other faults, store into fi directly.
 
 Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/ptw.c | 192 +++++++++++++++++++++++------------------------
- 1 file changed, 96 insertions(+), 96 deletions(-)
+ target/arm/ptw.c | 31 +++++++++++++------------------
+ 1 file changed, 13 insertions(+), 18 deletions(-)
 
 diff --git a/target/arm/ptw.c b/target/arm/ptw.c
-index 36524b35ef..615471699e 100644
+index 615471699e..cd16b42c96 100644
 --- a/target/arm/ptw.c
 +++ b/target/arm/ptw.c
-@@ -1080,6 +1080,8 @@ static bool get_phys_addr_lpae(CPUARMState *env, S1Translate *ptw,
-     uint64_t descaddrmask;
-     bool aarch64 = arm_el_is_aa64(env, el);
-     bool guarded = false;
-+    uint64_t descriptor;
-+    bool nstable;
- 
-     /* TODO: This code does not support shareability levels. */
-     if (aarch64) {
-@@ -1272,106 +1274,104 @@ static bool get_phys_addr_lpae(CPUARMState *env, S1Translate *ptw,
-      * bits at each step.
-      */
-     tableattrs = is_secure ? 0 : (1 << 4);
--    for (;;) {
--        uint64_t descriptor;
--        bool nstable;
--
--        descaddr |= (address >> (stride * (4 - level))) & indexmask;
--        descaddr &= ~7ULL;
--        nstable = extract32(tableattrs, 4, 1);
--        if (!nstable) {
--            /*
--             * Stage2_S -> Stage2 or Phys_S -> Phys_NS
--             * Assert that the non-secure idx are even, and relative order.
--             */
--            QEMU_BUILD_BUG_ON((ARMMMUIdx_Phys_NS & 1) != 0);
--            QEMU_BUILD_BUG_ON((ARMMMUIdx_Stage2 & 1) != 0);
--            QEMU_BUILD_BUG_ON(ARMMMUIdx_Phys_NS + 1 != ARMMMUIdx_Phys_S);
--            QEMU_BUILD_BUG_ON(ARMMMUIdx_Stage2 + 1 != ARMMMUIdx_Stage2_S);
--            ptw->in_ptw_idx &= ~1;
--            ptw->in_secure = false;
--        }
--        if (!S1_ptw_translate(env, ptw, descaddr, fi)) {
--            goto do_fault;
--        }
--        descriptor = arm_ldq_ptw(env, ptw, fi);
--        if (fi->type != ARMFault_None) {
--            goto do_fault;
--        }
--
--        if (!(descriptor & 1) ||
--            (!(descriptor & 2) && (level == 3))) {
--            /* Invalid, or the Reserved level 3 encoding */
--            goto do_fault;
--        }
--
--        descaddr = descriptor & descaddrmask;
- 
-+ next_level:
-+    descaddr |= (address >> (stride * (4 - level))) & indexmask;
-+    descaddr &= ~7ULL;
-+    nstable = extract32(tableattrs, 4, 1);
-+    if (!nstable) {
-         /*
--         * For FEAT_LPA and PS=6, bits [51:48] of descaddr are in [15:12]
--         * of descriptor.  For FEAT_LPA2 and effective DS, bits [51:50] of
--         * descaddr are in [9:8].  Otherwise, if descaddr is out of range,
--         * raise AddressSizeFault.
-+         * Stage2_S -> Stage2 or Phys_S -> Phys_NS
-+         * Assert that the non-secure idx are even, and relative order.
+@@ -1063,8 +1063,6 @@ static bool get_phys_addr_lpae(CPUARMState *env, S1Translate *ptw,
+     ARMCPU *cpu = env_archcpu(env);
+     ARMMMUIdx mmu_idx = ptw->in_mmu_idx;
+     bool is_secure = ptw->in_secure;
+-    /* Read an LPAE long-descriptor translation table. */
+-    ARMFaultType fault_type = ARMFault_Translation;
+     uint32_t level;
+     ARMVAParameters param;
+     uint64_t ttbr;
+@@ -1101,8 +1099,7 @@ static bool get_phys_addr_lpae(CPUARMState *env, S1Translate *ptw,
+          * so our choice is to always raise the fault.
           */
--        if (outputsize > 48) {
--            if (param.ds) {
--                descaddr |= extract64(descriptor, 8, 2) << 50;
--            } else {
--                descaddr |= extract64(descriptor, 12, 4) << 48;
--            }
--        } else if (descaddr >> outputsize) {
--            fault_type = ARMFault_AddressSize;
+         if (param.tsz_oob) {
+-            fault_type = ARMFault_Translation;
 -            goto do_fault;
--        }
--
--        if ((descriptor & 2) && (level < 3)) {
--            /*
--             * Table entry. The top five bits are attributes which may
--             * propagate down through lower levels of the table (and
--             * which are all arranged so that 0 means "no effect", so
--             * we can gather them up by ORing in the bits at each level).
--             */
--            tableattrs |= extract64(descriptor, 59, 5);
--            level++;
--            indexmask = indexmask_grainsize;
--            continue;
--        }
--        /*
--         * Block entry at level 1 or 2, or page entry at level 3.
--         * These are basically the same thing, although the number
--         * of bits we pull in from the vaddr varies. Note that although
--         * descaddrmask masks enough of the low bits of the descriptor
--         * to give a correct page or table address, the address field
--         * in a block descriptor is smaller; so we need to explicitly
--         * clear the lower bits here before ORing in the low vaddr bits.
--         */
--        page_size = (1ULL << ((stride * (4 - level)) + 3));
--        descaddr &= ~(hwaddr)(page_size - 1);
--        descaddr |= (address & (page_size - 1));
--        /* Extract attributes from the descriptor */
--        attrs = extract64(descriptor, 2, 10)
--            | (extract64(descriptor, 52, 12) << 10);
--
--        if (regime_is_stage2(mmu_idx)) {
--            /* Stage 2 table descriptors do not include any attribute fields */
--            break;
--        }
--        /* Merge in attributes from table descriptors */
--        attrs |= nstable << 3; /* NS */
--        guarded = extract64(descriptor, 50, 1);  /* GP */
--        if (param.hpd) {
--            /* HPD disables all the table attributes except NSTable.  */
--            break;
--        }
--        attrs |= extract32(tableattrs, 0, 2) << 11;     /* XN, PXN */
--        /*
--         * The sense of AP[1] vs APTable[0] is reversed, as APTable[0] == 1
--         * means "force PL1 access only", which means forcing AP[1] to 0.
--         */
--        attrs &= ~(extract32(tableattrs, 2, 1) << 4);   /* !APT[0] => AP[1] */
--        attrs |= extract32(tableattrs, 3, 1) << 5;      /* APT[1] => AP[2] */
--        break;
-+        QEMU_BUILD_BUG_ON((ARMMMUIdx_Phys_NS & 1) != 0);
-+        QEMU_BUILD_BUG_ON((ARMMMUIdx_Stage2 & 1) != 0);
-+        QEMU_BUILD_BUG_ON(ARMMMUIdx_Phys_NS + 1 != ARMMMUIdx_Phys_S);
-+        QEMU_BUILD_BUG_ON(ARMMMUIdx_Stage2 + 1 != ARMMMUIdx_Stage2_S);
-+        ptw->in_ptw_idx &= ~1;
-+        ptw->in_secure = false;
++            goto do_translation_fault;
+         }
+ 
+         addrsize = 64 - 8 * param.tbi;
+@@ -1139,8 +1136,7 @@ static bool get_phys_addr_lpae(CPUARMState *env, S1Translate *ptw,
+                                            addrsize - inputsize);
+         if (-top_bits != param.select) {
+             /* The gap between the two regions is a Translation fault */
+-            fault_type = ARMFault_Translation;
+-            goto do_fault;
++            goto do_translation_fault;
+         }
      }
-+    if (!S1_ptw_translate(env, ptw, descaddr, fi)) {
-+        goto do_fault;
-+    }
-+    descriptor = arm_ldq_ptw(env, ptw, fi);
-+    if (fi->type != ARMFault_None) {
-+        goto do_fault;
-+    }
-+
-+    if (!(descriptor & 1) || (!(descriptor & 2) && (level == 3))) {
-+        /* Invalid, or the Reserved level 3 encoding */
-+        goto do_fault;
-+    }
-+
-+    descaddr = descriptor & descaddrmask;
-+
-+    /*
-+     * For FEAT_LPA and PS=6, bits [51:48] of descaddr are in [15:12]
-+     * of descriptor.  For FEAT_LPA2 and effective DS, bits [51:50] of
-+     * descaddr are in [9:8].  Otherwise, if descaddr is out of range,
-+     * raise AddressSizeFault.
-+     */
-+    if (outputsize > 48) {
-+        if (param.ds) {
-+            descaddr |= extract64(descriptor, 8, 2) << 50;
-+        } else {
-+            descaddr |= extract64(descriptor, 12, 4) << 48;
-+        }
-+    } else if (descaddr >> outputsize) {
-+        fault_type = ARMFault_AddressSize;
-+        goto do_fault;
-+    }
-+
-+    if ((descriptor & 2) && (level < 3)) {
-+        /*
-+         * Table entry. The top five bits are attributes which may
-+         * propagate down through lower levels of the table (and
-+         * which are all arranged so that 0 means "no effect", so
-+         * we can gather them up by ORing in the bits at each level).
-+         */
-+        tableattrs |= extract64(descriptor, 59, 5);
-+        level++;
-+        indexmask = indexmask_grainsize;
-+        goto next_level;
-+    }
-+
-+    /*
-+     * Block entry at level 1 or 2, or page entry at level 3.
-+     * These are basically the same thing, although the number
-+     * of bits we pull in from the vaddr varies. Note that although
-+     * descaddrmask masks enough of the low bits of the descriptor
-+     * to give a correct page or table address, the address field
-+     * in a block descriptor is smaller; so we need to explicitly
-+     * clear the lower bits here before ORing in the low vaddr bits.
-+     */
-+    page_size = (1ULL << ((stride * (4 - level)) + 3));
-+    descaddr &= ~(hwaddr)(page_size - 1);
-+    descaddr |= (address & (page_size - 1));
-+    /* Extract attributes from the descriptor */
-+    attrs = extract64(descriptor, 2, 10)
-+        | (extract64(descriptor, 52, 12) << 10);
-+
-+    if (regime_is_stage2(mmu_idx)) {
-+        /* Stage 2 table descriptors do not include any attribute fields */
-+        goto skip_attrs;
-+    }
-+    /* Merge in attributes from table descriptors */
-+    attrs |= nstable << 3; /* NS */
-+    guarded = extract64(descriptor, 50, 1);  /* GP */
-+    if (param.hpd) {
-+        /* HPD disables all the table attributes except NSTable.  */
-+        goto skip_attrs;
-+    }
-+    attrs |= extract32(tableattrs, 0, 2) << 11;     /* XN, PXN */
-+    /*
-+     * The sense of AP[1] vs APTable[0] is reversed, as APTable[0] == 1
-+     * means "force PL1 access only", which means forcing AP[1] to 0.
-+     */
-+    attrs &= ~(extract32(tableattrs, 2, 1) << 4);   /* !APT[0] => AP[1] */
-+    attrs |= extract32(tableattrs, 3, 1) << 5;      /* APT[1] => AP[2] */
-+ skip_attrs:
-+
-     /*
+ 
+@@ -1166,7 +1162,7 @@ static bool get_phys_addr_lpae(CPUARMState *env, S1Translate *ptw,
+          * Translation table walk disabled => Translation fault on TLB miss
+          * Note: This is always 0 on 64-bit EL2 and EL3.
+          */
+-        goto do_fault;
++        goto do_translation_fault;
+     }
+ 
+     if (!regime_is_stage2(mmu_idx)) {
+@@ -1197,8 +1193,7 @@ static bool get_phys_addr_lpae(CPUARMState *env, S1Translate *ptw,
+         if (param.ds && stride == 9 && sl2) {
+             if (sl0 != 0) {
+                 level = 0;
+-                fault_type = ARMFault_Translation;
+-                goto do_fault;
++                goto do_translation_fault;
+             }
+             startlevel = -1;
+         } else if (!aarch64 || stride == 9) {
+@@ -1217,8 +1212,7 @@ static bool get_phys_addr_lpae(CPUARMState *env, S1Translate *ptw,
+         ok = check_s2_mmu_setup(cpu, aarch64, startlevel,
+                                 inputsize, stride, outputsize);
+         if (!ok) {
+-            fault_type = ARMFault_Translation;
+-            goto do_fault;
++            goto do_translation_fault;
+         }
+         level = startlevel;
+     }
+@@ -1240,7 +1234,7 @@ static bool get_phys_addr_lpae(CPUARMState *env, S1Translate *ptw,
+         descaddr |= extract64(ttbr, 2, 4) << 48;
+     } else if (descaddr >> outputsize) {
+         level = 0;
+-        fault_type = ARMFault_AddressSize;
++        fi->type = ARMFault_AddressSize;
+         goto do_fault;
+     }
+ 
+@@ -1301,7 +1295,7 @@ static bool get_phys_addr_lpae(CPUARMState *env, S1Translate *ptw,
+ 
+     if (!(descriptor & 1) || (!(descriptor & 2) && (level == 3))) {
+         /* Invalid, or the Reserved level 3 encoding */
+-        goto do_fault;
++        goto do_translation_fault;
+     }
+ 
+     descaddr = descriptor & descaddrmask;
+@@ -1319,7 +1313,7 @@ static bool get_phys_addr_lpae(CPUARMState *env, S1Translate *ptw,
+             descaddr |= extract64(descriptor, 12, 4) << 48;
+         }
+     } else if (descaddr >> outputsize) {
+-        fault_type = ARMFault_AddressSize;
++        fi->type = ARMFault_AddressSize;
+         goto do_fault;
+     }
+ 
+@@ -1376,9 +1370,9 @@ static bool get_phys_addr_lpae(CPUARMState *env, S1Translate *ptw,
       * Here descaddr is the final physical address, and attributes
       * are all in attrs.
+      */
+-    fault_type = ARMFault_AccessFlag;
+     if ((attrs & (1 << 8)) == 0) {
+         /* Access flag */
++        fi->type = ARMFault_AccessFlag;
+         goto do_fault;
+     }
+ 
+@@ -1395,8 +1389,8 @@ static bool get_phys_addr_lpae(CPUARMState *env, S1Translate *ptw,
+         result->f.prot = get_S1prot(env, mmu_idx, aarch64, ap, ns, xn, pxn);
+     }
+ 
+-    fault_type = ARMFault_Permission;
+     if (!(result->f.prot & (1 << access_type))) {
++        fi->type = ARMFault_Permission;
+         goto do_fault;
+     }
+ 
+@@ -1441,8 +1435,9 @@ static bool get_phys_addr_lpae(CPUARMState *env, S1Translate *ptw,
+     result->f.lg_page_size = ctz64(page_size);
+     return false;
+ 
+-do_fault:
+-    fi->type = fault_type;
++ do_translation_fault:
++    fi->type = ARMFault_Translation;
++ do_fault:
+     fi->level = level;
+     /* Tag the error as S2 for failed S1 PTW at S2 or ordinary S2.  */
+     fi->stage2 = fi->s1ptw || regime_is_stage2(mmu_idx);
 -- 
 2.34.1
 

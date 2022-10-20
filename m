@@ -1,79 +1,121 @@
-Received: by 2002:a17:906:43c7:b0:78d:9f02:16a1 with SMTP id j7csp395416ejn;
-        Wed, 19 Oct 2022 07:44:32 -0700 (PDT)
-X-Google-Smtp-Source: AMsMyM5V99VXkaFgOpDqFFC/NIaZfDWA7BIUo4JWZq8L1TLTaiDAr0vl7VQmDH1ADy+ZPsDOTsK9
-X-Received: by 2002:a05:622a:170f:b0:39c:e3dd:62f3 with SMTP id h15-20020a05622a170f00b0039ce3dd62f3mr6834292qtk.480.1666190672008;
-        Wed, 19 Oct 2022 07:44:32 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1666190672; cv=none;
+Received: by 2002:a17:906:43c7:b0:78d:9f02:16a1 with SMTP id j7csp832899ejn;
+        Wed, 19 Oct 2022 20:13:10 -0700 (PDT)
+X-Google-Smtp-Source: AMsMyM6bUifS9+QPLj184BZTf8VS2pKkO78LQlSXidKkBGmSZJcyQvfWgahVKJVZYXhPKh1OXrum
+X-Received: by 2002:a37:ba04:0:b0:6e7:cc52:969e with SMTP id k4-20020a37ba04000000b006e7cc52969emr8054622qkf.412.1666235590604;
+        Wed, 19 Oct 2022 20:13:10 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1666235590; cv=none;
         d=google.com; s=arc-20160816;
-        b=WCYXu+CNtJnGc8SLePtpm6tz7op/ajq6YsEjTSG0yuXuSezA2etycM1XoFDsP9oV6Y
-         ceW5WsFw7gjnOfEnF4G1dYCat397NaX2StTKdrRlwJn01JCoJyQpm73gQiTCVnhIl3HW
-         OdCX5kuQPqHWKyE6Ruo5dNRhjalmUjIyh/HIsD6I4BSv/dq9AqaHf1JdYlfu6jY0CXPn
-         RObEIcNnpXX+Cq/HP0GaGPLbELoKk6gadEAPsU3tdAhr+dmDnoye2sYKPeAidXJ2UIze
-         6UlI6xa5u4QqGRUaPEy75bWwMjOqnNwmLOyGqFLmrUOAwPPJbn9GSfcFkWdwPczfBec2
-         YP6A==
+        b=JxIa2IPbyswugNGIkaaoi+Snxvt44mcZAMsxXP1gO32TadwEM60xz2kNjAb4ss7JIZ
+         8GA1EtcSpfMJNMkZJOZTkkTaUYMc6BYZVCzbhUaVg5kehLpM6j8H7PrqLNH7TJ0NA6Ul
+         N37tPrhwmZmvNPN7t3YgATgCQ7cmnX44L2yF15Hhziy3IneFz22/NVLQ2v0gyK1Dgjdr
+         FZMXDVHk2lxGsV/6cyk/23E6T0m42WjGpLNRpYcw16vtwjJH+j6J9ZFXyjlqH/YTrVdL
+         jcTBN+RY6WrCo/IYWbcjKN875JRXmJZ8zoz1O7omRFzZyFYZx2sQfqITAI51kzjzUeNM
+         KkXA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence:mime-version
-         :content-transfer-encoding:cc:to:in-reply-to:message-id:subject:date
-         :from;
-        bh=1MxQp/vww9maqQ+t3PfKnYQNoGyobMGSHMwbzEuBA3M=;
-        b=kpBkm951ZsZRnKmN2tV42OnGEkeoEGVna8syeJsV7SsTTqiSLqO27XwFIch97VUrNe
-         fg72VlWfgSCov+MzLaR9DgxDFb7tQwzaIHF+PvPi4xPCXCwD+SG3ZOXpgizL9jKU/KNe
-         QyISGTw6astyfS5+sCeUZcELawSjNtOfitkTaF62+zjRLHagM1Nv9kghygmVMcfBf7P0
-         e7FKGBrAlfzrBwn4EifR/XVrH/iSbUvLbB6GOsJyK/3vAQA7R1w8EgRKhH65DIM/1nm+
-         XKCFmKSoT64DLE+SJzzcq5ILSunt/zsRhSgj1ssi64T4Zb0hZCK1o42jCIWbgxkAjilY
-         TPiw==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=8swKSgWeilWZrM/mNtFL8crpzMp47VFbNvAGDxXmm3Y=;
+        b=r6cxu+FslU1b+v0Eww70krMnF06oAy3iceVdv4+TfTH6I+PsGW8uq0PXcOSl0XXGyd
+         1Vh8TGAbUT9K++J7gAOKmnD3aKmpnRzMcyKK/aTJO0GbLoOi6JvJHkMcPitE1d5loV+k
+         q9wYBYgVhtGcG331085jv8kvO1us9sXacXCRySwAjoE+Ed583VOdeyRL3F1LmCEpNIFw
+         YGda3ItJzTRv4SoyV50YiYNC1RTJrzze+Hvwp+v18gdL0EFHBCFa4byOohBeecsLDwGV
+         P6Q2q0vCSYHSS4rbko15nuFVpclJuyQ1whcJ3E4rWSbQ/qvyowfFYgdk/ju6X6NxQavh
+         MXWA==
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=d4umjF4T;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=sr.ht
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id eq3-20020ad45963000000b004b196e65a9fsi8632333qvb.351.2022.10.19.07.44.31
+        by mx.google.com with ESMTPS id bi34-20020a05620a31a200b006cf982c28absi10026007qkb.687.2022.10.19.20.13.10
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 19 Oct 2022 07:44:32 -0700 (PDT)
+        Wed, 19 Oct 2022 20:13:10 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=d4umjF4T;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=sr.ht
-Received: from localhost ([::1]:47668 helo=lists1p.gnu.org)
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:57386 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1olAJ5-0004Kw-Hw
-	for alex.bennee@linaro.org; Wed, 19 Oct 2022 10:44:31 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:35722)
+	id 1olLza-0000mz-2O
+	for alex.bennee@linaro.org; Wed, 19 Oct 2022 23:13:10 -0400
+Received: from [::1] (port=40130 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1olLvC-00033k-SR
+	for alex.bennee@linaro.org; Wed, 19 Oct 2022 23:08:38 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:48146)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <outgoing@sr.ht>) id 1ol92y-0008FX-8e
- for qemu-arm@nongnu.org; Wed, 19 Oct 2022 09:23:48 -0400
-Received: from mail-b.sr.ht ([173.195.146.151]:58038)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <outgoing@sr.ht>) id 1ol92w-0007e4-Lm
- for qemu-arm@nongnu.org; Wed, 19 Oct 2022 09:23:47 -0400
-Authentication-Results: mail-b.sr.ht; dkim=none 
-Received: from git.sr.ht (unknown [173.195.146.142])
- by mail-b.sr.ht (Postfix) with ESMTPSA id 2F0FF11EF7E;
- Wed, 19 Oct 2022 13:23:45 +0000 (UTC)
-From: ~axelheider <axelheider@git.sr.ht>
-Date: Wed, 19 Oct 2022 15:09:50 +0200
-Subject: [PATCH qemu.git 1/1] target/imx: reload cmp timer outside of the
- reload ptimer transaction
-Message-ID: <166618582472.15206.6093574533258782051-1@git.sr.ht>
-X-Mailer: git.sr.ht
-In-Reply-To: <166618582472.15206.6093574533258782051-0@git.sr.ht>
-To: qemu-arm@nongnu.org
-Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: quoted-printable
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1olLts-0002v2-Ft
+ for qemu-arm@nongnu.org; Wed, 19 Oct 2022 23:07:17 -0400
+Received: from mail-pg1-x52f.google.com ([2607:f8b0:4864:20::52f]:34538)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1olLtq-0001mP-TI
+ for qemu-arm@nongnu.org; Wed, 19 Oct 2022 23:07:16 -0400
+Received: by mail-pg1-x52f.google.com with SMTP id 128so18039652pga.1
+ for <qemu-arm@nongnu.org>; Wed, 19 Oct 2022 20:07:14 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=8swKSgWeilWZrM/mNtFL8crpzMp47VFbNvAGDxXmm3Y=;
+ b=d4umjF4TJTeW9c8Lx+zwMgq38yaK0bBRGjjVIpQQUCBpLRaRO6PLJGWN9IemoAVWs7
+ irv/SL6Ft5MAnt9epwMuCLhkFiJ/PEAuD8FzWkILJM5A/ccPSa39CaFvv63Ghs/rPD6c
+ zKPcs3vOWgM9NgfGlhI5MzoxlYA8Bqi4WCRkg7tJWPFscc/gY0qIw1y9neT3/XOrymW2
+ DJarUHgLMJPAv0k9PlWEiUPq1WPr7t7KyEvVf+0mCD2yTNWY77vfiSm7X9en9F2rrlFX
+ RorpGbgsM01cCFE4uLoak/by4ckPEqBY2R8ztfiL4yeoKVX9O6I0AeocQJNqVOZRkgZj
+ H1bg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=8swKSgWeilWZrM/mNtFL8crpzMp47VFbNvAGDxXmm3Y=;
+ b=jfzsM/Af665vxtjiaq7QEwi+NuAzPOmAhyA3R5okZrrmlvxL8lKbFTFk0bk2DdldHp
+ QGI6jzRfsfwRqyXTGEkF7Yd+xoie2gZb5fpcYoWzKvNps+58He2ozuA7jgpQGA71lHuh
+ L5tTJqnszcVjyrh8XYZmf3ASFGl3wCEv1qUvrW6bRC7sbt8hrKz4sB9oaa+kr+SUS/rq
+ z+jRF7m6jSdj2F3JU4VfSgYQ9zEgv2ad9Lyb8j61kJvLoF4Fy18Mf3yrfqH+8rFyWYov
+ DoufKVNZSoI99WuIH0s7fPYl7qFLHPCBWiZG0pTP3Q+0KIjDhf8624UFng4idVsdJT8z
+ 1EYQ==
+X-Gm-Message-State: ACrzQf1itOJL0nujylnxPSd8WJYiAc4jxBBVhDh1dvn3ycuYMc1sS1z+
+ 6m/TRYTionu/FSxtyznNK/IZyw==
+X-Received: by 2002:a63:1b15:0:b0:462:f17e:7051 with SMTP id
+ b21-20020a631b15000000b00462f17e7051mr9991325pgb.619.1666235232375; 
+ Wed, 19 Oct 2022 20:07:12 -0700 (PDT)
+Received: from localhost.localdomain ([149.135.10.35])
+ by smtp.gmail.com with ESMTPSA id
+ m9-20020a63ed49000000b0043c7996f7f0sm10657647pgk.58.2022.10.19.20.07.09
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 19 Oct 2022 20:07:11 -0700 (PDT)
+From: Richard Henderson <richard.henderson@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+Subject: [PATCH v8 1/9] target/arm: Introduce curr_insn_len
+Date: Thu, 20 Oct 2022 13:06:33 +1000
+Message-Id: <20221020030641.2066807-2-richard.henderson@linaro.org>
+X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20221020030641.2066807-1-richard.henderson@linaro.org>
+References: <20221020030641.2066807-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
-Received-SPF: pass client-ip=173.195.146.151; envelope-from=outgoing@sr.ht;
- helo=mail-b.sr.ht
-X-Spam_score_int: 2
-X-Spam_score: 0.2
-X-Spam_bar: /
-X-Spam_report: (0.2 / 5.0 requ) BAYES_00=-1.9, FREEMAIL_FORGED_REPLYTO=2.095,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::52f;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pg1-x52f.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Wed, 19 Oct 2022 10:43:49 -0400
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -85,36 +127,72 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: ~axelheider <axelheider@gmx.de>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ue8SFZBHI3IO
+X-TUID: ea7Mw3K81VlZ
 
-From: Axel Heider <axel.heider@hensoldt.net>
+A simple helper to retrieve the length of the current insn.
 
-Signed-off-by: Axel Heider <axel.heider@hensoldt.net>
+Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- hw/timer/imx_epit.c | 5 ++++-
- 1 file changed, 4 insertions(+), 1 deletion(-)
+ target/arm/translate.h     | 5 +++++
+ target/arm/translate-vfp.c | 2 +-
+ target/arm/translate.c     | 5 ++---
+ 3 files changed, 8 insertions(+), 4 deletions(-)
 
-diff --git a/hw/timer/imx_epit.c b/hw/timer/imx_epit.c
-index 2bf8c754b2..0b13c1eab0 100644
---- a/hw/timer/imx_epit.c
-+++ b/hw/timer/imx_epit.c
-@@ -276,9 +276,12 @@ static void imx_epit_write(void *opaque, hwaddr offset, =
-uint64_t value,
-             ptimer_set_count(s->timer_reload, s->lr);
-         }
-=20
-+        // commit s->timer_reload before imx_epit_reload_compare_timer
-+        // as timer_reload is read in imx_epit_reload_compare_timer
-+        ptimer_transaction_commit(s->timer_reload);
+diff --git a/target/arm/translate.h b/target/arm/translate.h
+index af5d4a7086..90bf7c57fc 100644
+--- a/target/arm/translate.h
++++ b/target/arm/translate.h
+@@ -226,6 +226,11 @@ static inline void disas_set_insn_syndrome(DisasContext *s, uint32_t syn)
+     s->insn_start = NULL;
+ }
+ 
++static inline int curr_insn_len(DisasContext *s)
++{
++    return s->base.pc_next - s->pc_curr;
++}
 +
-         imx_epit_reload_compare_timer(s);
-         ptimer_transaction_commit(s->timer_cmp);
--        ptimer_transaction_commit(s->timer_reload);
-         break;
-=20
-     case 3: /* CMP */
---=20
-2.34.4
+ /* is_jmp field values */
+ #define DISAS_JUMP      DISAS_TARGET_0 /* only pc was modified dynamically */
+ /* CPU state was modified dynamically; exit to main loop for interrupts. */
+diff --git a/target/arm/translate-vfp.c b/target/arm/translate-vfp.c
+index bd5ae27d09..94cc1e4b77 100644
+--- a/target/arm/translate-vfp.c
++++ b/target/arm/translate-vfp.c
+@@ -242,7 +242,7 @@ static bool vfp_access_check_a(DisasContext *s, bool ignore_vfp_enabled)
+     if (s->sme_trap_nonstreaming) {
+         gen_exception_insn(s, s->pc_curr, EXCP_UDEF,
+                            syn_smetrap(SME_ET_Streaming,
+-                                       s->base.pc_next - s->pc_curr == 2));
++                                       curr_insn_len(s) == 2));
+         return false;
+     }
+ 
+diff --git a/target/arm/translate.c b/target/arm/translate.c
+index 2f72afe019..5752b7af5c 100644
+--- a/target/arm/translate.c
++++ b/target/arm/translate.c
+@@ -6650,7 +6650,7 @@ static ISSInfo make_issinfo(DisasContext *s, int rd, bool p, bool w)
+     /* ISS not valid if writeback */
+     if (p && !w) {
+         ret = rd;
+-        if (s->base.pc_next - s->pc_curr == 2) {
++        if (curr_insn_len(s) == 2) {
+             ret |= ISSIs16Bit;
+         }
+     } else {
+@@ -9812,8 +9812,7 @@ static void arm_tr_tb_stop(DisasContextBase *dcbase, CPUState *cpu)
+             /* nothing more to generate */
+             break;
+         case DISAS_WFI:
+-            gen_helper_wfi(cpu_env,
+-                           tcg_constant_i32(dc->base.pc_next - dc->pc_curr));
++            gen_helper_wfi(cpu_env, tcg_constant_i32(curr_insn_len(dc)));
+             /*
+              * The helper doesn't necessarily throw an exception, but we
+              * must go back to the main loop to check for interrupts anyway.
+-- 
+2.34.1
+

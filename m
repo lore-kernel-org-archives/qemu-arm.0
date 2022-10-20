@@ -1,118 +1,132 @@
-Received: by 2002:a17:906:43c7:b0:78d:9f02:16a1 with SMTP id j7csp211996ejn;
-        Thu, 20 Oct 2022 03:30:13 -0700 (PDT)
-X-Google-Smtp-Source: AMsMyM5hb/UXTOkzAq5iGAggHIsL96Y9I5YaNfPHfC5PruBVka394Sh35g4OFhyVgqONxgQpP4BA
-X-Received: by 2002:a05:620a:28ce:b0:6cf:933c:40d3 with SMTP id l14-20020a05620a28ce00b006cf933c40d3mr8339647qkp.258.1666261813607;
-        Thu, 20 Oct 2022 03:30:13 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1666261813; cv=none;
+Received: by 2002:a17:906:43c7:b0:78d:9f02:16a1 with SMTP id j7csp216650ejn;
+        Thu, 20 Oct 2022 03:38:34 -0700 (PDT)
+X-Google-Smtp-Source: AMsMyM40WUtOlLhoyxHMW3cPZfn7xpbH8z4So6LwJDnf+I5cA2kqg51zzzoPqobR+1nDTA7mbl1V
+X-Received: by 2002:a05:620a:430d:b0:6d3:9dc9:d83d with SMTP id u13-20020a05620a430d00b006d39dc9d83dmr8632132qko.224.1666262314044;
+        Thu, 20 Oct 2022 03:38:34 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1666262314; cv=none;
         d=google.com; s=arc-20160816;
-        b=atOkihsFnzIpnTLRB1NjpfRWskM915MaHdX+sbiBZlt+fbOWK6YJ5bKpU2XnB5D5AW
-         pDYHLoftWgJEze1nFLEVPBCLF67v21pvDrg8flTGxzWeEPjrxISPdV51qMeEFISaB4ad
-         9NtsUE13hkjBwyYYTdEtDJi4I+EXhunrggZcFDDekwldzHw2bkQc/Ls6tf8GFR3ZAa5p
-         SmkJESTACBbS0Cn8YnU0Xn4PO+VkH3GmHVzHZn2BKew6Xv3+hYSLVY4ESKSspiX3C233
-         g7xucS/Vw4PEfRrOA4S/7Quiv7BSk+J0KDKyzzcNzyV3iIsaa00pmipMHLS5b7coBfVG
-         E2QQ==
+        b=wTUMLjkxV9oO75RFGIJw1REH+V2pnqY3VtJ21pM+QqXOFW1fw9su2EJJ46BCN1R1uw
+         3nPUMS6EPD83vPuTy/81dEHbLkigwAxJDuc62kA2fsBGYiqtZ/wpUx9sw+jHt458qXzX
+         fVU4NVzsuRBVQcuXTHedy0r9Copt+UYmLSDVXziwZusnZ/WLcErnzFu/wzm6geravd5p
+         h+0qLK851MqBz1jO2LrmB4T+5AJFN2H6VaF4gEktWDcpB6DBo//vGYuy+3nImEINMh5U
+         OFy4LCTbUEZ+i8jajDr8kLVc+lCqBVCv7o1flHxQktz+UM3KTLUuUfGK1j0tVyPS7v8/
+         TZDw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
-        bh=+TEzLKXHSYLYaRf2ur7/YkVrD096ac7fNMXbBKKnNGw=;
-        b=Gw/eHP1yDfC8hZFdMCmupaHsOKMQ1mStQm8/+zHUUggLZhnSSMBnv2/mF0Ks39QzOf
-         vaO8K31yVqjoY5haaeudedqJV58lfzbAmyUqOQq2tg/Dj2A3bF+kX2xwLML0Kyu9tOdQ
-         igRdS63oIlokxE30o1PMQFKRAiwINODwffxgHfoG7VulZxXkwM1K71o7MSXnHgHA07vB
-         j4YkuPfnQPwlN3osbDDSZQLuyrnGMJsyZYeE9PFzz1mNTb5VTm/WLaaSeYwLHDjhvh8S
-         sKTGHKgaSty0vvNgo8zlNXXXE63mTX0Gj3lrtQhCTNmu6E6c0Q7L2cZ7zJXUWeLa4JHZ
-         YFGw==
+         :content-language:in-reply-to:from:references:cc:to:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=vmxbLN2R6MuATvg+iV+vlhNDZTX19j1xJBbJ37bB+Es=;
+        b=XUH5dUxP8hw0K0+NT6bvpGDfUW9dctw+VlAJ5sbQKq5J81O/w65t8PTOghf3DpTfSQ
+         iAuganC2MbRLd2hRZ9x4oP+lbMdodrI7JbSFjfxK7Knmsk9+SVFxn55X42vOEh/RfH9c
+         WbZQJ+6DejV5lXi+6DwU14Kq+9mNddiy1CMD78q4lGIiZz4VcexGvLm060ZUzir+fRb1
+         Rin9ZyKCrM23Fin1yrWrreVa1J/yCwBhxoA8Vs59DgevbJLmzikpB2c75LYGINCI5gWp
+         gChyLAmY6nyTIicnyXmN+KrZ1hT7TcEntXqFwlpw9RX9BzKlNs8sMjTFdq8mKxc1mJa2
+         ruww==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=qbSKD5FN;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=YVWkNPtG;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t18-20020a05622a149200b0035d48a600e9si11389545qtx.268.2022.10.20.03.30.13
+        by mx.google.com with ESMTPS id w17-20020ac87191000000b0035d541b7067si9344113qto.129.2022.10.20.03.38.33
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 20 Oct 2022 03:30:13 -0700 (PDT)
+        Thu, 20 Oct 2022 03:38:34 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=qbSKD5FN;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=YVWkNPtG;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:54922 helo=lists.gnu.org)
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:36292 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1olSoW-00062M-HQ
-	for alex.bennee@linaro.org; Thu, 20 Oct 2022 06:30:12 -0400
+	id 1olSwb-00071o-8i
+	for alex.bennee@linaro.org; Thu, 20 Oct 2022 06:38:33 -0400
 Received: from [::1] (helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1olShP-0004ah-1l
-	for alex.bennee@linaro.org; Thu, 20 Oct 2022 06:22:51 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:39544)
+	id 1olSn5-0006m9-8W
+	for alex.bennee@linaro.org; Thu, 20 Oct 2022 06:28:43 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37102)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1olSew-0004Ks-GL
- for qemu-arm@nongnu.org; Thu, 20 Oct 2022 06:20:18 -0400
-Received: from mail-wm1-x334.google.com ([2a00:1450:4864:20::334]:45774)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1olSeu-0004LL-EK
- for qemu-arm@nongnu.org; Thu, 20 Oct 2022 06:20:18 -0400
-Received: by mail-wm1-x334.google.com with SMTP id
- l16-20020a05600c4f1000b003c6c0d2a445so1827111wmq.4
- for <qemu-arm@nongnu.org>; Thu, 20 Oct 2022 03:20:15 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:from:to:cc:subject:date:message-id:reply-to;
- bh=+TEzLKXHSYLYaRf2ur7/YkVrD096ac7fNMXbBKKnNGw=;
- b=qbSKD5FNYtrb4ylu4LG71MbNRMYOQthWLifiQRYxD55kYMt8mcCNCw1Rq7AsruuHGQ
- ESONAlje6LFk8hAJXgdPcuWIyRDuiSYif9bIZ9384jp5R5PNQO5epwZdpPNqcu2p00V0
- XKYsDHM2fEQCH+OGLXqfMwIkQ2RnsAYkweZYM+DCUm8G61CNpDGeObchI5n6h19Ii2x7
- Ax0nLvPcBjIbRBIouQGiy+ZxARVscbye6AM1oj9xoHg8JcjC65yhaNVJ2+VVsNQmAR35
- r439c7vYnPFP+nJubWEQtAa5WVpZELjA4QrovHymmWQyQV3HkTZ24oB11jQzxIPvci/M
- e5EA==
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1olSkV-0006PD-3A
+ for qemu-arm@nongnu.org; Thu, 20 Oct 2022 06:26:10 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:24838)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1olSkS-0007T7-36
+ for qemu-arm@nongnu.org; Thu, 20 Oct 2022 06:26:01 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1666261559;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=vmxbLN2R6MuATvg+iV+vlhNDZTX19j1xJBbJ37bB+Es=;
+ b=YVWkNPtGPaaAg5rL8eWhwg66+ccVUPNbTJo2OTpMlYlpAlavHGetWJ6D1/+pKvbgmaPZ/4
+ tv0wM7jRKvm3Y09qyRqt0Mj89seNJh/hSTk3KumbQCSmsdvIJZ40Utd1cm67shdG4Ee3ls
+ /csZaJFl2conPgaWvdsxoZij40NprCc=
+Received: from mail-qk1-f200.google.com (mail-qk1-f200.google.com
+ [209.85.222.200]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_128_GCM_SHA256) id
+ us-mta-442-0uO6B12hOlOdkoRiYpDtrA-1; Thu, 20 Oct 2022 06:25:58 -0400
+X-MC-Unique: 0uO6B12hOlOdkoRiYpDtrA-1
+Received: by mail-qk1-f200.google.com with SMTP id
+ bq17-20020a05620a469100b006eeb0bbe02bso16795269qkb.5
+ for <qemu-arm@nongnu.org>; Thu, 20 Oct 2022 03:25:58 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=+TEzLKXHSYLYaRf2ur7/YkVrD096ac7fNMXbBKKnNGw=;
- b=BKvF2RLVmf2azvZq0AaeM8915a3ZuRny+y6WgqOPlAEHNnCyq+2VTXDeY2868NQz28
- 6EjJ8pxgE1A/yB9Z5KL69XgcO5+cFa+MAgVCKwu0zd2wUM2aUgWHKCZghwoJtnCpXU+k
- V3wscgID7q1SSC5CBIPA9vl8gcQqlyYPOyzIMEmHwLeqUeMNCsRLmtQ9G6bgxYMwsEEk
- NQ+424cqiiBzRBRK++J/EHKY22EhwO8f1KBBd2dmb19sbLPjzyddQNGM1RdD3yAUh94A
- cfCzXsvHuP4RO8hk4CwRWDicw8c2A735sVQHDu34YoBnF4cZPkP8qD1LbgcJNNYfReyL
- eA/w==
-X-Gm-Message-State: ACrzQf0W3Q6oHpnQEbahb5+UDot6nCUMRMGdWHt3azlcXHzdzlmsUWUL
- p28Wcv9IVByfN3z+hSCxtcu+4G9yhIt2sA==
-X-Received: by 2002:a05:600c:219a:b0:3c6:f259:7e30 with SMTP id
- e26-20020a05600c219a00b003c6f2597e30mr16628662wme.111.1666261214456; 
- Thu, 20 Oct 2022 03:20:14 -0700 (PDT)
-Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
- by smtp.gmail.com with ESMTPSA id
- c24-20020a7bc018000000b003b47ff307e1sm2249128wmb.31.2022.10.20.03.20.13
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 20 Oct 2022 03:20:13 -0700 (PDT)
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Cc: Thomas Huth <thuth@redhat.com>,
-	John Snow <jsnow@redhat.com>
-Subject: [PATCH] tests/avocado: raspi2_initrd: Wait for guest shutdown message
- before stopping
-Date: Thu, 20 Oct 2022 11:20:12 +0100
-Message-Id: <20221020102012.3015662-1-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.25.1
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=vmxbLN2R6MuATvg+iV+vlhNDZTX19j1xJBbJ37bB+Es=;
+ b=g7KUgoT05vcM5GvatBF1aLFMpEfy5fQdHtGPMhPdIc2EIn8EIJ1W0yBqZVgxcZZlLx
+ J+qjm5S2RJj1kQI0tupe0EZI44WvKd9P8U6LZQ1fyvlLSlLMtfyGLxmvEJc/T/uNieNI
+ GxA8ERh/cYh5bpleK8mSRWeRiwhnDOP/n4eytCavijDI2y+bfDdmq+PTirI/svqTbacm
+ zIHZlI9WGeNEEMZJLhr8SvZUyOywtSXx9OZ7kkMj/rd6aZaW+EPWxkwXyUg/5LsRFeyf
+ s6nG9g31ve69NUykf/biLz/zgtbhUkGYnULert5R0wAhWLlAZpnuZ7xApqeiFlOHK9qI
+ AJBQ==
+X-Gm-Message-State: ACrzQf3SnqFtpRzjrArdcEI6sRNszMzEaV0qQCLK1zkK84MGXr9j3v23
+ TU0Kw8CqxqaXRSjLo1QN8X7qWz6sxgcmDXvKk2zGAFpdgs+MGhjh5w/9i/fLeuc/5tZf6yI/5Bb
+ 1MLuSCiMD/3a5
+X-Received: by 2002:a05:622a:1052:b0:39c:da70:3204 with SMTP id
+ f18-20020a05622a105200b0039cda703204mr10048870qte.689.1666261557923; 
+ Thu, 20 Oct 2022 03:25:57 -0700 (PDT)
+X-Received: by 2002:a05:622a:1052:b0:39c:da70:3204 with SMTP id
+ f18-20020a05622a105200b0039cda703204mr10048858qte.689.1666261557679; 
+ Thu, 20 Oct 2022 03:25:57 -0700 (PDT)
+Received: from [192.168.0.5] (ip-109-43-177-247.web.vodafone.de.
+ [109.43.177.247]) by smtp.gmail.com with ESMTPSA id
+ l12-20020a37f90c000000b006cbc6e1478csm7004392qkj.57.2022.10.20.03.25.56
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 20 Oct 2022 03:25:57 -0700 (PDT)
+Message-ID: <070bd0b4-f04c-0eb9-6a84-d031db28c4b0@redhat.com>
+Date: Thu, 20 Oct 2022 12:25:54 +0200
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::334;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x334.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.13.0
+Subject: Re: [PATCH] tests/avocado: raspi2_initrd: Wait for guest shutdown
+ message before stopping
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+Cc: John Snow <jsnow@redhat.com>
+References: <20221020102012.3015662-1-peter.maydell@linaro.org>
+From: Thomas Huth <thuth@redhat.com>
+In-Reply-To: <20221020102012.3015662-1-peter.maydell@linaro.org>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=thuth@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -23
+X-Spam_score: -2.4
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.256,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -127,52 +141,53 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 77f+FyCMrgLt
+X-TUID: 1ODTWBDBU/UC
 
-The avocado test
- tests/avocado/boot_linux_console.py:BootLinuxConsole.test_arm_raspi2_initrd
-finishes wiith
+On 20/10/2022 12.20, Peter Maydell wrote:
+> The avocado test
+>   tests/avocado/boot_linux_console.py:BootLinuxConsole.test_arm_raspi2_initrd
+> finishes wiith
+> 
+>      exec_command(self, 'halt')
+>      # Wait for VM to shut down gracefully
+>      self.vm.wait()
+> 
+> In theory this should be fine. In practice it runs into two bugs:
+> 
+>   * when the test calls self.vm.wait() Avocado closes the socket
+>     connection to the guest serial console immediately, so the
+>     avocado logs don't have the last part of the guest output:
+>     https://gitlab.com/qemu-project/qemu/-/issues/1265
+>   * when the socket is closed, a bug in the QEMU socket chardev
+>     means that it loses any data that the guest UART has not
+>     yet consumed. This means that the guest doesn't always read
+>     the full 'halt' command string, so the test intermittently
+>     fails with a timeout:
+>     https://gitlab.com/qemu-project/qemu/-/issues/1264
+> 
+> Work around both of these by waiting for the guest to print the
+> string that means it has completed the shutdown process.  This fixes
+> a very long standing intermittent failure in this test.
+> 
+> Resolves: https://gitlab.com/qemu-project/qemu/-/issues/636
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> ---
+>   tests/avocado/boot_linux_console.py | 2 +-
+>   1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/tests/avocado/boot_linux_console.py b/tests/avocado/boot_linux_console.py
+> index ca9d09b0d7c..eed4b49e6e4 100644
+> --- a/tests/avocado/boot_linux_console.py
+> +++ b/tests/avocado/boot_linux_console.py
+> @@ -489,7 +489,7 @@ def test_arm_raspi2_initrd(self):
+>                                                   'BCM2835')
+>           exec_command_and_wait_for_pattern(self, 'cat /proc/iomem',
+>                                                   '/soc/cprman@7e101000')
+> -        exec_command(self, 'halt')
+> +        exec_command_and_wait_for_pattern(self, 'halt', 'reboot: System halted')
+>           # Wait for VM to shut down gracefully
+>           self.vm.wait()
+>   
 
-    exec_command(self, 'halt')
-    # Wait for VM to shut down gracefully
-    self.vm.wait()
-
-In theory this should be fine. In practice it runs into two bugs:
-
- * when the test calls self.vm.wait() Avocado closes the socket
-   connection to the guest serial console immediately, so the
-   avocado logs don't have the last part of the guest output:
-   https://gitlab.com/qemu-project/qemu/-/issues/1265
- * when the socket is closed, a bug in the QEMU socket chardev
-   means that it loses any data that the guest UART has not
-   yet consumed. This means that the guest doesn't always read
-   the full 'halt' command string, so the test intermittently
-   fails with a timeout:
-   https://gitlab.com/qemu-project/qemu/-/issues/1264
-
-Work around both of these by waiting for the guest to print the
-string that means it has completed the shutdown process.  This fixes
-a very long standing intermittent failure in this test.
-
-Resolves: https://gitlab.com/qemu-project/qemu/-/issues/636
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
- tests/avocado/boot_linux_console.py | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/tests/avocado/boot_linux_console.py b/tests/avocado/boot_linux_console.py
-index ca9d09b0d7c..eed4b49e6e4 100644
---- a/tests/avocado/boot_linux_console.py
-+++ b/tests/avocado/boot_linux_console.py
-@@ -489,7 +489,7 @@ def test_arm_raspi2_initrd(self):
-                                                 'BCM2835')
-         exec_command_and_wait_for_pattern(self, 'cat /proc/iomem',
-                                                 '/soc/cprman@7e101000')
--        exec_command(self, 'halt')
-+        exec_command_and_wait_for_pattern(self, 'halt', 'reboot: System halted')
-         # Wait for VM to shut down gracefully
-         self.vm.wait()
- 
--- 
-2.25.1
+Reviewed-by: Thomas Huth <thuth@redhat.com>
 

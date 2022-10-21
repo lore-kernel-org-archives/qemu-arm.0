@@ -1,118 +1,159 @@
-Received: by 2002:a17:906:43c7:b0:78d:9f02:16a1 with SMTP id j7csp1019467ejn;
-        Fri, 21 Oct 2022 03:09:54 -0700 (PDT)
-X-Google-Smtp-Source: AMsMyM56jgkpobhZqTFkVnqOf5rnVPI6m6ihhuxncY36YkVu/i3uGLTH0Nz4IYkxeb5Vxjg6bsOm
-X-Received: by 2002:a05:620a:4720:b0:6ee:dc2d:4729 with SMTP id bs32-20020a05620a472000b006eedc2d4729mr12515075qkb.36.1666346993869;
-        Fri, 21 Oct 2022 03:09:53 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1666346993; cv=none;
+Received: by 2002:a17:906:43c7:b0:78d:9f02:16a1 with SMTP id j7csp1276486ejn;
+        Fri, 21 Oct 2022 08:49:09 -0700 (PDT)
+X-Google-Smtp-Source: AMsMyM7kTPiUIctA61cvCClriHLG8F4XbuNOMwMQ6Sljsmp7dCnsyDCkV72Beh1uEflXBbocHWfQ
+X-Received: by 2002:ac8:5707:0:b0:39d:c40:cf51 with SMTP id 7-20020ac85707000000b0039d0c40cf51mr8003235qtw.102.1666367348915;
+        Fri, 21 Oct 2022 08:49:08 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1666367348; cv=pass;
         d=google.com; s=arc-20160816;
-        b=bifFZbGthceC5qJxur3Nqr/g6HjbxvUmeQ2OsbUfb4ud5Md7d4svZWGxfftqy5TV0e
-         vDmlcFmfdIhPjhlLj/tfO/OZcP1ePggCEGTJ5PA5jA/kovyj6vardPwqscG8FWyWJNIy
-         L8snbRUKuzLJIDcR6U1GZBmn7nEcHugvQ6AJK8Tpo5vJdxwr43FUJ52nRUh68k/IiOOK
-         TFr7+BTjMwNSBwEvO1GWfBwq97N72XYvl67Eemlp5nN2+JYWIvo2iu/LRcwjthBlkrDh
-         2wPSUSVdldG9kQ9C8PgGBAGWVSO2g26dOR9MQBtJ0HsKXeyP3WXiNy+7H8eWt6LQFtKU
-         9wxA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=De6goZ7JkJ3YLqvW+bgz0dCp6u4aYLJy+OozOnLn8Gs=;
-        b=GI62QgFuRUmoKkIEwOvE7/sHYZBTe2EZCGJ8eE8+iKc6z2K59KYshg+QixkhqbPPTm
-         s8L56gQyeriH8pT8JXlBm3AnHv1d7yT4zGvzWD0ouSTy2IFGuXZCsoBQmsQ/enJxNZET
-         ktuupJX/P8BLGycfTbJgnBu475lWkwiFFkY20Sg194KeNIHrpaxXNDtvoGCAcVIIB6E6
-         fQkKQV4qYY542/c3LDbrxC1uOper1/9yk4JP4aHUONetMTZ0wouZo7ciu9WkFclL7BCn
-         NncTD6TB70qlABjNiqjS1TZNc27p2pNYztRjsQAmRksqP7PGRB7Nu9KGpwsRG4aR+zAW
-         amtw==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=sWQ0M2np;
+        b=Y1NvrjxLcMWQbd5Ae+6ziYUztHK+KPHDv4i1XlAyGE2/vRtYQ6PnbnMd8XOqSVzBYN
+         T8/WPIXr46+6yqRoT2Xwoy4PwfZOGNEuuq+XR/90FA491MoC94aoxyISt581M0KlBAHP
+         vENs2Y9umZSkh5jhNbJKIEkh3isRQ3tSqzSnadcef2xm2O9onUDaIR1dqSZ0fmq1ZeUQ
+         h4W8pvF/sgKCrJWt7RVrnMN67zJw+rOgEIBPRmzrLDBgi78bar0ak/k3O5crJ51Ao9cw
+         9pq3DRRE4zWT9Z8JWMvyNdO5CyNvnetPLmdMVRufnUbZd7jMCrSPDFK7j2YYSrS67qag
+         jH6g==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=errors-to:sender:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:mime-version
+         :content-disposition:message-id:subject:to:from:date:dkim-signature;
+        bh=LTklF+HGSgpkBA8qwjR0PzFjJ+IdyTXn6GghsvqN2/8=;
+        b=a5Nks3NelFR8fhTJ+IytNfTr+5zfXw1g5ASDgC2e15Sm8HhA8Fv4ptseZbg7LeAJ5U
+         1b575DqIrdVpyDsmbS8SCb7TlHaSF/og95poCeDr06kfyHziLZ1eWpLTm4CG+CeTMNhG
+         fs46OrVYhIC+PZW59tVl/wrTwVI2G2qA8eIp7npOxniKIbOSe8xp4Yd2sOXPb9URpKfg
+         8cYxnoCxMNMXFOoiSlt27DlLl0Uysn87OCaQ8he3ogOOF+6P1BJ/SCjNJVw9ZGac3QS9
+         dqhyUqEdkpeKXUA1lQqbWgdumc+Ww9QfC+qMdJlekTR8nX2k8jv28brN4ROec2Fob+c2
+         yRYQ==
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@os.amperecomputing.com header.s=selector2 header.b=umEt6vX8;
+       arc=pass (i=1 spf=pass spfdomain=os.amperecomputing.com dkim=pass dkdomain=os.amperecomputing.com dmarc=pass fromdomain=os.amperecomputing.com);
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=amperecomputing.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id do48-20020a05620a2b3000b006eeeb3ed651si7538229qkb.284.2022.10.21.03.09.53
+        by mx.google.com with ESMTPS id x21-20020a05620a449500b006eee9b11391si9018674qkp.28.2022.10.21.08.49.08
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 21 Oct 2022 03:09:53 -0700 (PDT)
+        Fri, 21 Oct 2022 08:49:08 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=sWQ0M2np;
+       dkim=pass header.i=@os.amperecomputing.com header.s=selector2 header.b=umEt6vX8;
+       arc=pass (i=1 spf=pass spfdomain=os.amperecomputing.com dkim=pass dkdomain=os.amperecomputing.com dmarc=pass fromdomain=os.amperecomputing.com);
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1] helo=lists.gnu.org)
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=amperecomputing.com
+Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1oloyN-0008UP-Fc
-	for alex.bennee@linaro.org; Fri, 21 Oct 2022 06:09:51 -0400
-Received: from [::1] (helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1oloW3-0007Qx-Cg
-	for alex.bennee@linaro.org; Fri, 21 Oct 2022 05:40:35 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1oluGX-0005gg-8o; Fri, 21 Oct 2022 11:48:57 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1oloW0-0007I1-EP
- for qemu-arm@nongnu.org; Fri, 21 Oct 2022 05:40:32 -0400
-Received: from mail-pj1-x1034.google.com ([2607:f8b0:4864:20::1034])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1oloVy-0007yb-QR
- for qemu-arm@nongnu.org; Fri, 21 Oct 2022 05:40:32 -0400
-Received: by mail-pj1-x1034.google.com with SMTP id
- x1-20020a17090ab00100b001fda21bbc90so6130327pjq.3
- for <qemu-arm@nongnu.org>; Fri, 21 Oct 2022 02:40:29 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date
- :message-id:reply-to;
- bh=De6goZ7JkJ3YLqvW+bgz0dCp6u4aYLJy+OozOnLn8Gs=;
- b=sWQ0M2npDN5B2FIkmFjPdt8EnYt3HyWOU8gt+esKN4O5krXqRx8MFY3SsZ3hRzj4Q2
- C0EVABdwr8QTPwe8FEdQmDEl8+0oHUxB0tbpCZ6gaY4/K7zw4kSFNkQ1uCzIqUcTo/2q
- NU/XmXXKZH0Xok/pslnb+Dbv+pZTP1wNyGIT6n/umx3sMNvA6Oyd7JpPkaPzr4iwxPBr
- CLZOlPfBmbdTKAa0XWJeO3Gb/tzli3c6pP+8U3Hl3xClNeZ6gkb7QP6gqwIVmjhS/3Ep
- Uq/GAoWei01QDo8Y4jp1nr2EOX1pLV/mnkrHS42erQeItAFGQjzuFvQS76L6JoCjraQ/
- 4jfw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=De6goZ7JkJ3YLqvW+bgz0dCp6u4aYLJy+OozOnLn8Gs=;
- b=2XntTEilR8B01H6IT8QckSBlM8c2yqsVHg7usClat8yfUldnyVqr19hRb/7ausKw72
- 7dUB8UbBXixUagMKUkE5+iEJgg/pXgMXny7A3Hf0DCt0KyjzcBrCMU/Q9VFWUIRRUQfQ
- 18F2WKaIA3i4g0RTcYBkLF1XTTk6iA2uumOP+lrJVOSlO2fRuuDK8iRcZc+/YE0Fc8R+
- ixokIbAMHB2zBygT4IZHtckJtAUXXzCoOuZsv0KVZmiD0WKOgPfyw14cb7c/YYqJzdtT
- foPtz3uL38Ga5/wf0rjE6cpzQWpCYNZTB9lI/8B0SWwodpSQq+D/wHumWdn8tskOxwLs
- w+ig==
-X-Gm-Message-State: ACrzQf3XL0gZ1DG3xNKG9hEtaC5Mgt+YqCOysKuwSSB8lVabNF1njz6a
- nBAynpufzRPfNypRslgjAg5vaxrT93VjijY8xc0c6A==
-X-Received: by 2002:a17:902:7c97:b0:17f:5abf:9450 with SMTP id
- y23-20020a1709027c9700b0017f5abf9450mr17826192pll.19.1666345228832; Fri, 21
- Oct 2022 02:40:28 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <aaron@os.amperecomputing.com>)
+ id 1oluGG-0005aj-Ed; Fri, 21 Oct 2022 11:48:40 -0400
+Received: from mail-mw2nam04on2096.outbound.protection.outlook.com
+ ([40.107.101.96] helo=NAM04-MW2-obe.outbound.protection.outlook.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <aaron@os.amperecomputing.com>)
+ id 1oluGE-00038i-9B; Fri, 21 Oct 2022 11:48:40 -0400
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=RDr3AK3zocUVS1U+WwuoYrpnJ/x7cmt7eP2eqMQ4Ya8Qhy1JNC8EsBvMkd3RI4lTMn+iI/QmAhUjSYVpcAnpyF2pBf6OD5BXoAOZDbv/xVxH5B2v9HLATnyMY3CLsjuxXJQjTorQsr7vm9bda/eYBsFm9HmFFcDlBmd4aE0u+pYaEKRvMq42zylewM92W1JI9ne/OpmjZXUb0+sY4J4W6hcfh095J8+goS7vcBvecrK+W6I8eNfDeLYnGIFfBR5WS0Jr0sJ3bGyTLBW8W581PXWWawoBAK07yRWbNji2njtkO9kPIllCp6JaWl04WzPhD0Y2Yh8OiwC2rZxiuX1j0A==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=LTklF+HGSgpkBA8qwjR0PzFjJ+IdyTXn6GghsvqN2/8=;
+ b=YExFUdQwOrGTvNFvREYFBh9L0BGtE28fg5cThMnLYao4ltHPXv75e31uWOL7lO41QI+/Gw5lor0oxs7G5A7zSwxGA07uSmwgPVObGRCQ/qSTpzoU8LTLI+XTBbjmg1XyMdHS3Q9epmNyN3uGi4se7bVIJ3KWBBDSDaVGRc2GtxoSZWfx3zUMlplrZPEPV47VkpV2Cpafv6jCTNy08eC3Uxj40eGzWke0zshjCGNllAYkdzfAcCZ4IWxwY6Qq6J3g1uEnbQuXH6zXI5y/nmM1Z+szB1MZaAm9NyR784IclKcRMGUYPkPSzOMxHDh91Hz4CgMqodac3Hu361hXJxD76Q==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=os.amperecomputing.com; dmarc=pass action=none
+ header.from=os.amperecomputing.com; dkim=pass
+ header.d=os.amperecomputing.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=os.amperecomputing.com; s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=LTklF+HGSgpkBA8qwjR0PzFjJ+IdyTXn6GghsvqN2/8=;
+ b=umEt6vX842Ftkz+zx4v9gZrn1uvdSIHGE0huwjKED+VMHnn+OspVH4uJASMjgUVwZ0P8OpeVV4mAMvbF9alN9KhZZVMKS0qqJRkfH4IC/RqEcpg2O64iEnwyP+JOF2NbYH4ke4RfPtTN+znl15k/Zn/sXHL/Caa3jVrUljdG5g8=
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=os.amperecomputing.com;
+Received: from CH0PR01MB7124.prod.exchangelabs.com (2603:10b6:610:f3::20) by
+ MW4PR01MB6403.prod.exchangelabs.com (2603:10b6:303:70::20) with Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.5723.29; Fri, 21 Oct 2022 15:48:30 +0000
+Received: from CH0PR01MB7124.prod.exchangelabs.com
+ ([fe80::aa43:6c60:26f0:d9c8]) by CH0PR01MB7124.prod.exchangelabs.com
+ ([fe80::aa43:6c60:26f0:d9c8%3]) with mapi id 15.20.5723.034; Fri, 21 Oct 2022
+ 15:48:30 +0000
+Date: Fri, 21 Oct 2022 11:48:10 -0400
+From: Aaron Lindsay <aaron@os.amperecomputing.com>
+To: qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+ Pavel Dovgalyuk <pavel.dovgalyuk@ispras.ru>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>
+Subject: [BUG] AArch64 boot hang with -icount and -smp >1 (iothread locking
+ issue?)
+Message-ID: <Y1K/Oo/dagg6D46m@strawberry.localdomain>
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+X-ClientProxiedBy: CH0PR03CA0394.namprd03.prod.outlook.com
+ (2603:10b6:610:11b::28) To CH0PR01MB7124.prod.exchangelabs.com
+ (2603:10b6:610:f3::20)
 MIME-Version: 1.0
-References: <20221020223548.2310496-1-richard.henderson@linaro.org>
- <20221020223548.2310496-10-richard.henderson@linaro.org>
- <1eda418c-61e1-a00a-1217-0ab2eaff0ae0@linaro.org>
-In-Reply-To: <1eda418c-61e1-a00a-1217-0ab2eaff0ae0@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 21 Oct 2022 10:40:17 +0100
-Message-ID: <CAFEAcA9E=-r6P6hR_E9VAjek+kbP=h1vp4hH6scXvprwzg67ng@mail.gmail.com>
-Subject: Re: [PATCH v5 09/14] target/arm: Don't shift attrs in
- get_phys_addr_lpae
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
-Cc: Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org, 
- qemu-arm@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1034;
- envelope-from=peter.maydell@linaro.org; helo=mail-pj1-x1034.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: CH0PR01MB7124:EE_|MW4PR01MB6403:EE_
+X-MS-Office365-Filtering-Correlation-Id: cb650359-b2f3-4f0f-f4e6-08dab37bb390
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: CFuVKuCTujXMmhIEx/z3BtnZcniT4tKNIFSg4EKD/iMTcRcE11+a4PuZVFgzZlhVGD8DL08zCrZceolQ9s5zDXXoNnYj/7K4AmEen5ixL6bTOUYbmFiLDxMe3anFsy736tcGZwhYVfIb4bZOJUakscnELscFyX85Trs21UAcM8LAwADmkyVJ94Vwad1NdShXp7CyjA2TYwwQ3Wfp4ZSGZJcp15bwipVmsEopxqel/fAX/rcHprPAflL3thCTM2UCOEb7iv34JFM5izhCmcmOVxoAuPKKHwl2BjVMdAwPvGan1OtXTl7pYgBsChpucsNs5JUcGB+RHta4eut6cOPNIWPrvlQpdD3qACzs63TGuvtPXcVZ5+kJ2XVW4vdtGL8O1T+VYjSv0M307pp96dvIhYJMo+DCaLsmH1SopBi+7jeMATMIwUDck+ZsJ3T7pCbRQvfUYdMMCJwfNK19i5iS+H7BYlrco3tGld5aMHdzxRAFA+cXfTnEgG8OPFAmNR1MHZwrCwK2ljonh//nmE7G3tJNmvlRiJ6G+4sCsRASKU3NRxDxx1R5jXWjFBBatqurhNzbAD6Jb2XcviRfLPgD+CkngwBQAYjfbaJbvPuyBIO0bJMbAdV0+EVGL6ZfEafbA5k/qz3dGTk2gdKUWYlTOmznq4ESj+T5GjSumivLF0Xw6Xq2xmwDyp2aWxx8KUo2TNAWyShHZmeX55jKpBf5LKQfoQUwE9yPSAyKbP0sAZk=
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:CH0PR01MB7124.prod.exchangelabs.com; PTR:; CAT:NONE;
+ SFS:(13230022)(4636009)(136003)(366004)(376002)(39850400004)(396003)(346002)(451199015)(966005)(38100700002)(478600001)(66899015)(6486002)(316002)(8936002)(110136005)(6506007)(86362001)(83380400001)(6666004)(66946007)(66556008)(66476007)(41300700001)(186003)(2906002)(8676002)(6512007)(26005)(9686003)(5660300002);
+ DIR:OUT; SFP:1102; 
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?EtJ7CFP65JSJYSso32rbrQMoLYRyXZXxJ9eDgFEQsI7ud8b5jFvDwYLh/PH/?=
+ =?us-ascii?Q?oN585o3k90jrx1ITDiau1XWRAR/zIeyKy46oeL5QrgodIxJq5bcThiGhjlNd?=
+ =?us-ascii?Q?ZfYMSlbggsn26gdqMWzOp3NJyXoErQn3z7h4yKKspKlJt2vEixLLxeRnyaKU?=
+ =?us-ascii?Q?Gpt/kcgf6vzlYAvQXoCr5kmbarCuSCzDb9KFQ/dRxtFPzf6PrNhxMhD6ZLIt?=
+ =?us-ascii?Q?lPJaIBODvaX90/w4V71d6E6+giXfMiHD5bsuWMXTcPh1TVPnrPAYHXUQhUsd?=
+ =?us-ascii?Q?wZ0j0CkVEfKgVOcliODMiIHs7bXlIieSUBgQ4uV0OkeC4Y4FpZ9VDK6haTU2?=
+ =?us-ascii?Q?LjRuB0eXemDNeJEUcivHsLoNvszY3ZEaKk7kB2XKpnGn0uz7CLkM/F8GKOlu?=
+ =?us-ascii?Q?ai1VsQWLB2ol2Yu5ycVmx+ZmgNATTKjaeIatZEhEzdW4O2lG+sxTw5dBXN8A?=
+ =?us-ascii?Q?pgnX/iV902TvQ+hD++TH1RSec0guSr5RqMVjL53dhQ4UFo47HNbst3TZVyRr?=
+ =?us-ascii?Q?x74c1ZI4qMntTGbs418pv3mNdSb/VXXc3A8DXT1vZRISCFSVRJuzQVD5QR6k?=
+ =?us-ascii?Q?xJQDbOt/rFRL4DS3m84ufICrGlOTsF/M8lnutX6TDzYxrprIDAZ4naUHcHIk?=
+ =?us-ascii?Q?jkrxCWP3PJe4FWrQIBVwzPXlD6hR2IC/DisAzPuYlgMZ0ZNQUmtw+lfNDais?=
+ =?us-ascii?Q?oyhWtmAMpKC49pcjGxLfEWc27SCnCpXLMrDEjA1CUwfkfbvOl3tjRcp8zgCM?=
+ =?us-ascii?Q?4Z4s4JaC5tM+kyMepwv+ouuHJSpC43+jBcpIPZbKU3Lmut1QukRjXN7n1V5p?=
+ =?us-ascii?Q?hb5JS83Mdewv6x3KZhg7sYZfHvf52jpUpapARtouoFDWAMNdF3GGuoMgZz3f?=
+ =?us-ascii?Q?mXV4kQXeByiUYmKr14oXlzCJllExv75i73JQEVpF31rvOFTq9xOEN7gdCL/0?=
+ =?us-ascii?Q?Rb8HOv0LqBHtse6OUdb8PJ1jJCfKiCrFtiEcgApcZQJaeZgDJGSG772PknBu?=
+ =?us-ascii?Q?2tDz7nkljM7H9Y8kJQUpzQ8vXHsvOy8hOAY4QPxU/Li23Y5dqevmTDxGPcdQ?=
+ =?us-ascii?Q?wnHTLcpTkZBDtvje9b/2jR3NCaERhzI5hYGJ8+xfs1W42c82iXHUH2EP1Kb2?=
+ =?us-ascii?Q?eyVngl//fBirc2ykv2xzcFbXobQu2wzKZFkpmQo/wIrbXzBEGRsEgxv2r833?=
+ =?us-ascii?Q?Uy4Z52syOU+DVjzqkahd6CmkZtveDw1FlPIMmfs3VKdxojlEz7rxUknhvDPp?=
+ =?us-ascii?Q?AcmpIiaGcb1hsPLVxTHM41hJpHWNmHM5sB83kP4bMGYbPhQyy91u7KQUTv+f?=
+ =?us-ascii?Q?a/4Jytk0F1ThMyMyToAg0dqOFRdRn21STm4aX7Pa1B2911WX3m17dqJ2MNUc?=
+ =?us-ascii?Q?mHwDwSarSYgPZBtg9hPC2PON8kLOc/KzcsVsMOBjKoGk8uwS8rQLP8qdURCk?=
+ =?us-ascii?Q?XaDWVJyQuTTEMhBP/JNuMg2+SNxx/kXnwxpz2f8wGC7dMaVtT3pmQ1DFqXBU?=
+ =?us-ascii?Q?Qu+v3dQqIA52h5tA0z5RI4sBCD06mawEq5+h+vBm0kgbQqvQEiOz+aRPrLvh?=
+ =?us-ascii?Q?a47FjmgbJHMQ2mKmYbVp410+pY+xPbRBkRrmBskxGA61PrmBXS+scuE+2Z9t?=
+ =?us-ascii?Q?FljT426TSM7Ubk2ZEczPYyk=3D?=
+X-OriginatorOrg: os.amperecomputing.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: cb650359-b2f3-4f0f-f4e6-08dab37bb390
+X-MS-Exchange-CrossTenant-AuthSource: CH0PR01MB7124.prod.exchangelabs.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 21 Oct 2022 15:48:30.3348 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 3bc2b170-fd94-476d-b0ce-4229bdc904a7
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: WkTBxoBAgjKaA/sB9YMoERkNmV5oi9T30/kEBia/DoPv0eLUs9eSNKOd6+At0aI3nUWKjYet2WCsBnSyasipjEfOcHXvi/BSoFahfuJ0JJSubNPvwION3JP9GOJSh+ec
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: MW4PR01MB6403
+Received-SPF: pass client-ip=40.107.101.96;
+ envelope-from=aaron@os.amperecomputing.com;
+ helo=NAM04-MW2-obe.outbound.protection.outlook.com
+X-Spam_score_int: -19
+X-Spam_score: -2.0
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, RCVD_IN_DNSWL_NONE=-0.0001,
+ RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -125,33 +166,95 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Sender: "Qemu-arm" <qemu-arm-bounces@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: aKhjB9Ro5ZQi
+X-TUID: Rp0Oy+jnpxsj
 
-On Fri, 21 Oct 2022 at 10:27, Philippe Mathieu-Daud=C3=A9 <philmd@linaro.or=
-g> wrote:
->
-> On 21/10/22 00:35, Richard Henderson wrote:
-> > Leave the upper and lower attributes in the place they originate
-> > from in the descriptor.  Shifting them around is confusing, since
-> > one cannot read the bit numbers out of the manual.  Also, new
-> > attributes have been added which would alter the shifts.
-> >
-> > Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
-> > Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
-> > ---
-> >   target/arm/ptw.c | 31 +++++++++++++++----------------
-> >   1 file changed, 15 insertions(+), 16 deletions(-)
->
-> >       if (regime_is_stage2(mmu_idx)) {
-> >           ns =3D mmu_idx =3D=3D ARMMMUIdx_Stage2;
-> > -        xn =3D extract32(attrs, 11, 2);
-> > +        xn =3D extract64(attrs, 54, 2);
->
-> 54 -> 53?
+Hello,
 
-Yes. I spotted that in review of v3 but I guess we lost the fix
-along the way somewhere.
+I am encountering one or more bugs when using -icount and -smp >1 that I am
+attempting to sort out. My current theory is that it is an iothread locking
+issue.
 
--- PMM
+I am using a command-line like the following where $kernel is a recent upstream
+AArch64 Linux kernel Image (I can provide a binary if that would be helpful -
+let me know how is best to post):
+
+	qemu-system-aarch64 \
+		-M virt -cpu cortex-a57 -m 1G \
+		-nographic \
+		-smp 2 \
+		-icount 0 \
+		-kernel $kernel
+
+For any/all of the symptoms described below, they seem to disappear when I
+either remove `-icount 0` or change smp to `-smp 1`. In other words, it is the
+combination of `-smp >1` and `-icount` which triggers what I'm seeing.
+
+I am seeing two different (but seemingly related) behaviors. The first (and
+what I originally started debugging) shows up as a boot hang. When booting
+using the above command after Peter's "icount: Take iothread lock when running
+QEMU timers" patch [1], The kernel boots for a while and then hangs after:
+
+> ...snip...
+> [    0.010764] Serial: AMBA PL011 UART driver
+> [    0.016334] 9000000.pl011: ttyAMA0 at MMIO 0x9000000 (irq = 13, base_baud = 0) is a PL011 rev1
+> [    0.016907] printk: console [ttyAMA0] enabled
+> [    0.017624] KASLR enabled
+> [    0.031986] HugeTLB: registered 16.0 GiB page size, pre-allocated 0 pages
+> [    0.031986] HugeTLB: 16320 KiB vmemmap can be freed for a 16.0 GiB page
+> [    0.031986] HugeTLB: registered 512 MiB page size, pre-allocated 0 pages
+> [    0.031986] HugeTLB: 448 KiB vmemmap can be freed for a 512 MiB page
+> [    0.031986] HugeTLB: registered 2.00 MiB page size, pre-allocated 0 pages
+> [    0.031986] HugeTLB: 0 KiB vmemmap can be freed for a 2.00 MiB page
+
+When it hangs here, I drop into QEMU's console, attach to the gdbserver, and it
+always reports that it is at address 0xffff800008dc42e8 (as shown below from an
+objdump of the vmlinux). I note this is in the middle of messing with timer
+system registers - which makes me suspect we're attempting to take the iothread
+lock when its already held:
+
+>   ffff800008dc42b8 <arch_timer_set_next_event_virt>:
+>   ffff800008dc42b8:       d503201f        nop
+>   ffff800008dc42bc:       d503201f        nop
+>   ffff800008dc42c0:       d503233f        paciasp
+>   ffff800008dc42c4:       d53be321        mrs     x1, cntv_ctl_el0
+>   ffff800008dc42c8:       32000021        orr     w1, w1, #0x1
+>   ffff800008dc42cc:       d5033fdf        isb
+>   ffff800008dc42d0:       d53be042        mrs     x2, cntvct_el0
+>   ffff800008dc42d4:       ca020043        eor     x3, x2, x2
+>   ffff800008dc42d8:       8b2363e3        add     x3, sp, x3
+>   ffff800008dc42dc:       f940007f        ldr     xzr, [x3]
+>   ffff800008dc42e0:       8b020000        add     x0, x0, x2
+>   ffff800008dc42e4:       d51be340        msr     cntv_cval_el0, x0
+> * ffff800008dc42e8:       927ef820        and     x0, x1, #0xfffffffffffffffd
+>   ffff800008dc42ec:       d51be320        msr     cntv_ctl_el0, x0
+>   ffff800008dc42f0:       d5033fdf        isb
+>   ffff800008dc42f4:       52800000        mov     w0, #0x0                        // #0
+>   ffff800008dc42f8:       d50323bf        autiasp
+>   ffff800008dc42fc:       d65f03c0        ret 
+
+The second behavior is that prior to Peter's "icount: Take iothread lock when
+running QEMU timers" patch [1], I observe the following message (same command
+as above):
+
+> ERROR:../accel/tcg/tcg-accel-ops.c:79:tcg_handle_interrupt: assertion failed: (qemu_mutex_iothread_locked())
+> Aborted (core dumped)
+
+This is the same behavior described in Gitlab issue 1130 [0] and addressed by
+[1]. I bisected the appearance of this assertion, and found it was introduced
+by Pavel's "replay: rewrite async event handling" commit [2]. Commits prior to
+that one boot successfully (neither assertions nor hangs) with `-icount 0 -smp
+2`.
+
+I've looked over these two commits ([1], [2]), but it is not obvious to me
+how/why they might be interacting to produce the boot hangs I'm seeing and
+I welcome any help investigating further.
+
+Thanks!
+
+-Aaron Lindsay
+
+[0] - https://gitlab.com/qemu-project/qemu/-/issues/1130
+[1] - https://gitlab.com/qemu-project/qemu/-/commit/c7f26ded6d5065e4116f630f6a490b55f6c5f58e
+[2] - https://gitlab.com/qemu-project/qemu/-/commit/60618e2d77691e44bb78e23b2b0cf07b5c405e56

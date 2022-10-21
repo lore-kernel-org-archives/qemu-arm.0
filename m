@@ -1,462 +1,364 @@
-Received: by 2002:a17:906:43c7:b0:78d:9f02:16a1 with SMTP id j7csp648942ejn;
-        Thu, 20 Oct 2022 15:48:36 -0700 (PDT)
-X-Google-Smtp-Source: AMsMyM4262T2PyUnWDmK+F3FVFqE5vBYjaxYulmMGmtBrMK9YxcrM0DvE1lRAdZLUKBzJJEjkq5x
-X-Received: by 2002:ad4:5deb:0:b0:4b1:d1cc:7cef with SMTP id jn11-20020ad45deb000000b004b1d1cc7cefmr13492861qvb.124.1666306116292;
-        Thu, 20 Oct 2022 15:48:36 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1666306116; cv=none;
+Received: by 2002:a17:906:43c7:b0:78d:9f02:16a1 with SMTP id j7csp770600ejn;
+        Thu, 20 Oct 2022 19:39:50 -0700 (PDT)
+X-Google-Smtp-Source: AMsMyM76Ni3WAwLh5C5S2OUOs+yL8LNiHo/FQvApYQf9BoZUb+kyhU88tRWKKSsSMDWiUt1pmW7X
+X-Received: by 2002:a05:6214:21c9:b0:4b4:52bd:5805 with SMTP id d9-20020a05621421c900b004b452bd5805mr15047624qvh.71.1666319989901;
+        Thu, 20 Oct 2022 19:39:49 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1666319989; cv=none;
         d=google.com; s=arc-20160816;
-        b=W52VJ5VJ+3PRkukpsQoj7FYmxWE3bKqL6WHnuvtzPYy0nx9L7J6fcQY4r0zH+qZZTi
-         hFELO4x5dfE6lYhKP5RhmTG1drNDahVKa2aZCc62FGUUuRsiQPJKmsfQG+scerwlUHd7
-         bUMT3XISlQrHrQLSo4bY0qoKzkYcpTEdkcTuCHprHAj9GVsaobzbT4MuE2hk09E0ixJB
-         0ovrVB6Wq/K58gmTUhRncToRr1YM/7tINBSsU0g7K7O0cX0eLqRx5lFatkWscxEgfKDY
-         P4+HAKkW0k9vnaKBk4hKYZqQiQ4+LtUagfnP4kSW5tQPCHiSKaLmjL2N078wYVZxgXfT
-         6W6Q==
+        b=bXlPoA4bja6uvfLyTEqhdMkx3OwWDul2MB55eWKFsfVnn+WsnLqQbt2hG0qrkxvScP
+         kIFZy4Odl1V89nFIHM8+y/25arg+zxUfoQksw+QIX/Sf8cRwV7dTOIshl8kpuZlhtMsJ
+         U7C1ODagAMFkyj40NJ2lgZcaZVALlsr0vJz9E+X1wkdq2p9B5FkO4e60fBnfCdBukhyu
+         uxv2W7qHmpHeDJ9xPX9dKeOCmmkRo8NdWvJAYYh5XpOFDb+sl9k18tgV9JjZZnl8Mvso
+         ueO4dDjgKNT8d/RlmgPNJGi9spmkGHeaafAon0wCdAtL1awFRWwdKr66uRUiyluk44B7
+         yvjQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=DfngjCYW3yhM7GTZnvGecJb6bmu3XmLkK+TAKSRW4rQ=;
-        b=V6tmJLTLBgMn3KZloAr3aB0mbgmb9umqs0uP5Bz5X1pZ7S2smL/2hZ5lDFWRDZJjuD
-         kV+wZqfmrcyCCB2IrQrdI0Zm+zeDhuIC4VIog1PfWMgQy2Or7lnR8NqVAMi6E8ty6GRf
-         DQiYG22do2+NVg5fJizIxMsgQTwRBdVIrFqgxXOjJ21Uz7/O+zgZ8oGUu6F+bMGzyVOW
-         9Fw1guNSmKlZ1Vr79yQ4MS4ISzT+gQXpsZUkV+s1wP8K31fcpQcspgbbm5jQ+Dkr251M
-         AFIr7D8XXDTXpgCIa7vh5gLZBmYkMmiiJc+oZrieL4ug9eHvlsyoTVcIgrtjTWeVZ3tf
-         qbtw==
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=1utgquKqJ/cRD8wZqTiRF7IZkAAaMUoxnId7MjWDRN8=;
+        b=DQxbWz+EOyvMDPkOEJQSKhxv7KC18Pic47MAbWGi2aO97F3NWwp7CI50rBuOtCtL3u
+         sEmDiLv9Lyp++I/KNLXzsD0zhj/InBGZxi5oGAW5RNtnoPxOXCKxJqamGW9q7LVMg0Wl
+         Znu9UIJbG3KWgg2sUHtZBfpMdd2raTfC2wOe9zdw2oBko5aTOQFe/9hRB6UrIR6G29jf
+         EXDg5deufSA9hyNEZhaPUR16En5wHTlCOA6iYcbo9nqjrmqrytlpG2A8sYZewcHbBQmZ
+         4bEuYURIhRfkVrjy6RoJ2g4jszgCYaUaX5B78Oj2GUcY8sIKtHgTiJT8bUtjbqsPzAMp
+         ZwwA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Oowj5dC8;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="DSo3ypH/";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id c29-20020ac81e9d000000b003903ff2a46esi11746246qtm.78.2022.10.20.15.48.36
+        by mx.google.com with ESMTPS id ea17-20020a05620a489100b006b90fe172d4si11432534qkb.179.2022.10.20.19.39.49
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 20 Oct 2022 15:48:36 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 20 Oct 2022 19:39:49 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Oowj5dC8;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="DSo3ypH/";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1oleL5-0006MB-Hv
-	for alex.bennee@linaro.org; Thu, 20 Oct 2022 18:48:35 -0400
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1olhwo-0007nf-CW
+	for alex.bennee@linaro.org; Thu, 20 Oct 2022 22:39:47 -0400
 Received: from [::1] (helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1oleAA-0008LF-9P
-	for alex.bennee@linaro.org; Thu, 20 Oct 2022 18:37:18 -0400
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1olhvm-00059G-Hr
+	for alex.bennee@linaro.org; Thu, 20 Oct 2022 22:38:42 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1oleA3-0007xZ-AB
- for qemu-devel@nongnu.org; Thu, 20 Oct 2022 18:37:11 -0400
-Received: from mail-pj1-x102c.google.com ([2607:f8b0:4864:20::102c])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1ole9z-00016a-CD
- for qemu-devel@nongnu.org; Thu, 20 Oct 2022 18:37:11 -0400
-Received: by mail-pj1-x102c.google.com with SMTP id pb15so734653pjb.5
- for <qemu-devel@nongnu.org>; Thu, 20 Oct 2022 15:37:06 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=DfngjCYW3yhM7GTZnvGecJb6bmu3XmLkK+TAKSRW4rQ=;
- b=Oowj5dC8FvOA10U/QDzHzPHfRLms3fjyFXA5oAsJXCys5YHx7PDyGBErl5y0tcE0Qs
- BrVV+pSje8pQPQhWM+zyU8HZvxQe01iFRJ2p8Z7tYrKYFqbGoLpRNceu3DWlyfUuAK7S
- bHRqjWFnTPSkyT7jQ7vPKkCXxMDaX39C9iTGG2OGTuLewEKJDv7kcn3bvB2APglZAXJ7
- Dmm+O9xJNy88uWVW1OadohKFEL2BXYK0sTmr7wstEo/qAWBmJrJQjr4Ku8gCAL9FqGde
- H4YXo6kNqsKyDUzpkhWMG+kAqXsVHvY/zdOEM6b/NJY1cKsaCUbpWOXPlsP2g6nuabfG
- 7Z8w==
+ (Exim 4.90_1) (envelope-from <jasowang@redhat.com>)
+ id 1olhvh-00054W-1n
+ for qemu-arm@nongnu.org; Thu, 20 Oct 2022 22:38:37 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <jasowang@redhat.com>)
+ id 1olhvf-0000Rx-4f
+ for qemu-arm@nongnu.org; Thu, 20 Oct 2022 22:38:36 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1666319913;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=1utgquKqJ/cRD8wZqTiRF7IZkAAaMUoxnId7MjWDRN8=;
+ b=DSo3ypH/iOlF6ZJZiCjc+07FMjFgbYZsSqvisRunh2OLlNhDK1splka4y63NzAXfqdhX3w
+ lpHsOugMsHmQW3V3gT+bJVvZg0fzOqeMZbM+MW6cGruu/3ZBwdAxgvrRxlnw9ONYCPr4YH
+ JkEzL/FRk11QjQEQycmd8Ccga1m1wmM=
+Received: from mail-ot1-f70.google.com (mail-ot1-f70.google.com
+ [209.85.210.70]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_128_GCM_SHA256) id
+ us-mta-626-VZjt1m7fMKCulZV0KK3f8g-1; Thu, 20 Oct 2022 22:38:31 -0400
+X-MC-Unique: VZjt1m7fMKCulZV0KK3f8g-1
+Received: by mail-ot1-f70.google.com with SMTP id
+ t11-20020a9d590b000000b00655fad88dacso897867oth.1
+ for <qemu-arm@nongnu.org>; Thu, 20 Oct 2022 19:38:31 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=DfngjCYW3yhM7GTZnvGecJb6bmu3XmLkK+TAKSRW4rQ=;
- b=S6auWlqe/7cgoXVxhh2uT38KPfo1xdK1pJ8gIXfbWswtJVZ/5wbCJ0BWPUgy+hnQ4e
- nkim1Zg3EZQNP3LaTPaNvIEw0KK8XbleuqS0cupWPK908UcQEmni4jquZF+l0kRe9u5Q
- dGiTuH/r0xV1FHcM3AoUwoxVYj7XgY9grI3FaEdSNN1CGxh5r2Dv0JJ0/tFmE+dZNeQ4
- s6w2ilYSWieb5GStVtzAce9ADNg/xFjkI9k34Ufx6mdu5g/3b8v3ac73D+54hxC0+djZ
- laCqEUUkmKqHnpaG3LrflpmA6vMldglki1ZBG2ac8Uvo1u5plcwFQhiY6eY9ds9tWwz9
- w02w==
-X-Gm-Message-State: ACrzQf2rK5bwzDqZmk3Sx04PKtLBP5Xdqt3zdWHhOHskDybsUFECYLcD
- CqNAFp0+FHoYim1WQwCn1pUlH6UYFHOhvByI
-X-Received: by 2002:a17:90b:4d90:b0:20d:9ded:4144 with SMTP id
- oj16-20020a17090b4d9000b0020d9ded4144mr18364403pjb.90.1666305425967; 
- Thu, 20 Oct 2022 15:37:05 -0700 (PDT)
-Received: from localhost.localdomain ([149.135.10.35])
- by smtp.gmail.com with ESMTPSA id
- r10-20020aa7988a000000b0054cd16c9f6bsm13753841pfl.200.2022.10.20.15.37.02
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 20 Oct 2022 15:37:05 -0700 (PDT)
-From: Richard Henderson <richard.henderson@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org,
-	Peter Maydell <peter.maydell@linaro.org>
-Subject: [PATCH v5 12/14] target/arm: Implement FEAT_HAFDBS,
- access flag portion
-Date: Fri, 21 Oct 2022 08:35:46 +1000
-Message-Id: <20221020223548.2310496-13-richard.henderson@linaro.org>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20221020223548.2310496-1-richard.henderson@linaro.org>
-References: <20221020223548.2310496-1-richard.henderson@linaro.org>
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=1utgquKqJ/cRD8wZqTiRF7IZkAAaMUoxnId7MjWDRN8=;
+ b=Noul27f3vgSt/K0iWzZY2XoZIMnlbSKkzFLXyqrk25KqsD58AelhrBpQnKgqMqJ6zC
+ 2nYPi3hQMhjmIh/5+6RIE66CEsCgZjAWSKL5PR9nWNMaU+hFnCIhgzjUDpsohawAtRYy
+ ItNKTxB6cn0jvWMfrxMMDVQ6E9o+AdBKmhd1GEEh7gKue3waXC8so93nul7ovHGBheht
+ mK6Ni7WFYmFxckqpOt38934wHsJgNlFiekoB8ATOW/d++c2oEYDApHmJQmkbtHomJ7Rh
+ iFcbjpx8DUlI04DTwQYkaiNR2fAQSKURCSuYSmbgLGf1ZjoxzC63jZ9tkS5dVirHpY5a
+ NjIA==
+X-Gm-Message-State: ACrzQf28yUMhDIx0J3NfvMBoN9xb5PAxQAqV1svOXhKnpUqi5oRoz5fd
+ WDNlaTuJwlft2zPVfcyu12S8yfwzBN9MF1HORHClUU94Fx5ZR6TtABiwjGbFXoU+1hwb1gw1Rv4
+ YXqtCBIaauco1f7OCP8T47Ikf0pqZ
+X-Received: by 2002:a05:6808:1985:b0:354:d7cf:9acb with SMTP id
+ bj5-20020a056808198500b00354d7cf9acbmr9122434oib.280.1666319910889; 
+ Thu, 20 Oct 2022 19:38:30 -0700 (PDT)
+X-Received: by 2002:a05:6808:1985:b0:354:d7cf:9acb with SMTP id
+ bj5-20020a056808198500b00354d7cf9acbmr9122424oib.280.1666319910605; Thu, 20
+ Oct 2022 19:38:30 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::102c;
- envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x102c.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+References: <20221019122717.1259803-1-eric.auger@redhat.com>
+ <CACGkMEtL9Rf6YkHBJpNm2LXfvX51s2KDCgvBNH6cJWfp7PdfVA@mail.gmail.com>
+ <5d4d1994-8560-80da-dbc7-babb5cd4ee0b@redhat.com>
+In-Reply-To: <5d4d1994-8560-80da-dbc7-babb5cd4ee0b@redhat.com>
+From: Jason Wang <jasowang@redhat.com>
+Date: Fri, 21 Oct 2022 10:38:18 +0800
+Message-ID: <CACGkMEssGqm8vMr3=WP-4KJw03pbdmbWjmx0Z99dhD=i-Rpo_g@mail.gmail.com>
+Subject: Re: [PATCH v2] vhost: Warn if DEVIOTLB_UNMAP is not supported and ats
+ is set
+To: eric.auger@redhat.com
+Cc: eric.auger.pro@gmail.com, mst@redhat.com, peterx@redhat.com, 
+ qemu-arm@nongnu.org, qemu-devel@nongnu.org, eperezma@redhat.com, 
+ jean-philippe@linaro.org
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=jasowang@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -23
+X-Spam_score: -2.4
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.251,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: WCu3cy2SawWQ
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: zTNElGsOaDZi
 
-Perform the atomic update for hardware management of the access flag.
+On Thu, Oct 20, 2022 at 9:03 PM Eric Auger <eric.auger@redhat.com> wrote:
+>
+> Hi Jason,
+>
+> On 10/20/22 05:58, Jason Wang wrote:
+> > On Wed, Oct 19, 2022 at 8:27 PM Eric Auger <eric.auger@redhat.com> wrote:
+> >> Since b68ba1ca5767 ("memory: Add IOMMU_NOTIFIER_DEVIOTLB_UNMAP
+> >> IOMMUTLBNotificationType"), vhost attempts to register DEVIOTLB_UNMAP
+> >> notifier. This latter is supported by the intel-iommu which supports
+> >> device-iotlb if the corresponding option is set. Then 958ec334bca3
+> >> ("vhost: Unbreak SMMU and virtio-iommu on dev-iotlb support") allowed
+> >> silent fallback to the legacy UNMAP notifier if the viommu does not
+> >> support device iotlb.
+> >>
+> >> Initially vhost/viommu integration was introduced with intel iommu
+> >> assuming ats=on was set on virtio-pci device and device-iotlb was set
+> >> on the intel iommu. vhost acts as an ATS capable device since it
+> >> implements an IOTLB on kernel side. However translated transactions
+> >> that hit the device IOTLB do not transit through the vIOMMU. So this
+> >> requires a limited ATS support on viommu side. Anyway this assumed
+> >> ATS was eventually enabled .
+> >>
+> >> But neither SMMUv3 nor virtio-iommu do support ATS and the integration
+> >> with vhost just relies on the fact those vIOMMU send UNMAP notifications
+> >> whenever the guest trigger them. This works without ATS being enabled.
+> >>
+> >> This patch makes sure we get a warning if ATS is set on a device
+> >> protected by virtio-iommu or vsmmuv3, reminding that we don't have
+> >> full support of ATS on those vIOMMUs and setting ats=on on the
+> >> virtio-pci end-point is not a requirement.
+> >>
+> >> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+> >>
+> >> ---
+> >>
+> >> v1 -> v2:
+> >> - s/enabled/capable
+> >> - tweak the error message on vhost side
+> >> ---
+> >>  include/hw/virtio/virtio-bus.h |  3 +++
+> >>  hw/virtio/vhost.c              | 21 ++++++++++++++++++++-
+> >>  hw/virtio/virtio-bus.c         | 14 ++++++++++++++
+> >>  hw/virtio/virtio-pci.c         | 11 +++++++++++
+> >>  4 files changed, 48 insertions(+), 1 deletion(-)
+> >>
+> >> diff --git a/include/hw/virtio/virtio-bus.h b/include/hw/virtio/virtio-bus.h
+> >> index 7ab8c9dab0..23360a1daa 100644
+> >> --- a/include/hw/virtio/virtio-bus.h
+> >> +++ b/include/hw/virtio/virtio-bus.h
+> >> @@ -94,6 +94,7 @@ struct VirtioBusClass {
+> >>      bool has_variable_vring_alignment;
+> >>      AddressSpace *(*get_dma_as)(DeviceState *d);
+> >>      bool (*iommu_enabled)(DeviceState *d);
+> >> +    bool (*ats_capable)(DeviceState *d);
+> >>  };
+> >>
+> >>  struct VirtioBusState {
+> >> @@ -157,4 +158,6 @@ int virtio_bus_set_host_notifier(VirtioBusState *bus, int n, bool assign);
+> >>  void virtio_bus_cleanup_host_notifier(VirtioBusState *bus, int n);
+> >>  /* Whether the IOMMU is enabled for this device */
+> >>  bool virtio_bus_device_iommu_enabled(VirtIODevice *vdev);
+> >> +/* Whether ATS is enabled for this device */
+> >> +bool virtio_bus_device_ats_capable(VirtIODevice *vdev);
+> >>  #endif /* VIRTIO_BUS_H */
+> >> diff --git a/hw/virtio/vhost.c b/hw/virtio/vhost.c
+> >> index 5185c15295..3cf9efce5e 100644
+> >> --- a/hw/virtio/vhost.c
+> >> +++ b/hw/virtio/vhost.c
+> >> @@ -324,6 +324,16 @@ static bool vhost_dev_has_iommu(struct vhost_dev *dev)
+> >>      }
+> >>  }
+> >>
+> >> +static bool vhost_dev_ats_capable(struct vhost_dev *dev)
+> > I suggest to rename this as pf_capable() since ATS is PCI specific but
+> > vhost isn't.
+> Does pf sound for page fault?
 
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
-Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
----
-v4: Raise permission fault if pte read-only and atomic update reqd.
-    Split out dirty bit portion.
-    Prepare for a single update for AF + DB.
-v5: Fix s1ns typo; incorporate i_yzsvv comment.
-    Move the AF update before attributes are extracted and merged.
-    Do permission check before pte writeback, per AArch64.S1Translate.
----
- docs/system/arm/emulation.rst |   1 +
- target/arm/cpu64.c            |   1 +
- target/arm/ptw.c              | 176 +++++++++++++++++++++++++++++-----
- 3 files changed, 156 insertions(+), 22 deletions(-)
+Yes.
 
-diff --git a/docs/system/arm/emulation.rst b/docs/system/arm/emulation.rst
-index cfb4b0768b..580e67b190 100644
---- a/docs/system/arm/emulation.rst
-+++ b/docs/system/arm/emulation.rst
-@@ -32,6 +32,7 @@ the following architecture extensions:
- - FEAT_FlagM (Flag manipulation instructions v2)
- - FEAT_FlagM2 (Enhancements to flag manipulation instructions)
- - FEAT_GTG (Guest translation granule size)
-+- FEAT_HAFDBS (Hardware management of the access flag and dirty bit state)
- - FEAT_HCX (Support for the HCRX_EL2 register)
- - FEAT_HPDS (Hierarchical permission disables)
- - FEAT_I8MM (AArch64 Int8 matrix multiplication instructions)
-diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
-index 85e0d1daf1..fe1369fe96 100644
---- a/target/arm/cpu64.c
-+++ b/target/arm/cpu64.c
-@@ -1165,6 +1165,7 @@ static void aarch64_max_initfn(Object *obj)
-     cpu->isar.id_aa64mmfr0 = t;
- 
-     t = cpu->isar.id_aa64mmfr1;
-+    t = FIELD_DP64(t, ID_AA64MMFR1, HAFDBS, 1);   /* FEAT_HAFDBS, AF only */
-     t = FIELD_DP64(t, ID_AA64MMFR1, VMIDBITS, 2); /* FEAT_VMID16 */
-     t = FIELD_DP64(t, ID_AA64MMFR1, VH, 1);       /* FEAT_VHE */
-     t = FIELD_DP64(t, ID_AA64MMFR1, HPDS, 1);     /* FEAT_HPDS */
-diff --git a/target/arm/ptw.c b/target/arm/ptw.c
-index 165e70d044..209ea7024b 100644
---- a/target/arm/ptw.c
-+++ b/target/arm/ptw.c
-@@ -21,7 +21,9 @@ typedef struct S1Translate {
-     bool in_secure;
-     bool in_debug;
-     bool out_secure;
-+    bool out_rw;
-     bool out_be;
-+    hwaddr out_virt;
-     hwaddr out_phys;
-     void *out_host;
- } S1Translate;
-@@ -238,6 +240,8 @@ static bool S1_ptw_translate(CPUARMState *env, S1Translate *ptw,
-     uint8_t pte_attrs;
-     bool pte_secure;
- 
-+    ptw->out_virt = addr;
-+
-     if (unlikely(ptw->in_debug)) {
-         /*
-          * From gdbstub, do not use softmmu so that we don't modify the
-@@ -266,6 +270,7 @@ static bool S1_ptw_translate(CPUARMState *env, S1Translate *ptw,
-             pte_secure = is_secure;
-         }
-         ptw->out_host = NULL;
-+        ptw->out_rw = false;
-     } else {
-         CPUTLBEntryFull *full;
-         int flags;
-@@ -280,6 +285,7 @@ static bool S1_ptw_translate(CPUARMState *env, S1Translate *ptw,
-             goto fail;
-         }
-         ptw->out_phys = full->phys_addr;
-+        ptw->out_rw = full->prot & PROT_WRITE;
-         pte_attrs = full->pte_attrs;
-         pte_secure = full->attrs.secure;
-     }
-@@ -323,14 +329,16 @@ static uint32_t arm_ldl_ptw(CPUARMState *env, S1Translate *ptw,
-                             ARMMMUFaultInfo *fi)
- {
-     CPUState *cs = env_cpu(env);
-+    void *host = ptw->out_host;
-     uint32_t data;
- 
--    if (likely(ptw->out_host)) {
-+    if (likely(host)) {
-         /* Page tables are in RAM, and we have the host address. */
-+        data = qatomic_read((uint32_t *)host);
-         if (ptw->out_be) {
--            data = ldl_be_p(ptw->out_host);
-+            data = be32_to_cpu(data);
-         } else {
--            data = ldl_le_p(ptw->out_host);
-+            data = le32_to_cpu(data);
-         }
-     } else {
-         /* Page tables are in MMIO. */
-@@ -356,15 +364,25 @@ static uint64_t arm_ldq_ptw(CPUARMState *env, S1Translate *ptw,
-                             ARMMMUFaultInfo *fi)
- {
-     CPUState *cs = env_cpu(env);
-+    void *host = ptw->out_host;
-     uint64_t data;
- 
--    if (likely(ptw->out_host)) {
-+    if (likely(host)) {
-         /* Page tables are in RAM, and we have the host address. */
-+#ifdef CONFIG_ATOMIC64
-+        data = qatomic_read__nocheck((uint64_t *)host);
-         if (ptw->out_be) {
--            data = ldq_be_p(ptw->out_host);
-+            data = be64_to_cpu(data);
-         } else {
--            data = ldq_le_p(ptw->out_host);
-+            data = le64_to_cpu(data);
-         }
-+#else
-+        if (ptw->out_be) {
-+            data = ldq_be_p(host);
-+        } else {
-+            data = ldq_le_p(host);
-+        }
-+#endif
-     } else {
-         /* Page tables are in MMIO. */
-         MemTxAttrs attrs = { .secure = ptw->out_secure };
-@@ -385,6 +403,91 @@ static uint64_t arm_ldq_ptw(CPUARMState *env, S1Translate *ptw,
-     return data;
- }
- 
-+static uint64_t arm_casq_ptw(CPUARMState *env, uint64_t old_val,
-+                             uint64_t new_val, S1Translate *ptw,
-+                             ARMMMUFaultInfo *fi)
-+{
-+    uint64_t cur_val;
-+    void *host = ptw->out_host;
-+
-+    if (unlikely(!host)) {
-+        fi->type = ARMFault_UnsuppAtomicUpdate;
-+        fi->s1ptw = true;
-+        return 0;
-+    }
-+
-+    /*
-+     * Raising a stage2 Protection fault for an atomic update to a read-only
-+     * page is delayed until it is certain that there is a change to make.
-+     */
-+    if (unlikely(!ptw->out_rw)) {
-+        int flags;
-+        void *discard;
-+
-+        env->tlb_fi = fi;
-+        flags = probe_access_flags(env, ptw->out_virt, MMU_DATA_STORE,
-+                                   arm_to_core_mmu_idx(ptw->in_ptw_idx),
-+                                   true, &discard, 0);
-+        env->tlb_fi = NULL;
-+
-+        if (unlikely(flags & TLB_INVALID_MASK)) {
-+            assert(fi->type != ARMFault_None);
-+            fi->s2addr = ptw->out_virt;
-+            fi->stage2 = true;
-+            fi->s1ptw = true;
-+            fi->s1ns = !ptw->in_secure;
-+            return 0;
-+        }
-+
-+        /* In case CAS mismatches and we loop, remember writability. */
-+        ptw->out_rw = true;
-+    }
-+
-+#ifdef CONFIG_ATOMIC64
-+    if (ptw->out_be) {
-+        old_val = cpu_to_be64(old_val);
-+        new_val = cpu_to_be64(new_val);
-+        cur_val = qatomic_cmpxchg__nocheck((uint64_t *)host, old_val, new_val);
-+        cur_val = be64_to_cpu(cur_val);
-+    } else {
-+        old_val = cpu_to_le64(old_val);
-+        new_val = cpu_to_le64(new_val);
-+        cur_val = qatomic_cmpxchg__nocheck((uint64_t *)host, old_val, new_val);
-+        cur_val = le64_to_cpu(cur_val);
-+    }
-+#else
-+    /*
-+     * We can't support the full 64-bit atomic cmpxchg on the host.
-+     * Because this is only used for FEAT_HAFDBS, which is only for AA64,
-+     * we know that TCG_OVERSIZED_GUEST is set, which means that we are
-+     * running in round-robin mode and could only race with dma i/o.
-+     */
-+#ifndef TCG_OVERSIZED_GUEST
-+# error "Unexpected configuration"
-+#endif
-+    bool locked = qemu_mutex_iothread_locked();
-+    if (!locked) {
-+       qemu_mutex_lock_iothread();
-+    }
-+    if (ptw->out_be) {
-+        cur_val = ldq_be_p(host);
-+        if (cur_val == old_val) {
-+            stq_be_p(host, new_val);
-+        }
-+    } else {
-+        cur_val = ldq_le_p(host);
-+        if (cur_val == old_val) {
-+            stq_le_p(host, new_val);
-+        }
-+    }
-+    if (!locked) {
-+        qemu_mutex_unlock_iothread();
-+    }
-+#endif
-+
-+    return cur_val;
-+}
-+
- static bool get_level1_table_address(CPUARMState *env, ARMMMUIdx mmu_idx,
-                                      uint32_t *table, uint32_t address)
- {
-@@ -1077,7 +1180,7 @@ static bool get_phys_addr_lpae(CPUARMState *env, S1Translate *ptw,
-     uint32_t el = regime_el(env, mmu_idx);
-     uint64_t descaddrmask;
-     bool aarch64 = arm_el_is_aa64(env, el);
--    uint64_t descriptor;
-+    uint64_t descriptor, new_descriptor;
-     bool nstable;
- 
-     /* TODO: This code does not support shareability levels. */
-@@ -1291,7 +1394,9 @@ static bool get_phys_addr_lpae(CPUARMState *env, S1Translate *ptw,
-     if (fi->type != ARMFault_None) {
-         goto do_fault;
-     }
-+    new_descriptor = descriptor;
- 
-+ restart_atomic_update:
-     if (!(descriptor & 1) || (!(descriptor & 2) && (level == 3))) {
-         /* Invalid, or the Reserved level 3 encoding */
-         goto do_translation_fault;
-@@ -1337,17 +1442,36 @@ static bool get_phys_addr_lpae(CPUARMState *env, S1Translate *ptw,
-      * to give a correct page or table address, the address field
-      * in a block descriptor is smaller; so we need to explicitly
-      * clear the lower bits here before ORing in the low vaddr bits.
-+     *
-+     * Afterward, descaddr is the final physical address.
-      */
-     page_size = (1ULL << ((stride * (4 - level)) + 3));
-     descaddr &= ~(hwaddr)(page_size - 1);
-     descaddr |= (address & (page_size - 1));
- 
-+    if (likely(!ptw->in_debug)) {
-+        /*
-+         * Access flag.
-+         * If HA is enabled, prepare to update the descriptor below.
-+         * Otherwise, pass the access fault on to software.
-+         */
-+        if (!(descriptor & (1 << 10))) {
-+            if (param.ha) {
-+                new_descriptor |= 1 << 10; /* AF */
-+            } else {
-+                fi->type = ARMFault_AccessFlag;
-+                goto do_fault;
-+            }
-+        }
-+    }
-+
-     /*
--     * Extract attributes from the descriptor, and apply table descriptors.
--     * Stage 2 table descriptors do not include any attribute fields.
--     * HPD disables all the table attributes except NSTable.
-+     * Extract attributes from the (modified) descriptor, and apply
-+     * table descriptors. Stage 2 table descriptors do not include
-+     * any attribute fields. HPD disables all the table attributes
-+     * except NSTable.
-      */
--    attrs = descriptor & (MAKE_64BIT_MASK(2, 10) | MAKE_64BIT_MASK(50, 14));
-+    attrs = new_descriptor & (MAKE_64BIT_MASK(2, 10) | MAKE_64BIT_MASK(50, 14));
-     if (!regime_is_stage2(mmu_idx)) {
-         attrs |= nstable << 5; /* NS */
-         if (!param.hpd) {
-@@ -1361,18 +1485,7 @@ static bool get_phys_addr_lpae(CPUARMState *env, S1Translate *ptw,
-         }
-     }
- 
--    /*
--     * Here descaddr is the final physical address, and attributes
--     * are all in attrs.
--     */
--    if ((attrs & (1 << 10)) == 0) {
--        /* Access flag */
--        fi->type = ARMFault_AccessFlag;
--        goto do_fault;
--    }
--
-     ap = extract32(attrs, 6, 2);
--
-     if (regime_is_stage2(mmu_idx)) {
-         ns = mmu_idx == ARMMMUIdx_Stage2;
-         xn = extract64(attrs, 54, 2);
-@@ -1389,6 +1502,25 @@ static bool get_phys_addr_lpae(CPUARMState *env, S1Translate *ptw,
-         goto do_fault;
-     }
- 
-+    /* If FEAT_HAFDBS has made changes, update the PTE. */
-+    if (new_descriptor != descriptor) {
-+        new_descriptor = arm_casq_ptw(env, descriptor, new_descriptor, ptw, fi);
-+        if (fi->type != ARMFault_None) {
-+            goto do_fault;
-+        }
-+        /*
-+         * I_YZSVV says that if the in-memory descriptor has changed,
-+         * then we must use the information in that new value
-+         * (which might include a different output address, different
-+         * attributes, or generate a fault).
-+         * Restart the handling of the descriptor value from scratch.
-+         */
-+        if (new_descriptor != descriptor) {
-+            descriptor = new_descriptor;
-+            goto restart_atomic_update;
-+        }
-+    }
-+
-     if (ns) {
-         /*
-          * The NS bit will (as required by the architecture) have no effect if
--- 
-2.34.1
+> >
+> >> +{
+> >> +    VirtIODevice *vdev = dev->vdev;
+> >> +
+> >> +    if (vdev && virtio_bus_device_ats_capable(vdev)) {
+> >> +        return true;
+> >> +    }
+> >> +    return false;
+> >> +}
+> >> +
+> >>  static void *vhost_memory_map(struct vhost_dev *dev, hwaddr addr,
+> >>                                hwaddr *plen, bool is_write)
+> >>  {
+> >> @@ -737,6 +747,7 @@ static void vhost_iommu_region_add(MemoryListener *listener,
+> >>      Int128 end;
+> >>      int iommu_idx;
+> >>      IOMMUMemoryRegion *iommu_mr;
+> >> +    Error *err = NULL;
+> >>      int ret;
+> >>
+> >>      if (!memory_region_is_iommu(section->mr)) {
+> >> @@ -760,8 +771,16 @@ static void vhost_iommu_region_add(MemoryListener *listener,
+> >>      iommu->iommu_offset = section->offset_within_address_space -
+> >>                            section->offset_within_region;
+> >>      iommu->hdev = dev;
+> >> -    ret = memory_region_register_iommu_notifier(section->mr, &iommu->n, NULL);
+> >> +    ret = memory_region_register_iommu_notifier(section->mr, &iommu->n, &err);
+> >>      if (ret) {
+> >> +        if (vhost_dev_ats_capable(dev)) {
+> >> +            error_reportf_err(err,
+> >> +                              "%s: Although the device exposes ATS capability, "
+> >> +                              "fallback to legacy IOMMU UNMAP notifier: ",
+> >> +                              iommu_mr->parent_obj.name);
+> > I'm not sure if it's a real error, or I wonder what we need to do is
+> >
+> > 1) check is ATS is enabled
+> > 2) fallback to UNMAP is ATS is not enabled
+> Isn't the problem due to the fact that vhost, by construction, requires
+> "pf" (would it be though DEVIOTLB_UNMAP or UNMAP).
+
+So the device IOTLB invalidation and miss were mapped to feature
+VIRTIO_F_ACCESS_PLATFORM. So when this feature is negotiated Qemu can
+send device IOTLB invalidation and process IOTLB miss (without caring
+about ATS). So the only issue is when to trigger the IOTLB
+invalidation. It could be done by both DEVIOTLB_UNMAP or UNMAP.
+
+> Don't UNMAP
+> notifications also implement part of ATS protocol?
+
+I'd treat UNMAP as a way to make the device work without ATS:
+
+1) when ATS is enabled, device IOTLB invalidation needs to be sent
+from guest and vIOMMU receive device IOTLB invalidation request and
+trigger DEVIOTLB_UNMAP
+2) when ATS is not enabled, the device should still work per PCIe
+spec, so we need find way to emulate this, since guest doesn't think
+there's a device IOTLB, Qemu can only receive IOTLB invalidation. In
+order to make dev devices work (receive IOTLB flush), we need to use
+UNMAP in this case.
+
+>I guess this is the
+> reason why you mandated ats in the first place.
+>
+> So if ATS is not enabled, shouldn't we fallback to virtio instead of vhost?
+
+If we can find a way to make vhost work that would be better and
+what's more important, the fallback only work for vhost-net but not
+vhost-user/vhost-vdpa.
+
+Thanks
+
+>
+> Thanks
+>
+> Eric
+> >
+> >> +        } else {
+> >> +            error_free(err);
+> >> +        }
+> >>          /*
+> >>           * Some vIOMMUs do not support dev-iotlb yet.  If so, try to use the
+> >>           * UNMAP legacy message
+> >> diff --git a/hw/virtio/virtio-bus.c b/hw/virtio/virtio-bus.c
+> >> index 896feb37a1..d46c3f8ec4 100644
+> >> --- a/hw/virtio/virtio-bus.c
+> >> +++ b/hw/virtio/virtio-bus.c
+> >> @@ -348,6 +348,20 @@ bool virtio_bus_device_iommu_enabled(VirtIODevice *vdev)
+> >>      return klass->iommu_enabled(qbus->parent);
+> >>  }
+> >>
+> >> +bool virtio_bus_device_ats_capable(VirtIODevice *vdev)
+> >> +{
+> >> +    DeviceState *qdev = DEVICE(vdev);
+> >> +    BusState *qbus = BUS(qdev_get_parent_bus(qdev));
+> >> +    VirtioBusState *bus = VIRTIO_BUS(qbus);
+> >> +    VirtioBusClass *klass = VIRTIO_BUS_GET_CLASS(bus);
+> >> +
+> >> +    if (!klass->ats_capable) {
+> >> +        return false;
+> > I think it's better to check whether or not ATS is enabled. Guest may
+> > choose to not enable ATS for various reasons.
+> >
+> > Thanks
+> >
+> >> +    }
+> >> +
+> >> +    return klass->ats_capable(qbus->parent);
+> >> +}
+> >> +
+> >>  static void virtio_bus_class_init(ObjectClass *klass, void *data)
+> >>  {
+> >>      BusClass *bus_class = BUS_CLASS(klass);
+> >> diff --git a/hw/virtio/virtio-pci.c b/hw/virtio/virtio-pci.c
+> >> index e7d80242b7..c2ceba98a6 100644
+> >> --- a/hw/virtio/virtio-pci.c
+> >> +++ b/hw/virtio/virtio-pci.c
+> >> @@ -1141,6 +1141,16 @@ static bool virtio_pci_iommu_enabled(DeviceState *d)
+> >>      return true;
+> >>  }
+> >>
+> >> +static bool virtio_pci_ats_capable(DeviceState *d)
+> >> +{
+> >> +    VirtIOPCIProxy *proxy = VIRTIO_PCI(d);
+> >> +
+> >> +    if (proxy->flags & VIRTIO_PCI_FLAG_ATS) {
+> >> +        return true;
+> >> +    }
+> >> +    return false;
+> >> +}
+> >> +
+> >>  static bool virtio_pci_queue_enabled(DeviceState *d, int n)
+> >>  {
+> >>      VirtIOPCIProxy *proxy = VIRTIO_PCI(d);
+> >> @@ -2229,6 +2239,7 @@ static void virtio_pci_bus_class_init(ObjectClass *klass, void *data)
+> >>      k->ioeventfd_assign = virtio_pci_ioeventfd_assign;
+> >>      k->get_dma_as = virtio_pci_get_dma_as;
+> >>      k->iommu_enabled = virtio_pci_iommu_enabled;
+> >> +    k->ats_capable = virtio_pci_ats_capable;
+> >>      k->queue_enabled = virtio_pci_queue_enabled;
+> >>  }
+> >>
+> >> --
+> >> 2.35.3
+> >>
+>
 

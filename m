@@ -1,68 +1,68 @@
-Received: by 2002:a17:906:43c7:b0:78d:9f02:16a1 with SMTP id j7csp880702ejn;
-        Thu, 20 Oct 2022 23:03:25 -0700 (PDT)
-X-Google-Smtp-Source: AMsMyM6dl4iPOtSzLhw8rdmpDpHphFqkdDhujD7by7jc2qXFyJ+7y4pZ+Nf2k83x0Y2VxSZxaw8X
-X-Received: by 2002:a05:620a:258a:b0:6cf:ca19:1ec2 with SMTP id x10-20020a05620a258a00b006cfca191ec2mr12883535qko.630.1666332205041;
-        Thu, 20 Oct 2022 23:03:25 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1666332205; cv=none;
+Received: by 2002:a17:906:43c7:b0:78d:9f02:16a1 with SMTP id j7csp886360ejn;
+        Thu, 20 Oct 2022 23:12:20 -0700 (PDT)
+X-Google-Smtp-Source: AMsMyM4R8uzCvlNlpv4+0GqD1raONGtkw4Jyvtb1EuO6awketaXUVg6CVmeAqYRJdjmYLHTGZmA8
+X-Received: by 2002:a05:620a:4042:b0:6ec:2343:17f8 with SMTP id i2-20020a05620a404200b006ec234317f8mr12568602qko.307.1666332740322;
+        Thu, 20 Oct 2022 23:12:20 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1666332740; cv=none;
         d=google.com; s=arc-20160816;
-        b=Xe/CxSXmIDbtofHnnSY1g0o8EZGLkrqbLcyuvLTzcz04lhFWowI48sXITLyVQOB9Cv
-         T5whCSHXHx9eIhyQDCJI8D0S5iUKUWMwDu5Yc0hk1qP558LNrSGDEERZ6xfgrPPrbfl/
-         U94p7VXVdkeD3+JhmQ3neBcPGrrPVQZ0UKWRPAR0GJecUBQWY7hggThc33OYJ2bQ8FIB
-         HdLi20Pg964HNSdyXWwgUwW0GZ+gSIpIUfA3+6h03dtkqZvmC4fjlSMgSdj2+qODhbop
-         4A/8QpFUvkEquqKMYWjPhW5mK4+4NqNNMWxg9ftLHRywJz+QpOxMYQaKhbxAENM8l1xn
-         BqRw==
+        b=Fuac+yOGhV1JUE4ZW4nsAGUXc1OKPHdX03Mw25pptqhegjKXkP7CVHwn1lNfdx9ysA
+         A8riEXvcRsTxJTJ+gAZqUkFp5Fws6npUhplFIAhdjpCxkkm/zILbYaNXMcynAOEoYeXy
+         JQi23Gc6For/631avL29CMQT+l9w5fyhBjvNFaP//h8nIQ6cFTStfhhurJG6+YDs5IAU
+         FDcugJGM6NhoYEn5vnjFalSdVtdLNc+guM5TnGzZyJ4aLXoXyvZGz5jPYNJEcbKXBjhm
+         cyBsSXqMe3AV0iYwBRVzPxVloRr8eOtPEZ8m+SmmmMSLHdH7RywVGMknXlF9JBih9IM4
+         8SKw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from;
-        bh=UCzHEKgd0cqn/X8p1FTJkrSOpBscaOTNx4AtEm3g4uc=;
-        b=I+kRLnEqnvK6rPcPDVsHAdkna3syRdpvQO0yaXlMMyD8e0qqIJyLbrpbL+jB6dSqXy
-         tB1ib4S/qsPxctOdODhqlYfbghji9lfru/QcMt5Cf7Pq7JRfWWzXpfAxuBdjq6SAjShx
-         sRcVo32oLBiRnF0HxgKjDqGoYuiNesSADOA7kvNAhRmCtX/7NdNN7d4fmlULsSMfxgW2
-         ZVkhRwQpvRB1FUebBmQEf732x0dpAmc6lZ93iScSCjjX1KKKJPUH40L7IvJM8tRffwnK
-         SDX9QR/32RUjqe3Z7HasVGEJjRl2YR3+0bqg6pn84M0XJQhYS79NXwXRfjtIWVo67/Nr
-         GhOg==
+        bh=d6rAAsVwZzc3RQVQv0hlJrjQ6AVJtM8CWv4xvcb/JkY=;
+        b=ag2djfsg2sm71FzvkXcbTEhNImJdHOABGZGq9ysj8z3TEExRPL3wz40RouTrOTuyYm
+         jEuFk/4OQBf41GAPSN7uay4Z+Rp8hiUESSnsxPL61Ca5236w+wEL6hzHSXdLZ7y8Faw8
+         uBhCRA2+36KqcUEVChIEbr9NxpNr76yOUouE26GejbXmqQNUmXsBaJSrCCxHDF96m3NN
+         LWAQS5CBaSbsGsf4JL6vQy8n4H8nCs/IN3fLjqu8ci9zNQZ7t8ZK6kfnlHX7y21A4SDr
+         xmfylR6TslqE1gkZhlr7cHnRTbfI1MC8OLUdVxczA2ZwsQ16Ygl1o8h0XFVNkg+PsHPk
+         Q+GQ==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id l22-20020a05620a28d600b006cc634e53dbsi13244721qkp.270.2022.10.20.23.03.24
+        by mx.google.com with ESMTPS id ge9-20020a05621427c900b00498f6c644easi11465921qvb.374.2022.10.20.23.12.19
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 20 Oct 2022 23:03:25 -0700 (PDT)
+        Thu, 20 Oct 2022 23:12:20 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1oll7q-0002N5-Uk
-	for alex.bennee@linaro.org; Fri, 21 Oct 2022 02:03:24 -0400
+	id 1ollGV-00007n-Ex
+	for alex.bennee@linaro.org; Fri, 21 Oct 2022 02:12:19 -0400
 Received: from [::1] (helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1oll2y-00013l-MV
-	for alex.bennee@linaro.org; Fri, 21 Oct 2022 01:58:20 -0400
+	id 1oll2x-00013H-Ud
+	for alex.bennee@linaro.org; Fri, 21 Oct 2022 01:58:19 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <ben@luna.fluff.org>)
- id 1oll2v-00011a-RW; Fri, 21 Oct 2022 01:58:17 -0400
+ id 1oll2w-00011f-1U; Fri, 21 Oct 2022 01:58:18 -0400
 Received: from cpc152649-stkp13-2-0-cust121.10-2.cable.virginm.net
  ([86.15.83.122] helo=luna)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <ben@luna.fluff.org>)
- id 1oll2u-00074Q-2q; Fri, 21 Oct 2022 01:58:17 -0400
+ id 1oll2u-00074S-61; Fri, 21 Oct 2022 01:58:17 -0400
 Received: from ben by luna with local (Exim 4.96)
- (envelope-from <ben@luna.fluff.org>) id 1oll2n-001R0O-2H;
+ (envelope-from <ben@luna.fluff.org>) id 1oll2n-001R0X-2b;
  Fri, 21 Oct 2022 06:58:09 +0100
 From: Ben Dooks <qemu@ben.fluff.org>
 To: qemu-arm@nongnu.org
 Cc: qemu-devel@nongnu.org, alistair@alistair23.me, peter.maydell@linaro.org,
  qemu-riscv@nongnu.org, Ben Dooks <qemu@ben.fluff.org>
-Subject: [PATCH v5 1/6] device_tree: add qemu_fdt_setprop_strings() helper
-Date: Fri, 21 Oct 2022 06:58:03 +0100
-Message-Id: <20221021055808.342055-2-qemu@ben.fluff.org>
+Subject: [PATCH v5 4/6] hw/core: use qemu_fdt_setprop_strings()
+Date: Fri, 21 Oct 2022 06:58:06 +0100
+Message-Id: <20221021055808.342055-5-qemu@ben.fluff.org>
 X-Mailer: git-send-email 2.35.1
 In-Reply-To: <20221021055808.342055-1-qemu@ben.fluff.org>
 References: <20221021055808.342055-1-qemu@ben.fluff.org>
@@ -91,61 +91,44 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: LrpXRY6Md/g+
+X-TUID: o3jNcZKjsREs
 
-Add a helper to set a property from a set of strings
-to reduce the following code:
-
-    static const char * const clint_compat[2] = {
-        "sifive,clint0", "riscv,clint0"
-    };
-
-    qemu_fdt_setprop_string_array(fdt, nodename, "compatible",
-        (char **)&clint_compat, ARRAY_SIZE(clint_compat));
+Change to using the qemu_fdt_setprop_strings() helper in
+hw/core code.
 
 Signed-off-by: Ben Dooks <qemu@ben.fluff.org>
 ---
-v4:
- - go back to the non-return call, no-one is using the result
-v3;
- - fix return value for the call
- - add better help text
-v2:
- - fix node/path in comment
----
- include/sysemu/device_tree.h | 19 +++++++++++++++++++
- 1 file changed, 19 insertions(+)
+ hw/core/guest-loader.c | 13 +++++--------
+ 1 file changed, 5 insertions(+), 8 deletions(-)
 
-diff --git a/include/sysemu/device_tree.h b/include/sysemu/device_tree.h
-index e7c5441f56..cb49df471b 100644
---- a/include/sysemu/device_tree.h
-+++ b/include/sysemu/device_tree.h
-@@ -87,6 +87,25 @@ int qemu_fdt_setprop_string(void *fdt, const char *node_path,
- int qemu_fdt_setprop_string_array(void *fdt, const char *node_path,
-                                   const char *prop, char **array, int len);
+diff --git a/hw/core/guest-loader.c b/hw/core/guest-loader.c
+index c61ebc4144..7b8e32e06f 100644
+--- a/hw/core/guest-loader.c
++++ b/hw/core/guest-loader.c
+@@ -56,18 +56,15 @@ static void loader_insert_platform_data(GuestLoaderState *s, int size,
+     qemu_fdt_setprop(fdt, node, "reg", &reg_attr, sizeof(reg_attr));
  
-+/**
-+ * qemu_fdt_setprop_strings: set a property from a set of strings
-+ *
-+ * @fdt: pointer to the dt blob
-+ * @path: node name
-+ * @prop: property array
-+ *
-+ * This is a helper for the qemu_fdt_setprop_string_array() function
-+ * which takes a va-arg set of strings instead of having to setup a
-+ * single use string array.
-+ */
-+#define qemu_fdt_setprop_strings(fdt, path, prop, ...)          \
-+    do {                                                        \
-+        static const char * const __strs[] = { __VA_ARGS__ };   \
-+        qemu_fdt_setprop_string_array(fdt, path, prop,          \
-+                (char **)&__strs, ARRAY_SIZE(__strs));          \
-+     } while(0)
+     if (s->kernel) {
+-        const char *compat[2] = { "multiboot,module", "multiboot,kernel" };
+-        qemu_fdt_setprop_string_array(fdt, node, "compatible",
+-                                      (char **) &compat,
+-                                      ARRAY_SIZE(compat));
++        qemu_fdt_setprop_strings(fdt, node, "compatible",
++                                 "multiboot,module", "multiboot,kernel");
 +
-+
- int qemu_fdt_setprop_phandle(void *fdt, const char *node_path,
-                              const char *property,
-                              const char *target_node_path);
+         if (s->args) {
+             qemu_fdt_setprop_string(fdt, node, "bootargs", s->args);
+         }
+     } else if (s->initrd) {
+-        const char *compat[2] = { "multiboot,module", "multiboot,ramdisk" };
+-        qemu_fdt_setprop_string_array(fdt, node, "compatible",
+-                                      (char **) &compat,
+-                                      ARRAY_SIZE(compat));
++        qemu_fdt_setprop_strings(fdt, node, "compatible",
++                                 "multiboot,module", "multiboot,ramdisk");
+     }
+ }
+ 
 -- 
 2.35.1
 

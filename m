@@ -1,147 +1,123 @@
-Received: by 2002:a05:7022:458e:b0:46:22f1:8c13 with SMTP id cf14csp1739686dlb;
-        Fri, 21 Oct 2022 23:22:47 -0700 (PDT)
-X-Google-Smtp-Source: AMsMyM7GxR3R0B25o0wJ9IEVWC53f/5YgpRg5JnAzufMX+2TSKRL9LSRBf5nbYwG1AQz27oDZEtC
-X-Received: by 2002:a05:620a:191d:b0:6ee:e3cf:b2db with SMTP id bj29-20020a05620a191d00b006eee3cfb2dbmr16708393qkb.633.1666419766962;
-        Fri, 21 Oct 2022 23:22:46 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1666419766; cv=pass;
+Received: by 2002:a17:906:43c7:b0:78d:9f02:16a1 with SMTP id j7csp2945611ejn;
+        Sun, 23 Oct 2022 18:52:22 -0700 (PDT)
+X-Google-Smtp-Source: AMsMyM41H5qauS2MapChStY7Wfktbdua40ZQ6wtjuBUHLIXYUWXc6bWRLEJXQAMEsTI1+cUQnjZM
+X-Received: by 2002:ac8:5a44:0:b0:39d:d06:610d with SMTP id o4-20020ac85a44000000b0039d0d06610dmr16190324qta.363.1666576342593;
+        Sun, 23 Oct 2022 18:52:22 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1666576342; cv=none;
         d=google.com; s=arc-20160816;
-        b=LiLaoN775xkFrwf66Ua2H6eslAMwLno8QCll7+CBEeybdjkv1rCm25/kn3VBtGPWPL
-         sCDDtXcYd0qhvI+oT2YuxDYdmTvw4DBlfV9QdTFd71+i+LFRbamD0Lm70xGoFXtS/8Fs
-         KPIHyvoggfTaRmMgMs1HNCOCG2i0Q1YruCb+MxakhETmgMjVEW54IMrCk3rBtgPu18T9
-         8yeeWxxb1KGT7LSYvr1DYGiibH/aOV1hztvDpwfH7oSEN3nJzw17rl1mYq06H2ikmGUK
-         jleHnQIWOUOjwl43pV/QeFRAMIgCgmaUCUXGUmenzBsr8iHFjj7ziIINZCPyZh4gG98i
-         Enwg==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=errors-to:sender:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version:references
-         :in-reply-to:message-id:date:subject:cc:to:from:dkim-signature;
-        bh=rD+0ciH7TjjgpwMFM/ZqnTOFSYmEFzGkAum1rmsd560=;
-        b=DQEr8VIS0SRteq2wzYB2iKDTUf/L1Q+l4LrYTs97pgaAKBuWe+6UjpE+Xe4Uj3wtaM
-         53s113yKbAUSPdkbEYoO/4FbuRmXaWV+wI9vQ2vGkQ4qTQWDiH/PFK8EIqkHZQSJQ/UX
-         yH7/pR+E3eq+lypmqmSJfc1mKWFL5yytxaTvxgex6OuHR8U94vW6AJ9aRLr9mF0TT98V
-         7Ptqv9/g+W8mZO7Cqqfpd/JlMuQ8iv6sNIxh3VK41C7pXxQFFPLwDcS5d6TFbGxgg/Sw
-         tKEOnQhdakrnXSlpG4ZoKLp3maZG5KUub1HhYAX2sPM4joPo599qlNknJezJFIAUGJzh
-         IPsA==
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@amd.com header.s=selector1 header.b=ZTVxgVza;
-       arc=pass (i=1 spf=pass spfdomain=amd.com dmarc=pass fromdomain=amd.com);
+        b=r8k9oOutBZ+ien+jISMrQQ4EFqFzgRMdEmXHqreoisTGH4HCZG/3D+L/KZoP8kwYls
+         Z7ai8QHNtq/6waiDZH+xa3wFwvZxfemdF22r3vJz5lDTU8LSrHwRIpS/HF/P8ALL6Oma
+         zIqEeB/tWqO6cBtyd4f6utTJXHPfWAphju9gSWkORb1bJ+f1VV4ClAf3BPWarCrr4bOc
+         UoaZDlzP/lkedl7UNCxsXNoGp/X1np+6D8HemBe6QZciNHnXUuC4mIIkQZ4IK3GLZRPC
+         RtxxWEcKBsThxNvru68V0/MUPuLJbKDyx2YuJSnDimwkVOAjoPydU/CufNWKGoHewloI
+         Omyg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:references:in-reply-to:subject:cc:to:from
+         :date:dkim-signature;
+        bh=XRmZJ+oikEiB6CzwdJGUgvAr3e9iP8jKtb/7e7pjDzc=;
+        b=TvpOaMV4SxxqzJolsHEtzi5I75D63DhVcV1yZBsdwuMtBITFKDFsVBXIzgsC0d83/r
+         hG8seWFgvT2uW/iWzSvcvXYjOR9yrcWcQ1wqYs97Hzb+gO6AQ2t7n+8jPwUvYYGHR35w
+         E6F/iac3ekqEdMqWb4YUtpChe7rn3jsLxSTcXeWxC7OnMyvlyilPfzWXlKYExQ2Ue5oX
+         LAxd1uX4+bedppXKt6VKGY+mJ8BO8grsU59EMFMq0bgu5T6oS+W5GR9W0kYZKOrjYiHm
+         bFUay7RlQMjOdhjzkBECvPNs9IoekFusTpQJEXbpLfgJ/qMacVZAfG0ENA4e/UUu6zmM
+         zsVw==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=fEAr9Q6u;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=amd.com
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id ay38-20020a05620a17a600b006e2f2f60c1bsi13148578qkb.572.2022.10.21.23.22.46
+        by mx.google.com with ESMTPS id bt14-20020ac8690e000000b0039cba752e43si16838197qtb.528.2022.10.23.18.52.22
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 21 Oct 2022 23:22:46 -0700 (PDT)
+        Sun, 23 Oct 2022 18:52:22 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@amd.com header.s=selector1 header.b=ZTVxgVza;
-       arc=pass (i=1 spf=pass spfdomain=amd.com dmarc=pass fromdomain=amd.com);
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=fEAr9Q6u;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=amd.com
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1om7N7-0007mA-2r; Sat, 22 Oct 2022 01:48:37 -0400
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1oml6e-0006Ky-8N
+	for alex.bennee@linaro.org; Sun, 23 Oct 2022 20:14:16 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <vikram.garhwal@amd.com>)
- id 1om7Mw-0007ge-ST; Sat, 22 Oct 2022 01:48:30 -0400
-Received: from mail-mw2nam10on2042.outbound.protection.outlook.com
- ([40.107.94.42] helo=NAM10-MW2-obe.outbound.protection.outlook.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <vikram.garhwal@amd.com>)
- id 1om7Mr-00050u-EX; Sat, 22 Oct 2022 01:48:25 -0400
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=kMmAiKrUjHMk2AtKp2H3jlO2lFqhKP3pHMNjoKpzW+vknG/Clk8urTnl2zHFDAdb1S10mWThwGUGX/UhcWD+4ui8FzSvY09da38Har8+VwQ8CO1sjpBplXZ7j/HZCV5pUxj74RrNwOUW9tACINtR++SrEXRDhgbJfs8zsdCQpPqfTlFXw0Vi8Yhz4vWfpdLx6UVaqWiMx0QAZ5iUNorttB1EVNftzt/h1U4bIMJkyfS7L+UcCOOPYuMtp/ihZq8kZGrE+nkSl8SKXNzwLaPAw4sjVxvcuKTWjlJV5zcmJ127ONiGz0q+MCkoo5SJHCKKvu+dTLuQ1e6IsBXHAOQIOw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=rD+0ciH7TjjgpwMFM/ZqnTOFSYmEFzGkAum1rmsd560=;
- b=nJ3ZEcuI4pV3S/77XjS2q0x4rA02umf3bHZyUEI8MDgMl3X7saUIVIT3Tqw2OfqZIRmf2YI6ow6iV8BQm31DVo7DNBLt+qtj4pHlI76gvQL/FkdCB99F1UUtLz19z87zEuNFLEavYimLK73CwCStN2gyW7+DqTK5UqpuWSLJv5KlyUpRQSQFi7vYCwZZiRpup47gCll/mxjnKtVIyhMLbSyGQEgemCwFn1VswGB0gMjZpcV4bLxgGfteEFGksUuK95ro9F5yU47gNaE53CeYBrU9ogNqpSPM3x5N+huKlE3D6ljbLlvESPSX1gIWeEr3FvRJSrPBiNBkBbUVgnemWg==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
- 165.204.84.17) smtp.rcpttodomain=nongnu.org smtp.mailfrom=amd.com; dmarc=pass
- (p=quarantine sp=quarantine pct=100) action=none header.from=amd.com;
- dkim=none (message not signed); arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=amd.com; s=selector1; 
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=rD+0ciH7TjjgpwMFM/ZqnTOFSYmEFzGkAum1rmsd560=;
- b=ZTVxgVzaan32RcH4wTFYP6PwtH9Ory1P+gyWkNDIF9ZuFb2UAs5x+N0ZL50ogj06rRXb23palpcoViFUlBYuYrnADu5LZq8wSWn4ascEfoaZOyMe2XQ5mtWSteJzj427Ai3tw1Kvsagjl0lxZB+oaBAugtsFj3fBjEykUVFQTk8=
-Received: from BN0PR04CA0184.namprd04.prod.outlook.com (2603:10b6:408:e9::9)
- by DM4PR12MB7549.namprd12.prod.outlook.com (2603:10b6:8:10f::14) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5723.33; Sat, 22 Oct
- 2022 05:48:17 +0000
-Received: from BN8NAM11FT067.eop-nam11.prod.protection.outlook.com
- (2603:10b6:408:e9:cafe::38) by BN0PR04CA0184.outlook.office365.com
- (2603:10b6:408:e9::9) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5746.23 via Frontend
- Transport; Sat, 22 Oct 2022 05:48:17 +0000
-X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 165.204.84.17)
- smtp.mailfrom=amd.com; dkim=none (message not signed)
- header.d=none;dmarc=pass action=none header.from=amd.com;
-Received-SPF: Pass (protection.outlook.com: domain of amd.com designates
- 165.204.84.17 as permitted sender) receiver=protection.outlook.com;
- client-ip=165.204.84.17; helo=SATLEXMB04.amd.com; pr=C
-Received: from SATLEXMB04.amd.com (165.204.84.17) by
- BN8NAM11FT067.mail.protection.outlook.com (10.13.177.159) with Microsoft SMTP
- Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.20.5746.16 via Frontend Transport; Sat, 22 Oct 2022 05:48:15 +0000
-Received: from SATLEXMB04.amd.com (10.181.40.145) by SATLEXMB04.amd.com
- (10.181.40.145) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2375.31; Sat, 22 Oct
- 2022 00:48:15 -0500
-Received: from xsjfnuv50.xilinx.com (10.180.168.240) by SATLEXMB04.amd.com
- (10.181.40.145) with Microsoft SMTP Server id 15.1.2375.31 via Frontend
- Transport; Sat, 22 Oct 2022 00:48:14 -0500
-From: Vikram Garhwal <vikram.garhwal@amd.com>
-To: <qemu-devel@nongnu.org>
-CC: <francisco.iglesias@amd.com>, <edgar.iglesias@amd.com>, Vikram Garhwal
- <vikram.garhwal@amd.com>, Alistair Francis <alistair@alistair23.me>, "Edgar
- E. Iglesias" <edgar.iglesias@gmail.com>, Peter Maydell
- <peter.maydell@linaro.org>, "open list:Xilinx ZynqMP and..."
- <qemu-arm@nongnu.org>
-Subject: [QEMU][PATCH v2 3/5] xlnx-zynqmp: Connect Xilinx VERSAL CANFD
- controllers
-Date: Fri, 21 Oct 2022 22:47:44 -0700
-Message-ID: <20221022054746.28217-4-vikram.garhwal@amd.com>
-X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20221022054746.28217-1-vikram.garhwal@amd.com>
-References: <20221022054746.28217-1-vikram.garhwal@amd.com>
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
+ id 1omWTV-00058p-8x; Sun, 23 Oct 2022 04:36:55 -0400
+Received: from mail-ed1-x52f.google.com ([2a00:1450:4864:20::52f])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
+ id 1omWTT-0001oO-Kd; Sun, 23 Oct 2022 04:36:53 -0400
+Received: by mail-ed1-x52f.google.com with SMTP id y12so588717edc.9;
+ Sun, 23 Oct 2022 01:36:49 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=content-transfer-encoding:mime-version:message-id:references
+ :in-reply-to:subject:cc:to:from:date:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=XRmZJ+oikEiB6CzwdJGUgvAr3e9iP8jKtb/7e7pjDzc=;
+ b=fEAr9Q6ueSxeSuyLT9676891MFpPNqGkeEL6Q15nzy+jrQR2QAzUmhwgscEOzmzj++
+ H1krq9ApbirCXhblFIY+u6c4ALpYdAS9GeJxTrSMJk958xr1qdg1R5xajG4ARUHZ/E22
+ QtVaaP3C1mYT5paqwoK8xiV3lB0pNy66RcXoahyJ9F5ySkqdl14JBkPLrsgvIwle4IpG
+ Bk9/BpAQ1JohdQ01N5fdJHLDBlFdDj4Cb6dJgfAyPst9n2EHrRFjDpISBb/BQ4kcook5
+ FIOJgivVF8SyrCN44fYz7R7s6H4M+xonrNq8e1+AKeRZd2A+SsGDGhKJBSOOFZWlChvT
+ TmKw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=content-transfer-encoding:mime-version:message-id:references
+ :in-reply-to:subject:cc:to:from:date:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=XRmZJ+oikEiB6CzwdJGUgvAr3e9iP8jKtb/7e7pjDzc=;
+ b=za8Xcy9umzjG6DZg9J48x9M3pGi+mb5f9Bh0wjxooeLgyqffJAkRmiE+ouQD5kM5fs
+ zpNO2y+inVk9GH7CG5lDFkR//BXiXaWJuQCrL0IJrIMgwwfkIQaYRrrCwippre2gRraT
+ ir7Zticjw9yNNFLsCvo3jvaiUTxVAgTHwFDj8Vm+Mp5/jCK67CEc81gaJ/fhsNyG7w8A
+ ZxbwpS8SRlqfsgE0k4ZWMHNhZVA3ek6lDkg/fWLy1YPA91P6DqWIZzIzFoKUhdjZKWTF
+ Q4R+paZCdUw11DMVdf/D7OTay/RMJe+dqe909/BpUZ5U/N0J/Z4HRZBRCk5ewPIFfIE5
+ 4n+w==
+X-Gm-Message-State: ACrzQf3CWAqkpV9ks0AHsBTBJ0yCPV2ID5PiZYdMOx65XdNIqUvK1f+O
+ 1r0ttK+r7pnq0YKeGnxL/nZivGOr754=
+X-Received: by 2002:a50:ff09:0:b0:456:fd61:83b3 with SMTP id
+ a9-20020a50ff09000000b00456fd6183b3mr24857113edu.166.1666514208179; 
+ Sun, 23 Oct 2022 01:36:48 -0700 (PDT)
+Received: from [127.0.0.1] (dynamic-077-191-180-043.77.191.pool.telefonica.de.
+ [77.191.180.43]) by smtp.gmail.com with ESMTPSA id
+ h28-20020a1709070b1c00b00780f6071b5dsm13685404ejl.188.2022.10.23.01.36.47
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Sun, 23 Oct 2022 01:36:47 -0700 (PDT)
+Date: Sun, 23 Oct 2022 08:36:44 +0000
+From: Bernhard Beschow <shentey@gmail.com>
+To: qemu-devel@nongnu.org
+CC: =?ISO-8859-1?Q?Philippe_Mathieu-Daud=E9?= <philmd@linaro.org>,
+ qemu-ppc@nongnu.org, Aurelien Jarno <aurelien@aurel32.net>,
+ Yoshinori Sato <ysato@users.sourceforge.jp>,
+ Antony Pavlov <antonynpavlov@gmail.com>, BALATON Zoltan <balaton@eik.bme.hu>, 
+ Alistair Francis <alistair@alistair23.me>, Bin Meng <bin.meng@windriver.com>, 
+ Kevin Wolf <kwolf@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
+ Jan Kiszka <jan.kiszka@web.de>,
+ =?ISO-8859-1?Q?Philippe_Mathieu-Daud=E9?= <f4bug@amsat.org>,
+ Hanna Reitz <hreitz@redhat.com>, qemu-arm@nongnu.org,
+ Magnus Damm <magnus.damm@gmail.com>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, qemu-block@nongnu.org
+Subject: =?US-ASCII?Q?Re=3A_=5BPATCH_v4_0/7=5D_ppc/e500=3A_Add_sup?=
+ =?US-ASCII?Q?port_for_two_types_of_flash=2C_cleanup?=
+In-Reply-To: <20221018210146.193159-1-shentey@gmail.com>
+References: <20221018210146.193159-1-shentey@gmail.com>
+Message-ID: <56D10C31-F94E-4E4B-A37C-667AF8F61540@gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain
-X-EOPAttributedMessage: 0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: BN8NAM11FT067:EE_|DM4PR12MB7549:EE_
-X-MS-Office365-Filtering-Correlation-Id: 9dfb4e63-6e5c-4d47-a5c8-08dab3f103e0
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: eMmTsZdRMezv7tRSujpUgvoddQOGtIP9O2ewI7g440KaW7wnpCyuuYATEfInsvCsVYzpOOj3bTFr+vccILVHZcLtL09JODFuGZ4wG9HLbekio45W5kwaHppEPv2mWPeFEAT83pvgBWndLFnSEAaLupk/bIJSTGujVdWJM/TnokRFio0o5Wc93totBJNzCtKXxhrh/JzIBYh0R9XOl3F4tfFqTNgx96nzbmFWQ4ejCnOvFHHiAKphTzsS7UR6L66lUC3e5MNvF1ZMPWvzBnLWiPWRQEzVwUMV5qMFcj8NLROQvjmQSgUjSJLWVzwNPomnRQLDzKCU7qp1rBjucj+Jw23Ykd3ASCuLTLHYavoLuLFtv5bdkmTcEGHvpCjKhqiRJbhpOcBeQ0Pt40j9s1L/5Hy3YQBAw2pIqCv/VpuYHq4Blr6IlPzLmby4+boAB0/Sp0QwjCY1bByDK13QNNOkXnIKMHKVuJX3xL17FvqjT8yjPjuNpWJtNiR42Ob9h1V0V9VVIcAIjuLSXrf/dZrBrakw8UFQqTbsnQqymVgdEkslkT8pM458ghk2DE5+HsDEvWJFJN3sYK0Tjce5U0WowzCnXRCB2O7jSD1edb5sEj/zeon3qfmyGgKt8yabslvyBmo5m+n67SpOCVWToHj1kjmUtOhyfUnoXG6FvAixrbvXYkVt+/qXjJKbMNLRVcW/D2PF+KptybgCgMS0/92CWCeDqA0lmVfkDkitbMA5HKr3uh6NqgJcw24zv0BOZTRzPDCPEaNkZh6RYae5yF+ZmhQ+j0zUdLYhSzX8i9PDsO/0GSeYMqjmHchtjH1ee/3m
-X-Forefront-Antispam-Report: CIP:165.204.84.17; CTRY:US; LANG:en; SCL:1; SRV:;
- IPV:CAL; SFV:NSPM; H:SATLEXMB04.amd.com; PTR:InfoDomainNonexistent; CAT:NONE;
- SFS:(13230022)(4636009)(39860400002)(136003)(346002)(376002)(396003)(451199015)(40470700004)(36840700001)(46966006)(5660300002)(4326008)(8676002)(40460700003)(8936002)(86362001)(2906002)(356005)(44832011)(82740400003)(81166007)(26005)(41300700001)(336012)(478600001)(1076003)(186003)(2616005)(82310400005)(70586007)(83380400001)(70206006)(40480700001)(426003)(316002)(54906003)(6666004)(6916009)(36860700001)(47076005)(36756003)(36900700001);
- DIR:OUT; SFP:1101; 
-X-OriginatorOrg: amd.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 22 Oct 2022 05:48:15.9578 (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: 9dfb4e63-6e5c-4d47-a5c8-08dab3f103e0
-X-MS-Exchange-CrossTenant-Id: 3dd8961f-e488-4e60-8e11-a82d994e183d
-X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=3dd8961f-e488-4e60-8e11-a82d994e183d; Ip=[165.204.84.17];
- Helo=[SATLEXMB04.amd.com]
-X-MS-Exchange-CrossTenant-AuthSource: BN8NAM11FT067.eop-nam11.prod.protection.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Anonymous
-X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM4PR12MB7549
-Received-SPF: permerror client-ip=40.107.94.42;
- envelope-from=vikram.garhwal@amd.com;
- helo=NAM10-MW2-obe.outbound.protection.outlook.com
+Content-Type: text/plain;
+ charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::52f;
+ envelope-from=shentey@gmail.com; helo=mail-ed1-x52f.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001, WEIRD_QUOTING=0.001 autolearn=ham autolearn_force=no
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -154,269 +130,230 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Sender: "Qemu-devel" <qemu-devel-bounces@nongnu.org>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: uupT9tX7Y/la
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: j4sad+nkte5e
 
-Connect CANFD0 and CANFD1 on the Versal-virt machine and update xlnx-versal-virt
-document with CANFD command line examples.
+Am 18=2E Oktober 2022 21:01:39 UTC schrieb Bernhard Beschow <shentey@gmail=
+=2Ecom>:
+>Cover letter:
+>
+>~~~~~~~~~~~~~
+>
+>
+>
+>This series adds support for -pflash and direct SD card access to the
+>
+>PPC e500 boards=2E The idea is to increase compatibility with "real" firm=
+ware
+>
+>images where only the bare minimum of drivers is compiled in=2E
+>
+>
+>
+>The series is structured as follows:
+>
+>
+>
+>Patches 1-4 perform some general cleanup which paves the way for the rest=
+ of
+>
+>the series=2E
+>
+>
+>
+>Patch 5 adds -pflash handling where memory-mapped flash can be added on
+>
+>user's behalf=2E That is, the flash memory region in the eLBC is only add=
+ed if
+>
+>the -pflash argument is supplied=2E Note that the cfi01 device model beco=
+mes
+>
+>stricter in checking the size of the emulated flash space=2E
+>
+>
+>
+>Patches 6 and 7 add a new device model - the Freescale eSDHC - to the e50=
+0
+>
+>boards which was missing so far=2E
+>
+>
+>
+>User documentation is also added as the new features become available=2E
+=
+>
+>
+>
+>Tesing done:
+>
+>* `qemu-system-ppc -M ppce500 -cpu e500mc -m 256 -kernel uImage -append
+>
+>"console=3DttyS0 rootwait root=3D/dev/mtdblock0 nokaslr" -drive
+>
+>if=3Dpflash,file=3Drootfs=2Eext2,format=3Draw`
+>
+>* `qemu-system-ppc -M ppce500 -cpu e500mc -m 256 -kernel uImage -append
+>
+>"console=3DttyS0 rootwait root=3D/dev/mmcblk0" -device sd-card,drive=3Dmy=
+drive -drive
+>
+>id=3Dmydrive,if=3Dnone,file=3Drootfs=2Eext2,format=3Draw`
+>
+>
+>
+>The load was created using latest Buildroot with `make
+>
+>qemu_ppc_e500mc_defconfig` where the rootfs was configured to be of ext2 =
+type=2E
+>
+>In both cases it was possible to log in and explore the root file system=
+=2E
+>
+>
+>
+>v4:
+>
+>~~~
+>
+>Zoltan:
+>
+>- Don't suggest presence of qemu-system-ppc32 in documentation
+>
+>
+>
+>Bin:
+>
+>- New patch: docs/system/ppc/ppce500: Use qemu-system-ppc64 across the bo=
+ard(s)
+>
+>
+>
+>Peter:
+>
+>- Inline pflash_cfi01_register() rather than modify it (similar to v2)
+>
 
-Signed-off-by: Vikram Garhwal <vikram.garhwal@amd.com>
----
- docs/system/arm/xlnx-versal-virt.rst | 31 ++++++++++++++++++
- hw/arm/xlnx-versal-virt.c            | 48 ++++++++++++++++++++++++++++
- hw/arm/xlnx-versal.c                 | 37 +++++++++++++++++++++
- include/hw/arm/xlnx-versal.h         | 12 +++++++
- 4 files changed, 128 insertions(+)
+Ping
 
-diff --git a/docs/system/arm/xlnx-versal-virt.rst b/docs/system/arm/xlnx-versal-virt.rst
-index 92ad10d2da..372e4249f0 100644
---- a/docs/system/arm/xlnx-versal-virt.rst
-+++ b/docs/system/arm/xlnx-versal-virt.rst
-@@ -34,6 +34,7 @@ Implemented devices:
- - DDR memory
- - BBRAM (36 bytes of Battery-backed RAM)
- - eFUSE (3072 bytes of one-time field-programmable bit array)
-+- 2 CANFDs
- 
- QEMU does not yet model any other devices, including the PL and the AI Engine.
- 
-@@ -224,3 +225,33 @@ To use a different index value, N, from default of 1, add:
- 
-   Better yet, do not use actual product data when running guest image
-   on this Xilinx Versal Virt board.
-+
-+Using CANFDs for Versal Virt
-+""""""""""""""""""""""""""""
-+Versal CANFD controller is developed based on SocketCAN and QEMU CAN bus
-+implementation. Bus connection and socketCAN connection for each CAN module
-+can be set through command lines.
-+
-+To connect both CANFD0 and CANFD1 on the same bus:
-+
-+.. code-block:: bash
-+
-+    -object can-bus,id=canbus -machine canbus0=canbus -machine canbus1=canbus
-+
-+To connect CANFD0 and CANFD1 to separate buses:
-+
-+.. code-block:: bash
-+
-+    -object can-bus,id=canbus0 -object can-bus,id=canbus1 \
-+    -machine canbus0=canbus0 -machine canbus1=canbus1
-+
-+SocketCAN interface can connect to a Physical or a Virtual CAN interfaces on
-+host machine. Please check this document to learn about CAN interface on Linux:
-+docs/system/devices/can.rst
-+
-+To connect CANFD0 and CANFD1 to host machine's CAN interface can0:
-+
-+.. code-block:: bash
-+
-+    -object can-bus,id=canbus -machine canbus0=canbus -machine canbus1=canbus
-+    -object can-host-socketcan,id=canhost0,if=can0,canbus=canbus
-diff --git a/hw/arm/xlnx-versal-virt.c b/hw/arm/xlnx-versal-virt.c
-index 37fc9b919c..963ace861e 100644
---- a/hw/arm/xlnx-versal-virt.c
-+++ b/hw/arm/xlnx-versal-virt.c
-@@ -40,9 +40,11 @@ struct VersalVirt {
-         uint32_t clk_25Mhz;
-         uint32_t usb;
-         uint32_t dwc;
-+        uint32_t canfd[2];
-     } phandle;
-     struct arm_boot_info binfo;
- 
-+    CanBusState *canbus[XLNX_VERSAL_NR_CANFD];
-     struct {
-         bool secure;
-     } cfg;
-@@ -235,6 +237,33 @@ static void fdt_add_uart_nodes(VersalVirt *s)
-     }
- }
- 
-+static void fdt_add_canfd_nodes(VersalVirt *s)
-+{
-+    uint64_t addrs[] = { MM_CANFD0, MM_CANFD1 };
-+    uint32_t size[] = { MM_CANFD0_SIZE, MM_CANFD1_SIZE };
-+    unsigned int irqs[] = { VERSAL_CANFD0_IRQ_0, VERSAL_CANFD1_IRQ_0 };
-+    int i;
-+
-+    /* Create and connect CANFD0 and CANFD1 nodes to canbus0. */
-+    for (i = 0; i < ARRAY_SIZE(addrs); i++) {
-+        char *name = g_strdup_printf("/canfd@%" PRIx64, addrs[i]);
-+        qemu_fdt_add_subnode(s->fdt, name);
-+        qemu_fdt_setprop_cell(s->fdt, name, "rx-fifo0", 0x40);
-+        qemu_fdt_setprop_cell(s->fdt, name, "enable-rx-fifo1", 0x1);
-+        qemu_fdt_setprop_cell(s->fdt, name, "rx-fifo1", 0x40);
-+
-+        qemu_fdt_setprop_cells(s->fdt, name, "interrupts",
-+                               GIC_FDT_IRQ_TYPE_SPI, irqs[i],
-+                               GIC_FDT_IRQ_FLAGS_LEVEL_HI);
-+        qemu_fdt_setprop_sized_cells(s->fdt, name, "reg",
-+                                     2, addrs[i], 2, size[i]);
-+        qemu_fdt_setprop_string(s->fdt, name, "compatible",
-+                                "xlnx,versal-canfd");
-+
-+        g_free(name);
-+    }
-+}
-+
- static void fdt_add_fixed_link_nodes(VersalVirt *s, char *gemname,
-                                      uint32_t phandle)
- {
-@@ -639,12 +668,17 @@ static void versal_virt_init(MachineState *machine)
-                             TYPE_XLNX_VERSAL);
-     object_property_set_link(OBJECT(&s->soc), "ddr", OBJECT(machine->ram),
-                              &error_abort);
-+    object_property_set_link(OBJECT(&s->soc), "canbus0", OBJECT(s->canbus[0]),
-+                             &error_abort);
-+    object_property_set_link(OBJECT(&s->soc), "canbus1", OBJECT(s->canbus[1]),
-+                             &error_abort);
-     sysbus_realize(SYS_BUS_DEVICE(&s->soc), &error_fatal);
- 
-     fdt_create(s);
-     create_virtio_regions(s);
-     fdt_add_gem_nodes(s);
-     fdt_add_uart_nodes(s);
-+    fdt_add_canfd_nodes(s);
-     fdt_add_gic_nodes(s);
-     fdt_add_timer_nodes(s);
-     fdt_add_zdma_nodes(s);
-@@ -712,6 +746,20 @@ static void versal_virt_init(MachineState *machine)
- 
- static void versal_virt_machine_instance_init(Object *obj)
- {
-+    VersalVirt *s = XLNX_VERSAL_VIRT_MACHINE(obj);
-+
-+    /*
-+     * User can set canbus0 and canbus1 properties to can-bus object and connect
-+     * to socketcan(optional) interface via command line.
-+     */
-+    object_property_add_link(obj, "canbus0", TYPE_CAN_BUS,
-+                             (Object **)&s->canbus[0],
-+                             object_property_allow_set_link,
-+                             0);
-+    object_property_add_link(obj, "canbus1", TYPE_CAN_BUS,
-+                             (Object **)&s->canbus[1],
-+                             object_property_allow_set_link,
-+                             0);
- }
- 
- static void versal_virt_machine_class_init(ObjectClass *oc, void *data)
-diff --git a/hw/arm/xlnx-versal.c b/hw/arm/xlnx-versal.c
-index 57276e1506..44b0eaf0c8 100644
---- a/hw/arm/xlnx-versal.c
-+++ b/hw/arm/xlnx-versal.c
-@@ -185,6 +185,38 @@ static void versal_create_uarts(Versal *s, qemu_irq *pic)
-     }
- }
- 
-+static void versal_create_canfds(Versal *s, qemu_irq *pic)
-+{
-+    int i;
-+
-+    for (i = 0; i < ARRAY_SIZE(s->lpd.iou.canfd); i++) {
-+        static const int irqs[] = { VERSAL_CANFD0_IRQ_0, VERSAL_CANFD1_IRQ_0};
-+        static const uint64_t addrs[] = { MM_CANFD0, MM_CANFD1 };
-+        char *name = g_strdup_printf("canfd%d", i);
-+        SysBusDevice *sbd;
-+        MemoryRegion *mr;
-+
-+        object_initialize_child(OBJECT(s), name, &s->lpd.iou.canfd[i],
-+                                TYPE_XILINX_CANFD);
-+        sbd = SYS_BUS_DEVICE(&s->lpd.iou.canfd[i]);
-+
-+        object_property_set_int(OBJECT(&s->lpd.iou.canfd[i]), "ext_clk_freq",
-+                                XLNX_VERSAL_CANFD_REF_CLK , &error_abort);
-+
-+        object_property_set_link(OBJECT(&s->lpd.iou.canfd[i]), "canfdbus",
-+                                 OBJECT(s->lpd.iou.canbus[i]),
-+                                 &error_abort);
-+
-+        sysbus_realize(sbd, &error_fatal);
-+
-+        mr = sysbus_mmio_get_region(sbd, 0);
-+        memory_region_add_subregion(&s->mr_ps, addrs[i], mr);
-+
-+        sysbus_connect_irq(sbd, 0, pic[irqs[i]]);
-+        g_free(name);
-+    }
-+}
-+
- static void versal_create_usbs(Versal *s, qemu_irq *pic)
- {
-     DeviceState *dev;
-@@ -719,6 +751,7 @@ static void versal_realize(DeviceState *dev, Error **errp)
-     versal_create_apu_gic(s, pic);
-     versal_create_rpu_cpus(s);
-     versal_create_uarts(s, pic);
-+    versal_create_canfds(s, pic);
-     versal_create_usbs(s, pic);
-     versal_create_gems(s, pic);
-     versal_create_admas(s, pic);
-@@ -758,6 +791,10 @@ static void versal_init(Object *obj)
- static Property versal_properties[] = {
-     DEFINE_PROP_LINK("ddr", Versal, cfg.mr_ddr, TYPE_MEMORY_REGION,
-                      MemoryRegion *),
-+    DEFINE_PROP_LINK("canbus0", Versal, lpd.iou.canbus[0],
-+                      TYPE_CAN_BUS, CanBusState *),
-+    DEFINE_PROP_LINK("canbus1", Versal, lpd.iou.canbus[1],
-+                      TYPE_CAN_BUS, CanBusState *),
-     DEFINE_PROP_END_OF_LIST()
- };
- 
-diff --git a/include/hw/arm/xlnx-versal.h b/include/hw/arm/xlnx-versal.h
-index cbe8a19c10..97e63a1b0e 100644
---- a/include/hw/arm/xlnx-versal.h
-+++ b/include/hw/arm/xlnx-versal.h
-@@ -31,6 +31,7 @@
- #include "hw/dma/xlnx_csu_dma.h"
- #include "hw/misc/xlnx-versal-crl.h"
- #include "hw/misc/xlnx-versal-pmc-iou-slcr.h"
-+#include "hw/net/xlnx-versal-canfd.h"
- 
- #define TYPE_XLNX_VERSAL "xlnx-versal"
- OBJECT_DECLARE_SIMPLE_TYPE(Versal, XLNX_VERSAL)
-@@ -43,6 +44,8 @@ OBJECT_DECLARE_SIMPLE_TYPE(Versal, XLNX_VERSAL)
- #define XLNX_VERSAL_NR_SDS     2
- #define XLNX_VERSAL_NR_XRAM    4
- #define XLNX_VERSAL_NR_IRQS    192
-+#define XLNX_VERSAL_NR_CANFD   2
-+#define XLNX_VERSAL_CANFD_REF_CLK (24 * 1000 * 1000)
- 
- struct Versal {
-     /*< private >*/
-@@ -73,6 +76,8 @@ struct Versal {
-             CadenceGEMState gem[XLNX_VERSAL_NR_GEMS];
-             XlnxZDMA adma[XLNX_VERSAL_NR_ADMAS];
-             VersalUsb2 usb;
-+            CanBusState *canbus[XLNX_VERSAL_NR_CANFD];
-+            XlnxVersalCANFDState canfd[XLNX_VERSAL_NR_CANFD];
-         } iou;
- 
-         /* Real-time Processing Unit.  */
-@@ -133,6 +138,8 @@ struct Versal {
- #define VERSAL_CRL_IRQ             10
- #define VERSAL_UART0_IRQ_0         18
- #define VERSAL_UART1_IRQ_0         19
-+#define VERSAL_CANFD0_IRQ_0        20
-+#define VERSAL_CANFD1_IRQ_0        21
- #define VERSAL_USB0_IRQ_0          22
- #define VERSAL_GEM0_IRQ_0          56
- #define VERSAL_GEM0_WAKE_IRQ_0     57
-@@ -163,6 +170,11 @@ struct Versal {
- #define MM_UART1                    0xff010000U
- #define MM_UART1_SIZE               0x10000
- 
-+#define MM_CANFD0                   0xff060000
-+#define MM_CANFD0_SIZE              0x10000
-+#define MM_CANFD1                   0xff070000
-+#define MM_CANFD1_SIZE              0x10000
-+
- #define MM_GEM0                     0xff0c0000U
- #define MM_GEM0_SIZE                0x10000
- #define MM_GEM1                     0xff0d0000U
--- 
-2.17.1
+>
+>
+>v3:
+>
+>~~~
+>
+>Phil:
+>
+>- Also add power-of-2 fix to pflash_cfi02
+>
+>- Resolve cfi01-specific assertion in e500 code
+>
+>- Resolve unused define in eSDHC device model
+>
+>- Resolve redundant alignment checks in eSDHC device model
+>
+>
+>
+>Bin:
+>
+>- Add dedicated flash chapter to documentation
+>
+>
+>
+>Bernhard:
+>
+>- Use is_power_of_2() instead of ctpop64() for better readability
+>
+>- Only instantiate eSDHC device model in ppce500 (not used in MPC8544DS)
+=
+>
+>- Rebase onto gitlab=2Ecom/danielhb/qemu/tree/ppc-next
+>
+>
+>
+>v2:
+>
+>~~~
+>
+>Bin:
+>
+>- Add source for MPC8544DS platform bus' memory map in commit message=2E
+=
+>
+>- Keep "ESDHC" in comment referring to Linux driver=2E
+>
+>- Use "qemu-system-ppc{64|32} in documentation=2E
+>
+>- Use g_autofree in device tree code=2E
+>
+>- Remove unneeded device tree properties=2E
+>
+>- Error out if pflash size doesn't fit into eLBC memory window=2E
+>
+>- Remove unused ESDHC defines=2E
+>
+>- Define macro ESDHC_WML for register offset with magic constant=2E
+>
+>- Fix some whitespace issues when adding eSDHC device to e500=2E
+>
+>
+>
+>Phil:
+>
+>- Fix tense in commit message=2E
+>
+>
+>
+>Bernhard Beschow (7):
+>
+>  docs/system/ppc/ppce500: Use qemu-system-ppc64 across the board(s)
+>
+>  hw/block/pflash_cfi0{1,2}: Error out if device length isn't a power of
+=
+>
+>    two
+>
+>  hw/sd/sdhci-internal: Unexport ESDHC defines
+>
+>  hw/sd/sdhci: Rename ESDHC_* defines to USDHC_*
+>
+>  hw/ppc/e500: Implement pflash handling
+>
+>  hw/sd/sdhci: Implement Freescale eSDHC device model
+>
+>  hw/ppc/e500: Add Freescale eSDHC to e500plat
+>
+>
+>
+> docs/system/ppc/ppce500=2Erst |  38 +++++++-
+>
+> hw/block/pflash_cfi01=2Ec     |   8 +-
+>
+> hw/block/pflash_cfi02=2Ec     |   5 +
+>
+> hw/ppc/Kconfig              |   2 +
+>
+> hw/ppc/e500=2Ec               | 114 +++++++++++++++++++++-
+>
+> hw/ppc/e500=2Eh               |   1 +
+>
+> hw/ppc/e500plat=2Ec           |   1 +
+>
+> hw/sd/sdhci-internal=2Eh      |  20 ----
+>
+> hw/sd/sdhci=2Ec               | 183 +++++++++++++++++++++++++++++++-----=
+
+>
+> include/hw/sd/sdhci=2Eh       |   3 +
+>
+> 10 files changed, 324 insertions(+), 51 deletions(-)
+>
+>
+>
+>-- >
+>2=2E38=2E0
+>
+>
+>
 

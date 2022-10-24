@@ -1,315 +1,119 @@
-Received: by 2002:a17:906:43c7:b0:78d:9f02:16a1 with SMTP id j7csp3230203ejn;
-        Mon, 24 Oct 2022 04:50:48 -0700 (PDT)
-X-Google-Smtp-Source: AMsMyM7/TxjOMNG6R5RIAUHk+6ZTsaMgdRSa0NzTSV/4TpUQdjqtsD+wd8nqG76P7BnQMkA23b5z
-X-Received: by 2002:a05:6214:1bc7:b0:4bb:7aa8:b5cd with SMTP id m7-20020a0562141bc700b004bb7aa8b5cdmr1623202qvc.78.1666612248714;
-        Mon, 24 Oct 2022 04:50:48 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1666612248; cv=none;
-        d=google.com; s=arc-20160816;
-        b=DH2HZaJZFJ415K0GL/j86X/a269N+OFWoPA+YweJoqvdxfs3t8VCH4++BPaleXQPWn
-         gdwjJ09Tffdh/n5qt7ppxOujZzy9o4TV/j96AX/4PMOFqPEX3T4Sv2RtXYhmcBozFG0I
-         QjuCE6/W7rT2guaBO99w9LWAv/df2fPxtpSdbAQ5E+fZPXkihWyFkU8QUeE15jmZ4aNa
-         PKCjTXYdvXe9KZO/xpiiat6fNA3Wp9/xCb87XePdTCsPXyYcEs6Mskwk+WLgmfn/cVO3
-         GErGgLy1zfXxlvf/Bl9XpUcBqgzg7GhgqoDxQtYu8dxLGwvU8D+QHuFfNi5STz14wFAu
-         SbkQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=errors-to:sender:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:cc:to:content-language:subject
-         :user-agent:mime-version:date:message-id;
-        bh=S9rYjNIZ/0EoW2K0uWO7jkiqA8CmNaq6+feBUsyhRFY=;
-        b=JcuVHr/xcEcMEW7NuseYUHz6J/h6qbBSYEySKhIfNAukNnH+GVWOPpkRFiPgFum68v
-         hs8EOUKM0QwUUXToM+5l9rZPDOe0conX4Nbv0QL2fJw1DSZkUuFpliuCp2k+790aJJYZ
-         JuMPI5OLddiD/dyAUvYYOnMDwTJOvAIkSMCP9Alt87cavjDTXZiqraqSuSJvnfYXQXtz
-         Bs6jka5SCE6N33Z9TT+kMmmS8As9Hz98MuXViGrl9hKDDtXnD8SPPKjjfvyIG9WvqcFu
-         0hJNK52/I/N103twALy+FLX7aRN1rIe1JFoM9R49ik+36GTwQeOhKvl5/SsVMVhdrk1P
-         kemw==
-ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id kl5-20020a056214518500b004bb6585311csi2767211qvb.423.2022.10.24.04.50.48
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 24 Oct 2022 04:50:48 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
-Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1omvr2-0007wP-RR; Mon, 24 Oct 2022 07:42:58 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1omvqw-0007uK-Uz; Mon, 24 Oct 2022 07:42:47 -0400
-Received: from mout.kundenserver.de ([212.227.126.134])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1omvqu-0004x5-6s; Mon, 24 Oct 2022 07:42:46 -0400
-Received: from [192.168.100.1] ([82.142.8.70]) by mrelayeu.kundenserver.de
- (mreue009 [213.165.67.103]) with ESMTPSA (Nemesis) id
- 1Mspy4-1p6n970jKy-00tFml; Mon, 24 Oct 2022 13:42:09 +0200
-Message-ID: <f1f2683a-b0a3-75b5-c0bc-8fc15c16518f@vivier.eu>
-Date: Mon, 24 Oct 2022 13:42:04 +0200
+Return-Path: <alex.bennee@linaro.org>
+Received: from zen.linaroharston ([185.81.254.11])
+        by smtp.gmail.com with ESMTPSA id i17-20020a5d6311000000b0022e035a4e93sm26150983wru.87.2022.10.24.07.13.19
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 24 Oct 2022 07:13:19 -0700 (PDT)
+Received: from zen (localhost [127.0.0.1])
+	by zen.linaroharston (Postfix) with ESMTP id 344A21FFB7;
+	Mon, 24 Oct 2022 15:13:19 +0100 (BST)
+References: <20221024051851.3074715-1-richard.henderson@linaro.org>
+ <20221024051851.3074715-3-richard.henderson@linaro.org>
+User-agent: mu4e 1.9.1; emacs 28.2.50
+From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: Richard Henderson <richard.henderson@linaro.org>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org
+Subject: Re: [PATCH v6 02/14] target/arm: Add ptw_idx to S1Translate
+Date: Mon, 24 Oct 2022 15:09:32 +0100
+In-reply-to: <20221024051851.3074715-3-richard.henderson@linaro.org>
+Message-ID: <87o7u19uo0.fsf@linaro.org>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.2.1
-Subject: Re: [PATCH] treewide: Remove the unnecessary space before semicolon
-Content-Language: fr
-To: Bin Meng <bmeng@tinylab.org>, qemu-devel@nongnu.org,
- qemu-trivial@nongnu.org
-Cc: Alistair Francis <alistair.francis@wdc.com>,
- Bin Meng <bin.meng@windriver.com>,
- Christian Schoenebeck <qemu_oss@crudebyte.com>,
- Gerd Hoffmann <kraxel@redhat.com>, Greg Kurz <groug@kaod.org>,
- Jason Wang <jasowang@redhat.com>, Magnus Damm <magnus.damm@gmail.com>,
- "Michael S. Tsirkin" <mst@redhat.com>, Palmer Dabbelt <palmer@dabbelt.com>,
- Pavel Pisa <pisa@cmp.felk.cvut.cz>, Peter Maydell
- <peter.maydell@linaro.org>, Vikram Garhwal <fnu.vikram@xilinx.com>,
- Yoshinori Sato <ysato@users.sourceforge.jp>, qemu-arm@nongnu.org,
- qemu-riscv@nongnu.org
-References: <20221024072802.457832-1-bmeng@tinylab.org>
-From: Laurent Vivier <laurent@vivier.eu>
-In-Reply-To: <20221024072802.457832-1-bmeng@tinylab.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:neP4ncOU5CRyRY0nrsX11UOREtgdaf63CoxVhcL+prnifXmItZt
- +o5MyfxJyZwDvvqc6z3/WCTaV88nHW4reN5YsYQ7irJ/Ry9G4v9b0OBK6imP3ljV1IrTr8o
- 99CqzXAoW3iaM0FEtKx+/9lk+pRw+U3bWJzBkszFgLoWCwP4xyWa8b7Tc17mHAl7ECeVOCT
- rvkUbnqEGKOA0anyTTv3g==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:2e+Z2xh238I=:rZ5UTSIpbnFT10FK2nYeY2
- cp4aRKWKZSpBZAicbhaicnNCifMkH6kepGOWoyJ6u05z4UjlQvWPm8nTJDUHa2yLhAhzWi/9p
- Gu9fMq5arwkHOv+PzRzHqLUDyOORj1N437J/sS/AuFv2Eg0jF36XkhxNCRB0GBNuMcFNKklAy
- je1V62/R+zdrYvii2SnZRieGVyiWB9EMETwLS46yukNxQ98T1K1tA/YI0Nev0xBsAaDaTksE/
- FLPXT8YdVxOb89Xxuysp0p2GbhkxkjeNxcwdprhMbjGoDJDVxHmDkRIeqJmKP75R2PzIv1/h5
- Z4dha+OcPlNO4lTmpZt58cnAKgvEk4HTXi0BC5V8aosItcqKQ6ZsFuBZrR4rNwEvHEPTZrMOH
- mlhOBvf03lQkL3CRZY6PsRLgwxX0DSyKLYqgiSve/w0BrdrBYBU6lORsjIldP15j5cOjg7xrE
- FZyNDl0xy2+6pMHXkayrelpvAaZ9/6MfcauP+swSajY9w+kVdBvkmKLpyS9le2vBxzN8YAnGr
- I/PI948kbycUSa3ZZq9B8DHId9o4dd1AN8VuanXc9KhABQzeKXB1VVt0WBHGLKOGCjiZ2iX2n
- rxje5JGD2YaYH9QW+1Y2cNgkE8Rv4xTvG6sITWEo6CJE4YZcWxmZDY6qCTqLdnX2oNhmMAbHo
- 94s89IB8W6NS0CebWA+4vOCgH/rvEd6KiF2ERQvtFpgxXz8rstSKe34TVNh0bybSTfyiDraP6
- uRMTM9A6Zy8SdjDWAE1Lu3ZrMTh46zAxQglLPLd4KqsrmsaiHKehgxmTmiOnagN17p2X9qekI
- qsawGuO
-Received-SPF: none client-ip=212.227.126.134; envelope-from=laurent@vivier.eu;
- helo=mout.kundenserver.de
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_NONE=0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Sender: "Qemu-arm" <qemu-arm-bounces@nongnu.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: Fa9LiOW45SLh
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-TUID: Gf6uVjz0dghw
 
-Le 24/10/2022 à 09:28, Bin Meng a écrit :
-> %s/return ;/return;
-> 
-> Signed-off-by: Bin Meng <bmeng@tinylab.org>
+
+Richard Henderson <richard.henderson@linaro.org> writes:
+
+> Hoist the computation of the mmu_idx for the ptw up to
+> get_phys_addr_with_struct and get_phys_addr_twostage.
+> This removes the duplicate check for stage2 disabled
+> from the middle of the walk, performing it only once.
+>
+> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 > ---
-> 
->   include/hw/elf_ops.h         | 2 +-
->   hw/9pfs/9p.c                 | 2 +-
->   hw/dma/pl330.c               | 2 +-
->   hw/net/can/can_sja1000.c     | 2 +-
->   hw/timer/renesas_cmt.c       | 2 +-
->   hw/timer/renesas_tmr.c       | 8 ++++----
->   hw/virtio/virtio-pci.c       | 2 +-
->   target/riscv/vector_helper.c | 2 +-
->   target/rx/op_helper.c        | 4 ++--
->   ui/vnc-jobs.c                | 2 +-
->   ui/vnc.c                     | 2 +-
->   11 files changed, 15 insertions(+), 15 deletions(-)
-> 
-> diff --git a/include/hw/elf_ops.h b/include/hw/elf_ops.h
-> index 7c3b1d0f6c..fbe0b1e956 100644
-> --- a/include/hw/elf_ops.h
-> +++ b/include/hw/elf_ops.h
-> @@ -117,7 +117,7 @@ static void glue(load_symbols, SZ)(struct elfhdr *ehdr, int fd, int must_swab,
->       shdr_table = load_at(fd, ehdr->e_shoff,
->                            sizeof(struct elf_shdr) * ehdr->e_shnum);
->       if (!shdr_table) {
-> -        return ;
-> +        return;
->       }
->   
->       if (must_swab) {
-> diff --git a/hw/9pfs/9p.c b/hw/9pfs/9p.c
-> index aebadeaa03..76c591a01b 100644
-> --- a/hw/9pfs/9p.c
-> +++ b/hw/9pfs/9p.c
-> @@ -1786,7 +1786,7 @@ static void coroutine_fn v9fs_walk(void *opaque)
->       err = pdu_unmarshal(pdu, offset, "ddw", &fid, &newfid, &nwnames);
->       if (err < 0) {
->           pdu_complete(pdu, err);
-> -        return ;
-> +        return;
->       }
->       offset += err;
->   
-> diff --git a/hw/dma/pl330.c b/hw/dma/pl330.c
-> index 08e5938ec7..e5d521c329 100644
-> --- a/hw/dma/pl330.c
-> +++ b/hw/dma/pl330.c
-> @@ -1328,7 +1328,7 @@ static void pl330_debug_exec(PL330State *s)
->       }
->       if (!insn) {
->           pl330_fault(ch, PL330_FAULT_UNDEF_INSTR | PL330_FAULT_DBG_INSTR);
-> -        return ;
-> +        return;
->       }
->       ch->stall = 0;
->       insn->exec(ch, opcode, args, insn->size - 1);
-> diff --git a/hw/net/can/can_sja1000.c b/hw/net/can/can_sja1000.c
-> index e0f76d3eb3..73201f9139 100644
-> --- a/hw/net/can/can_sja1000.c
-> +++ b/hw/net/can/can_sja1000.c
-> @@ -431,7 +431,7 @@ void can_sja_mem_write(CanSJA1000State *s, hwaddr addr, uint64_t val,
->               (unsigned long long)val, (unsigned int)addr);
->   
->       if (addr > CAN_SJA_MEM_SIZE) {
-> -        return ;
-> +        return;
->       }
->   
->       if (s->clock & 0x80) { /* PeliCAN Mode */
-> diff --git a/hw/timer/renesas_cmt.c b/hw/timer/renesas_cmt.c
-> index 2e0fd21a36..69eabc678a 100644
-> --- a/hw/timer/renesas_cmt.c
-> +++ b/hw/timer/renesas_cmt.c
-> @@ -57,7 +57,7 @@ static void update_events(RCMTState *cmt, int ch)
->   
->       if ((cmt->cmstr & (1 << ch)) == 0) {
->           /* count disable, so not happened next event. */
-> -        return ;
-> +        return;
->       }
->       next_time = cmt->cmcor[ch] - cmt->cmcnt[ch];
->       next_time *= NANOSECONDS_PER_SECOND;
-> diff --git a/hw/timer/renesas_tmr.c b/hw/timer/renesas_tmr.c
-> index d96002e1ee..c15f654738 100644
-> --- a/hw/timer/renesas_tmr.c
-> +++ b/hw/timer/renesas_tmr.c
-> @@ -67,18 +67,18 @@ static void update_events(RTMRState *tmr, int ch)
->       int i, event;
->   
->       if (tmr->tccr[ch] == 0) {
-> -        return ;
-> +        return;
->       }
->       if (FIELD_EX8(tmr->tccr[ch], TCCR, CSS) == 0) {
->           /* external clock mode */
->           /* event not happened */
-> -        return ;
-> +        return;
->       }
->       if (FIELD_EX8(tmr->tccr[0], TCCR, CSS) == CSS_CASCADING) {
->           /* cascading mode */
->           if (ch == 1) {
->               tmr->next[ch] = none;
-> -            return ;
-> +            return;
->           }
->           diff[cmia] = concat_reg(tmr->tcora) - concat_reg(tmr->tcnt);
->           diff[cmib] = concat_reg(tmr->tcorb) - concat_reg(tmr->tcnt);
-> @@ -384,7 +384,7 @@ static void timer_events(RTMRState *tmr, int ch)
->                                       tmr->tcorb[ch]) & 0xff;
->       } else {
->           if (ch == 1) {
-> -            return ;
-> +            return;
->           }
->           tcnt = issue_event(tmr, ch, 16,
->                              concat_reg(tmr->tcnt),
-> diff --git a/hw/virtio/virtio-pci.c b/hw/virtio/virtio-pci.c
-> index e7d80242b7..34db51e241 100644
-> --- a/hw/virtio/virtio-pci.c
-> +++ b/hw/virtio/virtio-pci.c
-> @@ -1675,7 +1675,7 @@ static void virtio_pci_device_plugged(DeviceState *d, Error **errp)
->           if (virtio_host_has_feature(vdev, VIRTIO_F_IOMMU_PLATFORM)) {
->               error_setg(errp, "VIRTIO_F_IOMMU_PLATFORM was supported by"
->                          " neither legacy nor transitional device");
-> -            return ;
-> +            return;
->           }
->           /*
->            * Legacy and transitional devices use specific subsystem IDs.
-> diff --git a/target/riscv/vector_helper.c b/target/riscv/vector_helper.c
-> index b94f809eb3..0020b9a95d 100644
-> --- a/target/riscv/vector_helper.c
-> +++ b/target/riscv/vector_helper.c
-> @@ -211,7 +211,7 @@ static void vext_set_elems_1s(void *base, uint32_t is_agnostic, uint32_t cnt,
->           return;
->       }
->       if (tot - cnt == 0) {
-> -        return ;
-> +        return;
->       }
->       memset(base + cnt, -1, tot - cnt);
->   }
-> diff --git a/target/rx/op_helper.c b/target/rx/op_helper.c
-> index 9ca32dcc82..acce650185 100644
-> --- a/target/rx/op_helper.c
-> +++ b/target/rx/op_helper.c
-> @@ -286,7 +286,7 @@ void helper_suntil(CPURXState *env, uint32_t sz)
->       uint32_t tmp;
->       tcg_debug_assert(sz < 3);
->       if (env->regs[3] == 0) {
-> -        return ;
-> +        return;
->       }
->       do {
->           tmp = cpu_ldufn[sz](env, env->regs[1], GETPC());
-> @@ -305,7 +305,7 @@ void helper_swhile(CPURXState *env, uint32_t sz)
->       uint32_t tmp;
->       tcg_debug_assert(sz < 3);
->       if (env->regs[3] == 0) {
-> -        return ;
-> +        return;
->       }
->       do {
->           tmp = cpu_ldufn[sz](env, env->regs[1], GETPC());
-> diff --git a/ui/vnc-jobs.c b/ui/vnc-jobs.c
-> index 4562bf8928..886f9bf611 100644
-> --- a/ui/vnc-jobs.c
-> +++ b/ui/vnc-jobs.c
-> @@ -373,7 +373,7 @@ void vnc_start_worker_thread(void)
->       VncJobQueue *q;
->   
->       if (vnc_worker_thread_running())
-> -        return ;
-> +        return;
->   
->       q = vnc_queue_init();
->       qemu_thread_create(&q->thread, "vnc_worker", vnc_worker_thread, q,
-> diff --git a/ui/vnc.c b/ui/vnc.c
-> index acb3629cd8..88f55cbf3c 100644
-> --- a/ui/vnc.c
-> +++ b/ui/vnc.c
-> @@ -3085,7 +3085,7 @@ static void vnc_rect_updated(VncDisplay *vd, int x, int y, struct timeval * tv)
->   
->       rect = vnc_stat_rect(vd, x, y);
->       if (rect->updated) {
-> -        return ;
-> +        return;
->       }
->       rect->times[rect->idx] = *tv;
->       rect->idx = (rect->idx + 1) % ARRAY_SIZE(rect->times);
+>  target/arm/ptw.c | 71 ++++++++++++++++++++++++++++++++++++------------
+>  1 file changed, 54 insertions(+), 17 deletions(-)
+>
+> diff --git a/target/arm/ptw.c b/target/arm/ptw.c
+> index 004375e02b..161b7922e3 100644
+> --- a/target/arm/ptw.c
+> +++ b/target/arm/ptw.c
+> @@ -17,6 +17,7 @@
+>=20=20
+>  typedef struct S1Translate {
+>      ARMMMUIdx in_mmu_idx;
+> +    ARMMMUIdx in_ptw_idx;
 
-Applied to my trivial-patches branch.
+I could use a comment here to explain the difference between mmu and ptr
+indexes here because...
 
-Thanks,
-Laurent
+<snip>
+> @@ -2527,10 +2536,32 @@ static bool get_phys_addr_with_struct(CPUARMState=
+ *env, S1Translate *ptw,
+>                                        ARMMMUFaultInfo *fi)
+>  {
+>      ARMMMUIdx mmu_idx =3D ptw->in_mmu_idx;
+> -    ARMMMUIdx s1_mmu_idx =3D stage_1_mmu_idx(mmu_idx);
+>      bool is_secure =3D ptw->in_secure;
+> +    ARMMMUIdx s1_mmu_idx;
+>=20=20
+> -    if (mmu_idx !=3D s1_mmu_idx) {
+> +    switch (mmu_idx) {
+> +    case ARMMMUIdx_Phys_S:
+> +    case ARMMMUIdx_Phys_NS:
+> +        /* Checking Phys early avoids special casing later vs regime_el.=
+ */
+> +        return get_phys_addr_disabled(env, address, access_type, mmu_idx,
+> +                                      is_secure, result, fi);
+> +
+> +    case ARMMMUIdx_Stage1_E0:
+> +    case ARMMMUIdx_Stage1_E1:
+> +    case ARMMMUIdx_Stage1_E1_PAN:
+> +        /* First stage lookup uses second stage for ptw. */
+> +        ptw->in_ptw_idx =3D is_secure ? ARMMMUIdx_Stage2_S : ARMMMUIdx_S=
+tage2;
+> +        break;
+> +
+> +    case ARMMMUIdx_E10_0:
+> +        s1_mmu_idx =3D ARMMMUIdx_Stage1_E0;
+> +        goto do_twostage;
+> +    case ARMMMUIdx_E10_1:
+> +        s1_mmu_idx =3D ARMMMUIdx_Stage1_E1;
+> +        goto do_twostage;
+> +    case ARMMMUIdx_E10_1_PAN:
+> +        s1_mmu_idx =3D ARMMMUIdx_Stage1_E1_PAN;
+> +    do_twostage:
+>          /*
+>           * Call ourselves recursively to do the stage 1 and then stage 2
+>           * translations if mmu_idx is a two-stage regime, and EL2 presen=
+t.
+> @@ -2541,6 +2572,12 @@ static bool get_phys_addr_with_struct(CPUARMState =
+*env, S1Translate *ptw,
+>              return get_phys_addr_twostage(env, ptw, address, access_type,
+>                                            result, fi);
+>          }
+> +        /* fall through */
 
+following this I got confused as to what might be overwritten or
+ignored. I assume for v8-A (ARM_FEATURE_EL2) we won't be falling through
+anyway?
+
+Anyway I think I understand it now:
+
+Reviewed-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
+Tested-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
+
+
+> +
+> +    default:
+> +        /* Single stage and second stage uses physical for ptw. */
+> +        ptw->in_ptw_idx =3D is_secure ? ARMMMUIdx_Phys_S : ARMMMUIdx_Phy=
+s_NS;
+> +        break;
+>      }
+>=20=20
+>      /*
+
+
+--=20
+Alex Benn=C3=A9e

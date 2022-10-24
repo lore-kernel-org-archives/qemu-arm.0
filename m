@@ -1,301 +1,143 @@
-Received: by 2002:a17:906:43c7:b0:78d:9f02:16a1 with SMTP id j7csp3181586ejn;
-        Mon, 24 Oct 2022 03:28:10 -0700 (PDT)
-X-Google-Smtp-Source: AMsMyM5Tr5VZpyzH8OrjHqTXG3xNVnC8Qma6TWICYNHUN5noqPM1itc/jn701mbZtYE3mqXrpgYK
-X-Received: by 2002:a37:9641:0:b0:6e1:cfe3:7f22 with SMTP id y62-20020a379641000000b006e1cfe37f22mr22517031qkd.25.1666607290011;
-        Mon, 24 Oct 2022 03:28:10 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1666607290; cv=none;
+Received: by 2002:a17:906:43c7:b0:78d:9f02:16a1 with SMTP id j7csp3239868ejn;
+        Mon, 24 Oct 2022 05:05:10 -0700 (PDT)
+X-Google-Smtp-Source: AMsMyM6U7lhAIGTPfgTERlRZKcPFutfDdPZrH10AnFYTWFBr/GNwQ8GWQHcX/GnpTZTNWoZywWiY
+X-Received: by 2002:a05:622a:290:b0:39b:d1cc:6c90 with SMTP id z16-20020a05622a029000b0039bd1cc6c90mr26779363qtw.512.1666613110647;
+        Mon, 24 Oct 2022 05:05:10 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1666613110; cv=none;
         d=google.com; s=arc-20160816;
-        b=DY0KNLyZLZS5Qyp09TP1bsKn64R8U1W1zaM6YMMQUmKKYHLMXYQPg2OwmMS4WZZx8S
-         pQVjz83DoA0SrLqHRzdnXDUTo66r/9/mwbZcQPDU9z8HpQfPetSU0DY0PxdpEhGh6Hlj
-         hg757FFJ/7xIuJ/BFKZc2Ek9r9kESHi0pUftPxHF+oKIRq9d/Fy4qoglLqGQgHCpRos6
-         i15R9IZpwGps06AjhWH1nA2qRbbG1DYSjZW81TfRpxDTcGwwdtUAnId7F0510+5yigtZ
-         UYeJClwLADfK/3dSlWPB3qER8JRqRVsn3UW8Yf/WgHVA/5WY89GYb+A7dFlS/QfU6OKj
-         z1FA==
+        b=bHHbvSAoDXCFp/qMKW8f4xBeaa62ob/VAwzgq++vPperDz3E8zciFnHIZQJMsX6JAC
+         O0PULIApLzIUbEcxLXDAvDL7OB8ITJ5cASp4a9ZhC0te9kRyMtRR2nC66sOXBWmMIh6p
+         4Qc7+UplhUC0TALWEyXzQxlEv/XIhGle6ZwO7B3EVXmsgQYxQIJ3az/HpB3ycK6/nxbJ
+         JrDeIl+4WWQiZ/f/p1PJfcwnkxDyYNC8g/K2MA3GPh9AJofXE4e3WbVGHUQbGvGwO5of
+         o5wT0zSWJcV++tkwyuk9lFogbH3rcC9998LpbwLVDMZxgRbE/x+rPoPHtwvtCyYiCp0i
+         21YA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=errors-to:sender:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:feedback-id
-         :content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from;
-        bh=ALhLyMgDS2xQgoQ/bxdI0b050k29Ciz2juqZJ7JyYFM=;
-        b=MCMHgeCS4zBLy4geFGnQ2VZP2eWsYeJpdXlIRG6A2azPwG/8viB6ApqBozpQTocYyw
-         VOLtiggmwMihtF8GJdP3tcygc0iF7NnVkz4QFTZoHIGs4YEExxQPGVW2g54TmpRJWufe
-         O5cU6NGeRxOU7+Q+lmP3HPRBd4HS0xqpfnSV889gRsa9VAFuqzOJp+v2WY5l2FEJTqrY
-         a0ond0gmsHPIwCw4IKQlaEYsq3FMsWpmYrHW2SHfknJQ3rza85mG8jTa0Bu7KbrUCGQu
-         hwWQWVdUGsYoJTbgwsomz5FCoCdWljXFNOtnBWcUr+0ayQflXTPMnmT3Vev2bVVFdDvx
-         EPqQ==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:references:cc:to:content-language:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=Sa4TjcSOfYG09omt4EDadCpwUIzFavZpnJ1UBNIkmC0=;
+        b=km8l31GBVuuv4ZlAJD7Oblo2rdhyEmLyc89wDNPWWZ3Frck5C0Kn0cl+yv9pgonC+D
+         Qx7b5qaLpAQdbSDNQmYHywfm0IclHDlaj8zpWxwD4ZDhXcUyZVx6TOnNSV/DT7SN55sy
+         PC6a94Pq656zPuxztiagiNAbXqHZ9LiZaAomeeM2ZPt+i2NGi4576LWDG69Q8LJXLEn1
+         ebRnGmQcTyLIu+QcrXmTmnSq/4CVNFqbFTqfAkYmMogNmprCBZko8cd/6Rw9gMLaB1Wt
+         1O+kD1h8tm+oZH+IjUuBH/Txb81p/18pYm5uuWbXfkY0Pi3ElfPH4HhdGZ+I6UVnp8I/
+         HeEw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@linaro.org header.s=google header.b=FETtA3Bu;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id ke3-20020a056214300300b004a95cdf750bsi3121660qvb.355.2022.10.24.03.28.09
+        by mx.google.com with ESMTPS id e29-20020ac8011d000000b0039cd5948648si17136894qtg.610.2022.10.24.05.05.10
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 24 Oct 2022 03:28:10 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 24 Oct 2022 05:05:10 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@linaro.org header.s=google header.b=FETtA3Bu;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1omtRr-0007nj-GC; Mon, 24 Oct 2022 05:08:43 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1omw0o-000872-Mx; Mon, 24 Oct 2022 07:52:58 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <bmeng@tinylab.org>)
- id 1omrtg-0007Lj-L8; Mon, 24 Oct 2022 03:29:24 -0400
-Received: from bg4.exmail.qq.com ([43.155.65.254])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <bmeng@tinylab.org>)
- id 1omrtc-0003PW-Bq; Mon, 24 Oct 2022 03:29:20 -0400
-X-QQ-mid: bizesmtp74t1666596488tdnds4lz
-Received: from pek-vx-bsp2.wrs.com ( [60.247.85.88])
- by bizesmtp.qq.com (ESMTP) with 
- id ; Mon, 24 Oct 2022 15:28:06 +0800 (CST)
-X-QQ-SSF: 01200000000000103000000A0000000
-X-QQ-FEAT: 7jw2iSiCazp9ia2sp4s8/XglSjZ59qFOB91BAFXtQ2dGdA9sLiljTVFHH1UOM
- fER6DgMUzku3xWyJoK/8Lg9YTro+cKHW8fywMXR/MvY/42zSi8T8ig9j1iNMgKy8MPwCweN
- ytBVaTWq6sWznBHh1HkEpDmJbs6SDEvuLJS2jStjELosnc3B61BvS639Z9ScT1E0ssnAS3E
- Tyc0gsCB0ctObReFY1KdM1GmncXaENyABl4o2RaicOmIrj/o30zklbsxmod84tth4up9Sp7
- QVihjUB5Isc45Z0t6Q5k0fQq1SHip4VaRDrn9YLuEW7Fsi8Nm6vD/0KFJCP8DPXw36Dt1Xb
- bOdqrRiRly4+ShZDKvjDGZqvYlIE8pnb/etLOZw
-X-QQ-GoodBg: 0
-From: Bin Meng <bmeng@tinylab.org>
-To: qemu-devel@nongnu.org,
-	qemu-trivial@nongnu.org
-Cc: Alistair Francis <alistair.francis@wdc.com>,
- Bin Meng <bin.meng@windriver.com>,
- Christian Schoenebeck <qemu_oss@crudebyte.com>,
- Gerd Hoffmann <kraxel@redhat.com>, Greg Kurz <groug@kaod.org>,
- Jason Wang <jasowang@redhat.com>, Magnus Damm <magnus.damm@gmail.com>,
- "Michael S. Tsirkin" <mst@redhat.com>, Palmer Dabbelt <palmer@dabbelt.com>,
- Pavel Pisa <pisa@cmp.felk.cvut.cz>,
- Peter Maydell <peter.maydell@linaro.org>,
- Vikram Garhwal <fnu.vikram@xilinx.com>,
- Yoshinori Sato <ysato@users.sourceforge.jp>, qemu-arm@nongnu.org,
- qemu-riscv@nongnu.org
-Subject: [PATCH] treewide: Remove the unnecessary space before semicolon
-Date: Mon, 24 Oct 2022 15:28:02 +0800
-Message-Id: <20221024072802.457832-1-bmeng@tinylab.org>
-X-Mailer: git-send-email 2.25.1
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1omw0h-00081S-7w
+ for qemu-devel@nongnu.org; Mon, 24 Oct 2022 07:52:54 -0400
+Received: from mail-wm1-x333.google.com ([2a00:1450:4864:20::333])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1omw0Z-0006tr-C0
+ for qemu-devel@nongnu.org; Mon, 24 Oct 2022 07:52:47 -0400
+Received: by mail-wm1-x333.google.com with SMTP id l32so6414832wms.2
+ for <qemu-devel@nongnu.org>; Mon, 24 Oct 2022 04:52:41 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=Sa4TjcSOfYG09omt4EDadCpwUIzFavZpnJ1UBNIkmC0=;
+ b=FETtA3BuVoNUsyOAjAhhxlTzSbx0omyl401DaB2gkcKLdor9/p5B6MpjHFcK4Uf1u/
+ U7FVGQJ1TdTe59TMEW9aPHPsdLg1vFS2Cfq7DjAaWY+zzOhi/oswWG90rDxpwiNVw/uB
+ pCqGyrrazKRzpJDSEWH4mFVrHZNv76f73fI5odtVGDQqamiWfZ4Q299rVWG32PxUcLTR
+ qU+CcIt+T6F7KAv26pk1ELPRfTYA0ZeRden7aEX8xQaY1H0r48NLASaSjNN0ggfp3zOi
+ NnKorgGpYAeeJKvAgoVWGFxk2s01aqNC74lbhYymFFzIAyVFtRQ/yTOxiKf4WT+Idx4B
+ SCOQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=Sa4TjcSOfYG09omt4EDadCpwUIzFavZpnJ1UBNIkmC0=;
+ b=6/mdvw6wI4iIkUg45eK7UgqT/oIYQi2fexfScUC1VQoLE2y4oJi83/Rhwe7LgGFscA
+ voBUosgJg6VJFmFXnSGU+es12bdgLDWstv8XPe1nhm8Xz9B/83HpR2Gstn1Di708NJj4
+ 5cLDfE/3SPp5OcOrIr3+2fjMl6BATRMs3izMVrNXGZbz0ag/5KuNHU84FlaQaMUtzELH
+ OzP5tGrOG8hRwjAzcw3EhAwCQlU7Of2Q+aK6LY0qP9ac5Cb3jqwY67V6uSW0Yp6fE4+R
+ SN3QDnhmvoATcn1iL/MFM2YVw7bS7C/AEvVLTGqn/ybwQbOqy8uVMNRIktFwHro2sDd+
+ hHLA==
+X-Gm-Message-State: ACrzQf23QTCvVAc1ryJUsMQhoymONlBQyKRypDW5ZIfceDYUhPGXw5L/
+ cjlqd4gE3HZ1GEEwhMP2Iul1pg==
+X-Received: by 2002:a05:600c:474a:b0:3c6:ff98:624c with SMTP id
+ w10-20020a05600c474a00b003c6ff98624cmr21746235wmo.26.1666612360805; 
+ Mon, 24 Oct 2022 04:52:40 -0700 (PDT)
+Received: from [10.50.0.10]
+ (ec2-54-194-108-71.eu-west-1.compute.amazonaws.com. [54.194.108.71])
+ by smtp.gmail.com with ESMTPSA id
+ f186-20020a1c38c3000000b003c6d21a19a0sm10402639wma.29.2022.10.24.04.52.39
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 24 Oct 2022 04:52:40 -0700 (PDT)
+Message-ID: <a023cb61-c020-bee9-123a-d8cd44292a63@linaro.org>
+Date: Mon, 24 Oct 2022 13:52:38 +0200
 MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
+ Gecko/20100101 Thunderbird/102.3.2
+Subject: Re: [PATCH v6 09/14] target/arm: Don't shift attrs in
+ get_phys_addr_lpae
+Content-Language: en-US
+To: Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>
+References: <20221024051851.3074715-1-richard.henderson@linaro.org>
+ <20221024051851.3074715-10-richard.henderson@linaro.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
+In-Reply-To: <20221024051851.3074715-10-richard.henderson@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-QQ-SENDSIZE: 520
-Feedback-ID: bizesmtp:tinylab.org:qybglogicsvr:qybglogicsvr3
-Received-SPF: pass client-ip=43.155.65.254; envelope-from=bmeng@tinylab.org;
- helo=bg4.exmail.qq.com
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_MSPIKE_H2=-0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Received-SPF: pass client-ip=2a00:1450:4864:20::333;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x333.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Mon, 24 Oct 2022 05:08:39 -0400
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Sender: "Qemu-arm" <qemu-arm-bounces@nongnu.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 3gYHXVGz9GRY
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Sender: "Qemu-devel" <qemu-devel-bounces@nongnu.org>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: l3Evlbo8WUdg
 
-%s/return ;/return;
+On 24/10/22 07:18, Richard Henderson wrote:
+> Leave the upper and lower attributes in the place they originate
+> from in the descriptor.  Shifting them around is confusing, since
+> one cannot read the bit numbers out of the manual.  Also, new
+> attributes have been added which would alter the shifts.
+> 
+> Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+> ---
+>   target/arm/ptw.c | 31 +++++++++++++++----------------
+>   1 file changed, 15 insertions(+), 16 deletions(-)
 
-Signed-off-by: Bin Meng <bmeng@tinylab.org>
----
-
- include/hw/elf_ops.h         | 2 +-
- hw/9pfs/9p.c                 | 2 +-
- hw/dma/pl330.c               | 2 +-
- hw/net/can/can_sja1000.c     | 2 +-
- hw/timer/renesas_cmt.c       | 2 +-
- hw/timer/renesas_tmr.c       | 8 ++++----
- hw/virtio/virtio-pci.c       | 2 +-
- target/riscv/vector_helper.c | 2 +-
- target/rx/op_helper.c        | 4 ++--
- ui/vnc-jobs.c                | 2 +-
- ui/vnc.c                     | 2 +-
- 11 files changed, 15 insertions(+), 15 deletions(-)
-
-diff --git a/include/hw/elf_ops.h b/include/hw/elf_ops.h
-index 7c3b1d0f6c..fbe0b1e956 100644
---- a/include/hw/elf_ops.h
-+++ b/include/hw/elf_ops.h
-@@ -117,7 +117,7 @@ static void glue(load_symbols, SZ)(struct elfhdr *ehdr, int fd, int must_swab,
-     shdr_table = load_at(fd, ehdr->e_shoff,
-                          sizeof(struct elf_shdr) * ehdr->e_shnum);
-     if (!shdr_table) {
--        return ;
-+        return;
-     }
- 
-     if (must_swab) {
-diff --git a/hw/9pfs/9p.c b/hw/9pfs/9p.c
-index aebadeaa03..76c591a01b 100644
---- a/hw/9pfs/9p.c
-+++ b/hw/9pfs/9p.c
-@@ -1786,7 +1786,7 @@ static void coroutine_fn v9fs_walk(void *opaque)
-     err = pdu_unmarshal(pdu, offset, "ddw", &fid, &newfid, &nwnames);
-     if (err < 0) {
-         pdu_complete(pdu, err);
--        return ;
-+        return;
-     }
-     offset += err;
- 
-diff --git a/hw/dma/pl330.c b/hw/dma/pl330.c
-index 08e5938ec7..e5d521c329 100644
---- a/hw/dma/pl330.c
-+++ b/hw/dma/pl330.c
-@@ -1328,7 +1328,7 @@ static void pl330_debug_exec(PL330State *s)
-     }
-     if (!insn) {
-         pl330_fault(ch, PL330_FAULT_UNDEF_INSTR | PL330_FAULT_DBG_INSTR);
--        return ;
-+        return;
-     }
-     ch->stall = 0;
-     insn->exec(ch, opcode, args, insn->size - 1);
-diff --git a/hw/net/can/can_sja1000.c b/hw/net/can/can_sja1000.c
-index e0f76d3eb3..73201f9139 100644
---- a/hw/net/can/can_sja1000.c
-+++ b/hw/net/can/can_sja1000.c
-@@ -431,7 +431,7 @@ void can_sja_mem_write(CanSJA1000State *s, hwaddr addr, uint64_t val,
-             (unsigned long long)val, (unsigned int)addr);
- 
-     if (addr > CAN_SJA_MEM_SIZE) {
--        return ;
-+        return;
-     }
- 
-     if (s->clock & 0x80) { /* PeliCAN Mode */
-diff --git a/hw/timer/renesas_cmt.c b/hw/timer/renesas_cmt.c
-index 2e0fd21a36..69eabc678a 100644
---- a/hw/timer/renesas_cmt.c
-+++ b/hw/timer/renesas_cmt.c
-@@ -57,7 +57,7 @@ static void update_events(RCMTState *cmt, int ch)
- 
-     if ((cmt->cmstr & (1 << ch)) == 0) {
-         /* count disable, so not happened next event. */
--        return ;
-+        return;
-     }
-     next_time = cmt->cmcor[ch] - cmt->cmcnt[ch];
-     next_time *= NANOSECONDS_PER_SECOND;
-diff --git a/hw/timer/renesas_tmr.c b/hw/timer/renesas_tmr.c
-index d96002e1ee..c15f654738 100644
---- a/hw/timer/renesas_tmr.c
-+++ b/hw/timer/renesas_tmr.c
-@@ -67,18 +67,18 @@ static void update_events(RTMRState *tmr, int ch)
-     int i, event;
- 
-     if (tmr->tccr[ch] == 0) {
--        return ;
-+        return;
-     }
-     if (FIELD_EX8(tmr->tccr[ch], TCCR, CSS) == 0) {
-         /* external clock mode */
-         /* event not happened */
--        return ;
-+        return;
-     }
-     if (FIELD_EX8(tmr->tccr[0], TCCR, CSS) == CSS_CASCADING) {
-         /* cascading mode */
-         if (ch == 1) {
-             tmr->next[ch] = none;
--            return ;
-+            return;
-         }
-         diff[cmia] = concat_reg(tmr->tcora) - concat_reg(tmr->tcnt);
-         diff[cmib] = concat_reg(tmr->tcorb) - concat_reg(tmr->tcnt);
-@@ -384,7 +384,7 @@ static void timer_events(RTMRState *tmr, int ch)
-                                     tmr->tcorb[ch]) & 0xff;
-     } else {
-         if (ch == 1) {
--            return ;
-+            return;
-         }
-         tcnt = issue_event(tmr, ch, 16,
-                            concat_reg(tmr->tcnt),
-diff --git a/hw/virtio/virtio-pci.c b/hw/virtio/virtio-pci.c
-index e7d80242b7..34db51e241 100644
---- a/hw/virtio/virtio-pci.c
-+++ b/hw/virtio/virtio-pci.c
-@@ -1675,7 +1675,7 @@ static void virtio_pci_device_plugged(DeviceState *d, Error **errp)
-         if (virtio_host_has_feature(vdev, VIRTIO_F_IOMMU_PLATFORM)) {
-             error_setg(errp, "VIRTIO_F_IOMMU_PLATFORM was supported by"
-                        " neither legacy nor transitional device");
--            return ;
-+            return;
-         }
-         /*
-          * Legacy and transitional devices use specific subsystem IDs.
-diff --git a/target/riscv/vector_helper.c b/target/riscv/vector_helper.c
-index b94f809eb3..0020b9a95d 100644
---- a/target/riscv/vector_helper.c
-+++ b/target/riscv/vector_helper.c
-@@ -211,7 +211,7 @@ static void vext_set_elems_1s(void *base, uint32_t is_agnostic, uint32_t cnt,
-         return;
-     }
-     if (tot - cnt == 0) {
--        return ;
-+        return;
-     }
-     memset(base + cnt, -1, tot - cnt);
- }
-diff --git a/target/rx/op_helper.c b/target/rx/op_helper.c
-index 9ca32dcc82..acce650185 100644
---- a/target/rx/op_helper.c
-+++ b/target/rx/op_helper.c
-@@ -286,7 +286,7 @@ void helper_suntil(CPURXState *env, uint32_t sz)
-     uint32_t tmp;
-     tcg_debug_assert(sz < 3);
-     if (env->regs[3] == 0) {
--        return ;
-+        return;
-     }
-     do {
-         tmp = cpu_ldufn[sz](env, env->regs[1], GETPC());
-@@ -305,7 +305,7 @@ void helper_swhile(CPURXState *env, uint32_t sz)
-     uint32_t tmp;
-     tcg_debug_assert(sz < 3);
-     if (env->regs[3] == 0) {
--        return ;
-+        return;
-     }
-     do {
-         tmp = cpu_ldufn[sz](env, env->regs[1], GETPC());
-diff --git a/ui/vnc-jobs.c b/ui/vnc-jobs.c
-index 4562bf8928..886f9bf611 100644
---- a/ui/vnc-jobs.c
-+++ b/ui/vnc-jobs.c
-@@ -373,7 +373,7 @@ void vnc_start_worker_thread(void)
-     VncJobQueue *q;
- 
-     if (vnc_worker_thread_running())
--        return ;
-+        return;
- 
-     q = vnc_queue_init();
-     qemu_thread_create(&q->thread, "vnc_worker", vnc_worker_thread, q,
-diff --git a/ui/vnc.c b/ui/vnc.c
-index acb3629cd8..88f55cbf3c 100644
---- a/ui/vnc.c
-+++ b/ui/vnc.c
-@@ -3085,7 +3085,7 @@ static void vnc_rect_updated(VncDisplay *vd, int x, int y, struct timeval * tv)
- 
-     rect = vnc_stat_rect(vd, x, y);
-     if (rect->updated) {
--        return ;
-+        return;
-     }
-     rect->times[rect->idx] = *tv;
-     rect->idx = (rect->idx + 1) % ARRAY_SIZE(rect->times);
--- 
-2.25.1
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 

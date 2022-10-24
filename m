@@ -1,105 +1,108 @@
-Received: by 2002:a17:906:43c7:b0:78d:9f02:16a1 with SMTP id j7csp3061790ejn;
-        Sun, 23 Oct 2022 23:10:22 -0700 (PDT)
-X-Google-Smtp-Source: AMsMyM6hhJjqUmkUvrjwxFGRxHZF7JAS3+MIThf531NN+COqyl4dM0yN+cJi2YRLfWMWNWMB+Ko+
-X-Received: by 2002:ac8:5ec9:0:b0:39c:f5a3:2fec with SMTP id s9-20020ac85ec9000000b0039cf5a32fecmr26960087qtx.86.1666591822535;
-        Sun, 23 Oct 2022 23:10:22 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1666591822; cv=none;
+Received: by 2002:a17:906:43c7:b0:78d:9f02:16a1 with SMTP id j7csp3064333ejn;
+        Sun, 23 Oct 2022 23:14:34 -0700 (PDT)
+X-Google-Smtp-Source: AMsMyM6iuizuM776WxRTDuQItbscUcxNe3hanyMjLoB+9oI+1Caxh/BYimv+C1ILRlIOuzgt61GT
+X-Received: by 2002:ad4:5dee:0:b0:4b4:b8a:78db with SMTP id jn14-20020ad45dee000000b004b40b8a78dbmr26545707qvb.12.1666592074573;
+        Sun, 23 Oct 2022 23:14:34 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1666592074; cv=none;
         d=google.com; s=arc-20160816;
-        b=QBJGfJ8efcilCm++dJZXdQl+Qh8ugrquU3IIu+9LHRs8LLm8J7Cp3MHK1HrMPL6bWd
-         ozXiTQ1MBtRRyi6Di2AVkfTpNvckNwIdwjBbBuk6n2+kqOr60jllKjfC4BTzje7XRqPn
-         7Frq81kSDwzklIrvUubAK9AiNgEf+i3db+luE0YHpiTs5kaLpcLEwIzcBObKKEgfZ3Zu
-         1O2RhwLi4lt4+kl8AZG4ZFrI88GkpZl6aVNjwKUSHI+NCR+Vf7cqfqwCSTT1kCOLPwEV
-         Ksu+Id+YWz9lUkv/+QKUc3sS++B2krhfK7HFb0tZt1AVGE4tykUZf99p2aL2cuOJgwc/
-         3sBg==
+        b=cD/KCNWeWH59FQ40aFmY81V4nthjYs5W7JHs0uiBOGA032y+B1yKQj1G+prfdvIaW4
+         YJWTibv7fVUgiMXXjfMs70FZDUV5vO1Xf50pTYSBykbXWVQ1HE0LT6Y2zTdCcifh9GJB
+         u9HzMUTS9+cicqeVqFD7CGb0InRkjjHHSkLn/B+CStwYVKHWOEazfkT9KgDqRWzhJ3cE
+         ZJgAhU7zRn96hLLKyWrmJqQop2V2qVRm1Z0H0lB3rZJQQ2ydA7ljy6fvJfSwi2BHTTcw
+         P3Vzou2e4guE3Ec+kArDDj0YMNYhBqU/cZXh9HwN0+dDbwWYdgL2+JI4bz2AEcbMiuMe
+         0aoA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=errors-to:sender:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=1vmy8B3i0MTxOCpkYy56RCPt7fyDU4i6hN7JG5wlZ40=;
-        b=KzkjDcZq/EJcP9rOcjAtL+DMjacUQSQ6jr2iwFhZB5KtGPnBCN/4nw4ovW+KE9zeJh
-         isNY5vtp4Dbw1J5waHxLhbeyssDHDG71xNZSkPzEqN9S3Mg4gyNekXZKXc9aXGvS0ifw
-         N7RtI9c9iNfqWkb5cPd98plju68tB+gynDk+PRtwyyFSpQ7UQkVLYTZO++MX9a9pRzSS
-         4Ie/Y6Rn3LWZTHq9wrDsVMq6MGw1K4y0z4zPQ+f2gapwPmdb/VYOOvbU68eISdDEg+Px
-         w32BT9X1jtbmSH0F9SpyJh0WBQiLFQc0nwHoK07aoZAZ8q7+JZYsx0SB8KgHxzl8+CBc
-         WzHA==
+        bh=IWw+aq7JNeHsl9fq/os7SQInlY545GVW3QOnHQy7rg0=;
+        b=NYwmKz5Bar/jnM3qnQ/5qjGm4Bctya15eLsoLQldOESsEYokIg+4xUpYAPOUAm5/Xm
+         AMIyNYyLvCLNaTaRjp/rFZLvlvvhRjuC1ZbspsY/DWApp6N7xbpiqyqxZiAYIE6Qz0K9
+         eJdQgipasWVGI1+WxQUxMMqqDEoAvFgtwTiLgBEwx8QL2KDJVlgdnQNvzyD5wPrRKlBj
+         ffk0VurOwHwCYX3u14rEvibXrhsXE+GwdXu8INfSkBM6JsSbfWssDISvKWqlCYxg2QgP
+         U1jYRVhXYV5qJUCAcUO+THQBS3COSw4UldIkkoqHgdZMWvSlHfZs1qUyY2U5hAk2tjcE
+         dktA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=TQcBUOk9;
+       dkim=pass header.i=@linaro.org header.s=google header.b=zClpVoaH;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id j6-20020a05621419c600b004bb591ab1besi4726940qvc.389.2022.10.23.23.10.22
+        by mx.google.com with ESMTPS id l26-20020ac84a9a000000b0039cd62203d6si15523413qtq.595.2022.10.23.23.14.34
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 23 Oct 2022 23:10:22 -0700 (PDT)
+        Sun, 23 Oct 2022 23:14:34 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=TQcBUOk9;
+       dkim=pass header.i=@linaro.org header.s=google header.b=zClpVoaH;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1ompt8-0007oM-60; Mon, 24 Oct 2022 01:20:40 -0400
+	id 1ompsv-0007ZI-42; Mon, 24 Oct 2022 01:20:25 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1ompsC-0006sl-MH
- for qemu-devel@nongnu.org; Mon, 24 Oct 2022 01:19:43 -0400
-Received: from mail-pf1-x429.google.com ([2607:f8b0:4864:20::429])
+ id 1omps9-0006rR-Lh
+ for qemu-devel@nongnu.org; Mon, 24 Oct 2022 01:19:39 -0400
+Received: from mail-pf1-x430.google.com ([2607:f8b0:4864:20::430])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1omps8-0002Pi-88
- for qemu-devel@nongnu.org; Mon, 24 Oct 2022 01:19:39 -0400
-Received: by mail-pf1-x429.google.com with SMTP id d10so8111298pfh.6
- for <qemu-devel@nongnu.org>; Sun, 23 Oct 2022 22:19:30 -0700 (PDT)
+ id 1omps8-0002PU-0w
+ for qemu-devel@nongnu.org; Mon, 24 Oct 2022 01:19:37 -0400
+Received: by mail-pf1-x430.google.com with SMTP id m6so8169008pfb.0
+ for <qemu-devel@nongnu.org>; Sun, 23 Oct 2022 22:19:27 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=1vmy8B3i0MTxOCpkYy56RCPt7fyDU4i6hN7JG5wlZ40=;
- b=TQcBUOk9NqlJ7uQE83Nm72JBJnkRXJgWvEKOxP+7DzXAv/RDKjztBHKdCyOWqajPQk
- HPk0nSxxZZH4u1spYhPkPo3zFlgFdfFSijMauzxI37HsESMto6sQbkDaFsfLHbpAjhM4
- EhruGI4BP1ZTD/4LVq90YD0kwamp+M1K6oJQnKJFU7fMEwothaCsrLbppgIkQZjrPF/b
- im73e90DvhwPbxUlMidXMwdJ5p2s8hj8/wZEYb3/BdbOtQS5UDZAmxtFVKhlC26b8+Ur
- Gi+lxHe7WEl4TED+NDDLdVriZJbr+UmWQhVXd5wmXcSb4bpFm5//zutaRucZjI47WXUw
- bZMA==
+ bh=IWw+aq7JNeHsl9fq/os7SQInlY545GVW3QOnHQy7rg0=;
+ b=zClpVoaHHqvDQGxHaG61TifYrcxiBqg/7hR7bhQ6rq57WCCFDvjg6nyP05HOvD0r9r
+ Tvd8jNuMd0v7C6H1CegQnSO+bqlls2w+m5ZTMWBaTb2rtikAh3RdO64jB8BNGJrSQgj8
+ fJw7Zd4B/sX3Xhuzv0gyTjH/NqHLO81iuBRGuy+eJxiGIPnfaC6XWv4eb+v74B3zWtEF
+ kfqbwf+/l1PbY6Puv4LDCs/W6kTu1U5C9/Xs0cAXYEDe4ttyEUml+NrQMHDXxYEd4Dxy
+ CzyFAbC/b8lDWOqz+vrCM5SNAE3HjxF5WlUvAcVi7izmsrTX/XHjQ5QT+p58STF1EcWo
+ 72WQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=1vmy8B3i0MTxOCpkYy56RCPt7fyDU4i6hN7JG5wlZ40=;
- b=QGmU+kZU6ByPD+oaXZtF+ZljwP+ithsxbVq72ziN7xCeoU1eSqbhBLatOCOc+mT6U7
- bCuX+Wr0NbS2BlE1DkyAKRRK1+XfMFP+NYsGfJ9O9pSvGMIeR9s2fGevzGGBkDYnRtKI
- nwdUnDcgeNZ9WVlL0eyUS+DG5d/0SKNe4tb0TQk1et3sWxtu2LtM1Qwm2ljveTkPx+CA
- VxKhvL6Zk22tBXV4O26U3t7yMW3s24iEX30BaulJ+u5RgAOYYpjxyIsowIUmURHnObYX
- AWB1pOucwjtV/U43MC6ga4N/KbrYrpxeAa5/FdDjZ2xqZhwhV5eouZ7T5fjtlABd4pga
- 6M/A==
-X-Gm-Message-State: ACrzQf1pMm5x8bzJX83Pn8pkvlSc8ddBbZq94VtgCSt4DADCRXtu3s7Y
- 4s11AyLwDdr4kFttsaj/anPNQhbFa2WLtVcE
-X-Received: by 2002:a05:6a00:851:b0:563:6c6a:2b7b with SMTP id
- q17-20020a056a00085100b005636c6a2b7bmr31696144pfk.45.1666588768905; 
- Sun, 23 Oct 2022 22:19:28 -0700 (PDT)
+ bh=IWw+aq7JNeHsl9fq/os7SQInlY545GVW3QOnHQy7rg0=;
+ b=7KBeMQH7AV8/HEAi8d9UN3dGAkVBu5hR42kWzFFM17Fd5shh9X368cenqt7XSR8r+b
+ /PKRflaWnSoQZ8LydznQWFgtVo3qPHVLgBu0i0unRPJ97QG+OD6EAy/EDdaLbdy/qXtd
+ yOBMm8Dx5oaZjm55sDFsW97sMv3I77WfZ0wMw6WU2J6jsvQRAKbgN9ZDiTvisp/jBe5h
+ pcduO+Zue7PsLA+QVTQMSGmOgNH5TRuZH3hHmW6DH//eqF+7kznOIP/C5ynIZgp8Gd0H
+ W5p6NA5WwiTerpIp/M1Czpvx+tnOr+OXMKb+b3uJJW+X3fyYhTX2lp+PNE8N10ie+Kfj
+ gyPA==
+X-Gm-Message-State: ACrzQf2aqc/I4idO31awAP9vEbXqxqUYZ6qF1Qe8f0lww6gilejYfefe
+ iL1saIPBFP+CUsJDVpdk7WYmyLz7uMxI3ll/
+X-Received: by 2002:a05:6a02:282:b0:439:7a97:ccd with SMTP id
+ bk2-20020a056a02028200b004397a970ccdmr27308494pgb.297.1666588766214; 
+ Sun, 23 Oct 2022 22:19:26 -0700 (PDT)
 Received: from stoup.. ([103.100.225.182]) by smtp.gmail.com with ESMTPSA id
- q12-20020a170902f34c00b00172951ddb12sm1895231ple.42.2022.10.23.22.19.26
+ q12-20020a170902f34c00b00172951ddb12sm1895231ple.42.2022.10.23.22.19.23
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 23 Oct 2022 22:19:28 -0700 (PDT)
+ Sun, 23 Oct 2022 22:19:25 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org
-Subject: [PATCH v6 11/14] target/arm: Tidy merging of attributes from
- descriptor and table
-Date: Mon, 24 Oct 2022 15:18:48 +1000
-Message-Id: <20221024051851.3074715-12-richard.henderson@linaro.org>
+Cc: qemu-arm@nongnu.org,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Peter Maydell <peter.maydell@linaro.org>
+Subject: [PATCH v6 10/14] target/arm: Consider GP an attribute in
+ get_phys_addr_lpae
+Date: Mon, 24 Oct 2022 15:18:47 +1000
+Message-Id: <20221024051851.3074715-11-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20221024051851.3074715-1-richard.henderson@linaro.org>
 References: <20221024051851.3074715-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::429;
- envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x429.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::430;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x430.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -121,63 +124,57 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Sender: "Qemu-devel" <qemu-devel-bounces@nongnu.org>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: hyQZqjFSP803
+X-TUID: RJkH7L64oS5n
 
-Replace some gotos with some nested if statements.
+Both GP and DBM are in the upper attribute block.
+Extend the computation of attrs to include them,
+then simplify the setting of guarded.
 
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/ptw.c | 34 ++++++++++++++++------------------
- 1 file changed, 16 insertions(+), 18 deletions(-)
+ target/arm/ptw.c | 6 ++----
+ 1 file changed, 2 insertions(+), 4 deletions(-)
 
 diff --git a/target/arm/ptw.c b/target/arm/ptw.c
-index 8004ca86df..282828992e 100644
+index cc7751218c..8004ca86df 100644
 --- a/target/arm/ptw.c
 +++ b/target/arm/ptw.c
-@@ -1341,27 +1341,25 @@ static bool get_phys_addr_lpae(CPUARMState *env, S1Translate *ptw,
-     page_size = (1ULL << ((stride * (4 - level)) + 3));
+@@ -1077,7 +1077,6 @@ static bool get_phys_addr_lpae(CPUARMState *env, S1Translate *ptw,
+     uint32_t el = regime_el(env, mmu_idx);
+     uint64_t descaddrmask;
+     bool aarch64 = arm_el_is_aa64(env, el);
+-    bool guarded = false;
+     uint64_t descriptor;
+     bool nstable;
+ 
+@@ -1343,7 +1342,7 @@ static bool get_phys_addr_lpae(CPUARMState *env, S1Translate *ptw,
      descaddr &= ~(hwaddr)(page_size - 1);
      descaddr |= (address & (page_size - 1));
--    /* Extract attributes from the descriptor */
--    attrs = descriptor & (MAKE_64BIT_MASK(2, 10) | MAKE_64BIT_MASK(50, 14));
- 
--    if (regime_is_stage2(mmu_idx)) {
--        /* Stage 2 table descriptors do not include any attribute fields */
--        goto skip_attrs;
--    }
--    /* Merge in attributes from table descriptors */
--    attrs |= nstable << 5; /* NS */
--    if (param.hpd) {
--        /* HPD disables all the table attributes except NSTable.  */
--        goto skip_attrs;
--    }
--    attrs |= extract64(tableattrs, 0, 2) << 53;     /* XN, PXN */
-     /*
--     * The sense of AP[1] vs APTable[0] is reversed, as APTable[0] == 1
--     * means "force PL1 access only", which means forcing AP[1] to 0.
-+     * Extract attributes from the descriptor, and apply table descriptors.
-+     * Stage 2 table descriptors do not include any attribute fields.
-+     * HPD disables all the table attributes except NSTable.
-      */
--    attrs &= ~(extract64(tableattrs, 2, 1) << 6);   /* !APT[0] => AP[1] */
--    attrs |= extract32(tableattrs, 3, 1) << 7;      /* APT[1] => AP[2] */
-- skip_attrs:
+     /* Extract attributes from the descriptor */
+-    attrs = descriptor & (MAKE_64BIT_MASK(2, 10) | MAKE_64BIT_MASK(52, 12));
 +    attrs = descriptor & (MAKE_64BIT_MASK(2, 10) | MAKE_64BIT_MASK(50, 14));
-+    if (!regime_is_stage2(mmu_idx)) {
-+        attrs |= nstable << 5; /* NS */
-+        if (!param.hpd) {
-+            attrs |= extract64(tableattrs, 0, 2) << 53;     /* XN, PXN */
-+            /*
-+             * The sense of AP[1] vs APTable[0] is reversed, as APTable[0] == 1
-+             * means "force PL1 access only", which means forcing AP[1] to 0.
-+             */
-+            attrs &= ~(extract64(tableattrs, 2, 1) << 6); /* !APT[0] => AP[1] */
-+            attrs |= extract32(tableattrs, 3, 1) << 7;    /* APT[1] => AP[2] */
-+        }
-+    }
  
-     /*
-      * Here descaddr is the final physical address, and attributes
+     if (regime_is_stage2(mmu_idx)) {
+         /* Stage 2 table descriptors do not include any attribute fields */
+@@ -1351,7 +1350,6 @@ static bool get_phys_addr_lpae(CPUARMState *env, S1Translate *ptw,
+     }
+     /* Merge in attributes from table descriptors */
+     attrs |= nstable << 5; /* NS */
+-    guarded = extract64(descriptor, 50, 1);  /* GP */
+     if (param.hpd) {
+         /* HPD disables all the table attributes except NSTable.  */
+         goto skip_attrs;
+@@ -1404,7 +1402,7 @@ static bool get_phys_addr_lpae(CPUARMState *env, S1Translate *ptw,
+ 
+     /* When in aarch64 mode, and BTI is enabled, remember GP in the TLB.  */
+     if (aarch64 && cpu_isar_feature(aa64_bti, cpu)) {
+-        result->f.guarded = guarded;
++        result->f.guarded = extract64(attrs, 50, 1); /* GP */
+     }
+ 
+     if (regime_is_stage2(mmu_idx)) {
 -- 
 2.34.1
 

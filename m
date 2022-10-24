@@ -1,232 +1,158 @@
-Received: by 2002:a17:906:43c7:b0:78d:9f02:16a1 with SMTP id j7csp3034159ejn;
-        Sun, 23 Oct 2022 22:19:00 -0700 (PDT)
-X-Received: by 2002:a17:902:ccc4:b0:17c:7cc1:a401 with SMTP id z4-20020a170902ccc400b0017c7cc1a401mr32248752ple.58.1666588740744;
-        Sun, 23 Oct 2022 22:19:00 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1666588740; cv=none;
+Received: by 2002:a17:906:43c7:b0:78d:9f02:16a1 with SMTP id j7csp3035464ejn;
+        Sun, 23 Oct 2022 22:20:35 -0700 (PDT)
+X-Google-Smtp-Source: AMsMyM7xVNeQmp6XuEjBpq3zutzoTMkAkNSYcis6aGPceBzYHnyoUqMUPtJfaSzcq18XSSAK2Zu/
+X-Received: by 2002:ad4:5be7:0:b0:4b3:fe6c:904b with SMTP id k7-20020ad45be7000000b004b3fe6c904bmr26831225qvc.42.1666588835500;
+        Sun, 23 Oct 2022 22:20:35 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1666588835; cv=none;
         d=google.com; s=arc-20160816;
-        b=Za+sRhBS5I5wyycdEwnN+AuHYgih4Mi61WkjTGWIsyDMQ9OHO68uyasSMSQhFGR+9H
-         UeGtGRO2Y1E+M9dJluOkPMNl+nsAy3U2Mr2orEPYmnptpkGQ6Q67bVlIcK8mpuvBEkWe
-         la8rMCyWdZQD808rZCi22fDlJsj+N7RLvGwVnDoWCatb7fA0OSopIqT8zalfCj01VZkk
-         dAlO4PSWCFzB1Fwk7Q4fK3ICbOeJnFGB56cGtLZWWd1sFpJBvwzpmPw/GrUlClvhImbo
-         eOpZFzPqbey1A/P2MtdEQAfluE0o+8tNkzSoWYaViRv8BX2dZ8jSH+OvncLjKOztaOa9
-         IZLQ==
+        b=OFLvNdtMPSVujwI0wWqEXJOChwtaQfzdfRuSpEqOHKg9MDs2gyJxzvAh6AJLTdrB7V
+         27AmIc0ic3wu+/C9Hec5JWNmUTrEVmmMTEyp01AycjbDPlewfqFulWz9KA6S5qXes0hK
+         4Ew19zeS2nKV6le4W62nYDFzf8M0tl2b8tfOFMPp6Mw65do60unwT182lQzGlNTwMjni
+         GOu8DgYWJ+U1ttHzqJMSym4PNHzmtXmxE94Yh0TiD4hwoUaFdeQ1Ae7aHWvqEwVzdGEK
+         VyE09gqHFpl/klGInEW18MrknGyotU4Bl+vXjDjlg3mSIgewdtTjexhQG78mgnOYZcR4
+         Vz6g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=dRBUuDv4xO4FSH5BCO5y+i5Lk2hVQIRJPv1ndVT7mQw=;
-        b=ngL8fMwXySJEWYPm+mAVoSD/HCgotVuio0mObVz2mlx1aPo9MIghDbF67c+RTZNSo0
-         X+8InwuZzxPy98V8CkQLPTyIAD1Ym52lazUlNlTRLKO6nMg1zgAG658KwZ9m1p1eppqy
-         eMcP0xc/wyCmQK3X8Ba4T5ZspfNhBVil0qX1WrtVCYoNlZjFcvAqYUQWUMdpCVSd8hQz
-         37lpmeuOGcjeQOzmuCpNxr0cuUGUzJNQAIQlqopy4G6cmhtP/Voyxk+x+Q8GJRC7jPOX
-         cTbdpFl3sHlcMqF6H/ZfNopCJuNKAMcTL4S9IKJzlxpeFQSmGv4aZq28huyCtKNMYdXP
-         cI9w==
+        h=errors-to:sender:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=xwpoipf+qBrSAl33zLnSt6wN4K7EGIfNiIUVkyXEfCo=;
+        b=lpl2SAIwq4Qnhpbh8oFDIDDBEOkUEldAmFf0dzmG+393UnPt+tqR8tkcE17BIlBrUE
+         OoavWp/+k5Gb6dnrNZAQptVRYgsF2ECC+QgAp7eEJ7PYyYGPfuvQa3GelDB9sIr+BWD8
+         W8mhefP9cNsiu+lbo1aCd4AnxI8Ifet8HHjSYLvk/F41/xrQIVZ99XvnSiINa7RVpgKY
+         c2Ed7bUTJX/pf/ZhizjSOGlPHzKTvbS2na7b5ayF8pOB3zCWUmGoQhYXGy0Xic+j+Dxp
+         +G3V8JojbmeLriUSBuE0dAoPdRJs97Epdf1tv7wZZe2Em5ViSqyDuin9aaSlY2PYyHBb
+         5Y5A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=lIfskUFu;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=dbfi46uB;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <richard.henderson@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id jh1-20020a170903328100b00170a651b3b1sor4004395plb.104.2022.10.23.22.19.00
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id p11-20020a05621421eb00b004b3dd79cc94si16100626qvj.532.2022.10.23.22.20.35
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Sun, 23 Oct 2022 22:19:00 -0700 (PDT)
-Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Sun, 23 Oct 2022 22:20:35 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=lIfskUFu;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=dbfi46uB;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=dRBUuDv4xO4FSH5BCO5y+i5Lk2hVQIRJPv1ndVT7mQw=;
-        b=lIfskUFuwd74y9mbyGyHFZpm1q3VWFHOfhC1cpd4hArkgXfbGbmQrVzPZe+5HM0WKz
-         o7dxp/AlWoODR5DgSxjeCffz5VAQ/yIdLq4WrWYEf/1i/9qcwBvQQGJY79LGy6epz5/S
-         dwugOjQB9aQBWmAlSwPuK6nnA0hDO651Oh00/kcBxRcTknHydTgJIjIDtywcqOdBqCcu
-         QcS1qDUdhmXfrrv9a+j4zIUMOYNYOHZhBQRklLdw3F9/uLiLTzX8QyyOI+IhO3K2SK7q
-         2rffRDsP47Hny1SHrCslMFx+TSAiHCHdTGSx9U+/3JYj2zp0aiLITR4lwa6Wb8nlCymc
-         tW7g==
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1ompsC-0006pU-QK; Mon, 24 Oct 2022 01:19:43 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1ompri-0006ZF-Uy
+ for qemu-arm@nongnu.org; Mon, 24 Oct 2022 01:19:20 -0400
+Received: from mail-pg1-x52d.google.com ([2607:f8b0:4864:20::52d])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1omprf-0002K9-1e
+ for qemu-arm@nongnu.org; Mon, 24 Oct 2022 01:19:10 -0400
+Received: by mail-pg1-x52d.google.com with SMTP id s196so7834765pgs.3
+ for <qemu-arm@nongnu.org>; Sun, 23 Oct 2022 22:19:06 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=xwpoipf+qBrSAl33zLnSt6wN4K7EGIfNiIUVkyXEfCo=;
+ b=dbfi46uB/7gS8ippsDDPhZaM5XIwv8C8/d1kVqkcpxlsE+qzNODqsqFISf9M8dQd+s
+ gasowfX0iZwEFaTpDb6QaV1bK9WYXptzqRX7PCmLll9kAF2nDqf/0olhEO7JW532l7zj
+ jOFEA0oLX8vkFj8kXvMRzKTTPDqylXx8zEUsLFZGR9tXFt+Zn0L4MTQ2yKiohXvsxjP9
+ BiEMs1t251nMEoDnbK5xD6MNyeNYSHvFsHabW/vTx56qPSOsdTZiZ0rEydj9B+r806Bs
+ vFu8Ic879Phb6qQDxcpVjj8cKyP1JJXuJwvbS04oihKB1lpfB+Kl/Ezg9aVHntz2+I8/
+ jyEA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=dRBUuDv4xO4FSH5BCO5y+i5Lk2hVQIRJPv1ndVT7mQw=;
-        b=lDn+DT/JptdBWtn3bfEumobqZU2QttSagp+rpYgpuZwsRAmkm7H06xWtVUV6ERuwxT
-         D84R3KmbqZXfqCNfBSj0x7txoahgO/c8AbOSy2h+hshaF9oDaCQWxZRoLdDr0H5BAJNP
-         rMc0tIGRpplx0T0rLkfIQFeaIOFd7mh4CK8N/lJZ5VBJl0BxeNcHPNUGHyLi7vxgc9vC
-         /5KN7PL5SrPx8lS8aeL0aHLDVPLKpaKiqg6QyvLYe8zMjWbeZmzTLlU6wQNOqUqW8ESZ
-         zbse2H5hq1dOvAU0kUxpk20eZmmsH+x0ZxVCXnJf85K/ZKJEdvvSR9GXrtgncFrC1pcG
-         J0Vw==
-X-Gm-Message-State: ACrzQf1sFrhIRnHrbOc+FdoEVzp63CyrWj2pRmTz6CaqYHUyl+aFEipT
-	9ZQyXlTIbVtrUdOByyk+88axAmQu
-X-Google-Smtp-Source: AMsMyM7v62G1m/XdrJ2uStaGY5VMXNtIV1NwLiF27IEsM2BucKwUXJCUwDuiR+x0BMC6Ggexr+Z5tg==
-X-Received: by 2002:a17:902:e952:b0:17c:2eee:c0ce with SMTP id b18-20020a170902e95200b0017c2eeec0cemr31633689pll.145.1666588740221;
-        Sun, 23 Oct 2022 22:19:00 -0700 (PDT)
-Return-Path: <richard.henderson@linaro.org>
-Received: from stoup.. ([103.100.225.182])
-        by smtp.gmail.com with ESMTPSA id q12-20020a170902f34c00b00172951ddb12sm1895231ple.42.2022.10.23.22.18.57
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 23 Oct 2022 22:18:59 -0700 (PDT)
+ d=1e100.net; s=20210112;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=xwpoipf+qBrSAl33zLnSt6wN4K7EGIfNiIUVkyXEfCo=;
+ b=Jc0N2Rnge/ZzypAGaDIF46n8RyIHxCUj9pQFp1mJ3RmO5hSXifh2H65daqOKq1MSCZ
+ Acm1CKT54qHcU5RpgUg7YfIk60boN+P/z0xb4JqPGqHpm9mCLqsRGVZi0cBfVt56rf/v
+ d0BNO5p/aySrzsDbB6Y2baw4rcR3azVKufG/o3driV1t4YoAwUaMarbmfn8v7C9WyT4m
+ pfswqEyogPLol/syGM0GnzvFesGA+9Na0x7VWJ+aRTDe/RaXkhlAlwh/bURyrNkbqaEp
+ M9ZBwwzSYn6EMWShNrTrpA59KZZHFPBJr1hlrF6srUO2uiruHheMufOBnID/UgyDzQRY
+ O/3g==
+X-Gm-Message-State: ACrzQf2MxAda4CyrQDgNugv5SGXj+4GYoJHqq0R7xQwaTFOuTJ+bBQtZ
+ 7kqoTYrM6m3fHFhM2thbPBRbzQ==
+X-Received: by 2002:a63:54b:0:b0:464:8e6:11e7 with SMTP id
+ 72-20020a63054b000000b0046408e611e7mr27325447pgf.212.1666588745685; 
+ Sun, 23 Oct 2022 22:19:05 -0700 (PDT)
+Received: from stoup.. ([103.100.225.182]) by smtp.gmail.com with ESMTPSA id
+ q12-20020a170902f34c00b00172951ddb12sm1895231ple.42.2022.10.23.22.19.03
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sun, 23 Oct 2022 22:19:05 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH v6 01/14] target/arm: Introduce regime_is_stage2
-Date: Mon, 24 Oct 2022 15:18:38 +1000
-Message-Id: <20221024051851.3074715-2-richard.henderson@linaro.org>
+	Peter Maydell <peter.maydell@linaro.org>
+Subject: [PATCH v6 03/14] target/arm: Add isar predicates for FEAT_HAFDBS
+Date: Mon, 24 Oct 2022 15:18:40 +1000
+Message-Id: <20221024051851.3074715-4-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20221024051851.3074715-1-richard.henderson@linaro.org>
 References: <20221024051851.3074715-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: XaqbqbDqBt76
+Received-SPF: pass client-ip=2607:f8b0:4864:20::52d;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pg1-x52d.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Sender: "Qemu-arm" <qemu-arm-bounces@nongnu.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: rDk+KZKYLXY9
 
-Reduce the amount of typing required for this check.
+The MMFR1 field may indicate support for hardware update of
+access flag alone, or access flag and dirty bit.
 
-Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/internals.h |  5 +++++
- target/arm/helper.c    | 14 +++++---------
- target/arm/ptw.c       | 14 ++++++--------
- 3 files changed, 16 insertions(+), 17 deletions(-)
+ target/arm/cpu.h | 10 ++++++++++
+ 1 file changed, 10 insertions(+)
 
-diff --git a/target/arm/internals.h b/target/arm/internals.h
-index c3c3920ded..2b6889073d 100644
---- a/target/arm/internals.h
-+++ b/target/arm/internals.h
-@@ -673,6 +673,11 @@ static inline bool regime_is_pan(CPUARMState *env, ARMMMUIdx mmu_idx)
-     }
+diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+index 64fc03214c..0eeb4abe53 100644
+--- a/target/arm/cpu.h
++++ b/target/arm/cpu.h
+@@ -4139,6 +4139,16 @@ static inline bool isar_feature_aa64_lva(const ARMISARegisters *id)
+     return FIELD_EX64(id->id_aa64mmfr2, ID_AA64MMFR2, VARANGE) != 0;
  }
  
-+static inline bool regime_is_stage2(ARMMMUIdx mmu_idx)
++static inline bool isar_feature_aa64_hafs(const ARMISARegisters *id)
 +{
-+    return mmu_idx == ARMMMUIdx_Stage2 || mmu_idx == ARMMMUIdx_Stage2_S;
++    return FIELD_EX64(id->id_aa64mmfr1, ID_AA64MMFR1, HAFDBS) != 0;
 +}
 +
- /* Return the exception level which controls this address translation regime */
- static inline uint32_t regime_el(CPUARMState *env, ARMMMUIdx mmu_idx)
++static inline bool isar_feature_aa64_hdbs(const ARMISARegisters *id)
++{
++    return FIELD_EX64(id->id_aa64mmfr1, ID_AA64MMFR1, HAFDBS) >= 2;
++}
++
+ static inline bool isar_feature_aa64_tts2uxn(const ARMISARegisters *id)
  {
-diff --git a/target/arm/helper.c b/target/arm/helper.c
-index c672903f43..cbfaabbc09 100644
---- a/target/arm/helper.c
-+++ b/target/arm/helper.c
-@@ -10352,7 +10352,7 @@ int aa64_va_parameter_tbi(uint64_t tcr, ARMMMUIdx mmu_idx)
- {
-     if (regime_has_2_ranges(mmu_idx)) {
-         return extract64(tcr, 37, 2);
--    } else if (mmu_idx == ARMMMUIdx_Stage2 || mmu_idx == ARMMMUIdx_Stage2_S) {
-+    } else if (regime_is_stage2(mmu_idx)) {
-         return 0; /* VTCR_EL2 */
-     } else {
-         /* Replicate the single TBI bit so we always have 2 bits.  */
-@@ -10364,7 +10364,7 @@ int aa64_va_parameter_tbid(uint64_t tcr, ARMMMUIdx mmu_idx)
- {
-     if (regime_has_2_ranges(mmu_idx)) {
-         return extract64(tcr, 51, 2);
--    } else if (mmu_idx == ARMMMUIdx_Stage2 || mmu_idx == ARMMMUIdx_Stage2_S) {
-+    } else if (regime_is_stage2(mmu_idx)) {
-         return 0; /* VTCR_EL2 */
-     } else {
-         /* Replicate the single TBID bit so we always have 2 bits.  */
-@@ -10474,7 +10474,7 @@ ARMVAParameters aa64_va_parameters(CPUARMState *env, uint64_t va,
-     int select, tsz, tbi, max_tsz, min_tsz, ps, sh;
-     ARMGranuleSize gran;
-     ARMCPU *cpu = env_archcpu(env);
--    bool stage2 = mmu_idx == ARMMMUIdx_Stage2 || mmu_idx == ARMMMUIdx_Stage2_S;
-+    bool stage2 = regime_is_stage2(mmu_idx);
- 
-     if (!regime_has_2_ranges(mmu_idx)) {
-         select = 0;
-@@ -10532,22 +10532,18 @@ ARMVAParameters aa64_va_parameters(CPUARMState *env, uint64_t va,
-         }
-         ds = false;
-     } else if (ds) {
--        switch (mmu_idx) {
--        case ARMMMUIdx_Stage2:
--        case ARMMMUIdx_Stage2_S:
-+        if (regime_is_stage2(mmu_idx)) {
-             if (gran == Gran16K) {
-                 ds = cpu_isar_feature(aa64_tgran16_2_lpa2, cpu);
-             } else {
-                 ds = cpu_isar_feature(aa64_tgran4_2_lpa2, cpu);
-             }
--            break;
--        default:
-+        } else {
-             if (gran == Gran16K) {
-                 ds = cpu_isar_feature(aa64_tgran16_lpa2, cpu);
-             } else {
-                 ds = cpu_isar_feature(aa64_tgran4_lpa2, cpu);
-             }
--            break;
-         }
-         if (ds) {
-             min_tsz = 12;
-diff --git a/target/arm/ptw.c b/target/arm/ptw.c
-index 6c5ed56a10..004375e02b 100644
---- a/target/arm/ptw.c
-+++ b/target/arm/ptw.c
-@@ -842,8 +842,7 @@ static int get_S1prot(CPUARMState *env, ARMMMUIdx mmu_idx, bool is_aa64,
-     bool have_wxn;
-     int wxn = 0;
- 
--    assert(mmu_idx != ARMMMUIdx_Stage2);
--    assert(mmu_idx != ARMMMUIdx_Stage2_S);
-+    assert(!regime_is_stage2(mmu_idx));
- 
-     user_rw = simple_ap_to_rw_prot_is_user(ap, true);
-     if (is_user) {
-@@ -1171,7 +1170,7 @@ static bool get_phys_addr_lpae(CPUARMState *env, S1Translate *ptw,
-         goto do_fault;
-     }
- 
--    if (mmu_idx != ARMMMUIdx_Stage2 && mmu_idx != ARMMMUIdx_Stage2_S) {
-+    if (!regime_is_stage2(mmu_idx)) {
-         /*
-          * The starting level depends on the virtual address size (which can
-          * be up to 48 bits) and the translation granule size. It indicates
-@@ -1342,7 +1341,7 @@ static bool get_phys_addr_lpae(CPUARMState *env, S1Translate *ptw,
-         attrs = extract64(descriptor, 2, 10)
-             | (extract64(descriptor, 52, 12) << 10);
- 
--        if (mmu_idx == ARMMMUIdx_Stage2 || mmu_idx == ARMMMUIdx_Stage2_S) {
-+        if (regime_is_stage2(mmu_idx)) {
-             /* Stage 2 table descriptors do not include any attribute fields */
-             break;
-         }
-@@ -1374,7 +1373,7 @@ static bool get_phys_addr_lpae(CPUARMState *env, S1Translate *ptw,
- 
-     ap = extract32(attrs, 4, 2);
- 
--    if (mmu_idx == ARMMMUIdx_Stage2 || mmu_idx == ARMMMUIdx_Stage2_S) {
-+    if (regime_is_stage2(mmu_idx)) {
-         ns = mmu_idx == ARMMMUIdx_Stage2;
-         xn = extract32(attrs, 11, 2);
-         result->f.prot = get_S2prot(env, ap, xn, s1_is_el0);
-@@ -1404,7 +1403,7 @@ static bool get_phys_addr_lpae(CPUARMState *env, S1Translate *ptw,
-         result->f.guarded = guarded;
-     }
- 
--    if (mmu_idx == ARMMMUIdx_Stage2 || mmu_idx == ARMMMUIdx_Stage2_S) {
-+    if (regime_is_stage2(mmu_idx)) {
-         result->cacheattrs.is_s2_format = true;
-         result->cacheattrs.attrs = extract32(attrs, 0, 4);
-     } else {
-@@ -1435,8 +1434,7 @@ do_fault:
-     fi->type = fault_type;
-     fi->level = level;
-     /* Tag the error as S2 for failed S1 PTW at S2 or ordinary S2.  */
--    fi->stage2 = fi->s1ptw || (mmu_idx == ARMMMUIdx_Stage2 ||
--                               mmu_idx == ARMMMUIdx_Stage2_S);
-+    fi->stage2 = fi->s1ptw || regime_is_stage2(mmu_idx);
-     fi->s1ns = mmu_idx == ARMMMUIdx_Stage2;
-     return true;
- }
+     return FIELD_EX64(id->id_aa64mmfr1, ID_AA64MMFR1, XNX) != 0;
 -- 
 2.34.1
+

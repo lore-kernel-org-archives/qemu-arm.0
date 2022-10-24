@@ -1,114 +1,94 @@
-Received: by 2002:a17:906:43c7:b0:78d:9f02:16a1 with SMTP id j7csp3179876ejn;
-        Mon, 24 Oct 2022 03:25:19 -0700 (PDT)
-X-Google-Smtp-Source: AMsMyM6yTHOfCIr3NzKnCxLxPp/fLagJVKzkrUnyoLdjQYJIlgsuGao461tbm1VwPvk6kj5UysGM
-X-Received: by 2002:a05:620a:458d:b0:6ee:e940:4a6a with SMTP id bp13-20020a05620a458d00b006eee9404a6amr22355200qkb.235.1666607119408;
-        Mon, 24 Oct 2022 03:25:19 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1666607119; cv=none;
+Received: by 2002:a17:906:43c7:b0:78d:9f02:16a1 with SMTP id j7csp3181586ejn;
+        Mon, 24 Oct 2022 03:28:10 -0700 (PDT)
+X-Google-Smtp-Source: AMsMyM5Tr5VZpyzH8OrjHqTXG3xNVnC8Qma6TWICYNHUN5noqPM1itc/jn701mbZtYE3mqXrpgYK
+X-Received: by 2002:a37:9641:0:b0:6e1:cfe3:7f22 with SMTP id y62-20020a379641000000b006e1cfe37f22mr22517031qkd.25.1666607290011;
+        Mon, 24 Oct 2022 03:28:10 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1666607290; cv=none;
         d=google.com; s=arc-20160816;
-        b=A7KlHw4q5TdUs+HkAp7U56hWCOZIIGWkSWLlEdtvk2OI7q4rzY82F0X93fJgENvDFz
-         7ZXaCRabsYGwdh0A7uzWWYXQwzKVOPvXE1RhXp2ESvPKofaKTe2vVY0yr7egwazXNG+c
-         WIQhY4RPSPqavqW7eMr0IyIYmM71yP/dqqW13ZCjS/0slEZofQJCfNEcn+fMCwSqB6o/
-         Spp2YxZc5ekUaOGjsqmuTwpGHKJLhv2dM06WvGFd8QbHCDffmR8KCgaeJbWsjj8TijBi
-         0PrERFWokaNrh76/TQGsQVVzaa9yWQ3U6H0iC8VUoFbf3EUuVCGWpzbxHvj3HGkyKsjq
-         tR3g==
+        b=DY0KNLyZLZS5Qyp09TP1bsKn64R8U1W1zaM6YMMQUmKKYHLMXYQPg2OwmMS4WZZx8S
+         pQVjz83DoA0SrLqHRzdnXDUTo66r/9/mwbZcQPDU9z8HpQfPetSU0DY0PxdpEhGh6Hlj
+         hg757FFJ/7xIuJ/BFKZc2Ek9r9kESHi0pUftPxHF+oKIRq9d/Fy4qoglLqGQgHCpRos6
+         i15R9IZpwGps06AjhWH1nA2qRbbG1DYSjZW81TfRpxDTcGwwdtUAnId7F0510+5yigtZ
+         UYeJClwLADfK/3dSlWPB3qER8JRqRVsn3UW8Yf/WgHVA/5WY89GYb+A7dFlS/QfU6OKj
+         z1FA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=errors-to:sender:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=8M9WmVJUvXKEvxToF1eUHXwfivIiyL/p6arcwPokscQ=;
-        b=ULeM/OL3J9qgtzNAdR/F0CdD08D1FioPh3J8+jj1gbb3CAQAzhXVAW5KennSOU0tBk
-         mOBJnap5ESViii9Zdow7YWnaYA2+j6y+JZV/MELg1CwYrU1Ntbi6W8FHAzBicoaAPpgn
-         +DUya/T2GxkOEsFrKPrgjgKHO2Xxt1G8IzqbV+Ok9boXrGdNkptfJ7apMuGJEvlyXC94
-         EQvxPOdfMkcFVPv1L2sVjChpaewdvgHrITsGTWJgP5k5wVyNUiGjO++1r8Eq4ppwD2O/
-         4PrwwzQXfF9OZ7lbeKYYrOCMbJUmbiV/medRwFOex0C8R20r8Qnv9OQjO3mDLMkqRzCl
-         haqQ==
+         :list-unsubscribe:list-id:precedence:feedback-id
+         :content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from;
+        bh=ALhLyMgDS2xQgoQ/bxdI0b050k29Ciz2juqZJ7JyYFM=;
+        b=MCMHgeCS4zBLy4geFGnQ2VZP2eWsYeJpdXlIRG6A2azPwG/8viB6ApqBozpQTocYyw
+         VOLtiggmwMihtF8GJdP3tcygc0iF7NnVkz4QFTZoHIGs4YEExxQPGVW2g54TmpRJWufe
+         O5cU6NGeRxOU7+Q+lmP3HPRBd4HS0xqpfnSV889gRsa9VAFuqzOJp+v2WY5l2FEJTqrY
+         a0ond0gmsHPIwCw4IKQlaEYsq3FMsWpmYrHW2SHfknJQ3rza85mG8jTa0Bu7KbrUCGQu
+         hwWQWVdUGsYoJTbgwsomz5FCoCdWljXFNOtnBWcUr+0ayQflXTPMnmT3Vev2bVVFdDvx
+         EPqQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=HmBXZVaH;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a28-20020a05620a439c00b006ef1a8de757si5835824qkp.91.2022.10.24.03.25.19
+        by mx.google.com with ESMTPS id ke3-20020a056214300300b004a95cdf750bsi3121660qvb.355.2022.10.24.03.28.09
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 24 Oct 2022 03:25:19 -0700 (PDT)
+        Mon, 24 Oct 2022 03:28:10 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=HmBXZVaH;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1omuXY-0006hR-P8; Mon, 24 Oct 2022 06:18:41 -0400
+	id 1omtRr-0007nj-GC; Mon, 24 Oct 2022 05:08:43 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1omuWx-0006MK-SG
- for qemu-arm@nongnu.org; Mon, 24 Oct 2022 06:18:09 -0400
-Received: from mail-pg1-x534.google.com ([2607:f8b0:4864:20::534])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1omuWt-0005Ke-Oq
- for qemu-arm@nongnu.org; Mon, 24 Oct 2022 06:18:03 -0400
-Received: by mail-pg1-x534.google.com with SMTP id f9so3905908pgj.2
- for <qemu-arm@nongnu.org>; Mon, 24 Oct 2022 03:17:58 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=8M9WmVJUvXKEvxToF1eUHXwfivIiyL/p6arcwPokscQ=;
- b=HmBXZVaH/gLPCmR3huEvCZWv2M3es8sT2jtuxS6sT9V7rVQ0SUTizHC0glPr0mKEU1
- CZnBK6lqs353Uz27ikOqRjcE2L+Px/66rLKudb6lLiLhDx7oEexznYc3RSGzAIk3b8uo
- UZza+QXBUSYJUG4mW5spNAn1+RzuKacbhun/1g7UFrvTOJwj2XCUC4m3ngjVLCz+P6F8
- UoRY87QVAl9yNE3kTvaYncerHDTJJFCcPILFfjwsoF/Prtdgn2xRdoDGymd33T4UC7CJ
- DrK4KhSDAgyPm1p/UbpAaahxJVB45YR9Mr6vqsOC5sGpBhi9wXyfGB9XxOj0u7UgqDsY
- 0wWQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=8M9WmVJUvXKEvxToF1eUHXwfivIiyL/p6arcwPokscQ=;
- b=yamxyDQWVlAOdVO3iRZ8EWjoIwaYnqqf6KL4GyCwnmHaFToQs7hZz+t9jrtJnPN4A2
- mPvFA7yUD/KtLC7X6pNcY7OIL/59699WOWUU36MJQNS9Qn4CbDTYPV0njZIGQNpQkdjJ
- +mSrHthPet/SWQRd/JovQcAFIcC44K2XmEdgCe70cOZAXYnP2ncWaAYHAOt8+32qbBKe
- xodYNUj1yB3whGchmIF6e2UEZL/FvbCOZRc0IdJ0irangT4B6lK+TRvVsiSleMa23Ei5
- a+4PPOMABa3ropeX8ZlxBcENBTJrJ3NF4c9/BOUds4a6YxUxOK+gjqaeMOb5/gGa2MkN
- 2P/Q==
-X-Gm-Message-State: ACrzQf0GjFgMFHgXvOz+D4Xfccawu8dO/KRkGWgFtsPWou3TXA4rue/7
- GX5CDzZT6/K9Z0r62TqcbDDsw+URgwWUwZ0lPOIf4A==
-X-Received: by 2002:a63:2212:0:b0:43b:f03d:856a with SMTP id
- i18-20020a632212000000b0043bf03d856amr27646498pgi.192.1666606677719; Mon, 24
- Oct 2022 03:17:57 -0700 (PDT)
-MIME-Version: 1.0
-References: <20221024072802.457832-1-bmeng@tinylab.org>
-In-Reply-To: <20221024072802.457832-1-bmeng@tinylab.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 24 Oct 2022 11:17:45 +0100
-Message-ID: <CAFEAcA_547EyiBQotG-E--Mb_t4XBCfxx5XsaTYAW8oe1Xm+wQ@mail.gmail.com>
-Subject: Re: [PATCH] treewide: Remove the unnecessary space before semicolon
-To: Bin Meng <bmeng@tinylab.org>
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, 
- Alistair Francis <alistair.francis@wdc.com>, Bin Meng <bin.meng@windriver.com>,
+ (Exim 4.90_1) (envelope-from <bmeng@tinylab.org>)
+ id 1omrtg-0007Lj-L8; Mon, 24 Oct 2022 03:29:24 -0400
+Received: from bg4.exmail.qq.com ([43.155.65.254])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <bmeng@tinylab.org>)
+ id 1omrtc-0003PW-Bq; Mon, 24 Oct 2022 03:29:20 -0400
+X-QQ-mid: bizesmtp74t1666596488tdnds4lz
+Received: from pek-vx-bsp2.wrs.com ( [60.247.85.88])
+ by bizesmtp.qq.com (ESMTP) with 
+ id ; Mon, 24 Oct 2022 15:28:06 +0800 (CST)
+X-QQ-SSF: 01200000000000103000000A0000000
+X-QQ-FEAT: 7jw2iSiCazp9ia2sp4s8/XglSjZ59qFOB91BAFXtQ2dGdA9sLiljTVFHH1UOM
+ fER6DgMUzku3xWyJoK/8Lg9YTro+cKHW8fywMXR/MvY/42zSi8T8ig9j1iNMgKy8MPwCweN
+ ytBVaTWq6sWznBHh1HkEpDmJbs6SDEvuLJS2jStjELosnc3B61BvS639Z9ScT1E0ssnAS3E
+ Tyc0gsCB0ctObReFY1KdM1GmncXaENyABl4o2RaicOmIrj/o30zklbsxmod84tth4up9Sp7
+ QVihjUB5Isc45Z0t6Q5k0fQq1SHip4VaRDrn9YLuEW7Fsi8Nm6vD/0KFJCP8DPXw36Dt1Xb
+ bOdqrRiRly4+ShZDKvjDGZqvYlIE8pnb/etLOZw
+X-QQ-GoodBg: 0
+From: Bin Meng <bmeng@tinylab.org>
+To: qemu-devel@nongnu.org,
+	qemu-trivial@nongnu.org
+Cc: Alistair Francis <alistair.francis@wdc.com>,
+ Bin Meng <bin.meng@windriver.com>,
  Christian Schoenebeck <qemu_oss@crudebyte.com>,
- Gerd Hoffmann <kraxel@redhat.com>, Greg Kurz <groug@kaod.org>, 
- Jason Wang <jasowang@redhat.com>, Magnus Damm <magnus.damm@gmail.com>, 
+ Gerd Hoffmann <kraxel@redhat.com>, Greg Kurz <groug@kaod.org>,
+ Jason Wang <jasowang@redhat.com>, Magnus Damm <magnus.damm@gmail.com>,
  "Michael S. Tsirkin" <mst@redhat.com>, Palmer Dabbelt <palmer@dabbelt.com>,
- Pavel Pisa <pisa@cmp.felk.cvut.cz>, 
+ Pavel Pisa <pisa@cmp.felk.cvut.cz>,
+ Peter Maydell <peter.maydell@linaro.org>,
  Vikram Garhwal <fnu.vikram@xilinx.com>,
- Yoshinori Sato <ysato@users.sourceforge.jp>, qemu-arm@nongnu.org, 
+ Yoshinori Sato <ysato@users.sourceforge.jp>, qemu-arm@nongnu.org,
  qemu-riscv@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::534;
- envelope-from=peter.maydell@linaro.org; helo=mail-pg1-x534.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+Subject: [PATCH] treewide: Remove the unnecessary space before semicolon
+Date: Mon, 24 Oct 2022 15:28:02 +0800
+Message-Id: <20221024072802.457832-1-bmeng@tinylab.org>
+X-Mailer: git-send-email 2.25.1
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+X-QQ-SENDSIZE: 520
+Feedback-ID: bizesmtp:tinylab.org:qybglogicsvr:qybglogicsvr3
+Received-SPF: pass client-ip=43.155.65.254; envelope-from=bmeng@tinylab.org;
+ helo=bg4.exmail.qq.com
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_MSPIKE_H2=-0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
+X-Mailman-Approved-At: Mon, 24 Oct 2022 05:08:39 -0400
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -122,17 +102,200 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Sender: "Qemu-arm" <qemu-arm-bounces@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: iCbs32+BhVQ8
+X-TUID: 3gYHXVGz9GRY
 
-On Mon, 24 Oct 2022 at 08:28, Bin Meng <bmeng@tinylab.org> wrote:
->
-> %s/return ;/return;
->
-> Signed-off-by: Bin Meng <bmeng@tinylab.org>
-> ---
+%s/return ;/return;
 
+Signed-off-by: Bin Meng <bmeng@tinylab.org>
+---
 
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+ include/hw/elf_ops.h         | 2 +-
+ hw/9pfs/9p.c                 | 2 +-
+ hw/dma/pl330.c               | 2 +-
+ hw/net/can/can_sja1000.c     | 2 +-
+ hw/timer/renesas_cmt.c       | 2 +-
+ hw/timer/renesas_tmr.c       | 8 ++++----
+ hw/virtio/virtio-pci.c       | 2 +-
+ target/riscv/vector_helper.c | 2 +-
+ target/rx/op_helper.c        | 4 ++--
+ ui/vnc-jobs.c                | 2 +-
+ ui/vnc.c                     | 2 +-
+ 11 files changed, 15 insertions(+), 15 deletions(-)
 
-thanks
--- PMM
+diff --git a/include/hw/elf_ops.h b/include/hw/elf_ops.h
+index 7c3b1d0f6c..fbe0b1e956 100644
+--- a/include/hw/elf_ops.h
++++ b/include/hw/elf_ops.h
+@@ -117,7 +117,7 @@ static void glue(load_symbols, SZ)(struct elfhdr *ehdr, int fd, int must_swab,
+     shdr_table = load_at(fd, ehdr->e_shoff,
+                          sizeof(struct elf_shdr) * ehdr->e_shnum);
+     if (!shdr_table) {
+-        return ;
++        return;
+     }
+ 
+     if (must_swab) {
+diff --git a/hw/9pfs/9p.c b/hw/9pfs/9p.c
+index aebadeaa03..76c591a01b 100644
+--- a/hw/9pfs/9p.c
++++ b/hw/9pfs/9p.c
+@@ -1786,7 +1786,7 @@ static void coroutine_fn v9fs_walk(void *opaque)
+     err = pdu_unmarshal(pdu, offset, "ddw", &fid, &newfid, &nwnames);
+     if (err < 0) {
+         pdu_complete(pdu, err);
+-        return ;
++        return;
+     }
+     offset += err;
+ 
+diff --git a/hw/dma/pl330.c b/hw/dma/pl330.c
+index 08e5938ec7..e5d521c329 100644
+--- a/hw/dma/pl330.c
++++ b/hw/dma/pl330.c
+@@ -1328,7 +1328,7 @@ static void pl330_debug_exec(PL330State *s)
+     }
+     if (!insn) {
+         pl330_fault(ch, PL330_FAULT_UNDEF_INSTR | PL330_FAULT_DBG_INSTR);
+-        return ;
++        return;
+     }
+     ch->stall = 0;
+     insn->exec(ch, opcode, args, insn->size - 1);
+diff --git a/hw/net/can/can_sja1000.c b/hw/net/can/can_sja1000.c
+index e0f76d3eb3..73201f9139 100644
+--- a/hw/net/can/can_sja1000.c
++++ b/hw/net/can/can_sja1000.c
+@@ -431,7 +431,7 @@ void can_sja_mem_write(CanSJA1000State *s, hwaddr addr, uint64_t val,
+             (unsigned long long)val, (unsigned int)addr);
+ 
+     if (addr > CAN_SJA_MEM_SIZE) {
+-        return ;
++        return;
+     }
+ 
+     if (s->clock & 0x80) { /* PeliCAN Mode */
+diff --git a/hw/timer/renesas_cmt.c b/hw/timer/renesas_cmt.c
+index 2e0fd21a36..69eabc678a 100644
+--- a/hw/timer/renesas_cmt.c
++++ b/hw/timer/renesas_cmt.c
+@@ -57,7 +57,7 @@ static void update_events(RCMTState *cmt, int ch)
+ 
+     if ((cmt->cmstr & (1 << ch)) == 0) {
+         /* count disable, so not happened next event. */
+-        return ;
++        return;
+     }
+     next_time = cmt->cmcor[ch] - cmt->cmcnt[ch];
+     next_time *= NANOSECONDS_PER_SECOND;
+diff --git a/hw/timer/renesas_tmr.c b/hw/timer/renesas_tmr.c
+index d96002e1ee..c15f654738 100644
+--- a/hw/timer/renesas_tmr.c
++++ b/hw/timer/renesas_tmr.c
+@@ -67,18 +67,18 @@ static void update_events(RTMRState *tmr, int ch)
+     int i, event;
+ 
+     if (tmr->tccr[ch] == 0) {
+-        return ;
++        return;
+     }
+     if (FIELD_EX8(tmr->tccr[ch], TCCR, CSS) == 0) {
+         /* external clock mode */
+         /* event not happened */
+-        return ;
++        return;
+     }
+     if (FIELD_EX8(tmr->tccr[0], TCCR, CSS) == CSS_CASCADING) {
+         /* cascading mode */
+         if (ch == 1) {
+             tmr->next[ch] = none;
+-            return ;
++            return;
+         }
+         diff[cmia] = concat_reg(tmr->tcora) - concat_reg(tmr->tcnt);
+         diff[cmib] = concat_reg(tmr->tcorb) - concat_reg(tmr->tcnt);
+@@ -384,7 +384,7 @@ static void timer_events(RTMRState *tmr, int ch)
+                                     tmr->tcorb[ch]) & 0xff;
+     } else {
+         if (ch == 1) {
+-            return ;
++            return;
+         }
+         tcnt = issue_event(tmr, ch, 16,
+                            concat_reg(tmr->tcnt),
+diff --git a/hw/virtio/virtio-pci.c b/hw/virtio/virtio-pci.c
+index e7d80242b7..34db51e241 100644
+--- a/hw/virtio/virtio-pci.c
++++ b/hw/virtio/virtio-pci.c
+@@ -1675,7 +1675,7 @@ static void virtio_pci_device_plugged(DeviceState *d, Error **errp)
+         if (virtio_host_has_feature(vdev, VIRTIO_F_IOMMU_PLATFORM)) {
+             error_setg(errp, "VIRTIO_F_IOMMU_PLATFORM was supported by"
+                        " neither legacy nor transitional device");
+-            return ;
++            return;
+         }
+         /*
+          * Legacy and transitional devices use specific subsystem IDs.
+diff --git a/target/riscv/vector_helper.c b/target/riscv/vector_helper.c
+index b94f809eb3..0020b9a95d 100644
+--- a/target/riscv/vector_helper.c
++++ b/target/riscv/vector_helper.c
+@@ -211,7 +211,7 @@ static void vext_set_elems_1s(void *base, uint32_t is_agnostic, uint32_t cnt,
+         return;
+     }
+     if (tot - cnt == 0) {
+-        return ;
++        return;
+     }
+     memset(base + cnt, -1, tot - cnt);
+ }
+diff --git a/target/rx/op_helper.c b/target/rx/op_helper.c
+index 9ca32dcc82..acce650185 100644
+--- a/target/rx/op_helper.c
++++ b/target/rx/op_helper.c
+@@ -286,7 +286,7 @@ void helper_suntil(CPURXState *env, uint32_t sz)
+     uint32_t tmp;
+     tcg_debug_assert(sz < 3);
+     if (env->regs[3] == 0) {
+-        return ;
++        return;
+     }
+     do {
+         tmp = cpu_ldufn[sz](env, env->regs[1], GETPC());
+@@ -305,7 +305,7 @@ void helper_swhile(CPURXState *env, uint32_t sz)
+     uint32_t tmp;
+     tcg_debug_assert(sz < 3);
+     if (env->regs[3] == 0) {
+-        return ;
++        return;
+     }
+     do {
+         tmp = cpu_ldufn[sz](env, env->regs[1], GETPC());
+diff --git a/ui/vnc-jobs.c b/ui/vnc-jobs.c
+index 4562bf8928..886f9bf611 100644
+--- a/ui/vnc-jobs.c
++++ b/ui/vnc-jobs.c
+@@ -373,7 +373,7 @@ void vnc_start_worker_thread(void)
+     VncJobQueue *q;
+ 
+     if (vnc_worker_thread_running())
+-        return ;
++        return;
+ 
+     q = vnc_queue_init();
+     qemu_thread_create(&q->thread, "vnc_worker", vnc_worker_thread, q,
+diff --git a/ui/vnc.c b/ui/vnc.c
+index acb3629cd8..88f55cbf3c 100644
+--- a/ui/vnc.c
++++ b/ui/vnc.c
+@@ -3085,7 +3085,7 @@ static void vnc_rect_updated(VncDisplay *vd, int x, int y, struct timeval * tv)
+ 
+     rect = vnc_stat_rect(vd, x, y);
+     if (rect->updated) {
+-        return ;
++        return;
+     }
+     rect->times[rect->idx] = *tv;
+     rect->idx = (rect->idx + 1) % ARRAY_SIZE(rect->times);
+-- 
+2.25.1
+

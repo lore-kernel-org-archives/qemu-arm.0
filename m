@@ -1,62 +1,62 @@
-Received: by 2002:a17:906:43c7:b0:78d:9f02:16a1 with SMTP id j7csp4197373ejn;
-        Tue, 25 Oct 2022 08:26:31 -0700 (PDT)
-X-Google-Smtp-Source: AMsMyM6/sBnbds2NjW0EM5jw9gZpo+OdjWveyLqYDDyhiD4p40Wc6JviuCFH2Iu3tLatnYq8YQw4
-X-Received: by 2002:a05:620a:288a:b0:6b8:fcfe:db02 with SMTP id j10-20020a05620a288a00b006b8fcfedb02mr28341045qkp.504.1666711591309;
-        Tue, 25 Oct 2022 08:26:31 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1666711591; cv=none;
+Received: by 2002:a17:906:43c7:b0:78d:9f02:16a1 with SMTP id j7csp4197390ejn;
+        Tue, 25 Oct 2022 08:26:32 -0700 (PDT)
+X-Google-Smtp-Source: AMsMyM5uDJCWw2usWcT2bPiLcVQzlgwtNx9Np8v3Ybm7SYlNan+fM/MQ5o3/rn+o7SQBcZvc2e3G
+X-Received: by 2002:a05:620a:24c1:b0:6ed:ae5d:1834 with SMTP id m1-20020a05620a24c100b006edae5d1834mr26183304qkn.137.1666711592238;
+        Tue, 25 Oct 2022 08:26:32 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1666711592; cv=none;
         d=google.com; s=arc-20160816;
-        b=HRjGt1PtvXdj9BIQmNGHHMD/M2tEsQreJzogP/ZPBTwQxufKA468RlSrQ6riSGGxNs
-         m+4eNl6nuFVtPy9lPpy/rRyBgntqH3QywavZLXkVFGjZkMshneffPbPBovvaGXMuHGSQ
-         3h3Ssisqt1+Et2C/9USWkx6oQPHnfLCaVtJeBskbzaNPlj25ET/pRzbtZoKOdUQMslfX
-         Armsz3rn9xDbN6V42oN8aDGARs1zl9PWDdKCqtztC9EQ5240k+y1mfvjWTShfrBCTCf1
-         KFLxTAsizGtqzHX2DBimew7NNI95UYOdAkaWHprNj8IlAzaC/B/kdefYGNmHtAI/h7YI
-         AQOA==
+        b=Si/5HmbfY/LRgA577M5TU12q0fvWQetYiAZJ+nA50IuCfH+4WBaO9L0tKbfjeOQ3Qj
+         Ca+UcKvn91TsjsbT9s6+RRppiIs9XoBRZerDRd6yARXW244hnqUlpJyapZnF5MMMV9jG
+         jSaSLuOVQTtrbpU+HAKr9K3yRzsDU8b88hfSso4WjhkAqTgqoJCBVz8VT3ECvu8dZFPH
+         qKAY1ajo6PAW1y0Rp1q80psnc7k8Ip4keJOueTkm2kkmmCMHhm9DEzFxnFxw/iG5lz2h
+         BX6/FJCPY51T/jHZCVsuV0IBqAxp2Rz3AoczOf2nLOYDR6Qbt07prtuq8BGfBaNGqRnp
+         osbg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=errors-to:sender:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from;
-        bh=EMyQDxZ72O/U9gnCYcjj1MjPv3XNRObZ1TLmzFyA2f0=;
-        b=MwkcKExPN6fk36JouZrv33Rq7csoTCwpBOtdoe7KN47ybOPOh/dG+pN9iViI1LCo9Y
-         F127HpiDaGUB0Rkv68eDWWArV3Kqxy88N4str0/19wmOE6yWUatzKPh01vlsixgaLe5j
-         Gr+SSceNDtwOb55DJCUd+i+q5RY2uNd0g0suVwPLzx4pZ+hkfxO83wds83+niJgL+5Wl
-         wty7+Qz74dP0jmbItKG/J68C074JFmj4xfkxR4G3UhE1ZVIky+vmtCd3DKTE9/0Nk4c+
-         P6KdOjK8h0PG5kaM1nxVD+FlKS6WATMdp54T8MzrONVraTYccy6QrZv93W7QW0MwYyq/
-         IVBg==
+        bh=LR/X2l9ETlP2w7h8RYppinKi3QrS+fDT9Gdtrc4jfAA=;
+        b=avNqsZOIlkXbchX4cNbgwtGK8cw0MI7PUSDER2/khzcU3OVDg/68/OF9VnfEXCq5QD
+         1kMvUYPwTMumxJTttAjxp7ewsYLXpfu8efqJ5aI0+du66J1SsgwmXsERxY1Pm91rOgA2
+         BkhiBU7Ceq36KqK2VeNv9p8/6c+xcPwGpuzSrE00SLBp7+yrPsNv3/LW4k4fUadRFLzo
+         CG+6MAyhufrS3x2xm49/D9Gza5Bxlx7/CFJGYabVF1OW9EFVFjIXYynlj2EvyBzudsj2
+         mY9KrxPrvoVkWPbV1EIWMXGLY3zDqGcX2YQGkia3qaDkYsuGK3Qc3YOVQpfc7p3Tymnr
+         HmBw==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id p11-20020a05621421eb00b004bb5ce188e4si1941146qvj.479.2022.10.25.08.26.30
+        by mx.google.com with ESMTPS id ge10-20020a05621427ca00b004bb92568057si226237qvb.249.2022.10.25.08.26.32
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 25 Oct 2022 08:26:31 -0700 (PDT)
+        Tue, 25 Oct 2022 08:26:32 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1onLkT-0008Oq-K1; Tue, 25 Oct 2022 11:21:49 -0400
+	id 1onLjz-0007BV-PL; Tue, 25 Oct 2022 11:21:19 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=KVXu=22=kaod.org=clg@ozlabs.org>)
- id 1onLkM-000839-Tw; Tue, 25 Oct 2022 11:21:42 -0400
+ id 1onLjo-0006OI-Eh; Tue, 25 Oct 2022 11:21:08 -0400
 Received: from mail.ozlabs.org ([2404:9400:2221:ea00::3]
  helo=gandalf.ozlabs.org)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=KVXu=22=kaod.org=clg@ozlabs.org>)
- id 1onLkK-0004zu-CV; Tue, 25 Oct 2022 11:21:42 -0400
+ id 1onLji-0004kO-0V; Tue, 25 Oct 2022 11:21:07 -0400
 Received: from gandalf.ozlabs.org (mail.ozlabs.org
  [IPv6:2404:9400:2221:ea00::3])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4MxbJL5rBFz4xGk;
- Wed, 26 Oct 2022 02:21:38 +1100 (AEDT)
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4MxbHZ6gRcz4x1G;
+ Wed, 26 Oct 2022 02:20:58 +1100 (AEDT)
 Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
  (No client certificate requested)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4MxbJJ07Vvz4xGG;
- Wed, 26 Oct 2022 02:21:35 +1100 (AEDT)
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4MxbHW61tvz4xGd;
+ Wed, 26 Oct 2022 02:20:55 +1100 (AEDT)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
@@ -65,10 +65,11 @@ Cc: Peter Maydell <peter.maydell@linaro.org>, Joel Stanley <joel@jms.id.au>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  qemu-block@nongnu.org,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
- Francisco Iglesias <frasse.iglesias@gmail.com>
-Subject: [PULL 14/16] m25p80: Add the w25q512jv SFPD table
-Date: Tue, 25 Oct 2022 17:20:40 +0200
-Message-Id: <20221025152042.278287-15-clg@kaod.org>
+ Thomas Huth <thuth@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>
+Subject: [PULL 02/16] tests/avocado/machine_aspeed.py: Fix typos on buildroot
+Date: Tue, 25 Oct 2022 17:20:28 +0200
+Message-Id: <20221025152042.278287-3-clg@kaod.org>
 X-Mailer: git-send-email 2.37.3
 In-Reply-To: <20221025152042.278287-1-clg@kaod.org>
 References: <20221025152042.278287-1-clg@kaod.org>
@@ -97,91 +98,86 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Sender: "Qemu-devel" <qemu-devel-bounces@nongnu.org>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: JNqTKfqqNV9G
+X-TUID: VQqi/n0alv3T
 
-The SFDP table size is 0x100 bytes long. The mandatory table for basic
-features is available at byte 0x80 and two extra Winbond specifics
-table are available at 0xC0 and 0xF0.
+Replace 'buidroot' and 'builroot' by 'buildroot'.
 
-Reviewed-by: Francisco Iglesias <frasse.iglesias@gmail.com>
-Message-Id: <20220722063602.128144-8-clg@kaod.org>
-Message-Id: <20221013161241.2805140-9-clg@kaod.org>
+Fixes: f7bc7da0724f ("test/avocado/machine_aspeed.py: Add tests using buildroot images")
+Reviewed-by: Thomas Huth <thuth@redhat.com>
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Reviewed-by: Joel Stanley <joel@jms.id.au>
+Message-Id: <20220923084803.498337-2-clg@kaod.org>
 Signed-off-by: Cédric Le Goater <clg@kaod.org>
 ---
- hw/block/m25p80_sfdp.h |  1 +
- hw/block/m25p80.c      |  3 ++-
- hw/block/m25p80_sfdp.c | 36 ++++++++++++++++++++++++++++++++++++
- 3 files changed, 39 insertions(+), 1 deletion(-)
+ tests/avocado/machine_aspeed.py | 16 ++++++++--------
+ 1 file changed, 8 insertions(+), 8 deletions(-)
 
-diff --git a/hw/block/m25p80_sfdp.h b/hw/block/m25p80_sfdp.h
-index 595be9000daa..e50f57e48e43 100644
---- a/hw/block/m25p80_sfdp.h
-+++ b/hw/block/m25p80_sfdp.h
-@@ -22,5 +22,6 @@ uint8_t m25p80_sfdp_mx25l25635f(uint32_t addr);
- uint8_t m25p80_sfdp_mx66l1g45g(uint32_t addr);
+diff --git a/tests/avocado/machine_aspeed.py b/tests/avocado/machine_aspeed.py
+index 124649a24b58..fba652702681 100644
+--- a/tests/avocado/machine_aspeed.py
++++ b/tests/avocado/machine_aspeed.py
+@@ -92,7 +92,7 @@ def test_arm_ast2500_romulus_openbmc_v2_9_0(self):
  
- uint8_t m25p80_sfdp_w25q256(uint32_t addr);
-+uint8_t m25p80_sfdp_w25q512jv(uint32_t addr);
+         self.do_test_arm_aspeed(image_path)
  
- #endif
-diff --git a/hw/block/m25p80.c b/hw/block/m25p80.c
-index 6119c57c8980..8353a00a0595 100644
---- a/hw/block/m25p80.c
-+++ b/hw/block/m25p80.c
-@@ -347,7 +347,8 @@ static const FlashPartInfo known_devices[] = {
-     { INFO("w25q80bl",    0xef4014,      0,  64 << 10,  16, ER_4K) },
-     { INFO("w25q256",     0xef4019,      0,  64 << 10, 512, ER_4K),
-       .sfdp_read = m25p80_sfdp_w25q256 },
--    { INFO("w25q512jv",   0xef4020,      0,  64 << 10, 1024, ER_4K) },
-+    { INFO("w25q512jv",   0xef4020,      0,  64 << 10, 1024, ER_4K),
-+      .sfdp_read = m25p80_sfdp_w25q512jv },
-     { INFO("w25q01jvq",   0xef4021,      0,  64 << 10, 2048, ER_4K) },
- };
+-    def do_test_arm_aspeed_buidroot_start(self, image, cpu_id):
++    def do_test_arm_aspeed_buildroot_start(self, image, cpu_id):
+         self.require_netdev('user')
  
-diff --git a/hw/block/m25p80_sfdp.c b/hw/block/m25p80_sfdp.c
-index 5b011559d43d..dad3d7e64f9f 100644
---- a/hw/block/m25p80_sfdp.c
-+++ b/hw/block/m25p80_sfdp.c
-@@ -258,3 +258,39 @@ static const uint8_t sfdp_w25q256[] = {
-     0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
- };
- define_sfdp_read(w25q256);
-+
-+static const uint8_t sfdp_w25q512jv[] = {
-+    0x53, 0x46, 0x44, 0x50, 0x06, 0x01, 0x01, 0xff,
-+    0x00, 0x06, 0x01, 0x10, 0x80, 0x00, 0x00, 0xff,
-+    0x84, 0x00, 0x01, 0x02, 0xd0, 0x00, 0x00, 0xff,
-+    0x03, 0x00, 0x01, 0x02, 0xf0, 0x00, 0x00, 0xff,
-+    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
-+    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
-+    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
-+    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
-+    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
-+    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
-+    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
-+    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
-+    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
-+    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
-+    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
-+    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
-+    0xe5, 0x20, 0xfb, 0xff, 0xff, 0xff, 0xff, 0x1f,
-+    0x44, 0xeb, 0x08, 0x6b, 0x08, 0x3b, 0x42, 0xbb,
-+    0xfe, 0xff, 0xff, 0xff, 0xff, 0xff, 0x00, 0x00,
-+    0xff, 0xff, 0x40, 0xeb, 0x0c, 0x20, 0x0f, 0x52,
-+    0x10, 0xd8, 0x00, 0x00, 0x36, 0x02, 0xa6, 0x00,
-+    0x82, 0xea, 0x14, 0xe2, 0xe9, 0x63, 0x76, 0x33,
-+    0x7a, 0x75, 0x7a, 0x75, 0xf7, 0xa2, 0xd5, 0x5c,
-+    0x19, 0xf7, 0x4d, 0xff, 0xe9, 0x70, 0xf9, 0xa5,
-+    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
-+    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
-+    0xff, 0x0a, 0xf0, 0xff, 0x21, 0xff, 0xdc, 0xff,
-+    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
-+    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
-+    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
-+    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
-+    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
-+};
-+define_sfdp_read(w25q512jv);
+         self.vm.set_console()
+@@ -111,11 +111,11 @@ def do_test_arm_aspeed_buidroot_start(self, image, cpu_id):
+         exec_command(self, 'root')
+         time.sleep(0.1)
+ 
+-    def do_test_arm_aspeed_buidroot_poweroff(self):
++    def do_test_arm_aspeed_buildroot_poweroff(self):
+         exec_command_and_wait_for_pattern(self, 'poweroff',
+                                           'reboot: System halted');
+ 
+-    def test_arm_ast2500_evb_builroot(self):
++    def test_arm_ast2500_evb_buildroot(self):
+         """
+         :avocado: tags=arch:arm
+         :avocado: tags=machine:ast2500-evb
+@@ -129,7 +129,7 @@ def test_arm_ast2500_evb_builroot(self):
+ 
+         self.vm.add_args('-device',
+                          'tmp105,bus=aspeed.i2c.bus.3,address=0x4d,id=tmp-test');
+-        self.do_test_arm_aspeed_buidroot_start(image_path, '0x0')
++        self.do_test_arm_aspeed_buildroot_start(image_path, '0x0')
+ 
+         exec_command_and_wait_for_pattern(self,
+              'echo lm75 0x4d > /sys/class/i2c-dev/i2c-3/device/new_device',
+@@ -141,9 +141,9 @@ def test_arm_ast2500_evb_builroot(self):
+         exec_command_and_wait_for_pattern(self,
+                              'cat /sys/class/hwmon/hwmon1/temp1_input', '18000')
+ 
+-        self.do_test_arm_aspeed_buidroot_poweroff()
++        self.do_test_arm_aspeed_buildroot_poweroff()
+ 
+-    def test_arm_ast2600_evb_builroot(self):
++    def test_arm_ast2600_evb_buildroot(self):
+         """
+         :avocado: tags=arch:arm
+         :avocado: tags=machine:ast2600-evb
+@@ -159,7 +159,7 @@ def test_arm_ast2600_evb_builroot(self):
+                          'tmp105,bus=aspeed.i2c.bus.3,address=0x4d,id=tmp-test');
+         self.vm.add_args('-device',
+                          'ds1338,bus=aspeed.i2c.bus.3,address=0x32');
+-        self.do_test_arm_aspeed_buidroot_start(image_path, '0xf00')
++        self.do_test_arm_aspeed_buildroot_start(image_path, '0xf00')
+ 
+         exec_command_and_wait_for_pattern(self,
+              'echo lm75 0x4d > /sys/class/i2c-dev/i2c-3/device/new_device',
+@@ -177,7 +177,7 @@ def test_arm_ast2600_evb_builroot(self):
+         year = time.strftime("%Y")
+         exec_command_and_wait_for_pattern(self, 'hwclock -f /dev/rtc1', year);
+ 
+-        self.do_test_arm_aspeed_buidroot_poweroff()
++        self.do_test_arm_aspeed_buildroot_poweroff()
+ 
+ 
+ class AST2x00MachineSDK(QemuSystemTest):
 -- 
 2.37.3
 

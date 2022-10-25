@@ -1,80 +1,80 @@
-Received: by 2002:a17:906:43c7:b0:78d:9f02:16a1 with SMTP id j7csp4035861ejn;
-        Tue, 25 Oct 2022 04:55:41 -0700 (PDT)
-X-Google-Smtp-Source: AMsMyM4an9Zk0i3OT3c46BYT1AcFRwJri3/aYkh+nAqeoLB9HXz1GijO8f0b78+qrLgRjgwNQkYU
-X-Received: by 2002:ac8:5809:0:b0:39d:db1:895 with SMTP id g9-20020ac85809000000b0039d0db10895mr22091653qtg.440.1666698941136;
-        Tue, 25 Oct 2022 04:55:41 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1666698941; cv=none;
+Received: by 2002:a17:906:43c7:b0:78d:9f02:16a1 with SMTP id j7csp4058541ejn;
+        Tue, 25 Oct 2022 05:25:51 -0700 (PDT)
+X-Google-Smtp-Source: AMsMyM4HW9h0kyN5HA5VOQFdWbUnAjuwR1ZIwzkhYX8XNo6q8zvfmXSg+I11suS3Trvn4gSKacKd
+X-Received: by 2002:ac8:5e13:0:b0:39d:c27b:b6a7 with SMTP id h19-20020ac85e13000000b0039dc27bb6a7mr18207615qtx.183.1666700750983;
+        Tue, 25 Oct 2022 05:25:50 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1666700750; cv=none;
         d=google.com; s=arc-20160816;
-        b=HQ/5NUnvP/DVEySWYe+nPnjM9Z2bolN0hSMN/tfMt+YHUR74CNu97RjN7AsnY0Y4lN
-         uNgN42NQgl/xAqR0X8WOHasE5mMEwid2WY4eGR0PgBazBd8Ue8W5JVNNLW2TXMqQoIVn
-         c7jewBTBOUWTMk97LGGF8/C9alk90n05Tp+ScXrrtkwBOjh+JGxJHbTYc0W5BG6zrqzg
-         CAYzsjoKsi+DA44+v0uvJa94CCo0tWTwujfAtNnQA8tUz+kOpAkz9Nr6sFMI8qsPEMur
-         +XrAmD6IhyvT0x4pSfrflFE7KjhuWBfDx9kFOojD9mDOD9yWsFyyEGdkxOlqSQ+A8IZa
-         icBQ==
+        b=mTSbXsztVBTnHdw8og6Q9mOUBlEWmrJVYYWL5kQ2sEm/IBBfwAeNbtcdBD9ggJUL2P
+         ZlwDlUzFo+8oC6ckuokNiG8G/J0rxByd4CrTPirgu47NVkVenCQ52Qj8sj3dfkZFz7cm
+         J0jWBO+uG1Y8/81iW8dkhDynPK3hPvUqsFeBpsYdB9UJWxSJe8H7QKY089RnKISFStOw
+         Qwbe8x2PmRsVZtEHShyiG2gSViS1GTQdjT6Z3XK95DkRs/q9EBxvnper2p5CmvCMWFb/
+         LAt8/gPHdJFYA5v7cZm/gnXjho8AZ8dxSfdNAKnVl30LGEV4ZYbKUdGC2tyFp7VkdQ3m
+         +5SA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=errors-to:sender:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:mime-version:user-agent
          :message-id:in-reply-to:date:references:subject:cc:to:from
          :dkim-signature;
-        bh=/3rdeu789YwDakQOOWyOWVMnODm6vcMkM0uNurbwK74=;
-        b=wvCjdwvCjJ1IrCzCk4xvTSAhYFNPWX1xMpEVE8c8/Bd+y/1ZuFnsEdixSEy0FXnxkw
-         eYl07yuRwH/y31Y20KIXEAsiDXxJkC7pMLRmPbIJkrTw0EZL1TbdzegbcCE78LXdzNg3
-         xRIAk3wAs5btv6n+xZUkN4OCkBaH2/zKvGdTKofIsCTbOPdok2PrSCdQUwxdjJOisoET
-         ku5u2erT29JImOlyaN4Ek47Ze2SBuznOURMtMp8lUS9eYfqsSOs2ba0QIjw3lgQkdgOC
-         A5m3XByAOVaGK/+dedHg4F8lPs2XbrKC4bFzz0O1ov5yvb3/HJ6IrNMNsgYdIAbMCVoP
-         8Y3Q==
+        bh=xHGNddDEfa4VTCTp9Gyhbl48CFHCUlTHRNZmhhLnFy0=;
+        b=tz92a2nWkc40mM/HznON3ODg5Reez3laipn/GIErDrjqUhi420wdpLtdT7LQwuoQxR
+         OnwFj5MPa7801XcbbJRJL16Ov/Ym32TM96J+qyHSdEOhwwMwKpcp2dQtJRy36jLdq+SE
+         duqn0uvf7vYDH9D2ApiDAhPl+aFBXQdVQmfU+9ZvtWh0x1Zqhvt4TCAwAAxbHYhwoNwS
+         xJ88Q4O41/l/hnbBQL+Exeu53Juc1mVwlZoQkwp+v60MQh+bDYQghHEDpw8noGsyMywh
+         b5Xbr+yYRAriG3r6d+dUsgN1x4kkuZxQp8g7sgQwUZzyQSuVuO2sKjEjw+Xrk5GU+ZYw
+         7ZpQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=aZSwJtUi;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="GB/JINrg";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id l17-20020a056214029100b004afb7d0df5dsi1403539qvv.234.2022.10.25.04.55.41
+        by mx.google.com with ESMTPS id p14-20020a05622a00ce00b0039cc76d526bsi1803466qtw.322.2022.10.25.05.25.50
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 25 Oct 2022 04:55:41 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 25 Oct 2022 05:25:50 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=aZSwJtUi;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="GB/JINrg";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1onIW5-0000D5-TF; Tue, 25 Oct 2022 07:54:45 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1onIy9-0000zn-BI; Tue, 25 Oct 2022 08:23:45 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1onIW4-0008W2-82
- for qemu-devel@nongnu.org; Tue, 25 Oct 2022 07:54:44 -0400
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1onIxu-0007Y0-Ay
+ for qemu-arm@nongnu.org; Tue, 25 Oct 2022 08:23:30 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1onIVq-0001HK-4J
- for qemu-devel@nongnu.org; Tue, 25 Oct 2022 07:54:44 -0400
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1onIxq-0006vz-Kf
+ for qemu-arm@nongnu.org; Tue, 25 Oct 2022 08:23:30 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1666698869;
+ s=mimecast20190719; t=1666700599;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  in-reply-to:in-reply-to:references:references;
- bh=/3rdeu789YwDakQOOWyOWVMnODm6vcMkM0uNurbwK74=;
- b=aZSwJtUiJAZqXL0xPVMNs4L/ZOvZiCG4JUuM0AcKatrkfTNaaX6SayFOwypVxkmfOrcO6J
- Z8Emho/xnUNif4E2QqqijQ+Ad1NFPWR8hL2GPjTcxxZ+usH7Xtc8IJTgIDP/Y2LtN1ToVN
- NywFJ7GvZsKCun72naPfS+KnK5YEAws=
-Received: from mimecast-mx02.redhat.com (mx3-rdu2.redhat.com
- [66.187.233.73]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=xHGNddDEfa4VTCTp9Gyhbl48CFHCUlTHRNZmhhLnFy0=;
+ b=GB/JINrgrDkAWQn9WL5zE52+z4slrilEGWi38Zhyv73hOWbmnXa5BchGXjbiFNishI1ayj
+ K0eg92XuvTXZLmzXTKngMFNZxKn/N5gF//vfPWFNT8UobN77yKJoZq8XGe3yI0CgmAcJxS
+ K4mp+GqG/RpLnJ4oSgLXROpYx3+gc+s=
+Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
+ [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-655-zS73vb6fMsqaowhPHHH-Vg-1; Tue, 25 Oct 2022 07:54:24 -0400
-X-MC-Unique: zS73vb6fMsqaowhPHHH-Vg-1
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.rdu2.redhat.com
- [10.11.54.5])
+ us-mta-475--dR1mbcpNESAgDiY1FK4sA-1; Tue, 25 Oct 2022 08:23:15 -0400
+X-MC-Unique: -dR1mbcpNESAgDiY1FK4sA-1
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.4])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 156373814595;
- Tue, 25 Oct 2022 11:54:23 +0000 (UTC)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 4DCBF80A0AE;
+ Tue, 25 Oct 2022 12:23:13 +0000 (UTC)
 Received: from blackfin.pond.sub.org (unknown [10.39.195.118])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id E5F4210197;
- Tue, 25 Oct 2022 11:54:21 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id D16FF202903F;
+ Tue, 25 Oct 2022 12:23:12 +0000 (UTC)
 Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
- id C6CDC21E6936; Tue, 25 Oct 2022 13:54:20 +0200 (CEST)
+ id BB4B121E6936; Tue, 25 Oct 2022 14:23:11 +0200 (CEST)
 From: Markus Armbruster <armbru@redhat.com>
 To: Akihiko Odaki <akihiko.odaki@daynix.com>
 Cc: Alex Williamson <alex.williamson@redhat.com>,  qemu-devel@nongnu.org,
@@ -89,17 +89,18 @@ Cc: Alex Williamson <alex.williamson@redhat.com>,  qemu-devel@nongnu.org,
  Smirnov <andrew.smirnov@gmail.com>,  Paul Burton <paulburton@kernel.org>,
  Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,  Yan Vugenfirer
  <yan@daynix.com>,  Yuri Benditovich <yuri.benditovich@daynix.com>
-Subject: Re: [PATCH v2 16/17] virtio-pci: Omit errp for pci_add_capability
+Subject: Re: [PATCH v2 02/17] hw/i386/amd_iommu: Omit errp for
+ pci_add_capability
 References: <20221022044053.81650-1-akihiko.odaki@daynix.com>
- <20221022044053.81650-17-akihiko.odaki@daynix.com>
-Date: Tue, 25 Oct 2022 13:54:20 +0200
-In-Reply-To: <20221022044053.81650-17-akihiko.odaki@daynix.com> (Akihiko
- Odaki's message of "Sat, 22 Oct 2022 13:40:52 +0900")
-Message-ID: <878rl415lf.fsf@pond.sub.org>
+ <20221022044053.81650-3-akihiko.odaki@daynix.com>
+Date: Tue, 25 Oct 2022 14:23:11 +0200
+In-Reply-To: <20221022044053.81650-3-akihiko.odaki@daynix.com> (Akihiko
+ Odaki's message of "Sat, 22 Oct 2022 13:40:38 +0900")
+Message-ID: <874jvs149c.fsf@pond.sub.org>
 User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/27.2 (gnu/linux)
 MIME-Version: 1.0
 Content-Type: text/plain
-X-Scanned-By: MIMEDefang 3.1 on 10.11.54.5
+X-Scanned-By: MIMEDefang 3.1 on 10.11.54.4
 Received-SPF: pass client-ip=170.10.129.124; envelope-from=armbru@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -25
@@ -107,66 +108,93 @@ X-Spam_score: -2.6
 X-Spam_bar: --
 X-Spam_report: (-2.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.517,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Sender: "Qemu-devel" <qemu-devel-bounces@nongnu.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 25Rl5FFnSBio
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Sender: "Qemu-arm" <qemu-arm-bounces@nongnu.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: IFxU4vaUkf6B
 
 Akihiko Odaki <akihiko.odaki@daynix.com> writes:
 
 > Signed-off-by: Akihiko Odaki <akihiko.odaki@daynix.com>
-
-I get "undefined reference to `pci_add_capability'" link errors.  I
-believe that ...
-
-
-[...]
-
-> diff --git a/include/hw/pci/pci.h b/include/hw/pci/pci.h
-> index 51fd106f16..2a5d4b329f 100644
-> --- a/include/hw/pci/pci.h
-> +++ b/include/hw/pci/pci.h
-> @@ -2,7 +2,6 @@
->  #define QEMU_PCI_H
+> ---
+>  hw/i386/amd_iommu.c | 21 ++++-----------------
+>  1 file changed, 4 insertions(+), 17 deletions(-)
+>
+> diff --git a/hw/i386/amd_iommu.c b/hw/i386/amd_iommu.c
+> index 725f69095b..8a88cbea0a 100644
+> --- a/hw/i386/amd_iommu.c
+> +++ b/hw/i386/amd_iommu.c
+> @@ -1539,7 +1539,6 @@ static void amdvi_sysbus_reset(DeviceState *dev)
 >  
->  #include "exec/memory.h"
-> -#include "qapi/error.h"
->  #include "sysemu/dma.h"
->  
->  /* PCI includes legacy ISA access.  */
-> @@ -391,15 +390,8 @@ void pci_register_vga(PCIDevice *pci_dev, MemoryRegion *mem,
->  void pci_unregister_vga(PCIDevice *pci_dev);
->  pcibus_t pci_get_bar_addr(PCIDevice *pci_dev, int region_num);
->  
-> -int pci_add_capability_legacy(PCIDevice *pdev, uint8_t cap_id,
-> -                              uint8_t offset, uint8_t size,
-> -                              Error **errp);
-> -
-> -#define PCI_ADD_CAPABILITY_VA(pdev, cap_id, offset, size, errp, ...) \
-> -    pci_add_capability_legacy(pdev, cap_id, offset, size, errp)
-> -
-> -#define pci_add_capability(...) \
-> -    PCI_ADD_CAPABILITY_VA(__VA_ARGS__, &error_abort)
-> +uint8_t pci_add_capability(PCIDevice *pdev, uint8_t cap_id,
-> +                           uint8_t offset, uint8_t size);
->  
->  void pci_del_capability(PCIDevice *pci_dev, uint8_t cap_id, uint8_t cap_size);
->  
+>  static void amdvi_sysbus_realize(DeviceState *dev, Error **errp)
+>  {
+> -    int ret = 0;
+>      AMDVIState *s = AMD_IOMMU_DEVICE(dev);
+>      MachineState *ms = MACHINE(qdev_get_machine());
+>      PCMachineState *pcms = PC_MACHINE(ms);
+       X86MachineState *x86ms = X86_MACHINE(ms);
+       PCIBus *bus = pcms->bus;
 
-... this part needs go into the next patch.
+       s->iotlb = g_hash_table_new_full(amdvi_uint64_hash,
+                                        amdvi_uint64_equal, g_free, g_free);
 
-[...]
+> @@ -1553,23 +1552,11 @@ static void amdvi_sysbus_realize(DeviceState *dev, Error **errp)
+>      if (!qdev_realize(DEVICE(&s->pci), &bus->qbus, errp)) {
+>          return;
+>      }
+> -    ret = pci_add_capability(&s->pci.dev, AMDVI_CAPAB_ID_SEC, 0,
+> -                                         AMDVI_CAPAB_SIZE, errp);
+> -    if (ret < 0) {
+> -        return;
+> -    }
+> -    s->capab_offset = ret;
+> +    s->capab_offset = pci_add_capability(&s->pci.dev, AMDVI_CAPAB_ID_SEC, 0,
+> +                                         AMDVI_CAPAB_SIZE);
+>  
+> -    ret = pci_add_capability(&s->pci.dev, PCI_CAP_ID_MSI, 0,
+> -                             AMDVI_CAPAB_REG_SIZE, errp);
+> -    if (ret < 0) {
+> -        return;
+> -    }
+> -    ret = pci_add_capability(&s->pci.dev, PCI_CAP_ID_HT, 0,
+> -                             AMDVI_CAPAB_REG_SIZE, errp);
+> -    if (ret < 0) {
+> -        return;
+> -    }
+> +    pci_add_capability(&s->pci.dev, PCI_CAP_ID_MSI, 0, AMDVI_CAPAB_REG_SIZE);
+> +    pci_add_capability(&s->pci.dev, PCI_CAP_ID_HT, 0, AMDVI_CAPAB_REG_SIZE);
+>  
+>      /* Pseudo address space under root PCI bus. */
+>      x86ms->ioapic_as = amdvi_host_dma_iommu(bus, s, AMDVI_IOAPIC_SB_DEVID);
+
+Your patch replaces error handling by abort().  The commit message
+should explain why this is okay.
+
+It is, because these are programming errors, and aborting on programming
+errors is appropriate.
+
+Moreover, the error handling is incorrect: it leaks s->iotlb.  To be clear:
+replacing it would be okay even if it cleaned up properly.
+
+The other patches also need to explain.  Yes, this repetitive, but
+anyone looking at one of these commits later will be grateful.  Yes,
+they could find an explanation in PATCH 01.  If they find it in git
+history.  Each commit should make sense on its own whenever practical.
+
+The explanation will be a bit more involved for device assignment (PATCH
+15, maybe more), where we need to point out that the caller guards
+against these errors.
 

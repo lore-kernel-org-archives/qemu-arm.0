@@ -1,200 +1,169 @@
-Received: by 2002:a17:906:43c7:b0:78d:9f02:16a1 with SMTP id j7csp4058541ejn;
-        Tue, 25 Oct 2022 05:25:51 -0700 (PDT)
-X-Google-Smtp-Source: AMsMyM4HW9h0kyN5HA5VOQFdWbUnAjuwR1ZIwzkhYX8XNo6q8zvfmXSg+I11suS3Trvn4gSKacKd
-X-Received: by 2002:ac8:5e13:0:b0:39d:c27b:b6a7 with SMTP id h19-20020ac85e13000000b0039dc27bb6a7mr18207615qtx.183.1666700750983;
-        Tue, 25 Oct 2022 05:25:50 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1666700750; cv=none;
+Received: by 2002:a17:906:43c7:b0:78d:9f02:16a1 with SMTP id j7csp4193652ejn;
+        Tue, 25 Oct 2022 08:21:04 -0700 (PDT)
+X-Google-Smtp-Source: AMsMyM52iXnyTHT07xivzEtqPTRlNtKUWBgyF9jj8MfTE5MUbUlI4cToOC05URy9yfWWxtmzvbCR
+X-Received: by 2002:a17:90b:264d:b0:20d:3935:778 with SMTP id pa13-20020a17090b264d00b0020d39350778mr78783740pjb.64.1666711264252;
+        Tue, 25 Oct 2022 08:21:04 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1666711264; cv=none;
         d=google.com; s=arc-20160816;
-        b=mTSbXsztVBTnHdw8og6Q9mOUBlEWmrJVYYWL5kQ2sEm/IBBfwAeNbtcdBD9ggJUL2P
-         ZlwDlUzFo+8oC6ckuokNiG8G/J0rxByd4CrTPirgu47NVkVenCQ52Qj8sj3dfkZFz7cm
-         J0jWBO+uG1Y8/81iW8dkhDynPK3hPvUqsFeBpsYdB9UJWxSJe8H7QKY089RnKISFStOw
-         Qwbe8x2PmRsVZtEHShyiG2gSViS1GTQdjT6Z3XK95DkRs/q9EBxvnper2p5CmvCMWFb/
-         LAt8/gPHdJFYA5v7cZm/gnXjho8AZ8dxSfdNAKnVl30LGEV4ZYbKUdGC2tyFp7VkdQ3m
-         +5SA==
+        b=nUt10er5MyWZBwPqmEwcaDNQUdbMWIXzuk1vQYDLaxkqJa+K7WFyUpywok7ZlbOXpt
+         ximbsTO7gPJXK5HSKGl/mikez4nwLspB0cDF3MiEBl9mYxSbhDW7et6qO9AUWBumduRu
+         eMFKmFR4EoYkO+5cTx3z/P94U3MkdbD+RCBojehvryoaujH6QCpzL00kbqSTfk/9QKAy
+         9gQwdLtZgzSY7F0a5XjEbRx0B9DhKi1T1EqNDL7FHMbPF57DkUjhB+lRTUjWtX20vgUk
+         7Jo+dUMbBytMTYOGt/b60dPTQhvkcE9OiISS0yo+N/0Zp3d/Mf4bcUThdGQnzlm2+0V5
+         JHnQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=errors-to:sender:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version:user-agent
-         :message-id:in-reply-to:date:references:subject:cc:to:from
-         :dkim-signature;
-        bh=xHGNddDEfa4VTCTp9Gyhbl48CFHCUlTHRNZmhhLnFy0=;
-        b=tz92a2nWkc40mM/HznON3ODg5Reez3laipn/GIErDrjqUhi420wdpLtdT7LQwuoQxR
-         OnwFj5MPa7801XcbbJRJL16Ov/Ym32TM96J+qyHSdEOhwwMwKpcp2dQtJRy36jLdq+SE
-         duqn0uvf7vYDH9D2ApiDAhPl+aFBXQdVQmfU+9ZvtWh0x1Zqhvt4TCAwAAxbHYhwoNwS
-         xJ88Q4O41/l/hnbBQL+Exeu53Juc1mVwlZoQkwp+v60MQh+bDYQghHEDpw8noGsyMywh
-         b5Xbr+yYRAriG3r6d+dUsgN1x4kkuZxQp8g7sgQwUZzyQSuVuO2sKjEjw+Xrk5GU+ZYw
-         7ZpQ==
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from;
+        bh=Pl7Nwa2w4lcPvKQGIVM6cDiIP5WFS7vLVMWZ7y/EyLM=;
+        b=xWWQ3NGOrsK6+PVs4acBWT8zay23/pfHbThDAUUXQgWUnOHCtdkDI86OvAcFPrQAvd
+         zabSpLBCyChEmJXpPVlwrKqBCGI/F3ipZIG07zCRBOFZyTa6knqIujh92RqI8HowkCHM
+         Ot4528V06IfNz1+YhKYgYxPY906PwlcHIIiay9xEjdEjo5ZO8A4ydg8NuyRq9e+tSQ2t
+         LY8Cd8LSCfZBJ++IC9TITTrMLbD1/w51AoKiQGFE/9MCOVp2GNX3XDs1d0gf+pDuIPsj
+         vIo/ISCN/cicwyNVz9//ks52n95pX1F9gfg3p4WLX7YM9QIOB7HH8Jyzm/F0I25BAwdh
+         /Duw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="GB/JINrg";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id p14-20020a05622a00ce00b0039cc76d526bsi1803466qtw.322.2022.10.25.05.25.50
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 25 Oct 2022 05:25:50 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       spf=pass (google.com: domain of srs0=kvxu=22=kaod.org=clg@ozlabs.org designates 150.107.74.76 as permitted sender) smtp.mailfrom="SRS0=KVXu=22=kaod.org=clg@ozlabs.org"
+Return-Path: <SRS0=KVXu=22=kaod.org=clg@ozlabs.org>
+Received: from gandalf.ozlabs.org (gandalf.ozlabs.org. [150.107.74.76])
+        by mx.google.com with ESMTPS id n17-20020a170902d0d100b001868a4db3d1si2825809pln.48.2022.10.25.08.21.03
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 25 Oct 2022 08:21:04 -0700 (PDT)
+Received-SPF: pass (google.com: domain of srs0=kvxu=22=kaod.org=clg@ozlabs.org designates 150.107.74.76 as permitted sender) client-ip=150.107.74.76;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="GB/JINrg";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1onIy9-0000zn-BI; Tue, 25 Oct 2022 08:23:45 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1onIxu-0007Y0-Ay
- for qemu-arm@nongnu.org; Tue, 25 Oct 2022 08:23:30 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1onIxq-0006vz-Kf
- for qemu-arm@nongnu.org; Tue, 25 Oct 2022 08:23:30 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1666700599;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=xHGNddDEfa4VTCTp9Gyhbl48CFHCUlTHRNZmhhLnFy0=;
- b=GB/JINrgrDkAWQn9WL5zE52+z4slrilEGWi38Zhyv73hOWbmnXa5BchGXjbiFNishI1ayj
- K0eg92XuvTXZLmzXTKngMFNZxKn/N5gF//vfPWFNT8UobN77yKJoZq8XGe3yI0CgmAcJxS
- K4mp+GqG/RpLnJ4oSgLXROpYx3+gc+s=
-Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
- [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-475--dR1mbcpNESAgDiY1FK4sA-1; Tue, 25 Oct 2022 08:23:15 -0400
-X-MC-Unique: -dR1mbcpNESAgDiY1FK4sA-1
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.rdu2.redhat.com
- [10.11.54.4])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 4DCBF80A0AE;
- Tue, 25 Oct 2022 12:23:13 +0000 (UTC)
-Received: from blackfin.pond.sub.org (unknown [10.39.195.118])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id D16FF202903F;
- Tue, 25 Oct 2022 12:23:12 +0000 (UTC)
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
- id BB4B121E6936; Tue, 25 Oct 2022 14:23:11 +0200 (CEST)
-From: Markus Armbruster <armbru@redhat.com>
-To: Akihiko Odaki <akihiko.odaki@daynix.com>
-Cc: Alex Williamson <alex.williamson@redhat.com>,  qemu-devel@nongnu.org,
- qemu-block@nongnu.org,  qemu-arm@nongnu.org,  "Michael S . Tsirkin"
- <mst@redhat.com>,  Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,  Gerd
- Hoffmann <kraxel@redhat.com>,  Paolo Bonzini <pbonzini@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>,  Eduardo Habkost
- <eduardo@habkost.net>,  John Snow <jsnow@redhat.com>,  Dmitry Fleytman
- <dmitry.fleytman@gmail.com>,  Jason Wang <jasowang@redhat.com>,  Stefan
- Weil <sw@weilnetz.de>,  Keith Busch <kbusch@kernel.org>,  Klaus Jensen
- <its@irrelevant.dk>,  Peter Maydell <peter.maydell@linaro.org>,  Andrey
- Smirnov <andrew.smirnov@gmail.com>,  Paul Burton <paulburton@kernel.org>,
- Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,  Yan Vugenfirer
- <yan@daynix.com>,  Yuri Benditovich <yuri.benditovich@daynix.com>
-Subject: Re: [PATCH v2 02/17] hw/i386/amd_iommu: Omit errp for
- pci_add_capability
-References: <20221022044053.81650-1-akihiko.odaki@daynix.com>
- <20221022044053.81650-3-akihiko.odaki@daynix.com>
-Date: Tue, 25 Oct 2022 14:23:11 +0200
-In-Reply-To: <20221022044053.81650-3-akihiko.odaki@daynix.com> (Akihiko
- Odaki's message of "Sat, 22 Oct 2022 13:40:38 +0900")
-Message-ID: <874jvs149c.fsf@pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/27.2 (gnu/linux)
+       spf=pass (google.com: domain of srs0=kvxu=22=kaod.org=clg@ozlabs.org designates 150.107.74.76 as permitted sender) smtp.mailfrom="SRS0=KVXu=22=kaod.org=clg@ozlabs.org"
+Received: from gandalf.ozlabs.org (gandalf.ozlabs.org [150.107.74.76])
+	by gandalf.ozlabs.org (Postfix) with ESMTP id 4MxbHf1kbpz4xGh;
+	Wed, 26 Oct 2022 02:21:02 +1100 (AEDT)
+Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	by mail.ozlabs.org (Postfix) with ESMTPSA id 4MxbHb32cqz4x1F;
+	Wed, 26 Oct 2022 02:20:59 +1100 (AEDT)
+From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+	Joel Stanley <joel@jms.id.au>,
+	Alistair Francis <alistair@alistair23.me>,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+	qemu-block@nongnu.org,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	=?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
+Subject: [PULL 03/16] ssi: cache SSIPeripheralClass to avoid GET_CLASS()
+Date: Tue, 25 Oct 2022 17:20:29 +0200
+Message-Id: <20221025152042.278287-4-clg@kaod.org>
+X-Mailer: git-send-email 2.37.3
+In-Reply-To: <20221025152042.278287-1-clg@kaod.org>
+References: <20221025152042.278287-1-clg@kaod.org>
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Scanned-By: MIMEDefang 3.1 on 10.11.54.4
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=armbru@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -25
-X-Spam_score: -2.6
-X-Spam_bar: --
-X-Spam_report: (-2.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.517,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Sender: "Qemu-arm" <qemu-arm-bounces@nongnu.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: IFxU4vaUkf6B
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-TUID: i2wmBY3MC2Ow
 
-Akihiko Odaki <akihiko.odaki@daynix.com> writes:
+From: Alex Bennée <alex.bennee@linaro.org>
 
-> Signed-off-by: Akihiko Odaki <akihiko.odaki@daynix.com>
-> ---
->  hw/i386/amd_iommu.c | 21 ++++-----------------
->  1 file changed, 4 insertions(+), 17 deletions(-)
->
-> diff --git a/hw/i386/amd_iommu.c b/hw/i386/amd_iommu.c
-> index 725f69095b..8a88cbea0a 100644
-> --- a/hw/i386/amd_iommu.c
-> +++ b/hw/i386/amd_iommu.c
-> @@ -1539,7 +1539,6 @@ static void amdvi_sysbus_reset(DeviceState *dev)
->  
->  static void amdvi_sysbus_realize(DeviceState *dev, Error **errp)
->  {
-> -    int ret = 0;
->      AMDVIState *s = AMD_IOMMU_DEVICE(dev);
->      MachineState *ms = MACHINE(qdev_get_machine());
->      PCMachineState *pcms = PC_MACHINE(ms);
-       X86MachineState *x86ms = X86_MACHINE(ms);
-       PCIBus *bus = pcms->bus;
+Investigating why some BMC models are so slow compared to a plain ARM
+virt machines I did some profiling of:
 
-       s->iotlb = g_hash_table_new_full(amdvi_uint64_hash,
-                                        amdvi_uint64_equal, g_free, g_free);
+  ./qemu-system-arm -M romulus-bmc -nic user \
+    -drive
+    file=obmc-phosphor-image-romulus.static.mtd,format=raw,if=mtd \
+    -nographic -serial mon:stdio
 
-> @@ -1553,23 +1552,11 @@ static void amdvi_sysbus_realize(DeviceState *dev, Error **errp)
->      if (!qdev_realize(DEVICE(&s->pci), &bus->qbus, errp)) {
->          return;
->      }
-> -    ret = pci_add_capability(&s->pci.dev, AMDVI_CAPAB_ID_SEC, 0,
-> -                                         AMDVI_CAPAB_SIZE, errp);
-> -    if (ret < 0) {
-> -        return;
-> -    }
-> -    s->capab_offset = ret;
-> +    s->capab_offset = pci_add_capability(&s->pci.dev, AMDVI_CAPAB_ID_SEC, 0,
-> +                                         AMDVI_CAPAB_SIZE);
->  
-> -    ret = pci_add_capability(&s->pci.dev, PCI_CAP_ID_MSI, 0,
-> -                             AMDVI_CAPAB_REG_SIZE, errp);
-> -    if (ret < 0) {
-> -        return;
-> -    }
-> -    ret = pci_add_capability(&s->pci.dev, PCI_CAP_ID_HT, 0,
-> -                             AMDVI_CAPAB_REG_SIZE, errp);
-> -    if (ret < 0) {
-> -        return;
-> -    }
-> +    pci_add_capability(&s->pci.dev, PCI_CAP_ID_MSI, 0, AMDVI_CAPAB_REG_SIZE);
-> +    pci_add_capability(&s->pci.dev, PCI_CAP_ID_HT, 0, AMDVI_CAPAB_REG_SIZE);
->  
->      /* Pseudo address space under root PCI bus. */
->      x86ms->ioapic_as = amdvi_host_dma_iommu(bus, s, AMDVI_IOAPIC_SB_DEVID);
+And saw that object_class_dynamic_cast_assert was dominating the
+profile times. We have a number of cases in this model of the SSI bus.
+As the class is static once the object is created we just cache it and
+use it instead of the dynamic case macros.
 
-Your patch replaces error handling by abort().  The commit message
-should explain why this is okay.
+Profiling against:
 
-It is, because these are programming errors, and aborting on programming
-errors is appropriate.
+  ./tests/venv/bin/avocado run \
+    tests/avocado/machine_aspeed.py:test_arm_ast2500_romulus_openbmc_v2_9_0
 
-Moreover, the error handling is incorrect: it leaks s->iotlb.  To be clear:
-replacing it would be okay even if it cleaned up properly.
+Before: 35.565 s ±  0.087 s
+After: 15.713 s ±  0.287 s
 
-The other patches also need to explain.  Yes, this repetitive, but
-anyone looking at one of these commits later will be grateful.  Yes,
-they could find an explanation in PATCH 01.  If they find it in git
-history.  Each commit should make sense on its own whenever practical.
+Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+Cc: Cédric Le Goater <clg@kaod.org>
+Tested-by: Cédric Le Goater <clg@kaod.org>
+Reviewed-by: Cédric Le Goater <clg@kaod.org>
+Message-Id: <20220811151413.3350684-6-alex.bennee@linaro.org>
+Message-Id: <20220923084803.498337-6-clg@kaod.org>
+Signed-off-by: Cédric Le Goater <clg@kaod.org>
+---
+ include/hw/ssi/ssi.h |  3 +++
+ hw/ssi/ssi.c         | 18 ++++++++----------
+ 2 files changed, 11 insertions(+), 10 deletions(-)
 
-The explanation will be a bit more involved for device assignment (PATCH
-15, maybe more), where we need to point out that the caller guards
-against these errors.
-
+diff --git a/include/hw/ssi/ssi.h b/include/hw/ssi/ssi.h
+index f411858ab083..6950f86810d3 100644
+--- a/include/hw/ssi/ssi.h
++++ b/include/hw/ssi/ssi.h
+@@ -59,6 +59,9 @@ struct SSIPeripheralClass {
+ struct SSIPeripheral {
+     DeviceState parent_obj;
+ 
++    /* cache the class */
++    SSIPeripheralClass *spc;
++
+     /* Chip select state */
+     bool cs;
+ };
+diff --git a/hw/ssi/ssi.c b/hw/ssi/ssi.c
+index 003931fb509e..d54a109beeb5 100644
+--- a/hw/ssi/ssi.c
++++ b/hw/ssi/ssi.c
+@@ -38,9 +38,8 @@ static void ssi_cs_default(void *opaque, int n, int level)
+     bool cs = !!level;
+     assert(n == 0);
+     if (s->cs != cs) {
+-        SSIPeripheralClass *ssc = SSI_PERIPHERAL_GET_CLASS(s);
+-        if (ssc->set_cs) {
+-            ssc->set_cs(s, cs);
++        if (s->spc->set_cs) {
++            s->spc->set_cs(s, cs);
+         }
+     }
+     s->cs = cs;
+@@ -48,11 +47,11 @@ static void ssi_cs_default(void *opaque, int n, int level)
+ 
+ static uint32_t ssi_transfer_raw_default(SSIPeripheral *dev, uint32_t val)
+ {
+-    SSIPeripheralClass *ssc = SSI_PERIPHERAL_GET_CLASS(dev);
++    SSIPeripheralClass *ssc = dev->spc;
+ 
+     if ((dev->cs && ssc->cs_polarity == SSI_CS_HIGH) ||
+-            (!dev->cs && ssc->cs_polarity == SSI_CS_LOW) ||
+-            ssc->cs_polarity == SSI_CS_NONE) {
++        (!dev->cs && ssc->cs_polarity == SSI_CS_LOW) ||
++        ssc->cs_polarity == SSI_CS_NONE) {
+         return ssc->transfer(dev, val);
+     }
+     return 0;
+@@ -67,6 +66,7 @@ static void ssi_peripheral_realize(DeviceState *dev, Error **errp)
+             ssc->cs_polarity != SSI_CS_NONE) {
+         qdev_init_gpio_in_named(dev, ssi_cs_default, SSI_GPIO_CS, 1);
+     }
++    s->spc = ssc;
+ 
+     ssc->realize(s, errp);
+ }
+@@ -115,13 +115,11 @@ uint32_t ssi_transfer(SSIBus *bus, uint32_t val)
+ {
+     BusState *b = BUS(bus);
+     BusChild *kid;
+-    SSIPeripheralClass *ssc;
+     uint32_t r = 0;
+ 
+     QTAILQ_FOREACH(kid, &b->children, sibling) {
+-        SSIPeripheral *peripheral = SSI_PERIPHERAL(kid->child);
+-        ssc = SSI_PERIPHERAL_GET_CLASS(peripheral);
+-        r |= ssc->transfer_raw(peripheral, val);
++        SSIPeripheral *p = SSI_PERIPHERAL(kid->child);
++        r |= p->spc->transfer_raw(p, val);
+     }
+ 
+     return r;
+-- 
+2.37.3

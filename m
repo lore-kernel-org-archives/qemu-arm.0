@@ -1,102 +1,105 @@
-Received: by 2002:a17:906:43c7:b0:78d:9f02:16a1 with SMTP id j7csp3981716ejn;
-        Tue, 25 Oct 2022 03:30:00 -0700 (PDT)
-X-Google-Smtp-Source: AMsMyM5tg3OCalBZS1kBhL4X7vcJ+wmuXJcTID26rjUnhI8RgEj9GklMLhXopgDdEYfFokI7E12r
-X-Received: by 2002:a05:622a:206:b0:39c:f2cf:f9fa with SMTP id b6-20020a05622a020600b0039cf2cff9famr31636649qtx.669.1666693800085;
-        Tue, 25 Oct 2022 03:30:00 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1666693800; cv=none;
+Received: by 2002:a17:906:43c7:b0:78d:9f02:16a1 with SMTP id j7csp4045148ejn;
+        Tue, 25 Oct 2022 05:07:08 -0700 (PDT)
+X-Google-Smtp-Source: AMsMyM6DieTc9rr3Yjx2yLVv2MSaH57JULn1HnWin1CWGZzBdxp39xAKdXOiaHZLFenfjCHaZ8Ig
+X-Received: by 2002:a05:622a:5c7:b0:39c:eb0a:2cb1 with SMTP id d7-20020a05622a05c700b0039ceb0a2cb1mr31877152qtb.155.1666699628669;
+        Tue, 25 Oct 2022 05:07:08 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1666699628; cv=none;
         d=google.com; s=arc-20160816;
-        b=WwfhpOb+oo1fOMC8AEq6KJne4XfQ4llWlR4D+gJ9jddXELztkJrPKpdJzH+X1KVB/O
-         H+AVE7/l//pbCp58r1RHJ8f4+YBNhoevyLrw9T33JYNXuRiwWyE575pVWAaF7CnGRT0E
-         1C6N3tQLkIED0AMLio51fRiczsRp5K/pRhQvF0WswTf9JONQTwNdEHyUEOZGka/xrRZ3
-         nrCGrkuu12PqDdsUg8zQ4Pn+NjoWan5fQMIoJafWsy2Wuym407syhZ7FI7HxkpOZyG9n
-         K44S+cXHBbRRFrLMtUNN//aKZxoEgZ3oBZqkRFHcLCRfphFH6yZ80eEPiFt/dKGBr3X9
-         aKIQ==
+        b=LWgbaUVdk5BSVFtIgE1cKA4oYmF7eDwXKCXoM0bHLVtOMb/cSFYJzNWv9Crncu0wyW
+         B0cQP+ixMuhjtQ1wB5mqgLH/9i9aLDbWEbO0ecyFHT7Grh7loPBmq27qeQxdSOjjgk9R
+         bYLkYbWRLjgK9gkux8nSgncsHCRbZdJfsDiQHIlq4hKVhNEMN9ABw8+7YYXgEoPgelza
+         xS3DYJ05mibjCXIE/Xj9lLRW8nx0GgnRdWhyDVWgTzhizsqfYDqxQQu2yN1Twfs1fFnE
+         ASgMINE5BJS9nOe44NLXGPPSSwXoEG96kIoqptJGo2zN6tHeHVKThrq3ulraHe70YJ/A
+         oVFQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=errors-to:sender:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
          :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=rUCbCT4XRms0l7y45nvWQTmRC97wvHYmzTjlaZhNU6A=;
-        b=R1bYIdOO4IuBuFancyih0RK9NbTX3bAKrIa457X5r1SBcmiwM/hpYoKRbTIB7nQdHM
-         VWHNGJDaljhqt0k4oxsWEJCUgPPIsDA63l2VMJoor08g/lCTX/9LG+6kAjc10iDl81nt
-         Hh9BtbsLeWtoc1HbH213FT5BN4EqJfnujskUBZmEaaQZdMeDVuH5qT5E/gqvgcxS0zi4
-         aPgVYK/sSW7I89xFR6jS4U6dqM0fLTTpQ5v1WyaJM04kbjpLByZnBuyWWtr6eVdpYVJD
-         lGTj3szrAbeu5FGclX3ruHOJZuc0B78ZRLVjEaOJ1lIVLRIZpv8n3wzr1RDE12iyX/JH
-         Wurw==
+        bh=59JaS4Wkj7dq0vEEMxDP2wfyvXcoHNuhHUP+ukzSxW0=;
+        b=TxA7SOQtmdH1I0oUXWKs8DTUfcg4+Db2GuS1XuuSL8PrAb2UnkoMOixrvBYIOxI/lb
+         VLfJVIG+WgqryyPNfmzTr2owmriRqzsD+hvwX2MeL7fGihRGyCvXslshNMRVBo5rFB7r
+         jhlxnAF07FZWkcsc5y5WmCiY8s2998QQmRJTuJP6xifWYh2q0SKBNmP/9r6q5XdrHRRJ
+         Dmk4P/ZyD8MIYsdMhQRlwMePXf9/69kd6buVU9SYSdoi4zte52UhYm+KUi0hBe21NYR5
+         obDyiyDb2go/WBCdIjmIg4eAL0rhPcnsuXGjBrjh8roYWibNdmW+5pW39cGnmvsj2p8H
+         zgdw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@igel-co-jp.20210112.gappssmtp.com header.s=20210112 header.b=hxSmyU2u;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@linaro.org header.s=google header.b=fy64zbJD;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id gc14-20020a05622a59ce00b0038e85fb6757si685674qtb.25.2022.10.25.03.29.59
+        by mx.google.com with ESMTPS id ge15-20020a05622a5c8f00b0033c616d2192si1627998qtb.713.2022.10.25.05.07.08
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 25 Oct 2022 03:30:00 -0700 (PDT)
+        Tue, 25 Oct 2022 05:07:08 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@igel-co-jp.20210112.gappssmtp.com header.s=20210112 header.b=hxSmyU2u;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@linaro.org header.s=google header.b=fy64zbJD;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1onHAY-0006WH-2y; Tue, 25 Oct 2022 06:28:26 -0400
+	id 1onIg8-0001Cg-Fm; Tue, 25 Oct 2022 08:05:09 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ake@igel.co.jp>) id 1onHAS-0005Uz-3N
- for qemu-arm@nongnu.org; Tue, 25 Oct 2022 06:28:20 -0400
-Received: from mail-ed1-x52f.google.com ([2a00:1450:4864:20::52f])
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1onIfS-00008c-4W
+ for qemu-arm@nongnu.org; Tue, 25 Oct 2022 08:04:30 -0400
+Received: from mail-pf1-x42d.google.com ([2607:f8b0:4864:20::42d])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <ake@igel.co.jp>) id 1onHAP-0000Yn-2s
- for qemu-arm@nongnu.org; Tue, 25 Oct 2022 06:28:19 -0400
-Received: by mail-ed1-x52f.google.com with SMTP id t15so803231edd.4
- for <qemu-arm@nongnu.org>; Tue, 25 Oct 2022 03:28:15 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=igel-co-jp.20210112.gappssmtp.com; s=20210112;
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1onIfP-0003Gk-Fm
+ for qemu-arm@nongnu.org; Tue, 25 Oct 2022 08:04:25 -0400
+Received: by mail-pf1-x42d.google.com with SMTP id f140so11622470pfa.1
+ for <qemu-arm@nongnu.org>; Tue, 25 Oct 2022 05:04:22 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=rUCbCT4XRms0l7y45nvWQTmRC97wvHYmzTjlaZhNU6A=;
- b=hxSmyU2uxFMntPtQIUr0u9bfmRmA+PD2I+OFnsCEkdZApJFGNU5X1GI/5b8KQjR3VR
- /Pe97MzomWbz4/1A6dr0e3MZZ9qJnfJA0PpZwWqVwGJW/+bklschdcAdzAo4MNmJjNVV
- SE7TT7sTlJN89zbNsDZ7nshA84HAu6rgOLoSr6QiHSX6vXNBrGW1+ssVonuzkN98EGPf
- OGMRZqLX6Dw28fkYol2+JsLWuNnNjNQHhYDhFdtD6ShH9pWcFpvQmjPwlMoQdf+ecMic
- BrWdXlyjHsbsEKIuVrEbJ4vTVkqfERdjydJJdP5sAu7TSzKc4/KWWP4x8+MljlICK0eE
- PfEA==
+ bh=59JaS4Wkj7dq0vEEMxDP2wfyvXcoHNuhHUP+ukzSxW0=;
+ b=fy64zbJDJD40q1P2xiC75eD3E5BpAkm5cL2qWvavncEViUMXmnIH58U0CrnOjUeile
+ jWBTefzAexpYdw3SpLATtACoD2AuA2AF/e98GrdZI0wlbHtqlhVLWc5POGYGevJnky0i
+ n6ylwrS6bXo0SZ+vExNSirrktqmie7gxyizi705ZVc/fwMdQtf9HRpqHRPBHv+WD3juq
+ mZ1QJzm12jGLb9pVaSqCtH0yKoboyPqeLva9xfYe3GFrVl88MOFJo6oYVTCKLMFOGaAR
+ 0oohFJ7mbb6jTwxN3mp7o1izAHV/1cpT4qWEUjZj45927m9sHOO384wE7uJQ2L0n7obu
+ bHjA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=rUCbCT4XRms0l7y45nvWQTmRC97wvHYmzTjlaZhNU6A=;
- b=fhBwljpw/J3mXosmbYAwXHhYP2OEDSJKpZWkSJNnPbluZ1eoPi1CkPAN5/3Z1F1BmJ
- wqRcewi1+l8x8gatOJ6VaSAB5Dt6eHD3uXBRUxEt/3B7NxbS59erfF2Db+f77PnlShS+
- TcAzo8ZRFv9Iz+2mPAm++MwNzmUOYJHDMuJqi785W9xUxBpk2NKKrdTuYMucvEmX37ik
- MUtAGo4TN38F++RgXMoKn7ReGmetHOqVOu0kxdS6r1yxbggqhJ8zXP+10T7A9nhAyagn
- 8ZNyYpJZgPN8Mr+Sb9wPakavsCupqSohWUCqwVMYeNVBmEMEDgXohNgOH5gBaaCVU00J
- Ro5w==
-X-Gm-Message-State: ACrzQf1MNBPy1Oh2JVtmuUet9IYCLhlla2Xu/aqGwxYVEkoYe8Wq7HMj
- aQGghDrJn4Nt3ZpjqK7l5Kc9L4RWv5IlZwUif1kyhw==
-X-Received: by 2002:a05:6402:2707:b0:45c:d8a3:6cfc with SMTP id
- y7-20020a056402270700b0045cd8a36cfcmr35263267edd.269.1666693692425; Tue, 25
- Oct 2022 03:28:12 -0700 (PDT)
+ bh=59JaS4Wkj7dq0vEEMxDP2wfyvXcoHNuhHUP+ukzSxW0=;
+ b=o7k6xwmkTnLYjr+sbQntMjr0LrLeUbSZKkMFdkarmaesOdHmBdzxVSvuia93x/RKz4
+ WMm3GnlZfSDTfVVy3HYJVg4nDTxIvu4b8tMXCJ7lCfaNkG21CkFGGDFhCNl1LRUSR2VK
+ nMykRpyyrYeCyKSvx3FCNJ3Q7kr3tJy6s1iU3McimKbGr9FHZWT+WutenZTHv71RozTL
+ e+UfPDyK/3G0jdPt1JyvtGB52SIR9qEJvnA7T03grUcONvAwAB4GZa1CeJEmU81+lZGr
+ Q7CzaiutNBCvtMeHgm8oGc6REfx2ceF92RCaQuGhVcH5f0pOE4qxi6gPiOSI4raSMUbl
+ RtCg==
+X-Gm-Message-State: ACrzQf0D3RL/QCCSm+5Y/u9poAWT6g9Ss+Vi77pRxEgEQviEJxQWSQ+L
+ vx2EaM4k9hjFut8bSHv/0MfffKgANMtnWwOsNVcGVw==
+X-Received: by 2002:a05:6a00:b54:b0:566:917:e57e with SMTP id
+ p20-20020a056a000b5400b005660917e57emr38310686pfo.26.1666699461573; Tue, 25
+ Oct 2022 05:04:21 -0700 (PDT)
 MIME-Version: 1.0
-References: <20221017092432.546881-1-ake@igel.co.jp>
- <CAFEAcA9sQ-QJCw_P3OAp5O9o7pHcpz1kwmSi+=Dg4qqMfYt1iQ@mail.gmail.com>
-In-Reply-To: <CAFEAcA9sQ-QJCw_P3OAp5O9o7pHcpz1kwmSi+=Dg4qqMfYt1iQ@mail.gmail.com>
-From: Ake Koomsin <ake@igel.co.jp>
-Date: Tue, 25 Oct 2022 19:28:01 +0900
-Message-ID: <CADd_P+kQaaLkbV5vve79TTy-r+wvxqr03f=RJqjQYJVKq-EBrA@mail.gmail.com>
-Subject: Re: [PATCH] target/arm: honor HCR_E2H and HCR_TGE in
- arm_excp_unmasked()
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-devel@nongnu.org, "open list:ARM TCG CPUs" <qemu-arm@nongnu.org>
-Content-Type: multipart/alternative; boundary="0000000000007cc06a05ebd95d2a"
-Received-SPF: pass client-ip=2a00:1450:4864:20::52f;
- envelope-from=ake@igel.co.jp; helo=mail-ed1-x52f.google.com
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+References: <166663118138.13362.1229967229046092876-0@git.sr.ht>
+In-Reply-To: <166663118138.13362.1229967229046092876-0@git.sr.ht>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 25 Oct 2022 13:04:10 +0100
+Message-ID: <CAFEAcA_W6QqBHeN0D+XR77MVyhk2Bj_kZC164SJtoMk8ByaVxw@mail.gmail.com>
+Subject: Re: [PATCH qemu.git] target/imx: reload cmp timer outside of the
+ reload ptimer transaction
+To: "~axelheider" <axelheider@gmx.de>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::42d;
+ envelope-from=peter.maydell@linaro.org; helo=mail-pf1-x42d.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -111,210 +114,41 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Sender: "Qemu-arm" <qemu-arm-bounces@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: QHHFXs5Fdh0p
+X-TUID: vb+ptwqkeBRv
 
---0000000000007cc06a05ebd95d2a
-Content-Type: text/plain; charset="UTF-8"
-
-On Tue, Oct 25, 2022 at 1:37 AM Peter Maydell <peter.maydell@linaro.org>
-wrote:
-
-> On Mon, 17 Oct 2022 at 10:29, Ake Koomsin <ake@igel.co.jp> wrote:
-> >
-> > An exception targeting EL2 from lower EL is actually maskable when
-> > HCR_E2H and HCR_TGE are both set. This applies to both secure and
-> > non-secure Security state.
-> >
-> > Signed-off-by: Ake Koomsin <ake@igel.co.jp>
-> > ---
-> >  target/arm/cpu.c | 24 +++++++++++++++++-------
-> >  1 file changed, 17 insertions(+), 7 deletions(-)
-> >
-> > diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-> > index 94ca6f163f..86d3377d3f 100644
-> > --- a/target/arm/cpu.c
-> > +++ b/target/arm/cpu.c
-> > @@ -561,14 +561,24 @@ static inline bool arm_excp_unmasked(CPUState *cs,
-> unsigned int excp_idx,
-> >      if ((target_el > cur_el) && (target_el != 1)) {
-> >          /* Exceptions targeting a higher EL may not be maskable */
-> >          if (arm_feature(env, ARM_FEATURE_AARCH64)) {
-> > -            /*
-> > -             * 64-bit masking rules are simple: exceptions to EL3
-> > -             * can't be masked, and exceptions to EL2 can only be
-> > -             * masked from Secure state. The HCR and SCR settings
-> > -             * don't affect the masking logic, only the interrupt
-> routing.
-> > -             */
-> > -            if (target_el == 3 || !secure || (env->cp15.scr_el3 &
-> SCR_EEL2)) {
-> > +            switch (target_el) {
-> > +            case 2:
-> > +                /*
-> > +                 * According to ARM DDI 0487H.a, an interrupt can be
-> masked
-> > +                 * when HCR_E2H and HCR_TGE are both set regardless of
-> the
-> > +                 * current Security state. Note that We need to revisit
-> this
-> > +                 * part again once we need to support NMI.
-> > +                 */
-> > +                if ((hcr_el2 & (HCR_E2H | HCR_TGE)) != (HCR_E2H |
-> HCR_TGE)) {
-> > +                        unmasked = true;
-> > +                }
-> > +                break;
-> > +            case 3:
-> > +                /* Interrupt cannot be masked when the target EL is 3 */
-> >                  unmasked = true;
-> > +                break;
-> > +            default:
-> > +                g_assert_not_reached();
+On Mon, 24 Oct 2022 at 18:06, ~axelheider <axelheider@git.sr.ht> wrote:
 >
-> Hi; thanks for this patch. You're correct that there is a bug here, but
-> it took me a while to work out why it's OK to remove the "don't allow
-> masking if we're in Secure EL0/EL1 and the exception is going to NS EL2"
-> check. The answer to that turns out to be "the target_el could never be
-> 2 anyway in that case": because arm_phys_excp_target_el() uses
-> arm_hcr_el2_eff(),
-> if we're Secure and SEL2 isn't enabled then the effective HCR_EL2 bits
-> will all be zero, which forces us into the "targets EL1" or "targets EL3"
-> cases.
+> From: Axel Heider <axel.heider@hensoldt.net>
 >
-> So I think that's worth mentioning in the commit message:
+> When running seL4 tests (https://docs.sel4.systems/projects/sel4test)
+> on the sabrelight platform, the timer tests fail. The arm/imx6 EPIT
+> timer interrupt does not fire properly, instead of a e.g. second in
+> can take up to a minute to finally see the interrupt.
 >
-> "We can remove the conditions that try to suppress masking of
-> interrupts when we are Secure and the exception targets EL2 and
-> Secure EL2 is disabled, because in that case arm_phys_excp_target_el()
-> will never return 2 as the target EL. The 'not if secure' check
-> in this function was originally written before arm_hcr_el2_eff(), and
-> back then the target EL could be 2 even if we were in Secure EL0/EL1;
-> it is no longer needed."
+> Resolves: https://gitlab.com/qemu-project/qemu/-/issues/1263
 >
-> I'll apply this to target-arm.next, with the commit message
-> updated to include that.
+> Signed-off-by: Axel Heider <axel.heider@hensoldt.net>
+> ---
+> Fixed the comment style and the commit message.
 >
-> thanks
-> -- PMM
+> > Do we also need to change the other places that call
+> > imx_epit_reload_compare_timer() in the handling of CR
+> > register writes ? (Those are a little more tricky.)
 >
-Thank you very much for the review and additional commit
-commit message for clarity.
+> The current patch fixed the issue we are seeing. I'm not really
+> an expert on the QEMU code here and still try to understand
+> all details. Might also be that we never hit the other code paths
+> in the end.
 
----
-Ake Koomsin
+I suspect your guest happens to initialize the timer in
+such a way that it doesn't matter if we don't get the
+comparison stuff right on the write to the control
+register: conceptually I think the CR write code has the
+same bug where we call imx_epit_reload_compare_timer()
+before we've finalized the value of the timer_reload value.
 
---0000000000007cc06a05ebd95d2a
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Anyway, this patch is definitely correct for the LR
+register write, so I've applied it to target-arm.next.
 
-<div dir=3D"ltr"><div dir=3D"ltr">On Tue, Oct 25, 2022 at 1:37 AM Peter May=
-dell &lt;<a href=3D"mailto:peter.maydell@linaro.org">peter.maydell@linaro.o=
-rg</a>&gt; wrote:<br></div><div class=3D"gmail_quote"><blockquote class=3D"=
-gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(20=
-4,204,204);padding-left:1ex">On Mon, 17 Oct 2022 at 10:29, Ake Koomsin &lt;=
-<a href=3D"mailto:ake@igel.co.jp" target=3D"_blank">ake@igel.co.jp</a>&gt; =
-wrote:<br>
-&gt;<br>
-&gt; An exception targeting EL2 from lower EL is actually maskable when<br>
-&gt; HCR_E2H and HCR_TGE are both set. This applies to both secure and<br>
-&gt; non-secure Security state.<br>
-&gt;<br>
-&gt; Signed-off-by: Ake Koomsin &lt;<a href=3D"mailto:ake@igel.co.jp" targe=
-t=3D"_blank">ake@igel.co.jp</a>&gt;<br>
-&gt; ---<br>
-&gt;=C2=A0 target/arm/cpu.c | 24 +++++++++++++++++-------<br>
-&gt;=C2=A0 1 file changed, 17 insertions(+), 7 deletions(-)<br>
-&gt;<br>
-&gt; diff --git a/target/arm/cpu.c b/target/arm/cpu.c<br>
-&gt; index 94ca6f163f..86d3377d3f 100644<br>
-&gt; --- a/target/arm/cpu.c<br>
-&gt; +++ b/target/arm/cpu.c<br>
-&gt; @@ -561,14 +561,24 @@ static inline bool arm_excp_unmasked(CPUState *c=
-s, unsigned int excp_idx,<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 if ((target_el &gt; cur_el) &amp;&amp; (target_el =
-!=3D 1)) {<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 /* Exceptions targeting a higher EL =
-may not be maskable */<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 if (arm_feature(env, ARM_FEATURE_AAR=
-CH64)) {<br>
-&gt; -=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 /*<br>
-&gt; -=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0* 64-bit masking rule=
-s are simple: exceptions to EL3<br>
-&gt; -=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0* can&#39;t be masked=
-, and exceptions to EL2 can only be<br>
-&gt; -=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0* masked from Secure =
-state. The HCR and SCR settings<br>
-&gt; -=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0* don&#39;t affect th=
-e masking logic, only the interrupt routing.<br>
-&gt; -=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0*/<br>
-&gt; -=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 if (target_el =3D=3D 3 || !=
-secure || (env-&gt;cp15.scr_el3 &amp; SCR_EEL2)) {<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 switch (target_el) {<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 case 2:<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 /*<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0* Accor=
-ding to ARM DDI 0487H.a, an interrupt can be masked<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0* when =
-HCR_E2H and HCR_TGE are both set regardless of the<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0* curre=
-nt Security state. Note that We need to revisit this<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0* part =
-again once we need to support NMI.<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0*/<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 if ((hcr_el2 =
-&amp; (HCR_E2H | HCR_TGE)) !=3D (HCR_E2H | HCR_TGE)) {<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
- =C2=A0 =C2=A0 unmasked =3D true;<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 }<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 break;<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 case 3:<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 /* Interrupt =
-cannot be masked when the target EL is 3 */<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 unmasked=
- =3D true;<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 break;<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 default:<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 g_assert_not_=
-reached();<br>
-<br>
-Hi; thanks for this patch. You&#39;re correct that there is a bug here, but=
-<br>
-it took me a while to work out why it&#39;s OK to remove the &quot;don&#39;=
-t allow<br>
-masking if we&#39;re in Secure EL0/EL1 and the exception is going to NS EL2=
-&quot;<br>
-check. The answer to that turns out to be &quot;the target_el could never b=
-e<br>
-2 anyway in that case&quot;: because arm_phys_excp_target_el() uses<br>
-arm_hcr_el2_eff(),<br>
-if we&#39;re Secure and SEL2 isn&#39;t enabled then the effective HCR_EL2 b=
-its<br>
-will all be zero, which forces us into the &quot;targets EL1&quot; or &quot=
-;targets EL3&quot;<br>
-cases.<br>
-<br>
-So I think that&#39;s worth mentioning in the commit message:<br>
-<br>
-&quot;We can remove the conditions that try to suppress masking of<br>
-interrupts when we are Secure and the exception targets EL2 and<br>
-Secure EL2 is disabled, because in that case arm_phys_excp_target_el()<br>
-will never return 2 as the target EL. The &#39;not if secure&#39; check<br>
-in this function was originally written before arm_hcr_el2_eff(), and<br>
-back then the target EL could be 2 even if we were in Secure EL0/EL1;<br>
-it is no longer needed.&quot;<br>
-<br>
-I&#39;ll apply this to target-arm.next, with the commit message<br>
-updated to include that.<br>
-<br>
-thanks<br>
--- PMM<br></blockquote><div style=3D"font-family:monospace,monospace" class=
-=3D"gmail_default"><div class=3D"gmail_default" style=3D"font-family:monosp=
-ace,monospace">Thank you very much for the review and additional commit</di=
-v><div class=3D"gmail_default" style=3D"font-family:monospace,monospace">co=
-mmit message for clarity.</div><div class=3D"gmail_default" style=3D"font-f=
-amily:monospace,monospace"><br></div><div class=3D"gmail_default" style=3D"=
-font-family:monospace,monospace">---</div><div class=3D"gmail_default" styl=
-e=3D"font-family:monospace,monospace">Ake Koomsin<br></div></div></div></di=
-v>
-
---0000000000007cc06a05ebd95d2a--
+thanks
+-- PMM

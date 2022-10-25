@@ -1,146 +1,135 @@
-Received: by 2002:a17:906:43c7:b0:78d:9f02:16a1 with SMTP id j7csp4195112ejn;
-        Tue, 25 Oct 2022 08:23:11 -0700 (PDT)
-X-Google-Smtp-Source: AMsMyM62mxSnvvd5pLlFetTA3ONFjg8D8iWyWVqmap5xeSOMpyXUSqGSwISL0aypoNEIJBsI0QrY
-X-Received: by 2002:a05:622a:170f:b0:39c:e3dd:62f3 with SMTP id h15-20020a05622a170f00b0039ce3dd62f3mr32878730qtk.480.1666711391574;
-        Tue, 25 Oct 2022 08:23:11 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1666711391; cv=none;
+Received: by 2002:a17:906:43c7:b0:78d:9f02:16a1 with SMTP id j7csp4196300ejn;
+        Tue, 25 Oct 2022 08:24:50 -0700 (PDT)
+X-Google-Smtp-Source: AMsMyM5Ii1ZrnR+WNfmG08RCTQEhzm/ZiWPijrNR2lgV5bubgP+CCHVPBOGGsifVBICsegUjJiyn
+X-Received: by 2002:a05:622a:292:b0:39c:f2b6:1580 with SMTP id z18-20020a05622a029200b0039cf2b61580mr33230995qtw.72.1666711490072;
+        Tue, 25 Oct 2022 08:24:50 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1666711490; cv=none;
         d=google.com; s=arc-20160816;
-        b=rNjYRD5hghwFo71WspNROPc3ASm3jga0wbtLcqjp5LQFT7dBtlN8GcU79vUyM6NcQq
-         u5snCzeAd8CRusL5F7hUkYJUu2zr5ILDVBy8qDPAMrbwQYKY0e4moTtLb0Ija0QKhqSM
-         U6LRE2RbyHLCLjvUIDW5TdyjkalnB3WwjvKFlv395hXnkv6TLTrX6nvCobpn8CGVZHPy
-         lwBAXJqDU7DQgqCadCSbYONDTvPkB9/Dx7D4Lb1RbldnmWhtfoW7CTv9oSjCiQ1M8TpD
-         RLvK6QYRE+zDpCormeImB2F6aSHkTK/8xGW3axDSp0iHGE0cXAiTZHuWa3HgwulltY7s
-         h+lA==
+        b=G1MTLhTias8AYMh/VoniLjm/HgaxGwtr2hHnTFvCLI1ZEsmz/lN+MSch+M7+89HWlX
+         +ztA9m0xDXNEyUluNci5ARghOF4uI+c07Zs5WLH/AfRyb2S84liEy/V9TAE35sqIUfQG
+         nTHwpiLGGRurHg2KYA7jEa/Y6HBuR11ypEJvDl2LlpUUDjafYmrxsq2UyT25ksj3frfV
+         e4/HTQN+ZhHcQYL5ZPIMPp8BABp8oyTBf3y312i0tFViLyvwOuLYsXpZKs5omMSrglSj
+         9QX58pme1lvPhTet8LoPxQ2Hrqza9pyaug2ucdKrPnh5dq8RTJEQ/7SiU1el3hXRnDfP
+         pd8A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=errors-to:sender:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from;
-        bh=yMEHHBNiS7GmpqlBIkIC0DlV8NMAT3krdUE2uAKrdpk=;
-        b=DS9xne3v5RWt1qOmVOYNCA5joLrmsMhF8+ZZvwfYs3TklT2NiidqGCNc1UOCAqnRJH
-         KoRLfq36olmT8VtQ2//SldimmRwx7ao+atWTXb1bP0i0+tdOIEWimGFBs2GT9FRbBt8X
-         ikajXQiYiJQwOSLLLbWwSQypPB8sEi6e0Wp+9AikOPdQ1uUmNgC0E4tNie/JQDQOY//M
-         Olc7LvEHV773vvyFaKQ8Ez9EJ8XBd2wUtvBK1GqzpWG4BlMJ8pAgsYAgslytMTyEnj7k
-         E9lK1Y/+1xK9TynaQvcLd9wCXyrI4GO9pEF/4lvuSCuw7UZOO/zwrd0HbOabq4elDK2V
-         7azg==
+        bh=wvg+KBo0xwwiv9gXAg/mIgkgrfVuZ2qfVJXbOh2HhcA=;
+        b=d9AXcLGbEBxJEJKXECECNDQjDifMH9sT0JbcMZCbP/2km3PU4xzUku9Oyb23uASjSY
+         OjPy9bZos7JqjeDF2xxycQFvlCHU7uFD+l5iRW86vPXNHLns0CSJi2bUcag7Eo1WXxRF
+         kb5Bt/vERVkm06PLoGrKcXWromTtcANxhXSP98Vgy4L+jRTgduWARBL2hPCGC/zhcOxZ
+         bAw0BoLTAN8obIekqE4e4KPHbxPECvCOykholKijsUXFXajSatFOu21QJ98FFAMu8imu
+         +OMlBsbun9BlMevZJwWjQgwMAX3kgzS3AC8zJLJ303ebBfq/uck7SXZ3756gsAcc6Wub
+         7eCA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id ga13-20020a05622a590d00b0039d0291153esi868833qtb.357.2022.10.25.08.23.11
+        by mx.google.com with ESMTPS id m2-20020a378a02000000b006f4744c23f4si1773362qkd.550.2022.10.25.08.24.49
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 25 Oct 2022 08:23:11 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 25 Oct 2022 08:24:50 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1onLkX-0008UK-Gr; Tue, 25 Oct 2022 11:21:53 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1onLk0-0007Dw-Sr; Tue, 25 Oct 2022 11:21:20 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=KVXu=22=kaod.org=clg@ozlabs.org>)
- id 1onLkU-0008Rp-71; Tue, 25 Oct 2022 11:21:50 -0400
-Received: from gandalf.ozlabs.org ([150.107.74.76])
+ id 1onLju-0006fh-2b; Tue, 25 Oct 2022 11:21:14 -0400
+Received: from mail.ozlabs.org ([2404:9400:2221:ea00::3]
+ helo=gandalf.ozlabs.org)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=KVXu=22=kaod.org=clg@ozlabs.org>)
- id 1onLkS-00051u-K3; Tue, 25 Oct 2022 11:21:49 -0400
+ id 1onLjs-0004p8-E6; Tue, 25 Oct 2022 11:21:13 -0400
 Received: from gandalf.ozlabs.org (mail.ozlabs.org
  [IPv6:2404:9400:2221:ea00::3])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4MxbJT55J6z4xGk;
- Wed, 26 Oct 2022 02:21:45 +1100 (AEDT)
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4MxbHm2Yrfz4xGk;
+ Wed, 26 Oct 2022 02:21:08 +1100 (AEDT)
 Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
  (No client certificate requested)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4MxbJQ6TKCz4xGG;
- Wed, 26 Oct 2022 02:21:42 +1100 (AEDT)
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4MxbHj5n1Xz4x1F;
+ Wed, 26 Oct 2022 02:21:05 +1100 (AEDT)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>, Joel Stanley <joel@jms.id.au>,
  Alistair Francis <alistair@alistair23.me>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- qemu-block@nongnu.org,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
- Francisco Iglesias <frasse.iglesias@gmail.com>
-Subject: [PULL 16/16] arm/aspeed: Replace mx25l25635e chip model
-Date: Tue, 25 Oct 2022 17:20:42 +0200
-Message-Id: <20221025152042.278287-17-clg@kaod.org>
+ qemu-block@nongnu.org, =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
+Subject: [PULL 05/16] ast2600: Drop NEON from the CPU features
+Date: Tue, 25 Oct 2022 17:20:31 +0200
+Message-Id: <20221025152042.278287-6-clg@kaod.org>
 X-Mailer: git-send-email 2.37.3
 In-Reply-To: <20221025152042.278287-1-clg@kaod.org>
 References: <20221025152042.278287-1-clg@kaod.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=150.107.74.76;
+Received-SPF: pass client-ip=2404:9400:2221:ea00::3;
  envelope-from=SRS0=KVXu=22=kaod.org=clg@ozlabs.org; helo=gandalf.ozlabs.org
-X-Spam_score_int: -16
-X-Spam_score: -1.7
-X-Spam_bar: -
-X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9,
- HEADER_FROM_DIFFERENT_DOMAINS=0.25, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+X-Spam_score_int: -39
+X-Spam_score: -4.0
+X-Spam_bar: ----
+X-Spam_report: (-4.0 / 5.0 requ) BAYES_00=-1.9,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.25, RCVD_IN_DNSWL_MED=-2.3,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Sender: "Qemu-devel" <qemu-devel-bounces@nongnu.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: EtMp2OZ1DJ9J
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Sender: "Qemu-arm" <qemu-arm-bounces@nongnu.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 1VJWD/e2J4G5
 
-A mx25l25635f chip model is generally found on these machines. It's
-newer and uses 4B opcodes which is better to exercise the support in
-the Linux kernel.
+Currently, the CPU features exposed to the AST2600 QEMU machines are :
 
-Reviewed-by: Francisco Iglesias <frasse.iglesias@gmail.com>
-Message-Id: <20220722063602.128144-9-clg@kaod.org>
-Message-Id: <20221013161241.2805140-11-clg@kaod.org>
+  half thumb fastmult vfp edsp neon vfpv3 tls vfpv4 idiva idivt
+  vfpd32 lpae evtstrm
+
+But, the features of the Cortex A7 CPU on the Aspeed AST2600 A3 SoC
+are :
+
+  half thumb fastmult vfp edsp vfpv3 vfpv3d16 tls vfpv4 idiva idivt
+  lpae evtstrm
+
+Drop NEON support in the Aspeed AST2600 SoC.
+
+Reviewed-by: Joel Stanley <joel@jms.id.au>
+Message-Id: <20220928164719.655586-3-clg@kaod.org>
 Signed-off-by: Cédric Le Goater <clg@kaod.org>
 ---
- hw/arm/aspeed.c | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+ hw/arm/aspeed_ast2600.c | 2 ++
+ 1 file changed, 2 insertions(+)
 
-diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
-index bc5c1e167773..f8bc6d4a1406 100644
---- a/hw/arm/aspeed.c
-+++ b/hw/arm/aspeed.c
-@@ -1099,7 +1099,7 @@ static void aspeed_machine_palmetto_class_init(ObjectClass *oc, void *data)
-     amc->soc_name  = "ast2400-a1";
-     amc->hw_strap1 = PALMETTO_BMC_HW_STRAP1;
-     amc->fmc_model = "n25q256a";
--    amc->spi_model = "mx25l25635e";
-+    amc->spi_model = "mx25l25635f";
-     amc->num_cs    = 1;
-     amc->i2c_init  = palmetto_bmc_i2c_init;
-     mc->default_ram_size       = 256 * MiB;
-@@ -1150,7 +1150,7 @@ static void aspeed_machine_ast2500_evb_class_init(ObjectClass *oc, void *data)
-     amc->soc_name  = "ast2500-a1";
-     amc->hw_strap1 = AST2500_EVB_HW_STRAP1;
-     amc->fmc_model = "mx25l25635e";
--    amc->spi_model = "mx25l25635e";
-+    amc->spi_model = "mx25l25635f";
-     amc->num_cs    = 1;
-     amc->i2c_init  = ast2500_evb_i2c_init;
-     mc->default_ram_size       = 512 * MiB;
-@@ -1200,7 +1200,7 @@ static void aspeed_machine_witherspoon_class_init(ObjectClass *oc, void *data)
-     mc->desc       = "OpenPOWER Witherspoon BMC (ARM1176)";
-     amc->soc_name  = "ast2500-a1";
-     amc->hw_strap1 = WITHERSPOON_BMC_HW_STRAP1;
--    amc->fmc_model = "mx25l25635e";
-+    amc->fmc_model = "mx25l25635f";
-     amc->spi_model = "mx66l1g45g";
-     amc->num_cs    = 2;
-     amc->i2c_init  = witherspoon_bmc_i2c_init;
+diff --git a/hw/arm/aspeed_ast2600.c b/hw/arm/aspeed_ast2600.c
+index aa2cd90bec17..cd75465c2bdd 100644
+--- a/hw/arm/aspeed_ast2600.c
++++ b/hw/arm/aspeed_ast2600.c
+@@ -307,6 +307,8 @@ static void aspeed_soc_ast2600_realize(DeviceState *dev, Error **errp)
+ 
+         object_property_set_int(OBJECT(&s->cpu[i]), "cntfrq", 1125000000,
+                                 &error_abort);
++        object_property_set_bool(OBJECT(&s->cpu[i]), "neon", false,
++                                &error_abort);
+         object_property_set_link(OBJECT(&s->cpu[i]), "memory",
+                                  OBJECT(s->memory), &error_abort);
+ 
 -- 
 2.37.3
 

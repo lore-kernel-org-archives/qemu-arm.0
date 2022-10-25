@@ -1,74 +1,73 @@
-Received: by 2002:a17:906:43c7:b0:78d:9f02:16a1 with SMTP id j7csp4198607ejn;
-        Tue, 25 Oct 2022 08:28:16 -0700 (PDT)
-X-Google-Smtp-Source: AMsMyM7AVt0UwaCltHiC/jTIVA7aOloREfeYPxrKmooyAI8k3msM7/FHZcy1dztV6H4W3ZYuhJ4k
-X-Received: by 2002:a05:622a:110:b0:39d:33f:7502 with SMTP id u16-20020a05622a011000b0039d033f7502mr27642575qtw.233.1666711696224;
-        Tue, 25 Oct 2022 08:28:16 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1666711696; cv=none;
+Received: by 2002:a17:906:43c7:b0:78d:9f02:16a1 with SMTP id j7csp4199279ejn;
+        Tue, 25 Oct 2022 08:29:06 -0700 (PDT)
+X-Google-Smtp-Source: AMsMyM5QYvygmb0If/YPOEt63mmgSMoP5y2Op6uwSECaTXN6ZEVpyU012UYTsVvQvxrp9GSGA+MX
+X-Received: by 2002:a05:6214:230a:b0:46e:3890:afcb with SMTP id gc10-20020a056214230a00b0046e3890afcbmr32613035qvb.59.1666711746663;
+        Tue, 25 Oct 2022 08:29:06 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1666711746; cv=none;
         d=google.com; s=arc-20160816;
-        b=I2+tuOYFSWw2+zbScyjbKF4nTEdjjPweYiChkhBQhpWPcu/UZGvF6WXa7L5PU6leGP
-         dAGuFiORM8S0WEoZoAJkOTnI9pbQ5cG7S0U6kGap5qZmWh3VDOJvYTPEQ+WYuJsbIzXZ
-         3eIzIBDRo+1ygbwP9IcF03jT9r24PKf7efLouA9ElHzjHgxXtZojfeScmSkL3sKIxoY1
-         2/4e2mcjcEGWChTYxLECWZpWlVnqA+NX7YFZNI0AH7gHopXvAbr5Lm+2e8jfzhnFh7JK
-         DR2ic7eQclrWju97JgJNh/lM9pomNQ3dQ5wNjVrZH4iEe5R3hz6mitjMcuqfc0tRD2TE
-         /wtw==
+        b=LmYq4nGBe7chSRTItYuEzdJeuspN96VwNFdrdrpHcRUVksbztVSBR7n3FQhIYcKOEj
+         F8ST6DQ9LULDVRkN30DiUwGoQPN0oOP0/7Dnr56BO+CDiWRUN6LMH2EJzxeR9XtRKVoj
+         XsHb3f4PFkKOZbtbFOihGHh7J+h3aTezRK5GTbKhv6GPCFz4iMrqYYqGbWymooeGrMVH
+         /s4VKBREY/AaOZJIFlA5lEj7DnUm0SqgAtaYYeeFyTZUnU1a/gtbTSp+7zDkbSOlTwYy
+         ip2FtbpAEsEyG+YwUzkIRZCZQrBEzW/yQsdM6Aq2fSbCPIYQrEF6Pq3XmNCSdEpCUzKR
+         lzyQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=errors-to:sender:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from;
-        bh=M2cNmGWejFKHc1ooI0hA+u2vZhVPw/I3Ek4CN2ApL9w=;
-        b=DA8x6qUZEJgOZxxrITheyxEKACQqEZt777UDNJsRkgn5ztH01C3uaNJqKYnyJUYPOS
-         An5ToB4iDptLFhvDYR6Atqi6sLJWpDfENR0IIdEy327gZ+kZ9jjzRoK9TZnwsuee9aHe
-         t61QVvjg50Qrx1KVTCmwKCl/D2qBIR8E2RiVGD0Qlj6MfyK8CWcXbLyuT7qBlaJpsC6W
-         QWGmWd0aO57zIvKsz/Wixl7cw3x6qaLQ+MPhRcp4miHp6ynDhzqHEKslSugWlw0fTc4g
-         MAMjBrhNef5n5m3+N7ozxIGz3057fETeFvshlox8+RSiqGBx/qZuuvEcrl+OgzUbABqq
-         xRNA==
+        bh=e+3Rznoetpv/m3dYJE/X92y4Onyajoj87sCDMQ39dL4=;
+        b=mRI8ZsOxwX6ymNRIUuo2w6ilIcWX0VagtU5uXbyL2UWmliq4d2z8pB29yukKqNFhbv
+         F48xr78KkDsZO+a99FQtK0tYukb58te+kDeKU+ItTbnJB/KrGSUKzMQ+nTyAPKGNCBEn
+         yBaFNx1qx6MFH1pZIMH3KA6oloN2HyzGBd4FsEDXY+ohJle8yHMWv/28ChEgtqtRbgzE
+         cAuSITu9lJfpr7y4eSpStIqWZH90o+WXJGY8lCvtr99vnoIEv63puXoq3RXa3pu+S1SW
+         TFU7Vfywq172deQ8K2e5iBt4RC4w4xemhMigEqDN/g3HAm7CWR+Ge9F1fFfOkxmWTcsn
+         WnPw==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t22-20020a05620a451600b006f7ef68fa29si1076952qkp.232.2022.10.25.08.28.16
+        by mx.google.com with ESMTPS id de7-20020a05620a370700b006ed1daa8056si1982869qkb.661.2022.10.25.08.29.06
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 25 Oct 2022 08:28:16 -0700 (PDT)
+        Tue, 25 Oct 2022 08:29:06 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1onLkM-00080B-Ee; Tue, 25 Oct 2022 11:21:42 -0400
+	id 1onLkU-0008Rs-BE; Tue, 25 Oct 2022 11:21:50 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=KVXu=22=kaod.org=clg@ozlabs.org>)
- id 1onLkF-0007f5-5j; Tue, 25 Oct 2022 11:21:35 -0400
+ id 1onLkT-0008ME-5P; Tue, 25 Oct 2022 11:21:49 -0400
 Received: from mail.ozlabs.org ([2404:9400:2221:ea00::3]
  helo=gandalf.ozlabs.org)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=KVXu=22=kaod.org=clg@ozlabs.org>)
- id 1onLkB-0004yp-U0; Tue, 25 Oct 2022 11:21:33 -0400
-Received: from gandalf.ozlabs.org (mail.ozlabs.org
- [IPv6:2404:9400:2221:ea00::3])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4MxbJ85t2yz4xMh;
- Wed, 26 Oct 2022 02:21:28 +1100 (AEDT)
+ id 1onLkQ-00051R-V3; Tue, 25 Oct 2022 11:21:48 -0400
+Received: from gandalf.ozlabs.org (gandalf.ozlabs.org [150.107.74.76])
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4MxbJQ2mG7z4xMh;
+ Wed, 26 Oct 2022 02:21:42 +1100 (AEDT)
 Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
  (No client certificate requested)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4MxbJ56mMzz4xGd;
- Wed, 26 Oct 2022 02:21:25 +1100 (AEDT)
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4MxbJM2MCZz4x1F;
+ Wed, 26 Oct 2022 02:21:39 +1100 (AEDT)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>, Joel Stanley <joel@jms.id.au>,
  Alistair Francis <alistair@alistair23.me>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- qemu-block@nongnu.org,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
- Francisco Iglesias <frasse.iglesias@gmail.com>
-Subject: [PULL 11/16] m25p80: Add the mx25l25635f SFPD table
-Date: Tue, 25 Oct 2022 17:20:37 +0200
-Message-Id: <20221025152042.278287-12-clg@kaod.org>
+ qemu-block@nongnu.org, Patrick Williams <patrick@stwcx.xyz>,
+ Francisco Iglesias <frasse.iglesias@gmail.com>,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
+Subject: [PULL 15/16] m25p80: Add the w25q01jvq SFPD table
+Date: Tue, 25 Oct 2022 17:20:41 +0200
+Message-Id: <20221025152042.278287-16-clg@kaod.org>
 X-Mailer: git-send-email 2.37.3
 In-Reply-To: <20221025152042.278287-1-clg@kaod.org>
 References: <20221025152042.278287-1-clg@kaod.org>
@@ -97,82 +96,65 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Sender: "Qemu-arm" <qemu-arm-bounces@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: koeoAwP11xGp
+X-TUID: 4+gJzBqLlgr/
 
-The mx25l25635e and mx25l25635f chips have the same JEDEC id but the
-mx25l25635f has more capabilities reported in the SFDP table. Support
-for 4B opcodes is of interest because it is exploited by the Linux
-kernel.
+From: Patrick Williams <patrick@stwcx.xyz>
 
-The SFDP table size is 0x200 bytes long. The mandatory table for basic
-features is available at byte 0x30 and an extra Macronix specific
-table is available at 0x60.
+Generated from hardware using the following command and then padding
+with 0xff to fill out a power-of-2:
+    hexdump -v -e '8/1 "0x%02x, " "\n"' sfdp`
 
+Signed-off-by: Patrick Williams <patrick@stwcx.xyz>
 Reviewed-by: Francisco Iglesias <frasse.iglesias@gmail.com>
-Message-Id: <20220722063602.128144-5-clg@kaod.org>
-Message-Id: <20221013161241.2805140-6-clg@kaod.org>
+[ clg: removed extern ]
+Message-Id: <20221006224424.3556372-1-patrick@stwcx.xyz>
+Message-Id: <20221013161241.2805140-10-clg@kaod.org>
 Signed-off-by: Cédric Le Goater <clg@kaod.org>
 ---
- hw/block/m25p80_sfdp.h |  1 +
- hw/block/m25p80.c      |  2 ++
- hw/block/m25p80_sfdp.c | 68 ++++++++++++++++++++++++++++++++++++++++++
- 3 files changed, 71 insertions(+)
+ hw/block/m25p80_sfdp.h |  2 ++
+ hw/block/m25p80.c      |  3 ++-
+ hw/block/m25p80_sfdp.c | 36 ++++++++++++++++++++++++++++++++++++
+ 3 files changed, 40 insertions(+), 1 deletion(-)
 
 diff --git a/hw/block/m25p80_sfdp.h b/hw/block/m25p80_sfdp.h
-index ecdb9c7f693f..506817bdc952 100644
+index e50f57e48e43..df7adfb5cec6 100644
 --- a/hw/block/m25p80_sfdp.h
 +++ b/hw/block/m25p80_sfdp.h
-@@ -18,6 +18,7 @@
- uint8_t m25p80_sfdp_n25q256a(uint32_t addr);
+@@ -24,4 +24,6 @@ uint8_t m25p80_sfdp_mx66l1g45g(uint32_t addr);
+ uint8_t m25p80_sfdp_w25q256(uint32_t addr);
+ uint8_t m25p80_sfdp_w25q512jv(uint32_t addr);
  
- uint8_t m25p80_sfdp_mx25l25635e(uint32_t addr);
-+uint8_t m25p80_sfdp_mx25l25635f(uint32_t addr);
- 
- 
++uint8_t m25p80_sfdp_w25q01jvq(uint32_t addr);
++
  #endif
 diff --git a/hw/block/m25p80.c b/hw/block/m25p80.c
-index 5ddc544e1b83..ffed1d69d5a9 100644
+index 8353a00a0595..02adc8752736 100644
 --- a/hw/block/m25p80.c
 +++ b/hw/block/m25p80.c
-@@ -234,6 +234,8 @@ static const FlashPartInfo known_devices[] = {
-     { INFO("mx25l12855e", 0xc22618,      0,  64 << 10, 256, 0) },
-     { INFO6("mx25l25635e", 0xc22019,     0xc22019,  64 << 10, 512,
-             ER_4K | ER_32K), .sfdp_read = m25p80_sfdp_mx25l25635e },
-+    { INFO6("mx25l25635f", 0xc22019,     0xc22019,  64 << 10, 512,
-+            ER_4K | ER_32K), .sfdp_read = m25p80_sfdp_mx25l25635f },
-     { INFO("mx25l25655e", 0xc22619,      0,  64 << 10, 512, 0) },
-     { INFO("mx66l51235f", 0xc2201a,      0,  64 << 10, 1024, ER_4K | ER_32K) },
-     { INFO("mx66u51235f", 0xc2253a,      0,  64 << 10, 1024, ER_4K | ER_32K) },
+@@ -349,7 +349,8 @@ static const FlashPartInfo known_devices[] = {
+       .sfdp_read = m25p80_sfdp_w25q256 },
+     { INFO("w25q512jv",   0xef4020,      0,  64 << 10, 1024, ER_4K),
+       .sfdp_read = m25p80_sfdp_w25q512jv },
+-    { INFO("w25q01jvq",   0xef4021,      0,  64 << 10, 2048, ER_4K) },
++    { INFO("w25q01jvq",   0xef4021,      0,  64 << 10, 2048, ER_4K),
++      .sfdp_read = m25p80_sfdp_w25q01jvq },
+ };
+ 
+ typedef enum {
 diff --git a/hw/block/m25p80_sfdp.c b/hw/block/m25p80_sfdp.c
-index 6499c4c39954..70c13aea7c63 100644
+index dad3d7e64f9f..77615fa29e5b 100644
 --- a/hw/block/m25p80_sfdp.c
 +++ b/hw/block/m25p80_sfdp.c
-@@ -82,3 +82,71 @@ static const uint8_t sfdp_mx25l25635e[] = {
+@@ -294,3 +294,39 @@ static const uint8_t sfdp_w25q512jv[] = {
      0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
  };
- define_sfdp_read(mx25l25635e)
+ define_sfdp_read(w25q512jv);
 +
-+static const uint8_t sfdp_mx25l25635f[] = {
-+    0x53, 0x46, 0x44, 0x50, 0x00, 0x01, 0x01, 0xff,
-+    0x00, 0x00, 0x01, 0x09, 0x30, 0x00, 0x00, 0xff,
-+    0xc2, 0x00, 0x01, 0x04, 0x60, 0x00, 0x00, 0xff,
-+    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
-+    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
-+    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
-+    0xe5, 0x20, 0xf3, 0xff, 0xff, 0xff, 0xff, 0x0f,
-+    0x44, 0xeb, 0x08, 0x6b, 0x08, 0x3b, 0x04, 0xbb,
-+    0xfe, 0xff, 0xff, 0xff, 0xff, 0xff, 0x00, 0xff,
-+    0xff, 0xff, 0x44, 0xeb, 0x0c, 0x20, 0x0f, 0x52,
-+    0x10, 0xd8, 0x00, 0xff, 0xff, 0xff, 0xff, 0xff,
-+    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
-+    0x00, 0x36, 0x00, 0x27, 0x9d, 0xf9, 0xc0, 0x64,
-+    0x85, 0xcb, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
-+    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
-+    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
-+    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
-+    0xff, 0xff, 0xff, 0xff, 0xc2, 0xf5, 0x08, 0x0a,
-+    0x08, 0x04, 0x03, 0x06, 0x00, 0x00, 0x07, 0x29,
-+    0x17, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
++static const uint8_t sfdp_w25q01jvq[] = {
++    0x53, 0x46, 0x44, 0x50, 0x06, 0x01, 0x01, 0xff,
++    0x00, 0x06, 0x01, 0x10, 0x80, 0x00, 0x00, 0xff,
++    0x84, 0x00, 0x01, 0x02, 0xd0, 0x00, 0x00, 0xff,
++    0x03, 0x00, 0x01, 0x02, 0xf0, 0x00, 0x00, 0xff,
 +    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
 +    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
 +    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
@@ -185,40 +167,24 @@ index 6499c4c39954..70c13aea7c63 100644
 +    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
 +    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
 +    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
++    0xe5, 0x20, 0xfb, 0xff, 0xff, 0xff, 0xff, 0x3f,
++    0x44, 0xeb, 0x08, 0x6b, 0x08, 0x3b, 0x42, 0xbb,
++    0xfe, 0xff, 0xff, 0xff, 0xff, 0xff, 0x00, 0x00,
++    0xff, 0xff, 0x40, 0xeb, 0x0c, 0x20, 0x0f, 0x52,
++    0x10, 0xd8, 0x00, 0x00, 0x36, 0x02, 0xa6, 0x00,
++    0x82, 0xea, 0x14, 0xe2, 0xe9, 0x63, 0x76, 0x33,
++    0x7a, 0x75, 0x7a, 0x75, 0xf7, 0xa2, 0xd5, 0x5c,
++    0x19, 0xf7, 0x4d, 0xff, 0xe9, 0x70, 0xf9, 0xa5,
 +    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
 +    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
-+    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
-+    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
-+    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
-+    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
-+    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
-+    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
-+    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
-+    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
-+    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
-+    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
-+    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
-+    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
-+    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
-+    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
-+    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
-+    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
-+    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
-+    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
-+    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
-+    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
-+    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
-+    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
-+    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
-+    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
-+    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
++    0xff, 0x0a, 0xf0, 0xff, 0x21, 0xff, 0xdc, 0xff,
 +    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
 +    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
 +    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
 +    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
 +    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
 +};
-+define_sfdp_read(mx25l25635f);
++define_sfdp_read(w25q01jvq);
 -- 
 2.37.3
 

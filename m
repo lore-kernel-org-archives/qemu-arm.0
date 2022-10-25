@@ -1,74 +1,74 @@
-Received: by 2002:a17:906:43c7:b0:78d:9f02:16a1 with SMTP id j7csp4197221ejn;
-        Tue, 25 Oct 2022 08:26:19 -0700 (PDT)
-X-Google-Smtp-Source: AMsMyM4x4JmHlzEUKcWcP5u2HEuzUpQ1GTDCqR306Lc2sEn62i5wCpKepLTsMCz6YPskc1+K23Fo
-X-Received: by 2002:a0c:a9cb:0:b0:4b4:746d:c0e7 with SMTP id c11-20020a0ca9cb000000b004b4746dc0e7mr32467052qvb.48.1666711578732;
-        Tue, 25 Oct 2022 08:26:18 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1666711578; cv=none;
+Received: by 2002:a17:906:43c7:b0:78d:9f02:16a1 with SMTP id j7csp4197373ejn;
+        Tue, 25 Oct 2022 08:26:31 -0700 (PDT)
+X-Google-Smtp-Source: AMsMyM6/sBnbds2NjW0EM5jw9gZpo+OdjWveyLqYDDyhiD4p40Wc6JviuCFH2Iu3tLatnYq8YQw4
+X-Received: by 2002:a05:620a:288a:b0:6b8:fcfe:db02 with SMTP id j10-20020a05620a288a00b006b8fcfedb02mr28341045qkp.504.1666711591309;
+        Tue, 25 Oct 2022 08:26:31 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1666711591; cv=none;
         d=google.com; s=arc-20160816;
-        b=CAVbKkhseHGDWvOmwBBTxr2XQd5mekMVD180AVynZSDmGrhyloViZJ2Hy5Me8W1jtZ
-         hxnShD7/JT6JPnmAMYQWJsdG6t+dkCnDNSNGoRcgQHIfhgV+8fIoDgsgy3N8dA4ugLvc
-         GwqYbccqleGQvtubxnMXnzCi0/tGrj72aMOMEwCioZBty0CNPKZDwEkhEx9H+DpH067G
-         MlOR5nDKZkjOCRrn7fBPaYH11/BX7k2Y5DaYAw/a0WfPHLaWV+pwujSaITCTIIskbx6/
-         KI0pTMFQ0t/lImx8kqh3YYC6YDJ0he47vnyvvY0q5c63vatdPDh3aqeRwlGboKDYyyJ9
-         dA8g==
+        b=HRjGt1PtvXdj9BIQmNGHHMD/M2tEsQreJzogP/ZPBTwQxufKA468RlSrQ6riSGGxNs
+         m+4eNl6nuFVtPy9lPpy/rRyBgntqH3QywavZLXkVFGjZkMshneffPbPBovvaGXMuHGSQ
+         3h3Ssisqt1+Et2C/9USWkx6oQPHnfLCaVtJeBskbzaNPlj25ET/pRzbtZoKOdUQMslfX
+         Armsz3rn9xDbN6V42oN8aDGARs1zl9PWDdKCqtztC9EQ5240k+y1mfvjWTShfrBCTCf1
+         KFLxTAsizGtqzHX2DBimew7NNI95UYOdAkaWHprNj8IlAzaC/B/kdefYGNmHtAI/h7YI
+         AQOA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=errors-to:sender:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from;
-        bh=kWKCZRww3UfmikHJjNlPX5LSMpnq9xITbbVD3pasuvU=;
-        b=0/g0XCBQXqy2YaCymIhSqImB+j3WSYWd7KLVAD0Aa1J1h7YQ3dmebU6cWkY8ACnyFW
-         Dro8xXhyb1mPOa0hDlBQUdzChzT21tIzUGjGSEveDF6+JDk9n9eH5O/Rgl+6w26eMO/4
-         tQhb1AV+zGRtnBb31+qrlczO1Gk324Q/xf0gPGzWSInV22xxNR1FhJVwQgO2SSUQ/Cbf
-         do02ctqru4tBD7RU7Jc5z+gccg6LqDm7nKU7ZI62ObfjjVqcMjFDU+pCA0JquIjRR98M
-         60CldD5xoSxNeBNHZNl1oAFDSEpd+XXB+Luw7jLR5hmZzjD7KsvzPXc1orpQqTtNXCyA
-         Zv7g==
+        bh=EMyQDxZ72O/U9gnCYcjj1MjPv3XNRObZ1TLmzFyA2f0=;
+        b=MwkcKExPN6fk36JouZrv33Rq7csoTCwpBOtdoe7KN47ybOPOh/dG+pN9iViI1LCo9Y
+         F127HpiDaGUB0Rkv68eDWWArV3Kqxy88N4str0/19wmOE6yWUatzKPh01vlsixgaLe5j
+         Gr+SSceNDtwOb55DJCUd+i+q5RY2uNd0g0suVwPLzx4pZ+hkfxO83wds83+niJgL+5Wl
+         wty7+Qz74dP0jmbItKG/J68C074JFmj4xfkxR4G3UhE1ZVIky+vmtCd3DKTE9/0Nk4c+
+         P6KdOjK8h0PG5kaM1nxVD+FlKS6WATMdp54T8MzrONVraTYccy6QrZv93W7QW0MwYyq/
+         IVBg==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id iv12-20020ad45cec000000b004bb9259f897si284298qvb.248.2022.10.25.08.26.18
+        by mx.google.com with ESMTPS id p11-20020a05621421eb00b004bb5ce188e4si1941146qvj.479.2022.10.25.08.26.30
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 25 Oct 2022 08:26:18 -0700 (PDT)
+        Tue, 25 Oct 2022 08:26:31 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1onLjz-00079V-4h; Tue, 25 Oct 2022 11:21:19 -0400
+	id 1onLkT-0008Oq-K1; Tue, 25 Oct 2022 11:21:49 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=KVXu=22=kaod.org=clg@ozlabs.org>)
- id 1onLjq-0006YQ-0T; Tue, 25 Oct 2022 11:21:10 -0400
+ id 1onLkM-000839-Tw; Tue, 25 Oct 2022 11:21:42 -0400
 Received: from mail.ozlabs.org ([2404:9400:2221:ea00::3]
  helo=gandalf.ozlabs.org)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=KVXu=22=kaod.org=clg@ozlabs.org>)
- id 1onLjk-0004k4-1a; Tue, 25 Oct 2022 11:21:09 -0400
+ id 1onLkK-0004zu-CV; Tue, 25 Oct 2022 11:21:42 -0400
 Received: from gandalf.ozlabs.org (mail.ozlabs.org
  [IPv6:2404:9400:2221:ea00::3])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4MxbHW2KpPz4xGG;
- Wed, 26 Oct 2022 02:20:55 +1100 (AEDT)
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4MxbJL5rBFz4xGk;
+ Wed, 26 Oct 2022 02:21:38 +1100 (AEDT)
 Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
  (No client certificate requested)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4MxbHR5kFJz4x1G;
- Wed, 26 Oct 2022 02:20:51 +1100 (AEDT)
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4MxbJJ07Vvz4xGG;
+ Wed, 26 Oct 2022 02:21:35 +1100 (AEDT)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>, Joel Stanley <joel@jms.id.au>,
  Alistair Francis <alistair@alistair23.me>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- qemu-block@nongnu.org, Peter Delevoryas <peter@pjd.dev>,
- Klaus Jensen <k.jensen@samsung.com>,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
-Subject: [PULL 01/16] hw/i2c/aspeed: Fix old reg slave receive
-Date: Tue, 25 Oct 2022 17:20:27 +0200
-Message-Id: <20221025152042.278287-2-clg@kaod.org>
+ qemu-block@nongnu.org,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
+ Francisco Iglesias <frasse.iglesias@gmail.com>
+Subject: [PULL 14/16] m25p80: Add the w25q512jv SFPD table
+Date: Tue, 25 Oct 2022 17:20:40 +0200
+Message-Id: <20221025152042.278287-15-clg@kaod.org>
 X-Mailer: git-send-email 2.37.3
 In-Reply-To: <20221025152042.278287-1-clg@kaod.org>
 References: <20221025152042.278287-1-clg@kaod.org>
@@ -97,84 +97,91 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Sender: "Qemu-devel" <qemu-devel-bounces@nongnu.org>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: qnDTJmGTbyI5
+X-TUID: JNqTKfqqNV9G
 
-From: Peter Delevoryas <peter@pjd.dev>
+The SFDP table size is 0x100 bytes long. The mandatory table for basic
+features is available at byte 0x80 and two extra Winbond specifics
+table are available at 0xC0 and 0xF0.
 
-I think when Klaus ported his slave mode changes from the original patch
-series to the rewritten I2C module, he changed the behavior of the first
-byte that is received by the slave device.
-
-What's supposed to happen is that the AspeedI2CBus's slave device's
-i2c_event callback should run, and if the event is "send_async", then it
-should populate the byte buffer with the 8-bit I2C address that is being
-sent to. Since we only support "send_async", the lowest bit should
-always be 0 (indicating that the master is requesting to send data).
-
-This is the code Klaus had previously, for reference. [1]
-
-    switch (event) {
-    case I2C_START_SEND:
-        bus->buf = bus->dev_addr << 1;
-
-        bus->buf &= I2CD_BYTE_BUF_RX_MASK;
-        bus->buf <<= I2CD_BYTE_BUF_RX_SHIFT;
-
-        bus->intr_status |= (I2CD_INTR_SLAVE_ADDR_RX_MATCH | I2CD_INTR_RX_DONE);
-        aspeed_i2c_set_state(bus, I2CD_STXD);
-
-        break;
-
-[1]: https://lore.kernel.org/qemu-devel/20220331165737.1073520-4-its@irrelevant.dk/
-
-Fixes: a8d48f59cd021b25 ("hw/i2c/aspeed: add slave device in old register mode")
-Signed-off-by: Peter Delevoryas <peter@pjd.dev>
-Reviewed-by: Klaus Jensen <k.jensen@samsung.com>
-Message-Id: <20220820225712.713209-2-peter@pjd.dev>
+Reviewed-by: Francisco Iglesias <frasse.iglesias@gmail.com>
+Message-Id: <20220722063602.128144-8-clg@kaod.org>
+Message-Id: <20221013161241.2805140-9-clg@kaod.org>
 Signed-off-by: Cédric Le Goater <clg@kaod.org>
 ---
- include/hw/i2c/aspeed_i2c.h | 1 +
- hw/i2c/aspeed_i2c.c         | 8 +++++---
- 2 files changed, 6 insertions(+), 3 deletions(-)
+ hw/block/m25p80_sfdp.h |  1 +
+ hw/block/m25p80.c      |  3 ++-
+ hw/block/m25p80_sfdp.c | 36 ++++++++++++++++++++++++++++++++++++
+ 3 files changed, 39 insertions(+), 1 deletion(-)
 
-diff --git a/include/hw/i2c/aspeed_i2c.h b/include/hw/i2c/aspeed_i2c.h
-index 300a89b34301..adc904d6c1f8 100644
---- a/include/hw/i2c/aspeed_i2c.h
-+++ b/include/hw/i2c/aspeed_i2c.h
-@@ -130,6 +130,7 @@ REG32(I2CD_CMD, 0x14) /* I2CD Command/Status */
-     SHARED_FIELD(M_TX_CMD, 1, 1)
-     SHARED_FIELD(M_START_CMD, 0, 1)
- REG32(I2CD_DEV_ADDR, 0x18) /* Slave Device Address */
-+    SHARED_FIELD(SLAVE_DEV_ADDR1, 0, 7)
- REG32(I2CD_POOL_CTRL, 0x1C) /* Pool Buffer Control */
-     SHARED_FIELD(RX_COUNT, 24, 5)
-     SHARED_FIELD(RX_SIZE, 16, 5)
-diff --git a/hw/i2c/aspeed_i2c.c b/hw/i2c/aspeed_i2c.c
-index 42c6d69b82f0..c166fd20fa11 100644
---- a/hw/i2c/aspeed_i2c.c
-+++ b/hw/i2c/aspeed_i2c.c
-@@ -1131,7 +1131,9 @@ static int aspeed_i2c_bus_slave_event(I2CSlave *slave, enum i2c_event event)
-     AspeedI2CBus *bus = ASPEED_I2C_BUS(qbus->parent);
-     uint32_t reg_intr_sts = aspeed_i2c_bus_intr_sts_offset(bus);
-     uint32_t reg_byte_buf = aspeed_i2c_bus_byte_buf_offset(bus);
--    uint32_t value;
-+    uint32_t reg_dev_addr = aspeed_i2c_bus_dev_addr_offset(bus);
-+    uint32_t dev_addr = SHARED_ARRAY_FIELD_EX32(bus->regs, reg_dev_addr,
-+                                                SLAVE_DEV_ADDR1);
+diff --git a/hw/block/m25p80_sfdp.h b/hw/block/m25p80_sfdp.h
+index 595be9000daa..e50f57e48e43 100644
+--- a/hw/block/m25p80_sfdp.h
++++ b/hw/block/m25p80_sfdp.h
+@@ -22,5 +22,6 @@ uint8_t m25p80_sfdp_mx25l25635f(uint32_t addr);
+ uint8_t m25p80_sfdp_mx66l1g45g(uint32_t addr);
  
-     if (aspeed_i2c_is_new_mode(bus->controller)) {
-         return aspeed_i2c_bus_new_slave_event(bus, event);
-@@ -1139,8 +1141,8 @@ static int aspeed_i2c_bus_slave_event(I2CSlave *slave, enum i2c_event event)
+ uint8_t m25p80_sfdp_w25q256(uint32_t addr);
++uint8_t m25p80_sfdp_w25q512jv(uint32_t addr);
  
-     switch (event) {
-     case I2C_START_SEND_ASYNC:
--        value = SHARED_ARRAY_FIELD_EX32(bus->regs, reg_byte_buf, TX_BUF);
--        SHARED_ARRAY_FIELD_DP32(bus->regs, reg_byte_buf, RX_BUF, value << 1);
-+        /* Bit[0] == 0 indicates "send". */
-+        SHARED_ARRAY_FIELD_DP32(bus->regs, reg_byte_buf, RX_BUF, dev_addr << 1);
+ #endif
+diff --git a/hw/block/m25p80.c b/hw/block/m25p80.c
+index 6119c57c8980..8353a00a0595 100644
+--- a/hw/block/m25p80.c
++++ b/hw/block/m25p80.c
+@@ -347,7 +347,8 @@ static const FlashPartInfo known_devices[] = {
+     { INFO("w25q80bl",    0xef4014,      0,  64 << 10,  16, ER_4K) },
+     { INFO("w25q256",     0xef4019,      0,  64 << 10, 512, ER_4K),
+       .sfdp_read = m25p80_sfdp_w25q256 },
+-    { INFO("w25q512jv",   0xef4020,      0,  64 << 10, 1024, ER_4K) },
++    { INFO("w25q512jv",   0xef4020,      0,  64 << 10, 1024, ER_4K),
++      .sfdp_read = m25p80_sfdp_w25q512jv },
+     { INFO("w25q01jvq",   0xef4021,      0,  64 << 10, 2048, ER_4K) },
+ };
  
-         ARRAY_FIELD_DP32(bus->regs, I2CD_INTR_STS, SLAVE_ADDR_RX_MATCH, 1);
-         SHARED_ARRAY_FIELD_DP32(bus->regs, reg_intr_sts, RX_DONE, 1);
+diff --git a/hw/block/m25p80_sfdp.c b/hw/block/m25p80_sfdp.c
+index 5b011559d43d..dad3d7e64f9f 100644
+--- a/hw/block/m25p80_sfdp.c
++++ b/hw/block/m25p80_sfdp.c
+@@ -258,3 +258,39 @@ static const uint8_t sfdp_w25q256[] = {
+     0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
+ };
+ define_sfdp_read(w25q256);
++
++static const uint8_t sfdp_w25q512jv[] = {
++    0x53, 0x46, 0x44, 0x50, 0x06, 0x01, 0x01, 0xff,
++    0x00, 0x06, 0x01, 0x10, 0x80, 0x00, 0x00, 0xff,
++    0x84, 0x00, 0x01, 0x02, 0xd0, 0x00, 0x00, 0xff,
++    0x03, 0x00, 0x01, 0x02, 0xf0, 0x00, 0x00, 0xff,
++    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
++    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
++    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
++    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
++    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
++    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
++    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
++    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
++    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
++    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
++    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
++    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
++    0xe5, 0x20, 0xfb, 0xff, 0xff, 0xff, 0xff, 0x1f,
++    0x44, 0xeb, 0x08, 0x6b, 0x08, 0x3b, 0x42, 0xbb,
++    0xfe, 0xff, 0xff, 0xff, 0xff, 0xff, 0x00, 0x00,
++    0xff, 0xff, 0x40, 0xeb, 0x0c, 0x20, 0x0f, 0x52,
++    0x10, 0xd8, 0x00, 0x00, 0x36, 0x02, 0xa6, 0x00,
++    0x82, 0xea, 0x14, 0xe2, 0xe9, 0x63, 0x76, 0x33,
++    0x7a, 0x75, 0x7a, 0x75, 0xf7, 0xa2, 0xd5, 0x5c,
++    0x19, 0xf7, 0x4d, 0xff, 0xe9, 0x70, 0xf9, 0xa5,
++    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
++    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
++    0xff, 0x0a, 0xf0, 0xff, 0x21, 0xff, 0xdc, 0xff,
++    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
++    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
++    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
++    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
++    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
++};
++define_sfdp_read(w25q512jv);
 -- 
 2.37.3
 

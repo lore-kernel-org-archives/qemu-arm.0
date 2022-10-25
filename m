@@ -1,125 +1,116 @@
-Received: by 2002:a17:906:80c3:b0:7ae:d8f:8937 with SMTP id a3csp3058136ejx;
-        Mon, 7 Nov 2022 06:39:16 -0800 (PST)
-X-Received: by 2002:adf:e4cb:0:b0:236:dce2:3604 with SMTP id v11-20020adfe4cb000000b00236dce23604mr23907013wrm.525.1667831956341;
-        Mon, 07 Nov 2022 06:39:16 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1667831956; cv=none;
+Received: by 2002:a17:906:80c3:b0:7ae:d8f:8937 with SMTP id a3csp3157037ejx;
+        Mon, 7 Nov 2022 08:42:16 -0800 (PST)
+X-Google-Smtp-Source: AMsMyM7lw6CBIbuFywG+mMGzA7haMXoY/afQHx8UwAdtnVLIRom67BLJsGQB82KuomN1IuAPtjjz
+X-Received: by 2002:ae9:f40c:0:b0:6fa:43b8:44d0 with SMTP id y12-20020ae9f40c000000b006fa43b844d0mr26516017qkl.637.1667839336321;
+        Mon, 07 Nov 2022 08:42:16 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1667839336; cv=none;
         d=google.com; s=arc-20160816;
-        b=Grqa2JkMoDedxBiG5Bj58+rGriB015FMshzmKRGzmPE2TzmEsma3CZriTrA+6yds8n
-         g7jhb3O6pqGOit4nuvc2Pd0qGSa+HXraer2UelAIP1UAgx4lIC4MXVuqkKadW//WBc3t
-         isJbxg9JJSaONfqP5rMDt2VXMsb9LnGfbcO70A6Ugfp7cB5U4j48CwphqMrsIvOon7F8
-         JoTTyeM6Jmq9cvhswMbyLTpwDyYvYxQg7bYiTTWv9wtFKKIgcQKn4x8d7v3+8OCBZs13
-         KJ3F020M/oDsWp9BjNFOWMd3Ut3cQscM/yBFHK7mpKkwDBJVcFP216YZXyG7NKBHVgQm
-         GiWg==
+        b=dkNq1g4UFNN4zPJKGVenDPBWEKDBfSreovFYGMaEQLcJ5eG9Th3N7sSl1jOAvoKaJG
+         ifXPv1Fmy5HfcKNFshhkgpIhSH6D23vmYN2kEwurcOYWeLCN8jVh0dd7++ZT0VyxK4rc
+         3MHnywVYIcs8GS0A+z3Y3sHXMI1SoYr+bL/voeCfk2NvzKKkbzpT59TuIkY0Q5RL3jkL
+         ohYRCVcKOku0kjWPqwxCnsG40sPyWkHvF91iVqUInFPxWo7MQDhAPwEPTPShY443o0lI
+         4T1ryzxwafJ+eyMs2S01PDHPhf+9Wh9YRTgU/BY7kjEuVRfFc62Yqx1a5QRYmcbDYY7o
+         xe9w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=IXs6PaEBUPBAgalsZO5rOuCXzL1sRHPyoX1MVSmBbM0=;
-        b=cgw6f2rLi+xP3BttyhbQAKHkyDrvOjbpU3z1DCGOaO/2qC4QDtN16ibxv/oxam5DIN
-         ZYofpeI050l4dmMSoUvJdnxsJt6y9xNy/cHTTuacChR4yxbDe1a9eU5b7FgClB8+tCT/
-         oYDOz+vEEqy4ZY3DCrvmFgm4Sw9H9nRjAvRAkyxXy5OMeJeNOGVDfuieKQXt2uFX/b3/
-         5Gbh2q/yWx5XrrccQLVU5AaBDp0HlHAt9l4CvbeUMhMnqCElfAqRn+Rh0rMmcr0yESXB
-         j4u82+aEQ96XFP5ruLj6Z9ipdqcwM/Cw5v/kJJ71Z9vrUTwbL8KpU8qIdR9LztUC/IFv
-         Cstw==
+        h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence:mime-version
+         :content-transfer-encoding:cc:to:in-reply-to:message-id:subject:date
+         :from;
+        bh=R9O1OuBGZjMfJMQdhxvCmUwhnBBXDW/UdeHD6HTk09M=;
+        b=d6NDFIEVEwfupFKT+bXPi30QUFrJek/1SXSABHozwwCkrqVpRRUa0Eo2DeTcBAVrya
+         gzrleCKnAB1Zcic6YV4Jbtim4Dg8DGpkx4tpDDrMDXDdIKkKdWf9nVTzXO1a3XlmxHTB
+         gxzlDQ1IzGGpdXTlDtZJb2Odg7t8KuzMbpZiqd5TEnKIYb7jyD7EK+ZcTAYbkWVl9Dql
+         zJfeJugy+PgfPWwJiDG6YO91RJX/Z3swvg3ggrZyaJs4dpvsH9C6nAtfqbKYf/v/Yi7w
+         lx7An0LhQd2jAkjQ33X0WADwQ8CvkZla0e52jfDFy2aox+KjO095n2G9nXdM3dOHOPJC
+         ur/Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=ZNUR42hr;
-       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <philmd@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id n10-20020a05600c500a00b003b33ca58887sor1641128wmr.40.2022.11.07.06.39.16
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=sr.ht
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id dz10-20020a05620a2b8a00b006fa31ff1adesi4647911qkb.352.2022.11.07.08.42.16
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Mon, 07 Nov 2022 06:39:16 -0800 (PST)
-Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Mon, 07 Nov 2022 08:42:16 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=ZNUR42hr;
-       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=IXs6PaEBUPBAgalsZO5rOuCXzL1sRHPyoX1MVSmBbM0=;
-        b=ZNUR42hr/eYrJi8SHQHjk/7wfL8dOyjLtd/aIgVS3fu72AOCcEvbkrfRKEVmEGGie1
-         mena68B2A9BLihxdKo5xMn52Fb5sbmMcvIsHqJfWk2MMoBrm0y8eJRZ02ZGRKRp27xXh
-         ZpSVzJmyhJr1BmoEzPBM/e6aAmHy8R7mnijXeM/tCYzAK6cj7ElWWbb1YI8ilYCFnuWd
-         ehh2jJtPpqV6Yvf2IJWV1BToJAczvC+ZekvxK7OpPPlKT2prfCy9MpssI8Y0gvJPZT7b
-         YYWts9gKtEcax8uuGn7brcltEyzkvtuw9jWXQpVmPG7bgoHb2fiUP+s+cbDUnpJSRT6/
-         2I8w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=IXs6PaEBUPBAgalsZO5rOuCXzL1sRHPyoX1MVSmBbM0=;
-        b=abX3S6t8pbRpdzKdfKKFq18t5lHtVeZ9+CCrFB8N9NKS7uPObrza3IKkH51lfTf+Qb
-         6tfF0zio/jfRECx2yOPF/3GWxQu0Vvnrwykl7pmQ7A5SaBNd/b2j5HB08eMgURlT3XwW
-         ds9ZmCU7Gv1F2vejNND7OpII3YTyJWVnVul1MnjfDwlDkIedmUTgDaBxdfmd3zMazfwV
-         CidIocTKH065xbY+ZXG0nureiHutqqMHRwu/qZEna9UwTwApIz1/d9Rg7N1fyTFUF+uu
-         GFeamf5ybDbeDnosDN3TV/kqd4Ze6WCi6kkucHJlY12GPCOAeqv6wsXA0IcWe1/2gdYC
-         nIAg==
-X-Gm-Message-State: ACrzQf3qiChko1bQxC7+3VAtk/5NEWjNdLTloIOe8xyXVTUxH2feIzh4
-	PsCGrO2sMO6jzpffxQH64i5tnVms3OmV2K2Q
-X-Google-Smtp-Source: AMsMyM5R8VHjbYk8ERW9E9y7nJVmap1KHyMsseUdQ6CHsG6bQPZa1SM+XXyAtaVg6ooG0ELYPrrA+A==
-X-Received: by 2002:a05:600c:4ecf:b0:3cf:8762:1a67 with SMTP id g15-20020a05600c4ecf00b003cf87621a67mr20372390wmq.41.1667831955951;
-        Mon, 07 Nov 2022 06:39:15 -0800 (PST)
-Return-Path: <philmd@linaro.org>
-Received: from [192.168.1.115] ([185.126.107.38])
-        by smtp.gmail.com with ESMTPSA id c16-20020a5d5290000000b0022e36c1113fsm7489803wrv.13.2022.11.07.06.39.14
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 07 Nov 2022 06:39:15 -0800 (PST)
-Message-ID: <0a146956-a397-54c1-71dd-cd90a68218f7@linaro.org>
-Date: Mon, 7 Nov 2022 15:39:13 +0100
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=sr.ht
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1os5CQ-00025S-8I; Mon, 07 Nov 2022 11:42:14 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <outgoing@sr.ht>)
+ id 1os5CM-00024c-9U; Mon, 07 Nov 2022 11:42:10 -0500
+Received: from mail-b.sr.ht ([173.195.146.151])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <outgoing@sr.ht>)
+ id 1os5CI-0004qY-K0; Mon, 07 Nov 2022 11:42:08 -0500
+Authentication-Results: mail-b.sr.ht; dkim=none 
+Received: from git.sr.ht (unknown [173.195.146.142])
+ by mail-b.sr.ht (Postfix) with ESMTPSA id D61ED11F30F;
+ Mon,  7 Nov 2022 16:42:04 +0000 (UTC)
+From: ~axelheider <axelheider@git.sr.ht>
+Date: Tue, 25 Oct 2022 20:32:30 +0200
+Subject: [PATCH qemu.git v2 4/9] hw/timer/imx_epit: software reset clears the
+ interrupt
+Message-ID: <166783932395.3279.1096141058484230644-4@git.sr.ht>
+X-Mailer: git.sr.ht
+In-Reply-To: <166783932395.3279.1096141058484230644-0@git.sr.ht>
+To: qemu-devel@nongnu.org
+Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
- Gecko/20100101 Thunderbird/102.4.1
-Subject: Re: [PATCH 1/3] arm: move KVM breakpoints helpers
-Content-Language: en-US
-To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
- francesco.cagnin@gmail.com
-Cc: qemu-devel@nongnu.org, dirty@apple.com, r.bolshakov@yadro.com,
- peter.maydell@linaro.org, agraf@csgraf.de, pbonzini@redhat.com,
- Francesco Cagnin <fcagnin@quarkslab.com>, qemu-arm@nongnu.org
-References: <20221104184101.6923-1-fcagnin@quarkslab.com>
- <20221104184101.6923-2-fcagnin@quarkslab.com> <87a652hmoe.fsf@linaro.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
-In-Reply-To: <87a652hmoe.fsf@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-TUID: FuXkDOqT1HPK
+Received-SPF: pass client-ip=173.195.146.151; envelope-from=outgoing@sr.ht;
+ helo=mail-b.sr.ht
+X-Spam_score_int: 36
+X-Spam_score: 3.6
+X-Spam_bar: +++
+X-Spam_report: (3.6 / 5.0 requ) BAYES_00=-1.9, DATE_IN_PAST_96_XX=3.405,
+ FREEMAIL_FORGED_REPLYTO=2.095, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: ~axelheider <axelheider@gmx.de>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 0aOhVl/bOyoc
 
-On 7/11/22 15:15, Alex Bennée wrote:
-> 
-> francesco.cagnin@gmail.com writes:
-> 
->> From: Francesco Cagnin <fcagnin@quarkslab.com>
->>
->> These helpers will be also used for HVF. Aside from reformatting a
->> couple of comments for 'checkpatch.pl', this is just code motion.
->>
->> Signed-off-by: Francesco Cagnin <fcagnin@quarkslab.com>
->> ---
->>   target/arm/debug_helper.c | 241 +++++++++++++++++++++++++++++++++
->>   target/arm/internals.h    |  50 +++++++
-> 
-> Moving out of kvm64.c seems fine to me but I wonder if debug_helper.c is
-> the best location. debug_helpers is currently very focused on just
-> handling the TCG emulation case where as we are doing this tracking just
-> for the VMM cases or KVM and now HVF.
-> 
-> We are (slowly) trying to clean up the code in target/arm so we can
-> support builds like --disable-tcg and to do that we want to avoid too
-> much ifdef hackery in the individual compilation units.
+From: Axel Heider <axel.heider@hensoldt.net>
 
+Signed-off-by: Axel Heider <axel.heider@hensoldt.net>
+---
+ hw/timer/imx_epit.c | 4 ++++
+ 1 file changed, 4 insertions(+)
 
-I was planning to move hypervisor-specific code to 
-target/arm/$hypervisor/, but here Francesco wants to re-use the same code
-between 2 hypervisors... Maybe move it to target/arm/hyp_gdbstub.c
-and let meson add it conditionally?
+diff --git a/hw/timer/imx_epit.c b/hw/timer/imx_epit.c
+index 2e9dae0bc8..5315d9633e 100644
+--- a/hw/timer/imx_epit.c
++++ b/hw/timer/imx_epit.c
+@@ -94,6 +94,10 @@ static void imx_epit_reset(DeviceState *dev)
+     s->lr = EPIT_TIMER_MAX;
+     s->cmp = 0;
+     s->cnt = 0;
++
++    /* clear the interrupt */
++    qemu_irq_lower(s->irq);
++
+     ptimer_transaction_begin(s->timer_cmp);
+     ptimer_transaction_begin(s->timer_reload);
+     /* stop both timers */
+-- 
+2.34.5
 
->>   target/arm/kvm64.c        | 276 --------------------------------------
->>   3 files changed, 291 insertions(+), 276 deletions(-)
-> <snip>
-> 

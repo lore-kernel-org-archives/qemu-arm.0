@@ -1,62 +1,61 @@
-Received: by 2002:a17:906:43c7:b0:78d:9f02:16a1 with SMTP id j7csp4197390ejn;
-        Tue, 25 Oct 2022 08:26:32 -0700 (PDT)
-X-Google-Smtp-Source: AMsMyM5uDJCWw2usWcT2bPiLcVQzlgwtNx9Np8v3Ybm7SYlNan+fM/MQ5o3/rn+o7SQBcZvc2e3G
-X-Received: by 2002:a05:620a:24c1:b0:6ed:ae5d:1834 with SMTP id m1-20020a05620a24c100b006edae5d1834mr26183304qkn.137.1666711592238;
-        Tue, 25 Oct 2022 08:26:32 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1666711592; cv=none;
+Received: by 2002:a17:906:43c7:b0:78d:9f02:16a1 with SMTP id j7csp4197601ejn;
+        Tue, 25 Oct 2022 08:26:53 -0700 (PDT)
+X-Google-Smtp-Source: AMsMyM74hDRoVBhTAztclrhEgtCuSVfsFtsuoBLjW+ADIbSeW+N/Cn/Ruzqnw3MgNclLhQUx4gNf
+X-Received: by 2002:a05:620a:44c2:b0:6ee:7a72:50b3 with SMTP id y2-20020a05620a44c200b006ee7a7250b3mr26830916qkp.124.1666711613425;
+        Tue, 25 Oct 2022 08:26:53 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1666711613; cv=none;
         d=google.com; s=arc-20160816;
-        b=Si/5HmbfY/LRgA577M5TU12q0fvWQetYiAZJ+nA50IuCfH+4WBaO9L0tKbfjeOQ3Qj
-         Ca+UcKvn91TsjsbT9s6+RRppiIs9XoBRZerDRd6yARXW244hnqUlpJyapZnF5MMMV9jG
-         jSaSLuOVQTtrbpU+HAKr9K3yRzsDU8b88hfSso4WjhkAqTgqoJCBVz8VT3ECvu8dZFPH
-         qKAY1ajo6PAW1y0Rp1q80psnc7k8Ip4keJOueTkm2kkmmCMHhm9DEzFxnFxw/iG5lz2h
-         BX6/FJCPY51T/jHZCVsuV0IBqAxp2Rz3AoczOf2nLOYDR6Qbt07prtuq8BGfBaNGqRnp
-         osbg==
+        b=qSpS0N4D++rQKreDDHQvQJiWLfL6AedeTdH0v9t6a9lKjKwS9gzpcwnvGLia8Ydfmy
+         Rs2apTNIs+NrjUYB7bT+Be3OJQ44RWbs83KAdXEG+jr5lfmLkqMSg40uVFXScgMi0Kfc
+         ZixVPe/eqwVEwqThaxUc7OmSvyKDLgUHNkdP2oddEOxKJ0Tyedn8oAk9GrlelUudHrtJ
+         awJeQdjhYqnjxHF08mN44tQWJkS0l9OEhpI1HsLh/4KlfpiUS5nUzzDcqKu45EeC5MAS
+         1uWQp0kFP5cM8qHcweTQkbwrTkToApcbTkXFUsn1rw1A9xjodMVz6eRrGu0yhxHbp/kP
+         UJxw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=errors-to:sender:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from;
-        bh=LR/X2l9ETlP2w7h8RYppinKi3QrS+fDT9Gdtrc4jfAA=;
-        b=avNqsZOIlkXbchX4cNbgwtGK8cw0MI7PUSDER2/khzcU3OVDg/68/OF9VnfEXCq5QD
-         1kMvUYPwTMumxJTttAjxp7ewsYLXpfu8efqJ5aI0+du66J1SsgwmXsERxY1Pm91rOgA2
-         BkhiBU7Ceq36KqK2VeNv9p8/6c+xcPwGpuzSrE00SLBp7+yrPsNv3/LW4k4fUadRFLzo
-         CG+6MAyhufrS3x2xm49/D9Gza5Bxlx7/CFJGYabVF1OW9EFVFjIXYynlj2EvyBzudsj2
-         mY9KrxPrvoVkWPbV1EIWMXGLY3zDqGcX2YQGkia3qaDkYsuGK3Qc3YOVQpfc7p3Tymnr
-         HmBw==
+        bh=z6tenYju8ie1r0z3IyyGm039D5vzoPxZa2APJHfm700=;
+        b=DwuDh84EmTyTVfKhHoCiCb5omgzGG/34h1ssy2yQrM8iclOWZ2qKIsPmYTr4xQkd/x
+         slULXod9uLrQAn/LgPuLxaL5dgM4pAgNMCh505FUS2YwSd8Ztv/fDcjM2lVPo2PBKkAq
+         +CSnYukRmTEVQCtRXRKx08+TtwqIwQOJsXB5Ws6JJ+PXNa8iCOkC7cp1NCaLB9PnGC2E
+         vFMumoALvc5l8Xk+XQ6rRAke4ScU5tCmE3sfM6ZeZYT67HOY8v1kVHCg0zkCPd6V8wgp
+         JxEUdqnogS7YP0W2cq3sV4Lf1fB0Lpjkld3SqVHDZF0ei7VcZIG5U+1DhodhXa1I/lht
+         S02A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id ge10-20020a05621427ca00b004bb92568057si226237qvb.249.2022.10.25.08.26.32
+        by mx.google.com with ESMTPS id m14-20020a05620a290e00b006cdf5daf139si2197907qkp.694.2022.10.25.08.26.53
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 25 Oct 2022 08:26:32 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 25 Oct 2022 08:26:53 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1onLjz-0007BV-PL; Tue, 25 Oct 2022 11:21:19 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1onLkI-0007i0-GU; Tue, 25 Oct 2022 11:21:38 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=KVXu=22=kaod.org=clg@ozlabs.org>)
- id 1onLjo-0006OI-Eh; Tue, 25 Oct 2022 11:21:08 -0400
-Received: from mail.ozlabs.org ([2404:9400:2221:ea00::3]
- helo=gandalf.ozlabs.org)
+ id 1onLkE-0007eK-AX; Tue, 25 Oct 2022 11:21:34 -0400
+Received: from gandalf.ozlabs.org ([150.107.74.76])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=KVXu=22=kaod.org=clg@ozlabs.org>)
- id 1onLji-0004kO-0V; Tue, 25 Oct 2022 11:21:07 -0400
+ id 1onLk8-0004uI-5i; Tue, 25 Oct 2022 11:21:34 -0400
 Received: from gandalf.ozlabs.org (mail.ozlabs.org
  [IPv6:2404:9400:2221:ea00::3])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4MxbHZ6gRcz4x1G;
- Wed, 26 Oct 2022 02:20:58 +1100 (AEDT)
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4MxbJ533d9z4xGk;
+ Wed, 26 Oct 2022 02:21:25 +1100 (AEDT)
 Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
  (No client certificate requested)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4MxbHW61tvz4xGd;
- Wed, 26 Oct 2022 02:20:55 +1100 (AEDT)
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4MxbJ24RyTz4xGh;
+ Wed, 26 Oct 2022 02:21:22 +1100 (AEDT)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
@@ -65,119 +64,115 @@ Cc: Peter Maydell <peter.maydell@linaro.org>, Joel Stanley <joel@jms.id.au>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  qemu-block@nongnu.org,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
- Thomas Huth <thuth@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>
-Subject: [PULL 02/16] tests/avocado/machine_aspeed.py: Fix typos on buildroot
-Date: Tue, 25 Oct 2022 17:20:28 +0200
-Message-Id: <20221025152042.278287-3-clg@kaod.org>
+ Francisco Iglesias <frasse.iglesias@gmail.com>
+Subject: [PULL 10/16] m25p80: Add the mx25l25635e SFPD table
+Date: Tue, 25 Oct 2022 17:20:36 +0200
+Message-Id: <20221025152042.278287-11-clg@kaod.org>
 X-Mailer: git-send-email 2.37.3
 In-Reply-To: <20221025152042.278287-1-clg@kaod.org>
 References: <20221025152042.278287-1-clg@kaod.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2404:9400:2221:ea00::3;
+Received-SPF: pass client-ip=150.107.74.76;
  envelope-from=SRS0=KVXu=22=kaod.org=clg@ozlabs.org; helo=gandalf.ozlabs.org
-X-Spam_score_int: -39
-X-Spam_score: -4.0
-X-Spam_bar: ----
-X-Spam_report: (-4.0 / 5.0 requ) BAYES_00=-1.9,
- HEADER_FROM_DIFFERENT_DOMAINS=0.25, RCVD_IN_DNSWL_MED=-2.3,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_score_int: -15
+X-Spam_score: -1.6
+X-Spam_bar: -
+X-Spam_report: (-1.6 / 5.0 requ) BAYES_00=-1.9,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.25, SPF_PASS=-0.001,
+ T_SPF_HELO_TEMPERROR=0.01 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Sender: "Qemu-devel" <qemu-devel-bounces@nongnu.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: VQqi/n0alv3T
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Sender: "Qemu-arm" <qemu-arm-bounces@nongnu.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: j2kKQmyb5+nM
 
-Replace 'buidroot' and 'builroot' by 'buildroot'.
+The SFDP table is 0x80 bytes long. The mandatory table for basic
+features is available at byte 0x30 and an extra Macronix specific
+table is available at 0x60.
 
-Fixes: f7bc7da0724f ("test/avocado/machine_aspeed.py: Add tests using buildroot images")
-Reviewed-by: Thomas Huth <thuth@redhat.com>
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-Reviewed-by: Joel Stanley <joel@jms.id.au>
-Message-Id: <20220923084803.498337-2-clg@kaod.org>
+4B opcodes are not supported.
+
+Reviewed-by: Francisco Iglesias <frasse.iglesias@gmail.com>
+Message-Id: <20220722063602.128144-4-clg@kaod.org>
+Message-Id: <20221013161241.2805140-5-clg@kaod.org>
 Signed-off-by: Cédric Le Goater <clg@kaod.org>
 ---
- tests/avocado/machine_aspeed.py | 16 ++++++++--------
- 1 file changed, 8 insertions(+), 8 deletions(-)
+ hw/block/m25p80_sfdp.h |  3 +++
+ hw/block/m25p80.c      |  2 +-
+ hw/block/m25p80_sfdp.c | 26 ++++++++++++++++++++++++++
+ 3 files changed, 30 insertions(+), 1 deletion(-)
 
-diff --git a/tests/avocado/machine_aspeed.py b/tests/avocado/machine_aspeed.py
-index 124649a24b58..fba652702681 100644
---- a/tests/avocado/machine_aspeed.py
-+++ b/tests/avocado/machine_aspeed.py
-@@ -92,7 +92,7 @@ def test_arm_ast2500_romulus_openbmc_v2_9_0(self):
+diff --git a/hw/block/m25p80_sfdp.h b/hw/block/m25p80_sfdp.h
+index 7245412cc18c..ecdb9c7f693f 100644
+--- a/hw/block/m25p80_sfdp.h
++++ b/hw/block/m25p80_sfdp.h
+@@ -17,4 +17,7 @@
  
-         self.do_test_arm_aspeed(image_path)
+ uint8_t m25p80_sfdp_n25q256a(uint32_t addr);
  
--    def do_test_arm_aspeed_buidroot_start(self, image, cpu_id):
-+    def do_test_arm_aspeed_buildroot_start(self, image, cpu_id):
-         self.require_netdev('user')
- 
-         self.vm.set_console()
-@@ -111,11 +111,11 @@ def do_test_arm_aspeed_buidroot_start(self, image, cpu_id):
-         exec_command(self, 'root')
-         time.sleep(0.1)
- 
--    def do_test_arm_aspeed_buidroot_poweroff(self):
-+    def do_test_arm_aspeed_buildroot_poweroff(self):
-         exec_command_and_wait_for_pattern(self, 'poweroff',
-                                           'reboot: System halted');
- 
--    def test_arm_ast2500_evb_builroot(self):
-+    def test_arm_ast2500_evb_buildroot(self):
-         """
-         :avocado: tags=arch:arm
-         :avocado: tags=machine:ast2500-evb
-@@ -129,7 +129,7 @@ def test_arm_ast2500_evb_builroot(self):
- 
-         self.vm.add_args('-device',
-                          'tmp105,bus=aspeed.i2c.bus.3,address=0x4d,id=tmp-test');
--        self.do_test_arm_aspeed_buidroot_start(image_path, '0x0')
-+        self.do_test_arm_aspeed_buildroot_start(image_path, '0x0')
- 
-         exec_command_and_wait_for_pattern(self,
-              'echo lm75 0x4d > /sys/class/i2c-dev/i2c-3/device/new_device',
-@@ -141,9 +141,9 @@ def test_arm_ast2500_evb_builroot(self):
-         exec_command_and_wait_for_pattern(self,
-                              'cat /sys/class/hwmon/hwmon1/temp1_input', '18000')
- 
--        self.do_test_arm_aspeed_buidroot_poweroff()
-+        self.do_test_arm_aspeed_buildroot_poweroff()
- 
--    def test_arm_ast2600_evb_builroot(self):
-+    def test_arm_ast2600_evb_buildroot(self):
-         """
-         :avocado: tags=arch:arm
-         :avocado: tags=machine:ast2600-evb
-@@ -159,7 +159,7 @@ def test_arm_ast2600_evb_builroot(self):
-                          'tmp105,bus=aspeed.i2c.bus.3,address=0x4d,id=tmp-test');
-         self.vm.add_args('-device',
-                          'ds1338,bus=aspeed.i2c.bus.3,address=0x32');
--        self.do_test_arm_aspeed_buidroot_start(image_path, '0xf00')
-+        self.do_test_arm_aspeed_buildroot_start(image_path, '0xf00')
- 
-         exec_command_and_wait_for_pattern(self,
-              'echo lm75 0x4d > /sys/class/i2c-dev/i2c-3/device/new_device',
-@@ -177,7 +177,7 @@ def test_arm_ast2600_evb_builroot(self):
-         year = time.strftime("%Y")
-         exec_command_and_wait_for_pattern(self, 'hwclock -f /dev/rtc1', year);
- 
--        self.do_test_arm_aspeed_buidroot_poweroff()
-+        self.do_test_arm_aspeed_buildroot_poweroff()
- 
- 
- class AST2x00MachineSDK(QemuSystemTest):
++uint8_t m25p80_sfdp_mx25l25635e(uint32_t addr);
++
++
+ #endif
+diff --git a/hw/block/m25p80.c b/hw/block/m25p80.c
+index 637c25d76e37..5ddc544e1b83 100644
+--- a/hw/block/m25p80.c
++++ b/hw/block/m25p80.c
+@@ -233,7 +233,7 @@ static const FlashPartInfo known_devices[] = {
+     { INFO("mx25l12805d", 0xc22018,      0,  64 << 10, 256, 0) },
+     { INFO("mx25l12855e", 0xc22618,      0,  64 << 10, 256, 0) },
+     { INFO6("mx25l25635e", 0xc22019,     0xc22019,  64 << 10, 512,
+-            ER_4K | ER_32K) },
++            ER_4K | ER_32K), .sfdp_read = m25p80_sfdp_mx25l25635e },
+     { INFO("mx25l25655e", 0xc22619,      0,  64 << 10, 512, 0) },
+     { INFO("mx66l51235f", 0xc2201a,      0,  64 << 10, 1024, ER_4K | ER_32K) },
+     { INFO("mx66u51235f", 0xc2253a,      0,  64 << 10, 1024, ER_4K | ER_32K) },
+diff --git a/hw/block/m25p80_sfdp.c b/hw/block/m25p80_sfdp.c
+index 24ec05de79a1..6499c4c39954 100644
+--- a/hw/block/m25p80_sfdp.c
++++ b/hw/block/m25p80_sfdp.c
+@@ -56,3 +56,29 @@ static const uint8_t sfdp_n25q256a[] = {
+     0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
+ };
+ define_sfdp_read(n25q256a);
++
++
++/*
++ * Matronix
++ */
++
++/* mx25l25635e. No 4B opcodes */
++static const uint8_t sfdp_mx25l25635e[] = {
++    0x53, 0x46, 0x44, 0x50, 0x00, 0x01, 0x01, 0xff,
++    0x00, 0x00, 0x01, 0x09, 0x30, 0x00, 0x00, 0xff,
++    0xc2, 0x00, 0x01, 0x04, 0x60, 0x00, 0x00, 0xff,
++    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
++    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
++    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
++    0xe5, 0x20, 0xf3, 0xff, 0xff, 0xff, 0xff, 0x0f,
++    0x44, 0xeb, 0x08, 0x6b, 0x08, 0x3b, 0x04, 0xbb,
++    0xee, 0xff, 0xff, 0xff, 0xff, 0xff, 0x00, 0xff,
++    0xff, 0xff, 0x00, 0xff, 0x0c, 0x20, 0x0f, 0x52,
++    0x10, 0xd8, 0x00, 0xff, 0xff, 0xff, 0xff, 0xff,
++    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
++    0x00, 0x36, 0x00, 0x27, 0xf7, 0x4f, 0xff, 0xff,
++    0xd9, 0xc8, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
++    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
++    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
++};
++define_sfdp_read(mx25l25635e)
 -- 
 2.37.3
 

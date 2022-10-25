@@ -1,73 +1,74 @@
-Received: by 2002:a17:906:43c7:b0:78d:9f02:16a1 with SMTP id j7csp4196233ejn;
-        Tue, 25 Oct 2022 08:24:44 -0700 (PDT)
-X-Google-Smtp-Source: AMsMyM6CWdnTlDDr8OkywHWAoi9s7B4pA3XMVc2tK5m0JG+92xat49yeSQGBSdW8IQcCe24yiWYA
-X-Received: by 2002:a05:620a:85c:b0:6ea:c16d:2149 with SMTP id u28-20020a05620a085c00b006eac16d2149mr27239245qku.288.1666711484624;
-        Tue, 25 Oct 2022 08:24:44 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1666711484; cv=none;
+Received: by 2002:a17:906:43c7:b0:78d:9f02:16a1 with SMTP id j7csp4197221ejn;
+        Tue, 25 Oct 2022 08:26:19 -0700 (PDT)
+X-Google-Smtp-Source: AMsMyM4x4JmHlzEUKcWcP5u2HEuzUpQ1GTDCqR306Lc2sEn62i5wCpKepLTsMCz6YPskc1+K23Fo
+X-Received: by 2002:a0c:a9cb:0:b0:4b4:746d:c0e7 with SMTP id c11-20020a0ca9cb000000b004b4746dc0e7mr32467052qvb.48.1666711578732;
+        Tue, 25 Oct 2022 08:26:18 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1666711578; cv=none;
         d=google.com; s=arc-20160816;
-        b=DK1I/iRNT9oeB+INkLEyrukOdSoQkgVnm5w2p879neoMWs4L3+MjyaeYdSXeS6MPcG
-         eRvyOMq5dLQYQUBZDiJ3IU62b/2hP5rZjMk0myrT+znOdq+uDpuV0Rku7ECo/Ac7zUWQ
-         oQo9+qWBBPjqQqPPO7PUAILrfoq0hw6EWzdxKdFswxrkCoAwv11zv3q1SbkTn2FNONjk
-         HOtFGcXsIF/c0Vhihy5652z6uUlIiEkPBI/tOUyiYr8tEVhQwUcknBiLn6Y4SDWyR1yM
-         SCQNR1WEBV4tC8brm8a3O7CiUXAIToXEmYW6AXFufhb3J0ZBx7ccfLG5QV7h5vrREaHp
-         Xc8Q==
+        b=CAVbKkhseHGDWvOmwBBTxr2XQd5mekMVD180AVynZSDmGrhyloViZJ2Hy5Me8W1jtZ
+         hxnShD7/JT6JPnmAMYQWJsdG6t+dkCnDNSNGoRcgQHIfhgV+8fIoDgsgy3N8dA4ugLvc
+         GwqYbccqleGQvtubxnMXnzCi0/tGrj72aMOMEwCioZBty0CNPKZDwEkhEx9H+DpH067G
+         MlOR5nDKZkjOCRrn7fBPaYH11/BX7k2Y5DaYAw/a0WfPHLaWV+pwujSaITCTIIskbx6/
+         KI0pTMFQ0t/lImx8kqh3YYC6YDJ0he47vnyvvY0q5c63vatdPDh3aqeRwlGboKDYyyJ9
+         dA8g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=errors-to:sender:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from;
-        bh=A4cHSoNIYIkgXkqlj3127SS8aP9K/bavFAkFMyzWptY=;
-        b=iKXUkivl5OcEV/cDEq+UGNfuvH0BWiGHxsxNrp0DyRM6K2dF8Swb14Ck/XNhnvb8K+
-         xeoNXESDziZALGtm4atMd1hMieTv7yzCcdK+WdsErP5fhGao+R73OZjkc8xclOnrdJFw
-         avtgLyPmzEpw8t21DYZuNuOps8UmP+g9FUpYnKl5pvXRqKy+t/pv8g+/p4sLADyAA3fx
-         D/IKeSFfuJtI8x9SebsCeIK8lY2QUKw6d1AxM1eHWt7wPwDi4IknkH7gT25wwmLNtLt0
-         QE9x4YnFVfqjp5SPnUDHCf+DMLOg/ju/3Ifna8oXXaBZoYaEx3tEnL1o4pdkN3pxMJWW
-         7q9Q==
+        bh=kWKCZRww3UfmikHJjNlPX5LSMpnq9xITbbVD3pasuvU=;
+        b=0/g0XCBQXqy2YaCymIhSqImB+j3WSYWd7KLVAD0Aa1J1h7YQ3dmebU6cWkY8ACnyFW
+         Dro8xXhyb1mPOa0hDlBQUdzChzT21tIzUGjGSEveDF6+JDk9n9eH5O/Rgl+6w26eMO/4
+         tQhb1AV+zGRtnBb31+qrlczO1Gk324Q/xf0gPGzWSInV22xxNR1FhJVwQgO2SSUQ/Cbf
+         do02ctqru4tBD7RU7Jc5z+gccg6LqDm7nKU7ZI62ObfjjVqcMjFDU+pCA0JquIjRR98M
+         60CldD5xoSxNeBNHZNl1oAFDSEpd+XXB+Luw7jLR5hmZzjD7KsvzPXc1orpQqTtNXCyA
+         Zv7g==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v20-20020a05622a145400b0039cbf9e3314si2041173qtx.680.2022.10.25.08.24.44
+        by mx.google.com with ESMTPS id iv12-20020ad45cec000000b004bb9259f897si284298qvb.248.2022.10.25.08.26.18
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 25 Oct 2022 08:24:44 -0700 (PDT)
+        Tue, 25 Oct 2022 08:26:18 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1onLkI-0007iq-Qi; Tue, 25 Oct 2022 11:21:39 -0400
+	id 1onLjz-00079V-4h; Tue, 25 Oct 2022 11:21:19 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=KVXu=22=kaod.org=clg@ozlabs.org>)
- id 1onLkE-0007e7-0Q; Tue, 25 Oct 2022 11:21:34 -0400
+ id 1onLjq-0006YQ-0T; Tue, 25 Oct 2022 11:21:10 -0400
 Received: from mail.ozlabs.org ([2404:9400:2221:ea00::3]
  helo=gandalf.ozlabs.org)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=KVXu=22=kaod.org=clg@ozlabs.org>)
- id 1onLjz-0004s2-9O; Tue, 25 Oct 2022 11:21:33 -0400
-Received: from gandalf.ozlabs.org (gandalf.ozlabs.org [150.107.74.76])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4MxbHv3Yx1z4xGl;
- Wed, 26 Oct 2022 02:21:15 +1100 (AEDT)
+ id 1onLjk-0004k4-1a; Tue, 25 Oct 2022 11:21:09 -0400
+Received: from gandalf.ozlabs.org (mail.ozlabs.org
+ [IPv6:2404:9400:2221:ea00::3])
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4MxbHW2KpPz4xGG;
+ Wed, 26 Oct 2022 02:20:55 +1100 (AEDT)
 Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
  (No client certificate requested)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4MxbHr4zFsz4x1F;
- Wed, 26 Oct 2022 02:21:12 +1100 (AEDT)
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4MxbHR5kFJz4x1G;
+ Wed, 26 Oct 2022 02:20:51 +1100 (AEDT)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>, Joel Stanley <joel@jms.id.au>,
  Alistair Francis <alistair@alistair23.me>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- qemu-block@nongnu.org,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
- Francisco Iglesias <frasse.iglesias@gmail.com>
-Subject: [PULL 07/16] m25p80: Add basic support for the SFDP command
-Date: Tue, 25 Oct 2022 17:20:33 +0200
-Message-Id: <20221025152042.278287-8-clg@kaod.org>
+ qemu-block@nongnu.org, Peter Delevoryas <peter@pjd.dev>,
+ Klaus Jensen <k.jensen@samsung.com>,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
+Subject: [PULL 01/16] hw/i2c/aspeed: Fix old reg slave receive
+Date: Tue, 25 Oct 2022 17:20:27 +0200
+Message-Id: <20221025152042.278287-2-clg@kaod.org>
 X-Mailer: git-send-email 2.37.3
 In-Reply-To: <20221025152042.278287-1-clg@kaod.org>
 References: <20221025152042.278287-1-clg@kaod.org>
@@ -76,12 +77,12 @@ Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 Received-SPF: pass client-ip=2404:9400:2221:ea00::3;
  envelope-from=SRS0=KVXu=22=kaod.org=clg@ozlabs.org; helo=gandalf.ozlabs.org
-X-Spam_score_int: -16
-X-Spam_score: -1.7
-X-Spam_bar: -
-X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9,
- HEADER_FROM_DIFFERENT_DOMAINS=0.25, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+X-Spam_score_int: -39
+X-Spam_score: -4.0
+X-Spam_bar: ----
+X-Spam_report: (-4.0 / 5.0 requ) BAYES_00=-1.9,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.25, RCVD_IN_DNSWL_MED=-2.3,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -96,164 +97,84 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Sender: "Qemu-devel" <qemu-devel-bounces@nongnu.org>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: YYkv1fFvDEel
+X-TUID: qnDTJmGTbyI5
 
-JEDEC STANDARD JESD216 for Serial Flash Discovery Parameters (SFDP)
-provides a mean to describe the features of a serial flash device
-using a set of internal parameter tables.
+From: Peter Delevoryas <peter@pjd.dev>
 
-This is the initial framework for the RDSFDP command giving access to
-a private SFDP area under the flash. This area now needs to be
-populated with the flash device characteristics, using a new
-'sfdp_read' handler under FlashPartInfo.
+I think when Klaus ported his slave mode changes from the original patch
+series to the rewritten I2C module, he changed the behavior of the first
+byte that is received by the slave device.
 
-Reviewed-by: Francisco Iglesias <frasse.iglesias@gmail.com>
-Message-Id: <20220722063602.128144-2-clg@kaod.org>
-Message-Id: <20221013161241.2805140-2-clg@kaod.org>
+What's supposed to happen is that the AspeedI2CBus's slave device's
+i2c_event callback should run, and if the event is "send_async", then it
+should populate the byte buffer with the 8-bit I2C address that is being
+sent to. Since we only support "send_async", the lowest bit should
+always be 0 (indicating that the master is requesting to send data).
+
+This is the code Klaus had previously, for reference. [1]
+
+    switch (event) {
+    case I2C_START_SEND:
+        bus->buf = bus->dev_addr << 1;
+
+        bus->buf &= I2CD_BYTE_BUF_RX_MASK;
+        bus->buf <<= I2CD_BYTE_BUF_RX_SHIFT;
+
+        bus->intr_status |= (I2CD_INTR_SLAVE_ADDR_RX_MATCH | I2CD_INTR_RX_DONE);
+        aspeed_i2c_set_state(bus, I2CD_STXD);
+
+        break;
+
+[1]: https://lore.kernel.org/qemu-devel/20220331165737.1073520-4-its@irrelevant.dk/
+
+Fixes: a8d48f59cd021b25 ("hw/i2c/aspeed: add slave device in old register mode")
+Signed-off-by: Peter Delevoryas <peter@pjd.dev>
+Reviewed-by: Klaus Jensen <k.jensen@samsung.com>
+Message-Id: <20220820225712.713209-2-peter@pjd.dev>
 Signed-off-by: Cédric Le Goater <clg@kaod.org>
 ---
- hw/block/m25p80_sfdp.h | 18 ++++++++++++++++++
- hw/block/m25p80.c      | 27 +++++++++++++++++++++++++++
- MAINTAINERS            |  2 +-
- hw/block/trace-events  |  1 +
- 4 files changed, 47 insertions(+), 1 deletion(-)
- create mode 100644 hw/block/m25p80_sfdp.h
+ include/hw/i2c/aspeed_i2c.h | 1 +
+ hw/i2c/aspeed_i2c.c         | 8 +++++---
+ 2 files changed, 6 insertions(+), 3 deletions(-)
 
-diff --git a/hw/block/m25p80_sfdp.h b/hw/block/m25p80_sfdp.h
-new file mode 100644
-index 000000000000..230b07ef3308
---- /dev/null
-+++ b/hw/block/m25p80_sfdp.h
-@@ -0,0 +1,18 @@
-+/*
-+ * M25P80 SFDP
-+ *
-+ * Copyright (c) 2020, IBM Corporation.
-+ *
-+ * This code is licensed under the GPL version 2 or later. See the
-+ * COPYING file in the top-level directory.
-+ */
-+
-+#ifndef HW_M25P80_SFDP_H
-+#define HW_M25P80_SFDP_H
-+
-+/*
-+ * SFDP area has a 3 bytes address space.
-+ */
-+#define M25P80_SFDP_MAX_SIZE  (1 << 24)
-+
-+#endif
-diff --git a/hw/block/m25p80.c b/hw/block/m25p80.c
-index a8d2519141f7..abdc4c0b0da7 100644
---- a/hw/block/m25p80.c
-+++ b/hw/block/m25p80.c
-@@ -35,6 +35,7 @@
- #include "qapi/error.h"
- #include "trace.h"
- #include "qom/object.h"
-+#include "m25p80_sfdp.h"
+diff --git a/include/hw/i2c/aspeed_i2c.h b/include/hw/i2c/aspeed_i2c.h
+index 300a89b34301..adc904d6c1f8 100644
+--- a/include/hw/i2c/aspeed_i2c.h
++++ b/include/hw/i2c/aspeed_i2c.h
+@@ -130,6 +130,7 @@ REG32(I2CD_CMD, 0x14) /* I2CD Command/Status */
+     SHARED_FIELD(M_TX_CMD, 1, 1)
+     SHARED_FIELD(M_START_CMD, 0, 1)
+ REG32(I2CD_DEV_ADDR, 0x18) /* Slave Device Address */
++    SHARED_FIELD(SLAVE_DEV_ADDR1, 0, 7)
+ REG32(I2CD_POOL_CTRL, 0x1C) /* Pool Buffer Control */
+     SHARED_FIELD(RX_COUNT, 24, 5)
+     SHARED_FIELD(RX_SIZE, 16, 5)
+diff --git a/hw/i2c/aspeed_i2c.c b/hw/i2c/aspeed_i2c.c
+index 42c6d69b82f0..c166fd20fa11 100644
+--- a/hw/i2c/aspeed_i2c.c
++++ b/hw/i2c/aspeed_i2c.c
+@@ -1131,7 +1131,9 @@ static int aspeed_i2c_bus_slave_event(I2CSlave *slave, enum i2c_event event)
+     AspeedI2CBus *bus = ASPEED_I2C_BUS(qbus->parent);
+     uint32_t reg_intr_sts = aspeed_i2c_bus_intr_sts_offset(bus);
+     uint32_t reg_byte_buf = aspeed_i2c_bus_byte_buf_offset(bus);
+-    uint32_t value;
++    uint32_t reg_dev_addr = aspeed_i2c_bus_dev_addr_offset(bus);
++    uint32_t dev_addr = SHARED_ARRAY_FIELD_EX32(bus->regs, reg_dev_addr,
++                                                SLAVE_DEV_ADDR1);
  
- /* 16 MiB max in 3 byte address mode */
- #define MAX_3BYTES_SIZE 0x1000000
-@@ -72,6 +73,7 @@ typedef struct FlashPartInfo {
-      * This field inform how many die is in the chip.
-      */
-     uint8_t die_cnt;
-+    uint8_t (*sfdp_read)(uint32_t sfdp_addr);
- } FlashPartInfo;
+     if (aspeed_i2c_is_new_mode(bus->controller)) {
+         return aspeed_i2c_bus_new_slave_event(bus, event);
+@@ -1139,8 +1141,8 @@ static int aspeed_i2c_bus_slave_event(I2CSlave *slave, enum i2c_event event)
  
- /* adapted from linux */
-@@ -355,6 +357,7 @@ typedef enum {
-     BULK_ERASE = 0xc7,
-     READ_FSR = 0x70,
-     RDCR = 0x15,
-+    RDSFDP = 0x5a,
+     switch (event) {
+     case I2C_START_SEND_ASYNC:
+-        value = SHARED_ARRAY_FIELD_EX32(bus->regs, reg_byte_buf, TX_BUF);
+-        SHARED_ARRAY_FIELD_DP32(bus->regs, reg_byte_buf, RX_BUF, value << 1);
++        /* Bit[0] == 0 indicates "send". */
++        SHARED_ARRAY_FIELD_DP32(bus->regs, reg_byte_buf, RX_BUF, dev_addr << 1);
  
-     READ = 0x03,
-     READ4 = 0x13,
-@@ -421,6 +424,7 @@ typedef enum {
-     STATE_COLLECTING_DATA,
-     STATE_COLLECTING_VAR_LEN_DATA,
-     STATE_READING_DATA,
-+    STATE_READING_SFDP,
- } CMDState;
- 
- typedef enum {
-@@ -679,6 +683,8 @@ static inline int get_addr_length(Flash *s)
-     }
- 
-    switch (s->cmd_in_progress) {
-+   case RDSFDP:
-+       return 3;
-    case PP4:
-    case PP4_4:
-    case QPP_4:
-@@ -823,6 +829,11 @@ static void complete_collecting_data(Flash *s)
-                           " by device\n");
-         }
-         break;
-+
-+    case RDSFDP:
-+        s->state = STATE_READING_SFDP;
-+        break;
-+
-     default:
-         break;
-     }
-@@ -1431,6 +1442,16 @@ static void decode_new_cmd(Flash *s, uint32_t value)
-             qemu_log_mask(LOG_GUEST_ERROR, "M25P80: Unknown cmd %x\n", value);
-         }
-         break;
-+    case RDSFDP:
-+        if (s->pi->sfdp_read) {
-+            s->needed_bytes = get_addr_length(s) + 1; /* SFDP addr + dummy */
-+            s->pos = 0;
-+            s->len = 0;
-+            s->state = STATE_COLLECTING_DATA;
-+            break;
-+        }
-+        /* Fallthrough */
-+
-     default:
-         s->pos = 0;
-         s->len = 1;
-@@ -1538,6 +1559,12 @@ static uint32_t m25p80_transfer8(SSIPeripheral *ss, uint32_t tx)
-             }
-         }
-         break;
-+    case STATE_READING_SFDP:
-+        assert(s->pi->sfdp_read);
-+        r = s->pi->sfdp_read(s->cur_addr);
-+        trace_m25p80_read_sfdp(s, s->cur_addr, (uint8_t)r);
-+        s->cur_addr = (s->cur_addr + 1) & (M25P80_SFDP_MAX_SIZE - 1);
-+        break;
- 
-     default:
-     case STATE_IDLE:
-diff --git a/MAINTAINERS b/MAINTAINERS
-index e3d5b7e09c46..32e495e16533 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -1915,7 +1915,7 @@ SSI
- M: Alistair Francis <alistair@alistair23.me>
- S: Maintained
- F: hw/ssi/*
--F: hw/block/m25p80.c
-+F: hw/block/m25p80*
- F: include/hw/ssi/ssi.h
- X: hw/ssi/xilinx_*
- F: tests/qtest/m25p80-test.c
-diff --git a/hw/block/trace-events b/hw/block/trace-events
-index d86b53520cc5..2c45a62bd59c 100644
---- a/hw/block/trace-events
-+++ b/hw/block/trace-events
-@@ -80,5 +80,6 @@ m25p80_page_program(void *s, uint32_t addr, uint8_t tx) "[%p] page program cur_a
- m25p80_transfer(void *s, uint8_t state, uint32_t len, uint8_t needed, uint32_t pos, uint32_t cur_addr, uint8_t t) "[%p] Transfer state 0x%"PRIx8" len 0x%"PRIx32" needed 0x%"PRIx8" pos 0x%"PRIx32" addr 0x%"PRIx32" tx 0x%"PRIx8
- m25p80_read_byte(void *s, uint32_t addr, uint8_t v) "[%p] Read byte 0x%"PRIx32"=0x%"PRIx8
- m25p80_read_data(void *s, uint32_t pos, uint8_t v) "[%p] Read data 0x%"PRIx32"=0x%"PRIx8
-+m25p80_read_sfdp(void *s, uint32_t addr, uint8_t v) "[%p] Read SFDP 0x%"PRIx32"=0x%"PRIx8
- m25p80_binding(void *s) "[%p] Binding to IF_MTD drive"
- m25p80_binding_no_bdrv(void *s) "[%p] No BDRV - binding to RAM"
+         ARRAY_FIELD_DP32(bus->regs, I2CD_INTR_STS, SLAVE_ADDR_RX_MATCH, 1);
+         SHARED_ARRAY_FIELD_DP32(bus->regs, reg_intr_sts, RX_DONE, 1);
 -- 
 2.37.3
 

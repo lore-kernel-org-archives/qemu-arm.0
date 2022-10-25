@@ -1,37 +1,37 @@
-Received: by 2002:a17:906:80c3:b0:7ae:d8f:8937 with SMTP id a3csp3158204ejx;
-        Mon, 7 Nov 2022 08:44:05 -0800 (PST)
-X-Google-Smtp-Source: AMsMyM5G+6YpADXic++cPCykaR9oUjhYE8lMclcMdUvaU05Xu4GZACGAV3exPcE4WafFfNvBGD0s
-X-Received: by 2002:a05:620a:688:b0:6fa:259a:c345 with SMTP id f8-20020a05620a068800b006fa259ac345mr33146145qkh.739.1667839445289;
-        Mon, 07 Nov 2022 08:44:05 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1667839445; cv=none;
+Received: by 2002:a17:906:80c3:b0:7ae:d8f:8937 with SMTP id a3csp3158256ejx;
+        Mon, 7 Nov 2022 08:44:09 -0800 (PST)
+X-Google-Smtp-Source: AMsMyM75tCvkp7BQ32pjcPbvB6vbAJBAAFjh4KrsiVyDBWAmPJF8B1262oOE3qFJRWW4yihpFlhD
+X-Received: by 2002:a05:620a:284a:b0:6ab:9cc5:cb4c with SMTP id h10-20020a05620a284a00b006ab9cc5cb4cmr36449911qkp.609.1667839449311;
+        Mon, 07 Nov 2022 08:44:09 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1667839449; cv=none;
         d=google.com; s=arc-20160816;
-        b=XoHbrt1vZN7zy8hR3t5YtY+HX8CEGvFKDoTBI2/WeeS9TMXQBuVH7Er5h+DiLQgIM4
-         K9p6DJBQVBL0U/ht6pB/y8UfcrEG1ZAlozvOT9ks9niaKvkOoZ1j9skQR5/39Cg861jO
-         uIeZxa4dTe5W3qrZ/is6j2UM2FqEtblWpJL5yffBieVDA6GBXFAd9ADXYP6VgpJJfQaP
-         1sw/m/C5VS+ZoPyOATePCGUN3e1b0r7iQEjOjp6KdBiDLnGetNvJn+OCFwVz5MuTKiaI
-         PI0hiSo3jRH48bZF0ZYg434PGHYUeFj3g9B0eJvsXUknTB04lFbwTscEE4N/y2LwoRUC
-         squg==
+        b=NYUlao07RRfO4ENoqitrevej+sDNOUOptOzJ7zV7OVmA+jrDr0qfNDg/evJIATpJuj
+         gMT6HotOs5RCZECuLD1A4QL59qWPhy35qqv+pYRTWbpDE+SEiZaz2wjA+Y+5xgnOjT2B
+         Of0KjpoDzDIQ4Hm/3jWRXrf7NAY+pcRlaIkSju9X0oybsK3hhLCc9pXwdAMOGU12ulhQ
+         9BWT4xnEhrGfxMXdobAcUDsO/T1Sg21ZqJCgY0yKPWejwVUWM2mFJLGxw0Qc1uoysJIf
+         gzndmMTYn2/qKWXbJl938M/mf0nTq6PFW+3dMmHfgghTv+3WxQtlkf0cKIvsAdaYRwj8
+         253Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
          :list-archive:list-unsubscribe:list-id:precedence:mime-version
          :content-transfer-encoding:cc:to:in-reply-to:message-id:subject:date
          :from;
-        bh=RBn339Md1zqAA4YrJ0tm1U/LxUssEbs1Ikg3VrzRnpU=;
-        b=d1j0aCpcKPlpXAdQl3yzj+GFXFx6uJUr5vivHdOAt++DbSxqn+igE+gV8xKeoTEBwR
-         dBEXwBOKeLZhfdiN2ofZdVYPfgx44s+2uzeWgd93Jtto3aJZ7rJa8c3rjzPSfI3AW1AR
-         rH3yxmIgksGsvVgclrf51i7aagN/nqdXOvO+5FOJ/vy0kNq/Cwejq+8HIWczGavEAblW
-         pjmvKiu7/GmBjDAPzp7HGfnhQ2RoiGB7haCniATjt2d+P0Fug7/2lJN4Rr5hnFN2hsEh
-         aOKV0ZB+/ObzGo3v6o0WbjpDPKKjf2RMYI9Mrl0upmk6NljteeImvgmfLLGeqc6AHPzV
-         /TPg==
+        bh=y0t0uG9BNQXy4oLU0RcOEnXt6s+xxYsntFXJ38+j/g8=;
+        b=NUdRPHdpr3fLdEG435v62tqfEJmZQyKFhlbVGmKkEMKcR00jpG0qCucq/z3jUo356Q
+         B3CbNVOBBPVJzUZPO3y/BOViICuSqiLVoD45dy5PIII/PzVK7G7gjZAvZQSRlQKIsBUF
+         S1QaYHD/Bl+NtvmXCcgbSxVEq9gPC6RpEh/TOI65ne7NoVJQIvA3RyPG5VYi08CedZ27
+         SOv+jDhuukLSKzfNypROB1acXSZoaBfgCAULFLU63I4xJG9UFGqaSbHYsj1rVCgPzD9Q
+         OSmABBY7gsCJ6CLK1gAxmKjcfDOx/lUrcIZ6wYFzcoSKmLFUB2ws0B7eTcs6TGhk9pwX
+         ysmw==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=sr.ht
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id f25-20020a05620a12f900b006f64a82024esi4264363qkl.721.2022.11.07.08.44.04
+        by mx.google.com with ESMTPS id ge3-20020a05621427c300b004afa45c5497si4928529qvb.158.2022.11.07.08.44.09
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 07 Nov 2022 08:44:05 -0800 (PST)
+        Mon, 07 Nov 2022 08:44:09 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
@@ -39,23 +39,23 @@ Authentication-Results: mx.google.com;
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1os5Ck-0002FH-QR; Mon, 07 Nov 2022 11:42:34 -0500
+	id 1os5CS-000266-Dh; Mon, 07 Nov 2022 11:42:16 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <outgoing@sr.ht>)
- id 1os5CQ-00025u-Bb; Mon, 07 Nov 2022 11:42:14 -0500
+ id 1os5CM-00024e-9g; Mon, 07 Nov 2022 11:42:10 -0500
 Received: from mail-b.sr.ht ([173.195.146.151])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <outgoing@sr.ht>)
- id 1os5CN-0005Jo-6h; Mon, 07 Nov 2022 11:42:13 -0500
+ id 1os5CI-0004pV-L4; Mon, 07 Nov 2022 11:42:09 -0500
 Authentication-Results: mail-b.sr.ht; dkim=none 
 Received: from git.sr.ht (unknown [173.195.146.142])
- by mail-b.sr.ht (Postfix) with ESMTPSA id 08F6611F847;
- Mon,  7 Nov 2022 16:42:05 +0000 (UTC)
+ by mail-b.sr.ht (Postfix) with ESMTPSA id B137C11F30C;
+ Mon,  7 Nov 2022 16:42:04 +0000 (UTC)
 From: ~axelheider <axelheider@git.sr.ht>
-Date: Wed, 02 Nov 2022 16:36:43 +0100
-Subject: [PATCH qemu.git v2 5/9] hw/timer/imx_epit: do not persist CR.SWR bit
-Message-ID: <166783932395.3279.1096141058484230644-5@git.sr.ht>
+Date: Tue, 25 Oct 2022 13:23:07 +0200
+Subject: [PATCH qemu.git v2 3/9] hw/timer/imx_epit: simplify interrupt logic
+Message-ID: <166783932395.3279.1096141058484230644-3@git.sr.ht>
 X-Mailer: git.sr.ht
 In-Reply-To: <166783932395.3279.1096141058484230644-0@git.sr.ht>
 To: qemu-devel@nongnu.org
@@ -86,42 +86,72 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
 Reply-To: ~axelheider <axelheider@gmx.de>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: xui/3y5wa9QX
+X-TUID: R6D/xNwlSikw
 
 From: Axel Heider <axel.heider@hensoldt.net>
 
 Signed-off-by: Axel Heider <axel.heider@hensoldt.net>
 ---
- hw/timer/imx_epit.c | 7 ++++---
- 1 file changed, 4 insertions(+), 3 deletions(-)
+ hw/timer/imx_epit.c | 27 +++++++++++----------------
+ 1 file changed, 11 insertions(+), 16 deletions(-)
 
 diff --git a/hw/timer/imx_epit.c b/hw/timer/imx_epit.c
-index 5315d9633e..6af460946f 100644
+index 8ec770f674..2e9dae0bc8 100644
 --- a/hw/timer/imx_epit.c
 +++ b/hw/timer/imx_epit.c
-@@ -191,8 +191,9 @@ static void imx_epit_write(void *opaque, hwaddr offset, u=
-int64_t value,
-     case 0: /* CR */
+@@ -61,18 +61,6 @@ static const IMXClk imx_epit_clocks[] =3D  {
+     CLK_32k,       /* 11 ipg_clk_32k -- ~32kHz */
+ };
 =20
-         oldcr =3D s->cr;
--        s->cr =3D value & 0x03ffffff;
--        if (s->cr & CR_SWR) {
-+        /* SWR bit is never persisted, it clears itself once reset is done */
-+        s->cr =3D (value & ~CR_SWR) & 0x03ffffff;
-+        if (value & CR_SWR) {
-             /* handle the reset */
-             imx_epit_reset(DEVICE(s));
-             /*
-@@ -205,7 +206,7 @@ static void imx_epit_write(void *opaque, hwaddr offset, u=
-int64_t value,
-         ptimer_transaction_begin(s->timer_reload);
+-/*
+- * Update interrupt status
+- */
+-static void imx_epit_update_int(IMXEPITState *s)
+-{
+-    if (s->sr && (s->cr & CR_OCIEN) && (s->cr & CR_EN)) {
+-        qemu_irq_raise(s->irq);
+-    } else {
+-        qemu_irq_lower(s->irq);
+-    }
+-}
+-
+ /*
+  * Must be called from within a ptimer_transaction_begin/commit block
+  * for both s->timer_cmp and s->timer_reload.
+@@ -253,10 +241,10 @@ static void imx_epit_write(void *opaque, hwaddr offset,=
+ uint64_t value,
+         break;
 =20
-         /* Update the frequency. Has been done already in case of a reset. */
--        if (!(s->cr & CR_SWR)) {
-+        if (!(value & CR_SWR)) {
-             imx_epit_set_freq(s);
+     case 1: /* SR - ACK*/
+-        /* writing 1 to OCIF clears the OCIF bit */
++        /* writing 1 to OCIF clears the OCIF bit and the interrupt */
+         if (value & 0x01) {
+             s->sr =3D 0;
+-            imx_epit_update_int(s);
++            qemu_irq_lower(s->irq);
          }
+         break;
 =20
+@@ -305,10 +293,17 @@ static void imx_epit_cmp(void *opaque)
+ {
+     IMXEPITState *s =3D IMX_EPIT(opaque);
+=20
++    /* Set the interrupt status flag to signaled. */
+     DPRINTF("sr was %d\n", s->sr);
+-
+     s->sr =3D 1;
+-    imx_epit_update_int(s);
++
++    /*
++     * An actual interrupt is generated only if the peripheral is enabled
++     * and the interrupt generation is enabled.
++     */
++    if ((s->cr & (CR_EN | CR_OCIEN)) =3D=3D (CR_EN | CR_OCIEN)) {
++        qemu_irq_raise(s->irq);
++    }
+ }
+=20
+ static void imx_epit_reload(void *opaque)
 --=20
 2.34.5
 

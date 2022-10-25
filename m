@@ -1,85 +1,108 @@
-Received: by 2002:a17:906:43c7:b0:78d:9f02:16a1 with SMTP id j7csp4205256ejn;
-        Tue, 25 Oct 2022 08:36:29 -0700 (PDT)
-X-Google-Smtp-Source: AMsMyM4DDNPmIiEOx/8qVVG8iampAG/i+c1BVYguqi9LZ4UmXcVOEIUg/qADOMJLgSrxs3M6E/9u
-X-Received: by 2002:ac8:5a15:0:b0:39c:ec2d:cc47 with SMTP id n21-20020ac85a15000000b0039cec2dcc47mr32010251qta.288.1666712178869;
-        Tue, 25 Oct 2022 08:36:18 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1666712178; cv=none;
+Received: by 2002:a17:906:43c7:b0:78d:9f02:16a1 with SMTP id j7csp4262854ejn;
+        Tue, 25 Oct 2022 09:54:54 -0700 (PDT)
+X-Google-Smtp-Source: AMsMyM5cAT4KohZbk7QvMCvS3F9IP0BKD150pOhed+uXoW06LlTf2Z0dapPT7bDndZWw9CVOyeaX
+X-Received: by 2002:ac8:5dca:0:b0:39d:6f1:d0ec with SMTP id e10-20020ac85dca000000b0039d06f1d0ecmr26719141qtx.217.1666716894442;
+        Tue, 25 Oct 2022 09:54:54 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1666716894; cv=none;
         d=google.com; s=arc-20160816;
-        b=pOn313Nq9l9LgOZqtnOXoV09l48WJKDD8QbVf/mkdsx3LAQhgXyZVf66Gbe1F3CuzH
-         LPwrsI1Tn+Y0f98HtSX/DsYLl97xPsnSV/z39Mh3XKkiBDaySCebrJjbAGgZX/gHTTkZ
-         tW0mkcEzRvqNxgydY7khyThvxW/ZxRj1jLh3KHNAIHWGvGKR+IQUcYhictD+K/gyWZgq
-         yf3KzYqn7WWL5xud/+FGUq26eQ4GkgTSUZhblW1tz0k/1Hey14OtPR1W59Fc//x9Gush
-         GDZ3/ddxBCqLJn7lPl6SYzvmEQbvKzre4H16/chiRQwCtJqs+0vSOgjzhlFtawBUfasL
-         3JBA==
+        b=ELqpyY3F3wOPnJuO/Ma1b6MMImBxzvhQ5vAdOvWRzDEvLl/he4Im6UqMp83Z548OUg
+         WabqG2PH63mdlOumIyMt7xQxlkbNwscxPBBwppnuPh0JJTq7J2sOpEeizrdfxraiMCd6
+         Op1UKltdHINeRWF22KtDdh6kP5lHnoBn27vzMaBfvq2kQFlERisIXd6A3LY/FXoG7nmk
+         REwaQ2e9chl5L5iC63Gb5paTOs0cAE5v6IkXLNvzoK/AyPCfUKxejoCIguIoDNOY/aAh
+         O3Eum97iAHlyIyipuhJrF5NBtqpQWkTERcJkF8UHyKw18yl6sEY2Av5bQfvjWNvDcX/B
+         /GLA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=errors-to:sender:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from;
-        bh=rtVZIexPvhwkpCdZRZuRS9nPK637sa/TsGEN+cjnRy0=;
-        b=EvaolcXcaBQgEb+rpaLdm1eqzo+QbuR4bAIAtjmjtU6B9afpmE+8ZdjYgdMkptMzxv
-         Q3uVdax3nPR62ozcrAxGwB61+i9q7qJZFP2h29RWjSzn4Fn2ihFBVorIjp1oZxYv12VK
-         Xx/jyREwjZAQPZsx3g0xyubrkGDwlJvmxtBsKlrgUFM2Asnqbl8YWPjXQwiwWTCYfF5j
-         vKjK/2FYL82/PuCKtoVM6rS5CtSxueeWkkO3e0o4+nCsq+MJTU7sKuxCxSDwJqyDbEfD
-         +UMaZbwIAk+E4sfOpFeIK0cTzN1aqvYwYvVIzoO4vUm4e9NqOi+tnu4poJy9rEO6QNvi
-         VURw==
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
+        bh=LOdwzSim6tf4VC7w0ynAot7e+idqrKLNtjhmbjk4iLk=;
+        b=BLyvFM5oEn8jVmWOzDmAh/EtKYS01W8qLkUfQ4ArMQ4RDftj/LWnxCy1dnpmIk67Lo
+         DpFysXeHBDErtvRWuPit6EqpUDDsA1nDf07cYe7LiBivd9drL3OQB6NPzE+nWyRx7Bpc
+         FU2X6qj5ypo4uGJQbqHlV/WK64YzoYi5JW7hNVy5opfhKDm7J5ygX8ytrKTmcmNwcVqA
+         Ev8GpA/oi4xTGDTsO/RBE2cuiHcqBrZyW8F8Oi106D+2xQbhBw3+T9xF6ev8yBW4YTjr
+         MzhtjdbPS6UbN1lTN3xKz2EyWlBaQ5psyuuYxup0nh7PwnT+zTQ+4Rm4phxSHiszVX3f
+         KLAw==
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@gmail.com header.s=20210112 header.b="np0kyH/H";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a11-20020a0562140c2b00b004706ddc03a0si1925613qvd.278.2022.10.25.08.36.18
+        by mx.google.com with ESMTPS id w15-20020ac843cf000000b0039d048b0fefsi1841007qtn.730.2022.10.25.09.54.54
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 25 Oct 2022 08:36:18 -0700 (PDT)
+        Tue, 25 Oct 2022 09:54:54 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
+       dkim=fail header.i=@gmail.com header.s=20210112 header.b="np0kyH/H";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1onLjv-0006l8-6Y; Tue, 25 Oct 2022 11:21:15 -0400
+	id 1onN98-0002CF-G4; Tue, 25 Oct 2022 12:51:22 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <SRS0=KVXu=22=kaod.org=clg@ozlabs.org>)
- id 1onLjq-0006Ye-5X; Tue, 25 Oct 2022 11:21:10 -0400
-Received: from gandalf.ozlabs.org ([150.107.74.76])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <SRS0=KVXu=22=kaod.org=clg@ozlabs.org>)
- id 1onLjo-0004mQ-AB; Tue, 25 Oct 2022 11:21:09 -0400
-Received: from gandalf.ozlabs.org (mail.ozlabs.org
- [IPv6:2404:9400:2221:ea00::3])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4MxbHj26QFz4xMh;
- Wed, 26 Oct 2022 02:21:05 +1100 (AEDT)
-Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
- (No client certificate requested)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4MxbHf5Kmmz4xGd;
- Wed, 26 Oct 2022 02:21:02 +1100 (AEDT)
-From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>, Joel Stanley <joel@jms.id.au>,
- Alistair Francis <alistair@alistair23.me>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- qemu-block@nongnu.org, =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
-Subject: [PULL 04/16] aspeed/smc: Cache AspeedSMCClass
-Date: Tue, 25 Oct 2022 17:20:30 +0200
-Message-Id: <20221025152042.278287-5-clg@kaod.org>
-X-Mailer: git-send-email 2.37.3
-In-Reply-To: <20221025152042.278287-1-clg@kaod.org>
-References: <20221025152042.278287-1-clg@kaod.org>
+ (Exim 4.90_1) (envelope-from <groeck7@gmail.com>)
+ id 1onN95-000260-Ua; Tue, 25 Oct 2022 12:51:19 -0400
+Received: from mail-ot1-x32b.google.com ([2607:f8b0:4864:20::32b])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <groeck7@gmail.com>)
+ id 1onN93-0003mR-Pc; Tue, 25 Oct 2022 12:51:19 -0400
+Received: by mail-ot1-x32b.google.com with SMTP id
+ 101-20020a9d0bee000000b00661b54d945fso8071556oth.13; 
+ Tue, 25 Oct 2022 09:51:16 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:sender:from:to:cc:subject:date:message-id:reply-to;
+ bh=LOdwzSim6tf4VC7w0ynAot7e+idqrKLNtjhmbjk4iLk=;
+ b=np0kyH/H7KaqzJrNlkSN8t6Ut7QTshVwcDaabPf1lEaSqTKhwhqH5Jp6/pulHVZc8/
+ GCQiJVTs7saC9kdQ8+CPHw6ggsO4eGlcgEl5l9gMLcVnkGdQlvqMTWkxCQodApD+QHBS
+ J76HDmCYBalB41Aiie2/EXloaUd13xswflsHgTkdEvLdA3RBpCGhS5OeYxqzIkWyLIou
+ WAx9TbQob541s059JxBG17QxJNpgB2JD7PyDULs017qelIDBWQirPhDdE9ObPL+KtMj7
+ Szk0wMKZogYCS/6xx6lDd+D4Xs6vfEElzw/W67nPIQfRhXmjDMIToDc0RWdZT7XxF6Ew
+ PGhg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:sender:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=LOdwzSim6tf4VC7w0ynAot7e+idqrKLNtjhmbjk4iLk=;
+ b=swXVfasWDW+7dQ23ZAqNtPS8ulceEpeyXZuMS6i3f3r/ve/k7Ti3nAZIA6CgreSF1K
+ +MgboptI/11QsO/1tm3USkmFExmf9bAQmaH2TpqplHKP1/exOr+6RqumybkaUe3awfto
+ 0Zl0tXBW2zBcrgKu2cuzAUk4WnuauVNnqmcctb61IO/2igcFy28x2lnEd2ST6Ds7lWhu
+ MXNdh4pPbngkS0rcRWTJtSiTt81VazyVOpogNGBycFOw00bzHMCobv4Wq1tnoDJ3bD8W
+ nWJixlmJT/wW/XJzaLVT9fslRJsJ4EbjDl3AYRK/lwlkA3+aewBVMJpVEHEqTDMY405q
+ 3KJg==
+X-Gm-Message-State: ACrzQf1z2950ns3z+stl68Sn2JcapsH83RUu/8Szun6fQsMP6QORlUzw
+ W8NZ/IzRr+8G/asAkZiO+h4=
+X-Received: by 2002:a9d:669:0:b0:643:6fb3:420 with SMTP id
+ 96-20020a9d0669000000b006436fb30420mr20021734otn.327.1666716673442; 
+ Tue, 25 Oct 2022 09:51:13 -0700 (PDT)
+Received: from server.roeck-us.net ([2600:1700:e321:62f0:329c:23ff:fee3:9d7c])
+ by smtp.gmail.com with ESMTPSA id
+ i23-20020a9d4a97000000b00661a30ea0d4sm1229067otf.2.2022.10.25.09.51.10
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 25 Oct 2022 09:51:12 -0700 (PDT)
+From: Guenter Roeck <linux@roeck-us.net>
+To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
+Cc: Peter Maydell <peter.maydell@linaro.org>, Andrew Jeffery <andrew@aj.id.au>,
+ Joel Stanley <joel@jms.id.au>, qemu-arm@nongnu.org, qemu-devel@nongnu.org,
+ Guenter Roeck <linux@roeck-us.net>
+Subject: [PATCH] aspeed: Add Supermicro X11 SPI machine type
+Date: Tue, 25 Oct 2022 09:51:09 -0700
+Message-Id: <20221025165109.1226001-1-linux@roeck-us.net>
+X-Mailer: git-send-email 2.36.2
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=150.107.74.76;
- envelope-from=SRS0=KVXu=22=kaod.org=clg@ozlabs.org; helo=gandalf.ozlabs.org
-X-Spam_score_int: -16
-X-Spam_score: -1.7
+Received-SPF: pass client-ip=2607:f8b0:4864:20::32b;
+ envelope-from=groeck7@gmail.com; helo=mail-ot1-x32b.google.com
+X-Spam_score_int: -14
+X-Spam_score: -1.5
 X-Spam_bar: -
-X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9,
- HEADER_FROM_DIFFERENT_DOMAINS=0.25, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_ENVFROM_END_DIGIT=0.25,
+ FREEMAIL_FORGED_FROMDOMAIN=0.001, FREEMAIL_FROM=0.001,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.25, RCVD_IN_DNSWL_NONE=-0.0001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -94,87 +117,88 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Sender: "Qemu-arm" <qemu-arm-bounces@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: hDJV5yXOHdnW
+X-TUID: YEhPv8lInWFi
 
-Store a reference on the AspeedSMC class under the flash object and
-use it when accessing the flash contents. Avoiding the class cast
-checkers in these hot paths improves performance by 10% when running
-the aspeed avocado tests.
+supermicrox11-bmc is configured with ast2400-a1 SoC. This does not match
+the Supermicro documentation for X11 BMCs, and it does not match the
+devicetree file in the Linux kernel.
 
-Message-Id: <20220923084803.498337-7-clg@kaod.org>
-Signed-off-by: Cédric Le Goater <clg@kaod.org>
+As it turns out, some Supermicro X11 motherboards use AST2400 SoCs,
+while others use AST2500.
+
+Introduce new machine type supermicrox11-spi-bmc with AST2500 SoC
+to match the devicetree description in the Linux kernel. Hardware
+configuration details for this machine type are guesswork and taken
+from defaults as well as from the Linux kernel devicetree file.
+
+The new machine type was tested with aspeed-bmc-supermicro-x11spi.dts
+from the Linux kernel and with Linux versions 6.0.3 and 6.1-rc2.
+Linux booted successfully from initrd and from both SPI interfaces.
+Ethernet interfaces were confirmed to be operational.
+
+Signed-off-by: Guenter Roeck <linux@roeck-us.net>
 ---
- include/hw/ssi/aspeed_smc.h | 2 ++
- hw/ssi/aspeed_smc.c         | 9 ++++-----
- 2 files changed, 6 insertions(+), 5 deletions(-)
+ hw/arm/aspeed.c | 33 +++++++++++++++++++++++++++++++++
+ 1 file changed, 33 insertions(+)
 
-diff --git a/include/hw/ssi/aspeed_smc.h b/include/hw/ssi/aspeed_smc.h
-index 2d5f8f3d8f68..8e1dda556b91 100644
---- a/include/hw/ssi/aspeed_smc.h
-+++ b/include/hw/ssi/aspeed_smc.h
-@@ -30,6 +30,7 @@
- #include "qom/object.h"
+diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
+index c282ead38f..56d007de5a 100644
+--- a/hw/arm/aspeed.c
++++ b/hw/arm/aspeed.c
+@@ -71,6 +71,16 @@ struct AspeedMachineState {
+         SCU_HW_STRAP_VGA_SIZE_SET(VGA_16M_DRAM) |                       \
+         SCU_AST2400_HW_STRAP_BOOT_MODE(AST2400_SPI_BOOT))
  
- struct AspeedSMCState;
-+struct AspeedSMCClass;
- 
- #define TYPE_ASPEED_SMC_FLASH "aspeed.smc.flash"
- OBJECT_DECLARE_SIMPLE_TYPE(AspeedSMCFlash, ASPEED_SMC_FLASH)
-@@ -37,6 +38,7 @@ struct AspeedSMCFlash {
-     SysBusDevice parent_obj;
- 
-     struct AspeedSMCState *controller;
-+    struct AspeedSMCClass *asc;
-     uint8_t cs;
- 
-     MemoryRegion mmio;
-diff --git a/hw/ssi/aspeed_smc.c b/hw/ssi/aspeed_smc.c
-index faed7e0cbe17..22df4be528a7 100644
---- a/hw/ssi/aspeed_smc.c
-+++ b/hw/ssi/aspeed_smc.c
-@@ -388,7 +388,7 @@ static inline int aspeed_smc_flash_cmd(const AspeedSMCFlash *fl)
- static inline int aspeed_smc_flash_addr_width(const AspeedSMCFlash *fl)
- {
-     const AspeedSMCState *s = fl->controller;
--    AspeedSMCClass *asc = ASPEED_SMC_GET_CLASS(s);
-+    AspeedSMCClass *asc = fl->asc;
- 
-     if (asc->addr_width) {
-         return asc->addr_width(s);
-@@ -420,7 +420,7 @@ static uint32_t aspeed_smc_check_segment_addr(const AspeedSMCFlash *fl,
-                                               uint32_t addr)
- {
-     const AspeedSMCState *s = fl->controller;
--    AspeedSMCClass *asc = ASPEED_SMC_GET_CLASS(s);
-+    AspeedSMCClass *asc = fl->asc;
-     AspeedSegments seg;
- 
-     asc->reg_to_segment(s, s->regs[R_SEG_ADDR0 + fl->cs], &seg);
-@@ -1234,7 +1234,6 @@ static const TypeInfo aspeed_smc_info = {
- static void aspeed_smc_flash_realize(DeviceState *dev, Error **errp)
- {
-     AspeedSMCFlash *s = ASPEED_SMC_FLASH(dev);
--    AspeedSMCClass *asc;
-     g_autofree char *name = g_strdup_printf(TYPE_ASPEED_SMC_FLASH ".%d", s->cs);
- 
-     if (!s->controller) {
-@@ -1242,14 +1241,14 @@ static void aspeed_smc_flash_realize(DeviceState *dev, Error **errp)
-         return;
-     }
- 
--    asc = ASPEED_SMC_GET_CLASS(s->controller);
-+    s->asc = ASPEED_SMC_GET_CLASS(s->controller);
- 
-     /*
-      * Use the default segment value to size the memory region. This
-      * can be changed by FW at runtime.
-      */
-     memory_region_init_io(&s->mmio, OBJECT(s), &aspeed_smc_flash_ops,
--                          s, name, asc->segments[s->cs].size);
-+                          s, name, s->asc->segments[s->cs].size);
-     sysbus_init_mmio(SYS_BUS_DEVICE(dev), &s->mmio);
++/* TODO: Find the actual hardware value */
++#define SUPERMICROX11_SPI_BMC_HW_STRAP1 (                               \
++        AST2500_HW_STRAP1_DEFAULTS |                                    \
++        SCU_AST2500_HW_STRAP_SPI_AUTOFETCH_ENABLE |                     \
++        SCU_AST2500_HW_STRAP_GPIO_STRAP_ENABLE |                        \
++        SCU_AST2500_HW_STRAP_UART_DEBUG |                               \
++        SCU_AST2500_HW_STRAP_DDR4_ENABLE |                              \
++        SCU_HW_STRAP_SPI_WIDTH |                                        \
++        SCU_HW_STRAP_SPI_MODE(SCU_HW_STRAP_SPI_M_S_EN))
++
+ /* AST2500 evb hardware value: 0xF100C2E6 */
+ #define AST2500_EVB_HW_STRAP1 ((                                        \
+         AST2500_HW_STRAP1_DEFAULTS |                                    \
+@@ -1172,6 +1182,25 @@ static void aspeed_machine_supermicrox11_bmc_class_init(ObjectClass *oc,
+     mc->default_ram_size = 256 * MiB;
  }
  
++static void aspeed_machine_supermicrox11_spi_bmc_class_init(ObjectClass *oc,
++                                                            void *data)
++{
++    MachineClass *mc = MACHINE_CLASS(oc);
++    AspeedMachineClass *amc = ASPEED_MACHINE_CLASS(oc);
++
++    mc->desc       = "Supermicro X11 SPI BMC (ARM1176)";
++    amc->soc_name  = "ast2500-a1";
++    amc->hw_strap1 = SUPERMICROX11_SPI_BMC_HW_STRAP1;
++    amc->fmc_model = "mx25l25635e";
++    amc->spi_model = "mx25l25635e";
++    amc->num_cs    = 1;
++    amc->macs_mask = ASPEED_MAC0_ON | ASPEED_MAC1_ON;
++    amc->i2c_init  = palmetto_bmc_i2c_init;
++    mc->default_ram_size = 512 * MiB;
++    mc->default_cpus = mc->min_cpus = mc->max_cpus =
++        aspeed_soc_num_cpus(amc->soc_name);
++}
++
+ static void aspeed_machine_ast2500_evb_class_init(ObjectClass *oc, void *data)
+ {
+     MachineClass *mc = MACHINE_CLASS(oc);
+@@ -1546,6 +1575,10 @@ static const TypeInfo aspeed_machine_types[] = {
+         .name          = MACHINE_TYPE_NAME("supermicrox11-bmc"),
+         .parent        = TYPE_ASPEED_MACHINE,
+         .class_init    = aspeed_machine_supermicrox11_bmc_class_init,
++    }, {
++        .name          = MACHINE_TYPE_NAME("supermicrox11-spi-bmc"),
++        .parent        = TYPE_ASPEED_MACHINE,
++        .class_init    = aspeed_machine_supermicrox11_spi_bmc_class_init,
+     }, {
+         .name          = MACHINE_TYPE_NAME("ast2500-evb"),
+         .parent        = TYPE_ASPEED_MACHINE,
 -- 
-2.37.3
+2.36.2
 

@@ -1,104 +1,125 @@
-Received: by 2002:a17:906:43c7:b0:78d:9f02:16a1 with SMTP id j7csp442063ejn;
-        Wed, 26 Oct 2022 04:13:47 -0700 (PDT)
-X-Google-Smtp-Source: AMsMyM718XbZISnqn6KhhnBFS7a4clVMKHyXyVDL8KHQjF0LTYGB/juTZ6ar3G0nIkrT9bXt0S49
-X-Received: by 2002:a05:6214:da2:b0:4b1:8a49:b492 with SMTP id h2-20020a0562140da200b004b18a49b492mr35285278qvh.8.1666782827119;
-        Wed, 26 Oct 2022 04:13:47 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1666782827; cv=none;
+Received: by 2002:a17:906:43c7:b0:78d:9f02:16a1 with SMTP id j7csp705367ejn;
+        Wed, 26 Oct 2022 10:07:01 -0700 (PDT)
+X-Google-Smtp-Source: AMsMyM6u3GtxvlE+JK/hZywCEg0PRz2wjq14r8DL/eEJLR2/sSo+Jo5HQ7ydPiIFg7p0e3xBSy52
+X-Received: by 2002:ac8:5ac7:0:b0:39c:c198:e6fd with SMTP id d7-20020ac85ac7000000b0039cc198e6fdmr37824026qtd.220.1666804021005;
+        Wed, 26 Oct 2022 10:07:01 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1666804021; cv=none;
         d=google.com; s=arc-20160816;
-        b=LAF5jCE/tZzijT9MGH/w4bDjInGxSGe7CbV4HAEoD8flwoaxAW2KnIn5DTM9sDm4eM
-         iwDzD6uQMc2TQwA97Z6m9LbsxXoAffrsKF7ieZ1Z8fJZA4IGzLunr24cFNQMaAWPmVTd
-         TLlgWQh8ZrV4iBWtkhriakoP8qVRYDuYUGTI732CS2DZXrnLipNLrt4chmhzTA5u3Ddv
-         a0JXCi+VTeHc+T/gd0uOKkZgiysXDRLtI2Wvw3tAnPgRKOT2w8MqfJfycedOihsQg6ME
-         vtGXfy+vZ9X49DJq5692y23XJTBCX5CsqrZaKMBJOP3zzuAhOiu4zJDBYUD8s6GxqZ7n
-         eNew==
+        b=JRw0SXgrl1Hdwf8tJKulfEoOFkYU98AFV6yt+0u8NMOklfCntV8IRhKQZcTbiGCFOP
+         MDjJ+EEKcDj2xsLtoVw/mhC1520jyO+VClNObw8M11bT6/y5LxH8TyOBJnUD6MAycqDf
+         Hbc4/ANgayQ05WEHw4ry9Sx6ElyCXsDXNNNw6/DF/8a0BCvILMz3XjaczvbFJi3fZ6b2
+         Ao3NtdcbS99soXLwBQ8NvPKFQFhgoOaZ5opR43cOIvB4cvncdBQl98vmfNU3sdfYninL
+         WxxmnuouFtJYyhvg2cArCdZeatnf8Ds0HkUvK7VmnqfQoFAFhhKmoZMegXdbLU9Z3z71
+         4wUw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=errors-to:sender:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version:message-id:date
-         :user-agent:references:organization:in-reply-to:subject:cc:to:from
-         :dkim-signature;
-        bh=2xHUCU3Hv8gzgJokIeUC/UBexVko28zT6yor1FdTAFM=;
-        b=fty5xu2xUOG6P7htrLMPaI5moNQE0kGIpiw1OzXF+cu/u4nf/OOGUu4kf68hksJ6oT
-         niConnG4Cyugul51mCZnpsAUti98vGNsCevyn2Kvj0QeVKmqwtKNt5Lfe0lr80YVmpUh
-         qfMVnf1fNIgKpiKWByxwn2+go6zuYSIm3vd6L5zeSThXuQi88xeBfMo8eAFEOavOPHBh
-         BPgmAo94RBRhnwMdjQH4fXcJdWCpd8F66N2vbfO4bEvVSrGyFBb8PepfCx2k4G/4459p
-         ZPprGAkjZDxTBS/j/j4A5juE7CHlulxSKMoQspQc/xN5M3kX40qJ+AG6QnaxIOZPTXgj
-         u3LQ==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:references:cc:to:content-language:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=g9OfcjC5UD9xsctY0vEe81KqHTHGeVu/1OEKOzD3d3c=;
+        b=erF6TvRbrP7SBQeJDI4TWE1/F/yIAAUU0A1AByLbm5txiL8CstfklYljeWWWiCao6e
+         vKed9NoxG6D22Xz0+ddyC/YhL6lg4qdubgqiNyQnbMacf+ivVrOO/8kmr2lmrQzeJxFs
+         RZTG0ruhgUR3R0ZVwilZUM77w6Q2PQyIMTCQqaJnjlM9Z9oPOIeP2rY2YDiwbRmLE0/t
+         6WISncOltBUCgQT6QB7zf3Nrpwx3vnFmBJmtO+nBa4Y2uijqmtGlGXEIMg++ziEy+2Pz
+         3j/X/kegeNVCJOCZMyKqd1Pq2G0vW2WeUf6i6kbWWvKXWevz2VPbz8csGo3CHnZ+6zs3
+         ZgPg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=LUOXZNmu;
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=c6+jCF57;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id jp11-20020ad45f8b000000b004b179766502si3426494qvb.566.2022.10.26.04.13.46
+        by mx.google.com with ESMTPS id o3-20020a0562140e4300b004afb5d22ed1si3911884qvc.191.2022.10.26.10.07.00
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 26 Oct 2022 04:13:47 -0700 (PDT)
+        Wed, 26 Oct 2022 10:07:00 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=LUOXZNmu;
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=c6+jCF57;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1oneJ0-0000j5-5I; Wed, 26 Oct 2022 07:10:42 -0400
+	id 1onjoU-00065Z-1V; Wed, 26 Oct 2022 13:03:34 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <cohuck@redhat.com>) id 1oneIu-0000Sf-P7
- for qemu-devel@nongnu.org; Wed, 26 Oct 2022 07:10:39 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <cohuck@redhat.com>) id 1oneIs-0006n0-Kh
- for qemu-devel@nongnu.org; Wed, 26 Oct 2022 07:10:36 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1666782633;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=2xHUCU3Hv8gzgJokIeUC/UBexVko28zT6yor1FdTAFM=;
- b=LUOXZNmuDsXEvyLFMMYzulkMNZuNjPbjXfmMl5kP8RuFkXiByqk+NxCHAd12iruNGzqa/9
- BXcQz0EOlCPKKhx+Dq/uJOmGT/6YzqVbTYPK8WoZWB4TLsXBYlamU9MCwTvYvLeIqnkL3v
- /mU9My5eL3j320EJc56Fno4hM4QKfr8=
-Received: from mimecast-mx02.redhat.com (mx3-rdu2.redhat.com
- [66.187.233.73]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-632-HqGHKPfONh-ng_tkjdnrSg-1; Wed, 26 Oct 2022 07:10:29 -0400
-X-MC-Unique: HqGHKPfONh-ng_tkjdnrSg-1
-Received: from smtp.corp.redhat.com (int-mx09.intmail.prod.int.rdu2.redhat.com
- [10.11.54.9])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id A13941C04B7C;
- Wed, 26 Oct 2022 11:10:23 +0000 (UTC)
-Received: from localhost (unknown [10.39.193.29])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 61E7D477F55;
- Wed, 26 Oct 2022 11:10:18 +0000 (UTC)
-From: Cornelia Huck <cohuck@redhat.com>
-To: Gavin Shan <gshan@redhat.com>, qemu-arm@nongnu.org
-Cc: qemu-devel@nongnu.org, maz@kernel.org, eric.auger@redhat.com,
- zhenyzha@redhat.com, richard.henderson@linaro.org,
- peter.maydell@linaro.org, shan.gavin@gmail.com
-Subject: Re: [PATCH v6 7/7] hw/arm/virt: Add properties to disable high
- memory regions
-In-Reply-To: <9472b6fc-00dd-bf92-ed23-0f5a9328c45f@redhat.com>
-Organization: Red Hat GmbH
-References: <20221024035416.34068-1-gshan@redhat.com>
- <20221024035416.34068-8-gshan@redhat.com> <874jvsfa1q.fsf@redhat.com>
- <9472b6fc-00dd-bf92-ed23-0f5a9328c45f@redhat.com>
-User-Agent: Notmuch/0.37 (https://notmuchmail.org)
-Date: Wed, 26 Oct 2022 13:10:16 +0200
-Message-ID: <87r0yusuw7.fsf@redhat.com>
+ (Exim 4.90_1) (envelope-from <danielhb413@gmail.com>)
+ id 1onjoT-00065A-8B; Wed, 26 Oct 2022 13:03:33 -0400
+Received: from mail-oa1-x32.google.com ([2001:4860:4864:20::32])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <danielhb413@gmail.com>)
+ id 1onjoR-0005OC-Ac; Wed, 26 Oct 2022 13:03:33 -0400
+Received: by mail-oa1-x32.google.com with SMTP id
+ 586e51a60fabf-13ba86b5ac0so12308485fac.1; 
+ Wed, 26 Oct 2022 10:03:29 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=g9OfcjC5UD9xsctY0vEe81KqHTHGeVu/1OEKOzD3d3c=;
+ b=c6+jCF57oInS0wpqCOIHtp+iUac24zoELSRi6Xd5LzqfJUNLfe2SIczCw5QPjrZKjP
+ MVZknFOJmAttvNULZHDPNzKoWH1quvqv9VOoU34YkkGhaqFdWpi5xmZ8PSi5vwLo9QWb
+ SzXsCmdBSYfev2og9OacPK4XxVrU2/VgH8s/OxLwe2mPPZ4EfV1gvmRcK733AGh2XRXU
+ PiKpbs5nryMSkR6Qxg/t2CUHLJwdrAKbSbLALFaCkxuflE5Q1hV7bzUMXI755cToWfqI
+ flvfZUKUGkkjCrlvebedlhpWKeNTNSRGEFf36/Pi25HOqgEYe2GiMFGhiEP2VqDHLgMj
+ E1/g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=g9OfcjC5UD9xsctY0vEe81KqHTHGeVu/1OEKOzD3d3c=;
+ b=xcCre2JRJCsY6FDl7FR09tEMXNnnfi+xKENEOASUWfdvN00SwYKQuiTV9xGUjB+Cuv
+ 9Nx0pU/d2ftKriEv5CgKbbkaGUqIYCCs8Vt+x7KNxxLNjTO2pJjVMVFfn+hGK8gCYqNN
+ kw3kWsMm26GaDecdcvH8ONkQrvKhSD5uZIXM1Ct6L7AqsH6CXeD3Yxj/7PElCmDahCNL
+ 8WpWNxRYTFH0q37cU60uFPqkj4Zh0j9VoogLTxVBNe0L9OesK97jautlkprqySczYRvX
+ qETiBtEbdsAzldAUNgMwRf7w4KJhCGEGDkeiB/gQ+QjdR6E+aU00r/9WEmF3MeRpp25h
+ QXCw==
+X-Gm-Message-State: ACrzQf0CMMdv6JTSSjdmYo0mPV1COmQ+Pn1PDV8Q+FpCzLcO/+9d4T9i
+ f9FdKpAxZ2A2kU8n7OPsMIk=
+X-Received: by 2002:a05:6870:7387:b0:13b:6a54:362b with SMTP id
+ z7-20020a056870738700b0013b6a54362bmr2776364oam.32.1666803808255; 
+ Wed, 26 Oct 2022 10:03:28 -0700 (PDT)
+Received: from [192.168.10.102] ([177.45.165.63])
+ by smtp.gmail.com with ESMTPSA id
+ d22-20020a4ad356000000b004805e9e9f3dsm2359918oos.1.2022.10.26.10.03.21
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 26 Oct 2022 10:03:27 -0700 (PDT)
+Message-ID: <110e1d45-d516-44f6-67bf-5996f66ae096@gmail.com>
+Date: Wed, 26 Oct 2022 14:03:18 -0300
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Scanned-By: MIMEDefang 3.1 on 10.11.54.9
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=cohuck@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -25
-X-Spam_score: -2.6
-X-Spam_bar: --
-X-Spam_report: (-2.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.515,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.3.1
+Subject: Re: [PATCH v4 5/7] hw/ppc/e500: Implement pflash handling
+Content-Language: en-US
+To: Bernhard Beschow <shentey@gmail.com>, qemu-devel@nongnu.org
+Cc: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>,
+ qemu-ppc@nongnu.org, Aurelien Jarno <aurelien@aurel32.net>,
+ Yoshinori Sato <ysato@users.sourceforge.jp>,
+ Antony Pavlov <antonynpavlov@gmail.com>, BALATON Zoltan
+ <balaton@eik.bme.hu>, Alistair Francis <alistair@alistair23.me>,
+ Bin Meng <bin.meng@windriver.com>, Kevin Wolf <kwolf@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>, Jan Kiszka <jan.kiszka@web.de>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
+ Hanna Reitz <hreitz@redhat.com>, qemu-arm@nongnu.org,
+ Magnus Damm <magnus.damm@gmail.com>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, qemu-block@nongnu.org
+References: <20221018210146.193159-1-shentey@gmail.com>
+ <20221018210146.193159-6-shentey@gmail.com>
+From: Daniel Henrique Barboza <danielhb413@gmail.com>
+In-Reply-To: <20221018210146.193159-6-shentey@gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2001:4860:4864:20::32;
+ envelope-from=danielhb413@gmail.com; helo=mail-oa1-x32.google.com
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
@@ -114,115 +135,188 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Sender: "Qemu-devel" <qemu-devel-bounces@nongnu.org>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 2DXOtTexY9Vy
+X-TUID: 3Te+zWDhvVw7
 
-On Wed, Oct 26 2022, Gavin Shan <gshan@redhat.com> wrote:
 
-> Hi Connie,
->
-> On 10/25/22 6:54 PM, Cornelia Huck wrote:
->> On Mon, Oct 24 2022, Gavin Shan <gshan@redhat.com> wrote:
->> 
->>> These 3 high memory regions are usually enabled by default, but
->> 
->> s/These 3/The/ ?
->> 
->
-> Ok.
->
->>> they may be not used. For example, VIRT_HIGH_GIC_REDIST2 isn't
->>> needed by GICv2. This leads to waste in the PA space.
->> 
->> When building the command line, do we have enough information on when
->> the regions provide something useful, and when they just waste space?
->> 
->
-> I think the help messages are already indicative. For example, the help
-> messages for 'highmem-redist2' indicate the region is only needed by
-> GICv3 or GICv4. 'highmem-ecam' and 'highmem-mmio' are needed by PCI ECAM
-> and MMIO and the key words 'high' indicates they're the corresponding
-> second window.
->
-> #./qemu-system-aarch64 -M virt,?
-> highmem-ecam=<bool>    - Set on/off to enable/disable high memory region for PCI ECAM
-> highmem-mmio=<bool>    - Set on/off to enable/disable high memory region for PCI MMIO
-> highmem-redists=<bool> - Set on/off to enable/disable high memory region for GICv3 or GICv4 redistributor
 
-OK, hopefully this is enough for anyone building a command line
-directly. (Do we want to encourage management software like libvirt to
-switch off regions that are not needed?)
+On 10/18/22 18:01, Bernhard Beschow wrote:
+> Allows e500 boards to have their root file system reside on flash using
+> only builtin devices located in the eLBC memory region.
+> 
+> Note that the flash memory area is only created when a -pflash argument is
+> given, and that the size is determined by the given file. The idea is to
+> put users into control.
+> 
+> Signed-off-by: Bernhard Beschow <shentey@gmail.com>
+> ---
 
->
->>>
->>> Add properties to allow users selectively disable them if needed:
->>> "highmem-redists", "highmem-ecam", "highmem-mmio".
->>>
->>> Suggested-by: Marc Zyngier <maz@kernel.org>
->>> Signed-off-by: Gavin Shan <gshan@redhat.com>
->>> ---
->>>   docs/system/arm/virt.rst | 12 ++++++++
->>>   hw/arm/virt.c            | 64 ++++++++++++++++++++++++++++++++++++++++
->>>   2 files changed, 76 insertions(+)
->>>
->>> diff --git a/docs/system/arm/virt.rst b/docs/system/arm/virt.rst
->>> index 4454706392..a1668a969d 100644
->>> --- a/docs/system/arm/virt.rst
->>> +++ b/docs/system/arm/virt.rst
->>> @@ -98,6 +98,18 @@ compact-highmem
->>>     Set ``on``/``off`` to enable/disable the compact layout for high memory regions.
->>>     The default is ``on`` for machine types later than ``virt-7.2``.
->>>   
->>> +highmem-redists
->>> +  Set ``on``/``off`` to enable/disable the high memry region for GICv3/4
->> 
->> s/memry/memory/
->> 
->
-> Ok, copy-and-paste error. Will be fixed.
->
->>> +  redistributor. The default is ``on``.
->> 
->> Do we need to add a note about what effects setting this to "off" may
->> have, e.g. "Setting this to ``off`` may limit the maximum number of
->> cpus." or so? And/or "Setting this to ``off`` when using GICv2 will save
->> some space."?
->> 
->
-> We may not mention GICv2 since GICv3/v4 are already mentioned. It's a
-> good idea to mention that the maximum number of CPUs is reduced when
-> it's turned off. I will have something like below in next respin if
-> you agree.
->
-> highmem-redists
->    Set ``on``/``off`` to enable/disable the high memroy region for GICv3 or
->    GICv4 redistributor. The default is ``on``. Setting this to ``off`` will
->    limit the maximum number of CPUs when GICv3 or GICv4 is used.
+Reviewed-by: Daniel Henrique Barboza <danielhb413@gmail.com>
 
-OK, sounds reasonable to me.
-
->
-> Since 'vms->highmem_redists' is changeable, the 'virt_max_cpus' in
-> machvirt_init() needs to be recalculated based on that. The code change
-> will be included into next respin. Besides, the follow-up error message
-> will be improved to something like below.
->
->    error_report("Number of SMP CPUs requested (%d) exceeds max CPUs "
->                 "supported by machine 'mach-virt' (%d). The high memory "
->                 "region for GICv3 or GICv4 redistributor has been %s",
->                 max_cpus, virt_max_cpus,
->                 vms->highmem_redists ? "enabled" : "disabled");
-
-Hm, the doc for error_report() states that "The resulting message should
-be a single phrase, with no newline or trailing punctuation." Maybe
-
-    if (max_cpus > virt_max_cpus) {
-        error_report("Number of SMP CPUs requested (%d) exceeds max CPUs "
-                     "supported by machine 'mach-virt' (%d)",
-                     max_cpus, virt_max_cpus);
-        if (vms->gic_version != VIRT_GIC_VERSION_2 &&
-            !vms->higmem_redists) {
-            error_printf("Try 'highmem-redists=on' for more CPUs\n");
-        }
-        exit(1);
-    }
-
+>   docs/system/ppc/ppce500.rst | 16 ++++++++
+>   hw/ppc/Kconfig              |  1 +
+>   hw/ppc/e500.c               | 79 +++++++++++++++++++++++++++++++++++++
+>   3 files changed, 96 insertions(+)
+> 
+> diff --git a/docs/system/ppc/ppce500.rst b/docs/system/ppc/ppce500.rst
+> index 7b5eb3c4ee..38f8ceb0cf 100644
+> --- a/docs/system/ppc/ppce500.rst
+> +++ b/docs/system/ppc/ppce500.rst
+> @@ -165,3 +165,19 @@ if “-device eTSEC” is given to QEMU:
+>   .. code-block:: bash
+>   
+>     -netdev tap,ifname=tap0,script=no,downscript=no,id=net0 -device eTSEC,netdev=net0
+> +
+> +Root file system on flash drive
+> +-------------------------------
+> +
+> +Rather than using a root file system on ram disk, it is possible to have it on
+> +CFI flash. Given an ext2 image whose size must be a power of two, it can be used
+> +as follows:
+> +
+> +.. code-block:: bash
+> +
+> +  $ qemu-system-ppc64 -M ppce500 -cpu e500mc -smp 4 -m 2G \
+> +      -display none -serial stdio \
+> +      -kernel vmlinux \
+> +      -drive if=pflash,file=/path/to/rootfs.ext2,format=raw \
+> +      -append "rootwait root=/dev/mtdblock0"
+> +
+> diff --git a/hw/ppc/Kconfig b/hw/ppc/Kconfig
+> index 791fe78a50..769a1ead1c 100644
+> --- a/hw/ppc/Kconfig
+> +++ b/hw/ppc/Kconfig
+> @@ -126,6 +126,7 @@ config E500
+>       select ETSEC
+>       select GPIO_MPC8XXX
+>       select OPENPIC
+> +    select PFLASH_CFI01
+>       select PLATFORM_BUS
+>       select PPCE500_PCI
+>       select SERIAL
+> diff --git a/hw/ppc/e500.c b/hw/ppc/e500.c
+> index 3e950ea3ba..73198adac8 100644
+> --- a/hw/ppc/e500.c
+> +++ b/hw/ppc/e500.c
+> @@ -23,8 +23,10 @@
+>   #include "e500-ccsr.h"
+>   #include "net/net.h"
+>   #include "qemu/config-file.h"
+> +#include "hw/block/flash.h"
+>   #include "hw/char/serial.h"
+>   #include "hw/pci/pci.h"
+> +#include "sysemu/block-backend-io.h"
+>   #include "sysemu/sysemu.h"
+>   #include "sysemu/kvm.h"
+>   #include "sysemu/reset.h"
+> @@ -267,6 +269,31 @@ static void sysbus_device_create_devtree(SysBusDevice *sbdev, void *opaque)
+>       }
+>   }
+>   
+> +static void create_devtree_flash(SysBusDevice *sbdev,
+> +                                 PlatformDevtreeData *data)
+> +{
+> +    g_autofree char *name = NULL;
+> +    uint64_t num_blocks = object_property_get_uint(OBJECT(sbdev),
+> +                                                   "num-blocks",
+> +                                                   &error_fatal);
+> +    uint64_t sector_length = object_property_get_uint(OBJECT(sbdev),
+> +                                                      "sector-length",
+> +                                                      &error_fatal);
+> +    uint64_t bank_width = object_property_get_uint(OBJECT(sbdev),
+> +                                                   "width",
+> +                                                   &error_fatal);
+> +    hwaddr flashbase = 0;
+> +    hwaddr flashsize = num_blocks * sector_length;
+> +    void *fdt = data->fdt;
+> +
+> +    name = g_strdup_printf("%s/nor@%" PRIx64, data->node, flashbase);
+> +    qemu_fdt_add_subnode(fdt, name);
+> +    qemu_fdt_setprop_string(fdt, name, "compatible", "cfi-flash");
+> +    qemu_fdt_setprop_sized_cells(fdt, name, "reg",
+> +                                 1, flashbase, 1, flashsize);
+> +    qemu_fdt_setprop_cell(fdt, name, "bank-width", bank_width);
+> +}
+> +
+>   static void platform_bus_create_devtree(PPCE500MachineState *pms,
+>                                           void *fdt, const char *mpic)
+>   {
+> @@ -276,6 +303,8 @@ static void platform_bus_create_devtree(PPCE500MachineState *pms,
+>       uint64_t addr = pmc->platform_bus_base;
+>       uint64_t size = pmc->platform_bus_size;
+>       int irq_start = pmc->platform_bus_first_irq;
+> +    SysBusDevice *sbdev;
+> +    bool ambiguous;
+>   
+>       /* Create a /platform node that we can put all devices into */
+>   
+> @@ -302,6 +331,13 @@ static void platform_bus_create_devtree(PPCE500MachineState *pms,
+>       /* Loop through all dynamic sysbus devices and create nodes for them */
+>       foreach_dynamic_sysbus_device(sysbus_device_create_devtree, &data);
+>   
+> +    sbdev = SYS_BUS_DEVICE(object_resolve_path_type("", TYPE_PFLASH_CFI01,
+> +                                                    &ambiguous));
+> +    if (sbdev) {
+> +        assert(!ambiguous);
+> +        create_devtree_flash(sbdev, &data);
+> +    }
+> +
+>       g_free(node);
+>   }
+>   
+> @@ -856,6 +892,7 @@ void ppce500_init(MachineState *machine)
+>       unsigned int pci_irq_nrs[PCI_NUM_PINS] = {1, 2, 3, 4};
+>       IrqLines *irqs;
+>       DeviceState *dev, *mpicdev;
+> +    DriveInfo *dinfo;
+>       CPUPPCState *firstenv = NULL;
+>       MemoryRegion *ccsr_addr_space;
+>       SysBusDevice *s;
+> @@ -1024,6 +1061,48 @@ void ppce500_init(MachineState *machine)
+>                                   pmc->platform_bus_base,
+>                                   &pms->pbus_dev->mmio);
+>   
+> +    dinfo = drive_get(IF_PFLASH, 0, 0);
+> +    if (dinfo) {
+> +        BlockBackend *blk = blk_by_legacy_dinfo(dinfo);
+> +        BlockDriverState *bs = blk_bs(blk);
+> +        uint64_t size = bdrv_getlength(bs);
+> +        uint64_t mmio_size = pms->pbus_dev->mmio.size;
+> +        uint32_t sector_len = 64 * KiB;
+> +
+> +        if (!is_power_of_2(size)) {
+> +            error_report("Size of pflash file must be a power of two.");
+> +            exit(1);
+> +        }
+> +
+> +        if (size > mmio_size) {
+> +            error_report("Size of pflash file must not be bigger than %" PRIu64
+> +                         " bytes.", mmio_size);
+> +            exit(1);
+> +        }
+> +
+> +        if (!QEMU_IS_ALIGNED(size, sector_len)) {
+> +            error_report("Size of pflash file must be a multiple of %" PRIu32
+> +                         ".", sector_len);
+> +            exit(1);
+> +        }
+> +
+> +        dev = qdev_new(TYPE_PFLASH_CFI01);
+> +        qdev_prop_set_drive(dev, "drive", blk);
+> +        qdev_prop_set_uint32(dev, "num-blocks", size / sector_len);
+> +        qdev_prop_set_uint64(dev, "sector-length", sector_len);
+> +        qdev_prop_set_uint8(dev, "width", 2);
+> +        qdev_prop_set_bit(dev, "big-endian", true);
+> +        qdev_prop_set_uint16(dev, "id0", 0x89);
+> +        qdev_prop_set_uint16(dev, "id1", 0x18);
+> +        qdev_prop_set_uint16(dev, "id2", 0x0000);
+> +        qdev_prop_set_uint16(dev, "id3", 0x0);
+> +        qdev_prop_set_string(dev, "name", "e500.flash");
+> +        sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), &error_fatal);
+> +
+> +        memory_region_add_subregion(&pms->pbus_dev->mmio, 0,
+> +                                    pflash_cfi01_get_memory(PFLASH_CFI01(dev)));
+> +    }
+> +
+>       /*
+>        * Smart firmware defaults ahead!
+>        *

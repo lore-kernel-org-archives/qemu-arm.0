@@ -1,92 +1,91 @@
-Received: by 2002:a17:906:43c7:b0:78d:9f02:16a1 with SMTP id j7csp827678ejn;
-        Wed, 26 Oct 2022 13:19:11 -0700 (PDT)
-X-Google-Smtp-Source: AMsMyM697kGfcMcRC2JRxdClm1lcgjULKQ28GdKYmjSIJtDmyRgXgPUeUCBjBPfjy+410WnLHSa9
-X-Received: by 2002:ac8:4e55:0:b0:39c:eec4:3752 with SMTP id e21-20020ac84e55000000b0039ceec43752mr37637826qtw.366.1666815551675;
-        Wed, 26 Oct 2022 13:19:11 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1666815551; cv=none;
+Received: by 2002:a17:906:43c7:b0:78d:9f02:16a1 with SMTP id j7csp827867ejn;
+        Wed, 26 Oct 2022 13:19:37 -0700 (PDT)
+X-Google-Smtp-Source: AMsMyM7p1H7wC9o9FFqGplLGsO7JftmTIBreMu5xsjc5fJKOfnqyHz88l8x04F2u3x9/XdtVYx1I
+X-Received: by 2002:ad4:574b:0:b0:4bb:86d1:7b89 with SMTP id q11-20020ad4574b000000b004bb86d17b89mr10315929qvx.32.1666815577392;
+        Wed, 26 Oct 2022 13:19:37 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1666815577; cv=none;
         d=google.com; s=arc-20160816;
-        b=gJ8Fw1dj7cm1/c5sl+oGopeK0A/JY3tq7//j19KNNKmFRRF3HhX2IJzl4SOMmSHMWq
-         wLnhzea4RlVZjOtivN9QLK/Yrn4CHpzNlR+WX30ot9Dez7gUdS/ON+Iuv9FSztr2Jnhs
-         ORPqveyI5D8np810Cs7KbdyQPFIRQIKYIfP5iMusi9pO+/sJLDCw0dIc4Q5iXyon2X3c
-         1ESRwGZryDbdLQbjA7ZtcE7gL28D/mDBspSNhbHgtR3buqyq306N85phBJryDOpVF15b
-         B1sNrdaHz+Vk0YvKkJ5iN2fq2GxaLJ2isfzb016XhgcjpdY4/8eazBYqkVfPtASYAo13
-         5EVg==
+        b=D6FLzsvpkrA3j5UZ5PZotH8A1IZfeClGKH/Y8fjyPnkxHWRJTverc4UbLMmeoSQCPd
+         qdgBCviY+91hb4pbLLBTA+wk0yP7EcYPx0qPZBlAfT3sQjmo9QDEgasimBTAhyQa4q1d
+         twRiCelS/JKS5STLOt4G0oE4Wqx+g3U/Vfre4ceJL3rhJL6PGyMve0UYzucPOpvQsA9f
+         8WgJtapYhhyDXDKkJ6DkkAZFhKjQlTyWQ4eANZd5wQCF+P+zQdbbsdcKJ667N/Mv9Bsg
+         19jJSBa0YSw0857xKbP1VukbxjIBpQ1ahjujt/y4QCxuemyk8TGMi9mpwFWsiOo96jYH
+         hHEA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=errors-to:sender:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=aSwPwUMn6/+jk0nmeTDn1Pce55W9fa1V9DCU5O36Vgs=;
-        b=losZP3BmOJpGwXfdEJtjjjZDt50oKjOH3IxYIUgPN/gFDTdOTQ/MtllA3e0xAjmvgE
-         g+X7MzLSTmh+5mqW48+Fz4kq+bfwMBxN/BjVgrGV4nyZbGH2jDRj4AiVmLzY8ZLyaQWB
-         e0poyzCn2315RsFI8s3DbJAq8iMSjuHT571fu2HF5CZhRH4TEriMEZ3fZGEcWhgMwRWJ
-         IDlpjPp7b41qN13JY3F50DMULqIlxA6HR3NKxhQErMHph/r+SBHfrQy1/SKRNWNPdNTI
-         spXwNvaa96oCVFeADKtWk1XoqVuET2L1OUwTf5WNBTuMllQqGg4w3cLbrQrLOaFSc/+x
-         5DJw==
+        bh=Amj+vSFcdbQnaoWcuLvjNhpGRqy42M12Pln3+46OKr0=;
+        b=vVwLfui6jgcHWcUSw50aaVmxqT41FgvdwE8YabGtEnqAbeNf0SLe/zJdry9d4OP4S0
+         fOpp0NI5OmCGWy7gXMBIG2t0t6uy7r9hL8enmB+Y/MlRu8Re8t8dlfhULvmDuDTr5Yd/
+         oPzP2GWSUUxtfsFzQLwa7ps+0jIaiAvcpmIIqAxnm2gFJywXLEAm7U4YXu0kbLwF6y28
+         fThSeHlS9STIqVHGkfda6DhkXDpGFJsWX5vGqsGLAuvBD/yFS+NaQdEvTEd1CUq5SKsy
+         l4hXoNuKDxDZR/GNYbL5516Bujg9n5zuwh/sPxx2IdfB8uLUiyeyJ9F+JriHSV2u7zsR
+         RRKg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@daynix-com.20210112.gappssmtp.com header.s=20210112 header.b=KJXIpzDU;
+       dkim=pass header.i=@daynix-com.20210112.gappssmtp.com header.s=20210112 header.b=ZE1JZrUW;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id dm51-20020a05620a1d7300b006f98cb7bd9dsi1217607qkb.626.2022.10.26.13.19.11
+        by mx.google.com with ESMTPS id ec11-20020a05620a484b00b006e50a703f67si4231589qkb.57.2022.10.26.13.19.37
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 26 Oct 2022 13:19:11 -0700 (PDT)
+        Wed, 26 Oct 2022 13:19:37 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@daynix-com.20210112.gappssmtp.com header.s=20210112 header.b=KJXIpzDU;
+       dkim=pass header.i=@daynix-com.20210112.gappssmtp.com header.s=20210112 header.b=ZE1JZrUW;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1onmpx-0002Jx-38; Wed, 26 Oct 2022 16:17:17 -0400
+	id 1onmoc-0001A5-83; Wed, 26 Oct 2022 16:15:54 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <akihiko.odaki@daynix.com>)
- id 1onmou-0001Yu-3C
- for qemu-devel@nongnu.org; Wed, 26 Oct 2022 16:16:15 -0400
-Received: from mail-pj1-x102f.google.com ([2607:f8b0:4864:20::102f])
+ id 1onmoY-0000jL-QJ
+ for qemu-devel@nongnu.org; Wed, 26 Oct 2022 16:15:50 -0400
+Received: from mail-pl1-x632.google.com ([2607:f8b0:4864:20::632])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <akihiko.odaki@daynix.com>)
- id 1onmom-00039Z-DL
- for qemu-devel@nongnu.org; Wed, 26 Oct 2022 16:16:06 -0400
-Received: by mail-pj1-x102f.google.com with SMTP id
- m14-20020a17090a3f8e00b00212dab39bcdso3926153pjc.0
- for <qemu-devel@nongnu.org>; Wed, 26 Oct 2022 13:16:01 -0700 (PDT)
+ id 1onmoV-00031A-O8
+ for qemu-devel@nongnu.org; Wed, 26 Oct 2022 16:15:50 -0400
+Received: by mail-pl1-x632.google.com with SMTP id f23so15289555plr.6
+ for <qemu-devel@nongnu.org>; Wed, 26 Oct 2022 13:15:46 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=daynix-com.20210112.gappssmtp.com; s=20210112;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=aSwPwUMn6/+jk0nmeTDn1Pce55W9fa1V9DCU5O36Vgs=;
- b=KJXIpzDUlBFXV0xbJLKgYeDkdK9KskhtH/AIxlIdmyWj+v2YTM/fe0DOK3gmMLMaCU
- tWDfuiv7aITqkyRffLDhnobSwjgfnEBzHHtAnJlf97H25cuV/yV7Y5x44J/eiFfC8b2/
- hb54MUKG6n2588MtfXsfbs3Rm5ywLdFvgVrr2GEl+cK+oR4xJEGE3UAW2Xr/zJKVhaVk
- ldk0jn1mpnX8KMDcnOSz4V76kvrtHnl83AX5aaMZIpOXSBwX6H44DBX475NTA3mNFcae
- w2AepTatYaKtSElA9dwOcKSYHd52z4+bVTWLWrJXJ+7NCZAruQDZZRbCtZ/ciTaDLyLk
- xZ/w==
+ bh=Amj+vSFcdbQnaoWcuLvjNhpGRqy42M12Pln3+46OKr0=;
+ b=ZE1JZrUWlSVyyv7z5B66/69C7T/6qgHzQxMzN3rCwAMCID/PiiMPG08cJUHASiL8V5
+ s7scyDfoHnxs/2n/077RFwr3rNZebF7t9pud1glKU/N4Ft+PUIytg2K8ZO4Xif727uZs
+ O7BiGFRWjoS3WbC1CAvFxtea1i+MnqJIrax8I9h0JyKHYx3z3/LXmha9vqXPcPOLZsYb
+ wKAx+Zke7qCiNFm8nPtMqhyVci6SK4xzk57yl9XStl52mQo8urOsCGwdn7i3q3iphkpS
+ XeDenQjaz10Nr9+tkflkgswSu0VyQsptcNjnsDLj6D2Q2wt+5fMa+AAN6pvWbtsJBu3d
+ oxRg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=aSwPwUMn6/+jk0nmeTDn1Pce55W9fa1V9DCU5O36Vgs=;
- b=KGlgdL1aONkp1tCmzIcPFVZEqRnrJt8RZNs+uuaTUBs8hwHnPyk8DRand2/FN4Ifyx
- BxXC0/jwcHHFZ7TXAWhTuKtoVK9zSkn0QC7GAAuLx7CquL6Zw8JucLyaEf/eJZFwUaum
- PlbZVX5HhDrXtJrd5f3lR7fRyL4ntAcjemLrJvduu2rgO5/MPxmB/Ujj5UF9TGCY7U38
- WhqtiZjjK1dLonecbsTvizARtmn2UwmzG8Fk0U4O3UXbSTiIMkOoY/aUxay2xwSM2cFM
- iiS3nG4XH0m4qQ6mEqxVQhwrUYbIvhILtCAKM+uf4ppNDVyVKVYCgCWr57bToYNh0kvC
- DIHg==
-X-Gm-Message-State: ACrzQf1Qe8Us08OS0At/GKM4fZbQzX+EieJIY8qrqfER0WSUVjzQ8P/v
- h6P1URR4BmAO7lJmrVyNHjJCgQ==
-X-Received: by 2002:a17:90b:180e:b0:213:4abf:ed0a with SMTP id
- lw14-20020a17090b180e00b002134abfed0amr6112040pjb.119.1666815360919; 
- Wed, 26 Oct 2022 13:16:00 -0700 (PDT)
+ bh=Amj+vSFcdbQnaoWcuLvjNhpGRqy42M12Pln3+46OKr0=;
+ b=Xe6c1pygiwPjlC5agAFzCfhzw4/ojS5Di4P13wv/dxbD7pa6TuMNHjYIenTLGEQVPi
+ u0m9YCdE+IFkrb0ufiQ6U6Wz1uglwqdxmjw2Qk3bgEMHAe/+72v6UXs8ZhYJfLg9ti7k
+ 45oU4KDD0PGHH1FhkqBS/FeQEKcFd0TwPJZgKK9VLCoCLF8gK+W7IZvoe+vBMyanf5k6
+ jwPscCCSE3bpX/6afVn6V42U2yXVQcwBNcgVGeVmwwNCS4/5Pv02BbUkPdXFH2ewYFb4
+ Uea8236CAbGq9076XlCt08+/wsQHKX7aF3w/vrd4xvlNcSLBD/o0/0/Hvzkc5PTB6Kn5
+ GQUA==
+X-Gm-Message-State: ACrzQf28CmZEnzQhMGg6TeTWO/e7Z5KP13u0E37l9/7Og53IZeH9dXnC
+ DUV6hJFwGmByjq8011Be9IOIuQ==
+X-Received: by 2002:a17:902:ab89:b0:186:7cfc:cde8 with SMTP id
+ f9-20020a170902ab8900b001867cfccde8mr29415167plr.9.1666815345324; 
+ Wed, 26 Oct 2022 13:15:45 -0700 (PDT)
 Received: from fedora.flets-east.jp ([2400:4050:c360:8200:8ae8:3c4:c0da:7419])
  by smtp.gmail.com with ESMTPSA id
- y5-20020aa78f25000000b00541c68a0689sm3375770pfr.7.2022.10.26.13.15.56
+ y5-20020aa78f25000000b00541c68a0689sm3375770pfr.7.2022.10.26.13.15.40
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 26 Oct 2022 13:16:00 -0700 (PDT)
+ Wed, 26 Oct 2022 13:15:44 -0700 (PDT)
 From: Akihiko Odaki <akihiko.odaki@daynix.com>
 To: 
 Cc: Alex Williamson <alex.williamson@redhat.com>, qemu-devel@nongnu.org,
@@ -106,16 +105,16 @@ Cc: Alex Williamson <alex.williamson@redhat.com>, qemu-devel@nongnu.org,
  Yan Vugenfirer <yan@daynix.com>,
  Yuri Benditovich <yuri.benditovich@daynix.com>,
  Akihiko Odaki <akihiko.odaki@daynix.com>
-Subject: [PATCH v3 04/16] e1000e: Omit errp for pci_add_capability
-Date: Thu, 27 Oct 2022 05:15:15 +0900
-Message-Id: <20221026201527.24063-5-akihiko.odaki@daynix.com>
+Subject: [PATCH v3 01/16] pci: Allow to omit errp for pci_add_capability
+Date: Thu, 27 Oct 2022 05:15:12 +0900
+Message-Id: <20221026201527.24063-2-akihiko.odaki@daynix.com>
 X-Mailer: git-send-email 2.37.3
 In-Reply-To: <20221026201527.24063-1-akihiko.odaki@daynix.com>
 References: <20221026201527.24063-1-akihiko.odaki@daynix.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: none client-ip=2607:f8b0:4864:20::102f;
- envelope-from=akihiko.odaki@daynix.com; helo=mail-pj1-x102f.google.com
+Received-SPF: none client-ip=2607:f8b0:4864:20::632;
+ envelope-from=akihiko.odaki@daynix.com; helo=mail-pl1-x632.google.com
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
@@ -136,63 +135,96 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Sender: "Qemu-devel" <qemu-devel-bounces@nongnu.org>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: PaftNzCc3bZ9
+X-TUID: iPo23mVV5ftn
 
-Omitting errp for pci_add_capability() causes it to abort if
-capabilities overlap. This behavior is appropriate heare because all of
-the capabilities set in this device are defined in the program and
-their overlap should not happen unless there is a programming error.
+pci_add_capability appears most PCI devices. Its error handling required
+lots of code, and led to inconsistent behaviors such as:
+- passing error_abort
+- passing error_fatal
+- asserting the returned value
+- propagating the error to the caller
+- skipping the rest of the function
+- just ignoring
+
+The code generating errors in pci_add_capability had a comment which
+says:
+> Verify that capabilities don't overlap.  Note: device assignment
+> depends on this check to verify that the device is not broken.
+> Should never trigger for emulated devices, but it's helpful for
+> debugging these.
+
+Indeed vfio has some code that passes capability offsets and sizes from
+a physical device, but it explicitly pays attention so that the
+capabilities never overlap. Therefore, we can always assert that
+capabilities never overlap when pci_add_capability is called, resolving
+these inconsistencies.
+
+Such an implementation of pci_add_capability will not have errp
+parameter. However, there are so many callers of pci_add_capability
+that it does not make sense to amend all of them at once to match
+with the new signature. Instead, this change will allow callers of
+pci_add_capability to omit errp as the first step.
 
 Signed-off-by: Akihiko Odaki <akihiko.odaki@daynix.com>
 ---
- hw/net/e1000e.c | 18 +++---------------
- 1 file changed, 3 insertions(+), 15 deletions(-)
+ hw/pci/pci.c         |  8 ++++----
+ include/hw/pci/pci.h | 13 ++++++++++---
+ 2 files changed, 14 insertions(+), 7 deletions(-)
 
-diff --git a/hw/net/e1000e.c b/hw/net/e1000e.c
-index ac96f7665a..e433b8f9a5 100644
---- a/hw/net/e1000e.c
-+++ b/hw/net/e1000e.c
-@@ -377,17 +377,10 @@ e1000e_gen_dsn(uint8_t *mac)
-            (uint64_t)(mac[0])  << 56;
+diff --git a/hw/pci/pci.c b/hw/pci/pci.c
+index 2f450f6a72..8ee2171011 100644
+--- a/hw/pci/pci.c
++++ b/hw/pci/pci.c
+@@ -2513,14 +2513,14 @@ static void pci_del_option_rom(PCIDevice *pdev)
  }
  
--static int
-+static void
- e1000e_add_pm_capability(PCIDevice *pdev, uint8_t offset, uint16_t pmc)
+ /*
+- * On success, pci_add_capability() returns a positive value
++ * On success, pci_add_capability_legacy() returns a positive value
+  * that the offset of the pci capability.
+  * On failure, it sets an error and returns a negative error
+  * code.
+  */
+-int pci_add_capability(PCIDevice *pdev, uint8_t cap_id,
+-                       uint8_t offset, uint8_t size,
+-                       Error **errp)
++int pci_add_capability_legacy(PCIDevice *pdev, uint8_t cap_id,
++                              uint8_t offset, uint8_t size,
++                              Error **errp)
  {
--    Error *local_err = NULL;
--    int ret = pci_add_capability(pdev, PCI_CAP_ID_PM, offset,
--                                 PCI_PM_SIZEOF, &local_err);
--
--    if (local_err) {
--        error_report_err(local_err);
--        return ret;
--    }
-+    pci_add_capability(pdev, PCI_CAP_ID_PM, offset, PCI_PM_SIZEOF);
+     uint8_t *config;
+     int i, overlapping_cap;
+diff --git a/include/hw/pci/pci.h b/include/hw/pci/pci.h
+index b54b6ef88f..51fd106f16 100644
+--- a/include/hw/pci/pci.h
++++ b/include/hw/pci/pci.h
+@@ -2,6 +2,7 @@
+ #define QEMU_PCI_H
  
-     pci_set_word(pdev->config + offset + PCI_PM_PMC,
-                  PCI_PM_CAP_VER_1_1 |
-@@ -400,8 +393,6 @@ e1000e_add_pm_capability(PCIDevice *pdev, uint8_t offset, uint16_t pmc)
+ #include "exec/memory.h"
++#include "qapi/error.h"
+ #include "sysemu/dma.h"
  
-     pci_set_word(pdev->w1cmask + offset + PCI_PM_CTRL,
-                  PCI_PM_CTRL_PME_STATUS);
--
--    return ret;
- }
+ /* PCI includes legacy ISA access.  */
+@@ -390,9 +391,15 @@ void pci_register_vga(PCIDevice *pci_dev, MemoryRegion *mem,
+ void pci_unregister_vga(PCIDevice *pci_dev);
+ pcibus_t pci_get_bar_addr(PCIDevice *pci_dev, int region_num);
  
- static void e1000e_write_config(PCIDevice *pci_dev, uint32_t address,
-@@ -480,10 +471,7 @@ static void e1000e_pci_realize(PCIDevice *pci_dev, Error **errp)
-         trace_e1000e_msi_init_fail(ret);
-     }
+-int pci_add_capability(PCIDevice *pdev, uint8_t cap_id,
+-                       uint8_t offset, uint8_t size,
+-                       Error **errp);
++int pci_add_capability_legacy(PCIDevice *pdev, uint8_t cap_id,
++                              uint8_t offset, uint8_t size,
++                              Error **errp);
++
++#define PCI_ADD_CAPABILITY_VA(pdev, cap_id, offset, size, errp, ...) \
++    pci_add_capability_legacy(pdev, cap_id, offset, size, errp)
++
++#define pci_add_capability(...) \
++    PCI_ADD_CAPABILITY_VA(__VA_ARGS__, &error_abort)
  
--    if (e1000e_add_pm_capability(pci_dev, e1000e_pmrb_offset,
--                                  PCI_PM_CAP_DSI) < 0) {
--        hw_error("Failed to initialize PM capability");
--    }
-+    e1000e_add_pm_capability(pci_dev, e1000e_pmrb_offset, PCI_PM_CAP_DSI);
+ void pci_del_capability(PCIDevice *pci_dev, uint8_t cap_id, uint8_t cap_size);
  
-     if (pcie_aer_init(pci_dev, PCI_ERR_VER, e1000e_aer_offset,
-                       PCI_ERR_SIZEOF, NULL) < 0) {
 -- 
 2.37.3
 

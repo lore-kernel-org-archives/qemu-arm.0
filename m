@@ -1,91 +1,91 @@
-Received: by 2002:a17:906:43c7:b0:78d:9f02:16a1 with SMTP id j7csp828458ejn;
-        Wed, 26 Oct 2022 13:20:43 -0700 (PDT)
-X-Google-Smtp-Source: AMsMyM7EWsemBN1qu0A7Ch/OmUW+D2xGlYlM40OE15alTUF9ZtcBXktgo+tlFxX07AnOcSK+GsF0
-X-Received: by 2002:a0c:9122:0:b0:4b1:80fc:c405 with SMTP id q31-20020a0c9122000000b004b180fcc405mr38961080qvq.120.1666815643161;
-        Wed, 26 Oct 2022 13:20:43 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1666815643; cv=none;
+Received: by 2002:a17:906:43c7:b0:78d:9f02:16a1 with SMTP id j7csp829291ejn;
+        Wed, 26 Oct 2022 13:22:22 -0700 (PDT)
+X-Google-Smtp-Source: AMsMyM6VA6RGchVGWUGgRSggDfYUibH/B96Z+37/VVACGh+K2BEhUDnTtMf5ceUJofP/8qLgbvrA
+X-Received: by 2002:a05:6214:e86:b0:4bb:7e1a:9dee with SMTP id hf6-20020a0562140e8600b004bb7e1a9deemr12609467qvb.96.1666815731775;
+        Wed, 26 Oct 2022 13:22:11 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1666815731; cv=none;
         d=google.com; s=arc-20160816;
-        b=UhkiWGc0Wg2H3jYTV6X5+Lp9D4Tsrjps/BoVAgebcPQ195HpEkkxp1idLpvG0qH7VL
-         f2RieNakzNntXr+OL+27geQEL/8j8cDi1gmu0EClhC9UfYLL3AGB7v4CUs+tuvksuzE+
-         ffxLeZERP2rJJXVGmM3z3IhNaEhrNZkJzPBNyEA6EBcJPaIv5P5hCQodsZSVKRjtR9Bb
-         GuQYsht/e25zbSpOoAXH2di48DHmjm9BLqaC6Vs5ZoItLIKbqakBJ70NiXhOL/mnAgNd
-         ulDu8vxeznK82GGbq+kmr+jSiT6Mnsxbk1ZvWjnfdrrP0DYT4ok5IrZUYXmFbDCOjDAY
-         wLnQ==
+        b=GU/E3CLAd4eD3/IdZPPA8PLjAt5XA4CYu3541RkSw8usyP04kcP16JaPMLvKr55eYF
+         A/tyksREJTkIhId83/Y++8Z1H0xuRscw8RNV7B2TKiiMiQUuqqnn5qZ1pAMFImRtQGdu
+         K8vHj92e654bZzAa1YTW21CtMSCbbSEqwTkWnOdGLXJCMNNP7RsvwxqTa6/sR/gqKZ+n
+         ZtikYm7dcMJWkbAtM6h85fo7KaZkRtXKtJTOUPs3DgSnh/5Aq09YV4MaWzyPRpoc2V7J
+         JtTxcp8ulJxly7FiKv3t+97II6MaPmVbQfBLTVBS4DyBJTowZaMiITNMKQ8fI9tBrrn2
+         BKOQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=errors-to:sender:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=4pfSqCSZKPH6hPwzrQBqfV/qjUVeTCARV2Lk3Wi9/is=;
-        b=VY4T+re0uDSrVHxsjoz3zQyvUQGdDhdleZuoMTJFBnGbVZpxxKjYX0iiNSrdhostEp
-         JSzMJSk84aEVHsnmPyb0Ky0Izy0qzSKT3J3BF9dvCiAtk8SBSFZfqWlbGz6XuiCDKcNb
-         kR0PU4tF2OHSsrsa/XB9PiySqGaQDTGEl0crPHV1jy2iGdCZVBTHRC9n9p3KGPvAaqz7
-         u0XCKYSMmUGPF5RmVdIdpwEP96zTmFP0nTffe6P/aSL+eMt31IBkHpgtcINA7ZehbaPD
-         99TDDI48cJ7Pr3sYxpmFmnNHwrkxe39IkhESFLVtmJi1a5zpUCOcEKwumGDH94yXH5BY
-         L+Jg==
+        bh=xFfGOC+4AClp0N9VqAaA4RDzVVq2bpMfGkuUo72PR3Y=;
+        b=M5+dsWXG3d4FRZbcj6i9S3ZkXFFkHF6uIgldNzVyaoM17d6lrfjDfRcG2EOeXS47fc
+         /er5fjVnqeJFQSBABWMCzeGV7b+Z937ytIyechOxyTVMqmPsTJqAXfWwYfN2JY2Govb2
+         mwaiEr8UGf2ORFMKJsMDJhRKPpYudjo+nBBQXIS2glzF0iGi3utgNvUE/J8Ra5Tetf2b
+         SlZZioxeTUugfDvxK4uicGqN4fLr4Df1zuQJ97s2ihwsogtfU8pLAEeAEyRV7AVm2sZ5
+         YTHvzL1gapeTPibURJ8s2G+4ycYbd0Hkxs2uq8+5ks/OliW/RxwR/ofrfYl9wzZj7Sq0
+         sxiQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@daynix-com.20210112.gappssmtp.com header.s=20210112 header.b=kkO4DBwq;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@daynix-com.20210112.gappssmtp.com header.s=20210112 header.b=kTRNw7UY;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v20-20020a05620a441400b006ec50c14c08si4450393qkp.112.2022.10.26.13.20.43
+        by mx.google.com with ESMTPS id y9-20020a37f609000000b006f371ff12eesi3730462qkj.448.2022.10.26.13.22.11
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 26 Oct 2022 13:20:43 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 26 Oct 2022 13:22:11 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@daynix-com.20210112.gappssmtp.com header.s=20210112 header.b=kkO4DBwq;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@daynix-com.20210112.gappssmtp.com header.s=20210112 header.b=kTRNw7UY;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1onmqI-0003BR-2L; Wed, 26 Oct 2022 16:17:38 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1onmqT-0003On-Gl; Wed, 26 Oct 2022 16:17:49 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <akihiko.odaki@daynix.com>)
- id 1onmp2-0001cu-6d
- for qemu-devel@nongnu.org; Wed, 26 Oct 2022 16:16:21 -0400
-Received: from mail-pj1-x102c.google.com ([2607:f8b0:4864:20::102c])
+ id 1onmpT-0001uG-Nc
+ for qemu-arm@nongnu.org; Wed, 26 Oct 2022 16:16:50 -0400
+Received: from mail-pg1-x529.google.com ([2607:f8b0:4864:20::529])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <akihiko.odaki@daynix.com>)
- id 1onmoz-0003BW-On
- for qemu-devel@nongnu.org; Wed, 26 Oct 2022 16:16:19 -0400
-Received: by mail-pj1-x102c.google.com with SMTP id l6so11552175pjj.0
- for <qemu-devel@nongnu.org>; Wed, 26 Oct 2022 13:16:17 -0700 (PDT)
+ id 1onmpP-0003Ef-I2
+ for qemu-arm@nongnu.org; Wed, 26 Oct 2022 16:16:45 -0400
+Received: by mail-pg1-x529.google.com with SMTP id b5so16036901pgb.6
+ for <qemu-arm@nongnu.org>; Wed, 26 Oct 2022 13:16:43 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=daynix-com.20210112.gappssmtp.com; s=20210112;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=4pfSqCSZKPH6hPwzrQBqfV/qjUVeTCARV2Lk3Wi9/is=;
- b=kkO4DBwqFD5a8xdmVKueAI9JMFzgKI+4zAeQhqHfOJ3+deRvEEua6j/GYxWDb8oSjJ
- 91Lwl4VWIpsBYeTeRau9CqMyBWGQBGf0eIpRHOJxB1+eXStcq8NWexY6+NHEBcTgGV2M
- rgeBuIDLwtnBkjh42fL563JwO6f9KFv5sFHZPQa+RwsAzVH9e3tbbYXWI8hwm1slvbXW
- xbYlX3QvM+z6aDBef7TRSuGuiZ475nUBdPSx8G/zPRWHfwN0ggzplTr/exKMA9tJJ+5m
- 8pAV1CywwD8mv3yMd/JDFmXSDMiYQ3XW9n3+nOQpLgR+UZHK/3Zz/XbjnxSNUGSLIpUY
- ZHhQ==
+ bh=xFfGOC+4AClp0N9VqAaA4RDzVVq2bpMfGkuUo72PR3Y=;
+ b=kTRNw7UYBoR1X5DoH1oHShtzL5A5LVlJCpPUO7t2skXJg0PjGq2QE+qMKsUgESxQxN
+ Gp+W77iqWJn3qoeQ18jsqBH/AeHOAlFSrLFmh67AZux1YbJJb82Fg/k0ZVUrfjugmPuZ
+ XUjp4fxHMa3o87mvAv0+hr5bDNf3aoy1XWdVcdRdWWwoPI/pxtOkl+3Orloto+Rj1Lp3
+ 1zhK/WbADZIkP3KzO9KGO1IVEqNzpe4gwoGNTsYuqQT4g8Y7YUet4kII/6J7l+sUlC8q
+ NgeGNmOqyLU9Gdo1jKhOq3rM1E+/bTjHvAUQsrMD9ytK9UQw2bVSGdB5i3mJ86blarn+
+ LyTA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=4pfSqCSZKPH6hPwzrQBqfV/qjUVeTCARV2Lk3Wi9/is=;
- b=Bf44SXJ++Jx4274w+UUCDsUhtKdqY0/scwKSh332K4meuDlJ6qaiNTelCF3ySiLWKh
- iBqSFQ/f7IbxFvX9xC0CzTe79d5tFbo8XY9NU7maYHN7Nwd1TatNT/B3J+W0irweiwEK
- GSC/aEHsg1hgT6DAyfYupVlribDpNQfw2ooJOKkaDwDlKCoxac4Ccfv0dJ5TXAPS/t+P
- mpbr8ilRzJBcul49TPwKeMoxx/ogeOoWKFaTc7t3FprZ34jg6tLcJPINPv3H4reM8KWb
- oF1YlISXbHXzuPdyerITIJKQXzgzw9aJCQqDaAQRYGlxF2Is1oqTQcodM/57VXhRtZbJ
- YGoA==
-X-Gm-Message-State: ACrzQf0tpuenWjcA6N8TbMz4e0/Zlzv5DV/ha1F33SBlbfeT7bHmHVts
- POfRWoyPswAZ1BaN3aZd63mHpQ==
-X-Received: by 2002:a17:902:968f:b0:180:a7ff:78ba with SMTP id
- n15-20020a170902968f00b00180a7ff78bamr5193977plp.87.1666815376515; 
- Wed, 26 Oct 2022 13:16:16 -0700 (PDT)
+ bh=xFfGOC+4AClp0N9VqAaA4RDzVVq2bpMfGkuUo72PR3Y=;
+ b=rTSY6/m1QAP0mfI4VjaIvnFYhBeL6ImS8vV9ADqp598u3Vn6RK1gobwsIN/toiyya7
+ 6YMtqf69Kq88lVQUoVVkRlP2A1yIX4aioooouTwGKPHsVVVnaASgwZMaf22N59i/fbxG
+ pMGvx5UoiFh2xPPXjmuo2yHSObijC3Si/+58K0j9w0xpL5maORZWr9Q/YdondqwnJMol
+ WMmkd2rCaaDcmDkWw/K4gcODVTKtYcam4St5mdNZY3zkR0r5fae250tfiTfnl6RSWJL6
+ f0CKzfL1+UfzToW0knRMkdk3jnSG9k041Wt68U2eNazyGNyqm7BD3svuloebXARD0do5
+ ghDw==
+X-Gm-Message-State: ACrzQf0B1r7rSZjjNJJkMmk8API2iJaUmNuMRoh7BdEJSp6Fo81gfjff
+ ZxdCAIJfbF1qRUo1/4LozjPAyg==
+X-Received: by 2002:a63:101:0:b0:460:6d90:3f81 with SMTP id
+ 1-20020a630101000000b004606d903f81mr37457659pgb.545.1666815402394; 
+ Wed, 26 Oct 2022 13:16:42 -0700 (PDT)
 Received: from fedora.flets-east.jp ([2400:4050:c360:8200:8ae8:3c4:c0da:7419])
  by smtp.gmail.com with ESMTPSA id
- y5-20020aa78f25000000b00541c68a0689sm3375770pfr.7.2022.10.26.13.16.11
+ y5-20020aa78f25000000b00541c68a0689sm3375770pfr.7.2022.10.26.13.16.37
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 26 Oct 2022 13:16:16 -0700 (PDT)
+ Wed, 26 Oct 2022 13:16:41 -0700 (PDT)
 From: Akihiko Odaki <akihiko.odaki@daynix.com>
 To: 
 Cc: Alex Williamson <alex.williamson@redhat.com>, qemu-devel@nongnu.org,
@@ -105,75 +105,74 @@ Cc: Alex Williamson <alex.williamson@redhat.com>, qemu-devel@nongnu.org,
  Yan Vugenfirer <yan@daynix.com>,
  Yuri Benditovich <yuri.benditovich@daynix.com>,
  Akihiko Odaki <akihiko.odaki@daynix.com>
-Subject: [PATCH v3 07/16] msi: Omit errp for pci_add_capability
-Date: Thu, 27 Oct 2022 05:15:18 +0900
-Message-Id: <20221026201527.24063-8-akihiko.odaki@daynix.com>
+Subject: [PATCH v3 12/16] pci/slotid: Omit errp for pci_add_capability
+Date: Thu, 27 Oct 2022 05:15:23 +0900
+Message-Id: <20221026201527.24063-13-akihiko.odaki@daynix.com>
 X-Mailer: git-send-email 2.37.3
 In-Reply-To: <20221026201527.24063-1-akihiko.odaki@daynix.com>
 References: <20221026201527.24063-1-akihiko.odaki@daynix.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: none client-ip=2607:f8b0:4864:20::102c;
- envelope-from=akihiko.odaki@daynix.com; helo=mail-pj1-x102c.google.com
+Received-SPF: none client-ip=2607:f8b0:4864:20::529;
+ envelope-from=akihiko.odaki@daynix.com; helo=mail-pg1-x529.google.com
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
 X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_NONE=0.001 autolearn=unavailable autolearn_force=no
+ SPF_NONE=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Sender: "Qemu-devel" <qemu-devel-bounces@nongnu.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: TMGlDCi8bUjI
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Sender: "Qemu-arm" <qemu-arm-bounces@nongnu.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: svq2jcJRtdUt
 
 Omitting errp for pci_add_capability() causes it to abort if
-capabilities overlap. A caller of msi_init(), which calls
+capabilities overlap. A caller of slotid_cap_init(), which calls
 pci_add_capability() in turn, is expected to ensure that will not
 happen.
 
 Signed-off-by: Akihiko Odaki <akihiko.odaki@daynix.com>
 ---
- hw/pci/msi.c | 9 +--------
- 1 file changed, 1 insertion(+), 8 deletions(-)
+ hw/pci/slotid_cap.c | 8 ++------
+ 1 file changed, 2 insertions(+), 6 deletions(-)
 
-diff --git a/hw/pci/msi.c b/hw/pci/msi.c
-index 058d1d1ef1..5283a08b5a 100644
---- a/hw/pci/msi.c
-+++ b/hw/pci/msi.c
-@@ -194,7 +194,6 @@ int msi_init(struct PCIDevice *dev, uint8_t offset,
-     unsigned int vectors_order;
-     uint16_t flags;
-     uint8_t cap_size;
--    int config_offset;
+diff --git a/hw/pci/slotid_cap.c b/hw/pci/slotid_cap.c
+index 36d021b4a6..5da8c82133 100644
+--- a/hw/pci/slotid_cap.c
++++ b/hw/pci/slotid_cap.c
+@@ -12,7 +12,7 @@ int slotid_cap_init(PCIDevice *d, int nslots,
+                     unsigned offset,
+                     Error **errp)
+ {
+-    int cap;
++    uint8_t cap;
  
-     if (!msi_nonbroken) {
-         error_setg(errp, "MSI is not supported by interrupt controller");
-@@ -221,13 +220,7 @@ int msi_init(struct PCIDevice *dev, uint8_t offset,
+     if (!chassis) {
+         error_setg(errp, "Bridge chassis not specified. Each bridge is required"
+@@ -24,11 +24,7 @@ int slotid_cap_init(PCIDevice *d, int nslots,
+         return -EINVAL;
      }
  
-     cap_size = msi_cap_sizeof(flags);
--    config_offset = pci_add_capability(dev, PCI_CAP_ID_MSI, offset,
--                                        cap_size, errp);
--    if (config_offset < 0) {
--        return config_offset;
+-    cap = pci_add_capability(d, PCI_CAP_ID_SLOTID, offset,
+-                             SLOTID_CAP_LENGTH, errp);
+-    if (cap < 0) {
+-        return cap;
 -    }
--
--    dev->msi_cap = config_offset;
-+    dev->msi_cap = pci_add_capability(dev, PCI_CAP_ID_MSI, offset, cap_size);
-     dev->cap_present |= QEMU_PCI_CAP_MSI;
- 
-     pci_set_word(dev->config + msi_flags_off(dev), flags);
++    cap = pci_add_capability(d, PCI_CAP_ID_SLOTID, offset, SLOTID_CAP_LENGTH);
+     /* We make each chassis unique, this way each bridge is First in Chassis */
+     d->config[cap + PCI_SID_ESR] = PCI_SID_ESR_FIC |
+         (nslots << SLOTID_NSLOTS_SHIFT);
 -- 
 2.37.3
 

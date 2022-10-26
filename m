@@ -1,91 +1,91 @@
-Received: by 2002:a17:906:43c7:b0:78d:9f02:16a1 with SMTP id j7csp829730ejn;
-        Wed, 26 Oct 2022 13:23:21 -0700 (PDT)
-X-Google-Smtp-Source: AMsMyM68jb8FFMxCfsqMn1W59Glam7SxJKg+j64l4d1z9lrlCooNvn0ST5zFDp8zuw0zhOBsBWan
-X-Received: by 2002:ac8:5b81:0:b0:39c:b735:6b8b with SMTP id a1-20020ac85b81000000b0039cb7356b8bmr37893355qta.416.1666815801614;
-        Wed, 26 Oct 2022 13:23:21 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1666815801; cv=none;
+Received: by 2002:a17:906:43c7:b0:78d:9f02:16a1 with SMTP id j7csp829769ejn;
+        Wed, 26 Oct 2022 13:23:24 -0700 (PDT)
+X-Google-Smtp-Source: AMsMyM7VgCY8qasFiEHFBED/mFNbYId9Lc5ptF+9cbdqjMA0TCvBdV1hqlEC4WmqgEOdjCLR3QJA
+X-Received: by 2002:a05:620a:29cd:b0:6d2:c5d6:6fe0 with SMTP id s13-20020a05620a29cd00b006d2c5d66fe0mr33262579qkp.148.1666815804506;
+        Wed, 26 Oct 2022 13:23:24 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1666815804; cv=none;
         d=google.com; s=arc-20160816;
-        b=i3pKnkc3HJSyRAfGltKbaD21qNbkmRobrPwjwHBvCZKI//yOo+2oHE0LtVKm1C1xvl
-         wDi5u9k91fbvk5Bt46QA5Rft7zX2jqbWjUOPW2k6dlGo5LAb2JA4RcaPWH7d7oKnnfMH
-         ZlQ2LSlotznY8SRISZm9nazDWMMKw5qK66boWJGeozUnI0BYl/3pcvIjcN6YJoGd/VlT
-         nPmI6TDAbr+x6tcRjBO/YYmLm53igBjTXgkrapFS9Ofbey70W7YxFI+Hcy8D4vY3ZE0v
-         LrF6Xq2A9HgKFHl9adlK+cntS0aO1ztnbYo7a7lE7J5QktgdYj7sktsM2xufeAlpRXyc
-         KicQ==
+        b=uZjfagSR6KrLK/9mAQiSUPmTxvaPRL6iuQ1uqcNTaMoZrKuYkV7ow77Y43x5s1oKQN
+         1/g1XqYQnqlSnHaimr8j8BOu+TDgpW7jkwo+7fsykVMZ/xTHJzXNT9i8+CErmGILjoH6
+         rVkOaV1fbD42HA/1xqiO2rujRApEQxe6iNYqMHSsdkCDzI4GxDwsDZ0U8YZ02d0Mm4FK
+         yCx1qiDibHOzqTepV5XrDONtj9IIpcrosKjPkgAHZGAkzbu2rTj86TpC5LGe11TWB2Uf
+         +wTJOyd+oDI0S3ovbYNgPlA7sOdop/WRihguc96D4JCW+apfzq6miHNkKDdPFH4a49u9
+         ymxA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=errors-to:sender:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=1STM3PpWdsCtuLQ0E6sPy5DYW3VO2819dTVvZ/ugr5w=;
-        b=SJrjW6u+fqSl/hLjbW1gnVMK/XheYcrtCubc31dtiNu69nNSz5XT7PxdLH/3V+hcG0
-         Qv9S9NfzxaSRRS+ONS/x79P/MPrRWWdDBW571/N8REO0riKT2cmojjayylhjPID9gtLg
-         PQ06TXqb4fUAvIwjcHufbqexK2Ft8KuLDwXRZQGfNy4r/5hUUVfLYtsh2Y6LFP9x2Gk6
-         os0SkOcYsHqDL8bqk8XBB90wBEKvVmCFHXdZQ1pIFb4KGO2OT95t6ZPBvW80P3sBqJZg
-         AtEpkEanGQJTOIlkNVkkSdkf0CI0bRlYbHr4etIDL8uiVEoayCgYHNt3AEjigK9auLB6
-         yapg==
+        bh=T1V32ZG9tKSMT+jultHAIQTiINzO8gq1BfBocAzoeU4=;
+        b=XokCGoog0W4fJQYI+hVB0Prj/lH8If7hWtNeVIvIf1Vov3Uf9OjTlDRnFCbLqeeSXu
+         BNLjNVwlHgAAUGV7AhFNtxTkYAylgroBGeVnTqpWDcWokJ1o1OFc5zbt9jxij4O16mL2
+         aJh/LxJ645Y90uQ2SkKU+MVvqBjGRCgIhAU2VLAc3lV4hAUyfwiXcMKGj6s92RxzylN3
+         KEmMEXpCw23yfUOBX3z0C+eMaLKgoC3tcIEitC0EL5yNx49/GiGIfE91hoxWr1CE0NF/
+         Tk+SqTuT47wAJS23Ly7lhaKdyoLCMbFf+nvJp2kvspV0JRaIAcMzPPR5/xtXNCaK8vpf
+         w7eA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@daynix-com.20210112.gappssmtp.com header.s=20210112 header.b=h7qJOryf;
+       dkim=pass header.i=@daynix-com.20210112.gappssmtp.com header.s=20210112 header.b=uBZBwW7m;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 72-20020a37054b000000b006f98ff0a0fcsi395360qkf.205.2022.10.26.13.23.21
+        by mx.google.com with ESMTPS id gc14-20020a05622a59ce00b0038e85fb6757si3391821qtb.25.2022.10.26.13.23.24
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 26 Oct 2022 13:23:21 -0700 (PDT)
+        Wed, 26 Oct 2022 13:23:24 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@daynix-com.20210112.gappssmtp.com header.s=20210112 header.b=h7qJOryf;
+       dkim=pass header.i=@daynix-com.20210112.gappssmtp.com header.s=20210112 header.b=uBZBwW7m;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1onmqP-0003OU-I4; Wed, 26 Oct 2022 16:17:45 -0400
+	id 1onmpw-00029k-3w; Wed, 26 Oct 2022 16:17:16 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <akihiko.odaki@daynix.com>)
- id 1onmpI-0001j1-89
- for qemu-devel@nongnu.org; Wed, 26 Oct 2022 16:16:39 -0400
-Received: from mail-qv1-xf2e.google.com ([2607:f8b0:4864:20::f2e])
+ id 1onmok-0001Ru-Ok
+ for qemu-devel@nongnu.org; Wed, 26 Oct 2022 16:16:09 -0400
+Received: from mail-pg1-x536.google.com ([2607:f8b0:4864:20::536])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <akihiko.odaki@daynix.com>)
- id 1onmpF-0003Cq-AV
- for qemu-devel@nongnu.org; Wed, 26 Oct 2022 16:16:36 -0400
-Received: by mail-qv1-xf2e.google.com with SMTP id o8so12608859qvw.5
- for <qemu-devel@nongnu.org>; Wed, 26 Oct 2022 13:16:33 -0700 (PDT)
+ id 1onmoe-00035F-VJ
+ for qemu-devel@nongnu.org; Wed, 26 Oct 2022 16:15:58 -0400
+Received: by mail-pg1-x536.google.com with SMTP id e129so16026914pgc.9
+ for <qemu-devel@nongnu.org>; Wed, 26 Oct 2022 13:15:56 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=daynix-com.20210112.gappssmtp.com; s=20210112;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=1STM3PpWdsCtuLQ0E6sPy5DYW3VO2819dTVvZ/ugr5w=;
- b=h7qJOryfuNJ5pn7JqLmdWxNcu0K4ODEgUVQn+em5Pj7t5SO/MmslcGLjpwKDSFxA2z
- pwpoS0O40CjWW6IIYYPXVJF7SYD0H2C1/hsl7FDvHYvImOL07gEkUQ1fncpIUVng88nb
- G7Advy8xp/ybpvuDFo6SlhJ0z0C/znPtyAKw3rBD5UI37np8E6xL1b6M4ke6BfuEAqV8
- K3OuiZQoyO/xbf5/O63Yx/hmWORKfb4ErOefugKjLjsJVjRa77B9e2ZMeSQ7yQcwToEg
- mYlJLiABjFv8bNLCx/eHirPmGBg1U+kR2Kn+O5FzBnY1tt7yYFU8P0FPQfViq/IX+MaA
- 5ZwA==
+ bh=T1V32ZG9tKSMT+jultHAIQTiINzO8gq1BfBocAzoeU4=;
+ b=uBZBwW7mjG+fGRI1VuaabJzvkrw+UCgPEzyyz0e7c6Q95YPuX5maaiLgod84GaO23/
+ 6uQWmyU2Iln6xbOGEQTgKAXPaYPjixmgELAOyCCToFnyvTQe2hrqdjSqSyy3s0MXq4/q
+ hOoYqR8r2asFA5DM4LQ3ONsRERy9LM88Fgme9cAaXkYfZw+e5jsBMcDr5cMwAf0CCoBa
+ cNa3euOfM8jYsUPk75XxvEWwv+Lyd+TEv4JgXdizZS/RaX7FjE6AVViQqYLxZm6JpUiT
+ mTy3sv2ZF7euEyWJQl8weCjTEXmw+YDcM4mhxvtZv2Wx/V/yZ6JVOe8bi4PAOfQjS7Ps
+ /z8A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=1STM3PpWdsCtuLQ0E6sPy5DYW3VO2819dTVvZ/ugr5w=;
- b=OFF+QIrS7eEVDDEmJ9+wYLg/eDgvzMpADFBXBOtkx9xzjtbhsKFrvqeuQrINow/nnm
- Dd5l9R7rAUstxMHaaJ6cbYcOksyg3d2nY7j7SVUafkQ5Np+oFsdIQjx9+sssy+Qsp9Of
- 5vAeIS8YernKATRMrLn8AE64yQR0VdoVKpzsVa9lglxzFBHyXzre7QnIh4AbmlW3qSap
- zUl+mDHwKunL+C0tvWW6uQW0o9oypjmT08ydNsT9a4rAPJYB3KMjxLaOvSyAB99HgBa9
- A4VL8Sxek4LXD4ca7g3ENcCSyRUyrj848kaSrQeDTcGk3QyzH2IfMGoyqcxgBhqtR5kw
- gJZw==
-X-Gm-Message-State: ACrzQf2kA3ZGLzkHKDiPRQl2TCcX2Q2k3kPKkOEJDf6wdSuBSyZWFXTU
- ipnRzIhwgogc+4ju52+w9pCczOkt0Mn3YWrl
-X-Received: by 2002:a17:902:c942:b0:180:3f94:2975 with SMTP id
- i2-20020a170902c94200b001803f942975mr45333654pla.50.1666815381625; 
- Wed, 26 Oct 2022 13:16:21 -0700 (PDT)
+ bh=T1V32ZG9tKSMT+jultHAIQTiINzO8gq1BfBocAzoeU4=;
+ b=eJhYyWzpYTfxcRofLxlI+aisvJRbE6yECCDUWlqyDInaMygZ5hW5FM254m2mE+DDa+
+ qo9G4jlU1jVWj3yDmy1vPNy1KJm/CXgSU2rY0dcFsVPEAmQGar8yphnnR9vuS2yUykmQ
+ yOPfrGKqdxWtUD2Jftp7HcGa8Rg1PruEP7y0gWoRJCVgTW0sDy+whTBU7oJCi4ozN8HI
+ zSSsOK8C+a2+q1IoswkD2T2+AK0dqXhWwJ+wf28sFGzvMezqpudBdcDqDjXkr6IC9Upf
+ PMswEPKjwyvFEQ6ZlNDpLl8fN8eOhS++cg4HUGtjwRK11c/fWoPllaR7lUy/rmKNWjcD
+ Fixw==
+X-Gm-Message-State: ACrzQf0/Vq10I+G4EMQFRj8k8mTQgl3ZipbF5sns8eGMiYy8Z7o2RTNY
+ bYNGxchCiYq/+udco6ERloKYQQ==
+X-Received: by 2002:a63:6b09:0:b0:453:b1f8:bb3b with SMTP id
+ g9-20020a636b09000000b00453b1f8bb3bmr40340965pgc.36.1666815355811; 
+ Wed, 26 Oct 2022 13:15:55 -0700 (PDT)
 Received: from fedora.flets-east.jp ([2400:4050:c360:8200:8ae8:3c4:c0da:7419])
  by smtp.gmail.com with ESMTPSA id
- y5-20020aa78f25000000b00541c68a0689sm3375770pfr.7.2022.10.26.13.16.16
+ y5-20020aa78f25000000b00541c68a0689sm3375770pfr.7.2022.10.26.13.15.50
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 26 Oct 2022 13:16:21 -0700 (PDT)
+ Wed, 26 Oct 2022 13:15:55 -0700 (PDT)
 From: Akihiko Odaki <akihiko.odaki@daynix.com>
 To: 
 Cc: Alex Williamson <alex.williamson@redhat.com>, qemu-devel@nongnu.org,
@@ -105,16 +105,16 @@ Cc: Alex Williamson <alex.williamson@redhat.com>, qemu-devel@nongnu.org,
  Yan Vugenfirer <yan@daynix.com>,
  Yuri Benditovich <yuri.benditovich@daynix.com>,
  Akihiko Odaki <akihiko.odaki@daynix.com>
-Subject: [PATCH v3 08/16] hw/pci/pci_bridge: Omit errp for pci_add_capability
-Date: Thu, 27 Oct 2022 05:15:19 +0900
-Message-Id: <20221026201527.24063-9-akihiko.odaki@daynix.com>
+Subject: [PATCH v3 03/16] ahci: Omit errp for pci_add_capability
+Date: Thu, 27 Oct 2022 05:15:14 +0900
+Message-Id: <20221026201527.24063-4-akihiko.odaki@daynix.com>
 X-Mailer: git-send-email 2.37.3
 In-Reply-To: <20221026201527.24063-1-akihiko.odaki@daynix.com>
 References: <20221026201527.24063-1-akihiko.odaki@daynix.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: none client-ip=2607:f8b0:4864:20::f2e;
- envelope-from=akihiko.odaki@daynix.com; helo=mail-qv1-xf2e.google.com
+Received-SPF: none client-ip=2607:f8b0:4864:20::536;
+ envelope-from=akihiko.odaki@daynix.com; helo=mail-pg1-x536.google.com
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
@@ -135,167 +135,44 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Sender: "Qemu-devel" <qemu-devel-bounces@nongnu.org>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 3JdHV8IriEfi
+X-TUID: z2tztVPQG0HV
 
 Omitting errp for pci_add_capability() causes it to abort if
-capabilities overlap. A caller of pci_bridge_ssvid_init(), which calls
-pci_add_capability() in turn, is expected to ensure that will not
-happen.
+capabilities overlap. This behavior is appropriate heare because all of
+the capabilities set in this device are defined in the program and
+their overlap should not happen unless there is a programming error.
 
 Signed-off-by: Akihiko Odaki <akihiko.odaki@daynix.com>
 ---
- hw/pci-bridge/i82801b11.c          | 14 ++------------
- hw/pci-bridge/pcie_root_port.c     |  7 +------
- hw/pci-bridge/xio3130_downstream.c |  8 ++------
- hw/pci-bridge/xio3130_upstream.c   |  8 ++------
- hw/pci/pci_bridge.c                | 21 ++++++---------------
- include/hw/pci/pci_bridge.h        |  5 ++---
- 6 files changed, 15 insertions(+), 48 deletions(-)
+ hw/ide/ich.c | 8 ++------
+ 1 file changed, 2 insertions(+), 6 deletions(-)
 
-diff --git a/hw/pci-bridge/i82801b11.c b/hw/pci-bridge/i82801b11.c
-index f28181e210..f45dcdbacc 100644
---- a/hw/pci-bridge/i82801b11.c
-+++ b/hw/pci-bridge/i82801b11.c
-@@ -61,21 +61,11 @@ typedef struct I82801b11Bridge {
- 
- static void i82801b11_bridge_realize(PCIDevice *d, Error **errp)
+diff --git a/hw/ide/ich.c b/hw/ide/ich.c
+index 1007a51fcb..3b478b01f8 100644
+--- a/hw/ide/ich.c
++++ b/hw/ide/ich.c
+@@ -106,7 +106,7 @@ static void pci_ich9_ahci_init(Object *obj)
+ static void pci_ich9_ahci_realize(PCIDevice *dev, Error **errp)
  {
--    int rc;
--
-     pci_bridge_initfn(d, TYPE_PCI_BUS);
+     struct AHCIPCIState *d;
+-    int sata_cap_offset;
++    uint8_t sata_cap_offset;
+     uint8_t *sata_cap;
+     d = ICH9_AHCI(dev);
+     int ret;
+@@ -130,11 +130,7 @@ static void pci_ich9_ahci_realize(PCIDevice *dev, Error **errp)
+                      &d->ahci.mem);
  
--    rc = pci_bridge_ssvid_init(d, I82801ba_SSVID_OFFSET,
--                               I82801ba_SSVID_SVID, I82801ba_SSVID_SSID,
--                               errp);
--    if (rc < 0) {
--        goto err_bridge;
+     sata_cap_offset = pci_add_capability(dev, PCI_CAP_ID_SATA,
+-                                          ICH9_SATA_CAP_OFFSET, SATA_CAP_SIZE,
+-                                          errp);
+-    if (sata_cap_offset < 0) {
+-        return;
 -    }
-+    pci_bridge_ssvid_init(d, I82801ba_SSVID_OFFSET,
-+                          I82801ba_SSVID_SVID, I82801ba_SSVID_SSID);
-     pci_config_set_prog_interface(d->config, PCI_CLASS_BRIDGE_PCI_INF_SUB);
--    return;
--
--err_bridge:
--    pci_bridge_exitfn(d);
- }
++                                          ICH9_SATA_CAP_OFFSET, SATA_CAP_SIZE);
  
- static const VMStateDescription i82801b11_bridge_dev_vmstate = {
-diff --git a/hw/pci-bridge/pcie_root_port.c b/hw/pci-bridge/pcie_root_port.c
-index 460e48269d..a9d8c2adb4 100644
---- a/hw/pci-bridge/pcie_root_port.c
-+++ b/hw/pci-bridge/pcie_root_port.c
-@@ -74,12 +74,7 @@ static void rp_realize(PCIDevice *d, Error **errp)
-     }
-     pcie_port_init_reg(d);
- 
--    rc = pci_bridge_ssvid_init(d, rpc->ssvid_offset, dc->vendor_id,
--                               rpc->ssid, errp);
--    if (rc < 0) {
--        error_append_hint(errp, "Can't init SSV ID, error %d\n", rc);
--        goto err_bridge;
--    }
-+    pci_bridge_ssvid_init(d, rpc->ssvid_offset, dc->vendor_id, rpc->ssid);
- 
-     if (rpc->interrupts_init) {
-         rc = rpc->interrupts_init(d, errp);
-diff --git a/hw/pci-bridge/xio3130_downstream.c b/hw/pci-bridge/xio3130_downstream.c
-index 05e2b06c0c..eea3d3a2df 100644
---- a/hw/pci-bridge/xio3130_downstream.c
-+++ b/hw/pci-bridge/xio3130_downstream.c
-@@ -81,12 +81,8 @@ static void xio3130_downstream_realize(PCIDevice *d, Error **errp)
-         goto err_bridge;
-     }
- 
--    rc = pci_bridge_ssvid_init(d, XIO3130_SSVID_OFFSET,
--                               XIO3130_SSVID_SVID, XIO3130_SSVID_SSID,
--                               errp);
--    if (rc < 0) {
--        goto err_msi;
--    }
-+    pci_bridge_ssvid_init(d, XIO3130_SSVID_OFFSET,
-+                          XIO3130_SSVID_SVID, XIO3130_SSVID_SSID);
- 
-     rc = pcie_cap_init(d, XIO3130_EXP_OFFSET, PCI_EXP_TYPE_DOWNSTREAM,
-                        p->port, errp);
-diff --git a/hw/pci-bridge/xio3130_upstream.c b/hw/pci-bridge/xio3130_upstream.c
-index 5ff46ef050..d954906d79 100644
---- a/hw/pci-bridge/xio3130_upstream.c
-+++ b/hw/pci-bridge/xio3130_upstream.c
-@@ -71,12 +71,8 @@ static void xio3130_upstream_realize(PCIDevice *d, Error **errp)
-         goto err_bridge;
-     }
- 
--    rc = pci_bridge_ssvid_init(d, XIO3130_SSVID_OFFSET,
--                               XIO3130_SSVID_SVID, XIO3130_SSVID_SSID,
--                               errp);
--    if (rc < 0) {
--        goto err_msi;
--    }
-+    pci_bridge_ssvid_init(d, XIO3130_SSVID_OFFSET,
-+                          XIO3130_SSVID_SVID, XIO3130_SSVID_SSID);
- 
-     rc = pcie_cap_init(d, XIO3130_EXP_OFFSET, PCI_EXP_TYPE_UPSTREAM,
-                        p->port, errp);
-diff --git a/hw/pci/pci_bridge.c b/hw/pci/pci_bridge.c
-index da34c8ebcd..30032fed64 100644
---- a/hw/pci/pci_bridge.c
-+++ b/hw/pci/pci_bridge.c
-@@ -42,21 +42,15 @@
- #define PCI_SSVID_SVID          4
- #define PCI_SSVID_SSID          6
- 
--int pci_bridge_ssvid_init(PCIDevice *dev, uint8_t offset,
--                          uint16_t svid, uint16_t ssid,
--                          Error **errp)
-+void pci_bridge_ssvid_init(PCIDevice *dev, uint8_t offset,
-+                           uint16_t svid, uint16_t ssid)
- {
--    int pos;
-+    uint8_t pos;
- 
--    pos = pci_add_capability(dev, PCI_CAP_ID_SSVID, offset,
--                             PCI_SSVID_SIZEOF, errp);
--    if (pos < 0) {
--        return pos;
--    }
-+    pos = pci_add_capability(dev, PCI_CAP_ID_SSVID, offset, PCI_SSVID_SIZEOF);
- 
-     pci_set_word(dev->config + pos + PCI_SSVID_SVID, svid);
-     pci_set_word(dev->config + pos + PCI_SSVID_SSID, ssid);
--    return pos;
- }
- 
- /* Accessor function to get parent bridge device from pci bus. */
-@@ -455,11 +449,8 @@ int pci_bridge_qemu_reserve_cap_init(PCIDevice *dev, int cap_offset,
-             .mem_pref_64 = cpu_to_le64(res_reserve.mem_pref_64)
-     };
- 
--    int offset = pci_add_capability(dev, PCI_CAP_ID_VNDR,
--                                    cap_offset, cap_len, errp);
--    if (offset < 0) {
--        return offset;
--    }
-+    uint8_t offset = pci_add_capability(dev, PCI_CAP_ID_VNDR,
-+                                        cap_offset, cap_len);
- 
-     memcpy(dev->config + offset + PCI_CAP_FLAGS,
-            (char *)&cap + PCI_CAP_FLAGS,
-diff --git a/include/hw/pci/pci_bridge.h b/include/hw/pci/pci_bridge.h
-index ba4bafac7c..e499482972 100644
---- a/include/hw/pci/pci_bridge.h
-+++ b/include/hw/pci/pci_bridge.h
-@@ -101,9 +101,8 @@ typedef struct PXBDev PXBDev;
- DECLARE_INSTANCE_CHECKER(PXBDev, PXB_CXL_DEV,
-                          TYPE_PXB_CXL_DEVICE)
- 
--int pci_bridge_ssvid_init(PCIDevice *dev, uint8_t offset,
--                          uint16_t svid, uint16_t ssid,
--                          Error **errp);
-+void pci_bridge_ssvid_init(PCIDevice *dev, uint8_t offset,
-+                           uint16_t svid, uint16_t ssid);
- 
- PCIDevice *pci_bridge_get_device(PCIBus *bus);
- PCIBus *pci_bridge_get_sec_bus(PCIBridge *br);
+     sata_cap = dev->config + sata_cap_offset;
+     pci_set_word(sata_cap + SATA_CAP_REV, 0x10);
 -- 
 2.37.3
 

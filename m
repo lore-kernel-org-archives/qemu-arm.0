@@ -1,249 +1,260 @@
-Received: by 2002:a17:906:43c7:b0:78d:9f02:16a1 with SMTP id j7csp161420ejn;
-        Wed, 26 Oct 2022 23:48:28 -0700 (PDT)
-X-Google-Smtp-Source: AMsMyM60XOAi/kW+o8xWp8q4omYD1g3KnF2rMOUvRpaBjjUhMkvU6fEv9sT+eKYBGtLHtp35ruG4
-X-Received: by 2002:a05:6214:1a48:b0:4bb:604d:fb2c with SMTP id fi8-20020a0562141a4800b004bb604dfb2cmr20900273qvb.93.1666853308510;
-        Wed, 26 Oct 2022 23:48:28 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1666853308; cv=none;
+Received: by 2002:a17:906:43c7:b0:78d:9f02:16a1 with SMTP id j7csp250281ejn;
+        Thu, 27 Oct 2022 03:02:45 -0700 (PDT)
+X-Google-Smtp-Source: AMsMyM6XtyFUPQlaxLKMir7AXpuZQYcHf6r7YS10w4ZLzh8Og2I5JDHeydk9JQXOeoQyiAPcvSst
+X-Received: by 2002:ac8:7e81:0:b0:3a4:f405:4b6b with SMTP id w1-20020ac87e81000000b003a4f4054b6bmr4784052qtj.524.1666864964819;
+        Thu, 27 Oct 2022 03:02:44 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1666864964; cv=none;
         d=google.com; s=arc-20160816;
-        b=aM5mXRPX26dfNPa7gI4vHJtXyPvy1KtBXXNmeTx4b7+n157MTdBBV8p6AKUGfQJFB2
-         XM0QSGuFt5esP9SNFvAHWnKFCSBt5z2Ye5XNFK37g2wPCMM3B8eg2yxPuf62kzFbCU/1
-         t00Qe+RF2hSpoBL35OdYhaotQ4Hly29LrtcI7Eo/S0SD8rfo0Eef5Ut4FY/5AuKlkAAG
-         uc2j3ftRaQBXqN1sIlnQ4CIIK+UTNL0EiPf7jLCWGMU2cpjYhiAcsOR9g3zQwlP8yLoB
-         SWOZLYiwsy1xr8M23QJt0txUjqFyw9cNPE3NbeiyweISM8zN7yXgZzB8jSDDFiXoHxm/
-         WtWQ==
+        b=os8/upVhFfyXZqdP57cQptfOBrkluuiubxBGmCb6dBFO2w1LR/z+6Lap6F+UTttzTm
+         Ou+Ki1N8XQTGgmdGQHNUg0RVf1DJI2rGcyjIYHF00ZLwjU/UyQ8dM2JvnHk1XCqKTDqW
+         A0d3uJCoJlpV+0O5yEkiOr8VgSIKOHV1rC2gVXBE7xenKF+bjKZVl4hqGyJOTFecc8Zr
+         jiiI8zLELkduUTnj1pSfi/6OWK9wXlC0jRojovyQQkRt9zVUpvvDMAnwRo61ZaJEq6Si
+         34p1GQ2yCWolISEOmOn7bPgF+yiv1QtTT1sdvBE1Yi9hjFS5xQV79599f2KQJOgXK0Mk
+         Jzsg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=errors-to:sender:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=Dqc5LLPJjFQlDlaLY/6hGAzf/cbhcBszssmeQVoPp1s=;
-        b=xnLe+4xB2flX13sgNt9En7zW4g0XC2OXBM012MXpn/ejmHMA6bcJ4gZ4Xr6tsilvAa
-         QML5oFjDdizNZh9M7REtQTM7igTMARpu2NBm5uMkEEzAp2sR8AP3Z/T5KQjzXKrguVhY
-         lu+b0AdExFR34c0WXawD+J/zEwbFi01NSRBoio0Yw+XEpWtjfHlZ7YSJsHnjsJ2mTO7i
-         MvT0cYa29XgQHRaB6mPVC8CB6uiKEK2mSs8hEPnibvFjhHuUsWc21gJUiLzLwhVSCis3
-         N4sM+t+y39E8gJY3QoKNwlPXJNmuC/MVWSvv/8EiC3h45yivR7kF3dGH1mEyGD282Ny8
-         9gpA==
+        h=errors-to:from:reply-to:sender:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence
+         :content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to;
+        bh=4/u7HBqjX8aagYu9GUSvAujW3yuc2DQxCWa5f+XA15s=;
+        b=GOQaYMGZ3JlxpD+EMgriHOj0q22LUogj6uDwqdVS9YGrBU34vCcXyO24ZUv8r7C/EV
+         q9nAd8iM5CunIa2orOrgL/8UQSzUxYq3UUagmNZybP+7g6DI6NVeVL1mLPL4l4TAgD+i
+         FxjugCGzTIwmU1c23VRuvzjABWopeYhojaYtLlhhWSDiUEallM10ag/qwjfiBXZ6axnn
+         HSQk4EWah4mQQF45YmF/KnzPsHrqVlzU661dgT0vJymI+qLlqenXwjZIsUSHDCQKiDpA
+         WnH5tU8LtJHc0m46KrfQsPp9n1W0PeYoEIfE7AWCpj2eJ7pTe1wsZGHbvtPYQChsbgke
+         /sYw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@daynix-com.20210112.gappssmtp.com header.s=20210112 header.b=FdXUaj+K;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id ke23-20020a056214301700b004bb63dda5absi420769qvb.276.2022.10.26.23.48.28
+        by mx.google.com with ESMTPS id iv8-20020ad45ce8000000b004ad0cc999besi606030qvb.347.2022.10.27.03.02.44
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 26 Oct 2022 23:48:28 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 27 Oct 2022 03:02:44 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@daynix-com.20210112.gappssmtp.com header.s=20210112 header.b=FdXUaj+K;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1onwZ1-0004W8-62; Thu, 27 Oct 2022 02:40:27 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1onzhn-0003FR-2V; Thu, 27 Oct 2022 06:01:43 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <akihiko.odaki@daynix.com>)
- id 1onwWv-0004Iz-S5
- for qemu-arm@nongnu.org; Thu, 27 Oct 2022 02:38:19 -0400
-Received: from mail-pg1-x529.google.com ([2607:f8b0:4864:20::529])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <akihiko.odaki@daynix.com>)
- id 1onwWt-0003K1-CX
- for qemu-arm@nongnu.org; Thu, 27 Oct 2022 02:38:16 -0400
-Received: by mail-pg1-x529.google.com with SMTP id g129so389895pgc.7
- for <qemu-arm@nongnu.org>; Wed, 26 Oct 2022 23:38:15 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=daynix-com.20210112.gappssmtp.com; s=20210112;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=Dqc5LLPJjFQlDlaLY/6hGAzf/cbhcBszssmeQVoPp1s=;
- b=FdXUaj+KFq9Ubs/NuxsJ+jwFt74+Kq0ia5GI7uOpdWUeygrWUy92t+bLEfuhqNXQhe
- idicHOe7UbUTGUP9kd4NuDrF7Sm3cBb6jtgPGG3gyVWfi3mZwy0hTsEl+sVyQUWWBQMy
- HTn+hgAZAMOhxBBRqKS9w6wbhzjyRYG0aq5qsIXs5cOAPS7AGh05OYOOTChq3jxbjgQ8
- R/gTZGM0Z7yqIKN1RyrB6pcRQzxp15PumtN2o4ns+4pWGrWBFg3r6fNwb9kWehdT54oh
- KtSxJciYtVtIR2ZRKuufY82cXTq54XQ5Ewj+vCj3UhUiCwb1SHNMCo6gPtAV4CO7N+9T
- 6EGA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=Dqc5LLPJjFQlDlaLY/6hGAzf/cbhcBszssmeQVoPp1s=;
- b=2fom7ujCaIBgVNJod51xkzoi4aHpx0r/zA1cVYx6+7W6sFkHXYd8dJDNkg21fpKkhR
- ZH+Zw6nydF3tGxMAfJSx0Teft4iYLSdx/FR0dc3NyrrQrWpye0o6EKjwlpAE3uDTLibg
- 6dKoonT6bfObA2KLTGDUZtODoM5a1B1AdwuvoryLYPlb9oHP+05bm7S4zhbZs3HNyZiq
- hv2iNjP61/UTlN0yKXjhcAmvBW4TiVz4UqrDiqcK+qTLSRyZJqDKSJBjXClEp8itsT33
- ibRAYkFFFoL6AhZOHOq92YjPfAcP8WOh8kbVKXoDXwN9bqZ8D5CcO/6eu+Q9+HQ/v0fd
- NWCg==
-X-Gm-Message-State: ACrzQf0PngWQbNhTmMm7oKqivhinnIniQEK4t30Hps5xMkbDx1evoOPg
- Op34sTAiKNwhfEV3uT7PQ/NbOg==
-X-Received: by 2002:a63:5d5b:0:b0:46e:f010:d0f7 with SMTP id
- o27-20020a635d5b000000b0046ef010d0f7mr20534344pgm.585.1666852692173; 
- Wed, 26 Oct 2022 23:38:12 -0700 (PDT)
-Received: from fedora.flets-east.jp ([2400:4050:c360:8200:8ae8:3c4:c0da:7419])
- by smtp.gmail.com with ESMTPSA id
- z17-20020aa79491000000b0056b818142a2sm448872pfk.109.2022.10.26.23.38.07
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 26 Oct 2022 23:38:11 -0700 (PDT)
-From: Akihiko Odaki <akihiko.odaki@daynix.com>
-To: 
-Cc: Alex Williamson <alex.williamson@redhat.com>, qemu-devel@nongnu.org,
- qemu-block@nongnu.org, qemu-arm@nongnu.org,
- "Michael S . Tsirkin" <mst@redhat.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Gerd Hoffmann <kraxel@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- Eduardo Habkost <eduardo@habkost.net>, John Snow <jsnow@redhat.com>,
- Dmitry Fleytman <dmitry.fleytman@gmail.com>,
- Jason Wang <jasowang@redhat.com>, Stefan Weil <sw@weilnetz.de>,
- Keith Busch <kbusch@kernel.org>, Klaus Jensen <its@irrelevant.dk>,
- Peter Maydell <peter.maydell@linaro.org>,
- Andrey Smirnov <andrew.smirnov@gmail.com>,
- Paul Burton <paulburton@kernel.org>,
- Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
- Yan Vugenfirer <yan@daynix.com>,
- Yuri Benditovich <yuri.benditovich@daynix.com>,
- Akihiko Odaki <akihiko.odaki@daynix.com>
-Subject: [PATCH v4 11/17] pci/shpc: Omit errp for pci_add_capability
-Date: Thu, 27 Oct 2022 15:36:59 +0900
-Message-Id: <20221027063705.4093-12-akihiko.odaki@daynix.com>
-X-Mailer: git-send-email 2.37.3
-In-Reply-To: <20221027063705.4093-1-akihiko.odaki@daynix.com>
-References: <20221027063705.4093-1-akihiko.odaki@daynix.com>
+ (Exim 4.90_1) (envelope-from <hesham.almatary@huawei.com>)
+ id 1onzhK-0001Kj-PC; Thu, 27 Oct 2022 06:01:20 -0400
+Received: from frasgout.his.huawei.com ([185.176.79.56])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <hesham.almatary@huawei.com>)
+ id 1onzhI-0003xt-HE; Thu, 27 Oct 2022 06:01:14 -0400
+Received: from frapeml500005.china.huawei.com (unknown [172.18.147.200])
+ by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4Myh1S4BZ8z688Br;
+ Thu, 27 Oct 2022 17:57:32 +0800 (CST)
+Received: from lhrpeml500004.china.huawei.com (7.191.163.9) by
+ frapeml500005.china.huawei.com (7.182.85.13) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2375.31; Thu, 27 Oct 2022 12:01:09 +0200
+Received: from O84201547D.china.huawei.com (10.122.247.218) by
+ lhrpeml500004.china.huawei.com (7.191.163.9) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2375.31; Thu, 27 Oct 2022 11:01:08 +0100
+To: <jonathan.cameron@huawei.com>, <qemu-devel@nongnu.org>
+CC: <yangyicong@huawei.com>, <chenxiang66@hisilicon.com>,
+ <linuxarm@huawei.com>, <qemu-arm@nongnu.org>, <peter.maydell@linaro.org>,
+ <imammedo@redhat.com>, <wangyanan55@huawei.com>,
+ <marcel.apfelbaum@gmail.com>, <eduardo@habkost.net>, <Brice.Goglin@inria.fr>, 
+ <mst@redhat.com>
+Subject: [PATCH v3 1/8] hmat acpi: Don't require initiator value in -numa
+Date: Thu, 27 Oct 2022 11:00:30 +0100
+Message-ID: <20221027100037.251-2-hesham.almatary@huawei.com>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20221027100037.251-1-hesham.almatary@huawei.com>
+References: <20221027100037.251-1-hesham.almatary@huawei.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: none client-ip=2607:f8b0:4864:20::529;
- envelope-from=akihiko.odaki@daynix.com; helo=mail-pg1-x529.google.com
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_NONE=0.001 autolearn=ham autolearn_force=no
+Content-Type: text/plain
+X-Originating-IP: [10.122.247.218]
+X-ClientProxiedBy: lhrpeml100006.china.huawei.com (7.191.160.224) To
+ lhrpeml500004.china.huawei.com (7.191.163.9)
+X-CFilter-Loop: Reflected
+Received-SPF: pass client-ip=185.176.79.56;
+ envelope-from=hesham.almatary@huawei.com; helo=frasgout.his.huawei.com
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Sender: "Qemu-arm" <qemu-arm-bounces@nongnu.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: NLHdYJfeFae2
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Sender: "Qemu-devel" <qemu-devel-bounces@nongnu.org>
+Reply-to:  Hesham Almatary <hesham.almatary@huawei.com>
+From:  Hesham Almatary via <qemu-devel@nongnu.org>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: miiqXsvRL543
 
-Omitting errp for pci_add_capability() causes it to abort if
-capabilities overlap. A caller of shpc_init(), which calls
-pci_add_capability() in turn, is expected to ensure that will not
-happen.
+From: Brice Goglin <Brice.Goglin@inria.fr>
 
-Signed-off-by: Akihiko Odaki <akihiko.odaki@daynix.com>
+The "Memory Proximity Domain Attributes" structure of the ACPI HMAT
+has a "Processor Proximity Domain Valid" flag that is currently
+always set because Qemu -numa requires an initiator=X value
+when hmat=on. Unsetting this flag allows to create more complex
+memory topologies by having multiple best initiators for a single
+memory target.
+
+This patch allows -numa without initiator=X when hmat=on by keeping
+the default value MAX_NODES in numa_state->nodes[i].initiator.
+All places reading numa_state->nodes[i].initiator already check
+whether it's different from MAX_NODES before using it.
+
+Tested with
+qemu-system-x86_64 -accel kvm \
+ -machine pc,hmat=on \
+ -drive if=pflash,format=raw,file=./OVMF.fd \
+ -drive media=disk,format=qcow2,file=efi.qcow2 \
+ -smp 4 \
+ -m 3G \
+ -object memory-backend-ram,size=1G,id=ram0 \
+ -object memory-backend-ram,size=1G,id=ram1 \
+ -object memory-backend-ram,size=1G,id=ram2 \
+ -numa node,nodeid=0,memdev=ram0,cpus=0-1 \
+ -numa node,nodeid=1,memdev=ram1,cpus=2-3 \
+ -numa node,nodeid=2,memdev=ram2 \
+ -numa hmat-lb,initiator=0,target=0,hierarchy=memory,data-type=access-latency,latency=10 \
+ -numa hmat-lb,initiator=0,target=0,hierarchy=memory,data-type=access-bandwidth,bandwidth=10485760 \
+ -numa hmat-lb,initiator=0,target=1,hierarchy=memory,data-type=access-latency,latency=20 \
+ -numa hmat-lb,initiator=0,target=1,hierarchy=memory,data-type=access-bandwidth,bandwidth=5242880 \
+ -numa hmat-lb,initiator=0,target=2,hierarchy=memory,data-type=access-latency,latency=30 \
+ -numa hmat-lb,initiator=0,target=2,hierarchy=memory,data-type=access-bandwidth,bandwidth=1048576 \
+ -numa hmat-lb,initiator=1,target=0,hierarchy=memory,data-type=access-latency,latency=20 \
+ -numa hmat-lb,initiator=1,target=0,hierarchy=memory,data-type=access-bandwidth,bandwidth=5242880 \
+ -numa hmat-lb,initiator=1,target=1,hierarchy=memory,data-type=access-latency,latency=10 \
+ -numa hmat-lb,initiator=1,target=1,hierarchy=memory,data-type=access-bandwidth,bandwidth=10485760 \
+ -numa hmat-lb,initiator=1,target=2,hierarchy=memory,data-type=access-latency,latency=30 \
+ -numa hmat-lb,initiator=1,target=2,hierarchy=memory,data-type=access-bandwidth,bandwidth=1048576
+which reports NUMA node2 at same distance from both node0 and node1 as seen in lstopo:
+Machine (2966MB total) + Package P#0
+  NUMANode P#2 (979MB)
+  Group0
+    NUMANode P#0 (980MB)
+    Core P#0 + PU P#0
+    Core P#1 + PU P#1
+  Group0
+    NUMANode P#1 (1007MB)
+    Core P#2 + PU P#2
+    Core P#3 + PU P#3
+
+Before this patch, we had to add ",initiator=X" to "-numa node,nodeid=2,memdev=ram2".
+The lstopo output difference between initiator=1 and no initiator is:
+@@ -1,10 +1,10 @@
+ Machine (2966MB total) + Package P#0
++  NUMANode P#2 (979MB)
+   Group0
+     NUMANode P#0 (980MB)
+     Core P#0 + PU P#0
+     Core P#1 + PU P#1
+   Group0
+     NUMANode P#1 (1007MB)
+-    NUMANode P#2 (979MB)
+     Core P#2 + PU P#2
+     Core P#3 + PU P#3
+
+Corresponding changes in the HMAT MPDA structure:
+@@ -49,10 +49,10 @@
+ [078h 0120   2]               Structure Type : 0000 [Memory Proximity Domain Attributes]
+ [07Ah 0122   2]                     Reserved : 0000
+ [07Ch 0124   4]                       Length : 00000028
+-[080h 0128   2]        Flags (decoded below) : 0001
+-            Processor Proximity Domain Valid : 1
++[080h 0128   2]        Flags (decoded below) : 0000
++            Processor Proximity Domain Valid : 0
+ [082h 0130   2]                    Reserved1 : 0000
+-[084h 0132   4] Attached Initiator Proximity Domain : 00000001
++[084h 0132   4] Attached Initiator Proximity Domain : 00000080
+ [088h 0136   4]      Memory Proximity Domain : 00000002
+ [08Ch 0140   4]                    Reserved2 : 00000000
+ [090h 0144   8]                    Reserved3 : 0000000000000000
+
+Final HMAT SLLB structures:
+[0A0h 0160   2]               Structure Type : 0001 [System Locality Latency and Bandwidth Information]
+[0A2h 0162   2]                     Reserved : 0000
+[0A4h 0164   4]                       Length : 00000040
+[0A8h 0168   1]        Flags (decoded below) : 00
+                            Memory Hierarchy : 0
+[0A9h 0169   1]                    Data Type : 00
+[0AAh 0170   2]                    Reserved1 : 0000
+[0ACh 0172   4] Initiator Proximity Domains # : 00000002
+[0B0h 0176   4]   Target Proximity Domains # : 00000003
+[0B4h 0180   4]                    Reserved2 : 00000000
+[0B8h 0184   8]              Entry Base Unit : 0000000000002710
+[0C0h 0192   4] Initiator Proximity Domain List : 00000000
+[0C4h 0196   4] Initiator Proximity Domain List : 00000001
+[0C8h 0200   4] Target Proximity Domain List : 00000000
+[0CCh 0204   4] Target Proximity Domain List : 00000001
+[0D0h 0208   4] Target Proximity Domain List : 00000002
+[0D4h 0212   2]                        Entry : 0001
+[0D6h 0214   2]                        Entry : 0002
+[0D8h 0216   2]                        Entry : 0003
+[0DAh 0218   2]                        Entry : 0002
+[0DCh 0220   2]                        Entry : 0001
+[0DEh 0222   2]                        Entry : 0003
+
+[0E0h 0224   2]               Structure Type : 0001 [System Locality Latency and Bandwidth Information]
+[0E2h 0226   2]                     Reserved : 0000
+[0E4h 0228   4]                       Length : 00000040
+[0E8h 0232   1]        Flags (decoded below) : 00
+                            Memory Hierarchy : 0
+[0E9h 0233   1]                    Data Type : 03
+[0EAh 0234   2]                    Reserved1 : 0000
+[0ECh 0236   4] Initiator Proximity Domains # : 00000002
+[0F0h 0240   4]   Target Proximity Domains # : 00000003
+[0F4h 0244   4]                    Reserved2 : 00000000
+[0F8h 0248   8]              Entry Base Unit : 0000000000000001
+[100h 0256   4] Initiator Proximity Domain List : 00000000
+[104h 0260   4] Initiator Proximity Domain List : 00000001
+[108h 0264   4] Target Proximity Domain List : 00000000
+[10Ch 0268   4] Target Proximity Domain List : 00000001
+[110h 0272   4] Target Proximity Domain List : 00000002
+[114h 0276   2]                        Entry : 000A
+[116h 0278   2]                        Entry : 0005
+[118h 0280   2]                        Entry : 0001
+[11Ah 0282   2]                        Entry : 0005
+[11Ch 0284   2]                        Entry : 000A
+[11Eh 0286   2]                        Entry : 0001
+
+Signed-off-by: Brice Goglin <Brice.Goglin@inria.fr>
+Signed-off-by: Hesham Almatary <hesham.almatary@huawei.com>
+Reviewed-by: Jingqi Liu <jingqi.liu@intel.com>
 ---
- hw/pci-bridge/pci_bridge_dev.c  |  2 +-
- hw/pci-bridge/pcie_pci_bridge.c |  2 +-
- hw/pci/shpc.c                   | 23 ++++++-----------------
- include/hw/pci/shpc.h           |  3 +--
- 4 files changed, 9 insertions(+), 21 deletions(-)
+ hw/core/machine.c | 4 +---
+ 1 file changed, 1 insertion(+), 3 deletions(-)
 
-diff --git a/hw/pci-bridge/pci_bridge_dev.c b/hw/pci-bridge/pci_bridge_dev.c
-index 657a06ddbe..4b6d1876eb 100644
---- a/hw/pci-bridge/pci_bridge_dev.c
-+++ b/hw/pci-bridge/pci_bridge_dev.c
-@@ -66,7 +66,7 @@ static void pci_bridge_dev_realize(PCIDevice *dev, Error **errp)
-         dev->config[PCI_INTERRUPT_PIN] = 0x1;
-         memory_region_init(&bridge_dev->bar, OBJECT(dev), "shpc-bar",
-                            shpc_bar_size(dev));
--        err = shpc_init(dev, &br->sec_bus, &bridge_dev->bar, 0, errp);
-+        err = shpc_init(dev, &br->sec_bus, &bridge_dev->bar, 0);
-         if (err) {
-             goto shpc_error;
+diff --git a/hw/core/machine.c b/hw/core/machine.c
+index aa520e74a8..e686bb48a0 100644
+--- a/hw/core/machine.c
++++ b/hw/core/machine.c
+@@ -1176,9 +1176,7 @@ static void numa_validate_initiator(NumaState *numa_state)
+ 
+     for (i = 0; i < numa_state->num_nodes; i++) {
+         if (numa_info[i].initiator == MAX_NODES) {
+-            error_report("The initiator of NUMA node %d is missing, use "
+-                         "'-numa node,initiator' option to declare it", i);
+-            exit(1);
++            continue;
          }
-diff --git a/hw/pci-bridge/pcie_pci_bridge.c b/hw/pci-bridge/pcie_pci_bridge.c
-index df5dfdd139..99778e3e24 100644
---- a/hw/pci-bridge/pcie_pci_bridge.c
-+++ b/hw/pci-bridge/pcie_pci_bridge.c
-@@ -42,7 +42,7 @@ static void pcie_pci_bridge_realize(PCIDevice *d, Error **errp)
-     d->config[PCI_INTERRUPT_PIN] = 0x1;
-     memory_region_init(&pcie_br->shpc_bar, OBJECT(d), "shpc-bar",
-                        shpc_bar_size(d));
--    rc = shpc_init(d, &br->sec_bus, &pcie_br->shpc_bar, 0, errp);
-+    rc = shpc_init(d, &br->sec_bus, &pcie_br->shpc_bar, 0);
-     if (rc) {
-         goto error;
-     }
-diff --git a/hw/pci/shpc.c b/hw/pci/shpc.c
-index e71f3a7483..5b3228c793 100644
---- a/hw/pci/shpc.c
-+++ b/hw/pci/shpc.c
-@@ -440,16 +440,11 @@ static void shpc_cap_update_dword(PCIDevice *d)
- }
  
- /* Add SHPC capability to the config space for the device. */
--static int shpc_cap_add_config(PCIDevice *d, Error **errp)
-+static void shpc_cap_add_config(PCIDevice *d)
- {
-     uint8_t *config;
--    int config_offset;
--    config_offset = pci_add_capability(d, PCI_CAP_ID_SHPC,
--                                       0, SHPC_CAP_LENGTH,
--                                       errp);
--    if (config_offset < 0) {
--        return config_offset;
--    }
-+    uint8_t config_offset;
-+    config_offset = pci_add_capability(d, PCI_CAP_ID_SHPC, 0, SHPC_CAP_LENGTH);
-     config = d->config + config_offset;
- 
-     pci_set_byte(config + SHPC_CAP_DWORD_SELECT, 0);
-@@ -459,7 +454,6 @@ static int shpc_cap_add_config(PCIDevice *d, Error **errp)
-     /* Make dword select and data writable. */
-     pci_set_byte(d->wmask + config_offset + SHPC_CAP_DWORD_SELECT, 0xff);
-     pci_set_long(d->wmask + config_offset + SHPC_CAP_DWORD_DATA, 0xffffffff);
--    return 0;
- }
- 
- static uint64_t shpc_mmio_read(void *opaque, hwaddr addr,
-@@ -584,18 +578,13 @@ void shpc_device_unplug_request_cb(HotplugHandler *hotplug_dev,
- }
- 
- /* Initialize the SHPC structure in bridge's BAR. */
--int shpc_init(PCIDevice *d, PCIBus *sec_bus, MemoryRegion *bar,
--              unsigned offset, Error **errp)
-+int shpc_init(PCIDevice *d, PCIBus *sec_bus, MemoryRegion *bar, unsigned offset)
- {
--    int i, ret;
-+    int i;
-     int nslots = SHPC_MAX_SLOTS; /* TODO: qdev property? */
-     SHPCDevice *shpc = d->shpc = g_malloc0(sizeof(*d->shpc));
-     shpc->sec_bus = sec_bus;
--    ret = shpc_cap_add_config(d, errp);
--    if (ret) {
--        g_free(d->shpc);
--        return ret;
--    }
-+    shpc_cap_add_config(d);
-     if (nslots < SHPC_MIN_SLOTS) {
-         return 0;
-     }
-diff --git a/include/hw/pci/shpc.h b/include/hw/pci/shpc.h
-index d5683b7399..18ab16ec9f 100644
---- a/include/hw/pci/shpc.h
-+++ b/include/hw/pci/shpc.h
-@@ -38,8 +38,7 @@ struct SHPCDevice {
- 
- void shpc_reset(PCIDevice *d);
- int shpc_bar_size(PCIDevice *dev);
--int shpc_init(PCIDevice *dev, PCIBus *sec_bus, MemoryRegion *bar,
--              unsigned off, Error **errp);
-+int shpc_init(PCIDevice *dev, PCIBus *sec_bus, MemoryRegion *bar, unsigned off);
- void shpc_cleanup(PCIDevice *dev, MemoryRegion *bar);
- void shpc_free(PCIDevice *dev);
- void shpc_cap_write_config(PCIDevice *d, uint32_t addr, uint32_t val, int len);
+         if (!numa_info[numa_info[i].initiator].present) {
 -- 
-2.37.3
+2.25.1
 

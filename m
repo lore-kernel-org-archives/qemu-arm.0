@@ -1,74 +1,73 @@
-Received: by 2002:a17:906:43c7:b0:78d:9f02:16a1 with SMTP id j7csp252895ejn;
-        Thu, 27 Oct 2022 03:06:18 -0700 (PDT)
-X-Google-Smtp-Source: AMsMyM7PRNlLiUlnfZyFSOG/6obFnMAfmp1nqa5QEGok/KZXvYIS1v+CV8Wlp/2ILPp6jorQj+uw
-X-Received: by 2002:a05:622a:1a25:b0:39c:b862:7318 with SMTP id f37-20020a05622a1a2500b0039cb8627318mr40426475qtb.147.1666865178306;
-        Thu, 27 Oct 2022 03:06:18 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1666865178; cv=none;
+Received: by 2002:a17:906:43c7:b0:78d:9f02:16a1 with SMTP id j7csp253095ejn;
+        Thu, 27 Oct 2022 03:06:38 -0700 (PDT)
+X-Google-Smtp-Source: AMsMyM6z4exYBwbFfTyvdeG6+AtJYdVv6FGDGCuob904P8beKwHJdzSUqvmCE8CWal8P9CDpb2Du
+X-Received: by 2002:a05:6214:212e:b0:4b8:56d2:d0f5 with SMTP id r14-20020a056214212e00b004b856d2d0f5mr31191466qvc.4.1666865198623;
+        Thu, 27 Oct 2022 03:06:38 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1666865198; cv=none;
         d=google.com; s=arc-20160816;
-        b=t1s2mRhThWyuJUFW6/XBdOB2bwFe63VDvSTHpv/OtnGE33qJvTg3ye3zKFz5jKlNjo
-         Hpndl/CRc8qZggPU5hDPN8znqsrqQgXFiAf7oVCCjkbM2hJ+EcAVt6eT0iRjVvkVcVuB
-         hqfyUj6D+weMzgX7iVsmp7cDzE4G4jcqUJa4erFILhw4nqGN5Q8tKS3V8wZ5YPnW18vC
-         QX6M8xpTiZr3HsjPBt/zS3bK3Tpp8KEPz5sDBxrntUtM/Gb2lW5gT8k9WHNHI+zRbfob
-         vbmPDTUSYg+X3oU1nvCzFnmg2WvIOgYKfcrBiX7DYcVCKypF++cNcT+hjHNWIwTdRkDc
-         oniA==
+        b=0VuzZucvso7ueQuNO3DrjvxHnjEDiuTbI1XSasUyi51nSplm7nfhEu8Xs5FclM/cCF
+         W/Wlw+4CZfxfx/GL3BL0OOiCYEiCScnLaJFYdHvUCq4A9/bSlcsAkOCWEOsoOkF7vHYw
+         t8znqpq1HnV9xHH32WscAiioHDaQyQ2NAwfBB6TR8AWciti5+c4bK87jAkC0zBYRDQ1Z
+         HZjN5c5BdXFXctRkP31nQqCGzcEAF/giV/4aLAdBpaeqoFz8xd0oIwjAURIhen6IjQFR
+         HIGlsna3/vL/PFhFwUoEcQPawiSd7gnAoU1DbTqxi7apoiyE1jqU8orG0ajBOUdGBYUg
+         EDZg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=errors-to:from:reply-to:sender:list-subscribe:list-help:list-post
          :list-archive:list-unsubscribe:list-id:precedence
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to;
-        bh=s+1+RL4vdZkvuH+WDLgCIPqP9mCJXDrcjn2xPKUiMUc=;
-        b=W2OILA/I0dxaJdQGUyXY1tUAAXVY7v/dU3mloCy5Xb2dPsM6Ung8xyVYp8rwSUaLA9
-         GyhkPOonyXAlSYOUCSjWq41gLXH4mqCnyTagL5fsKlkjeGHbRaZOFNcz4fMsXv3BqM/A
-         m40Nql5Ybngx7dQgZGkhhKOSSHZAPbP+IKZRp4u+xfkUCL1IzK+yqqK2FKTB2ol+S4XO
-         gl9jboXDo3JdqleMlmFXRMiReiS8flmafpTkLEYtgGN0+6b9NhFAwtQgCjxj6+b/dJ94
-         ZA+AQ72YBMmaHLEeF9YOIwWNw6LhdJUO60kZQMFntgDRpFl1ntBEeFbPCmZUjB92F9g+
-         8ZWg==
+        bh=rhRalr/dbkkAeqGrNYKhrSBP62nyfUQidKXMTAxo4tw=;
+        b=EY1VZaIkeycJhq4IUzbP2gua5LLQOW/AsLvtio/9IaeZ1ibuFT3PLFxWqrwMr/J2g/
+         tS7PB/eq5aUYXsvpSDv8FUevVR2REUJXJLlp/ymAM8qm2/zduM843GCTZwA8dqYuXluy
+         Z0YxyKTHt0ed7MYLCxWtoqxHgg8viw8aJtYI9wcn04ubEEOGEwsZRZgm0Z6/W7nvuq2V
+         HyVFxyOdVr2sKlQA620Vm5MyIwpy6yCSzRXCyGQzfNH5tPuoQimbbHRAVB+M1kGhHKxf
+         wfrWa8eqKSL44enaeVpObBOHZJLJ++2QHgVWinb9S8mquJdDw6NbB10UGoXFaSLLpqiJ
+         tqfw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id i10-20020ac8764a000000b0035ba4e39ca5si562077qtr.186.2022.10.27.03.06.18
+        by mx.google.com with ESMTPS id 4-20020a0562140dc400b004bb9b0df5b2si631996qvt.244.2022.10.27.03.06.38
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 27 Oct 2022 03:06:18 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 27 Oct 2022 03:06:38 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1onziq-0005sR-61; Thu, 27 Oct 2022 06:02:48 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1onzlP-0003qp-7S; Thu, 27 Oct 2022 06:05:27 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <hesham.almatary@huawei.com>)
- id 1onzin-0005p6-Se; Thu, 27 Oct 2022 06:02:45 -0400
+ id 1onzko-0003Ms-Sv; Thu, 27 Oct 2022 06:04:55 -0400
 Received: from frasgout.his.huawei.com ([185.176.79.56])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <hesham.almatary@huawei.com>)
- id 1onzil-0004Bs-0o; Thu, 27 Oct 2022 06:02:45 -0400
-Received: from frapeml100003.china.huawei.com (unknown [172.18.147.226])
- by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4Myh591Dk3z67Xcd;
- Thu, 27 Oct 2022 18:00:45 +0800 (CST)
+ id 1onzkl-0004Oy-70; Thu, 27 Oct 2022 06:04:50 -0400
+Received: from fraeml710-chm.china.huawei.com (unknown [172.18.147.207])
+ by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4Myh7Y2T0kz67Lnh;
+ Thu, 27 Oct 2022 18:02:49 +0800 (CST)
 Received: from lhrpeml500004.china.huawei.com (7.191.163.9) by
- frapeml100003.china.huawei.com (7.182.85.60) with Microsoft SMTP Server
+ fraeml710-chm.china.huawei.com (10.206.15.59) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2375.31; Thu, 27 Oct 2022 12:02:40 +0200
+ 15.1.2375.31; Thu, 27 Oct 2022 12:04:43 +0200
 Received: from O84201547D.china.huawei.com (10.122.247.218) by
  lhrpeml500004.china.huawei.com (7.191.163.9) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2375.31; Thu, 27 Oct 2022 11:02:40 +0100
+ 15.1.2375.31; Thu, 27 Oct 2022 11:04:43 +0100
 To: <jonathan.cameron@huawei.com>, <qemu-devel@nongnu.org>
 CC: <yangyicong@huawei.com>, <chenxiang66@hisilicon.com>,
  <linuxarm@huawei.com>, <qemu-arm@nongnu.org>, <peter.maydell@linaro.org>,
  <imammedo@redhat.com>, <wangyanan55@huawei.com>,
  <marcel.apfelbaum@gmail.com>, <eduardo@habkost.net>, <Brice.Goglin@inria.fr>, 
  <mst@redhat.com>
-Subject: [PATCH v3 4/8] tests: acpi: q35: update expected blobs
- *.hmat-noinitiators expected HMAT:
-Date: Thu, 27 Oct 2022 11:00:33 +0100
-Message-ID: <20221027100037.251-5-hesham.almatary@huawei.com>
+Subject: [PATCH v3 8/8] tests: virt: Update expected *.acpihmatvirt tables
+Date: Thu, 27 Oct 2022 11:00:37 +0100
+Message-ID: <20221027100037.251-9-hesham.almatary@huawei.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20221027100037.251-1-hesham.almatary@huawei.com>
 References: <20221027100037.251-1-hesham.almatary@huawei.com>
@@ -76,7 +75,7 @@ MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-Originating-IP: [10.122.247.218]
-X-ClientProxiedBy: lhrpeml100006.china.huawei.com (7.191.160.224) To
+X-ClientProxiedBy: lhrpeml100004.china.huawei.com (7.191.162.219) To
  lhrpeml500004.china.huawei.com (7.191.163.9)
 X-CFilter-Loop: Reflected
 Received-SPF: pass client-ip=185.176.79.56;
@@ -88,26 +87,26 @@ X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
  RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Sender: "Qemu-devel" <qemu-devel-bounces@nongnu.org>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Sender: "Qemu-arm" <qemu-arm-bounces@nongnu.org>
 Reply-to:  Hesham Almatary <hesham.almatary@huawei.com>
-From:  Hesham Almatary via <qemu-devel@nongnu.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: pNHNjdnCt5QK
+From:  Hesham Almatary via <qemu-arm@nongnu.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 2PXP+KgKERZQ
 
-From: Brice Goglin <Brice.Goglin@inria.fr>
-
-[000h 0000   4]                    Signature : "HMAT"    [Heterogeneous Memory Attributes Table]
+* Expected ACPI Data Table [HMAT]
+[000h 0000   4]                    Signature : "HMAT"    [Heterogeneous
+Memory Attributes Table]
 [004h 0004   4]                 Table Length : 00000120
 [008h 0008   1]                     Revision : 02
 [009h 0009   1]                     Checksum : 4F
@@ -119,43 +118,73 @@ From: Brice Goglin <Brice.Goglin@inria.fr>
 
 [024h 0036   4]                     Reserved : 00000000
 
-[028h 0040   2]               Structure Type : 0000 [Memory Proximity Domain Attributes]
+[028h 0040   2]               Structure Type : 0000 [Memory Proximity
+Domain Attributes]
 [02Ah 0042   2]                     Reserved : 0000
 [02Ch 0044   4]                       Length : 00000028
 [030h 0048   2]        Flags (decoded below) : 0001
             Processor Proximity Domain Valid : 1
 [032h 0050   2]                    Reserved1 : 0000
-[034h 0052   4] Attached Initiator Proximity Domain : 00000000
+[034h 0052   4]   Processor Proximity Domain : 00000000
 [038h 0056   4]      Memory Proximity Domain : 00000000
 [03Ch 0060   4]                    Reserved2 : 00000000
 [040h 0064   8]                    Reserved3 : 0000000000000000
 [048h 0072   8]                    Reserved4 : 0000000000000000
 
-[050h 0080   2]               Structure Type : 0000 [Memory Proximity Domain Attributes]
+[050h 0080   2]               Structure Type : 0000 [Memory Proximity
+Domain Attributes]
 [052h 0082   2]                     Reserved : 0000
 [054h 0084   4]                       Length : 00000028
 [058h 0088   2]        Flags (decoded below) : 0001
             Processor Proximity Domain Valid : 1
 [05Ah 0090   2]                    Reserved1 : 0000
-[05Ch 0092   4] Attached Initiator Proximity Domain : 00000001
+[05Ch 0092   4]   Processor Proximity Domain : 00000001
 [060h 0096   4]      Memory Proximity Domain : 00000001
 [064h 0100   4]                    Reserved2 : 00000000
 [068h 0104   8]                    Reserved3 : 0000000000000000
 [070h 0112   8]                    Reserved4 : 0000000000000000
 
-[078h 0120   2]               Structure Type : 0000 [Memory Proximity Domain Attributes]
+[078h 0120   2]               Structure Type : 0000 [Memory Proximity
+Domain Attributes]
 [07Ah 0122   2]                     Reserved : 0000
 [07Ch 0124   4]                       Length : 00000028
 [080h 0128   2]        Flags (decoded below) : 0000
             Processor Proximity Domain Valid : 0
 [082h 0130   2]                    Reserved1 : 0000
-[084h 0132   4] Attached Initiator Proximity Domain : 00000080
+[084h 0132   4]   Processor Proximity Domain : 00000080
+[088h 0136   4]      Memory Proximity Domain : 00000002
+[08Ch 0140   4]                    Reserved2 : 00000000
+[040h 0064   8]                    Reserved3 : 0000000000000000
+[048h 0072   8]                    Reserved4 : 0000000000000000
+
+[050h 0080   2]               Structure Type : 0000 [Memory Proximity
+Domain Attributes]
+[052h 0082   2]                     Reserved : 0000
+[054h 0084   4]                       Length : 00000028
+[058h 0088   2]        Flags (decoded below) : 0001
+            Processor Proximity Domain Valid : 1
+[05Ah 0090   2]                    Reserved1 : 0000
+[05Ch 0092   4]   Processor Proximity Domain : 00000001
+[060h 0096   4]      Memory Proximity Domain : 00000001
+[064h 0100   4]                    Reserved2 : 00000000
+[068h 0104   8]                    Reserved3 : 0000000000000000
+[070h 0112   8]                    Reserved4 : 0000000000000000
+
+[078h 0120   2]               Structure Type : 0000 [Memory Proximity
+Domain Attributes]
+[07Ah 0122   2]                     Reserved : 0000
+[07Ch 0124   4]                       Length : 00000028
+[080h 0128   2]        Flags (decoded below) : 0000
+            Processor Proximity Domain Valid : 0
+[082h 0130   2]                    Reserved1 : 0000
+[084h 0132   4]   Processor Proximity Domain : 00000080
 [088h 0136   4]      Memory Proximity Domain : 00000002
 [08Ch 0140   4]                    Reserved2 : 00000000
 [090h 0144   8]                    Reserved3 : 0000000000000000
 [098h 0152   8]                    Reserved4 : 0000000000000000
 
-[0A0h 0160   2]               Structure Type : 0001 [System Locality Latency and Bandwidth Information]
+[0A0h 0160   2]               Structure Type : 0001 [System Locality
+Latency and Bandwidth Information]
 [0A2h 0162   2]                     Reserved : 0000
 [0A4h 0164   4]                       Length : 00000040
 [0A8h 0168   1]        Flags (decoded below) : 00
@@ -178,7 +207,8 @@ From: Brice Goglin <Brice.Goglin@inria.fr>
 [0DCh 0220   2]                        Entry : 0001
 [0DEh 0222   2]                        Entry : 0003
 
-[0E0h 0224   2]               Structure Type : 0001 [System Locality Latency and Bandwidth Information]
+[0E0h 0224   2]               Structure Type : 0001 [System Locality
+Latency and Bandwidth Information]
 [0E2h 0226   2]                     Reserved : 0000
 [0E4h 0228   4]                       Length : 00000040
 [0E8h 0232   1]        Flags (decoded below) : 00
@@ -203,117 +233,103 @@ From: Brice Goglin <Brice.Goglin@inria.fr>
 
 Raw Table Data: Length 288 (0x120)
 
-    0000: 48 4D 41 54 20 01 00 00 02 4F 42 4F 43 48 53 20  // HMAT ....OBOCHS
-    0010: 42 58 50 43 20 20 20 20 01 00 00 00 42 58 50 43  // BXPC    ....BXPC
-    0020: 01 00 00 00 00 00 00 00 00 00 00 00 28 00 00 00  // ............(...
-    0030: 01 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  // ................
-    0040: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  // ................
-    0050: 00 00 00 00 28 00 00 00 01 00 00 00 01 00 00 00  // ....(...........
-    0060: 01 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  // ................
-    0070: 00 00 00 00 00 00 00 00 00 00 00 00 28 00 00 00  // ............(...
-    0080: 00 00 00 00 80 00 00 00 02 00 00 00 00 00 00 00  // ................
-    0090: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  // ................
-    00A0: 01 00 00 00 40 00 00 00 00 00 00 00 02 00 00 00  // ....@...........
-    00B0: 03 00 00 00 00 00 00 00 10 27 00 00 00 00 00 00  // .........'......
-    00C0: 00 00 00 00 01 00 00 00 00 00 00 00 01 00 00 00  // ................
-    00D0: 02 00 00 00 01 00 02 00 03 00 02 00 01 00 03 00  // ................
-    00E0: 01 00 00 00 40 00 00 00 00 03 00 00 02 00 00 00  // ....@...........
-    00F0: 03 00 00 00 00 00 00 00 01 00 00 00 00 00 00 00  // ................
-    0100: 00 00 00 00 01 00 00 00 00 00 00 00 01 00 00 00  // ................
-    0110: 02 00 00 00 0A 00 05 00 01 00 05 00 0A 00 01 00  // ................
+    0000: 48 4D 41 54 20 01 00 00 02 4F 42 4F 43 48 53 20  // HMAT
+....OBOCHS
+    0010: 42 58 50 43 20 20 20 20 01 00 00 00 42 58 50 43  // BXPC
+....BXPC
+    0020: 01 00 00 00 00 00 00 00 00 00 00 00 28 00 00 00  //
+............(...
+    0030: 01 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  //
+................
+    0040: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  //
+................
+    0050: 00 00 00 00 28 00 00 00 01 00 00 00 01 00 00 00  //
+....(...........
+    0060: 01 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  //
+................
+    0070: 00 00 00 00 00 00 00 00 00 00 00 00 28 00 00 00  //
+............(...
+    0080: 00 00 00 00 80 00 00 00 02 00 00 00 00 00 00 00  //
+................
+    0090: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  //
+................
+    00A0: 01 00 00 00 40 00 00 00 00 00 00 00 02 00 00 00  //
+....@...........
+    00B0: 03 00 00 00 00 00 00 00 10 27 00 00 00 00 00 00  //
+.........'......
+    00C0: 00 00 00 00 01 00 00 00 00 00 00 00 01 00 00 00  //
+................
+    00D0: 02 00 00 00 01 00 02 00 03 00 02 00 01 00 03 00  //
+................
+    00E0: 01 00 00 00 40 00 00 00 00 03 00 00 02 00 00 00  //
+....@...........
+    00F0: 03 00 00 00 00 00 00 00 01 00 00 00 00 00 00 00  //
+................
+    0100: 00 00 00 00 01 00 00 00 00 00 00 00 01 00 00 00  //
+................
+    0110: 02 00 00 00 0A 00 05 00 01 00 05 00 0A 00 01 00  //
+................
 
-Signed-off-by: Brice Goglin <Brice.Goglin@inria.fr>
 Signed-off-by: Hesham Almatary <hesham.almatary@huawei.com>
 ---
- tests/data/acpi/q35/APIC.acpihmat-noinitiator | Bin 0 -> 144 bytes
- tests/data/acpi/q35/DSDT.acpihmat-noinitiator | Bin 0 -> 8553 bytes
- tests/data/acpi/q35/HMAT.acpihmat-noinitiator | Bin 0 -> 288 bytes
- tests/data/acpi/q35/SRAT.acpihmat-noinitiator | Bin 0 -> 312 bytes
- tests/qtest/bios-tables-test-allowed-diff.h   |   4 ----
- 5 files changed, 4 deletions(-)
+ tests/data/acpi/virt/APIC.acpihmatvirt      | Bin 0 -> 396 bytes
+ tests/data/acpi/virt/DSDT.acpihmatvirt      | Bin 0 -> 5282 bytes
+ tests/data/acpi/virt/HMAT.acpihmatvirt      | Bin 0 -> 288 bytes
+ tests/data/acpi/virt/PPTT.acpihmatvirt      | Bin 0 -> 196 bytes
+ tests/data/acpi/virt/SRAT.acpihmatvirt      | Bin 0 -> 240 bytes
+ tests/qtest/bios-tables-test-allowed-diff.h |   5 -----
+ 6 files changed, 5 deletions(-)
 
-diff --git a/tests/data/acpi/q35/APIC.acpihmat-noinitiator b/tests/data/acpi/q35/APIC.acpihmat-noinitiator
-index e69de29bb2d1d6434b8b29ae775ad8c2e48c5391..d904d4a70ddecbb79a83a267af8e26f925e9f4c6 100644
+diff --git a/tests/data/acpi/virt/APIC.acpihmatvirt b/tests/data/acpi/virt/APIC.acpihmatvirt
+index e69de29bb2d1d6434b8b29ae775ad8c2e48c5391..873e12f67c3838351a3ab4b7a43ee76e7730849a 100644
 GIT binary patch
-literal 144
-zcmZ<^@N}NQz`(%h?d0$55v<@85#X!<1dKp25F11@Fg*ANra6G>KwJ(+MhMNs1fiLk
-tK{O)|Nb<lx5Xr;^#2^NU#mWk#c|j~rP8f>|r~o3y%?)O;u>A)b0RWi;3;_TD
+literal 396
+zcmZ<^@O18BWME)k<K*w`5v<@85#X!<1VAAM5F13p0FMNW#lQh$F##FeJ}@2w15CX*
+zLI}uWgsNwO(#&xED9V5wkXaxzU>GD%s#!2MfXo894}@W2q?!fN3j!dsn1M71lWP`8
+TF9`6$!;uLb4j}U!7y=joChH0T
 
 literal 0
 HcmV?d00001
 
-diff --git a/tests/data/acpi/q35/DSDT.acpihmat-noinitiator b/tests/data/acpi/q35/DSDT.acpihmat-noinitiator
-index e69de29bb2d1d6434b8b29ae775ad8c2e48c5391..c767d11cb1d088f613c49e55a7139cccababf66c 100644
+diff --git a/tests/data/acpi/virt/DSDT.acpihmatvirt b/tests/data/acpi/virt/DSDT.acpihmatvirt
+index e69de29bb2d1d6434b8b29ae775ad8c2e48c5391..aee6ba017cd730948bfa93e91551eb10a6809293 100644
 GIT binary patch
-literal 8553
-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
-E0Xe$wY5)KL
+literal 5282
+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
 
 literal 0
 HcmV?d00001
 
-diff --git a/tests/data/acpi/q35/HMAT.acpihmat-noinitiator b/tests/data/acpi/q35/HMAT.acpihmat-noinitiator
+diff --git a/tests/data/acpi/virt/HMAT.acpihmatvirt b/tests/data/acpi/virt/HMAT.acpihmatvirt
 index e69de29bb2d1d6434b8b29ae775ad8c2e48c5391..6494d11b9fff54f8c403ec9e4893fdff72bde9c9 100644
 GIT binary patch
 literal 288
@@ -324,26 +340,37 @@ I&r86*0dKzu0RR91
 literal 0
 HcmV?d00001
 
-diff --git a/tests/data/acpi/q35/SRAT.acpihmat-noinitiator b/tests/data/acpi/q35/SRAT.acpihmat-noinitiator
-index e69de29bb2d1d6434b8b29ae775ad8c2e48c5391..a11d3119ab3538d9cf821a4fe0fccb0f1dc96359 100644
+diff --git a/tests/data/acpi/virt/PPTT.acpihmatvirt b/tests/data/acpi/virt/PPTT.acpihmatvirt
+index e69de29bb2d1d6434b8b29ae775ad8c2e48c5391..710dba5e793cf36df94087666db58af5f8d03684 100644
 GIT binary patch
-literal 312
-zcmWFzatyIxWME)?>E!S15v<@85#X!<1VAAM5F12;FdPVA@EK9%8JW=d%*cF34Y)~A
-u1{YiayE>qSVDJGh4QBww88zTMCa6LfjpA-b4Y)81R2_^)QwNnLKmh<Kp$P#1
+literal 196
+zcmWFt2njjDz`(#X&&l7}BUr&HBEVSz2pEB4AU23*5Mf{d(;zks0L4H+1wuhcpcogB
+gWr0HsZU&Nh$YLOEC0O)!0L7SK;!rz4V$4u60KkX}0RR91
+
+literal 0
+HcmV?d00001
+
+diff --git a/tests/data/acpi/virt/SRAT.acpihmatvirt b/tests/data/acpi/virt/SRAT.acpihmatvirt
+index e69de29bb2d1d6434b8b29ae775ad8c2e48c5391..691ef56e34bc84509270db316d908f5979c209bb 100644
+GIT binary patch
+literal 240
+zcmWFzat!&vz`($~%E{l^BUr&HBEVSz2pEB4AU22wVHjW*g0Wzt5D{c`%t9a@6A&ZR
+rfLP2(B8(b94g@$rX%;9A*9GD;YQW53aKWz*WFHuKKxqyrjba`E3*rd@
 
 literal 0
 HcmV?d00001
 
 diff --git a/tests/qtest/bios-tables-test-allowed-diff.h b/tests/qtest/bios-tables-test-allowed-diff.h
-index 245fa66bcc..dfb8523c8b 100644
+index 4f849715bd..dfb8523c8b 100644
 --- a/tests/qtest/bios-tables-test-allowed-diff.h
 +++ b/tests/qtest/bios-tables-test-allowed-diff.h
-@@ -1,5 +1 @@
+@@ -1,6 +1 @@
  /* List of comma-separated changed AML files to ignore */
--"tests/data/acpi/q35/APIC.acpihmat-noinitiator",
--"tests/data/acpi/q35/DSDT.acpihmat-noinitiator",
--"tests/data/acpi/q35/HMAT.acpihmat-noinitiator",
--"tests/data/acpi/q35/SRAT.acpihmat-noinitiator",
+-"tests/data/acpi/virt/APIC.acpihmatvirt",
+-"tests/data/acpi/virt/DSDT.acpihmatvirt",
+-"tests/data/acpi/virt/HMAT.acpihmatvirt",
+-"tests/data/acpi/virt/PPTT.acpihmatvirt",
+-"tests/data/acpi/virt/SRAT.acpihmatvirt",
 -- 
 2.25.1
 

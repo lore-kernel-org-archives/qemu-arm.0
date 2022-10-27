@@ -1,166 +1,117 @@
-Received: by 2002:a17:906:43c7:b0:78d:9f02:16a1 with SMTP id j7csp250953ejn;
-        Thu, 27 Oct 2022 03:03:37 -0700 (PDT)
-X-Google-Smtp-Source: AMsMyM7/noV5zUBCEZxestQ4MaUNo10/p+8276TkRkuY8vuFMlzdBYVRwFyHjazpC18JMbgTan1u
-X-Received: by 2002:ad4:5c64:0:b0:4bb:5aed:86d8 with SMTP id i4-20020ad45c64000000b004bb5aed86d8mr24374218qvh.105.1666865017189;
-        Thu, 27 Oct 2022 03:03:37 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1666865017; cv=none;
+Received: by 2002:a17:906:43c7:b0:78d:9f02:16a1 with SMTP id j7csp265365ejn;
+        Thu, 27 Oct 2022 03:27:29 -0700 (PDT)
+X-Google-Smtp-Source: AMsMyM5z1AsOydvOXyHBHkO3/q8rQEep4K5u1u0+m4DvuBdn1lToCP5/biXC6hff2e25kDmjSOoE
+X-Received: by 2002:a17:90a:5ac2:b0:205:de77:72be with SMTP id n60-20020a17090a5ac200b00205de7772bemr9658978pji.24.1666866449344;
+        Thu, 27 Oct 2022 03:27:29 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1666866449; cv=none;
         d=google.com; s=arc-20160816;
-        b=hMWCjcqt93MNXOrZ7WI9pAgwmoo/8Dl8k13vc2bnO54ChiDIlxL8X6vi6+RDiZcURr
-         hpB2+9f1Vx2d1VURCPSO4RjSaf8Y/m6ny34KbASUqdlz2w517aqh0x6IvUrDjCBeCTaS
-         0eiHncq/0RBdD9upFNYjNQtE8XIuJK+SyeqKSzdPPZ5+g55TY0tR17m/gtnno5JBoj9w
-         uJRwqMPatMM8EGBYvwXXV5gYvYY/iHJgcuvisTKmoitgXN9AWqOEmclxGQ15KlBRqfly
-         OMXTrMm3Hqz7yzLJW0c8K1LUcL4ijDrOWQcRKKlAnxw5/daNCIJpJwMEKum/FkdRmquE
-         Lscg==
+        b=UQ7Fcd2oPw7fDSVnTRlJFZcOP7/Z/+oPcY+8I47mPiPohRCHu7weImSrjlIOI00Zfa
+         RRQo6ki9NiQ/J0KcY/MUoHGJeyuUSsWuiSQCafh6NGTKvQfyrCcRi5FUur5sNWDKRceT
+         uHsAYg4Omnnpq2B2wCxcqLc4Ye8JZ6+M4bOmoyQiu+A0ZAFyN0+bYCSwpMve8mSApRwH
+         f/fdmlSjWwGjrfUfeupS87url7GyNu6z0QdEBbdGlE+rmVOTjJgOLbH3NEs5wp2yYuS4
+         w9+zEegQFLg4sWbamDv1F7e80UEesyWL6BeVz64FRv78BRDE78aj4RVw9YEmC7yC8iVp
+         smmw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=errors-to:from:reply-to:sender:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to;
-        bh=shHUBw2z6qijfOEaGdo89lrCXpJGXZ+mJJcvyff36yk=;
-        b=pEFTYQ21+K9mdeXKsWL05CO9wQSHYCUbD6EPVovXYEaASED4anUbSbRuPNsxw4M7c1
-         Us+0edKRXbiP/hWSRz8vHnC96FS6vOMEJkOyxwZEiTWRv2vnnaIWRX+OdkHUJ7tMJZSM
-         25hWUPx9SlbRe60faFptP9f5s4FG0j/E9BmwRzMvunDFWnm2hFR55t33mGF5GJDFSba4
-         uiHZZI9deK6qWIzV09rdHmQCnyMWm58x8B/fNfgGr78fK9MpDlCcPsx1W30+axsspvcu
-         TBVFK5Vblft3IUj7AuFh4S/WOFLC3cqVMj/T4u31NDivNiENO2TYyulYcYcD5ki6ggZN
-         gjdw==
+        h=list-id:precedence:mime-version:message-id:date:user-agent
+         :references:organization:in-reply-to:subject:cc:to:from
+         :dkim-signature;
+        bh=4e29Szj0bWjoQcGGn3n5PPNT0uo5CPMikeS3uqJGsg4=;
+        b=zhSKQ3h8di8AG04WWKPFSDJorpFkd0OKqcFsLLKUhA+Jc3hsVACom57VZ0n8Jk91eR
+         hjJdmHbK8zG4tR5zgUuXjm7Wsfk1Ty1BBOZ5rO1pev7zsrd71FAJFmoaSHE+SDq4HQZq
+         vYEzEAHh1NE08nlWbocGHk15ni9VgvvTAa70a3c0g0f4YptzEkLG0ZezkzqAZ3ytMkgG
+         90l0dLlSz0vZGLspSImtXaOKWsjvtxcV5tA+W21ZU97Ouqw6j+DSnl5s5jW8OwYWyvpq
+         hftxGKZagMZTKHkoJP/8LZansBPqfadu0tLpKEIOET2HvDFhrBFPcpoVpiwwHgOYFhp5
+         BlQg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id c10-20020ac8518a000000b0039cd5f0838bsi570420qtn.102.2022.10.27.03.03.37
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 27 Oct 2022 03:03:37 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Aih4eX3H;
+       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <kvm-owner@vger.kernel.org>
+Received: from out1.vger.email (out1.vger.email. [2620:137:e000::1:20])
+        by mx.google.com with ESMTP id dt2-20020a17090afa4200b001f06a6fdb2fsi5262313pjb.27.2022.10.27.03.27.28;
+        Thu, 27 Oct 2022 03:27:29 -0700 (PDT)
+Received-SPF: pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) client-ip=2620:137:e000::1:20;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1onzhk-0003Az-A6; Thu, 27 Oct 2022 06:01:40 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <hesham.almatary@huawei.com>)
- id 1onzhH-00016y-Ox; Thu, 27 Oct 2022 06:01:20 -0400
-Received: from frasgout.his.huawei.com ([185.176.79.56])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <hesham.almatary@huawei.com>)
- id 1onzh9-0003us-JT; Thu, 27 Oct 2022 06:01:11 -0400
-Received: from fraeml701-chm.china.huawei.com (unknown [172.18.147.206])
- by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4Myh2p6Tj7z67ZcT;
- Thu, 27 Oct 2022 17:58:42 +0800 (CST)
-Received: from lhrpeml500004.china.huawei.com (7.191.163.9) by
- fraeml701-chm.china.huawei.com (10.206.15.50) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id
- 15.1.2375.31; Thu, 27 Oct 2022 12:00:38 +0200
-Received: from O84201547D.china.huawei.com (10.122.247.218) by
- lhrpeml500004.china.huawei.com (7.191.163.9) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2375.31; Thu, 27 Oct 2022 11:00:38 +0100
-To: <jonathan.cameron@huawei.com>, <qemu-devel@nongnu.org>
-CC: <yangyicong@huawei.com>, <chenxiang66@hisilicon.com>,
- <linuxarm@huawei.com>, <qemu-arm@nongnu.org>, <peter.maydell@linaro.org>,
- <imammedo@redhat.com>, <wangyanan55@huawei.com>,
- <marcel.apfelbaum@gmail.com>, <eduardo@habkost.net>, <Brice.Goglin@inria.fr>, 
- <mst@redhat.com>
-Subject: [PATCH v3 0/8] AArch64/HMAT support and tests
-Date: Thu, 27 Oct 2022 11:00:29 +0100
-Message-ID: <20221027100037.251-1-hesham.almatary@huawei.com>
-X-Mailer: git-send-email 2.25.1
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Aih4eX3H;
+       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
+        id S235444AbiJ0K11 (ORCPT <rfc822;mathieu.poirier@linaro.org>
+        + 3 others); Thu, 27 Oct 2022 06:27:27 -0400
+Received: from lindbergh.monkeyblade.net ([23.128.96.19]:57152 "EHLO
+        lindbergh.monkeyblade.net" rhost-flags-OK-OK-OK-OK) by vger.kernel.org
+        with ESMTP id S234428AbiJ0K1W (ORCPT <rfc822;kvm@vger.kernel.org>);
+        Thu, 27 Oct 2022 06:27:22 -0400
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com [170.10.129.124])
+        by lindbergh.monkeyblade.net (Postfix) with ESMTPS id 8AE81106E20
+        for <kvm@vger.kernel.org>; Thu, 27 Oct 2022 03:26:59 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+        s=mimecast20190719; t=1666866418;
+        h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+         to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+         in-reply-to:in-reply-to:references:references;
+        bh=4e29Szj0bWjoQcGGn3n5PPNT0uo5CPMikeS3uqJGsg4=;
+        b=Aih4eX3HdGJ+OhSu3LCRr0mh0R9P+Ub3KuKEXJMJeOzYmU7JCte7+h3kHwNoPOxr34RZ2H
+        VzTt4C0vp+ET83biMeKAa2CAOITUkrr/ePuZjcF/C0cAtNa98sGi2mVrSC6tUNYhjDE8xK
+        vHTYni/ApBu9hghyvJp/Pcyu8buNeVE=
+Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
+ [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-139-kcLumE1WPuO6nfbYhntdeA-1; Thu, 27 Oct 2022 06:26:56 -0400
+X-MC-Unique: kcLumE1WPuO6nfbYhntdeA-1
+Received: from smtp.corp.redhat.com (int-mx09.intmail.prod.int.rdu2.redhat.com [10.11.54.9])
+        (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+        (No client certificate requested)
+        by mimecast-mx02.redhat.com (Postfix) with ESMTPS id D6E44823F91;
+        Thu, 27 Oct 2022 10:26:54 +0000 (UTC)
+Received: from localhost (unknown [10.39.195.27])
+        by smtp.corp.redhat.com (Postfix) with ESMTPS id 2E21E4A9265;
+        Thu, 27 Oct 2022 10:26:47 +0000 (UTC)
+From:   Cornelia Huck <cohuck@redhat.com>
+To:     Thomas Huth <thuth@redhat.com>,
+        Peter Maydell <peter.maydell@linaro.org>,
+        Laurent Vivier <lvivier@redhat.com>
+Cc:     qemu-arm@nongnu.org, qemu-devel@nongnu.org, kvm@vger.kernel.org,
+        Eric Auger <eauger@redhat.com>,
+        "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
+        Juan Quintela <quintela@redhat.com>,
+        Gavin Shan <gshan@redhat.com>
+Subject: Re: [PATCH v3 2/2] qtests/arm: add some mte tests
+In-Reply-To: <bfd29635-9742-741c-a6dc-145bcf4f8ef8@redhat.com>
+Organization: Red Hat GmbH
+References: <20221026160511.37162-1-cohuck@redhat.com>
+ <20221026160511.37162-3-cohuck@redhat.com>
+ <bfd29635-9742-741c-a6dc-145bcf4f8ef8@redhat.com>
+User-Agent: Notmuch/0.37 (https://notmuchmail.org)
+Date:   Thu, 27 Oct 2022 12:26:43 +0200
+Message-ID: <87h6zpd0kc.fsf@redhat.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
-X-Originating-IP: [10.122.247.218]
-X-ClientProxiedBy: lhrpeml100006.china.huawei.com (7.191.160.224) To
- lhrpeml500004.china.huawei.com (7.191.163.9)
-X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=185.176.79.56;
- envelope-from=hesham.almatary@huawei.com; helo=frasgout.his.huawei.com
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
- RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Sender: "Qemu-arm" <qemu-arm-bounces@nongnu.org>
-Reply-to:  Hesham Almatary <hesham.almatary@huawei.com>
-From:  Hesham Almatary via <qemu-arm@nongnu.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: GdEXPLaW6yxO
+X-Scanned-By: MIMEDefang 3.1 on 10.11.54.9
+X-Spam-Status: No, score=-2.6 required=5.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+        DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,RCVD_IN_DNSWL_NONE,
+        RCVD_IN_MSPIKE_H2,SPF_HELO_NONE,SPF_NONE autolearn=ham
+        autolearn_force=no version=3.4.6
+X-Spam-Checker-Version: SpamAssassin 3.4.6 (2021-04-09) on
+        lindbergh.monkeyblade.net
+Precedence: bulk
+List-ID: <kvm.vger.kernel.org>
+X-Mailing-List: kvm@vger.kernel.org
+X-TUID: 4Jj320d0i6Ar
 
-This patchset adds support for AArch64/HMAT including a test.
-It relies on other two patch sets from:
+On Thu, Oct 27 2022, Thomas Huth <thuth@redhat.com> wrote:
 
-Brice Goglin: to support -numa without initiators on q35/x86.
-  https://lore.kernel.org/all/ed23accb-2c8b-90f4-a7a3-f81cc57bf678@inria.fr/
-Xiang Chen: to enable/support HMAT on AArch64.
-  https://lore.kernel.org/all/1643102134-15506-1-git-send-email-chenxiang66@hisilicon.com/
+> On 26/10/2022 18.05, Cornelia Huck wrote:
+>> +        qtest_add_data_func("/arm/max/query-cpu-model-expansion/tag-memory",
+>> +                            NULL, mte_tests_tag_memory_on);
+>
+> Is it already possible to compile qemu-system-aarch64 with --disable-tcg ? 
 
-I further add a test with ACPI/HMAT tables that uses the two
-patch sets.
+Not yet, the code is too entangled... I tried a bit ago, but didn't make
+much progress (on my todo list, but won't mind someone else doing it :)
 
-Changes from v2:
-- Rebased and fixed a merge conflict
+> If so, I'd recommend a qtest_has_accel("tcg") here ... but apart from that:
+>
+> Acked-by: Thomas Huth <thuth@redhat.com>
 
-Changes from v1:
-- Generate APIC and PPTT ACPI tables for AArch64/virt
-- Avoid using legacy syntax in numa/bios tests
-- Delete unchanged FACP tables
-
-Brice Goglin (4):
-  hmat acpi: Don't require initiator value in -numa
-  tests: acpi: add and whitelist *.hmat-noinitiator expected blobs
-  tests: acpi: q35: add test for hmat nodes without initiators
-  tests: acpi: q35: update expected blobs *.hmat-noinitiators expected
-    HMAT:
-
-Hesham Almatary (3):
-  tests: Add HMAT AArch64/virt empty table files
-  tests: acpi: aarch64/virt: add a test for hmat nodes with no
-    initiators
-  tests: virt: Update expected *.acpihmatvirt tables
-
-Xiang Chen (1):
-  hw/arm/virt: Enable HMAT on arm virt machine
-
- hw/arm/Kconfig                                |   1 +
- hw/arm/virt-acpi-build.c                      |   7 ++
- hw/core/machine.c                             |   4 +-
- tests/data/acpi/q35/APIC.acpihmat-noinitiator | Bin 0 -> 144 bytes
- tests/data/acpi/q35/DSDT.acpihmat-noinitiator | Bin 0 -> 8553 bytes
- tests/data/acpi/q35/HMAT.acpihmat-noinitiator | Bin 0 -> 288 bytes
- tests/data/acpi/q35/SRAT.acpihmat-noinitiator | Bin 0 -> 312 bytes
- tests/data/acpi/virt/APIC.acpihmatvirt        | Bin 0 -> 396 bytes
- tests/data/acpi/virt/DSDT.acpihmatvirt        | Bin 0 -> 5282 bytes
- tests/data/acpi/virt/HMAT.acpihmatvirt        | Bin 0 -> 288 bytes
- tests/data/acpi/virt/PPTT.acpihmatvirt        | Bin 0 -> 196 bytes
- tests/data/acpi/virt/SRAT.acpihmatvirt        | Bin 0 -> 240 bytes
- tests/qtest/bios-tables-test.c                | 109 ++++++++++++++++++
- 13 files changed, 118 insertions(+), 3 deletions(-)
- create mode 100644 tests/data/acpi/q35/APIC.acpihmat-noinitiator
- create mode 100644 tests/data/acpi/q35/DSDT.acpihmat-noinitiator
- create mode 100644 tests/data/acpi/q35/HMAT.acpihmat-noinitiator
- create mode 100644 tests/data/acpi/q35/SRAT.acpihmat-noinitiator
- create mode 100644 tests/data/acpi/virt/APIC.acpihmatvirt
- create mode 100644 tests/data/acpi/virt/DSDT.acpihmatvirt
- create mode 100644 tests/data/acpi/virt/HMAT.acpihmatvirt
- create mode 100644 tests/data/acpi/virt/PPTT.acpihmatvirt
- create mode 100644 tests/data/acpi/virt/SRAT.acpihmatvirt
-
--- 
-2.25.1
-
+Thanks!

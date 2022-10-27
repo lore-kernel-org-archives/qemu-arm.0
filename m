@@ -1,96 +1,96 @@
-Received: by 2002:a17:906:43c7:b0:78d:9f02:16a1 with SMTP id j7csp707874ejn;
-        Thu, 27 Oct 2022 14:13:03 -0700 (PDT)
-X-Google-Smtp-Source: AMsMyM7p/4J8QSzucPzUlZcVFowAISC2NIzILCR1q4NWUhGrP1iml1jlRfd4MmaXjq9CZoYis3cR
-X-Received: by 2002:ac8:7d01:0:b0:39c:ebdf:490c with SMTP id g1-20020ac87d01000000b0039cebdf490cmr43743053qtb.179.1666905182890;
-        Thu, 27 Oct 2022 14:13:02 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1666905182; cv=none;
+Received: by 2002:a17:906:43c7:b0:78d:9f02:16a1 with SMTP id j7csp708213ejn;
+        Thu, 27 Oct 2022 14:13:38 -0700 (PDT)
+X-Google-Smtp-Source: AMsMyM5lJo7JXri30wJxOo/qn90t5PpmmgqEIK6/WX3LK/XtW+614EeI3D130KqdTZL0gEGfkEyp
+X-Received: by 2002:a37:2e84:0:b0:6cf:8dd4:7adc with SMTP id u126-20020a372e84000000b006cf8dd47adcmr36837872qkh.723.1666905218167;
+        Thu, 27 Oct 2022 14:13:38 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1666905218; cv=none;
         d=google.com; s=arc-20160816;
-        b=asFlPGZlb1BiCQzWJSngvHeVfoQaI8bc5algHCjbi93zv+TQf1VdJBb+fDYrPRTZ9e
-         407nUE70Qgb5Xtpe2G/cZRQWLDqsSjADMHOr1X51kdyEuxVi0Zr6I7lHvM8Xyis6Jzi4
-         WaDiFPZtL2h+w3ZFpwVi2Xv4DjwA0K1Q1ghC3a+tawmoL+3x9+cp03C2uWf9YhYyKuyA
-         Om3L5U5TsTI/Ph1PvnHcIGov7wLiLp/PWA+hp/ZEC4zmKrfd3gT29TT57MrqvT9oQCjC
-         6wti1BxdpUzyidfXkuK/qdOVHDRvvOdvn04wfc66HMql8Juw7oMOdFMTuyDOjvqsv9FA
-         t5Gw==
+        b=EqfqzNrxwX6cjlusmeQ8V+MKhj03FrUTO1/e/5RUEerkHjIPwC5oopfC7wKzrnYXtX
+         +AcCNIoiSxUgZU/Al4GdJRl33SK1LxM0K+lQSobU26gyulr5yAzc153xoPfWaUkm5984
+         nyF8YJd0ay7I3wb525EdR54S267o7hB31Qa0MvtmhlM49k70NaA+fGgjHo5YW+W/hzF1
+         pmi3bJlz0BP3mm0fWniSDA+b0y+NjrodhPM8TeVM0u0NXU9uq89VnotGz49NgJu/4Y5k
+         6seisd4w7Y0arwhryaKbSzu5pOR9CEP5Hn8aeeqa/CbdtrXfPJUHV+8vrM9lue5jIrYQ
+         IMbQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=errors-to:sender:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :in-reply-to:from:references:cc:to:content-language:subject
          :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=7PCPypECvjj7tY1/i48/WVKNJxCsE5ZU7zFU9OledUs=;
-        b=A23CUs5zRxfQpGIJHxWtScOfRpslKd3jBGyY0Bq3+1YM/sGFUSl3Ao1crqk5cA5rd2
-         3gwwNLLAUggHmHxAvC1od9lxlRnDh4uUFsiETxb1lgsIUaLL0ck3vJeYewsorxkStRWb
-         n7w3/uORSq928AJ+dv5I+6wx3X5BmheCH9Ckpxcr/ubFgBsI+hngirQ6bTgX+Q36bFEr
-         GIruPzHetp70xafBf4dXOVcXH51Hlq7jlTmsG9BiIjOWXwWAXq1aBsa2Qy8uxFwW1eqy
-         Jlg3hks5siGjOtooR2JjNvtc84WKz8iFP/QZ8pbF7p9EFeV5B5RQlE0xecxZgdJ7qmJB
-         k6Qg==
+        bh=Uk4PKUN41u2ml651A9Iwj+QGAFZESqRPSm/ASQZfBFE=;
+        b=u09zoCZ3klGcYuwrRJ8AGShmGhvgIP9smoWNMWNXW+jSuVX381cp1gOD0IfJH9WX3Q
+         fW/YE+5Sszp2L0q8sIdywzg89XPhEkKzsbL62Fd6pRouh5iTRy8brIkZfuoL28UvPcNz
+         pm8CBRcL1TNSRd9GS+WLIZmJ8xQKT+qOLL2BHC4eT5GDmOLqRC4NXs/YMNopwANYGG/U
+         7LLmpDQIgxVjZ9gdbc51eGd2be3Tl8YisXiHeQLywqyAb4ae5eJCiWWXQwnjRaehyrkW
+         Zgzm28p5BENTrU+3E3nzc1SbX0ybAfPj+ZwtBbD7X4iUQrNkGVN/0Npa9Jat5F7SlW0h
+         IYbg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=urTQFd22;
+       dkim=pass header.i=@linaro.org header.s=google header.b="C7Z5/49w";
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id o3-20020a0562140e4300b004bb7210ecf8si1555592qvc.497.2022.10.27.14.13.02
+        by mx.google.com with ESMTPS id h23-20020ac85157000000b0035de2be972dsi1494828qtn.483.2022.10.27.14.13.38
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 27 Oct 2022 14:13:02 -0700 (PDT)
+        Thu, 27 Oct 2022 14:13:38 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=urTQFd22;
+       dkim=pass header.i=@linaro.org header.s=google header.b="C7Z5/49w";
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1ooA9m-0001uD-MO; Thu, 27 Oct 2022 17:11:18 -0400
+	id 1ooAB5-000389-JE; Thu, 27 Oct 2022 17:12:39 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1ooA9h-0001sf-2c
- for qemu-devel@nongnu.org; Thu, 27 Oct 2022 17:11:13 -0400
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1ooAB3-00037e-Jv
+ for qemu-devel@nongnu.org; Thu, 27 Oct 2022 17:12:37 -0400
 Received: from mail-wr1-x431.google.com ([2a00:1450:4864:20::431])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1ooA9d-0002lI-TS
- for qemu-devel@nongnu.org; Thu, 27 Oct 2022 17:11:12 -0400
-Received: by mail-wr1-x431.google.com with SMTP id o4so4261517wrq.6
- for <qemu-devel@nongnu.org>; Thu, 27 Oct 2022 14:11:08 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1ooAB1-0002xv-NY
+ for qemu-devel@nongnu.org; Thu, 27 Oct 2022 17:12:37 -0400
+Received: by mail-wr1-x431.google.com with SMTP id bp11so4254959wrb.9
+ for <qemu-devel@nongnu.org>; Thu, 27 Oct 2022 14:12:35 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=7PCPypECvjj7tY1/i48/WVKNJxCsE5ZU7zFU9OledUs=;
- b=urTQFd2217HdJPEzu13RsIJwONkqv7+6d7b8o4Gbjwoy39IjfLzKxZ1MTHOar5Eb59
- LNQl4UlepyhZhQk5DyA+fdrsDBzsDnQNEg3Ea+2fgbgTwJYDcqUfwc8sl/JjhEq0mSPE
- CqhXrcglpjMpJq/SrJ++VcV/qDz2cG8EWOTbn0WN5u9KWwTzI/uOBTsHUZoIEhZbG6+a
- 6tIlbMtmuuwdg+oITZ0hrW6OwhVLqJOGqKzR71hq/kp8O8fiXBwZHAGvH1bXzWIoHI+F
- 4q1x31fZv7MEpL4bkWfaXfSvnGhqithnWPsYbENqxCMyc6jQppqfxeS38hxU9abW28JU
- oZsg==
+ bh=Uk4PKUN41u2ml651A9Iwj+QGAFZESqRPSm/ASQZfBFE=;
+ b=C7Z5/49wYrtVINQWv8teiqN7YyK+CGpXsbGPqI0vNkAZhi5GcVVQGVrMNeJW9nILLy
+ ZUXbbOpkJct7veUoIOj5lyfppwZ7oaDT3fMTUlOkdPKjT2SRZKHMStHtNB9WhBo5vPBZ
+ JtxAnAJ5AWnfV/80UqIhKHu7KXtVijJXC09dt+QXVeWFa13vQsGH1vLyI9y+qZHFEvQM
+ N8ZgsbeB/auBQPGOHP/7gAJMlNZQxC4AKQAyzPA4MOShjBqjDsovCfebCw8vV6Z/Vfgc
+ 6rrwngTIu8BG47EaPgGi1U18oMj/a6cLJYHu8ijqB7fp+l7WUErB9WwPjCog8qML2a6y
+ yI1g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=7PCPypECvjj7tY1/i48/WVKNJxCsE5ZU7zFU9OledUs=;
- b=iPpqN2KMD7/cND660vToh4CcqS+TtHyfpyanqa3dAV6GZHgvTfmIYtJVGH9MfN2V+4
- Ml457iEnQAcO1O2dX5tbfwXanIXv/eyjt5kO29jj20mYCo0FKPEaG/xZVI0yJ1wU+/II
- mW2a/f2eM9TEk78jeI8DLnJzVxrfYS7CaC72G7dUV8PQ/385kWRUpDPnICzKhQrpApI3
- xmJCPlT0qPVo5ZecbAxPq6jKtyZz0kXU9YNXs4KJM2LE+Ijhr8Iq60ZrEKQllrGuBX3M
- S3+68UnTcx3rwEsGIUg3xLI3BCDSjbDmiYGniReVtFGLOeeyiBz3Ej0gACbMQ8BVihkV
- vzBA==
-X-Gm-Message-State: ACrzQf1Yef7jee+3otGGALfTofQLJvn1WR8SF0cGZucRD2XCzBcDHAJ2
- bcxeBxIqWVpG5/qeI2zueEJueA==
-X-Received: by 2002:a5d:654d:0:b0:235:197d:72d1 with SMTP id
- z13-20020a5d654d000000b00235197d72d1mr27607557wrv.680.1666905067226; 
- Thu, 27 Oct 2022 14:11:07 -0700 (PDT)
+ bh=Uk4PKUN41u2ml651A9Iwj+QGAFZESqRPSm/ASQZfBFE=;
+ b=6GT9Pi6ok/Hs2YKboNrC7il5/JvgQ+ZHcA0pgSMlRczw7R2dJoV86SLYkp2f7UzVuG
+ 6ORFmjnWusDncLcoXaYNFipUU7as/ms51BXLp48BYTadJZtqidatic+XSnrTIkGthLtO
+ oTa7E/fj3wkZsvn3rGHMIRFPVkpKOvw7xkOaaPdDwnxwyDKiQPgaJQbOH905cGLfh/ZA
+ unEO8G6SybLGnxAYVnA/FMO3OtYs2gD0ikdyCMutg+wj1wLfzn0QE2dzyC5D7PBLbUb8
+ dRWBmaqi1ul/ImHaQwcCpvQ3hUVX8igRSodsQiVzAFjstoIHsFFxLIx4VTdm7aFzBPSc
+ t64g==
+X-Gm-Message-State: ACrzQf00cnnV8CAd5/pfs9KnQcIK3Y+g3+nPuOkJi45PuCfZ0tuHPdhy
+ EVpGItX81jvgjQhtY/X1VWys0Q==
+X-Received: by 2002:adf:fd4a:0:b0:236:87bc:a900 with SMTP id
+ h10-20020adffd4a000000b0023687bca900mr8230139wrs.706.1666905154263; 
+ Thu, 27 Oct 2022 14:12:34 -0700 (PDT)
 Received: from [192.168.1.115] ([185.126.107.38])
  by smtp.gmail.com with ESMTPSA id
- m6-20020a7bce06000000b003c6c76b43a1sm2326246wmc.13.2022.10.27.14.11.05
+ t14-20020a5d690e000000b00225307f43fbsm1932329wru.44.2022.10.27.14.12.32
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 27 Oct 2022 14:11:06 -0700 (PDT)
-Message-ID: <48db0d2f-2d02-9d3c-2269-810256403a0d@linaro.org>
-Date: Thu, 27 Oct 2022 23:11:04 +0200
+ Thu, 27 Oct 2022 14:12:33 -0700 (PDT)
+Message-ID: <656ed959-7b40-a357-5e58-c353f548fe10@linaro.org>
+Date: Thu, 27 Oct 2022 23:12:31 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
  Gecko/20100101 Thunderbird/102.4.0
-Subject: Re: [PATCH v4 5/7] hw/ppc/e500: Implement pflash handling
+Subject: Re: [PATCH v4 7/7] hw/ppc/e500: Add Freescale eSDHC to e500plat
 Content-Language: en-US
 To: Bernhard Beschow <shentey@gmail.com>, qemu-devel@nongnu.org
 Cc: qemu-ppc@nongnu.org, Aurelien Jarno <aurelien@aurel32.net>,
@@ -104,9 +104,9 @@ Cc: qemu-ppc@nongnu.org, Aurelien Jarno <aurelien@aurel32.net>,
  Magnus Damm <magnus.damm@gmail.com>,
  "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, qemu-block@nongnu.org
 References: <20221018210146.193159-1-shentey@gmail.com>
- <20221018210146.193159-6-shentey@gmail.com>
+ <20221018210146.193159-8-shentey@gmail.com>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
-In-Reply-To: <20221018210146.193159-6-shentey@gmail.com>
+In-Reply-To: <20221018210146.193159-8-shentey@gmail.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
 Received-SPF: pass client-ip=2a00:1450:4864:20::431;
@@ -132,77 +132,20 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Sender: "Qemu-devel" <qemu-devel-bounces@nongnu.org>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 7Yubd/LEi20e
+X-TUID: wsszClbNoVpG
 
 On 18/10/22 23:01, Bernhard Beschow wrote:
-> Allows e500 boards to have their root file system reside on flash using
-> only builtin devices located in the eLBC memory region.
-> 
-> Note that the flash memory area is only created when a -pflash argument is
-> given, and that the size is determined by the given file. The idea is to
-> put users into control.
+> Adds missing functionality to e500plat machine which increases the
+> chance of given "real" firmware images to access SD cards.
 > 
 > Signed-off-by: Bernhard Beschow <shentey@gmail.com>
 > ---
->   docs/system/ppc/ppce500.rst | 16 ++++++++
+>   docs/system/ppc/ppce500.rst | 12 ++++++++++++
 >   hw/ppc/Kconfig              |  1 +
->   hw/ppc/e500.c               | 79 +++++++++++++++++++++++++++++++++++++
->   3 files changed, 96 insertions(+)
+>   hw/ppc/e500.c               | 35 ++++++++++++++++++++++++++++++++++-
+>   hw/ppc/e500.h               |  1 +
+>   hw/ppc/e500plat.c           |  1 +
+>   5 files changed, 49 insertions(+), 1 deletion(-)
 
-> @@ -1024,6 +1061,48 @@ void ppce500_init(MachineState *machine)
->                                   pmc->platform_bus_base,
->                                   &pms->pbus_dev->mmio);
->   
-> +    dinfo = drive_get(IF_PFLASH, 0, 0);
-> +    if (dinfo) {
-> +        BlockBackend *blk = blk_by_legacy_dinfo(dinfo);
-> +        BlockDriverState *bs = blk_bs(blk);
-> +        uint64_t size = bdrv_getlength(bs);
-> +        uint64_t mmio_size = pms->pbus_dev->mmio.size;
-> +        uint32_t sector_len = 64 * KiB;
-> +
-> +        if (!is_power_of_2(size)) {
-> +            error_report("Size of pflash file must be a power of two.");
-> +            exit(1);
-> +        }
-> +
-> +        if (size > mmio_size) {
-> +            error_report("Size of pflash file must not be bigger than %" PRIu64
-> +                         " bytes.", mmio_size);
-> +            exit(1);
-> +        }
-> +
-> +        if (!QEMU_IS_ALIGNED(size, sector_len)) {
-> +            error_report("Size of pflash file must be a multiple of %" PRIu32
-> +                         ".", sector_len);
-> +            exit(1);
-> +        }
-
-Again, this check is unrelated to the board code and belong to the flash 
-device (the board has no idea of the underlying flash restrictions).
-
-(see below)
-
-> +        dev = qdev_new(TYPE_PFLASH_CFI01);
-> +        qdev_prop_set_drive(dev, "drive", blk);
-> +        qdev_prop_set_uint32(dev, "num-blocks", size / sector_len);
-> +        qdev_prop_set_uint64(dev, "sector-length", sector_len);
-> +        qdev_prop_set_uint8(dev, "width", 2);
-> +        qdev_prop_set_bit(dev, "big-endian", true);
-> +        qdev_prop_set_uint16(dev, "id0", 0x89);
-> +        qdev_prop_set_uint16(dev, "id1", 0x18);
-> +        qdev_prop_set_uint16(dev, "id2", 0x0000);
-> +        qdev_prop_set_uint16(dev, "id3", 0x0);
-> +        qdev_prop_set_string(dev, "name", "e500.flash");
-> +        sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), &error_fatal);
-
-If you want to report the error differently, you can use a local Error*
-and display it with error_report_err() before exiting.
-
-Anyhow can be cleaned later, so:
 Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-
-> +        memory_region_add_subregion(&pms->pbus_dev->mmio, 0,
-> +                                    pflash_cfi01_get_memory(PFLASH_CFI01(dev)));
-> +    }
 

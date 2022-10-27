@@ -1,37 +1,37 @@
-Received: by 2002:a17:906:80c3:b0:7ae:d8f:8937 with SMTP id a3csp3158256ejx;
-        Mon, 7 Nov 2022 08:44:09 -0800 (PST)
-X-Google-Smtp-Source: AMsMyM75tCvkp7BQ32pjcPbvB6vbAJBAAFjh4KrsiVyDBWAmPJF8B1262oOE3qFJRWW4yihpFlhD
-X-Received: by 2002:a05:620a:284a:b0:6ab:9cc5:cb4c with SMTP id h10-20020a05620a284a00b006ab9cc5cb4cmr36449911qkp.609.1667839449311;
-        Mon, 07 Nov 2022 08:44:09 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1667839449; cv=none;
+Received: by 2002:a17:906:80c3:b0:7ae:d8f:8937 with SMTP id a3csp3158485ejx;
+        Mon, 7 Nov 2022 08:44:32 -0800 (PST)
+X-Google-Smtp-Source: AMsMyM7ejbB4vbQQ0RfqUU0YIOPi0sNKExoqS3viZeFDCoGvK/0TfEBYk5NNT91zheFapADcHmC/
+X-Received: by 2002:a05:620a:bd4:b0:6ef:2e0:d8aa with SMTP id s20-20020a05620a0bd400b006ef02e0d8aamr36094217qki.615.1667839472306;
+        Mon, 07 Nov 2022 08:44:32 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1667839472; cv=none;
         d=google.com; s=arc-20160816;
-        b=NYUlao07RRfO4ENoqitrevej+sDNOUOptOzJ7zV7OVmA+jrDr0qfNDg/evJIATpJuj
-         gMT6HotOs5RCZECuLD1A4QL59qWPhy35qqv+pYRTWbpDE+SEiZaz2wjA+Y+5xgnOjT2B
-         Of0KjpoDzDIQ4Hm/3jWRXrf7NAY+pcRlaIkSju9X0oybsK3hhLCc9pXwdAMOGU12ulhQ
-         9BWT4xnEhrGfxMXdobAcUDsO/T1Sg21ZqJCgY0yKPWejwVUWM2mFJLGxw0Qc1uoysJIf
-         gzndmMTYn2/qKWXbJl938M/mf0nTq6PFW+3dMmHfgghTv+3WxQtlkf0cKIvsAdaYRwj8
-         253Q==
+        b=W5hSWVnE85ma4t6f7IG38H0Rp/gtpFZlny5D2IAQATO1r68aL0GVi1ILwouUnCD67x
+         lzW4yDD9GzC+amhTQAPEiLvg4u7Xwr7O8XAg1QwXsGEzI/lORJT23cn6tunorF65XaBb
+         EKYk/O1ihMTbOUguxZaufgqA117VRtVHMFQbGrzxTrBZIvq1gg4UG9AN6eapd+T9Bqwz
+         DOeQzyc3qLLMSnXJQyeHhELn5xcApCCOltObuLoF1KqmWkGq8TYk2tX6u9qUEFQ2vVqX
+         1fGaEpxAEWzFWoy4WHmaSgD9RH0nT0sH9H+TUI0QWABoUt2Ia++x64QQxXdlPOYX22wv
+         WeFg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
          :list-archive:list-unsubscribe:list-id:precedence:mime-version
          :content-transfer-encoding:cc:to:in-reply-to:message-id:subject:date
          :from;
-        bh=y0t0uG9BNQXy4oLU0RcOEnXt6s+xxYsntFXJ38+j/g8=;
-        b=NUdRPHdpr3fLdEG435v62tqfEJmZQyKFhlbVGmKkEMKcR00jpG0qCucq/z3jUo356Q
-         B3CbNVOBBPVJzUZPO3y/BOViICuSqiLVoD45dy5PIII/PzVK7G7gjZAvZQSRlQKIsBUF
-         S1QaYHD/Bl+NtvmXCcgbSxVEq9gPC6RpEh/TOI65ne7NoVJQIvA3RyPG5VYi08CedZ27
-         SOv+jDhuukLSKzfNypROB1acXSZoaBfgCAULFLU63I4xJG9UFGqaSbHYsj1rVCgPzD9Q
-         OSmABBY7gsCJ6CLK1gAxmKjcfDOx/lUrcIZ6wYFzcoSKmLFUB2ws0B7eTcs6TGhk9pwX
-         ysmw==
+        bh=DH4NxpeEw4wfZhZ1V0YqpB2MkIFkbURI4e6YFDOHbG8=;
+        b=qZtv7/nV5FDh1jzQyrkGqt/1jyqjE5ZjMk9sSjeq9PrE2vonaHI66vbkq+aEJ5VC1B
+         hfcXnb1k8BdlFXSAR5kKYKTs8oc3yJOVe2QUbqwBOmT/JhCFukQC0AMTydwpuAwkdvRa
+         fcpCv3jVmSaf527qLVc15HLGSSZT2t/PCr4psJDMOrsSLeXzM1aM1jxpeJTudtHQhGiv
+         w/IwVOSsUA5rXKWpuco5uoyCilRFVUHI3M0RzNvjFsP6oZcAdabEqSHkdLu4vDXk7QnZ
+         ZviOzbNjIvLt/9Uya70KERNurx/OHC83BSVAUluemFU6QdJ5Buf0se7gv0OPkL+s99Lv
+         QflQ==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=sr.ht
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id ge3-20020a05621427c300b004afa45c5497si4928529qvb.158.2022.11.07.08.44.09
+        by mx.google.com with ESMTPS id w1-20020a05620a444100b006f9bc401e6dsi4919926qkp.70.2022.11.07.08.44.32
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 07 Nov 2022 08:44:09 -0800 (PST)
+        Mon, 07 Nov 2022 08:44:32 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
@@ -39,23 +39,24 @@ Authentication-Results: mx.google.com;
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1os5CS-000266-Dh; Mon, 07 Nov 2022 11:42:16 -0500
+	id 1os5Cn-0002Fq-Tv; Mon, 07 Nov 2022 11:42:37 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <outgoing@sr.ht>)
- id 1os5CM-00024e-9g; Mon, 07 Nov 2022 11:42:10 -0500
+ id 1os5CS-00027E-SO; Mon, 07 Nov 2022 11:42:18 -0500
 Received: from mail-b.sr.ht ([173.195.146.151])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <outgoing@sr.ht>)
- id 1os5CI-0004pV-L4; Mon, 07 Nov 2022 11:42:09 -0500
+ id 1os5CO-0005Jv-CA; Mon, 07 Nov 2022 11:42:16 -0500
 Authentication-Results: mail-b.sr.ht; dkim=none 
 Received: from git.sr.ht (unknown [173.195.146.142])
- by mail-b.sr.ht (Postfix) with ESMTPSA id B137C11F30C;
- Mon,  7 Nov 2022 16:42:04 +0000 (UTC)
+ by mail-b.sr.ht (Postfix) with ESMTPSA id 5098A11F852;
+ Mon,  7 Nov 2022 16:42:05 +0000 (UTC)
 From: ~axelheider <axelheider@git.sr.ht>
-Date: Tue, 25 Oct 2022 13:23:07 +0200
-Subject: [PATCH qemu.git v2 3/9] hw/timer/imx_epit: simplify interrupt logic
-Message-ID: <166783932395.3279.1096141058484230644-3@git.sr.ht>
+Date: Thu, 27 Oct 2022 15:09:58 +0200
+Subject: [PATCH qemu.git v2 7/9] hw/timer/imx_epit: factor out register write
+ handlers
+Message-ID: <166783932395.3279.1096141058484230644-7@git.sr.ht>
 X-Mailer: git.sr.ht
 In-Reply-To: <166783932395.3279.1096141058484230644-0@git.sr.ht>
 To: qemu-devel@nongnu.org
@@ -86,72 +87,267 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
 Reply-To: ~axelheider <axelheider@gmx.de>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: R6D/xNwlSikw
+X-TUID: o0oDTveiSUXe
 
 From: Axel Heider <axel.heider@hensoldt.net>
 
 Signed-off-by: Axel Heider <axel.heider@hensoldt.net>
 ---
- hw/timer/imx_epit.c | 27 +++++++++++----------------
- 1 file changed, 11 insertions(+), 16 deletions(-)
+ hw/timer/imx_epit.c | 211 ++++++++++++++++++++++++--------------------
+ 1 file changed, 115 insertions(+), 96 deletions(-)
 
 diff --git a/hw/timer/imx_epit.c b/hw/timer/imx_epit.c
-index 8ec770f674..2e9dae0bc8 100644
+index b0ef727efb..30280a9ac1 100644
 --- a/hw/timer/imx_epit.c
 +++ b/hw/timer/imx_epit.c
-@@ -61,18 +61,6 @@ static const IMXClk imx_epit_clocks[] =3D  {
-     CLK_32k,       /* 11 ipg_clk_32k -- ~32kHz */
- };
-=20
--/*
-- * Update interrupt status
-- */
--static void imx_epit_update_int(IMXEPITState *s)
--{
--    if (s->sr && (s->cr & CR_OCIEN) && (s->cr & CR_EN)) {
--        qemu_irq_raise(s->irq);
--    } else {
--        qemu_irq_lower(s->irq);
--    }
--}
--
- /*
-  * Must be called from within a ptimer_transaction_begin/commit block
-  * for both s->timer_cmp and s->timer_reload.
-@@ -253,10 +241,10 @@ static void imx_epit_write(void *opaque, hwaddr offset,=
- uint64_t value,
-         break;
-=20
-     case 1: /* SR - ACK*/
--        /* writing 1 to OCIF clears the OCIF bit */
-+        /* writing 1 to OCIF clears the OCIF bit and the interrupt */
-         if (value & 0x01) {
-             s->sr =3D 0;
--            imx_epit_update_int(s);
-+            qemu_irq_lower(s->irq);
-         }
-         break;
-=20
-@@ -305,10 +293,17 @@ static void imx_epit_cmp(void *opaque)
- {
-     IMXEPITState *s =3D IMX_EPIT(opaque);
-=20
-+    /* Set the interrupt status flag to signaled. */
-     DPRINTF("sr was %d\n", s->sr);
--
-     s->sr =3D 1;
--    imx_epit_update_int(s);
-+
-+    /*
-+     * An actual interrupt is generated only if the peripheral is enabled
-+     * and the interrupt generation is enabled.
-+     */
-+    if ((s->cr & (CR_EN | CR_OCIEN)) =3D=3D (CR_EN | CR_OCIEN)) {
-+        qemu_irq_raise(s->irq);
-+    }
+@@ -156,130 +156,149 @@ static void imx_epit_reload_compare_timer(IMXEPITStat=
+e *s)
+     }
  }
 =20
- static void imx_epit_reload(void *opaque)
+-static void imx_epit_write(void *opaque, hwaddr offset, uint64_t value,
+-                           unsigned size)
++static void imx_epit_write_cr(IMXEPITState *s, uint32_t value)
+ {
+-    IMXEPITState *s =3D IMX_EPIT(opaque);
+-    uint64_t freq =3D 0;
+-    uint64_t oldcr;
+-
+-    DPRINTF("(%s, value =3D 0x%08x)\n", imx_epit_reg_name(offset >> 2),
+-            (uint32_t)value);
++    uint32_t freq =3D 0;
++    uint32_t oldcr =3D s->cr;
+=20
+-    switch (offset >> 2) {
+-    case 0: /* CR */
+-
+-        oldcr =3D s->cr;
+-        /* SWR bit is never persisted, it clears itself once reset is done */
+-        s->cr =3D (value & ~CR_SWR) & 0x03ffffff;
+-        if (value & CR_SWR) {
+-            /* handle the reset */
+-            imx_epit_reset(DEVICE(s));
+-            /*
+-             * TODO: could we 'break' here? following operations appear
+-             * to duplicate the work imx_epit_reset() already did.
+-             */
+-        }
+-
+-        ptimer_transaction_begin(s->timer_cmp);
+-        ptimer_transaction_begin(s->timer_reload);
++    /* SWR bit is never persisted, it clears itself once reset is done */
++    s->cr =3D (value & ~CR_SWR) & 0x03ffffff;
+=20
++    if (value & CR_SWR) {
++        /* handle the reset */
++        imx_epit_reset(DEVICE(s));
+         /*
+-         * Update the frequency. In case of a reset the input clock was
+-         * switched off, so this can be skipped.
++         * TODO: could we 'break' here? following operations appear
++         * to duplicate the work imx_epit_reset() already did.
+          */
+-        if (!(value & CR_SWR)) {
+-            freq =3D imx_epit_get_freq(s);
+-            if (freq) {
+-                ptimer_set_freq(s->timer_reload, freq);
+-                ptimer_set_freq(s->timer_cmp, freq);
+-            }
+-        }
++    }
+=20
+-        if (freq && (s->cr & CR_EN) && !(oldcr & CR_EN)) {
+-            if (s->cr & CR_ENMOD) {
+-                if (s->cr & CR_RLD) {
+-                    ptimer_set_limit(s->timer_reload, s->lr, 1);
+-                    ptimer_set_limit(s->timer_cmp, s->lr, 1);
+-                } else {
+-                    ptimer_set_limit(s->timer_reload, EPIT_TIMER_MAX, 1);
+-                    ptimer_set_limit(s->timer_cmp, EPIT_TIMER_MAX, 1);
+-                }
+-            }
++    ptimer_transaction_begin(s->timer_cmp);
++    ptimer_transaction_begin(s->timer_reload);
+=20
+-            imx_epit_reload_compare_timer(s);
+-            ptimer_run(s->timer_reload, 0);
+-            if (s->cr & CR_OCIEN) {
+-                ptimer_run(s->timer_cmp, 0);
++    /*
++     * Update the frequency. In case of a reset the input clock was
++     * switched off, so this can be skipped.
++     */
++    if (!(value & CR_SWR)) {
++        freq =3D imx_epit_get_freq(s);
++        if (freq) {
++            ptimer_set_freq(s->timer_reload, freq);
++            ptimer_set_freq(s->timer_cmp, freq);
++        }
++    }
++
++    if (freq && (s->cr & CR_EN) && !(oldcr & CR_EN)) {
++        if (s->cr & CR_ENMOD) {
++            if (s->cr & CR_RLD) {
++                ptimer_set_limit(s->timer_reload, s->lr, 1);
++                ptimer_set_limit(s->timer_cmp, s->lr, 1);
+             } else {
+-                ptimer_stop(s->timer_cmp);
+-            }
+-        } else if (!(s->cr & CR_EN)) {
+-            /* stop both timers */
+-            ptimer_stop(s->timer_reload);
+-            ptimer_stop(s->timer_cmp);
+-        } else  if (s->cr & CR_OCIEN) {
+-            if (!(oldcr & CR_OCIEN)) {
+-                imx_epit_reload_compare_timer(s);
+-                ptimer_run(s->timer_cmp, 0);
++                ptimer_set_limit(s->timer_reload, EPIT_TIMER_MAX, 1);
++                ptimer_set_limit(s->timer_cmp, EPIT_TIMER_MAX, 1);
+             }
++        }
++
++        imx_epit_reload_compare_timer(s);
++        ptimer_run(s->timer_reload, 0);
++        if (s->cr & CR_OCIEN) {
++            ptimer_run(s->timer_cmp, 0);
+         } else {
+             ptimer_stop(s->timer_cmp);
+         }
++    } else if (!(s->cr & CR_EN)) {
++        /* stop both timers */
++        ptimer_stop(s->timer_reload);
++        ptimer_stop(s->timer_cmp);
++    } else  if (s->cr & CR_OCIEN) {
++        if (!(oldcr & CR_OCIEN)) {
++            imx_epit_reload_compare_timer(s);
++            ptimer_run(s->timer_cmp, 0);
++        }
++    } else {
++        ptimer_stop(s->timer_cmp);
++    }
++
++    ptimer_transaction_commit(s->timer_cmp);
++    ptimer_transaction_commit(s->timer_reload);
++}
++
++static void imx_epit_write_sr(IMXEPITState *s, uint32_t value)
++{
++    /* writing 1 to OCIF clears the OCIF bit and the interrupt */
++    if (value & 0x01) {
++        s->sr =3D 0;
++        qemu_irq_lower(s->irq);
++    }
++}
++
++static void imx_epit_write_lr(IMXEPITState *s, uint32_t value)
++{
++    s->lr =3D value;
++
++    ptimer_transaction_begin(s->timer_cmp);
++    ptimer_transaction_begin(s->timer_reload);
++    if (s->cr & CR_RLD) {
++        /* Also set the limit if the LRD bit is set */
++        /* If IOVW bit is set then set the timer value */
++        ptimer_set_limit(s->timer_reload, s->lr, s->cr & CR_IOVW);
++        ptimer_set_limit(s->timer_cmp, s->lr, 0);
++    } else if (s->cr & CR_IOVW) {
++        /* If IOVW bit is set then set the timer value */
++        ptimer_set_count(s->timer_reload, s->lr);
++    }
++    /*
++     * Commit the change to s->timer_reload, so it can propagate. Otherwise
++     * the timer interrupt may not fire properly. The commit must happen
++     * before calling imx_epit_reload_compare_timer(), which reads
++     * s->timer_reload internally again.
++     */
++    ptimer_transaction_commit(s->timer_reload);
++    imx_epit_reload_compare_timer(s);
++    ptimer_transaction_commit(s->timer_cmp);
++}
++
++static void imx_epit_write_cmp(IMXEPITState *s, uint32_t value)
++{
++    s->cmp =3D value;
++
++    ptimer_transaction_begin(s->timer_cmp);
++    imx_epit_reload_compare_timer(s);
++    ptimer_transaction_commit(s->timer_cmp);
++}
++
++static void imx_epit_write(void *opaque, hwaddr offset, uint64_t value,
++                           unsigned size)
++{
++    IMXEPITState *s =3D IMX_EPIT(opaque);
++
++    DPRINTF("(%s, value =3D 0x%08x)\n", imx_epit_reg_name(offset >> 2),
++            (uint32_t)value);
+=20
+-        ptimer_transaction_commit(s->timer_cmp);
+-        ptimer_transaction_commit(s->timer_reload);
++    switch (offset >> 2) {
++    case 0: /* CR */
++        imx_epit_write_cr(s, (uint32_t)value);
+         break;
+=20
+-    case 1: /* SR - ACK*/
+-        /* writing 1 to OCIF clears the OCIF bit and the interrupt */
+-        if (value & 0x01) {
+-            s->sr =3D 0;
+-            qemu_irq_lower(s->irq);
+-        }
++    case 1: /* SR */
++        imx_epit_write_sr(s, (uint32_t)value);
+         break;
+=20
+-    case 2: /* LR - set ticks */
+-        s->lr =3D value;
+-
+-        ptimer_transaction_begin(s->timer_cmp);
+-        ptimer_transaction_begin(s->timer_reload);
+-        if (s->cr & CR_RLD) {
+-            /* Also set the limit if the LRD bit is set */
+-            /* If IOVW bit is set then set the timer value */
+-            ptimer_set_limit(s->timer_reload, s->lr, s->cr & CR_IOVW);
+-            ptimer_set_limit(s->timer_cmp, s->lr, 0);
+-        } else if (s->cr & CR_IOVW) {
+-            /* If IOVW bit is set then set the timer value */
+-            ptimer_set_count(s->timer_reload, s->lr);
+-        }
+-        /*
+-         * Commit the change to s->timer_reload, so it can propagate. Otherw=
+ise
+-         * the timer interrupt may not fire properly. The commit must happen
+-         * before calling imx_epit_reload_compare_timer(), which reads
+-         * s->timer_reload internally again.
+-         */
+-        ptimer_transaction_commit(s->timer_reload);
+-        imx_epit_reload_compare_timer(s);
+-        ptimer_transaction_commit(s->timer_cmp);
++    case 2: /* LR */
++        imx_epit_write_lr(s, (uint32_t)value);
+         break;
+=20
+     case 3: /* CMP */
+-        s->cmp =3D value;
+-
+-        ptimer_transaction_begin(s->timer_cmp);
+-        imx_epit_reload_compare_timer(s);
+-        ptimer_transaction_commit(s->timer_cmp);
+-
++        imx_epit_write_cmp(s, (uint32_t)value);
+         break;
+=20
+     default:
+         qemu_log_mask(LOG_GUEST_ERROR, "[%s]%s: Bad register at offset 0x%"
+                       HWADDR_PRIx "\n", TYPE_IMX_EPIT, __func__, offset);
+-
+         break;
+     }
+ }
++
+ static void imx_epit_cmp(void *opaque)
+ {
+     IMXEPITState *s =3D IMX_EPIT(opaque);
 --=20
 2.34.5
 

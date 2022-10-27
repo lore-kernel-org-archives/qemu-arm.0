@@ -1,127 +1,123 @@
-Received: by 2002:a17:906:43c7:b0:78d:9f02:16a1 with SMTP id j7csp1200996ejn;
-        Fri, 28 Oct 2022 05:28:27 -0700 (PDT)
-X-Google-Smtp-Source: AMsMyM6kN+bDUQNym5zanSetH/yc/k4tXm5UKcUvckmbEwfOApxP21V5cNE002aLgZHnkeczAmbR
-X-Received: by 2002:a05:620a:404c:b0:6d9:9fa1:535e with SMTP id i12-20020a05620a404c00b006d99fa1535emr39714073qko.509.1666960107329;
-        Fri, 28 Oct 2022 05:28:27 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1666960107; cv=none;
+Received: by 2002:a17:906:43c7:b0:78d:9f02:16a1 with SMTP id j7csp707874ejn;
+        Thu, 27 Oct 2022 14:13:03 -0700 (PDT)
+X-Google-Smtp-Source: AMsMyM7p/4J8QSzucPzUlZcVFowAISC2NIzILCR1q4NWUhGrP1iml1jlRfd4MmaXjq9CZoYis3cR
+X-Received: by 2002:ac8:7d01:0:b0:39c:ebdf:490c with SMTP id g1-20020ac87d01000000b0039cebdf490cmr43743053qtb.179.1666905182890;
+        Thu, 27 Oct 2022 14:13:02 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1666905182; cv=none;
         d=google.com; s=arc-20160816;
-        b=zdeOnk1b4hvjmDOxoH/trXcDdEvbxLDhJpLDdgbE1VosfXK001FVsNm1wxcM1Xe02C
-         hqXkYU1IIkD8xxUlJfzdxWOxvP9iKTkq1M9Wl7M2SdO2//r6TnVaFaTFdbobD7SundR5
-         f+2uagHzsjnFhQv97+z5DJgKpV+BI4645w164wTQEW4Qrr7TNOrO1k+Gc65w+LaSrdq0
-         79O6K04eORbJQDqQvj31iREvxY+oZdWL4TBHjlvWgQtbFOLzecZgu6QRoKoOVmiG10NV
-         Ep1UHqwJcZgCxWybYlkNrT9m1y/JmgrEEqjQLIau145xv4xB0el3ACTq/4Y6yQfsQtdR
-         ex+A==
+        b=asFlPGZlb1BiCQzWJSngvHeVfoQaI8bc5algHCjbi93zv+TQf1VdJBb+fDYrPRTZ9e
+         407nUE70Qgb5Xtpe2G/cZRQWLDqsSjADMHOr1X51kdyEuxVi0Zr6I7lHvM8Xyis6Jzi4
+         WaDiFPZtL2h+w3ZFpwVi2Xv4DjwA0K1Q1ghC3a+tawmoL+3x9+cp03C2uWf9YhYyKuyA
+         Om3L5U5TsTI/Ph1PvnHcIGov7wLiLp/PWA+hp/ZEC4zmKrfd3gT29TT57MrqvT9oQCjC
+         6wti1BxdpUzyidfXkuK/qdOVHDRvvOdvn04wfc66HMql8Juw7oMOdFMTuyDOjvqsv9FA
+         t5Gw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=errors-to:sender:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=S/wVlNiEldgDVjsPjh0ol+nUZbcUyoFeavu4L0KDtJI=;
-        b=QJLgqA4i3raN/76UBftuZOPZqnNMEGlozHEAmT/vXVkMX7G2LEyDaJ6v9CZmA4JUAM
-         fwuvg0m/JlfudTI5JVEeNBEPONp7AOPxFG+REbVnDC0RkGokvplApdtj+A7pjRAeER5R
-         bkkYSd4d5o3A3hv7LzJ4cBnT5gkVWTElQmgaU36DvWUekYikp+AmrCG2IxNqLYBVQyVH
-         uUuFZYe9efUMyQVBF0S79hW9xvJIanaaGSgCrE6BUt7bUsEvDVITpaZAYDJL4JtlXHkl
-         IM9pRqfs9AeYznJlV4oOCh2TykizcyRgavHcYzM4b60ajoEdYBNrfAW9Ns20T6LgV8om
-         +Tcg==
+         :in-reply-to:from:references:cc:to:content-language:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=7PCPypECvjj7tY1/i48/WVKNJxCsE5ZU7zFU9OledUs=;
+        b=A23CUs5zRxfQpGIJHxWtScOfRpslKd3jBGyY0Bq3+1YM/sGFUSl3Ao1crqk5cA5rd2
+         3gwwNLLAUggHmHxAvC1od9lxlRnDh4uUFsiETxb1lgsIUaLL0ck3vJeYewsorxkStRWb
+         n7w3/uORSq928AJ+dv5I+6wx3X5BmheCH9Ckpxcr/ubFgBsI+hngirQ6bTgX+Q36bFEr
+         GIruPzHetp70xafBf4dXOVcXH51Hlq7jlTmsG9BiIjOWXwWAXq1aBsa2Qy8uxFwW1eqy
+         Jlg3hks5siGjOtooR2JjNvtc84WKz8iFP/QZ8pbF7p9EFeV5B5RQlE0xecxZgdJ7qmJB
+         k6Qg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@daynix-com.20210112.gappssmtp.com header.s=20210112 header.b="3z4/8xJ9";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@linaro.org header.s=google header.b=urTQFd22;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id iw3-20020a0562140f2300b004ac7dc311a8si2697413qvb.475.2022.10.28.05.28.27
+        by mx.google.com with ESMTPS id o3-20020a0562140e4300b004bb7210ecf8si1555592qvc.497.2022.10.27.14.13.02
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 28 Oct 2022 05:28:27 -0700 (PDT)
+        Thu, 27 Oct 2022 14:13:02 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@daynix-com.20210112.gappssmtp.com header.s=20210112 header.b="3z4/8xJ9";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@linaro.org header.s=google header.b=urTQFd22;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1ooOSt-0003Ss-JK; Fri, 28 Oct 2022 08:27:59 -0400
+	id 1ooA9m-0001uD-MO; Thu, 27 Oct 2022 17:11:18 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <akihiko.odaki@daynix.com>)
- id 1ooORw-0002mU-2Q
- for qemu-devel@nongnu.org; Fri, 28 Oct 2022 08:27:03 -0400
-Received: from mail-pj1-x102a.google.com ([2607:f8b0:4864:20::102a])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1ooA9h-0001sf-2c
+ for qemu-devel@nongnu.org; Thu, 27 Oct 2022 17:11:13 -0400
+Received: from mail-wr1-x431.google.com ([2a00:1450:4864:20::431])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <akihiko.odaki@daynix.com>)
- id 1ooORu-0003GQ-FY
- for qemu-devel@nongnu.org; Fri, 28 Oct 2022 08:26:59 -0400
-Received: by mail-pj1-x102a.google.com with SMTP id
- d13-20020a17090a3b0d00b00213519dfe4aso4338901pjc.2
- for <qemu-devel@nongnu.org>; Fri, 28 Oct 2022 05:26:58 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=daynix-com.20210112.gappssmtp.com; s=20210112;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=S/wVlNiEldgDVjsPjh0ol+nUZbcUyoFeavu4L0KDtJI=;
- b=3z4/8xJ9y0+B4jY+BM+RJ9hwQj2SjyBNTSQZXND9sKmsjo3kKXxnQptVJKeYsR22/8
- H6XJ8exyzQELkxDASLCjFcHb1s27PykZfP0HzJiYWJJxpHd1nxySUPU1ksF4RM57f7Jn
- sdy/alNPlC27gGWhD27aDy0KfmQYdvuk3/k2LwlagNEHzL4VESk2uCVDFzhpwhetjOZi
- lr1eq4DG2/WyTnpnfGx/XeueK5L7UibIZ0bd+HFfBPoHbLXlEGzs4NLzblsby+No8bO8
- JQk7DwUzCxHzBE2Yo2o2Mpfep/pupPYrOn/H9KzeVzeC7Siny94bF0oG+LLzT9f77z2x
- h60w==
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1ooA9d-0002lI-TS
+ for qemu-devel@nongnu.org; Thu, 27 Oct 2022 17:11:12 -0400
+Received: by mail-wr1-x431.google.com with SMTP id o4so4261517wrq.6
+ for <qemu-devel@nongnu.org>; Thu, 27 Oct 2022 14:11:08 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=7PCPypECvjj7tY1/i48/WVKNJxCsE5ZU7zFU9OledUs=;
+ b=urTQFd2217HdJPEzu13RsIJwONkqv7+6d7b8o4Gbjwoy39IjfLzKxZ1MTHOar5Eb59
+ LNQl4UlepyhZhQk5DyA+fdrsDBzsDnQNEg3Ea+2fgbgTwJYDcqUfwc8sl/JjhEq0mSPE
+ CqhXrcglpjMpJq/SrJ++VcV/qDz2cG8EWOTbn0WN5u9KWwTzI/uOBTsHUZoIEhZbG6+a
+ 6tIlbMtmuuwdg+oITZ0hrW6OwhVLqJOGqKzR71hq/kp8O8fiXBwZHAGvH1bXzWIoHI+F
+ 4q1x31fZv7MEpL4bkWfaXfSvnGhqithnWPsYbENqxCMyc6jQppqfxeS38hxU9abW28JU
+ oZsg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=S/wVlNiEldgDVjsPjh0ol+nUZbcUyoFeavu4L0KDtJI=;
- b=F0s5EiVv/7QqkFMxB2j5xKPqjqO3+zlOIWEEo25AvtNtV56VPQ41yXzTK1us+ZD5hz
- uPXQa7X/rh5rGXOS3tOHwk7z9L+FCli+BoP8GUtKOx6U/xPLI7WNPcs9OkrokM0x6lSU
- hhVL3kYXIYQkvm4ns2Xtv+htzXWm91oK5eaLIdBjSt0xOsOPQCugZsgTQ6nnB3sbBNQ4
- N0eyEVY0foq2OO4JyTSoCzMqMNuzladoXrX6MOmgQ1Cp8J04EV+9o1p/PO8l67dUgNhi
- Vf/gAXfcVM9PxkZHf+c3sPw0Ok992p5h99aTU1XEd19EDmy8Tb1hQaaIIg6OJGhfG3u/
- xpig==
-X-Gm-Message-State: ACrzQf1WYDmuBq32wZHzAEfhk70wFnlxTPUn3NFwo1Ccav/IzYgDbdDa
- ejKEDiRVjVqAl/Kk0bS11bVpGg==
-X-Received: by 2002:a17:903:11c3:b0:178:aec1:189c with SMTP id
- q3-20020a17090311c300b00178aec1189cmr54170068plh.136.1666960017741; 
- Fri, 28 Oct 2022 05:26:57 -0700 (PDT)
-Received: from fedora.flets-east.jp ([2400:4050:c360:8200:8ae8:3c4:c0da:7419])
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=7PCPypECvjj7tY1/i48/WVKNJxCsE5ZU7zFU9OledUs=;
+ b=iPpqN2KMD7/cND660vToh4CcqS+TtHyfpyanqa3dAV6GZHgvTfmIYtJVGH9MfN2V+4
+ Ml457iEnQAcO1O2dX5tbfwXanIXv/eyjt5kO29jj20mYCo0FKPEaG/xZVI0yJ1wU+/II
+ mW2a/f2eM9TEk78jeI8DLnJzVxrfYS7CaC72G7dUV8PQ/385kWRUpDPnICzKhQrpApI3
+ xmJCPlT0qPVo5ZecbAxPq6jKtyZz0kXU9YNXs4KJM2LE+Ijhr8Iq60ZrEKQllrGuBX3M
+ S3+68UnTcx3rwEsGIUg3xLI3BCDSjbDmiYGniReVtFGLOeeyiBz3Ej0gACbMQ8BVihkV
+ vzBA==
+X-Gm-Message-State: ACrzQf1Yef7jee+3otGGALfTofQLJvn1WR8SF0cGZucRD2XCzBcDHAJ2
+ bcxeBxIqWVpG5/qeI2zueEJueA==
+X-Received: by 2002:a5d:654d:0:b0:235:197d:72d1 with SMTP id
+ z13-20020a5d654d000000b00235197d72d1mr27607557wrv.680.1666905067226; 
+ Thu, 27 Oct 2022 14:11:07 -0700 (PDT)
+Received: from [192.168.1.115] ([185.126.107.38])
  by smtp.gmail.com with ESMTPSA id
- x3-20020a170902ec8300b00174d9bbeda4sm2948456plg.197.2022.10.28.05.26.52
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 28 Oct 2022 05:26:57 -0700 (PDT)
-From: Akihiko Odaki <akihiko.odaki@daynix.com>
-To: 
-Cc: Alex Williamson <alex.williamson@redhat.com>, qemu-devel@nongnu.org,
- qemu-block@nongnu.org, qemu-arm@nongnu.org,
- "Michael S . Tsirkin" <mst@redhat.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Gerd Hoffmann <kraxel@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- Eduardo Habkost <eduardo@habkost.net>, John Snow <jsnow@redhat.com>,
- Dmitry Fleytman <dmitry.fleytman@gmail.com>,
- Jason Wang <jasowang@redhat.com>, Stefan Weil <sw@weilnetz.de>,
- Keith Busch <kbusch@kernel.org>, Klaus Jensen <its@irrelevant.dk>,
- Peter Maydell <peter.maydell@linaro.org>,
- Andrey Smirnov <andrew.smirnov@gmail.com>,
- Paul Burton <paulburton@kernel.org>,
- Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
- Yan Vugenfirer <yan@daynix.com>,
- Yuri Benditovich <yuri.benditovich@daynix.com>,
- Akihiko Odaki <akihiko.odaki@daynix.com>
-Subject: [PATCH v5 03/17] hw/i386/amd_iommu: Omit errp for pci_add_capability
-Date: Fri, 28 Oct 2022 21:26:15 +0900
-Message-Id: <20221028122629.3269-4-akihiko.odaki@daynix.com>
-X-Mailer: git-send-email 2.37.3
-In-Reply-To: <20221028122629.3269-1-akihiko.odaki@daynix.com>
-References: <20221028122629.3269-1-akihiko.odaki@daynix.com>
+ m6-20020a7bce06000000b003c6c76b43a1sm2326246wmc.13.2022.10.27.14.11.05
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 27 Oct 2022 14:11:06 -0700 (PDT)
+Message-ID: <48db0d2f-2d02-9d3c-2269-810256403a0d@linaro.org>
+Date: Thu, 27 Oct 2022 23:11:04 +0200
 MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
+ Gecko/20100101 Thunderbird/102.4.0
+Subject: Re: [PATCH v4 5/7] hw/ppc/e500: Implement pflash handling
+Content-Language: en-US
+To: Bernhard Beschow <shentey@gmail.com>, qemu-devel@nongnu.org
+Cc: qemu-ppc@nongnu.org, Aurelien Jarno <aurelien@aurel32.net>,
+ Yoshinori Sato <ysato@users.sourceforge.jp>,
+ Antony Pavlov <antonynpavlov@gmail.com>, BALATON Zoltan
+ <balaton@eik.bme.hu>, Alistair Francis <alistair@alistair23.me>,
+ Bin Meng <bin.meng@windriver.com>, Kevin Wolf <kwolf@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>, Jan Kiszka <jan.kiszka@web.de>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
+ Hanna Reitz <hreitz@redhat.com>, qemu-arm@nongnu.org,
+ Magnus Damm <magnus.damm@gmail.com>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, qemu-block@nongnu.org
+References: <20221018210146.193159-1-shentey@gmail.com>
+ <20221018210146.193159-6-shentey@gmail.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
+In-Reply-To: <20221018210146.193159-6-shentey@gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: none client-ip=2607:f8b0:4864:20::102a;
- envelope-from=akihiko.odaki@daynix.com; helo=mail-pj1-x102a.google.com
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_NONE=0.001 autolearn=ham autolearn_force=no
+Received-SPF: pass client-ip=2a00:1450:4864:20::431;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x431.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -136,58 +132,77 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Sender: "Qemu-devel" <qemu-devel-bounces@nongnu.org>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: mqqXL0L/wkGL
+X-TUID: 7Yubd/LEi20e
 
-Omitting errp for pci_add_capability() causes it to abort if
-capabilities overlap. This behavior is appropriate here because all of
-the capabilities set in this device are defined in the program and
-their overlap should not happen unless there is a programming error.
+On 18/10/22 23:01, Bernhard Beschow wrote:
+> Allows e500 boards to have their root file system reside on flash using
+> only builtin devices located in the eLBC memory region.
+> 
+> Note that the flash memory area is only created when a -pflash argument is
+> given, and that the size is determined by the given file. The idea is to
+> put users into control.
+> 
+> Signed-off-by: Bernhard Beschow <shentey@gmail.com>
+> ---
+>   docs/system/ppc/ppce500.rst | 16 ++++++++
+>   hw/ppc/Kconfig              |  1 +
+>   hw/ppc/e500.c               | 79 +++++++++++++++++++++++++++++++++++++
+>   3 files changed, 96 insertions(+)
 
-Signed-off-by: Akihiko Odaki <akihiko.odaki@daynix.com>
----
- hw/i386/amd_iommu.c | 21 ++++-----------------
- 1 file changed, 4 insertions(+), 17 deletions(-)
+> @@ -1024,6 +1061,48 @@ void ppce500_init(MachineState *machine)
+>                                   pmc->platform_bus_base,
+>                                   &pms->pbus_dev->mmio);
+>   
+> +    dinfo = drive_get(IF_PFLASH, 0, 0);
+> +    if (dinfo) {
+> +        BlockBackend *blk = blk_by_legacy_dinfo(dinfo);
+> +        BlockDriverState *bs = blk_bs(blk);
+> +        uint64_t size = bdrv_getlength(bs);
+> +        uint64_t mmio_size = pms->pbus_dev->mmio.size;
+> +        uint32_t sector_len = 64 * KiB;
+> +
+> +        if (!is_power_of_2(size)) {
+> +            error_report("Size of pflash file must be a power of two.");
+> +            exit(1);
+> +        }
+> +
+> +        if (size > mmio_size) {
+> +            error_report("Size of pflash file must not be bigger than %" PRIu64
+> +                         " bytes.", mmio_size);
+> +            exit(1);
+> +        }
+> +
+> +        if (!QEMU_IS_ALIGNED(size, sector_len)) {
+> +            error_report("Size of pflash file must be a multiple of %" PRIu32
+> +                         ".", sector_len);
+> +            exit(1);
+> +        }
 
-diff --git a/hw/i386/amd_iommu.c b/hw/i386/amd_iommu.c
-index 725f69095b..8a88cbea0a 100644
---- a/hw/i386/amd_iommu.c
-+++ b/hw/i386/amd_iommu.c
-@@ -1539,7 +1539,6 @@ static void amdvi_sysbus_reset(DeviceState *dev)
- 
- static void amdvi_sysbus_realize(DeviceState *dev, Error **errp)
- {
--    int ret = 0;
-     AMDVIState *s = AMD_IOMMU_DEVICE(dev);
-     MachineState *ms = MACHINE(qdev_get_machine());
-     PCMachineState *pcms = PC_MACHINE(ms);
-@@ -1553,23 +1552,11 @@ static void amdvi_sysbus_realize(DeviceState *dev, Error **errp)
-     if (!qdev_realize(DEVICE(&s->pci), &bus->qbus, errp)) {
-         return;
-     }
--    ret = pci_add_capability(&s->pci.dev, AMDVI_CAPAB_ID_SEC, 0,
--                                         AMDVI_CAPAB_SIZE, errp);
--    if (ret < 0) {
--        return;
--    }
--    s->capab_offset = ret;
-+    s->capab_offset = pci_add_capability(&s->pci.dev, AMDVI_CAPAB_ID_SEC, 0,
-+                                         AMDVI_CAPAB_SIZE);
- 
--    ret = pci_add_capability(&s->pci.dev, PCI_CAP_ID_MSI, 0,
--                             AMDVI_CAPAB_REG_SIZE, errp);
--    if (ret < 0) {
--        return;
--    }
--    ret = pci_add_capability(&s->pci.dev, PCI_CAP_ID_HT, 0,
--                             AMDVI_CAPAB_REG_SIZE, errp);
--    if (ret < 0) {
--        return;
--    }
-+    pci_add_capability(&s->pci.dev, PCI_CAP_ID_MSI, 0, AMDVI_CAPAB_REG_SIZE);
-+    pci_add_capability(&s->pci.dev, PCI_CAP_ID_HT, 0, AMDVI_CAPAB_REG_SIZE);
- 
-     /* Pseudo address space under root PCI bus. */
-     x86ms->ioapic_as = amdvi_host_dma_iommu(bus, s, AMDVI_IOAPIC_SB_DEVID);
--- 
-2.37.3
+Again, this check is unrelated to the board code and belong to the flash 
+device (the board has no idea of the underlying flash restrictions).
+
+(see below)
+
+> +        dev = qdev_new(TYPE_PFLASH_CFI01);
+> +        qdev_prop_set_drive(dev, "drive", blk);
+> +        qdev_prop_set_uint32(dev, "num-blocks", size / sector_len);
+> +        qdev_prop_set_uint64(dev, "sector-length", sector_len);
+> +        qdev_prop_set_uint8(dev, "width", 2);
+> +        qdev_prop_set_bit(dev, "big-endian", true);
+> +        qdev_prop_set_uint16(dev, "id0", 0x89);
+> +        qdev_prop_set_uint16(dev, "id1", 0x18);
+> +        qdev_prop_set_uint16(dev, "id2", 0x0000);
+> +        qdev_prop_set_uint16(dev, "id3", 0x0);
+> +        qdev_prop_set_string(dev, "name", "e500.flash");
+> +        sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), &error_fatal);
+
+If you want to report the error differently, you can use a local Error*
+and display it with error_report_err() before exiting.
+
+Anyhow can be cleaned later, so:
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+
+> +        memory_region_add_subregion(&pms->pbus_dev->mmio, 0,
+> +                                    pflash_cfi01_get_memory(PFLASH_CFI01(dev)));
+> +    }
 

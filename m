@@ -1,114 +1,102 @@
-Received: by 2002:a17:906:43c7:b0:78d:9f02:16a1 with SMTP id j7csp414561ejn;
-        Thu, 27 Oct 2022 07:03:53 -0700 (PDT)
-X-Google-Smtp-Source: AMsMyM6CtI+KkZu5fZVXfAjLBL3RHjJjgHdr6nrwTvAoMOnWZlNFb7LpC9JUstTKyd+UwempcMRN
-X-Received: by 2002:a37:9785:0:b0:6cf:55d:e554 with SMTP id z127-20020a379785000000b006cf055de554mr34820988qkd.459.1666879433784;
-        Thu, 27 Oct 2022 07:03:53 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1666879433; cv=none;
+Received: by 2002:a17:906:43c7:b0:78d:9f02:16a1 with SMTP id j7csp572472ejn;
+        Thu, 27 Oct 2022 10:30:45 -0700 (PDT)
+X-Google-Smtp-Source: AMsMyM6yYgLYOawbfBJaBgERwC6/CMlsARuW/D8LKigzLZquCmvTyRR8F5Jn4wkj+qVWzjFnprm2
+X-Received: by 2002:ad4:5ae5:0:b0:4b7:1bdb:d79e with SMTP id c5-20020ad45ae5000000b004b71bdbd79emr36977125qvh.25.1666891845266;
+        Thu, 27 Oct 2022 10:30:45 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1666891845; cv=none;
         d=google.com; s=arc-20160816;
-        b=RF70SPwPsjKcQCZZYGs8M42jXiaXR/wxTvg1DQDwLCas9ShmtA+qNYtGGqBAzQrsTn
-         cJVuG7WcionSn/TNFA6Y7rPge9LR3Wxy0DxYWJOPPolNEDGr/pYc6m58xg5qqtEglfxJ
-         oc2W4/SilwdionNEUwvycKTUal4g8Lzk8COE4qM5JnZZwXPwBnW5VVbmpfJRX4xGpniE
-         aLZccazlJkM0WzyeRkdRcpp8ffXqxTOf2LT4KcgyQwW4SYFo3qfCd1cW7yuLSAzahYl4
-         weh5DwVotR8YyP6S3040NX7wT54fNeD0CpLLtJJOrgtJ/8gvI6yuKfvhJ5SHupaPd49N
-         KFHg==
+        b=ibOvu2MohvBmt2zEAkCz7l6+Vv6+ZEsusj78k8Uiu98WMbUJH7L+ryx5FwbDenXchb
+         6VqNVnwXFmPmN/oR02O5rSzPUyyQvtn354xa1WFofjkfBjnDI7lsL5KLVTK9Rq/aOWUV
+         Z2ckEKIYHO4FaGQpycprZCiLhP5h9bL5sLcmF0q4wFAYMkK+N4FBjyW5tUneVJoZGse3
+         svWIJPFJzWr5bkVfJnJoxru2prrzxq0FzRFcBf/xwceK8Kcun6TZ5MJA2TmfBRpPDzAv
+         3Sws93LyT7ZsJsvNmQnfY/opkrirk5JzBlO+pnidNf6LrO28IobROtKbpMzyXVrtxA6B
+         evhQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=errors-to:sender:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=sxsG7XqK7FJahGsD3iXOduO+aSm9dtXBlxQk+S7kf6c=;
-        b=FcADUEZyicWRcUh5TTBON4/Tp/PydS9O0hdJdwE0WK8ii4J4SLFsKMwrbjWHvzhpKU
-         TXMdUwhkEtOUpVeLLCIpUsTf3cc5ZC0fLQGMD1c1by34ri06gAm0IxTK9q5JJ6d+DlP0
-         DokQTd7n/vnFNV6XMo8SQuxur2DGw8ya84b0sIk2ohlrvwTaQ8zL9p9xIhBHB+1AYFhm
-         a5OrxhOaejEwMj2/6F5a3gliKtrAfyC2xlLLlWmSvTm0OcE+5xXtANp39WwKzGrGMe3s
-         Iik2RTzAMjitc24ta+J2qHR7e1O2yiZcwfRqDbLEHP7zkG7MFUlRPSSazpctvVgmlnuK
-         0Jfg==
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=HJO2tKtQ7C9PRCed4J1puz67aPPWiZbJVdU6xmlhOQ4=;
+        b=x8lgbGg8djO/P6zfQPk+eDRsU1QAHQis9G+r9gCG0NOURaQNeKPJIMu+dgbkSPjXml
+         lrfwfrdfltH7KJu8I9dvPCncdKHYZvy5nl18Lk2Nm7hB9PF4eJIxXIWgZM9gsFelQXac
+         R0X2LWxfDny6eNF+cetJGUVnGRDXWO8E4VUVYeUoMe2gqWN4614cpGx6PcZG27sW6KA7
+         6HVwiCHkWnPhdI/+PAdGs3/9Hpg+zkRGwdelKaG1Uyg8u6gD8rSOLoEuBkio7+e0ldk1
+         MFLiEJJ6m5wFpOteEhstW6lsgvbfMUM2MejfmqKnWOmQGQSGEaJMlpbkpFh21VEnY5Ij
+         +h3g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=EoWnqlcG;
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=ZsBDTLLO;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id p15-20020a05620a056f00b006ed2a651f0esi878760qkp.154.2022.10.27.07.03.53
+        by mx.google.com with ESMTPS id jx10-20020a0562142b0a00b004b9e0f522d5si1275999qvb.306.2022.10.27.10.30.45
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 27 Oct 2022 07:03:53 -0700 (PDT)
+        Thu, 27 Oct 2022 10:30:45 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=EoWnqlcG;
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=ZsBDTLLO;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1oo3Sa-00079K-WB; Thu, 27 Oct 2022 10:02:17 -0400
+	id 1oo6i2-0000Nt-Fx; Thu, 27 Oct 2022 13:30:26 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1oo3SZ-0006xl-5x
- for qemu-arm@nongnu.org; Thu, 27 Oct 2022 10:02:15 -0400
-Received: from mail-wr1-x42c.google.com ([2a00:1450:4864:20::42c])
+ (Exim 4.90_1) (envelope-from <idan.horowitz@gmail.com>)
+ id 1oo6ht-00066j-I2; Thu, 27 Oct 2022 13:30:20 -0400
+Received: from mail-ej1-x632.google.com ([2a00:1450:4864:20::632])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1oo3SX-0004yR-AH
- for qemu-arm@nongnu.org; Thu, 27 Oct 2022 10:02:14 -0400
-Received: by mail-wr1-x42c.google.com with SMTP id k8so2362444wrh.1
- for <qemu-arm@nongnu.org>; Thu, 27 Oct 2022 07:02:12 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=sxsG7XqK7FJahGsD3iXOduO+aSm9dtXBlxQk+S7kf6c=;
- b=EoWnqlcGZ1p78F9o1k8id8l/ID8lh4gkC1Zdd+IdaHlBt1BerGUgU9++BcfBBiemuC
- 7RtxZ7omJWdvs9LSSyIHeuPOQpc/H8hmKueGFr6+fn9MYvyrAZ/+kI2xpmxsv29sXQpy
- 4Xpfk6PsWTEzdEDppG3RUKyuZc9rPEQDufk7aPUWBmcsZkd/haJts4Q6VS5vZPj3YfIK
- nNDEPz5FjUFnmVamBHC5jGMxjTOoiquXxeBlBw07uKSPbxLTvtLGlJNhGARB7dJeDtiR
- krTtNXNl3Mqs56BWs/zw9a4W+fuCROV/L+4dw9X9D/r9NkLMhvkEDmJbS5Vh7qBZQzAs
- SBDA==
+ (Exim 4.90_1) (envelope-from <idan.horowitz@gmail.com>)
+ id 1oo6he-0000Vz-0l; Thu, 27 Oct 2022 13:30:17 -0400
+Received: by mail-ej1-x632.google.com with SMTP id n12so6614538eja.11;
+ Thu, 27 Oct 2022 10:30:00 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=HJO2tKtQ7C9PRCed4J1puz67aPPWiZbJVdU6xmlhOQ4=;
+ b=ZsBDTLLOEnzDpHQOwtv4xVaZGSgC8G713gWw05yvoj688VDP4G5z+/Tf17DddlR54y
+ 0387i8TgWHZDCyvy2e+15HN0oPRtEBZjMIYcIBzGq22mtz2mlHX5ixJBvhV0jdZg7gFT
+ Z7Nrsq18S97H9pmjqMKhV+p9sJQYZL+4K60ABB++OI21CF6BiuwiN9T11jLrmCakEJJO
+ KFkfHXCdNMutMEBoZs2dS1VWsN0U4Zk27arBZaO3bNuHQI6vUk//iw6lrN+fe5OQj1ml
+ OQSikuVOlaCmZwWJciVHU8u26pesemVvaeEWEQSZu3telq7EZ50HOzGgYYM0SiN9Q3JS
+ /nmA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=sxsG7XqK7FJahGsD3iXOduO+aSm9dtXBlxQk+S7kf6c=;
- b=pFlt0+y2RVciEAKYFC5Ptzti8wYxb4X5Z+A3nhb7yXNU3c/oSFzfWFZiDrDMIV4rW3
- abd3RSLJ2OwbwgvNROOdzmql106HHKCNZ1kD14XLUqo07s5G5gsnfmagK/XlZ0JBAPFk
- xqfonOl0qdAKQZ6x2fTUU0Syx5HcLrFkqHZ8k3R6gV48RDY9XtNdaq9wC1ZodyrI6Gup
- RokKCrG6+Hp0PnlaTpF/0srxIeGeuxYi8dCbxwf7QvNu9QPTRsqf87nBd3AOvHf2BAO3
- x4Cv+YQo4CR+Q2Bkp/VR6U+JwnmqfagPQ/xylRUUeKL0y0P3az41RZB7nCJsCCmW/a33
- MQFw==
-X-Gm-Message-State: ACrzQf3MzfAMmQz6/eGw2N00Nmem9L+rR3fCDYad2dujkoMEity8DhRY
- vQSHk0pawQQnBqJX6L/QUfpkji9mzoEhUw==
-X-Received: by 2002:adf:e195:0:b0:22f:6117:a932 with SMTP id
- az21-20020adfe195000000b0022f6117a932mr32671859wrb.572.1666879332039; 
- Thu, 27 Oct 2022 07:02:12 -0700 (PDT)
-Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
- by smtp.gmail.com with ESMTPSA id
- bp6-20020a5d5a86000000b00228a6ce17b4sm1301236wrb.37.2022.10.27.07.02.10
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 27 Oct 2022 07:02:11 -0700 (PDT)
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Cc: Jerome Forissier <jerome.forissier@linaro.org>
-Subject: [PATCH 1/2] hw/arm/boot: Set SME and SVE EL3 vector lengths when
- booting kernel
-Date: Thu, 27 Oct 2022 15:02:06 +0100
-Message-Id: <20221027140207.413084-2-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20221027140207.413084-1-peter.maydell@linaro.org>
-References: <20221027140207.413084-1-peter.maydell@linaro.org>
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=HJO2tKtQ7C9PRCed4J1puz67aPPWiZbJVdU6xmlhOQ4=;
+ b=54Sulr3MJY0RrecwxLvmWxxJID++NVo0eQnMTI1udTiancdsNU9oTxNmA7AjIsDZBm
+ iKHCnqsSJfEnGXGn2O1HXL3NhzlXM3B5dhk7GAz1jdFQ4AQl//hOWMMkQkkVMQ79GqTd
+ glTzlQSl+OIpTy9X6IMvBPc5Vb8CJrcv9/MPhmqoDGI2ugQCDQJdvQ1VPSvg62VNE/5j
+ o5ssMcsN8Pyf48cItiYT0ALBbRzbQaKkw+raCDiwMi59xb4p1NMct+Fm7I9WFtnVE/JF
+ a/i7c5afwUtRoaecFNl1ldyC7OILyWSdXnyQxkij/pOImazJUzM5Rrmwd23hyHiD1413
+ /h8A==
+X-Gm-Message-State: ACrzQf1m9E3bbBCLJznplQq104XKy1WdKm4M6cTWWFjadlYPCrP/E2xH
+ D9f1atq5E90nSeY8Xewc4pNgdRSx5NGcjss6hUo=
+X-Received: by 2002:a17:906:6a09:b0:78d:ed9c:d880 with SMTP id
+ qw9-20020a1709066a0900b0078ded9cd880mr41646827ejc.424.1666891799237; Thu, 27
+ Oct 2022 10:29:59 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42c;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x42c.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+References: <20220527181907.189259-1-richard.henderson@linaro.org>
+ <20220527181907.189259-58-richard.henderson@linaro.org>
+In-Reply-To: <20220527181907.189259-58-richard.henderson@linaro.org>
+From: Idan Horowitz <idan.horowitz@gmail.com>
+Date: Thu, 27 Oct 2022 20:29:47 +0300
+Message-ID: <CA+4MfE+XFOXgskehNoXYkVXx81ffvNAXTwgxuQaQk1utQvfyow@mail.gmail.com>
+Subject: Re: [PATCH 057/114] target/arm: Move sve zip high_ofs into simd_data
+To: Richard Henderson <richard.henderson@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::632;
+ envelope-from=idan.horowitz@gmail.com; helo=mail-ej1-x632.google.com
+X-Spam_score_int: -16
+X-Spam_score: -1.7
+X-Spam_bar: -
+X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9, DKIM_INVALID=0.1,
+ DKIM_SIGNED=0.1, FREEMAIL_FROM=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -123,55 +111,91 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Sender: "Qemu-arm" <qemu-arm-bounces@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: pIToTghzMVgH
+X-TUID: 29+8cDkm/hDq
 
-When we direct boot a kernel on a CPU which emulates EL3, we need
-to set up the EL3 system registers as the Linux kernel documentation
-specifies:
- https://www.kernel.org/doc/Documentation/arm64/booting.rst
+On Fri, 27 May 2022 at 22:05, Richard Henderson
+<richard.henderson@linaro.org> wrote:
+>
+> This is in line with how we treat uzp, and will
+> eliminate the special case code during translation.
+>
+> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+> ---
 
-For SVE and SME this includes:
-    - ZCR_EL3.LEN must be initialised to the same value for all CPUs the
-      kernel is executed on.
-    - SMCR_EL3.LEN must be initialised to the same value for all CPUs the
-      kernel will execute on.
+Sorry, a bit late, but I believe this change broke the implementation
+of the ZIP2 SVE instructions:
 
-Although we are technically compliant with this, the "same value" we
-currently use by default is the reset value of 0.  This will end up
-forcing the guest kernel's SVE and SME vector length to be only the
-smallest supported length.
+>  target/arm/sve_helper.c    |  6 ++++--
+>  target/arm/translate-sve.c | 12 ++++++------
+>  2 files changed, 10 insertions(+), 8 deletions(-)
+>
+> diff --git a/target/arm/sve_helper.c b/target/arm/sve_helper.c
+> index e0f9aa9983..3bdcd4ce9d 100644
+> --- a/target/arm/sve_helper.c
+> +++ b/target/arm/sve_helper.c
+> @@ -3382,6 +3382,7 @@ void HELPER(sve_punpk_p)(void *vd, void *vn, uint32_t pred_desc)
+>  void HELPER(NAME)(void *vd, void *vn, void *vm, uint32_t desc)       \
+>  {                                                                    \
+>      intptr_t oprsz = simd_oprsz(desc);                               \
+> +    intptr_t odd_ofs = simd_data(desc);                              \
+>      intptr_t i, oprsz_2 = oprsz / 2;                                 \
+>      ARMVectorReg tmp_n, tmp_m;                                       \
+>      /* We produce output faster than we consume input.               \
+> @@ -3393,8 +3394,9 @@ void HELPER(NAME)(void *vd, void *vn, void *vm, uint32_t desc)       \
+>          vm = memcpy(&tmp_m, vm, oprsz_2);                            \
+>      }                                                                \
 
-Initialize the vector length fields to their maximum possible value,
-which is 0xf. If the implementation doesn't actually support that
-vector length then the effective vector length will be constrained
-down to the maximum supported value at point of use.
+Unlike the for loop below, we are not taking the odd_ofs into account
+in the 2 memcpys above. As an optimization these memcpys only copy
+half of the vector, so when the instruction is using the same vector
+register for 2 of the operands, and odd_ofs is not 0, we end up
+reading the upper bytes of tmp_n/tmp_m, which are uninitialized
+garbage. (Which is ironically a good thing in this case, since
+non-deterministic incorrect behaviour was easier to find than
+deterministic wrong results)
 
-This allows the guest to use all the vector lengths the emulated CPU
-supports (by programming the _EL2 and _EL1 versions of these
-registers.)
+>      for (i = 0; i < oprsz_2; i += sizeof(TYPE)) {                    \
+> -        *(TYPE *)(vd + H(2 * i + 0)) = *(TYPE *)(vn + H(i));         \
+> -        *(TYPE *)(vd + H(2 * i + sizeof(TYPE))) = *(TYPE *)(vm + H(i)); \
+> +        *(TYPE *)(vd + H(2 * i + 0)) = *(TYPE *)(vn + odd_ofs + H(i)); \
+> +        *(TYPE *)(vd + H(2 * i + sizeof(TYPE))) =                    \
+> +            *(TYPE *)(vm + odd_ofs + H(i));                          \
+>      }                                                                \
+>      if (sizeof(TYPE) == 16 && unlikely(oprsz & 16)) {                \
+>          memset(vd + oprsz - 16, 0, 16);                              \
+> diff --git a/target/arm/translate-sve.c b/target/arm/translate-sve.c
+> index 1e6bcedb9d..c2ced3e2bb 100644
+> --- a/target/arm/translate-sve.c
+> +++ b/target/arm/translate-sve.c
+> @@ -2298,9 +2298,9 @@ static bool do_zip(DisasContext *s, arg_rrr_esz *a, bool high)
+>          unsigned vsz = vec_full_reg_size(s);
+>          unsigned high_ofs = high ? vsz / 2 : 0;
+>          tcg_gen_gvec_3_ool(vec_full_reg_offset(s, a->rd),
+> -                           vec_full_reg_offset(s, a->rn) + high_ofs,
+> -                           vec_full_reg_offset(s, a->rm) + high_ofs,
+> -                           vsz, vsz, 0, fns[a->esz]);
+> +                           vec_full_reg_offset(s, a->rn),
+> +                           vec_full_reg_offset(s, a->rm),
+> +                           vsz, vsz, high_ofs, fns[a->esz]);
+>      }
+>      return true;
+>  }
+> @@ -2324,9 +2324,9 @@ static bool do_zip_q(DisasContext *s, arg_rrr_esz *a, bool high)
+>          unsigned vsz = vec_full_reg_size(s);
+>          unsigned high_ofs = high ? QEMU_ALIGN_DOWN(vsz, 32) / 2 : 0;
+>          tcg_gen_gvec_3_ool(vec_full_reg_offset(s, a->rd),
+> -                           vec_full_reg_offset(s, a->rn) + high_ofs,
+> -                           vec_full_reg_offset(s, a->rm) + high_ofs,
+> -                           vsz, vsz, 0, gen_helper_sve2_zip_q);
+> +                           vec_full_reg_offset(s, a->rn),
+> +                           vec_full_reg_offset(s, a->rm),
+> +                           vsz, vsz, high_ofs, gen_helper_sve2_zip_q);
+>      }
+>      return true;
+>  }
+> --
+> 2.34.1
+>
+>
 
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
- hw/arm/boot.c | 2 ++
- 1 file changed, 2 insertions(+)
-
-diff --git a/hw/arm/boot.c b/hw/arm/boot.c
-index b0b92af1889..0e4d1e5a816 100644
---- a/hw/arm/boot.c
-+++ b/hw/arm/boot.c
-@@ -762,10 +762,12 @@ static void do_cpu_reset(void *opaque)
-                     }
-                     if (cpu_isar_feature(aa64_sve, cpu)) {
-                         env->cp15.cptr_el[3] |= R_CPTR_EL3_EZ_MASK;
-+                        env->vfp.zcr_el[3] = 0xf;
-                     }
-                     if (cpu_isar_feature(aa64_sme, cpu)) {
-                         env->cp15.cptr_el[3] |= R_CPTR_EL3_ESM_MASK;
-                         env->cp15.scr_el3 |= SCR_ENTP2;
-+                        env->vfp.smcr_el[3] = 0xf;
-                     }
-                     /* AArch64 kernels never boot in secure mode */
-                     assert(!info->secure_boot);
--- 
-2.25.1
-
+Best Regards, Idan Horowitz

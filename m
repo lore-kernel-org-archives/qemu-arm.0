@@ -1,136 +1,125 @@
-Received: by 2002:a17:906:43c7:b0:78d:9f02:16a1 with SMTP id j7csp1289379ejn;
-        Fri, 28 Oct 2022 07:17:21 -0700 (PDT)
-X-Google-Smtp-Source: AMsMyM5T+fp9dSc88ZkhuMGBo+G7rH/Wzl8BOitEO13rwh3R9/HjFrU1dIaWQHk4RISVbi2H5e9M
-X-Received: by 2002:a05:620a:f10:b0:6cf:c0a6:5b1a with SMTP id v16-20020a05620a0f1000b006cfc0a65b1amr37771252qkl.121.1666966630709;
-        Fri, 28 Oct 2022 07:17:10 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1666966630; cv=none;
+Received: by 2002:a17:906:43c7:b0:78d:9f02:16a1 with SMTP id j7csp1332313ejn;
+        Fri, 28 Oct 2022 08:10:33 -0700 (PDT)
+X-Google-Smtp-Source: AMsMyM5ENLHmSfm1LUBtiPJZVnnL+UtGCDK19FcRwuriB3zZzrgJ7OUtdH2UjiVzBxEKGX/cpPNB
+X-Received: by 2002:ac8:5ac6:0:b0:3a5:92e:d954 with SMTP id d6-20020ac85ac6000000b003a5092ed954mr2406658qtd.484.1666969833059;
+        Fri, 28 Oct 2022 08:10:33 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1666969833; cv=none;
         d=google.com; s=arc-20160816;
-        b=KOsVinaBfh+iHAO5nkZDyp4QYCqF+wAfakpwGzodJ5/tKsH/x70DfOL1n0WyPrPYi5
-         E/ZoJ1O0CEqI75okIWf9QuPMVPE55a8HLrzPdw0+HuGCdBPhuQWUjaZPEtRMb6TFn7gh
-         TU4jH0n/etDr7uGKzWAnLXXf1MKM113ecak4PDBh0omCG+guPACvRV1Nm4vqjIPZoi4z
-         9AOHaj85RZAk9Ei6hHQvwp0tRaS44nfIva+bxMdtuM/aZ213MSX+KzUWGKED7YZOSQ+F
-         1X8udWCtZ7mSICzZ4AN+1jDAS/cctSkiESZMDxctipn+Oz0SuLSI5Yfo7UUZhlWGANdv
-         xCWw==
+        b=wkTMqZ8sEzdkrYGeUk6RSr13ZBB9E5G6isiVOpzrSU9XUYxsE70f4c5gZDf/L1owYI
+         lo/1GWnnpMWSWfIaU8XBa8jgpVLtP8m4QRYv2ui/XYVViSt3KCZJ7yme3urzKCmQB8EO
+         iu+jnIA68ncgGHC3dnNr39qvb3z1sSQ2cI7jEdM8hBR2xgxgygM4/G9L3uUuadSzY9RO
+         cAEYruqFFZDRH/RRHXWO0GPpb/swoh+O4Rct3ARNVP94RFR5K2wEBAQNvITeZ5zrCaSd
+         c3uQCJYFNDsL6xcyVd+dOtYGNyaQ2GFJJdSjk9bxER645vcVs3JwKook5zx4+I0x8yKP
+         rbGw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=errors-to:sender:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:organization:references:in-reply-to:message-id:subject
-         :cc:to:from:date:dkim-signature;
-        bh=t2DbeaBfvcys/3Er27e7UdbV63oAtZFVhlP+PxQ8K6I=;
-        b=tgP44KDYpiLoWOWMuAJEbIaWxYLxn5ChWP+DB+AwiRLNBApav1V73ldBt+thEgyVfT
-         NAdj7aiUrETIbddccFvFV4LD52Kg96tPJx9QpM4wiWZVvDSt/Ib5pthuIjWGJqsqxVgN
-         U+zI5d5Ov19jQycm5zBHygiJi8/Sl8Wfv4pvWe7boYtavgxcBdyRScAqXh1yhNDDKUQZ
-         S0hdaIYbikZ+RcN6ptqw+B7aaORbciNVfiPx73KlCF73pU9kTHPDJqvbcmZ2KhsGN6bT
-         R5F+qEVHkZBTZR7aspclIjTDysARfU9z5dDfAMc0HzKYQzRjI37HEiP87UC/I3wHGFZ3
-         TWRg==
+         :in-reply-to:from:content-language:references:cc:to:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=6y0RxoAZpwvmueqrj9yKTDA/gbUAwRK1zTc8HqKyTCY=;
+        b=WJxpOrC1cNkYRztx9JRxh1hHmK2PhbcBI17Ao9xkxbZhZxvtqjpQUSxB9bZVC2w7Ao
+         MhDLKB8FJ3xBP7rClJDhdeVO/XtVVvwrUpi4XSaknbhJlykHj6TrR0KhgIBEFhegyELQ
+         2PZ3ivr4jJs5ThdZ3Ka0BUMimYAWF+yVviGXAsdozzUMsrFUSDlioLEbCy20H3/DC1Ip
+         IvgFUBH5Qz0fyXMtDG3YOrS0s9LokdrgDcEv2ElOivwpfISYySNxcvj755dHT58arNzX
+         +vHCVugry8PrNQDPvS1wcziHipJiO4Mex7XDp8O7NuInptM4vNK7gvtdq+/AKzaYlzJC
+         lRsw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=FmVr4V2d;
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=IdzbI2cX;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id cg12-20020a05622a408c00b003a4eb286574si2734939qtb.407.2022.10.28.07.17.10
+        by mx.google.com with ESMTPS id li11-20020a0562145e0b00b004bb67354ce0si2486207qvb.36.2022.10.28.08.10.32
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 28 Oct 2022 07:17:10 -0700 (PDT)
+        Fri, 28 Oct 2022 08:10:33 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=FmVr4V2d;
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=IdzbI2cX;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1ooQAM-0005G8-K6; Fri, 28 Oct 2022 10:16:58 -0400
+	id 1ooQzo-0004DO-0D; Fri, 28 Oct 2022 11:10:08 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alex.williamson@redhat.com>)
- id 1ooQA5-0004q3-0j
- for qemu-arm@nongnu.org; Fri, 28 Oct 2022 10:16:49 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alex.williamson@redhat.com>)
- id 1ooQ9z-00050K-Kg
- for qemu-arm@nongnu.org; Fri, 28 Oct 2022 10:16:40 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1666966593;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=t2DbeaBfvcys/3Er27e7UdbV63oAtZFVhlP+PxQ8K6I=;
- b=FmVr4V2dUSQxlWWx56s52z2p3SJjXZN8HqdytKv1mDUTe4rmQwBfr60JRMFtJp360BSKb0
- 8hChorT5SoGj094L4QP5RbzYaOI1OpqDAC6W2GF1ACKEbjYZ52U1ZixmTIrRJvzUOgNQur
- WSS2oMzwNHyUakKoPa++vmD5hEwMZ5o=
-Received: from mail-io1-f71.google.com (mail-io1-f71.google.com
- [209.85.166.71]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_128_GCM_SHA256) id
- us-mta-447-6nV0tiTOOTCFqrpd1ry6oA-1; Fri, 28 Oct 2022 10:16:31 -0400
-X-MC-Unique: 6nV0tiTOOTCFqrpd1ry6oA-1
-Received: by mail-io1-f71.google.com with SMTP id
- y10-20020a5d914a000000b00688fa7b2252so4494511ioq.0
- for <qemu-arm@nongnu.org>; Fri, 28 Oct 2022 07:16:30 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <danielhb413@gmail.com>)
+ id 1ooQzl-0004AK-5q; Fri, 28 Oct 2022 11:10:05 -0400
+Received: from mail-oi1-x234.google.com ([2607:f8b0:4864:20::234])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <danielhb413@gmail.com>)
+ id 1ooQzj-00004s-1i; Fri, 28 Oct 2022 11:10:04 -0400
+Received: by mail-oi1-x234.google.com with SMTP id o64so6394584oib.12;
+ Fri, 28 Oct 2022 08:10:01 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=6y0RxoAZpwvmueqrj9yKTDA/gbUAwRK1zTc8HqKyTCY=;
+ b=IdzbI2cXKfHAFs2srjmzBokbYBSqOL/Obk7FTGgfxURyxvemZ64pABshTTzkgV7ph4
+ fmfsTh6p/I7Rh0XRWRQvdA7B4sdWNp1G8yhWYf2V5JgzqIGGFKWri3W5gii+bDCS3/fy
+ WZyRUazFBcaZj1EUNbQF+TlyztffVdpnEbPQtEULxa9wEhW1H5SyJN5ov86V1d6cvoi4
+ vjsKKFY3WgYjAi+S3cDnYLtZ9vDfemiGPoMlIC3K8s46sJDalVFTIcayqDt1OgRyz6Lt
+ BRDgys/UXTSOvqF7eJuBZsg4CCO6i2BlcbY4iBaNSV/0eVwwviXJ3zan/GVMqx45Vo5h
+ dSlw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=content-transfer-encoding:mime-version:organization:references
- :in-reply-to:message-id:subject:cc:to:from:date:x-gm-message-state
- :from:to:cc:subject:date:message-id:reply-to;
- bh=t2DbeaBfvcys/3Er27e7UdbV63oAtZFVhlP+PxQ8K6I=;
- b=V7BDns/1WS09nyjaoYl+gJblRnh6p7oJqn6g1eKhiJ2+pkKjlSH0bvFXLReKHzKVIy
- YYBzx6sJp5bitJSSVCJNTC66JXTio/1lGTQWhJtfxSN5pCWLdGYwGzit4QjewVpNK/7c
- glCU+hwMtLxQmRwrsUPQKZh3/KJns9jdTqjmkZqB8F0+3M9LhltTXlHkS6UfNOERkNsz
- JrVHFYYGfuS0gbD9Rln1QVEndfn1iwfy6W5tUE6DhrzzmsaZohCGbMYKJh5NMudwIUqk
- sA9+GzuxrF/Nb5IFpajXCbBxWKWi09kxi/yZ7MsdygweDNYAm2P0Afa0ooS8y6dh44oD
- DXeQ==
-X-Gm-Message-State: ACrzQf342ErdMjNGP0ESTcEgtdJWjmp2HcujOMt0PUBqQT5H5PyITuC+
- XboM/ZYzVHB6eZe/SJug1znk/g2K5N7wcvgF6gCuQTu0ErINHQoHfmy4upjVdt56mHMalAnV01O
- Cc64BpRq7SkU8
-X-Received: by 2002:a05:6638:2044:b0:365:c2de:3e9e with SMTP id
- t4-20020a056638204400b00365c2de3e9emr31904513jaj.157.1666966590045; 
- Fri, 28 Oct 2022 07:16:30 -0700 (PDT)
-X-Received: by 2002:a05:6638:2044:b0:365:c2de:3e9e with SMTP id
- t4-20020a056638204400b00365c2de3e9emr31904486jaj.157.1666966589784; 
- Fri, 28 Oct 2022 07:16:29 -0700 (PDT)
-Received: from redhat.com ([38.15.36.239]) by smtp.gmail.com with ESMTPSA id
- t8-20020a92cc48000000b002faecf63c48sm1613665ilq.79.2022.10.28.07.16.28
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 28 Oct 2022 07:16:29 -0700 (PDT)
-Date: Fri, 28 Oct 2022 08:16:27 -0600
-From: Alex Williamson <alex.williamson@redhat.com>
-To: Akihiko Odaki <akihiko.odaki@daynix.com>
-Cc: qemu-devel@nongnu.org, qemu-block@nongnu.org, qemu-arm@nongnu.org,
- "Michael S . Tsirkin" <mst@redhat.com>, Marcel Apfelbaum
- <marcel.apfelbaum@gmail.com>, Gerd Hoffmann <kraxel@redhat.com>, Paolo
- Bonzini <pbonzini@redhat.com>, Richard Henderson
- <richard.henderson@linaro.org>, Eduardo Habkost <eduardo@habkost.net>, John
- Snow <jsnow@redhat.com>, Dmitry Fleytman <dmitry.fleytman@gmail.com>, Jason
- Wang <jasowang@redhat.com>, Stefan Weil <sw@weilnetz.de>, Keith Busch
- <kbusch@kernel.org>, Klaus Jensen <its@irrelevant.dk>, Peter Maydell
- <peter.maydell@linaro.org>, Andrey Smirnov <andrew.smirnov@gmail.com>, Paul
- Burton <paulburton@kernel.org>, Aleksandar Rikalo
- <aleksandar.rikalo@syrmia.com>, Yan Vugenfirer <yan@daynix.com>, Yuri
- Benditovich <yuri.benditovich@daynix.com>
-Subject: Re: [PATCH v5 01/17] hw/vfio/pci: Ensure MSI and MSI-X do not overlap
-Message-ID: <20221028081627.50c9bf61.alex.williamson@redhat.com>
-In-Reply-To: <20221028122629.3269-2-akihiko.odaki@daynix.com>
-References: <20221028122629.3269-1-akihiko.odaki@daynix.com>
- <20221028122629.3269-2-akihiko.odaki@daynix.com>
-Organization: Red Hat
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=6y0RxoAZpwvmueqrj9yKTDA/gbUAwRK1zTc8HqKyTCY=;
+ b=GEcbjFRfQw0AVW59MvvWQs64eZ4zL2tP5vVuH33fjKb7hK9t1MERJp//WODoysktZa
+ kpGUTOvJ5+VFpB9QHNuaNoRrNrasDZU4bSadB1Myc1oC+X3ALaRXrYhbFlEf7xiGW2jH
+ w73EbSnqDXWyuz85ukwKR6mRCSvpRvJ9hI9rT0T9jkzyABuJMZU+EMPnwtioVIDt/Q1Q
+ V1C1s11W8oLcV8jBjSOhZ1eVDH/yXdygHJdo0gM0Bb+ZI3kjwxz19rsSJHw2fi/i/MHl
+ qmQtwyuyLNR4gtFpn6gr2/HtKrHtgNfEATp7hqvFmFUs3wQb8/VT1tWXBd4HoHvvnOyr
+ 3bXQ==
+X-Gm-Message-State: ACrzQf3Mrb7E3vGcMi+GfcQyZW1WVQ8Sha8TOJ5YCDqiButC6SCLX+sN
+ 7fDyJiLBI95BvJ726HHsbFQ=
+X-Received: by 2002:a05:6808:17a5:b0:354:ab07:4f0b with SMTP id
+ bg37-20020a05680817a500b00354ab074f0bmr8115766oib.181.1666969800249; 
+ Fri, 28 Oct 2022 08:10:00 -0700 (PDT)
+Received: from [192.168.10.102] ([177.45.165.63])
+ by smtp.gmail.com with ESMTPSA id
+ n13-20020a4a954d000000b0044b125e5dabsm1620123ooi.35.2022.10.28.08.09.52
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 28 Oct 2022 08:09:59 -0700 (PDT)
+Message-ID: <eea963b8-f6d9-b345-376e-7fd6dad73cd4@gmail.com>
+Date: Fri, 28 Oct 2022 12:09:50 -0300
 MIME-Version: 1.0
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.129.124;
- envelope-from=alex.williamson@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -25
-X-Spam_score: -2.6
-X-Spam_bar: --
-X-Spam_report: (-2.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.516,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.3.1
+Subject: Re: [PATCH v4 5/7] hw/ppc/e500: Implement pflash handling
+To: Bernhard Beschow <shentey@gmail.com>, qemu-devel@nongnu.org
+Cc: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>,
+ qemu-ppc@nongnu.org, Aurelien Jarno <aurelien@aurel32.net>,
+ Yoshinori Sato <ysato@users.sourceforge.jp>,
+ Antony Pavlov <antonynpavlov@gmail.com>, BALATON Zoltan
+ <balaton@eik.bme.hu>, Alistair Francis <alistair@alistair23.me>,
+ Bin Meng <bin.meng@windriver.com>, Kevin Wolf <kwolf@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>, Jan Kiszka <jan.kiszka@web.de>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
+ Hanna Reitz <hreitz@redhat.com>, qemu-arm@nongnu.org,
+ Magnus Damm <magnus.damm@gmail.com>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, qemu-block@nongnu.org
+References: <20221018210146.193159-1-shentey@gmail.com>
+ <20221018210146.193159-6-shentey@gmail.com>
+Content-Language: en-US
+From: Daniel Henrique Barboza <danielhb413@gmail.com>
+In-Reply-To: <20221018210146.193159-6-shentey@gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: base64
+Received-SPF: pass client-ip=2607:f8b0:4864:20::234;
+ envelope-from=danielhb413@gmail.com; helo=mail-oi1-x234.google.com
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -145,203 +134,187 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Sender: "Qemu-arm" <qemu-arm-bounces@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: yh1DAQXOoqOp
+X-TUID: niXJ3L1rf9dF
 
-On Fri, 28 Oct 2022 21:26:13 +0900
-Akihiko Odaki <akihiko.odaki@daynix.com> wrote:
-
-> vfio_add_std_cap() is designed to ensure that capabilities do not
-> overlap, but it failed to do so for MSI and MSI-X capabilities.
-> 
-> Ensure MSI and MSI-X capabilities do not overlap with others by omitting
-> other overlapping capabilities.
-> 
-> Signed-off-by: Akihiko Odaki <akihiko.odaki@daynix.com>
-> ---
->  hw/vfio/pci.c | 63 +++++++++++++++++++++++++++++++++++++++++++--------
->  hw/vfio/pci.h |  3 +++
->  2 files changed, 56 insertions(+), 10 deletions(-)
-> 
-> diff --git a/hw/vfio/pci.c b/hw/vfio/pci.c
-> index 939dcc3d4a..36c8f3dc85 100644
-> --- a/hw/vfio/pci.c
-> +++ b/hw/vfio/pci.c
-> @@ -1278,23 +1278,42 @@ static void vfio_disable_interrupts(VFIOPCIDevice *vdev)
->      }
->  }
->  
-> -static int vfio_msi_setup(VFIOPCIDevice *vdev, int pos, Error **errp)
-> +static void vfio_msi_early_setup(VFIOPCIDevice *vdev, Error **errp)
->  {
->      uint16_t ctrl;
-> -    bool msi_64bit, msi_maskbit;
-> -    int ret, entries;
-> -    Error *err = NULL;
-> +    uint8_t pos;
-> +
-> +    pos = pci_find_capability(&vdev->pdev, PCI_CAP_ID_MSI);
-> +    if (!pos) {
-> +        return;
-> +    }
->  
->      if (pread(vdev->vbasedev.fd, &ctrl, sizeof(ctrl),
->                vdev->config_offset + pos + PCI_CAP_FLAGS) != sizeof(ctrl)) {
->          error_setg_errno(errp, errno, "failed reading MSI PCI_CAP_FLAGS");
-> -        return -errno;
-> +        return;
->      }
-> -    ctrl = le16_to_cpu(ctrl);
-> +    vdev->msi_pos = pos;
-> +    vdev->msi_ctrl = le16_to_cpu(ctrl);
->  
-> -    msi_64bit = !!(ctrl & PCI_MSI_FLAGS_64BIT);
-> -    msi_maskbit = !!(ctrl & PCI_MSI_FLAGS_MASKBIT);
-> -    entries = 1 << ((ctrl & PCI_MSI_FLAGS_QMASK) >> 1);
-> +    vdev->msi_cap_size = 0xa;
-> +    if ((vdev->msi_ctrl & PCI_MSI_FLAGS_MASKBIT)) {
-> +        vdev->msi_cap_size += 0xa;
-> +    }
-> +    if ((vdev->msi_ctrl & PCI_MSI_FLAGS_64BIT)) {
-> +        vdev->msi_cap_size += 0x4;
-> +    }
-> +}
-> +
-> +static int vfio_msi_setup(VFIOPCIDevice *vdev, int pos, Error **errp)
-> +{
-> +    bool msi_64bit, msi_maskbit;
-> +    int ret, entries;
-> +    Error *err = NULL;
-> +
-> +    msi_64bit = !!(vdev->msi_ctrl & PCI_MSI_FLAGS_64BIT);
-> +    msi_maskbit = !!(vdev->msi_ctrl & PCI_MSI_FLAGS_MASKBIT);
-> +    entries = 1 << ((vdev->msi_ctrl & PCI_MSI_FLAGS_QMASK) >> 1);
->  
->      trace_vfio_msi_setup(vdev->vbasedev.name, pos);
->  
-> @@ -1306,7 +1325,6 @@ static int vfio_msi_setup(VFIOPCIDevice *vdev, int pos, Error **errp)
->          error_propagate_prepend(errp, err, "msi_init failed: ");
->          return ret;
->      }
-> -    vdev->msi_cap_size = 0xa + (msi_maskbit ? 0xa : 0) + (msi_64bit ? 0x4 : 0);
->  
->      return 0;
->  }
-> @@ -1524,6 +1542,7 @@ static void vfio_msix_early_setup(VFIOPCIDevice *vdev, Error **errp)
->      pba = le32_to_cpu(pba);
->  
->      msix = g_malloc0(sizeof(*msix));
-> +    msix->pos = pos;
->      msix->table_bar = table & PCI_MSIX_FLAGS_BIRMASK;
->      msix->table_offset = table & ~PCI_MSIX_FLAGS_BIRMASK;
->      msix->pba_bar = pba & PCI_MSIX_FLAGS_BIRMASK;
-> @@ -2025,6 +2044,24 @@ static int vfio_add_std_cap(VFIOPCIDevice *vdev, uint8_t pos, Error **errp)
->          }
->      }
->  
-> +    if (cap_id != PCI_CAP_ID_MSI &&
-> +        range_covers_byte(vdev->msi_pos, vdev->msi_cap_size, pos)) {
-> +        warn_report(VFIO_MSG_PREFIX
-> +                    "A capability overlaps with MSI, ignoring (%" PRIu8 " @ %" PRIu8 " in [%" PRIu8 ", %" PRIu8 "))",
-> +                    vdev->vbasedev.name, cap_id, pos,
-> +                    vdev->msi_pos, vdev->msi_pos + vdev->msi_cap_size);
-> +        return 0;
-> +    }
-> +
-> +    if (cap_id != PCI_CAP_ID_MSIX && vdev->msix &&
-> +        range_covers_byte(vdev->msix->pos, MSIX_CAP_LENGTH, pos)) {
-> +        warn_report(VFIO_MSG_PREFIX
-> +                    "A capability overlaps with MSI-X, ignoring (%" PRIu8 " @ %" PRIu8 " in [%" PRIu8 ", %" PRIu8 "))",
-> +                    vdev->vbasedev.name, cap_id, pos,
-> +                    vdev->msix->pos, vdev->msix->pos + MSIX_CAP_LENGTH);
-> +        return 0;
-> +    }
-
-Capabilities are not a single byte, the fact that it doesn't start
-within the MSI or MSI-X capability is not a sufficient test.  We're
-also choosing to prioritize MSI and MSI-X capabilities by protecting
-that range rather than the existing behavior where we'd drop those
-capabilities if they overlap with another capability that has already
-been placed.  There are merits to both approaches, but I don't see any
-justification here to change the current behavior.
-
-Isn't the most similar behavior to existing to pass the available size
-to vfio_msi[x]_setup() and return an errno if the size would be
-exceeded?  Something like below (untested, and requires exporting
-msi_cap_sizeof()).  Thanks,
-
-Alex
-
-diff --git a/hw/vfio/pci.c b/hw/vfio/pci.c
-index 939dcc3d4a9e..485f9bc5102d 100644
---- a/hw/vfio/pci.c
-+++ b/hw/vfio/pci.c
-@@ -1278,11 +1278,13 @@ static void vfio_disable_interrupts(VFIOPCIDevice *vdev)
-     }
- }
- 
--static int vfio_msi_setup(VFIOPCIDevice *vdev, int pos, Error **errp)
-+static int vfio_msi_setup(VFIOPCIDevice *vdev, int pos,
-+                          uint8_t size, Error **errp)
- {
-     uint16_t ctrl;
-     bool msi_64bit, msi_maskbit;
-     int ret, entries;
-+    uint8_t msi_cap_size;
-     Error *err = NULL;
- 
-     if (pread(vdev->vbasedev.fd, &ctrl, sizeof(ctrl),
-@@ -1295,6 +1297,10 @@ static int vfio_msi_setup(VFIOPCIDevice *vdev, int pos, Error **errp)
-     msi_64bit = !!(ctrl & PCI_MSI_FLAGS_64BIT);
-     msi_maskbit = !!(ctrl & PCI_MSI_FLAGS_MASKBIT);
-     entries = 1 << ((ctrl & PCI_MSI_FLAGS_QMASK) >> 1);
-+    msi_cap_size = msi_cap_sizeof(ctrl);
-+
-+    if (msi_cap_size > size)
-+	    return -ENOSPC;
- 
-     trace_vfio_msi_setup(vdev->vbasedev.name, pos);
- 
-@@ -1306,7 +1312,7 @@ static int vfio_msi_setup(VFIOPCIDevice *vdev, int pos, Error **errp)
-         error_propagate_prepend(errp, err, "msi_init failed: ");
-         return ret;
-     }
--    vdev->msi_cap_size = 0xa + (msi_maskbit ? 0xa : 0) + (msi_64bit ? 0x4 : 0);
-+    vdev->msi_cap_size = msi_cap_size;
- 
-     return 0;
- }
-@@ -1570,11 +1576,15 @@ static void vfio_msix_early_setup(VFIOPCIDevice *vdev, Error **errp)
-     vfio_pci_relocate_msix(vdev, errp);
- }
- 
--static int vfio_msix_setup(VFIOPCIDevice *vdev, int pos, Error **errp)
-+static int vfio_msix_setup(VFIOPCIDevice *vdev, int pos,
-+                           uint8_t size, Error **errp)
- {
-     int ret;
-     Error *err = NULL;
- 
-+    if (MSIX_CAP_LENGTH > size)
-+	    return -ENOSPC;
-+
-     vdev->msix->pending = g_new0(unsigned long,
-                                  BITS_TO_LONGS(vdev->msix->entries));
-     ret = msix_init(&vdev->pdev, vdev->msix->entries,
-@@ -2033,14 +2043,14 @@ static int vfio_add_std_cap(VFIOPCIDevice *vdev, uint8_t pos, Error **errp)
- 
-     switch (cap_id) {
-     case PCI_CAP_ID_MSI:
--        ret = vfio_msi_setup(vdev, pos, errp);
-+        ret = vfio_msi_setup(vdev, pos, size, errp);
-         break;
-     case PCI_CAP_ID_EXP:
-         vfio_check_pcie_flr(vdev, pos);
-         ret = vfio_setup_pcie_cap(vdev, pos, size, errp);
-         break;
-     case PCI_CAP_ID_MSIX:
--        ret = vfio_msix_setup(vdev, pos, errp);
-+        ret = vfio_msix_setup(vdev, pos, size, errp);
-         break;
-     case PCI_CAP_ID_PM:
-         vfio_check_pm_reset(vdev, pos);
-
+QmVybmhhcmQsDQoNClRoZSAzMiBidWlsZHMgYXJlbid0IGZhbmN5aW5nIHRoaXMgcGF0Y2gu
+IFRoZSBpc3N1ZSBpcyBkb3duIHRoZXJlOg0KDQpPbiAxMC8xOC8yMiAxODowMSwgQmVybmhh
+cmQgQmVzY2hvdyB3cm90ZToNCj4gQWxsb3dzIGU1MDAgYm9hcmRzIHRvIGhhdmUgdGhlaXIg
+cm9vdCBmaWxlIHN5c3RlbSByZXNpZGUgb24gZmxhc2ggdXNpbmcNCj4gb25seSBidWlsdGlu
+IGRldmljZXMgbG9jYXRlZCBpbiB0aGUgZUxCQyBtZW1vcnkgcmVnaW9uLg0KPiANCj4gTm90
+ZSB0aGF0IHRoZSBmbGFzaCBtZW1vcnkgYXJlYSBpcyBvbmx5IGNyZWF0ZWQgd2hlbiBhIC1w
+Zmxhc2ggYXJndW1lbnQgaXMNCj4gZ2l2ZW4sIGFuZCB0aGF0IHRoZSBzaXplIGlzIGRldGVy
+bWluZWQgYnkgdGhlIGdpdmVuIGZpbGUuIFRoZSBpZGVhIGlzIHRvDQo+IHB1dCB1c2VycyBp
+bnRvIGNvbnRyb2wuDQo+IA0KPiBTaWduZWQtb2ZmLWJ5OiBCZXJuaGFyZCBCZXNjaG93IDxz
+aGVudGV5QGdtYWlsLmNvbT4NCj4gLS0tDQo+ICAgZG9jcy9zeXN0ZW0vcHBjL3BwY2U1MDAu
+cnN0IHwgMTYgKysrKysrKysNCj4gICBody9wcGMvS2NvbmZpZyAgICAgICAgICAgICAgfCAg
+MSArDQo+ICAgaHcvcHBjL2U1MDAuYyAgICAgICAgICAgICAgIHwgNzkgKysrKysrKysrKysr
+KysrKysrKysrKysrKysrKysrKysrKysrKw0KPiAgIDMgZmlsZXMgY2hhbmdlZCwgOTYgaW5z
+ZXJ0aW9ucygrKQ0KPiANCj4gZGlmZiAtLWdpdCBhL2RvY3Mvc3lzdGVtL3BwYy9wcGNlNTAw
+LnJzdCBiL2RvY3Mvc3lzdGVtL3BwYy9wcGNlNTAwLnJzdA0KPiBpbmRleCA3YjVlYjNjNGVl
+Li4zOGY4Y2ViMGNmIDEwMDY0NA0KPiAtLS0gYS9kb2NzL3N5c3RlbS9wcGMvcHBjZTUwMC5y
+c3QNCj4gKysrIGIvZG9jcy9zeXN0ZW0vcHBjL3BwY2U1MDAucnN0DQo+IEBAIC0xNjUsMyAr
+MTY1LDE5IEBAIGlmIOKAnC1kZXZpY2UgZVRTRUPigJ0gaXMgZ2l2ZW4gdG8gUUVNVToNCj4g
+ICAuLiBjb2RlLWJsb2NrOjogYmFzaA0KPiAgIA0KPiAgICAgLW5ldGRldiB0YXAsaWZuYW1l
+PXRhcDAsc2NyaXB0PW5vLGRvd25zY3JpcHQ9bm8saWQ9bmV0MCAtZGV2aWNlIGVUU0VDLG5l
+dGRldj1uZXQwDQo+ICsNCj4gK1Jvb3QgZmlsZSBzeXN0ZW0gb24gZmxhc2ggZHJpdmUNCj4g
+Ky0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0NCj4gKw0KPiArUmF0aGVyIHRoYW4g
+dXNpbmcgYSByb290IGZpbGUgc3lzdGVtIG9uIHJhbSBkaXNrLCBpdCBpcyBwb3NzaWJsZSB0
+byBoYXZlIGl0IG9uDQo+ICtDRkkgZmxhc2guIEdpdmVuIGFuIGV4dDIgaW1hZ2Ugd2hvc2Ug
+c2l6ZSBtdXN0IGJlIGEgcG93ZXIgb2YgdHdvLCBpdCBjYW4gYmUgdXNlZA0KPiArYXMgZm9s
+bG93czoNCj4gKw0KPiArLi4gY29kZS1ibG9jazo6IGJhc2gNCj4gKw0KPiArICAkIHFlbXUt
+c3lzdGVtLXBwYzY0IC1NIHBwY2U1MDAgLWNwdSBlNTAwbWMgLXNtcCA0IC1tIDJHIFwNCj4g
+KyAgICAgIC1kaXNwbGF5IG5vbmUgLXNlcmlhbCBzdGRpbyBcDQo+ICsgICAgICAta2VybmVs
+IHZtbGludXggXA0KPiArICAgICAgLWRyaXZlIGlmPXBmbGFzaCxmaWxlPS9wYXRoL3RvL3Jv
+b3Rmcy5leHQyLGZvcm1hdD1yYXcgXA0KPiArICAgICAgLWFwcGVuZCAicm9vdHdhaXQgcm9v
+dD0vZGV2L210ZGJsb2NrMCINCj4gKw0KPiBkaWZmIC0tZ2l0IGEvaHcvcHBjL0tjb25maWcg
+Yi9ody9wcGMvS2NvbmZpZw0KPiBpbmRleCA3OTFmZTc4YTUwLi43NjlhMWVhZDFjIDEwMDY0
+NA0KPiAtLS0gYS9ody9wcGMvS2NvbmZpZw0KPiArKysgYi9ody9wcGMvS2NvbmZpZw0KPiBA
+QCAtMTI2LDYgKzEyNiw3IEBAIGNvbmZpZyBFNTAwDQo+ICAgICAgIHNlbGVjdCBFVFNFQw0K
+PiAgICAgICBzZWxlY3QgR1BJT19NUEM4WFhYDQo+ICAgICAgIHNlbGVjdCBPUEVOUElDDQo+
+ICsgICAgc2VsZWN0IFBGTEFTSF9DRkkwMQ0KPiAgICAgICBzZWxlY3QgUExBVEZPUk1fQlVT
+DQo+ICAgICAgIHNlbGVjdCBQUENFNTAwX1BDSQ0KPiAgICAgICBzZWxlY3QgU0VSSUFMDQo+
+IGRpZmYgLS1naXQgYS9ody9wcGMvZTUwMC5jIGIvaHcvcHBjL2U1MDAuYw0KPiBpbmRleCAz
+ZTk1MGVhM2JhLi43MzE5OGFkYWM4IDEwMDY0NA0KPiAtLS0gYS9ody9wcGMvZTUwMC5jDQo+
+ICsrKyBiL2h3L3BwYy9lNTAwLmMNCj4gQEAgLTIzLDggKzIzLDEwIEBADQo+ICAgI2luY2x1
+ZGUgImU1MDAtY2Nzci5oIg0KPiAgICNpbmNsdWRlICJuZXQvbmV0LmgiDQo+ICAgI2luY2x1
+ZGUgInFlbXUvY29uZmlnLWZpbGUuaCINCj4gKyNpbmNsdWRlICJody9ibG9jay9mbGFzaC5o
+Ig0KPiAgICNpbmNsdWRlICJody9jaGFyL3NlcmlhbC5oIg0KPiAgICNpbmNsdWRlICJody9w
+Y2kvcGNpLmgiDQo+ICsjaW5jbHVkZSAic3lzZW11L2Jsb2NrLWJhY2tlbmQtaW8uaCINCj4g
+ICAjaW5jbHVkZSAic3lzZW11L3N5c2VtdS5oIg0KPiAgICNpbmNsdWRlICJzeXNlbXUva3Zt
+LmgiDQo+ICAgI2luY2x1ZGUgInN5c2VtdS9yZXNldC5oIg0KPiBAQCAtMjY3LDYgKzI2OSwz
+MSBAQCBzdGF0aWMgdm9pZCBzeXNidXNfZGV2aWNlX2NyZWF0ZV9kZXZ0cmVlKFN5c0J1c0Rl
+dmljZSAqc2JkZXYsIHZvaWQgKm9wYXF1ZSkNCj4gICAgICAgfQ0KPiAgIH0NCj4gICANCj4g
+K3N0YXRpYyB2b2lkIGNyZWF0ZV9kZXZ0cmVlX2ZsYXNoKFN5c0J1c0RldmljZSAqc2JkZXYs
+DQo+ICsgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBQbGF0Zm9ybURldnRyZWVE
+YXRhICpkYXRhKQ0KPiArew0KPiArICAgIGdfYXV0b2ZyZWUgY2hhciAqbmFtZSA9IE5VTEw7
+DQo+ICsgICAgdWludDY0X3QgbnVtX2Jsb2NrcyA9IG9iamVjdF9wcm9wZXJ0eV9nZXRfdWlu
+dChPQkpFQ1Qoc2JkZXYpLA0KPiArICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgIm51bS1ibG9ja3MiLA0KPiArICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgJmVycm9yX2ZhdGFsKTsNCj4gKyAg
+ICB1aW50NjRfdCBzZWN0b3JfbGVuZ3RoID0gb2JqZWN0X3Byb3BlcnR5X2dldF91aW50KE9C
+SkVDVChzYmRldiksDQo+ICsgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAic2VjdG9yLWxlbmd0aCIsDQo+ICsgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAmZXJyb3JfZmF0YWwpOw0K
+PiArICAgIHVpbnQ2NF90IGJhbmtfd2lkdGggPSBvYmplY3RfcHJvcGVydHlfZ2V0X3VpbnQo
+T0JKRUNUKHNiZGV2KSwNCj4gKyAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICJ3aWR0aCIsDQo+ICsgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAmZXJyb3JfZmF0YWwpOw0KPiArICAgIGh3YWRk
+ciBmbGFzaGJhc2UgPSAwOw0KPiArICAgIGh3YWRkciBmbGFzaHNpemUgPSBudW1fYmxvY2tz
+ICogc2VjdG9yX2xlbmd0aDsNCj4gKyAgICB2b2lkICpmZHQgPSBkYXRhLT5mZHQ7DQo+ICsN
+Cj4gKyAgICBuYW1lID0gZ19zdHJkdXBfcHJpbnRmKCIlcy9ub3JAJSIgUFJJeDY0LCBkYXRh
+LT5ub2RlLCBmbGFzaGJhc2UpOw0KPiArICAgIHFlbXVfZmR0X2FkZF9zdWJub2RlKGZkdCwg
+bmFtZSk7DQo+ICsgICAgcWVtdV9mZHRfc2V0cHJvcF9zdHJpbmcoZmR0LCBuYW1lLCAiY29t
+cGF0aWJsZSIsICJjZmktZmxhc2giKTsNCj4gKyAgICBxZW11X2ZkdF9zZXRwcm9wX3NpemVk
+X2NlbGxzKGZkdCwgbmFtZSwgInJlZyIsDQo+ICsgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAxLCBmbGFzaGJhc2UsIDEsIGZsYXNoc2l6ZSk7DQo+ICsgICAgcWVtdV9mZHRf
+c2V0cHJvcF9jZWxsKGZkdCwgbmFtZSwgImJhbmstd2lkdGgiLCBiYW5rX3dpZHRoKTsNCj4g
+K30NCj4gKw0KPiAgIHN0YXRpYyB2b2lkIHBsYXRmb3JtX2J1c19jcmVhdGVfZGV2dHJlZShQ
+UENFNTAwTWFjaGluZVN0YXRlICpwbXMsDQo+ICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgIHZvaWQgKmZkdCwgY29uc3QgY2hhciAqbXBpYykNCj4gICB7DQo+
+IEBAIC0yNzYsNiArMzAzLDggQEAgc3RhdGljIHZvaWQgcGxhdGZvcm1fYnVzX2NyZWF0ZV9k
+ZXZ0cmVlKFBQQ0U1MDBNYWNoaW5lU3RhdGUgKnBtcywNCj4gICAgICAgdWludDY0X3QgYWRk
+ciA9IHBtYy0+cGxhdGZvcm1fYnVzX2Jhc2U7DQo+ICAgICAgIHVpbnQ2NF90IHNpemUgPSBw
+bWMtPnBsYXRmb3JtX2J1c19zaXplOw0KPiAgICAgICBpbnQgaXJxX3N0YXJ0ID0gcG1jLT5w
+bGF0Zm9ybV9idXNfZmlyc3RfaXJxOw0KPiArICAgIFN5c0J1c0RldmljZSAqc2JkZXY7DQo+
+ICsgICAgYm9vbCBhbWJpZ3VvdXM7DQo+ICAgDQo+ICAgICAgIC8qIENyZWF0ZSBhIC9wbGF0
+Zm9ybSBub2RlIHRoYXQgd2UgY2FuIHB1dCBhbGwgZGV2aWNlcyBpbnRvICovDQo+ICAgDQo+
+IEBAIC0zMDIsNiArMzMxLDEzIEBAIHN0YXRpYyB2b2lkIHBsYXRmb3JtX2J1c19jcmVhdGVf
+ZGV2dHJlZShQUENFNTAwTWFjaGluZVN0YXRlICpwbXMsDQo+ICAgICAgIC8qIExvb3AgdGhy
+b3VnaCBhbGwgZHluYW1pYyBzeXNidXMgZGV2aWNlcyBhbmQgY3JlYXRlIG5vZGVzIGZvciB0
+aGVtICovDQo+ICAgICAgIGZvcmVhY2hfZHluYW1pY19zeXNidXNfZGV2aWNlKHN5c2J1c19k
+ZXZpY2VfY3JlYXRlX2RldnRyZWUsICZkYXRhKTsNCj4gICANCj4gKyAgICBzYmRldiA9IFNZ
+U19CVVNfREVWSUNFKG9iamVjdF9yZXNvbHZlX3BhdGhfdHlwZSgiIiwgVFlQRV9QRkxBU0hf
+Q0ZJMDEsDQo+ICsgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgJmFtYmlndW91cykpOw0KPiArICAgIGlmIChzYmRldikgew0KPiArICAgICAg
+ICBhc3NlcnQoIWFtYmlndW91cyk7DQo+ICsgICAgICAgIGNyZWF0ZV9kZXZ0cmVlX2ZsYXNo
+KHNiZGV2LCAmZGF0YSk7DQo+ICsgICAgfQ0KPiArDQo+ICAgICAgIGdfZnJlZShub2RlKTsN
+Cj4gICB9DQo+ICAgDQo+IEBAIC04NTYsNiArODkyLDcgQEAgdm9pZCBwcGNlNTAwX2luaXQo
+TWFjaGluZVN0YXRlICptYWNoaW5lKQ0KPiAgICAgICB1bnNpZ25lZCBpbnQgcGNpX2lycV9u
+cnNbUENJX05VTV9QSU5TXSA9IHsxLCAyLCAzLCA0fTsNCj4gICAgICAgSXJxTGluZXMgKmly
+cXM7DQo+ICAgICAgIERldmljZVN0YXRlICpkZXYsICptcGljZGV2Ow0KPiArICAgIERyaXZl
+SW5mbyAqZGluZm87DQo+ICAgICAgIENQVVBQQ1N0YXRlICpmaXJzdGVudiA9IE5VTEw7DQo+
+ICAgICAgIE1lbW9yeVJlZ2lvbiAqY2Nzcl9hZGRyX3NwYWNlOw0KPiAgICAgICBTeXNCdXNE
+ZXZpY2UgKnM7DQo+IEBAIC0xMDI0LDYgKzEwNjEsNDggQEAgdm9pZCBwcGNlNTAwX2luaXQo
+TWFjaGluZVN0YXRlICptYWNoaW5lKQ0KPiAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgcG1jLT5wbGF0Zm9ybV9idXNfYmFzZSwNCj4gICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICZwbXMtPnBidXNfZGV2LT5tbWlvKTsNCj4gICANCj4gKyAgICBkaW5m
+byA9IGRyaXZlX2dldChJRl9QRkxBU0gsIDAsIDApOw0KPiArICAgIGlmIChkaW5mbykgew0K
+PiArICAgICAgICBCbG9ja0JhY2tlbmQgKmJsayA9IGJsa19ieV9sZWdhY3lfZGluZm8oZGlu
+Zm8pOw0KPiArICAgICAgICBCbG9ja0RyaXZlclN0YXRlICpicyA9IGJsa19icyhibGspOw0K
+PiArICAgICAgICB1aW50NjRfdCBzaXplID0gYmRydl9nZXRsZW5ndGgoYnMpOw0KPiArICAg
+ICAgICB1aW50NjRfdCBtbWlvX3NpemUgPSBwbXMtPnBidXNfZGV2LT5tbWlvLnNpemU7DQoN
+Cl4gaGVyZS4gVGhlIGlzc3VlIGlzIHRoYXQgb24gYSAzMiBiaXQgc3lzdGVtIGl0IGlzIG5v
+dCBwb3NzaWJsZSB0byBjYXN0IHRoZQ0KSW50MTI4IHR5cGUgdG8gdWludDY0X3Q6DQoNCkZB
+SUxFRDogbGlicWVtdS1wcGM2NC1zb2Z0bW11LmZhLnAvaHdfcHBjX2U1MDAuYy5vDQozNzQ2
+Y2MgLW0zMiAtSWxpYnFlbXUtcHBjNjQtc29mdG1tdS5mYS5wIC1JLiAtSS4uIC1JdGFyZ2V0
+L3BwYyAtSS4uL3RhcmdldC9wcGMgLUkuLi9kdGMvbGliZmR0IC1JcWFwaSAtSXRyYWNlIC1J
+dWkgLUl1aS9zaGFkZXIgLUkvdXNyL2luY2x1ZGUvcGl4bWFuLTEgLUkvdXNyL2luY2x1ZGUv
+Z2xpYi0yLjAgLUkvdXNyL2xpYi9nbGliLTIuMC9pbmNsdWRlIC1JL3Vzci9pbmNsdWRlL3N5
+c3Byb2YtNCAtZmRpYWdub3N0aWNzLWNvbG9yPWF1dG8gLVdhbGwgLVdpbnZhbGlkLXBjaCAt
+V2Vycm9yIC1zdGQ9Z251MTEgLU8yIC1nIC1pc3lzdGVtIC9idWlsZHMvZGFuaWVsaGIvcWVt
+dS9saW51eC1oZWFkZXJzIC1pc3lzdGVtIGxpbnV4LWhlYWRlcnMgLWlxdW90ZSAuIC1pcXVv
+dGUgL2J1aWxkcy9kYW5pZWxoYi9xZW11IC1pcXVvdGUgL2J1aWxkcy9kYW5pZWxoYi9xZW11
+L2luY2x1ZGUgLWlxdW90ZSAvYnVpbGRzL2RhbmllbGhiL3FlbXUvdGNnL2kzODYgLXB0aHJl
+YWQgLVVfRk9SVElGWV9TT1VSQ0UgLURfRk9SVElGWV9TT1VSQ0U9MiAtRF9HTlVfU09VUkNF
+IC1EX0ZJTEVfT0ZGU0VUX0JJVFM9NjQgLURfTEFSR0VGSUxFX1NPVVJDRSAtV3N0cmljdC1w
+cm90b3R5cGVzIC1XcmVkdW5kYW50LWRlY2xzIC1XdW5kZWYgLVd3cml0ZS1zdHJpbmdzIC1X
+bWlzc2luZy1wcm90b3R5cGVzIC1mbm8tc3RyaWN0LWFsaWFzaW5nIC1mbm8tY29tbW9uIC1m
+d3JhcHYgLVdvbGQtc3R5bGUtZGVjbGFyYXRpb24gLVdvbGQtc3R5bGUtZGVmaW5pdGlvbiAt
+V3R5cGUtbGltaXRzIC1XZm9ybWF0LXNlY3VyaXR5IC1XZm9ybWF0LXkyayAtV2luaXQtc2Vs
+ZiAtV2lnbm9yZWQtcXVhbGlmaWVycyAtV2VtcHR5LWJvZHkgLVduZXN0ZWQtZXh0ZXJucyAt
+V2VuZGlmLWxhYmVscyAtV2V4cGFuc2lvbi10by1kZWZpbmVkIC1XaW1wbGljaXQtZmFsbHRo
+cm91Z2g9MiAtV25vLW1pc3NpbmctaW5jbHVkZS1kaXJzIC1Xbm8tc2hpZnQtbmVnYXRpdmUt
+dmFsdWUgLVduby1wc2FiaSAtZnN0YWNrLXByb3RlY3Rvci1zdHJvbmcgLWZQSUUgLWlzeXN0
+ZW0uLi9saW51eC1oZWFkZXJzIC1pc3lzdGVtbGludXgtaGVhZGVycyAtRE5FRURfQ1BVX0gg
+Jy1EQ09ORklHX1RBUkdFVD0icHBjNjQtc29mdG1tdS1jb25maWctdGFyZ2V0LmgiJyAnLURD
+T05GSUdfREVWSUNFUz0icHBjNjQtc29mdG1tdS1jb25maWctZGV2aWNlcy5oIicgLU1EIC1N
+USBsaWJxZW11LXBwYzY0LXNvZnRtbXUuZmEucC9od19wcGNfZTUwMC5jLm8gLU1GIGxpYnFl
+bXUtcHBjNjQtc29mdG1tdS5mYS5wL2h3X3BwY19lNTAwLmMuby5kIC1vIGxpYnFlbXUtcHBj
+NjQtc29mdG1tdS5mYS5wL2h3X3BwY19lNTAwLmMubyAtYyAuLi9ody9wcGMvZTUwMC5jDQoz
+NzQ3Li4vaHcvcHBjL2U1MDAuYzogSW4gZnVuY3Rpb24gJ3BwY2U1MDBfaW5pdCc6DQozNzQ4
+Li4vaHcvcHBjL2U1MDAuYzoxMDY5OjMwOiBlcnJvcjogaW5jb21wYXRpYmxlIHR5cGVzIHdo
+ZW4gaW5pdGlhbGl6aW5nIHR5cGUgJ3VpbnQ2NF90JyB7YWthICdsb25nIGxvbmcgdW5zaWdu
+ZWQgaW50J30gdXNpbmcgdHlwZSAnSW50MTI4Jw0KMzc0OSAxMDY5IHwgICAgICAgICB1aW50
+NjRfdCBtbWlvX3NpemUgPSBwbXMtPnBidXNfZGV2LT5tbWlvLnNpemU7DQozNzUwICAgICAg
+fCAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIF5+fg0KMzc1MVszMjA3LzUzMzFdIENv
+bXBpbGluZyBDIG9iamVjdCBsaWJxZW11LXBwYzY0LXNvZnRtbXUuZmEucC9od19wcGNfbXBj
+ODU0NF9ndXRzLmMubw0KDQoNCldoYXQgSSBkaWQgdG8gc29sdmUgdGhlIHByb2JsZW0gaXMg
+dGhpczoNCg0KDQorICAgICAgICAgdWludDY0X3QgbW1pb19zaXplID0gaW50MTI4X2dldDY0
+KHBtcy0+cGJ1c19kZXYtPm1taW8uc2l6ZSk7DQoNCg0KVGhpcyB3aWxsIGdldCB0aGUgbG93
+ZXIgNjQgYml0cyBhbmQgcmV0dXJuIGFuIHVpbnQ2NF90Lg0KDQpOb3RlIHRoYXQgdGhpcyBm
+dW5jdGlvbiB3aWxsIGFzc2VydCBpZiBtbWlvLnNpemUgaXMgYmlnZ2VyIHRoYW4gVUlOVDY0
+X01BWCwgYnV0DQpzaW5jZSB5b3UncmUgZG9pbmcgYW4gZXJyb3IoMSkgb24gdGhlICJpZiBz
+aXplID4gbW1pb19zaXplIiBjb25kaXRpb25hbCwgdGhpcw0KYXNzZXJ0KCkgaXMgbm90IGlu
+dHJvZHVjaW5nIGEgbmV3IHNpZGUgZWZmZWN0LiBXZSdsbCBqdXN0IGZhaWwgZWFybGllciB3
+aXRoDQphIGRpZmZlcmVudCBlcnJvciBtZXNzYWdlLg0KDQoNCkxldCBtZSBrbm93IGlmIHRo
+aXMgaXMgYWNjZXB0YWJsZSBmb3IgeW91Lg0KDQoNCkRhbmllbA0KDQoNCg0KPiArICAgICAg
+ICB1aW50MzJfdCBzZWN0b3JfbGVuID0gNjQgKiBLaUI7DQo+ICsNCj4gKyAgICAgICAgaWYg
+KCFpc19wb3dlcl9vZl8yKHNpemUpKSB7DQo+ICsgICAgICAgICAgICBlcnJvcl9yZXBvcnQo
+IlNpemUgb2YgcGZsYXNoIGZpbGUgbXVzdCBiZSBhIHBvd2VyIG9mIHR3by4iKTsNCj4gKyAg
+ICAgICAgICAgIGV4aXQoMSk7DQo+ICsgICAgICAgIH0NCj4gKw0KPiArICAgICAgICBpZiAo
+c2l6ZSA+IG1taW9fc2l6ZSkgew0KPiArICAgICAgICAgICAgZXJyb3JfcmVwb3J0KCJTaXpl
+IG9mIHBmbGFzaCBmaWxlIG11c3Qgbm90IGJlIGJpZ2dlciB0aGFuICUiIFBSSXU2NA0KPiAr
+ICAgICAgICAgICAgICAgICAgICAgICAgICIgYnl0ZXMuIiwgbW1pb19zaXplKTsNCj4gKyAg
+ICAgICAgICAgIGV4aXQoMSk7DQo+ICsgICAgICAgIH0NCj4gKw0KPiArICAgICAgICBpZiAo
+IVFFTVVfSVNfQUxJR05FRChzaXplLCBzZWN0b3JfbGVuKSkgew0KPiArICAgICAgICAgICAg
+ZXJyb3JfcmVwb3J0KCJTaXplIG9mIHBmbGFzaCBmaWxlIG11c3QgYmUgYSBtdWx0aXBsZSBv
+ZiAlIiBQUkl1MzINCj4gKyAgICAgICAgICAgICAgICAgICAgICAgICAiLiIsIHNlY3Rvcl9s
+ZW4pOw0KPiArICAgICAgICAgICAgZXhpdCgxKTsNCj4gKyAgICAgICAgfQ0KPiArDQo+ICsg
+ICAgICAgIGRldiA9IHFkZXZfbmV3KFRZUEVfUEZMQVNIX0NGSTAxKTsNCj4gKyAgICAgICAg
+cWRldl9wcm9wX3NldF9kcml2ZShkZXYsICJkcml2ZSIsIGJsayk7DQo+ICsgICAgICAgIHFk
+ZXZfcHJvcF9zZXRfdWludDMyKGRldiwgIm51bS1ibG9ja3MiLCBzaXplIC8gc2VjdG9yX2xl
+bik7DQo+ICsgICAgICAgIHFkZXZfcHJvcF9zZXRfdWludDY0KGRldiwgInNlY3Rvci1sZW5n
+dGgiLCBzZWN0b3JfbGVuKTsNCj4gKyAgICAgICAgcWRldl9wcm9wX3NldF91aW50OChkZXYs
+ICJ3aWR0aCIsIDIpOw0KPiArICAgICAgICBxZGV2X3Byb3Bfc2V0X2JpdChkZXYsICJiaWct
+ZW5kaWFuIiwgdHJ1ZSk7DQo+ICsgICAgICAgIHFkZXZfcHJvcF9zZXRfdWludDE2KGRldiwg
+ImlkMCIsIDB4ODkpOw0KPiArICAgICAgICBxZGV2X3Byb3Bfc2V0X3VpbnQxNihkZXYsICJp
+ZDEiLCAweDE4KTsNCj4gKyAgICAgICAgcWRldl9wcm9wX3NldF91aW50MTYoZGV2LCAiaWQy
+IiwgMHgwMDAwKTsNCj4gKyAgICAgICAgcWRldl9wcm9wX3NldF91aW50MTYoZGV2LCAiaWQz
+IiwgMHgwKTsNCj4gKyAgICAgICAgcWRldl9wcm9wX3NldF9zdHJpbmcoZGV2LCAibmFtZSIs
+ICJlNTAwLmZsYXNoIik7DQo+ICsgICAgICAgIHN5c2J1c19yZWFsaXplX2FuZF91bnJlZihT
+WVNfQlVTX0RFVklDRShkZXYpLCAmZXJyb3JfZmF0YWwpOw0KPiArDQo+ICsgICAgICAgIG1l
+bW9yeV9yZWdpb25fYWRkX3N1YnJlZ2lvbigmcG1zLT5wYnVzX2Rldi0+bW1pbywgMCwNCj4g
+KyAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHBmbGFzaF9jZmkwMV9nZXRf
+bWVtb3J5KFBGTEFTSF9DRkkwMShkZXYpKSk7DQo+ICsgICAgfQ0KPiArDQo+ICAgICAgIC8q
+DQo+ICAgICAgICAqIFNtYXJ0IGZpcm13YXJlIGRlZmF1bHRzIGFoZWFkIQ0KPiAgICAgICAg
+Kg0K

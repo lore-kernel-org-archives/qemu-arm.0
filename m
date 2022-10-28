@@ -1,109 +1,122 @@
-Received: by 2002:a17:906:43c7:b0:78d:9f02:16a1 with SMTP id j7csp1516390ejn;
-        Fri, 28 Oct 2022 12:48:11 -0700 (PDT)
-X-Google-Smtp-Source: AMsMyM69LaTyW9/izi8rvN/vaCEohVItWWDgSTAeAl3IOmsAVIFuQPSQ61ZVYCdnCgv3Cicr8eGw
-X-Received: by 2002:ac8:7dc4:0:b0:39c:f95f:57fe with SMTP id c4-20020ac87dc4000000b0039cf95f57femr1018804qte.612.1666986491324;
-        Fri, 28 Oct 2022 12:48:11 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1666986491; cv=none;
+Received: by 2002:a17:906:43c7:b0:78d:9f02:16a1 with SMTP id j7csp1613393ejn;
+        Fri, 28 Oct 2022 15:36:24 -0700 (PDT)
+X-Google-Smtp-Source: AMsMyM7VGcutwwQQ+eOF9EnUKd/E8quL5pzDTAjKErB5MOBCQPoCrt29Z/J5B5qtYB3imn0K9EqX
+X-Received: by 2002:a37:6c02:0:b0:6fa:b76:723a with SMTP id h2-20020a376c02000000b006fa0b76723amr1219199qkc.277.1666996583834;
+        Fri, 28 Oct 2022 15:36:23 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1666996583; cv=none;
         d=google.com; s=arc-20160816;
-        b=F0bXBaUwx9v+dQbI0tMCuY4Gej8bEMB73cp4PIulMlGgGgyoGokjUtqyGBdz4ahgUs
-         +r+USMnPI2/TBJADEi2BIM9GloDjSDkT4lsCvIqcj7JEAbLD+JCDhYMOnVXLPvTJLJJY
-         /E0CYILYSsvholC2Hh+hkBaTRPV8pEipljkbhViBGAslZ8R4qOqgX1F1KJnZnNXbxsev
-         DxwuF7ZL52zcegKlPFWJ2rBqDLsRv8suRtpsbN7fqpA4WbElieUcFK0DI43+TkdpJ1MI
-         ItUBBtD5vvjqOH/GnTOeczFQosAwcH2QKwjzAM/eH1uxD9pFGPiRhuFwKzaDE5/17Q4/
-         P0TQ==
+        b=vCbnFkfa50jSoXsRMRa5iVCGVzjOY5btYzIURW1zDZGN95/ZMrUhheBBMTIGHuBhsK
+         yxoCyZnVGdQNluiLhIKqI2MHd0F9WUOogm0+Qy65u3f5E1FkE8vFatOUrnWnB0JGt3Rn
+         ZIpT57h3fZ/9hnYAqp7tCKi/xc4dM305Cn2yfiyxaFiBDOxrba6+ks+udSeweddO+4GN
+         MYUaYID/HydRg5bJJCRMRbqQD6d7aN6tyKrT5fC7b9WEcMT3VlakHNFfjW7pyKEGAHkE
+         me4vSZPGpcSbPibH3AT+B5in2GZ8BWv5Fk2WkdUkT6vz/m9t+XuHqj6VPyiYU+SpFthl
+         Cvwg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=errors-to:sender:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:to:content-language:subject:user-agent
-         :mime-version:date:message-id:dkim-signature;
-        bh=ostfe6AwmweUUMw4nT2jwGJ3Aco28v/A4mF+ZvUoqGM=;
-        b=SQzdW6nKUDgrVuYeH4luAkwXO/s92lfFADgEx/NTdXko4M/8ehYWwuTUxdzA13Vidn
-         GCHI1DL4GWU3e7dKg6bb+xQ6M+6gaGDXiKdtJzVNx7mC7RSpm4whblDVHAZdX3eeH2Wr
-         fvgC5JHNP2SEIQhsm+fuwM5uJy8e2jicWwpr03Du2tlMghw8PZn3H3Y7SJt2RChLxGEW
-         xUGZXDASFrREcHixnXH5jyBYSNQ1HnSZsy+53VF7WN2VvEKkiFPg6HfjuaPcx7f8aEL7
-         spUqx2dxCBAnUCxYKZkIsUzDKUCwIzBAhRfXuDvXG6YG6+Ln3CIfhTr++CbTidPOur1O
-         ruEQ==
+         :in-reply-to:from:references:cc:to:content-language:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=dMHuzZOle9sbJ27011SFv5HHUtj5M9vidZqH47LXNNk=;
+        b=q+3hS4/LKv0y9gT4Cnmr66f03nq7YIuY2iLg/wrZJdvQSRgFXu6xawBpFT/kRL/JaT
+         ll4RrZuvGRtVvJqbWmo3Ro/rMDLzLFObavH033UfmA3ngPg7SL+EZuasdDc+PNlOcUiI
+         mNFdfH7KSNDXnnoOAGZnPkLTPs+wU2t9ZLURQ4mBt/E2yPo+bG9A4zKgfiJ75H99J9UD
+         n7xf8AOgwUsrZok0zY/zhkVHO0gTlW8rIZUZxh9kf4kJYx8tMh4tcWNd0E14n4g8wZBx
+         alSd46Ru7tjLcEy49BO6rdmqLbCvZ6s4IKtHZ/538UPU/PL4clPhHkjZPwrlzquhDsAO
+         mQmw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=cforzJH3;
+       dkim=pass header.i=@linaro.org header.s=google header.b=PX7JknSR;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id ay43-20020a05620a17ab00b006f9ddaaedf6si3324170qkb.515.2022.10.28.12.48.11
+        by mx.google.com with ESMTPS id c1-20020ac81e81000000b0034306280fe4si3697734qtm.196.2022.10.28.15.36.23
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 28 Oct 2022 12:48:11 -0700 (PDT)
+        Fri, 28 Oct 2022 15:36:23 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=cforzJH3;
+       dkim=pass header.i=@linaro.org header.s=google header.b=PX7JknSR;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1ooVKT-0007RQ-SH; Fri, 28 Oct 2022 15:47:50 -0400
+	id 1ooXx5-0003N5-4o; Fri, 28 Oct 2022 18:35:47 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1ooVK1-0007Hs-Ou
- for qemu-arm@nongnu.org; Fri, 28 Oct 2022 15:47:24 -0400
-Received: from mail-pg1-x52f.google.com ([2607:f8b0:4864:20::52f])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1ooXx3-0003Ml-Eb
+ for qemu-arm@nongnu.org; Fri, 28 Oct 2022 18:35:45 -0400
+Received: from mail-wr1-x42b.google.com ([2a00:1450:4864:20::42b])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1ooVJz-0007il-Ti
- for qemu-arm@nongnu.org; Fri, 28 Oct 2022 15:47:17 -0400
-Received: by mail-pg1-x52f.google.com with SMTP id 128so5716914pga.1
- for <qemu-arm@nongnu.org>; Fri, 28 Oct 2022 12:47:15 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1ooXx1-0007VB-LV
+ for qemu-arm@nongnu.org; Fri, 28 Oct 2022 18:35:45 -0400
+Received: by mail-wr1-x42b.google.com with SMTP id h9so8363974wrt.0
+ for <qemu-arm@nongnu.org>; Fri, 28 Oct 2022 15:35:42 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=content-transfer-encoding:in-reply-to:from:references:to
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=ostfe6AwmweUUMw4nT2jwGJ3Aco28v/A4mF+ZvUoqGM=;
- b=cforzJH3vCdRkJVqDsXgk+tmKLMmXR3DU0TxJ/aTQFq6oZR6jE2A/E1MK0iPlYnxSS
- 39q++7pfDnL+ZCvaCvQ7QM1aLN82I/1d0TcTfjedHQfU4DJWbRzklnwVvpOqAzhHoFbf
- 5TStm7UiAJfi30BY2cDxleOjTGWV+oGqxAYDPlJ6d59e+f0ZyXfX20f9O/V6kVRr8dGl
- lWYZrCMLPoZTzXBhnGsrVKX50/RCqtNhBKxMiqKQ3Tck02wVRY4eRqk+hW8Ovh/4NS28
- N/lPm6e1J+Qj3OYag3tl0HscGPuMewSEC3DeZUH9Vd0dmu5rJO6H4azcnpYwp090pbQO
- wX0g==
+ bh=dMHuzZOle9sbJ27011SFv5HHUtj5M9vidZqH47LXNNk=;
+ b=PX7JknSRjW+oYpE4sGKEbxaT/s9QS0fgd7g2VWJI+mjTOlZHQvoftqmnNHNt8EjlmO
+ +d2yu1WhOEjj8EW3vDRo8iUvffFTn4AwV9VCnoFAekalBsqNgDw1v2i7FqKpgdd0LRBS
+ bnjQDKSlwypCFkaaT9lIY2u/kTIp97PGEh7LKhPsiuyN3glzHna1MNSoDJ4RjLVH2pcn
+ ZxOCV9kTMWFAxMoFPJye0uPWq8ZlE+6gamB5GMYadbb513KPPjCq2OWSvt5d64vXW06H
+ bu8UNQXcrQtc4T6iVOuPl8zO+sSdUXOPoUjvd2RErEIV5j6PlIuh3FFJCxU5nyTrsHlM
+ S6AA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=content-transfer-encoding:in-reply-to:from:references:to
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=ostfe6AwmweUUMw4nT2jwGJ3Aco28v/A4mF+ZvUoqGM=;
- b=tmTxXVQlfwTXEzfw/pguGXROdL5wg/W6AZK78MHXzIMGSFx0ilUAsfztPqWiACzvEB
- gkHBJU1tT8aYzz7OW5k78vgsm7kFt0BkaDgWXBIh1YXWdnptrQyyCfE7eRfb9EOcf8//
- uf+xelcZQnxUQnOjdiYN0jMsZJtTz4qP9pWhZQ33shCTnBy1/DRDO7UejeXuWRQE/oRx
- KEA0Uv3hHvVb1p5VKU6qzRlE2dhUGn8wE8PpJQx9PoQDeiws3ils2Exu1jhEEgVtnuAd
- JKlNhPL0AaRurQrLyGRpOoKPMFoBMyC2VujOPbefkL0OsZ9yBa5BPp1Ls1z2rtq8//KN
- +8pA==
-X-Gm-Message-State: ACrzQf0nvEeCCPwpRLlOr23Z4mRMhIZwp5bpugJfh/6XJUsh80Nq7x9E
- Qd3bkAYjXP7nsj69C2wwqqTcLg==
-X-Received: by 2002:a05:6a00:1889:b0:56c:3d4f:ae14 with SMTP id
- x9-20020a056a00188900b0056c3d4fae14mr676453pfh.49.1666986434497; 
- Fri, 28 Oct 2022 12:47:14 -0700 (PDT)
-Received: from [10.0.0.64] (180-150-56-70.b49638.mel.static.aussiebb.net.
- [180.150.56.70]) by smtp.gmail.com with ESMTPSA id
- 67-20020a621746000000b0056c349f5c73sm3178233pfx.132.2022.10.28.12.47.12
+ bh=dMHuzZOle9sbJ27011SFv5HHUtj5M9vidZqH47LXNNk=;
+ b=pOZyowmLVjn7cJEmj64KqLPqQKo5GP1QXBG24RQQb3guQr/xdmCYPeUtWXTH2Ru0Ue
+ WCFD/vJuXSaxHHqsk8/O3DU9hJPSJy1+CMt10dF51IDmGbMgWeTseW0/ZcVRSHvmylF8
+ 5TT9E+rWI9M9+pj1eifA5VrjGGizlDMvR5FGFW9eM/2P80WbOo9SoWLkvnzf4T/QBblN
+ W/DoK9C518Lqu58sV5CZD3nLgebB0TMfkcUQLqnhtiHLBjiRf5TOs9NOj57qWpLgUMyP
+ orig4/yiRroZ1RQZf6O3C7v/e+tEY5TsqCfBpoCFZY78rT57u6E+lTgap+x+SvPna/iQ
+ xcCw==
+X-Gm-Message-State: ACrzQf1ZY/fUwP++B1Khsz6OurQEoidUCrCisBiTZID2ACx9DZi0/uNU
+ AKqa8XQuwsN/ZvZuSakqC0sy8g==
+X-Received: by 2002:adf:d0c7:0:b0:236:78b8:942a with SMTP id
+ z7-20020adfd0c7000000b0023678b8942amr822065wrh.348.1666996541549; 
+ Fri, 28 Oct 2022 15:35:41 -0700 (PDT)
+Received: from [192.168.1.115] ([185.126.107.38])
+ by smtp.gmail.com with ESMTPSA id
+ e30-20020a5d595e000000b002366d1cc198sm4493337wri.41.2022.10.28.15.35.37
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 28 Oct 2022 12:47:13 -0700 (PDT)
-Message-ID: <18dbefb6-49d9-db35-5fb7-2ed05a994b6e@linaro.org>
-Date: Sat, 29 Oct 2022 06:47:09 +1100
+ Fri, 28 Oct 2022 15:35:40 -0700 (PDT)
+Message-ID: <2d49657a-67d0-5d58-b646-23a4e30abc02@linaro.org>
+Date: Sat, 29 Oct 2022 00:35:36 +0200
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.2.2
-Subject: Re: [PATCH 7/7] target/arm: Report FEAT_EVT for TCG '-cpu max'
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
+ Gecko/20100101 Thunderbird/102.4.0
+Subject: Re: [PATCH v5 02/17] pci: Allow to omit errp for pci_add_capability
 Content-Language: en-US
-To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
-References: <20221028134002.730598-1-peter.maydell@linaro.org>
- <20221028134002.730598-8-peter.maydell@linaro.org>
-From: Richard Henderson <richard.henderson@linaro.org>
-In-Reply-To: <20221028134002.730598-8-peter.maydell@linaro.org>
+To: Akihiko Odaki <akihiko.odaki@daynix.com>
+Cc: Alex Williamson <alex.williamson@redhat.com>, qemu-devel@nongnu.org,
+ qemu-block@nongnu.org, qemu-arm@nongnu.org,
+ "Michael S . Tsirkin" <mst@redhat.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Gerd Hoffmann <kraxel@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Eduardo Habkost <eduardo@habkost.net>, John Snow <jsnow@redhat.com>,
+ Dmitry Fleytman <dmitry.fleytman@gmail.com>, Jason Wang
+ <jasowang@redhat.com>, Stefan Weil <sw@weilnetz.de>,
+ Keith Busch <kbusch@kernel.org>, Klaus Jensen <its@irrelevant.dk>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Andrey Smirnov <andrew.smirnov@gmail.com>,
+ Paul Burton <paulburton@kernel.org>,
+ Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
+ Yan Vugenfirer <yan@daynix.com>,
+ Yuri Benditovich <yuri.benditovich@daynix.com>
+References: <20221028122629.3269-1-akihiko.odaki@daynix.com>
+ <20221028122629.3269-3-akihiko.odaki@daynix.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
+In-Reply-To: <20221028122629.3269-3-akihiko.odaki@daynix.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::52f;
- envelope-from=richard.henderson@linaro.org; helo=mail-pg1-x52f.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::42b;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x42b.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -125,19 +138,73 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Sender: "Qemu-arm" <qemu-arm-bounces@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: OMHzCMeI5CSU
+X-TUID: uXOVjZ7zPWWL
 
-On 10/29/22 00:40, Peter Maydell wrote:
-> Update the ID registers for TCG's '-cpu max' to report the
-> FEAT_EVT Enhanced Virtualization Traps support.
+On 28/10/22 14:26, Akihiko Odaki wrote:
+> pci_add_capability appears most PCI devices. Its error handling required
+> lots of code, and led to inconsistent behaviors such as:
+> - passing error_abort
+> - passing error_fatal
+> - asserting the returned value
+> - propagating the error to the caller
+> - skipping the rest of the function
+> - just ignoring
 > 
-> Signed-off-by: Peter Maydell<peter.maydell@linaro.org>
+> The code generating errors in pci_add_capability had a comment which
+> says:
+>> Verify that capabilities don't overlap.  Note: device assignment
+>> depends on this check to verify that the device is not broken.
+>> Should never trigger for emulated devices, but it's helpful for
+>> debugging these.
+> 
+> Indeed vfio has some code that passes capability offsets and sizes from
+> a physical device, but it explicitly pays attention so that the
+> capabilities never overlap. Therefore, we can always assert that
+> capabilities never overlap when pci_add_capability is called, resolving
+> these inconsistencies.
+> 
+> Such an implementation of pci_add_capability will not have errp
+> parameter. However, there are so many callers of pci_add_capability
+> that it does not make sense to amend all of them at once to match
+> with the new signature. Instead, this change will allow callers of
+> pci_add_capability to omit errp as the first step.
+> 
+> Signed-off-by: Akihiko Odaki <akihiko.odaki@daynix.com>
 > ---
->   docs/system/arm/emulation.rst | 1 +
->   target/arm/cpu64.c            | 1 +
->   target/arm/cpu_tcg.c          | 1 +
->   3 files changed, 3 insertions(+)
+>   hw/pci/pci.c         |  8 ++++----
+>   include/hw/pci/pci.h | 13 ++++++++++---
+>   2 files changed, 14 insertions(+), 7 deletions(-)
 
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+> diff --git a/include/hw/pci/pci.h b/include/hw/pci/pci.h
+> index b54b6ef88f..51fd106f16 100644
+> --- a/include/hw/pci/pci.h
+> +++ b/include/hw/pci/pci.h
+> @@ -2,6 +2,7 @@
+>   #define QEMU_PCI_H
+>   
+>   #include "exec/memory.h"
+> +#include "qapi/error.h"
+>   #include "sysemu/dma.h"
+>   
+>   /* PCI includes legacy ISA access.  */
+> @@ -390,9 +391,15 @@ void pci_register_vga(PCIDevice *pci_dev, MemoryRegion *mem,
+>   void pci_unregister_vga(PCIDevice *pci_dev);
+>   pcibus_t pci_get_bar_addr(PCIDevice *pci_dev, int region_num);
+>   
+> -int pci_add_capability(PCIDevice *pdev, uint8_t cap_id,
+> -                       uint8_t offset, uint8_t size,
+> -                       Error **errp);
+> +int pci_add_capability_legacy(PCIDevice *pdev, uint8_t cap_id,
+> +                              uint8_t offset, uint8_t size,
+> +                              Error **errp);
+> +
+> +#define PCI_ADD_CAPABILITY_VA(pdev, cap_id, offset, size, errp, ...) \
+> +    pci_add_capability_legacy(pdev, cap_id, offset, size, errp)
+> +
+> +#define pci_add_capability(...) \
+> +    PCI_ADD_CAPABILITY_VA(__VA_ARGS__, &error_abort)
+Do we really need PCI_ADD_CAPABILITY_VA?
 
-r~
+   #define pci_add_capability(...) \
+        pci_add_capability_legacy(__VA_ARGS__, &error_abort)
+

@@ -1,123 +1,123 @@
-Received: by 2002:a17:906:43c7:b0:78d:9f02:16a1 with SMTP id j7csp1332313ejn;
-        Fri, 28 Oct 2022 08:10:33 -0700 (PDT)
-X-Google-Smtp-Source: AMsMyM5ENLHmSfm1LUBtiPJZVnnL+UtGCDK19FcRwuriB3zZzrgJ7OUtdH2UjiVzBxEKGX/cpPNB
-X-Received: by 2002:ac8:5ac6:0:b0:3a5:92e:d954 with SMTP id d6-20020ac85ac6000000b003a5092ed954mr2406658qtd.484.1666969833059;
-        Fri, 28 Oct 2022 08:10:33 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1666969833; cv=none;
+Received: by 2002:a17:906:43c7:b0:78d:9f02:16a1 with SMTP id j7csp1372282ejn;
+        Fri, 28 Oct 2022 09:05:08 -0700 (PDT)
+X-Google-Smtp-Source: AMsMyM5PDjN5NmpCzK+O8bwH3wc7rhMFddetG7C7j6nfurFRTNU/QEb5E32ZGanjhyYZNM2exv96
+X-Received: by 2002:a0c:cb90:0:b0:4bb:a808:4485 with SMTP id p16-20020a0ccb90000000b004bba8084485mr216976qvk.101.1666973108453;
+        Fri, 28 Oct 2022 09:05:08 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1666973108; cv=none;
         d=google.com; s=arc-20160816;
-        b=wkTMqZ8sEzdkrYGeUk6RSr13ZBB9E5G6isiVOpzrSU9XUYxsE70f4c5gZDf/L1owYI
-         lo/1GWnnpMWSWfIaU8XBa8jgpVLtP8m4QRYv2ui/XYVViSt3KCZJ7yme3urzKCmQB8EO
-         iu+jnIA68ncgGHC3dnNr39qvb3z1sSQ2cI7jEdM8hBR2xgxgygM4/G9L3uUuadSzY9RO
-         cAEYruqFFZDRH/RRHXWO0GPpb/swoh+O4Rct3ARNVP94RFR5K2wEBAQNvITeZ5zrCaSd
-         c3uQCJYFNDsL6xcyVd+dOtYGNyaQ2GFJJdSjk9bxER645vcVs3JwKook5zx4+I0x8yKP
-         rbGw==
+        b=EpFOkb4vSoMCdGsfL2spePWxDij9VgY1Z/pGodQ7iuEYGbBwxa4YpzuE/0Li6jRkYP
+         OKWnnEyeRHnq0UESCGbvVbjqB0VsWNfSSNWQFMJ867C3zwd9CmUIldFrCPwNNPDO2qMz
+         QUNrdmpZPsiDpmQKexqDLezXAF2hwuczxR9dXaHwuOrZBSskgUhBHGjNIpjQ/lIOe+QC
+         MSb7uKwV4l//cJQLmXKwt8K77l9nf9irZGJp5apIOO3U7tzWTYiv1zZogdKhXLPb18Lm
+         XR6IKc0tn/YPwlM5d1TdL4Kam8qSbdHQI0V7dr0P46P3WUaUv5t8G40iRCjzxxLWj5RN
+         2pwQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=errors-to:sender:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:content-language:references:cc:to:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=6y0RxoAZpwvmueqrj9yKTDA/gbUAwRK1zTc8HqKyTCY=;
-        b=WJxpOrC1cNkYRztx9JRxh1hHmK2PhbcBI17Ao9xkxbZhZxvtqjpQUSxB9bZVC2w7Ao
-         MhDLKB8FJ3xBP7rClJDhdeVO/XtVVvwrUpi4XSaknbhJlykHj6TrR0KhgIBEFhegyELQ
-         2PZ3ivr4jJs5ThdZ3Ka0BUMimYAWF+yVviGXAsdozzUMsrFUSDlioLEbCy20H3/DC1Ip
-         IvgFUBH5Qz0fyXMtDG3YOrS0s9LokdrgDcEv2ElOivwpfISYySNxcvj755dHT58arNzX
-         +vHCVugry8PrNQDPvS1wcziHipJiO4Mex7XDp8O7NuInptM4vNK7gvtdq+/AKzaYlzJC
-         lRsw==
+         :mime-version:message-id:references:in-reply-to:subject:cc:to:from
+         :date:dkim-signature;
+        bh=mN+GTbhuSL4MayUouC/8aeBr83AsyVF3yLcKJl3bYJc=;
+        b=JsWJxLgF7rgIgVNZ6wEblkNfUizoCmy5NFHVIwZow0DGFTBUEHOnJNAjoEdD4M5rhO
+         1swS8x1RiCl+jnZf/IBn+grcEZz2uKCFOFr1uJyjK1dm7nl/hUG8hthk6XeUSkUfwzIb
+         sQHS4pvmvQIkGNmRDs2FEBwTKEIhUWoR3pNOFo71a3AXP3ErvMWJ43beHNVeXzYiVvbE
+         MBb3LPsMiLHy55oIyrdpy7YCAA9fkdHk4pP3+uWXBYIiq9CdNBHjVHCBeJaKkjCEvc2d
+         FbMV3apfe//eV7UooV/Dhs7evjaagD55QxRmu8hGdrMEQjbsKUtzhU84EOXCkJb8F33m
+         mX7Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=IdzbI2cX;
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=GazPm9Xy;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id li11-20020a0562145e0b00b004bb67354ce0si2486207qvb.36.2022.10.28.08.10.32
+        by mx.google.com with ESMTPS id x17-20020ac84d51000000b0039e5a92c181si2655747qtv.586.2022.10.28.09.05.08
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 28 Oct 2022 08:10:33 -0700 (PDT)
+        Fri, 28 Oct 2022 09:05:08 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=IdzbI2cX;
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=GazPm9Xy;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1ooQzo-0004DO-0D; Fri, 28 Oct 2022 11:10:08 -0400
+	id 1ooRqh-0001lc-05; Fri, 28 Oct 2022 12:04:47 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <danielhb413@gmail.com>)
- id 1ooQzl-0004AK-5q; Fri, 28 Oct 2022 11:10:05 -0400
-Received: from mail-oi1-x234.google.com ([2607:f8b0:4864:20::234])
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
+ id 1ooRpa-0007wv-DQ; Fri, 28 Oct 2022 12:03:42 -0400
+Received: from mail-wr1-x435.google.com ([2a00:1450:4864:20::435])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <danielhb413@gmail.com>)
- id 1ooQzj-00004s-1i; Fri, 28 Oct 2022 11:10:04 -0400
-Received: by mail-oi1-x234.google.com with SMTP id o64so6394584oib.12;
- Fri, 28 Oct 2022 08:10:01 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
+ id 1ooRpY-0002mO-1n; Fri, 28 Oct 2022 12:03:38 -0400
+Received: by mail-wr1-x435.google.com with SMTP id bs21so7174326wrb.4;
+ Fri, 28 Oct 2022 09:03:34 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=6y0RxoAZpwvmueqrj9yKTDA/gbUAwRK1zTc8HqKyTCY=;
- b=IdzbI2cXKfHAFs2srjmzBokbYBSqOL/Obk7FTGgfxURyxvemZ64pABshTTzkgV7ph4
- fmfsTh6p/I7Rh0XRWRQvdA7B4sdWNp1G8yhWYf2V5JgzqIGGFKWri3W5gii+bDCS3/fy
- WZyRUazFBcaZj1EUNbQF+TlyztffVdpnEbPQtEULxa9wEhW1H5SyJN5ov86V1d6cvoi4
- vjsKKFY3WgYjAi+S3cDnYLtZ9vDfemiGPoMlIC3K8s46sJDalVFTIcayqDt1OgRyz6Lt
- BRDgys/UXTSOvqF7eJuBZsg4CCO6i2BlcbY4iBaNSV/0eVwwviXJ3zan/GVMqx45Vo5h
- dSlw==
+ h=content-transfer-encoding:mime-version:message-id:references
+ :in-reply-to:subject:cc:to:from:date:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=mN+GTbhuSL4MayUouC/8aeBr83AsyVF3yLcKJl3bYJc=;
+ b=GazPm9XydD7ymqLkN+Xen/6U5log3qRBVcJsCw2Cih57Betm8YKEV8j39A6vevyORw
+ GApB5cSCT7inDNQTkqM61sfZ6CZ6/fd5f8lw8cS2hBjDUDCStSfMNaM83d7MbcvTM6oi
+ yEp9oqQYKq5MNARYFq+dP7oq0xK63fuVXmyq9RNEsuXKWCeB4V8MbqTn4kf3IgD8WFsk
+ wRgDlWKF1zb5cJ6w8m7RvtDbqbOWRS//o5gO1liFJNz/dUcz50GeyDjdA7MRnbi0m5Ld
+ 1+aEKryZLjUvS7QIOpYCANMdqqrtyTgP8JA/yCbM+1ckrbfAFyYtCI9gXgWTQEnPurVp
+ Wy+w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=6y0RxoAZpwvmueqrj9yKTDA/gbUAwRK1zTc8HqKyTCY=;
- b=GEcbjFRfQw0AVW59MvvWQs64eZ4zL2tP5vVuH33fjKb7hK9t1MERJp//WODoysktZa
- kpGUTOvJ5+VFpB9QHNuaNoRrNrasDZU4bSadB1Myc1oC+X3ALaRXrYhbFlEf7xiGW2jH
- w73EbSnqDXWyuz85ukwKR6mRCSvpRvJ9hI9rT0T9jkzyABuJMZU+EMPnwtioVIDt/Q1Q
- V1C1s11W8oLcV8jBjSOhZ1eVDH/yXdygHJdo0gM0Bb+ZI3kjwxz19rsSJHw2fi/i/MHl
- qmQtwyuyLNR4gtFpn6gr2/HtKrHtgNfEATp7hqvFmFUs3wQb8/VT1tWXBd4HoHvvnOyr
- 3bXQ==
-X-Gm-Message-State: ACrzQf3Mrb7E3vGcMi+GfcQyZW1WVQ8Sha8TOJ5YCDqiButC6SCLX+sN
- 7fDyJiLBI95BvJ726HHsbFQ=
-X-Received: by 2002:a05:6808:17a5:b0:354:ab07:4f0b with SMTP id
- bg37-20020a05680817a500b00354ab074f0bmr8115766oib.181.1666969800249; 
- Fri, 28 Oct 2022 08:10:00 -0700 (PDT)
-Received: from [192.168.10.102] ([177.45.165.63])
+ h=content-transfer-encoding:mime-version:message-id:references
+ :in-reply-to:subject:cc:to:from:date:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=mN+GTbhuSL4MayUouC/8aeBr83AsyVF3yLcKJl3bYJc=;
+ b=Q0HVnhdlsjY9JuO2eZLX2VAw4asngwBuX+AukCysa2/0yHefG2OiH8Oy+3izhp94tG
+ O8kDPxFGOzkhbIbl6fVfrbwy/X8yu/jpHOXOPGza3Gl4hSdUgPVqn6Ft4qLG8CWQFDm1
+ YFAvsOiv8hsVQEo9Clfws6JFB/YcMMRNzxy64X78Z9eIgcms5HCurh1FdmK5H/2rp8pn
+ gelbx7pHjQQ9Wrum2PhZzV+emGVjwnAipSQ1MusXIx9FTpS4eBgvZ75n2Q3BxiTOTk0a
+ Ojq9+vZx0XcPQ0TrNRxsXZ6fnfuIT6PvziRVnCGc6oM4Kvo0DvopflQHM4scUv/jwl8b
+ ON+w==
+X-Gm-Message-State: ACrzQf1d1HqQdzKDVJY3T/2PsQI4M8/mLXzFf1R7DdqVHqQgz36tXjNT
+ 9QmBx1U00CUSgs9Cl3d0ri8=
+X-Received: by 2002:a5d:64c7:0:b0:22e:43a6:2801 with SMTP id
+ f7-20020a5d64c7000000b0022e43a62801mr40811wri.612.1666973013285; 
+ Fri, 28 Oct 2022 09:03:33 -0700 (PDT)
+Received: from ?IPv6:::1?
+ (p200300faaf0bb200bd2f89c083d9cbe6.dip0.t-ipconnect.de.
+ [2003:fa:af0b:b200:bd2f:89c0:83d9:cbe6])
  by smtp.gmail.com with ESMTPSA id
- n13-20020a4a954d000000b0044b125e5dabsm1620123ooi.35.2022.10.28.08.09.52
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 28 Oct 2022 08:09:59 -0700 (PDT)
-Message-ID: <eea963b8-f6d9-b345-376e-7fd6dad73cd4@gmail.com>
-Date: Fri, 28 Oct 2022 12:09:50 -0300
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.3.1
-Subject: Re: [PATCH v4 5/7] hw/ppc/e500: Implement pflash handling
-To: Bernhard Beschow <shentey@gmail.com>, qemu-devel@nongnu.org
-Cc: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>,
+ ay19-20020a05600c1e1300b003a1980d55c4sm8147519wmb.47.2022.10.28.09.03.32
+ (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+ Fri, 28 Oct 2022 09:03:32 -0700 (PDT)
+Date: Fri, 28 Oct 2022 16:03:29 +0000
+From: B <shentey@gmail.com>
+To: Daniel Henrique Barboza <danielhb413@gmail.com>, qemu-devel@nongnu.org
+CC: =?ISO-8859-1?Q?Philippe_Mathieu-Daud=E9?= <philmd@linaro.org>,
  qemu-ppc@nongnu.org, Aurelien Jarno <aurelien@aurel32.net>,
  Yoshinori Sato <ysato@users.sourceforge.jp>,
- Antony Pavlov <antonynpavlov@gmail.com>, BALATON Zoltan
- <balaton@eik.bme.hu>, Alistair Francis <alistair@alistair23.me>,
- Bin Meng <bin.meng@windriver.com>, Kevin Wolf <kwolf@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>, Jan Kiszka <jan.kiszka@web.de>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
+ Antony Pavlov <antonynpavlov@gmail.com>, BALATON Zoltan <balaton@eik.bme.hu>, 
+ Alistair Francis <alistair@alistair23.me>, Bin Meng <bin.meng@windriver.com>, 
+ Kevin Wolf <kwolf@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
+ Jan Kiszka <jan.kiszka@web.de>,
+ =?ISO-8859-1?Q?Philippe_Mathieu-Daud=E9?= <f4bug@amsat.org>,
  Hanna Reitz <hreitz@redhat.com>, qemu-arm@nongnu.org,
  Magnus Damm <magnus.damm@gmail.com>,
  "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, qemu-block@nongnu.org
+Subject: Re: [PATCH v4 5/7] hw/ppc/e500: Implement pflash handling
+In-Reply-To: <eea963b8-f6d9-b345-376e-7fd6dad73cd4@gmail.com>
 References: <20221018210146.193159-1-shentey@gmail.com>
  <20221018210146.193159-6-shentey@gmail.com>
-Content-Language: en-US
-From: Daniel Henrique Barboza <danielhb413@gmail.com>
-In-Reply-To: <20221018210146.193159-6-shentey@gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: base64
-Received-SPF: pass client-ip=2607:f8b0:4864:20::234;
- envelope-from=danielhb413@gmail.com; helo=mail-oi1-x234.google.com
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001, NICE_REPLY_A=-0.001,
+ <eea963b8-f6d9-b345-376e-7fd6dad73cd4@gmail.com>
+Message-ID: <89D2DB02-17DE-43F0-BA2F-4855E6F6659B@gmail.com>
+MIME-Version: 1.0
+Content-Type: text/plain;
+ charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::435;
+ envelope-from=shentey@gmail.com; helo=mail-wr1-x435.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
@@ -134,187 +134,275 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Sender: "Qemu-arm" <qemu-arm-bounces@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: niXJ3L1rf9dF
+X-TUID: 2BHsUZ7gzoJ6
 
-QmVybmhhcmQsDQoNClRoZSAzMiBidWlsZHMgYXJlbid0IGZhbmN5aW5nIHRoaXMgcGF0Y2gu
-IFRoZSBpc3N1ZSBpcyBkb3duIHRoZXJlOg0KDQpPbiAxMC8xOC8yMiAxODowMSwgQmVybmhh
-cmQgQmVzY2hvdyB3cm90ZToNCj4gQWxsb3dzIGU1MDAgYm9hcmRzIHRvIGhhdmUgdGhlaXIg
-cm9vdCBmaWxlIHN5c3RlbSByZXNpZGUgb24gZmxhc2ggdXNpbmcNCj4gb25seSBidWlsdGlu
-IGRldmljZXMgbG9jYXRlZCBpbiB0aGUgZUxCQyBtZW1vcnkgcmVnaW9uLg0KPiANCj4gTm90
-ZSB0aGF0IHRoZSBmbGFzaCBtZW1vcnkgYXJlYSBpcyBvbmx5IGNyZWF0ZWQgd2hlbiBhIC1w
-Zmxhc2ggYXJndW1lbnQgaXMNCj4gZ2l2ZW4sIGFuZCB0aGF0IHRoZSBzaXplIGlzIGRldGVy
-bWluZWQgYnkgdGhlIGdpdmVuIGZpbGUuIFRoZSBpZGVhIGlzIHRvDQo+IHB1dCB1c2VycyBp
-bnRvIGNvbnRyb2wuDQo+IA0KPiBTaWduZWQtb2ZmLWJ5OiBCZXJuaGFyZCBCZXNjaG93IDxz
-aGVudGV5QGdtYWlsLmNvbT4NCj4gLS0tDQo+ICAgZG9jcy9zeXN0ZW0vcHBjL3BwY2U1MDAu
-cnN0IHwgMTYgKysrKysrKysNCj4gICBody9wcGMvS2NvbmZpZyAgICAgICAgICAgICAgfCAg
-MSArDQo+ICAgaHcvcHBjL2U1MDAuYyAgICAgICAgICAgICAgIHwgNzkgKysrKysrKysrKysr
-KysrKysrKysrKysrKysrKysrKysrKysrKw0KPiAgIDMgZmlsZXMgY2hhbmdlZCwgOTYgaW5z
-ZXJ0aW9ucygrKQ0KPiANCj4gZGlmZiAtLWdpdCBhL2RvY3Mvc3lzdGVtL3BwYy9wcGNlNTAw
-LnJzdCBiL2RvY3Mvc3lzdGVtL3BwYy9wcGNlNTAwLnJzdA0KPiBpbmRleCA3YjVlYjNjNGVl
-Li4zOGY4Y2ViMGNmIDEwMDY0NA0KPiAtLS0gYS9kb2NzL3N5c3RlbS9wcGMvcHBjZTUwMC5y
-c3QNCj4gKysrIGIvZG9jcy9zeXN0ZW0vcHBjL3BwY2U1MDAucnN0DQo+IEBAIC0xNjUsMyAr
-MTY1LDE5IEBAIGlmIOKAnC1kZXZpY2UgZVRTRUPigJ0gaXMgZ2l2ZW4gdG8gUUVNVToNCj4g
-ICAuLiBjb2RlLWJsb2NrOjogYmFzaA0KPiAgIA0KPiAgICAgLW5ldGRldiB0YXAsaWZuYW1l
-PXRhcDAsc2NyaXB0PW5vLGRvd25zY3JpcHQ9bm8saWQ9bmV0MCAtZGV2aWNlIGVUU0VDLG5l
-dGRldj1uZXQwDQo+ICsNCj4gK1Jvb3QgZmlsZSBzeXN0ZW0gb24gZmxhc2ggZHJpdmUNCj4g
-Ky0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0NCj4gKw0KPiArUmF0aGVyIHRoYW4g
-dXNpbmcgYSByb290IGZpbGUgc3lzdGVtIG9uIHJhbSBkaXNrLCBpdCBpcyBwb3NzaWJsZSB0
-byBoYXZlIGl0IG9uDQo+ICtDRkkgZmxhc2guIEdpdmVuIGFuIGV4dDIgaW1hZ2Ugd2hvc2Ug
-c2l6ZSBtdXN0IGJlIGEgcG93ZXIgb2YgdHdvLCBpdCBjYW4gYmUgdXNlZA0KPiArYXMgZm9s
-bG93czoNCj4gKw0KPiArLi4gY29kZS1ibG9jazo6IGJhc2gNCj4gKw0KPiArICAkIHFlbXUt
-c3lzdGVtLXBwYzY0IC1NIHBwY2U1MDAgLWNwdSBlNTAwbWMgLXNtcCA0IC1tIDJHIFwNCj4g
-KyAgICAgIC1kaXNwbGF5IG5vbmUgLXNlcmlhbCBzdGRpbyBcDQo+ICsgICAgICAta2VybmVs
-IHZtbGludXggXA0KPiArICAgICAgLWRyaXZlIGlmPXBmbGFzaCxmaWxlPS9wYXRoL3RvL3Jv
-b3Rmcy5leHQyLGZvcm1hdD1yYXcgXA0KPiArICAgICAgLWFwcGVuZCAicm9vdHdhaXQgcm9v
-dD0vZGV2L210ZGJsb2NrMCINCj4gKw0KPiBkaWZmIC0tZ2l0IGEvaHcvcHBjL0tjb25maWcg
-Yi9ody9wcGMvS2NvbmZpZw0KPiBpbmRleCA3OTFmZTc4YTUwLi43NjlhMWVhZDFjIDEwMDY0
-NA0KPiAtLS0gYS9ody9wcGMvS2NvbmZpZw0KPiArKysgYi9ody9wcGMvS2NvbmZpZw0KPiBA
-QCAtMTI2LDYgKzEyNiw3IEBAIGNvbmZpZyBFNTAwDQo+ICAgICAgIHNlbGVjdCBFVFNFQw0K
-PiAgICAgICBzZWxlY3QgR1BJT19NUEM4WFhYDQo+ICAgICAgIHNlbGVjdCBPUEVOUElDDQo+
-ICsgICAgc2VsZWN0IFBGTEFTSF9DRkkwMQ0KPiAgICAgICBzZWxlY3QgUExBVEZPUk1fQlVT
-DQo+ICAgICAgIHNlbGVjdCBQUENFNTAwX1BDSQ0KPiAgICAgICBzZWxlY3QgU0VSSUFMDQo+
-IGRpZmYgLS1naXQgYS9ody9wcGMvZTUwMC5jIGIvaHcvcHBjL2U1MDAuYw0KPiBpbmRleCAz
-ZTk1MGVhM2JhLi43MzE5OGFkYWM4IDEwMDY0NA0KPiAtLS0gYS9ody9wcGMvZTUwMC5jDQo+
-ICsrKyBiL2h3L3BwYy9lNTAwLmMNCj4gQEAgLTIzLDggKzIzLDEwIEBADQo+ICAgI2luY2x1
-ZGUgImU1MDAtY2Nzci5oIg0KPiAgICNpbmNsdWRlICJuZXQvbmV0LmgiDQo+ICAgI2luY2x1
-ZGUgInFlbXUvY29uZmlnLWZpbGUuaCINCj4gKyNpbmNsdWRlICJody9ibG9jay9mbGFzaC5o
-Ig0KPiAgICNpbmNsdWRlICJody9jaGFyL3NlcmlhbC5oIg0KPiAgICNpbmNsdWRlICJody9w
-Y2kvcGNpLmgiDQo+ICsjaW5jbHVkZSAic3lzZW11L2Jsb2NrLWJhY2tlbmQtaW8uaCINCj4g
-ICAjaW5jbHVkZSAic3lzZW11L3N5c2VtdS5oIg0KPiAgICNpbmNsdWRlICJzeXNlbXUva3Zt
-LmgiDQo+ICAgI2luY2x1ZGUgInN5c2VtdS9yZXNldC5oIg0KPiBAQCAtMjY3LDYgKzI2OSwz
-MSBAQCBzdGF0aWMgdm9pZCBzeXNidXNfZGV2aWNlX2NyZWF0ZV9kZXZ0cmVlKFN5c0J1c0Rl
-dmljZSAqc2JkZXYsIHZvaWQgKm9wYXF1ZSkNCj4gICAgICAgfQ0KPiAgIH0NCj4gICANCj4g
-K3N0YXRpYyB2b2lkIGNyZWF0ZV9kZXZ0cmVlX2ZsYXNoKFN5c0J1c0RldmljZSAqc2JkZXYs
-DQo+ICsgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBQbGF0Zm9ybURldnRyZWVE
-YXRhICpkYXRhKQ0KPiArew0KPiArICAgIGdfYXV0b2ZyZWUgY2hhciAqbmFtZSA9IE5VTEw7
-DQo+ICsgICAgdWludDY0X3QgbnVtX2Jsb2NrcyA9IG9iamVjdF9wcm9wZXJ0eV9nZXRfdWlu
-dChPQkpFQ1Qoc2JkZXYpLA0KPiArICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgIm51bS1ibG9ja3MiLA0KPiArICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgJmVycm9yX2ZhdGFsKTsNCj4gKyAg
-ICB1aW50NjRfdCBzZWN0b3JfbGVuZ3RoID0gb2JqZWN0X3Byb3BlcnR5X2dldF91aW50KE9C
-SkVDVChzYmRldiksDQo+ICsgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAic2VjdG9yLWxlbmd0aCIsDQo+ICsgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAmZXJyb3JfZmF0YWwpOw0K
-PiArICAgIHVpbnQ2NF90IGJhbmtfd2lkdGggPSBvYmplY3RfcHJvcGVydHlfZ2V0X3VpbnQo
-T0JKRUNUKHNiZGV2KSwNCj4gKyAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICJ3aWR0aCIsDQo+ICsgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAmZXJyb3JfZmF0YWwpOw0KPiArICAgIGh3YWRk
-ciBmbGFzaGJhc2UgPSAwOw0KPiArICAgIGh3YWRkciBmbGFzaHNpemUgPSBudW1fYmxvY2tz
-ICogc2VjdG9yX2xlbmd0aDsNCj4gKyAgICB2b2lkICpmZHQgPSBkYXRhLT5mZHQ7DQo+ICsN
-Cj4gKyAgICBuYW1lID0gZ19zdHJkdXBfcHJpbnRmKCIlcy9ub3JAJSIgUFJJeDY0LCBkYXRh
-LT5ub2RlLCBmbGFzaGJhc2UpOw0KPiArICAgIHFlbXVfZmR0X2FkZF9zdWJub2RlKGZkdCwg
-bmFtZSk7DQo+ICsgICAgcWVtdV9mZHRfc2V0cHJvcF9zdHJpbmcoZmR0LCBuYW1lLCAiY29t
-cGF0aWJsZSIsICJjZmktZmxhc2giKTsNCj4gKyAgICBxZW11X2ZkdF9zZXRwcm9wX3NpemVk
-X2NlbGxzKGZkdCwgbmFtZSwgInJlZyIsDQo+ICsgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAxLCBmbGFzaGJhc2UsIDEsIGZsYXNoc2l6ZSk7DQo+ICsgICAgcWVtdV9mZHRf
-c2V0cHJvcF9jZWxsKGZkdCwgbmFtZSwgImJhbmstd2lkdGgiLCBiYW5rX3dpZHRoKTsNCj4g
-K30NCj4gKw0KPiAgIHN0YXRpYyB2b2lkIHBsYXRmb3JtX2J1c19jcmVhdGVfZGV2dHJlZShQ
-UENFNTAwTWFjaGluZVN0YXRlICpwbXMsDQo+ICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgIHZvaWQgKmZkdCwgY29uc3QgY2hhciAqbXBpYykNCj4gICB7DQo+
-IEBAIC0yNzYsNiArMzAzLDggQEAgc3RhdGljIHZvaWQgcGxhdGZvcm1fYnVzX2NyZWF0ZV9k
-ZXZ0cmVlKFBQQ0U1MDBNYWNoaW5lU3RhdGUgKnBtcywNCj4gICAgICAgdWludDY0X3QgYWRk
-ciA9IHBtYy0+cGxhdGZvcm1fYnVzX2Jhc2U7DQo+ICAgICAgIHVpbnQ2NF90IHNpemUgPSBw
-bWMtPnBsYXRmb3JtX2J1c19zaXplOw0KPiAgICAgICBpbnQgaXJxX3N0YXJ0ID0gcG1jLT5w
-bGF0Zm9ybV9idXNfZmlyc3RfaXJxOw0KPiArICAgIFN5c0J1c0RldmljZSAqc2JkZXY7DQo+
-ICsgICAgYm9vbCBhbWJpZ3VvdXM7DQo+ICAgDQo+ICAgICAgIC8qIENyZWF0ZSBhIC9wbGF0
-Zm9ybSBub2RlIHRoYXQgd2UgY2FuIHB1dCBhbGwgZGV2aWNlcyBpbnRvICovDQo+ICAgDQo+
-IEBAIC0zMDIsNiArMzMxLDEzIEBAIHN0YXRpYyB2b2lkIHBsYXRmb3JtX2J1c19jcmVhdGVf
-ZGV2dHJlZShQUENFNTAwTWFjaGluZVN0YXRlICpwbXMsDQo+ICAgICAgIC8qIExvb3AgdGhy
-b3VnaCBhbGwgZHluYW1pYyBzeXNidXMgZGV2aWNlcyBhbmQgY3JlYXRlIG5vZGVzIGZvciB0
-aGVtICovDQo+ICAgICAgIGZvcmVhY2hfZHluYW1pY19zeXNidXNfZGV2aWNlKHN5c2J1c19k
-ZXZpY2VfY3JlYXRlX2RldnRyZWUsICZkYXRhKTsNCj4gICANCj4gKyAgICBzYmRldiA9IFNZ
-U19CVVNfREVWSUNFKG9iamVjdF9yZXNvbHZlX3BhdGhfdHlwZSgiIiwgVFlQRV9QRkxBU0hf
-Q0ZJMDEsDQo+ICsgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgJmFtYmlndW91cykpOw0KPiArICAgIGlmIChzYmRldikgew0KPiArICAgICAg
-ICBhc3NlcnQoIWFtYmlndW91cyk7DQo+ICsgICAgICAgIGNyZWF0ZV9kZXZ0cmVlX2ZsYXNo
-KHNiZGV2LCAmZGF0YSk7DQo+ICsgICAgfQ0KPiArDQo+ICAgICAgIGdfZnJlZShub2RlKTsN
-Cj4gICB9DQo+ICAgDQo+IEBAIC04NTYsNiArODkyLDcgQEAgdm9pZCBwcGNlNTAwX2luaXQo
-TWFjaGluZVN0YXRlICptYWNoaW5lKQ0KPiAgICAgICB1bnNpZ25lZCBpbnQgcGNpX2lycV9u
-cnNbUENJX05VTV9QSU5TXSA9IHsxLCAyLCAzLCA0fTsNCj4gICAgICAgSXJxTGluZXMgKmly
-cXM7DQo+ICAgICAgIERldmljZVN0YXRlICpkZXYsICptcGljZGV2Ow0KPiArICAgIERyaXZl
-SW5mbyAqZGluZm87DQo+ICAgICAgIENQVVBQQ1N0YXRlICpmaXJzdGVudiA9IE5VTEw7DQo+
-ICAgICAgIE1lbW9yeVJlZ2lvbiAqY2Nzcl9hZGRyX3NwYWNlOw0KPiAgICAgICBTeXNCdXNE
-ZXZpY2UgKnM7DQo+IEBAIC0xMDI0LDYgKzEwNjEsNDggQEAgdm9pZCBwcGNlNTAwX2luaXQo
-TWFjaGluZVN0YXRlICptYWNoaW5lKQ0KPiAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgcG1jLT5wbGF0Zm9ybV9idXNfYmFzZSwNCj4gICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICZwbXMtPnBidXNfZGV2LT5tbWlvKTsNCj4gICANCj4gKyAgICBkaW5m
-byA9IGRyaXZlX2dldChJRl9QRkxBU0gsIDAsIDApOw0KPiArICAgIGlmIChkaW5mbykgew0K
-PiArICAgICAgICBCbG9ja0JhY2tlbmQgKmJsayA9IGJsa19ieV9sZWdhY3lfZGluZm8oZGlu
-Zm8pOw0KPiArICAgICAgICBCbG9ja0RyaXZlclN0YXRlICpicyA9IGJsa19icyhibGspOw0K
-PiArICAgICAgICB1aW50NjRfdCBzaXplID0gYmRydl9nZXRsZW5ndGgoYnMpOw0KPiArICAg
-ICAgICB1aW50NjRfdCBtbWlvX3NpemUgPSBwbXMtPnBidXNfZGV2LT5tbWlvLnNpemU7DQoN
-Cl4gaGVyZS4gVGhlIGlzc3VlIGlzIHRoYXQgb24gYSAzMiBiaXQgc3lzdGVtIGl0IGlzIG5v
-dCBwb3NzaWJsZSB0byBjYXN0IHRoZQ0KSW50MTI4IHR5cGUgdG8gdWludDY0X3Q6DQoNCkZB
-SUxFRDogbGlicWVtdS1wcGM2NC1zb2Z0bW11LmZhLnAvaHdfcHBjX2U1MDAuYy5vDQozNzQ2
-Y2MgLW0zMiAtSWxpYnFlbXUtcHBjNjQtc29mdG1tdS5mYS5wIC1JLiAtSS4uIC1JdGFyZ2V0
-L3BwYyAtSS4uL3RhcmdldC9wcGMgLUkuLi9kdGMvbGliZmR0IC1JcWFwaSAtSXRyYWNlIC1J
-dWkgLUl1aS9zaGFkZXIgLUkvdXNyL2luY2x1ZGUvcGl4bWFuLTEgLUkvdXNyL2luY2x1ZGUv
-Z2xpYi0yLjAgLUkvdXNyL2xpYi9nbGliLTIuMC9pbmNsdWRlIC1JL3Vzci9pbmNsdWRlL3N5
-c3Byb2YtNCAtZmRpYWdub3N0aWNzLWNvbG9yPWF1dG8gLVdhbGwgLVdpbnZhbGlkLXBjaCAt
-V2Vycm9yIC1zdGQ9Z251MTEgLU8yIC1nIC1pc3lzdGVtIC9idWlsZHMvZGFuaWVsaGIvcWVt
-dS9saW51eC1oZWFkZXJzIC1pc3lzdGVtIGxpbnV4LWhlYWRlcnMgLWlxdW90ZSAuIC1pcXVv
-dGUgL2J1aWxkcy9kYW5pZWxoYi9xZW11IC1pcXVvdGUgL2J1aWxkcy9kYW5pZWxoYi9xZW11
-L2luY2x1ZGUgLWlxdW90ZSAvYnVpbGRzL2RhbmllbGhiL3FlbXUvdGNnL2kzODYgLXB0aHJl
-YWQgLVVfRk9SVElGWV9TT1VSQ0UgLURfRk9SVElGWV9TT1VSQ0U9MiAtRF9HTlVfU09VUkNF
-IC1EX0ZJTEVfT0ZGU0VUX0JJVFM9NjQgLURfTEFSR0VGSUxFX1NPVVJDRSAtV3N0cmljdC1w
-cm90b3R5cGVzIC1XcmVkdW5kYW50LWRlY2xzIC1XdW5kZWYgLVd3cml0ZS1zdHJpbmdzIC1X
-bWlzc2luZy1wcm90b3R5cGVzIC1mbm8tc3RyaWN0LWFsaWFzaW5nIC1mbm8tY29tbW9uIC1m
-d3JhcHYgLVdvbGQtc3R5bGUtZGVjbGFyYXRpb24gLVdvbGQtc3R5bGUtZGVmaW5pdGlvbiAt
-V3R5cGUtbGltaXRzIC1XZm9ybWF0LXNlY3VyaXR5IC1XZm9ybWF0LXkyayAtV2luaXQtc2Vs
-ZiAtV2lnbm9yZWQtcXVhbGlmaWVycyAtV2VtcHR5LWJvZHkgLVduZXN0ZWQtZXh0ZXJucyAt
-V2VuZGlmLWxhYmVscyAtV2V4cGFuc2lvbi10by1kZWZpbmVkIC1XaW1wbGljaXQtZmFsbHRo
-cm91Z2g9MiAtV25vLW1pc3NpbmctaW5jbHVkZS1kaXJzIC1Xbm8tc2hpZnQtbmVnYXRpdmUt
-dmFsdWUgLVduby1wc2FiaSAtZnN0YWNrLXByb3RlY3Rvci1zdHJvbmcgLWZQSUUgLWlzeXN0
-ZW0uLi9saW51eC1oZWFkZXJzIC1pc3lzdGVtbGludXgtaGVhZGVycyAtRE5FRURfQ1BVX0gg
-Jy1EQ09ORklHX1RBUkdFVD0icHBjNjQtc29mdG1tdS1jb25maWctdGFyZ2V0LmgiJyAnLURD
-T05GSUdfREVWSUNFUz0icHBjNjQtc29mdG1tdS1jb25maWctZGV2aWNlcy5oIicgLU1EIC1N
-USBsaWJxZW11LXBwYzY0LXNvZnRtbXUuZmEucC9od19wcGNfZTUwMC5jLm8gLU1GIGxpYnFl
-bXUtcHBjNjQtc29mdG1tdS5mYS5wL2h3X3BwY19lNTAwLmMuby5kIC1vIGxpYnFlbXUtcHBj
-NjQtc29mdG1tdS5mYS5wL2h3X3BwY19lNTAwLmMubyAtYyAuLi9ody9wcGMvZTUwMC5jDQoz
-NzQ3Li4vaHcvcHBjL2U1MDAuYzogSW4gZnVuY3Rpb24gJ3BwY2U1MDBfaW5pdCc6DQozNzQ4
-Li4vaHcvcHBjL2U1MDAuYzoxMDY5OjMwOiBlcnJvcjogaW5jb21wYXRpYmxlIHR5cGVzIHdo
-ZW4gaW5pdGlhbGl6aW5nIHR5cGUgJ3VpbnQ2NF90JyB7YWthICdsb25nIGxvbmcgdW5zaWdu
-ZWQgaW50J30gdXNpbmcgdHlwZSAnSW50MTI4Jw0KMzc0OSAxMDY5IHwgICAgICAgICB1aW50
-NjRfdCBtbWlvX3NpemUgPSBwbXMtPnBidXNfZGV2LT5tbWlvLnNpemU7DQozNzUwICAgICAg
-fCAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIF5+fg0KMzc1MVszMjA3LzUzMzFdIENv
-bXBpbGluZyBDIG9iamVjdCBsaWJxZW11LXBwYzY0LXNvZnRtbXUuZmEucC9od19wcGNfbXBj
-ODU0NF9ndXRzLmMubw0KDQoNCldoYXQgSSBkaWQgdG8gc29sdmUgdGhlIHByb2JsZW0gaXMg
-dGhpczoNCg0KDQorICAgICAgICAgdWludDY0X3QgbW1pb19zaXplID0gaW50MTI4X2dldDY0
-KHBtcy0+cGJ1c19kZXYtPm1taW8uc2l6ZSk7DQoNCg0KVGhpcyB3aWxsIGdldCB0aGUgbG93
-ZXIgNjQgYml0cyBhbmQgcmV0dXJuIGFuIHVpbnQ2NF90Lg0KDQpOb3RlIHRoYXQgdGhpcyBm
-dW5jdGlvbiB3aWxsIGFzc2VydCBpZiBtbWlvLnNpemUgaXMgYmlnZ2VyIHRoYW4gVUlOVDY0
-X01BWCwgYnV0DQpzaW5jZSB5b3UncmUgZG9pbmcgYW4gZXJyb3IoMSkgb24gdGhlICJpZiBz
-aXplID4gbW1pb19zaXplIiBjb25kaXRpb25hbCwgdGhpcw0KYXNzZXJ0KCkgaXMgbm90IGlu
-dHJvZHVjaW5nIGEgbmV3IHNpZGUgZWZmZWN0LiBXZSdsbCBqdXN0IGZhaWwgZWFybGllciB3
-aXRoDQphIGRpZmZlcmVudCBlcnJvciBtZXNzYWdlLg0KDQoNCkxldCBtZSBrbm93IGlmIHRo
-aXMgaXMgYWNjZXB0YWJsZSBmb3IgeW91Lg0KDQoNCkRhbmllbA0KDQoNCg0KPiArICAgICAg
-ICB1aW50MzJfdCBzZWN0b3JfbGVuID0gNjQgKiBLaUI7DQo+ICsNCj4gKyAgICAgICAgaWYg
-KCFpc19wb3dlcl9vZl8yKHNpemUpKSB7DQo+ICsgICAgICAgICAgICBlcnJvcl9yZXBvcnQo
-IlNpemUgb2YgcGZsYXNoIGZpbGUgbXVzdCBiZSBhIHBvd2VyIG9mIHR3by4iKTsNCj4gKyAg
-ICAgICAgICAgIGV4aXQoMSk7DQo+ICsgICAgICAgIH0NCj4gKw0KPiArICAgICAgICBpZiAo
-c2l6ZSA+IG1taW9fc2l6ZSkgew0KPiArICAgICAgICAgICAgZXJyb3JfcmVwb3J0KCJTaXpl
-IG9mIHBmbGFzaCBmaWxlIG11c3Qgbm90IGJlIGJpZ2dlciB0aGFuICUiIFBSSXU2NA0KPiAr
-ICAgICAgICAgICAgICAgICAgICAgICAgICIgYnl0ZXMuIiwgbW1pb19zaXplKTsNCj4gKyAg
-ICAgICAgICAgIGV4aXQoMSk7DQo+ICsgICAgICAgIH0NCj4gKw0KPiArICAgICAgICBpZiAo
-IVFFTVVfSVNfQUxJR05FRChzaXplLCBzZWN0b3JfbGVuKSkgew0KPiArICAgICAgICAgICAg
-ZXJyb3JfcmVwb3J0KCJTaXplIG9mIHBmbGFzaCBmaWxlIG11c3QgYmUgYSBtdWx0aXBsZSBv
-ZiAlIiBQUkl1MzINCj4gKyAgICAgICAgICAgICAgICAgICAgICAgICAiLiIsIHNlY3Rvcl9s
-ZW4pOw0KPiArICAgICAgICAgICAgZXhpdCgxKTsNCj4gKyAgICAgICAgfQ0KPiArDQo+ICsg
-ICAgICAgIGRldiA9IHFkZXZfbmV3KFRZUEVfUEZMQVNIX0NGSTAxKTsNCj4gKyAgICAgICAg
-cWRldl9wcm9wX3NldF9kcml2ZShkZXYsICJkcml2ZSIsIGJsayk7DQo+ICsgICAgICAgIHFk
-ZXZfcHJvcF9zZXRfdWludDMyKGRldiwgIm51bS1ibG9ja3MiLCBzaXplIC8gc2VjdG9yX2xl
-bik7DQo+ICsgICAgICAgIHFkZXZfcHJvcF9zZXRfdWludDY0KGRldiwgInNlY3Rvci1sZW5n
-dGgiLCBzZWN0b3JfbGVuKTsNCj4gKyAgICAgICAgcWRldl9wcm9wX3NldF91aW50OChkZXYs
-ICJ3aWR0aCIsIDIpOw0KPiArICAgICAgICBxZGV2X3Byb3Bfc2V0X2JpdChkZXYsICJiaWct
-ZW5kaWFuIiwgdHJ1ZSk7DQo+ICsgICAgICAgIHFkZXZfcHJvcF9zZXRfdWludDE2KGRldiwg
-ImlkMCIsIDB4ODkpOw0KPiArICAgICAgICBxZGV2X3Byb3Bfc2V0X3VpbnQxNihkZXYsICJp
-ZDEiLCAweDE4KTsNCj4gKyAgICAgICAgcWRldl9wcm9wX3NldF91aW50MTYoZGV2LCAiaWQy
-IiwgMHgwMDAwKTsNCj4gKyAgICAgICAgcWRldl9wcm9wX3NldF91aW50MTYoZGV2LCAiaWQz
-IiwgMHgwKTsNCj4gKyAgICAgICAgcWRldl9wcm9wX3NldF9zdHJpbmcoZGV2LCAibmFtZSIs
-ICJlNTAwLmZsYXNoIik7DQo+ICsgICAgICAgIHN5c2J1c19yZWFsaXplX2FuZF91bnJlZihT
-WVNfQlVTX0RFVklDRShkZXYpLCAmZXJyb3JfZmF0YWwpOw0KPiArDQo+ICsgICAgICAgIG1l
-bW9yeV9yZWdpb25fYWRkX3N1YnJlZ2lvbigmcG1zLT5wYnVzX2Rldi0+bW1pbywgMCwNCj4g
-KyAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHBmbGFzaF9jZmkwMV9nZXRf
-bWVtb3J5KFBGTEFTSF9DRkkwMShkZXYpKSk7DQo+ICsgICAgfQ0KPiArDQo+ICAgICAgIC8q
-DQo+ICAgICAgICAqIFNtYXJ0IGZpcm13YXJlIGRlZmF1bHRzIGFoZWFkIQ0KPiAgICAgICAg
-Kg0K
+
+
+Am 28=2E Oktober 2022 15:09:50 UTC schrieb Daniel Henrique Barboza <daniel=
+hb413@gmail=2Ecom>:
+>Bernhard,
+
+Hi Daniel,
+
+>
+>The 32 builds aren't fancying this patch=2E The issue is down there:
+>
+>On 10/18/22 18:01, Bernhard Beschow wrote:
+>> Allows e500 boards to have their root file system reside on flash using
+>> only builtin devices located in the eLBC memory region=2E
+>>=20
+>> Note that the flash memory area is only created when a -pflash argument=
+ is
+>> given, and that the size is determined by the given file=2E The idea is=
+ to
+>> put users into control=2E
+>>=20
+>> Signed-off-by: Bernhard Beschow <shentey@gmail=2Ecom>
+>> ---
+>>   docs/system/ppc/ppce500=2Erst | 16 ++++++++
+>>   hw/ppc/Kconfig              |  1 +
+>>   hw/ppc/e500=2Ec               | 79 ++++++++++++++++++++++++++++++++++=
++++
+>>   3 files changed, 96 insertions(+)
+>>=20
+>> diff --git a/docs/system/ppc/ppce500=2Erst b/docs/system/ppc/ppce500=2E=
+rst
+>> index 7b5eb3c4ee=2E=2E38f8ceb0cf 100644
+>> --- a/docs/system/ppc/ppce500=2Erst
+>> +++ b/docs/system/ppc/ppce500=2Erst
+>> @@ -165,3 +165,19 @@ if =E2=80=9C-device eTSEC=E2=80=9D is given to QEM=
+U:
+>>   =2E=2E code-block:: bash
+>>       -netdev tap,ifname=3Dtap0,script=3Dno,downscript=3Dno,id=3Dnet0 -=
+device eTSEC,netdev=3Dnet0
+>> +
+>> +Root file system on flash drive
+>> +-------------------------------
+>> +
+>> +Rather than using a root file system on ram disk, it is possible to ha=
+ve it on
+>> +CFI flash=2E Given an ext2 image whose size must be a power of two, it=
+ can be used
+>> +as follows:
+>> +
+>> +=2E=2E code-block:: bash
+>> +
+>> +  $ qemu-system-ppc64 -M ppce500 -cpu e500mc -smp 4 -m 2G \
+>> +      -display none -serial stdio \
+>> +      -kernel vmlinux \
+>> +      -drive if=3Dpflash,file=3D/path/to/rootfs=2Eext2,format=3Draw \
+>> +      -append "rootwait root=3D/dev/mtdblock0"
+>> +
+>> diff --git a/hw/ppc/Kconfig b/hw/ppc/Kconfig
+>> index 791fe78a50=2E=2E769a1ead1c 100644
+>> --- a/hw/ppc/Kconfig
+>> +++ b/hw/ppc/Kconfig
+>> @@ -126,6 +126,7 @@ config E500
+>>       select ETSEC
+>>       select GPIO_MPC8XXX
+>>       select OPENPIC
+>> +    select PFLASH_CFI01
+>>       select PLATFORM_BUS
+>>       select PPCE500_PCI
+>>       select SERIAL
+>> diff --git a/hw/ppc/e500=2Ec b/hw/ppc/e500=2Ec
+>> index 3e950ea3ba=2E=2E73198adac8 100644
+>> --- a/hw/ppc/e500=2Ec
+>> +++ b/hw/ppc/e500=2Ec
+>> @@ -23,8 +23,10 @@
+>>   #include "e500-ccsr=2Eh"
+>>   #include "net/net=2Eh"
+>>   #include "qemu/config-file=2Eh"
+>> +#include "hw/block/flash=2Eh"
+>>   #include "hw/char/serial=2Eh"
+>>   #include "hw/pci/pci=2Eh"
+>> +#include "sysemu/block-backend-io=2Eh"
+>>   #include "sysemu/sysemu=2Eh"
+>>   #include "sysemu/kvm=2Eh"
+>>   #include "sysemu/reset=2Eh"
+>> @@ -267,6 +269,31 @@ static void sysbus_device_create_devtree(SysBusDev=
+ice *sbdev, void *opaque)
+>>       }
+>>   }
+>>   +static void create_devtree_flash(SysBusDevice *sbdev,
+>> +                                 PlatformDevtreeData *data)
+>> +{
+>> +    g_autofree char *name =3D NULL;
+>> +    uint64_t num_blocks =3D object_property_get_uint(OBJECT(sbdev),
+>> +                                                   "num-blocks",
+>> +                                                   &error_fatal);
+>> +    uint64_t sector_length =3D object_property_get_uint(OBJECT(sbdev),
+>> +                                                      "sector-length",
+>> +                                                      &error_fatal);
+>> +    uint64_t bank_width =3D object_property_get_uint(OBJECT(sbdev),
+>> +                                                   "width",
+>> +                                                   &error_fatal);
+>> +    hwaddr flashbase =3D 0;
+>> +    hwaddr flashsize =3D num_blocks * sector_length;
+>> +    void *fdt =3D data->fdt;
+>> +
+>> +    name =3D g_strdup_printf("%s/nor@%" PRIx64, data->node, flashbase)=
+;
+>> +    qemu_fdt_add_subnode(fdt, name);
+>> +    qemu_fdt_setprop_string(fdt, name, "compatible", "cfi-flash");
+>> +    qemu_fdt_setprop_sized_cells(fdt, name, "reg",
+>> +                                 1, flashbase, 1, flashsize);
+>> +    qemu_fdt_setprop_cell(fdt, name, "bank-width", bank_width);
+>> +}
+>> +
+>>   static void platform_bus_create_devtree(PPCE500MachineState *pms,
+>>                                           void *fdt, const char *mpic)
+>>   {
+>> @@ -276,6 +303,8 @@ static void platform_bus_create_devtree(PPCE500Mach=
+ineState *pms,
+>>       uint64_t addr =3D pmc->platform_bus_base;
+>>       uint64_t size =3D pmc->platform_bus_size;
+>>       int irq_start =3D pmc->platform_bus_first_irq;
+>> +    SysBusDevice *sbdev;
+>> +    bool ambiguous;
+>>         /* Create a /platform node that we can put all devices into */
+>>   @@ -302,6 +331,13 @@ static void platform_bus_create_devtree(PPCE500M=
+achineState *pms,
+>>       /* Loop through all dynamic sysbus devices and create nodes for t=
+hem */
+>>       foreach_dynamic_sysbus_device(sysbus_device_create_devtree, &data=
+);
+>>   +    sbdev =3D SYS_BUS_DEVICE(object_resolve_path_type("", TYPE_PFLAS=
+H_CFI01,
+>> +                                                    &ambiguous));
+>> +    if (sbdev) {
+>> +        assert(!ambiguous);
+>> +        create_devtree_flash(sbdev, &data);
+>> +    }
+>> +
+>>       g_free(node);
+>>   }
+>>   @@ -856,6 +892,7 @@ void ppce500_init(MachineState *machine)
+>>       unsigned int pci_irq_nrs[PCI_NUM_PINS] =3D {1, 2, 3, 4};
+>>       IrqLines *irqs;
+>>       DeviceState *dev, *mpicdev;
+>> +    DriveInfo *dinfo;
+>>       CPUPPCState *firstenv =3D NULL;
+>>       MemoryRegion *ccsr_addr_space;
+>>       SysBusDevice *s;
+>> @@ -1024,6 +1061,48 @@ void ppce500_init(MachineState *machine)
+>>                                   pmc->platform_bus_base,
+>>                                   &pms->pbus_dev->mmio);
+>>   +    dinfo =3D drive_get(IF_PFLASH, 0, 0);
+>> +    if (dinfo) {
+>> +        BlockBackend *blk =3D blk_by_legacy_dinfo(dinfo);
+>> +        BlockDriverState *bs =3D blk_bs(blk);
+>> +        uint64_t size =3D bdrv_getlength(bs);
+>> +        uint64_t mmio_size =3D pms->pbus_dev->mmio=2Esize;
+>
+>^ here=2E The issue is that on a 32 bit system it is not possible to cast=
+ the
+>Int128 type to uint64_t:
+>
+>FAILED: libqemu-ppc64-softmmu=2Efa=2Ep/hw_ppc_e500=2Ec=2Eo
+>3746cc -m32 -Ilibqemu-ppc64-softmmu=2Efa=2Ep -I=2E -I=2E=2E -Itarget/ppc =
+-I=2E=2E/target/ppc -I=2E=2E/dtc/libfdt -Iqapi -Itrace -Iui -Iui/shader -I/=
+usr/include/pixman-1 -I/usr/include/glib-2=2E0 -I/usr/lib/glib-2=2E0/includ=
+e -I/usr/include/sysprof-4 -fdiagnostics-color=3Dauto -Wall -Winvalid-pch -=
+Werror -std=3Dgnu11 -O2 -g -isystem /builds/danielhb/qemu/linux-headers -is=
+ystem linux-headers -iquote =2E -iquote /builds/danielhb/qemu -iquote /buil=
+ds/danielhb/qemu/include -iquote /builds/danielhb/qemu/tcg/i386 -pthread -U=
+_FORTIFY_SOURCE -D_FORTIFY_SOURCE=3D2 -D_GNU_SOURCE -D_FILE_OFFSET_BITS=3D6=
+4 -D_LARGEFILE_SOURCE -Wstrict-prototypes -Wredundant-decls -Wundef -Wwrite=
+-strings -Wmissing-prototypes -fno-strict-aliasing -fno-common -fwrapv -Wol=
+d-style-declaration -Wold-style-definition -Wtype-limits -Wformat-security =
+-Wformat-y2k -Winit-self -Wignored-qualifiers -Wempty-body -Wnested-externs=
+ -Wendif-labels -Wexpansion-to-defined -Wimplicit-fallthrough=3D2 -Wno-miss=
+ing-include-dirs -Wno-shift-negative-value -Wno-psabi -fstack-protector-str=
+ong -fPIE -isystem=2E=2E/linux-headers -isystemlinux-headers -DNEED_CPU_H '=
+-DCONFIG_TARGET=3D"ppc64-softmmu-config-target=2Eh"' '-DCONFIG_DEVICES=3D"p=
+pc64-softmmu-config-devices=2Eh"' -MD -MQ libqemu-ppc64-softmmu=2Efa=2Ep/hw=
+_ppc_e500=2Ec=2Eo -MF libqemu-ppc64-softmmu=2Efa=2Ep/hw_ppc_e500=2Ec=2Eo=2E=
+d -o libqemu-ppc64-softmmu=2Efa=2Ep/hw_ppc_e500=2Ec=2Eo -c =2E=2E/hw/ppc/e5=
+00=2Ec
+>3747=2E=2E/hw/ppc/e500=2Ec: In function 'ppce500_init':
+>3748=2E=2E/hw/ppc/e500=2Ec:1069:30: error: incompatible types when initia=
+lizing type 'uint64_t' {aka 'long long unsigned int'} using type 'Int128'
+>3749 1069 |         uint64_t mmio_size =3D pms->pbus_dev->mmio=2Esize;
+>3750      |                              ^~~
+>3751[3207/5331] Compiling C object libqemu-ppc64-softmmu=2Efa=2Ep/hw_ppc_=
+mpc8544_guts=2Ec=2Eo
+
+Whoops=2E
+>
+>
+>What I did to solve the problem is this:
+>
+>
+>+         uint64_t mmio_size =3D int128_get64(pms->pbus_dev->mmio=2Esize)=
+;
+>
+>
+>This will get the lower 64 bits and return an uint64_t=2E
+>
+>Note that this function will assert if mmio=2Esize is bigger than UINT64_=
+MAX, but
+>since you're doing an error(1) on the "if size > mmio_size" conditional, =
+this
+>assert() is not introducing a new side effect=2E We'll just fail earlier =
+with
+>a different error message=2E
+
+Yes, sounds reasonable=2E
+>
+>
+>Let me know if this is acceptable for you=2E
+
+Yes, that's fine with me=2E Thanks for the fix!
+
+Best regards,
+Bernhard
+>
+>
+>Daniel
+>
+>
+>
+>> +        uint32_t sector_len =3D 64 * KiB;
+>> +
+>> +        if (!is_power_of_2(size)) {
+>> +            error_report("Size of pflash file must be a power of two=
+=2E");
+>> +            exit(1);
+>> +        }
+>> +
+>> +        if (size > mmio_size) {
+>> +            error_report("Size of pflash file must not be bigger than =
+%" PRIu64
+>> +                         " bytes=2E", mmio_size);
+>> +            exit(1);
+>> +        }
+>> +
+>> +        if (!QEMU_IS_ALIGNED(size, sector_len)) {
+>> +            error_report("Size of pflash file must be a multiple of %"=
+ PRIu32
+>> +                         "=2E", sector_len);
+>> +            exit(1);
+>> +        }
+>> +
+>> +        dev =3D qdev_new(TYPE_PFLASH_CFI01);
+>> +        qdev_prop_set_drive(dev, "drive", blk);
+>> +        qdev_prop_set_uint32(dev, "num-blocks", size / sector_len);
+>> +        qdev_prop_set_uint64(dev, "sector-length", sector_len);
+>> +        qdev_prop_set_uint8(dev, "width", 2);
+>> +        qdev_prop_set_bit(dev, "big-endian", true);
+>> +        qdev_prop_set_uint16(dev, "id0", 0x89);
+>> +        qdev_prop_set_uint16(dev, "id1", 0x18);
+>> +        qdev_prop_set_uint16(dev, "id2", 0x0000);
+>> +        qdev_prop_set_uint16(dev, "id3", 0x0);
+>> +        qdev_prop_set_string(dev, "name", "e500=2Eflash");
+>> +        sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), &error_fatal);
+>> +
+>> +        memory_region_add_subregion(&pms->pbus_dev->mmio, 0,
+>> +                                    pflash_cfi01_get_memory(PFLASH_CFI=
+01(dev)));
+>> +    }
+>> +
+>>       /*
+>>        * Smart firmware defaults ahead!
+>>        *

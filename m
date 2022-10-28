@@ -1,145 +1,368 @@
-Received: by 2002:a17:906:43c7:b0:78d:9f02:16a1 with SMTP id j7csp1448678ejn;
-        Fri, 28 Oct 2022 10:57:29 -0700 (PDT)
-X-Google-Smtp-Source: AMsMyM5u6CD3QJXf+NdDF+UDQhIxSoebFwxPii48H3UoQPUjfVFykI3WqjI13Nnp4uRrEX9A02t7
-X-Received: by 2002:a05:6902:124f:b0:66e:e3da:487e with SMTP id t15-20020a056902124f00b0066ee3da487emr487155ybu.310.1666979849175;
-        Fri, 28 Oct 2022 10:57:29 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1666979849; cv=none;
+Received: by 2002:a17:906:43c7:b0:78d:9f02:16a1 with SMTP id j7csp1492974ejn;
+        Fri, 28 Oct 2022 12:06:10 -0700 (PDT)
+X-Received: by 2002:a17:90a:1690:b0:20a:8f70:14bb with SMTP id o16-20020a17090a169000b0020a8f7014bbmr736396pja.115.1666983970718;
+        Fri, 28 Oct 2022 12:06:10 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1666983970; cv=none;
         d=google.com; s=arc-20160816;
-        b=Pk90g7XWIVgnvo8+GK1nfK5LbP1PYtGevkvkiX+6/67wV/d7fNSa9wVlFF7hAxMla7
-         tTlG7DaScigwC8mpnjFYFHaOG3tlZykWG2fwjnsqqblaD1VuBLm+HmKTTnJ5kekvfHCU
-         H835xuN0Z1Ilje6l2znl37laJHnLfMoVzqAFi7ElAsjhVHMMaROMb00HVXN+F68yspU6
-         bP0uXUUiIFt1iCLSQn7CYSA2lREc3kDfGEMK3DyTLAWss1CmYJUF3ZmcJqhvf0jOly9U
-         Cx7hliK8xVawdn32SJQETIA0q/FTmGNHNnqme9NE8OM2orxJQUms1Hm9lb8lud6LcWzz
-         8d1A==
+        b=zM7Uqs3qM8ma6eI+7Fj9r8ooK2u2KRdyiywxfPzuFJ166h5f2BkmBeAdaaUFYBaNqN
+         E6SkwWPxJ9GHTjSj0gG5dvk2HuoCZl1iP0IQHm3IaUdBL3Y3Axwpk0kVzaCAozhUD9YR
+         nS5jmm9KkJwNT/GFWC8Wj9LPKKQdW8vdj600sYJnjy6behOCstrq8LWxWSSdUyKKWNgF
+         MmJsYnUCEthpC+IrFBl30BNGUIUHEjJOJ/E+qQwhuBIiayzzG5RkWlOJ8KNakV/g0ntV
+         W9U6ChsYuEmJz7KZZV5X8FYEgSGByDroE+FENbHXm4mHrU7scuA0f1GX57fBulVrgaBn
+         jpKQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=c1XmoAUQj3+jFBnGeB4GeekYFOj+FFZJbONcyLLcspQ=;
-        b=zuRIjIgJidHjlT65oYNc3SfD8X06QGT7OseN0R8E6k3OHLtMvrvX4t31mw4UZWqgdg
-         HCBhsXaRoTqqvAuOwsPbRwwv9Q1NxfXbCQKUfoVAbLJk/YZ3P0t3xQowto2tYiJ0pg36
-         tMb1QXH8x5Jf+3HGgY+JXMG6/yAnkiB6yn57VPqeDinl1AuYZj0VM4sajCFuFHEOrFcP
-         J1MoPwae7laqkgTx3RQtKetpkyv8WvS98HLh+Uwei4x08YThm7bQhtmf0WsGHB7SRihw
-         f+2mSydoFlaFF4yAzSvJLZzUYluEOuZpBqFV7wQpqkxnjQOgabJ467vo2U8GDC6ZLkLm
-         NTsw==
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature;
+        bh=OpySAI0m06R16LGE63jw0ivYx7e/ioZkfJWvMJn/6p4=;
+        b=HpiMpTi+Ue1439kNXbcHbObc4fAVAs0Plo5lnX2bu2Tg3xClcp1y2arwojyGrb4eX1
+         6q7yNNh3/eQSkzb55K87tqhnXvQrGIP7HbdACzg4xbz0YjcB0zAYk6uJQxyn2+DnT4yv
+         kcHzhCK4bOt1DpFSG5+Z91HlrS6j6uR1ozEZjRsjhR+Q1jb7Y3BKf0mZWrk1a1R61tq/
+         h70YqmjPvNezd50Cfit30ZOsosulO/LbSqt8i2MvkLjzZec2SQy3KHc672ufsSr7pxal
+         zUXEP/+ReVY8joomifTsAaX5QkuRHf7y4y5f1jd1cU0nm29NVwfPLqS0PY/Nv02kr8sY
+         AUJQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@xen.org header.s=20200302mail header.b=BzQ6U+EN;
-       spf=pass (google.com: domain of julien@xen.org designates 104.130.215.37 as permitted sender) smtp.mailfrom=julien@xen.org
-Return-Path: <julien@xen.org>
-Received: from mail.xenproject.org (mail.xenproject.org. [104.130.215.37])
-        by mx.google.com with ESMTPS id 195-20020a2505cc000000b006cb3ae32703si4735618ybf.345.2022.10.28.10.57.29
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 28 Oct 2022 10:57:29 -0700 (PDT)
-Received-SPF: pass (google.com: domain of julien@xen.org designates 104.130.215.37 as permitted sender) client-ip=104.130.215.37;
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=BJ33SXBi;
+       spf=pass (google.com: domain of olekstysh@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=olekstysh@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <olekstysh@gmail.com>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id b3-20020a170902650300b00186b5c9671esor2360626plk.120.2022.10.28.12.06.10
+        (Google Transport Security);
+        Fri, 28 Oct 2022 12:06:10 -0700 (PDT)
+Received-SPF: pass (google.com: domain of olekstysh@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@xen.org header.s=20200302mail header.b=BzQ6U+EN;
-       spf=pass (google.com: domain of julien@xen.org designates 104.130.215.37 as permitted sender) smtp.mailfrom=julien@xen.org
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=xen.org;
-	s=20200302mail; h=Content-Transfer-Encoding:Content-Type:In-Reply-To:From:
-	References:Cc:To:Subject:MIME-Version:Date:Message-ID;
-	bh=c1XmoAUQj3+jFBnGeB4GeekYFOj+FFZJbONcyLLcspQ=; b=BzQ6U+EN8+ZxedMiAIZIhXOoNY
-	ypgoCymcrhksfp5EFZ3UecTWgkETbMjmTzKTr7mkiqEauLe5Yk1vpqx2k9umGEhlflMubWBY0/B+i
-	XW5Vq8O/9+RDC1N7oThhM/gD6iMQ4kgVLMqfw4BM/bZXnVFz3debQC/D+lKu395+fVxs=;
-Received: from xenbits.xenproject.org ([104.239.192.120])
-	by mail.xenproject.org with esmtp (Exim 4.92)
-	(envelope-from <julien@xen.org>)
-	id 1ooTbj-0000BI-LD; Fri, 28 Oct 2022 17:57:27 +0000
-Received: from 54-240-197-233.amazon.com ([54.240.197.233] helo=[192.168.25.146])
-	by xenbits.xenproject.org with esmtpsa (TLS1.3:ECDHE_RSA_AES_128_GCM_SHA256:128)
-	(Exim 4.92)
-	(envelope-from <julien@xen.org>)
-	id 1ooTbj-0007GZ-Do; Fri, 28 Oct 2022 17:57:27 +0000
-Message-ID: <7da20a2e-81e0-b3ad-c2d6-6012fa7edee2@xen.org>
-Date: Fri, 28 Oct 2022 18:57:24 +0100
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=BJ33SXBi;
+       spf=pass (google.com: domain of olekstysh@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=olekstysh@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=OpySAI0m06R16LGE63jw0ivYx7e/ioZkfJWvMJn/6p4=;
+        b=BJ33SXBipARpCCtD2oOUkdM2RwZNIXY+XMUdvUhKqF6VuaQ8miWtNBI/CdPbA7sUta
+         oXy7ggplDYDuuUTyNOjOsHDFD9zVN0aKqUY/cewErZBNQcdZTk5TovbXo8pBbzYDTEZf
+         9rp+ds87gQHxqbHI3/E3ECAWJ3dklCaqNHM7iJEPXGn1DvXXh/lRT/ghGVM9uRMn9iys
+         XPN7XmGEab12vjsbRHdEHg/m0eXr0IeiaUA29O7qFu7kXN2aZXTengiSAgGOFc+izg78
+         UkS93zzjWQDa8e9yZusr2WX2jmsR47czjYPH6Y0puT9tbf8JfLhY3G/p9YsjDrdoIDSR
+         oyfA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=OpySAI0m06R16LGE63jw0ivYx7e/ioZkfJWvMJn/6p4=;
+        b=Trp0UdbmTFb3PFu1WhcqP25pvw/Sd/RUdRBKdzZPcNZ/6WWgX+SIHL6e8FIzDZLxUD
+         /opfIYjvZC5HZfX977G5PY1df8E5nfd7SaftRgyfF9o13Ncn8wfyuzqv+5xtmwd9T6/v
+         Xkc9rCds66mdmjzs+cqi4naIDMuZSyqpMCsFnSdu7XaxenbbIw/3j2zPbQua7JX3hRmU
+         aVQB9y0kshvZ5oxusdvmrj1T7DClPziKKqhxABFlyR16GkVW4m5iNH5i9vtj872nlzeG
+         Cpij6iC9TsBU+60KMb8CAkWZ5g6qRkze46ZDeJyOaMf+SacHMeQgIqqC/ld+TtdeGh7T
+         dKWw==
+X-Gm-Message-State: ACrzQf3XghgW8x111Ya35xfsKgnv65uU1CvgITpHrgopBH2sEjr6ljMx
+	w5ss1f3QSUCOMuTXD2vRPZ8sbLy4/dBLGIe/J1g=
+X-Google-Smtp-Source: AMsMyM4xKpCtA6doHrBId4kdH/4woxsla2xyPf+PNZF/ENC+dfhwTJMgv3LlYmF2OAn5rSk4ZRzuc0DmTtr8rx9IYqg=
+X-Received: by 2002:a17:902:eccc:b0:186:5f09:f9 with SMTP id
+ a12-20020a170902eccc00b001865f0900f9mr490806plh.6.1666983970122; Fri, 28 Oct
+ 2022 12:06:10 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
- Gecko/20100101 Thunderbird/102.4.1
+References: <20221015050750.4185-1-vikram.garhwal@amd.com> <20221015050750.4185-11-vikram.garhwal@amd.com>
+ <87wn8l3d3r.fsf@linaro.org> <7da20a2e-81e0-b3ad-c2d6-6012fa7edee2@xen.org>
+In-Reply-To: <7da20a2e-81e0-b3ad-c2d6-6012fa7edee2@xen.org>
+From: Oleksandr Tyshchenko <olekstysh@gmail.com>
+Date: Fri, 28 Oct 2022 22:05:58 +0300
+Message-ID: <CAPD2p-nE30z9LosUkO6OdrPnuCaSwi_s2tsfbxgcOyu087tz-w@mail.gmail.com>
 Subject: Re: [PATCH v1 10/12] hw/arm: introduce xenpv machine
-To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
- Vikram Garhwal <vikram.garhwal@amd.com>
-Cc: qemu-devel@nongnu.org, stefano.stabellini@amd.com,
- Peter Maydell <peter.maydell@linaro.org>,
- Stefano Stabellini <sstabellini@kernel.org>,
- Anthony Perard <anthony.perard@citrix.com>, Paul Durrant <paul@xen.org>,
- "open list:ARM TCG CPUs" <qemu-arm@nongnu.org>,
- xen-devel@lists.xenproject.org
-References: <20221015050750.4185-1-vikram.garhwal@amd.com>
- <20221015050750.4185-11-vikram.garhwal@amd.com> <87wn8l3d3r.fsf@linaro.org>
-Content-Language: en-US
-From: Julien Grall <julien@xen.org>
-In-Reply-To: <87wn8l3d3r.fsf@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-TUID: PV4jlEfXGxzM
+To: Julien Grall <julien@xen.org>, Vikram Garhwal <vikram.garhwal@amd.com>, stefano.stabellini@amd.com
+Cc: qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>, 
+	Stefano Stabellini <sstabellini@kernel.org>, Anthony Perard <anthony.perard@citrix.com>, 
+	Paul Durrant <paul@xen.org>, "open list:ARM TCG CPUs" <qemu-arm@nongnu.org>, xen-devel@lists.xenproject.org, 
+	=?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
+Content-Type: multipart/alternative; boundary="00000000000062afd005ec1cf34a"
+X-TUID: yE4IybMfatRG
 
-Hi,
+--00000000000062afd005ec1cf34a
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-On 27/10/2022 09:02, Alex Bennée wrote:
-> 
-> Vikram Garhwal <vikram.garhwal@amd.com> writes:
-> 
-> <snip>
->> Optional: When CONFIG_TPM is enabled, it also creates a tpm-tis-device, adds a
->> TPM emulator and connects to swtpm running on host machine via chardev socket
->> and support TPM functionalities for a guest domain.
->>
->> Extra command line for aarch64 xenpv QEMU to connect to swtpm:
->>      -chardev socket,id=chrtpm,path=/tmp/myvtpm2/swtpm-sock \
->>      -tpmdev emulator,id=tpm0,chardev=chrtpm \
->>
->> swtpm implements a TPM software emulator(TPM 1.2 & TPM 2) built on libtpms and
->> provides access to TPM functionality over socket, chardev and CUSE interface.
->> Github repo: https://github.com/stefanberger/swtpm
->> Example for starting swtpm on host machine:
->>      mkdir /tmp/vtpm2
->>      swtpm socket --tpmstate dir=/tmp/vtpm2 \
->>      --ctrl type=unixio,path=/tmp/vtpm2/swtpm-sock &
-> 
-> <snip>
->> +static void xen_enable_tpm(void)
->> +{
->> +/* qemu_find_tpm_be is only available when CONFIG_TPM is enabled. */
->> +#ifdef CONFIG_TPM
->> +    Error *errp = NULL;
->> +    DeviceState *dev;
->> +    SysBusDevice *busdev;
->> +
->> +    TPMBackend *be = qemu_find_tpm_be("tpm0");
->> +    if (be == NULL) {
->> +        DPRINTF("Couldn't fine the backend for tpm0\n");
->> +        return;
->> +    }
->> +    dev = qdev_new(TYPE_TPM_TIS_SYSBUS);
->> +    object_property_set_link(OBJECT(dev), "tpmdev", OBJECT(be), &errp);
->> +    object_property_set_str(OBJECT(dev), "tpmdev", be->id, &errp);
->> +    busdev = SYS_BUS_DEVICE(dev);
->> +    sysbus_realize_and_unref(busdev, &error_fatal);
->> +    sysbus_mmio_map(busdev, 0, GUEST_TPM_BASE);
-> 
-> I'm not sure what has gone wrong here but I'm getting:
-> 
->    ../../hw/arm/xen_arm.c: In function ‘xen_enable_tpm’:
->    ../../hw/arm/xen_arm.c:120:32: error: ‘GUEST_TPM_BASE’ undeclared (first use in this function); did you mean ‘GUEST_RAM_BASE’?
->      120 |     sysbus_mmio_map(busdev, 0, GUEST_TPM_BASE);
->          |                                ^~~~~~~~~~~~~~
->          |                                GUEST_RAM_BASE
->    ../../hw/arm/xen_arm.c:120:32: note: each undeclared identifier is reported only once for each function it appears in
-> 
-> In my cross build:
-> 
->    # Configured with: '../../configure' '--disable-docs' '--target-list=aarch64-softmmu' '--disable-kvm' '--enable-xen' '--disable-opengl' '--disable-libudev' '--enable-tpm' '--disable-xen-pci-passthrough' '--cross-prefix=aarch64-linux-gnu-' '--skip-meson'
-> 
-> which makes me wonder if this is a configure failure or a confusion
-> about being able to have host swtpm implementations during emulation but
-> needing target tpm for Xen?
+On Fri, Oct 28, 2022 at 8:58 PM Julien Grall <julien@xen.org> wrote:
 
-I was also wondering where is that value come from. Note that the 
-memory/IRQ layout exposed to the guest is not stable.
+> Hi,
+>
 
-Are we expecting the user to rebuild QEMU for every Xen versions (or 
-possibly every guest if we ever allow dynamic layout in Xen)?
+Hello all.
 
-Cheers,
+[sorry for the possible format issues]
 
--- 
-Julien Grall
+
+
+>
+> On 27/10/2022 09:02, Alex Benn=C3=A9e wrote:
+> >
+> > Vikram Garhwal <vikram.garhwal@amd.com> writes:
+> >
+> > <snip>
+> >> Optional: When CONFIG_TPM is enabled, it also creates a tpm-tis-device=
+,
+> adds a
+> >> TPM emulator and connects to swtpm running on host machine via chardev
+> socket
+> >> and support TPM functionalities for a guest domain.
+> >>
+> >> Extra command line for aarch64 xenpv QEMU to connect to swtpm:
+> >>      -chardev socket,id=3Dchrtpm,path=3D/tmp/myvtpm2/swtpm-sock \
+> >>      -tpmdev emulator,id=3Dtpm0,chardev=3Dchrtpm \
+> >>
+> >> swtpm implements a TPM software emulator(TPM 1.2 & TPM 2) built on
+> libtpms and
+> >> provides access to TPM functionality over socket, chardev and CUSE
+> interface.
+> >> Github repo: https://github.com/stefanberger/swtpm
+> >> Example for starting swtpm on host machine:
+> >>      mkdir /tmp/vtpm2
+> >>      swtpm socket --tpmstate dir=3D/tmp/vtpm2 \
+> >>      --ctrl type=3Dunixio,path=3D/tmp/vtpm2/swtpm-sock &
+> >
+> > <snip>
+> >> +static void xen_enable_tpm(void)
+> >> +{
+> >> +/* qemu_find_tpm_be is only available when CONFIG_TPM is enabled. */
+> >> +#ifdef CONFIG_TPM
+> >> +    Error *errp =3D NULL;
+> >> +    DeviceState *dev;
+> >> +    SysBusDevice *busdev;
+> >> +
+> >> +    TPMBackend *be =3D qemu_find_tpm_be("tpm0");
+> >> +    if (be =3D=3D NULL) {
+> >> +        DPRINTF("Couldn't fine the backend for tpm0\n");
+> >> +        return;
+> >> +    }
+> >> +    dev =3D qdev_new(TYPE_TPM_TIS_SYSBUS);
+> >> +    object_property_set_link(OBJECT(dev), "tpmdev", OBJECT(be), &errp=
+);
+> >> +    object_property_set_str(OBJECT(dev), "tpmdev", be->id, &errp);
+> >> +    busdev =3D SYS_BUS_DEVICE(dev);
+> >> +    sysbus_realize_and_unref(busdev, &error_fatal);
+> >> +    sysbus_mmio_map(busdev, 0, GUEST_TPM_BASE);
+> >
+> > I'm not sure what has gone wrong here but I'm getting:
+> >
+> >    ../../hw/arm/xen_arm.c: In function =E2=80=98xen_enable_tpm=E2=80=99=
+:
+> >    ../../hw/arm/xen_arm.c:120:32: error: =E2=80=98GUEST_TPM_BASE=E2=80=
+=99 undeclared
+> (first use in this function); did you mean =E2=80=98GUEST_RAM_BASE=E2=80=
+=99?
+> >      120 |     sysbus_mmio_map(busdev, 0, GUEST_TPM_BASE);
+> >          |                                ^~~~~~~~~~~~~~
+> >          |                                GUEST_RAM_BASE
+> >    ../../hw/arm/xen_arm.c:120:32: note: each undeclared identifier is
+> reported only once for each function it appears in
+> >
+> > In my cross build:
+> >
+> >    # Configured with: '../../configure' '--disable-docs'
+> '--target-list=3Daarch64-softmmu' '--disable-kvm' '--enable-xen'
+> '--disable-opengl' '--disable-libudev' '--enable-tpm'
+> '--disable-xen-pci-passthrough' '--cross-prefix=3Daarch64-linux-gnu-'
+> '--skip-meson'
+> >
+> > which makes me wonder if this is a configure failure or a confusion
+> > about being able to have host swtpm implementations during emulation bu=
+t
+> > needing target tpm for Xen?
+>
+> I was also wondering where is that value come from. Note that the
+> memory/IRQ layout exposed to the guest is not stable.
+>
+> Are we expecting the user to rebuild QEMU for every Xen versions (or
+> possibly every guest if we ever allow dynamic layout in Xen)?
+>
+
+
+This doesn't sound ideal.
+
+I am wondering what would be the correct way here assuming that we would
+likely need to have more such information in place for supporting more
+use-cases...
+For instance, the PCI host bridge emulation in Qemu. Xen toolstack (another
+software layer) generates device-tree for the guest, so creates PCI Host
+bridge node by using reserved regions from Guest OS interface (arch-arm.h):
+- GUEST_VPCI_MEM_ADDR (GUEST_VPCI_MEM_SIZE)
+- GUEST_VPCI_ECAM_BASE (GUEST_VPCI_ECAM_SIZE)
+- GUEST_VPCI_PREFETCH_MEM_ADDR (GUEST_VPCI_PREFETCH_MEM_SIZE)
+https://xenbits.xen.org/gitweb/?p=3Dxen.git;a=3Dblob;f=3Dtools/libs/light/l=
+ibxl_arm.c;h=3D2a5e93c28403738779863aded31d2df3ba72f8c0;hb=3DHEAD#l833
+
+Here in Qemu when creating a PCI Host bridge we would need to use exactly
+the same reserved regions which toolstack writes in the corresponding
+device-tree node. So how to tell Qemu about them?
+1. Introduce new cmd line arguments?
+2. Using Xenstore?
+3. Anything else?
+
+I am afraid this would be related to every device that we want to emulate
+in Qemu and for which the toolstack needs to generate device-tree node by
+using something defined with GUEST_*, unless I really missed something.
+
+
+
+>
+> Cheers,
+>
+> --
+> Julien Grall
+>
+>
+
+--=20
+Regards,
+
+Oleksandr Tyshchenko
+
+--00000000000062afd005ec1cf34a
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><div dir=3D"ltr"><br></div><br><div class=3D"gmail_quote">=
+<div dir=3D"ltr" class=3D"gmail_attr">On Fri, Oct 28, 2022 at 8:58 PM Julie=
+n Grall &lt;<a href=3D"mailto:julien@xen.org" target=3D"_blank">julien@xen.=
+org</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" style=3D"marg=
+in:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1e=
+x">Hi,<br></blockquote><div><br></div><div>Hello all.</div><div><br></div><=
+div>[sorry for the possible format issues]</div><div><br></div><div>=C2=A0<=
+/div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;bo=
+rder-left:1px solid rgb(204,204,204);padding-left:1ex">
+<br>
+On 27/10/2022 09:02, Alex Benn=C3=A9e wrote:<br>
+&gt; <br>
+&gt; Vikram Garhwal &lt;<a href=3D"mailto:vikram.garhwal@amd.com" target=3D=
+"_blank">vikram.garhwal@amd.com</a>&gt; writes:<br>
+&gt; <br>
+&gt; &lt;snip&gt;<br>
+&gt;&gt; Optional: When CONFIG_TPM is enabled, it also creates a tpm-tis-de=
+vice, adds a<br>
+&gt;&gt; TPM emulator and connects to swtpm running on host machine via cha=
+rdev socket<br>
+&gt;&gt; and support TPM functionalities for a guest domain.<br>
+&gt;&gt;<br>
+&gt;&gt; Extra command line for aarch64 xenpv QEMU to connect to swtpm:<br>
+&gt;&gt;=C2=A0 =C2=A0 =C2=A0 -chardev socket,id=3Dchrtpm,path=3D/tmp/myvtpm=
+2/swtpm-sock \<br>
+&gt;&gt;=C2=A0 =C2=A0 =C2=A0 -tpmdev emulator,id=3Dtpm0,chardev=3Dchrtpm \<=
+br>
+&gt;&gt;<br>
+&gt;&gt; swtpm implements a TPM software emulator(TPM 1.2 &amp; TPM 2) buil=
+t on libtpms and<br>
+&gt;&gt; provides access to TPM functionality over socket, chardev and CUSE=
+ interface.<br>
+&gt;&gt; Github repo: <a href=3D"https://github.com/stefanberger/swtpm" rel=
+=3D"noreferrer" target=3D"_blank">https://github.com/stefanberger/swtpm</a>=
+<br>
+&gt;&gt; Example for starting swtpm on host machine:<br>
+&gt;&gt;=C2=A0 =C2=A0 =C2=A0 mkdir /tmp/vtpm2<br>
+&gt;&gt;=C2=A0 =C2=A0 =C2=A0 swtpm socket --tpmstate dir=3D/tmp/vtpm2 \<br>
+&gt;&gt;=C2=A0 =C2=A0 =C2=A0 --ctrl type=3Dunixio,path=3D/tmp/vtpm2/swtpm-s=
+ock &amp;<br>
+&gt; <br>
+&gt; &lt;snip&gt;<br>
+&gt;&gt; +static void xen_enable_tpm(void)<br>
+&gt;&gt; +{<br>
+&gt;&gt; +/* qemu_find_tpm_be is only available when CONFIG_TPM is enabled.=
+ */<br>
+&gt;&gt; +#ifdef CONFIG_TPM<br>
+&gt;&gt; +=C2=A0 =C2=A0 Error *errp =3D NULL;<br>
+&gt;&gt; +=C2=A0 =C2=A0 DeviceState *dev;<br>
+&gt;&gt; +=C2=A0 =C2=A0 SysBusDevice *busdev;<br>
+&gt;&gt; +<br>
+&gt;&gt; +=C2=A0 =C2=A0 TPMBackend *be =3D qemu_find_tpm_be(&quot;tpm0&quot=
+;);<br>
+&gt;&gt; +=C2=A0 =C2=A0 if (be =3D=3D NULL) {<br>
+&gt;&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 DPRINTF(&quot;Couldn&#39;t fine the b=
+ackend for tpm0\n&quot;);<br>
+&gt;&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 return;<br>
+&gt;&gt; +=C2=A0 =C2=A0 }<br>
+&gt;&gt; +=C2=A0 =C2=A0 dev =3D qdev_new(TYPE_TPM_TIS_SYSBUS);<br>
+&gt;&gt; +=C2=A0 =C2=A0 object_property_set_link(OBJECT(dev), &quot;tpmdev&=
+quot;, OBJECT(be), &amp;errp);<br>
+&gt;&gt; +=C2=A0 =C2=A0 object_property_set_str(OBJECT(dev), &quot;tpmdev&q=
+uot;, be-&gt;id, &amp;errp);<br>
+&gt;&gt; +=C2=A0 =C2=A0 busdev =3D SYS_BUS_DEVICE(dev);<br>
+&gt;&gt; +=C2=A0 =C2=A0 sysbus_realize_and_unref(busdev, &amp;error_fatal);=
+<br>
+&gt;&gt; +=C2=A0 =C2=A0 sysbus_mmio_map(busdev, 0, GUEST_TPM_BASE);<br>
+&gt; <br>
+&gt; I&#39;m not sure what has gone wrong here but I&#39;m getting:<br>
+&gt; <br>
+&gt;=C2=A0 =C2=A0 ../../hw/arm/xen_arm.c: In function =E2=80=98xen_enable_t=
+pm=E2=80=99:<br>
+&gt;=C2=A0 =C2=A0 ../../hw/arm/xen_arm.c:120:32: error: =E2=80=98GUEST_TPM_=
+BASE=E2=80=99 undeclared (first use in this function); did you mean =E2=80=
+=98GUEST_RAM_BASE=E2=80=99?<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 120 |=C2=A0 =C2=A0 =C2=A0sysbus_mmio_map(busdev, 0=
+, GUEST_TPM_BASE);<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 |=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 ^~~~~~~~~~~~~~<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 |=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 GUEST_RAM_BASE<br>
+&gt;=C2=A0 =C2=A0 ../../hw/arm/xen_arm.c:120:32: note: each undeclared iden=
+tifier is reported only once for each function it appears in<br>
+&gt; <br>
+&gt; In my cross build:<br>
+&gt; <br>
+&gt;=C2=A0 =C2=A0 # Configured with: &#39;../../configure&#39; &#39;--disab=
+le-docs&#39; &#39;--target-list=3Daarch64-softmmu&#39; &#39;--disable-kvm&#=
+39; &#39;--enable-xen&#39; &#39;--disable-opengl&#39; &#39;--disable-libude=
+v&#39; &#39;--enable-tpm&#39; &#39;--disable-xen-pci-passthrough&#39; &#39;=
+--cross-prefix=3Daarch64-linux-gnu-&#39; &#39;--skip-meson&#39;<br>
+&gt; <br>
+&gt; which makes me wonder if this is a configure failure or a confusion<br=
+>
+&gt; about being able to have host swtpm implementations during emulation b=
+ut<br>
+&gt; needing target tpm for Xen?<br>
+<br>
+I was also wondering where is that value come from. Note that the <br>
+memory/IRQ layout exposed to the guest is not stable.<br>
+<br>
+Are we expecting the user to rebuild QEMU for every Xen versions (or <br>
+possibly every guest if we ever allow dynamic layout in Xen)?<br></blockquo=
+te><div><br></div><div><br></div><div>This doesn&#39;t sound ideal.=C2=A0</=
+div><div><br></div><div>I am wondering what would be the correct way here a=
+ssuming that we would likely need to have more such information in place fo=
+r supporting more use-cases...</div><div>For instance, the PCI host bridge =
+emulation in Qemu. Xen toolstack (another software layer) generates device-=
+tree for the guest, so creates PCI Host bridge node by using reserved regio=
+ns from=C2=A0Guest OS interface (arch-arm.h):</div><div>- GUEST_VPCI_MEM_AD=
+DR (GUEST_VPCI_MEM_SIZE)<br></div><div>- GUEST_VPCI_ECAM_BASE (GUEST_VPCI_E=
+CAM_SIZE)<br></div><div>- GUEST_VPCI_PREFETCH_MEM_ADDR (GUEST_VPCI_PREFETCH=
+_MEM_SIZE)<br></div><div><a href=3D"https://xenbits.xen.org/gitweb/?p=3Dxen=
+.git;a=3Dblob;f=3Dtools/libs/light/libxl_arm.c;h=3D2a5e93c28403738779863ade=
+d31d2df3ba72f8c0;hb=3DHEAD#l833" target=3D"_blank">https://xenbits.xen.org/=
+gitweb/?p=3Dxen.git;a=3Dblob;f=3Dtools/libs/light/libxl_arm.c;h=3D2a5e93c28=
+403738779863aded31d2df3ba72f8c0;hb=3DHEAD#l833</a><br></div><div><br></div>=
+<div>Here in Qemu when creating a PCI Host bridge we would need to use exac=
+tly the same reserved regions=C2=A0which toolstack writes in the correspond=
+ing device-tree node. So how to tell Qemu about them?=C2=A0</div><div>1. In=
+troduce new cmd line arguments?</div><div>2. Using Xenstore?</div><div>3. A=
+nything else?</div><div><br></div><div>I am afraid this would be related to=
+ every device that we want to emulate in Qemu and for which the toolstack n=
+eeds to=C2=A0generate device-tree node=C2=A0by using something defined with=
+ GUEST_*, unless I really missed something.</div><div><br></div><div>=C2=A0=
+</div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;b=
+order-left:1px solid rgb(204,204,204);padding-left:1ex">
+<br>
+Cheers,<br>
+<br>
+-- <br>
+Julien Grall<br>
+<br>
+</blockquote></div><br clear=3D"all"><div><br></div>-- <br><div dir=3D"ltr"=
+><div dir=3D"ltr"><div><div dir=3D"ltr"><div><div dir=3D"ltr"><span style=
+=3D"background-color:rgb(255,255,255)"><font size=3D"2"><span style=3D"colo=
+r:rgb(51,51,51);font-family:Arial,sans-serif">Regards,</span></font></span>=
+</div><div dir=3D"ltr"><br></div><div dir=3D"ltr"><div><span style=3D"backg=
+round-color:rgb(255,255,255)"><font size=3D"2">Oleksandr Tyshchenko</font><=
+/span></div></div></div></div></div></div></div></div>
+
+--00000000000062afd005ec1cf34a--

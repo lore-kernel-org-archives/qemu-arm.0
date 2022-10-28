@@ -1,240 +1,145 @@
-Received: by 2002:a17:906:43c7:b0:78d:9f02:16a1 with SMTP id j7csp1259161ejn;
-        Fri, 28 Oct 2022 06:41:10 -0700 (PDT)
-X-Google-Smtp-Source: AMsMyM6fnEGek/PaOR95tAM5yE1kUktfimq9eZvW5nChmRkryUAMVMuGUPUuKQO9aWvocY2b8igF
-X-Received: by 2002:a0c:f193:0:b0:4bb:92f5:bc20 with SMTP id m19-20020a0cf193000000b004bb92f5bc20mr13231576qvl.52.1666964470447;
-        Fri, 28 Oct 2022 06:41:10 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1666964470; cv=none;
+Received: by 2002:a17:906:43c7:b0:78d:9f02:16a1 with SMTP id j7csp1448678ejn;
+        Fri, 28 Oct 2022 10:57:29 -0700 (PDT)
+X-Google-Smtp-Source: AMsMyM5u6CD3QJXf+NdDF+UDQhIxSoebFwxPii48H3UoQPUjfVFykI3WqjI13Nnp4uRrEX9A02t7
+X-Received: by 2002:a05:6902:124f:b0:66e:e3da:487e with SMTP id t15-20020a056902124f00b0066ee3da487emr487155ybu.310.1666979849175;
+        Fri, 28 Oct 2022 10:57:29 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1666979849; cv=none;
         d=google.com; s=arc-20160816;
-        b=ektig1qCv2wrIQHmr/5/JzymvOCW2kBJ39sP+QXEf3/r3VR24mYn5TMpPTCqwD5dyF
-         /Tz0tEtt8AYSwgR5tC8Oljwp7J0kbIPzBPrw4DojCL90k1DrEZgpjlTlqGho7T3hZ6qj
-         7aYQKG6XVzlMUGreJmvNc9PFewj4louvaBeqZGI0X8REOEFrMVah8YXv7ldYZPMbzYR/
-         Qrdx7R3GHjFz8/mJNdCsFvfsnyoOCoF32f5vvmL4tE97Vg8Ml62DI9dmyGbPlPxrMhvZ
-         2d3sb1GPieGROz65TzHvmiE0VMRRhUSkK2zM2Ms0Ku7AC3bN29uVs6vXjO+qMwk8UChS
-         nPwQ==
+        b=Pk90g7XWIVgnvo8+GK1nfK5LbP1PYtGevkvkiX+6/67wV/d7fNSa9wVlFF7hAxMla7
+         tTlG7DaScigwC8mpnjFYFHaOG3tlZykWG2fwjnsqqblaD1VuBLm+HmKTTnJ5kekvfHCU
+         H835xuN0Z1Ilje6l2znl37laJHnLfMoVzqAFi7ElAsjhVHMMaROMb00HVXN+F68yspU6
+         bP0uXUUiIFt1iCLSQn7CYSA2lREc3kDfGEMK3DyTLAWss1CmYJUF3ZmcJqhvf0jOly9U
+         Cx7hliK8xVawdn32SJQETIA0q/FTmGNHNnqme9NE8OM2orxJQUms1Hm9lb8lud6LcWzz
+         8d1A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=errors-to:sender:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
          :dkim-signature;
-        bh=4K87xT8UfgYIvzosA0ZzEb5C1Re2w2jmRL989xqlNYM=;
-        b=qTdEeorzNU7/nQ/pPuW8NZjxD0GlNJaTT3rsgriuyJkTN7biHj8hIKqwagADC+4O2o
-         l/n3hmEAu5LzkjM0C7BhQDhJUEZVReS/t9iOneml1B1paVTsXSJGTcTbdBItJKijP1cU
-         9CsivvdKtztJJHIvB0eSW/DRadytXwTK+Sc9Fr0WE0/F6tq01KBvif20/GfQdcAg0WeJ
-         eOgTRUNrDS8U2o1f9H8znDPalfAjho/uH9yZgRBdGu7mVlYXp/0Sa5XdonoM8SphbNes
-         cK9d7G6vFnxYq0RoqEzQPJsI7LYzMj/i7jj8jtNxwtV05fqggZjjhrKDBGluZ+tyqz3o
-         yLGw==
+        bh=c1XmoAUQj3+jFBnGeB4GeekYFOj+FFZJbONcyLLcspQ=;
+        b=zuRIjIgJidHjlT65oYNc3SfD8X06QGT7OseN0R8E6k3OHLtMvrvX4t31mw4UZWqgdg
+         HCBhsXaRoTqqvAuOwsPbRwwv9Q1NxfXbCQKUfoVAbLJk/YZ3P0t3xQowto2tYiJ0pg36
+         tMb1QXH8x5Jf+3HGgY+JXMG6/yAnkiB6yn57VPqeDinl1AuYZj0VM4sajCFuFHEOrFcP
+         J1MoPwae7laqkgTx3RQtKetpkyv8WvS98HLh+Uwei4x08YThm7bQhtmf0WsGHB7SRihw
+         f+2mSydoFlaFF4yAzSvJLZzUYluEOuZpBqFV7wQpqkxnjQOgabJ467vo2U8GDC6ZLkLm
+         NTsw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=X9wYD2DL;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id bi31-20020a05620a319f00b006fa0a5394c3si795677qkb.266.2022.10.28.06.41.10
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 28 Oct 2022 06:41:10 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       dkim=pass header.i=@xen.org header.s=20200302mail header.b=BzQ6U+EN;
+       spf=pass (google.com: domain of julien@xen.org designates 104.130.215.37 as permitted sender) smtp.mailfrom=julien@xen.org
+Return-Path: <julien@xen.org>
+Received: from mail.xenproject.org (mail.xenproject.org. [104.130.215.37])
+        by mx.google.com with ESMTPS id 195-20020a2505cc000000b006cb3ae32703si4735618ybf.345.2022.10.28.10.57.29
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 28 Oct 2022 10:57:29 -0700 (PDT)
+Received-SPF: pass (google.com: domain of julien@xen.org designates 104.130.215.37 as permitted sender) client-ip=104.130.215.37;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=X9wYD2DL;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1ooPaq-0008NZ-PY; Fri, 28 Oct 2022 09:40:16 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1ooPak-0008Jc-Dm
- for qemu-devel@nongnu.org; Fri, 28 Oct 2022 09:40:10 -0400
-Received: from mail-wr1-x431.google.com ([2a00:1450:4864:20::431])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1ooPai-0007r7-3D
- for qemu-devel@nongnu.org; Fri, 28 Oct 2022 09:40:10 -0400
-Received: by mail-wr1-x431.google.com with SMTP id g12so6629165wrs.10
- for <qemu-devel@nongnu.org>; Fri, 28 Oct 2022 06:40:07 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:to:from:from:to:cc:subject:date:message-id
- :reply-to; bh=4K87xT8UfgYIvzosA0ZzEb5C1Re2w2jmRL989xqlNYM=;
- b=X9wYD2DLpvPekzE13VfXXIvQFYAz/4lyMnGtvF4PPzujN1znkzYQpK2DLC8pDeNuFm
- S/2gQw2zxR8dUwLZofaalLEs4qyx7eP87AJJVSF68WaFrBEWXp9fNNOH/5tGdZMAbHOG
- xq/1DjhTaBGmVogMOdXdKV9k0Wdned9trKa4qs+RRfeiTv+1ED07uHKu32gnnKHzN/FY
- 1iNU7D7Xx1G9TtWS6ts2qR+rJP/bBJV8mPiAMdpDIK8rKGVHu8xRkcW2eS3K7toimoZX
- J+tfiQzumu7GCRLbEH+IxKnlgNSNNHWM/ftGC3AsbUJiU1FNwbIkhRGSqgK9W2Tphznb
- 8lfA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=4K87xT8UfgYIvzosA0ZzEb5C1Re2w2jmRL989xqlNYM=;
- b=RT8yFv9YDMXcJANV33zVM9J3b+VX18q4fHi0c/erXVeapsq/7gNzr5vOHmYTdxyd8Z
- HLXqwWfEUtesigd/l89aUf7pq3r+BLZ1Vw8z71E+/rvwv6musXKrqMDOyzu4tzKVhMN7
- ljM9ElF+LtJ8BorJG8P5x0Qsz+PXJmAnN2V6Els92rJ2eZ0MlR3ySYS4Cs9/r5D2y2Tx
- TJuqPDtgXE4sZL8oU45B7mHklDBnc9DQ6rG3r0Xu8BgpzBx42DPj1WV0ghkOFswmMV1/
- TFsowZu4Q8BETExdriKAIv5AAW/iATllJFB6xqlqpSbOgqZ4G6Gyco276pC+AjD0JUtw
- vXDA==
-X-Gm-Message-State: ACrzQf0sIFotfghxVsSCutomsFkZ9KG7QFXvLkKJjEV1MZ1SMCr1KaGH
- A1Fwk8Cq3ZhJOE/r0Dk681CgJTetogObiQ==
-X-Received: by 2002:a05:6000:1a46:b0:236:9cb4:f2a7 with SMTP id
- t6-20020a0560001a4600b002369cb4f2a7mr3849407wry.141.1666964406628; 
- Fri, 28 Oct 2022 06:40:06 -0700 (PDT)
-Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
- by smtp.gmail.com with ESMTPSA id
- l16-20020a5d4110000000b002365cd93d05sm3572858wrp.102.2022.10.28.06.40.05
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 28 Oct 2022 06:40:05 -0700 (PDT)
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Subject: [PATCH 1/7] target/arm: Make TLBIOS and TLBIRANGE ops trap on
- HCR_EL2.TTLB
-Date: Fri, 28 Oct 2022 14:39:56 +0100
-Message-Id: <20221028134002.730598-2-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20221028134002.730598-1-peter.maydell@linaro.org>
-References: <20221028134002.730598-1-peter.maydell@linaro.org>
+       dkim=pass header.i=@xen.org header.s=20200302mail header.b=BzQ6U+EN;
+       spf=pass (google.com: domain of julien@xen.org designates 104.130.215.37 as permitted sender) smtp.mailfrom=julien@xen.org
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=xen.org;
+	s=20200302mail; h=Content-Transfer-Encoding:Content-Type:In-Reply-To:From:
+	References:Cc:To:Subject:MIME-Version:Date:Message-ID;
+	bh=c1XmoAUQj3+jFBnGeB4GeekYFOj+FFZJbONcyLLcspQ=; b=BzQ6U+EN8+ZxedMiAIZIhXOoNY
+	ypgoCymcrhksfp5EFZ3UecTWgkETbMjmTzKTr7mkiqEauLe5Yk1vpqx2k9umGEhlflMubWBY0/B+i
+	XW5Vq8O/9+RDC1N7oThhM/gD6iMQ4kgVLMqfw4BM/bZXnVFz3debQC/D+lKu395+fVxs=;
+Received: from xenbits.xenproject.org ([104.239.192.120])
+	by mail.xenproject.org with esmtp (Exim 4.92)
+	(envelope-from <julien@xen.org>)
+	id 1ooTbj-0000BI-LD; Fri, 28 Oct 2022 17:57:27 +0000
+Received: from 54-240-197-233.amazon.com ([54.240.197.233] helo=[192.168.25.146])
+	by xenbits.xenproject.org with esmtpsa (TLS1.3:ECDHE_RSA_AES_128_GCM_SHA256:128)
+	(Exim 4.92)
+	(envelope-from <julien@xen.org>)
+	id 1ooTbj-0007GZ-Do; Fri, 28 Oct 2022 17:57:27 +0000
+Message-ID: <7da20a2e-81e0-b3ad-c2d6-6012fa7edee2@xen.org>
+Date: Fri, 28 Oct 2022 18:57:24 +0100
 MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
+ Gecko/20100101 Thunderbird/102.4.1
+Subject: Re: [PATCH v1 10/12] hw/arm: introduce xenpv machine
+To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
+ Vikram Garhwal <vikram.garhwal@amd.com>
+Cc: qemu-devel@nongnu.org, stefano.stabellini@amd.com,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Stefano Stabellini <sstabellini@kernel.org>,
+ Anthony Perard <anthony.perard@citrix.com>, Paul Durrant <paul@xen.org>,
+ "open list:ARM TCG CPUs" <qemu-arm@nongnu.org>,
+ xen-devel@lists.xenproject.org
+References: <20221015050750.4185-1-vikram.garhwal@amd.com>
+ <20221015050750.4185-11-vikram.garhwal@amd.com> <87wn8l3d3r.fsf@linaro.org>
+Content-Language: en-US
+From: Julien Grall <julien@xen.org>
+In-Reply-To: <87wn8l3d3r.fsf@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::431;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x431.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Sender: "Qemu-devel" <qemu-devel-bounces@nongnu.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: k2B9tczpwa1U
+X-TUID: PV4jlEfXGxzM
 
-The HCR_EL2.TTLB bit is supposed to trap all EL1 execution of TLB
-maintenance instructions.  However we have added new TLB insns for
-FEAT_TLBIOS and FEAT_TLBIRANGE, and forgot to set their accessfn to
-access_ttlb.  Add the missing accessfns.
+Hi,
 
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
- target/arm/helper.c | 36 ++++++++++++++++++------------------
- 1 file changed, 18 insertions(+), 18 deletions(-)
+On 27/10/2022 09:02, Alex Bennée wrote:
+> 
+> Vikram Garhwal <vikram.garhwal@amd.com> writes:
+> 
+> <snip>
+>> Optional: When CONFIG_TPM is enabled, it also creates a tpm-tis-device, adds a
+>> TPM emulator and connects to swtpm running on host machine via chardev socket
+>> and support TPM functionalities for a guest domain.
+>>
+>> Extra command line for aarch64 xenpv QEMU to connect to swtpm:
+>>      -chardev socket,id=chrtpm,path=/tmp/myvtpm2/swtpm-sock \
+>>      -tpmdev emulator,id=tpm0,chardev=chrtpm \
+>>
+>> swtpm implements a TPM software emulator(TPM 1.2 & TPM 2) built on libtpms and
+>> provides access to TPM functionality over socket, chardev and CUSE interface.
+>> Github repo: https://github.com/stefanberger/swtpm
+>> Example for starting swtpm on host machine:
+>>      mkdir /tmp/vtpm2
+>>      swtpm socket --tpmstate dir=/tmp/vtpm2 \
+>>      --ctrl type=unixio,path=/tmp/vtpm2/swtpm-sock &
+> 
+> <snip>
+>> +static void xen_enable_tpm(void)
+>> +{
+>> +/* qemu_find_tpm_be is only available when CONFIG_TPM is enabled. */
+>> +#ifdef CONFIG_TPM
+>> +    Error *errp = NULL;
+>> +    DeviceState *dev;
+>> +    SysBusDevice *busdev;
+>> +
+>> +    TPMBackend *be = qemu_find_tpm_be("tpm0");
+>> +    if (be == NULL) {
+>> +        DPRINTF("Couldn't fine the backend for tpm0\n");
+>> +        return;
+>> +    }
+>> +    dev = qdev_new(TYPE_TPM_TIS_SYSBUS);
+>> +    object_property_set_link(OBJECT(dev), "tpmdev", OBJECT(be), &errp);
+>> +    object_property_set_str(OBJECT(dev), "tpmdev", be->id, &errp);
+>> +    busdev = SYS_BUS_DEVICE(dev);
+>> +    sysbus_realize_and_unref(busdev, &error_fatal);
+>> +    sysbus_mmio_map(busdev, 0, GUEST_TPM_BASE);
+> 
+> I'm not sure what has gone wrong here but I'm getting:
+> 
+>    ../../hw/arm/xen_arm.c: In function ‘xen_enable_tpm’:
+>    ../../hw/arm/xen_arm.c:120:32: error: ‘GUEST_TPM_BASE’ undeclared (first use in this function); did you mean ‘GUEST_RAM_BASE’?
+>      120 |     sysbus_mmio_map(busdev, 0, GUEST_TPM_BASE);
+>          |                                ^~~~~~~~~~~~~~
+>          |                                GUEST_RAM_BASE
+>    ../../hw/arm/xen_arm.c:120:32: note: each undeclared identifier is reported only once for each function it appears in
+> 
+> In my cross build:
+> 
+>    # Configured with: '../../configure' '--disable-docs' '--target-list=aarch64-softmmu' '--disable-kvm' '--enable-xen' '--disable-opengl' '--disable-libudev' '--enable-tpm' '--disable-xen-pci-passthrough' '--cross-prefix=aarch64-linux-gnu-' '--skip-meson'
+> 
+> which makes me wonder if this is a configure failure or a confusion
+> about being able to have host swtpm implementations during emulation but
+> needing target tpm for Xen?
 
-diff --git a/target/arm/helper.c b/target/arm/helper.c
-index c672903f432..dd6fc30faee 100644
---- a/target/arm/helper.c
-+++ b/target/arm/helper.c
-@@ -6717,51 +6717,51 @@ static const ARMCPRegInfo pauth_reginfo[] = {
- static const ARMCPRegInfo tlbirange_reginfo[] = {
-     { .name = "TLBI_RVAE1IS", .state = ARM_CP_STATE_AA64,
-       .opc0 = 1, .opc1 = 0, .crn = 8, .crm = 2, .opc2 = 1,
--      .access = PL1_W, .type = ARM_CP_NO_RAW,
-+      .access = PL1_W, .accessfn = access_ttlb, .type = ARM_CP_NO_RAW,
-       .writefn = tlbi_aa64_rvae1is_write },
-     { .name = "TLBI_RVAAE1IS", .state = ARM_CP_STATE_AA64,
-       .opc0 = 1, .opc1 = 0, .crn = 8, .crm = 2, .opc2 = 3,
--      .access = PL1_W, .type = ARM_CP_NO_RAW,
-+      .access = PL1_W, .accessfn = access_ttlb, .type = ARM_CP_NO_RAW,
-       .writefn = tlbi_aa64_rvae1is_write },
-    { .name = "TLBI_RVALE1IS", .state = ARM_CP_STATE_AA64,
-       .opc0 = 1, .opc1 = 0, .crn = 8, .crm = 2, .opc2 = 5,
--      .access = PL1_W, .type = ARM_CP_NO_RAW,
-+      .access = PL1_W, .accessfn = access_ttlb, .type = ARM_CP_NO_RAW,
-       .writefn = tlbi_aa64_rvae1is_write },
-     { .name = "TLBI_RVAALE1IS", .state = ARM_CP_STATE_AA64,
-       .opc0 = 1, .opc1 = 0, .crn = 8, .crm = 2, .opc2 = 7,
--      .access = PL1_W, .type = ARM_CP_NO_RAW,
-+      .access = PL1_W, .accessfn = access_ttlb, .type = ARM_CP_NO_RAW,
-       .writefn = tlbi_aa64_rvae1is_write },
-     { .name = "TLBI_RVAE1OS", .state = ARM_CP_STATE_AA64,
-       .opc0 = 1, .opc1 = 0, .crn = 8, .crm = 5, .opc2 = 1,
--      .access = PL1_W, .type = ARM_CP_NO_RAW,
-+      .access = PL1_W, .accessfn = access_ttlb, .type = ARM_CP_NO_RAW,
-       .writefn = tlbi_aa64_rvae1is_write },
-     { .name = "TLBI_RVAAE1OS", .state = ARM_CP_STATE_AA64,
-       .opc0 = 1, .opc1 = 0, .crn = 8, .crm = 5, .opc2 = 3,
--      .access = PL1_W, .type = ARM_CP_NO_RAW,
-+      .access = PL1_W, .accessfn = access_ttlb, .type = ARM_CP_NO_RAW,
-       .writefn = tlbi_aa64_rvae1is_write },
-    { .name = "TLBI_RVALE1OS", .state = ARM_CP_STATE_AA64,
-       .opc0 = 1, .opc1 = 0, .crn = 8, .crm = 5, .opc2 = 5,
--      .access = PL1_W, .type = ARM_CP_NO_RAW,
-+      .access = PL1_W, .accessfn = access_ttlb, .type = ARM_CP_NO_RAW,
-       .writefn = tlbi_aa64_rvae1is_write },
-     { .name = "TLBI_RVAALE1OS", .state = ARM_CP_STATE_AA64,
-       .opc0 = 1, .opc1 = 0, .crn = 8, .crm = 5, .opc2 = 7,
--      .access = PL1_W, .type = ARM_CP_NO_RAW,
-+      .access = PL1_W, .accessfn = access_ttlb, .type = ARM_CP_NO_RAW,
-       .writefn = tlbi_aa64_rvae1is_write },
-     { .name = "TLBI_RVAE1", .state = ARM_CP_STATE_AA64,
-       .opc0 = 1, .opc1 = 0, .crn = 8, .crm = 6, .opc2 = 1,
--      .access = PL1_W, .type = ARM_CP_NO_RAW,
-+      .access = PL1_W, .accessfn = access_ttlb, .type = ARM_CP_NO_RAW,
-       .writefn = tlbi_aa64_rvae1_write },
-     { .name = "TLBI_RVAAE1", .state = ARM_CP_STATE_AA64,
-       .opc0 = 1, .opc1 = 0, .crn = 8, .crm = 6, .opc2 = 3,
--      .access = PL1_W, .type = ARM_CP_NO_RAW,
-+      .access = PL1_W, .accessfn = access_ttlb, .type = ARM_CP_NO_RAW,
-       .writefn = tlbi_aa64_rvae1_write },
-    { .name = "TLBI_RVALE1", .state = ARM_CP_STATE_AA64,
-       .opc0 = 1, .opc1 = 0, .crn = 8, .crm = 6, .opc2 = 5,
--      .access = PL1_W, .type = ARM_CP_NO_RAW,
-+      .access = PL1_W, .accessfn = access_ttlb, .type = ARM_CP_NO_RAW,
-       .writefn = tlbi_aa64_rvae1_write },
-     { .name = "TLBI_RVAALE1", .state = ARM_CP_STATE_AA64,
-       .opc0 = 1, .opc1 = 0, .crn = 8, .crm = 6, .opc2 = 7,
--      .access = PL1_W, .type = ARM_CP_NO_RAW,
-+      .access = PL1_W, .accessfn = access_ttlb, .type = ARM_CP_NO_RAW,
-       .writefn = tlbi_aa64_rvae1_write },
-     { .name = "TLBI_RIPAS2E1IS", .state = ARM_CP_STATE_AA64,
-       .opc0 = 1, .opc1 = 4, .crn = 8, .crm = 0, .opc2 = 2,
-@@ -6832,27 +6832,27 @@ static const ARMCPRegInfo tlbirange_reginfo[] = {
- static const ARMCPRegInfo tlbios_reginfo[] = {
-     { .name = "TLBI_VMALLE1OS", .state = ARM_CP_STATE_AA64,
-       .opc0 = 1, .opc1 = 0, .crn = 8, .crm = 1, .opc2 = 0,
--      .access = PL1_W, .type = ARM_CP_NO_RAW,
-+      .access = PL1_W, .accessfn = access_ttlb, .type = ARM_CP_NO_RAW,
-       .writefn = tlbi_aa64_vmalle1is_write },
-     { .name = "TLBI_VAE1OS", .state = ARM_CP_STATE_AA64,
-       .opc0 = 1, .opc1 = 0, .crn = 8, .crm = 1, .opc2 = 1,
--      .access = PL1_W, .type = ARM_CP_NO_RAW,
-+      .access = PL1_W, .accessfn = access_ttlb, .type = ARM_CP_NO_RAW,
-       .writefn = tlbi_aa64_vae1is_write },
-     { .name = "TLBI_ASIDE1OS", .state = ARM_CP_STATE_AA64,
-       .opc0 = 1, .opc1 = 0, .crn = 8, .crm = 1, .opc2 = 2,
--      .access = PL1_W, .type = ARM_CP_NO_RAW,
-+      .access = PL1_W, .accessfn = access_ttlb, .type = ARM_CP_NO_RAW,
-       .writefn = tlbi_aa64_vmalle1is_write },
-     { .name = "TLBI_VAAE1OS", .state = ARM_CP_STATE_AA64,
-       .opc0 = 1, .opc1 = 0, .crn = 8, .crm = 1, .opc2 = 3,
--      .access = PL1_W, .type = ARM_CP_NO_RAW,
-+      .access = PL1_W, .accessfn = access_ttlb, .type = ARM_CP_NO_RAW,
-       .writefn = tlbi_aa64_vae1is_write },
-     { .name = "TLBI_VALE1OS", .state = ARM_CP_STATE_AA64,
-       .opc0 = 1, .opc1 = 0, .crn = 8, .crm = 1, .opc2 = 5,
--      .access = PL1_W, .type = ARM_CP_NO_RAW,
-+      .access = PL1_W, .accessfn = access_ttlb, .type = ARM_CP_NO_RAW,
-       .writefn = tlbi_aa64_vae1is_write },
-     { .name = "TLBI_VAALE1OS", .state = ARM_CP_STATE_AA64,
-       .opc0 = 1, .opc1 = 0, .crn = 8, .crm = 1, .opc2 = 7,
--      .access = PL1_W, .type = ARM_CP_NO_RAW,
-+      .access = PL1_W, .accessfn = access_ttlb, .type = ARM_CP_NO_RAW,
-       .writefn = tlbi_aa64_vae1is_write },
-     { .name = "TLBI_ALLE2OS", .state = ARM_CP_STATE_AA64,
-       .opc0 = 1, .opc1 = 4, .crn = 8, .crm = 1, .opc2 = 0,
+I was also wondering where is that value come from. Note that the 
+memory/IRQ layout exposed to the guest is not stable.
+
+Are we expecting the user to rebuild QEMU for every Xen versions (or 
+possibly every guest if we ever allow dynamic layout in Xen)?
+
+Cheers,
+
 -- 
-2.25.1
-
+Julien Grall

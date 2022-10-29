@@ -1,151 +1,284 @@
-Received: by 2002:a17:906:43c7:b0:78d:9f02:16a1 with SMTP id j7csp679688ejn;
-        Thu, 27 Oct 2022 13:24:33 -0700 (PDT)
-X-Google-Smtp-Source: AMsMyM7F+2wDfCkSVssGKkbq2e48FqkvGVnyG4dlqwHqwOoER5jqkn3gh4X8MzGKJ43Qr6HRt5Jq
-X-Received: by 2002:a05:620a:298a:b0:6ee:e31f:6247 with SMTP id r10-20020a05620a298a00b006eee31f6247mr34887899qkp.744.1666902273159;
-        Thu, 27 Oct 2022 13:24:33 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1666902273; cv=none;
+Received: by 2002:a17:907:6e27:b0:7a7:f837:9937 with SMTP id sd39csp1948413ejc;
+        Sat, 29 Oct 2022 10:26:07 -0700 (PDT)
+X-Google-Smtp-Source: AMsMyM7HdoR6YyizWx91A6LIWwrtV0IDpp2aCAE/3FogYC71T/6kUabp8DBQtVT1T8eD3N0h1jaX
+X-Received: by 2002:a05:620a:30b:b0:6e4:6de2:7f38 with SMTP id s11-20020a05620a030b00b006e46de27f38mr3776295qkm.520.1667064367335;
+        Sat, 29 Oct 2022 10:26:07 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1667064367; cv=none;
         d=google.com; s=arc-20160816;
-        b=QBk1CE1GtP9+z3gMN9Lv4B0B9IxGlK5jQZemwn4e+lpx2wbTsgKu1NxyTGw8aW5dKw
-         qrLMKFMP6kj2XJU3znCb2VYk2Ffy5qDwVfEiBRCddVA1zKWmswwEY3fmtxBemHoUmNG2
-         yV+mHVIEjQAHoTxTfLCZT4OTTDWGX9DSAU0Jb5NutvWRIpz1E5aZ/zSR0B0z/ktFPr5N
-         HZzXS90A9ohGaIGJUpA5RKc9LeyIkhVGtkut2L54HsTVq1yLRMqx4cD8hIdBpry3QFl3
-         CnPV7wqqC6CD9/9RTZ68wA1yygdo/+obKf3efa4z5y1O22Nr7CiadW3ERpReJZUXxyaY
-         NfxA==
+        b=grP1f7+0N71p5+NaxeJo35DCXHmtN5gXCzCfcg8fl5zQ4I2Ihf9hzDKLle5kjqg5Ue
+         m5ylJAu5C8vhQJiQEbm7mpX9DVCulia4/ZSgPIPZiFTTVWTYYCXkM5ZeAh2KDbIS2gR7
+         2CvXMU0ruuTZojvyume+HqMixEwivMwrJYhA78Alu6CWDBPCd0pUTSJH5juqlqy73gpM
+         UesOU7Q9VEoNCLaAYtWxYYgnIFHfuNXXJA1TtcN6s1+nfDCQbEfdIUd+LbtigyaFCCT5
+         436ap5CrxIi0QqCjMSjY8KgXV80bA/nOcBuWy1RyCD9bkuHt03OJe+BOLyoA6TGwUDU+
+         oqtg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=errors-to:sender:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:cc:to:content-language:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=QV9Gn+ZSEEsFZu8EbaTf3oN3ULyfPogPWjTw7H0V79U=;
-        b=SJfeI8bBi6jsrGiHBOzLd4kdCvt7i+A0bmTNAx8jsrvZ+igPkmsda/27giUcLOmFNa
-         pBhmhQrRiK4YaygE/6hs7Cx+DWSzmnscfKmbnMp8e0m5WdRXPeHR0c2ofcQogzs+QSMV
-         5n1ui8GpVRugozMS7veF4yn7ilID/cwzVz2DlLk4/1a7c03PaefR7+PZeJw7QGhMhSI1
-         yEPLQa9dv7qK2Cau/JkGL1KIETD/p4bqbmoPPrq8gWzBd032N5RdNgXjANfuXInmGZ6q
-         ikXltFR+rBn6qjt7mxWW7+tih51IDkE8ynhIgCvDITWm0OPYePcrRbhX2DUh9s3CY8Ol
-         hAyg==
+        h=errors-to:from:reply-to:sender:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence
+         :content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to;
+        bh=t9lN1A9Xmc+cYObYbRlzKSbCuWu0qUPHcLkVFshmw/Q=;
+        b=qMQseCXEWx/qDpXpIzlMsG9q2pwz8JqKjv29ylFouxs7W/QtTVdihx25O+2lQERRuk
+         I+KFo9UsFSSqtQbu3+mQ1wfDDAzM3Ldy086Pw+b0ou1CWkXMtwdkTHOHp5cxnWjreEgc
+         xQCaO2k5U9JJrETqJIaTdy9Sl8Yc990bSyeXxDj3iBYDc7rhAQh1Wry/hocUX6e1qpgJ
+         S/u8hHQ5MFuoyPd/6s5xqO9SdLJm/8xJudfJCWP6PZ4Uh/O8uxOuF732bemTY7BjGWJv
+         eemCx/RbqCch58kDsDENxlHI4F/LrI5vCK5SDORgjzq+zRO/5uNhixP2u0YQr5wWUpRf
+         KRVw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=m2a56fvK;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 1-20020ad45b81000000b004bb7179688dsi1570545qvp.319.2022.10.27.13.24.33
+        by mx.google.com with ESMTPS id 10-20020a05621420ea00b004ad34d96669si1143126qvk.29.2022.10.29.10.26.07
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 27 Oct 2022 13:24:33 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Sat, 29 Oct 2022 10:26:07 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=m2a56fvK;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1oo9Pr-0004oO-SM; Thu, 27 Oct 2022 16:23:51 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1oopaZ-000279-Kz; Sat, 29 Oct 2022 13:25:43 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1oo9Pp-0004ny-Lm
- for qemu-devel@nongnu.org; Thu, 27 Oct 2022 16:23:49 -0400
-Received: from mail-pg1-x52c.google.com ([2607:f8b0:4864:20::52c])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1oo9Pj-0003tJ-Cr
- for qemu-devel@nongnu.org; Thu, 27 Oct 2022 16:23:49 -0400
-Received: by mail-pg1-x52c.google.com with SMTP id s196so2708061pgs.3
- for <qemu-devel@nongnu.org>; Thu, 27 Oct 2022 13:23:42 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=QV9Gn+ZSEEsFZu8EbaTf3oN3ULyfPogPWjTw7H0V79U=;
- b=m2a56fvKh+6IYlJU+m26ZqvNioPuKbCLUticeEqIoHCEj4RzP13UL+eHCTMB4WZ77C
- 8mm1jCOUNAebjTl/hH8qVMPWaaufnm7Wz2nU81bIC0jBGiOK2Nh0D1cm2T5gEFnnYnkQ
- aKT8Qgmi/TPeoVIV7biz/GGsE/NTV2285BoqqyxOOYcPE+JfkWFBrqZzl7oewD+Veqx7
- g5NfmdCUofNBawVtFbVFX9fg7KEjNZfeqpJi4/DERiCaeJbzTPxTuv9q25xn6Z7u37TW
- N38/1fOkhpa/yESIZdmNmUG+a+GKQqgeWyKx+96Irx824Pcj2FTb2pMung57vZfc4ddE
- Yu6w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=QV9Gn+ZSEEsFZu8EbaTf3oN3ULyfPogPWjTw7H0V79U=;
- b=7pPWtyRtlOxnOL9wRwEGgrbdE8t7xxSiFT/XX3nKyKGoXSKuKEcFVvpwdAm/yk6aVY
- v5GboawN/khfKw9o7BXGJ97ofa+EwSa2WFBuE+Ncqd2OM/ihSG3BUUViCeRGmiTiAIg3
- sd07z91WhUaABYlL/g5GgmhuCcPW4wp4HVuWt33wyFVX5GiJNOJhr5SVv6iWUEe6I+DA
- 02+tcK3AGA67Al12XMSSNYBBdrpsilhBDzp7fFj8jf4/U/4UMOBgxcVT5V4T8ZIh3Fx3
- Nz85Bwcs+RyY2xQDytYUTY01QJIsRpq7TANS5zR8y2+cBfL45LgCty5ix03zAe6gPwJA
- 06HQ==
-X-Gm-Message-State: ACrzQf1YkbMIa/2D/LhVSQSN3DxozuJ4VgDbLKIIhnwDLV3JxPU8Nnag
- IMiekvjaEVEOjFc841Omn1W7uq2/TTnSZced
-X-Received: by 2002:a17:902:6a86:b0:176:a6bc:54c0 with SMTP id
- n6-20020a1709026a8600b00176a6bc54c0mr51743159plk.87.1666902210493; 
- Thu, 27 Oct 2022 13:23:30 -0700 (PDT)
-Received: from ?IPV6:2001:8003:501a:d301:93c4:c1c9:4368:47fa?
- ([2001:8003:501a:d301:93c4:c1c9:4368:47fa])
- by smtp.gmail.com with ESMTPSA id
- t8-20020a1709027fc800b00179eb1576bbsm1554171plb.190.2022.10.27.13.23.27
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 27 Oct 2022 13:23:30 -0700 (PDT)
-Message-ID: <f0536c45-d0fb-160b-e80c-41100f507cc6@linaro.org>
-Date: Fri, 28 Oct 2022 06:23:24 +1000
+ (Exim 4.90_1) (envelope-from <stefan@weilnetz.de>)
+ id 1oopaV-00026b-35; Sat, 29 Oct 2022 13:25:41 -0400
+Received: from mail.weilnetz.de ([37.120.169.71]
+ helo=mail.v2201612906741603.powersrv.de)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <stefan@weilnetz.de>)
+ id 1oopaS-0004Xv-LK; Sat, 29 Oct 2022 13:25:38 -0400
+Received: from qemu.weilnetz.de (qemu.weilnetz.de [188.68.58.204])
+ by mail.v2201612906741603.powersrv.de (Postfix) with ESMTP id B3631DA0C54;
+ Sat, 29 Oct 2022 19:25:31 +0200 (CEST)
+Received: by qemu.weilnetz.de (Postfix, from userid 1000)
+ id 71BCB462074; Sat, 29 Oct 2022 19:25:31 +0200 (CEST)
+To: qemu-devel@nongnu.org
+Cc: Markus Armbruster <armbru@redhat.com>, Michael Roth <michael.roth@amd.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Stefan Hajnoczi <stefanha@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ Peter Xu <peterx@redhat.com>, David Hildenbrand <david@redhat.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Eric Blake <eblake@redhat.com>,
+ =?UTF-8?q?Daniel=20P=20=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
+ Eduardo Habkost <eduardo@habkost.net>,
+ Konstantin Kostiuk <kkostiuk@redhat.com>, Thomas Huth <thuth@redhat.com>,
+ Laurent Vivier <lvivier@redhat.com>, qemu-arm@nongnu.org,
+ virtio-fs@redhat.com, Stefan Weil <sw@weilnetz.de>
+Subject: [PATCH] Fix some typos in documentation and comments
+Date: Sat, 29 Oct 2022 19:25:15 +0200
+Message-Id: <20221029172515.217264-1-sw@weilnetz.de>
+X-Mailer: git-send-email 2.30.2
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.2.2
-Subject: Re: [PATCH 2/2] hw/arm/boot: Set SCR_EL3.HXEn when booting kernel
-Content-Language: en-US
-To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
-Cc: Jerome Forissier <jerome.forissier@linaro.org>
-References: <20221027140207.413084-1-peter.maydell@linaro.org>
- <20221027140207.413084-3-peter.maydell@linaro.org>
-From: Richard Henderson <richard.henderson@linaro.org>
-In-Reply-To: <20221027140207.413084-3-peter.maydell@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::52c;
- envelope-from=richard.henderson@linaro.org; helo=mail-pg1-x52c.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- T_SPF_TEMPERROR=0.01 autolearn=unavailable autolearn_force=no
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=37.120.169.71; envelope-from=stefan@weilnetz.de;
+ helo=mail.v2201612906741603.powersrv.de
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Sender: "Qemu-devel" <qemu-devel-bounces@nongnu.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: BeQ5LfVUN9yV
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Sender: "Qemu-arm" <qemu-arm-bounces@nongnu.org>
+Reply-to:  Stefan Weil <sw@weilnetz.de>
+From:  Stefan Weil via <qemu-arm@nongnu.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: ROEA/9iIghZk
 
-On 10/28/22 00:02, Peter Maydell wrote:
-> When we direct boot a kernel on a CPU which emulates EL3, we need to
-> set up the EL3 system registers as the Linux kernel documentation
-> specifies:
->       https://www.kernel.org/doc/Documentation/arm64/booting.rst
-> 
-> For CPUs with FEAT_HCX support this includes:
->      - SCR_EL3.HXEn (bit 38) must be initialised to 0b1.
-> 
-> but we forgot to do this when implementing FEAT_HCX, which would mean
-> that a guest trying to access the HCRX_EL2 register would crash.
-> 
-> Signed-off-by: Peter Maydell<peter.maydell@linaro.org>
-> ---
->   hw/arm/boot.c | 3 +++
->   1 file changed, 3 insertions(+)
+Most of them were found and fixed using codespell.
 
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Signed-off-by: Stefan Weil <sw@weilnetz.de>
+---
 
-r~
+My focus was fixing typos which are relevant for the generated documentation.
+
+codespell finds many more typos in source code, and adding it to the continuous
+integration checks looks more and more like a good idea.
+
+Stefan
+
+
+ docs/devel/qapi-code-gen.rst        | 2 +-
+ docs/devel/testing.rst              | 2 +-
+ docs/system/arm/cpu-features.rst    | 2 +-
+ docs/system/loongarch/loongson3.rst | 2 +-
+ docs/tools/virtiofsd.rst            | 2 +-
+ include/exec/memory.h               | 2 +-
+ qapi/qom.json                       | 2 +-
+ qemu-options.hx                     | 8 ++++----
+ qga/qapi-schema.json                | 2 +-
+ tests/qtest/libqtest.h              | 2 +-
+ 10 files changed, 13 insertions(+), 13 deletions(-)
+
+diff --git a/docs/devel/qapi-code-gen.rst b/docs/devel/qapi-code-gen.rst
+index cd9b544376..c4c04bf755 100644
+--- a/docs/devel/qapi-code-gen.rst
++++ b/docs/devel/qapi-code-gen.rst
+@@ -1313,7 +1313,7 @@ Removing "unreachable" stuff like events that can't be triggered
+ anymore, optional return or event data members that can't be sent
+ anymore, and return or event data member (enumeration) values that
+ can't be sent anymore makes no difference to clients, except for
+-introspection.  The latter can conceivably confuse clients, so tread
++introspection.  The latter can conceivably confuse clients, so treat
+ carefully.
+ 
+ Incompatible changes include removing return and event data members.
+diff --git a/docs/devel/testing.rst b/docs/devel/testing.rst
+index fbb98faabe..e10c47b5a7 100644
+--- a/docs/devel/testing.rst
++++ b/docs/devel/testing.rst
+@@ -99,7 +99,7 @@ successfully on various hosts. The following list shows some best practices:
+ * If your test cases uses the blkdebug feature, use relative path to pass
+   the config and image file paths in the command line as Windows absolute
+   path contains the delimiter ":" which will confuse the blkdebug parser.
+-* Use double quotes in your extra QEMU commmand line in your test cases
++* Use double quotes in your extra QEMU command line in your test cases
+   instead of single quotes, as Windows does not drop single quotes when
+   passing the command line to QEMU.
+ * Windows opens a file in text mode by default, while a POSIX compliant
+diff --git a/docs/system/arm/cpu-features.rst b/docs/system/arm/cpu-features.rst
+index c2c01ec7d2..00c444042f 100644
+--- a/docs/system/arm/cpu-features.rst
++++ b/docs/system/arm/cpu-features.rst
+@@ -433,7 +433,7 @@ additional constraints on the set of vector lengths supported by SME.
+ SME User-mode Default Vector Length Property
+ --------------------------------------------
+ 
+-For qemu-aarch64, the cpu propery ``sme-default-vector-length=N`` is
++For qemu-aarch64, the cpu property ``sme-default-vector-length=N`` is
+ defined to mirror the Linux kernel parameter file
+ ``/proc/sys/abi/sme_default_vector_length``.  The default length, ``N``,
+ is in units of bytes and must be between 16 and 8192.
+diff --git a/docs/system/loongarch/loongson3.rst b/docs/system/loongarch/loongson3.rst
+index 1bdab44e27..68113b6f5e 100644
+--- a/docs/system/loongarch/loongson3.rst
++++ b/docs/system/loongarch/loongson3.rst
+@@ -41,7 +41,7 @@ can be accessed by following steps.
+ 
+   $ qemu-system-loongarch64 -machine virt -m 4G -cpu la464-loongarch-cpu \
+       -smp 1 -bios QEMU_EFI.fd -kernel vmlinuz.efi -initrd initrd.img \
+-      -append "root=/dev/ram rdinit=/sbin/init consol e=ttyS0,115200" \
++      -append "root=/dev/ram rdinit=/sbin/init console e=ttyS0,115200" \
+       --nographic
+ 
+ Note: The running speed may be a little slow, as the performance of our
+diff --git a/docs/tools/virtiofsd.rst b/docs/tools/virtiofsd.rst
+index 5f5ac9dd56..995a754a7b 100644
+--- a/docs/tools/virtiofsd.rst
++++ b/docs/tools/virtiofsd.rst
+@@ -232,7 +232,7 @@ e.g.:
+ 
+   ``:ok:server::security.:``
+ 
+-  will pass 'securty.' xattr's in listxattr from the server
++  will pass 'security.' xattr's in listxattr from the server
+   and ignore following rules.
+ 
+   ``:ok:all:::``
+diff --git a/include/exec/memory.h b/include/exec/memory.h
+index bfb1de8eea..a751c111bd 100644
+--- a/include/exec/memory.h
++++ b/include/exec/memory.h
+@@ -1970,7 +1970,7 @@ void memory_region_clear_dirty_bitmap(MemoryRegion *mr, hwaddr start,
+  * querying the same page multiple times, which is especially useful for
+  * display updates where the scanlines often are not page aligned.
+  *
+- * The dirty bitmap region which gets copyed into the snapshot (and
++ * The dirty bitmap region which gets copied into the snapshot (and
+  * cleared afterwards) can be larger than requested.  The boundaries
+  * are rounded up/down so complete bitmap longs (covering 64 pages on
+  * 64bit hosts) can be copied over into the bitmap snapshot.  Which
+diff --git a/qapi/qom.json b/qapi/qom.json
+index 80dd419b39..216b56a4e6 100644
+--- a/qapi/qom.json
++++ b/qapi/qom.json
+@@ -586,7 +586,7 @@
+ #
+ # @size: size of the memory region in bytes
+ #
+-# @x-use-canonical-path-for-ramblock-id: if true, the canoncial path is used
++# @x-use-canonical-path-for-ramblock-id: if true, the canonical path is used
+ #                                        for ramblock-id. Disable this for 4.0
+ #                                        machine types or older to allow
+ #                                        migration with newer QEMU versions.
+diff --git a/qemu-options.hx b/qemu-options.hx
+index eb38e5dc40..1141dc5e58 100644
+--- a/qemu-options.hx
++++ b/qemu-options.hx
+@@ -1051,7 +1051,7 @@ SRST
+     details on the external interface.
+ 
+ ``-device isa-ipmi-kcs,bmc=id[,ioport=val][,irq=val]``
+-    Add a KCS IPMI interafce on the ISA bus. This also adds a
++    Add a KCS IPMI interface on the ISA bus. This also adds a
+     corresponding ACPI and SMBIOS entries, if appropriate.
+ 
+     ``bmc=id``
+@@ -1071,7 +1071,7 @@ SRST
+     is 0xe4 and the default interrupt is 5.
+ 
+ ``-device pci-ipmi-kcs,bmc=id``
+-    Add a KCS IPMI interafce on the PCI bus.
++    Add a KCS IPMI interface on the PCI bus.
+ 
+     ``bmc=id``
+         The BMC to connect to, one of ipmi-bmc-sim or ipmi-bmc-extern above.
+@@ -5248,7 +5248,7 @@ SRST
+         read the colo-compare git log.
+ 
+     ``-object cryptodev-backend-builtin,id=id[,queues=queues]``
+-        Creates a cryptodev backend which executes crypto opreation from
++        Creates a cryptodev backend which executes crypto operation from
+         the QEMU cipher APIS. The id parameter is a unique ID that will
+         be used to reference this cryptodev backend from the
+         ``virtio-crypto`` device. The queues parameter is optional,
+@@ -5516,7 +5516,7 @@ SRST
+                        file=/etc/qemu/vnc.allow
+ 
+         Finally the ``/etc/qemu/vnc.allow`` file would contain the list
+-        of x509 distingished names that are permitted access
++        of x509 distinguished names that are permitted access
+ 
+         ::
+ 
+diff --git a/qga/qapi-schema.json b/qga/qapi-schema.json
+index 026a56f76c..796434ed34 100644
+--- a/qga/qapi-schema.json
++++ b/qga/qapi-schema.json
+@@ -392,7 +392,7 @@
+ ##
+ # @guest-file-flush:
+ #
+-# Write file changes bufferred in userspace to disk/kernel buffers
++# Write file changes buffered in userspace to disk/kernel buffers
+ #
+ # @handle: filehandle returned by guest-file-open
+ #
+diff --git a/tests/qtest/libqtest.h b/tests/qtest/libqtest.h
+index 65c040e504..1a76bae326 100644
+--- a/tests/qtest/libqtest.h
++++ b/tests/qtest/libqtest.h
+@@ -727,7 +727,7 @@ bool qtest_has_device(const char *device);
+  * qtest_qmp_device_add_qdict:
+  * @qts: QTestState instance to operate on
+  * @drv: Name of the device that should be added
+- * @arguments: QDict with properties for the device to intialize
++ * @arguments: QDict with properties for the device to initialize
+  *
+  * Generic hot-plugging test via the device_add QMP command with properties
+  * supplied in form of QDict. Use NULL for empty properties list.
+-- 
+2.30.2
+

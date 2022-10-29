@@ -1,179 +1,279 @@
-Received: by 2002:a17:906:43c7:b0:78d:9f02:16a1 with SMTP id j7csp1200852ejn;
-        Fri, 28 Oct 2022 05:28:14 -0700 (PDT)
-X-Google-Smtp-Source: AMsMyM7RZRG/A2JtZRfw4bTyZaJwMG+L0tI1PsiWWqNnZo1Utal/jk260M5XnGaFEiCGGrOGKcRo
-X-Received: by 2002:a05:620a:4149:b0:6ee:bdb3:7610 with SMTP id k9-20020a05620a414900b006eebdb37610mr37895499qko.514.1666960093958;
-        Fri, 28 Oct 2022 05:28:13 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1666960093; cv=none;
+Received: by 2002:a17:906:43c7:b0:78d:9f02:16a1 with SMTP id j7csp2007860ejn;
+        Sat, 29 Oct 2022 06:04:50 -0700 (PDT)
+X-Google-Smtp-Source: AMsMyM4Xcmt4hUEJMU4oRad3E6dVHMkzMVSFmDQJkgclv2qFlFKX5IQQvcF9P4RSm8oE3OMjeWqt
+X-Received: by 2002:a67:fb45:0:b0:3aa:1bff:6990 with SMTP id e5-20020a67fb45000000b003aa1bff6990mr1293052vsr.72.1667048690458;
+        Sat, 29 Oct 2022 06:04:50 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1667048690; cv=none;
         d=google.com; s=arc-20160816;
-        b=IfTbUqqt2RIe8b0hNTgMm0KQ0Seox48VDGa9FXxI9JkYaDFeWqCkJcHaBVyQ9cysu4
-         z0cjL3DFxYqzgyO2/h62mIAh0lWfUYANlxHgQijo7Cv4gvWGw9rrKW0oDhXkaPhKU1tw
-         PfTHdr9aoE2oAAmLAm7TtJWsK5/X/U+NePWmH+FXtDq4j4yW7To7aB0vZn9RszTjgV5C
-         pKMA6KjH1Jp4ffMQJJkUnmcw8rK/b4gN/E8MeQuSipS3B9WiPtuf1XRBAtP1hFsG9p7h
-         C37CSYBLZxUQeegodK83D0tvIKRp9WTpQhcMEBtQMN/ZipXlPCjDcOq82bEDoqoChF5R
-         NAfg==
+        b=jFmwMDlUO/XIWmWT4TfuaGfTErMl5W8NMyNf8dNST/aLks4SPvkNlBNgLNh3p8Orkv
+         V0IwE3OxqkNWHQarWOw/ujSDCMbnTCX3dEGQXbcwiA/WUpP3c1EJu4h5CIgX6xewDGY9
+         fuacMJfOc/J8/bi1jq8uPt6hTVxZry0D5f/f1+0QMR/GO5TflSTZ85P1H9yr7DSBeG2y
+         5OLnUjqmMtO+aWLeG4Rkxg3R7dzQHsk4kpR9BgNHjOD1o4FbYCA5XypfDtmOFidmG1Ay
+         kjhq7du5VF50KMMCcOfawA2YOaS1LrmMYJGKxlqR/YGT8VFBsGH2z4+z7c6JnLpSqN6U
+         8OjQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=errors-to:sender:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=cnBDuSRzJzbfjGOnLipW4bK9mOlxmQGPcT+G95Rowy4=;
-        b=B+s8QJvaFQEhRNgJV5k9mv/OlKSqVEeUrSxCtDGA8RmyTFpI3qHW5LVhgfG8469WrP
-         0E/2TuXWjWx3gAjI/X0KLpCgl166ztoOjttiKVSBYR3zOWboZEPyt65zqAoImOFYmp7i
-         5/4du0TpaEp2c9QMueELJbCoMFBTFPQLweLrWoviaY8PpjrsDrtuVPoysHs6fKDlFvMA
-         Zz1oiuj8JwgBMQ3wnTEcpYoAN0VJr45JcxeB3tAft8k33wxy+D8RsIqlo0QwgzsbelT/
-         J696lSW4nt8iixDcHCHB4qzsWx7JbHX5MV7AHdQC+Ivn1stqnKDL2z7RojN+oD+eIJGw
-         Vvaw==
+         :mime-version:message-id:references:in-reply-to:subject:cc:to:from
+         :date:dkim-signature;
+        bh=bgG0oAgc3NcwFx7qz0yLnPJ37y05efIKstjMt2ZTe7Q=;
+        b=mC5CSHE/ZZ6qax4ww8rdUikdaKhrGWWUOBdo1/jDcgFhwqqyIZOTQO4WkSaFLS7TXk
+         fX8SsWDOj7UvtwYmyN5QPwQj78LGZ16JUTizo5CCfQ7lf8P9zv86cV8b8QHIFLpRhh+E
+         jMM9ueZlokCDCFoYOiSPkQeOn3U1LWDUAka7escj21Xah96Q9dHsn0WGCLIaFm0/pKV0
+         G4qGyZp8TbXvGij8vUMBbyV8eyVlKh3yvvqbrH++iliVGELdG0am2uoGdlyaqb7XSeN+
+         i5UWotsjRNmq1uyIwptjEZderhHQOMfmZsr2RVZvI1qA8BwCXWaH8wdJZSajzVGdBwDH
+         uXPg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@daynix-com.20210112.gappssmtp.com header.s=20210112 header.b=MHq76xEo;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=VlLpeC89;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id b10-20020ac87fca000000b0039cd262ff44si2624061qtk.179.2022.10.28.05.28.13
+        by mx.google.com with ESMTPS id p21-20020a67d715000000b003aa0f63a5c6si224190vsj.566.2022.10.29.06.04.50
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 28 Oct 2022 05:28:13 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Sat, 29 Oct 2022 06:04:50 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@daynix-com.20210112.gappssmtp.com header.s=20210112 header.b=MHq76xEo;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=VlLpeC89;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1ooOSw-0003aO-Nu; Fri, 28 Oct 2022 08:28:02 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1oolVZ-0000LK-3Q; Sat, 29 Oct 2022 09:04:17 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <akihiko.odaki@daynix.com>)
- id 1ooOS1-0002of-91
- for qemu-devel@nongnu.org; Fri, 28 Oct 2022 08:27:05 -0400
-Received: from mail-pj1-x1031.google.com ([2607:f8b0:4864:20::1031])
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
+ id 1oolVT-0000IM-5j; Sat, 29 Oct 2022 09:04:11 -0400
+Received: from mail-ej1-x62d.google.com ([2a00:1450:4864:20::62d])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <akihiko.odaki@daynix.com>)
- id 1ooORz-0003GR-Hm
- for qemu-devel@nongnu.org; Fri, 28 Oct 2022 08:27:04 -0400
-Received: by mail-pj1-x1031.google.com with SMTP id
- 3-20020a17090a0f8300b00212d5cd4e5eso9662765pjz.4
- for <qemu-devel@nongnu.org>; Fri, 28 Oct 2022 05:27:03 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=daynix-com.20210112.gappssmtp.com; s=20210112;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
+ id 1oolVR-0007yZ-6v; Sat, 29 Oct 2022 09:04:10 -0400
+Received: by mail-ej1-x62d.google.com with SMTP id y14so18983150ejd.9;
+ Sat, 29 Oct 2022 06:04:07 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=content-transfer-encoding:mime-version:message-id:references
+ :in-reply-to:subject:cc:to:from:date:from:to:cc:subject:date
  :message-id:reply-to;
- bh=cnBDuSRzJzbfjGOnLipW4bK9mOlxmQGPcT+G95Rowy4=;
- b=MHq76xEofsh9aS//60dmFo4FvDksOi6aCRbTdtag9cYBLz07fHp8EAv9kf2HtqfCdp
- FxyTqGU5fNChKDTiLYpx9adTYgeGTyp2OQX9QWMNkzQwfpa+elbKw+60u02LB+hD/WyB
- xUfw3LgjieTyC4Pa+Ar7L6B0/IP68bVKBtfS7WXwFaM6E+9urlcyNgRIu3bwT1TeDfws
- 4CPRWMn6uk5GljVNq9+hnO4FYvg4smotZ7YoYVAbXX9VDtafO0XFfKgCI9K4wQ9laXjF
- T3XrWeAJY+vPt/UADHV9h0sDB6MaSimuEPcH46TZheE9+tCTJQWAv4NOMCPayISnfhMT
- wARw==
+ bh=bgG0oAgc3NcwFx7qz0yLnPJ37y05efIKstjMt2ZTe7Q=;
+ b=VlLpeC89+q/fb1yZiLFLa5vklw9i/ulSSiocuJvjtqLGPU2yiaUhr+SGL2ypTWn0jC
+ V7+YLp/RXFmmjjdXuOkpguRbs77pXdlDLN2FZuQq1/BzNFiJlFsxQUjoLBzw/cA7+kCO
+ aILFIARp9U4YB9SLp1/yCa3d5R/+XsPaFS9BuWp7x82iBuhH6fCFdU3nfYt/ivtAtJ6E
+ rd9cn3fUGNkjv3U9RAg7ASFOS5L1JMBQxXm64Eq2x1NboTvOKYefvNHaUy85kkGxZfia
+ zaydF/tVQKbEX4U/yVW1mtfX6dzDhUTJDiwQGjXcgzQvQnTE9mMidzsB/nqTrO6XQlNn
+ PmiQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+ h=content-transfer-encoding:mime-version:message-id:references
+ :in-reply-to:subject:cc:to:from:date:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=cnBDuSRzJzbfjGOnLipW4bK9mOlxmQGPcT+G95Rowy4=;
- b=QnyUGPlV0pn/umFBmjwV/PCLtXNXvIde2XDjGlotYbmNHQRRCS2AX/NMzxDfLtm7VX
- vbC9Sg+0fP8hDvHEMnAS/EouaqzmxiIh7RNZHgO7OlAV7MBbBLYN1sjGNqlpYVKIcGNS
- o19am78sxOQxx7KJxNt8lK5gYazmhOHOW5CBqCYikSlywvtWvTPAtXCVhhouthu8hyEy
- RM5NPQ+yyAXAp27Qy7uEMeAkHCWUZQwBdBXSwtTGcGKlQDoMPST3pGXjBFeGZ/k0bGfR
- KTaqwnq4LIfYjz/HUF67MHLUZYvv+02LWt7RSSpz0cmjNiAbW/KXKOPLl2PTKumUgGL6
- JTMA==
-X-Gm-Message-State: ACrzQf33WH1SSnhQIj2/4HcrsY5O8DBmd5KqYP9tVkJf/3uNxCcI/smW
- 3baXX/n+ffI7TS4ARz9YrrYcZQ==
-X-Received: by 2002:a17:90b:4b10:b0:20c:c3a8:38e with SMTP id
- lx16-20020a17090b4b1000b0020cc3a8038emr15736986pjb.195.1666960022865; 
- Fri, 28 Oct 2022 05:27:02 -0700 (PDT)
-Received: from fedora.flets-east.jp ([2400:4050:c360:8200:8ae8:3c4:c0da:7419])
+ bh=bgG0oAgc3NcwFx7qz0yLnPJ37y05efIKstjMt2ZTe7Q=;
+ b=4EoTnH1dyEPgbEtT/AtqgvpS+yQK2CLDXVYvAHG/+IVN6+fnJ8M1yf6j1DvPfUUiNx
+ hPYK7A4GyncN/E1Ohai+kcIYPnbT+CzUeFXlal+qoieBAvTVxIDlxaEIJ4x9xrjyVHnM
+ 3rQwhM0ORM86zuDFveYox/gCyJg4sd/b8V205gJpWym7tMC0H5ZjEWBnGp3i0t9z+Ovw
+ AY9Di/mD1dk5OTGl/Kr8ToeBgOUB6rmOOie/Di0xWM9+5j9dh+Q8Cwx8e6hgZ7pEn35f
+ bAf9tejwQQA6Ej0tJSQACo2SfrV4isqiyHUvnGHEK14ceYn6oBn97fZOfyZf8T9jHxXd
+ R0Rw==
+X-Gm-Message-State: ACrzQf0fN8H4VesX416gIqrf5adL+0JiNoMeQg8ruEYasF1hJafMAIMR
+ x2kCbA/6LPdjwoKkzq+zN0M=
+X-Received: by 2002:a17:907:1ca7:b0:7ad:9227:5288 with SMTP id
+ nb39-20020a1709071ca700b007ad92275288mr3732128ejc.62.1667048646344; 
+ Sat, 29 Oct 2022 06:04:06 -0700 (PDT)
+Received: from ?IPv6:::1?
+ (p200300faaf0bb200c875a4c76b3be6c4.dip0.t-ipconnect.de.
+ [2003:fa:af0b:b200:c875:a4c7:6b3b:e6c4])
  by smtp.gmail.com with ESMTPSA id
- x3-20020a170902ec8300b00174d9bbeda4sm2948456plg.197.2022.10.28.05.26.58
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 28 Oct 2022 05:27:02 -0700 (PDT)
-From: Akihiko Odaki <akihiko.odaki@daynix.com>
-To: 
-Cc: Alex Williamson <alex.williamson@redhat.com>, qemu-devel@nongnu.org,
- qemu-block@nongnu.org, qemu-arm@nongnu.org,
- "Michael S . Tsirkin" <mst@redhat.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Gerd Hoffmann <kraxel@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- Eduardo Habkost <eduardo@habkost.net>, John Snow <jsnow@redhat.com>,
- Dmitry Fleytman <dmitry.fleytman@gmail.com>,
- Jason Wang <jasowang@redhat.com>, Stefan Weil <sw@weilnetz.de>,
- Keith Busch <kbusch@kernel.org>, Klaus Jensen <its@irrelevant.dk>,
- Peter Maydell <peter.maydell@linaro.org>,
- Andrey Smirnov <andrew.smirnov@gmail.com>,
- Paul Burton <paulburton@kernel.org>,
- Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
- Yan Vugenfirer <yan@daynix.com>,
- Yuri Benditovich <yuri.benditovich@daynix.com>,
- Akihiko Odaki <akihiko.odaki@daynix.com>
-Subject: [PATCH v5 04/17] ahci: Omit errp for pci_add_capability
-Date: Fri, 28 Oct 2022 21:26:16 +0900
-Message-Id: <20221028122629.3269-5-akihiko.odaki@daynix.com>
-X-Mailer: git-send-email 2.37.3
-In-Reply-To: <20221028122629.3269-1-akihiko.odaki@daynix.com>
-References: <20221028122629.3269-1-akihiko.odaki@daynix.com>
+ 23-20020a170906329700b007821f4bc328sm644886ejw.178.2022.10.29.06.04.05
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Sat, 29 Oct 2022 06:04:05 -0700 (PDT)
+Date: Sat, 29 Oct 2022 13:04:00 +0000
+From: Bernhard Beschow <shentey@gmail.com>
+To: =?ISO-8859-1?Q?Philippe_Mathieu-Daud=E9?= <philmd@linaro.org>,
+ qemu-devel@nongnu.org
+CC: qemu-ppc@nongnu.org, Aurelien Jarno <aurelien@aurel32.net>,
+ Yoshinori Sato <ysato@users.sourceforge.jp>,
+ Antony Pavlov <antonynpavlov@gmail.com>, BALATON Zoltan <balaton@eik.bme.hu>, 
+ Alistair Francis <alistair@alistair23.me>, Bin Meng <bin.meng@windriver.com>, 
+ Kevin Wolf <kwolf@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
+ Jan Kiszka <jan.kiszka@web.de>,
+ =?ISO-8859-1?Q?Philippe_Mathieu-Daud=E9?= <f4bug@amsat.org>,
+ Hanna Reitz <hreitz@redhat.com>, qemu-arm@nongnu.org,
+ Magnus Damm <magnus.damm@gmail.com>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, qemu-block@nongnu.org
+Subject: =?US-ASCII?Q?Re=3A_=5BPATCH_v4_6/7=5D_hw/sd/sdhci=3A_Imp?=
+ =?US-ASCII?Q?lement_Freescale_eSDHC_device_model?=
+In-Reply-To: <724F8CC8-C5E8-4785-B5C2-F1D327863717@gmail.com>
+References: <20221018210146.193159-1-shentey@gmail.com>
+ <20221018210146.193159-7-shentey@gmail.com>
+ <f9dd1e1e-65b6-c74d-d957-43774393c2a4@linaro.org>
+ <724F8CC8-C5E8-4785-B5C2-F1D327863717@gmail.com>
+Message-ID: <590683A5-2774-432C-A47A-ED755054479C@gmail.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: none client-ip=2607:f8b0:4864:20::1031;
- envelope-from=akihiko.odaki@daynix.com; helo=mail-pj1-x1031.google.com
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_NONE=0.001 autolearn=ham autolearn_force=no
+Content-Type: text/plain;
+ charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::62d;
+ envelope-from=shentey@gmail.com; helo=mail-ej1-x62d.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Sender: "Qemu-devel" <qemu-devel-bounces@nongnu.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: nb1pevr2d1RH
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Sender: "Qemu-arm" <qemu-arm-bounces@nongnu.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: tTfjrWfzC1PJ
 
-Omitting errp for pci_add_capability() causes it to abort if
-capabilities overlap. This behavior is appropriate here because all of
-the capabilities set in this device are defined in the program and
-their overlap should not happen unless there is a programming error.
+Am 29=2E Oktober 2022 11:33:51 UTC schrieb Bernhard Beschow <shentey@gmail=
+=2Ecom>:
+>Am 27=2E Oktober 2022 21:40:01 UTC schrieb "Philippe Mathieu-Daud=C3=A9" =
+<philmd@linaro=2Eorg>:
+>>Hi Bernhard,
+>>
+>>On 18/10/22 23:01, Bernhard Beschow wrote:
+>>> Will allow e500 boards to access SD cards using just their own devices=
+=2E
+>>>=20
+>>> Signed-off-by: Bernhard Beschow <shentey@gmail=2Ecom>
+>>> ---
+>>>   hw/sd/sdhci=2Ec         | 120 ++++++++++++++++++++++++++++++++++++++=
++++-
+>>>   include/hw/sd/sdhci=2Eh |   3 ++
+>>>   2 files changed, 122 insertions(+), 1 deletion(-)
+>>>=20
+>>> diff --git a/hw/sd/sdhci=2Ec b/hw/sd/sdhci=2Ec
+>>> index 306070c872=2E=2E8d8ad9ff24 100644
+>>> --- a/hw/sd/sdhci=2Ec
+>>> +++ b/hw/sd/sdhci=2Ec
+>>> @@ -1369,6 +1369,7 @@ void sdhci_initfn(SDHCIState *s)
+>>>       s->transfer_timer =3D timer_new_ns(QEMU_CLOCK_VIRTUAL, sdhci_dat=
+a_transfer, s);
+>>>         s->io_ops =3D &sdhci_mmio_ops;
+>>> +    s->io_registers_map_size =3D SDHC_REGISTERS_MAP_SIZE;
+>>>   }
+>>>     void sdhci_uninitfn(SDHCIState *s)
+>>> @@ -1392,7 +1393,7 @@ void sdhci_common_realize(SDHCIState *s, Error *=
+*errp)
+>>>       s->fifo_buffer =3D g_malloc0(s->buf_maxsz);
+>>>         memory_region_init_io(&s->iomem, OBJECT(s), s->io_ops, s, "sdh=
+ci",
+>>> -                          SDHC_REGISTERS_MAP_SIZE);
+>>> +                          s->io_registers_map_size);
+>>
+>>I don't think we want to change this region size=2E [see below]
+>>
+>>>   void sdhci_common_unrealize(SDHCIState *s)
+>>> @@ -1575,6 +1576,122 @@ static const TypeInfo sdhci_bus_info =3D {
+>>>       =2Eclass_init =3D sdhci_bus_class_init,
+>>>   };
+>>>   +/* --- qdev Freescale eSDHC --- */
+>>> +
+>>> +/* Watermark Level Register */
+>>> +#define ESDHC_WML                    0x44
+>>> +
+>>> +/* Control Register for DMA transfer */
+>>> +#define ESDHC_DMA_SYSCTL            0x40c
+>>> +
+>>> +#define ESDHC_REGISTERS_MAP_SIZE    0x410
+>>
+>>My preferred approach would be to create a container region with a
+>>size of ESDHC_REGISTERS_MAP_SIZE=2E Map the SDHC_REGISTERS_MAP region
+>>in the container at offset 0, priority -1=2E Add 2 register regions
+>>for ESDHC_WML and ESDHC_DMA_SYSCTL, and map them with priority 1 in
+>>the container=2E =2E=2E=2E
+>>
+>>> +static uint64_t esdhci_read(void *opaque, hwaddr offset, unsigned siz=
+e)
+>>> +{
+>>> +    uint64_t ret;
+>>> +
+>>> +    switch (offset) {
+>>> +    case SDHC_SYSAD:
+>>> +    case SDHC_BLKSIZE:
+>>> +    case SDHC_ARGUMENT:
+>>> +    case SDHC_TRNMOD:
+>>> +    case SDHC_RSPREG0:
+>>> +    case SDHC_RSPREG1:
+>>> +    case SDHC_RSPREG2:
+>>> +    case SDHC_RSPREG3:
+>>> +    case SDHC_BDATA:
+>>> +    case SDHC_PRNSTS:
+>>> +    case SDHC_HOSTCTL:
+>>> +    case SDHC_CLKCON:
+>>> +    case SDHC_NORINTSTS:
+>>> +    case SDHC_NORINTSTSEN:
+>>> +    case SDHC_NORINTSIGEN:
+>>> +    case SDHC_ACMD12ERRSTS:
+>>> +    case SDHC_CAPAB:
+>>> +    case SDHC_SLOT_INT_STATUS:
+>>> +        ret =3D sdhci_read(opaque, offset, size);
+>>> +        break;
+>>
+>>=2E=2E=2E Then you don't need these cases=2E
+>>
+>>> +    case ESDHC_WML:
+>>> +    case ESDHC_DMA_SYSCTL:
+>>> +        ret =3D 0;
+>>> +        qemu_log_mask(LOG_UNIMP, "ESDHC rd @0x%02" HWADDR_PRIx
+>>> +                      " not implemented\n", offset);
+>>
+>>But then I realize you only treat these 2 registers as UNIMP=2E
+>>
+>>So now, I'd create 1 UNIMP region for ESDHC_WML and map it
+>>into SDHC_REGISTERS_MAP (s->iomem) with priority 1, and add
+>>another UNIMP region of ESDHC_REGISTERS_MAP_SIZE - SDHC_REGISTERS_MAP_SI=
+ZE (=3D 0x310) and map it normally at offset
+>>0x100 (SDHC_REGISTERS_MAP_SIZE)=2E Look at create_unimp() in
+>>hw/arm/bcm2835_peripherals=2Ec=2E
+>>
+>>But the ESDHC_WML register has address 0x44 and fits inside the
+>>SDHC_REGISTERS_MAP region, so likely belong there=2E 0x44 is the
+>>upper part of the SDHC_CAPAB register=2E These bits are undefined
+>>on the spec v2, which I see you are setting in esdhci_init()=2E
+>>So this register should already return 0, otherwise we have
+>>a bug=2E Thus we don't need to handle this ESDHC_WML particularly=2E
 
-Signed-off-by: Akihiko Odaki <akihiko.odaki@daynix.com>
----
- hw/ide/ich.c | 8 ++------
- 1 file changed, 2 insertions(+), 6 deletions(-)
+My idea here was to catch this unimplemented case in order to indicate thi=
+s clearly to users=2E Perhaps it nudges somebody to provide a patch?
 
-diff --git a/hw/ide/ich.c b/hw/ide/ich.c
-index 1007a51fcb..3b478b01f8 100644
---- a/hw/ide/ich.c
-+++ b/hw/ide/ich.c
-@@ -106,7 +106,7 @@ static void pci_ich9_ahci_init(Object *obj)
- static void pci_ich9_ahci_realize(PCIDevice *dev, Error **errp)
- {
-     struct AHCIPCIState *d;
--    int sata_cap_offset;
-+    uint8_t sata_cap_offset;
-     uint8_t *sata_cap;
-     d = ICH9_AHCI(dev);
-     int ret;
-@@ -130,11 +130,7 @@ static void pci_ich9_ahci_realize(PCIDevice *dev, Error **errp)
-                      &d->ahci.mem);
- 
-     sata_cap_offset = pci_add_capability(dev, PCI_CAP_ID_SATA,
--                                          ICH9_SATA_CAP_OFFSET, SATA_CAP_SIZE,
--                                          errp);
--    if (sata_cap_offset < 0) {
--        return;
--    }
-+                                          ICH9_SATA_CAP_OFFSET, SATA_CAP_SIZE);
- 
-     sata_cap = dev->config + sata_cap_offset;
-     pci_set_word(sata_cap + SATA_CAP_REV, 0x10);
--- 
-2.37.3
+>>
+>>And your model is reduced to handling create_unimp() in esdhci_realize()=
+=2E
+>>
+>>Am I missing something?
+>
+>The mmio ops are big endian and need to be aligned to a 4-byte boundary=
+=2E It took me quite a while to debug this=2E So shall I just create an add=
+itional memory region for the region above SDHC_REGISTERS_MAP_SIZE for ESDH=
+C_DMA_SYSCTL?
+
+All in all I currently don't have a better idea than keeping the custom i/=
+o ops for the standard region and adding an additional unimplemented region=
+ for ESDHC_DMA_SYSCTL=2E I think I'd have to dynamically allocate memory fo=
+r it where I still need to figure out how not to leak it=2E
+
+Best regards,
+Bernhard
+>
+>Best regards,
+>Bernhard
+>>
+>>Regards,
+>>
+>>Phil=2E
+>
 

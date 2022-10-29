@@ -1,98 +1,99 @@
-Received: by 2002:a17:906:43c7:b0:78d:9f02:16a1 with SMTP id j7csp1616764ejn;
-        Fri, 28 Oct 2022 15:43:19 -0700 (PDT)
-X-Google-Smtp-Source: AMsMyM5gr+G55Y7fyt3DtRN+WABlPC3jSZOZYV/dTgB8mFO1PiGEi6Ujl9Fj3US3B2zYFuY8qNKi
-X-Received: by 2002:a05:620a:254c:b0:6ca:332c:a9d7 with SMTP id s12-20020a05620a254c00b006ca332ca9d7mr1272024qko.109.1666996999305;
-        Fri, 28 Oct 2022 15:43:19 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1666996999; cv=none;
+Received: by 2002:a17:906:43c7:b0:78d:9f02:16a1 with SMTP id j7csp1900093ejn;
+        Sat, 29 Oct 2022 02:30:04 -0700 (PDT)
+X-Google-Smtp-Source: AMsMyM531Ab7OFFJ5JYkEiyoEwDT6nsQawgIIm5aLFGW5wFXxJSz7yM4hhTHetfUSkofNR+H1ohV
+X-Received: by 2002:a37:7c5:0:b0:6fa:1745:46d4 with SMTP id 188-20020a3707c5000000b006fa174546d4mr705976qkh.279.1667035804467;
+        Sat, 29 Oct 2022 02:30:04 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1667035804; cv=none;
         d=google.com; s=arc-20160816;
-        b=jCp/FrOwng4fd0rgMPRmnfNMtT9hapkxoLNBihgMnzO2hHYYr0EmOCI2puJ/av/hEq
-         jmKg9C+wZ0dPC5YU++HHFT+yShhrZFcLHAw9Lf58n/jwnYGUD9XeZs/CKIuM5/rcmgCY
-         oUtulBqLR8M5B6OBmIczXaSyuA4dWwu124qyba28lAIxKEoy+5Vxdubh7FKJ1s7NGy+6
-         LheIRzI0EGm5vdEMZMR7jT1nWvCODpeorMN1tptuRscXbOlA+41Fcf8pR5jhKMOaICMG
-         4G1tZ9GTMooyxJrkV7aInL4Aw4rt1kF7hisvmECB4e6bHoI483Enn6xUKAJBdB0x8rhJ
-         c5gA==
+        b=YYHrdBaDkBtcmUe+fuGe4xB7+xkvbLweEfUffN1zPyN01hGoPsfgY6N6ylsNz3OAJT
+         7zJDDyL/N1IpbryDJ95JRb95Zr4uD0G6dMa7V9FWJA1Pk4UiLlSw+PHWc4kn4Hy39l65
+         053N5OVTy8NbrnhnvoX2OWE44NWXeW/kHOfLIP88iuy6pVNpuAmeMYKd97t+2fgv6TMu
+         6ZctnJ8mweFhOY+NhEMB2rVc5BUkaX2dEzzaMvTc9zC3vq5PW8YiK8qNJmGDTKtZeDAb
+         wYKiQoVTAbPOESePegyCXDrmLvcV+btoK8lRB6hqZBxCrIqoytqWYrbJ0KOvWyeUH2Kh
+         MMPw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=errors-to:sender:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :in-reply-to:from:references:cc:to:content-language:subject
          :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=mJG2HOMAn9LR3eZyn335ww8Ncjg04oaUSVCh5X8a8M0=;
-        b=hSB98S5AnF1kjwMyqS3pUYrai9A6BlNZgHFZInKU7VDBRxNekoudBKvtQ6LUSD47zP
-         CK51JRvSlvz1q3MAz/YN9dyKhTJ7sc8qrFweR9vnimZj8SxMdTct51q6R7owoyUyeloi
-         qQrU5v8mTLHuxRerCu1Dco/8f6bb02JJXngqNMnBrG/Dyn15dLyYtsVwfuywV/INaH8C
-         +mz1KCSKaYnPWR3xVkgzKg51rm9hz9CHsO7io3S3bq8mFeDQmVNh6Pmjs+iC94J+1deB
-         jfwLeCNplUE3ugq3c8YNznuM9JkUvcWiGjY8eV8xpRDhnRAbhBtArgfLxDHy/QIGHISh
-         Qovg==
+        bh=NJu/HTDP9BhXpxgSyDpr92wAK++NVmsvH7oHkokTBJA=;
+        b=DI+qBqFixf1X6klZovuQJaYT6RvHp6EcVxqSs2ycXB9alyFCzlDYoEsV3tENKtt9H4
+         eE0aCfkU6/Hmg/6qRySThCS8FJcJjKFcUw8EqJ5hGiLywPoenXNCx0oLA6y/Odo/0VoJ
+         5uchZzumtFwGALJuOeTNViQpg9EzAjlyt1xvXiJaLqJF4BEpJoDG3bNH9UT+3/VDi+vh
+         2OYA76n54u0ubFCKfhuqiIY9itBBB/GOQMNCK2aAjjB3BjEtu1C+8fKMCfv5CrfX7M2Y
+         5xzgsNAyF5NHxvo7tbkaY9AquwxJ19MEFsXs0BVldDKK0GbJmTqKloMOsYrwMXDdbJH+
+         wmpQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=biE2vnNE;
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=OanXTlBM;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id y8-20020ac87048000000b0039b3098b32asi4135424qtm.165.2022.10.28.15.43.19
+        by mx.google.com with ESMTPS id bx15-20020a05622a090f00b003a4ec429289si568511qtb.276.2022.10.29.02.30.04
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 28 Oct 2022 15:43:19 -0700 (PDT)
+        Sat, 29 Oct 2022 02:30:04 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=biE2vnNE;
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=OanXTlBM;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1ooY3o-0004do-D2; Fri, 28 Oct 2022 18:42:44 -0400
+	id 1ooi9z-00054A-V5; Sat, 29 Oct 2022 05:29:47 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1ooY3m-0004cK-BY
- for qemu-arm@nongnu.org; Fri, 28 Oct 2022 18:42:42 -0400
-Received: from mail-wr1-x42c.google.com ([2a00:1450:4864:20::42c])
+ (Exim 4.90_1) (envelope-from <danielhb413@gmail.com>)
+ id 1ooi9x-0004q7-4s; Sat, 29 Oct 2022 05:29:45 -0400
+Received: from mail-ot1-x334.google.com ([2607:f8b0:4864:20::334])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1ooY3k-0000Bc-JR
- for qemu-arm@nongnu.org; Fri, 28 Oct 2022 18:42:42 -0400
-Received: by mail-wr1-x42c.google.com with SMTP id bk15so8286894wrb.13
- for <qemu-arm@nongnu.org>; Fri, 28 Oct 2022 15:42:40 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ (Exim 4.90_1) (envelope-from <danielhb413@gmail.com>)
+ id 1ooi9u-0004Ji-H3; Sat, 29 Oct 2022 05:29:44 -0400
+Received: by mail-ot1-x334.google.com with SMTP id
+ t4-20020a9d7f84000000b00661c3d864f9so4272126otp.10; 
+ Sat, 29 Oct 2022 02:29:40 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=mJG2HOMAn9LR3eZyn335ww8Ncjg04oaUSVCh5X8a8M0=;
- b=biE2vnNER7YZd2JVPqQpS/1KJlVVbmJpJD8MK5BacqZI3I64a6adL7ZARr8kMd8Tv7
- 2a1Vm4EZOYfdKrTbYDctukLuDdnIaCS0GyCZQaRcMOG6a0LO3vnG5ErctuSEVVWWJcrY
- rFk1HEFcVTL7Iv5NAdumkkAC+TdXj2QQUyVrFJpxhM01YM+fLX5dSXEVtZnwxHu8Qb9d
- G6hmt4bI+wYjoeGNzibe68W99GI+7VKfrQU7JYZLagtvbCIjAKPYFI/dsZPX0UCn1zA/
- j4IOsfXNg6kxHochEsTxSxt0lZLSksaAYVDnTfg/KquT/4/0c7xKp0vJspRP3P509A4v
- vo1g==
+ bh=NJu/HTDP9BhXpxgSyDpr92wAK++NVmsvH7oHkokTBJA=;
+ b=OanXTlBM1Na8aCusxWCwFV5KB6imm5XCQEuMPzCzOA/1zkmTmoMa702en02PGYtJal
+ EEbetQ6Qg1+P4Lhz7iImWEByQaVuA10s2zWo3ABj2xnE7RoduPKlx29Ki1omSO8dUvNK
+ SnBEGodxaqji5oituX/h++/ZsJAHsiDeSyZtFBXSJaby7yHLb7Yr4ujd5MB7KysISnJg
+ w8s+W7B1WR/EL+qycWNI4EpJ7CJgRFxWl5HubOXyBfl76yYniUyslArxaGl2tH2vG5U5
+ 8kjrcqOK9HRJXwjqdkBqNqzhEVEICA+mejhrweuUbkMcD4LXJh7gqLXjalnJTjHsQMMe
+ LiNw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=mJG2HOMAn9LR3eZyn335ww8Ncjg04oaUSVCh5X8a8M0=;
- b=yPseqP/wluWMk/sxhefTWOJ+SknXPPHuPDE9jieK9Kt+yZfWykNbdTGwRyKNf62Dfv
- uHj/Bj6sFW15D35Nm977QIGJrTSCvNWBScxQJXw9uqUbppK3p4/6lgU32XbSS+/kLkf1
- LjkXBuK5ZcOFBtKj5VKpBRsy83/LbMPV5WXt6xWhxIlSUOoVR9U/+dUh6xmjGp4LB2ME
- 8P5tiBtpvRoOQYdD/K00A1w8Ruy9Y86wBcuU2zyOVF3b8gqMaOF1KQxTFM5pW9/LqHT/
- NtIxGu3wzs9dlXLvN7vGztmjN3WVR8dk6atIYO9nTQZ/0mmgZqNVKXsEFd/Cdz0NL60/
- /CtQ==
-X-Gm-Message-State: ACrzQf2trVxalbK8WiBln0UfhWZI1OCcGLV1an+crzetfu6dgsB9wf7t
- 666Ae3XcTNsMcxyTqyHwdIrI3w==
-X-Received: by 2002:a5d:59a7:0:b0:230:3652:1aa with SMTP id
- p7-20020a5d59a7000000b00230365201aamr820808wrr.308.1666996959108; 
- Fri, 28 Oct 2022 15:42:39 -0700 (PDT)
-Received: from [192.168.1.115] ([185.126.107.38])
+ bh=NJu/HTDP9BhXpxgSyDpr92wAK++NVmsvH7oHkokTBJA=;
+ b=NXweCXZC17cZHeHTculE73KV7aQv3mE2XU6RC8+RuVes8xGovI+yrXqS/NnFFoZq0q
+ mKc+KbXLoXB9jBw4U1TTCXUDeesYvROp1x5vmfXpDcYQUj+pcGgCGWL2IsmZtL/Upqkc
+ 5uSsPDNyClxSfEFi9fpSQwSbI5yyB3pB27bNU2cN0VOnZnuvpuHMW8WoP3FqYCNBNabG
+ PG0T64+x8ZgLfiGDBvmW2wvVNm25+LDJqq4RXMTWI3hL2Mw416VNDedXI9phv87+/HUR
+ Oe5nYt1MsF5Xl1akQnF4x4KktvSmWHlOkw7sJdOwtpgyr5BvORnHPSZzJWi7QrD5Ln4A
+ GZ7w==
+X-Gm-Message-State: ACrzQf1B5KOQkF5FbWqOwu1AQQ+UhRxepuJl5AD09XW/5ORsocjOYg86
+ ZdCQUgxDoLYMnS3uzKJAKQg=
+X-Received: by 2002:a05:6830:1552:b0:661:8b22:84b6 with SMTP id
+ l18-20020a056830155200b006618b2284b6mr1721090otp.12.1667035779865; 
+ Sat, 29 Oct 2022 02:29:39 -0700 (PDT)
+Received: from [192.168.10.102] ([177.45.165.63])
  by smtp.gmail.com with ESMTPSA id
- f19-20020a05600c4e9300b003cf5ec79bf9sm3010552wmq.40.2022.10.28.15.42.36
+ g13-20020a056870d20d00b0012c21a64a76sm472220oac.24.2022.10.29.02.29.34
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 28 Oct 2022 15:42:38 -0700 (PDT)
-Message-ID: <202ae9ed-c1d1-ea57-6c50-b9c24f12dd5e@linaro.org>
-Date: Sat, 29 Oct 2022 00:42:35 +0200
+ Sat, 29 Oct 2022 02:29:39 -0700 (PDT)
+Message-ID: <87865821-9729-e9d8-e789-cc8dc4159acb@gmail.com>
+Date: Sat, 29 Oct 2022 06:29:33 -0300
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
- Gecko/20100101 Thunderbird/102.4.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.3.1
 Subject: Re: [PATCH v4 5/7] hw/ppc/e500: Implement pflash handling
 Content-Language: en-US
-To: Daniel Henrique Barboza <danielhb413@gmail.com>,
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>,
  Bernhard Beschow <shentey@gmail.com>, qemu-devel@nongnu.org
 Cc: qemu-ppc@nongnu.org, Aurelien Jarno <aurelien@aurel32.net>,
  Yoshinori Sato <ysato@users.sourceforge.jp>,
@@ -107,17 +108,19 @@ Cc: qemu-ppc@nongnu.org, Aurelien Jarno <aurelien@aurel32.net>,
 References: <20221018210146.193159-1-shentey@gmail.com>
  <20221018210146.193159-6-shentey@gmail.com>
  <eea963b8-f6d9-b345-376e-7fd6dad73cd4@gmail.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
-In-Reply-To: <eea963b8-f6d9-b345-376e-7fd6dad73cd4@gmail.com>
+ <202ae9ed-c1d1-ea57-6c50-b9c24f12dd5e@linaro.org>
+From: Daniel Henrique Barboza <danielhb413@gmail.com>
+In-Reply-To: <202ae9ed-c1d1-ea57-6c50-b9c24f12dd5e@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42c;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x42c.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.001,
+Received-SPF: pass client-ip=2607:f8b0:4864:20::334;
+ envelope-from=danielhb413@gmail.com; helo=mail-ot1-x334.google.com
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001, NICE_REPLY_A=-0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
@@ -134,90 +137,72 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Sender: "Qemu-arm" <qemu-arm-bounces@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: egE25Bmf6lRw
+X-TUID: 3deDj8md7vSW
 
-On 28/10/22 17:09, Daniel Henrique Barboza wrote:
-> Bernhard,
-> 
-> The 32 builds aren't fancying this patch. The issue is down there:
-> 
-> On 10/18/22 18:01, Bernhard Beschow wrote:
->> Allows e500 boards to have their root file system reside on flash using
->> only builtin devices located in the eLBC memory region.
+
+
+On 10/28/22 19:42, Philippe Mathieu-Daudé wrote:
+> On 28/10/22 17:09, Daniel Henrique Barboza wrote:
+>> Bernhard,
 >>
->> Note that the flash memory area is only created when a -pflash 
->> argument is
->> given, and that the size is determined by the given file. The idea is to
->> put users into control.
+>> The 32 builds aren't fancying this patch. The issue is down there:
 >>
->> Signed-off-by: Bernhard Beschow <shentey@gmail.com>
->> ---
->>   docs/system/ppc/ppce500.rst | 16 ++++++++
->>   hw/ppc/Kconfig              |  1 +
->>   hw/ppc/e500.c               | 79 +++++++++++++++++++++++++++++++++++++
->>   3 files changed, 96 insertions(+)
+>> On 10/18/22 18:01, Bernhard Beschow wrote:
+>>> Allows e500 boards to have their root file system reside on flash using
+>>> only builtin devices located in the eLBC memory region.
+>>>
+>>> Note that the flash memory area is only created when a -pflash argument is
+>>> given, and that the size is determined by the given file. The idea is to
+>>> put users into control.
+>>>
+>>> Signed-off-by: Bernhard Beschow <shentey@gmail.com>
+>>> ---
+>>>   docs/system/ppc/ppce500.rst | 16 ++++++++
+>>>   hw/ppc/Kconfig              |  1 +
+>>>   hw/ppc/e500.c               | 79 +++++++++++++++++++++++++++++++++++++
+>>>   3 files changed, 96 insertions(+)
+> 
+>>> @@ -1024,6 +1061,48 @@ void ppce500_init(MachineState *machine)
+>>>                                   pmc->platform_bus_base,
+>>>                                   &pms->pbus_dev->mmio);
+>>> +    dinfo = drive_get(IF_PFLASH, 0, 0);
+>>> +    if (dinfo) {
+>>> +        BlockBackend *blk = blk_by_legacy_dinfo(dinfo);
+>>> +        BlockDriverState *bs = blk_bs(blk);
+>>> +        uint64_t size = bdrv_getlength(bs);
+>>> +        uint64_t mmio_size = pms->pbus_dev->mmio.size;
+>>
+>> ^ here. The issue is that on a 32 bit system it is not possible to cast the
+>> Int128 type to uint64_t:
+>>
+>> FAILED: libqemu-ppc64-softmmu.fa.p/hw_ppc_e500.c.o
+>> 3746cc -m32 -Ilibqemu-ppc64-softmmu.fa.p -I. -I.. -Itarget/ppc -I../target/ppc -I../dtc/libfdt -Iqapi -Itrace -Iui -Iui/shader -I/usr/include/pixman-1 -I/usr/include/glib-2.0 -I/usr/lib/glib-2.0/include -I/usr/include/sysprof-4 -fdiagnostics-color=auto -Wall -Winvalid-pch -Werror -std=gnu11 -O2 -g -isystem /builds/danielhb/qemu/linux-headers -isystem linux-headers -iquote . -iquote /builds/danielhb/qemu -iquote /builds/danielhb/qemu/include -iquote /builds/danielhb/qemu/tcg/i386 -pthread -U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=2 -D_GNU_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -Wstrict-prototypes -Wredundant-decls -Wundef -Wwrite-strings -Wmissing-prototypes -fno-strict-aliasing -fno-common -fwrapv -Wold-style-declaration -Wold-style-definition -Wtype-limits -Wformat-security -Wformat-y2k -Winit-self -Wignored-qualifiers -Wempty-body -Wnested-externs -Wendif-labels -Wexpansion-to-defined -Wimplicit-fallthrough=2 -Wno-missing-include-dirs -Wno-shift-negative-value 
+>> -Wno-psabi -fstack-protector-strong -fPIE -isystem../linux-headers -isystemlinux-headers -DNEED_CPU_H '-DCONFIG_TARGET="ppc64-softmmu-config-target.h"' '-DCONFIG_DEVICES="ppc64-softmmu-config-devices.h"' -MD -MQ libqemu-ppc64-softmmu.fa.p/hw_ppc_e500.c.o -MF libqemu-ppc64-softmmu.fa.p/hw_ppc_e500.c.o.d -o libqemu-ppc64-softmmu.fa.p/hw_ppc_e500.c.o -c ../hw/ppc/e500.c
+>> 3747../hw/ppc/e500.c: In function 'ppce500_init':
+>> 3748../hw/ppc/e500.c:1069:30: error: incompatible types when initializing type 'uint64_t' {aka 'long long unsigned int'} using type 'Int128'
+>> 3749 1069 |         uint64_t mmio_size = pms->pbus_dev->mmio.size;
+>> 3750      |                              ^~~
+>> 3751[3207/5331] Compiling C object libqemu-ppc64-softmmu.fa.p/hw_ppc_mpc8544_guts.c.o
+>>
+>>
+>> What I did to solve the problem is this:
+>>
+>>
+>> +         uint64_t mmio_size = int128_get64(pms->pbus_dev->mmio.size); >
+>> This will get the lower 64 bits and return an uint64_t.
+>>
+>> Note that this function will assert if mmio.size is bigger than UINT64_MAX, but
+>> since you're doing an error(1) on the "if size > mmio_size" conditional, this
+>> assert() is not introducing a new side effect. We'll just fail earlier with
+>> a different error message.
+> 
+> Simply use:
+> 
+>    memory_region_size(pms->pbus_dev->mmio);
 
->> @@ -1024,6 +1061,48 @@ void ppce500_init(MachineState *machine)
->>                                   pmc->platform_bus_base,
->>                                   &pms->pbus_dev->mmio);
->> +    dinfo = drive_get(IF_PFLASH, 0, 0);
->> +    if (dinfo) {
->> +        BlockBackend *blk = blk_by_legacy_dinfo(dinfo);
->> +        BlockDriverState *bs = blk_bs(blk);
->> +        uint64_t size = bdrv_getlength(bs);
->> +        uint64_t mmio_size = pms->pbus_dev->mmio.size;
-> 
-> ^ here. The issue is that on a 32 bit system it is not possible to cast the
-> Int128 type to uint64_t:
-> 
-> FAILED: libqemu-ppc64-softmmu.fa.p/hw_ppc_e500.c.o
-> 3746cc -m32 -Ilibqemu-ppc64-softmmu.fa.p -I. -I.. -Itarget/ppc 
-> -I../target/ppc -I../dtc/libfdt -Iqapi -Itrace -Iui -Iui/shader 
-> -I/usr/include/pixman-1 -I/usr/include/glib-2.0 
-> -I/usr/lib/glib-2.0/include -I/usr/include/sysprof-4 
-> -fdiagnostics-color=auto -Wall -Winvalid-pch -Werror -std=gnu11 -O2 -g 
-> -isystem /builds/danielhb/qemu/linux-headers -isystem linux-headers 
-> -iquote . -iquote /builds/danielhb/qemu -iquote 
-> /builds/danielhb/qemu/include -iquote /builds/danielhb/qemu/tcg/i386 
-> -pthread -U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=2 -D_GNU_SOURCE 
-> -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -Wstrict-prototypes 
-> -Wredundant-decls -Wundef -Wwrite-strings -Wmissing-prototypes 
-> -fno-strict-aliasing -fno-common -fwrapv -Wold-style-declaration 
-> -Wold-style-definition -Wtype-limits -Wformat-security -Wformat-y2k 
-> -Winit-self -Wignored-qualifiers -Wempty-body -Wnested-externs 
-> -Wendif-labels -Wexpansion-to-defined -Wimplicit-fallthrough=2 
-> -Wno-missing-include-dirs -Wno-shift-negative-value -Wno-psabi 
-> -fstack-protector-strong -fPIE -isystem../linux-headers 
-> -isystemlinux-headers -DNEED_CPU_H 
-> '-DCONFIG_TARGET="ppc64-softmmu-config-target.h"' 
-> '-DCONFIG_DEVICES="ppc64-softmmu-config-devices.h"' -MD -MQ 
-> libqemu-ppc64-softmmu.fa.p/hw_ppc_e500.c.o -MF 
-> libqemu-ppc64-softmmu.fa.p/hw_ppc_e500.c.o.d -o 
-> libqemu-ppc64-softmmu.fa.p/hw_ppc_e500.c.o -c ../hw/ppc/e500.c
-> 3747../hw/ppc/e500.c: In function 'ppce500_init':
-> 3748../hw/ppc/e500.c:1069:30: error: incompatible types when 
-> initializing type 'uint64_t' {aka 'long long unsigned int'} using type 
-> 'Int128'
-> 3749 1069 |         uint64_t mmio_size = pms->pbus_dev->mmio.size;
-> 3750      |                              ^~~
-> 3751[3207/5331] Compiling C object 
-> libqemu-ppc64-softmmu.fa.p/hw_ppc_mpc8544_guts.c.o
-> 
-> 
-> What I did to solve the problem is this:
-> 
-> 
-> +         uint64_t mmio_size = int128_get64(pms->pbus_dev->mmio.size); >
-> This will get the lower 64 bits and return an uint64_t.
-> 
-> Note that this function will assert if mmio.size is bigger than 
-> UINT64_MAX, but
-> since you're doing an error(1) on the "if size > mmio_size" conditional, 
-> this
-> assert() is not introducing a new side effect. We'll just fail earlier with
-> a different error message.
+Nice! I'll change it in-tree before re-sending the PR.
 
-Simply use:
 
-   memory_region_size(pms->pbus_dev->mmio);
+Daniel
 
+> 

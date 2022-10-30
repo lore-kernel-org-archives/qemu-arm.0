@@ -1,249 +1,274 @@
-Received: by 2002:a17:906:9f27:b0:7ad:ca5a:aee3 with SMTP id fy39csp913099ejc;
-        Mon, 31 Oct 2022 05:12:22 -0700 (PDT)
-X-Google-Smtp-Source: AMsMyM7rtfPQrCd8fyxDMKBF7gGYn1PJg+Ur3tJUMcB39tos/NmcUEjoo7oH7zdTIIGWuaBxjFp2
-X-Received: by 2002:ac8:7152:0:b0:3a5:2fa2:cd1a with SMTP id h18-20020ac87152000000b003a52fa2cd1amr795837qtp.195.1667218342608;
-        Mon, 31 Oct 2022 05:12:22 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1667218342; cv=none;
+Received: by 2002:a17:906:9f27:b0:7ad:ca5a:aee3 with SMTP id fy39csp180274ejc;
+        Sun, 30 Oct 2022 04:00:38 -0700 (PDT)
+X-Google-Smtp-Source: AMsMyM4tjWMvbOcvFwSTdxt3hvCktZBfKuGe1WDeO9awlQMv+2hjpJOxkUtO1L2TI4vS7tML+mVU
+X-Received: by 2002:a05:622a:41:b0:39c:e2d6:b9ea with SMTP id y1-20020a05622a004100b0039ce2d6b9eamr6373915qtw.58.1667127638317;
+        Sun, 30 Oct 2022 04:00:38 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1667127638; cv=none;
         d=google.com; s=arc-20160816;
-        b=tOXNTe6ePzifjcvb94psFX1NTZ88YUOzhQz5yeyD6adebzWQ5v75qGFLxfoV/2ZnaF
-         0dkxSW5Mg41ioMDXgppehfWeSx5R9ZBQAVyT5Y5Bt4cHdQ7Q4MwWi5f4gH+SunLxE7Lu
-         4uVcetV48d3P5w2Y68FdaOIkt3N9n06Xrkd+5CvfeJSxQ8l5w/X8Qb9xZfVjpZBC7HgC
-         /HUMbGnmrhPvDq/NrI3KfjmhRH1ISZXki4m6ZOjUk1cBbVfhJeqfWLow0AUR+WwJxeTe
-         +PMbWUQsdcFVm7OIsFrPDNurMmZRyoTEocyhQNAUx62HDuTyP4/o5xLIxxn2SJQWVZsn
-         hPkA==
+        b=O55dUUeaM7jN/j/3NklGzXpeKd5OHI9dneZKL8u2uCgXOZVk4qYj6BzN/Ga1kk/TOg
+         LNt8UnW+/OhbyEyI0GWJDjdshgU92ECQwtbEn6onyd4IskKh+pSBuFaL3x1RD0Uq2lu4
+         0VPlsSHuCKOJJ6z2MqgZtxOcDQ0SHgfJVCUbttPlAgha6umvx6y8Ajpk66wXPW5lIVAT
+         IFZMTxDK2t64oASe7aPugvVM++DyglPOByiCo3zLSNm2OPZIjgNczCoB3HIc0kGy+Y4X
+         YMrd5f+LiUwvlqbYiGyMcNKekuc71kBc2KWaOZRtzxeiyOO2KrWnuYcOu7L3awOdh7pd
+         bykA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=errors-to:sender:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:cc:to:content-language:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=ymouxuz0jlLfMigQOX7KDLxkeU7n93+jMyY3p5Z3n8U=;
-        b=RRmJOR9hOyewDQtL7gZPncnmpI6Wf9tPU2Ygqivkl2Aqit/lUGZ8gGY/Ii5YlSq1gz
-         O3q14rsNdPnQOZ9bZl0n2fwdhUisysfvIAXVHf+A9HsMmY6NHrXkM5yE4czcR8RhUUXc
-         n/MTVZ+coc5ORAKoSxxpz6kGDys3xKlcrMiiMA0lqUtrAS9oY8GsQ+nUWXhP6XZghnqy
-         Cfke6RnbQkLbIALs4i62MeYvgicmo86e54TMedEp6sPsXDm7g/Z3y/1jI6SOSMI+svZa
-         VvVuHQberFJKJQC9NKx/jqoUPDCSg8w/Jd9C0k2jZp2wAaJI9e5u+UsNEr9nfoESXmsq
-         qrDg==
+        h=errors-to:from:reply-to:sender:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence
+         :content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to;
+        bh=V9Glg0JV1VrK5vHu8e0RlCUHAJo1KD+PuN9ZT3Lp3fM=;
+        b=Lx2vXMqUjoODnBKKoa85kSzv8VqWZKugpr39ZwOe+ol1IGQRYYgYNyRVb9Aw1yNcGF
+         BgemHIucDPJHzJMzEAfrP7v90CW9mix7+SLEHCSV0+DBlgA4SXUx8SGNyMWkiQbY4yDp
+         nRTc5EUR9LgS01QMBTNwuOyc6TdHjdrGfDxs1vJC6DwkyKEP/wmK/0g8P5G2inzrjb8h
+         MRh9DomqksTrV9JzEJ61rhFdpyRt1snNJkdhq9IFJQRn5KXHJ2X8cJzGzqUHvPsoJzbf
+         OIVY85z3J93BrabFwswmVd4Qlb1o8aSooAmBoIO3UVYw4ceCIEzKjE7FksG85W7HyjIH
+         UiEw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=svpBLiJh;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+thiago.bauermann=linaro.org+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+thiago.bauermann=linaro.org+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+Return-Path: <qemu-arm-bounces+thiago.bauermann=linaro.org+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 72-20020a37034b000000b006eb52f0e3b5si3506700qkd.603.2022.10.31.05.12.22
+        by mx.google.com with ESMTPS id f3-20020a05622a114300b003a4ea208149si2186412qty.252.2022.10.30.04.00.38
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 31 Oct 2022 05:12:22 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Sun, 30 Oct 2022 04:00:38 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+thiago.bauermann=linaro.org+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=svpBLiJh;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       spf=pass (google.com: domain of qemu-arm-bounces+thiago.bauermann=linaro.org+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+thiago.bauermann=linaro.org+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1opTdr-0006Rd-D8; Mon, 31 Oct 2022 08:11:47 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1op62n-0000pD-JJ; Sun, 30 Oct 2022 06:59:57 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1opTdp-0006PG-Nl
- for qemu-devel@nongnu.org; Mon, 31 Oct 2022 08:11:45 -0400
-Received: from mail-wr1-x42e.google.com ([2a00:1450:4864:20::42e])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1opTdm-0004Vi-DJ
- for qemu-devel@nongnu.org; Mon, 31 Oct 2022 08:11:45 -0400
-Received: by mail-wr1-x42e.google.com with SMTP id y16so15641887wrt.12
- for <qemu-devel@nongnu.org>; Mon, 31 Oct 2022 05:11:40 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=ymouxuz0jlLfMigQOX7KDLxkeU7n93+jMyY3p5Z3n8U=;
- b=svpBLiJhk2UeqlV9PVW5hmuHH4M++QslFzjenFautXGaZaOdbrgnIEuVD5NAQ8Ko+P
- di4hHXZ++uIax1hZWRlXyWtO2AQ2tjqu8ttVuDdDI4Q1gu7tElenb175gHj0y5YdJVL8
- 4Mkfg3v97uJjWmhvJi1XljVMieB0yIPBgXBs04WHLBj0uxDKFVLsPMHstmZ1+e4aXg0O
- RWJZy73V88rdABXoIt2/MBdnrTI8HNeffO2Czye3A4KV/jMjC0AuseQob3x8Vuh3hDeT
- sO4/AswNlX0JtkipZaHgH2R7wXfbUlYzMYlli0HjYbn9ko0LfVcu7pNPGemrpubW9xh4
- MPTg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=ymouxuz0jlLfMigQOX7KDLxkeU7n93+jMyY3p5Z3n8U=;
- b=Jlx2p+q3bddf3mDVPtxp1ewzeC2YJDolYuECGbcDJi75CRNI3vYZDUnuhElfU0Zmw4
- DRzsftc7QLsFKqoxH2DpbVKg9dElEZIjt06mRBF5VvByA+qG/g6SXbRvIbrM7kPBXE1w
- 7gzpDnsvoSTw8MrIOwsNP+ISLaEWcjANKzUEmTxUqSTozHtWljEraQvmF5xr8lMDhyxm
- CBKvTrrip8rz0AsAfXTVnyJdDhcVeLSCZdXdub27a1XXf9NMNOqmq+9Rcx4v6U5DwAcx
- 46ThhQh0ZnptmM+mmHMY5UivABDEZBlYQzlt11+dL947HRB4RDPP5l4digEkLNudmBlO
- TVoQ==
-X-Gm-Message-State: ACrzQf2KO2chz6tG/Cd0JWrR+cx3dRpXSkx43T+vHrX+d57PqTQDwxDd
- omNPLxWCD6LDs5z+a8r9CG5JeA==
-X-Received: by 2002:adf:da4f:0:b0:236:cdd4:4ce2 with SMTP id
- r15-20020adfda4f000000b00236cdd44ce2mr2418381wrl.626.1667218299775; 
- Mon, 31 Oct 2022 05:11:39 -0700 (PDT)
-Received: from [192.168.1.115] ([185.126.107.38])
- by smtp.gmail.com with ESMTPSA id
- n28-20020a05600c3b9c00b003b4a699ce8esm7329092wms.6.2022.10.31.05.11.37
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 31 Oct 2022 05:11:39 -0700 (PDT)
-Message-ID: <3629cba9-0eb7-1f9e-4bcd-030e1edb8745@linaro.org>
-Date: Mon, 31 Oct 2022 13:11:37 +0100
+ (Exim 4.90_1) (envelope-from <stefan@weilnetz.de>)
+ id 1op62l-0000p0-ST; Sun, 30 Oct 2022 06:59:56 -0400
+Received: from mail.weilnetz.de ([37.120.169.71]
+ helo=mail.v2201612906741603.powersrv.de)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <stefan@weilnetz.de>)
+ id 1op62j-0002tB-Ec; Sun, 30 Oct 2022 06:59:55 -0400
+Received: from qemu.weilnetz.de (qemu.weilnetz.de [188.68.58.204])
+ by mail.v2201612906741603.powersrv.de (Postfix) with ESMTP id 57BB0DA08AD;
+ Sun, 30 Oct 2022 11:59:50 +0100 (CET)
+Received: by qemu.weilnetz.de (Postfix, from userid 1000)
+ id 2A20F46001C; Sun, 30 Oct 2022 11:59:50 +0100 (CET)
+To: qemu-devel@nongnu.org
+Cc: Markus Armbruster <armbru@redhat.com>, Michael Roth <michael.roth@amd.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Stefan Hajnoczi <stefanha@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ Peter Xu <peterx@redhat.com>, David Hildenbrand <david@redhat.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Eric Blake <eblake@redhat.com>,
+ =?UTF-8?q?Daniel=20P=20=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
+ Eduardo Habkost <eduardo@habkost.net>,
+ Konstantin Kostiuk <kkostiuk@redhat.com>, Thomas Huth <thuth@redhat.com>,
+ Laurent Vivier <lvivier@redhat.com>, qemu-arm@nongnu.org,
+ virtio-fs@redhat.com, Stefan Weil <sw@weilnetz.de>
+Subject: [PATCH v2] Fix some typos in documentation and comments
+Date: Sun, 30 Oct 2022 11:59:44 +0100
+Message-Id: <20221030105944.311940-1-sw@weilnetz.de>
+X-Mailer: git-send-email 2.30.2
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
- Gecko/20100101 Thunderbird/102.4.0
-Subject: Re: [PATCH v4 6/7] hw/sd/sdhci: Implement Freescale eSDHC device model
-Content-Language: en-US
-To: Bernhard Beschow <shentey@gmail.com>
-Cc: qemu-devel@nongnu.org, qemu-ppc@nongnu.org,
- Aurelien Jarno <aurelien@aurel32.net>,
- Yoshinori Sato <ysato@users.sourceforge.jp>,
- Antony Pavlov <antonynpavlov@gmail.com>, BALATON Zoltan
- <balaton@eik.bme.hu>, Alistair Francis <alistair@alistair23.me>,
- Bin Meng <bin.meng@windriver.com>, Kevin Wolf <kwolf@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>, Jan Kiszka <jan.kiszka@web.de>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
- Hanna Reitz <hreitz@redhat.com>, qemu-arm@nongnu.org,
- Magnus Damm <magnus.damm@gmail.com>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, qemu-block@nongnu.org
-References: <20221018210146.193159-1-shentey@gmail.com>
- <20221018210146.193159-7-shentey@gmail.com>
- <f9dd1e1e-65b6-c74d-d957-43774393c2a4@linaro.org>
- <724F8CC8-C5E8-4785-B5C2-F1D327863717@gmail.com>
- <590683A5-2774-432C-A47A-ED755054479C@gmail.com>
- <DB3C19E8-007B-46F6-96B3-EE0CF6AD2019@gmail.com>
- <45be44c0-766b-07c6-be8a-c21d46da7f72@linaro.org>
- <CAG4p6K5qvJFRihrZV3Gku_fYsxWFzEN4UfGf4xySQyfzkv9q0g@mail.gmail.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
-In-Reply-To: <CAG4p6K5qvJFRihrZV3Gku_fYsxWFzEN4UfGf4xySQyfzkv9q0g@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42e;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x42e.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+Received-SPF: pass client-ip=37.120.169.71; envelope-from=stefan@weilnetz.de;
+ helo=mail.v2201612906741603.powersrv.de
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Sender: "Qemu-devel" <qemu-devel-bounces@nongnu.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: ATLEKWnshNCV
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Sender: "Qemu-arm" <qemu-arm-bounces@nongnu.org>
+Reply-to:  Stefan Weil <sw@weilnetz.de>
+From:  Stefan Weil via <qemu-arm@nongnu.org>
+Errors-To: qemu-arm-bounces+thiago.bauermann=linaro.org+alex.bennee=linaro.org@nongnu.org
+X-TUID: mFx92dPYxq1B
 
-On 30/10/22 12:46, Bernhard Beschow wrote:
-> 
-> 
-> On Sun, Oct 30, 2022 at 1:10 AM Philippe Mathieu-Daudé 
-> <philmd@linaro.org <mailto:philmd@linaro.org>> wrote:
-> 
->     On 29/10/22 20:28, Bernhard Beschow wrote:
->      > Am 29. Oktober 2022 13:04:00 UTC schrieb Bernhard Beschow
->     <shentey@gmail.com <mailto:shentey@gmail.com>>:
->      >> Am 29. Oktober 2022 11:33:51 UTC schrieb Bernhard Beschow
->     <shentey@gmail.com <mailto:shentey@gmail.com>>:
->      >>> Am 27. Oktober 2022 21:40:01 UTC schrieb "Philippe
->     Mathieu-Daudé" <philmd@linaro.org <mailto:philmd@linaro.org>>:
->      >>>> Hi Bernhard,
->      >>>>
->      >>>> On 18/10/22 23:01, Bernhard Beschow wrote:
->      >>>>> Will allow e500 boards to access SD cards using just their
->     own devices.
->      >>>>>
->      >>>>> Signed-off-by: Bernhard Beschow <shentey@gmail.com
->     <mailto:shentey@gmail.com>>
->      >>>>> ---
->      >>>>>    hw/sd/sdhci.c         | 120
->     +++++++++++++++++++++++++++++++++++++++++-
->      >>>>>    include/hw/sd/sdhci.h |   3 ++
->      >>>>>    2 files changed, 122 insertions(+), 1 deletion(-)
-> 
->      >>>> So now, I'd create 1 UNIMP region for ESDHC_WML and map it
->      >>>> into SDHC_REGISTERS_MAP (s->iomem) with priority 1, and add
->      >>>> another UNIMP region of ESDHC_REGISTERS_MAP_SIZE -
->     SDHC_REGISTERS_MAP_SIZE (= 0x310) and map it normally at offset
->      >>>> 0x100 (SDHC_REGISTERS_MAP_SIZE). Look at create_unimp() in
->      >>>> hw/arm/bcm2835_peripherals.c.
->      >>>>
->      >>>> But the ESDHC_WML register has address 0x44 and fits inside the
->      >>>> SDHC_REGISTERS_MAP region, so likely belong there. 0x44 is the
->      >>>> upper part of the SDHC_CAPAB register. These bits are undefined
->      >>>> on the spec v2, which I see you are setting in esdhci_init().
->      >>>> So this register should already return 0, otherwise we have
->      >>>> a bug. Thus we don't need to handle this ESDHC_WML particularly.
->      >>
->      >> My idea here was to catch this unimplemented case in order to
->     indicate this clearly to users. Perhaps it nudges somebody to
->     provide a patch?
->      >>
->      >>>>
->      >>>> And your model is reduced to handling create_unimp() in
->     esdhci_realize().
->      >>>>
->      >>>> Am I missing something?
->      >>>
->      >>> The mmio ops are big endian and need to be aligned to a 4-byte
->     boundary. It took me quite a while to debug this. So shall I just
->     create an additional memory region for the region above
->     SDHC_REGISTERS_MAP_SIZE for ESDHC_DMA_SYSCTL?
->      >>
->      >> All in all I currently don't have a better idea than keeping the
->     custom i/o ops for the standard region and adding an additional
->     unimplemented region for ESDHC_DMA_SYSCTL. I think I'd have to
->     dynamically allocate memory for it where I still need to figure out
->     how not to leak it.
->      >
->      > By simply reusing sdhci_{read,write} in eSDHC's io_ops struct I
->     was able to remove the custom implementations while having big
->     endian and the alignments proper. However, I don't see a way of
->     adding two memory regions - with or without a container. With a
->     container I'd have to somehow preserve the mmio attribute which is
->     initialized by the parent class, re-initialize it with the
->     container, and add the preserved memory region as child. This seems
->     very fragile, esp. since the parent class has created an alias for
->     mmio in sysbus. Without a container, one would have two memory
->     regions that both have to be mapped separately by the caller, i.e.
->     it burdens the caller with an implementation detail.
->      >
->      > Any suggestions?
+Most of them were found and fixed using codespell.
 
-See 
-https://lore.kernel.org/qemu-devel/20221031115402.91912-7-philmd@linaro.org/
+Signed-off-by: Stefan Weil <sw@weilnetz.de>
+---
 
->     Can you share branch and how to test?
-> 
-> 
-> QEMU branch: https://github.com/shentok/qemu/tree/e500-flash 
-> <https://github.com/shentok/qemu/tree/e500-flash>
-> 
-> How to test:
-> 1. `git clone -b e500 https://github.com/shentok/buildroot.git 
-> <https://github.com/shentok/buildroot.git>`
-> 2. `cd buildroot`
-> 3. `make qemu_ppc_e500mc_defconfig`
-> 4. `make`
-> 5. `cd output/images`
-> 6. `dd if=/dev/zero of=root.img bs=1M count=64 && dd if=rootfs.ext2 
-> of=root.img bs=1M conv=notrunc`
-> 7. `qemu-system-ppc -M ppce500 -cpu e500mc -m 256 -kernel uImage -append 
-> "console=ttyS0 rootwait root=/dev/mmcblk0" -device sd-card,drive=mydrive 
-> -drive id=mydrive,if=none,file=root.img,format=raw`
+v2: Fixes from Peter Maydell's comments
 
-Could you add an Avocado-based test?
+My focus was fixing typos which are relevant for the generated documentation.
 
->    Welcome to Buildroot
->    buildroot login:
+codespell finds many more typos in source code, and adding it to the continuous
+integration checks looks more and more like a good idea.
 
-Regards,
+Stefan
 
-Phil.
+
+ docs/devel/testing.rst              |  2 +-
+ docs/system/arm/cpu-features.rst    |  2 +-
+ docs/system/loongarch/loongson3.rst |  2 +-
+ docs/tools/virtiofsd.rst            |  2 +-
+ include/exec/memory.h               |  2 +-
+ qapi/qom.json                       |  2 +-
+ qemu-options.hx                     | 10 +++++-----
+ qga/qapi-schema.json                |  2 +-
+ tests/qtest/libqtest.h              |  2 +-
+ 9 files changed, 13 insertions(+), 13 deletions(-)
+
+diff --git a/docs/devel/testing.rst b/docs/devel/testing.rst
+index fbb98faabe..e10c47b5a7 100644
+--- a/docs/devel/testing.rst
++++ b/docs/devel/testing.rst
+@@ -99,7 +99,7 @@ successfully on various hosts. The following list shows some best practices:
+ * If your test cases uses the blkdebug feature, use relative path to pass
+   the config and image file paths in the command line as Windows absolute
+   path contains the delimiter ":" which will confuse the blkdebug parser.
+-* Use double quotes in your extra QEMU commmand line in your test cases
++* Use double quotes in your extra QEMU command line in your test cases
+   instead of single quotes, as Windows does not drop single quotes when
+   passing the command line to QEMU.
+ * Windows opens a file in text mode by default, while a POSIX compliant
+diff --git a/docs/system/arm/cpu-features.rst b/docs/system/arm/cpu-features.rst
+index c2c01ec7d2..00c444042f 100644
+--- a/docs/system/arm/cpu-features.rst
++++ b/docs/system/arm/cpu-features.rst
+@@ -433,7 +433,7 @@ additional constraints on the set of vector lengths supported by SME.
+ SME User-mode Default Vector Length Property
+ --------------------------------------------
+ 
+-For qemu-aarch64, the cpu propery ``sme-default-vector-length=N`` is
++For qemu-aarch64, the cpu property ``sme-default-vector-length=N`` is
+ defined to mirror the Linux kernel parameter file
+ ``/proc/sys/abi/sme_default_vector_length``.  The default length, ``N``,
+ is in units of bytes and must be between 16 and 8192.
+diff --git a/docs/system/loongarch/loongson3.rst b/docs/system/loongarch/loongson3.rst
+index 1bdab44e27..68113b6f5e 100644
+--- a/docs/system/loongarch/loongson3.rst
++++ b/docs/system/loongarch/loongson3.rst
+@@ -41,7 +41,7 @@ can be accessed by following steps.
+ 
+   $ qemu-system-loongarch64 -machine virt -m 4G -cpu la464-loongarch-cpu \
+       -smp 1 -bios QEMU_EFI.fd -kernel vmlinuz.efi -initrd initrd.img \
+-      -append "root=/dev/ram rdinit=/sbin/init consol e=ttyS0,115200" \
++      -append "root=/dev/ram rdinit=/sbin/init console=ttyS0,115200" \
+       --nographic
+ 
+ Note: The running speed may be a little slow, as the performance of our
+diff --git a/docs/tools/virtiofsd.rst b/docs/tools/virtiofsd.rst
+index 5f5ac9dd56..995a754a7b 100644
+--- a/docs/tools/virtiofsd.rst
++++ b/docs/tools/virtiofsd.rst
+@@ -232,7 +232,7 @@ e.g.:
+ 
+   ``:ok:server::security.:``
+ 
+-  will pass 'securty.' xattr's in listxattr from the server
++  will pass 'security.' xattr's in listxattr from the server
+   and ignore following rules.
+ 
+   ``:ok:all:::``
+diff --git a/include/exec/memory.h b/include/exec/memory.h
+index bfb1de8eea..a751c111bd 100644
+--- a/include/exec/memory.h
++++ b/include/exec/memory.h
+@@ -1970,7 +1970,7 @@ void memory_region_clear_dirty_bitmap(MemoryRegion *mr, hwaddr start,
+  * querying the same page multiple times, which is especially useful for
+  * display updates where the scanlines often are not page aligned.
+  *
+- * The dirty bitmap region which gets copyed into the snapshot (and
++ * The dirty bitmap region which gets copied into the snapshot (and
+  * cleared afterwards) can be larger than requested.  The boundaries
+  * are rounded up/down so complete bitmap longs (covering 64 pages on
+  * 64bit hosts) can be copied over into the bitmap snapshot.  Which
+diff --git a/qapi/qom.json b/qapi/qom.json
+index 80dd419b39..216b56a4e6 100644
+--- a/qapi/qom.json
++++ b/qapi/qom.json
+@@ -586,7 +586,7 @@
+ #
+ # @size: size of the memory region in bytes
+ #
+-# @x-use-canonical-path-for-ramblock-id: if true, the canoncial path is used
++# @x-use-canonical-path-for-ramblock-id: if true, the canonical path is used
+ #                                        for ramblock-id. Disable this for 4.0
+ #                                        machine types or older to allow
+ #                                        migration with newer QEMU versions.
+diff --git a/qemu-options.hx b/qemu-options.hx
+index eb38e5dc40..1141dc5e58 100644
+--- a/qemu-options.hx
++++ b/qemu-options.hx
+@@ -1051,7 +1051,7 @@ SRST
+     details on the external interface.
+ 
+ ``-device isa-ipmi-kcs,bmc=id[,ioport=val][,irq=val]``
+-    Add a KCS IPMI interafce on the ISA bus. This also adds a
++    Add a KCS IPMI interface on the ISA bus. This also adds a
+     corresponding ACPI and SMBIOS entries, if appropriate.
+ 
+     ``bmc=id``
+@@ -1071,7 +1071,7 @@ SRST
+     is 0xe4 and the default interrupt is 5.
+ 
+ ``-device pci-ipmi-kcs,bmc=id``
+-    Add a KCS IPMI interafce on the PCI bus.
++    Add a KCS IPMI interface on the PCI bus.
+ 
+     ``bmc=id``
+         The BMC to connect to, one of ipmi-bmc-sim or ipmi-bmc-extern above.
+@@ -5248,8 +5248,8 @@ SRST
+         read the colo-compare git log.
+ 
+     ``-object cryptodev-backend-builtin,id=id[,queues=queues]``
+-        Creates a cryptodev backend which executes crypto opreation from
+-        the QEMU cipher APIS. The id parameter is a unique ID that will
++        Creates a cryptodev backend which executes crypto operations from
++        the QEMU cipher APIs. The id parameter is a unique ID that will
+         be used to reference this cryptodev backend from the
+         ``virtio-crypto`` device. The queues parameter is optional,
+         which specify the queue number of cryptodev backend, the default
+@@ -5516,7 +5516,7 @@ SRST
+                        file=/etc/qemu/vnc.allow
+ 
+         Finally the ``/etc/qemu/vnc.allow`` file would contain the list
+-        of x509 distingished names that are permitted access
++        of x509 distinguished names that are permitted access
+ 
+         ::
+ 
+diff --git a/qga/qapi-schema.json b/qga/qapi-schema.json
+index 026a56f76c..796434ed34 100644
+--- a/qga/qapi-schema.json
++++ b/qga/qapi-schema.json
+@@ -392,7 +392,7 @@
+ ##
+ # @guest-file-flush:
+ #
+-# Write file changes bufferred in userspace to disk/kernel buffers
++# Write file changes buffered in userspace to disk/kernel buffers
+ #
+ # @handle: filehandle returned by guest-file-open
+ #
+diff --git a/tests/qtest/libqtest.h b/tests/qtest/libqtest.h
+index 65c040e504..1a76bae326 100644
+--- a/tests/qtest/libqtest.h
++++ b/tests/qtest/libqtest.h
+@@ -727,7 +727,7 @@ bool qtest_has_device(const char *device);
+  * qtest_qmp_device_add_qdict:
+  * @qts: QTestState instance to operate on
+  * @drv: Name of the device that should be added
+- * @arguments: QDict with properties for the device to intialize
++ * @arguments: QDict with properties for the device to initialize
+  *
+  * Generic hot-plugging test via the device_add QMP command with properties
+  * supplied in form of QDict. Use NULL for empty properties list.
+-- 
+2.30.2
+

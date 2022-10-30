@@ -1,83 +1,112 @@
-Received: by 2002:a17:906:9f27:b0:7ad:ca5a:aee3 with SMTP id fy39csp180274ejc;
-        Sun, 30 Oct 2022 04:00:38 -0700 (PDT)
-X-Google-Smtp-Source: AMsMyM4tjWMvbOcvFwSTdxt3hvCktZBfKuGe1WDeO9awlQMv+2hjpJOxkUtO1L2TI4vS7tML+mVU
-X-Received: by 2002:a05:622a:41:b0:39c:e2d6:b9ea with SMTP id y1-20020a05622a004100b0039ce2d6b9eamr6373915qtw.58.1667127638317;
-        Sun, 30 Oct 2022 04:00:38 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1667127638; cv=none;
+Received: by 2002:a17:906:9f27:b0:7ad:ca5a:aee3 with SMTP id fy39csp191531ejc;
+        Sun, 30 Oct 2022 04:18:05 -0700 (PDT)
+X-Google-Smtp-Source: AMsMyM6FlAviTGmeXLjnSjYrs0taZugWdznrnVaRnq96e/CzakB4l8WyYATt4rp4AXsVf/1SrHv9
+X-Received: by 2002:ac8:59cb:0:b0:39a:dbc7:2424 with SMTP id f11-20020ac859cb000000b0039adbc72424mr6460113qtf.304.1667128685477;
+        Sun, 30 Oct 2022 04:18:05 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1667128685; cv=none;
         d=google.com; s=arc-20160816;
-        b=O55dUUeaM7jN/j/3NklGzXpeKd5OHI9dneZKL8u2uCgXOZVk4qYj6BzN/Ga1kk/TOg
-         LNt8UnW+/OhbyEyI0GWJDjdshgU92ECQwtbEn6onyd4IskKh+pSBuFaL3x1RD0Uq2lu4
-         0VPlsSHuCKOJJ6z2MqgZtxOcDQ0SHgfJVCUbttPlAgha6umvx6y8Ajpk66wXPW5lIVAT
-         IFZMTxDK2t64oASe7aPugvVM++DyglPOByiCo3zLSNm2OPZIjgNczCoB3HIc0kGy+Y4X
-         YMrd5f+LiUwvlqbYiGyMcNKekuc71kBc2KWaOZRtzxeiyOO2KrWnuYcOu7L3awOdh7pd
-         bykA==
+        b=TEV/rPsdhTRJ9L817mCqU1cFwUT312AQtTbuJwri7tE8HkTJM5pxZezpLZg/vR5atO
+         Q4A4sgM7NzGPGoCx/6VtTd88JIaBAHwl7FJ7fVSm+WLHkpH7KGLULDqsYPxSjCLCVDfJ
+         LiFQ7AfK9kHSpkubn1W3vQkXz8s34ziTQImzxK2ziz008p0ugI1hQsx9K9W6//d8FIYq
+         nSIG8OFxAGpszDXDuGmmoEPuylbfNXj97gBIFaL/4KUUZ7u5VMRA53nAZW4zJNXd9dhq
+         F3NQQPeaadVatErcl8Ja7atsq0YMYz4PofFaLiYW9D9I9VvI4kaWGVsWQb3rc7Sc+liG
+         XQIQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=errors-to:from:reply-to:sender:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to;
-        bh=V9Glg0JV1VrK5vHu8e0RlCUHAJo1KD+PuN9ZT3Lp3fM=;
-        b=Lx2vXMqUjoODnBKKoa85kSzv8VqWZKugpr39ZwOe+ol1IGQRYYgYNyRVb9Aw1yNcGF
-         BgemHIucDPJHzJMzEAfrP7v90CW9mix7+SLEHCSV0+DBlgA4SXUx8SGNyMWkiQbY4yDp
-         nRTc5EUR9LgS01QMBTNwuOyc6TdHjdrGfDxs1vJC6DwkyKEP/wmK/0g8P5G2inzrjb8h
-         MRh9DomqksTrV9JzEJ61rhFdpyRt1snNJkdhq9IFJQRn5KXHJ2X8cJzGzqUHvPsoJzbf
-         OIVY85z3J93BrabFwswmVd4Qlb1o8aSooAmBoIO3UVYw4ceCIEzKjE7FksG85W7HyjIH
-         UiEw==
+        h=errors-to:sender:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=mea9bZUQuyEjJ3RlfvCntNcSv2SbCc3AGE3XX2UP6bU=;
+        b=yeImMYH91Bn41wgmol/NcTUHG6VPgrrw59KeYnRP6qNDjyxJwMm1KWCelURe5JX7zd
+         OgUEAt2InSsjj1Nc2K7YGbmiUEvWXXeCvL6W6vGtM4swh9nRv7y2yblyLm4aYT/HgpF7
+         0X6hHopQtVJTG62Hy7OhYqpNuZOkp/r+6Ft58/e4vtpMSGM4fAJXjdcA2iR5HRZiVQdS
+         0NBog8juLgTyvmZKea/yZF3m0lA6zT4do/ZJqav+pzKHQBzB7g7aRKUBR8qxgLH2/L1d
+         jOGwLUeFnNo7id8w2As/QAyVWLpCv6639KFjB9qhgB7kfwwKhWd9MWc7EycVa72QEtAB
+         cvng==
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=V+bMKVr5;
        spf=pass (google.com: domain of qemu-arm-bounces+thiago.bauermann=linaro.org+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+thiago.bauermann=linaro.org+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+thiago.bauermann=linaro.org+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id f3-20020a05622a114300b003a4ea208149si2186412qty.252.2022.10.30.04.00.38
+        by mx.google.com with ESMTPS id do56-20020a05620a2b3800b006f582368e99si2254941qkb.363.2022.10.30.04.18.05
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 30 Oct 2022 04:00:38 -0700 (PDT)
+        Sun, 30 Oct 2022 04:18:05 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+thiago.bauermann=linaro.org+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=V+bMKVr5;
        spf=pass (google.com: domain of qemu-arm-bounces+thiago.bauermann=linaro.org+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+thiago.bauermann=linaro.org+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1op62n-0000pD-JJ; Sun, 30 Oct 2022 06:59:57 -0400
+	id 1op6K2-0001gX-PP; Sun, 30 Oct 2022 07:17:46 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <stefan@weilnetz.de>)
- id 1op62l-0000p0-ST; Sun, 30 Oct 2022 06:59:56 -0400
-Received: from mail.weilnetz.de ([37.120.169.71]
- helo=mail.v2201612906741603.powersrv.de)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <stefan@weilnetz.de>)
- id 1op62j-0002tB-Ec; Sun, 30 Oct 2022 06:59:55 -0400
-Received: from qemu.weilnetz.de (qemu.weilnetz.de [188.68.58.204])
- by mail.v2201612906741603.powersrv.de (Postfix) with ESMTP id 57BB0DA08AD;
- Sun, 30 Oct 2022 11:59:50 +0100 (CET)
-Received: by qemu.weilnetz.de (Postfix, from userid 1000)
- id 2A20F46001C; Sun, 30 Oct 2022 11:59:50 +0100 (CET)
-To: qemu-devel@nongnu.org
-Cc: Markus Armbruster <armbru@redhat.com>, Michael Roth <michael.roth@amd.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Stefan Hajnoczi <stefanha@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
- Peter Xu <peterx@redhat.com>, David Hildenbrand <david@redhat.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Eric Blake <eblake@redhat.com>,
- =?UTF-8?q?Daniel=20P=20=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
- Eduardo Habkost <eduardo@habkost.net>,
- Konstantin Kostiuk <kkostiuk@redhat.com>, Thomas Huth <thuth@redhat.com>,
- Laurent Vivier <lvivier@redhat.com>, qemu-arm@nongnu.org,
- virtio-fs@redhat.com, Stefan Weil <sw@weilnetz.de>
-Subject: [PATCH v2] Fix some typos in documentation and comments
-Date: Sun, 30 Oct 2022 11:59:44 +0100
-Message-Id: <20221030105944.311940-1-sw@weilnetz.de>
-X-Mailer: git-send-email 2.30.2
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1op6K1-0001fQ-LP
+ for qemu-arm@nongnu.org; Sun, 30 Oct 2022 07:17:45 -0400
+Received: from mail-pl1-x633.google.com ([2607:f8b0:4864:20::633])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1op6K0-0007mR-4H
+ for qemu-arm@nongnu.org; Sun, 30 Oct 2022 07:17:45 -0400
+Received: by mail-pl1-x633.google.com with SMTP id j12so8513150plj.5
+ for <qemu-arm@nongnu.org>; Sun, 30 Oct 2022 04:17:43 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=mea9bZUQuyEjJ3RlfvCntNcSv2SbCc3AGE3XX2UP6bU=;
+ b=V+bMKVr5sPQFey6ICd2cLMPMLd8TKisnlkMIKE2rlVDCrfLkmgPcSNhQ2/IyQc0ffz
+ wr7VdDQd7QHQxWT0uzL4TXMG3IWnoy/prYUtOld86gjnavx6Qcfx71fhmUBXq7hz8aHd
+ sM0TE7Cnb6wQiK9nAaGziNZC2T6aaERtXgo1YzmuO/K+rUBe3q4KzePTKDYazFU0k3yS
+ +V65pOnw1QIePPfQ191cuhzu7QbCdmoL00GWEnsMXtlh4JaEltb0KGiOXCq98JCyncxo
+ AVtaF1UvJQsELoZ1b6EyJ/vznraasP3ecevbTyvxRNdtrd9WjDkofxs01h6hm6E7tD1A
+ YIaw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=mea9bZUQuyEjJ3RlfvCntNcSv2SbCc3AGE3XX2UP6bU=;
+ b=ZMSVfNekCErFs9IHKkwtZTrrgRbk9ImRb6BtbgfS9V29PKulMgoEP59IWfCFYv0Ghn
+ VUjuYu6WIe38yIp5Yy6uE/78FFEg1miPn38yar8zWLe+iwoZT4NAhDMcKEra4ENCOgkz
+ 6xBAwzBK7qhXK3nkYNRJBAnmb8A3YbcpI6J/LWLn6nzL1bsA3BvsynXf2gyo/KN0g9Yo
+ oEeYmisxtzLm5fZmxZrhZS54oeE0HNkOADwBnpAiaPzYLrxOfPzZIHUzZKv4L5xEG5GW
+ c0WHE1WMYeZLbRKjiKYUJ4uNQGl5SH5E9W1sRlAeS427LgLpK+a71+TxoWl1mHbXBbYY
+ qQ1A==
+X-Gm-Message-State: ACrzQf1QlJdJIYJxpwjHbl/M/d3C8oDQfOiKObuUxRUm+ikckf7LaWtC
+ R0PXrfFLUON2xCuATZ5m4+5JfH1H9ROHuWsUFp0Acg==
+X-Received: by 2002:a17:90a:164f:b0:213:bda6:2873 with SMTP id
+ x15-20020a17090a164f00b00213bda62873mr5166821pje.215.1667128662611; Sun, 30
+ Oct 2022 04:17:42 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=37.120.169.71; envelope-from=stefan@weilnetz.de;
- helo=mail.v2201612906741603.powersrv.de
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
+References: <20221030105944.311940-1-sw@weilnetz.de>
+In-Reply-To: <20221030105944.311940-1-sw@weilnetz.de>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Sun, 30 Oct 2022 11:17:31 +0000
+Message-ID: <CAFEAcA_w=9zj3F7YiStjEZwhm8xoNydh0sG_wwNqpyHwzwJt2w@mail.gmail.com>
+Subject: Re: [PATCH v2] Fix some typos in documentation and comments
+To: Stefan Weil <sw@weilnetz.de>
+Cc: qemu-devel@nongnu.org, Markus Armbruster <armbru@redhat.com>, 
+ Michael Roth <michael.roth@amd.com>, Stefan Hajnoczi <stefanha@redhat.com>, 
+ Paolo Bonzini <pbonzini@redhat.com>, Peter Xu <peterx@redhat.com>, 
+ David Hildenbrand <david@redhat.com>,
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
+ Eric Blake <eblake@redhat.com>,
+ =?UTF-8?Q?Daniel_P_=2E_Berrang=C3=A9?= <berrange@redhat.com>, 
+ Eduardo Habkost <eduardo@habkost.net>, Konstantin Kostiuk <kkostiuk@redhat.com>,
+ Thomas Huth <thuth@redhat.com>, Laurent Vivier <lvivier@redhat.com>,
+ qemu-arm@nongnu.org, virtio-fs@redhat.com
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::633;
+ envelope-from=peter.maydell@linaro.org; helo=mail-pl1-x633.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -92,183 +121,29 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Sender: "Qemu-arm" <qemu-arm-bounces@nongnu.org>
-Reply-to:  Stefan Weil <sw@weilnetz.de>
-From:  Stefan Weil via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+thiago.bauermann=linaro.org+alex.bennee=linaro.org@nongnu.org
-X-TUID: mFx92dPYxq1B
+X-TUID: aeYOJ6fq1F42
 
-Most of them were found and fixed using codespell.
+On Sun, 30 Oct 2022 at 10:59, Stefan Weil <sw@weilnetz.de> wrote:
+>
+> Most of them were found and fixed using codespell.
+>
+> Signed-off-by: Stefan Weil <sw@weilnetz.de>
+> ---
+>
+> v2: Fixes from Peter Maydell's comments
+>
+> My focus was fixing typos which are relevant for the generated documentation.
+>
+> codespell finds many more typos in source code, and adding it to the continuous
+> integration checks looks more and more like a good idea.
 
-Signed-off-by: Stefan Weil <sw@weilnetz.de>
----
+Is it possible to set it up in a way that doesn't report
+false positives ?
 
-v2: Fixes from Peter Maydell's comments
+Anyway, for this patch:
 
-My focus was fixing typos which are relevant for the generated documentation.
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
-codespell finds many more typos in source code, and adding it to the continuous
-integration checks looks more and more like a good idea.
-
-Stefan
-
-
- docs/devel/testing.rst              |  2 +-
- docs/system/arm/cpu-features.rst    |  2 +-
- docs/system/loongarch/loongson3.rst |  2 +-
- docs/tools/virtiofsd.rst            |  2 +-
- include/exec/memory.h               |  2 +-
- qapi/qom.json                       |  2 +-
- qemu-options.hx                     | 10 +++++-----
- qga/qapi-schema.json                |  2 +-
- tests/qtest/libqtest.h              |  2 +-
- 9 files changed, 13 insertions(+), 13 deletions(-)
-
-diff --git a/docs/devel/testing.rst b/docs/devel/testing.rst
-index fbb98faabe..e10c47b5a7 100644
---- a/docs/devel/testing.rst
-+++ b/docs/devel/testing.rst
-@@ -99,7 +99,7 @@ successfully on various hosts. The following list shows some best practices:
- * If your test cases uses the blkdebug feature, use relative path to pass
-   the config and image file paths in the command line as Windows absolute
-   path contains the delimiter ":" which will confuse the blkdebug parser.
--* Use double quotes in your extra QEMU commmand line in your test cases
-+* Use double quotes in your extra QEMU command line in your test cases
-   instead of single quotes, as Windows does not drop single quotes when
-   passing the command line to QEMU.
- * Windows opens a file in text mode by default, while a POSIX compliant
-diff --git a/docs/system/arm/cpu-features.rst b/docs/system/arm/cpu-features.rst
-index c2c01ec7d2..00c444042f 100644
---- a/docs/system/arm/cpu-features.rst
-+++ b/docs/system/arm/cpu-features.rst
-@@ -433,7 +433,7 @@ additional constraints on the set of vector lengths supported by SME.
- SME User-mode Default Vector Length Property
- --------------------------------------------
- 
--For qemu-aarch64, the cpu propery ``sme-default-vector-length=N`` is
-+For qemu-aarch64, the cpu property ``sme-default-vector-length=N`` is
- defined to mirror the Linux kernel parameter file
- ``/proc/sys/abi/sme_default_vector_length``.  The default length, ``N``,
- is in units of bytes and must be between 16 and 8192.
-diff --git a/docs/system/loongarch/loongson3.rst b/docs/system/loongarch/loongson3.rst
-index 1bdab44e27..68113b6f5e 100644
---- a/docs/system/loongarch/loongson3.rst
-+++ b/docs/system/loongarch/loongson3.rst
-@@ -41,7 +41,7 @@ can be accessed by following steps.
- 
-   $ qemu-system-loongarch64 -machine virt -m 4G -cpu la464-loongarch-cpu \
-       -smp 1 -bios QEMU_EFI.fd -kernel vmlinuz.efi -initrd initrd.img \
--      -append "root=/dev/ram rdinit=/sbin/init consol e=ttyS0,115200" \
-+      -append "root=/dev/ram rdinit=/sbin/init console=ttyS0,115200" \
-       --nographic
- 
- Note: The running speed may be a little slow, as the performance of our
-diff --git a/docs/tools/virtiofsd.rst b/docs/tools/virtiofsd.rst
-index 5f5ac9dd56..995a754a7b 100644
---- a/docs/tools/virtiofsd.rst
-+++ b/docs/tools/virtiofsd.rst
-@@ -232,7 +232,7 @@ e.g.:
- 
-   ``:ok:server::security.:``
- 
--  will pass 'securty.' xattr's in listxattr from the server
-+  will pass 'security.' xattr's in listxattr from the server
-   and ignore following rules.
- 
-   ``:ok:all:::``
-diff --git a/include/exec/memory.h b/include/exec/memory.h
-index bfb1de8eea..a751c111bd 100644
---- a/include/exec/memory.h
-+++ b/include/exec/memory.h
-@@ -1970,7 +1970,7 @@ void memory_region_clear_dirty_bitmap(MemoryRegion *mr, hwaddr start,
-  * querying the same page multiple times, which is especially useful for
-  * display updates where the scanlines often are not page aligned.
-  *
-- * The dirty bitmap region which gets copyed into the snapshot (and
-+ * The dirty bitmap region which gets copied into the snapshot (and
-  * cleared afterwards) can be larger than requested.  The boundaries
-  * are rounded up/down so complete bitmap longs (covering 64 pages on
-  * 64bit hosts) can be copied over into the bitmap snapshot.  Which
-diff --git a/qapi/qom.json b/qapi/qom.json
-index 80dd419b39..216b56a4e6 100644
---- a/qapi/qom.json
-+++ b/qapi/qom.json
-@@ -586,7 +586,7 @@
- #
- # @size: size of the memory region in bytes
- #
--# @x-use-canonical-path-for-ramblock-id: if true, the canoncial path is used
-+# @x-use-canonical-path-for-ramblock-id: if true, the canonical path is used
- #                                        for ramblock-id. Disable this for 4.0
- #                                        machine types or older to allow
- #                                        migration with newer QEMU versions.
-diff --git a/qemu-options.hx b/qemu-options.hx
-index eb38e5dc40..1141dc5e58 100644
---- a/qemu-options.hx
-+++ b/qemu-options.hx
-@@ -1051,7 +1051,7 @@ SRST
-     details on the external interface.
- 
- ``-device isa-ipmi-kcs,bmc=id[,ioport=val][,irq=val]``
--    Add a KCS IPMI interafce on the ISA bus. This also adds a
-+    Add a KCS IPMI interface on the ISA bus. This also adds a
-     corresponding ACPI and SMBIOS entries, if appropriate.
- 
-     ``bmc=id``
-@@ -1071,7 +1071,7 @@ SRST
-     is 0xe4 and the default interrupt is 5.
- 
- ``-device pci-ipmi-kcs,bmc=id``
--    Add a KCS IPMI interafce on the PCI bus.
-+    Add a KCS IPMI interface on the PCI bus.
- 
-     ``bmc=id``
-         The BMC to connect to, one of ipmi-bmc-sim or ipmi-bmc-extern above.
-@@ -5248,8 +5248,8 @@ SRST
-         read the colo-compare git log.
- 
-     ``-object cryptodev-backend-builtin,id=id[,queues=queues]``
--        Creates a cryptodev backend which executes crypto opreation from
--        the QEMU cipher APIS. The id parameter is a unique ID that will
-+        Creates a cryptodev backend which executes crypto operations from
-+        the QEMU cipher APIs. The id parameter is a unique ID that will
-         be used to reference this cryptodev backend from the
-         ``virtio-crypto`` device. The queues parameter is optional,
-         which specify the queue number of cryptodev backend, the default
-@@ -5516,7 +5516,7 @@ SRST
-                        file=/etc/qemu/vnc.allow
- 
-         Finally the ``/etc/qemu/vnc.allow`` file would contain the list
--        of x509 distingished names that are permitted access
-+        of x509 distinguished names that are permitted access
- 
-         ::
- 
-diff --git a/qga/qapi-schema.json b/qga/qapi-schema.json
-index 026a56f76c..796434ed34 100644
---- a/qga/qapi-schema.json
-+++ b/qga/qapi-schema.json
-@@ -392,7 +392,7 @@
- ##
- # @guest-file-flush:
- #
--# Write file changes bufferred in userspace to disk/kernel buffers
-+# Write file changes buffered in userspace to disk/kernel buffers
- #
- # @handle: filehandle returned by guest-file-open
- #
-diff --git a/tests/qtest/libqtest.h b/tests/qtest/libqtest.h
-index 65c040e504..1a76bae326 100644
---- a/tests/qtest/libqtest.h
-+++ b/tests/qtest/libqtest.h
-@@ -727,7 +727,7 @@ bool qtest_has_device(const char *device);
-  * qtest_qmp_device_add_qdict:
-  * @qts: QTestState instance to operate on
-  * @drv: Name of the device that should be added
-- * @arguments: QDict with properties for the device to intialize
-+ * @arguments: QDict with properties for the device to initialize
-  *
-  * Generic hot-plugging test via the device_add QMP command with properties
-  * supplied in form of QDict. Use NULL for empty properties list.
--- 
-2.30.2
-
+thanks
+-- PMM

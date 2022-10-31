@@ -1,110 +1,130 @@
-Received: by 2002:a17:906:4687:b0:7ad:c089:ed49 with SMTP id a7csp144804ejr;
-        Sat, 29 Oct 2022 15:54:40 -0700 (PDT)
-X-Google-Smtp-Source: AMsMyM5SNpPy5ZZyV8qVy9Zpq8JCRo9Pu8FXB0QkZsXGy4ESMVHmSdfdFKL3IhEa1VvAmZtUxfbx
-X-Received: by 2002:a05:620a:2481:b0:6ee:b28d:800a with SMTP id i1-20020a05620a248100b006eeb28d800amr4316169qkn.129.1667084080602;
-        Sat, 29 Oct 2022 15:54:40 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1667084080; cv=none;
+Received: by 2002:a17:906:9f27:b0:7ad:ca5a:aee3 with SMTP id fy39csp913099ejc;
+        Mon, 31 Oct 2022 05:12:22 -0700 (PDT)
+X-Google-Smtp-Source: AMsMyM7rtfPQrCd8fyxDMKBF7gGYn1PJg+Ur3tJUMcB39tos/NmcUEjoo7oH7zdTIIGWuaBxjFp2
+X-Received: by 2002:ac8:7152:0:b0:3a5:2fa2:cd1a with SMTP id h18-20020ac87152000000b003a52fa2cd1amr795837qtp.195.1667218342608;
+        Mon, 31 Oct 2022 05:12:22 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1667218342; cv=none;
         d=google.com; s=arc-20160816;
-        b=yAF0QnEFJVy0YDrb7hOrVBBALcHbtzOVI0vkMTa6VhfzsLJQ6IB2wl9e/mLrTtGP/p
-         GcCzjsnp/IFZNlGvTVWeby+ldD2zc42pCjFCKZBwCj5DO5Te1ZRzGKE5a7LuM2omhyA2
-         p8mCcX+NZ0U8N6WpO6aPpmH1La0DpwCLgWxzbYzStqdfWWsLGROcOCCvD12uS159Wk52
-         H0LtXO/7I4sVRLgvSSz8EjwPv8CYP8UJHc7s/YmEcXdVtN/ArQkblQaTyuqj3ZStaOhF
-         llKGNuR/q1U1z6Hlh3ylMbHIx7EPPVK8+Vtes35hwIDAlQ8lrV08r6kxbc179JPASAK/
-         kG+g==
+        b=tOXNTe6ePzifjcvb94psFX1NTZ88YUOzhQz5yeyD6adebzWQ5v75qGFLxfoV/2ZnaF
+         0dkxSW5Mg41ioMDXgppehfWeSx5R9ZBQAVyT5Y5Bt4cHdQ7Q4MwWi5f4gH+SunLxE7Lu
+         4uVcetV48d3P5w2Y68FdaOIkt3N9n06Xrkd+5CvfeJSxQ8l5w/X8Qb9xZfVjpZBC7HgC
+         /HUMbGnmrhPvDq/NrI3KfjmhRH1ISZXki4m6ZOjUk1cBbVfhJeqfWLow0AUR+WwJxeTe
+         +PMbWUQsdcFVm7OIsFrPDNurMmZRyoTEocyhQNAUx62HDuTyP4/o5xLIxxn2SJQWVZsn
+         hPkA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=errors-to:sender:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:cc:to:subject
-         :dkim-signature;
-        bh=3pKeEZ0JMfye0Bg9di1PMQYnQ6Qwa+kKvoW2lwtGtiE=;
-        b=f1gyrycsPTNFvQE18Bm8orBdTDLFav2Ct8J4c1Hq89yQKqz7V/3vZlTLHYwrTzaa7w
-         ggfjYSuV45FB9pFxwjzBL5sENY+HPZiEZtn25k++/UXdD8PGBXNjLEDHrdc1/GQHbOAj
-         31JQyfl3iAOj7E1VmotXYc0rPq2Avxxibw8W7LS7PtxZi8TD6Moir+5Y5YL5+jXmGnhs
-         EFdK6GRToE4fF9V6n5tyL0efEezpsymda7/HrpufO5CLL9A/sWKWT0b+L89gMg55u2Hs
-         UH3ZJP3q4iGayz3XH7ZDjEhoEYDUqTzEB/seCEBC2kJdnBuwEhAGGiHbHcqrF8ndFjO1
-         bkLg==
+        h=errors-to:sender:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:references:cc:to:content-language:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=ymouxuz0jlLfMigQOX7KDLxkeU7n93+jMyY3p5Z3n8U=;
+        b=RRmJOR9hOyewDQtL7gZPncnmpI6Wf9tPU2Ygqivkl2Aqit/lUGZ8gGY/Ii5YlSq1gz
+         O3q14rsNdPnQOZ9bZl0n2fwdhUisysfvIAXVHf+A9HsMmY6NHrXkM5yE4czcR8RhUUXc
+         n/MTVZ+coc5ORAKoSxxpz6kGDys3xKlcrMiiMA0lqUtrAS9oY8GsQ+nUWXhP6XZghnqy
+         Cfke6RnbQkLbIALs4i62MeYvgicmo86e54TMedEp6sPsXDm7g/Z3y/1jI6SOSMI+svZa
+         VvVuHQberFJKJQC9NKx/jqoUPDCSg8w/Jd9C0k2jZp2wAaJI9e5u+UsNEr9nfoESXmsq
+         qrDg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=cgf8ips5;
+       dkim=pass header.i=@linaro.org header.s=google header.b=svpBLiJh;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a79-20020ae9e852000000b006f9f259ddbasi1418839qkg.344.2022.10.29.15.54.40
+        by mx.google.com with ESMTPS id 72-20020a37034b000000b006eb52f0e3b5si3506700qkd.603.2022.10.31.05.12.22
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 29 Oct 2022 15:54:40 -0700 (PDT)
+        Mon, 31 Oct 2022 05:12:22 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=cgf8ips5;
+       dkim=pass header.i=@linaro.org header.s=google header.b=svpBLiJh;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1oouiY-00062v-Fu; Sat, 29 Oct 2022 18:54:18 -0400
+	id 1opTdr-0006Rd-D8; Mon, 31 Oct 2022 08:11:47 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1oouiW-00062N-Nz
- for qemu-devel@nongnu.org; Sat, 29 Oct 2022 18:54:16 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1oouiU-0004Wx-UA
- for qemu-devel@nongnu.org; Sat, 29 Oct 2022 18:54:16 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1667084054;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=3pKeEZ0JMfye0Bg9di1PMQYnQ6Qwa+kKvoW2lwtGtiE=;
- b=cgf8ips5r7xZ3gw7COuQEtrncKAhvpTuXgmAiyObZYMrbUkyJ2o6IqAtgOoGmU6sEGnKwy
- XCL2Lu3LfIJYiKeSn5PFrIbhYJdGmNz5gkL24B9THfbBq0FFrV9NV0qK0pracTftDW9FR5
- iqzxp6Y/sPyijBF4eLIqZm9IY2GQ5ho=
-Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
- [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-403-psNCyOfEPdKIez0pVj_5yA-1; Sat, 29 Oct 2022 18:54:10 -0400
-X-MC-Unique: psNCyOfEPdKIez0pVj_5yA-1
-Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.rdu2.redhat.com
- [10.11.54.7])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 50D6A85A583;
- Sat, 29 Oct 2022 22:54:10 +0000 (UTC)
-Received: from [10.64.54.151] (vpn2-54-151.bne.redhat.com [10.64.54.151])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id EFBD2140EBF3;
- Sat, 29 Oct 2022 22:54:00 +0000 (UTC)
-Subject: Re: [PATCH v6 0/7] hw/arm/virt: Improve address assignment for high
- memory regions
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, maz@kernel.org,
- eric.auger@redhat.com, cohuck@redhat.com, zhenyzha@redhat.com,
- richard.henderson@linaro.org, shan.gavin@gmail.com
-References: <20221024035416.34068-1-gshan@redhat.com>
- <fcf82677-dd16-82db-c502-a8baf35192f3@redhat.com>
- <CAFEAcA_XVOKS1mDwAMMiUeeo8CeeO-GCXmXECAJTP7Ys79bnAQ@mail.gmail.com>
-From: Gavin Shan <gshan@redhat.com>
-Message-ID: <a95f083c-cea2-193c-17ed-c1212678c365@redhat.com>
-Date: Sun, 30 Oct 2022 06:53:57 +0800
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.2.0
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1opTdp-0006PG-Nl
+ for qemu-devel@nongnu.org; Mon, 31 Oct 2022 08:11:45 -0400
+Received: from mail-wr1-x42e.google.com ([2a00:1450:4864:20::42e])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1opTdm-0004Vi-DJ
+ for qemu-devel@nongnu.org; Mon, 31 Oct 2022 08:11:45 -0400
+Received: by mail-wr1-x42e.google.com with SMTP id y16so15641887wrt.12
+ for <qemu-devel@nongnu.org>; Mon, 31 Oct 2022 05:11:40 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=ymouxuz0jlLfMigQOX7KDLxkeU7n93+jMyY3p5Z3n8U=;
+ b=svpBLiJhk2UeqlV9PVW5hmuHH4M++QslFzjenFautXGaZaOdbrgnIEuVD5NAQ8Ko+P
+ di4hHXZ++uIax1hZWRlXyWtO2AQ2tjqu8ttVuDdDI4Q1gu7tElenb175gHj0y5YdJVL8
+ 4Mkfg3v97uJjWmhvJi1XljVMieB0yIPBgXBs04WHLBj0uxDKFVLsPMHstmZ1+e4aXg0O
+ RWJZy73V88rdABXoIt2/MBdnrTI8HNeffO2Czye3A4KV/jMjC0AuseQob3x8Vuh3hDeT
+ sO4/AswNlX0JtkipZaHgH2R7wXfbUlYzMYlli0HjYbn9ko0LfVcu7pNPGemrpubW9xh4
+ MPTg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=ymouxuz0jlLfMigQOX7KDLxkeU7n93+jMyY3p5Z3n8U=;
+ b=Jlx2p+q3bddf3mDVPtxp1ewzeC2YJDolYuECGbcDJi75CRNI3vYZDUnuhElfU0Zmw4
+ DRzsftc7QLsFKqoxH2DpbVKg9dElEZIjt06mRBF5VvByA+qG/g6SXbRvIbrM7kPBXE1w
+ 7gzpDnsvoSTw8MrIOwsNP+ISLaEWcjANKzUEmTxUqSTozHtWljEraQvmF5xr8lMDhyxm
+ CBKvTrrip8rz0AsAfXTVnyJdDhcVeLSCZdXdub27a1XXf9NMNOqmq+9Rcx4v6U5DwAcx
+ 46ThhQh0ZnptmM+mmHMY5UivABDEZBlYQzlt11+dL947HRB4RDPP5l4digEkLNudmBlO
+ TVoQ==
+X-Gm-Message-State: ACrzQf2KO2chz6tG/Cd0JWrR+cx3dRpXSkx43T+vHrX+d57PqTQDwxDd
+ omNPLxWCD6LDs5z+a8r9CG5JeA==
+X-Received: by 2002:adf:da4f:0:b0:236:cdd4:4ce2 with SMTP id
+ r15-20020adfda4f000000b00236cdd44ce2mr2418381wrl.626.1667218299775; 
+ Mon, 31 Oct 2022 05:11:39 -0700 (PDT)
+Received: from [192.168.1.115] ([185.126.107.38])
+ by smtp.gmail.com with ESMTPSA id
+ n28-20020a05600c3b9c00b003b4a699ce8esm7329092wms.6.2022.10.31.05.11.37
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 31 Oct 2022 05:11:39 -0700 (PDT)
+Message-ID: <3629cba9-0eb7-1f9e-4bcd-030e1edb8745@linaro.org>
+Date: Mon, 31 Oct 2022 13:11:37 +0100
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA_XVOKS1mDwAMMiUeeo8CeeO-GCXmXECAJTP7Ys79bnAQ@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8; format=flowed
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
+ Gecko/20100101 Thunderbird/102.4.0
+Subject: Re: [PATCH v4 6/7] hw/sd/sdhci: Implement Freescale eSDHC device model
 Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 3.1 on 10.11.54.7
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=gshan@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -25
-X-Spam_score: -2.6
+To: Bernhard Beschow <shentey@gmail.com>
+Cc: qemu-devel@nongnu.org, qemu-ppc@nongnu.org,
+ Aurelien Jarno <aurelien@aurel32.net>,
+ Yoshinori Sato <ysato@users.sourceforge.jp>,
+ Antony Pavlov <antonynpavlov@gmail.com>, BALATON Zoltan
+ <balaton@eik.bme.hu>, Alistair Francis <alistair@alistair23.me>,
+ Bin Meng <bin.meng@windriver.com>, Kevin Wolf <kwolf@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>, Jan Kiszka <jan.kiszka@web.de>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
+ Hanna Reitz <hreitz@redhat.com>, qemu-arm@nongnu.org,
+ Magnus Damm <magnus.damm@gmail.com>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, qemu-block@nongnu.org
+References: <20221018210146.193159-1-shentey@gmail.com>
+ <20221018210146.193159-7-shentey@gmail.com>
+ <f9dd1e1e-65b6-c74d-d957-43774393c2a4@linaro.org>
+ <724F8CC8-C5E8-4785-B5C2-F1D327863717@gmail.com>
+ <590683A5-2774-432C-A47A-ED755054479C@gmail.com>
+ <DB3C19E8-007B-46F6-96B3-EE0CF6AD2019@gmail.com>
+ <45be44c0-766b-07c6-be8a-c21d46da7f72@linaro.org>
+ <CAG4p6K5qvJFRihrZV3Gku_fYsxWFzEN4UfGf4xySQyfzkv9q0g@mail.gmail.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
+In-Reply-To: <CAG4p6K5qvJFRihrZV3Gku_fYsxWFzEN4UfGf4xySQyfzkv9q0g@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::42e;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x42e.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.516,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -117,42 +137,113 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Reply-To: Gavin Shan <gshan@redhat.com>
 Sender: "Qemu-devel" <qemu-devel-bounces@nongnu.org>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: VUlbGTvwgdwa
+X-TUID: ATLEKWnshNCV
 
-Hi Peter,
-
-On 10/29/22 2:06 AM, Peter Maydell wrote:
-> On Wed, 26 Oct 2022 at 01:30, Gavin Shan <gshan@redhat.com> wrote:
->>
->> On 10/24/22 11:54 AM, Gavin Shan wrote:
->>> There are three high memory regions, which are VIRT_HIGH_REDIST2,
->>> VIRT_HIGH_PCIE_ECAM and VIRT_HIGH_PCIE_MMIO. Their base addresses
->>> are floating on highest RAM address. However, they can be disabled
->>> in several cases.
+On 30/10/22 12:46, Bernhard Beschow wrote:
 > 
->> Could you help to take a look when getting a chance? I think Connie and
->> Eric are close to complete the reviews, but v7 is still needed to address
->> extra comments from them. I hope to make v7 mergeable if possible :)
 > 
-> If Eric and Connie and Marc are happy with it then I don't have
-> any further issues on top of that.
+> On Sun, Oct 30, 2022 at 1:10 AM Philippe Mathieu-Daudé 
+> <philmd@linaro.org <mailto:philmd@linaro.org>> wrote:
 > 
-> NB that since softfreeze is next Tuesday, this is going to be
-> 8.0 material at this point, I'm afraid :-( (Softfreeze caught
-> me by surprise this cycle...)
+>     On 29/10/22 20:28, Bernhard Beschow wrote:
+>      > Am 29. Oktober 2022 13:04:00 UTC schrieb Bernhard Beschow
+>     <shentey@gmail.com <mailto:shentey@gmail.com>>:
+>      >> Am 29. Oktober 2022 11:33:51 UTC schrieb Bernhard Beschow
+>     <shentey@gmail.com <mailto:shentey@gmail.com>>:
+>      >>> Am 27. Oktober 2022 21:40:01 UTC schrieb "Philippe
+>     Mathieu-Daudé" <philmd@linaro.org <mailto:philmd@linaro.org>>:
+>      >>>> Hi Bernhard,
+>      >>>>
+>      >>>> On 18/10/22 23:01, Bernhard Beschow wrote:
+>      >>>>> Will allow e500 boards to access SD cards using just their
+>     own devices.
+>      >>>>>
+>      >>>>> Signed-off-by: Bernhard Beschow <shentey@gmail.com
+>     <mailto:shentey@gmail.com>>
+>      >>>>> ---
+>      >>>>>    hw/sd/sdhci.c         | 120
+>     +++++++++++++++++++++++++++++++++++++++++-
+>      >>>>>    include/hw/sd/sdhci.h |   3 ++
+>      >>>>>    2 files changed, 122 insertions(+), 1 deletion(-)
 > 
+>      >>>> So now, I'd create 1 UNIMP region for ESDHC_WML and map it
+>      >>>> into SDHC_REGISTERS_MAP (s->iomem) with priority 1, and add
+>      >>>> another UNIMP region of ESDHC_REGISTERS_MAP_SIZE -
+>     SDHC_REGISTERS_MAP_SIZE (= 0x310) and map it normally at offset
+>      >>>> 0x100 (SDHC_REGISTERS_MAP_SIZE). Look at create_unimp() in
+>      >>>> hw/arm/bcm2835_peripherals.c.
+>      >>>>
+>      >>>> But the ESDHC_WML register has address 0x44 and fits inside the
+>      >>>> SDHC_REGISTERS_MAP region, so likely belong there. 0x44 is the
+>      >>>> upper part of the SDHC_CAPAB register. These bits are undefined
+>      >>>> on the spec v2, which I see you are setting in esdhci_init().
+>      >>>> So this register should already return 0, otherwise we have
+>      >>>> a bug. Thus we don't need to handle this ESDHC_WML particularly.
+>      >>
+>      >> My idea here was to catch this unimplemented case in order to
+>     indicate this clearly to users. Perhaps it nudges somebody to
+>     provide a patch?
+>      >>
+>      >>>>
+>      >>>> And your model is reduced to handling create_unimp() in
+>     esdhci_realize().
+>      >>>>
+>      >>>> Am I missing something?
+>      >>>
+>      >>> The mmio ops are big endian and need to be aligned to a 4-byte
+>     boundary. It took me quite a while to debug this. So shall I just
+>     create an additional memory region for the region above
+>     SDHC_REGISTERS_MAP_SIZE for ESDHC_DMA_SYSCTL?
+>      >>
+>      >> All in all I currently don't have a better idea than keeping the
+>     custom i/o ops for the standard region and adding an additional
+>     unimplemented region for ESDHC_DMA_SYSCTL. I think I'd have to
+>     dynamically allocate memory for it where I still need to figure out
+>     how not to leak it.
+>      >
+>      > By simply reusing sdhci_{read,write} in eSDHC's io_ops struct I
+>     was able to remove the custom implementations while having big
+>     endian and the alignments proper. However, I don't see a way of
+>     adding two memory regions - with or without a container. With a
+>     container I'd have to somehow preserve the mmio attribute which is
+>     initialized by the parent class, re-initialize it with the
+>     container, and add the preserved memory region as child. This seems
+>     very fragile, esp. since the parent class has created an alias for
+>     mmio in sysbus. Without a container, one would have two memory
+>     regions that both have to be mapped separately by the caller, i.e.
+>     it burdens the caller with an implementation detail.
+>      >
+>      > Any suggestions?
 
-Ok. v7 was just posted with Connie/Eric's comments resolved. Marc
-also provided his r-b. Nothing is really critical since none of
-the patches fixes an existing issue. It would be great if it can
-be merged to 7.2 if we are fortunate enough. Otherwise, 8.0 is also
-good to me :)
+See 
+https://lore.kernel.org/qemu-devel/20221031115402.91912-7-philmd@linaro.org/
 
-https://lists.nongnu.org/archive/html/qemu-arm/2022-10/msg00693.html (v7)
+>     Can you share branch and how to test?
+> 
+> 
+> QEMU branch: https://github.com/shentok/qemu/tree/e500-flash 
+> <https://github.com/shentok/qemu/tree/e500-flash>
+> 
+> How to test:
+> 1. `git clone -b e500 https://github.com/shentok/buildroot.git 
+> <https://github.com/shentok/buildroot.git>`
+> 2. `cd buildroot`
+> 3. `make qemu_ppc_e500mc_defconfig`
+> 4. `make`
+> 5. `cd output/images`
+> 6. `dd if=/dev/zero of=root.img bs=1M count=64 && dd if=rootfs.ext2 
+> of=root.img bs=1M conv=notrunc`
+> 7. `qemu-system-ppc -M ppce500 -cpu e500mc -m 256 -kernel uImage -append 
+> "console=ttyS0 rootwait root=/dev/mmcblk0" -device sd-card,drive=mydrive 
+> -drive id=mydrive,if=none,file=root.img,format=raw`
 
-Thanks,
-Gavin
+Could you add an Avocado-based test?
 
+>    Welcome to Buildroot
+>    buildroot login:
+
+Regards,
+
+Phil.

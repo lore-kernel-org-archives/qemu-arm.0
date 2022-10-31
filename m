@@ -1,128 +1,118 @@
-Received: by 2002:a17:906:9f27:b0:7ad:ca5a:aee3 with SMTP id fy39csp992645ejc;
-        Mon, 31 Oct 2022 06:51:50 -0700 (PDT)
-X-Google-Smtp-Source: AMsMyM5a0nzRMVrJg9J2UZikLvQPDC0Mt0JAsl6+wVnsq7U1wryfJAvZlJYLbvFBv7REOZoQc2+g
-X-Received: by 2002:ac8:4756:0:b0:3a5:2705:ede0 with SMTP id k22-20020ac84756000000b003a52705ede0mr3245989qtp.319.1667224309956;
-        Mon, 31 Oct 2022 06:51:49 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1667224309; cv=none;
+Received: by 2002:a17:906:9f27:b0:7ad:ca5a:aee3 with SMTP id fy39csp1046593ejc;
+        Mon, 31 Oct 2022 07:59:13 -0700 (PDT)
+X-Google-Smtp-Source: AMsMyM67rDmjX9W7BN8/QYD0ccVYOCnSzd7eBl5pX7RVzetFlDJ2Mg1PTpC6cK4HFzgXiz7GGxhF
+X-Received: by 2002:ac8:5d8d:0:b0:3a4:e2af:8cd4 with SMTP id d13-20020ac85d8d000000b003a4e2af8cd4mr11161655qtx.385.1667228353757;
+        Mon, 31 Oct 2022 07:59:13 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1667228353; cv=none;
         d=google.com; s=arc-20160816;
-        b=IWjQ8VZzhKgDdMPHJH9Nk9nlTl90QDvCOmNSA9o6IXXXZVWf/aC/YK3K6y9ixLeR/I
-         1yArOI1wtyKy9M6Ae7apnUDCKylkOXxGN6dl6mc1lmJ8R0LdO1t8452qdjdPiFjnS9wc
-         ZmddVVa1KWJxxZ9zscWY33MWujDi4mI3l+6YvCYRYpAVj9dccM+u21UcXkAciaw9K4Rw
-         zBhf64nbkbxV4dMw5J/RmiK0WWqtzUBwhsN7fzeDkC40/jl6GtmfuiSDwqyoGo3eBe/K
-         5+a00c62W/CCEUxcCsWISG4UFrbkBFCKEdPxDX+4gDXmiZOEH4cB4e6ZlVZIkcpZdAV8
-         M5cA==
+        b=T+er2f3bxr2nwS+qke39qEt5QDgrSam6PGK/c+DJsKvoWsv5shWuzwITL1FLAvcShf
+         YP1twdbzm8xTjakCrKk4olZUj/y+h+31e0M8RQPDzaJ7njQo34CKgHcFgj4anSNIDYkJ
+         nndiTvLeLh6AJNvYp1y/5CORV8OqVwUDGaM9veFl1qvlg3C9hiLtJdS9El+I9+B9tGEW
+         C/7ih2GSPS+94xYYd6E6wSOsxWGSqZ6I8AnLrpoij3kYBUUwLmYXM7PiuXhAEJjW/5oc
+         U6FDvtlCrasSSvJM8Rd6juc+3vMIdNLRTaE1g7DpitfwhjmADJVUkcMDHG9g6a+7n2rn
+         zGTg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=errors-to:sender:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:organization:references:in-reply-to:message-id:subject
-         :cc:to:from:date:dkim-signature;
-        bh=o8dwldbXQk9w7iIcu+eF/I6gT9GbbBrcSf6WPkra20A=;
-        b=KFLYsppbBMYefpC0d58iL8buHYlTqs0kUkh7BEQ5KDZ072JLo220y+bn3wHe6X/pU/
-         h3O3yu/+7/dxolCkHw4iZLWKO8eVat8Ug8UGVWqaQdjfIJDZ6ASSVO7AzqHfH4FcflaK
-         wMX73mHHM71/Yq8yoKOe4oJyDpD8N82R4PKoc5U+dN2tuV/Ajkbmt74GkbkcQG8Xl+HN
-         tOCjS4X5ZHHLUgAQEgzJ+BgFZxFD1nBWQbpfnlwOpDox0vSoPxC68mOMx+fRpSW1BGMB
-         o/d6DkOWSDCeSor+8mXKzVw64fTyg2RSxY1uOVZvlc7qVz/PzklmNptTurQNat5qc0O1
-         ZmZQ==
+         :list-unsubscribe:list-id:precedence:content-disposition:in-reply-to
+         :mime-version:references:message-id:subject:cc:to:from:date
+         :dkim-signature;
+        bh=XhCtG3JD2F4enAXnCHNZ3+cysXr2BmwWx8WFDVqPfBU=;
+        b=yMA/R8mbFgAqnhaL6jIFWFXA2kOtP/SR2WVtIiqZPnoef6J74zD0pCGXULWmFsrOKp
+         4aQ8Dl9ihrncTk/NVVWrNmbe+hl4LGjJn4bmphDFfKrRScWvr5jwRqaH4ApSImTLBlDl
+         +1mrsIUmbEP5G0f2IWclRHNd+0IfrjKsAyeJrhd0ROyUst/dBuE8KOUjueJ5ehowicTG
+         ZKee/kWMcib2XmF8ZydutP6HNtSqDXBEu0UrmWve6xaGED4nwAGuAaWw0WovM53D5YeQ
+         hF7qVMGVKdtpj//KZJcizMi3OS4XpPww0eXMY4JndNYi4q89CfWwpDTjFm4TVpShVlPN
+         8XXg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=QwuEj6b1;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="d/Jdva5e";
        spf=pass (google.com: domain of qemu-arm-bounces+thiago.bauermann=linaro.org+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+thiago.bauermann=linaro.org+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+thiago.bauermann=linaro.org+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x20-20020ac84a14000000b003a50d20ed73si3921146qtq.532.2022.10.31.06.51.49
+        by mx.google.com with ESMTPS id fx15-20020a05622a4acf00b0039a7aeffd1asi4166212qtb.284.2022.10.31.07.59.13
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 31 Oct 2022 06:51:49 -0700 (PDT)
+        Mon, 31 Oct 2022 07:59:13 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+thiago.bauermann=linaro.org+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=QwuEj6b1;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="d/Jdva5e";
        spf=pass (google.com: domain of qemu-arm-bounces+thiago.bauermann=linaro.org+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+thiago.bauermann=linaro.org+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1opVCM-0003G1-8P; Mon, 31 Oct 2022 09:51:30 -0400
+	id 1opWFk-0003YR-Vf; Mon, 31 Oct 2022 10:59:04 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alex.williamson@redhat.com>)
- id 1opVCK-0003De-Ds
- for qemu-arm@nongnu.org; Mon, 31 Oct 2022 09:51:28 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1opWFi-0003Xu-Pb
+ for qemu-arm@nongnu.org; Mon, 31 Oct 2022 10:59:02 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alex.williamson@redhat.com>)
- id 1opVCI-0000Jb-F8
- for qemu-arm@nongnu.org; Mon, 31 Oct 2022 09:51:28 -0400
+ (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1opWFg-0006ML-Ua
+ for qemu-arm@nongnu.org; Mon, 31 Oct 2022 10:59:02 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1667224285;
+ s=mimecast20190719; t=1667228338;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=o8dwldbXQk9w7iIcu+eF/I6gT9GbbBrcSf6WPkra20A=;
- b=QwuEj6b1/2f/QWJvvoSa5fsxfYM9Z4bjlv+nN/hCJC8P8rl+Q9ClAbjJAukXUWSKglOq0A
- gx9+JZNce7/snX9TFmZAoPKZhQgBDqd3RCIIFso/drrZDIKtedCgihumHM3mJMWOdHRLos
- RJwt69W/NVFmnEBYv5xqJnBtnBteaIo=
-Received: from mail-il1-f198.google.com (mail-il1-f198.google.com
- [209.85.166.198]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=XhCtG3JD2F4enAXnCHNZ3+cysXr2BmwWx8WFDVqPfBU=;
+ b=d/Jdva5eMIgQQhOxFAtlqRTOjVyCiXe4oSZrfWiKHNDZIthLnSjnv7wPVSGVb9/0GvyzZc
+ Yc7DAmsSYfBAMl+UsVKS8kfuf0r22hyDdn9/rq1B9u1MRn2+wNwIvKRvxMhu2Eh0Adaokv
+ MSgUYDEkYYr/5ALYVSgWlejZCz+3ZVc=
+Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
+ [209.85.221.69]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_128_GCM_SHA256) id
- us-mta-653-IopGOQj1OXee-YjMx4p5VA-1; Mon, 31 Oct 2022 09:51:24 -0400
-X-MC-Unique: IopGOQj1OXee-YjMx4p5VA-1
-Received: by mail-il1-f198.google.com with SMTP id
- c4-20020a056e020bc400b0030098df879dso3462924ilu.6
- for <qemu-arm@nongnu.org>; Mon, 31 Oct 2022 06:51:24 -0700 (PDT)
+ us-mta-578-8uEB5StmOMyt5mJK8QHtCg-1; Mon, 31 Oct 2022 10:58:58 -0400
+X-MC-Unique: 8uEB5StmOMyt5mJK8QHtCg-1
+Received: by mail-wr1-f69.google.com with SMTP id
+ e21-20020adfa455000000b002365c221b59so3160805wra.22
+ for <qemu-arm@nongnu.org>; Mon, 31 Oct 2022 07:58:57 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=content-transfer-encoding:mime-version:organization:references
- :in-reply-to:message-id:subject:cc:to:from:date:x-gm-message-state
- :from:to:cc:subject:date:message-id:reply-to;
- bh=o8dwldbXQk9w7iIcu+eF/I6gT9GbbBrcSf6WPkra20A=;
- b=606m5WFyYDEPrxvEh0ZGWEK/7doorCJhWAWOtreMELFc0rutnuxQ/cGoOo70A5Zhg+
- OwEURGsrX4ht0n9Gzm0eDcirtWbqIybuMySAwH+rEPe8M4sNkkq05T3NALmKc4v3Swla
- hP3iiwBPjRgrDs+XA/HhAHnWuKlAo+4eISH0kGHs+1jqNtD8yVmTDFhKYyrudyTB9pnb
- VMrvv0/E0codqysUxBwyRHB4apHDziNrI0ViiFOcqyt753pVDkY/1W4Nx3a+OAiNCQFD
- JfDXbVNYBki4Zeag1N8WstAFn2caVgo1hYXOFQn3NMOjdve7OHKVRIn43Kw3lOFtIRbw
- r8kw==
-X-Gm-Message-State: ACrzQf32YY+tJ6hSb9D6RAdPj9ExzpF4psld+8Zwk1A4B6kFqVdHRXdi
- ehMtEtSCAhdD7o8+8W/oZ+sdza4VhxwHwylnGhPS0qYX+1vyAlA/JE+7Z4wMfSCvczR3PS/PV3G
- PQLIHWQPC9Bhi
-X-Received: by 2002:a05:6638:468e:b0:375:1ae9:ba13 with SMTP id
- bq14-20020a056638468e00b003751ae9ba13mr7112521jab.253.1667224283537; 
- Mon, 31 Oct 2022 06:51:23 -0700 (PDT)
-X-Received: by 2002:a05:6638:468e:b0:375:1ae9:ba13 with SMTP id
- bq14-20020a056638468e00b003751ae9ba13mr7112488jab.253.1667224283226; 
- Mon, 31 Oct 2022 06:51:23 -0700 (PDT)
-Received: from redhat.com ([38.15.36.239]) by smtp.gmail.com with ESMTPSA id
- m4-20020a026a44000000b00363e6b793d7sm2829926jaf.28.2022.10.31.06.51.21
+ h=in-reply-to:content-disposition:mime-version:references:message-id
+ :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=XhCtG3JD2F4enAXnCHNZ3+cysXr2BmwWx8WFDVqPfBU=;
+ b=P8WsgjeGyf78kzpxLYSi/qZaN5rRzyWo3tByl0vkHPORGOlnPDGNzZtu266tUjOAMh
+ ZfHDt9awXgKoQfiACOzug8DUUovZSJxVpVXflglSGhPWmZTSioeTEx72v4GJ/4jqdcDt
+ qV6GHnvzklgk53TA+QMK+evIsZ0wuIQ/dJ3edTiQy9aJKOfgXAFINg2WMaUd+tb7Dh0T
+ iU+7pE/ZHXWBVrVv1B5busMGW6rHcfzkbJRGf24PBmPgvdaoAGYZuAbYu+BzizDes99r
+ /CsOZyYdobQFxzHYsHXCcHACRfXGImaYV1eR6Ogd2/Ls3F2dWfQAu904EfHagn2nsW+n
+ KIeg==
+X-Gm-Message-State: ACrzQf2GnKtMIJZxQBmzrlQ+ewc/fzOLIKFGHy19a6TztEGPRw56aS3m
+ qqCoRbAZpqvL45+m6irpdShxvZeXgtd6loa3fEliKQzxTE68HhkQBD+1da/U0N1W8L3Oai+tDmm
+ cgah6Nt1ZhR+Z
+X-Received: by 2002:a05:600c:4f93:b0:3cc:9bc5:c454 with SMTP id
+ n19-20020a05600c4f9300b003cc9bc5c454mr8462424wmq.84.1667228336693; 
+ Mon, 31 Oct 2022 07:58:56 -0700 (PDT)
+X-Received: by 2002:a05:600c:4f93:b0:3cc:9bc5:c454 with SMTP id
+ n19-20020a05600c4f9300b003cc9bc5c454mr8462406wmq.84.1667228336469; 
+ Mon, 31 Oct 2022 07:58:56 -0700 (PDT)
+Received: from redhat.com ([2.52.15.189]) by smtp.gmail.com with ESMTPSA id
+ bn26-20020a056000061a00b0022cd0c8c696sm7323308wrb.103.2022.10.31.07.58.53
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 31 Oct 2022 06:51:22 -0700 (PDT)
-Date: Mon, 31 Oct 2022 07:51:20 -0600
-From: Alex Williamson <alex.williamson@redhat.com>
-To: Akihiko Odaki <akihiko.odaki@daynix.com>
-Cc: qemu-devel@nongnu.org, qemu-block@nongnu.org, qemu-arm@nongnu.org,
- "Michael S . Tsirkin" <mst@redhat.com>, Marcel Apfelbaum
- <marcel.apfelbaum@gmail.com>, Gerd Hoffmann <kraxel@redhat.com>, Paolo
- Bonzini <pbonzini@redhat.com>, Richard Henderson
- <richard.henderson@linaro.org>, Eduardo Habkost <eduardo@habkost.net>, John
- Snow <jsnow@redhat.com>, Dmitry Fleytman <dmitry.fleytman@gmail.com>, Jason
- Wang <jasowang@redhat.com>, Stefan Weil <sw@weilnetz.de>, Keith Busch
- <kbusch@kernel.org>, Klaus Jensen <its@irrelevant.dk>, Peter Maydell
- <peter.maydell@linaro.org>, Andrey Smirnov <andrew.smirnov@gmail.com>, Paul
- Burton <paulburton@kernel.org>, Aleksandar Rikalo
- <aleksandar.rikalo@syrmia.com>, Yan Vugenfirer <yan@daynix.com>, Yuri
- Benditovich <yuri.benditovich@daynix.com>
-Subject: Re: [PATCH v6 01/17] hw/vfio/pci: Ensure MSI and MSI-X do not overlap
-Message-ID: <20221031075120.72d9d7ca.alex.williamson@redhat.com>
-In-Reply-To: <20221031123319.21532-2-akihiko.odaki@daynix.com>
-References: <20221031123319.21532-1-akihiko.odaki@daynix.com>
- <20221031123319.21532-2-akihiko.odaki@daynix.com>
-Organization: Red Hat
+ Mon, 31 Oct 2022 07:58:55 -0700 (PDT)
+Date: Mon, 31 Oct 2022 10:58:51 -0400
+From: "Michael S. Tsirkin" <mst@redhat.com>
+To: Jonathan Cameron <Jonathan.Cameron@huawei.com>
+Cc: Yicong Yang <yangyicong@huawei.com>,
+ Hesham Almatary <hesham.almatary@huawei.com>, qemu-devel@nongnu.org,
+ yangyicong@hisilicon.com, chenxiang66@hisilicon.com,
+ linuxarm@huawei.com, qemu-arm@nongnu.org, peter.maydell@linaro.org,
+ imammedo@redhat.com, wangyanan55@huawei.com,
+ marcel.apfelbaum@gmail.com, eduardo@habkost.net, Brice.Goglin@inria.fr
+Subject: Re: [PATCH v3 0/8] AArch64/HMAT support and tests
+Message-ID: <20221031105832-mutt-send-email-mst@kernel.org>
+References: <20221027100037.251-1-hesham.almatary@huawei.com>
+ <434bea8e-2945-12ee-0a46-0e316bfaade5@huawei.com>
+ <20221031131717.00003cc4@Huawei.com>
 MIME-Version: 1.0
+In-Reply-To: <20221031131717.00003cc4@Huawei.com>
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.129.124;
- envelope-from=alex.williamson@redhat.com;
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=mst@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -30
 X-Spam_score: -3.1
@@ -145,166 +135,93 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Sender: "Qemu-arm" <qemu-arm-bounces@nongnu.org>
 Errors-To: qemu-arm-bounces+thiago.bauermann=linaro.org+alex.bennee=linaro.org@nongnu.org
-X-TUID: 6FUm1SLUuCFe
+X-TUID: cjpAqzcqZyNJ
 
-On Mon, 31 Oct 2022 21:33:03 +0900
-Akihiko Odaki <akihiko.odaki@daynix.com> wrote:
-
-> pci_add_capability() checks whether capabilities overlap, and notifies
-> its caller so that it can properly handle the case. However, in the
-> most cases, the capabilities actually never overlap, and the interface
-> incurred extra error handling code, which is often incorrect or
-> suboptimal. For such cases, pci_add_capability() can simply abort the
-> execution if the capabilities actually overlap since it should be a
-> programming error.
+On Mon, Oct 31, 2022 at 01:17:17PM +0000, Jonathan Cameron wrote:
+> On Fri, 28 Oct 2022 17:53:40 +0800
+> Yicong Yang <yangyicong@huawei.com> wrote:
 > 
-> This change handles the other cases: hw/vfio/pci depends on the check to
-> decide MSI and MSI-X capabilities overlap with another. As they are
-> quite an exceptional and hw/vfio/pci knows much about PCI capabilities,
-> adding code specific to the cases to hw/vfio/pci still results in less
-> code than having error handling code everywhere in total.
+> > Hi Hesham,
+> > 
+> > On 2022/10/27 18:00, Hesham Almatary wrote:
+> > > This patchset adds support for AArch64/HMAT including a test.
+> > > It relies on other two patch sets from:
+> > > 
+> > > Brice Goglin: to support -numa without initiators on q35/x86.
+> > >   https://lore.kernel.org/all/ed23accb-2c8b-90f4-a7a3-f81cc57bf678@inria.fr/
+> > > Xiang Chen: to enable/support HMAT on AArch64.
+> > >   https://lore.kernel.org/all/1643102134-15506-1-git-send-email-chenxiang66@hisilicon.com/
+> > > 
+> > > I further add a test with ACPI/HMAT tables that uses the two
+> > > patch sets.
+> > >   
+> > 
+> > You seems to forget my tag :)
+> > 
+> > Anyway tested again for this series on master of commit 052924548886,
+> > still works well and all tests passed for qemu-system-aarch64.
+> > 
+> > Tested-by: Yicong Yang <yangyicong@hisilicon.com>
 > 
-> Signed-off-by: Akihiko Odaki <akihiko.odaki@daynix.com>
-> ---
->  hw/vfio/pci.c | 61 ++++++++++++++++++++++++++++++++++++++++++---------
->  hw/vfio/pci.h |  3 +++
->  2 files changed, 54 insertions(+), 10 deletions(-)
+> Hi,
 > 
-> diff --git a/hw/vfio/pci.c b/hw/vfio/pci.c
-> index 939dcc3d4a..c7e3ef95a7 100644
-> --- a/hw/vfio/pci.c
-> +++ b/hw/vfio/pci.c
-> @@ -1278,23 +1278,42 @@ static void vfio_disable_interrupts(VFIOPCIDevice *vdev)
->      }
->  }
->  
-> -static int vfio_msi_setup(VFIOPCIDevice *vdev, int pos, Error **errp)
-> +static void vfio_msi_early_setup(VFIOPCIDevice *vdev, Error **errp)
->  {
->      uint16_t ctrl;
-> -    bool msi_64bit, msi_maskbit;
-> -    int ret, entries;
-> -    Error *err = NULL;
-> +    uint8_t pos;
-> +
-> +    pos = pci_find_capability(&vdev->pdev, PCI_CAP_ID_MSI);
-> +    if (!pos) {
-> +        return;
-> +    }
->  
->      if (pread(vdev->vbasedev.fd, &ctrl, sizeof(ctrl),
->                vdev->config_offset + pos + PCI_CAP_FLAGS) != sizeof(ctrl)) {
->          error_setg_errno(errp, errno, "failed reading MSI PCI_CAP_FLAGS");
-> -        return -errno;
-> +        return;
->      }
-> -    ctrl = le16_to_cpu(ctrl);
-> +    vdev->msi_pos = pos;
-> +    vdev->msi_ctrl = le16_to_cpu(ctrl);
->  
-> -    msi_64bit = !!(ctrl & PCI_MSI_FLAGS_64BIT);
-> -    msi_maskbit = !!(ctrl & PCI_MSI_FLAGS_MASKBIT);
-> -    entries = 1 << ((ctrl & PCI_MSI_FLAGS_QMASK) >> 1);
-> +    vdev->msi_cap_size = 0xa;
-> +    if ((vdev->msi_ctrl & PCI_MSI_FLAGS_MASKBIT)) {
-> +        vdev->msi_cap_size += 0xa;
-> +    }
-> +    if ((vdev->msi_ctrl & PCI_MSI_FLAGS_64BIT)) {
-> +        vdev->msi_cap_size += 0x4;
-> +    }
-> +}
-> +
-> +static int vfio_msi_setup(VFIOPCIDevice *vdev, int pos, Error **errp)
-> +{
-> +    bool msi_64bit, msi_maskbit;
-> +    int ret, entries;
-> +    Error *err = NULL;
-> +
-> +    msi_64bit = !!(vdev->msi_ctrl & PCI_MSI_FLAGS_64BIT);
-> +    msi_maskbit = !!(vdev->msi_ctrl & PCI_MSI_FLAGS_MASKBIT);
-> +    entries = 1 << ((vdev->msi_ctrl & PCI_MSI_FLAGS_QMASK) >> 1);
->  
->      trace_vfio_msi_setup(vdev->vbasedev.name, pos);
->  
-> @@ -1306,7 +1325,6 @@ static int vfio_msi_setup(VFIOPCIDevice *vdev, int pos, Error **errp)
->          error_propagate_prepend(errp, err, "msi_init failed: ");
->          return ret;
->      }
-> -    vdev->msi_cap_size = 0xa + (msi_maskbit ? 0xa : 0) + (msi_64bit ? 0x4 : 0);
->  
->      return 0;
->  }
-> @@ -1524,6 +1542,7 @@ static void vfio_msix_early_setup(VFIOPCIDevice *vdev, Error **errp)
->      pba = le32_to_cpu(pba);
->  
->      msix = g_malloc0(sizeof(*msix));
-> +    msix->pos = pos;
->      msix->table_bar = table & PCI_MSIX_FLAGS_BIRMASK;
->      msix->table_offset = table & ~PCI_MSIX_FLAGS_BIRMASK;
->      msix->pba_bar = pba & PCI_MSIX_FLAGS_BIRMASK;
-> @@ -2025,6 +2044,22 @@ static int vfio_add_std_cap(VFIOPCIDevice *vdev, uint8_t pos, Error **errp)
->          }
->      }
->  
-> +    if (cap_id != PCI_CAP_ID_MSI &&
-> +        range_covers_byte(vdev->msi_pos, vdev->msi_cap_size, pos)) {
-> +        error_setg(errp,
-> +            "A capability overlaps with MSI (%" PRIu8 " in [%" PRIu8 ", %" PRIu8 "))",
-> +            pos, vdev->msi_pos, vdev->msi_pos + vdev->msi_cap_size);
-> +        return -EINVAL;
-> +    }
-> +
-> +    if (cap_id != PCI_CAP_ID_MSIX && vdev->msix &&
-> +        range_covers_byte(vdev->msix->pos, MSIX_CAP_LENGTH, pos)) {
-> +        error_setg(errp,
-> +            "A capability overlaps with MSI-X (%" PRIu8 " in [%" PRIu8 ", %" PRIu8 "))",
-> +            pos, vdev->msix->pos, vdev->msix->pos + MSIX_CAP_LENGTH);
-> +        return -EINVAL;
-> +    }
+> Michael, I think you said you'd pick this one up? (it hit during last freeze)
+> Just want to confirm in case everyone was assuming this was someone else's problem ;)
+> I want to add a bunch of stuff on top of this next cycle (Generic Ports in particular)
+> so good to get this in place if we can.
+> 
+> Jonathan
 
-I provided an example of how the existing vfio_msi[x]_setup() can be
-trivially extended to perform the necessary size checking in place of
-pci_add_capability() without special cases and additional error paths
-as done here.  Please adopt the approach I suggested.  Thanks,
+Yes it's in my pull req isn't it?
 
-Alex
 
-> +
->      /* Scale down size, esp in case virt caps were added above */
->      size = MIN(size, vfio_std_cap_max_size(pdev, pos));
->  
-> @@ -3037,6 +3072,12 @@ static void vfio_realize(PCIDevice *pdev, Error **errp)
->  
->      vfio_bars_prepare(vdev);
->  
-> +    vfio_msi_early_setup(vdev, &err);
-> +    if (err) {
-> +        error_propagate(errp, err);
-> +        goto error;
-> +    }
-> +
->      vfio_msix_early_setup(vdev, &err);
->      if (err) {
->          error_propagate(errp, err);
-> diff --git a/hw/vfio/pci.h b/hw/vfio/pci.h
-> index 7c236a52f4..9ae0278058 100644
-> --- a/hw/vfio/pci.h
-> +++ b/hw/vfio/pci.h
-> @@ -107,6 +107,7 @@ enum {
->  
->  /* Cache of MSI-X setup */
->  typedef struct VFIOMSIXInfo {
-> +    uint8_t pos;
->      uint8_t table_bar;
->      uint8_t pba_bar;
->      uint16_t entries;
-> @@ -128,6 +129,8 @@ struct VFIOPCIDevice {
->      unsigned int rom_size;
->      off_t rom_offset; /* Offset of ROM region within device fd */
->      void *rom;
-> +    uint8_t msi_pos;
-> +    uint16_t msi_ctrl;
->      int msi_cap_size;
->      VFIOMSIVector *msi_vectors;
->      VFIOMSIXInfo *msix;
+> > 
+> > > Changes from v2:
+> > > - Rebased and fixed a merge conflict
+> > > 
+> > > Changes from v1:
+> > > - Generate APIC and PPTT ACPI tables for AArch64/virt
+> > > - Avoid using legacy syntax in numa/bios tests
+> > > - Delete unchanged FACP tables
+> > > 
+> > > Brice Goglin (4):
+> > >   hmat acpi: Don't require initiator value in -numa
+> > >   tests: acpi: add and whitelist *.hmat-noinitiator expected blobs
+> > >   tests: acpi: q35: add test for hmat nodes without initiators
+> > >   tests: acpi: q35: update expected blobs *.hmat-noinitiators
+> > > expected HMAT:
+> > > 
+> > > Hesham Almatary (3):
+> > >   tests: Add HMAT AArch64/virt empty table files
+> > >   tests: acpi: aarch64/virt: add a test for hmat nodes with no
+> > >     initiators
+> > >   tests: virt: Update expected *.acpihmatvirt tables
+> > > 
+> > > Xiang Chen (1):
+> > >   hw/arm/virt: Enable HMAT on arm virt machine
+> > > 
+> > >  hw/arm/Kconfig                                |   1 +
+> > >  hw/arm/virt-acpi-build.c                      |   7 ++
+> > >  hw/core/machine.c                             |   4 +-
+> > >  tests/data/acpi/q35/APIC.acpihmat-noinitiator | Bin 0 -> 144 bytes
+> > >  tests/data/acpi/q35/DSDT.acpihmat-noinitiator | Bin 0 -> 8553 bytes
+> > >  tests/data/acpi/q35/HMAT.acpihmat-noinitiator | Bin 0 -> 288 bytes
+> > >  tests/data/acpi/q35/SRAT.acpihmat-noinitiator | Bin 0 -> 312 bytes
+> > >  tests/data/acpi/virt/APIC.acpihmatvirt        | Bin 0 -> 396 bytes
+> > >  tests/data/acpi/virt/DSDT.acpihmatvirt        | Bin 0 -> 5282 bytes
+> > >  tests/data/acpi/virt/HMAT.acpihmatvirt        | Bin 0 -> 288 bytes
+> > >  tests/data/acpi/virt/PPTT.acpihmatvirt        | Bin 0 -> 196 bytes
+> > >  tests/data/acpi/virt/SRAT.acpihmatvirt        | Bin 0 -> 240 bytes
+> > >  tests/qtest/bios-tables-test.c                | 109
+> > > ++++++++++++++++++ 13 files changed, 118 insertions(+), 3
+> > > deletions(-) create mode 100644
+> > > tests/data/acpi/q35/APIC.acpihmat-noinitiator create mode 100644
+> > > tests/data/acpi/q35/DSDT.acpihmat-noinitiator create mode 100644
+> > > tests/data/acpi/q35/HMAT.acpihmat-noinitiator create mode 100644
+> > > tests/data/acpi/q35/SRAT.acpihmat-noinitiator create mode 100644
+> > > tests/data/acpi/virt/APIC.acpihmatvirt create mode 100644
+> > > tests/data/acpi/virt/DSDT.acpihmatvirt create mode 100644
+> > > tests/data/acpi/virt/HMAT.acpihmatvirt create mode 100644
+> > > tests/data/acpi/virt/PPTT.acpihmatvirt create mode 100644
+> > > tests/data/acpi/virt/SRAT.acpihmatvirt 
 

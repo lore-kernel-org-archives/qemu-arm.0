@@ -1,228 +1,143 @@
-Received: by 2002:a17:906:9f27:b0:7ad:ca5a:aee3 with SMTP id fy39csp947081ejc;
-        Mon, 31 Oct 2022 05:58:01 -0700 (PDT)
-X-Google-Smtp-Source: AMsMyM6uQPkybA3cgzS/qPa61pp6VQjzW8dhrW5N6OG9nIH25+mVWMVI7H7K0Q8xx8F8yJJV6Egl
-X-Received: by 2002:a05:620a:4482:b0:6ee:e6f8:c5a6 with SMTP id x2-20020a05620a448200b006eee6f8c5a6mr8878362qkp.275.1667221081464;
-        Mon, 31 Oct 2022 05:58:01 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1667221081; cv=none;
+Received: by 2002:a17:906:9f27:b0:7ad:ca5a:aee3 with SMTP id fy39csp952723ejc;
+        Mon, 31 Oct 2022 06:03:29 -0700 (PDT)
+X-Received: by 2002:aa7:9e1c:0:b0:56c:78fa:2a2 with SMTP id y28-20020aa79e1c000000b0056c78fa02a2mr14663107pfq.65.1667221408853;
+        Mon, 31 Oct 2022 06:03:28 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1667221408; cv=none;
         d=google.com; s=arc-20160816;
-        b=wDN4GxT0EkmIHAwXtOy02YrQdutiX2HIlXQcN/ONgXArVP6PEbzsbnpc2Zp05DQRT7
-         0mMcIyDgzgDgtUO5vfmlmirIHAArZ74e8TeXOPgvtzKwruhfxQmGnC5riAKA1/b3Cx8h
-         LyNFZAfdMNzKTbzu2tsOl5thLMa0pk8lkF3s7/yITmCa/8BEJpbc8DvbeiHrfpklUNBX
-         taKYEL3MFf9DmbcLr70UdqQv08toFd37i/SvPNKnpeikdCM9OfySMDPEfguWXD6V3fr9
-         PmnteocdY0h7iGjfRoK8HnKGJKLQ/Vkah5VvGHoppez6AwsYWX/b5iMLpqwwZjsN2XEe
-         iLaw==
+        b=x5B//99U3YNnP5Tcyfimim7rmJXPAn+jGGKqnEzG/sWQ6PDIJYXOiuOkfkTv92t/I2
+         069sSqyGyj5M7wc/l02rbUSxL9hLgOj/JLfVbTjFoVejiO0OjtxT/GahRuaENIthNCbA
+         oqUlF7KpQUfXkTT+599cJE3l97DZLWI0q8OuX9kHno+h2S0F3g73eUU4lKFjEL4olfrv
+         yfkaEKLUSRlxUpD04hbEj3LrH8e9+vGAMm1tCaMX4OURicx2ME5lvgIl6fRRnjV5Dcv/
+         FIjmm8K07k/H7hFXkbqQnzWI1/dSykDHUd4Dftri0WYhTmb/NmIZZfcsk6WWutcB1jFc
+         ujww==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=errors-to:sender:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-disposition:in-reply-to
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :dkim-signature;
-        bh=jDPHfFPBmUiBzVFQbV+4l1hgXmVtWz7Ck3nwksImP0A=;
-        b=zDkUAPojyBNhbQlRT9UHDB1ddsM9t1FMJC8x08fxzijX4do5S0x0akjRhQ5dj2jtPI
-         hcxTto5//99t4RvfvGggHLlYux2juG5RCPkOjlnnNxH+RasQm0ryMv2ZNCvOJPQe3peX
-         2mnyNBJEZVGz3arwTLRJl/OCkLJ/Mr92oqOYm4PWMpd4F2m320inmzml/zg595wpRkzz
-         duJ3QBeX8cOtKfutXERa04DxId8XKvW9oSb7PXkBQIL3o3tmpe1d/hDYv7ygtSZv7ntu
-         6of1L5YQcfoBfZij8JKDUzmqJDQ78PHRdKRIM//meQxPUhN/olSzD0+ZtCjbM9QI2qJ3
-         CVBw==
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=rTj3OCdOh9GHTQq3zH5hk6i5H6mbJ+iR7eoNOh181ww=;
+        b=fQpxl8Rk4ITf+6F4He/ln5Lr//zdaVhm2VJD7u0+K/bXmxH6rOvQHnaLbEFu5miWwT
+         HHMwNkFvK3N6WU3RHUNcAvvubMBVnGB+uGP3yt+GkgtZ54hIBRGEtXNs7w+pNlDNL8s2
+         EQqvriJGDw8Ch2lzpBTZpxRb8JU0TT+DfjtOVQYa8w1wLCQrkD5ow0mOMWmQqWmnNkal
+         kBarIs7t9l+aofbDKN58Y6YpQKbmiVYr8+enEFeTHdwtCZILWTFMN1mqxMq1jwrwRRKF
+         5bJz9sj6AHmQcQS/6gbGpGpbJf9hxVxsrS/vEslJxkCboiAsm/LucfVUNwNQx4ZjTH3E
+         Bqqw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=V4Xl81Ps;
-       spf=pass (google.com: domain of qemu-arm-bounces+linus.walleij=linaro.org+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+linus.walleij=linaro.org+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+linus.walleij=linaro.org+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t7-20020ad45bc7000000b004bbab456c1dsi1747601qvt.124.2022.10.31.05.58.01
+       dkim=pass header.i=@linaro.org header.s=google header.b=XfQ3MauK;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <peter.maydell@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id e11-20020a170902e0cb00b00186831e191fsor2155793pla.56.2022.10.31.06.03.28
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 31 Oct 2022 05:58:01 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+linus.walleij=linaro.org+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Mon, 31 Oct 2022 06:03:28 -0700 (PDT)
+Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=V4Xl81Ps;
-       spf=pass (google.com: domain of qemu-arm-bounces+linus.walleij=linaro.org+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+linus.walleij=linaro.org+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1opUHa-0005ft-Ox; Mon, 31 Oct 2022 08:52:50 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1opUH3-0002eb-VY
- for qemu-arm@nongnu.org; Mon, 31 Oct 2022 08:52:22 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1opUGn-0002XF-6l
- for qemu-arm@nongnu.org; Mon, 31 Oct 2022 08:52:17 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1667220719;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=jDPHfFPBmUiBzVFQbV+4l1hgXmVtWz7Ck3nwksImP0A=;
- b=V4Xl81PsWLnioSJrm4TQya/VkPmZhG6BVDPCIBPyWvPYtLFkbJLDJYTHVEfQ+qTdj/drDP
- 3Q3MAspnDEb0NgDbXXGtDBOabXlTabs+nRJrAgj1Opkj+XQmpQl0FY0g6A/CzKC58NaPEu
- sgQcjc7G4H25vK08rEUf5Vuyq0e/0fc=
-Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
- [209.85.128.71]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_128_GCM_SHA256) id
- us-mta-135--dJF3eArNwGcmrAGX63pjg-1; Mon, 31 Oct 2022 08:51:56 -0400
-X-MC-Unique: -dJF3eArNwGcmrAGX63pjg-1
-Received: by mail-wm1-f71.google.com with SMTP id
- p14-20020a05600c204e00b003cf4cce4da5so2581152wmg.0
- for <qemu-arm@nongnu.org>; Mon, 31 Oct 2022 05:51:56 -0700 (PDT)
+       dkim=pass header.i=@linaro.org header.s=google header.b=XfQ3MauK;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=rTj3OCdOh9GHTQq3zH5hk6i5H6mbJ+iR7eoNOh181ww=;
+        b=XfQ3MauK5C4Q7W7LVK+1IxkCwtIjLz7WQB1IO+eU250PjUF0NlFT8cZ/pja43DGPqj
+         UEaLDy/ejaca7WT5yyyqghud+3fpvozGOoOkkq+SRebxvHewjLUZoL8uE4A53kE/ODpn
+         0KwkzQpIrznhTtFlQ+hajWpqhyu1E086bNnRc8677QrYhgmXHUWUA1nZZYefgcIDBE8y
+         DlXR5bvNoBJuLbTyIXjRzsfvyELnL/972R8cUnonAKgglP1rBxj3zlpi6NVe3LJo//Y2
+         agiRn/Vx3knTt+tP4yZcamvIpWOTAka7XXwGCuGCraVyXjtqxgymbtscj0F6NV/YETwI
+         B+Iw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=jDPHfFPBmUiBzVFQbV+4l1hgXmVtWz7Ck3nwksImP0A=;
- b=2vdq1NP1xQp9zFNtiK5flvsNpHDJmPCp79OPOc4a7RahrLBT0lbrGcVI4lBliYqEAw
- s1oZjH6hQQCd98tdb84aMtUa3YhR+95VW9N9iu+K4izgkSoLAv7yp+xV6RIgbDvPLZom
- Is0d8R6O1LDJFRtSXTl6wmmxBrFDZeMsOLJIsgY77e03OB5spOWNy/6Sw5eymaA6044M
- 0pVSYU2kUsB1/DVMKCf2fQcgxCxoAl85e/GLJE+5JTUXBf81OrOlkO67Ih4m1wv8uYAq
- mzfxrCaDrH5NEAiVedF7HvPXCNNKtuKsEJvfel9LhHxAaiTJaZa9LRhkRy0qYbFJ5WmW
- bGAA==
-X-Gm-Message-State: ACrzQf2BFMCWjgKVj5HVhbOQS0Rs9MimaZx1rN3xVQV4DDB/qkGEbBYW
- J3NDRO31j7FQEddAQ/Z180+5AZqDPhrwGfKTDpYy/wncYFbWxdq2cXMDCp+XXqrqsa8oxyWnudD
- L+3wgLzgPjyf/
-X-Received: by 2002:a05:600c:154a:b0:3c9:f0df:1cc with SMTP id
- f10-20020a05600c154a00b003c9f0df01ccmr18050054wmg.200.1667220715121; 
- Mon, 31 Oct 2022 05:51:55 -0700 (PDT)
-X-Received: by 2002:a05:600c:154a:b0:3c9:f0df:1cc with SMTP id
- f10-20020a05600c154a00b003c9f0df01ccmr18050034wmg.200.1667220714853; 
- Mon, 31 Oct 2022 05:51:54 -0700 (PDT)
-Received: from redhat.com ([2.52.15.189]) by smtp.gmail.com with ESMTPSA id
- p16-20020adff210000000b0022ac672654dsm7083450wro.58.2022.10.31.05.51.53
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 31 Oct 2022 05:51:54 -0700 (PDT)
-Date: Mon, 31 Oct 2022 08:51:52 -0400
-From: "Michael S. Tsirkin" <mst@redhat.com>
-To: qemu-devel@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Miguel Luis <miguel.luis@oracle.com>, Ani Sinha <ani@anisinha.ca>,
- Igor Mammedov <imammedo@redhat.com>,
- Shannon Zhao <shannon.zhaosl@gmail.com>, qemu-arm@nongnu.org
-Subject: [PULL 24/86] acpi: fadt: support revision 6.0 of the ACPI
- specification
-Message-ID: <20221031124928.128475-25-mst@redhat.com>
-References: <20221031124928.128475-1-mst@redhat.com>
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=rTj3OCdOh9GHTQq3zH5hk6i5H6mbJ+iR7eoNOh181ww=;
+        b=v3eDfGEBSKpxWW9OfLUT2KhVfdOs4PgMOX/9vq4Hsxzxu5Tc+w+ly2CtxIYun47Fdr
+         NK6vj64T0OI8xgXsBedKqt7WM4/uVJJKpV6h8nmFTdCCX54ONRUkEFG2vXN0ON+2eOFB
+         Mo7kO+2r9aNa9OPHl1n5oUHG1Upaak3w5JXM1Ht9gf6JrqAi7KyI1N46JiD4kihI4uRy
+         4hfyxNrPUuguBpuxOw7FXb8mVO8mRuB6jCRf3Xho0fFu1CdUMYGYDYpXcmolD36c5vIY
+         eD2/v+FZATFKSvvJVPCsdpB8o1VLGix2n/T/fGuCGGB0JpuQY9YZATxKVSqglQVqGD5p
+         yRqw==
+X-Gm-Message-State: ACrzQf21nqJ1y6WGnYpAa98uyeyASsyia2jo/vbuRQFtsrw6uyV4cp8u
+	Iq5y+BBrAvHetequjfjjg79F2NCJiCSEezzd9HNRWguH
+X-Google-Smtp-Source: AMsMyM7QB6V3d0KPpypcwyxjQGMri5u0GXcwgs7VVMu6On1hK1l2EZZXn/XVnodRVPqC2MF/0p8wr4xyQl+1RWyAS1Q=
+X-Received: by 2002:a17:903:4d7:b0:178:8564:f754 with SMTP id
+ jm23-20020a17090304d700b001788564f754mr14366795plb.60.1667221408392; Mon, 31
+ Oct 2022 06:03:28 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <20221031124928.128475-1-mst@redhat.com>
-X-Mailer: git-send-email 2.27.0.106.g8ac3dc51b1
-X-Mutt-Fcc: =sent
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=mst@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -30
-X-Spam_score: -3.1
-X-Spam_bar: ---
-X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1.048,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Sender: "Qemu-arm" <qemu-arm-bounces@nongnu.org>
-Errors-To: qemu-arm-bounces+linus.walleij=linaro.org+alex.bennee=linaro.org@nongnu.org
-X-TUID: +EwnYc4Bunen
+References: <20220927141504.3886314-1-alex.bennee@linaro.org>
+ <20220927141504.3886314-2-alex.bennee@linaro.org> <769e0e8a-7787-b02b-9e26-87eca955666b@linaro.org>
+ <CAFEAcA-0zoNS0nWrYu6hM1=8tG4i4GkjHLL2v4OMmJv5GaDAMg@mail.gmail.com>
+ <87r0znlnmm.fsf@linaro.org> <CAFEAcA8Ft_YAC2TRCSErUJxY8_kZOQdF7Qa6oM6VF2RpAeHrBA@mail.gmail.com>
+ <b1a845ca-0972-1800-0c58-03f68d0c94a0@linaro.org>
+In-Reply-To: <b1a845ca-0972-1800-0c58-03f68d0c94a0@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 31 Oct 2022 13:03:16 +0000
+Message-ID: <CAFEAcA-jvg4t1O-wE+19rJgzdiSZqF+X-XmEDLnrJYZCo233Sw@mail.gmail.com>
+Subject: Re: [PATCH v3 01/15] hw: encode accessing CPU index in MemTxAttrs
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
+Cc: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
+	Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org, qemu-arm@nongnu.org, 
+	"Michael S. Tsirkin" <mst@redhat.com>, Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, 
+	Paolo Bonzini <pbonzini@redhat.com>, Eduardo Habkost <eduardo@habkost.net>, Peter Xu <peterx@redhat.com>, 
+	Jason Wang <jasowang@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+X-TUID: NNra6XjTeapc
 
-From: Miguel Luis <miguel.luis@oracle.com>
+On Mon, 31 Oct 2022 at 12:08, Philippe Mathieu-Daud=C3=A9 <philmd@linaro.or=
+g> wrote:
+>
+> On 4/10/22 16:54, Peter Maydell wrote:
+> > On Tue, 4 Oct 2022 at 14:33, Alex Benn=C3=A9e <alex.bennee@linaro.org> =
+wrote:
+> >>
+> >>
+> >> Peter Maydell <peter.maydell@linaro.org> writes:
+> >>> The MSC is in the address map like most other stuff, and thus there i=
+s
+> >>> no restriction on whether it can be accessed by other things than CPU=
+s
+> >>> (DMAing to it would be silly but is perfectly possible).
+> >>>
+> >>> The intent of the code is "pass this transaction through, but force
+> >>> it to be Secure/NonSecure regardless of what it was before". That
+> >>> should not involve a change of the requester type.
+> >>
+> >> Should we assert (or warn) when the requester_type is unspecified?
+> >
+> > Not in the design of MemTxAttrs that's currently in git, no:
+> > in that design it's perfectly fine for something generating
+> > memory transactions to use MEMTXATTRS_UNSPECIFIED (which defaults
+> > to meaning a bunch of things including "not secure").
+>
+> In tz_mpc_handle_block():
+>
+> static MemTxResult tz_mpc_handle_block(TZMPC *s, hwaddr addr, MemTxAttrs
+> attrs)
+> {
+>      /* Handle a blocked transaction: raise IRQ, capture info, etc */
+>      if (!s->int_stat) {
+>
+>          s->int_info1 =3D addr;
+>          s->int_info2 =3D 0;
+>          s->int_info2 =3D FIELD_DP32(s->int_info2, INT_INFO2, HMASTER,
+>                                    attrs.requester_id & 0xffff);
+>          s->int_info2 =3D FIELD_DP32(s->int_info2, INT_INFO2, HNONSEC,
+>                                    ~attrs.secure);
+>          s->int_info2 =3D FIELD_DP32(s->int_info2, INT_INFO2, CFG_NS,
+>                                    tz_mpc_cfg_ns(s, addr));
+>
+>
+> Should we check whether the requester is MTRT_CPU?
 
-Update the Fixed ACPI Description Table (FADT) to revision 6.0 of the ACPI
-specification adding the field "Hypervisor Vendor Identity".
+That code is basically assuming that the requester_id is the AMBA AHB
+'HMASTER' field (i.e. something hopefully unique to all things that
+send out transactions, not necessarily limited only to CPUs), which is a
+somewhat bogus assumption given that it isn't currently any such thing...
 
-This field's description states the following: "64-bit identifier of hypervisor
-vendor. All bytes in this field are considered part of the vendor identity.
-These identifiers are defined independently by the vendors themselves,
-usually following the name of the hypervisor product. Version information
-should NOT be included in this field - this shall simply denote the vendor's
-name or identifier. Version information can be communicated through a
-supplemental vendor-specific hypervisor API. Firmware implementers would
-place zero bytes into this field, denoting that no hypervisor is present in
-the actual firmware."
+I'm not sure if/how this patchset plans to model generic "ID of transaction
+generator".
 
-Signed-off-by: Miguel Luis <miguel.luis@oracle.com>
-Reviewed-by: Ani Sinha <ani@anisinha.ca>
-Message-Id: <20221011181730.10885-3-miguel.luis@oracle.com>
-Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
-Signed-off-by: Michael S. Tsirkin <mst@redhat.com>
----
- hw/acpi/aml-build.c      | 13 ++++++++++---
- hw/arm/virt-acpi-build.c | 10 +++++-----
- 2 files changed, 15 insertions(+), 8 deletions(-)
-
-diff --git a/hw/acpi/aml-build.c b/hw/acpi/aml-build.c
-index e6bfac95c7..42feb4d4d7 100644
---- a/hw/acpi/aml-build.c
-+++ b/hw/acpi/aml-build.c
-@@ -2070,7 +2070,7 @@ void build_pptt(GArray *table_data, BIOSLinker *linker, MachineState *ms,
-     acpi_table_end(linker, &table);
- }
- 
--/* build rev1/rev3/rev5.1 FADT */
-+/* build rev1/rev3/rev5.1/rev6.0 FADT */
- void build_fadt(GArray *tbl, BIOSLinker *linker, const AcpiFadtData *f,
-                 const char *oem_id, const char *oem_table_id)
- {
-@@ -2193,8 +2193,15 @@ void build_fadt(GArray *tbl, BIOSLinker *linker, const AcpiFadtData *f,
-     /* SLEEP_STATUS_REG */
-     build_append_gas_from_struct(tbl, &f->sleep_sts);
- 
--    /* TODO: extra fields need to be added to support revisions above rev5 */
--    assert(f->rev == 5);
-+    if (f->rev == 5) {
-+        goto done;
-+    }
-+
-+    /* Hypervisor Vendor Identity */
-+    build_append_padded_str(tbl, "QEMU", 8, '\0');
-+
-+    /* TODO: extra fields need to be added to support revisions above rev6 */
-+    assert(f->rev == 6);
- 
- done:
-     acpi_table_end(linker, &table);
-diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
-index 13c6e3e468..e5377744f3 100644
---- a/hw/arm/virt-acpi-build.c
-+++ b/hw/arm/virt-acpi-build.c
-@@ -808,13 +808,13 @@ build_madt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
- }
- 
- /* FADT */
--static void build_fadt_rev5(GArray *table_data, BIOSLinker *linker,
-+static void build_fadt_rev6(GArray *table_data, BIOSLinker *linker,
-                             VirtMachineState *vms, unsigned dsdt_tbl_offset)
- {
--    /* ACPI v5.1 */
-+    /* ACPI v6.0 */
-     AcpiFadtData fadt = {
--        .rev = 5,
--        .minor_ver = 1,
-+        .rev = 6,
-+        .minor_ver = 0,
-         .flags = 1 << ACPI_FADT_F_HW_REDUCED_ACPI,
-         .xdsdt_tbl_offset = &dsdt_tbl_offset,
-     };
-@@ -944,7 +944,7 @@ void virt_acpi_build(VirtMachineState *vms, AcpiBuildTables *tables)
- 
-     /* FADT MADT PPTT GTDT MCFG SPCR DBG2 pointed to by RSDT */
-     acpi_add_table(table_offsets, tables_blob);
--    build_fadt_rev5(tables_blob, tables->linker, vms, dsdt);
-+    build_fadt_rev6(tables_blob, tables->linker, vms, dsdt);
- 
-     acpi_add_table(table_offsets, tables_blob);
-     build_madt(tables_blob, tables->linker, vms);
--- 
-MST
-
+-- PMM

@@ -1,68 +1,67 @@
-Received: by 2002:a17:906:9f27:b0:7ad:ca5a:aee3 with SMTP id fy39csp614288ejc;
-        Sun, 30 Oct 2022 19:17:42 -0700 (PDT)
-X-Google-Smtp-Source: AMsMyM4pimN6eHeg31xZ5yQWnF4Q5JNsVZja7xIjWdsVE7ZHTzM7uvdgJmiv9IQhweO7AckL5p7E
-X-Received: by 2002:ac8:5f89:0:b0:39c:e5a2:6db9 with SMTP id j9-20020ac85f89000000b0039ce5a26db9mr8800240qta.138.1667182662328;
-        Sun, 30 Oct 2022 19:17:42 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1667182662; cv=none;
+Received: by 2002:a17:906:9f27:b0:7ad:ca5a:aee3 with SMTP id fy39csp614600ejc;
+        Sun, 30 Oct 2022 19:18:12 -0700 (PDT)
+X-Google-Smtp-Source: AMsMyM7GBJawYxxFSLKTobkohpKK1cQi+CTR14RgQkLP5C7loO0fdSWvgetAXzYFrPUegwWyI0wn
+X-Received: by 2002:ac8:5c12:0:b0:3a4:ecf9:51d1 with SMTP id i18-20020ac85c12000000b003a4ecf951d1mr8892236qti.548.1667182691844;
+        Sun, 30 Oct 2022 19:18:11 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1667182691; cv=none;
         d=google.com; s=arc-20160816;
-        b=OeC82CsqBYBbne3G19BA7NDN91b988RqacAoKqP7SITahopt2Rob7XoITsicNSHEoJ
-         MkqdNhAe34J5hOQsGog1MlA9a4WBrF8/ka6DMtWiwLVQZNEvJemx+M5UFKRZkcncgKpi
-         seDLmJ+dMlKI/6Srqc40hyLHqRfsuDb8pBsg9IDOVedYX/ySYf7GX+Yff/iJvvw1Subv
-         oymnJCI7p5bk3IdifofmNDKPUtit755sL5pSx+3iUNtDRc9y1M5JhdQw5fqXuAdlp43M
-         SvZc271MX408c608Ci515bzqDr5cYysMfHv2bQijXaxvUhjfdElDeXY+hVlGSN7J1J1C
-         irJA==
+        b=nrd6QXDZBb9vEU3JnBFTjwb6fQVclgy3JIubgHaryKuc7rXwL1bMzzY4I1EkZ9Rn5e
+         we/85xPodiITVeZigXKSePZIe4/+IgKk6IdGhuxbJZ74l5YYFeYGEOJYrVHKCccL0W5M
+         RNgFJ6ux1nUyXJtFSBlnbLbD7IgiKES92c0auZ72k06ai+B4mzQyJUtU30KbbZHKYSkE
+         DjjkuOe9uS61ghG87rFTGQ7MJtz70Y4lNqFDAuS4X0t9eTwskB0w/fQE86EjqBostM3J
+         w2cQN/Aiui6JlBq9AaVR4LdiKPT8DIWic/hhWWvVfUTVIYjjym8s8KVaZ3PBXg2QJKV3
+         YoaA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=errors-to:sender:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence:mime-version
-         :content-transfer-encoding:cc:to:in-reply-to:message-id:subject:date
-         :from;
-        bh=lCIyTB8LnbCMSpIA7qC89JDS8sT3lbQ8DHBbStjplNI=;
-        b=YXVY/q8GtbV7eFvWn7dsDrQsI/z15AdNNbMW3HFIrsPxohcQBS6EPsdUPTWhfA6SGg
-         /GzCHs/4Bvxq7ByRndiHPRIhzI3BfxZ+QPS875aoAfzTjkJzb2Pxz02g2idHYjIVFczs
-         3ci8itnZWnZTCova2LwD+WGNY6RptS0ZWD+ssRoeONbus8Z/3WIaITg1goMHXXUVcbmq
-         C2CWWXVY+e8lh2K2/0SDGdy/2J+upNpk04GObNYVf9XnhXX8aYxFYr5MkCRUA0C0zjCe
-         xvhZwfr219rRWulOj5KeIsJbZA+W8KSlxuzuWAim7iLBm0dTEAvDkDOql7A+fYuo0sLi
-         UFfw==
+         :list-archive:list-unsubscribe:list-id:precedence
+         :content-transfer-encoding:cc:to:message-id:mime-version:subject
+         :date:from;
+        bh=giM/wNIPLOx+p1p/V7aG+dUU3z5psLYpc5tSCLuV/xI=;
+        b=LyHrFUAPnG3PjpICifmeenDFLOxDQJdG7QMEiqaRb4uVgC3+KGXoVQunvv0D3x5HaQ
+         OwrcYd+fMqevO9jj0vQPdE3PiXAUmtN3SJY5984K2xzvnDiEDeEjOypkZ5OdnZzBK/Ni
+         TY835/LTUqirvrwwDMSnIRSFqqUx2uQuzzEk1YYwxSFRB/AoeGABh5D6ceGQmw1bt6G8
+         Lfx1jcH3GGpNb602twr+8I0WVvbLWMpBbvqRY78x2txT3/IgIlXUYtSTvBWzIC0mQL3p
+         isuCfC9GQP1/Z+Jc+HVFOaI64SksIiqUjuwGklo9oufGesgbY2UIvnXyOpKnRPqeRqI2
+         BFfQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=sr.ht
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id g13-20020ac8468d000000b0039a71c2f6f1si2962249qto.264.2022.10.30.19.17.42
+        by mx.google.com with ESMTPS id 6-20020a05621420c600b004bba8a1d203si3329196qve.218.2022.10.30.19.18.11
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 30 Oct 2022 19:17:42 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Sun, 30 Oct 2022 19:18:11 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=sr.ht
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1opKLa-0001GI-Kp; Sun, 30 Oct 2022 22:16:18 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1opKL8-00015T-Qx; Sun, 30 Oct 2022 22:15:50 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <outgoing@sr.ht>)
- id 1opKLA-00016g-4W; Sun, 30 Oct 2022 22:15:52 -0400
+ id 1opKL7-00014V-2Y; Sun, 30 Oct 2022 22:15:49 -0400
 Received: from mail-b.sr.ht ([173.195.146.151])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <outgoing@sr.ht>)
- id 1opKL8-00036q-Pd; Sun, 30 Oct 2022 22:15:51 -0400
+ id 1opKL5-00033t-FT; Sun, 30 Oct 2022 22:15:48 -0400
 Authentication-Results: mail-b.sr.ht; dkim=none 
 Received: from git.sr.ht (unknown [173.195.146.142])
- by mail-b.sr.ht (Postfix) with ESMTPSA id CD64E11F296;
- Mon, 31 Oct 2022 02:15:46 +0000 (UTC)
+ by mail-b.sr.ht (Postfix) with ESMTPSA id 96B9A11F257;
+ Mon, 31 Oct 2022 02:15:45 +0000 (UTC)
 From: ~axelheider <axelheider@git.sr.ht>
-Date: Mon, 31 Oct 2022 00:59:29 +0100
-Subject: [PATCH qemu.git 09/11] hw/timer/imx_epit: cleanup CR defines
-Message-ID: <166718254546.5893.5075929684621857903-9@git.sr.ht>
+Date: Mon, 31 Oct 2022 02:15:45 +0000
+Subject: [PATCH qemu.git 00/11] improve hw/timer/imx_epit
+MIME-Version: 1.0
+Message-ID: <166718254546.5893.5075929684621857903-0@git.sr.ht>
 X-Mailer: git.sr.ht
-In-Reply-To: <166718254546.5893.5075929684621857903-0@git.sr.ht>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, peter.maydell@linaro.org
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-MIME-Version: 1.0
 Received-SPF: pass client-ip=173.195.146.151; envelope-from=outgoing@sr.ht;
  helo=mail-b.sr.ht
 X-Spam_score_int: 2
@@ -71,69 +70,46 @@ X-Spam_bar: /
 X-Spam_report: (0.2 / 5.0 requ) BAYES_00=-1.9, FREEMAIL_FORGED_REPLYTO=2.095,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Reply-To: ~axelheider <axelheider@gmx.de>
-Sender: "Qemu-devel" <qemu-devel-bounces@nongnu.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: ulFXjK57/ZUk
+Sender: "Qemu-arm" <qemu-arm-bounces@nongnu.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: S9hxKKNKqi4Q
 
-From: Axel Heider <axel.heider@hensoldt.net>
+This is a follow-up on my initial work to fix https://gitlab.com/qemu-
+project/qemu/-/issues/1263.
+- fix #1263 for CR writes
+- fix compare timer update
+- software reset clears the interrupt
+- do not persist CR.SWR bit
+- general code cleanup and comment improvements
 
-remove unused defines, add needed defines
+Axel Heider (11):
+  hw/timer/imx_epit: fix typo in comment
+  hw/timer/imx_epit: improve comments
+  hw/timer/imx_epit: factor out register write handlers
+  hw/timer/imx_epit: remove explicit fields cnt and freq
+  hw/timer/imx_epit: simplify interrupt logic
+  hw/timer/imx_epit: software reset clears the interrupt
+  hw/timer/imx_epit: do not persist CR.SWR bit
+  hw/timer/imx_epit: simplify CR.ENMOD handling
+  hw/timer/imx_epit: cleanup CR defines
+  hw/timer/imx_epit: fix compare timer update
+  hw/timer/imx_epit: rework CR write handling
 
-Signed-off-by: Axel Heider <axel.heider@hensoldt.net>
----
- hw/timer/imx_epit.c         | 4 ++--
- include/hw/timer/imx_epit.h | 4 ++--
- 2 files changed, 4 insertions(+), 4 deletions(-)
+ hw/timer/imx_epit.c         | 372 +++++++++++++++++++-----------------
+ include/hw/timer/imx_epit.h |   6 +-
+ 2 files changed, 200 insertions(+), 178 deletions(-)
 
-diff --git a/hw/timer/imx_epit.c b/hw/timer/imx_epit.c
-index 5915d4b3d4..196fc67c30 100644
---- a/hw/timer/imx_epit.c
-+++ b/hw/timer/imx_epit.c
-@@ -71,8 +71,8 @@ static uint32_t imx_epit_set_freq(IMXEPITState *s)
-     uint32_t prescaler;
-     uint32_t freq;
- 
--    clksrc = extract32(s->cr, CR_CLKSRC_SHIFT, 2);
--    prescaler = 1 + extract32(s->cr, CR_PRESCALE_SHIFT, 12);
-+    clksrc = extract32(s->cr, CR_CLKSRC_SHIFT, CR_CLKSRC_BITS);
-+    prescaler = 1 + extract32(s->cr, CR_PRESCALE_SHIFT, CR_PRESCALE_BITS);
- 
-     freq = imx_ccm_get_clock_frequency(s->ccm,
-                                 imx_epit_clocks[clksrc]) / prescaler;
-diff --git a/include/hw/timer/imx_epit.h b/include/hw/timer/imx_epit.h
-index 2219a426ab..f6d41be7e1 100644
---- a/include/hw/timer/imx_epit.h
-+++ b/include/hw/timer/imx_epit.h
-@@ -43,7 +43,7 @@
- #define CR_OCIEN    (1 << 2)
- #define CR_RLD      (1 << 3)
- #define CR_PRESCALE_SHIFT (4)
--#define CR_PRESCALE_MASK  (0xfff)
-+#define CR_PRESCALE_BITS  (12)
- #define CR_SWR      (1 << 16)
- #define CR_IOVW     (1 << 17)
- #define CR_DBGEN    (1 << 18)
-@@ -51,7 +51,7 @@
- #define CR_DOZEN    (1 << 20)
- #define CR_STOPEN   (1 << 21)
- #define CR_CLKSRC_SHIFT (24)
--#define CR_CLKSRC_MASK  (0x3 << CR_CLKSRC_SHIFT)
-+#define CR_CLKSRC_BITS  (2)
- 
- #define EPIT_TIMER_MAX  0XFFFFFFFFUL
- 
 -- 
 2.34.5
-

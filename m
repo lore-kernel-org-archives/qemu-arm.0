@@ -1,104 +1,104 @@
-Received: by 2002:a17:906:9f27:b0:7ad:ca5a:aee3 with SMTP id fy39csp2197536ejc;
-        Tue, 1 Nov 2022 14:16:45 -0700 (PDT)
-X-Google-Smtp-Source: AMsMyM46FJJbAE//IIN1m3kNnK6xUIHAl7S6rQIT2zJHKm1HfEy0/1QI9+cJySo9up4LXMZkiN8k
-X-Received: by 2002:ac8:5d49:0:b0:39a:4f7:e0b2 with SMTP id g9-20020ac85d49000000b0039a04f7e0b2mr16530189qtx.119.1667337405147;
-        Tue, 01 Nov 2022 14:16:45 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1667337405; cv=none;
+Received: by 2002:a17:906:9f27:b0:7ad:ca5a:aee3 with SMTP id fy39csp2199563ejc;
+        Tue, 1 Nov 2022 14:20:15 -0700 (PDT)
+X-Google-Smtp-Source: AMsMyM6UWaB0A0kVCSDTUPGkPP4/OXPvnshoqIUr801qfppK1igRXta636EVw+SbECJR2m5HPRua
+X-Received: by 2002:ac8:5746:0:b0:39c:deac:c69c with SMTP id 6-20020ac85746000000b0039cdeacc69cmr17055133qtx.292.1667337615501;
+        Tue, 01 Nov 2022 14:20:15 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1667337615; cv=none;
         d=google.com; s=arc-20160816;
-        b=JpSaX2JO1cBsmIk1Iceqy1wRCpq1tzm1JUZLxhjccWA0QFq4kSlrGD5qI11ZGAykQF
-         eRrexPDTIBhZ/zsC7T+JQMFuOBdcDNfE0wmnvvkgL9OIV8i6f4+LYm6hhvG4eRlHieIw
-         4xro8eybjuxj7PwovhXNzOE4Wk1PfDL2gcZ3u3cNy3XwnpqM9my059ZlZzOn/2T0pSHI
-         7Ul1FdZCP/JH8bQ8i5kSVl7QB8bzodutTXRgXuJ3RG3amoX1Hxe3zjp1DjLvaNUhvvsc
-         8wvJcFuRmZ11po+UDo8YKoY5y1NtP37UlcqoVknAvwrVM7kX1Phtdas/mTO3y5XwUijS
-         yZdg==
+        b=ucpzBPL6ZyLzfwhDnKzUE3qAp1t8rjaiBE8cMoujWqJ+qPFm1Ap7TFC3nvsFc7sV3m
+         IFzwkU2ebHuBHccBY0WZsGMS7q1S76vAIpN40hNVRlgfwZM0n7ZQcfiAXWrM1cGXEtUB
+         1rukL3Hr9puL7N/GTYEnKJxnZGub5Rq6iotcJQTHXFi0GNkU4wPB0PvvTb9icl64ya+O
+         x2udN3FIP1gBFus155hlfoGLLPngGSizrdG66bFocfGigSZXz+Q73RiuBF9SbTjkH3Ks
+         TLbktDJhoHBMI6Mi7L0Itm3vLudTD2/u2LD1DGZwqlEn5yQrsP6I362sMPpupiSLnM3u
+         eMvw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=errors-to:sender:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:ui-outboundreport
-         :content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
          :dkim-signature;
-        bh=sIk/M9Hu2mriPwWO8PYS25cQio1VYc77rPyIWKZ93UY=;
-        b=TkcXa725OGLN4W6maMw/Ep2BV4gtoYtyBnFLNHf6aRv2SAvYVuH8TKaogcyY+JN668
-         OjPZjQLN51NC86BKU7Ty/1jT7fRX0Od0sIYwNcN599KRFElwBzXZIIruR2yNdJlspWEF
-         BRmfLO05zZpM9V3OvsbdLDRWEDh8v9PHqXE7Sr7EKtjn3XidU2Kp03OWC6RUUiu4kzsR
-         /GeUISfl//LYyYvHBsOMcuwLHhA5X5jNxkP9OeC9WMPuGdFCTVWl+Wfgvw2ZU9vHUQ1v
-         1MMaz9TUZfkd+SKRsV+tpe1T94O/+KBUiwTsNALCeCtBx7oIgHXyJxMHtglcoho1GpI7
-         EnsA==
+        bh=cWGf89HPc1+fYeeUcP+wFHLk0HyMzZdNLhY8+gWxLBg=;
+        b=jAa5BnZ0Qkt53T3IOh6ai3dG09jgx6BCJXQp5JUHQB1o+fIci6nJ1qp5R3FC1gfKIs
+         5jjaGfQOWtBL82NoZctLRxopuRQdShH9X8Rqn1/A/DJFX5WDxzZbiJaEWXz07NnVRi9V
+         n0ZyV/tGh5la4ywNBHrlyQbA2wIesK+svWT1TOVGuWLm4ZsA2cHW/BtwEAyQhvW3F64J
+         umx3aC4zOeCuu5sYvXpNq89YSScpGD8SNcA/p1/O+SNZd+IW6c3ZvKUtLAGm6UkCXhej
+         JAYHpTZkisxY//9T+hUAtlVsBBrbbm9cZoI9V3Sg02/y0ATvMotJOenxXchC7k7IBSbs
+         EO/A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmx.de header.s=s31663417 header.b=I1yDkZh4;
+       dkim=pass header.i=@gmx.de header.s=s31663417 header.b="d9Ea5n/5";
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmx.de
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id br18-20020a05620a461200b006f59e79466dsi6874182qkb.675.2022.11.01.14.16.44
+        by mx.google.com with ESMTPS id h6-20020a05622a170600b003a5258b1022si5397310qtk.730.2022.11.01.14.20.15
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 01 Nov 2022 14:16:45 -0700 (PDT)
+        Tue, 01 Nov 2022 14:20:15 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmx.de header.s=s31663417 header.b=I1yDkZh4;
+       dkim=pass header.i=@gmx.de header.s=s31663417 header.b="d9Ea5n/5";
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmx.de
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1opybJ-0001qs-97; Tue, 01 Nov 2022 17:15:13 -0400
+	id 1opyfL-0003jU-Av; Tue, 01 Nov 2022 17:19:23 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <axelheider@gmx.de>)
- id 1opybH-0001q2-Og; Tue, 01 Nov 2022 17:15:11 -0400
+ id 1opyfJ-0003ii-8U; Tue, 01 Nov 2022 17:19:21 -0400
 Received: from mout.gmx.net ([212.227.15.15])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <axelheider@gmx.de>)
- id 1opybE-0008Oi-SZ; Tue, 01 Nov 2022 17:15:11 -0400
+ id 1opyfH-0001eW-JS; Tue, 01 Nov 2022 17:19:21 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=gmx.de; s=s31663417;
- t=1667337304; bh=sIk/M9Hu2mriPwWO8PYS25cQio1VYc77rPyIWKZ93UY=;
+ t=1667337556; bh=cWGf89HPc1+fYeeUcP+wFHLk0HyMzZdNLhY8+gWxLBg=;
  h=X-UI-Sender-Class:Date:Subject:To:Cc:References:From:In-Reply-To;
- b=I1yDkZh4grX6NM75Y2R4fPRsLJMroSnQJFRU6aynV89v5dVni6nF/LbkDyr2gl609
- wGj2oZejA6TXCfgYOJ++TDNMvca1DCTf2PJEjXgV8PEV3t25Yvn2eR+EyyvfG/N5vw
- ufG2dTiIMiTOqG8OaW8iYaoHO6RBp1L2cAnm3Pxo8JDDH5vZXzqMEAYhmzXF4OaMQr
- QXSKvB6TpqgPQW9IojTJ+g/4jBelQiPzttRMWWL9exFUV6pbWeMroMbykpUroSFb0g
- UZP1x/mZ36a+YkDugBhm39XpDIOhWB/ifyCZNNSh4IGWuHRE9ndYDbh7YnnVy8kyT1
- jD2PHoC5uWzEQ==
+ b=d9Ea5n/5R3iBUTDN/I6/8TcdAOl6zrnwCooDzESRJDIeMmasGqPKBk0CDrx/q2wDd
+ VDvRkBodi/q7GsybQcjMe5YQ6MR717RAVbbweXTgR1X6oi0x/vy8OqGgxCU/M7Zw2N
+ +P88a6aw5NzJjjTN/srpBVAWe52htN79Fd2kLb68b1h7ATVVXeXYf5JCC0jyTdP2ql
+ qyU3IZCThtkH0Qlc0nykQJkmCpQhuHSKDKCMPvYUK6jXFFYUSnvtef8K99OzFG04vZ
+ IMgPLqRPOZCWBxCSx4Dqp+LCptCPMaqs1k0Iaydc6lnlQ79307p+kTTSZSv7DVCC3f
+ /lm6rxqCAYo4Q==
 X-UI-Sender-Class: 724b4f7f-cbec-4199-ad4e-598c01a50d3a
-Received: from localhost ([95.115.113.189]) by mail.gmx.net (mrgmx005
- [212.227.17.190]) with ESMTPSA (Nemesis) id 1M3DJv-1oszP32JO1-003ehJ; Tue, 01
- Nov 2022 22:15:04 +0100
-Message-ID: <ae6a8bc8-91c3-678b-a2e3-c23be657d065@gmx.de>
-Date: Tue, 1 Nov 2022 22:15:03 +0100
+Received: from localhost ([95.115.113.189]) by mail.gmx.net (mrgmx004
+ [212.227.17.190]) with ESMTPSA (Nemesis) id 1My36T-1pFUIV2bp1-00zV4V; Tue, 01
+ Nov 2022 22:19:16 +0100
+Message-ID: <7fbf8be0-a067-4c1f-f7b0-3d090171a7e7@gmx.de>
+Date: Tue, 1 Nov 2022 22:19:16 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.2.2
-Subject: Re: [PATCH qemu.git 04/11] hw/timer/imx_epit: remove explicit fields
- cnt and freq
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
-Cc: qemu-arm@nongnu.org, peter.maydell@linaro.org, qemu-devel@nongnu.org
-References: <166718254546.5893.5075929684621857903-4@git.sr.ht>
- <7f03ab9a-5f00-684a-f644-dc16b1cca7cf@linaro.org>
+Subject: Re: [PATCH qemu.git 11/11] hw/timer/imx_epit: rework CR write handling
 Content-Language: de-DE, en-US
+To: qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org, peter.maydell@linaro.org,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
+References: <166718254546.5893.5075929684621857903-11@git.sr.ht>
+ <3ea4f10d-e807-b48d-0eda-19d70763c960@linaro.org>
 From: Axel Heider <axelheider@gmx.de>
-In-Reply-To: <7f03ab9a-5f00-684a-f644-dc16b1cca7cf@linaro.org>
+In-Reply-To: <3ea4f10d-e807-b48d-0eda-19d70763c960@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: quoted-printable
-X-Provags-ID: V03:K1:gTfkvrreBphlpImiDbZR/ZRNqev83HH9pmDNP+n+JPzdfsq0ciu
- 2X7sTCIkjlGS1N0oew9cXnTmPkbQ7vnhYAUJPIh21eHkr9ptVreqLoZxSw92VQvLoaXqya3
- 7k7IIBXj0wVGzcQi6umHxK56qx5Y530+9csF4BBcmvj8qIZoTfMbRUfxU4UUhxH7v/Tk/91
- 8JBOZjDNavqxRD3lcu0GQ==
-UI-OutboundReport: notjunk:1;M01:P0:LsJOzTYBbIQ=;ZfYKzXdoeaEwOAYjjNNfLGWjkIi
- RpPsq7NyC0QFmM90QjyE0jMAVZKxLLuEvveMpEAdPj1NacT5k729F9YHm8ztNvRRebYdBCdq9
- LPEtEAMN+uiZMk4T+KBiwY78udBJmfP3/wi3ZSPmFGG/KvrPlshJOCtTJMQ9mzNXDm5QPcvhs
- OHsB0NPRSjCnzVqylWyA1KKk8hpTdMyVAZ5EI0dNvduG/q5zkxPzoQj3jjKaOL1Kgzc7fqxP2
- e4sCCOGLlVnVVdtqoNgbrMEGNM7w+JCbrA0ShClyPqUCE4kLjdArMYK4Rbb4X0SD+LvdRTrCV
- xoHHTh53C4WUqsCSUS+ES1gIb+8pVCaALcOHhQmtdrFhcxu8U1wNFzaeDWI8dpfmcBjXkI65c
- R7VyKaDiXQBV9dB1+RSs0dvwTdcSfbcFL/gLK4YKfgZ/61hCQjrKkQ5mG0hhYXSKuYEcwBkkx
- hzR3KzebBKxKl5UYYkQdROTpXQ4eVG3+kg7v9hfdue19uY08vcEAouOb4NQMn0D4+r8YBCHEu
- xjMqBuiGl3GhwbcHMRcKFGMgnZOqcOpWfq8MTtKn08SjuwmzqcjhyivkayM+RnArrsARj7rns
- CtM/MWzFBk1d45yreXxFs23wA2wcmHf0dJnRtY0Aw7BwZJ7Ot+dV3fAIDLmdY7nBqX1iprnwi
- CuGfBclP7MPDxknKLgnVrWfKIn0McVrGN1cFph+9K7PbFGfq5/dR7nTIh+t0IGsqU7KEfBu1B
- p32oLgDjgMSPcjhEDgOYoyLxwZlzPPYUpnDNnDgY0LIMDxm+eIVcR9BbajHiCMi0ZQqQwcsqB
- ck6fz1nttuoOmxneYm7lmpB7+OhOzqdprEwhL9a5dItq0PVouusoBXv8Lg+qXbnbIcw2hipwi
- zZKG7EHzNPR/kmEdbbF1jYa1uaXAv1z7TPaakVS7bcuPHZnkeEnzHxNuqdmGLnRwxxWkFFl9O
- DGqO6h6GImxGVNrUwC4zpLL0LiQ=
+X-Provags-ID: V03:K1:2pHJjjxQAPgBHmLzZ3rJxY5ED/BXkQjehuI4cWlKMmbfsYeIPz4
+ P7jHH+J5atZXRDjOeKCDVEO+0I74kxJbzWDt63+3nPZKTVs/ryCo0n8Krcj47mvCyHaadPW
+ 6CVf5a9sq+T9Yz7jj7peNg9z7StEqN2tk5d3IjZc4Eex5I35nodWRAnZF6ep6hKxo70GQuk
+ Wbe2kXF0C83nn0VQ3cjbQ==
+UI-OutboundReport: notjunk:1;M01:P0:/V1TB5sVSW0=;c/nrfSd2VjgCLyTIIhQr+bn3Y5O
+ V5Od076W3cc3vWGifY49z9MyxgFCN2iEv+umBnQbmFUuDAeoqS6+swG8o2VlchLOqt+SI0kad
+ ECdO93Y9BuMlC2HTM9628rebrTlc89Lc7JIKqJgZ8GtEBSebKv6zHJ5o1HQ/x6B9D5xVFcaXj
+ BB8Bn9nRMURoSsEgFvZUNL99RLYGGK9pJsdgqYqfKLnPAfVJ1cbKksW0Ox9EbYXmDiFjgywPB
+ t1lhutZ3sAOJ3hs4IY/KDIsmF80XJXFZrly8ks58FRmT4179bq/FyB6AhkMgxbA39Rde5nisf
+ 9+Xt4VFJl9ElxHfIAgBCqdDLFkarcE0K3JUA3TJVvWpQUFZTiPlt70Rs198F6yAU+ulz1QTJ1
+ QEw9BiC6RNXRjRiokykgK6eLjbHZo5RFN3xDcS85AQLU2n5B7lhJtWQ1lApG37nPJNZd6kuc3
+ 1A3qDPxlPvz0wdD3/65p64iCuMzTLtcCwHwKjmwglbMU+cx7VUZUDSz7ADhJRhfOURveNgw5E
+ eUsFWGYOcUFhMGNcQQYkzN6XA0Pi8dVOvKgD2vNgPmfCdwNjbEdrKAI8kAQzaMmbzEVJvZwqh
+ NvvkSXz1TsxewLoxPxSDWuhA5IkTHwIZYfn4qNW9FY/ZM6iL8rXC8KRyJGMfaVMXHj9eFON8V
+ P5m7JJ0izJX4ht7dBGtA15gn9s2BnuJHX8PoofR9NblCe+f2qtKXCS6jNi8eDEy2WoiQcoJFx
+ KpOYY7Tj0W7YHOVHv/Jx1J4SbWVUOxuyLok6nOkFSAR9CpGePVZGK8ylwrSoerP7YC786HI7t
+ f23oj0NU8/+UL3ObCf1HRJ8MyfOWGLO3WBP4ovtwbc+/SEZVtKilAlD0dRwIp/rqbKyg4bjrs
+ iSTi5TMbUbJsP+3foTA9VOgTY7dsOov8gryVVosEbEE/a5RBlkhF6TwS7Ntfsc0i4YFpxq06f
+ GLB4/P9A1VhX3GbrPzl7yuiN85o=
 Received-SPF: pass client-ip=212.227.15.15; envelope-from=axelheider@gmx.de;
  helo=mout.gmx.net
 X-Spam_score_int: -27
@@ -122,35 +122,22 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Sender: "Qemu-devel" <qemu-devel-bounces@nongnu.org>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 3J+cD5qmMoAU
+X-TUID: AOgA/PeFRxzs
 
 
 
 =2D------- Original Message --------
-> From: Philippe Mathieu-Daud=C3=A9 [mailto:philmd@linaro.org]> diff --git=
- a/hw/timer/imx_epit.c b/hw/timer/imx_epit.c>
-> index a79f58c963..37b04a1b53 100644
-> --- a/hw/timer/imx_epit.c
-> +++ b/hw/timer/imx_epit.c
-> @@ -77,23 +77,25 @@ static void imx_epit_update_int(IMXEPITState *s)
-> =C2=A0=C2=A0 * Must be called from within a ptimer_transaction_begin/com=
-mit block
-> =C2=A0=C2=A0 * for both s->timer_cmp and s->timer_reload.
-> =C2=A0=C2=A0 */
-> -static void imx_epit_set_freq(IMXEPITState *s)
-> +static uint32_t imx_epit_set_freq(IMXEPITState *s)
+> From: Philippe Mathieu-Daud=C3=A9 [mailto:philmd@linaro.org]
 >
-> Maybe rename as imx_epit_get_freq() or simply imx_epit_freq(),
+>> - simplify code, improve comments
+>> - fix https://gitlab.com/qemu-project/qemu/-/issues/1263
 >
+> This doesn't match GitLab issues closing pattern:
+> https://docs.gitlab.com/ee/user/project/issues/managing_issues.html#defa=
+ult-closing-pattern
 
-There will be an update of the whole patchset, so I will change
-the name to imx_epit_freq(). That makes the name and signature in
-sync. Note that the next commit in this patchset does more
-refactoring anyway, so this is just a intermediate change that
-is not really visible.
-
+I will change this to use "fix #1263" then. But the issue git closed alrea=
+dy
+from an earlier patch that got merged a few days ago.
 
 Axel
-
-
-

@@ -1,126 +1,129 @@
-Received: by 2002:a17:906:9f27:b0:7ad:ca5a:aee3 with SMTP id fy39csp2038892ejc;
+Received: by 2002:a17:906:9f27:b0:7ad:ca5a:aee3 with SMTP id fy39csp2038893ejc;
         Tue, 1 Nov 2022 10:11:03 -0700 (PDT)
-X-Google-Smtp-Source: AMsMyM7QRWZ/Lpl9+OM3bA5KNinwm5LG0DkIWkvangpf0GpjVfDjkMKDHnlqfNWa+RJD6ELV3Jv+
-X-Received: by 2002:ad4:528f:0:b0:4bb:65f1:4c83 with SMTP id v15-20020ad4528f000000b004bb65f14c83mr16676193qvr.107.1667322663423;
+X-Google-Smtp-Source: AMsMyM7KKlruD5CYg1NrDibTmhjzdDyc4p4d3i/MSLAJjykGbWYDDW41yPa2mclttYoLdLe3kb5f
+X-Received: by 2002:ac8:7e84:0:b0:39d:fd1:5a1d with SMTP id w4-20020ac87e84000000b0039d0fd15a1dmr15908232qtj.169.1667322663425;
         Tue, 01 Nov 2022 10:11:03 -0700 (PDT)
 ARC-Seal: i=1; a=rsa-sha256; t=1667322663; cv=none;
         d=google.com; s=arc-20160816;
-        b=xop9XmSemYPlbDOvCooqMjfcJCxddFFkeaNeOOsJqiXTRYyt7/kN+zrms9tJLHlh0T
-         jyIcTkDpNuf1GjtDIhxpMmFo8t5taeTXHoyXG5THTV9PDOyyfwYDkWoxLl1CHSD3uPiB
-         wM1LJBQvi7/ysdAOO2nvBI5XqnwAsv+weYSLhgE1SG0XbMlqzvfmhQifCDnOk0bFRWNY
-         ba666gUYCydBTrJUuAVKf55PzHNaLaXsiLcNnZ8dxiy0LCC0hv/cgivbg/s3x0jSBgdZ
-         Hub2Pd/Ls8en1HyypM8Dfc04xdlxaS5CXJLanq8J6jG8RDdfrc7fBMaHHVXV6VMORedK
-         GnKQ==
+        b=Cs+hp5n4wzyFy1F9h6B9DDJwqI6kr+uFAliamy0AoKM9hminKLVSuqSEFf+Mc8vd8r
+         zol5RruPVixrqeqnOuWk1zaAosmj5jpgbmVzn/XA3ALFOtue+8z64UgDP+WUCNH9x/pz
+         60ODXp3g59g67Mm2n1RN3TPfw2bMsB5fy25H9XXbx1Os4V7/d/5ZAtyxmNIBoErOSm/F
+         5yr0/1kpicoL+J+bDWHv3hS4abcIPN9ctvZM53QKR6Zt7sSMYSszZDYPGtiq8XipW9zc
+         bsIAx0Iwm7K+MV1VJnlB7i87D5N3JbyQvJgnHE2aPwSTomp468zWnlhFKX5by7/jTbDv
+         mpWA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=errors-to:sender:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=jJjPRo2jnYNBTT+kAOkS5uMVCK0dMEO9iW4TvwZKw3A=;
-        b=a+jZKshLhx59j3NhiRelq2v1NBGtxyeQt+bNNtCGVEutRbvxUbSfl1NFNOqynmCG+m
-         piqHfPtqvB5Igf21LIEH7As94KZHnvE/rt4ak22XOHRx2agD97bCzyUTYV6lxpfkpM85
-         WKwygWBTVEcCKQKuzXcPUKQ5iHg8RBulxPUMcrGDSaAsKY9XUmp1i5Ma0MZVU7f4fR9V
-         WV3BX2JhZvyvasVRR3nc3H5thQbeF3WCZLkKRu858Mobi5h3j3v6GQKivvwpY4zEJ8c/
-         IXjWUwnZMwobsm6g0cOcxaS4iS2NGQ4mgF09jd0TifSy2LKSdfkqa3ZK3808r3ORe2Dd
-         k1Gg==
+         :in-reply-to:from:references:cc:to:content-language:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=mfyAck5bY61yO/dbkVAQJ/XFFJQ+IWwoeaGi1cr0ERU=;
+        b=FbHxhAINNL93WUjivFCsy4QVim1EzNRMZR1UwpexCSN1guOfdzG5wj2kzm41ldAhEK
+         4P2G+dk62uhDy2Sgb2G/H8L4ryVn6e41hcf8PhwqungRDbQNfxCmn5dbiUij0UZqQ49B
+         2G4e+1MOnpiHDgflds0vxGskmlM15awYnPFxtPY/pNQcU/dg5ilxU4aRYG/sglmtia1A
+         3IGWelnTqeI+7nEPza5rV7rp+jTDn9b5HFj4l9f23l8X/y8A6iXU8qZxk4T3anCMIbcO
+         sF9k2GVygyBozPnNQdAYxqVUyiE7j6wSGf7+xvMx/w5k5y/6KIofn6I+W0jy/NSbnLa6
+         Pjig==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@daynix-com.20210112.gappssmtp.com header.s=20210112 header.b="AXB9x/Y7";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@linaro.org header.s=google header.b=wQYoX4MG;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 5-20020a0562140d0500b004bba6a45194si5915989qvh.443.2022.11.01.10.11.03
+        by mx.google.com with ESMTPS id bl26-20020a05620a1a9a00b006e4734af463si6919121qkb.737.2022.11.01.10.11.03
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
         Tue, 01 Nov 2022 10:11:03 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@daynix-com.20210112.gappssmtp.com header.s=20210112 header.b="AXB9x/Y7";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@linaro.org header.s=google header.b=wQYoX4MG;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1opsgr-0006rJ-MS; Tue, 01 Nov 2022 10:56:33 -0400
+	id 1opsOw-0003vX-GF; Tue, 01 Nov 2022 10:38:02 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <akihiko.odaki@daynix.com>)
- id 1opsgq-0006qe-6R
- for qemu-devel@nongnu.org; Tue, 01 Nov 2022 10:56:32 -0400
-Received: from mail-pl1-x62f.google.com ([2607:f8b0:4864:20::62f])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1opsOu-0003v8-TT
+ for qemu-devel@nongnu.org; Tue, 01 Nov 2022 10:38:00 -0400
+Received: from mail-wm1-x32d.google.com ([2a00:1450:4864:20::32d])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <akihiko.odaki@daynix.com>)
- id 1opsgo-0003KN-Bm
- for qemu-devel@nongnu.org; Tue, 01 Nov 2022 10:56:31 -0400
-Received: by mail-pl1-x62f.google.com with SMTP id k7so4068281pll.6
- for <qemu-devel@nongnu.org>; Tue, 01 Nov 2022 07:56:30 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=daynix-com.20210112.gappssmtp.com; s=20210112;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=jJjPRo2jnYNBTT+kAOkS5uMVCK0dMEO9iW4TvwZKw3A=;
- b=AXB9x/Y7h+5KZ+gCk2YgTJwYFCVklZej/1XyCO4lrnU3ZFAKc68zoYK8ru8pg15Qyx
- sMxkREbLTf7BHlYMbV+Ee4w62hcs8S2VRdSMBif1FxgucndV0t6sYhY8168GLdUViW+W
- 0ifAj6BlwWigAdYlbnl9LuGGqaZhWtJDBaepKIWhehMoUe5dN/5/2nKpoMaDJKkc2QE8
- fwlbJP2szYHYzWpEOSjeKXpSKRCOgm6eKbQaJsXrfyxSuaXg4OQOSv/AApDUZhCao48D
- w3Fd06+86BTsMUzer+zZ2ohUCfPrY+Io6elleCSaA6t+vIJW0YPGS8bqvG/KS+e2j+Z+
- O+dQ==
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1opsOd-0003qf-0f
+ for qemu-devel@nongnu.org; Tue, 01 Nov 2022 10:37:53 -0400
+Received: by mail-wm1-x32d.google.com with SMTP id
+ c3-20020a1c3503000000b003bd21e3dd7aso12887914wma.1
+ for <qemu-devel@nongnu.org>; Tue, 01 Nov 2022 07:37:42 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=mfyAck5bY61yO/dbkVAQJ/XFFJQ+IWwoeaGi1cr0ERU=;
+ b=wQYoX4MG6qZLfaWlsBOODYhOlv708wQ/cpm0359gGfFM6uXYQCe6k4H4JnApUAzkTj
+ jfgbwnu1YM0FiDLf/bAofHyX9HRMF3A2tewpaAhvQ7G6Iz+yct+43aGfrTWas+9PJ45k
+ kxRfsz9PDiNRvRYhgVc8Jo2e+9k4nm2RAIR7l8UVWcrpY6YjVGXtjEiOXohOPsvb8J0f
+ N4vREbfhU0aazgKdk1p6rWLX5mbLfiQyIp53SlJBLqCBEVdZZaPPF1oEaF1mAd+uNtM5
+ 2YFJajFdvy334DYy+34NMT46ahv81oJ43SbFdHciCmjDFSvvop2vTwG2Q4e8bPKODxdU
+ Hjxg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=jJjPRo2jnYNBTT+kAOkS5uMVCK0dMEO9iW4TvwZKw3A=;
- b=SJoIiYG/nHwchYgyJtzKg3bHnH/vb4JqvWmyciLnV7oCH9RgzRyKyXqEyek+2jZPGB
- +nxnk4xX1JfwxACQAQmiTVgNqrTuawDroVcGL0lRAqx6KhjzoCWewhMN8JS82pRVckK2
- KgXwmhiX3z9ljk+q/Z6+hI9q3w3Gp24H89b2wt6kPTzFLD8RaVnXS2wGaCBxqkydGTeZ
- S70JhN/K4Jh04ymspcsGBMOGC2ur1G1fgRvFkaXbWEwxQZlYSKIcUL1XZPViiiCM0qW4
- 1ijEKQIAGSOi1OoMM9qFw5SiK40zHO88WSN3hBCCJ3mO7ftIKXwhEtYkB5Z24J/fQD4M
- 4+/Q==
-X-Gm-Message-State: ACrzQf2C9f7tkCklZcvsjYuwIJFSif3dFCGHbURlPDoYOz1NJgLurpgA
- QAFCaXI0ZLiRPZbywkTfpLmBcA9EFqq+hd5+
-X-Received: by 2002:a17:903:c3:b0:17a:aca0:e295 with SMTP id
- x3-20020a17090300c300b0017aaca0e295mr146588plc.3.1667314588645; 
- Tue, 01 Nov 2022 07:56:28 -0700 (PDT)
-Received: from fedora.flets-east.jp ([2400:4050:c360:8200:8ae8:3c4:c0da:7419])
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=mfyAck5bY61yO/dbkVAQJ/XFFJQ+IWwoeaGi1cr0ERU=;
+ b=YUa85RQtqlEDTWtTfvkmNV0yd3wixavsvoCV6gLDJ6a4TVtFWffExrv39PZaTmnsNC
+ KoGiUfBhT0ns6Uwswv8IrTLlZW5tSKMhmJWHzuru56m8xo9LPeXPPBA8/mSrD2F/TXJt
+ ZvCdGMKYs+f/4M0hRoOb7+IhVDTSIGNHBivIg63l8FBlQ+3mpCrv8XTljHRJtsW7DQdL
+ sVSwUaFjK2fM90qZm14PEukVWpUsApgbqQ0X90ttac09LcKiPi4PXhQ8uD2C2W3v5+Zn
+ ngJAvvRl4rDxwfRJHv/b4T9KADkAQi8ZRkPkZmbscFxPuOHxEyqM01GQ18EbCWqhi9GQ
+ 5VPQ==
+X-Gm-Message-State: ACrzQf1dbJGi7PxLBFvhi+pltaMZ0CkxYBYyqMSPPLbANGQZC03t6HP7
+ kZJ+ovNxJr2PTWGiUFlVhK67tg==
+X-Received: by 2002:a05:600c:a04:b0:3b4:f20e:63f4 with SMTP id
+ z4-20020a05600c0a0400b003b4f20e63f4mr12205790wmp.201.1667313461388; 
+ Tue, 01 Nov 2022 07:37:41 -0700 (PDT)
+Received: from [192.168.1.115] ([185.126.107.38])
  by smtp.gmail.com with ESMTPSA id
- 22-20020a631656000000b0046f9f4a2de6sm4783219pgw.74.2022.11.01.07.56.23
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 01 Nov 2022 07:56:27 -0700 (PDT)
-From: Akihiko Odaki <akihiko.odaki@daynix.com>
-To: 
+ bl19-20020adfe253000000b00236576c8eddsm10235157wrb.12.2022.11.01.07.37.39
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 01 Nov 2022 07:37:40 -0700 (PDT)
+Message-ID: <c891442a-8049-132c-2c3e-f15e1eda946a@linaro.org>
+Date: Tue, 1 Nov 2022 15:37:38 +0100
+MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
+ Gecko/20100101 Thunderbird/102.4.0
+Subject: Re: [PATCH v8 17/17] pci: Remove legacy errp from pci_add_capability
+Content-Language: en-US
+To: Akihiko Odaki <akihiko.odaki@daynix.com>
 Cc: qemu-devel@nongnu.org, qemu-block@nongnu.org, qemu-arm@nongnu.org,
  "Michael S . Tsirkin" <mst@redhat.com>,
  Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
  Gerd Hoffmann <kraxel@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
  Richard Henderson <richard.henderson@linaro.org>,
  Eduardo Habkost <eduardo@habkost.net>, John Snow <jsnow@redhat.com>,
- Dmitry Fleytman <dmitry.fleytman@gmail.com>,
- Jason Wang <jasowang@redhat.com>, Stefan Weil <sw@weilnetz.de>,
+ Dmitry Fleytman <dmitry.fleytman@gmail.com>, Jason Wang
+ <jasowang@redhat.com>, Stefan Weil <sw@weilnetz.de>,
  Keith Busch <kbusch@kernel.org>, Klaus Jensen <its@irrelevant.dk>,
  Peter Maydell <peter.maydell@linaro.org>,
  Andrey Smirnov <andrew.smirnov@gmail.com>,
  Paul Burton <paulburton@kernel.org>,
  Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
  Yan Vugenfirer <yan@daynix.com>,
- Yuri Benditovich <yuri.benditovich@daynix.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Akihiko Odaki <akihiko.odaki@daynix.com>
-Subject: [PATCH v9 04/17] ahci: Omit errp for pci_add_capability
-Date: Tue,  1 Nov 2022 23:55:45 +0900
-Message-Id: <20221101145558.3998-5-akihiko.odaki@daynix.com>
-X-Mailer: git-send-email 2.38.1
-In-Reply-To: <20221101145558.3998-1-akihiko.odaki@daynix.com>
-References: <20221101145558.3998-1-akihiko.odaki@daynix.com>
-MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: none client-ip=2607:f8b0:4864:20::62f;
- envelope-from=akihiko.odaki@daynix.com; helo=mail-pl1-x62f.google.com
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_NONE=0.001 autolearn=unavailable autolearn_force=no
+ Yuri Benditovich <yuri.benditovich@daynix.com>
+References: <20221101135749.4477-1-akihiko.odaki@daynix.com>
+ <20221101135749.4477-18-akihiko.odaki@daynix.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
+In-Reply-To: <20221101135749.4477-18-akihiko.odaki@daynix.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::32d;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x32d.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -135,44 +138,41 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Sender: "Qemu-devel" <qemu-devel-bounces@nongnu.org>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: ET/1fdWC3kL0
+X-TUID: /HxtU+BApEkg
 
-Omitting errp for pci_add_capability() causes it to abort if
-capabilities overlap. This behavior is appropriate here because all of
-the capabilities set in this device are defined in the program and
-their overlap should not happen unless there is a programming error.
+On 1/11/22 14:57, Akihiko Odaki wrote:
+> Signed-off-by: Akihiko Odaki <akihiko.odaki@daynix.com>
+> ---
+>   hw/pci/pci.c         | 20 +++++---------------
+>   include/hw/pci/pci.h | 12 ++----------
+>   2 files changed, 7 insertions(+), 25 deletions(-)
+> 
+> diff --git a/hw/pci/pci.c b/hw/pci/pci.c
+> index cce57f572c..41de7643af 100644
+> --- a/hw/pci/pci.c
+> +++ b/hw/pci/pci.c
+> @@ -2532,14 +2532,11 @@ bool pci_check_capability_overlap(PCIDevice *pdev, uint8_t cap_id,
+>   }
+>   
+>   /*
+> - * On success, pci_add_capability_legacy() returns a positive value
+> - * that the offset of the pci capability.
+> - * On failure, it sets an error and returns a negative error
+> - * code.
+> + * pci_add_capability() returns a positive value that the offset of the pci
+> + * capability.
 
-Signed-off-by: Akihiko Odaki <akihiko.odaki@daynix.com>
----
- hw/ide/ich.c | 8 ++------
- 1 file changed, 2 insertions(+), 6 deletions(-)
+Simpler:
 
-diff --git a/hw/ide/ich.c b/hw/ide/ich.c
-index 1007a51fcb..3b478b01f8 100644
---- a/hw/ide/ich.c
-+++ b/hw/ide/ich.c
-@@ -106,7 +106,7 @@ static void pci_ich9_ahci_init(Object *obj)
- static void pci_ich9_ahci_realize(PCIDevice *dev, Error **errp)
- {
-     struct AHCIPCIState *d;
--    int sata_cap_offset;
-+    uint8_t sata_cap_offset;
-     uint8_t *sata_cap;
-     d = ICH9_AHCI(dev);
-     int ret;
-@@ -130,11 +130,7 @@ static void pci_ich9_ahci_realize(PCIDevice *dev, Error **errp)
-                      &d->ahci.mem);
- 
-     sata_cap_offset = pci_add_capability(dev, PCI_CAP_ID_SATA,
--                                          ICH9_SATA_CAP_OFFSET, SATA_CAP_SIZE,
--                                          errp);
--    if (sata_cap_offset < 0) {
--        return;
--    }
-+                                          ICH9_SATA_CAP_OFFSET, SATA_CAP_SIZE);
- 
-     sata_cap = dev->config + sata_cap_offset;
-     pci_set_word(sata_cap + SATA_CAP_REV, 0x10);
--- 
-2.38.1
+"Return: offset of the PCI capability."
+
+>    */
+> -int pci_add_capability_legacy(PCIDevice *pdev, uint8_t cap_id,
+> -                              uint8_t offset, uint8_t size,
+> -                              Error **errp)
+> +uint8_t pci_add_capability(PCIDevice *pdev, uint8_t cap_id,
+> +                           uint8_t offset, uint8_t size)
+>   {
+>       uint8_t *config;
+>   
 

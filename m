@@ -1,175 +1,131 @@
-Received: by 2002:a17:906:80c3:b0:7ae:d8f:8937 with SMTP id a3csp626380ejx;
-        Thu, 3 Nov 2022 06:20:40 -0700 (PDT)
-X-Google-Smtp-Source: AMsMyM6GvpY5fBhYOXMpN1eJWQVIgj1NWqQ5UtI+yqo5Z2YbNBpH/jfo1hlRuYEPy3a2vDMwqduy
-X-Received: by 2002:a37:54c4:0:b0:6f8:a038:31d2 with SMTP id i187-20020a3754c4000000b006f8a03831d2mr21202362qkb.297.1667481640717;
-        Thu, 03 Nov 2022 06:20:40 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1667481640; cv=none;
+Received: by 2002:a17:906:80c3:b0:7ae:d8f:8937 with SMTP id a3csp627329ejx;
+        Thu, 3 Nov 2022 06:21:43 -0700 (PDT)
+X-Received: by 2002:a05:6402:27cf:b0:462:75b3:a277 with SMTP id c15-20020a05640227cf00b0046275b3a277mr31394642ede.175.1667481703768;
+        Thu, 03 Nov 2022 06:21:43 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1667481703; cv=none;
         d=google.com; s=arc-20160816;
-        b=ug9nIdU7JjMXgYg0kuOiWdo5rvgyR8cOW+Izf1LEi2Ilwh2sGWUiIM3uo6niEYrmi6
-         HvaDJjI19VY9D4eQH+IWKpUWqfE1IP+rsXVSw35OzICaPTXnD3wl7TCVWEQTmRiGMBy2
-         AhFlj0Qvwj4St2i6F5lB6hOgu5o8Io2alcI1mTerZPvup5YxLptuv3zbFBAfopIeXZMT
-         WuH4B54ojL1Ca+gwICMVbvuddR+QLERAQrjHkG36dR6URA0UfVy78iAtY7BRf/INeZ71
-         SHXAUbcorPz/icqTIpMaSCJHJdVV1U+HXSf4gpC2S0Ya2K5HJpR13X+CnwWUCRA0PwsD
-         6vCg==
+        b=s0gVu5KV/51mkcQFCJLoQHK2mbWp8Z30FpBjecGo/00fJZQUh1ddfZ692KOQ9lzWOZ
+         PNpp3sMGgQmpYoY+xdwHpk2dDGfEJ1k9OBpHhJE28Mhwu35XuG73ChwbNdk/KUAEv1Nw
+         KvMBcR4KJLH259piv1umAGY+mARBMrm02Aa5M1YdCLPicA4l3A1ooCLRt/WBd8wFnaWR
+         9ftenO0tJjtRQXk2XUHQI43OrRW+pGVjBWufYaF236/+1wQ86Siflm1vBIG1nE5vbwH1
+         JtFkpJx9SBFMnZlU2tWDublMJwuR5u7G6uoObBLVUMMyQ6yZbZ8qNwkwEy6SrENBeh08
+         B+Vg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=errors-to:sender:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=ezwB6d/NfOuXPPN2TYdCBqEADrtBcpsZHstC0C/etBM=;
-        b=b1q3eQjbpmD22MUBMWTYixvmYrNoJOmRCs5w1kJAy9Kp36fqvG5y/5hIsUPTstZ8Rg
-         UGOLeS9eiX7oIpEOmsGMYzwNd5bQPSuGrDZzDPrJ/7FMZ2WbGJg0rwhlOt/ESXqtRo1Q
-         1QpJDsgxUn28ufT6eqElmZ6wdNdxe/AM4inogL6teNaBDyZzWNSs+iYXBDHFEzXV7s62
-         6i7yt9i1vThtleB4zpIZwvPr5RoCUjSzwonCEfEa127yruv6eLgg6fupkeV8KU0Cm6ov
-         XNWCPe73kg4Wu8pep7qXoavaRaHpcS26k7VO7X5aFZaOBAYI8Mokqd/EMWuTRyCfO3dN
-         8fWw==
+        h=content-transfer-encoding:in-reply-to:content-language:references
+         :to:from:subject:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=Fqt6IrIoEvQFvLK2iedyMD5n8Lm8LtznkuxjPwfVgAE=;
+        b=MAECWHrpBxDyh8jZkX7R9kyGH9EOnTLiltOkGPJWDEkNDQyix8+gvuaudzQ7I1kVab
+         5P+yhDocUWEQucltO4ZC13ln4MTQ7RF2L6I8EwAP2ROGrrGqhnp/fPcBYBhmRGOp7yJo
+         DBIwMaj3LRn+WoNI+SUWVw+EJ3Pqrz8IMkzyrqYN2QUnKpxinuYXoExmGpHmVc4NeiP7
+         E7+nq4HDZJaESMx5poyYOfi8uwnIvN5pG6uh+U+S21MkPT8M38TRbCJc1wF6fWyxVuRu
+         MP3+JTrk+pusISzUiz20zEV7cH9+clx4EnsCkeCV7BiTID6jtCSnveJfmdZwIb68fVpM
+         RL+g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=vSGwG1nn;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b="DpLV5/9U";
+       spf=pass (google.com: domain of jerome.forissier@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=jerome.forissier@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id jl7-20020ad45e87000000b004bb96cb4e6fsi411230qvb.95.2022.11.03.06.20.40
+Return-Path: <jerome.forissier@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id b12-20020a170906660c00b0073dbab55edasor620637ejp.111.2022.11.03.06.21.43
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 03 Nov 2022 06:20:40 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Thu, 03 Nov 2022 06:21:43 -0700 (PDT)
+Received-SPF: pass (google.com: domain of jerome.forissier@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=vSGwG1nn;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b="DpLV5/9U";
+       spf=pass (google.com: domain of jerome.forissier@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=jerome.forissier@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1oqa91-0007Cy-Fy; Thu, 03 Nov 2022 09:20:31 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1oqa8P-00077F-28
- for qemu-arm@nongnu.org; Thu, 03 Nov 2022 09:20:01 -0400
-Received: from mail-pj1-x102c.google.com ([2607:f8b0:4864:20::102c])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1oqa8L-0006zy-6c
- for qemu-arm@nongnu.org; Thu, 03 Nov 2022 09:19:52 -0400
-Received: by mail-pj1-x102c.google.com with SMTP id
- r61-20020a17090a43c300b00212f4e9cccdso5135476pjg.5
- for <qemu-arm@nongnu.org>; Thu, 03 Nov 2022 06:19:48 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=ezwB6d/NfOuXPPN2TYdCBqEADrtBcpsZHstC0C/etBM=;
- b=vSGwG1nnivneckyOD9e+3CaijpCxbubs4RKwNtqAcgGyO9TN22VpUV9PH2HEa3H4D8
- o4q2xGAP1PGafP7noBN/AhlZDUzFzoFuEL7neoVU4RkDeQuXQmxbY+Hp4Le2NpECUs2x
- EjMW66u5jgRtwzIcIqmfwnPBMvW/Bus5OTNzEKj9bOyFseLjKoA/YGg87h8ecXgS7UYP
- vpvSG4bYdK+fFnpzGgduhv8KlorupMcdkt4bsmaetD6vdRGQ+13iRQBCv+aTX/bHhGam
- ePutM9yzF52nJlQu5E7fKdOuXnmqMvKvLxciWfZSGOfLfB+B1ii+PdgXO8J++7gz2Jeu
- DPaA==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=content-transfer-encoding:in-reply-to:content-language:references
+         :to:from:subject:user-agent:mime-version:date:message-id:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=Fqt6IrIoEvQFvLK2iedyMD5n8Lm8LtznkuxjPwfVgAE=;
+        b=DpLV5/9UKju2XvCQUJVXZW07Z5uEqOjjXOI1bXmo0Tce0u0+mMCkPYzAP/YHnj98pg
+         fVN0YEE3Scwmrh1Gsx8lrNod5bIx8QYiGlwDCH625cNPCXiwo/Q+0JVpIogo4816cG3X
+         JISQJaEPRU+be6iSfCWPoCnPr5OYTK6GmYNtqhNpjNGll8klCXjImZDIkyy72N+45R1p
+         2nbQJ3NnU9t6kY07LKfYbXidatWq0uQvsZ2+8I6BTh+q8vhlg1jILmXpVkR0QODCDDxV
+         bQ+qxB1tpHZSe+CO+sWC+7azCfCbQbViRwWe78Te9y9LARyHaEXHpekIpwuyw91R8x5e
+         vrbw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=ezwB6d/NfOuXPPN2TYdCBqEADrtBcpsZHstC0C/etBM=;
- b=BfDCJ04yRLkPicxrTDkBxn/uYCY468aDqb5TFBNl122vpxqbxL6UKCiv3HAhuhG4hH
- aDffhqoytmqMCTzNAS31P+du21f5CvAT/FjAs8FKm0JbfHROCyQs03u7Wrw1BndgftVw
- 57tqnXdMWu5Osb9SrHb7G9u+QR9dIsppLr80B6vaWEq1BqfHUYdSOcRgLiDNV2LW02gm
- u8VQPzkzp9XEU1V+zxQU1Y5mzMHiOEAv+GD6MMv9AzgU0XFELE5vq7Y5Iegmv5M1ZwLw
- 9VtKahT1vzES4P+oG1AkvxFhH/JHVGgOCCxLPef87T0Vn6ujxv2Qhd2UgtEnmn+8A7eP
- pn3Q==
-X-Gm-Message-State: ACrzQf2WZU38gDFKEfIkTLxAw2anKt3wFhpz/4+lK58PhOgTcQSaxUky
- gyNVsYrwme/P3/buVeZjfRYkE4Z2C7ciSMSrkCPYGA==
-X-Received: by 2002:a17:903:4d7:b0:178:8564:f754 with SMTP id
- jm23-20020a17090304d700b001788564f754mr30189892plb.60.1667481587866; Thu, 03
- Nov 2022 06:19:47 -0700 (PDT)
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:in-reply-to:content-language:references
+         :to:from:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=Fqt6IrIoEvQFvLK2iedyMD5n8Lm8LtznkuxjPwfVgAE=;
+        b=Q/AoPJ5cGwDtwI6lVCmnFshdqjl9Q4JIhWe1eHB24VRO30kGdpmD3c7uQKcGBPyFpG
+         mksM73Km6UbuN4mIG9g72BdZ9K/Cac+Yian4+ZlHwjqf7uLYsKSmrTMDbFaiAsE3SO7E
+         jwjJtYYD2MrxPpsloiY1Eakebb5GVPc2YWbi9xaNanKveJnRJ+m2tctgHChfAU/eYM3W
+         HScpLetzZDZ5O+VsO2jO5TF4ZgHRerL2aAFAkT6DOULJmdOWDUgFJYg3os5SFOkDh06S
+         P6gEyclIQvptBzntJio1c7z3QhioaRXKr/K9Va860uicJkMC6jlbF/Hr0+kf7LPUw3jU
+         8QTQ==
+X-Gm-Message-State: ACrzQf1v0op6CUqcx1qMs75i7UugWLQ6AXIipAh1Ebs9bU1WWhqVTSgk
+	5R32tOsF0k17YFQvclsPgTQ7tnL5
+X-Google-Smtp-Source: AMsMyM7nuDpR61aYNEOkrZn8qWx9LmLpR2g10U0NIDGjcpWavBqxDG4pYsEkeP/70R+52VEmXnslkA==
+X-Received: by 2002:a17:907:d89:b0:7a8:d67d:87d3 with SMTP id go9-20020a1709070d8900b007a8d67d87d3mr28438207ejc.364.1667481703485;
+        Thu, 03 Nov 2022 06:21:43 -0700 (PDT)
+Return-Path: <jerome.forissier@linaro.org>
+Received: from ?IPV6:2a01:e0a:3cb:7bb0:9acd:f850:f866:6c14? ([2a01:e0a:3cb:7bb0:9acd:f850:f866:6c14])
+        by smtp.gmail.com with ESMTPSA id c7-20020a0564021f8700b0045c010d0584sm518562edc.47.2022.11.03.06.21.42
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 03 Nov 2022 06:21:43 -0700 (PDT)
+Message-ID: <bf87f3f0-daa6-b4ec-5510-5e9e802024ec@linaro.org>
+Date: Thu, 3 Nov 2022 14:21:42 +0100
 MIME-Version: 1.0
-References: <20221102054706.1015830-1-richard.henderson@linaro.org>
-In-Reply-To: <20221102054706.1015830-1-richard.henderson@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 3 Nov 2022 13:19:36 +0000
-Message-ID: <CAFEAcA_meGSRv=Fa1D-F=a3VF=TnHHORGAZoi5aPOkVAbGPm4w@mail.gmail.com>
-Subject: Re: [PATCH] target/arm: Two fixes for secure ptw
-To: Richard Henderson <richard.henderson@linaro.org>
-Cc: qemu-devel@nongnu.org, philmd@linaro.org, qemu-arm@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::102c;
- envelope-from=peter.maydell@linaro.org; helo=mail-pj1-x102c.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Sender: "Qemu-arm" <qemu-arm-bounces@nongnu.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: Kr0VGbTSedU0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.2.2
+Subject: Re: Possible regression caused by "target/arm: Add ptw_idx to
+ S1Translate"
+From: Jerome Forissier <jerome.forissier@linaro.org>
+To: qemu-arm@nongnu.org, Richard Henderson <richard.henderson@linaro.org>,
+ =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>
+References: <c6494e10-eab6-039d-7c83-5ba6262c4841@linaro.org>
+ <c2b702d4-5db5-a58b-1746-2ffa29ffb2b6@linaro.org>
+Content-Language: en-US
+In-Reply-To: <c2b702d4-5db5-a58b-1746-2ffa29ffb2b6@linaro.org>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+X-TUID: RXlLvA6eCN5H
 
-On Wed, 2 Nov 2022 at 05:47, Richard Henderson
-<richard.henderson@linaro.org> wrote:
->
-> Reversed the sense of non-secure in get_phys_addr_lpae,
-> and failed to initialize attrs.secure for ARMMMUIdx_Phys_S.
->
-> Fixes: 48da29e4 ("target/arm: Add ptw_idx to S1Translate")
-> Resolves: https://gitlab.com/qemu-project/qemu/-/issues/1293
-> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
-> ---
->  target/arm/ptw.c | 15 ++++++++-------
->  1 file changed, 8 insertions(+), 7 deletions(-)
->
-> diff --git a/target/arm/ptw.c b/target/arm/ptw.c
-> index 58a7bbda50..df3573f150 100644
-> --- a/target/arm/ptw.c
-> +++ b/target/arm/ptw.c
-> @@ -1357,7 +1357,7 @@ static bool get_phys_addr_lpae(CPUARMState *env, S1Translate *ptw,
->      descaddr |= (address >> (stride * (4 - level))) & indexmask;
->      descaddr &= ~7ULL;
->      nstable = extract32(tableattrs, 4, 1);
-> -    if (!nstable) {
-> +    if (nstable) {
->          /*
->           * Stage2_S -> Stage2 or Phys_S -> Phys_NS
->           * Assert that the non-secure idx are even, and relative order.
-> @@ -2671,6 +2671,13 @@ static bool get_phys_addr_with_struct(CPUARMState *env, S1Translate *ptw,
->      bool is_secure = ptw->in_secure;
->      ARMMMUIdx s1_mmu_idx;
->
-> +    /*
-> +     * The page table entries may downgrade secure to non-secure, but
-> +     * cannot upgrade an non-secure translation regime's attributes
-> +     * to secure.
-> +     */
-> +    result->f.attrs.secure = is_secure;
-> +
->      switch (mmu_idx) {
->      case ARMMMUIdx_Phys_S:
->      case ARMMMUIdx_Phys_NS:
-> @@ -2712,12 +2719,6 @@ static bool get_phys_addr_with_struct(CPUARMState *env, S1Translate *ptw,
->          break;
->      }
->
-> -    /*
-> -     * The page table entries may downgrade secure to non-secure, but
-> -     * cannot upgrade an non-secure translation regime's attributes
-> -     * to secure.
-> -     */
-> -    result->f.attrs.secure = is_secure;
->      result->f.attrs.user = regime_is_user(env, mmu_idx);
+On 11/3/22 14:15, Jerome Forissier wrote:
+> On 11/3/22 14:04, Jerome Forissier wrote:
+>> Hi,
+>>
+>> I am troubleshooting a regression that seems related to commit
+>> 48da29e485af ("target/arm: Add ptw_idx to S1Translate"), at least that's
+>> what git bisect says.
+>>
+>> The following hunk looks weird to me:
+>>
+>> @@ -1263,7 +1260,18 @@ static bool get_phys_addr_lpae(CPUARMState *env, S1Translate *ptw,
+>>          descaddr |= (address >> (stride * (4 - level))) & indexmask;
+>>          descaddr &= ~7ULL;
+>>          nstable = extract32(tableattrs, 4, 1);
+>> -        ptw->in_secure = !nstable;
+>> +        if (!nstable) {
+>> +            /*
+>> +             * Stage2_S -> Stage2 or Phys_S -> Phys_NS
+>> +             * Assert that the non-secure idx are even, and relative order.
+>> +             */
+>> +            QEMU_BUILD_BUG_ON((ARMMMUIdx_Phys_NS & 1) != 0);
+>> +            QEMU_BUILD_BUG_ON((ARMMMUIdx_Stage2 & 1) != 0);
+>> +            QEMU_BUILD_BUG_ON(ARMMMUIdx_Phys_NS + 1 != ARMMMUIdx_Phys_S);
+>> +            QEMU_BUILD_BUG_ON(ARMMMUIdx_Stage2 + 1 != ARMMMUIdx_Stage2_S);
+>> +            ptw->in_ptw_idx &= ~1;
+>> +            ptw->in_secure = false;
+>> +        }
+>>          descriptor = arm_ldq_ptw(env, ptw, descaddr, fi);
+>>          if (fi->type != ARMFault_None) {
+>>              goto do_fault;
+>>
+> 
+> Nevermind, I just noticed that a fix for this was sent yesterday...
+> https://lists.nongnu.org/archive/html/qemu-arm/2022-11/msg00047.html
+> 
+> master still doesn't work for me though.
 
-Do we also need to move this setting of attrs.user ?
-get_phys_addr_disabled() doesn't set that either.
+Well, scratch that too. With the fix properly applied, all is good.
 
-thanks
--- PMM
+-- 
+Jerome

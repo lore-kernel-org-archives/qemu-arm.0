@@ -1,106 +1,102 @@
-Received: by 2002:a17:906:80c3:b0:7ae:d8f:8937 with SMTP id a3csp927580ejx;
-        Fri, 4 Nov 2022 12:53:44 -0700 (PDT)
-X-Google-Smtp-Source: AMsMyM4pERcj4C3YW5eCPrQZaOfS2lMLCQuSil9OPZG6WXUEu5CoMGrvNOh1tayxN3JdPTsgVG3t
-X-Received: by 2002:ac8:5991:0:b0:39c:be3a:6f4f with SMTP id e17-20020ac85991000000b0039cbe3a6f4fmr30718836qte.348.1667591624424;
-        Fri, 04 Nov 2022 12:53:44 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1667591624; cv=none;
+Received: by 2002:a17:906:80c3:b0:7ae:d8f:8937 with SMTP id a3csp927666ejx;
+        Fri, 4 Nov 2022 12:53:57 -0700 (PDT)
+X-Google-Smtp-Source: AMsMyM63CBWrkQZVvGjhf0gPa7+MqgI6a2o1ao0Pdm2YbeRXaqNCHh0AVijxFj18gk+FPxqkscXx
+X-Received: by 2002:a05:620a:10b7:b0:6fa:398c:4218 with SMTP id h23-20020a05620a10b700b006fa398c4218mr18953369qkk.647.1667591637643;
+        Fri, 04 Nov 2022 12:53:57 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1667591637; cv=none;
         d=google.com; s=arc-20160816;
-        b=Bw3QmaxWugKJu9bbcZv5dftQQI3OaliwxxkURZt9ME57oWocV3aOgwJ6hAD0mpZt3N
-         Yb51x8oiMFq2DUj8R0wuQ1nXFcjHyE8jlp1yM253MElSHLCbl5hVDl4AAcHDjBFE5zxR
-         c1QYU8K15xQKFhKfAIF+miK5Bwf8UvDF1cKCyACuHB76nYbSlDKtZuFWL+F4Icn7HgSo
-         ru7wI+a0LwQ0aZIHv768zvxA766MWKpYW5OK/dYPP1HP0kzya8xcwVKsHTEg+BvfVorj
-         fPT/HWUaMe+p4pJH4IUqKhGCuZB79N/bNrMv6Nv8jXkHLFB+CzoSLztL9p2wqvSs4oIv
-         kLQg==
+        b=vhg5ubkLjeLTWzDr+JpWi0Bg17ehpAWYhaAf5bW1cgvRV4AaCJaD1X0PUrfzRFFO0z
+         UGJgarOJVhJd5RQMCS0v1VbNjf1jJzC2vVxB0pBlk6vOwGVPB3tJ/HlGVnNtcboYI40j
+         /dbOEkCNkTxu05hsOh7w9Vf+qIuW1lJ1OMRNae8O7Bo8jrO3NTI85k/J8zB6Pwt+hLlu
+         fr1wSdHHmu1+C/oK9FSubjB/ZdsXnyr8hmn/cYFYP9gDygnPGvS7HYU65z8f+2oDMYhQ
+         k97W+npQhG9XdpIlP4KPAP8vipQniDXN83i2YEzOApg1qYNHz0gvtZ73o7E1tNK4X0xF
+         etTg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=errors-to:sender:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=AjsJL5qoA5OV+XX0D98GI7EZlFRFtrEEpt0JqhPlo0c=;
-        b=riHTqKX2Xp6QLjMPsGh0xwsk14mpByAcXcmvxSZ4Fdm1l2esJGc5AzqHezVUQshu7q
-         bwzb/hvfqbb8kLLKnAaHV57yMlKRLQ/nqwrGvq1z6QQGmwvs4iRGyf48chu9vFM4eGXG
-         +7OnDG3JICEeCebgibAVaW4zYgJhMK43SaaEM2ntO2zo8I5q8/VgpJWjd8gSk0bqHJg+
-         nmt6sXeIyMEnNQbPqgmocIXsa7ewM7kEAr2naMjYqOy3ekO0TUMrQNdRjU/mRXPf3N+J
-         eHHdLr6kuXcQT9jXvKJE2o2VNqEP3SibFX6/jDs3nj373wzz5Q2E/JmrhK9MM00BWuP7
-         n5QA==
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
+        bh=MYr9jl5psSrRQcbaLPKPaO442xdmOLg8RfIuQFPRHEY=;
+        b=LLKk8hd8SjKH69ymK0BeEW0uzM7CRxszqgYFBIIMGeRv8uvMVfoHAQ85PuGWxRD0U7
+         xIFnuYa5mVlvm97zOU4qaP9qd/nftHzqnr6KGW9j6CPt0vXf5BmrVnB8eCyXHF2shemy
+         pFUN7qDRZeYOs7dbVPe9lZZFqF5Ky3xykGwWU3zCg0lhH08kutWaoGLRFQlpAWjPZyCT
+         OYyQc0vXIHYw9ncHRHdbe4/1d5bmGF88eR9xX9OtJzLLi4rnynKR6PtwOXofZp0+2wHn
+         oeHhpOMLaTmEQ1x4d0OmIECdBjzKy89WkW2rYtBbhw0ECSCQfKCRbv67D8/Fdz1dszyg
+         9jIw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=ChMBwFf2;
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=oHDKHPpf;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id n8-20020ac85a08000000b0031f0d9e3843si165306qta.122.2022.11.04.12.53.44
+        by mx.google.com with ESMTPS id c22-20020ac87dd6000000b003a50ed7162asi174587qte.6.2022.11.04.12.53.57
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 04 Nov 2022 12:53:44 -0700 (PDT)
+        Fri, 04 Nov 2022 12:53:57 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=ChMBwFf2;
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=oHDKHPpf;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1or2l2-0005MK-9H; Fri, 04 Nov 2022 15:53:40 -0400
+	id 1or2l3-0005MS-KN; Fri, 04 Nov 2022 15:53:42 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <francesco.cagnin@gmail.com>)
- id 1or1dt-000555-7q; Fri, 04 Nov 2022 14:42:14 -0400
-Received: from mail-wr1-x42b.google.com ([2a00:1450:4864:20::42b])
+ id 1or1dr-00054K-UG; Fri, 04 Nov 2022 14:42:12 -0400
+Received: from mail-wr1-x430.google.com ([2a00:1450:4864:20::430])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <francesco.cagnin@gmail.com>)
- id 1or1dq-0004Zs-4j; Fri, 04 Nov 2022 14:42:12 -0400
-Received: by mail-wr1-x42b.google.com with SMTP id h9so8298187wrt.0;
- Fri, 04 Nov 2022 11:42:08 -0700 (PDT)
+ id 1or1dq-0004Za-4k; Fri, 04 Nov 2022 14:42:11 -0400
+Received: by mail-wr1-x430.google.com with SMTP id o4so8249869wrq.6;
+ Fri, 04 Nov 2022 11:42:07 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=AjsJL5qoA5OV+XX0D98GI7EZlFRFtrEEpt0JqhPlo0c=;
- b=ChMBwFf2NW1IiemtaEh7RvKOnvZVnd2MNxKrEvNPoYY/BqKfiC9H9b7wGqk0BAJY0V
- bE3WirdO2BiTdTmHY3dGC534WPoDM5aM+Th8on9TGXM2nruCak/fyJXw8MzmJDx39XVW
- EDOsA9LvmWR8gwKdgXH/0PPMrquXt37QSc3s6EQdBmMDxArdAKMVZcATwJvvzj9Re4SN
- 7PWY16GmUVfmqIrmb3LhdlzvhN9q4bElk17DnM7iYZjoVeRAE2NrU4SdUnvyHQBV8x/K
- 2BWWNBE17/r6ldCDKHr4oF6RyC5ad7F9KdC5gt+O8GuLXDpxVsiajFJhi3PCji0NEXfT
- Z25g==
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=MYr9jl5psSrRQcbaLPKPaO442xdmOLg8RfIuQFPRHEY=;
+ b=oHDKHPpfFpD3xGbrP3aYtubfn0lHr+pTNacL4qRYMol9hyM7qZpVzvLazfI8IOy6wB
+ ECIPijeLX/2QCkf9KvGHxgKfVHgmHmJURnrHXaSMJ/m2ByiI6RtMtacGhVipJN1REzei
+ WPnCTX7VAUqIfPReik+40+lstucdzWvcYhya/Lc1TOmflkaZBtSuCPrZFTwI1nCxHtDW
+ 5IEf4BCFcS1vuiF0QIGv68U/RpC1uBc9iGA6fQ+nQkt2d/8ykWOT4XgZfEUv3yhLhUlx
+ Nf95Mg0jcI+VA4xHqj2ehlYl3IfOJUpI2beTjk4WLNeKPOtQ/A04nQhniCOow/QGpLoA
+ ZsFg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=AjsJL5qoA5OV+XX0D98GI7EZlFRFtrEEpt0JqhPlo0c=;
- b=NlYN9kRGz3H2ITbIiYxa/0xhvciaXG1xF5OnjPU4hhOlAQixgGOHxXQn2DD9lXG0H6
- dhYvRHR/Uf9SKO+rv7nXXGmmAt+O+DrvhuniP2Hyi2WYb0MZmFiL8ottH6rHv2IYP9mB
- nDX0WQyExwX1jTpWyytXLNVK3uFTz3k2UC1ZllD34oucKU1/kL1yQ/Gn4b+gzUHVRNj4
- PYHdSpUZQKHvhCbH5iVoA+F4rlr5tHarYItI4wE09Hj2EUa6x1KHNOSAtadQx7TlRixZ
- gOcunov7JWcr+wka3GUdO9tvup9ufhKVG9l7q+nPxPu4/SEn8Y5ciF30XVrKrunMdCk+
- xiaQ==
-X-Gm-Message-State: ACrzQf1zWJBzdriaiciIYZPPeMNUu/xjFtTxwabSiJwCzaZ4w56tkuR8
- zVgKuNocAKLMXIkAijZelMjSM0tC2CQwDw==
-X-Received: by 2002:a05:6000:1372:b0:236:bf8e:a78c with SMTP id
- q18-20020a056000137200b00236bf8ea78cmr20769957wrz.197.1667587327526; 
- Fri, 04 Nov 2022 11:42:07 -0700 (PDT)
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=MYr9jl5psSrRQcbaLPKPaO442xdmOLg8RfIuQFPRHEY=;
+ b=SqBhJhlbeTcTrKbFoZ3mwPEMXMuu7OocYAXRjGOQxPCOjIesgbb4ZoEWR/axO2I8Rj
+ 4ME5d0epg+Vp1RVUnJ0XsHuyv4BYdY0SmTUhZ8f2FimjPIGcxdfOf1jSVoKTZbdotgRf
+ gFWHlAEoWxCrvDSxBOCc88ZBha2I7RsdcnkZf2Oqbr6lUQrlR/xvEuLjVjEUG5y/l404
+ Sq2rvZOgQ1pVnbUKgr9QD3DEUagzU26xWPrw9K2S1HlyKXChBrgwUmsh/eFxLicex8CB
+ k8S24HSIe/OPF6mPr2Z1R49niMNDzhKY6KjLFWM1rRikgIGJgpCVBeZYE9BIHGZRCf2e
+ wGsQ==
+X-Gm-Message-State: ACrzQf1e8f56tCnxCdrQ+iFFUdWy3Z1ZcWTiBuVNZv42WLIwmXNzQ0iB
+ EhUavttpkJ6bbOu4lwRbX586sjb4seVWmA==
+X-Received: by 2002:adf:f58f:0:b0:236:eea6:d4c with SMTP id
+ f15-20020adff58f000000b00236eea60d4cmr11265774wro.39.1667587326053; 
+ Fri, 04 Nov 2022 11:42:06 -0700 (PDT)
 Received: from localhost.localdomain (216.87.95.79.rev.sfr.net. [79.95.87.216])
  by smtp.gmail.com with ESMTPSA id
- q11-20020a05600000cb00b00236e9755c02sm22217wrx.111.2022.11.04.11.42.06
+ q11-20020a05600000cb00b00236e9755c02sm22217wrx.111.2022.11.04.11.42.04
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Fri, 04 Nov 2022 11:42:07 -0700 (PDT)
+ Fri, 04 Nov 2022 11:42:05 -0700 (PDT)
 From: francesco.cagnin@gmail.com
 X-Google-Original-From: fcagnin@quarkslab.com
 To: qemu-devel@nongnu.org
 Cc: dirty@apple.com, r.bolshakov@yadro.com, peter.maydell@linaro.org,
  qemu-arm@nongnu.org, agraf@csgraf.de, pbonzini@redhat.com,
  Francesco Cagnin <fcagnin@quarkslab.com>
-Subject: [PATCH 1/3] arm: move KVM breakpoints helpers
-Date: Fri,  4 Nov 2022 19:40:59 +0100
-Message-Id: <20221104184101.6923-2-fcagnin@quarkslab.com>
+Subject: [PATCH 0/3] Add gdbstub support to HVF
+Date: Fri,  4 Nov 2022 19:40:58 +0100
+Message-Id: <20221104184101.6923-1-fcagnin@quarkslab.com>
 X-Mailer: git-send-email 2.38.1
-In-Reply-To: <20221104184101.6923-1-fcagnin@quarkslab.com>
-References: <20221104184101.6923-1-fcagnin@quarkslab.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42b;
- envelope-from=francesco.cagnin@gmail.com; helo=mail-wr1-x42b.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::430;
+ envelope-from=francesco.cagnin@gmail.com; helo=mail-wr1-x430.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -109,7 +105,7 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Fri, 04 Nov 2022 15:53:37 -0400
+X-Mailman-Approved-At: Fri, 04 Nov 2022 15:53:39 -0400
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -123,636 +119,46 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Sender: "Qemu-arm" <qemu-arm-bounces@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: +ojHB5DIct98
+X-TUID: Togm1PQr8BNs
 
 From: Francesco Cagnin <fcagnin@quarkslab.com>
 
-These helpers will be also used for HVF. Aside from reformatting a
-couple of comments for 'checkpatch.pl', this is just code motion.
+Hello,
 
-Signed-off-by: Francesco Cagnin <fcagnin@quarkslab.com>
----
- target/arm/debug_helper.c | 241 +++++++++++++++++++++++++++++++++
- target/arm/internals.h    |  50 +++++++
- target/arm/kvm64.c        | 276 --------------------------------------
- 3 files changed, 291 insertions(+), 276 deletions(-)
+This patch series aims to add gdbstub support to HVF (the 'QEMU
+accelerator on macOS that employs Hypervisor.framework') on Apple
+Silicon hosts.
 
-diff --git a/target/arm/debug_helper.c b/target/arm/debug_helper.c
-index c21739242c..2f29dd7e9b 100644
---- a/target/arm/debug_helper.c
-+++ b/target/arm/debug_helper.c
-@@ -12,6 +12,7 @@
- #include "cpregs.h"
- #include "exec/exec-all.h"
- #include "exec/helper-proto.h"
-+#include "exec/gdbstub.h"
- 
- 
- /* Return the Exception Level targeted by debug exceptions. */
-@@ -1134,3 +1135,243 @@ vaddr arm_adjust_watchpoint_address(CPUState *cs, vaddr addr, int len)
- }
- 
- #endif
-+
-+/* Maximum and current break/watch point counts */
-+int max_hw_bps, max_hw_wps;
-+GArray *hw_breakpoints, *hw_watchpoints;
-+
-+/**
-+ * insert_hw_breakpoint()
-+ * @addr: address of breakpoint
-+ *
-+ * See ARM ARM D2.9.1 for details but here we are only going to create
-+ * simple un-linked breakpoints (i.e. we don't chain breakpoints
-+ * together to match address and context or vmid). The hardware is
-+ * capable of fancier matching but that will require exposing that
-+ * fanciness to GDB's interface
-+ *
-+ * DBGBCR<n>_EL1, Debug Breakpoint Control Registers
-+ *
-+ *  31  24 23  20 19   16 15 14  13  12   9 8   5 4    3 2   1  0
-+ * +------+------+-------+-----+----+------+-----+------+-----+---+
-+ * | RES0 |  BT  |  LBN  | SSC | HMC| RES0 | BAS | RES0 | PMC | E |
-+ * +------+------+-------+-----+----+------+-----+------+-----+---+
-+ *
-+ * BT: Breakpoint type (0 = unlinked address match)
-+ * LBN: Linked BP number (0 = unused)
-+ * SSC/HMC/PMC: Security, Higher and Priv access control (Table D-12)
-+ * BAS: Byte Address Select (RES1 for AArch64)
-+ * E: Enable bit
-+ *
-+ * DBGBVR<n>_EL1, Debug Breakpoint Value Registers
-+ *
-+ *  63  53 52       49 48       2  1 0
-+ * +------+-----------+----------+-----+
-+ * | RESS | VA[52:49] | VA[48:2] | 0 0 |
-+ * +------+-----------+----------+-----+
-+ *
-+ * Depending on the addressing mode bits the top bits of the register
-+ * are a sign extension of the highest applicable VA bit. Some
-+ * versions of GDB don't do it correctly so we ensure they are correct
-+ * here so future PC comparisons will work properly.
-+ */
-+
-+int insert_hw_breakpoint(target_ulong addr)
-+{
-+    HWBreakpoint brk = {
-+        .bcr = 0x1,                             /* BCR E=1, enable */
-+        .bvr = sextract64(addr, 0, 53)
-+    };
-+
-+    if (cur_hw_bps >= max_hw_bps) {
-+        return -ENOBUFS;
-+    }
-+
-+    brk.bcr = deposit32(brk.bcr, 1, 2, 0x3);   /* PMC = 11 */
-+    brk.bcr = deposit32(brk.bcr, 5, 4, 0xf);   /* BAS = RES1 */
-+
-+    g_array_append_val(hw_breakpoints, brk);
-+
-+    return 0;
-+}
-+
-+/**
-+ * delete_hw_breakpoint()
-+ * @pc: address of breakpoint
-+ *
-+ * Delete a breakpoint and shuffle any above down
-+ */
-+
-+int delete_hw_breakpoint(target_ulong pc)
-+{
-+    int i;
-+    for (i = 0; i < hw_breakpoints->len; i++) {
-+        HWBreakpoint *brk = get_hw_bp(i);
-+        if (brk->bvr == pc) {
-+            g_array_remove_index(hw_breakpoints, i);
-+            return 0;
-+        }
-+    }
-+    return -ENOENT;
-+}
-+
-+/**
-+ * insert_hw_watchpoint()
-+ * @addr: address of watch point
-+ * @len: size of area
-+ * @type: type of watch point
-+ *
-+ * See ARM ARM D2.10. As with the breakpoints we can do some advanced
-+ * stuff if we want to. The watch points can be linked with the break
-+ * points above to make them context aware. However for simplicity
-+ * currently we only deal with simple read/write watch points.
-+ *
-+ * D7.3.11 DBGWCR<n>_EL1, Debug Watchpoint Control Registers
-+ *
-+ *  31  29 28   24 23  21  20  19 16 15 14  13   12  5 4   3 2   1  0
-+ * +------+-------+------+----+-----+-----+-----+-----+-----+-----+---+
-+ * | RES0 |  MASK | RES0 | WT | LBN | SSC | HMC | BAS | LSC | PAC | E |
-+ * +------+-------+------+----+-----+-----+-----+-----+-----+-----+---+
-+ *
-+ * MASK: num bits addr mask (0=none,01/10=res,11=3 bits (8 bytes))
-+ * WT: 0 - unlinked, 1 - linked (not currently used)
-+ * LBN: Linked BP number (not currently used)
-+ * SSC/HMC/PAC: Security, Higher and Priv access control (Table D2-11)
-+ * BAS: Byte Address Select
-+ * LSC: Load/Store control (01: load, 10: store, 11: both)
-+ * E: Enable
-+ *
-+ * The bottom 2 bits of the value register are masked. Therefore to
-+ * break on any sizes smaller than an unaligned word you need to set
-+ * MASK=0, BAS=bit per byte in question. For larger regions (^2) you
-+ * need to ensure you mask the address as required and set BAS=0xff
-+ */
-+
-+int insert_hw_watchpoint(target_ulong addr,
-+                                target_ulong len, int type)
-+{
-+    HWWatchpoint wp = {
-+        .wcr = R_DBGWCR_E_MASK, /* E=1, enable */
-+        .wvr = addr & (~0x7ULL),
-+        .details = { .vaddr = addr, .len = len }
-+    };
-+
-+    if (cur_hw_wps >= max_hw_wps) {
-+        return -ENOBUFS;
-+    }
-+
-+    /*
-+     * HMC=0 SSC=0 PAC=3 will hit EL0 or EL1, any security state,
-+     * valid whether EL3 is implemented or not
-+     */
-+    wp.wcr = FIELD_DP64(wp.wcr, DBGWCR, PAC, 3);
-+
-+    switch (type) {
-+    case GDB_WATCHPOINT_READ:
-+        wp.wcr = FIELD_DP64(wp.wcr, DBGWCR, LSC, 1);
-+        wp.details.flags = BP_MEM_READ;
-+        break;
-+    case GDB_WATCHPOINT_WRITE:
-+        wp.wcr = FIELD_DP64(wp.wcr, DBGWCR, LSC, 2);
-+        wp.details.flags = BP_MEM_WRITE;
-+        break;
-+    case GDB_WATCHPOINT_ACCESS:
-+        wp.wcr = FIELD_DP64(wp.wcr, DBGWCR, LSC, 3);
-+        wp.details.flags = BP_MEM_ACCESS;
-+        break;
-+    default:
-+        g_assert_not_reached();
-+        break;
-+    }
-+    if (len <= 8) {
-+        /* we align the address and set the bits in BAS */
-+        int off = addr & 0x7;
-+        int bas = (1 << len) - 1;
-+
-+        wp.wcr = deposit32(wp.wcr, 5 + off, 8 - off, bas);
-+    } else {
-+        /* For ranges above 8 bytes we need to be a power of 2 */
-+        if (is_power_of_2(len)) {
-+            int bits = ctz64(len);
-+
-+            wp.wvr &= ~((1 << bits) - 1);
-+            wp.wcr = FIELD_DP64(wp.wcr, DBGWCR, MASK, bits);
-+            wp.wcr = FIELD_DP64(wp.wcr, DBGWCR, BAS, 0xff);
-+        } else {
-+            return -ENOBUFS;
-+        }
-+    }
-+
-+    g_array_append_val(hw_watchpoints, wp);
-+    return 0;
-+}
-+
-+bool check_watchpoint_in_range(int i, target_ulong addr)
-+{
-+    HWWatchpoint *wp = get_hw_wp(i);
-+    uint64_t addr_top, addr_bottom = wp->wvr;
-+    int bas = extract32(wp->wcr, 5, 8);
-+    int mask = extract32(wp->wcr, 24, 4);
-+
-+    if (mask) {
-+        addr_top = addr_bottom + (1 << mask);
-+    } else {
-+        /*
-+         * BAS must be contiguous but can offset against the base
-+         * address in DBGWVR
-+         */
-+        addr_bottom = addr_bottom + ctz32(bas);
-+        addr_top = addr_bottom + clo32(bas);
-+    }
-+
-+    if (addr >= addr_bottom && addr <= addr_top) {
-+        return true;
-+    }
-+
-+    return false;
-+}
-+
-+/**
-+ * delete_hw_watchpoint()
-+ * @addr: address of breakpoint
-+ *
-+ * Delete a breakpoint and shuffle any above down
-+ */
-+
-+int delete_hw_watchpoint(target_ulong addr,
-+                                target_ulong len, int type)
-+{
-+    int i;
-+    for (i = 0; i < cur_hw_wps; i++) {
-+        if (check_watchpoint_in_range(i, addr)) {
-+            g_array_remove_index(hw_watchpoints, i);
-+            return 0;
-+        }
-+    }
-+    return -ENOENT;
-+}
-+
-+bool find_hw_breakpoint(CPUState *cpu, target_ulong pc)
-+{
-+    int i;
-+
-+    for (i = 0; i < cur_hw_bps; i++) {
-+        HWBreakpoint *bp = get_hw_bp(i);
-+        if (bp->bvr == pc) {
-+            return true;
-+        }
-+    }
-+    return false;
-+}
-+
-+CPUWatchpoint *find_hw_watchpoint(CPUState *cpu, target_ulong addr)
-+{
-+    int i;
-+
-+    for (i = 0; i < cur_hw_wps; i++) {
-+        if (check_watchpoint_in_range(i, addr)) {
-+            return &get_hw_wp(i)->details;
-+        }
-+    }
-+    return NULL;
-+}
-diff --git a/target/arm/internals.h b/target/arm/internals.h
-index d9121d9ff8..54382e7d76 100644
---- a/target/arm/internals.h
-+++ b/target/arm/internals.h
-@@ -1369,4 +1369,54 @@ static inline uint64_t arm_mdcr_el2_eff(CPUARMState *env)
-     ((1 << (1 - 1)) | (1 << (2 - 1)) |                  \
-      (1 << (4 - 1)) | (1 << (8 - 1)) | (1 << (16 - 1)))
- 
-+/*
-+ * Although the ARM implementation of hardware assisted debugging
-+ * allows for different breakpoints per-core, the current GDB
-+ * interface treats them as a global pool of registers (which seems to
-+ * be the case for x86, ppc and s390). As a result we store one copy
-+ * of registers which is used for all active cores.
-+ *
-+ * Write access is serialised by virtue of the GDB protocol which
-+ * updates things. Read access (i.e. when the values are copied to the
-+ * vCPU) is also gated by GDB's run control.
-+ *
-+ * This is not unreasonable as most of the time debugging kernels you
-+ * never know which core will eventually execute your function.
-+ */
-+
-+typedef struct {
-+    uint64_t bcr;
-+    uint64_t bvr;
-+} HWBreakpoint;
-+
-+/*
-+ * The watchpoint registers can cover more area than the requested
-+ * watchpoint so we need to store the additional information
-+ * somewhere. We also need to supply a CPUWatchpoint to the GDB stub
-+ * when the watchpoint is hit.
-+ */
-+typedef struct {
-+    uint64_t wcr;
-+    uint64_t wvr;
-+    CPUWatchpoint details;
-+} HWWatchpoint;
-+
-+/* Maximum and current break/watch point counts */
-+extern int max_hw_bps, max_hw_wps;
-+extern GArray *hw_breakpoints, *hw_watchpoints;
-+
-+#define cur_hw_wps      (hw_watchpoints->len)
-+#define cur_hw_bps      (hw_breakpoints->len)
-+#define get_hw_bp(i)    (&g_array_index(hw_breakpoints, HWBreakpoint, i))
-+#define get_hw_wp(i)    (&g_array_index(hw_watchpoints, HWWatchpoint, i))
-+
-+bool find_hw_breakpoint(CPUState *cpu, target_ulong pc);
-+int insert_hw_breakpoint(target_ulong pc);
-+int delete_hw_breakpoint(target_ulong pc);
-+
-+bool check_watchpoint_in_range(int i, target_ulong addr);
-+CPUWatchpoint *find_hw_watchpoint(CPUState *cpu, target_ulong addr);
-+int insert_hw_watchpoint(target_ulong addr, target_ulong len, int type);
-+int delete_hw_watchpoint(target_ulong addr, target_ulong len, int type);
-+
- #endif
-diff --git a/target/arm/kvm64.c b/target/arm/kvm64.c
-index 1197253d12..fb7bb65947 100644
---- a/target/arm/kvm64.c
-+++ b/target/arm/kvm64.c
-@@ -34,46 +34,6 @@
- 
- static bool have_guest_debug;
- 
--/*
-- * Although the ARM implementation of hardware assisted debugging
-- * allows for different breakpoints per-core, the current GDB
-- * interface treats them as a global pool of registers (which seems to
-- * be the case for x86, ppc and s390). As a result we store one copy
-- * of registers which is used for all active cores.
-- *
-- * Write access is serialised by virtue of the GDB protocol which
-- * updates things. Read access (i.e. when the values are copied to the
-- * vCPU) is also gated by GDB's run control.
-- *
-- * This is not unreasonable as most of the time debugging kernels you
-- * never know which core will eventually execute your function.
-- */
--
--typedef struct {
--    uint64_t bcr;
--    uint64_t bvr;
--} HWBreakpoint;
--
--/* The watchpoint registers can cover more area than the requested
-- * watchpoint so we need to store the additional information
-- * somewhere. We also need to supply a CPUWatchpoint to the GDB stub
-- * when the watchpoint is hit.
-- */
--typedef struct {
--    uint64_t wcr;
--    uint64_t wvr;
--    CPUWatchpoint details;
--} HWWatchpoint;
--
--/* Maximum and current break/watch point counts */
--int max_hw_bps, max_hw_wps;
--GArray *hw_breakpoints, *hw_watchpoints;
--
--#define cur_hw_wps      (hw_watchpoints->len)
--#define cur_hw_bps      (hw_breakpoints->len)
--#define get_hw_bp(i)    (&g_array_index(hw_breakpoints, HWBreakpoint, i))
--#define get_hw_wp(i)    (&g_array_index(hw_watchpoints, HWWatchpoint, i))
--
- /**
-  * kvm_arm_init_debug() - check for guest debug capabilities
-  * @cs: CPUState
-@@ -97,217 +57,6 @@ static void kvm_arm_init_debug(CPUState *cs)
-     return;
- }
- 
--/**
-- * insert_hw_breakpoint()
-- * @addr: address of breakpoint
-- *
-- * See ARM ARM D2.9.1 for details but here we are only going to create
-- * simple un-linked breakpoints (i.e. we don't chain breakpoints
-- * together to match address and context or vmid). The hardware is
-- * capable of fancier matching but that will require exposing that
-- * fanciness to GDB's interface
-- *
-- * DBGBCR<n>_EL1, Debug Breakpoint Control Registers
-- *
-- *  31  24 23  20 19   16 15 14  13  12   9 8   5 4    3 2   1  0
-- * +------+------+-------+-----+----+------+-----+------+-----+---+
-- * | RES0 |  BT  |  LBN  | SSC | HMC| RES0 | BAS | RES0 | PMC | E |
-- * +------+------+-------+-----+----+------+-----+------+-----+---+
-- *
-- * BT: Breakpoint type (0 = unlinked address match)
-- * LBN: Linked BP number (0 = unused)
-- * SSC/HMC/PMC: Security, Higher and Priv access control (Table D-12)
-- * BAS: Byte Address Select (RES1 for AArch64)
-- * E: Enable bit
-- *
-- * DBGBVR<n>_EL1, Debug Breakpoint Value Registers
-- *
-- *  63  53 52       49 48       2  1 0
-- * +------+-----------+----------+-----+
-- * | RESS | VA[52:49] | VA[48:2] | 0 0 |
-- * +------+-----------+----------+-----+
-- *
-- * Depending on the addressing mode bits the top bits of the register
-- * are a sign extension of the highest applicable VA bit. Some
-- * versions of GDB don't do it correctly so we ensure they are correct
-- * here so future PC comparisons will work properly.
-- */
--
--static int insert_hw_breakpoint(target_ulong addr)
--{
--    HWBreakpoint brk = {
--        .bcr = 0x1,                             /* BCR E=1, enable */
--        .bvr = sextract64(addr, 0, 53)
--    };
--
--    if (cur_hw_bps >= max_hw_bps) {
--        return -ENOBUFS;
--    }
--
--    brk.bcr = deposit32(brk.bcr, 1, 2, 0x3);   /* PMC = 11 */
--    brk.bcr = deposit32(brk.bcr, 5, 4, 0xf);   /* BAS = RES1 */
--
--    g_array_append_val(hw_breakpoints, brk);
--
--    return 0;
--}
--
--/**
-- * delete_hw_breakpoint()
-- * @pc: address of breakpoint
-- *
-- * Delete a breakpoint and shuffle any above down
-- */
--
--static int delete_hw_breakpoint(target_ulong pc)
--{
--    int i;
--    for (i = 0; i < hw_breakpoints->len; i++) {
--        HWBreakpoint *brk = get_hw_bp(i);
--        if (brk->bvr == pc) {
--            g_array_remove_index(hw_breakpoints, i);
--            return 0;
--        }
--    }
--    return -ENOENT;
--}
--
--/**
-- * insert_hw_watchpoint()
-- * @addr: address of watch point
-- * @len: size of area
-- * @type: type of watch point
-- *
-- * See ARM ARM D2.10. As with the breakpoints we can do some advanced
-- * stuff if we want to. The watch points can be linked with the break
-- * points above to make them context aware. However for simplicity
-- * currently we only deal with simple read/write watch points.
-- *
-- * D7.3.11 DBGWCR<n>_EL1, Debug Watchpoint Control Registers
-- *
-- *  31  29 28   24 23  21  20  19 16 15 14  13   12  5 4   3 2   1  0
-- * +------+-------+------+----+-----+-----+-----+-----+-----+-----+---+
-- * | RES0 |  MASK | RES0 | WT | LBN | SSC | HMC | BAS | LSC | PAC | E |
-- * +------+-------+------+----+-----+-----+-----+-----+-----+-----+---+
-- *
-- * MASK: num bits addr mask (0=none,01/10=res,11=3 bits (8 bytes))
-- * WT: 0 - unlinked, 1 - linked (not currently used)
-- * LBN: Linked BP number (not currently used)
-- * SSC/HMC/PAC: Security, Higher and Priv access control (Table D2-11)
-- * BAS: Byte Address Select
-- * LSC: Load/Store control (01: load, 10: store, 11: both)
-- * E: Enable
-- *
-- * The bottom 2 bits of the value register are masked. Therefore to
-- * break on any sizes smaller than an unaligned word you need to set
-- * MASK=0, BAS=bit per byte in question. For larger regions (^2) you
-- * need to ensure you mask the address as required and set BAS=0xff
-- */
--
--static int insert_hw_watchpoint(target_ulong addr,
--                                target_ulong len, int type)
--{
--    HWWatchpoint wp = {
--        .wcr = R_DBGWCR_E_MASK, /* E=1, enable */
--        .wvr = addr & (~0x7ULL),
--        .details = { .vaddr = addr, .len = len }
--    };
--
--    if (cur_hw_wps >= max_hw_wps) {
--        return -ENOBUFS;
--    }
--
--    /*
--     * HMC=0 SSC=0 PAC=3 will hit EL0 or EL1, any security state,
--     * valid whether EL3 is implemented or not
--     */
--    wp.wcr = FIELD_DP64(wp.wcr, DBGWCR, PAC, 3);
--
--    switch (type) {
--    case GDB_WATCHPOINT_READ:
--        wp.wcr = FIELD_DP64(wp.wcr, DBGWCR, LSC, 1);
--        wp.details.flags = BP_MEM_READ;
--        break;
--    case GDB_WATCHPOINT_WRITE:
--        wp.wcr = FIELD_DP64(wp.wcr, DBGWCR, LSC, 2);
--        wp.details.flags = BP_MEM_WRITE;
--        break;
--    case GDB_WATCHPOINT_ACCESS:
--        wp.wcr = FIELD_DP64(wp.wcr, DBGWCR, LSC, 3);
--        wp.details.flags = BP_MEM_ACCESS;
--        break;
--    default:
--        g_assert_not_reached();
--        break;
--    }
--    if (len <= 8) {
--        /* we align the address and set the bits in BAS */
--        int off = addr & 0x7;
--        int bas = (1 << len) - 1;
--
--        wp.wcr = deposit32(wp.wcr, 5 + off, 8 - off, bas);
--    } else {
--        /* For ranges above 8 bytes we need to be a power of 2 */
--        if (is_power_of_2(len)) {
--            int bits = ctz64(len);
--
--            wp.wvr &= ~((1 << bits) - 1);
--            wp.wcr = FIELD_DP64(wp.wcr, DBGWCR, MASK, bits);
--            wp.wcr = FIELD_DP64(wp.wcr, DBGWCR, BAS, 0xff);
--        } else {
--            return -ENOBUFS;
--        }
--    }
--
--    g_array_append_val(hw_watchpoints, wp);
--    return 0;
--}
--
--
--static bool check_watchpoint_in_range(int i, target_ulong addr)
--{
--    HWWatchpoint *wp = get_hw_wp(i);
--    uint64_t addr_top, addr_bottom = wp->wvr;
--    int bas = extract32(wp->wcr, 5, 8);
--    int mask = extract32(wp->wcr, 24, 4);
--
--    if (mask) {
--        addr_top = addr_bottom + (1 << mask);
--    } else {
--        /* BAS must be contiguous but can offset against the base
--         * address in DBGWVR */
--        addr_bottom = addr_bottom + ctz32(bas);
--        addr_top = addr_bottom + clo32(bas);
--    }
--
--    if (addr >= addr_bottom && addr <= addr_top) {
--        return true;
--    }
--
--    return false;
--}
--
--/**
-- * delete_hw_watchpoint()
-- * @addr: address of breakpoint
-- *
-- * Delete a breakpoint and shuffle any above down
-- */
--
--static int delete_hw_watchpoint(target_ulong addr,
--                                target_ulong len, int type)
--{
--    int i;
--    for (i = 0; i < cur_hw_wps; i++) {
--        if (check_watchpoint_in_range(i, addr)) {
--            g_array_remove_index(hw_watchpoints, i);
--            return 0;
--        }
--    }
--    return -ENOENT;
--}
--
--
- int kvm_arch_insert_hw_breakpoint(target_ulong addr,
-                                   target_ulong len, int type)
- {
-@@ -372,31 +121,6 @@ bool kvm_arm_hw_debug_active(CPUState *cs)
-     return ((cur_hw_wps > 0) || (cur_hw_bps > 0));
- }
- 
--static bool find_hw_breakpoint(CPUState *cpu, target_ulong pc)
--{
--    int i;
--
--    for (i = 0; i < cur_hw_bps; i++) {
--        HWBreakpoint *bp = get_hw_bp(i);
--        if (bp->bvr == pc) {
--            return true;
--        }
--    }
--    return false;
--}
--
--static CPUWatchpoint *find_hw_watchpoint(CPUState *cpu, target_ulong addr)
--{
--    int i;
--
--    for (i = 0; i < cur_hw_wps; i++) {
--        if (check_watchpoint_in_range(i, addr)) {
--            return &get_hw_wp(i)->details;
--        }
--    }
--    return NULL;
--}
--
- static bool kvm_arm_set_device_attr(CPUState *cs, struct kvm_device_attr *attr,
-                                     const char *name)
- {
+The proposed implementation, structured like the KVM counterpart,
+handles single-stepping, software breakpoints, hardware breakpoints and
+hardware watchpoints on single-core guests (i.e. '-smp 1'). (If
+possible, I'd like to receive guidance on how to add proper support for
+multi-core guests.)
+
+The patch has been most recently tested working on macOS Ventura 13.0
+hosts and Linux kernel 5.19 guests with the test script
+'tests/guest-debug/test-gdbstub.py' (slightly updated to make it work
+with Linux kernels compiled on macOS).
+
+If deemed useful, I can also submit an analogous patch targeting Intel
+hosts.
+
+Francesco Cagnin (3):
+  arm: move KVM breakpoints helpers
+  hvf: implement guest debugging on Apple Silicon hosts
+  hvf: handle writes of MDSCR_EL1 and DBG*_EL1
+
+ accel/hvf/hvf-accel-ops.c | 124 ++++++++++++++
+ accel/hvf/hvf-all.c       |  24 +++
+ cpu.c                     |   3 +
+ include/sysemu/hvf.h      |  29 ++++
+ include/sysemu/hvf_int.h  |   1 +
+ target/arm/debug_helper.c | 241 +++++++++++++++++++++++++++
+ target/arm/hvf/hvf.c      | 334 +++++++++++++++++++++++++++++++++++++-
+ target/arm/internals.h    |  50 ++++++
+ target/arm/kvm64.c        | 276 -------------------------------
+ 9 files changed, 805 insertions(+), 277 deletions(-)
+
 -- 
 2.38.1
 

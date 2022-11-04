@@ -1,164 +1,151 @@
-Received: by 2002:a17:906:80c3:b0:7ae:d8f:8937 with SMTP id a3csp488714ejx;
-        Fri, 4 Nov 2022 03:59:16 -0700 (PDT)
-X-Google-Smtp-Source: AMsMyM6jUB069/Qblaui8pLO4/XqgODpRuo+o2jlbC43hsFVS129jb6nLi0znqBmow5wcRSLtuGA
-X-Received: by 2002:a05:622a:4c8e:b0:3a5:26e4:d851 with SMTP id ez14-20020a05622a4c8e00b003a526e4d851mr21549620qtb.271.1667559556693;
-        Fri, 04 Nov 2022 03:59:16 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1667559556; cv=none;
+Received: by 2002:a17:906:80c3:b0:7ae:d8f:8937 with SMTP id a3csp698140ejx;
+        Fri, 4 Nov 2022 08:10:00 -0700 (PDT)
+X-Google-Smtp-Source: AMsMyM6ssmV8JSVAkpw5jsPYVh8L8WH8QHxRORPA3Y+Gje9NImZkFI4NpgbBxZXmwZUOKDFdan20
+X-Received: by 2002:a5d:64aa:0:b0:236:8dd2:b6ae with SMTP id m10-20020a5d64aa000000b002368dd2b6aemr22657946wrp.420.1667574599831;
+        Fri, 04 Nov 2022 08:09:59 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1667574599; cv=none;
         d=google.com; s=arc-20160816;
-        b=Ieb6cOY5I5f0AxsZVrK9PgIfhAdJHXNs4eKH7duUETVcVt2ED19HWAw8zRCMMk3qCa
-         01wPfFIaYIjMB+TVEMlMQ35lFjNQGjxCIFjgj6b9sM+krUeUrnLtBKoy0nwDyLbLYzPs
-         qkpfC1mWzMarI993jC3TrSW73Z2aPETvQdrVSZeEC0+T3q659dnac0NnWZ6co1bPzb7Y
-         KlIlhvQ1lF09srHOiR9oRsGf1IcpYjf/GyDA/T463eyoCqYjO1f0QroeKTj4qvYTHj2t
-         38hkDL1m7JfcrjQzE6+7m+ymS1xyTPihXHphQtcVtIQwFwZKCC7DN9vD1mCaZuoJmega
-         qfbQ==
+        b=F9LzoeXrUZk+hyDb/OWtAygRA/upX4C9x9X1S4b3bbVtrgHLVj33LsNnXgQ7imYZ+6
+         rYSyz/EaLF72G6/kquPrPdVpHd2bAr1eAzwOziQOJk8wSG1RGgdHYzY4qbfqB2h8YREA
+         QTnIjyav3eX+i3ETKLXpuwq0wBC0qaYucS915NhH7UfwIyUrYLV4lJ6B44qyJYvs7qFI
+         P50ANMR7DX+Sc4xx1TZP/5Uql+52jIiVopxT4cXSL1iJoFO5dSeG1sT140BBmMtwSUc6
+         Ag729uOX316kDf1qB4+C6nNfXlYMRPXZXr9pVz8+fGqDXRlFNK3Y2gvDJ6t0JHV+DqTp
+         ZzPg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=errors-to:sender:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=6eQnMFRq+0jX07f3sVeSEhNp3L0U8ozJCTQw23crN94=;
-        b=CPsMQdvDWl54Ub1al1fBZiHOILWyWyXgYSfdaqOHY+WZQh1J6dxvm6OUc2mttzfP7A
-         z7TMXlHmGnGHj5rTDCGmY8GdqG3nDl9gkiDq9wPidRag2G67mQqCtWBoMTiRC8E/HQOi
-         xQRJT9dJO957lcfHCGgU+wZututaaDkC3jlu04slLuL4kLUdHyfZc9vyYC2My4iCjax+
-         m6tQQPfLpTc17P1HJIvVkEkG9hdhlEBKWXjn5PwLA6TfUL5KPeKd7eRT0QwAZGs/AQNJ
-         4IWA8/HAqzzpld5x25ux3AyeY0fiP8we3aEs87NluGlfbV2HNvYZoSBAplEAeZUUHPPs
-         IY1Q==
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id;
+        bh=JVdkKT2O6z1dB4TVjN5mhCjhJ6+xDGtq0druC21I9GA=;
+        b=Iuo5RiINyaf0Bto2F84/FCv7iPCP+JHCimgyHO8bpKCtgt/g4A6DI5lSdtqUu66c3G
+         kbUY7kc69w0P/WpgdEqE1IumKFomXbu+IdW/DqNjkrQWpvXM/5ok79R09gyz16Nb8iiJ
+         LyKuJ9bthRh/e8aBmTORUoieFeiXFRrgEM62LB39vUDRlrizjThz/Ty91CMl01wVidpg
+         tf6Kt7TBZmYCi0WPjYg8B5MLRxn0vcaRHNUtLBnvKY4kcqupT875mRmiC9446FTLBy6Y
+         YQw8Vxx/FvJzsJC4rY5A0OD/qlLyawvfstg+gUviXs25Bm5dp+muHc3tDLkhmzM5p9Ol
+         ulzg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=G6FFCQvC;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id m1-20020a05620a290100b006fa2dde9e10si2683008qkp.38.2022.11.04.03.59.16
+       spf=pass (google.com: domain of clg@kaod.org designates 46.105.48.137 as permitted sender) smtp.mailfrom=clg@kaod.org
+Return-Path: <clg@kaod.org>
+Received: from 9.mo548.mail-out.ovh.net (9.mo548.mail-out.ovh.net. [46.105.48.137])
+        by mx.google.com with ESMTPS id h2-20020adff182000000b00236d8c41efasi3012321wro.709.2022.11.04.08.09.59
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 04 Nov 2022 03:59:16 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 04 Nov 2022 08:09:59 -0700 (PDT)
+Received-SPF: pass (google.com: domain of clg@kaod.org designates 46.105.48.137 as permitted sender) client-ip=46.105.48.137;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=G6FFCQvC;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1oquPP-00017n-SU; Fri, 04 Nov 2022 06:58:47 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1oquPI-00016c-D5
- for qemu-devel@nongnu.org; Fri, 04 Nov 2022 06:58:40 -0400
-Received: from mail-pl1-x635.google.com ([2607:f8b0:4864:20::635])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1oquPG-0001pf-TF
- for qemu-devel@nongnu.org; Fri, 04 Nov 2022 06:58:40 -0400
-Received: by mail-pl1-x635.google.com with SMTP id y4so4548167plb.2
- for <qemu-devel@nongnu.org>; Fri, 04 Nov 2022 03:58:38 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=6eQnMFRq+0jX07f3sVeSEhNp3L0U8ozJCTQw23crN94=;
- b=G6FFCQvC97B5IeLhL4riPrxFt/GnDHcK/6mzFnc0i69l+JLNlBX8x6PwBQYyQm6KCv
- AWYJyMZ2i2KvsXvZV9/2H/Z50FqV9QTiNM+vnAvCLKwEMtJfX14yo2bU0xeAb2xHKj+C
- T3QPhYbojODYSu42bH3ZRy5MN5ehOtTjnHZI33WoFsQALvtWiIOXJmkY823G7Y/QJjPR
- OYnR4CjtXMinhIb7Iy8ypavZ9N1s/uD2TlINSwdCrUz0qc6Mmp+ycQLuHAWCULJhaZO4
- YCXPPBR2gzxGMPCq150xvvOOz+9vUDoElJSVq0F1k3CYm3aZ/FAEh/1hoIXhdXPOK6rh
- pQ6Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=6eQnMFRq+0jX07f3sVeSEhNp3L0U8ozJCTQw23crN94=;
- b=1IhjHuOfq7fgTPQfoCt7rkSNa2VQ02jazLEmgEDuZnbxilDvLeqeFRSr0p292245AH
- ycaI8Hm1U/MqoTSIxb4zxMELA1kaNdiT8lkzB7tlEIYuQPitjI9j7ZNIkR6dBpLHIRl8
- MWnLIBkgtYImKzDZGrA9VTAzsxAbNCjKE5+hSCM7IXYaV+92hJBf9v9D15bM41/YM56X
- HTSizO2wG7uG83s88eo1+/x7nRhNNcswzHg0EdgWsBAXExaMJKqPqDVbkzCHCPxYcvzn
- ajdgE6Bp7zvBzhxKv7KDFoW7qgTUoO3Q1d+4DTwVzVfrXhtnpz8SjERt0n+/aCMtPvM+
- gBng==
-X-Gm-Message-State: ACrzQf3Z7CdAOqtXNjcc1VOWEJzMhXJOX+uk87JhYYL5enb4ObMLaYhs
- odCaeFaH4qxSrd5dPBlyeyhSai+qXF/K6L5z/1BRDw==
-X-Received: by 2002:a17:903:4d7:b0:178:8564:f754 with SMTP id
- jm23-20020a17090304d700b001788564f754mr35036416plb.60.1667559517488; Fri, 04
- Nov 2022 03:58:37 -0700 (PDT)
+       spf=pass (google.com: domain of clg@kaod.org designates 46.105.48.137 as permitted sender) smtp.mailfrom=clg@kaod.org
+Received: from mxplan5.mail.ovh.net (unknown [10.108.1.10])
+	by mo548.mail-out.ovh.net (Postfix) with ESMTPS id 41EB422445;
+	Fri,  4 Nov 2022 15:09:58 +0000 (UTC)
+Received: from kaod.org (37.59.142.99) by DAG4EX2.mxp5.local (172.16.2.32)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.12; Fri, 4 Nov
+ 2022 16:09:57 +0100
+Authentication-Results: garm.ovh; auth=pass (GARM-99G0033bd5bdf7-106c-4f1c-ab7c-c34b264805db,
+                    945B05C848FD95514DBD7F319F49D9B690A786E9) smtp.auth=clg@kaod.org
+X-OVh-ClientIp: 82.64.250.170
+Message-ID: <846a83c7-45b5-2058-110c-3d8e9c1fa4b5@kaod.org>
+Date: Fri, 4 Nov 2022 16:09:56 +0100
 MIME-Version: 1.0
-References: <20221102054706.1015830-1-richard.henderson@linaro.org>
- <CAFEAcA_meGSRv=Fa1D-F=a3VF=TnHHORGAZoi5aPOkVAbGPm4w@mail.gmail.com>
- <2d9a7f5e-0ec0-89da-53f0-b5624f540ae8@linaro.org>
-In-Reply-To: <2d9a7f5e-0ec0-89da-53f0-b5624f540ae8@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 4 Nov 2022 10:58:26 +0000
-Message-ID: <CAFEAcA-XqHm+bFk4QSzG=QJCwUncGmD43qxK0FBSXZbVaPY4pQ@mail.gmail.com>
-Subject: Re: [PATCH] target/arm: Two fixes for secure ptw
-To: Richard Henderson <richard.henderson@linaro.org>
-Cc: qemu-devel@nongnu.org, philmd@linaro.org, qemu-arm@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::635;
- envelope-from=peter.maydell@linaro.org; helo=mail-pl1-x635.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Sender: "Qemu-devel" <qemu-devel-bounces@nongnu.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: ZDvQ2xEVR74m
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.4.0
+Subject: Re: [PATCH] tests/avocado/machine_aspeed.py: Reduce noise on the
+ console for SDK tests
+Content-Language: en-US
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>,
+	<qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>
+CC: Peter Maydell <peter.maydell@linaro.org>, Joel Stanley <joel@jms.id.au>,
+	Andrew Jeffery <andrew@aj.id.au>, =?UTF-8?Q?Alex_Benn=c3=a9e?=
+	<alex.bennee@linaro.org>
+References: <20221104075347.370503-1-clg@kaod.org>
+ <296866ca-a6d9-796b-46ca-797937d44f12@linaro.org>
+From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
+In-Reply-To: <296866ca-a6d9-796b-46ca-797937d44f12@linaro.org>
+Content-Type: text/plain; charset="UTF-8"; format=flowed
+Content-Transfer-Encoding: 8bit
+X-Originating-IP: [37.59.142.99]
+X-ClientProxiedBy: DAG5EX2.mxp5.local (172.16.2.42) To DAG4EX2.mxp5.local
+ (172.16.2.32)
+X-Ovh-Tracer-GUID: c96c3fc5-91c4-42b6-96ac-9ae87c76811d
+X-Ovh-Tracer-Id: 3118179792421489513
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvgedrvddugdejtdcutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemucehtddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpefkffggfgfuvfevfhfhjggtgfhisehtkeertddtfeejnecuhfhrohhmpeevrogurhhitgcunfgvucfiohgrthgvrhcuoegtlhhgsehkrghougdrohhrgheqnecuggftrfgrthhtvghrnhepffdufeeliedujeeffffhjeffiefghffhhfdvkeeijeehledvueffhfejtdehgeegnecukfhppeduvdejrddtrddtrddupdefjedrheelrddugedvrdelleenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepihhnvghtpeduvdejrddtrddtrddupdhmrghilhhfrhhomhepoegtlhhgsehkrghougdrohhrgheqpdhnsggprhgtphhtthhopedupdhrtghpthhtohepphhhihhlmhgusehlihhnrghrohdrohhrghdpqhgvmhhuqdgrrhhmsehnohhnghhnuhdrohhrghdpqhgvmhhuqdguvghvvghlsehnohhnghhnuhdrohhrghdpphgvthgvrhdrmhgrhiguvghllheslhhinhgrrhhordhorhhgpdhjohgvlhesjhhmshdrihgurdgruhdprghnughrvgifsegrjhdrihgurdgruhdprghlvgigrdgsvghnnhgvvgeslhhinhgrrhhordhorhhgpdfovfetjfhoshhtpehmohehgeekpdhmohguvgepshhmthhpohhuth
+X-TUID: ULHN2fNc+eKl
 
-On Thu, 3 Nov 2022 at 20:30, Richard Henderson
-<richard.henderson@linaro.org> wrote:
->
-> On 11/4/22 00:19, Peter Maydell wrote:
-> >> @@ -2671,6 +2671,13 @@ static bool get_phys_addr_with_struct(CPUARMState *env, S1Translate *ptw,
-> >>       bool is_secure = ptw->in_secure;
-> >>       ARMMMUIdx s1_mmu_idx;
-> >>
-> >> +    /*
-> >> +     * The page table entries may downgrade secure to non-secure, but
-> >> +     * cannot upgrade an non-secure translation regime's attributes
-> >> +     * to secure.
-> >> +     */
-> >> +    result->f.attrs.secure = is_secure;
-> >> +
-> >>       switch (mmu_idx) {
-> >>       case ARMMMUIdx_Phys_S:
-> >>       case ARMMMUIdx_Phys_NS:
-> >> @@ -2712,12 +2719,6 @@ static bool get_phys_addr_with_struct(CPUARMState *env, S1Translate *ptw,
-> >>           break;
-> >>       }
-> >>
-> >> -    /*
-> >> -     * The page table entries may downgrade secure to non-secure, but
-> >> -     * cannot upgrade an non-secure translation regime's attributes
-> >> -     * to secure.
-> >> -     */
-> >> -    result->f.attrs.secure = is_secure;
-> >>       result->f.attrs.user = regime_is_user(env, mmu_idx);
-> >
-> > Do we also need to move this setting of attrs.user ?
-> > get_phys_addr_disabled() doesn't set that either.
->
-> I don't think so.  The only cases which don't pass through the setting of attrs.user are
-> the two Phys mmu_idx.  Which was by design per the comment up there about artificially
-> deciding which EL regime they belong to.
+On 11/4/22 10:41, Philippe Mathieu-Daudé wrote:
+> On 4/11/22 08:53, Cédric Le Goater wrote:
+>> The Aspeed SDK images are based on OpenBMC which starts a lot of
+>> services. The output noise on the console can break from time to time
+>> the test waiting for the logging prompt.
+> 
+> IIUC OpenBMC uses systemd, so you can mask pointless services from
+> the kernel cmdline. See for example test_arm_quanta_gsj():
+> 
+>   # Disable drivers and services that stall for a long time during boot,
+>   # to avoid running past the 90-second timeout. These may be removed
+>   # as the corresponding device support is added.
+>   kernel_command_line = self.KERNEL_COMMON_COMMAND_LINE + (
+>           'console=${console} '
+>           'mem=${mem} '
+>           'initcall_blacklist=npcm_i2c_bus_driver_init '
+>           'systemd.mask=systemd-random-seed.service '
+>           'systemd.mask=dropbearkey.service '
+>   )
 
-OK. Do we ever do anything with the attrs for a phys tlb lookup
-except use them internally for details of the stage 2 tlb walk ?
-I guess they get used for the memory transaction to do the walk.
-That matches the old code that just had a local MemTxAttrs in
-arm_ldq_ptw() to do the walk which therefore implicitly got
-user == false.
+Good idea. I will respin with some extra disablement to reduce the
+number of services, specially the ones requiring devices without
+a backing model in QEMU.
+  
+> 
+>> Change the U-Boot bootargs variable to add "quiet" to the kernel
+>> command line and reduce the output volume. This also drops the test on
+>> the CPU id which was nice to have but not essential.
+>>
+>> Signed-off-by: Cédric Le Goater <clg@kaod.org>
+>> ---
+>>   tests/avocado/machine_aspeed.py | 17 ++++++++++++-----
+>>   1 file changed, 12 insertions(+), 5 deletions(-)
+>>
+>> diff --git a/tests/avocado/machine_aspeed.py b/tests/avocado/machine_aspeed.py
+>> index fba6527026..1fc385e1c8 100644
+>> --- a/tests/avocado/machine_aspeed.py
+>> +++ b/tests/avocado/machine_aspeed.py
+>> @@ -12,6 +12,7 @@
+>>   from avocado_qemu import wait_for_console_pattern
+>>   from avocado_qemu import exec_command
+>>   from avocado_qemu import exec_command_and_wait_for_pattern
+>> +from avocado_qemu import interrupt_interactive_console_until_pattern
+>>   from avocado.utils import archive
+>>   from avocado import skipIf
+>> @@ -182,6 +183,8 @@ def test_arm_ast2600_evb_buildroot(self):
+>>   class AST2x00MachineSDK(QemuSystemTest):
+>> +    EXTRA_BOOTARGS = ' quiet'
+> 
+> Maybe less bug-prone to handle the spaces around EXTRA_BOOTARGS where
+> the variable is used.
 
--- PMM
+sure.
+
+Thanks,
+
+C.
+
+
+> 
+>> -    def do_test_arm_aspeed_sdk_start(self, image, cpu_id):
+>> +    def do_test_arm_aspeed_sdk_start(self, image):
+>>           self.require_netdev('user')
+>>           self.vm.set_console()
+>>           self.vm.add_args('-drive', 'file=' + image + ',if=mtd,format=raw',
+>> @@ -202,9 +205,13 @@ def do_test_arm_aspeed_sdk_start(self, image, cpu_id):
+>>           self.vm.launch()
+>>           self.wait_for_console_pattern('U-Boot 2019.04')
+>> -        self.wait_for_console_pattern('## Loading kernel from FIT Image')
+>> +        interrupt_interactive_console_until_pattern(
+>> +            self, 'Hit any key to stop autoboot:', 'ast#')
+>> +        exec_command_and_wait_for_pattern(
+>> +            self, 'setenv bootargs ${bootargs}' + self.EXTRA_BOOTARGS, 'ast#')
+>> +        exec_command_and_wait_for_pattern(
+>> +            self, 'boot', '## Loading kernel from FIT Image')
+>>           self.wait_for_console_pattern('Starting kernel ...')
+>> -        self.wait_for_console_pattern('Booting Linux on physical CPU ' + cpu_id)
+> 

@@ -1,115 +1,120 @@
-Received: by 2002:a17:906:80c3:b0:7ae:d8f:8937 with SMTP id a3csp928141ejx;
-        Fri, 4 Nov 2022 12:54:52 -0700 (PDT)
-X-Google-Smtp-Source: AMsMyM5D2h1Gdga6cmfQ2F70Gzo2CHr/yEjK/NX5QSMFtyZmvh5rzlwxQe6pRKP/qaqSM8tXpHHz
-X-Received: by 2002:a05:6214:2501:b0:4bb:ac4c:466 with SMTP id gf1-20020a056214250100b004bbac4c0466mr34606287qvb.93.1667591692514;
-        Fri, 04 Nov 2022 12:54:52 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1667591692; cv=none;
+Received: by 2002:a17:906:80c3:b0:7ae:d8f:8937 with SMTP id a3csp1018640ejx;
+        Fri, 4 Nov 2022 15:11:54 -0700 (PDT)
+X-Google-Smtp-Source: AMsMyM6a08v5rqm7r3J96dNfVrdsB0Fq3JGuD6rhn1n/qGnfZaru95/85Y7uAbFJDDZfP1CffDuQ
+X-Received: by 2002:a05:6214:3017:b0:4b4:61c2:497f with SMTP id ke23-20020a056214301700b004b461c2497fmr373320qvb.126.1667599913793;
+        Fri, 04 Nov 2022 15:11:53 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1667599913; cv=none;
         d=google.com; s=arc-20160816;
-        b=0SlOFnxT1xDZK5s8Qc1bF0n0hINLoYSqxsmjzC6IEaSi8QLZAb2d1YJ45mM3ht1OMC
-         tUIj5v7U33a2BxcPm8TsUdInwkeLjx+GXQmn05yMWoMrfSo0/7sX4heFK6JQJr5xB7X9
-         e+jHKWWCPAtocz8WKEDEQNq7jRiHQ/yvMr2TxA5wLiybHYPlNtAxLzmKqW2DR5Sley0n
-         CPMKrpU9c4GY5dj8CQnHoKbZEbl6vdF+Cr2PdKu5tButuVpSu0PhfXdauD4P+gXXNGmT
-         XxV3ZTPQprF0eo7/dKnBD920ITRW09yZ4GWAgbAAoIbLNXyL+ajpszxw2jcr5QVJonFS
-         3SJg==
+        b=CWvhzb4p86CZs1OA67KPtsx6XDIN7iP/Vf+/camDagAPQDYZvWRgsz73G9JBqNzkx4
+         cm4216eMO54iUl+5MYNhm553V39pAJCIfcI6bg9A7QWpJ2+8FqKv6yrnCDyizLyiKMv1
+         C7z2Q7eRkfPaT+vJug9XT4NiNPNoEC5JKOKCn83aFhhjs9U3q2b7ojfJ33wx6xvtP7Uk
+         jfbVHJWHaxQEblc1nHRsRQ+TeDUuwJ5/3BqtTtH6DXM8Ma7spyh63orqSsCaKXARZcYs
+         UkYKSlgx+KfNl3HXR2FgpXp/RDBmHcAAaGidDyQzQ4m9u+Wk3TCN02g0aA+q9n8uiw6A
+         GcAQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=errors-to:sender:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=+LhvshoGo+0uNsOuHxgdSok/D64fUCM0kZHJtoCIL0s=;
-        b=u67oviKaQozN/aHPpkHfxm8KUXV45g8M5hZG7uLv6IYw5itw9d1r4110SOqjyZpZMn
-         ihLZryOOuJ4mZuw2NQ3D8UyUBD2m4ZGHSKhRd7/UMOdJ+eWaET6p5lp4r0xCZVj3KuMW
-         rxIb0T1e6gOZtBwWzeOp59BIHMQRrwzgBUJZDAR/N7+6gbzUsu8ylWeN9C6Ic5TsSGkH
-         BLdrcp4F1GNTI0tBehvKfwCD9l4Lp234Qgs/Y/u2ff8Xxz/vzjSeTrFKR8K3SRMu5cew
-         cXgYmkPvuckCuq88QxsT5JMmEa+Nlk4a1ugMOv2YP7NBAgx3I5bzlPDl0+GErbLDq22K
-         LPjg==
+         :in-reply-to:from:references:cc:to:content-language:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=Y7QVdHhGWMg06XVCBwuPr4aU6JANhS+CWd+TwQLCYYM=;
+        b=TO0COrm7f1Ka254VgZgYPeSwgdcU0XRYdoecAXrRfTlh19Pp/k5Zw0FhXNnckCi/jH
+         G8GuPgXlYJtuOKCJDK1jrT9vblIFGHb9z1q6VmZn8m7kN+CPvePEaYZJoQltQywx07a3
+         FJXxg+0AFJ9PLBAPqWJICebLJ17yRdrPYDn/MqsTvRydb2KlTiohvxLM3ePnqgQU1kj+
+         2JyRf+hSIdpkKWRwTpq1Q/DNExp4rpqU89mfjT3IHh/ObSiJBPXfG6Bjw6ER4/8U+S8O
+         ytua4FCwdQKQXFf+8ZXe6xHf53bxRV1DsH6K8l5ntnBJhbkqtiFCXzLL97ChAs8G97P6
+         NRtQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=kh5P9+GB;
+       dkim=pass header.i=@linaro.org header.s=google header.b="r/Fj3DhL";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id bl7-20020a05622a244700b003a4eb27e596si110085qtb.487.2022.11.04.12.54.52
+        by mx.google.com with ESMTPS id l17-20020a056214029100b004bbeefb2a0bsi129611qvv.186.2022.11.04.15.11.53
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 04 Nov 2022 12:54:52 -0700 (PDT)
+        Fri, 04 Nov 2022 15:11:53 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=kh5P9+GB;
+       dkim=pass header.i=@linaro.org header.s=google header.b="r/Fj3DhL";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1or2lA-0005Nf-9Z; Fri, 04 Nov 2022 15:53:48 -0400
+	id 1or4uG-0006T7-DY; Fri, 04 Nov 2022 18:11:20 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <francesco.cagnin@gmail.com>)
- id 1or1dv-00057U-Ph; Fri, 04 Nov 2022 14:42:16 -0400
-Received: from mail-wr1-x42a.google.com ([2a00:1450:4864:20::42a])
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1or4pQ-0002pi-V5
+ for qemu-arm@nongnu.org; Fri, 04 Nov 2022 18:06:21 -0400
+Received: from mail-oa1-x31.google.com ([2001:4860:4864:20::31])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <francesco.cagnin@gmail.com>)
- id 1or1dt-0004a8-5I; Fri, 04 Nov 2022 14:42:15 -0400
-Received: by mail-wr1-x42a.google.com with SMTP id y16so8204087wrt.12;
- Fri, 04 Nov 2022 11:42:12 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=+LhvshoGo+0uNsOuHxgdSok/D64fUCM0kZHJtoCIL0s=;
- b=kh5P9+GB+NXGI7SVMDhhfxwEEWM54e+lmrP2SErEoMKZ/UdP+/NFXaYpceMf7igYSI
- 8CHF5zErDnqnxgLZzXSa0Fg8OevMY3M7K6j6MTo9kY5A8OAx7i5qdkO6OspX9qBLFkze
- XTNQp8ZS6QbVgaSmn0hLmASLM408GQYC+F/+epzoMOxDWrA0vnf0GYDFzYWYTH2JZckW
- HMQdS3XnWWZTzzihcB/IZztAusmUv4Wan4jiX+1B9HUj3xNNBNTYuD1Ro+e7Wtl6jgRC
- Ns3AI5NYV0UfUgv7KVLfm1JSBcBMEk3yFWHdGDkxkMWynkxIl2QBgPa4sBFPlXzGV4bk
- xW9Q==
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1or4pP-0006R4-92
+ for qemu-arm@nongnu.org; Fri, 04 Nov 2022 18:06:20 -0400
+Received: by mail-oa1-x31.google.com with SMTP id
+ 586e51a60fabf-13c569e5ff5so6997741fac.6
+ for <qemu-arm@nongnu.org>; Fri, 04 Nov 2022 15:06:17 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=Y7QVdHhGWMg06XVCBwuPr4aU6JANhS+CWd+TwQLCYYM=;
+ b=r/Fj3DhLMdaD7yvXjQDIjoqxe46/gcZNj3bqpV25yoj3WDRkaCusDEkRja8rI66gpD
+ svubwLrLDo+ZC2fWhyIRg4fZOOs+T1E0FPFTxIWdW8uIrLJhZVCPMpLxGH+SuGq6muSh
+ UjLiSGodzs8hgEhYW0srqzwsjoY87QzgFNkxxZaWBn5AG9MQXVQkDeO3+SgnZA900nO1
+ /MJoeBSMxvQx/87y2fXOjpFfY2feQ0jvizcdvob95sOfdZKCClCpkpnRnYyfE+uw7+nv
+ 15kIUcAQC7bsCuJZBAWrBFweZh4OVnOMazBcxjah6Hc07sqCPYrpS3+2LcCnYi2Rim/q
+ 8YEw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=+LhvshoGo+0uNsOuHxgdSok/D64fUCM0kZHJtoCIL0s=;
- b=yIjdGNk+K1jRgkFsNA70NUJSqE2FYzKZFLlkWwc05LsvTvT94P84DguomlPKD68EQJ
- 4M/32NV0lj+mvTwiq0lBtN9litKUrxhizI45A/XsqYZlrOGRXl9QDkSa447fgqe8NvN8
- gOlYEyZ/JE6ZRbbIPum73PfnbsDKShdGF3lgvLWRtmqFF7GWJBR7DWOmHgke/Ntt6iLC
- ZedrX+oc9vaHSUPM5O+vbqsrLpBA0edFqB/KLaHCPCRkI2tuoG2fVfU5pchwqeryJXtG
- pxiVo8xkOEi06DVIM/CbEa+e/8SQPkSY4wzTFMVVthaa4bEscNQzR/g+MyLiEruG5u3I
- MV6A==
-X-Gm-Message-State: ACrzQf1JPj/n308A96alhcVjlUGs2bRsxr/LeBWpFBE4T1p5BOUOOjim
- gqOy/8XGFvVjpu1nruuUGtA2cxu9OUYb9A==
-X-Received: by 2002:adf:ab1d:0:b0:236:6301:c77 with SMTP id
- q29-20020adfab1d000000b0023663010c77mr23023457wrc.119.1667587330343; 
- Fri, 04 Nov 2022 11:42:10 -0700 (PDT)
-Received: from localhost.localdomain (216.87.95.79.rev.sfr.net. [79.95.87.216])
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=Y7QVdHhGWMg06XVCBwuPr4aU6JANhS+CWd+TwQLCYYM=;
+ b=crlDv8fbyzZDhEYT6NPBtkLr7OCD7kw8Ef7erbf8AypXJz2ydmp6Q/+TR1HrPwGSTg
+ 0RVGLQAmruCWekme9M2jB+En13ytq3s1m8gSXHkLBNER0WckRvtW8OFAXZL5gxzhlpSh
+ g45WWWt3XIA24Y+nxOUlc0Tb4qZguW1VgA+MPx3wAnG1lyFiTyqEDct7EpnRNT7P6Nh5
+ Pe/qhcecWGrmXh1n2TVY/80SjnDl2NS/Ase5iUwtc2Ug6GOIfA/Pwz7Mvd7f7ULILwG2
+ 2eO1bd1yYIuROmc+QWS5ymN9Qn8VkOBv33tEV1c9o8pA44GCppb68wMRljphruJz+Dsm
+ R7Gg==
+X-Gm-Message-State: ACrzQf3ER/jq9tcElB6WbeMc34s7USeudGKCuzF6OUon2RIxX5kUGYrc
+ ufqEioLbUrszHtp/8dxpdPR3NA==
+X-Received: by 2002:a05:6870:c34e:b0:13c:19bc:6e41 with SMTP id
+ e14-20020a056870c34e00b0013c19bc6e41mr33069676oak.115.1667599576945; 
+ Fri, 04 Nov 2022 15:06:16 -0700 (PDT)
+Received: from [192.168.229.227] ([172.58.176.28])
  by smtp.gmail.com with ESMTPSA id
- q11-20020a05600000cb00b00236e9755c02sm22217wrx.111.2022.11.04.11.42.09
- (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Fri, 04 Nov 2022 11:42:10 -0700 (PDT)
-From: francesco.cagnin@gmail.com
-X-Google-Original-From: fcagnin@quarkslab.com
-To: qemu-devel@nongnu.org
-Cc: dirty@apple.com, r.bolshakov@yadro.com, peter.maydell@linaro.org,
- qemu-arm@nongnu.org, agraf@csgraf.de, pbonzini@redhat.com,
- Francesco Cagnin <fcagnin@quarkslab.com>
-Subject: [PATCH 3/3] hvf: handle writes of MDSCR_EL1 and DBG*_EL1
-Date: Fri,  4 Nov 2022 19:41:01 +0100
-Message-Id: <20221104184101.6923-4-fcagnin@quarkslab.com>
-X-Mailer: git-send-email 2.38.1
-In-Reply-To: <20221104184101.6923-1-fcagnin@quarkslab.com>
-References: <20221104184101.6923-1-fcagnin@quarkslab.com>
+ i5-20020a4aab05000000b0049ded99501bsm118791oon.40.2022.11.04.15.06.12
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 04 Nov 2022 15:06:16 -0700 (PDT)
+Message-ID: <4075c55b-3b1b-9fb6-c4fb-000c2d0a4591@linaro.org>
+Date: Sat, 5 Nov 2022 09:06:05 +1100
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42a;
- envelope-from=francesco.cagnin@gmail.com; helo=mail-wr1-x42a.google.com
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.2.2
+Subject: Re: [PATCH] target/arm: Two fixes for secure ptw
+Content-Language: en-US
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-devel@nongnu.org, philmd@linaro.org, qemu-arm@nongnu.org
+References: <20221102054706.1015830-1-richard.henderson@linaro.org>
+ <CAFEAcA_meGSRv=Fa1D-F=a3VF=TnHHORGAZoi5aPOkVAbGPm4w@mail.gmail.com>
+ <2d9a7f5e-0ec0-89da-53f0-b5624f540ae8@linaro.org>
+ <CAFEAcA-XqHm+bFk4QSzG=QJCwUncGmD43qxK0FBSXZbVaPY4pQ@mail.gmail.com>
+From: Richard Henderson <richard.henderson@linaro.org>
+In-Reply-To: <CAFEAcA-XqHm+bFk4QSzG=QJCwUncGmD43qxK0FBSXZbVaPY4pQ@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2001:4860:4864:20::31;
+ envelope-from=richard.henderson@linaro.org; helo=mail-oa1-x31.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- UPPERCASE_50_75=0.008 autolearn=no autolearn_force=no
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Fri, 04 Nov 2022 15:53:39 -0400
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -123,178 +128,20 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Sender: "Qemu-arm" <qemu-arm-bounces@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 09Dulvt+KPPt
+X-TUID: bBsasM2oK2V7
 
-From: Francesco Cagnin <fcagnin@quarkslab.com>
+On 11/4/22 21:58, Peter Maydell wrote:
+> OK. Do we ever do anything with the attrs for a phys tlb lookup
+> except use them internally for details of the stage 2 tlb walk ?
+> I guess they get used for the memory transaction to do the walk.
+> That matches the old code that just had a local MemTxAttrs in
+> arm_ldq_ptw() to do the walk which therefore implicitly got
+> user == false.
 
-This proved to be required when debugging the Linux kernel's initial
-code, as the Hypervisor framework was triggering 'EC_SYSTEMREGISTERTRAP'
-VM exits after enabling trap exceptions with
-'hv_vcpu_set_trap_debug_exceptions()'.
+Exactly.
 
-Signed-off-by: Francesco Cagnin <fcagnin@quarkslab.com>
----
- target/arm/hvf/hvf.c | 140 +++++++++++++++++++++++++++++++++++++++++++
- 1 file changed, 140 insertions(+)
+I can't think of any reason .user would be apply outside of the stage1 lookup, which is 
+what records the setting for any future mmio.
 
-diff --git a/target/arm/hvf/hvf.c b/target/arm/hvf/hvf.c
-index 211b296500..dbc3605f6d 100644
---- a/target/arm/hvf/hvf.c
-+++ b/target/arm/hvf/hvf.c
-@@ -97,6 +97,71 @@ static void hvf_arm_init_debug(CPUState *cpu)
- #define SYSREG_PMCEID1_EL0    SYSREG(3, 3, 9, 12, 7)
- #define SYSREG_PMCCNTR_EL0    SYSREG(3, 3, 9, 13, 0)
- #define SYSREG_PMCCFILTR_EL0  SYSREG(3, 3, 14, 15, 7)
-+#define SYSREG_MDSCR_EL1      SYSREG(2, 0, 0, 2, 2)
-+#define SYSREG_DBGBVR0_EL1    SYSREG(2, 0, 0, 0, 4)
-+#define SYSREG_DBGBCR0_EL1    SYSREG(2, 0, 0, 0, 5)
-+#define SYSREG_DBGWVR0_EL1    SYSREG(2, 0, 0, 0, 6)
-+#define SYSREG_DBGWCR0_EL1    SYSREG(2, 0, 0, 0, 7)
-+#define SYSREG_DBGBVR1_EL1    SYSREG(2, 0, 0, 1, 4)
-+#define SYSREG_DBGBCR1_EL1    SYSREG(2, 0, 0, 1, 5)
-+#define SYSREG_DBGWVR1_EL1    SYSREG(2, 0, 0, 1, 6)
-+#define SYSREG_DBGWCR1_EL1    SYSREG(2, 0, 0, 1, 7)
-+#define SYSREG_DBGBVR2_EL1    SYSREG(2, 0, 0, 2, 4)
-+#define SYSREG_DBGBCR2_EL1    SYSREG(2, 0, 0, 2, 5)
-+#define SYSREG_DBGWVR2_EL1    SYSREG(2, 0, 0, 2, 6)
-+#define SYSREG_DBGWCR2_EL1    SYSREG(2, 0, 0, 2, 7)
-+#define SYSREG_DBGBVR3_EL1    SYSREG(2, 0, 0, 3, 4)
-+#define SYSREG_DBGBCR3_EL1    SYSREG(2, 0, 0, 3, 5)
-+#define SYSREG_DBGWVR3_EL1    SYSREG(2, 0, 0, 3, 6)
-+#define SYSREG_DBGWCR3_EL1    SYSREG(2, 0, 0, 3, 7)
-+#define SYSREG_DBGBVR4_EL1    SYSREG(2, 0, 0, 4, 4)
-+#define SYSREG_DBGBCR4_EL1    SYSREG(2, 0, 0, 4, 5)
-+#define SYSREG_DBGWVR4_EL1    SYSREG(2, 0, 0, 4, 6)
-+#define SYSREG_DBGWCR4_EL1    SYSREG(2, 0, 0, 4, 7)
-+#define SYSREG_DBGBVR5_EL1    SYSREG(2, 0, 0, 5, 4)
-+#define SYSREG_DBGBCR5_EL1    SYSREG(2, 0, 0, 5, 5)
-+#define SYSREG_DBGWVR5_EL1    SYSREG(2, 0, 0, 5, 6)
-+#define SYSREG_DBGWCR5_EL1    SYSREG(2, 0, 0, 5, 7)
-+#define SYSREG_DBGBVR6_EL1    SYSREG(2, 0, 0, 6, 4)
-+#define SYSREG_DBGBCR6_EL1    SYSREG(2, 0, 0, 6, 5)
-+#define SYSREG_DBGWVR6_EL1    SYSREG(2, 0, 0, 6, 6)
-+#define SYSREG_DBGWCR6_EL1    SYSREG(2, 0, 0, 6, 7)
-+#define SYSREG_DBGBVR7_EL1    SYSREG(2, 0, 0, 7, 4)
-+#define SYSREG_DBGBCR7_EL1    SYSREG(2, 0, 0, 7, 5)
-+#define SYSREG_DBGWVR7_EL1    SYSREG(2, 0, 0, 7, 6)
-+#define SYSREG_DBGWCR7_EL1    SYSREG(2, 0, 0, 7, 7)
-+#define SYSREG_DBGBVR8_EL1    SYSREG(2, 0, 0, 8, 4)
-+#define SYSREG_DBGBCR8_EL1    SYSREG(2, 0, 0, 8, 5)
-+#define SYSREG_DBGWVR8_EL1    SYSREG(2, 0, 0, 8, 6)
-+#define SYSREG_DBGWCR8_EL1    SYSREG(2, 0, 0, 8, 7)
-+#define SYSREG_DBGBVR9_EL1    SYSREG(2, 0, 0, 9, 4)
-+#define SYSREG_DBGBCR9_EL1    SYSREG(2, 0, 0, 9, 5)
-+#define SYSREG_DBGWVR9_EL1    SYSREG(2, 0, 0, 9, 6)
-+#define SYSREG_DBGWCR9_EL1    SYSREG(2, 0, 0, 9, 7)
-+#define SYSREG_DBGBVR10_EL1   SYSREG(2, 0, 0, 10, 4)
-+#define SYSREG_DBGBCR10_EL1   SYSREG(2, 0, 0, 10, 5)
-+#define SYSREG_DBGWVR10_EL1   SYSREG(2, 0, 0, 10, 6)
-+#define SYSREG_DBGWCR10_EL1   SYSREG(2, 0, 0, 10, 7)
-+#define SYSREG_DBGBVR11_EL1   SYSREG(2, 0, 0, 11, 4)
-+#define SYSREG_DBGBCR11_EL1   SYSREG(2, 0, 0, 11, 5)
-+#define SYSREG_DBGWVR11_EL1   SYSREG(2, 0, 0, 11, 6)
-+#define SYSREG_DBGWCR11_EL1   SYSREG(2, 0, 0, 11, 7)
-+#define SYSREG_DBGBVR12_EL1   SYSREG(2, 0, 0, 12, 4)
-+#define SYSREG_DBGBCR12_EL1   SYSREG(2, 0, 0, 12, 5)
-+#define SYSREG_DBGWVR12_EL1   SYSREG(2, 0, 0, 12, 6)
-+#define SYSREG_DBGWCR12_EL1   SYSREG(2, 0, 0, 12, 7)
-+#define SYSREG_DBGBVR13_EL1   SYSREG(2, 0, 0, 13, 4)
-+#define SYSREG_DBGBCR13_EL1   SYSREG(2, 0, 0, 13, 5)
-+#define SYSREG_DBGWVR13_EL1   SYSREG(2, 0, 0, 13, 6)
-+#define SYSREG_DBGWCR13_EL1   SYSREG(2, 0, 0, 13, 7)
-+#define SYSREG_DBGBVR14_EL1   SYSREG(2, 0, 0, 14, 4)
-+#define SYSREG_DBGBCR14_EL1   SYSREG(2, 0, 0, 14, 5)
-+#define SYSREG_DBGWVR14_EL1   SYSREG(2, 0, 0, 14, 6)
-+#define SYSREG_DBGWCR14_EL1   SYSREG(2, 0, 0, 14, 7)
-+#define SYSREG_DBGBVR15_EL1   SYSREG(2, 0, 0, 15, 4)
-+#define SYSREG_DBGBCR15_EL1   SYSREG(2, 0, 0, 15, 5)
-+#define SYSREG_DBGWVR15_EL1   SYSREG(2, 0, 0, 15, 6)
-+#define SYSREG_DBGWCR15_EL1   SYSREG(2, 0, 0, 15, 7)
- 
- #define WFX_IS_WFE (1 << 0)
- 
-@@ -1041,6 +1106,81 @@ static int hvf_sysreg_write(CPUState *cpu, uint32_t reg, uint64_t val)
-     case SYSREG_OSDLR_EL1:
-         /* Dummy register */
-         break;
-+    case SYSREG_MDSCR_EL1:
-+        env->cp15.mdscr_el1 = val;
-+        break;
-+    case SYSREG_DBGBVR0_EL1:
-+    case SYSREG_DBGBVR1_EL1:
-+    case SYSREG_DBGBVR2_EL1:
-+    case SYSREG_DBGBVR3_EL1:
-+    case SYSREG_DBGBVR4_EL1:
-+    case SYSREG_DBGBVR5_EL1:
-+    case SYSREG_DBGBVR6_EL1:
-+    case SYSREG_DBGBVR7_EL1:
-+    case SYSREG_DBGBVR8_EL1:
-+    case SYSREG_DBGBVR9_EL1:
-+    case SYSREG_DBGBVR10_EL1:
-+    case SYSREG_DBGBVR11_EL1:
-+    case SYSREG_DBGBVR12_EL1:
-+    case SYSREG_DBGBVR13_EL1:
-+    case SYSREG_DBGBVR14_EL1:
-+    case SYSREG_DBGBVR15_EL1:
-+        env->cp15.dbgbvr[SYSREG_CRM(reg)] = val;
-+        break;
-+    case SYSREG_DBGBCR0_EL1:
-+    case SYSREG_DBGBCR1_EL1:
-+    case SYSREG_DBGBCR2_EL1:
-+    case SYSREG_DBGBCR3_EL1:
-+    case SYSREG_DBGBCR4_EL1:
-+    case SYSREG_DBGBCR5_EL1:
-+    case SYSREG_DBGBCR6_EL1:
-+    case SYSREG_DBGBCR7_EL1:
-+    case SYSREG_DBGBCR8_EL1:
-+    case SYSREG_DBGBCR9_EL1:
-+    case SYSREG_DBGBCR10_EL1:
-+    case SYSREG_DBGBCR11_EL1:
-+    case SYSREG_DBGBCR12_EL1:
-+    case SYSREG_DBGBCR13_EL1:
-+    case SYSREG_DBGBCR14_EL1:
-+    case SYSREG_DBGBCR15_EL1:
-+        env->cp15.dbgbcr[SYSREG_CRM(reg)] = val;
-+        break;
-+    case SYSREG_DBGWVR0_EL1:
-+    case SYSREG_DBGWVR1_EL1:
-+    case SYSREG_DBGWVR2_EL1:
-+    case SYSREG_DBGWVR3_EL1:
-+    case SYSREG_DBGWVR4_EL1:
-+    case SYSREG_DBGWVR5_EL1:
-+    case SYSREG_DBGWVR6_EL1:
-+    case SYSREG_DBGWVR7_EL1:
-+    case SYSREG_DBGWVR8_EL1:
-+    case SYSREG_DBGWVR9_EL1:
-+    case SYSREG_DBGWVR10_EL1:
-+    case SYSREG_DBGWVR11_EL1:
-+    case SYSREG_DBGWVR12_EL1:
-+    case SYSREG_DBGWVR13_EL1:
-+    case SYSREG_DBGWVR14_EL1:
-+    case SYSREG_DBGWVR15_EL1:
-+        env->cp15.dbgwvr[SYSREG_CRM(reg)] = val;
-+        break;
-+    case SYSREG_DBGWCR0_EL1:
-+    case SYSREG_DBGWCR1_EL1:
-+    case SYSREG_DBGWCR2_EL1:
-+    case SYSREG_DBGWCR3_EL1:
-+    case SYSREG_DBGWCR4_EL1:
-+    case SYSREG_DBGWCR5_EL1:
-+    case SYSREG_DBGWCR6_EL1:
-+    case SYSREG_DBGWCR7_EL1:
-+    case SYSREG_DBGWCR8_EL1:
-+    case SYSREG_DBGWCR9_EL1:
-+    case SYSREG_DBGWCR10_EL1:
-+    case SYSREG_DBGWCR11_EL1:
-+    case SYSREG_DBGWCR12_EL1:
-+    case SYSREG_DBGWCR13_EL1:
-+    case SYSREG_DBGWCR14_EL1:
-+    case SYSREG_DBGWCR15_EL1:
-+        env->cp15.dbgwcr[SYSREG_CRM(reg)] = val;
-+        break;
-     default:
-         cpu_synchronize_state(cpu);
-         trace_hvf_unhandled_sysreg_write(env->pc, reg,
--- 
-2.38.1
 
+r~

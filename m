@@ -1,147 +1,226 @@
-Received: by 2002:a17:906:80c3:b0:7ae:d8f:8937 with SMTP id a3csp1018640ejx;
-        Fri, 4 Nov 2022 15:11:54 -0700 (PDT)
-X-Google-Smtp-Source: AMsMyM6a08v5rqm7r3J96dNfVrdsB0Fq3JGuD6rhn1n/qGnfZaru95/85Y7uAbFJDDZfP1CffDuQ
-X-Received: by 2002:a05:6214:3017:b0:4b4:61c2:497f with SMTP id ke23-20020a056214301700b004b461c2497fmr373320qvb.126.1667599913793;
-        Fri, 04 Nov 2022 15:11:53 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1667599913; cv=none;
+Received: by 2002:a17:906:80c3:b0:7ae:d8f:8937 with SMTP id a3csp1672477ejx;
+        Sat, 5 Nov 2022 10:25:16 -0700 (PDT)
+X-Google-Smtp-Source: AMsMyM77J9+D4RVzo/mEx5eZwUG0owGRbMBpCDm3aBmb3MfN06TT/vjiJnLTfR0xOjdrw5jPhKVO
+X-Received: by 2002:a05:620a:28ce:b0:6cf:933c:40d3 with SMTP id l14-20020a05620a28ce00b006cf933c40d3mr29297040qkp.258.1667669116592;
+        Sat, 05 Nov 2022 10:25:16 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1667669116; cv=none;
         d=google.com; s=arc-20160816;
-        b=CWvhzb4p86CZs1OA67KPtsx6XDIN7iP/Vf+/camDagAPQDYZvWRgsz73G9JBqNzkx4
-         cm4216eMO54iUl+5MYNhm553V39pAJCIfcI6bg9A7QWpJ2+8FqKv6yrnCDyizLyiKMv1
-         C7z2Q7eRkfPaT+vJug9XT4NiNPNoEC5JKOKCn83aFhhjs9U3q2b7ojfJ33wx6xvtP7Uk
-         jfbVHJWHaxQEblc1nHRsRQ+TeDUuwJ5/3BqtTtH6DXM8Ma7spyh63orqSsCaKXARZcYs
-         UkYKSlgx+KfNl3HXR2FgpXp/RDBmHcAAaGidDyQzQ4m9u+Wk3TCN02g0aA+q9n8uiw6A
-         GcAQ==
+        b=aFW2O1hDgDt8tasfHEcETIEOSvg8+FoFyG+ZqL99X72/ZwpxQb830AFs0tkB8pD4Ds
+         REkJNqrn2kiDlu22aZZsBXJw0IPSYfX01UXI2beY7J6A+sZFA2vk+4zcHN8PCzdC6jIq
+         fcI4Mloz+W36qcrOCXYYhJqL+tZ0PDXL4hNxSgthbfA/Mr6y/S9+tYxHvY5/qODZYGzZ
+         SSQh3J2uqo2O5JNwwVqKS7BrTjs4VSM9uHFFPblcEzqUaSXnh7Jo9d8oIij+o7MU1Nqn
+         yJdXaQ9vXb6zuoPvk4irXTJvlwGkNNqpYd1ZBYWSXbsJfYAm/p4JumYP++fn2TM/wJKn
+         lJ+Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=errors-to:sender:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:cc:to:content-language:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=Y7QVdHhGWMg06XVCBwuPr4aU6JANhS+CWd+TwQLCYYM=;
-        b=TO0COrm7f1Ka254VgZgYPeSwgdcU0XRYdoecAXrRfTlh19Pp/k5Zw0FhXNnckCi/jH
-         G8GuPgXlYJtuOKCJDK1jrT9vblIFGHb9z1q6VmZn8m7kN+CPvePEaYZJoQltQywx07a3
-         FJXxg+0AFJ9PLBAPqWJICebLJ17yRdrPYDn/MqsTvRydb2KlTiohvxLM3ePnqgQU1kj+
-         2JyRf+hSIdpkKWRwTpq1Q/DNExp4rpqU89mfjT3IHh/ObSiJBPXfG6Bjw6ER4/8U+S8O
-         ytua4FCwdQKQXFf+8ZXe6xHf53bxRV1DsH6K8l5ntnBJhbkqtiFCXzLL97ChAs8G97P6
-         NRtQ==
+         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
+         :dkim-signature;
+        bh=jDPHfFPBmUiBzVFQbV+4l1hgXmVtWz7Ck3nwksImP0A=;
+        b=E38mcvapVhC4f0fC8U9dtCyY36JwkqYfASA4DKkTLdzQHkutOa2fK1Yf8kCF6QJffB
+         hLV64vFObnN6OzvclBvMOt2zyszTFCN9eBjQkvPY+LeWjCDv89y9Y/7LxDcAnLWxePBr
+         aa2cbFTevqrReqTmxNMgxG4Yh7D6EprYrPzqRQ8FJgQ+cZBvZ4e/fvzgv5DLh6x75sfb
+         Fd8k17SPnvYN169GSd9M9bhDllAiLobDt18VYt8X9D2kbmuVjkzKtYqiDSjHcPi3swWN
+         nopCW6Dtv/ZA9CVETXQQGXOqEmTFaTUb0MtmK9Q+/Dft8Sw/pDSe3qA0MjIe8WNuxKr3
+         VWCg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="r/Fj3DhL";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=N8oN+BFo;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id l17-20020a056214029100b004bbeefb2a0bsi129611qvv.186.2022.11.04.15.11.53
+        by mx.google.com with ESMTPS id gu10-20020a056214260a00b004bc06573e81si1348429qvb.170.2022.11.05.10.25.16
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 04 Nov 2022 15:11:53 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Sat, 05 Nov 2022 10:25:16 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="r/Fj3DhL";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=N8oN+BFo;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1or4uG-0006T7-DY; Fri, 04 Nov 2022 18:11:20 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1orMoP-0007Qe-9C; Sat, 05 Nov 2022 13:18:29 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1or4pQ-0002pi-V5
- for qemu-arm@nongnu.org; Fri, 04 Nov 2022 18:06:21 -0400
-Received: from mail-oa1-x31.google.com ([2001:4860:4864:20::31])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1or4pP-0006R4-92
- for qemu-arm@nongnu.org; Fri, 04 Nov 2022 18:06:20 -0400
-Received: by mail-oa1-x31.google.com with SMTP id
- 586e51a60fabf-13c569e5ff5so6997741fac.6
- for <qemu-arm@nongnu.org>; Fri, 04 Nov 2022 15:06:17 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=Y7QVdHhGWMg06XVCBwuPr4aU6JANhS+CWd+TwQLCYYM=;
- b=r/Fj3DhLMdaD7yvXjQDIjoqxe46/gcZNj3bqpV25yoj3WDRkaCusDEkRja8rI66gpD
- svubwLrLDo+ZC2fWhyIRg4fZOOs+T1E0FPFTxIWdW8uIrLJhZVCPMpLxGH+SuGq6muSh
- UjLiSGodzs8hgEhYW0srqzwsjoY87QzgFNkxxZaWBn5AG9MQXVQkDeO3+SgnZA900nO1
- /MJoeBSMxvQx/87y2fXOjpFfY2feQ0jvizcdvob95sOfdZKCClCpkpnRnYyfE+uw7+nv
- 15kIUcAQC7bsCuJZBAWrBFweZh4OVnOMazBcxjah6Hc07sqCPYrpS3+2LcCnYi2Rim/q
- 8YEw==
+ (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1orMmo-0006f0-14
+ for qemu-devel@nongnu.org; Sat, 05 Nov 2022 13:16:56 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1orMmm-0007NV-DU
+ for qemu-devel@nongnu.org; Sat, 05 Nov 2022 13:16:49 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1667668600;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=jDPHfFPBmUiBzVFQbV+4l1hgXmVtWz7Ck3nwksImP0A=;
+ b=N8oN+BFoE16pmEw5F9YaM+kh05ToEvRIpDD/Sc9iUWW8rwh2b4KZtz+khNqfIgfz07qlHC
+ P83ZkCvjuIaHoOv1PI8LQS6X2FGW2MH3Dm7evlgM6v+zNMwcowVtEVAASBWrY95fjTfDcS
+ tBF+Ecje8/7I0hmIynnEywHOCl6RDR4=
+Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
+ [209.85.128.69]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_128_GCM_SHA256) id
+ us-mta-482-_FjjKZQJOaKqj-bqDdnYfw-1; Sat, 05 Nov 2022 13:16:39 -0400
+X-MC-Unique: _FjjKZQJOaKqj-bqDdnYfw-1
+Received: by mail-wm1-f69.google.com with SMTP id
+ f62-20020a1c3841000000b003cf6d9aacbbso3828944wma.8
+ for <qemu-devel@nongnu.org>; Sat, 05 Nov 2022 10:16:38 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=Y7QVdHhGWMg06XVCBwuPr4aU6JANhS+CWd+TwQLCYYM=;
- b=crlDv8fbyzZDhEYT6NPBtkLr7OCD7kw8Ef7erbf8AypXJz2ydmp6Q/+TR1HrPwGSTg
- 0RVGLQAmruCWekme9M2jB+En13ytq3s1m8gSXHkLBNER0WckRvtW8OFAXZL5gxzhlpSh
- g45WWWt3XIA24Y+nxOUlc0Tb4qZguW1VgA+MPx3wAnG1lyFiTyqEDct7EpnRNT7P6Nh5
- Pe/qhcecWGrmXh1n2TVY/80SjnDl2NS/Ase5iUwtc2Ug6GOIfA/Pwz7Mvd7f7ULILwG2
- 2eO1bd1yYIuROmc+QWS5ymN9Qn8VkOBv33tEV1c9o8pA44GCppb68wMRljphruJz+Dsm
- R7Gg==
-X-Gm-Message-State: ACrzQf3ER/jq9tcElB6WbeMc34s7USeudGKCuzF6OUon2RIxX5kUGYrc
- ufqEioLbUrszHtp/8dxpdPR3NA==
-X-Received: by 2002:a05:6870:c34e:b0:13c:19bc:6e41 with SMTP id
- e14-20020a056870c34e00b0013c19bc6e41mr33069676oak.115.1667599576945; 
- Fri, 04 Nov 2022 15:06:16 -0700 (PDT)
-Received: from [192.168.229.227] ([172.58.176.28])
- by smtp.gmail.com with ESMTPSA id
- i5-20020a4aab05000000b0049ded99501bsm118791oon.40.2022.11.04.15.06.12
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 04 Nov 2022 15:06:16 -0700 (PDT)
-Message-ID: <4075c55b-3b1b-9fb6-c4fb-000c2d0a4591@linaro.org>
-Date: Sat, 5 Nov 2022 09:06:05 +1100
+ h=in-reply-to:content-disposition:mime-version:references:message-id
+ :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=jDPHfFPBmUiBzVFQbV+4l1hgXmVtWz7Ck3nwksImP0A=;
+ b=emSOowH0SgWk37no1Xx5tQTxbB6++pM1iqjlIeopPZoz4LJ3MkSbxGl+ndDWg2G3b7
+ e2VvHDzxF5A58Un9Iz2+f2qGnX1PWXN4Yn6/Xk5DkET2ie5bE8z+vDVXysvmOTaxdt3z
+ eDpQp9tjTvkxUh9Hs0wzKsk7YX6mLmmQ7UttEnYsc6Mrpf0hisa7Oc7b+W+m2sEJeZtY
+ RgNAKFYIVt150hLmcnv160UlZwXa48VYrN7Rbr+Giaj8hSNlzTJmi47D7BJmTHisXMjg
+ DVLSVdGhN5BfAY56B2IVpF5kvJJv3kqWy5EhwD/lLWjc/C3RW469Ubc2VpwqZh2Ph7Q9
+ /cnw==
+X-Gm-Message-State: ACrzQf1NuQpDwq0spqO6mt06a+R9xa1j/KamKsCjWdLy9IEJGicAGOED
+ rFssHwh8mAN7sP4UtPnTuRjwTN/7GwYuPfsUx+uiCQOPiqT0Qlog+sXq4wx9DO3Gx5XrThBMwWO
+ yTauEOx1Ly+V3mokwBrJthkD0BQPP1EglbQTKiBE1C/2hu43rwXLTiNIwDl6V
+X-Received: by 2002:adf:e9c8:0:b0:22e:3725:8acc with SMTP id
+ l8-20020adfe9c8000000b0022e37258accmr389342wrn.330.1667668597696; 
+ Sat, 05 Nov 2022 10:16:37 -0700 (PDT)
+X-Received: by 2002:adf:e9c8:0:b0:22e:3725:8acc with SMTP id
+ l8-20020adfe9c8000000b0022e37258accmr389334wrn.330.1667668597375; 
+ Sat, 05 Nov 2022 10:16:37 -0700 (PDT)
+Received: from redhat.com ([2.52.152.137]) by smtp.gmail.com with ESMTPSA id
+ p4-20020a05600c1d8400b003b497138093sm3012767wms.47.2022.11.05.10.16.35
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sat, 05 Nov 2022 10:16:36 -0700 (PDT)
+Date: Sat, 5 Nov 2022 13:16:34 -0400
+From: "Michael S. Tsirkin" <mst@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Miguel Luis <miguel.luis@oracle.com>, Ani Sinha <ani@anisinha.ca>,
+ Igor Mammedov <imammedo@redhat.com>,
+ Shannon Zhao <shannon.zhaosl@gmail.com>, qemu-arm@nongnu.org
+Subject: [PULL v3 23/81] acpi: fadt: support revision 6.0 of the ACPI
+ specification
+Message-ID: <20221105171116.432921-24-mst@redhat.com>
+References: <20221105171116.432921-1-mst@redhat.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.2.2
-Subject: Re: [PATCH] target/arm: Two fixes for secure ptw
-Content-Language: en-US
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-devel@nongnu.org, philmd@linaro.org, qemu-arm@nongnu.org
-References: <20221102054706.1015830-1-richard.henderson@linaro.org>
- <CAFEAcA_meGSRv=Fa1D-F=a3VF=TnHHORGAZoi5aPOkVAbGPm4w@mail.gmail.com>
- <2d9a7f5e-0ec0-89da-53f0-b5624f540ae8@linaro.org>
- <CAFEAcA-XqHm+bFk4QSzG=QJCwUncGmD43qxK0FBSXZbVaPY4pQ@mail.gmail.com>
-From: Richard Henderson <richard.henderson@linaro.org>
-In-Reply-To: <CAFEAcA-XqHm+bFk4QSzG=QJCwUncGmD43qxK0FBSXZbVaPY4pQ@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2001:4860:4864:20::31;
- envelope-from=richard.henderson@linaro.org; helo=mail-oa1-x31.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20221105171116.432921-1-mst@redhat.com>
+X-Mailer: git-send-email 2.27.0.106.g8ac3dc51b1
+X-Mutt-Fcc: =sent
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=mst@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -30
+X-Spam_score: -3.1
+X-Spam_bar: ---
+X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1.045,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Sender: "Qemu-arm" <qemu-arm-bounces@nongnu.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: bBsasM2oK2V7
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Sender: "Qemu-devel" <qemu-devel-bounces@nongnu.org>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: KyKPlx1cMTmD
 
-On 11/4/22 21:58, Peter Maydell wrote:
-> OK. Do we ever do anything with the attrs for a phys tlb lookup
-> except use them internally for details of the stage 2 tlb walk ?
-> I guess they get used for the memory transaction to do the walk.
-> That matches the old code that just had a local MemTxAttrs in
-> arm_ldq_ptw() to do the walk which therefore implicitly got
-> user == false.
+From: Miguel Luis <miguel.luis@oracle.com>
 
-Exactly.
+Update the Fixed ACPI Description Table (FADT) to revision 6.0 of the ACPI
+specification adding the field "Hypervisor Vendor Identity".
 
-I can't think of any reason .user would be apply outside of the stage1 lookup, which is 
-what records the setting for any future mmio.
+This field's description states the following: "64-bit identifier of hypervisor
+vendor. All bytes in this field are considered part of the vendor identity.
+These identifiers are defined independently by the vendors themselves,
+usually following the name of the hypervisor product. Version information
+should NOT be included in this field - this shall simply denote the vendor's
+name or identifier. Version information can be communicated through a
+supplemental vendor-specific hypervisor API. Firmware implementers would
+place zero bytes into this field, denoting that no hypervisor is present in
+the actual firmware."
 
+Signed-off-by: Miguel Luis <miguel.luis@oracle.com>
+Reviewed-by: Ani Sinha <ani@anisinha.ca>
+Message-Id: <20221011181730.10885-3-miguel.luis@oracle.com>
+Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
+Signed-off-by: Michael S. Tsirkin <mst@redhat.com>
+---
+ hw/acpi/aml-build.c      | 13 ++++++++++---
+ hw/arm/virt-acpi-build.c | 10 +++++-----
+ 2 files changed, 15 insertions(+), 8 deletions(-)
 
-r~
+diff --git a/hw/acpi/aml-build.c b/hw/acpi/aml-build.c
+index e6bfac95c7..42feb4d4d7 100644
+--- a/hw/acpi/aml-build.c
++++ b/hw/acpi/aml-build.c
+@@ -2070,7 +2070,7 @@ void build_pptt(GArray *table_data, BIOSLinker *linker, MachineState *ms,
+     acpi_table_end(linker, &table);
+ }
+ 
+-/* build rev1/rev3/rev5.1 FADT */
++/* build rev1/rev3/rev5.1/rev6.0 FADT */
+ void build_fadt(GArray *tbl, BIOSLinker *linker, const AcpiFadtData *f,
+                 const char *oem_id, const char *oem_table_id)
+ {
+@@ -2193,8 +2193,15 @@ void build_fadt(GArray *tbl, BIOSLinker *linker, const AcpiFadtData *f,
+     /* SLEEP_STATUS_REG */
+     build_append_gas_from_struct(tbl, &f->sleep_sts);
+ 
+-    /* TODO: extra fields need to be added to support revisions above rev5 */
+-    assert(f->rev == 5);
++    if (f->rev == 5) {
++        goto done;
++    }
++
++    /* Hypervisor Vendor Identity */
++    build_append_padded_str(tbl, "QEMU", 8, '\0');
++
++    /* TODO: extra fields need to be added to support revisions above rev6 */
++    assert(f->rev == 6);
+ 
+ done:
+     acpi_table_end(linker, &table);
+diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+index 13c6e3e468..e5377744f3 100644
+--- a/hw/arm/virt-acpi-build.c
++++ b/hw/arm/virt-acpi-build.c
+@@ -808,13 +808,13 @@ build_madt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+ }
+ 
+ /* FADT */
+-static void build_fadt_rev5(GArray *table_data, BIOSLinker *linker,
++static void build_fadt_rev6(GArray *table_data, BIOSLinker *linker,
+                             VirtMachineState *vms, unsigned dsdt_tbl_offset)
+ {
+-    /* ACPI v5.1 */
++    /* ACPI v6.0 */
+     AcpiFadtData fadt = {
+-        .rev = 5,
+-        .minor_ver = 1,
++        .rev = 6,
++        .minor_ver = 0,
+         .flags = 1 << ACPI_FADT_F_HW_REDUCED_ACPI,
+         .xdsdt_tbl_offset = &dsdt_tbl_offset,
+     };
+@@ -944,7 +944,7 @@ void virt_acpi_build(VirtMachineState *vms, AcpiBuildTables *tables)
+ 
+     /* FADT MADT PPTT GTDT MCFG SPCR DBG2 pointed to by RSDT */
+     acpi_add_table(table_offsets, tables_blob);
+-    build_fadt_rev5(tables_blob, tables->linker, vms, dsdt);
++    build_fadt_rev6(tables_blob, tables->linker, vms, dsdt);
+ 
+     acpi_add_table(table_offsets, tables_blob);
+     build_madt(tables_blob, tables->linker, vms);
+-- 
+MST
+

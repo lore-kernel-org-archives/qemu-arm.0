@@ -1,107 +1,107 @@
-Received: by 2002:a17:906:80c3:b0:7ae:d8f:8937 with SMTP id a3csp3404334ejx;
-        Mon, 7 Nov 2022 14:49:52 -0800 (PST)
-X-Google-Smtp-Source: AMsMyM4CGepHOcDAiGE8HEhyIvzQGSAWa3aMWsLttA+m1mXRpuTcl2CdbIkbygeCwa1W9G+Vd6OP
-X-Received: by 2002:ac8:4e90:0:b0:3a5:7dd3:75e3 with SMTP id 16-20020ac84e90000000b003a57dd375e3mr9604698qtp.590.1667861392010;
-        Mon, 07 Nov 2022 14:49:52 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1667861392; cv=none;
+Received: by 2002:a17:906:80c3:b0:7ae:d8f:8937 with SMTP id a3csp3405309ejx;
+        Mon, 7 Nov 2022 14:52:00 -0800 (PST)
+X-Google-Smtp-Source: AMsMyM4R5tio0reI6dlO/C504xahOMtRdcmL9AJFixp6bvbC1EtL0RRFedpyhqE/S/Up4CQIuDvk
+X-Received: by 2002:a05:6214:400a:b0:4bb:b1f7:4cf3 with SMTP id kd10-20020a056214400a00b004bbb1f74cf3mr47012136qvb.110.1667861519975;
+        Mon, 07 Nov 2022 14:51:59 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1667861519; cv=none;
         d=google.com; s=arc-20160816;
-        b=auSVVhn8X5GC1ezofwFfk/gy5N6p0gE9QRV8qGgOqw330F0XWxOUhg2UyHNYxGT+Af
-         FeW2OlJRG2YI206CHnJcIATe4oZI9AOrcPFt1bv1yuGaCrtJosUknpEkgoHD1LtbsRP8
-         bXqFkh89gysbhUPlDUfxle8u61bomEwsKpVM9Beurf1xw6k6o2zW8N59HgfNx4An/fuv
-         mDPg8PkacMxxO9T5BD4h7pzHrCGiGQ08SK0/DMX412mmV6TiDl/b41g6hQ5Tx5Tm/fjx
-         KthfGN/jKNxmWgby/7MMiMKcnmA/axYRngFXiDHf6WmeccuGbdYFS3dm6Q0Q05pP5ZNX
-         6o3w==
+        b=K1MDWHe+g8WpgCRVDJQG3Kfppnqq38DLnzbfslVnBI2DSbKk6ys0Xu7vNWrN0z9+fY
+         xSYMoB/Fj2l39V3YvQk7ixTW0TS/XLZogTd+whid/Kn4eD21q/VaARFK1mCecgh56uBI
+         lqYrG8Ghu6JRpbt6oPURac9Ut31V7EYjMQpBsNq2eZ7Eft+wTgri6MqOoofuKlBI0o5t
+         +eV/gqUZLZ7IgcjxV2oAjr1bLN+pBzBGVEbGqmzjQ8+2JFr5hR06LsC533uTLEntPTE5
+         YKqwb6kzhm082AmZ05WvZWP+zHpqXRnLadbOSg4O6c2rMOTEmkT3kmPhEvTAJAykgY86
+         3POA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-disposition:in-reply-to
          :mime-version:references:message-id:subject:cc:to:from:date
          :dkim-signature;
-        bh=X4Z960VIxvzpdnrCdhzcTsEiETvQalucQByjEZaVNKQ=;
-        b=lgiEh5qrwtzfq2YL8Dm6XP0s8/bik+dE8bRrD9kTdv1dS/YbS/HjGmcfFF8ID+vD8b
-         7ZpvAUaf96vnlCWnG+J07q67WuwYp/zSY0KIIyV4nG6c0Wd+L44kuWIvbsD8xc7IYxUZ
-         c+QU5Gn+SDpSgxoHmU3ZbKyiI4ry1U1C4zgRFp+27Ydlm/ex/wHdjSzTgo08lIxYoJJH
-         hSlXrBjlbYSLYrysCVA+nV33Nh1tujsGWY2IgqT3Ae2DQ8dDbLSScHrxH/xrT7+YKOMZ
-         7K1ZCVnTkTWyBb/T45dKQMHLpmPoCtNu6/W3QdqxN+0BNV+5vvtELDIeyQM/m/1S1TPl
-         xWDA==
+        bh=jDPHfFPBmUiBzVFQbV+4l1hgXmVtWz7Ck3nwksImP0A=;
+        b=zd1qn4TrFMopiZHIStfXbvNu/wzAsOwmFq40BZQvN3pHVnQWIeZ6xKg+5eS6l/pQ6B
+         wjZWNhYDahZpo2/iUf5sdQpDMWJ8l8eVL9ZpyCSF9OAFYlmtIX1w2vKiDOwXm+1WuCaQ
+         m5IwV2Wbn66GOkWY+Z/eS4PZGcfJ2uHqjIa73c76smefeV0tNYbUVMvl247klAM+LcHV
+         7It5msmARc4v2n/Tdm1lIa+THVHXneihiAhyRwgCrhTcIRwvZl2/mnXivW8KDq/eFpuS
+         l3k45vyjTcJXxFUR0OMBZQJF9U5fOYdYUXOonAIN2Orj7EekTmj0QVJAm/ZVphN+rULV
+         A0Gw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=hdcC4AWr;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=P8ofswXU;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t13-20020a37ea0d000000b006face8cfc0asi3263743qkj.603.2022.11.07.14.49.51
+        by mx.google.com with ESMTPS id j127-20020a375585000000b006fa4ab0714dsi4848436qkb.689.2022.11.07.14.51.59
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 07 Nov 2022 14:49:52 -0800 (PST)
+        Mon, 07 Nov 2022 14:51:59 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=hdcC4AWr;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=P8ofswXU;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1osAvf-0007Rn-MC; Mon, 07 Nov 2022 17:49:19 -0500
+	id 1osAvb-0007HU-Uu; Mon, 07 Nov 2022 17:49:15 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1osAve-0007N3-4z
- for qemu-arm@nongnu.org; Mon, 07 Nov 2022 17:49:18 -0500
+ (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1osAvZ-00079u-RJ
+ for qemu-arm@nongnu.org; Mon, 07 Nov 2022 17:49:13 -0500
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1osAvc-00023m-GU
- for qemu-arm@nongnu.org; Mon, 07 Nov 2022 17:49:17 -0500
+ (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1osAvX-0001kG-9l
+ for qemu-arm@nongnu.org; Mon, 07 Nov 2022 17:49:12 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1667861355;
+ s=mimecast20190719; t=1667861350;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  in-reply-to:in-reply-to:references:references;
- bh=X4Z960VIxvzpdnrCdhzcTsEiETvQalucQByjEZaVNKQ=;
- b=hdcC4AWrjqvqVUO6B/2m4jXgyC/33j6iKRsj+CYVyMjryXOK2AyH12aBRHU7BeZC7Rpr8S
- m/ZsN2zODbipBq5zoBei/8zha950QWYanun1RMbq6sMqwIYqXunWF1gTapLaCejR7tiQ+E
- QmRI24j1BuVGv+GVtwmb7+BAvX3b3xw=
-Received: from mail-qt1-f200.google.com (mail-qt1-f200.google.com
- [209.85.160.200]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=jDPHfFPBmUiBzVFQbV+4l1hgXmVtWz7Ck3nwksImP0A=;
+ b=P8ofswXUJ9pwDMDmZcrEGB1hJq8+tKQdB6lIUTegdSKqVTgFkiwmm/6bPlTfLN91+kc7qX
+ P3gLnTcchPJ+HAKi3sYORV8aFNW9PP6YCsU3Yq6VQTKlYhSSLHJVhOZj6wRluGWWyniaOr
+ Vbm5kQ73iWhUC36Biclf3gke09vPl/g=
+Received: from mail-qk1-f197.google.com (mail-qk1-f197.google.com
+ [209.85.222.197]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_128_GCM_SHA256) id
- us-mta-358-zoTVTzZKO-qSQ0kbMxbuMw-1; Mon, 07 Nov 2022 17:49:14 -0500
-X-MC-Unique: zoTVTzZKO-qSQ0kbMxbuMw-1
-Received: by mail-qt1-f200.google.com with SMTP id
- ew11-20020a05622a514b00b003a524196d31so9032716qtb.2
- for <qemu-arm@nongnu.org>; Mon, 07 Nov 2022 14:49:14 -0800 (PST)
+ us-mta-646-nz-9kqa3OHWlHL7sbT8wBA-1; Mon, 07 Nov 2022 17:49:09 -0500
+X-MC-Unique: nz-9kqa3OHWlHL7sbT8wBA-1
+Received: by mail-qk1-f197.google.com with SMTP id
+ j13-20020a05620a410d00b006e08208eb31so11318566qko.3
+ for <qemu-arm@nongnu.org>; Mon, 07 Nov 2022 14:49:09 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=in-reply-to:content-disposition:mime-version:references:message-id
  :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to;
- bh=X4Z960VIxvzpdnrCdhzcTsEiETvQalucQByjEZaVNKQ=;
- b=Hyae3+n1RW8oIEoZZqgem/dznlzyAcIdpFYxZtOdUwWkRRO3lwF8MAiZ7H/BwcYMfl
- UZdx60VALrahG41yOraeHP4OSlze9bNSiNpGQBhKtveakuj0PEU4sXnt6nRonwhp/QtU
- uKiWetuIQTZOnrwtaD2m15wpL44Ks3nwL4l+JB+hFbuhBsJ5Pjy6e89dD6hrQwMC5g/e
- Gt7BfHcrtq11Dx59D+TWOfRVd3nNV7vxpHWJQOEl8Y6bUCeHJNXVRulAoNDjiFdwRjwR
- 9zUZaCEmyEwwTCQwwsQ4OlO3C+yHQmSHEjCSa0Fk3RAMzDGJJ6gXOhCa4FKyIHiW2VsQ
- VoPw==
-X-Gm-Message-State: ACrzQf0MgdhblbpYUKUd6ek2ijSfZXSl1m1uZDowK4NEkrUvNPT580Ez
- p5n2S91MUyRL10SMBiGpEZXemQ8ptkRB/XiXfusY19MPuHVA0OogseQ4BdEB2X1sLOg8EUHWwcs
- b5ueo2Dpuquc3
-X-Received: by 2002:a05:620a:2109:b0:6fa:75bb:c766 with SMTP id
- l9-20020a05620a210900b006fa75bbc766mr16907113qkl.369.1667861354207; 
- Mon, 07 Nov 2022 14:49:14 -0800 (PST)
-X-Received: by 2002:a05:620a:2109:b0:6fa:75bb:c766 with SMTP id
- l9-20020a05620a210900b006fa75bbc766mr16907101qkl.369.1667861353954; 
- Mon, 07 Nov 2022 14:49:13 -0800 (PST)
+ bh=jDPHfFPBmUiBzVFQbV+4l1hgXmVtWz7Ck3nwksImP0A=;
+ b=3R4wP38OFtpr+v0r4B6m7fxj8/HMMAppDHHH2BV9fbNnPOlnT6Hxns1kNNIMtp+cpR
+ PQ5Ib+Y3QLMPTb4KsxqdwT0Tn3u+aHY24/JSTUTWeFS99Qcpj/sZr5vU1Cg5U+vJijcn
+ mEGOVOWcew9Bmyy+JG5tOUWYggFG/oO5r4W8kVwV55mVwdLvC3Sp1YJci+Zg8qoUodTc
+ 9fOjXYO/Q/DuxIkrr6kFiIZsz7vo5Hy/GSOKDG6jm819MK+C0cATITAQzN1jpk92hPzX
+ pPXSS6GBKxGZURUkovPoj1GGykf/1D8N8neCVP5MABgZYp/Yn82mDt/zT4GURIN4/2Iz
+ j+qw==
+X-Gm-Message-State: ACrzQf2Ns9a56LLGI6RPx4FwMg9dxf4E3gFf3/SdDPkMNNyw32rHb1Tv
+ ZMmTsZZW3YZG2MyKOqje8c3VFMrC3jn9+GYrMByKEW4/Exd34xgIvay+MA9G3WKa4iezcAwgR9P
+ DA0pehuRCNVKp
+X-Received: by 2002:ac8:664d:0:b0:3a5:68b6:887f with SMTP id
+ j13-20020ac8664d000000b003a568b6887fmr13956990qtp.458.1667861349066; 
+ Mon, 07 Nov 2022 14:49:09 -0800 (PST)
+X-Received: by 2002:ac8:664d:0:b0:3a5:68b6:887f with SMTP id
+ j13-20020ac8664d000000b003a568b6887fmr13956980qtp.458.1667861348817; 
+ Mon, 07 Nov 2022 14:49:08 -0800 (PST)
 Received: from redhat.com ([87.249.138.11]) by smtp.gmail.com with ESMTPSA id
- j19-20020a05620a289300b006b949afa980sm7868738qkp.56.2022.11.07.14.49.11
+ az36-20020a05620a172400b006ce9e880c6fsm7959843qkb.111.2022.11.07.14.49.05
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 07 Nov 2022 14:49:13 -0800 (PST)
-Date: Mon, 7 Nov 2022 17:49:09 -0500
+ Mon, 07 Nov 2022 14:49:08 -0800 (PST)
+Date: Mon, 7 Nov 2022 17:49:03 -0500
 From: "Michael S. Tsirkin" <mst@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>,
  Miguel Luis <miguel.luis@oracle.com>, Ani Sinha <ani@anisinha.ca>,
- Shannon Zhao <shannon.zhaosl@gmail.com>,
- Igor Mammedov <imammedo@redhat.com>, qemu-arm@nongnu.org
-Subject: [PULL v4 19/83] acpi: arm/virt: madt: bump to revision 4 accordingly
- to ACPI 6.0 Errata A
-Message-ID: <20221107224600.934080-20-mst@redhat.com>
+ Igor Mammedov <imammedo@redhat.com>,
+ Shannon Zhao <shannon.zhaosl@gmail.com>, qemu-arm@nongnu.org
+Subject: [PULL v4 18/83] acpi: fadt: support revision 6.0 of the ACPI
+ specification
+Message-ID: <20221107224600.934080-19-mst@redhat.com>
 References: <20221107224600.934080-1-mst@redhat.com>
 MIME-Version: 1.0
 In-Reply-To: <20221107224600.934080-1-mst@redhat.com>
@@ -134,79 +134,95 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: JTgn2c/WlRdK
+X-TUID: HXxRimeJjL7B
 
 From: Miguel Luis <miguel.luis@oracle.com>
 
-MADT has been updated with the GIC Structures from ACPI 6.0 Errata A
-and so MADT revision and GICC Structure must be updated also.
+Update the Fixed ACPI Description Table (FADT) to revision 6.0 of the ACPI
+specification adding the field "Hypervisor Vendor Identity".
 
-Fixes: 37f33084ed2e ("acpi: arm/virt: madt: use build_append_int_noprefix() API to compose MADT table")
+This field's description states the following: "64-bit identifier of hypervisor
+vendor. All bytes in this field are considered part of the vendor identity.
+These identifiers are defined independently by the vendors themselves,
+usually following the name of the hypervisor product. Version information
+should NOT be included in this field - this shall simply denote the vendor's
+name or identifier. Version information can be communicated through a
+supplemental vendor-specific hypervisor API. Firmware implementers would
+place zero bytes into this field, denoting that no hypervisor is present in
+the actual firmware."
 
 Signed-off-by: Miguel Luis <miguel.luis@oracle.com>
 Reviewed-by: Ani Sinha <ani@anisinha.ca>
-Message-Id: <20221011181730.10885-4-miguel.luis@oracle.com>
+Message-Id: <20221011181730.10885-3-miguel.luis@oracle.com>
 Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
 Signed-off-by: Michael S. Tsirkin <mst@redhat.com>
 ---
- hw/arm/virt-acpi-build.c | 16 +++++++---------
- 1 file changed, 7 insertions(+), 9 deletions(-)
+ hw/acpi/aml-build.c      | 13 ++++++++++---
+ hw/arm/virt-acpi-build.c | 10 +++++-----
+ 2 files changed, 15 insertions(+), 8 deletions(-)
 
+diff --git a/hw/acpi/aml-build.c b/hw/acpi/aml-build.c
+index e6bfac95c7..42feb4d4d7 100644
+--- a/hw/acpi/aml-build.c
++++ b/hw/acpi/aml-build.c
+@@ -2070,7 +2070,7 @@ void build_pptt(GArray *table_data, BIOSLinker *linker, MachineState *ms,
+     acpi_table_end(linker, &table);
+ }
+ 
+-/* build rev1/rev3/rev5.1 FADT */
++/* build rev1/rev3/rev5.1/rev6.0 FADT */
+ void build_fadt(GArray *tbl, BIOSLinker *linker, const AcpiFadtData *f,
+                 const char *oem_id, const char *oem_table_id)
+ {
+@@ -2193,8 +2193,15 @@ void build_fadt(GArray *tbl, BIOSLinker *linker, const AcpiFadtData *f,
+     /* SLEEP_STATUS_REG */
+     build_append_gas_from_struct(tbl, &f->sleep_sts);
+ 
+-    /* TODO: extra fields need to be added to support revisions above rev5 */
+-    assert(f->rev == 5);
++    if (f->rev == 5) {
++        goto done;
++    }
++
++    /* Hypervisor Vendor Identity */
++    build_append_padded_str(tbl, "QEMU", 8, '\0');
++
++    /* TODO: extra fields need to be added to support revisions above rev6 */
++    assert(f->rev == 6);
+ 
+ done:
+     acpi_table_end(linker, &table);
 diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
-index e5377744f3..da9e41e72b 100644
+index 13c6e3e468..e5377744f3 100644
 --- a/hw/arm/virt-acpi-build.c
 +++ b/hw/arm/virt-acpi-build.c
-@@ -685,7 +685,7 @@ build_dbg2(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
- };
+@@ -808,13 +808,13 @@ build_madt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+ }
  
- /*
-- * ACPI spec, Revision 5.1 Errata A
-+ * ACPI spec, Revision 6.0 Errata A
-  * 5.2.12 Multiple APIC Description Table (MADT)
-  */
- static void build_append_gicr(GArray *table_data, uint64_t base, uint32_t size)
-@@ -704,7 +704,7 @@ build_madt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
-     int i;
-     VirtMachineClass *vmc = VIRT_MACHINE_GET_CLASS(vms);
-     const MemMapEntry *memmap = vms->memmap;
--    AcpiTable table = { .sig = "APIC", .rev = 3, .oem_id = vms->oem_id,
-+    AcpiTable table = { .sig = "APIC", .rev = 4, .oem_id = vms->oem_id,
-                         .oem_table_id = vms->oem_table_id };
+ /* FADT */
+-static void build_fadt_rev5(GArray *table_data, BIOSLinker *linker,
++static void build_fadt_rev6(GArray *table_data, BIOSLinker *linker,
+                             VirtMachineState *vms, unsigned dsdt_tbl_offset)
+ {
+-    /* ACPI v5.1 */
++    /* ACPI v6.0 */
+     AcpiFadtData fadt = {
+-        .rev = 5,
+-        .minor_ver = 1,
++        .rev = 6,
++        .minor_ver = 0,
+         .flags = 1 << ACPI_FADT_F_HW_REDUCED_ACPI,
+         .xdsdt_tbl_offset = &dsdt_tbl_offset,
+     };
+@@ -944,7 +944,7 @@ void virt_acpi_build(VirtMachineState *vms, AcpiBuildTables *tables)
  
-     acpi_table_begin(&table, table_data);
-@@ -739,7 +739,7 @@ build_madt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+     /* FADT MADT PPTT GTDT MCFG SPCR DBG2 pointed to by RSDT */
+     acpi_add_table(table_offsets, tables_blob);
+-    build_fadt_rev5(tables_blob, tables->linker, vms, dsdt);
++    build_fadt_rev6(tables_blob, tables->linker, vms, dsdt);
  
-         /* 5.2.12.14 GIC Structure */
-         build_append_int_noprefix(table_data, 0xB, 1);  /* Type */
--        build_append_int_noprefix(table_data, 76, 1);   /* Length */
-+        build_append_int_noprefix(table_data, 80, 1);   /* Length */
-         build_append_int_noprefix(table_data, 0, 2);    /* Reserved */
-         build_append_int_noprefix(table_data, i, 4);    /* GIC ID */
-         build_append_int_noprefix(table_data, i, 4);    /* ACPI Processor UID */
-@@ -759,6 +759,10 @@ build_madt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
-         build_append_int_noprefix(table_data, 0, 8);    /* GICR Base Address*/
-         /* MPIDR */
-         build_append_int_noprefix(table_data, armcpu->mp_affinity, 8);
-+        /* Processor Power Efficiency Class */
-+        build_append_int_noprefix(table_data, 0, 1);
-+        /* Reserved */
-+        build_append_int_noprefix(table_data, 0, 3);
-     }
- 
-     if (vms->gic_version != VIRT_GIC_VERSION_2) {
-@@ -770,12 +774,6 @@ build_madt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
-         }
- 
-         if (its_class_name() && !vmc->no_its) {
--            /*
--             * FIXME: Structure is from Revision 6.0 where 'GIC Structure'
--             * has additional fields on top of implemented 5.1 Errata A,
--             * to make it consistent with v6.0 we need to bump everything
--             * to v6.0
--             */
-             /*
-              * ACPI spec, Revision 6.0 Errata A
-              * (original 6.0 definition has invalid Length)
+     acpi_add_table(table_offsets, tables_blob);
+     build_madt(tables_blob, tables->linker, vms);
 -- 
 MST
 

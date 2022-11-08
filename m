@@ -1,126 +1,106 @@
-Received: by 2002:a17:906:80c3:b0:7ae:d8f:8937 with SMTP id a3csp3407616ejx;
-        Mon, 7 Nov 2022 14:56:52 -0800 (PST)
-X-Google-Smtp-Source: AMsMyM4VoR9zbWNKwOlPCbcj+NJTUD8iXMOvHuQbAJz5m28nmxn7JSuQR+KlgVsiTSTH0tg1lCsE
-X-Received: by 2002:a05:6214:c21:b0:4ad:75e:93bb with SMTP id a1-20020a0562140c2100b004ad075e93bbmr48751232qvd.27.1667861812030;
-        Mon, 07 Nov 2022 14:56:52 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1667861812; cv=none;
+Received: by 2002:a17:906:80c3:b0:7ae:d8f:8937 with SMTP id a3csp3533148ejx;
+        Mon, 7 Nov 2022 18:36:24 -0800 (PST)
+X-Google-Smtp-Source: AMsMyM7fOWUsKbupnpGbA+c7m7vxhNBtGESfFzaHeaN1It6lfAdxjWO+3Zgf1cd+FTeh5UGt8g7D
+X-Received: by 2002:a05:622a:1a81:b0:3a5:3009:f80b with SMTP id s1-20020a05622a1a8100b003a53009f80bmr32301237qtc.327.1667874984318;
+        Mon, 07 Nov 2022 18:36:24 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1667874984; cv=none;
         d=google.com; s=arc-20160816;
-        b=cECFhQt3VI5ESBZK3uHRDnGpxFN8AZM57JOZusV9Nhc41qcNTqXq1Z35vsJs+kYNqz
-         /wdpucCS5GfSmG88wBqKLv/Qq36p/k6Xfs2himTYirbhsgnNLMqkQHg3mZVqrNauTWQt
-         lweE4AGtzlJsBET6d35mI2hQBSx6fWhbG4Fjd7Vcv0RDXVKZq3i+7JgBO+OhotpSCMUA
-         b4UgxpZzQV6g0Gg6u5nowJzIpikUl+o2jizuwdlIsd/F0IVpVAji1suU4stsZevvYyWb
-         B+cOP1O1k3Xo0+59YTiJpXfFZxDDPHrcltYKcJyD8wIs/cqtmeIrDmgtn3CHSk6zqepp
-         vKkw==
+        b=c1FycROBQZMAkKi9RmhWhna4iKsRDX8X2k4CM6kGStP4bWO40F+wMqiS8ymk1HNqbr
+         UHqeopPY41pjbm90Qj2+cGY1ARmIfCunYE+v6BU3VQP01m7lQ7yq0tLFSw9a3QS7zviE
+         ac+bvLMqubhSKa5goSTCnsMtaqXOzsdwv7UxbHZ5w7YhUvQH5/MBC8J3Y6roU/7sJsIb
+         wRs5ByyFlZqVhBr+fvSJ7uS4udjVLuqfOhnFspVzXf3MQkng5UUU9+IQebpxZ++STXVB
+         JYst4cHpUAXATFzS9G2sUR1OISETLerlsFWFQe3JjOkRxPraO/mAbxdjDZusYnlj5BTq
+         wq2Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-disposition:in-reply-to
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :dkim-signature;
-        bh=Oy2j3dzraHwJBqN04p66ThFiaUmnAcs5Y2XrHOxqe2M=;
-        b=CYjkVwcjQ9rOl5fgW9a5BiQQAxfAlebR3zbo5oe/5zvkBIZVKXtstquczOlZG0kwGn
-         Avb/zn52S5V3ZbUtjuNAqTsuX7TJVmiAUldX1uwyTzQkwiYoE9Lzsv3mYdj6EQERRW2D
-         Nvn2zh6aaMdpRNXyiY1ti4HsIJ5sjeIqaTUlWQv1RMfaWnaPSV2+fdyoDn08mPz3Anq3
-         Am211cVXqX3qzJIOBNDDpP48sUlZHTPY8RsZ3pcHQ5xsQekNYJzoSwjJJFXfhlZMMxlw
-         Ri17FRgWjOUP5YwMPpVkW2p8nUMBhQmj0Jv+Y/NkcL4XVAwA4PqlnnMjMnRsWBbAxVet
-         +Yuw==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
+        bh=f62dMkEZw1/VeoGmNwIOgwTYv39sXyhjpPSKZPA4t+g=;
+        b=PXak1ROyGludgOjJKMbolHECdAkwW7tFjbZGVzBntp66iQzKPlDWYAdngB+LReaHp2
+         Pqhlh/S+Zw+4iiWJwNtPMuBWxgldncXdtUIbXsGzWsjncbi4KA8qOppSYP1KmzdYSgiM
+         1vROwsnH6H7NlqqrPA/lPc6+wE8gMFutK1ywfqqoEDdax64WZZVOlDqyqVc8UJn7qQxF
+         m52aSpNk1Ew4I6nj+XbpFVYPFH7npUbLklMrJ1UqCmz+7xfJ5rNxZracgLBbIztmNxXA
+         VOxhf1BbHrkZrVycrXUV0h9LW4iZ83++05w6Dz5mPG+HBE+TX5rKOY5ZXjYNZeiNRIYq
+         D2sQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=DfJye0pJ;
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=ccsxEzQY;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id jq6-20020ad45fc6000000b004b3e2fa07edsi5374925qvb.32.2022.11.07.14.56.51
+        by mx.google.com with ESMTPS id d4-20020a05620a240400b006cf11841e8esi6128220qkn.330.2022.11.07.18.36.24
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 07 Nov 2022 14:56:52 -0800 (PST)
+        Mon, 07 Nov 2022 18:36:24 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=DfJye0pJ;
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=ccsxEzQY;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1osAzo-0005KM-4g; Mon, 07 Nov 2022 17:53:36 -0500
+	id 1osET1-0004xy-Kl; Mon, 07 Nov 2022 21:35:59 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1osAze-0005EO-Ga
- for qemu-arm@nongnu.org; Mon, 07 Nov 2022 17:53:28 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1osAzQ-0000ZN-KC
- for qemu-arm@nongnu.org; Mon, 07 Nov 2022 17:53:25 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1667861592;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=Oy2j3dzraHwJBqN04p66ThFiaUmnAcs5Y2XrHOxqe2M=;
- b=DfJye0pJItj2rhbMs+5JGePGWjEvjKii48aGkPZ/10XkForNudwUiiLJ2nQgluBkH8sdqE
- Fu/Tmyt+qjUIrnCpk+tB4TN5IGM1S3FTAr947g2KIFnfIDbRkXfrRK1Q7IDiPaY+sxs+Hj
- 4WNnWf66THHMLfFAc4wfdoaSbIqV9/g=
-Received: from mail-qt1-f197.google.com (mail-qt1-f197.google.com
- [209.85.160.197]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_128_GCM_SHA256) id
- us-mta-378-3YqfK7AuMtqewFYZuKybhg-1; Mon, 07 Nov 2022 17:53:11 -0500
-X-MC-Unique: 3YqfK7AuMtqewFYZuKybhg-1
-Received: by mail-qt1-f197.google.com with SMTP id
- ay12-20020a05622a228c00b003a52bd33749so9027087qtb.8
- for <qemu-arm@nongnu.org>; Mon, 07 Nov 2022 14:53:11 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <schspa@gmail.com>)
+ id 1osET0-0004xm-VY; Mon, 07 Nov 2022 21:35:59 -0500
+Received: from mail-il1-x136.google.com ([2607:f8b0:4864:20::136])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <schspa@gmail.com>)
+ id 1osESz-00044A-7X; Mon, 07 Nov 2022 21:35:58 -0500
+Received: by mail-il1-x136.google.com with SMTP id e19so6856707ili.4;
+ Mon, 07 Nov 2022 18:35:55 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=f62dMkEZw1/VeoGmNwIOgwTYv39sXyhjpPSKZPA4t+g=;
+ b=ccsxEzQY14gstyXGTTJWJVucgZuywqn21P9YZN/SEhtrISsM15RzLJ8Jk/+Aan4MyX
+ LTJspw3N+A7dWVkJ8C15gGhOpSDB1OLIgifFOWPG1+3zxy3RCiC7Ks5qvMKr43dD5HEW
+ 0KPe+Spd9T4AbUDpOB+wiyM/WGIw2/QnIOph1zzGDNwbwInt5SzZXUMIDgcc7OHZW2Fs
+ Y3vY4sVgQveqYBpHvN4M1y+Y8KeK70CZTqOWxX3xWiiLciB3rRvhx5oy/lUQ3FMxC37R
+ Ugts543DqHkIurPeHXuA1hJH+0G6pljnrHLPvktlOQaQzK3yQIw9d6yT++znB+rmDWQ/
+ YcoA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=Oy2j3dzraHwJBqN04p66ThFiaUmnAcs5Y2XrHOxqe2M=;
- b=qo94knsWX1xQCl3n0TRh/cF/2MxTiGBDdiN0SoHwKH8RzcY3TbTDgDqUSFUzJFIXBN
- LX+Sq8c98ODkQmOLpt9Q7uuAwxoftz2KlNTNnpQKS9c6IlVf3/ahD8I5uT7TC6LSOD14
- tXdTr4F7Yt8UngsKzCndlpxM4VpGgN/+OngqhyjaZSymxSX2dU4TGqOuQHpSi78Vk8SQ
- PP4sLr2yWx3qZVrytAPFkzDrz5Rm5m1QGgXkOlQhzzEI980cFZLNHFlZqOmGo5bbsdq7
- kdi45N6ybsU3KMJ0lyVyCzmUZ4WLF8kH61fqy/IsSrsq9S3W3mqMAorjkQDD9B7qSgVx
- hM0A==
-X-Gm-Message-State: ACrzQf00jMbIrLdHYC26eCvy+e3F8ZYdJSi2Kews669tTEUHlLYo2jgf
- hm+ICAqCnwtxTqMQu3rsU4piqdUd0VN0d9Qt5cNZo72gdCDRZh69ZM4yc5HdUW+5K+0Gs12SvJZ
- MyWbv12GlzcgR
-X-Received: by 2002:ac8:4d0e:0:b0:3a5:17fe:aa58 with SMTP id
- w14-20020ac84d0e000000b003a517feaa58mr788103qtv.355.1667861590680; 
- Mon, 07 Nov 2022 14:53:10 -0800 (PST)
-X-Received: by 2002:ac8:4d0e:0:b0:3a5:17fe:aa58 with SMTP id
- w14-20020ac84d0e000000b003a517feaa58mr788100qtv.355.1667861590437; 
- Mon, 07 Nov 2022 14:53:10 -0800 (PST)
-Received: from redhat.com ([87.249.138.11]) by smtp.gmail.com with ESMTPSA id
- bp30-20020a05622a1b9e00b003a50248b89esm7055626qtb.26.2022.11.07.14.53.07
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 07 Nov 2022 14:53:10 -0800 (PST)
-Date: Mon, 7 Nov 2022 17:53:04 -0500
-From: "Michael S. Tsirkin" <mst@redhat.com>
-To: qemu-devel@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Xiang Chen <chenxiang66@hisilicon.com>,
- Hesham Almatary <hesham.almatary@huawei.com>,
- Igor Mammedov <imammedo@redhat.com>,
- Yicong Yang <yangyicong@hisilicon.com>,
- Shannon Zhao <shannon.zhaosl@gmail.com>,
- Ani Sinha <ani@anisinha.ca>, qemu-arm@nongnu.org
-Subject: [PULL v4 67/83] hw/arm/virt: Enable HMAT on arm virt machine
-Message-ID: <20221107224600.934080-68-mst@redhat.com>
-References: <20221107224600.934080-1-mst@redhat.com>
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=f62dMkEZw1/VeoGmNwIOgwTYv39sXyhjpPSKZPA4t+g=;
+ b=Awq8dt+6EzugTa96nhkMUm0tzPzc+0VhADy+k0uxyAfDK5WNlLy6r12yYHlWFYAJ4o
+ CEIvL5JPA42mTzrly00SpRYAw8z4P4Yn9IYMTLOGEN1rxrloWXCBCKXIk5H668inxcog
+ NIO/yykMw9LeBtrqEz3PuK39iBrIKrimyBD51lqucp/4H3jkjeWv0XRfQzEC1H82Rl4K
+ 2xsfEnF4WclcueOkPQLA71mHbcAXK7WCrtIdrz+WZ9JbBSUla/syUXU+Wgw0KxySEi3g
+ NOyzKoNtO0PR8bPbMc4r3vLKryfX65waMWa0a0wN+Pl6Oq9JlIJFu7IUUAUfB7hkpxg2
+ 4CnA==
+X-Gm-Message-State: ACrzQf0bZcSswNYLlSEsUAFat7UniogbIqt4Cb6qgWcf9pzULIFixRoG
+ Bo8vAZoBp8kGktanelMZJbA=
+X-Received: by 2002:a05:6e02:14c4:b0:300:99b4:47f1 with SMTP id
+ o4-20020a056e0214c400b0030099b447f1mr28792826ilk.8.1667874954864; 
+ Mon, 07 Nov 2022 18:35:54 -0800 (PST)
+Received: from MBP.lan (ec2-18-117-95-84.us-east-2.compute.amazonaws.com.
+ [18.117.95.84]) by smtp.gmail.com with ESMTPSA id
+ p21-20020a02b015000000b003750cd6e9f2sm3302743jah.177.2022.11.07.18.35.52
+ (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+ Mon, 07 Nov 2022 18:35:54 -0800 (PST)
+From: Schspa Shi <schspa@gmail.com>
+To: peter.maydell@linaro.org
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, Schspa Shi <schspa@gmail.com>
+Subject: [PATCH] hw/arm/boot: set initrd parameters to 64bit in fdt
+Date: Tue,  8 Nov 2022 10:35:42 +0800
+Message-Id: <20221108023542.17557-1-schspa@gmail.com>
+X-Mailer: git-send-email 2.37.3
 MIME-Version: 1.0
-In-Reply-To: <20221107224600.934080-1-mst@redhat.com>
-X-Mailer: git-send-email 2.27.0.106.g8ac3dc51b1
-X-Mutt-Fcc: =sent
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=mst@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::136;
+ envelope-from=schspa@gmail.com; helo=mail-il1-x136.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -135,62 +115,69 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: fo+MHNhpjy8+
+X-TUID: cghGUbF1nqIm
 
-From: Xiang Chen <chenxiang66@hisilicon.com>
+We use 32bit value for linux,initrd-[start/end], when we have
+loader_start > 4GB, there will be a wrong initrd_start passed
+to the kernel, and the kernel will report the following warning.
 
-Since the patchset ("Build ACPI Heterogeneous Memory Attribute Table (HMAT)"),
-HMAT is supported, but only x86 is enabled. Enable HMAT on arm virt machine.
+[    0.000000] ------------[ cut here ]------------
+[    0.000000] initrd not fully accessible via the linear mapping -- please check your bootloader ...
+[    0.000000] WARNING: CPU: 0 PID: 0 at arch/arm64/mm/init.c:355 arm64_memblock_init+0x158/0x244
+[    0.000000] Modules linked in:
+[    0.000000] CPU: 0 PID: 0 Comm: swapper Tainted: G        W          6.1.0-rc3-13250-g30a0b95b1335-dirty #28
+[    0.000000] Hardware name: Horizon Sigi Virtual development board (DT)
+[    0.000000] pstate: 600000c5 (nZCv daIF -PAN -UAO -TCO -DIT -SSBS BTYPE=--)
+[    0.000000] pc : arm64_memblock_init+0x158/0x244
+[    0.000000] lr : arm64_memblock_init+0x158/0x244
+[    0.000000] sp : ffff800009273df0
+[    0.000000] x29: ffff800009273df0 x28: 0000001000cc0010 x27: 0000800000000000
+[    0.000000] x26: 000000000050a3e2 x25: ffff800008b46000 x24: ffff800008b46000
+[    0.000000] x23: ffff800008a53000 x22: ffff800009420000 x21: ffff800008a53000
+[    0.000000] x20: 0000000004000000 x19: 0000000004000000 x18: 00000000ffff1020
+[    0.000000] x17: 6568632065736165 x16: 6c70202d2d20676e x15: 697070616d207261
+[    0.000000] x14: 656e696c20656874 x13: 0a2e2e2e20726564 x12: 0000000000000000
+[    0.000000] x11: 0000000000000000 x10: 00000000ffffffff x9 : 0000000000000000
+[    0.000000] x8 : 0000000000000000 x7 : 796c6c756620746f x6 : 6e20647274696e69
+[    0.000000] x5 : ffff8000093c7c47 x4 : ffff800008a2102f x3 : ffff800009273a88
+[    0.000000] x2 : 80000000fffff038 x1 : 00000000000000c0 x0 : 0000000000000056
+[    0.000000] Call trace:
+[    0.000000]  arm64_memblock_init+0x158/0x244
+[    0.000000]  setup_arch+0x164/0x1cc
+[    0.000000]  start_kernel+0x94/0x4ac
+[    0.000000]  __primary_switched+0xb4/0xbc
+[    0.000000] ---[ end trace 0000000000000000 ]---
+[    0.000000] Zone ranges:
+[    0.000000]   DMA      [mem 0x0000001000000000-0x0000001007ffffff]
 
-Signed-off-by: Xiang Chen <chenxiang66@hisilicon.com>
-Signed-off-by: Hesham Almatary <hesham.almatary@huawei.com>
-Reviewed-by: Igor Mammedov <imammedo@redhat.com>
-Message-Id: <20221027100037.251-7-hesham.almatary@huawei.com>
-Tested-by: Yicong Yang <yangyicong@hisilicon.com>
-Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
-Signed-off-by: Michael S. Tsirkin <mst@redhat.com>
+To fix it, we can change it to u64 type.
+
+Signed-off-by: Schspa Shi <schspa@gmail.com>
 ---
- hw/arm/virt-acpi-build.c | 7 +++++++
- hw/arm/Kconfig           | 1 +
- 2 files changed, 8 insertions(+)
+ hw/arm/boot.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
-index da9e41e72b..4156111d49 100644
---- a/hw/arm/virt-acpi-build.c
-+++ b/hw/arm/virt-acpi-build.c
-@@ -42,6 +42,7 @@
- #include "hw/acpi/memory_hotplug.h"
- #include "hw/acpi/generic_event_device.h"
- #include "hw/acpi/tpm.h"
-+#include "hw/acpi/hmat.h"
- #include "hw/pci/pcie_host.h"
- #include "hw/pci/pci.h"
- #include "hw/pci/pci_bus.h"
-@@ -987,6 +988,12 @@ void virt_acpi_build(VirtMachineState *vms, AcpiBuildTables *tables)
-             build_slit(tables_blob, tables->linker, ms, vms->oem_id,
-                        vms->oem_table_id);
-         }
-+
-+        if (ms->numa_state->hmat_enabled) {
-+            acpi_add_table(table_offsets, tables_blob);
-+            build_hmat(tables_blob, tables->linker, ms->numa_state,
-+                       vms->oem_id, vms->oem_table_id);
-+        }
+diff --git a/hw/arm/boot.c b/hw/arm/boot.c
+index 57efb61ee419..da719a4f8874 100644
+--- a/hw/arm/boot.c
++++ b/hw/arm/boot.c
+@@ -638,14 +638,14 @@ int arm_load_dtb(hwaddr addr, const struct arm_boot_info *binfo,
      }
  
-     if (ms->nvdimms_state->is_enabled) {
-diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
-index 15fa79afd3..17fcde8e1c 100644
---- a/hw/arm/Kconfig
-+++ b/hw/arm/Kconfig
-@@ -30,6 +30,7 @@ config ARM_VIRT
-     select ACPI_VIOT
-     select VIRTIO_MEM_SUPPORTED
-     select ACPI_CXL
-+    select ACPI_HMAT
+     if (binfo->initrd_size) {
+-        rc = qemu_fdt_setprop_cell(fdt, "/chosen", "linux,initrd-start",
++        rc = qemu_fdt_setprop_u64(fdt, "/chosen", "linux,initrd-start",
+                                    binfo->initrd_start);
+         if (rc < 0) {
+             fprintf(stderr, "couldn't set /chosen/linux,initrd-start\n");
+             goto fail;
+         }
  
- config CHEETAH
-     bool
+-        rc = qemu_fdt_setprop_cell(fdt, "/chosen", "linux,initrd-end",
++        rc = qemu_fdt_setprop_u64(fdt, "/chosen", "linux,initrd-end",
+                                    binfo->initrd_start + binfo->initrd_size);
+         if (rc < 0) {
+             fprintf(stderr, "couldn't set /chosen/linux,initrd-end\n");
 -- 
-MST
+2.37.3
 

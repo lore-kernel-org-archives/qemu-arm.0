@@ -1,137 +1,101 @@
-Return-Path: <alex.bennee@linaro.org>
-Received: from zen.linaroharston ([185.81.254.11])
-        by smtp.gmail.com with ESMTPSA id h19-20020a05600c351300b003b4ff30e566sm32874518wmq.3.2022.11.08.01.18.51
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 08 Nov 2022 01:18:51 -0800 (PST)
-Received: from zen (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 9EB031FFB7;
-	Tue,  8 Nov 2022 09:18:50 +0000 (GMT)
-References: <20221108023542.17557-1-schspa@gmail.com>
-User-agent: mu4e 1.9.1; emacs 28.2.50
-From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: Schspa Shi <schspa@gmail.com>
-Cc: peter.maydell@linaro.org, qemu-devel@nongnu.org, qemu-arm@nongnu.org
-Subject: Re: [PATCH] hw/arm/boot: set initrd parameters to 64bit in fdt
-Date: Tue, 08 Nov 2022 09:14:04 +0000
-In-reply-to: <20221108023542.17557-1-schspa@gmail.com>
-Message-ID: <87fsetg5xh.fsf@linaro.org>
+Received: by 2002:a17:906:80c3:b0:7ae:d8f:8937 with SMTP id a3csp3763195ejx;
+        Tue, 8 Nov 2022 02:09:47 -0800 (PST)
+X-Received: by 2002:a05:600c:1508:b0:3cf:6cc1:c3b4 with SMTP id b8-20020a05600c150800b003cf6cc1c3b4mr33575946wmg.156.1667902186916;
+        Tue, 08 Nov 2022 02:09:46 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1667902186; cv=none;
+        d=google.com; s=arc-20160816;
+        b=kaOmmcLi9Ehbj+Xd337hb1yO5uSep/nIFUblPmck1YpxWkvKN6dWk7Jvw7dCtYh26f
+         V+vghiKqCPCLMFUtnYG3h2iHeLW71yr/0kzkiuPwBlfblu+QoLYiRGC4D8iPM787S3fZ
+         yqVVWM0iwXd9vJHB8r59MMxrqPXk0yRCfV0M2MCBWXrPtKHm0sRDHsNXa60SfglGQ/Ul
+         en5r8LZbtBRfxnMV5qlYee3G3D8opmh4ytPUoGqHO3dcQ61whnEal3ZeGKNkcO+paHyI
+         qf2IaN4jQuU2wlQBHT7FGLqELGP8zp6P5NF2kfaiyZTkmCwInPqqNjDDiArihxHeF4EY
+         5MQQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature;
+        bh=PBuuYhT1JpZhLn9k4HBlA5caR0RMHj1xng42owFfgzk=;
+        b=GGAm5PQIWwRwBz895fCi/yjFgQ7q4Sn0l8B9te3SqafQ2Pu8nC8RnCC+Ol0wQNT24G
+         oHsHts3OoB57rO4Bg5Vvc8waF2i3F5zxEOG+AIdIC1F9m/XHv733Ak0+NHirYodkUMIp
+         1TtgXtSEDJLIlPsVkOj538cpeFZczVLU0ScRDi9bJAr8u0xFy07jqk9sMJjjfVkzy7Kd
+         TymtWegws2iJ8xZq3tReghVv1Aqxvs4TDJFTqTo1YnUq8+95FWR5e/oqYss8nrhP0WJK
+         cOIzZUlhcxQpb75ybzCH3KKor4FMBxb7c3B0/JuV2VPX25RrnWVOSUfhye/jeK5DjvHY
+         tNkw==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=PVevaqfG;
+       spf=pass (google.com: domain of francesco.cagnin@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=francesco.cagnin@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <francesco.cagnin@gmail.com>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id u18-20020adfb212000000b0023622d65cb9sor4233176wra.71.2022.11.08.02.09.46
+        (Google Transport Security);
+        Tue, 08 Nov 2022 02:09:46 -0800 (PST)
+Received-SPF: pass (google.com: domain of francesco.cagnin@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=PVevaqfG;
+       spf=pass (google.com: domain of francesco.cagnin@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=francesco.cagnin@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=PBuuYhT1JpZhLn9k4HBlA5caR0RMHj1xng42owFfgzk=;
+        b=PVevaqfG2bG3Q15g5/Q02LvDxIbahRsrzXEIQmtS/LTtuM8inWMhGItU5Y9cxncxUU
+         6GDBazTaGt7g8xAHulWDkRM4qIdmGCc+qEjdlOtKy6X7RVEltafpGRvQweu8tFlpENeE
+         E7gAiu15CY9uhjgYxxwwOGcHS87Fq0bImU7h+L6lVsei3BhxKYKWpYT7Y4zvtyQgjpyA
+         HX3ascxys744kTk9Yl8VaDSdCy2pZZ4UYJ235ktvFZpZos9XMPYF4dBzvOwpPzspyoox
+         OQjPUrhXlhI64ILgI+d8znc7I+L2bYYMcMUBH7amsLZBVw+68rv/ukWF2sL57W6xjwxn
+         T5Zw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=PBuuYhT1JpZhLn9k4HBlA5caR0RMHj1xng42owFfgzk=;
+        b=adZFsqSK+odfhzlPyTP16JVczWxp1i5Mv8/XiJ2/lPR1xOmoronw/3H0+tacY/bpZ0
+         FOnLOkbUOy4z2QMMzeFkm1Ey9KDL1io0MjEIatiU6by1inu2Gc0VSLSI0f/psRMVyZgp
+         L5luBlfthO7Fzd+63/ckaiM6agdTfSahifBDKX4S3klP4iq/NpoOaZyKiGdijQN4KVZk
+         4MGs2DBHHbRPWnYqoTDzXzAyfXXAGucN8v8AXPQ2nUzPZG3WC2jr9pf4m2F0+IWIplJI
+         SzESKqznqD/IjgR0FRqNEJLucAsSpwXk7MxRMzMJLcVD8I7YWModT1vhTIUaUb/N7Jux
+         q5lQ==
+X-Gm-Message-State: ACrzQf0Q+ocTsK7UfEJPcwXkqe+GRQJRNeqQm0+kDoFokJsP92x3tqR9
+	DZZmS829pUQZ+uUGEHvEYCfzfHWXAlJ83MNduYw=
+X-Google-Smtp-Source: AMsMyM72fG9tXGcFww3l+94QhKy33EpMprb+NlccQjFR128c0V+kTmFsBqDeJdK9fkGVZ1FEmHFUhCB+f2fO/d2IUBI=
+X-Received: by 2002:adf:ea10:0:b0:236:ec3e:869d with SMTP id
+ q16-20020adfea10000000b00236ec3e869dmr23416470wrm.33.1667902186330; Tue, 08
+ Nov 2022 02:09:46 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-TUID: 38XwSsnbqA9P
+References: <20221104184101.6923-1-fcagnin@quarkslab.com> <20221104184101.6923-3-fcagnin@quarkslab.com>
+ <2B918171-9464-40DC-AE11-D25E60858370@ynddal.dk>
+In-Reply-To: <2B918171-9464-40DC-AE11-D25E60858370@ynddal.dk>
+From: Francesco Cagnin <francesco.cagnin@gmail.com>
+Date: Tue, 8 Nov 2022 11:09:35 +0100
+Message-ID: <CAF8_6KmwMCiNcC-romHoGZhcpPph71b3qv7yn9RHQArV3Q+nDA@mail.gmail.com>
+Subject: Re: [PATCH 2/3] hvf: implement guest debugging on Apple Silicon hosts
+To: Mads Ynddal <mads@ynddal.dk>
+Cc: qemu-devel@nongnu.org, dirty@apple.com, r.bolshakov@yadro.com, 
+	Peter Maydell <peter.maydell@linaro.org>, "open list:ARM cores" <qemu-arm@nongnu.org>, 
+	Alexander Graf <agraf@csgraf.de>, Paolo Bonzini <pbonzini@redhat.com>, 
+	Francesco Cagnin <fcagnin@quarkslab.com>, =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
+X-TUID: VtQzPuwnG2pm
 
+Mads, thanks for the review and feedbacks. I worked on this a few months
+ago but only managed to have it published now, I'm sorry for work being
+done twice.
 
-Schspa Shi <schspa@gmail.com> writes:
+I'll add support for SSTEP_NOIRQ as you suggested.
 
-> We use 32bit value for linux,initrd-[start/end], when we have
-> loader_start > 4GB, there will be a wrong initrd_start passed
-> to the kernel, and the kernel will report the following warning.
->
-> [    0.000000] ------------[ cut here ]------------
-> [    0.000000] initrd not fully accessible via the linear mapping -- plea=
-se check your bootloader ...
-> [    0.000000] WARNING: CPU: 0 PID: 0 at arch/arm64/mm/init.c:355 arm64_m=
-emblock_init+0x158/0x244
-> [    0.000000] Modules linked in:
-> [    0.000000] CPU: 0 PID: 0 Comm: swapper Tainted: G        W          6=
-.1.0-rc3-13250-g30a0b95b1335-dirty #28
-> [    0.000000] Hardware name: Horizon Sigi Virtual development board
-> (DT)
+For multi-core systems there's no particular issue, just I'm not
+familiar with all of these topics and I'm asking for good practices. KVM
+saves breakpoints information in struct 'KVMState', and following the
+same approach I've updated struct 'HVFState' to store equivalent data.
+To keep separate information for each cpu, KVM uses field 'kvm_state' in
+struct 'CPUState' (see 'include/hw/core/cpu.h'), but at the moment
+there's no analogous field for the HVF state (which is instead defined
+as a single global variable in 'accel/hvf/hvf-accel-ops.c'). Should we
+add a new field to 'CPUState' for the HVF state, or take a different
+approach?
 
-Is this an out-of-tree board model?
-
-> [    0.000000] pstate: 600000c5 (nZCv daIF -PAN -UAO -TCO -DIT -SSBS BTYP=
-E=3D--)
-> [    0.000000] pc : arm64_memblock_init+0x158/0x244
-> [    0.000000] lr : arm64_memblock_init+0x158/0x244
-> [    0.000000] sp : ffff800009273df0
-> [    0.000000] x29: ffff800009273df0 x28: 0000001000cc0010 x27: 000080000=
-0000000
-> [    0.000000] x26: 000000000050a3e2 x25: ffff800008b46000 x24: ffff80000=
-8b46000
-> [    0.000000] x23: ffff800008a53000 x22: ffff800009420000 x21: ffff80000=
-8a53000
-> [    0.000000] x20: 0000000004000000 x19: 0000000004000000 x18: 00000000f=
-fff1020
-> [    0.000000] x17: 6568632065736165 x16: 6c70202d2d20676e x15: 697070616=
-d207261
-> [    0.000000] x14: 656e696c20656874 x13: 0a2e2e2e20726564 x12: 000000000=
-0000000
-> [    0.000000] x11: 0000000000000000 x10: 00000000ffffffff x9 : 000000000=
-0000000
-> [    0.000000] x8 : 0000000000000000 x7 : 796c6c756620746f x6 : 6e2064727=
-4696e69
-> [    0.000000] x5 : ffff8000093c7c47 x4 : ffff800008a2102f x3 : ffff80000=
-9273a88
-> [    0.000000] x2 : 80000000fffff038 x1 : 00000000000000c0 x0 : 000000000=
-0000056
-> [    0.000000] Call trace:
-> [    0.000000]  arm64_memblock_init+0x158/0x244
-> [    0.000000]  setup_arch+0x164/0x1cc
-> [    0.000000]  start_kernel+0x94/0x4ac
-> [    0.000000]  __primary_switched+0xb4/0xbc
-> [    0.000000] ---[ end trace 0000000000000000 ]---
-> [    0.000000] Zone ranges:
-> [    0.000000]   DMA      [mem 0x0000001000000000-0x0000001007ffffff]
->
-> To fix it, we can change it to u64 type.
->
-> Signed-off-by: Schspa Shi <schspa@gmail.com>
-> ---
->  hw/arm/boot.c | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
->
-> diff --git a/hw/arm/boot.c b/hw/arm/boot.c
-> index 57efb61ee419..da719a4f8874 100644
-> --- a/hw/arm/boot.c
-> +++ b/hw/arm/boot.c
-> @@ -638,14 +638,14 @@ int arm_load_dtb(hwaddr addr, const struct arm_boot=
-_info *binfo,
->      }
->=20=20
->      if (binfo->initrd_size) {
-> -        rc =3D qemu_fdt_setprop_cell(fdt, "/chosen", "linux,initrd-start=
-",
-> +        rc =3D qemu_fdt_setprop_u64(fdt, "/chosen", "linux,initrd-start",
->                                     binfo->initrd_start);
->          if (rc < 0) {
->              fprintf(stderr, "couldn't set /chosen/linux,initrd-start\n");
->              goto fail;
->          }
->=20=20
-> -        rc =3D qemu_fdt_setprop_cell(fdt, "/chosen", "linux,initrd-end",
-> +        rc =3D qemu_fdt_setprop_u64(fdt, "/chosen", "linux,initrd-end",
->                                     binfo->initrd_start + binfo->initrd_s=
-ize);
->          if (rc < 0) {
->              fprintf(stderr, "couldn't set /chosen/linux,initrd-end\n");
-
-On the face of things this seems fine because unlike the other linux
-properties they are not specified to be "expressed in #address-cells and
-#size-cells" but I do wonder how we got into the situation where the
-kernel and initrd ended up so high in the physical address space.
-
-There is a whole comment in boot.c talking about keeping initrd within
-lowmem:
-
-    /*
-     * We want to put the initrd far enough into RAM that when the
-     * kernel is uncompressed it will not clobber the initrd. However
-     * on boards without much RAM we must ensure that we still leave
-     * enough room for a decent sized initrd, and on boards with large
-     * amounts of RAM we must avoid the initrd being so far up in RAM
-     * that it is outside lowmem and inaccessible to the kernel.
-     * So for boards with less  than 256MB of RAM we put the initrd
-     * halfway into RAM, and for boards with 256MB of RAM or more we put
-     * the initrd at 128MB.
-     * We also refuse to put the initrd somewhere that will definitely
-     * overlay the kernel we just loaded, though for kernel formats which
-     * don't tell us their exact size (eg self-decompressing 32-bit kernels)
-     * we might still make a bad choice here.
-     */
-
-Is this just because the base RAM address of the board is outside of the
-32 bit address range?
-
---=20
-Alex Benn=C3=A9e
+For your last question regarding `hv_vcpu_set_trap_debug_exceptions()`,
+I think it's possible to move it to `hvf_arch_update_guest_debug()` but
+I'm not confident about `hvf_arch_init_vcpu()`, I will experiment again.

@@ -1,186 +1,183 @@
-Received: by 2002:a17:906:80c3:b0:7ae:d8f:8937 with SMTP id a3csp384457ejx;
-        Wed, 9 Nov 2022 08:16:53 -0800 (PST)
-X-Google-Smtp-Source: AMsMyM7pe2GJ1FZeD0KPrrJTf2Di0Yb8BpkQnECSvQR9AokC4hPyRKVPAR2pB4cCgucjg2WTBsuY
-X-Received: by 2002:ad4:5c8c:0:b0:4b9:fe5:e7a8 with SMTP id o12-20020ad45c8c000000b004b90fe5e7a8mr55018092qvh.99.1668010613210;
-        Wed, 09 Nov 2022 08:16:53 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1668010613; cv=none;
+Received: by 2002:a17:906:80c3:b0:7ae:d8f:8937 with SMTP id a3csp385114ejx;
+        Wed, 9 Nov 2022 08:17:43 -0800 (PST)
+X-Google-Smtp-Source: AMsMyM4xcUAAKE7kmTHRrtU+VdG2+tleHdUBiYyqjBF1BxLpDFCmfB3Zjh3HVI6BMBuqeId5oiKX
+X-Received: by 2002:a05:622a:1313:b0:3a5:7341:88fc with SMTP id v19-20020a05622a131300b003a5734188fcmr19972879qtk.220.1668010662904;
+        Wed, 09 Nov 2022 08:17:42 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1668010662; cv=none;
         d=google.com; s=arc-20160816;
-        b=P06jNuYAgj4Urg+Q7M9SORy3mWSS9nS8u9w4eHEInEJfZzlLz4vwfNuKdfElGcgLcl
-         qNneLMG5gxVrUs/XuhOVmD3vlHPHg0/qmfckUH5TAULAcoiVEzjpMF3u9kOyPI7sAKtW
-         ey4bOOWPBXD2lQ+C8Vz94ip3tFOuOC/vcgCLHE91yUHH/mEWBPnGO77BJEObClpEKKmM
-         aVlhEn5qh2OGXT2MmPn1tsABMBJYn05yl4Q0sGT48KDaM4k72GSxRT4e07nhQlleA7dX
-         qjFQUH+gSF5p71tVDrd4FqtMwbSqsM7iOkJ0RiuPHtZCoohtj/JC2xN5HTKm+szK68A9
-         3Q+w==
+        b=yafpZlVgvh/7Fidcpvf9R0WIwx2jqVD8xmQytlVGFLWW8mRe7wf+iCVYEXYJWSU2IJ
+         1V6uC0VGMclvJxkVwgrJyT33n+gA6kS46cC4uSgI1W50K7FTtC0cJi0gQVyyrKyoNFHT
+         d1XwJxQh91bqNmgbCT9Kic9qk/lPiMSjKf5xDA8l4FpsU8VY3tYgOo+3Aj0p0AKNGvju
+         NNZ3h0zxNezuMTytSSSBeUPap2zSu4mvdjZOLZZwiaKM8JT7BDW9yNkMhyn9rNqouJ3c
+         wuL3Uf5MyJiTWYaCLMgGlTocs03cIACHJj7YTIIud/S1zrcO8eD2AxB5alpks9E7Oj1H
+         VEVw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=ca3S+uVbBJTLXkcc5so3RKCbYfZ7cQitrV38GQNpu6s=;
-        b=Rn+LVYtRc1jpGGHZ3GnFCx1YhMAztNJKoM+XFl3cihiE5owqPuN75sDsm2w3KsVNVL
-         yI3apqOr/CGQolmxvN/ypbLPZe+xAJwkF43UekgvlYNBPYVecFY0rGQV9Ad2vx8h/bqQ
-         J6qypVaw5wB+e5YKkSiY2651CVH8axqU17l05zOSSrI16hItptDxH7KYDvu2INnuSfTN
-         qzdZtSjTK6oz/+mFbmckuUCgt/lh0hXnodg1xPeijUVloVYXMy/VVXbpiE9yUMqSb/hm
-         Vtb9dG9mdbf1ZlZueP+lgYGdUpJP2VAFDtY1xlIuE8kkZCJzSDp3Hp/xWQBhE8FCcwyY
-         8BIw==
+        bh=kuIn7I6CLp9VWQfNOdiiRV8ytBoQboktwZZOEvzvoPA=;
+        b=wwM1zbpDpjysrtIOmg/L7xqA8klUZajFnS9RVF90SAYwueqOQhdVsYaUHpxV5luX1J
+         qwgscED6ydQTmjXjOiqa/fAfWu44VvFZf5+E2/bTV5k/8QtpuB6SSujB59vQTkUKn0TX
+         UQRQZIGLu6pqAWvk/3Hu2G/J2u0rHq15aMz4VvFjfEnB3Mg+we20chrlGyGou6riBdxf
+         qY5Z79OFLXFWcO8sl3LcjfG3Qi5pv+ai9KQa1RKvvCrXk8Q+k3sYPDU7MM7vLN0coVnA
+         AzrsMw5glXy+B5TutNT8mxWocn8RJW6DUKRmr/1FFXtFGKyD7SopVmJ5w1GEWXcvczWO
+         V6vA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=UGq0qXcb;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=wfsrMWK9;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id ch14-20020a05622a40ce00b0039cbf67b278si8755510qtb.309.2022.11.09.08.16.53
+        by mx.google.com with ESMTPS id fw15-20020a056214238f00b004bb9e5d2208si8616281qvb.56.2022.11.09.08.17.42
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 09 Nov 2022 08:16:53 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 09 Nov 2022 08:17:42 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=UGq0qXcb;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=wfsrMWK9;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1osnjA-00018p-PW; Wed, 09 Nov 2022 11:15:00 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1osnjL-0001GG-1F; Wed, 09 Nov 2022 11:15:11 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1osnj9-00018O-Jj
- for qemu-devel@nongnu.org; Wed, 09 Nov 2022 11:14:59 -0500
-Received: from mail-wr1-x432.google.com ([2a00:1450:4864:20::432])
+ id 1osnjJ-0001FX-Jb
+ for qemu-arm@nongnu.org; Wed, 09 Nov 2022 11:15:09 -0500
+Received: from mail-wm1-x32a.google.com ([2a00:1450:4864:20::32a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1osnj4-0007ry-Bx
- for qemu-devel@nongnu.org; Wed, 09 Nov 2022 11:14:59 -0500
-Received: by mail-wr1-x432.google.com with SMTP id w14so26494342wru.8
- for <qemu-devel@nongnu.org>; Wed, 09 Nov 2022 08:14:53 -0800 (PST)
+ id 1osnj6-0007wI-50
+ for qemu-arm@nongnu.org; Wed, 09 Nov 2022 11:15:07 -0500
+Received: by mail-wm1-x32a.google.com with SMTP id
+ i5-20020a1c3b05000000b003cfa97c05cdso1577180wma.4
+ for <qemu-arm@nongnu.org>; Wed, 09 Nov 2022 08:14:55 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:to:from:from:to:cc:subject:date:message-id
- :reply-to; bh=ca3S+uVbBJTLXkcc5so3RKCbYfZ7cQitrV38GQNpu6s=;
- b=UGq0qXcbl2HlNTdkgFa5D1jeNMUB9ZJ1xrdzsK4RAMl48TSW0Tlurz43wCkPCjzpy2
- nBHBuSchvHFh6gkomwOq0fBNBlGYX7U8nwVi9myj+zshOpXis+1mmIWw2zX7IZx9QmlR
- Mr64OQ7pT8bRV8L8/eG18Uw2JhQjYEbPjkshSjAjr4auLjO2cw/HmfZgaZGtvn0JVuKT
- cl3+k6tBzSktghFknowxBA03r+w5jYK7BqgyNaN+1Dx7QjFBmDc0mTKFxfE25fxsPH8n
- WtsS+vY8lN294+B9SgJSDu9SyLNMJZ/K+KkUCzm9UYUmdtNjLsGnwjFLMWfvZR0fq6cS
- 4Jrg==
+ :reply-to; bh=kuIn7I6CLp9VWQfNOdiiRV8ytBoQboktwZZOEvzvoPA=;
+ b=wfsrMWK9LTJNjPEVGpICwDLtgoHzmdjrg8b+bNT6twp1Y6Q2JhvZi6PRZYTbpzAflG
+ lL1W2C8lujVDswv1hWAmK79mc0s8v/u3UR2OVM8QZHD0v7uPOxU/kwEQaFw92WckIMmB
+ 4Tl3u28pdDVAP7AWDgzxODjElQ+uIWKW3nxeFdqXkj8bleFB/zTTWrgtB/GvILnzRKUg
+ GlRo/2JCvv3qH4xDOEFg542IGQQQqDc+VuYQqpyz8rHnD5kUwISIae21FGzNzvnGLWyJ
+ NxoP2OnjKTVBAITlL1FzYf+mbRSu6n6OxuyV3zedy+1f2h86mHmlEgS4XIdONZw/Njc5
+ zhxA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=ca3S+uVbBJTLXkcc5so3RKCbYfZ7cQitrV38GQNpu6s=;
- b=kWTUZAFgBQJboqIRvjTfhVWKREW/kTlsHOiOd+PHzRZ8bMHGc/atn8uQwjSBeVmu5+
- Vno4QnPDtqPpp+Mo0c7kczKoxEHrLEJxJ3FwKT0o2k82J9eQyvBePXV5Oq27DcQfZL+I
- 7F0KTGQn/ZdEjtIJyZNOr6pRwKQw+EfrZdgGNEjV04TFCdi7UpMKyEMaat6VQWFiR5wM
- JQyNrV23FeDcDjA3wreevek5J+hBC3rvTTCj70aGngjoWp6wpLzvh1Wz3Z/LD24I955z
- PpunyODPBJEHUwN/lVDr9k1BDZV9tDI4E/pNkMnYq1HQ3p1QjuJm20HnUsCKWwj5h0fO
- IQyQ==
-X-Gm-Message-State: ACrzQf03Kv5bmouUePDTC0ohWyGsR4lIWP1RbjvsyNhRXkZg9ATG/irk
- am1xzqgW9IYvV6PPDDEBhrUIsA==
-X-Received: by 2002:adf:e0c8:0:b0:236:d9e5:4a51 with SMTP id
- m8-20020adfe0c8000000b00236d9e54a51mr31991642wri.168.1668010492632; 
- Wed, 09 Nov 2022 08:14:52 -0800 (PST)
+ bh=kuIn7I6CLp9VWQfNOdiiRV8ytBoQboktwZZOEvzvoPA=;
+ b=L9IRin5H7+cL+mlGb4B3ss5Zb/juN/GFfJWF/gPBOzpZWr73Kc+Q7j+vJtL/uO9rca
+ knSWSuw2/393C6+SuO3zBGLKrZiNe2v6G4V+M5k/xoDdLubD8HFBy1RVAZw+YGOH+DDp
+ Uy1YnrBoqdZa+JtPL2Uk9vUJG4pet+8ngfsNSjoqlJHk1H3sdAqcHEkyqpUBvbWBKdo+
+ vovx72bsi8drzwlb3D7piNPolmCtxb+eAdXzT3wO+i7ys6jz+RJVjo9XnF+iRqYTYvbT
+ WLQiocRv1jqdaRJs/XKB7jiam1aYl5actYR+qEWMeX6HOVgkA+X4Dmeql8Kdxey5wutq
+ G1PA==
+X-Gm-Message-State: ANoB5plrjDQLylLlySj7ZYWBo2GKynXqUtZevdmDIMQ6FllIVv6YbxFx
+ K8x2mWJxa612w7RL5D2q+kn13LlHiOw/Ww==
+X-Received: by 2002:a05:600c:230d:b0:3cf:acc6:ba97 with SMTP id
+ 13-20020a05600c230d00b003cfacc6ba97mr10336300wmo.102.1668010494825; 
+ Wed, 09 Nov 2022 08:14:54 -0800 (PST)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
  by smtp.gmail.com with ESMTPSA id
- p15-20020adfce0f000000b0022cbf4cda62sm16209186wrn.27.2022.11.09.08.14.51
+ p15-20020adfce0f000000b0022cbf4cda62sm16209186wrn.27.2022.11.09.08.14.53
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 09 Nov 2022 08:14:52 -0800 (PST)
+ Wed, 09 Nov 2022 08:14:54 -0800 (PST)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH for-8.0 6/9] hw/intc: Convert TYPE_KVM_ARM_GICV3 to 3-phase
+Subject: [PATCH for-8.0 8/9] hw/intc: Convert TYPE_ARM_GICV3_ITS to 3-phase
  reset
-Date: Wed,  9 Nov 2022 16:14:41 +0000
-Message-Id: <20221109161444.3397405-7-peter.maydell@linaro.org>
+Date: Wed,  9 Nov 2022 16:14:43 +0000
+Message-Id: <20221109161444.3397405-9-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20221109161444.3397405-1-peter.maydell@linaro.org>
 References: <20221109161444.3397405-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::432;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x432.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32a;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x32a.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_PASS=-0.001,
+ T_SPF_HELO_TEMPERROR=0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: NZPvI+/9nJmi
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 528xmbirJGiX
 
-Convert the TYPE_KVM_ARM_GICV3 device to 3-phase reset.
+Convert the TYPE_ARM_GICV3_ITS device to 3-phase reset.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- hw/intc/arm_gicv3_kvm.c | 14 +++++++++-----
+ hw/intc/arm_gicv3_its.c | 14 +++++++++-----
  1 file changed, 9 insertions(+), 5 deletions(-)
 
-diff --git a/hw/intc/arm_gicv3_kvm.c b/hw/intc/arm_gicv3_kvm.c
-index 3ca643ecba4..72ad916d3db 100644
---- a/hw/intc/arm_gicv3_kvm.c
-+++ b/hw/intc/arm_gicv3_kvm.c
-@@ -77,7 +77,7 @@ DECLARE_OBJ_CHECKERS(GICv3State, KVMARMGICv3Class,
- struct KVMARMGICv3Class {
-     ARMGICv3CommonClass parent_class;
-     DeviceRealize parent_realize;
+diff --git a/hw/intc/arm_gicv3_its.c b/hw/intc/arm_gicv3_its.c
+index 2ff21ed6bbe..57c79da5c55 100644
+--- a/hw/intc/arm_gicv3_its.c
++++ b/hw/intc/arm_gicv3_its.c
+@@ -27,7 +27,7 @@ DECLARE_OBJ_CHECKERS(GICv3ITSState, GICv3ITSClass,
+ 
+ struct GICv3ITSClass {
+     GICv3ITSCommonClass parent_class;
 -    void (*parent_reset)(DeviceState *dev);
 +    ResettablePhases parent_phases;
  };
  
- static void kvm_arm_gicv3_set_irq(void *opaque, int irq, int level)
-@@ -703,14 +703,16 @@ static void arm_gicv3_icc_reset(CPUARMState *env, const ARMCPRegInfo *ri)
-     c->icc_ctlr_el1[GICV3_S] = c->icc_ctlr_el1[GICV3_NS];
+ /*
+@@ -1953,12 +1953,14 @@ static void gicv3_arm_its_realize(DeviceState *dev, Error **errp)
+     }
  }
  
--static void kvm_arm_gicv3_reset(DeviceState *dev)
-+static void kvm_arm_gicv3_reset_hold(Object *obj)
+-static void gicv3_its_reset(DeviceState *dev)
++static void gicv3_its_reset_hold(Object *obj)
  {
--    GICv3State *s = ARM_GICV3_COMMON(dev);
-+    GICv3State *s = ARM_GICV3_COMMON(obj);
-     KVMARMGICv3Class *kgc = KVM_ARM_GICV3_GET_CLASS(s);
+-    GICv3ITSState *s = ARM_GICV3_ITS_COMMON(dev);
++    GICv3ITSState *s = ARM_GICV3_ITS_COMMON(obj);
+     GICv3ITSClass *c = ARM_GICV3_ITS_GET_CLASS(s);
  
-     DPRINTF("Reset\n");
- 
--    kgc->parent_reset(dev);
-+    if (kgc->parent_phases.hold) {
-+        kgc->parent_phases.hold(obj);
+-    c->parent_reset(dev);
++    if (c->parent_phases.hold) {
++        c->parent_phases.hold(obj);
 +    }
  
-     if (s->migration_blocker) {
-         DPRINTF("Cannot put kernel gic state, no kernel interface\n");
-@@ -890,6 +892,7 @@ static void kvm_arm_gicv3_realize(DeviceState *dev, Error **errp)
- static void kvm_arm_gicv3_class_init(ObjectClass *klass, void *data)
+     /* Quiescent bit reset to 1 */
+     s->ctlr = FIELD_DP32(s->ctlr, GITS_CTLR, QUIESCENT, 1);
+@@ -2012,12 +2014,14 @@ static Property gicv3_its_props[] = {
+ static void gicv3_its_class_init(ObjectClass *klass, void *data)
  {
      DeviceClass *dc = DEVICE_CLASS(klass);
 +    ResettableClass *rc = RESETTABLE_CLASS(klass);
-     ARMGICv3CommonClass *agcc = ARM_GICV3_COMMON_CLASS(klass);
-     KVMARMGICv3Class *kgc = KVM_ARM_GICV3_CLASS(klass);
+     GICv3ITSClass *ic = ARM_GICV3_ITS_CLASS(klass);
+     GICv3ITSCommonClass *icc = ARM_GICV3_ITS_COMMON_CLASS(klass);
  
-@@ -897,7 +900,8 @@ static void kvm_arm_gicv3_class_init(ObjectClass *klass, void *data)
-     agcc->post_load = kvm_arm_gicv3_put;
-     device_class_set_parent_realize(dc, kvm_arm_gicv3_realize,
-                                     &kgc->parent_realize);
--    device_class_set_parent_reset(dc, kvm_arm_gicv3_reset, &kgc->parent_reset);
-+    resettable_class_set_parent_phases(rc, NULL, kvm_arm_gicv3_reset_hold, NULL,
-+                                       &kgc->parent_phases);
+     dc->realize = gicv3_arm_its_realize;
+     device_class_set_props(dc, gicv3_its_props);
+-    device_class_set_parent_reset(dc, gicv3_its_reset, &ic->parent_reset);
++    resettable_class_set_parent_phases(rc, NULL, gicv3_its_reset_hold, NULL,
++                                       &ic->parent_phases);
+     icc->post_load = gicv3_its_post_load;
  }
  
- static const TypeInfo kvm_arm_gicv3_info = {
 -- 
 2.25.1
 

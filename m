@@ -1,87 +1,97 @@
-Received: by 2002:a17:906:80c3:b0:7ae:d8f:8937 with SMTP id a3csp160568ejx;
-        Wed, 9 Nov 2022 02:58:14 -0800 (PST)
-X-Received: by 2002:a17:903:247:b0:188:88be:4fb1 with SMTP id j7-20020a170903024700b0018888be4fb1mr9968862plh.34.1667991494363;
-        Wed, 09 Nov 2022 02:58:14 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1667991494; cv=none;
+Received: by 2002:a17:906:80c3:b0:7ae:d8f:8937 with SMTP id a3csp181746ejx;
+        Wed, 9 Nov 2022 03:35:04 -0800 (PST)
+X-Received: by 2002:a05:6000:4086:b0:236:b659:471d with SMTP id da6-20020a056000408600b00236b659471dmr37001766wrb.563.1667993704638;
+        Wed, 09 Nov 2022 03:35:04 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1667993704; cv=none;
         d=google.com; s=arc-20160816;
-        b=eLWJUdIle6RV0dyt9pj/ZsgOTsTZdTNJTIrm1H//ibeGvQUdxh6STKPhjLIj9NwcZC
-         IYb0NTfYZllQB2U6CUQOh9Gy/ySaWhWfcRnilZBqtVJDL/VgLxHgmfA9/VofZrnn5UV+
-         Llp7t9xlZVim7vrcIhSSZ9Nsy85FcMZy0k4NuhnS6s6U98kub/AN0nwSIvpWBBU4pgpw
-         LYRt0pgeCpl2AdxgS8nB4Z1xdfUYzUNgFu7pPo6WGhvIZmqQLhkFooKDZ8HCmDmaB6nY
-         fxHnFzROaggGwa00qSt6jvn1wiW0Gi2ziGsnEtPYL0N57KC62pvcAcXs/Tc10zpJNcsm
-         TwGA==
+        b=PbtCKxMDXS4y7Evi9UL/x0ITfKmSBkCL4+d5XyYOVeQBpAgI9i9yxr/F0MFK8cPgRz
+         53EMXLV9OutvDUsBNukXdcDYKsWA1Z0RtZ3HCQ7rDfbMI0rG2qpFxcaSUpHJN3tE/GiX
+         e/w+EYo1mTCE7ZKto6uK2FKiBlZs4cBvLSVeYrl75KeZx3RCgckB9Upo1TNgJcnRTgjA
+         OtMHBqk4u9dWIK1J56aVkkRhO7PzfRa2j7qSDG2uiXv+JVWiVojoPOe9mJPZRdZowG3T
+         sQO2T1obXBFhURHg6ZiMxgZ6+XxNRTYmQCYV7COg3mwWkkE8tNbHnVhMB3CjC9CdFmPB
+         rzLg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=cc:to:subject:message-id:date:from:in-reply-to:references
          :mime-version:dkim-signature;
-        bh=pbY438MvfbCAMLXbRRmVzpwHbmCAEqbkhtDF7/Uydi4=;
-        b=DwcVwn/LJqx5EamrkQgwu4vjPEChu10ybzzBxPSp93usvLMGo1/Dkm1vJgvL8Eb19K
-         +9QA9dorcTxk3jN7/0WPeVBXI42/rOMpAbVgFqs5Ru/GZ3HItCR71ABSBasVEw0FLbhS
-         aIeE4X6vj/d7k7biqJF54XYyvvAjqCKmmprU/6RRlZ3ta0JcM5jHHFgvkRRFFWQoZACI
-         pB2mBa6YkzE7qbeXg1K/stC8WqYJulS36ymGKCKD4E1thpjhHJ1jyDi4Jo7JgPyH4XqW
-         1F2LZt0S19STWsjqN6S3St5lgKkI8SpSgmWtk0fdBm+MjQ+9IM5jp6JHiwcYg3kE9NFh
-         QldQ==
+        bh=FPx0waf55UEgZwXyqqagdDKJJCFfsMAc8aLtD5HI970=;
+        b=O86SMfBhxNXcZ0w40IZMkVj36CO24JUsAx6Pg0Ql7ZfHTPfhECkRDLkheUtHRT1BvR
+         1QkeIFTXTUkO6U2h3e3xJv4lNtDdDtVxyV946kzRP1er7FR+PS68o9IgwzsvTP5BrjDC
+         8txI4oolzTQHwDLv6xlVNCA45A2A63bEH8dzPG1QegtCI0C08SbWRi7qn5zWDCuRDngk
+         J5qpEFYIAdf8UgahJWUBAM+cCeA060wHEt0SyvwHVbMUZayiMSos0Y3tFkABmIoyv7oS
+         ni+jeviG2OjyZSfVTLpM1nBqFJCaq6xPd2WpvKdN7VgEO/ktJt+P7vEst5XkUrja70Nt
+         n+/w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=wkwohFmB;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <peter.maydell@linaro.org>
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b="FbGtY/B8";
+       spf=pass (google.com: domain of francesco.cagnin@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=francesco.cagnin@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <francesco.cagnin@gmail.com>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id c16-20020aa78810000000b00562e8e07b68sor6909472pfo.82.2022.11.09.02.58.14
-        for <alex.bennee@linaro.org>
+        by mx.google.com with SMTPS id o10-20020a1c750a000000b003cfc08f061dsor320824wmc.43.2022.11.09.03.35.04
         (Google Transport Security);
-        Wed, 09 Nov 2022 02:58:14 -0800 (PST)
-Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        Wed, 09 Nov 2022 03:35:04 -0800 (PST)
+Received-SPF: pass (google.com: domain of francesco.cagnin@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=wkwohFmB;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b="FbGtY/B8";
+       spf=pass (google.com: domain of francesco.cagnin@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=francesco.cagnin@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
+        d=gmail.com; s=20210112;
         h=cc:to:subject:message-id:date:from:in-reply-to:references
          :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=pbY438MvfbCAMLXbRRmVzpwHbmCAEqbkhtDF7/Uydi4=;
-        b=wkwohFmBnl4Hq4HOIn2ttnnGAEl0XbuJN3nqjeub1txPSc5ppUx+ArndMoLJ0d1POt
-         uZrnJ722uprVqBXnwaO2s1+Pwq+oaWQb7wB9gQ9FuMPrzn506N7JkXbbWlsy+OMCi2mg
-         SW7fIj6Jh/5W1ov0aYRbVM89ilmbekKyuFKGj38yJ1QeKpa0rAMVMinu7G3d0+3QVJ3E
-         U9+vrhvYEv8d+P2NlY60NAtXuuMNDCpfYfLGue5y+jK18GI5dcXuA1KRgO5jeC//Oiz5
-         l4+LJ//aklQqb1fQAMUk8oZOMMDIkiVwZNwNdtj4VRlhgxPEEn5pS9HwbJ+ysaNkchfN
-         v9Zg==
+        bh=FPx0waf55UEgZwXyqqagdDKJJCFfsMAc8aLtD5HI970=;
+        b=FbGtY/B8puhYAYRst3EpLz5SEC/sGRl3tr++X9AY5e5FuToXU1YcGwFXS4xzjtt3Fa
+         gLoamp0SReNVrF8ppi0Utfd3WmMokgnbDlNyFjt1beoP7mHpxCfU/H6rePYfxJ3yAGjq
+         0uDZxjXQ2mk7oN3jbYufHTH2VhO4kpdEqGLsSxazlD9Duoh7qrmXzdBooMs+98YaYZwA
+         iQuSWBusoHc2dtHKANY+jNZNrbytx8uaj3LOaU1sSgiSQ0ZK+DINOL9ZI983HXQgD9Nu
+         bZomOv1Xe1P4ecbSKKSWizPNNC1Im3JwqPUJ6Qkfs4Pu2DJyWvAvhRi9jtP3G4fSocH/
+         +gWg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=cc:to:subject:message-id:date:from:in-reply-to:references
          :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=pbY438MvfbCAMLXbRRmVzpwHbmCAEqbkhtDF7/Uydi4=;
-        b=xrEkrQ/6IvlZ26oLDQBHEuvP5DQBorMtcL0731TKL7UnYZUXAXY9cdw2EmvQ8tgCrp
-         y5AMqAnagUzdIRxEKa5XWsB/Xf9JXqrHmpWUCmYEtvx3GVoRCsRvunxZDGm3CU8L7iYg
-         FDCIVSoyxD8kSAUv7dHF2wK2Q0ayuTMkd/S2aXuI/zTzQiHCQg3xEygJk2VcsxFu8Rdn
-         Op5hbP0Cv6847APSzCFmoSIyLC9XxuyPls4cHJgmxaPZnrNTd1S+dk9ElrE0PZUAZV1f
-         o67GvijwYdPl1pKjcxBdhqA8BNAZtnxT3KacpI43XrY2t4NB+kLIHXYjHnf/QMSkX7xV
-         oDmw==
-X-Gm-Message-State: ACrzQf1NtFCNT9lsRrxDE643QTzE0iXX4/XYaMdkJC47RnOGPCp9dekb
-	1ifEXHo42IUR95PQ/IhDkreiWdWMcAZGc9RnrFWyxcwL
-X-Google-Smtp-Source: AMsMyM6kKhGeo25KJF0+2eCnkSO94JCaM9VWYNFG+EJD1ui5B7tq1/mKLL9Dhv5W3dwuNkwdiDA7R4kG4JrJV/w7jbk=
-X-Received: by 2002:a05:6a00:1595:b0:56d:e04d:e0ab with SMTP id
- u21-20020a056a00159500b0056de04de0abmr41857633pfk.51.1667991493786; Wed, 09
- Nov 2022 02:58:13 -0800 (PST)
+        bh=FPx0waf55UEgZwXyqqagdDKJJCFfsMAc8aLtD5HI970=;
+        b=P3f8NRDV8IpniZrcflezqkPhCW6r9NNDL5pLLqhVHXt5rLolC4TJMjfOOkUvqDivg2
+         E06y8cKNS6s2+I4pSdVAE+2IYIBAqfS97z9moUXGe3oAR1lSms14plDewPYNJ9BHSWkP
+         Em5f4H6ZDG7ib7dFHVJCbajzcsUfzSdqGAaRQ3xADR6aGbLT/u5lFfgqF0iflzCn1I9J
+         Y5IIA/wf8jfVOHvjmLxuUqbmyLaTr2WvCM1Qzw2rwG8CRFzEk2paL2zkjibtnEth91Y2
+         sOJnAmu0fgvbKjBMek+fBeJfZHkz29ev85fO6toT3GlZYFrUJh1tmt5m0HWKs5Yah5Bi
+         uadw==
+X-Gm-Message-State: ACrzQf3Wv2HZBCeIVD75Mv0DPh6tci1JKS8vGFVXEwhyk5vKa0Q8ReHz
+	59TqelAcEb4P20PTQZXDpXByZ+teMaB6JW2A/lSg0crXImCroA==
+X-Google-Smtp-Source: AMsMyM45MTwl5lMlh1d8ui60xgw4kbx9TuRE3pjvXi1GyWL4cL/pOozIyFBG8xdvMhPqu3/HKwDu5QQaoDhban4Ogjo=
+X-Received: by 2002:a1c:19c4:0:b0:3b4:a1da:76c3 with SMTP id
+ 187-20020a1c19c4000000b003b4a1da76c3mr49788239wmz.106.1667993703957; Wed, 09
+ Nov 2022 03:35:03 -0800 (PST)
 MIME-Version: 1.0
 References: <20221104184101.6923-1-fcagnin@quarkslab.com> <20221104184101.6923-3-fcagnin@quarkslab.com>
  <2B918171-9464-40DC-AE11-D25E60858370@ynddal.dk> <CAF8_6KmwMCiNcC-romHoGZhcpPph71b3qv7yn9RHQArV3Q+nDA@mail.gmail.com>
- <D86C8F4E-517E-4ECC-A66D-E57F551FFECF@ynddal.dk>
-In-Reply-To: <D86C8F4E-517E-4ECC-A66D-E57F551FFECF@ynddal.dk>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Wed, 9 Nov 2022 10:58:01 +0000
-Message-ID: <CAFEAcA9jVVQhouS7uhmh+gMs328M_0r9Nz3npzrbmBoVhS+=TA@mail.gmail.com>
+ <D86C8F4E-517E-4ECC-A66D-E57F551FFECF@ynddal.dk> <CAFEAcA9jVVQhouS7uhmh+gMs328M_0r9Nz3npzrbmBoVhS+=TA@mail.gmail.com>
+In-Reply-To: <CAFEAcA9jVVQhouS7uhmh+gMs328M_0r9Nz3npzrbmBoVhS+=TA@mail.gmail.com>
+From: Francesco Cagnin <francesco.cagnin@gmail.com>
+Date: Wed, 9 Nov 2022 12:34:53 +0100
+Message-ID: <CAF8_6KmzX=wbGwoYstC7OAJqTnXK0DKiFXM435hcFqszm7+4QQ@mail.gmail.com>
 Subject: Re: [PATCH 2/3] hvf: implement guest debugging on Apple Silicon hosts
-To: Mads Ynddal <mads@ynddal.dk>
-Cc: Francesco Cagnin <francesco.cagnin@gmail.com>, qemu-devel@nongnu.org, dirty@apple.com, 
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: Mads Ynddal <mads@ynddal.dk>, qemu-devel@nongnu.org, dirty@apple.com, 
 	r.bolshakov@yadro.com, "open list:ARM cores" <qemu-arm@nongnu.org>, 
 	Alexander Graf <agraf@csgraf.de>, Paolo Bonzini <pbonzini@redhat.com>, 
 	Francesco Cagnin <fcagnin@quarkslab.com>, =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
 Content-Type: text/plain; charset="UTF-8"
-X-TUID: BEdYTibJ0dQF
+X-TUID: AA7s/SkOMXt6
 
-On Tue, 8 Nov 2022 at 11:51, Mads Ynddal <mads@ynddal.dk> wrote:
+> In my version, I added the sw breakpoints to `hvf_vcpu_state` so they would
+> follow each CPU, but it's effectively a copy of the global set of breakpoints.
+
+Ah, I missed this field, and it seems the proper one to use. I'll switch
+to this.
+
+> Moving it to `hvf_arch_update_guest_debug` would probably be best. Having it in
+> `hvf_arch_init_vcpu` would mean that it's always enabled. In some corner-cases,
+> that might have an adverse effect.
+
+I agree, I'll move it to 'hvf_arch_update_guest_debug()'.
+
 > I also noticed you are adding 1 to the WRPs and BRPs. As I interpret the
 > documentation, you should subtract 1 instead, given the value 0 is reserved:
 >
@@ -90,27 +100,22 @@ On Tue, 8 Nov 2022 at 11:51, Mads Ynddal <mads@ynddal.dk> wrote:
 > --- a/target/arm/hvf/hvf.c
 > +++ b/target/arm/hvf/hvf.c
 > @@ -39,11 +39,11 @@ static void hvf_arm_init_debug(CPUState *cpu)
->  {
->      ARMCPU *arm_cpu = ARM_CPU(cpu);
+> {
+> ARMCPU *arm_cpu = ARM_CPU(cpu);
 >
-> -    max_hw_bps = 1 + extract64(arm_cpu->isar.id_aa64dfr0, 12, 4);
-> +    max_hw_bps = extract64(arm_cpu->isar.id_aa64dfr0, 12, 4) - 1;
->      hw_breakpoints =
->          g_array_sized_new(true, true, sizeof(HWBreakpoint), max_hw_bps);
+> - max_hw_bps = 1 + extract64(arm_cpu->isar.id_aa64dfr0, 12, 4);
+> + max_hw_bps = extract64(arm_cpu->isar.id_aa64dfr0, 12, 4) - 1;
+> hw_breakpoints =
+> g_array_sized_new(true, true, sizeof(HWBreakpoint), max_hw_bps);
 >
-> -    max_hw_wps = 1 + extract64(arm_cpu->isar.id_aa64dfr0, 20, 4);
-> +    max_hw_wps = extract64(arm_cpu->isar.id_aa64dfr0, 20, 4) - 1;
->      hw_watchpoints =
->          g_array_sized_new(true, true, sizeof(HWWatchpoint), max_hw_wps);
->      return;
+> - max_hw_wps = 1 + extract64(arm_cpu->isar.id_aa64dfr0, 20, 4);
+> + max_hw_wps = extract64(arm_cpu->isar.id_aa64dfr0, 20, 4) - 1;
+> hw_watchpoints =
+> g_array_sized_new(true, true, sizeof(HWWatchpoint), max_hw_wps);
+> return;
 >
 > But the documentation is a bit ambiguous on that. Maybe we can test it?
 
-Adding 1 is correct -- the field definition is "number of breakpoints - 1",
-so the number of bps is "field value + 1". You don't need to open-code this,
-though -- there are functions arm_num_brps() and arm_num_wrps()
-in target/arm/internals.h that extract the fields from the ID registers
-and adjust them to give the actual number.
-
-thanks
--- PMM
+I tested this again and indeed adding 1 is correct. Thanks Peter for
+also pointing out 'arm_num_brps()' and 'arm_num_wrps()', I'll switch to
+those.

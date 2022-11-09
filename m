@@ -1,121 +1,92 @@
-Received: by 2002:a17:906:80c3:b0:7ae:d8f:8937 with SMTP id a3csp181746ejx;
-        Wed, 9 Nov 2022 03:35:04 -0800 (PST)
-X-Received: by 2002:a05:6000:4086:b0:236:b659:471d with SMTP id da6-20020a056000408600b00236b659471dmr37001766wrb.563.1667993704638;
-        Wed, 09 Nov 2022 03:35:04 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1667993704; cv=none;
+Received: by 2002:a17:906:80c3:b0:7ae:d8f:8937 with SMTP id a3csp230176ejx;
+        Wed, 9 Nov 2022 04:55:22 -0800 (PST)
+X-Received: by 2002:a05:600c:2c50:b0:3cf:4d12:1b4b with SMTP id r16-20020a05600c2c5000b003cf4d121b4bmr873249wmg.23.1667998522805;
+        Wed, 09 Nov 2022 04:55:22 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1667998522; cv=none;
         d=google.com; s=arc-20160816;
-        b=PbtCKxMDXS4y7Evi9UL/x0ITfKmSBkCL4+d5XyYOVeQBpAgI9i9yxr/F0MFK8cPgRz
-         53EMXLV9OutvDUsBNukXdcDYKsWA1Z0RtZ3HCQ7rDfbMI0rG2qpFxcaSUpHJN3tE/GiX
-         e/w+EYo1mTCE7ZKto6uK2FKiBlZs4cBvLSVeYrl75KeZx3RCgckB9Upo1TNgJcnRTgjA
-         OtMHBqk4u9dWIK1J56aVkkRhO7PzfRa2j7qSDG2uiXv+JVWiVojoPOe9mJPZRdZowG3T
-         sQO2T1obXBFhURHg6ZiMxgZ6+XxNRTYmQCYV7COg3mwWkkE8tNbHnVhMB3CjC9CdFmPB
-         rzLg==
+        b=GCQX+kiu+WojaEEaiBxmBbxtaQoADUk+5tb84wgGzoUqwcJl/Mo5MHPycBNRTc1SX2
+         OTKqm3xtN3TGHseWu/Jmm86OFpFIOY2MWt+lC40LveEml8uwPY6CIo0vSh+o2rXtED+q
+         F0kmIMfAVdHodmcetUsP5PwMB8jU8HZTIB9i3TWqN9Hx8akSIStaOoKrP2k/5Y5YZnu/
+         zVUmvPRdI7JTsOcvdj6vCdHE4DOPBuruKeJTTGat9ZCgvrCjlxUqjLaAnWIOZYIM14Lc
+         ofDHscSda2OXDBRtOcpJtb6UpDjmXMChgKsgLu1omL28Misd/WpqhtG4amwczvaWdpA+
+         U1gA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=cc:to:subject:message-id:date:from:in-reply-to:references
          :mime-version:dkim-signature;
-        bh=FPx0waf55UEgZwXyqqagdDKJJCFfsMAc8aLtD5HI970=;
-        b=O86SMfBhxNXcZ0w40IZMkVj36CO24JUsAx6Pg0Ql7ZfHTPfhECkRDLkheUtHRT1BvR
-         1QkeIFTXTUkO6U2h3e3xJv4lNtDdDtVxyV946kzRP1er7FR+PS68o9IgwzsvTP5BrjDC
-         8txI4oolzTQHwDLv6xlVNCA45A2A63bEH8dzPG1QegtCI0C08SbWRi7qn5zWDCuRDngk
-         J5qpEFYIAdf8UgahJWUBAM+cCeA060wHEt0SyvwHVbMUZayiMSos0Y3tFkABmIoyv7oS
-         ni+jeviG2OjyZSfVTLpM1nBqFJCaq6xPd2WpvKdN7VgEO/ktJt+P7vEst5XkUrja70Nt
-         n+/w==
+        bh=w+C/UX+wZCLgCzDRjAbBH13JpR4bUNUDvsVDBUP8rfw=;
+        b=JVrMcCgNWxIybqvYMVJxhPv3C1hZFWApjw+pznUthQoRUhagu5PnAiHpZd2OW4oa8n
+         kL+uinozs/TmsyaZcq8+qjBv7LqdIq1BNbUpRQ/gzaOLN52wV6lT26RwJo4xKplItzKe
+         9QJatS5rkXB3YU/ENh1wI1z2aL5J3wzbrfTrX1kH+maimacTGCh5qqY9bTkWL3F5UuBt
+         x2stK/Y98X1QXG6b05eatMu0NcwIBjvDvJske1WE/cxpyPjLXM6wM705xRWv6Hl6zUEO
+         WZ/xl9fHVKk2kV4Ioj1HHumuOo/6LlOKohlHWD7PUy8Vlwi2aFHSxTkZjSUajBiPViGV
+         kr/A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b="FbGtY/B8";
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=ekzeRN4Y;
        spf=pass (google.com: domain of francesco.cagnin@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=francesco.cagnin@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <francesco.cagnin@gmail.com>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id o10-20020a1c750a000000b003cfc08f061dsor320824wmc.43.2022.11.09.03.35.04
+        by mx.google.com with SMTPS id u18-20020adfb212000000b0023622d65cb9sor6112284wra.71.2022.11.09.04.55.22
         (Google Transport Security);
-        Wed, 09 Nov 2022 03:35:04 -0800 (PST)
+        Wed, 09 Nov 2022 04:55:22 -0800 (PST)
 Received-SPF: pass (google.com: domain of francesco.cagnin@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b="FbGtY/B8";
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=ekzeRN4Y;
        spf=pass (google.com: domain of francesco.cagnin@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=francesco.cagnin@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20210112;
         h=cc:to:subject:message-id:date:from:in-reply-to:references
          :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=FPx0waf55UEgZwXyqqagdDKJJCFfsMAc8aLtD5HI970=;
-        b=FbGtY/B8puhYAYRst3EpLz5SEC/sGRl3tr++X9AY5e5FuToXU1YcGwFXS4xzjtt3Fa
-         gLoamp0SReNVrF8ppi0Utfd3WmMokgnbDlNyFjt1beoP7mHpxCfU/H6rePYfxJ3yAGjq
-         0uDZxjXQ2mk7oN3jbYufHTH2VhO4kpdEqGLsSxazlD9Duoh7qrmXzdBooMs+98YaYZwA
-         iQuSWBusoHc2dtHKANY+jNZNrbytx8uaj3LOaU1sSgiSQ0ZK+DINOL9ZI983HXQgD9Nu
-         bZomOv1Xe1P4ecbSKKSWizPNNC1Im3JwqPUJ6Qkfs4Pu2DJyWvAvhRi9jtP3G4fSocH/
-         +gWg==
+        bh=w+C/UX+wZCLgCzDRjAbBH13JpR4bUNUDvsVDBUP8rfw=;
+        b=ekzeRN4Yw0mpLr9VeGW9jsXuFTf4JuRTP4NjZpnUlGWtMfB89dBpC9/78e1wM1gKRF
+         zt8hxeLr8p1AbieHXfm4/w80mFQdTGFT9gd9jtbvmIRQLDT7uPcoK02e0AjEq7zBSOTb
+         PXz+UOLPGhDleBrtBghrndRKbalrreuLiM9er/vM7FBKa614XcY0UUq7xlnjguVqchh7
+         PEUJK8de3APAmvUD45cvMiRUEJk/C7ZfhQJ4J9PNloX7N8HeKlpwGph2j1kA9yHSCm13
+         lc62XuW5dZGbMiTHuLbRlnSxWZwvCQ/lylr7CFoWY6Dk+odfNylivcwP8H26rxAEsAcM
+         8tgQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=cc:to:subject:message-id:date:from:in-reply-to:references
          :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=FPx0waf55UEgZwXyqqagdDKJJCFfsMAc8aLtD5HI970=;
-        b=P3f8NRDV8IpniZrcflezqkPhCW6r9NNDL5pLLqhVHXt5rLolC4TJMjfOOkUvqDivg2
-         E06y8cKNS6s2+I4pSdVAE+2IYIBAqfS97z9moUXGe3oAR1lSms14plDewPYNJ9BHSWkP
-         Em5f4H6ZDG7ib7dFHVJCbajzcsUfzSdqGAaRQ3xADR6aGbLT/u5lFfgqF0iflzCn1I9J
-         Y5IIA/wf8jfVOHvjmLxuUqbmyLaTr2WvCM1Qzw2rwG8CRFzEk2paL2zkjibtnEth91Y2
-         sOJnAmu0fgvbKjBMek+fBeJfZHkz29ev85fO6toT3GlZYFrUJh1tmt5m0HWKs5Yah5Bi
-         uadw==
-X-Gm-Message-State: ACrzQf3Wv2HZBCeIVD75Mv0DPh6tci1JKS8vGFVXEwhyk5vKa0Q8ReHz
-	59TqelAcEb4P20PTQZXDpXByZ+teMaB6JW2A/lSg0crXImCroA==
-X-Google-Smtp-Source: AMsMyM45MTwl5lMlh1d8ui60xgw4kbx9TuRE3pjvXi1GyWL4cL/pOozIyFBG8xdvMhPqu3/HKwDu5QQaoDhban4Ogjo=
-X-Received: by 2002:a1c:19c4:0:b0:3b4:a1da:76c3 with SMTP id
- 187-20020a1c19c4000000b003b4a1da76c3mr49788239wmz.106.1667993703957; Wed, 09
- Nov 2022 03:35:03 -0800 (PST)
+        bh=w+C/UX+wZCLgCzDRjAbBH13JpR4bUNUDvsVDBUP8rfw=;
+        b=Yk/+bL2Khtznh0e+csIKcMsIg/cVnPlSo1jarqswKc/Z8w2uksTLKOB5j0THGFlVXW
+         iZZCws72OEBTNKncBg0VsqIxAPVXu/UYxFP0CkNSuvrkpRZeQSIOriteKPSmLZhMLm2u
+         zknIm9nDicrjzZDZdXhtvHH1/LfBR5NQzRD5wScHpkh70FU3ApsgcBBShIcv6BKJSTL3
+         hTwBXDfsI/z74Bih7O+4JwzVcd/LcH66Y/LC2Bivdw1ph4g+ZmmdQx8EpJ4VjS2vNnaN
+         weWEFOHSFTXpIN/mrXjGM14xyv2fI1SjKGfVJ3LPZ2FtGMMx0eyDTdkAgncARCe3fTwY
+         gy3A==
+X-Gm-Message-State: ACrzQf2wMdsAJG2UPe1QrULMiGBKgCDlJfgtgzv6ypxiL6SsT5n7M72m
+	rD3vo3n3izTnG+iXMimJ04Sa0k2bk0fv6AWAni6Ok2UTP9ZdPg==
+X-Google-Smtp-Source: AMsMyM5fh/48mKuX1BMDQvRee5D8c4ORDhOfBMmanJg2THebR5eH1q0L32DwhL4zRCZwffbC3fYja6FVzsaww16G5fY=
+X-Received: by 2002:adf:ea10:0:b0:236:ec3e:869d with SMTP id
+ q16-20020adfea10000000b00236ec3e869dmr27374695wrm.33.1667998522373; Wed, 09
+ Nov 2022 04:55:22 -0800 (PST)
 MIME-Version: 1.0
-References: <20221104184101.6923-1-fcagnin@quarkslab.com> <20221104184101.6923-3-fcagnin@quarkslab.com>
- <2B918171-9464-40DC-AE11-D25E60858370@ynddal.dk> <CAF8_6KmwMCiNcC-romHoGZhcpPph71b3qv7yn9RHQArV3Q+nDA@mail.gmail.com>
- <D86C8F4E-517E-4ECC-A66D-E57F551FFECF@ynddal.dk> <CAFEAcA9jVVQhouS7uhmh+gMs328M_0r9Nz3npzrbmBoVhS+=TA@mail.gmail.com>
-In-Reply-To: <CAFEAcA9jVVQhouS7uhmh+gMs328M_0r9Nz3npzrbmBoVhS+=TA@mail.gmail.com>
+References: <20221104184101.6923-1-fcagnin@quarkslab.com> <20221104184101.6923-2-fcagnin@quarkslab.com>
+ <87a652hmoe.fsf@linaro.org> <0a146956-a397-54c1-71dd-cd90a68218f7@linaro.org>
+In-Reply-To: <0a146956-a397-54c1-71dd-cd90a68218f7@linaro.org>
 From: Francesco Cagnin <francesco.cagnin@gmail.com>
-Date: Wed, 9 Nov 2022 12:34:53 +0100
-Message-ID: <CAF8_6KmzX=wbGwoYstC7OAJqTnXK0DKiFXM435hcFqszm7+4QQ@mail.gmail.com>
-Subject: Re: [PATCH 2/3] hvf: implement guest debugging on Apple Silicon hosts
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: Mads Ynddal <mads@ynddal.dk>, qemu-devel@nongnu.org, dirty@apple.com, 
-	r.bolshakov@yadro.com, "open list:ARM cores" <qemu-arm@nongnu.org>, 
-	Alexander Graf <agraf@csgraf.de>, Paolo Bonzini <pbonzini@redhat.com>, 
-	Francesco Cagnin <fcagnin@quarkslab.com>, =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
+Date: Wed, 9 Nov 2022 13:55:11 +0100
+Message-ID: <CAF8_6Kk9CWdveyYPRHdN1wXN+9+Mp8fZ6=yDtkvrR_7UO+Y07A@mail.gmail.com>
+Subject: Re: [PATCH 1/3] arm: move KVM breakpoints helpers
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
+Cc: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
+	qemu-devel@nongnu.org, dirty@apple.com, r.bolshakov@yadro.com, 
+	peter.maydell@linaro.org, agraf@csgraf.de, pbonzini@redhat.com, 
+	Francesco Cagnin <fcagnin@quarkslab.com>, qemu-arm@nongnu.org
 Content-Type: text/plain; charset="UTF-8"
-X-TUID: AA7s/SkOMXt6
+X-TUID: 8SwzMCv0iJ0y
 
-> In my version, I added the sw breakpoints to `hvf_vcpu_state` so they would
-> follow each CPU, but it's effectively a copy of the global set of breakpoints.
+> I was planning to move hypervisor-specific code to target/arm/$hypervisor/, but here Francesco wants to re-use the same code
+> between 2 hypervisors... Maybe move it to target/arm/hyp_gdbstub.c
+> and let meson add it conditionally?
 
-Ah, I missed this field, and it seems the proper one to use. I'll switch
-to this.
+Something like this?
 
-> Moving it to `hvf_arch_update_guest_debug` would probably be best. Having it in
-> `hvf_arch_init_vcpu` would mean that it's always enabled. In some corner-cases,
-> that might have an adverse effect.
-
-I agree, I'll move it to 'hvf_arch_update_guest_debug()'.
-
-> I also noticed you are adding 1 to the WRPs and BRPs. As I interpret the
-> documentation, you should subtract 1 instead, given the value 0 is reserved:
->
-> diff --git a/target/arm/hvf/hvf.c b/target/arm/hvf/hvf.c
-> index dbc3605f6d..80a583cbd1 100644
-> --- a/target/arm/hvf/hvf.c
-> +++ b/target/arm/hvf/hvf.c
-> @@ -39,11 +39,11 @@ static void hvf_arm_init_debug(CPUState *cpu)
-> {
-> ARMCPU *arm_cpu = ARM_CPU(cpu);
->
-> - max_hw_bps = 1 + extract64(arm_cpu->isar.id_aa64dfr0, 12, 4);
-> + max_hw_bps = extract64(arm_cpu->isar.id_aa64dfr0, 12, 4) - 1;
-> hw_breakpoints =
-> g_array_sized_new(true, true, sizeof(HWBreakpoint), max_hw_bps);
->
-> - max_hw_wps = 1 + extract64(arm_cpu->isar.id_aa64dfr0, 20, 4);
-> + max_hw_wps = extract64(arm_cpu->isar.id_aa64dfr0, 20, 4) - 1;
-> hw_watchpoints =
-> g_array_sized_new(true, true, sizeof(HWWatchpoint), max_hw_wps);
-> return;
->
-> But the documentation is a bit ambiguous on that. Maybe we can test it?
-
-I tested this again and indeed adding 1 is correct. Thanks Peter for
-also pointing out 'arm_num_brps()' and 'arm_num_wrps()', I'll switch to
-those.
+-arm_ss.add(when: 'CONFIG_KVM', if_true: files('kvm.c', 'kvm64.c'),
+if_false: files('kvm-stub.c'))
++arm_ss.add(when: 'CONFIG_KVM', if_true: files('hyp_gdbstub.c',
+'kvm.c', 'kvm64.c'), if_false: files('kvm-stub.c'))
++arm_ss.add(when: 'CONFIG_HVF', if_true: files('hyp_gdbstub.c'))

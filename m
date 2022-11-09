@@ -1,108 +1,108 @@
-Received: by 2002:a17:906:80c3:b0:7ae:d8f:8937 with SMTP id a3csp277292ejx;
-        Wed, 9 Nov 2022 06:03:37 -0800 (PST)
-X-Google-Smtp-Source: AMsMyM7u0Zi/vCjYMWiaOWOCnbDyiyJQh/Ch4GH/12U0Gfw4L5PL3g7BIpLz7NsU2zTVgwkGvxf+
-X-Received: by 2002:adf:db4d:0:b0:236:699b:be5e with SMTP id f13-20020adfdb4d000000b00236699bbe5emr37269770wrj.147.1668002616904;
-        Wed, 09 Nov 2022 06:03:36 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1668002616; cv=none;
+Received: by 2002:a17:906:80c3:b0:7ae:d8f:8937 with SMTP id a3csp385291ejx;
+        Wed, 9 Nov 2022 08:17:55 -0800 (PST)
+X-Google-Smtp-Source: AMsMyM4G9Clt1J1RJLV84hcpALWaQnojzqpPYdZKdfZCA67llEX8QlkhiYR3s0TqsGdj7oS2CqFE
+X-Received: by 2002:a05:620a:4897:b0:6fa:9c0b:5079 with SMTP id ea23-20020a05620a489700b006fa9c0b5079mr18561553qkb.478.1668010675339;
+        Wed, 09 Nov 2022 08:17:55 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1668010675; cv=none;
         d=google.com; s=arc-20160816;
-        b=sIHCLeNb75sDLHpjnNFflmfsqYv2wlfNPFeRXSrbE+ZH9QbISW+l1GCfbDyywYRiPp
-         5CJPCHh5Esp1QRnqdIblIgb499IT/3+dV1iNbU2iwS2jwvZzEAK4Di83NBEFbLVW3zQx
-         +xaZZuHuZA7srJbUt1T/QGiB46nY8AyvUvhPbWDxMEJdaUpW25w1copSvdkIqNZh9cot
-         dw+oH4J/S923knwp5o80al5JiBE0iFrCAH4uZqm3Q8n06gfkPyjPvjOhyexjNLP9qB2Q
-         QMSPHlj0HVCHsozQtZZ5AyPZGgM+NDF68Mp6L8K+oCDyiSIjvWpniCMqkowC3NoqERXG
-         gy4w==
+        b=MsxzS6t2igwFsM8yQ0MG6KWGctqeKNZkxSHwguonQoJFyGOJEwm1eSKmzh/2/cOI1T
+         euQAPTpsgMlD5h8TdElcJeKYBVNLwdfxBurWjucf6Q9HDzq+es/WHVWzphDaXoB5yp4O
+         BkGyAdZtPQ3anVG1qbEubsEq9M+/cm047eadbT9l3DVfEdNQO4mtfvuahjOEXVbCxUL0
+         G5gCwUkIv2zs2DgZ2whygqIO6489RPHf/EpfI64j66zN1rSJoYqUvemw20DshY8E2rcL
+         tFL9QXz6sHmFCkjjTkwJWOlIKXxIVYCR2mLOfGKobMXan7qlnLWGr0q2LIAusRsJZ2Oc
+         Ax1A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=UNXjrRtkEp7TNBn8iKA7DfH8iwn8nN6TAUHuRgSlY6o=;
-        b=iXMpbpxsjuE6E5NfBZKLeL5gTLIJM75ifYCU5f8iEWLpinEmm4L6kJedqWB8cZz4VU
-         8DLHz7OMEHD6kP9j5eYcGz20gYFxlchkwaJChwM150v61gXkNAMtFd1Trf0k1qyWOWLa
-         YqpM6GdxZ7NZzx/2sRsj8/fCeo8+ly/TYMFAD9WIGNx9gKfBtqHh8ubhwmPyJY3so4jw
-         svhl89MwuceNJJb5XtphZ8vkkenYO8atUwUPp9W7C7ghkQM/C8ZCx2i9UDjaXhw6trQl
-         Q8o2u2COaSKa70mUqNovgc8re1kjgyMW40JJ3wDqDC3xPm2oRR/LAKBM2qqm3/tRAa6L
-         9Fhg==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=VWJDhcEjMyPB1ZONSm9eREZKeQanJK1e8vilV05wL/w=;
+        b=njCHv2sbv135uKCC9dqB0dH8+/AtpcCfl9f19z58r4xCPTC/OD2h23Tn25M9fTCgQC
+         VFCUYaOxn2CC++k+3qMCzjSKmrz0kr8BgTwTaRKodju5s858nmumnZPJWW7LNMJoL7i/
+         9bzpFtnvCvfczy2zrgVuGmxR55ZSo2kIH+nYbXnWasRCTRpFG9utiBMBzi99XZDYy5DP
+         I9UAwRSNGnPINUpGHTa7nHBcc/H1UeWoeW4LQomIYCzRUZweVQRARzF/48UlXWmtk0Tr
+         5oC4YmWlGVm/ITdBrrrqRL+IQh85hcZPnL/FSBd8d8A3gA5mS2cR6jMHNhZyX/I4zWN3
+         Dscw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=BDp8i2sc;
+       dkim=pass header.i=@linaro.org header.s=google header.b=Vlk0vM57;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v17-20020a5d4a51000000b0022e68621426si9644865wrs.175.2022.11.09.06.03.36
+        by mx.google.com with ESMTPS id jk15-20020ad45d4f000000b004990359d3aasi8801902qvb.462.2022.11.09.08.17.55
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 09 Nov 2022 06:03:36 -0800 (PST)
+        Wed, 09 Nov 2022 08:17:55 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=BDp8i2sc;
+       dkim=pass header.i=@linaro.org header.s=google header.b=Vlk0vM57;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1oslfW-00046L-RQ; Wed, 09 Nov 2022 09:03:06 -0500
+	id 1osnj7-00017F-Vr; Wed, 09 Nov 2022 11:14:58 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1oslfU-00045p-QZ
- for qemu-arm@nongnu.org; Wed, 09 Nov 2022 09:03:04 -0500
-Received: from mail-pf1-x42e.google.com ([2607:f8b0:4864:20::42e])
+ id 1osnj6-00016X-LH
+ for qemu-arm@nongnu.org; Wed, 09 Nov 2022 11:14:56 -0500
+Received: from mail-wr1-x435.google.com ([2a00:1450:4864:20::435])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1oslfT-0008RM-52
- for qemu-arm@nongnu.org; Wed, 09 Nov 2022 09:03:04 -0500
-Received: by mail-pf1-x42e.google.com with SMTP id m6so16808966pfb.0
- for <qemu-arm@nongnu.org>; Wed, 09 Nov 2022 06:03:02 -0800 (PST)
+ id 1osniy-0007cQ-Sp
+ for qemu-arm@nongnu.org; Wed, 09 Nov 2022 11:14:56 -0500
+Received: by mail-wr1-x435.google.com with SMTP id cl5so26477614wrb.9
+ for <qemu-arm@nongnu.org>; Wed, 09 Nov 2022 08:14:47 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=UNXjrRtkEp7TNBn8iKA7DfH8iwn8nN6TAUHuRgSlY6o=;
- b=BDp8i2sc62kNhTTCosDFW3PRGQDMLD3zbUPgW+p+QxILeJ7UIvuJkT0utc4QbksmJM
- kRFuaN7mI5ub5vse2NVugjUwGGovGkv8bynRf5VLD+r7POQM735m2aFu3QnnYB+CEm2t
- 7LfK9wf5b7FDB4Bwi08b2HgXDyGdgiyLayYlBSEGXdGBoR5GJ6xs9OoATqQEeX8O03dZ
- IVFAVPXgQl8LtaUEieK4oGXUcxyg4YftsIXCbRk4r7fmu1OeeZq7sq+uRuYeiTAQE3z0
- 20n0tO3sOqliljyi4n3WfV04QtlATXJBrRLavYCDfMvhGvwF1ceV2tH9WKSc9CcImObR
- BGaQ==
+ h=content-transfer-encoding:mime-version:message-id:date:subject:to
+ :from:from:to:cc:subject:date:message-id:reply-to;
+ bh=VWJDhcEjMyPB1ZONSm9eREZKeQanJK1e8vilV05wL/w=;
+ b=Vlk0vM57hx9YUC3LIwvO4N1Mw+prT1wRn+qFIS+rE0mHl+keAhHhhTC5BwPk1mNXwP
+ rgXVVumuungNZFVPcDOcLKMmHJk7xVPPBKYu2C02Qfkt3Kg2aQvODIuOzL8J0+hA9yu9
+ OIJ8uTGH2vA78UVPQIu77A/Z8ANarx1We/0acLu8H/kt8Jrhv+sOoKo2aL1WcWh+SZjB
+ prmqAuVLQCvBCS9wOR82Du0ph1MnPQh6T6eQk1AshB8Tg28Dw5n3s01aKEfqFvlLDhZ6
+ +EF4pAznxxe5sDwmrtCpxEIJTSYXnpwgFJEpfghU6scGVXoGKRfWGLfKvFKoQsIuF+20
+ Ymug==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=UNXjrRtkEp7TNBn8iKA7DfH8iwn8nN6TAUHuRgSlY6o=;
- b=s51BgO4oRjknu7P/IOj3pNfQZT/2G1/ukbVqIacoInvo0d9D8fJfuvadKOWeaB977x
- nxti6gNSSF3GfgzMVpkcyo6t2IcssgLbq7rtrDFDGBwSvXkm3peLhB1Rr/7Fg/nhPsQN
- ZNEEOgqGPuIrO5wqMOAFX+O2IPWP22HLmAhxys85q9KmuslpAOLR3hJbr3JcYEc7TA61
- c0sTNcw4RaJ/WiNlLjjnCfF+wtNl13plclJK2mCxLXFlMGGyiwuDSJnAxcTKr3ScjBdf
- nAdcJxWecOykPFH5O4A4kaC7+3SiK3gRdjRjWP32bvEupJ1q2q2Sg1PIjctb//R1Xrbx
- gLJw==
-X-Gm-Message-State: ANoB5pkMDEnhr8ztdYX/wGhXptihthmcxpN4vXQyf8NfTYxjtkMJb16w
- 8jNJF5zq3iDDr08SToLdDEHXpCAYwrz9C/+Vod0Mwg==
-X-Received: by 2002:a63:81c6:0:b0:470:537b:9afc with SMTP id
- t189-20020a6381c6000000b00470537b9afcmr19376937pgd.231.1668002580943; Wed, 09
- Nov 2022 06:03:00 -0800 (PST)
-MIME-Version: 1.0
-References: <20221109133525.762667-1-quic_llindhol@quicinc.com>
-In-Reply-To: <20221109133525.762667-1-quic_llindhol@quicinc.com>
+ h=content-transfer-encoding:mime-version:message-id:date:subject:to
+ :from:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=VWJDhcEjMyPB1ZONSm9eREZKeQanJK1e8vilV05wL/w=;
+ b=nl2tR/C6j7KXUui4b/oNBXMnuYTePB89JNdMly/LpSraFlLwxQxGIe00wH49oR7pfM
+ K2e4aF8opdSJsWnm+0UTUjUxvVebosLLpDmMB/dNRxXLEU9f8V+UkFhO6/KD/UtvILYD
+ KHwHaxaOAgqD8MpkZrFyRsg6N00KoV4ZTcYYydtwwxDafao+aqOzfgetRC3H+he8cilt
+ ic8w5FJ3QFRSZvA5uMLpBnf/3YVQhLFsKHLn9M29OnJWs76FvHpbc013vmR2681lSupo
+ T/nuEwa6YenjGhsufS3RGScShY2/tkd3huYEoxr+8nUmD6V7qXCNvQFt6iAEFg6a1YZl
+ S5bw==
+X-Gm-Message-State: ACrzQf2hFJdYjkUHMjSVG2PqtCwAKpIV5RPXxxr5/w2TCOQhiE0/RbhY
+ VUMfqEtYZBOPdtO5/VdP5YrdZ0c8iaYb2w==
+X-Received: by 2002:adf:fc48:0:b0:238:d399:c55 with SMTP id
+ e8-20020adffc48000000b00238d3990c55mr20976949wrs.683.1668010486576; 
+ Wed, 09 Nov 2022 08:14:46 -0800 (PST)
+Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
+ by smtp.gmail.com with ESMTPSA id
+ p15-20020adfce0f000000b0022cbf4cda62sm16209186wrn.27.2022.11.09.08.14.45
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 09 Nov 2022 08:14:45 -0800 (PST)
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Wed, 9 Nov 2022 14:02:49 +0000
-Message-ID: <CAFEAcA9Yvr01s=4FAiutLi=Owtt5RhUGAoV-3vREStTyB-UL8A@mail.gmail.com>
-Subject: Re: [RFC PATCH 0/1] hw/arm: use -cpu max by default on sbsa-ref
-To: Leif Lindholm <quic_llindhol@quicinc.com>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, 
- Leif Lindholm <LeifLindholmquic_llindhol@quicinc.com>, 
- Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>,
- Shashi Mallela <shashi.mallela@linaro.org>, 
- Radoslaw Biernacki <rad@semihalf.com>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::42e;
- envelope-from=peter.maydell@linaro.org; helo=mail-pf1-x42e.google.com
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Subject: [PATCH for-8.0 0/9] arm: Convert Arm GIC, ITS,
+ SMMU devices to 3-phase reset
+Date: Wed,  9 Nov 2022 16:14:35 +0000
+Message-Id: <20221109161444.3397405-1-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.25.1
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::435;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x435.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_PASS=-0.001,
+ T_SPF_HELO_TEMPERROR=0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -117,61 +117,59 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: q3flWejZFm02
+X-TUID: aTHKcqjAVWAz
 
-On Wed, 9 Nov 2022 at 13:35, Leif Lindholm <quic_llindhol@quicinc.com> wrote:
->
-> From: Leif Lindholm <Leif Lindholm quic_llindhol@quicinc.com>
->
-> We have mainly (well, as will become clear, in fact "exclusively") been using
-> sbsa-ref with the "max" CPU. But sbsa-ref was created with a default CPU of
-> Cortex-A57, which we have not updated along the way.
+This patchset converts some Arm devices to 3-phase reset.  The
+rationale here is that it would be nice to get rid of the
+device_class_set_parent_reset() function, which is used by
+legacy-reset subclasses which want to chain to their parent's reset
+function. There aren't very many of these devices in total, and
+if we convert them and their parent classes to 3-phase reset they
+can use the 3-phase-reset equivalent function
+resettable_class_set_parent_phases().
 
-So, I don't have a strong opinion on what sbsa-ref's CPU type
-should be: if 'max' works better for the use case we should
-change to it.
+Eventually this will then let us simplify the transitional
+code for handling old-style device reset.
 
-> However, the "max" cpu has seen a bug where Linux boot fails around UEFI
-> ExitBootServices. Marcin Juszkiewicz has found the cause for that, but that
-> requires a patch to TF-A. (Has that been submitted upstream?)
->
-> Turns out that due to a change in upstream TF-A last year, all supported cpus
-> other than "max" fail to even boot UEFI fully, due to the top-level (TF-A)
-> Makefile defaulting to enabling the maximum ARM architectural version
-> (currently 8.6), in combination with not verifying all features at runtime
-> using the ID registers.
+Note that it's necessary to convert the parent class before
+the subclass -- the resettable transitional logic will
+handle the situation where the subclass is still using
+legacy reset and chaining to what it thinks is the parent's
+legacy reset function (by doing a 3-phase reset on the parent),
+but if the subclass is 3-phase then the parent must be too.
 
-This seems to me straightforwardly to be a problem that should be
-fixed in TF-A. "Default to the newest possible architecture version
-and don't check ID registers" is a recipe for "can't boot on
-anything". Many *hardware* CPUs aren't that new yet!
-
-Part of the purpose of sbsa-ref is to find problems with the
-software stack -- so we should expect that sometimes the answer
-is "fix the software stack", not "change the model's behaviour".
-
-> Since the *point* of sbsa-ref is to serve as a continuously evolving platform
-> tracking (with some obvious lag) the evolution of the ARM architecture and the
-> SystemReady specifications, I don't really want to restrict the enabled
-> feature set in TF-A to the Cortex-A57 one.
->
-> My preferred course of action would be to change the default cpu to max -
-> maybe even dropping support for other cpus. I would then step the version
-> field that was added to the DT. *But* this would break existing boots with
-> old TF-A that can currently boot Linux.
-
-An intermediate option would be to move forward to for instance
-the neoverse-n1 CPU type.
-
-If you want to use 'max' for sbsa-ref then you probably also want to
-look at making sure that TF-A is doing the same thing Linux does
-where it checks ID registers for feature presence before enabling
-feature use, because 'max' is a moving target and relies on the
-guest code doing the right thing with feature checks. In particular
-it does not honour the nominal architectural requirements about
-v8.x/v9.x levels, but may implement features from further in the
-"future" than is strictly permitted given the absence of some
-other older features.
+I plan to do the other uses of device_class_set_parent_reset()
+too, but since the conversion patchsets don't depend on each
+other I'm going to send them out piecemeal so they can be
+cc'd to the relevant maintainers, rather than having a
+single massive patchset with a billion people on cc.
 
 thanks
 -- PMM
+
+Peter Maydell (9):
+  hw/arm: Convert TYPE_ARM_SMMU to 3-phase reset
+  hw/arm: Convert TYPE_ARM_SMMUV3 to 3-phase reset
+  hw/intc: Convert TYPE_ARM_GIC_COMMON to 3-phase reset
+  hw/intc: Convert TYPE_ARM_GIC_KVM to 3-phase reset
+  hw/intc: Convert TYPE_ARM_GICV3_COMMON to 3-phase reset
+  hw/intc: Convert TYPE_KVM_ARM_GICV3 to 3-phase reset
+  hw/intc: Convert TYPE_ARM_GICV3_ITS_COMMON to 3-phase reset
+  hw/intc: Convert TYPE_ARM_GICV3_ITS to 3-phase reset
+  hw/intc: Convert TYPE_KVM_ARM_ITS to 3-phase reset
+
+ include/hw/arm/smmuv3.h        |  2 +-
+ hw/arm/smmu-common.c           |  7 ++++---
+ hw/arm/smmuv3.c                | 12 ++++++++----
+ hw/intc/arm_gic_common.c       |  7 ++++---
+ hw/intc/arm_gic_kvm.c          | 14 +++++++++-----
+ hw/intc/arm_gicv3_common.c     |  7 ++++---
+ hw/intc/arm_gicv3_its.c        | 14 +++++++++-----
+ hw/intc/arm_gicv3_its_common.c |  7 ++++---
+ hw/intc/arm_gicv3_its_kvm.c    | 14 +++++++++-----
+ hw/intc/arm_gicv3_kvm.c        | 14 +++++++++-----
+ 10 files changed, 61 insertions(+), 37 deletions(-)
+
+-- 
+2.25.1
+

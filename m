@@ -1,419 +1,140 @@
-Received: by 2002:a17:906:80c3:b0:7ae:d8f:8937 with SMTP id a3csp393319ejx;
-        Wed, 9 Nov 2022 08:27:16 -0800 (PST)
-X-Google-Smtp-Source: AMsMyM4VtFL12une7yewBbD+mEsKMsjGqnFqNZB425K9ikwyhrpps1bgmmrm4c4K4qWJRxD8vV+H
-X-Received: by 2002:a0c:f005:0:b0:4bb:847a:5ace with SMTP id z5-20020a0cf005000000b004bb847a5acemr55571944qvk.104.1668011236541;
-        Wed, 09 Nov 2022 08:27:16 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1668011236; cv=none;
+Received: by 2002:a17:906:80c3:b0:7ae:d8f:8937 with SMTP id a3csp620137ejx;
+        Wed, 9 Nov 2022 14:37:43 -0800 (PST)
+X-Google-Smtp-Source: AMsMyM5FmNaAgFgI2bpSrZkLfLI9KLsJYM8bXI6xCSBhmdFcfC1m/jdB5dnIuupPZwoK6miaTBAP
+X-Received: by 2002:a37:2c83:0:b0:6fa:2042:41d4 with SMTP id s125-20020a372c83000000b006fa204241d4mr41219766qkh.388.1668033462945;
+        Wed, 09 Nov 2022 14:37:42 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1668033462; cv=none;
         d=google.com; s=arc-20160816;
-        b=ZBVJJgXST0AJUoMoF44U3z2kcXzyQpszFDYv0a2V2BxLL/G7RlwhHSktT4JKhW4hlL
-         YlJDw6sAp86otXBwuVmURLxnY0Kgl9dBqbhpOdu/6nG2EITapm95/hyfnFStf0XuWgbb
-         As3ZhO0xTc9TF8U+Oh3mcZRxwU2PppNxi9ACXItBJ1lTu8K2yo30gkKAqJZjYJh6RV08
-         sLfDniFo9wewFF2961OmttacgZy8R1YiaZeCl0X0yIy5AEisfofvKOjIJ03uEIlKdC5m
-         J9y1Egr3hQRRxQ82ENZ0vYh5WqHJ53+0RhNd8qQAlamBp7C31HL7jCk21NcmK8Offunu
-         /89g==
+        b=HZY7lEKFseoKLexpue7pT8IN6kZ7vlT4/QR0CNZb3GTd+PWraDTVDXt1ZfV6V9PTGt
+         OfxMeKv0JqleVVPRnh3cnJrUNrxAhrMUCPAfz6/nJtc3KwJwfwkTM9WwQKpV2mG5tR3A
+         c1rxCOhL3bosoux3AllRPqQ+oA8h54YNymfB6L9GarTMhjaD4ziOLZK7rftLZbdN5DHW
+         G/Yt2FR1NCIYV1QSBhi7kL72gaYBvLmjJnftK0LUX3i71JWh4Iw7vyzOD6hXpW2z+XYp
+         pGRetHgTAe+4XDSNbWlfmijqQciT0OqFfLQGR4qotBXufdAsOYCSNxvvfClF6VAjUtKY
+         /P7Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:user-agent:in-reply-to
-         :content-disposition:mime-version:references:message-id:subject:cc
-         :to:from:date:dkim-signature;
-        bh=XbhdZiLWBGssNfNLCFCuTrGtCzbR6/msyx0LPM6TRpc=;
-        b=atGg1F2wiJYVD8vfveFtxiLWnuoBmCrGMA3y7T9o6B8Ar8NCk/94EcwHLWLTINYH/x
-         4yE5l6gfpzizHoANc0A9EAlNEK4/nw4dOmXFsmw7kM4vBzTjJyE2YjqYhXGKnX7N6/He
-         q8W+FMBXvxx+mKiDViBmGGJftL+qIIqv2DCb9qMlzH9BAl7pU7Sr5LDbZKBporVFqCXD
-         C07KMCHhNlnULdXwZknGvniFVTT5x4SB9ymiP7HlVKZfaUQzPELQvlUBFxBFKCmEhe9e
-         snfPhH/vif2SXt3Zeu/xKh/tWkV+qwgADw5Jr8yz10bmgzPB2dL2niB4g7byZe89ABRD
-         cCDA==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:references:to:content-language:subject:user-agent
+         :mime-version:date:message-id:dkim-signature;
+        bh=vUrhvf2rK47GJcF2f7MbsPccVzAFUfRUyBtBWgkWKJk=;
+        b=PS+bfVp5XQ+GqiBK9nmDuZkD8k8b/cz9++TfA4IJQtFTAW6ac9cWThlJIwYLcbG0XX
+         y4KJ2EXVQElBxC57BCJI+sNsbFkt9Dco7oODjkhVe7+dPP6kRK2JGkvLhfryuXy0F9gK
+         5MyTqKiJ/oFP0tXPFnef7Tbtv0KfA70y890MsJ7UsuSSNRJZoHX9tnDRNz3R1AJrrY7+
+         uYu9hL2GyZD5hpLcFGJhPPesmqxu6NKNNrjBqe6C6jyvq+HOYfw6/3wFjSTVEgyIFFqg
+         2Yu+NfrKUsvvIgaDw/HooBECf9nS7FWa2s1m9F8af/MWHdQQBZakfOi+DvSG2NTEkmdM
+         RKig==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=BsGf+NIH;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@linaro.org header.s=google header.b=L3Iso8Yn;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id o2-20020a05622a008200b003a54e3b0fa0si10188697qtw.109.2022.11.09.08.27.16
+        by mx.google.com with ESMTPS id fe11-20020a05622a4d4b00b003a4ef5cc694si9676885qtb.601.2022.11.09.14.37.42
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 09 Nov 2022 08:27:16 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 09 Nov 2022 14:37:42 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=BsGf+NIH;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dkim=pass header.i=@linaro.org header.s=google header.b=L3Iso8Yn;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1osnus-0005Vi-8v; Wed, 09 Nov 2022 11:27:06 -0500
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1osthK-00046O-7p; Wed, 09 Nov 2022 17:37:30 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <frasse.iglesias@gmail.com>)
- id 1osnuq-0005VR-EF; Wed, 09 Nov 2022 11:27:04 -0500
-Received: from mail-lf1-x129.google.com ([2a00:1450:4864:20::129])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1osthH-00045y-UD
+ for qemu-devel@nongnu.org; Wed, 09 Nov 2022 17:37:27 -0500
+Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <frasse.iglesias@gmail.com>)
- id 1osnuo-0006Ng-5g; Wed, 09 Nov 2022 11:27:04 -0500
-Received: by mail-lf1-x129.google.com with SMTP id d6so26454368lfs.10;
- Wed, 09 Nov 2022 08:27:01 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=user-agent:in-reply-to:content-disposition:mime-version:references
- :message-id:subject:cc:to:from:date:from:to:cc:subject:date
- :message-id:reply-to;
- bh=XbhdZiLWBGssNfNLCFCuTrGtCzbR6/msyx0LPM6TRpc=;
- b=BsGf+NIH1vzg7xswSN2Vtmin1rjGjEbLHQJeJ4luQGZ2zOWqZrg6kv+oBXraFDwEx9
- 1NL3q/r+N4mDMvgj8q0uHy0wO+KC6F41tSYgIlBTBYl57ljbMysdAhx8PLaNIA3i7qrF
- v+GZDKLd50K7RD2G2PUiVhZpXzXSiEGlVQ2YRuaX4Au8dlZswGyh/Dv1XSFCz22lyyiG
- Tj+wvWiPe5JkQ+ElWMB07n1gCfg7GzZZnFCLucH8qD+cukDhsaA3n0xccMTBEqK5Boqe
- gK1qlwKhT6R7DBgNUL9njD95GgwPl9pHy57E8QlMmpp13bONnewliijImpxoz/OsvtI4
- CKmA==
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1osthD-000052-P6
+ for qemu-devel@nongnu.org; Wed, 09 Nov 2022 17:37:26 -0500
+Received: by mail-wm1-x32b.google.com with SMTP id
+ v124-20020a1cac82000000b003cf7a4ea2caso2222322wme.5
+ for <qemu-devel@nongnu.org>; Wed, 09 Nov 2022 14:37:19 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=content-transfer-encoding:in-reply-to:from:references:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=vUrhvf2rK47GJcF2f7MbsPccVzAFUfRUyBtBWgkWKJk=;
+ b=L3Iso8YnBd6TVjw2MUowztdUo0s1KZwleQRTq0u/KK1W9uK9mIllBoK3J5zi+VEv2S
+ SfwhCJlZrqgZ+861xvroEqjkoS4KBT7JY6QBLcW9szJTHFc4taT2ieVvKa31nfKD8lii
+ bhTsr0pft/nUigsMaKzajgqBsKE8UNFM6uSPfUN8rfpKqbtmDA7Sf9c3pU9hn74m/+UC
+ dqxv4KZ5vITnNkQPB1RzAhh3WfZa4daXyFaHzDq8XIdRVH9Uu/EMq97P5QaKwRWhXZUG
+ TJGWLrt5U7r45wyj85YZwa6s+cq8C4ecHkWFyD9fS8zK9Ul6Db1NdvTsmX5RDEpNl5aj
+ kpHA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=user-agent:in-reply-to:content-disposition:mime-version:references
- :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=XbhdZiLWBGssNfNLCFCuTrGtCzbR6/msyx0LPM6TRpc=;
- b=ddByxMlwVqdUcOy0t78eHUMgNWFp48EfdtXJhWlfyofaasH2yYZJxOqeo32k1I189a
- AutKT2g5Yc+0mltfVqAB8z2TU+v/+Fl9Gv13AD7eNMI4TMJSk24LxQ/nzTXYnDFNgT5j
- SIcgEd6KtUo+yW6BAcqVG/ANOaqsLuLBgSYOXH/IcYcUbAb5RygY4ZQf+WiUk+YP+Ayl
- /mVQ9fyjmQzcLc2nih0+jY5kL2JMI4lGHtEmzZwdw5ZslfRwdgRxa+ZiCAuvvybxArcv
- eihbNunnKjPJ1rFZ6gh2hYB3fM3IfS+dtOBFM/oqb4IiR3lHzU9IUibVs6uwYbztttcL
- 5K+A==
-X-Gm-Message-State: ACrzQf205Uk0zp5DCcV/R3G7U21595/M2koio99lItQ9vfNx9xJOHEpB
- ivqWYWjq7c0vmPsHfU0Hh/o=
-X-Received: by 2002:a05:6512:29b:b0:4a9:b9cc:fbeb with SMTP id
- j27-20020a056512029b00b004a9b9ccfbebmr623743lfp.581.1668011218819; 
- Wed, 09 Nov 2022 08:26:58 -0800 (PST)
-Received: from fralle-msi (31-208-27-151.cust.bredband2.com. [31.208.27.151])
+ h=content-transfer-encoding:in-reply-to:from:references:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=vUrhvf2rK47GJcF2f7MbsPccVzAFUfRUyBtBWgkWKJk=;
+ b=4+x9y5J6X40W1ZQyjv8P2vQ46p/3UlIhn7fcbbfXOvkYvoDVMtL5/groXFz0VVlf4O
+ V5/dmyNfpdizmnsGE4VzQXtxKbN3fQQ4R+4Ant5+ojzW/UIvgEpTG1AF5dqcvHzD1tLx
+ 3z693TDsABeHjKAcNul+choaB9RNkuOWbEYuHD93e/rJAzNh54C9u6Hkgc6jlKvlA19f
+ ngyU03lD8/I+SGjkgwj+CindgqDmim8qvviO6bIjCoJ/CWQ7YhBlAb/ApN/Ly8l/wUDP
+ XAAtgi8wTP0EuuAv4FESvWnlx76CBaRiWBFvFIW9h2OxnxZXKlrUofNeOcYGjsjGGOyX
+ VfRQ==
+X-Gm-Message-State: ACrzQf2P1Q9NjHiCjdxtmhCz0k2ToSMcCsNEl5twb9A0TfIqF2QmStcs
+ w8lBfH3ivc7d2Rji9WkUOI8Fbw==
+X-Received: by 2002:a05:600c:654f:b0:3c3:b5b7:43a9 with SMTP id
+ dn15-20020a05600c654f00b003c3b5b743a9mr52667988wmb.201.1668033438442; 
+ Wed, 09 Nov 2022 14:37:18 -0800 (PST)
+Received: from [192.168.1.115] ([185.126.107.38])
  by smtp.gmail.com with ESMTPSA id
- 131-20020a2e0989000000b0026c5579c64csm2235122ljj.89.2022.11.09.08.26.57
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 09 Nov 2022 08:26:57 -0800 (PST)
-Date: Wed, 9 Nov 2022 17:26:55 +0100
-From: Francisco Iglesias <frasse.iglesias@gmail.com>
-To: Vikram Garhwal <vikram.garhwal@amd.com>
-Cc: qemu-devel@nongnu.org, francisco.iglesias@amd.com,
- edgar.iglesias@amd.com, Alistair Francis <alistair@alistair23.me>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- "open list:Xilinx ZynqMP and..." <qemu-arm@nongnu.org>
-Subject: Re: [QEMU][PATCH v2 3/5] xlnx-zynqmp: Connect Xilinx VERSAL CANFD
- controllers
-Message-ID: <20221109162654.GF4571@fralle-msi>
-References: <20221022054746.28217-1-vikram.garhwal@amd.com>
- <20221022054746.28217-4-vikram.garhwal@amd.com>
+ k25-20020a5d5259000000b0022cc3e67fc5sm14485346wrc.65.2022.11.09.14.37.17
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 09 Nov 2022 14:37:18 -0800 (PST)
+Message-ID: <14f6e37b-2656-ce5d-52ba-dd17ff90342a@linaro.org>
+Date: Wed, 9 Nov 2022 23:37:17 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20221022054746.28217-4-vikram.garhwal@amd.com>
-User-Agent: Mutt/1.10.1 (2018-07-13)
-Received-SPF: pass client-ip=2a00:1450:4864:20::129;
- envelope-from=frasse.iglesias@gmail.com; helo=mail-lf1-x129.google.com
-X-Spam_score_int: -1020
-X-Spam_score: -102.1
-X-Spam_bar: ---------------------------------------------------
-X-Spam_report: (-102.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- USER_IN_WELCOMELIST=-0.01, USER_IN_WHITELIST=-100,
- WEIRD_QUOTING=0.001 autolearn=ham autolearn_force=no
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
+ Gecko/20100101 Thunderbird/102.4.1
+Subject: Re: [PATCH for-8.0 3/9] hw/intc: Convert TYPE_ARM_GIC_COMMON to
+ 3-phase reset
+Content-Language: en-US
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+References: <20221109161444.3397405-1-peter.maydell@linaro.org>
+ <20221109161444.3397405-4-peter.maydell@linaro.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
+In-Reply-To: <20221109161444.3397405-4-peter.maydell@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::32b;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x32b.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: tCmGoF65Xw4+
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: ZRmRRmncCAjX
 
-Hi Vikram,
-
-In the git summary s/zynqmp/versal/.
-
-On [2022 Oct 21] Fri 22:47:44, Vikram Garhwal wrote:
-> Connect CANFD0 and CANFD1 on the Versal-virt machine and update xlnx-versal-virt
-> document with CANFD command line examples.
+On 9/11/22 17:14, Peter Maydell wrote:
+> Convert the TYPE_ARM_GIC_COMMON device to 3-phase reset.  This is a
+> simple no-behaviour-change conversion.
 > 
-> Signed-off-by: Vikram Garhwal <vikram.garhwal@amd.com>
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 > ---
->  docs/system/arm/xlnx-versal-virt.rst | 31 ++++++++++++++++++
->  hw/arm/xlnx-versal-virt.c            | 48 ++++++++++++++++++++++++++++
->  hw/arm/xlnx-versal.c                 | 37 +++++++++++++++++++++
->  include/hw/arm/xlnx-versal.h         | 12 +++++++
->  4 files changed, 128 insertions(+)
-> 
-> diff --git a/docs/system/arm/xlnx-versal-virt.rst b/docs/system/arm/xlnx-versal-virt.rst
-> index 92ad10d2da..372e4249f0 100644
-> --- a/docs/system/arm/xlnx-versal-virt.rst
-> +++ b/docs/system/arm/xlnx-versal-virt.rst
-> @@ -34,6 +34,7 @@ Implemented devices:
->  - DDR memory
->  - BBRAM (36 bytes of Battery-backed RAM)
->  - eFUSE (3072 bytes of one-time field-programmable bit array)
-> +- 2 CANFDs
->  
->  QEMU does not yet model any other devices, including the PL and the AI Engine.
->  
-> @@ -224,3 +225,33 @@ To use a different index value, N, from default of 1, add:
->  
->    Better yet, do not use actual product data when running guest image
->    on this Xilinx Versal Virt board.
-> +
-> +Using CANFDs for Versal Virt
-> +""""""""""""""""""""""""""""
-> +Versal CANFD controller is developed based on SocketCAN and QEMU CAN bus
-> +implementation. Bus connection and socketCAN connection for each CAN module
-> +can be set through command lines.
-> +
-> +To connect both CANFD0 and CANFD1 on the same bus:
-> +
-> +.. code-block:: bash
-> +
-> +    -object can-bus,id=canbus -machine canbus0=canbus -machine canbus1=canbus
-> +
-> +To connect CANFD0 and CANFD1 to separate buses:
-> +
-> +.. code-block:: bash
-> +
-> +    -object can-bus,id=canbus0 -object can-bus,id=canbus1 \
-> +    -machine canbus0=canbus0 -machine canbus1=canbus1
-> +
-> +SocketCAN interface can connect to a Physical or a Virtual CAN interfaces on
-> +host machine.
+>   hw/intc/arm_gic_common.c | 7 ++++---
+>   1 file changed, 4 insertions(+), 3 deletions(-)
 
-I'm not native english but this sounds better to me:
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 
-"The SocketCAN interface can connect to a Physical or a Virtual CAN interface on
-the host machine."
-
-> Please check this document to learn about CAN interface on Linux:
-> +docs/system/devices/can.rst
-> +
-> +To connect CANFD0 and CANFD1 to host machine's CAN interface can0:
-> +
-> +.. code-block:: bash
-> +
-> +    -object can-bus,id=canbus -machine canbus0=canbus -machine canbus1=canbus
-> +    -object can-host-socketcan,id=canhost0,if=can0,canbus=canbus
-> diff --git a/hw/arm/xlnx-versal-virt.c b/hw/arm/xlnx-versal-virt.c
-> index 37fc9b919c..963ace861e 100644
-> --- a/hw/arm/xlnx-versal-virt.c
-> +++ b/hw/arm/xlnx-versal-virt.c
-> @@ -40,9 +40,11 @@ struct VersalVirt {
->          uint32_t clk_25Mhz;
->          uint32_t usb;
->          uint32_t dwc;
-> +        uint32_t canfd[2];
->      } phandle;
->      struct arm_boot_info binfo;
->  
-> +    CanBusState *canbus[XLNX_VERSAL_NR_CANFD];
->      struct {
->          bool secure;
->      } cfg;
-> @@ -235,6 +237,33 @@ static void fdt_add_uart_nodes(VersalVirt *s)
->      }
->  }
->  
-> +static void fdt_add_canfd_nodes(VersalVirt *s)
-> +{
-> +    uint64_t addrs[] = { MM_CANFD0, MM_CANFD1 };
-> +    uint32_t size[] = { MM_CANFD0_SIZE, MM_CANFD1_SIZE };
-> +    unsigned int irqs[] = { VERSAL_CANFD0_IRQ_0, VERSAL_CANFD1_IRQ_0 };
-> +    int i;
-> +
-> +    /* Create and connect CANFD0 and CANFD1 nodes to canbus0. */
-> +    for (i = 0; i < ARRAY_SIZE(addrs); i++) {
-> +        char *name = g_strdup_printf("/canfd@%" PRIx64, addrs[i]);
-> +        qemu_fdt_add_subnode(s->fdt, name);
-> +        qemu_fdt_setprop_cell(s->fdt, name, "rx-fifo0", 0x40);
-> +        qemu_fdt_setprop_cell(s->fdt, name, "enable-rx-fifo1", 0x1);
-> +        qemu_fdt_setprop_cell(s->fdt, name, "rx-fifo1", 0x40);
-> +
-> +        qemu_fdt_setprop_cells(s->fdt, name, "interrupts",
-> +                               GIC_FDT_IRQ_TYPE_SPI, irqs[i],
-> +                               GIC_FDT_IRQ_FLAGS_LEVEL_HI);
-> +        qemu_fdt_setprop_sized_cells(s->fdt, name, "reg",
-> +                                     2, addrs[i], 2, size[i]);
-> +        qemu_fdt_setprop_string(s->fdt, name, "compatible",
-> +                                "xlnx,versal-canfd");
-
-For the nodes we need to go with something similar to this:
-https://github.com/Xilinx/linux-xlnx/blob/master/arch/arm64/boot/dts/xilinx/versal.dtsi#L153
-
-> +
-> +        g_free(name);
-> +    }
-> +}
-> +
->  static void fdt_add_fixed_link_nodes(VersalVirt *s, char *gemname,
->                                       uint32_t phandle)
->  {
-> @@ -639,12 +668,17 @@ static void versal_virt_init(MachineState *machine)
->                              TYPE_XLNX_VERSAL);
->      object_property_set_link(OBJECT(&s->soc), "ddr", OBJECT(machine->ram),
->                               &error_abort);
-> +    object_property_set_link(OBJECT(&s->soc), "canbus0", OBJECT(s->canbus[0]),
-> +                             &error_abort);
-> +    object_property_set_link(OBJECT(&s->soc), "canbus1", OBJECT(s->canbus[1]),
-> +                             &error_abort);
->      sysbus_realize(SYS_BUS_DEVICE(&s->soc), &error_fatal);
->  
->      fdt_create(s);
->      create_virtio_regions(s);
->      fdt_add_gem_nodes(s);
->      fdt_add_uart_nodes(s);
-> +    fdt_add_canfd_nodes(s);
->      fdt_add_gic_nodes(s);
->      fdt_add_timer_nodes(s);
->      fdt_add_zdma_nodes(s);
-> @@ -712,6 +746,20 @@ static void versal_virt_init(MachineState *machine)
->  
->  static void versal_virt_machine_instance_init(Object *obj)
->  {
-> +    VersalVirt *s = XLNX_VERSAL_VIRT_MACHINE(obj);
-> +
-> +    /*
-> +     * User can set canbus0 and canbus1 properties to can-bus object and connect
-> +     * to socketcan(optional) interface via command line.
-> +     */
-> +    object_property_add_link(obj, "canbus0", TYPE_CAN_BUS,
-> +                             (Object **)&s->canbus[0],
-> +                             object_property_allow_set_link,
-> +                             0);
-> +    object_property_add_link(obj, "canbus1", TYPE_CAN_BUS,
-> +                             (Object **)&s->canbus[1],
-> +                             object_property_allow_set_link,
-> +                             0);
->  }
->  
->  static void versal_virt_machine_class_init(ObjectClass *oc, void *data)
-> diff --git a/hw/arm/xlnx-versal.c b/hw/arm/xlnx-versal.c
-> index 57276e1506..44b0eaf0c8 100644
-> --- a/hw/arm/xlnx-versal.c
-> +++ b/hw/arm/xlnx-versal.c
-> @@ -185,6 +185,38 @@ static void versal_create_uarts(Versal *s, qemu_irq *pic)
->      }
->  }
->  
-> +static void versal_create_canfds(Versal *s, qemu_irq *pic)
-> +{
-> +    int i;
-> +
-> +    for (i = 0; i < ARRAY_SIZE(s->lpd.iou.canfd); i++) {
-> +        static const int irqs[] = { VERSAL_CANFD0_IRQ_0, VERSAL_CANFD1_IRQ_0};
-> +        static const uint64_t addrs[] = { MM_CANFD0, MM_CANFD1 };
-
-A suggestion is undo the static and move above to the top of the function
-(similar to 'addrs' and 'size' in 'fdt_add_canfd_nodes').
-
-Looks good to me otherwise!
-
-Best regards,
-Francisco
-
-> +        char *name = g_strdup_printf("canfd%d", i);
-> +        SysBusDevice *sbd;
-> +        MemoryRegion *mr;
-> +
-> +        object_initialize_child(OBJECT(s), name, &s->lpd.iou.canfd[i],
-> +                                TYPE_XILINX_CANFD);
-> +        sbd = SYS_BUS_DEVICE(&s->lpd.iou.canfd[i]);
-> +
-> +        object_property_set_int(OBJECT(&s->lpd.iou.canfd[i]), "ext_clk_freq",
-> +                                XLNX_VERSAL_CANFD_REF_CLK , &error_abort);
-> +
-> +        object_property_set_link(OBJECT(&s->lpd.iou.canfd[i]), "canfdbus",
-> +                                 OBJECT(s->lpd.iou.canbus[i]),
-> +                                 &error_abort);
-> +
-> +        sysbus_realize(sbd, &error_fatal);
-> +
-> +        mr = sysbus_mmio_get_region(sbd, 0);
-> +        memory_region_add_subregion(&s->mr_ps, addrs[i], mr);
-> +
-> +        sysbus_connect_irq(sbd, 0, pic[irqs[i]]);
-> +        g_free(name);
-> +    }
-> +}
-> +
->  static void versal_create_usbs(Versal *s, qemu_irq *pic)
->  {
->      DeviceState *dev;
-> @@ -719,6 +751,7 @@ static void versal_realize(DeviceState *dev, Error **errp)
->      versal_create_apu_gic(s, pic);
->      versal_create_rpu_cpus(s);
->      versal_create_uarts(s, pic);
-> +    versal_create_canfds(s, pic);
->      versal_create_usbs(s, pic);
->      versal_create_gems(s, pic);
->      versal_create_admas(s, pic);
-> @@ -758,6 +791,10 @@ static void versal_init(Object *obj)
->  static Property versal_properties[] = {
->      DEFINE_PROP_LINK("ddr", Versal, cfg.mr_ddr, TYPE_MEMORY_REGION,
->                       MemoryRegion *),
-> +    DEFINE_PROP_LINK("canbus0", Versal, lpd.iou.canbus[0],
-> +                      TYPE_CAN_BUS, CanBusState *),
-> +    DEFINE_PROP_LINK("canbus1", Versal, lpd.iou.canbus[1],
-> +                      TYPE_CAN_BUS, CanBusState *),
->      DEFINE_PROP_END_OF_LIST()
->  };
->  
-> diff --git a/include/hw/arm/xlnx-versal.h b/include/hw/arm/xlnx-versal.h
-> index cbe8a19c10..97e63a1b0e 100644
-> --- a/include/hw/arm/xlnx-versal.h
-> +++ b/include/hw/arm/xlnx-versal.h
-> @@ -31,6 +31,7 @@
->  #include "hw/dma/xlnx_csu_dma.h"
->  #include "hw/misc/xlnx-versal-crl.h"
->  #include "hw/misc/xlnx-versal-pmc-iou-slcr.h"
-> +#include "hw/net/xlnx-versal-canfd.h"
->  
->  #define TYPE_XLNX_VERSAL "xlnx-versal"
->  OBJECT_DECLARE_SIMPLE_TYPE(Versal, XLNX_VERSAL)
-> @@ -43,6 +44,8 @@ OBJECT_DECLARE_SIMPLE_TYPE(Versal, XLNX_VERSAL)
->  #define XLNX_VERSAL_NR_SDS     2
->  #define XLNX_VERSAL_NR_XRAM    4
->  #define XLNX_VERSAL_NR_IRQS    192
-> +#define XLNX_VERSAL_NR_CANFD   2
-> +#define XLNX_VERSAL_CANFD_REF_CLK (24 * 1000 * 1000)
->  
->  struct Versal {
->      /*< private >*/
-> @@ -73,6 +76,8 @@ struct Versal {
->              CadenceGEMState gem[XLNX_VERSAL_NR_GEMS];
->              XlnxZDMA adma[XLNX_VERSAL_NR_ADMAS];
->              VersalUsb2 usb;
-> +            CanBusState *canbus[XLNX_VERSAL_NR_CANFD];
-> +            XlnxVersalCANFDState canfd[XLNX_VERSAL_NR_CANFD];
->          } iou;
->  
->          /* Real-time Processing Unit.  */
-> @@ -133,6 +138,8 @@ struct Versal {
->  #define VERSAL_CRL_IRQ             10
->  #define VERSAL_UART0_IRQ_0         18
->  #define VERSAL_UART1_IRQ_0         19
-> +#define VERSAL_CANFD0_IRQ_0        20
-> +#define VERSAL_CANFD1_IRQ_0        21
->  #define VERSAL_USB0_IRQ_0          22
->  #define VERSAL_GEM0_IRQ_0          56
->  #define VERSAL_GEM0_WAKE_IRQ_0     57
-> @@ -163,6 +170,11 @@ struct Versal {
->  #define MM_UART1                    0xff010000U
->  #define MM_UART1_SIZE               0x10000
->  
-> +#define MM_CANFD0                   0xff060000
-> +#define MM_CANFD0_SIZE              0x10000
-> +#define MM_CANFD1                   0xff070000
-> +#define MM_CANFD1_SIZE              0x10000
-> +
->  #define MM_GEM0                     0xff0c0000U
->  #define MM_GEM0_SIZE                0x10000
->  #define MM_GEM1                     0xff0d0000U
-> -- 
-> 2.17.1
-> 
-> 

@@ -1,106 +1,108 @@
-Received: by 2002:a17:906:80c3:b0:7ae:d8f:8937 with SMTP id a3csp914999ejx;
-        Thu, 10 Nov 2022 01:05:29 -0800 (PST)
-X-Google-Smtp-Source: AA0mqf6Ix/sGRUGyJQ78wx0pK+k4FCCPaw2ZM48qt0UT4MfIX1WU+7El7lJ1GDrS07lVi3carEcd
-X-Received: by 2002:a05:622a:48f:b0:3a5:8b4d:2fe0 with SMTP id p15-20020a05622a048f00b003a58b4d2fe0mr15773543qtx.240.1668071129347;
-        Thu, 10 Nov 2022 01:05:29 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1668071129; cv=none;
+Received: by 2002:a17:906:80c3:b0:7ae:d8f:8937 with SMTP id a3csp237521ejx;
+        Thu, 10 Nov 2022 09:07:44 -0800 (PST)
+X-Google-Smtp-Source: AA0mqf5pzuGWsyOcDZd66zcpU644At+W/+IDthWKacpWR2FGh7wQU4pD5bz0vfev91ce+vdDhPTd
+X-Received: by 2002:a05:622a:250b:b0:3a5:9e4f:9d91 with SMTP id cm11-20020a05622a250b00b003a59e4f9d91mr758045qtb.624.1668100064755;
+        Thu, 10 Nov 2022 09:07:44 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1668100064; cv=none;
         d=google.com; s=arc-20160816;
-        b=rWUFW2XcNC4pUXZiB/d4uyu8hfK6nXAU9o/zlC2744Mrjjso/dpXZatN9OcgzVunMu
-         vXSn4CorZAeB4M3sBinBHxDD4DfjgMzlG59J1eNmOlBgwIZqkX/w4QzlO3U2e+YNL5oq
-         1ncNH4WZbeWFgWNtj/CosVwPwnXAmKThrE0y1TG6P6ChSL7w9GXefb/69jUYnyHnf+mz
-         Nl1D2DfsX81BHFu9+BwbriPft0qscQAi8EiuBrbUJi+MBAfVh0yf4tRXcPkAI2kwSaVJ
-         bhKpdNcj+pszEeQMPBNWQ8Rh1hUYmg0kqL1RUrTCensSKesR0hnQj8Mcb60r6gHvoqF3
-         0uKw==
+        b=A1zVUTfs+xX516UCat+5yBXHbgpug61NEZZO0tQ0IkDl3I+Mycr2Z3B9RtBZjVpdrm
+         LZLdbcoBvvvlHywcEY/IZmtN3GobiQEWjRoNAT/Xwm3YA0kNwatIxpodsWBjsBb0nXN/
+         7uksUtRTRBQNaOGFurkgKRbf1xM/oywTTQn3I47bWGWenD7qF6vgBnXgAK/03nTEvvY4
+         iLQ3Mw6ue0hLp16Yxwu3/klXKVtJidAjqcEWQ1h8SGPENvp1ZqJROVdqPevnI7T0tX5y
+         bbwYgyz4CF/CTgBf5mJYeVATwj8unXGZbR2kg4d7heAfD1SuHkLr7W4RLEmIQm5K8Yo9
+         TAMg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
-        bh=PQdWojFEWwL9VnT+zZun1w9OrrZEpCxfI0a3+OnwqlA=;
-        b=Zp33vx/9ftK5UxSzengfUUqVxUKlkaP3H5aet5SIilgHMcj+gGJIS/YNYDUehkEiqI
-         4cDvJV7dzF2hmjCgiv650OYS2MTT1R7axeismnbFe4HDlRLT20xEukdn8bqk20ALIhlP
-         xTaXNQsd3jBLlscSqrmxxNzMDjggqWoq0UNTkwNfXE/XKq8rHoFs2jiyuQBf1AHcKu/o
-         n2aSNqKdxVqCkKkjT+CG+Q1pdL2zXSHNgm4BBs4I788Te2zf7PHGHQ3/hT8Y2L3amnwN
-         C3eXJBfQrYQ/q58/K6SkjMuPO/kGOof00lbuyibhVxCMV5n9UnSosDiVt4UPvA+WtC3c
-         HC8w==
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=1nsn+QTK380Oixk16wL+YNtdjOo3v4Y5uc6G8fog2UE=;
+        b=W5Z8cxdOklOHVptpVc4UalAaMB8pnTIQNHkgPaUUL+TPET7putCsalaNoH4dSiqSSp
+         dkWMN+FOj2Br/KOgM9X5XuXcNnpXKNS45ijcsmd/HLyaVypkN4uwD5C8pSAhJNEwv04p
+         S5OGtd9M9Crs4C32EL3tJtV7eKWM86jk0m5P8GzR7JJVSkH3MBS9y9b+4G8t1C6QacPW
+         s8KJZPN/9CbGbrvnc3dAOhVSQTiRBqbhrklM/lcITogmnAWrKw79+2DrdKgVajtBg+Il
+         NGM9GWq7UVSgKM3p4w3q8Y/qcWTq/NkmXkb3K1uxeuobYV2afV3UaeLgEtjQgPgFfLnI
+         lOSg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=KFFTUQrv;
+       dkim=pass header.i=@linaro.org header.s=google header.b=UTbiCaNC;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id eq13-20020ad4596d000000b004bb6c885209si10118910qvb.386.2022.11.10.01.05.29
+        by mx.google.com with ESMTPS id x6-20020a05620a258600b006f9483355a7si11574117qko.109.2022.11.10.09.07.44
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 10 Nov 2022 01:05:29 -0800 (PST)
+        Thu, 10 Nov 2022 09:07:44 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=KFFTUQrv;
+       dkim=pass header.i=@linaro.org header.s=google header.b=UTbiCaNC;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1ot3Uo-00059w-Ug; Thu, 10 Nov 2022 04:05:15 -0500
+	id 1otB1d-0003kg-8x; Thu, 10 Nov 2022 12:07:37 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <tkutergin@gmail.com>)
- id 1ot3Uf-00059E-EX; Thu, 10 Nov 2022 04:05:06 -0500
-Received: from mail-lf1-x129.google.com ([2a00:1450:4864:20::129])
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1otB1c-0003kF-4S
+ for qemu-arm@nongnu.org; Thu, 10 Nov 2022 12:07:36 -0500
+Received: from mail-pl1-x62e.google.com ([2607:f8b0:4864:20::62e])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <tkutergin@gmail.com>)
- id 1ot3UY-0005JY-5r; Thu, 10 Nov 2022 04:05:05 -0500
-Received: by mail-lf1-x129.google.com with SMTP id g12so1974979lfh.3;
- Thu, 10 Nov 2022 01:04:52 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:from:to:cc:subject:date:message-id:reply-to;
- bh=PQdWojFEWwL9VnT+zZun1w9OrrZEpCxfI0a3+OnwqlA=;
- b=KFFTUQrvNgthhXBTrfWh6uib80FP6B2TwKe5kS7jLJZuPaLMx8S2eeFqxV6brvwckc
- ls2joV+LlM7WzJYOtNWcS+q1GVAQWCFcRO78MFj0XJxsgOGh/63zuFVh4VCnTAKoQa+K
- sGWsZGOWZA5mGd2tX8KgsY5FyNKKicpDapYWw2zqkzIeGo05ZdQZWid+sHcr/YRGThuR
- kUSYZsgYW0ph9pOPwh3yU52PlewwpHyHFcLV6A2tQvbjYzS8uvc/Jrm82e+BlyW3vHic
- yQ8ALBZiAm7Z2oAfoyJPljtv1b0lfjez/XXBmTGEnvh6VYvHO96Tc0bysZCmB+/crQ+Z
- LxTg==
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1otB1Y-0003xA-E2
+ for qemu-arm@nongnu.org; Thu, 10 Nov 2022 12:07:35 -0500
+Received: by mail-pl1-x62e.google.com with SMTP id g24so1920160plq.3
+ for <qemu-arm@nongnu.org>; Thu, 10 Nov 2022 09:07:30 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=1nsn+QTK380Oixk16wL+YNtdjOo3v4Y5uc6G8fog2UE=;
+ b=UTbiCaNC0aGDjw7HeAC48TWMjaD1bpzJkUPNk8LISWUPOygQFLcygSoW7jJfyYQRSm
+ DEy3TBd1L12YcF6ZWgirnvpQhBu709Cd3cSf8Yee+/b5Tzm+mUdmEucjOxyjVthBFpiX
+ ggPWAO8PvxptEeizwHz6khDes0GLUiUQzAb6aEkRs3gGR16E0RtJFctPGqhRHOu+2UNI
+ TUK+GsyhM4KeGFKqVBlCjyv/1oc7fRrsE2DLJRe62WSxlnkiWuWLyFuTM2RwNPHG5Tcm
+ /jDkCaK6Ct8i6Ja7vY7r8FJEZ5Z4iQu+y0p9NYJU+8f7lOp4GTwBwWHTFC7SBv7z2h3t
+ 3ETA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=PQdWojFEWwL9VnT+zZun1w9OrrZEpCxfI0a3+OnwqlA=;
- b=5SSGOY3pl8ZDfej9Mz/CNZUGV4N7H8pl7Bwpe0KeK/pF6G2wFdVgG4li43A1Zudb6S
- bKB27ONoSzILza8XeR+fJ50Ra+x8GU/uKhdyYfOyLI1yE4kIaq2ri6JY1c702NHQ2j0C
- SArH2Z/dfhHplGEY9mcvKcmmNTKqf/g9SLIzeubpCoAgJ+XQX33rvO0rSDgDXe946o7P
- mBpwSzvdfvldoop00JSk9s8lQueqC2DRTfg6mFNaa2fvXGc0sMABrjiQthH5vQ5a6iXE
- 8ffRovwmw1DS4E4J4X5VPRgPDnd41ig7nXbw4Se4QfnnbJqQE/eySmB1po5aOsRPDc8S
- pBsQ==
-X-Gm-Message-State: ACrzQf1krt5NJ78pNXQbJB/qvmDisV1P59Oq72aC/rcQe8Qzh5MKzQRK
- CjTWFbsl/abGwwiRXp6vzlY=
-X-Received: by 2002:a19:6719:0:b0:4b1:8a90:6524 with SMTP id
- b25-20020a196719000000b004b18a906524mr1056823lfc.628.1668071090886; 
- Thu, 10 Nov 2022 01:04:50 -0800 (PST)
-Received: from NBK05906.kdtln.ru (89-109-44-157.dynamic.mts-nn.ru.
- [89.109.44.157]) by smtp.gmail.com with ESMTPSA id
- a3-20020a05651c030300b0027722e99323sm2589274ljp.5.2022.11.10.01.04.49
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 10 Nov 2022 01:04:50 -0800 (PST)
-From: Timofey Kutergin <tkutergin@gmail.com>
-To: peter.maydell@linaro.org,
-	qemu-arm@nongnu.org
-Cc: qemu-devel@nongnu.org,
-	tkutergin@gmail.com
-Subject: [PATCH] target/arm: added cortex-a55 CPU support for qemu-virt
-Date: Thu, 10 Nov 2022 12:04:44 +0300
-Message-Id: <20221110090444.550362-1-tkutergin@gmail.com>
-X-Mailer: git-send-email 2.25.1
+ bh=1nsn+QTK380Oixk16wL+YNtdjOo3v4Y5uc6G8fog2UE=;
+ b=1/v2dJWIsjye14dyZNlyWoEkvwOX65LUWzRlCjmE3mzNjqWMfMa+ISFvTHvLPhICpF
+ p+Sp1zP9uHFibeCnfVzoB7Tc5Rhqkr+88eOo1YKSVTtkEAuuW+Gy3WKbaotyengoEOfp
+ 7vj31j1WHgn0k1ksJkwROVVOQzlcIGU16yEdh+0ZG2aN+BUpTG5Mu1duIcSVAGKYxFxp
+ 0qcStCyOgZ/RQEUyUt3aWdEz+3eKVpqzgaefrQg5UNpKHQQpUHREBqgFWRYX9+RX6G9e
+ KOtju/IbvwHAr3Yjf/C0Jvh7Wc6fq2RU3CGWf0Jn2bV3lfOoDjziIW8Fziakhv8xJv/z
+ Nvjg==
+X-Gm-Message-State: ACrzQf383RLrn4vD1yZNMXni3KS03jq0PYXtnZQlvRfnodbr11yKZszn
+ PGVHmdiWxYYmvTH/uNddv24D69adwUQHR5LGB8A+1A==
+X-Received: by 2002:a17:90a:70c5:b0:205:edfd:13f7 with SMTP id
+ a5-20020a17090a70c500b00205edfd13f7mr1498459pjm.19.1668100049128; Thu, 10 Nov
+ 2022 09:07:29 -0800 (PST)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::129;
- envelope-from=tkutergin@gmail.com; helo=mail-lf1-x129.google.com
+References: <20221022054746.28217-1-vikram.garhwal@amd.com>
+ <20221022054746.28217-3-vikram.garhwal@amd.com>
+In-Reply-To: <20221022054746.28217-3-vikram.garhwal@amd.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 10 Nov 2022 17:07:16 +0000
+Message-ID: <CAFEAcA-=KSomBUYKz_fwyePmQUs6YUTn03C_uJKpUF93vcWzAQ@mail.gmail.com>
+Subject: Re: [QEMU][PATCH v2 2/5] hw/net/can: Introduce Xilinx Versal CANFD
+ controller
+To: Vikram Garhwal <vikram.garhwal@amd.com>
+Cc: qemu-devel@nongnu.org, francisco.iglesias@amd.com, edgar.iglesias@amd.com, 
+ Pavel Pisa <pisa@cmp.felk.cvut.cz>, Vikram Garhwal <fnu.vikram@xilinx.com>,
+ Jason Wang <jasowang@redhat.com>, Alistair Francis <alistair@alistair23.me>, 
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, 
+ "open list:Xilinx ZynqMP and..." <qemu-arm@nongnu.org>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::62e;
+ envelope-from=peter.maydell@linaro.org; helo=mail-pl1-x62e.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
@@ -117,104 +119,938 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: hNcXUx1YK/m1
+X-TUID: oJEJWIJMXj5l
 
-  cortex-a55 is one of newer armv8.2+ CPUs supporting native
-  Privileged Access Never (PAN) feature. Using this CPU
-  provides access to this feature without using fictious "max"
-  CPU.
+On Sat, 22 Oct 2022 at 06:48, Vikram Garhwal <vikram.garhwal@amd.com> wrote:
+>
+> The Xilinx Versal CANFD controller is developed based on SocketCAN, QEMU CAN bus
+> implementation. Bus connection and socketCAN connection for each CAN module
+> can be set through command lines.
+>
+> Signed-off-by: Vikram Garhwal <vikram.garhwal@amd.com>
+> ---
+>  hw/net/can/meson.build             |    1 +
+>  hw/net/can/trace-events            |    7 +
+>  hw/net/can/xlnx-versal-canfd.c     | 2160 ++++++++++++++++++++++++++++
+>  include/hw/net/xlnx-versal-canfd.h |   91 ++
+>  4 files changed, 2259 insertions(+)
+>  create mode 100644 hw/net/can/xlnx-versal-canfd.c
+>  create mode 100644 include/hw/net/xlnx-versal-canfd.h
+>
+> diff --git a/hw/net/can/meson.build b/hw/net/can/meson.build
+> index 8fabbd9ee6..8d85201cb0 100644
+> --- a/hw/net/can/meson.build
+> +++ b/hw/net/can/meson.build
+> @@ -5,3 +5,4 @@ softmmu_ss.add(when: 'CONFIG_CAN_PCI', if_true: files('can_mioe3680_pci.c'))
+>  softmmu_ss.add(when: 'CONFIG_CAN_CTUCANFD', if_true: files('ctucan_core.c'))
+>  softmmu_ss.add(when: 'CONFIG_CAN_CTUCANFD_PCI', if_true: files('ctucan_pci.c'))
+>  softmmu_ss.add(when: 'CONFIG_XLNX_ZYNQMP', if_true: files('xlnx-zynqmp-can.c'))
+> +softmmu_ss.add(when: 'CONFIG_XLNX_VERSAL', if_true: files('xlnx-versal-canfd.c'))
+> diff --git a/hw/net/can/trace-events b/hw/net/can/trace-events
+> index 8346a98ab5..de64ac1b31 100644
+> --- a/hw/net/can/trace-events
+> +++ b/hw/net/can/trace-events
+> @@ -7,3 +7,10 @@ xlnx_can_filter_mask_pre_write(uint8_t filter_num, uint32_t value) "Filter%d MAS
+>  xlnx_can_tx_data(uint32_t id, uint8_t dlc, uint8_t db0, uint8_t db1, uint8_t db2, uint8_t db3, uint8_t db4, uint8_t db5, uint8_t db6, uint8_t db7) "Frame: ID: 0x%08x DLC: 0x%02x DATA: 0x%02x 0x%02x 0x%02x 0x%02x 0x%02x 0x%02x 0x%02x 0x%02x"
+>  xlnx_can_rx_data(uint32_t id, uint32_t dlc, uint8_t db0, uint8_t db1, uint8_t db2, uint8_t db3, uint8_t db4, uint8_t db5, uint8_t db6, uint8_t db7) "Frame: ID: 0x%08x DLC: 0x%02x DATA: 0x%02x 0x%02x 0x%02x 0x%02x 0x%02x 0x%02x 0x%02x 0x%02x"
+>  xlnx_can_rx_discard(uint32_t status) "Controller is not enabled for bus communication. Status Register: 0x%08x"
+> +
+> +# xlnx-versal-canfd.c
+> +xlnx_canfd_update_irq(char *path, uint32_t isr, uint32_t ier, uint32_t irq) "%s: ISR: 0x%08x IER: 0x%08x IRQ: 0x%08x"
+> +xlnx_canfd_rx_fifo_filter_reject(char *path, uint32_t id, uint8_t dlc) "%s: Frame: ID: 0x%08x DLC: 0x%02x"
+> +xlnx_canfd_rx_data(char *path, uint32_t id, uint8_t dlc, uint8_t flags) "%s: Frame: ID: 0x%08x DLC: 0x%02x CANFD Flag: 0x%02x"
+> +xlnx_canfd_tx_data(char *path, uint32_t id, uint8_t dlc, uint8_t flgas) "%s: Frame: ID: 0x%08x DLC: 0x%02x CANFD Flag: 0x%02x"
+> +xlnx_canfd_reset(char *path, uint32_t val) "%s: Resetting controller with value = 0x%08x"
+> diff --git a/hw/net/can/xlnx-versal-canfd.c b/hw/net/can/xlnx-versal-canfd.c
+> new file mode 100644
+> index 0000000000..592c61fcf3
+> --- /dev/null
+> +++ b/hw/net/can/xlnx-versal-canfd.c
+> @@ -0,0 +1,2160 @@
+> +/*
+> + * QEMU model of the Xilinx Versal CANFD device.
+> + *
+> + * This implementation is based on the following datasheet:
+> + * https://docs.xilinx.com/v/u/2.0-English/pg223-canfd
+> + *
+> + * Copyright (c) 2022 AMD Inc.
+> + *
+> + * Written-by: Vikram Garhwal<vikram.garhwal@amd.com>
+> + *
+> + * Based on QEMU CANFD Device emulation implemented by Jin Yang, Deniz Eren and
+> + * Pavel Pisa
+> + *
+> + * Permission is hereby granted, free of charge, to any person obtaining a copy
+> + * of this software and associated documentation files (the "Software"), to deal
+> + * in the Software without restriction, including without limitation the rights
+> + * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+> + * copies of the Software, and to permit persons to whom the Software is
+> + * furnished to do so, subject to the following conditions:
+> + *
+> + * The above copyright notice and this permission notice shall be included in
+> + * all copies or substantial portions of the Software.
+> + *
+> + * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+> + * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+> + * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+> + * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+> + * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+> + * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+> + * THE SOFTWARE.
+> + */
+> +
+> +#include "qemu/osdep.h"
+> +#include "hw/sysbus.h"
+> +#include "hw/irq.h"
+> +#include "hw/register.h"
+> +#include "qapi/error.h"
+> +#include "qemu/bitops.h"
+> +#include "qemu/log.h"
+> +#include "qemu/cutils.h"
+> +#include "qemu/event_notifier.h"
+> +#include "hw/qdev-properties.h"
+> +#include "qom/object_interfaces.h"
+> +#include "migration/vmstate.h"
+> +#include "hw/net/xlnx-versal-canfd.h"
+> +#include "trace.h"
+> +
+> +/* This is done to avoid the build issues on Windows machines. The ERROR field
+> + * of INTERRUPT_STATUS_REGISTER collides with a macro in the Windows build
+> + * environment.
+> + */
 
-Signed-off-by: Timofey Kutergin <tkutergin@gmail.com>
----
- hw/arm/virt.c      |  1 +
- target/arm/cpu64.c | 55 ++++++++++++++++++++++++++++++++++++++++++++++
- 2 files changed, 56 insertions(+)
+QEMU coding style wants the initial "/*" on a line of its own.
 
-diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index b871350856..fc0c9baba6 100644
---- a/hw/arm/virt.c
-+++ b/hw/arm/virt.c
-@@ -201,6 +201,7 @@ static const char *valid_cpus[] = {
-     ARM_CPU_TYPE_NAME("cortex-a15"),
-     ARM_CPU_TYPE_NAME("cortex-a35"),
-     ARM_CPU_TYPE_NAME("cortex-a53"),
-+    ARM_CPU_TYPE_NAME("cortex-a55"),
-     ARM_CPU_TYPE_NAME("cortex-a57"),
-     ARM_CPU_TYPE_NAME("cortex-a72"),
-     ARM_CPU_TYPE_NAME("cortex-a76"),
-diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
-index 3d74f134f5..e1ade1b2a3 100644
---- a/target/arm/cpu64.c
-+++ b/target/arm/cpu64.c
-@@ -792,6 +792,60 @@ static void aarch64_a53_initfn(Object *obj)
-     define_cortex_a72_a57_a53_cp_reginfo(cpu);
- }
- 
-+static void aarch64_a55_initfn(Object *obj)
-+{
-+    ARMCPU *cpu = ARM_CPU(obj);
-+
-+    cpu->dtb_compatible = "arm,cortex-a55";
-+    set_feature(&cpu->env, ARM_FEATURE_V8);
-+    set_feature(&cpu->env, ARM_FEATURE_NEON);
-+    set_feature(&cpu->env, ARM_FEATURE_GENERIC_TIMER);
-+    set_feature(&cpu->env, ARM_FEATURE_AARCH64);
-+    set_feature(&cpu->env, ARM_FEATURE_CBAR_RO);
-+    set_feature(&cpu->env, ARM_FEATURE_EL2);
-+    set_feature(&cpu->env, ARM_FEATURE_EL3);
-+    set_feature(&cpu->env, ARM_FEATURE_PMU);
-+    cpu->midr = 0x411fd050;
-+    cpu->revidr = 0x00000000;
-+    cpu->reset_fpsid = 0x41034070;
-+    cpu->isar.mvfr0 = 0x10110222;
-+    cpu->isar.mvfr1 = 0x13211111;
-+    cpu->isar.mvfr2 = 0x00000043;
-+    cpu->ctr = 0x84448004; /* L1Ip = VIPT */
-+    cpu->reset_sctlr = 0x00c50838;
-+    cpu->isar.id_pfr0 = 0x10000131;
-+    cpu->isar.id_pfr1 = 0x00011011;
-+    cpu->isar.id_dfr0 = 0x04010088;
-+    cpu->id_afr0 = 0x00000000;
-+    cpu->isar.id_mmfr0 = 0x10201105;
-+    cpu->isar.id_mmfr1 = 0x40000000;
-+    cpu->isar.id_mmfr2 = 0x01260000;
-+    cpu->isar.id_mmfr3 = 0x02122211;
-+    cpu->isar.id_isar0 = 0x02101110;
-+    cpu->isar.id_isar1 = 0x13112111;
-+    cpu->isar.id_isar2 = 0x21232042;
-+    cpu->isar.id_isar3 = 0x01112131;
-+    cpu->isar.id_isar4 = 0x00011142;
-+    cpu->isar.id_isar5 = 0x01011121;
-+    cpu->isar.id_isar6 = 0x00000010;
-+    cpu->isar.id_aa64pfr0 = 0x10112222;
-+    cpu->isar.id_aa64dfr0 = 0x10305408;
-+    cpu->isar.id_aa64isar0 = 0x10211120;
-+    cpu->isar.id_aa64isar1 = 0x00100001;
-+    cpu->isar.id_aa64mmfr0 = 0x00101122;
-+    cpu->isar.id_aa64mmfr1 = 0x10212122;
-+    cpu->isar.id_aa64mmfr2 = 0x00001011;
-+    cpu->isar.dbgdidr = 0x3516d000;
-+    cpu->clidr = 0x82000023;
-+    cpu->ccsidr[0] = 0x700fe01a; /* 32KB L1 dcache */
-+    cpu->ccsidr[1] = 0x200fe01a; /* 32KB L1 icache */
-+    cpu->ccsidr[2] = 0x703fe07a; /* 512KB L2 cache */
-+    cpu->dcz_blocksize = 4; /* 64 bytes */
-+    cpu->gic_num_lrs = 4;
-+    cpu->gic_vpribits = 5;
-+    cpu->gic_vprebits = 5;
-+}
-+
- static void aarch64_a72_initfn(Object *obj)
- {
-     ARMCPU *cpu = ARM_CPU(obj);
-@@ -1243,6 +1297,7 @@ static const ARMCPUInfo aarch64_cpus[] = {
-     { .name = "cortex-a35",         .initfn = aarch64_a35_initfn },
-     { .name = "cortex-a57",         .initfn = aarch64_a57_initfn },
-     { .name = "cortex-a53",         .initfn = aarch64_a53_initfn },
-+    { .name = "cortex-a55",         .initfn = aarch64_a55_initfn },
-     { .name = "cortex-a72",         .initfn = aarch64_a72_initfn },
-     { .name = "cortex-a76",         .initfn = aarch64_a76_initfn },
-     { .name = "a64fx",              .initfn = aarch64_a64fx_initfn },
--- 
-2.25.1
+> +#undef ERROR
 
+
+> +static void canfd_update_irq(XlnxVersalCANFDState *s)
+> +{
+> +    unsigned int irq = s->regs[R_INTERRUPT_STATUS_REGISTER] &
+> +                        s->regs[R_INTERRUPT_ENABLE_REGISTER];
+> +
+> +    /* RX watermark interrupts. */
+> +    if (ARRAY_FIELD_EX32(s->regs, RX_FIFO_STATUS_REGISTER, FL) >
+> +        ARRAY_FIELD_EX32(s->regs, RX_FIFO_WATERMARK_REGISTER, RXFWM)) {
+> +        ARRAY_FIELD_DP32(s->regs, INTERRUPT_STATUS_REGISTER, RXFWMFLL, 1);
+> +    }
+> +
+> +    if (ARRAY_FIELD_EX32(s->regs, RX_FIFO_STATUS_REGISTER, FL_1) >
+> +        ARRAY_FIELD_EX32(s->regs, RX_FIFO_WATERMARK_REGISTER, RXFWM_1)) {
+> +        ARRAY_FIELD_DP32(s->regs, INTERRUPT_STATUS_REGISTER, RXFWMFLL_1, 1);
+> +    }
+> +
+> +    /* TX watermark interrupt. */
+> +    if (ARRAY_FIELD_EX32(s->regs, TX_EVENT_FIFO_STATUS_REGISTER, TXE_FL) >
+> +        ARRAY_FIELD_EX32(s->regs, TX_EVENT_FIFO_WATERMARK_REGISTER, TXE_FWM)) {
+> +        ARRAY_FIELD_DP32(s->regs, INTERRUPT_STATUS_REGISTER, TXEWMFLL, 1);
+> +    }
+> +
+> +    g_autofree char *path = object_get_canonical_path(OBJECT(s));
+
+Don't declare variables in the middle of blocks, please.
+
+> +
+> +    trace_xlnx_canfd_update_irq(path, s->regs[R_INTERRUPT_STATUS_REGISTER],
+> +                                s->regs[R_INTERRUPT_ENABLE_REGISTER], irq);
+> +
+> +    qemu_set_irq(s->irq_canfd_int, irq);
+> +}
+
+> +static void update_status_register_mode_bits(XlnxVersalCANFDState *s)
+> +{
+> +    bool sleep_status = ARRAY_FIELD_EX32(s->regs, STATUS_REGISTER, SLEEP);
+> +    bool sleep_mode = ARRAY_FIELD_EX32(s->regs, MODE_SELECT_REGISTER, SLEEP);
+> +    /* Wake up interrupt bit. */
+> +    bool wakeup_irq_val = (sleep_mode == 0) && sleep_status;
+> +    /* Sleep interrupt bit. */
+> +    bool sleep_irq_val = sleep_mode && (sleep_status == 0);
+
+Don't compare bools against zero.
+   wakeup_irq_val = !sleep_mode && sleep_status;
+etc.
+
+
+> +
+> +    /* Clear previous core mode status bits. */
+> +    ARRAY_FIELD_DP32(s->regs, STATUS_REGISTER, LBACK, 0);
+> +    ARRAY_FIELD_DP32(s->regs, STATUS_REGISTER, SLEEP, 0);
+> +    ARRAY_FIELD_DP32(s->regs, STATUS_REGISTER, SNOOP, 0);
+> +    ARRAY_FIELD_DP32(s->regs, STATUS_REGISTER, NORMAL, 0);
+> +
+> +    /* set current mode bit and generate irqs accordingly. */
+> +    if (ARRAY_FIELD_EX32(s->regs, MODE_SELECT_REGISTER, LBACK)) {
+> +        ARRAY_FIELD_DP32(s->regs, STATUS_REGISTER, LBACK, 1);
+> +    } else if (ARRAY_FIELD_EX32(s->regs, MODE_SELECT_REGISTER, SLEEP)) {
+> +        ARRAY_FIELD_DP32(s->regs, STATUS_REGISTER, SLEEP, 1);
+> +        ARRAY_FIELD_DP32(s->regs, INTERRUPT_STATUS_REGISTER, SLP,
+> +                         sleep_irq_val);
+> +    } else if (ARRAY_FIELD_EX32(s->regs, MODE_SELECT_REGISTER, SNOOP)) {
+> +        ARRAY_FIELD_DP32(s->regs, STATUS_REGISTER, SNOOP, 1);
+> +    } else {
+> +        /* If all bits are zero, XlnxVersalCANFDState is set in normal mode. */
+> +        ARRAY_FIELD_DP32(s->regs, STATUS_REGISTER, NORMAL, 1);
+> +        /* Set wakeup interrupt bit. */
+> +        ARRAY_FIELD_DP32(s->regs, INTERRUPT_STATUS_REGISTER, WKUP,
+> +                         wakeup_irq_val);
+> +    }
+> +
+> +    /* Put the CANFD in error active state. */
+> +    ARRAY_FIELD_DP32(s->regs, STATUS_REGISTER, ESTAT, 1);
+> +
+> +    canfd_update_irq(s);
+> +}
+
+> +static void regs2frame(XlnxVersalCANFDState *s, qemu_can_frame *frame,
+> +                       uint32_t reg_num)
+> +{
+> +    uint32_t i = 0;
+> +    uint32_t j = 0;
+> +    uint32_t val = 0;
+> +    uint32_t dlc_reg_val = s->regs[reg_num + 1];
+
+It's very unclear to me whether the reg_num here is guaranteed to be
+in the right range so that neither this deference nor the ones below
+where we're filling frame->data will overrun the array -- the code that
+calculates reg_num at the callsite is pretty complicated.
+
+If the guest can misprogram the device so it's out of range we should
+detect and handle that. If it really can't happen we should assert here
+that reg_num is in range.
+
+> +    uint32_t dlc_value = FIELD_EX32(dlc_reg_val, TB0_DLC_REGISTER, DLC);
+> +
+> +    frame->can_id = s->regs[reg_num];
+> +
+> +    if (FIELD_EX32(dlc_reg_val, TB0_DLC_REGISTER, FDF)) {
+> +        /*
+> +         * CANFD frame.
+> +         * Converting dlc(0 to 15) 4 Byte data to plain length(i.e. 0 to 64)
+> +         * 1 Byte data. This is done to make it work with SocketCAN.
+> +         * On actual CANFD frame, this value can't be more than 0xF.
+> +         * Conversion table for DLC to plain length:
+> +         *
+> +         *  DLC                        Plain Length
+> +         *  0 - 8                      0 - 8
+> +         *  9                          9 - 12
+> +         *  10                         13 - 16
+> +         *  11                         17 - 20
+> +         *  12                         21 - 24
+> +         *  13                         25 - 32
+> +         *  14                         33 - 48
+> +         *  15                         49 - 64
+> +         */
+> +
+> +        frame->flags = QEMU_CAN_FRMF_TYPE_FD;
+> +
+> +        if (dlc_value < 8) {
+> +            frame->can_dlc = dlc_value;
+> +        } else {
+
+I think it's worth having
+   assert((dlc_value - 8) < ARRAY_SIZE(canfd_dlc_array));
+here (should always be true as the FDF field is 4 bits).
+
+> +            frame->can_dlc = canfd_dlc_array[dlc_value - 8];
+> +        }
+> +
+> +        for (i = 0; i < 4 ; i++) {
+
+Stray space before semicolon.
+
+> +            val = 8 * i;
+> +
+> +            for (j = 0; j < frame->can_dlc / 4; j++) {
+> +                frame->data[i + 4 * j] = ((s->regs[reg_num + 2 + j] >> val) &
+> +                                           0xFF);
+
+Using extract32() is usually a better idea than manual shift-and-mask
+(but see below).
+Asserting that this doesn't overrun the array would be a good idea.
+
+Why do we fill in the array by first putting in all the low bytes,
+then the second bytes, and so on (so we write data[0], [4], [8], ...
+then [1], [5], [9], ... then [2], [6], ... and finally [3], [7], ...)
+rather than just filling the array from the beginning forwards ?
+
+I think something like
+  for (j = 0; j < frame->can_dlc / 4; j++) {
+       stl_le_p(frame->data + j, s->regs[reg_num + 2 + j]);
+  }
+does the same thing you're doing with this pair of loops, but
+in a less complicated way.
+
+If can_dlc is less than 8, the code (either your version or my
+version) doesn't fill in frame->data[] for the partial word,
+eg if can_dlc is 7 we fill in data[0..3] but not [4..6]. Is
+that intended behaviour ?
+
+> +            }
+> +        }
+> +    } else {
+> +        /*
+> +         * FD Format bit not set that means it is a CAN Frame.
+> +         * Conversion table for classic CAN:
+> +         *
+> +         *  DLC                        Plain Length
+> +         *  0 - 7                      0 - 7
+> +         *  8 - 15                     8
+> +         */
+> +
+> +        if (dlc_value > 8) {
+> +            frame->can_dlc = dlc_value;
+> +            dlc_value = 8;
+> +            qemu_log_mask(LOG_GUEST_ERROR, "Maximum DLC value for Classic CAN"
+> +                          "  frame can be 8. Only 8 byte data will be sent.\n");
+
+"is", not "can be".
+
+> +        } else {
+> +            frame->can_dlc = dlc_value;
+> +        }
+> +
+> +        for (i = 0; i < 4 ; i++) {
+> +            val = 8 * i;
+> +
+> +            for (j = 0; j < dlc_value; j++) {
+> +                frame->data[i + 4 * j] = ((s->regs[reg_num + 2 + j] >> val) &
+> +                                           0xFF);
+> +            }
+> +        }
+
+Same remarks as above, plus you can arrange this so the "fill in
+the frame data" code is only written once, rather than duplicated
+in both halves of the if statement.
+
+> +    }
+> +}
+> +
+> +static void process_cancellation_requests(XlnxVersalCANFDState *s)
+> +{
+> +    int i;
+> +    uint32_t val = s->regs[R_TX_BUFFER_READY_REQUEST_REGISTER];
+> +    uint32_t cancel_val = s->regs[R_TX_BUFFER_CANCEL_REQUEST_REGISTER];
+> +
+> +    for (i = 0; i < 32; i++) {
+> +
+> +        if ((val & 0x1) && (cancel_val & 0x1)) {
+> +            s->regs[R_TX_BUFFER_READY_REQUEST_REGISTER] &= ~(1 << i);
+> +            s->regs[R_TX_BUFFER_CANCEL_REQUEST_REGISTER] &= ~(1 << i);
+> +
+> +            ARRAY_FIELD_DP32(s->regs, INTERRUPT_STATUS_REGISTER, TXCRS, 1);
+> +        } else {
+> +            qemu_log_mask(LOG_GUEST_ERROR, "Data Tx going on for requested"
+> +                          " cancellation bit\n");
+
+This is going to log for every zero bit in the cancel request
+register, which I suspect is not the right behaviour. Looking at
+the data sheet I don't think that the message is right anyway --
+ifthe RR bit is 0 that means the data tx has completed, not that
+it is still ongoing.
+
+> +        }
+> +
+> +        val >>= 1;
+> +        cancel_val >>= 1;
+> +    }
+
+You don't need to do this with a loop, it's purely bitwise:
+
+  uint32_t clear_mask = val & cancel_val;
+
+  s->regs[R_TX_BUFFER_READY_REQUEST_REGISTER] &= ~clear_mask;
+  s->regs[R_TX_BUFFER_CANCEL_REQUEST_REGISTER] &= ~clear_mask;
+
+achieves the same effect as the code you have.
+
+But the datasheet says that writes of 1 to the cancel request register
+bits are ignored if the TRR bit is 0, so I suspect that in fact you
+just want to zero the whole cancel request register, not merely the
+bits where you successfully cleared the ready request register bit.
+
+> +    canfd_update_irq(s);
+> +}
+> +
+> +static void store_rx_sequential(XlnxVersalCANFDState *s,
+> +                                const qemu_can_frame *frame,
+> +                                uint32_t fill_level, uint32_t read_index,
+> +                                uint32_t store_location, uint8_t rx_fifo,
+> +                                bool rx_fifo_id, uint8_t filter_index)
+> +{
+> +    int i;
+> +    bool is_canfd_frame;
+> +    uint8_t dlc = 0;
+> +    uint32_t dlc_reg_val = 0;
+> +    uint32_t data_reg_val = 0;
+> +
+> +    /* Getting RX0/1 fill level */
+> +    if ((fill_level) > rx_fifo - 1) {
+> +        g_autofree char *path = object_get_canonical_path(OBJECT(s));
+> +
+> +        qemu_log_mask(LOG_GUEST_ERROR, "%s: RX%d Buffer is full. Discarding the"
+> +                      "message\n", path, rx_fifo_id);
+
+There will be a missing space in the output between "the" and "message" here.
+(You should check your other qemu_log_mask() calls in case they have
+the same bug.
+
+> +
+> +        /* Set the corresponding RF buffer overflow interrupt. */
+> +        if (rx_fifo_id == 0) {
+> +            ARRAY_FIELD_DP32(s->regs, INTERRUPT_STATUS_REGISTER, RXFOFLW, 1);
+> +        } else {
+> +            ARRAY_FIELD_DP32(s->regs, INTERRUPT_STATUS_REGISTER, RXFOFLW_1, 1);
+> +        }
+> +    } else {
+> +        uint16_t rx_timestamp = CANFD_TIMER_MAX -
+> +                                    ptimer_get_count(s->canfd_timer);
+> +
+> +        if (rx_timestamp == 0xFFFF) {
+> +            ARRAY_FIELD_DP32(s->regs, INTERRUPT_STATUS_REGISTER, TSCNT_OFLW, 1);
+> +        } else {
+> +            ARRAY_FIELD_DP32(s->regs, TIMESTAMP_REGISTER, TIMESTAMP_CNT,
+> +                             rx_timestamp);
+> +        }
+> +
+> +        if (rx_fifo_id == 0) {
+> +            ARRAY_FIELD_DP32(s->regs, RX_FIFO_STATUS_REGISTER, FL,
+> +                             fill_level + 1);
+> +        } else {
+> +            ARRAY_FIELD_DP32(s->regs, RX_FIFO_STATUS_REGISTER, FL_1,
+> +                             fill_level + 1);
+> +        }
+
+As above, if you're going to be storing into the register array based
+on the result of a complicated calculation of what register index to
+use, you should assert() that we're not out of bounds.
+
+> +        s->regs[store_location] = frame->can_id;
+> +
+> +        if (frame->flags == QEMU_CAN_FRMF_TYPE_FD) {
+> +            is_canfd_frame = true;
+> +
+> +            for (i = 0; i < ARRAY_SIZE(canfd_dlc_array); i++) {
+> +                if (canfd_dlc_array[i] == frame->can_dlc) {
+> +                    dlc = 8 + i;
+> +                }
+> +
+> +            dlc_reg_val = FIELD_DP32(0, RB_DLC_REGISTER, DLC, dlc);
+> +            }
+> +        } else {
+> +            is_canfd_frame = false;
+> +            if (frame->can_dlc > 8) {
+> +                dlc = 8;
+> +            } else {
+> +                dlc = frame->can_dlc;
+> +            }
+> +
+> +            dlc_reg_val = FIELD_DP32(0, RB_DLC_REGISTER, DLC, frame->can_dlc);
+> +        }
+> +
+> +        dlc_reg_val |= FIELD_DP32(0, RB_DLC_REGISTER, FDF, is_canfd_frame);
+> +        dlc_reg_val |= FIELD_DP32(0, RB_DLC_REGISTER, TIMESTAMP, rx_timestamp);
+> +        dlc_reg_val |= FIELD_DP32(0, RB_DLC_REGISTER, MATCHED_FILTER_INDEX,
+> +                                  filter_index);
+> +        s->regs[store_location + 1] = dlc_reg_val;
+> +
+> +        for (i = 0; i <= dlc; i++) {
+> +            data_reg_val = FIELD_DP32(0, RB_DW0_REGISTER, DATA_BYTES3,
+> +                                      frame->data[4 * i]);
+> +            data_reg_val |= FIELD_DP32(0, RB_DW0_REGISTER, DATA_BYTES2,
+> +                                       frame->data[4 * i + 1]);
+> +            data_reg_val |= FIELD_DP32(0, RB_DW0_REGISTER, DATA_BYTES1,
+> +                                       frame->data[4 * i + 2]);
+> +            data_reg_val |= FIELD_DP32(0, RB_DW0_REGISTER, DATA_BYTES0,
+> +                                       frame->data[4 * i + 3]);
+
+You can do this less awkwardly using ldl_le_p().
+
+Something looks weird here, though -- why do we read byte 0 of the buffer
+into the BYTES3 field, byte 1 into BYTES2, and so on ?
+
+> +            s->regs[store_location + i + 2] = data_reg_val;
+> +        }
+> +        /* set the interrupt as RXOK. */
+> +        ARRAY_FIELD_DP32(s->regs, INTERRUPT_STATUS_REGISTER, RXOK, 1);
+> +    }
+> +}
+> +
+> +static void update_rx_sequential(XlnxVersalCANFDState *s,
+> +                                 const qemu_can_frame *frame)
+> +{
+> +    bool filter_pass = false;
+> +    uint8_t filter_index = 0;
+> +    int i;
+> +    int filter_partition = ARRAY_FIELD_EX32(s->regs,
+> +                                            RX_FIFO_WATERMARK_REGISTER, RXFP);
+> +    uint32_t store_location;
+> +    uint32_t fill_level;
+> +    uint32_t read_index;
+> +
+> +    /*
+> +     * If all UAF bits are set to 0, then received messages are not stored
+> +     * in the RX buffers.
+> +     */
+> +    if (!s->regs[R_ACCEPTANCE_FILTER_CONTROL_REGISTER]) {
+> +        qemu_log_mask(LOG_GUEST_ERROR, "No acceptance filter is set. Received"
+> +                      " messages will not be stored.\n");
+> +    } else {
+> +        uint32_t acceptance_filter_status =
+> +                                s->regs[R_ACCEPTANCE_FILTER_CONTROL_REGISTER];
+> +
+> +        for (i = 0; i < 32; i++) {
+> +            if (acceptance_filter_status & 0x1) {
+> +                uint32_t msg_id_masked = s->regs[R_AFMR_REGISTER + 2 * i] &
+> +                                         frame->can_id;
+> +                uint32_t afir_id_masked = s->regs[R_AFIR_REGISTER + 2 * i] &
+> +                                          s->regs[R_AFMR_REGISTER + 2 * i];
+> +                uint16_t std_msg_id_masked = FIELD_EX32(msg_id_masked,
+> +                                                        AFIR_REGISTER, AIID);
+> +                uint16_t std_afir_id_masked = FIELD_EX32(afir_id_masked,
+> +                                                         AFIR_REGISTER, AIID);
+> +                uint32_t ext_msg_id_masked = FIELD_EX32(msg_id_masked,
+> +                                                        AFIR_REGISTER,
+> +                                                        AIID_EXT);
+> +                uint32_t ext_afir_id_masked = FIELD_EX32(afir_id_masked,
+> +                                                         AFIR_REGISTER,
+> +                                                         AIID_EXT);
+> +                bool ext_ide = FIELD_EX32(s->regs[R_AFMR_REGISTER + 2 * i],
+> +                                          AFMR_REGISTER, AMIDE);
+> +
+> +                if (std_msg_id_masked == std_afir_id_masked) {
+> +                    if (ext_ide) {
+> +                        /* Extended message ID message. */
+> +                        if (ext_msg_id_masked == ext_afir_id_masked) {
+> +                            filter_pass = true;
+> +                            filter_index = i;
+> +
+> +                            break;
+> +                        }
+> +                    } else {
+> +                        /* Standard message ID. */
+> +                        filter_pass = true;
+> +                        filter_index = i;
+> +
+> +                        break;
+> +                    }
+> +                }
+> +            }
+> +            acceptance_filter_status >>= 1;
+> +        }
+> +    }
+> +
+> +    if (!filter_pass) {
+> +        g_autofree char *path = object_get_canonical_path(OBJECT(s));
+> +
+> +        trace_xlnx_canfd_rx_fifo_filter_reject(path, frame->can_id,
+> +                                               frame->can_dlc);
+> +    } else {
+> +        if (filter_index <= filter_partition) {
+> +            fill_level = ARRAY_FIELD_EX32(s->regs, RX_FIFO_STATUS_REGISTER, FL);
+> +            read_index = ARRAY_FIELD_EX32(s->regs, RX_FIFO_STATUS_REGISTER, RI);
+> +            uint8_t store_index = read_index + fill_level;
+> +
+> +            if (read_index == s->cfg.rx0_fifo - 1) {
+> +                /*
+> +                 * When ri is s->cfg.rx0_fifo - 1 i.e. max, it goes cyclic that
+> +                 * means we reset the ri to 0x0.
+> +                 */
+> +                read_index = 0;
+> +                ARRAY_FIELD_DP32(s->regs, RX_FIFO_STATUS_REGISTER, RI,
+> +                                 read_index);
+> +            }
+> +
+> +            if (store_index > s->cfg.rx0_fifo - 1) {
+> +                store_index -= s->cfg.rx0_fifo - 1;
+> +            }
+> +
+> +            store_location = R_RB_ID_REGISTER +
+> +                          (store_index * NUM_REGS_PER_MSG_SPACE);
+> +
+> +            store_rx_sequential(s, frame, fill_level, read_index,
+> +                                store_location, s->cfg.rx0_fifo, 0,
+> +                                filter_index);
+> +        } else {
+> +            /* RX 1 fill level message */
+> +            fill_level = ARRAY_FIELD_EX32(s->regs, RX_FIFO_STATUS_REGISTER,
+> +                                          FL_1);
+> +            read_index = ARRAY_FIELD_EX32(s->regs, RX_FIFO_STATUS_REGISTER,
+> +                                          RI_1);
+> +            uint8_t store_index = read_index + fill_level;
+> +
+> +            if (read_index == s->cfg.rx1_fifo - 1) {
+> +                /*
+> +                 * When ri is s->cfg.rx1_fifo - 1 i.e. max, it goes cyclic that
+> +                 * means we reset the ri to 0x0.
+> +                 */
+> +                read_index = 0;
+> +                ARRAY_FIELD_DP32(s->regs, RX_FIFO_STATUS_REGISTER, RI_1,
+> +                                 read_index);
+> +            }
+> +
+> +            if (store_index > s->cfg.rx1_fifo - 1) {
+> +                store_index -= s->cfg.rx1_fifo - 1;
+> +            }
+> +
+> +            store_location = R_RB_ID_REGISTER_1 +
+> +                          (store_index * NUM_REGS_PER_MSG_SPACE);
+> +
+> +            store_rx_sequential(s, frame, fill_level, read_index,
+> +                                store_location, s->cfg.rx1_fifo, 1,
+> +                                filter_index);
+> +        }
+> +
+> +        g_autofree char *path = object_get_canonical_path(OBJECT(s));
+
+Another declartion in the middle of a block.
+
+
+> +        trace_xlnx_canfd_rx_data(path, frame->can_id, frame->can_dlc,
+> +                                 frame->flags);
+> +        canfd_update_irq(s);
+> +    }
+> +}
+> +
+> +static bool tx_ready_check(XlnxVersalCANFDState *s)
+> +{
+> +    if (ARRAY_FIELD_EX32(s->regs, SOFTWARE_RESET_REGISTER, SRST)) {
+> +        g_autofree char *path = object_get_canonical_path(OBJECT(s));
+> +
+> +        qemu_log_mask(LOG_GUEST_ERROR, "%s: Attempting to transfer data while"
+> +                      " XlnxVersalCANFDState is in reset mode\n", path);
+> +
+> +        return false;
+> +    }
+> +
+> +    if (ARRAY_FIELD_EX32(s->regs, SOFTWARE_RESET_REGISTER, CEN) == 0) {
+> +        g_autofree char *path = object_get_canonical_path(OBJECT(s));
+> +
+> +        qemu_log_mask(LOG_GUEST_ERROR, "%s: Attempting to transfer data while"
+> +                      " XlnxVersalCANFDState is in configuration mode."
+> +                      " Reset the core so operations can start fresh\n",
+> +                      path);
+> +        return false;
+> +    }
+> +
+> +    if (ARRAY_FIELD_EX32(s->regs, MODE_SELECT_REGISTER, SNOOP)) {
+> +        g_autofree char *path = object_get_canonical_path(OBJECT(s));
+> +
+> +        qemu_log_mask(LOG_GUEST_ERROR, "%s: Attempting to transfer data while"
+> +                      " XlnxVersalCANFDState is in SNOOP MODE\n",
+> +                      path);
+> +        return false;
+> +    }
+> +
+> +    return true;
+> +}
+> +
+> +static void tx_fifo_stamp(XlnxVersalCANFDState *s, uint32_t tb0_regid)
+> +{
+> +    /*
+> +     * If EFC bit in DLC message is set. This means we will store the
+
+", this means"
+
+
+> +     * event of this transmitted message with time stamp.
+> +     */
+> +    uint32_t dlc_reg_val = 0;
+> +
+> +    if (FIELD_EX32(s->regs[tb0_regid + 1], TB0_DLC_REGISTER, EFC)) {
+> +        uint8_t dlc_val = FIELD_EX32(s->regs[tb0_regid + 1], TB0_DLC_REGISTER,
+> +                                     DLC);
+> +        bool fdf_val = FIELD_EX32(s->regs[tb0_regid + 1], TB0_DLC_REGISTER,
+> +                                  FDF);
+> +        bool brs_val = FIELD_EX32(s->regs[tb0_regid + 1], TB0_DLC_REGISTER,
+> +                                  BRS);
+> +        uint8_t mm_val = FIELD_EX32(s->regs[tb0_regid + 1], TB0_DLC_REGISTER,
+> +                                    MM);
+> +        uint8_t fill_level = ARRAY_FIELD_EX32(s->regs,
+> +                                              TX_EVENT_FIFO_STATUS_REGISTER,
+> +                                              TXE_FL);
+> +        uint8_t read_index = ARRAY_FIELD_EX32(s->regs,
+> +                                              TX_EVENT_FIFO_STATUS_REGISTER,
+> +                                              TXE_RI);
+> +        uint8_t store_index = fill_level + read_index;
+> +
+> +        if ((fill_level) > s->cfg.tx_fifo - 1) {
+> +            qemu_log_mask(LOG_GUEST_ERROR, "TX Event Buffer is full."
+> +                          " Discarding the message\n");
+> +            ARRAY_FIELD_DP32(s->regs, INTERRUPT_STATUS_REGISTER, TXEOFLW, 1);
+> +        } else {
+> +            if (read_index == s->cfg.tx_fifo - 1) {
+> +                /*
+> +                 * When ri is s->cfg.tx_fifo - 1 i.e. max, it goes cyclic that
+> +                 * means we reset the ri to 0x0.
+> +                 */
+> +                read_index = 0;
+> +                ARRAY_FIELD_DP32(s->regs, TX_EVENT_FIFO_STATUS_REGISTER, TXE_RI,
+> +                                 read_index);
+> +            }
+> +
+> +            if (store_index > s->cfg.tx_fifo - 1) {
+> +                store_index -= s->cfg.tx_fifo - 1;
+> +            }
+> +
+> +            uint32_t tx_event_reg0_id = R_TXE_FIFO_TB_ID_REGISTER +
+> +                                        (store_index * 2);
+> +
+> +            /* Store message ID in TX event register*/
+
+Missing space before "*/".
+
+Bounds check assertions useful here again.
+
+> +            s->regs[tx_event_reg0_id] = s->regs[tb0_regid];
+> +
+> +            uint16_t tx_timestamp = CANFD_TIMER_MAX -
+> +                                            ptimer_get_count(s->canfd_timer);
+> +
+> +            /* Store DLC with time stamp in DLC regs. */
+> +            dlc_reg_val = FIELD_DP32(0, TXE_FIFO_TB_DLC_REGISTER, DLC, dlc_val);
+> +            dlc_reg_val |= FIELD_DP32(0, TXE_FIFO_TB_DLC_REGISTER, FDF,
+> +                                      fdf_val);
+> +            dlc_reg_val |= FIELD_DP32(0, TXE_FIFO_TB_DLC_REGISTER, BRS,
+> +                                      brs_val);
+> +            dlc_reg_val |= FIELD_DP32(0, TXE_FIFO_TB_DLC_REGISTER, ET, 0x3);
+> +            dlc_reg_val |= FIELD_DP32(0, TXE_FIFO_TB_DLC_REGISTER, MM, mm_val);
+> +            dlc_reg_val |= FIELD_DP32(0, TXE_FIFO_TB_DLC_REGISTER, TIMESTAMP,
+> +                                      tx_timestamp);
+> +            s->regs[tx_event_reg0_id + 1] = dlc_reg_val;
+> +
+> +            ARRAY_FIELD_DP32(s->regs, TX_EVENT_FIFO_STATUS_REGISTER, TXE_FL,
+> +                             fill_level + 1);
+> +        }
+> +    }
+> +}
+> +
+> +static void add_id(txid_list **start, uint32_t can_id, uint32_t reg_num)
+> +{
+> +    txid_list *temp = (txid_list *)malloc(sizeof(txid_list));
+
+Don't use malloc(). Also, don't use a hand-coded linked list.
+glib has various data structures that are more sensible than this.
+You probably want a GArray for these lists of tx ids.
+
+> +
+> +    if (temp == NULL) {
+> +        qemu_log_mask(LOG_GUEST_ERROR, "%s: Couldn't allocate memory\n",
+> +                      __func__);
+> +        return;
+> +    }
+> +
+> +    temp->can_id = can_id;
+> +    temp->reg_num = reg_num;
+> +    temp->next = *start;
+> +
+> +    *start = temp;
+> +}
+> +
+> +static void swap_ids(txid_list *first, txid_list *second)
+> +{
+> +    uint32_t temp_can_id = first->can_id;
+> +    uint32_t temp_reg_num = first->reg_num;
+> +
+> +    first->can_id = second->can_id;
+> +    first->reg_num = second->reg_num;
+> +    second->can_id = temp_can_id;
+> +    second->reg_num = temp_reg_num;
+> +}
+> +
+> +/* Sort the data to sent in ascending order. */
+> +static void sort_by_id(XlnxVersalCANFDState *s, txid_list **start)
+> +{
+> +    uint8_t i = 0;
+> +    bool swapped = true;
+> +
+> +    uint32_t reg_num = 0;
+> +    uint32_t reg_ready = s->regs[R_TX_BUFFER_READY_REQUEST_REGISTER];
+> +
+> +    /* First find the messages which are ready for transaction. */
+> +    for (i = 0; i < s->cfg.tx_fifo; i++) {
+> +        if (reg_ready) {
+> +            reg_num = R_TB_ID_REGISTER + (NUM_REGS_PER_MSG_SPACE * i);
+> +            add_id(start, s->regs[reg_num], reg_num);
+> +        }
+> +
+> +        reg_ready >>= 1;
+> +        s->regs[R_TX_BUFFER_READY_REQUEST_REGISTER] &= ~(1 << i);
+> +        s->regs[R_TX_BUFFER_CANCEL_REQUEST_REGISTER] &= ~(1 << i);
+> +    }
+> +
+> +    /* If no data or only one tx data, no need to sort the ids. */
+> +    if (*start == NULL || (*start)->next == NULL) {
+> +        return;
+> +    }
+> +
+> +    txid_list *temp_a, *temp_b = NULL;
+> +
+> +    while (swapped) {
+> +        swapped = false;
+> +        temp_a = *start;
+> +
+> +        while (temp_a->next != temp_b) {
+> +            if (temp_a->can_id > temp_a->next->can_id) {
+> +                swap_ids(temp_a, temp_a->next);
+> +                swapped = true;
+> +            } else if (temp_a->can_id == temp_a->next->can_id) {
+> +                /*
+> +                 * If two IDs are same we sort them by their index. Lowest index
+> +                 * will be transmitted first.
+> +                 */
+> +                if (temp_a->reg_num > temp_a->next->reg_num) {
+> +                    swap_ids(temp_a, temp_a->next);
+> +                    swapped = true;
+> +                }
+> +            }
+> +
+> +            temp_a = temp_a->next;
+> +        }
+> +
+> +        temp_b = temp_a;
+> +    }
+
+Don't implement your own sort routine either. GArrays have a g_array_sort()
+which you can pass a suitable comparison function to.
+
+> +}
+> +
+
+> +        g_autofree char *path = object_get_canonical_path(OBJECT(s));
+> +
+> +        qemu_log_mask(LOG_GUEST_ERROR, "%s: Acceptance filter %dnot enabled\n",
+> +                      path, filter_offset + 1);
+
+Missing space before "%d" ?
+
+> +    }
+> +
+> +    return s->regs[reg_idx];
+> +}
+
+> +static uint64_t canfd_trr_reg_prew(RegisterInfo *reg, uint64_t val64)
+> +{
+> +    XlnxVersalCANFDState *s = XILINX_CANFD(reg->opaque);
+> +
+> +    if (ARRAY_FIELD_EX32(s->regs, MODE_SELECT_REGISTER, SNOOP)) {
+> +        g_autofree char *path = object_get_canonical_path(OBJECT(s));
+> +
+> +        qemu_log_mask(LOG_GUEST_ERROR, "%s: Controller is in SNOOP mode."
+> +                      "tx_ready_register will stay in reset mode\n", path);
+
+Another missing space here.
+
+> +        return 0;
+> +    } else {
+> +        return val64;
+> +    }
+> +}
+> +
+
+
+> +static bool can_xilinx_canfd_receive(CanBusClientState *client)
+> +{
+> +    XlnxVersalCANFDState *s = container_of(client, XlnxVersalCANFDState,
+> +                                           bus_client);
+> +
+> +    if (ARRAY_FIELD_EX32(s->regs, SOFTWARE_RESET_REGISTER, SRST)) {
+> +        g_autofree char *path = object_get_canonical_path(OBJECT(s));
+> +
+> +        qemu_log_mask(LOG_GUEST_ERROR, "%s: Controller is in reset state.\n",
+> +                      path);
+> +        return false;
+> +    } else if ((ARRAY_FIELD_EX32(s->regs, SOFTWARE_RESET_REGISTER, CEN)) == 0) {
+> +        g_autofree char *path = object_get_canonical_path(OBJECT(s));
+> +
+> +        qemu_log_mask(LOG_GUEST_ERROR, "%s: Controller is disabled."
+> +                      " All incoming messages will be discarded\n", path);
+
+Are these really guest errors? Typically if there's data available but
+the device can't receive it because the guest hasn't set it up yet,
+that's fine, it just sits in the backend waiting for the guest to
+turn on the device.
+
+> +        return false;
+> +    } else {
+> +        return true;
+> +    }
+> +}
+> +
+> +static ssize_t canfd_xilinx_receive(CanBusClientState *client,
+> +                                    const qemu_can_frame *buf,
+> +                                    size_t buf_size)
+> +{
+> +    XlnxVersalCANFDState *s = container_of(client, XlnxVersalCANFDState,
+> +                                           bus_client);
+> +    const qemu_can_frame *frame = buf;
+> +
+> +    /* Update the status register that we are receiving message*/
+
+Missing space again.
+
+> +    ARRAY_FIELD_DP32(s->regs, STATUS_REGISTER, BBSY, 1);
+> +
+> +    if (buf_size <= 0) {
+> +        g_autofree char *path = object_get_canonical_path(OBJECT(s));
+> +
+> +        qemu_log_mask(LOG_GUEST_ERROR, "%s: Error in the data received.\n",
+> +                      path);
+> +        return 0;
+> +    }
+> +
+> +    if (ARRAY_FIELD_EX32(s->regs, STATUS_REGISTER, LBACK)) {
+> +        /*
+> +         * XlnxVersalCANFDState will not participate in normal bus communication
+> +         * and does not receive any messages transmitted by other CAN nodes.
+> +         */
+> +        g_autofree char *path = object_get_canonical_path(OBJECT(s));
+> +
+> +        qemu_log_mask(LOG_GUEST_ERROR, "%s: Controller  is in loopback mode."
+> +                      " It will not receive data.\n", path);
+> +    } else if (ARRAY_FIELD_EX32(s->regs, STATUS_REGISTER, SNOOP)) {
+> +        /* Snoop Mode: Just keep the data. no response back. */
+> +        update_rx_sequential(s, frame);
+> +    } else {
+> +        if ((ARRAY_FIELD_EX32(s->regs, STATUS_REGISTER, SLEEP))) {
+> +            /*
+> +             * XlnxVersalCANFDState is in sleep mode. Any data on bus will bring
+> +             * it to the wake up state.
+> +             */
+> +            canfd_exit_sleep_mode(s);
+> +        }
+> +
+> +        update_rx_sequential(s, frame);
+> +    }
+> +
+> +    /* Message processing done. Update the status back to !busy */
+> +    ARRAY_FIELD_DP32(s->regs, STATUS_REGISTER, BBSY, 0);
+> +    return 1;
+> +}
+> +
+> +static CanBusClientInfo canfd_xilinx_bus_client_info = {
+> +    .can_receive = can_xilinx_canfd_receive,
+> +    .receive = canfd_xilinx_receive,
+> +};
+
+
+> +    /* Allocate a new timer. */
+> +    s->canfd_timer = ptimer_init(xlnx_versal_canfd_ptimer_cb, s,
+> +                                 PTIMER_POLICY_LEGACY);
+
+Don't use PTIMER_POLICY_LEGACY in new code. There's a big
+comment in include/hw/ptimer.h explaining the policy value flags.
+You should look at the behaviour you want and set the appropriate
+flags -- the "legacy" behaviour is never right because it's just
+"various bugs kept for backwards compatibility in existing devices".
+
+> +
+> +    ptimer_transaction_begin(s->canfd_timer);
+> +
+> +    ptimer_set_freq(s->canfd_timer, s->cfg.ext_clk_freq);
+> +    ptimer_set_limit(s->canfd_timer, CANFD_TIMER_MAX, 1);
+> +    ptimer_run(s->canfd_timer, 0);
+> +    ptimer_transaction_commit(s->canfd_timer);
+> +}
+
+thanks
+-- PMM

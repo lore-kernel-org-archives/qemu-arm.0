@@ -1,95 +1,100 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([185.81.254.11])
-        by smtp.gmail.com with ESMTPSA id n7-20020adffe07000000b002366f9bd717sm2921843wrr.45.2022.11.11.10.25.36
+        by smtp.gmail.com with ESMTPSA id p25-20020a05600c1d9900b003c64c186206sm3651008wms.16.2022.11.11.10.25.36
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 11 Nov 2022 10:25:37 -0800 (PST)
+        Fri, 11 Nov 2022 10:25:38 -0800 (PST)
 Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 0B9BF1FFBC;
+	by zen.linaroharston (Postfix) with ESMTP id 233261FFBD;
 	Fri, 11 Nov 2022 18:25:36 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: f4bug@amsat.org,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Richard Henderson <richard.henderson@linaro.org>,
 	Peter Maydell <peter.maydell@linaro.org>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	qemu-arm@nongnu.org (open list:ARM KVM CPUs),
-	kvm@vger.kernel.org (open list:Overall KVM CPUs)
-Subject: [PATCH  v5 04/20] target/arm: ensure KVM traps set appropriate MemTxAttrs
-Date: Fri, 11 Nov 2022 18:25:19 +0000
-Message-Id: <20221111182535.64844-5-alex.bennee@linaro.org>
+	qemu-arm@nongnu.org (open list:ARM TCG CPUs)
+Subject: [PATCH  v5 05/20] target/arm: ensure m-profile helpers set appropriate MemTxAttrs
+Date: Fri, 11 Nov 2022 18:25:20 +0000
+Message-Id: <20221111182535.64844-6-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20221111182535.64844-1-alex.bennee@linaro.org>
 References: <20221111182535.64844-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: vETBHs2Enl3O
+X-TUID: IUENy0jwC0B1
 
-Although most KVM users will use the in-kernel GIC emulation it is
-perfectly possible not to. In this case we need to ensure the
-MemTxAttrs are correctly populated so the GIC can divine the source
-CPU of the operation.
+There are a number of helpers for M-profile that deal with CPU
+initiated access to the vector and stack areas. While it is unlikely
+these coincided with memory mapped IO devices it is not inconceivable.
+Embedded targets tend to attract all sorts of interesting code and for
+completeness we should tag the transaction appropriately.
 
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 
 ---
-v3
-  - new for v3
 v5
-  - tags
-  - use MEMTXATTRS_PCI
+  - rebase fixes for refactoring
 ---
- target/arm/kvm.c | 9 +++++----
- 1 file changed, 5 insertions(+), 4 deletions(-)
+ target/arm/m_helper.c | 12 ++++++------
+ 1 file changed, 6 insertions(+), 6 deletions(-)
 
-diff --git a/target/arm/kvm.c b/target/arm/kvm.c
-index f022c644d2..bb4cdbfbd5 100644
---- a/target/arm/kvm.c
-+++ b/target/arm/kvm.c
-@@ -803,13 +803,14 @@ MemTxAttrs kvm_arch_post_run(CPUState *cs, struct kvm_run *run)
- {
-     ARMCPU *cpu;
-     uint32_t switched_level;
+diff --git a/target/arm/m_helper.c b/target/arm/m_helper.c
+index 355cd4d60a..2fb1ef95cd 100644
+--- a/target/arm/m_helper.c
++++ b/target/arm/m_helper.c
+@@ -184,7 +184,7 @@ static bool v7m_stack_write(ARMCPU *cpu, uint32_t addr, uint32_t value,
+     CPUState *cs = CPU(cpu);
+     CPUARMState *env = &cpu->env;
+     MemTxResult txres;
+-    GetPhysAddrResult res = {};
++    GetPhysAddrResult res = { .f.attrs = MEMTXATTRS_CPU(cs) };
+     ARMMMUFaultInfo fi = {};
+     bool secure = mmu_idx & ARM_MMU_IDX_M_S;
+     int exc;
+@@ -272,7 +272,7 @@ static bool v7m_stack_read(ARMCPU *cpu, uint32_t *dest, uint32_t addr,
+     CPUState *cs = CPU(cpu);
+     CPUARMState *env = &cpu->env;
+     MemTxResult txres;
+-    GetPhysAddrResult res = {};
++    GetPhysAddrResult res = { .f.attrs = MEMTXATTRS_CPU(cs) };
+     ARMMMUFaultInfo fi = {};
+     bool secure = mmu_idx & ARM_MMU_IDX_M_S;
+     int exc;
+@@ -665,7 +665,7 @@ static bool arm_v7m_load_vector(ARMCPU *cpu, int exc, bool targets_secure,
+     MemTxResult result;
+     uint32_t addr = env->v7m.vecbase[targets_secure] + exc * 4;
+     uint32_t vector_entry;
+-    MemTxAttrs attrs = {};
 +    MemTxAttrs attrs = MEMTXATTRS_CPU(cs);
+     ARMMMUIdx mmu_idx;
+     bool exc_secure;
  
-     if (kvm_irqchip_in_kernel()) {
-         /*
-          * We only need to sync timer states with user-space interrupt
-          * controllers, so return early and save cycles if we don't.
-          */
--        return MEMTXATTRS_UNSPECIFIED;
-+        return attrs;
-     }
+@@ -1999,7 +1999,7 @@ static bool v7m_read_half_insn(ARMCPU *cpu, ARMMMUIdx mmu_idx, bool secure,
+     CPUState *cs = CPU(cpu);
+     CPUARMState *env = &cpu->env;
+     V8M_SAttributes sattrs = {};
+-    GetPhysAddrResult res = {};
++    GetPhysAddrResult res = { .f.attrs = MEMTXATTRS_CPU(cs) };
+     ARMMMUFaultInfo fi = {};
+     MemTxResult txres;
  
-     cpu = ARM_CPU(cs);
-@@ -850,7 +851,7 @@ MemTxAttrs kvm_arch_post_run(CPUState *cs, struct kvm_run *run)
-         qemu_mutex_unlock_iothread();
-     }
+@@ -2047,7 +2047,7 @@ static bool v7m_read_sg_stack_word(ARMCPU *cpu, ARMMMUIdx mmu_idx,
+     CPUState *cs = CPU(cpu);
+     CPUARMState *env = &cpu->env;
+     MemTxResult txres;
+-    GetPhysAddrResult res = {};
++    GetPhysAddrResult res = { .f.attrs = MEMTXATTRS_CPU(cs) };
+     ARMMMUFaultInfo fi = {};
+     uint32_t value;
  
--    return MEMTXATTRS_UNSPECIFIED;
-+    return attrs;
- }
+@@ -2805,7 +2805,7 @@ uint32_t HELPER(v7m_tt)(CPUARMState *env, uint32_t addr, uint32_t op)
+      * inspecting the other MPU state.
+      */
+     if (arm_current_el(env) != 0 || alt) {
+-        GetPhysAddrResult res = {};
++        GetPhysAddrResult res = { .f.attrs = MEMTXATTRS_CPU(env_cpu(env)) };
+         ARMMMUFaultInfo fi = {};
  
- void kvm_arm_vm_state_change(void *opaque, bool running, RunState state)
-@@ -1005,6 +1006,7 @@ int kvm_arch_fixup_msi_route(struct kvm_irq_routing_entry *route,
-     hwaddr xlat, len, doorbell_gpa;
-     MemoryRegionSection mrs;
-     MemoryRegion *mr;
-+    MemTxAttrs attrs = MEMTXATTRS_PCI(dev);
- 
-     if (as == &address_space_memory) {
-         return 0;
-@@ -1014,8 +1016,7 @@ int kvm_arch_fixup_msi_route(struct kvm_irq_routing_entry *route,
- 
-     RCU_READ_LOCK_GUARD();
- 
--    mr = address_space_translate(as, address, &xlat, &len, true,
--                                 MEMTXATTRS_UNSPECIFIED);
-+    mr = address_space_translate(as, address, &xlat, &len, true, attrs);
- 
-     if (!mr) {
-         return 1;
+         /* We can ignore the return value as prot is always set */
 -- 
 2.34.1

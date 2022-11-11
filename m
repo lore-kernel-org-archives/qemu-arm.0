@@ -1,116 +1,130 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([185.81.254.11])
-        by smtp.gmail.com with ESMTPSA id n19-20020a05600c3b9300b003b4c979e6bcsm9831705wms.10.2022.11.11.06.55.34
+        by smtp.gmail.com with ESMTPSA id v21-20020a05600c215500b003c6c3fb3cf6sm3518162wml.18.2022.11.11.10.25.37
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 11 Nov 2022 06:55:38 -0800 (PST)
+        Fri, 11 Nov 2022 10:25:39 -0800 (PST)
 Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 26F421FFC4;
-	Fri, 11 Nov 2022 14:55:31 +0000 (GMT)
+	by zen.linaroharston (Postfix) with ESMTP id 716EE1FFB7;
+	Fri, 11 Nov 2022 18:25:36 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
-Cc: fam@euphon.net,
-	berrange@redhat.com,
-	f4bug@amsat.org,
-	aurelien@aurel32.net,
-	pbonzini@redhat.com,
-	stefanha@redhat.com,
-	crosa@redhat.com,
+Cc: f4bug@amsat.org,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	Richard Henderson <richard.henderson@linaro.org>,
 	Peter Maydell <peter.maydell@linaro.org>,
 	qemu-arm@nongnu.org (open list:ARM cores)
-Subject: [PATCH  v2 12/12] hw/intc: add implementation of GICD_IIDR to Arm GIC
-Date: Fri, 11 Nov 2022 14:55:29 +0000
-Message-Id: <20221111145529.4020801-13-alex.bennee@linaro.org>
+Subject: [PATCH  v5 08/20] hw/timer: convert mptimer access to attrs to derive cpu index
+Date: Fri, 11 Nov 2022 18:25:23 +0000
+Message-Id: <20221111182535.64844-9-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20221111145529.4020801-1-alex.bennee@linaro.org>
-References: <20221111145529.4020801-1-alex.bennee@linaro.org>
+In-Reply-To: <20221111182535.64844-1-alex.bennee@linaro.org>
+References: <20221111182535.64844-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: eE6Cmrfd3Kh6
+X-TUID: N2nb5eXMJ+8l
 
-a66a24585f (hw/intc/arm_gic: Implement read of GICC_IIDR) implemented
-this for the CPU interface register. The fact we don't implement it
-shows up when running Xen with -d guest_error which is definitely
-wrong because the guest is perfectly entitled to read it.
+This removes the hacks to deal with empty current_cpu.
 
-Lightly re-factor this region of registers and also add a comment to
-the function in case anyway was under the illusion we only return
-bytes from a function called readb.
-
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 
 ---
 v2
-  - checkpatch fixes.
+  - update for new fields
+  - bool asserts
+v3
+  - properly fail memory transactions from non-CPU sources
 ---
- hw/intc/arm_gic.c | 44 ++++++++++++++++++++++++++++++--------------
- 1 file changed, 30 insertions(+), 14 deletions(-)
+ hw/timer/arm_mptimer.c | 49 +++++++++++++++++++++++++++++-------------
+ 1 file changed, 34 insertions(+), 15 deletions(-)
 
-diff --git a/hw/intc/arm_gic.c b/hw/intc/arm_gic.c
-index 492b2421ab..65b1ef7151 100644
---- a/hw/intc/arm_gic.c
-+++ b/hw/intc/arm_gic.c
-@@ -941,6 +941,10 @@ static void gic_complete_irq(GICState *s, int cpu, int irq, MemTxAttrs attrs)
-     gic_update(s);
+diff --git a/hw/timer/arm_mptimer.c b/hw/timer/arm_mptimer.c
+index cdfca3000b..4618779ade 100644
+--- a/hw/timer/arm_mptimer.c
++++ b/hw/timer/arm_mptimer.c
+@@ -28,6 +28,7 @@
+ #include "migration/vmstate.h"
+ #include "qapi/error.h"
+ #include "qemu/module.h"
++#include "qemu/log.h"
+ #include "hw/core/cpu.h"
+ 
+ #define PTIMER_POLICY                       \
+@@ -41,15 +42,23 @@
+  * which is used in both the ARM11MPCore and Cortex-A9MP.
+  */
+ 
+-static inline int get_current_cpu(ARMMPTimerState *s)
++static bool is_from_cpu(MemTxAttrs attrs)
+ {
+-    int cpu_id = current_cpu ? current_cpu->cpu_index : 0;
++    if (attrs.requester_type != MTRT_CPU) {
++        qemu_log_mask(LOG_UNIMP | LOG_GUEST_ERROR,
++                      "%s: saw non-CPU transaction", __func__);
++        return false;
++    }
++    return true;
++}
+ 
++static int get_current_cpu(ARMMPTimerState *s, MemTxAttrs attrs)
++{
++    int cpu_id = attrs.requester_id;
+     if (cpu_id >= s->num_cpu) {
+         hw_error("arm_mptimer: num-cpu %d but this cpu is %d!\n",
+                  s->num_cpu, cpu_id);
+     }
+-
+     return cpu_id;
  }
  
-+/*
-+ * Although this is named a byte read we don't always return bytes and
-+ * rely on the calling function oring bits together.
-+ */
- static uint32_t gic_dist_readb(void *opaque, hwaddr offset, MemTxAttrs attrs)
+@@ -178,25 +187,35 @@ static void timerblock_write(void *opaque, hwaddr addr,
+ /* Wrapper functions to implement the "read timer/watchdog for
+  * the current CPU" memory regions.
+  */
+-static uint64_t arm_thistimer_read(void *opaque, hwaddr addr,
+-                                   unsigned size)
++static MemTxResult arm_thistimer_read(void *opaque, hwaddr addr, uint64_t *data,
++                                      unsigned size, MemTxAttrs attrs)
  {
-     GICState *s = (GICState *)opaque;
-@@ -954,23 +958,35 @@ static uint32_t gic_dist_readb(void *opaque, hwaddr offset, MemTxAttrs attrs)
-     cpu = gic_get_current_cpu(s);
-     cm = 1 << cpu;
-     if (offset < 0x100) {
--        if (offset == 0) {      /* GICD_CTLR */
--            if (s->security_extn && !attrs.secure) {
--                /* The NS bank of this register is just an alias of the
--                 * EnableGrp1 bit in the S bank version.
--                 */
--                return extract32(s->ctlr, 1, 1);
--            } else {
--                return s->ctlr;
-+        if (offset < 0xc) {
-+            switch (offset) {
-+            case 0: /* GICD_CTLR[7:0] */
-+            {
-+                if (s->security_extn && !attrs.secure) {
-+                    /*
-+                     * The NS bank of this register is just an alias of the
-+                     * EnableGrp1 bit in the S bank version.
-+                     */
-+                    return extract32(s->ctlr, 1, 1);
-+                } else {
-+                    return s->ctlr;
-+                }
-             }
--        }
--        if (offset == 4)
--            /* Interrupt Controller Type Register */
--            return ((s->num_irq / 32) - 1)
-+            case 4: /* GIC_TYPER - Interrupt Controller Type Register */
-+            {
-+                return ((s->num_irq / 32) - 1)
-                     | ((s->num_cpu - 1) << 5)
-                     | (s->security_extn << 10);
--        if (offset < 0x08)
--            return 0;
-+            }
-+            case 8: /* GICD_IIDR - Implementer ID Register */
-+            {
-+                return 0x43b; /* Arm JEP106 identity */
-+            }
-+            default:
-+                /* return 0 for high bits of above */
-+                return 0;
-+            }
-+        }
-         if (offset >= 0x80) {
-             /* Interrupt Group Registers: these RAZ/WI if this is an NS
-              * access to a GIC with the security extensions, or if the GIC
+-    ARMMPTimerState *s = (ARMMPTimerState *)opaque;
+-    int id = get_current_cpu(s);
+-    return timerblock_read(&s->timerblock[id], addr, size);
++    if (is_from_cpu(attrs)) {
++        ARMMPTimerState *s = (ARMMPTimerState *)opaque;
++        int id = get_current_cpu(s, attrs);
++        *data = timerblock_read(&s->timerblock[id], addr, size);
++        return MEMTX_OK;
++    } else {
++        return MEMTX_ACCESS_ERROR;
++    }
+ }
+ 
+-static void arm_thistimer_write(void *opaque, hwaddr addr,
+-                                uint64_t value, unsigned size)
++static MemTxResult arm_thistimer_write(void *opaque, hwaddr addr,
++                                uint64_t value, unsigned size, MemTxAttrs attrs)
+ {
+-    ARMMPTimerState *s = (ARMMPTimerState *)opaque;
+-    int id = get_current_cpu(s);
+-    timerblock_write(&s->timerblock[id], addr, value, size);
++    if (is_from_cpu(attrs)) {
++        ARMMPTimerState *s = (ARMMPTimerState *)opaque;
++        int id = get_current_cpu(s, attrs);
++        timerblock_write(&s->timerblock[id], addr, value, size);
++        return MEMTX_OK;
++    } else {
++        return MEMTX_ACCESS_ERROR;
++    }
+ }
+ 
+ static const MemoryRegionOps arm_thistimer_ops = {
+-    .read = arm_thistimer_read,
+-    .write = arm_thistimer_write,
++    .read_with_attrs = arm_thistimer_read,
++    .write_with_attrs = arm_thistimer_write,
+     .valid = {
+         .min_access_size = 4,
+         .max_access_size = 4,
 -- 
 2.34.1

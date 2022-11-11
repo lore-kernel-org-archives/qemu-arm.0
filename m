@@ -1,372 +1,161 @@
-Received: by 2002:a17:906:80c3:b0:7ae:d8f:8937 with SMTP id a3csp840992ejx;
-        Fri, 11 Nov 2022 04:46:32 -0800 (PST)
-X-Google-Smtp-Source: AA0mqf6Zd04fK6ruUdQDt4pyRAqboEcDCx+3Y7uyp/a5/Dvcn+ezcytKGR+oxz9OGQcy3MvpPXkU
-X-Received: by 2002:a05:622a:1982:b0:3a5:7de1:9708 with SMTP id u2-20020a05622a198200b003a57de19708mr1021524qtc.616.1668170792061;
-        Fri, 11 Nov 2022 04:46:32 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1668170792; cv=none;
+Received: by 2002:a17:906:80c3:b0:7ae:d8f:8937 with SMTP id a3csp866533ejx;
+        Fri, 11 Nov 2022 05:23:12 -0800 (PST)
+X-Received: by 2002:a05:600c:4aa0:b0:3cf:cfc8:9450 with SMTP id b32-20020a05600c4aa000b003cfcfc89450mr1247301wmp.99.1668172991853;
+        Fri, 11 Nov 2022 05:23:11 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1668172991; cv=none;
         d=google.com; s=arc-20160816;
-        b=N3so+zlHO/I64tNEMkSTFIKOozi3v0Etv28aGhV4TqvQnUtrp//UuEVsgFVuWfBHMQ
-         C7WSQF8guz8jeqCHZk1EPWpmcCsRnvud1zjRSoc7bhbD5FK7iXKAxLxsA2AQ2mWa/fwQ
-         W9NlAyTa0VhcxV7I2CdtRIzbC60czuIdkrp2u9ScfY2/SOnSEp61KMYhKEF9RRrhq4lQ
-         MDx9SrfCGx5hZYa1j+0egZn0Ea7KAlxfccbVdTAXLqD+St6qML1zoXiOzPCzZf4dX18z
-         hmKApz4muAaRe5sdXgr3vN1t3q7LWsTgQ7ZP0/55kcrbOgcrO1dmZwSmyxaRbuONUWk+
-         DgVg==
+        b=Ea/dC1QfLv/Tk8qdNWrdTIzxUg7gjT1EIRV5tSYzb+4LKce9zbFmZJn616YTMstmgZ
+         wVmjpXpRBFsPXhBjftNFGQd6EfMOggnxXoaBTjcoQvqo1OOS3MolAhZi57G3A1gZBn/m
+         aQWn0gglTOI0hv8uRvGASUKlDfqagZBQKcrkR9naIALmHLGxdgImibcdm7fjiLdBHa/y
+         TKnxztqdad0rMtFaSDgfac4snv8h8idHuegw2RL+Gm61fclDpPcsjos9PBnWR9SWL6Nb
+         HrJL9pfXf0Ua8Lwr+vwYQ6DM7t0KodG56rNASzjohqEsa5m/P/NlvmZrcqi+1meP1KUy
+         RTtQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
-        bh=YG7XrWp70QQYgV62mgHZrm9LzmLpziSoJqrTEpCvPAQ=;
-        b=t8IAZUwaEIiz9RUDQ9Zzh64G58IXCBI7EjEGPdvA5y5wvDWkE0j7kXrgFlmFrXNgmG
-         lx8P6NhscyDJG55NyWlSzj9HC4oCsBGq7fwkuS3deFZWhFtGN+6OGgVRe6TW4gtVI07l
-         vpwBv7dFsRNvlQCFMzS4kqgVowvAlr98bdBGxVbcXG2NV2TAvXA5NRSYnOpZcbas3jH1
-         R/QqjuYfEO7io9V02tnkKndgkbDmkGZFtL6wlsSDJuHTkAXJ/Ako8PCY5WIR2VV/JR2k
-         70hZnZ1JYf03vusiAJ1f06zask7/f16rBF9mAxdq17l7zk3c6rHUTEwUY8ZE5o8Cd53n
-         0wKg==
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=qXgo7Mw6qt0EJsFqvbTbEi1XSmF0KPUKKh4M2kBzFCI=;
+        b=Q2eURQBUOltWE33ZrqCNq32/ZBH+pqdg8/PsX6CVCBrmqUYXBiqUrDvnj1V8zqhEXp
+         urraSN8I8Cqk8hSRUde5ecor4vAgKt+63HmyK6Axpm55huy169+sYCk78z5dzFWgGb+3
+         hv2ljZ2/VjVEuy5Bycsv2lXKGnZfjTeC1Rlp9hOVtnnMRGi1Be44TyFgAzKCPz3arduW
+         JkXuz+per07RH2Wk7CVdQPSw+rdnEUUnx6M8S4lvslM34xSTQKuiRM1EELc/QeGroVvW
+         Sjfp7Z8Y5K8FcFmS6oF3rYVwd4iEMyeIKQQwK6VqFp+FZQduLq5eFSN5ho+z1/1Xf1R7
+         rWJA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=HrHSF1QA;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id m22-20020ac86896000000b0039d134dce17si879535qtq.65.2022.11.11.04.46.31
+       dkim=pass header.i=@linaro.org header.s=google header.b=KOCHQYp3;
+       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <philmd@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id p17-20020adf9591000000b0022e5ec02779sor1074186wrp.61.2022.11.11.05.23.11
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 11 Nov 2022 04:46:32 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Fri, 11 Nov 2022 05:23:11 -0800 (PST)
+Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=HrHSF1QA;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1otTQ0-0005ml-0B; Fri, 11 Nov 2022 07:46:00 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <cohuck@redhat.com>) id 1otTPw-0005lX-0f
- for qemu-devel@nongnu.org; Fri, 11 Nov 2022 07:45:58 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <cohuck@redhat.com>) id 1otTPs-0001hE-HG
- for qemu-devel@nongnu.org; Fri, 11 Nov 2022 07:45:55 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1668170749;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding;
- bh=YG7XrWp70QQYgV62mgHZrm9LzmLpziSoJqrTEpCvPAQ=;
- b=HrHSF1QAWCG1Ssljc9zEtT6geJP/A+XQuuJsekryPkkiXPzWKas8xzoLZieFriJld9gl9d
- lIhwB7MDZGB8pnRrfnaFh3EUzEi2sobNGrkD7E1D/qurAle58AlXCDYG6pI0ITh0c0ve0e
- oCNbJpdIXTE95fNTNV+K5G4PhA1hFCE=
-Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
- [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-185-5xYuWWDWMYefa_Zq3X-OWw-1; Fri, 11 Nov 2022 07:45:44 -0500
-X-MC-Unique: 5xYuWWDWMYefa_Zq3X-OWw-1
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.rdu2.redhat.com
- [10.11.54.4])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 5712A85A59D;
- Fri, 11 Nov 2022 12:45:43 +0000 (UTC)
-Received: from gondolin.redhat.com (unknown [10.39.193.41])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 18AB9205FA83;
- Fri, 11 Nov 2022 12:45:38 +0000 (UTC)
-From: Cornelia Huck <cohuck@redhat.com>
-To: Peter Maydell <peter.maydell@linaro.org>,
- Eduardo Habkost <eduardo@habkost.net>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Yanan Wang <wangyanan55@huawei.com>, Paolo Bonzini <pbonzini@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- "Michael S. Tsirkin" <mst@redhat.com>, Laurent Vivier <laurent@vivier.eu>,
- Daniel Henrique Barboza <danielhb413@gmail.com>,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
- David Gibson <david@gibson.dropbear.id.au>, Greg Kurz <groug@kaod.org>,
- Thomas Huth <thuth@redhat.com>, David Hildenbrand <david@redhat.com>,
- Ilya Leoshkevich <iii@linux.ibm.com>, Halil Pasic <pasic@linux.ibm.com>,
- Christian Borntraeger <borntraeger@linux.ibm.com>,
- Eric Farman <farman@linux.ibm.com>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, qemu-ppc@nongnu.org,
- qemu-s390x@nongnu.org, Cornelia Huck <cohuck@redhat.com>
-Subject: [PATCH for-8.0] hw: Add compat machines for 8.0
-Date: Fri, 11 Nov 2022 13:45:34 +0100
-Message-Id: <20221111124534.129111-1-cohuck@redhat.com>
+       dkim=pass header.i=@linaro.org header.s=google header.b=KOCHQYp3;
+       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=qXgo7Mw6qt0EJsFqvbTbEi1XSmF0KPUKKh4M2kBzFCI=;
+        b=KOCHQYp32bE3vJriEGdnIqwr5wFjnqlkR5vP0MqAUYkgtGP97xKIUhOmdtDiojGemw
+         K8qDIutC+p8cmjOiiH9FTy+qGOrzGOrGPLMmhVANDAonzxwstmlRL58PlB4OJwnjI4im
+         mDPj4C8fZhaEEAX6026JU5aSUlcr71zLHP3ljBP8V1BIyMD/hKpgaeCgKktA8DBwTqPD
+         wCgr05F4kf7uKOtEaMuLvzIuS5EzKWzZ59i5QlpQfbtF248dzPvsyNtSe/uRzViYv6BX
+         g9A3FlRojOirT/0lyv7rY1LilBRdxcYEGH4gN41aIaOgwQNSxvXzQFuDfK115QsZQvKy
+         P3dA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=qXgo7Mw6qt0EJsFqvbTbEi1XSmF0KPUKKh4M2kBzFCI=;
+        b=sQ7RBJNRcPXtwPb8AyJ/iPoDSN1ilY2Dn/xU1QK4i2cUZEEWG3k+5Hb2cC41WaJ+a1
+         lNxAm1h09yR9BgE1Y0tEmS50wrf6jyIuCmu3INxODlhQedkPRa2l+MTS8ua+AhFuVcG9
+         /1V/mmMAztiya7482tGNgDFulUrqM1BA3vf+ySxkdlHxm6mCgtKaYYaOeLXmkFFlKNmt
+         vB+Lbl5QQnutnDlOUqU/MxEXb3jDAeGp2tQ0SCUYHnUweJiFiPKJlPj3CKSA8MB+C5jK
+         l6n7+IAV5iXjlNifz+cqVveK+2QxNCTtodkxXzZ/S8wmD/QBCOStj7zUsaQR1sdZH2Uk
+         eUdQ==
+X-Gm-Message-State: ANoB5plaiDqYFAx0x0LnUjCXPhQNLQFn9f137PdgQAYj3Lu3oL4w4nkz
+	6YpDB3GL/PGgb1b4pmLsC/MOylpJ
+X-Google-Smtp-Source: AA0mqf7BWg7m4kGogxRprL5RpzQBUPyLl4H7d8IWYT2apA9hfZk6+UdRhe0qjh848FgCmbM+vR5vQQ==
+X-Received: by 2002:adf:eb51:0:b0:236:6253:e2c7 with SMTP id u17-20020adfeb51000000b002366253e2c7mr1238298wrn.434.1668172991458;
+        Fri, 11 Nov 2022 05:23:11 -0800 (PST)
+Return-Path: <philmd@linaro.org>
+Received: from [10.50.0.10] (ec2-54-194-108-71.eu-west-1.compute.amazonaws.com. [54.194.108.71])
+        by smtp.gmail.com with ESMTPSA id q10-20020adff94a000000b0022cc6b8df5esm1929843wrr.7.2022.11.11.05.23.09
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Fri, 11 Nov 2022 05:23:10 -0800 (PST)
+Message-ID: <cb28a138-a82d-0604-a8cf-b302493ff286@linaro.org>
+Date: Fri, 11 Nov 2022 14:23:09 +0100
 MIME-Version: 1.0
-Content-type: text/plain
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
+ Gecko/20100101 Thunderbird/102.4.2
+Subject: Re: [PATCH v3 01/15] hw: encode accessing CPU index in MemTxAttrs
+Content-Language: en-US
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
+ Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org, "Michael S. Tsirkin" <mst@redhat.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, Eduardo Habkost <eduardo@habkost.net>,
+ Peter Xu <peterx@redhat.com>, Jason Wang <jasowang@redhat.com>
+References: <20220927141504.3886314-1-alex.bennee@linaro.org>
+ <20220927141504.3886314-2-alex.bennee@linaro.org>
+ <769e0e8a-7787-b02b-9e26-87eca955666b@linaro.org>
+ <CAFEAcA-0zoNS0nWrYu6hM1=8tG4i4GkjHLL2v4OMmJv5GaDAMg@mail.gmail.com>
+ <87r0znlnmm.fsf@linaro.org>
+ <CAFEAcA8Ft_YAC2TRCSErUJxY8_kZOQdF7Qa6oM6VF2RpAeHrBA@mail.gmail.com>
+ <b1a845ca-0972-1800-0c58-03f68d0c94a0@linaro.org>
+ <CAFEAcA-jvg4t1O-wE+19rJgzdiSZqF+X-XmEDLnrJYZCo233Sw@mail.gmail.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
+In-Reply-To: <CAFEAcA-jvg4t1O-wE+19rJgzdiSZqF+X-XmEDLnrJYZCo233Sw@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.1 on 10.11.54.4
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=cohuck@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: tEaTQU8uR/NK
+X-TUID: ih1E+AXHVpMq
 
-Add 8.0 machine types for arm/i440fx/m68k/q35/s390x/spapr.
+On 31/10/22 14:03, Peter Maydell wrote:
+> On Mon, 31 Oct 2022 at 12:08, Philippe Mathieu-Daudé <philmd@linaro.org> wrote:
+>>
+>> On 4/10/22 16:54, Peter Maydell wrote:
+>>> On Tue, 4 Oct 2022 at 14:33, Alex Bennée <alex.bennee@linaro.org> wrote:
+>>>>
+>>>>
+>>>> Peter Maydell <peter.maydell@linaro.org> writes:
+>>>>> The MSC is in the address map like most other stuff, and thus there is
+>>>>> no restriction on whether it can be accessed by other things than CPUs
+>>>>> (DMAing to it would be silly but is perfectly possible).
+>>>>>
+>>>>> The intent of the code is "pass this transaction through, but force
+>>>>> it to be Secure/NonSecure regardless of what it was before". That
+>>>>> should not involve a change of the requester type.
+>>>>
+>>>> Should we assert (or warn) when the requester_type is unspecified?
+>>>
+>>> Not in the design of MemTxAttrs that's currently in git, no:
+>>> in that design it's perfectly fine for something generating
+>>> memory transactions to use MEMTXATTRS_UNSPECIFIED (which defaults
+>>> to meaning a bunch of things including "not secure").
+>>
+>> In tz_mpc_handle_block():
+>>
+>> static MemTxResult tz_mpc_handle_block(TZMPC *s, hwaddr addr, MemTxAttrs
+>> attrs)
+>> {
+>>       /* Handle a blocked transaction: raise IRQ, capture info, etc */
+>>       if (!s->int_stat) {
+>>
+>>           s->int_info1 = addr;
+>>           s->int_info2 = 0;
+>>           s->int_info2 = FIELD_DP32(s->int_info2, INT_INFO2, HMASTER,
+>>                                     attrs.requester_id & 0xffff);
+>>           s->int_info2 = FIELD_DP32(s->int_info2, INT_INFO2, HNONSEC,
+>>                                     ~attrs.secure);
+>>           s->int_info2 = FIELD_DP32(s->int_info2, INT_INFO2, CFG_NS,
+>>                                     tz_mpc_cfg_ns(s, addr));
+>>
+>>
+>> Should we check whether the requester is MTRT_CPU?
+> 
+> That code is basically assuming that the requester_id is the AMBA AHB
+> 'HMASTER' field (i.e. something hopefully unique to all things that
+> send out transactions, not necessarily limited only to CPUs), which is a
+> somewhat bogus assumption given that it isn't currently any such thing...
+> 
+> I'm not sure if/how this patchset plans to model generic "ID of transaction
+> generator".
 
-Signed-off-by: Cornelia Huck <cohuck@redhat.com>
----
- hw/arm/virt.c              |  9 ++++++++-
- hw/core/machine.c          |  3 +++
- hw/i386/pc.c               |  3 +++
- hw/i386/pc_piix.c          | 14 +++++++++++++-
- hw/i386/pc_q35.c           | 13 ++++++++++++-
- hw/m68k/virt.c             |  9 ++++++++-
- hw/ppc/spapr.c             | 15 +++++++++++++--
- hw/s390x/s390-virtio-ccw.c | 14 +++++++++++++-
- include/hw/boards.h        |  3 +++
- include/hw/i386/pc.h       |  3 +++
- 10 files changed, 79 insertions(+), 7 deletions(-)
+Does your 'generic "ID of transaction generator"' fit into MTRT_MACHINE 
+described as "for more complex encoding":
 
-diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index b87135085610..2a46660980e7 100644
---- a/hw/arm/virt.c
-+++ b/hw/arm/virt.c
-@@ -3096,10 +3096,17 @@ static void machvirt_machine_init(void)
- }
- type_init(machvirt_machine_init);
- 
-+static void virt_machine_8_0_options(MachineClass *mc)
-+{
-+}
-+DEFINE_VIRT_MACHINE_AS_LATEST(8, 0)
-+
- static void virt_machine_7_2_options(MachineClass *mc)
- {
-+    virt_machine_8_0_options(mc);
-+    compat_props_add(mc->compat_props, hw_compat_7_2, hw_compat_7_2_len);
- }
--DEFINE_VIRT_MACHINE_AS_LATEST(7, 2)
-+DEFINE_VIRT_MACHINE(7, 2)
- 
- static void virt_machine_7_1_options(MachineClass *mc)
- {
-diff --git a/hw/core/machine.c b/hw/core/machine.c
-index 8d34caa31dc8..f264fb53b46c 100644
---- a/hw/core/machine.c
-+++ b/hw/core/machine.c
-@@ -40,6 +40,9 @@
- #include "hw/virtio/virtio-pci.h"
- #include "qom/object_interfaces.h"
- 
-+GlobalProperty hw_compat_7_2[] ={};
-+const size_t hw_compat_7_2_len = G_N_ELEMENTS(hw_compat_7_2);
-+
- GlobalProperty hw_compat_7_1[] = {
-     { "virtio-device", "queue_reset", "false" },
- };
-diff --git a/hw/i386/pc.c b/hw/i386/pc.c
-index 546b703cb42c..9aeff77e9dca 100644
---- a/hw/i386/pc.c
-+++ b/hw/i386/pc.c
-@@ -107,6 +107,9 @@
-     { "qemu64-" TYPE_X86_CPU, "model-id", "QEMU Virtual CPU version " v, },\
-     { "athlon-" TYPE_X86_CPU, "model-id", "QEMU Virtual CPU version " v, },
- 
-+GlobalProperty pc_compat_7_2[] = {};
-+const size_t pc_compat_7_2_len = G_N_ELEMENTS(pc_compat_7_2);
-+
- GlobalProperty pc_compat_7_1[] = {};
- const size_t pc_compat_7_1_len = G_N_ELEMENTS(pc_compat_7_1);
- 
-diff --git a/hw/i386/pc_piix.c b/hw/i386/pc_piix.c
-index 0ad0ed160387..1c0a7b83b545 100644
---- a/hw/i386/pc_piix.c
-+++ b/hw/i386/pc_piix.c
-@@ -435,7 +435,7 @@ static void pc_i440fx_machine_options(MachineClass *m)
-     machine_class_allow_dynamic_sysbus_dev(m, TYPE_VMBUS_BRIDGE);
- }
- 
--static void pc_i440fx_7_2_machine_options(MachineClass *m)
-+static void pc_i440fx_8_0_machine_options(MachineClass *m)
- {
-     PCMachineClass *pcmc = PC_MACHINE_CLASS(m);
-     pc_i440fx_machine_options(m);
-@@ -444,6 +444,18 @@ static void pc_i440fx_7_2_machine_options(MachineClass *m)
-     pcmc->default_cpu_version = 1;
- }
- 
-+DEFINE_I440FX_MACHINE(v8_0, "pc-i440fx-8.0", NULL,
-+                      pc_i440fx_8_0_machine_options);
-+
-+static void pc_i440fx_7_2_machine_options(MachineClass *m)
-+{
-+    pc_i440fx_8_0_machine_options(m);
-+    m->alias = NULL;
-+    m->is_default = false;
-+    compat_props_add(m->compat_props, hw_compat_7_2, hw_compat_7_2_len);
-+    compat_props_add(m->compat_props, pc_compat_7_2, pc_compat_7_2_len);
-+}
-+
- DEFINE_I440FX_MACHINE(v7_2, "pc-i440fx-7.2", NULL,
-                       pc_i440fx_7_2_machine_options);
- 
-diff --git a/hw/i386/pc_q35.c b/hw/i386/pc_q35.c
-index a496bd6e74f5..10bb49f679b0 100644
---- a/hw/i386/pc_q35.c
-+++ b/hw/i386/pc_q35.c
-@@ -370,7 +370,7 @@ static void pc_q35_machine_options(MachineClass *m)
-     m->max_cpus = 288;
- }
- 
--static void pc_q35_7_2_machine_options(MachineClass *m)
-+static void pc_q35_8_0_machine_options(MachineClass *m)
- {
-     PCMachineClass *pcmc = PC_MACHINE_CLASS(m);
-     pc_q35_machine_options(m);
-@@ -378,6 +378,17 @@ static void pc_q35_7_2_machine_options(MachineClass *m)
-     pcmc->default_cpu_version = 1;
- }
- 
-+DEFINE_Q35_MACHINE(v8_0, "pc-q35-8.0", NULL,
-+                   pc_q35_8_0_machine_options);
-+
-+static void pc_q35_7_2_machine_options(MachineClass *m)
-+{
-+    pc_q35_8_0_machine_options(m);
-+    m->alias = NULL;
-+    compat_props_add(m->compat_props, hw_compat_7_2, hw_compat_7_2_len);
-+    compat_props_add(m->compat_props, pc_compat_7_2, pc_compat_7_2_len);
-+}
-+
- DEFINE_Q35_MACHINE(v7_2, "pc-q35-7.2", NULL,
-                    pc_q35_7_2_machine_options);
- 
-diff --git a/hw/m68k/virt.c b/hw/m68k/virt.c
-index da5eafd2756f..4cb5beef1a0c 100644
---- a/hw/m68k/virt.c
-+++ b/hw/m68k/virt.c
-@@ -346,10 +346,17 @@ type_init(virt_machine_register_types)
-     } \
-     type_init(machvirt_machine_##major##_##minor##_init);
- 
-+static void virt_machine_8_0_options(MachineClass *mc)
-+{
-+}
-+DEFINE_VIRT_MACHINE(8, 0, true)
-+
- static void virt_machine_7_2_options(MachineClass *mc)
- {
-+    virt_machine_8_0_options(mc);
-+    compat_props_add(mc->compat_props, hw_compat_7_2, hw_compat_7_2_len);
- }
--DEFINE_VIRT_MACHINE(7, 2, true)
-+DEFINE_VIRT_MACHINE(7, 2, false)
- 
- static void virt_machine_7_1_options(MachineClass *mc)
- {
-diff --git a/hw/ppc/spapr.c b/hw/ppc/spapr.c
-index 66b414d2e9ba..da9c84c1198f 100644
---- a/hw/ppc/spapr.c
-+++ b/hw/ppc/spapr.c
-@@ -4733,15 +4733,26 @@ static void spapr_machine_latest_class_options(MachineClass *mc)
-     }                                                                \
-     type_init(spapr_machine_register_##suffix)
- 
-+/*
-+ * pseries-8.0
-+ */
-+static void spapr_machine_8_0_class_options(MachineClass *mc)
-+{
-+    /* Defaults for the latest behaviour inherited from the base class */
-+}
-+
-+DEFINE_SPAPR_MACHINE(8_0, "8.0", true);
-+
- /*
-  * pseries-7.2
-  */
- static void spapr_machine_7_2_class_options(MachineClass *mc)
- {
--    /* Defaults for the latest behaviour inherited from the base class */
-+    spapr_machine_8_0_class_options(mc);
-+    compat_props_add(mc->compat_props, hw_compat_7_2, hw_compat_7_2_len);
- }
- 
--DEFINE_SPAPR_MACHINE(7_2, "7.2", true);
-+DEFINE_SPAPR_MACHINE(7_2, "7.2", false);
- 
- /*
-  * pseries-7.1
-diff --git a/hw/s390x/s390-virtio-ccw.c b/hw/s390x/s390-virtio-ccw.c
-index 7d80bc183716..9d2f7c309f75 100644
---- a/hw/s390x/s390-virtio-ccw.c
-+++ b/hw/s390x/s390-virtio-ccw.c
-@@ -823,14 +823,26 @@ bool css_migration_enabled(void)
-     }                                                                         \
-     type_init(ccw_machine_register_##suffix)
- 
-+static void ccw_machine_8_0_instance_options(MachineState *machine)
-+{
-+}
-+
-+static void ccw_machine_8_0_class_options(MachineClass *mc)
-+{
-+}
-+DEFINE_CCW_MACHINE(8_0, "8.0", true);
-+
- static void ccw_machine_7_2_instance_options(MachineState *machine)
- {
-+    ccw_machine_8_0_instance_options(machine);
- }
- 
- static void ccw_machine_7_2_class_options(MachineClass *mc)
- {
-+    ccw_machine_8_0_class_options(mc);
-+    compat_props_add(mc->compat_props, hw_compat_7_2, hw_compat_7_2_len);
- }
--DEFINE_CCW_MACHINE(7_2, "7.2", true);
-+DEFINE_CCW_MACHINE(7_2, "7.2", false);
- 
- static void ccw_machine_7_1_instance_options(MachineState *machine)
- {
-diff --git a/include/hw/boards.h b/include/hw/boards.h
-index 90f1dd3aeb79..d18d6d007335 100644
---- a/include/hw/boards.h
-+++ b/include/hw/boards.h
-@@ -379,6 +379,9 @@ struct MachineState {
-     } \
-     type_init(machine_initfn##_register_types)
- 
-+extern GlobalProperty hw_compat_7_2[];
-+extern const size_t hw_compat_7_2_len;
-+
- extern GlobalProperty hw_compat_7_1[];
- extern const size_t hw_compat_7_1_len;
- 
-diff --git a/include/hw/i386/pc.h b/include/hw/i386/pc.h
-index c95333514ed3..991f905f5d25 100644
---- a/include/hw/i386/pc.h
-+++ b/include/hw/i386/pc.h
-@@ -200,6 +200,9 @@ void pc_madt_cpu_entry(AcpiDeviceIf *adev, int uid,
- /* sgx.c */
- void pc_machine_init_sgx_epc(PCMachineState *pcms);
- 
-+extern GlobalProperty pc_compat_7_2[];
-+extern const size_t pc_compat_7_2_len;
-+
- extern GlobalProperty pc_compat_7_1[];
- extern const size_t pc_compat_7_1_len;
- 
--- 
-2.38.1
+   'MACHINE indicates a machine specific encoding which needs further
+    processing to decode into its constituent parts.'
 
+?
+
+> 
+> -- PMM

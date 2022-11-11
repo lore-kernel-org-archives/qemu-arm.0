@@ -1,287 +1,67 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([185.81.254.11])
-        by smtp.gmail.com with ESMTPSA id a26-20020a05600c225a00b003c21ba7d7d6sm3431498wmm.44.2022.11.11.10.25.36
+        by smtp.gmail.com with ESMTPSA id t67-20020a1c4646000000b003cfa622a18asm9443469wma.3.2022.11.11.10.25.36
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Fri, 11 Nov 2022 10:25:36 -0800 (PST)
 Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id AFE121FFB8;
+	by zen.linaroharston (Postfix) with ESMTP id E4CFE1FFBB;
 	Fri, 11 Nov 2022 18:25:35 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: f4bug@amsat.org,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	"Michael S. Tsirkin" <mst@redhat.com>,
-	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
-	Paolo Bonzini <pbonzini@redhat.com>,
 	Richard Henderson <richard.henderson@linaro.org>,
-	Eduardo Habkost <eduardo@habkost.net>,
-	Peter Xu <peterx@redhat.com>,
-	Jason Wang <jasowang@redhat.com>,
+	Mads Ynddal <mads@ynddal.dk>,
+	Alexander Graf <agraf@csgraf.de>,
 	Peter Maydell <peter.maydell@linaro.org>,
-	qemu-arm@nongnu.org (open list:ARM PrimeCell and...)
-Subject: [PATCH  v5 01/20] hw: encode accessing CPU index in MemTxAttrs
-Date: Fri, 11 Nov 2022 18:25:16 +0000
-Message-Id: <20221111182535.64844-2-alex.bennee@linaro.org>
+	qemu-arm@nongnu.org (open list:ARM TCG CPUs)
+Subject: [PATCH  v5 03/20] target/arm: ensure HVF traps set appropriate MemTxAttrs
+Date: Fri, 11 Nov 2022 18:25:18 +0000
+Message-Id: <20221111182535.64844-4-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20221111182535.64844-1-alex.bennee@linaro.org>
 References: <20221111182535.64844-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: J6LfsGFDxOjt
+X-TUID: w60tT17/uHLI
 
-We currently have hacks across the hw/ to reference current_cpu to
-work out what the current accessing CPU is. This breaks in some cases
-including using gdbstub to access HW state. As we have MemTxAttrs to
-describe details about the access lets extend it so CPU accesses can
-be explicitly marked.
-
-To achieve this we create a new requester_type which indicates to
-consumers how requester_id it to be consumed. We absorb the existing
-unspecified:1 bitfield into this type and also document a potential
-machine specific encoding which will be useful to (currently)
-out-of-tree extensions.
-
-Places that checked to see if things where unspecified now instead
-check the source if what they expected.
-
-There are a number of places we need to fix up including:
-
-  CPU helpers directly calling address_space_*() fns
-  models in hw/ fishing the data out of current_cpu
-  hypervisors offloading device emulation to QEMU
-
-I'll start addressing some of these in following patches.
+As most HVF devices are done purely in software we need to make sure
+we properly encode the source CPU in MemTxAttrs. This will allow the
+device emulations to use those attributes rather than relying on
+current_cpu (although current_cpu will still be correct in this case).
 
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Reviewed-by: Mads Ynddal <mads@ynddal.dk>
+Acked-by: Alexander Graf <agraf@csgraf.de>
 
 ---
 v2
-  - use separate field cpu_index
-  - bool for requester_is_cpu
-v3
-  - switch to enum MemTxRequesterType
-  - move helper #define to patch
-  - revert to overloading requester_id
-  - mention hypervisors in commit message
-  - drop cputlb tweaks, they will move to target specific code
-v4
-  - merge unspecified:1 into MTRT_UNSPECIFIED
-  - document a MTRT_MACHINE for more complex encoding
-  - ensure existing users of requester_id set MTRT_PCI
-  - ensure existing consumers of requester_id check type is MTRT_PCI
-  - have MEMTXATTRS_CPU take CPUState * directly
+  - update MEMTXATTRS macro
 v5
-  - re-order so MTRT_UNSPECIFIED is zero
-  - fix up comments referring to the difference between empty and unspecified:1
-  - kernel-doc annotations for typedefs
-  - don't impose source type tz-msc during transformation
-  - re-order bitfields so requester_type/id at top
-  - add helper for MEMTXATTRS_PCI
+  - more tags
 ---
- include/exec/memattrs.h | 68 ++++++++++++++++++++++++++++++++---------
- hw/i386/amd_iommu.c     |  6 ++--
- hw/i386/intel_iommu.c   |  2 +-
- hw/misc/tz-mpc.c        |  2 +-
- hw/misc/tz-msc.c        |  6 ++--
- hw/pci/pci.c            |  4 +--
- 6 files changed, 60 insertions(+), 28 deletions(-)
+ target/arm/hvf/hvf.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/include/exec/memattrs.h b/include/exec/memattrs.h
-index 9fb98bc1ef..8359fc448b 100644
---- a/include/exec/memattrs.h
-+++ b/include/exec/memattrs.h
-@@ -14,7 +14,32 @@
- #ifndef MEMATTRS_H
- #define MEMATTRS_H
+diff --git a/target/arm/hvf/hvf.c b/target/arm/hvf/hvf.c
+index 060aa0ccf4..d81fbbb2df 100644
+--- a/target/arm/hvf/hvf.c
++++ b/target/arm/hvf/hvf.c
+@@ -1233,11 +1233,11 @@ int hvf_vcpu_exec(CPUState *cpu)
+             val = hvf_get_reg(cpu, srt);
+             address_space_write(&address_space_memory,
+                                 hvf_exit->exception.physical_address,
+-                                MEMTXATTRS_UNSPECIFIED, &val, len);
++                                MEMTXATTRS_CPU(cpu), &val, len);
+         } else {
+             address_space_read(&address_space_memory,
+                                hvf_exit->exception.physical_address,
+-                               MEMTXATTRS_UNSPECIFIED, &val, len);
++                               MEMTXATTRS_CPU(cpu), &val, len);
+             hvf_set_reg(cpu, srt, val);
+         }
  
--/* Every memory transaction has associated with it a set of
-+/**
-+ * typedef MemTxRequesterType - source of memory transaction
-+ *
-+ * Every memory transaction comes from a specific place which defines
-+ * how requester_id should be handled if at all.
-+ *
-+ * UNSPECIFIED: the default for otherwise undefined MemTxAttrs
-+ * CPU: requester_id is the global cpu_index
-+ *      This needs further processing if you need to work out which
-+ *      socket or complex it comes from
-+ * PCI: indicates the requester_id is a PCI id
-+ * MACHINE: indicates a machine specific encoding
-+ *          This will require further processing to decode into its
-+ *          constituent parts.
-+ */
-+typedef enum MemTxRequesterType {
-+    MTRT_UNSPECIFIED = 0,
-+    MTRT_CPU,
-+    MTRT_PCI,
-+    MTRT_MACHINE
-+} MemTxRequesterType;
-+
-+/**
-+ * typedef MemTxAttrs - attributes of a memory transaction
-+ *
-+ * Every memory transaction has associated with it a set of
-  * attributes. Some of these are generic (such as the ID of
-  * the bus master); some are specific to a particular kind of
-  * bus (such as the ARM Secure/NonSecure bit). We define them
-@@ -23,13 +48,12 @@
-  * different semantics.
-  */
- typedef struct MemTxAttrs {
--    /* Bus masters which don't specify any attributes will get this
--     * (via the MEMTXATTRS_UNSPECIFIED constant), so that we can
--     * distinguish "all attributes deliberately clear" from
--     * "didn't specify" if necessary.
--     */
--    unsigned int unspecified:1;
--    /* ARM/AMBA: TrustZone Secure access
-+    /* Requester type (e.g. CPU or PCI MSI) */
-+    MemTxRequesterType requester_type:2;
-+    /* Requester ID */
-+    unsigned int requester_id:16;
-+    /*
-+     * ARM/AMBA: TrustZone Secure access
-      * x86: System Management Mode access
-      */
-     unsigned int secure:1;
-@@ -43,8 +67,6 @@ typedef struct MemTxAttrs {
-      * (see MEMTX_ACCESS_ERROR).
-      */
-     unsigned int memory:1;
--    /* Requester ID (for MSI for example) */
--    unsigned int requester_id:16;
-     /* Invert endianness for this page */
-     unsigned int byte_swap:1;
-     /*
-@@ -59,12 +81,28 @@ typedef struct MemTxAttrs {
-     unsigned int target_tlb_bit2 : 1;
- } MemTxAttrs;
- 
--/* Bus masters which don't specify any attributes will get this,
-- * which has all attribute bits clear except the topmost one
-- * (so that we can distinguish "all attributes deliberately clear"
-- * from "didn't specify" if necessary).
-+/*
-+ * Bus masters which don't specify any attributes will get this which
-+ * indicates none of the attributes can be used.
-+ */
-+#define MEMTXATTRS_UNSPECIFIED ((MemTxAttrs) \
-+                                { .requester_type = MTRT_UNSPECIFIED })
-+
-+/*
-+ * Helper for setting a basic CPU sourced transaction, it expects a
-+ * CPUState *
-+ */
-+#define MEMTXATTRS_CPU(cs) ((MemTxAttrs) \
-+                            {.requester_type = MTRT_CPU, \
-+                             .requester_id = cs->cpu_index})
-+
-+/*
-+ * Helper for setting a basic PCI sourced transaction, it expects a
-+ * PCIDevice *
-  */
--#define MEMTXATTRS_UNSPECIFIED ((MemTxAttrs) { .unspecified = 1 })
-+#define MEMTXATTRS_PCI(dev) ((MemTxAttrs) \
-+                             {.requester_type = MTRT_PCI,   \
-+                             .requester_id = pci_requester_id(dev)})
- 
- /* New-style MMIO accessors can indicate that the transaction failed.
-  * A zero (MEMTX_OK) response means success; anything else is a failure
-diff --git a/hw/i386/amd_iommu.c b/hw/i386/amd_iommu.c
-index 725f69095b..284359c16e 100644
---- a/hw/i386/amd_iommu.c
-+++ b/hw/i386/amd_iommu.c
-@@ -153,9 +153,7 @@ static void amdvi_assign_andq(AMDVIState *s, hwaddr addr, uint64_t val)
- static void amdvi_generate_msi_interrupt(AMDVIState *s)
- {
-     MSIMessage msg = {};
--    MemTxAttrs attrs = {
--        .requester_id = pci_requester_id(&s->pci.dev)
--    };
-+    MemTxAttrs attrs = MEMTXATTRS_PCI(&s->pci.dev);
- 
-     if (msi_enabled(&s->pci.dev)) {
-         msg = msi_get_message(&s->pci.dev, 0);
-@@ -1356,7 +1354,7 @@ static MemTxResult amdvi_mem_ir_write(void *opaque, hwaddr addr,
- 
-     trace_amdvi_mem_ir_write_req(addr, value, size);
- 
--    if (!attrs.unspecified) {
-+    if (attrs.requester_type == MTRT_PCI) {
-         /* We have explicit Source ID */
-         sid = attrs.requester_id;
-     }
-diff --git a/hw/i386/intel_iommu.c b/hw/i386/intel_iommu.c
-index a08ee85edf..12752413eb 100644
---- a/hw/i386/intel_iommu.c
-+++ b/hw/i386/intel_iommu.c
-@@ -3517,7 +3517,7 @@ static MemTxResult vtd_mem_ir_write(void *opaque, hwaddr addr,
-     from.address = (uint64_t) addr + VTD_INTERRUPT_ADDR_FIRST;
-     from.data = (uint32_t) value;
- 
--    if (!attrs.unspecified) {
-+    if (attrs.requester_type == MTRT_PCI) {
-         /* We have explicit Source ID */
-         sid = attrs.requester_id;
-     }
-diff --git a/hw/misc/tz-mpc.c b/hw/misc/tz-mpc.c
-index 30481e1c90..4beb5daa1a 100644
---- a/hw/misc/tz-mpc.c
-+++ b/hw/misc/tz-mpc.c
-@@ -461,7 +461,7 @@ static int tz_mpc_attrs_to_index(IOMMUMemoryRegion *iommu, MemTxAttrs attrs)
-      * All the real during-emulation transactions from the CPU will
-      * specify attributes.
-      */
--    return (attrs.unspecified || attrs.secure) ? IOMMU_IDX_S : IOMMU_IDX_NS;
-+    return ((attrs.requester_type == MTRT_UNSPECIFIED) || attrs.secure) ? IOMMU_IDX_S : IOMMU_IDX_NS;
- }
- 
- static int tz_mpc_num_indexes(IOMMUMemoryRegion *iommu)
-diff --git a/hw/misc/tz-msc.c b/hw/misc/tz-msc.c
-index acbe94400b..e93bfc7083 100644
---- a/hw/misc/tz-msc.c
-+++ b/hw/misc/tz-msc.c
-@@ -137,11 +137,9 @@ static MemTxResult tz_msc_read(void *opaque, hwaddr addr, uint64_t *pdata,
-         return MEMTX_OK;
-     case MSCAllowSecure:
-         attrs.secure = 1;
--        attrs.unspecified = 0;
-         break;
-     case MSCAllowNonSecure:
-         attrs.secure = 0;
--        attrs.unspecified = 0;
-         break;
-     }
- 
-@@ -179,11 +177,11 @@ static MemTxResult tz_msc_write(void *opaque, hwaddr addr, uint64_t val,
-         return MEMTX_OK;
-     case MSCAllowSecure:
-         attrs.secure = 1;
--        attrs.unspecified = 0;
-+        attrs.requester_type = MTRT_CPU;
-         break;
-     case MSCAllowNonSecure:
-         attrs.secure = 0;
--        attrs.unspecified = 0;
-+        attrs.requester_type = MTRT_CPU;
-         break;
-     }
- 
-diff --git a/hw/pci/pci.c b/hw/pci/pci.c
-index 2f450f6a72..1d0d8d866f 100644
---- a/hw/pci/pci.c
-+++ b/hw/pci/pci.c
-@@ -319,9 +319,7 @@ void pci_device_deassert_intx(PCIDevice *dev)
- 
- static void pci_msi_trigger(PCIDevice *dev, MSIMessage msg)
- {
--    MemTxAttrs attrs = {};
--
--    attrs.requester_id = pci_requester_id(dev);
-+    MemTxAttrs attrs = MEMTXATTRS_PCI(dev);
-     address_space_stl_le(&dev->bus_master_as, msg.address, msg.data,
-                          attrs, NULL);
- }
 -- 
 2.34.1
